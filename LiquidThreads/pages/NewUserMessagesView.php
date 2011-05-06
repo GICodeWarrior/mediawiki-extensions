@@ -9,8 +9,8 @@ class NewUserMessagesView extends LqtView {
 	protected function htmlForReadButton( $label, $title, $class, $ids ) {
 		$ids_s = implode( ',', $ids );
 		$html = '';
-		$html .= Xml::hidden( 'lqt_method', 'mark_as_read' );
-		$html .= Xml::hidden( 'lqt_operand', $ids_s );
+		$html .= Html::Hidden( 'lqt_method', 'mark_as_read' );
+		$html .= Html::Hidden( 'lqt_operand', $ids_s );
 		$html .= Xml::submitButton(
 			$label,
 			array(
@@ -48,8 +48,8 @@ class NewUserMessagesView extends LqtView {
 
 		$html = '';
 		$html .= $msg;
-		$html .= Xml::hidden( 'lqt_method', 'mark_as_unread' );
-		$html .= Xml::hidden( 'lqt_operand', $operand );
+		$html .= Html::Hidden( 'lqt_method', 'mark_as_unread' );
+		$html .= Html::Hidden( 'lqt_operand', $operand );
 		$html .= Xml::submitButton(
 			wfMsg( 'lqt-email-undo' ),
 			array(
