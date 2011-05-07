@@ -891,7 +891,7 @@ class DatabaseMssqlold extends DatabaseBase {
 
 	/**
 	 * Called by the installer script
-	 * - this is the same way as DatabasePostgresql.php, MySQL reads in tables.sql and interwiki.sql using dbsource (which calls db->sourceFile)
+	 * - this is the same way as DatabasePostgresql.php, MySQL reads in tables.sql and interwiki.sql using $db->sourceFile()
 	 */
 	public function setup_database() {
 		global $IP,$wgDBTableOptions;
