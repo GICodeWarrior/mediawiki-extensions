@@ -1,5 +1,0 @@
-progressbar==2.3-dev
-pymongo==1.9
-argparse
-python-dateutil
-texttable

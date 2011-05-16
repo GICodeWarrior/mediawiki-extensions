@@ -1,5 +1,0 @@
-Syntax:   \switch <num>
-Alias:    \sw
-See also: \open, \list
-
-Change to connection number <num>, which must be a valid open connection.

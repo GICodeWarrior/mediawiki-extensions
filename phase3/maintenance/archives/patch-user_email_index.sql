@@ -1,1 +1,0 @@
- ALTER TABLE /*$wgDBprefix*/user ADD INDEX ( `user_email`(50), `user_name` );
