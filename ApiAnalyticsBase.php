@@ -40,7 +40,7 @@ abstract class ApiAnalyticsBase extends ApiBase {
 
 		$db = $this->getDB();
 		if ( $params['startmonth'] && !$params['endmonth'] ) {
-			$query['conds']['date'] = $params['months'];
+			$query['conds']['date'] = $params['startmonth'];
 		} else {
 			$query['conds'] = "date >= ". $db->addQuotes( $params['startmonth'] )
 							. " AND date <= " . $db->addQuotes( $params['endmonth'] ) ;
