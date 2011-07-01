@@ -152,7 +152,10 @@ $(document).ready( function() {
 				'action': {
 					'type': 'callback',
 					'execute': function( context ) {
-						$.cookie('pp-editmode', null);
+						$.cookie('pp-editmode', null, {
+							expires: 30,
+							path: '/'
+						});
 						context.parserPlayground.fn.disable();
 					}
 				}
@@ -387,6 +390,7 @@ $(document).ready( function() {
 				}
 			} );
 			var editMode = $.cookie('pp-editmode');
+			console.log('editMode', editMode);
 			if ( editMode && editMode in listItems ) {
 				listItems[editMode].action.execute( context );
 			}
