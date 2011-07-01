@@ -60,7 +60,7 @@ TextFlow.prototype.getOffset = function( position ) {
 	 * positions, which is a nice benefit of this method.
 	 */
 	while ( line < lineCount ) {
-		bottom += lines[line].height;
+		bottom += this.lines[line].height;
 		if ( position.y >= top && position.y < bottom ) {
 			break;
 		}
@@ -79,7 +79,7 @@ TextFlow.prototype.getOffset = function( position ) {
 	 */
 	var $ruler = $( '<div class="editSurface-line"></div>' ).appendTo( this.$ )
 		ruler = $ruler[0],
-		fit = this.fitCharacters( lines[line].start, lines[line].end, ruler, position.x );
+		fit = this.fitCharacters( this.lines[line].start, this.lines[line].end, ruler, position.x );
 	$ruler.remove();
 	
 	return fit.end;
