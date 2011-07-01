@@ -217,6 +217,9 @@ TextFlow.prototype.setText = function( text ) {
  * @param offset {Integer} Offset to re-render from, if possible (not yet implemented)
  */
 TextFlow.prototype.render = function( offset ) {
+	// Reset lines in the DOM and the "lines" array
+	this.$.empty();
+	
 	/*
 	 * Container measurement
 	 * 
@@ -227,15 +230,14 @@ TextFlow.prototype.render = function( offset ) {
 	var $ruler = $( '<div>&nbsp;</div>' ).appendTo( this.$ ),
 		width = $ruler.innerWidth()
 	
+	// TODO: Take offset into account
 	// Ignore offset optimization if the width has changed or the text has never been flowed before
-	if (this.width !== width) {
-		offset = undefined;
-	}
+	//if (this.width !== width) {
+	//	offset = undefined;
+	//}
 	
 	// TODO: Take offset into account and only work from there
 	
-	// Reset lines in the DOM and the "lines" array
-	this.$.empty();
 	this.lines = [];
 	// Iterate over each word that will fit in a line, appending them to the DOM as we go
 	var wordOffset = 0,
