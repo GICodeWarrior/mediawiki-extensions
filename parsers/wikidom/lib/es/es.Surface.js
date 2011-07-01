@@ -16,7 +16,7 @@ function Surface( $container, document ) {
 		block = $block.data( 'block' );
 		var position = new Position(e.pageX - $block.offset().left, e.pageY - $block.offset().top);
 		var offest = block.flow.getOffset( position );
-		block.insertContent(offest, '___!___');
+		block.insertContent(offest, '!');
 		//this.setCursor(new Location(block, offset))
 	});
 }

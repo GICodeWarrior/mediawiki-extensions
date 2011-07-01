@@ -80,9 +80,14 @@ TextFlow.prototype.getOffset = function( position ) {
 	var $ruler = $( '<div class="editSurface-line"></div>' ).appendTo( this.$ )
 		ruler = $ruler[0],
 		fit = this.fitCharacters( this.lines[line].start, this.lines[line].end, ruler, position.x );
+	ruler.innerHTML = this.escape( this.text.substring( this.lines[line].start, fit.end ) );
+	var left = ruler.clientWidth;
+	ruler.innerHTML = this.escape( this.text.substring( this.lines[line].start, fit.end + 1 ) );
+	var right = ruler.clientWidth;
+	var center = Math.round( left + ( ( right - left ) / 2 ) );
 	$ruler.remove();
-	
-	return fit.end;
+	console.log(left, center, right, position.x);
+	return fit.end + ( position.x >= center ? 1 : 0 );
 };
 
 /**
