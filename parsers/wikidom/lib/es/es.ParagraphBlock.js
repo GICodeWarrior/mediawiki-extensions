@@ -12,7 +12,7 @@ function ParagraphBlock( lines ) {
 	this.updateText();
 }
 
-Block.prototype.updateText = function() {
+ParagraphBlock.prototype.updateText = function() {
 	var text = [];
 	for ( var i = 0; i < this.lines.length; i++ ) {
 		text.push( this.lines[i].text );
@@ -26,7 +26,7 @@ Block.prototype.updateText = function() {
  * @param offset {Integer} Position to insert content at
  * @param content {Object} Content to insert
  */
-Block.prototype.insertContent = function( offset, content ) {
+ParagraphBlock.prototype.insertContent = function( offset, content ) {
 	var lineOffset = 0;
 	for ( var i = 0; i < this.lines.length; i++ ) {
 		if ( this.lines[i].text.length < offset - lineOffset ) {
@@ -46,7 +46,7 @@ Block.prototype.insertContent = function( offset, content ) {
  * @param offset {Integer} Position to start removing content from
  * @param length {Integer} Length of content to remove
  */
-Block.prototype.deleteContent = function( offset, length ) {
+ParagraphBlock.prototype.deleteContent = function( offset, length ) {
 	var start,
 		end,
 		from,
@@ -91,7 +91,7 @@ Block.prototype.deleteContent = function( offset, length ) {
  * 
  * @param $container {jQuery Selection} Container to render into
  */
-Block.prototype.renderContent = function() {
+ParagraphBlock.prototype.renderContent = function() {
 	this.flow.render();
 };
 
@@ -100,8 +100,8 @@ Block.prototype.renderContent = function() {
  * 
  * @param position {Position} Position to translate
  */
-Block.prototype.getLocation = function( position ) {
-	throw 'Block.getLocation not implemented in this subclass.';
+ParagraphBlock.prototype.getLocation = function( position ) {
+	throw 'ParagraphBlock.getLocation not implemented in this subclass.';
 };
 
 /**
@@ -109,8 +109,8 @@ Block.prototype.getLocation = function( position ) {
  * 
  * @param location {Location} Location to translate
  */
-Block.prototype.getPosition = function( location ) {
-	throw 'Block.getPosition not implemented in this subclass.';
+ParagraphBlock.prototype.getPosition = function( location ) {
+	throw 'ParagraphBlock.getPosition not implemented in this subclass.';
 };
 
 extend( ParagraphBlock, Block );
