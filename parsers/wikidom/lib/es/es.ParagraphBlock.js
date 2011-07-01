@@ -12,6 +12,9 @@ function ParagraphBlock( lines ) {
 	this.updateText();
 }
 
+/**
+ * Update text given to the flow object
+ */
 ParagraphBlock.prototype.updateText = function() {
 	var text = [];
 	for ( var i = 0; i < this.lines.length; i++ ) {
