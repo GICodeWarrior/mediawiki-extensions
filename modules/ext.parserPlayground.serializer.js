@@ -103,11 +103,18 @@ MWTreeSerializer.prototype.treeToSource = function(tree, callback) {
 			}
 			src += '}}';
 			break;
+		case 'b':
+			src = "'''" + tree.text + "'''";
+			break;
 		case 'i':
 			src = "''" + tree.text + "''";
 			break;
 		case 'extlink':
 			src = '[' + tree.target + ' ' + tree.text + ']';
+			break;
+		case 'comment':
+			// @fixme validate that text doesn't contain '-->'
+			src = '<!--' + tree.text + '-->';
 			break;
 		default:
 			callback(null, 'Unrecognized parse tree node');

@@ -190,6 +190,7 @@ $(document).ready( function() {
 
 						var parser = pp.parser;
 						parser.parseToTree(src, function(tree, err) {
+							if (err) mw.log(err);
 							pp.tree = tree;
 							pp.fn.displayTree();
 						});
@@ -206,6 +207,7 @@ $(document).ready( function() {
 							});
 						}
 						pp.renderer.treeToHtml(pp.tree, function(node, err) {
+							if (err) mw.log(err);
 							var $dest = context.$parserContainer.find('div');
 							$dest.empty().append(node);
 							context.parserPlayground.fn.setupEditor(context.$parserContainer);
@@ -234,6 +236,7 @@ $(document).ready( function() {
 						};
 						if (pp.parser && pp.tree) {
 							pp.serializer.treeToSource( pp.tree, function( src, err ) {
+								if (err) mw.log(err);
 								context.$textarea.val( src );
 								finish();
 							});
@@ -267,6 +270,7 @@ $(document).ready( function() {
 							if ( node ) {
 								// Ok, not 100% kosher right now but... :D
 								pp.serializer.treeToSource(node, function(src, err) {
+									if (err) mw.log(err);
 									//alert( src );
 									pp.sel = {
 										node: node,
@@ -309,11 +313,12 @@ $(document).ready( function() {
 									$dlg = $(this);
 
 								pp.parser.parseToTree($textarea.val(), function(tree, err) {
+									if (err) mw.log(err);
 									// Silly and freaky hack :D
 									// Crap... no good way to replace or find parent here. Bad temp dom. ;)
 									var replaceNode = function(searchFor, replaceWithNodes, haystack) {
 										// Look in 'data' arrays for subnodes.
-										if ('content' in haystack) {
+										if (typeof haystack == 'object' && 'content' in haystack) {
 											var content = haystack.content, len = content.length;
 											for (var i = 0; i < len; i++) {
 												if (content[i] === searchFor) {
