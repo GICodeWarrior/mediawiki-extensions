@@ -23,7 +23,6 @@ body {
 
 .editSurface-line {
 	display: inline-block;
-	height: 1.5em;
 	line-height: 1.5em;
 	cursor: text;
 	white-space: nowrap;
