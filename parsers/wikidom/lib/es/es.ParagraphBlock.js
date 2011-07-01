@@ -89,7 +89,7 @@ ParagraphBlock.prototype.deleteContent = function( start, end ) {
 		from.line.text = from.line.text.substring( 0, from.offset )
 			+ to.line.text.substring( to.offset );
 		// Remove lines after "from" up to and including "to"
-		this.lines = this.lines.splice( from.index + 1, to.index - from.index );
+		this.lines.splice( from.index + 1, to.index - from.index );
 	}
 	this.updateText();
 	this.flow.render();
