@@ -390,7 +390,6 @@ $(document).ready( function() {
 				}
 			} );
 			var editMode = $.cookie('pp-editmode');
-			console.log('editMode', editMode);
 			if ( editMode && editMode in listItems ) {
 				listItems[editMode].action.execute( context );
 			}
