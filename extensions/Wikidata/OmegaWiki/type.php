@@ -25,13 +25,14 @@ function booleanAsHTML( $value ) {
 
 function pageAsURL( $nameSpace, $title, $usedc = true ) {
 
-	global $wgArticlePath;
+	global $wgArticlePath, $wdDefaultViewDataSet;
 
 	$myTitle = str_replace( "&", urlencode("&") , $title ) ;
 	$url = str_replace( "$1", $nameSpace . ':' . $myTitle , $wgArticlePath );
 
 	if ( $usedc ) {
 		$dc = wdGetDataSetContext();
+		if ( $dc == $wdDefaultViewDataSet ) return $url;
 		if ( strpos($url , "?") ) {
 			$url .= "&dataset=$dc";
 		} else {
