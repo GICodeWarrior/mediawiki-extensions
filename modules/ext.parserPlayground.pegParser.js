@@ -1,16 +1,17 @@
 /**
- * Wrap a parser generated with pegjs into the FakeParser class,
- * so will use FakeParser's HTML output and round-tripping functions.
+ * Parser for wikitext to provisional temp structure, using PEG.js and
+ * a separate PEG grammar file (pegParser.pegjs.txt)
+ *
+ * Use along with the MWTreeRenderer and MWTreeSerializer classes for
+ * HTML output and source round-tripping.
  *
  * If installed as a user script or to customize, set parserPlaygroundPegPage
  * to point at the MW page name containing the parser peg definition; default
  * is 'MediaWiki:Gadget-ParserPlayground-PegParser.pegjs'.
  */
 function PegParser(options) {
-	FakeParser.call(this, options);
+	this.options = options;
 }
-
-$.extend(PegParser.prototype, FakeParser.prototype);
 
 PegParser.src = false;
 
@@ -27,6 +28,15 @@ PegParser.prototype.parseToTree = function(text, callback) {
 		}
 	});
 }
+
+/**
+ * @param {object} tree
+ * @param {function(tree, error)} callback
+ */
+PegParser.prototype.expandTree = function(tree, callback) {
+	// no-op!
+	callback(tree, null);
+};
 
 PegParser.prototype.initSource = function(callback) {
 	if (PegParser.src) {
