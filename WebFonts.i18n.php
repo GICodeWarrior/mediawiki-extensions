@@ -314,6 +314,17 @@ $messages['sr-ec'] = array(
 	'webfonts-disable-preference' => 'Онемогући уграђивање фонта',
 );
 
+/** Swedish (Svenska)
+ * @author WikiPhoenix
+ */
+$messages['sv'] = array(
+	'webfonts' => 'WebFonts',
+	'webfonts-desc' => 'Bäddar in typsnitt i sidor',
+	'webfonts-load' => 'Välj typsnitt',
+	'webfonts-reset' => 'Återställ',
+	'webfonts-disable-preference' => 'Inaktivera typsnittsinbäddning (WebFonts)',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
