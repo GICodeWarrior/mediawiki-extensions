@@ -31,14 +31,18 @@ ParagraphBlock.prototype.updateText = function() {
  */
 ParagraphBlock.prototype.insertContent = function( offset, content ) {
 	var lineOffset = 0;
-	for ( var i = 0; i < this.lines.length; i++ ) {
-		if ( this.lines[i].text.length < offset - lineOffset ) {
-			this.lines[i].text = this.lines[i].text.substring( 0, offset - lineOffset )
-				+ content.toString()
-				+ this.lines[i].text.substring( offset - lineOffset )
-			break;
+	if ( offset === 0 && this.lines.length ) {
+		this.lines[i].text = content.toString + this.lines[i].text;
+	} else {
+		for ( var i = 0; i < this.lines.length; i++ ) {
+			if ( this.lines[i].text.length < offset - lineOffset ) {
+				this.lines[i].text = this.lines[i].text.substring( 0, offset - lineOffset )
+					+ content.toString()
+					+ this.lines[i].text.substring( offset - lineOffset )
+				break;
+			}
+			lineOffset += line.text.length;
 		}
-		lineOffset += line.text.length;
 	}
 	this.updateText();
 };
