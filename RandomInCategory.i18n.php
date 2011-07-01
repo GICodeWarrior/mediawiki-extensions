@@ -982,9 +982,10 @@ $messages['su'] = array(
 /** Swedish (Svenska)
  * @author Jon Harald Søby
  * @author M.M.S.
+ * @author WikiPhoenix
  */
 $messages['sv'] = array(
-	'randomincategory' => 'Slump sida i kategori',
+	'randomincategory' => 'Slumpsida i kategori',
 	'randomincategory-desc' => '[[Special:Randomincategory|Specialsida]] för att få en slumpsida från en kategori',
 	'randomincategory-toolbox' => 'Slumpsida',
 	'randomincategory-nocategory' => 'Kategorin $1 hittades inte, eller är tom',
