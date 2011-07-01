@@ -116,4 +116,4 @@ ParagraphBlock.prototype.getPosition = function( offset ) {
 	return this.flow.getPosition( offset );
 };
 
-extend( Block, ParagraphBlock );
+extend( ParagraphBlock, Block );
