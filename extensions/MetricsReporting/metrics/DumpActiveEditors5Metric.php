@@ -10,11 +10,16 @@ class DumpActiveEditors5Metric extends ApiAnalyticsBase {
 	}
 
 	protected function getQueryInfo() {
-		return array();
+		return array(
+			'table' => array( 'wikistats' ),
+			'conds' => array(),
+			'options' => array( 'GROUP BY' => 'date', 'ORDER BY' => 'date' ),
+			'join_conds' => array(),
+		);
 	}
 
 	protected function getQueryFields() {
-		return array();
+		return array( 'date', 'project_code', 'SUM(editors_ge_5)' );
 	}
 
 	public function getDescription() {

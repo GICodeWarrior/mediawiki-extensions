@@ -13,19 +13,24 @@ class SquidPageViewsMetric extends ApiAnalyticsBase {
 		);
 	}
 
+	protected function getQueryInfo() {
+		return array(
+			'table' => array(),
+			'conds' => array(),
+			'options' => array(),
+			'join_conds' => array(),
+		);
+	}
+
+	protected function getQueryFields() {
+		return array();
+	}
+
 	public function getDescription() {
 		return array(
 			'Total articles (htm component) requested from nearly all Wikimedia wikis (exceptions are mostly special purpose wikis, e.g. wikimania wikis)',
 			'Totals are based on the archived 1:1000 sampled squid logs.',
 		);
-	}
-
-	protected function getQueryInfo() {
-		return array();
-	}
-
-	protected function getQueryFields() {
-		return array();
 	}
 
 	protected function getExamples() {
