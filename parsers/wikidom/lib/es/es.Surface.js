@@ -11,11 +11,13 @@ function Surface( $container, document ) {
 	this.render();
 	
 	this.$.mousedown(function(e) {
-		// what block is that? (from $(e.target).closest('.editSurface-block'))
-		// what offset is that?
-		// block.getOffset(
-		// 		new Position(e.pageX - $e.target).offset().left, e.pageY - $e.target).offset().top)
-		// )
+		var $target = $( e.target );
+		$block = $target.is( '.editSurface-block' ) ? $target : $target.closest( '.editSurface-block' ),
+		block = $block.data( 'block' );
+		var position = new Position(e.pageX - $(e.target).offset().left, $(e.target).offset().top);
+		var offest = block.flow.getOffset( position );
+		block.insertContent(offest, '___!___');		
+
 		// setCursor(new Location(block, offset))
 	});
 }
