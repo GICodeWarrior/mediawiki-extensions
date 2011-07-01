@@ -35,14 +35,14 @@ ParagraphBlock.prototype.insertContent = function( offset, content ) {
 		this.lines[0].text = content.toString() + this.lines[0].text;
 	} else {
 		for ( var i = 0; i < this.lines.length; i++ ) {
-			if ( offset > lineOffset && offset < lineOffset + this.lines[i].text.length ) {
+			if ( offset >= lineOffset && offset < lineOffset + this.lines[i].text.length ) {
 				this.lines[i].text = this.lines[i].text.substring( 0, offset - lineOffset )
 					+ content.toString()
 					+ this.lines[i].text.substring( offset - lineOffset )
 				break;
-			
+			}
+			lineOffset += this.lines[i].text.length;
 		}
-		lineOffset += this.lines[i].text.length;
 	}
 
 	this.updateText();
