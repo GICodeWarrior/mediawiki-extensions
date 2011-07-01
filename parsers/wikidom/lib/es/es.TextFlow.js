@@ -86,7 +86,6 @@ TextFlow.prototype.getOffset = function( position ) {
 	var right = ruler.clientWidth;
 	var center = Math.round( left + ( ( right - left ) / 2 ) );
 	$ruler.remove();
-	console.log(left, center, right, position.x);
 	return fit.end + ( position.x >= center ? 1 : 0 );
 };
 
