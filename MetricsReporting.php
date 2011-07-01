@@ -54,5 +54,8 @@ $wgMetricAPIModules['dumpedits'] = 'DumpEditsMetric';
 $wgAutoloadClasses['DumpNewRegisteredEditorsMetric'] = $metricsDir . 'DumpNewRegisteredEditorsMetric.php';
 $wgMetricAPIModules['dumpnewregisterededitors'] = 'DumpNewRegisteredEditorsMetric';
 
+$wgAutoloadClasses['EstimateOfflineMetric'] = $metricsDir . 'EstimateOfflineMetric.php';
+$wgMetricAPIModules['estimateoffline'] = 'EstimateOfflineMetric';
+
 $wgAutoloadClasses['SquidPageViewsMetric'] = $metricsDir . 'SquidPageViewsMetric.php';
 $wgMetricAPIModules['squidpageviews'] = 'SquidPageViewsMetric';
