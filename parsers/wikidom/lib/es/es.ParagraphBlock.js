@@ -20,7 +20,7 @@ ParagraphBlock.prototype.updateText = function() {
 	for ( var i = 0; i < this.lines.length; i++ ) {
 		text.push( this.lines[i].text );
 	}
-	this.flow.setText( text.join( '\n' ) );
+	this.flow.setText( text.join( '' ) );
 };
 
 /**
