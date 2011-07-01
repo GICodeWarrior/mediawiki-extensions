@@ -46,7 +46,7 @@ abstract class ApiAnalyticsBase extends ApiBase {
 							. " AND date <= " . $db->addQuotes( $params['endmonth'] ) ;
 		}
 
-		if ( $params['normalized'] ) {
+		if ( $params['normalized'] && $this->canBeNormalised() ) {
 			// TODO: Do data normalisation stuffs here
 		}
 
@@ -66,6 +66,10 @@ abstract class ApiAnalyticsBase extends ApiBase {
 			}
 		}
 		// TODO: Change join based on selected language $params['reportlanguage']
+		// TODO: Also, work out which queries can deal with the parameter
+		//if () {
+		//	$query['conds']['reportlanguage'] = $params['reportlanguage'];
+		//}
 
 		foreach( $this->getAllowedFilters() as $filter ) {
 			if ( /*isset( $params[$filter] ) && */count( $params[$filter] ) ) {
@@ -177,6 +181,13 @@ abstract class ApiAnalyticsBase extends ApiBase {
 	protected abstract function getQueryInfo();
 
 	protected abstract function getQueryFields();
+
+	/**
+	 * @return bool
+	 */
+	protected function canBeNormalised() {
+		return false;
+	}
 
 	/**
 	 * @return array

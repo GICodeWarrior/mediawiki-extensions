@@ -26,6 +26,10 @@ class SquidPageViewsMetric extends ApiAnalyticsBase {
 		return array();
 	}
 
+	protected function canBeNormalised() {
+		return true;
+	}
+
 	public function getDescription() {
 		return array(
 			'Total articles (htm component) requested from nearly all Wikimedia wikis (exceptions are mostly special purpose wikis, e.g. wikimania wikis)',
