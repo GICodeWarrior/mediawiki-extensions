@@ -8,11 +8,9 @@
  *
  * Adds a fold-out section in the editor (using enhanced toolbar) to swap view of:
  * - Source (your regular editable text)
- * - MediaWiki parser (parsed page as full HTML)
- * - Preprocessor tree (tree view of XML preprocessor tree; shows limited pre-parsing breakdown)
- * - FakeParser (a very primitive parser class in this gadget)
- * - FakeParser's parse tree
- * - FakeParser's output and parse tree side-by-side.
+ * - MediaWiki parser (parsed page as full HTML, with XML parse tree inspector)
+ * - PegParser (a very primitive parser class in this gadget), with
+ *   tree inspector and primitive editing
  *
  * The parsed views update to match the current editor state when you bump over to them.
  * In side-by-side view, matching items are highlighted on the two sides, and clicking
@@ -123,7 +121,16 @@ var addParserModes = function(modes, parserClass, className, detail) {
 		'action': {
 			'type': 'callback',
 			'execute': function( context ) {
-				context.parserPlayground.parser = new parserClass();
+				var pp = context.parserPlayground;
+				pp.parser = new parserClass();
+				// hack
+				if (pp.parser instanceof MediaWikiParser) {
+					pp.serializer = pp.parser;
+					pp.renderer = pp.parser;
+				} else {
+					pp.serializer = new MWTreeSerializer();
+					pp.renderer = new MWTreeRenderer();
+				}
 				context.parserPlayground.fn.initDisplay();
 				$.cookie('pp-editmode', className, {
 					expires: 30,
@@ -152,13 +159,12 @@ $(document).ready( function() {
 			}
 		};
 		addParserModes(listItems, MediaWikiParser, 'MediaWikiParser');
-		addParserModes(listItems, FakeParser, 'FakeParser');
 		addParserModes(listItems, PegParser, 'PegParser', '<p>Peg-based parser plus FakeParser\'s output. <a href="http://pegjs.majda.cz/documentation">pegjs documentation</a>; edit and reselect to reparse with updated parser</p>');
 
 		window.setTimeout(function() {
 			var context = editor.data('wikiEditor-context');
 			var pp = context.parserPlayground = {
-				parser: new FakeParser(),
+				parser: undefined,
 				tree: undefined,
 				useInspector: false,
 				fn: {
@@ -196,7 +202,7 @@ $(document).ready( function() {
 								pp.treeMap.put( node, el );
 							});
 						}
-						pp.parser.treeToHtml(pp.tree, function(node, err) {
+						pp.renderer.treeToHtml(pp.tree, function(node, err) {
 							var $dest = context.$parserContainer.find('div');
 							$dest.empty().append(node);
 							context.parserPlayground.fn.setupEditor(context.$parserContainer);
@@ -224,7 +230,7 @@ $(document).ready( function() {
 							pp.fn.hide();
 						};
 						if (pp.parser && pp.tree) {
-							pp.parser.treeToSource( pp.tree, function( src, err ) {
+							pp.serializer.treeToSource( pp.tree, function( src, err ) {
 								context.$textarea.val( src );
 								finish();
 							});
@@ -257,8 +263,7 @@ $(document).ready( function() {
 							var node = $(this).data('parseNode');
 							if ( node ) {
 								// Ok, not 100% kosher right now but... :D
-								var parser = context.parserPlayground.parser;
-								parser.treeToSource(node, function(src, err) {
+								pp.serializer.treeToSource(node, function(src, err) {
 									//alert( src );
 									pp.sel = {
 										node: node,
