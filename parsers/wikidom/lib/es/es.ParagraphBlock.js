@@ -31,20 +31,20 @@ ParagraphBlock.prototype.updateText = function() {
  */
 ParagraphBlock.prototype.insertContent = function( offset, content ) {
 	var lineOffset = 0;
-	if ( offset === 0 && this.lines.length ) {
-		this.lines[0].text = content.toString() + this.lines[0].text;
-	} else {
-		for ( var i = 0; i < this.lines.length; i++ ) {
-			if ( this.lines[i].text.length < offset - lineOffset ) {
+	
+	for ( var i = 0; i < this.lines.length; i++ ) {
+		if( this.lines[i].text.length > offset - lineOffset ) {
 				this.lines[i].text = this.lines[i].text.substring( 0, offset - lineOffset )
 					+ content.toString()
 					+ this.lines[i].text.substring( offset - lineOffset )
 				break;
-			}
-			lineOffset += line.text.length;
+			
 		}
+		lineOffset += this.lines[i].text.length;
 	}
+
 	this.updateText();
+	this.flow.render();
 };
 
 /**
