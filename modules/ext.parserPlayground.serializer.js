@@ -98,7 +98,7 @@ MWTreeSerializer.prototype.treeToSource = function(tree, callback) {
 					if ('name' in param) {
 						src += param.name + '=';
 					}
-					src += param.contents;
+					src += subParseArray(param.contents);
 				}
 			}
 			src += '}}';

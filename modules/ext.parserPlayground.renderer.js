@@ -23,6 +23,13 @@ MWTreeRenderer.prototype.treeToHtml = function(tree, callback, inspectorMap) {
 		});
 	};
 	var node;
+	if (typeof tree == "string") {
+		// hack
+		tree = {
+			type: 'text',
+			text: tree
+		}
+	}
 	switch (tree.type) {
 		case 'page':
 			// A sequence of block-level elements...
@@ -78,11 +85,16 @@ MWTreeRenderer.prototype.treeToHtml = function(tree, callback, inspectorMap) {
 			var t = $('<span class="parseNode template"></span>').text('{{' + tree.target);
 			if ('params' in tree) {
 				$.each(tree.params, function(i, param) {
-					var str = param.contents;
+					var str;
 					if ('name' in param) {
-						str = param.name + '=' + str;
+						str = param.name + '=';
+					} else {
+						str = '';
 					}
 					var p = $('<span></span>').text('|' + str);
+					if ('contents' in param && param.contents) {
+						subParseArray(param.contents, p);
+					}
 					t.append(p);
 				});
 			}

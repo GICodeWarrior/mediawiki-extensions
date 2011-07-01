@@ -177,7 +177,18 @@ template_param_name
   = h:( !"}}" x:([^=|]) { return x } )* { return h.join(''); }
 
 template_param_text
-  = h:( !"}}" x:([^|]) { return x } )* { return h.join(''); }
+  = template_param_text_chunk*
+/*  = h:( !"}}" x:([^|]) { return x } )* { return h.join(''); }*/
+
+template_param_text_chunk
+  = comment
+  / ref
+  / extlink
+  / template
+  / link
+  / bold
+  / italic
+  / !"}}" x:([^|]) { return x }
 
 link
   = "[[" target:link_target text:("|" link_text)* "]]" {
