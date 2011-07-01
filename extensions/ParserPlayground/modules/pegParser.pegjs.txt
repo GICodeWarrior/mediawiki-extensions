@@ -165,11 +165,11 @@ template_param
   = name:template_param_name "=" c:template_param_text {
   return {
     name: name,
-    contents: c
+    content: c
   };
 } / c:template_param_text {
   return {
-    contents: c
+    content: c
   };
 }
 

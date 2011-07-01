@@ -22,6 +22,16 @@ MWTreeRenderer.prototype.treeToHtml = function(tree, callback, inspectorMap) {
 			}, inspectorMap);
 		});
 	};
+	var extensionAttribute = function(node, name) {
+		var lname = name.toLowerCase();
+		var match = null;
+		$.each(node.params, function(i, param) {
+			if (param.name.toLowerCase() == lname) {
+				match = param;
+			}
+		});
+		return match ? match.text : null;
+	}
 	var node;
 	if (typeof tree == "string") {
 		// hack
@@ -107,9 +117,27 @@ MWTreeRenderer.prototype.treeToHtml = function(tree, callback, inspectorMap) {
 				// @fixme names etc?
 				if (self.context.refs === undefined) {
 					self.context.refs = [];
+					self.context.refsByName = {};
 				}
-				self.context.refs.push(tree);
-				var refNum = self.context.refs.length;
+				var refNum;
+				var name = extensionAttribute(tree, 'name');
+				if (name !== null && name in self.context.refsByName) {
+					// Already seen!
+					refNum = self.context.refsByName[name];
+					var origRef = self.context.refs[refNum - 1];
+					if ('content' in tree && tree.content && !('content' in origRef && origRef.content)) {
+						// Earlier one was empty; replace it with this one.
+						self.context.refs[refNum - 1] = tree;
+					}
+				} else {
+					// New one!
+					self.context.refs.push(tree);
+					refNum = self.context.refs.length;
+					if (name !== null) {
+						self.context.refsByName[name] = refNum;
+					}
+				}
+
 				var ref = $('<span class="ref parseNode">[</span>');
 				$('<a></a>')
 					.text(refNum + '')
@@ -127,6 +155,10 @@ MWTreeRenderer.prototype.treeToHtml = function(tree, callback, inspectorMap) {
 					var ref = $('<li class="ref parseNode" id="ref-' + i + '"></li>');
 					if ('content' in subtree) {
 						subParseArray(subtree.content, ref);
+					}
+					ref.data('parseNode', subtree); // assign the node for the tree inspector
+					if (inspectorMap) {
+						inspectorMap.put(subtree, ref[0]); // store for reverse lookup
 					}
 					references.append(ref);
 				});
