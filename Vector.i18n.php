@@ -160,10 +160,16 @@ $messages['ba'] = array(
  * @author ✓
  */
 $messages['bar'] = array(
-	'vector-desc' => 'Vabessarungen ån da Vektor-Benutzerowerflächen',
+	'vector' => "Vabesserrungen fyr d' Vector-Benutzerowerflächen",
+	'vector-desc' => 'Vabesserrungen an da Vektor-Benutzerowerflächen',
+	'vector-collapsiblenav-preference' => 'Zåmmkloppm vo Elemente im Navigazionsmenü vo da Benutzerowerflächen Vector aktivirn',
+	'vector-collapsiblenav-more' => 'Weiderne Sproochen',
+	'vector-editwarning-warning' => "'s Valossen vo derer Seiten kå dodazua fyrn, daas d' Änderrungen valurn geengan.
+Ois ågmödter Benutzer kå's Åzoang vo derer Warnung im \"Beorweiten\"-Bereich vo de Eistellungen obgschoiden wern.",
+	'vector-editwarning-preference' => ' A Warung geem, sofern a zur da Beorweitung geffnate Seiten valossen werd, de ned gspeicherde Änderrungen enthoit.',
 	'vector-simplesearch-search' => 'Suach',
 	'vector-simplesearch-containing' => 'Voitextsuach noch ...',
-	'vector-noexperiments-preference' => 'Ned an Funktions-Experimentn teilnemma',
+	'vector-noexperiments-preference' => 'Ned an Funkzions-Experimenten teilnemmer',
 );
 
 /** Belarusian (Беларуская)
