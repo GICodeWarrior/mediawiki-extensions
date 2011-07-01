@@ -10,7 +10,12 @@ class DumpBinaryCountMetric extends ApiAnalyticsBase {
 	}
 
 	protected function getQueryInfo() {
-		return array();
+		return array(
+			'table' => array(),
+			'conds' => array(),
+			'options' => array(),
+			'join_conds' => array(),
+		);
 	}
 
 	protected function getQueryFields() {

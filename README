@@ -25,7 +25,7 @@ class BalloonsPerWikipedianMetric extends ApiAnalyticsBase {
 			'table' => array(),
 			'conds' => array(),
 			'options' => array(),
-			'join_conds' => array() ),
+			'join_conds' => array(),
 		);
 	}
 
