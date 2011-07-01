@@ -66,6 +66,10 @@ MWTreeRenderer.prototype.treeToHtml = function(tree, callback, inspectorMap) {
 			var h = $('<h' + tree.level + ' class="parseNode"></h' + tree.level + '>').text(tree.text);
 			node = h[0];
 			break;
+		case 'b':
+			var h = $('<b class="parseNode"></b>').text(tree.text); // hack -- use contents[]
+			node = h[0];
+			break;
 		case 'i':
 			var h = $('<i class="parseNode"></i>').text(tree.text); // hack -- use contents[]
 			node = h[0];
@@ -128,6 +132,10 @@ MWTreeRenderer.prototype.treeToHtml = function(tree, callback, inspectorMap) {
 				callback(null, 'Unrecognized extension in parse tree');
 				return;
 			}
+			break;
+		case 'comment':
+			var h = $('<span class="parseNode comment"></span>').text('<!--' + tree.text + '-->');
+			node = h[0];
 			break;
 		default:
 			callback(null, 'Unrecognized parse tree node');

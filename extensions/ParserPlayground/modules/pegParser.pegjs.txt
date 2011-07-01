@@ -13,8 +13,8 @@ newline
   = [\n]
 
 block
-  = h
-  / br
+  = br
+  / h
   / para
 
 h = h1 / h2 / h3 / h4 / h5 / h6
@@ -77,7 +77,8 @@ br
   = newline { return {type: 'br'} }
 
 para
-  = c:inline newline { return {type: 'para', content: c } }
+  = c:inline newline { return {type: 'para', content: c } } /
+    c:anything
 
 inline
   = c:inline_element+ {
@@ -107,12 +108,26 @@ inline
 }
 
 inline_element
-  = ref
+  = comment
+  / ref
   / extlink
   / template
   / link
+  / bold
   / italic
   / anything
+
+comment
+  = '<!--' c:comment_chars+ '-->' {
+	return {
+		type: 'comment',
+		text: c.join('')
+	}
+}
+
+comment_chars
+  = c:[^-] { return c; }
+  / c:'-' !'-' { return c; }
 
 inline_text_run
   = c:[^\n]+ { return c.join(''); }
@@ -182,6 +197,19 @@ link_target
 link_text
   = h:( !"]]" x:(anything) { return x } )* { return h.join(''); }
 
+bold
+  = bold_marker c:bold_text bold_marker {
+  return {
+    type: 'b',
+    text: c,
+  }
+}
+
+bold_marker
+  = "'''"
+
+bold_text
+  = h:( !bold_marker x:(anything) { return x } )+ { return h.join(''); }
 
 italic
   = italic_marker c:italic_text italic_marker {
