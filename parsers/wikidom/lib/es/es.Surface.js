@@ -14,11 +14,10 @@ function Surface( $container, document ) {
 		var $target = $( e.target );
 		$block = $target.is( '.editSurface-block' ) ? $target : $target.closest( '.editSurface-block' ),
 		block = $block.data( 'block' );
-		var position = new Position(e.pageX - $(e.target).offset().left, $(e.target).offset().top);
+		var position = new Position(e.pageX - $block.offset().left, e.pageY - $block.offset().top);
 		var offest = block.flow.getOffset( position );
-		block.insertContent(offest, '___!___');		
-
-		// setCursor(new Location(block, offset))
+		block.insertContent(offest, '___!___');
+		//this.setCursor(new Location(block, offset))
 	});
 }
 
