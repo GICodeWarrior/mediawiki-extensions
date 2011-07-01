@@ -47,7 +47,6 @@ class FindSettings extends Maintenance {
 	function execute() {
 		global $IP;
 
-		$coreSettings = ConfigurationSettings::singleton( CONF_SETTINGS_CORE );
 		if ( $this->hasOption( 'ext' ) ) {
 			$exts = ConfigurationSettings::singleton( CONF_SETTINGS_EXT )->getAllExtensionsObjects();
 			$ignoreList = array(
@@ -114,7 +113,7 @@ class FindSettings extends Maintenance {
 				$obsolete = array_diff( $allSettings, $definedSettings, $ignoreObsolete );
 				$missing = array();
 				foreach ( $remain as $setting ) {
-					if ( !$coreSettings->isSettingAvailable( $setting ) && !in_array( $setting, $ignoreList ) )
+					if ( !ConfigurationSettings::singleton( CONF_SETTINGS_CORE )->isSettingAvailable( $setting ) && !in_array( $setting, $ignoreList ) )
 						$missing[] = $setting;
 				}
 				if ( count( $missing ) == 0 && count( $obsolete ) == 0 ) {
@@ -142,7 +141,7 @@ class FindSettings extends Maintenance {
 					'wgOldChangeTagsIndex',
 				);
 			} else {
-				$allSettings = array_keys( $coreSettings->getAllSettings() );
+				$allSettings = array_keys( ConfigurationSettings::singleton( CONF_SETTINGS_CORE )->getAllSettings() );
 				$ignoreList = array(
 					'wgAPIListModules',            // Extensions only
 					'wgAPIMetaModules',            // Extensions only
@@ -209,7 +208,7 @@ class FindSettings extends Maintenance {
 
 			$obsolete = array();
 			foreach ( $remain as $setting ) {
-				if ( $coreSettings->isSettingAvailable( $setting ) )
+				if ( ConfigurationSettings::singleton( CONF_SETTINGS_CORE )->isSettingAvailable( $setting ) )
 					$obsolete[] = $setting;
 			}
 
