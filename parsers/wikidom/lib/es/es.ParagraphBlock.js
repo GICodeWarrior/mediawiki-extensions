@@ -101,16 +101,16 @@ ParagraphBlock.prototype.renderContent = function() {
  * @param position {Position} Position to translate
  */
 ParagraphBlock.prototype.getLocation = function( position ) {
-	throw 'ParagraphBlock.getLocation not implemented in this subclass.';
+	return this.flow.getOffset( position );
 };
 
 /**
  * Gets the position of a location.
  * 
- * @param location {Location} Location to translate
+ * @param offset {Integer} Offset to translate
  */
-ParagraphBlock.prototype.getPosition = function( location ) {
-	throw 'ParagraphBlock.getPosition not implemented in this subclass.';
+ParagraphBlock.prototype.getPosition = function( offset ) {
+	return this.flow.getPosition( offset );
 };
 
 extend( ParagraphBlock, Block );

@@ -94,8 +94,8 @@ Block.prototype.getLocation = function( position ) {
 /**
  * Gets the position of a location.
  * 
- * @param location {Location} Location to translate
+ * @param offset {Integer} Offset to translate
  */
-Block.prototype.getPosition = function( location ) {
+Block.prototype.getPosition = function( offset ) {
 	throw 'Block.getPosition not implemented in this subclass.';
 };

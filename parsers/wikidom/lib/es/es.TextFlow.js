@@ -44,7 +44,7 @@ TextFlow.prototype.escape = function( text ) {
  * @param y {Integer} Vertical position in pixels
  * @return {Integer} Offset within content nearest the given coordinates
  */
-TextFlow.prototype.getOffset = function( x, y ) {
+TextFlow.prototype.getOffset = function( position ) {
 	var line = 0,
 		lineCount = this.lines.length,
 		offset = 0,
@@ -61,13 +61,15 @@ TextFlow.prototype.getOffset = function( x, y ) {
 	 */
 	while ( line < lineCount ) {
 		bottom += lines[line].height;
-		if ( y >= top && y < bottom ) {
+		if ( position.y >= top && position.y < bottom ) {
 			offset = lines[line].start;
 			break;
 		}
 		top = bottom;
 		line++;
 	};
+	
+	// TODO: Find horizontal offset from position
 	
 	return offset;
 };

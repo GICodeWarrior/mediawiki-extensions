@@ -9,6 +9,15 @@ function Surface( $container, document ) {
 	this.document = document;
 	this.rendered = false;
 	this.render();
+	
+	this.$.mousedown(function(e) {
+		// what block is that? (from $(e.target).closest('.editSurface-block'))
+		// what offset is that?
+		// block.getOffset(
+		// 		new Position(e.pageX - $e.target).offset().left, e.pageY - $e.target).offset().top)
+		// )
+		// setCursor(new Location(block, offset))
+	});
 }
 
 /**
