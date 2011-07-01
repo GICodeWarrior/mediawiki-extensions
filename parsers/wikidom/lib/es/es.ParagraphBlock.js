@@ -47,46 +47,47 @@ ParagraphBlock.prototype.insertContent = function( offset, content ) {
 /**
  * Deletes content in a block within a range.
  * 
- * @param offset {Integer} Position to start removing content from
- * @param length {Integer} Length of content to remove
+ * @param offset {Integer} Offset to start removing content from
+ * @param length {Integer} Offset to start removing content to
  */
-ParagraphBlock.prototype.deleteContent = function( offset, length ) {
-	var start,
-		end,
+ParagraphBlock.prototype.deleteContent = function( start, end ) {
+	// Normalize start/end
+	if ( end < start ) {
+		var tmp = end;
+		end = start;
+		start = tmp;
+	}
+	var line,
+		length,
 		from,
-		to,
-		line,
-		lineOffset;
-	for ( var i = 0; i < this.lines.length; i++ ) {
+		to;
+	for ( var i = 0; i < this.lines.length || !(from && to); i++ ) {
 		line = this.lines[i];
-		start = offset - lineOffset;
-		end = start + length;
-		if ( start >= 0 && start < line.text.length) {
+		length = line.text.length;
+		if ( !from && start < length) {
 			from = {
 				'line': line,
 				'index': i,
 				'offset': start
 			};
 		}
-		if ( end >= 0 && end < line.text.length) {
+		if ( !to && end < length) {
 			to = {
 				'line': line,
 				'index': i,
 				'offset': end
 			};
 		}
-		lineOffset += line.text.length;
-	}
-	if ( !( from && to ) ) {
-		throw 'FAIL';
+		start -= length;
+		end -= length;
 	}
 	if ( from.index === to.index ) {
-		from.line.text = from.line.text.substring( 0, from.line.offset )
-			+ from.line.text.substring( to.line.offset );
+		from.line.text = from.line.text.substring( 0, from.offset )
+			+ from.line.text.substring( to.offset );
 	} else {
 		// Replace "from" line with remaining content of "from" and "to" lines
-		from.line.text = from.line.text.substring( 0, from.line.offset )
-			+ to.line.text.substring( to.line.offset );
+		from.line.text = from.line.text.substring( 0, from.offset )
+			+ to.line.text.substring( to.offset );
 		// Remove lines after "from" up to and including "to"
 		this.lines = this.lines.splice( from.index + 1, to.index - from.index );
 	}

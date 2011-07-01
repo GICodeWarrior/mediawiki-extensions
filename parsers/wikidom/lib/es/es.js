@@ -95,3 +95,21 @@ Selection.prototype.through = function() {
 	}
 	return through;
 };
+
+function Content( data ) {
+	this.setData( data );
+}
+
+Content.prototype.setData = function( data ) {
+	// Data type detection
+	if ( typeof data === 'string' ) {
+		this.type = 'string';
+	} else if ( $.isArray( data ) ) {
+		
+	} else if ( $.isPlainObject( data ) ) {
+		if ( 'type' in data && '' ) {
+			
+		}
+	}
+	this.data = data;
+};
