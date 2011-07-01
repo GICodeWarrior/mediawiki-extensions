@@ -31,20 +31,15 @@ ParagraphBlock.prototype.updateText = function() {
  */
 ParagraphBlock.prototype.insertContent = function( offset, content ) {
 	var lineOffset = 0;
-	if ( offset === 0 && this.lines.length ) {
-		this.lines[0].text = content.toString() + this.lines[0].text;
-	} else {
-		for ( var i = 0; i < this.lines.length; i++ ) {
-			if ( offset >= lineOffset && offset < lineOffset + this.lines[i].text.length ) {
-				this.lines[i].text = this.lines[i].text.substring( 0, offset - lineOffset )
-					+ content.toString()
-					+ this.lines[i].text.substring( offset - lineOffset )
-				break;
-			}
-			lineOffset += this.lines[i].text.length;
+	for ( var i = 0; i < this.lines.length; i++ ) {
+		if ( offset >= lineOffset && offset < lineOffset + this.lines[i].text.length ) {
+			this.lines[i].text = this.lines[i].text.substring( 0, offset - lineOffset )
+				+ content.toString()
+				+ this.lines[i].text.substring( offset - lineOffset )
+			break;
 		}
+		lineOffset += this.lines[i].text.length;
 	}
-
 	this.updateText();
 	this.flow.render();
 };
@@ -82,6 +77,9 @@ ParagraphBlock.prototype.deleteContent = function( offset, length ) {
 		}
 		lineOffset += line.text.length;
 	}
+	if ( !( from && to ) ) {
+		throw 'FAIL';
+	}
 	if ( from.index === to.index ) {
 		from.line.text = from.line.text.substring( 0, from.line.offset )
 			+ from.line.text.substring( to.line.offset );
@@ -93,6 +91,7 @@ ParagraphBlock.prototype.deleteContent = function( offset, length ) {
 		this.lines = this.lines.splice( from.index + 1, to.index - from.index );
 	}
 	this.updateText();
+	this.flow.render();
 };
 
 /**
