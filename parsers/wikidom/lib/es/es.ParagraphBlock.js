@@ -34,7 +34,7 @@ ParagraphBlock.prototype.insertContent = function( offset, content ) {
 	for ( var i = 0; i < this.lines.length; i++ ) {
 		if ( this.lines[i].text.length < offset - lineOffset ) {
 			this.lines[i].text = this.lines[i].text.substring( 0, offset - lineOffset )
-				+ content
+				+ content.toString()
 				+ this.lines[i].text.substring( offset - lineOffset )
 			break;
 		}
