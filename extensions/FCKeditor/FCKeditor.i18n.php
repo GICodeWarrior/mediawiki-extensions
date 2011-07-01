@@ -275,7 +275,7 @@ $messages['cs'] = array(
  * @author Umherirrender
  */
 $messages['de'] = array(
-	'fckeditor-desc' => 'Ermöglicht die Nutzung des WYSIWYG-Editors „CKEditor“',
+	'fckeditor-desc' => 'Ermöglicht die Nutzung des WYSIWYG-Editors CKEditor, vormals FCKeditor',
 	'textrichditor' => 'Mit dem Texteditor öffnen',
 	'prefs-fckeditor' => 'Texteditor',
 	'tog-riched_disable' => 'Texteditor deaktivieren',

@@ -656,10 +656,11 @@ $messages['su'] = array(
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author Najami
+ * @author WikiPhoenix
  */
 $messages['sv'] = array(
 	'purgecache' => 'Rensa cachen',
-	'purgecache-desc' => '[[Special:PurgeCache|Specialsida]] använd för att rensa OBJEKTCACHE-tabellen',
+	'purgecache-desc' => '[[Special:PurgeCache|Specialsida]] som används för att rensa OBJEKTCACHE-tabellen',
 	'purgecache-warning' => 'Detta rensar cachetabellerna.',
 	'purgecache-purged' => 'Cachen har rensats.',
 	'purgecache-button' => 'Rensa',

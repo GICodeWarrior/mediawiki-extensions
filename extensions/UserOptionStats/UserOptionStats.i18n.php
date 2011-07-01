@@ -718,10 +718,11 @@ $messages['sr-el'] = array(
 /** Swedish (Svenska)
  * @author Fluff
  * @author Per
+ * @author WikiPhoenix
  */
 $messages['sv'] = array(
 	'useroptionstats' => 'Statistik för användarinställningar',
-	'useroptionstats-desc' => '[[Special:UserOptionStats|Special page]] för rapport över användarinställnings användandet på MediaWiki',
+	'useroptionstats-desc' => '[[Special:UserOptionStats|Specialsida]] för rapportering om användandet av MediaWiki:s användarinställningar',
 	'uos-warn' => 'PHPlot är inte installerat!',
 	'uos-choose' => 'Välj en av följande inställningar: $1',
 	'uos-unknown' => '*Standard',

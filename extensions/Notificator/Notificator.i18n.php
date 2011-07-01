@@ -108,6 +108,15 @@ $messages['be-tarask'] = array(
 	'notificator-notified-already' => '$1 ужо паведамілі пра зьмены на старонцы ці саму старонку.',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'notificator-change-tag' => 'kemmañ',
+	'notificator-new-tag' => 'nevez',
+	'notificator-subject' => 'Danvez :',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

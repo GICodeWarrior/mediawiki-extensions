@@ -268,6 +268,23 @@ Quando o utilizador já tiver votado antes, será inicialmente mostrado o seu vo
 	'ratings-no-votes-yet' => 'Ainda não existem avaliações.',
 );
 
+/** Swedish (Svenska)
+ * @author WikiPhoenix
+ */
+$messages['sv'] = array(
+	'ratings-desc' => 'Tillåter användare betygsätta olika "egenskaper" av sidor',
+	'right-rate' => 'Betygsätt en viss egenskap för en sida',
+	'ratings-starsratings-desc' => 'Visar en enkel stjärnklassificeringskontroll som tillåter användaren att betygsätta en viss egenskap för en sida.
+Den aktuella omröstningen av användaren visas först när han redan röstat.',
+	'ratings-par-page' => 'Sidan betygsättningen gäller för.',
+	'ratings-par-tag' => 'Betyget-taggen. Taggen anger vilken "egenskap" av sidan som blir betygsatt.',
+	'ratings-par-showdisabled' => 'Visa betyg när användaren inte kan rösta (i skrivskyddat läge).',
+	'ratings-par-incsummary' => 'Visa en sammanfattning av de aktuella rösterna ovanför betygselementet?',
+	'ratings-votesummary-desc' => 'Visar en kort sammanfattning av rösterna för den angivna sidan och egenskapspar.',
+	'ratings-current-score' => 'Aktuellt användarbetyg: $1 ($2 {{PLURAL:$2|betyg|betyg}})',
+	'ratings-no-votes-yet' => 'Ingen har betygsatt detta ännu.',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

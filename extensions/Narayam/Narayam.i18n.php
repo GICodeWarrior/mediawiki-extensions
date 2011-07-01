@@ -1020,6 +1020,13 @@ $messages['sr-ec'] = array(
 	'narayam-bn-nkb' => 'Званични распоред за бенгалски',
 );
 
+/** Swedish (Svenska)
+ * @author WikiPhoenix
+ */
+$messages['sv'] = array(
+	'narayam-desc' => 'Gör det möjligt att lägga till egna inmatningsmetoder för inmatningsfält',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  * @author రహ్మానుద్దీన్
