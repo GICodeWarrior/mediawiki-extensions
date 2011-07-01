@@ -62,16 +62,27 @@ TextFlow.prototype.getOffset = function( position ) {
 	while ( line < lineCount ) {
 		bottom += lines[line].height;
 		if ( position.y >= top && position.y < bottom ) {
-			offset = lines[line].start;
 			break;
 		}
 		top = bottom;
 		line++;
 	};
 	
-	// TODO: Find horizontal offset from position
+	/*
+	 * Offset finding
+	 * 
+	 * Now that we know which line we are on, we can just use the "fitCharacters" method to get the
+	 * last offset before "position.x".
+	 * 
+	 * TODO: The offset needs to be chosen based on nearest offset to the cursor, not offset before
+	 * the cursor.
+	 */
+	var $ruler = $( '<div class="editSurface-line"></div>' ).appendTo( this.$ )
+		ruler = $ruler[0],
+		fit = this.fitCharacters( lines[line].start, lines[line].end, ruler, position.x );
+	$ruler.remove();
 	
-	return offset;
+	return fit.end;
 };
 
 /**
@@ -213,9 +224,8 @@ TextFlow.prototype.render = function( offset ) {
 	 * inconsistencies between browsers and box models, we can just create an element inside the
 	 * container and measure it.
 	 */
-	var $ruler = $( '<div>&nbsp;</div>' ).appendTo( this.$ );
-	var width = $ruler.innerWidth()
-	$ruler.remove();
+	var $ruler = $( '<div>&nbsp;</div>' ).appendTo( this.$ ),
+		width = $ruler.innerWidth()
 	
 	// Ignore offset optimization if the width has changed or the text has never been flowed before
 	if (this.width !== width) {
@@ -234,8 +244,7 @@ TextFlow.prototype.render = function( offset ) {
 		wordFit,
 		charOffset,
 		charFit,
-		$ruler = $( '<div class="editSurface-line"></div>' ).appendTo( this.$ ),
-		ruler = $ruler[0];
+		ruler = $ruler.addClass('editSurface-line')[0];
 	while ( wordOffset < this.boundaries.length ) {
 		wordFit = this.fitWords( wordOffset, this.words.length, ruler, width );
 		if ( wordFit.width > width ) {
