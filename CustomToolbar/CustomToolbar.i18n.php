@@ -1922,6 +1922,19 @@ $messages['myv'] = array(
 	'ct_submit' => 'Адя!',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'ct_bold_sample' => 'Vet-edrokken tekse',
+	'ct_bold_tip_ins' => 'Vet-edrokken tekse invoegen',
+	'ct_bold_tip_wrap' => 'Disse tekse vet-edrok maken',
+	'ct_bold_caption' => 'Vet-edrok',
+	'ct_italic_tip_ins' => 'Schunedrokken tekse invoegen',
+	'ct_italic_tip_wrap' => 'Disse tekse schunedrok maken',
+	'ct_italic_caption' => 'Schunedrok',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
