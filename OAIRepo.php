@@ -55,6 +55,13 @@ $oaiAudit = false;
  */
 $oaiAuditDatabase = false;
 
+/**
+ * Number of records to return in each ListRecords or ListIdentifiers request.
+ * Additional records will be available by making another request using the
+ * ResumptionToken returned.
+ */
+$oaiChunkSize = 50;
+
 $wgExtensionCredits['specialpage'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'OAIRepository',
