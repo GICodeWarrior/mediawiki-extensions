@@ -84,11 +84,11 @@ MWTreeRenderer.prototype.treeToHtml = function(tree, callback, inspectorMap) {
 			node = h[0];
 			break;
 		case 'b':
-			var h = $('<b class="parseNode"></b>').text(tree.text); // hack -- use contents[]
+			var h = $('<b class="parseNode"></b>').text(tree.text); // hack -- use content[]
 			node = h[0];
 			break;
 		case 'i':
-			var h = $('<i class="parseNode"></i>').text(tree.text); // hack -- use contents[]
+			var h = $('<i class="parseNode"></i>').text(tree.text); // hack -- use content[]
 			node = h[0];
 			break;
 		case 'template':
@@ -102,8 +102,8 @@ MWTreeRenderer.prototype.treeToHtml = function(tree, callback, inspectorMap) {
 						str = '';
 					}
 					var p = $('<span></span>').text('|' + str);
-					if ('contents' in param && param.contents) {
-						subParseArray(param.contents, p);
+					if ('content' in param && param.content) {
+						subParseArray(param.content, p);
 					}
 					t.append(p);
 				});
