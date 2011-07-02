@@ -1,6 +1,6 @@
 <?php
 
-class WikidataPageHistory extends PageHistory {
+class WikidataPageHistory extends HistoryPage {
 
 	public function history() {
   		wfProfileIn( __METHOD__ );
