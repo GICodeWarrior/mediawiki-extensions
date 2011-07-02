@@ -64,9 +64,9 @@ function addChildNodesToRows( TableHeaderNode $headerNode, &$rows, $currentDepth
 			$onclick = ' onclick= "' . $sort . '"';
 			if ( $leftmost ) {		# Are we the leftmost column?
 				$leftsort = EOL .
-					'<script type="text/javascript"> toSort("' .
+					'<script type="text/javascript"> jQuery( function() { toSort("' .
 					$idPath->getId() . '-h" , ' . $skipRows . ',' .
-					$columnIndex . '); </script>'
+					$columnIndex . ') } ); </script>'
 					. EOL;
 				$leftmost = False; 	# There can be only one.
 			}
