@@ -538,7 +538,8 @@ class OAIRepo {
 	}
 
 	function chunkSize() {
-		return 50;
+		global $oaiChunkSize;
+		return $oaiChunkSize;
 	}
 
 	function baseUrl() {
