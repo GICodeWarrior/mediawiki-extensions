@@ -51,6 +51,14 @@ $messages['qqq'] = array(
 	'player-goto-file' => '{{Identical|File}}',
 );
 
+/** ꢱꣃꢬꢵꢯ꣄ꢡ꣄ꢬꢵ (ꢱꣃꢬꢵꢯ꣄ꢡ꣄ꢬꢵ)
+ * @author MooRePrabu
+ */
+$messages['saz'] = array(
+	'player-play' => 'ꢮꢮ꣄ꢙꢶ',
+	'player-clicktoplay' => '$1 ꢮꢮ꣄ꢙꢶ',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj
