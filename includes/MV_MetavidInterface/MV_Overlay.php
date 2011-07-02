@@ -983,7 +983,7 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 		global $mvgIP, $wgOut;
 		$title = Title::newFromText( $titleKey, MV_NS_MVD );
 		$article = new Article( $title );
-		$pageHistoryAjax = new PageHistory( $article );
+		$pageHistoryAjax = new HistoryPage( $article );
 		// @@todo fix problems... ajax action url context !=history url context
 		// so forming urls for links get errors
 		$pageHistoryAjax->history();
