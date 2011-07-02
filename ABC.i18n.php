@@ -104,6 +104,13 @@ $messages['arz'] = array(
 	'abcdownload' => 'تنزيل:',
 );
 
+/** Assamese (অসমীয়া)
+ * @author Gitartha.bordoloi
+ */
+$messages['as'] = array(
+	'abcdownload' => 'ডাউনল’ড কৰক:',
+);
+
 /** Asturian (Asturianu)
  * @author Xuacu
  */
