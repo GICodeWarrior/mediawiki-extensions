@@ -8959,6 +8959,7 @@ $messages['ms'] = array(
 	'ow_Link' => 'Pautan',
 	'ow_LinkAttributeValues' => 'Pautan',
 	'ow_Value' => 'Nilai',
+	'ow_Permission_denied' => '<h2>Kebenaran ditolak</h2>',
 	'ow_class_attr_type_link' => 'Pautan',
 	'ow_create' => 'Cipta',
 	'ow_suggest_previous' => 'Sebelumnya',

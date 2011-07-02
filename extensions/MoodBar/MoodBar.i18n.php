@@ -79,6 +79,8 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'moodbar-desc' => 'Permite que os usuarios especificados envíen ao operador do sitio o seu "humor"',
+	'moodbar-trigger-using' => 'Usando $1...',
+	'moodbar-trigger-feedback' => 'Comentarios',
 );
 
 /** Hebrew (עברית)
