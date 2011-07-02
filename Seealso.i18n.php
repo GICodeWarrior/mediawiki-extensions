@@ -24,6 +24,13 @@ $messages['qqq'] = array(
 	'seealso-desc' => '{{desc}}',
 );
 
+/** ꢱꣃꢬꢵꢯ꣄ꢡ꣄ꢬꢵ (ꢱꣃꢬꢵꢯ꣄ꢡ꣄ꢬꢵ)
+ * @author MooRePrabu
+ */
+$messages['saz'] = array(
+	'seealso' => 'ꢌꢭ꣄ꢭꢾ ꢪꢾꢳ꣄ꢳꢶ ꢱꢮꣂ',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  * @author SPQRobin
