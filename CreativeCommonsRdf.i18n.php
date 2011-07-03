@@ -100,6 +100,13 @@ $messages['nl'] = array(
 	'creativecommonsrdf-desc' => 'Creative Commons RDF-metadata',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'creativecommonsrdf-desc' => 'Metadane RDF CreativeCommons',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
