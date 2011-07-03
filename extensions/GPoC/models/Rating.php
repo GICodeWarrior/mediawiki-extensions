@@ -50,26 +50,55 @@ class Rating {
 		// Rating has just been detected.
 		// So we can ignore $old_importance and $old_quality
 		$importance_column = Statistics::getImportanceColumn( $this->importance );
-		$project = $dbw->addQuotes($this->project);
-		$quality = $dbw->addQuotes($this->quality);
-		$query = "INSERT INTO project_stats (ps_project, ps_quality, $importance_column) ";
-		$query .= "VALUES ($project, $quality, 1) ";
-		$query .= "ON DUPLICATE KEY ";
-		$query .= "UPDATE $importance_column = $importance_column + 1 ";
+		$dbw->insert(
+			'project_stats',
+			array(
+				'ps_project' => $this->project,
+				'ps_quality' => $this->quality,
+				$importance_column => '0'
+			),
+			__METHOD__,
+			array( 'IGNORE' )
+		);
+		$dbw->update(
+			'project_stats',
+			array( "$importance_column = $importance_column + 1" ),
+			array( 
+				"ps_project" => $this->project,
+				"ps_quality" => $this->quality
+			),
+			__METHOD__
+		);
+
+		//FIXME: Needs cleaner logic for four combinations of what can change
+		//Just Importance, Just Quality, Neither and Both
+		//Currently, code fails for 'both'. 
 		if(! $is_new_rating  && ! empty( $this->old_importance ) ) {
 			$old_importance_column = Statistics::getImportanceColumn( $this->old_importance );
-			$query .= ", $old_importance_column = $old_importance_column - 1";
+			$dbw->update(
+				'project_stats',
+				array( "$old_importance_column = $old_importance_column - 1" ),
+				array( 
+					"ps_project" => $this->project,
+					"ps_quality" => $this->quality
+				),
+				__METHOD__	
+			);
 		}
-		$query .= ";";
-		$dbw->query($query);
 		if(! $is_new_rating && ! empty( $this->old_quality ) ) {
 			if(! isset($old_importance_column) ) {
 				$old_importance_column = $importance_column;
 			}
+			$dbw->update(
+				'project_stats',
+				array( "$old_importance_column = $old_importance_column - 1" ),
+				array( 
+					"ps_project" => $this->project,
+					"ps_quality" => $this->old_quality
+				),
+				__METHOD__	
+			);
 
-			$query = "UPDATE project_stats SET $old_importance_column = $old_importance_column - 1 ";
-			$query .= "WHERE ps_project = '$this->project' and ps_quality = '$this->old_quality';";
-			$dbw->query($query);
 		}
 	}
 	public function saveAll() {
