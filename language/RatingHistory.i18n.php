@@ -1582,21 +1582,39 @@ $messages['ml'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Aviator
  */
 $messages['ms'] = array(
 	'ratinghistory' => 'Sejarah penilaian laman',
-	'ratinghistory-leg' => 'Data sejarah penilaian',
+	'ratinghistory-leg' => 'Data sejarah penilaian untuk [[:$1|$1]]',
 	'ratinghistory-tab' => 'penilaian',
+	'ratinghistory-link' => 'Penilaian laman',
 	'ratinghistory-thanks' => "''<span style=\"color:darkred;\">Terima kasih kerana sudi meluangkan masa untuk memeriksa laman ini!</span>''",
 	'ratinghistory-period' => 'Tempoh masa:',
 	'ratinghistory-month' => 'bulan lepas',
+	'ratinghistory-3months' => '3 bulan lepas',
 	'ratinghistory-year' => 'tahun lepas',
 	'ratinghistory-3years' => '3 tahun lepas',
+	'ratinghistory-ave' => 'Purata: $1',
+	'ratinghistory-chart' => 'Penilaian oleh pembaca sepanjang masa',
+	'ratinghistory-purge' => 'kosongkan cache',
+	'ratinghistory-table' => 'Gambaran keseluruhan penilaian oleh pembaca',
+	'ratinghistory-users' => 'Pengguna yang memberikan penilaian',
+	'ratinghistory-graph' => '$2 "$3" ($1 ulasan)',
+	'ratinghistory-svg' => 'Lihat dalam bentuk SVG',
+	'ratinghistory-table-rating' => 'Penilaian',
+	'ratinghistory-table-votes' => 'Undian',
 	'ratinghistory-none' => 'Data maklum balas pembaca belum cukup untuk penghasilan graf.',
-	'ratinghistory-legend' => "Berikut ialah graf penilaian purata harian <span style=\"color:blue;\">''(biru)''</span> dan penilaian purata selang yang dipilih <span style=\"color:green;\">''(hijau)''</span> mengikut tarikh. Jumlah pemeriksaan ditunjukkan di bucu kanan atas. Nilai tinggi menandakan data sampel yang lebih baik. Berikut ialah pentafsiran tahap penilaian:
-
-'''[1]''' - Lemah, '''[2]''' - Rendah, '''[3]''' - Sederhana, '''[4]''' - Tinggi, '''[5]''' - Cemerlang",
+	'ratinghistory-ratings' => "'''Petunjuk:''' '''(1)''' - Lemah; '''(2)''' - Rendah; '''(3)''' - Sederhana; '''(4)''' - Tinggi; '''(5)''' - Cemerlang;",
+	'ratinghistory-legend' => "'''Jumlah ulasan harian''' <span style=\"color:red;\">''(merah)''</span>, '''purata penilaian harian''' <span style=\"color:blue;\">''(biru)''</span>,
+	dan '''purata penilaian berturut-turut''' <span style=\"color:green;\">''(hijau)''</span> digrafkan di bawah, mengikut tarikh.
+	'''Purata penilaian berturut-turut''' ialah purata bagi semua penilaian harian ''di dalam'' rangka masa ini untuk setiap hari.
+	Penilaiannya adalah seperti berikut:
+	
+	'''(1)''' - Lemah; '''(2)''' - Rendah; '''(3)''' - Sederhana; '''(4)''' - Tinggi; '''(5)''' - Cemerlang;",
+	'ratinghistory-graph-scale' => "'''Ulasan sehari''' <span style=\"color:red;\">''(red)''</span> ditunjukkan pada skala ''1:\$1''.",
+	'right-feedback' => 'Gunakan borang maklum balas untuk menilai laman',
 );
 
 /** Erzya (Эрзянь)
