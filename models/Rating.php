@@ -52,7 +52,6 @@ class Rating {
 		$this->saveAll();
 	}
 
-	// Note: Huge sql injection vector ahead. FIXME
 	private function updateAggregateStats( $is_new_rating ) {
 		if(! $is_new_rating && empty($this->old_importance) && empty($this->old_quality) ) {
 			return;
@@ -61,8 +60,10 @@ class Rating {
 		// Rating has just been detected.
 		// So we can ignore $old_importance and $old_quality
 		$importance_column = Rating::getImportanceColumn( $this->importance );
+		$project = $dbw->addQuotes($this->project);
+		$quality = $dbw->addQuotes($this->quality);
 		$query = "INSERT INTO project_stats (ps_project, ps_quality, $importance_column) ";
-		$query .= "VALUES ('$this->project', '$this->quality', 1) ";
+		$query .= "VALUES ($project, $quality, 1) ";
 		$query .= "ON DUPLICATE KEY ";
 		$query .= "UPDATE $importance_column = $importance_column + 1 ";
 		if(! $is_new_rating  && ! empty( $this->old_importance ) ) {
@@ -75,6 +76,7 @@ class Rating {
 			if(! isset($old_importance_column) ) {
 				$old_importance_column = $importance_column;
 			}
+
 			$query = "UPDATE project_stats SET $old_importance_column = $old_importance_column - 1 ";
 			$query .= "WHERE ps_project = '$this->project' and ps_quality = '$this->old_quality';";
 			$dbw->query($query);
