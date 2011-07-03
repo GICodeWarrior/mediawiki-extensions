@@ -346,10 +346,13 @@ $messages['ksh'] = array(
 $messages['lb'] = array(
 	'svgedit-editbutton-edit' => 'Zeechnung änneren',
 	'svgedit-summary-label' => 'Resumé vun der Ännerung',
+	'svgedit-summary-default' => '/* Mat svg-edit geännert */',
 	'svgedit-editor-save-close' => 'Späicheren an zoumaachen',
 	'svgedit-editor-close' => 'Annulléieren',
 	'svgedit-desc' => 'Ännere vun SVG Zeechnungen am Browser mat [http://code.google.com/p/svg-edit/ SVG-Edit]',
 	'svgedit-edit-tab' => 'Zeechnung änneren',
+	'svgedit-edit-tab-tooltip' => 'Dir kënnt dës SVG-Zeechnung an Ärem Browser änneren',
+	'svgedit-toolbar-insert' => 'SVG-Zeechnung',
 );
 
 /** Macedonian (Македонски)
