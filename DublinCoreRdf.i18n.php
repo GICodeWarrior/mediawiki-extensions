@@ -100,6 +100,13 @@ $messages['nl'] = array(
 	'dublincorerdf-desc' => 'Dublin Core RDF-metadata',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'dublincorerdf-desc' => 'Metadane RDF Dublin Core',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
