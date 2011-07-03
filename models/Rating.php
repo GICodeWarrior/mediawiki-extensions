@@ -1,5 +1,7 @@
 <?php
 
+require_once "Statistics.php";
+
 /**
  * Represents an article and associated rating 
  **/
@@ -15,18 +17,6 @@ class Rating {
 	private $old_importance;
 	private $old_quality;
 	private $inDB = false;
-
-	private static function getImportanceColumn( $importance ) {
-		$importanceColumnMapping = array(
-			'top' => 'ps_top_icount',
-			'high' => 'ps_high_icount',
-			'mid' => 'ps_mid_icount',
-			'low' => 'ps_mid_icount',
-			'no' => 'ps_no_icount',
-			'' => 'ps_unclassified_icount'
-		);
-		return $importanceColumnMapping[ strtolower( $importance ) ];
-	}
 
 	public function __construct( $project, $namespace, $title, $quality, $quality_timestamp, $importance, $importance_timestamp ) {
 		$this->project = $project;
@@ -59,7 +49,7 @@ class Rating {
 		$dbw = wfGetDB( DB_MASTER );
 		// Rating has just been detected.
 		// So we can ignore $old_importance and $old_quality
-		$importance_column = Rating::getImportanceColumn( $this->importance );
+		$importance_column = Statistics::getImportanceColumn( $this->importance );
 		$project = $dbw->addQuotes($this->project);
 		$quality = $dbw->addQuotes($this->quality);
 		$query = "INSERT INTO project_stats (ps_project, ps_quality, $importance_column) ";
@@ -67,7 +57,7 @@ class Rating {
 		$query .= "ON DUPLICATE KEY ";
 		$query .= "UPDATE $importance_column = $importance_column + 1 ";
 		if(! $is_new_rating  && ! empty( $this->old_importance ) ) {
-			$old_importance_column = Rating::getImportanceColumn( $this->old_importance );
+			$old_importance_column = Statistics::getImportanceColumn( $this->old_importance );
 			$query .= ", $old_importance_column = $old_importance_column - 1";
 		}
 		$query .= ";";
@@ -116,7 +106,6 @@ class Rating {
 			$this->updateAggregateStats( true );
 			$this->inDB = true;
 		}
-
 	}
 
 	public static function forTitle( $title ) {
@@ -147,4 +136,4 @@ class Rating {
 		}
 		return $ratings;
 	}
-}       
+}
