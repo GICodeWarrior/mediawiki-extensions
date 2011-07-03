@@ -285,6 +285,15 @@ $messages['mk'] = array(
 	'pdfbook-desc' => 'Составува книга од страници во извесна категорија и ја извезува во PDF-формат',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'pdfbook-action' => 'Cetak dalam bentuk PDF',
+	'pdfbook-log' => '$1 dieksport dalam bentuk buku PDF',
+	'pdfbook-desc' => 'Mengarang buku daripada laman-laman dalam satu kategori lalu mengeksportnya dalam bentuk buku PDF',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
