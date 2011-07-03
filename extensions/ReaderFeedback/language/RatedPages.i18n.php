@@ -530,12 +530,16 @@ $messages['ml'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Aviator
  */
 $messages['ms'] = array(
+	'ratedpages' => 'Laman yang dinilai oleh pembaca',
+	'ratedpages-leg' => 'Cari laman yang cukup bilangan penilaiannya',
 	'ratedpages-list' => 'Yang berikut ialah senarai laman mengikut tertib penilaian pembaca.',
 	'ratedpages-none' => 'Tiada laman dalam senarai ini',
 	'ratedpages-graphs' => 'data penilaian',
+	'ratedpages-count' => '$1 ulasan',
 );
 
 /** Erzya (Эрзянь)

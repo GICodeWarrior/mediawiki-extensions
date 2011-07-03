@@ -612,7 +612,9 @@ $messages['fa'] = array(
 	'mwe-clipedit-layout_left' => 'چیدمان تصویر سمت چپ',
 );
 
-/** Finnish (Suomi) */
+/** Finnish (Suomi)
+ * @author Silvonen
+ */
 $messages['fi'] = array(
 	'mwe-clipedit-crop' => 'Rajaa kuva',
 	'mwe-clipedit-apply_crop' => 'Käytä rajausta kuvaan',
@@ -626,6 +628,8 @@ $messages['fi'] = array(
 	'mwe-clipedit-edit_properties' => 'Muokkaa ominaisuuksia',
 	'mwe-clipedit-start_time' => 'Aloitusaika',
 	'mwe-clipedit-end_time' => 'Lopetusaika',
+	'mwe-clipedit-edit-tools' => 'Muokkaustyökalut',
+	'mwe-clipedit-duration' => 'Kesto:',
 );
 
 /** French (Français)

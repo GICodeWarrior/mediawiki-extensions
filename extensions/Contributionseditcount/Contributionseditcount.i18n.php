@@ -457,6 +457,14 @@ $messages['mr'] = array(
 	'contributionseditcount-desc' => '[[Special:Contributions]] वर संपादन संख्या दर्शविते',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'contributionseditcount' => 'Pengguna ini telah membuat {{PLURAL:$1|satu suntingan|$1 suntingan}}.',
+	'contributionseditcount-desc' => 'Memaparkan kiraan suntingan di [[Special:Contributions|laman sumbangan pengguna]]',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

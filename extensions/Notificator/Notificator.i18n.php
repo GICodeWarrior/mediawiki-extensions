@@ -225,10 +225,15 @@ $messages['ia'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'notificator' => 'Notificator',
 	'notificator-e-mail-address' => 'E-Mailadress',
+	'notificator-notify' => 'Informéieren',
+	'notificator-notify-address-or-name' => '$1 informéieren',
 	'notificator-return-to' => 'Zréck op',
+	'notificator-notification-not-sent' => "D'Informatioun gouf net geschéckt.",
 	'notificator-change-tag' => 'Ännerung',
 	'notificator-new-tag' => 'nei',
+	'notificator-following-e-mail-sent-to' => 'Dës Mail gouf un den $1 geschéckt:',
 	'notificator-subject' => 'Sujet:',
 	'notificator-error-parameter-missing' => 'Feeler: Parameter feelt.',
 );

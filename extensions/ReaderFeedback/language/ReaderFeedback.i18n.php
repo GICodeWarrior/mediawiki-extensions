@@ -1785,6 +1785,7 @@ $messages['mn'] = array(
  * @author Aviator
  */
 $messages['ms'] = array(
+	'readerfeedback-desc' => 'Pengesahan laman yang membolehkan pembaca untuk memberikan maklum balas dalam bentuk penilaian kategori',
 	'readerfeedback' => 'Apakah pandangan anda mengenai laman ini?',
 	'readerfeedback-text' => "''Sila luangkan sedikit masa untuk memberi penilaian kepada laman ini. Maklum balas anda amatlah dihargai dan diperlukan untuk memperbaiki tapak web kami.''",
 	'readerfeedback-reliability' => 'Kebolehpercayaan',
@@ -1792,6 +1793,7 @@ $messages['ms'] = array(
 	'readerfeedback-npov' => 'Kekecualian',
 	'readerfeedback-presentation' => 'Persembahan',
 	'readerfeedback-overall' => 'Keseluruhan',
+	'readerfeedback-level-none' => '(tidak pasti)',
 	'readerfeedback-level-0' => 'Lemah',
 	'readerfeedback-level-1' => 'Rendah',
 	'readerfeedback-level-2' => 'Sederhana',
@@ -1799,12 +1801,19 @@ $messages['ms'] = array(
 	'readerfeedback-level-4' => 'Cemerlang',
 	'readerfeedback-submit' => 'Hantar',
 	'readerfeedback-main' => 'Hanya laman kandungan boleh diberi penilaian.',
-	'readerfeedback-success' => "'''Terima kasih kerana memeriksa laman ini!''' Keputusan maklum balas pembaca bagi laman '''$1''' boleh dilihat di $2.",
-	'readerfeedback-voted' => "'''Anda telah pun memberi penilaian untuk laman ini.'''
-Keputusan maklum balas pembaca bagi laman '''$1''' boleh dilihat di $2.",
+	'readerfeedback-success' => "'''Terima kasih kerana mengulas laman ini!''' ([$2 lihat hasil]) ([$3 ada komen atau soalan?]).",
+	'readerfeedback-voted' => "'''Nampaknya anda sudah menilai laman ini''' ([$2 lihat hasil]) ([$3 ada komen atau soalan?]).",
+	'readerfeedback-error' => "'''Berlakunya ralat ketika menilai laman ini''' ([$2 lihat hasil]) ([$3 ada komen atau soalan?]).",
 	'readerfeedback-submitting' => 'Menyerah...',
 	'readerfeedback-finished' => 'Terima kasih!',
+	'readerfeedback-tagfilter' => 'Tag:',
+	'readerfeedback-tierfilter' => 'Penilaian:',
+	'readerfeedback-tier-high' => 'Tinggi',
+	'readerfeedback-tier-medium' => 'Sederhana',
+	'readerfeedback-tier-poor' => 'Lemah',
 	'tooltip-ca-ratinghist' => 'Penilaian pembaca',
+	'specialpages-group-feedback' => 'Pendapat pembaca',
+	'readerfeedback-tt-review' => 'Serahkan ulasan',
 );
 
 /** Erzya (Эрзянь)

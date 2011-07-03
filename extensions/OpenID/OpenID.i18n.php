@@ -4373,7 +4373,7 @@ $messages['pdt'] = array(
  */
 $messages['pl'] = array(
 	'openid-desc' => 'Logowanie się do wiki z użyciem [http://openid.net/ OpenID], oraz logowanie się do innych witryn używających OpenID z użyciem konta użytkownika z wiki',
-	'openidlogin' => 'Zaloguj używając OpenID',
+	'openidlogin' => 'Zaloguj lub utwórz konto korzystając z OpenID',
 	'openidserver' => 'Serwer OpenID',
 	'openidxrds' => 'Plik Yadis',
 	'openidconvert' => 'Obsługa OpenID',
@@ -4389,9 +4389,13 @@ Skonsultuj to z [[Special:ListUsers/sysop|administratorem]].',
 	'openidfailure' => 'Weryfikacja nie powiodła się',
 	'openidfailuretext' => 'Weryfikacja adresu URL OpenID nie powiodła się. Komunikat o błędzie – „$1”',
 	'openidsuccess' => 'Weryfikacja udana',
-	'openidsuccesstext' => 'Zweryfikowano adres URL OpenID.',
+	'openidsuccesstext' => "'''Zweryfikowano i zalogowano użytkownika $1'''.
+
+Twój OpenID to $2 .
+
+Tym i innymi OpenID oraz ewentualnym hasłem konta, możesz zarządzać w swoich [[Special:Preferences|preferencjach]].",
 	'openidusernameprefix' => 'UżytkownikOpenID',
-	'openidserverlogininstructions' => 'Wpisz swoje hasło, aby zalogować się do $3 jako użytkownik $2 (strona użytkownika $1).',
+	'openidserverlogininstructions' => '$3 zażądało abyś podał hasło użytkownika $2 strona $1 (to jest Twój OpenID adres URL).',
 	'openidtrustinstructions' => 'Sprawdź, czy chcesz wymieniać informacje z $1.',
 	'openidallowtrust' => 'Zezwól $1 na użycie tego konta użytkownika.',
 	'openidnopolicy' => 'Witryna nie ma określonej polityki prywatności.',
@@ -4403,7 +4407,7 @@ Skonsultuj to z [[Special:ListUsers/sysop|administratorem]].',
 	'openidemail' => 'Adres e‐mail',
 	'openidlanguage' => 'Język',
 	'openidtimezone' => 'Strefa czasowa',
-	'openidchooselegend' => 'Wybór nazwy użytkownika',
+	'openidchooselegend' => 'Wybór nazwy użytkownika i konta',
 	'openidchooseinstructions' => 'Wszyscy użytkownicy muszą mieć pseudonim.
 Możesz wybrać spośród propozycji podanych poniżej.',
 	'openidchoosenick' => 'Twoja nazwa konta użytkownika ($1)',
@@ -4420,9 +4424,7 @@ Możesz wybrać spośród propozycji podanych poniżej.',
 	'openidconvertsuccesstext' => 'Zmieniłeś swoje OpenID na $1.',
 	'openidconvertyourstext' => 'Już masz swój OpenID.',
 	'openidconvertothertext' => 'To jest OpenID należące do kogoś innego.',
-	'openidalreadyloggedin' => "'''Jesteś już zalogowany jako $1!'''
-
-Jeśli chcesz w przyszłości używać OpenID do logowania się, możesz [[Special:OpenIDConvert|przełączyć konto na korzystanie z OpenID]].",
+	'openidalreadyloggedin' => 'Jesteś już zalogowany.',
 	'openidnousername' => 'Nie wybrano żadnej nazwy użytkownika.',
 	'openidbadusername' => 'Wybrano nieprawidłową nazwę użytkownika.',
 	'openidautosubmit' => 'Strona zawiera formularz, który powinien zostać automatycznie przesłany jeśli masz włączoną obsługę JavaScript.
@@ -5212,7 +5214,7 @@ Posvetujte se z [[Special:ListUsers/sysop|administratorjem]].',
 
 Vaš OpenID je $2 .
 
-Ta in nadaljne OpenID-je ter izbirno geslo računa lahko upravljate v svojih [[Special:Preferences|nastavitvah]].",
+Ta in nadaljnje OpenID-je ter izbirno geslo računa lahko upravljate v svojih [[Special:Preferences|nastavitvah]].",
 	'openidusernameprefix' => 'UporabnikOpenID',
 	'openidserverlogininstructions' => '$3 zahteva, da vnesete svoje geslo za vašega uporabnika $2, stran $1 (URL OpenID).',
 	'openidtrustinstructions' => 'Označite, če želite deliti podatke s $1.',
