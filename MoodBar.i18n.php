@@ -106,6 +106,8 @@ $messages['ia'] = array(
  */
 $messages['lb'] = array(
 	'moodbar-desc' => 'Erméiglecht et spezifesche Benotzer fir dem Responsabele vum Site hir Stëmmung ze schécken',
+	'moodbar-trigger-using' => 'Benotzt $1...',
+	'moodbar-trigger-feedback' => 'Feedback',
 );
 
 /** Macedonian (Македонски)
