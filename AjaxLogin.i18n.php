@@ -731,6 +731,7 @@ $messages['ko'] = array(
 계정 이름은 대소문자를 구별합니다.
 철자를 다시 확인해보십시오.',
 	'al-createblocked' => '당신의 IP 주소로 계정을 생성하는 것은 차단되어 있습니다.',
+	'al-throttled' => '짧은 시간동안 비밀번호 입력 시도를 너무 많이 했습니다. 다시 시도하기 전에 $1초간 기다려주세요.',
 );
 
 /** Colognian (Ripoarisch)
@@ -977,6 +978,8 @@ Możesz stracić zmiany które zrobiłeś na tej stronie, jeśli ją teraz opuś
 	'al-nosuchuser' => 'Brak użytkownika o nazwie „$1”.
 W nazwie użytkownika ma znaczenie wielkość znaków.
 Sprawdź czy poprawnie napisałeś.',
+	'al-createblocked' => 'Zablokowano możliwość utworzenia konta z Twojego adresu IP.',
+	'al-throttled' => 'Wykonałeś zbyt wiele prób wprowadzenia hasła. Musisz odczekać $1 {{PLURAL:$1|sekundę|sekundy|sekund}} zanim spróbujesz ponownie.',
 );
 
 /** Piedmontese (Piemontèis)
