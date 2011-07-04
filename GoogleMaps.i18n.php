@@ -4338,8 +4338,9 @@ $wgGoogleMapsMessages['or'] = array(
 	'gm-search' => 'ଖୋଜିବା',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
+ * @author Bouron
  */
 $wgGoogleMapsMessages['os'] = array(
 	'gm-balloon-title' => 'Сæргонд',
@@ -4353,7 +4354,7 @@ $wgGoogleMapsMessages['os'] = array(
 	'gm-no-zoom-control' => 'Нæй',
 	'gm-yes' => 'О',
 	'gm-no' => 'Нæ',
-	'gm-search' => 'Агур',
+	'gm-search' => 'Агурын',
 	'gm-save-path' => 'Афтæ уæд',
 	'gm-line-width' => 'Уæрх',
 );
