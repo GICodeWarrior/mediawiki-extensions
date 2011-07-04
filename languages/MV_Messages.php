@@ -8149,13 +8149,13 @@ $messages['or'] = array(
 	'mv_history' => 'ଇତିହାସ',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  * @author Bouron
  */
 $messages['os'] = array(
 	'mv_upload_file' => 'Ног файл сæвæр',
-	'mv_tool_search' => 'Агур',
+	'mv_tool_search' => 'Агурын',
 	'mv_edit' => 'Ивын',
 	'mv_history' => 'Истори',
 	'mv_adjust_preview_stop' => 'Разæркаст бауром',
