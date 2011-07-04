@@ -1241,11 +1241,12 @@ $messages['or'] = array(
 	'editmsg-search' => 'ଖୋଜିବା',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
+ * @author Bouron
  */
 $messages['os'] = array(
-	'editmsg-search' => 'Агур',
+	'editmsg-search' => 'Агурын',
 );
 
 /** Deitsch (Deitsch)
