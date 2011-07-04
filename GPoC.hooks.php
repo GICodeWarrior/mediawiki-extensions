@@ -12,9 +12,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	exit( 1 );
 }
 
-require_once "AssessmentsExtractor.php";
-require_once "models/Rating.php";
-
 class GPoCHooks {
 
 	private static function updateDatabase( $title, $assessments, $timestamp ) {
