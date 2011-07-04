@@ -20,8 +20,13 @@ if( !defined( 'MEDIAWIKI' ) ) {
 $dir = dirname( __FILE__ ) . '/';
 
 $wgAutoloadClasses['GPoCHooks'] = $dir . 'GPoC.hooks.php';
+$wgAutoloadClasses['Statistics'] = $dir . 'models/Statistics.php';
+$wgAutoloadClasses['TableDisplay'] = $dir . 'TableDisplay.php';
 
 $wgHooks['ArticleSaveComplete'][] = 'GPoCHooks::ArticleSaveComplete';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'GPoCHooks::SetupSchema';
+
+$wgHooks['ParserFirstCallInit'][] = 'TableDisplay::ParserFunctionInit';
+$wgHooks['LanguageGetMagic'][] = 'TableDisplay::LanguageGetMagic';
 
 // Configuration
