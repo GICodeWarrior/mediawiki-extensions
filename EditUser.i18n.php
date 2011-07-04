@@ -1064,11 +1064,12 @@ $messages['or'] = array(
 	'edituser-dosearch' => 'ଖୋଜିବା',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
+ * @author Bouron
  */
 $messages['os'] = array(
-	'edituser-dosearch' => 'Агур',
+	'edituser-dosearch' => 'Агурын',
 );
 
 /** Deitsch (Deitsch)
