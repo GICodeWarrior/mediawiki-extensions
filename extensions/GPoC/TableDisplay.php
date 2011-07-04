@@ -14,9 +14,27 @@ class TableDisplay {
 		return true;
 	}	
 
+	private static function formatTable( $projectName, $projectStats ) {
+		// Column Headers
+		$col_headers = array_keys($projectStats['top']);
+		$output = "{| class='wikitable' \n|+ $projectName article ratings\n";
+		$output .= "|-\n ! scope='col' | \n";
+		foreach( $col_headers as $col_header ) {
+			$output .= "! scope='col' | $col_header \n";
+		}
+		foreach( $projectStats as $importance => $qualityRatings ) {
+			$output .= "|- \n ! scope='row' | $importance\n";
+			foreach( $qualityRatings as $quality => $qualityCount ) {
+				$output .= "| $qualityCount \n";
+			}
+		}
+		$output .= "|}";
+		return $output;
+	}
+	
 	public static function AssessmentStatsRender( $parser, $project ) {
 		$projectStats = Statistics::getProjectStats( $project );
-		$output = print_r( $projectStats, true );
+		$output = TableDisplay::formatTable( $project, $projectStats );
 		return $output;
 	}
 }

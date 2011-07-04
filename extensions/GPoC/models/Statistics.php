@@ -47,6 +47,10 @@ class Statistics {
 			}
 		}
 
+		// Make '' into 'unclassified'
+		$project_statistics['unclassified'] = $project_statistics[''];
+		unset( $project_statistics[''] );
+
 		return $project_statistics;
 	}
 
