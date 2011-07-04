@@ -6,7 +6,7 @@ class WikidataPageHistory extends HistoryPage {
   		wfProfileIn( __METHOD__ );
  
 		global $wdHandlerClasses;
-		$ns = $this->mTitle->getNamespace();
+		$ns = $this->getTitle()->getNamespace();
 		$handlerClass = $wdHandlerClasses[ $ns ];
 		$handlerInstance = new $handlerClass();
 		$handlerInstance->history();
