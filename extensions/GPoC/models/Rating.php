@@ -1,7 +1,5 @@
 <?php
 
-require_once "Statistics.php";
-
 /**
  * Represents an article and associated rating 
  **/

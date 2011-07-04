@@ -21,7 +21,9 @@ $dir = dirname( __FILE__ ) . '/';
 
 $wgAutoloadClasses['GPoCHooks'] = $dir . 'GPoC.hooks.php';
 $wgAutoloadClasses['Statistics'] = $dir . 'models/Statistics.php';
+$wgAutoloadClasses['Rating'] = $dir . 'models/Rating.php';
 $wgAutoloadClasses['TableDisplay'] = $dir . 'TableDisplay.php';
+$wgAutoloadClasses['AssessmentsExtractor'] = $dir . 'AssessmentsExtractor.php';
 
 $wgHooks['ArticleSaveComplete'][] = 'GPoCHooks::ArticleSaveComplete';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'GPoCHooks::SetupSchema';
