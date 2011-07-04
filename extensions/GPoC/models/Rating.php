@@ -45,8 +45,6 @@ class Rating {
 			return;
 		}
 		$dbw = wfGetDB( DB_MASTER );
-		// Rating has just been detected.
-		// So we can ignore $old_importance and $old_quality
 		$importance_column = Statistics::getImportanceColumn( $this->importance );
 		$dbw->insert(
 			'project_stats',
@@ -68,37 +66,30 @@ class Rating {
 			__METHOD__
 		);
 
-		//FIXME: Needs cleaner logic for four combinations of what can change
-		//Just Importance, Just Quality, Neither and Both
-		//Currently, code fails for 'both'. 
-		if(! $is_new_rating  && ! empty( $this->old_importance ) ) {
-			$old_importance_column = Statistics::getImportanceColumn( $this->old_importance );
-			$dbw->update(
-				'project_stats',
-				array( "$old_importance_column = $old_importance_column - 1" ),
-				array( 
-					"ps_project" => $this->project,
-					"ps_quality" => $this->quality
-				),
-				__METHOD__	
-			);
-		}
-		if(! $is_new_rating && ! empty( $this->old_quality ) ) {
-			if(! isset($old_importance_column) ) {
-				$old_importance_column = $importance_column;
+		if(! $is_new_rating ) {
+			// Is not a new rating, and atleast one of quality or importance has changed
+			if(! empty( $this->old_quality ) ) {
+				$q_value = $this->old_quality;
+			} else {
+				$q_value = $this->quality;
+			}
+			if(! empty( $this->old_importance) ) {
+				$i_column = Statistics::getImportanceColumn( $this->old_importance );
+			} else {
+				$i_column = Statistics::getImportanceColumn( $this->importance );
 			}
 			$dbw->update(
 				'project_stats',
-				array( "$old_importance_column = $old_importance_column - 1" ),
+				array( "$i_column = $i_column - 1" ),
 				array( 
 					"ps_project" => $this->project,
-					"ps_quality" => $this->old_quality
+					"ps_quality" => $q_value
 				),
 				__METHOD__	
 			);
-
 		}
 	}
+	
 	public function saveAll() {
 		$data_array = array(
 			'r_project' => $this->project,
