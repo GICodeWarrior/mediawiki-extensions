@@ -677,11 +677,12 @@ $messages['or'] = array(
 	'searchbox-search' => 'ଖୋଜିବା',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
+ * @author Bouron
  */
 $messages['os'] = array(
-	'searchbox-search' => 'Агур',
+	'searchbox-search' => 'Агурын',
 );
 
 /** Deitsch (Deitsch)
