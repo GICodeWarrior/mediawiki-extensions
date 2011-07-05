@@ -203,6 +203,13 @@ abstract class ApiAnalyticsBase extends ApiBase {
 		return array();
 	}
 
+	/**
+	 * @return string
+	 */
+	public /*abstract*/ function getMetricField() {
+		return '';
+	}
+
 	public function getAllowedParams() {
 		$params = array(
 			'startmonth' => array(
