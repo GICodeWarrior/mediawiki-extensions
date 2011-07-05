@@ -101,6 +101,13 @@ $messages['es'] = array(
 	'webfonts-disable-preference' => 'Desactivar la incrustación de tipografías (WebFonts)',
 );
 
+/** Persian (فارسی)
+ * @author Ebraminio
+ */
+$messages['fa'] = array(
+	'webfonts-disable-preference' => 'غیرفعال‌کردن جاسازی قلم (WebFonts)',
+);
+
 /** French (Français)
  * @author IAlex
  * @author Sherbrooke
