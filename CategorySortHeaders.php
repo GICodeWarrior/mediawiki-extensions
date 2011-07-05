@@ -48,7 +48,7 @@ $wgExtensionCredits['other'][] = array(
         'author' => '[http://mediawiki.org/wiki/User:Bawolff Brian Wolff]',
         'descriptionmsg' => 'categorysortheaders-desc',
         'url' => 'http://www.mediawiki.org/wiki/Extension:CategorySortHeaders',
-        'version' => 0.1,
+        'version' => 0.2,
 );
 
 $dir = dirname( __FILE__ ) . '/';
@@ -62,3 +62,13 @@ $wgCategoryCollation = 'CustomHeaderCollation';
 // php updateCollations.php --force
 
 $wgCategorySortHeaderAppendPageNameToKey = true;
+
+$wgHooks['Collation::factory'][] = 'wfCategorySortHeadersSetup';
+
+function wfCategorySortHeadersSetup( $collationName, &$collationObject ) {
+	if ( $collationName === 'CustomHeaderCollation' ) {
+		$collationObject = new CustomHeaderCollation;
+		return false;
+	}
+	return true;
+}
