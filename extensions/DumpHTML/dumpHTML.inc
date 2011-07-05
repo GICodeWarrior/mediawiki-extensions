@@ -786,37 +786,36 @@ class DumpHTML {
 	/** Reads the content of a title object, executes the skin and captures the result */
 	function getArticleHTML( $title ) {
 		global $wgOut, $wgTitle, $wgUser;
-
-		$linkCache =& LinkCache::singleton();
-		$linkCache->clear();
-		$wgTitle = $title;
-		if ( is_null( $wgTitle ) ) {
+		if ( is_null( $title ) ) {
 			return false;
 		}
+		$linkCache =& LinkCache::singleton();
+		$linkCache->clear();
+
+		$context = new RequestContext();
+		$context->setTitle( $title );
+		$context->setUser( $wgUser );
+
+		$wgTitle = $title; // b/c
+		$wgOut = new OutputPage( $context );
+		$wgOut->parserOptions( new ParserOptions() ); // anon
+
+		$context->setOutput( $wgOut );
 
 		$ns = $wgTitle->getNamespace();
 		if ( $ns == NS_SPECIAL ) {
-			$wgOut = new OutputPage;
-			$wgOut->parserOptions( new ParserOptions );
-			$wgOut->setTitle( $title );
-			SpecialPage::executePath( $wgTitle, RequestContext::getMain() );
+			SpecialPage::executePath( $wgTitle, $context );
 		} else {
-			$article = MediaWiki::articleFromTitle( $wgTitle, RequestContext::getMain() );
+			$article = MediaWiki::articleFromTitle( $wgTitle, $context );
 			$rt = $article->followRedirect();
 			if ( is_object( $rt ) ) {
 				return $this->getRedirect( $rt );
 			} else {
-				$wgOut = new OutputPage;
-				$wgOut->parserOptions( new ParserOptions );
-				$wgOut->setTitle( $title );
-
 				$article->view();
 			}
 		}
 
-
-		$sk = $wgUser->getSkin();
-		$sk->setTitle( $title );
+		$sk = $context->getSkin();
 		ob_start();
 		$sk->outputPage( $wgOut );
 		$text = ob_get_contents();
