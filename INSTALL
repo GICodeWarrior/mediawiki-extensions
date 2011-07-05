@@ -1,6 +1,6 @@
 To install add the following to LocalSettings.php
 
-	require_once( './extensions/ArchiveLinks/ArchiveLinks.php' );
+	require_once( "$IP/extensions/ArchiveLinks/ArchiveLinks.php" );
 
 Configuration settings are in the array $wgArchiveLinksConfig, which is currently defined in ArchiveLinks.php for testing purposes.
 
