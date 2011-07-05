@@ -28,7 +28,7 @@ class ComScoreUniqueVisitorMetric extends ApiAnalyticsBase {
 	protected function takesReportLanguage(){
 		return true;
 	}
-	
+
 	public function getMetricField() {
 		return 'visitors';
 	}

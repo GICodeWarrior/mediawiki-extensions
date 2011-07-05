@@ -35,6 +35,12 @@ class SquidPageViewsMetric extends ApiAnalyticsBase {
 		return true;
 	}
 
+	public function normaliseQueryParameters( $params ) {
+		// TODO: Change fields/table to normalise data set returned
+		// Swap page_views for page_views_v
+		return $params;
+	}
+
 	public function getDescription() {
 		return array(
 			'Total articles (htm component) requested from nearly all Wikimedia wikis (exceptions are mostly special purpose wikis, e.g. wikimania wikis)',

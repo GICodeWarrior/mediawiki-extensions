@@ -49,8 +49,7 @@ abstract class ApiAnalyticsBase extends ApiBase {
 		}
 
 		if ( $this->canBeNormalised() && $params['normalized'] ) {
-			// TODO: Do data normalisation stuffs here
-			// Swap page_views for page_views_v
+			$params = $this->normaliseQueryParameters( $params );
 		}
 
 		// TODO: Data formatting
@@ -70,7 +69,7 @@ abstract class ApiAnalyticsBase extends ApiBase {
 		}
 		//note: this means if you specify a report language that is not
 		//fully supported, you won't get a full data set back
-		if($this->takesReportLanguage()){
+		if( $this->takesReportLanguage() ){
 			$query['conds']['report_language'] = $params['reportlanguage'];
 		}
 
@@ -197,6 +196,14 @@ abstract class ApiAnalyticsBase extends ApiBase {
 	}
 
 	/**
+	 * @param $params array
+	 * @return  array
+	 */
+	public function normaliseQueryParameters( $params ) {
+		return $params;
+	}
+
+	/**
 	 * @return array
 	 */
 	public function getAllowedFilters() {
@@ -209,7 +216,7 @@ abstract class ApiAnalyticsBase extends ApiBase {
 	public /*abstract*/ function getMetricField() {
 		return '';
 	}
-	
+
 	protected function takesReportLanguage(){
 		return false;
 	}
