@@ -37,6 +37,7 @@ $messages['qqq'] = array(
 
 {{Identical|Search}}',
 	'vector-simplesearch-containing' => 'Label used in the special item of the search suggestions list which gives the user an option to perform a full text search for the term.',
+	'vector-noexperiments-preference' => 'An option in [[Special:Preferences]]',
 );
 
 /** Afrikaans (Afrikaans)
@@ -404,6 +405,7 @@ Gallwch ddiddymu\'r rhybudd hwn yn yr adran "Golygu" yn eich dewisiadau.',
 	'vector-editwarning-preference' => "Tynnwch fy sylw pan wyf ar fin gadael tudalen olygu heb roi'r newidiadau ar gadw",
 	'vector-simplesearch-search' => 'Chwilio',
 	'vector-simplesearch-containing' => 'yn cynnwys...',
+	'vector-noexperiments-preference' => "Peidio â'm cynnwys mewn arbrofion ar y nodweddion",
 );
 
 /** Danish (Dansk)
