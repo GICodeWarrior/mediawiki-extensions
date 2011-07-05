@@ -215,6 +215,7 @@ $messages['de'] = array(
 	'useroptionstats-desc' => 'Ergänzt eine [[Special:UserOptionStats|Spezialseite]] zur Darstellung der durch die Benutzer des Wikis gewählten Einstellungen',
 	'uos-warn' => 'PHPlot ist nicht installiert!',
 	'uos-choose' => 'Wähle eine der folgenden Einstellungen: $1',
+	'uos-choose-hidden' => 'Wähle eine der folgenden versteckten Einstellungen: $1',
 	'uos-unknown' => '*Standardeinstellung',
 	'uos-other' => '*Sonstige',
 	'uos-title' => 'Verteilung der gewählten Werte zur Benutzereinstellung
