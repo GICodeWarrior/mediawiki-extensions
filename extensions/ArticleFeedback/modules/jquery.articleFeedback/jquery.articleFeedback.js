@@ -112,7 +112,9 @@ $.articleFeedback = {
 		<div class="articleFeedback-rating-label" rel="5"></div>\
 		<div class="articleFeedback-rating-clear"></div>\
 	</div>\
-	<div class="articleFeedback-rating-tooltip articleFeedback-visibleWith-form"></div>\
+	<div class="articleFeedback-visibleWith-form">\
+		<div class="articleFeedback-rating-tooltip"></div>\
+	</div>\
 	<div class="articleFeedback-rating-average articleFeedback-visibleWith-report"></div>\
 	<div class="articleFeedback-rating-meter articleFeedback-visibleWith-report"><div></div></div>\
 	<div class="articleFeedback-rating-count articleFeedback-visibleWith-report"></div>\
