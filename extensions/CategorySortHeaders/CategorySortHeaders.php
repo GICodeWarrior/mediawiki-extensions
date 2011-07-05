@@ -57,4 +57,8 @@ $wgAutoloadClasses['CustomHeaderCollation'] = $dir . 'CategorySortHeaders_body.p
 
 $wgCategoryCollation = 'CustomHeaderCollation';
 
+// Control if a sortkey of ^foo^ is considered just ^foo^ or ^foo^{{PAGENAME}}.
+// After changing this option, you should run the maintinance script (the --force is important)
+// php updateCollations.php --force
 
+$wgCategorySortHeaderAppendPageNameToKey = true;
