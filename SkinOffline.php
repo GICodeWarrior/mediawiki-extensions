@@ -48,15 +48,15 @@ class SkinOffline extends SkinTemplate {
 		$content_actions = array();
 		$nskey = $this->getNameSpaceKey();
 		$content_actions[$nskey] = $this->tabAction(
-			$this->mTitle->getSubjectPage(),
+			$this->getTitle()->getSubjectPage(),
 			$nskey,
-			!$this->mTitle->isTalkPage() );
+			!$this->getTitle()->isTalkPage() );
 
-		if( $this->mTitle->canTalk() ) {
+		if( $this->getTitle()->canTalk() ) {
 			$content_actions['talk'] = $this->tabAction(
-				$this->mTitle->getTalkPage(),
+				$this->getTitle()->getTalkPage(),
 				'talk',
-				$this->mTitle->isTalkPage(),
+				$this->getTitle()->isTalkPage(),
 				'',
 				true);
 		}
@@ -64,7 +64,7 @@ class SkinOffline extends SkinTemplate {
 		if ( isset( $wgHTMLDump ) ) {
 			$content_actions['current'] = array(
 				'text' => wfMsg( 'currentrev' ),
-				'href' => str_replace( '$1', wfUrlencode( $this->mTitle->getPrefixedDBkey() ),
+				'href' => str_replace( '$1', wfUrlencode( $this->getTitle()->getPrefixedDBkey() ),
 					$wgHTMLDump->oldArticlePath ),
 				'class' => false
 			);
