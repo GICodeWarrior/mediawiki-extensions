@@ -2,6 +2,7 @@
 
 class DumpActiveEditors5Metric extends ApiAnalyticsBase {
 
+	protected $numberOfActiveEditors = 5;
 	public function getAllowedFilters() {
 		return array(
 			'selectprojects',
@@ -19,16 +20,16 @@ class DumpActiveEditors5Metric extends ApiAnalyticsBase {
 	}
 
 	protected function getQueryFields() {
-		return array( 'date', 'project_code', 'SUM(editors_ge_5)' );
+		return array( 'date', 'project_code', "SUM(editors_ge_{$this->numberOfActiveEditors})" );
 	}
 
 	public function getDescription() {
-		return 'All registered editors that made 5 or more edits in a certain month';
+		return "All registered editors that made {$this->numberOfActiveEditors} or more edits in a certain month";
 	}
 
 	protected function getExamples() {
 		return array(
-			'api.php?action=analytics&metric=dumpactiveeditors5',
+			"api.php?action=analytics&metric=dumpactiveeditors{$this->numberOfActiveEditors}",
 		);
 	}
 

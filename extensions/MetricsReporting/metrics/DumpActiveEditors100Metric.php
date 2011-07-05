@@ -1,35 +1,10 @@
 <?php
 
-class DumpActiveEditors100Metric extends ApiAnalyticsBase {
+class DumpActiveEditors100Metric extends DumpActiveEditors5Metric {
 
-	public function getAllowedFilters() {
-		return array(
-			'selectprojects',
-			'selectwikis',
-		);
-	}
-
-	protected function getQueryInfo() {
-		return array(
-			'table' => array(),
-			'conds' => array(),
-			'options' => array(),
-			'join_conds' => array(),
-		);
-	}
-
-	protected function getQueryFields() {
-		return array();
-	}
-
-	public function getDescription() {
-		return 'All registered editors that made 100 or more edits in a certain month';
-	}
-
-	protected function getExamples() {
-		return array(
-			'api.php?action=analytics&metric=dumpactiveeditors100',
-		);
+	public function __construct( ApiBase $query, $moduleName, $paramPrefix = '' ) {
+		parent::__construct( $query->getMain(), $moduleName, $paramPrefix );
+		$this->numberOfActiveEditors = 100;
 	}
 
 	public function getVersion() {
