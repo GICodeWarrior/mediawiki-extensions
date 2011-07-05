@@ -35,6 +35,9 @@ abstract class ApiAnalyticsBase extends ApiBase {
 	public function execute() {
 		$params = $this->extractRequestParams();
 
+		if ( $this->canBeNormalised() && $params['normalized'] ) {
+			$this->normaliseQueryParameters( $params );
+		}
 		$query = $this->getQueryInfo();
 		$query['fields'] = $this->getQueryFields();
 
@@ -46,10 +49,6 @@ abstract class ApiAnalyticsBase extends ApiBase {
 		} else {
 			$query['conds'][] = "date >= ". $db->addQuotes( $params['startmonth'] )
 							. " AND date <= " . $db->addQuotes( $params['endmonth'] ) ;
-		}
-
-		if ( $this->canBeNormalised() && $params['normalized'] ) {
-			$params = $this->normaliseQueryParameters( $params );
 		}
 
 		// TODO: Data formatting
@@ -211,9 +210,9 @@ abstract class ApiAnalyticsBase extends ApiBase {
 	}
 
 	/**
-	 * @return string
+	 * @return array
 	 */
-	public /*abstract*/ function getMetricField() {
+	public function getMetricField() {
 		return '';
 	}
 

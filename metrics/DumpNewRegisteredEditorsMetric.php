@@ -23,7 +23,7 @@ class DumpNewRegisteredEditorsMetric extends ApiAnalyticsBase {
 	}
 
 	public function getMetricField() {
-		return 'editors_new';
+		return array( 'editors_new' );
 	}
 
 	public function getDescription() {
