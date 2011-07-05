@@ -15,7 +15,7 @@ class SquidPageViewsMetric extends ApiAnalyticsBase {
 
 	protected function getQueryInfo() {
 		return array(
-			'table' => array(),
+			'table' => array( 'page_views' ),
 			'conds' => array(),
 			'options' => array(),
 			'join_conds' => array(),
@@ -24,6 +24,11 @@ class SquidPageViewsMetric extends ApiAnalyticsBase {
 
 	protected function getQueryFields() {
 		return array();
+	}
+
+	public function getMetricField() {
+		// views_non_mobile_raw,views_mobile_raw,views_non_mobile_normalized,views_mobile_normalized depending on normalized and select_platform
+		return '';
 	}
 
 	protected function canBeNormalised() {

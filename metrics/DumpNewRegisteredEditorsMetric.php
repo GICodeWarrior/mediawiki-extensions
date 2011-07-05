@@ -11,7 +11,7 @@ class DumpNewRegisteredEditorsMetric extends ApiAnalyticsBase {
 
 	protected function getQueryInfo() {
 		return array(
-			'table' => array(),
+			'table' => array( 'wikistats' ),
 			'conds' => array(),
 			'options' => array(),
 			'join_conds' => array(),
@@ -19,7 +19,11 @@ class DumpNewRegisteredEditorsMetric extends ApiAnalyticsBase {
 	}
 
 	protected function getQueryFields() {
-		return array();
+		return array( 'editors_new' );
+	}
+
+	public function getMetricField() {
+		return 'editors_new';
 	}
 
 	public function getDescription() {

@@ -22,6 +22,10 @@ class EstimateOfflineMetric extends ApiAnalyticsBase {
 		);
 	}
 
+	public function getMetricField() {
+		return '';
+	}
+
 	public function getDescription() {
 		return 'Estimated number of Offline Users';
 	}

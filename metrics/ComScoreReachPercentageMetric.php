@@ -24,6 +24,10 @@ class ComScoreReachPercentageMetric extends ApiAnalyticsBase {
 		return array( 'date', 'reach', 'comscore.region_code', 'region_name');
 	}
 
+	public function getMetricField() {
+		return 'reach';
+	}
+
 	public function getDescription() {
 		return 'Percentage of total unique visitors to any web property which also visited a Wikimedia Wiki';
 	}

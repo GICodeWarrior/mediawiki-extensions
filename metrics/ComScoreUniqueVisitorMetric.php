@@ -25,6 +25,10 @@ class ComScoreUniqueVisitorMetric extends ApiAnalyticsBase {
 		);
 	}
 
+	public function getMetricField() {
+		return 'visitors';
+	}
+
 	public function getDescription() {
 		return 'Unique persons that visited one of the Wikimedia wikis at least once in a certain month';
 	}
