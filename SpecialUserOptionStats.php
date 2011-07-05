@@ -40,11 +40,22 @@ class SpecialUserOptionStats extends SpecialPage {
 
 		if ( !$par ) {
 			$opts = array();
+			$hiddenoptions = $this->getHiddenOptions();
 			$name = SpecialPage::getTitleFor( 'UserOptionStats' )->getPrefixedText();
 			foreach ( $this->getOptions() as $k ) {
+				if( in_array( $k, $hiddenoptions ) ) {
+					continue; # List hidden options separately (see below)
+				}
 				$opts[] = "[[$name/$k|$k]]";
 			}
 			$wgOut->addWikiMsg( 'uos-choose', $wgLang->commaList( $opts ) );
+			if ( count( $hiddenoptions ) > 0 ) {
+				$hiddenopts = array();
+				foreach ( $hiddenoptions as $hk ) {
+					$hiddenopts[] = "[[$name/$hk|$hk]]";
+				}
+				$wgOut->addWikiMsg( 'uos-choose-hidden', $wgLang->commaList( $hiddenopts ) );
+			}
 			return;
 		}
 
@@ -132,5 +143,13 @@ class SpecialUserOptionStats extends SpecialPage {
 		sort($opts);
 
 		return $opts;
+	}
+
+	public function getHiddenOptions() {
+		global $wgHiddenPrefs;
+		if ( isset( $wgHiddenPrefs ) && is_array( $wgHiddenPrefs ) ) {
+			return $wgHiddenPrefs;
+		}
+		return array();
 	}
 }

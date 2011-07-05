@@ -11,12 +11,14 @@ $messages = array();
 
 /** English
  * @author Nike
+ * @author SPQRobin
  */
 $messages['en'] = array(
 	'useroptionstats' => 'User option statistics',
 	'useroptionstats-desc' => '[[Special:UserOptionStats|Special page]] for reporting on MediaWiki user option usage',
 	'uos-warn' => 'PHPlot is not installed!',
 	'uos-choose' => 'Choose one of the following user options: $1',
+	'uos-choose-hidden' => 'Choose one of the following hidden user options: $1',
 	'uos-unknown' => '*Default',
 	'uos-other' => '*Other',
 	'uos-title' => 'Distribution of values of user option $1',
