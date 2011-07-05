@@ -38,6 +38,8 @@ abstract class ApiAnalyticsBase extends ApiBase {
 		$query = $this->getQueryInfo();
 		$query['fields'] = $this->getQueryFields();
 
+		// TODO: Do we need to do the dates as Like? (bleugh)
+		// Else, strtotime( '(First|Last) day of Month YYYY' )
 		$db = $this->getDB();
 		if ( $params['startmonth'] && !$params['endmonth'] ) {
 			$query['conds']['date'] = $params['startmonth'];
@@ -90,6 +92,9 @@ abstract class ApiAnalyticsBase extends ApiBase {
 						$query['conds']['country_code'] = $parsedFilter;
 						break;
 					case 'selectwebproperties':
+						/*if ( $params['authcode'] != 'some string' ) {
+							$this->dieUsage( 'Wrong code', 'badcode' );
+						}*/
 						// c, d
 						// TODO: Cater for "top:20" etc
 						$query['conds']['web_property'] = $parsedFilter;
@@ -143,6 +148,7 @@ abstract class ApiAnalyticsBase extends ApiBase {
 		$result->addValue( 'metric', $this->getModuleName(), $data );
 	}
 
+	// TODO: Deal with foo AS bar, and return bar for nicer aliasing of stuff
 	/**
 	 * Looks to see if the column is fully qualified (table.column)
 	 * If is, return only the column name
@@ -261,7 +267,14 @@ abstract class ApiAnalyticsBase extends ApiBase {
 			),
 		);
 
-		return array_merge( $params, array_intersect_key( $select, array_flip( $this->getAllowedFilters() ) ) );
+		$params = array_merge( $params, array_intersect_key( $select, array_flip( $this->getAllowedFilters() ) ) );
+
+		if ( isset( $params['selectwebproperties'] ) ) {
+			$params['authcode'] = array(
+				ApiBase::PARAM_TYPE => 'string',
+			);
+		}
+		return $params;
 	}
 
 	public function getParamDescription() {
@@ -544,7 +557,7 @@ abstract class ApiAnalyticsBase extends ApiBase {
 			),
 			'selectwebproperties' => array(
 				'',
-				'This parameter requires extra authorisation',
+				'This parameter requires extra authorisation.',
 			),
 			'selectprojects' => array(
 				'Which projects',
@@ -562,6 +575,7 @@ abstract class ApiAnalyticsBase extends ApiBase {
 			'selecteditors' => 'a for anonymous, r for registered, b for bot',
 			'selectedits' => 'm for manual, b for bot-induced',
 			'selectplatform' => 'm for mobile, n for non-mobile',
+			'authcode' => "Auth code needed for 'selectwebproperties'",
 		);
 	}
 
