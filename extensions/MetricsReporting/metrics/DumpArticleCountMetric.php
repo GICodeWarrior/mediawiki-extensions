@@ -22,7 +22,7 @@ class DumpArticleCountMetric extends ApiAnalyticsBase {
 		return array( 'reach' );
 	}
 
-	public function getMetricField() {
+	public function getMetricFields() {
 		return array(  'reach' );
 	}
 

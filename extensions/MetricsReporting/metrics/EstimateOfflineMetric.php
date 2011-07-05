@@ -22,7 +22,7 @@ class EstimateOfflineMetric extends ApiAnalyticsBase {
 		);
 	}
 
-	public function getMetricField() {
+	public function getMetricFields() {
 		return array( '' );
 	}
 
