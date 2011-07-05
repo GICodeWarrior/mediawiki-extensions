@@ -27,7 +27,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 $wgExtensionCredits['specialpage'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'User Option Statistics',
-	'version'        => '1.0',
+	'version'        => '1.1',
 	'author'         => 'Niklas Laxström',
 	'descriptionmsg' => 'useroptionstats-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:UserOptionStats',
