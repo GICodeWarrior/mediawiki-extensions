@@ -24,6 +24,10 @@ class ComScoreReachPercentageMetric extends ApiAnalyticsBase {
 		return array( 'date', 'reach', 'comscore.region_code', 'region_name');
 	}
 
+	protected function takesReportLanguage(){
+		return true;
+	}
+	
 	public function getMetricField() {
 		return 'reach';
 	}

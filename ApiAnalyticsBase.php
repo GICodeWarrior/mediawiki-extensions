@@ -70,8 +70,9 @@ abstract class ApiAnalyticsBase extends ApiBase {
 		}
 		//note: this means if you specify a report language that is not
 		//fully supported, you won't get a full data set back
-		$query['conds']['reportlanguage'] = $params['reportlanguage'];
-		
+		if($this->takesReportLanguage()){
+			$query['conds']['report_language'] = $params['reportlanguage'];
+		}
 
 		foreach( $this->getAllowedFilters() as $filter ) {
 			if ( /*isset( $params[$filter] ) && */count( $params[$filter] ) ) {
@@ -207,6 +208,10 @@ abstract class ApiAnalyticsBase extends ApiBase {
 	 */
 	public /*abstract*/ function getMetricField() {
 		return '';
+	}
+	
+	protected function takesReportLanguage(){
+		return false;
 	}
 
 	public function getAllowedParams() {
