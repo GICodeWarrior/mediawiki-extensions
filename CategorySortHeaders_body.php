@@ -18,7 +18,7 @@ class CustomHeaderCollation extends Collation {
 	// which gets turned into "^my header^foo\n<page name>"
 	// which we turn into "M^my header^FOO\n<PAGE NAME>"
 	function getSortKey( $string ) {
-		global $wgContLang;
+		global $wgContLang, $wgCategorySortHeaderAppendPageNameToKey;
 		// UppercaseCollation uses an EN lang object always instead of content lang.
 		// I'm not sure why. To me it makes more sense to use $wgContLang.
 		// There's minnor differences in some languages (like Turkish)
@@ -28,14 +28,27 @@ class CustomHeaderCollation extends Collation {
 			if ( $matches[1] === '' ) $matches[1] = ' ';
 			$part1 = $wgContLang->firstChar( $wgContLang->uc( $matches[1] ) );
 			$part2 = $matches[1];
-			$part3 = $wgContLang->uc( $matches[2] );
+			$part3prefix = '';
+			if ( $wgCategorySortHeaderAppendPageNameToKey ) {
+				// This is kind of ugly, and seems wrong
+				// because it shouldn't be the collations
+				// job to do this type of thing (but then
+				// again it shouldn't be doing headers either).
+
+				// See Title::getCategorySortkey if you're
+				// mystified by what this does.
+				$trimmed = trim( $matches[2], "\n" );
+				if ( $trimmed !== $matches[2] ) {
+					$part3prefix = $trimmed;
+				}
+			}
+			$part3 = $wgContLang->uc( $part3prefix . $matches[2] );
 
 		} else {
 			// Ordinay sortkey, no header info.
 			$part3 = $wgContLang->uc( $string );
 			$part1 = $part2 = $wgContLang->firstChar( $part3 );
 		}
-
 		return $part1 . '^' . $part2 . '^' . $part3;
 	}
 
