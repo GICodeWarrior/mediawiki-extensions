@@ -44,7 +44,7 @@ abstract class ApiAnalyticsBase extends ApiBase {
 		if ( $params['startmonth'] && !$params['endmonth'] ) {
 			$query['conds']['date'] = $params['startmonth'];
 		} else {
-			$query['conds'] = "date >= ". $db->addQuotes( $params['startmonth'] )
+			$query['conds'][] = "date >= ". $db->addQuotes( $params['startmonth'] )
 							. " AND date <= " . $db->addQuotes( $params['endmonth'] ) ;
 		}
 
@@ -286,7 +286,7 @@ abstract class ApiAnalyticsBase extends ApiBase {
 				'(WMF Report Card will use normalized time series when available)',
 			),
 			'data' => array(
-					' timeseries        - returns ordered list of value pairs, on efor each month within range',
+					' timeseries        - returns ordered list of value pairs, one for each month within range',
 					' timeseriesindexed - like timeseries, but each month\'s value will be relative to oldest month\'s value which is always 100',
 					' percentagegrowthlastmonth, percentagegrowthlastyear, percentagegrowthfullperiod',
 					' - growth percentages are relative to oldest value (80->100=25%) although trivial, requesting these metrics through API ensures all clients use same calculation',
