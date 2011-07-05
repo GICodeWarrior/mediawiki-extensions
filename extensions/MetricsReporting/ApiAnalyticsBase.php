@@ -68,11 +68,10 @@ abstract class ApiAnalyticsBase extends ApiBase {
 					break;
 			}
 		}
-		// TODO: Change join based on selected language $params['reportlanguage']
-		// TODO: Also, work out which queries can deal with the parameter
-		//if () {
-		//	$query['conds']['reportlanguage'] = $params['reportlanguage'];
-		//}
+		//note: this means if you specify a report language that is not
+		//fully supported, you won't get a full data set back
+		$query['conds']['reportlanguage'] = $params['reportlanguage'];
+		
 
 		foreach( $this->getAllowedFilters() as $filter ) {
 			if ( /*isset( $params[$filter] ) && */count( $params[$filter] ) ) {
