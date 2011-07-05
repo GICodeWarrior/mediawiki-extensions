@@ -24,7 +24,7 @@ class DumpActiveEditors5Metric extends ApiAnalyticsBase {
 	}
 
 	public function getMetricField() {
-		return "SUM(editors_ge_{$this->numberOfActiveEditors})";
+		return array( "SUM(editors_ge_{$this->numberOfActiveEditors})" );
 	}
 
 	public function getDescription() {
