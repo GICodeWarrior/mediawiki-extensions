@@ -48,8 +48,9 @@ abstract class ApiAnalyticsBase extends ApiBase {
 							. " AND date <= " . $db->addQuotes( $params['endmonth'] ) ;
 		}
 
-		if ( $params['normalized'] && $this->canBeNormalised() ) {
+		if ( $this->canBeNormalised() && $params['normalized'] ) {
 			// TODO: Do data normalisation stuffs here
+			// Swap page_views for page_views_v
 		}
 
 		// TODO: Data formatting

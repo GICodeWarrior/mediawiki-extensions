@@ -15,7 +15,7 @@ class ComScoreReachPercentageMetric extends ApiAnalyticsBase {
 			'conds' => array(),
 			'options' => array( 'ORDER BY' => 'comscore.region_code, date' ),
 			'join_conds' => array(
-				'comscore_regisons' => array( 'LEFT JOIN', "comscore.region_code = comscore_regions.region_code AND report_language = 'en' " )
+				'comscore_regisons' => array( 'LEFT JOIN', "comscore.region_code = comscore_regions.region_code" )
 			),
 		);
 	}
@@ -25,7 +25,7 @@ class ComScoreReachPercentageMetric extends ApiAnalyticsBase {
 	}
 
 	public function getDescription() {
-		return 'Percentage of total unique visitors to any web property which also visited a Wikimedia wiki';
+		return 'Percentage of total unique visitors to any web property which also visited a Wikimedia Wiki';
 	}
 
 	protected function getExamples() {
