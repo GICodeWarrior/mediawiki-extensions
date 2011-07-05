@@ -3,8 +3,7 @@
 class EstimateOfflineMetric extends ApiAnalyticsBase {
 
 	public function getAllowedFilters() {
-		return array(
-		);
+		return array();
 	}
 
 	protected function getQueryInfo() {
@@ -23,11 +22,11 @@ class EstimateOfflineMetric extends ApiAnalyticsBase {
 	}
 
 	public function getMetricFields() {
-		return array( '' );
+		return array( 'readers' );
 	}
 
 	public function getDescription() {
-		return 'Estimated number of Offline Users';
+		return 'Estimated number of people whom access Wikipedia through an offline reader';
 	}
 
 	protected function getExamples() {
