@@ -27,7 +27,7 @@ class ComScoreReachPercentageMetric extends ApiAnalyticsBase {
 		return true;
 	}
 
-	public function getMetricField() {
+	public function getMetricFields() {
 		return array( 'reach' );
 	}
 

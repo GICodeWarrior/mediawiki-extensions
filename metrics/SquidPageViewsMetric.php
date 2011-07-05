@@ -36,7 +36,7 @@ class SquidPageViewsMetric extends ApiAnalyticsBase {
 
 	protected $metricField;
 
-	public function getMetricField() {
+	public function getMetricFields() {
 		// , views_mobile_raw, views_non_mobile_normalized, views_mobile_normalized depending on normalized and select_platform
 		return $this->metricField;
 	}

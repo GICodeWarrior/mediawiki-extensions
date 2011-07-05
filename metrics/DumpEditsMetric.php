@@ -22,7 +22,7 @@ class DumpEditsMetric extends ApiAnalyticsBase {
 		return array( 'edits' );
 	}
 
-	public function getMetricField() {
+	public function getMetricFields() {
 		return array( 'edits' );
 	}
 

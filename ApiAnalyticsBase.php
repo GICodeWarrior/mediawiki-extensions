@@ -135,16 +135,28 @@ abstract class ApiAnalyticsBase extends ApiBase {
 		$data = array();
 
 		$fields = array_map( array( $this, 'getColumnName' ), $query['fields'] );
+		$metricFields = $this->getMetricFields();
+		$metricTotals = array();
+
 		foreach( $res as $row ) {
 			$item = array();
 			foreach( $fields as $field ) {
 				$item[$field] = $row->$field;
 			}
 			$data[] = $item;
+
+			foreach( $metricFields as $field ) {
+				if ( !isset( $metricTotals[$field] ) ) {
+					$metricTotals[$field] = 0;
+				}
+				$metricTotals[$field] += $row->$field;
+			}
 		}
 
 		$result->setIndexedTagName( $data, 'data' );
+		$result->setIndexedTagName( $metricTotals, 'totals' );
 		$result->addValue( 'metric', $this->getModuleName(), $data );
+		$result->addValue( 'totals', $this->getModuleName(), $metricTotals );
 	}
 
 	// TODO: Deal with foo AS bar, and return bar for nicer aliasing of stuff
@@ -212,10 +224,13 @@ abstract class ApiAnalyticsBase extends ApiBase {
 	/**
 	 * @return array
 	 */
-	public function getMetricField() {
-		return '';
+	public function getMetricFields() {
+		return array();
 	}
 
+	/**
+	 * @return bool
+	 */
 	protected function takesReportLanguage(){
 		return false;
 	}

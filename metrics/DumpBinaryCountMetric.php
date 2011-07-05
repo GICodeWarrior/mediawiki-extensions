@@ -22,7 +22,7 @@ class DumpBinaryCountMetric extends ApiAnalyticsBase {
 		return array();
 	}
 
-	public function getMetricField() {
+	public function getMetricFields() {
 		return array(  '' );
 	}
 
