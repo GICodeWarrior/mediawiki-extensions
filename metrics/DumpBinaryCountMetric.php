@@ -13,7 +13,7 @@ class DumpBinaryCountMetric extends ApiAnalyticsBase {
 		return array(
 			'table' => array( 'binaries' ),
 			'conds' => array(),
-			'options' => array(),
+			'options' => array( 'GROUP BY' => 'date', ),
 			'join_conds' => array(),
 		);
 	}

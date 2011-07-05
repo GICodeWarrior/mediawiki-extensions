@@ -73,57 +73,58 @@ abstract class ApiAnalyticsBase extends ApiBase {
 		}
 
 		foreach( $this->getAllowedFilters() as $filter ) {
-			if ( /*isset( $params[$filter] ) && */count( $params[$filter] ) ) {
-				if ( $params[$filter][0] === '*' ) {
-					// For */"all", don't do any filtering
-					continue;
-				}
+			if ( !isset( $params[$filter] ) ) {
+				continue;
+			}
+			if ( $params[$filter][0] === '*' ) {
+				// For */"all", don't do any filtering
+				continue;
+			}
 
-				$parsedFilter = $this->getAllUniqueParams( $params[$filter] );
-				switch ( $filter ) {
-					case 'selectregions':
-						// a, b, c
-						$query['conds']['region_code'] = $parsedFilter;
-						break;
-					case 'selectcountries':
-						// b, c, d
-						// TODO: Cater for "top:20" etc
-						$query['conds']['country_code'] = $parsedFilter;
-						break;
-					case 'selectwebproperties':
-						/*if ( $params['authcode'] != 'some string' ) {
-							$this->dieUsage( 'Wrong code', 'badcode' );
-						}*/
-						// c, d
-						// TODO: Cater for "top:20" etc
-						$query['conds']['web_property'] = $parsedFilter;
-						break;
-					case 'selectprojects':
-						// c
-						$query['conds']['project_code'] = $parsedFilter;
-						break;
-					case 'selectwikis':
-						// c
-						// TODO: What's the format of the query need to be?
-						// ( lang = ltarget AND project = ptarget ) OR ( lang =ltarget2 AND project = ptarget2 )
-						$query['conds'][''] = $parsedFilter;
-						break;
-					case 'selecteditors':
-						// b, c
-						// TODO: Need where column
-						$query['conds'][''] = $parsedFilter;
-						break;
-					case 'selectedits':
-						// b, c
-						// TODO: Need where column
-						$query['conds'][''] = $parsedFilter;
-						break;
-					case 'selectplatform':
-						// b, c
-						// TODO: Need where column
-						$query['conds'][''] = $parsedFilter;
-						break;
-				}
+			$parsedFilter = $this->getAllUniqueParams( $params[$filter] );
+			switch ( $filter ) {
+				case 'selectregions':
+					// a, b, c
+					$query['conds']['region_code'] = $parsedFilter;
+					break;
+				case 'selectcountries':
+					// b, c, d
+					// TODO: Cater for "top:20" etc
+					$query['conds']['country_code'] = $parsedFilter;
+					break;
+				case 'selectwebproperties':
+					/*if ( $params['authcode'] != 'some string' ) {
+						$this->dieUsage( 'Wrong code', 'badcode' );
+					}*/
+					// c, d
+					// TODO: Cater for "top:20" etc
+					$query['conds']['web_property'] = $parsedFilter;
+					break;
+				case 'selectprojects':
+					// c
+					$query['conds']['project_code'] = $parsedFilter;
+					break;
+				case 'selectwikis':
+					// c
+					// TODO: What's the format of the query need to be?
+					// ( lang = ltarget AND project = ptarget ) OR ( lang =ltarget2 AND project = ptarget2 )
+					$query['conds'][''] = $parsedFilter;
+					break;
+				case 'selecteditors':
+					// b, c
+					// TODO: Need where column
+					$query['conds'][''] = $parsedFilter;
+					break;
+				case 'selectedits':
+					// b, c
+					// TODO: Need where column
+					$query['conds'][''] = $parsedFilter;
+					break;
+				case 'selectplatform':
+					// b, c
+					// TODO: Need where column
+					$query['conds'][''] = $parsedFilter;
+					break;
 			}
 		}
 
@@ -139,17 +140,50 @@ abstract class ApiAnalyticsBase extends ApiBase {
 		$metricTotals = array();
 
 		foreach( $res as $row ) {
+			// Dump all data to output
 			$item = array();
 			foreach( $fields as $field ) {
 				$item[$field] = $row->$field;
 			}
 			$data[] = $item;
 
+			// Do some maths
 			foreach( $metricFields as $field ) {
 				if ( !isset( $metricTotals[$field] ) ) {
 					$metricTotals[$field] = 0;
 				}
 				$metricTotals[$field] += $row->$field;
+			}
+
+			// Make grouped output data
+			foreach( $this->getAllowedFilters() as $filter ) {
+				if ( !isset( $params[$filter] ) ) {
+					continue;
+				}
+				if ( $params[$filter][0] === '*' ) {
+					// For */"all", don't do any filtering
+					continue;
+				}
+
+				$parsedFilter = $this->getAllUniqueParams( $params[$filter] );
+				switch ( $filter ) {
+					case 'selectregions':
+						break;
+					case 'selectcountries':
+						break;
+					case 'selectwebproperties':
+						break;
+					case 'selectprojects':
+						break;
+					case 'selectwikis':
+						break;
+					case 'selecteditors':
+						break;
+					case 'selectedits':
+						break;
+					case 'selectplatform':
+						break;
+				}
 			}
 		}
 

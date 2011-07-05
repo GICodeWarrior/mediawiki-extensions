@@ -13,7 +13,7 @@ class DumpArticleCountMetric extends ApiAnalyticsBase {
 		return array(
 			'table' => array( 'comscores' ),
 			'conds' => array(),
-			'options' => array(),
+			'options' => array( 'GROUP BY' => 'date', ),
 			'join_conds' => array(),
 		);
 	}
@@ -23,7 +23,7 @@ class DumpArticleCountMetric extends ApiAnalyticsBase {
 	}
 
 	public function getMetricFields() {
-		return array(  'reach' );
+		return array( 'reach' );
 	}
 
 	public function getDescription() {

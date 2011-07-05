@@ -13,7 +13,7 @@ class DumpEditsMetric extends ApiAnalyticsBase {
 		return array(
 			'table' => array( 'wikistats' ),
 			'conds' => array(),
-			'options' => array(),
+			'options' => array( 'GROUP BY' => 'date', ),
 			'join_conds' => array(),
 		);
 	}

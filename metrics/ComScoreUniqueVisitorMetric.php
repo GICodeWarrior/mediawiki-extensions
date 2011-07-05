@@ -13,7 +13,7 @@ class ComScoreUniqueVisitorMetric extends ApiAnalyticsBase {
 		return array(
 			'table' => array( 'comscore', 'comscore_regions' ),
 			'conds' => array(),
-			'options' => array( 'ORDER BY' => 'date, project_code, region_code' ),
+			'options' => array( 'GROUP BY' => 'date', 'ORDER BY' => 'date, project_code, region_code' ),
 			'join_conds' => array( 'comscore_regions' => array( 'LEFT JOIN', 'comscore.region_code = comscore_regions.region_code' )
 			),
 		);
