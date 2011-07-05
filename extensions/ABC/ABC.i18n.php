@@ -1224,9 +1224,10 @@ $messages['yo'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Bencmq
+ * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
-	'abc-desc' => '加入<code>&lt;abc&gt;</code>标签以格式化ABC音乐',
+	'abc-desc' => '添加<code>&lt;abc&gt;</code>标签以格式化ABC音乐',
 	'abcdownload' => '下载：',
 );
 

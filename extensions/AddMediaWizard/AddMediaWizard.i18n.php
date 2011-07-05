@@ -129,6 +129,7 @@ $messages['cs'] = array(
  */
 $messages['cy'] = array(
 	'addmediawizard-desc' => 'Ychwanegu dewin cyfryngau, a ddatblygwyd gan Kaltura a Sefydliad Wikimedia ar y cyd',
+	'addmediawizard-loading' => "Wrthi'n llwytho'r dewin ychwanegu ffeil gyfrwng",
 );
 
 /** Danish (Dansk)
@@ -316,9 +317,11 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author Tommy6
  */
 $messages['ja'] = array(
 	'addmediawizard-desc' => 'ウィキメディア財団と Kaltura のパートナーシップにより開発された、メディア追加ウィザード',
+	'addmediawizard-loading' => 'メディア追加ウィザードを読み込み中',
 );
 
 /** Kabardian (Cyrillic) (къэбэрдеибзэ/qabardjajəbza (Cyrillic))

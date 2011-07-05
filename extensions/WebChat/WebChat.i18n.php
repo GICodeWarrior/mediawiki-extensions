@@ -817,6 +817,7 @@ $messages['vi'] = array(
  * @author Chenxiaoqino
  * @author Liangent
  * @author Wilsonmess
+ * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
 	'webchat' => '网上聊天',
@@ -825,7 +826,7 @@ $messages['zh-hans'] = array(
 点击“连接”继续。
 如果您已登录，那么您的昵称将被自动输入。
 如果您是匿名用户，系统将自动生成一个昵称，不过登录后可以进行修改。',
-	'right-webchat' => '允许使用[[Special:WebChat|在线聊天]]',
+	'right-webchat' => '允许使用[[Special:WebChat|网络聊天]]',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

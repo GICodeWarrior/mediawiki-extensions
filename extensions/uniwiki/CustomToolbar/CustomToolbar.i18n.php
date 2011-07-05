@@ -628,6 +628,7 @@ Prosím, zkontrolujte blokování vyskakovacích oken ve vašem prohlížeči.',
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Melancholie
  * @author Umherirrender
  */
@@ -651,7 +652,7 @@ $messages['de'] = array(
 	'ct_image_tip' => 'Ein Bild einfügen',
 	'ct_image_caption' => 'Bild einfügen',
 	'ct_attachment_tip' => 'Eine Anlage einfuegen',
-	'ct_attachment_caption' => 'Eine Anlage anfuegen',
+	'ct_attachment_caption' => 'Anhang hinzufügen',
 	'ct_math_sample' => 'Hier LaTeX Formel einfügen',
 	'ct_math_tip_ins' => 'Hier mathematische Formel einfügen (LaTeX)',
 	'ct_math_tip_wrap' => 'Diesen Text in eine mathematische Formel umwandeln (LaTeX)',
