@@ -95,7 +95,7 @@ abstract class ApiAnalyticsBase extends ApiBase {
 					// b, c, d
 					// TODO: Cater for "top:20" etc
 					$query['conds']['country_code'] = $parsedFilter;
-					$titleFields[] = '';
+					$titleFields[] = 'country_code';
 					break;
 				case 'selectwebproperties':
 					/*if ( $params['authcode'] != 'some string' ) {
@@ -109,7 +109,7 @@ abstract class ApiAnalyticsBase extends ApiBase {
 				case 'selectprojects':
 					// c
 					$query['conds']['project_code'] = $parsedFilter;
-					$titleFields[] = '';
+					$titleFields[] = 'project_code';
 					break;
 				case 'selectwikis':
 					// c
