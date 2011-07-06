@@ -2564,6 +2564,7 @@ $messages['yue'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Chenxiaoqino
+ * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
 	'changeauthor' => '更改修订版本作者',
@@ -2571,7 +2572,7 @@ $messages['zh-hans'] = array(
 	'changeauthor-title' => '更换特定修订版本作者',
 	'changeauthor-search-box' => '寻找修定版本',
 	'changeauthor-pagename-or-revid' => '页面名称或修定版本号码：',
-	'changeauthor-pagenameform-go' => '寻找',
+	'changeauthor-pagenameform-go' => '提交',
 	'changeauthor-comment' => '理由：',
 	'changeauthor-changeauthors-multi' => '变更{{PLURAL:$1|作者|作者们}}',
 	'changeauthor-explanation-multi' => '您可以在这个表单中更改任一修订版本的作者。
