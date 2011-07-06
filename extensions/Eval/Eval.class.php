@@ -1,9 +1,8 @@
 <?php
-if (!defined('MEDIAWIKI')) die();
 
 class SpecialEval extends SpecialPage {
 	public function __construct() {
-		parent::__construct( 'Eval' );
+		parent::__construct( 'Eval', 'scaryeval' );
 	}
 
 	function getDescription() {
