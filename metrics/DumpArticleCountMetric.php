@@ -22,10 +22,6 @@ class DumpArticleCountMetric extends ApiAnalyticsBase {
 		return array( 'reach' );
 	}
 
-	public function getMetricFields() {
-		return array( 'reach' );
-	}
-
 	public function getDescription() {
 		return 'All namespace 0 pages which contain an internal link minus redirect pages (for some projects extra namespaces qualify)';
 	}
