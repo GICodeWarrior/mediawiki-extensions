@@ -106,24 +106,115 @@ class qp_QuestionData {
 		return true;
 	}
 
-}
+} /* end of qp_QuestionData class */
 
-/* poll storage and retrieval using DB
+class qp_InterpAnswer {
+	# short answer. it is supposed to be sortable and accountable in statistics
+	# blank value means short answer is unavailable
+	var $short = '';
+	# long answer. it is supposed to be understandable by amateur users
+	# blank value means long answer is unavailable
+	var $long = '';
+	# error message. non-blank value indicates interpretation script error
+	# either due to incorrect script code, or a script-generated one
+	var $error = '';
+	# 2d array of errors generated for [question][proposal], false if no errors
+	var $qpErrors = false;
+
+	/**
+	 * @param $init - optional array of properties to be initialized
+	 */
+	function __construct( $init = null ) {
+		$props = array( 'short', 'long', 'error' );
+		if ( is_array( $init ) ) {
+			foreach ( $props as $prop ) {
+				if ( array_key_exists( $prop, $init ) ) {
+					$this->{$prop} = $init[$prop];
+				}
+			}
+			return;
+		}
+	}
+
+	/**
+	 * "global" error message
+	 */
+	function setError( $msg ) {
+		$this->error = $msg;
+		return $this;
+	}
+
+	/**
+	 * set question / proposal error message (for quizes)
+	 *
+	 * @param $qidx  int index of poll's question
+	 * @param $pidx  int index of question's proposal
+	 * @param $msg   string error message for [question][proposal] pair
+	 */
+	function setQPerror( $qidx, $pidx, $msg ) {
+		if ( !is_array( $this->qpErrors ) ) {
+			$this->qpErrors = array();
+		}
+		if ( !isset( $this->qpErrors[$qidx] ) ) {
+			$this->qpErrors[$qidx] = array();
+		}
+		$this->qpErrors[$qidx][$pidx] = $msg;
+	}
+
+	function isError() {
+		return $this->error != '' || is_array( $this->qpErrors );
+	}
+
+} /* end of qp_InterpAnswer class */
+
+/**
+ * poll storage and retrieval using DB
  * one poll may contain several questions
  */
 class qp_PollStore {
 
 	static $db = null;
-	// DB keys
+	/// DB keys
 	var $pid = null;
 	var $last_uid = null;
-	// common properties
+	/// common properties
 	var $mArticleId = null;
-	var $mPollId = null; // unique id of poll, used for addressing, also with 'qp_' prefix as the fragment part of the link
-	var $mOrderId = null; // order of poll on the page
-	var $dependsOn = null; // dependance from other poll address in the following format: "page#otherpollid"
-	var $Questions = null; // array of QuestionData instances (data from/to DB)
+	# unique id of poll, used for addressing, also with 'qp_' prefix as the fragment part of the link
+	var $mPollId = null;
+	# order of poll on the page
+	var $mOrderId = null;
+	# dependance from other poll address in the following format: "page#otherpollid"
+	var $dependsOn = null;
+	# attempts of voting (passing the quiz). number of resubmits
+	# note: resubmits are counted for syntax-correct answer (the vote is stored),
+	# yet the answer still might be logically incorrect (quiz is not passed / partially passed)
+	var $attempts = 0;
+
+	# NS & DBkey of Title object representing interpretation template for Special:Pollresults page
+	var $interpNS = 0;
+	var $interpDBkey = null;
+	# interpretation of user answer
+	var $interpAnswer;
+
+	# array of QuestionData instances (data from/to DB)
+	var $Questions = null;
+	# poll processing state, read with getState()
+	#
+	# 'NA' - object just was created
+	#
+	# 'incomplete', self::stateIncomplete()
+	#    http post: not every proposals were answered: do not update DB
+	#    http get: this is not the post: do not update DB
+	#
+	# 'error', self::stateError()
+	#    http get: invalid question syntax, parse errors will cause submit button disabled
+	#
+	# 'complete', self::stateComplete()
+	#    check whether the poll was successfully submitted
+	#    store user vote to the DB (when the poll is fine)
+	#
 	var $mCompletedPostData;
+	# true, after the poll results have been successfully stored to DB
 	var $voteDone = false;
 
  /* $argv[ 'from' ] indicates type of construction, other elements of $argv vary according to 'from'
@@ -131,8 +222,9 @@ class qp_PollStore {
 	function __construct( $argv = null ) {
 		global $wgParser;
 		if ( self::$db == null ) {
-			self::$db = & wfGetDB( DB_SLAVE );
+			self::$db = & wfGetDB( DB_MASTER );
 		}
+		$this->interpAnswer = new qp_InterpAnswer();
 		if ( is_array($argv) && array_key_exists( "from", $argv ) ) {
 			$this->Questions = Array();
 			$this->mCompletedPostData = 'NA';
@@ -156,6 +248,18 @@ class qp_PollStore {
 							$argv[ 'dependance' ] !== false ) {
 						$this->dependsOn = $argv[ 'dependance' ];
 					}
+					if ( array_key_exists( 'interpretation', $argv ) ) {
+						# (0,'') indicates that interpretation template does not exists
+						$this->interpNS = 0;
+						$this->interpDBkey = '';
+						if ( $argv['interpretation'] != '' ) {
+							$interp = Title::newFromText( $argv['interpretation'], NS_QP_INTERPRETATION );
+							if ( $interp instanceof Title ) {
+								$this->interpNS = $interp->getNamespace();
+								$this->interpDBkey = $interp->getDBkey();
+							}
+						}
+					}
 					if ( $is_post ) {
 						$this->setPid();
 					} else {
@@ -166,7 +270,7 @@ class qp_PollStore {
 					if ( array_key_exists( 'pid', $argv ) ) {
 						$pid = intval( $argv[ 'pid' ] );
 						$res = self::$db->select( 'qp_poll_desc',
-							array( 'article_id', 'poll_id','order_id', 'dependance' ),
+							array( 'article_id', 'poll_id','order_id', 'dependance', 'interpretation_namespace', 'interpretation_title' ),
 							array( 'pid'=>$pid ),
 							__METHOD__ . ":create from pid" );
 						$row = self::$db->fetchObject( $res );
@@ -176,6 +280,8 @@ class qp_PollStore {
 							$this->mPollId = $row->poll_id;
 							$this->mOrderId = $row->order_id;
 							$this->dependsOn = $row->dependance;
+							$this->interpNS = $row->interpretation_namespace;
+							$this->interpDBkey = $row->interpretation_title;
 						}
 					}
 					break;
@@ -199,13 +305,13 @@ class qp_PollStore {
 						'title'=>$pollTitle,
 						'poll_id'=>$pollId ) );
 				} else {
-					return QP_ERROR_MISSED_TITLE;
+					return qp_Setup::ERROR_MISSED_TITLE;
 				}
 			} else {
-				return QP_ERROR_MISSED_TITLE;
+				return qp_Setup::ERROR_MISSED_TITLE;
 			}
 		} else {
-			return QP_ERROR_INVALID_ADDRESS;
+			return qp_Setup::ERROR_INVALID_ADDRESS;
 		}
 	}
 
@@ -218,9 +324,17 @@ class qp_PollStore {
 		$res = null;
 		if ( $this->mArticleId !==null && $this->mPollId !== null ) {
 			$res = Title::newFromID( $this->mArticleId );
-			$res->setFragment( qp_AbstractPoll::getPollTitleFragment( $this->mPollId ) );
+			$res->setFragment( qp_AbstractPoll::s_getPollTitleFragment( $this->mPollId ) );
 		}
 		return $res;
+	}
+
+	/**
+	 * @return Title instance of interpretation template
+	 */
+	function getInterpTitle() {
+		$title = Title::newFromText( $this->interpDBkey, $this->interpNS );
+		return ( $title instanceof Title ) ? $title : null;
 	}
 
 	// warning: will work only after successful loadUserAlreadyVoted() or loadUserVote()
@@ -357,6 +471,7 @@ class qp_PollStore {
 	}
 
 	// load single user vote
+	// also loads short & long answer interpretation, when available
 	// will be written into self::Questions[]->ProposalCategoryId,ProposalCategoryText,alreadyVoted
 	// may be used only after loadQuestions()
 	// returns true when any of currently defined questions has the votes, false otherwise
@@ -552,19 +667,31 @@ class qp_PollStore {
 	}
 
 	function setLastUser( $username, $store_new_user_to_db = true ) {
-		if ( $this->pid !== null ) {
-			$res = self::$db->select( 'qp_users','uid','name=' . self::$db->addQuotes( $username ), __METHOD__ );
-			$row = self::$db->fetchObject( $res );
-			if ( $row==false ) {
-				if ( $store_new_user_to_db ) {
-					self::$db->insert( 'qp_users', array( 'name'=>$username ), __METHOD__ . ':UpdateUser' );
-					$this->last_uid = self::$db->insertId();
-				} else {
-					$this->last_uid = null;
-				}
+		if ( $this->pid === null ) {
+			return;
+		}
+		$res = self::$db->select( 'qp_users','uid','name=' . self::$db->addQuotes( $username ), __METHOD__ );
+		$row = self::$db->fetchObject( $res );
+		if ( $row == false ) {
+			if ( $store_new_user_to_db ) {
+				self::$db->insert( 'qp_users', array( 'name'=>$username ), __METHOD__ . ':UpdateUser' );
+				$this->last_uid = self::$db->insertId();
 			} else {
-				$this->last_uid = $row->uid;
+				$this->last_uid = null;
 			}
+		} else {
+			$this->last_uid = $row->uid;
+		}
+		$res = self::$db->select( 'qp_users_polls',
+			array( 'attempts', 'short_interpretation', 'long_interpretation' ),
+			array( 'pid'=>$this->pid, 'uid'=>$this->last_uid ),
+			__METHOD__ . ':load short & long answer interpretation' );
+		if ( self::$db->numRows( $res ) != 0 ) {
+			$row = self::$db->fetchObject( $res );
+			$this->attempts = $row->attempts;
+			$this->interpAnswer = new qp_InterpAnswer();
+			$this->interpAnswer->short = $row->short_interpretation;
+			$this->interpAnswer->long = $row->long_interpretation;
 		}
 //	todo: change to "insert ... on duplicate key update ..." when last_insert_id() bugs will be fixed
 	}
@@ -582,7 +709,7 @@ class qp_PollStore {
 
 	private function loadPid() {
 		$res = self::$db->select( 'qp_poll_desc',
-			array( 'pid', 'order_id', 'dependance' ),
+			array( 'pid', 'order_id', 'dependance', 'interpretation_namespace', 'interpretation_title' ),
 			'article_id=' . self::$db->addQuotes( $this->mArticleId ) . ' and ' .
 			'poll_id=' . self::$db->addQuotes( $this->mPollId ),
 			__METHOD__ );
@@ -596,19 +723,23 @@ class qp_PollStore {
 			if ( $this->dependsOn === null ) {
 				$this->dependsOn = $row->dependance;
 			}
+			if ( $this->interpDBkey === null ) {
+				$this->interpNS = $row->interpretation_namespace;
+				$this->interpDBkey = $row->interpretation_title;
+			}
 			$this->updatePollAttributes( $row );
 		}
 	}
 
 	private function setPid() {
 		$res = self::$db->select( 'qp_poll_desc',
-			array( 'pid', 'order_id', 'dependance' ),
+			array( 'pid', 'order_id', 'dependance', 'interpretation_namespace', 'interpretation_title' ),
 			'article_id=' . self::$db->addQuotes( $this->mArticleId ) . ' and ' .
 			'poll_id=' . self::$db->addQuotes( $this->mPollId ) );
 		$row = self::$db->fetchObject( $res );
-		if ( $row==false ) {
+		if ( $row == false ) {
 			self::$db->insert( 'qp_poll_desc',
-				array( 'article_id'=>$this->mArticleId, 'poll_id'=>$this->mPollId, 'order_id'=>$this->mOrderId, 'dependance'=>$this->dependsOn ),
+				array( 'article_id'=>$this->mArticleId, 'poll_id'=>$this->mPollId, 'order_id'=>$this->mOrderId, 'dependance'=>$this->dependsOn, 'interpretation_namespace'=>$this->interpNS, 'interpretation_title'=>$this->interpDBkey ),
 				__METHOD__ . ':update poll' );
 			$this->pid = self::$db->insertId();
 		} else {
@@ -619,10 +750,13 @@ class qp_PollStore {
 	}
 
 	private function updatePollAttributes( $row ) {
-		if ( $this->mOrderId != $row->order_id || $this->dependsOn != $row->dependance ) {
+		if ( $this->mOrderId != $row->order_id ||
+				$this->dependsOn != $row->dependance ||
+				$this->interpNS != $row->interpretation_namespace ||
+				$this->interpDBkey != $row->interpretation_title ) {
 			$res = self::$db->replace( 'qp_poll_desc',
 				'',
-				array( 'pid'=>$this->pid, 'article_id'=>$this->mArticleId, 'poll_id'=>$this->mPollId, 'order_id'=>$this->mOrderId, 'dependance'=>$this->dependsOn ),
+				array( 'pid'=>$this->pid, 'article_id'=>$this->mArticleId, 'poll_id'=>$this->mPollId, 'order_id'=>$this->mOrderId, 'dependance'=>$this->dependsOn, 'interpretation_namespace'=>$this->interpNS, 'interpretation_title'=>$this->interpDBkey ),
 				__METHOD__ . ':poll attributes update'
 			);
 		}
@@ -674,6 +808,41 @@ class qp_PollStore {
 		}
 	}
 
+	/**
+	 * Prepares an array of user answer to the current poll and interprets these
+	 * Stores the result in $this->interpAnswer
+	 */
+	private function interpretVote() {
+		$this->interpAnswer = new qp_InterpAnswer();
+		$interpTitle = $this->getInterpTitle();
+		if ( $interpTitle === null ) {
+			return;
+		}
+		$interpArticle = new Article( $interpTitle, 0 );
+		if ( !$interpArticle->exists() ) {
+			return;
+		}
+		# prepare array of user answers that will be passed to the interpreter
+		$poll_answer = array();
+		foreach ( $this->Questions as $qkey => &$qdata ) {
+			$questions = array();
+			foreach( $qdata->ProposalText as $propkey => &$proposal_text ) {
+				$proposals = array();
+				foreach ( $qdata->Categories as $catkey => &$cat_name ) {
+					$text_answer = '';
+					if ( array_key_exists( $propkey, $qdata->ProposalCategoryId ) &&
+								( $id_key = array_search( $catkey, $qdata->ProposalCategoryId[ $propkey ] ) ) !== false ) {
+						$proposals[$catkey] = $qdata->ProposalCategoryText[ $propkey ][ $id_key ];
+					}
+				}
+				$questions[] = $proposals;
+			}
+			$poll_answer[] = $questions;
+		}
+		# interpret the poll answer to get interpretation answer
+		$this->interpAnswer = qp_Interpret::getAnswer( $interpArticle, $poll_answer );
+	}
+
 	// warning: requires qp_PollStorage::last_uid to be set
 	private function setAnswers() {
 		$insert = Array();
@@ -691,32 +860,40 @@ class qp_PollStore {
 			__METHOD__ . ':delete previous answers of current user to the same poll'
 		);
 		# vote
-		$old_user_abort = ignore_user_abort( true );
 		if ( count( $insert ) > 0 ) {
 			self::$db->replace( 'qp_question_answers',
 				'',
 				$insert,
 				__METHOD__ );
-			self::$db->replace( 'qp_users_polls',
-				'',
-				array( 'uid'=>$this->last_uid, 'pid'=>$this->pid ),
-				__METHOD__ );
+			$this->interpretVote();
+			# update interpretation result and number of syntax-valid resubmit attempts
+			$qp_users_polls = self::$db->tableName( 'qp_users_polls' );
+			$short = self::$db->addQuotes( $this->interpAnswer->short );
+			$long = self::$db->addQuotes( $this->interpAnswer->long );
+			$stmt = "INSERT INTO {$qp_users_polls} (uid,pid,short_interpretation,long_interpretation)\n VALUES ( " . intval( $this->last_uid ) . ", " . intval( $this->pid ) . ", {$short}, {$long} )\n ON DUPLICATE KEY UPDATE attempts = attempts + 1, short_interpretation = {$short} , long_interpretation = {$long}";
+			self::$db->query( $stmt, __METHOD__ );
 		}
-		ignore_user_abort( $old_user_abort );
 	}
 
-	# when the user votes and poll wasn't previousely voted yet, it also creates the poll in DB
+	/**
+	 * Please call after the poll has been loaded but before it's being submitted
+	 */
+	function noMoreAttempts() {
+		return qp_Setup::$max_submit_attempts > 0 && $this->attempts >= qp_Setup::$max_submit_attempts;
+	}
+
+	# when the user votes and poll wasn't previousely voted yet, it also creates the poll structures in DB
 	function setUserVote() {
 		if ( $this->pid !==null &&
 				$this->last_uid !== null &&
 				$this->mCompletedPostData == "complete" &&
 				is_array( $this->Questions ) && count( $this->Questions ) > 0 ) {
-			$old_user_abort = ignore_user_abort( true );
+			self::$db->begin();
 			$this->setQuestionDesc();
 			$this->setCategories();
 			$this->setProposals();
 			$this->setAnswers();
-			ignore_user_abort( $old_user_abort );
+			self::$db->commit();
 			$this->voteDone = true;
 		}
 	}
