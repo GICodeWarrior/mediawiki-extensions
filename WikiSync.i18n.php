@@ -654,6 +654,13 @@ ab dr Version $3 witt durfiere?',
 	'wikisync_js_sync_end_rtl' => 'Synchronisierig vum lokale Wiki mit em andre Wiki isch fertig gsi am $1',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'wikisync_unsupported_user' => "רק משתמש בוט מיוחד $1 יכול לבצע סנכרוני ויקי. נא להיכנס לחשבון $1. אין לשנות את השם של $1 בין הסנכרונים, אחרת התכנה לא תוכל לדלג כראוי על הגרסאות הריקות (למידע נוסף ר' [http://www.mediawiki.org/wiki/Extension:WikiSync]).",
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -1620,8 +1627,10 @@ $messages['uk'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Hydra
+ * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
 	'wikisync_remote_login_button' => '登入',
+	'wikisync_js_revision' => '修订版本$1',
 );
 
