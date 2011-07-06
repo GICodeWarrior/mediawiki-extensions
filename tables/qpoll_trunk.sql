@@ -10,6 +10,8 @@ CREATE TABLE `qp_poll_desc` (
   `poll_id` tinytext NOT NULL,
   `order_id` int unsigned NOT NULL,
   `dependance` mediumtext NOT NULL,
+  interpretation_namespace int NOT NULL,
+  interpretation_title varchar(255) binary NOT NULL,
   PRIMARY KEY poll (pid),
   UNIQUE INDEX article_poll (article_id,poll_id(128))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -62,6 +64,9 @@ DROP TABLE IF EXISTS `qp_users_polls`;
 CREATE TABLE `qp_users_polls` (
   `uid` int unsigned NOT NULL,
   `pid` int unsigned NOT NULL,
+  `attempts` int NOT NULL default 1,
+  `short_interpretation` tinytext NOT NULL default '',
+  `long_interpretation` mediumtext NOT NULL default '',
   PRIMARY KEY user_poll (uid,pid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
