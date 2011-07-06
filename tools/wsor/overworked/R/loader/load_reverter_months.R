@@ -3,7 +3,10 @@ source("util/env.R")
 
 
 load_reverter_months = function(verbose=T, reload=F){
-	filename = paste(DATA_DIR, "en.reverter_months.20110115.tsv", sep="/")
+	filename = paste(DATA_DIR, "en.reverter_months.20110115.no_quotes_or_bots.tsv", sep="/")
+	if(!exists("REVERTER_MONTHS")){
+		REVERTER_MONTHS <<- NULL
+	}
 	if(is.null(REVERTER_MONTHS) | reload){
 		REVERTER_MONTHS <<- NULL
 	}
@@ -12,8 +15,8 @@ load_reverter_months = function(verbose=T, reload=F){
 		REVERTER_MONTHS <<- read.table(
 			filename, 
 			header=T, sep="\t", 
-			quote="'\"", comment.char="", 
-			na.strings="\\N",
+			quote="", comment.char="", 
+			na.strings="\\N"
 		)
 		if(verbose){cat("DONE!\n")}
 	}

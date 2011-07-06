@@ -8,12 +8,12 @@ def main(args):
 		bots.add(int(line.strip()))
 	
 	headerLine = args.input.readline().strip()
-	headers = [eval(h) for h in headerLine.split("\t")]
+	headers = headerLine.split("\t")
 	print(headerLine)
 	
 	for line in args.input:
-		row = dict(zip(headers, [eval(v) for v in line.strip().split("\t")]))
-		if row['user_id'] not in bots:
+		row = dict(zip(headers, line.strip().split("\t")))
+		if int(row['user_id']) not in bots:
 			print(line.strip())
 		
 	
@@ -21,8 +21,7 @@ def main(args):
 
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser(
-		description=
-			'Removes bot editors from patrollers file'
+		description='Removes bot editors from patrollers file'
 	)
 	parser.add_argument(
 		'bots',

@@ -90,7 +90,7 @@ CREATE TABLE halfak.reverted_20100130(
 )
 
 
-CREATE TABLE halfak.revert_pre_20110115(
+CREATE TABLE halfak.revert_20110115(
 	revision_id    INT,
 	rvtd_to_id INT,
 	revs_reverted  INT
@@ -143,32 +143,13 @@ FROM
 INNER JOIN revision reverted
 	ON r.revision_id = reverted.rev_id
 INNER JOIN revision reverting
-	ON r.revision_id = reverting.rev_id
+	ON r.rvtg_id = reverting.rev_id
 INNER JOIN revision reverted_to
-	ON r.revision_id = reverted_to.rev_id;
-CREATE INDEX rev_id_idx ON halfak.reverted_20110115 (revision_id);
-CREATE INDEX rvtg_id_idx ON halfak.reverted_20110115 (rvtg_id);
+	ON r.rvtd_to_id = reverted_to.rev_id;
 
 
-CREATE TABLE halfak.revert_20110115(
-	revision_id    INT,
-	rvtto_id     INT,
-	is_vandalism   BOOL,
-	revs_reverted  INT
-);
-INSERT INTO halfak.revert_20110115
-SELECT
-	rvt.revision_id,
-	rvt.rvtd_to_id,
-	bit_or(rvtd.is_vandalism),
-	rvt.revs_reverted
-FROM halfak.revert_pre_20110115 rvt
-INNER JOIN halfak.reverted_20110115 rvtd
-	ON rvt.revision_id = rvtd.rvtg_id
-GROUP BY rvt.revision_id, rvt.rvtd_to_id, rvt.revs_reverted;
-CREATE INDEX rev_id_idx ON halfak.revert_20110115 (revision_id);
-CREATE INDEX is_vandalism ON halfak.revert_20110115 (is_vandalism);
 
+	
 
 
 
@@ -181,7 +162,7 @@ SELECT
 	u.user_name                                             as username,
 	COUNT(*)                                                as revisions, 
 	SUM(rvt.revision_id IS NOT NULL)                        as reverts, 
-	SUM(rvt.revision_id IS NOT NULL AND rvt.is_vandalism)   as vandal_reverts
+	SUM(rvt.is_vandalism)                                   as vandal_reverts
 FROM revision r
 LEFT JOIN halfak.revert_20100130 rvt
 	ON r.rev_id = rvt.revision_id
@@ -190,3 +171,22 @@ INNER JOIN user u
 WHERE rev_timestamp < "20110000000000"
 GROUP BY SUBSTRING(rev_timestamp, 1,4), rev_user, u.user_name
 
+
+SELECT
+	SUBSTR(rev_timestamp, 1,4),
+	SUBSTR(rev_timestamp, 1,2),
+	count(*), 
+	sum(revision_id IS NOT NULL), 
+	sum(revision_id IS NOT NULL AND is_vandalism) 
+FROM halfak.revert_20110115 rvt 
+INNER JOIN revision r ON rvt.revision_id = r.rev_id
+GROUP BY 
+	SUBSTR(rev_timestamp, 1,4),
+	SUBSTR(rev_timestamp, 1,2);
+	
+	
+	
+
+"(Reverted ([0-9]+ )?edits by \[\[Special:Contributions/[^\|]+\|[^\]]+]] \(\[\[User talk:[^\|]+\|talk\]\]\) to last version by .+)|" + 
+"(Message re. \[\[[^\]]+\]\])|" + 
+"(Level [0-9]+ warning re. \[\[[^\]]+\]\]"
