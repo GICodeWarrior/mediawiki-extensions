@@ -144,6 +144,7 @@ abstract class ApiAnalyticsBase extends ApiBase {
 				$item[$field] = $row->$field;
 			}
 			$data[ $row->{$this->getColumnName( 'comscore.region_code' )} ][] = $item;
+			$result->setIndexedTagName( $data[ $row->{$this->getColumnName( 'comscore.region_code' )} ], 'region' );
 		}
 
 		$result->setIndexedTagName( $data, 'data' );
