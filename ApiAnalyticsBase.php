@@ -147,24 +147,25 @@ abstract class ApiAnalyticsBase extends ApiBase {
 
 		$fields = array_map( array( $this, 'getColumnName' ), $query['fields'] );
 
+		$storageKey = $titleFields[0];
 		$things = array();
 		// Build result set
 		foreach( $res as $row ) {
-			// Dump all data to output
+			if( !isset( $things[$row->$storageKey] ) ) { // find dynamic value for each query type
+				$things[$row->$storageKey] = array();
+				foreach( $titleFields as $field ) {
+					$things[$row->$storageKey][$field] = $row->$field;
+				}
+			}
+
+			// Dump rest of data to output
 			$item = array();
 			foreach( array_diff( $fields, $titleFields ) as $field ) {
 				$item[$field] = $row->$field;
 			}
 
-			if( !isset( $things[$row->region_code] ) ) { // find dynamic value for each query type
-				$things[$row->region_code] = array();
-				foreach( $titleFields as $field ) {
-					$things[$row->region_code][$field] = $row->$field;
-				}
-			}
-
-			$things[$row->region_code]['data'][] = $item;
-			$result->setIndexedTagName( $things[$row->region_code]['data'], 'd' );
+			$things[$row->$storageKey]['data'][] = $item;
+			$result->setIndexedTagName( $things[$row->$storageKey]['data'], 'd' );
 		}
 
 		// Add data to the output
