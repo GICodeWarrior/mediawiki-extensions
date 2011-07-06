@@ -8,18 +8,32 @@ function Surface( $container, document ) {
 	this.$ = $container;
 	this.document = document;
 	this.rendered = false;
+	this.location = null;
 	this.render();
-	
-	this.$.mousedown(function(e) {
-		var $target = $( e.target );
-		$block = $target.is( '.editSurface-block' ) ? $target : $target.closest( '.editSurface-block' ),
-		block = $block.data( 'block' );
-		var position = new Position(e.pageX - $block.offset().left, e.pageY - $block.offset().top);
-		var offest = block.flow.getOffset( position );
-		block.insertContent(offest, '!');
-		//this.setCursor(new Location(block, offset))
+
+	var surface = this;
+
+	this.$.bind({
+		'mousedown' : function(e) {
+			return surface.onMouseDown( e );
+		}
 	});
 }
+
+Surface.prototype.onMouseDown = function( e ) {
+	var $target = $( e.target );
+	$block = $target.is( '.editSurface-block' ) ? $target : $target.closest( '.editSurface-block' ),
+	block = $block.data( 'block' );
+	
+	if( !block ) {
+		return false;
+	}
+	
+	var position = new Position(e.pageX - $block.offset().left,
+								e.pageY - $block.offset().top);
+	var offset = block.flow.getOffset( position );
+	this.setCursor( new Location( block, offset ) );
+};
 
 /**
  * Moves the cursor to a new location.
@@ -27,7 +41,8 @@ function Surface( $container, document ) {
  * @param location {Location} Location to move the cursor to
  */
 Surface.prototype.setCursor = function( location ) {
-	//
+	this.location = location;
+	// ...
 };
 
 /**
