@@ -151,7 +151,7 @@ abstract class ApiAnalyticsBase extends ApiBase {
 		$things = array();
 		// Build result set
 		foreach( $res as $row ) {
-			if( !isset( $things[$row->$storageKey] ) ) { // find dynamic value for each query type
+			if( isset($storageKey) && !isset( $things[$row->$storageKey] ) ) { // find dynamic value for each query type
 				$things[$row->$storageKey] = array();
 				foreach( $titleFields as $field ) {
 					$things[$row->$storageKey][$field] = $row->$field;
@@ -164,8 +164,13 @@ abstract class ApiAnalyticsBase extends ApiBase {
 				$item[$field] = $row->$field;
 			}
 
-			$things[$row->$storageKey]['data'][] = $item;
-			$result->setIndexedTagName( $things[$row->$storageKey]['data'], 'd' );
+			if( isset( $storageKey ) ){
+				$things[$row->$storageKey]['data'][] = $item;
+			
+				$result->setIndexedTagName( $things[$row->$storageKey]['data'], 'd' );
+			} else {
+				$result->addValue( array( $this->getModuleName() ), null, $item );
+			}
 		}
 
 		// Add data to the output
