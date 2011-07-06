@@ -24,4 +24,4 @@ $wgExtensionAliasesFiles['Eval'] = $dir . 'Eval.alias.php';
 
 $wgSpecialPages['Eval'] = 'SpecialEval';
 $wgAutoloadClasses['SpecialEval'] = $dir . 'Eval.class.php';
-
+$wgAdditionalRights[] = 'scaryeval';
