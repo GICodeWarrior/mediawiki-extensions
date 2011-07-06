@@ -13,7 +13,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 class ApiSignup extends ApiBase {
 
 	public function __construct( $main, $action ) {
-		parent::__construct( $main, $action);
+		parent::__construct( $main, $action );
 	}
 
 	public function execute() {
@@ -28,6 +28,9 @@ class ApiSignup extends ApiBase {
 			'wpEmail'  => $params['email'],
 			'wpDomain' => $params['domain'],
                         'wpReason' => $params['realname'],
+                        'wpSourceAction' => $params['source_action'],
+                        'wpSourceNS' => $params['source_ns'],
+                        'wpSourceArticle' => $params['source_article'],
 			'wpRemember' => ''
 		) );
 
@@ -158,6 +161,9 @@ class ApiSignup extends ApiBase {
 			'email' => null,
 			'domain' => null,
                         'realname' => null,
+                        'source_action' => null,
+                        'source_ns' => null,
+                        'source_article' => null,
 		);
 	}
 
@@ -169,10 +175,11 @@ class ApiSignup extends ApiBase {
 			'email' => 'Email ID(optional)',
 			'domain' => 'Domain (optional)',
                         'realname' => 'Real Name(optional)',
+                        'source_action' => 'Source Action',
+                        'source_ns' => 'Source Namespace ID',
+                        'source_article' => 'Source Article ID',
 		);
 	}
-
-
 
 	public function getDescription() {
 		return array(
