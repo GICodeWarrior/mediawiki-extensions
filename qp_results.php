@@ -28,10 +28,11 @@
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/QPoll/qp_user.php";
  * 
- * @version 0.7.0
+ * @version 0.8.0a
  * @link http://www.mediawiki.org/wiki/Extension:QPoll
  * @author QuestPC <questpc@rambler.ru>
  */
+
 if ( !defined( 'MEDIAWIKI' ) ) {
 	die( "This file is part of the QPoll extension. It is not a valid entry point.\n" );
 }
@@ -39,17 +40,34 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 class PollResults extends SpecialPage {
 
 	public function __construct() {
-		global $wgVersion;
-		parent::__construct( 'PollResults', 'delete' );
+		parent::__construct( 'PollResults', 'read' );
 		# for MW 1.15 (still being used by many customers)
-		if ( version_compare( $wgVersion, '1.16', '<' ) ) {
-			
+		# please do not remove until 2012
+		if ( self::mediaWikiVersionCompare( '1.16' ) ) {
+			wfLoadExtensionMessages( 'QPoll' );
 		}
 	}
+
+	static $accessPermissions = array( 'read', 'showresults' );
 
 	static $skin = null;
 	static $UsersLink = "";
 	static $PollsLink = "";
+
+	/**
+	 * Checks if the given user (identified by an object) can execute this special page
+	 * @param $user User: the user to check
+	 * @return Boolean: does the user have permission to view the page?
+	 */
+	public function userCanExecute( $user ) {
+		# this fn is used to decide whether to show the page link at Special:Specialpages
+		foreach ( self::$accessPermissions as $permission ) {
+			if ( !$user->isAllowed( $permission ) ) {
+				return false;
+			}
+		}
+		return true;
+	}
 
 	public function execute( $par ) {
 		global $wgOut, $wgRequest;
@@ -57,10 +75,15 @@ class PollResults extends SpecialPage {
 							// (should be equal to 'http://'.$_SERVER['SERVER_NAME'])
 		global $wgScript;   // "/subdirectory/of/wiki/index.php"
 		global $wgUser;
-		if ( !$wgUser->isAllowed( 'delete' ) ) {
-			$wgOut->permissionRequired('delete');
-			return;
+
+		# check whether the user has sufficient permissions
+		foreach ( self::$accessPermissions as $permission ) {
+			if ( !$wgUser->isAllowed( $permission ) ) {
+				$wgOut->permissionRequired( $permission );
+				return;
+			}
 		}
+
 		if ( class_exists( 'ResourceLoader' ) ) {
 			# MW 1.17+
 			// $wgOut->addModules( 'jquery' );
@@ -81,8 +104,7 @@ class PollResults extends SpecialPage {
 		$wgOut->addHTML( '<div class="qpoll">' );
 		$output = "";
 		$this->setHeaders();
-		$db = & wfGetDB( DB_SLAVE );
-		if ( ( $result = $this->checkTables( $db ) ) !== true ) {
+		if ( ( $result = $this->checkTables() ) !== true ) {
 			# tables check failed
 			$wgOut->addHTML( $result );
 			return;
@@ -169,10 +191,30 @@ class PollResults extends SpecialPage {
 		$wgOut->addHTML( $output . '</div>' );
 	}
 
-	# check whether the extension tables exist in DB
-	# @param    $db - MediaWiki database object
-	# @return   true if tables are found, string with error message otherwise
-	private function checkTables( $db ) {
+	/**
+	 * check for the existence of multiple fields in the selected database table
+	 * @param $table table name
+	 * @param $fields field names
+	 */
+	private function fieldsExists( $table, $fields ) {
+		$db = & wfGetDB( DB_SLAVE );
+		if ( !is_array( $fields ) ) {
+			$fields = array( $fields );
+		}
+		foreach( $fields as $field ) {
+			if ( !$db->fieldExists( $table, $field ) ) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	/**
+	 * check whether the extension tables exist in DB
+	 * @return   true if tables are found, string with error message otherwise
+	 */
+	private function checkTables() {
+		$db = & wfGetDB( DB_SLAVE );
 		$sql_tables = array(
 			"qp_poll_desc",
 			"qp_question_desc",
@@ -181,31 +223,76 @@ class PollResults extends SpecialPage {
 			"qp_question_answers",
 			"qp_users_polls",
 			"qp_users");
+		$addFields = array(
+			'qpoll_interpretation.src' => array(
+				'qp_poll_desc' => array( 'interpretation_namespace', 'interpretation_title' ),
+				'qp_users_polls' => array( 'attempts', 'short_interpretation', 'long_interpretation' )
+			)
+		);
 		// check whether the tables were initialized
 		$tablesFound = 0;
 		$result = true;
 		foreach ( $sql_tables as $table ) {
-			$tname = str_replace( "`", "'", $db->tableName( $table ) );
-			$res = $db->query( "SHOW TABLE STATUS LIKE $tname" );
-			if ( $db->numRows( $res ) > 0 ) {
+			if ( $db->tableExists( $table ) ) {
 				$tablesFound++;
 			}
 		}
+		if ( $tablesFound != count( $sql_tables ) ) {
+			# some tables are missing, serious DB error
+			return "Some of the extension database tables are missing.<br />Please restore from backup or drop the remaining extension tables, then reload this page.";
+		}
 		if ( $tablesFound  == 0 ) {
-			# no tables were found, initialize the DB completely
-			$r = $db->sourceFile( qp_Setup::$ExtDir . "/qpoll.src" ); 
-			if ( $r === true ) {
-				$result = 'Tables were initialized.<br />Please <a href="#" onclick="window.location.reload()">reload</a> this page to view future page edits.';
-			} else {
-				$result = $r;
+			# no tables were found, initialize the DB completely with minimal version
+			if ( ( $r = $db->sourceFile( qp_Setup::$ExtDir . '/tables/qpoll_0.7.0.src' ) ) !== true ) {
+				return $r;
 			}
-		} else {
-			if ( $tablesFound != count( $sql_tables ) ) {
-				# some tables are missing, serious DB error
-				$result = "Some of the extension database tables are missing.<br />Please restore from backup or drop the remaining extension tables, then reload this page.";
-		  }
+		}
+		/* start of SQL updates */
+		$scriptsToRun = array();
+		foreach( $addFields as $script => &$table_list ) {
+			foreach( $table_list as $table => &$fields_list ) {
+				if ( !$this->fieldsExists( $table, $fields_list ) ) {
+					$scriptsToRun[$script] = true;
+				}
+			}
+		}
+		foreach( $scriptsToRun as $script => $val ) {
+			if ( ( $r = $db->sourceFile( qp_Setup::$ExtDir . "/archives/{$script}" ) ) !== true ) {
+				return $r;
+			}
+		}
+		/* end of SQL updates */
+		if ( $tablesFound == 0 ) {
+			$result = 'Tables were initialized.';
+		}
+		if ( count( $scriptsToRun ) > 0 ) {
+			$result = 'Tables were upgraded.';
+		}
+		if ( is_string( $result ) ) {
+			$result .= '<br />Please <a href="#" onclick="window.location.reload()">reload</a> this page to view future page edits.';
 		}
 		return $result;
+	}
+
+	private function showAnswerHeader( qp_PollStore $pollStore ) {
+		$out = '<div style="font-weight:bold;">' . wfMsg( 'qp_results_submit_attempts', intval( $pollStore->attempts ) ) . '</div>';
+		$interpTitle = $pollStore->getInterpTitle();
+		if ( $interpTitle === null ) {
+			$out .= wfMsg( 'qp_poll_has_no_interpretation' );
+			return $out;
+		}
+		/*
+		# currently, error is not stored in DB, only the vote and long / short interpretations
+		# todo: is it worth to store it?
+		if ( $pollStore->interpAnswer->error != '' ) {
+			return '<strong class="error">' . qp_Setup::specialchars( $pollStore->interpAnswer->error ) . '</strong>';
+		}
+		*/
+		$out .= '<div class="interp_answer">' . wfMsg( 'qp_results_interpretation_header' ) .
+				'<div class="interp_answer_body">' . nl2br( wfMsg( 'qp_results_short_interpretation', qp_Setup::specialChars( $pollStore->interpAnswer->short ) ) ) . '</div>' .
+				'<div class="interp_answer_body">' . nl2br( wfMsg( 'qp_results_long_interpretation', qp_Setup::specialChars( $pollStore->interpAnswer->long ) ) ) . '</div>' .
+				'</div>';
+		return $out;
 	}
 
 	private function showUserVote( $pid, $uid ) {
@@ -221,10 +308,11 @@ class PollResults extends SpecialPage {
 					$pollStore->setLastUser( $userName, false );
 					if ( $pollStore->loadUserVote() ) {
 						$poll_title = $pollStore->getTitle();
-						# 'parentheses' is unavailable in 1.14.x
+						# 'parentheses' is unavailable in MediaWiki 1.15.x
 						$poll_link = self::$skin->link( $poll_title, $poll_title->getPrefixedText() . wfMsg( 'word-separator' ) . wfMsg( 'qp_parentheses', $pollStore->mPollId ) );
 						$output .= wfMsg( 'qp_browse_to_user', $user_link ) . "<br />\n";
 						$output .= wfMsg( 'qp_browse_to_poll', $poll_link ) . "<br />\n";
+						$output .= $this->showAnswerHeader( $pollStore );
 						foreach ( $pollStore->Questions as $qkey => &$qdata ) {
 							$output .= "<br />\n<b>" . $qkey . ".</b> " . qp_Setup::entities( $qdata->CommonQuestion ) . "<br />\n";
 							$output .= $this->displayUserQuestionVote( $qdata );
@@ -806,7 +894,7 @@ class qp_UserPollsList extends qp_QueryPage {
 
 	function formatResult( $skin, $result ) {
 		global $wgLang, $wgContLang;
-		$poll_title = Title::makeTitle( $result->ns, $result->title, qp_AbstractPoll::getPollTitleFragment( $result->poll_id, '' ) );
+		$poll_title = Title::makeTitle( $result->ns, $result->title, qp_AbstractPoll::s_getPollTitleFragment( $result->poll_id, '' ) );
 		$pagename = qp_Setup::specialchars( $wgContLang->convert( $poll_title->getPrefixedText() ) );
 		$pollname = qp_Setup::specialchars( $result->poll_id );
 		$goto_link = self::$skin->link( $poll_title, wfMsg( 'qp_source_link' ) );
