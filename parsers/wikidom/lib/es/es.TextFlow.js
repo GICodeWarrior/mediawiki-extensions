@@ -119,14 +119,14 @@ TextFlow.prototype.getPosition = function( offset ) {
 	 * positions, which is a nice benefit of this method.
 	 */
 	while ( line < lineCount ) {
-		if ( offset >= lines[line].start && offset < lines[line].end ) {
-			position.bottom = position.top + lines[line].height;
+		if ( offset >= this.lines[line].start && offset < this.lines[line].end ) {
+			position.bottom = position.top + this.lines[line].height;
 			break;
 		}
-		position.top += lines[line].height;
+		position.top += this.lines[line].height;
 		line++;
 	};
-	
+
 	/*
 	 * Virtual n+1 position
 	 * 
@@ -134,6 +134,7 @@ TextFlow.prototype.getPosition = function( offset ) {
 	 * line, a virtual n+1 position is supported. Offsets beyond this virtual position will cause
 	 * an exception to be thrown.
 	 */
+/*
 	if ( line === lineCount ) {
 		if ( offset !== lines[line].end + 1 ) {
 			line--;
@@ -143,6 +144,7 @@ TextFlow.prototype.getPosition = function( offset ) {
 			throw 'Out of range error. Offset is expected to be less than or equal to text length.';
 		}
 	}
+*/	
 	
 	/*
 	 * Offset measuring
@@ -150,14 +152,14 @@ TextFlow.prototype.getPosition = function( offset ) {
 	 * Since the left position will be zero for the first character in the line, so we can skip
 	 * measuring for those cases.
 	 */
-	if ( lines[line].start < offset ) {
+	if ( this.lines[line].start < offset ) {
 		var $ruler = $( '<div class="editSurface-line"></div>' ).appendTo( this.$ ),
 			ruler = $ruler[0];
-		ruler.innerHTML = this.escape( text.substring( lines[startLine].start, offset ) );
+		ruler.innerHTML = this.escape( this.lines[line].text.substring( 0, offset - this.lines[line].start ) );
 		position.left = ruler.clientWidth;
 		$ruler.remove();
-	} 
-	
+	}
+
 	return position;
 };
 
