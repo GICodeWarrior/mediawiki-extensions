@@ -797,10 +797,8 @@ class DumpHTML {
 		$context->setUser( $wgUser );
 
 		$wgTitle = $title; // b/c
-		$wgOut = new OutputPage( $context );
+		$wgOut = $context->getOutput(); // b/c
 		$wgOut->parserOptions( new ParserOptions() ); // anon
-
-		$context->setOutput( $wgOut );
 
 		$ns = $wgTitle->getNamespace();
 		if ( $ns == NS_SPECIAL ) {
