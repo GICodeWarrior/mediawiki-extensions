@@ -85,7 +85,7 @@ abstract class ApiAnalyticsBase extends ApiBase {
 			switch ( $filter ) {
 				case 'selectregions':
 					// a, b, c
-					$query['conds']['region_code'] = $parsedFilter;
+					$query['conds']['comscore_regions.region_code'] = $parsedFilter;
 					break;
 				case 'selectcountries':
 					// b, c, d
@@ -102,7 +102,7 @@ abstract class ApiAnalyticsBase extends ApiBase {
 					break;
 				case 'selectprojects':
 					// c
-					$query['conds']['comscore_regions.project_code'] = $parsedFilter;
+					$query['conds']['project_code'] = $parsedFilter;
 					break;
 				case 'selectwikis':
 					// c
