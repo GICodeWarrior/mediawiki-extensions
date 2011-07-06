@@ -18,12 +18,15 @@ function Surface( $container, document ) {
 			return surface.onMouseDown( e );
 		}
 	});
+	
+	this.$cursor = $( '<div class="editSurface-cursor"></div>' );
+	this.$.after( this.$cursor );
 }
 
 Surface.prototype.onMouseDown = function( e ) {
 	var $target = $( e.target );
-	$block = $target.is( '.editSurface-block' ) ? $target : $target.closest( '.editSurface-block' ),
-	block = $block.data( 'block' );
+		$block = $target.is( '.editSurface-block' ) ? $target : $target.closest( '.editSurface-block' ),
+		block = $block.data( 'block' );
 	
 	if( !block ) {
 		return false;
@@ -42,7 +45,14 @@ Surface.prototype.onMouseDown = function( e ) {
  */
 Surface.prototype.setCursor = function( location ) {
 	this.location = location;
-	// ...
+	
+	var position = this.location.block.getPosition( this.location.offset );
+	var offset = this.location.block.$.offset();
+
+	this.$cursor.css({
+		'left': position.left + offset.left,
+		'top': position.top + offset.top
+	}).show();
 };
 
 /**
