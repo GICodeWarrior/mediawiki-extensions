@@ -1,4 +1,4 @@
-MediaWiki extension QPoll, version 0.8.0a
+MediaWiki extension QPoll, version 0.7.0
 
 This extension allows to create polls embedded into the wikipages. Every poll
 may contain a set of the questions of various types. The polls can be "chained"
@@ -9,15 +9,5 @@ the groups (metacategories also known as category spans) to make a
 "subquestions" inside a question. Optional dependence of the question's
 proposal text on the user's choice of category in another previously voted
 poll.
-
-=== v0.8.0a ===
-Now it is possible to:
-
-* Create interpretation scripts for psychological tests and quizes
-* Generate and store interpretations / marks / scores
-* Highlight wrong answers to question proposals
-* Log and limit number of answer attempts
-
-which allows to use the extension as education tool.
 
 See http://mediawiki.org/wiki/Extension:QPoll for further details.

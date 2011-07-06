@@ -29,7 +29,7 @@
  * require_once "$IP/extensions/QPoll/qp_user.php";
  *
  * @file
- * @version 0.8.0a
+ * @version 0.7.0
  * @link http://www.mediawiki.org/wiki/Extension:QPoll
  * @author QuestPC <questpc@rambler.ru>
  * @ingroup Extensions
@@ -75,12 +75,6 @@ $messages['en'] = array(
 	'qp_results_line_qpul' => '$1: $2',
 	'qp_header_line_qucl' => '$1. $2<br />$3 ??? $4',
 	'qp_results_line_qucl' => '$1: $2 $3',
-	'qp_results_submit_attempts' => 'Submit attempts: $1',
-	'qp_results_interpretation_header' => 'Answer interpretation',
-	'qp_results_short_interpretation' => 'Short interpretation: $1',
-	'qp_results_long_interpretation' => 'Long interpretation: $1',
-	'qp_poll_has_no_interpretation' => 'This poll has no interpretation template defined in the poll\'s header',
-	'qp_interpetation_wrong_answer' => 'Wrong answer',
 	'qp_export_to_xls' => 'Export statistics into XLS format',
 	'qp_voices_to_xls' => 'Export voices into XLS format',
 	'qp_users_answered_questions' => '$1 {{PLURAL:$1|user|users}} answered to the questions',
@@ -118,19 +112,7 @@ To save a poll, submit it while not answering to any proposal questions.',
 	'qp_error_too_few_categories' => 'At least two categories must be defined',
 	'qp_error_too_few_spans' => 'Every category group must contain at least two subcategories',
 	'qp_error_no_answer' => 'Unanswered proposal',
-	'qp_error_unique' => 'Question of type unique() has more proposals than possible answers defined: impossible to complete',
-	'qp_error_no_more_attempts' => 'You have reached maximal number of submitting attempts for this poll',
-	'qp_error_no_json_decode' => 'Interpretation of poll answers requires json_decode() PHP function',
-	'qp_error_eval_missed_lang_attr' => 'XML attribute "lang" is required to choose proper interpretation language',
-	'qp_error_eval_mix_languages' => 'Single interpretation script cannot mix different interpretation languages: "$1", "$2"',
-	'qp_error_eval_unsupported_language' => 'Unsupported interpretation language "$1"',
-	'qp_error_eval_illegal_token' => 'PHP token $1 with value $2 is not allowed in line $3',
-	'qp_error_eval_illegal_superglobal' => 'PHP token $1 with superglobal $2 is not allowed in line $3',
-	'qp_error_eval_illegal_function_call' => 'PHP token $1 with function $2 is not allowed in line $3',
-	'qp_error_eval_variable_variable_access' => 'PHP token $1 with variable variable $2 is not allowed in line $3',
-	'qp_error_eval_illegal_variable_name' => 'PHP token $1 has disallowed variable name $2 in line $3',
-	'qp_error_eval_variable_function_call' => 'PHP token $1 with variable function $2 is not allowed in line $3',
-	'qp_error_eval_self_check' => 'The following eval() self-check was failed: $1. You have unsupported version of PHP, which does not allow to run eval scripts securely.',
+	'qp_error_unique' => 'Question of type unique() has more proposals than possible answers defined: impossible to complete'
 );
 
 /** Message documentation (Message documentation)
@@ -2337,12 +2319,6 @@ $messages['ru'] = array(
 	'qp_results_line_qpul' => '$1: $2',
 	'qp_header_line_qucl' => '$1. $2<br />$3 ??? $4',
 	'qp_results_line_qucl' => '$1: $2 $3',
-	'qp_results_submit_attempts' => 'Попыток ответа: $1',
-	'qp_results_interpretation_header' => 'Интерпретация ответа',
-	'qp_results_short_interpretation' => 'Краткая интерпретация: $1',
-	'qp_results_long_interpretation' => 'Подробная интерпретация: $1',
-	'qp_poll_has_no_interpretation' => 'Шаблон, используемый для интерпретации результатов опроса, не определен в заголовке опроса',
-	'qp_interpetation_wrong_answer' => 'Неправильный ответ',
 	'qp_export_to_xls' => 'Экспортировать статистику в XLS формате',
 	'qp_voices_to_xls' => 'Экспортировать голоса в XLS формате',
 	'qp_users_answered_questions' => 'На вопросы {{PLURAL:$1|ответил $1 участник|ответило $1 участника|ответили $1 участников}}',
@@ -2376,7 +2352,6 @@ $messages['ru'] = array(
 	'qp_error_too_few_spans' => 'Каждая подкатегория вопроса требует по меньшей мере два варианта ответа',
 	'qp_error_no_answer' => 'Нет ответа на вопрос',
 	'qp_error_unique' => 'Опрос, имеющий тип unique(), не должен иметь больше ответов чем вопросов',
-	'qp_error_no_more_attempts' => 'Исчерпано количество попыток ответа на данный опрос',
 );
 
 /** Rusyn (Русиньскый)
