@@ -22,7 +22,7 @@
 function extend( dst, src ) {
 	var base = new src();
 	for ( i in base ) {
-		if ( typeof base[i] === 'function' && !( i in src.prototype ) ) {
+		if ( typeof base[i] === 'function' && !( i in dst.prototype ) ) {
 			dst.prototype[i] = base[i];
 		}
 	}
