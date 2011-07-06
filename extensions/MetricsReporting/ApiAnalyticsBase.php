@@ -102,7 +102,7 @@ abstract class ApiAnalyticsBase extends ApiBase {
 					break;
 				case 'selectprojects':
 					// c
-					$query['conds']['project_code'] = $parsedFilter;
+					$query['conds']['comscore_regions.project_code'] = $parsedFilter;
 					break;
 				case 'selectwikis':
 					// c
@@ -136,8 +136,8 @@ abstract class ApiAnalyticsBase extends ApiBase {
 		$data = array();
 
 		$fields = array_map( array( $this, 'getColumnName' ), $query['fields'] );
-		$metricFields = $this->getMetricFields();
-		$metricTotals = array();
+		//$metricFields = $this->getMetricFields();
+		//$metricTotals = array();
 
 		foreach( $res as $row ) {
 			// Dump all data to output
@@ -148,12 +148,12 @@ abstract class ApiAnalyticsBase extends ApiBase {
 			$data[] = $item;
 
 			// Do some maths
-			foreach( $metricFields as $field ) {
-				if ( !isset( $metricTotals[$field] ) ) {
-					$metricTotals[$field] = 0;
-				}
-				$metricTotals[$field] += $row->$field;
-			}
+			//foreach( $metricFields as $field ) {
+			//	if ( !isset( $metricTotals[$field] ) ) {
+			//		$metricTotals[$field] = 0;
+			//	}
+			//	$metricTotals[$field] += $row->$field;
+			//}
 
 			// Make grouped output data
 			foreach( $this->getAllowedFilters() as $filter ) {
@@ -188,9 +188,9 @@ abstract class ApiAnalyticsBase extends ApiBase {
 		}
 
 		$result->setIndexedTagName( $data, 'data' );
-		$result->setIndexedTagName( $metricTotals, 'totals' );
+		//$result->setIndexedTagName( $metricTotals, 'totals' );
 		$result->addValue( 'metric', $this->getModuleName(), $data );
-		$result->addValue( 'totals', $this->getModuleName(), $metricTotals );
+		//$result->addValue( 'totals', $this->getModuleName(), $metricTotals );
 	}
 
 	// TODO: Deal with foo AS bar, and return bar for nicer aliasing of stuff
