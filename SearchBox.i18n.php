@@ -1026,7 +1026,7 @@ $messages['yi'] = array(
 $messages['zh-hans'] = array(
 	'searchbox-desc' => '允许搜索形式列入',
 	'searchbox-search' => '搜索',
-	'searchbox-go' => '搜索',
+	'searchbox-go' => '提交',
 	'searchbox-namespaces' => '名称空间:',
 );
 
