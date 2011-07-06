@@ -15,7 +15,6 @@ class FileWrapper:
 		if self.closed: raise ValueError("I/O operation on closed file")
 		
 		preBytes = self.pre.read(bytes)
-		print(str(preBytes))
 		if len(preBytes) < bytes: 
 			fpBytes = self.fp.read(bytes-len(preBytes))
 		else:
