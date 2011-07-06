@@ -47,8 +47,11 @@ abstract class ApiAnalyticsBase extends ApiBase {
 		if ( $params['startmonth'] && !$params['endmonth'] ) {
 			$query['conds']['date'] = $params['startmonth'];
 		} else {
+			//add 1 month to end of date because of the way data is stored
+			$endMonth = date( "Y-m-d", strtotime( $params['endmonth'] . " +1 month" ) );
+			
 			$query['conds'][] = "date >= ". $db->addQuotes( $params['startmonth'] )
-							. " AND date <= " . $db->addQuotes( $params['endmonth'] ) ;
+							. " AND date <= " . $db->addQuotes( $endMonth ) ;
 		}
 
 		// TODO: Data formatting
