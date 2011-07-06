@@ -29,9 +29,12 @@ $messages['qqq'] = array(
 	'moodbar-trigger-feedback' => 'Link text of the MoodBar overlay trigger. $1 is the SITENAME.',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author SPQRobin
+ */
 $messages['qqq'] = array(
-	'moodbar-trigger-using' => 'Link text of the MoodBar overlay trigger. $1 is the SITENAME.',
+	'moodbar-desc' => 'This is a feature in development. See [[mw:MoodBar 0.1/Design]] for background information.',
+	'moodbar-trigger-using' => "Link text of the MoodBar overlay trigger. \$1 is the SITENAME. The implied sentence is ''\"Using [Sitename] made me happy/sad/...\"''. See [[mw:MoodBar 0.1/Design]] for background development information.",
 	'moodbar-trigger-feedback' => 'Link text of the MoodBar overlay trigger. $1 is the SITENAME.',
 );
 
@@ -117,6 +120,15 @@ $messages['mk'] = array(
 	'moodbar-desc' => 'Им овозможува на одредени корисници да му го соопштуваат нивното „расположение“ на операторот на мрежното место',
 	'moodbar-trigger-using' => 'Користење на $1...',
 	'moodbar-trigger-feedback' => 'Мислења',
+);
+
+/** Dutch (Nederlands)
+ * @author SPQRobin
+ */
+$messages['nl'] = array(
+	'moodbar-desc' => 'Laat bepaalde gebruikers toe hun "gemoedstoestand" naar de sitebeheerders te verzenden',
+	'moodbar-trigger-using' => 'Bij het gebruiken van $1...',
+	'moodbar-trigger-feedback' => 'Terugkoppeling',
 );
 
 /** Portuguese (Português)

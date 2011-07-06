@@ -332,6 +332,9 @@ $messages['it'] = array(
  */
 $messages['ksh'] = array(
 	'apisb-desc' => 'Hellef noh Fähler ze söhke bei [http://www.mediawiki.org/wiki/API MediaWiki <i lang="en">API</i>] Oprohfe uss_em Brauser.',
+	'apisb-parameters' => 'Parrameetere',
+	'apisb-result' => 'Erus jekumme es',
+	'apisb-request-url' => 'Öm en URL froore:',
 );
 
 /** Kurdish (Latin) (Kurdî (Latin))

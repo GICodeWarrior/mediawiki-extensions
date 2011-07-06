@@ -1130,11 +1130,12 @@ $messages['yi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
 	'randomincategory-toolbox' => '随机页面',
 	'randomincategory-label' => '分类：',
-	'randomincategory-submit' => '进入',
+	'randomincategory-submit' => '提交',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

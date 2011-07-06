@@ -275,15 +275,26 @@ $messages['ms'] = array(
  * @author SPQRobin
  */
 $messages['nl'] = array(
+	'notificator' => 'Kennisgeving',
+	'notificator-desc' => 'Brengt iemand per e-mail op de hoogte over wijzigingen aan een pagina wanneer op een knop op die pagina geklikt wordt.',
+	'notificator-db-table-does-not-exist' => 'Databasetabel "notificator" bestaat niet. Het "update.php"-onderhoudsscript moet worden uitgevoerd voordat de uitbreiding "Kennisgeving" kan worden gebruikt.',
 	'notificator-e-mail-address' => 'e-mailadres',
+	'notificator-notify' => 'Op de hoogte brengen',
+	'notificator-notify-address-or-name' => '$1 op de hoogte brengen',
 	'notificator-revs-not-from-same-title' => 'Versienummers zijn niet van dezelfde titel/pagina',
 	'notificator-return-to' => 'Terugkeren naar',
+	'notificator-special-page-accessed-directly' => 'Deze speciale pagina kan niet direct worden benaderd. Het is bedoeld om te worden gebruikt via een Kennisgeving-knop.',
 	'notificator-e-mail-address-invalid' => 'Het opgegeven e-mailadres is ongeldig.',
+	'notificator-notification-not-sent' => 'Kennisgeving niet verzonden.',
 	'notificator-change-tag' => 'wijzigen',
 	'notificator-new-tag' => 'nieuw',
+	'notificator-notification-text-changes' => '$1 wil u op de hoogte brengen over de volgende wijzigingen aan $2:',
+	'notificator-notification-text-new' => '$1 wil u op de hoogte brengen over $2.',
 	'notificator-following-e-mail-sent-to' => 'De volgende e-mail is verzonden naar $1:',
 	'notificator-subject' => 'Onderwerp:',
+	'notificator-error-sending-e-mail' => 'Er is een fout opgetreden bij het verzenden van de kennisgevingse-mail naar $1.',
 	'notificator-error-parameter-missing' => 'Fout: Ontbrekende parameter.',
+	'notificator-notified-already' => '$1 is reeds op de hoogte gebracht over deze pagina of paginawijziging.',
 );
 
 /** Portuguese (Português)

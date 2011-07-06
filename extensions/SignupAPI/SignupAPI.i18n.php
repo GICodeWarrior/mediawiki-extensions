@@ -47,3 +47,10 @@ $messages['pt'] = array(
 	'signupapi-desc' => 'Remove de "Especial:Criar uma conta ou entrar" os elementos relacionados com o processo de autenticação e acrescenta uma API de autenticação',
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'signupapi-desc' => 'Очищает Special:UserLogin от элементов, связанных с регистрацией, добавляет API для регистрации',
+);
+

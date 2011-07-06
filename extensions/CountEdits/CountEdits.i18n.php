@@ -255,6 +255,7 @@ Ne sudite o korisnicima po njihovom broju izmjena.",
 );
 
 /** Catalan (Català)
+ * @author BroOk
  * @author SMP
  * @author Solde
  * @author Ssola
@@ -263,14 +264,14 @@ Ne sudite o korisnicima po njihovom broju izmjena.",
 $messages['ca'] = array(
 	'countedits' => "Nombre d'edicions",
 	'countedits-desc' => "[[Special:CountEdits|Pàgina especial]] que compta les edicions de l'usuari i indica els deu que més en tenen.",
-	'countedits-warning' => "'''Avís:''' No jutgeu un llibre per la seua coberta, ni tampoc un coŀlaborador pel seu nombre d'edicions.",
+	'countedits-warning' => "'''Avís:''' No jutgeu un llibre per la seva coberta, ni tampoc un coŀlaborador pel seu nombre d'edicions.",
 	'countedits-username' => "Nom d'usuari:",
 	'countedits-ok' => 'OK',
 	'countedits-nosuchuser' => 'No hi ha cap usuari amb el nom $1.',
 	'countedits-resultheader' => 'Resultats de $1',
 	'countedits-resulttext' => '$1 ha fet {{PLURAL:$2|1 modificació|$2 modificacions}}',
-	'countedits-mostactive' => 'Els coŀlaboradors més actius',
-	'countedits-nocontribs' => 'No hi ha hagut cap coŀlaboració en aquest wiki.',
+	'countedits-mostactive' => 'Els col·laboradors més actius',
+	'countedits-nocontribs' => 'No hi ha hagut cap col·laboració en aquest wiki.',
 );
 
 /** Chechen (Нохчийн)

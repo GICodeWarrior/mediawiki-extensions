@@ -42,10 +42,12 @@ $messages['en'] = array(
 $messages['qqq'] = array(
 	'wikitweet-desc' => '{{desc}}',
 	'wikitweet-delete' => '{{Identical|Delete}}',
+	'wikitweet-anonymous' => '{{Identical|Anonymous}}',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
+ * @author Jim-by
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
@@ -56,7 +58,12 @@ $messages['be-tarask'] = array(
 	'wikitweet-submit' => 'Дадаць паведамленьне',
 	'wikitweet-submitandmail' => 'Дадаць паведамленьне і даслаць электронны ліст',
 	'wikitweet-delete' => 'выдаліць',
+	'wikitweet-anonymous' => 'ананімнае',
+	'wikitweet-tweets-tagged' => 'Кароткія пазначаныя паведамленьні',
+	'wikitweet-back-timeline' => 'Вярнуцца да лініі часу',
+	'wikitweet-tweets-from-room' => 'Кароткія паведамленьні з пакою',
 	'wikitweet-timeago' => '$1 таму',
+	'wikitweet-inthefuture' => 'У будучыні !!',
 	'wikitweet-fewsecondsago' => 'Колькі сэкунд таму',
 );
 

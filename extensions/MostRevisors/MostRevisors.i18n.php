@@ -1001,10 +1001,11 @@ $messages['yi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Liangent
+ * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
 	'mostrevisors-namespace' => '名字空间：',
-	'mostrevisors-submit' => '进入',
+	'mostrevisors-submit' => '提交',
 	'mostrevisors-showredir' => '显示重定向页面',
 	'mostrevisors-hideredir' => '隐藏重定向页面',
 	'mostrevisors-viewcontributors' => '检视主要贡献者',

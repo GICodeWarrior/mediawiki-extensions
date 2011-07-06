@@ -3380,6 +3380,7 @@ $messages['yi'] = array(
  * @author Gaoxuewei
  * @author Gzdavidwong
  * @author Liangent
+ * @author Xiaomingyan
  * @author 阿pp
  */
 $messages['zh-hans'] = array(
@@ -3417,7 +3418,7 @@ $messages['zh-hans'] = array(
 	'ct_select' => '选择要上传的$1：',
 	'ct_caption' => '添加标题 （可选）：',
 	'ct_link' => '添加链接名称 （可选）：',
-	'ct_submit' => '确定！',
+	'ct_submit' => '提交！',
 	'ct_close' => '关闭窗口',
 	'ct_success' => '文件上传成功！',
 	'ct_popupblocked' => '弹出的上传窗口被拦截。

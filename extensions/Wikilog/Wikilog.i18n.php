@@ -7526,6 +7526,7 @@ $messages['yi'] = array(
  * @author Chenxiaoqino
  * @author Liangent
  * @author Mark85296341
+ * @author Xiaomingyan
  * @author Yfdyh000
  */
 $messages['zh-hans'] = array(
@@ -7546,7 +7547,7 @@ $messages['zh-hans'] = array(
 	'wikilog-pager-oldest' => '最旧',
 	'wikilog-pager-prev' => '向前',
 	'wikilog-pager-next' => '向后',
-	'wikilog-pager-first' => '最前',
+	'wikilog-pager-first' => '最早',
 	'wikilog-pager-last' => '最后',
 	'wikilog-pager-empty' => '（无项目）',
 	'wikilog-no-comments' => '没有评论',
