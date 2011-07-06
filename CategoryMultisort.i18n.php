@@ -777,12 +777,14 @@ $messages['uk'] = array(
 	'prefs-category' => 'Категорія',
 );
 
-/** Simplified Chinese (‪中文(简体)‬) */
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Xiaomingyan
+ */
 $messages['zh-hans'] = array(
 	'categorymultisort-desc' => '允许按照不同的排序字查看分类',
 	'categorymultisort-defaultsortkey-name' => '默认',
 	'categorymultisort-sortkey' => '排序字：',
-	'categorymultisort-go' => '转到',
+	'categorymultisort-go' => '提交',
 	'categorymultisort-default-sortkey' => '默认排序字：',
 	'prefs-category' => '分类',
 );
