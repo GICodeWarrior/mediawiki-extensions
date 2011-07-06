@@ -97,7 +97,7 @@ class CheckVars {
 		'session_unregister' => 'Deprecated since PHP 5.3.0.',
 		'session_is_registered' => 'Deprecated since PHP 5.3.0.',
 		'set_magic_quotes_runtime' => 'Deprecated since PHP 5.3.0.',
-		
+
 		'var_dump' => 'Debugging function.', //r81671#c13996
 		//'print_r' => 'Debugging function if second parameter is not true.',
 		'wfVarDump' => 'Debugging function.', //var_export() wrapper
@@ -239,9 +239,11 @@ class CheckVars {
 	function setGenerateDeprecatedList( $bool = true ) {
 		$this->generateDeprecatedList = $bool;
 	}
+
 	function getGenerateDeprecatedList() {
 		return $this->generateDeprecatedList;
 	}
+
 	function saveDeprecatedList( $filename ) {
 		$data = "<?php\n\$mwDeprecatedFunctions = array(\n";
 		foreach( $this->mDeprecatedFunctionList as $depre => $classes ) {
@@ -254,9 +256,11 @@ class CheckVars {
 	function setGenerateParentList( $bool = true ) {
 		$this->generateParentList = $bool;
 	}
+
 	function getGenerateParentList() {
 		return $this->generateParentList;
 	}
+
 	function saveParentList( $filename ) {
 		global $mwParentClasses;
 		$data = "<?php\n\$mwParentClasses = array(\n";
@@ -266,7 +270,7 @@ class CheckVars {
 		$data .= "\n);\n\n";
 		file_put_contents( $filename, $data );
 	}
-	
+
 	private function initVars() {
 		$this->mProblemCount = 0;
 
@@ -314,7 +318,7 @@ class CheckVars {
 
 		/* Skip HipHop specific requires */
 		$source = preg_replace( '/if \( isset\( \$_SERVER\[\'MW_COMPILED\'\] \) \) {\\s+require \( \'phase3\/.*\' \);\\s+} else {/', 'if ( true ) {', $source );
-		
+
 		$this->mTokens = token_get_all( $source );
 	}
 
@@ -370,7 +374,7 @@ class CheckVars {
 						$this->mFunctionQualifiers = array();
 
 					if ( $token[0] == T_COMMENT ) {
-						if ( substr( $token[1], 0, 2 ) == '/*' && substr( $token[1], 0, 3 ) != '/**' 
+						if ( substr( $token[1], 0, 2 ) == '/*' && substr( $token[1], 0, 3 ) != '/**'
 							&& preg_match( '/^\s+\*(?!\/)/m', $token[1] ) && strpos( $token[1], "\$separatorTransformTable = array( ',' => '' )" ) === false ) {
 							$this->warning( 'missed-docblock', "Multiline comment with /* in line $token[2]" );
 						}
@@ -470,7 +474,7 @@ class CheckVars {
 							if ( $this->mInProfilingFunction && $this->mAfterProfileOut & 1 ) {
 								$this->warning( 'profileout', "Reached end of $this->mClass::$this->mFunction with last statement not being wfProfileOut" );
 							}
-								
+
 							$this->mStatus = self::WAITING_FUNCTION;
 							$this->mFunctionQualifiers = array();
 						}
@@ -560,7 +564,7 @@ class CheckVars {
 							// throw Exception; -> Exception is a constant
 							// throw Exception("Foo"); -> Exception() is a function
 							// throw new Exception("Foo"); -> Exception is a class.
-							
+
 							$this->warning( 'function-throw', "Not using new when throwing token {$token[1]} in line $token[2], function {$this->mFunction}" );
 						}
 					}
@@ -692,7 +696,7 @@ class CheckVars {
 							/* Try prepending the script folder, for maintenance scripts (but see Maintenance.php:758) */
 							$requirePath = dirname( $this->mFilename ) . "/" . $requirePath;
 						}
-						
+
 						if ( !file_exists( $requirePath ) ) {
 							if ( strpos( $requirePath, '$' ) === false ) {
 								$this->warning( 'missing-requires', "Did not found the expected require of $requirePath" );
@@ -1081,7 +1085,7 @@ if( $argc < 2 ) {
 	die (
 "Usage:
 	php $argv[0] [options] <PHP_source_file1> <PHP_source_file2> ...
-	
+
 Options:
 	--generate-deprecated-list
 	--generate-parent-list
@@ -1120,7 +1124,7 @@ $cv->preloadFiles( array( "$IP/includes/GlobalFunctions.php", "$IP/includes/norm
 foreach ( $argv as $arg ) {
 	if ( substr( $arg, 0, 2 ) == '-W' )
 		continue;
-	
+
 	$cv->load( $arg );
 	$cv->execute();
 }
