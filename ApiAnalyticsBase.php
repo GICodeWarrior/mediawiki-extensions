@@ -133,22 +133,33 @@ abstract class ApiAnalyticsBase extends ApiBase {
 		$this->profileDBOut();
 
 		$result = $this->getResult();
-		$data = array();
 
 		$fields = array_map( array( $this, 'getColumnName' ), $query['fields'] );
 
+		$things = array();
+		// Build result set
 		foreach( $res as $row ) {
 			// Dump all data to output
 			$item = array();
-			foreach( $fields as $field ) {
+			foreach( array_diff( $fields, array( 'region_code', 'region_name' ) ) as $field ) {
 				$item[$field] = $row->$field;
 			}
-			$data[ $row->{$this->getColumnName( 'comscore.region_code' )} ][] = $item;
-			$result->setIndexedTagName( $data[ $row->{$this->getColumnName( 'comscore.region_code' )} ], 'region' );
+
+			if( !isset( $things[$row->region_code] ) ) {
+				$things[$row->region_code] = array( 'region_code' => $row->region_code, 'region_name' => $row->region_name );
+			}
+
+			$things[$row->region_code]['data'][] = $item;
+			$result->setIndexedTagName( $things[$row->region_code]['data'], 'd' );
 		}
 
-		$result->setIndexedTagName( $data, 'data' );
-		$result->addValue( 'metric', $this->getModuleName(), $data );
+		// Add data to the output
+		foreach( $things as $thing ) {
+			$result->addValue( array( $this->getModuleName() ), null, $thing );
+		}
+		$result->setIndexedTagName_internal( array( $this->getModuleName() ), 'region' );
+
+
 	}
 
 	// TODO: Deal with foo AS bar, and return bar for nicer aliasing of stuff
