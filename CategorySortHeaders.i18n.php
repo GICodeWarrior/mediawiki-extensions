@@ -47,6 +47,14 @@ $messages['ia'] = array(
 	'categorysortheaders-desc' => 'Permitte alterar le ordine de apparentia de paginas in categorias, per specificar claves multi-character de ordination usante un syntaxe como <nowiki>[[category:Foo|^Header^Invisible part of sortkey]]</nowiki>',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'categorysortheaders-desc' => 'Määd et müjjelesch, Sigge en Saachjroppe med enem eije Tittel extra för di Saachjropp opleßte ze lohße met:
+[<nowiki />[Saachjropp:Suwisu|^Kopp^Onseeschbaare Deil vum Schlößel för et Zoteere]]</nowiki>',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
