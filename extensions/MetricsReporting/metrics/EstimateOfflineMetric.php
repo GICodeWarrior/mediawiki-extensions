@@ -21,10 +21,6 @@ class EstimateOfflineMetric extends ApiAnalyticsBase {
 		);
 	}
 
-	public function getMetricFields() {
-		return array( 'readers' );
-	}
-
 	public function getDescription() {
 		return 'Estimated number of people whom access Wikipedia through an offline reader';
 	}

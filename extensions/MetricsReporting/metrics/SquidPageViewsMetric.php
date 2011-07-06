@@ -34,13 +34,6 @@ class SquidPageViewsMetric extends ApiAnalyticsBase {
 		return $this->queryFields;
 	}
 
-	protected $metricField;
-
-	public function getMetricFields() {
-		// , views_mobile_raw, views_non_mobile_normalized, views_mobile_normalized depending on normalized and select_platform
-		return $this->metricField;
-	}
-
 	protected function canBeNormalised() {
 		return true;
 	}
@@ -50,9 +43,9 @@ class SquidPageViewsMetric extends ApiAnalyticsBase {
 		// Swap page_views for page_views_v
 
 		if ( $normalise ) {
-			$this->metricField = $this->queryFields = array( 'views_mobile_raw', 'views_non_mobile_raw' );
+			$this->queryFields = array( 'views_mobile_raw', 'views_non_mobile_raw' );
 		} else {
-			$this->metricField = $this->queryFields = array( 'views_mobile_normalized', 'views_non_mobile_normalized' );
+			$this->queryFields = array( 'views_mobile_normalized', 'views_non_mobile_normalized' );
 		}
 	}
 

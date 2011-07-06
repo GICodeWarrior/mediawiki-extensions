@@ -22,10 +22,6 @@ class DumpEditsMetric extends ApiAnalyticsBase {
 		return array( 'edits' );
 	}
 
-	public function getMetricFields() {
-		return array( 'edits' );
-	}
-
 	public function getDescription() {
 		return 'All edits on articles (as defined by dumparticlecount)';
 	}

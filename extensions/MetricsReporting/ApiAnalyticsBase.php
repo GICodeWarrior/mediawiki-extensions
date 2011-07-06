@@ -52,7 +52,7 @@ abstract class ApiAnalyticsBase extends ApiBase {
 		}
 
 		// TODO: Data formatting
-		foreach( $params['data'] as $data ) {
+		/*foreach( $params['data'] as $data ) {
 			switch ( $data ) {
 				case 'timeseries':
 					break;
@@ -65,12 +65,14 @@ abstract class ApiAnalyticsBase extends ApiBase {
 				case 'percentagegrowthfullperiod':
 					break;
 			}
-		}
+		}*/
 		//note: this means if you specify a report language that is not
 		//fully supported, you won't get a full data set back
 		if( $this->takesReportLanguage() ){
 			$query['conds']['report_language'] = $params['reportlanguage'];
 		}
+
+		$titleFields = array();
 
 		foreach( $this->getAllowedFilters() as $filter ) {
 			if ( !isset( $params[$filter] ) ) {
@@ -86,11 +88,14 @@ abstract class ApiAnalyticsBase extends ApiBase {
 				case 'selectregions':
 					// a, b, c
 					$query['conds']['comscore_regions.region_code'] = $parsedFilter;
+					$titleFields[] = 'region_code';
+					$titleFields[] = 'region_name';
 					break;
 				case 'selectcountries':
 					// b, c, d
 					// TODO: Cater for "top:20" etc
 					$query['conds']['country_code'] = $parsedFilter;
+					$titleFields[] = '';
 					break;
 				case 'selectwebproperties':
 					/*if ( $params['authcode'] != 'some string' ) {
@@ -99,31 +104,37 @@ abstract class ApiAnalyticsBase extends ApiBase {
 					// c, d
 					// TODO: Cater for "top:20" etc
 					$query['conds']['web_property'] = $parsedFilter;
+					$titleFields[] = '';
 					break;
 				case 'selectprojects':
 					// c
 					$query['conds']['project_code'] = $parsedFilter;
+					$titleFields[] = '';
 					break;
 				case 'selectwikis':
 					// c
 					// TODO: What's the format of the query need to be?
 					// ( lang = ltarget AND project = ptarget ) OR ( lang =ltarget2 AND project = ptarget2 )
 					$query['conds'][''] = $parsedFilter;
+					$titleFields[] = '';
 					break;
 				case 'selecteditors':
 					// b, c
 					// TODO: Need where column
 					$query['conds'][''] = $parsedFilter;
+					$titleFields[] = '';
 					break;
 				case 'selectedits':
 					// b, c
 					// TODO: Need where column
 					$query['conds'][''] = $parsedFilter;
+					$titleFields[] = '';
 					break;
 				case 'selectplatform':
 					// b, c
 					// TODO: Need where column
 					$query['conds'][''] = $parsedFilter;
+					$titleFields[] = '';
 					break;
 			}
 		}
@@ -141,12 +152,15 @@ abstract class ApiAnalyticsBase extends ApiBase {
 		foreach( $res as $row ) {
 			// Dump all data to output
 			$item = array();
-			foreach( array_diff( $fields, array( 'region_code', 'region_name' ) ) as $field ) {
+			foreach( array_diff( $fields, $titleFields ) as $field ) {
 				$item[$field] = $row->$field;
 			}
 
-			if( !isset( $things[$row->region_code] ) ) {
-				$things[$row->region_code] = array( 'region_code' => $row->region_code, 'region_name' => $row->region_name );
+			if( !isset( $things[$row->region_code] ) ) { // find dynamic value for each query type
+				$things[$row->region_code] = array();
+				foreach( $titleFields as $field ) {
+					$things[$row->region_code][$field] = $row->$field;
+				}
 			}
 
 			$things[$row->region_code]['data'][] = $item;
@@ -157,8 +171,7 @@ abstract class ApiAnalyticsBase extends ApiBase {
 		foreach( $things as $thing ) {
 			$result->addValue( array( $this->getModuleName() ), null, $thing );
 		}
-		$result->setIndexedTagName_internal( array( $this->getModuleName() ), 'region' );
-
+		$result->setIndexedTagName_internal( array( $this->getModuleName() ), 'set' );
 
 	}
 
@@ -221,13 +234,6 @@ abstract class ApiAnalyticsBase extends ApiBase {
 	 * @return array
 	 */
 	public function getAllowedFilters() {
-		return array();
-	}
-
-	/**
-	 * @return array
-	 */
-	public function getMetricFields() {
 		return array();
 	}
 

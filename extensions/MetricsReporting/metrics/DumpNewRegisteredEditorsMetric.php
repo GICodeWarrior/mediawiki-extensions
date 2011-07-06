@@ -22,10 +22,6 @@ class DumpNewRegisteredEditorsMetric extends ApiAnalyticsBase {
 		return array( 'editors_new' );
 	}
 
-	public function getMetricFields() {
-		return array( 'editors_new' );
-	}
-
 	public function getDescription() {
 		return 'All registered editors that in a certain month for the first time crossed the threshold of 10 edits since signing up';
 	}

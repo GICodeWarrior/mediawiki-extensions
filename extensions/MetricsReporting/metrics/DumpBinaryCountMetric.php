@@ -22,10 +22,6 @@ class DumpBinaryCountMetric extends ApiAnalyticsBase {
 		return array();
 	}
 
-	public function getMetricFields() {
-		return array(  '' );
-	}
-
 	public function getDescription() {
 		return 'All binary files (nearly all of which are multimedia files) available for download/article inclusion on a wiki';
 	}
