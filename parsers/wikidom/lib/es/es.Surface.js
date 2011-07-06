@@ -1,3 +1,17 @@
+/*@cc_on
+(function(f) {
+	window.setTimeout = f(window.setTimeout); // overwrites the global function!
+	window.setInterval = f(window.setInterval); // overwrites the global function!
+})(function(f) {
+	return function(c, t) {
+		var a = [].slice.call(arguments, 2); // gathers the extra args
+		return f(function() {
+			c.apply(this, a); // passes them to your function
+		}, t);
+	};
+	});
+@*/
+
 /**
  * 
  * @param $container
@@ -8,7 +22,7 @@ function Surface( $container, document ) {
 	this.$ = $container;
 	this.document = document;
 	this.rendered = false;
-	this.cursorInitialized = false;
+	this.cursorInterval = null;
 	this.location = null;
 	this.render();
 
@@ -19,6 +33,38 @@ function Surface( $container, document ) {
 			return surface.onMouseDown( e );
 		}
 	});
+	
+	// Cursor
+	this.$cursor = $( '<div class="editSurface-cursor"></div>' );
+	this.$.after( this.$cursor );
+	
+	// Hidden input
+	this.$input = $( '<input/>' );
+	this.$.before( this.$input );
+	this.$input.bind({
+		'keydown' : function(e) {
+			return surface.onKeyDown( e );			
+		}
+	});
+}
+
+Surface.prototype.onKeyDown = function( e ) {
+	switch ( e.keyCode ) {
+		case 37: // Left arrow
+			this.moveCursorLeft();
+			break;
+		case 38: // Up arrow
+			this.moveCursorUp();
+			break;
+		case 39: // Right arrow
+			this.moveCursorRight();
+			break;
+		case 40: // Down arrow
+			this.moveCursorDown();
+			break;
+
+	}
+	return true;
 }
 
 Surface.prototype.onMouseDown = function( e ) {
@@ -34,6 +80,8 @@ Surface.prototype.onMouseDown = function( e ) {
 								 e.pageY - $block.offset().top );
 	var offset = block.flow.getOffset( position );
 	this.setCursor( new Location( block, offset ) );
+	this.$input.focus();
+	return false;
 };
 
 /**
@@ -46,22 +94,17 @@ Surface.prototype.setCursor = function( location ) {
 	
 	var position = this.location.block.getPosition( this.location.offset );
 	var offset = this.location.block.$.offset();
-	
-	if( !this.cursorInitialized ) {
-		this.$cursor = $( '<div class="editSurface-cursor"></div>' );
-		this.$.after( this.$cursor );
-		
-		setInterval( function( surface ) {
-			surface.$cursor.css('display') == 'block' ? surface.$cursor.hide() : surface.$cursor.show();
-		}, 500, this );
-		
-		this.cursorInitialized = true;
-	}
 
 	this.$cursor.css({
 		'left': position.left + offset.left,
 		'top': position.top + offset.top
 	}).show();
+
+	// Cursor blinking
+	if( this.cursorInterval ) {
+		clearInterval( this.cursorInterval );
+	}
+	this.cursorInterval = setInterval( function( surface ) { surface.$cursor.css( 'display' ) == 'block' ? surface.$cursor.hide() : surface.$cursor.show(); }, 500, this );
 };
 
 /**
@@ -70,7 +113,7 @@ Surface.prototype.setCursor = function( location ) {
  * @returns {Location}
  */
 Surface.prototype.getCursor = function() {
-	// return location
+	return this.location;
 };
 
 /**
@@ -178,7 +221,7 @@ Surface.prototype.moveCursorDown = function() {
  */
 Surface.prototype.moveCursorRight = function() {
 	var location = this.getCursor();
-	if ( location.block.length < location.offset + 1 ) {
+	if ( 1 || location.block.length > location.offset + 1 ) {
 		location.offset++;
 	} else {
 		var next = location.block.next();
