@@ -7505,6 +7505,7 @@ $messages['yi'] = array(
  * @author Gzdavidwong
  * @author Hydra
  * @author Wmr89502270
+ * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
 	'apc' => 'APC 的信息',
@@ -7576,7 +7577,7 @@ APC 似乎不会运行。',
 	'viewapc-display-too-big' => "''的内容是太大，无法显示。''",
 	'viewapc-ls-options-legend' => '选项',
 	'viewapc-ls-options' => '范围： $1 分类：$2$3$4 搜索：$5 $6',
-	'viewapc-ls-submit' => '确定！',
+	'viewapc-ls-submit' => '提交！',
 	'viewapc-ls-header-name' => '名称',
 	'viewapc-ls-header-hits' => '点击',
 	'viewapc-ls-header-size' => '大小',
