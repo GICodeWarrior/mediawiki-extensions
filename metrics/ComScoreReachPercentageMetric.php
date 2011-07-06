@@ -13,7 +13,7 @@ class ComScoreReachPercentageMetric extends ApiAnalyticsBase {
 		return array(
 			'table' => array( 'comscore', 'comscore_regions'),
 			'conds' => array(),
-			'options' => array( 'GROUP BY' => 'date', 'ORDER BY' => 'comscore.region_code, date' ),
+			'options' => array( 'GROUP BY' => 'comscore.region_code, date', 'ORDER BY' => 'comscore.region_code, date' ),
 			'join_conds' => array( 'comscore_regions' => array( 'LEFT JOIN', "comscore.region_code = comscore_regions.region_code" )
 			),
 		);

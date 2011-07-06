@@ -136,8 +136,6 @@ abstract class ApiAnalyticsBase extends ApiBase {
 		$data = array();
 
 		$fields = array_map( array( $this, 'getColumnName' ), $query['fields'] );
-		//$metricFields = $this->getMetricFields();
-		//$metricTotals = array();
 
 		foreach( $res as $row ) {
 			// Dump all data to output
@@ -145,52 +143,11 @@ abstract class ApiAnalyticsBase extends ApiBase {
 			foreach( $fields as $field ) {
 				$item[$field] = $row->$field;
 			}
-			$data[] = $item;
-
-			// Do some maths
-			//foreach( $metricFields as $field ) {
-			//	if ( !isset( $metricTotals[$field] ) ) {
-			//		$metricTotals[$field] = 0;
-			//	}
-			//	$metricTotals[$field] += $row->$field;
-			//}
-
-			// Make grouped output data
-			foreach( $this->getAllowedFilters() as $filter ) {
-				if ( !isset( $params[$filter] ) ) {
-					continue;
-				}
-				if ( $params[$filter][0] === '*' ) {
-					// For */"all", don't do any filtering
-					continue;
-				}
-
-				$parsedFilter = $this->getAllUniqueParams( $params[$filter] );
-				switch ( $filter ) {
-					case 'selectregions':
-						break;
-					case 'selectcountries':
-						break;
-					case 'selectwebproperties':
-						break;
-					case 'selectprojects':
-						break;
-					case 'selectwikis':
-						break;
-					case 'selecteditors':
-						break;
-					case 'selectedits':
-						break;
-					case 'selectplatform':
-						break;
-				}
-			}
+			$data[ $row->{$this->getColumnName( 'comscore.region_code' )} ][] = $item;
 		}
 
 		$result->setIndexedTagName( $data, 'data' );
-		//$result->setIndexedTagName( $metricTotals, 'totals' );
 		$result->addValue( 'metric', $this->getModuleName(), $data );
-		//$result->addValue( 'totals', $this->getModuleName(), $metricTotals );
 	}
 
 	// TODO: Deal with foo AS bar, and return bar for nicer aliasing of stuff
