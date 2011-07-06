@@ -361,6 +361,7 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Rotemliss
  * @author YaronSh
  */
@@ -369,6 +370,7 @@ $messages['he'] = array(
 	'useroptionstats-desc' => '[[Special:UserOptionStats|דף מיוחד]] לדיווח על השימוש באפשרויות המשתמש במדיה־ויקי',
 	'uos-warn' => 'PHPlot אינה מותקנת!',
 	'uos-choose' => 'בחרו באחת מאפשרויות המשתמש הבאות: $1',
+	'uos-choose-hidden' => 'נא לבחור אחת מאפשרויות המשתמש המוסתרות: $1',
 	'uos-unknown' => '*ברירת מחדל',
 	'uos-other' => '*אחר',
 	'uos-title' => 'הפצת הערכים של אפשרות המשתמש $1',
@@ -495,6 +497,7 @@ $messages['mk'] = array(
 	'useroptionstats-desc' => '[[Special:UserOptionStats|Специјална страница]] за известување на прилагодувањата на МедијаВики',
 	'uos-warn' => 'PHPlot не е инсталиран!',
 	'uos-choose' => 'Одберете една од следниве кориснички можности: $1',
+	'uos-choose-hidden' => 'Одберете една од следниве скриени кориснички можности: $1',
 	'uos-unknown' => '*По основно',
 	'uos-other' => '*Друго',
 	'uos-title' => 'Распределба на вредности за користењето на кориснички прилагодувања, можност
@@ -517,12 +520,14 @@ $messages['ms'] = array(
 
 /** Dutch (Nederlands)
  * @author McDutchie
+ * @author SPQRobin
  */
 $messages['nl'] = array(
 	'useroptionstats' => 'Statistieken over gebruikersinstellingen',
 	'useroptionstats-desc' => '[[Special:UserOptionStats|Speciale pagina]] voor rapportage over het gebruik van gebruikersinstellingen in Mediawiki',
 	'uos-warn' => 'PHPlot is niet geïnstalleerd!',
 	'uos-choose' => 'Kies een van de volgende gebruikersinstellingen: $1',
+	'uos-choose-hidden' => 'Kies een van de volgende verborgen gebruikersinstellingen: $1',
 	'uos-unknown' => '*Standaardinstelling',
 	'uos-other' => '*Andere',
 	'uos-title' => 'Verdeling van de waarden van de gebruikersinstelling $1',
@@ -617,13 +622,14 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'useroptionstats' => 'Estatísticas das opções do utilizador',
-	'useroptionstats-desc' => '[[Special:UserOptionStats|Página especial]] para reportar a utilização das opções do utilizador na MediaWiki',
+	'useroptionstats' => 'Estatísticas das opções dos utilizadores',
+	'useroptionstats-desc' => '[[Special:UserOptionStats|Página especial]] para reportar a utilização das opções dos utilizadores do MediaWiki',
 	'uos-warn' => 'PHPlot não está instalado!',
-	'uos-choose' => 'Escolha uma das seguintes opções do utilizador: $1',
+	'uos-choose' => 'Escolha uma das seguintes opções de utilizador: $1',
+	'uos-choose-hidden' => 'Escolha uma das seguintes opções de utilizador ocultas: $1',
 	'uos-unknown' => '*Padrão',
 	'uos-other' => '*Outro',
-	'uos-title' => 'Distribuição de valores da opção do utilizador $1',
+	'uos-title' => 'Distribuição de valores da opção de utilizador $1',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
