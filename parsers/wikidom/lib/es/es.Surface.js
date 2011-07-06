@@ -8,6 +8,7 @@ function Surface( $container, document ) {
 	this.$ = $container;
 	this.document = document;
 	this.rendered = false;
+	this.cursorInitialized = false;
 	this.location = null;
 	this.render();
 
@@ -18,9 +19,6 @@ function Surface( $container, document ) {
 			return surface.onMouseDown( e );
 		}
 	});
-	
-	this.$cursor = $( '<div class="editSurface-cursor"></div>' );
-	this.$.after( this.$cursor );
 }
 
 Surface.prototype.onMouseDown = function( e ) {
@@ -32,8 +30,8 @@ Surface.prototype.onMouseDown = function( e ) {
 		return false;
 	}
 	
-	var position = new Position(e.pageX - $block.offset().left,
-								e.pageY - $block.offset().top);
+	var position = new Position( e.pageX - $block.offset().left,
+								 e.pageY - $block.offset().top );
 	var offset = block.flow.getOffset( position );
 	this.setCursor( new Location( block, offset ) );
 };
@@ -48,6 +46,17 @@ Surface.prototype.setCursor = function( location ) {
 	
 	var position = this.location.block.getPosition( this.location.offset );
 	var offset = this.location.block.$.offset();
+	
+	if( !this.cursorInitialized ) {
+		this.$cursor = $( '<div class="editSurface-cursor"></div>' );
+		this.$.after( this.$cursor );
+		
+		setInterval( function( surface ) {
+			surface.$cursor.css('display') == 'block' ? surface.$cursor.hide() : surface.$cursor.show();
+		}, 500, this );
+		
+		this.cursorInitialized = true;
+	}
 
 	this.$cursor.css({
 		'left': position.left + offset.left,
