@@ -14,4 +14,4 @@ $messages['en'] = array(
 	'extensionmanagement-page-explanation' => 'This page shows all extensions installed on this wiki.
 For more info about this wiki installation, see [[Special:Version|{{int:version}}]].',
 );
-?>
+

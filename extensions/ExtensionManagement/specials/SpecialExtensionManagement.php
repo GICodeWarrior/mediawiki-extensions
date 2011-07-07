@@ -210,4 +210,4 @@ class SpecialExtensionManagement extends SpecialPage {
 		}
 	}
 }
-?>
+

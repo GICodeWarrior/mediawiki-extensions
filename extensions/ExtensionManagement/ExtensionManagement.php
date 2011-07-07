@@ -74,4 +74,3 @@ function efExtensionMgmtSchemaUpdate( $updater = null ) {
 	return true;
 }
 
-?>
