@@ -93,7 +93,7 @@ TextFlow.prototype.getOffset = function( position ) {
 	// Reset RegExp object's state
 	this.boundaryTest.lastIndex = 0;
 	var virtual = line < this.lines.length - 1
-		&& this.boundaryTest( this.lines[line].text.substr( -1, 1 ) )
+		&& this.boundaryTest.exec( this.lines[line].text.substr( -1, 1 ) )
 			? -1 : 0;
 	return Math.min(
 		fit.end + ( position.left >= center ? 1 : 0 ),
