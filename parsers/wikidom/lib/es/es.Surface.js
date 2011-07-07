@@ -54,8 +54,11 @@ function Surface( $container, document ) {
 	this.$input = $( '<input/>' );
 	this.$.before( this.$input );
 	this.$input.bind({
-		'keydown' : function(e) {
+		'keydown' : function( e ) {
 			return surface.onKeyDown( e );			
+		},
+		'blur': function( e ) {
+			surface.cursor.hide();
 		}
 	});
 }
