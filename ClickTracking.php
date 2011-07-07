@@ -26,6 +26,11 @@ $wgClickTrackContribGranularity1 = 60 * 60 * 24 * 365 / 2; // 6 months
 $wgClickTrackContribGranularity2 = 60 * 60 * 24 * 365 / 4; // 3 months
 $wgClickTrackContribGranularity3 = 60 * 60 * 24 * 30; // 1 month
 
+// If not false, log events to this file. May also be a UDP socket, denoted as udp://host:port/prefix
+$wgClickTrackingLog = false;
+// Whether to log clicks to the database. If this is enabled and a log file is configured, events will be logged to both
+$wgClickTrackingDatabase = true;
+
 /* Setup */
 
 $wgExtensionCredits['other'][] = array(
