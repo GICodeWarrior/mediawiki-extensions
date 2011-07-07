@@ -227,7 +227,7 @@ Surface.prototype.moveCursorUp = function() {
 	var location = this.getLocation(),
 		position = location.block.getPosition( location.offset );
 	position.top = position.top - 1;
-	if ( position.top < blockPosition.top ) {
+	if ( position.top < 0 ) {
 		var previousBlock = location.block.previousBlock();
 		if ( previousBlock ) {
 			location.block = previousBlock;
