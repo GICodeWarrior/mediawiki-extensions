@@ -79,7 +79,7 @@ class ArchiveLinks {
 				. HTML::openElement('sup')
 				. HTML::openElement('small')
 				. '&#160;'
-				. HTML::element('a', array ( 'href' => $link_to_archive ), '[' . wfMsg( 'archivelinks-cache-title') . ']')
+				. HTML::element('a', array ( 'rel' => 'nofollow', 'href' => $link_to_archive ), '[' . wfMsg( 'archivelinks-cache-title') . ']')
 				. HTML::closeElement('small')
 				. HTML::closeElement('sup');
 		

@@ -5,7 +5,7 @@
  */
 $path = getenv('MW_INSTALL_PATH');
 if (strval($path) === '') {
-	$path = dirname(__FILE__) . '/../..';
+	$path = realpath( dirname(__FILE__) . '/../..' );
 }
 
 require_once "$path/maintenance/Maintenance.php";
@@ -18,7 +18,7 @@ class ArchiveLinksSpider extends Maintenance {
 	private $jobs;
 
 	public function execute( ) {
-		global $wgArchiveLinksConfig, $wgLoadBalancer;
+		global $wgArchiveLinksConfig, $wgLoadBalancer, $path;
 
 		$this->db_master = $this->getDB(DB_MASTER);
 		$this->db_slave = $this->getDB(DB_SLAVE);
@@ -34,24 +34,72 @@ class ArchiveLinksSpider extends Maintenance {
 			die( 'Sorry, at the current time running the spider as a daemon isn\'t supported.' );
 		} else {
 			//for right now we will pipe everything through the replication_check_queue function just for testing purposes
-			/* if ( $wgLoadBalancer->getServerCount() > 1 ) {
-			  if ( ( $url = $this->replication_check_queue() ) !== false ) {
-
-			  }
+			/*if ( $wgLoadBalancer->getServerCount() > 1 ) {
+				if ( ( $url = $this->replication_check_queue() ) !== false ) {
+					
+				}
 			  } else {
-			  if ( ( $url = $this->check_queue() ) !== false ) {
+				if ( ( $url = $this->check_queue() ) !== false ) {
+				  
+				}
+			}*/
 
-			  }
-			  } */
-
-			if ( ( $url = $this->replication_check_queue() ) !== false ) {
-				
+			if ( ( $url = $this->check_queue() ) !== false ) {
+				switch( $wgArchiveLinksConfig['download_lib'] ) {
+					case 'curl':
+						die( 'At the current time support for libcurl is not available.' );
+					case 'wget':
+					default:
+						$this->call_wget( $url );
+				}
 			}
 		}
 		return null;
 	}
+	
+	private function call_wget( $url ) {
+		global $wgArchiveLinksConfig;
+		if ( array_key_exists( 'path_to_wget', $wgArchiveLinksConfig ) && file_exists( $wgArchiveLinksConfig['path_to_wget'] ) ) {
+			die ( 'Support is not yet added for wget in a different directory' );
+		} elseif ( file_exists( "$path/wget.exe" ) ) {
+			if ( $wgArchiveLinksConfig['file_types_to_archive'] ) {
+				if ( is_array( $wgArchiveLinksConfig['file_types_to_archive']) ){
+					$accept_file_types = '-A ' . implode( ',', $wgArchiveLinksConfig['filetypes_to_archive'] );
+				} else {
+					$accept_file_types = '-A ' . $wgArchiveLinksConfig['file_types_to_archive'];
+				}
+			} else {
+				$accept_file_types = '';
+			}
+			//At the current time we are only adding support for the local filestore, but swift support is something that will be added later
+			switch( $wgArchiveLinksConfig['filestore_to_use'] ) {
+				case 'local':
+				default:
+					if ( $wgArchiveLinksConfig['subfolder_name'] ) {
+						$content_dir = 'extensions/ArchiveLinks/' . $wgArchiveLinksConfig['subfolder_name'];
+					} elseif ( $wgArchiveLinksConfig['content_path'] ) {
+						$content_dir =  realpath( $wgArchiveLinksConfig['content_path'] );
+						if ( !$content_dir ) {
+							die ( 'The path you have set for $wgArchiveLinksConfig[\'content_path\'] does not exist.' .
+									'This makes the spider a very sad panda. Please either create it or use a different setting.');
+						}
+					} else {
+						$content_dir = 'extensions/ArchiveLinks/' . 'archived_content/';
+					}
+					$dir = $path . $content_dir . sha1( time() . ' - ' . $url );
+					$dir = escapeshellarg( $dir );
+					$sanitized_url = escapeshellarg( $url );
+			}
 
-	/*private function check_queue( ) {
+			shell_exec( "cd $path" );
+			shell_exec( "wget.exe -nH -p -H -E -k -o \"./log.txt\" -Q2m -P $dir $accept_file_types $sanitized_url" );
+		} else {
+			//this is primarily designed with windows in mind and no built in wget, so yeah, *nix support should be added, in other words note to self...
+			die ( 'wget must be installed in order for the spider to function in wget mode' );
+		}
+	}
+
+	private function check_queue( ) {
 		//need to fix this to use arrays instead of what I'm doing now
 		$this->db_result['job-fetch'] = $this->db_slave->select('el_archive_queue', '*', '`el_archive_queue`.`delay_time` <= ' . time()
 						. ' AND `el_archive_queue`.`in_progress` = 0'
@@ -61,14 +109,14 @@ class ArchiveLinksSpider extends Maintenance {
 		if ( $this->db_result['job-fetch']->numRows() > 0 ) {
 			$row = $this->db_result['job-fetch']->fetchRow();
 			
-			$this->delete_dups( $row['url'] );			
+			//$this->delete_dups( $row['url'] );			
 
 			return $row['url'];
 		} else {
 			//there are no jobs to do right now
 			return false;
 		}
-	}*/
+	}
 
 	/**
 	 * This function checks a local file for a local block of jobs that is to be done
@@ -123,7 +171,7 @@ class ArchiveLinksSpider extends Maintenance {
 							array_key_exists( 'in_progress_ignore_delay', $wgArchiveLinksConfig ) ? $ignore_in_prog_time = $wgArchiveLinksConfig['in_progress_ignore_delay'] :
 								$ignore_in_prog_time = 7200;
 							
-							if ( $reserve_time - $time > $ignore_in_prog_time ) {
+							if ( $reserve_time + $ingore_in_prog_time + $wait_time > $ignore_in_prog_time + $wait_time ) {
 								$retval = $this->reserve_job( $row );
 							}
 						}
