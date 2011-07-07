@@ -67,7 +67,7 @@ class qp_PollView extends qp_AbstractView {
 		foreach ( $this->ctrl->questions as &$question ) {
 			$question->view->renderInterpErrors( $this->ctrl->pollStore->interpAnswer );
 			if ( $this->perRow > 1 ) {
-				$write_col[] = array( '__tag'=>'td', 'valign'=>'top', 0=>$question->view->renderQuestion( $this->ctrl ), '__end'=>"\n" );
+				$write_col[] = array( '__tag'=>'td', 'valign'=>'top', 0=>$question->view->renderQuestion(), '__end'=>"\n" );
 				if ( $this->currCol == 1 ) {
 					$write_row[] = array( '__tag'=>'tr', 0=>$write_col, '__end'=>"\n" );
 					$write_col = Array();
@@ -76,7 +76,7 @@ class qp_PollView extends qp_AbstractView {
 					$this->currCol = $this->perRow;
 				}
 			} else {
-				$write_row[] = $question->view->renderQuestion( $this->ctrl );
+				$write_row[] = $question->view->renderQuestion();
 			}
 			# question object is not needed anymore
 			unset( $question );
@@ -143,7 +143,8 @@ class qp_PollView extends qp_AbstractView {
 				$submitBtn[ 'disabled' ] = 'disabled';
 			}
 		}
-		if ( $this->ctrl->pollStore->noMoreAttempts() ) {
+		$atLeft = $this->ctrl->attemptsLeft();
+		if ( $atLeft === false ) {
 			$submitBtn[ 'disabled' ] = 'disabled';
 		}
 		# disable submit button in preview mode & printable version
@@ -154,8 +155,10 @@ class qp_PollView extends qp_AbstractView {
 		$p = array( '__tag'=>'p' );
 		$p[] = $submitBtn;
 		# output no more attempts message, when applicable
-		if ( $this->ctrl->pollStore->noMoreAttempts() ) {
-			$p[] = array( '__tag'=>'span', 'class'=>'no_more_attempts', qp_Setup::specialchars( wfMsg( 'qp_error_no_more_attempts' ) ) );
+		if ( $atLeft === false ) {
+			$p[] = array( '__tag'=>'span', 'class'=>'attempts_counter', qp_Setup::specialchars( wfMsg( 'qp_error_no_more_attempts' ) ) );
+		} elseif ( $atLeft !== true ) {
+			$p[] = array( '__tag'=>'span', 'class'=>'attempts_counter', qp_Setup::specialchars( wfMsgExt( 'qp_submit_attempts_left', array( 'parsemag' ), intval( $atLeft ) ) ) );
 		}
 
 		$qpoll_form[] = &$p;

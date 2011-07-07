@@ -160,7 +160,7 @@ class qp_Eval {
 			'desc' => 'Disallow visibility of globals in local scope'
 		),
 		array(
-			'code' => 'return isset( $selfCheck );',
+			'code' => 'return $selfCheck == 1;',
 			'badresult' => true,
 			'desc' => 'Disallow access to extension\'s locals in the eval scope'
 		),
@@ -235,8 +235,12 @@ class qp_Eval {
 					# there is an error in sample
 					return 'Sample error:' . $sourceCode['desc'];
 				}
+				# suppres PHP notices because some tests are supposed to generate them
+				$old_reporting = error_reporting( E_ALL & ~E_NOTICE );
+				$test_result = eval( $destinationCode );
+				error_reporting( $old_reporting );
 				# compare eval() result with "insecure" bad result
-				if ( eval( $destinationCode ) === $sourceCode['badresult'] ) {
+				if (  $test_result === $sourceCode['badresult'] ) {
 					return $sourceCode['desc'];
 				}
 			} else {

@@ -870,16 +870,10 @@ class qp_PollStore {
 			$qp_users_polls = self::$db->tableName( 'qp_users_polls' );
 			$short = self::$db->addQuotes( $this->interpAnswer->short );
 			$long = self::$db->addQuotes( $this->interpAnswer->long );
-			$stmt = "INSERT INTO {$qp_users_polls} (uid,pid,short_interpretation,long_interpretation)\n VALUES ( " . intval( $this->last_uid ) . ", " . intval( $this->pid ) . ", {$short}, {$long} )\n ON DUPLICATE KEY UPDATE attempts = attempts + 1, short_interpretation = {$short} , long_interpretation = {$long}";
+			$this->attempts++;
+			$stmt = "INSERT INTO {$qp_users_polls} (uid,pid,short_interpretation,long_interpretation)\n VALUES ( " . intval( $this->last_uid ) . ", " . intval( $this->pid ) . ", {$short}, {$long} )\n ON DUPLICATE KEY UPDATE attempts = " . intval( $this->attempts ) . ", short_interpretation = {$short} , long_interpretation = {$long}";
 			self::$db->query( $stmt, __METHOD__ );
 		}
-	}
-
-	/**
-	 * Please call after the poll has been loaded but before it's being submitted
-	 */
-	function noMoreAttempts() {
-		return qp_Setup::$max_submit_attempts > 0 && $this->attempts >= qp_Setup::$max_submit_attempts;
 	}
 
 	# when the user votes and poll wasn't previousely voted yet, it also creates the poll structures in DB

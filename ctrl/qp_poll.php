@@ -42,8 +42,39 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class qp_Poll extends qp_AbstractPoll {
 
-	function __construct( $argv, $view ) {
+	# optional address of the poll which must be answered first
+	var $dependsOn = '';
+	# optional template used to interpret user vote in the Special:Pollresults page
+	var $interpretation = ''; 
+	# maximal count of attepts of answer submission ( < 1 for infinite )
+	var $maxAttempts = 0;
+
+	function __construct( $argv, qp_PollView $view ) {
 		parent::__construct( $argv, $view );
+		# dependance attr
+		if ( array_key_exists('dependance', $argv) ) {
+			$this->dependsOn = trim( $argv['dependance'] );
+		}
+		# interpretation attr
+		if ( array_key_exists('interpretation', $argv) ) {
+			$this->interpretation = trim( $argv['interpretation'] );
+		}
+		# max_attempts attr
+		$this->maxAttempts = qp_Setup::$max_submit_attempts;
+		if ( array_key_exists('max_attempts', $argv) ) {
+			$this->maxAttempts = intval( trim( $argv['max_attempts'] ) );
+			# do not allow to specify more submit attempts than is set by global level in qp_Setup
+			if ( qp_Setup::$max_submit_attempts > 0 &&
+					# also does not allow to set infinite number ( < 1 ) when global level is finite ( > 0 )
+					( $this->maxAttempts < 1 ||
+						$this->maxAttempts > qp_Setup::$max_submit_attempts ) ) {
+				$this->maxAttempts = qp_Setup::$max_submit_attempts;
+			}
+		}
+		# negative values are possible however meaningless (0 is infinite, >0 is finite)
+		if ( $this->maxAttempts < 0 ) {
+			$this->maxAttempts = 0;
+		}
 		# order_id is used to sort out polls on the Special:PollResults statistics page
 		$this->mOrderId = self::$sOrderId;
 		# Determine if this poll is being corrected or not, according to the pollId
@@ -111,6 +142,21 @@ class qp_Poll extends qp_AbstractPoll {
 	}
 
 	/**
+	 * Please call after the poll has been loaded but before it's being submitted
+	 * @return  int number of attempts left (1..n); true for infinite number; false when no attempts left
+	 */
+	function attemptsLeft() {
+		if ( $this->maxAttempts > 0 ) {
+			$result = $this->maxAttempts - $this->pollStore->attempts;
+			if ( $result > 0 ) {
+				return $result;
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
 	 * Parses the text enclosed in poll tag
 	 * Votes, when user have submitted data successfully
 	 * @param    $input - text enclosed in poll tag
@@ -121,7 +167,7 @@ class qp_Poll extends qp_AbstractPoll {
 		# parse the input; generates $this->questions[] array
 		$this->parseQuestions( $input );
 		# check whether the poll was successfully submitted
-		if ( $this->pollStore->noMoreAttempts() ) {
+		if ( $this->attemptsLeft() === false ) {
 			# user has no attempts left, refuse to submit and
 			# will show the message in $this->view->renderPoll()
 			return false;
@@ -271,8 +317,8 @@ class qp_Poll extends qp_AbstractPoll {
 	# @return            question object with parsed headers and no data loaded
 	function parseQuestionHeader( $header, $body ) {
 		$question = new qp_Question(
+			$this,
 			qp_QuestionView::newFromBaseView( $this->view ),
-			$this->mBeingCorrected,
 			++$this->mQuestionId
 		);
 		# parse questions common question and XML attributes

@@ -322,10 +322,10 @@ class qp_QuestionView extends qp_AbstractView {
 		}
 		# todo: figure out how to split this part to separate function
 		# this part is unneeded for question stats controller,
-		# which should never have $this->ctrl->mBeingCorrected === true
+		# which should never have $this->ctrl->poll->mBeingCorrected === true
 		if ( $spanState->cellsLeft <= 1 ) {
 			# end of new span
-			if ( $this->ctrl->mBeingCorrected && 
+			if ( $this->ctrl->poll->mBeingCorrected && 
 					!$spanState->wasChecked &&
 					$this->ctrl->mRequest->getVal( $name ) != $value ) {
 				# the span (a part of proposal) was submitted but unanswered
@@ -404,10 +404,9 @@ class qp_QuestionView extends qp_AbstractView {
 
 	/**
 	 * todo: unfortunately, rendering the question also conditionally modifies state of poll controller
-	 * @param $poll  instance of poll controller associated with current question ctrl/view
-	 * @modifies $poll
+	 * @modifies parent controller
 	 */
-	function renderQuestion( qp_AbstractPoll $poll ) {
+	function renderQuestion() {
 		$output_table = array( '__tag'=>'table', '__end'=>"\n", 'class'=>'object' );
 		# Determine the side border color the question.
 		if ( $this->ctrl->getState() != '' ) {
@@ -417,7 +416,7 @@ class qp_QuestionView extends qp_AbstractView {
 				$output_table['class'] = 'error_mark';
 			}
 			# set poll controller state according to question controller state
-			$poll->mState = $this->ctrl->getState();
+			$this->ctrl->applyStateToParent();
 		}
 		$output_table[] = array( '__tag'=>'tbody', '__end'=>"\n", 0=>$this->renderTable() );
 		$tags = array( '__tag'=>'div', '__end'=>"\n", 'class'=>'question',

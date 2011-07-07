@@ -42,7 +42,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class qp_PollStats extends qp_AbstractPoll {
 
-	function __construct( $argv, $view ) {
+	function __construct( $argv, qp_PollStatsView $view ) {
 		parent::__construct( $argv, $view );
 		$this->pollAddr = trim( $argv['address'] );
 		# statistical mode is active, but qp_Setup::$global_showresults still can be false
@@ -58,7 +58,7 @@ class qp_PollStats extends qp_AbstractPoll {
 			$this->mState = "error";
 			return self::fatalError( 'qp_error_id_in_stats_mode' );
 		}
-		if ( $this->dependsOn !== '' ) {
+		if ( isset( $this->dependsOn ) && $this->dependsOn !== '' ) {
 			$this->mState = "error";
 			return self::fatalError( 'qp_error_dependance_in_stats_mode' );
 		}
@@ -93,6 +93,7 @@ class qp_PollStats extends qp_AbstractPoll {
 		# first pass: parse the headers
 		foreach ( $this->pollStore->Questions as &$qdata ) {
 			$question = new qp_QuestionStats(
+				$this,
 				qp_QuestionStatsView::newFromBaseView( $this->view ),
 				$qdata->type,
 				$qdata->question_id

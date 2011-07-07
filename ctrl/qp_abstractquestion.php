@@ -14,31 +14,32 @@ abstract class qp_AbstractQuestion {
 	var $mCategorySpans = Array();
 	var $mCommonQuestion = ''; // GET common question of the poll
 	var $mProposalText = Array(); // an array of question proposals
-	var $mBeingCorrected = false; // true, when user is posting this question via the poll's form
 	var $alreadyVoted = false; // whether the selected user has already voted this question ?
 
 	# statistics
 	var $Percents = null;
 
+	# question's parent controller
+	var $poll;
 	# question's view
 	var $view;
 
 	/**
 	 * Constructor
 	 * @public
+	 * @param  $poll            an instance of question's parent controller
 	 * @param  $view            an instance of question view "linked" to this question
-	 * @param  $beingCorrected  boolean
 	 * @param  $questionId      the identifier of the question used to gernerate input names
 	 */
-	function __construct( qp_AbstractView $view, $beingCorrected, $questionId ) {
+	function __construct( qp_AbstractPoll $poll, qp_AbstractView $view, $questionId ) {
 		global $wgRequest;
 		$this->mRequest = &$wgRequest;
 		$this->mQuestionId = $questionId;
-		$this->mBeingCorrected = $beingCorrected;
 		$this->mProposalPattern = '`^[^\|\!].*`u';
 		$this->mCategoryPattern 	= '`^\|(\n|[^\|].*\n)`u';
 		$view->setController( $this );
 		$this->view = $view;
+		$this->poll = $poll;
 	}
 
 	/**
@@ -88,6 +89,10 @@ abstract class qp_AbstractQuestion {
 			return intval( round( 100 * $this->Percents[ $proposalId ][ $catId ] ) );
 		}
 		return false;
+	}
+
+	function applyStateToParent() {
+		$this->poll->mState = $this->getState();
 	}
 
 } /* end of qp_AbstractQuestion class */
