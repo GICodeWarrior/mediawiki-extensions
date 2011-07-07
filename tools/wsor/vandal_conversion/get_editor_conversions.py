@@ -1,5 +1,13 @@
-import sys, MySQLdb, MySQLdb.cursors, argparse
+import sys, MySQLdb, MySQLdb.cursors, argparse, os, logging, types
 import wmf
+
+def encode(v):
+	if v == None: return "\N"
+	
+	if type(v) == types.LongType:     v = int(v)
+	elif type(v) == types.UnicodeType: v = v.encode('utf-8')
+	
+	return str(v).encode("string-escape")
 
 
 def main():
@@ -35,6 +43,12 @@ def main():
 		help='the language db to run the query in (defaults to enwiki)',
 		default="enwiki"
 	)
+	parser.add_argument(
+		'-o', '--old',
+		type=lambda fn:open(fn, 'r'), 
+		help='an old output file to process (defaults to stdin)',
+		default=sys.stdin
+	)
 	args = parser.parse_args()
 	
 	LOGGING_STREAM = sys.stderr
@@ -45,34 +59,55 @@ def main():
 		datefmt='%b-%d %H:%M:%S'
 	)
 	
+	processedUsers = set()
+	if not args.old.isatty():
+		logging.info("Loading previously processed users.")
+		args.old.readline() # dump headers
+		for line in args.old:
+			try:
+				userId = int(line.strip().split("\t")[0])
+				processedUsers.add(userId)
+			except ValueError:
+				logging.warning("Could not convert %s into a user id." % line.strip().split("\t")[0])
+	
 	logging.info("Connecting to %s:%s using %s." % (args.host, args.db, args.cnf))
 	db = Database(
 		host=args.host, 
 		db=args.db, 
 		read_default_file=args.cnf
 	)
-	
+	headers = [
+		'user_id',
+		'user_name',
+		'first_edit',
+		'last_edit',
+		'fes_edits',
+		'fes_reverted',
+		'fes_vandalism',
+		'fes_deleted',
+		'last10_edits',
+		'last10_reverted',
+		'last10_vandalism',
+		'last10_deleted'
+	]
 	print(
-		"\t".join([
-			'user_id',
-			'user_name',
-			'first_edit',
-			'fes_edits',
-			'fes_reverted',
-			'fes_vandalism',
-			'fes_deleted',
-			'last10_edits',
-			'last10_reverted',
-			'last10_vandalism',
-			'last10_deleted'
-		])
+		"\t".join(headers)
 	)
 	
-	logging.info("Processing users:")	
+	logging.info("Processing users:")
+	users  = []	
 	for user in db.getUsers(minimumEdits=args.min_edits):
+		if user['user_id'] in processedUsers: 
+			logging.info("Skipping %s(%s)" % (user['user_name'], user['user_id']))
+			continue
+		else:
+			users.append(user)
+	
+	for user in users:
 		firstSession = []
 		last = None
-		for rev in db.getFirstEdits(user['user_id']):
+		#logging.debug("Getting first edits for %s" % user['user_name'])
+		for rev in db.getFirstEdits(user['user_id'], maximum=100):
 			if last != None:
 				diff = wmf.wp2Timestamp(rev['rev_timestamp']) - wmf.wp2Timestamp(last['rev_timestamp'])
 				assert diff >= 0
@@ -86,29 +121,30 @@ def main():
 			
 			last = rev
 		
+		#logging.debug("Getting last edits for %s" % user['user_name'])
 		last10 = list(db.getLastEdits(user['user_id'], maximum=10))
 		logging.debug("%s(%s): %s %s" % (user['user_name'], user['user_id'], len(firstSession)*">", len(last10)*"<"))
-		print(
-			"\t".join(
-				str(v).encode("string-escape") for v in [
-					user['user_id'],
-					user['user_name'],
-					user['editcount'],
-					firstSession[0]['rev_timestamp'],
-					len(firstSession),
-					len([r for r in firstSession if r['is_reverted']]),
-					len([r for r in firstSession if r['is_vandalism']]),
-					len([r for r in firstSession if r['deleted']]),
-					len(last10),
-					len([r for r in last10 if r['is_reverted']]),
-					len([r for r in last10 if r['is_vandalism']]),
-					len([r for r in last10 if r['deleted']])
-				]
-			)
-		)
+		user['first_edit'] = firstSession[0]['rev_timestamp']
+		user['last_edit']  = last10[0]['rev_timestamp']
+		user['fes_edits']  = len(firstSession)
+		user['fes_reverted'] = 0
+		user['fes_vandalism'] = 0
+		user['fes_deleted'] = 0
+		for rev in firstSession:
+			if rev['is_reverted']:  user['fes_reverted'] += 1
+			if rev['is_vandalism']: user['fes_vandalism'] += 1
+			if rev['deleted']:      user['fes_deleted'] += 1
+		
+		user['last10_edits'] = len(last10)
+		user['last10_reverted'] = 0
+		user['last10_vandalism'] = 0
+		user['last10_deleted'] = 0
+		for rev in last10:
+			if rev['is_reverted']:  user['last10_reverted'] += 1
+			if rev['is_vandalism']: user['last10_vandalism'] += 1
+			if rev['deleted']:      user['last10_deleted'] += 1
 			
-				
-
+		print("\t".join(encode(user[h]) for h in headers))
 
 
 class Database:
@@ -117,7 +153,8 @@ class Database:
 		self.args   = args
 		self.kwargs = kwargs
 		self.usersConn = MySQLdb.connect(*args, **kwargs)
-		self.editsConn = MySQLdb.connect(*args, **kwargs)
+		self.revsConn  = MySQLdb.connect(*args, **kwargs)
+		self.archConn  = MySQLdb.connect(*args, **kwargs)
 	
 	def getUsers(self, minimumEdits=0):
 		minimumEdits = int(minimumEdits)
@@ -127,10 +164,8 @@ class Database:
 			SELECT 
 				u.user_id,
 				u.user_name,
-				um.first_edit,
 				u.user_editcount as editcount
 			FROM user u
-			INNER JOIN halfak.user_meta um USING (user_id)
 			WHERE u.user_editcount >= %(minimum_edits)s
 			""",
 			{
@@ -144,8 +179,8 @@ class Database:
 	
 	def getEdits(self, userId, maximum=10000, chronologically=True):
 		userId = int(userId)
-		revisionCursor = self.editsConn.cursor(MySQLdb.cursors.SSDictCursor)
-		archiveCursor  = self.editsConn.cursor(MySQLdb.cursors.SSDictCursor)
+		revisionCursor = self.revsConn.cursor(MySQLdb.cursors.SSDictCursor)
+		archiveCursor  = self.archConn.cursor(MySQLdb.cursors.SSDictCursor)
 		
 		if chronologically: direction = "ASC"
 		else:               direction = "DESC"
@@ -162,7 +197,7 @@ class Database:
 			LEFT JOIN halfak.reverted_20110115 rvtd
 				ON r.rev_id = rvtd.revision_id
 			WHERE rev_user = %(user_id)s
-			ORDER BY r.timestamp """ + direction + """
+			ORDER BY r.rev_timestamp """ + direction + """
 			LIMIT %(maximum)s;
 			""",
 			{
@@ -173,14 +208,14 @@ class Database:
 		archiveCursor.execute(
 			"""
 			SELECT
-				ar.ar_rev_id    AS rev_id,
-				ar.ar_timestamp AS rev_timestamp,
-				NULL            AS is_reverted,
-				NULL            AS is_vandalism,
-				True            AS deleted
-			FROM archive ar
+				ar_rev_id    AS rev_id,
+				ar_timestamp AS rev_timestamp,
+				NULL         AS is_reverted,
+				NULL         AS is_vandalism,
+				True         AS deleted
+			FROM archive
 			WHERE ar_user = %(user_id)s
-			ORDER BY ar.timestamp """ + direction + """
+			ORDER BY ar_timestamp """ + direction + """
 			LIMIT %(maximum)s;
 			""",
 			{
@@ -193,29 +228,29 @@ class Database:
 		else:
 			order = lambda t1, t2:t1 > t2
 		
-		revPointer = revisionCursor.fetchrow()
-		archPointer = archiveCursor.fetchrow()
+		revPointer = revisionCursor.fetchone()
+		archPointer = archiveCursor.fetchone()
 		count = 0
 		while revPointer != None or archPointer != None: #still something to output
 			if revPointer != None and archPointer != None: #both cursors still have something
 				if order(revPointer['rev_timestamp'], archPointer['rev_timestamp']):
 					yield revPointer
-					revPointer = revisionCursor.fetchrow()
+					revPointer = revisionCursor.fetchone()
 				else:
 					yield archPointer
-					archPointer = archiveCursor.fetchrow()
+					archPointer = archiveCursor.fetchone()
 			elif revPointer != None: #only revisions left
 				yield revPointer
-				revPointer = revisionCursor.fetchrow()
-			elif archPointer != None:
+				revPointer = revisionCursor.fetchone()
+			elif archPointer != None: #only archives left
 				yield archPointer
-				archPointer = archiveCursor.fetchrow()
+				archPointer = archiveCursor.fetchone()
 			
 			count += 1
 			if count >= maximum: break
-			
 		
-	
+		revisionCursor.close()
+		archiveCursor.close()
 			
 		
 	
@@ -226,5 +261,4 @@ class Database:
 		return self.getEdits(userId, maximum, chronologically=False)
 	
 	
-if __name__ == "__main__":
-	main()
+if __name__ == "__main__": main()

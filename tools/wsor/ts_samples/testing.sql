@@ -67,3 +67,16 @@ GROUP BY
 	SUBSTRING(first_edit, 5,2)
 ) as foo
 GROUP BY year, biannual;
+
+
+
+SELECT max(rev_timestamp) as timestamp, count(*) as edits 
+FROM (
+	SELECT rev_user, rev_timestamp, rev_page
+	FROM enwiki.revision r2 
+	WHERE r2.rev_user = 40
+	ORDER BY rev_timestamp LIMIT 100
+) AS foo
+ORDER BY rev_timestamp DESC
+LIMIT 1
+
