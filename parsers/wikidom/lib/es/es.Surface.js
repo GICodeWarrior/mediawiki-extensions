@@ -19,7 +19,7 @@
  * @returns {Surface}
  */
 function Surface( $container, document ) {
-	this.$ = $container;
+	this.$ = $container.addClass( 'editSurface' );
 	this.document = document;
 	this.rendered = false;
 	this.location = null;
@@ -51,8 +51,8 @@ function Surface( $container, document ) {
 	this.$.after( this.cursor.$ );
 	
 	// Hidden input
-	this.$input = $( '<input/>' );
-	this.$.before( this.$input );
+	this.$input = $( '<input class="editSurface-input" />' );
+	this.$.prepend( this.$input );
 	this.$input.bind({
 		'keydown' : function( e ) {
 			return surface.onKeyDown( e );			
@@ -105,6 +105,7 @@ Surface.prototype.onMouseDown = function( e ) {
 		cursorPosition = block.flow.getPosition( nearestOffset );
 	
 	this.cursor.show( cursorPosition, blockPosition );
+	this.$input.css( 'top', cursorPosition.top );
 	this.location = new Location( block, nearestOffset );
 	
 	this.state.selection = {

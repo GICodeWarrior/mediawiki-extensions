@@ -163,7 +163,9 @@ TextFlow.prototype.getPosition = function( offset ) {
 	if ( this.lines[line].start < offset ) {
 		var $ruler = $( '<div class="editSurface-line"></div>' ).appendTo( this.$ ),
 			ruler = $ruler[0];
-		ruler.innerHTML = this.escape( this.lines[line].text.substring( 0, offset - this.lines[line].start ) );
+		ruler.innerHTML = this.escape(
+			this.lines[line].text.substring( 0, offset - this.lines[line].start )
+		);
 		position.left = ruler.clientWidth;
 		$ruler.remove();
 	}
