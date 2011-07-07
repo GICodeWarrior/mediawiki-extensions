@@ -22,7 +22,6 @@ function Surface( $container, document ) {
 	this.$ = $container;
 	this.document = document;
 	this.rendered = false;
-	this.cursorInterval = null;
 	this.location = null;
 	this.render();
 
@@ -35,8 +34,7 @@ function Surface( $container, document ) {
 	});
 	
 	// Cursor
-	this.$cursor = $( '<div class="editSurface-cursor"></div>' );
-	this.$.after( this.$cursor );
+	this.cursor = new Cursor( this );
 	
 	// Hidden input
 	this.$input = $( '<input/>' );
@@ -79,41 +77,9 @@ Surface.prototype.onMouseDown = function( e ) {
 	var position = new Position( e.pageX - $block.offset().left,
 								 e.pageY - $block.offset().top );
 	var offset = block.flow.getOffset( position );
-	this.setCursor( new Location( block, offset ) );
+	this.cursor.show( new Location( block, offset ) );
 	this.$input.focus();
 	return false;
-};
-
-/**
- * Moves the cursor to a new location.
- * 
- * @param location {Location} Location to move the cursor to
- */
-Surface.prototype.setCursor = function( location ) {
-	this.location = location;
-	
-	var position = this.location.block.getPosition( this.location.offset );
-	var offset = this.location.block.$.offset();
-
-	this.$cursor.css({
-		'left': position.left + offset.left,
-		'top': position.top + offset.top
-	}).show();
-
-	// Cursor blinking
-	if( this.cursorInterval ) {
-		clearInterval( this.cursorInterval );
-	}
-	this.cursorInterval = setInterval( function( surface ) { surface.$cursor.css( 'display' ) == 'block' ? surface.$cursor.hide() : surface.$cursor.show(); }, 500, this );
-};
-
-/**
- * Gets the current location of the cursor.
- * 
- * @returns {Location}
- */
-Surface.prototype.getCursor = function() {
-	return this.location;
 };
 
 /**
@@ -168,7 +134,7 @@ Surface.prototype.getPosition = function( location ) {
  * Moves the cursor to the nearest location directly above the current flowed line.
  */
 Surface.prototype.moveCursorUp = function() {
-	var location = this.getCursor();
+	var location = this.cursor.get();
 	var below = this.getPosition( location );
 	var minDistance;
 	while ( location.block.previous() && location.offset > 0 ) {
@@ -187,7 +153,7 @@ Surface.prototype.moveCursorUp = function() {
 			}
 		}
 	}
-	this.setCursor( location );
+	this.cursor.show( location );
 };
 
 /**
@@ -220,7 +186,7 @@ Surface.prototype.moveCursorDown = function() {
  * Moves the cursor backward of the current position.
  */
 Surface.prototype.moveCursorRight = function() {
-	var location = this.getCursor();
+	var location = this.cursor.get();
 	if ( location.block.getLength() > location.offset + 1 ) {
 		location.offset++;
 	} else {
@@ -230,14 +196,14 @@ Surface.prototype.moveCursorRight = function() {
 			location.offset = 0;
 		}
 	}
-	this.setCursor( location );
+	this.cursor.show( location );
 };
 
 /**
  * Moves the cursor forward of the current position.
  */
 Surface.prototype.moveCursorLeft = function() {
-	var location = this.getCursor();
+	var location = this.cursor.get();
 	if ( location.offset > 0 ) {
 		location.offset--;
 	} else {
@@ -247,7 +213,7 @@ Surface.prototype.moveCursorLeft = function() {
 			location.offset = location.block.getLength() - 1;
 		}
 	}
-	this.setCursor( location );
+	this.cursor.show( location );
 };
 
 /**
