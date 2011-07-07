@@ -32,9 +32,8 @@ class ApiClickTracking extends ApiBase {
 			$additional = $params['additional'];
 		}
 
-		// Event ID lookup table
 		// FIXME: API should already have urldecode()d
-		$eventId = ClickTrackingHooks::getEventIDFromName( urldecode( $eventid_to_lookup ) );
+		$eventName = urldecode( $eventid_to_lookup );
 
 		$isLoggedIn = $wgUser->isLoggedIn();
 		$now = time();
@@ -51,7 +50,7 @@ class ApiClickTracking extends ApiBase {
 			$sessionId,  // randomly generated session ID
 			$isLoggedIn, 						 // is the user logged in?
 			(int)$namespace, 			 // what namespace are they editing?
-			$eventId,							 // event ID passed in
+			$eventName,							 // event ID passed in
 			( $isLoggedIn ? $wgUser->getEditCount() : 0 ), // total edit count or 0 if anonymous
 			$granularity1, // contributions made in granularity 1 time frame
 			$granularity2, // contributions made in granularity 2 time frame
@@ -103,7 +102,7 @@ class ApiClickTracking extends ApiBase {
 				ApiBase::PARAM_REQUIRED => true,
 			),
 			'namespacenumber' => array(
-				ApiBase::PARAM_TYPE => 'namespace',
+				ApiBase::PARAM_TYPE => 'integer', // not 'namespace', we need to allow negative numbers
 				ApiBase::PARAM_REQUIRED => true,
 			),
 			'token' => array(

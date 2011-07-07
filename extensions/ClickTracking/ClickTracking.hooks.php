@@ -169,7 +169,7 @@ class ClickTrackingHooks {
 	 * @param $sessionId String: unique session id for this editing sesion
 	 * @param $isLoggedIn Boolean: whether or not the user is logged in
 	 * @param $namespace Integer: namespace the user is editing
-	 * @param $eventId Integer: event type
+	 * @param $eventName String: event type
 	 * @param $contribs Integer: contributions the user has made (or NULL if user not logged in)
 	 * @param $contribs_in_timespan1 Integer: number of contributions user has made in timespan of granularity 1
 	 * (defined by ClickTracking/$wgClickTrackContribGranularity1)
@@ -181,49 +181,74 @@ class ClickTrackingHooks {
 	 * @param $relevantBucket String: name/index of the particular bucket we're concerned with for this event
 	 * @return Boolean: true if the event was stored in the DB
 	 */
-	public static function trackEvent( $sessionId, $isLoggedIn, $namespace, $eventId, $contribs = 0,
+	public static function trackEvent( $sessionId, $isLoggedIn, $namespace, $eventName, $contribs = 0,
 	$contribs_in_timespan1 = 0, $contribs_in_timespan2 = 0, $contribs_in_timespan3 = 0, $additional = null, $recordBucketInfo = true ) {
-				
-		$dbw = wfGetDB( DB_MASTER );
-		$dbw->begin();
-		// Builds insert information
-		$data = array(
-			'action_time' => $dbw->timestamp(),
-			'session_id' => (string) $sessionId,
-			'is_logged_in' => (bool) $isLoggedIn,
-			'user_total_contribs' => ( $isLoggedIn ? (int) $contribs : null ),
-			'user_contribs_span1' => ( $isLoggedIn ? (int) $contribs_in_timespan1 : null ),
-			'user_contribs_span2' => ( $isLoggedIn ? (int) $contribs_in_timespan2 : null ),
-			'user_contribs_span3' => ( $isLoggedIn ? (int) $contribs_in_timespan3 : null ),
-			'namespace' => (int) $namespace,
-			'event_id' => (int) $eventId,
-			'additional_info' => ( isset( $additional ) ? (string) $additional : null )
-		);
-		$db_status_buckets = true;
-		$db_status = $dbw->insert( 'click_tracking', $data, __METHOD__ );
-		$dbw->commit();
-
-		if( $recordBucketInfo && $db_status ){
-			$buckets = self::unpackBucketInfo();
-			if( $buckets ){
-				foreach( $buckets as $bucketName => $bucketValue ){
-						$db_current_bucket_insert = $dbw->insert( 'click_tracking_user_properties', 
-							array(
-								'session_id' => (string) $sessionId,
-								'property_name' => (string) $bucketName,
-								'property_value' => (string) $bucketValue[0],
-								'property_version' => (int) $bucketValue[1]
-							),
-						 __METHOD__,
-						 array( 'IGNORE' )
-						 );
-					$db_status_buckets = $db_status_buckets && $db_current_bucket_insert;
-				}
-			}//ifbuckets
-		}//ifrecord
 		
-		$dbw->commit();
-		return ($db_status && $db_status_buckets);
+		global $wgClickTrackingDatabase, $wgClickTrackingLog;
+		$retval = true;
+		if ( $wgClickTrackingDatabase ) {
+			$eventId = self::getEventIDFromName( $eventName );
+			$dbw = wfGetDB( DB_MASTER );
+			$dbw->begin();
+			// Builds insert information
+			$data = array(
+				'action_time' => $dbw->timestamp(),
+				'session_id' => (string) $sessionId,
+				'is_logged_in' => (bool) $isLoggedIn,
+				'user_total_contribs' => ( $isLoggedIn ? (int) $contribs : null ),
+				'user_contribs_span1' => ( $isLoggedIn ? (int) $contribs_in_timespan1 : null ),
+				'user_contribs_span2' => ( $isLoggedIn ? (int) $contribs_in_timespan2 : null ),
+				'user_contribs_span3' => ( $isLoggedIn ? (int) $contribs_in_timespan3 : null ),
+				'namespace' => (int) $namespace,
+				'event_id' => (int) $eventId,
+				'additional_info' => ( isset( $additional ) ? (string) $additional : null )
+			);
+			$db_status_buckets = true;
+			$db_status = $dbw->insert( 'click_tracking', $data, __METHOD__ );
+			$dbw->commit();
+
+			if( $recordBucketInfo && $db_status ){
+				$buckets = self::unpackBucketInfo();
+				if( $buckets ){
+					foreach( $buckets as $bucketName => $bucketValue ){
+							$db_current_bucket_insert = $dbw->insert( 'click_tracking_user_properties', 
+								array(
+									'session_id' => (string) $sessionId,
+									'property_name' => (string) $bucketName,
+									'property_value' => (string) $bucketValue[0],
+									'property_version' => (int) $bucketValue[1]
+								),
+							__METHOD__,
+							array( 'IGNORE' )
+							);
+						$db_status_buckets = $db_status_buckets && $db_current_bucket_insert;
+					}
+				}//ifbuckets
+			}//ifrecord
+			
+			$dbw->commit();
+			$retval = $db_status && $db_status_buckets;
+		}
+		if ( $wgClickTrackingLog ) {
+			$msg = implode( "\t", array(
+				// Replace tabs with spaces in all strings
+				str_replace( "\t", ' ', $eventName ),
+				wfTimestampNow(),
+				(bool)$isLoggedIn,
+				str_replace( "\t", ' ', $sessionId ),
+				(int)$namespace,
+				(int)$contribs,
+				(int)$contribs_in_timespan1,
+				(int)$contribs_in_timespan2,
+				(int)$contribs_in_timespan3,
+				str_replace( "\t", ' ', $additional ),
+			) );
+			wfErrorLog( $msg, $wgClickTrackingLog );
+			
+			// No need to mess with $retval here, doing
+			// $retval == $retval && true is useless
+		}
+		return $retval;
 	}
 	
 	public static function editPageShowEditFormFields( $editPage, $output ) {
