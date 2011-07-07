@@ -94,7 +94,7 @@ class ClickTrackingHooks {
 	//adds a bucket-testing campaign to the active campaigns
 	public static function addCampaign($localBasePath, $remoteExtPath, $name ){
 		global $wgResourceModules;
-	
+
 		$cusResourceTemplate = array(
 		'localBasePath' => $localBasePath,
 		'remoteExtPath' => $remoteExtPath,
@@ -103,7 +103,7 @@ class ClickTrackingHooks {
 			'scripts' => "$name.js",
 			'dependencies' => 'jquery.clickTracking',
 		) + $cusResourceTemplate;
-		$wgResourceModules['ext.UserBuckets']['dependencies'] = array_merge( 
+		$wgResourceModules['ext.UserBuckets']['dependencies'] = array_merge(
 										  ( array ) $wgResourceModules['ext.UserBuckets']['dependencies'],
 							                array("ext.UserBuckets.$name"));
 	}
@@ -143,11 +143,11 @@ class ClickTrackingHooks {
 	 */
 	public static function unpackBucketInfo(){
 		global $wgRequest;
-		
+
 		//JSON-encoded because it's simple, can be replaced with any other encoding scheme
 		return FormatJson::decode( $wgRequest->getCookie( 'userbuckets', "" ), true );
 	}
-	
+
 	/**
 	 * Takes in an array of buckets
 	 * @param unknown_type $buckets
@@ -157,12 +157,12 @@ class ClickTrackingHooks {
 		global $wgRequest;
 		//Can be another encoding scheme, just needs to match unpackBucketInfo
 		$packedBuckets = FormatJson::encode( $buckets );
-		
+
 		//NOTE: $wgRequest->response setCookie sets it with a prefix and httponly by default
-		setcookie( 'userbuckets' , $packedBuckets , 
+		setcookie( 'userbuckets' , $packedBuckets ,
 					time() + 60 * 60 * 24 * 90 , '/' ); //expire in 90 days
 	}
-	
+
 	/**
 	 * Track particular event
 	 *
@@ -177,13 +177,13 @@ class ClickTrackingHooks {
 	 * (defined by ClickTracking/$wgClickTrackContribGranularity2)
 	 * @param $contribs_in_timespan3 Integer: number of contributions user has made in timespan of granularity 3
 	 * (defined by ClickTracking/$wgClickTrackContribGranularity3)
-	 * @param $additional String: catch-all for any additional information we want to record about this click 
+	 * @param $additional String: catch-all for any additional information we want to record about this click
 	 * @param $relevantBucket String: name/index of the particular bucket we're concerned with for this event
 	 * @return Boolean: true if the event was stored in the DB
 	 */
 	public static function trackEvent( $sessionId, $isLoggedIn, $namespace, $eventName, $contribs = 0,
 	$contribs_in_timespan1 = 0, $contribs_in_timespan2 = 0, $contribs_in_timespan3 = 0, $additional = null, $recordBucketInfo = true ) {
-		
+
 		global $wgClickTrackingDatabase, $wgClickTrackingLog;
 		$retval = true;
 		if ( $wgClickTrackingDatabase ) {
@@ -207,11 +207,12 @@ class ClickTrackingHooks {
 			$db_status = $dbw->insert( 'click_tracking', $data, __METHOD__ );
 			$dbw->commit();
 
-			if( $recordBucketInfo && $db_status ){
+			if( $recordBucketInfo && $db_status ) {
 				$buckets = self::unpackBucketInfo();
-				if( $buckets ){
+				$dbw->begin();
+				if( $buckets ) {
 					foreach( $buckets as $bucketName => $bucketValue ){
-							$db_current_bucket_insert = $dbw->insert( 'click_tracking_user_properties', 
+							$db_current_bucket_insert = $dbw->insert( 'click_tracking_user_properties',
 								array(
 									'session_id' => (string) $sessionId,
 									'property_name' => (string) $bucketName,
@@ -225,7 +226,7 @@ class ClickTrackingHooks {
 					}
 				}//ifbuckets
 			}//ifrecord
-			
+
 			$dbw->commit();
 			$retval = $db_status && $db_status_buckets;
 		}
@@ -244,16 +245,16 @@ class ClickTrackingHooks {
 				str_replace( "\t", ' ', $additional ),
 			) );
 			wfErrorLog( $msg, $wgClickTrackingLog );
-			
+
 			// No need to mess with $retval here, doing
 			// $retval == $retval && true is useless
 		}
 		return $retval;
 	}
-	
+
 	public static function editPageShowEditFormFields( $editPage, $output ) {
 		global $wgRequest;
-		
+
 		// Add clicktracking fields to form, if given
 		$session = $wgRequest->getVal( 'clicktrackingsession' );
 		$event = $wgRequest->getVal( 'clicktrackingevent' );
@@ -263,24 +264,24 @@ class ClickTrackingHooks {
 			$editPage->editFormTextAfterContent .= Html::hidden( 'clicktrackingevent', $event );
 			$editPage->editFormTextAfterContent .= Html::hidden( 'clicktrackinginfo', $info );
 		}
-		
+
 		return true;
 	}
-	
+
 	public static function articleSave( $editpage ) {
 		self::trackRequest( '-save-attempt' );
 		return true;
 	}
-	
+
 	public static function articleSaveComplete( $article, $user, $text, $summary, $minoredit,
 			$watchthis, $sectionanchor, $flags, $revision, $baseRevId ) {
 		self::trackRequest( '-save-complete' );
 		return true;
 	}
-	
+
 	protected static function trackRequest( $suffix ) {
 		global $wgRequest, $wgTitle;
-		
+
 		$session = $wgRequest->getVal( 'clicktrackingsession' );
 		$event = $wgRequest->getVal( 'clicktrackingevent' );
 		$info = $wgRequest->getVal( 'clicktrackinginfo' );
@@ -295,7 +296,7 @@ class ClickTrackingHooks {
 			$api = new ApiMain( $params, true );
 			$api->execute();
 		}
-		
+
 		return true;
 	}
 }
