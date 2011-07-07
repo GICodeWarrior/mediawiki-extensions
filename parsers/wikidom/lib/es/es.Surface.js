@@ -23,13 +23,26 @@ function Surface( $container, document ) {
 	this.document = document;
 	this.rendered = false;
 	this.location = null;
+	this.selection = null;
 	this.render();
-
+	
+	this.state = {
+		'selection': {
+			'active': false
+		}
+	};
+	
 	var surface = this;
 
 	this.$.bind({
 		'mousedown' : function(e) {
 			return surface.onMouseDown( e );
+		},
+		'mousemove' : function(e) {
+			return surface.onMouseMove( e );
+		},
+		'mouseup' : function(e) {
+			return surface.onMouseUp( e );
 		}
 	});
 	
@@ -72,38 +85,49 @@ Surface.prototype.onMouseDown = function( e ) {
 			? $target : $target.closest( '.editSurface-block' );
 	// Not a block or child of a block? Find the nearest block...
 	if( !$block.length ) {
-		var minDistance,
-			$blocks = this.$.find( '> .editSurface-document .editSurface-block' );
+		$blocks = this.$.find( '> .editSurface-document .editSurface-block' );
+		$block = $blocks.first();
 		$blocks.each( function() {
-			var top = $(this).offset().top,
-				bottom = top + $(this).height();
-			// Inside test
-			if ( e.pageY >= top && e.pageY < bottom ) {
-				$block = $(this);
+			// Stop looking when mouse is above top
+			if ( e.pageY <= $(this).offset().top ) {
 				return false;
 			}
-			// Distance test
-			var distance = Math.abs( e.pageY - top );
-			if ( typeof minDistance === 'undefined' || distance < minDistance ) {
-				minDistance = distance;
-				$block = $(this);
-			}
+			$block = $(this);
 		} );
-		if ( !$block.length ) {
-			$block = $blocks.first();
-		}
 	}
 	var block = $block.data( 'block' )
-		blockOffset = $block.offset()
-		mousePosition = new Position( e.pageX - blockOffset.left, e.pageY - blockOffset.top )
+		blockPosition = $block.offset()
+		mousePosition = new Position( e.pageX - blockPosition.left, e.pageY - blockPosition.top )
 		nearestOffset = block.flow.getOffset( mousePosition ),
 		cursorPosition = block.flow.getPosition( nearestOffset );
 	
-	this.cursor.show( cursorPosition, blockOffset );
+	this.cursor.show( cursorPosition, blockPosition );
 	this.location = new Location( block, nearestOffset );
+	
+	this.state.selection = {
+		'active': true,
+		'from': null,
+		'to': null,
+		'start': nearestOffset,
+		'end': null
+	};
 	
 	this.$input.focus();
 	return false;
+};
+
+Surface.prototype.onMouseMove = function( e ) {
+	var sel = this.state.selection;
+	if ( sel.active ) {
+		//
+	}
+};
+
+Surface.prototype.onMouseUp = function( e ) {
+	var sel = this.state.selection;
+	if ( sel.active ) {
+		sel.active = false;
+	}
 };
 
 /**

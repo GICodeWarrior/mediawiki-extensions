@@ -47,11 +47,10 @@ TextFlow.prototype.escape = function( text ) {
  * @return {Integer} Offset within content nearest the given coordinates
  */
 TextFlow.prototype.getOffset = function( position ) {
-	var line = 0,
-		lineCount = this.lines.length,
+	var lineCount = this.lines.length,
+		line = 0,
 		offset = 0,
-		top = 0,
-		bottom = 0;
+		top = 0;
 	
 	/*
 	 * Line finding
@@ -62,13 +61,12 @@ TextFlow.prototype.getOffset = function( position ) {
 	 * positions, which is a nice benefit of this method.
 	 */
 	while ( line < lineCount ) {
-		bottom += this.lines[line].height;
-		if ( position.top >= top && position.top < bottom ) {
+		top += this.lines[line].height;
+		if ( position.top <= top ) {
 			break;
 		}
-		top = bottom;
 		line++;
-	};
+	}
 	
 	/*
 	 * Offset finding
@@ -79,6 +77,9 @@ TextFlow.prototype.getOffset = function( position ) {
 	 * TODO: The offset needs to be chosen based on nearest offset to the cursor, not offset before
 	 * the cursor.
 	 */
+	var virtual = line < this.lines.length - 1
+		&& this.boundaryTest.exec( this.lines[line].text.substr( -1 ) ) ? -1 : 0;
+	line = Math.min( line, this.lines.length - 1 );
 	var $ruler = $( '<div class="editSurface-line"></div>' ).appendTo( this.$ )
 		ruler = $ruler[0],
 		fit = this.fitCharacters(
@@ -92,9 +93,6 @@ TextFlow.prototype.getOffset = function( position ) {
 	$ruler.remove();
 	// Reset RegExp object's state
 	this.boundaryTest.lastIndex = 0;
-	var virtual = line < this.lines.length - 1
-		&& this.boundaryTest.exec( this.lines[line].text.substr( -1, 1 ) )
-			? -1 : 0;
 	return Math.min(
 		fit.end + ( position.left >= center ? 1 : 0 ),
 		this.lines[line].end + virtual
