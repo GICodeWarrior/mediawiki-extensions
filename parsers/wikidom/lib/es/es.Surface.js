@@ -67,16 +67,31 @@ Surface.prototype.onKeyDown = function( e ) {
 
 Surface.prototype.onMouseDown = function( e ) {
 	var $target = $( e.target );
-		$block = $target.is( '.editSurface-block' ) ? $target : $target.closest( '.editSurface-block' ),
-		block = $block.data( 'block' );
-	
-	if( !block ) {
-		return false;
+		$block = $target.is( '.editSurface-block' )
+			? $target : $target.closest( '.editSurface-block' );
+	// Not a block or child of a block? Find the nearest block...
+	if( !$block.length ) {
+		var minDistance;
+		this.$.find( '> .editSurface-document .editSurface-block' ).each( function() {
+			var top = $(this).offset().top,
+				bottom = top + $(this).height();
+			// Inside test
+			if ( e.pageY >= top && e.pageY < bottom ) {
+				$block = $(this);
+				return false;
+			}
+			// Distance test
+			var distance = Math.abs( e.pageY - top );
+			if ( typeof minDistance === 'undefined' || distance < minDistance ) {
+				minDistance = distance;
+				$block = $(this);
+			}
+		} );
 	}
-	
-	var position = new Position( e.pageX - $block.offset().left,
-								 e.pageY - $block.offset().top );
-	var offset = block.flow.getOffset( position );
+	var block = $block.data( 'block' )
+		blockOffset = $block.offset()
+		position = new Position( e.pageX - blockOffset.left, e.pageY - blockOffset.top )
+		offset = block.flow.getOffset( position );
 	this.cursor.show( new Location( block, offset ) );
 	this.$input.focus();
 	return false;

@@ -15,6 +15,7 @@ function TextFlow( $container, text ) {
 	if ( text !== undefined ) {
 		this.setText( text );
 	}
+	this.boundaryTest = /([ \.\,\;\:\-\t\r\n\f])/g;
 }
 
 /**
@@ -87,7 +88,12 @@ TextFlow.prototype.getOffset = function( position ) {
 	var right = ruler.clientWidth;
 	var center = Math.round( left + ( ( right - left ) / 2 ) );
 	$ruler.remove();
-	return fit.end + ( position.x >= center ? 1 : 0 );
+	// Reset RegExp object's state
+	this.boundaryTest.lastIndex = 0;
+	var virtual = line < this.lines.length - 1
+		&& this.boundaryTest( this.lines[line].text.substr( -1, 1 ) )
+			? -1 : 0;
+	return Math.min( fit.end + ( position.x >= center ? 1 : 0 ), this.lines[line].end + virtual );
 };
 
 /**
@@ -127,7 +133,7 @@ TextFlow.prototype.getPosition = function( offset ) {
 		position.top += this.lines[line].height;
 		line++;
 	};
-
+	
 	/*
 	 * Virtual n+1 position
 	 * 
@@ -135,17 +141,15 @@ TextFlow.prototype.getPosition = function( offset ) {
 	 * line, a virtual n+1 position is supported. Offsets beyond this virtual position will cause
 	 * an exception to be thrown.
 	 */
-/*
 	if ( line === lineCount ) {
-		if ( offset !== lines[line].end + 1 ) {
+		if ( offset !== this.lines[line - 1].end + 1 ) {
 			line--;
 			position.bottom = position.top;
-			position.top -= lines[line].height;
+			position.top -= this.lines[line].height;
 		} else {
 			throw 'Out of range error. Offset is expected to be less than or equal to text length.';
 		}
 	}
-*/	
 	
 	/*
 	 * Offset measuring
@@ -186,12 +190,13 @@ TextFlow.prototype.setText = function( text ) {
 	// Purge "boundaries" and "words" arrays
 	this.boundaries = [];
 	this.words = [];
+	// Reset RegExp object's state
+	this.boundaryTest.lastIndex = 0;
 	// Iterate over each word+boundary sequence, capturing offsets and encoding text as we go
-	var boundary = /([ \.\,\;\:\-\t\r\n\f])/g,
-		match,
+	var match,
 		start = 0,
 		end;
-	while ( match = boundary.exec( text ) ) {
+	while ( match = this.boundaryTest.exec( text ) ) {
 		// Include the boundary character in the range
 		end = match.index + 1;
 		// Store the boundary offset
@@ -387,7 +392,7 @@ TextFlow.prototype.fitCharacters = function( start, end, ruler, width ) {
 		if ( ruler.clientWidth > width ) {
 			// Detect impossible fit (the first character won't fit by itself)
 			if (middle - offset === 1) {
-				start = middle;
+				start = middle - 1;
 				break;
 			}
 			// Words after "middle" won't fit
