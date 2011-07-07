@@ -6,6 +6,7 @@
  */
 function TextFlow( $container, text ) {
 	this.$ = $container;
+	this.length = 0;
 	this.boundaries = [];
 	this.words = [];
 	this.lines = [];
@@ -206,8 +207,10 @@ TextFlow.prototype.setText = function( text ) {
 		this.boundaries.push( text.length );
 		this.words.push( this.escape( text.substring( end, text.length ) ) );
 	}
+	this.length = text.length;
 	// Force re-flow
 	this.width = null;
+	
 };
 
 /**

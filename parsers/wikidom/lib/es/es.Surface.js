@@ -221,10 +221,10 @@ Surface.prototype.moveCursorDown = function() {
  */
 Surface.prototype.moveCursorRight = function() {
 	var location = this.getCursor();
-	if ( 1 || location.block.length > location.offset + 1 ) {
+	if ( location.block.getLength() > location.offset + 1 ) {
 		location.offset++;
 	} else {
-		var next = location.block.next();
+		var next = location.block.nextBlock();
 		if ( next ) {
 			location.block = next;
 			location.offset = 0;
@@ -241,10 +241,10 @@ Surface.prototype.moveCursorLeft = function() {
 	if ( location.offset > 0 ) {
 		location.offset--;
 	} else {
-		var previous = location.block.previous();
+		var previous = location.block.previousBlock();
 		if ( previous ) {
 			location.block = previous;
-			location.offset = location.block.length - 1;
+			location.offset = location.block.getLength() - 1;
 		}
 	}
 	this.setCursor( location );

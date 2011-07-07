@@ -12,6 +12,10 @@ function ParagraphBlock( lines ) {
 	this.updateText();
 }
 
+Block.prototype.getLength = function() {
+	return this.flow.length;
+};
+
 /**
  * Update text given to the flow object
  */

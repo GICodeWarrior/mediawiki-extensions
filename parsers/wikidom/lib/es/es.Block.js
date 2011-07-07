@@ -6,6 +6,10 @@ function Block() {
 	this.document = null;
 }
 
+Block.prototype.getLength = function() {
+	throw 'Block.getLength not implemented in this subclass.';
+};
+
 /**
  * Gets the index of the block within it's document.
  * 
@@ -28,7 +32,7 @@ Block.prototype.nextBlock = function() {
 		throw 'Missing document error. Block is not attached to a document.';
 	}
 	var index = this.index() + 1;
-	return this.document.blocks.length < index ? this.document.blocks[index] : null;
+	return this.document.blocks.length > index ? this.document.blocks[index] : null;
 };
 
 /**
