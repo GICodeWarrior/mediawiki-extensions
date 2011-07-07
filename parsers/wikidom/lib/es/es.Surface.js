@@ -200,7 +200,8 @@ Surface.prototype.moveCursorDown = function() {
  * Moves the cursor backward of the current position.
  */
 Surface.prototype.moveCursorRight = function() {
-	var location = this.cursor.get();
+	var location = this.getLocation();
+
 	if ( location.block.getLength() > location.offset + 1 ) {
 		location.offset++;
 	} else {
@@ -210,14 +211,17 @@ Surface.prototype.moveCursorRight = function() {
 			location.offset = 0;
 		}
 	}
-	this.cursor.show( location );
+
+	this.cursor.show( location.block.flow.getPosition( location.offset ), location.block.$.offset() );
+	this.location = location;
 };
 
 /**
  * Moves the cursor forward of the current position.
  */
 Surface.prototype.moveCursorLeft = function() {
-	var location = this.cursor.get();
+	var location = this.getLocation();
+
 	if ( location.offset > 0 ) {
 		location.offset--;
 	} else {
@@ -227,7 +231,9 @@ Surface.prototype.moveCursorLeft = function() {
 			location.offset = location.block.getLength() - 1;
 		}
 	}
-	this.cursor.show( location );
+
+	this.cursor.show( location.block.flow.getPosition( location.offset ), location.block.$.offset() );
+	this.location = location;
 };
 
 /**
