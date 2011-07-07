@@ -34,7 +34,7 @@ function Surface( $container, document ) {
 	});
 	
 	// Cursor
-	this.cursor = new Cursor( this );
+	this.cursor = new Cursor();
 	this.$.after( this.cursor.$ );
 	
 	// Hidden input
