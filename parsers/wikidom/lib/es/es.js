@@ -31,13 +31,17 @@ function extend( dst, src ) {
 /**
  * Pixel position, a 2D position within a rendered document.
  * 
- * @param x {Integer} Horizontal position
- * @param y {Integer} Vertical position
+ * This can also support an optional bottom field, to represent a vertical line, such as a cursor.
+ * 
+ * @param left {Integer} Horizontal position
+ * @param top {Integer} Vertical position (of top, if bottom is used)
+ * @param bottom {Integer} Vertical position of bottom (optional)
  * @returns {Position}
  */
-function Position( x, y ) {
-	this.x = x || 0;
-	this.y = y || 0;
+function Position( left, top, bottom ) {
+	this.left = left || 0;
+	this.top = top || 0;
+	this.bottom = bottom || 0;
 }
 
 /**

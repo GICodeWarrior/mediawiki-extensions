@@ -2,54 +2,44 @@
  * 
  * @returns {Cursor}
  */
-function Cursor( surface ) {
-	this.surface = surface;
+function Cursor() {
 	this.cursorInterval = null;
-	this.$cursor = $( '<div class="editSurface-cursor"></div>' );
-	this.surface.$.after( this.$cursor );
+	this.$ = $( '<div class="editSurface-cursor"></div>' );
 }
 
 /**
- * Shows the cursor in a new location.
+ * Shows the cursor in a new position.
  * 
- * @param location {Location} Location to show the cursor in
+ * @param position {Position} Position to show the cursor at
+ * @param offset {Position} Offset to be added to position
  */
-Cursor.prototype.show = function( location ) {
-	this.surface.location = location;
-	
-	var position = this.surface.location.block.getPosition( this.surface.location.offset );
-	var offset = this.surface.location.block.$.offset();
-	
-	this.$cursor.css({
-		'left': position.left + offset.left,
-		'top': position.top + offset.top
+Cursor.prototype.show = function( position, offset ) {
+	if ( $.isPlainObject( offset ) ) {
+		position.left += offset.left;
+		position.top += offset.top;
+		position.bottom += offset.top;
+	}
+	this.$.css({
+		'left': position.left,
+		'top': position.top,
+		'height': position.bottom - position.top
 	}).show();
 	
-	if( this.cursorInterval ) {
+	if ( this.cursorInterval ) {
 		clearInterval( this.cursorInterval );
 	}
 	this.cursorInterval = setInterval( function( cursor ) {
-			cursor.$cursor.css( 'display' ) == 'block' ? cursor.$cursor.hide() : cursor.$cursor.show();
+		cursor.$.css( 'display' ) == 'block'
+			? cursor.$.hide() : cursor.$.show();
 	}, 500, this );
 };
 
 /**
  * Hides the cursor.
- * 
- * @returns {Location}
  */
 Cursor.prototype.hide = function() {
 	if( this.cursorInterval ) {
 		clearInterval( this.cursorInterval );
 	}
-	this.$cursor.hide()
-};
-
-/**
- * Gets the current location of the cursor.
- * 
- * @returns {Location}
- */
-Cursor.prototype.get = function() {
-	return this.surface.location;
+	this.$.hide()
 };

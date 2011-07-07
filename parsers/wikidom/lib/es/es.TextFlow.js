@@ -63,7 +63,7 @@ TextFlow.prototype.getOffset = function( position ) {
 	 */
 	while ( line < lineCount ) {
 		bottom += this.lines[line].height;
-		if ( position.y >= top && position.y < bottom ) {
+		if ( position.top >= top && position.top < bottom ) {
 			break;
 		}
 		top = bottom;
@@ -74,14 +74,16 @@ TextFlow.prototype.getOffset = function( position ) {
 	 * Offset finding
 	 * 
 	 * Now that we know which line we are on, we can just use the "fitCharacters" method to get the
-	 * last offset before "position.x".
+	 * last offset before "position.left".
 	 * 
 	 * TODO: The offset needs to be chosen based on nearest offset to the cursor, not offset before
 	 * the cursor.
 	 */
 	var $ruler = $( '<div class="editSurface-line"></div>' ).appendTo( this.$ )
 		ruler = $ruler[0],
-		fit = this.fitCharacters( this.lines[line].start, this.lines[line].end, ruler, position.x );
+		fit = this.fitCharacters(
+			this.lines[line].start, this.lines[line].end, ruler, position.left
+		);
 	ruler.innerHTML = this.escape( this.text.substring( this.lines[line].start, fit.end ) );
 	var left = ruler.clientWidth;
 	ruler.innerHTML = this.escape( this.text.substring( this.lines[line].start, fit.end + 1 ) );
@@ -93,7 +95,10 @@ TextFlow.prototype.getOffset = function( position ) {
 	var virtual = line < this.lines.length - 1
 		&& this.boundaryTest( this.lines[line].text.substr( -1, 1 ) )
 			? -1 : 0;
-	return Math.min( fit.end + ( position.x >= center ? 1 : 0 ), this.lines[line].end + virtual );
+	return Math.min(
+		fit.end + ( position.left >= center ? 1 : 0 ),
+		this.lines[line].end + virtual
+	);
 };
 
 /**

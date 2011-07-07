@@ -35,6 +35,7 @@ function Surface( $container, document ) {
 	
 	// Cursor
 	this.cursor = new Cursor( this );
+	this.$.after( this.cursor.$ );
 	
 	// Hidden input
 	this.$input = $( '<input/>' );
@@ -90,9 +91,12 @@ Surface.prototype.onMouseDown = function( e ) {
 	}
 	var block = $block.data( 'block' )
 		blockOffset = $block.offset()
-		position = new Position( e.pageX - blockOffset.left, e.pageY - blockOffset.top )
-		offset = block.flow.getOffset( position );
-	this.cursor.show( new Location( block, offset ) );
+		mousePosition = new Position( e.pageX - blockOffset.left, e.pageY - blockOffset.top )
+		nearestOffset = block.flow.getOffset( mousePosition ),
+		cursorPosition = block.flow.getPosition( nearestOffset );
+	
+	this.cursor.show( cursorPosition, blockOffset );
+	
 	this.$input.focus();
 	return false;
 };
@@ -158,8 +162,8 @@ Surface.prototype.moveCursorUp = function() {
 			location.block = block.previous();
 		}
 		var above = this.getPosition( location );
-		if ( above.y < below.y ) {
-			var distance = below.x - above.x;
+		if ( above.top < below.top ) {
+			var distance = below.left - above.left;
 			if ( minDistance > distance ) {
 				location.offset++;
 				break;
@@ -184,8 +188,8 @@ Surface.prototype.moveCursorDown = function() {
 				location.block = block.next();
 		}
 		var below = this.getPosition( location );
-		if ( above.y < below.y ) {
-			var distance = below.x - above.x;
+		if ( above.top < below.top ) {
+			var distance = below.left - above.left;
 			if ( minDistance > distance ) {
 				location.offset++;
 				break;
