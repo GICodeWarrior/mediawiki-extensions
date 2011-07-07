@@ -1,4 +1,4 @@
-.qpoll .no_more_attempts { border: 1px solid gray; padding: 0.1em 0.5em 0.1em 0.5em; color: black; background-color: lightblue; margin-right: 1em; }
+.qpoll .attempts_counter { border: 1px solid gray; padding: 0.1em 0.5em 0.1em 0.5em; color: black; background-color: lightblue; margin-right: 1em; }
 .qpoll .question { margin-right:2em; }
 .qpoll .margin { padding-right:20px; }
 .qpoll .header .questionId {font-size: 1.1em; font-weight: bold; float: right;}

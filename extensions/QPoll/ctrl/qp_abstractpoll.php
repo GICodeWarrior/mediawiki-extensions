@@ -66,10 +66,6 @@ class qp_AbstractPoll {
 
 	# current state of poll parsing (no error)
 	var $mState = '';
-	# optional address of the poll which must be answered first
-	var $dependsOn = '';
-	# optional template used to interpret user vote in the Special:Pollresults page
-	var $interpretation = ''; 
 	# // true, when the poll is posted (answered)
 	var $mBeingCorrected = false;
 
@@ -108,12 +104,6 @@ class qp_AbstractPoll {
 		# it is required to be set manually via id="value" parameter
 		# ( used only in "declaration" mode )
 		$this->mPollId = array_key_exists('id', $argv) ? trim( $argv['id'] ) : null;
-		if ( array_key_exists('dependance', $argv) ) {
-			$this->dependsOn = trim( $argv['dependance'] );
-		}
-		if ( array_key_exists('interpretation', $argv) ) {
-			$this->interpretation = trim( $argv['interpretation'] );
-		}
 	}
 
 	/**
@@ -133,7 +123,7 @@ class qp_AbstractPoll {
 			# increase the order_id counter for the future successfully declared polls
 			# (remember, we're in declaration mode, where 'order_id' is important
 			self::$sOrderId++;
-			# renderPoll() assumes that the poll is not being submitted and is correctly declared
+			# view->renderPoll() assumes that the poll is correctly declared
 			return $this->view->renderPoll();
 		}
 	}

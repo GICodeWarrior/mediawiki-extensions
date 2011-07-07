@@ -11,12 +11,13 @@ class qp_QuestionStats extends qp_AbstractQuestion {
 	/**
 	 * Constructor
 	 * @public
+	 * @param  $poll         an instance of question's parent controller
 	 * @param  $view         an instance of question view "linked" to this question
 	 * @param  $type         type of question (taken from DB)
 	 * @param  $questionId   the identifier of the question used to gernerate input names
 	 */
-	function __construct( qp_QuestionStatsView $view, $type, $questionId ) {
-		parent::__construct( $view, false, $questionId );
+	function __construct( qp_PollStats $poll, qp_QuestionStatsView $view, $type, $questionId ) {
+		parent::__construct( $poll, $view, $questionId );
 		$this->mType = $type;
 	}
 

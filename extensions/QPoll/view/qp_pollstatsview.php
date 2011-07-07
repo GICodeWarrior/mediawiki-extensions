@@ -68,7 +68,7 @@ class qp_PollStatsView extends qp_AbstractView {
 			# render the question statistics only when showResuls isn't 0 (suppress stats)
 			if ( $question->view->showResults['type'] != 0 ) {
 				if ( $this->perRow > 1 ) {
-					$write_col[] = array( '__tag'=>'td', 'valign'=>'top', 0=>$question->view->renderQuestion( $this->ctrl ), '__end'=>"\n" );
+					$write_col[] = array( '__tag'=>'td', 'valign'=>'top', 0=>$question->view->renderQuestion(), '__end'=>"\n" );
 					if ( $this->currCol == 1 ) {
 						$write_row[] = array( '__tag'=>'tr', 0=>$write_col, '__end'=>"\n" );
 						$write_col = Array();
@@ -77,7 +77,7 @@ class qp_PollStatsView extends qp_AbstractView {
 						$this->currCol = $this->perRow;
 					}
 				} else {
-					$write_row[] = $question->view->renderQuestion( $this->ctrl );
+					$write_row[] = $question->view->renderQuestion();
 				}
 			}
 			# question object is not needed anymore

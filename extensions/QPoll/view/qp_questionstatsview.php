@@ -52,19 +52,14 @@ class qp_QuestionStatsView extends qp_QuestionView {
 		return method_exists( $ctrl, 'statsParseBody' );
 	}
 
-	/**
-	 * Unfortunately, rendering of question also conditionally modifies state of poll
-	 * @param $poll  instance of poll controller associated with current question ctrl/view
-	 * @modifies $poll
-	 */
-	function renderQuestion( qp_AbstractPoll $poll ) {
+	function renderQuestion() {
 		# check whether the current global showresults level allows to display statistics
 		if ( qp_Setup::$global_showresults == 0 ||
 				(qp_Setup::$global_showresults <= 1 && !$this->ctrl->alreadyVoted) ) {
 			# suppress the output
 			return '';
 		}
-		return parent::renderQuestion( $poll );
+		return parent::renderQuestion();
 	}
 
 	/*** cell templates ***/

@@ -207,7 +207,7 @@ class qp_Question extends qp_AbstractQuestion {
 					break;
 				}
 				# Determine if the input had to be checked.
-				if ( $this->mBeingCorrected && $this->mRequest->getVal( $name ) == $value ) {
+				if ( $this->poll->mBeingCorrected && $this->mRequest->getVal( $name ) == $value ) {
 					$inp[ 'checked' ] = 'checked';
 				}
 				if ( $this->answerExists( $inputType, $proposalId, $catId ) !== false ) {
@@ -215,7 +215,7 @@ class qp_Question extends qp_AbstractQuestion {
 				}
 				if ( array_key_exists( 'checked', $inp ) ) {
 					if ( $this->mSubType == 'unique' ) {
-						if ( $this->mBeingCorrected && !$this->isUniqueProposalCategoryId( $proposalId, $catId ) ) {
+						if ( $this->poll->mBeingCorrected && !$this->isUniqueProposalCategoryId( $proposalId, $catId ) ) {
 							$text = $this->view->bodyErrorMessage( wfMsg( 'qp_error_non_unique_choice' ), 'NA' ) . $text;
 							unset( $inp[ 'checked' ] );
 							QP_Renderer::addClass( $row[ $catId ], 'error' );
@@ -263,7 +263,7 @@ class qp_Question extends qp_AbstractQuestion {
 				}
 			}
 			# If the proposal was submitted but unanswered
-			if ( $this->mBeingCorrected && !array_key_exists( $proposalId, $this->mProposalCategoryId ) ) {
+			if ( $this->poll->mBeingCorrected && !array_key_exists( $proposalId, $this->mProposalCategoryId ) ) {
 				# if there was no previous errors, hightlight the whole row
 				if ( $this->getState() == '' ) {
 					foreach( $row as &$cell ) {
@@ -333,7 +333,7 @@ class qp_Question extends qp_AbstractQuestion {
 				# Determine if the input has to be checked.
 				$input_checked = false;
 				$text_answer = '';
-				if ( $this->mBeingCorrected && $this->mRequest->getVal( $name ) !== null ) {
+				if ( $this->poll->mBeingCorrected && $this->mRequest->getVal( $name ) !== null ) {
 					if ( $inputType == 'text' ) {
 						$text_answer = trim( $this->mRequest->getText( $name ) );
 						if ( strlen( $text_answer ) > qp_Setup::MAX_TEXT_ANSWER_LENGTH ) {
@@ -394,7 +394,7 @@ class qp_Question extends qp_AbstractQuestion {
 					throw new Exception( 'qp_error' );
 				}
 				# If the proposal was submitted but unanswered
-				if ( $this->mBeingCorrected && !array_key_exists( $proposalId, $this->mProposalCategoryId ) ) {
+				if ( $this->poll->mBeingCorrected && !array_key_exists( $proposalId, $this->mProposalCategoryId ) ) {
 					$prev_state = $this->getState();
 					$text = $this->view->bodyErrorMessage( wfMsg( 'qp_error_no_answer' ), 'NA' ) . $text;
 					# if there was no previous errors, hightlight the whole row

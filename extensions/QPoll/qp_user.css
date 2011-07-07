@@ -42,7 +42,7 @@
 .qpoll .script_view { font-family: monospace, "Courier New"; white-space:pre; overflow:auto; color:black; background-color: lightgray; border-right: 1px solid darkgray; border-top: 1px solid darkgray; border-bottom: 1px solid darkgray; padding: 0.5em; }
 
 /* LTR part (RTL is included from separate file */
-.qpoll .no_more_attempts { border: 1px solid gray; padding: 0.1em 0.5em 0.1em 0.5em; color: black; background-color: lightblue; margin-left: 1em; }
+.qpoll .attempts_counter{ border: 1px solid gray; padding: 0.1em 0.5em 0.1em 0.5em; color: black; background-color: lightblue; margin-left: 1em; }
 .qpoll .question { margin-left:2em; }
 .qpoll .margin { padding-left:20px; }
 .qpoll .header .questionId { font-size: 1.1em; font-weight: bold; float: left; }
