@@ -58,6 +58,9 @@ function Surface( $container, document ) {
 		'keydown' : function( e ) {
 			return surface.onKeyDown( e );			
 		},
+		'keyup' : function( e ) {
+			return surface.onKeyUp( e );			
+		},
 		'blur': function( e ) {
 			surface.cursor.hide();
 		}
@@ -101,7 +104,13 @@ Surface.prototype.onKeyDown = function( e ) {
 			}, 0, this );
 			break;
 	}
-	return true;	
+	return true;
+}
+
+Surface.prototype.onKeyUp = function( e ) {
+	var location = this.getLocation();
+	this.cursor.show( location.block.flow.getPosition( location.offset ), location.block.$.offset() );
+	return true;
 }
 
 Surface.prototype.handleBackspace = function() {
