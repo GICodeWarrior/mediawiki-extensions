@@ -4,7 +4,10 @@
  * @returns {Document}
  */
 function Document( blocks ) {
-	this.blocks = blocks || [];
+	this.blocks = [];
+	for( var i = 0; i < blocks.length; i++ ) {
+		this.appendBlock(blocks[i]);
+	}
 	this.width = null;
 	this.$ = $( '<div class="editSurface-document"></div>' )
 		.data( 'document', this );
