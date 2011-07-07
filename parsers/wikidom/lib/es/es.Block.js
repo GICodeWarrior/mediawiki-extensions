@@ -87,16 +87,16 @@ Block.prototype.updateContent = function( $container ) {
 };
 
 /**
- * Gets the location of a position.
+ * Gets the offset of a position.
  * 
- * @param position {Position} Position to translate
+ * @param position {Integer} Offset to translate
  */
-Block.prototype.getLocation = function( position ) {
-	throw 'Block.getLocation not implemented in this subclass.';
+Block.prototype.getOffset = function( position ) {
+	throw 'Block.getOffset not implemented in this subclass.';
 };
 
 /**
- * Gets the position of a location.
+ * Gets the position of an offset.
  * 
  * @param offset {Integer} Offset to translate
  */

@@ -27,13 +27,11 @@ body {
 }
 
 .editSurface-document {
-	background-color: #dddddd;
 	cursor: text;
 	margin-top: 1em;
 }
 
 .editSurface-block {
-	background-color: #eeeeee;
 	margin: 1em;
 	margin-top: 0;
 }
@@ -44,7 +42,6 @@ body {
 	cursor: text;
 	white-space: nowrap;
 	color: #000000;
-	background-color: #ffffff;
 }
 
 .editSurface-line.empty {

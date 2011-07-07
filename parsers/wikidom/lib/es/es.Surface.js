@@ -215,52 +215,24 @@ Surface.prototype.getLocation = function( position ) {
  * Moves the cursor to the nearest location directly above the current flowed line.
  */
 Surface.prototype.moveCursorUp = function() {
-	var location = this.cursor.get();
-	var below = this.getPosition( location );
-	var minDistance;
-	while ( location.block.previous() && location.offset > 0 ) {
-		location.offset--;
-		if ( location.offset === -1 ) {
-			location.block = block.previous();
-		}
-		var above = this.getPosition( location );
-		if ( above.top < below.top ) {
-			var distance = below.left - above.left;
-			if ( minDistance > distance ) {
-				location.offset++;
-				break;
-			} else {
-				minDistance = distance;
-			}
-		}
-	}
-	this.cursor.show( location );
+	var location = this.getLocation(),
+		position = location.block.getPosition( location.offset );
+	position.top = position.top - 1;
+	location.offset = location.block.getOffset( position );
+	position = location.block.getPosition( location.offset );
+	this.cursor.show( position, location.block.$.offset() );
 };
 
 /**
  * Moves the cursor to the nearest location directly below the current flowed line.
  */
 Surface.prototype.moveCursorDown = function() {
-	var location = this.getCursor();
-	var above = this.getPosition( location );
-	var minDistance;
-	while ( location.block.next() && location.offset < location.block.length ) {
-		location.offset++;
-		if ( location.offset = location.block.length ) {
-				location.block = block.next();
-		}
-		var below = this.getPosition( location );
-		if ( above.top < below.top ) {
-			var distance = below.left - above.left;
-			if ( minDistance > distance ) {
-				location.offset++;
-				break;
-			} else {
-				minDistance = distance;
-			}
-		}
-	}
-	this.setCursor( location );
+	var location = this.getLocation()
+		position = location.block.getPosition( location.offset );
+	position.top = position.bottom + 1;
+	location.offset = location.block.getOffset( position );
+	position = location.block.getPosition( location.offset );
+	this.cursor.show( position, location.block.$.offset() );
 };
 
 /**
@@ -268,8 +240,7 @@ Surface.prototype.moveCursorDown = function() {
  */
 Surface.prototype.moveCursorRight = function() {
 	var location = this.getLocation();
-
-	if ( location.block.getLength() > location.offset + 1 ) {
+	if ( location.offset < location.block.getLength() ) {
 		location.offset++;
 	} else {
 		var next = location.block.nextBlock();
@@ -278,9 +249,10 @@ Surface.prototype.moveCursorRight = function() {
 			location.offset = 0;
 		}
 	}
-
-	this.cursor.show( location.block.flow.getPosition( location.offset ), location.block.$.offset() );
-	this.location = location;
+	this.cursor.show(
+		location.block.flow.getPosition( location.offset ),
+		location.block.$.offset()
+	);
 };
 
 /**
@@ -288,19 +260,19 @@ Surface.prototype.moveCursorRight = function() {
  */
 Surface.prototype.moveCursorLeft = function() {
 	var location = this.getLocation();
-
 	if ( location.offset > 0 ) {
 		location.offset--;
 	} else {
 		var previous = location.block.previousBlock();
 		if ( previous ) {
 			location.block = previous;
-			location.offset = location.block.getLength() - 1;
+			location.offset = location.block.getLength();
 		}
 	}
-
-	this.cursor.show( location.block.flow.getPosition( location.offset ), location.block.$.offset() );
-	this.location = location;
+	this.cursor.show(
+		location.block.flow.getPosition( location.offset ),
+		location.block.$.offset()
+	);
 };
 
 /**

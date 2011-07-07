@@ -65,17 +65,17 @@ ParagraphBlock.prototype.deleteContent = function( start, end ) {
 		length,
 		from,
 		to;
-	for ( var i = 0; i < this.lines.length || !(from && to); i++ ) {
+	for ( var i = 0; i < this.lines.length && !(from && to); i++ ) {
 		line = this.lines[i];
 		length = line.text.length;
-		if ( !from && start < length) {
+		if ( !from && start <= length) {
 			from = {
 				'line': line,
 				'index': i,
 				'offset': start
 			};
 		}
-		if ( !to && end < length) {
+		if ( !to && end <= length) {
 			to = {
 				'line': line,
 				'index': i,
@@ -109,11 +109,11 @@ ParagraphBlock.prototype.renderContent = function() {
 };
 
 /**
- * Gets the location of a position.
+ * Gets the offset of a position.
  * 
- * @param position {Position} Position to translate
+ * @param position {Integer} Offset to translate
  */
-ParagraphBlock.prototype.getLocation = function( position ) {
+ParagraphBlock.prototype.getOffset = function( position ) {
 	return this.flow.getOffset( position );
 };
 
