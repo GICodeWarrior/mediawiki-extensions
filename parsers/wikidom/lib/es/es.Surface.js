@@ -72,8 +72,9 @@ Surface.prototype.onMouseDown = function( e ) {
 			? $target : $target.closest( '.editSurface-block' );
 	// Not a block or child of a block? Find the nearest block...
 	if( !$block.length ) {
-		var minDistance;
-		this.$.find( '> .editSurface-document .editSurface-block' ).each( function() {
+		var minDistance,
+			$blocks = this.$.find( '> .editSurface-document .editSurface-block' );
+		$blocks.each( function() {
 			var top = $(this).offset().top,
 				bottom = top + $(this).height();
 			// Inside test
@@ -88,6 +89,9 @@ Surface.prototype.onMouseDown = function( e ) {
 				$block = $(this);
 			}
 		} );
+		if ( !$block.length ) {
+			$block = $blocks.first();
+		}
 	}
 	var block = $block.data( 'block' )
 		blockOffset = $block.offset()
@@ -96,6 +100,7 @@ Surface.prototype.onMouseDown = function( e ) {
 		cursorPosition = block.flow.getPosition( nearestOffset );
 	
 	this.cursor.show( cursorPosition, blockOffset );
+	this.location = new Location( block, nearestOffset );
 	
 	this.$input.focus();
 	return false;
@@ -136,17 +141,7 @@ Surface.prototype.getSelection = function() {
  * @returns {Location}
  */
 Surface.prototype.getLocation = function( position ) {
-	// return location
-};
-
-/**
- * Gets the position of a location.
- * 
- * @param location {Location} Location to translate
- * @returns {Position}
- */
-Surface.prototype.getPosition = function( location ) {
-	// return position
+	return this.location;
 };
 
 /**
