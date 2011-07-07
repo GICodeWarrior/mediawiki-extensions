@@ -343,15 +343,13 @@ class qp_QuestionView extends qp_AbstractView {
 	 * Render script-generated proposal errors, when available (quiz mode)
 	 * Note: not being called in stats mode
 	 */
-	function renderInterpErrors( qp_InterpAnswer $interpAnswer ) {
-		if ( !is_array( $interpAnswer->qpErrors ) ||
-				!isset( $interpAnswer->qpErrors[$this->ctrl->mQuestionId] ) ) {
+	function renderInterpErrors() {
+		if ( ( $propErrors = $this->ctrl->getProposalsErrors() ) === false ) {
 			return;
 		}
-		$qpErrors = &$interpAnswer->qpErrors[$this->ctrl->mQuestionId];
 		foreach ( $this->pview as $prop_id => &$propview ) {
-			if ( isset( $qpErrors[$prop_id] ) ) {
-				$msg = is_string( $qpErrors[$prop_id] ) ? $qpErrors[$prop_id] : wfMsg( 'qp_interpetation_wrong_answer' );
+			if ( isset( $propErrors[$prop_id] ) ) {
+				$msg = is_string( $propErrors[$prop_id] ) ? $propErrors[$prop_id] : wfMsg( 'qp_interpetation_wrong_answer' );
 				$propview->text = $this->bodyErrorMessage( $msg, '', false ) . $propview->text;
 			}
 		}
