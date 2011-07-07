@@ -227,6 +227,13 @@ Surface.prototype.moveCursorUp = function() {
 	var location = this.getLocation(),
 		position = location.block.getPosition( location.offset );
 	position.top = position.top - 1;
+	if ( position.top < blockPosition.top ) {
+		var previousBlock = location.block.previousBlock();
+		if ( previousBlock ) {
+			location.block = previousBlock;
+			position.top += location.block.$.height();
+		}
+	}
 	location.offset = location.block.getOffset( position );
 	position = location.block.getPosition( location.offset );
 	this.cursor.show( position, location.block.$.offset() );
@@ -239,6 +246,13 @@ Surface.prototype.moveCursorDown = function() {
 	var location = this.getLocation()
 		position = location.block.getPosition( location.offset );
 	position.top = position.bottom + 1;
+	if ( position.top > location.block.$.height() ) {
+		var nextBlock = location.block.nextBlock();
+		if ( nextBlock ) {
+			position.top -= location.block.$.height();
+			location.block = nextBlock;
+		}
+	}
 	location.offset = location.block.getOffset( position );
 	position = location.block.getPosition( location.offset );
 	this.cursor.show( position, location.block.$.offset() );
