@@ -24,6 +24,7 @@ function Surface( $container, document ) {
 	this.rendered = false;
 	this.location = null;
 	this.selection = null;
+	this.keydownInterval = null;
 	this.render();
 	
 	this.state = {
@@ -64,6 +65,7 @@ function Surface( $container, document ) {
 }
 
 Surface.prototype.onKeyDown = function( e ) {
+
 	switch ( e.keyCode ) {
 		case 37: // Left arrow
 			this.moveCursorLeft();
@@ -77,9 +79,46 @@ Surface.prototype.onKeyDown = function( e ) {
 		case 40: // Down arrow
 			this.moveCursorDown();
 			break;
-
+		case 8: // Backspace
+			this.handleBackspace();
+			break;
+		case 46: // Delete
+			this.handleDelete();
+			break;
+		default:
+			this.cursor.hide();
+			if ( this.keydownInterval ) {
+				clearTimeout( this.keydownInterval );
+			}
+			this.keydownInterval = setTimeout( function ( surface ) {
+				var val = surface.$input.val();
+				surface.$input.val( '' );
+				if ( val.length > 0 ) {
+					var location = surface.getLocation();
+					location.block.insertContent( location.offset, val);
+					location.offset++;
+				}
+			}, 0, this );
+			break;
 	}
-	return true;
+	return true;	
+}
+
+Surface.prototype.handleBackspace = function() {
+	var location = this.getLocation();
+	if ( location.offset > 0 ) {
+		location.block.deleteContent( location.offset - 1, location.offset );
+		location.offset--;
+		this.cursor.show( location.block.flow.getPosition( location.offset ), location.block.$.offset() );
+	}
+}
+
+Surface.prototype.handleDelete = function() {
+	var location = this.getLocation();
+	if ( location.offset < location.block.getLength() - 1 ) {	
+		location.block.deleteContent( location.offset, location.offset + 1);
+		this.cursor.show( location.block.flow.getPosition( location.offset ), location.block.$.offset() );
+	}
 }
 
 Surface.prototype.onMouseDown = function( e ) {
