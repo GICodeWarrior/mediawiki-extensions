@@ -618,4 +618,17 @@ class qp_Question extends qp_AbstractQuestion {
 		return true;
 	}
 
+	/**
+	 * @return  associative array of script-generated error messages for current question proposals
+	 *          false, when there are no script-generated error messages
+	 */
+	function getProposalsErrors() {
+		$interpAnswer = &$this->poll->pollStore->interpAnswer;
+		if ( !is_array( $interpAnswer->qpErrors ) ||
+				!isset( $interpAnswer->qpErrors[$this->mQuestionId] ) ) {
+			return false;
+		}
+		return $interpAnswer->qpErrors[$this->mQuestionId];
+	}
+
 } /* end of qp_Question class */

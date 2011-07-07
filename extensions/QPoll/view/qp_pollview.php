@@ -65,7 +65,7 @@ class qp_PollView extends qp_AbstractView {
 		$write_col = array();
 		# render the body
 		foreach ( $this->ctrl->questions as &$question ) {
-			$question->view->renderInterpErrors( $this->ctrl->pollStore->interpAnswer );
+			$question->view->renderInterpErrors();
 			if ( $this->perRow > 1 ) {
 				$write_col[] = array( '__tag'=>'td', 'valign'=>'top', 0=>$question->view->renderQuestion(), '__end'=>"\n" );
 				if ( $this->currCol == 1 ) {
