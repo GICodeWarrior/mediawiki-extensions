@@ -44,15 +44,15 @@ var lines = [
 			{
 				"type": "italic",
 				"range": {
-					"offset": 0,
-					"length": 4
+					"start": 0,
+					"stop": 4
 				}
 			},
 			{
 				"type": "xlink",
 				"range": {
-					"offset": 8,
-					"length": 6
+					"start": 8,
+					"stop": 14
 				},
 				"data": {
 					"url": "http://www.a.com"
@@ -61,8 +61,8 @@ var lines = [
 			{
 				"type": "bold",
 				"range": {
-					"offset": 10,
-					"length": 4
+					"start": 10,
+					"stop": 14
 				}
 			}
 		]
@@ -73,20 +73,38 @@ var lines = [
 			{
 				"type": "italic",
 				"range": {
-					"offset": 11,
-					"length": 3
+					"start": 11,
+					"stop": 14
 				}
 			},
 			{
 				"type": "bold",
 				"range": {
-					"offset": 20,
-					"length": 4
+					"start": 20,
+					"stop": 24
 				}
 			}
 		]
 	}
 ];
+
+function convertAnnotations( lines ) {
+	for ( var i in lines ) {
+		var line = lines[i];
+		line.charAnnotations = [];
+		for ( var j in line.annotations ) {
+			var annotation = line.annotations[j];
+			for ( var k = annotation.range.start; k <= annotation.range.stop; k++ ) {
+				if ( !line.charAnnotations[k] ) {
+					line.charAnnotations[k] = [];
+				}
+				line.charAnnotations[k].push( annotation );
+			}			
+		}
+	}
+}
+
+convertAnnotations( lines );
 
 /* Tests */
 
