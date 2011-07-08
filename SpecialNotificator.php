@@ -45,7 +45,7 @@ function execute( $par ) {
 				// Receiver has been notified before - send the diff to the last notified revision
 				$mailSubjectPrefix = '[' . htmlspecialchars( wfMsg( 'notificator-change-tag' ) ) . '] ';
 
-				$wgOut->addModules( 'mediawiki.legacy.diff' );
+				$wgOut->addModules( 'mediawiki.action.history.diff' );
 				$diff = Notificator::getNotificationDiffHtml( $oldRevId, $revId );
 				$notificationText = wfMsg( 'notificator-notification-text-changes',
 					htmlspecialchars( $wgUser->getName() ),
