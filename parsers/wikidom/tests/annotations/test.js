@@ -2,6 +2,37 @@ module( 'Wiki DOM Annotations' );
 
 /* Functions */
 
+function multiLineSubstring( lines, start, end ) {
+	var result = {
+			'text': '',
+			'charAnnotations': []
+		},
+		line,
+		left = 0,
+		right,
+		from,
+		to;
+	for ( var l = 0; l < lines.length; l++ ) {
+		line = lines[l];
+		right = left + line.text.length;
+		if ( start >= left && start < right ) {
+			from = start - left;
+			to = end < right ? end - left : line.text.length;
+		} else if ( from !== undefined && to !== undefined ) {
+			from = 0;
+			to = end < right ? end - left : line.text.length;
+		}
+		if ( from !== undefined && to !== undefined ) {
+			result.text += line.text.substring( from, to );
+			for ( var c = from; c < to; c++ ) {
+				line.charAnnotations[c] && ( result.charAnnotations[left + c] = line.charAnnotations[c] );
+			}
+		}
+		left = right;
+	}
+	return result;
+}
+
 function diff( a, b ) {
 	var result = [];
 	for ( var i = 0; i < b.length; i++ ) {
@@ -22,11 +53,11 @@ function closeAnnotations( annotations ) {
 	return '';
 }
 
-function renderText( text, renderedAnnotations ) {
+function renderText( text, charAnnotations ) {
 	var out = '';
 	var left = [];
 	for (i in text) {
-		var right = renderedAnnotations[i] || [];
+		var right = charAnnotations[i] || [];
 		out += openAnnotations( diff( left, right ) );
 		out += text[i];
 		out += closeAnnotations( diff( right, left ) );
@@ -39,7 +70,7 @@ function renderText( text, renderedAnnotations ) {
 
 var lines = [
 	{
-		"text": "This is a test paragraph!",
+		"text": "This is a test paragraph!\n",
 		"annotations": [
 			{
 				"type": "italic",
@@ -68,7 +99,7 @@ var lines = [
 		]
 	},
 	{
-		"text": "Paragraphs can have more than one line.",
+		"text": "Paragraphs can have more than one line.\n",
 		"annotations": [
 			{
 				"type": "italic",
@@ -95,19 +126,19 @@ function convertAnnotations( lines ) {
 		for ( var j in line.annotations ) {
 			var annotation = line.annotations[j];
 			for ( var k = annotation.range.start; k <= annotation.range.stop; k++ ) {
-				if ( !line.charAnnotations[k] ) {
-					line.charAnnotations[k] = [];
-				}
+				// Auto initialize
+				line.charAnnotations[k] || ( line.charAnnotations[k] = [] );
+				// Append
 				line.charAnnotations[k].push( annotation );
-			}			
+			}
 		}
 	}
 }
 
-convertAnnotations( lines );
-
 /* Tests */
 
-test( 'Dummy test', function() {
-	equals( 1, 1 );
+convertAnnotations( lines );
+
+test( 'Multiline substrings produce correct plain text', function() {
+	equals( multiLineSubstring( lines, 3, 39 ).text, 's is a test paragraph!\nParagraphs ca' );
 } );
