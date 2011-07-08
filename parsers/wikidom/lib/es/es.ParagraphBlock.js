@@ -10,6 +10,8 @@ function ParagraphBlock( lines ) {
 		.data( 'block', this );
 	this.flow = new TextFlow( this.$ );
 	this.updateText();
+	this.rendering = false;
+	this.reRender = false;
 }
 
 Block.prototype.getLength = function() {
@@ -45,7 +47,7 @@ ParagraphBlock.prototype.insertContent = function( offset, content ) {
 		lineOffset += this.lines[i].text.length;
 	}
 	this.updateText();
-	this.flow.render();
+	this.renderContent();
 };
 
 /**
@@ -96,7 +98,7 @@ ParagraphBlock.prototype.deleteContent = function( start, end ) {
 		this.lines.splice( from.index + 1, to.index - from.index );
 	}
 	this.updateText();
-	this.flow.render();
+	this.renderContent();
 };
 
 /**
@@ -105,7 +107,20 @@ ParagraphBlock.prototype.deleteContent = function( start, end ) {
  * @param $container {jQuery Selection} Container to render into
  */
 ParagraphBlock.prototype.renderContent = function() {
-	this.flow.render();
+	if ( !this.rendering ) {
+		this.rendering = true;
+		var block = this;
+		this.flow.render( 0, function() {
+			block.rendering = false;
+			var reRender = block.reRender;
+			block.reRender = false;
+			if ( reRender ) {
+				block.renderContent();
+			}
+		});
+	} else {
+		this.reRender = true;
+	}
 };
 
 /**
