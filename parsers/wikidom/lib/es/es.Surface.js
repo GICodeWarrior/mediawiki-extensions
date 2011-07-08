@@ -25,6 +25,7 @@ function Surface( $container, document ) {
 	this.location = null;
 	this.selection = null;
 	this.keydownInterval = null;
+	this.initialHorizontalCursorPosition = null;
 	this.render();
 	
 	this.state = {
@@ -71,24 +72,28 @@ Surface.prototype.onKeyDown = function( e ) {
 
 	switch ( e.keyCode ) {
 		case 37: // Left arrow
+			this.initialHorizontalCursorPosition = null;
 			this.moveCursorLeft();
 			break;
 		case 38: // Up arrow
 			this.moveCursorUp();
 			break;
 		case 39: // Right arrow
+			this.initialHorizontalCursorPosition = null;
 			this.moveCursorRight();
 			break;
 		case 40: // Down arrow
 			this.moveCursorDown();
 			break;
 		case 8: // Backspace
+			this.initialHorizontalCursorPosition = null;
 			this.handleBackspace();
 			break;
 		case 46: // Delete
 			this.handleDelete();
 			break;
 		default:
+			this.initialHorizontalCursorPosition = null;
 			this.cursor.hide();
 			if ( this.keydownInterval ) {
 				clearTimeout( this.keydownInterval );
@@ -131,6 +136,8 @@ Surface.prototype.handleDelete = function() {
 }
 
 Surface.prototype.onMouseDown = function( e ) {
+	this.initialHorizontalCursorPosition = null;
+	
 	var $target = $( e.target );
 		$block = $target.is( '.editSurface-block' )
 			? $target : $target.closest( '.editSurface-block' );
@@ -226,6 +233,13 @@ Surface.prototype.getLocation = function( position ) {
 Surface.prototype.moveCursorUp = function() {
 	var location = this.getLocation(),
 		position = location.block.getPosition( location.offset );
+		
+	if ( this.initialHorizontalCursorPosition ) {
+		position.left = this.initialHorizontalCursorPosition;
+	} else {
+		this.initialHorizontalCursorPosition = position.left;
+	}
+		
 	position.top = position.top - 1;
 	if ( position.top < 0 ) {
 		var previousBlock = location.block.previousBlock();
@@ -245,6 +259,13 @@ Surface.prototype.moveCursorUp = function() {
 Surface.prototype.moveCursorDown = function() {
 	var location = this.getLocation()
 		position = location.block.getPosition( location.offset );
+
+	if ( this.initialHorizontalCursorPosition ) {
+		position.left = this.initialHorizontalCursorPosition;
+	} else {
+		this.initialHorizontalCursorPosition = position.left;
+	}
+
 	position.top = position.bottom + 1;
 	if ( position.top > location.block.$.height() ) {
 		var nextBlock = location.block.nextBlock();
