@@ -234,8 +234,9 @@ TextFlow.prototype.setText = function( text ) {
  * text, but will be automatically ignored if the text or width of the container has changed.
  * 
  * @param offset {Integer} Offset to re-render from, if possible (not yet implemented)
+ * @param callback {Function} Function to execute when flowing is complete
  */
-TextFlow.prototype.render = function( offset ) {
+TextFlow.prototype.render = function( offset, callback ) {
 	// Reset lines in the DOM and the "lines" array
 	this.$.empty();
 	
@@ -300,6 +301,10 @@ TextFlow.prototype.render = function( offset ) {
 	}
 	// Cleanup
 	$ruler.remove();
+	
+	if ( $.isFunction( callback ) ) {
+		callback();
+	}
 };
 
 /**
