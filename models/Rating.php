@@ -27,17 +27,46 @@ class Rating {
 	}
 
 	public function update( $importance, $quality, $timestamp ) {
+		$logAction = ""; // q for quality change, i for importance change, qi for both
 		if( $quality != $this->quality ) {
 			$this->old_quality = $this->quality;
 			$this->quality = $quality;
 			$this->quality_timestamp = $timestamp;
+			$logAction .= "q";
 		}
 		if( $importance != $this->importance ) {
 			$this->old_importance = $this->importance;
 			$this->importance = $importance;
 			$this->importance_timestamp = $timestamp;
+			$logAction .= "i";
 		}
-		$this->saveAll();
+		if( $logAction != "") {
+			$timestamp = wfTimestamp( TS_MW );
+			if( strpos( $logAction, 'q' ) !== false ) {
+				AssessmentChangeLog::makeEntry(
+					$this->project,
+					$this->namespace,
+					$this->title,
+					$timestamp,
+					"quality",
+					$this->old_quality,
+					$this->quality
+				);
+			}
+			if( strpos( $logAction, 'i' ) !== false ) {
+				AssessmentChangeLog::makeEntry(
+					$this->project,
+					$this->namespace,
+					$this->title,
+					$timestamp,
+					"importance",
+					$this->old_importance,
+					$this->importance
+				);
+			}
+			
+			$this->saveAll();
+		}
 	}
 
 	private function updateAggregateStats( $is_new_rating ) {
@@ -123,7 +152,7 @@ class Rating {
 
 			$this->updateAggregateStats( true );
 			$this->inDB = true;
-		}
+		}		
 	}
 
 	public static function forTitle( $title ) {
