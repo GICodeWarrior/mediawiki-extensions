@@ -200,16 +200,6 @@ class Rating {
 			),
 			__METHOD__
 		);
-		$timestamp = wfTimestamp( TS_MW );
-		AssessmentChangeLog::makeEntry(
-			"",
-			$newTitle->getNamespace(),
-			$newTitle->getText(),
-			$timestamp,
-			"articlemove",
-			$oldTitle->getFullText(),
-			$newTitle->getFullText()
-		);
-
+		// Article moves not logged
 	}
 }
