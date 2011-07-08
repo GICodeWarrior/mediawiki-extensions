@@ -21,4 +21,18 @@ class AssessmentChangeLog {
 			__METHOD__
 		);
 	}
+
+	public static function getLogs() {
+		$dbr = wfGetDB( DB_SLAVE );
+		$logs = $dbr->select(
+			'assessment_changelog',
+			'*'
+		);	
+		$entries = array();	
+		foreach( $logs as $entry ) {
+			$entry = (array)$entry;
+			array_push( $entries, $entry );
+		}
+		return $entries;
+	}
 }

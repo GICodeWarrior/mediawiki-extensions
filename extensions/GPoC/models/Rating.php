@@ -202,4 +202,9 @@ class Rating {
 		);
 		// Article moves not logged
 	}
+
+	public static function getLogs() {
+		$dbr = wfGetDB( DB_SLAVE );
+
+	}
 }

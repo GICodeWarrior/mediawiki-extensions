@@ -25,6 +25,7 @@ $wgAutoloadClasses['Rating'] = $dir . 'models/Rating.php';
 $wgAutoloadClasses['AssessmentChangeLog'] = $dir . 'models/Log.php';
 $wgAutoloadClasses['TableDisplay'] = $dir . 'TableDisplay.php';
 $wgAutoloadClasses['AssessmentsExtractor'] = $dir . 'AssessmentsExtractor.php';
+$wgAutoloadClasses['SpecialAssessmentLog'] = $dir . 'SpecialAssessmentLog.php';
 
 $wgHooks['ArticleSaveComplete'][] = 'GPoCHooks::ArticleSaveComplete';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'GPoCHooks::SetupSchema';
@@ -33,5 +34,7 @@ $wgHooks['ParserFirstCallInit'][] = 'TableDisplay::ParserFunctionInit';
 $wgHooks['LanguageGetMagic'][] = 'TableDisplay::LanguageGetMagic';
 
 $wgHooks['TitleMoveComplete'][] = 'GPoCHooks::TitleMoveComplete';
+
+$wgSpecialPages['AssessmentLog'] = 'SpecialAssessmentLog';
 
 // Configuration
