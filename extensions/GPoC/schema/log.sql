@@ -1,7 +1,7 @@
 -- Replace /*_*/ with the proper prefix
 -- Replace /*$wgDBTableOptions*/ with the correct options
 
-CREATE TABLE IF NOT EXISTS /*_*/log (    
+CREATE TABLE IF NOT EXISTS /*_*/assessment_changelog (    
     l_project        varchar(63)  not null,   
     -- project name
 
@@ -14,11 +14,7 @@ CREATE TABLE IF NOT EXISTS /*_*/log (
     l_action         varchar(20) character set ascii not null,
     -- type of log entry (e.g. 'quality')
 
-    -- NOTE: this is ASCII because of maximum index key
-    -- length constraints interacting with utf-8 fields in  
-    -- mysql. The primary key for this table is just under the limit. 
-
-    l_timestamp      binary(14)  not null,
+	l_timestamp      binary(14) not null,
     -- timestamp when log entry was added
 
     l_old            varchar(63),
@@ -35,4 +31,4 @@ CREATE TABLE IF NOT EXISTS /*_*/log (
     key (l_article, l_namespace)
 ) /*$wgDBTableOptions*/;
 
-CREATE INDEX /*i*/l_project ON /*_*/log (l_project);
+CREATE INDEX /*i*/l_project ON /*_*/assessment_changelog (l_project);

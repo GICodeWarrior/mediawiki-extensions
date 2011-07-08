@@ -53,6 +53,7 @@ class GPoCHooks {
 		$base = dirname( __FILE__ ) . '/schema';
 		$du->addExtensionTable( "ratings", "$base/ratings.sql");
 		$du->addExtensionTable( "project_stats", "$base/project_stats.sql" );
+		$du->addExtensionTable( "assessment_changelog", "$base/log.sql" );
 		return true;
 	}
 }
