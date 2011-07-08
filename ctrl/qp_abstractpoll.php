@@ -91,8 +91,8 @@ class qp_AbstractPoll {
 		$this->view = $view;
 		# reset the unique index number of the question in the current poll (used to instantiate the questions)
 		$this->mQuestionId = 0; // ( correspons to 'question_id' DB field )
-		$this->username = self::currentUserName();
-
+		$this->username = qp_Setup::getCurrUserName();
+		# setup poll view showresults
 		if ( array_key_exists( 'showresults', $argv ) && qp_Setup::$global_showresults != 0 ) {
 			if ( $argv['showresults'] == 'showresults' ) {
 				# default showresults for the empty value of xml attribute
@@ -100,6 +100,13 @@ class qp_AbstractPoll {
 			}
 			$this->view->showResults = self::parseShowResults( $argv['showresults'] );
 		}
+		# check whether current user has rights for showresults
+		$user = User::newFromName( $this->username );
+		if ( !$user->isAllowed( 'showresults' ) ) {
+			$this->view->showResults = false;
+		}
+		unset( $user );
+
 		# every poll on the page should have unique poll id, to minimize the risk of collisions
 		# it is required to be set manually via id="value" parameter
 		# ( used only in "declaration" mode )
@@ -164,47 +171,6 @@ class qp_AbstractPoll {
 
 	function isUniquePollId( $pollId ) {
 		return !in_array( $pollId, self::$sPrevPollIDs );
-	}
-
-	static function currentUserName() {
-		global $wgUser, $wgSquidServers;
-		global $wgUsePrivateIPs;
-		if ( qp_Setup::$anon_forwarded_for === true && $wgUser->isAnon() ) {
-			/* collect the originating IPs 
-				borrowed from ProxyTools::wfGetIP
-				bypass trusted proxies list check */
-			# Client connecting to this webserver
-			if ( isset( $_SERVER['REMOTE_ADDR'] ) ) {
-				$ipchain = array( IP::canonicalize( $_SERVER['REMOTE_ADDR'] ) );
-			} else {
-				# Running on CLI?
-				$ipchain = array( '127.0.0.1' );
-			}
-			$ip = $ipchain[0];
-
-			# Append XFF on to $ipchain
-			$forwardedFor = wfGetForwardedFor();
-			if ( isset( $forwardedFor ) ) {
-				$xff = array_map( 'trim', explode( ',', $forwardedFor ) );
-				$xff = array_reverse( $xff );
-				$ipchain = array_merge( $ipchain, $xff );
-			}
-			$username = "";
-			foreach ( $ipchain as $i => $curIP ) {
-				if( $wgUsePrivateIPs || IP::isPublic( $curIP ) ) {
-					$username .= IP::canonicalize( $curIP ) . '/';
-				}
-			}
-			if ( $username != "" ) {
-				# remove trailing slash
-				$username = substr( $username, 0, strlen( $username ) - 1 );
-			} else {
-				$username .= IP::canonicalize( $ipchain[0] );
-			}
-		} else {
-			$username = $wgUser->getName();
-		}
-		return $username;
 	}
 
 	// @input   $addr - source poll address (possibly the short one) in the string or array form

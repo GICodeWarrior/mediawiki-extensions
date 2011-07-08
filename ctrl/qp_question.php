@@ -250,7 +250,7 @@ class qp_Question extends qp_AbstractQuestion {
 				$inp[ 'value' ] = $value;
 				if ( $this->view->showResults['type'] != 0 ) {
 					# there ars some stat in row (not necessarily all cells, because size of question table changes dynamically)
-					$row[ $catId ][ 0 ] = $this->view->{'addShowResults' . $this->view->showResults['type']}( $inp, $proposalId, $catId );
+					$row[ $catId ][ 0 ] = $this->view->addShowResults( $inp, $proposalId, $catId );
 				} else {
 					$row[ $catId ][ 0 ] = $inp;
 				}
@@ -376,7 +376,7 @@ class qp_Question extends qp_AbstractQuestion {
 				}
 				if ( $this->view->showResults['type'] != 0 ) {
 					# there ars some stat in row (not necessarily all cells, because size of question table changes dynamically)
-					$row[ $catId ][ 0 ] = $this->view->{'addShowResults' . $this->view->showResults['type']}( $inp, $proposalId, $catId );
+					$row[ $catId ][ 0 ] = $this->view->addShowResults( $inp, $proposalId, $catId );
 				} else {
 					$row[ $catId ][ 0 ] = $inp;
 				}

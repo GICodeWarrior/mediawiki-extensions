@@ -295,8 +295,7 @@ class qp_Poll extends qp_AbstractPoll {
 		# check for showresults attribute
 		$questions_set = array();
 		foreach( $this->questions as &$question ) {
-			if ( $question->view->showResults['type'] != 0 &&
-						method_exists( $question->view, 'addShowResults' . $question->view->showResults['type'] ) ) {
+			if ( $question->view->hasShowResults() ) {
 				$questions_set[] = $question->mQuestionId;
 			}
 		}

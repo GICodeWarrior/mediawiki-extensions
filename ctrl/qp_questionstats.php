@@ -98,7 +98,7 @@ class qp_QuestionStats extends qp_AbstractQuestion {
 				QP_Renderer::addClass( $row[ $catId ], $spanState->className );
 				if ( $this->view->showResults['type'] != 0 ) {
 					# there ars some stat in row (not necessarily all cells, because size of question table changes dynamically)
-					$row[ $catId ][ 0 ] = $this->view->{'addShowResults' . $this->view->showResults['type']}( $proposalId, $catId );
+					$row[ $catId ][ 0 ] = $this->view->addShowResults( $proposalId, $catId );
 				} else {
 					$row[ $catId ][ 0 ] = '';
 				}

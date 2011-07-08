@@ -429,6 +429,15 @@ class qp_QuestionView extends qp_AbstractView {
 
 	/*** cell templates ***/
 
+	function hasShowResults() {
+		return $this->showResults['type'] != 0 &&
+			method_exists( $this, 'addShowResults' . $this->showResults['type'] );
+	}
+
+	function addShowResults( $inp, $proposalId, $catId ) {
+		return $this->{'addShowResults' . $this->showResults['type']}( $inp, $proposalId, $catId );
+	}
+
 	# cell templates for the selected showresults
 	var $cellTemplate = Array();
 	var $cellTemplateParam = Array( 'inp'=>'', 'percents'=>'', 'bar1style'=>'', 'bar2style'=>'' );

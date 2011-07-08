@@ -48,7 +48,7 @@ class PollResults extends SpecialPage {
 		}
 	}
 
-	static $accessPermissions = array( 'read', 'showresults' );
+	static $accessPermissions = array( 'read', 'pollresults' );
 
 	static $skin = null;
 	static $UsersLink = "";
@@ -90,7 +90,7 @@ class PollResults extends SpecialPage {
 			$wgOut->addModules( 'ext.qpoll.special.pollresults' );
 		} else {
 			# MW < 1.17
-			$wgOut->addExtensionStyle( qp_Setup::$ScriptPath . '/qp_results.css' );
+			$wgOut->addExtensionStyle( qp_Setup::$ScriptPath . '/clientside/qp_results.css' );
 		}
 		if ( self::$skin == null ) {
 			self::$skin = $wgUser->getSkin();

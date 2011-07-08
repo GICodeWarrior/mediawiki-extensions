@@ -106,7 +106,7 @@ class qp_Interpret {
 		}
 		# if there were question/proposal errors, return them;
 		if ( $interpAnswer->isError() ) {
-			return $interpAnswer;
+			return $interpAnswer->setDefaultErrorMessage();
 		}
 		if ( !isset( $result['short'] ) || !isset( $result['long'] ) ) {
 			return $interpAnswer->setError( wfMsg( 'qp_error_interpretation_no_return' ) );
