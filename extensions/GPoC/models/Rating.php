@@ -183,4 +183,33 @@ class Rating {
 		}
 		return $ratings;
 	}
+
+	public static function moveArticle( $oldTitle, $newTitle ) {		
+		// Can be optimized to use two queries - so we touch DB_MASTER only if necessary
+		// But is that a good thing?
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->update(
+			'ratings',
+			array(
+				'r_namespace' => $newTitle->getNamespace(),
+				'r_article' => $newTitle->getText()
+			),
+			array(
+				'r_namespace' => $oldTitle->getNamespace(),
+				'r_article' => $oldTitle->getText()
+			),
+			__METHOD__
+		);
+		$timestamp = wfTimestamp( TS_MW );
+		AssessmentChangeLog::makeEntry(
+			"",
+			$newTitle->getNamespace(),
+			$newTitle->getText(),
+			$timestamp,
+			"articlemove",
+			$oldTitle->getFullText(),
+			$newTitle->getFullText()
+		);
+
+	}
 }

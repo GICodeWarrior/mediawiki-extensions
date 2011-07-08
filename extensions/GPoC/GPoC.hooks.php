@@ -36,6 +36,11 @@ class GPoCHooks {
 		}
 	}
 
+	public static function TitleMoveComplete( &$title, &$newtitle, &$user, $oldid, $newid ) {
+		Rating::moveArticle( $title, $newtitle );
+		return true;
+	}
+
 	public static function ArticleSaveComplete(&$article, &$user, $text, $summary, $minoredit, $watchthis, $sectionanchor, &$flags, $revision, &$status, $baseRevId) {
 		global $wgParser;
 		$title = $article->getTitle();

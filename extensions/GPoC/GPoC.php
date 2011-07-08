@@ -32,4 +32,6 @@ $wgHooks['LoadExtensionSchemaUpdates'][] = 'GPoCHooks::SetupSchema';
 $wgHooks['ParserFirstCallInit'][] = 'TableDisplay::ParserFunctionInit';
 $wgHooks['LanguageGetMagic'][] = 'TableDisplay::LanguageGetMagic';
 
+$wgHooks['TitleMoveComplete'][] = 'GPoCHooks::TitleMoveComplete';
+
 // Configuration
