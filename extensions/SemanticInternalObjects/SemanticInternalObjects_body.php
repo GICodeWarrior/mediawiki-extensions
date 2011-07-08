@@ -152,7 +152,12 @@ class SIOSQLStore extends SMWSQLStore2 {
 	 * internal object into the database.
 	 */
 	function getStorageSQL( $internalObject ) {
-		$ioID = $this->makeSMWPageID( $internalObject->getName(), $internalObject->getNamespace(), '' );
+		if ( method_exists( 'SMWDIWikiPage', 'getSubobjectName' ) ) {
+			// SMW 1.6
+			$ioID = $this->makeSMWPageID( $internalObject->getName(), $internalObject->getNamespace(), '', '' );
+		} else {
+			$ioID = $this->makeSMWPageID( $internalObject->getName(), $internalObject->getNamespace(), '' );
+		}
 		$upRels2 = array();
 		$upAtts2 = array();
 		$upText2 = array();
@@ -168,10 +173,16 @@ class SIOSQLStore extends SMWSQLStore2 {
 			$isCoords = ( $tableid == 'smw_coords' );
 			
 			if ( $isRelation ) {
+				if ( method_exists( 'SMWDIWikiPage', 'getSubobjectName' ) ) {
+					// SMW 1.6
+					$mainPageID = $this->makeSMWPageID( $value->getDBkey(), $value->getNamespace(), $value->getInterwiki(), '' );
+				} else {
+					$mainPageID = $this->makeSMWPageID( $value->getDBkey(), $value->getNamespace(), $value->getInterwiki() );
+				}
 				$upRels2[] = array(
 					's_id' => $ioID,
 					'p_id' => $this->makeSMWPropertyID( $property ),
-					'o_id' => $this->makeSMWPageID( $value->getDBkey(), $value->getNamespace(), $value->getInterwiki() )
+					'o_id' => $mainPageID
 				);
 			} elseif ( $isAttribute ) {
 				if ( class_exists( 'SMWCompatibilityHelpers' ) ) {
