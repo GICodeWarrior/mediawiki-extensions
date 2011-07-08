@@ -14,7 +14,7 @@
 
 if ( !defined( 'MEDIAWIKI' ) ) die( 'Not an entry point.' );
 
-define( 'TREEANDMENU_VERSION','1.1.1, 2009-07-29' );
+define( 'TREEANDMENU_VERSION','1.2.0, 2011-07-08' );
 
 # Set any unset images to default titles
 if ( !isset( $wgTreeViewImages ) || !is_array( $wgTreeViewImages ) ) $wgTreeViewImages = array();
@@ -38,24 +38,23 @@ $wgExtensionCredits['parserhook'][] = array(
 
 class TreeAndMenu {
 
-	var $version  = TREEANDMENU_VERSION;
-	var $uniq     = '';      # uniq part of all tree id's
-	var $uniqname = 'tam';   # input name for uniqid
-	var $id       = '';      # id for specific tree
-	var $baseDir  = '';      # internal absolute path to treeview directory
-	var $baseRelDir = '';    # internal relative path to treeview directory
-	var $baseUrl  = '';      # external URL to treeview directory (relative to domain)
-	var $images   = '';      # internal JS to update dTree images
-	var $useLines = true;    # internal variable determining whether to render connector lines
-	var $args     = array(); # args for each tree
-
+	var $version    = TREEANDMENU_VERSION;
+	var $uniq       = '';      # uniq part of all tree id's
+	var $uniqname   = 'tam';   # input name for uniqid
+	var $id         = '';      # id for specific tree
+	var $baseDir    = '';      # internal absolute path to treeview directory
+	var $baseUrl    = '';      # external URL to treeview directory (relative to domain)
+	var $images     = '';      # internal JS to update dTree images
+	var $useLines   = true;    # internal variable determining whether to render connector lines
+	var $args       = array(); # args for each tree
+	var $js         = 0;
 
 	/**
 	 * Constructor
 	 */
 	function __construct() {
-		global $wgOut, $wgHooks, $wgParser, $wgScriptPath, $wgJsMimeType,
-			$wgTreeMagic, $wgMenuMagic, $wgTreeViewImages, $wgTreeViewShowLines;
+		global $wgOut, $wgHooks, $wgParser, $wgScriptPath, $wgJsMimeType, $wgTreeMagic,
+			$wgMenuMagic, $wgTreeViewImages, $wgTreeViewShowLines, $wgTreeViewBaseDir, $wgTreeViewBaseUrl;
 
 		# Add hooks
 		$wgParser->setFunctionHook( $wgTreeMagic, array( $this,'expandTree' ) );
@@ -63,12 +62,8 @@ class TreeAndMenu {
 		$wgHooks['ParserAfterTidy'][] = array( $this, 'renderTreeAndMenu' );
 		
 		# Update general tree paths and properties
-		$this->baseDir  = dirname( __FILE__ );
-		$this->baseRelDir = strstr( $this->baseDir, 'extensions');
-		$this->baseRelDir = str_replace( '\\', '/',$this->baseRelDir );
-		$this->baseRelDir = $wgScriptPath . '/' . $this->baseRelDir;
-		$this->baseUrl  = str_replace( '\\', '/', $this->baseDir );
-		$this->baseUrl  = preg_replace( '|^.+(?=/ext)|', $wgScriptPath, $this->baseDir );
+		$this->baseDir  = isset( $wgTreeViewBaseDir ) ? $wgTreeViewBaseDir : dirname( __FILE__ );
+		$this->baseUrl  = isset( $wgTreeViewBaseUrl ) ? $wgTreeViewBaseUrl : preg_replace( '|^.+(?=/ext)|', $wgScriptPath, $this->baseDir );
 		$this->useLines = $wgTreeViewShowLines ? 'true' : 'false';
 		$this->uniq     = uniqid( $this->uniqname );
 
@@ -79,9 +74,6 @@ class TreeAndMenu {
 			$v = $image && $image->exists() ? $image->getURL() : $wgTreeViewImages[$k];
 			$this->images .= "tree.icon['$k'] = '$v';";
 		}
-
-		# Add link to output to load dtree.js script
-		$wgOut->addScript( "<script type=\"$wgJsMimeType\" src=\"{$this->baseRelDir}/dtree.js\"><!-- TreeAndMenu --></script>\n" );
 	}
 
 
@@ -149,7 +141,7 @@ class TreeAndMenu {
 	 * Called after parser has finished (ParserAfterTidy) so all transcluded parts can be assembled into final trees
 	 */
 	public function renderTreeAndMenu( &$parser, &$text ) {
-		global $wgJsMimeType;
+		global $wgJsMimeType, $wgOut;
 		$u = $this->uniq;
 
 		# Determine which trees are sub trees
@@ -233,7 +225,7 @@ class TreeAndMenu {
 								<script type=\"$wgJsMimeType\">/*<![CDATA[*/
 									// TreeAndMenu{$this->version}
 									tree = new dTree('$objid');
-									for (i in tree.icon) tree.icon[i] = '{$this->baseRelDir}/'+tree.icon[i];{$this->images}
+									for (i in tree.icon) tree.icon[i] = '{$this->baseUrl}/'+tree.icon[i];{$this->images}
 									tree.config.useLines = {$this->useLines};
 									$add
 									$objid = tree;
@@ -270,6 +262,9 @@ class TreeAndMenu {
 		}
 
 		$text = preg_replace( "/\x7f1$u\x7f.+?[\\r\\n]+/m", '', $text ); # Remove all unreplaced row information
+
+		# Add the dTRee script if not loaded yet
+		if( !$this->js++ ) $wgOut->addHtml( "<script type=\"$wgJsMimeType\" src=\"{$this->baseUrl}/dtree.js\"></script>" );
 		return true;
 	}
  
