@@ -51,8 +51,7 @@ install: build
 	# Install sync/check scripts
 	install -d -m 0755 $(DESTDIR)/usr/bin
 	install -d -m 0755 $(DESTDIR)/usr/sbin
-	install -m 0750 sync-common apache-sanity-check apache-start check-time scap-1skins scap-1 $(DESTDIR)/usr/bin
-	install -m 0750 scap-2 set-group-write2 install-common $(DESTDIR)/usr/sbin
+	install -m 0755 sync-common apache-sanity-check apache-start check-time scap-1skins scap-1 scap-2 $(DESTDIR)/usr/bin
 
 # Build architecture-independent files here.
 binary-indep: build install

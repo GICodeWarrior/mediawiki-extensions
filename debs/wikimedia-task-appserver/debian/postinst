@@ -29,6 +29,12 @@ create_apache_user() {
         then
                 adduser --system --home /var/www --shell /sbin/nologin --no-create-home --uid 48 --gid 48 --disabled-password apache
         fi
+
+        if ! getent passwd mwdeploy > /dev/null
+        then
+                adduser --system --home /var/www --shell /sbin/nologin --no-create-home --group --disabled-password mwdeploy
+        fi
+
 }
 
 case "$1" in

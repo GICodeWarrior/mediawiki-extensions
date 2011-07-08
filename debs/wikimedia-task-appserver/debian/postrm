@@ -21,7 +21,9 @@ case "$1" in
 	purge)
 		# Remove apache user
 		deluser apache || true
+		deluser mwdeploy || true
 		delgroup apache || true
+		delgroup mwdeploy || true
 
 	;;
 	remove)
