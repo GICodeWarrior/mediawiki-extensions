@@ -45,10 +45,6 @@ class qp_PollStats extends qp_AbstractPoll {
 	function __construct( $argv, qp_PollStatsView $view ) {
 		parent::__construct( $argv, $view );
 		$this->pollAddr = trim( $argv['address'] );
-		# statistical mode is active, but qp_Setup::$global_showresults still can be false
-		if ( qp_Setup::$global_showresults == 0 ) {
-			$this->view->showResults = false;
-		}
 	}
 
 	# prepare qp_PollStore object
@@ -113,8 +109,7 @@ class qp_PollStats extends qp_AbstractPoll {
 		# check for showresults attribute
 		$questions_set = array();
 		foreach ( $this->questions as &$question ) {
-			if ( $question->view->showResults['type'] != 0 &&
-						method_exists( $question->view, 'addShowResults' . $question->view->showResults['type'] ) ) {
+			if ( $question->view->hasShowResults() ) {
 				$questions_set[] = $question->mQuestionId;
 			}
 		}

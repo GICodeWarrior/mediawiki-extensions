@@ -161,6 +161,13 @@ class qp_InterpAnswer {
 		$this->qpErrors[$qidx][$pidx] = $msg;
 	}
 
+	function setDefaultErrorMessage() {
+		if ( is_array( $this->qpErrors ) && $this->error == '' ) {
+			$this->error = wfMsg( 'qp_interpetation_wrong_answer' );
+		}
+		return $this;
+	}
+
 	function isError() {
 		return $this->error != '' || is_array( $this->qpErrors );
 	}

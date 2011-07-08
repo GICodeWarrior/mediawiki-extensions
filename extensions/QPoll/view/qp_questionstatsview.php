@@ -64,6 +64,10 @@ class qp_QuestionStatsView extends qp_QuestionView {
 
 	/*** cell templates ***/
 
+	function addShowResults( $proposalId, $catId ) {
+		return $this->{'addShowResults' . $this->showResults['type']}( $proposalId, $catId );
+	}
+
 	# cell templates for the selected showresults
 	var $cellTemplate = Array();
 	var $cellTemplateParam = Array( 'percents'=>'', 'bar1style'=>'', 'bar2style'=>'' );

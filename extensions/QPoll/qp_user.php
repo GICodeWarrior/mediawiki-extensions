@@ -66,13 +66,13 @@ $wgExtensionCredits['specialpage'][] = array(
 
 if ( isset( $wgResourceModules ) ) {
 	$wgResourceModules['ext.qpoll'] = array(
-		'scripts' => 'qp_user.js',
-		'styles' => 'qp_user.css',
+		'scripts' => 'clientside/qp_user.js',
+		'styles' => 'clientside/qp_user.css',
 		'localBasePath' => dirname( __FILE__ ),
 		'remoteExtPath' => 'QPoll'
 	);
 	$wgResourceModules['ext.qpoll.special.pollresults'] = array(
-		'styles' => 'qp_results.css',
+		'styles' => 'clientside/qp_results.css',
 		'localBasePath' => dirname( __FILE__ ),
 		'remoteExtPath' => 'QPoll'
 	);
@@ -309,9 +309,10 @@ class qp_Setup {
 		}
 
 		# groups which has permission to access poll results by default
-		$wgGroupPermissions['sysop']['showresults'] = true;
-		$wgGroupPermissions['bureaucrat']['showresults'] = true;
-		$wgGroupPermissions['polladmin']['showresults'] = true;
+		$wgGroupPermissions['user']['showresults'] = true;
+		$wgGroupPermissions['sysop']['pollresults'] = true;
+		$wgGroupPermissions['bureaucrat']['pollresults'] = true;
+		$wgGroupPermissions['polladmin']['pollresults'] = true;
 		# groups which can edit interpretation scripts by default
 		# please minimize the number of groups as low as you can
 		# that is security measure against inserting of malicious code
@@ -323,6 +324,47 @@ class qp_Setup {
 	static function mediaWikiVersionCompare( $version, $operator = '<' ) {
 		global $wgVersion;
 		return version_compare( $wgVersion, $version, $operator );
+	}
+
+	static function getCurrUserName() {
+		global $wgUser, $wgSquidServers;
+		global $wgUsePrivateIPs;
+		if ( self::$anon_forwarded_for === true && $wgUser->isAnon() ) {
+			/* collect the originating IPs 
+				borrowed from ProxyTools::wfGetIP
+				bypass trusted proxies list check */
+			# Client connecting to this webserver
+			if ( isset( $_SERVER['REMOTE_ADDR'] ) ) {
+				$ipchain = array( IP::canonicalize( $_SERVER['REMOTE_ADDR'] ) );
+			} else {
+				# Running on CLI?
+				$ipchain = array( '127.0.0.1' );
+			}
+			$ip = $ipchain[0];
+
+			# Append XFF on to $ipchain
+			$forwardedFor = wfGetForwardedFor();
+			if ( isset( $forwardedFor ) ) {
+				$xff = array_map( 'trim', explode( ',', $forwardedFor ) );
+				$xff = array_reverse( $xff );
+				$ipchain = array_merge( $ipchain, $xff );
+			}
+			$username = "";
+			foreach ( $ipchain as $i => $curIP ) {
+				if( $wgUsePrivateIPs || IP::isPublic( $curIP ) ) {
+					$username .= IP::canonicalize( $curIP ) . '/';
+				}
+			}
+			if ( $username != "" ) {
+				# remove trailing slash
+				$username = substr( $username, 0, strlen( $username ) - 1 );
+			} else {
+				$username .= IP::canonicalize( $ipchain[0] );
+			}
+		} else {
+			$username = $wgUser->getName();
+		}
+		return $username;
 	}
 
 	static function onLoadAllMessages() {
@@ -421,11 +463,11 @@ class qp_Setup {
 			# MW < 1.17
 			global $wgJsMimeType, $wgContLang;
 			# Ouput the style and the script to the header once for all.
-			$head = '<script type="' . $wgJsMimeType . '" src="' . self::$ScriptPath . '/qp_user.js"></script>' . "\n";
+			$head = '<script type="' . $wgJsMimeType . '" src="' . self::$ScriptPath . '/clientside/qp_user.js"></script>' . "\n";
 			$wgOut->addScript( $head );
-			$wgOut->addExtensionStyle( self::$ScriptPath . '/qp_user.css' );
+			$wgOut->addExtensionStyle( self::$ScriptPath . '/clientside/qp_user.css' );
 			if ( $wgContLang->isRTL() ) {
-				$wgOut->addExtensionStyle( self::$ScriptPath . '/qp_user_rtl.css' );
+				$wgOut->addExtensionStyle( self::$ScriptPath . '/clientside/qp_user_rtl.css' );
 			}
 		}
 		global $wgQPollFunctionsHook;
@@ -761,7 +803,7 @@ class qp_FunctionsHook {
 		if ( is_numeric( $this->question_id ) ) {
 			$this->question_id = intval( $this->question_id );
 			$this->pollStore->loadQuestions();
-			$this->pollStore->setLastUser( qp_AbstractPoll::currentUserName(), false );
+			$this->pollStore->setLastUser( qp_Setup::getCurrUserName(), false );
 			$this->pollStore->loadUserVote();
 			$this->error_message = 'missing_question_id';
 			if ( array_key_exists( $this->question_id, $this->pollStore->Questions ) ) {

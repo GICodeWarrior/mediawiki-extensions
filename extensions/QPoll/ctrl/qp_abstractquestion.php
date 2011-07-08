@@ -7,12 +7,12 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 abstract class qp_AbstractQuestion {
 
 	var $mState = ''; // current state of question parsing (no error)
-	# default type and subtype of the question; should always be properly initialized in $this->parseParameters();
+	# default type and subtype of the question; should always be properly initialized in derived $this->parseMainHeader();
 	var $mType = 'unknown';
-	var $mSubType = ''; // some questions has a subtype, see $this->parseParameters()
+	var $mSubType = ''; // some questions has a subtype, see derived $this->parseMainHeader()
 	var $mCategories = Array();
 	var $mCategorySpans = Array();
-	var $mCommonQuestion = ''; // GET common question of the poll
+	var $mCommonQuestion = ''; // common question of this question
 	var $mProposalText = Array(); // an array of question proposals
 	var $alreadyVoted = false; // whether the selected user has already voted this question ?
 
