@@ -41,7 +41,10 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'wikitweet-desc' => '{{desc}}',
+	'wikitweet-subscribe' => '{{Identical|Subscribe}}',
+	'wikitweet-unsubscribe' => '{{Identical|Unsubscribe}}',
 	'wikitweet-delete' => '{{Identical|Delete}}',
+	'wikitweet-private' => '{{Identical|Private}}',
 	'wikitweet-anonymous' => '{{Identical|Anonymous}}',
 );
 
@@ -57,7 +60,14 @@ $messages['be-tarask'] = array(
 	'wikitweet-infoajax' => 'выкарыстоўвае AJAX і абнаўляецца кожныя 5 сэкунд без перазагрузкі старонкі.',
 	'wikitweet-submit' => 'Дадаць паведамленьне',
 	'wikitweet-submitandmail' => 'Дадаць паведамленьне і даслаць электронны ліст',
+	'wikitweet-intheroom' => 'Вы ў пакоі',
+	'wikitweet-subscribe' => 'падпісацца',
+	'wikitweet-subscribed' => 'падпісаны',
+	'wikitweet-unsubscribe' => 'адпісацца',
 	'wikitweet-delete' => 'выдаліць',
+	'wikitweet-inform' => 'паведаміўшым',
+	'wikitweet-private' => 'прыватнае',
+	'wikitweet-answer' => 'адказ на',
 	'wikitweet-anonymous' => 'ананімнае',
 	'wikitweet-tweets-tagged' => 'Кароткія пазначаныя паведамленьні',
 	'wikitweet-back-timeline' => 'Вярнуцца да лініі часу',
@@ -313,11 +323,15 @@ $messages['mk'] = array(
 
 /** Malay (Bahasa Melayu)
  * @author Anakmalaysia
+ * @author Diagramma Della Verita
  */
 $messages['ms'] = array(
 	'wikitweet-desc' => 'Cipta suapan seakan-akan Twitter ke dalam MediaWiki',
 	'wikitweet-pleaselogin' => "Sila log masuk untuk 'menciak'.",
+	'wikitweet-moretweets' => 'Tweet lagi',
 	'wikitweet-infoajax' => 'menggunakan teknologi AJAX dan menambah isi sendiri setiap 5 saat tanpa memuatkan laman.',
+	'wikitweet-submit' => 'Tweet',
+	'wikitweet-submitandmail' => 'Tweet dan e-mel',
 	'wikitweet-intheroom' => 'Anda berada dalam bilik',
 	'wikitweet-subscribe' => 'langgan',
 	'wikitweet-subscribed' => 'dilanggan',
@@ -327,6 +341,12 @@ $messages['ms'] = array(
 	'wikitweet-private' => 'tertutup',
 	'wikitweet-answer' => 'jawab',
 	'wikitweet-anonymous' => 'tanpa nama',
+	'wikitweet-tweets-tagged' => 'Tweet tagged',
+	'wikitweet-back-timeline' => 'Kembali ke garis masa',
+	'wikitweet-tweets-from-room' => 'Tweet dari portal',
+	'wikitweet-timeago' => '$1 yang lalu',
+	'wikitweet-inthefuture' => 'Pada masa akan datang !!',
+	'wikitweet-fewsecondsago' => 'Beberapa saat yang lalu',
 );
 
 /** Dutch (Nederlands)
