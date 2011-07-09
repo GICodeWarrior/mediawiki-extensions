@@ -100,6 +100,8 @@ $messages['bs'] = array(
  * @author Lloffiwr
  */
 $messages['cy'] = array(
+	'emailusers-desc' => 'Yn galluogi defnyddwyr i anfon e-byst at nifer o dderbynwyr ar unwaith',
+	'right-sendbatchemail' => 'Anfon e-bost at nifer o dderbynwyr ar unwaith',
 	'emailusers' => 'Anfon e-bost at mwy nag un ddefnyddiwr',
 );
 
