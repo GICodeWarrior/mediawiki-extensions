@@ -410,6 +410,7 @@ $messages['ia'] = array(
 	'useroptionstats-desc' => '[[Special:UserOptionStats|Pagina special]] pro reportar le uso de optiones de usator in Mediawiki',
 	'uos-warn' => 'PHPlot non es installate!',
 	'uos-choose' => 'Selige un del sequente optiones de usator: $1',
+	'uos-choose-hidden' => 'Selige un del sequente optiones celate de usator: $1',
 	'uos-unknown' => '*Predefinition',
 	'uos-other' => '*Altere',
 	'uos-title' => 'Distribution de valores del option de usator $1',
