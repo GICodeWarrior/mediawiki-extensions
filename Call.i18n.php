@@ -205,12 +205,30 @@ U slučaju problema možete pokušati <b>{{#special:call}}/DebuG</b>",
 );
 
 /** Catalan (Català)
+ * @author BroOk
  * @author El libre
  * @author Paucabot
  */
 $messages['ca'] = array(
 	'call' => 'Crida',
+	'call-desc' => "Crear un hipervincle a una plantilla (o en una pàgina wiki normal), amb el pas de paràmetres.
+Pot ser utilitzat en la línia d'ordres del navegador o en el text wiki",
+	'call-text' => "L'extensió Call espera una pàgina wiki i els paràmetres opcionals per a aquella pàgina com a argument.<br /><br />
+
+Exemple 1: &nbsp; <tt>[[{{#special:call}}/My Template,parm1=value1]]</tt><br />
+Exemple 2: &nbsp; <tt>[[{{#special:call}}/Talk:My Discussion,parm1=value1]]</tt><br />
+Exemple 3: &nbsp; <tt>[[{{#special:call}}/:My Page,parm1=value1,parm2=value2]]</tt><br />
+Exemple 4 (URL del navegador): &nbsp; <tt>http://mydomain/mywiki/index.php?{{#special:call}}/:My Page,parm1=value1</tt><br /><br />
+
+L'<i>extensió Call</i> truca a la pàgina i passar els paràmetres.br />
+Podràs veure el contingut de la pàgina anomenat i el seu títol, però el seu \"tipus\" serà d'una pàgina especial, és a dir, com una pàgina no es pot editar.<br />El contingut que veus poden variar segons el valor dels paràmetres que ha passat.<br /><br />
+
+L'<i>extensió Call</i> és útil per a construir aplicacions interactives amb MediaWiki.<br />
+Per exemple, veure <a href='http://semeb.com/dpldemo/Template:Catlist'>the DPL GUI</a> ..<br />
+En cas de problemes pot provar <b>{{#special:call}}/DebuG</b>",
+	'call-save' => "La sortida d'aquesta Call es pot guardar en una pàgina anomenada'' $1 ''.",
 	'call-save-success' => 'El següent text ha estat desat a la pàgina <big>[[$1]]</big> .',
+	'call-save-failed' => "El següent text no s'ha desat a la pàgina <big>[[ $1 ]]</big> ja que aquesta pàgina ja existeix.",
 );
 
 /** Czech (Česky)
