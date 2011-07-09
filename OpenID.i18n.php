@@ -3900,6 +3900,7 @@ Sekiranya anda inign menggunakan OpenID untuk log masuk pada masa hadapan, sila 
 	'openidloginlabel' => 'URL OpenID',
 	'openiddelete-button' => 'Sahkan',
 	'openid-urls-action' => 'Tindakan',
+	'openid-urls-delete' => 'Hapuskan',
 );
 
 /** Maltese (Malti)
@@ -5255,7 +5256,13 @@ OpenID-je lahko upravljate (si jih ogledate, izbrišete in drugo) na zavihku Ope
 Če ne, poskusite klikniti na gumb »Continue« (Nadaljuj).',
 	'openidclientonlytext' => 'Ne morete uporabiti računov s tega wikija kot OpenID-je na drugi strani.',
 	'openidloginlabel' => 'URL OpenID',
+	'openidlogininstructions' => '{{SITENAME}} podpira standard [http://openid.net/ OpenID] za enkratno prijavo med spletnimi stranmi.
+OpenID vam omogoča prijavo v kopico različnih spletnih strani brez uporabe različnega gesla za vsako.
+(Za več informacij si oglejte [http://en.wikipedia.org/wiki/OpenID Wikipedijin članek o OpenID].)
+Obstaja veliko [http://openid.net/get/ ponudnikov OpenID] in morda že imate račun z omogočenim OpenID pri drugi storitvi.',
 	'openidlogininstructions-openidloginonly' => "{{SITENAME}} omogoča prijavo ''samo'' z OpenID.",
+	'openidlogininstructions-passwordloginallowed' => 'Če že imate račun na {{SITENAME}}, se lahko [[Special:UserLogin|prijavite]] s svojim uporabniškim imenom in geslom kot običajno.
+Če želite v prihodnje uporabljati OpenID, lahko [[Special:OpenIDConvert|pretvorite svoj račun v OpenID]] po tem, ko ste se normalno prijavili.',
 	'openidupdateuserinfo' => 'Posodobi moje osebne podatke:',
 	'openiddelete' => 'Izbriši OpenID',
 	'openiddelete-text' => 'S klikom na gumb »{{int:openiddelete-button}}« boste odstranili OpenID $1 s svojega računa.
@@ -6287,6 +6294,7 @@ $messages['yi'] = array(
  * @author Liangent
  * @author Onecountry
  * @author Wrightbus
+ * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
 	'openid-desc' => '使用一个[http://openid.net/ OpenID]来登录到这个wiki，或使用wiki用户帐号登录到其他接受OpenID的网站',
@@ -6365,7 +6373,7 @@ OpenID可以让你不必使用不同的密码登录不同站点。
 没有OpenID您将无法登录。',
 	'openiddelete-sucess' => 'OpenID已被成功删除。',
 	'openiddelete-error' => '在移除你的OpenID的时候出现了一个错误。',
-	'openid-prefstext' => '[http://openid.net/ OpenID]参数设置',
+	'openid-prefstext' => '[http://openid.net/ OpenID]设置',
 	'openid-pref-hide' => 'OpenID登录时，在用户页隐藏OpenID。',
 	'openid-pref-update-userinfo-on-login' => '每次登录时，都从OpenID的用户信息中更新以下信息。',
 	'openid-urls-desc' => '和你的账号关联的OpenID：',
