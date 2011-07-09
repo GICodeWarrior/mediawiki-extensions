@@ -1698,6 +1698,7 @@ $messages['tt-cyrl'] = array(
 
 /** Ukrainian (Українська)
  * @author AS
+ * @author Microcell
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
@@ -1710,6 +1711,7 @@ $messages['uk'] = array(
 	'vector-editwarning-preference' => 'Попереджати мене, коли я покидаю сторінку редагування з незбереженими змінами',
 	'vector-simplesearch-search' => 'Пошук',
 	'vector-simplesearch-containing' => 'що містять...',
+	'vector-noexperiments-preference' => 'Відмовитись від випробування технічних експериментів',
 );
 
 /** Vèneto (Vèneto)
