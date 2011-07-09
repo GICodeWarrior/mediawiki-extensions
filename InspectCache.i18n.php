@@ -729,6 +729,13 @@ $messages['mr'] = array(
 	'right-inspectcache' => 'स्मृतिशेष पहा व वगळा',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'inspectcache-delete' => 'Hapuskan',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */
