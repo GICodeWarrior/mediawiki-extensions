@@ -58,29 +58,29 @@ class ArchiveLinksSpider extends Maintenance {
 	}
 	
 	private function call_wget( $url ) {
-		global $wgArchiveLinksConfig;
-		if ( array_key_exists( 'path_to_wget', $wgArchiveLinksConfig ) && file_exists( $wgArchiveLinksConfig['path_to_wget'] ) ) {
+		global $wgArchiveLinksConfig, $path;
+		if ( array_key_exists( 'wget_path', $wgArchiveLinksConfig ) && file_exists( $wgArchiveLinksConfig['wget_path'] ) ) {
 			die ( 'Support is not yet added for wget in a different directory' );
-		} elseif ( file_exists( "$path/wget.exe" ) ) {
-			if ( $wgArchiveLinksConfig['file_types_to_archive'] ) {
-				if ( is_array( $wgArchiveLinksConfig['file_types_to_archive']) ){
-					$accept_file_types = '-A ' . implode( ',', $wgArchiveLinksConfig['filetypes_to_archive'] );
+		} elseif ( file_exists( "$path/extensions/ArchiveLinks/wget.exe" ) ) {
+			if ( array_key_exists( 'file_types', $wgArchiveLinksConfig ) ) {
+				if ( is_array( $wgArchiveLinksConfig['file_types']) ){
+					$accept_file_types = '-A ' . implode( ',', $wgArchiveLinksConfig['filetypes'] );
 				} else {
-					$accept_file_types = '-A ' . $wgArchiveLinksConfig['file_types_to_archive'];
+					$accept_file_types = '-A ' . $wgArchiveLinksConfig['file_types'];
 				}
 			} else {
 				$accept_file_types = '';
 			}
 			//At the current time we are only adding support for the local filestore, but swift support is something that will be added later
-			switch( $wgArchiveLinksConfig['filestore_to_use'] ) {
+			switch( $wgArchiveLinksConfig['filestore'] ) {
 				case 'local':
 				default:
-					if ( $wgArchiveLinksConfig['subfolder_name'] ) {
+					if ( array_key_exists( 'subfolder_name', $wgArchiveLinksConfig ) ) {
 						$content_dir = 'extensions/ArchiveLinks/' . $wgArchiveLinksConfig['subfolder_name'];
 					} elseif ( $wgArchiveLinksConfig['content_path'] ) {
 						$content_dir =  realpath( $wgArchiveLinksConfig['content_path'] );
 						if ( !$content_dir ) {
-							die ( 'The path you have set for $wgArchiveLinksConfig[\'content_path\'] does not exist.' .
+							die ( 'The path you have set for $wgArchiveLinksConfig[\'content_path\'] does not exist. ' .
 									'This makes the spider a very sad panda. Please either create it or use a different setting.');
 						}
 					} else {
@@ -90,9 +90,14 @@ class ArchiveLinksSpider extends Maintenance {
 					$dir = escapeshellarg( $dir );
 					$sanitized_url = escapeshellarg( $url );
 			}
-
-			shell_exec( "cd $path" );
-			shell_exec( "wget.exe -nH -p -H -E -k -o \"./log.txt\" -Q2m -P $dir $accept_file_types $sanitized_url" );
+			if ( array_key_exists( 'wget_quota', $wgArchiveLinksConfig ) ) {
+				$quota = $wgArchiveLinksConfig['wget_quota'];
+			} else {
+				//We'll set the default max quota for any specific web page for 8 mb, which is kind of a lot but should allow for large images
+				$quota = '8m';
+			}
+			shell_exec( "cd $path/extensions/ArchiveLinks/" );
+			shell_exec( "wget.exe -nH -p -H -E -k -Q$quota -P $dir $accept_file_types $sanitized_url" );
 		} else {
 			//this is primarily designed with windows in mind and no built in wget, so yeah, *nix support should be added, in other words note to self...
 			die ( 'wget must be installed in order for the spider to function in wget mode' );
@@ -120,7 +125,7 @@ class ArchiveLinksSpider extends Maintenance {
 
 	/**
 	 * This function checks a local file for a local block of jobs that is to be done
-	 * if there is none that exists it gets a block, create ones, and waits to avoid any replag problems
+	 * if there is none that exists it gets a block, creates one, and waits to avoid any replag problems
 	 */
 	private function replication_check_queue( ) {
 		global $path, $wgArchiveLinksConfig;
@@ -171,7 +176,7 @@ class ArchiveLinksSpider extends Maintenance {
 							array_key_exists( 'in_progress_ignore_delay', $wgArchiveLinksConfig ) ? $ignore_in_prog_time = $wgArchiveLinksConfig['in_progress_ignore_delay'] :
 								$ignore_in_prog_time = 7200;
 							
-							if ( $reserve_time + $ingore_in_prog_time + $wait_time > $ignore_in_prog_time + $wait_time ) {
+							if ( $time - $reserve_time - $wait_time > $ignore_in_prog_time ) {
 								$retval = $this->reserve_job( $row );
 							}
 						}

@@ -14,14 +14,14 @@ class SpecialModifyArchiveBlacklist extends SpecialPage {
 	public function execute($par) {
 		global $wgOut, $wgRequest;
 		$this->setHeaders();
-		$this->outputHeader();
+		//$this->outputHeader();
 
 		$wgOut->addWikiMsg('archivelinks-modify-blacklist-desc');
 
 		$wgOut->addHTML(
 				HTML::openElement('form', array('method' => 'post', 'action' => SpecialPage::getTitleFor('ModifyBlacklist')->getLocalUrl())) .
 				HTML::openElement('fieldset') .
-				HTML::element('legend', null, wfMsg('ModifyBlacklist')) .
+				HTML::element('legend', null, wfMsg('ModifyArchiveBlacklist')) .
 				//HTML::hidden( 'title', SpecialPage::getTitleFor( 'ArchiveBlacklist' )->getPrefixedText() ) .
 				HTML::openElement('table') .
 				HTML::openElement('tr') .

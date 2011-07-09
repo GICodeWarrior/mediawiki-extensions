@@ -8,7 +8,8 @@ $messages = array();
 //English
 $messages['en'] = array(
 	'archivelinks-cache-title' => 'cache',
-	'ModifyArchiveBlacklist' => 'Modify Blacklist',
+	'ModifyArchiveBlacklist' => 'Modify Archive Blacklist',
+	'ViewArchive' => 'View Archive',
 	'archivelinks-modify-blacklist-desc' => 'This page allows you to blacklist or whitelist URLs for the ArchiveLinks extension.',
 	//'archivelinks-archive-blacklist-fieldset-label' => 'Blacklist a URL',
 	'archivelinks-modify-blacklist-url-field-label' => 'URL to Blacklist:',
@@ -20,4 +21,9 @@ $messages['en'] = array(
 	'archivelinks-modify-blacklist-whitelist-field-label' => 'Blacklist',
 	'archivelinks-modify-blacklist-blacklist-field-label' => 'Whitelist',
 	'archivelinks-modify-blacklist-blacklist-or-whitelist-field-label' => 'Which list would you like to modify?',
+	'archivelinks-view-archive-desc' => 'This is the special page for viewing archived external links, please enter the URL of the archive you\'d like to view.',
+	'archivelinks-view-archive-submit-button' => 'View Archive',
+	'archivelinks-view-archive-url-field' => 'URL of page:',
+	'archivelinks-view-archive-url-not-found' => 'We\'re sorry, the URL you requested was not found in the archive for the following reason.',
+	
 );
