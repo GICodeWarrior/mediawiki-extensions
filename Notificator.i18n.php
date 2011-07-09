@@ -169,6 +169,17 @@ $messages['es'] = array(
 	'notificator-notified-already' => '$1 ha sido notificado sobre esta página o cambio de página antes.',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'notificator-e-mail-address' => 'adrèce èlèctronica',
+	'notificator-return-to' => 'Tornar a',
+	'notificator-change-tag' => 'changement',
+	'notificator-new-tag' => 'novél',
+	'notificator-subject' => 'Sujèt :',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
