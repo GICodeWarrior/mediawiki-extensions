@@ -262,6 +262,7 @@ Efallai y collwch eich newidiadau os y gadewch y dudalen hon yn awr.",
 	'al-nosuchuser' => 'Nid oes dim defnyddiwr o\'r enw "$1".
 Ydy\'r priflythrennau a\'r llythrennau bach yn gywir?
 Gwiriwch eich sillafu.',
+	'al-throttled' => 'Cafwyd gormod o gynigion ar eich cyfrinair gennych yn ddiweddar. Oedwch $1 {{PLURAL:$1|eiliad}} cyn rhoi cynnig arno eto.',
 );
 
 /** Danish (Dansk)

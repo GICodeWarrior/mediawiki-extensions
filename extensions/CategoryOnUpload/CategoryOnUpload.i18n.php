@@ -175,10 +175,11 @@ $messages['cy'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'categoryonupload-desc' => 'Fragt einen Benutzer beim Hochladen von Dateien nach einer Kategorie',
+	'categoryonupload-desc' => 'Ermöglicht die Auswahl von Kategorien beim Hochladen von Dateien',
 	'categoryonupload-label' => 'Kategorie:',
 );
 

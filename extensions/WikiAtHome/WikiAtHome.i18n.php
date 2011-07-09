@@ -1895,6 +1895,7 @@ $messages['yi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Liangent
+ * @author Xiaomingyan
  * @author Yfdyh000
  */
 $messages['zh-hans'] = array(
@@ -1909,7 +1910,7 @@ $messages['zh-hans'] = array(
 	'wah-transcode-fail' => '这个文件转码失败',
 	'wah-javascript-off' => '你必须启用JavaScript以参与Wiki@Home',
 	'wah-loading' => '正在载入Wiki@Home界面……',
-	'wah-menu-pref' => '参数设置',
+	'wah-menu-pref' => '系统设置',
 	'wah-uploadfail' => '上传失败',
 );
 

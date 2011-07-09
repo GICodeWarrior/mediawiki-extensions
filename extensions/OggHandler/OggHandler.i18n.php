@@ -97,6 +97,7 @@ $messages['akz'] = array(
 );
 
 /** Afrikaans (Afrikaans)
+ * @author AVRS
  * @author Naudefj
  * @author SPQRobin
  */
@@ -106,7 +107,7 @@ $messages['af'] = array(
 	'ogg-short-video' => 'Ogg $1 video lêer, $2',
 	'ogg-short-general' => 'Ogg $1 medialêer, $2',
 	'ogg-long-audio' => '(Ogg $1 klanklêer, lengte $2, $3)',
-	'ogg-long-video' => '(Ogg $1 videolêer, lengte $2, $4×$5 pixels, $3)',
+	'ogg-long-video' => 'Ogg $1 videolêer, lengte $2, $4×$5 pixels, $3',
 	'ogg-long-general' => '(Ogg medialêer, lengte $2, $3)',
 	'ogg-long-error' => '(Ongeldige ogg-lêer: $1)',
 	'ogg-play' => 'Speel',
@@ -610,6 +611,7 @@ Molimo Vas da <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client
 );
 
 /** Catalan (Català)
+ * @author AVRS
  * @author Aleator
  * @author Paucabot
  * @author SMP
@@ -622,7 +624,7 @@ $messages['ca'] = array(
 	'ogg-short-video' => 'Fitxer OGG de vídeo $1, $2',
 	'ogg-short-general' => 'Fitxer multimèdia OGG $1, $2',
 	'ogg-long-audio' => '(Ogg $1 fitxer de so, llargada $2, $3)',
-	'ogg-long-video' => '(Fitxer OGG de vídeo $1, llargada $2, $4×$5 píxels, $3)',
+	'ogg-long-video' => 'Fitxer OGG de vídeo $1, llargada $2, $4×$5 píxels, $3',
 	'ogg-long-multiplexed' => '(Arxiu àudio/vídeo multiplex, $1, llargada $2, $4×$5 píxels, $3 de mitjana)',
 	'ogg-long-general' => '(Fitxer multimèdia OGG, llargada $2, $3)',
 	'ogg-long-error' => '(Fitxer OGG invàlid: $1)',
@@ -737,6 +739,7 @@ Os gwelwch yn dda, a wnewch chi <a href="http://www.mediawiki.org/wiki/Extension
 );
 
 /** Danish (Dansk)
+ * @author AVRS
  * @author Byrial
  * @author Jon Harald Søby
  * @author Peter Alberti
@@ -747,7 +750,7 @@ $messages['da'] = array(
 	'ogg-short-video' => 'Ogg $1 videofil, $2',
 	'ogg-short-general' => 'Ogg $1 mediafil, $2',
 	'ogg-long-audio' => '(Ogg $1 lydfil, længde $2, $3)',
-	'ogg-long-video' => '(Ogg $1 videofil, længde $2, $4×$5 pixel, $3)',
+	'ogg-long-video' => 'Ogg $1 videofil, længde $2, $4×$5 pixel, $3',
 	'ogg-long-multiplexed' => '(Sammensat ogg-lyd- og -videofil, $1, længde $2, $4×$5 pixel, $3 samlet)',
 	'ogg-long-general' => '(Ogg mediafil, længde $2, $3)',
 	'ogg-long-error' => '(Ugyldig ogg-fil: $1)',
@@ -853,6 +856,7 @@ kerem kerê<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_do
 );
 
 /** Lower Sorbian (Dolnoserbski)
+ * @author AVRS
  * @author Michawiki
  */
 $messages['dsb'] = array(
@@ -861,7 +865,7 @@ $messages['dsb'] = array(
 	'ogg-short-video' => 'Ogg $1 wideodataja, $2',
 	'ogg-short-general' => 'Ogg $1 medijowa dataja, $2',
 	'ogg-long-audio' => '(Ogg $1 awdiodataja, dłujkosć $2, $3)',
-	'ogg-long-video' => '(Ogg $1 wideodataja, dłujkosć $2, $4×$5 pikselow, $3)',
+	'ogg-long-video' => 'Ogg $1 wideodataja, dłujkosć $2, $4×$5 pikselow, $3',
 	'ogg-long-multiplexed' => '(ogg multipleksowa awdio-/wideodataja, $1, dłujkosć $2, $4×$5 pikselow, $3 dogromady)',
 	'ogg-long-general' => '(Ogg medijowa dataja, dłujkosć $2, $3)',
 	'ogg-long-error' => '(Njepłaśiwa ogg-dataja: $1)',
@@ -931,6 +935,7 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author AVRS
  * @author Amikeco
  * @author ArnoLagrange
  * @author Yekrats
@@ -941,7 +946,7 @@ $messages['eo'] = array(
 	'ogg-short-video' => 'Ogg $1 videodosiero, $2',
 	'ogg-short-general' => 'Media ogg-dosiero $1, $2',
 	'ogg-long-audio' => '(Aŭda ogg-dosiero $1, longeco $2, $3 entute)',
-	'ogg-long-video' => '(Video ogg-dosiero $1, longeco $2, $4×$5 pikseloj, $3 entute)',
+	'ogg-long-video' => 'Video ogg-dosiero $1, longeco $2, $4×$5 pikseloj, $3 entute',
 	'ogg-long-multiplexed' => '(Kunigita aŭdio/video ogg-dosiero, $1, longeco $2, $4×$5 pikseloj, $3 entute)',
 	'ogg-long-general' => '(Ogg-mediodosiero, longeco $2, $3)',
 	'ogg-long-error' => '(Malvalida ogg-dosiero: $1)',
@@ -1099,6 +1104,7 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author AVRS
  * @author Agony
  * @author Crt
  * @author Nike
@@ -1110,7 +1116,7 @@ $messages['fi'] = array(
 	'ogg-short-video' => 'Ogg $1 -videotiedosto, $2',
 	'ogg-short-general' => 'Ogg $1 -mediatiedosto, $2',
 	'ogg-long-audio' => '(Ogg $1 -äänitiedosto, $2, $3)',
-	'ogg-long-video' => '(Ogg $1 -videotiedosto, $2, $4×$5, $3)',
+	'ogg-long-video' => 'Ogg $1 -videotiedosto, $2, $4×$5, $3',
 	'ogg-long-multiplexed' => '(Ogg-tiedosto (limitetty kuva ja ääni), $1, $2, $4×$5, $3)',
 	'ogg-long-general' => '(Ogg-tiedosto, $2, $3)',
 	'ogg-long-error' => '(Kelvoton ogg-tiedosto: $1)',
@@ -1219,6 +1225,7 @@ Volyéd <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downl
 );
 
 /** Friulian (Furlan)
+ * @author AVRS
  * @author Klenje
  */
 $messages['fur'] = array(
@@ -1227,7 +1234,7 @@ $messages['fur'] = array(
 	'ogg-short-video' => 'File video Ogg $1, $2',
 	'ogg-short-general' => 'File multimediâl Ogg $1, $2',
 	'ogg-long-audio' => '(File audio Ogg $1, durade $2, $3)',
-	'ogg-long-video' => '(File video Ogg $1, durade $2, dimensions $4×$5 pixels, $3)',
+	'ogg-long-video' => 'File video Ogg $1, durade $2, dimensions $4×$5 pixels, $3',
 	'ogg-long-multiplexed' => '(File audio/video multiplexed Ogg $1, lungjece $2, dimensions $4×$5 pixels, in dut $3)',
 	'ogg-long-general' => '(File multimediâl Ogg, durade $2, $3)',
 	'ogg-long-error' => '(File ogg no valit: $1)',
@@ -1465,6 +1472,7 @@ $messages['hr'] = array(
 );
 
 /** Upper Sorbian (Hornjoserbsce)
+ * @author AVRS
  * @author Dundak
  * @author Michawiki
  */
@@ -1474,7 +1482,7 @@ $messages['hsb'] = array(
 	'ogg-short-video' => 'Widejodataja Ogg $1, $2',
 	'ogg-short-general' => 'Ogg medijowa dataja $1, $2',
 	'ogg-long-audio' => '(Ogg-awdiodataja $1, dołhosć: $2, $3)',
-	'ogg-long-video' => '(Ogg-widejodataja $1, dołhosć: $2, $4×$5 pikselow, $3)',
+	'ogg-long-video' => 'Ogg-widejodataja $1, dołhosć: $2, $4×$5 pikselow, $3',
 	'ogg-long-multiplexed' => '(Ogg multipleksna awdio-/widejodataja, $1, dołhosć: $2, $4×$5 pikselow, $3)',
 	'ogg-long-general' => '(Ogg medijowa dataja, dołhosć: $2, $3)',
 	'ogg-long-error' => '(Njepłaćiwa ogg-dataja: $1)',
@@ -1582,6 +1590,7 @@ Per favor <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_dow
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author AVRS
  * @author Bennylin
  * @author Farras
  * @author Irwangatot
@@ -1594,7 +1603,7 @@ $messages['id'] = array(
 	'ogg-short-video' => 'Berkas video $1 ogg, $2',
 	'ogg-short-general' => 'Berkas media $1 ogg, $2',
 	'ogg-long-audio' => '(Berkas suara $1 ogg, panjang $2, $3)',
-	'ogg-long-video' => '(Berkas video $1 ogg, panjang $2, $4×$5 piksel, $3)',
+	'ogg-long-video' => 'Berkas video $1 ogg, panjang $2, $4×$5 piksel, $3',
 	'ogg-long-multiplexed' => '(Berkas audio/video multiplexed ogg, $1, panjang $2, $4×$5 piksel, $3 keseluruhan)',
 	'ogg-long-general' => '(Berkas media ogg, panjang $2, $3)',
 	'ogg-long-error' => '(Berkas ogg tak valid: $1)',
@@ -1735,6 +1744,7 @@ $messages['ja'] = array(
 );
 
 /** Jutish (Jysk)
+ * @author AVRS
  * @author Huslåke
  */
 $messages['jut'] = array(
@@ -1743,7 +1753,7 @@ $messages['jut'] = array(
 	'ogg-short-video' => 'Ogg $1 video file, $2',
 	'ogg-short-general' => 'Ogg $1 media file, $2',
 	'ogg-long-audio' => '(Ogg $1 sond file, duråsje $2, $3)',
-	'ogg-long-video' => '(Ogg $1 video file, duråsje $2, $4×$5 piksel, $3)',
+	'ogg-long-video' => 'Ogg $1 video file, duråsje $2, $4×$5 piksel, $3',
 	'ogg-long-multiplexed' => '(Ogg multipleksen audio/video file, $1, duråsje $2, $4×$5 piksler, $3 åverål)',
 	'ogg-long-general' => '(Ogg $1 media file, duråsje $2, $3)',
 	'ogg-long-error' => '(Ugyldegt ogg file: $2)',
@@ -2881,6 +2891,7 @@ Pe piacere <a href=\"http://www.mediawiki.org/wiki/Extension:OggHandler/Client_d
 );
 
 /** Russian (Русский)
+ * @author AVRS
  * @author Ahonc
  * @author Kv75
  * @author MaxSem
@@ -2892,7 +2903,7 @@ $messages['ru'] = array(
 	'ogg-short-video' => 'Видео-файл Ogg $1, $2',
 	'ogg-short-general' => 'Медиа-файл Ogg $1, $2',
 	'ogg-long-audio' => '(звуковой файл Ogg $1, длительность $2, $3)',
-	'ogg-long-video' => '(видео-файл Ogg $1, длительность $2, $4×$5 пикселов, $3)',
+	'ogg-long-video' => 'видео-файл Ogg $1, длительность $2, $4×$5 пикселов, $3',
 	'ogg-long-multiplexed' => '(мультиплексный аудио/видео-файл Ogg, $1, длительность $2, $4×$5 пикселов, $3 всего)',
 	'ogg-long-general' => '(медиа-файл Ogg, длительность $2, $3)',
 	'ogg-long-error' => '(неправильный ogg-файл: $1)',

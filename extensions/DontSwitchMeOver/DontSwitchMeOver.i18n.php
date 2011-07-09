@@ -102,6 +102,7 @@ $messages['cs'] = array(
  * @author Lloffiwr
  */
 $messages['cy'] = array(
+	'dontswitchmeover-desc' => "Dewisiad i ddefnyddwyr gael dewis parhau i ddefnyddio'r un wedd, pan fydd y wedd diofyn yn cael ei newid.",
 	'dontswitchmeover-pref' => "Peidio â newid y wedd yr wy'n ei defnyddio, pan fydd y wedd diofyn yn newid",
 );
 

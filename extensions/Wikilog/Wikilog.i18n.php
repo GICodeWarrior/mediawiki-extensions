@@ -4801,6 +4801,7 @@ $messages['ms'] = array(
 	'wikilog-pager-next' => 'berikutnya',
 	'wikilog-form-name' => 'Nama:',
 	'wikilog-form-date' => 'Tarikh:',
+	'wikilog-delete-lc' => 'hapuskan',
 	'wikilog-approve-lc' => 'luluskan',
 	'wikilog-page-lc' => 'laman',
 );
