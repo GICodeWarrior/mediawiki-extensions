@@ -138,6 +138,7 @@ To save a poll, submit it while not answering to any proposal questions.',
  * @author Fryed-peach
  * @author Hamilton Abreu
  * @author IAlex
+ * @author McDutchie
  * @author Purodha
  * @author Siebrand
  */
@@ -173,6 +174,7 @@ $messages['qqq'] = array(
 * $3 is the poll ID of the poll, which this erroneous poll depends on.',
 	'qp_error_too_many_spans' => 'There cannot be more category groups defined than the total count of subcategories.',
 	'qp_error_too_few_spans' => 'Every category group should include at least two subcategories',
+	'qp_error_eval_variable_variable_access' => "\"variable variable\" is ''not'' a typo, see: http://php.net/manual/en/language.variables.variable.php",
 );
 
 /** Afrikaans (Afrikaans)
@@ -465,6 +467,7 @@ $messages['be'] = array(
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'pollresults' => 'Вынікі апытаньняў на гэтым сайце',
@@ -474,6 +477,7 @@ $messages['be-tarask'] = array(
 	'qp_result_error' => 'Сынтаксычная памылка',
 	'qp_vote_button' => 'Прагаласаваць',
 	'qp_vote_again_button' => 'Зьмяніць Ваш голас',
+	'qp_submit_attempts_left' => '{{PLURAL:$1|засталася $1 спроба|засталіся $1 спробы|засталося $1 спробаў}}',
 	'qp_polls_list' => 'Сьпіс усіх апытаньняў',
 	'qp_users_list' => 'Сьпіс усіх удзельнікаў',
 	'qp_browse_to_poll' => 'Перайсьці да $1',
@@ -661,12 +665,13 @@ $messages['cs'] = array(
  */
 $messages['de'] = array(
 	'pollresults' => 'Abstimmungsergebnisse auf dieser Seite',
-	'qp_desc' => 'Ermöglicht die Erstellung von Abstimmungen',
+	'qp_desc' => 'Ermöglicht Abstimmungen',
 	'qp_desc-sp' => '[[Special:PollResults|Spezialseite]] zum Anzeigen von Abstimmungsergebnissen',
 	'qp_result_NA' => 'Nicht beantwortet',
 	'qp_result_error' => 'Syntaxfehler',
 	'qp_vote_button' => 'Abstimmen',
 	'qp_vote_again_button' => 'Stimme ändern',
+	'qp_submit_attempts_left' => 'Noch {{PLURAL:$1|ist $1 Versuch|sind $1 Versuche}} möglich',
 	'qp_polls_list' => 'Alle Abstimmungen auflisten',
 	'qp_users_list' => 'Alle Benutzer anzeigen',
 	'qp_browse_to_poll' => 'Nach $1 wechseln',
@@ -685,6 +690,12 @@ $messages['de'] = array(
 	'qp_results_line_qupl' => 'Seite „$1“ Abstimmung „$2“: $3',
 	'qp_results_line_qpl' => 'Seite „$1“ Abstimmung „$2“: $3, $4, $5, $6',
 	'qp_header_line_qpul' => '$1 [ Seite „$2“ Abstimmung „$3“ ]',
+	'qp_results_submit_attempts' => 'Abstimmversuche: $1',
+	'qp_results_interpretation_header' => 'Auswertung der Antworten',
+	'qp_results_short_interpretation' => 'Kurzauswertung: $1',
+	'qp_results_long_interpretation' => 'Ausführliche Auswertung: $1',
+	'qp_poll_has_no_interpretation' => 'Diese Abstimmung verfügt über keine Auswertungsvorlage im Kopfbereich',
+	'qp_interpetation_wrong_answer' => 'Falsche Antwort',
 	'qp_export_to_xls' => 'Statistiken in das XLS-Format exportieren',
 	'qp_voices_to_xls' => 'Stimmen im XLS-Format exportieren',
 	'qp_users_answered_questions' => '$1 {{PLURAL:$1|Benutzer|Benutzer}} haben auf die Fragen geantwortet',
@@ -723,10 +734,23 @@ Um die Abstimmung zu speichern, übermittle sie während du nicht auf eine Antra
 	'qp_error_too_few_spans' => 'Jede Kategoriengruppe muss mindestens zwei Unterrubriken enthalten',
 	'qp_error_no_answer' => 'Unbeantworteter Vorschlag',
 	'qp_error_unique' => 'Die Frage des Typs unique() hat mehr Vorschläge, als mögliche Antworten definiert sind: Ausführung unmöglich',
+	'qp_error_no_more_attempts' => 'Du hast die maximale Anzahl an Abstimmversuchen für diese Abstimmung erreicht',
+	'qp_error_no_json_decode' => 'Die Auswertung der Abstimmungsergebnisse erfordert die PHP-Funktion json_decode()',
+	'qp_error_eval_missed_lang_attr' => 'Das XML-Attribut „lang“ wird benötigt, um die richtige Auswertungssprache auswählen zu können',
+	'qp_error_eval_mix_languages' => 'Einzelne Auswertungsskripte können nicht unterschiedliche Auswertungssprachen kombinieren: „$1“, „$2“',
+	'qp_error_eval_unsupported_language' => 'Nicht unterstützte Auswertungssprache „$1“',
+	'qp_error_eval_illegal_token' => 'PHP-Token $1 mit Wert $2 ist in Zeile $3 nicht zulässig',
+	'qp_error_eval_illegal_superglobal' => 'PHP-Token $1 mit Superglobal $2 ist in Zeile $3 nicht zulässig',
+	'qp_error_eval_illegal_function_call' => 'PHP-Token $1 mit Funktion $2 ist in Zeile $3 nicht zulässig',
+	'qp_error_eval_variable_variable_access' => 'PHP-Token $1 mit der veränderlichen Variable $2 ist in Zeile $3 nicht zulässig',
+	'qp_error_eval_illegal_variable_name' => 'PHP-Token $1 mit dem nicht zulässigen Variablenname $2 ist in Zeile $3 nicht zulässig',
+	'qp_error_eval_variable_function_call' => 'PHP-Token $1 mit der veränderlichen Funktion $2 ist in Zeile $3 nicht zulässig',
+	'qp_error_eval_self_check' => 'Der folgende Selbsttest eval() ist gescheitert: $1. Es wird eine nicht unterstützte Version von PHP verwendet, welche die sichere Ausführung des Skripts eval() nicht zulässt.',
 );
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Imre
+ * @author Kghbln
  */
 $messages['de-formal'] = array(
 	'qp_func_missing_question_id' => 'Bitte legen Sie eine existierende Frage-ID (ab 1 aufwärts) für die Abstimmung $1 fest',
@@ -737,6 +761,7 @@ Entfernen Sie entweder die Abhängigkeits-Attribute, oder stellen Sie [[$2]] wie
 	'qp_error_missed_dependance_poll' => 'Die Abstimmung (id=$1) ist abhängig von einer anderen Abstimmung (id=$3) auf Seite $2, aber diese Abstimmung existiert nicht oder wurde noch nicht gespeichert.
 Entfernen Sie entweder die Abhängigkeits-Attribute oder erstellen Sie die Abstimmung mit id=$3 auf Seite $2 und speichern Sie sie.
 Um die Abstimmung zu speichern, übermitteln Sie sie während Sie nicht auf eine Antragsanfrage antworten.',
+	'qp_error_no_more_attempts' => 'Sie haben die maximale Anzahl an Abstimmversuchen für diese Abstimmung erreicht',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -1408,6 +1433,7 @@ $messages['ia'] = array(
 	'qp_result_error' => 'Error de syntaxe',
 	'qp_vote_button' => 'Votar',
 	'qp_vote_again_button' => 'Modificar tu voto',
+	'qp_submit_attempts_left' => 'Resta $1 {{PLURAL:$1|tentativa|tentativas}}',
 	'qp_polls_list' => 'Listar tote le sondages',
 	'qp_users_list' => 'Listar tote le usatores',
 	'qp_browse_to_poll' => 'Navigar verso $1',
@@ -1426,6 +1452,12 @@ $messages['ia'] = array(
 	'qp_results_line_qupl' => 'Pagina "$1" Sondage "$2": $3',
 	'qp_results_line_qpl' => 'Pagina "$1" Sondage "$2": $3, $4, $5, $6',
 	'qp_header_line_qpul' => '$1 [ Pagina "$2" Sondage "$3" ]',
+	'qp_results_submit_attempts' => 'Tentativas de submission: $1',
+	'qp_results_interpretation_header' => 'Interpretation del responsas',
+	'qp_results_short_interpretation' => 'Interpretation curte: $1',
+	'qp_results_long_interpretation' => 'Interpretation longe: $1',
+	'qp_poll_has_no_interpretation' => 'Nulle patrono de interpretation ha essite definite in le capite de iste sondage',
+	'qp_interpetation_wrong_answer' => 'Responsa false',
 	'qp_export_to_xls' => 'Exportar statisticas in formato XLS',
 	'qp_voices_to_xls' => 'Exportar voces in formato XLS',
 	'qp_users_answered_questions' => 'usatores respondeva al questiones',
@@ -1464,6 +1496,18 @@ Pro salveguardar un sondage, submitte lo sin responder a alcun question de propo
 	'qp_error_too_few_spans' => 'Cata classe de categoria require le definition de al minus duo responsas possibile',
 	'qp_error_no_answer' => 'Proposition sin responsa',
 	'qp_error_unique' => 'Pro le question de typo unique() es definite plus propositiones que responsas possibile: non pote completar',
+	'qp_error_no_more_attempts' => 'Tu ha attingite le numero maxime de tentativas de submission pro iste sondage',
+	'qp_error_no_json_decode' => 'Le interpretation del responsas al sondage require le function PHP json_decode()',
+	'qp_error_eval_missed_lang_attr' => 'Le attributo XML "lang" es necessari pro seliger le lingua correcte de interpretation',
+	'qp_error_eval_mix_languages' => 'Un sol script de interpretation non pote combinar differente linguas de interpretation: "$1", "$2"',
+	'qp_error_eval_unsupported_language' => 'Lingua de interpretation "$1" non supportate',
+	'qp_error_eval_illegal_token' => 'Le indicio PHP $1 con valor $2 non es permittite in linea $3',
+	'qp_error_eval_illegal_superglobal' => 'Le indicio PHP $1 con superglobal $2 non es permittite in linea $3',
+	'qp_error_eval_illegal_function_call' => 'Le indicio PHP $1 con function $2 non es permittite in linea $3',
+	'qp_error_eval_variable_variable_access' => 'Le indicio PHP $1 con le variabile variabile $2 non es permittite in linea $3',
+	'qp_error_eval_illegal_variable_name' => 'Le indicio PHP $1 ha un nomine de variabile non permittite $2 in linea $3',
+	'qp_error_eval_variable_function_call' => 'Le indicio PHP $1 con le function variabile $2 non es permittite in linea $3',
+	'qp_error_eval_self_check' => 'Le sequente auto-test de eval() ha fallite: $1. Tu ha un version non supportate de PHP, le qual non permitte le execution secur de scripts de evalutation.',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -1755,6 +1799,7 @@ $messages['mk'] = array(
 	'qp_result_error' => 'Синтаксна грешка',
 	'qp_vote_button' => 'Гласај',
 	'qp_vote_again_button' => 'Прегласај',
+	'qp_submit_attempts_left' => 'Преостануваат $1 {{PLURAL:$1|обид|обиди}}',
 	'qp_polls_list' => 'Список на сите анкети',
 	'qp_users_list' => 'Список на сите корисници',
 	'qp_browse_to_poll' => 'Прелистај до $1',
@@ -1773,6 +1818,12 @@ $messages['mk'] = array(
 	'qp_results_line_qupl' => 'Страница „$1“ Анкета „$2“: $3',
 	'qp_results_line_qpl' => 'Страница „$1“ Анкета „$2“: $3, $4, $5, $6',
 	'qp_header_line_qpul' => '$1 [ Страница „$2“ Анкета „$3“ ]',
+	'qp_results_submit_attempts' => 'Обиди за поднесување: $1',
+	'qp_results_interpretation_header' => 'Толкување на одговорот',
+	'qp_results_short_interpretation' => 'Кратко толкување: $1',
+	'qp_results_long_interpretation' => 'Долго толкување: $1',
+	'qp_poll_has_no_interpretation' => 'Оваа анкета нема зададено шаблон за толкување во заглавието',
+	'qp_interpetation_wrong_answer' => 'Погрешен одговор',
 	'qp_export_to_xls' => 'Извези ги статистиките во XLS формат',
 	'qp_voices_to_xls' => 'Извези гласови во XLS-формат',
 	'qp_users_answered_questions' => 'На прашањата $1 {{PLURAL:$1|одговорил $1 корисник|одговориле $1 корисници}}',
@@ -1811,6 +1862,18 @@ id-бројот може да содржи само букви, бројки и 
 	'qp_error_too_few_spans' => 'Секоја класа на категории бара да определите барем два можни одговора',
 	'qp_error_no_answer' => 'Неодговорен предлог',
 	'qp_error_unique' => 'Прашањето од типот unique() има определено повеќе предлози од можни одговори: одговарањето на прашањето е неизводливо',
+	'qp_error_no_more_attempts' => 'Бројот на обиди за поднесување на одговор е исцрпен',
+	'qp_error_no_json_decode' => 'Толкувањето на анкетните одговори ја бара PHP-функцијата json_decode()',
+	'qp_error_eval_missed_lang_attr' => 'Потребен е XML-атрибутотот „lang“ за да се избере сооветен јазик на толкувањето',
+	'qp_error_eval_mix_languages' => 'Една толковна скрипта не може да меша различни толковни јазици: „$1“, „$2“',
+	'qp_error_eval_unsupported_language' => 'Неподдржан толковен јазик „$1“',
+	'qp_error_eval_illegal_token' => 'PHP-жетонот $1 со вредност $2 не е дозволен во редот $3',
+	'qp_error_eval_illegal_superglobal' => 'PHP-жетонот $1 со суперглобала $2 не е дозволен во редот $3',
+	'qp_error_eval_illegal_function_call' => 'PHP-жетонот $1 со функција $2 не е дозволен во редот $3',
+	'qp_error_eval_variable_variable_access' => 'PHP-жетонот $1 со променлива $2 не е дозволен во редот $3',
+	'qp_error_eval_illegal_variable_name' => 'PHP-жетонот $1 во во редот $3 има променлива $2 чие име е недозволено',
+	'qp_error_eval_variable_function_call' => 'PHP-жетонот $1 со променлива функција $2 не е дозволен во редот $3',
+	'qp_error_eval_self_check' => 'Следнава самопроверка на eval() не успеа: $1. Имате неподдржана верзија на PHP, која не дозволува работење со „eval“-скрипти на безбеден начин.',
 );
 
 /** Malay (Bahasa Melayu)
@@ -2148,6 +2211,7 @@ $messages['pt'] = array(
 	'qp_result_error' => 'Erro sintáctico',
 	'qp_vote_button' => 'Vote',
 	'qp_vote_again_button' => 'Altere o seu voto',
+	'qp_submit_attempts_left' => '$1 {{PLURAL:$1|falta uma tentativa|faltam $1 tentativas}}',
 	'qp_polls_list' => 'Listar todas as sondagens',
 	'qp_users_list' => 'Listar todos os utilizadores',
 	'qp_browse_to_poll' => 'Navegar para $1',
@@ -2166,6 +2230,12 @@ $messages['pt'] = array(
 	'qp_results_line_qupl' => 'Página "$1" Sondagem "$2": $3',
 	'qp_results_line_qpl' => 'Página "$1" Sondagem "$2": $3, $4, $5, $6',
 	'qp_header_line_qpul' => '$1 [ Página "$2" Sondagem "$3" ]',
+	'qp_results_submit_attempts' => 'Enviar tentativas: $1',
+	'qp_results_interpretation_header' => 'Interpretação da resposta',
+	'qp_results_short_interpretation' => 'Interpretação curta: $1',
+	'qp_results_long_interpretation' => 'Interpretação longa: $1',
+	'qp_poll_has_no_interpretation' => 'Esta sondagem não tem nenhum modelo de interpretação definido no cabeçalho',
+	'qp_interpetation_wrong_answer' => 'Resposta errada',
 	'qp_export_to_xls' => 'Exportar estatísticas para o formato XLS',
 	'qp_voices_to_xls' => 'Exportar vozes para o formato XLS',
 	'qp_users_answered_questions' => '{{PLURAL:$1|Um utilizador respondeu|$1 utilizadores responderam}} às questões',
@@ -2204,6 +2274,18 @@ Para gravar uma sondagem, submeta-a sem ter respondido a nenhuma pergunta.',
 	'qp_error_too_few_spans' => 'Cada classe de categorias requer pelo menos duas respostas possíveis definidas',
 	'qp_error_no_answer' => 'Proposta sem resposta',
 	'qp_error_unique' => 'Pergunta do tipo unique() tem mais propostas definidas do que respostas possíveis: impossível de completar',
+	'qp_error_no_more_attempts' => 'Atingiu o número máximo de tentativas de envio para esta sondagem',
+	'qp_error_no_json_decode' => 'A interpretação das respostas da sondagem requer a função do PHP json_decode()',
+	'qp_error_eval_missed_lang_attr' => 'O atributo XML "lang" é necessário para escolher a língua de interpretação adequada',
+	'qp_error_eval_mix_languages' => 'Um único código de interpretação não pode misturar várias línguas de interpretação: "$1", "$2"',
+	'qp_error_eval_unsupported_language' => 'A língua de interpretação "$1" não é suportada',
+	'qp_error_eval_illegal_token' => 'A chave PHP $1, com o valor $2, não é permitida na linha $3',
+	'qp_error_eval_illegal_superglobal' => 'A chave PHP $1, com a superglobal $2, não é permitida na linha $3',
+	'qp_error_eval_illegal_function_call' => 'A chave PHP $1, com a função $2, não é permitida na linha $3',
+	'qp_error_eval_variable_variable_access' => 'A chave PHP $1 com a variável de nome variável $2, não é permitida na linha $3',
+	'qp_error_eval_illegal_variable_name' => 'A chave PHP $1 não permite o nome da variável $2 na linha $3',
+	'qp_error_eval_variable_function_call' => 'A chave PHP $1 com a função variável $2 não é permitida na linha $3',
+	'qp_error_eval_self_check' => 'A seguinte auto-verificação eval() falhou: $1. tem uma versão do PHP que não é suportada, o que não permite executar código eval de forma segura.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
