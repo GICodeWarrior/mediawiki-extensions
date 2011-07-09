@@ -1253,6 +1253,7 @@ $messages['vi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Hydra
+ * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
 	'e-mailpage' => '电子邮件页',
@@ -1268,7 +1269,7 @@ $messages['zh-hans'] = array(
 	'ea-cc' => '抄送：',
 	'ea-send' => '发送',
 	'ea-subject' => '主题：',
-	'ea-message' => '性息：',
+	'ea-message' => '信息：',
 	'ea-style' => '风格：',
 	'ea-selectcss' => '您可以选择样式表',
 	'ea-data' => '数据',
