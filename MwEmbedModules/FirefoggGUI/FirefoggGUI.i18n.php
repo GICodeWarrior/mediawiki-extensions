@@ -3001,8 +3001,11 @@ $messages['li'] = array(
 
 /** Lithuanian (Lietuvių)
  * @author Eitvys200
+ * @author Perkunas
  */
 $messages['lt'] = array(
+	'fogg-wont-upload-to-server' => 'Pastaba: jūsų vaizdo failas bus koduojamas vietoje ir nebus siunčiamas į jokį serverį.',
+	'fogg-save_local_file' => 'Koduoti į failą',
 	'fogg-videoQuality-title' => 'Vaizdo kokybė',
 	'fogg-audioQuality-title' => 'Garso kokybė',
 	'fogg-width-title' => 'Vaizdo plotis',

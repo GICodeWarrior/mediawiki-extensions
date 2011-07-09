@@ -1107,18 +1107,26 @@ $messages['lb'] = array(
 
 /** Lithuanian (Lietuvių)
  * @author Eitvys200
+ * @author Perkunas
  */
 $messages['lt'] = array(
 	'mwe-clipedit-crop' => 'Apkarpyti paveiklėlį',
 	'mwe-clipedit-apply_crop' => 'Taikyti apkarpyma paveikslėliui',
+	'mwe-clipedit-insert_image_page' => 'Įterpti į puslapį',
+	'mwe-clipedit-preview_insert' => 'Peržiūrėti įterpimą',
+	'mwe-clipedit-cancel_image_insert' => 'Nutraukti įterpimą',
 	'mwe-clipedit-sc_audio' => 'Garso kontrolė',
+	'mwe-clipedit-sc_duration' => 'Trukmė',
+	'mwe-clipedit-template_properties' => 'Šablono savybės',
 	'mwe-clipedit-custom_title' => 'Individualizuotas pavadinimas',
 	'mwe-clipedit-edit_properties' => 'Redaguoti nustatymus',
 	'mwe-clipedit-other_properties' => 'Kiti nustatymai',
+	'mwe-clipedit-resource_page' => 'Išteklių puslapis:',
 	'mwe-clipedit-start_time' => 'Pradžios laikas',
 	'mwe-clipedit-end_time' => 'Pabaigos laikas',
 	'mwe-clipedit-edit-tools' => 'Redagavimo įrankiai',
 	'mwe-clipedit-edit-video-tools' => 'Redaguoti vaizdo įrankius:',
+	'mwe-clipedit-layout' => 'Išdėstymas',
 	'mwe-clipedit-layout_right' => 'Vaizdas dešinėje',
 	'mwe-clipedit-layout_left' => 'Vaizdas kairėje',
 );
