@@ -31,11 +31,8 @@
 				}
 			}
 
-			//Set the font, fallback fonts
-			$("body").css('font-family',  font +", Helvetica, Arial, sans-serif");
-			//we need to change the fonts of Input and Select explicitly.
-			$("input").css('font-family',  font +", Helvetica, Arial, sans-serif");
-			$("select").css('font-family',  font +", Helvetica, Arial, sans-serif");
+			//Set the font, fallback fonts.Need to change the fonts of Input Select and Textarea explicitly.
+			$("body, input, select, textarea").css('font-family',  font +", Helvetica, Arial, sans-serif");
 
 			//scale the font of the page. Scale is in percentage.
 			// For example scale = 1.2 means  scale the font by 120 percentage
