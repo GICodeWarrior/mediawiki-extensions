@@ -2,8 +2,10 @@
 
 	$.webfonts = {
 
-		/* Version number */
+		
 		oldconfig: false,
+		config : mw.config.get( "wgWebFonts" ),
+		/* Version number */
 		version: "0.1.2",
 		set: function( font ) {
 			if ( font === "none" ) {
@@ -11,35 +13,15 @@
 				return;
 			}
 
-			var config = mw.config.get( "wgWebFonts" );
-			if ( !font in config.fonts ) {
+			if ( !font in $.webfonts.config.fonts ) {
 				console.log( "Requested unknown font", font );
 				return;
 			} else {
-				config = config.fonts[font];
+				config = $.webfonts.config.fonts[font];
 			}
 
-			var styleString =
-				"<style type='text/css'>\n@font-face {\n"
-				+ "\tfont-family: '"+font+"';\n";
-			if ( 'eot' in config ) {
-				styleString += "\tsrc: url('"+config.eot+"');\n";
-			}
-			//If the font is present locally, use it.
-			styleString += "\tsrc: local('"+ font +"'),";
-
-			if ( 'woff' in config ) {
-				styleString += "\t\turl('"+config.woff+"') format('woff'),";
-			}
-			if ( 'svg' in config ) {
-				styleString += "\t\turl('"+config.svg+"#"+font+"') format('svg'),";
-			}
-			if ( 'ttf' in config ) {
-				styleString += "\t\turl('"+config.ttf+"') format('truetype');\n";
-			}
-
-			styleString += "\tfont-weight: normal;\n}\n</style>\n";
-			$(styleString).appendTo("head" );
+			//load the style sheet for the font
+			$.webfonts.loadcss(font);
 
 			//save the current font and its size. Used for reset.
 			if ( !$.webfonts.oldconfig ) {
@@ -120,7 +102,39 @@
 			  });
 			});
 		},
-                 
+ 
+		/*
+		 * Construct the css required for the fontfamily, inject it to the head of the body
+		 * so that it gets loaded.
+		 * @param fontfamily The fontfamily name
+		 */
+		loadcss: function(fontfamily){
+			var fontconfig = $.webfonts.config.fonts[fontfamily];
+			var styleString =
+				"<style type='text/css'>\n@font-face {\n"
+				+ "\tfont-family: '"+fontfamily+"';\n";
+			if ( 'eot' in fontconfig ) {
+				styleString += "\tsrc: url('"+fontconfig.eot+"');\n";
+			}
+			//If the font is present locally, use it.
+			styleString += "\tsrc: local('"+ fontfamily +"'),";
+
+			if ( 'woff' in fontconfig ) {
+				styleString += "\t\turl('"+fontconfig.woff+"') format('woff'),";
+			}
+			if ( 'svg' in fontconfig ) {
+				styleString += "\t\turl('"+fontconfig.svg+"#"+fontfamily+"') format('svg'),";
+			}
+			if ( 'ttf' in fontconfig ) {
+				styleString += "\t\turl('"+fontconfig.ttf+"') format('truetype');\n";
+			}
+
+			styleString += "\tfont-weight: normal;\n}\n</style>\n";
+			
+			//inject the css to the head of the page.
+			$(styleString).appendTo("head" );
+
+		},
                 /**
                  * Setup the font selection menu. 
                  * It also apply the font from cookie, if any.
