@@ -58,9 +58,12 @@
 			//scale the font of the page. Scale is in percentage.
 			// For example scale = 1.2 means  scale the font by 120 percentage
 			if ( 'scale' in config ) {
-				$.webfonts.scale("body", config.scale);
+			    $.webfonts.scale(config.scale);
 			}
-
+			else{
+			    $.webfonts.scale(1);
+			}
+			
 			if ( 'normalization' in config ) {
 					$(document).ready(function() {
 						$.webfonts.normalize(config.normalization);
@@ -86,14 +89,10 @@
 
 		/**
 		 * Scale the font of the page by given percentage
-		 * @param selecter CSS selector
 		 * @param  percentage of scale. eg 1.2 for 120% scale
 		 */
-		scale : function (selecter, percentage){
-			  $(selecter).each(function(i) {
-				  var currentSize = parseInt($(this).css("font-size"));
-				  $(this).css("font-size", Math.round( currentSize * percentage));
-			});
+		scale : function (percentage){
+			$("p,li,h1,h2,h3,h4,h5,textarea,input").css('font-size', percentage + "em");
 		},
 
 		/**
