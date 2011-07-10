@@ -39,10 +39,11 @@ $wgCategorizeUnaddedWarning = 'True';
 $wgCategorizeCloud = 'list';
 
 $wgExtensionCredits['other'][] = array(
+	'path'        => __FILE__,
 	'name'        => 'Categorize',
 	'author'      => 'Thomas Fauré',
 	'url'         => 'http://www.mediawiki.org/wiki/Extension:Categorize',
-	'description' => 'Adds input box to edit and upload page which allows users to assign categories to the article. When a user starts typing the name of a category, the extension queries the database to find categories that match the user input. Furthermore, a best categories labels cloud is displayed.',
+	'descriptionmsg' => 'categorize-desc',
 	'version'     => '0.1.2'
 );
 
