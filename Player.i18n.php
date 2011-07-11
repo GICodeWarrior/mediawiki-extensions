@@ -1015,6 +1015,7 @@ $messages['ms'] = array(
 	'player-file' => 'Nama fail',
 	'player-goto-player' => 'pemain',
 	'player-goto-page' => 'Laman',
+	'player-goto-file' => 'fail',
 );
 
 /** Maltese (Malti)
@@ -1244,9 +1245,11 @@ $messages['pt-br'] = array(
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Minisarm
  */
 $messages['ro'] = array(
 	'player' => 'Jucător',
+	'player-desc' => 'Redare multimedia încorporată utilizând pluginurile comune ale navigatoarelor și o [[Special:Player|pagină specială]]',
 	'player-title' => 'Jucător',
 	'player-playertitle' => 'Jucător: $1',
 	'player-file' => 'Nume fișier',
