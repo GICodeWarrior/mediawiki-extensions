@@ -19,7 +19,7 @@ function TextFlow( $container, content ) {
  * @param text {String} Text to escape
  * @return {String} HTML escaped text
  */
-TextFlow.prototype.escape = function( text ) {
+TextFlow.prototype.escape = function( start, end ) {
 	return text
 		// Tags
 		.replace( /&/g, '&amp;' )
@@ -80,9 +80,9 @@ TextFlow.prototype.getOffset = function( position ) {
 		fit = this.fitCharacters(
 			this.lines[line].start, this.lines[line].end, ruler, position.left
 		);
-	ruler.innerHTML = this.escape( this.content.substring( this.lines[line].start, fit.end ) );
+	ruler.innerHTML = this.escape( this.lines[line].start, fit.end );
 	var left = ruler.clientWidth;
-	ruler.innerHTML = this.escape( this.content.substring( this.lines[line].start, fit.end + 1 ) );
+	ruler.innerHTML = this.escape( this.lines[line].start, fit.end + 1 );
 	var right = ruler.clientWidth;
 	var center = Math.round( left + ( ( right - left ) / 2 ) );
 	$ruler.remove();
@@ -158,9 +158,7 @@ TextFlow.prototype.getPosition = function( offset ) {
 	if ( this.lines[line].start < offset ) {
 		var $ruler = $( '<div class="editSurface-line"></div>' ).appendTo( this.$ ),
 			ruler = $ruler[0];
-		ruler.innerHTML = this.escape(
-			this.lines[line].text.substring( 0, offset - this.lines[line].start )
-		);
+		ruler.innerHTML = this.escape( this.lines[line].start, offset );
 		position.left = ruler.clientWidth;
 		$ruler.remove();
 	}
@@ -295,13 +293,12 @@ TextFlow.prototype.render = function( offset, callback ) {
  * @param end {Integer} Ending of text range for line
  */
 TextFlow.prototype.appendLine = function( start, end ) {
-	var lineText = this.content.substring( start, end );
 	$line = $( '<div class="editSurface-line" line-index="'
-			+ this.lines.length + '">' + this.escape( lineText ) + '</div>' )
+			+ this.lines.length + '">' + this.escape( start, end ) + '</div>' )
 		.appendTo( this.$ );
 	// Collect line information
 	this.lines.push({
-		'text': lineText,
+		'text': this.content.substring( start, end ),
 		'start': start,
 		'end': end,
 		'width': $line.outerWidth(),
@@ -339,9 +336,7 @@ TextFlow.prototype.fitWords = function( start, end, ruler, width ) {
 		// Place "middle" directly in the center of "start" and "end"
 		middle = Math.ceil( ( start + end ) / 2 );
 		// Prepare the line for measurement using pre-escaped HTML
-		ruler.innerHTML = this.escape(
-			this.content.substring( this.boundaries[offset], this.boundaries[middle] )
-		);
+		ruler.innerHTML = this.escape( this.boundaries[offset], this.boundaries[middle] );
 		// Test for over/under using width of the rendered line
 		if ( ( lineWidth = ruler.clientWidth ) > width ) {
 			// Detect impossible fit (the first word won't fit by itself)
@@ -356,13 +351,6 @@ TextFlow.prototype.fitWords = function( start, end, ruler, width ) {
 			start = middle;
 		}
 	} while ( start < end );
-	// Final measurement if start isn't at middle
-	if ( start !== middle ) {
-		ruler.innerHTML = this.escape(
-			this.content.substring( this.boundaries[offset], this.boundaries[start] )
-		);
-		lineWidth = ruler.clientWidth;
-	}
 	return { 'end': start, 'width': lineWidth };
 };
 
@@ -387,7 +375,7 @@ TextFlow.prototype.fitCharacters = function( start, end, ruler, width ) {
 		// Place "middle" directly in the center of "start" and "end"
 		middle = Math.ceil( ( start + end ) / 2 );
 		// Fill the line with a portion of the text, escaped as HTML
-		ruler.innerHTML = this.escape( this.content.substring( offset, middle ) );
+		ruler.innerHTML = this.escape( offset, middle );
 		// Test for over/under using width of the rendered line
 		if ( ( lineWidth = ruler.clientWidth ) > width ) {
 			// Detect impossible fit (the first character won't fit by itself)
@@ -402,10 +390,5 @@ TextFlow.prototype.fitCharacters = function( start, end, ruler, width ) {
 			start = middle;
 		}
 	} while ( start < end );
-	// Final measurement if start isn't at middle
-	if ( start !== middle ) {
-		ruler.innerHTML = this.escape( this.content.substring( offset, start ) );
-		lineWidth = ruler.clientWidth;
-	}
 	return { 'end': start, 'width': lineWidth };
 };
