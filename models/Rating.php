@@ -12,8 +12,8 @@ class Rating {
 	public $importance;
 	public $importance_timestamp;
 
-	private $old_importance;
-	private $old_quality;
+	public $old_importance;
+	public $old_quality;
 	private $inDB = false;
 
 	public function __construct( $project, $namespace, $title, $quality, $quality_timestamp, $importance, $importance_timestamp ) {
@@ -69,56 +69,6 @@ class Rating {
 		}
 	}
 
-	private function updateAggregateStats( $is_new_rating ) {
-		if(! $is_new_rating && empty($this->old_importance) && empty($this->old_quality) ) {
-			return;
-		}
-		$dbw = wfGetDB( DB_MASTER );
-		$importance_column = Statistics::getImportanceColumn( $this->importance );
-		$dbw->insert(
-			'project_stats',
-			array(
-				'ps_project' => $this->project,
-				'ps_quality' => $this->quality,
-				$importance_column => '0'
-			),
-			__METHOD__,
-			array( 'IGNORE' )
-		);
-		$dbw->update(
-			'project_stats',
-			array( "$importance_column = $importance_column + 1" ),
-			array( 
-				"ps_project" => $this->project,
-				"ps_quality" => $this->quality
-			),
-			__METHOD__
-		);
-
-		if(! $is_new_rating ) {
-			// Is not a new rating, and atleast one of quality or importance has changed
-			if(! empty( $this->old_quality ) ) {
-				$q_value = $this->old_quality;
-			} else {
-				$q_value = $this->quality;
-			}
-			if(! empty( $this->old_importance) ) {
-				$i_column = Statistics::getImportanceColumn( $this->old_importance );
-			} else {
-				$i_column = Statistics::getImportanceColumn( $this->importance );
-			}
-			$dbw->update(
-				'project_stats',
-				array( "$i_column = $i_column - 1" ),
-				array( 
-					"ps_project" => $this->project,
-					"ps_quality" => $q_value
-				),
-				__METHOD__	
-			);
-		}
-	}
-	
 	public function saveAll() {
 		$data_array = array(
 			'r_project' => $this->project,
@@ -142,7 +92,7 @@ class Rating {
 				__METHOD__
 			);
 
-			$this->updateAggregateStats( false );
+			Statistics::updateAggregateStats( $this, false );
 		} else {
 			$dbw->insert(
 				"ratings",
@@ -150,7 +100,7 @@ class Rating {
 				__METHOD__
 			);
 
-			$this->updateAggregateStats( true );
+			Statistics::updateAggregateStats( $this, true );
 			$this->inDB = true;
 		}		
 	}
