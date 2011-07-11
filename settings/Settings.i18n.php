@@ -14039,6 +14039,7 @@ $messages['mn'] = array(
 $messages['ms'] = array(
 	'configure-setting-wgActionPaths-key' => 'Tindakan',
 	'configure-setting-wgExtraLanguageNames-value' => 'Nama',
+	'configure-setting-wgDebugLogGroups-value' => 'Fail',
 );
 
 /** Erzya (Эрзянь)
@@ -17151,7 +17152,7 @@ $messages['pms'] = array(
 	'configure-setting-wgMemCachedServers' => 'Servent Memcached',
 	'configure-setting-wgMemCachedTimeout' => 'Scadensa dla conession al servent Memcached an microsecond',
 	'configure-setting-wgSessionsInMemcached' => 'Memorisé le session an memcached',
-	'configure-setting-wgCacheDirectory' => 'Directory për memorisé dat an filesistem locaj',
+	'configure-setting-wgCacheDirectory' => "Dossié për memorisé dij dat ant ël sistema d'archivi local",
 	'configure-setting-wgMessageCacheType' => 'Sòrt ëd cache ëd mëssagi',
 	'configure-setting-wgLocalisationCacheConf' => 'Configurassion ëd cache ëd localisassion',
 	'configure-setting-wgUseLocalMessageCache' => 'Fà na còpia local ëd la cache dij mëssagi, an pi a memcached',
