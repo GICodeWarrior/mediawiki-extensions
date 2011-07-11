@@ -1378,10 +1378,11 @@ $messages['zea'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Chenxiaoqino
+ * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
 	'metadataedit-desc' => '把分类，语言模板的链接以及被允许的模版放在编辑页面的一个单独的文本框里。',
-	'metadata_help' => '元数据：',
+	'metadata_help' => '原始数据：',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
