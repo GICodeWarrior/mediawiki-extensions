@@ -174,11 +174,23 @@ function wfLanguageSelectorGetLanguageCode( $user, &$code ) {
 					|| !array_key_exists( $wgContLang->getCode(), $languages ) )
 				{
 
+					$supported = wfGetLanguageSelectorLanguages();
 					// look for a language that is acceptable to the client
 					// and known to the wiki.
 					foreach( $languages as $reqCode => $q ) {
-						if ( in_array( $reqCode, wfGetLanguageSelectorLanguages() ) ) {
+						if ( in_array( $reqCode, $supported ) ) {
 							$code = $reqCode;
+							break;
+						}
+					}
+
+					// Apparently Safari sends stupid things like "de-de" only.
+					// Try again with stripped codes.
+					foreach( $languages as $reqCode => $q ) {
+						$stupidPHP = explode( '-', $reqCode, 2 );
+						$bareCode = array_shift( $stupidPHP );
+						if ( in_array( $bareCode, $supported ) ) {
+							$code = $bareCode;
 							break;
 						}
 					}
