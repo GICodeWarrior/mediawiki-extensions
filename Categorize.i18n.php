@@ -23,12 +23,70 @@ $messages['en'] = array(
 	'categorize-advice'      => 'Click on the labels you want to attribute to this page:'
 );
 
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author EugeneZelenko
+ * @author Wizardist
+ */
+$messages['be-tarask'] = array(
+	'categorize-title' => 'Ацэнка ведаў',
+	'categorize-footer' => 'Калі жадаеце дадаць надпіс, скантактуйцеся з намі…',
+);
+
+/** German (Deutsch)
+ * @author Kghbln
+ */
+$messages['de'] = array(
+	'categorize-desc' => 'Fügt beim Eingabe- und Hochladefenster ein zusätzliches Eingabefeld hinzu, welches das Zuweisen von Kategorien ermöglicht',
+	'categorize-title' => 'Kategorisierung',
+	'categorize-footer' => 'Kontaktiere uns, sofern eine Kategorie hinzugefügt werden soll …',
+	'categorize-advice' => 'Die Kategorien anklicken, die hinzugefügt werden sollen:',
+);
+
 /** French (Français)
  * @author Thomas Fauré
  */
 $messages['fr'] = array(
-	'categorize-title'       => 'Qualification des savoirs',
-	'categorize-footer'      => 'Si vous souhaitez ajouter un label, contactez ...',
-	'categorize-advice'      => 'Cliquez sur les labels que vous souhaitez attribuer à cet article :'
+	'categorize-title' => 'Qualification des savoirs',
+	'categorize-footer' => 'Si vous souhaitez ajouter un label, contactez ...',
+	'categorize-advice' => 'Cliquez sur les labels que vous souhaitez attribuer à cet article :',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'categorize-desc' => 'Insere un quadro de entrata in le paginas de modification e de incargamento que permitte al usatores de assignar categorias al pagina',
+	'categorize-title' => 'Qualification de cognoscentia',
+	'categorize-footer' => 'SI tu vole adder un etiquetta, per favor contacta nos a ...',
+	'categorize-advice' => 'Clicca super le etiquettas que tu vole attribuer a iste pagina:',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'categorize-title' => 'Qualifikatioun vum Wëssen',
+	'categorize-footer' => 'Wann Dir eng Etiquette derbäisetze wëllt da mellt Iech w.e.g. bei eis op ...',
+	'categorize-advice' => 'Klickt op déi Etiquetten déi Dir mat dësem Artikel verbanne wëllt:',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'categorize-desc' => 'Додава поле за внесување на категории во страницата за уредување и страницата за подигање',
+	'categorize-title' => 'Определување на знаењата',
+	'categorize-footer' => 'Ако сакате да додадете признак, контактирајте нè на ...',
+	'categorize-advice' => 'Стиснете на признаците што сакате да ѝ ги припишете на страницава:',
+);
+
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'categorize-desc' => 'Acrescenta uma caixa de entrada para editar e fazer upload da página, o que permite que os utilizadores atribuam categorias à página',
+	'categorize-title' => 'Estruturação de conhecimento',
+	'categorize-footer' => 'Se quiser adicionar uma categoria, contacte-nos em...',
+	'categorize-advice' => 'Clique as categorias que pretende atribuir a esta página:',
 );
 
