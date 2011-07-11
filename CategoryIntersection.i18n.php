@@ -550,6 +550,11 @@ $messages['mr'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'categoryintersection' => 'Persilangan kategori',
+	'categoryintersection-desc' => 'Menyelenggara jadual dengan nilai cincangan untuk [[Special:CategoryIntersection|persilangan kategori]] dalam laman',
+	'categoryintersection-doit' => 'Senaraikan laman-laman dalam kesemua kategori ini',
+	'categoryintersection-maxcategories' => 'Bilangan kategori bersilang maksimum yang dibenarkan ialah $1.',
+	'categoryintersection-mincategories' => 'Anda perlu menyertakan sekurang-kurangnya dua kategori.',
 	'categoryintersection-results' => '$1 hasil carian dijumpai.',
 );
 
