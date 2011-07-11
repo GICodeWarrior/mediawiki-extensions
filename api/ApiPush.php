@@ -113,8 +113,6 @@ class ApiPush extends ApiBase {
 			'lgpassword' => $password
 		);
 
-		//static $fail = 0;$fail++;
-
 		if ( !is_null( $token ) ) {
 			$requestData['lgtoken'] = $token;
 		}
@@ -352,7 +350,9 @@ class ApiPush extends ApiBase {
 		$status = $req->execute();
 
 		if ( $status->isOK() ) {
-			$this->editResponses[] = $req->getContent();
+			$response = $req->getContent();
+			$this->editResponses[] = $response;
+			wfRunHooks( 'PushAPIAfterPush', array( $title, $revision, $target, $token, $response ) );
 		}
 		else {
 			$this->dieUsage( wfMsg( 'push-special-err-push-failed' ), 'page-push-failed' );

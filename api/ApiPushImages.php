@@ -295,12 +295,16 @@ class ApiPushImages extends ApiBase {
 
 		$status = $req->execute();
 
-		if ( $status->isOK()  ) {
+		if ( $status->isOK() ) {
+			$response = $req->getContent();
+			
 			$this->getResult()->addValue(
 				null,
 				null,
-				FormatJson::decode( $req->getContent() )
+				FormatJson::decode( $response )
 			);
+			
+			wfRunHooks( 'PushAPIAfterImagePush', array( $title, $target, $token, $response ) );
 		}
 		else {
 			$this->dieUsage( wfMsg( 'push-special-err-push-failed' ), 'page-push-failed' );
