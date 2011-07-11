@@ -162,7 +162,10 @@ test( 'getLength returns correct length', function() {
 	equals( content.getLength(), 66 );
 } );
 
-test( '', function() {
-	var data = content.slice().data;
-	deepEqual( data, [["T",{"type":"italic"}],["h",{"type":"italic"}],["i",{"type":"italic"}],["s",{"type":"italic"}]," ","i","s"," ",["a",{"type":"xlink","data":{"url":"http://www.a.com"}}],[" ",{"type":"xlink","data":{"url":"http://www.a.com"}}],["t",{"type":"xlink","data":{"url":"http://www.a.com"}},{"type":"bold"}],["e",{"type":"xlink","data":{"url":"http://www.a.com"}},{"type":"bold"}],["s",{"type":"xlink","data":{"url":"http://www.a.com"}},{"type":"bold"}],["t",{"type":"xlink","data":{"url":"http://www.a.com"}},{"type":"bold"}]," ","p","a","r","a","g","r","a","p","h","!","\u000a","P","a","r","a","g","r","a","p","h","s"," ",["c",{"type":"italic"}],["a",{"type":"italic"}],["n",{"type":"italic"}]," ","h","a","v","e"," ",["m",{"type":"bold"}],["o",{"type":"bold"}],["r",{"type":"bold"}],["e",{"type":"bold"}]," ","t","h","a","n"," ","o","n","e"," ","l","i","n","e",".","\u000a"] );
+test( 'slice without arguments returns correct Content', function() {
+	deepEqual( content.slice().data, [["T",{"type":"italic"}],["h",{"type":"italic"}],["i",{"type":"italic"}],["s",{"type":"italic"}]," ","i","s"," ",["a",{"type":"xlink","data":{"url":"http://www.a.com"}}],[" ",{"type":"xlink","data":{"url":"http://www.a.com"}}],["t",{"type":"xlink","data":{"url":"http://www.a.com"}},{"type":"bold"}],["e",{"type":"xlink","data":{"url":"http://www.a.com"}},{"type":"bold"}],["s",{"type":"xlink","data":{"url":"http://www.a.com"}},{"type":"bold"}],["t",{"type":"xlink","data":{"url":"http://www.a.com"}},{"type":"bold"}]," ","p","a","r","a","g","r","a","p","h","!","\u000a","P","a","r","a","g","r","a","p","h","s"," ",["c",{"type":"italic"}],["a",{"type":"italic"}],["n",{"type":"italic"}]," ","h","a","v","e"," ",["m",{"type":"bold"}],["o",{"type":"bold"}],["r",{"type":"bold"}],["e",{"type":"bold"}]," ","t","h","a","n"," ","o","n","e"," ","l","i","n","e",".","\u000a"] );
+} );
+
+test( 'slice with arguments returns correct Content', function() {
+	deepEqual( content.slice(3, 10).data, [["s",{"type":"italic"}]," ","i","s"," ",["a",{"type":"xlink","data":{"url":"http://www.a.com"}}],[" ",{"type":"xlink","data":{"url":"http://www.a.com"}}]] );
 } );
