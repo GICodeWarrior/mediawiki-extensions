@@ -78,7 +78,7 @@ Content.convertLine = function( line ) {
 			dst.data = Content.copyObject( src.data );
 		}
 		// Apply annotation to range
-		for ( var k = src.range.start; k <= src.range.end; k++ ) {
+		for ( var k = src.range.start; k < src.range.end; k++ ) {
 			// Auto-convert to array
 			typeof data[k] === 'string' && ( data[k] = [data[k]] );
 			// Append 
@@ -102,8 +102,12 @@ Content.newFromLines = function( lines ) {
 
 Content.prototype.substring = function( start, end ) {
 	// Wrap values
-	start = start % this.data.length;
-	end = end % this.data.length;
+	start = Math.max( 0, start || 0 );
+	if ( end === undefined ) {
+		end = this.data.length;
+	} else {
+		end = Math.min( this.data.length, end )
+	}
 	// Copy characters
 	var text = '';
 	for ( var i = start; i < end; i++ ) {
@@ -131,6 +135,21 @@ var content = Content.newFromLines( lines );
 
 /* Tests */
 
-test( 'Multiline substrings produce correct plain text', function() {
-	equals( content.substring( 3, 39 ), 's is a test paragraph!\nParagraphs ca' );
+test( 'Content.substring returns correct plain text', function() {
+	equal( content.substring( 3, 39 ), 's is a test paragraph!\nParagraphs ca' );
+} );
+
+test( 'Content.substring uses data length if end is not given', function() {
+	equal( content.substring( 39 ), 'n have more than one line.\n' );
+} );
+
+test( 'Content.substring clamps out of range values', function() {
+	equal( content.substring( -10, 10 ), 'This is a ' );
+} );
+
+test( 'Content.substring called without arguments returns all text', function() {
+	equal(
+		content.substring(),
+		'This is a test paragraph!\nParagraphs can have more than one line.\n'
+	);
 } );
