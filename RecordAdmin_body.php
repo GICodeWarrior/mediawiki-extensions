@@ -455,12 +455,12 @@ class RecordAdmin {
 						if( !isset( $row[$col] ) ) {
 							$v = isset( $r[$col] ) ? array_shift( $pcols ) : '&#160;';
 							$class = 'col' . preg_replace( "|\W|", "-", $col );
-							$row[$col] = "<td class='$class'>$v</td>";
+							$row[$col] = "<td class='$class'>$v </td>";
 						}
 						$table .= "$row[$col]\n";
 					}
 				}
-				$table .= " </tr>\n";
+				$table .= "</tr>\n";
 			}
 		}
 		$table .= "</table>\n";
