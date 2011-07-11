@@ -1,4 +1,15 @@
 SELECT 
+	u.user_id,
+	u.user_name,
+	um.first_edit,
+	u.user_editcount as editcount
+FROM user u
+INNER JOIN halfak.user_meta um USING (user_id)
+WHERE u.user_editcount >= %()s
+
+	
+
+SELECT 
 	r.rev_id,
 	r.rev_timestamp,
 	rvtd.revision_id IS NOT NULL AS is_reverted,
