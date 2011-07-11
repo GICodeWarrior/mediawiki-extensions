@@ -2425,9 +2425,69 @@ $messages['mr'] = array(
 $messages['ms'] = array(
 	'math_noblahtex' => 'Tidak dapat melaksanakan blahtex, yang sepatutnya berada di $1',
 	'blahtext-desc' => 'Output MathML untuk tag &lt;math&gt;',
+	'math_AmbiguousInfix' => 'Peletakan "$1" yang kabur.
+Cuba gunakan tanda pendakap "{ ... }" tambahan untuk menyahkaburkan.',
+	'math_CannotChangeDirectory' => 'Direktori kerja tidak boleh diubah',
+	'math_CannotCreateTexFile' => 'Fail tex tidak boleh dibuat',
+	'math_CannotRunDvipng' => 'dvipng tidak boleh dijalankan',
+	'math_CannotRunLatex' => 'latex tidak boleh dijalankan',
+	'math_CannotWritePngDirectory' => 'Tidak boleh menulis ke direktori PNG',
+	'math_CannotWriteTexFile' => 'Tidak boleh menulis ke fail tex',
+	'math_CasesRowTooBig' => 'Hanya boleh ada dua entri dalam setiap baris blok "cases"',
+	'math_DoubleSubscript' => 'Terdapat dua subskrip pada asas yang sama.
+Hanya satu dibenarkan.',
+	'math_DoubleSuperscript' => 'Terdapat dua superskrip pada asas yang sama.
+Hanya satu dibenarkan.',
 	'math_IllegalCharacter' => 'Aksara terlarang dalam input',
+	'math_IllegalCommandInMathMode' => 'Perintah "$1" tidak dibenarkan dalam mod matematik',
+	'math_IllegalCommandInMathModeWithHint' => 'Perintah "$1" tidak dibenarkan dalam mod matematik.
+Mungkin anda bermaksud untuk menggunakan "$2" pula?',
+	'math_IllegalCommandInTextMode' => 'Perintah "$1" tidak dibenarkan dalam mod teks',
+	'math_IllegalCommandInTextModeWithHint' => 'Perintah "$1" tidak dibenarkan dalam mod teks.
+Mungkin anda bermaksud untuk menggunakan "$2" pula?',
+	'math_IllegalDelimiter' => 'Pembatas terlarang selepas "$1"',
+	'math_IllegalFinalBackslash' => 'Garis condong terbalik "\\" tidak sah di akhir input',
+	'math_IllegalNestedFontEncodings' => 'Perintah pengekodan fon tidak boleh disarangkan',
+	'math_IllegalRedefinition' => 'Perintah "$1" sudah pun ditakrifkan; anda tidak boleh mengubah takrifannya',
+	'math_InvalidColour' => 'Warna "$1" tidak sah',
 	'math_InvalidUtf8Input' => 'Rentetan input ini bukan berbentuk UTF-8 yang sah',
+	'math_LatexFontNotSpecified' => 'Tiada fon LaTeX yang ditetapkan untuk "$1"',
+	'math_LatexPackageUnavailable' => 'PNG tidak dapat dipaparkan kerana tiadanya pakej LaTeX "$1"',
+	'math_MismatchedBeginAndEnd' => 'Perintah "$1" dan "$2" tidak sepadan',
+	'math_MisplacedLimits' => 'Perintah "$1" hanya boleh muncul selepas operator matematik.
+Apa kata gunakan "\\mathop".',
+	'math_MissingCommandAfterNewcommand' => 'Nama perintah baru tiada atau tidak sah selepas "\\newcommand".
+Mesti ditakrifkan betul-betul satu perintah;
+ia mesti bermula dengan garis condong terbalik "\\" dan hanya mengandungi huruf abjad.',
+	'math_MissingDelimiter' => 'Tiada pembatas selepas "$1"',
+	'math_MissingOpenBraceAfter' => 'Tiada tanda pendakap pembuka "{" selepas "$1"',
+	'math_MissingOpenBraceAtEnd' => 'Tiada tanda pendakap pembuka "{" di akhir input',
+	'math_MissingOpenBraceBefore' => 'Tiada tanda pendakap pembuka "{" sebelum "$1"',
+	'math_MissingOrIllegalParameterCount' => 'Kiraan parameter tiada atau tidak sah dalam takrifan "$1".
+Mestilah terangkum angka tunggal antara 1 hingga 9.',
+	'math_MissingOrIllegalParameterIndex' => 'Indeks parameter tiada atau tidak sah dalam takrifan "$1"',
+	'math_NonAsciiInMathMode' => 'Aksara bukan ASCII hanya boleh digunakan dalam mod teks.
+Cuba lingkungi aksara-aksara yang bermasalah itu dalam "\\text{...}".',
+	'math_NotEnoughArguments' => 'Tidak cukup hujah yang diberikan untuk "$1"',
+	'math_PngIncompatibleCharacter' => 'PNG yang mengandungi aksara $1 tidak dapat dijana dengan betul',
+	'math_ReservedCommand' => 'Perintah "$1" disimpan untuk kegunaan dalaman oleh blahtex',
+	'math_SubstackRowTooBig' => 'Hanya boleh ada dua entri dalam setiap baris blok "substack"',
+	'math_TooManyMathmlNodes' => 'Terlalu banyak nod dalam pepohon MathML',
 	'math_TooManyTokens' => 'Input terlalu panjang',
+	'math_UnavailableSymbolFontCombination' => 'Simbol "$1" tiada dalam fon "$2"',
+	'math_UnexpectedNextCell' => 'Perintah "&" hanya boleh muncul dalam blok "\\begin ... \\end"',
+	'math_UnexpectedNextRow' => 'Perintah "\\\\" hanya boleh muncul dalam blok "\\begin ... \\end"',
+	'math_UnmatchedBegin' => '"\\begin" didapati tidak berpadan dengan "\\end"',
+	'math_UnmatchedCloseBrace' => 'Tanda pendakap penutup "}" didapati tidak berpadan dengan tanda pedakap pembuka "{"',
+	'math_UnmatchedEnd' => '"\\end" didapati tidak berpadan dengan "\\begin"',
+	'math_UnmatchedLeft' => '"\\left" didapati tidak berpadan dengan "\\right"',
+	'math_UnmatchedOpenBrace' => 'Tanda pendakap pembuka "{" didapati tidak berpadan dengan tanda pedakap penutup "}"',
+	'math_UnmatchedOpenBracket' => 'Tanda kurungan pembuka "[" didapati tidak berpadan dengan tanda kurungan penutup "]"',
+	'math_UnmatchedRight' => '"\\right" didapati tidak berpadan dengan "\\left"',
+	'math_UnrecognisedCommand' => 'Perintah "$1" tidak dikenali',
+	'math_WrongFontEncoding' => 'Simbol "$1" mungkin tiada dalam fon yang mengekodkan "$2"',
+	'math_WrongFontEncodingWithHint' => 'Simbol "$1" mungkin tiada dalam fon yang mengekodkan "$2".
+Cuba gunakan perintah "$3{...}".',
 );
 
 /** Low German (Plattdüütsch)
