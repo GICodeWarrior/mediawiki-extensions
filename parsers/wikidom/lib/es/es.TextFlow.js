@@ -10,7 +10,7 @@ function TextFlow( $container, content ) {
 	this.boundaries = [];
 	this.lines = [];
 	this.width = null;
-	this.boundaryTest = /([ \.\,\;\:\-\t\r\n\f])/g;
+	this.boundaryTest = /([ \-\t\r\n\f])/g;
 }
 
 /**
@@ -188,15 +188,12 @@ TextFlow.prototype.scanBoundaries = function() {
 	this.boundaryTest.lastIndex = 0;
 	// Iterate over each word+boundary sequence, capturing offsets and encoding text as we go
 	var match,
-		start = 0,
 		end;
 	while ( match = this.boundaryTest.exec( text ) ) {
 		// Include the boundary character in the range
 		end = match.index + 1;
 		// Store the boundary offset
 		this.boundaries.push( end );
-		// Remember the previous match
-		start = end;
 	}
 	// If the last character is not a boundary character, we need to append the final range to the
 	// "boundaries" and "words" arrays
@@ -250,10 +247,10 @@ TextFlow.prototype.render = function( offset, callback ) {
 		wordFit,
 		charOffset,
 		charFit,
-		length = this.content.getLength(),
+		wordCount = this.boundaries.length,
 		ruler = $ruler.addClass('editSurface-line')[0];
-	while ( wordOffset < this.boundaries.length ) {
-		wordFit = this.fitWords( wordOffset, length, ruler, width );
+	while ( wordOffset < wordCount - 1 ) {
+		wordFit = this.fitWords( wordOffset, wordCount - 1, ruler, width );
 		if ( wordFit.width > width ) {
 			// The first word didn't fit, we need to split it up
 			charOffset = lineStart;
@@ -265,7 +262,7 @@ TextFlow.prototype.render = function( offset, callback ) {
 				if (charFit.end === lineEnd) {
 					// Try to fit more words on the line
 					wordFit = this.fitWords(
-						wordOffset, length, ruler, width - charFit.width
+						wordOffset, wordCount - 1, ruler, width - charFit.width
 					);
 					if ( wordFit.end > wordOffset ) {
 						wordOffset = wordFit.end;
