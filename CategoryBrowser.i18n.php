@@ -1301,7 +1301,20 @@ $messages['mn'] = array(
  */
 $messages['ms'] = array(
 	'categorybrowser' => 'Penyemak seimbas kategori',
+	'categorybrowser-desc' => 'Menyediakan [[Special:CategoryBrowser|laman khas]] untuk mengasingkan kebanyakan kategori yang berisi serta memandu arahnya dengan menggunakan antara muka AJAX',
+	'cb_requires_javascript' => 'Sambungan pelayar kategori memerlukan JavaScript dihidupkan dalam pelayar.',
+	'cb_ie6_warning' => 'Editor syarat tidak berfungsi dalam Internet Explorer 6.0 atau versi-versi sebelumnya.
+Namun demikian, syarat-syarat yang sudah ditakrifkan dijangka boleh disemak seimbas seperti biasa.
+Sila tukar atau naik taraf pelayar anda jika boleh.',
+	'cb_show_no_parents_only' => 'Tunjukkan kategori tanpa induk sahaja',
+	'cb_cat_name_filter' => 'Cari kategori mengikut nama:',
+	'cb_cat_name_filter_clear' => 'Tekan untuk mengosongkan penapis nama kategori',
 	'cb_cat_name_filter_ci' => 'Tidak peka besar kecil huruf',
+	'cb_copy_line_hint' => 'Gunakan butang [+] dan [>+] untuk menyalin dan menampalkan operator dalam ungkapan yang terpilih',
+	'cb_has_subcategories' => '$1 subkategori',
+	'cb_has_pages' => '$1 laman',
+	'cb_has_files' => '$1 fail',
+	'cb_has_parentcategories' => 'kategori induk (jika ada)',
 	'cb_previous_items_link' => 'Sebelumnya',
 	'cb_next_items_link' => 'Berikutnya',
 	'cb_next_items_stats' => ' (dari $1)',
@@ -1315,6 +1328,11 @@ $messages['ms'] = array(
 	'cb_edit_left_hint' => 'Alihkan ke kiri, jika boleh',
 	'cb_edit_right_hint' => 'Alihkan ke kanan, jika boleh',
 	'cb_edit_remove_hint' => 'Hapuskan, jika boleh',
+	'cb_edit_copy_hint' => 'Salin operator ke papan keratan',
+	'cb_edit_append_hint' => 'Isikan operator di kedudukan terakhir',
+	'cb_edit_clear_hint' => 'Padamkan ungkapan semasa (pilih semua)',
+	'cb_edit_paste_hint' => 'Tampalkan operator dalam kedudukan semasa, jika boleh',
+	'cb_edit_paste_right_hint' => 'Tampalkan operator dalam kedudukan berikutnya, jika boleh',
 );
 
 /** Erzya (Эрзянь)
