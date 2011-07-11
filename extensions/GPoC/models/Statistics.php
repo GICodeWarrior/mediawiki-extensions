@@ -18,6 +18,71 @@ class Statistics {
 		return $importanceColumnMapping[ strtolower( $importance ) ];
 	}
 
+	public static function updateAggregateStats( $rating, $is_new_rating, $update_global = true ) {
+		if(! $is_new_rating && empty($rating->old_importance) && empty($rating->old_quality) ) {
+			return;
+		}
+		$dbw = wfGetDB( DB_MASTER );
+		$importance_column = Statistics::getImportanceColumn( $rating->importance );
+		$dbw->insert(
+			'project_stats',
+			array(
+				'ps_project' => $rating->project,
+				'ps_quality' => $rating->quality,
+				$importance_column => '0'
+			),
+			__METHOD__,
+			array( 'IGNORE' )
+		);
+		$dbw->update(
+			'project_stats',
+			array( "$importance_column = $importance_column + 1" ),
+			array( 
+				"ps_project" => $rating->project,
+				"ps_quality" => $rating->quality
+			),
+			__METHOD__
+		);
+
+		if(! $is_new_rating ) {
+			// Is not a new rating, and atleast one of quality or importance has changed
+			if(! empty( $rating->old_quality ) ) {
+				$q_value = $rating->old_quality;
+			} else {
+				$q_value = $rating->quality;
+			}
+			if(! empty( $rating->old_importance) ) {
+				$i_column = Statistics::getImportanceColumn( $rating->old_importance );
+			} else {
+				$i_column = Statistics::getImportanceColumn( $rating->importance );
+			}
+			$dbw->update(
+				'project_stats',
+				array( "$i_column = $i_column - 1" ),
+				array( 
+					"ps_project" => $rating->project,
+					"ps_quality" => $q_value
+				),
+				__METHOD__	
+			);
+		}
+
+		if( $update_global ) {
+			$global_rating = new Rating(
+				"Global Project",
+				$rating->namespace,
+				$rating->title,
+				$rating->quality,
+				$rating->quality_timestamp,
+				$rating->importance,
+				$rating->importance_timestamp
+			);
+			$global_rating->old_importance = $rating->old_importance;
+			$global_rating->old_quality = $rating->old_quality;
+			Statistics::updateAggregateStats( $global_rating, $is_new_rating, false );
+		}
+	}
+
 	public static function getProjectStats( $project ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		$query = $dbr->select(
