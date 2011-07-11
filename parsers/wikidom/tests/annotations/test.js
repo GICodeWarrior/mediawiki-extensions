@@ -121,23 +121,28 @@ var lines = [
 
 function convertAnnotations( lines ) {
 	for ( var i in lines ) {
+		
 		var line = lines[i];
-		line.charAnnotations = [];
+
+		line.content = [];
+		
+		for ( var j in line.text ) {
+			line.content[j] = [line.text[j]];
+		}
+		
 		for ( var j in line.annotations ) {
 			var annotation = line.annotations[j];
+			
 			for ( var k = annotation.range.start; k <= annotation.range.stop; k++ ) {
-				// Auto initialize
-				line.charAnnotations[k] || ( line.charAnnotations[k] = [] );
-				// Append
-				line.charAnnotations[k].push( annotation );
+				line.content[k].push( annotation );
 			}
 		}
+
 	}
 }
+convertAnnotations( lines );
 
 /* Tests */
-
-convertAnnotations( lines );
 
 test( 'Multiline substrings produce correct plain text', function() {
 	equals( multiLineSubstring( lines, 3, 39 ).text, 's is a test paragraph!\nParagraphs ca' );
