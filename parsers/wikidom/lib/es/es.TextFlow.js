@@ -355,10 +355,12 @@ TextFlow.prototype.fitWords = function( start, end, ruler, width ) {
 			start = middle;
 		}
 	} while ( start < end );
-	// Final measurment
-	ruler.innerHTML = this.escape(
-		this.content.substring( this.boundaries[offset], this.boundaries[start] )
-	);
+	// Final measurement if start isn't at middle
+	if ( start !== middle ) {
+		ruler.innerHTML = this.escape(
+			this.content.substring( this.boundaries[offset], this.boundaries[start] )
+		);
+	}
 	return { 'end': start, 'width': ruler.clientWidth };
 };
 
@@ -397,7 +399,9 @@ TextFlow.prototype.fitCharacters = function( start, end, ruler, width ) {
 			start = middle;
 		}
 	} while ( start < end );
-	// Final measurement
-	ruler.innerHTML = this.escape( this.content.substring( offset, start ) );
+	// Final measurement if start isn't at middle
+	if ( start !== middle ) {
+		ruler.innerHTML = this.escape( this.content.substring( offset, start ) );
+	}
 	return { 'end': start, 'width': ruler.clientWidth };
 };
