@@ -408,7 +408,7 @@ class RecordAdmin {
 						if( !in_array( $col, $row ) ) {
 							if( isset( $r[$col] ) ) {
 								if( !$fcol ) $text .= "@@@";
-								$text .= $r[$col];
+								$text .= $r[$col] . "\n";
 								$fcol = false;
 							}
 						}
@@ -455,7 +455,7 @@ class RecordAdmin {
 						if( !isset( $row[$col] ) ) {
 							$v = isset( $r[$col] ) ? array_shift( $pcols ) : '&#160;';
 							$class = 'col' . preg_replace( "|\W|", "-", $col );
-							$row[$col] = "<td class='$class'>$v </td>";
+							$row[$col] = "<td class='$class'>$v</td>";
 						}
 						$table .= "$row[$col]\n";
 					}
