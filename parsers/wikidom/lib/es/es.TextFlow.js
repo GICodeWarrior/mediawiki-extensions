@@ -4,17 +4,12 @@
  * @param $container {jQuery Selection} Element to render into
  * @returns {TextFlow}
  */
-function TextFlow( $container, text ) {
+function TextFlow( $container, content ) {
 	this.$ = $container;
-	this.length = 0;
+	this.content = content || new Content();
 	this.boundaries = [];
-	this.words = [];
 	this.lines = [];
 	this.width = null;
-	this.text = '';
-	if ( text !== undefined ) {
-		this.setText( text );
-	}
 	this.boundaryTest = /([ \.\,\;\:\-\t\r\n\f])/g;
 }
 
@@ -85,9 +80,9 @@ TextFlow.prototype.getOffset = function( position ) {
 		fit = this.fitCharacters(
 			this.lines[line].start, this.lines[line].end, ruler, position.left
 		);
-	ruler.innerHTML = this.escape( this.text.substring( this.lines[line].start, fit.end ) );
+	ruler.innerHTML = this.escape( this.content.substring( this.lines[line].start, fit.end ) );
 	var left = ruler.clientWidth;
-	ruler.innerHTML = this.escape( this.text.substring( this.lines[line].start, fit.end + 1 ) );
+	ruler.innerHTML = this.escape( this.content.substring( this.lines[line].start, fit.end + 1 ) );
 	var right = ruler.clientWidth;
 	var center = Math.round( left + ( ( right - left ) / 2 ) );
 	$ruler.remove();
@@ -173,13 +168,7 @@ TextFlow.prototype.getPosition = function( offset ) {
 	return position;
 };
 
-TextFlow.prototype.setText = function( text ) {
-	// Don't reevaluate boundaries if the text hasn't actually changed
-	if ( text === this.text ) {
-		return;
-	}
-	this.text = text;
-	
+TextFlow.prototype.scanBoundaries = function() {
 	/*
 	 * Word boundary scan
 	 * 
@@ -192,9 +181,9 @@ TextFlow.prototype.setText = function( text ) {
 	 * "boundaries" array. Slices of the "words" array can be joined, producing the escaped HTML of
 	 * the words.
 	 */
+	var text = this.content.substring();
 	// Purge "boundaries" and "words" arrays
 	this.boundaries = [];
-	this.words = [];
 	// Reset RegExp object's state
 	this.boundaryTest.lastIndex = 0;
 	// Iterate over each word+boundary sequence, capturing offsets and encoding text as we go
@@ -206,8 +195,6 @@ TextFlow.prototype.setText = function( text ) {
 		end = match.index + 1;
 		// Store the boundary offset
 		this.boundaries.push( end );
-		// Store the word's escaped HTML
-		this.words.push( this.escape( text.substring( start, end ) ) );
 		// Remember the previous match
 		start = end;
 	}
@@ -215,12 +202,7 @@ TextFlow.prototype.setText = function( text ) {
 	// "boundaries" and "words" arrays
 	if ( end < text.length ) {
 		this.boundaries.push( text.length );
-		this.words.push( this.escape( text.substring( end, text.length ) ) );
 	}
-	this.length = text.length;
-	// Force re-flow
-	this.width = null;
-	
 };
 
 /**
@@ -239,6 +221,8 @@ TextFlow.prototype.setText = function( text ) {
 TextFlow.prototype.render = function( offset, callback ) {
 	// Reset lines in the DOM and the "lines" array
 	this.$.empty();
+	
+	this.scanBoundaries();
 	
 	/*
 	 * Container measurement
@@ -266,9 +250,10 @@ TextFlow.prototype.render = function( offset, callback ) {
 		wordFit,
 		charOffset,
 		charFit,
+		length = this.content.getLength(),
 		ruler = $ruler.addClass('editSurface-line')[0];
 	while ( wordOffset < this.boundaries.length ) {
-		wordFit = this.fitWords( wordOffset, this.words.length, ruler, width );
+		wordFit = this.fitWords( wordOffset, length, ruler, width );
 		if ( wordFit.width > width ) {
 			// The first word didn't fit, we need to split it up
 			charOffset = lineStart;
@@ -280,7 +265,7 @@ TextFlow.prototype.render = function( offset, callback ) {
 				if (charFit.end === lineEnd) {
 					// Try to fit more words on the line
 					wordFit = this.fitWords(
-						wordOffset, this.words.length, ruler, width - charFit.width
+						wordOffset, length, ruler, width - charFit.width
 					);
 					if ( wordFit.end > wordOffset ) {
 						wordOffset = wordFit.end - 1;
@@ -314,7 +299,7 @@ TextFlow.prototype.render = function( offset, callback ) {
  * @param end {Integer} Ending of text range for line
  */
 TextFlow.prototype.appendLine = function( start, end ) {
-	var lineText = this.text.substring( start, end );
+	var lineText = this.content.substring( start, end );
 	$line = $( '<div class="editSurface-line" line-index="'
 			+ this.lines.length + '">' + this.escape( lineText ) + '</div>' )
 		.appendTo( this.$ );
@@ -357,7 +342,7 @@ TextFlow.prototype.fitWords = function( start, end, ruler, width ) {
 		// Place "middle" directly in the center of "start" and "end"
 		middle = Math.ceil( ( start + end ) / 2 );
 		// Prepare the line for measurement using pre-escaped HTML
-		ruler.innerHTML = this.words.slice( offset, middle ).join( '' );
+		ruler.innerHTML = this.content.substring( this.boundaries[offset], this.boundaries[middle] );
 		// Test for over/under using width of the rendered line
 		if ( ruler.clientWidth > width ) {
 			// Detect impossible fit (the first word won't fit by itself)
@@ -373,7 +358,7 @@ TextFlow.prototype.fitWords = function( start, end, ruler, width ) {
 		}
 	} while ( start < end );
 	// Final measurment
-	ruler.innerHTML = this.words.slice( offset, start ).join( '' );
+	ruler.innerHTML = this.content.substring( this.boundaries[offset], this.boundaries[start] );
 	return { 'end': start, 'width': ruler.clientWidth };
 };
 
@@ -397,7 +382,7 @@ TextFlow.prototype.fitCharacters = function( start, end, ruler, width ) {
 		// Place "middle" directly in the center of "start" and "end"
 		middle = Math.ceil( ( start + end ) / 2 );
 		// Fill the line with a portion of the text, escaped as HTML
-		ruler.innerHTML = this.escape( this.text.substring( offset, middle ) );
+		ruler.innerHTML = this.escape( this.content.substring( offset, middle ) );
 		// Test for over/under using width of the rendered line
 		if ( ruler.clientWidth > width ) {
 			// Detect impossible fit (the first character won't fit by itself)
@@ -413,6 +398,6 @@ TextFlow.prototype.fitCharacters = function( start, end, ruler, width ) {
 		}
 	} while ( start < end );
 	// Final measurement
-	ruler.innerHTML = this.escape( this.text.substring( offset, start ) );
+	ruler.innerHTML = this.escape( this.content.substring( offset, start ) );
 	return { 'end': start, 'width': ruler.clientWidth };
 };

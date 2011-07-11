@@ -103,7 +103,7 @@ Surface.prototype.onKeyDown = function( e ) {
 				surface.$input.val( '' );
 				if ( val.length > 0 ) {
 					var location = surface.getLocation();
-					location.block.insertContent( location.offset, val);
+					location.block.insertContent( location.offset, val.split(''));
 					location.offset++;
 				}
 			}, 0, this );
