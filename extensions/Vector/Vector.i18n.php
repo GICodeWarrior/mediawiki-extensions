@@ -981,7 +981,7 @@ Do kanns heh di Warnung affschallde, wann de aanjemelldt un enjelogg bes, dann k
 	'vector-editwarning-preference' => 'Donn mesch warne, wann esch vun en Sigg fott jonn, ih dat esch all ming Änderunge avjeschpeischert hann.',
 	'vector-simplesearch-search' => 'Söhke',
 	'vector-simplesearch-containing' => 'dren änthallde…',
-	'vector-noexperiments-preference' => 'Donn mesch nit met neue Saache zum Ußprobeere behällijje',
+	'vector-noexperiments-preference' => 'Donn mesch nit met neue Saache zom Ußprobeere behällijje',
 );
 
 /** Kurdish (Latin) (Kurdî (Latin))

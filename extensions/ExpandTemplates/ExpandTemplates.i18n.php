@@ -1388,6 +1388,7 @@ $messages['mr'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Aurora
  * @author Aviator
  */
@@ -1401,6 +1402,7 @@ $messages['ms'] = array(
 	'expand_templates_xml_output' => 'Output XML',
 	'expand_templates_ok' => 'OK',
 	'expand_templates_remove_comments' => 'Buang ulasan',
+	'expand_templates_remove_nowiki' => 'Sekat tag <nowiki> dalam hasil',
 	'expand_templates_generate_xml' => 'Papar pepohon hurai XML',
 	'expand_templates_preview' => 'Pralihat',
 );

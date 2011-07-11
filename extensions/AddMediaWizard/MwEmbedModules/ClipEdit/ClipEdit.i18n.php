@@ -956,11 +956,38 @@ $messages['ig'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Gianfranco
  * @author Rippitippi
  */
 $messages['it'] = array(
 	'mwe-clipedit-crop' => 'Ritaglia immagine',
+	'mwe-clipedit-apply_crop' => "Applica il ritaglio all'immagine",
+	'mwe-clipedit-reset_crop' => 'Reimposta il ritaglio',
 	'mwe-clipedit-insert_image_page' => 'Inserire nella pagina',
+	'mwe-clipedit-insert_into_sequence' => 'Inserisci in sequenza',
+	'mwe-clipedit-preview_insert' => 'Anteprima inserimento',
+	'mwe-clipedit-cancel_image_insert' => "Annulla l'inserimento",
+	'mwe-clipedit-sc_attributes' => 'Modifica i dettagli della clip',
+	'mwe-clipedit-sc_inoutpoints' => 'Imposta i punti di in-out',
+	'mwe-clipedit-sc_overlays' => 'Sovrapposizioni',
+	'mwe-clipedit-sc_audio' => 'Controllo audio',
+	'mwe-clipedit-sc_duration' => 'Durata',
+	'mwe-clipedit-template_properties' => 'Proprietà del template',
+	'mwe-clipedit-custom_title' => 'Titolo personalizzato',
+	'mwe-clipedit-edit_properties' => 'Modifica le proprietà',
+	'mwe-clipedit-other_properties' => 'Altre proprietà',
+	'mwe-clipedit-resource_page' => 'Pagina della risorsa:',
+	'mwe-clipedit-set_in_out_points' => 'Imposta i punti di in-out',
+	'mwe-clipedit-start_time' => 'Momento di inizio',
+	'mwe-clipedit-end_time' => 'Momento di fine',
+	'mwe-clipedit-preview_inout' => 'Anteprima punti in-out',
+	'mwe-clipedit-edit-tools' => 'Strumenti di modifica',
+	'mwe-clipedit-inline-description' => 'Didascalia',
+	'mwe-clipedit-edit-video-tools' => 'Strumenti di modifica video:',
+	'mwe-clipedit-duration' => 'Durata',
+	'mwe-clipedit-layout' => 'Aspetto:',
+	'mwe-clipedit-layout_right' => "Aspetto dell'immagine sul lato destro",
+	'mwe-clipedit-layout_left' => "Aspetto dell'immagine sul lato sinistro",
 );
 
 /** Japanese (日本語)

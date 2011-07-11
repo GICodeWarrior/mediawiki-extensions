@@ -361,6 +361,16 @@ $messages['ml'] = array(
 	'checkpoint-desc' => 'ഒരാളെ തിരുത്തൽ സേവ് ചെയ്യാനും എന്നിട്ട് തിരുത്തൽ തുടരാനും അനുവദിക്കുന്നു',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'checkpoint' => 'Simpan dan teruskan menyunting',
+	'checkpoint-desc' => 'Membolehkan kita menyimpan suntingan dan teruskan menyunting',
+	'checkpoint-tooltip' => 'Simpan kerja anda dan teruskan menyunting laman ini',
+	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|simpan cekpoin]])',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

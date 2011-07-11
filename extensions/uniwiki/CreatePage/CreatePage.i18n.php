@@ -907,9 +907,11 @@ $messages['pt-br'] = array(
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Minisarm
  */
 $messages['ro'] = array(
 	'createpage' => 'Creează o pagină',
+	'uwcreatepage-desc' => 'Adaugă o [[Special:CreatePage|pagină specială]] pentru crearea de noi pagini',
 	'createpage_submitbutton' => 'Trimite',
 	'createpage_instructions' => 'Introduceți titlul paginii pe care doriți să o creați:',
 	'createpage_entertitle' => 'Vă rugăm să introduceți un titlu pentru pagina dumneavoastră.',

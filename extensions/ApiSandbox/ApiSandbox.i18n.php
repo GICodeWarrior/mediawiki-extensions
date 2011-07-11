@@ -315,9 +315,16 @@ Lihat [http://www.mediawiki.org/wiki/API dokumentasi API] untuk perincian lanjut
 );
 
 /** Italian (Italiano)
+ * @author Gianfranco
  * @author Rippitippi
  */
 $messages['it'] = array(
+	'apisb-desc' => 'Permette di eseguire il debug delle chiamate [http://www.mediawiki.org/wiki/API MediaWiki API] dal browser',
+	'apisandbox' => 'Sandbox API',
+	'apisb-no-js' => "'''Errore''': questa funzione richiede JavaScript.",
+	'apisb-intro' => "Utilizza questa pagina per sperimentare con '''MediaWiki API'''.
+Per ulteriori dettagli di utilizzo delle API, fai riferimento alla [http://www.mediawiki.org/wiki/API documentazione API].",
+	'apisb-api-disabled' => 'Le funzionalità API sono disabilitate su questo sito.',
 	'apisb-parameters' => 'Parametri',
 	'apisb-result' => 'Risultato',
 	'apisb-select-action' => 'Seleziona azione',
@@ -335,6 +342,8 @@ $messages['ksh'] = array(
 	'apisb-parameters' => 'Parrameetere',
 	'apisb-result' => 'Erus jekumme es',
 	'apisb-request-url' => 'Öm en URL froore:',
+	'apisb-query-prop' => 'Eijeschafte',
+	'apisb-query-list' => 'Leste',
 );
 
 /** Kurdish (Latin) (Kurdî (Latin))

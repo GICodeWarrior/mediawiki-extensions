@@ -1629,6 +1629,7 @@ $messages['mr'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Aurora
  * @author CoolCityCat
  * @author Kurniasan
@@ -1644,6 +1645,7 @@ $messages['ms'] = array(
 	'ct-total-header' => 'Jumlah klik',
 	'ct-start-date' => 'Tarikh Mula (YYYYMMDD)',
 	'ct-end-date' => 'Tarikh Tamat (YYYYMMDD)',
+	'ct-increment-by' => 'Bilangan hari yang diwakili oleh setiap titik data',
 	'ct-change-graph' => 'Tukar graf',
 	'ct-beginner' => 'Pemula',
 	'ct-intermediate' => 'Pertengahan',
@@ -1652,6 +1654,7 @@ $messages['ms'] = array(
 	'ct-editing' => 'Sedang menyunting:',
 	'ct-anon-users' => 'Pengguna tanpa nama',
 	'ct-user-contribs' => 'Jumlah sumbangan pengguna',
+	'ct-user-span' => 'Sumbangan pengguna dalam jangka masa',
 	'ct-and' => 'dan',
 	'ct-update-table' => 'Kemaskini jadual',
 );
