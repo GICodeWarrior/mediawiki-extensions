@@ -460,7 +460,7 @@ class RecordAdmin {
 						$table .= "$row[$col]\n";
 					}
 				}
-				$table .= "</tr>\n";
+				$table .= " </tr>\n";
 			}
 		}
 		$table .= "</table>\n";
