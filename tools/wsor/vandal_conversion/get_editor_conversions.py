@@ -90,9 +90,6 @@ def main():
 		'last10_vandalism',
 		'last10_deleted'
 	]
-	print(
-		"\t".join(headers)
-	)
 	
 	logging.info("Processing users:")
 	users  = []	
@@ -102,6 +99,10 @@ def main():
 			continue
 		else:
 			users.append(user)
+			
+		
+	if len(users) == 0:
+		print("\t".join(headers))
 	
 	for user in users:
 		firstSession = []
@@ -123,7 +124,13 @@ def main():
 		
 		#logging.debug("Getting last edits for %s" % user['user_name'])
 		last10 = list(db.getLastEdits(user['user_id'], maximum=10))
-		logging.debug("%s(%s): %s %s" % (user['user_name'], user['user_id'], len(firstSession)*">", len(last10)*"<"))
+		
+		if len(firstSession) == 0 or len(last10) == 0: 
+			logging.debug("Skipping %s(%s) because they have no datapoints." % (user['user_name'], user['user_id']))
+			continue
+		else:
+			logging.debug("%s(%s): %s %s" % (user['user_name'], user['user_id'], len(firstSession)*">", len(last10)*"<"))
+		
 		user['first_edit'] = firstSession[0]['rev_timestamp']
 		user['last_edit']  = last10[0]['rev_timestamp']
 		user['fes_edits']  = len(firstSession)
