@@ -1,73 +1,5 @@
 module( 'Wiki DOM Annotations' );
 
-/* Functions */
-
-function multiLineSubstring( lines, start, end ) {
-	var result = {
-			'text': '',
-			'charAnnotations': []
-		},
-		line,
-		left = 0,
-		right,
-		from,
-		to;
-	for ( var l = 0; l < lines.length; l++ ) {
-		line = lines[l];
-		right = left + line.text.length;
-		if ( start >= left && start < right ) {
-			from = start - left;
-			to = end < right ? end - left : line.text.length;
-		} else if ( from !== undefined && to !== undefined ) {
-			from = 0;
-			to = end < right ? end - left : line.text.length;
-		}
-		if ( from !== undefined && to !== undefined ) {
-			result.text += line.text.substring( from, to );
-			for ( var c = from; c < to; c++ ) {
-				line.charAnnotations[c] && ( result.charAnnotations[left + c] = line.charAnnotations[c] );
-			}
-		}
-		left = right;
-	}
-	return result;
-}
-
-function diff( a, b ) {
-	var result = [];
-	for ( var i = 0; i < b.length; i++ ) {
-		if ( a.indexOf( b[i] ) === -1 ) {
-			result.push( b[i] );
-		}
-	}
-	return result;
-}
-
-function openAnnotations( annotations ) {
-	// TODO: Something...
-	return '';
-}
-
-function closeAnnotations( annotations ) {
-	// TODO: Something...
-	return '';
-}
-
-function renderText( text, charAnnotations ) {
-	var out = '';
-	var left = [];
-	for (i in text) {
-		var right = charAnnotations[i] || [];
-		out += openAnnotations( diff( left, right ) );
-		out += text[i];
-		out += closeAnnotations( diff( right, left ) );
-		right = left;
-	}
-	return out;
-}
-
-/* Test Data */
-
 var lines = [
 	{
 		"text": "This is a test paragraph!\n",
@@ -119,31 +51,86 @@ var lines = [
 	}
 ];
 
-function convertAnnotations( lines ) {
-	for ( var i in lines ) {
-		
-		var line = lines[i];
+function Content( content ) {
+	this.data = content || [];
+};
 
-		line.content = [];
-		
-		for ( var j in line.text ) {
-			line.content[j] = [line.text[j]];
+Content.copyObject = function( src ) {
+	var dst = {};
+	for ( var key in src ) {
+		if ( typeof src[key] === 'string' || typeof src[key] === 'number' ) {
+			dst[key] = src[key];
+		} else if ( $.isPlainObject( src[key] ) ) {
+			dst[key] = Content.copyObject( src[key] );
 		}
-		
-		for ( var j in line.annotations ) {
-			var annotation = line.annotations[j];
-			
-			for ( var k = annotation.range.start; k <= annotation.range.end; k++ ) {
-				line.content[k].push( annotation );
-			}
-		}
-
 	}
-}
-convertAnnotations( lines );
+	return dst;
+};
+
+Content.convertLine = function( line ) {
+	// Convert string to array of characters
+	var data = line.text.split('');
+	for ( var i in line.annotations ) {
+		var src = line.annotations[i];
+		// Build simplified annotation object
+		var dst = { 'type': src.type };
+		if ( 'data' in src ) {
+			dst.data = Content.copyObject( src.data );
+		}
+		// Apply annotation to range
+		for ( var k = src.range.start; k <= src.range.end; k++ ) {
+			// Auto-convert to array
+			typeof data[k] === 'string' && ( data[k] = [data[k]] );
+			// Append 
+			data[k].push( dst );
+		}
+	}
+	return data;
+};
+
+Content.newFromLine = function( line ) {
+	return new Content( Content.convertLine( line ) );
+};
+
+Content.newFromLines = function( lines ) {
+	var data = [];
+	for ( var i = 0; i < lines.length; i++ ) {
+		data = data.concat( Content.convertLine( lines[i] ) );
+	}
+	return new Content( data );
+};
+
+Content.prototype.substring = function( start, end ) {
+	// Wrap values
+	start = start % this.data.length;
+	end = end % this.data.length;
+	// Copy characters
+	var text = '';
+	for ( var i = start; i < end; i++ ) {
+		// If not using in IE6 or IE7 (which do not support array access for strings) use this..
+		// text += this.data[i][0];
+		// Otherwise use this...
+		text += typeof this.data[i] === 'string' ? this.data[i] : this.data[i][0];
+	}
+	return text;
+};
+
+Content.prototype.slice = function( start, end ) {
+	return new Content( this.data.slice( start, end ) );
+};
+
+Content.prototype.insert = function( start, insert ) {
+	Array.prototype.splice.apply( this.data, [start, 0].concat( insert ) )
+};
+
+Content.prototype.remove = function( start, end ) {
+	this.data.splice( start, end - start );
+};
+
+var content = Content.newFromLines( lines );
 
 /* Tests */
 
 test( 'Multiline substrings produce correct plain text', function() {
-	equals( multiLineSubstring( lines, 3, 39 ).text, 's is a test paragraph!\nParagraphs ca' );
+	equals( content.substring( 3, 39 ), 's is a test paragraph!\nParagraphs ca' );
 } );
