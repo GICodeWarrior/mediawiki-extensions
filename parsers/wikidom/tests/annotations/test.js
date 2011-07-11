@@ -76,14 +76,14 @@ var lines = [
 				"type": "italic",
 				"range": {
 					"start": 0,
-					"stop": 4
+					"end": 4
 				}
 			},
 			{
 				"type": "xlink",
 				"range": {
 					"start": 8,
-					"stop": 14
+					"end": 14
 				},
 				"data": {
 					"url": "http://www.a.com"
@@ -93,7 +93,7 @@ var lines = [
 				"type": "bold",
 				"range": {
 					"start": 10,
-					"stop": 14
+					"end": 14
 				}
 			}
 		]
@@ -105,14 +105,14 @@ var lines = [
 				"type": "italic",
 				"range": {
 					"start": 11,
-					"stop": 14
+					"end": 14
 				}
 			},
 			{
 				"type": "bold",
 				"range": {
 					"start": 20,
-					"stop": 24
+					"end": 24
 				}
 			}
 		]
@@ -133,7 +133,7 @@ function convertAnnotations( lines ) {
 		for ( var j in line.annotations ) {
 			var annotation = line.annotations[j];
 			
-			for ( var k = annotation.range.start; k <= annotation.range.stop; k++ ) {
+			for ( var k = annotation.range.start; k <= annotation.range.end; k++ ) {
 				line.content[k].push( annotation );
 			}
 		}
