@@ -333,7 +333,8 @@ TextFlow.prototype.appendLine = function( start, end ) {
  */
 TextFlow.prototype.fitWords = function( start, end, ruler, width ) {
 	var offset = start,
-		middle;
+		middle,
+		lineWidth;
 	do {
 		// Place "middle" directly in the center of "start" and "end"
 		middle = Math.ceil( ( start + end ) / 2 );
@@ -342,7 +343,7 @@ TextFlow.prototype.fitWords = function( start, end, ruler, width ) {
 			this.content.substring( this.boundaries[offset], this.boundaries[middle] )
 		);
 		// Test for over/under using width of the rendered line
-		if ( ruler.clientWidth > width ) {
+		if ( ( lineWidth = ruler.clientWidth ) > width ) {
 			// Detect impossible fit (the first word won't fit by itself)
 			if (middle - offset === 1) {
 				start = middle;
@@ -360,8 +361,9 @@ TextFlow.prototype.fitWords = function( start, end, ruler, width ) {
 		ruler.innerHTML = this.escape(
 			this.content.substring( this.boundaries[offset], this.boundaries[start] )
 		);
+		lineWidth = ruler.clientWidth;
 	}
-	return { 'end': start, 'width': ruler.clientWidth };
+	return { 'end': start, 'width': lineWidth };
 };
 
 /**
@@ -379,14 +381,15 @@ TextFlow.prototype.fitWords = function( start, end, ruler, width ) {
  */
 TextFlow.prototype.fitCharacters = function( start, end, ruler, width ) {
 	var offset = start,
-		middle;
+		middle,
+		lineWidth;
 	do {
 		// Place "middle" directly in the center of "start" and "end"
 		middle = Math.ceil( ( start + end ) / 2 );
 		// Fill the line with a portion of the text, escaped as HTML
 		ruler.innerHTML = this.escape( this.content.substring( offset, middle ) );
 		// Test for over/under using width of the rendered line
-		if ( ruler.clientWidth > width ) {
+		if ( ( lineWidth = ruler.clientWidth ) > width ) {
 			// Detect impossible fit (the first character won't fit by itself)
 			if (middle - offset === 1) {
 				start = middle - 1;
@@ -402,6 +405,7 @@ TextFlow.prototype.fitCharacters = function( start, end, ruler, width ) {
 	// Final measurement if start isn't at middle
 	if ( start !== middle ) {
 		ruler.innerHTML = this.escape( this.content.substring( offset, start ) );
+		lineWidth = ruler.clientWidth;
 	}
-	return { 'end': start, 'width': ruler.clientWidth };
+	return { 'end': start, 'width': lineWidth };
 };
