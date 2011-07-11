@@ -342,7 +342,9 @@ TextFlow.prototype.fitWords = function( start, end, ruler, width ) {
 		// Place "middle" directly in the center of "start" and "end"
 		middle = Math.ceil( ( start + end ) / 2 );
 		// Prepare the line for measurement using pre-escaped HTML
-		ruler.innerHTML = this.content.substring( this.boundaries[offset], this.boundaries[middle] );
+		ruler.innerHTML = this.escape(
+			this.content.substring( this.boundaries[offset], this.boundaries[middle] )
+		);
 		// Test for over/under using width of the rendered line
 		if ( ruler.clientWidth > width ) {
 			// Detect impossible fit (the first word won't fit by itself)
@@ -358,7 +360,9 @@ TextFlow.prototype.fitWords = function( start, end, ruler, width ) {
 		}
 	} while ( start < end );
 	// Final measurment
-	ruler.innerHTML = this.content.substring( this.boundaries[offset], this.boundaries[start] );
+	ruler.innerHTML = this.escape(
+		this.content.substring( this.boundaries[offset], this.boundaries[start] )
+	);
 	return { 'end': start, 'width': ruler.clientWidth };
 };
 
