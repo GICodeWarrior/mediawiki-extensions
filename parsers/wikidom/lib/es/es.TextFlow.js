@@ -183,7 +183,7 @@ TextFlow.prototype.scanBoundaries = function() {
 	 */
 	var text = this.content.substring();
 	// Purge "boundaries" and "words" arrays
-	this.boundaries = [];
+	this.boundaries = [0];
 	// Reset RegExp object's state
 	this.boundaryTest.lastIndex = 0;
 	// Iterate over each word+boundary sequence, capturing offsets and encoding text as we go
@@ -268,7 +268,7 @@ TextFlow.prototype.render = function( offset, callback ) {
 						wordOffset, length, ruler, width - charFit.width
 					);
 					if ( wordFit.end > wordOffset ) {
-						wordOffset = wordFit.end - 1;
+						wordOffset = wordFit.end;
 						charFit.end = lineEnd = this.boundaries[wordOffset];
 					}
 				}
@@ -277,12 +277,11 @@ TextFlow.prototype.render = function( offset, callback ) {
 				charOffset = charFit.end;
 			} while ( charOffset < lineEnd );
 		} else {
-			wordOffset = wordFit.end - 1;
+			wordOffset = wordFit.end;
 			lineEnd = this.boundaries[wordOffset];
 			this.appendLine( lineStart, lineEnd );
 		}
 		lineStart = lineEnd;
-		wordOffset++;
 	}
 	// Cleanup
 	$ruler.remove();
