@@ -195,10 +195,23 @@ Content.prototype.annotate = function( annotation, start, end ) {
 	for ( var i = start; i < end; i++ ) {
 		switch ( annotation.method ) {
 			case 'add':
+				var duplicate = false;
 				if ( typeof this.data[i] === 'string' ) {
 					this.data[i] = [this.data[i]];
+				} else {
+					for ( var j = 1; j < this.data[i].length; j++ ) {
+						if ( this.data[i][j].type === annotation.type 
+								&& Content.compareObjects(
+									this.data[i][j].data, annotation.data
+								)
+						) {
+							duplicate = true;
+						}
+					}
 				}
-				this.data[i].push( annotation );
+				if ( !duplicate ) {
+					this.data[i].push( annotation );
+				}
 				break;
 			case 'remove':
 				if ( typeof this.data[i] !== 'string' ) {
