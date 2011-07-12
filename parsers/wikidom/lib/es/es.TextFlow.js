@@ -11,6 +11,7 @@ function TextFlow( $container, content ) {
 	this.lines = [];
 	this.width = null;
 	this.boundaryTest = /([ \-\t\r\n\f])/g;
+	this.widthCache = {};
 }
 
 /**
@@ -20,7 +21,7 @@ function TextFlow( $container, content ) {
  * @return {String} HTML escaped text
  */
 TextFlow.prototype.escape = function( start, end ) {
-	return text
+	return this.content.substring( start, end )
 		// Tags
 		.replace( /&/g, '&amp;' )
 		.replace( /</g, '&lt;' )
@@ -214,6 +215,8 @@ TextFlow.prototype.scanBoundaries = function() {
  * @param callback {Function} Function to execute when flowing is complete
  */
 TextFlow.prototype.render = function( offset, callback ) {
+	this.widthCache = {};
+
 	// Reset lines in the DOM and the "lines" array
 	this.$.empty();
 	
@@ -331,14 +334,21 @@ TextFlow.prototype.appendLine = function( start, end ) {
 TextFlow.prototype.fitWords = function( start, end, ruler, width ) {
 	var offset = start,
 		middle,
-		lineWidth;
+		lineWidth,
+		cacheKey;
 	do {
 		// Place "middle" directly in the center of "start" and "end"
 		middle = Math.ceil( ( start + end ) / 2 );
+
+		cacheKey = this.boundaries[offset] + ':' + this.boundaries[middle];
+
 		// Prepare the line for measurement using pre-escaped HTML
 		ruler.innerHTML = this.escape( this.boundaries[offset], this.boundaries[middle] );
 		// Test for over/under using width of the rendered line
-		if ( ( lineWidth = ruler.clientWidth ) > width ) {
+		this.widthCache[cacheKey] = lineWidth = ruler.clientWidth;
+
+		// Test for over/under using width of the rendered line
+		if ( lineWidth > width ) {
 			// Detect impossible fit (the first word won't fit by itself)
 			if (middle - offset === 1) {
 				start = middle;
@@ -370,14 +380,24 @@ TextFlow.prototype.fitWords = function( start, end, ruler, width ) {
 TextFlow.prototype.fitCharacters = function( start, end, ruler, width ) {
 	var offset = start,
 		middle,
-		lineWidth;
+		lineWidth,
+		cacheKey;
 	do {
 		// Place "middle" directly in the center of "start" and "end"
 		middle = Math.ceil( ( start + end ) / 2 );
-		// Fill the line with a portion of the text, escaped as HTML
-		ruler.innerHTML = this.escape( offset, middle );
-		// Test for over/under using width of the rendered line
-		if ( ( lineWidth = ruler.clientWidth ) > width ) {
+		
+		cacheKey = offset + ':' + middle;
+		
+		if ( cacheKey in this.widthCache ) {
+			lineWidth = this.widthCache[cacheKey];
+		} else {
+			// Fill the line with a portion of the text, escaped as HTML
+			ruler.innerHTML = this.escape( offset, middle );
+			// Test for over/under using width of the rendered line
+			this.widthCache[cacheKey] = lineWidth = ruler.clientWidth;
+		}
+
+		if ( lineWidth > width ) {
 			// Detect impossible fit (the first character won't fit by itself)
 			if (middle - offset === 1) {
 				start = middle - 1;
