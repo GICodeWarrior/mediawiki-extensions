@@ -65,7 +65,7 @@ PegParser.prototype.initSource = function(callback) {
 			}, 'json');
 		} else {
 			$.ajax({
-				url: wgExtensionAssetsPath + '/ParserPlayground/modules/pegParser.pegjs.txt',
+				url: mw.config.get('wgParserPlaygroundAssetsPath', mw.config.get('wgExtensionAssetsPath')) + '/ParserPlayground/modules/pegParser.pegjs.txt',
 				success: function(data) {
 					PegParser.src = data;
 					callback();
