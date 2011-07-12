@@ -128,3 +128,10 @@ $messages['ru'] = array(
 	'dublincorerdf-desc' => 'RDF-метаданные Dublin Core',
 );
 
+/** Swedish (Svenska)
+ * @author Lokal Profil
+ */
+$messages['sv'] = array(
+	'dublincorerdf-desc' => 'Dublin Core RDF-metadata',
+);
+
