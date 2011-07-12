@@ -1,10 +1,5 @@
 <?php
 
-if (!defined('MEDIAWIKI')) {
-	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
-	die(1);
-}
-
 class SpecialModifyArchiveBlacklist extends SpecialPage {
 
 	function __construct() {

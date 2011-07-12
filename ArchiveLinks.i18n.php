@@ -8,8 +8,8 @@ $messages = array();
 //English
 $messages['en'] = array(
 	'archivelinks-cache-title' => 'cache',
-	'ModifyArchiveBlacklist' => 'Modify Archive Blacklist',
-	'ViewArchive' => 'View Archive',
+	'modifyarchiveblacklist' => 'Modify Archive Blacklist',
+	'viewarchive' => 'View External Link Archive',
 	'archivelinks-modify-blacklist-desc' => 'This page allows you to blacklist or whitelist URLs for the ArchiveLinks extension.',
 	//'archivelinks-archive-blacklist-fieldset-label' => 'Blacklist a URL',
 	'archivelinks-modify-blacklist-url-field-label' => 'URL to Blacklist:',
