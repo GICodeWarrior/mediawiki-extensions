@@ -14,16 +14,20 @@ function Cursor() {
  * @param offset {Position} Offset to be added to position
  */
 Cursor.prototype.show = function( position, offset ) {
-	if ( $.isPlainObject( offset ) ) {
-		position.left += offset.left;
-		position.top += offset.top;
-		position.bottom += offset.top;
+	if ( position ) {
+		if ( $.isPlainObject( offset ) ) {
+			position.left += offset.left;
+			position.top += offset.top;
+			position.bottom += offset.top;
+		}
+		this.$.css({
+			'left': position.left,
+			'top': position.top,
+			'height': position.bottom - position.top
+		}).show();
+	} else {
+		this.$.show();
 	}
-	this.$.css({
-		'left': position.left,
-		'top': position.top,
-		'height': position.bottom - position.top
-	}).show();
 	
 	if ( this.cursorInterval ) {
 		clearInterval( this.cursorInterval );

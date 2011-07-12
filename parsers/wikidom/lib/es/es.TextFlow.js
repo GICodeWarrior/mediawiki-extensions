@@ -93,6 +93,7 @@ TextFlow.prototype.getPosition = function( offset ) {
 			'left': 0,
 			'top': 0,
 			'bottom': 0
+			// 'line': (set later on)
 		};
 	
 	/*
@@ -128,6 +129,7 @@ TextFlow.prototype.getPosition = function( offset ) {
 			throw 'Out of range error. Offset is expected to be less than or equal to text length.';
 		}
 	}
+	position.line = line;
 	
 	/*
 	 * Offset measuring

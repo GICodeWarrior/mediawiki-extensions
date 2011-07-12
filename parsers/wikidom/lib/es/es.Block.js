@@ -15,7 +15,7 @@ Block.prototype.getLength = function() {
  * 
  * @returns {Integer} Index of block
  */
-Block.prototype.index = function() {
+Block.prototype.getIndex = function() {
 	if ( !this.document ) {
 		throw 'Missing document error. Block is not attached to a document.';
 	}

@@ -19,23 +19,17 @@
  * @returns {Surface}
  */
 function Surface( $container, document ) {
+	var surface = this;
+	
 	this.$ = $container.addClass( 'editSurface' );
 	this.document = document;
 	this.rendered = false;
 	this.location = null;
-	this.selection = null;
-	this.keydownInterval = null;
+	this.selection = new Selection();
+	this.selecting = false;
+	this.keydownTimeout = null;
 	this.initialHorizontalCursorPosition = null;
-	this.render();
 	
-	this.state = {
-		'selection': {
-			'active': false
-		}
-	};
-	
-	var surface = this;
-
 	this.$.bind({
 		'mousedown' : function(e) {
 			return surface.onMouseDown( e );
@@ -48,25 +42,56 @@ function Surface( $container, document ) {
 		}
 	});
 	
+	// Selection
+	this.$ranges = $( '<div class="editSurface-ranges"></div>' ).prependTo( this.$ );
+	this.$rangeStart = $( '<div class="editSurface-range"></div>' ).appendTo( this.$ranges );
+	this.$rangeFill = $( '<div class="editSurface-range"></div>' ).appendTo( this.$ranges );
+	this.$rangeEnd = $( '<div class="editSurface-range"></div>' ).appendTo( this.$ranges );
+	
 	// Cursor
 	this.cursor = new Cursor();
 	this.$.after( this.cursor.$ );
 	
 	// Hidden input
-	this.$input = $( '<input class="editSurface-input" />' );
-	this.$.prepend( this.$input );
-	this.$input.bind({
-		'keydown' : function( e ) {
-			return surface.onKeyDown( e );			
-		},
-		'keyup' : function( e ) {
-			return surface.onKeyUp( e );			
-		},
-		'blur': function( e ) {
-			surface.cursor.hide();
-		}
-	});
+	this.$input = $( '<input class="editSurface-input" />' )
+		.prependTo( this.$ )
+		.bind({
+			'keydown' : function( e ) {
+				return surface.onKeyDown( e );			
+			},
+			'keyup' : function( e ) {
+				return surface.onKeyUp( e );			
+			},
+			'blur': function( e ) {
+				surface.cursor.hide();
+			}
+		});
+	
+	// First render
+	this.render();
 }
+
+Surface.prototype.getLocationFromEvent = function( e ) {
+	var $target = $( e.target );
+		$block = $target.is( '.editSurface-block' )
+			? $target : $target.closest( '.editSurface-block' );
+	// Not a block or child of a block? Find the nearest block...
+	if( !$block.length ) {
+		$blocks = this.$.find( '> .editSurface-document .editSurface-block' );
+		$block = $blocks.first();
+		$blocks.each( function() {
+			// Stop looking when mouse is above top
+			if ( e.pageY <= $(this).offset().top ) {
+				return false;
+			}
+			$block = $(this);
+		} );
+	}
+	var block = $block.data( 'block' )
+		blockPosition = $block.offset()
+		mousePosition = new Position( e.pageX - blockPosition.left, e.pageY - blockPosition.top );
+	return new Location( block, block.getOffset( mousePosition ) );
+};
 
 Surface.prototype.onKeyDown = function( e ) {
 
@@ -95,10 +120,10 @@ Surface.prototype.onKeyDown = function( e ) {
 		default:
 			this.initialHorizontalCursorPosition = null;
 			this.cursor.hide();
-			if ( this.keydownInterval ) {
-				clearTimeout( this.keydownInterval );
+			if ( this.keydownTimeout ) {
+				clearTimeout( this.keydownTimeout );
 			}
-			this.keydownInterval = setTimeout( function ( surface ) {
+			this.keydownTimeout = setTimeout( function ( surface ) {
 				var val = surface.$input.val();
 				surface.$input.val( '' );
 				if ( val.length > 0 ) {
@@ -133,70 +158,162 @@ Surface.prototype.handleDelete = function() {
 		location.block.deleteContent( location.offset, location.offset + 1);
 		this.cursor.show( location.block.flow.getPosition( location.offset ), location.block.$.offset() );
 	}
-}
+};
 
 Surface.prototype.onMouseDown = function( e ) {
-	this.initialHorizontalCursorPosition = null;
-	
-	var $target = $( e.target );
-		$block = $target.is( '.editSurface-block' )
-			? $target : $target.closest( '.editSurface-block' );
-	// Not a block or child of a block? Find the nearest block...
-	if( !$block.length ) {
-		$blocks = this.$.find( '> .editSurface-document .editSurface-block' );
-		$block = $blocks.first();
-		$blocks.each( function() {
-			// Stop looking when mouse is above top
-			if ( e.pageY <= $(this).offset().top ) {
-				return false;
-			}
-			$block = $(this);
-		} );
+	if ( e.button === 0 ) {
+		this.location = this.getLocationFromEvent( e );
+		this.selection = new Selection( this.location );
+		var cursorPosition = this.location.block.getPosition( this.location.offset );
+		this.cursor.show( cursorPosition, this.location.block.$.offset() );
+		this.$input.css( 'top', cursorPosition.top );
+		this.selecting = true;
+		this.drawSelection();
+		this.cursor.show();
 	}
-	var block = $block.data( 'block' )
-		blockPosition = $block.offset()
-		mousePosition = new Position( e.pageX - blockPosition.left, e.pageY - blockPosition.top )
-		nearestOffset = block.flow.getOffset( mousePosition ),
-		cursorPosition = block.flow.getPosition( nearestOffset );
-	
-	this.cursor.show( cursorPosition, blockPosition );
-	this.$input.css( 'top', cursorPosition.top );
-	this.location = new Location( block, nearestOffset );
-	
-	this.state.selection = {
-		'active': true,
-		'from': null,
-		'to': null,
-		'start': nearestOffset,
-		'end': null
-	};
-	
+	this.initialHorizontalCursorPosition = null;
 	this.$input.focus();
 	return false;
 };
 
 Surface.prototype.onMouseMove = function( e ) {
-	var sel = this.state.selection;
-	if ( sel.active ) {
-		//
+	this.cursor.hide();
+	if ( e.button === 0 && this.selecting ) {
+		this.selection.to = this.getLocationFromEvent( e );
+		this.drawSelection();
 	}
 };
 
 Surface.prototype.onMouseUp = function( e ) {
-	var sel = this.state.selection;
-	if ( sel.active ) {
-		sel.active = false;
+	if ( e.button === 0 && this.selecting ) {
+		this.selecting = false;
+		this.drawSelection();
+		this.cursor.hide();
 	}
 };
 
 /**
- * Sets the selection to a new range.
- * 
- * @param from {Location} Start of selection
- * @param to {Location} End of selection
+ * Displays current selection behind document content.
  */
-Surface.prototype.setSelection = function( from, to ) {
-	//
+Surface.prototype.drawSelection = function() {
+	if ( this.selection.from && this.selection.to ) {
+		var from = {
+				'location': this.selection.from,
+				'position': this.selection.from.block.getPosition( this.selection.from.offset )
+			},
+			to = {
+				'location': this.selection.to,
+				'position': this.selection.to.block.getPosition( this.selection.to.offset )
+			};
+		if ( from.location.block === to.location.block ) {
+			var block = from.location.block,
+				blockOffset = block.$.offset();
+			if ( from.location.offset === to.location.offset ) {
+				// No selection, just hide them all
+				this.$rangeStart.hide();
+				this.$rangeFill.hide();
+				this.$rangeEnd.hide();
+			} else if ( from.position.line === to.position.line ) {
+				// Normalize from/to
+				if ( from.location.offset > to.location.offset ) {
+					var temp = to;
+					to = from;
+					from = temp;
+				}
+				// Single line selection
+				this.$rangeStart
+					.css( {
+						'top': blockOffset.top + from.position.top,
+						'left': blockOffset.left + from.position.left,
+						'width': to.position.left - from.position.left,
+						'height': from.position.bottom - from.position.top
+					} )
+					.show();
+				this.$rangeFill.hide();
+				this.$rangeEnd.hide();
+			} else {
+				// Normalize from/to
+				if ( from.position.line > to.position.line ) {
+					var temp = to;
+					to = from;
+					from = temp;
+				}
+				// Multiple line selection
+				var blockWidth = block.$.width();
+				this.$rangeStart
+					.css( {
+						'top': blockOffset.top + from.position.top,
+						'left': blockOffset.left + from.position.left,
+						'width': blockWidth - from.position.left,
+						'height': from.position.bottom - from.position.top
+					} )
+					.show();
+				this.$rangeEnd
+					.css( {
+						'top': blockOffset.top + to.position.top,
+						'left': blockOffset.left,
+						'width': to.position.left,
+						'height': to.position.bottom - to.position.top
+					} )
+					.show();
+				if ( from.position.line + 1 < to.position.line ) {
+					this.$rangeFill
+						.css( {
+							'top': blockOffset.top + from.position.bottom,
+							'left': blockOffset.left,
+							'width': blockWidth,
+							'height': to.position.top - from.position.bottom
+						} )
+						.show();
+				} else {
+					this.$rangeFill.hide();
+				}
+			}
+		} else {
+			// Normalize from/to
+			if ( from.location.block.getIndex() > to.location.block.getIndex() ) {
+				var temp = to;
+				to = from;
+				from = temp;
+			}
+			// Multiple block selection
+			var blockWidth = Math.max(
+					from.location.block.$.width(),
+					to.location.block.$.width()
+				)
+				fromBlockOffset = from.location.block.$.offset(),
+				toBlockOffset = to.location.block.$.offset(),
+				blockLeft = Math.min( fromBlockOffset.left, toBlockOffset.left );
+			this.$rangeStart
+				.css( {
+					'top': fromBlockOffset.top + from.position.top,
+					'left': blockLeft + from.position.left,
+					'width': blockWidth - from.position.left,
+					'height': from.position.bottom - from.position.top
+				} )
+				.show();
+			this.$rangeEnd
+				.css( {
+					'top': toBlockOffset.top + to.position.top,
+					'left': blockLeft,
+					'width': to.position.left,
+					'height': to.position.bottom - to.position.top
+				} )
+				.show();
+			this.$rangeFill
+				.css( {
+					'top': fromBlockOffset.top + from.position.bottom,
+					'left': blockLeft,
+					'width': blockWidth,
+					'height': ( toBlockOffset.top + to.position.top )
+						- ( fromBlockOffset.top + from.position.bottom )
+				} )
+				.show();
+		}
+		this.$ranges.show();
+	} else {
+		this.$ranges.hide();
+	}
 };
 
 /**
@@ -205,7 +322,7 @@ Surface.prototype.setSelection = function( from, to ) {
  * @param from {Selection} Selection to apply
  */
 Surface.prototype.setSelection = function( selection ) {
-	//
+	this.selection = selection;
 };
 
 /**
@@ -214,16 +331,15 @@ Surface.prototype.setSelection = function( selection ) {
  * @returns {Selection}
  */
 Surface.prototype.getSelection = function() {
-	// return selection
+	return this.selection;
 };
 
 /**
- * Gets the location of a position.
+ * Gets the current cursor location.
  * 
- * @param position {Position} Position to translate
  * @returns {Location}
  */
-Surface.prototype.getLocation = function( position ) {
+Surface.prototype.getLocation = function() {
 	return this.location;
 };
 
