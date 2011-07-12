@@ -42,7 +42,7 @@ class SquidPageViewsMetric extends ApiAnalyticsBase {
 		// TODO: Change fields/table to normalise data set returned
 		// Swap page_views for page_views_v
 
-		if ( $normalise ) {
+		if (!$normalise ) {
 			$this->queryFields = array( 'views_mobile_raw', 'views_non_mobile_raw' );
 		} else {
 			$this->queryFields = array( 'views_mobile_normalized', 'views_non_mobile_normalized' );
