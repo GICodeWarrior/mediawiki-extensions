@@ -99,7 +99,7 @@ function getRandomImage( $input, $args, $parser ) {
 		$image_list = $data;
 		wfDebug( "Cache hit for random image list\n" );
 	}
-var_dump( $image_list );
+
 	$random_image = '';
 	$thumbnail = '';
 	if( count( $image_list ) > 1 ) {
