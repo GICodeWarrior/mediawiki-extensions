@@ -1,6 +1,6 @@
 MediaWiki OpenID extension README.OpenID-mediawiki-extension file
-version 0.921-beta
-19 May 2011
+version 0.933-beta
+12 July 2011
 
 Homepage and manual http://www.mediawiki.org/wiki/Extension:OpenID
 
@@ -124,12 +124,6 @@ The makefile downloads the openid-php library from http://www.openidenabled.com/
 and applies a patch to avoid PHP errors because Call-time pass-by-reference is deprecated
 since PHP 5.3.x see https://github.com/openid/php-openid/issues#issue/8  and
 the patch and fork of user kost https://github.com/openid/php-openid/pull/44/files
-
-Run update.php script in in your MediaWiki maintenance folder to create
-necessary tables in MediaWiki database:
-
-    cd $IP/maintenance
-    php update.php
     
 Version 0.3 and below of this extension used a different database structure
 that was pretty inefficient. If you installed this extension before, you should
@@ -141,6 +135,12 @@ In your MediaWiki LocalSettings.php, add the following line some place towards
 the bottom of the file:
 
 	require_once( "$IP/extensions/OpenID/OpenID.setup.php" );
+
+Run update.php script in in your MediaWiki maintenance folder to conditionally create
+a new table in MediaWiki database as required by the OpenID extension:
+
+    cd $IP/maintenance
+    php update.php
 
 Theoretically it should work out of the box, but you'll almost definitely want
 to set the trust root and access controls (see Configuration below).
