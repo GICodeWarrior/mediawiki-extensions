@@ -15,30 +15,9 @@ function TextFlow( $container, content ) {
 }
 
 /**
- * Encodes text as an HTML string.
- * 
- * @param text {String} Text to escape
- * @return {String} HTML escaped text
- */
-TextFlow.prototype.escape = function( start, end ) {
-	return this.content.substring( start, end )
-		// Tags
-		.replace( /&/g, '&amp;' )
-		.replace( /</g, '&lt;' )
-		.replace( />/g, '&gt;' )
-		// Quotes - probably not needed
-		//.replace( /'/g, '&#039;' )
-		//.replace( /"/g, '&quot;' )
-		// Whitespace
-		.replace( / /g, '&nbsp;' )
-		.replace( /\n/g, '<span class="editSurface-whitespace">\\n</span>' )
-		.replace( /\t/g, '<span class="editSurface-whitespace">\\t</span>' );
-};
-
-/**
  * Gets offset within content closest to of a given position.
  * 
- * @param x {Integer} Horizontal position in pixels
+ * @pthis.content.render {Integer} Horizontal position in pixels
  * @param y {Integer} Vertical position in pixels
  * @return {Integer} Offset within content nearest the given coordinates
  */
@@ -81,9 +60,9 @@ TextFlow.prototype.getOffset = function( position ) {
 		fit = this.fitCharacters(
 			this.lines[line].start, this.lines[line].end, ruler, position.left
 		);
-	ruler.innerHTML = this.escape( this.lines[line].start, fit.end );
+	ruler.innerHTML = this.content.render( this.lines[line].start, fit.end );
 	var left = ruler.clientWidth;
-	ruler.innerHTML = this.escape( this.lines[line].start, fit.end + 1 );
+	ruler.innerHTML = this.content.render( this.lines[line].start, fit.end + 1 );
 	var right = ruler.clientWidth;
 	var center = Math.round( left + ( ( right - left ) / 2 ) );
 	$ruler.remove();
@@ -159,7 +138,7 @@ TextFlow.prototype.getPosition = function( offset ) {
 	if ( this.lines[line].start < offset ) {
 		var $ruler = $( '<div class="editSurface-line"></div>' ).appendTo( this.$ ),
 			ruler = $ruler[0];
-		ruler.innerHTML = this.escape( this.lines[line].start, offset );
+		ruler.innerHTML = this.content.render( this.lines[line].start, offset );
 		position.left = ruler.clientWidth;
 		$ruler.remove();
 	}
@@ -297,7 +276,7 @@ TextFlow.prototype.render = function( offset, callback ) {
  */
 TextFlow.prototype.appendLine = function( start, end ) {
 	$line = $( '<div class="editSurface-line" line-index="'
-			+ this.lines.length + '">' + this.escape( start, end ) + '</div>' )
+			+ this.lines.length + '">' + this.content.render( start, end ) + '</div>' )
 		.appendTo( this.$ );
 	// Collect line information
 	this.lines.push({
@@ -343,7 +322,7 @@ TextFlow.prototype.fitWords = function( start, end, ruler, width ) {
 		cacheKey = this.boundaries[offset] + ':' + this.boundaries[middle];
 
 		// Prepare the line for measurement using pre-escaped HTML
-		ruler.innerHTML = this.escape( this.boundaries[offset], this.boundaries[middle] );
+		ruler.innerHTML = this.content.render( this.boundaries[offset], this.boundaries[middle] );
 		// Test for over/under using width of the rendered line
 		this.widthCache[cacheKey] = lineWidth = ruler.clientWidth;
 
@@ -392,7 +371,7 @@ TextFlow.prototype.fitCharacters = function( start, end, ruler, width ) {
 			lineWidth = this.widthCache[cacheKey];
 		} else {
 			// Fill the line with a portion of the text, escaped as HTML
-			ruler.innerHTML = this.escape( offset, middle );
+			ruler.innerHTML = this.content.render( offset, middle );
 			// Test for over/under using width of the rendered line
 			this.widthCache[cacheKey] = lineWidth = ruler.clientWidth;
 		}

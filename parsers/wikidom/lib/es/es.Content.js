@@ -81,3 +81,84 @@ Content.prototype.remove = function( start, end ) {
 Content.prototype.getLength = function() {
 	return this.data.length; 
 };
+
+Content.prototype.render = function( start, end ) {
+	if ( start || end ) {
+		return this.slice( start, end ).render();
+	}
+
+	// TODO: Find a better place for this function
+	function diff( a, b ) {
+		var result = [];
+		for ( var i = 1; i < b.length; i++ ) {
+			if ( a.indexOf( b[i] ) === -1 ) {
+				result.push( b[i] );
+			}
+		}
+		return result;
+	}
+	
+	function openAnnotations( annotations ) {
+		var out = '';
+		for ( var i = 0; i < annotations.length; i++ ) {
+			switch (annotations[i].type) {
+				case 'bold':
+					out += '<b>';
+					break;
+				case 'italic':
+					out += '<i>';
+					break;
+			}
+		}
+		return out;		
+	}
+
+	function closeAnnotations ( annotations ) {
+		var out = '';
+		for ( var i = 0; i < annotations.length; i++ ) {
+			switch (annotations[i].type) {
+				case 'bold':
+					out += '</b>';
+					break;
+				case 'italic':
+					out += '</i>';
+					break;
+			}
+		}
+		return out;		
+	}
+	
+	var left = [],
+		right,
+		out = '';
+	
+	for ( var i = 0; i < this.data.length; i++ ) {
+		right = this.data[i] || [];
+
+		if ( typeof right == 'string' ) {
+			right = [right];
+		}
+		
+		var diffout = diff( left, right );
+		//debugger;
+		out += openAnnotations( diffout );
+		
+		out += right[0]
+			// Tags
+			.replace( /&/g, '&amp;' )
+			.replace( /</g, '&lt;' )
+			.replace( />/g, '&gt;' )
+			// Quotes - probably not needed
+			//.replace( /'/g, '&#039;' )
+			//.replace( /"/g, '&quot;' )
+			// Whitespace
+			.replace( / /g, '&nbsp;' )
+			.replace( /\n/g, '<span class="editSurface-whitespace">\\n</span>' )
+			.replace( /\t/g, '<span class="editSurface-whitespace">\\t</span>' );
+		
+		out += closeAnnotations( diff( right, left ) );
+		left = right;		
+	}
+	
+	return out;
+}
