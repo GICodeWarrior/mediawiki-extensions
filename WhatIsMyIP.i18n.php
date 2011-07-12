@@ -585,6 +585,16 @@ $messages['ml'] = array(
 	'right-whatismyip' => '[[Special:WhatIsMyIP|സ്വന്തം ഐ.പി. വിലാസം]] കാണുക',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'whatismyip' => 'Apakah IP saya',
+	'whatismyip-desc' => 'Menunjukkan [[Special:WhatIsMyIP|alamat IP]] semasa pengguna',
+	'whatismyip-out' => 'Alamat IP anda:',
+	'right-whatismyip' => 'Memaparkan [[Special:WhatIsMyIP|alamat IP sendiri]]',
+);
+
 /** Burmese (မြန်မာဘာသာ)
  * @author Erikoo
  */
