@@ -4,9 +4,45 @@
 	<head>
 		<title>EditSurface Demo</title>
 		<link rel="stylesheet" href="../../lib/es/es.Surface.css">
+		<style>
+			body {
+				font-family: "Arial";
+				font-size: 1em;
+				width: 100%;
+				margin: 0;
+				padding: 0;
+				overflow-y: scroll;
+			}
+			#es-toolbar,
+			#es-editor {
+				border: solid 1px silver;
+				margin-left: 12.5%;
+				margin-top: 1em;
+				width: 75%;
+			}
+			.es-toolbarTool {
+				float: left;
+				width: 23px;
+				height: 23px;
+				margin: 0.5em 0 0.5em 0.5em;
+			}
+			.es-toolbarTool img {
+				border: solid 1px white;
+				cursor: pointer;
+			}
+			.es-toolbarTool img:hover {
+				border-color: silver;
+			}
+		</style>
 	</head>
 	<body>
-		<div id="es"></div>
+		<div id="es-toolbar" class="es-toolbar">
+			<div class="es-toolbarTool" id="es-toolbar-bold"><img src="images/bold.png"></div>
+			<div class="es-toolbarTool" id="es-toolbar-italic"><img src="images/italic.png"></div>
+			<div class="es-toolbarTool" id="es-toolbar-link"><img src="images/link.png"></div>
+			<div style="clear:both"></div>
+		</div>
+		<div id="es-editor"></div>
 		
 		<!-- EditSurface -->
 		<script type="text/javascript" src="../../lib/jquery.js"></script>
@@ -51,7 +87,7 @@
 						{ 'text': "Text might have\ttabs\tin it too. Not all text will end in a line breaking character" }
 					])
 				]);
-				var surface = new Surface( $('#es'), doc );
+				var surface = new Surface( $('#es-editor'), doc );
 				
 				$(window).resize( function() {
 					surface.render();
