@@ -282,16 +282,14 @@ class RecordAdmin {
 	 */
 	function cmpCallback( $a, $b, $operator ) {
 		$b = html_entity_decode( $b, ENT_QUOTES );
-		$bre = str_replace( '/', '\/', $b );
-		$bre = str_replace( '(', '\(', $bre );
-		$bre = str_replace( ')', '\)', $bre );
+		$bre = preg_quote( $b, '|' );
 		switch ( $operator ) {
 			case '=':
-				$cond = preg_match( "/$bre/i", $a );
+				$cond = preg_match( "|$bre|i", $a );
 			break;
 			
 			case '!=':
-				$cond = !preg_match( "/$bre/i", $a );
+				$cond = !preg_match( "|$bre|i", $a );
 			break;
 			
 			default:
@@ -616,9 +614,7 @@ class RecordAdmin {
 					$html = preg_replace( "|(<option[^<>]*) selected|i", "$1", $html ); # remove the currently selected option
 					if( $v ) {
 						foreach( self::split( $v ) as $v ) {
-							$v = htmlentities( $v );
-							$v = str_replace( '(', '\(', $v );
-							$v = str_replace( ')', '\)', $v );
+							$v = preg_quote( htmlentities( $v ), '|' );
 							$html = preg_match( "|<option[^>]+value\s*=|is", $html )
 								? preg_replace( "|(<option)([^>]+value\s*=\s*[\"']{$v}['\"])|is", "$1 selected$2", $html )
 								: preg_replace( "|(<option[^>]*)(?=>$v</option>)|is", "$1 selected", $html );
