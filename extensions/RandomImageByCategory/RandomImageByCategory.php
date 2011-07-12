@@ -35,7 +35,7 @@ function wfRandomImageByCategory( &$parser ) {
 }
 
 function getRandomImage( $input, $args, $parser ) {
-	global $wgOut, $wgMemc;
+	global $wgMemc;
 
 	wfProfileIn( __METHOD__ );
 
@@ -60,8 +60,8 @@ function getRandomImage( $input, $args, $parser ) {
 	$image_list = array();
 	if( !$data ) {
 		wfDebug( "Getting random image list from DB\n" );
-		$p = new Parser();
-		$ctg = $p->transformMsg( $categories, $wgOut->parserOptions() );
+		$ctg = $parser->replaceVariables( $categories );
+		$ctg = $parser->mStripState->unstripBoth( $ctg );
 		$ctg = str_replace( "\,", '#comma#', $ctg );
 		$aCat = explode( ',', $ctg );
 
@@ -99,7 +99,7 @@ function getRandomImage( $input, $args, $parser ) {
 		$image_list = $data;
 		wfDebug( "Cache hit for random image list\n" );
 	}
-
+var_dump( $image_list );
 	$random_image = '';
 	$thumbnail = '';
 	if( count( $image_list ) > 1 ) {
