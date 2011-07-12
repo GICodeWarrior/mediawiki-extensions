@@ -68,3 +68,16 @@ body {
 	height: 1.5em;
 	display: none;
 }
+
+.italic {
+	font-style: italic;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.xlink {
+	color: blue;
+	text-decoration: underline;
+}

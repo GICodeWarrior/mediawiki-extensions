@@ -82,67 +82,110 @@ Content.prototype.getLength = function() {
 	return this.data.length; 
 };
 
+Content.annotationRenderers = {
+	'bold': {
+		'open': '<span class="bold">',
+		'close': '</span>',
+	},
+	'italic': {
+		'open': '<span class="italic">',
+		'close': '</span>',
+	},
+	'xlink': {
+		'open': function( data ) {
+			return '<span class="xlink" data-href="' + data.href + '">';
+		},
+		'close': '</span>'
+	}
+};
+
+Content.renderAnnotation = function( bias, annotation, stack ) {
+	var renderers = Content.annotationRenderers,
+		type = annotation.type,
+		out = '';
+	if ( type in renderers ) {
+		if ( bias === 'open' ) {
+			// Add annotation to the top of the stack
+			stack.push( annotation );
+			// Open annotation
+			out += typeof renderers[type]['open'] === 'function'
+				? renderers[type]['open']( annotation.data )
+				: renderers[type]['open'];
+		} else {
+			if ( stack[stack.length - 1] === annotation ) {
+				// Remove annotation from top of the stack
+				stack.pop();
+				// Close annotation
+				out += typeof renderers[type]['close'] === 'function'
+					? renderers[type]['close']( annotation.data )
+					: renderers[type]['close'];
+			} else {
+				// Find the annotation in the stack
+				var depth = stack.indexOf( annotation );
+				if ( depth === -1 ) {
+					throw 'Invalid stack error. An element is missing from the stack.';
+				}
+				// Close each already opened annotation
+				for ( var i = stack.length - 1; i >= depth + 1; i-- ) {
+					out += typeof renderers[stack[i].type]['close'] === 'function'
+						? renderers[stack[i].type]['close']( stack[i].data )
+						: renderers[stack[i].type]['close'];
+				}
+				// Close the buried annotation
+				out += typeof renderers[type]['close'] === 'function'
+					? renderers[type]['close']( annotation.data )
+					: renderers[type]['close'];
+				// Re-open each previously opened annotation
+				for ( var i = depth + 1; i < stack.length; i++ ) {
+					out += typeof renderers[stack[i].type]['open'] === 'function'
+						? renderers[stack[i].type]['open']( stack[i].data )
+						: renderers[stack[i].type]['open'];
+				}
+				// Remove the annotation from the middle of the stack
+				stack.splice( depth, 1 );
+			}
+		}
+	}
+	return out;
+};
+
 Content.prototype.render = function( start, end ) {
 	if ( start || end ) {
 		return this.slice( start, end ).render();
 	}
-
-	// TODO: Find a better place for this function
-	function diff( a, b ) {
-		var result = [];
-		for ( var i = 1; i < b.length; i++ ) {
-			if ( a.indexOf( b[i] ) === -1 ) {
-				result.push( b[i] );
-			}
-		}
-		return result;
-	}
-	
-	function openAnnotations( annotations ) {
-		var out = '';
-		for ( var i = 0; i < annotations.length; i++ ) {
-			switch (annotations[i].type) {
-				case 'bold':
-					out += '<b>';
-					break;
-				case 'italic':
-					out += '<i>';
-					break;
-			}
-		}
-		return out;		
-	}
-
-	function closeAnnotations ( annotations ) {
-		var out = '';
-		for ( var i = 0; i < annotations.length; i++ ) {
-			switch (annotations[i].type) {
-				case 'bold':
-					out += '</b>';
-					break;
-				case 'italic':
-					out += '</i>';
-					break;
-			}
-		}
-		return out;		
-	}
-	
-	var left = [],
+	var out = '',
+		left = '',
 		right,
-		out = '';
-	
+		leftPlain,
+		rightPlain,
+		stack = [];
 	for ( var i = 0; i < this.data.length; i++ ) {
-		right = this.data[i] || [];
-
-		if ( typeof right == 'string' ) {
-			right = [right];
+		right = this.data[i];
+		leftPlain = typeof left === 'string';
+		rightPlain = typeof right === 'string';
+		if ( !leftPlain && rightPlain ) {
+			// [formatted][plain] pair, close any annotations for left
+			for ( var j = 1; j < left.length; j++ ) {
+				out += Content.renderAnnotation( 'close', left[j], stack );
+			}
+		} else if ( leftPlain && !rightPlain ) {
+			// [plain][formatted] pair, open any annotations for right
+			for ( var j = 1; j < right.length; j++ ) {
+				out += Content.renderAnnotation( 'open', right[j], stack );
+			}
+		} else if ( !leftPlain && !rightPlain ) {
+			// [formatted][formatted] pair, open/close any differences
+			for ( var j = 1; j < left.length; j++ ) {
+				if ( right.indexOf( left[j] ) === -1 ) {
+					out += Content.renderAnnotation( 'close', left[j], stack );
+				}
+			}
+			for ( var j = 1; j < right.length; j++ ) {
+				if ( left.indexOf( right[j] ) === -1 ) {
+					out += Content.renderAnnotation( 'open', right[j], stack );
+				}
+			}
 		}
-		
-		var diffout = diff( left, right );
-		//debugger;
-		out += openAnnotations( diffout );
-		
 		out += right[0]
 			// Tags
 			.replace( /&/g, '&amp;' )
@@ -156,7 +199,6 @@ Content.prototype.render = function( start, end ) {
 			.replace( /\n/g, '<span class="editSurface-whitespace">\\n</span>' )
 			.replace( /\t/g, '<span class="editSurface-whitespace">\\t</span>' );
 		
-		out += closeAnnotations( diff( right, left ) );
 		left = right;		
 	}
 	
