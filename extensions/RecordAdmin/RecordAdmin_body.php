@@ -282,14 +282,16 @@ class RecordAdmin {
 	 */
 	function cmpCallback( $a, $b, $operator ) {
 		$b = html_entity_decode( $b, ENT_QUOTES );
-		$bre = preg_quote( $b, '|' );
+		$bre = str_replace( '/', '\/', $b );
+		$bre = str_replace( '(', '\(', $bre );
+		$bre = str_replace( ')', '\)', $bre );
 		switch ( $operator ) {
 			case '=':
-				$cond = preg_match( "|$bre|i", $a );
+				$cond = preg_match( "/$bre/i", $a );
 			break;
 			
 			case '!=':
-				$cond = !preg_match( "|$bre|i", $a );
+				$cond = !preg_match( "/$bre/i", $a );
 			break;
 			
 			default:
