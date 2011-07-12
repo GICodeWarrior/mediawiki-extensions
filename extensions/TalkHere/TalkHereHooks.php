@@ -279,6 +279,7 @@ class TalkHereHooks {
 
 		//use a wrapper to override redirection target
 		$editor = new TalkHereEditPage( $article );
+		$editor->setReturnTo( $to );
 		$editor->submit();
 		$code = $editor->getCode();
 
@@ -288,7 +289,6 @@ class TalkHereHooks {
 			$wgOut->redirect( $to->getFullURL() . $editor->getAnchor() );
 		}
 
-		mangleEditForm( $wgOut, $returnto ); //HACK. This sucks.
 		return false;
 	}
 
@@ -315,6 +315,21 @@ class TalkHereHooks {
 class TalkHereEditPage extends EditPage {
 	private $code = 0;
 	private $sectionanchor = '';
+	private $returnto;
+
+	public function setReturnTo( $returnto ) {
+		$this->returnto = $returnto;
+	}
+
+	public function getCancelLink() {
+		global $wgUser;
+
+		if ( $this->returnto ) {
+			return $wgUser->getSkin()->link( $this->returnto, wfMsgExt('cancel', array( 'parseinline' ) ) );
+		} else {
+			return '';
+		}
+	}
 
 	public function internalAttemptSave( &$result, $bot = false ) {
 		$res = parent::internalAttemptSave( $result, $bot );
