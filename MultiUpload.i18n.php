@@ -1115,13 +1115,15 @@ $messages['mr'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Aviator
  */
 $messages['ms'] = array(
-	'multipleupload' => 'Muat naik fail',
+	'multipleupload' => 'Muat naik berbilang fail',
 	'multiupload-desc' => 'Membolehkan pengguna [[Special:MultipleUpload|memuat naik pelbagai fail serentak]]',
 	'multipleupload-ignoreallwarnings' => "Abaikan '''semua amaran''' dan simpan sahaja fail-fail tersebut.",
 	'multipleupload-saveallfiles' => 'Simpan semua fail',
+	'multipleupload-addresswarnings' => 'Sila betulkan sebarang amaran sebelum memuat naik semula fail.',
 	'multipleupload-page' => '{{ns:project}}:Dasar penghapusan fail',
 	'multipleupload-text' => "Anda boleh menggunakan laman ini untuk memuat naik pelbagai fail secara serentak.
 
@@ -1133,6 +1135,8 @@ Anda boleh memasukkan '''Nama fail sasaran''' (kalau mahu) dan membekalkan '''Ri
 Fail-fail yang tidak sesuai akan dihapuskan serta-merta. Sila baca [[{{MediaWiki:Multipleupload-page}}|dasar penghapusan fail]].",
 	'multiupload-fileuploaded' => 'Fail telah dimuat naik.',
 	'multiupload-toolbox' => 'Muat naik pelbagai fail',
+	'multiupload-no-files' => 'Sila pilih sekurang-kurangya satu fail untuk dimuat naik',
+	'multiupload-blank' => 'Tiada fail yang dipilih',
 );
 
 /** Maltese (Malti)
