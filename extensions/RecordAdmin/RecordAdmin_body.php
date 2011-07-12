@@ -616,7 +616,9 @@ class RecordAdmin {
 					$html = preg_replace( "|(<option[^<>]*) selected|i", "$1", $html ); # remove the currently selected option
 					if( $v ) {
 						foreach( self::split( $v ) as $v ) {
-							$v = htmlentities( preg_replace( "|([\[\]\|\\\(\)])|", "\\$1", $v ) );
+							$v = htmlentities( $v );
+							$v = str_replace( '(', '\(', $v );
+							$v = str_replace( ')', '\)', $v );
 							$html = preg_match( "|<option[^>]+value\s*=|is", $html )
 								? preg_replace( "|(<option)([^>]+value\s*=\s*[\"']{$v}['\"])|is", "$1 selected$2", $html )
 								: preg_replace( "|(<option[^>]*)(?=>$v</option>)|is", "$1 selected", $html );
