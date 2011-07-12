@@ -71,6 +71,17 @@ Content.prototype.slice = function( start, end ) {
 };
 
 Content.prototype.insert = function( start, insert ) {
+	// TODO: Prefer to not take annotations from a neighbor that's a space character
+	var neighbor = this.data[Math.max( start - 1, 0 )];
+	if ( $.isArray( neighbor ) ) {
+		var annotations = neighbor.slice( 1 );
+		for ( var i = 0; i < insert.length; i++ ) {
+			if ( typeof insert[i] === 'string' ) {
+				insert[i] = [insert[i]];
+			}
+			insert[i] = insert[i].concat( annotations );
+		}
+	}
 	Array.prototype.splice.apply( this.data, [start, 0].concat( insert ) )
 };
 
