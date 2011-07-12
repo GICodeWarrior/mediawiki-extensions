@@ -2,6 +2,23 @@ function Content( content ) {
 	this.data = content || [];
 };
 
+Content.compareObjects = function( a, b ) {
+	for ( var key in a ) {
+		if ( typeof a[key] !== typeof b[key] ) {
+			return false
+		} else if ( typeof a[key] === 'string' || typeof a[key] === 'number' ) {
+			if ( a[key] !== b[key] ) {
+				return false;
+			}
+		} else if ( $.isPlainObject( a[key] ) ) {
+			if ( !Content.compareObjects( a[key], b[key] ) ) {
+				return false;
+			}
+		}
+	}
+	return true;
+};
+
 Content.copyObject = function( src ) {
 	var dst = {};
 	for ( var key in src ) {
@@ -161,6 +178,70 @@ Content.renderAnnotation = function( bias, annotation, stack ) {
 		}
 	}
 	return out;
+};
+
+/**
+ * Applies an annotation to a given range.
+ * 
+ * If a range arguments are not provided, all content will be annotated.
+ * 
+ * @param annotation {Object} Annotation to apply
+ * @param start {Integer} Offset to begin annotating from
+ * @param end {Integer} Offset to stop annotating to
+ */
+Content.prototype.annotate = function( annotation, start, end ) {
+	start = Math.max( start, 0 );
+	end = Math.min( end, this.data.length );
+	for ( var i = start; i < end; i++ ) {
+		switch ( annotation.method ) {
+			case 'add':
+				if ( typeof this.data[i] === 'string' ) {
+					this.data[i] = [this.data[i]];
+				}
+				this.data[i].push( annotation );
+				break;
+			case 'remove':
+				if ( typeof this.data[i] !== 'string' ) {
+					if ( annotation.type === 'all' ) {
+						this.data[i] = this.data[i][0];
+					} else {
+						for ( var j = 1; j < this.data[i].length; j++ ) {
+							if ( this.data[i][j].type === annotation.type 
+									&& Content.compareObjects(
+										this.data[i][j].data, annotation.data
+									)
+							) {
+								this.data[i].splice( j, 1 );
+								j--;
+							}
+						}
+					}
+				}
+				break;
+			case 'toggle':
+				var on = true;
+				if ( typeof this.data[i] !== 'string' ) {
+					for ( var j = 1; j < this.data[i].length; j++ ) {
+						if ( this.data[i][j].type === annotation.type 
+								&& Content.compareObjects(
+									this.data[i][j].data, annotation.data
+								)
+						) {
+							this.data[i].splice( j, 1 );
+							j--;
+							on = false;
+						}
+					}
+				}
+				if ( on ) {
+					if ( typeof this.data[i] === 'string' ) {
+						this.data[i] = [this.data[i]];
+					}
+					this.data[i].push( annotation );
+				}
+				break;
+		}
+	}
 };
 
 Content.htmlCharacters = {

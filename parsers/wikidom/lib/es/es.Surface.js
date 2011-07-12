@@ -197,13 +197,14 @@ Surface.prototype.onMouseUp = function( e ) {
  */
 Surface.prototype.drawSelection = function() {
 	if ( this.selection.from && this.selection.to ) {
+		this.selection.normalize();
 		var from = {
-				'location': this.selection.from,
-				'position': this.selection.from.block.getPosition( this.selection.from.offset )
+				'location': this.selection.start,
+				'position': this.selection.start.block.getPosition( this.selection.start.offset )
 			},
 			to = {
-				'location': this.selection.to,
-				'position': this.selection.to.block.getPosition( this.selection.to.offset )
+				'location': this.selection.end,
+				'position': this.selection.end.block.getPosition( this.selection.end.offset )
 			};
 		if ( from.location.block === to.location.block ) {
 			var block = from.location.block,
@@ -214,12 +215,6 @@ Surface.prototype.drawSelection = function() {
 				this.$rangeFill.hide();
 				this.$rangeEnd.hide();
 			} else if ( from.position.line === to.position.line ) {
-				// Normalize from/to
-				if ( from.location.offset > to.location.offset ) {
-					var temp = to;
-					to = from;
-					from = temp;
-				}
 				// Single line selection
 				this.$rangeStart
 					.css( {
@@ -232,12 +227,6 @@ Surface.prototype.drawSelection = function() {
 				this.$rangeFill.hide();
 				this.$rangeEnd.hide();
 			} else {
-				// Normalize from/to
-				if ( from.position.line > to.position.line ) {
-					var temp = to;
-					to = from;
-					from = temp;
-				}
 				// Multiple line selection
 				var blockWidth = block.$.width();
 				this.$rangeStart
@@ -270,12 +259,6 @@ Surface.prototype.drawSelection = function() {
 				}
 			}
 		} else {
-			// Normalize from/to
-			if ( from.location.block.getIndex() > to.location.block.getIndex() ) {
-				var temp = to;
-				to = from;
-				from = temp;
-			}
 			// Multiple block selection
 			var blockWidth = Math.max(
 					from.location.block.$.width(),
@@ -448,4 +431,47 @@ Surface.prototype.render = function( from ) {
 	} else {
 		this.document.updateBlocks();
 	}
+};
+
+/**
+ * Applies an annotation to a given selection.
+ * 
+ * If a selection argument is not provided, the current selection will be annotated.
+ * 
+ * @param annotation {Object} Annotation to apply
+ * @param selection {Selection} Range to apply annotation to
+ */
+Surface.prototype.annotateContent= function( annotation, selection ) {
+	if ( selection === undefined ) {
+		selection = this.selection;
+	}
+	if ( selection.from && selection.to ) {
+		selection.normalize();
+		var from = selection.start,
+			to = selection.end;
+		if ( from.block === to.block ) {
+			// Single block annotation
+			from.block.annotateContent( annotation, from.offset, to.offset );
+			from.block.renderContent();
+		} else {
+			// Multiple block annotation
+			for ( var i = from.block.getIndex(), end = to.block.getIndex(); i <= end; i++ ) {
+				var block = this.document.blocks[i];
+				if ( block === from.block ) {
+					// From offset to length
+					block.annotateContent( annotation, from.offset, block.getLength() );
+					block.renderContent();
+				} else if ( block === to.block ) {
+					// From 0 to offset
+					block.annotateContent( annotation, 0, to.offset );
+					block.renderContent();
+				} else {
+					// Full coverage
+					block.annotateContent( annotation, 0, block.getLength() );
+					block.renderContent();
+				}
+			}
+		}
+	}
+	this.drawSelection();
 };

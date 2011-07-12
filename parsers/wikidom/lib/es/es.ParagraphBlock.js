@@ -85,4 +85,17 @@ ParagraphBlock.prototype.getPosition = function( offset ) {
 	return this.flow.getPosition( offset );
 };
 
+/**
+ * Applies an annotation to a given range.
+ * 
+ * If a range arguments are not provided, all content will be annotated.
+ * 
+ * @param annotation {Object} Annotation to apply
+ * @param start {Integer} Offset to begin annotating from
+ * @param end {Integer} Offset to stop annotating to
+ */
+Block.prototype.annotateContent = function( annotation, start, end ) {
+	this.content.annotate( annotation, start, end );
+};
+
 extend( ParagraphBlock, Block );

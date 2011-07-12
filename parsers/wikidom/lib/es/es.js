@@ -66,18 +66,21 @@ function Location( block, offset ) {
 function Selection( from, to ) {
 	this.from = from;
 	this.to = to;
+	this.start = from;
+	this.end = to;
 }
 
 /**
  * Ensures that "from" is before "to".
  */
 Selection.prototype.normalize = function() {
-	if ( this.from.block.index() > this.to.block.index()
-			|| ( this.from.block.index() === this.to.block.index()
-					&& this.from.offset > this.to.offset ) ) {
-		var from = sel.from;
-		this.from = to;
-		this.to = from;
+	if ( this.from.block.getIndex() < this.to.block.getIndex()
+			|| ( this.from.block === this.to.block && this.from.offset < this.to.offset ) ) {
+		this.start = this.from;
+		this.end = this.to;
+	} else {
+		this.start = this.to;
+		this.end = this.from;
 	}
 };
 

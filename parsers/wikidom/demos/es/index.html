@@ -40,6 +40,7 @@
 			<div class="es-toolbarTool" id="es-toolbar-bold"><img src="images/bold.png"></div>
 			<div class="es-toolbarTool" id="es-toolbar-italic"><img src="images/italic.png"></div>
 			<div class="es-toolbarTool" id="es-toolbar-link"><img src="images/link.png"></div>
+			<div class="es-toolbarTool" id="es-toolbar-clear"><img src="images/clear.png"></div>
 			<div style="clear:both"></div>
 		</div>
 		<div id="es-editor"></div>
@@ -88,6 +89,32 @@
 					])
 				]);
 				var surface = new Surface( $('#es-editor'), doc );
+				
+				$( '#es-toolbar-bold' ).click( function() {
+					surface.annotateContent( {
+						'method': 'toggle',
+						'type': 'bold'
+					} );
+				} );
+				$( '#es-toolbar-italic' ).click( function() {
+					surface.annotateContent( {
+						'method': 'toggle',
+						'type': 'italic'
+					} );
+				} );
+				$( '#es-toolbar-link' ).click( function() {
+					surface.annotateContent( {
+						'method': 'toggle',
+						'type': 'xlink',
+						'data': { 'href': '#' }
+					} );
+				} );
+				$( '#es-toolbar-clear' ).click( function() {
+					surface.annotateContent( {
+						'method': 'remove',
+						'type': 'all'
+					} );
+				} );
 				
 				$(window).resize( function() {
 					surface.render();

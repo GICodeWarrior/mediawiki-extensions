@@ -70,20 +70,9 @@ Block.prototype.deleteContent = function( offset, length ) {
 
 /**
  * Renders content into a container.
- * 
- * @param $container {jQuery Selection} Container to render into
  */
-Block.prototype.renderContent = function( $container ) {
+Block.prototype.renderContent = function() {
 	throw 'Block.renderContent not implemented in this subclass.';
-};
-
-/**
- * Updates the rendered content in a container.
- * 
- * @param $container {jQuery Selection} Container to update content in
- */
-Block.prototype.updateContent = function( $container ) {
-	throw 'Block.updateContent not implemented in this subclass.';
 };
 
 /**
@@ -102,4 +91,17 @@ Block.prototype.getOffset = function( position ) {
  */
 Block.prototype.getPosition = function( offset ) {
 	throw 'Block.getPosition not implemented in this subclass.';
+};
+
+/**
+ * Applies an annotation to a given range.
+ * 
+ * If a range arguments are not provided, all content will be annotated.
+ * 
+ * @param annotation {Object} Annotation to apply
+ * @param start {Integer} Offset to begin annotating from
+ * @param end {Integer} Offset to stop annotating to
+ */
+Block.prototype.annotateContent = function( annotation, start, end ) {
+	throw 'Block.annotateContent not implemented in this subclass.';
 };
