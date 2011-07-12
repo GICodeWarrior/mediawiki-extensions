@@ -1479,6 +1479,7 @@ $messages['nds-nl'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author SPQRobin
  * @author Siebrand
  */
 $messages['nl'] = array(
@@ -1501,8 +1502,8 @@ $messages['nl'] = array(
 	'patrol-another' => 'Volgende bewerking weergeven als beschikbaar.',
 	'patrol-stopped' => 'U hebt gekozen geen andere bewerking te controleren. $1',
 	'patrol-resume' => 'Klik hier om verder te gaan.',
-	'group-patroller' => 'Controleurs',
-	'group-patroller-member' => 'Controleur',
+	'group-patroller' => 'controleurs',
+	'group-patroller-member' => 'controleur',
 	'grouppage-patroller' => '{{ns:project}}:Controleur',
 	'right-patroller' => "Pagina's markeren",
 );

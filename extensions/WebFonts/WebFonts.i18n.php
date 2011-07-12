@@ -238,6 +238,17 @@ $messages['mr'] = array(
 	'webfonts-reset' => 'पूर्ववत करा',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'webfonts' => 'WebFonts',
+	'webfonts-desc' => 'Gunakan fon dalam laman',
+	'webfonts-load' => 'Pilih fon',
+	'webfonts-reset' => 'Set semula',
+	'webfonts-disable-preference' => 'Matikan penggunaan fon (WebFonts)',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

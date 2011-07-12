@@ -128,6 +128,13 @@ $messages['ru'] = array(
 	'creativecommonsrdf-desc' => 'RDF-метаданные CreativeCommons',
 );
 
+/** Swedish (Svenska)
+ * @author Lokal Profil
+ */
+$messages['sv'] = array(
+	'creativecommonsrdf-desc' => 'CreativeCommons RDF-metadata',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

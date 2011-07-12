@@ -558,6 +558,13 @@ $messages['mk'] = array(
 	'right-lastlogin' => 'Проверка кога последен пат се најавил корисникот',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'lastuserlogin_username' => 'Nama sebenar',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

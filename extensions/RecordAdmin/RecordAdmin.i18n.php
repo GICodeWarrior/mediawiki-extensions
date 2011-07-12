@@ -1507,6 +1507,7 @@ $messages['mn'] = array(
  */
 $messages['ms'] = array(
 	'recordadmin-buttoncreate' => 'Cipta',
+	'recordadmin-buttonreset' => 'Set semula',
 	'recordadmin-actions' => 'Sunting',
 );
 

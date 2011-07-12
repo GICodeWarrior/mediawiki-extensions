@@ -12,6 +12,13 @@ $messages['en'] = array(
 	'signupapi-desc' => 'Cleans up Special:UserLogin from signup related stuff & adds an API for signup',
 );
 
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author Wizardist
+ */
+$messages['be-tarask'] = array(
+	'signupapi-desc' => 'Пазбаўляе Special:UserLogin элемэнтаў, датычных рэгістрацыі, і дадае API рэгістрацыі',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

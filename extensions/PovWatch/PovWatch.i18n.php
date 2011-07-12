@@ -1611,7 +1611,7 @@ Log untuk senarai pantau yang dimasukkan terkini boleh didapati di [[Special:Pov
 	'povwatch_subscribe' => 'Langgan',
 	'povwatch_added' => 'ditambah',
 	'right-povwatch_admin' => 'Mentadbir hak pengguna untuk menambah laman ke dalam senarai pantau pengguna lain',
-	'right-povwatch_user' => 'Menambah laman ke dalam senarai pantau pengguna lain',
+	'right-povwatch_user' => 'Menambahkan laman ke dalam senarai pantau pengguna lain',
 	'action-povwatch_admin' => 'selia hak pengguna untuk PovWatch',
 	'action-povwatch_user' => 'menambah laman ini ke dalam senarai pantau pengguna lain',
 );

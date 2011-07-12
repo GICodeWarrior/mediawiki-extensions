@@ -4671,7 +4671,7 @@ $messages['mr'] = array(
 $messages['ms'] = array(
 	'apc' => 'Maklumat APC',
 	'apc-desc' => "[[Special:APC|Lihat dan uruskan ''cache'' APC]] dengan MediaWiki",
-	'right-apc' => 'Gunakan semua ciri-ciri di [[Special:APC|APC]]',
+	'right-apc' => 'Menggunakan semua ciri-ciri di [[Special:APC|APC]]',
 	'viewapc-apc-not-available' => "Tiada maklumat ''cache'' didapati.
 APC nampaknya tidak berjalan.",
 	'viewapc-clear-confirm' => 'Adakah anda ingin mengosongkan cache?',

@@ -203,6 +203,13 @@ $messages['mk'] = array(
 	'wikiBhashaLink' => 'WikiBhasha (Бета)',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'wikibhasha-desc' => 'Aplikasi untuk mewujudkan kandungan berbilang bahasa berasaskan kandungan Wikipedia Bahasa Inggeris',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

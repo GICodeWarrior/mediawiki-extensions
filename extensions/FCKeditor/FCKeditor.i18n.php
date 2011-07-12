@@ -1004,7 +1004,7 @@ $messages['ms'] = array(
 	'rich_editor_new_window' => 'Buka Editor teks beraneka dalam tetingkap baru',
 	'tog-riched_start_disabled' => 'Mulakan tanpa menghidupkan editor teks beraneka',
 	'tog-riched_use_popup' => 'Buka editor teks beraneka dalam tetimbul (pop-up)',
-	'tog-riched_use_toggle' => 'Gunakan togol untuk beralih antara teks wiki dan editor teks beraneka (gantikan ruangan teks dengan editor teks beraneka)',
+	'tog-riched_use_toggle' => 'Gunakan togol untuk beralih antara teks wiki dan editor teks beraneka (ganti ruangan teks dengan editor teks beraneka)',
 	'tog-riched_toggle_remember_state' => 'Ingati keadaan togol terkini',
 );
 

@@ -1368,6 +1368,8 @@ $messages['ms'] = array(
 	'importusers-form-button' => 'Import',
 	'importusers-log-summary-all' => 'Semua: $1',
 	'importusers-password' => 'kata laluan',
+	'importusers-email' => 'e-mel',
+	'importusers-realname' => 'nama sebenar',
 );
 
 /** Maltese (Malti)

@@ -7619,6 +7619,7 @@ $messages['ms'] = array(
 	'configure-ext-settings' => 'Tetapan',
 	'configure-form-reason' => 'Sebab:',
 	'configure-js-remove' => 'Hapuskan',
+	'configure-section-email' => 'E-mel',
 	'configure-section-images' => 'Fail',
 	'configure-section-copyright' => 'Hak cipta',
 	'configure-throttle-group' => 'Jenis',
