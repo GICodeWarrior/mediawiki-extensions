@@ -45,12 +45,16 @@ class ArchiveLinksSpider extends Maintenance {
 			}*/
 
 			if ( ( $url = $this->check_queue() ) !== false ) {
-				switch( $wgArchiveLinksConfig['download_lib'] ) {
-					case 'curl':
-						die( 'At the current time support for libcurl is not available.' );
-					case 'wget':
-					default:
-						$this->call_wget( $url );
+				if ( isset( $wgArchiveLinksConfig['download_lib'] ) ) {
+					switch( $wgArchiveLinksConfig['download_lib'] ) {
+						case 'curl':
+							die( 'At the current time support for libcurl is not available.' );
+						case 'wget':
+						default:
+							$this->call_wget( $url );
+					}
+				} else {
+					$this->call_wget( $url );
 				}
 			}
 		}
@@ -59,45 +63,56 @@ class ArchiveLinksSpider extends Maintenance {
 	
 	private function call_wget( $url ) {
 		global $wgArchiveLinksConfig, $path;
-		if ( array_key_exists( 'wget_path', $wgArchiveLinksConfig ) && file_exists( $wgArchiveLinksConfig['wget_path'] ) ) {
+		if ( isset( $wgArchiveLinksConfig['wget_path'] ) && file_exists( $wgArchiveLinksConfig['wget_path'] ) ) {
 			die ( 'Support is not yet added for wget in a different directory' );
-		} elseif ( file_exists( "$path/extensions/ArchiveLinks/wget.exe" ) ) {
-			if ( array_key_exists( 'file_types', $wgArchiveLinksConfig ) ) {
+		} elseif ( file_exists( "$path/wget.exe" ) ) {
+			if ( isset( $wgArchiveLinksConfig['file_types'] ) ) {
 				if ( is_array( $wgArchiveLinksConfig['file_types']) ){
-					$accept_file_types = '-A ' . implode( ',', $wgArchiveLinksConfig['filetypes'] );
+					$accept_file_types = '-A ' . implode( ',', $wgArchiveLinksConfig['file_types'] );
 				} else {
 					$accept_file_types = '-A ' . $wgArchiveLinksConfig['file_types'];
 				}
 			} else {
+				//we should set a default, for now we will disable this for testing purposes, but this should be closed sometime later...
 				$accept_file_types = '';
 			}
 			//At the current time we are only adding support for the local filestore, but swift support is something that will be added later
-			switch( $wgArchiveLinksConfig['filestore'] ) {
+			//Add shutup operator for PHP notice, it's okay if this is not set as it's an optional config value
+			switch( @$wgArchiveLinksConfig['filestore'] ) {
 				case 'local':
 				default:
-					if ( array_key_exists( 'subfolder_name', $wgArchiveLinksConfig ) ) {
-						$content_dir = 'extensions/ArchiveLinks/' . $wgArchiveLinksConfig['subfolder_name'];
-					} elseif ( $wgArchiveLinksConfig['content_path'] ) {
-						$content_dir =  realpath( $wgArchiveLinksConfig['content_path'] );
-						if ( !$content_dir ) {
+					if ( isset( $wgArchiveLinksConfig['subfolder_name'] ) ) {
+						$dir = $path . $wgArchiveLinksConfig['subfolder_name'];
+					} elseif ( isset( $wgArchiveLinksConfig['content_path'] ) ) {
+						$dir =  realpath( $wgArchiveLinksConfig['content_path'] );
+						if ( !$dir ) {
 							die ( 'The path you have set for $wgArchiveLinksConfig[\'content_path\'] does not exist. ' .
 									'This makes the spider a very sad panda. Please either create it or use a different setting.');
 						}
 					} else {
-						$content_dir = 'extensions/ArchiveLinks/' . 'archived_content/';
+						$dir = $path . '/archived_content/';
 					}
-					$dir = $path . $content_dir . sha1( time() . ' - ' . $url );
+					$dir = $dir . sha1( time() . ' - ' . $url );
+					mkdir( $dir, 0644, TRUE );
 					$dir = escapeshellarg( $dir );
 					$sanitized_url = escapeshellarg( $url );
 			}
-			if ( array_key_exists( 'wget_quota', $wgArchiveLinksConfig ) ) {
-				$quota = $wgArchiveLinksConfig['wget_quota'];
-			} else {
+			
+			if ( ! isset( $wgArchiveLinksConfig['wget_quota'] ) ) {
 				//We'll set the default max quota for any specific web page for 8 mb, which is kind of a lot but should allow for large images
 				$quota = '8m';
 			}
-			shell_exec( "cd $path/extensions/ArchiveLinks/" );
-			shell_exec( "wget.exe -nH -p -H -E -k -Q$quota -P $dir $accept_file_types $sanitized_url" );
+			
+			if ( !isset( $wgArchiveLinksConfig['retry_times'] ) ) {
+				//by default wget is set to retry something 20 times which is probably *way* too high for our purposes
+				//this has the potential to really slow it down as --waitretry is set to 10 seconds by default, meaning that it would take
+				//serveral minutes to go through all the retries which has the potential to stall the spider unnecessarily
+				$wgArchiveLinksConfig['retry_times'] = '3';
+			}
+			
+			shell_exec( "cd $path" );
+			shell_exec( "wget.exe -nv -p -H -E -k -t {$wgArchiveLinksConfig['retry_times']} -Q{$wgArchiveLinksConfig['retry_times']} -o $dir/log.txt -P $dir $accept_file_types $sanitized_url" );
+			$this->parse_wget_log( "$dir/log.txt", $url );
 		} else {
 			//this is primarily designed with windows in mind and no built in wget, so yeah, *nix support should be added, in other words note to self...
 			die ( 'wget must be installed in order for the spider to function in wget mode' );
@@ -173,7 +188,7 @@ class ArchiveLinksSpider extends Maintenance {
 							$reserve_time = explode( ' ', $row['in_progress'] );
 							$reserve_time = $reserve_time[2];
 							
-							array_key_exists( 'in_progress_ignore_delay', $wgArchiveLinksConfig ) ? $ignore_in_prog_time = $wgArchiveLinksConfig['in_progress_ignore_delay'] :
+							isset( $wgArchiveLinksConfig['in_progress_ignore_delay'] ) ? $ignore_in_prog_time = $wgArchiveLinksConfig['in_progress_ignore_delay'] :
 								$ignore_in_prog_time = 7200;
 							
 							if ( $time - $reserve_time - $wait_time > $ignore_in_prog_time ) {
@@ -220,11 +235,54 @@ class ArchiveLinksSpider extends Maintenance {
 	}
 	
 	private function reserve_job( $row ) {
+		// this function was pulled out of replication_check_queue, need to fix the vars in here
 		$this->jobs['execute_urls'][] = $row['url'];
-		$this->db_master->update( 'el_archive_queue', array( $row['in_progress'] => "\"$pid\"" ), array( 'queue_id' => $row['queue_id'] ),
+		$this->db_master->update( 'el_archive_queue', array( $row['in_progress'] => "\"{$this->jobs['pid']}\"" ), array( 'queue_id' => $row['queue_id'] ),
 				__METHOD__ ) or die( 'can\'t reserve job' );
 		$this->delete_dups( $row['url'] );
 		return true;
+	}
+	
+	private function parse_wget_log( $log_path, $url ) {
+		$fp = fopen( $log_path, 'r' ) or die( 'can\'t find wget log file to parse' );
+		
+		$downloaded_files = array ( 'failed' => array(), 'success' => array() );
+		
+		while ( $line = fgets( $fp ) ) {
+			$line_regexes = array ( 
+				'url' => '%\^d{4}-(?:\d{2}-?){2} (?:\d{2}:?){3} URL:(http://.*) \[.+\] ->%',
+				'finish' => '%^Downloaded: \d+ files, (\d+(?:K|M)).*%',
+				'sole_url' => '%^(http://.*):%',
+				'error' => '%^\d{4}-(?:\d{2}-?){2} (?:\d{2}:?){3} ERROR (\d){3}:(.+)%',
+				
+			);
+			foreach( $line_regexes as $line_type => $regex ) {
+				if ( preg_match( $regex, $line, $matches ) ) {
+					switch ( $line_type ) {
+						case 'url':
+							$downloaded_files['success'][] = $matches[1];
+							$last_line = 'url';
+							break;
+						case 'sole_url':
+							$downloaded_files['failed'][]['url'] = $matches[1];
+							break;
+						case 'error':
+							end( $downloaded_files['failed'] );
+							$array_key = key( $downloaded_files['failed'] );
+							$downloaded_files['failed'][$array_key]['error_code'] = $matches[1];
+							$downloaded_files['failed'][$array_key]['error_text'] = $matches[2];
+							break;
+						case 'finish':
+							$finish_time = $matches[1];
+							break;
+						default:
+							//we missed a line type, this is mainly for testing purposes and shouldn't happen when parsing the log
+							echo "\n\nUNKNOWN LINE: $line\n\n";
+							break;
+					}
+				}
+			}
+		}
 	}
 }
 

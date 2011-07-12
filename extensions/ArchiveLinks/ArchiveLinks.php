@@ -4,10 +4,6 @@
  * This is an extension to archive preemptively archive external links so that
  * in the even they go down a backup will be available.
  */
-if ( !defined( 'MEDIAWIKI' ) ) {
-	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
-	die( 1 );
-}
 
 error_reporting( E_ALL | E_STRICT );
 

@@ -3,11 +3,6 @@
  * This special page exists to serve the cached versions of the pages that have been archived. 
  */
 
-if (!defined('MEDIAWIKI')) {
-	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
-	die(1);
-}
-
 class SpecialViewArchive extends SpecialPage {
 	private $db_master;
 	private $db_slave;
