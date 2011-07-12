@@ -24,7 +24,15 @@
 			$(document).ready( function() {
 				var doc = new Document([
 					new ParagraphBlock([
-						{ 'text': "In text display, line wrap is the feature of continuing on a new line when a line is full, such that each line fits in the viewable window, allowing text to be read from top to bottom without any horizontal scrolling.\n" },
+						{
+							'text': "In text display, line wrap is the feature of continuing on a new line when a line is full, such that each line fits in the viewable window, allowing text to be read from top to bottom without any horizontal scrolling.\n",
+							'annotations': [
+								// "In text display" should be bold
+								{ 'type': 'bold', 'range': { 'start': 0, 'end': 15 } },
+								// "line wrap" should be italic
+								{ 'type': 'italic', 'range': { 'start': 17, 'end': 26 } },
+							]
+						},
 						{ 'text': "Word wrap is the additional feature of most text editors, word processors, and web browsers, of breaking lines between and not within words, except when a single word is longer than a line.\n" },
 						{ 'text': "It is usually done on the fly when viewing or printing a document, so no line break code is manually entered, or stored.[citation needed] If the user changes the margins, the editor will either automatically reposition the line breaks to ensure that all the text will \"flow\" within the margins and remain visible, or provide the typist some convenient way to reposition the line breaks.\n" },
 						{ 'text': "A soft return is the break resulting from line wrap or word wrap, whereas a hard return is an intentional break, creating a new paragraph.\n" },
