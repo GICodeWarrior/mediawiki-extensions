@@ -23,7 +23,11 @@
  * @author Ariel Glenn <ariel@wikimedia.orf>
  */
 
-require_once( dirname( __FILE__ ) . '/Maintenance.php' );
+$IP = getenv( 'MW_INSTALL_PATH' );
+if ( $IP === false ) {
+	$IP = dirname( __FILE__ ) . '/../..';
+}
+require( "$IP/maintenance/Maintenance.php" );
 
 class RenameUserCleanup extends Maintenance {
 	const BATCH_SIZE = 1000;
