@@ -165,7 +165,7 @@ $.narayam = new ( function() {
 		
 		if ( e.which == 8 ) { // Backspace
 			// Blank the keybuffer
-			$( this ).data( 'narayam-keyBuffer', '' );
+			$( this ).data( 'narayamKeyBuffer', '' );
 			return true;
 		}
 		
@@ -187,7 +187,7 @@ $.narayam = new ( function() {
 		// to provide context for the transliteration regexes.
 		// We need to append c because it hasn't been added to $this.val() yet
 		var input = lastNChars( $this.val(), startPos, currentScheme.lookbackLength ) + c;
-		var keyBuffer = $this.data( 'narayam-keyBuffer' );
+		var keyBuffer = $this.data( 'narayamKeyBuffer' );
 		var replacement = transliterate( input, keyBuffer, e.altKey );
 		
 		// Update the key buffer
@@ -196,7 +196,7 @@ $.narayam = new ( function() {
 			// The buffer is longer than needed, truncate it at the front
 			keyBuffer = keyBuffer.substring( keyBuffer.length - currentScheme.keyBufferLength );
 		}
-		$this.data( 'narayam-keyBuffer', keyBuffer );
+		$this.data( 'narayamKeyBuffer', keyBuffer );
 		
 		// textSelection() magic is expensive, so we avoid it as much as we can
 		if ( replacement == input ) {
@@ -245,7 +245,7 @@ $.narayam = new ( function() {
 		$newInputs
 			.bind( 'keydown.narayam', onkeydown )
 			.bind( 'keypress.narayam', onkeypress )
-			.data( 'narayam-keyBuffer', '' );
+			.data( 'narayamKeyBuffer', '' );
 		if ( enabled ) {
 			$newInputs.addClass( 'narayam-input' );
 		}
