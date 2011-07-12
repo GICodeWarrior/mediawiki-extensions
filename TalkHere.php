@@ -32,6 +32,7 @@ $wgExtensionMessagesFiles['TalkHere'] = $dir . 'TalkHere.i18n.php';
 
 ///// hook it up /////////////////////////////////////////////////////
 $wgAutoloadClasses['TalkHereHooks'] = $dir . 'TalkHereHooks.php';
+$wgAutoloadClasses['TalkHereEditPage'] = $dir . 'TalkHereHooks.php';
 
 $wgHooks['BeforePageDisplay'][] = 'TalkHereHooks::onBeforePageDisplay';
 $wgHooks['CustomEditor'][] = 'TalkHereHooks::onCustomEditor';
@@ -40,29 +41,11 @@ $wgHooks['ArticleViewFooter'][] = 'TalkHereHooks::onArticleViewFooter';
 
 $wgAjaxExportList[] = 'wfTalkHereAjaxEditor';
 
-function mangleEditForm( &$out, $returnto = false, $ajax = false ) { //HACK! too bad we need this :(
-	global $wgUser;
-	$sk = $wgUser->getSkin();
-
-	$html = $out->getHTML();
-
-	if ( $returnto ) { //re-target cancel link
-		$cancel = $sk->makeLinkObj( Title::newFromText( $returnto ), wfMsgExt('cancel', array( 'parseinline' ) ) );
-		$html = preg_replace( '!<a[^<>]+>[^<>]+</a>( *\| *<a target=["\']helpwindow["\'])!smi', $cancel . '\1', $html );
-	}
-	else  {
-		$html = preg_replace( '!<a[^<>]+>[^<>]+</a> *\| *(<a target=["\']helpwindow["\'])!smi', '\1', $html );
-	}
-
-	$out->clearHTML();
-	$out->addHTML($html);
-}
-
 function wfTalkHereAjaxEditor( $page, $section, $returnto ) {
 	global $wgRequest, $wgTitle, $wgOut;
 
-	$wgTitle = Title::newFromText( $page );
-	if ( !$wgTitle ) {
+	$title = Title::newFromText( $page );
+	if ( !$title ) {
 		return false;
 	}
 
@@ -75,14 +58,14 @@ function wfTalkHereAjaxEditor( $page, $section, $returnto ) {
 	);
 
 	$wgRequest = new FauxRequest( $args );
-	$article = MediaWiki::articleFromTitle( $wgTitle, RequestContext::getMain() );
-	$editor = new EditPage( $article );
+	$wgTitle = $title;
+
+	$article = MediaWiki::articleFromTitle( $title, RequestContext::getMain() );
+	$editor = new TalkHereEditPage( $article );
 
 	//generate form
 	$editor->importFormData( $wgRequest );
 	$editor->showEditForm();
-
-	mangleEditForm( $wgOut, false, true ); //HACK. This sucks.
 
 	$response = new AjaxResponse();
 	$response->addText( $wgOut->getHTML() );
