@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Standard Wijesekara Keyboard Layout for Sinhala
  * @author Junaid P V ([[user:Junaidpv]])
  * @date 2011-03-01

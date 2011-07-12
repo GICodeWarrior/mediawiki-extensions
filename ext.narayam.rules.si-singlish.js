@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Transliteration regular expression rules table for Sinhala (Singlish)
  * @author Junaid P V ([[user:Junaidpv]])
  * @date 2011-02-23

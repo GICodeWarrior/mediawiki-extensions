@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Avro layout regular expression rules table for Bengali script
  * @author Junaid P V ([[user:Junaidpv]])
  * @date 2010-12-05

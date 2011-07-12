@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Regular expression rules table for Tamil 99 input method
  * @author Junaid P V ([[user:Junaidpv]])
  * @date 2010-11-20
