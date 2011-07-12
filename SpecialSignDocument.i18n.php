@@ -3309,7 +3309,9 @@ $messages['ms'] = array(
 	'sign-viewfield-realname' => 'Nama',
 	'sign-viewfield-address' => 'Alamat',
 	'sign-viewfield-country' => 'Negara',
+	'sign-viewfield-ip' => 'Alamat IP',
 	'sign-viewfield-agent' => 'Ejen pengguna',
+	'sign-viewfield-email' => 'E-mel',
 	'sign-viewfield-reviewedby' => 'Pengkaji semula',
 );
 
@@ -4672,6 +4674,7 @@ $messages['stq'] = array(
 /** Swedish (Svenska)
  * @author Jon Harald Søby
  * @author Lejonel
+ * @author Lokal Profil
  * @author M.M.S.
  */
 $messages['sv'] = array(
@@ -4710,7 +4713,7 @@ $1',
 	'sig-success' => 'Du har signerat dokumentet lyckat.',
 	'sign-view-selectfields' => "'''Fält som visas:'''",
 	'sign-viewfield-entryid' => 'Inskrifts-ID',
-	'sign-viewfield-timestamp' => 'Tidssttämpel',
+	'sign-viewfield-timestamp' => 'Tidsstämpel',
 	'sign-viewfield-realname' => 'Namn',
 	'sign-viewfield-address' => 'Adress',
 	'sign-viewfield-city' => 'Ort',
