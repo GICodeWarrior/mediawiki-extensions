@@ -281,14 +281,17 @@ class RecordAdmin {
 	 * - $b is the expression from the recordtable query
 	 */
 	function cmpCallback( $a, $b, $operator ) {
-		$b = str_replace( '/', '\/', html_entity_decode( $b, ENT_QUOTES ) );
+		$b = html_entity_decode( $b, ENT_QUOTES );
+		$bre = str_replace( '/', '\/', $b );
+		$bre = str_replace( '(', '\(', $bre );
+		$bre = str_replace( ')', '\)', $bre );
 		switch ( $operator ) {
 			case '=':
-				$cond = preg_match( "/$b/i", $a );
+				$cond = preg_match( "/$bre/i", $a );
 			break;
 			
 			case '!=':
-				$cond = !preg_match( "/$b/i", $a );
+				$cond = !preg_match( "/$bre/i", $a );
 			break;
 			
 			default:
