@@ -43,6 +43,9 @@ Content.newFromLines = function( lines ) {
 	var data = [];
 	for ( var i = 0; i < lines.length; i++ ) {
 		data = data.concat( Content.convertLine( lines[i] ) );
+		if ( i < lines.length - 1 ) {
+			data.push( '\n' );
+		}
 	}
 	return new Content( data );
 };
