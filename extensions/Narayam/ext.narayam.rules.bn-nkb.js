@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Regular expression rules table for Bengali National Keyboard
  * @author Junaid P V ([[user:Junaidpv]])
  * @date 2010-12-13

@@ -1,4 +1,4 @@
-﻿/**
+/**
  * InScript regular expression rules table for Bengali script
  * According to CDAC's "Enhanced InScript Keyboard Layout 5.2"
  * @author Junaid P V ([[user:Junaidpv]])

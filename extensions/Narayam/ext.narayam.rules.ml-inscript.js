@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Inscript regular expression rules table for Malayalam
  * @author Junaid P V ([[user:Junaidpv]])
  * @date 2010-09-08

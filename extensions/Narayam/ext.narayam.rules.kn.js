@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Trasliteration regular expression rules table for Kannada
  * @author M G Harish [[user:M G Harish]]
  * Modified by User:HPNadig (User:HPN on en)

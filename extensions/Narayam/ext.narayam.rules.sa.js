@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Trasliteration regular expression rules table for Sanskrit
  * @author Junaid P V ([[user:Junaidpv]])
  * @date 2010-10-12
