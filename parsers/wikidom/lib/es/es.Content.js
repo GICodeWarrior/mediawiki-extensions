@@ -160,6 +160,17 @@ Content.renderAnnotation = function( bias, annotation, stack ) {
 	return out;
 };
 
+Content.htmlCharacters = {
+	'&': '&amp;',
+	'<': '&lt;',
+	'>': '&gt;',
+	'\'': '&#039;',
+	'"': '&quot;',
+	' ': '&nbsp;',
+	'\n': '<span class="editSurface-whitespace">&#182;</span>',
+	'\t': '<span class="editSurface-whitespace">&#8702;</span>'
+};
+
 Content.prototype.render = function( start, end ) {
 	if ( start || end ) {
 		return this.slice( start, end ).render();
@@ -197,19 +208,7 @@ Content.prototype.render = function( start, end ) {
 				}
 			}
 		}
-		out += right[0]
-			// Tags
-			.replace( /&/g, '&amp;' )
-			.replace( /</g, '&lt;' )
-			.replace( />/g, '&gt;' )
-			// Quotes - probably not needed
-			//.replace( /'/g, '&#039;' )
-			//.replace( /"/g, '&quot;' )
-			// Whitespace
-			.replace( / /g, '&nbsp;' )
-			.replace( /\n/g, '<span class="editSurface-whitespace">\\n</span>' )
-			.replace( /\t/g, '<span class="editSurface-whitespace">\\t</span>' );
-		
+		out += right[0] in Content.htmlCharacters ? Content.htmlCharacters[right[0]] : right[0];
 		left = right;		
 	}
 	
