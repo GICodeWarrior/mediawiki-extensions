@@ -739,6 +739,7 @@ $messages['mn'] = array(
  */
 $messages['ms'] = array(
 	'am-username' => 'nama pengguna',
+	'am-email' => 'e-mel',
 );
 
 /** Nahuatl (Nāhuatl)
