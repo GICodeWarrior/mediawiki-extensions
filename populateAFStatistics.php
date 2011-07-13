@@ -192,6 +192,10 @@ class PopulateAFStatistics extends Maintenance {
 		$count = 0;
 		foreach( $problems as $page_id ) {
 			$page = $this->pages->getPage( $page_id );
+			// calculate the rating averages if they haven't already been calculated
+			if ( !count( $page->rating_averages )) {
+				$page->calculateRatingAverages();
+			}
 			$rows[] = array(
 				'afs_page_id' => $page_id,
 				'afs_orderable_data' => $page->overall_average,
