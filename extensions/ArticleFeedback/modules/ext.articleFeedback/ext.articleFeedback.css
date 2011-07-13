@@ -5,3 +5,8 @@
 	padding: 2em;
 	padding-top: 1em;
 }
+
+.articleFeedback-survey-disclaimer {
+	font-weight: normal; /* Override bold */
+	font-style: italic;
+}

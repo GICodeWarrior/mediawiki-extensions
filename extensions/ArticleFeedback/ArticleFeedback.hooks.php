@@ -62,7 +62,8 @@ class ArticleFeedbackHooks {
 				'articlefeedback-pitch-edit-accept',
 				'articlefeedback-survey-title',
 				'articlefeedback-survey-message-success',
-			    'articlefeedback-survey-message-error',
+				'articlefeedback-survey-message-error',
+				'articlefeedback-survey-disclaimer'
 			),
 			'dependencies' => array(
 				'jquery.ui.dialog',
