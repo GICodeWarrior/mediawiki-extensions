@@ -399,7 +399,7 @@ class DataSet {
 	function fetchName() {
 		global $wgLang, $wdTermDBDataSet;
 		if ( $wdTermDBDataSet ) {
-			$userLanguageId = $wgLang->getCode() ;
+			$userLanguage = $wgLang->getCode() ;
 			$spelling = getSpellingForLanguage( $this->dmId, $userLanguage, 'en', $wdTermDBDataSet );
 			if ( $spelling ) return $spelling;
 		}

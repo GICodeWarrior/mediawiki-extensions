@@ -5,7 +5,7 @@ require_once( "OmegaWikiAttributes.php" );
 require_once( "WikiDataBootstrappedMeanings.php" );
 require_once( "ContextFetcher.php" );
 require_once( "WikiDataGlobals.php" );
-require_once( "GotoSourceTemplate.php" );
+// require_once( "GotoSourceTemplate.php" ); // not used, disabled
 require_once( "ViewInformation.php" );
 
 class DummyViewer extends Viewer {
@@ -607,8 +607,7 @@ function getDefinedMeaningClassMembershipEditor( ViewInformation $viewInformatio
 }
 
 function getDefinedMeaningCollectionMembershipEditor( ViewInformation $viewInformation ) {
-	global
-		 $wgGotoSourceTemplates;
+	global $wgGotoSourceTemplates;
 
 	$o = OmegaWikiAttributes::getInstance();
 
@@ -616,7 +615,7 @@ function getDefinedMeaningCollectionMembershipEditor( ViewInformation $viewInfor
 	$editor->addEditor( new CollectionReferenceEditor( $o->collectionMeaning, new SimplePermissionController( false ), true ) );
 	$editor->addEditor( new ShortTextEditor( $o->sourceIdentifier, new SimplePermissionController( false ), true ) );
 	
-	if ( count( $wgGotoSourceTemplates ) > 0 )
+	if ( count( $wgGotoSourceTemplates ) > 1 )
 		$editor->addEditor( new GotoSourceEditor( $o->gotoSource, new SimplePermissionController( true ), true ) );
 
 	addTableMetadataEditors( $editor, $viewInformation );

@@ -292,6 +292,7 @@ function getTransactionRecord( $transactionId ) {
 		
 		if ( $transaction = $dbr->fetchObject( $queryResult ) ) {
 			$result->user = getUserLabel( $transaction->user_id, $transaction->user_ip );
+			if ( $result->user == null ) $result->user = "userId " . $transaction->user_id . " not found" ;
 			$result->timestamp = $transaction->timestamp;
 			$result->summary = $transaction->comment;
 		}

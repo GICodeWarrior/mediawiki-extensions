@@ -1,12 +1,12 @@
 <?php
 
+require_once( "WikiDataGlobals.php" );
 require_once( "HTMLtable.php" );
 require_once( "Controller.php" );
 require_once( "type.php" );
 require_once( "GotoSourceTemplate.php" );
 require_once( "Wikidata.php" );
 require_once( "ContextFetcher.php" );
-require_once( "WikiDataGlobals.php" );
 
 function addCollapsablePrefixToClass( $class ) {
 	return "collapsable-$class";
@@ -2447,11 +2447,15 @@ class ObjectPathEditor extends Viewer {
 	}
 }
 
+/*
+Don't know what it is, but obviously only used for SwissProt
+cf. GoToSourceTemplate.php
+*/
 class GotoSourceEditor extends Viewer {
 	public function view( IdStack $idPath, $value ) {
-		global
-			  $wgGotoSourceTemplates;
-		
+		global $wgGotoSourceTemplates;
+		if ( count( $wgGotoSourceTemplates ) <= 1 ) return "" ;
+
 		$collectionId = $value->collectionId;
 		$sourceIdentifier = $value->sourceIdentifier;
 
@@ -2470,6 +2474,7 @@ class GotoSourceEditor extends Viewer {
 		return true;
 	}
 }
+
 
 class DefinedMeaningContextEditor extends WrappingEditor {
 	public function view( IdStack $idPath, $value ) {

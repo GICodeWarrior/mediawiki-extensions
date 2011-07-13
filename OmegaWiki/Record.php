@@ -110,6 +110,11 @@ class ArrayRecord implements Record {
 	}
 	
 	public function tostring_indent( $depth = 0, $key = "" ) {
+		// FIXME why is this called when viewing a WikiData page?
+		// anyway, throws a Warning: get_class() expects parameter 1 to be object, string given
+		// does it work still? In doubt: disabled!
+		return "";
+/*
 		$rv = "\n" . str_pad( "", $depth * 8 );
 		$str = $this->getStructure();
 		$type = $str->getStructureType();
@@ -133,6 +138,7 @@ class ArrayRecord implements Record {
 		}
 		$rv .= "}";
 		return $rv;
+*/
 	}
 
 }
