@@ -4,7 +4,7 @@
 # All parsers must subclass this class
 #
 
-abstract class POMParser
+interface POMParser
 {
 	/**
 		This is main method for parsers
