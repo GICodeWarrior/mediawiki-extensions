@@ -890,7 +890,7 @@ Selalunya ini boleh membebankan lagi pelayan, jadi tolong jangan terlalu kerap m
 	'querybtn' => 'Hantar pertanyaan',
 	'selectonly' => 'Hanya pertanyaan baca sahaja yang dibenarkan.',
 	'querysuccessful' => 'Pertanyaan berjaya',
-	'right-asksql' => 'Kemukakan pertanyaan SQL',
+	'right-asksql' => 'Mengemukakan pertanyaan SQL',
 );
 
 /** Dutch (Nederlands)
