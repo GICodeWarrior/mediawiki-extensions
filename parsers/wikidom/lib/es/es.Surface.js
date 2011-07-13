@@ -94,7 +94,6 @@ Surface.prototype.getLocationFromEvent = function( e ) {
 };
 
 Surface.prototype.onKeyDown = function( e ) {
-
 	switch ( e.keyCode ) {
 		case 37: // Left arrow
 			this.initialHorizontalCursorPosition = null;
@@ -177,19 +176,19 @@ Surface.prototype.onMouseDown = function( e ) {
 };
 
 Surface.prototype.onMouseMove = function( e ) {
-	this.cursor.hide();
 	if ( e.button === 0 && this.selecting ) {
+		this.cursor.hide();
 		this.selection.to = this.getLocationFromEvent( e );
 		this.drawSelection();
 	}
 };
 
 Surface.prototype.onMouseUp = function( e ) {
-	if ( e.button === 0 && this.selecting ) {
-		this.selecting = false;
+	if ( e.button === 0 && this.selection.to ) {
 		this.drawSelection();
 		this.cursor.hide();
 	}
+	this.selecting = false;
 };
 
 /**
