@@ -75,8 +75,8 @@
 								// "wrap is" should be a link to "#"
 								{
 									'type': 'xlink',
-									'range': { 'start': 22, 'end': 29 },
-									'data': { 'href': './' }
+									'data': { 'href': './' },
+									'range': { 'start': 22, 'end': 29 }
 								},
 							]
 						},
@@ -85,12 +85,16 @@
 							'text': "It is usually done on the fly when viewing or printing a document, so no line break code is manually entered, or stored.[citation needed] If the user changes the margins, the editor will either automatically reposition the line breaks to ensure that all the text will \"flow\" within the margins and remain visible, or provide the typist some convenient way to reposition the line breaks.",
 							'annotations': [
 								// "[citation needed]" should be super
-								{ 'type': 'super', 'range': { 'start': 120, 'end': 137 } },
+								{
+									'type': 'script',
+									'data': { 'type': 'super' },
+									'range': { 'start': 120, 'end': 137 }
+								},
 								// "[citation needed]" should be a linke to "#"
 								{
 									'type': 'xlink',
-									'range': { 'start': 120, 'end': 137 },
-									'data': { 'href': './' }
+									'data': { 'href': './' },
+									'range': { 'start': 120, 'end': 137 }
 								}
 							]
 						},
@@ -121,25 +125,37 @@
 				$( '#es-toolbar-small' ).click( function() {
 					surface.annotateContent( {
 						'method': 'toggle',
-						'type': 'small'
+						'type': 'size',
+						'data': {
+							'type': 'small'
+						}
 					} );
 				} );
 				$( '#es-toolbar-big' ).click( function() {
 					surface.annotateContent( {
 						'method': 'toggle',
-						'type': 'big'
+						'type': 'size',
+						'data': {
+							'type': 'big'
+						}
 					} );
 				} );
 				$( '#es-toolbar-sub' ).click( function() {
 					surface.annotateContent( {
 						'method': 'toggle',
-						'type': 'sub'
+						'type': 'script',
+						'data': {
+							'type': 'sub'
+						}
 					} );
 				} );
 				$( '#es-toolbar-super' ).click( function() {
 					surface.annotateContent( {
 						'method': 'toggle',
-						'type': 'super'
+						'type': 'script',
+						'data': {
+							'type': 'super'
+						}
 					} );
 				} );
 				$( '#es-toolbar-link' ).click( function() {

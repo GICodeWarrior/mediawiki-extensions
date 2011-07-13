@@ -2,6 +2,23 @@ function Content( content ) {
 	this.data = content || [];
 };
 
+Content.compareObjects = function( a, b ) {
+	for ( var key in a ) {
+		if ( typeof a[key] !== typeof b[key] ) {
+			return false
+		} else if ( typeof a[key] === 'string' || typeof a[key] === 'number' ) {
+			if ( a[key] !== b[key] ) {
+				return false;
+			}
+		} else if ( $.isPlainObject( a[key] ) ) {
+			if ( !Content.compareObjects( a[key], b[key] ) ) {
+				return false;
+			}
+		}
+	}
+	return true;
+};
+
 Content.copyObject = function( src ) {
 	var dst = {};
 	for ( var key in src ) {
@@ -105,20 +122,16 @@ Content.annotationRenderers = {
 		'open': '<span class="editSurface-format-italic">',
 		'close': '</span>',
 	},
-	'small': {
-		'open': '<span class="editSurface-format-small">',
+	'size': {
+		'open': function( data ) {
+			return '<span class="editSurface-format-' + data.type + '">';
+		},
 		'close': '</span>',
 	},
-	'big': {
-		'open': '<span class="editSurface-format-big">',
-		'close': '</span>',
-	},
-	'sub': {
-		'open': '<span class="editSurface-format-sub">',
-		'close': '</span>',
-	},
-	'super': {
-		'open': '<span class="editSurface-format-super">',
+	'script': {
+		'open': function( data ) {
+			return '<span class="editSurface-format-' + data.type + '">';
+		},
 		'close': '</span>',
 	},
 	'xlink': {
@@ -179,21 +192,34 @@ Content.renderAnnotation = function( bias, annotation, stack ) {
 	return out;
 };
 
-Content.prototype.coverageOfAnnotation = function( start, end, annotation ) {
+Content.prototype.coverageOfAnnotation = function( start, end, annotation, strict ) {
 	var coverage = [];
 	for ( var i = start; i < end; i++ ) {
-		if ( typeof this.data[i] !== 'string' && this.indexOfAnnotation( i, annotation ) !== -1 ) {
-			coverage.push( i );
+		var index = this.indexOfAnnotation( i, annotation );
+		if ( typeof this.data[i] !== 'string' && index !== -1 ) {
+			if ( strict ) {
+				if ( Content.compareObjects( this.data[i][index].data, annotation.data ) ) {
+					coverage.push( i );
+				}
+			} else {
+				coverage.push( i );
+			}
 		}
 	}
 	return coverage;
 };
 
-Content.prototype.indexOfAnnotation = function( offset, annotation ) {
+Content.prototype.indexOfAnnotation = function( offset, annotation, strict ) {
 	var annotatedCharacter = this.data[offset];
 	for ( var i = 1; i < this.data[offset].length; i++ ) {
 		if ( annotatedCharacter[i].type === annotation.type ) {
-			return i;
+			if ( strict ) {
+				if ( Content.compareObjects( annotatedCharacter[i].data, annotation.data ) ) {
+					return i;
+				}
+			} else {
+				return i;
+			}
 		}
 	}
 	return -1;
@@ -213,23 +239,31 @@ Content.prototype.annotate = function( annotation, start, end ) {
 	end = Math.min( end, this.data.length );
 	method = annotation.method;
 	if ( method === 'toggle' ) {
-		method = this.coverageOfAnnotation( start, end, annotation ).length === end - start
-			? 'remove' : 'add';
+		var coverage = this.coverageOfAnnotation( start, end, annotation, false );
+		if ( coverage.length === end - start ) {
+			var strictCoverage = this.coverageOfAnnotation( start, end, annotation, true );
+			method = strictCoverage.length === coverage.length ? 'remove' : 'add';
+		} else {
+			method = 'add';
+		}
 	}
 	if ( method === 'add' ) {
-		var skip;
+		var duplicate;
 		for ( var i = start; i < end; i++ ) {
-			skip = false;
+			duplicate = -1;
 			if ( typeof this.data[i] === 'string' ) {
 				// Auto-initialize as annotated character
 				this.data[i] = [this.data[i]];
 			} else {
 				// Detect duplicate annotation
-				skip = this.indexOfAnnotation( i, annotation ) !== -1;
+				duplicate = this.indexOfAnnotation( i, annotation );
 			}
-			if ( !skip ) {
-				// Apply annotation to character
+			if ( duplicate === -1 ) {
+				// Append new annotation
 				this.data[i].push( annotation );
+			} else {
+				// Replace existing annotation
+				this.data[i][duplicate] = annotation;
 			}
 		}
 	} else if ( method === 'remove' ) {
