@@ -26,6 +26,7 @@ $messages['en'] = array(
 	'articlefeedback-survey-submit' => 'Submit',
 	'articlefeedback-survey-title' => 'Please answer a few questions',
 	'articlefeedback-survey-thanks' => 'Thanks for filling out the survey.',
+	'articlefeedback-survey-disclaimer' => 'To help improve this feature, your feedback may be shared anonymously with the Wikipedia community.',
 	/* ext.articleFeedback and jquery.articleFeedback */
 	'articlefeedback-error' => 'An error has occured. Please try again later.',
 	'articlefeedback-form-switch-label' => 'Rate this page',
@@ -167,6 +168,7 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 {{Identical|Submit}}',
 	'articlefeedback-survey-title' => 'This text appears in the title bar of the survey dialog.',
 	'articlefeedback-survey-thanks' => 'This text appears when the user has successfully submitted the survey.',
+	'articlefeedback-survey-disclaimer' => 'This text appears on the survey form below the comment field and above the submit button.',
 	'articlefeedback-form-panel-explanation-link' => 'Do not translate "Project:". Also translate the "ArticleFeedback" special page name at [[Special:AdvancedTranslate]].',
 	'articlefeedback-form-panel-helpimprove-email-placeholder' => '{{Optional}}',
 	'articlefeedback-form-panel-helpimprove-privacy' => '{{Identical|Privacy}}',
