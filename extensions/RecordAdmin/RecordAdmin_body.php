@@ -282,7 +282,7 @@ class RecordAdmin {
 	 */
 	function cmpCallback( $a, $b, $operator ) {
 		$b = html_entity_decode( $b, ENT_QUOTES );
-		$re = preg_match( "|^/|", $b );
+		$re = preg_match( "|^[/#%]|", $b );
 		switch ( $operator ) {
 			case '=':
 				$cond = $re ? preg_match( $b, $a ) : ( empty( $b ) ? ( $a == $b ) : true );
