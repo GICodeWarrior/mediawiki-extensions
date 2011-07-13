@@ -183,7 +183,9 @@ Surface.prototype.onMouseDown = function( e ) {
 		this.cursor.show();
 	}
 	this.initialHorizontalCursorPosition = null;
-	this.$input.focus();
+	if ( !this.$input.is(':focus') ) {
+		this.$input.focus();
+	}
 	return false;
 };
 
