@@ -2621,6 +2621,7 @@ $messages['yi'] = array(
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
  * @author Wilsonmess
+ * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
 	'specialuserstats' => '使用分析',
@@ -2629,7 +2630,7 @@ $messages['zh-hans'] = array(
 	'usagestatisticsfor' => '<h2>[[User:$1|$1]]的使用分析</h2>',
 	'usagestatisticsforallusers' => '<h2>所有用户的使用分析</h2>',
 	'usagestatisticsinterval' => '区间',
-	'usagestatisticsnamespace' => '名字空间：',
+	'usagestatisticsnamespace' => '名称空间：',
 	'usagestatisticstype' => '类型',
 	'usagestatisticsstart' => '起始日期：',
 	'usagestatisticsend' => '终止日期：',
