@@ -705,7 +705,7 @@ $messages['ms'] = array(
 	'findspam-ip' => 'Alamat IP:',
 	'findspam-ok' => 'OK',
 	'findspam-notextfound' => 'Tiada sumbangan dijumpai',
-	'right-findspam' => 'Cari spam yang baru masuk',
+	'right-findspam' => 'Mencari spam yang baru masuk',
 );
 
 /** Erzya (Эрзянь)
