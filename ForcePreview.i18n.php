@@ -415,7 +415,7 @@ $messages['mr'] = array(
 $messages['ms'] = array(
 	'forcepreview' => 'Simpan laman (gunakan pralihat dahulu)',
 	'forcepreview-desc' => 'Wajibkan pralihat untuk pengguna tanpa keistimewaan',
-	'right-forcepreviewexempt' => 'Boleh simpan tanpa menggunakan Pralihat',
+	'right-forcepreviewexempt' => 'Boleh menyimpan tanpa menggunakan Pralihat',
 );
 
 /** Dutch (Nederlands)
