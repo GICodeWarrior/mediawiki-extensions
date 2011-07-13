@@ -985,6 +985,7 @@ $messages['it'] = array(
 	'article-comments-submit-button' => 'Invia',
 	'article-comments-leave-comment-link' => 'Lascia un commento ...',
 	'article-comments-required-field' => 'Il campo " $1 " è obbligatorio.',
+	'article-comments-submission-failed' => 'Invio commento fallito',
 	'article-comments-failure-reasons' => "Siamo spiacenti, l'inserimento del vostro commento non è riuscito per {{PLURAL:$1|il seguente motivo|i seguenti motivi}}",
 	'article-comments-no-comments' => 'Siamo spiacenti, la pagina "[[$1]]" non accetta commenti in questo momento.',
 	'article-comments-commenter-said' => '$1 ha detto ...',
