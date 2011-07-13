@@ -285,11 +285,11 @@ class RecordAdmin {
 		$re = preg_match( "|^/|", $b );
 		switch ( $operator ) {
 			case '=':
-				$cond = $re ? preg_match( $b, $a ) : ( $a == $b );
+				$cond = $re ? preg_match( $b, $a ) : ( empty( $b ) ? ( $a == $b ) : true );
 			break;
 			
 			case '!=':
-				$cond = $re ? !preg_match( $b, $a ) : ( $a != $b );
+				$cond = $re ? !preg_match( $b, $a ) : ( empty( $b ) ? ( $a != $b ) : true );
 			break;
 			
 			default:
