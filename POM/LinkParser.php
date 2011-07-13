@@ -3,7 +3,7 @@
 # Parsing for internal links and annotations
 #
 
-class POMLinkParser extends POMParser {
+class POMLinkParser implements POMParser {
 	#
 	# This function will parse all POMTextNodes in the page and add POMLink nodes if links are found
 	#

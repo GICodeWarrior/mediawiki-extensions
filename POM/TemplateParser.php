@@ -3,10 +3,10 @@
 # Template class represents templates
 #
 
-define( "MAX_TEMPLATE_NESTING_LEVEL", 50 );
-
-class POMTemplateParser extends POMParser
+class POMTemplateParser implements POMParser
 {
+	const MAX_TEMPLATE_NESTING_LEVEL = 50;
+
 	#
 	# This function will parse all POMTextNodes in the page and add POMTemplate nodes if templates are found
 	#
@@ -60,9 +60,9 @@ class POMTemplateParser extends POMParser
 						}
 
 						// In case something is wrong and we recursed too deep, die.
-						if ( $balance > MAX_TEMPLATE_NESTING_LEVEL )
+						if ( $balance > self::MAX_TEMPLATE_NESTING_LEVEL )
 						{
-							die( '[ERROR] Reached maximum template nesting level of ' . MAX_TEMPLATE_NESTING_LEVEL . ". Something is probably wrong with POM, please report this problem to developers.\n" );
+							die( '[ERROR] Reached maximum template nesting level of ' . self::MAX_TEMPLATE_NESTING_LEVEL . ". Something is probably wrong with POM, please report this problem to developers.\n" );
 						}
 					} while ( $balance > 0 ); // we'll be done with the loop only when found matching chunk
 

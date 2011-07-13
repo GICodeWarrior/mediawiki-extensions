@@ -3,7 +3,7 @@
 # Comment parser looks for comments and puts them in their own elements
 #
 
-class POMCommentParser extends POMParser {
+class POMCommentParser implements POMParser {
 	#
 	# This function will parse all POMTextNodes in the page and add POMComment nodes if comments are found
 	#
