@@ -10,7 +10,7 @@ if( !defined( 'MEDIAWIKI' ) ) die( 'Not an entry point.' );
  * @author Siebrand Mazeland
  * @licence GNU General Public Licence 2.0 or later
  */
-define( 'RECORDADMIN_VERSION', '1.2.8, 2011-07-13' );
+define( 'RECORDADMIN_VERSION', '1.2.9, 2011-07-13' );
 
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['RecordAdmin'] = $dir . 'RecordAdmin.i18n.php';
