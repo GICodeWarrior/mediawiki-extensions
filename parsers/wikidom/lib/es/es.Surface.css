@@ -10,22 +10,36 @@
 	outline: none;
 }
 
+.editSurface {
+	overflow: hidden;
+}
+
 .editSurface-document {
 	cursor: text;
 	margin-top: 1em;
+	overflow: hidden;
 }
 
 .editSurface-block {
 	margin: 1em;
 	margin-top: 0;
+	position: relative;
 }
 
-.editSurface-line {
-	display: inline-block;
+.editSurface-line,
+.editSurface-ruler {
 	line-height: 1.5em;
 	cursor: text;
 	white-space: nowrap;
 	color: #000000;
+}
+
+.editSurface-ruler {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: inline-block;
+	z-index: -1000;
 }
 
 .editSurface-line.empty {

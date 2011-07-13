@@ -48,8 +48,8 @@ ParagraphBlock.prototype.deleteContent = function( start, end ) {
  * 
  * @param $container {jQuery Selection} Container to render into
  */
-ParagraphBlock.prototype.renderContent = function() {
-	this.flow.render();
+ParagraphBlock.prototype.renderContent = function( offset, callback ) {
+	this.flow.render( offset, callback );
 };
 
 /**

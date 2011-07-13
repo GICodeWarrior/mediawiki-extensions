@@ -76,17 +76,17 @@ Document.prototype.removeBlock = function( block ) {
 	block.document = null;
 };
 
-Document.prototype.renderBlocks = function() {
+Document.prototype.renderBlocks = function( offset, callback ) {
 	// Remember width, to avoid updates when without width changes
 	this.width = this.$.innerWidth();
 	// Render blocks
 	for ( var i = 0; i < this.blocks.length; i++ ) {
 		this.$.append( this.blocks[i].$ );
-		this.blocks[i].renderContent();
+		this.blocks[i].renderContent( offset, callback );
 	}
 };
 
-Document.prototype.updateBlocks = function() {
+Document.prototype.updateBlocks = function( offset, callback ) {
 	// Bypass rendering when width has not changed
 	var width = this.$.innerWidth();
 	if ( this.width === width ) {
@@ -96,6 +96,6 @@ Document.prototype.updateBlocks = function() {
 	// Render blocks
 	var doc;
 	this.$.children( '.editSurface-block' ).each( function( i ) {
-		$(this).data( 'block' ).renderContent();
+		$(this).data( 'block' ).renderContent( offset, callback );
 	} );
 };

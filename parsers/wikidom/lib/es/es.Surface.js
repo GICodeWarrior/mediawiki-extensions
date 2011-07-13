@@ -1,17 +1,3 @@
-/*@cc_on
-(function(f) {
-	window.setTimeout = f(window.setTimeout); // overwrites the global function!
-	window.setInterval = f(window.setInterval); // overwrites the global function!
-})(function(f) {
-	return function(c, t) {
-		var a = [].slice.call(arguments, 2); // gathers the extra args
-		return f(function() {
-			c.apply(this, a); // passes them to your function
-		}, t);
-	};
-	});
-@*/
-
 /**
  * 
  * @param $container
@@ -45,8 +31,8 @@ function Surface( $container, doc ) {
 	
 	// Cursor
 	this.cursor = new Cursor();
-	this.$.after( this.cursor.$ );
-
+	this.$.append( this.cursor.$ );
+	
 	// Hidden input
 	this.$input = $( '<input class="editSurface-input" />' )
 		.prependTo( this.$ )
@@ -76,6 +62,12 @@ function Surface( $container, doc ) {
 			}
 		});
 
+	$(window).resize( function() {
+		surface.render( 0, function() {
+			surface.drawSelection();
+		} );
+	} );
+	
 	// First render
 	this.render();
 }
@@ -131,7 +123,8 @@ Surface.prototype.onKeyDown = function( e ) {
 			if ( this.keydownTimeout ) {
 				clearTimeout( this.keydownTimeout );
 			}
-			this.keydownTimeout = setTimeout( function ( surface ) {
+			var surface = this;
+			this.keydownTimeout = setTimeout( function () {
 				var val = surface.$input.val();
 				surface.$input.val( '' );
 				if ( val.length > 0 ) {
@@ -139,7 +132,7 @@ Surface.prototype.onKeyDown = function( e ) {
 					location.block.insertContent( location.offset, val.split(''));
 					location.offset += val.length;
 				}
-			}, 0, this );
+			}, 10 );
 			break;
 	}
 	return true;
@@ -434,15 +427,15 @@ Surface.prototype.moveCursorLeft = function() {
 /**
  * Updates the rendered view.
  * 
- * @param from Location: Where to start re-flowing from (optional)
+ * @param offset Location: Where to start re-flowing from (optional)
  */
-Surface.prototype.render = function( from ) {
+Surface.prototype.render = function( offset, callback ) {
 	if ( !this.rendered ) {
 		this.rendered = true;
 		this.$.append( this.doc.$ );
-		this.doc.renderBlocks();
+		this.doc.renderBlocks( offset, callback );
 	} else {
-		this.doc.updateBlocks();
+		this.doc.updateBlocks( offset, callback );
 	}
 };
 
@@ -458,6 +451,7 @@ Surface.prototype.annotateContent= function( annotation, selection ) {
 	if ( selection === undefined ) {
 		selection = this.selection;
 	}
+	var surface = this;
 	if ( selection.from && selection.to ) {
 		selection.normalize();
 		var from = selection.start,
@@ -465,7 +459,9 @@ Surface.prototype.annotateContent= function( annotation, selection ) {
 		if ( from.block === to.block ) {
 			// Single block annotation
 			from.block.annotateContent( annotation, from.offset, to.offset );
-			from.block.renderContent();
+			from.block.renderContent( function() {
+				surface.drawSelection();
+			} );
 		} else {
 			// Multiple block annotation
 			for ( var i = from.block.getIndex(), end = to.block.getIndex(); i <= end; i++ ) {
@@ -473,18 +469,23 @@ Surface.prototype.annotateContent= function( annotation, selection ) {
 				if ( block === from.block ) {
 					// From offset to length
 					block.annotateContent( annotation, from.offset, block.getLength() );
-					block.renderContent();
+					block.renderContent( function() {
+						surface.drawSelection();
+					} );
 				} else if ( block === to.block ) {
 					// From 0 to offset
 					block.annotateContent( annotation, 0, to.offset );
-					block.renderContent();
+					block.renderContent( function() {
+						surface.drawSelection();
+					} );
 				} else {
 					// Full coverage
 					block.annotateContent( annotation, 0, block.getLength() );
-					block.renderContent();
+					block.renderContent( function() {
+						surface.drawSelection();
+					} );
 				}
 			}
 		}
 	}
-	this.drawSelection();
 };

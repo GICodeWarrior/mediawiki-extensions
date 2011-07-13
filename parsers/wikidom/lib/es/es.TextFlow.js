@@ -12,6 +12,7 @@ function TextFlow( $container, content ) {
 	this.width = null;
 	this.boundaryTest = /([ \-\t\r\n\f])/g;
 	this.widthCache = {};
+	this.renderState = {};
 }
 
 /**
@@ -55,7 +56,7 @@ TextFlow.prototype.getOffset = function( position ) {
 	var virtual = line < this.lines.length - 1
 		&& this.boundaryTest.exec( this.lines[line].text.substr( -1 ) ) ? -1 : 0;
 	line = Math.min( line, this.lines.length - 1 );
-	var $ruler = $( '<div class="editSurface-line"></div>' ).appendTo( this.$ )
+	var $ruler = $( '<div class="editSurface-ruler"></div>' ).appendTo( this.$ )
 		ruler = $ruler[0],
 		fit = this.fitCharacters(
 			this.lines[line].start, this.lines[line].end, ruler, position.left
@@ -138,7 +139,7 @@ TextFlow.prototype.getPosition = function( offset ) {
 	 * measuring for those cases.
 	 */
 	if ( this.lines[line].start < offset ) {
-		var $ruler = $( '<div class="editSurface-line"></div>' ).appendTo( this.$ ),
+		var $ruler = $( '<div class="editSurface-ruler"></div>' ).appendTo( this.$ ),
 			ruler = $ruler[0];
 		ruler.innerHTML = this.content.render( this.lines[line].start, offset );
 		position.left = ruler.clientWidth;
@@ -182,6 +183,60 @@ TextFlow.prototype.scanBoundaries = function() {
 	}
 };
 
+TextFlow.prototype.renderIteration = function() {
+	var rs = this.renderState,
+		iteration = 0;
+	while ( ++iteration <= rs.iterationLimit && rs.wordOffset < rs.wordCount - 1 ) {
+		rs.wordFit = this.fitWords( rs.wordOffset, rs.wordCount - 1, rs.ruler, rs.width );
+		if ( rs.wordFit.width > rs.width ) {
+			// The first word didn't fit, we need to split it up
+			rs.charOffset = rs.lineStart;
+			rs.wordOffset++;
+			rs.lineEnd = this.boundaries[rs.wordOffset];
+			do {
+				rs.charFit = this.fitCharacters( rs.charOffset, rs.lineEnd, rs.ruler, rs.width );
+				// If we were able to get the rest of the characters on the line OK
+				if ( rs.charFit.end === rs.lineEnd) {
+					// Try to fit more words on the line
+					rs.wordFit = this.fitWords(
+						rs.wordOffset, rs.wordCount - 1, rs.ruler, rs.width - rs.charFit.width
+					);
+					if ( rs.wordFit.end > rs.wordOffset ) {
+						rs.wordOffset = rs.wordFit.end;
+						rs.charFit.end = rs.lineEnd = this.boundaries[rs.wordOffset];
+					}
+				}
+				this.appendLine( rs.charOffset, rs.charFit.end );
+				// Move on to another line
+				rs.charOffset = rs.charFit.end;
+			} while ( rs.charOffset < rs.lineEnd );
+		} else {
+			rs.wordOffset = rs.wordFit.end;
+			rs.lineEnd = this.boundaries[rs.wordOffset];
+			this.appendLine( rs.lineStart, rs.lineEnd );
+		}
+		rs.lineStart = rs.lineEnd;
+	}
+	// Only perform on actual last iteration
+	if ( rs.wordOffset >= rs.wordCount - 1 ) {
+		// Cleanup
+		rs.$ruler.remove();
+		this.$.find( '.editSurface-line[line-index=' + ( this.lines.length - 1 ) + ']' )
+			.nextAll()
+			.remove();
+		rs.timeout = undefined;
+		if ( $.isFunction( rs.callback ) ) {
+			rs.callback();
+		}
+	} else {
+		rs.ruler.innerHTML = '';
+		var flow = this;
+		rs.timeout = setTimeout( function() {
+			flow.renderIteration();
+		}, 0 );
+	}
+};
+
 /**
  * Renders text into a series of HTML elements, each a single line of wrapped text.
  * 
@@ -193,13 +248,18 @@ TextFlow.prototype.scanBoundaries = function() {
  * text, but will be automatically ignored if the text or width of the container has changed.
  * 
  * @param offset {Integer} Offset to re-render from, if possible (not yet implemented)
- * @param callback {Function} Function to execute when flowing is complete
  */
 TextFlow.prototype.render = function( offset, callback ) {
+	var rs = this.renderState;
+	
+	// Stop iterating from last render
+	if ( rs.timeout !== undefined ) {
+		clearTimeout( rs.timeout );
+		// Cleanup
+		rs.$ruler.remove();
+	}
+	
 	this.widthCache = {};
-
-	// Reset lines in the DOM and the "lines" array
-	this.$.empty();
 	
 	this.scanBoundaries();
 	
@@ -210,8 +270,8 @@ TextFlow.prototype.render = function( offset, callback ) {
 	 * inconsistencies between browsers and box models, we can just create an element inside the
 	 * container and measure it.
 	 */
-	var $ruler = $( '<div>&nbsp;</div>' ).appendTo( this.$ ),
-		width = $ruler.innerWidth()
+	rs.$ruler = $( '<div>&nbsp;</div>' ).appendTo( this.$ );
+	rs.width = rs.$ruler.innerWidth()
 	
 	// TODO: Take offset into account
 	// Ignore offset optimization if the width has changed or the text has never been flowed before
@@ -223,51 +283,19 @@ TextFlow.prototype.render = function( offset, callback ) {
 	
 	this.lines = [];
 	// Iterate over each word that will fit in a line, appending them to the DOM as we go
-	var wordOffset = 0,
-		lineStart = 0,
-		lineEnd,
-		wordFit,
-		charOffset,
-		charFit,
-		wordCount = this.boundaries.length,
-		ruler = $ruler.addClass('editSurface-line')[0];
-	while ( wordOffset < wordCount - 1 ) {
-		wordFit = this.fitWords( wordOffset, wordCount - 1, ruler, width );
-		if ( wordFit.width > width ) {
-			// The first word didn't fit, we need to split it up
-			charOffset = lineStart;
-			wordOffset++;
-			lineEnd = this.boundaries[wordOffset];
-			do {
-				charFit = this.fitCharacters( charOffset, lineEnd, ruler, width );
-				// If we were able to get the rest of the characters on the line OK
-				if (charFit.end === lineEnd) {
-					// Try to fit more words on the line
-					wordFit = this.fitWords(
-						wordOffset, wordCount - 1, ruler, width - charFit.width
-					);
-					if ( wordFit.end > wordOffset ) {
-						wordOffset = wordFit.end;
-						charFit.end = lineEnd = this.boundaries[wordOffset];
-					}
-				}
-				this.appendLine( charOffset, charFit.end );
-				// Move on to another line
-				charOffset = charFit.end;
-			} while ( charOffset < lineEnd );
-		} else {
-			wordOffset = wordFit.end;
-			lineEnd = this.boundaries[wordOffset];
-			this.appendLine( lineStart, lineEnd );
-		}
-		lineStart = lineEnd;
-	}
-	// Cleanup
-	$ruler.remove();
 	
-	if ( $.isFunction( callback ) ) {
-		callback();
-	}
+	rs.wordOffset = 0;
+	rs.lineStart = 0;
+	rs.lineEnd = 0;
+	rs.wordFit = null;
+	rs.charOffset = 0;
+	rs.charFit = null;
+	rs.wordCount = this.boundaries.length;
+	rs.ruler = rs.$ruler.addClass('editSurface-ruler')[0];
+	rs.iterationLimit = 3;
+	rs.callback = callback;
+	
+	this.renderIteration();
 };
 
 /**
@@ -277,9 +305,12 @@ TextFlow.prototype.render = function( offset, callback ) {
  * @param end {Integer} Ending of text range for line
  */
 TextFlow.prototype.appendLine = function( start, end ) {
-	$line = $( '<div class="editSurface-line" line-index="'
-			+ this.lines.length + '">' + this.content.render( start, end ) + '</div>' )
-		.appendTo( this.$ );
+	$line = this.$.find( '.editSurface-line[line-index=' + this.lines.length + ']' );
+	if ( !$line.length ) {
+		$line = $( '<div class="editSurface-line" line-index="' + this.lines.length + '"></div>' )
+			.appendTo( this.$ );
+	}
+	$line[0].innerHTML = this.content.render( start, end );
 	// Collect line information
 	this.lines.push({
 		'text': this.content.substring( start, end ),
