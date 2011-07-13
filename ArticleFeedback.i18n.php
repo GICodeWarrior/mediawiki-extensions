@@ -2832,10 +2832,38 @@ Versöhg et shpääder norr_enß.',
 	'articleFeedback-table-caption-dailyhighs' => 'Sigge met de beste Enschäzonge: $1',
 	'articleFeedback-table-caption-dailylows' => 'Sigge met de schläächteste Enschäzonge: $1',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Diß Woch et miehtß jeändert',
+	'articleFeedback-table-caption-recentlows' => 'Köözlejje Deefe',
 	'articleFeedback-table-heading-page' => 'Sigg',
 	'articleFeedback-table-heading-average' => 'Dorschnett',
 	'articleFeedback-copy-above-highlow-tables' => 'Mer sin dat heeh aam upropeere.
 Doht uns op di [$1 Klaafsigg] schrieve, wad Er dovun hallde doht.',
+	'articlefeedback-dashboard-bottom' => "'''Opjepaß''': Mer donn ongerscheidlijje Aate ußprobeere, Atikelle heh en dä Övverseeschte ze zeije. Em Momang sin dobei:
+* Sigge met de hühßte un de deefste Enschäzonge - die mieh wie zehn Mohl en de verjangene 24 Schtonde enjeschäz woode sen. Der Dorschnett weed us alle Enschäzonge us dä 24 Schtonde ußjerääschnet.
+* Sigge met de deefste Enschäzonge köözlesch - die mieh wie 70% Mohl en de verjangene 24 Schtonde schlääsch enjeschäz woode sen, met 2 Schtähnscher udder winnijer. Bloß Atikelle met zehn Enschäzonge us dä 24 Schtonde sen met dobei.",
+	'articlefeedback-disable-preference' => 'Donn dä Knopp zum Sigge Enschäze nit op de Sigge aanzeije',
+	'articlefeedback-emailcapture-response-body' => 'Ene schönne Daach,
+
+mer bedangke uns för Ding Enträße, {{GRAMMAR:Akkusativ|{{SITENAME}}}} bäßer ze maache.
+
+Nemm Der ene Momang, öm Ding e-mail Adräß ze beschtääteje, un donn däm Lingk heh follje:
+
+$1
+
+Do kanns och op heh di Sigg jonn:
+
+$2
+
+un dann dä Kood heh enjävve:
+
+$3
+
+Mer mälde ons bahl bei Der, wi de met {{GRAMMAR:Dativ|{{SITENAME}}}} hälfe kanns.
+
+Wann De dat heh sällver nit aanjschtüße häs, donn nix, un mer don Der och nix mieh schecke.
+
+Ene schööne Jrohß!
+
+De Jemeinschaff vun {{GRAMMAR:Nominativ|{{SITENAME}}}}',
 );
 
 /** Kurdish (Latin) (Kurdî (Latin))
