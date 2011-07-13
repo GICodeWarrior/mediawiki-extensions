@@ -3,7 +3,7 @@ source("util/env.R")
 
 
 load_reverter_months = function(verbose=T, reload=F){
-	filename = paste(DATA_DIR, "en.reverter_months.20110115.no_quotes_or_bots.tsv", sep="/")
+	filename = paste(DATA_DIR, "en.reverter_months.20110115.no_quotes_or_bots.final.tsv", sep="/")
 	if(!exists("REVERTER_MONTHS")){
 		REVERTER_MONTHS <<- NULL
 	}

@@ -185,8 +185,25 @@ GROUP BY
 	SUBSTR(rev_timestamp, 1,2);
 	
 	
+
+--Reformed vandal users:
+----Julianmh -> Demize (name change process)
+----(something) -> MisterWiki -> Diego Grez(spanish wikipedia)
+	
 	
 
-"(Reverted ([0-9]+ )?edits by \[\[Special:Contributions/[^\|]+\|[^\]]+]] \(\[\[User talk:[^\|]+\|talk\]\]\) to last version by .+)|" + 
-"(Message re. \[\[[^\]]+\]\])|" + 
-"(Level [0-9]+ warning re. \[\[[^\]]+\]\]"
+INSERT INTO halfak.huggle_revision_20110701
+SELECT 
+	rev_id, 
+	"rev_comment RLIKE \"(Reverted ([0-9]+ )?edits by \\[\\[Special:Contributions/[^\\|]+\\|[^\]]+\\]\\] \\(\\[\\[User talk:[^\\|]+\\|talk\\]\\]\\) to last version by .+)|(Message re\\. \\[\\[[^\]]+\\]\\])|(Level [0-9]+ warning re\\. \\[\\[[^\]]+\\]\\])\"" 
+FROM revision 
+WHERE rev_comment RLIKE 
+"(Reverted ([0-9]+ )?edits by \\[\\[Special:Contributions/[^\\|]+\\|[^\]]+\\]\\] \\(\\[\\[User talk:[^\\|]+\\|talk\\]\\]\\) to last version by .+)|(Message re\\. \\[\\[[^\]]+\\]\\])|(Level [0-9]+ warning re\\. \\[\\[[^\]]+\\]\\])";
+
+
+CREATE TABLE halfak.bot_20110711
+SELECT DISTINCT ug_user as user_id FROM user_groups WHERE ug_group = "bot"
+UNION (
+	SELECT user_id FROM zexley.bots
+);
+

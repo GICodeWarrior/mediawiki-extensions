@@ -4,6 +4,7 @@ import sys, argparse
 def main(args):
 	
 	bots = set()
+	args.bots.readline() #strip off header
 	for line in args.bots:
 		bots.add(int(line.strip()))
 	

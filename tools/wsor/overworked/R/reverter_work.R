@@ -2,6 +2,7 @@ source("loader/load_reverter_months.R")
 
 library(lattice)
 library(grid)
+library(doBy)
 
 reverter_months = load_reverter_months()
 reverter_months = reverter_months[!grepl("bot( |$|[^a-z])", reverter_months$username, ignore.case=T),]
@@ -122,16 +123,37 @@ for(year.month in unique(reverter_months$year.month)){
 	cat("Adding", year.month, "...") 
 	top_vfers = rbind(
 		top_vfers,
-		month_vfers[order(month_vfers$reverts),][1:50,]
+		month_vfers[order(month_vfers$reverts, decreasing=T),][1:50,]
 	)
 	cat("DONE!\n")
 }
 
 top_activity_months = summaryBy(
 	vandal_reverts + reverts + revisions ~ year.month,
-	data=reverter_months,
+	data=top_vfers,
 	FUN=c(mean, sd, length)
 )
+
+png("plots/reverting_revisions.per_user_month.top_50.png", height=768, width=1024)
+with(
+	top_activity_months,
+	plot_activity_mean(year.month, reverts.mean, reverts.sd, reverts.length, "reverting revisions")
+)
+dev.off()
+
+png("plots/vandal_reverting_revisions.per_user_month.top_50.png", height=768, width=1024)
+with(
+	top_activity_months,
+	plot_activity_mean(year.month, vandal_reverts.mean, vandal_reverts.sd, vandal_reverts.length, "vandal reverting revisions")
+)
+dev.off()
+
+png("plots/revisions.per_user_month.top_50.png", height=768, width=1024)
+with(
+	top_activity_months,
+	plot_activity_mean(year.month, revisions.mean, revisions.sd, revisions.length, "revisions")
+)
+dev.off()
 
 
 

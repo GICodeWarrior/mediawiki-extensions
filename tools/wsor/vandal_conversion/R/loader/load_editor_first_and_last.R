@@ -16,7 +16,7 @@ load_editor_first_and_last = function(verbose=T, reload=F){
 			filename, 
 			header=T, sep="\t", 
 			quote="", comment.char="", 
-			na.strings="\\N",
+			na.strings="\\N"
 		)
 		if(verbose){cat("DONE!\n")}
 	}

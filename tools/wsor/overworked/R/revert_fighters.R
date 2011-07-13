@@ -37,6 +37,19 @@ svfighter_counts = with(
 		users     = user_id.length
 	)
 )
+sdvfighter_counts = with(
+	summaryBy(
+		user_id ~ year + month + svfighter,
+		data=reverter_months[reverter_months$active,],
+		FUN=length
+	),
+	data.frame(
+		year      = year,
+		month     = month,
+		svfighter = svfighter,
+		users     = user_id.length
+	)
+)
 
 activity_counts = merge(
 	merge(

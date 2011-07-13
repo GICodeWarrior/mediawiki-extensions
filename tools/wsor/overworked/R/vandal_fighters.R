@@ -25,8 +25,6 @@ activity_counts = with(
 		FUN=sum
 	),
 	data.frame(
-		year         = year,
-		month        = month,
 		active.users = active.sum,
 		vf5.users    = vf5.sum,
 		vf50.users   = vf50.sum,
@@ -34,10 +32,10 @@ activity_counts = with(
 		r5.users     = r5.sum,
 		r50.users    = r50.sum,
 		r500.users   = r500.sum,
-		year.month   = as.factor(paste(year, month, sep="/"))
+		year.month   = year.month
 	)
 )
-activity_counts$log.users.active = log(activity_counts$users.active, base=10)
+activity_counts$log.active.users = log(activity_counts$active.users, base=10)
 activity_counts$log.v5.users     = log(activity_counts$vf5.users, base=10)
 activity_counts$log.v50.users    = log(activity_counts$vf50.users, base=10)
 
@@ -82,9 +80,9 @@ dev.off()
 png("plots/vandal_fighters.by_month.logged.png", width=1024, height=768)
 plot(
 	activity_counts$year.month, 
-	(activity_counts$log.users.active*0)-10000, 
+	(activity_counts$log.active.users*0)-10000, 
 	col="#FFFFFF",
-	ylim=c(0, max(activity_counts$log.users.active)+.5),
+	ylim=c(0, max(activity_counts$log.active.users)+.5),
 	main="Vandal fighters and active editors over time",
 	xlab="Time (in months)",
 	ylab="Number of users (log10 scaled)"
@@ -177,7 +175,7 @@ plot_prop_with_regression(
 plot_prop_with_regression(
 	activity_counts$year.month, 
 	activity_counts$vf500.users/activity_counts$active.users, 
-	"vandal_50",
+	"vandal_500",
 	"revert >=500 vandals per month"
 )
 plot_prop_with_regression(
