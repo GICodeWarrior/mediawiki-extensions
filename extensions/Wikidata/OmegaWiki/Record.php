@@ -119,7 +119,7 @@ class ArrayRecord implements Record {
 			$rv = $comma;
 			$repr = "$key:$value";
 			// $value is never a class??
-			if ( gettype ( $value ) == "object" ) {
+			if ( is_object ( $value ) ) {
 				if ( property_exists ( $value , 'tostring_indent' ) ) {
 					$repr = $value->tostring_indent( $depth + 1, $key );
 				}
