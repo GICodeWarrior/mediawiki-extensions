@@ -730,7 +730,7 @@ function getExpressionMeaningsEditor( Attribute $attribute, $allowAdd, ViewInfor
 	
 	$definedMeaningEditor = getDefinedMeaningEditor( $viewInformation );
 
-	$definedMeaningCaptionEditor = new DefinedMeaningHeaderEditor( $o->definedMeaningId, new SimplePermissionController( false ), true, 75 );
+	$definedMeaningCaptionEditor = new DefinedMeaningHeaderEditor( $o->definedMeaningId, new SimplePermissionController( false ), false, 75 );
 	$definedMeaningCaptionEditor->setAddText( wfMsg( 'ow_NewExactMeaning' ) );
 
 	$expressionMeaningsEditor = new RecordSetListEditor( $attribute, new SimplePermissionController( true ), new ShowEditFieldChecker( true ), new AllowAddController( $allowAdd ), false, $allowAdd, new ExpressionMeaningController( $viewInformation->filterLanguageId ), 3, false );
