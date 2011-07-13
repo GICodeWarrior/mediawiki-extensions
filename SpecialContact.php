@@ -40,20 +40,12 @@ class SpecialContact extends SpecialPage {
 			$nu = User::newFromName( $wgContactUser );
 			$f = new EmailContactForm( $nu );
 
-			$form['fname']     = $wgRequest->getVal('fname');
-			$form['lname']     = $wgRequest->getVal('lname');
-			$form['orgname']   = $wgRequest->getVal('orgname');
-			$form['jobname']   = $wgRequest->getVal('jobname');
-			$form['urlname']   = $wgRequest->getVal('urlname');
+			$form['name']      = $wgRequest->getVal('name');
+			$form['age']       = $wgRequest->getVal('age');
 			$form['email']     = $wgRequest->getVal('email');
-			$form['telephone'] = $wgRequest->getVal('telephone');
-			$form['other']	   = $wgRequest->getVal('other');
-			$form['url']	   = $wgRequest->getVal('url');
-			$form['country']   = $wgRequest->getVal('country');
-			$form['citytown']  = $wgRequest->getVal('city-town');
-			$form['provstat']  = $wgRequest->getVal('prov-state');
+			$form['location']  = $wgRequest->getVal('location');
 			$form['story']	   = $wgRequest->getVal('story');
-			$form['followup']  = $wgRequest->getVal('follow-up');
+			$form['followup']  = $wgRequest->getVal('followup');
 
 			$text = '';
 			foreach( $form as $key => $value) {
