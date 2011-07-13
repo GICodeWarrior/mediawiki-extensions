@@ -1804,7 +1804,7 @@ $messages['ms'] = array(
 	'badimages-log-add' => 'menambahkan [[$1]] kepada senarai imej tidak elok',
 	'badimages-log-remove' => 'menggugurkan [[$1]] daripada senarai imej tidak elok',
 	'badimages-page' => '{{ns:help}}:Senarai imej tak elok',
-	'right-badimages' => 'Kemas kini senarai imej tidak elok',
+	'right-badimages' => 'Mengemas kini senarai imej tidak elok',
 );
 
 /** Maltese (Malti)
