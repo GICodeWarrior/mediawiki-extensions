@@ -272,34 +272,30 @@ function getExpressionReferenceRecords( $expressionIds ) {
 	if ( count( $expressionIds ) > 0 ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		
-        # Query building
+		# Query building
 		$frontQuery = "SELECT expression_id, language_id, spelling" .
-			" FROM {$dc}_expression" .
-			" WHERE expression_id = ";
-		$queueQuery = " AND " . getLatestTransactionRestriction( "{$dc}_expression" );
+		  " FROM {$dc}_expression" .
+		  " WHERE expression_id = ";
 
-        # Build atomic queries
-        foreach ( $expressionIds as &$value ) { $value = $frontQuery . $value . $queueQuery; }
-        unset( $value );
+		# Build atomic queries
+		foreach ( $expressionIds as &$value ) { $value = $frontQuery . $value ; }
+		unset( $value );
 		# Union of the atoms
-        $finalQuery = implode( ' UNION ', $expressionIds );
-		
+		$finalQuery = implode( ' UNION ', $expressionIds );
+
 		$queryResult = $dbr->query( $finalQuery );
-		
+
 		$result = array();
 	
 		while ( $row = $dbr->fetchObject( $queryResult ) ) {
 			$record = new ArrayRecord( $o->expressionStructure );
 			$record->language = $row->language_id;
 			$record->spelling = $row->spelling;
-			
 			$result[$row->expression_id] = $record;
 		}
-			
 		return $result;
 	}
-	else
-		return array();
+	else return array();
 }
 
 function expandExpressionReferencesInRecordSet( RecordSet $recordSet, array $expressionAttributes ) {
