@@ -60,7 +60,6 @@ function Surface( $container, doc ) {
 						return surface.onMouseUp( e );
 					},
 					'keydown.es' : function( e ) {
-						console.log('kd');
 						return surface.onKeyDown( e );			
 					},
 					'keyup.es' : function( e ) {
