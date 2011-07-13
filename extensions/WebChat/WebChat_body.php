@@ -37,7 +37,7 @@ class WebChat extends SpecialPage {
 		$query = implode( $query, '&' );
 
 		$wgOut->addHTML( Xml::openElement( 'iframe', array(
-			'width'     => '600',
+			'width'     => '100%',
 			'height'    => '500',
 			'scrolling' => 'no',
 			'border'    => '0',
@@ -51,9 +51,7 @@ class WebChat extends SpecialPage {
 '/* <![CDATA[ */
 function webChatExpand( elem ) {
 	height = elem.height;
-	width  = elem.width;
 	elem.height = screen.height - 500;
-	elem.width  = screen.width  - 250;
 }
 /* ]]> */'
 			) );
