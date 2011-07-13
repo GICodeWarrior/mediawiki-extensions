@@ -239,7 +239,6 @@ Content.prototype.annotate = function( annotation, start, end ) {
 					// Remove all annotations by converting the annotated character to a plain
 					// character
 					this.data[i] = this.data[i][0];
-					break;
 				}
 				// Remove all matching instances of annotation
 				var j;
