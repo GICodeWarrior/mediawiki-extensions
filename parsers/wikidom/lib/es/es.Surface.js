@@ -144,8 +144,11 @@ Surface.prototype.onKeyDown = function( e ) {
 }
 
 Surface.prototype.onKeyUp = function( e ) {
-	var location = this.getLocation();
-	this.cursor.show( location.block.flow.getPosition( location.offset ), location.block.$.offset() );
+	var surface = this;
+	setTimeout( function() {
+		var location = surface.getLocation();
+		surface.cursor.show( location.block.flow.getPosition( location.offset ), location.block.$.offset() );
+	}, 0 );
 	return true;
 }
 
