@@ -485,8 +485,8 @@ $messages['ms'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Cipta',
 	'articletocategory2-create-category-under-category-text' => 'Tambahkan kategori ke dalam kategori ini',
 	'articletocategory2-create-category-under-category-button' => 'Cipta',
-	'right-ArticleToCategory2' => 'Tambahkan laman kepada kategori',
-	'right-ArticleToCategory2AddCat' => 'Tambahkan kategori kepada kategori',
+	'right-ArticleToCategory2' => 'Menambahkan laman kepada kategori',
+	'right-ArticleToCategory2AddCat' => 'Menambahkan kategori kepada kategori',
 );
 
 /** Erzya (Эрзянь)
