@@ -54,15 +54,29 @@
 	display: none;
 }
 
-.italic {
+.editSurface-format-italic {
 	font-style: italic;
 }
 
-.bold {
+.editSurface-format-bold {
 	font-weight: bold;
 }
 
-.xlink {
+.editSurface-format-xlink {
 	color: blue;
 	text-decoration: underline;
+}
+
+.editSurface-format-small,
+.editSurface-format-sub,
+.editSurface-format-super {
+	font-size: .8em;
+}
+
+.editSurface-format-sub {
+	vertical-align: sub;
+}
+
+.editSurface-format-super {
+	vertical-align: super;
 }

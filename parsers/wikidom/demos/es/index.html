@@ -77,7 +77,19 @@
 							]
 						},
 						{ 'text': "Word wrap is the additional feature of most text editors, word processors, and web browsers, of breaking lines between and not within words, except when a single word is longer than a line." },
-						{ 'text': "It is usually done on the fly when viewing or printing a document, so no line break code is manually entered, or stored.[citation needed] If the user changes the margins, the editor will either automatically reposition the line breaks to ensure that all the text will \"flow\" within the margins and remain visible, or provide the typist some convenient way to reposition the line breaks." },
+						{
+							'text': "It is usually done on the fly when viewing or printing a document, so no line break code is manually entered, or stored.[citation needed] If the user changes the margins, the editor will either automatically reposition the line breaks to ensure that all the text will \"flow\" within the margins and remain visible, or provide the typist some convenient way to reposition the line breaks.",
+							'annotations': [
+								// "[citation needed]" should be super
+								{ 'type': 'super', 'range': { 'start': 120, 'end': 137 } },
+								// "[citation needed]" should be a linke to "#"
+								{
+									'type': 'xlink',
+									'range': { 'start': 120, 'end': 137 },
+									'data': { 'href': './' }
+								}
+							]
+						},
 						{ 'text': "A soft return is the break resulting from line wrap or word wrap, whereas a hard return is an intentional break, creating a new paragraph." },
 					]),
 					new ParagraphBlock([

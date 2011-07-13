@@ -115,16 +115,28 @@ Content.prototype.getLength = function() {
 
 Content.annotationRenderers = {
 	'bold': {
-		'open': '<span class="bold">',
+		'open': '<span class="editSurface-format-bold">',
 		'close': '</span>',
 	},
 	'italic': {
-		'open': '<span class="italic">',
+		'open': '<span class="editSurface-format-italic">',
+		'close': '</span>',
+	},
+	'small': {
+		'open': '<span class="editSurface-format-small">',
+		'close': '</span>',
+	},
+	'super': {
+		'open': '<span class="editSurface-format-super">',
+		'close': '</span>',
+	},
+	'sub': {
+		'open': '<span class="editSurface-format-sub">',
 		'close': '</span>',
 	},
 	'xlink': {
 		'open': function( data ) {
-			return '<span class="xlink" data-href="' + data.href + '">';
+			return '<span class="editSurface-format-xlink" data-href="' + data.href + '">';
 		},
 		'close': '</span>'
 	}
