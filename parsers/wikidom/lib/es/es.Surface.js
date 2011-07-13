@@ -15,33 +15,28 @@
 /**
  * 
  * @param $container
- * @param document
+ * @param doc
  * @returns {Surface}
  */
-function Surface( $container, document ) {
+function Surface( $container, doc ) {
 	var surface = this;
 	
 	this.$ = $container.addClass( 'editSurface' );
-	this.document = document;
+	this.doc = doc;
 	this.rendered = false;
 	this.location = null;
 	this.selection = new Selection();
 	this.selecting = false;
 	this.keydownTimeout = null;
 	this.initialHorizontalCursorPosition = null;
-	
+
+	// MouseDown on surface
 	this.$.bind({
 		'mousedown' : function(e) {
 			return surface.onMouseDown( e );
-		},
-		'mousemove' : function(e) {
-			return surface.onMouseMove( e );
-		},
-		'mouseup' : function(e) {
-			return surface.onMouseUp( e );
 		}
 	});
-	
+
 	// Selection
 	this.$ranges = $( '<div class="editSurface-ranges"></div>' ).prependTo( this.$ );
 	this.$rangeStart = $( '<div class="editSurface-range"></div>' ).appendTo( this.$ranges );
@@ -51,7 +46,7 @@ function Surface( $container, document ) {
 	// Cursor
 	this.cursor = new Cursor();
 	this.$.after( this.cursor.$ );
-	
+
 	// Hidden input
 	this.$input = $( '<input class="editSurface-input" />' )
 		.prependTo( this.$ )
@@ -62,11 +57,23 @@ function Surface( $container, document ) {
 			'keyup' : function( e ) {
 				return surface.onKeyUp( e );			
 			},
+			'focus' : function() {
+				$(document).bind({
+					'mousemove.es' : function(e) {
+						return surface.onMouseMove( e );
+					},
+					'mouseup.es' : function(e) {
+						return surface.onMouseUp( e );
+					}
+				});		
+			},
 			'blur': function( e ) {
+				$(document).unbind('mousemove.es');
+				$(document).unbind('mouseup.es');			
 				surface.cursor.hide();
 			}
 		});
-	
+
 	// First render
 	this.render();
 }
@@ -425,10 +432,10 @@ Surface.prototype.moveCursorLeft = function() {
 Surface.prototype.render = function( from ) {
 	if ( !this.rendered ) {
 		this.rendered = true;
-		this.$.append( this.document.$ );
-		this.document.renderBlocks();
+		this.$.append( this.doc.$ );
+		this.doc.renderBlocks();
 	} else {
-		this.document.updateBlocks();
+		this.doc.updateBlocks();
 	}
 };
 
@@ -455,7 +462,7 @@ Surface.prototype.annotateContent= function( annotation, selection ) {
 		} else {
 			// Multiple block annotation
 			for ( var i = from.block.getIndex(), end = to.block.getIndex(); i <= end; i++ ) {
-				var block = this.document.blocks[i];
+				var block = this.doc.blocks[i];
 				if ( block === from.block ) {
 					// From offset to length
 					block.annotateContent( annotation, from.offset, block.getLength() );
