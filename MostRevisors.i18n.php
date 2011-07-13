@@ -1004,7 +1004,7 @@ $messages['yi'] = array(
  * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
-	'mostrevisors-namespace' => '名字空间：',
+	'mostrevisors-namespace' => '名称空间：',
 	'mostrevisors-submit' => '提交',
 	'mostrevisors-showredir' => '显示重定向页面',
 	'mostrevisors-hideredir' => '隐藏重定向页面',
