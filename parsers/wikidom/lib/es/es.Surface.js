@@ -51,12 +51,6 @@ function Surface( $container, doc ) {
 	this.$input = $( '<input class="editSurface-input" />' )
 		.prependTo( this.$ )
 		.bind({
-			'keydown' : function( e ) {
-				return surface.onKeyDown( e );			
-			},
-			'keyup' : function( e ) {
-				return surface.onKeyUp( e );			
-			},
 			'focus' : function() {
 				$(document).bind({
 					'mousemove.es' : function(e) {
@@ -64,12 +58,21 @@ function Surface( $container, doc ) {
 					},
 					'mouseup.es' : function(e) {
 						return surface.onMouseUp( e );
-					}
+					},
+					'keydown.es' : function( e ) {
+						console.log('kd');
+						return surface.onKeyDown( e );			
+					},
+					'keyup.es' : function( e ) {
+						return surface.onKeyUp( e );			
+					},
 				});		
 			},
 			'blur': function( e ) {
 				$(document).unbind('mousemove.es');
 				$(document).unbind('mouseup.es');			
+				$(document).unbind('keydown.es');
+				$(document).unbind('keyup.es');			
 				surface.cursor.hide();
 			}
 		});
