@@ -7621,6 +7621,7 @@ $messages['ms'] = array(
 	'configure-js-remove' => 'Hapuskan',
 	'configure-section-email' => 'E-mel',
 	'configure-section-images' => 'Fail',
+	'configure-section-users' => 'Pengguna',
 	'configure-section-copyright' => 'Hak cipta',
 	'configure-throttle-group' => 'Jenis',
 	'configure-condition-operator-or' => 'Atau',
@@ -12126,6 +12127,7 @@ $messages['yi'] = array(
  * @author Liangent
  * @author PhiLiP
  * @author Wmr89502270
+ * @author Xiaomingyan
  * @author 阿pp
  */
 $messages['zh-hans'] = array(
@@ -12133,7 +12135,7 @@ $messages['zh-hans'] = array(
 	'configure-desc' => '让使用者可以透过Web介面来[[Special:Configure|调整]]本站的内部设定资讯',
 	'configure-desc-group' => '群组',
 	'configure-desc-key' => '键',
-	'configure-desc-ns' => '名字空间',
+	'configure-desc-ns' => '名称空间',
 	'configure-desc-val' => '值',
 	'configure-edit-core' => 'MediaWiki',
 	'configure-edit-ext' => '扩充套件',
@@ -12206,7 +12208,7 @@ $messages['zh-hans'] = array(
 	'configure-section-site' => '站点定制',
 	'configure-section-css-js' => 'CSS和JavaScript',
 	'configure-section-resourceloader' => 'ResourceLoader',
-	'configure-section-namespaces' => '名字空间',
+	'configure-section-namespaces' => '名称空间',
 	'configure-section-stats' => '站点统计',
 	'configure-section-skin' => '皮肤',
 	'configure-section-vector' => 'Vector皮肤',
