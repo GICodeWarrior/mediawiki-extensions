@@ -9,8 +9,6 @@ function ParagraphBlock( lines ) {
 	this.$ = $( '<div class="editSurface-block editSurface-paragraph"></div>' )
 		.data( 'block', this );
 	this.flow = new TextFlow( this.$, this.content );
-	this.rendering = false;
-	this.reRender = false;
 }
 
 Block.prototype.getLength = function() {
@@ -25,7 +23,7 @@ Block.prototype.getLength = function() {
  */
 ParagraphBlock.prototype.insertContent = function( offset, content ) {
 	this.content.insert( offset, content );
-	this.renderContent();
+	this.flow.render();
 };
 
 /**
@@ -42,7 +40,7 @@ ParagraphBlock.prototype.deleteContent = function( start, end ) {
 		start = tmp;
 	}
 	this.content.remove( start, end );
-	this.renderContent();
+	this.flow.render();
 };
 
 /**
@@ -51,20 +49,7 @@ ParagraphBlock.prototype.deleteContent = function( start, end ) {
  * @param $container {jQuery Selection} Container to render into
  */
 ParagraphBlock.prototype.renderContent = function() {
-	if ( !this.rendering ) {
-		this.rendering = true;
-		var block = this;
-		this.flow.render( 0, function() {
-			block.rendering = false;
-			var reRender = block.reRender;
-			block.reRender = false;
-			if ( reRender ) {
-				block.renderContent();
-			}
-		});
-	} else {
-		this.reRender = true;
-	}
+	this.flow.render();
 };
 
 /**
