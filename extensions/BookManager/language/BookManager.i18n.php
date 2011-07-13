@@ -283,6 +283,8 @@ $messages['id'] = array(
  */
 $messages['it'] = array(
 	'bookmanager-desc' => 'Strumenti per i libri',
+	'bm-booktools-section' => 'Strumenti per i libri',
+	'bm-printversion' => 'Versione stampata',
 	'bm-printversion-desc' => 'Genera una [[Special:PrintVersion|versione stampata]] di un libro',
 );
 

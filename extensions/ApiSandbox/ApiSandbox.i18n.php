@@ -315,6 +315,7 @@ Lihat [http://www.mediawiki.org/wiki/API dokumentasi API] untuk perincian lanjut
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author Gianfranco
  * @author Rippitippi
  */
@@ -330,6 +331,7 @@ Per ulteriori dettagli di utilizzo delle API, fai riferimento alla [http://www.m
 	'apisb-select-action' => 'Seleziona azione',
 	'apisb-select-value' => 'Selezionare il valore',
 	'apisb-loading' => 'Caricamento in corso ...',
+	'apisb-ns-main' => '(Principale)',
 	'apisb-query-prop' => 'Proprietà',
 	'apisb-query-list' => 'Liste',
 );

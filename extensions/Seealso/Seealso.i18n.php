@@ -475,6 +475,14 @@ $messages['mr'] = array(
 	'seealso-desc' => "<code><nowiki><seealso></nowiki></code> खूण वापरून स्थानिक 'हे सुद्धा पहा' शीर्षके",
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'seealso' => 'Lihat juga',
+	'seealso-desc' => "Pengatas 'Lihat juga' tersetempat yang menggunakan tag <code><nowiki><seealso></nowiki></code>",
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

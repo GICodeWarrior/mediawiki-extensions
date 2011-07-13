@@ -467,10 +467,19 @@ $messages['ig'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author Gianfranco
  */
 $messages['it'] = array(
+	'mwe-loading' => 'Caricamento in corso...',
+	'mwe-error_load_lib' => 'Errore: JavaScript $1 non è recuperabile o non definisce $2',
+	'mwe-load-drag-item' => "Caricamento dell'elemento trascinato",
+	'mwe-ok' => 'OK',
 	'mwe-cancel' => 'Annulla',
+	'mwe-enable-gadget' => 'Abilita multimedia beta (mwEmbed) per tutte le pagine',
+	'mwe-enable-gadget-done' => 'Il gadget multimediale beta è stato abilitato',
+	'mwe-must-login-gadget' => 'Per abilitare il gadget è necessario <a target="_new" href="$1">accedere</a>',
+	'mwe-test-plural' => 'Ho eseguito {{PLURAL:$1|$1 test|$1 test}}',
 );
 
 /** Japanese (日本語)

@@ -5253,6 +5253,7 @@ $messages['yo'] = array(
  * @author Mark85296341
  * @author PhiLiP
  * @author Shizhao
+ * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
 	'fogg-wont-upload-to-server' => '注意：请在本地重新编码您的视频文件，否则无法上传到服务器。',
@@ -5320,7 +5321,7 @@ $messages['zh-hans'] = array(
 	'fogg-organization-help' => '机构（工作室）名称',
 	'fogg-copyright-title' => '版权',
 	'fogg-copyright-help' => '該剪辑的版权',
-	'fogg-license-title' => '授权',
+	'fogg-license-title' => '授权协议',
 	'fogg-license-help' => '该剪辑的许可协议（最好是Creative Commons的网址）。',
 	'fogg-contact-title' => '联系',
 	'fogg-contact-help' => '联系人链接',

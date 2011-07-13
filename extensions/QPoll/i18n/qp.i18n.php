@@ -1881,11 +1881,13 @@ id-бројот може да содржи само букви, бројки и 
  */
 $messages['ms'] = array(
 	'qp_source_link' => 'Sumber',
+	'qp_users_link' => 'Pengguna',
 );
 
 /** Dutch (Nederlands)
  * @author McDutchie
  * @author Purodha
+ * @author SPQRobin
  * @author Siebrand
  */
 $messages['nl'] = array(
@@ -1896,6 +1898,7 @@ $messages['nl'] = array(
 	'qp_result_error' => 'Er zit een fout in de syntaxis',
 	'qp_vote_button' => 'Stemmen',
 	'qp_vote_again_button' => 'Stem wijzigen',
+	'qp_submit_attempts_left' => '$1 {{PLURAL:$1|poging|pogingen}} over',
 	'qp_polls_list' => 'Alle peilingen weergeven',
 	'qp_users_list' => 'Alle gebruikers weergeven',
 	'qp_browse_to_poll' => 'Naar de peiling $1',
@@ -1915,6 +1918,7 @@ $messages['nl'] = array(
 	'qp_results_line_qpl' => 'Pagina "$1", peiling "$2": $3, $4, $5, $6',
 	'qp_header_line_qpul' => '$1 [ pagina "$2", peiling "$3" ]',
 	'qp_header_line_qucl' => '$1. $2<br />$3 ??? $4',
+	'qp_interpetation_wrong_answer' => 'Fout antwoord',
 	'qp_export_to_xls' => 'Statistieken naar XLS-formaat exporteren',
 	'qp_voices_to_xls' => 'Stemmen in XLS-formaat exporteren',
 	'qp_users_answered_questions' => '$1 {{PLURAL:$1|gebruiker heeft|gebruikers hebben}} de vragen beantwoord',

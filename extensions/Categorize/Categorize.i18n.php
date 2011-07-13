@@ -61,6 +61,16 @@ $messages['ia'] = array(
 	'categorize-advice' => 'Clicca super le etiquettas que tu vole attribuer a iste pagina:',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'categorize-desc' => 'Deiht beim Sigge Enjävve un Huhlaade en Käßje dobei, woh mer Saachjroppe met zohdeijle kann.',
+	'categorize-title' => 'Wesse en Saachjroppe jeeße',
+	'categorize-footer' => 'Wann De ein ander Saachjopp dobei donn wells, bes esu jood un sar_et uns övver …',
+	'categorize-advice' => 'Klegg op de Saachjroppe för heh di Sigg dren zu donn:',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

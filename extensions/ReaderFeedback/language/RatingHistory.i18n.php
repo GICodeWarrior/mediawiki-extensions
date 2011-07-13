@@ -1614,7 +1614,7 @@ $messages['ms'] = array(
 	
 	'''(1)''' - Lemah; '''(2)''' - Rendah; '''(3)''' - Sederhana; '''(4)''' - Tinggi; '''(5)''' - Cemerlang;",
 	'ratinghistory-graph-scale' => "'''Ulasan sehari''' <span style=\"color:red;\">''(red)''</span> ditunjukkan pada skala ''1:\$1''.",
-	'right-feedback' => 'Gunakan borang maklum balas untuk menilai laman',
+	'right-feedback' => 'Menggunakan borang maklum balas untuk menilai laman',
 );
 
 /** Erzya (Эрзянь)
