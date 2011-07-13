@@ -2,23 +2,6 @@ function Content( content ) {
 	this.data = content || [];
 };
 
-Content.compareObjects = function( a, b ) {
-	for ( var key in a ) {
-		if ( typeof a[key] !== typeof b[key] ) {
-			return false
-		} else if ( typeof a[key] === 'string' || typeof a[key] === 'number' ) {
-			if ( a[key] !== b[key] ) {
-				return false;
-			}
-		} else if ( $.isPlainObject( a[key] ) ) {
-			if ( !Content.compareObjects( a[key], b[key] ) ) {
-				return false;
-			}
-		}
-	}
-	return true;
-};
-
 Content.copyObject = function( src ) {
 	var dst = {};
 	for ( var key in src ) {
@@ -196,6 +179,26 @@ Content.renderAnnotation = function( bias, annotation, stack ) {
 	return out;
 };
 
+Content.prototype.coverageOfAnnotation = function( start, end, annotation ) {
+	var coverage = [];
+	for ( var i = start; i < end; i++ ) {
+		if ( typeof this.data[i] !== 'string' && this.indexOfAnnotation( i, annotation ) !== -1 ) {
+			coverage.push( i );
+		}
+	}
+	return coverage;
+};
+
+Content.prototype.indexOfAnnotation = function( offset, annotation ) {
+	var annotatedCharacter = this.data[offset];
+	for ( var i = 1; i < this.data[offset].length; i++ ) {
+		if ( annotatedCharacter[i].type === annotation.type ) {
+			return i;
+		}
+	}
+	return -1;
+};
+
 /**
  * Applies an annotation to a given range.
  * 
@@ -208,67 +211,42 @@ Content.renderAnnotation = function( bias, annotation, stack ) {
 Content.prototype.annotate = function( annotation, start, end ) {
 	start = Math.max( start, 0 );
 	end = Math.min( end, this.data.length );
-	for ( var i = start; i < end; i++ ) {
-		switch ( annotation.method ) {
-			case 'add':
-				var duplicate = false;
-				if ( typeof this.data[i] === 'string' ) {
-					this.data[i] = [this.data[i]];
-				} else {
-					for ( var j = 1; j < this.data[i].length; j++ ) {
-						if ( this.data[i][j].type === annotation.type 
-								&& Content.compareObjects(
-									this.data[i][j].data, annotation.data
-								)
-						) {
-							duplicate = true;
-						}
-					}
+	method = annotation.method;
+	if ( method === 'toggle' ) {
+		method = this.coverageOfAnnotation( start, end, annotation ).length === end - start
+			? 'remove' : 'add';
+	}
+	if ( method === 'add' ) {
+		var skip;
+		for ( var i = start; i < end; i++ ) {
+			skip = false;
+			if ( typeof this.data[i] === 'string' ) {
+				// Auto-initialize as annotated character
+				this.data[i] = [this.data[i]];
+			} else {
+				// Detect duplicate annotation
+				skip = this.indexOfAnnotation( i, annotation ) !== -1;
+			}
+			if ( !skip ) {
+				// Apply annotation to character
+				this.data[i].push( annotation );
+			}
+		}
+	} else if ( method === 'remove' ) {
+		for ( var i = start; i < end; i++ ) {
+			if ( typeof this.data[i] !== 'string' ) {
+				if ( annotation.type === 'all' ) {
+					// Remove all annotations by converting the annotated character to a plain
+					// character
+					this.data[i] = this.data[i][0];
+					break;
 				}
-				if ( !duplicate ) {
-					this.data[i].push( annotation );
+				// Remove all matching instances of annotation
+				var j;
+				while ( ( j = this.indexOfAnnotation( i, annotation ) ) !== -1 ) {
+					this.data[i].splice( j, 1 );
 				}
-				break;
-			case 'remove':
-				if ( typeof this.data[i] !== 'string' ) {
-					if ( annotation.type === 'all' ) {
-						this.data[i] = this.data[i][0];
-					} else {
-						for ( var j = 1; j < this.data[i].length; j++ ) {
-							if ( this.data[i][j].type === annotation.type 
-									&& Content.compareObjects(
-										this.data[i][j].data, annotation.data
-									)
-							) {
-								this.data[i].splice( j, 1 );
-								j--;
-							}
-						}
-					}
-				}
-				break;
-			case 'toggle':
-				var on = true;
-				if ( typeof this.data[i] !== 'string' ) {
-					for ( var j = 1; j < this.data[i].length; j++ ) {
-						if ( this.data[i][j].type === annotation.type 
-								&& Content.compareObjects(
-									this.data[i][j].data, annotation.data
-								)
-						) {
-							this.data[i].splice( j, 1 );
-							j--;
-							on = false;
-						}
-					}
-				}
-				if ( on ) {
-					if ( typeof this.data[i] === 'string' ) {
-						this.data[i] = [this.data[i]];
-					}
-					this.data[i].push( annotation );
-				}
-				break;
+			}
 		}
 	}
 };
