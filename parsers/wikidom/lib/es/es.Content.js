@@ -126,12 +126,16 @@ Content.annotationRenderers = {
 		'open': '<span class="editSurface-format-small">',
 		'close': '</span>',
 	},
-	'super': {
-		'open': '<span class="editSurface-format-super">',
+	'big': {
+		'open': '<span class="editSurface-format-big">',
 		'close': '</span>',
 	},
 	'sub': {
 		'open': '<span class="editSurface-format-sub">',
+		'close': '</span>',
+	},
+	'super': {
+		'open': '<span class="editSurface-format-super">',
 		'close': '</span>',
 	},
 	'xlink': {

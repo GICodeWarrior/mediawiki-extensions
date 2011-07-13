@@ -40,6 +40,10 @@
 			<div class="es-toolbarTool" id="es-toolbar-bold"><img src="images/bold.png"></div>
 			<div class="es-toolbarTool" id="es-toolbar-italic"><img src="images/italic.png"></div>
 			<div class="es-toolbarTool" id="es-toolbar-link"><img src="images/link.png"></div>
+			<div class="es-toolbarTool" id="es-toolbar-small"><img src="images/small.png"></div>
+			<div class="es-toolbarTool" id="es-toolbar-big"><img src="images/big.png"></div>
+			<div class="es-toolbarTool" id="es-toolbar-sub"><img src="images/sub.png"></div>
+			<div class="es-toolbarTool" id="es-toolbar-super"><img src="images/super.png"></div>
 			<div class="es-toolbarTool" id="es-toolbar-clear"><img src="images/clear.png"></div>
 			<div style="clear:both"></div>
 		</div>
@@ -112,6 +116,30 @@
 					surface.annotateContent( {
 						'method': 'toggle',
 						'type': 'italic'
+					} );
+				} );
+				$( '#es-toolbar-small' ).click( function() {
+					surface.annotateContent( {
+						'method': 'toggle',
+						'type': 'small'
+					} );
+				} );
+				$( '#es-toolbar-big' ).click( function() {
+					surface.annotateContent( {
+						'method': 'toggle',
+						'type': 'big'
+					} );
+				} );
+				$( '#es-toolbar-sub' ).click( function() {
+					surface.annotateContent( {
+						'method': 'toggle',
+						'type': 'sub'
+					} );
+				} );
+				$( '#es-toolbar-super' ).click( function() {
+					surface.annotateContent( {
+						'method': 'toggle',
+						'type': 'super'
 					} );
 				} );
 				$( '#es-toolbar-link' ).click( function() {

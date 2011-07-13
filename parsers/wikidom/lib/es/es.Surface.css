@@ -67,6 +67,10 @@
 	text-decoration: underline;
 }
 
+.editSurface-format-big {
+	font-size: 1.2em;
+}
+
 .editSurface-format-small,
 .editSurface-format-sub,
 .editSurface-format-super {
