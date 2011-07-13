@@ -68,6 +68,12 @@
 	display: none;
 }
 
+.editSurface-format-template {
+	background-color: rgba(0,0,0,0.125);
+	border-radius: 0.25em;
+	padding: 0.25em 0;
+}
+
 .editSurface-format-italic {
 	font-style: italic;
 }
@@ -76,7 +82,7 @@
 	font-weight: bold;
 }
 
-.editSurface-format-xlink {
+.editSurface-format-link {
 	color: blue;
 	text-decoration: underline;
 }

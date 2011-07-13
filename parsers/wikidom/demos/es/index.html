@@ -74,7 +74,7 @@
 								{ 'type': 'italic', 'range': { 'start': 17, 'end': 26 } },
 								// "wrap is" should be a link to "#"
 								{
-									'type': 'xlink',
+									'type': 'link',
 									'data': { 'href': './' },
 									'range': { 'start': 22, 'end': 29 }
 								},
@@ -82,19 +82,15 @@
 						},
 						{ 'text': "Word wrap is the additional feature of most text editors, word processors, and web browsers, of breaking lines between and not within words, except when a single word is longer than a line." },
 						{
-							'text': "It is usually done on the fly when viewing or printing a document, so no line break code is manually entered, or stored.[citation needed] If the user changes the margins, the editor will either automatically reposition the line breaks to ensure that all the text will \"flow\" within the margins and remain visible, or provide the typist some convenient way to reposition the line breaks.",
+							'text': "It is usually done on the fly when viewing or printing a document, so no line break code is manually entered, or stored.  If the user changes the margins, the editor will either automatically reposition the line breaks to ensure that all the text will \"flow\" within the margins and remain visible, or provide the typist some convenient way to reposition the line breaks.",
 							'annotations': [
 								// "[citation needed]" should be super
 								{
-									'type': 'script',
-									'data': { 'type': 'super' },
-									'range': { 'start': 120, 'end': 137 }
-								},
-								// "[citation needed]" should be a linke to "#"
-								{
-									'type': 'xlink',
-									'data': { 'href': './' },
-									'range': { 'start': 120, 'end': 137 }
+									'type': 'template',
+									'data': {
+										'html': '<span class="editSurface-format-link editSurface-format-super">[citation needed]</span>'
+									},
+									'range': { 'start': 120, 'end': 121 }
 								}
 							]
 						},
