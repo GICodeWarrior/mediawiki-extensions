@@ -12,7 +12,7 @@ function Surface( $container, doc ) {
 	this.rendered = false;
 	this.location = null;
 	this.selection = new Selection();
-	this.selecting = false;
+	this.mouseSelecting = false;
 	this.keydownTimeout = null;
 	this.initialHorizontalCursorPosition = null;
 
@@ -148,20 +148,28 @@ Surface.prototype.onKeyUp = function( e ) {
 }
 
 Surface.prototype.handleBackspace = function() {
-	var location = this.getLocation();
-	if ( location.offset > 0 ) {
-		location.block.deleteContent( location.offset - 1, location.offset );
-		location.offset--;
-		this.cursor.show( location.block.flow.getPosition( location.offset ), location.block.$.offset() );
+	var block = this.location.block,
+		offset = this.location.offset;
+		
+	if ( offset > 0 ) {
+		block.deleteContent( offset - 1, offset );
+		offset--;
+		this.cursor.show( block.flow.getPosition( offset ), block.$.offset() );
 	}
+	
+	this.location = new Location( block, offset );
 }
 
 Surface.prototype.handleDelete = function() {
-	var location = this.getLocation();
-	if ( location.offset < location.block.getLength() - 1 ) {	
-		location.block.deleteContent( location.offset, location.offset + 1);
-		this.cursor.show( location.block.flow.getPosition( location.offset ), location.block.$.offset() );
+	var block = this.location.block,
+		offset = this.location.offset;
+	
+	if ( offset < block.getLength() - 1 ) {	
+		block.deleteContent( offset, offset + 1);
+		this.cursor.show( block.flow.getPosition( offset ), block.$.offset() );
 	}
+	
+	this.location = new Location( block, offset );
 };
 
 Surface.prototype.onMouseDown = function( e ) {
@@ -171,7 +179,7 @@ Surface.prototype.onMouseDown = function( e ) {
 		var cursorPosition = this.location.block.getPosition( this.location.offset );
 		this.cursor.show( cursorPosition, this.location.block.$.offset() );
 		this.$input.css( 'top', cursorPosition.top );
-		this.selecting = true;
+		this.mouseSelecting = true;
 		this.drawSelection();
 		this.cursor.show();
 	}
@@ -183,7 +191,7 @@ Surface.prototype.onMouseDown = function( e ) {
 };
 
 Surface.prototype.onMouseMove = function( e ) {
-	if ( e.button === 0 && this.selecting ) {
+	if ( e.button === 0 && this.mouseSelecting ) {
 		this.cursor.hide();
 		this.selection.to = this.getLocationFromEvent( e );
 		this.drawSelection();
@@ -195,7 +203,7 @@ Surface.prototype.onMouseUp = function( e ) {
 		this.drawSelection();
 		this.cursor.hide();
 	}
-	this.selecting = false;
+	this.mouseSelecting = false;
 };
 
 /**
@@ -336,8 +344,9 @@ Surface.prototype.getLocation = function() {
  * Moves the cursor to the nearest location directly above the current flowed line.
  */
 Surface.prototype.moveCursorUp = function() {
-	var location = this.getLocation(),
-		position = location.block.getPosition( location.offset );
+	var block = this.location.block,
+		offset = this.location.offset,
+		position = block.getPosition( offset );
 		
 	if ( this.initialHorizontalCursorPosition ) {
 		position.left = this.initialHorizontalCursorPosition;
@@ -347,23 +356,26 @@ Surface.prototype.moveCursorUp = function() {
 		
 	position.top = position.top - 1;
 	if ( position.top < 0 ) {
-		var previousBlock = location.block.previousBlock();
+		var previousBlock = block.previousBlock();
 		if ( previousBlock ) {
-			location.block = previousBlock;
-			position.top += location.block.$.height();
+			block = previousBlock;
+			position.top += block.$.height();
 		}
 	}
-	location.offset = location.block.getOffset( position );
-	position = location.block.getPosition( location.offset );
-	this.cursor.show( position, location.block.$.offset() );
+	offset = block.getOffset( position );
+	position = block.getPosition( offset );
+	this.cursor.show( position, block.$.offset() );
+	
+	this.location = new Location( block, offset );
 };
 
 /**
  * Moves the cursor to the nearest location directly below the current flowed line.
  */
 Surface.prototype.moveCursorDown = function() {
-	var location = this.getLocation()
-		position = location.block.getPosition( location.offset );
+	var block = this.location.block,
+		offset = this.location.offset,
+		position = block.getPosition( offset );
 
 	if ( this.initialHorizontalCursorPosition ) {
 		position.left = this.initialHorizontalCursorPosition;
@@ -372,56 +384,66 @@ Surface.prototype.moveCursorDown = function() {
 	}
 
 	position.top = position.bottom + 1;
-	if ( position.top > location.block.$.height() ) {
-		var nextBlock = location.block.nextBlock();
+	if ( position.top > block.$.height() ) {
+		var nextBlock = block.nextBlock();
 		if ( nextBlock ) {
-			position.top -= location.block.$.height();
-			location.block = nextBlock;
+			position.top -= block.$.height();
+			block = nextBlock;
 		}
 	}
-	location.offset = location.block.getOffset( position );
-	position = location.block.getPosition( location.offset );
-	this.cursor.show( position, location.block.$.offset() );
+	offset = block.getOffset( position );
+	position = block.getPosition( offset );
+	this.cursor.show( position, block.$.offset() );
+	
+	this.location = new Location( block, offset );
 };
 
 /**
  * Moves the cursor backward of the current position.
  */
 Surface.prototype.moveCursorRight = function() {
-	var location = this.getLocation();
-	if ( location.offset < location.block.getLength() ) {
-		location.offset++;
+	var block = this.location.block,
+		offset = this.location.offset;
+	
+	if ( offset < block.getLength() ) {
+		offset++;
 	} else {
-		var next = location.block.nextBlock();
+		var next = block.nextBlock();
 		if ( next ) {
-			location.block = next;
-			location.offset = 0;
+			block = next;
+			offset = 0;
 		}
 	}
 	this.cursor.show(
-		location.block.flow.getPosition( location.offset ),
-		location.block.$.offset()
+		block.flow.getPosition( offset ),
+		block.$.offset()
 	);
+	
+	this.location = new Location( block, offset );
 };
 
 /**
  * Moves the cursor forward of the current position.
  */
 Surface.prototype.moveCursorLeft = function() {
-	var location = this.getLocation();
-	if ( location.offset > 0 ) {
-		location.offset--;
+	var block = this.location.block,
+		offset = this.location.offset;
+
+	if ( offset > 0 ) {
+		offset--;
 	} else {
-		var previous = location.block.previousBlock();
+		var previous = block.previousBlock();
 		if ( previous ) {
-			location.block = previous;
-			location.offset = location.block.getLength();
+			block = previous;
+			offset = block.getLength();
 		}
 	}
 	this.cursor.show(
-		location.block.flow.getPosition( location.offset ),
-		location.block.$.offset()
+		block.flow.getPosition( offset ),
+		block.$.offset()
 	);
+	
+	this.location = new Location( block, offset );
 };
 
 /**
