@@ -44,7 +44,7 @@ Block.prototype.previousBlock = function() {
 	if ( !this.document ) {
 		throw 'Missing document error. Block is not attached to a document.';
 	}
-	var index = this.index() - 1;
+	var index = this.getIndex() - 1;
 	return index >= 0 ? this.document.blocks[index] : null;
 };
 

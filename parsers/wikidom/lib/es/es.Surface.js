@@ -13,6 +13,7 @@ function Surface( $container, doc ) {
 	this.location = null;
 	this.selection = new Selection();
 	this.mouseSelecting = false;
+	this.keyboardSelecting = false;
 	this.keydownTimeout = null;
 	this.initialHorizontalCursorPosition = null;
 
@@ -96,19 +97,49 @@ Surface.prototype.getLocationFromEvent = function( e ) {
 
 Surface.prototype.onKeyDown = function( e ) {
 	switch ( e.keyCode ) {
+		case 16: // Shift
+			this.shiftDown = true;
+			this.keyboardSelecting = true;
+			this.selection = new Selection( this.location );
+			this.drawSelection();
+			break;		
 		case 37: // Left arrow
 			this.initialHorizontalCursorPosition = null;
 			this.moveCursorLeft();
+
+			if ( this.shiftDown && this.keyboardSelecting ) {
+				this.selection.to = this.location;
+				this.drawSelection();
+			}
+
 			break;
 		case 38: // Up arrow
 			this.moveCursorUp();
+
+			if ( this.shiftDown && this.keyboardSelecting ) {
+				this.selection.to = this.location;
+				this.drawSelection();
+			}
+
 			break;
 		case 39: // Right arrow
 			this.initialHorizontalCursorPosition = null;
 			this.moveCursorRight();
+
+			if ( this.shiftDown && this.keyboardSelecting ) {
+				this.selection.to = this.location;
+				this.drawSelection();
+			}
+			
 			break;
 		case 40: // Down arrow
 			this.moveCursorDown();
+
+			if ( this.shiftDown && this.keyboardSelecting ) {
+				this.selection.to = this.location;
+				this.drawSelection();
+			}
+
 			break;
 		case 8: // Backspace
 			this.initialHorizontalCursorPosition = null;
@@ -139,11 +170,17 @@ Surface.prototype.onKeyDown = function( e ) {
 }
 
 Surface.prototype.onKeyUp = function( e ) {
-	var surface = this;
-	setTimeout( function() {
-		var location = surface.getLocation();
-		surface.cursor.show( location.block.flow.getPosition( location.offset ), location.block.$.offset() );
-	}, 0 );
+	switch ( e.keyCode ) {
+		case 16: // Shift
+			this.shiftDown = false;
+			break;
+		default:		
+			var surface = this;
+			setTimeout( function() {
+				surface.cursor.show( surface.location.block.flow.getPosition( surface.location.offset ), surface.location.block.$.offset() );
+			}, 0 );
+			break;
+	}
 	return true;
 }
 
