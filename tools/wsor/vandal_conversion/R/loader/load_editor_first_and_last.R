@@ -3,7 +3,7 @@ source("util/env.R")
 
 
 load_editor_first_and_last = function(verbose=T, reload=F){
-	filename = paste(DATA_DIR, "en.editor_first_and_last.20.tsv", sep="/")
+	filename = paste(DATA_DIR, "en.editor_first_and_last.20.fixed.tsv", sep="/")
 	if(!exists("EDITOR_FIRST_AND_LAST")){
 		EDITOR_FIRST_AND_LAST <<- NULL
 	}
