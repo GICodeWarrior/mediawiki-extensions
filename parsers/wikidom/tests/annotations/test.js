@@ -95,39 +95,33 @@ test( 'Content modification', 17, function() {
 	content.remove( 5, 8 );
 } );
 
-test( 'Content.substring', 5, function() {
+test( 'Content access', 8, function() {
 	equal(
 		content.substring( 3, 39 ),
 		's is a test paragraph!\nParagraphs ca',
-		'Returns correct plain text'
+		'Content.substring returns correct plain text when called with start and end arguments'
 	);
 	equal(
 		content.substring( 39 ),
 		'n have more than one line.',
-		'Uses data length if end is not given'
+		'Content.substring uses data length if called without end argument'
 	);
 	equal(
 		content.substring( -10, 10 ),
 		'This is a ',
-		'Clamps negetive start arguments'
+		'Content.substring clamps negetive start arguments'
 	);
 	equal(
 		content.substring( 39, 100000000000 ),
 		'n have more than one line.',
-		'Clamps out of range end arguments'
+		'Content.substring clamps out of range end arguments'
 	);
 	equal(
 		content.substring(),
 		'This is a test paragraph!\nParagraphs can have more than one line.',
-		'Called without arguments returns all text'
+		'Content.substring returns all text when called without arguments'
 	);
-} );
-
-test( 'Content.getLength', 1, function() {
-	equal( content.getLength(), 65, 'Returns correct length' );
-} );
-
-test( 'Content.slice', 2, function() {
+	equal( content.getLength(), 65, 'Content.getLength returns correct length' );
 	deepEqual(
 		content.slice().data,
 		[
@@ -197,7 +191,7 @@ test( 'Content.slice', 2, function() {
 			"e",
 			"."
 		],
-		'Called without arguments returns all data'
+		'Content.slice returns all data when called without arguments'
 	);
 	deepEqual(
 		content.slice( 3, 10 ).data,
@@ -210,6 +204,6 @@ test( 'Content.slice', 2, function() {
 			["a", { "type": "xlink", "data": { "url":"http://www.a.com" } }],
 			[" ", { "type": "xlink", "data": { "url":"http://www.a.com" } }]
 		],
-		'Called with start and end returns range of data'
+		'Content.slice returns correct range of data when called with start and end arguments'
 	);
 } );
