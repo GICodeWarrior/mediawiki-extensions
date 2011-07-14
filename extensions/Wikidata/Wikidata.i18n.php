@@ -763,6 +763,7 @@ $messages['an'] = array(
 	'ow_dm_OK' => "D'alcuerdo",
 	'ow_Language' => 'Idioma',
 	'ow_LinkAttributeValues' => 'Vinclos',
+	'ow_upload' => 'Cargar',
 	'ow_create' => 'Creyar',
 );
 
@@ -3666,6 +3667,7 @@ Neniu kopia operacio okazis.',
  * @author Kobazulo
  * @author Locos epraix
  * @author McDutchie
+ * @author Mor
  * @author Sanbec
  * @author Translationista
  */
@@ -3754,7 +3756,7 @@ Seleccionar una colección a exportar. En la tabla de textos de idiomas, ingresa
 	'ow_transaction_no_action' => 'Hacer nada',
 	'ow_transaction_previous_version' => 'Versión anterior',
 	'ow_transaction_restore' => 'Restaurar',
-	'ow_transaction_remove' => 'Remover',
+	'ow_transaction_remove' => 'Quitar',
 	'ow_transaction_operation' => 'Operación',
 	'ow_transaction_is_latest' => 'Es última',
 	'ow_transaction_class_member' => 'Miembro de clase',
@@ -3826,8 +3828,8 @@ Seleccionar una colección a exportar. En la tabla de textos de idiomas, ingresa
 	'ow_RecordLifeSpan' => 'Registro de vida',
 	'ow_Relations' => 'Relaciones',
 	'ow_RelationType' => 'Tipo de relación',
-	'ow_Remove' => 'Remover',
-	'ow_RemoveHint' => 'Marcar filas para remover',
+	'ow_Remove' => 'Quitar',
+	'ow_RemoveHint' => 'Marcar filas para eliminar',
 	'ow_Spelling' => 'Ortografía',
 	'ow_SuggestHint' => 'Haga click para cambiar selección',
 	'ow_Synonyms' => 'Sinónimos',

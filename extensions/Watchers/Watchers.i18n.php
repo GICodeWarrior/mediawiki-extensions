@@ -1025,6 +1025,7 @@ $messages['stq'] = array(
  * @author Dafer45
  * @author Lejonel
  * @author Najami
+ * @author WikiPhoenix
  */
 $messages['sv'] = array(
 	'watchers' => 'Bevakare',
@@ -1036,6 +1037,8 @@ $messages['sv'] = array(
 	'watchers_noone_watches' => 'Ingen bevakar denna sida.',
 	'watchers_x_or_more' => '$1 eller fler {{PLURAL:$1|användare|användare}} har denna sida på sin bevakningslista.',
 	'watchers_less_than_x' => 'Färre än $1 {{PLURAL:$1|användare|användare}} bevakar den här sidan.',
+	'watchers-num' => '$1 {{PLURAL:$1|användare har|användare har}} sidan [[:$2]] på {{PLURAL:$1|sin|deras}} bevakningslista.',
+	'right-watchers-list' => '[[Special:Watchers|Lista över användare som bevakar en viss sida]]',
 );
 
 /** Silesian (Ślůnski)

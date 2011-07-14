@@ -83,6 +83,15 @@ $messages['ba'] = array(
 	'assert_edit_message' => 'Күрһәтелгән раҫлауҙа ($1) хата бар.',
 );
 
+/** Bavarian (Boarisch)
+ * @author Mucalexx
+ */
+$messages['bar'] = array(
+	'assert_edit_title' => 'Auhspruch is föjgschlong',
+	'assertedit-desc' => 'Ergänzt an Beorweitungsåspruch fyr Bots',
+	'assert_edit_message' => 'Da ågeewane Aspruch ($1) is föjgschlong.',
+);
+
 /** Southern Balochi (بلوچی مکرانی)
  * @author Mostafadaneshvar
  */

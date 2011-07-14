@@ -503,6 +503,7 @@ $messages['an'] = array(
 	'configure-desc-ns' => 'Espacio de nombres',
 	'configure-form-reason' => 'Razón:',
 	'configure-section-namespaces' => 'Espacios de nombres',
+	'configure-section-upload' => 'Cargar',
 	'configure-section-images' => 'Fichers',
 	'configure-throttle-action-edit' => 'Editar',
 	'configure-throttle-action-rollback' => 'Revertir',

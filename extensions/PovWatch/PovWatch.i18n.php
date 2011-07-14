@@ -585,6 +585,7 @@ $messages['eo'] = array(
  * @author Crazymadlover
  * @author Dferg
  * @author Imre
+ * @author Mor
  * @author Remember the dot
  * @author Sanbec
  */
@@ -608,7 +609,7 @@ Un registro de envios recientes a una lista de vigilancia esta disponible en [[S
 	'povwatch_unknown_subpage' => 'Subpágina desconocida.',
 	'povwatch_push' => 'Presionar',
 	'povwatch_push_intro' => 'Usar el formulario de abajo para enviar páginas a la lista de vigilancia de usuarios suscritos.
-Por favor se cuidadoso escribiendo el título: aún títulos inexistentes pueden ser agregados, y no hay forma de remover un título una vez que ha sido enviado.',
+Por favor se cuidadoso escribiendo el título: incluso títulos inexistentes pueden ser agregados, y no hay forma de quitar un título una vez que ha sido enviado.',
 	'povwatch_title' => 'Título:',
 	'povwatch_comment' => 'Comentario del registro:',
 	'povwatch_no_log' => 'No existen elementos.',

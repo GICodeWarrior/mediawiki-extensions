@@ -1876,6 +1876,7 @@ Pro via malkonsento, la paĝo estis movita al la laborlisto $1.',
  * @author Antur
  * @author Crazymadlover
  * @author Imre
+ * @author Mor
  * @author Remember the dot
  * @author Sanbec
  * @author Translationista
@@ -1940,7 +1941,7 @@ Una discusión está en curso en [[$5]], la cual concluirá en ''$2''.",
 	'deletequeue-review-delete' => 'Borrar la página.',
 	'deletequeue-review-change' => 'Borrar esta página, pero con una diferente razón.',
 	'deletequeue-review-requeue' => 'Transferir esta página a la siguiente cola:',
-	'deletequeue-review-dequeue' => 'No tomar acción, y remover la página de la cola de borrado.',
+	'deletequeue-review-dequeue' => 'No realizar ninguna acción, y quitar la página de la cola de borrado.',
 	'deletequeue-review-reason' => 'Comentarios:',
 	'deletequeue-review-newreason' => 'Nueva razón:',
 	'deletequeue-review-newextra' => 'Información extra:',

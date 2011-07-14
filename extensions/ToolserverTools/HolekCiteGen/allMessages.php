@@ -297,6 +297,16 @@ $messages['en-gb'] = array(
 	'ts-citegen-Sidebar-add-IE-Mac-details' => "Once the page has loaded, open your Page Holder, click 'Add' then use the Page Holder Favourites button to store it as a Page Holder Favourite.",
 );
 
+/** Spanish (Español)
+ * @author Mor
+ */
+$messages['es'] = array(
+	'ts-citegen-Sources-title' => 'Fuentes',
+	'ts-citegen-Tools' => 'Herramientas',
+	'ts-citegen-Other-languages' => 'Otros idiomas',
+	'ts-citegen-Errors-title' => 'Errores',
+);
+
 /** Persian (فارسی)
  * @author Mjbmr
  */

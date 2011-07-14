@@ -617,6 +617,7 @@ Bonvolu prezenti ĝin!',
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Locos epraix
+ * @author Mor
  * @author Tempestas
  */
 $messages['es'] = array(
@@ -687,7 +688,7 @@ Puede [$1 Leer historias publicadas]',
 	'storyboard-imagedeleted' => 'Imagen borrada',
 	'storyboard-showimage' => 'Mostrar imagen',
 	'storyboard-hideimage' => 'Ocultar imagen',
-	'storyboard-deletestory' => 'Remover',
+	'storyboard-deletestory' => 'Quitar',
 	'storyboard-storydeletionconfirm' => 'Estás seguro que deseas borrar permanentemente esta historia?',
 );
 
