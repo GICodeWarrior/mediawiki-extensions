@@ -60,11 +60,24 @@ Document.prototype.prependBlock = function( block ) {
 Document.prototype.insertBlockBefore = function( block, before ) {
 	block.document = this;
 	if ( before ) {
-		this.blocks.splice( before.index(), 0, block );
+		this.blocks.splice( before.getIndex(), 0, block );
 	} else {
 		this.blocks.push( block );
 	}
 };
+/**
+ * Adds a block to the document after an existing block.
+ * @param block {Block} Block to insert
+ * @param after {Block} Block to insert after, if null then block will be inserted at the end
+ */
+Document.prototype.insertBlockAfter = function( block, after ) {
+	block.document = this;
+	if ( after ) {
+		this.blocks.splice( after.getIndex() + 1, 0, block );
+	} else {
+		this.blocks.push( block );
+	}
+}
 
 /**
  * Removes a block from the document.
@@ -72,7 +85,7 @@ Document.prototype.insertBlockBefore = function( block, before ) {
  * @param {Block} Block to remove
  */
 Document.prototype.removeBlock = function( block ) {
-	this.blocks.splice( block.index(), 1 );
+	this.blocks.splice( block.getIndex(), 1 );
 	block.document = null;
 };
 
