@@ -251,6 +251,9 @@ class qp_Setup {
 		self::autoLoad( array(
 			'qp_user.php' => array( 'FormatJson', 'qp_Setup', 'qp_Renderer', 'qp_FunctionsHook' ),
 
+			## collection of the questions
+			'qp_question_collection.php' => 'qp_QuestionCollection',
+
 			## controllers (polls and questions derived from separate abstract classes)
 			# polls
 			'ctrl/qp_abstractpoll.php' => 'qp_AbstractPoll',
@@ -276,7 +279,7 @@ class qp_Setup {
 			'qp_pollstore.php' => array( 'qp_QuestionData', 'qp_InterpAnswer', 'qp_PollStore' ),
 
 			# results page
-			'qp_results.php' => array( 'qp_QueryPage', 'PollResults' ),
+			'qp_results.php' => array( 'qp_SpecialPage', 'qp_QueryPage', 'PollResults' ),
 
 			# interpretation of answers
 			'qp_interpret.php' => 'qp_Interpret',

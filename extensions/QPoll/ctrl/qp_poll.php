@@ -45,7 +45,12 @@ class qp_Poll extends qp_AbstractPoll {
 	# optional address of the poll which must be answered first
 	var $dependsOn = '';
 	# optional template used to interpret user vote in the Special:Pollresults page
-	var $interpretation = ''; 
+	var $interpretation = '';
+	# whether the questions of the poll has to be randomized
+	# 0: questions are not randomized
+	# 1..n: pull 1..n question from total number of defined questions;
+	# separately stored for every (poll,user) in the poll store
+	var $randomQuestionCount = 0;
 	# maximal count of attepts of answer submission ( < 1 for infinite )
 	var $maxAttempts = 0;
 
@@ -59,6 +64,17 @@ class qp_Poll extends qp_AbstractPoll {
 		if ( array_key_exists('interpretation', $argv) ) {
 			$this->interpretation = trim( $argv['interpretation'] );
 		}
+		# randomize attr
+		if ( array_key_exists('randomize', $argv) ) {
+			if ( $argv['randomize'] === 'randomize' ) {
+				$this->randomQuestionCount = 1;
+			} else {
+				$this->randomQuestionCount = intval( trim( $argv['randomize'] ) );
+				if ( $this->randomQuestionCount < 0 ) {
+					$this->randomQuestionCount = 0;
+				}
+			}
+		}
 		# max_attempts attr
 		$this->maxAttempts = qp_Setup::$max_submit_attempts;
 		if ( array_key_exists('max_attempts', $argv) ) {
@@ -71,7 +87,7 @@ class qp_Poll extends qp_AbstractPoll {
 				$this->maxAttempts = qp_Setup::$max_submit_attempts;
 			}
 		}
-		# negative values are possible however meaningless (0 is infinite, >0 is finite)
+		# negative values are possible however meaningless (<=0 is infinite, >0 is finite)
 		if ( $this->maxAttempts < 0 ) {
 			$this->maxAttempts = 0;
 		}
@@ -156,6 +172,35 @@ class qp_Poll extends qp_AbstractPoll {
 		return true;
 	}
 
+	function setUsedQuestions() {
+		# load random questions from DB (when available)
+		$this->pollStore->loadRandomQuestions( $this->username );
+		if ( $this->randomQuestionCount > 0 ) {
+			if ( $this->randomQuestionCount > $this->questions->totalCount() ) {
+				$this->randomQuestionCount = $this->questions->totalCount();
+			}
+			if ( is_array( $this->pollStore->randomQuestions ) ) {
+				if ( count( $this->pollStore->randomQuestions ) == $this->randomQuestionCount ) {
+					# count of random questions was not changed, no need to regenerate seed
+					$this->questions->setUsedQuestions( $this->pollStore->randomQuestions );
+					return;
+				}
+			}
+			# generate or regenerate random questions
+			$this->questions->randomize( $this->randomQuestionCount );
+			$this->pollStore->randomQuestions = $this->questions->getUsedQuestions();
+		} else {
+			if ( !is_array( $this->pollStore->randomQuestions ) ) {
+				# random questions are disabled and no previous seed in DB
+				return;
+			}
+			# there was stored random seed, will remove it at the end of this function
+			$this->pollStore->randomQuestions = false;
+		}
+		# store random questions into DB
+		$this->pollStore->setRandomQuestions();
+	}
+
 	/**
 	 * Parses the text enclosed in poll tag
 	 * Votes, when user have submitted data successfully
@@ -164,8 +209,10 @@ class qp_Poll extends qp_AbstractPoll {
 	 */
 	function parseInput( $input ) {
 		global $wgTitle;
-		# parse the input; generates $this->questions[] array
-		$this->parseQuestions( $input );
+		# parse the input; generates $this->questions collection
+		$this->parseQuestionsHeaders( $input );
+		$this->setUsedQuestions();
+		$this->parseQuestionsBodies();
 		# check whether the poll was successfully submitted
 		if ( $this->attemptsLeft() === false ) {
 			# user has no attempts left, refuse to submit and
@@ -264,12 +311,11 @@ class qp_Poll extends qp_AbstractPoll {
 	}
 
 	/**
-	 * Creates the set of poll questions in $this->questions[]
-	 * Also calculates statistics for pollstore
+	 * Creates the collection of poll questions in $this->questions
 	 * @param    $input  string poll in QPoll syntax
 	 */
-	function parseQuestions( $input ) {
-		$this->questions = array();
+	function parseQuestionsHeaders( $input ) {
+		$this->questions = new qp_QuestionCollection();
 		$splitPattern = '`(^|\n\s*)\n\s*{`u';
 		$unparsedQuestions = preg_split( $splitPattern, $input, -1, PREG_SPLIT_NO_EMPTY );
 		$questionPattern = '`(.*?[^|\}])\}[ \t]*(\n(.*)|$)`su';
@@ -285,23 +331,30 @@ class qp_Poll extends qp_AbstractPoll {
 				$header = isset( $matches[1] ) ? $matches[1] : '';
 				$body = isset( $matches[3] ) ? $matches[3] : null;
 				$question = $this->parseQuestionHeader( $header, $body );
-				$this->parseQuestionBody( $question );
-				$this->questions[] = $question;
+				$this->questions->add( $question );
 			} else {
 				$buffer = $unparsedQuestion;
 			}
 		}
-		# analyze question headers
+	}
+
+	/**
+	 * Parses question bodies for every poll in collection
+	 * Also loads statistics from pollstore
+	 */
+	function parseQuestionsBodies() {
 		# check for showresults attribute
 		$questions_set = array();
-		foreach( $this->questions as &$question ) {
+		$this->questions->reset();
+		while ( is_object( $question = $this->questions->iterate() ) ) {
+			$this->parseQuestionBody( $question );
 			if ( $question->view->hasShowResults() ) {
 				$questions_set[] = $question->mQuestionId;
 			}
 		}
 		# load the statistics for all/selective/none of questions
 		if ( count( $questions_set ) > 0 ) {
-			if ( count( $questions_set ) == count( $this->questions ) ) {
+			if ( count( $questions_set ) == $this->questions->totalCount() ) {
 				$this->pollStore->loadTotals();
 			} else {
 				$this->pollStore->loadTotals( $questions_set );
@@ -309,7 +362,7 @@ class qp_Poll extends qp_AbstractPoll {
 			$this->pollStore->calculateStatistics();
 		}
 	}
-	
+
 	# Convert a question on the page from QPoll syntax to HTML
 	# @param   $header : the text of question "main" header (common question and XML-like attrs)
 	#          $body   : the text of question body (starting with body header which defines categories and spans, followed by proposal list)
@@ -343,35 +396,35 @@ class qp_Poll extends qp_AbstractPoll {
 			$question->view->addHeaderError();
 			# http get: invalid question syntax, parse errors will cause submit button disabled
 			$this->pollStore->stateError();
-		} else {
-			# populate $question with raw source values
-			$question->getQuestionAnswer( $this->pollStore );
-			# check whether the global showresults level prohibits to show statistical data
-			# to the users who hasn't voted
-			if ( qp_Setup::$global_showresults <= 1 && !$question->alreadyVoted ) {
-				# suppress statistical results when the current user hasn't voted the question
-				$question->view->showResults = array( 'type'=>0 );
-			}
-			# parse the question body 
-			# will populate $question->view which can be modified accodring to quiz results
-			# warning! parameters are passed only by value, not the reference
-			$question->{$question->mType . 'ParseBody'}();
-			if ( $this->mBeingCorrected ) {
-				if ( $question->getState() == '' ) {
-					# question is OK, store it into pollStore
-					$question->store( $this->pollStore );
-				} else {
-					# http post: not every proposals were answered: do not update DB
-					$this->pollStore->stateIncomplete();
-				}
+			return;
+		}
+		# populate $question with raw source values
+		$question->getQuestionAnswer( $this->pollStore );
+		# check whether the global showresults level prohibits to show statistical data
+		# to the users who hasn't voted
+		if ( qp_Setup::$global_showresults <= 1 && !$question->alreadyVoted ) {
+			# suppress statistical results when the current user hasn't voted the question
+			$question->view->showResults = array( 'type'=>0 );
+		}
+		# parse the question body 
+		# will populate $question->view which can be modified accodring to quiz results
+		# warning! parameters are passed only by value, not the reference
+		$question->{$question->mType . 'ParseBody'}();
+		if ( $this->mBeingCorrected ) {
+			if ( $question->getState() == '' ) {
+				# question is OK, store it into pollStore
+				$question->store( $this->pollStore );
 			} else {
-				# this is the get, not the post: do not update DB
-				if ( $question->getState() == '' ) {
-					$this->pollStore->stateIncomplete();
-				} else {
-					# http get: invalid question syntax, parse errors will cause submit button disabled
-					$this->pollStore->stateError();
-				}
+				# http post: not every proposals were answered: do not update DB
+				$this->pollStore->stateIncomplete();
+			}
+		} else {
+			# this is the get, not the post: do not update DB
+			if ( $question->getState() == '' ) {
+				$this->pollStore->stateIncomplete();
+			} else {
+				# http get: invalid question syntax, parse errors will cause submit button disabled
+				$this->pollStore->stateError();
 			}
 		}
 	}

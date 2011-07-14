@@ -37,7 +37,24 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( "This file is part of the QPoll extension. It is not a valid entry point.\n" );
 }
 
-class PollResults extends SpecialPage {
+class qp_SpecialPage extends SpecialPage {
+
+	static $linker = null;
+
+	public function __construct( $name = '', $restriction = '', $listed = true, $function = false, $file = 'default', $includable = false ) {
+		if ( self::$linker == null ) {
+			self::$linker = new Linker();
+		}
+		parent::__construct( $name, $restriction, $listed, $function, $file, $includable );
+	}
+
+	function qpLink( $target, $text = null, $customAttribs = array(), $query = array(), $options = array() ) {
+		return self::$linker->link( $target, $text, $customAttribs, $query, $options );
+	}
+
+}
+
+class PollResults extends qp_SpecialPage {
 
 	public function __construct() {
 		parent::__construct( 'PollResults', 'read' );
@@ -50,7 +67,6 @@ class PollResults extends SpecialPage {
 
 	static $accessPermissions = array( 'read', 'pollresults' );
 
-	static $skin = null;
 	static $UsersLink = "";
 	static $PollsLink = "";
 
@@ -92,14 +108,11 @@ class PollResults extends SpecialPage {
 			# MW < 1.17
 			$wgOut->addExtensionStyle( qp_Setup::$ScriptPath . '/clientside/qp_results.css' );
 		}
-		if ( self::$skin == null ) {
-			self::$skin = $wgUser->getSkin();
-		}
 		if ( self::$UsersLink == "" ) {
-			self::$UsersLink = self::$skin->link( $this->getTitle(), wfMsg( 'qp_users_list' ), array( "style"=>"font-weight:bold;" ), array( 'action'=>'users' ) );
+			self::$UsersLink = $this->qpLink( $this->getTitle(), wfMsg( 'qp_users_list' ), array( "style"=>"font-weight:bold;" ), array( 'action'=>'users' ) );
 		}
 		if ( self::$PollsLink == "" ) {
-			self::$PollsLink = self::$skin->link( $this->getTitle(), wfMsg( 'qp_polls_list' ), array( "style"=>"font-weight:bold;" ) );
+			self::$PollsLink = $this->qpLink( $this->getTitle(), wfMsg( 'qp_polls_list' ), array( "style"=>"font-weight:bold;" ) );
 		}
 		$wgOut->addHTML( '<div class="qpoll">' );
 		$output = "";
@@ -192,6 +205,20 @@ class PollResults extends SpecialPage {
 	}
 
 	/**
+	 * check for existence of multiple tables in the selected database
+	 */
+	private function tablesExists( $tableset ) {
+		$db = & wfGetDB( DB_SLAVE );
+		$tablesFound = 0;
+		foreach ( $tableset as &$table ) {
+			if ( $db->tableExists( $table ) ) {
+				$tablesFound++;
+			}
+		}
+		return $tablesFound;
+	}
+
+	/**
 	 * check for the existence of multiple fields in the selected database table
 	 * @param $table table name
 	 * @param $fields field names
@@ -216,43 +243,50 @@ class PollResults extends SpecialPage {
 	private function checkTables() {
 		$db = & wfGetDB( DB_SLAVE );
 		$sql_tables = array(
-			"qp_poll_desc",
-			"qp_question_desc",
-			"qp_question_categories",
-			"qp_question_proposals",
-			"qp_question_answers",
-			"qp_users_polls",
-			"qp_users");
+			'qpoll_0.7.0.src' => array(
+				'qp_poll_desc',
+				'qp_question_desc',
+				'qp_question_categories',
+				'qp_question_proposals',
+				'qp_question_answers',
+				'qp_users_polls',
+				'qp_users'
+			),
+			'qpoll_random_questions.src' => array(
+				'qp_random_questions'
+			)
+		);
 		$addFields = array(
 			'qpoll_interpretation.src' => array(
 				'qp_poll_desc' => array( 'interpretation_namespace', 'interpretation_title' ),
 				'qp_users_polls' => array( 'attempts', 'short_interpretation', 'long_interpretation' )
 			)
 		);
-		// check whether the tables were initialized
-		$tablesFound = 0;
+		/* check whether the tables were initialized */
 		$result = true;
-		foreach ( $sql_tables as $table ) {
-			if ( $db->tableExists( $table ) ) {
-				$tablesFound++;
-			}
-		}
-		if ( $tablesFound != count( $sql_tables ) ) {
-			# some tables are missing, serious DB error
-			return "Some of the extension database tables are missing.<br />Please restore from backup or drop the remaining extension tables, then reload this page.";
-		}
-		if ( $tablesFound  == 0 ) {
-			# no tables were found, initialize the DB completely with minimal version
-			if ( ( $r = $db->sourceFile( qp_Setup::$ExtDir . '/tables/qpoll_0.7.0.src' ) ) !== true ) {
-				return $r;
+		$tablesInit = array();
+		foreach ( $sql_tables as $sourceFile => &$tableset ) {
+			$tablesFound = $this->tablesExists( $tableset );
+			if ( $tablesFound  == 0 ) {
+				$tablesInit = array_merge( $tablesInit, $tableset );
+				# no tables were found, initialize the DB completely with minimal version
+				if ( ( $r = $db->sourceFile( qp_Setup::$ExtDir . "/tables/{$sourceFile}" ) ) !== true ) {
+					return $r;
+				}
+			} elseif ( $tablesFound != count( $tableset ) ) {
+				# some tables are missing, serious DB error
+				return "Some of the extension database tables are missing.<br />Please restore from backup or drop the remaining extension tables, then reload this page.";
 			}
 		}
 		/* start of SQL updates */
-		$scriptsToRun = array();
+		$scriptsToRun = $tablesUpgrade = array();
 		foreach( $addFields as $script => &$table_list ) {
 			foreach( $table_list as $table => &$fields_list ) {
 				if ( !$this->fieldsExists( $table, $fields_list ) ) {
 					$scriptsToRun[$script] = true;
+					if ( array_search( $table, $tablesUpgrade ) === false ) {
+						array_push( $tablesUpgrade, $table );
+					}
 				}
 			}
 		}
@@ -262,14 +296,17 @@ class PollResults extends SpecialPage {
 			}
 		}
 		/* end of SQL updates */
-		if ( $tablesFound == 0 ) {
-			$result = 'Tables were initialized.';
+		if ( count( $tablesInit ) > 0 ) {
+			$result = 'The following table(s) were initialized: ' . implode( ', ', $tablesInit ) . '<br />';
 		}
 		if ( count( $scriptsToRun ) > 0 ) {
-			$result = 'Tables were upgraded.';
+			if ( !is_string( $result ) ) {
+				$result = '';
+			}
+			$result = 'The following table(s) were upgraded:' . implode( ', ', $tablesUpgrade ) . '<br />';
 		}
 		if ( is_string( $result ) ) {
-			$result .= '<br />Please <a href="#" onclick="window.location.reload()">reload</a> this page to view future page edits.';
+			$result .= 'Please <a href="#" onclick="window.location.reload()">reload</a> this page to view future page edits.';
 		}
 		return $result;
 	}
@@ -296,29 +333,35 @@ class PollResults extends SpecialPage {
 	}
 
 	private function showUserVote( $pid, $uid ) {
-		$output = "";
-		if ( $pid !== null && $uid !== null ) {
-			$pollStore = new qp_PollStore( array( 'from'=>'pid', 'pid'=> $pid ) );
-			if ( $pollStore->pid !== null ) {
-				$pollStore->loadQuestions();
-				$userName = $pollStore->getUserName( $uid );
-				if ( $userName !== false ) {
-					$userTitle = Title::makeTitleSafe( NS_USER, $userName );
-					$user_link = self::$skin->link( $userTitle, $userName );
-					$pollStore->setLastUser( $userName, false );
-					if ( $pollStore->loadUserVote() ) {
-						$poll_title = $pollStore->getTitle();
-						# 'parentheses' is unavailable in MediaWiki 1.15.x
-						$poll_link = self::$skin->link( $poll_title, $poll_title->getPrefixedText() . wfMsg( 'word-separator' ) . wfMsg( 'qp_parentheses', $pollStore->mPollId ) );
-						$output .= wfMsg( 'qp_browse_to_user', $user_link ) . "<br />\n";
-						$output .= wfMsg( 'qp_browse_to_poll', $poll_link ) . "<br />\n";
-						$output .= $this->showAnswerHeader( $pollStore );
-						foreach ( $pollStore->Questions as $qkey => &$qdata ) {
-							$output .= "<br />\n<b>" . $qkey . ".</b> " . qp_Setup::entities( $qdata->CommonQuestion ) . "<br />\n";
-							$output .= $this->displayUserQuestionVote( $qdata );
-						}
-					}
-				}
+		if ( $pid === null || $uid === null ) {
+			return '';
+		}
+		$pollStore = new qp_PollStore( array( 'from'=>'pid', 'pid'=> $pid ) );
+		if ( $pollStore->pid === null ) {
+			return '';
+		}
+		$pollStore->loadQuestions();
+		$userName = $pollStore->getUserName( $uid );
+		if ( $userName === false ) {
+			return '';
+		}
+		$pollStore->loadRandomQuestions( $userName );
+		$userTitle = Title::makeTitleSafe( NS_USER, $userName );
+		$user_link = $this->qpLink( $userTitle, $userName );
+		$pollStore->setLastUser( $userName, false );
+		if ( !$pollStore->loadUserVote() ) {
+			return '';
+		}
+		$poll_title = $pollStore->getTitle();
+		# 'parentheses' key is unavailable in MediaWiki 1.15.x
+		$poll_link = $this->qpLink( $poll_title, $poll_title->getPrefixedText() . wfMsg( 'word-separator' ) . wfMsg( 'qp_parentheses', $pollStore->mPollId ) );
+		$output = wfMsg( 'qp_browse_to_user', $user_link ) . "<br />\n";
+		$output .= wfMsg( 'qp_browse_to_poll', $poll_link ) . "<br />\n";
+		$output .= $this->showAnswerHeader( $pollStore );
+		foreach ( $pollStore->Questions as &$qdata ) {
+			if ( $pollStore->isUsedQuestion( $qdata->question_id ) ) {
+				$output .= "<br />\n<b>" . $qdata->question_id . ".</b> " . qp_Setup::entities( $qdata->CommonQuestion ) . "<br />\n";
+				$output .= $this->displayUserQuestionVote( $qdata );
 			}
 		}
 		return $output;
@@ -380,10 +423,10 @@ class PollResults extends SpecialPage {
 				$pollStore->calculateStatistics();
 				$poll_title = $pollStore->getTitle();
 				# 'parentheses' is unavailable in 1.14.x
-				$poll_link = self::$skin->link( $poll_title, $poll_title->getPrefixedText() . wfMsg( 'word-separator' ) . wfMsg( 'qp_parentheses', $pollStore->mPollId ) );
+				$poll_link = $this->qpLink( $poll_title, $poll_title->getPrefixedText() . wfMsg( 'word-separator' ) . wfMsg( 'qp_parentheses', $pollStore->mPollId ) );
 				$output .= wfMsg( 'qp_browse_to_poll', $poll_link ) . "<br />\n";
-				$output .= self::$skin->link( $this->getTitle(), wfMsg( 'qp_export_to_xls' ), array( "style"=>"font-weight:bold;" ), array( 'action'=>'stats_xls', 'id'=>$pid ) ) . "<br />\n";
-				$output .= self::$skin->link( $this->getTitle(), wfMsg( 'qp_voices_to_xls' ), array( "style"=>"font-weight:bold;" ), array( 'action'=>'voices_xls', 'id'=>$pid ) ) . "<br />\n";
+				$output .= $this->qpLink( $this->getTitle(), wfMsg( 'qp_export_to_xls' ), array( "style"=>"font-weight:bold;" ), array( 'action'=>'stats_xls', 'id'=>$pid ) ) . "<br />\n";
+				$output .= $this->qpLink( $this->getTitle(), wfMsg( 'qp_voices_to_xls' ), array( "style"=>"font-weight:bold;" ), array( 'action'=>'voices_xls', 'id'=>$pid ) ) . "<br />\n";
 				foreach ( $pollStore->Questions as $qkey => &$qdata ) {
 					$output .= "<br />\n<b>" . $qkey . ".</b> " . qp_Setup::entities( $qdata->CommonQuestion ) . "<br />\n";
 					$output .= $this->displayQuestionStats( $pid, $qdata );
@@ -626,7 +669,7 @@ class PollResults extends SpecialPage {
 						if ( $cell == 0.0 && $qdata->question_id !==null ) {
 							$cell = array( 0=> $formatted_cell, "style"=>"color:gray" );
 						} else {
-							$cell = array( 0=>self::$skin->link( $current_title, $formatted_cell,
+							$cell = array( 0=>$this->qpLink( $current_title, $formatted_cell,
 								array( "title"=>wfMsgExt( 'qp_votes_count', array( 'parsemag' ), $qdata->Votes[ $propkey ][ $catkey ] ) ),
 								array( "action"=>"qpcusers", "id"=>$pid, "qid"=>$qdata->question_id, "pid"=>$propkey, "cid"=>$catkey ) ) );
 						}
@@ -666,26 +709,19 @@ class PollResults extends SpecialPage {
  * We do not extend QueryPage anymore because it is purposely made incompatible in 1.18+
  * thus, it is much safer to implement a larger subset of pager itself
  */
-abstract class qp_QueryPage extends SpecialPage {
+abstract class qp_QueryPage extends qp_SpecialPage {
 
-	static $skin = null;
 	var $listoutput = false;
 
 	public function __construct() {
-		global $wgUser;
-		if ( self::$skin == null ) {
-			self::$skin = $wgUser->getSkin();
-		}
 		parent::__construct( $this->queryPageName() );
 	}
 
 	function doQuery( $offset, $limit, $shownavigation=true ) {
-		global $wgUser, $wgOut, $wgLang, $wgContLang;
+		global $wgOut, $wgContLang;
 
 		$res = $this->getIntervalResults( $offset, $limit );
 		$num = count( $res );
-
-		$sk = $wgUser->getSkin();
 
 		if($shownavigation) {
 			$wgOut->addHTML( $this->getPageHeader() );
@@ -713,7 +749,7 @@ abstract class qp_QueryPage extends SpecialPage {
 				$s[] = $this->openList( $offset );
 
 			foreach ($res as $r) {
-				$format = $this->formatResult( $sk, $r );
+				$format = $this->formatResult( $r );
 				if ( $format ) {
 					$s[] = $this->listoutput ? $format : "<li>{$format}</li>\n";
 				}
@@ -783,10 +819,10 @@ class qp_UsersList extends qp_QueryPage {
 		$this->cmd = $cmd;
 		if ( $cmd == 'users' ) {
 			$this->order_by = 'count(pid) DESC, name ASC ';
-			$this->different_order_by_link = self::$skin->link( $this->getTitle(), wfMsg( 'qp_order_by_username' ), array(), array( "action"=>"users_a" ) );
+			$this->different_order_by_link = $this->qpLink( $this->getTitle(), wfMsg( 'qp_order_by_username' ), array(), array( "action"=>"users_a" ) );
 		} else {
 			$this->order_by = 'name ';
-			$this->different_order_by_link = self::$skin->link( $this->getTitle(), wfMsg( 'qp_order_by_polls_count' ), array(), array( "action"=>"users" ) );
+			$this->different_order_by_link = $this->qpLink( $this->getTitle(), wfMsg( 'qp_order_by_polls_count' ), array(), array( "action"=>"users" ) );
 		}
 	}
 
@@ -809,16 +845,16 @@ class qp_UsersList extends qp_QueryPage {
 		return $result;
 	}
 
-	function formatResult( $skin, $result ) {
+	function formatResult( $result ) {
 		global $wgLang, $wgContLang;
 		$link = "";
 		if ( $result !== null ) {
 			$uid = intval( $result->uid );
 			$userName = $result->username;
 			$userTitle = Title::makeTitleSafe( NS_USER, $userName );
-			$user_link = self::$skin->link( $userTitle, $userName );
-			$user_polls_link = self::$skin->link( $this->getTitle(), wfMsgExt( 'qp_user_polls_link', array( 'parsemag' ), $result->pidcount, $userName ) , array(), array( "uid"=>$uid, "action"=>"upolls" ) );
-			$user_missing_polls_link = self::$skin->link( $this->getTitle(), wfMsgExt( 'qp_user_missing_polls_link', 'parsemag', $userName ) , array(), array( "uid"=>$uid, "action"=>"nupolls" ) );
+			$user_link = $this->qpLink( $userTitle, $userName );
+			$user_polls_link = $this->qpLink( $this->getTitle(), wfMsgExt( 'qp_user_polls_link', array( 'parsemag' ), $result->pidcount, $userName ) , array(), array( "uid"=>$uid, "action"=>"upolls" ) );
+			$user_missing_polls_link = $this->qpLink( $this->getTitle(), wfMsgExt( 'qp_user_missing_polls_link', 'parsemag', $userName ) , array(), array( "uid"=>$uid, "action"=>"nupolls" ) );
 			$link = $user_link . ': ' . $user_polls_link . ', ' . $user_missing_polls_link;
 		}
 		return $link;
@@ -866,7 +902,7 @@ class qp_UserPollsList extends qp_QueryPage {
 		}
 		if ( $userName !== false ) {
 			$userTitle = Title::makeTitleSafe( NS_USER, $userName );
-			$user_link = self::$skin->link( $userTitle, $userName );
+			$user_link = $this->qpLink( $userTitle, $userName );
 			return PollResults::getPollsLink() . PollResults::getUsersLink() . '<div class="head">' . $user_link . ': ' . ( $this->inverse ? wfMsgExt( 'qp_user_missing_polls_link', 'parsemag', $userName ) : wfMsgExt( 'qp_user_polls_link', array( 'parsemag' ), $pidcount, $userName ) ) . ' ' . '</div>';
 		}
 	}
@@ -892,13 +928,13 @@ class qp_UserPollsList extends qp_QueryPage {
 		return $result;
 	}
 
-	function formatResult( $skin, $result ) {
+	function formatResult( $result ) {
 		global $wgLang, $wgContLang;
 		$poll_title = Title::makeTitle( $result->ns, $result->title, qp_AbstractPoll::s_getPollTitleFragment( $result->poll_id, '' ) );
 		$pagename = qp_Setup::specialchars( $wgContLang->convert( $poll_title->getPrefixedText() ) );
 		$pollname = qp_Setup::specialchars( $result->poll_id );
-		$goto_link = self::$skin->link( $poll_title, wfMsg( 'qp_source_link' ) );
-		$voice_link = self::$skin->link( $this->getTitle(), wfMsg( 'qp_voice_link' . ($this->inverse ? "_inv" : "") ), array(), array( "id"=>intval( $result->pid), "uid"=>$this->uid, "action"=>"uvote" ) );
+		$goto_link = $this->qpLink( $poll_title, wfMsg( 'qp_source_link' ) );
+		$voice_link = $this->qpLink( $this->getTitle(), wfMsg( 'qp_voice_link' . ($this->inverse ? "_inv" : "") ), array(), array( "id"=>intval( $result->pid), "uid"=>$this->uid, "action"=>"uvote" ) );
 		$link = wfMsg( 'qp_results_line_qupl', $pagename, $pollname, $voice_link );
 		return $link;
 	}
@@ -933,15 +969,15 @@ class qp_PollsList extends qp_QueryPage {
 		return $result;
 	}
 
-	function formatResult( $skin, $result ) {
+	function formatResult( $result ) {
 		global $wgLang, $wgContLang;
 		$poll_title = Title::makeTitle( $result->ns, $result->title, qp_AbstractPoll::getPollTitleFragment( $result->poll_id, '' ) );
 		$pagename = qp_Setup::specialchars( $wgContLang->convert( $poll_title->getPrefixedText() ) );
 		$pollname = qp_Setup::specialchars( $result->poll_id );
-		$goto_link = self::$skin->link( $poll_title, wfMsg( 'qp_source_link' ) );
-		$voices_link = self::$skin->link( $this->getTitle(), wfMsg( 'qp_stats_link' ), array(), array( "id"=>intval( $result->pid), "action"=>"stats" ) );
-		$users_link = self::$skin->link( $this->getTitle(), wfMsg( 'qp_users_link' ), array(), array( "id"=>intval( $result->pid), "action"=>"pulist" ) );
-		$not_participated_link = self::$skin->link( $this->getTitle(), wfMsg( 'qp_not_participated_link' ), array(), array( "id"=>intval( $result->pid), "action"=>"npulist" ) );
+		$goto_link = $this->qpLink( $poll_title, wfMsg( 'qp_source_link' ) );
+		$voices_link = $this->qpLink( $this->getTitle(), wfMsg( 'qp_stats_link' ), array(), array( "id"=>intval( $result->pid), "action"=>"stats" ) );
+		$users_link = $this->qpLink( $this->getTitle(), wfMsg( 'qp_users_link' ), array(), array( "id"=>intval( $result->pid), "action"=>"pulist" ) );
+		$not_participated_link = $this->qpLink( $this->getTitle(), wfMsg( 'qp_not_participated_link' ), array(), array( "id"=>intval( $result->pid), "action"=>"npulist" ) );
 		$link = wfMsg( 'qp_results_line_qpl', $pagename, $pollname, $goto_link, $voices_link, $users_link, $not_participated_link );
 		return $link;
 	}
@@ -979,7 +1015,7 @@ class qp_PollUsersList extends qp_QueryPage {
 			$poll_title = Title::makeTitle( intval( $row->ns ), $row->title, qp_AbstractPoll::getPollTitleFragment( $row->poll_id, '' ) );
 			$pagename = qp_Setup::specialchars( $wgContLang->convert( $poll_title->getPrefixedText() ) );
 			$pollname = qp_Setup::specialchars( $row->poll_id );
-			$goto_link = self::$skin->link( $poll_title, wfMsg( 'qp_source_link' ) );
+			$goto_link = $this->qpLink( $poll_title, wfMsg( 'qp_source_link' ) );
 			$spec = wfMsg( 'qp_header_line_qpul', wfMsg( $this->inverse ? 'qp_not_participated_link' : 'qp_users_link'), $pagename, $pollname );
 			$head[] = PollResults::getPollsLink();
 			$head[] = PollResults::getUsersLink();
@@ -1008,15 +1044,15 @@ class qp_PollUsersList extends qp_QueryPage {
 		return $result;
 	}
 
-	function formatResult( $skin, $result ) {
+	function formatResult( $result ) {
 		global $wgLang, $wgContLang;
 		$link = "";
 		if ( $result !== null ) {
 			$uid = intval( $result->uid );
 			$userName = $result->username;
 			$userTitle = Title::makeTitleSafe( NS_USER, $userName );
-			$user_link = self::$skin->link( $userTitle, $userName );
-			$voice_link = self::$skin->link( $this->getTitle(), wfMsg( 'qp_voice_link' . ($this->inverse ? "_inv" : "") ), array(), array( "id"=>intval( $this->pid), "uid"=>$uid, "action"=>"uvote" ) );
+			$user_link = $this->qpLink( $userTitle, $userName );
+			$voice_link = $this->qpLink( $this->getTitle(), wfMsg( 'qp_voice_link' . ($this->inverse ? "_inv" : "") ), array(), array( "id"=>intval( $this->pid), "uid"=>$uid, "action"=>"uvote" ) );
 			$link = wfMsg( 'qp_results_line_qpul', $user_link, $voice_link );
 		}
 		return $link;
@@ -1072,7 +1108,7 @@ class qp_UserCellList extends qp_QueryPage {
 				$poll_title = Title::makeTitle( intval( $this->ns ), $this->title, qp_AbstractPoll::getPollTitleFragment( $this->poll_id, '' ) );
 				$pagename = qp_Setup::specialchars( $wgContLang->convert( $poll_title->getPrefixedText() ) );
 				$pollname = qp_Setup::specialchars( $this->poll_id );
-				$goto_link = self::$skin->link( $poll_title, wfMsg( 'qp_source_link' ) );
+				$goto_link = $this->qpLink( $poll_title, wfMsg( 'qp_source_link' ) );
 				$spec = wfMsg( 'qp_header_line_qpul', wfMsg( 'qp_users_link' ), $pagename, $pollname );
 				$head[] = PollResults::getPollsLink();
 				$head[] = PollResults::getUsersLink();
@@ -1126,15 +1162,15 @@ class qp_UserCellList extends qp_QueryPage {
 		return $result;
 	}
 
-	function formatResult( $skin, $result ) {
+	function formatResult( $result ) {
 		global $wgLang, $wgContLang;
 		$link = "";
 		if ( $result !== null ) {
 			$uid = intval( $result->uid );
 			$userName = $result->username;
 			$userTitle = Title::makeTitleSafe( NS_USER, $userName );
-			$user_link = self::$skin->link( $userTitle, $userName );
-			$voice_link = self::$skin->link( $this->getTitle(), wfMsg( 'qp_voice_link' . ($this->inverse ? "_inv" : "" ) ), array(), array( "id"=>intval( $this->pid), "uid"=>$uid, "action"=>"uvote" ) );
+			$user_link = $this->qpLink( $userTitle, $userName );
+			$voice_link = $this->qpLink( $this->getTitle(), wfMsg( 'qp_voice_link' . ($this->inverse ? "_inv" : "" ) ), array(), array( "id"=>intval( $this->pid), "uid"=>$uid, "action"=>"uvote" ) );
 			$text_answer = ($result->text_answer == '') ? '' : '<i>' . qp_Setup::entities( $result->text_answer ) . '</i>';
 			$link = wfMsg( 'qp_results_line_qucl', $user_link, $voice_link, $text_answer );
 		}
