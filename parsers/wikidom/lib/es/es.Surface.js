@@ -107,6 +107,9 @@ Surface.prototype.onKeyDown = function( e ) {
 				this.drawSelection();
 			}
 			break;		
+		case 17: // Control
+			this.ctrlDown = true;
+			break;
 		case 37: // Left arrow
 			this.initialHorizontalCursorPosition = null;
 			this.moveCursorLeft();
@@ -179,6 +182,12 @@ Surface.prototype.onKeyUp = function( e ) {
 	switch ( e.keyCode ) {
 		case 16: // Shift
 			this.shiftDown = false;
+			if ( this.keyboardSelecting ) {
+				this.keyboardSelecting = false;
+			}
+			break;
+		case 17: // Control
+			this.ctrlDown = false;
 			break;
 		default:		
 			var surface = this;
