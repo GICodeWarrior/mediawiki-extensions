@@ -120,7 +120,7 @@ test( 'Headings', function() {
 					'annotations': [
 						{
 							'type': 'ilink',
-							'range': { 'offset': 15, 'length': 4 },
+							'range': { 'start': 15, 'end': 19 },
 							'data': { 'namespace': 'Main', 'title': 'Main_Page' }
 						}
 					]
@@ -163,8 +163,8 @@ test( 'Paragraphs', function() {
 					{
 						'text': 'Line with bold and italic text',
 						'annotations': [
-							{ 'type': 'bold', 'range': { 'offset': 10, 'length': 4 } },
-							{ 'type': 'italic', 'range': { 'offset': 19, 'length': 6 } }
+							{ 'type': 'bold', 'range': { 'start': 10, 'end': 14 } },
+							{ 'type': 'italic', 'range': { 'start': 19, 'end': 25 } }
 						]
 					}
 				]

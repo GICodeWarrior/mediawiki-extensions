@@ -9,8 +9,8 @@
 					{
 						"type": "italic",
 						"range": {
-							"offset": 10,
-							"length": 7
+							"start": 10,
+							"end": 17
 						}
 					}
 				]
@@ -83,15 +83,15 @@
 						{
 							"type": "italic",
 							"range": {
-								"offset": 0,
-								"length": 4
+								"start": 0,
+								"end": 4
 							}
 						},
 						{
 							"type": "xlink",
 							"range": {
-								"offset": 8,
-								"length": 6
+								"start": 8,
+								"end": 22
 							},
 							"data": {
 								"url": "http://www.a.com"
@@ -100,8 +100,8 @@
 						{
 							"type": "bold",
 							"range": {
-								"offset": 10,
-								"length": 4
+								"start": 10,
+								"end": 14
 							}
 						}
 					]
@@ -112,15 +112,15 @@
 						{
 							"type": "italic",
 							"range": {
-								"offset": 11,
-								"length": 3
+								"start": 11,
+								"end": 14
 							}
 						},
 						{
 							"type": "bold",
 							"range": {
-								"offset": 20,
-								"length": 4
+								"start": 20,
+								"end": 24
 							}
 						}
 					]
@@ -136,8 +136,8 @@
 						{
 							"type": "bold",
 							"range": {
-								"offset": 0,
-								"length": 9
+								"start": 0,
+								"end": 9
 							}
 						}
 					]
@@ -183,8 +183,8 @@
 							{
 								"type": "italic",
 								"range": {
-									"offset": 0,
-									"length": 6
+									"start": 0,
+									"end": 6
 								}
 							}
 						]
@@ -197,8 +197,8 @@
 							{
 								"type": "bold",
 								"range": {
-									"offset": 0,
-									"length": 5
+									"start": 0,
+									"end": 5
 								}
 							}
 						]
@@ -211,8 +211,8 @@
 							{
 								"type": "ilink",
 								"range": {
-									"offset": 7,
-									"length": 4
+									"start": 7,
+									"end": 12
 								},
 								"data": {
 									"title": "User:JohnDoe"

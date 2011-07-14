@@ -37,8 +37,8 @@
  *   line: Line object
  *   lists: Array of list objects
  * range
- *   offset: Integer
- *   length: Integer
+ *   start: Integer
+ *   end: Integer
  * annotation
  *   type: String
  *   range: Range object

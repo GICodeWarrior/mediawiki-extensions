@@ -16,8 +16,8 @@ wiki.AnnotationRenderer = function() {
 	 * Insertions for the same range will be nested in order of declaration.
 	 * @example
 	 *     ar = new wiki.AnnotationRenderer();
-	 *     ar.wrapWithText( { 'offset': 1, 'length': 1 }, '[', ']' );
-	 *     ar.wrapWithText( { 'offset': 1, 'length': 1 }, '{', '}' );
+	 *     ar.wrapWithText( { 'start': 1, 'end': 2 }, '[', ']' );
+	 *     ar.wrapWithText( { 'start': 1, 'end': 2 }, '{', '}' );
 	 *     // Outputs: "a[{b}]c"
 	 *     console.log( ar.apply( 'abc' ) );
 	 * 
@@ -26,17 +26,15 @@ wiki.AnnotationRenderer = function() {
 	 * @param post String: Text to insert after range
 	 */
 	this.wrapWithText = function( range, pre, post ) {
-		var start = range.offset;
-		if ( !( start in insertions ) ) {
-			insertions[start] = [pre];
+		if ( !( range.start in insertions ) ) {
+			insertions[range.start] = [pre];
 		} else {
-			insertions[start].push( pre );
+			insertions[range.start].push( pre );
 		}
-		var end = range.offset + range.length;
-		if ( !( end in insertions ) ) {
-			insertions[end] = [post];
+		if ( !( range.end in insertions ) ) {
+			insertions[range.end] = [post];
 		} else {
-			insertions[end].unshift( post );
+			insertions[range.end].unshift( post );
 		}
 	};
 
