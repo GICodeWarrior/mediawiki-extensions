@@ -1,36 +1,77 @@
+/* Classes */
+
+/**
+ * Content objects are wrappers around arrays of plain or annotated characters. Data in this form
+ * is ultimately equivalent to but more efficient to work with than WikiDom line objects (plain text
+ * paired with offset annotation), especially when performing substring operations. Content can be
+ * derived from or converted to one or more WikiDom line objects.
+ * 
+ * @param content {Array} List of plain or annotated characters
+ * @returns {Content}
+ */
 function Content( content ) {
 	this.data = content || [];
 };
 
-Content.compareObjects = function( a, b ) {
-	for ( var key in a ) {
-		if ( typeof a[key] !== typeof b[key] ) {
+/* Static Methods */
+
+/**
+ * Recursively compares string and number property between two objects.
+ * 
+ * A false result may be caused by property inequality or by properties in one object missing from
+ * the other. An asymmetrical test may also be performed, which checks only that properties in the
+ * first object are present in the second object, but not the inverse.
+ * 
+ * @param a {Object} First object to compare
+ * @param b {Object} Second object to compare
+ * @param asymmetrical {Boolean} Whether to check only that b contains values from a
+ * @return {Boolean} If the objects contain the same values as each other
+ */
+Content.compareObjects = function( a, b, asymmetrical ) {
+	var aValue, bValue, aType, bType;
+	for ( var k in a ) {
+		aValue = a[k];
+		bValue = b[k];
+		aType = typeof aValue;
+		bType = typeof bValue;
+		if ( aType !== bType
+				|| ( ( aType === 'string' || aType === 'number' ) && aValue !== bValue )
+				|| ( $.isPlainObject( aValue ) && !Content.compareObjects( aValue, bValue ) ) ) {
 			return false
-		} else if ( typeof a[key] === 'string' || typeof a[key] === 'number' ) {
-			if ( a[key] !== b[key] ) {
-				return false;
-			}
-		} else if ( $.isPlainObject( a[key] ) ) {
-			if ( !Content.compareObjects( a[key], b[key] ) ) {
-				return false;
-			}
 		}
 	}
-	return true;
+	// If the check is not asymmetrical, recursing with the arguments swapped will verify our result
+	return asymmetrical ? true : Content.compareObjects( b, a, true );
 };
 
-Content.copyObject = function( src ) {
-	var dst = {};
-	for ( var key in src ) {
-		if ( typeof src[key] === 'string' || typeof src[key] === 'number' ) {
-			dst[key] = src[key];
-		} else if ( $.isPlainObject( src[key] ) ) {
-			dst[key] = Content.copyObject( src[key] );
+/**
+ * Gets a recursive copy of an object's string, number and plain-object property.
+ * 
+ * @param source {Object} Object to copy
+ * @return {Object} Copy of source object
+ */
+Content.copyObject = function( source ) {
+	var destination = {};
+	for ( var key in source ) {
+		sourceValue = source[key];
+		sourceType = typeof sourceValue;
+		if ( sourceType === 'string' || sourceType === 'number' ) {
+			destination[key] = sourceValue;
+		} else if ( $.isPlainObject( sourceValue ) ) {
+			destination[key] = Content.copyObject( sourceValue );
 		}
 	}
-	return dst;
+	return destination;
 };
 
+/**
+ * Gets content data from a WikiDom line object, which uses a series of offset-based annotations to
+ * supplement plain text.
+ * 
+ * @param line {Object} WikiDom compatible line object, containing text and optionally annotations
+ * properties, the latter of which being an array of annotation objects including range information
+ * @return {Array} List of plain or annotated characters
+ */
 Content.convertLine = function( line ) {
 	// Convert string to array of characters
 	var data = line.text.split('');
@@ -52,10 +93,27 @@ Content.convertLine = function( line ) {
 	return data;
 };
 
+/**
+ * Creates a new Content object from a WikiDom line object.
+ * 
+ * @param line {Object} WikiDom compatible line object - @see Content.convertLine
+ * @return {Content} New content object containing data derived from the WikiDom line
+ */
 Content.newFromLine = function( line ) {
 	return new Content( Content.convertLine( line ) );
 };
 
+/**
+ * Creates a new Content object from a list of WikiDom line objects.
+ * 
+ * This plural version of Content.newFromLine inserts non-annotated new line characters between
+ * lines, preserving the divisions between the original line objects. When Content objects are
+ * converted to WikiDom line objects, these new line characters are used to split the content data
+ * into multiple line objects, thus making a clean round trip possible.
+ * 
+ * @param line {Array} List of WikiDom compatible line objects - @see Content.convertLine
+ * @return {Content} New content object containing data derived from the WikiDom line
+ */
 Content.newFromLines = function( lines ) {
 	var data = [];
 	for ( var i = 0; i < lines.length; i++ ) {
@@ -67,6 +125,13 @@ Content.newFromLines = function( lines ) {
 	return new Content( data );
 };
 
+/**
+ * Gets plain text version of the content within a specific range.
+ * 
+ * @param start {Integer} Optional beginning of range, if omitted range will begin at 0
+ * @param end {Integer} Optional end of range, if omitted range will end a this.data.length
+ * @return {String} Plain text within given range
+ */
 Content.prototype.substring = function( start, end ) {
 	// Wrap values
 	start = Math.max( 0, start || 0 );
