@@ -210,6 +210,8 @@ Content.prototype.coverageOfAnnotation = function( start, end, annotation, stric
 			} else {
 				coverage.push( i );
 			}
+		} else if ( this.data[i] === '\n' ) {
+			coverage.push( i );
 		}
 	}
 	return coverage;
@@ -258,6 +260,10 @@ Content.prototype.annotate = function( annotation, start, end ) {
 		for ( var i = start; i < end; i++ ) {
 			duplicate = -1;
 			if ( typeof this.data[i] === 'string' ) {
+				// Never annotate new lines
+				if ( this.data[i] === '\n' ) {
+					continue;
+				}
 				// Auto-initialize as annotated character
 				this.data[i] = [this.data[i]];
 			} else {
