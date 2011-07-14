@@ -61,7 +61,7 @@ function Surface( $container, doc ) {
 		});
 	
 	$(window).resize( function() {
-		document.updateBlocks();
+		surface.doc.updateBlocks();
 	} );
 	
 	this.doc.on( 'update', function() {
