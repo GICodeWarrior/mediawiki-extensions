@@ -223,8 +223,7 @@ Content.renderAnnotation = function( bias, annotation, stack ) {
 					throw 'Invalid stack error. An element is missing from the stack.';
 				}
 				// Close each already opened annotation
-				var i;
-				for ( i = stack.length - 1; i >= depth + 1; i-- ) {
+				for ( var i = stack.length - 1; i >= depth + 1; i-- ) {
 					out += typeof renderers[stack[i].type]['close'] === 'function'
 						? renderers[stack[i].type]['close']( stack[i].data )
 						: renderers[stack[i].type]['close'];
@@ -234,8 +233,7 @@ Content.renderAnnotation = function( bias, annotation, stack ) {
 					? renderers[type]['close']( annotation.data )
 					: renderers[type]['close'];
 				// Re-open each previously opened annotation
-				var i;
-				for ( i = depth + 1; i < stack.length; i++ ) {
+				for ( var i = depth + 1; i < stack.length; i++ ) {
 					out += typeof renderers[stack[i].type]['open'] === 'function'
 						? renderers[stack[i].type]['open']( stack[i].data )
 						: renderers[stack[i].type]['open'];
