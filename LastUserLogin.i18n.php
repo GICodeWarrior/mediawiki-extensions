@@ -726,13 +726,17 @@ $messages['sr-el'] = array(
 
 /** Swedish (Svenska)
  * @author Dafer45
+ * @author WikiPhoenix
  */
 $messages['sv'] = array(
 	'lastuserlogin' => 'Senaste användarinloggning',
+	'lastuserlogin-desc' => 'Visar den senaste gången en användare loggade in',
 	'lastuserlogin_userid' => 'Användarnamn',
 	'lastuserlogin_username' => 'Riktigt namn',
+	'lastuserlogin_useremail' => 'Användar-e-post',
 	'lastuserlogin_lastlogin' => 'Senaste inloggning',
 	'lastuserlogin_daysago' => 'Dagar sedan',
+	'right-lastlogin' => 'Visa den senaste gången en användare loggade in',
 );
 
 /** Telugu (తెలుగు)
