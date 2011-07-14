@@ -18,6 +18,22 @@ $messages['en'] = array(
 	'tooltip-p-moodbar-trigger-using' => '',
 	'moodbar-trigger-feedback' => 'Feedback',
 	'tooltip-p-moodbar-trigger-feedback' => '',
+	'right-moodbar-view' => 'View and export MoodBar feedback',
+	'moodbar-admin-title' => 'MoodBar feedback',
+	'moodbar-admin-intro' => 'This page allows you to view feedback submitted with the MoodBar',
+	'moodbar-admin-download' => 'Download as CSV',
+	'moodbar-header-id' => 'Feedback ID',
+	'moodbar-header-timestamp' => 'Timestamp',
+	'moodbar-header-type' => 'Type',
+	'moodbar-header-page' => 'Page',
+	'moodbar-header-usertype' => 'User type',
+	'moodbar-header-user' => 'User',
+	'moodbar-header-editmode' => 'Edit mode',
+	'moodbar-header-bucket' => 'Testing bucket',
+	'moodbar-header-system' => 'System type',
+	'moodbar-header-locale' => 'Locale',
+	'moodbar-header-useragent' => 'User-Agent',
+	'moodbar-header-comment' => 'Comments',
 );
  
 /** Message documentation
