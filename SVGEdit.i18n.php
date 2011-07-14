@@ -155,6 +155,14 @@ $messages['eo'] = array(
 	'svgedit-desc' => 'Redakti desegnojn SVG en foliumilo per [http://code.google.com/p/svg-edit/ SVG-Edit]',
 );
 
+/** Spanish (Español)
+ * @author Mor
+ */
+$messages['es'] = array(
+	'svgedit-editor-save-close' => 'Guardar y cerrar',
+	'svgedit-editor-close' => 'Cancelar',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */
