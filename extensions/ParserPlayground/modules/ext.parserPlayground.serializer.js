@@ -126,3 +126,7 @@ MWTreeSerializer.prototype.treeToSource = function(tree, callback) {
 		callback(null); // hmmmm
 	}
 };
+
+if (typeof module == "object") {
+	module.exports.MWTreeSerializer = MWTreeSerializer;
+}
