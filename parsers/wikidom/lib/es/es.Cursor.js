@@ -45,5 +45,5 @@ Cursor.prototype.hide = function() {
 	if( this.cursorInterval ) {
 		clearInterval( this.cursorInterval );
 	}
-	this.$.hide()
+	this.$.hide();
 };

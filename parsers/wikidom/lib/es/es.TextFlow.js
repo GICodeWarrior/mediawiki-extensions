@@ -56,7 +56,7 @@ TextFlow.prototype.getOffset = function( position ) {
 	var virtual = line < this.lines.length - 1
 		&& this.boundaryTest.exec( this.lines[line].text.substr( -1 ) ) ? -1 : 0;
 	line = Math.min( line, this.lines.length - 1 );
-	var $ruler = $( '<div class="editSurface-ruler"></div>' ).appendTo( this.$ )
+	var $ruler = $( '<div class="editSurface-ruler"></div>' ).appendTo( this.$ ),
 		ruler = $ruler[0],
 		fit = this.fitCharacters(
 			this.lines[line].start, this.lines[line].end, ruler, position.left
@@ -112,8 +112,8 @@ TextFlow.prototype.getPosition = function( offset ) {
 		}
 		position.top += this.lines[line].height;
 		line++;
-	};
-	
+	}
+
 	/*
 	 * Virtual n+1 position
 	 * 
@@ -271,7 +271,7 @@ TextFlow.prototype.render = function( offset, callback ) {
 	 * container and measure it.
 	 */
 	rs.$ruler = $( '<div>&nbsp;</div>' ).appendTo( this.$ );
-	rs.width = rs.$ruler.innerWidth()
+	rs.width = rs.$ruler.innerWidth();
 	
 	// TODO: Take offset into account
 	// Ignore offset optimization if the width has changed or the text has never been flowed before

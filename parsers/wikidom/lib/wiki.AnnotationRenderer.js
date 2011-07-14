@@ -60,8 +60,8 @@ wiki.AnnotationRenderer = function() {
 	 * @return String: Wrapped text
 	 */
 	this.apply = function( text ) {
-		var out = '';
-		for ( var i = 0, iMax = text.length; i <= iMax; i++ ) {
+		var out = '', i;
+		for ( i = 0, iMax = text.length; i <= iMax; i++ ) {
 			if ( i in insertions ) {
 				out += insertions[i].join( '' );
 			}

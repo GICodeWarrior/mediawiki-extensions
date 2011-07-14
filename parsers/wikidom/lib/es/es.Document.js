@@ -5,7 +5,8 @@
  */
 function Document( blocks ) {
 	this.blocks = [];
-	for( var i = 0; i < blocks.length; i++ ) {
+	var i;
+	for( i = 0; i < blocks.length; i++ ) {
 		this.appendBlock(blocks[i]);
 	}
 	this.width = null;
@@ -77,7 +78,7 @@ Document.prototype.insertBlockAfter = function( block, after ) {
 	} else {
 		this.blocks.push( block );
 	}
-}
+};
 
 /**
  * Removes a block from the document.
@@ -93,7 +94,8 @@ Document.prototype.renderBlocks = function( offset, callback ) {
 	// Remember width, to avoid updates when without width changes
 	this.width = this.$.innerWidth();
 	// Render blocks
-	for ( var i = 0; i < this.blocks.length; i++ ) {
+	var i;
+	for ( i = 0; i < this.blocks.length; i++ ) {
 		this.$.append( this.blocks[i].$ );
 		this.blocks[i].renderContent( offset, callback );
 	}

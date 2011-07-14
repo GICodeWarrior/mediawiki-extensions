@@ -83,7 +83,8 @@ Content.htmlCharacters = {
  */
 Content.compareObjects = function( a, b, asymmetrical ) {
 	var aValue, bValue, aType, bType;
-	for ( var k in a ) {
+	var k;
+	for ( k in a ) {
 		aValue = a[k];
 		bValue = b[k];
 		aType = typeof aValue;
@@ -91,7 +92,7 @@ Content.compareObjects = function( a, b, asymmetrical ) {
 		if ( aType !== bType
 				|| ( ( aType === 'string' || aType === 'number' ) && aValue !== bValue )
 				|| ( $.isPlainObject( aValue ) && !Content.compareObjects( aValue, bValue ) ) ) {
-			return false
+			return false;
 		}
 	}
 	// If the check is not asymmetrical, recursing with the arguments swapped will verify our result
@@ -106,7 +107,8 @@ Content.compareObjects = function( a, b, asymmetrical ) {
  */
 Content.copyObject = function( source ) {
 	var destination = {};
-	for ( var key in source ) {
+	var key;
+	for ( key in source ) {
 		sourceValue = source[key];
 		sourceType = typeof sourceValue;
 		if ( sourceType === 'string' || sourceType === 'number' ) {
@@ -129,7 +131,8 @@ Content.copyObject = function( source ) {
 Content.convertLine = function( line ) {
 	// Convert string to array of characters
 	var data = line.text.split('');
-	for ( var i in line.annotations ) {
+	var i;
+	for ( i in line.annotations ) {
 		var src = line.annotations[i];
 		// Build simplified annotation object
 		var dst = { 'type': src.type };
@@ -137,7 +140,8 @@ Content.convertLine = function( line ) {
 			dst.data = Content.copyObject( src.data );
 		}
 		// Apply annotation to range
-		for ( var k = src.range.start; k < src.range.end; k++ ) {
+		var k;
+		for ( k = src.range.start; k < src.range.end; k++ ) {
 			// Auto-convert to array
 			typeof data[k] === 'string' && ( data[k] = [data[k]] );
 			// Append 
@@ -170,7 +174,8 @@ Content.newFromLine = function( line ) {
  */
 Content.newFromLines = function( lines ) {
 	var data = [];
-	for ( var i = 0; i < lines.length; i++ ) {
+	var i;
+	for ( i = 0; i < lines.length; i++ ) {
 		data = data.concat( Content.convertLine( lines[i] ) );
 		if ( i < lines.length - 1 ) {
 			data.push( '\n' );
@@ -217,7 +222,8 @@ Content.renderAnnotation = function( bias, annotation, stack ) {
 					throw 'Invalid stack error. An element is missing from the stack.';
 				}
 				// Close each already opened annotation
-				for ( var i = stack.length - 1; i >= depth + 1; i-- ) {
+				var i;
+				for ( i = stack.length - 1; i >= depth + 1; i-- ) {
 					out += typeof renderers[stack[i].type]['close'] === 'function'
 						? renderers[stack[i].type]['close']( stack[i].data )
 						: renderers[stack[i].type]['close'];
@@ -227,7 +233,8 @@ Content.renderAnnotation = function( bias, annotation, stack ) {
 					? renderers[type]['close']( annotation.data )
 					: renderers[type]['close'];
 				// Re-open each previously opened annotation
-				for ( var i = depth + 1; i < stack.length; i++ ) {
+				var i;
+				for ( i = depth + 1; i < stack.length; i++ ) {
 					out += typeof renderers[stack[i].type]['open'] === 'function'
 						? renderers[stack[i].type]['open']( stack[i].data )
 						: renderers[stack[i].type]['open'];
@@ -257,11 +264,12 @@ Content.prototype.substring = function( start, end ) {
 	if ( end === undefined ) {
 		end = this.data.length;
 	} else {
-		end = Math.min( this.data.length, end )
+		end = Math.min( this.data.length, end );
 	}
 	// Copy characters
 	var text = '';
-	for ( var i = start; i < end; i++ ) {
+	var i;
+	for ( i = start; i < end; i++ ) {
 		// If not using in IE6 or IE7 (which do not support array access for strings) use this..
 		// text += this.data[i][0];
 		// Otherwise use this...
@@ -296,14 +304,15 @@ Content.prototype.insert = function( start, insert ) {
 	var neighbor = this.data[Math.max( start - 1, 0 )];
 	if ( $.isArray( neighbor ) ) {
 		var annotations = neighbor.slice( 1 );
-		for ( var i = 0; i < insert.length; i++ ) {
+		var i;
+		for ( i = 0; i < insert.length; i++ ) {
 			if ( typeof insert[i] === 'string' ) {
 				insert[i] = [insert[i]];
 			}
 			insert[i] = insert[i].concat( annotations );
 		}
 	}
-	Array.prototype.splice.apply( this.data, [start, 0].concat( insert ) )
+	Array.prototype.splice.apply( this.data, [start, 0].concat( insert ) );
 };
 
 /**
@@ -339,8 +348,9 @@ Content.prototype.getLength = function() {
  */
 Content.prototype.coverageOfAnnotation = function( start, end, annotation, strict ) {
 	var coverage = [];
-	for ( var i = start; i < end; i++ ) {
-		var index = this.indexOfAnnotation( i, annotation );
+	var i, index;
+	for ( i = start; i < end; i++ ) {
+		index = this.indexOfAnnotation( i, annotation );
 		if ( typeof this.data[i] !== 'string' && index !== -1 ) {
 			if ( strict ) {
 				if ( Content.compareObjects( this.data[i][index].data, annotation.data ) ) {
@@ -367,8 +377,9 @@ Content.prototype.coverageOfAnnotation = function( start, end, annotation, stric
  */
 Content.prototype.indexOfAnnotation = function( offset, annotation, strict ) {
 	var annotatedCharacter = this.data[offset];
+	var i;
 	if ( typeof annotatedCharacter !== 'string' ) {
-		for ( var i = 1; i < this.data[offset].length; i++ ) {
+		for ( i = 1; i < this.data[offset].length; i++ ) {
 			if ( annotatedCharacter[i].type === annotation.type ) {
 				if ( strict ) {
 					if ( Content.compareObjects( annotatedCharacter[i].data, annotation.data ) ) {
@@ -398,6 +409,8 @@ Content.prototype.indexOfAnnotation = function( offset, annotation, strict ) {
  * @param end {Integer} Offset to stop annotating to
  */
 Content.prototype.annotate = function( method, annotation, start, end ) {
+	var i;
+
 	start = Math.max( start, 0 );
 	end = Math.min( end, this.data.length );
 	if ( method === 'toggle' ) {
@@ -411,7 +424,7 @@ Content.prototype.annotate = function( method, annotation, start, end ) {
 	}
 	if ( method === 'add' ) {
 		var duplicate;
-		for ( var i = start; i < end; i++ ) {
+		for ( i = start; i < end; i++ ) {
 			duplicate = -1;
 			if ( typeof this.data[i] === 'string' ) {
 				// Never annotate new lines
@@ -433,7 +446,7 @@ Content.prototype.annotate = function( method, annotation, start, end ) {
 			}
 		}
 	} else if ( method === 'remove' ) {
-		for ( var i = start; i < end; i++ ) {
+		for ( i = start; i < end; i++ ) {
 			if ( typeof this.data[i] !== 'string' ) {
 				if ( annotation.type === 'all' ) {
 					// Remove all annotations by converting the annotated character to a plain
@@ -466,29 +479,30 @@ Content.prototype.render = function( start, end ) {
 		right,
 		leftPlain,
 		rightPlain,
+		i, j, // iterators
 		stack = [];
-	for ( var i = 0; i < this.data.length; i++ ) {
+	for ( i = 0; i < this.data.length; i++ ) {
 		right = this.data[i];
 		leftPlain = typeof left === 'string';
 		rightPlain = typeof right === 'string';
 		if ( !leftPlain && rightPlain ) {
 			// [formatted][plain] pair, close any annotations for left
-			for ( var j = 1; j < left.length; j++ ) {
+			for ( j = 1; j < left.length; j++ ) {
 				out += Content.renderAnnotation( 'close', left[j], stack );
 			}
 		} else if ( leftPlain && !rightPlain ) {
 			// [plain][formatted] pair, open any annotations for right
-			for ( var j = 1; j < right.length; j++ ) {
+			for ( j = 1; j < right.length; j++ ) {
 				out += Content.renderAnnotation( 'open', right[j], stack );
 			}
 		} else if ( !leftPlain && !rightPlain ) {
 			// [formatted][formatted] pair, open/close any differences
-			for ( var j = 1; j < left.length; j++ ) {
+			for ( j = 1; j < left.length; j++ ) {
 				if ( right.indexOf( left[j] ) === -1 ) {
 					out += Content.renderAnnotation( 'close', left[j], stack );
 				}
 			}
-			for ( var j = 1; j < right.length; j++ ) {
+			for ( j = 1; j < right.length; j++ ) {
 				if ( left.indexOf( right[j] ) === -1 ) {
 					out += Content.renderAnnotation( 'open', right[j], stack );
 				}
@@ -498,4 +512,4 @@ Content.prototype.render = function( start, end ) {
 		left = right;		
 	}
 	return out;
-}
+};

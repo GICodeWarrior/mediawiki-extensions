@@ -4,12 +4,13 @@
 wiki.util = {
 	'str': {
 		'repeat': function( pattern, count ) {
-			if ( count < 1 ) return '';
+			if ( count < 1 ) { return ''; }
 			var result = '';
 			while ( count > 0 ) {
-				if ( count & 1 ) result += pattern;
-				count >>= 1, pattern += pattern;
-			};
+				if ( count & 1 ) { result += pattern; }
+				count >>= 1;
+				pattern += pattern;
+			}
 			return result;
 		}
 	},
@@ -24,8 +25,9 @@ wiki.util = {
 		},
 		'attr': function( attributes, prespace ) {
 			var attr = [];
+			var name;
 			if ( attributes ) {
-				for ( var name in attributes ) {
+				for ( name in attributes ) {
 					attr.push( name + '="' + attributes[name] + '"' );
 				}
 			}

@@ -21,6 +21,8 @@
  */
 function extend( dst, src ) {
 	var base = new src();
+	var i; // iterator
+
 	for ( i in base ) {
 		if ( typeof base[i] === 'function' && !( i in dst.prototype ) ) {
 			dst.prototype[i] = base[i];
@@ -94,7 +96,7 @@ Selection.prototype.normalize = function() {
 Selection.prototype.through = function() {
 	var through = [];
 	if ( this.from !== this.to && this.from.nextBlock() !== this.to ) {
-		var next = this.from.nextBlock()
+		var next = this.from.nextBlock();
 		while ( next && next !== this.to ) {
 			through.push( next );
 			next = next.nextBlock();
@@ -112,10 +114,10 @@ Content.prototype.setData = function( data ) {
 	if ( typeof data === 'string' ) {
 		this.type = 'string';
 	} else if ( $.isArray( data ) ) {
-		
+		// TODO
 	} else if ( $.isPlainObject( data ) ) {
 		if ( 'type' in data && '' ) {
-			
+			// TODO
 		}
 	}
 	this.data = data;

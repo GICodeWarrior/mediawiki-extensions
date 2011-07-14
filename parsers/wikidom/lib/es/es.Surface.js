@@ -89,8 +89,8 @@ Surface.prototype.getLocationFromEvent = function( e ) {
 			$block = $(this);
 		} );
 	}
-	var block = $block.data( 'block' )
-		blockPosition = $block.offset()
+	var block = $block.data( 'block' ),
+		blockPosition = $block.offset(),
 		mousePosition = new Position( e.pageX - blockPosition.left, e.pageY - blockPosition.top );
 	return new Location( block, block.getOffset( mousePosition ) );
 };
@@ -176,7 +176,7 @@ Surface.prototype.onKeyDown = function( e ) {
 			break;
 	}
 	return true;
-}
+};
 
 Surface.prototype.onKeyUp = function( e ) {
 	switch ( e.keyCode ) {
@@ -197,7 +197,7 @@ Surface.prototype.onKeyUp = function( e ) {
 			break;
 	}
 	return true;
-}
+};
 
 Surface.prototype.handleBackspace = function() {
 	var block = this.location.block,
@@ -211,7 +211,7 @@ Surface.prototype.handleBackspace = function() {
 	this.selection = new Selection();
 	this.drawSelection();
 	this.location = new Location( block, offset );
-}
+};
 
 Surface.prototype.handleDelete = function() {
 	var block = this.location.block,
@@ -265,6 +265,8 @@ Surface.prototype.onMouseUp = function( e ) {
  * Displays current selection behind document content.
  */
 Surface.prototype.drawSelection = function() {
+	var blockWidth;
+
 	if ( this.selection.from && this.selection.to ) {
 		this.selection.normalize();
 		var from = {
@@ -297,7 +299,7 @@ Surface.prototype.drawSelection = function() {
 				this.$rangeEnd.hide();
 			} else {
 				// Multiple line selection
-				var blockWidth = block.$.width();
+				blockWidth = block.$.width();
 				this.$rangeStart
 					.css( {
 						'top': blockOffset.top + from.position.top,
@@ -329,11 +331,11 @@ Surface.prototype.drawSelection = function() {
 			}
 		} else {
 			// Multiple block selection
-			var blockWidth = Math.max(
+			blockWidth = Math.max(
 					from.location.block.$.width(),
 					to.location.block.$.width()
-				)
-				fromBlockOffset = from.location.block.$.offset(),
+				);
+			var fromBlockOffset = from.location.block.$.offset(),
 				toBlockOffset = to.location.block.$.offset(),
 				blockLeft = Math.min( fromBlockOffset.left, toBlockOffset.left );
 			this.$rangeStart
@@ -526,6 +528,9 @@ Surface.prototype.render = function( offset, callback ) {
  * @param selection {Selection} Range to apply annotation to
  */
 Surface.prototype.annotateContent= function( method, annotation, selection ) {
+	var block;
+	var i;
+
 	if ( selection === undefined ) {
 		selection = this.selection;
 	}
@@ -542,8 +547,8 @@ Surface.prototype.annotateContent= function( method, annotation, selection ) {
 			} );
 		} else {
 			// Multiple block annotation
-			for ( var i = from.block.getIndex(), end = to.block.getIndex(); i <= end; i++ ) {
-				var block = this.doc.blocks[i];
+			for ( i = from.block.getIndex(), end = to.block.getIndex(); i <= end; i++ ) {
+				block = this.doc.blocks[i];
 				if ( block === from.block ) {
 					// From offset to length
 					block.annotateContent( method, annotation, from.offset, block.getLength() );
