@@ -25,6 +25,10 @@ $wgAutoloadClasses['MoodBarHooks'] = dirname(__FILE__).'/MoodBar.hooks.php';
 $wgHooks['BeforePageDisplay'][] = 'MoodBarHooks::onPageDisplay';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'MoodBarHooks::onLoadExtensionSchemaUpdates';
 
+// Special page
+$wgAutoloadClasses['SpecialMoodBar'] = dirname(__FILE__).'/SpecialMoodBar.php';
+$wgSpecialPages['MoodBar'] = 'SpecialMoodBar';
+
 // Internationalisation
 $wgExtensionMessagesFiles['MoodBar'] = dirname(__FILE__).'/MoodBar.i18n.php';
 
@@ -45,3 +49,5 @@ $wgResourceModules['ext.moodBar'] = $mbResourceTemplate + array(
 	),
 	'position' => 'top',
 );
+
+$wgGroupPermissions['moodbar']['moodbar-view'] = true;
