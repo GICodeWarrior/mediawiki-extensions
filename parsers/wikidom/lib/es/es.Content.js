@@ -116,7 +116,7 @@ Content.prototype.getLength = function() {
 Content.annotationRenderers = {
 	'template': {
 		'open': function( data ) {
-			return '<span class="editSurface-format-template">' + data.html;
+			return '<span class="editSurface-format-object">' + data.html;
 		},
 		'close': '</span>',
 	},

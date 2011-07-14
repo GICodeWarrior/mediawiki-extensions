@@ -69,10 +69,12 @@
 	display: none;
 }
 
-.editSurface-format-template {
-	background-color: rgba(0,0,0,0.125);
+.editSurface-format-object {
+	background-color: rgba(0,0,0,0.05);
 	border-radius: 0.25em;
+	margin: 1px;
 	padding: 0.25em 0;
+	cursor: default;
 }
 
 .editSurface-format-italic {
