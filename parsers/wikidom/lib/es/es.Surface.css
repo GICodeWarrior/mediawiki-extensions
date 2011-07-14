@@ -1,9 +1,12 @@
 .editSurface-input {
 	position: absolute;
 	z-index: -1;
+	opacity: 0;
 	color: white;
 	background-color: white;
 	border: none;
+	padding: 0;
+	margin: 0;
 }
 
 .editSurface-input:focus {
