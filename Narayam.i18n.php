@@ -1027,6 +1027,17 @@ $messages['sv'] = array(
 	'narayam-desc' => 'Gör det möjligt att lägga till egna inmatningsmetoder för inmatningsfält',
 );
 
+/** Tamil (தமிழ்)
+ * @author Sodabottle
+ */
+$messages['ta'] = array(
+	'narayam-toggle-ime' => 'தமிழில் எழுத',
+	'narayam-help-page' => 'விக்கிப்பீடியா:தமிழ்த் தட்டச்சு',
+	'narayam-checkbox-tooltip' => 'இக்கருவியைப் பயன்படுத்தி தமிழில் எழுதலாம்.',
+	'narayam-ta99' => 'தமிழ்99',
+	'narayam-ta' => 'எழுத்துப்பெயர்ப்பு',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  * @author రహ్మానుద్దీన్
