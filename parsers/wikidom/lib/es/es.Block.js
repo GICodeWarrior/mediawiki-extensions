@@ -1,5 +1,5 @@
 /**
- * 
+ * @extends {EventEmitter}
  * @returns {Block}
  */
 function Block() {

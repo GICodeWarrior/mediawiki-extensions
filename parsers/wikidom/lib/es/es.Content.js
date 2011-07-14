@@ -6,6 +6,7 @@
  * paired with offset annotation), especially when performing substring operations. Content can be
  * derived from or converted to one or more WikiDom line objects.
  * 
+ * @extends {EventEmitter}
  * @param content {Array} List of plain or annotated characters
  * @returns {Content}
  */

@@ -1,6 +1,7 @@
 /**
  * Renders and provides access to flowed text.
  * 
+ * @extends {EventEmitter}
  * @param $container {jQuery Selection} Element to render into
  * @returns {TextFlow}
  */

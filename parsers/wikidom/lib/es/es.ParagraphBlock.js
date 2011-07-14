@@ -1,5 +1,6 @@
 /**
  * 
+ * @extends {Block}
  * @param lines {Array} List of line objects
  * @returns {ParagraphBlock}
  */

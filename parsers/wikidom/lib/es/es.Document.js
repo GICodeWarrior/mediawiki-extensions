@@ -1,5 +1,6 @@
 /**
  * 
+ * @extends {EventEmitter}
  * @param blocks {Array} List of blocks
  * @returns {Document}
  */
