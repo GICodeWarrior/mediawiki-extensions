@@ -2786,6 +2786,7 @@ $messages['eo'] = array(
  * @author Jatrobat
  * @author Locos epraix
  * @author McDutchie
+ * @author Mor
  * @author Pertile
  * @author Sanbec
  * @author Translationista
@@ -2849,7 +2850,7 @@ o puedes desear <a href="$3">Agregar el stream</a>.',
 	'mv_error_stream_insert' => 'Fracasaste en insertar stream',
 	'mv_redirect_and_delete_reason' => 'Removido página de redirección',
 	'mv_remove_reason' => 'Razon para borrado:',
-	'mv_stream_delete_warrning' => "'''Remover este stream también removerá $1 {{PLURAL:$1|pieza|piezas}} de metadatos asociativos'''<br />",
+	'mv_stream_delete_warrning' => "'''Quitar este stream también quitará $1 {{PLURAL:$1|pieza|piezas}} de metadatos asociativos'''<br />",
 	'mv_label_stream_type' => 'Tipo de stream',
 	'mv_metavid_file' => 'Archivo existente en servidor',
 	'mv_metavid_live' => 'Configurar stream en vivo',
@@ -2912,7 +2913,7 @@ Saltar a visualización de flujo: $2',
 	'mv_edit_title' => 'Editar texto',
 	'mv_edit_adjust_title' => 'Editar texto y alineamiento de video',
 	'mv_remove' => 'eliminar',
-	'mv_remove_title' => 'remover este segmento de meta datos',
+	'mv_remove_title' => 'quitar este segmento de meta datos',
 	'mv_adjust' => 'ajustar',
 	'mv_adjust_submit' => 'Grabar ajuste',
 	'mv_adjust_title' => 'Ajustar tiempo de inicio y fin',
@@ -2926,7 +2927,7 @@ Saltar a visualización de flujo: $2',
 	'mv_edit_metadata' => 'Editar metadatos',
 	'mv_advanced_edit' => 'Edición avanzada',
 	'mv_basic_edit' => 'Edición básica',
-	'mv_remove_category' => 'Remover categoría',
+	'mv_remove_category' => 'Eliminar categoría',
 	'mv_existing_categories' => '{{PLURAL:$1|categoría|categorías}}:',
 	'mv_add_category' => 'Agregar una categorización',
 	'mv_basic_text_desc' => 'Descripción en texto (opcional)',
@@ -2968,7 +2969,7 @@ Saltar a visualización de flujo: $2',
 	'mv_category' => 'categoría',
 	'mv_search_no_results' => 'No hay coincidencias en medios',
 	'mv_media_matches' => 'Coincidencias en medios',
-	'mv_remove_filter' => 'remover filtro',
+	'mv_remove_filter' => 'quitar filtro',
 	'mv_advaced_search' => 'Búsqueda avanzada de medios',
 	'mv_expand_play' => 'Ampliar y jugar en línea',
 	'mv_play_inline' => 'Reproducir incrustado',
