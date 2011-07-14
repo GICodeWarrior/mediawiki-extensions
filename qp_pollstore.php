@@ -184,6 +184,8 @@ class qp_PollStore {
 	/// DB keys
 	var $pid = null;
 	var $last_uid = null;
+	# username is used for caching of setLastUser() method (which now may be called multiple times)
+	var $username = '';
 	/// common properties
 	var $mArticleId = null;
 	# unique id of poll, used for addressing, also with 'qp_' prefix as the fragment part of the link
@@ -205,6 +207,9 @@ class qp_PollStore {
 
 	# array of QuestionData instances (data from/to DB)
 	var $Questions = null;
+	# array of random indexes of Questions[] array (optional)
+	var $randomQuestions = false;
+
 	# poll processing state, read with getState()
 	#
 	# 'NA' - object just was created
@@ -673,10 +678,56 @@ class qp_PollStore {
 		}
 	}
 
+	function isUsedQuestion( $question_id ) {
+		return !is_array( $this->randomQuestions ) ||
+				in_array( $question_id, $this->randomQuestions, true );
+	}
+
+	function loadRandomQuestions( $username ) {
+		if ( is_null( $this->pid ) ) {
+			$this->setPid();
+		}
+		$this->setLastUser( $username );
+		$res = self::$db->select( 'qp_random_questions', 'question_id', array( 'uid' => $this->last_uid, 'pid' => $this->pid ), __METHOD__ );
+		$this->randomQuestions = array();
+		while ( $row = self::$db->fetchObject( $res ) ) {
+			$this->randomQuestions[] = intval( $row->question_id );
+		}
+		if ( count( $this->randomQuestions ) === 0 ) {
+			$this->randomQuestions = false;
+		}
+	}
+
+	function setRandomQuestions() {
+		if ( is_null( $this->pid ) || is_null( $this->last_uid ) ) {
+			throw new MWException( __METHOD__ . ' cannot be called when pid/uid was not set' );
+		}
+		if ( is_array( $this->randomQuestions ) ) {
+			$data = array();
+			foreach( $this->randomQuestions as $qidx ) {
+				$data[] = array( 'pid' => $this->pid, 'uid' => $this->last_uid, 'question_id' => $qidx );
+			}
+			$res = self::$db->replace( 'qp_random_questions',
+				'user_poll_question',
+				$data,
+				__METHOD__ . ':random questions seed update' );
+			return;
+		}
+		self::$db->delete( 'qp_random_questions',
+			array( 'pid'=>$this->pid ),
+			__METHOD__ . ':remove question random seed'
+		);
+	}
+
 	function setLastUser( $username, $store_new_user_to_db = true ) {
 		if ( $this->pid === null ) {
 			return;
 		}
+		# do no query DB for the same user more than once
+		if ( $this->username === $username ) {
+			return;
+		}
+		$this->username = $username;
 		$res = self::$db->select( 'qp_users','uid','name=' . self::$db->addQuotes( $username ), __METHOD__ );
 		$row = self::$db->fetchObject( $res );
 		if ( $row == false ) {
@@ -768,7 +819,7 @@ class qp_PollStore {
 			);
 		}
 	}
-	
+
 	private function setQuestionDesc() {
 		$insert = array();
 		foreach ( $this->Questions as $qkey => &$ques ) {

@@ -419,7 +419,7 @@ class qp_QuestionView extends qp_AbstractView {
 		$output_table[] = array( '__tag'=>'tbody', '__end'=>"\n", 0=>$this->renderTable() );
 		$tags = array( '__tag'=>'div', '__end'=>"\n", 'class'=>'question',
 			0=>array( '__tag'=>'div', '__end'=>"\n", 'class'=>'header',
-				0=>array( '__tag'=>'span', 'class'=>'questionId', 0=>$this->ctrl->mQuestionId )
+				0=>array( '__tag'=>'span', 'class'=>'questionId', 0=>$this->ctrl->usedId )
 			),
 			1=>array( '__tag'=>'div', 0=>$this->rtp( $this->ctrl->mCommonQuestion ) )
 		);

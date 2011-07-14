@@ -64,7 +64,8 @@ class qp_PollStatsView extends qp_AbstractView {
 		$write_row = array();
 		$write_col = array();
 		# render the body
-		foreach ( $this->ctrl->questions as &$question ) {
+		$this->ctrl->questions->reset();
+		while ( is_object( $question = $this->ctrl->questions->iterate() ) ) {
 			# render the question statistics only when showResuls isn't 0 (suppress stats)
 			if ( $question->view->showResults['type'] != 0 ) {
 				if ( $this->perRow > 1 ) {

@@ -78,3 +78,11 @@ CREATE TABLE `qp_users` (
   INDEX user_id (uid),
   INDEX username (name(64))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `qp_random_questions`;
+CREATE TABLE `qp_random_questions` (
+  `uid` int unsigned NOT NULL,
+  `pid` int unsigned NOT NULL,
+  `question_id` int unsigned NOT NULL,
+  PRIMARY KEY user_poll_question (uid,pid,question_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

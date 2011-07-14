@@ -6,6 +6,15 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 abstract class qp_AbstractQuestion {
 
+	# indicates whether current question is used or not;
+	# also provides sparce enumeration of questions (unused questions are not counted)
+	# 1..n when the question is active;
+	# false when the question is hidden (used by randomizer)
+	var $usedId = false;
+	# sequental number of question (starting from 1); matches to usedId
+	# when the collection of the questions is not sparce (was not randomized)
+	var $mQuestionId;
+
 	var $mState = ''; // current state of question parsing (no error)
 	# default type and subtype of the question; should always be properly initialized in derived $this->parseMainHeader();
 	var $mType = 'unknown';
@@ -34,7 +43,8 @@ abstract class qp_AbstractQuestion {
 	function __construct( qp_AbstractPoll $poll, qp_AbstractView $view, $questionId ) {
 		global $wgRequest;
 		$this->mRequest = &$wgRequest;
-		$this->mQuestionId = $questionId;
+		# the question collection is not sparce by default
+		$this->mQuestionId = $this->usedId = $questionId;
 		$this->mProposalPattern = '`^[^\|\!].*`u';
 		$this->mCategoryPattern 	= '`^\|(\n|[^\|].*\n)`u';
 		$view->setController( $this );

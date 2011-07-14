@@ -52,8 +52,9 @@ class qp_AbstractPoll {
 	static $sOrderId = 0; // order of polls on the page (used for sorting of the output)
 	static $sPrevPollIDs = array(); // used to check uniqueness of PollId on the page
 
-	# array of question objects associated with current poll
-	var $questions = array();
+	# collection of question objects associated with current poll
+	var $questions;
+
 	# current user name
 	var $username;
 

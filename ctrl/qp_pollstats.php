@@ -78,7 +78,7 @@ class qp_PollStats extends qp_AbstractPoll {
 	 * @return   boolean true - stop further processing, false - continue processing
 	 */
 	function parseInput( $input ) {
-		$this->questions = array();
+		$this->questions = new qp_QuestionCollection();
 		# question attributes split pattern
 		$splitPattern = '`\s*{|}\s*\n*`u';
 		# preg_split counts the matches starting from zero
@@ -103,19 +103,20 @@ class qp_PollStats extends qp_AbstractPoll {
 				# there cannot be type attribute of question in statistical display mode
 				$question->setState( 'error', wfMsg( 'qp_error_type_in_stats_mode', $type ) );
 			}
-			$this->questions[] = $question;
+			$this->questions->add( $question );
 		}
 		# analyze question headers
 		# check for showresults attribute
 		$questions_set = array();
-		foreach ( $this->questions as &$question ) {
+		$this->questions->reset();
+		while ( is_object( $question = $this->questions->iterate() ) ) {
 			if ( $question->view->hasShowResults() ) {
 				$questions_set[] = $question->mQuestionId;
 			}
 		}
 		# load the statistics for all/selective/none of questions
 		if ( count( $questions_set ) > 0 ) {
-			if ( count( $questions_set ) == count( $this->questions ) ) {
+			if ( count( $questions_set ) == $this->questions->totalCount() ) {
 				$this->pollStore->loadTotals();
 			} else {
 				$this->pollStore->loadTotals( $questions_set );
@@ -123,7 +124,8 @@ class qp_PollStats extends qp_AbstractPoll {
 			$this->pollStore->calculateStatistics();
 		}
 		# second pass: generate views
-		foreach ( $this->questions as &$question ) {
+		$this->questions->reset();
+		while ( is_object( $question = $this->questions->iterate() ) ) {
 			$this->parseStats( $question );
 		}
 		return false;
