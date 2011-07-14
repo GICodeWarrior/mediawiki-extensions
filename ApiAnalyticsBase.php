@@ -7,6 +7,8 @@ abstract class ApiAnalyticsBase extends ApiBase {
 	 */
 	protected $mDb;
 
+	protected $isCurrentlyNormalised = false;
+
 	public function __construct( ApiBase $query, $moduleName, $paramPrefix = '' ) {
 		parent::__construct( $query->getMain(), $moduleName, $paramPrefix );
 	}
@@ -36,7 +38,7 @@ abstract class ApiAnalyticsBase extends ApiBase {
 		$params = $this->extractRequestParams();
 
 		if ( $this->canBeNormalised() && $params['normalized'] ) {
-			$this->normaliseQueryParameters( $params );
+			$this->normaliseQueryParameters( true );
 		}
 		$query = $this->getQueryInfo();
 		$query['fields'] = $this->getQueryFields();
@@ -49,8 +51,8 @@ abstract class ApiAnalyticsBase extends ApiBase {
 		} else {
 			//add 1 month to end of date because of the way data is stored
 			$endMonth = date( "Y-m-d", strtotime( $params['endmonth'] . " +1 month" ) );
-			
-			$query['conds'][] = "date >= ". $db->addQuotes( $params['startmonth'] )
+
+			$query['conds'][] = "date >= " . $db->addQuotes( $params['startmonth'] )
 							. " AND date <= " . $db->addQuotes( $endMonth ) ;
 		}
 
@@ -235,8 +237,8 @@ abstract class ApiAnalyticsBase extends ApiBase {
 	 * @param $params array
 	 * @return  array
 	 */
-	public function normaliseQueryParameters( $params ) {
-		return $params;
+	public function normaliseQueryParameters( $normalise = false ) {
+		$this->isCurrentlyNormalised = $normalise;
 	}
 
 	/**
