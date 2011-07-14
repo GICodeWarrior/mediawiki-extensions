@@ -42,7 +42,7 @@ MWTreeSerializer.prototype.treeToSource = function(tree, callback) {
 			// A single-line paragraph.
 			src = subParseArray(tree.content) + '\n';
 			break;
-		case 'break':
+		case 'br':
 			src = '\n';
 			break;
 		case 'text':
