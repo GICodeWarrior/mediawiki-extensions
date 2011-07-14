@@ -10,6 +10,7 @@
  * @returns {Content}
  */
 function Content( content ) {
+	EventEmitter.call( this );
 	this.data = content || [];
 };
 
@@ -296,23 +297,28 @@ Content.prototype.slice = function( start, end ) {
  * 
  * Inserted content will inherit annotations from neighboring content.
  * 
- * @param start {Integer} Position to insert content at
- * @param insert {Array} Content data to insert
+ * @param offset {Integer} Position to insert content at
+ * @param content {Array} Content data to insert
  */
-Content.prototype.insert = function( start, insert ) {
+Content.prototype.insert = function( offset, content ) {
 	// TODO: Prefer to not take annotations from a neighbor that's a space character
-	var neighbor = this.data[Math.max( start - 1, 0 )];
+	var neighbor = this.data[Math.max( offset - 1, 0 )];
 	if ( $.isArray( neighbor ) ) {
 		var annotations = neighbor.slice( 1 );
 		var i;
-		for ( i = 0; i < insert.length; i++ ) {
-			if ( typeof insert[i] === 'string' ) {
-				insert[i] = [insert[i]];
+		for ( i = 0; i < content.length; i++ ) {
+			if ( typeof content[i] === 'string' ) {
+				content[i] = [content[i]];
 			}
-			insert[i] = insert[i].concat( annotations );
+			content[i] = content[i].concat( annotations );
 		}
 	}
-	Array.prototype.splice.apply( this.data, [start, 0].concat( insert ) );
+	Array.prototype.splice.apply( this.data, [offset, 0].concat( content ) );
+	this.emit( 'insert', {
+		'offset': offset,
+		'content': content
+	} );
+	this.emit( 'change', { 'type': 'insert' } );
 };
 
 /**
@@ -323,6 +329,11 @@ Content.prototype.insert = function( start, insert ) {
  */
 Content.prototype.remove = function( start, end ) {
 	this.data.splice( start, end - start );
+	this.emit( 'remove', {
+		'start': start,
+		'end': end
+	} );
+	this.emit( 'change', { 'type': 'remove' } );
 };
 
 /**
@@ -461,6 +472,13 @@ Content.prototype.annotate = function( method, annotation, start, end ) {
 			}
 		}
 	}
+	this.emit( 'annotate', {
+		'method': method,
+		'annotation': annotation,
+		'start': start,
+		'end': end
+	} );
+	this.emit( 'change', { 'type': 'annotate' } );
 };
 
 /**
@@ -513,3 +531,5 @@ Content.prototype.render = function( start, end ) {
 	}
 	return out;
 };
+
+extend( Content, EventEmitter );
