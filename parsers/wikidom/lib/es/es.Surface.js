@@ -109,37 +109,38 @@ Surface.prototype.onKeyDown = function( e ) {
 
 			if ( this.shiftDown && this.keyboardSelecting ) {
 				this.selection.to = this.location;
-				this.drawSelection();
+			} else {
+				this.selection = new Selection();
 			}
-
+			this.drawSelection();
 			break;
 		case 38: // Up arrow
 			this.moveCursorUp();
-
 			if ( this.shiftDown && this.keyboardSelecting ) {
 				this.selection.to = this.location;
-				this.drawSelection();
+			} else {
+				this.selection = new Selection();
 			}
-
+			this.drawSelection();
 			break;
 		case 39: // Right arrow
 			this.initialHorizontalCursorPosition = null;
 			this.moveCursorRight();
-
 			if ( this.shiftDown && this.keyboardSelecting ) {
 				this.selection.to = this.location;
-				this.drawSelection();
+			} else {
+				this.selection = new Selection();
 			}
-			
+			this.drawSelection();
 			break;
 		case 40: // Down arrow
 			this.moveCursorDown();
-
 			if ( this.shiftDown && this.keyboardSelecting ) {
 				this.selection.to = this.location;
-				this.drawSelection();
+			} else {
+				this.selection = new Selection();
 			}
-
+			this.drawSelection();
 			break;
 		case 8: // Backspace
 			this.initialHorizontalCursorPosition = null;

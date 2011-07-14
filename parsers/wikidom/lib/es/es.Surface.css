@@ -47,7 +47,8 @@
 	width: 0px;
 }
 
-.editSurface-line .editSurface-whitespace {
+.editSurface-whitespace {
+	display: inline-block;
 	color: #888888;
 	padding: 0 0.25em;
 }
