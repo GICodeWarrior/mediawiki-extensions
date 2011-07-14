@@ -1,5 +1,29 @@
 import sys
 from StringIO import StringIO
+from collections import deque
+
+class RecordingFileWrapper(FileWrapper):
+	
+	def __init__(self, fp, pre='', post='', record=10000):
+		self.history = deque(maxsize=record)
+		FileWrapper.__init__(self, fp, pre=pre, post=post)
+	
+	def read(self, bytes=sys.maxint):
+		outBytes = FileWrapper.read(self, bytes)
+		self.history.extend(outBytes)
+		return outBytes
+	
+	def readline(self):
+		outBytes = FileWrapper.readline(self)
+		self.history.extend(outBytes)
+		return outBytes
+	
+	def getHistory(self):
+		return ''.join(self.history)
+	
+
+
+	
 
 class FileWrapper:
 	
