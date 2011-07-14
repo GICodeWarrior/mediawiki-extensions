@@ -6,8 +6,8 @@ WikiDom is a document object model for Wikitext.
 
 * demos - A variety of demonstrative web pages
 * lib - Common dependencies
+* lib/wiki.js - WikiDom library
 * tests - QUnit tests
-* wikidom.js - WikiDom library
 
 == Status of components ==
 
@@ -34,6 +34,7 @@ a variety of objects.
 ; Item
 : A line of text and optionally a series of nested lists.
 
+
 === Blocks ===
 
 ; Paragraph
@@ -43,10 +44,35 @@ a variety of objects.
 ; Table
 : A series of rows, each a series of columns, which contain document objects.
 
+=== Representation ===
+Below is a naive representation for the above explanations.
+<pre>
+Document
+ |-> ParagraphBlock
+ |    |-> Line
+ |    |-> Line
+ |    \-> ...
+ |
+ |-> ListBlock
+ |    |-> Item
+ |    |-> Item
+ |    \-> ...
+ |
+ \-> Table
+      |-> Row
+      |    |-> Column
+      |    |     \-> Document
+      |    |-> Column
+      |    |     \-> Document
+      |    \-> ...
+      |-> Row
+      \-> ...
+</pre>
+
 == EditSurface ==
 
 EditSurface is a proof-of-concept for rendering a structured and formatted text editor. The document
-structure is from WikiDOM, and should be kept compatible as WikiDOM changes. 
+structure is from WikiDOM, and should be kept compatible as WikiDOM changes.
 
 === Design ===
 
@@ -61,8 +87,10 @@ a dialog or inspector.
 
 * Re-flow lines without deleting paragraph elements
 * Auto-update selection on resize
-* Handle keyboard input for moving cursor and making selection
-* Handle keyboard input for inserting and deleting
+* Handle keyboard input for:
+** moving cursor
+** making selection
+** inserting and deleting
 * Support multiple font styles in the same paragraph
 * Support "black-box" in-line elements, treat them as a single character
 * Add list editor
