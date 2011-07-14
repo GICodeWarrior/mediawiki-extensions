@@ -99,14 +99,17 @@ Surface.prototype.onKeyDown = function( e ) {
 	switch ( e.keyCode ) {
 		case 16: // Shift
 			this.shiftDown = true;
-			this.keyboardSelecting = true;
-			this.selection = new Selection( this.location );
-			this.drawSelection();
+			if ( !this.keyboardSelecting ) {
+				this.keyboardSelecting = true;
+				if ( !this.selection.to ) {
+					this.selection = new Selection( this.location );
+				}
+				this.drawSelection();
+			}
 			break;		
 		case 37: // Left arrow
 			this.initialHorizontalCursorPosition = null;
 			this.moveCursorLeft();
-
 			if ( this.shiftDown && this.keyboardSelecting ) {
 				this.selection.to = this.location;
 			} else {
@@ -238,6 +241,7 @@ Surface.prototype.onMouseMove = function( e ) {
 
 Surface.prototype.onMouseUp = function( e ) {
 	if ( e.button === 0 && this.selection.to ) {
+		this.location = this.selection.to;
 		this.drawSelection();
 		this.cursor.hide();
 	}
