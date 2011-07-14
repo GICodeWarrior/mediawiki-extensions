@@ -432,6 +432,7 @@ $messages['el'] = array(
 
 /** Spanish (Español)
  * @author Fitoschido
+ * @author Mor
  */
 $messages['es'] = array(
 	'toolbase-header-title' => 'Herramientas de X! (BETA)',
@@ -467,11 +468,11 @@ $messages['es'] = array(
 
 Para la lista de herramientas que están funcionando actualmente en este framework, ve la columna de la derecha.
 
-Puedes informar errores en <a href="$2">Google Code</a>.',
+Puedes informar de errores en <a href="$2">Google Code</a>.',
 	'toolbase-main-404' => 'Archivo no encontrado',
 	'toolbase-main-404-content' => '¡Vaya, no se encontró la página!
 
-Asegúrate que escribiste la URL correctamente.
+Asegúrate de que escribiste la URL correctamente.
 Si llegaste hasta aquí por medio de un enlace, por favor <a href="$1">informa del error</a>.
 </ul>',
 	'toolbase-form-wiki' => 'Wiki',
