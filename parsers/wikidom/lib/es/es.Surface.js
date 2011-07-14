@@ -529,6 +529,8 @@ Surface.prototype.annotateContent= function( annotation, selection ) {
 		selection = this.selection;
 	}
 	var surface = this;
+	var undefOffset = undefined;
+
 	if ( selection.from && selection.to ) {
 		selection.normalize();
 		var from = selection.start,
@@ -536,7 +538,7 @@ Surface.prototype.annotateContent= function( annotation, selection ) {
 		if ( from.block === to.block ) {
 			// Single block annotation
 			from.block.annotateContent( annotation, from.offset, to.offset );
-			from.block.renderContent( function() {
+			from.block.renderContent( undefOffset, function() {
 				surface.drawSelection();
 			} );
 		} else {
@@ -546,19 +548,19 @@ Surface.prototype.annotateContent= function( annotation, selection ) {
 				if ( block === from.block ) {
 					// From offset to length
 					block.annotateContent( annotation, from.offset, block.getLength() );
-					block.renderContent( function() {
+					block.renderContent( undefOffset, function() {
 						surface.drawSelection();
 					} );
 				} else if ( block === to.block ) {
 					// From 0 to offset
 					block.annotateContent( annotation, 0, to.offset );
-					block.renderContent( function() {
+					block.renderContent( undefOffset, function() {
 						surface.drawSelection();
 					} );
 				} else {
 					// Full coverage
 					block.annotateContent( annotation, 0, block.getLength() );
-					block.renderContent( function() {
+					block.renderContent( undefOffset, function() {
 						surface.drawSelection();
 					} );
 				}
