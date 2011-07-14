@@ -4,5 +4,6 @@ Batch-testing tools loading the parsing code into node.js, and going through a M
 
 Need npm modules:
 * jquery
-* libxmljs
+* diff
+* libxmljs (requires native compilation)
 
