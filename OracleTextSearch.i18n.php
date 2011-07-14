@@ -101,3 +101,11 @@ $messages['pt'] = array(
 	'oracletextsearch-desc' => 'Pesquisar o conteúdo e os metadados dos ficheiros usando a indexação Oracle Text',
 );
 
+/** Swedish (Svenska)
+ * @author WikiPhoenix
+ */
+$messages['sv'] = array(
+	'oracletextsearch' => 'OracleTextSearch',
+	'oracletextsearch-desc' => 'Sök innehåll/metadata för uppladdade filer med hjälp av Oracle Text-indexering',
+);
+
