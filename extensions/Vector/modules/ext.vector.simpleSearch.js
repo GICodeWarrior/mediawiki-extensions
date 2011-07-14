@@ -54,7 +54,7 @@ jQuery( document ).ready( function( $ ) {
 						},
 						dataType: 'json',
 						success: function( data ) {
-							if ( $.isArray( data ) !== -1 && 1 in data ) {
+							if ( $.isArray( data ) && 1 in data ) {
 								$this.suggestions( 'suggestions', data[1] );
 							}
 						}
