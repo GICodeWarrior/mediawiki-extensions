@@ -1058,6 +1058,7 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Imre
+ * @author Mor
  */
 $messages['es'] = array(
 	'tasks' => 'Tareas',
@@ -1074,7 +1075,7 @@ $messages['es'] = array(
 	'tasks_noone' => 'ninguno',
 	'tasks_assign_me' => 'Asignarme a mi mismo',
 	'tasks_assign_to' => 'Asignar a',
-	'tasks_unassign_me' => 'Remover mi asignamiento',
+	'tasks_unassign_me' => 'Quitar mi asignación',
 	'tasks_close' => 'Cerrar tarea',
 	'tasks_wontfix' => 'No se arreglará',
 	'tasks_delete' => 'Borrar',
