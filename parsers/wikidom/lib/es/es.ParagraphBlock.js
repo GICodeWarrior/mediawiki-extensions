@@ -11,7 +11,7 @@ function ParagraphBlock( lines ) {
 	this.flow = new TextFlow( this.$, this.content );
 }
 
-Block.prototype.getLength = function() {
+ParagraphBlock.prototype.getLength = function() {
 	return this.content.getLength();
 };
 
@@ -80,7 +80,7 @@ ParagraphBlock.prototype.getPosition = function( offset ) {
  * @param start {Integer} Offset to begin annotating from
  * @param end {Integer} Offset to stop annotating to
  */
-Block.prototype.annotateContent = function( method, annotation, start, end ) {
+ParagraphBlock.prototype.annotateContent = function( method, annotation, start, end ) {
 	this.content.annotate( method, annotation, start, end );
 };
 
