@@ -2,7 +2,7 @@ module( 'Wiki DOM Annotations' );
 
 var lines = [
 	{
-		"text": "This is a test paragraph!\n",
+		"text": "This is a test paragraph!",
 		"annotations": [
 			{
 				"type": "italic",
@@ -31,7 +31,7 @@ var lines = [
 		]
 	},
 	{
-		"text": "Paragraphs can have more than one line.\n",
+		"text": "Paragraphs can have more than one line.",
 		"annotations": [
 			{
 				"type": "italic",
@@ -65,7 +65,7 @@ test( 'Content.substring', function() {
 	);
 	equal(
 		content.substring( 39 ),
-		'n have more than one line.\n',
+		'n have more than one line.',
 		'Uses data length if end is not given'
 	);
 	equal(
@@ -75,18 +75,18 @@ test( 'Content.substring', function() {
 	);
 	equal(
 		content.substring( 39, 100000000000 ),
-		'n have more than one line.\n',
+		'n have more than one line.',
 		'Clamps out of range end arguments'
 	);
 	equal(
 		content.substring(),
-		'This is a test paragraph!\nParagraphs can have more than one line.\n',
+		'This is a test paragraph!\nParagraphs can have more than one line.',
 		'Called without arguments returns all text'
 	);
 } );
 
 test( 'Content.getLength', function() {
-	equals( content.getLength(), 66, 'Returns correct length' );
+	equals( content.getLength(), 65, 'Returns correct length' );
 } )
 
 test( 'Content.slice', function() {
@@ -157,8 +157,7 @@ test( 'Content.slice', function() {
 			"i",
 			"n",
 			"e",
-			".",
-			"\n"
+			"."
 		],
 		'Called without arguments returns all data'
 	);
