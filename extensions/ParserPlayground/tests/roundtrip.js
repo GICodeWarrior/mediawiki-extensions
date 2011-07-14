@@ -1,4 +1,5 @@
 var fs = require('fs'),
+	jsDiff = require('diff'),
 	DumpReader = require('./dumpReader.js').DumpReader;
 
 // Fetch up some of our wacky parser bits...
@@ -39,6 +40,8 @@ function runTests() {
 			return true;
 		} else {
 			console.log('MISMATCH: ', msg);
+			var patch = jsDiff.createPatch('wikitext.txt', a, b, 'before', 'after');
+			console.log(patch);
 			return false;
 		}
 	}
