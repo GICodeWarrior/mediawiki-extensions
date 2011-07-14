@@ -76,3 +76,7 @@ PegParser.prototype.initSource = function(callback) {
 		}
 	}
 };
+
+if (typeof module == "object") {
+	module.exports.PegParser = PegParser;
+}
