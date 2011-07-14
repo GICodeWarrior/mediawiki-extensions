@@ -166,6 +166,8 @@ Surface.prototype.onKeyDown = function( e ) {
 					var location = surface.getLocation();
 					location.block.insertContent( location.offset, val.split(''));
 					location.offset += val.length;
+					surface.selection = new Selection();
+					surface.drawSelection();
 				}
 			}, 10 );
 			break;
@@ -197,7 +199,8 @@ Surface.prototype.handleBackspace = function() {
 		offset--;
 		this.cursor.show( block.flow.getPosition( offset ), block.$.offset() );
 	}
-	
+	this.selection = new Selection();
+	this.drawSelection();
 	this.location = new Location( block, offset );
 }
 
@@ -209,7 +212,8 @@ Surface.prototype.handleDelete = function() {
 		block.deleteContent( offset, offset + 1);
 		this.cursor.show( block.flow.getPosition( offset ), block.$.offset() );
 	}
-	
+	this.selection = new Selection();
+	this.drawSelection();
 	this.location = new Location( block, offset );
 };
 
