@@ -9,7 +9,6 @@ function Surface( $container, doc ) {
 	
 	this.$ = $container.addClass( 'editSurface' );
 	this.doc = doc;
-	this.rendered = false;
 	this.location = null;
 	this.selection = new Selection();
 	this.mouseSelecting = false;
@@ -35,42 +34,44 @@ function Surface( $container, doc ) {
 	this.$.append( this.cursor.$ );
 	
 	// Hidden input
+	var $document = $(document);
 	this.$input = $( '<input class="editSurface-input" />' )
 		.prependTo( this.$ )
 		.bind({
 			'focus' : function() {
 				$(document).bind({
-					'mousemove.es' : function(e) {
+					'mousemove.editSurface' : function(e) {
 						return surface.onMouseMove( e );
 					},
-					'mouseup.es' : function(e) {
+					'mouseup.editSurface' : function(e) {
 						return surface.onMouseUp( e );
 					},
-					'keydown.es' : function( e ) {
+					'keydown.editSurface' : function( e ) {
 						return surface.onKeyDown( e );			
 					},
-					'keyup.es' : function( e ) {
+					'keyup.editSurface' : function( e ) {
 						return surface.onKeyUp( e );			
 					},
 				});		
 			},
 			'blur': function( e ) {
-				$(document).unbind('mousemove.es');
-				$(document).unbind('mouseup.es');			
-				$(document).unbind('keydown.es');
-				$(document).unbind('keyup.es');			
+				$document.unbind('.editSurface');
 				surface.cursor.hide();
 			}
 		});
-
+	
 	$(window).resize( function() {
-		surface.render( 0, function() {
-			surface.drawSelection();
-		} );
+		document.updateBlocks();
+	} );
+	
+	this.doc.on( 'update', function() {
+		surface.drawSelection();
+		// TODO: Update the cursor position
 	} );
 	
 	// First render
-	this.render();
+	this.$.append( this.doc.$ );
+	this.doc.renderBlocks();
 }
 
 Surface.prototype.getLocationFromEvent = function( e ) {
@@ -504,21 +505,6 @@ Surface.prototype.moveCursorLeft = function() {
 };
 
 /**
- * Updates the rendered view.
- * 
- * @param offset Location: Where to start re-flowing from (optional)
- */
-Surface.prototype.render = function( offset, callback ) {
-	if ( !this.rendered ) {
-		this.rendered = true;
-		this.$.append( this.doc.$ );
-		this.doc.renderBlocks( offset, callback );
-	} else {
-		this.doc.updateBlocks( offset, callback );
-	}
-};
-
-/**
  * Applies an annotation to a given selection.
  * 
  * If a selection argument is not provided, the current selection will be annotated.
@@ -542,9 +528,6 @@ Surface.prototype.annotateContent= function( method, annotation, selection ) {
 		if ( from.block === to.block ) {
 			// Single block annotation
 			from.block.annotateContent( method, annotation, from.offset, to.offset );
-			from.block.renderContent( from.offset, function() {
-				surface.drawSelection();
-			} );
 		} else {
 			// Multiple block annotation
 			for ( i = from.block.getIndex(), end = to.block.getIndex(); i <= end; i++ ) {
@@ -552,21 +535,12 @@ Surface.prototype.annotateContent= function( method, annotation, selection ) {
 				if ( block === from.block ) {
 					// From offset to length
 					block.annotateContent( method, annotation, from.offset, block.getLength() );
-					block.renderContent( from.offset, function() {
-						surface.drawSelection();
-					} );
 				} else if ( block === to.block ) {
 					// From 0 to offset
 					block.annotateContent( method, annotation, 0, to.offset );
-					block.renderContent( 0, function() {
-						surface.drawSelection();
-					} );
 				} else {
 					// Full coverage
 					block.annotateContent( method, annotation, 0, block.getLength() );
-					block.renderContent( 0, function() {
-						surface.drawSelection();
-					} );
 				}
 			}
 		}

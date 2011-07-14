@@ -3,6 +3,7 @@
  * @returns {Block}
  */
 function Block() {
+	EventEmitter.call( this );
 	this.document = null;
 }
 
@@ -106,3 +107,5 @@ Block.prototype.getPosition = function( offset ) {
 Block.prototype.annotateContent = function( method, annotation, start, end ) {
 	throw 'Block.annotateContent not implemented in this subclass.';
 };
+
+extend( Block, EventEmitter );

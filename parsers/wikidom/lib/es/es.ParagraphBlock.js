@@ -9,6 +9,10 @@ function ParagraphBlock( lines ) {
 	this.$ = $( '<div class="editSurface-block editSurface-paragraph"></div>' )
 		.data( 'block', this );
 	this.flow = new TextFlow( this.$, this.content );
+	var block = this;
+	this.flow.on( 'render', function() {
+		block.emit( 'update' );
+	} );
 }
 
 ParagraphBlock.prototype.getLength = function() {
@@ -48,8 +52,8 @@ ParagraphBlock.prototype.deleteContent = function( start, end ) {
  * 
  * @param $container {jQuery Selection} Container to render into
  */
-ParagraphBlock.prototype.renderContent = function( offset, callback ) {
-	this.flow.render( offset, callback );
+ParagraphBlock.prototype.renderContent = function( offset ) {
+	this.flow.render( offset );
 };
 
 /**

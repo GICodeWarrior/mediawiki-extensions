@@ -5,6 +5,7 @@
  * @returns {TextFlow}
  */
 function TextFlow( $container, content ) {
+	EventEmitter.call( this );
 	this.$ = $container;
 	this.content = content || new Content();
 	this.boundaries = [];
@@ -13,6 +14,22 @@ function TextFlow( $container, content ) {
 	this.boundaryTest = /([ \-\t\r\n\f])/g;
 	this.widthCache = {};
 	this.renderState = {};
+	
+	var flow = this;
+	this.content.on( 'change', function() {
+		flow.scanBoundaries();
+	} );
+	this.content.on( 'insert', function( args ) {
+		flow.render( args.offset );
+	} );
+	this.content.on( 'remove', function( args ) {
+		flow.render( args.start );
+	} );
+	this.content.on( 'annotate', function( args ) {
+		flow.render( args.start );
+	} );
+	this.scanBoundaries();
+	this.render();
 }
 
 /**
@@ -225,9 +242,7 @@ TextFlow.prototype.renderIteration = function() {
 			.nextAll()
 			.remove();
 		rs.timeout = undefined;
-		if ( $.isFunction( rs.callback ) ) {
-			rs.callback();
-		}
+		this.emit( 'render' );
 	} else {
 		rs.ruler.innerHTML = '';
 		var flow = this;
@@ -249,7 +264,7 @@ TextFlow.prototype.renderIteration = function() {
  * 
  * @param offset {Integer} Offset to re-render from, if possible (not yet implemented)
  */
-TextFlow.prototype.render = function( offset, callback ) {
+TextFlow.prototype.render = function( offset ) {
 	var rs = this.renderState;
 	
 	// Stop iterating from last render
@@ -260,8 +275,6 @@ TextFlow.prototype.render = function( offset, callback ) {
 	}
 	
 	this.widthCache = {};
-	
-	this.scanBoundaries();
 	
 	/*
 	 * Container measurement
@@ -293,7 +306,6 @@ TextFlow.prototype.render = function( offset, callback ) {
 	rs.wordCount = this.boundaries.length;
 	rs.ruler = rs.$ruler.addClass('editSurface-ruler')[0];
 	rs.iterationLimit = 3;
-	rs.callback = callback;
 	
 	this.renderIteration();
 };
@@ -424,3 +436,5 @@ TextFlow.prototype.fitCharacters = function( start, end, ruler, width ) {
 	} while ( start < end );
 	return { 'end': start, 'width': lineWidth };
 };
+
+extend( TextFlow, EventEmitter );

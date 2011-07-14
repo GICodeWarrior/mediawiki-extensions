@@ -4,6 +4,7 @@
  * @returns {Document}
  */
 function Document( blocks ) {
+	EventEmitter.call( this );
 	this.blocks = [];
 	var i;
 	for( i = 0; i < blocks.length; i++ ) {
@@ -39,6 +40,9 @@ Document.prototype.lastBlock = function() {
  */
 Document.prototype.appendBlock = function( block ) {
 	block.document = this;
+	block.on( 'update', function() {
+		block.document.emit( 'update' );
+	} );
 	this.blocks.push( block );
 };
 
@@ -49,6 +53,9 @@ Document.prototype.appendBlock = function( block ) {
  */
 Document.prototype.prependBlock = function( block ) {
 	block.document = this;
+	block.on( 'update', function() {
+		block.document.emit( 'update' );
+	} );
 	this.blocks.unshift( block );
 };
 
@@ -60,6 +67,9 @@ Document.prototype.prependBlock = function( block ) {
  */
 Document.prototype.insertBlockBefore = function( block, before ) {
 	block.document = this;
+	block.on( 'update', function() {
+		block.document.emit( 'update' );
+	} );
 	if ( before ) {
 		this.blocks.splice( before.getIndex(), 0, block );
 	} else {
@@ -73,6 +83,9 @@ Document.prototype.insertBlockBefore = function( block, before ) {
  */
 Document.prototype.insertBlockAfter = function( block, after ) {
 	block.document = this;
+	block.on( 'update', function() {
+		block.document.emit( 'update' );
+	} );
 	if ( after ) {
 		this.blocks.splice( after.getIndex() + 1, 0, block );
 	} else {
@@ -86,22 +99,23 @@ Document.prototype.insertBlockAfter = function( block, after ) {
  * @param {Block} Block to remove
  */
 Document.prototype.removeBlock = function( block ) {
+	block.removeAllListeners( 'update' );
 	this.blocks.splice( block.getIndex(), 1 );
 	block.document = null;
 };
 
-Document.prototype.renderBlocks = function( offset, callback ) {
+Document.prototype.renderBlocks = function( offset ) {
 	// Remember width, to avoid updates when without width changes
 	this.width = this.$.innerWidth();
 	// Render blocks
 	var i;
 	for ( i = 0; i < this.blocks.length; i++ ) {
 		this.$.append( this.blocks[i].$ );
-		this.blocks[i].renderContent( offset, callback );
+		this.blocks[i].renderContent( offset );
 	}
 };
 
-Document.prototype.updateBlocks = function( offset, callback ) {
+Document.prototype.updateBlocks = function( offset ) {
 	// Bypass rendering when width has not changed
 	var width = this.$.innerWidth();
 	if ( this.width === width ) {
@@ -111,6 +125,8 @@ Document.prototype.updateBlocks = function( offset, callback ) {
 	// Render blocks
 	var doc;
 	this.$.children( '.editSurface-block' ).each( function( i ) {
-		$(this).data( 'block' ).renderContent( offset, callback );
+		$(this).data( 'block' ).renderContent( offset );
 	} );
 };
+
+extend( Document, EventEmitter );
