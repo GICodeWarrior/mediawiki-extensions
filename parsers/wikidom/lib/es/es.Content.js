@@ -13,6 +13,60 @@ function Content( content ) {
 	this.data = content || [];
 };
 
+/* Static Members */
+
+/**
+ * List of annotation rendering implementations.
+ * 
+ * Each supported annotation renderer must have an open and close property, each either a string or
+ * a function which accepts a data argument.
+ */
+Content.annotationRenderers = {
+	'template': {
+		'open': function( data ) {
+			return '<span class="editSurface-format-object">' + data.html;
+		},
+		'close': '</span>',
+	},
+	'bold': {
+		'open': '<span class="editSurface-format-bold">',
+		'close': '</span>',
+	},
+	'italic': {
+		'open': '<span class="editSurface-format-italic">',
+		'close': '</span>',
+	},
+	'size': {
+		'open': function( data ) {
+			return '<span class="editSurface-format-' + data.type + '">';
+		},
+		'close': '</span>',
+	},
+	'script': {
+		'open': function( data ) {
+			return '<span class="editSurface-format-' + data.type + '">';
+		},
+		'close': '</span>',
+	},
+	'link': {
+		'open': function( data ) {
+			return '<span class="editSurface-format-link" data-href="' + data.href + '">';
+		},
+		'close': '</span>'
+	}
+};
+
+Content.htmlCharacters = {
+	'&': '&amp;',
+	'<': '&lt;',
+	'>': '&gt;',
+	'\'': '&#039;',
+	'"': '&quot;',
+	' ': '&nbsp;',
+	'\n': '<span class="editSurface-whitespace">&#182;</span>',
+	'\t': '<span class="editSurface-whitespace">&#8702;</span>'
+};
+
 /* Static Methods */
 
 /**
@@ -126,93 +180,16 @@ Content.newFromLines = function( lines ) {
 };
 
 /**
- * Gets plain text version of the content within a specific range.
+ * Gets a rendered opening or closing of an annotation.
  * 
- * @param start {Integer} Optional beginning of range, if omitted range will begin at 0
- * @param end {Integer} Optional end of range, if omitted range will end a this.data.length
- * @return {String} Plain text within given range
+ * Tag nesting is handled using a stack, which keeps track of what is currently open. A common stack
+ * argument should be used while rendering content.
+ * 
+ * @param bias {String} Which side of the annotation to render, either "open" or "close"
+ * @param annotation {Object} Annotation to render
+ * @param stack {Array} List of currently open annotations
+ * @return {String} Rendered annotation
  */
-Content.prototype.substring = function( start, end ) {
-	// Wrap values
-	start = Math.max( 0, start || 0 );
-	if ( end === undefined ) {
-		end = this.data.length;
-	} else {
-		end = Math.min( this.data.length, end )
-	}
-	// Copy characters
-	var text = '';
-	for ( var i = start; i < end; i++ ) {
-		// If not using in IE6 or IE7 (which do not support array access for strings) use this..
-		// text += this.data[i][0];
-		// Otherwise use this...
-		text += typeof this.data[i] === 'string' ? this.data[i] : this.data[i][0];
-	}
-	return text;
-};
-
-Content.prototype.slice = function( start, end ) {
-	return new Content( this.data.slice( start, end ) );
-};
-
-Content.prototype.insert = function( start, insert ) {
-	// TODO: Prefer to not take annotations from a neighbor that's a space character
-	var neighbor = this.data[Math.max( start - 1, 0 )];
-	if ( $.isArray( neighbor ) ) {
-		var annotations = neighbor.slice( 1 );
-		for ( var i = 0; i < insert.length; i++ ) {
-			if ( typeof insert[i] === 'string' ) {
-				insert[i] = [insert[i]];
-			}
-			insert[i] = insert[i].concat( annotations );
-		}
-	}
-	Array.prototype.splice.apply( this.data, [start, 0].concat( insert ) )
-};
-
-Content.prototype.remove = function( start, end ) {
-	this.data.splice( start, end - start );
-};
-
-Content.prototype.getLength = function() {
-	return this.data.length; 
-};
-
-Content.annotationRenderers = {
-	'template': {
-		'open': function( data ) {
-			return '<span class="editSurface-format-object">' + data.html;
-		},
-		'close': '</span>',
-	},
-	'bold': {
-		'open': '<span class="editSurface-format-bold">',
-		'close': '</span>',
-	},
-	'italic': {
-		'open': '<span class="editSurface-format-italic">',
-		'close': '</span>',
-	},
-	'size': {
-		'open': function( data ) {
-			return '<span class="editSurface-format-' + data.type + '">';
-		},
-		'close': '</span>',
-	},
-	'script': {
-		'open': function( data ) {
-			return '<span class="editSurface-format-' + data.type + '">';
-		},
-		'close': '</span>',
-	},
-	'link': {
-		'open': function( data ) {
-			return '<span class="editSurface-format-link" data-href="' + data.href + '">';
-		},
-		'close': '</span>'
-	}
-};
-
 Content.renderAnnotation = function( bias, annotation, stack ) {
 	var renderers = Content.annotationRenderers,
 		type = annotation.type,
@@ -263,6 +240,103 @@ Content.renderAnnotation = function( bias, annotation, stack ) {
 	return out;
 };
 
+/* Methods */
+
+/**
+ * Gets plain text version of the content within a specific range.
+ * 
+ * Range arguments (start and end) are clamped if out of range.
+ * 
+ * @param start {Integer} Optional beginning of range, if omitted range will begin at 0
+ * @param end {Integer} Optional end of range, if omitted range will end a this.data.length
+ * @return {String} Plain text within given range
+ */
+Content.prototype.substring = function( start, end ) {
+	// Wrap values
+	start = Math.max( 0, start || 0 );
+	if ( end === undefined ) {
+		end = this.data.length;
+	} else {
+		end = Math.min( this.data.length, end )
+	}
+	// Copy characters
+	var text = '';
+	for ( var i = start; i < end; i++ ) {
+		// If not using in IE6 or IE7 (which do not support array access for strings) use this..
+		// text += this.data[i][0];
+		// Otherwise use this...
+		text += typeof this.data[i] === 'string' ? this.data[i] : this.data[i][0];
+	}
+	return text;
+};
+
+/**
+ * Gets a new Content object containing content data within a specific range.
+ * 
+ * Range arguments (start and end) are clamped if out of range.
+ * 
+ * @param start {Integer} Optional beginning of range, if omitted range will begin at 0
+ * @param end {Integer} Optional end of range, if omitted range will end a this.data.length
+ * @return {Content} New content object
+ */
+Content.prototype.slice = function( start, end ) {
+	return new Content( this.data.slice( start, end ) );
+};
+
+/**
+ * Inserts content data at a specific position.
+ * 
+ * Inserted content will inherit annotations from neighboring content.
+ * 
+ * @param start {Integer} Position to insert content at
+ * @param insert {Array} Content data to insert
+ */
+Content.prototype.insert = function( start, insert ) {
+	// TODO: Prefer to not take annotations from a neighbor that's a space character
+	var neighbor = this.data[Math.max( start - 1, 0 )];
+	if ( $.isArray( neighbor ) ) {
+		var annotations = neighbor.slice( 1 );
+		for ( var i = 0; i < insert.length; i++ ) {
+			if ( typeof insert[i] === 'string' ) {
+				insert[i] = [insert[i]];
+			}
+			insert[i] = insert[i].concat( annotations );
+		}
+	}
+	Array.prototype.splice.apply( this.data, [start, 0].concat( insert ) )
+};
+
+/**
+ * Removes content data within a specific range.
+ * 
+ * @param start {Integer} Beginning of range
+ * @param end {Integer} End of range
+ */
+Content.prototype.remove = function( start, end ) {
+	this.data.splice( start, end - start );
+};
+
+/**
+ * Gets the length of the content data.
+ * 
+ * @return {Integer} Length of content data
+ */
+Content.prototype.getLength = function() {
+	return this.data.length; 
+};
+
+/**
+ * Gets a list of indexes within the content data which use a given annotation.
+ * 
+ * Strict coverage may be used to compare not only annotation types, but also their data. Since new
+ * line characters are never annotated, they are always considered covered.
+ * 
+ * @param start {Integer} Beginning of range
+ * @param end {Integer} End of range
+ * @param annotation {Object} Annotation to compare with
+ * @param strict {Boolean} Optionally compare annotation data as well as type
+ * @return {Array} List of indexes of covered characters within content data
+ */
 Content.prototype.coverageOfAnnotation = function( start, end, annotation, strict ) {
 	var coverage = [];
 	for ( var i = start; i < end; i++ ) {
@@ -282,16 +356,27 @@ Content.prototype.coverageOfAnnotation = function( start, end, annotation, stric
 	return coverage;
 };
 
+/**
+ * Gets the first index within an annotated character that matches a given annotation.
+ * 
+ * Strict coverage may be used to compare not only annotation types, but also their data.
+ * 
+ * @param offset {Integer} Index of character within content data to find annotation within
+ * @param annotation {Object} Annotation to compare with
+ * @param strict {Boolean} Optionally compare annotation data as well as type
+ */
 Content.prototype.indexOfAnnotation = function( offset, annotation, strict ) {
 	var annotatedCharacter = this.data[offset];
-	for ( var i = 1; i < this.data[offset].length; i++ ) {
-		if ( annotatedCharacter[i].type === annotation.type ) {
-			if ( strict ) {
-				if ( Content.compareObjects( annotatedCharacter[i].data, annotation.data ) ) {
+	if ( typeof annotatedCharacter !== 'string' ) {
+		for ( var i = 1; i < this.data[offset].length; i++ ) {
+			if ( annotatedCharacter[i].type === annotation.type ) {
+				if ( strict ) {
+					if ( Content.compareObjects( annotatedCharacter[i].data, annotation.data ) ) {
+						return i;
+					}
+				} else {
 					return i;
 				}
-			} else {
-				return i;
 			}
 		}
 	}
@@ -299,18 +384,22 @@ Content.prototype.indexOfAnnotation = function( offset, annotation, strict ) {
 };
 
 /**
- * Applies an annotation to a given range.
+ * Applies an annotation to content data within a given range.
  * 
- * If a range arguments are not provided, all content will be annotated.
+ * If a range arguments are not provided, all content will be annotated. New line characters are
+ * never annotated. The add method will replace and the remove method will delete any existing
+ * annotations with the same type as the annotation argument, regardless of their data properties.
+ * The toggle method will use add if any of the content within the range is not already covered by
+ * the annotation, or remove if all of it is.
  * 
+ * @param method {String} Way to apply annotation ("toggle", "add" or "remove")
  * @param annotation {Object} Annotation to apply
  * @param start {Integer} Offset to begin annotating from
  * @param end {Integer} Offset to stop annotating to
  */
-Content.prototype.annotate = function( annotation, start, end ) {
+Content.prototype.annotate = function( method, annotation, start, end ) {
 	start = Math.max( start, 0 );
 	end = Math.min( end, this.data.length );
-	method = annotation.method;
 	if ( method === 'toggle' ) {
 		var coverage = this.coverageOfAnnotation( start, end, annotation, false );
 		if ( coverage.length === end - start ) {
@@ -361,17 +450,13 @@ Content.prototype.annotate = function( annotation, start, end ) {
 	}
 };
 
-Content.htmlCharacters = {
-	'&': '&amp;',
-	'<': '&lt;',
-	'>': '&gt;',
-	'\'': '&#039;',
-	'"': '&quot;',
-	' ': '&nbsp;',
-	'\n': '<span class="editSurface-whitespace">&#182;</span>',
-	'\t': '<span class="editSurface-whitespace">&#8702;</span>'
-};
-
+/**
+ * Gets an HTML rendering of a range of content data.
+ * 
+ * @param start {Integer} Beginning of range
+ * @param end {Integer} End of range
+ * @param {String} Rendered HTML of content data
+ */
 Content.prototype.render = function( start, end ) {
 	if ( start || end ) {
 		return this.slice( start, end ).render();
@@ -412,6 +497,5 @@ Content.prototype.render = function( start, end ) {
 		out += right[0] in Content.htmlCharacters ? Content.htmlCharacters[right[0]] : right[0];
 		left = right;		
 	}
-	
 	return out;
 }

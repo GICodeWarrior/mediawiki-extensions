@@ -107,65 +107,44 @@
 				var surface = new Surface( $('#es-editor'), doc );
 				
 				$( '#es-toolbar-bold' ).click( function() {
-					surface.annotateContent( {
-						'method': 'toggle',
-						'type': 'bold'
+					surface.annotateContent( 'toggle', { 'type': 'bold'
 					} );
 				} );
 				$( '#es-toolbar-italic' ).click( function() {
-					surface.annotateContent( {
-						'method': 'toggle',
-						'type': 'italic'
-					} );
+					surface.annotateContent( 'toggle', { 'type': 'italic' } );
 				} );
 				$( '#es-toolbar-small' ).click( function() {
-					surface.annotateContent( {
-						'method': 'toggle',
+					surface.annotateContent( 'toggle', {
 						'type': 'size',
-						'data': {
-							'type': 'small'
-						}
+						'data': { 'type': 'small' }
 					} );
 				} );
 				$( '#es-toolbar-big' ).click( function() {
-					surface.annotateContent( {
-						'method': 'toggle',
+					surface.annotateContent( 'toggle', {
 						'type': 'size',
-						'data': {
-							'type': 'big'
-						}
+						'data': { 'type': 'big' }
 					} );
 				} );
 				$( '#es-toolbar-sub' ).click( function() {
-					surface.annotateContent( {
-						'method': 'toggle',
+					surface.annotateContent( 'toggle', {
 						'type': 'script',
-						'data': {
-							'type': 'sub'
-						}
+						'data': { 'type': 'sub' }
 					} );
 				} );
 				$( '#es-toolbar-super' ).click( function() {
-					surface.annotateContent( {
-						'method': 'toggle',
+					surface.annotateContent( 'toggle', {
 						'type': 'script',
-						'data': {
-							'type': 'super'
-						}
+						'data': { 'type': 'super' }
 					} );
 				} );
 				$( '#es-toolbar-link' ).click( function() {
-					surface.annotateContent( {
-						'method': 'toggle',
+					surface.annotateContent( 'toggle', {
 						'type': 'link',
 						'data': { 'href': '#' }
 					} );
 				} );
 				$( '#es-toolbar-clear' ).click( function() {
-					surface.annotateContent( {
-						'method': 'remove',
-						'type': 'all'
-					} );
+					surface.annotateContent( 'remove', { 'type': 'all' } );
 				} );
 			} );
 		</script>

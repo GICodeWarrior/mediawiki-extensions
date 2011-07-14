@@ -521,10 +521,11 @@ Surface.prototype.render = function( offset, callback ) {
  * 
  * If a selection argument is not provided, the current selection will be annotated.
  * 
+ * @param method {String} Way to apply annotation ("toggle", "add" or "remove")
  * @param annotation {Object} Annotation to apply
  * @param selection {Selection} Range to apply annotation to
  */
-Surface.prototype.annotateContent= function( annotation, selection ) {
+Surface.prototype.annotateContent= function( method, annotation, selection ) {
 	if ( selection === undefined ) {
 		selection = this.selection;
 	}
@@ -535,7 +536,7 @@ Surface.prototype.annotateContent= function( annotation, selection ) {
 			to = selection.end;
 		if ( from.block === to.block ) {
 			// Single block annotation
-			from.block.annotateContent( annotation, from.offset, to.offset );
+			from.block.annotateContent( method, annotation, from.offset, to.offset );
 			from.block.renderContent( from.offset, function() {
 				surface.drawSelection();
 			} );
@@ -545,19 +546,19 @@ Surface.prototype.annotateContent= function( annotation, selection ) {
 				var block = this.doc.blocks[i];
 				if ( block === from.block ) {
 					// From offset to length
-					block.annotateContent( annotation, from.offset, block.getLength() );
+					block.annotateContent( method, annotation, from.offset, block.getLength() );
 					block.renderContent( from.offset, function() {
 						surface.drawSelection();
 					} );
 				} else if ( block === to.block ) {
 					// From 0 to offset
-					block.annotateContent( annotation, 0, to.offset );
+					block.annotateContent( method, annotation, 0, to.offset );
 					block.renderContent( 0, function() {
 						surface.drawSelection();
 					} );
 				} else {
 					// Full coverage
-					block.annotateContent( annotation, 0, block.getLength() );
+					block.annotateContent( method, annotation, 0, block.getLength() );
 					block.renderContent( 0, function() {
 						surface.drawSelection();
 					} );

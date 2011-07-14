@@ -98,10 +98,11 @@ Block.prototype.getPosition = function( offset ) {
  * 
  * If a range arguments are not provided, all content will be annotated.
  * 
+ * @param method {String} Way to apply annotation ("toggle", "add" or "remove")
  * @param annotation {Object} Annotation to apply
  * @param start {Integer} Offset to begin annotating from
  * @param end {Integer} Offset to stop annotating to
  */
-Block.prototype.annotateContent = function( annotation, start, end ) {
+Block.prototype.annotateContent = function( method, annotation, start, end ) {
 	throw 'Block.annotateContent not implemented in this subclass.';
 };
