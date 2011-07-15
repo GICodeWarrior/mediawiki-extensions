@@ -275,6 +275,8 @@ TextFlow.prototype.renderIteration = function() {
 			.nextAll()
 			.remove();
 		rs.timeout = undefined;
+		this.lines = rs.lines;
+		console.log( this.lines.length );
 		this.emit( 'render' );
 	} else {
 		rs.ruler.innerHTML = '';
@@ -328,13 +330,17 @@ TextFlow.prototype.render = function( offset ) {
 	}
 	this.width = rs.width;
 	
-	// TODO: Only clear lines that are below the line above the offset, or the nearest line above
-	// that which is not a fractional line
-	this.lines = [];
-	
 	// Reset the render state
-	rs.wordOffset = 0;
-	rs.lineStart = 0;
+	if ( offset ) {
+		// TODO: Find the nearest line to start from
+		rs.lines = [];
+		rs.wordOffset = 0;
+		rs.lineStart = 0;
+	} else {
+		rs.lines = [];
+		rs.wordOffset = 0;
+		rs.lineStart = 0;
+	}
 	rs.lineEnd = 0;
 	rs.wordFit = null;
 	rs.charOffset = 0;
@@ -356,20 +362,22 @@ TextFlow.prototype.render = function( offset ) {
  * @param fractional {Boolean} If the line begins in the middle of a word
  */
 TextFlow.prototype.appendLine = function( start, end, wordOffset, fractional ) {
-	$line = this.$.find( '.editSurface-line[line-index=' + this.lines.length + ']' );
+	var rs = this.renderState,
+		lineCount = rs.lines.length;
+	$line = this.$.find( '.editSurface-line[line-index=' + lineCount + ']' );
 	if ( !$line.length ) {
-		$line = $( '<div class="editSurface-line" line-index="' + this.lines.length + '"></div>' )
+		$line = $( '<div class="editSurface-line" line-index="' + lineCount + '"></div>' )
 			.appendTo( this.$ );
 	}
 	$line[0].innerHTML = this.content.render( start, end );
 	// Collect line information
-	this.lines.push({
+	rs.lines.push({
 		'text': this.content.substring( start, end ),
 		'start': start,
 		'end': end,
 		'width': $line.outerWidth(),
 		'height': $line.outerHeight(),
-		'word': wordOffset,
+		'wordOffset': wordOffset,
 		'fractional': fractional
 	});
 	// Disable links within content
