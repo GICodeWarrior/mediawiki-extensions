@@ -59,7 +59,7 @@ class InterwikiWatchlist extends SpecialWatchlist {
 		$wgOut->setPageTitle( wfMsg( 'interwikiwatchlist' ) );
 	
 		$sub  = wfMsgExt( 'watchlistfor', 'parseinline', $wgUser->getName() );
-		$sub .= '<br />' . WatchlistEditor::buildTools( $wgUser->getSkin() );
+		$sub .= '<br />' . SpecialEditWatchlist::buildTools( $wgUser->getSkin() );
 		$wgOut->setSubtitle( $sub );
 	
 		$mode = SpecialEditWatchlist::getMode( $this->getRequest(), $par );
