@@ -111,17 +111,17 @@ TextFlow.prototype.getOffset = function( position ) {
  * @return {Object} Object containing left, top and bottom properties, each positions in pixels
  */
 TextFlow.prototype.getPosition = function( offset ) {
+	/*
+	 * Range validation
+	 * 
+	 * Rather than clamping the range, which can hide errors, exceptions will be thrown if offset is
+	 * less than 0 or greater than the length of the content.
+	 */
 	if ( offset < 0 ) {
 		throw 'Out of range error. Offset is expected to be greater than or equal to 0.';
+	} else if ( offset > this.content.getLength() ) {
+		throw 'Out of range error. Offset is expected to be less than or equal to text length.';
 	}
-	var line = 0,
-		lineCount = this.lines.length,
-		position = {
-			'left': 0,
-			'top': 0,
-			'bottom': 0
-			// 'line': (set later on)
-		};
 	
 	/*
 	 * Line finding
@@ -131,15 +131,24 @@ TextFlow.prototype.getPosition = function( offset ) {
 	 * had. Plus, as long as we are iterating over each line, we can also sum up the top and bottom
 	 * positions, which is a nice benefit of this method.
 	 */
-	while ( line < lineCount ) {
-		if ( offset >= this.lines[line].start && offset < this.lines[line].end ) {
-			position.bottom = position.top + this.lines[line].height;
+	var line,
+		lineCount = this.lines.length,
+		position = {
+			'left': 0,
+			'top': 0,
+			'bottom': 0,
+			'line': 0
+		};
+	while ( position.line < lineCount ) {
+		line = this.lines[position.line];
+		if ( offset >= line.start && offset < line.end ) {
+			position.bottom = position.top + line.height;
 			break;
 		}
-		position.top += this.lines[line].height;
-		line++;
+		position.top += line.height;
+		position.line++;
 	}
-
+	
 	/*
 	 * Virtual n+1 position
 	 * 
@@ -147,16 +156,11 @@ TextFlow.prototype.getPosition = function( offset ) {
 	 * line, a virtual n+1 position is supported. Offsets beyond this virtual position will cause
 	 * an exception to be thrown.
 	 */
-	if ( line === lineCount ) {
-		if ( offset !== this.lines[line - 1].end + 1 ) {
-			line--;
-			position.bottom = position.top;
-			position.top -= this.lines[line].height;
-		} else {
-			throw 'Out of range error. Offset is expected to be less than or equal to text length.';
-		}
+	if ( position.line === lineCount ) {
+		position.line--;
+		position.bottom = position.top;
+		position.top -= line.height;
 	}
-	position.line = line;
 	
 	/*
 	 * Offset measuring
@@ -164,14 +168,14 @@ TextFlow.prototype.getPosition = function( offset ) {
 	 * Since the left position will be zero for the first character in the line, so we can skip
 	 * measuring for those cases.
 	 */
-	if ( this.lines[line].start < offset ) {
+	if ( line.start < offset ) {
 		var $ruler = $( '<div class="editSurface-ruler"></div>' ).appendTo( this.$ ),
 			ruler = $ruler[0];
-		ruler.innerHTML = this.content.render( this.lines[line].start, offset );
+		ruler.innerHTML = this.content.render( line.start, offset );
 		position.left = ruler.clientWidth;
 		$ruler.remove();
 	}
-
+	
 	return position;
 };
 
