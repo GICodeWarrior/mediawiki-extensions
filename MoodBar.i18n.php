@@ -14,10 +14,22 @@ $messages = array();
 
 $messages['en'] = array(
 	'moodbar-desc' => 'Allows specified users to send their "mood" back to the site operator',
+	// Portlet link
 	'moodbar-trigger-using' => 'Using $1...',
 	'tooltip-p-moodbar-trigger-using' => '',
+	'moodbar-intro-using' => 'Using $1 made me...',
 	'moodbar-trigger-feedback' => 'Feedback',
 	'tooltip-p-moodbar-trigger-feedback' => '',
+	// Overlay
+	'moodbar-close' => '(close)',
+	'moodbar-intro-feedback' => 'Feedback:',
+	'moodbar-type-happy-title' => 'Happy',
+	'moodbar-type-sad-title' => 'Sad',
+	'moodbar-type-confused-title' => 'Confused',
+	'tooltip-moodbar-what' => 'Learn more about this feature',
+	'moodbar-what-target' => 'http://www.mediawiki.org/wiki/MoodBar',
+	'moodbar-what-label' => 'What is this?',
+	// Special:MoodBar
 	'right-moodbar-view' => 'View and export MoodBar feedback',
 	'moodbar-admin-title' => 'MoodBar feedback',
 	'moodbar-admin-intro' => 'This page allows you to view feedback submitted with the MoodBar',
@@ -36,22 +48,27 @@ $messages['en'] = array(
 	'moodbar-header-comment' => 'Comments',
 );
  
-/** Message documentation
- * @author Krinkle
- */
-
-$messages['qqq'] = array(
-	'moodbar-trigger-using' => 'Link text of the MoodBar overlay trigger. $1 is the SITENAME.',
-	'moodbar-trigger-feedback' => 'Link text of the MoodBar overlay trigger. $1 is the SITENAME.',
-);
-
 /** Message documentation (Message documentation)
+ * @author Krinkle
  * @author SPQRobin
  */
+
 $messages['qqq'] = array(
 	'moodbar-desc' => 'This is a feature in development. See [[mw:MoodBar 0.1/Design]] for background information.',
 	'moodbar-trigger-using' => "Link text of the MoodBar overlay trigger. \$1 is the SITENAME. The implied sentence is ''\"Using [Sitename] made me happy/sad/...\"''. See [[mw:MoodBar 0.1/Design]] for background development information.",
 	'moodbar-trigger-feedback' => 'Link text of the MoodBar overlay trigger. $1 is the SITENAME.',
+	'moodbar-intro-using' => 'Intro title of the MoodBar overlay trigger. $1 is the SITENAME.',
+	'moodbar-intro-feedback' => 'Intro title of the MoodBar overlay trigger. $1 is the SITENAME.',
+	'moodbar-close' => 'Link text of the close-button. Make sure to include parentheses.
+
+See also:
+* {{msg|parentheses}}',
+	'tooltip-moodbar-what' => 'Tooltip displayed when hovering the What-link.
+
+See also:
+* {{msg|moodbar-what-label}}',
+	'moodbar-what-target' => 'Complete URL (including http://) or article name where more info can be found.',
+	'moodbar-what-label' => 'Link text for the page where more info abut MoodBar can be found.',
 );
 
 /** Afrikaans (Afrikaans)
