@@ -15,14 +15,14 @@ function Surface( $container, doc ) {
 	this.keyboardSelecting = false;
 	this.keydownTimeout = null;
 	this.initialHorizontalCursorPosition = null;
-
+	
 	// MouseDown on surface
 	this.$.bind({
 		'mousedown' : function(e) {
 			return surface.onMouseDown( e );
 		}
 	});
-
+	
 	// Selection
 	this.$ranges = $( '<div class="editSurface-ranges"></div>' ).prependTo( this.$ );
 	this.$rangeStart = $( '<div class="editSurface-range"></div>' ).appendTo( this.$ranges );
@@ -61,12 +61,16 @@ function Surface( $container, doc ) {
 		});
 	
 	$(window).resize( function() {
+		surface.cursor.hide();
 		surface.doc.updateBlocks();
 	} );
 	
 	this.doc.on( 'update', function() {
 		surface.drawSelection();
-		// TODO: Update the cursor position
+		if ( surface.location && surface.location.block ) {
+			var cursorPosition = surface.location.block.getPosition( surface.location.offset );
+			surface.cursor.show( cursorPosition, surface.location.block.$.offset() );
+		}
 	} );
 	
 	// First render
