@@ -72,7 +72,7 @@ class SpecialExtensions extends SpecialPage {
 		}
 		else {
 			// TODO: fix url
-			$wgOut->addWikiMsgArray( 'extension-page-explanation', '' );
+			$wgOut->addWikiMsg( 'extension-page-explanation' );
 		}
 		
 		$wgOut->addHTML(
@@ -185,7 +185,7 @@ class SpecialExtensions extends SpecialPage {
 		global $wgOut, $wgExtensionCredits;
 		
 		if ( !array_key_exists( $this->typeFilter, $wgExtensionCredits ) && $this->typeFilter != 'all' ) {
-			$wgOut->addWikiMsgArray( 'extension-invalid-category', $this->typeFilter );
+			$wgOut->addWikiMsg( 'extension-invalid-category', $this->typeFilter );
 			$this->typeFilter = 'all';
 		}
 		
@@ -202,10 +202,10 @@ class SpecialExtensions extends SpecialPage {
 		
 		if ( count( $extensions ) == 0 ) {
 			if ( $this->typeFilter == 'all' ) {
-				$wgOut->addWikiMsgArray( 'extension-none-installed', 'Special:Install' );
+				$wgOut->addWikiMsg( 'extension-none-installed', 'Special:Install' );
 			}
 			else {
-				$wgOut->addWikiMsgArray( 'extension-empty-category', $this->typeFilter );
+				$wgOut->addWikiMsg( 'extension-empty-category', $this->typeFilter );
 			}
 		}
 		else {

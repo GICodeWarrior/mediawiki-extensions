@@ -94,7 +94,7 @@ class SpecialUpdate extends SpecialPage {
 		else {
 			$wgOut->addHTML( '<h3>' . wfMsg( 'mediawiki-update-available' ) . '</h3>' );
 			// TODO: link
-			$wgOut->addWikiMsgArray( 'mediawiki-update-available-long', array( $status, '' ) );
+			$wgOut->addWikiMsg( 'mediawiki-update-available-long', $status, '' );
 		}
 	}
 	
