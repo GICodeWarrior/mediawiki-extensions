@@ -334,7 +334,14 @@ TextFlow.prototype.appendLine = function( start, end, word, fractional ) {
 		'word': word,
 		'fractional': fractional
 	});
-	//console.log( start, end, this.lines[this.lines.length - 1].text, this.lines[this.lines.length - 1].fractional );
+	// Disable links within content
+	$line.find( '.editSurface-format-object a' )
+		.mousedown( function( e ) {
+			e.preventDefault();
+		} )
+		.click( function( e ) {
+			e.preventDefault();
+		} );
 };
 
 /**
