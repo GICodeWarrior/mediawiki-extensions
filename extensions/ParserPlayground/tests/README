@@ -6,4 +6,4 @@ Need npm modules:
 * jquery
 * diff
 * libxmljs (requires native compilation)
-
+* webworker
