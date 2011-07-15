@@ -66,8 +66,7 @@ function Surface( $container, doc ) {
 	} );
 	
 	this.doc.on( 'update', function() {
-		surface.drawSelection();
-		if ( surface.location && surface.location.block ) {
+		if ( surface.location && surface.location.block && !surface.drawSelection() ) {
 			var cursorPosition = surface.location.block.getPosition( surface.location.offset );
 			surface.cursor.show( cursorPosition, surface.location.block.$.offset() );
 		}
@@ -370,9 +369,10 @@ Surface.prototype.drawSelection = function() {
 				.show();
 		}
 		this.$ranges.show();
-	} else {
-		this.$ranges.hide();
+		return true;
 	}
+	this.$ranges.hide();
+	return false;
 };
 
 /**

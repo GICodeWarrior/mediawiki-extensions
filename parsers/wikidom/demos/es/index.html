@@ -107,46 +107,58 @@
 				]);
 				var surface = new Surface( $('#es-editor'), doc );
 				
-				$( '#es-toolbar-bold' ).click( function() {
-					surface.annotateContent( 'toggle', { 'type': 'bold'
-					} );
+				$( '#es-toolbar .es-toolbarTool' ).mousedown( function( e ) {
+					e.preventDefault();
+					return false;
 				} );
+				$( '#es-toolbar-bold' ).click( function() {
+						surface.annotateContent( 'toggle', { 'type': 'bold'
+						} );
+						return false;
+					} );
 				$( '#es-toolbar-italic' ).click( function() {
 					surface.annotateContent( 'toggle', { 'type': 'italic' } );
+					return false;
 				} );
 				$( '#es-toolbar-small' ).click( function() {
 					surface.annotateContent( 'toggle', {
 						'type': 'size',
 						'data': { 'type': 'small' }
 					} );
+					return false;
 				} );
 				$( '#es-toolbar-big' ).click( function() {
 					surface.annotateContent( 'toggle', {
 						'type': 'size',
 						'data': { 'type': 'big' }
 					} );
+					return false;
 				} );
 				$( '#es-toolbar-sub' ).click( function() {
 					surface.annotateContent( 'toggle', {
 						'type': 'script',
 						'data': { 'type': 'sub' }
 					} );
+					return false;
 				} );
 				$( '#es-toolbar-super' ).click( function() {
 					surface.annotateContent( 'toggle', {
 						'type': 'script',
 						'data': { 'type': 'super' }
 					} );
+					return false;
 				} );
 				$( '#es-toolbar-link' ).click( function() {
 					surface.annotateContent( 'toggle', {
 						'type': 'link',
 						'data': { 'href': '#' }
 					} );
+					return false;
 				} );
 				$( '#es-toolbar-clear' ).click( function() {
 					surface.annotateContent( 'remove', { 'type': 'all' } );
 				} );
+				return false;
 			} );
 		</script>
 	</body>
