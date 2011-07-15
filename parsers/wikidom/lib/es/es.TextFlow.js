@@ -231,9 +231,11 @@ TextFlow.prototype.scanBoundaries = function() {
  */
 TextFlow.prototype.renderIteration = function() {
 	var rs = this.renderState,
-		iteration = 0;
+		iteration = 0,
+		fractional = false;
 	while ( ++iteration <= rs.iterationLimit && rs.wordOffset < rs.wordCount - 1 ) {
 		rs.wordFit = this.fitWords( rs.wordOffset, rs.wordCount - 1, rs.ruler, rs.width );
+		fractional = false;
 		if ( rs.wordFit.width > rs.width ) {
 			// The first word didn't fit, we need to split it up
 			rs.charOffset = rs.lineStart;
@@ -252,14 +254,16 @@ TextFlow.prototype.renderIteration = function() {
 						rs.charFit.end = rs.lineEnd = this.boundaries[rs.wordOffset];
 					}
 				}
-				this.appendLine( rs.charOffset, rs.charFit.end, rs.wordOffset, true );
+				this.appendLine( rs.charOffset, rs.charFit.end, rs.wordOffset, fractional );
 				// Move on to another line
 				rs.charOffset = rs.charFit.end;
+				// Mark the next line as fractional
+				fractional = true;
 			} while ( rs.charOffset < rs.lineEnd );
 		} else {
 			rs.wordOffset = rs.wordFit.end;
 			rs.lineEnd = this.boundaries[rs.wordOffset];
-			this.appendLine( rs.lineStart, rs.lineEnd, rs.wordOffset, false );
+			this.appendLine( rs.lineStart, rs.lineEnd, rs.wordOffset, fractional );
 		}
 		rs.lineStart = rs.lineEnd;
 	}
@@ -348,8 +352,10 @@ TextFlow.prototype.render = function( offset ) {
  * 
  * @param start {Integer} Beginning of text range for line
  * @param end {Integer} Ending of text range for line
+ * @param wordOffset {Integer} Index within this.words which the line begins with
+ * @param fractional {Boolean} If the line begins in the middle of a word
  */
-TextFlow.prototype.appendLine = function( start, end, word, fractional ) {
+TextFlow.prototype.appendLine = function( start, end, wordOffset, fractional ) {
 	$line = this.$.find( '.editSurface-line[line-index=' + this.lines.length + ']' );
 	if ( !$line.length ) {
 		$line = $( '<div class="editSurface-line" line-index="' + this.lines.length + '"></div>' )
@@ -363,7 +369,7 @@ TextFlow.prototype.appendLine = function( start, end, word, fractional ) {
 		'end': end,
 		'width': $line.outerWidth(),
 		'height': $line.outerHeight(),
-		'word': word,
+		'word': wordOffset,
 		'fractional': fractional
 	});
 	// Disable links within content
