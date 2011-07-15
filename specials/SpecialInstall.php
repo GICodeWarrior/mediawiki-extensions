@@ -70,7 +70,7 @@ class SpecialInstall extends SpecialPage {
 	protected function showFullSearchOptions() {
 		global $wgOut, $wgUser, $wgRepositoryLocation;
 		
-		$wgOut->addWikiMsgArray( 'extensions-description', $wgRepositoryLocation );
+		$wgOut->addWikiMsg( 'extensions-description', $wgRepositoryLocation );
 		
 		$searchHtml = Html::element( 'h2', array(), wfMsg( 'search-extensions' ) );
 		$searchHtml .= wfMsg( 'search-extensions-long' );
