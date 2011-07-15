@@ -184,7 +184,9 @@ class qp_PollStore {
 	/// DB keys
 	var $pid = null;
 	var $last_uid = null;
-	# username is used for caching of setLastUser() method (which now may be called multiple times)
+
+	# username is used for caching of setLastUser() method (which now may be called multiple times);
+	# also used by randomizer
 	var $username = '';
 	/// common properties
 	var $mArticleId = null;
@@ -678,16 +680,28 @@ class qp_PollStore {
 		}
 	}
 
+	/**
+	 * Checks, whether particular question belongs to user's random seed
+	 * @param $question_id  question_id from DB
+	 * @return  true: question belongs to the seed;
+	 *          false: question does not belong to the seed;
+	 */
 	function isUsedQuestion( $question_id ) {
 		return !is_array( $this->randomQuestions ) ||
 				in_array( $question_id, $this->randomQuestions, true );
 	}
 
-	function loadRandomQuestions( $username ) {
+	/**
+	 * Loads $this->randomQuestions from DB for current user
+	 * Will be overriden in memory when number of random questions was changed
+	 */
+	function loadRandomQuestions() {
+		if ( is_null( $this->last_uid ) ) {
+			throw new Exception( 'User was not set, cannot load random questions in ' . __METHOD__ );
+		}
 		if ( is_null( $this->pid ) ) {
 			$this->setPid();
 		}
-		$this->setLastUser( $username );
 		$res = self::$db->select( 'qp_random_questions', 'question_id', array( 'uid' => $this->last_uid, 'pid' => $this->pid ), __METHOD__ );
 		$this->randomQuestions = array();
 		while ( $row = self::$db->fetchObject( $res ) ) {
@@ -698,6 +712,12 @@ class qp_PollStore {
 		}
 	}
 
+	/**
+	 * Stores $this->randomQuestions into DB
+	 * Should be called:
+	 *   when user views the page with the poll first time
+	 *   when number of random questions for poll was changed
+	 */
 	function setRandomQuestions() {
 		if ( is_null( $this->pid ) || is_null( $this->last_uid ) ) {
 			throw new MWException( __METHOD__ . ' cannot be called when pid/uid was not set' );
@@ -707,12 +727,17 @@ class qp_PollStore {
 			foreach( $this->randomQuestions as $qidx ) {
 				$data[] = array( 'pid' => $this->pid, 'uid' => $this->last_uid, 'question_id' => $qidx );
 			}
-			$res = self::$db->replace( 'qp_random_questions',
-				'user_poll_question',
+			self::$db->begin();
+			self::$db->delete( 'qp_random_questions',
+				array( 'pid' => $this->pid, 'uid' => $this->last_uid ),
+				__METHOD__ );
+			$res = self::$db->insert( 'qp_random_questions',
 				$data,
-				__METHOD__ . ':random questions seed update' );
+				__METHOD__ . ':set random questions seed' );
+			self::$db->commit();
 			return;
 		}
+		# this->randomQuestions === false; this poll is not randomized anymore
 		self::$db->delete( 'qp_random_questions',
 			array( 'pid'=>$this->pid ),
 			__METHOD__ . ':remove question random seed'
