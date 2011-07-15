@@ -28,7 +28,6 @@ ParagraphBlock.prototype.getLength = function() {
  */
 ParagraphBlock.prototype.insertContent = function( offset, content ) {
 	this.content.insert( offset, content );
-	this.flow.render( offset );
 };
 
 /**
@@ -45,7 +44,6 @@ ParagraphBlock.prototype.deleteContent = function( start, end ) {
 		start = tmp;
 	}
 	this.content.remove( start, end );
-	this.flow.render( start );
 };
 
 /**
