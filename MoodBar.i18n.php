@@ -46,6 +46,7 @@ $messages['en'] = array(
 	'moodbar-header-locale' => 'Locale',
 	'moodbar-header-useragent' => 'User-Agent',
 	'moodbar-header-comment' => 'Comments',
+	'moodbar-header-user-editcount' => 'User edit count',
 );
  
 /** Message documentation (Message documentation)
