@@ -93,9 +93,7 @@ class qp_Interpret {
 			if ( is_int( $qidx ) && is_array( $question ) ) {
 				foreach ( $question as $pidx => $error ) {
 					if ( is_int( $pidx ) ) {
-						# everywhere but interpretation scripts:
-						# question start from 1, proposals start from 0
-						$interpAnswer->setQPerror( $qidx + 1, $pidx, $error );
+						$interpAnswer->setQPerror( $qidx, $pidx, $error );
 					}
 				}
 			}

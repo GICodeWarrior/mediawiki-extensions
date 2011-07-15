@@ -697,10 +697,8 @@ class qp_PollStore {
 	 */
 	function loadRandomQuestions() {
 		if ( is_null( $this->last_uid ) ) {
-			throw new Exception( 'User was not set, cannot load random questions in ' . __METHOD__ );
-		}
-		if ( is_null( $this->pid ) ) {
 			$this->setPid();
+			$this->setLastUser( $this->username );
 		}
 		$res = self::$db->select( 'qp_random_questions', 'question_id', array( 'uid' => $this->last_uid, 'pid' => $this->pid ), __METHOD__ );
 		$this->randomQuestions = array();
@@ -757,13 +755,13 @@ class qp_PollStore {
 		$row = self::$db->fetchObject( $res );
 		if ( $row == false ) {
 			if ( $store_new_user_to_db ) {
-				self::$db->insert( 'qp_users', array( 'name'=>$username ), __METHOD__ . ':UpdateUser' );
-				$this->last_uid = self::$db->insertId();
+				self::$db->insert( 'qp_users', array( 'name'=>$this->username ), __METHOD__ . ':UpdateUser' );
+				$this->last_uid = intval( self::$db->insertId() );
 			} else {
 				$this->last_uid = null;
 			}
 		} else {
-			$this->last_uid = $row->uid;
+			$this->last_uid = intval( $row->uid );
 		}
 		$res = self::$db->select( 'qp_users_polls',
 			array( 'attempts', 'short_interpretation', 'long_interpretation' ),
@@ -838,7 +836,7 @@ class qp_PollStore {
 				$this->interpNS != $row->interpretation_namespace ||
 				$this->interpDBkey != $row->interpretation_title ) {
 			$res = self::$db->replace( 'qp_poll_desc',
-				'',
+				array( 'poll', 'article_poll' ),
 				array( 'pid'=>$this->pid, 'article_id'=>$this->mArticleId, 'poll_id'=>$this->mPollId, 'order_id'=>$this->mOrderId, 'dependance'=>$this->dependsOn, 'interpretation_namespace'=>$this->interpNS, 'interpretation_title'=>$this->interpDBkey ),
 				__METHOD__ . ':poll attributes update'
 			);
@@ -853,7 +851,7 @@ class qp_PollStore {
 		}
 		if ( count( $insert ) > 0 ) {
 			self::$db->replace( 'qp_question_desc',
-				'',
+				array( 'question' ),
 				$insert,
 				__METHOD__ );
 		}
@@ -870,7 +868,7 @@ class qp_PollStore {
 		}
 		if ( count( $insert ) > 0 ) {
 			self::$db->replace( 'qp_question_categories',
-				'',
+				array( 'category' ),
 				$insert,
 				__METHOD__ );
 		}
@@ -885,7 +883,7 @@ class qp_PollStore {
 		}
 		if ( count( $insert ) > 0 ) {
 			self::$db->replace( 'qp_question_proposals',
-				'',
+				array( 'proposal' ),
 				$insert,
 				__METHOD__ );
 		}
@@ -906,7 +904,7 @@ class qp_PollStore {
 			return;
 		}
 		# prepare array of user answers that will be passed to the interpreter
-		$poll_answer = array();
+		$poll_answer = array( false );
 		foreach ( $this->Questions as $qkey => &$qdata ) {
 			$questions = array();
 			foreach( $qdata->ProposalText as $propkey => &$proposal_text ) {
@@ -922,6 +920,8 @@ class qp_PollStore {
 			}
 			$poll_answer[] = $questions;
 		}
+		# only the questions are numbered from 1;
+		unset( $poll_answer[0] );
 		# interpret the poll answer to get interpretation answer
 		$this->interpAnswer = qp_Interpret::getAnswer( $interpArticle, $poll_answer );
 	}
@@ -945,7 +945,7 @@ class qp_PollStore {
 		# vote
 		if ( count( $insert ) > 0 ) {
 			self::$db->replace( 'qp_question_answers',
-				'',
+				array( 'answer' ),
 				$insert,
 				__METHOD__ );
 			$this->interpretVote();
