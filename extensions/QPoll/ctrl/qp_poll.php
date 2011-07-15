@@ -174,7 +174,8 @@ class qp_Poll extends qp_AbstractPoll {
 
 	function setUsedQuestions() {
 		# load random questions from DB (when available)
-		$this->pollStore->loadRandomQuestions( $this->username );
+		$this->pollStore->setLastUser( $this->username );
+		$this->pollStore->loadRandomQuestions();
 		if ( $this->randomQuestionCount > 0 ) {
 			if ( $this->randomQuestionCount > $this->questions->totalCount() ) {
 				$this->randomQuestionCount = $this->questions->totalCount();
