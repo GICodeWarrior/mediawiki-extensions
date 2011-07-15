@@ -19,28 +19,27 @@ class SpecialExtensionManagement extends SpecialPage {
 		'https://svn.wikimedia.org/viewvc/mediawiki' => 'http://svn.wikimedia.org/viewvc/mediawiki',
 	);
 
-        function __construct() {
-                parent::__construct( 'ExtensionManagement' );
-        }
+	function __construct() {
+		parent::__construct( 'ExtensionManagement' );
+	}
 
- 
-        function execute( $par ) {
-		global $wgOut, $wgMessageCache, $wgContLang;
-		$wgMessageCache->loadAllMessages();
+
+	function execute( $par ) {
+		global $wgOut, $wgContLang;
 
 		$this->setHeaders();
 		$this->outputHeader();
 
 		$wgOut->addHTML( Xml::openElement( 'div',
 			array( 'dir' => $wgContLang->getDir() ) ) );
-		$wgOut->addWikiMsgArray( 'extensionmanagement-page-explanation', '' );
+		$wgOut->addWikiMsg( 'extensionmanagement-page-explanation', '' );
 
 		$text =
 			$this->displayExtensions();
 
 		$wgOut->addWikiText( $text );
 		$wgOut->addHTML( '</div>' );
-        }
+	}
 
 
 	function displayExtensions() {
