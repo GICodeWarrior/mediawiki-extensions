@@ -53,7 +53,9 @@ DumpReader.prototype.read = function(stream) {
 		cb.onEndElementNS(function(elem, prefix, uri) {
 			// ping something!
 			if (elem == 'mediawiki') {
-				// yay
+				self.complete = true;
+				stream.pause();
+				self.emit('end', {});
 			} else if (elem == 'page') {
 				self.emit('page', workspace);
 				workspace = stack.pop();
@@ -77,8 +79,9 @@ DumpReader.prototype.read = function(stream) {
 			buffer += cdata;
 		});
 		cb.onEndDocument(function() {
+			// This doesn't seem to run...?
 			self.complete = true;
-			stream.close();
+			stream.pause();
 			self.emit('end', {});
 		})
 		cb.onError(function(err) {
@@ -93,7 +96,7 @@ DumpReader.prototype.read = function(stream) {
 		stream.on('end', function() {
 			if (!complete) {
 				// uh-oh!
-				self.emit('error', 'End of file before end of XML stream.');
+				//self.emit('error', 'End of file before end of XML stream.');
 			}
 		});
 		stream.on('error', function(err) {
