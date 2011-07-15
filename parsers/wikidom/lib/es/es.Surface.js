@@ -518,13 +518,10 @@ Surface.prototype.moveCursorLeft = function() {
  * @param selection {Selection} Range to apply annotation to
  */
 Surface.prototype.annotateContent= function( method, annotation, selection ) {
-	var block;
-	var i;
-
+	// Fall back to current selection if no selection argument was given
 	if ( selection === undefined ) {
 		selection = this.selection;
 	}
-	var surface = this;
 	if ( selection.from && selection.to ) {
 		selection.normalize();
 		var from = selection.start,
@@ -534,7 +531,8 @@ Surface.prototype.annotateContent= function( method, annotation, selection ) {
 			from.block.annotateContent( method, annotation, from.offset, to.offset );
 		} else {
 			// Multiple block annotation
-			for ( i = from.block.getIndex(), end = to.block.getIndex(); i <= end; i++ ) {
+			var block;
+			for ( var i = from.block.getIndex(), end = to.block.getIndex(); i <= end; i++ ) {
 				block = this.doc.blocks[i];
 				if ( block === from.block ) {
 					// From offset to length
