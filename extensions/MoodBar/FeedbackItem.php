@@ -25,6 +25,7 @@ class MBFeedbackItem {
 			'locale',
 			'editmode',
 			'bucket',
+			'user-editcount',
 		);
 	
 	/** Valid values for the 'type' parameter. **/
@@ -100,6 +101,7 @@ class MBFeedbackItem {
 			'locale' => $row->mbf_locale,
 			'bucket' => $row->mbf_bucket,
 			'editmode' => $row->mbf_editing,
+			'user-editcount' => $row->mbf_user_editcount,
 		);
 		
 		$properties['page'] = Title::makeTitleSafe( $row->mbf_namespace, $row->mbf_title );
@@ -125,6 +127,14 @@ class MBFeedbackItem {
 			
 			if ( ! $this->validatePropertyValue($key, $value) ) {
 				throw new MWException( "Attempt to set invalid value for $key" );
+			}
+			
+			if ( $key == 'user' ) {
+				if ( $user->isAnon() ) {
+					$this->setProperty( 'user-editcount', 0 );
+				} else {
+					$this->setProperty( 'user-editcount', $user->edits() );
+				}
 			}
 			
 			$this->data[$key] = $value;
@@ -204,6 +214,7 @@ class MBFeedbackItem {
 			'mbf_locale' => $this->getProperty('locale'),
 			'mbf_bucket' => $this->getProperty('bucket'),
 			'mbf_editing' => $this->getProperty('editmode'),
+			'mbf_user_editcount' => $this->getProperty('user-editcount'),
 		);
 		
 		$user = $this->getProperty('user');

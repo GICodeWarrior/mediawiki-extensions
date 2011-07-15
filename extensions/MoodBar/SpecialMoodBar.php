@@ -8,6 +8,7 @@ class SpecialMoodBar extends SpecialPage {
 			'page',
 			'usertype',
 			'user',
+			'user-editcount',
 			'editmode',
 			'bucket',
 			'system',
