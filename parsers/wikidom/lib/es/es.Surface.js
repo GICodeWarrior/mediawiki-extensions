@@ -267,6 +267,8 @@ Surface.prototype.onMouseUp = function( e ) {
 
 /**
  * Displays current selection behind document content.
+ * 
+ * @return {Boolean} If selection is visibly painted
  */
 Surface.prototype.drawSelection = function() {
 	var blockWidth;
