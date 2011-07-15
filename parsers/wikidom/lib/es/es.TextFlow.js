@@ -36,31 +36,42 @@ function TextFlow( $container, content ) {
 /**
  * Gets offset within content closest to of a given position.
  * 
- * @pthis.content.render {Integer} Horizontal position in pixels
- * @param y {Integer} Vertical position in pixels
+ * Position is assumed to be local to the container the text is being flowed in.
+ * 
+ * @param position {Object} Position to find offset for
+ * @param position.left {Integer} Horizontal position in pixels
+ * @param position.top {Integer} Vertical position in pixels
  * @return {Integer} Offset within content nearest the given coordinates
  */
 TextFlow.prototype.getOffset = function( position ) {
-	var lineCount = this.lines.length,
-		line = 0,
-		offset = 0,
-		top = 0;
-	
 	/*
 	 * Line finding
 	 * 
-	 * It's possible that a more efficient method could be used here, but the number of lines to be
-	 * iterated through will rarely be over 100, so it's unlikely that any significant gains will be
-	 * had. Plus, as long as we are iterating over each line, we can also sum up the top and bottom
-	 * positions, which is a nice benefit of this method.
+	 * If the position is above the first line, the offset will always be 0, and if the position is
+	 * below the last line the offset will always be {this.content.length}. All other vertical
+	 * vertical positions will fall inside of one of the lines.
 	 */
-	while ( line < lineCount ) {
-		top += this.lines[line].height;
+	var lineCount = this.lines.length;
+	// Positions above the first line always jump to the first offset
+	if ( !lineCount || position.top < 0 ) {
+		return 0;
+	}
+	// Find which line the position is inside of
+	var i = 0,
+		top = 0;
+	while ( i < lineCount ) {
+		top += this.lines[i].height;
 		if ( position.top <= top ) {
 			break;
 		}
-		line++;
+		i++;
 	}
+	// Positions below the last line always jump to the last offset
+	if ( i == lineCount ) {
+		return this.content.getLength();
+	}
+	// Alias current line object
+	var line = this.lines[i];
 	
 	/*
 	 * Offset finding
@@ -71,25 +82,22 @@ TextFlow.prototype.getOffset = function( position ) {
 	 * TODO: The offset needs to be chosen based on nearest offset to the cursor, not offset before
 	 * the cursor.
 	 */
-	var virtual = line < this.lines.length - 1
-		&& this.boundaryTest.exec( this.lines[line].text.substr( -1 ) ) ? -1 : 0;
-	line = Math.min( line, this.lines.length - 1 );
 	var $ruler = $( '<div class="editSurface-ruler"></div>' ).appendTo( this.$ ),
 		ruler = $ruler[0],
-		fit = this.fitCharacters(
-			this.lines[line].start, this.lines[line].end, ruler, position.left
-		);
-	ruler.innerHTML = this.content.render( this.lines[line].start, fit.end );
+		fit = this.fitCharacters( line.start, line.end, ruler, position.left );
+	ruler.innerHTML = this.content.render( line.start, fit.end );
 	var left = ruler.clientWidth;
-	ruler.innerHTML = this.content.render( this.lines[line].start, fit.end + 1 );
+	ruler.innerHTML = this.content.render( line.start, fit.end + 1 );
 	var right = ruler.clientWidth;
 	var center = Math.round( left + ( ( right - left ) / 2 ) );
 	$ruler.remove();
 	// Reset RegExp object's state
 	this.boundaryTest.lastIndex = 0;
 	return Math.min(
+		// If the position is right of the center of the character it's on top of, increment offset
 		fit.end + ( position.left >= center ? 1 : 0 ),
-		this.lines[line].end + virtual
+		// If the line ends in a non-boundary character, decrement offset
+		line.end + ( this.boundaryTest.exec( line.text.substr( -1 ) ) ? -1 : 0 )
 	);
 };
 
