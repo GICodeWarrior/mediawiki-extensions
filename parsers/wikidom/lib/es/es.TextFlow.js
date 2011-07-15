@@ -3,10 +3,14 @@
  * 
  * @extends {EventEmitter}
  * @param $container {jQuery Selection} Element to render into
+ * @param content {Content} Initial content to render
  * @returns {TextFlow}
  */
 function TextFlow( $container, content ) {
+	// Inheritance
 	EventEmitter.call( this );
+	
+	// Members
 	this.$ = $container;
 	this.content = content || new Content();
 	this.boundaries = [];
@@ -16,6 +20,7 @@ function TextFlow( $container, content ) {
 	this.widthCache = {};
 	this.renderState = {};
 	
+	// Events
 	var flow = this;
 	this.content.on( 'change', function() {
 		flow.scanBoundaries();
@@ -29,8 +34,9 @@ function TextFlow( $container, content ) {
 	this.content.on( 'annotate', function( args ) {
 		flow.render( args.start );
 	} );
+	
+	// Initialization
 	this.scanBoundaries();
-	this.render();
 }
 
 /**
@@ -104,8 +110,8 @@ TextFlow.prototype.getOffset = function( position ) {
 /**
  * Gets position coordinates of a given offset.
  * 
- * Offsets are boundaries between content. Results are given in left, top and bottom positions,
- * which could be used to draw a cursor, highlighting painting, etc.
+ * Offsets are boundaries between plain or annotated characters within content. Results are given in
+ * left, top and bottom positions, which could be used to draw a cursor, highlighting, etc.
  * 
  * @param offset {Integer} Offset within content
  * @return {Object} Object containing left, top and bottom properties, each positions in pixels
@@ -179,6 +185,9 @@ TextFlow.prototype.getPosition = function( offset ) {
 	return position;
 };
 
+/**
+ * Updates the word boundary cache, which is used for word fitting.
+ */
 TextFlow.prototype.scanBoundaries = function() {
 	/*
 	 * Word boundary scan
@@ -213,6 +222,13 @@ TextFlow.prototype.scanBoundaries = function() {
 	}
 };
 
+/**
+ * Renders a batch of lines and then yields execution before rendering another batch.
+ * 
+ * In cases where a single word is too long to fit on a line, the word will be "virtually" wrapped,
+ * causing them to be fragmented. Word fragments are rendered on their own lines, except for their
+ * remainder, which is combined with whatever proceeding words can fit on the same line.
+ */
 TextFlow.prototype.renderIteration = function() {
 	var rs = this.renderState,
 		iteration = 0;
@@ -268,25 +284,28 @@ TextFlow.prototype.renderIteration = function() {
 /**
  * Renders text into a series of HTML elements, each a single line of wrapped text.
  * 
- * In cases where a single word is too long to fit on a line, the word will be "virtually" wrapped,
- * causing them to be fragmented. Word fragments are rendered on their own lines, except for their
- * remainder, which is combined with whatever proceeding words can fit on the same line.
- * 
  * The offset parameter can be used to reduce the amount of work involved in re-rendering the same
  * text, but will be automatically ignored if the text or width of the container has changed.
+ * 
+ * Rendering happens asynchronously, and yields execution between iterations. Iterative rendering
+ * provides the JavaScript engine an ability to process events between rendering batches of lines,
+ * allowing rendering to be interrupted and restarted if changes to content are happening before
+ * rendering of all lines is complete.
  * 
  * @param offset {Integer} Offset to re-render from, if possible (not yet implemented)
  */
 TextFlow.prototype.render = function( offset ) {
 	var rs = this.renderState;
 	
-	// Stop iterating from last render
+	// Check if rendering is currently underway
 	if ( rs.timeout !== undefined ) {
+		// Cancel the active rendering process
 		clearTimeout( rs.timeout );
 		// Cleanup
 		rs.$ruler.remove();
 	}
 	
+	// Clear caches that were specific to the previous render
 	this.widthCache = {};
 	
 	/*
@@ -299,17 +318,17 @@ TextFlow.prototype.render = function( offset ) {
 	rs.$ruler = $( '<div>&nbsp;</div>' ).appendTo( this.$ );
 	rs.width = rs.$ruler.innerWidth();
 	
-	// TODO: Take offset into account
 	// Ignore offset optimization if the width has changed or the text has never been flowed before
-	//if (this.width !== width) {
-	//	offset = undefined;
-	//}
+	if (this.width !== rs.width) {
+		offset = undefined;
+	}
+	this.width = rs.width;
 	
-	// TODO: Take offset into account and only work from there
-	
+	// TODO: Only clear lines that are below the line above the offset, or the nearest line above
+	// that which is not a fractional line
 	this.lines = [];
-	// Iterate over each word that will fit in a line, appending them to the DOM as we go
 	
+	// Reset the render state
 	rs.wordOffset = 0;
 	rs.lineStart = 0;
 	rs.lineEnd = 0;
@@ -320,6 +339,7 @@ TextFlow.prototype.render = function( offset ) {
 	rs.ruler = rs.$ruler.addClass('editSurface-ruler')[0];
 	rs.iterationLimit = 3;
 	
+	// Begin rendering
 	this.renderIteration();
 };
 
