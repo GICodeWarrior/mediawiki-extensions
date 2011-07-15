@@ -89,7 +89,7 @@
 								{
 									'type': 'template',
 									'data': {
-										'html': '<span class="editSurface-format-link editSurface-format-super">[citation needed]</span>'
+										'html': '<sup><small><a href="#">[citation needed]</a></small></sup>'
 									},
 									'range': { 'start': 120, 'end': 121 }
 								}
@@ -112,8 +112,7 @@
 					return false;
 				} );
 				$( '#es-toolbar-bold' ).click( function() {
-						surface.annotateContent( 'toggle', { 'type': 'bold'
-						} );
+						surface.annotateContent( 'toggle', { 'type': 'bold' } );
 						return false;
 					} );
 				$( '#es-toolbar-italic' ).click( function() {
