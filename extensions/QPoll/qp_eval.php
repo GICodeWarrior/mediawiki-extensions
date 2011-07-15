@@ -336,10 +336,6 @@ class qp_Eval {
 	 */
 	function interpretAnswer( $interpretScript, $answers, qp_InterpAnswer $interpAnswer ) {
 		# template page evaluation
-		if ( !function_exists( 'json_decode' ) ) {
-			# environment error
-			return $interpAnswer->setError( wfMsg( 'qp_error_no_json_decode' ) );
-		}
 		if ( ( $check = self::selfCheck() ) !== true ) {
 			# self-check error
 			return $interpAnswer->setError( wfMsg( 'qp_error_eval_self_check', $check ) );
@@ -350,11 +346,7 @@ class qp_Eval {
 			return $interpAnswer->setError( $check );
 		}
 		# inject poll answer into the interpretation script
-		$evalScript =
-"\$" . self::$pseudoNamespace . "a = json_decode( <<<HEREDOC
-" . FormatJson::encode( $answers ) . "
-HEREDOC
-, true );\n" . $evalScript;
+		$evalScript = "\$" . self::$pseudoNamespace . "a = unserialize( base64_decode( '" . base64_encode( serialize( $answers ) ) . "' ) ); /* */ " . $evalScript;
 		$result = eval( $evalScript );
 		return $result;
 	}

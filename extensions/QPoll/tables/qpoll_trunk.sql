@@ -84,5 +84,6 @@ CREATE TABLE `qp_random_questions` (
   `uid` int unsigned NOT NULL,
   `pid` int unsigned NOT NULL,
   `question_id` int unsigned NOT NULL,
-  PRIMARY KEY user_poll_question (uid,pid,question_id)
+  PRIMARY KEY user_poll_question (uid,pid,question_id),
+  INDEX user_seed (uid,pid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

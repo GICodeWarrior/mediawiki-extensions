@@ -173,8 +173,11 @@ class qp_Poll extends qp_AbstractPoll {
 	}
 
 	function setUsedQuestions() {
+		# todo: make global settings to perform all of this conditionally
 		# load random questions from DB (when available)
+		# setLastUser will not load/store user data, when pid is null
 		$this->pollStore->setLastUser( $this->username );
+		# loadRandomQuestions will call setPid() and setLastUser() in such case
 		$this->pollStore->loadRandomQuestions();
 		if ( $this->randomQuestionCount > 0 ) {
 			if ( $this->randomQuestionCount > $this->questions->totalCount() ) {
