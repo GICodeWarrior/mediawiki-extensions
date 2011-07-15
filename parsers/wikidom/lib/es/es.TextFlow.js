@@ -271,11 +271,11 @@ TextFlow.prototype.renderIteration = function() {
 	if ( rs.wordOffset >= rs.wordCount - 1 ) {
 		// Cleanup
 		rs.$ruler.remove();
+		this.lines = rs.lines;
 		this.$.find( '.editSurface-line[line-index=' + ( this.lines.length - 1 ) + ']' )
 			.nextAll()
 			.remove();
 		rs.timeout = undefined;
-		this.lines = rs.lines;
 		console.log( this.lines.length );
 		this.emit( 'render' );
 	} else {
