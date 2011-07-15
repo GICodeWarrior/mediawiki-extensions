@@ -224,14 +224,14 @@ TextFlow.prototype.renderIteration = function() {
 						rs.charFit.end = rs.lineEnd = this.boundaries[rs.wordOffset];
 					}
 				}
-				this.appendLine( rs.charOffset, rs.charFit.end );
+				this.appendLine( rs.charOffset, rs.charFit.end, rs.wordOffset, true );
 				// Move on to another line
 				rs.charOffset = rs.charFit.end;
 			} while ( rs.charOffset < rs.lineEnd );
 		} else {
 			rs.wordOffset = rs.wordFit.end;
 			rs.lineEnd = this.boundaries[rs.wordOffset];
-			this.appendLine( rs.lineStart, rs.lineEnd );
+			this.appendLine( rs.lineStart, rs.lineEnd, rs.wordOffset, false );
 		}
 		rs.lineStart = rs.lineEnd;
 	}
@@ -317,7 +317,7 @@ TextFlow.prototype.render = function( offset ) {
  * @param start {Integer} Beginning of text range for line
  * @param end {Integer} Ending of text range for line
  */
-TextFlow.prototype.appendLine = function( start, end ) {
+TextFlow.prototype.appendLine = function( start, end, word, fractional ) {
 	$line = this.$.find( '.editSurface-line[line-index=' + this.lines.length + ']' );
 	if ( !$line.length ) {
 		$line = $( '<div class="editSurface-line" line-index="' + this.lines.length + '"></div>' )
@@ -330,8 +330,11 @@ TextFlow.prototype.appendLine = function( start, end ) {
 		'start': start,
 		'end': end,
 		'width': $line.outerWidth(),
-		'height': $line.outerHeight()
+		'height': $line.outerHeight(),
+		'word': word,
+		'fractional': fractional
 	});
+	//console.log( start, end, this.lines[this.lines.length - 1].text, this.lines[this.lines.length - 1].fractional );
 };
 
 /**
@@ -358,20 +361,22 @@ TextFlow.prototype.appendLine = function( start, end ) {
  */
 TextFlow.prototype.fitWords = function( start, end, ruler, width ) {
 	var offset = start,
+		charOffset = this.boundaries[offset],
 		middle,
 		lineWidth,
 		cacheKey;
 	do {
 		// Place "middle" directly in the center of "start" and "end"
 		middle = Math.ceil( ( start + end ) / 2 );
+		charMiddle = this.boundaries[middle];
 
-		cacheKey = this.boundaries[offset] + ':' + this.boundaries[middle];
-
+		// Measure and cache width of substring
+		cacheKey = charOffset + ':' + charMiddle;
 		// Prepare the line for measurement using pre-escaped HTML
-		ruler.innerHTML = this.content.render( this.boundaries[offset], this.boundaries[middle] );
+		ruler.innerHTML = this.content.render( charOffset, charMiddle );
 		// Test for over/under using width of the rendered line
 		this.widthCache[cacheKey] = lineWidth = ruler.clientWidth;
-
+		
 		// Test for over/under using width of the rendered line
 		if ( lineWidth > width ) {
 			// Detect impossible fit (the first word won't fit by itself)
@@ -386,6 +391,13 @@ TextFlow.prototype.fitWords = function( start, end, ruler, width ) {
 			start = middle;
 		}
 	} while ( start < end );
+	// Check if we ended by moving end to the left of middle
+	if ( end === middle - 1 ) {
+		// A final measurement is required
+		var charStart = this.boundaries[start];
+		ruler.innerHTML = this.content.render( charOffset, charStart );
+		lineWidth = this.widthCache[charOffset + ':' + charStart] = ruler.clientWidth;
+	}
 	return { 'end': start, 'width': lineWidth };
 };
 
@@ -411,8 +423,8 @@ TextFlow.prototype.fitCharacters = function( start, end, ruler, width ) {
 		// Place "middle" directly in the center of "start" and "end"
 		middle = Math.ceil( ( start + end ) / 2 );
 		
+		// Measure and cache width of substring
 		cacheKey = offset + ':' + middle;
-		
 		if ( cacheKey in this.widthCache ) {
 			lineWidth = this.widthCache[cacheKey];
 		} else {
@@ -421,7 +433,7 @@ TextFlow.prototype.fitCharacters = function( start, end, ruler, width ) {
 			// Test for over/under using width of the rendered line
 			this.widthCache[cacheKey] = lineWidth = ruler.clientWidth;
 		}
-
+		
 		if ( lineWidth > width ) {
 			// Detect impossible fit (the first character won't fit by itself)
 			if (middle - offset === 1) {
@@ -435,6 +447,18 @@ TextFlow.prototype.fitCharacters = function( start, end, ruler, width ) {
 			start = middle;
 		}
 	} while ( start < end );
+	// Check if we ended by moving end to the left of middle
+	if ( end === middle - 1 ) {
+		// Try for cache hit
+		cacheKey = offset + ':' + start;
+		if ( cacheKey in this.widthCache ) {
+			lineWidth = this.widthCache[cacheKey];
+		} else {
+			// A final measurement is required
+			ruler.innerHTML = this.content.render( offset, start );
+			lineWidth = this.widthCache[cacheKey] = ruler.clientWidth;
+		}
+	}
 	return { 'end': start, 'width': lineWidth };
 };
 
