@@ -1022,6 +1022,14 @@ $messages['mn'] = array(
 	'gep-addsectionbutton' => 'Нэмэх',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'gep-addcategorybutton' => 'Tambahkan',
+	'gep-addsectionbutton' => 'Tambahkan',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */
