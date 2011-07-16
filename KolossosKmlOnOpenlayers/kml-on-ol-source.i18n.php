@@ -467,6 +467,7 @@ $messages['ml'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'ts-kml-on-ol-languages' => 'Bahasa',
 	'ts-kml-on-ol-all' => 'Semua',
 );
 
