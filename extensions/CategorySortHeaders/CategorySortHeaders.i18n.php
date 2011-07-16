@@ -69,6 +69,13 @@ $messages['mk'] = array(
 	'categorysortheaders-desc' => 'Во категориите дозволи укажување на прилагодливи заглавија од повеќе знаци (наместо наведување само под поединечни букви), користејќи синтакса како <nowiki>[[category:Foo|^Заглавие^Невидлив дел од клучот за подредување]]</nowiki>',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'categorysortheaders-desc' => "Membolehkan penentuan pengatas isih 'aksara pertama' berbilang aksara untuk menyeranaikan laman dalam kategori dengan menggunakan sintaks seperti <nowiki>[[category:Foo|bahagian ^Header^Invisible kunci isih]]</nowiki>",
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

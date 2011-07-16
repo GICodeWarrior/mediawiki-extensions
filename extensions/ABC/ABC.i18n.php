@@ -146,6 +146,7 @@ $messages['ba'] = array(
  * @author Mucalexx
  */
 $messages['bar'] = array(
+	'abc-desc' => 'Ergänzts <code>&lt;abc&gt;</code>-Dog zur Notazion voh Musi auf ABC',
 	'abcdownload' => 'Owerloon',
 );
 

@@ -2831,7 +2831,7 @@ Por favor reporta esto al [[{{MediaWiki:Grouppage-sysop}}|administrator del siti
 	'mv_save_changes' => 'Grabar cambios',
 	'mv_file_with_same_desc' => 'Error: ya existe otro archivo de flujo con la misma clave de descripción <i>$1</i>',
 	'mv_updated_stream_files' => 'Actualizad registro de archivos stream',
-	'mv_removed_file_stream' => 'Archivo stream removido: $1',
+	'mv_removed_file_stream' => 'Archivo stream eliminado: $1',
 	'mv_missing_stream_text' => 'El stream que has solicitado <b>$1</b> no está disponible.<br />
 Puedes desear verificar la <a href="$2">Lista Stream</a>,<br />
 o puedes desear <a href="$3">Agregar el stream</a>.',
@@ -7075,6 +7075,7 @@ $mvMVDTypeDefaultDisp हा $mvMVDTypeAllAvailable चा सबसेट अ�
 $messages['ms'] = array(
 	'mv_remove_reason' => 'Sebab penghapusan:',
 	'mv_upload_file' => 'Muat naik fail',
+	'mv_tool_search' => 'Cari',
 	'mv_remove' => 'buang',
 	'mv_existing_categories' => '{{PLURAL:$1|kategori|kategori}}:',
 	'mv_search_or' => 'atau',

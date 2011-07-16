@@ -932,6 +932,14 @@ $messages['mk'] = array(
 	'slippymap_clicktoactivate' => 'Кликнете за да ја активирате картата',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'slippymap_error' => 'Ralat $1: $2',
+	'slippymap_errors' => 'Ralat $1:',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -1296,17 +1304,23 @@ $messages['sk'] = array(
 );
 
 /** Slovenian (Slovenščina)
+ * @author Dbc334
  * @author Lesko987
  */
 $messages['sl'] = array(
-	'slippymap_desc' => 'Doda <tt>&lt;slippymap&gt;</tt> oznako, ki omogoča vgradnjo statičnega ali dinamičnega zemljevida. Podpira več ponudnikov zemljevidov, vključno z [http://openstreetmap.org OpenStreetMap] in NASA Worldwind',
-	'slippymap_error' => '$1 napaka: $2',
-	'slippymap_errors' => '$1 napake:',
-	'slippymap_error_tag_content_given' => '<tt>&lt;$1&gt;</tt> oznaka uporabi le atribute (&lt;$1 [...]/&gt;), ne pa tekste (&lt;$1&gt; ... &lt;/$1&gt;)',
-	'slippymap_error_missing_arguments' => 'Niste podali nobenih atributov oznake &lt;$1&gt;, poglej [http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax usage information] za primer klicanja.',
+	'slippymap_desc' => 'Doda etiketo <tt>&lt;slippymap&gt;</tt>, ki omogoča vgradnjo statičnega ali dinamičnega zemljevida. Podpira več ponudnikov zemljevidov, vključno z [http://openstreetmap.org OpenStreetMap] in NASA Worldwind',
+	'slippymap_error' => 'Napaka $1: $2',
+	'slippymap_errors' => 'Napake $1:',
+	'slippymap_error_tag_content_given' => 'Oznaka <tt>&lt;$1&gt;</tt> dovoljuje le argumente atributov (&lt;$1 [...]/&gt;), ne pa vnosnega besedila (&lt;$1&gt; ... &lt;/$1&gt;)',
+	'slippymap_error_missing_arguments' => 'Niste podali nobenih atributov oznake &lt;$1&gt;; oglejte si [http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax informacije o uporabi] za primer klicanja.',
 	'slippymap_error_missing_attribute_lat' => 'Manjka atribut <tt>lat</tt> (za zemljepisno širino).',
 	'slippymap_error_missing_attribute_lon' => 'Manjka atribut <tt>lon</tt> (za zemljepisno dolžino).',
 	'slippymap_error_missing_attribute_zoom' => 'Manjka atribut <tt>zoom</tt> (za povečavo).',
+	'slippymap_error_unknown_attribute' => 'Atribut <tt>$1</tt> ni znan.',
+	'slippymap_code' => 'Wikikoda tega pogleda zemljevida:',
+	'slippymap_button_code' => 'Pridobi wikikodo',
+	'slippymap_resetview' => 'Ponastavi pogled',
+	'slippymap_clicktoactivate' => 'Kliknite za aktiviranje zemljevida',
 );
 
 /** Swedish (Svenska)

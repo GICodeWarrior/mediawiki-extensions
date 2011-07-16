@@ -731,7 +731,19 @@ $messages['mn'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'commentbox-desc' => 'Meletakkan ruangan komen di laman-laman tertentu',
+	'commentbox-intro' => '== Komenlah... ==
+Nak komen pasal laman ini? Tuliskannya di sini atau <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} terus sunting laman ini]</span>.',
+	'commentbox-savebutton' => 'Simpan komen',
 	'commentbox-name' => 'Nama:',
+	'commentbox-name-explanation' => '<small>(Petua: Jika anda [[Special:UserLogin|log masuk]], anda tidak perlu mengisikan nama anda di sin secara manual)</small>',
+	'commentbox-log' => 'Komen baru',
+	'commentbox-first-comment-heading' => '== Komen ==',
+	'commentbox-regex' => '/\\n==\\s*Komen\\s*==\\s*\\n/i',
+	'commentbox-errorpage-title' => 'Ralat ketika membuat komen',
+	'commentbox-error-page-nonexistent' => 'Laman ini tidak wujud!',
+	'commentbox-error-namespace' => 'Komen tidak dibenarkan di ruang nama ini!',
+	'commentbox-error-empty-comment' => 'Komen kosong tidak dibenarkan!',
 );
 
 /** Erzya (Эрзянь)

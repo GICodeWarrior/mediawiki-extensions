@@ -38,6 +38,19 @@ $messages['af'] = array(
 	'emailusers-toomanyrecipientsselected' => 'Te veel ontvangers gekies ({{plural: $1|maksimum is $1|maksimum is $1}}).',
 );
 
+/** Arabic (العربية)
+ * @author Imksa
+ */
+$messages['ar'] = array(
+	'emailusers-desc' => 'السماح للمستخدمين بإرسال رسائل بريد إلكتروني إلى مستلمين متعددين',
+	'right-sendbatchemail' => 'إرسال بريد إلكتروني إلى عدة مستلمين في نفس الوقت',
+	'emailusers' => 'مستخدمي البريد الإلكتروني',
+	'emailusers-target-reverse' => 'ترسل لجميع المستخدمين باستثناء تلك المحددة',
+	'emailusers-norecipient' => 'لا يوجد أحد يمكنك إرسال بريد إلكتروني إليه',
+	'emailusers-norecipientselected' => 'يتم تحديد أي مستلم.',
+	'emailusers-toomanyrecipientsselected' => 'تم تحديد عدد كبير من المستلمين ({{PLURAL:$1|الحد الأقصى $1أقصى $1}}).',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by

@@ -2531,9 +2531,11 @@ $messages['mn'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'tasks_form_comment' => 'Komen',
 	'tasks_noone' => 'tiada',
 	'tasks_delete' => 'Hapuskan',
 	'tasks_table_header_page' => 'Laman',
+	'tasks_search_form_title' => 'Cari',
 	'tasks_previous' => 'Sebelumnya',
 	'tasks_next' => 'Berikutnya',
 );

@@ -7623,6 +7623,7 @@ $messages['ms'] = array(
 	'configure-section-email' => 'E-mel',
 	'configure-section-images' => 'Fail',
 	'configure-section-users' => 'Pengguna',
+	'configure-section-search' => 'Cari',
 	'configure-section-copyright' => 'Hak cipta',
 	'configure-throttle-group' => 'Jenis',
 	'configure-condition-operator-or' => 'Atau',

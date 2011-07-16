@@ -126,11 +126,12 @@ $messages['ba'] = array(
 
 /** Bavarian (Boarisch)
  * @author Man77
+ * @author Mucalexx
  */
 $messages['bar'] = array(
-	'languageselector' => 'Språch',
-	'languageselector-desc' => 'Språchnauswåih auf jeda Seitn, aa fia Bsuacha',
-	'languageselector-setlang' => 'setzn',
+	'languageselector' => 'Sprooch',
+	'languageselector-desc' => 'Sproochnauswoi auf jeeder Seiten, aa fyr Bsuacher',
+	'languageselector-setlang' => 'sétzen',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)

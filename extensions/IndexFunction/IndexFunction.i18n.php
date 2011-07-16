@@ -917,6 +917,13 @@ $messages['mn'] = array(
 	'index-submit' => 'Явуулах',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'index-search' => 'Cari:',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

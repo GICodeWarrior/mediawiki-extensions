@@ -1689,6 +1689,7 @@ $messages['mr'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'storyboard-language' => 'Bahasa',
 	'storyboard-deletestory' => 'Padamkan',
 );
 

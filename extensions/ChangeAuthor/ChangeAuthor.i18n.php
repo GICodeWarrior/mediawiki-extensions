@@ -1573,10 +1573,32 @@ $messages['mr'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'changeauthor' => 'Ubah pengarang semakan',
+	'changeauthor-desc' => 'Membolehkan pengubahan pengarang semakan',
+	'changeauthor-title' => 'Ubah pengarang semakan',
+	'changeauthor-search-box' => 'Cari semakan',
+	'changeauthor-pagename-or-revid' => 'Nama laman atau ID semakan:',
 	'changeauthor-pagenameform-go' => 'Pergi',
 	'changeauthor-comment' => 'Komen:',
 	'changeauthor-changeauthors-multi' => 'Tukar {{PLURAL:$1|pengarang|pengarang}}',
+	'changeauthor-explanation-multi' => 'Dengan borang ini, anda boleh mengubah pengarang semakan.
+Anda cuba perlu mengubah satu atau lebih nama pengguna dalam senarai di bawah, berikan komen (tidak wajib) dan klik butang "Tukar pengarang".',
 	'changeauthor-changeauthors-single' => 'Tukar pengarang',
+	'changeauthor-explanation-single' => 'Dengan borang ini, anda boleh mengubah pengarang semakan.
+Anda cuba perlu mengubah nama pengguna di bawah, berikan komen (tidak wajib) dan klik butang "Tukar pengarang".',
+	'changeauthor-invalid-username' => 'Nama pengguna "$1" tidak sah.',
+	'changeauthor-nosuchuser' => 'Pengguna "$1" tidak wujud.',
+	'changeauthor-revview' => 'Semakan #$1 daripada $2',
+	'changeauthor-nosuchtitle' => 'Laman "$1" tidak wujud.',
+	'changeauthor-weirderror' => 'Ralat yang amat pelik terjadi
+Sila cuba lagi permohonan anda.
+Jika ralat ini masih tidak reda, mungkin pangkalan data rosak.',
+	'changeauthor-invalidform' => 'Sila gunakan borang yang disediakan oleh [[Special:ChangeAuthor|laman khas ini]] daripada sebarang borang tersuai.',
+	'changeauthor-success' => 'Permohonan anda berjaya diproses.',
+	'changeauthor-logentry' => 'Pengarang $2 dalam $1 diubah daripada $3 kepada $4',
+	'changeauthor-logpagename' => 'Log perubahan pengarang',
+	'changeauthor-rev' => 'r$1',
+	'right-changeauthor' => 'Mengubah pengarang semakan',
 );
 
 /** Maltese (Malti)

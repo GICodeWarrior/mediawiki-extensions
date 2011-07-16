@@ -94,6 +94,15 @@ $messages['ba'] = array(
 	'block_title_error' => 'Ғәфү итегеҙ, бындай исемле бит һаҡлана алмай.',
 );
 
+/** Bavarian (Boarisch)
+ * @author Mucalexx
+ */
+$messages['bar'] = array(
+	'block_title_error_page_title' => 'Sperr Seitennåm',
+	'blocktitles-desc' => "Stöd a oahfoche Méglichkeid dor, d' Eihstellungen voh Seiten mid bstimmte Titel z' vahindern.",
+	'block_title_error' => 'Tschuidige, ower a Seiten mid dém Nåm derf néd gspeicherd wern.',
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */

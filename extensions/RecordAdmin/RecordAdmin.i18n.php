@@ -1506,8 +1506,10 @@ $messages['mn'] = array(
  * @author Aurora
  */
 $messages['ms'] = array(
+	'recordadmin-buttonsearch' => 'Cari',
 	'recordadmin-buttoncreate' => 'Cipta',
 	'recordadmin-buttonreset' => 'Set semula',
+	'recordadmin-buttonsave' => 'Simpan',
 	'recordadmin-actions' => 'Sunting',
 );
 

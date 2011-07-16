@@ -348,6 +348,14 @@ $messages['mr'] = array(
 	'dontswitchmeover-pref' => 'अविचल(डिफॉल्ट) त्वचा बदलेल तेव्हा माझी बदलती ठेऊ नका',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'dontswitchmeover-desc' => 'Keutamaan untuk pengguna menentukan sama ada untuk mengekalkan tetapan kulit mereka apabila kulit sediakala berubah.',
+	'dontswitchmeover-pref' => 'Jangan benarkan kulit saya berubah apabila kulit sediakala berubah',
+);
+
 /** Dutch (Nederlands)
  * @author McDutchie
  * @author Siebrand

@@ -414,6 +414,13 @@ $messages['ay'] = array(
 	'mywhitelistpages' => 'Uñstawinakaja',
 );
 
+/** Bavarian (Boarisch)
+ * @author Mucalexx
+ */
+$messages['bar'] = array(
+	'whitelisttablemodifyall' => 'Oiss módifizirn',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by

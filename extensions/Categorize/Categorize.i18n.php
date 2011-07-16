@@ -25,11 +25,14 @@ $messages['en'] = array(
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
+ * @author Jim-by
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
+	'categorize-desc' => 'Дадаць поле ўводу для рэлагаваньня і загрузкі старонкі, якое дазваляе ўдзельнікам далучаць старонкі да катэгорыяў',
 	'categorize-title' => 'Ацэнка ведаў',
 	'categorize-footer' => 'Калі жадаеце дадаць надпіс, скантактуйцеся з намі…',
+	'categorize-advice' => 'Націсьніце на меткі, якія Вы жадаеце дадаць да гэтай старонкі:',
 );
 
 /** German (Deutsch)
@@ -88,6 +91,16 @@ $messages['mk'] = array(
 	'categorize-title' => 'Определување на знаењата',
 	'categorize-footer' => 'Ако сакате да додадете признак, контактирајте нè на ...',
 	'categorize-advice' => 'Стиснете на признаците што сакате да ѝ ги припишете на страницава:',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'categorize-desc' => 'Menambahkan petak input untuk menyunting dan memuat naik laman yang membolehkan pengguna memperuntukkan kategori kepada laman',
+	'categorize-title' => 'Kelayakan pengetahuan',
+	'categorize-footer' => 'Jika anda ingin menambahkan label, sila hubungi kami di ...',
+	'categorize-advice' => 'Klik pada label yang ingin anda atributkan kepada laman ini:',
 );
 
 /** Portuguese (Português)

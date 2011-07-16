@@ -780,6 +780,7 @@ $messages['mk'] = array(
  */
 $messages['ms'] = array(
 	'ts-citegen-Sources-title' => 'Sumber',
+	'ts-citegen-Errors-title' => 'Ralat',
 );
 
 /** Dutch (Nederlands)
