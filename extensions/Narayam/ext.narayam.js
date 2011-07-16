@@ -3,7 +3,7 @@
  */
 ( function( $ ) {
 	$( document ).ready( function() {
-		$.narayam.addInputs( 'input[type=text], input[type=search], input[type=], textarea' );
+		$.narayam.addInputs( 'input:text, input[type=search], textarea' );
 		$.narayam.setup();
 	} );
 } )( jQuery );
