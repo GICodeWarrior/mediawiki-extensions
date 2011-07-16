@@ -247,6 +247,7 @@ $messages['lb'] = array(
 	'notificator-following-e-mail-sent-to' => 'Dës Mail gouf un den $1 geschéckt:',
 	'notificator-subject' => 'Sujet:',
 	'notificator-error-parameter-missing' => 'Feeler: Parameter feelt.',
+	'notificator-notified-already' => "$1 gouf schonn iwwer dës Säit oder d'Ännerung vun dëser Säit informéiert.",
 );
 
 /** Macedonian (Македонски)
