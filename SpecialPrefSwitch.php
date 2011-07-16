@@ -172,9 +172,7 @@ class SpecialPrefSwitch extends SpecialPage {
 		}
 		// Always show a way back
 		if ( $this->originTitle && $this->originFullUrl ) {
-			$wgOut->addWikiMsgArray(
-				'prefswitch-return', array( $this->originFullUrl, $this->originTitle ), array( 'parse' )
-			);
+			$wgOut->addWikiMsg( 'prefswitch-return', $this->originFullUrl, $this->originTitle );
 		}
 		// Set page title
 		if ( self::isSwitchedOn( $wgUser ) ) {
@@ -252,13 +250,9 @@ class SpecialPrefSwitch extends SpecialPage {
 			$html .= Xml::closeElement( 'form' );
 			$wgOut->addHtml( $html );
 		} else {
-			$wgOut->addWikiMsgArray(
-				'prefswitch-main', wfMsgForContent( 'prefswitch-feedbackpage' ), array( 'parse' )
-			);
+			$wgOut->addWikiMsg( 'prefswitch-main', wfMsgForContent( 'prefswitch-feedbackpage' ) );
 			if ($wgUser->isLoggedIn()) {
-				$wgOut->addWikiMsgArray(
-					'prefswitch-main-logged-changes', array( 'parse' )
-				);
+				$wgOut->addWikiMsg( 'prefswitch-main-logged-changes' );
 
 				$oldSkin = 'monobook'; // The skin we are migrating from
 
@@ -276,9 +270,7 @@ class SpecialPrefSwitch extends SpecialPage {
 					}
 				}
 			}
-			$wgOut->addWikiMsgArray(
-					'prefswitch-main-feedback', wfMsgForContent( 'prefswitch-feedbackpage' ), array( 'parse' )
-				);
+			$wgOut->addWikiMsg( 'prefswitch-main-feedback', wfMsgForContent( 'prefswitch-feedbackpage' ) );
 			$state = self::userState( $wgUser );
 			switch ( $state ) {
 				case 'anon':
@@ -305,7 +297,7 @@ class SpecialPrefSwitch extends SpecialPage {
 					break;
 			}
 			// Uses prefswitch-main-anon, prefswitch-main-on and prefswitch-main-off
-			$wgOut->addWikiMsgArray( 'prefswitch-main-' . $state, $parameters, array( 'parse' ) );
+			$wgOut->addWikiMsgArray( 'prefswitch-main-' . $state, $parameters );
 		}
 	}
 }
