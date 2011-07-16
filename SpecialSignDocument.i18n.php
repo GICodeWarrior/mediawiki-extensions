@@ -3313,6 +3313,8 @@ $messages['ms'] = array(
 	'sign-viewfield-agent' => 'Ejen pengguna',
 	'sign-viewfield-email' => 'E-mel',
 	'sign-viewfield-reviewedby' => 'Pengkaji semula',
+	'sign-viewfield-reviewcomment' => 'Komen',
+	'sign-review-comment' => 'Komen',
 );
 
 /** Maltese (Malti)
