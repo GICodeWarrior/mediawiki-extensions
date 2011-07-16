@@ -2712,6 +2712,7 @@ $messages['io'] = array(
  * @author Blaisorblade
  * @author BrokenArrow
  * @author Darth Kule
+ * @author Karika
  */
 $messages['it'] = array(
 	'contributionreporting-desc' => 'Aggiornamento in tempo reale sulla raccolta fondi Wikimedia',
@@ -2776,6 +2777,7 @@ $messages['it'] = array(
 	'fundraiserstats-tab-contributions' => 'Numero di contributi',
 	'fundraiserstats-tab-averages' => 'Medie (USD)',
 	'fundraiserstats-tab-maximums' => 'Massimi (USD)',
+	'fundraiserstats-customize' => 'Personalizza',
 	'fundraiserstats-time-zone' => 'Fuso orario:',
 );
 
