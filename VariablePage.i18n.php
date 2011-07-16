@@ -318,6 +318,15 @@ $messages['ml'] = array(
 	'variablepage-desc' => 'ലഘുഭാര തിരിച്ചുവിടൽ ചരതാൾ',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'variablepage' => 'VariablePage',
+	'variablepage-navlink_text' => 'Derma',
+	'variablepage-desc' => 'Penghalaan laman pembolehubah yang ringan',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
