@@ -27,6 +27,17 @@ $messages['qqq'] = array(
 	'fileattach-desc' => '{{desc}}',
 );
 
+/** Arabic (العربية)
+ * @author Imksa
+ */
+$messages['ar'] = array(
+	'fileattach-desc' => 'السماح بتحميل ملفات إلى الصفحة الحالية',
+	'fileattach-attachments' => 'ملف المرفقات',
+	'fileattach-attachfile' => 'إرفاق ملف',
+	'fileattach-uploadheading' => 'إرفاق ملف إلى SAR4',
+	'fileattach-editcomment' => 'ملف [ملف [: SAR4 | SAR4 ]] المرفق',
+);
+
 /** Asturian (Asturianu)
  * @author Xuacu
  */
