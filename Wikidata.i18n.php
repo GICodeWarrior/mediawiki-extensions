@@ -1397,6 +1397,13 @@ $messages['avk'] = array(
 	'ow_db_consistency_not_found' => '<h2>Rokla</h2>Tir uum icde duga ke origak, Wikidata va wadaf orig skedas va bata ID tentunafa sugdala me rotrasir. Rotir batcoba tir griawiyisa. Va ristusik va zanisiko vay uzeral !',
 );
 
+/** Bavarian (Boarisch)
+ * @author Mucalexx
+ */
+$messages['bar'] = array(
+	'languages' => 'Wikidata: Sproochen-Manager',
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */
@@ -3853,7 +3860,7 @@ Seleccionar una colección a exportar. En la tabla de textos de idiomas, ingresa
 	'ow_Property' => 'Propiedad',
 	'ow_Value' => 'Valor',
 	'ow_added' => 'Agregado',
-	'ow_removed' => 'Removido',
+	'ow_removed' => 'Eliminado',
 	'ow_meaningsoftitle' => 'Significado de "$1"',
 	'ow_meaningsofsubtitle' => '<em>Wiki enlace:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>PERMISO NEGADO</h2>',
@@ -8949,7 +8956,11 @@ $messages['mr'] = array(
  * @author Aurora
  */
 $messages['ms'] = array(
+	'langman_langname' => 'Nama bahasa:',
+	'langman_addlang' => 'Tambahkan bahasa',
 	'datasearch_language' => 'Bahasa:',
+	'ow_exporttsv_languages' => 'Bahasa:',
+	'ow_save' => 'Simpan',
 	'ow_transaction_remove' => 'Buang',
 	'ow_transaction_summary' => 'Ringkasan',
 	'ow_dm_OK' => 'OK',
