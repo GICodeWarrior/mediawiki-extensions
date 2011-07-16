@@ -942,6 +942,7 @@ $messages['mk'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'errorhandler-errors' => 'Ralat:',
 	'errorhandler-msg-text' => '$1 : $2 dalam $3 (baris $4)',
 );
 
