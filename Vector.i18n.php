@@ -807,7 +807,7 @@ $messages['hy'] = array(
 $messages['ia'] = array(
 	'vector' => 'Meliorationes del interfacie de usator pro Vector',
 	'vector-desc' => 'Meliora le elementos del interfacie de usator del apparentia Vector.',
-	'vector-collapsiblenav-preference' => 'Activar le replicamento de elementos in le menu de navigation in le apparentia Vector',
+	'vector-collapsiblenav-preference' => 'Render plicabile le elementos in le menu de navigation in le apparentia Vector',
 	'vector-collapsiblenav-more' => 'Plus linguas',
 	'vector-editwarning-warning' => 'Quitar iste pagina pote causar le perdita de omne modificationes que tu ha facite.
 Si tu ha aperite un session, tu pote disactivar iste aviso in le section "Modification" de tu preferentias.',
@@ -1146,6 +1146,7 @@ $messages['mr'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Aurora
  * @author Diagramma Della Verita
  */
@@ -1159,6 +1160,7 @@ Anda boleh melumpuhkan amaran in di bahagian "Menyunting" dalam keutamaan anda.'
 	'vector-editwarning-preference' => 'Beri saya amaran apabila saya meninggalkan sesebuah laman penyuntingan tanpa menyimpan perubahan.',
 	'vector-simplesearch-search' => 'Cari',
 	'vector-simplesearch-containing' => 'mengandungi...',
+	'vector-noexperiments-preference' => 'Kecualikan saya dari uji kaji ciri',
 );
 
 /** Maltese (Malti)
