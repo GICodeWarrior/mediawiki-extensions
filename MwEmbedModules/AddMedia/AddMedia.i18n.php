@@ -332,6 +332,7 @@ $messages['an'] = array(
 
 /** Arabic (العربية)
  * @author Aiman titi
+ * @author Houcinee1
  * @author Majid Al-Dharrab
  * @author Meno25
  * @author Moemin05
@@ -383,6 +384,7 @@ $messages['ar'] = array(
 	'mwe-upload-done' => '<i>ينبغي أن يكون</i> ملفك المرفوع متاحًا.',
 	'mwe-add_media_wizard' => 'أضف معالج وسائط',
 	'mwe-media_search' => 'البحث عن الوسائط',
+	'mwe-am-box_layout' => 'تخطيط المربع',
 	'mwe-am-list_layout' => 'تخطيط القائمة',
 	'mwe-am-results_desc' => 'النتائج  $1 إلى $2',
 	'mwe-am-results_desc_total' => 'النتائج $1 إلى $2 من $3',
@@ -4719,6 +4721,7 @@ $messages['ml'] = array(
 	'mwe-ignore-any-warnings' => 'അറിയിപ്പുകൾ അവഗണിക്കുക',
 	'mwe-upload-in-progress' => 'അപ്‌‌ലോഡ് നടക്കുന്നു (ഈ ജാലകം അടയ്ക്കരുത്)',
 	'mwe-uploaded-status' => 'അപ്‌‌ലോഡ് ചെയ്തിരിക്കുന്നു',
+	'mwe-uploaded-time-remaining' => 'ശേഷിക്കുന്ന സമയം: $1',
 	'mwe-media_search' => 'മീഡിയ തിരച്ചിൽ',
 	'mwe-am-box_layout' => 'ചതുരപ്പെട്ടി രൂപകല്പന',
 	'mwe-am-list_layout' => 'പട്ടിക രൂപകല്പന',
@@ -4841,7 +4844,7 @@ Anda boleh $1, kemudian $2',
 	'mwe-resource_description_page' => 'Laman penerangan sumber',
 	'mwe-link' => 'pautan',
 	'mwe-am-do_insert' => 'Sila masukkan',
-	'mwe-cc_by_title' => 'Atribusi',
+	'mwe-cc_by_title' => 'Pengiktirafan',
 	'mwe-cc_nc_title' => 'Bukan komersial',
 	'mwe-cc_nd_title' => 'Tiada Kerja Terbitan',
 	'mwe-cc_sa_title' => 'Share Alike',
