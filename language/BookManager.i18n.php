@@ -470,6 +470,7 @@ $messages['sr-ec'] = array(
  */
 $messages['sv'] = array(
 	'bookmanager-desc' => 'Verktyg för böcker',
+	'bm-booktools-section' => 'Bokverktyg',
 	'bm-printversion' => 'Utskriftsversion',
 	'bm-printversion-desc' => 'Skapar en [[Special:PrintVersion|utskriftsversion]] av en bok',
 	'bm-printversion-no-book' => 'Ange namnet på en bok för att få den i utskriftsversion.',
