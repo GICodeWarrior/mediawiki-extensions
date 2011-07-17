@@ -264,7 +264,6 @@ abstract class ApiAnalyticsBase extends ApiBase {
 			'endmonth' => array(
 				ApiBase::PARAM_TYPE => 'string',
 			),
-			'normalized' => false,
 			'data' => array(
 				ApiBase::PARAM_DFLT => 'timeseries',
 				ApiBase::PARAM_ISMULTI => true,
@@ -284,6 +283,10 @@ abstract class ApiAnalyticsBase extends ApiBase {
 				),
 			),
 		);
+
+		if ( $this->canBeNormalised() ) {
+			$params['normalized'] = false;
+		}
 
 		$select = array(
 			'selectregions' => array(

@@ -23,7 +23,7 @@ class SquidPageViewsMetric extends ApiAnalyticsBase {
 		return array(
 			'table' => array( 'page_views' ),
 			'conds' => array(),
-			'options' => array( 'GROUP BY' => 'date', ),
+			'options' => array( 'GROUP BY' => array( 'date' ) ),
 			'join_conds' => array(),
 		);
 	}
