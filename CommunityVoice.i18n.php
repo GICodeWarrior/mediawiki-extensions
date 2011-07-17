@@ -696,6 +696,21 @@ $messages['ml'] = array(
 	'communityvoice-ratings-error-no-title' => 'നിലവാരമിടൽ റ്റാഗിൽ തലക്കെട്ട് ഘടകം നൽകിയിട്ടില്ല.',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'communityvoice' => 'Suara Komuniti',
+	'communityvoice-desc' => 'Peralatan penyertaan komuniti',
+	'communityvoice-ratings' => 'Penilaian',
+	'communityvoice-ratings-scale-status-sending' => 'Menghantar...',
+	'communityvoice-ratings-scale-status-error' => 'Ralat ketika menghantar!',
+	'communityvoice-ratings-scale-status-thanks' => 'Terima kasih kerana mengundi!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 undian dibuang)',
+	'communityvoice-ratings-error-no-category' => 'Atribut kategori tiada dalam tag penilaian.',
+	'communityvoice-ratings-error-no-title' => 'Atribut tajuk tiada dalam tag penilaian.',
+);
+
 /** Dutch (Nederlands)
  * @author Fryed-peach
  * @author Siebrand
