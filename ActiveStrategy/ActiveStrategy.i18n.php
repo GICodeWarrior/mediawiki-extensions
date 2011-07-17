@@ -366,6 +366,16 @@ $messages['ml'] = array(
 	'nedits' => '{{PLURAL:$1|ഒരു തിരുത്തൽ|$1 തിരുത്തലുകൾ}}',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'activestrategy' => 'Strategi aktif',
+	'active-strategy-desc' => 'Menunjukkan bilangan suntingan pada laman-laman perancangan strategik',
+	'active-strategy-intro' => 'Bilangan suntingan pada laman pasukan petugas pada $1 hari lalu:',
+	'nedits' => '$1 suntingan',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
