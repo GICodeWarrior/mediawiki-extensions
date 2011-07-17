@@ -3881,6 +3881,7 @@ Sila hubungi [[Special:ListUsers/sysop|pentadbir]].',
 	'openidfullname' => 'Nama penuh',
 	'openidemail' => 'Alamat e-mel',
 	'openidlanguage' => 'Bahasa',
+	'openidtimezone' => 'Zon waktu',
 	'openidchoosefull' => 'Nama penuh anda ($1)',
 	'openidchooseurl' => 'Nama yang dipilih daripada OpenID anda ($1)',
 	'openidchooseauto' => 'Nama janaan automatik ($1)',
@@ -4432,14 +4433,10 @@ Możesz wybrać spośród propozycji podanych poniżej.',
 Jeśli tak się nie stało spróbuj wcisnąć klawisz „Continue” (Kontynuuj).',
 	'openidclientonlytext' => 'Nie można korzystać z kont tej wiki jako OpenID w innych witrynach.',
 	'openidloginlabel' => 'Adres URL OpenID',
-	'openidlogininstructions' => '{{SITENAME}} korzysta ze standardu [http://openid.net/ OpenID] dla zapewnienia jednolitego uwierzytelnienia pomiędzy różnymi witrynami w sieci Web.
-OpenID pozwala na zalogowanie się do wielu różnych witryn sieci Web bez użycia osobnego hasła dla każdej witryny. 
+	'openidlogininstructions' => '{{SITENAME}} korzysta ze standardu [http://openid.net/ OpenID] umożliwiającego równoczesne zalogowanie się do wielu witryn.
+OpenID pozwala na zalogowanie się do wielu różnych witryn sieci Web, bez użycia osobnego hasła dla każdej z nich. 
 (Zobacz [http://pl.wikipedia.org/wiki/OpenID artykuł o OpenID w Wikipedii] jeśli chcesz uzyskać więcej informacji.)
-
-Jeśli masz już konto w {{GRAMMAR:MS.lp|{{SITENAME}}}}, możesz [[Special:UserLogin|zalogować się]] jak zwykle używając nazwy użytkownika i hasła. 
-Jeśli chcesz w przyszłości używać OpenID do logowania się, możesz [[Special:OpenIDConvert|przełączyć konto na korzystanie z OpenID]] po normalnym zalogowaniu się.
-
-Jest wielu [http://openid.net/get/ operatorów usługi OpenID] i możesz mieć już konto przełączone na korzystanie z OpenID innego usługodawcy.',
+Jest wielu [http://openid.net/get/ operatorów usługi OpenID] – możliwe, że posiadasz już konto OpenID u innego usługodawcy.',
 	'openidupdateuserinfo' => 'Uaktualnij moje dane',
 	'openiddelete' => 'Usuń OpenID',
 	'openiddelete-text' => 'Klikając na przycisk „{{int:openiddelete-button}}” usuniesz OpenID $1 ze swojego konta.
