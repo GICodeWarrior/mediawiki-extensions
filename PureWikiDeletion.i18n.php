@@ -638,6 +638,13 @@ $messages['mk'] = array(
 	'right-purewikideletion' => '[[Special:PopulateBlankedPagesTable|Исополни]] ја тебалата со испразнети страници',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'purewikideletion-blanknologin' => 'Belum log masuk',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
