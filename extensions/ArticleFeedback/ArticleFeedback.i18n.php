@@ -2883,6 +2883,7 @@ De Jemeinschaff vun {{GRAMMAR:Nominativ|{{SITENAME}}}}',
 $messages['ku-latn'] = array(
 	'articlefeedback-survey-question-useful-iffalse' => 'Çima?',
 	'articlefeedback-report-switch-label' => 'Encaman nîşan bide',
+	'articleFeedback-table-heading-page' => 'Rûpel',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -3562,6 +3563,7 @@ $messages['nl'] = array(
 	'articlefeedback-survey-submit' => 'Opslaan',
 	'articlefeedback-survey-title' => 'Beantwoord alstublieft een paar vragen',
 	'articlefeedback-survey-thanks' => 'Bedankt voor het beantwoorden van de vragen.',
+	'articlefeedback-survey-disclaimer' => 'Om deze functie te helpen verbeteren, kan uw terugkoppeling anoniem worden gedeeld met de Wikipedia-gemeenschap.',
 	'articlefeedback-error' => 'Er is een fout opgetreden.
 Probeer het later opnieuw.',
 	'articlefeedback-form-switch-label' => 'Deze pagina waarderen',
@@ -3933,7 +3935,32 @@ Proszę spróbować ponownie później.',
 	'articleFeedback-table-heading-page' => 'Strona',
 	'articleFeedback-table-heading-average' => 'Średnio',
 	'articleFeedback-copy-above-highlow-tables' => 'To jest rozwiązanie eksperymentalne. Wyraź swoją opinię na jego temat na [$1 stronie dyskusji].',
+	'articlefeedback-dashboard-bottom' => "'''Uwaga''' – będziemy nadal eksperymentować z różnymi metodami poprawiania artykułów. Obecnie pracujemy nad następującymi artykułami:
+ * Strony oceniane najwyżej i najniżej – artykuły, które zostały co najmniej 10 razy ocenione w ciągu ostatnich 24 godzin. Wartości średnie są obliczane poprzez wyciągnięcie średniej ze wszystkich ocen z ostatnich 24 godzin.
+ * Ostatnio słabe – artykuły, które uzyskały 70% lub więcej ocen negatywnych (2 gwiazdki lub mniej) w każdej kategorii, w ciągu ostatnich 24 godzin. Uwzględniane są tylko te artykuły, które otrzymały przynajmniej 10 ocen w ostatnich 24 godzinach.",
 	'articlefeedback-disable-preference' => 'Nie pokazuj na stronach widżetu opinii o artykule',
+	'articlefeedback-emailcapture-response-body' => 'Witaj!
+
+Dziękujemy za zainteresowanie udoskonalaniem {{GRAMMAR:D.lp|{{SITENAME}}}}.
+
+Poświęć chwilę na potwierdzenie swojego adres e‐mail – kliknij link
+
+$1
+
+Możesz również odwiedzić
+
+$2
+
+i wprowadzić kod potwierdzający
+
+$3
+
+Będziemy nadal współpracować, aby udoskonalić {{GRAMMAR:B.lp|{{SITENAME}}}}.
+
+Jeśli to nie Ty spowodowałeś wysłanie tego e‐maila, wystarczy że go zignorujesz – niczego więcej do Ciebie nie wyślemy.
+
+Pozdrawiamy i dziękujemy,
+zespół {{GRAMMAR:D.lp|{{SITENAME}}}}.',
 );
 
 /** Piedmontese (Piemontèis)
@@ -5002,18 +5029,18 @@ $messages['sv'] = array(
 	'articlefeedback-error' => 'Ett fel har uppstått. Försök igen senare.',
 	'articlefeedback-form-switch-label' => 'Betygsätt sidan',
 	'articlefeedback-form-panel-title' => 'Betygsätt sidan',
-	'articlefeedback-form-panel-instructions' => 'Vänligen betygsätt denna sida.',
+	'articlefeedback-form-panel-explanation' => 'Vad är detta?',
 	'articlefeedback-form-panel-clear' => 'Ta bort detta betyg',
 	'articlefeedback-form-panel-expertise' => 'Jag är mycket kunniga om detta ämne (frivilligt)',
 	'articlefeedback-form-panel-expertise-studies' => 'Jag har en relevant högskole-/universitetsexamen',
 	'articlefeedback-form-panel-expertise-profession' => 'Det är en del av mitt yrke',
-	'articlefeedback-form-panel-expertise-hobby' => 'Det är relaterat till mina hobbyer eller intressen',
+	'articlefeedback-form-panel-expertise-hobby' => 'Det är en djupt personlig passion',
 	'articlefeedback-form-panel-expertise-other' => 'Källan till min kunskap inte är listade här',
 	'articlefeedback-form-panel-helpimprove' => 'Jag skulle vilja bidra till att förbättra Wikipedia, skicka mig ett e-post (frivilligt)',
 	'articlefeedback-form-panel-helpimprove-note' => 'Vi skickar en bekräftelse via e-post. Vi delar inte ut din adress till någon annan. $1',
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Integritetspolicy',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Integritetspolicy',
-	'articlefeedback-form-panel-submit' => 'Skicka in feedback',
+	'articlefeedback-form-panel-submit' => 'Skicka betyg',
 	'articlefeedback-form-panel-success' => 'Sparat',
 	'articlefeedback-form-panel-expiry-title' => 'Dina betyg har gått ut',
 	'articlefeedback-form-panel-expiry-message' => 'Vänligen omvärdera denna sida och skicka nya omdömen.',
@@ -5030,6 +5057,8 @@ $messages['sv'] = array(
 	'articlefeedback-field-objective-tip' => 'Känner du att den här sidan visar en rättvis representation av alla perspektiv på frågan?',
 	'articlefeedback-field-wellwritten-label' => 'Välskrivet',
 	'articlefeedback-field-wellwritten-tip' => 'Tycker du att den här sidan är väl organiserad och välskriven?',
+	'articlefeedback-field-wellwritten-tooltip-1' => 'Obegripligt',
+	'articlefeedback-field-wellwritten-tooltip-2' => 'Svårt att förstå',
 	'articlefeedback-pitch-reject' => 'Kanske senare',
 	'articlefeedback-pitch-or' => 'eller',
 	'articlefeedback-pitch-thanks' => 'Tack! Ditt betyg har sparats.',
@@ -5357,11 +5386,12 @@ $messages['vi'] = array(
 	'articlefeedback-survey-answer-whyrated-didntrate' => 'Tôi không đánh giá hôm nay, nhưng vẫn muốn phản hồi về tính năng',
 	'articlefeedback-survey-answer-whyrated-other' => 'Khác',
 	'articlefeedback-survey-question-useful' => 'Bạn có tin rằng các đánh giá được cung cấp là hữu ích và dễ hiểu?',
-	'articlefeedback-survey-question-useful-iffalse' => 'Tạo sao?',
+	'articlefeedback-survey-question-useful-iffalse' => 'Tại sao?',
 	'articlefeedback-survey-question-comments' => 'Bạn có ý kiến bổ sung?',
 	'articlefeedback-survey-submit' => 'Gửi',
 	'articlefeedback-survey-title' => 'Xin vui lòng trả lời một số câu hỏi',
 	'articlefeedback-survey-thanks' => 'Cám ơn bạn đã điền khảo sát.',
+	'articlefeedback-survey-disclaimer' => 'Để giúp cải thiện tính năng này, thông tin phản hồi của bạn có thể được chia sẻ nặc danh với cộng đồng Wikipedia.',
 	'articlefeedback-error' => 'Đã gặp lỗi. Xin vui lòng thử lại sau.',
 	'articlefeedback-form-switch-label' => 'Đánh giá trang này',
 	'articlefeedback-form-panel-title' => 'Đánh giá trang này',

@@ -109,3 +109,11 @@ $messages['sv'] = array(
 	'oracletextsearch-desc' => 'Sök innehåll/metadata för uppladdade filer med hjälp av Oracle Text-indexering',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'oracletextsearch' => 'OracleTextSearch',
+	'oracletextsearch-desc' => 'Tìm kiếm nội dung và siêu dữ liệu của tập tin tải lên dùng chỉ mục Oracle Text',
+);
+

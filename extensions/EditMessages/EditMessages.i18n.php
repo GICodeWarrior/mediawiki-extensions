@@ -617,7 +617,7 @@ $messages['gu'] = array(
  * @author MacTire02
  */
 $messages['gv'] = array(
-	'editmsg-search' => 'Ronsaghey',
+	'editmsg-search' => 'Ronsee',
 	'editmsg-new-search' => 'Ronsaght noa',
 );
 

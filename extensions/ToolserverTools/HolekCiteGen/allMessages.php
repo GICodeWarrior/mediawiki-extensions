@@ -1093,11 +1093,15 @@ $messages['uk'] = array(
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
+	'ts-citegen-Input-title' => 'Đầu vào',
+	'ts-citegen-Option-append-author-link' => 'Liên kết tên tác giả đến trang wiki trong bản mẫu',
 	'ts-citegen-Option-append-newlines' => 'Xuống dòng sau mỗi tham số',
 	'ts-citegen-Option-add-references' => 'Kẹp các bản mẫu chú thích vào trong thẻ <ref>',
 	'ts-citegen-Option-add-list' => 'Tạo danh sách bản mẫu chú thích',
 	'ts-citegen-Output-title' => 'Kết quả',
+	'ts-citegen-Output-select-disclaimer' => 'Mặc dù chọn một ngôn ngữ nhưng bản mẫu được chọn có thể không có sẵn trong ngôn ngữ đó. Phần này liệt kê mọi ngôn ngữ cung cấp mọi bản mẫu, thí dụ bạn có thể gặp tiếng Pháp tại vì chỉ có {{Chú thích sách}} được cung cấp.',
 	'ts-citegen-Parsers' => 'Bộ phân tích',
+	'ts-citegen-Skins' => 'Đầu ra',
 	'ts-citegen-Skin-skins' => 'Hình dạng',
 	'ts-citegen-Skin-outputformat' => 'Định dạng cho ra',
 	'ts-citegen-Template-lang' => 'Ngôn ngữ bản mẫu',

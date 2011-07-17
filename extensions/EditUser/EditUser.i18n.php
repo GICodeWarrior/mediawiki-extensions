@@ -543,7 +543,7 @@ $messages['gsw'] = array(
 $messages['gv'] = array(
 	'edituser' => 'Ymmydeyr y reaghey',
 	'edituser-username' => 'Ennym ymmydeyr:',
-	'edituser-dosearch' => 'Ronsaghey',
+	'edituser-dosearch' => 'Ronsee',
 );
 
 /** Hausa (هَوُسَ) */

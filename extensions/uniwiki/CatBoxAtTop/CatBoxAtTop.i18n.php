@@ -382,6 +382,13 @@ $messages['mn'] = array(
 	'catboxattop-categories' => 'Ангиллууд',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'catboxattop-categories' => 'Kategori',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

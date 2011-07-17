@@ -339,6 +339,15 @@ $messages['mr'] = array(
 	'spl3_nosubpages' => '$1 ला यादी करण्यासाठी उपपाने नाहीत.',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'spl3-desc' => 'Mewujudkan satu senarai sublaman bagi sesuatu laman dengan menggunakan tag <code><nowiki><splist /></nowiki></code> secara automatik',
+	'spl3_debug' => 'Nilai tidak dikenali untuk pilihan $1.',
+	'spl3_nosubpages' => '$1 tiada sublaman untuk disenaraikan.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

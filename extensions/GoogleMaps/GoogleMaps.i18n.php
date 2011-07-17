@@ -2411,7 +2411,7 @@ $wgGoogleMapsMessages['gv'] = array(
 	'gm-no-zoom-control' => 'Veg',
 	'gm-yes' => 'Ta',
 	'gm-no' => 'Cha',
-	'gm-search' => 'Ronsaghey',
+	'gm-search' => 'Ronsee',
 	'gm-save-path' => 'Sauail',
 );
 

@@ -720,6 +720,14 @@ $messages['mn'] = array(
 	'createpage_submitbutton' => 'Явуулах',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'createpage' => 'Cipta laman',
+	'createpage-badtitle' => '"$1" tidak boleh digunakan sebagai tajuk laman',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

@@ -1024,6 +1024,8 @@ $messages['ksh'] = array(
  * @author George Animal
  */
 $messages['ku-latn'] = array(
+	'amazonplus-nores' => 'Çewtî: Tu encam nehate dîtin!',
+	'amazonplus-used' => 'hate bikaranîn',
 	'amazonplus-german' => 'Elmanî',
 	'amazonplus-french' => 'Frensî',
 	'amazonplus-new' => 'nû',

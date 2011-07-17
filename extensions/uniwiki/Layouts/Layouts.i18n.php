@@ -619,6 +619,14 @@ $messages['mn'] = array(
 	'layouts_unknown' => 'Үл мэдэгдэх',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'layouts_chooselayout' => 'Pilih tataletak untuk $1:',
+	'layouts_choosecategory' => 'Pilih kategori untuk $1:',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

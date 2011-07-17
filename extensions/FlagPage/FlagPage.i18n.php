@@ -690,11 +690,13 @@ $messages['ru'] = array(
 
 /** Swedish (Svenska)
  * @author Fader
+ * @author WikiPhoenix
  */
 $messages['sv'] = array(
 	'flagpage' => 'Flagga en sida',
 	'flagpage-nopageselectedtitle' => 'Ingen sida vald',
 	'flagpage-confirmsave' => 'Vänligen bekräfta dina ändringar.',
+	'flagpage-submitbutton' => 'Spara sidan med denna mall',
 	'flagpage-nonexistent' => 'Sidan “$1” existerar inte. Kanske har den [{{fullurl:Special:Log|page=$1}} flyttats eller tagits bort].',
 	'flagpage-success' => '[[$1]] har lagts till på sidan [[$2]].',
 	'flagpage-tab' => 'Flagga',

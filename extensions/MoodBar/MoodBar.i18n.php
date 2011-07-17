@@ -78,7 +78,8 @@ See also:
 $messages['qqq'] = array(
 	'moodbar-desc' => 'This is a feature in development. See [[mw:MoodBar 0.1/Design]] for background information.',
 	'moodbar-trigger-using' => "Link text of the MoodBar overlay trigger. \$1 is the SITENAME. The implied sentence is ''\"Using [Sitename] made me happy/sad/...\"''. See [[mw:MoodBar 0.1/Design]] for background development information.",
-	'moodbar-intro-using' => 'Intro title of the MoodBar overlay trigger. $1 is the SITENAME.',
+	'moodbar-intro-using' => '[[File:MoodBar-Step-1.png|right|200px]]
+Intro title of the MoodBar overlay trigger. $1 is the SITENAME.',
 	'moodbar-trigger-feedback' => 'Link text of the MoodBar overlay trigger. $1 is the SITENAME.',
 	'moodbar-close' => 'Link text of the close-button. Make sure to include parentheses.
 
@@ -268,19 +269,32 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'moodbar-desc' => 'Laat bepaalde gebruikers toe hun "gemoedstoestand" naar de sitebeheerders te verzenden',
-	'moodbar-trigger-using' => 'Bij het gebruiken van $1...',
+	'moodbar-trigger-using' => 'Het gebruiken van $1...',
 	'moodbar-intro-using' => 'Het gebruiken van $1 maakte mij...',
 	'moodbar-trigger-feedback' => 'Terugkoppeling',
+	'moodbar-close' => '(sluiten)',
 	'moodbar-intro-feedback' => 'Terugkoppeling:',
 	'moodbar-type-happy-title' => 'Blij',
 	'moodbar-type-sad-title' => 'Triest',
 	'moodbar-type-confused-title' => 'Verward',
 	'tooltip-moodbar-what' => 'Meer informatie over deze functie',
 	'moodbar-what-label' => 'Wat is dit?',
+	'right-moodbar-view' => 'MoodBar-terugkoppeling bekijken en exporteren',
+	'moodbar-admin-title' => 'MoodBar-terugkoppeling',
+	'moodbar-admin-intro' => 'Deze pagina laat u toe om terugkoppeling die met de MoodBar is verzonden, te bekijken',
 	'moodbar-admin-download' => 'Downloaden als CSV',
+	'moodbar-header-id' => 'Nummer van de terugkoppeling',
+	'moodbar-header-timestamp' => 'Tijdstip',
+	'moodbar-header-type' => 'Type',
 	'moodbar-header-page' => 'Pagina',
+	'moodbar-header-usertype' => 'Gebruikerstype',
 	'moodbar-header-user' => 'Gebruiker',
+	'moodbar-header-editmode' => 'Bewerkingsmodus',
+	'moodbar-header-system' => 'Systeemtype',
+	'moodbar-header-locale' => 'Taalinstelling',
+	'moodbar-header-useragent' => 'User-agent',
 	'moodbar-header-comment' => 'Opmerkingen',
+	'moodbar-header-user-editcount' => 'Aantal bewerkingen van de gebruiker',
 );
 
 /** Portuguese (Português)
@@ -289,7 +303,32 @@ $messages['nl'] = array(
 $messages['pt'] = array(
 	'moodbar-desc' => 'Permite que os utilizadores especificados enviem ao operador do site uma indicação da sua "disposição".',
 	'moodbar-trigger-using' => 'A usar $1...',
+	'moodbar-intro-using' => 'Usar a $1 tornou-me...',
 	'moodbar-trigger-feedback' => 'Comentários',
+	'moodbar-close' => '(fechar)',
+	'moodbar-intro-feedback' => 'Comentários:',
+	'moodbar-type-happy-title' => 'Feliz',
+	'moodbar-type-sad-title' => 'Triste',
+	'moodbar-type-confused-title' => 'Confuso',
+	'tooltip-moodbar-what' => 'Saiba mais sobre esta funcionalidade',
+	'moodbar-what-label' => 'O que é isto?',
+	'right-moodbar-view' => 'Ver e exportar os comentários da MoodBar',
+	'moodbar-admin-title' => 'Comentários da MoodBar',
+	'moodbar-admin-intro' => 'Esta página permite-lhe ver os comentários enviados com a MoodBar',
+	'moodbar-admin-download' => 'Download no formato CSV',
+	'moodbar-header-id' => 'ID do comentário',
+	'moodbar-header-timestamp' => 'Data e hora',
+	'moodbar-header-type' => 'Tipo',
+	'moodbar-header-page' => 'Página',
+	'moodbar-header-usertype' => 'Tipo de utilizador',
+	'moodbar-header-user' => 'Utilizador',
+	'moodbar-header-editmode' => 'Modo de edição',
+	'moodbar-header-bucket' => 'Zona de testes',
+	'moodbar-header-system' => 'Tipo de sistema',
+	'moodbar-header-locale' => 'Local',
+	'moodbar-header-useragent' => 'User-Agent',
+	'moodbar-header-comment' => 'Comentários',
+	'moodbar-header-user-editcount' => 'Contagem de edições do utilizador',
 );
 
 /** Russian (Русский)

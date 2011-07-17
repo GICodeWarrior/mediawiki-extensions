@@ -253,6 +253,13 @@ $messages['mk'] = array(
 	'csshooks-desc' => 'Додава CSS на HTML излезните страници за подобар приказ.',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'csshooks-desc' => 'Menambahkan CSS kepada output laman HTML untuk penggayaan yang lebih baik',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */

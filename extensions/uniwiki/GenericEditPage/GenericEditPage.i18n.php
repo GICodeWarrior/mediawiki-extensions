@@ -1026,8 +1026,17 @@ $messages['mn'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'gep-categories' => 'Kategori',
+	'gep-addcategory' => 'Tambahkan kategori',
 	'gep-addcategorybutton' => 'Tambahkan',
+	'gep-suggestcategory' => 'Cadangkan kategori',
+	'gep-suggestcategorybutton' => 'Serahkan',
+	'gep-sections' => 'Bahagian',
+	'gep-sectionnotdisabled' => 'Bahagian ini tidak boleh dimatikan',
+	'gep-addsection' => 'Tambahkan bahagian',
 	'gep-addsectionbutton' => 'Tambahkan',
+	'gep-classicmode' => 'Mod klasik',
+	'gep-genericmode' => 'Mod generik',
 );
 
 /** Erzya (Эрзянь)

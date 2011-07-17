@@ -321,6 +321,13 @@ $messages['ml'] = array(
 	'uploadblacklist-desc' => 'അപ്‌ലോഡ് കരിമ്പട്ടിക സൌകര്യം ചേർക്കുന്നു',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'uploadblacklist-desc' => 'Menambahkan kefungsian senarai hitam muat naik',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

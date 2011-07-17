@@ -1626,6 +1626,7 @@ $messages['ms'] = array(
 	'usagestatisticsintervalday' => 'Hari',
 	'usagestatisticsintervalweek' => 'Minggu',
 	'usagestatisticsintervalmonth' => 'Bulan',
+	'usagestatisticscalselect' => 'Pilih',
 );
 
 /** Erzya (Эрзянь)

@@ -464,6 +464,13 @@ $messages['mr'] = array(
 	'pageby-anon' => '<i>अनामिक</i>',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'pageby-contributors' => 'Penyumbang:',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

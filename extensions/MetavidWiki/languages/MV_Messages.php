@@ -4236,7 +4236,8 @@ Zue dr Stream-Aasicht gumpe: $2',
  * @author MacTire02
  */
 $messages['gv'] = array(
-	'mv_tool_search' => 'Ronsaghey',
+	'mv_external_file' => 'Coadan mooie',
+	'mv_tool_search' => 'Ronsee',
 	'mv_tool_navigate' => 'Stiurey',
 	'mv_history' => 'Shennaghys',
 	'mv_search_category' => 'Ronney',
@@ -7078,6 +7079,7 @@ $messages['ms'] = array(
 	'mv_tool_search' => 'Cari',
 	'mv_remove' => 'buang',
 	'mv_existing_categories' => '{{PLURAL:$1|kategori|kategori}}:',
+	'mv_search_categories' => 'Kategori',
 	'mv_search_or' => 'atau',
 	'mv_search_date_range' => 'Julat tarikh',
 	'mv_date_range' => 'julat tarikh',
@@ -9845,7 +9847,7 @@ $messages['sr-ec'] = array(
 	'mv_edit_metadata' => 'Измени метаподатке',
 	'mv_advanced_edit' => 'Напредно уређивање',
 	'mv_basic_edit' => 'Основно уређивање',
-	'mv_remove_category' => 'Избриши категорију',
+	'mv_remove_category' => 'Уклони категорију',
 	'mv_existing_categories' => '{{PLURAL:$1|категорија|категорије}}:',
 	'mv_add_category' => 'Категориши',
 	'mv_basic_text_desc' => 'Текст описа (необавезно)',

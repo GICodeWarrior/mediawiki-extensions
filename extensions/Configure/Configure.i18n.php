@@ -7621,10 +7621,13 @@ $messages['ms'] = array(
 	'configure-form-reason' => 'Sebab:',
 	'configure-js-remove' => 'Hapuskan',
 	'configure-section-email' => 'E-mel',
+	'configure-section-timezone' => 'Zon waktu',
+	'configure-section-category' => 'Kategori',
 	'configure-section-images' => 'Fail',
 	'configure-section-users' => 'Pengguna',
 	'configure-section-search' => 'Cari',
 	'configure-section-copyright' => 'Hak cipta',
+	'configure-select-wiki-submit' => 'Pilih',
 	'configure-throttle-group' => 'Jenis',
 	'configure-condition-operator-or' => 'Atau',
 );

@@ -799,7 +799,10 @@ $messages['ms'] = array(
 	'contrib-tracking-error-text' => 'Borang yang diserahkan tidak sah',
 	'contrib-tracking-submitting' => 'Borang sedang diserahkan kepada pemproses pembayaran...',
 	'contrib-tracking-continue' => 'Sekiranya anda tidak dialihkan secara automatik, klik di sini untuk menyempurnakan derma anda di PayPal.',
+	'contrib-tracking-redirect' => 'Anda akan dilencongkan ke PayPal secara automatik untuk melengkapkan dermaan anda.',
 	'contrib-tracking-button' => 'Teruskan',
+	'contrib-tracking-item-name-onetime' => 'Dermaan sekali',
+	'contrib-tracking-item-name-recurring' => 'Dermaan berulang bulanan',
 );
 
 /** Erzya (Эрзянь)
