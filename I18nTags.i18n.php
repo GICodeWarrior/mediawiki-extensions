@@ -249,6 +249,13 @@ $messages['mr'] = array(
 	'i18ntags-desc' => 'सर्व उपलब्ध भाषांमधील संख्यालेखन, व्याकरण व बहुवचने देण्यासाठीची i18n कार्ये वापरा',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'i18ntags-desc' => 'Mengakses fungsi pengantarabangsaan untuk pemformatan nombor, tatabahasa dan bentuk jamak dalam sebarang bahasa yang ada',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
