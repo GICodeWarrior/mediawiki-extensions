@@ -202,6 +202,14 @@ $messages['so'] = array(
 	'elm-easyref-close' => 'xir',
 );
 
+/** Swedish (Svenska)
+ * @author WikiPhoenix
+ */
+$messages['sv'] = array(
+	'elm-easyref-ref' => 'Referens $1',
+	'elm-easyref-close' => 'Stäng',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
