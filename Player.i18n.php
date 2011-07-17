@@ -1013,6 +1013,7 @@ $messages['ms'] = array(
 	'player-title' => 'Pemain',
 	'player-playertitle' => 'Pemain: $1',
 	'player-file' => 'Nama fail',
+	'player-invalid-title' => 'tajuk tidak sah',
 	'player-goto-player' => 'pemain',
 	'player-goto-page' => 'Laman',
 	'player-goto-file' => 'fail',
