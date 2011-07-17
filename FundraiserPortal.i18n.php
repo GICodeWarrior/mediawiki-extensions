@@ -800,6 +800,23 @@ $messages['ml'] = array(
 	'fundraiserportal-tourmaline-close' => 'ഇതിനി കാണിക്കേണ്ട',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'fundraiserportal' => 'Portal Pengumpul Dana',
+	'fundraiserportal-desc' => 'Membubuh portal "sila menderma" di atas bar sisi.',
+	'fundraiserportal-plain-button' => 'Sokonglah Wikipedia!',
+	'fundraiserportal-ruby-button' => 'Derma Sekarang',
+	'fundraiserportal-rubytext-button' => 'Derma Sekarang',
+	'fundraiserportal-rubytext-message' => 'Setiap dermaan membantu kami memastikan Wikipedia percuma untuk semua.',
+	'fundraiserportal-rubytext-close' => 'Sorokkan yang ini mulai sekarang',
+	'fundraiserportal-sapphire-button' => 'Derma Sekarang',
+	'fundraiserportal-tourmaline-button' => 'Derma Sekarang',
+	'fundraiserportal-tourmaline-message' => 'Setiap dermaan membantu kami memastikan Wikipedia percuma untuk semua.',
+	'fundraiserportal-tourmaline-close' => 'Sorokkan yang ini mulai sekarang',
+);
+
 /** Dutch (Nederlands)
  * @author McDutchie
  * @author Siebrand
