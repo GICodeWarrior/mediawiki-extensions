@@ -590,7 +590,7 @@ Content.prototype.getLines = function() {
 		}
 
 		for ( j = 1; j < left.length; j++ ) {
-			if (rightPlain || this.indexOfAnnotation( i, left[j], true ) === -1) {
+			if ( rightPlain || this.indexOfAnnotation( i, left[j], true ) === -1 ) {
 				for ( k = line.annotations.length - 1; k >= 0; k-- ) {
 					if ( line.annotations[k].type === left[j].type ) {
 						if ( Content.compareObjects( line.annotations[k].data, left[j].data ) ) {
@@ -603,7 +603,7 @@ Content.prototype.getLines = function() {
 		}
 
 		for ( j = 1; j < right.length; j++ ) {
-			if (leftPlain || this.indexOfAnnotation( i - 1, right[j], true ) === -1) {
+			if ( leftPlain || this.indexOfAnnotation( i - 1, right[j], true ) === -1 ) {
 				var annotation = Content.copyObject( right[j] );
 				annotation.range = {
 					start : i - offset,
