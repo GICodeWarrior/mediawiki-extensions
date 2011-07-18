@@ -620,9 +620,14 @@ Surface.prototype.deleteContent = function( selection ) {
  * @param selection {Selection} Range to apply annotation to
  */
 Surface.prototype.annotateContent = function( method, annotation, selection ) {
+	if ( selection === undefined ) {
+		selection = this.selection;
+	}
+	/*
 	if ( !selection.from && !selection.to ) {
 		throw 'Invalid selection error. Properties for from and to locations expected.';
 	}
+	*/
 	selection.normalize();
 	var from = selection.start,
 		to = selection.end;
