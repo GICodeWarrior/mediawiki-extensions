@@ -88,7 +88,7 @@ class DumpHTML {
 	# Extension version
 	const VERSION = '2.0';
 
-	function DumpHTML( $settings = array() ) {
+	function __construct( $settings = array() ) {
 		foreach ( $settings as $var => $value ) {
 			$this->$var = $value;
 		}
@@ -171,7 +171,7 @@ class DumpHTML {
 			$end = $this->endID;
 		}
 		$start = $this->startID;
-		
+
 		# Start from the checkpoint
 		$cp = $this->getCheckpoint( 'article' );
 		if ( $cp == 'done' ) {
@@ -204,7 +204,7 @@ class DumpHTML {
 			$title = Title::newFromID( $id );
 			if ( $title ) {
 				$ns = $title->getNamespace() ;
-				if ( $ns != NS_CATEGORY && $ns != NS_MEDIAWIKI && 
+				if ( $ns != NS_CATEGORY && $ns != NS_MEDIAWIKI &&
 				  $title->getPrefixedDBkey() != $mainPage ) {
 					$this->doArticle( $title );
 				}
@@ -233,11 +233,11 @@ class DumpHTML {
 
 		$title = Title::newMainPage();
 		$text = $this->getArticleHTML( $title );
-		
+
 		# Parse the XHTML to find the images
 		#$images = $this->findImages( $text );
 		#$this->copyImages( $images );
-		
+
 		$file = fopen( "{$this->dest}/index.html", "w" );
 		if ( !$file ) {
 			print "\nCan't open index.html for writing\n";
@@ -263,7 +263,7 @@ class DumpHTML {
 		$chunkSize = 1000;
 
 		$dbr = wfGetDB( DB_SLAVE );
-		
+
 		$cp = $this->getCheckpoint( 'local image' );
 		if ( $cp == 'done' ) {
 			print "Local image descriptions already done\n";
@@ -272,7 +272,7 @@ class DumpHTML {
 			print "Writing image description pages starting from $cp\n";
 			$conds = array(	'img_name >= ' . $dbr->addQuotes( $cp ) );
 		} else {
-			print "Writing image description pages for local images\n";		
+			print "Writing image description pages for local images\n";
 			$conds = false;
 		}
 
@@ -280,14 +280,14 @@ class DumpHTML {
 		$i = 0;
 
 		do {
-			$res = $dbr->select( 'image', array( 'img_name' ), $conds, __METHOD__, 
+			$res = $dbr->select( 'image', array( 'img_name' ), $conds, __METHOD__,
 				array( 'ORDER BY' => 'img_name', 'LIMIT' => $chunkSize ) );
 			$numRows = $dbr->numRows( $res );
 
-			while ( $row = $dbr->fetchObject( $res ) ) {
+			foreach( $res as $row ) {
 				# Update conds for the next chunk query
 				$conds = array( 'img_name > ' . $dbr->addQuotes( $row->img_name ) );
-				
+
 				// Slice the result set with a filter
 				if ( !$this->sliceFilter( $row->img_name ) ) {
 					continue;
@@ -307,9 +307,8 @@ class DumpHTML {
 				}
 				$this->doArticle( $title );
 			}
-			$dbr->freeResult( $res );
 		} while ( $numRows );
-		
+
 		$this->setCheckpoint( 'local image', 'done' );
 		print "\n";
 	}
@@ -367,10 +366,10 @@ class DumpHTML {
 
 	function doCategories() {
 		$chunkSize = 1000;
-		
+
 		$this->setupGlobals();
 		$dbr = wfGetDB( DB_SLAVE );
-		
+
 		$cp = $this->getCheckpoint( 'category' );
 		if ( $cp == 'done' ) {
 			print "Category pages already done\n";
@@ -385,14 +384,14 @@ class DumpHTML {
 
 		$i = 0;
 		do {
-			$res = $dbr->select( 'categorylinks', 'DISTINCT cl_to', $conds, __METHOD__, 
+			$res = $dbr->select( 'categorylinks', 'DISTINCT cl_to', $conds, __METHOD__,
 				array( 'ORDER BY' => 'cl_to', 'LIMIT' => $chunkSize ) );
 			$numRows = $dbr->numRows( $res );
-			
-			while ( $row = $dbr->fetchObject( $res ) ) {
+
+			foreach( $res as $row ) {
 				// Set conditions for next chunk
 				$conds = array( 'cl_to > ' . $dbr->addQuotes( $row->cl_to ) );
-				
+
 				// Filter pages from other slices
 				if ( !$this->sliceFilter( $row->cl_to ) ) {
 					continue;
@@ -408,9 +407,8 @@ class DumpHTML {
 				$title = Title::makeTitle( NS_CATEGORY, $row->cl_to );
 				$this->doArticle( $title );
 			}
-			$dbr->freeResult( $res );
 		} while ( $numRows );
-		
+
 		$this->setCheckpoint( 'category', 'done' );
 		print "\n";
 	}
@@ -437,7 +435,7 @@ class DumpHTML {
 
 		for ( $chunkStart = $start; $chunkStart <= $end; $chunkStart += $chunkSize ) {
 			$chunkEnd = min( $end, $chunkStart + $chunkSize - 1 );
-			$conds = array( 
+			$conds = array(
 				'page_is_redirect' => 1,
 				"page_id BETWEEN $chunkStart AND $chunkEnd"
 			);
@@ -449,8 +447,8 @@ class DumpHTML {
 			}
 			$res = $dbr->select( 'page', array( 'page_id', 'page_namespace', 'page_title' ),
 				$conds, __METHOD__ );
-			
-			while ( $row = $dbr->fetchObject( $res ) ) {
+
+			foreach( $res as $row ) {
 				$title = Title::makeTitle( $row->page_namespace, $row->page_title );
 				if ( !(++$i % (self::REPORTING_INTERVAL*10) ) ) {
 					printf( "Done %d redirects (%2.3f%%)\n", $i, $row->page_id / $end * 100 );
@@ -458,7 +456,6 @@ class DumpHTML {
 				}
 				$this->doArticle( $title );
 			}
-			$dbr->freeResult( $res );
 		}
 		$this->setCheckpoint( 'redirect', 'done' );
 	}
@@ -523,11 +520,11 @@ class DumpHTML {
 		wfProfileIn( __METHOD__ );
 		$filename = $this->getHashedFilename( $title );
 
-		# Temporary hack for current dump, this should be moved to 
+		# Temporary hack for current dump, this should be moved to
 		# getFriendlyName() at the earliest opportunity.
 		#
 		# Limit filename length to 255 characters, so it works on ext3.
-		# Titles are in fact limited to 255 characters, but dumpHTML 
+		# Titles are in fact limited to 255 characters, but dumpHTML
 		# adds a suffix which may put them over the limit.
 		$length = strlen( $filename );
 		if ( $length > 255 ) {
@@ -535,13 +532,13 @@ class DumpHTML {
 			wfProfileOut( __METHOD__ );
 			return;
 		}
-			
+
 		$fullName = "{$this->dest}/$filename";
 		$fullDir = dirname( $fullName );
 
 		if ( $this->compress ) {
 			$fullName .= ".gz";
-			$text = gzencode( $text, 9 );				
+			$text = gzencode( $text, 9 );
 		}
 
 		if ( preg_match( '/[\x80-\xFF]/', $fullName ) && wfIsWindows() ) {
@@ -553,7 +550,7 @@ class DumpHTML {
 
 			$success = file_put_contents( $tempName, $text );
 			if ( $success ) {
-				wfShellExec( "cscript /nologo " . wfEscapeShellArg( 
+				wfShellExec( "cscript /nologo " . wfEscapeShellArg(
 					dirname( __FILE__ ) . "\\rename-hack.vbs",
 					$this->escapeForVBScript( $tempName ),
 					$this->escapeForVBScript( $fullName ) ) );
@@ -699,7 +696,6 @@ class DumpHTML {
 
 		$wgStylePath = "{$this->articleBaseUrl}/skins";
 
-
 		if ( $this->makeSnapshot ) {
 			$this->destUploadUrl = "{$this->articleBaseUrl}/{$this->imageRel}";
 		} else {
@@ -822,6 +818,10 @@ class DumpHTML {
 		return $text;
 	}
 
+	/**
+	 * @param $rt Title
+	 * @return string
+	 */
 	function getRedirect( $rt ) {
 		$url = $rt->escapeLocalURL();
 		$text = $rt->getPrefixedText();
@@ -865,7 +865,7 @@ ENDTEXT;
 
 	/**
 	 * Copy a file specified by a URL to a given directory
-	 * 
+	 *
 	 * @param string $srcPath The source URL
 	 * @param string $srcPathBase The base directory of the source URL
 	 * @param string $srcDirBase The base filesystem directory of the source URL
@@ -905,14 +905,14 @@ ENDTEXT;
 			$this->relativeCopy( $newSrc, $srcPathBase, $srcDirBase, $destDirBase );
 		}
 	}
-	
+
 	/**
 	 * Copy images (or create symlinks) from commons to a static directory.
 	 * This is necessary even if you intend to distribute all of commons, because
 	 * the directory contents is used to work out which image description pages
 	 * are needed.
 	 *
-	 * Also copies math images, and full-sized images if the makeSnapshot option 
+	 * Also copies math images, and full-sized images if the makeSnapshot option
 	 * is specified.
 	 *
 	 */
@@ -932,6 +932,12 @@ ENDTEXT;
 		}
 	}
 
+	/**
+	 * @param $title Title
+	 * @param $url
+	 * @param $query
+	 * @return bool
+	 */
 	function onGetFullURL( &$title, &$url, $query ) {
 		global $wgContLang, $wgArticlePath;
 
@@ -950,6 +956,12 @@ ENDTEXT;
 		}
 	}
 
+	/**
+	 * @param $title Title
+	 * @param $url
+	 * @param $query
+	 * @return bool
+	 */
 	function onGetLocalURL( &$title, &$url, $query ) {
 		global $wgArticlePath;
 
@@ -984,6 +996,11 @@ ENDTEXT;
 		return false;
 	}
 
+	/**
+	 * @throws MWException
+	 * @param $title Title
+	 * @return string
+	 */
 	function getHashedFilename( &$title ) {
 		if ( !$title ) {
 			throw new MWException( 'Invalid $title parameter to '.__METHOD__ );
@@ -1029,6 +1046,8 @@ ENDTEXT;
 
 	/**
 	 * Get a relative directory for putting a title into
+	 *
+	 * @param $title Title
 	 */
 	function getHashedDirectory( &$title ) {
 		if ( '' != $title->getInterwiki() ) {
@@ -1117,6 +1136,7 @@ ENDTEXT;
 		$text = '';
 		return false;
 	}
+
 	function onSiteNoticeAfter( &$text ) {
 		$text = '';
 		return false;
@@ -1157,7 +1177,7 @@ ENDTEXT;
 	function debug( $text ) {
 		print "$text\n";
 	}
-	
+
 	function mkdir( $dir ) {
 		//if ( wfIsWindows() ) {
 			return wfMkdirParents( $dir, 0755 );
@@ -1206,7 +1226,7 @@ class DumpHTML_ProxyRepoGroup extends RepoGroup {
 			} else {
 				$foreignDest = "{$dump->destUploadDirectory}/$friendlyName";
 			}
-			$this->foreignRepos[] = new DumpHTML_ProxyRepo( $repo, $dump, $foreignDest, 
+			$this->foreignRepos[] = new DumpHTML_ProxyRepo( $repo, $dump, $foreignDest,
 				$dump->destUploadUrl . '/' . urlencode( $friendlyName ) );
 		}
 	}
@@ -1317,7 +1337,7 @@ class DumpHTML_ProxyFile {
 		$result = call_user_func_array( array( $this->backend, $name ), $args );
 		if ( is_string( $result ) ) {
 			$result = $this->fixURL( $result );
-		} elseif ( $result instanceof MediaTransformOutput ) { 
+		} elseif ( $result instanceof MediaTransformOutput ) {
 			$result = $this->fixMTO( $result );
 		}
 		return $result;
