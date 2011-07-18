@@ -229,48 +229,54 @@ TextFlow.prototype.scanBoundaries = function() {
  * causing them to be fragmented. Word fragments are rendered on their own lines, except for their
  * remainder, which is combined with whatever proceeding words can fit on the same line.
  */
-TextFlow.prototype.renderIteration = function() {
+TextFlow.prototype.renderIteration = function( limit ) {
 	var rs = this.renderState,
 		iteration = 0,
+		fractional = false,
+		lineStart = this.boundaries[rs.wordOffset],
+		lineEnd,
+		wordFit = null,
+		charOffset = 0,
+		charFit = null,
+		wordCount = this.boundaries.length;
+	while ( ++iteration <= limit && rs.wordOffset < wordCount - 1 ) {
+		wordFit = this.fitWords( rs.wordOffset, wordCount - 1, rs.ruler, rs.width );
 		fractional = false;
-	while ( ++iteration <= rs.iterationLimit && rs.wordOffset < rs.wordCount - 1 ) {
-		rs.wordFit = this.fitWords( rs.wordOffset, rs.wordCount - 1, rs.ruler, rs.width );
-		fractional = false;
-		if ( rs.wordFit.width > rs.width ) {
+		if ( wordFit.width > rs.width ) {
 			// The first word didn't fit, we need to split it up
-			rs.charOffset = rs.lineStart;
+			charOffset = lineStart;
 			var lineOffset = rs.wordOffset;
 			rs.wordOffset++;
-			rs.lineEnd = this.boundaries[rs.wordOffset];
+			lineEnd = this.boundaries[rs.wordOffset];
 			do {
-				rs.charFit = this.fitCharacters( rs.charOffset, rs.lineEnd, rs.ruler, rs.width );
+				charFit = this.fitCharacters( charOffset, lineEnd, rs.ruler, rs.width );
 				// If we were able to get the rest of the characters on the line OK
-				if ( rs.charFit.end === rs.lineEnd) {
+				if ( charFit.end === lineEnd) {
 					// Try to fit more words on the line
-					rs.wordFit = this.fitWords(
-						rs.wordOffset, rs.wordCount - 1, rs.ruler, rs.width - rs.charFit.width
+					wordFit = this.fitWords(
+						rs.wordOffset, wordCount - 1, rs.ruler, rs.width - charFit.width
 					);
-					if ( rs.wordFit.end > rs.wordOffset ) {
+					if ( wordFit.end > rs.wordOffset ) {
 						lineOffset = rs.wordOffset;
-						rs.wordOffset = rs.wordFit.end;
-						rs.charFit.end = rs.lineEnd = this.boundaries[rs.wordOffset];
+						rs.wordOffset = wordFit.end;
+						charFit.end = lineEnd = this.boundaries[rs.wordOffset];
 					}
 				}
-				this.appendLine( rs.charOffset, rs.charFit.end, lineOffset, fractional );
+				this.appendLine( charOffset, charFit.end, lineOffset, fractional );
 				// Move on to another line
-				rs.charOffset = rs.charFit.end;
+				charOffset = charFit.end;
 				// Mark the next line as fractional
 				fractional = true;
-			} while ( rs.charOffset < rs.lineEnd );
+			} while ( charOffset < lineEnd );
 		} else {
-			rs.lineEnd = this.boundaries[rs.wordFit.end];
-			this.appendLine( rs.lineStart, rs.lineEnd, rs.wordOffset, fractional );
-			rs.wordOffset = rs.wordFit.end;
+			lineEnd = this.boundaries[wordFit.end];
+			this.appendLine( lineStart, lineEnd, rs.wordOffset, fractional );
+			rs.wordOffset = wordFit.end;
 		}
-		rs.lineStart = rs.lineEnd;
+		lineStart = lineEnd;
 	}
 	// Only perform on actual last iteration
-	if ( rs.wordOffset >= rs.wordCount - 1 ) {
+	if ( rs.wordOffset >= wordCount - 1 ) {
 		// Cleanup
 		rs.$ruler.remove();
 		this.lines = rs.lines;
@@ -283,7 +289,7 @@ TextFlow.prototype.renderIteration = function() {
 		rs.ruler.innerHTML = '';
 		var flow = this;
 		rs.timeout = setTimeout( function() {
-			flow.renderIteration();
+			flow.renderIteration( 3 );
 		}, 0 );
 	}
 };
@@ -324,6 +330,7 @@ TextFlow.prototype.render = function( offset ) {
 	 */
 	rs.$ruler = $( '<div>&nbsp;</div>' ).appendTo( this.$ );
 	rs.width = rs.$ruler.innerWidth();
+	rs.ruler = rs.$ruler.addClass('editSurface-ruler')[0];
 	
 	// Ignore offset optimization if the width has changed or the text has never been flowed before
 	if (this.width !== rs.width) {
@@ -336,22 +343,12 @@ TextFlow.prototype.render = function( offset ) {
 		// TODO: Find the nearest line to start from
 		rs.lines = [];
 		rs.wordOffset = 0;
-		rs.lineStart = 0;
+		this.renderIteration( 3 );
 	} else {
 		rs.lines = [];
 		rs.wordOffset = 0;
-		rs.lineStart = 0;
+		this.renderIteration( 3 );
 	}
-	rs.lineEnd = 0;
-	rs.wordFit = null;
-	rs.charOffset = 0;
-	rs.charFit = null;
-	rs.wordCount = this.boundaries.length;
-	rs.ruler = rs.$ruler.addClass('editSurface-ruler')[0];
-	rs.iterationLimit = 3;
-	
-	// Begin rendering
-	this.renderIteration();
 };
 
 /**
