@@ -1,0 +1,149 @@
+#!/usr/bin/make -f
+
+# Include dpatch stuff.
+include /usr/share/dpatch/dpatch.make
+
+
+DH_VERBOSE=1
+
+# List of architectures that lack the *_2POW definitions in varnish,
+# which is needed by jemalloc
+DISABLE_JEMALLOC_ARCH_LIST := :hppa:s390:sparc:m68k:
+
+# List of architectures (or buildds) that fail "make test" for some
+# reason or another
+DISABLE_TEST_ARCH_LIST := :armel:hppa:ia64:mipsel:sh4:sparc:
+
+# Explicitly initialize a variable to select architecture, unless it has been
+# defined before.  This is compared against the DISABLE_*_LIST variables later
+# in this makefile
+DEB_HOST_ARCH ?= $(shell dpkg-architecture -qDEB_HOST_ARCH)
+
+# Set local state dir for FHS
+LOCAL_CONFIGURE_FLAGS = --localstatedir=/var/lib
+
+ifneq (,$(findstring :$(DEB_HOST_ARCH):,$(DISABLE_JEMALLOC_ARCH_LIST)))
+LOCAL_CONFIGURE_FLAGS += --disable-jemalloc
+endif
+
+
+#config.status: configure
+#	dh_testdir
+#	# Add here commands to configure the package.
+#ifneq "$(wildcard /usr/share/misc/config.sub)" ""
+#	cp -f /usr/share/misc/config.sub config.sub
+#endif
+#ifneq "$(wildcard /usr/share/misc/config.guess)" ""
+#	cp -f /usr/share/misc/config.guess config.guess
+#endif
+#	./configure $(CROSS) --prefix=/usr --mandir=\$${prefix}/share/man --infodir=\$${prefix}/share/info CFLAGS="$(CFLAGS)" LDFLAGS="-Wl,-z,defs"
+#
+#
+###Architecture
+#build: build-arch build-indep
+##
+#build-arch: build-arch-stamp
+#build-arch-stamp:  config.status patch-stamp
+#
+#	# Add here commands to compile the arch part of the package.
+#	#$(MAKE)
+#	touch $@
+#
+#build-indep: build-indep-stamp
+#build-indep-stamp:  config.status patch-stamp
+#
+#	# Add here commands to compile the indep part of the package.
+#	#$(MAKE) doc
+#	touch $@
+#
+#clean: unpatch
+#	dh_testdir
+#	dh_testroot
+#	rm -f build-arch-stamp build-indep-stamp 
+#
+#	# Add here commands to clean up after the build process.
+#	[ ! -f Makefile ] || $(MAKE) distclean
+#	rm -f config.sub config.guess
+#
+#	dh_clean 
+#
+#install: install-indep install-arch
+#install-indep:
+#	dh_testdir
+#	dh_testroot
+#	dh_prep -i 
+#	dh_installdirs -i
+#
+#	# Add here commands to install the indep part of the package into
+#	# debian/<package>-doc.
+#	#INSTALLDOC#
+#
+#	dh_install -i
+#
+#install-arch:
+#	dh_testdir
+#	dh_testroot
+#	dh_prep -s 
+#	dh_installdirs -s
+#
+#	# Add here commands to install the arch part of the package into
+#	# debian/tmp.
+#	$(MAKE) DESTDIR=$(CURDIR)/debian/varnish3 install
+#
+
+# Main build rule, leave everything to debhelper
+%:	
+	test -d debian/patched || install -d debian/patched
+	dpatch  apply-all
+	dh $@ --parallel
+
+# Disable build tests for some architectures
+ifneq (,$(findstring :$(DEB_HOST_ARCH):,$(DISABLE_TEST_ARCH_LIST)))
+override_dh_auto_test:
+	@echo "dh_auto_test disabled on $(DEB_HOST_ARCH)"
+endif
+
+override_dh_make:
+	dh_make --dpatch
+# Override to add local configure flags
+override_dh_auto_configure:
+	$(CURDIR)/autogen.sh
+	dh_auto_configure -- $(LOCAL_CONFIGURE_FLAGS)
+
+override_dh_auto_build:
+	dh_auto_build
+	$(MAKE) dist
+
+override_dh_auto_install:
+	dh_auto_install -a
+	@ # Activate the default backend
+	sed -i '/backend default {/,/}/ s/^#[[:space:]]//'  \
+		$(CURDIR)/debian/tmp/etc/varnish/default.vcl
+	@ # Remove dependency_libs from .la files
+	@ # (See http://wiki.debian.org/ReleaseGoals/LAFileRemoval)
+	sed -i "/dependency_libs/ s/'.*'/''/" \
+		$(CURDIR)/debian/tmp/usr/lib/*.la \
+		$(CURDIR)/debian/tmp/usr/lib/varnish/*.la
+
+override_dh_install:
+	dh_install -a
+	@ # Override to add the "reload-vcl" script
+	install -o root -g root -m 755 \
+		$(CURDIR)/debian/reload-vcl \
+		$(CURDIR)/debian/varnish3/usr/share/varnish/reload-vcl
+
+override_dh_installdocs:
+	dh_installdocs
+	@ # Use the packaged version of jquery
+	rm -f $(CURDIR)/debian/varnish-doc/usr/share/doc/varnish-doc/html/_static/jquery.js
+	ln -s /usr/share/javascript/jquery/jquery.js \
+		$(CURDIR)/debian/varnish-doc/usr/share/doc/varnish-doc/html/_static/jquery.js
+
+# Override to add several init scripts
+override_dh_installinit:
+	dh_installinit -a
+	dh_installinit --name=varnishlog
+	dh_installinit --name=varnishncsa
+
+override_dh_compress:
+	dh_compress -X/usr/share/doc/varnish-doc/html

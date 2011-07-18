@@ -1,0 +1,119 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 01-varnishncsa-udp.dpatch by <preilly@wikimedia.org>, <afeldman@wikimedia.org>
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: log2udp daemon for varnish, with sequence numbers
+
+@DPATCH@
+diff -urNad varnish-3.0.0~/bin/varnishncsa/varnishncsa.c varnish-3.0.0/bin/varnishncsa/varnishncsa.c
+--- varnish-3.0.0~/bin/varnishncsa/varnishncsa.c        2011-07-14 05:13:45.000000000 -0700
++++ varnish-3.0.0/bin/varnishncsa/varnishncsa.c         2011-07-14 05:06:58.000000000 -0700
+@@ -79,6 +79,13 @@
+ #include "varnishapi.h"
+ #include "base64.h"
+ 
++#include <sys/types.h>
++#include <sys/socket.h>
++#include <netinet/in.h>
++#include <netdb.h> 
++
++static long int sequence_number = 0;
++
+ static volatile sig_atomic_t reopen;
+ 
+ static struct logline {
+@@ -533,6 +540,8 @@
+ 	/* We have a complete data set - log a line */
+ 
+ 	fo = priv;
++	
++	sequence_number++;
+ 
+ 	for (p = format; *p != '\0'; p++) {
+ 
+@@ -566,6 +575,10 @@
+ 		case 'm':
+ 			fprintf(fo, "%s", lp->df_m);
+ 			break;
++			
++		case 'n':
++			fprintf(fo, " %ld ", sequence_number);
++			break;
+ 
+ 		case 'q':
+ 			fprintf(fo, "%s", lp->df_q ? lp->df_q : "");
+@@ -695,12 +708,54 @@
+ open_log(const char *ofn, int append)
+ {
+ 	FILE *of;
++	int sockfd, portno, n;
++	struct sockaddr_in serv_addr;
++	struct hostent *server;
++	u_char ttl = 1;
++	char host[500];
++	char port[10];
++	
++	sscanf(ofn, "%[^:]:%s", host, port);
++
++	portno = atoi(port);
++	sockfd = socket(AF_INET, SOCK_DGRAM, 0);
++
++	if (sockfd < 0) {
++        	fprintf(stderr, "ERROR opening socket\n");
++	}
+ 
+-	if ((of = fopen(ofn, append ? "a" : "w")) == NULL) {
+-		perror(ofn);
++   	server = gethostbyname(host);
++
++        if (server == NULL) {
++		fprintf(stderr,"ERROR, no such host\n");
+ 		exit(1);
++        }
++
++	bzero((char *) &serv_addr, sizeof(serv_addr));
++
++	if ((ntohl(serv_addr.sin_addr.s_addr) >> 28) == 0xe) {
++		serv_addr.sin_addr.s_addr = INADDR_ANY;
++		setsockopt(sockfd, IPPROTO_IP, IP_MULTICAST_IF, &serv_addr,
++	                       sizeof(struct sockaddr_in));
++	       setsockopt(sockfd, IPPROTO_IP, IP_MULTICAST_TTL, &ttl,
++	                       sizeof(unsigned char));
+ 	}
+-	return (of);
++
++	serv_addr.sin_family = AF_INET;
++	serv_addr.sin_port = htons(portno);
++
++	if (connect(sockfd,(struct sockaddr *) &serv_addr,sizeof(serv_addr)) < 0) {
++		perror("socket");
++		exit(1);
++	}
++
++	FILE *sf = fdopen(sockfd, "w");
++
++	if (sf == NULL) {
++		exit(1);
++	}
++
++        return (sf);
+ }
+ 
+ /*--------------------------------------------------------------------*/
+@@ -711,7 +766,7 @@
+ 
+ 	fprintf(stderr,
+ 	    "usage: varnishncsa %s [-aDV] [-n varnish_name] "
+-	    "[-P file] [-w file]\n", VSL_USAGE);
++	    "[-P file] [-w host:port]\n", VSL_USAGE);
+ 	exit(1);
+ }
+ 
+@@ -724,7 +779,7 @@
+ 	const char *w_arg = NULL;
+ 	struct vpf_fh *pfh = NULL;
+ 	FILE *of;
+-	format = "%h %l %u %t \"%r\" %s %b \"%{Referer}i\" \"%{User-agent}i\"";
++	format = "%h %n %l %u %t \"%r\" %s %b \"%{Referer}i\" \"%{User-agent}i\"";
+ 
+ 	vd = VSM_New();
+ 	VSL_Setup(vd);

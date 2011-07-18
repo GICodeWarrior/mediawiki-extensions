@@ -1,0 +1,7 @@
+usr/include
+usr/lib/*.a
+usr/lib/*.la
+usr/lib/libvarnishapi.so
+usr/lib/pkgconfig/*.pc
+usr/lib/varnish/*.a
+usr/lib/varnish/*.la

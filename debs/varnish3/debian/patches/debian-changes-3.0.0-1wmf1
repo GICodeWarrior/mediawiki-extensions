@@ -1,0 +1,1643 @@
+--- varnish3-3.0.0.orig/bin/varnishncsa/varnishncsa.c
++++ varnish3-3.0.0/bin/varnishncsa/varnishncsa.c
+@@ -79,6 +79,13 @@
+ #include "varnishapi.h"
+ #include "base64.h"
+ 
++#include <sys/types.h>
++#include <sys/socket.h>
++#include <netinet/in.h>
++#include <netdb.h> 
++
++static long int sequence_number = 0;
++
+ static volatile sig_atomic_t reopen;
+ 
+ static struct logline {
+@@ -533,6 +540,8 @@ h_ncsa(void *priv, enum VSL_tag_e tag, u
+ 	/* We have a complete data set - log a line */
+ 
+ 	fo = priv;
++	
++	sequence_number++;
+ 
+ 	for (p = format; *p != '\0'; p++) {
+ 
+@@ -566,6 +575,10 @@ h_ncsa(void *priv, enum VSL_tag_e tag, u
+ 		case 'm':
+ 			fprintf(fo, "%s", lp->df_m);
+ 			break;
++			
++		case 'n':
++			fprintf(fo, " %ld ", sequence_number);
++			break;
+ 
+ 		case 'q':
+ 			fprintf(fo, "%s", lp->df_q ? lp->df_q : "");
+@@ -695,12 +708,54 @@ static FILE *
+ open_log(const char *ofn, int append)
+ {
+ 	FILE *of;
++	int sockfd, portno, n;
++	struct sockaddr_in serv_addr;
++	struct hostent *server;
++	u_char ttl = 1;
++	char host[500];
++	char port[10];
++	
++	sscanf(ofn, "%[^:]:%s", host, port);
++
++	portno = atoi(port);
++	sockfd = socket(AF_INET, SOCK_DGRAM, 0);
++
++	if (sockfd < 0) {
++        	fprintf(stderr, "ERROR opening socket\n");
++	}
+ 
+-	if ((of = fopen(ofn, append ? "a" : "w")) == NULL) {
+-		perror(ofn);
++   	server = gethostbyname(host);
++
++        if (server == NULL) {
++		fprintf(stderr,"ERROR, no such host\n");
+ 		exit(1);
++        }
++
++	bzero((char *) &serv_addr, sizeof(serv_addr));
++
++	if ((ntohl(serv_addr.sin_addr.s_addr) >> 28) == 0xe) {
++		serv_addr.sin_addr.s_addr = INADDR_ANY;
++		setsockopt(sockfd, IPPROTO_IP, IP_MULTICAST_IF, &serv_addr,
++	                       sizeof(struct sockaddr_in));
++	       setsockopt(sockfd, IPPROTO_IP, IP_MULTICAST_TTL, &ttl,
++	                       sizeof(unsigned char));
+ 	}
+-	return (of);
++
++	serv_addr.sin_family = AF_INET;
++	serv_addr.sin_port = htons(portno);
++
++	if (connect(sockfd,(struct sockaddr *) &serv_addr,sizeof(serv_addr)) < 0) {
++		perror("socket");
++		exit(1);
++	}
++
++	FILE *sf = fdopen(sockfd, "w");
++
++	if (sf == NULL) {
++		exit(1);
++	}
++
++        return (sf);
+ }
+ 
+ /*--------------------------------------------------------------------*/
+@@ -711,7 +766,7 @@ usage(void)
+ 
+ 	fprintf(stderr,
+ 	    "usage: varnishncsa %s [-aDV] [-n varnish_name] "
+-	    "[-P file] [-w file]\n", VSL_USAGE);
++	    "[-P file] [-w host:port]\n", VSL_USAGE);
+ 	exit(1);
+ }
+ 
+@@ -724,7 +779,7 @@ main(int argc, char *argv[])
+ 	const char *w_arg = NULL;
+ 	struct vpf_fh *pfh = NULL;
+ 	FILE *of;
+-	format = "%h %l %u %t \"%r\" %s %b \"%{Referer}i\" \"%{User-agent}i\"";
++	format = "%h %n %l %u %t \"%r\" %s %b \"%{Referer}i\" \"%{User-agent}i\"";
+ 
+ 	vd = VSM_New();
+ 	VSL_Setup(vd);
+--- /dev/null
++++ varnish3-3.0.0/debian-test/varnish3-doc.docs
+@@ -0,0 +1 @@
++#DOCS#
+--- /dev/null
++++ varnish3-3.0.0/debian-test/emacsen-install.ex
+@@ -0,0 +1,45 @@
++#! /bin/sh -e
++# /usr/lib/emacsen-common/packages/install/varnish3
++
++# Written by Jim Van Zandt <jrv@debian.org>, borrowing heavily
++# from the install scripts for gettext by Santiago Vila
++# <sanvila@ctv.es> and octave by Dirk Eddelbuettel <edd@debian.org>.
++
++FLAVOR=$1
++PACKAGE=varnish3
++
++if [ ${FLAVOR} = emacs ]; then exit 0; fi
++
++echo install/${PACKAGE}: Handling install for emacsen flavor ${FLAVOR}
++
++#FLAVORTEST=`echo $FLAVOR | cut -c-6`
++#if [ ${FLAVORTEST} = xemacs ] ; then
++#    SITEFLAG="-no-site-file"
++#else
++#    SITEFLAG="--no-site-file"
++#fi
++FLAGS="${SITEFLAG} -q -batch -l path.el -f batch-byte-compile"
++
++ELDIR=/usr/share/emacs/site-lisp/${PACKAGE}
++ELCDIR=/usr/share/${FLAVOR}/site-lisp/${PACKAGE}
++
++# Install-info-altdir does not actually exist.
++# Maybe somebody will write it.
++if test -x /usr/sbin/install-info-altdir; then
++    echo install/${PACKAGE}: install Info links for ${FLAVOR}
++    install-info-altdir --quiet --section "" "" --dirname=${FLAVOR} /usr/share/info/${PACKAGE}.info.gz
++fi
++
++install -m 755 -d ${ELCDIR}
++cd ${ELDIR}
++FILES=`echo *.el`
++cp ${FILES} ${ELCDIR}
++cd ${ELCDIR}
++
++cat << EOF > path.el
++(setq load-path (cons "." load-path) byte-compile-warnings nil)
++EOF
++${FLAVOR} ${FLAGS} ${FILES}
++rm -f *.el path.el
++
++exit 0
+--- /dev/null
++++ varnish3-3.0.0/debian-test/README.Debian
+@@ -0,0 +1,6 @@
++varnish3 for Debian
++-------------------
++
++<possible notes regarding this package - if none, delete this file>
++
++ -- root <root@ragweed.knams.wikimedia.org>  Mon, 18 Jul 2011 02:34:07 +0000
+--- /dev/null
++++ varnish3-3.0.0/debian-test/copyright
+@@ -0,0 +1,28 @@
++This package was debianized by root <root@ragweed.knams.wikimedia.org> on
++Mon, 18 Jul 2011 02:34:07 +0000.
++
++It was downloaded from <url://example.com>
++
++Upstream Author(s):
++
++    <put author's name and email here>
++    <likewise for another author>
++
++Copyright:
++
++    <Copyright (C) YYYY Name OfAuthor>
++    <likewise for another author>
++
++License:
++
++    <Put the license of the package here indented by 4 spaces>
++
++The Debian packaging is:
++
++    Copyright (C) 2011 root <root@ragweed.knams.wikimedia.org>
++
++and is licensed under the GPL version 3, 
++see `/usr/share/common-licenses/GPL-3'.
++
++# Please also look if there are files or directories which have a
++# different copyright/license attached and list them here.
+--- /dev/null
++++ varnish3-3.0.0/debian-test/emacsen-remove.ex
+@@ -0,0 +1,15 @@
++#!/bin/sh -e
++# /usr/lib/emacsen-common/packages/remove/varnish3
++
++FLAVOR=$1
++PACKAGE=varnish3
++
++if [ ${FLAVOR} != emacs ]; then
++    if test -x /usr/sbin/install-info-altdir; then
++        echo remove/${PACKAGE}: removing Info links for ${FLAVOR}
++        install-info-altdir --quiet --remove --dirname=${FLAVOR} /usr/share/info/varnish3.info.gz
++    fi
++
++    echo remove/${PACKAGE}: purging byte-compiled files for ${FLAVOR}
++    rm -rf /usr/share/${FLAVOR}/site-lisp/${PACKAGE}
++fi
+--- /dev/null
++++ varnish3-3.0.0/debian-test/watch.ex
+@@ -0,0 +1,23 @@
++# Example watch control file for uscan
++# Rename this file to "watch" and then you can run the "uscan" command
++# to check for upstream updates and more.
++# See uscan(1) for format
++
++# Compulsory line, this is a version 3 file
++version=3
++
++# Uncomment to examine a Webpage
++# <Webpage URL> <string match>
++#http://www.example.com/downloads.php varnish3-(.*)\.tar\.gz
++
++# Uncomment to examine a Webserver directory
++#http://www.example.com/pub/varnish3-(.*)\.tar\.gz
++
++# Uncommment to examine a FTP server
++#ftp://ftp.example.com/pub/varnish3-(.*)\.tar\.gz debian uupdate
++
++# Uncomment to find new files on sourceforge, for devscripts >= 2.9
++# http://sf.net/varnish3/varnish3-(.*)\.tar\.gz
++
++# Uncomment to find new files on GooglePages
++# http://example.googlepages.com/foo.html varnish3-(.*)\.tar\.gz
+--- /dev/null
++++ varnish3-3.0.0/debian-test/menu.ex
+@@ -0,0 +1,2 @@
++?package(varnish3):needs="X11|text|vc|wm" section="Applications/see-menu-manual"\
++  title="varnish3" command="/usr/bin/varnish3"
+--- /dev/null
++++ varnish3-3.0.0/debian-test/manpage.1.ex
+@@ -0,0 +1,59 @@
++.\"                                      Hey, EMACS: -*- nroff -*-
++.\" First parameter, NAME, should be all caps
++.\" Second parameter, SECTION, should be 1-8, maybe w/ subsection
++.\" other parameters are allowed: see man(7), man(1)
++.TH VARNISH3 SECTION "July 18, 2011"
++.\" Please adjust this date whenever revising the manpage.
++.\"
++.\" Some roff macros, for reference:
++.\" .nh        disable hyphenation
++.\" .hy        enable hyphenation
++.\" .ad l      left justify
++.\" .ad b      justify to both left and right margins
++.\" .nf        disable filling
++.\" .fi        enable filling
++.\" .br        insert line break
++.\" .sp <n>    insert n+1 empty lines
++.\" for manpage-specific macros, see man(7)
++.SH NAME
++varnish3 \- program to do something
++.SH SYNOPSIS
++.B varnish3
++.RI [ options ] " files" ...
++.br
++.B bar
++.RI [ options ] " files" ...
++.SH DESCRIPTION
++This manual page documents briefly the
++.B varnish3
++and
++.B bar
++commands.
++.PP
++.\" TeX users may be more comfortable with the \fB<whatever>\fP and
++.\" \fI<whatever>\fP escape sequences to invode bold face and italics,
++.\" respectively.
++\fBvarnish3\fP is a program that...
++.SH OPTIONS
++These programs follow the usual GNU command line syntax, with long
++options starting with two dashes (`-').
++A summary of options is included below.
++For a complete description, see the Info files.
++.TP
++.B \-h, \-\-help
++Show summary of options.
++.TP
++.B \-v, \-\-version
++Show version of program.
++.SH SEE ALSO
++.BR bar (1),
++.BR baz (1).
++.br
++The programs are documented fully by
++.IR "The Rise and Fall of a Fooish Bar" ,
++available via the Info system.
++.SH AUTHOR
++varnish3 was written by <upstream author>.
++.PP
++This manual page was written by root <root@ragweed.knams.wikimedia.org>,
++for the Debian project (and may be used by others).
+--- /dev/null
++++ varnish3-3.0.0/debian-test/changelog
+@@ -0,0 +1,5 @@
++varnish3 (3.0.0-1) unstable; urgency=low
++
++  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
++
++ -- root <root@ragweed.knams.wikimedia.org>  Mon, 18 Jul 2011 02:34:07 +0000
+--- /dev/null
++++ varnish3-3.0.0/debian-test/varnish3.doc-base.EX
+@@ -0,0 +1,20 @@
++Document: varnish3
++Title: Debian varnish3 Manual
++Author: <insert document author here>
++Abstract: This manual describes what varnish3 is
++ and how it can be used to
++ manage online manuals on Debian systems.
++Section: unknown
++
++Format: debiandoc-sgml
++Files: /usr/share/doc/varnish3/varnish3.sgml.gz
++
++Format: postscript
++Files: /usr/share/doc/varnish3/varnish3.ps.gz
++
++Format: text
++Files: /usr/share/doc/varnish3/varnish3.text.gz
++
++Format: HTML
++Index: /usr/share/doc/varnish3/html/index.html
++Files: /usr/share/doc/varnish3/html/*.html
+--- /dev/null
++++ varnish3-3.0.0/debian-test/cron.d.ex
+@@ -0,0 +1,4 @@
++#
++# Regular cron jobs for the varnish3 package
++#
++0 4	* * *	root	[ -x /usr/bin/varnish3_maintenance ] && /usr/bin/varnish3_maintenance
+--- /dev/null
++++ varnish3-3.0.0/debian-test/manpage.xml.ex
+@@ -0,0 +1,291 @@
++<?xml version='1.0' encoding='UTF-8'?>
++<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
++"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
++
++<!--
++
++`xsltproc -''-nonet \
++          -''-param man.charmap.use.subset "0" \
++          -''-param make.year.ranges "1" \
++          -''-param make.single.year.ranges "1" \
++          /usr/share/xml/docbook/stylesheet/nwalsh/manpages/docbook.xsl \
++          manpage.xml'
++
++A manual page <package>.<section> will be generated. You may view the
++manual page with: nroff -man <package>.<section> | less'. A typical entry
++in a Makefile or Makefile.am is:
++
++DB2MAN = /usr/share/sgml/docbook/stylesheet/xsl/nwalsh/manpages/docbook.xsl
++XP     = xsltproc -''-nonet -''-param man.charmap.use.subset "0"
++
++manpage.1: manpage.xml
++        $(XP) $(DB2MAN) $<
++
++The xsltproc binary is found in the xsltproc package. The XSL files are in
++docbook-xsl. A description of the parameters you can use can be found in the
++docbook-xsl-doc-* packages. Please remember that if you create the nroff
++version in one of the debian/rules file targets (such as build), you will need
++to include xsltproc and docbook-xsl in your Build-Depends control field.
++Alternatively use the xmlto command/package. That will also automatically
++pull in xsltproc and docbook-xsl.
++
++Notes for using docbook2x: docbook2x-man does not automatically create the
++AUTHOR(S) and COPYRIGHT sections. In this case, please add them manually as
++<refsect1> ... </refsect1>.
++
++To disable the automatic creation of the AUTHOR(S) and COPYRIGHT sections
++read /usr/share/doc/docbook-xsl/doc/manpages/authors.html. This file can be
++found in the docbook-xsl-doc-html package.
++
++Validation can be done using: `xmllint -''-noout -''-valid manpage.xml`
++
++General documentation about man-pages and man-page-formatting:
++man(1), man(7), http://www.tldp.org/HOWTO/Man-Page/
++
++-->
++
++  <!-- Fill in your name for FIRSTNAME and SURNAME. -->
++  <!ENTITY dhfirstname "FIRSTNAME">
++  <!ENTITY dhsurname   "SURNAME">
++  <!-- dhusername could also be set to "&firstname; &surname;". -->
++  <!ENTITY dhusername  "root">
++  <!ENTITY dhemail     "root@ragweed.knams.wikimedia.org">
++  <!-- SECTION should be 1-8, maybe w/ subsection other parameters are
++       allowed: see man(7), man(1) and
++       http://www.tldp.org/HOWTO/Man-Page/q2.html. -->
++  <!ENTITY dhsection   "SECTION">
++  <!-- TITLE should be something like "User commands" or similar (see
++       http://www.tldp.org/HOWTO/Man-Page/q2.html). -->
++  <!ENTITY dhtitle     "varnish3 User Manual">
++  <!ENTITY dhucpackage "VARNISH3">
++  <!ENTITY dhpackage   "varnish3">
++]>
++
++<refentry>
++  <refentryinfo>
++    <title>&dhtitle;</title>
++    <productname>&dhpackage;</productname>
++    <authorgroup>
++      <author>
++       <firstname>&dhfirstname;</firstname>
++        <surname>&dhsurname;</surname>
++        <contrib>Wrote this manpage for the Debian system.</contrib>
++        <address>
++          <email>&dhemail;</email>
++        </address>
++      </author>
++    </authorgroup>
++    <copyright>
++      <year>2007</year>
++      <holder>&dhusername;</holder>
++    </copyright>
++    <legalnotice>
++      <para>This manual page was written for the Debian system
++        (and may be used by others).</para>
++      <para>Permission is granted to copy, distribute and/or modify this
++        document under the terms of the GNU General Public License,
++        Version 2 or (at your option) any later version published by
++        the Free Software Foundation.</para>
++      <para>On Debian systems, the complete text of the GNU General Public
++        License can be found in
++        <filename>/usr/share/common-licenses/GPL</filename>.</para>
++    </legalnotice>
++  </refentryinfo>
++  <refmeta>
++    <refentrytitle>&dhucpackage;</refentrytitle>
++    <manvolnum>&dhsection;</manvolnum>
++  </refmeta>
++  <refnamediv>
++    <refname>&dhpackage;</refname>
++    <refpurpose>program to do something</refpurpose>
++  </refnamediv>
++  <refsynopsisdiv>
++    <cmdsynopsis>
++      <command>&dhpackage;</command>
++      <!-- These are several examples, how syntaxes could look -->
++      <arg choice="plain"><option>-e <replaceable>this</replaceable></option></arg>
++      <arg choice="opt"><option>--example=<parameter>that</parameter></option></arg>
++      <arg choice="opt">
++        <group choice="req">
++          <arg choice="plain"><option>-e</option></arg>
++          <arg choice="plain"><option>--example</option></arg>
++        </group>
++        <replaceable class="option">this</replaceable>
++      </arg>
++      <arg choice="opt">
++        <group choice="req">
++          <arg choice="plain"><option>-e</option></arg>
++          <arg choice="plain"><option>--example</option></arg>
++        </group>
++        <group choice="req">
++          <arg choice="plain"><replaceable>this</replaceable></arg>
++          <arg choice="plain"><replaceable>that</replaceable></arg>
++        </group>
++      </arg>
++    </cmdsynopsis>
++    <cmdsynopsis>
++      <command>&dhpackage;</command>
++      <!-- Normally the help and version options make the programs stop
++           right after outputting the requested information. -->
++      <group choice="opt">
++        <arg choice="plain">
++          <group choice="req">
++            <arg choice="plain"><option>-h</option></arg>
++            <arg choice="plain"><option>--help</option></arg>
++          </group>
++        </arg>
++        <arg choice="plain">
++          <group choice="req">
++            <arg choice="plain"><option>-v</option></arg>
++            <arg choice="plain"><option>--version</option></arg>
++          </group>
++        </arg>
++      </group>
++    </cmdsynopsis>
++  </refsynopsisdiv>
++  <refsect1 id="description">
++    <title>DESCRIPTION</title>
++    <para>This manual page documents briefly the
++      <command>&dhpackage;</command> and <command>bar</command>
++      commands.</para>
++    <para>This manual page was written for the Debian distribution
++      because the original program does not have a manual page.
++      Instead, it has documentation in the GNU <citerefentry>
++        <refentrytitle>info</refentrytitle>
++        <manvolnum>1</manvolnum>
++      </citerefentry> format; see below.</para>
++    <para><command>&dhpackage;</command> is a program that...</para>
++  </refsect1>
++  <refsect1 id="options">
++    <title>OPTIONS</title>
++    <para>The program follows the usual GNU command line syntax,
++      with long options starting with two dashes (`-').  A summary of
++      options is included below.  For a complete description, see the
++      <citerefentry>
++        <refentrytitle>info</refentrytitle>
++        <manvolnum>1</manvolnum>
++      </citerefentry> files.</para>
++    <variablelist>
++      <!-- Use the variablelist.term.separator and the
++           variablelist.term.break.after parameters to
++           control the term elements. -->
++      <varlistentry>
++        <term><option>-e <replaceable>this</replaceable></option></term>
++        <term><option>--example=<replaceable>that</replaceable></option></term>
++        <listitem>
++          <para>Does this and that.</para>
++        </listitem>
++      </varlistentry>
++      <varlistentry>
++        <term><option>-h</option></term>
++        <term><option>--help</option></term>
++        <listitem>
++          <para>Show summary of options.</para>
++        </listitem>
++      </varlistentry>
++      <varlistentry>
++        <term><option>-v</option></term>
++        <term><option>--version</option></term>
++        <listitem>
++          <para>Show version of program.</para>
++        </listitem>
++      </varlistentry>
++    </variablelist>
++  </refsect1>
++  <refsect1 id="files">
++    <title>FILES</title>
++    <variablelist>
++      <varlistentry>
++        <term><filename>/etc/foo.conf</filename></term>
++        <listitem>
++          <para>The system-wide configuration file to control the
++            behaviour of <application>&dhpackage;</application>. See
++            <citerefentry>
++              <refentrytitle>foo.conf</refentrytitle>
++              <manvolnum>5</manvolnum>
++            </citerefentry> for further details.</para>
++        </listitem>
++      </varlistentry>
++      <varlistentry>
++        <term><filename>${HOME}/.foo.conf</filename></term>
++        <listitem>
++          <para>The per-user configuration file to control the
++             behaviour of <application>&dhpackage;</application>. See
++             <citerefentry>
++               <refentrytitle>foo.conf</refentrytitle>
++               <manvolnum>5</manvolnum>
++             </citerefentry> for further details.</para>
++        </listitem>
++      </varlistentry>
++    </variablelist>
++  </refsect1>
++  <refsect1 id="environment">
++    <title>ENVIONMENT</title>
++    <variablelist>
++      <varlistentry>
++        <term><envar>FOO_CONF</envar></term>
++        <listitem>
++          <para>If used, the defined file is used as configuration
++            file (see also <xref linkend="files"/>).</para>
++        </listitem>
++      </varlistentry>
++    </variablelist>
++  </refsect1>
++  <refsect1 id="diagnostics">
++    <title>DIAGNOSTICS</title>
++    <para>The following diagnostics may be issued
++      on <filename class="devicefile">stderr</filename>:</para>
++    <variablelist>
++      <varlistentry>
++        <term><errortext>Bad configuration file. Exiting.</errortext></term>
++        <listitem>
++          <para>The configuration file seems to contain a broken configuration
++            line. Use the <option>--verbose</option> option, to get more info.
++          </para>
++        </listitem>
++      </varlistentry>
++    </variablelist>
++    <para><command>&dhpackage;</command> provides some return codes, that can
++      be used in scripts:</para>
++    <segmentedlist>
++      <segtitle>Code</segtitle>
++      <segtitle>Diagnostic</segtitle>
++      <seglistitem>
++        <seg><errorcode>0</errorcode></seg>
++        <seg>Program exited successfully.</seg>
++      </seglistitem>
++      <seglistitem>
++        <seg><errorcode>1</errorcode></seg>
++        <seg>The configuration file seems to be broken.</seg>
++      </seglistitem>
++    </segmentedlist>
++  </refsect1>
++  <refsect1 id="bugs">
++    <!-- Or use this section to tell about upstream BTS. -->
++    <title>BUGS</title>
++    <para>The program is currently limited to only work
++      with the <package>foobar</package> library.</para>
++    <para>The upstreams <acronym>BTS</acronym> can be found
++      at <ulink url="http://bugzilla.foo.tld"/>.</para>
++  </refsect1>
++  <refsect1 id="see_also">
++    <title>SEE ALSO</title>
++    <!-- In alpabetical order. -->
++    <para><citerefentry>
++        <refentrytitle>bar</refentrytitle>
++        <manvolnum>1</manvolnum>
++      </citerefentry>, <citerefentry>
++        <refentrytitle>baz</refentrytitle>
++        <manvolnum>1</manvolnum>
++      </citerefentry>, <citerefentry>
++        <refentrytitle>foo.conf</refentrytitle>
++        <manvolnum>5</manvolnum>
++      </citerefentry></para>
++    <para>The programs are documented fully by <citetitle>The Rise and
++      Fall of a Fooish Bar</citetitle> available via the <citerefentry>
++        <refentrytitle>info</refentrytitle>
++        <manvolnum>1</manvolnum>
++      </citerefentry> system.</para>
++  </refsect1>
++</refentry>
++
+--- /dev/null
++++ varnish3-3.0.0/debian-test/rules
+@@ -0,0 +1,137 @@
++#!/usr/bin/make -f
++# -*- makefile -*-
++# Sample debian/rules that uses debhelper.
++#
++# This file was originally written by Joey Hess and Craig Small.
++# As a special exception, when this file is copied by dh-make into a
++# dh-make output file, you may use that output file without restriction.
++# This special exception was added by Craig Small in version 0.37 of dh-make.
++#
++# Modified to make a template file for a multi-binary package with separated
++# build-arch and build-indep targets  by Bill Allombert 2001
++
++# Uncomment this to turn on verbose mode.
++#export DH_VERBOSE=1
++
++# This has to be exported to make some magic below work.
++export DH_OPTIONS
++
++# These are used for cross-compiling and for saving the configure script
++# from having to guess our platform (since we know it already)
++DEB_HOST_GNU_TYPE   ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
++DEB_BUILD_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
++ifneq ($(DEB_HOST_GNU_TYPE),$(DEB_BUILD_GNU_TYPE))
++CROSS= --build $(DEB_BUILD_GNU_TYPE) --host $(DEB_HOST_GNU_TYPE)
++else
++CROSS= --build $(DEB_BUILD_GNU_TYPE)
++endif
++
++
++
++include /usr/share/dpatch/dpatch.make
++
++config.status: configure
++	dh_testdir
++	# Add here commands to configure the package.
++ifneq "$(wildcard /usr/share/misc/config.sub)" ""
++	cp -f /usr/share/misc/config.sub config.sub
++endif
++ifneq "$(wildcard /usr/share/misc/config.guess)" ""
++	cp -f /usr/share/misc/config.guess config.guess
++endif
++	./configure $(CROSS) --prefix=/usr --mandir=\$${prefix}/share/man --infodir=\$${prefix}/share/info CFLAGS="$(CFLAGS)" LDFLAGS="-Wl,-z,defs"
++
++
++#Architecture
++build: build-arch build-indep
++
++build-arch: build-arch-stamp
++build-arch-stamp:  config.status patch-stamp
++
++	# Add here commands to compile the arch part of the package.
++	#$(MAKE)
++	touch $@
++
++build-indep: build-indep-stamp
++build-indep-stamp:  config.status patch-stamp
++
++	# Add here commands to compile the indep part of the package.
++	#$(MAKE) doc
++	touch $@
++
++clean: unpatch
++	dh_testdir
++	dh_testroot
++	rm -f build-arch-stamp build-indep-stamp 
++
++	# Add here commands to clean up after the build process.
++	[ ! -f Makefile ] || $(MAKE) distclean
++	rm -f config.sub config.guess
++
++	dh_clean 
++
++install: install-indep install-arch
++install-indep:
++	dh_testdir
++	dh_testroot
++	dh_prep -i 
++	dh_installdirs -i
++
++	# Add here commands to install the indep part of the package into
++	# debian/<package>-doc.
++	#INSTALLDOC#
++
++	dh_install -i
++
++install-arch:
++	dh_testdir
++	dh_testroot
++	dh_prep -s 
++	dh_installdirs -s
++
++	# Add here commands to install the arch part of the package into
++	# debian/tmp.
++	$(MAKE) DESTDIR=$(CURDIR)/debian/varnish3 install
++
++	dh_install -s
++# Must not depend on anything. This is to be called by
++# binary-arch/binary-indep
++# in another 'make' thread.
++binary-common:
++	dh_testdir
++	dh_testroot
++	dh_installchangelogs ChangeLog
++	dh_installdocs
++	dh_installexamples
++#	dh_installmenu
++#	dh_installdebconf
++#	dh_installlogrotate
++#	dh_installemacsen
++#	dh_installpam
++#	dh_installmime
++#	dh_python
++#	dh_installinit
++#	dh_installcron
++#	dh_installinfo
++	dh_installman
++	dh_link
++	dh_strip
++	dh_compress
++	dh_fixperms
++#	dh_perl
++	dh_makeshlibs
++	dh_installdeb
++	dh_shlibdeps
++	dh_gencontrol
++	dh_md5sums
++	dh_builddeb
++# Build architecture independant packages using the common target.
++binary-indep: build-indep install-indep
++	$(MAKE) -f debian/rules DH_OPTIONS=-i binary-common
++
++# Build architecture dependant packages using the common target.
++binary-arch: build-arch install-arch
++	$(MAKE) -f debian/rules DH_OPTIONS=-s binary-common
++
++binary: binary-arch binary-indep
++.PHONY: build clean binary-indep binary-arch binary install install-indep install-arch 
+--- /dev/null
++++ varnish3-3.0.0/debian-test/prerm.ex
+@@ -0,0 +1,38 @@
++#!/bin/sh
++# prerm script for varnish3
++#
++# see: dh_installdeb(1)
++
++set -e
++
++# summary of how this script can be called:
++#        * <prerm> `remove'
++#        * <old-prerm> `upgrade' <new-version>
++#        * <new-prerm> `failed-upgrade' <old-version>
++#        * <conflictor's-prerm> `remove' `in-favour' <package> <new-version>
++#        * <deconfigured's-prerm> `deconfigure' `in-favour'
++#          <package-being-installed> <version> `removing'
++#          <conflicting-package> <version>
++# for details, see http://www.debian.org/doc/debian-policy/ or
++# the debian-policy package
++
++
++case "$1" in
++    remove|upgrade|deconfigure)
++    ;;
++
++    failed-upgrade)
++    ;;
++
++    *)
++        echo "prerm called with unknown argument \`$1'" >&2
++        exit 1
++    ;;
++esac
++
++# dh_installdeb will replace this with shell code automatically
++# generated by other debhelper scripts.
++
++#DEBHELPER#
++
++exit 0
+--- /dev/null
++++ varnish3-3.0.0/debian-test/postinst.ex
+@@ -0,0 +1,39 @@
++#!/bin/sh
++# postinst script for varnish3
++#
++# see: dh_installdeb(1)
++
++set -e
++
++# summary of how this script can be called:
++#        * <postinst> `configure' <most-recently-configured-version>
++#        * <old-postinst> `abort-upgrade' <new version>
++#        * <conflictor's-postinst> `abort-remove' `in-favour' <package>
++#          <new-version>
++#        * <postinst> `abort-remove'
++#        * <deconfigured's-postinst> `abort-deconfigure' `in-favour'
++#          <failed-install-package> <version> `removing'
++#          <conflicting-package> <version>
++# for details, see http://www.debian.org/doc/debian-policy/ or
++# the debian-policy package
++
++
++case "$1" in
++    configure)
++    ;;
++
++    abort-upgrade|abort-remove|abort-deconfigure)
++    ;;
++
++    *)
++        echo "postinst called with unknown argument \`$1'" >&2
++        exit 1
++    ;;
++esac
++
++# dh_installdeb will replace this with shell code automatically
++# generated by other debhelper scripts.
++
++#DEBHELPER#
++
++exit 0
+--- /dev/null
++++ varnish3-3.0.0/debian-test/varnish3-doc.install
+@@ -0,0 +1 @@
++#DOCS#
+--- /dev/null
++++ varnish3-3.0.0/debian-test/docs
+@@ -0,0 +1 @@
++README
+--- /dev/null
++++ varnish3-3.0.0/debian-test/init.d.lsb.ex
+@@ -0,0 +1,296 @@
++#!/bin/sh
++#
++# Example init.d script with LSB support.
++#
++# Please read this init.d carefully and modify the sections to
++# adjust it to the program you want to run.
++#
++# Copyright (c) 2007 Javier Fernandez-Sanguino <jfs@debian.org>
++#
++# This is free software; you may redistribute it and/or modify
++# it under the terms of the GNU General Public License as
++# published by the Free Software Foundation; either version 2,
++# or (at your option) any later version.
++#
++# This is distributed in the hope that it will be useful, but
++# WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License with
++# the Debian operating system, in /usr/share/common-licenses/GPL;  if
++# not, write to the Free Software Foundation, Inc., 59 Temple Place,
++# Suite 330, Boston, MA 02111-1307 USA
++#
++### BEGIN INIT INFO
++# Provides:          varnish3
++# Required-Start:    $network $local_fs
++# Required-Stop:
++# Should-Start:      $named
++# Should-Stop:
++# Default-Start:     2 3 4 5
++# Default-Stop:      0 1 6
++# Short-Description: <Enter a short description of the sortware>
++# Description:       <Enter a long description of the software>
++#                    <...>
++#                    <...>
++### END INIT INFO
++
++PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
++
++DAEMON=/usr/sbin/varnish3 # Introduce the server's location here
++NAME=#PACKAGE              # Introduce the short server's name here
++DESC=#PACKAGE              # Introduce a short description here
++LOGDIR=/var/log/varnish3  # Log directory to use
++
++PIDFILE=/var/run/$NAME.pid
++
++test -x $DAEMON || exit 0
++
++. /lib/lsb/init-functions
++
++# Default options, these can be overriden by the information
++# at /etc/default/$NAME
++DAEMON_OPTS=""          # Additional options given to the server
++
++DIETIME=10              # Time to wait for the server to die, in seconds
++                        # If this value is set too low you might not
++                        # let some servers to die gracefully and
++                        # 'restart' will not work
++
++#STARTTIME=2             # Time to wait for the server to start, in seconds
++                        # If this value is set each time the server is
++                        # started (on start or restart) the script will
++                        # stall to try to determine if it is running
++                        # If it is not set and the server takes time
++                        # to setup a pid file the log message might
++                        # be a false positive (says it did not start
++                        # when it actually did)
++
++LOGFILE=$LOGDIR/$NAME.log  # Server logfile
++#DAEMONUSER=varnish3   # Users to run the daemons as. If this value
++                        # is set start-stop-daemon will chuid the server
++
++# Include defaults if available
++if [ -f /etc/default/$NAME ] ; then
++    . /etc/default/$NAME
++fi
++
++# Use this if you want the user to explicitly set 'RUN' in
++# /etc/default/
++#if [ "x$RUN" != "xyes" ] ; then
++#    log_failure_msg "$NAME disabled, please adjust the configuration to your needs "
++#    log_failure_msg "and then set RUN to 'yes' in /etc/default/$NAME to enable it."
++#    exit 1
++#fi
++
++# Check that the user exists (if we set a user)
++# Does the user exist?
++if [ -n "$DAEMONUSER" ] ; then
++    if getent passwd | grep -q "^$DAEMONUSER:"; then
++        # Obtain the uid and gid
++        DAEMONUID=`getent passwd |grep "^$DAEMONUSER:" | awk -F : '{print $3}'`
++        DAEMONGID=`getent passwd |grep "^$DAEMONUSER:" | awk -F : '{print $4}'`
++    else
++        log_failure_msg "The user $DAEMONUSER, required to run $NAME does not exist."
++        exit 1
++    fi
++fi
++
++
++set -e
++
++running_pid() {
++# Check if a given process pid's cmdline matches a given name
++    pid=$1
++    name=$2
++    [ -z "$pid" ] && return 1
++    [ ! -d /proc/$pid ] &&  return 1
++    cmd=`cat /proc/$pid/cmdline | tr "\000" "\n"|head -n 1 |cut -d : -f 1`
++    # Is this the expected server
++    [ "$cmd" != "$name" ] &&  return 1
++    return 0
++}
++
++running() {
++# Check if the process is running looking at /proc
++# (works for all users)
++
++    # No pidfile, probably no daemon present
++    [ ! -f "$PIDFILE" ] && return 1
++    pid=`cat $PIDFILE`
++    running_pid $pid $DAEMON || return 1
++    return 0
++}
++
++start_server() {
++# Start the process using the wrapper
++        if [ -z "$DAEMONUSER" ] ; then
++            start_daemon -p $PIDFILE $DAEMON $DAEMON_OPTS
++            errcode=$?
++        else
++# if we are using a daemonuser then change the user id
++            start-stop-daemon --start --quiet --pidfile $PIDFILE \
++                        --chuid $DAEMONUSER \
++                        --exec $DAEMON -- $DAEMON_OPTS
++            errcode=$?
++        fi
++        return $errcode
++}
++
++stop_server() {
++# Stop the process using the wrapper
++        if [ -z "$DAEMONUSER" ] ; then
++            killproc -p $PIDFILE $DAEMON
++            errcode=$?
++        else
++# if we are using a daemonuser then look for process that match
++            start-stop-daemon --stop --quiet --pidfile $PIDFILE \
++                        --user $DAEMONUSER \
++                        --exec $DAEMON
++            errcode=$?
++        fi
++
++        return $errcode
++}
++
++reload_server() {
++    [ ! -f "$PIDFILE" ] && return 1
++    pid=pidofproc $PIDFILE # This is the daemon's pid
++    # Send a SIGHUP
++    kill -1 $pid
++    return $?
++}
++
++force_stop() {
++# Force the process to die killing it manually
++    [ ! -e "$PIDFILE" ] && return
++    if running ; then
++        kill -15 $pid
++        # Is it really dead?
++        sleep "$DIETIME"s
++        if running ; then
++            kill -9 $pid
++            sleep "$DIETIME"s
++            if running ; then
++                echo "Cannot kill $NAME (pid=$pid)!"
++                exit 1
++            fi
++        fi
++    fi
++    rm -f $PIDFILE
++}
++
++
++case "$1" in
++  start)
++        log_daemon_msg "Starting $DESC " "$NAME"
++        # Check if it's running first
++        if running ;  then
++            log_progress_msg "apparently already running"
++            log_end_msg 0
++            exit 0
++        fi
++        if start_server ; then
++            # NOTE: Some servers might die some time after they start,
++            # this code will detect this issue if STARTTIME is set
++            # to a reasonable value
++            [ -n "$STARTTIME" ] && sleep $STARTTIME # Wait some time 
++            if  running ;  then
++                # It's ok, the server started and is running
++                log_end_msg 0
++            else
++                # It is not running after we did start
++                log_end_msg 1
++            fi
++        else
++            # Either we could not start it
++            log_end_msg 1
++        fi
++        ;;
++  stop)
++        log_daemon_msg "Stopping $DESC" "$NAME"
++        if running ; then
++            # Only stop the server if we see it running
++            errcode=0
++            stop_server || errcode=$?
++            log_end_msg $errcode
++        else
++            # If it's not running don't do anything
++            log_progress_msg "apparently not running"
++            log_end_msg 0
++            exit 0
++        fi
++        ;;
++  force-stop)
++        # First try to stop gracefully the program
++        $0 stop
++        if running; then
++            # If it's still running try to kill it more forcefully
++            log_daemon_msg "Stopping (force) $DESC" "$NAME"
++            errcode=0
++            force_stop || errcode=$?
++            log_end_msg $errcode
++        fi
++        ;;
++  restart|force-reload)
++        log_daemon_msg "Restarting $DESC" "$NAME"
++        errcode=0
++        stop_server || errcode=$?
++        # Wait some sensible amount, some server need this
++        [ -n "$DIETIME" ] && sleep $DIETIME
++        start_server || errcode=$?
++        [ -n "$STARTTIME" ] && sleep $STARTTIME
++        running || errcode=$?
++        log_end_msg $errcode
++        ;;
++  status)
++
++        log_daemon_msg "Checking status of $DESC" "$NAME"
++        if running ;  then
++            log_progress_msg "running"
++            log_end_msg 0
++        else
++            log_progress_msg "apparently not running"
++            log_end_msg 1
++            exit 1
++        fi
++        ;;
++  # Use this if the daemon cannot reload
++  reload)
++        log_warning_msg "Reloading $NAME daemon: not implemented, as the daemon"
++        log_warning_msg "cannot re-read the config file (use restart)."
++        ;;
++  # And this if it cann
++  #reload)
++          #
++          # If the daemon can reload its config files on the fly
++          # for example by sending it SIGHUP, do it here.
++          #
++          # If the daemon responds to changes in its config file
++          # directly anyway, make this a do-nothing entry.
++          #
++          # log_daemon_msg "Reloading $DESC configuration files" "$NAME"
++          # if running ; then
++          #    reload_server
++          #    if ! running ;  then
++          # Process died after we tried to reload
++          #       log_progress_msg "died on reload"
++          #       log_end_msg 1
++          #       exit 1
++          #    fi
++          # else
++          #    log_progress_msg "server is not running"
++          #    log_end_msg 1
++          #    exit 1
++          # fi
++                                                                                    #;;
++
++  *)
++        N=/etc/init.d/$NAME
++        echo "Usage: $N {start|stop|force-stop|restart|force-reload|status}" >&2
++        exit 1
++        ;;
++esac
++
++exit 0
+--- /dev/null
++++ varnish3-3.0.0/debian-test/postrm.ex
+@@ -0,0 +1,37 @@
++#!/bin/sh
++# postrm script for varnish3
++#
++# see: dh_installdeb(1)
++
++set -e
++
++# summary of how this script can be called:
++#        * <postrm> `remove'
++#        * <postrm> `purge'
++#        * <old-postrm> `upgrade' <new-version>
++#        * <new-postrm> `failed-upgrade' <old-version>
++#        * <new-postrm> `abort-install'
++#        * <new-postrm> `abort-install' <old-version>
++#        * <new-postrm> `abort-upgrade' <old-version>
++#        * <disappearer's-postrm> `disappear' <overwriter>
++#          <overwriter-version>
++# for details, see http://www.debian.org/doc/debian-policy/ or
++# the debian-policy package
++
++
++case "$1" in
++    purge|remove|upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
++    ;;
++
++    *)
++        echo "postrm called with unknown argument \`$1'" >&2
++        exit 1
++    ;;
++esac
++
++# dh_installdeb will replace this with shell code automatically
++# generated by other debhelper scripts.
++
++#DEBHELPER#
++
++exit 0
+--- /dev/null
++++ varnish3-3.0.0/debian-test/manpage.sgml.ex
+@@ -0,0 +1,154 @@
++<!doctype refentry PUBLIC "-//OASIS//DTD DocBook V4.1//EN" [
++
++<!-- Process this file with docbook-to-man to generate an nroff manual
++     page: `docbook-to-man manpage.sgml > manpage.1'.  You may view
++     the manual page with: `docbook-to-man manpage.sgml | nroff -man |
++     less'.  A typical entry in a Makefile or Makefile.am is:
++
++manpage.1: manpage.sgml
++	docbook-to-man $< > $@
++
++
++	The docbook-to-man binary is found in the docbook-to-man package.
++	Please remember that if you create the nroff version in one of the
++	debian/rules file targets (such as build), you will need to include
++	docbook-to-man in your Build-Depends control field.
++
++  -->
++
++  <!-- Fill in your name for FIRSTNAME and SURNAME. -->
++  <!ENTITY dhfirstname "<firstname>FIRSTNAME</firstname>">
++  <!ENTITY dhsurname   "<surname>SURNAME</surname>">
++  <!-- Please adjust the date whenever revising the manpage. -->
++  <!ENTITY dhdate      "<date>July 18, 2011</date>">
++  <!-- SECTION should be 1-8, maybe w/ subsection other parameters are
++       allowed: see man(7), man(1). -->
++  <!ENTITY dhsection   "<manvolnum>SECTION</manvolnum>">
++  <!ENTITY dhemail     "<email>root@ragweed.knams.wikimedia.org</email>">
++  <!ENTITY dhusername  "root">
++  <!ENTITY dhucpackage "<refentrytitle>VARNISH3</refentrytitle>">
++  <!ENTITY dhpackage   "varnish3">
++
++  <!ENTITY debian      "<productname>Debian</productname>">
++  <!ENTITY gnu         "<acronym>GNU</acronym>">
++  <!ENTITY gpl         "&gnu; <acronym>GPL</acronym>">
++]>
++
++<refentry>
++  <refentryinfo>
++    <address>
++      &dhemail;
++    </address>
++    <author>
++      &dhfirstname;
++      &dhsurname;
++    </author>
++    <copyright>
++      <year>2003</year>
++      <holder>&dhusername;</holder>
++    </copyright>
++    &dhdate;
++  </refentryinfo>
++  <refmeta>
++    &dhucpackage;
++
++    &dhsection;
++  </refmeta>
++  <refnamediv>
++    <refname>&dhpackage;</refname>
++
++    <refpurpose>program to do something</refpurpose>
++  </refnamediv>
++  <refsynopsisdiv>
++    <cmdsynopsis>
++      <command>&dhpackage;</command>
++
++      <arg><option>-e <replaceable>this</replaceable></option></arg>
++
++      <arg><option>--example <replaceable>that</replaceable></option></arg>
++    </cmdsynopsis>
++  </refsynopsisdiv>
++  <refsect1>
++    <title>DESCRIPTION</title>
++
++    <para>This manual page documents briefly the
++      <command>&dhpackage;</command> and <command>bar</command>
++      commands.</para>
++
++    <para>This manual page was written for the &debian; distribution
++      because the original program does not have a manual page.
++      Instead, it has documentation in the &gnu;
++      <application>Info</application> format; see below.</para>
++
++    <para><command>&dhpackage;</command> is a program that...</para>
++
++  </refsect1>
++  <refsect1>
++    <title>OPTIONS</title>
++
++    <para>These programs follow the usual &gnu; command line syntax,
++      with long options starting with two dashes (`-').  A summary of
++      options is included below.  For a complete description, see the
++      <application>Info</application> files.</para>
++
++    <variablelist>
++      <varlistentry>
++        <term><option>-h</option>
++          <option>--help</option>
++        </term>
++        <listitem>
++          <para>Show summary of options.</para>
++        </listitem>
++      </varlistentry>
++      <varlistentry>
++        <term><option>-v</option>
++          <option>--version</option>
++        </term>
++        <listitem>
++          <para>Show version of program.</para>
++        </listitem>
++      </varlistentry>
++    </variablelist>
++  </refsect1>
++  <refsect1>
++    <title>SEE ALSO</title>
++
++    <para>bar (1), baz (1).</para>
++
++    <para>The programs are documented fully by <citetitle>The Rise and
++      Fall of a Fooish Bar</citetitle> available via the
++      <application>Info</application> system.</para>
++  </refsect1>
++  <refsect1>
++    <title>AUTHOR</title>
++
++    <para>This manual page was written by &dhusername; &dhemail; for
++      the &debian; system (and may be used by others).  Permission is
++      granted to copy, distribute and/or modify this document under
++      the terms of the &gnu; General Public License, Version 2 any
++      later version published by the Free Software Foundation.
++    </para>
++    <para>
++      On Debian systems, the complete text of the GNU General Public
++      License can be found in /usr/share/common-licenses/GPL.
++    </para>
++
++  </refsect1>
++</refentry>
++
++<!-- Keep this comment at the end of the file
++Local variables:
++mode: sgml
++sgml-omittag:t
++sgml-shorttag:t
++sgml-minimize-attributes:nil
++sgml-always-quote-attributes:t
++sgml-indent-step:2
++sgml-indent-data:t
++sgml-parent-document:nil
++sgml-default-dtd-file:nil
++sgml-exposed-tags:nil
++sgml-local-catalogs:nil
++sgml-local-ecat-files:nil
++End:
++-->
+--- /dev/null
++++ varnish3-3.0.0/debian-test/preinst.ex
+@@ -0,0 +1,35 @@
++#!/bin/sh
++# preinst script for varnish3
++#
++# see: dh_installdeb(1)
++
++set -e
++
++# summary of how this script can be called:
++#        * <new-preinst> `install'
++#        * <new-preinst> `install' <old-version>
++#        * <new-preinst> `upgrade' <old-version>
++#        * <old-preinst> `abort-upgrade' <new-version>
++# for details, see http://www.debian.org/doc/debian-policy/ or
++# the debian-policy package
++
++
++case "$1" in
++    install|upgrade)
++    ;;
++
++    abort-upgrade)
++    ;;
++
++    *)
++        echo "preinst called with unknown argument \`$1'" >&2
++        exit 1
++    ;;
++esac
++
++# dh_installdeb will replace this with shell code automatically
++# generated by other debhelper scripts.
++
++#DEBHELPER#
++
++exit 0
+--- /dev/null
++++ varnish3-3.0.0/debian-test/dirs
+@@ -0,0 +1,2 @@
++usr/bin
++usr/sbin
+--- /dev/null
++++ varnish3-3.0.0/debian-test/varnish3.default.ex
+@@ -0,0 +1,10 @@
++# Defaults for varnish3 initscript
++# sourced by /etc/init.d/varnish3
++# installed at /etc/default/varnish3 by the maintainer scripts
++
++#
++# This is a POSIX shell fragment
++#
++
++# Additional options that are passed to the Daemon.
++DAEMON_OPTS=""
+--- /dev/null
++++ varnish3-3.0.0/debian-test/control
+@@ -0,0 +1,18 @@
++Source: varnish3
++Section: unknown
++Priority: extra
++Maintainer: root <root@ragweed.knams.wikimedia.org>
++Build-Depends: dpatch, debhelper (>= 7), autotools-dev
++Standards-Version: 3.8.1
++Homepage: <insert the upstream URL, if relevant>
++
++Package: varnish3
++Architecture: any
++Depends: ${shlibs:Depends}, ${misc:Depends}
++Description: <insert up to 60 chars description>
++ <insert long description, indented with spaces>
++
++Package: varnish3-doc
++Architecture: all
++Description: documentation for varnish3
++ <insert long description, indented with spaces>
+--- /dev/null
++++ varnish3-3.0.0/debian-test/compat
+@@ -0,0 +1 @@
++7
+--- /dev/null
++++ varnish3-3.0.0/debian-test/emacsen-startup.ex
+@@ -0,0 +1,25 @@
++;; -*-emacs-lisp-*-
++;;
++;; Emacs startup file, e.g.  /etc/emacs/site-start.d/50varnish3.el
++;; for the Debian varnish3 package
++;;
++;; Originally contributed by Nils Naumann <naumann@unileoben.ac.at>
++;; Modified by Dirk Eddelbuettel <edd@debian.org>
++;; Adapted for dh-make by Jim Van Zandt <jrv@debian.org>
++
++;; The varnish3 package follows the Debian/GNU Linux 'emacsen' policy and
++;; byte-compiles its elisp files for each 'emacs flavor' (emacs19,
++;; xemacs19, emacs20, xemacs20...).  The compiled code is then
++;; installed in a subdirectory of the respective site-lisp directory.
++;; We have to add this to the load-path:
++(let ((package-dir (concat "/usr/share/"
++                           (symbol-name flavor)
++                           "/site-lisp/varnish3")))
++;; If package-dir does not exist, the varnish3 package must have
++;; removed but not purged, and we should skip the setup.
++  (when (file-directory-p package-dir)
++    (setq load-path (cons package-dir load-path))
++    (autoload 'varnish3-mode "varnish3-mode"
++      "Major mode for editing varnish3 files." t)
++    (add-to-list 'auto-mode-alist '("\\.varnish3$" . varnish3-mode))))
++
+--- /dev/null
++++ varnish3-3.0.0/debian-test/init.d.ex
+@@ -0,0 +1,157 @@
++#! /bin/sh
++#
++# skeleton	example file to build /etc/init.d/ scripts.
++#		This file should be used to construct scripts for /etc/init.d.
++#
++#		Written by Miquel van Smoorenburg <miquels@cistron.nl>.
++#		Modified for Debian
++#		by Ian Murdock <imurdock@gnu.ai.mit.edu>.
++#               Further changes by Javier Fernandez-Sanguino <jfs@debian.org>
++#
++# Version:	@(#)skeleton  1.9  26-Feb-2001  miquels@cistron.nl
++#
++
++PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
++DAEMON=/usr/sbin/varnish3
++NAME=varnish3
++DESC=varnish3
++
++test -x $DAEMON || exit 0
++
++LOGDIR=/var/log/varnish3
++PIDFILE=/var/run/$NAME.pid
++DODTIME=1                   # Time to wait for the server to die, in seconds
++                            # If this value is set too low you might not
++                            # let some servers to die gracefully and
++                            # 'restart' will not work
++
++# Include varnish3 defaults if available
++if [ -f /etc/default/varnish3 ] ; then
++    . /etc/default/varnish3
++fi
++
++set -e
++
++running_pid()
++{
++    # Check if a given process pid's cmdline matches a given name
++    pid=$1
++    name=$2
++    [ -z "$pid" ] && return 1
++    [ ! -d /proc/$pid ] &&  return 1
++    cmd=`cat /proc/$pid/cmdline | tr "\000" "\n"|head -n 1 |cut -d : -f 1`
++    # Is this the expected child?
++    [ "$cmd" != "$name" ] &&  return 1
++    return 0
++}
++
++running()
++{
++# Check if the process is running looking at /proc
++# (works for all users)
++
++    # No pidfile, probably no daemon present
++    [ ! -f "$PIDFILE" ] && return 1
++    # Obtain the pid and check it against the binary name
++    pid=`cat $PIDFILE`
++    running_pid $pid $DAEMON || return 1
++    return 0
++}
++
++force_stop() {
++# Forcefully kill the process
++    [ ! -f "$PIDFILE" ] && return
++    if running ; then
++        kill -15 $pid
++        # Is it really dead?
++        [ -n "$DODTIME" ] && sleep "$DODTIME"s
++        if running ; then
++            kill -9 $pid
++            [ -n "$DODTIME" ] && sleep "$DODTIME"s
++            if running ; then
++                echo "Cannot kill $LABEL (pid=$pid)!"
++                exit 1
++            fi
++        fi
++    fi
++    rm -f $PIDFILE
++    return 0
++}
++
++case "$1" in
++  start)
++        echo -n "Starting $DESC: "
++        start-stop-daemon --start --quiet --pidfile $PIDFILE \
++            --exec $DAEMON -- $DAEMON_OPTS
++        if running ; then
++            echo "$NAME."
++        else
++            echo " ERROR."
++        fi
++        ;;
++  stop)
++        echo -n "Stopping $DESC: "
++        start-stop-daemon --stop --quiet --pidfile $PIDFILE \
++            --exec $DAEMON
++        echo "$NAME."
++        ;;
++  force-stop)
++        echo -n "Forcefully stopping $DESC: "
++        force_stop
++        if ! running ; then
++            echo "$NAME."
++        else
++            echo " ERROR."
++        fi
++        ;;
++  #reload)
++        #
++        # If the daemon can reload its config files on the fly
++        # for example by sending it SIGHUP, do it here.
++        #
++        # If the daemon responds to changes in its config file
++        # directly anyway, make this a do-nothing entry.
++        #
++        # echo "Reloading $DESC configuration files."
++        # start-stop-daemon --stop --signal 1 --quiet --pidfile \
++        #       /var/run/$NAME.pid --exec $DAEMON
++  #;;
++  force-reload)
++        #
++        # If the "reload" option is implemented, move the "force-reload"
++        # option to the "reload" entry above. If not, "force-reload" is
++        # just the same as "restart" except that it does nothing if the
++        # daemon isn't already running.
++        # check wether $DAEMON is running. If so, restart
++        start-stop-daemon --stop --test --quiet --pidfile \
++            /var/run/$NAME.pid --exec $DAEMON \
++            && $0 restart \
++            || exit 0
++        ;;
++  restart)
++    echo -n "Restarting $DESC: "
++        start-stop-daemon --stop --quiet --pidfile \
++            /var/run/$NAME.pid --exec $DAEMON
++        [ -n "$DODTIME" ] && sleep $DODTIME
++        start-stop-daemon --start --quiet --pidfile \
++            /var/run/$NAME.pid --exec $DAEMON -- $DAEMON_OPTS
++        echo "$NAME."
++        ;;
++  status)
++    echo -n "$LABEL is "
++    if running ;  then
++        echo "running"
++    else
++        echo " not running."
++        exit 1
++    fi
++    ;;
++  *)
++    N=/etc/init.d/$NAME
++    # echo "Usage: $N {start|stop|restart|reload|force-reload}" >&2
++    echo "Usage: $N {start|stop|restart|force-reload|status|force-stop}" >&2
++    exit 1
++    ;;
++esac
++
++exit 0
