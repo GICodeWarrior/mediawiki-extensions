@@ -707,6 +707,7 @@ $messages['eo'] = array(
  * @author Antur
  * @author BicScope
  * @author Crazymadlover
+ * @author Mor
  * @author Sanbec
  */
 $messages['es'] = array(
@@ -717,7 +718,7 @@ $messages['es'] = array(
 	'badimages-count' => "Ya hay '''$1''' {{PLURAL:$1|imagen|imágenes}} en la lista de imágenes malas.",
 	'badimages-name' => 'Nombre:',
 	'badimages-not-added' => 'La imágen no puede agregarse.',
-	'badimages-not-removed' => 'La imágen no puede ser removida.',
+	'badimages-not-removed' => 'No se pudo quitar la imagen.',
 	'badimages-reason' => 'Motivo:',
 	'badimages-remove' => '(borrar)',
 	'badimages-remove-btn' => 'Borrar',
@@ -728,7 +729,7 @@ $messages['es'] = array(
 	'badimages-log-name' => 'Lista de malas imágenes',
 	'badimages-log-header' => 'Éste es un registro de cambios a la [[{{MediaWiki:Badimages-page}}|lista de malas imágenes]].',
 	'badimages-log-add' => '[[$1]] fue añadida satisfactoriamente a la lista de malas imágenes',
-	'badimages-log-remove' => '[[$1]] ha sido removida satisfactoriamente de la lista de malas imágenes',
+	'badimages-log-remove' => '[[$1]] ha sido eliminada satisfactoriamente de la lista de malas imágenes',
 	'badimages-page' => '{{ns:help}}:Lista de malas imágenes',
 	'right-badimages' => 'Actualizar la lista de malas imágenes',
 );
