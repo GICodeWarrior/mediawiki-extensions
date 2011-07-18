@@ -13,12 +13,12 @@ var lines = [
 			},
 			{
 				"type": "xlink",
+				"data": {
+					"url": "http://www.a.com"
+				},
 				"range": {
 					"start": 8,
 					"end": 14
-				},
-				"data": {
-					"url": "http://www.a.com"
 				}
 			},
 			{
@@ -55,7 +55,10 @@ var content = Content.newFromLines( lines );
 
 /* Tests */
 
-test( 'Content modification', 17, function() {
+test( 'Content modification', 18, function() {
+
+	deepEqual( content.getLines(), lines, "Content.getLines returns correct array of all lines" );
+
 	content.on( 'change', function( args ) {
 		ok( true, 'Change events get triggered after ' + args.type + ' events' );
 	} );
