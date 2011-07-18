@@ -67,8 +67,10 @@ function Surface( $container, doc ) {
 	
 	this.doc.on( 'update', function() {
 		if ( surface.location && surface.location.block && !surface.drawSelection() ) {
-			var cursorPosition = surface.location.block.getPosition( surface.location.offset );
-			surface.cursor.show( cursorPosition, surface.location.block.$.offset() );
+			surface.cursor.show(
+				surface.location.block.getPosition( surface.location.offset ),
+				surface.location.block.$.offset()
+			);
 		}
 	} );
 	
