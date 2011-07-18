@@ -379,8 +379,11 @@ $messages['fr'] = array(
 	'metadata_help' => 'Métadonnées :',
 );
 
-/** Cajun French (Français cadien) */
+/** Cajun French (Français cadien)
+ * @author Ebe123
+ */
 $messages['frc'] = array(
+	'metadataedit-desc' => 'Met classes, liens de langues et modèles accéptés en boîte de texte en éditant les pages',
 	'metadata_help' => 'Meta-information:',
 );
 
