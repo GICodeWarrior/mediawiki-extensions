@@ -22,16 +22,16 @@ function TextFlow( $container, content ) {
 	
 	// Events
 	var flow = this;
-	this.content.on( 'change', function() {
-		flow.scanBoundaries();
-	} );
 	this.content.on( 'insert', function( args ) {
+		flow.scanBoundaries();
 		flow.render( args.offset );
 	} );
 	this.content.on( 'remove', function( args ) {
+		flow.scanBoundaries();
 		flow.render( args.start );
 	} );
 	this.content.on( 'annotate', function( args ) {
+		flow.scanBoundaries();
 		flow.render( args.start );
 	} );
 	
@@ -239,6 +239,7 @@ TextFlow.prototype.renderIteration = function() {
 		if ( rs.wordFit.width > rs.width ) {
 			// The first word didn't fit, we need to split it up
 			rs.charOffset = rs.lineStart;
+			var lineOffset = rs.wordOffset;
 			rs.wordOffset++;
 			rs.lineEnd = this.boundaries[rs.wordOffset];
 			do {
@@ -250,20 +251,21 @@ TextFlow.prototype.renderIteration = function() {
 						rs.wordOffset, rs.wordCount - 1, rs.ruler, rs.width - rs.charFit.width
 					);
 					if ( rs.wordFit.end > rs.wordOffset ) {
+						lineOffset = rs.wordOffset;
 						rs.wordOffset = rs.wordFit.end;
 						rs.charFit.end = rs.lineEnd = this.boundaries[rs.wordOffset];
 					}
 				}
-				this.appendLine( rs.charOffset, rs.charFit.end, rs.wordOffset, fractional );
+				this.appendLine( rs.charOffset, rs.charFit.end, lineOffset, fractional );
 				// Move on to another line
 				rs.charOffset = rs.charFit.end;
 				// Mark the next line as fractional
 				fractional = true;
 			} while ( rs.charOffset < rs.lineEnd );
 		} else {
-			rs.wordOffset = rs.wordFit.end;
-			rs.lineEnd = this.boundaries[rs.wordOffset];
+			rs.lineEnd = this.boundaries[rs.wordFit.end];
 			this.appendLine( rs.lineStart, rs.lineEnd, rs.wordOffset, fractional );
+			rs.wordOffset = rs.wordFit.end;
 		}
 		rs.lineStart = rs.lineEnd;
 	}
@@ -276,7 +278,6 @@ TextFlow.prototype.renderIteration = function() {
 			.nextAll()
 			.remove();
 		rs.timeout = undefined;
-		console.log( this.lines.length );
 		this.emit( 'render' );
 	} else {
 		rs.ruler.innerHTML = '';
