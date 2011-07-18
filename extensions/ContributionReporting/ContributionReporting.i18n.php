@@ -2956,6 +2956,7 @@ $messages['ka'] = array(
 	'fundraiserstats-tab-totals' => 'სულ (USD)',
 	'fundraiserstats-tab-contributions' => 'წვლილის ნომერი',
 	'fundraiserstats-tab-maximums' => 'მაქსიმუმი (USD)',
+	'fundraiserstats-show-years' => 'აჩვენე შემდეგი წლები:',
 	'fundraiserstats-time-zone' => 'სასაათო სარტყელი:',
 );
 

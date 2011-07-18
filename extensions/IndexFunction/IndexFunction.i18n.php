@@ -729,14 +729,14 @@ Hapus "$1" dari <nowiki>{{#index:}}</nowiki> di atas {{PLURAL:$3|halaman|halaman
 	'index-submit' => 'Kirim',
 	'index-disambig-start' => "'''$1''' dapat mengacu kepada:",
 	'index-emptylist' => 'Tidah ada halaman yang berhubungan dengan "$1"',
-	'index-expand-detail' => 'Lihat indek halaman dibawah judul ini',
+	'index-expand-detail' => 'Lihat indek halaman di dalam judul ini',
 	'index-hide-detail' => 'Sembunyikan daftar halaman',
 	'index-no-results' => 'Pencarian, tidak ada hasil',
 	'index-search-explain' => 'Halaman ini menggunakan pencarian prefix.
 
 ketikan beberapa karakter pertama dan tekan tombol kirim untuk mencari judul halaman dan masukan indek yang dimulai dengan kata pencarian',
-	'index-details-explain' => 'Masukan dengan panah adalah masukan indek.
-Clik panah untuk melihat semua halaman indek dibawah judul itu.',
+	'index-details-explain' => 'Entri dengan panah adalah entri indeks.
+Klik tanda panah untuk melihat semua halaman indeks di dalam judul itu.',
 );
 
 /** Igbo (Igbo) */

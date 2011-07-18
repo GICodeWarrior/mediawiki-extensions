@@ -1144,10 +1144,10 @@ Harap berhati-hati mengetik judul: bahkan judul tidak ada dapat ditambahkan, dan
 	'povwatch_no_log' => 'Tidak ada masukan log.',
 	'povwatch_no_subscribers' => 'Tidak ada yang berlangganan.',
 	'povwatch_unsubscribe_intro' => 'Anda berlangganan PovWatch.
-Click tombol dibawah untuk berhenti berlangganan.',
+Tekan tombol di bawah untuk berhenti berlangganan.',
 	'povwatch_unsubscribe' => 'Berhenti berlangganan',
 	'povwatch_subscribe_intro' => 'Anda tidak berlangganan PovWatch.
-Click tombol dibawah untuk berlangganan.',
+Tekan tombol di bawah untuk berlangganan.',
 	'povwatch_subscribe' => 'Berlangganan',
 	'povwatch_added' => 'telah ditambahkan',
 	'right-povwatch_admin' => 'Pengelolaan hak pengguna untuk menambahkan halaman ke daftar pantauan pengguna lain.',

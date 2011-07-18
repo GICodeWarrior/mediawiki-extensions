@@ -41,6 +41,7 @@ $messages['qqq'] = array(
 	'apisb-desc' => '{{desc}}',
 	'apisb-parameters' => '{{Identical|Parameter}}',
 	'apisb-result' => '{{Identical|Result}}',
+	'apisb-request-url' => 'This is about the URL of a request.',
 	'apisb-loading' => '{{Identical|Loading}}',
 	'apisb-query-prop' => '{{Identical|Property}}',
 	'apisb-query-list' => '{{Identical|List}}',
@@ -115,6 +116,7 @@ Kit da deuler ur sell war [http://www.mediawiki.org/wiki/API teulioù API] evit 
 
 /** German (Deutsch)
  * @author Kghbln
+ * @author Purodha
  */
 $messages['de'] = array(
 	'apisb-desc' => 'Ermöglicht das Beseitigen von Fehlern bei Aufrufen der [http://www.mediawiki.org/wiki/API MediaWiki-API] mit dem Browser',
@@ -125,7 +127,7 @@ Die [http://www.mediawiki.org/wiki/API Dokumentation zur API] enthält weitere H
 	'apisb-api-disabled' => 'Die API wurde auf diesem Wiki deaktiviert.',
 	'apisb-parameters' => 'Parameter',
 	'apisb-result' => 'Ergebnis',
-	'apisb-request-url' => 'URL anfordern:',
+	'apisb-request-url' => 'Anforderungs-URL:',
 	'apisb-request-post' => 'POST-Daten:',
 	'apisb-select-action' => 'Vorgang auswählen',
 	'apisb-select-query' => 'Was soll abgefragt werden?',
@@ -143,6 +145,7 @@ Die [http://www.mediawiki.org/wiki/API Dokumentation zur API] enthält weitere H
 
 /** Spanish (Español)
  * @author Fitoschido
+ * @author Pvgreenzebra
  */
 $messages['es'] = array(
 	'apisb-desc' => 'Permite depurar llamadas a la [http://www.mediawiki.org/wiki/API API de MediaWiki] desde el navegador',
@@ -163,6 +166,7 @@ $messages['es'] = array(
 	'apisb-submit' => 'Realizar solicitud',
 	'apisb-query-prop' => 'Propiedades',
 	'apisb-query-list' => 'Listas',
+	'apisb-query-meta' => 'información de Meta',
 );
 
 /** Persian (فارسی)
@@ -343,7 +347,7 @@ $messages['ksh'] = array(
 	'apisb-desc' => 'Hellef noh Fähler ze söhke bei [http://www.mediawiki.org/wiki/API MediaWiki <i lang="en">API</i>] Oprohfe uss_em Brauser.',
 	'apisb-parameters' => 'Parrameetere',
 	'apisb-result' => 'Erus jekumme es',
-	'apisb-request-url' => 'Öm en URL froore:',
+	'apisb-request-url' => 'Dä URL vun dä Aanfrooch:',
 	'apisb-query-prop' => 'Eijeschafte',
 	'apisb-query-list' => 'Leste',
 );

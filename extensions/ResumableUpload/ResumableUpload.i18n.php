@@ -12,6 +12,13 @@ $messages['en'] = array(
 	'resumableupload-desc' => 'Resumable uploading support',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'resumableupload-desc' => '{{desc}}',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Wizardist
  */
@@ -73,6 +80,13 @@ $messages['ia'] = array(
  */
 $messages['id'] = array(
 	'resumableupload-desc' => 'Dukungan pengunggahan berlanjut',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'resumableupload-desc' => 'Määd et müjjelesch, et Huhlaade wigger ze maache.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

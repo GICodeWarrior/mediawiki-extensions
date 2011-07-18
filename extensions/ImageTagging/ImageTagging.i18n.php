@@ -632,6 +632,7 @@ Eble tial vi devas ensaluti por aldoni etikedojn al bildoj.
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Imre
+ * @author Mor
  * @author Translationista
  */
 $messages['es'] = array(
@@ -655,7 +656,7 @@ $messages['es'] = array(
 	'imagetagging-addingtag' => 'Agregando etiqueta...',
 	'imagetagging-removingtag' => 'Removiendo etiqueta...',
 	'imagetagging-addtagsuccess' => 'Etiqueta agregada.',
-	'imagetagging-removetagsuccess' => 'Etiqueta removida.',
+	'imagetagging-removetagsuccess' => 'Etiqueta eliminada.',
 	'imagetagging-canteditneedloginmessage' => 'No puede editar esta página.
 Es posible que se deba a que tenga que acceder para etiquetar imágenes.
 ¿Desea acceder ahora?',

@@ -474,11 +474,14 @@ $messages['bg'] = array(
 	'articlefeedback-survey-title' => 'Моля, отговорете на няколко въпроса',
 	'articlefeedback-survey-thanks' => 'Благодарим ви, че попълнихте въпросника!',
 	'articlefeedback-form-panel-explanation' => 'Какво е това?',
+	'articlefeedback-form-panel-helpimprove-privacy' => 'Защита на личните данни',
+	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Защита на личните данни',
 	'articlefeedback-report-switch-label' => 'Показване на резултатите',
 	'articlefeedback-pitch-join-accept' => 'Създаване на сметка',
 	'articlefeedback-pitch-join-login' => 'Влизане',
 	'articlefeedback-pitch-edit-accept' => 'Редактиране на тази страница',
 	'articleFeedback-table-heading-page' => 'Страница',
+	'articleFeedback-copy-above-highlow-tables' => 'Това е експериментална функцоиналност. Можете да дадете мнения и препоръки на [$1 беседата].',
 );
 
 /** Bengali (বাংলা)
@@ -977,7 +980,7 @@ $messages['de'] = array(
 	'articlefeedback-field-complete-tooltip-3' => 'Enthält wichtige Informationen, weist aber Lücken auf',
 	'articlefeedback-field-complete-tooltip-4' => 'Enthält die meisten wichtigen Informationen',
 	'articlefeedback-field-complete-tooltip-5' => 'Enthält umfassende Informationen',
-	'articlefeedback-field-objective-label' => 'Unvoreingenommen',
+	'articlefeedback-field-objective-label' => 'Sachlich',
 	'articlefeedback-field-objective-tip' => 'Hast du den Eindruck, dass diese Seite eine ausgewogene Darstellung aller mit deren Inhalt verbundenen Aspekte enthält?',
 	'articlefeedback-field-objective-tooltip-1' => 'Ist sehr einseitig',
 	'articlefeedback-field-objective-tooltip-2' => 'Ist mäßig einseitig',
