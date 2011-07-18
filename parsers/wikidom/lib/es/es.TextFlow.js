@@ -340,10 +340,21 @@ TextFlow.prototype.render = function( offset ) {
 	
 	// Reset the render state
 	if ( offset ) {
-		// TODO: Find the nearest line to start from
-		rs.lines = [];
-		rs.wordOffset = 0;
-		this.renderIteration( 3 );
+		var gap,
+			currentLine = this.lines.length - 1;
+		for ( var i = this.lines.length - 1; i >= 0; i-- ) {
+			var line = this.lines[i];
+			if ( line.start < offset && line.end > offset ) {
+				currentLine = i;
+			}
+			if ( ( line.end < offset && !line.fractional ) || i === 0 ) {
+				rs.lines = this.lines.slice( 0, i );
+				rs.wordOffset = line.wordOffset;
+				gap = currentLine - i;
+				break;
+			}
+		}
+		this.renderIteration( 2 + gap );
 	} else {
 		rs.lines = [];
 		rs.wordOffset = 0;
