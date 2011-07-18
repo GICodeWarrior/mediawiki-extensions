@@ -170,11 +170,12 @@ Surface.prototype.onKeyDown = function( e ) {
 				var val = surface.$input.val();
 				surface.$input.val( '' );
 				if ( val.length > 0 ) {
-					var location = surface.getLocation();
-					location.block.insertContent( location.offset, val.split(''));
-					location.offset += val.length;
+					var block = surface.location.block,
+						offset = surface.location.offset,
+						insertAt = offset;
 					surface.selection = new Selection();
-					surface.drawSelection();
+					surface.location = new Location( block, offset + val.length );
+					block.insertContent( insertAt, val.split(''));
 				}
 			}, 10 );
 			break;
@@ -196,7 +197,7 @@ Surface.prototype.onKeyUp = function( e ) {
 		default:		
 			var surface = this;
 			setTimeout( function() {
-				surface.cursor.show( surface.location.block.flow.getPosition( surface.location.offset ), surface.location.block.$.offset() );
+				//surface.cursor.show( surface.location.block.flow.getPosition( surface.location.offset ), surface.location.block.$.offset() );
 			}, 0 );
 			break;
 	}
@@ -206,28 +207,24 @@ Surface.prototype.onKeyUp = function( e ) {
 Surface.prototype.handleBackspace = function() {
 	var block = this.location.block,
 		offset = this.location.offset;
-		
+	
 	if ( offset > 0 ) {
-		block.deleteContent( offset - 1, offset );
 		offset--;
-		this.cursor.show( block.flow.getPosition( offset ), block.$.offset() );
+		this.selection = new Selection();
+		this.location = new Location( block, offset );
+		block.deleteContent( offset, offset + 1 );
 	}
-	this.selection = new Selection();
-	this.drawSelection();
-	this.location = new Location( block, offset );
 };
 
 Surface.prototype.handleDelete = function() {
 	var block = this.location.block,
 		offset = this.location.offset;
 	
-	if ( offset < block.getLength() - 1 ) {	
+	if ( offset < block.getLength() - 1 ) {
+		this.selection = new Selection();
+		this.location = new Location( block, offset );
 		block.deleteContent( offset, offset + 1);
-		this.cursor.show( block.flow.getPosition( offset ), block.$.offset() );
 	}
-	this.selection = new Selection();
-	this.drawSelection();
-	this.location = new Location( block, offset );
 };
 
 Surface.prototype.onMouseDown = function( e ) {
