@@ -590,12 +590,13 @@ $messages['fa'] = array(
 
 /** Finnish (Suomi)
  * @author Crt
+ * @author Nike
  * @author Str4nd
  */
 $messages['fi'] = array(
 	'vector' => 'Käyttöliittymän parannukset Vectorille',
 	'vector-desc' => 'Parantaa käyttöliittymän osia Vector-ulkoasusta.',
-	'vector-collapsiblenav-preference' => 'Ota käyttöön navigaatiovalikon kohteiden piilottaminen Vector-ulkoasussa',
+	'vector-collapsiblenav-preference' => 'Ota käyttöön sivupalkin kohteiden piilottaminen Vector-ulkoasussa',
 	'vector-collapsiblenav-more' => 'Muilla kielillä',
 	'vector-editwarning-warning' => 'Tältä sivulta poistuminen saattaa aiheuttaa kaikkien tekemiesi muutosten katoamisen.
 Jos olet kirjautuneena sisään, voit poistaa tämän varoituksen käytöstä asetuksissa ”Muokkaus”-osiossa.',
