@@ -621,6 +621,10 @@ Content.prototype.getLines = function() {
 		}
 	}
 	
+	if ( line != null ) {
+		lines.push(line);
+	}
+	
 	return lines;
 };
 
