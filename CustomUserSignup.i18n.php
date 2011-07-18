@@ -100,6 +100,13 @@ $messages['he'] = array(
 	'customusersignup-desc' => 'לאפשר הודעות מותאמות אישית בזמן תהליך יצירת חשבון',
 );
 
+/** Hindi (हिन्दी)
+ * @author Vibhijain
+ */
+$messages['hi'] = array(
+	'customusersignup-desc' => 'खाता निर्माण प्रक्रिया के दौरान अनुकूलन संदेश के लिए अनुमति देता है',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
