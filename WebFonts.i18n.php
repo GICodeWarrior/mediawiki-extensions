@@ -203,7 +203,8 @@ $messages['ksh'] = array(
 	'webfonts' => 'Schreff_Aate em Web',
 	'webfonts-desc' => 'Schreff_Aate en Sigge enboue',
 	'webfonts-load' => 'Schreff_Aat ußsöke',
-	'webfonts-disable-preference' => 'Schreff_Aate en de Sigge enboue afschallde ({{int:webfonts}})',
+	'webfonts-reset' => 'Zeröksäze',
+	'webfonts-disable-preference' => 'Et Schreff_Aate en de Sigge enboue afschallde ({{int:webfonts}})',
 );
 
 /** Macedonian (Македонски)
