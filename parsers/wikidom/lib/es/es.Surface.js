@@ -181,12 +181,19 @@ Surface.prototype.onKeyDown = function( e ) {
 				var val = surface.$input.val();
 				surface.$input.val( '' );
 				if ( val.length > 0 ) {
-					var block = surface.location.block,
-						offset = surface.location.offset,
-						insertAt = offset;
+					if ( surface.selection.from && surface.selection.to ) {
+						var deleteSelection = surface.selection;
+						deleteSelection.normalize();
+						surface.location = surface.selection.start;
+						surface.selection = new Selection();
+						surface.deleteContent( deleteSelection );
+					}
+					var insertLocation = surface.location;
 					surface.selection = new Selection();
-					surface.location = new Location( block, offset + val.length );
-					block.insertContent( insertAt, val.split(''));
+					surface.location = new Location(
+						surface.location.block, surface.location.offset + val.length
+					);
+					surface.insertContent( insertLocation, val.split('') );
 				}
 			}, 10 );
 			break;
@@ -216,25 +223,36 @@ Surface.prototype.onKeyUp = function( e ) {
 };
 
 Surface.prototype.handleBackspace = function() {
-	var block = this.location.block,
-		offset = this.location.offset;
-	
-	if ( offset > 0 ) {
-		offset--;
+	if ( this.selection.from && this.selection.to ) {
+		var deleteSelection = this.selection;
+		deleteSelection.normalize();
+		this.location = this.selection.start;
 		this.selection = new Selection();
-		this.location = new Location( block, offset );
-		block.deleteContent( offset, offset + 1 );
+		this.deleteContent( deleteSelection );
+	} else if ( this.location.offset > 0 ) {
+		var deleteSelection = new Selection(
+			new Location( this.location.block, this.location.offset - 1 ), this.location
+		);
+		this.selection = new Selection();
+		this.location = deleteSelection.from;
+		this.deleteContent( deleteSelection );
 	}
 };
 
 Surface.prototype.handleDelete = function() {
-	var block = this.location.block,
-		offset = this.location.offset;
-	
-	if ( offset < block.getLength() - 1 ) {
+	if ( this.selection.from && this.selection.to ) {
+		var deleteSelection = this.selection;
+		deleteSelection.normalize();
+		this.location = this.selection.end;
 		this.selection = new Selection();
-		this.location = new Location( block, offset );
-		block.deleteContent( offset, offset + 1);
+		this.deleteContent( deleteSelection );
+	} else if ( this.location.offset < block.getLength() - 1 ) {
+		var deleteSelection = new Selection(
+			new Location( this.location.block, this.location.offset + 1 ), this.location
+		);
+		this.selection = new Selection();
+		this.location = deleteSelection.from;
+		this.deleteContent( deleteSelection );
 	}
 };
 
@@ -554,6 +572,44 @@ Surface.prototype.moveCursorLeft = function() {
 	this.location = new Location( block, offset );
 };
 
+Surface.prototype.insertContent = function( location, content ) {
+	if ( this.selection.from && this.selection.to ) {
+		this.deleteContent( this.selection );
+	}
+	this.location.block.insertContent( location.offset, content );
+};
+
+Surface.prototype.deleteContent = function( selection ) {
+	if ( !selection.from && !selection.to ) {
+		throw 'Invalid selection error. Properties for from and to locations expected.';
+	}
+	selection.normalize();
+	var from = selection.start,
+		to = selection.end;
+	if ( from.block === to.block ) {
+		// Single block deletion
+		from.block.deleteContent( from.offset, to.offset );
+	} else {
+		// Multiple block deletion
+		var block;
+		for ( var i = from.block.getIndex(), end = to.block.getIndex(); i <= end; i++ ) {
+			block = this.doc.blocks[i];
+			if ( block === from.block ) {
+				// From offset to length
+				block.deleteContent( from.offset, block.getLength() );
+			} else if ( block === to.block ) {
+				// From 0 to offset
+				block.deleteContent( 0, to.offset );
+			} else {
+				// Full coverage
+				block.deleteContent( 0, block.getLength() );
+			}
+		}
+	}
+	// TODO: Merge first and last blocks that have been deleted from and remove blocks that have
+	// been cleared entirely
+};
+
 /**
  * Applies an annotation to a given selection.
  * 
@@ -563,33 +619,30 @@ Surface.prototype.moveCursorLeft = function() {
  * @param annotation {Object} Annotation to apply
  * @param selection {Selection} Range to apply annotation to
  */
-Surface.prototype.annotateContent= function( method, annotation, selection ) {
-	// Fall back to current selection if no selection argument was given
-	if ( selection === undefined ) {
-		selection = this.selection;
+Surface.prototype.annotateContent = function( method, annotation, selection ) {
+	if ( !selection.from && !selection.to ) {
+		throw 'Invalid selection error. Properties for from and to locations expected.';
 	}
-	if ( selection.from && selection.to ) {
-		selection.normalize();
-		var from = selection.start,
-			to = selection.end;
-		if ( from.block === to.block ) {
-			// Single block annotation
-			from.block.annotateContent( method, annotation, from.offset, to.offset );
-		} else {
-			// Multiple block annotation
-			var block;
-			for ( var i = from.block.getIndex(), end = to.block.getIndex(); i <= end; i++ ) {
-				block = this.doc.blocks[i];
-				if ( block === from.block ) {
-					// From offset to length
-					block.annotateContent( method, annotation, from.offset, block.getLength() );
-				} else if ( block === to.block ) {
-					// From 0 to offset
-					block.annotateContent( method, annotation, 0, to.offset );
-				} else {
-					// Full coverage
-					block.annotateContent( method, annotation, 0, block.getLength() );
-				}
+	selection.normalize();
+	var from = selection.start,
+		to = selection.end;
+	if ( from.block === to.block ) {
+		// Single block annotation
+		from.block.annotateContent( method, annotation, from.offset, to.offset );
+	} else {
+		// Multiple block annotation
+		var block;
+		for ( var i = from.block.getIndex(), end = to.block.getIndex(); i <= end; i++ ) {
+			block = this.doc.blocks[i];
+			if ( block === from.block ) {
+				// From offset to length
+				block.annotateContent( method, annotation, from.offset, block.getLength() );
+			} else if ( block === to.block ) {
+				// From 0 to offset
+				block.annotateContent( method, annotation, 0, to.offset );
+			} else {
+				// Full coverage
+				block.annotateContent( method, annotation, 0, block.getLength() );
 			}
 		}
 	}
