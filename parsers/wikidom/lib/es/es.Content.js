@@ -570,7 +570,7 @@ Content.prototype.getLines = function() {
 		j,k,i;
 
 	for ( i = 0; i < this.data.length; i++ ) {
-		
+
 		if ( line == null ) {
 			line = {
 				text : '',
@@ -578,17 +578,17 @@ Content.prototype.getLines = function() {
 			};
 		}
 
-		if ( this.data[i] == "\n" ) {
+		right = this.data[i];
+		leftPlain = typeof left === 'string';
+		rightPlain = typeof right === 'string';
+
+		if ( rightPlain && right == "\n" ) {
 			lines.push(line);
 			line = null;
 			offset = i + 1;
 			continue;
 		}
-		
-		right = this.data[i];
-		leftPlain = typeof left === 'string';
-		rightPlain = typeof right === 'string';
-		
+
 		for ( j = 1; j < left.length; j++ ) {
 			if (rightPlain || this.indexOfAnnotation( i, left[j], true ) === -1) {
 				for ( k = line.annotations.length - 1; k >= 0; k-- ) {
@@ -601,7 +601,7 @@ Content.prototype.getLines = function() {
 				}
 			}
 		}
-		
+
 		for ( j = 1; j < right.length; j++ ) {
 			if (leftPlain || this.indexOfAnnotation( i - 1, right[j], true ) === -1) {
 				var annotation = Content.copyObject( right[j] );
@@ -612,14 +612,14 @@ Content.prototype.getLines = function() {
 				line.annotations.push( annotation );
 			}
 		}
-		
-		left = right;
-		
+
 		if ( rightPlain ) {
-			line.text += this.data[i];
+			line.text += right;
 		} else {
-        	line.text += this.data[i][0];
+        	line.text += right[0];
 		}
+
+		left = right;
 	}
 	
 	if ( line != null ) {
