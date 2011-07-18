@@ -566,9 +566,10 @@ Content.prototype.getLines = function() {
 		left = '',
 		right = '',
 		leftPlain,
-		rightPlain;
+		rightPlain,
+		j,k,i;
 
-	for ( var i = 0; i < this.data.length; i++ ) {
+	for ( i = 0; i < this.data.length; i++ ) {
 		
 		if ( line == null ) {
 			line = {
@@ -588,9 +589,9 @@ Content.prototype.getLines = function() {
 		leftPlain = typeof left === 'string';
 		rightPlain = typeof right === 'string';
 		
-		for ( var j = 1; j < left.length; j++ ) {
+		for ( j = 1; j < left.length; j++ ) {
 			if (rightPlain || this.indexOfAnnotation( i, left[j], true ) === -1) {
-				for ( var k = line.annotations.length - 1; k >= 0; k--) {
+				for ( k = line.annotations.length - 1; k >= 0; k-- ) {
 					if ( line.annotations[k].type === left[j].type ) {
 						if ( Content.compareObjects( line.annotations[k].data, left[j].data ) ) {
 							line.annotations[k].range.end = i - offset;
@@ -601,7 +602,7 @@ Content.prototype.getLines = function() {
 			}
 		}
 		
-		for ( var j = 1; j < right.length; j++ ) {
+		for ( j = 1; j < right.length; j++ ) {
 			if (leftPlain || this.indexOfAnnotation( i - 1, right[j], true ) === -1) {
 				var annotation = Content.copyObject( right[j] );
 				annotation.range = {
