@@ -531,4 +531,32 @@ Content.prototype.render = function( start, end ) {
 	return out;
 };
 
+Content.prototype.getWordBoundaries = function( offset ) {
+	if ( offset < 0 || offset > this.data.length ) {
+		throw 'Out of bounds error. Offset expected to be >= 0 and <= to ' + this.data.length;
+	}
+	var start = offset,
+		end = offset,
+		char;
+	while ( start > 0 ) {
+		start--;
+		char = ( typeof this.data[start] === 'string' ? this.data[start] : this.data[start][0] );
+		if ( char.match( /\B/ ) ) {
+			start++;
+			break;
+		}
+	}
+	while ( end < this.data.length ) {
+		char = ( typeof this.data[end] === 'string' ? this.data[end] : this.data[end][0] );
+		if ( char.match( /\B/ ) ) {
+			break;
+		}
+		end++;
+	}
+	return {
+		'start': start,
+		'end': end
+	};
+};
+
 extend( Content, EventEmitter );

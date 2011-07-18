@@ -11,10 +11,19 @@ function Surface( $container, doc ) {
 	this.doc = doc;
 	this.location = null;
 	this.selection = new Selection();
-	this.mouseSelecting = false;
-	this.keyboardSelecting = false;
-	this.keydownTimeout = null;
 	this.initialHorizontalCursorPosition = null;
+	this.mouse = {
+		'selecting': false,
+		'clicks': 0,
+		'clickDelay': 200,
+		'clickTimeout': null,
+		'clickX': null,
+		'clickY': null
+	};
+	this.keyboard = {
+		'selecting': false,
+		'keydownTimeout': null
+	};
 	
 	// MouseDown on surface
 	this.$.bind({
@@ -52,7 +61,7 @@ function Surface( $container, doc ) {
 					'keyup.editSurface' : function( e ) {
 						return surface.onKeyUp( e );			
 					},
-				});		
+				});
 			},
 			'blur': function( e ) {
 				$document.unbind('.editSurface');
@@ -105,8 +114,8 @@ Surface.prototype.onKeyDown = function( e ) {
 	switch ( e.keyCode ) {
 		case 16: // Shift
 			this.shiftDown = true;
-			if ( !this.keyboardSelecting ) {
-				this.keyboardSelecting = true;
+			if ( !this.keyboard.selecting ) {
+				this.keyboard.selecting = true;
 				if ( !this.selection.to ) {
 					this.selection = new Selection( this.location );
 				}
@@ -119,7 +128,7 @@ Surface.prototype.onKeyDown = function( e ) {
 		case 37: // Left arrow
 			this.initialHorizontalCursorPosition = null;
 			this.moveCursorLeft();
-			if ( this.shiftDown && this.keyboardSelecting ) {
+			if ( this.shiftDown && this.keyboard.selecting ) {
 				this.selection.to = this.location;
 			} else {
 				this.selection = new Selection();
@@ -128,7 +137,7 @@ Surface.prototype.onKeyDown = function( e ) {
 			break;
 		case 38: // Up arrow
 			this.moveCursorUp();
-			if ( this.shiftDown && this.keyboardSelecting ) {
+			if ( this.shiftDown && this.keyboard.selecting ) {
 				this.selection.to = this.location;
 			} else {
 				this.selection = new Selection();
@@ -138,7 +147,7 @@ Surface.prototype.onKeyDown = function( e ) {
 		case 39: // Right arrow
 			this.initialHorizontalCursorPosition = null;
 			this.moveCursorRight();
-			if ( this.shiftDown && this.keyboardSelecting ) {
+			if ( this.shiftDown && this.keyboard.selecting ) {
 				this.selection.to = this.location;
 			} else {
 				this.selection = new Selection();
@@ -147,7 +156,7 @@ Surface.prototype.onKeyDown = function( e ) {
 			break;
 		case 40: // Down arrow
 			this.moveCursorDown();
-			if ( this.shiftDown && this.keyboardSelecting ) {
+			if ( this.shiftDown && this.keyboard.selecting ) {
 				this.selection.to = this.location;
 			} else {
 				this.selection = new Selection();
@@ -164,11 +173,11 @@ Surface.prototype.onKeyDown = function( e ) {
 		default:
 			this.initialHorizontalCursorPosition = null;
 			this.cursor.hide();
-			if ( this.keydownTimeout ) {
-				clearTimeout( this.keydownTimeout );
+			if ( this.keyboard.keydownTimeout ) {
+				clearTimeout( this.keyboard.keydownTimeout );
 			}
 			var surface = this;
-			this.keydownTimeout = setTimeout( function () {
+			this.keyboard.keydownTimeout = setTimeout( function () {
 				var val = surface.$input.val();
 				surface.$input.val( '' );
 				if ( val.length > 0 ) {
@@ -189,8 +198,8 @@ Surface.prototype.onKeyUp = function( e ) {
 	switch ( e.keyCode ) {
 		case 16: // Shift
 			this.shiftDown = false;
-			if ( this.keyboardSelecting ) {
-				this.keyboardSelecting = false;
+			if ( this.keyboard.selecting ) {
+				this.keyboard.selecting = false;
 			}
 			break;
 		case 17: // Control
@@ -231,14 +240,50 @@ Surface.prototype.handleDelete = function() {
 
 Surface.prototype.onMouseDown = function( e ) {
 	if ( e.button === 0 ) {
+		clearTimeout( this.mouse.clickTimeout );
+		if ( this.mouse.clickX === e.pageX && this.mouse.clickY === e.pageY ) {
+			// Same location, keep counting
+			this.mouse.clicks++;
+			var surface = this;
+			this.mouse.clickTimeout = setTimeout( function() {
+				surface.mouse.clicks = 0;
+			}, this.mouse.clickDelay );
+		} else {
+			// New location, start over
+			this.mouse.clicks = 1;
+			this.mouse.clickX = e.pageX;
+			this.mouse.clickY = e.pageY;
+		}
 		this.location = this.getLocationFromEvent( e );
-		this.selection = new Selection( this.location );
-		var cursorPosition = this.location.block.getPosition( this.location.offset );
-		this.cursor.show( cursorPosition, this.location.block.$.offset() );
-		this.$input.css( 'top', cursorPosition.top );
-		this.mouseSelecting = true;
-		this.drawSelection();
-		this.cursor.show();
+		switch ( this.mouse.clicks ) {
+			case 1:
+				// Clear selection and move cursor to nearest offset
+				this.selection = new Selection( this.location );
+				var cursorPosition = this.location.block.getPosition( this.location.offset );
+				this.cursor.show( cursorPosition, this.location.block.$.offset() );
+				this.$input.css( 'top', cursorPosition.top );
+				this.mouse.selecting = true;
+				this.drawSelection();
+				this.cursor.show();
+				break;
+			case 2:
+				// Select word offset is within
+				var wordBoundaries = this.location.block.getWordBoundaries( this.location.offset );
+				this.selection = new Selection(
+					new Location( this.location.block, wordBoundaries.start ),
+					new Location( this.location.block, wordBoundaries.end )
+				);
+				this.drawSelection();
+				break;
+			case 3:
+				// Select block offset is within
+				this.selection = new Selection(
+					new Location( this.location.block, 0 ),
+					new Location( this.location.block, this.location.block.getLength() )
+				);
+				this.drawSelection();
+				break;
+		}
 	}
 	this.initialHorizontalCursorPosition = null;
 	if ( !this.$input.is(':focus') ) {
@@ -248,7 +293,7 @@ Surface.prototype.onMouseDown = function( e ) {
 };
 
 Surface.prototype.onMouseMove = function( e ) {
-	if ( e.button === 0 && this.mouseSelecting ) {
+	if ( e.button === 0 && this.mouse.selecting ) {
 		this.cursor.hide();
 		this.selection.to = this.getLocationFromEvent( e );
 		this.drawSelection();
@@ -261,7 +306,7 @@ Surface.prototype.onMouseUp = function( e ) {
 		this.drawSelection();
 		this.cursor.hide();
 	}
-	this.mouseSelecting = false;
+	this.mouse.selecting = false;
 };
 
 /**

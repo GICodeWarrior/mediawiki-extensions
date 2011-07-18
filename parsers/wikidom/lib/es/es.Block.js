@@ -108,4 +108,8 @@ Block.prototype.annotateContent = function( method, annotation, start, end ) {
 	throw 'Block.annotateContent not implemented in this subclass.';
 };
 
+Block.prototype.getWordBoundaries = function( offset ) {
+	throw 'Block.getWordBoundaries not implemented in this subclass.';
+};
+
 extend( Block, EventEmitter );

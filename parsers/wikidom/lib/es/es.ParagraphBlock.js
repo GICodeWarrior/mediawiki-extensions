@@ -87,4 +87,8 @@ ParagraphBlock.prototype.annotateContent = function( method, annotation, start, 
 	this.content.annotate( method, annotation, start, end );
 };
 
+Block.prototype.getWordBoundaries = function( offset ) {
+	return this.content.getWordBoundaries( offset );
+};
+
 extend( ParagraphBlock, Block );
