@@ -141,7 +141,7 @@ class SpecialConfigure extends SpecialPage {
 			$this->addNav( 2, $wiki, $config );
 		$wgOut->addHTML( "<fieldset><legend>{$legend}</legend>" );
 		$wgOut->addWikiMsg( "configurewmf-help-{$config}" );
-		$wgOut->addWikiMsgArray( 'configurewmf-seealso', array( $vars ), array( 'replaceafter' ) );
+		$wgOut->addHTML( wfMsgExt( 'configurewmf-seealso', array( 'parse', 'replaceafter' ), $vars ) );
 		$wgOut->addHTML( "<hr/>" );
 		$wgOut->addHTML( "<form action='{$wgScript}' method='post'><p>" );
 		$wgOut->addHTML( Html::Hidden( 'title', $this->getTitle()->getFullText() ) );
