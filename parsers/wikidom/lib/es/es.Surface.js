@@ -573,14 +573,21 @@ Surface.prototype.moveCursorLeft = function() {
 };
 
 Surface.prototype.insertContent = function( location, content ) {
-	if ( this.selection.from && this.selection.to ) {
-		this.deleteContent( this.selection );
+	if ( typeof location === 'undefined' ) {
+		location = this.location;
 	}
+	if ( !location.block || !location.offset ) {
+		throw 'Invalid selection error. Properties for from and to locations expected.';
+	}
+	this.deleteContent( this.selection );
 	this.location.block.insertContent( location.offset, content );
 };
 
 Surface.prototype.deleteContent = function( selection ) {
-	if ( !selection.from && !selection.to ) {
+	if ( typeof selection === 'undefined' ) {
+		selection = this.selection;
+	}
+	if ( !selection.from || !selection.to ) {
 		throw 'Invalid selection error. Properties for from and to locations expected.';
 	}
 	selection.normalize();
@@ -620,11 +627,18 @@ Surface.prototype.deleteContent = function( selection ) {
  * @param selection {Selection} Range to apply annotation to
  */
 Surface.prototype.annotateContent = function( method, annotation, selection ) {
+<<<<<<< .mine
+	if ( typeof selection === 'undefined' ) {
+		selection = this.selection;
+	}
+	if ( !selection.from || !selection.to ) {
+=======
 	if ( selection === undefined ) {
 		selection = this.selection;
 	}
 	/*
 	if ( !selection.from && !selection.to ) {
+>>>>>>> .r92506
 		throw 'Invalid selection error. Properties for from and to locations expected.';
 	}
 	*/
