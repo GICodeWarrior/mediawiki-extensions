@@ -17,7 +17,6 @@
 		 * @return null
 		 */
 		'submit' : function( params ) {
-			var useragent = navigator.userAgent;
 			var clientData = $.client.profile();
 
 			var apiRequest =
