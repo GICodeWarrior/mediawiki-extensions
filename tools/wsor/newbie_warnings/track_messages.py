@@ -40,7 +40,7 @@ def main():
 	)
 	parser.add_argument(
 		'-o', '--out',
-		type=lambda fn:open(fn, 'a'), 
+		type=lambda fn:open(fn, 'a+'), 
 		help='Where should output be appended',
 		default=sys.stdout
 	)
@@ -61,19 +61,19 @@ def main():
 		read_default_file=args.cnf
 	)
 	
-	print(
+	args.out.write(
 		"\t".join(
 			[db.getTime()]+
 			[
 				":".join(
 					[
-						e['user_id'],
-						e['user_name'],
-						e['messages_waiting']
+						encode(e['user_id']),
+						encode(e['user_name']),
+						encode(e['messages_waiting'])
 					]
-				) for e in db.getEditorsWithTalk()
+				) for e in db.getEditorsWithTalk(args.user_id)
 			]
-		)
+		) + "\n"
 	)
 	
 	
@@ -97,7 +97,7 @@ class Database:
 			LIMIT 1
 			"""
 		)
-		yield cursor.fetchone()['time']
+		return cursor.fetchone()['time']
 		
 	
 	def getEditorsWithTalk(self, userId):
@@ -117,11 +117,10 @@ class Database:
 				WHERE r.rev_user = %(user_id)s
 				AND p.page_namespace = 3
 			) AS tp
-			LEFT JOIN user reciever
+			INNER JOIN user reciever
 				ON reciever.user_name = REPLACE(tp.page_title, "_", " ")
 			INNER JOIN user_newtalk nt
 				ON reciever.user_id = nt.user_id
-				OR nt.user_ip = tp.page_title
 			GROUP BY reciever.user_id, reciever.user_name
 			""",
 			{
