@@ -157,6 +157,18 @@ $messages['fr'] = array(
 	'moodbar-desc' => 'Permet aux utilisateurs spécifiés d’envoyer leur retour d’« humeur » à l’exploitant du site',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'moodbar-header-timestamp' => 'Dâta et hora',
+	'moodbar-header-type' => 'Tipo',
+	'moodbar-header-page' => 'Pâge',
+	'moodbar-header-user' => 'Utilisator',
+	'moodbar-header-useragent' => 'Agent utilisator',
+	'moodbar-header-comment' => 'Comentèros',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
