@@ -185,7 +185,6 @@ Surface.prototype.onKeyDown = function( e ) {
 						var deleteSelection = surface.selection;
 						deleteSelection.normalize();
 						surface.location = surface.selection.start;
-						surface.selection = new Selection();
 						surface.deleteContent( deleteSelection );
 					}
 					var insertLocation = surface.location;
@@ -579,7 +578,6 @@ Surface.prototype.insertContent = function( location, content ) {
 	if ( !location.block || !location.offset ) {
 		throw 'Invalid selection error. Properties for from and to locations expected.';
 	}
-	this.deleteContent( this.selection );
 	this.location.block.insertContent( location.offset, content );
 };
 
