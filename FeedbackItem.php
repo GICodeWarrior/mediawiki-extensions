@@ -130,10 +130,10 @@ class MBFeedbackItem {
 			}
 			
 			if ( $key == 'user' ) {
-				if ( $user->isAnon() ) {
+				if ( $value->isAnon() ) {
 					$this->setProperty( 'user-editcount', 0 );
 				} else {
-					$this->setProperty( 'user-editcount', $user->edits() );
+					$this->setProperty( 'user-editcount', $value->getEditCount() );
 				}
 			}
 			
