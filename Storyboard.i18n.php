@@ -825,6 +825,7 @@ $messages['frp'] = array(
 	'storyboard-alreadyexistschange' => '« {0} » est ja prês, volyéd chouèsir un ôtro titro.',
 	'storyboard-changetitle' => 'Changiér lo titro.',
 	'storyboard-notsubmitted' => 'L’ôtentificacion at pas reussia, niona histouère at étâ encartâ.',
+	'storyboard-charactersleft' => '$1 caractèros que réstont',
 	'storyboard-emailtitle' => 'La somission de l’histouère at reussia',
 	'storyreview' => 'Critica de l’histouère',
 	'storyboard-deleteimage' => 'Suprimar l’émâge',
