@@ -326,7 +326,7 @@ $messages['fa'] = array(
 	'findspam' => 'کشف هرزنگاری',
 	'findspam-desc' => 'یک [[Special:FindSpam|صفحهٔ ویژه]] می‌افزاید که امکان کشف هرزنگاری‌های تازه را فراهم می‌کند',
 	'findspam-ip' => 'نشانی آی‌پی:',
-	'findspam-ok' => 'قبول',
+	'findspam-ok' => 'تأیید',
 	'findspam-notextfound' => 'هیچ مشارکتی یافت نشد',
 	'right-findspam' => 'جستجو برای هرزنامه به تازگی افزوده شده',
 );
