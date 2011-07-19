@@ -25,3 +25,11 @@ CREATE TABLE IF NOT EXISTS `el_archive_queue` (
   `in_progress` varchar(50) NOT NULL,
   PRIMARY KEY (`queue_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=105 ;
+
+CREATE TABLE IF NOT EXISTS `el_archive_link_history` (
+  `hist_id` int(11) unsigned NOT NULL,
+  `hist_page_id` int(11) unsigned NOT NULL,
+  `hist_url` varchar(10000) NOT NULL,
+  `hist_insertion_time` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`hist_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
