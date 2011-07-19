@@ -1,10 +1,13 @@
 <?php
+/**
+ * Main classes used by the Semantic Internal Objects extension.
+ *
+ * @author Yaron Koren
+ */
 
 /**
  * Class that holds information on a single internal object, including all
  * its properties.
- * 
- * @author Yaron Koren
  */
 class SIOInternalObject {
 	protected $mMainTitle;
@@ -41,65 +44,6 @@ class SIOInternalObject {
 
 	public function getNamespace() {
 		return $this->mMainTitle->getNamespace();
-	}
-}
-
-/**
- * The SIOTitle and SIOInternalObjectValue exist for only one reason: in order
- * to be used by SIOSQLStore::createRDF(), to spoof Semantic MediaWiki's
- * RDF-exporting code into thinking that it's dealing with actual wiki pages.
- */
-class SIOTitle {
-	function __construct ($name, $namespace) {
-		$this->mName = $name;
-		$this->mNamespace = $namespace;
-	}
-
-	/**
-	 * Based on functions in Title class
-	 */
-	function getPrefixedName() {
-		$s = '';
-		if ( 0 != $this->mNamespace ) {
-			global $wgContLang;
-			$s .= $wgContLang->getNsText( $this->mNamespace ) . ':';
-		}
-		$s .= $this->mName;
-		return $s;
-	}
-
-	function getPrefixedURL() {
-		$s = $this->getPrefixedName();
-		return wfUrlencode( str_replace( ' ', '_', $s ) );
-	}
-}
-
-class SIOInternalObjectValue extends SMWWikiPageValue {
-	function __construct($name, $namespace) {
-		$this->mSIOTitle = new SIOTitle( $name, $namespace );
-	}
-	
-	function getExportData() {
-		global $smwgNamespace;
-		return new SMWExpData( new SMWExpResource( SIOExporter::getResolverURL() . $this->mSIOTitle->getPrefixedURL() ) );
-	}
-
-	function getTitle() {
-		return $this->mSIOTitle;
-	}
-
-	function getWikiValue() {
-		return $this->mSIOTitle->getPrefixedName();
-	}
-}
-
-/**
- * Class to work around the fact that SMWExporter::$m_ent_wiki is protected.
- **/
-class SIOExporter extends SMWExporter {
-
-	static function getResolverURL() {
-		return SMWExporter::$m_ent_wiki;
 	}
 }
 
@@ -248,8 +192,8 @@ class SIOSQLStore extends SMWSQLStore2 {
 		$pageName = $title->getDBkey();
 		$namespace = $title->getNamespace();
 
-		// go through all SIOs for the current page, create RDF for
-		// each one, and add it to the general array
+		// Go through all SIOs for the current page, create RDF for
+		// each one, and add it to the general array.
 		$iw = '';
 		$db = wfGetDB( DB_SLAVE );
 		$res = $db->select(
@@ -260,8 +204,13 @@ class SIOSQLStore extends SMWSQLStore2 {
 		);
 		
 		while ( $row = $db->fetchObject( $res ) ) {
-			$value = new SIOInternalObjectValue( $row->smw_title, $row->smw_namespace );
-			$semdata = new SMWSemanticData( $value, false );
+			$value = new SIOInternalObjectValue( $row->smw_title, intval( $row->smw_namespace ) );
+			if ( class_exists( 'SMWSqlStubSemanticData' ) ) {
+				// SMW >= 1.6
+				$semdata = new SMWSqlStubSemanticData( $value, false );
+			} else {
+				$semdata = new SMWSemanticData( $value, false );
+			}
 			$propertyTables = SMWSQLStore2::getPropertyTables();
 			foreach ( $propertyTables as $tableName => $propertyTable ) {
 				$data = smwfGetStore()->fetchSemanticData( $row->smw_id, null, $propertyTable );
