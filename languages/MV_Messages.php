@@ -3495,6 +3495,7 @@ $messages['frp'] = array(
 	'mv_file_desc_label' => 'mèssâjo de dèscripcion du flux',
 	'mv_delete_stream_file' => 'suprimar la refèrence du fichiér de flux',
 	'mv_save_changes' => 'Sôvar los changements',
+	'mv_removed_file_stream' => 'Fichiér de flux enlevâ : $1',
 	'mv_add_stream_file' => 'Apondre un fichiér de flux',
 	'mv_media_path' => 'chemin du mèdia',
 	'mv_file_list' => 'Fichiérs de flux',
