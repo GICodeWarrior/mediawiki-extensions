@@ -16,7 +16,6 @@ class MoodBarHooks {
 	 * Determines whether or not we should show the MoodBar.
 	 */
 	public static function shouldShowMoodbar( &$output, &$skin ) {
-		
 		if (
 			// Front-end appends to header elements, which have different
 			// locations and IDs in every skin.

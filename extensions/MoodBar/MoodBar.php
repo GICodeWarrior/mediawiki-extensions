@@ -76,3 +76,12 @@ $wgResourceModules['ext.moodBar.core'] = $mbResourceTemplate + array(
 	),
 	'position' => 'bottom',
 );
+
+
+$wgResourceModules['jquery.moodBar'] = $mbResourceTemplate + array(
+	'scripts' => 'jquery.moodBar/jquery.moodBar.js',
+	'dependencies' => array(
+		'mediawiki.util',
+		'jquery.client',
+	),
+);
