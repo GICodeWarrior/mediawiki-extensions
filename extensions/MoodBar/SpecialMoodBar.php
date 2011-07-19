@@ -179,6 +179,8 @@ class SpecialMoodBar extends SpecialPage {
 			$out .= Xml::tags( 'td', null, $outData );
 		}
 		
+		$out = Xml::tags( 'tr', null, $out );
+		
 		return $out;
 	}
 }
