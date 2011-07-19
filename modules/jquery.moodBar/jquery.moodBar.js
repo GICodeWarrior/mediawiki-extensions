@@ -34,7 +34,7 @@
 				'format' : 'json'
 			};
 			
-			var path = wgScriptPath+'/api'+wgScriptExtension;
+			var path = mediaWiki.util.wikiScript('api');
 			
 			$j.post( path, apiRequest,
 				function(data) {
