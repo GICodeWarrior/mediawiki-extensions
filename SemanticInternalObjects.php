@@ -34,6 +34,12 @@ $siogIP = dirname( __FILE__ );
 $wgExtensionMessagesFiles['SemanticInternalObjects'] = $siogIP . '/SemanticInternalObjects.i18n.php';
 $wgAutoloadClasses['SIOHandler'] = $siogIP . '/SemanticInternalObjects_body.php';
 $wgAutoloadClasses['SIOSQLStore'] = $siogIP . '/SemanticInternalObjects_body.php';
+if ( class_exists( 'SMWDIWikiPage' ) ) {
+	// SMW >= 1.6
+	$wgAutoloadClasses['SIOInternalObjectValue'] = $siogIP . '/SIO_RDFClasses2.php';
+} else {
+	$wgAutoloadClasses['SIOInternalObjectValue'] = $siogIP . '/SIO_RDFClasses.php';
+}
 
 function siofRegisterParserFunctions( &$parser ) {
 	$parser->setFunctionHook( 'set_internal', array( 'SIOHandler', 'doSetInternal' ) );
