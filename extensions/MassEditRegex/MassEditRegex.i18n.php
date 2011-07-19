@@ -620,6 +620,7 @@ $messages['frp'] = array(
 	'masseditregex-hint-headreplace' => 'Remplaciér',
 	'masseditregex-hint-headeffect' => 'Èfèt',
 	'masseditregex-listtype-intro' => 'Vê-que una lista de :',
+	'masseditregex-listtype-pagenames' => 'Nom de les pâges (changiér cetes pâges)',
 	'masseditregex-badregex' => 'Èxprèssion racionèla fôssa :',
 	'masseditregex-editfailed' => 'Èrror pendent l’èdicion :',
 );

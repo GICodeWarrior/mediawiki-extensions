@@ -4489,6 +4489,7 @@ $messages['ru'] = array(
 	'articlefeedback-survey-submit' => 'Отправить',
 	'articlefeedback-survey-title' => 'Пожалуйста, ответьте на несколько вопросов',
 	'articlefeedback-survey-thanks' => 'Спасибо за участие в опросе.',
+	'articlefeedback-survey-disclaimer' => 'В целях улучшения этой функции, ваш отзыв может быть анонимно передан сообществу Википедии.',
 	'articlefeedback-error' => 'Произошла ошибка. Пожалуйста, повторите попытку позже.',
 	'articlefeedback-form-switch-label' => 'Оцените эту страницу',
 	'articlefeedback-form-panel-title' => 'Оцените эту страницу',
