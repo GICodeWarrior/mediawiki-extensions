@@ -8,7 +8,16 @@ class ApiMoodBar extends ApiBase {
 		
 		// Params are deliberately named the same as the properties,
 		//  just slurp them through.
-		$item = MBFeedbackItem::create( $params );
+		$item = MBFeedbackItem::create( array() );
+		
+		$setParams = array();
+		foreach( $params as $key => $value ) {
+			if ( $item->isValidKey( $key ) ) {
+				$setParams[$key] = $value;
+			}
+		}
+		
+		$item->setProperties( $setParams );
 		
 		$item->save();
 		
@@ -46,6 +55,7 @@ class ApiMoodBar extends ApiBase {
 			'system' => null,
 			'locale' => null,
 			'bucket' => null,
+			'token' => null,
 		);
 	}
 
