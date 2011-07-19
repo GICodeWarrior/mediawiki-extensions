@@ -103,9 +103,14 @@ $messages['es'] = array(
 
 /** Persian (فارسی)
  * @author Ebraminio
+ * @author Huji
  */
 $messages['fa'] = array(
-	'webfonts-disable-preference' => 'غیرفعال‌کردن جاسازی قلم (WebFonts)',
+	'webfonts' => 'وب‌قلم',
+	'webfonts-desc' => 'جاسازی قلم‌ها در صفحه‌ها',
+	'webfonts-load' => 'انتخاب قلم',
+	'webfonts-reset' => 'از نو',
+	'webfonts-disable-preference' => 'غیرفعال‌کردن جاسازی قلم (وب‌قلم)',
 );
 
 /** French (Français)
