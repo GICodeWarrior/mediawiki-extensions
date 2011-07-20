@@ -55,10 +55,9 @@ var content = Content.newFromLines( lines );
 
 /* Tests */
 
-test( 'Content modification', 18, function() {
+test( 'Content modification', 17, function() {
 
-	deepEqual( content.getLines(), lines, "Content.getLines returns correct array of all lines" );
-
+	
 	content.on( 'change', function( args ) {
 		ok( true, 'Change events get triggered after ' + args.type + ' events' );
 	} );
@@ -98,7 +97,67 @@ test( 'Content modification', 18, function() {
 	content.remove( 5, 8 );
 } );
 
+test( 'Content export', 2, function() {
+
+	deepEqual(
+		content.getLines(),
+		lines,
+		'Content.getLines returns correct array of all lines'
+	);
+
+	var lines1 = [
+		{
+			"text": "test1",
+			"annotations": [
+				{
+					"type": "bold",
+					"range": {
+						"start": 0,
+						"end": 4
+					}
+				},
+				{
+					"type": "italic",
+					"range": {
+						"start": 2,
+						"end": 4
+					}
+				}
+			]
+		},
+		{
+			"text": "test2",
+			"annotations": [
+				{
+					"type": "bold",
+					"range": {
+						"start": 0,
+						"end": 4
+					}
+				},
+				{
+					"type": "italic",
+					"range": {
+						"start": 0,
+						"end": 2
+					}
+				}
+				
+			]
+		}
+	];
+
+	deepEqual(
+		Content.newFromLines( lines1 ).getLines(),
+		lines1,
+		'Content.getLines returns correct array of all lines for annotations overlapping between lines'
+	);
+	
+
+} );
+
 test( 'Content access', 8, function() {
+
 	equal(
 		content.substring( 3, 39 ),
 		's is a test paragraph!\nParagraphs ca',
