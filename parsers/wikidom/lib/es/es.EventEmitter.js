@@ -1,8 +1,8 @@
-function EventEmitter() {
+es.EventEmitter = function() {
 	this.events = {};
 }
 
-EventEmitter.prototype.emit = function( type ) {
+es.EventEmitter.prototype.emit = function( type ) {
 	if ( type === 'error' && !( 'error' in this.events ) ) {
 		throw 'Missing error handler error.';
 	}
@@ -17,7 +17,7 @@ EventEmitter.prototype.emit = function( type ) {
 	return true;
 };
 
-EventEmitter.prototype.addListener = function( type, listener ) {
+es.EventEmitter.prototype.addListener = function( type, listener ) {
 	if ( typeof listener !== 'function' ) {
 		throw 'Invalid listener error. Function expected.';
 	}
@@ -30,11 +30,11 @@ EventEmitter.prototype.addListener = function( type, listener ) {
 	return this;
 };
 
-EventEmitter.prototype.on = function( type, listener ) {
+es.EventEmitter.prototype.on = function( type, listener ) {
 	this.addListener( type, listener );
 };
 
-EventEmitter.prototype.once = function( type, listener ) {
+es.EventEmitter.prototype.once = function( type, listener ) {
 	var that = this;
 	this.addListener( type, function g() {
 		that.removeListener( type, g );
@@ -42,7 +42,7 @@ EventEmitter.prototype.once = function( type, listener ) {
 	} );
 };
 
-EventEmitter.prototype.removeListener = function( type, listener ) {
+es.EventEmitter.prototype.removeListener = function( type, listener ) {
 	if ( typeof listener !== 'function' ) {
 		throw 'Invalid listener error. Function expected.';
 	}
@@ -65,13 +65,13 @@ EventEmitter.prototype.removeListener = function( type, listener ) {
 	return this;
 };
 
-EventEmitter.prototype.removeAllListeners = function( type ) {
+es.EventEmitter.prototype.removeAllListeners = function( type ) {
 	if ( type in this.events ) {
 		delete this.events[type];
 	}
 	return this;
 };
 
-EventEmitter.prototype.listeners = function( type ) {
+es.EventEmitter.prototype.listeners = function( type ) {
 	return type in this.events ? this.events[type] : [];
 };

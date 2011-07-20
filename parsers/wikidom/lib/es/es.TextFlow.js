@@ -1,18 +1,18 @@
 /**
  * Renders and provides access to flowed text.
  * 
- * @extends {EventEmitter}
+ * @extends {es.EventEmitter}
  * @param $container {jQuery Selection} Element to render into
- * @param content {Content} Initial content to render
- * @returns {TextFlow}
+ * @param content {es.Content} Initial content to render
+ * @returns {es.TextFlow}
  */
-function TextFlow( $container, content ) {
+es.TextFlow = function( $container, content ) {
 	// Inheritance
-	EventEmitter.call( this );
+	es.EventEmitter.call( this );
 	
 	// Members
 	this.$ = $container;
-	this.content = content || new Content();
+	this.content = content || new es.Content();
 	this.boundaries = [];
 	this.lines = [];
 	this.width = null;
@@ -49,7 +49,7 @@ function TextFlow( $container, content ) {
  * @param position.top {Integer} Vertical position in pixels
  * @return {Integer} Offset within content nearest the given coordinates
  */
-TextFlow.prototype.getOffset = function( position ) {
+es.TextFlow.prototype.getOffset = function( position ) {
 	/*
 	 * Line finding
 	 * 
@@ -116,7 +116,7 @@ TextFlow.prototype.getOffset = function( position ) {
  * @param offset {Integer} Offset within content
  * @return {Object} Object containing left, top and bottom properties, each positions in pixels
  */
-TextFlow.prototype.getPosition = function( offset ) {
+es.TextFlow.prototype.getPosition = function( offset ) {
 	/*
 	 * Range validation
 	 * 
@@ -188,7 +188,7 @@ TextFlow.prototype.getPosition = function( offset ) {
 /**
  * Updates the word boundary cache, which is used for word fitting.
  */
-TextFlow.prototype.scanBoundaries = function() {
+es.TextFlow.prototype.scanBoundaries = function() {
 	/*
 	 * Word boundary scan
 	 * 
@@ -229,7 +229,7 @@ TextFlow.prototype.scanBoundaries = function() {
  * causing them to be fragmented. Word fragments are rendered on their own lines, except for their
  * remainder, which is combined with whatever proceeding words can fit on the same line.
  */
-TextFlow.prototype.renderIteration = function( limit ) {
+es.TextFlow.prototype.renderIteration = function( limit ) {
 	var rs = this.renderState,
 		iteration = 0,
 		fractional = false,
@@ -307,7 +307,7 @@ TextFlow.prototype.renderIteration = function( limit ) {
  * 
  * @param offset {Integer} Offset to re-render from, if possible (not yet implemented)
  */
-TextFlow.prototype.render = function( offset ) {
+es.TextFlow.prototype.render = function( offset ) {
 	var rs = this.renderState;
 	
 	// Check if rendering is currently underway
@@ -370,7 +370,7 @@ TextFlow.prototype.render = function( offset ) {
  * @param wordOffset {Integer} Index within this.words which the line begins with
  * @param fractional {Boolean} If the line begins in the middle of a word
  */
-TextFlow.prototype.appendLine = function( start, end, wordOffset, fractional ) {
+es.TextFlow.prototype.appendLine = function( start, end, wordOffset, fractional ) {
 	var rs = this.renderState,
 		lineCount = rs.lines.length;
 	$line = this.$.find( '.editSurface-line[line-index=' + lineCount + ']' );
@@ -421,7 +421,7 @@ TextFlow.prototype.appendLine = function( start, end, wordOffset, fractional ) {
  * @param width {Integer} Maximum width to allow the line to extend to
  * @return {Integer} Last index within "words" that contains a word that fits
  */
-TextFlow.prototype.fitWords = function( start, end, ruler, width ) {
+es.TextFlow.prototype.fitWords = function( start, end, ruler, width ) {
 	var offset = start,
 		charOffset = this.boundaries[offset],
 		middle,
@@ -476,7 +476,7 @@ TextFlow.prototype.fitWords = function( start, end, ruler, width ) {
  * @param width {Integer} Maximum width to allow the line to extend to
  * @return {Integer} Last index within "text" that contains a character that fits
  */
-TextFlow.prototype.fitCharacters = function( start, end, ruler, width ) {
+es.TextFlow.prototype.fitCharacters = function( start, end, ruler, width ) {
 	var offset = start,
 		middle,
 		lineWidth,
@@ -524,4 +524,4 @@ TextFlow.prototype.fitCharacters = function( start, end, ruler, width ) {
 	return { 'end': start, 'width': lineWidth };
 };
 
-extend( TextFlow, EventEmitter );
+es.extend( es.TextFlow, es.EventEmitter );

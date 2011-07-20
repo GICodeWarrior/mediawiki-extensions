@@ -1,11 +1,11 @@
 /**
  * 
- * @extends {EventEmitter}
+ * @extends {es.EventEmitter}
  * @param blocks {Array} List of blocks
- * @returns {Document}
+ * @returns {es.Document}
  */
-function Document( blocks ) {
-	EventEmitter.call( this );
+es.Document = function( blocks ) {
+	es.EventEmitter.call( this );
 	this.blocks = [];
 	var i;
 	for( i = 0; i < blocks.length; i++ ) {
@@ -19,27 +19,27 @@ function Document( blocks ) {
 /**
  * Gets the first block in the document.
  * 
- * @returns {Block}
+ * @returns {es.Block}
  */
-Document.prototype.firstBlock = function() {
+es.Document.prototype.firstBlock = function() {
 	return this.blocks.length ? this.blocks[0] : null;
 };
 
 /**
  * Gets the last block in the document.
  * 
- * @returns {Block}
+ * @returns {es.Block}
  */
-Document.prototype.lastBlock = function() {
+es.Document.prototype.lastBlock = function() {
 	return this.blocks.length ? this.blocks[this.blocks.length - 1] : null;
 };
 
 /**
  * Adds a block to the end of the document.
  * 
- * @param {Block} Block to append
+ * @param {es.Block} Block to append
  */
-Document.prototype.appendBlock = function( block ) {
+es.Document.prototype.appendBlock = function( block ) {
 	block.document = this;
 	block.on( 'update', function() {
 		block.document.emit( 'update' );
@@ -50,9 +50,9 @@ Document.prototype.appendBlock = function( block ) {
 /**
  * Adds a block to the beginning of the document.
  * 
- * @param {Block} Block to prepend
+ * @param {es.Block} Block to prepend
  */
-Document.prototype.prependBlock = function( block ) {
+es.Document.prototype.prependBlock = function( block ) {
 	block.document = this;
 	block.on( 'update', function() {
 		block.document.emit( 'update' );
@@ -63,10 +63,10 @@ Document.prototype.prependBlock = function( block ) {
 /**
  * Adds a block to the document after an existing block.
  * 
- * @param block {Block} Block to insert
- * @param before {Block} Block to insert before, if null then block will be inserted at the end
+ * @param block {es.Block} Block to insert
+ * @param before {es.Block} Block to insert before, if null then block will be inserted at the end
  */
-Document.prototype.insertBlockBefore = function( block, before ) {
+es.Document.prototype.insertBlockBefore = function( block, before ) {
 	block.document = this;
 	block.on( 'update', function() {
 		block.document.emit( 'update' );
@@ -79,10 +79,10 @@ Document.prototype.insertBlockBefore = function( block, before ) {
 };
 /**
  * Adds a block to the document after an existing block.
- * @param block {Block} Block to insert
- * @param after {Block} Block to insert after, if null then block will be inserted at the end
+ * @param block {es.Block} Block to insert
+ * @param after {es.Block} Block to insert after, if null then block will be inserted at the end
  */
-Document.prototype.insertBlockAfter = function( block, after ) {
+es.Document.prototype.insertBlockAfter = function( block, after ) {
 	block.document = this;
 	block.on( 'update', function() {
 		block.document.emit( 'update' );
@@ -97,15 +97,15 @@ Document.prototype.insertBlockAfter = function( block, after ) {
 /**
  * Removes a block from the document.
  * 
- * @param {Block} Block to remove
+ * @param {es.Block} Block to remove
  */
-Document.prototype.removeBlock = function( block ) {
+es.Document.prototype.removeBlock = function( block ) {
 	block.removeAllListeners( 'update' );
 	this.blocks.splice( block.getIndex(), 1 );
 	block.document = null;
 };
 
-Document.prototype.renderBlocks = function( offset ) {
+es.Document.prototype.renderBlocks = function( offset ) {
 	// Remember width, to avoid updates when without width changes
 	this.width = this.$.innerWidth();
 	// Render blocks
@@ -116,7 +116,7 @@ Document.prototype.renderBlocks = function( offset ) {
 	}
 };
 
-Document.prototype.updateBlocks = function( offset ) {
+es.Document.prototype.updateBlocks = function( offset ) {
 	// Bypass rendering when width has not changed
 	var width = this.$.innerWidth();
 	if ( this.width === width ) {
@@ -130,4 +130,4 @@ Document.prototype.updateBlocks = function( offset ) {
 	} );
 };
 
-extend( Document, EventEmitter );
+es.extend( es.Document, es.EventEmitter );

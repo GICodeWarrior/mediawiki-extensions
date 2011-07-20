@@ -1,13 +1,13 @@
 /**
- * @extends {EventEmitter}
- * @returns {Block}
+ * @extends {es.EventEmitter}
+ * @returns {es.Block}
  */
-function Block() {
-	EventEmitter.call( this );
+es.Block = function() {
+	es.EventEmitter.call( this );
 	this.document = null;
 }
 
-Block.prototype.getLength = function() {
+es.Block.prototype.getLength = function() {
 	throw 'Block.getLength not implemented in this subclass.';
 };
 
@@ -16,7 +16,7 @@ Block.prototype.getLength = function() {
  * 
  * @returns {Integer} Index of block
  */
-Block.prototype.getIndex = function() {
+es.Block.prototype.getIndex = function() {
 	if ( !this.document ) {
 		throw 'Missing document error. Block is not attached to a document.';
 	}
@@ -26,9 +26,9 @@ Block.prototype.getIndex = function() {
 /**
  * Gets the next block in the document.
  * 
- * @returns {Block|Null} Block directly proceeding this one, or null if none exists
+ * @returns {es.Block|Null} Block directly proceeding this one, or null if none exists
  */
-Block.prototype.nextBlock = function() {
+es.Block.prototype.nextBlock = function() {
 	if ( !this.document ) {
 		throw 'Missing document error. Block is not attached to a document.';
 	}
@@ -39,9 +39,9 @@ Block.prototype.nextBlock = function() {
 /**
  * Gets the previous block in the document.
  * 
- * @returns {Block|Null} Block directly preceding this one, or null if none exists
+ * @returns {es.Block|Null} Block directly preceding this one, or null if none exists
  */
-Block.prototype.previousBlock = function() {
+es.Block.prototype.previousBlock = function() {
 	if ( !this.document ) {
 		throw 'Missing document error. Block is not attached to a document.';
 	}
@@ -55,7 +55,7 @@ Block.prototype.previousBlock = function() {
  * @param offset {Integer} Position to insert content at
  * @param content {Object} Content to insert
  */
-Block.prototype.insertContent = function( offset, content ) {
+es.Block.prototype.insertContent = function( offset, content ) {
 	throw 'Block.insertContent not implemented in this subclass.';
 };
 
@@ -65,14 +65,14 @@ Block.prototype.insertContent = function( offset, content ) {
  * @param offset {Integer} Position to start removing content from
  * @param length {Integer} Length of content to remove
  */
-Block.prototype.deleteContent = function( offset, length ) {
+es.Block.prototype.deleteContent = function( offset, length ) {
 	throw 'Block.deleteContent not implemented in this subclass.';
 };
 
 /**
  * Renders content into a container.
  */
-Block.prototype.renderContent = function() {
+es.Block.prototype.renderContent = function() {
 	throw 'Block.renderContent not implemented in this subclass.';
 };
 
@@ -81,7 +81,7 @@ Block.prototype.renderContent = function() {
  * 
  * @param position {Integer} Offset to translate
  */
-Block.prototype.getOffset = function( position ) {
+es.Block.prototype.getOffset = function( position ) {
 	throw 'Block.getOffset not implemented in this subclass.';
 };
 
@@ -90,7 +90,7 @@ Block.prototype.getOffset = function( position ) {
  * 
  * @param offset {Integer} Offset to translate
  */
-Block.prototype.getPosition = function( offset ) {
+es.Block.prototype.getPosition = function( offset ) {
 	throw 'Block.getPosition not implemented in this subclass.';
 };
 
@@ -104,7 +104,7 @@ Block.prototype.getPosition = function( offset ) {
  * @param start {Integer} Offset to begin annotating from
  * @param end {Integer} Offset to stop annotating to
  */
-Block.prototype.annotateContent = function( method, annotation, start, end ) {
+es.Block.prototype.annotateContent = function( method, annotation, start, end ) {
 	throw 'Block.annotateContent not implemented in this subclass.';
 };
 
@@ -114,7 +114,7 @@ Block.prototype.annotateContent = function( method, annotation, start, end ) {
  * @param offset {Integer} Offset to find word nearest to
  * @return {Object} Range object of boundaries
  */
-Block.prototype.getWordBoundaries = function( offset ) {
+es.Block.prototype.getWordBoundaries = function( offset ) {
 	throw 'Block.getWordBoundaries not implemented in this subclass.';
 };
 
@@ -124,8 +124,8 @@ Block.prototype.getWordBoundaries = function( offset ) {
  * @param offset {Integer} Offset to find section nearest to
  * @return {Object} Range object of boundaries
  */
-Block.prototype.getSectionBoundaries = function( offset ) {
+es.Block.prototype.getSectionBoundaries = function( offset ) {
 	throw 'Block.getSectionBoundaries not implemented in this subclass.';
 };
 
-extend( Block, EventEmitter );
+es.extend( es.Block, es.EventEmitter );

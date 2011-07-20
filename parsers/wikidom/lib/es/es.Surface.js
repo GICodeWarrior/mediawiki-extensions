@@ -4,13 +4,13 @@
  * @param doc
  * @returns {Surface}
  */
-function Surface( $container, doc ) {
+es.Surface = function( $container, doc ) {
 	var surface = this;
 	
 	this.$ = $container.addClass( 'editSurface' );
 	this.doc = doc;
 	this.location = null;
-	this.selection = new Selection();
+	this.selection = new es.Selection();
 	this.initialHorizontalCursorPosition = null;
 	this.mouse = {
 		'selecting': false,
@@ -39,14 +39,14 @@ function Surface( $container, doc ) {
 	this.$rangeEnd = $( '<div class="editSurface-range"></div>' ).appendTo( this.$ranges );
 	
 	// Cursor
-	this.cursor = new Cursor();
+	this.cursor = new es.Cursor();
 	this.$.append( this.cursor.$ );
 	
 	// Hidden input
 	var $document = $(document);
 	this.$input = $( '<input class="editSurface-input" />' )
 		.prependTo( this.$ )
-		.bind({
+		.bind( {
 			'focus' : function() {
 				$(document).bind({
 					'mousemove.editSurface' : function(e) {
@@ -67,7 +67,7 @@ function Surface( $container, doc ) {
 				$document.unbind('.editSurface');
 				surface.cursor.hide();
 			}
-		});
+		} );
 	
 	$(window).resize( function() {
 		surface.cursor.hide();
@@ -88,7 +88,7 @@ function Surface( $container, doc ) {
 	this.doc.renderBlocks();
 }
 
-Surface.prototype.getLocationFromEvent = function( e ) {
+es.Surface.prototype.getLocationFromEvent = function( e ) {
 	var $target = $( e.target );
 		$block = $target.is( '.editSurface-block' )
 			? $target : $target.closest( '.editSurface-block' );
@@ -106,18 +106,18 @@ Surface.prototype.getLocationFromEvent = function( e ) {
 	}
 	var block = $block.data( 'block' ),
 		blockPosition = $block.offset(),
-		mousePosition = new Position( e.pageX - blockPosition.left, e.pageY - blockPosition.top );
-	return new Location( block, block.getOffset( mousePosition ) );
+		mousePosition = new es.Position( e.pageX - blockPosition.left, e.pageY - blockPosition.top );
+	return new es.Location( block, block.getOffset( mousePosition ) );
 };
 
-Surface.prototype.onKeyDown = function( e ) {
+es.Surface.prototype.onKeyDown = function( e ) {
 	switch ( e.keyCode ) {
 		case 16: // Shift
 			this.shiftDown = true;
 			if ( !this.keyboard.selecting ) {
 				this.keyboard.selecting = true;
 				if ( !this.selection.to ) {
-					this.selection = new Selection( this.location );
+					this.selection = new es.Selection( this.location );
 				}
 				this.drawSelection();
 			}
@@ -131,7 +131,7 @@ Surface.prototype.onKeyDown = function( e ) {
 			if ( this.shiftDown && this.keyboard.selecting ) {
 				this.selection.to = this.location;
 			} else {
-				this.selection = new Selection();
+				this.selection = new es.Selection();
 			}
 			this.drawSelection();
 			break;
@@ -140,7 +140,7 @@ Surface.prototype.onKeyDown = function( e ) {
 			if ( this.shiftDown && this.keyboard.selecting ) {
 				this.selection.to = this.location;
 			} else {
-				this.selection = new Selection();
+				this.selection = new es.Selection();
 			}
 			this.drawSelection();
 			break;
@@ -150,7 +150,7 @@ Surface.prototype.onKeyDown = function( e ) {
 			if ( this.shiftDown && this.keyboard.selecting ) {
 				this.selection.to = this.location;
 			} else {
-				this.selection = new Selection();
+				this.selection = new es.Selection();
 			}
 			this.drawSelection();
 			break;
@@ -159,7 +159,7 @@ Surface.prototype.onKeyDown = function( e ) {
 			if ( this.shiftDown && this.keyboard.selecting ) {
 				this.selection.to = this.location;
 			} else {
-				this.selection = new Selection();
+				this.selection = new es.Selection();
 			}
 			this.drawSelection();
 			break;
@@ -188,8 +188,8 @@ Surface.prototype.onKeyDown = function( e ) {
 						surface.deleteContent( deleteSelection );
 					}
 					var insertLocation = surface.location;
-					surface.selection = new Selection();
-					surface.location = new Location(
+					surface.selection = new es.Selection();
+					surface.location = new es.Location(
 						surface.location.block, surface.location.offset + val.length
 					);
 					surface.insertContent( insertLocation, val.split('') );
@@ -200,7 +200,7 @@ Surface.prototype.onKeyDown = function( e ) {
 	return true;
 };
 
-Surface.prototype.onKeyUp = function( e ) {
+es.Surface.prototype.onKeyUp = function( e ) {
 	switch ( e.keyCode ) {
 		case 16: // Shift
 			this.shiftDown = false;
@@ -221,41 +221,41 @@ Surface.prototype.onKeyUp = function( e ) {
 	return true;
 };
 
-Surface.prototype.handleBackspace = function() {
+es.Surface.prototype.handleBackspace = function() {
 	if ( this.selection.from && this.selection.to ) {
 		var deleteSelection = this.selection;
 		deleteSelection.normalize();
 		this.location = this.selection.start;
-		this.selection = new Selection();
+		this.selection = new es.Selection();
 		this.deleteContent( deleteSelection );
 	} else if ( this.location.offset > 0 ) {
-		var deleteSelection = new Selection(
-			new Location( this.location.block, this.location.offset - 1 ), this.location
+		var deleteSelection = new es.Selection(
+			new es.Location( this.location.block, this.location.offset - 1 ), this.location
 		);
-		this.selection = new Selection();
+		this.selection = new es.Selection();
 		this.location = deleteSelection.from;
 		this.deleteContent( deleteSelection );
 	}
 };
 
-Surface.prototype.handleDelete = function() {
+es.Surface.prototype.handleDelete = function() {
 	if ( this.selection.from && this.selection.to ) {
 		var deleteSelection = this.selection;
 		deleteSelection.normalize();
 		this.location = this.selection.end;
-		this.selection = new Selection();
+		this.selection = new es.Selection();
 		this.deleteContent( deleteSelection );
 	} else if ( this.location.offset < block.getLength() - 1 ) {
-		var deleteSelection = new Selection(
-			new Location( this.location.block, this.location.offset + 1 ), this.location
+		var deleteSelection = new es.Selection(
+			new es.Location( this.location.block, this.location.offset + 1 ), this.location
 		);
-		this.selection = new Selection();
+		this.selection = new es.Selection();
 		this.location = deleteSelection.from;
 		this.deleteContent( deleteSelection );
 	}
 };
 
-Surface.prototype.onMouseDown = function( e ) {
+es.Surface.prototype.onMouseDown = function( e ) {
 	if ( e.button === 0 ) {
 		clearTimeout( this.mouse.clickTimeout );
 		if ( this.mouse.clickX === e.pageX && this.mouse.clickY === e.pageY ) {
@@ -275,7 +275,7 @@ Surface.prototype.onMouseDown = function( e ) {
 		switch ( this.mouse.clicks ) {
 			case 1:
 				// Clear selection and move cursor to nearest offset
-				this.selection = new Selection( this.location );
+				this.selection = new es.Selection( this.location );
 				var cursorPosition = this.location.block.getPosition( this.location.offset );
 				this.cursor.show( cursorPosition, this.location.block.$.offset() );
 				this.$input.css( 'top', cursorPosition.top );
@@ -286,7 +286,7 @@ Surface.prototype.onMouseDown = function( e ) {
 			case 2:
 				// Select word offset is within
 				var boundaries = this.location.block.getWordBoundaries( this.location.offset );
-				this.selection = new Selection(
+				this.selection = new es.Selection(
 					new Location( this.location.block, boundaries.start ),
 					new Location( this.location.block, boundaries.end )
 				);
@@ -295,7 +295,7 @@ Surface.prototype.onMouseDown = function( e ) {
 			case 3:
 				// Select section within block offset is within
 				var boundaries = this.location.block.getSectionBoundaries( this.location.offset );
-				this.selection = new Selection(
+				this.selection = new es.Selection(
 					new Location( this.location.block, boundaries.start ),
 					new Location( this.location.block, boundaries.end )
 				);
@@ -310,7 +310,7 @@ Surface.prototype.onMouseDown = function( e ) {
 	return false;
 };
 
-Surface.prototype.onMouseMove = function( e ) {
+es.Surface.prototype.onMouseMove = function( e ) {
 	if ( e.button === 0 && this.mouse.selecting ) {
 		this.cursor.hide();
 		this.selection.to = this.getLocationFromEvent( e );
@@ -318,7 +318,7 @@ Surface.prototype.onMouseMove = function( e ) {
 	}
 };
 
-Surface.prototype.onMouseUp = function( e ) {
+es.Surface.prototype.onMouseUp = function( e ) {
 	if ( e.button === 0 && this.selection.to ) {
 		this.location = this.selection.to;
 		this.drawSelection();
@@ -332,7 +332,7 @@ Surface.prototype.onMouseUp = function( e ) {
  * 
  * @return {Boolean} If selection is visibly painted
  */
-Surface.prototype.drawSelection = function() {
+es.Surface.prototype.drawSelection = function() {
 	var blockWidth;
 
 	if ( this.selection.from && this.selection.to ) {
@@ -442,34 +442,34 @@ Surface.prototype.drawSelection = function() {
 /**
  * Sets the selection to a new range.
  * 
- * @param from {Selection} Selection to apply
+ * @param from {es.Selection} Selection to apply
  */
-Surface.prototype.setSelection = function( selection ) {
+es.Surface.prototype.setSelection = function( selection ) {
 	this.selection = selection;
 };
 
 /**
  * Gets the current document selection.
  * 
- * @returns {Selection}
+ * @returns {es.Selection}
  */
-Surface.prototype.getSelection = function() {
+es.Surface.prototype.getSelection = function() {
 	return this.selection;
 };
 
 /**
  * Gets the current cursor location.
  * 
- * @returns {Location}
+ * @returns {es.Location}
  */
-Surface.prototype.getLocation = function() {
+es.Surface.prototype.getLocation = function() {
 	return this.location;
 };
 
 /**
  * Moves the cursor to the nearest location directly above the current flowed line.
  */
-Surface.prototype.moveCursorUp = function() {
+es.Surface.prototype.moveCursorUp = function() {
 	var block = this.location.block,
 		offset = this.location.offset,
 		position = block.getPosition( offset );
@@ -492,13 +492,13 @@ Surface.prototype.moveCursorUp = function() {
 	position = block.getPosition( offset );
 	this.cursor.show( position, block.$.offset() );
 	
-	this.location = new Location( block, offset );
+	this.location = new es.Location( block, offset );
 };
 
 /**
  * Moves the cursor to the nearest location directly below the current flowed line.
  */
-Surface.prototype.moveCursorDown = function() {
+es.Surface.prototype.moveCursorDown = function() {
 	var block = this.location.block,
 		offset = this.location.offset,
 		position = block.getPosition( offset );
@@ -521,13 +521,13 @@ Surface.prototype.moveCursorDown = function() {
 	position = block.getPosition( offset );
 	this.cursor.show( position, block.$.offset() );
 	
-	this.location = new Location( block, offset );
+	this.location = new es.Location( block, offset );
 };
 
 /**
  * Moves the cursor backward of the current position.
  */
-Surface.prototype.moveCursorRight = function() {
+es.Surface.prototype.moveCursorRight = function() {
 	var block = this.location.block,
 		offset = this.location.offset;
 	
@@ -545,13 +545,13 @@ Surface.prototype.moveCursorRight = function() {
 		block.$.offset()
 	);
 	
-	this.location = new Location( block, offset );
+	this.location = new es.Location( block, offset );
 };
 
 /**
  * Moves the cursor forward of the current position.
  */
-Surface.prototype.moveCursorLeft = function() {
+es.Surface.prototype.moveCursorLeft = function() {
 	var block = this.location.block,
 		offset = this.location.offset;
 
@@ -569,10 +569,10 @@ Surface.prototype.moveCursorLeft = function() {
 		block.$.offset()
 	);
 	
-	this.location = new Location( block, offset );
+	this.location = new es.Location( block, offset );
 };
 
-Surface.prototype.insertContent = function( location, content ) {
+es.Surface.prototype.insertContent = function( location, content ) {
 	if ( typeof location === 'undefined' ) {
 		location = this.location;
 	}
@@ -582,7 +582,7 @@ Surface.prototype.insertContent = function( location, content ) {
 	this.location.block.insertContent( location.offset, content );
 };
 
-Surface.prototype.deleteContent = function( selection ) {
+es.Surface.prototype.deleteContent = function( selection ) {
 	if ( typeof selection === 'undefined' ) {
 		selection = this.selection;
 	}
@@ -623,9 +623,9 @@ Surface.prototype.deleteContent = function( selection ) {
  * 
  * @param method {String} Way to apply annotation ("toggle", "add" or "remove")
  * @param annotation {Object} Annotation to apply
- * @param selection {Selection} Range to apply annotation to
+ * @param selection {es.Selection} Range to apply annotation to
  */
-Surface.prototype.annotateContent = function( method, annotation, selection ) {
+es.Surface.prototype.annotateContent = function( method, annotation, selection ) {
 	if ( typeof selection === 'undefined' ) {
 		selection = this.selection;
 	}

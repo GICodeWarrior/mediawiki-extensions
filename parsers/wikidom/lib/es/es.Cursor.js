@@ -1,8 +1,8 @@
 /**
  * 
- * @returns {Cursor}
+ * @returns {es.Cursor}
  */
-function Cursor() {
+es.Cursor = function() {
 	this.cursorInterval = null;
 	this.$ = $( '<div class="editSurface-cursor"></div>' );
 }
@@ -13,7 +13,7 @@ function Cursor() {
  * @param position {Position} Position to show the cursor at
  * @param offset {Position} Offset to be added to position
  */
-Cursor.prototype.show = function( position, offset ) {
+es.Cursor.prototype.show = function( position, offset ) {
 	if ( position ) {
 		if ( $.isPlainObject( offset ) ) {
 			position.left += offset.left;
@@ -41,7 +41,7 @@ Cursor.prototype.show = function( position, offset ) {
 /**
  * Hides the cursor.
  */
-Cursor.prototype.hide = function() {
+es.Cursor.prototype.hide = function() {
 	if( this.cursorInterval ) {
 		clearInterval( this.cursorInterval );
 	}

@@ -1,22 +1,22 @@
 /**
  * 
- * @extends {Block}
+ * @extends {es.Block}
  * @param lines {Array} List of line objects
- * @returns {ParagraphBlock}
+ * @returns {es.ParagraphBlock}
  */
-function ParagraphBlock( lines ) {
-	Block.call( this );
-	this.content = Content.newFromLines( lines || [] );
+es.ParagraphBlock = function( lines ) {
+	es.Block.call( this );
+	this.content = es.Content.newFromLines( lines || [] );
 	this.$ = $( '<div class="editSurface-block editSurface-paragraph"></div>' )
 		.data( 'block', this );
-	this.flow = new TextFlow( this.$, this.content );
+	this.flow = new es.TextFlow( this.$, this.content );
 	var block = this;
 	this.flow.on( 'render', function() {
 		block.emit( 'update' );
 	} );
 }
 
-ParagraphBlock.prototype.getLength = function() {
+es.ParagraphBlock.prototype.getLength = function() {
 	return this.content.getLength();
 };
 
@@ -26,7 +26,7 @@ ParagraphBlock.prototype.getLength = function() {
  * @param offset {Integer} Position to insert content at
  * @param content {Object} Content to insert
  */
-ParagraphBlock.prototype.insertContent = function( offset, content ) {
+es.ParagraphBlock.prototype.insertContent = function( offset, content ) {
 	this.content.insert( offset, content );
 };
 
@@ -36,7 +36,7 @@ ParagraphBlock.prototype.insertContent = function( offset, content ) {
  * @param offset {Integer} Offset to start removing content from
  * @param length {Integer} Offset to start removing content to
  */
-ParagraphBlock.prototype.deleteContent = function( start, end ) {
+es.ParagraphBlock.prototype.deleteContent = function( start, end ) {
 	// Normalize start/end
 	if ( end < start ) {
 		var tmp = end;
@@ -51,7 +51,7 @@ ParagraphBlock.prototype.deleteContent = function( start, end ) {
  * 
  * @param $container {jQuery Selection} Container to render into
  */
-ParagraphBlock.prototype.renderContent = function( offset ) {
+es.ParagraphBlock.prototype.renderContent = function( offset ) {
 	this.flow.render( offset );
 };
 
@@ -60,7 +60,7 @@ ParagraphBlock.prototype.renderContent = function( offset ) {
  * 
  * @param position {Integer} Offset to translate
  */
-ParagraphBlock.prototype.getOffset = function( position ) {
+es.ParagraphBlock.prototype.getOffset = function( position ) {
 	return this.flow.getOffset( position );
 };
 
@@ -69,7 +69,7 @@ ParagraphBlock.prototype.getOffset = function( position ) {
  * 
  * @param offset {Integer} Offset to translate
  */
-ParagraphBlock.prototype.getPosition = function( offset ) {
+es.ParagraphBlock.prototype.getPosition = function( offset ) {
 	return this.flow.getPosition( offset );
 };
 
@@ -83,7 +83,7 @@ ParagraphBlock.prototype.getPosition = function( offset ) {
  * @param start {Integer} Offset to begin annotating from
  * @param end {Integer} Offset to stop annotating to
  */
-ParagraphBlock.prototype.annotateContent = function( method, annotation, start, end ) {
+es.ParagraphBlock.prototype.annotateContent = function( method, annotation, start, end ) {
 	this.content.annotate( method, annotation, start, end );
 };
 
@@ -93,7 +93,7 @@ ParagraphBlock.prototype.annotateContent = function( method, annotation, start, 
  * @param offset {Integer} Offset to find word nearest to
  * @return {Object} Range object of boundaries
  */
-Block.prototype.getWordBoundaries = function( offset ) {
+es.Block.prototype.getWordBoundaries = function( offset ) {
 	return this.content.getWordBoundaries( offset );
 };
 
@@ -105,8 +105,8 @@ Block.prototype.getWordBoundaries = function( offset ) {
  * @param offset {Integer} Offset to find section nearest to
  * @return {Object} Range object of boundaries
  */
-Block.prototype.getSectionBoundaries = function( offset ) {
-	return new Range( 0, this.content.getLength() );
+es.Block.prototype.getSectionBoundaries = function( offset ) {
+	return new es.Range( 0, this.content.getLength() );
 };
 
-extend( ParagraphBlock, Block );
+es.extend( es.ParagraphBlock, es.Block );

@@ -51,7 +51,7 @@ var lines = [
 	}
 ];
 
-var content = Content.newFromLines( lines );
+var content = es.Content.newFromLines( lines );
 
 /* Tests */
 
@@ -148,7 +148,7 @@ test( 'Content export', 2, function() {
 	];
 
 	deepEqual(
-		Content.newFromLines( lines1 ).getLines(),
+		es.Content.newFromLines( lines1 ).getLines(),
 		lines1,
 		'Content.getLines returns correct array of all lines for annotations overlapping between lines'
 	);

@@ -1,4 +1,11 @@
 /**
+ * EditSurafce namespace.
+ * 
+ * All classes and functions will be attached to this object to keep the global namespace clean.
+ */
+var es = {};
+
+/**
  * Extends a constructor with prototype of another.
  * 
  * When using this, it's required to include a call to the constructor of the parent class as the
@@ -19,7 +26,7 @@
  * @param dst {Function} Class to copy prototype members to
  * @param src {Function} Class to copy prototype members from
  */
-function extend( dst, src ) {
+es.extend = function( dst, src ) {
 	var base = new src();
 	var i; // iterator
 
@@ -35,9 +42,9 @@ function extend( dst, src ) {
  * 
  * @param start {Integer} Starting point
  * @param end {Integer} Ending point
- * @returns {Range}
+ * @returns {es.Range}
  */
-function Range( start, end ) {
+es.Range = function( start, end ) {
 	this.start = start || null;
 	this.end = end || null;
 }
@@ -50,9 +57,9 @@ function Range( start, end ) {
  * @param left {Integer} Horizontal position
  * @param top {Integer} Vertical position (of top, if bottom is used)
  * @param bottom {Integer} Vertical position of bottom (optional)
- * @returns {Position}
+ * @returns {es.Position}
  */
-function Position( left, top, bottom ) {
+es.Position = function( left, top, bottom ) {
 	this.left = left || 0;
 	this.top = top || 0;
 	this.bottom = bottom || 0;
@@ -61,11 +68,11 @@ function Position( left, top, bottom ) {
 /**
  * Content location, an offset within a block.
  * 
- * @param block {Block} Location target
+ * @param block {es.Block} Location target
  * @param offset {Integer} Location offset
- * @returns {Location}
+ * @returns {es.Location}
  */
-function Location( block, offset ) {
+es.Location = function( block, offset ) {
 	this.block = block;
 	this.offset = offset || 0;
 }
@@ -73,11 +80,11 @@ function Location( block, offset ) {
 /**
  * Content selection, a pair of locations.
  * 
- * @param from {Location} Starting location
- * @param to {Location} Ending location
- * @returns {Selection}
+ * @param from {es.Location} Starting location
+ * @param to {es.Location} Ending location
+ * @returns {es.Selection}
  */
-function Selection( from, to ) {
+es.Selection = function( from, to ) {
 	this.from = from;
 	this.to = to;
 	this.start = from;
@@ -87,7 +94,7 @@ function Selection( from, to ) {
 /**
  * Ensures that "from" is before "to".
  */
-Selection.prototype.normalize = function() {
+es.Selection.prototype.normalize = function() {
 	if ( this.from.block.getIndex() < this.to.block.getIndex()
 			|| ( this.from.block === this.to.block && this.from.offset < this.to.offset ) ) {
 		this.start = this.from;
@@ -105,7 +112,7 @@ Selection.prototype.normalize = function() {
  * 
  * @returns {Array} List of blocks
  */
-Selection.prototype.through = function() {
+es.Selection.prototype.through = function() {
 	var through = [];
 	if ( this.from !== this.to && this.from.nextBlock() !== this.to ) {
 		var next = this.from.nextBlock();
@@ -117,11 +124,11 @@ Selection.prototype.through = function() {
 	return through;
 };
 
-function Content( data ) {
+es.Content = function( data ) {
 	this.setData( data );
 }
 
-Content.prototype.setData = function( data ) {
+es.Content.prototype.setData = function( data ) {
 	// Data type detection
 	if ( typeof data === 'string' ) {
 		this.type = 'string';

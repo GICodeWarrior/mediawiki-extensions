@@ -6,12 +6,12 @@
  * paired with offset annotation), especially when performing substring operations. Content can be
  * derived from or converted to one or more WikiDom line objects.
  * 
- * @extends {EventEmitter}
+ * @extends {es.EventEmitter}
  * @param content {Array} List of plain or annotated characters
- * @returns {Content}
+ * @returns {es.Content}
  */
-function Content( content ) {
-	EventEmitter.call( this );
+es.Content = function( content ) {
+	es.EventEmitter.call( this );
 	this.data = content || [];
 };
 
@@ -23,7 +23,7 @@ function Content( content ) {
  * Each supported annotation renderer must have an open and close property, each either a string or
  * a function which accepts a data argument.
  */
-Content.annotationRenderers = {
+es.Content.annotationRenderers = {
 	'template': {
 		'open': function( data ) {
 			return '<span class="editSurface-format-object">' + data.html;
@@ -58,7 +58,7 @@ Content.annotationRenderers = {
 	}
 };
 
-Content.htmlCharacters = {
+es.Content.htmlCharacters = {
 	'&': '&amp;',
 	'<': '&lt;',
 	'>': '&gt;',
@@ -83,7 +83,7 @@ Content.htmlCharacters = {
  * @param asymmetrical {Boolean} Whether to check only that b contains values from a
  * @return {Boolean} If the objects contain the same values as each other
  */
-Content.compareObjects = function( a, b, asymmetrical ) {
+es.Content.compareObjects = function( a, b, asymmetrical ) {
 	var aValue, bValue, aType, bType;
 	var k;
 	for ( k in a ) {
@@ -93,12 +93,12 @@ Content.compareObjects = function( a, b, asymmetrical ) {
 		bType = typeof bValue;
 		if ( aType !== bType
 				|| ( ( aType === 'string' || aType === 'number' ) && aValue !== bValue )
-				|| ( $.isPlainObject( aValue ) && !Content.compareObjects( aValue, bValue ) ) ) {
+				|| ( $.isPlainObject( aValue ) && !es.Content.compareObjects( aValue, bValue ) ) ) {
 			return false;
 		}
 	}
 	// If the check is not asymmetrical, recursing with the arguments swapped will verify our result
-	return asymmetrical ? true : Content.compareObjects( b, a, true );
+	return asymmetrical ? true : es.Content.compareObjects( b, a, true );
 };
 
 /**
@@ -107,7 +107,7 @@ Content.compareObjects = function( a, b, asymmetrical ) {
  * @param source {Object} Object to copy
  * @return {Object} Copy of source object
  */
-Content.copyObject = function( source ) {
+es.Content.copyObject = function( source ) {
 	var destination = {};
 	var key;
 	for ( key in source ) {
@@ -116,7 +116,7 @@ Content.copyObject = function( source ) {
 		if ( sourceType === 'string' || sourceType === 'number' ) {
 			destination[key] = sourceValue;
 		} else if ( $.isPlainObject( sourceValue ) ) {
-			destination[key] = Content.copyObject( sourceValue );
+			destination[key] = es.Content.copyObject( sourceValue );
 		}
 	}
 	return destination;
@@ -130,7 +130,7 @@ Content.copyObject = function( source ) {
  * properties, the latter of which being an array of annotation objects including range information
  * @return {Array} List of plain or annotated characters
  */
-Content.convertLine = function( line ) {
+es.Content.convertLine = function( line ) {
 	// Convert string to array of characters
 	var data = line.text.split('');
 	var i;
@@ -139,7 +139,7 @@ Content.convertLine = function( line ) {
 		// Build simplified annotation object
 		var dst = { 'type': src.type };
 		if ( 'data' in src ) {
-			dst.data = Content.copyObject( src.data );
+			dst.data = es.Content.copyObject( src.data );
 		}
 		// Apply annotation to range
 		var k;
@@ -157,10 +157,10 @@ Content.convertLine = function( line ) {
  * Creates a new Content object from a WikiDom line object.
  * 
  * @param line {Object} WikiDom compatible line object - @see Content.convertLine
- * @return {Content} New content object containing data derived from the WikiDom line
+ * @return {es.Content} New content object containing data derived from the WikiDom line
  */
-Content.newFromLine = function( line ) {
-	return new Content( Content.convertLine( line ) );
+es.Content.newFromLine = function( line ) {
+	return new es.Content( es.Content.convertLine( line ) );
 };
 
 /**
@@ -172,18 +172,18 @@ Content.newFromLine = function( line ) {
  * into multiple line objects, thus making a clean round trip possible.
  * 
  * @param line {Array} List of WikiDom compatible line objects - @see Content.convertLine
- * @return {Content} New content object containing data derived from the WikiDom line
+ * @return {es.Content} New content object containing data derived from the WikiDom line
  */
-Content.newFromLines = function( lines ) {
+es.Content.newFromLines = function( lines ) {
 	var data = [];
 	var i;
 	for ( i = 0; i < lines.length; i++ ) {
-		data = data.concat( Content.convertLine( lines[i] ) );
+		data = data.concat( es.Content.convertLine( lines[i] ) );
 		if ( i < lines.length - 1 ) {
 			data.push( '\n' );
 		}
 	}
-	return new Content( data );
+	return new es.Content( data );
 };
 
 /**
@@ -197,8 +197,8 @@ Content.newFromLines = function( lines ) {
  * @param stack {Array} List of currently open annotations
  * @return {String} Rendered annotation
  */
-Content.renderAnnotation = function( bias, annotation, stack ) {
-	var renderers = Content.annotationRenderers,
+es.Content.renderAnnotation = function( bias, annotation, stack ) {
+	var renderers = es.Content.annotationRenderers,
 		type = annotation.type,
 		out = '';
 	if ( type in renderers ) {
@@ -258,7 +258,7 @@ Content.renderAnnotation = function( bias, annotation, stack ) {
  * @param end {Integer} Optional end of range, if omitted range will end a this.data.length
  * @return {String} Plain text within given range
  */
-Content.prototype.substring = function( start, end ) {
+es.Content.prototype.substring = function( start, end ) {
 	// Wrap values
 	start = Math.max( 0, start || 0 );
 	if ( end === undefined ) {
@@ -285,10 +285,10 @@ Content.prototype.substring = function( start, end ) {
  * 
  * @param start {Integer} Optional beginning of range, if omitted range will begin at 0
  * @param end {Integer} Optional end of range, if omitted range will end a this.data.length
- * @return {Content} New content object
+ * @return {es.Content} New content object
  */
-Content.prototype.slice = function( start, end ) {
-	return new Content( this.data.slice( start, end ) );
+es.Content.prototype.slice = function( start, end ) {
+	return new es.Content( this.data.slice( start, end ) );
 };
 
 /**
@@ -299,7 +299,7 @@ Content.prototype.slice = function( start, end ) {
  * @param offset {Integer} Position to insert content at
  * @param content {Array} Content data to insert
  */
-Content.prototype.insert = function( offset, content ) {
+es.Content.prototype.insert = function( offset, content ) {
 	// TODO: Prefer to not take annotations from a neighbor that's a space character
 	var neighbor = this.data[Math.max( offset - 1, 0 )];
 	if ( $.isArray( neighbor ) ) {
@@ -326,7 +326,7 @@ Content.prototype.insert = function( offset, content ) {
  * @param start {Integer} Beginning of range
  * @param end {Integer} End of range
  */
-Content.prototype.remove = function( start, end ) {
+es.Content.prototype.remove = function( start, end ) {
 	this.data.splice( start, end - start );
 	this.emit( 'remove', {
 		'start': start,
@@ -340,7 +340,7 @@ Content.prototype.remove = function( start, end ) {
  * 
  * @return {Integer} Length of content data
  */
-Content.prototype.getLength = function() {
+es.Content.prototype.getLength = function() {
 	return this.data.length; 
 };
 
@@ -356,14 +356,14 @@ Content.prototype.getLength = function() {
  * @param strict {Boolean} Optionally compare annotation data as well as type
  * @return {Array} List of indexes of covered characters within content data
  */
-Content.prototype.coverageOfAnnotation = function( start, end, annotation, strict ) {
+es.Content.prototype.coverageOfAnnotation = function( start, end, annotation, strict ) {
 	var coverage = [];
 	var i, index;
 	for ( i = start; i < end; i++ ) {
 		index = this.indexOfAnnotation( i, annotation );
 		if ( typeof this.data[i] !== 'string' && index !== -1 ) {
 			if ( strict ) {
-				if ( Content.compareObjects( this.data[i][index].data, annotation.data ) ) {
+				if ( es.Content.compareObjects( this.data[i][index].data, annotation.data ) ) {
 					coverage.push( i );
 				}
 			} else {
@@ -385,14 +385,14 @@ Content.prototype.coverageOfAnnotation = function( start, end, annotation, stric
  * @param annotation {Object} Annotation to compare with
  * @param strict {Boolean} Optionally compare annotation data as well as type
  */
-Content.prototype.indexOfAnnotation = function( offset, annotation, strict ) {
-	var annotatedCharacter = this.data[offset];
+es.Content.prototype.indexOfAnnotation = function( offset, annotation, strict ) {
+	var annotatedChar = this.data[offset];
 	var i;
-	if ( typeof annotatedCharacter !== 'string' ) {
+	if ( typeof annotatedChar !== 'string' ) {
 		for ( i = 1; i < this.data[offset].length; i++ ) {
-			if ( annotatedCharacter[i].type === annotation.type ) {
+			if ( annotatedChar[i].type === annotation.type ) {
 				if ( strict ) {
-					if ( Content.compareObjects( annotatedCharacter[i].data, annotation.data ) ) {
+					if ( es.Content.compareObjects( annotatedChar[i].data, annotation.data ) ) {
 						return i;
 					}
 				} else {
@@ -418,7 +418,7 @@ Content.prototype.indexOfAnnotation = function( offset, annotation, strict ) {
  * @param start {Integer} Offset to begin annotating from
  * @param end {Integer} Offset to stop annotating to
  */
-Content.prototype.annotate = function( method, annotation, start, end ) {
+es.Content.prototype.annotate = function( method, annotation, start, end ) {
 	var i;
 
 	start = Math.max( start, 0 );
@@ -487,7 +487,7 @@ Content.prototype.annotate = function( method, annotation, start, end ) {
  * @param end {Integer} End of range
  * @param {String} Rendered HTML of content data
  */
-Content.prototype.render = function( start, end ) {
+es.Content.prototype.render = function( start, end ) {
 	if ( start || end ) {
 		return this.slice( start, end ).render();
 	}
@@ -505,27 +505,28 @@ Content.prototype.render = function( start, end ) {
 		if ( !leftPlain && rightPlain ) {
 			// [formatted][plain] pair, close any annotations for left
 			for ( j = 1; j < left.length; j++ ) {
-				out += Content.renderAnnotation( 'close', left[j], stack );
+				out += es.Content.renderAnnotation( 'close', left[j], stack );
 			}
 		} else if ( leftPlain && !rightPlain ) {
 			// [plain][formatted] pair, open any annotations for right
 			for ( j = 1; j < right.length; j++ ) {
-				out += Content.renderAnnotation( 'open', right[j], stack );
+				out += es.Content.renderAnnotation( 'open', right[j], stack );
 			}
 		} else if ( !leftPlain && !rightPlain ) {
 			// [formatted][formatted] pair, open/close any differences
 			for ( j = 1; j < left.length; j++ ) {
 				if ( right.indexOf( left[j] ) === -1 ) {
-					out += Content.renderAnnotation( 'close', left[j], stack );
+					out += es.Content.renderAnnotation( 'close', left[j], stack );
 				}
 			}
 			for ( j = 1; j < right.length; j++ ) {
 				if ( left.indexOf( right[j] ) === -1 ) {
-					out += Content.renderAnnotation( 'open', right[j], stack );
+					out += es.Content.renderAnnotation( 'open', right[j], stack );
 				}
 			}
 		}
-		out += right[0] in Content.htmlCharacters ? Content.htmlCharacters[right[0]] : right[0];
+		out += right[0] in es.Content.htmlCharacters
+			? es.Content.htmlCharacters[right[0]] : right[0];
 		left = right;		
 	}
 	return out;
@@ -537,7 +538,7 @@ Content.prototype.render = function( start, end ) {
  * @param offset {Integer} Offset to find word nearest to
  * @return {Object} Range object of boundaries
  */
-Content.prototype.getWordBoundaries = function( offset ) {
+es.Content.prototype.getWordBoundaries = function( offset ) {
 	if ( offset < 0 || offset > this.data.length ) {
 		throw 'Out of bounds error. Offset expected to be >= 0 and <= to ' + this.data.length;
 	}
@@ -559,10 +560,10 @@ Content.prototype.getWordBoundaries = function( offset ) {
 		}
 		end++;
 	}
-	return new Range( start, end );
+	return new es.Range( start, end );
 };
 
-Content.prototype.getLines = function() {
+es.Content.prototype.getLines = function() {
 	var lines = [],
 		right = '',
 		rightPlain,
@@ -597,7 +598,7 @@ Content.prototype.getLines = function() {
 			for ( j = 1; j < left.length; j++ ) {
 				for ( k = line.annotations.length - 1; k >= 0; k-- ) {
 					if ( left[j].type === line.annotations[k].type ) {
-						if ( Content.compareObjects( left[j].data, line.annotations[k].data ) ) {
+						if ( es.Content.compareObjects( left[j].data, line.annotations[k].data ) ) {
 							line.annotations[k].range.end = i - offset;
 							break;
 						}
@@ -609,7 +610,7 @@ Content.prototype.getLines = function() {
 		if ( !rightPlain ) {
 			for ( j = 1; j < right.length; j++ ) {
 				if ( leftPlain || this.indexOfAnnotation( i - 1, right[j], true ) === -1 ) {
-					var annotation = Content.copyObject( right[j] );
+					var annotation = es.Content.copyObject( right[j] );
 					annotation.range = {
 						start : i - offset,
 						end : i + 1 - offset
@@ -631,4 +632,4 @@ Content.prototype.getLines = function() {
 	return lines;
 };
 
-extend( Content, EventEmitter );
+es.extend( es.Content, es.EventEmitter );
