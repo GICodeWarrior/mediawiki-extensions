@@ -232,8 +232,9 @@ es.Surface.prototype.handleBackspace = function() {
 		var deleteSelection = new es.Selection(
 			new es.Location( this.location.block, this.location.offset - 1 ), this.location
 		);
+		deleteSelection.normalize();
 		this.selection = new es.Selection();
-		this.location = deleteSelection.from;
+		this.location = deleteSelection.start;
 		this.deleteContent( deleteSelection );
 	}
 };
@@ -242,18 +243,17 @@ es.Surface.prototype.handleDelete = function() {
 	if ( this.selection.from && this.selection.to ) {
 		var deleteSelection = this.selection;
 		deleteSelection.normalize();
-		this.location = this.selection.end;
+		this.location = this.selection.start;
 		this.selection = new es.Selection();
 		this.deleteContent( deleteSelection );
-		this.location.offset -= deleteSelection.to.offset - deleteSelection.from.offset;
 	} else if ( this.location.offset < this.location.block.getLength() - 1 ) {
 		var deleteSelection = new es.Selection(
 			new es.Location( this.location.block, this.location.offset + 1 ), this.location
 		);
+		deleteSelection.normalize();
 		this.selection = new es.Selection();
-		this.location = deleteSelection.from;
+		this.location = deleteSelection.start;
 		this.deleteContent( deleteSelection );
-		this.location.offset--;
 	}
 };
 
