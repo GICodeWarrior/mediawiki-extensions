@@ -2467,6 +2467,7 @@ $messages['it'] = array(
 	'articlefeedback-survey-submit' => 'Invia',
 	'articlefeedback-survey-title' => 'Per favore, rispondi ad alcune domande',
 	'articlefeedback-survey-thanks' => 'Grazie per aver compilato il questionario.',
+	'articlefeedback-survey-disclaimer' => 'Per migliorare questa funzionalità, il tuo feedback potrebbe essere condiviso in forma anonima con la comunità di Wikipedia.',
 	'articlefeedback-error' => 'Si è verificato un errore. 
 Riprova più tardi.',
 	'articlefeedback-form-switch-label' => 'Valuta questa pagina',
@@ -5014,7 +5015,7 @@ $3
  * @author WikiPhoenix
  */
 $messages['sv'] = array(
-	'articlefeedback' => 'Artikelbedömning',
+	'articlefeedback' => 'Instrumentpanel för artikelbedömning',
 	'articlefeedback-desc' => 'Artikelbedömning (pilotversion)',
 	'articlefeedback-survey-question-origin' => 'Vilken sida var du på när du startade denna undersökning?',
 	'articlefeedback-survey-question-whyrated' => 'Låt oss gärna veta varför du bedömt denna sida i dag (markera alla som gäller):',
@@ -5034,6 +5035,7 @@ $messages['sv'] = array(
 	'articlefeedback-form-switch-label' => 'Betygsätt sidan',
 	'articlefeedback-form-panel-title' => 'Betygsätt sidan',
 	'articlefeedback-form-panel-explanation' => 'Vad är detta?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:Artikelfeedback',
 	'articlefeedback-form-panel-clear' => 'Ta bort detta betyg',
 	'articlefeedback-form-panel-expertise' => 'Jag är mycket kunniga om detta ämne (frivilligt)',
 	'articlefeedback-form-panel-expertise-studies' => 'Jag har en relevant högskole-/universitetsexamen',
@@ -5055,10 +5057,20 @@ $messages['sv'] = array(
 	'articlefeedback-report-ratings' => '$1 betyg',
 	'articlefeedback-field-trustworthy-label' => 'Trovärdig',
 	'articlefeedback-field-trustworthy-tip' => 'Känner du att denna sida har tillräckliga citat och att dessa citat kommer från pålitliga källor?',
+	'articlefeedback-field-trustworthy-tooltip-1' => 'Saknar ansedda källor',
+	'articlefeedback-field-trustworthy-tooltip-2' => 'Få ansedda källor',
+	'articlefeedback-field-trustworthy-tooltip-4' => 'Bra ansedda källor',
+	'articlefeedback-field-trustworthy-tooltip-5' => 'Fantastiskt ansedda källor',
 	'articlefeedback-field-complete-label' => 'Heltäckande',
 	'articlefeedback-field-complete-tip' => 'Känner du att den här sidan täcker de väsentliga ämnesområden som det ska?',
+	'articlefeedback-field-complete-tooltip-3' => 'Innehåller nyckelinformation, men har luckor',
+	'articlefeedback-field-complete-tooltip-4' => 'Innehåller mest nyckelinformation',
 	'articlefeedback-field-objective-label' => 'Objektiv',
 	'articlefeedback-field-objective-tip' => 'Känner du att den här sidan visar en rättvis representation av alla perspektiv på frågan?',
+	'articlefeedback-field-objective-tooltip-1' => 'Starkt ensidig',
+	'articlefeedback-field-objective-tooltip-2' => 'Måttlig ensidig',
+	'articlefeedback-field-objective-tooltip-3' => 'Minimalt ensidig',
+	'articlefeedback-field-objective-tooltip-5' => 'Helt ensidig',
 	'articlefeedback-field-wellwritten-label' => 'Välskrivet',
 	'articlefeedback-field-wellwritten-tip' => 'Tycker du att den här sidan är väl organiserad och välskriven?',
 	'articlefeedback-field-wellwritten-tooltip-1' => 'Obegripligt',
@@ -5082,6 +5094,29 @@ Försök igen senare.',
 	'articleFeedback-table-caption-recentlows' => 'Senaste dalar',
 	'articleFeedback-table-heading-page' => 'Sida',
 	'articleFeedback-table-heading-average' => 'Genomsnittlig',
+	'articleFeedback-copy-above-highlow-tables' => 'Detta är en experimentell funktion. Lämna feedback på [$1 diskussionssidan].',
+	'articlefeedback-emailcapture-response-body' => 'Hej!
+
+Tack för att ha uttryckt intresse av att hjälpa till att förbättra {{SITENAME}}.
+
+Var god ta en stund att bekräfta din e-post genom att klicka på länken nedan:
+
+$1
+
+Du kan också besöka:
+
+$2
+
+Och ange följande bekräftelsekod:
+
+$3
+
+Vi kommer att kontakta dig inom kort med hur du kan förbättra {{SITENAME}}.
+
+Om du inte påbörjade denna begäran, ignorera detta e-postmeddelande och vi kommer inte skicka någonting annat.
+
+Tack och lycka till!
+{{SITENAME}}-teamet',
 );
 
 /** Tamil (தமிழ்)
