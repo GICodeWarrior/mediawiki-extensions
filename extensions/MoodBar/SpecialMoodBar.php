@@ -1,6 +1,23 @@
 <?php
 
-class SpecialMoodBar extends SpecialPage {	
+class SpecialMoodBar extends SpecialPage {
+	static $fields = array(
+			'mbf_id' => 'id',
+			'mbf_timestamp' => 'timestamp',
+			'mbf_type' => 'type',
+			'mbf_namespace' => 'namespace',
+			'mbf_title' => 'page',
+			'user-type' => 'usertype',
+			'mbs_user_id' => 'user',
+			'mbf_user_editcount' => 'user-editcount',
+			'mbf_editing' => 'editmode',
+			'mbf_bucket' => 'bucket',
+			'mbf_system_type' => 'system',
+			'mbf_locale' => 'locale',
+			'mbf_user_agent' => 'useragent',
+			'mbf_comment' => 'comment',
+		);
+		
 	function __construct() {
 		parent::__construct( 'MoodBar', 'moodbar-view' );
 	}
@@ -16,98 +33,88 @@ class SpecialMoodBar extends SpecialPage {
 		$wgOut->setPageTitle( wfMsg( 'moodbar-admin-title' ) );
 		$wgOut->addWikiMsg( 'moodbar-admin-intro' );
 		
-		$sk = $wgUser->getSkin();
-		$downloadTitle = $this->getTitle('csv');
-		$downloadText = wfMsgExt( 'moodbar-admin-download', 'parseinline' );
-		$downloadLink = $sk->link( $downloadTitle, $downloadText );
-		$wgOut->addHTML( $downloadLink );
+		$pager = new MoodBarPager();
 		
-		$dbr = wfGetDB( DB_SLAVE );
-		
-		$res = $dbr->select( 'moodbar_feedback', '*', 1, __METHOD__,
-			array( 'order by' => 'mb_timestamp desc' ) );
-		
-		if ( $par == 'csv' ) {
-			$this->csvOutput( $res );
+		if ( $pager->getNumRows() > 0 ) {
+			$wgOut->addHTML(
+				$pager->getNavigationBar() .
+				$pager->getBody() .
+				$pager->getNavigationBar()
+			);
 		} else {
-			$this->tableOutput( $res );
+			$wgOut->addWikiMsg( 'moodbar-admin-empty' );
 		}
 	}
-	
-	function tableOutput( $res ) {
-		global $wgOut;
-		$html = $this->tableHeader();
-		$rows = '';
+}
+
+class MoodBarPager extends TablePager {
+	function getFieldNames() {
+		static $headers = null;
 		
-		foreach( $res as $row ) {
-			$rows .= $this->showEntry( $row );
-		}
-		
-		$html .= Xml::tags( 'tbody', null, $rows );
-		
-		$html = Xml::tags( 'table', array( 'class' => 'wikitable' ), $html );
-		
-		$wgOut->addHTML( $html );
-	}
-	
-	function csvOutput( $res ) {
-		global $wgOut, $wgRequest;
-		
-		$ts = wfTimestampNow();
-		$filename = "moodbar_feedback_$ts.csv";
-		$wgOut->disable();
-		wfResetOutputBuffers();
-		$wgRequest->response()->header( "Content-disposition: attachment;filename={$filename}" );
-		$wgRequest->response()->header( "Content-type: text/csv; charset=utf-8" );
-		$fh = fopen( 'php://output', 'w' );
-		
-		$this->csvHeader( $fh );
-		
-		foreach( $res as $row ) {
-			$data = MBFeedbackItem::load( $row );
-			$outData = array();
-			
-			foreach( $this->fields as $field ) {
-				$outData[] = MoodBarFormatter::getInternalRepresentation( $data, $field );
+		if ( is_null( $headers ) ) {
+			$headers = array();
+			foreach( SpecialMoodBar::$fields as $field => $property ) {
+				$headers[$field] = wfMessage("moodbar-header-$property")->text();
 			}
-			
-			fputcsv( $fh, $outData );
 		}
 		
-		fclose( $fh );
+		return $headers;
 	}
 	
-	function csvHeader( $fh ) {
-		fputcsv( $fh, $this->fields );
-	}
-	
-	function tableHeader( ) {
-		$html = "<thead>";
-		$row = '';
-		foreach( $this->fields as $field ) {
-			$msg = wfMsgExt( 'moodbar-header-'.$field, 'parseinline' );
-			$row .= Xml::tags( 'th', null, $msg );
-		}
+	// Overridden from TablePager, it's just easier because
+	// we're doing things with a proper object model
+	function formatRow( $row ) {
+		$item = MBFeedbackItem::load( $row );
 		
-		$html .= Xml::tags( 'tr', null, $row ) . '</thead>';
-		
-		return $html;
-	}
-	
-	function showEntry( $row ) {
 		$out = '';
 		
 		$data = MBFeedbackItem::load( $row );
 		$outData = null;
 		
-		foreach( $this->fields as $field ) {
+		foreach( SpecialMoodBar::$fields as $field ) {
 			$outData = MoodBarFormatter::getHTMLRepresentation( $data, $field );
 			$out .= Xml::tags( 'td', null, $outData );
 		}
 		
-		$out = Xml::tags( 'tr', null, $out );
-		
+		$out = Xml::tags( 'tr', $this->getRowAttrs($row), $out ) . "\n";
 		return $out;
 	}
+	
+	function formatValue( $name, $value ) {
+		return '';
+	}
+	
+	function getQueryInfo() {
+		$info = array(
+			'tables' => array('moodbar_feedback', 'user'),
+			'fields' => '*',
+			'join_conds' => array(
+				'user' => array(
+					'left join',
+					'user_id=mbf_user_id',
+				),
+			),
+		);
+		
+		return $info;
+	}
+	
+	function getDefaultSort() {
+		return 'mbf_id';
+	}
+	
+	function isFieldSortable( $name ) {
+		$sortable = array(
+			'mbf_id',
+			'mbf_type',
+			'mbf_user_id',
+			'mbf_namespace',
+		);
+		
+		return in_array( $name, $sortable );
+	}
+	
+	function getTitle() {
+		return SpecialPage::getTitleFor( 'MoodBar' );
+	}
 }
-
