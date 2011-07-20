@@ -197,3 +197,8 @@ MWTreeRenderer.prototype.treeToHtml = function(tree, callback, inspectorMap) {
 		callback(null); // hmmmm
 	}
 };
+
+
+if (typeof module == "object") {
+	module.exports.MWTreeRenderer = MWTreeRenderer;
+}
