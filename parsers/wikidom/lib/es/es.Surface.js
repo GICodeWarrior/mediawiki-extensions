@@ -268,7 +268,7 @@ es.Surface.prototype.onMouseDown = function( e ) {
 				surface.mouse.clicks = 0;
 			}, this.mouse.clickDelay );
 		} else {
-			// New lonew es.Locationt over
+			// New location, start over
 			this.mouse.clicks = 1;
 			this.mouse.clickX = e.pageX;
 			this.mouse.clickY = e.pageY;
