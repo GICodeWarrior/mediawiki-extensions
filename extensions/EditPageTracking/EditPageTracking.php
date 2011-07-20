@@ -46,16 +46,17 @@ abstract class EditPageTracking {
 			return true;
 		}
 		
-		if ( EditPageTracking::getFirstEditPage( $wgUser ) ) {
-			// Already stored.
-			return true;
-		}
 		global $wgEditPageTrackingRegistrationCutoff;
 		
 		if ( $wgEditPageTrackingRegistrationCutoff &&
 			$wgUser->getRegistration() < $wgEditPageTrackingRegistrationCutoff )
 		{
 			// User registered before the cutoff
+			return true;
+		}
+		
+		if ( EditPageTracking::getFirstEditPage( $wgUser ) ) {
+			// Already stored.
 			return true;
 		}
 		
