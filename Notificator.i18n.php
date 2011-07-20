@@ -169,6 +169,30 @@ $messages['es'] = array(
 	'notificator-notified-already' => '$1 ha sido notificado sobre esta página o cambio de página antes.',
 );
 
+/** French (Français)
+ * @author Crochet.david
+ */
+$messages['fr'] = array(
+	'notificator' => 'Notificator',
+	'notificator-desc' => 'Notifie quelqu’un par courriel sur les modifications apportées à une page quand un bouton sur cette page est cliqué.',
+	'notificator-db-table-does-not-exist' => 'Table de la base de données « notificator » n’existe pas. Le script de maintenance update.php doit être exécuté avant que l’extension Notificator soit utilisable.',
+	'notificator-e-mail-address' => 'adresse électronique',
+	'notificator-notify' => 'Notifier',
+	'notificator-notify-address-or-name' => 'Notifier $1',
+	'notificator-return-to' => 'Revenir à',
+	'notificator-special-page-accessed-directly' => 'Cette page spéciale n’est pas directement accessibles. Il est destiné à être utilisé par un bouton Notificator.',
+	'notificator-e-mail-address-invalid' => 'L’adresse de courriel fournie n’est pas valide.',
+	'notificator-notification-not-sent' => 'La notification n’est pas envoyée.',
+	'notificator-change-tag' => 'modifications',
+	'notificator-new-tag' => 'nouveau',
+	'notificator-notification-text-changes' => '$1 veut vous informer sur les changements suivants à $2 :',
+	'notificator-notification-text-new' => '$1 veut pour vous informer de $2.',
+	'notificator-following-e-mail-sent-to' => 'Le courriel suivant a été envoyé à $1 :',
+	'notificator-subject' => 'Objet :',
+	'notificator-error-sending-e-mail' => 'Il y avait une erreur lors de l’envoi de la notification par courriel à $1 .',
+	'notificator-error-parameter-missing' => 'Erreur : Paramètre manquant.',
+);
+
 /** Franco-Provençal (Arpetan)
  * @author ChrisPtDe
  */
