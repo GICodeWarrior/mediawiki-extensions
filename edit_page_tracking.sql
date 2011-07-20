@@ -3,9 +3,9 @@
 CREATE TABLE /*_*/edit_page_tracking (
 	-- User ID
 	ept_user bigint unsigned not null,
-	-- Timestamp when the edit form was first viewed
+	-- Timestamp when the edit form was viewed
 	ept_timestamp varbinary(14) not null,
-	-- Page that the edit form was first viewed for
+	-- Page that the edit form was viewed for
 	-- Not used at the moment, but useful for statistics
 	ept_namespace int not null,
 	ept_title varbinary(255) not null
