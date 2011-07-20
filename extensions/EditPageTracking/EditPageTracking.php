@@ -39,14 +39,12 @@ abstract class EditPageTracking {
 	 * Monitors edit page usage
 	 */
 	public static function onEditForm( EditPage $editPage ) {
-		global $wgUser;
+		global $wgUser, $wgEditPageTrackingRegistrationCutoff;
 		
 		// Anonymous users
 		if ( $wgUser->isAnon() ) {
 			return true;
 		}
-		
-		global $wgEditPageTrackingRegistrationCutoff;
 		
 		if ( $wgEditPageTrackingRegistrationCutoff &&
 			$wgUser->getRegistration() < $wgEditPageTrackingRegistrationCutoff )
@@ -87,6 +85,8 @@ abstract class EditPageTracking {
 	 * false for an anonymous user, null for a user who has never opened an edit page.
 	 */
 	public static function getFirstEditPage( $user ) {
+		global $wgMemc;
+		
 		if ( isset($user->mFirstEditPage) ) {
 			return $user->mFirstEditPage;
 		}
@@ -95,7 +95,6 @@ abstract class EditPageTracking {
 			return false;
 		}
 		
-		global $wgMemc;
 		$cacheKey = wfMemcKey( 'first-edit-page', $user->getId() );
 		$cacheVal = $wgMemc->get($cacheKey);
 		
