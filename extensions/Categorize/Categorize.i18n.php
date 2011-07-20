@@ -46,9 +46,11 @@ $messages['de'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Thomas Fauré
  */
 $messages['fr'] = array(
+	'categorize-desc' => 'Ajoute une zone de saisie à la page d’édition et de téléversement permettant aux utilisateurs d’assigner des catégories à la page',
 	'categorize-title' => 'Qualification des savoirs',
 	'categorize-footer' => 'Si vous souhaitez ajouter un label, contactez ...',
 	'categorize-advice' => 'Cliquez sur les labels que vous souhaitez attribuer à cet article :',

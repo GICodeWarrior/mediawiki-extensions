@@ -330,6 +330,14 @@ $messages['id'] = array(
 	'contributionseditcount-desc' => 'Menampilkan jumlah suntingan di [[Special:Contributions|halaman kontribusi pengguna]]',
 );
 
+/** Interlingue (Interlingue)
+ * @author Renan
+ */
+$messages['ie'] = array(
+	'contributionseditcount' => 'Ti usator ha fat {{PLURAL:$1|un redaction|$1 redactiones}}.',
+	'contributionseditcount-desc' => 'Monstra un contator de redactiones in li [[Special:Contributions|págine de contributiones del usator]]',
+);
+
 /** Ido (Ido)
  * @author Wyvernoid
  */

@@ -115,6 +115,13 @@ $messages['id'] = array(
 	'geequbox-desc' => 'Menghasilkan efek lightbox (kotak cahaya) dengan menggunakan plugin lightbox jQuery',
 );
 
+/** Interlingue (Interlingue)
+ * @author Renan
+ */
+$messages['ie'] = array(
+	'geequbox-desc' => 'Producte efectes lightbox usant li plugin jQuery lightbox',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */

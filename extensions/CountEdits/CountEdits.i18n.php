@@ -722,6 +722,23 @@ Jangan menilai seorang kontributor berdasarkan jumlah suntingannya.",
 	'countedits-nocontribs' => 'Belum ada kontribusi untuk wiki ini.',
 );
 
+/** Interlingue (Interlingue)
+ * @author Renan
+ */
+$messages['ie'] = array(
+	'countedits' => 'Contar redactiones',
+	'countedits-desc' => '[[Special:CountEdits|Págine special]] que conta redactiones de usatores e provide un liste de deci principal contributores',
+	'countedits-warning' => "'''Advertimen:''' Ne juda un libre per tui covritura. 
+Ne juda contributores per lor redactiones contat.",
+	'countedits-username' => 'Nómine de usator:',
+	'countedits-ok' => 'OK',
+	'countedits-nosuchuser' => 'Vi nequant usator quam li nómine $1.',
+	'countedits-resultheader' => 'Resultates por $1',
+	'countedits-resulttext' => '$1 ha fat $2 {{PLURAL:$2|redaction|redactiones}}',
+	'countedits-mostactive' => 'Contributores max activ',
+	'countedits-nocontribs' => 'Ta hat esset nequant contribution por ti wiki.',
+);
+
 /** Igbo (Igbo)
  * @author Ukabia
  */
