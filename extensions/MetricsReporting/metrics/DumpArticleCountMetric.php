@@ -11,7 +11,7 @@ class DumpArticleCountMetric extends ApiAnalyticsBase {
 
 	protected function getQueryInfo() {
 		return array(
-			'table' => array( 'comscores' ),
+			'table' => array( 'comscore' ),
 			'conds' => array(),
 			'options' => array( 'GROUP BY' => 'date', ),
 			'join_conds' => array(),
