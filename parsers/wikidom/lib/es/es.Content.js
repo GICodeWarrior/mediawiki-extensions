@@ -560,15 +560,16 @@ Content.prototype.getWordBoundaries = function( offset ) {
 };
 
 Content.prototype.getLines = function() {
-	var lines = [],
-		line = null,
-		offset = 0,
-		left = '',
-		right = '',
-		leftPlain,
-		rightPlain,
-		j,k,i;
-
+	var lines = [];
+	var right = '';
+	var left = '';
+	var rightPlain;
+	var leftPlain;
+	var i;
+	var j;
+	var line;
+	var offset = 0;
+	
 	for ( i = 0; i < this.data.length; i++ ) {
 
 		if ( line == null ) {
@@ -577,23 +578,24 @@ Content.prototype.getLines = function() {
 				annotations : []
 			};
 		}
-
+		
 		right = this.data[i];
 		leftPlain = typeof left === 'string';
 		rightPlain = typeof right === 'string';
-
+		
 		if ( rightPlain && right == "\n" ) {
 			lines.push(line);
 			line = null;
 			offset = i + 1;
+			left = '';
 			continue;
 		}
 
-		for ( j = 1; j < left.length; j++ ) {
-			if ( rightPlain || this.indexOfAnnotation( i, left[j], true ) === -1 ) {
+		if ( !leftPlain ) {
+			for ( j = 1; j < left.length; j++ ) {
 				for ( k = line.annotations.length - 1; k >= 0; k-- ) {
-					if ( line.annotations[k].type === left[j].type ) {
-						if ( Content.compareObjects( line.annotations[k].data, left[j].data ) ) {
+					if ( left[j].type === line.annotations[k].type ) {
+						if ( Content.compareObjects( left[j].data, line.annotations[k].data ) ) {
 							line.annotations[k].range.end = i - offset;
 							break;
 						}
@@ -602,26 +604,24 @@ Content.prototype.getLines = function() {
 			}
 		}
 
-		for ( j = 1; j < right.length; j++ ) {
-			if ( leftPlain || this.indexOfAnnotation( i - 1, right[j], true ) === -1 ) {
-				var annotation = Content.copyObject( right[j] );
-				annotation.range = {
-					start : i - offset,
-					end : i + 1 - offset
-				};
-				line.annotations.push( annotation );
+		if ( !rightPlain ) {
+			for ( j = 1; j < right.length; j++ ) {
+				if ( leftPlain || this.indexOfAnnotation( i - 1, right[j], true ) === -1 ) {
+					var annotation = Content.copyObject( right[j] );
+					annotation.range = {
+						start : i - offset,
+						end : i + 1 - offset
+					};
+					line.annotations.push( annotation );
+				}
 			}
 		}
-
-		if ( rightPlain ) {
-			line.text += right;
-		} else {
-        	line.text += right[0];
-		}
+		
+		line.text += rightPlain ? right : right[0];
 
 		left = right;
 	}
-	
+
 	if ( line != null ) {
 		lines.push(line);
 	}
