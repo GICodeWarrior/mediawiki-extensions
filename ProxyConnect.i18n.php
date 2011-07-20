@@ -103,6 +103,13 @@ $messages['id'] = array(
 	'proxyconnect-desc' => 'Mengimplementasikan fungsi sisi server Poxy Connect',
 );
 
+/** Interlingue (Interlingue)
+ * @author Renan
+ */
+$messages['ie'] = array(
+	'proxyconnect-desc' => 'Execute li servitor de functionalitá látere de Conexion de Autorisation',
+);
+
 /** Italian (Italiano)
  * @author Beta16
  */
