@@ -217,7 +217,7 @@ es.TextFlow.prototype.scanBoundaries = function() {
 	}
 	// If the last character is not a boundary character, we need to append the final range to the
 	// "boundaries" and "words" arrays
-	if ( end < text.length ) {
+	if ( end < text.length || this.boundaries.length === 1 ) {
 		this.boundaries.push( text.length );
 	}
 };
