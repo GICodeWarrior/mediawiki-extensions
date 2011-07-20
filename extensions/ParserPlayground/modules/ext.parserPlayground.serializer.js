@@ -81,6 +81,9 @@ MWTreeSerializer.prototype.treeToSource = function(tree, callback) {
 					}
 				}
 			}
+			if ('ws' in tree) {
+				src += tree.ws;
+			}
 			if ('content' in tree) {
 				src += '>';
 				src += subParseArray(tree.content);
