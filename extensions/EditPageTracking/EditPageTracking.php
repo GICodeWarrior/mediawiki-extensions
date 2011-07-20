@@ -76,7 +76,6 @@ abstract class EditPageTracking {
 		$dbw->insert( 'edit_page_tracking', $row, __METHOD__ );
 		
 		$wgUser->mFirstEditPage = $timestamp;
-		$wgUser->saveToCache();
 		
 		return true;
 	}
