@@ -234,6 +234,13 @@ $messages['id'] = array(
 	'gnuplot-desc' => 'Menambahkan tag <code><nowiki><gnuplot></nowiki></code> untuk menggunakan Gnuplot',
 );
 
+/** Interlingue (Interlingue)
+ * @author Renan
+ */
+$messages['ie'] = array(
+	'gnuplot-desc' => 'Adjunter li puntale <code><nowiki><gnuplot></nowiki></code> por usar Gnuplot',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */
