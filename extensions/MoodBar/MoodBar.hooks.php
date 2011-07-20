@@ -105,6 +105,7 @@ class MoodBarHooks {
 			$buckets[] = 'moodbar-always';
 		}
 		
+		sort($buckets);
 		return $buckets;
 	}
 }
