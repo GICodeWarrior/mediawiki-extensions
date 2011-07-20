@@ -28,7 +28,7 @@
 				'editmode' : (wgAction == 'edit') ? 1 : 0,
 				'useragent' : clientData.name + '/' + clientData.versionBase,
 				'system' : clientData.platform,
-				'bucket' : params.bucket,
+				'bucket' : mw.config.get('mbConfig').userBuckets.join(';'),
 				'type' : params.type,
 				'token' : mw.user.tokens.get('editToken'),
 				'format' : 'json'
