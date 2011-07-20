@@ -245,6 +245,7 @@ es.Surface.prototype.handleDelete = function() {
 		this.location = this.selection.end;
 		this.selection = new es.Selection();
 		this.deleteContent( deleteSelection );
+		this.location.offset -= deleteSelection.to.offset - deleteSelection.from.offset;
 	} else if ( this.location.offset < this.location.block.getLength() - 1 ) {
 		var deleteSelection = new es.Selection(
 			new es.Location( this.location.block, this.location.offset + 1 ), this.location
@@ -267,7 +268,7 @@ es.Surface.prototype.onMouseDown = function( e ) {
 				surface.mouse.clicks = 0;
 			}, this.mouse.clickDelay );
 		} else {
-			// New location, start over
+			// New lonew es.Locationt over
 			this.mouse.clicks = 1;
 			this.mouse.clickX = e.pageX;
 			this.mouse.clickY = e.pageY;
@@ -288,8 +289,8 @@ es.Surface.prototype.onMouseDown = function( e ) {
 				// Select word offset is within
 				var boundaries = this.location.block.getWordBoundaries( this.location.offset );
 				this.selection = new es.Selection(
-					new Location( this.location.block, boundaries.start ),
-					new Location( this.location.block, boundaries.end )
+					new es.Location( this.location.block, boundaries.start ),
+					new es.Location( this.location.block, boundaries.end )
 				);
 				this.drawSelection();
 				break;
@@ -297,8 +298,8 @@ es.Surface.prototype.onMouseDown = function( e ) {
 				// Select section within block offset is within
 				var boundaries = this.location.block.getSectionBoundaries( this.location.offset );
 				this.selection = new es.Selection(
-					new Location( this.location.block, boundaries.start ),
-					new Location( this.location.block, boundaries.end )
+					new es.Location( this.location.block, boundaries.start ),
+					new es.Location( this.location.block, boundaries.end )
 				);
 				this.drawSelection();
 				break;
