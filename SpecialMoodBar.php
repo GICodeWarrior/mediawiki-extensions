@@ -5,7 +5,9 @@ class SpecialMoodBar extends SpecialPage {
 			'id',
 			'timestamp',
 			'type',
+			'namespace',
 			'page',
+			'own-talk',
 			'usertype',
 			'user',
 			'user-editcount',
@@ -84,31 +86,7 @@ class SpecialMoodBar extends SpecialPage {
 			$outData = array();
 			
 			foreach( $this->fields as $field ) {
-				switch( $field ) {
-					case 'usertype':
-						$user = $data->getProperty('user');
-						if ( $data->getProperty('anonymize') ) {
-							$outData[] = 'anonymized';
-						} else if ( $user->isAnon() ) {
-							$outData[] = 'ip';
-						} else {
-							$outData[] = 'user';
-						}
-						break;
-					case 'user':
-						$user = $data->getProperty('user');
-						if ( $data->getProperty('anonymize') ) {
-							$outData[] = '';
-						} else {
-							$outData[] = $user->getName();
-						}
-						break;
-					case 'page':
-						$outData[] = $data->getProperty('page')->getPrefixedText();
-						break;
-					default:
-						$outData[] = $data->getProperty($field);
-				}
+				$outData[] = $this->getInternalRepresentation( $data, $field );
 			}
 			
 			fputcsv( $fh, $outData );
@@ -141,47 +119,97 @@ class SpecialMoodBar extends SpecialPage {
 		$outData = null;
 		
 		foreach( $this->fields as $field ) {
-			switch( $field ) {
-				case 'usertype':
-					$user = $data->getProperty('user');
-					if ( $data->getProperty('anonymize') ) {
-						$outData = 'anonymized';
-					} else if ( $user->isAnon() ) {
-						$outData = 'ip';
-					} else {
-						$outData = 'user';
-					}
-					break;
-				case 'user':
-					$user = $data->getProperty('user');
-					if ( $data->getProperty('anonymize') ) {
-						$outData = '';
-					} else {
-						$outData = $user->getName();
-					}
-					break;
-				case 'page':
-					$title = $data->getProperty('page');
-					
-					global $wgUser;
-					$linker = $wgUser->getSkin();
-					$outData = $linker->link( $title );
-					break;
-				case 'timestamp':
-					global $wgLang;
-					$outData = $wgLang->timeanddate( $data->getProperty('timestamp') );
-					break;
-				default:
-					$outData = $data->getProperty($field);
-					break;
-			}
-			
+			$outData = $this->getHTMLRepresentation( $data, $field );
 			$out .= Xml::tags( 'td', null, $outData );
 		}
 		
 		$out = Xml::tags( 'tr', null, $out );
 		
 		return $out;
+	}
+	
+	/**
+	 * Gets the viewer's representation of $field from $data.
+	 * @param $data MBFeedbackItem to retrieve the data from.
+	 * @param $field String name of the field to fill. Valid values in $this->fields
+	 * @return String HTML for putting in the table.
+	 */
+	public function getHTMLRepresentation( $data, $field ) {
+		switch( $field ) {
+			case 'page':
+				$title = $data->getProperty('page');
+				
+				global $wgUser;
+				$linker = $wgUser->getSkin();
+				$outData = $linker->link( $title );
+				break;
+			case 'timestamp':
+				global $wgLang;
+				$outData = $wgLang->timeanddate( $data->getProperty('timestamp') );
+				$outData = htmlspecialchars($outData);
+				break;
+			case 'type':
+				$internal = $this->getInternalRepresentation( $data, $field );
+				$outData = wfMessage("moodbar-type-$internal")->parse();
+				break;
+			case 'usertype':
+				$internal = $this->getInternalRepresentation( $data, $field );
+				$outData = wfMessage("moodbar-user-$internal")->parse();
+				break;
+			default:
+				$outData = $this->getInternalRepresentation($data, $field);
+				$outData = htmlspecialchars( $outData );
+				break;
+		}
+		
+		return $outData;
+	}
+	
+	/**
+	 * Gets an internal representation of $field from $data.
+	 * @param $data MBFeedbackItem to retrieve the data from.
+	 * @param $field String name of the field to fill. Valid values in $this->fields
+	 * @return String value appropriate for putting in CSV
+	 */
+	public function getInternalRepresentation( $data, $field ) {
+		$outData = null;
+		switch( $field ) {
+			case 'namespace':
+				$page = $data->getProperty('page');
+				$outData = $page->getNsText();
+				break;
+			case 'own-talk':
+				$page = $data->getProperty('page');
+				$user = $data->getProperty('user');
+				$userTalk = $user->getUserPage()->getTalkPage();
+				$outData = $page->equals( $userTalk );
+				break;
+			case 'usertype':
+				$user = $data->getProperty('user');
+				if ( $data->getProperty('anonymize') ) {
+					$outData = 'anonymized';
+				} else if ( $user->isAnon() ) {
+					$outData = 'ip';
+				} else {
+					$outData = 'user';
+				}
+				break;
+			case 'user':
+				$user = $data->getProperty('user');
+				if ( $data->getProperty('anonymize') ) {
+					$outData = '';
+				} else {
+					$outData = $user->getName();
+				}
+				break;
+			case 'page':
+				$outData = $data->getProperty('page')->getPrefixedText();
+				break;
+			default:
+				$outData = $data->getProperty($field);
+		}
+		
+		return $outData;
 	}
 }
 

@@ -88,6 +88,11 @@ class ApiMoodBar extends ApiBase {
 			'useragent' => 'The User-Agent header of the browser',
 			'system' => 'The operating system being used',
 			'locale' => 'The locale in use',
+			'token' => 'An edit token',
 		);
+	}
+	
+	public function getDescription() {
+		return 'Allows users to submit feedback about their experiences on the site';
 	}
 }

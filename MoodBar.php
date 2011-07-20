@@ -85,3 +85,8 @@ $wgResourceModules['jquery.moodBar'] = $mbResourceTemplate + array(
 		'jquery.client',
 	),
 );
+
+
+/** Configuration **/
+/** The registration time after which users will be shown the MoodBar **/
+$wgMoodBarCutoffTime = null;
