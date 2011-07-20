@@ -309,6 +309,7 @@ $messages['fr'] = array(
 	'useroptionstats-desc' => '[[Special:UserOptionStats|Page spéciale]] pour afficher les utilisations des options utilisateurs sur MediaWiki',
 	'uos-warn' => 'PHPlot n’est pas installé !',
 	'uos-choose' => 'Choisissez l’une des options utilisateurs suivantes : $1',
+	'uos-choose-hidden' => 'Choisissez l’une des options suivantes d’utilisateur invisible: $1',
 	'uos-unknown' => '* Par défaut',
 	'uos-other' => '* Autres',
 	'uos-title' => 'Distribution des valeurs de l’option utilisateur $1',
