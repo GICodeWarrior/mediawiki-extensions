@@ -103,6 +103,8 @@ es.Document.prototype.removeBlock = function( block ) {
 	block.removeAllListeners( 'update' );
 	this.blocks.splice( block.getIndex(), 1 );
 	block.document = null;
+	block.$.detach();
+	this.emit( 'update' );
 };
 
 es.Document.prototype.renderBlocks = function( offset ) {
