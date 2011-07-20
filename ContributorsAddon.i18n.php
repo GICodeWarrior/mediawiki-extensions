@@ -232,6 +232,13 @@ $messages['id'] = array(
 	'contributorsaddon-desc' => 'Menambahkan pop-up JavaScript ke pranala "Kontributor utama"',
 );
 
+/** Interlingue (Interlingue)
+ * @author Renan
+ */
+$messages['ie'] = array(
+	'contributorsaddon-desc' => 'Addir popups de JavaScript por catenunes de "Principal contributores"',
+);
+
 /** Italian (Italiano)
  * @author Pietrodn
  */
