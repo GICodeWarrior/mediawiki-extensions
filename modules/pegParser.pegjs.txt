@@ -133,7 +133,7 @@ inline_text_run
   = c:[^\n]+ { return c.join(''); }
 
 extlink
-  = "[" target:url space text:extlink_text "]" {
+  = "[" target:url " " text:extlink_text "]" {
     return {
       type: 'extlink',
       target: target,
@@ -240,28 +240,34 @@ italic_text
 ref = ref_full / ref_empty
 
 ref_full
-  = params:ref_start ">" content:ref_content+ close:ref_end {
+  = start:ref_start ">" content:ref_content+ close:ref_end {
     return {
         type: 'ext',
         name: 'ref',
-        params: params,
+        params: start.params,
+		ws: start.ws,
         content: content,
         close: close
     }
 }
 
 ref_empty
-  = params:ref_start "/>" {
+  = start:ref_start close:(space* "/>") {
     return {
         type: 'ext',
         name: 'ref',
-        params: params
+		ws: start.ws,
+        params: start.params,
+		close: close
     }
 }
 
 ref_start
-  = "<ref" params:ext_param* space* {
-  return params;
+  = "<ref" params:ext_param* ws:space* {
+  return {
+	params: params,
+	ws: ws
+  };
 }
 
 ref_end
