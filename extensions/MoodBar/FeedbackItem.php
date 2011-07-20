@@ -131,14 +131,6 @@ class MBFeedbackItem {
 				throw new MWException( "Attempt to set invalid value for $key" );
 			}
 			
-			if ( $key == 'user' ) {
-				if ( $value->isAnon() ) {
-					$this->setProperty( 'user-editcount', 0 );
-				} else {
-					$this->setProperty( 'user-editcount', $value->getEditCount() );
-				}
-			}
-			
 			$this->data[$key] = $value;
 		}
 	}
@@ -201,6 +193,19 @@ class MBFeedbackItem {
 	
 		if ( $this->getProperty('id') != null ) {
 			throw new MWException( "This ".__CLASS__." is already in the database." );
+		}
+		
+		// Add edit count if necessary
+		if ( $this->getProperty('user-editcount') === null &&
+			$this->getProperty('user') )
+		{
+			$value = $this->getProperty('user');
+			
+			if ( $value->isAnon() ) {
+				$this->setProperty( 'user-editcount', 0 );
+			} else {
+				$this->setProperty( 'user-editcount', $value->getEditCount() );
+			}
 		}
 		
 		$dbw = wfGetDB( DB_MASTER );
