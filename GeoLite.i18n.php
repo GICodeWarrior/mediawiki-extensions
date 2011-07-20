@@ -210,6 +210,13 @@ $messages['id'] = array(
 	'geolite-desc' => 'Pengalihan GeoIP Ringan',
 );
 
+/** Interlingue (Interlingue)
+ * @author Renan
+ */
+$messages['ie'] = array(
+	'geolite-desc' => 'Redirectionment Lightweight GeoIp',
+);
+
 /** Igbo (Igbo)
  * @author Ukabia
  */
