@@ -47,6 +47,16 @@ $messages['en'] = array(
 	'moodbar-header-useragent' => 'User-Agent',
 	'moodbar-header-comment' => 'Comments',
 	'moodbar-header-user-editcount' => 'User edit count',
+	'moodbar-header-namespace' => 'Namespace',
+	'moodbar-header-own-talk' => 'Own talk page',
+	// Mood types
+	'moodbar-type-happy' => 'Happy',
+	'moodbar-type-sad' => 'Sad',
+	'moodbar-type-confused' => 'Confused',
+	// User types
+	'moodbar-user-anonymized' => 'Anonymized',
+	'moodbar-user-ip' => 'IP Address',
+	'moodbar-user-user' => 'Registered user',
 );
  
 /** Message documentation (Message documentation)

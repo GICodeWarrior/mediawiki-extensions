@@ -28,4 +28,3 @@ CREATE TABLE /*_*/moodbar_feedback (
 -- A little overboard with the indexes perhaps, but we want to be able to dice this data a lot!
 CREATE INDEX /*i*/type_timestamp ON /*_*/moodbar_feedback (mbf_type,mbf_timestamp);
 CREATE INDEX /*i*/title_type ON /*_*/moodbar_feedback (mbf_namespace,mbf_title,mbf_type,mbf_timestamp);
-
