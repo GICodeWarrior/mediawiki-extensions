@@ -15,6 +15,7 @@ $wgExtensionCredits['other'][] = array(
 
 // Object model
 $wgAutoloadClasses['MBFeedbackItem'] = dirname(__FILE__).'/FeedbackItem.php';
+$wgAutoloadClasses['MoodBarFormatter'] = dirname(__FILE__).'/Formatter.php';
 
 // API
 $wgAutoloadClasses['ApiMoodBar'] = dirname(__FILE__).'/ApiMoodBar.php';
