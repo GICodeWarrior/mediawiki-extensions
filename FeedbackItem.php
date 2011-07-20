@@ -106,7 +106,9 @@ class MBFeedbackItem {
 		
 		$properties['page'] = Title::makeTitleSafe( $row->mbf_namespace, $row->mbf_title );
 		
-		if ( $row->mbf_user_id > 0 ) {
+		if ( !empty($row->user_id) ) {
+			$properties['user'] = User::newFromRow( $row );
+		} elseif ( $row->mbf_user_id > 0 ) {
 			$properties['user'] = User::newFromId( $row->mbf_user_id );
 		} else {
 			$properties['user'] = User::newFromName( $row->mbf_user_ip );
