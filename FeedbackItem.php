@@ -191,7 +191,7 @@ class MBFeedbackItem {
 	 */
 	public function save() {
 	
-		if ( ! $this->getProperty('id') ) {
+		if ( $this->getProperty('id') ) {
 			throw new MWException( "This ".__CLASS__." is already in the database." );
 		}
 		
