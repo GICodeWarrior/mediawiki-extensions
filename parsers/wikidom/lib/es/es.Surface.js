@@ -578,7 +578,7 @@ es.Surface.prototype.insertContent = function( location, content ) {
 	if ( typeof location === 'undefined' ) {
 		location = this.location;
 	}
-	if ( !location.block || !location.offset ) {
+	if ( typeof location.block === 'undefined' || typeof location.offset === 'undefined' ) {
 		throw 'Invalid selection error. Properties for from and to locations expected.';
 	}
 	this.location.block.insertContent( location.offset, content );
