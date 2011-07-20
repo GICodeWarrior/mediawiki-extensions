@@ -246,7 +246,7 @@ es.Surface.prototype.handleDelete = function() {
 		this.location = this.selection.start;
 		this.selection = new es.Selection();
 		this.deleteContent( deleteSelection );
-	} else if ( this.location.offset < this.location.block.getLength() - 1 ) {
+	} else if ( this.location.offset < this.location.block.getLength() ) {
 		var deleteSelection = new es.Selection(
 			new es.Location( this.location.block, this.location.offset + 1 ), this.location
 		);
