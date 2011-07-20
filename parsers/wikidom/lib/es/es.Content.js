@@ -560,16 +560,15 @@ Content.prototype.getWordBoundaries = function( offset ) {
 };
 
 Content.prototype.getLines = function() {
-	var lines = [];
-	var right = '';
-	var left = '';
-	var rightPlain;
-	var leftPlain;
-	var i;
-	var j;
-	var line;
-	var offset = 0;
-	
+	var lines = [],
+		right = '',
+		rightPlain,
+		left = '',
+		leftPlain,
+		line,
+		offset = 0,
+		i, j, k;
+
 	for ( i = 0; i < this.data.length; i++ ) {
 
 		if ( line == null ) {
