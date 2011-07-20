@@ -108,8 +108,24 @@ Block.prototype.annotateContent = function( method, annotation, start, end ) {
 	throw 'Block.annotateContent not implemented in this subclass.';
 };
 
+/**
+ * Gets the start and end points of the word closest a given offset.
+ * 
+ * @param offset {Integer} Offset to find word nearest to
+ * @return {Object} Range object of boundaries
+ */
 Block.prototype.getWordBoundaries = function( offset ) {
 	throw 'Block.getWordBoundaries not implemented in this subclass.';
+};
+
+/**
+ * Gets the start and end points of the section closest a given offset.
+ * 
+ * @param offset {Integer} Offset to find section nearest to
+ * @return {Object} Range object of boundaries
+ */
+Block.prototype.getSectionBoundaries = function( offset ) {
+	throw 'Block.getSectionBoundaries not implemented in this subclass.';
 };
 
 extend( Block, EventEmitter );

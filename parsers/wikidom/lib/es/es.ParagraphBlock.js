@@ -87,8 +87,26 @@ ParagraphBlock.prototype.annotateContent = function( method, annotation, start, 
 	this.content.annotate( method, annotation, start, end );
 };
 
+/**
+ * Gets the start and end points of the word closest a given offset.
+ * 
+ * @param offset {Integer} Offset to find word nearest to
+ * @return {Object} Range object of boundaries
+ */
 Block.prototype.getWordBoundaries = function( offset ) {
 	return this.content.getWordBoundaries( offset );
+};
+
+/**
+ * Gets the start and end points of the section closest a given offset.
+ * 
+ * For a paragraph, there's only one section.
+ * 
+ * @param offset {Integer} Offset to find section nearest to
+ * @return {Object} Range object of boundaries
+ */
+Block.prototype.getSectionBoundaries = function( offset ) {
+	return new Range( 0, this.content.getLength() );
 };
 
 extend( ParagraphBlock, Block );

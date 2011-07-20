@@ -15,7 +15,7 @@ function Surface( $container, doc ) {
 	this.mouse = {
 		'selecting': false,
 		'clicks': 0,
-		'clickDelay': 200,
+		'clickDelay': 500,
 		'clickTimeout': null,
 		'clickX': null,
 		'clickY': null
@@ -285,18 +285,19 @@ Surface.prototype.onMouseDown = function( e ) {
 				break;
 			case 2:
 				// Select word offset is within
-				var wordBoundaries = this.location.block.getWordBoundaries( this.location.offset );
+				var boundaries = this.location.block.getWordBoundaries( this.location.offset );
 				this.selection = new Selection(
-					new Location( this.location.block, wordBoundaries.start ),
-					new Location( this.location.block, wordBoundaries.end )
+					new Location( this.location.block, boundaries.start ),
+					new Location( this.location.block, boundaries.end )
 				);
 				this.drawSelection();
 				break;
 			case 3:
-				// Select block offset is within
+				// Select section within block offset is within
+				var boundaries = this.location.block.getSectionBoundaries( this.location.offset );
 				this.selection = new Selection(
-					new Location( this.location.block, 0 ),
-					new Location( this.location.block, this.location.block.getLength() )
+					new Location( this.location.block, boundaries.start ),
+					new Location( this.location.block, boundaries.end )
 				);
 				this.drawSelection();
 				break;

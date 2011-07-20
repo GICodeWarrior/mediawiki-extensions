@@ -31,6 +31,18 @@ function extend( dst, src ) {
 }
 
 /**
+ * Range of content.
+ * 
+ * @param start {Integer} Starting point
+ * @param end {Integer} Ending point
+ * @returns {Range}
+ */
+function Range( start, end ) {
+	this.start = start || null;
+	this.end = end || null;
+}
+
+/**
  * Pixel position, a 2D position within a rendered document.
  * 
  * This can also support an optional bottom field, to represent a vertical line, such as a cursor.

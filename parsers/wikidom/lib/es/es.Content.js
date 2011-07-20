@@ -531,6 +531,12 @@ Content.prototype.render = function( start, end ) {
 	return out;
 };
 
+/**
+ * Gets the start and end points of the word closest a given offset.
+ * 
+ * @param offset {Integer} Offset to find word nearest to
+ * @return {Object} Range object of boundaries
+ */
 Content.prototype.getWordBoundaries = function( offset ) {
 	if ( offset < 0 || offset > this.data.length ) {
 		throw 'Out of bounds error. Offset expected to be >= 0 and <= to ' + this.data.length;
@@ -553,10 +559,7 @@ Content.prototype.getWordBoundaries = function( offset ) {
 		}
 		end++;
 	}
-	return {
-		'start': start,
-		'end': end
-	};
+	return new Range( start, end );
 };
 
 Content.prototype.getLines = function() {
