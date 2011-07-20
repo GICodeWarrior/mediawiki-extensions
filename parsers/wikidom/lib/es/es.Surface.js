@@ -245,13 +245,14 @@ es.Surface.prototype.handleDelete = function() {
 		this.location = this.selection.end;
 		this.selection = new es.Selection();
 		this.deleteContent( deleteSelection );
-	} else if ( this.location.offset < block.getLength() - 1 ) {
+	} else if ( this.location.offset < this.location.block.getLength() - 1 ) {
 		var deleteSelection = new es.Selection(
 			new es.Location( this.location.block, this.location.offset + 1 ), this.location
 		);
 		this.selection = new es.Selection();
 		this.location = deleteSelection.from;
 		this.deleteContent( deleteSelection );
+		this.location.offset--;
 	}
 };
 
