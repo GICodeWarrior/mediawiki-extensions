@@ -27,7 +27,7 @@
 							<span class="mw-moodBar-overlayWhatTrigger"></span>\
 							<span class="mw-moodBar-overlayWhatLabel"><html:msg key="moodbar-what-label" /></span>\
 						</a>\
-						<div class="mw-moodBar-overlayWhatContent"><html:msg key="moodbar-what-content" /></div>\
+						<div class="mw-moodBar-overlayWhatContent"></div>\
 					</span>\
 				</div>',
 			type: '\
@@ -95,7 +95,7 @@
 									.get( 0 )
 							);				
 						} );
-						return elems;ß
+						return elems;
 					} )
 					.hover( function() {
 						$( this ).addClass( 'mw-moodBar-types-hover' );
@@ -123,6 +123,26 @@
 									}
 								} )
 					} )
+					.end()
+				.find( '.mw-moodBar-overlayWhatContent' )
+					.html(
+						function() {
+							var message, linkMessage, link;
+							
+							message = mw.message('moodbar-what-content');
+							linkMessage = mw.msg('moodbar-what-link');
+							link = mw.html.element('a',
+								{
+									'href' : mb.conf.infoUrl,
+									'title' : linkMessage
+								}, linkMessage );
+							
+							message = message.escaped();
+							message = message.replace( /\$1/, link );
+							
+							return message;
+						}
+					)
 					.end()
 				// Submit
 				.find( '.mw-moodBar-formSubmit' )
