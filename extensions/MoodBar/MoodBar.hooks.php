@@ -53,6 +53,17 @@ class MoodBarHooks {
 		$vars['mbConfig'] = array(
 			'validTypes' => MBFeedbackItem::getValidTypes(),
 			'userBuckets' => MoodBarHooks::getUserBuckets( $wgUser ),
+			'bucketConfig' =>
+				array(
+					'buckets' =>
+						array(
+							'feedback' => 80,
+							'using' => 10,
+							'share' => 10,
+						),
+					'version' => 1,
+					'expires' => 30,
+				),
 		);
 		return true;
 	}
