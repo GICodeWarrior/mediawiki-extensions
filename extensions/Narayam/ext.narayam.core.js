@@ -138,6 +138,20 @@ $.narayam = new ( function() {
 	}
 	
 	/**
+	 * Change visual appearance of element (text input, textarea) according
+	 * current state of Narayam
+	 */
+	function changeVisual( $element ) {
+		// It is simple in working
+		// If Narayam is active add narayam class otherwise remove narayam class
+		if ( enabled ) {
+			$element.addClass( 'narayam-input' );
+		} else {
+			$element.removeClass( 'narayam-input' );
+		}
+	}
+	
+	/**
 	 * Keydown event handler. Handles shortcut key presses
 	 * @param e Event object
 	 */
@@ -148,6 +162,7 @@ $.narayam = new ( function() {
 			return false; // Not in original code -- does this belong here?
 		} else if ( isShortcutKey( e ) ) {
 			that.toggle();
+			changeVisual( $( this ) );
 			e.stopPropagation();
 			return false;
 		}
@@ -224,6 +239,23 @@ $.narayam = new ( function() {
 	}
 	
 	/**
+	 * Focus event handler.
+	 * @param e Event object
+	 */
+	function onfocus( e ) {
+		$( this ).data( 'narayamKeyBuffer', '' );
+		changeVisual( $( this ) );
+	}
+	
+	/**
+	 * Blur event handler.
+	 * @param e Event object
+	 */
+	function onblur( e ) {
+		$( this ).removeClass( 'narayam-input' );
+	}
+	
+	/**
 	 * Change handler for the scheme dropdown. Updates the current scheme
 	 * based on the new selection in the dropdown.
 	 */
@@ -240,14 +272,23 @@ $.narayam = new ( function() {
 	 *               or an array of DOM elements, or a single DOM element, or a selector
 	 */
 	this.addInputs = function( inputs ) {
-		var $newInputs = $( inputs );
-		$inputs = $inputs.add( $newInputs );
-		$newInputs
-			.bind( 'keydown.narayam', onkeydown )
-			.bind( 'keypress.narayam', onkeypress )
-			.data( 'narayamKeyBuffer', '' );
-		if ( enabled ) {
-			$newInputs.addClass( 'narayam-input' );
+		if (typeof( inputs ) == "string" ) {
+			// If a string is passed, it is CSS selector
+			// We can use jQuery's .live() instead of .bind()
+			// So Narayam can work on elements added later to DOM too
+			$( inputs )
+				.live('keydown', onkeydown)
+				.live('keypress', onkeypress)
+				.live('focus', onfocus)
+				.live('blur', onblur);
+		} else {
+			var $newInputs = $( inputs );
+			$inputs = $inputs.add( $newInputs );
+			$newInputs
+				.bind( 'keydown.narayam', onkeydown )
+				.bind( 'keypress.narayam', onkeypress )
+				.bind( 'focus', onfocus)
+				.bind( 'blur', onblur);
 		}
 	};
 	
@@ -256,7 +297,6 @@ $.narayam = new ( function() {
 	 */
 	this.enable = function() {
 		if ( !enabled && currentScheme !== null ) {
-			$inputs.addClass( 'narayam-input' );
 			$.cookie( 'narayam-enabled', '1', { 'path': '/', 'expires': 30 } );
 			$( '#narayam-toggle' ).attr( 'checked', true );
 			enabled = true;
@@ -268,7 +308,6 @@ $.narayam = new ( function() {
 	 */
 	this.disable = function() {
 		if ( enabled ) {
-			$inputs.removeClass( 'narayam-input' );
 			$.cookie( 'narayam-enabled', '0', { 'path': '/', 'expires': 30 } );
 			$( '#narayam-toggle' ).attr( 'checked', false );
 			enabled = false;
