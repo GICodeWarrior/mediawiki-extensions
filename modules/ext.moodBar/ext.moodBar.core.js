@@ -12,7 +12,7 @@
 			overlay: '\
 				<div id="mw-moodBar-overlay">\
 					<span class="mw-moodBar-overlayClose"><a href="#"><html:msg key="moodbar-close" /></a></span>\
-					<div class="mw-moodBar-overlayTitle"><html:msg key="moodbar-intro-' + mb.conf.bucketKey + '" /></div>\
+					<div class="mw-moodBar-overlayTitle"><html:msg key="moodbar-intro-using" /></div>\
 					<div class="mw-moodBar-types"></div>\
 					<span class="mw-moodBar-overlayWhat"><a title-msg="tooltip-moodbar-what"><html:msg key="moodbar-what-label" /></a></span>\
 				</div>',
@@ -41,7 +41,7 @@
 
 		core: function() {
 			var msgOptions = { params: {} };
-			msgOptions.params['moodbar-intro-' + mb.conf.bucketKey] = [mw.config.get( 'wgSiteName' )];
+			msgOptions.params['moodbar-intro-using'] = [mw.config.get( 'wgSiteName' )];
 
 			// Create overlay
 			mb.ui.overlay = $( mb.tpl.overlay )
