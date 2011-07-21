@@ -492,6 +492,16 @@ $messages['id'] = array(
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|pranala|pranala}} ke $3',
 );
 
+/** Interlingue (Interlingue)
+ * @author Renan
+ */
+$messages['ie'] = array(
+	'crossnamespacelinks' => 'Catenunes de spacie de nómine obliqui',
+	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Liste catenunes de spacie de nómine]] que posse ne existir in {{SITENAME}}',
+	'crossnamespacelinks-summary' => 'Ti págine provide un liste de catenunes de un págine in li spacie de nómine principal por un págine in altri spacies de nómine (except por spacies de nómine {{ns:special}}, {{ns:talk}}, {{ns:project}}, e {{ns:template}}), quel ne es informat por usu.',
+	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|catenun|catenunes}} por $3',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
