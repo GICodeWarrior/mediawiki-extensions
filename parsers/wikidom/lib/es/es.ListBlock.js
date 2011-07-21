@@ -1,3 +1,6 @@
+/**
+ * es.ListBlockList
+ */
 es.ListBlockList = function( style, items ) {
 	// Convert items to es.ListBlockItem objects
 	var listItems = [];
@@ -58,6 +61,9 @@ es.ListBlockList.prototype.renderContent = function( offset ) {
 
 es.extend( es.ListBlockList, es.Container );
 
+/**
+ * es.ListBlockItem
+ */
 es.ListBlockItem = function( line, lists ) {
 	// Convert items to es.ListBlockItem objects
 	var itemLists = [];
@@ -84,6 +90,16 @@ es.ListBlockItem = function( line, lists ) {
 	} );
 }
 
+es.ListBlockItem.prototype.getLength = function() {
+	var length = this.content.getLength();
+	for ( var i = 0; i < this.lists.length; i++ ) {
+		length += this.lists[i].getLength();
+	}
+	return length;
+};
+
+
+
 es.ListBlockList.prototype.getLocation = function( offset ) {
 	if ( offset < this.content.length ) {
 		return {
@@ -102,14 +118,6 @@ es.ListBlockList.prototype.getLocation = function( offset ) {
 	}
 };
 
-es.ListBlockList.prototype.getLength = function() {
-	var length = this.content.getLength();
-	for ( var i = 0; i < this.lists.length; i++ ) {
-		length += this.lists[i].getLength();
-	}
-	return length;
-};
-
 es.ListBlockItem.prototype.renderContent = function( offset ) {
 	// TODO: Abstract offset and use it when rendering
 	this.flow.render();
@@ -120,6 +128,9 @@ es.ListBlockItem.prototype.renderContent = function( offset ) {
 
 es.extend( es.ListBlockItem, es.Container );
 
+/**
+ * es.ListBlock
+ */
 es.ListBlock = function( style, items ) {
 	es.Block.call( this );
 	this.list = new es.ListBlockList( style, items );
