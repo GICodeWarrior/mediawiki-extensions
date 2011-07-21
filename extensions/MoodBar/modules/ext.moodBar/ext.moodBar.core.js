@@ -45,6 +45,11 @@
 				} else {
 					mb.ui.overlay.hide();
 				}
+			},
+			
+			disable: function( e ) {
+				e.preventDefault();
+				// TODO write
 			}
 		},
 
