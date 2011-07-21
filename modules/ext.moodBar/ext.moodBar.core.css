@@ -1,5 +1,5 @@
 /* Overlay styling */
-#mw-moodBar-overlay {
+#mw-moodBar-overlayWrap {
 	position: absolute;
 	top: 4em;
 	left: 10.2em;
@@ -8,9 +8,12 @@
 	background: #fafafa;
 	border: 1px solid #0645ad;
 	border-radius: 40px;
-	padding: 22px 22px;
 	box-shadow: 7px 7px 15px rgba(0, 0, 0, 0.5);
 	display: none;
+}
+
+#mw-moodBar-overlay {
+	margin: 22px 22px;
 }
 
 .mw-moodBar-overlayTitle {
@@ -60,6 +63,7 @@
 
 .mw-moodBar-formInput {
 	width: 100%;
+	outline: none;
 }
 
 .mw-moodBar-formSubmit {
