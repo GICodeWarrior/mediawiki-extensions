@@ -16,6 +16,36 @@ es.ListBlockList = function( style, items ) {
 	this.style = style;
 }
 
+es.ListBlockList.prototype.getLength = function() {
+	var length = 0;
+	for ( var i = 0; i < this.items.length; i++ ) {
+		length += this.items[i].getLength();
+	}
+	return length;
+};
+
+es.ListBlockList.prototype.getLocation = function( offset ) {
+	var itemOffset = 0,
+		itemLength;
+	for ( var i = 0; i < this.items.length; i++ ) {
+		itemLength = this.items[i].getLength();
+		if ( offset >= itemOffset && offset < itemOffset + itemLength ) {
+			if ( offset - itemOffset < this.items[i].content.getLength() ) {
+				return {
+					'item': this.items[i],
+					'offset': itemOffset
+				};
+			}
+			var location = this.items[i].getLocation( offset - itemOffset );
+			return {
+				'item': location.item,
+				'offset': itemOffset + location.offset
+			}
+		}
+		itemOffset += itemLength;
+	}
+};
+
 /**
  * Renders content into a container.
  */
@@ -43,15 +73,42 @@ es.ListBlockItem = function( line, lists ) {
 	 */
 	es.Container.call( this, 'item', 'lists', itemLists );
 	
-	this.$line = $( '<div class="editSurface-list-line"></div>' ).prependTo( this.$ );
+	this.$line = $( '<div class="editSurface-list-line"></div>' ).prependTo( this.$ )
+	this.$content = $( '<div class="editSurface-list-content"></div>' ).appendTo( this.$line );
 	
 	this.content = line ? es.Content.newFromLine( line ) : new es.Content();
-	this.flow = new es.TextFlow( this.$line, this.content );
+	this.flow = new es.TextFlow( this.$content, this.content );
 	var item = this;
 	this.flow.on( 'render', function() {
 		item.emit( 'update' );
 	} );
 }
+
+es.ListBlockList.prototype.getLocation = function( offset ) {
+	if ( offset < this.content.length ) {
+		return {
+			'item': this,
+			'offset': offset
+		};
+	}
+	var listOffset = 0,
+		listLength;
+	for ( var i = 0; i < this.lists.length; i++ ) {
+		listLength = this.lists[i].length;
+		if ( offset >= listOffset && offset < listOffset + listLength ) {
+			return this.lists[i].getLocation( offset - listOffset );
+		}
+		listOffset += listLength;
+	}
+};
+
+es.ListBlockList.prototype.getLength = function() {
+	var length = this.content.getLength();
+	for ( var i = 0; i < this.lists.length; i++ ) {
+		length += this.lists[i].getLength();
+	}
+	return length;
+};
 
 es.ListBlockItem.prototype.renderContent = function( offset ) {
 	// TODO: Abstract offset and use it when rendering
@@ -73,6 +130,10 @@ es.ListBlock = function( style, items ) {
 
 es.ListBlock.newFromWikidom = function( wikidomList ) {
 	return new es.ListBlock( wikidomList.style, wikidomList.items );
+};
+
+es.ListBlock.prototype.getLength = function() {
+	return this.list.getLength();
 };
 
 /**
