@@ -143,6 +143,14 @@ es.Content.convertLine = function( line ) {
 		}
 		// Apply annotation to range
 		var k;
+		if ( src.range.start < 0 ) {
+			// TODO: This is invalid data! Throw error?
+			src.range.start = 0;
+		}
+		if ( src.range.end > data.length ) {
+			// TODO: This is invalid data! Throw error?
+			src.range.end = data.length;
+		}
 		for ( k = src.range.start; k < src.range.end; k++ ) {
 			// Auto-convert to array
 			typeof data[k] === 'string' && ( data[k] = [data[k]] );

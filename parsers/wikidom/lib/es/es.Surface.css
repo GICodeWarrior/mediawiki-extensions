@@ -30,6 +30,17 @@
 	position: relative;
 }
 
+.editSurface-list {
+	margin-left: 1.5em;
+}
+
+.editSurface-list-line {
+	padding-left: 1em;
+	background-image: url(../../demos/es/images/bullet.png);
+	background-position: left center;
+	background-repeat: no-repeat;
+}
+
 .editSurface-line,
 .editSurface-ruler {
 	line-height: 1.5em;

@@ -61,6 +61,7 @@
 		<script type="text/javascript" src="../../lib/es/es.Surface.js"></script>
 		<script type="text/javascript" src="../../lib/es/es.TextFlow.js"></script>
 		<script type="text/javascript" src="../../lib/es/es.ParagraphBlock.js"></script>
+		<script type="text/javascript" src="../../lib/es/es.ListBlock.js"></script>
 		<script type="text/javascript" src="../../lib/es/es.Cursor.js"></script>
 		
 		<!-- Demo -->
@@ -103,15 +104,78 @@
 						]
 					},
 					{
-						"type": "paragraph",
-						"lines": [
-							{ 'text': "The soft returns are usually placed after the ends of complete words, or after the punctuation that follows complete words. However, word wrap may also occur following a hyphen." },
-							{ 'text': "Word wrap following hyphens is sometimes not desired, and can be avoided by using a so-called non-breaking hyphen instead of a regular hyphen. On the other hand, when using word processors, invisible hyphens, called soft hyphens, can also be inserted inside words so that word wrap can occur following the soft hyphens." },
-							{ 'text': "Sometimes, word wrap is not desirable between words. In such cases, word wrap can usually be avoided by using a hard space or non-breaking space between the words, instead of regular spaces." },
-							{ 'text': "OccasionallyThereAreWordsThatAreSoLongTheyExceedTheWidthOfTheLineAndEndUpWrappingBetweenMultipleLines." },
-							{ 'text': "Text might have\ttabs\tin it too. Not all text will end in a line breaking character" }
+						'type': 'list',
+						'style': 'number',
+						'items': [
+							{
+								'line': { 'text': 'First item' },
+								'lists': [
+									{
+										'type': 'list',
+										'style': 'bullet',
+										'items': [
+											{ 'line': { 'text': 'First sub-item' } },
+											{ 'line': { 'text': 'Second sub-item' } },
+											{ 'line': { 'text': 'Third sub-item' } }
+										]
+									}
+								]
+							},
+							{
+								'line': {
+									'text': 'Second item',
+									'annotations': [
+										{
+											'type': 'italic',
+											'range': {
+												'start': 0,
+												'end': 6
+											}
+										}
+									]
+								}
+							},
+							{
+								'line': {
+									'text': 'Third item',
+									'annotations': [
+										{
+											'type': 'bold',
+											'range': {
+												'start': 0,
+												'end': 5
+											}
+										}
+									]
+								}
+							},
+							{
+								'line': {
+									'text': 'Fourth item',
+									'annotations': [
+										{
+											'type': 'link',
+											'range': {
+												'start': 7,
+												'end': 11
+											},
+											'data': { 'title': 'User:JohnDoe' }
+										}
+									]
+								}
+							}
 						]
-					}					
+					},
+					{
+						'type': 'paragraph',
+						'lines': [
+							{ 'text': 'The soft returns are usually placed after the ends of complete words, or after the punctuation that follows complete words. However, word wrap may also occur following a hyphen.' },
+							{ 'text': 'Word wrap following hyphens is sometimes not desired, and can be avoided by using a so-called non-breaking hyphen instead of a regular hyphen. On the other hand, when using word processors, invisible hyphens, called soft hyphens, can also be inserted inside words so that word wrap can occur following the soft hyphens.' },
+							{ 'text': 'Sometimes, word wrap is not desirable between words. In such cases, word wrap can usually be avoided by using a hard space or non-breaking space between the words, instead of regular spaces.' },
+							{ 'text': 'OccasionallyThereAreWordsThatAreSoLongTheyExceedTheWidthOfTheLineAndEndUpWrappingBetweenMultipleLines.' },
+							{ 'text': 'Text might have\ttabs\tin it too. Not all text will end in a line breaking character' }
+						]
+					}
 				]);
 				var surface = new es.Surface( $('#es-editor'), doc );
 				
