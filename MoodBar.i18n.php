@@ -41,7 +41,7 @@ For more information, please visit the $1.',
 	'moodbar-form-title' => 'Because...',
 	'moodbar-form-note' => '140 character maximum',
 	'moodbar-form-note-dynamic' => '$1 characters remaining',
-	'moodbar-form-submit' => 'Send Feedback ▶',
+	'moodbar-form-submit' => 'Send Feedback',
 	'moodbar-form-policy-text' => 'By submitting, $1',
 	'moodbar-form-policy-label' => 'our policy',
 	// Special:MoodBar
