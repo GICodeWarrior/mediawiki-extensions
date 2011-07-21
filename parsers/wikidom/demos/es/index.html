@@ -114,7 +114,35 @@
 										'type': 'list',
 										'style': 'bullet',
 										'items': [
-											{ 'line': { 'text': 'First sub-item' } },
+											{
+												'line': { 'text': 'First sub-item' },
+												'lists': [
+													{
+														'type': 'list',
+														'style': 'bullet',
+														'items': [
+															{
+																'line': { 'text': 'First sub-sub-item' },
+																'lists': [
+																	{
+																		'type': 'list',
+																		'style': 'bullet',
+																		'items': [
+																			{
+																				'line': { 'text': 'First sub-sub-sub-item' }
+																			},
+																			{ 'line': { 'text': 'Second sub-sub-sub-item' } },
+																			{ 'line': { 'text': 'Third sub-sub-sub-item' } }
+																		]
+																	}
+																]
+															},
+															{ 'line': { 'text': 'Second sub-sub-item' } },
+															{ 'line': { 'text': 'Third sub-sub-item' } }
+														]
+													}
+												]
+											},
 											{ 'line': { 'text': 'Second sub-item' } },
 											{ 'line': { 'text': 'Third sub-item' } }
 										]
