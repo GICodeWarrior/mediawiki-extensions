@@ -90,6 +90,7 @@ $wgResourceModules['ext.moodBar.core'] = $mbResourceTemplate + array(
 		'moodbar-loading-title',
 		'moodbar-error-title',
 		'moodbar-success-title',
+		'moodbar-success-subtitle',
 	),
 	'dependencies' => array(
 		'mediawiki.util',
