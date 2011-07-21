@@ -38,7 +38,7 @@ class MoodBarHooks {
 			return false;
 		}
 		
-		if ( MWInit::classExists('EditPageTracking') ) {
+		if ( class_exists('EditPageTracking') ) {
 			return ((bool)EditPageTracking::getFirstEditPage($user));
 		}
 		
