@@ -14,7 +14,13 @@
 					<span class="mw-moodBar-overlayClose"><a href="#"><html:msg key="moodbar-close" /></a></span>\
 					<div class="mw-moodBar-overlayTitle"><html:msg key="moodbar-intro-using" /></div>\
 					<div class="mw-moodBar-types"></div>\
-					<span class="mw-moodBar-overlayWhat"><a title-msg="tooltip-moodbar-what"><html:msg key="moodbar-what-label" /></a></span>\
+					<span class="mw-moodBar-overlayWhat">\
+						<a title-msg="tooltip-moodbar-what">\
+							<span class="mw-moodBar-overlayWhatTrigger"></span>\
+							<span class="mw-moodBar-overlayWhatLabel"><html:msg key="moodbar-what-label" /></span>\
+						</a>\
+						<div class="mw-moodBar-overlayWhatContent"><html:msg key="moodbar-what-content" /></div>\
+					</span>\
 				</div>',
 			type: '\
 				<div class="mw-moodBar-type mw-moodBar-type-$1" rel="$1">\
@@ -36,7 +42,14 @@
 		feedbackItem: {
 			comment: '',
 			bucket: mb.conf.bucketKey,
-			type: 'unknown'
+			type: 'unknown',
+			callback: function( data ) {
+				if ( data && data.moodbar && data.moodbar.result === 'success' ) {
+					alert(1);
+				} else {
+					alert(0);
+				}		
+			}
 		},
 
 		core: function() {
@@ -61,27 +74,47 @@
 								$( mb.tpl.type.replace( /\$1/g, type ) )
 									.localize()
 									.click( function( e ) {
+										var $el = $( this );
 										$mwMoodBarTypes.addClass( 'mw-moodBar-types-select' );
-										mb.feedbackItem.type = $(this).attr( 'rel' );
+										mb.feedbackItem.type = $el.attr( 'rel' );
+										$el.addClass( 'mw-moodBar-selected' );
+										$el.parent()
+											.find( '.mw-moodBar-selected' )
+												.not( $el )
+												.removeClass( 'mw-moodBar-selected' );
 									} )
 									.get( 0 )
 							);				
 						} );
-						return elems;
+						return elems;ß
+					} )
+					.hover( function() {
+						$( this ).addClass( 'mw-moodBar-types-hover' );
+					}, function() {
+						$( this ).removeClass( 'mw-moodBar-types-hover' );
 					} )
 					.end()
 				// Link what-button
+				.find( '.mw-moodBar-overlayWhatTrigger' )
+					.html( mw.msg( 'moodbar-what-collapsed' ) )
+					.end()
 				.find( '.mw-moodBar-overlayWhat > a' )
-					.attr( 'href', function() {
-						var	target = mw.msg( 'moodbar-what-target' ),
-							r = new RegExp( '^(' + mw.config.get( 'wgUrlProtocols' ) + ')', 'i' );
-						if ( r.exec( target ) ) {
-							return target;
-						} else {
-							return mw.util.wikiGetlink( target );
-						}
+					.click( function() {
+						mb.ui.overlay
+							.find( '.mw-moodBar-overlayWhatContent' )
+								.each( function() {
+									var	$el = $( this ),
+										$trigger = mb.ui.overlay.find( '.mw-moodBar-overlayWhatTrigger' );
+									if ( $el.is( ':visible' ) ) {
+										$el.slideUp();
+										$trigger.html( mw.msg( 'moodbar-what-collapsed' ) );
+									} else {
+										$el.slideDown();
+										$trigger.html( mw.msg( 'moodbar-what-expanded' ) );
+									}
+								} )
 					} )
-					.end();
+				.end();
 
 			// Inject overlay
 			mb.ui.overlay.appendTo( 'body' );
