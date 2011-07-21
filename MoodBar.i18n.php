@@ -30,9 +30,13 @@ $messages['en'] = array(
 	'tooltip-moodbar-what' => 'Learn more about this feature',
 	'moodbar-what-target' => 'http://www.mediawiki.org/wiki/MoodBar',
 	'moodbar-what-label' => 'What is this?',
-	'moodbar-what-expanded' => '&#x25BC;', // Ignore, do not translate
-	'moodbar-what-collapsed' => '&#x25B6;', // Ignore, do not translate
+	'moodbar-what-expanded' => '▶', // Ignore, do not translate. &#x25BC;
+	'moodbar-what-collapsed' => '▼', // Ignore, do not translate. &#x25B6;
 	'moodbar-what-content' => '--- @todo ---',
+	'moodbar-form-title' => 'Because...',
+	'moodbar-form-note' => '140 character maximum',
+	'moodbar-form-note-dynamic' => '$1 characters remaining',
+	'moodbar-form-submit' => 'Send Feedback ▶',
 	// Special:MoodBar
 	'right-moodbar-view' => 'View and export MoodBar feedback',
 	'moodbar-admin-title' => 'MoodBar feedback',

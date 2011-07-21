@@ -77,6 +77,10 @@ $wgResourceModules['ext.moodBar.core'] = $mbResourceTemplate + array(
 		'moodbar-what-expanded',
 		'moodbar-what-collapsed',
 		'moodbar-what-content',
+		'moodbar-form-title',
+		'moodbar-form-note',
+		'moodbar-form-note-dynamic',
+		'moodbar-form-submit',
 	),
 	'dependencies' => array(
 		'mediawiki.util',

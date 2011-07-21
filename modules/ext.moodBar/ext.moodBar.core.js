@@ -14,6 +14,14 @@
 					<span class="mw-moodBar-overlayClose"><a href="#"><html:msg key="moodbar-close" /></a></span>\
 					<div class="mw-moodBar-overlayTitle"><html:msg key="moodbar-intro-using" /></div>\
 					<div class="mw-moodBar-types"></div>\
+					<div class="mw-moodBar-form">\
+						<div class="mw-moodBar-formTitle">\
+							<span class="mw-moodBar-formNote"><html:msg key="moodbar-form-note" /></span>\
+							<html:msg key="moodbar-form-title" />\
+						</div>\
+						<input type="text" maxlength="140" class="mw-moodBar-formInput" />\
+						<input type="button" class="mw-moodBar-formSubmit" />\
+					</div>\
 					<span class="mw-moodBar-overlayWhat">\
 						<a title-msg="tooltip-moodbar-what">\
 							<span class="mw-moodBar-overlayWhatTrigger"></span>\
@@ -75,6 +83,7 @@
 									.localize()
 									.click( function( e ) {
 										var $el = $( this );
+										mb.ui.overlay.find( '.mw-moodBar-form' ).slideDown( 'fast' );
 										$mwMoodBarTypes.addClass( 'mw-moodBar-types-select' );
 										mb.feedbackItem.type = $el.attr( 'rel' );
 										$el.addClass( 'mw-moodBar-selected' );
@@ -96,7 +105,7 @@
 					.end()
 				// Link what-button
 				.find( '.mw-moodBar-overlayWhatTrigger' )
-					.html( mw.msg( 'moodbar-what-collapsed' ) )
+					.text( mw.msg( 'moodbar-what-collapsed' ) )
 					.end()
 				.find( '.mw-moodBar-overlayWhat > a' )
 					.click( function() {
@@ -106,15 +115,22 @@
 									var	$el = $( this ),
 										$trigger = mb.ui.overlay.find( '.mw-moodBar-overlayWhatTrigger' );
 									if ( $el.is( ':visible' ) ) {
-										$el.slideUp();
+										$el.slideUp( 'fast' );
 										$trigger.html( mw.msg( 'moodbar-what-collapsed' ) );
 									} else {
-										$el.slideDown();
+										$el.slideDown( 'fast' );
 										$trigger.html( mw.msg( 'moodbar-what-expanded' ) );
 									}
 								} )
 					} )
-				.end();
+					.end()
+				// Submit
+				.find( '.mw-moodBar-formSubmit' )
+					.val( mw.msg( 'moodbar-form-submit' ) )
+					.click( function() {
+					
+					} )
+					.end();
 
 			// Inject overlay
 			mb.ui.overlay.appendTo( 'body' );
