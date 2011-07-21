@@ -49,22 +49,11 @@ class MoodBarHooks {
 	 * ResourceLoaderGetConfigVars hook
 	 */
 	public static function resourceLoaderGetConfigVars( &$vars ) {
-		global $wgUser;
+		global $wgUser, $wgMoodBarConfig;
 		$vars['mbConfig'] = array(
 			'validTypes' => MBFeedbackItem::getValidTypes(),
 			'userBuckets' => MoodBarHooks::getUserBuckets( $wgUser ),
-			'bucketConfig' =>
-				array(
-					'buckets' =>
-						array(
-							'feedback' => 80,
-							'using' => 10,
-							'share' => 10,
-						),
-					'version' => 1,
-					'expires' => 30,
-				),
-		);
+		) + $wgMoodBarConfig;
 		return true;
 	}
 	

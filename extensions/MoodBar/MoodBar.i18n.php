@@ -32,7 +32,10 @@ $messages['en'] = array(
 	'moodbar-what-label' => 'What is this?',
 	'moodbar-what-expanded' => '▶', // Ignore, do not translate. &#x25BC;
 	'moodbar-what-collapsed' => '▼', // Ignore, do not translate. &#x25B6;
-	'moodbar-what-content' => '--- @todo ---',
+	'moodbar-what-content' => 'This feature is designed to help the Wikipedia community understand the experience of people editing Wikipedia.
+For more information, please visit the $1.',
+	'moodbar-what-link' => 'feature page',
+	'moodbar-disable' => "I'm not interested.  Please disable this feature.",
 	'moodbar-form-title' => 'Because...',
 	'moodbar-form-note' => '140 character maximum',
 	'moodbar-form-note-dynamic' => '$1 characters remaining',

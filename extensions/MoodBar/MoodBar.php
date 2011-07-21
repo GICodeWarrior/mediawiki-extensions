@@ -77,6 +77,7 @@ $wgResourceModules['ext.moodBar.core'] = $mbResourceTemplate + array(
 		'moodbar-what-expanded',
 		'moodbar-what-collapsed',
 		'moodbar-what-content',
+		'moodbar-what-link',
 		'moodbar-form-title',
 		'moodbar-form-note',
 		'moodbar-form-note-dynamic',
@@ -104,3 +105,19 @@ $wgResourceModules['jquery.moodBar'] = $mbResourceTemplate + array(
 /** Configuration **/
 /** The registration time after which users will be shown the MoodBar **/
 $wgMoodBarCutoffTime = null;
+
+/** MoodBar configuration settings **/
+$wgMoodBarConfig = array(
+	'bucketConfig' =>
+		array(
+			'buckets' =>
+				array(
+					'feedback' => 80,
+					'using' => 10,
+					'share' => 10,
+				),
+			'version' => 1,
+			'expires' => 30,
+		),
+	'infoUrl' => 'http://www.mediawiki.org/wiki/MoodBar',
+);
