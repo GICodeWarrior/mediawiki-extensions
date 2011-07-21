@@ -16,6 +16,10 @@ es.ParagraphBlock = function( lines ) {
 	} );
 }
 
+es.ParagraphBlock.newFromWikidom = function( wikidomBlock ) {
+	return new es.ParagraphBlock( wikidomBlock.lines );
+};
+
 es.ParagraphBlock.prototype.getLength = function() {
 	return this.content.getLength();
 };
@@ -108,5 +112,7 @@ es.Block.prototype.getWordBoundaries = function( offset ) {
 es.Block.prototype.getSectionBoundaries = function( offset ) {
 	return new es.Range( 0, this.content.getLength() );
 };
+
+es.Block.models['paragraph'] = es.ParagraphBlock; 
 
 es.extend( es.ParagraphBlock, es.Block );

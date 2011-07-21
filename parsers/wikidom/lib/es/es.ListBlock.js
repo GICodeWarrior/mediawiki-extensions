@@ -20,4 +20,6 @@ es.ListBlock = function( style, items ) {
 //	var list = new es.List( style, items );
 }
 
+es.Block.models['list'] = es.ListBlock;
+
 es.extend( es.ListBlock, es.Block );
