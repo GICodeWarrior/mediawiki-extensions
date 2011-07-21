@@ -19,10 +19,11 @@
 							<span class="mw-moodBar-formNote"><html:msg key="moodbar-form-note" /></span>\
 							<html:msg key="moodbar-form-title" />\
 						</div>\
-						<textarea maxlength="140" class="mw-moodBar-formInput" /></textarea>\
-						<div class="mw-moodBar-privacy"></div>\
-						<input type="button" class="mw-moodBar-formSubmit" />\
-						\
+						<div class="mw-moodBar-formInputs">\
+							<textarea rows="3" maxlength="140" class="mw-moodBar-formInput" /></textarea>\
+							<div class="mw-moodBar-privacy"></div>\
+							<input type="button" class="mw-moodBar-formSubmit" />\
+						</div>\
 					</div>\
 					<span class="mw-moodBar-overlayWhat">\
 						<a title-msg="tooltip-moodbar-what">\

@@ -125,3 +125,10 @@
 .mw-moodBar-types-select .mw-moodBar-type-confused.mw-moodBar-selected {
 	background-image: url(images/type-confused-selected.png);
 }
+
+.mw-moodBar-form {
+	padding-right: 5px;
+}
+.mw-moodBar-formInputs {
+	padding-left: 2em;
+}
