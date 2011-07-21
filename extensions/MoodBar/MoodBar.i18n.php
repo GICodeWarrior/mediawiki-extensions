@@ -35,7 +35,9 @@ $messages['en'] = array(
 	'moodbar-what-content' => 'This feature is designed to help the Wikipedia community understand the experience of people editing Wikipedia.
 For more information, please visit the $1.',
 	'moodbar-what-link' => 'feature page',
-	'moodbar-disable' => "I'm not interested.  Please disable this feature.",
+	'moodbar-privacy' => 'By submitting, you agree that we may use your feedback as explained in $1.',
+	'moodbar-privacy-link' => 'our policy',
+	'moodbar-disable-link' => "I'm not interested.  Please disable this feature.",
 	'moodbar-form-title' => 'Because...',
 	'moodbar-form-note' => '140 character maximum',
 	'moodbar-form-note-dynamic' => '$1 characters remaining',
