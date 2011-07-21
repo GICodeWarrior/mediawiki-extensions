@@ -80,6 +80,29 @@
 	float: right;
 }
 
+.mw-moodBar-form {
+	padding-right: 5px;
+}
+.mw-moodBar-formInputs {
+	padding-left: 2em;
+}
+
+.mw-moodBar-state-loading {
+	background: url(images/ajax-spinner.gif) left center no-repeat;
+	padding: 20px 0 0 90px;
+	height: 77px;
+}
+
+.mw-moodBar-state-title {
+	font-weight: bold;
+	font-size: 25px;
+}
+
+.mw-moodBar-state-subtitle {
+	font-size: 14px;
+	color: #7e7e7e;
+}
+
 /**
  * Types
  */
@@ -133,19 +156,4 @@
 }
 .mw-moodBar-types-select .mw-moodBar-type-confused.mw-moodBar-selected {
 	background-image: url(images/type-confused-selected.png);
-}
-
-.mw-moodBar-form {
-	padding-right: 5px;
-}
-.mw-moodBar-formInputs {
-	padding-left: 2em;
-}
-
-.mw-moodBar-loading {
-	background-image: url(images/ajax-spinner.gif);
-	background-position: left center;
-	background-repeat: no-repeat;
-	padding-left: 70px;
-	height: 70px;
 }

@@ -40,11 +40,18 @@
 					<span class="mw-moodBar-typeTitle"><html:msg key="moodbar-type-$1-title" /></span>\
 				</div>',
 			loading: '\
-				<div class="mw-moodBar-loading"><html:msg key="moodbar-loading-title"/></div>',
+				<div class="mw-moodBar-state mw-moodBar-state-loading">\
+					<div class="mw-moodBar-state-title"><html:msg key="moodbar-loading-title" /></div>\
+				</div>',
 			success: '\
-				<div><html:msg key="moodbar-success-title" /></div>',
+				<div class="mw-moodBar-state mw-moodBar-state-success">\
+					<div class="mw-moodBar-state-title"><html:msg key="moodbar-success-title" /></div>\
+					<div class="mw-moodBar-state-subtitle"><html:msg key="moodbar-success-subtitle" /></div>\
+				</div>',
 			error: '\
-				<div><html:msg key="moodbar-error-title" /></div>'
+				<div class="mw-moodBar-state mw-moodBar-state-error">\
+					<div class="mw-moodBar-state-title"><html:msg key="moodbar-error-title" /></div>\
+				</div>'
 		},
 
 		event: {
@@ -208,7 +215,7 @@
 					.click( function() {
 						mb.feedbackItem.comment = mb.ui.overlay.find( '.mw-moodBar-formInput' ).val();
 						mb.swapContent( mb.tpl.loading );
-						//$.moodBar.submit( mb.feedbackItem );
+						$.moodBar.submit( mb.feedbackItem );
 					} )
 					.end();
 
