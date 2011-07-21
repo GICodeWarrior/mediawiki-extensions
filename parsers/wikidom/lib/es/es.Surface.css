@@ -37,7 +37,7 @@
 .editSurface-list-line {
 	padding-left: 1em;
 	background-image: url(../../demos/es/images/bullet.png);
-	background-position: left center;
+	background-position: left 0.5em;
 	background-repeat: no-repeat;
 }
 
