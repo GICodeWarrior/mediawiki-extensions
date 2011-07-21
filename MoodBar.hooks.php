@@ -38,21 +38,7 @@ class MoodBarHooks {
 			return false;
 		}
 		
-		$buckets = self::getUserBuckets( $user );
-		
-		if ( in_array( 'moodbar-always', $buckets ) ) {
-			return true;
-		} elseif( in_array( 'no-moodbar', $buckets ) ) {
-			return false;
-		} elseif ( in_array( 'moodbar-on-submit', $buckets ) ) {
-			// MoodBar is shown when a user has submitted an edit
-			return ( $user->getEditCount() > 0 );
-		} elseif ( in_array( 'moodbar-on-edit', $buckets ) &&
-			class_exists('EditPageTracking') )
-		{
-			// MoodBar is shown when a user has previously loaded the edit form
-			return ((bool)EditPageTracking::getFirstEditPage($user));
-		}
+		return ((bool)EditPageTracking::getFirstEditPage($user));
 		
 		return false;
 	}
@@ -90,20 +76,9 @@ class MoodBarHooks {
 	 */
 	public static function getUserBuckets( $user ) {
 		$id = $user->getID();
-		
-		// 60 is divisible by 2, 3, 4, 5, 6 and 10
-		$bucketId = $id % 60;
 		$buckets = array();
 		
-		if ( $bucketId < 15 ) {
-			$buckets[] = 'no-moodbar';
-		} elseif ( $bucketId < 30 ) {
-			$buckets[] = 'moodbar-on-edit';
-		} elseif ( $bucketId < 45 ) {
-			$buckets[] = 'moodbar-on-submit';
-		} elseif ( $bucektId < 60 ) {
-			$buckets[] = 'moodbar-always';
-		}
+		// No show-time bucketing yet. This method is a stub.
 		
 		sort($buckets);
 		return $buckets;

@@ -17,9 +17,19 @@
 
 		init: function() {
 			var ui = mb.ui;
-
-			// Bucketing (@todo)
-			mb.conf.bucketKey = 'using';
+			
+			mb.conf.bucketKey = mw.user.bucket(
+				'moodbar-trigger',
+				{
+					'buckets' : {
+						'feedback' : 80,
+						'using' : 10,
+						'share' : 10
+					},
+					'version' : 1,
+					'expires' : 30
+				}
+			);
 
 			// Create portlet
 			ui.pMoodbar = $( '<div id="p-moodbar"></div>' );

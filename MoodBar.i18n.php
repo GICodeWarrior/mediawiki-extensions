@@ -15,10 +15,11 @@ $messages = array();
 $messages['en'] = array(
 	'moodbar-desc' => 'Allows specified users to send their "mood" back to the site operator',
 	// Portlet link
-	'moodbar-trigger-using' => 'Using $1...',
+	'moodbar-trigger-using' => 'Editing $1...',
+	'moodbar-trigger-feedback' => 'Feedback about editing',
+	'moodbar-trigger-share' => 'Share your experience',
 	'tooltip-p-moodbar-trigger-using' => '',
 	'moodbar-intro-using' => 'Using $1 made me...',
-	'moodbar-trigger-feedback' => 'Feedback',
 	'tooltip-p-moodbar-trigger-feedback' => '',
 	// Overlay
 	'moodbar-close' => '(close)',
