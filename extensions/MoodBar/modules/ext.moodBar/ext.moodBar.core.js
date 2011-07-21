@@ -40,11 +40,11 @@
 					<span class="mw-moodBar-typeTitle"><html:msg key="moodbar-type-$1-title" /></span>\
 				</div>',
 			loading: '\
-				<div><img src="' + mw.config.get( 'wgExtensionAssetsPath' ) + '/MoodBar/modules/ext.moodBar/images/ajax-spinner.gif" />Sharing...</div>',
+				<div class="mw-moodBar-loading"><html:msg key="mw-moodbar-loading-title"/></div>',
 			success: '\
-				<div>Thanks!</div>',
+				<div><html:msg key="mw-moodbar-success-title" /></div>',
 			error: '\
-				<div>Oops!</div>'
+				<div><html:msg key="mw-moodbar-error-title" /></div>'
 		},
 
 		event: {
