@@ -85,8 +85,11 @@
 			callback: function( data ) {
 				if ( data && data.moodbar && data.moodbar.result === 'success' ) {
 					mb.swapContent( mb.tpl.success );
+					setTimeout( function() {
+						mb.ui.overlay.fadeOut();
+					}, 3000 );
 				} else {
-					mb.swapContent( '.mw-moodBar-overlayContent' );
+					mb.swapContent( mb.tpl.error );
 				}
 			}
 		},
