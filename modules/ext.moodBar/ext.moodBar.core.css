@@ -141,3 +141,11 @@
 .mw-moodBar-formInputs {
 	padding-left: 2em;
 }
+
+.mw-moodBar-loading {
+	background-image: url(images/ajax-spinner.gif);
+	background-position: left center;
+	background-repeat: no-repeat;
+	padding-left: 70px;
+	height: 70px;
+}
