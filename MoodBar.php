@@ -87,6 +87,9 @@ $wgResourceModules['ext.moodBar.core'] = $mbResourceTemplate + array(
 		'moodbar-privacy',
 		'moodbar-privacy-link',
 		'moodbar-disable-link',
+		'moodbar-loading-title',
+		'moodbar-error-title',
+		'moodbar-success-title',
 	),
 	'dependencies' => array(
 		'mediawiki.util',
