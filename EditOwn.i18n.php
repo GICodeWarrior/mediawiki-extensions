@@ -235,6 +235,13 @@ $messages['id'] = array(
 	'editown-desc' => 'Pengguna yang tidak memiliki hak sunting-semua hanya dapat menyunting halaman yang mereka buat',
 );
 
+/** Interlingue (Interlingue)
+ * @author Renan
+ */
+$messages['ie'] = array(
+	'editown-desc' => 'Usatores sin li jure de redaction posse solmen redacter págines si ili ha esset creat',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */
