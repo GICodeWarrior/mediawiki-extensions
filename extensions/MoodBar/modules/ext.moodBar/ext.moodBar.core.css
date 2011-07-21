@@ -42,6 +42,10 @@
 	font-size: 12px;
 }
 
+.mw-moodBar-overlayWhatContent {
+	display: none;
+}
+
 /**
  * Types
  */
@@ -50,14 +54,14 @@
 .mw-moodBar-types .mw-moodBar-type-happy {
 	background-image: url(images/type-happy-normal.png);
 }
-.mw-moodBar-types:hover .mw-moodBar-type-happy {
-	background-image: url(images/type-happy-hover.png);
+.mw-moodBar-types-hover .mw-moodBar-type-happy {
+	background-image: url(images/type-happy-hoverside.png);
 }
-.mw-moodBar-types:hover .mw-moodBar-type-happy:hover {
+.mw-moodBar-types-hover .mw-moodBar-type-happy:hover {
 	background-image: url(images/type-happy-hovered.png);
 }
-.mw-moodBar-types-select .mw-moodBar-type-happy {
-	background-image: url(images/type-happy-select.png);
+.mw-moodBar-types-select .mw-moodBar-type-happy  {
+	background-image: url(images/type-happy-dull.png);
 }
 .mw-moodBar-types-select .mw-moodBar-type-happy.mw-moodBar-selected {
 	background-image: url(images/type-happy-selected.png);
@@ -67,14 +71,14 @@
 .mw-moodBar-types .mw-moodBar-type-sad {
 	background-image: url(images/type-sad-normal.png);
 }
-.mw-moodBar-types:hover .mw-moodBar-type-sad {
-	background-image: url(images/type-sad-hover.png);
+.mw-moodBar-types-hover .mw-moodBar-type-sad {
+	background-image: url(images/type-sad-hoverside.png);
 }
-.mw-moodBar-types:hover .mw-moodBar-type-sad:hover {
+.mw-moodBar-types-hover .mw-moodBar-type-sad:hover {
 	background-image: url(images/type-sad-hovered.png);
 }
 .mw-moodBar-types-select .mw-moodBar-type-sad {
-	background-image: url(images/type-sad-select.png);
+	background-image: url(images/type-sad-dull.png);
 }
 .mw-moodBar-types-select .mw-moodBar-type-sad.mw-moodBar-selected {
 	background-image: url(images/type-sad-selected.png);
@@ -84,14 +88,14 @@
 .mw-moodBar-types .mw-moodBar-type-confused {
 	background-image: url(images/type-confused-normal.png);
 }
-.mw-moodBar-types:hover .mw-moodBar-type-confused {
-	background-image: url(images/type-confused-hover.png);
+.mw-moodBar-types-hover .mw-moodBar-type-confused {
+	background-image: url(images/type-confused-hoverside.png);
 }
-.mw-moodBar-types:hover .mw-moodBar-type-confused:hover {
+.mw-moodBar-types-hover .mw-moodBar-type-confused:hover {
 	background-image: url(images/type-confused-hovered.png);
 }
 .mw-moodBar-types-select .mw-moodBar-type-confused {
-	background-image: url(images/type-confused-select.png);
+	background-image: url(images/type-confused-dull.png);
 }
 .mw-moodBar-types-select .mw-moodBar-type-confused.mw-moodBar-selected {
 	background-image: url(images/type-confused-selected.png);

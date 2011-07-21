@@ -74,6 +74,9 @@ $wgResourceModules['ext.moodBar.core'] = $mbResourceTemplate + array(
 		'tooltip-moodbar-what',
 		'moodbar-what-target',
 		'moodbar-what-label',
+		'moodbar-what-expanded',
+		'moodbar-what-collapsed',
+		'moodbar-what-content',
 	),
 	'dependencies' => array(
 		'mediawiki.util',
