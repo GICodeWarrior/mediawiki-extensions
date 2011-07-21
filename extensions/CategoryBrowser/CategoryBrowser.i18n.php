@@ -132,6 +132,13 @@ $messages['af'] = array(
 	'cb_edit_remove_hint' => 'Verwyder, indien moontlik',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'cb_has_pages' => '$1 {{PLURAL:$1|pachina|pachinas}}',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */

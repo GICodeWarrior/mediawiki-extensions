@@ -197,7 +197,10 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'notificator' => 'Notifior',
 	'notificator-e-mail-address' => 'adrèce èlèctronica',
+	'notificator-notify' => 'Notifiar',
+	'notificator-notify-address-or-name' => 'Notifiar $1',
 	'notificator-return-to' => 'Tornar a',
 	'notificator-change-tag' => 'changement',
 	'notificator-new-tag' => 'novél',

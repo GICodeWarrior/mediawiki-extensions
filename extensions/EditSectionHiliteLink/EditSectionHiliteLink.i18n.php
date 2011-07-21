@@ -184,6 +184,13 @@ $messages['id'] = array(
 	'editsectionhilitelink-desc' => 'Tandai bagian halaman yang cocok pada saat Anda menggerakan tetikus ke atas pranala sunting',
 );
 
+/** Interlingue (Interlingue)
+ * @author Renan
+ */
+$messages['ie'] = array(
+	'editsectionhilitelink-desc' => 'Selecter li division convenent de un págine quande vu move li mouse súper li catenun de redaction',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

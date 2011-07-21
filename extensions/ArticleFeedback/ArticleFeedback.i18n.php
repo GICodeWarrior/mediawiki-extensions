@@ -203,6 +203,13 @@ $messages['af'] = array(
 	'articlefeedback-pitch-reject' => 'Nee dankie',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'articleFeedback-table-heading-page' => 'Pachina',
+);
+
 /** Arabic (العربية)
  * @author Ciphers
  * @author Mido
@@ -2981,9 +2988,11 @@ Probéiert w.e.g. méi spéit nach emol.',
 	'articleFeedback-table-caption-dailyhighs' => 'Säite mat den héchste Bewäertungen: $1',
 	'articleFeedback-table-caption-dailylows' => 'Säite mat den niddregste Bewäertungen: $1',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Déi gréisst Ännerungen an dëser Woch',
+	'articleFeedback-table-caption-recentlows' => 'Rezent schlecht Bewäertungen',
 	'articleFeedback-table-heading-page' => 'Säit',
 	'articleFeedback-table-heading-average' => 'Duerchschnëtt',
 	'articleFeedback-copy-above-highlow-tables' => 'Dëst ass eng experimentell Fonctioun. Gitt eis w.e.g. Äre Feedback op der [$1 Diskussiouns-Säit].',
+	'articlefeedback-disable-preference' => 'De Widget vun der Artikelbewäertung net op de Säite weisen',
 );
 
 /** Limburgish (Limburgs)

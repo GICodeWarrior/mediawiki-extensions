@@ -790,6 +790,28 @@ $messages['id'] = array(
 	'editmsg-patch-success' => 'Ditambal dengan sukses',
 );
 
+/** Interlingue (Interlingue)
+ * @author Renan
+ */
+$messages['ie'] = array(
+	'editmessages-desc' => '[[Special:EditMessages|Redaction baseat in Web]] de grand númeres de files Missages*.php',
+	'editmessages' => 'Redacter missages',
+	'editmsg-target' => 'Missage cible:',
+	'editmsg-search' => 'Serchar',
+	'editmsg-show-list' => 'Monstrant valores por nómine de missage "$1"',
+	'editmsg-get-patch' => 'Producte corection',
+	'editmsg-new-search' => 'Nov sercha',
+	'editmsg-warning-parse1' => '* Nómine de missage regulari ne egalat: $1',
+	'editmsg-warning-parse2' => '* Caráctere citation expectat pos fleche: $1',
+	'editmsg-warning-parse3' => '* Fine de valore string ne constatat: $1',
+	'editmsg-warning-file' => '* Errores de letura de file esset incontrat por li sequent {{PLURAL:$2|lingue|lingues}}: $1',
+	'editmsg-warning-mismatch' => '* Li textu original ne hat li valore expectat por li sequent {{PLURAL:$2|lingue|lingues}}: $1',
+	'editmsg-apply-patch' => 'Aplicar corection',
+	'editmsg-no-patch' => 'Ínpossibil executer comande "corection"',
+	'editmsg-patch-failed' => 'Corection dessuccesset che rang de surtida $1',
+	'editmsg-patch-success' => 'Corectet che success.',
+);
+
 /** Igbo (Igbo) */
 $messages['ig'] = array(
 	'editmsg-search' => 'Chöwá',

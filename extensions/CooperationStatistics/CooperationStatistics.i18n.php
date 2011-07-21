@@ -57,6 +57,13 @@ $messages['af'] = array(
 	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|bladsy|bladsye}}',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|pachina|pachinas}}',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
