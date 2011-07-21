@@ -47,7 +47,7 @@ For more information, please visit the $1.',
 	'moodbar-loading-title' => 'Sharing...',
 	'moodbar-success-title' => 'Thanks!',
 	'moodbar-error-title' => 'Oops!',
-	'moodbar-loading-subtitle' => '@todo',
+	'moodbar-loading-subtitle' => 'We are sharing your feedback.',
 	'moodbar-success-subtitle' => 'Sharing your mood helps us make Wikipedia better.',
 	'moodbar-error-subtitle' => 'Something went wrong! Please try sharing your mood again later.',
 	// Special:MoodBar
