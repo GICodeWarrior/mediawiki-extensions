@@ -71,7 +71,7 @@ es.Surface = function( $container, doc ) {
 	
 	$(window).resize( function() {
 		surface.cursor.hide();
-		surface.doc.updateBlocks();
+		surface.doc.renderBlocks();
 	} );
 	
 	this.doc.on( 'update', function() {
