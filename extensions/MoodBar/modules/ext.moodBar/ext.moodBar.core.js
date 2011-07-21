@@ -9,9 +9,12 @@
 	$.extend( mb, {
 
 		tpl: {
-			overlay: '\
+			overlayBase: '\
 				<div id="mw-moodBar-overlayWrap"><div id="mw-moodBar-overlay">\
 					<span class="mw-moodBar-overlayClose"><a href="#"><html:msg key="moodbar-close" /></a></span>\
+					<div class="mw-moodBar-overlayContent"></div>\
+				</div></div>',
+			userinput: '\
 					<div class="mw-moodBar-overlayTitle"><html:msg key="moodbar-intro-using" /></div>\
 					<div class="mw-moodBar-types"></div>\
 					<div class="mw-moodBar-form">\
@@ -26,17 +29,22 @@
 						</div>\
 					</div>\
 					<span class="mw-moodBar-overlayWhat">\
-						<a title-msg="tooltip-moodbar-what">\
+						<a href="#" title-msg="tooltip-moodbar-what">\
 							<span class="mw-moodBar-overlayWhatTrigger"></span>\
 							<span class="mw-moodBar-overlayWhatLabel"><html:msg key="moodbar-what-label" /></span>\
 						</a>\
 						<div class="mw-moodBar-overlayWhatContent"></div>\
-					</span>\
-				</div></div>',
+					</span>',
 			type: '\
 				<div class="mw-moodBar-type mw-moodBar-type-$1" rel="$1">\
 					<span class="mw-moodBar-typeTitle"><html:msg key="moodbar-type-$1-title" /></span>\
-				</div>'
+				</div>',
+			loading: '\
+				<div><img src="' + mw.config.get( 'wgExtensionAssetsPath' ) + '/MoodBar/modules/ext.moodBar/images/ajax-spinner.gif" />Sharing...</div>',
+			success: '\
+				<div>Thanks!</div>',
+			error: '\
+				<div>Oops!</div>'
 		},
 
 		event: {
@@ -51,7 +59,13 @@
 			
 			disable: function( e ) {
 				e.preventDefault();
-				// TODO write
+				$.cookie(
+					mb.cookiePrefix() + 'disabled',
+					'1',
+					{ 'path': '/', 'expires': Number( mb.conf.disableExpiration ) }
+				);
+				mb.ui.overlay.fadeOut( 'fast' );
+				mb.ui.trigger.fadeOut( 'fast' );
 			}
 		},
 
@@ -61,9 +75,9 @@
 			type: 'unknown',
 			callback: function( data ) {
 				if ( data && data.moodbar && data.moodbar.result === 'success' ) {
-					alert(1);
+					mb.swapContent( mb.tpl.success );
 				} else {
-					alert(0);
+					mb.swapContent( '.mw-moodBar-overlayContent' );
 				}
 			}
 		},
@@ -73,7 +87,11 @@
 			msgOptions.params['moodbar-intro-using'] = [mw.config.get( 'wgSiteName' )];
 
 			// Create overlay
-			mb.ui.overlay = $( mb.tpl.overlay )
+			mb.ui.overlay = $( mb.tpl.overlayBase )
+				// Fill content with user input screen
+				.find( '.mw-moodBar-overlayContent' )
+					.html( mb.tpl.userinput )
+					.end()
 				// Handle all html:msgs
 				.localize( msgOptions )
 				// Bind close-toggle
@@ -83,7 +101,7 @@
 				// Populate type selector
 				.find( '.mw-moodBar-types' )
 					.append( function() {
-						var	$mwMoodBarTypes = $(this),
+						var	$mwMoodBarTypes = $( this ),
 							elems = [];
 						$.each( mb.conf.validTypes, function( id, type ) {
 							elems.push(
@@ -116,7 +134,8 @@
 					.text( mw.msg( 'moodbar-what-collapsed' ) )
 					.end()
 				.find( '.mw-moodBar-overlayWhat > a' )
-					.click( function() {
+					.click( function( e ) {
+						e.preventDefault();
 						mb.ui.overlay
 							.find( '.mw-moodBar-overlayWhatContent' )
 								.each( function() {
@@ -187,7 +206,9 @@
 				.find( '.mw-moodBar-formSubmit' )
 					.val( mw.msg( 'moodbar-form-submit' ) )
 					.click( function() {
-						mb.feedbackItem.comment = mb.ui.overlay.find( 'mw-moodBar-formInput' ).val();
+						mb.feedbackItem.comment = mb.ui.overlay.find( '.mw-moodBar-formInput' ).val();
+						mb.swapContent( mb.tpl.loading );
+						//$.moodBar.submit( mb.feedbackItem );
 					} )
 					.end();
 
@@ -201,9 +222,18 @@
 
 			// Bind triger
 			mb.ui.trigger.click( mb.event.trigger );
+		},
+		swapContent: function( tpl ) {
+			mb.ui.overlay
+				.find( '.mw-moodBar-overlayContent' )
+					.html( tpl )
+					.localize();
+			return true;
 		}
 	} );
 
-	mb.core();
+	if ( !mb.isDisabled() ) {
+		mb.core();
+	}
 
 } )( jQuery );
