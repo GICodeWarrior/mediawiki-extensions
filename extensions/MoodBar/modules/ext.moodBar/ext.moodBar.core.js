@@ -13,11 +13,11 @@
 				<div id="mw-moodBar-overlay">\
 					<span class="mw-moodBar-overlayClose"><a href="#"><html:msg key="moodbar-close" /></a></span>\
 					<div class="mw-moodBar-overlayTitle"><html:msg key="moodbar-intro-' + mb.conf.bucketKey + '" /></div>\
-					<div id="mw-moodBar-typeSelect"></div>\
+					<div class="mw-moodBar-types"></div>\
 					<span class="mw-moodBar-overlayWhat"><a title-msg="tooltip-moodbar-what"><html:msg key="moodbar-what-label" /></a></span>\
 				</div>',
 			type: '\
-				<div class="mw-moodBar-type moodbar-type-$1">\
+				<div class="mw-moodBar-type mw-moodBar-type-$1" rel="$1">\
 					<span class="mw-moodBar-typeTitle"><html:msg key="moodbar-type-$1-title" /></span>\
 				</div>'
 		},
@@ -33,6 +33,12 @@
 			}
 		},
 
+		feedbackItem: {
+			comment: '',
+			bucket: mb.conf.bucketKey,
+			type: 'unknown'
+		},
+
 		core: function() {
 			var msgOptions = { params: {} };
 			msgOptions.params['moodbar-intro-' + mb.conf.bucketKey] = [mw.config.get( 'wgSiteName' )];
@@ -44,18 +50,26 @@
 				// Bind close-toggle
 				.find( '.mw-moodBar-overlayClose' )
 					.click( mb.event.trigger )
-				.end()
+					.end()
 				// Populate type selector
-				.find( '#mw-moodBar-typeSelect' ).append( function() {
-					var elems = [];
-					$.each( mb.conf.validTypes, function( id, type ) {
-						elems.push(
-							$( mb.tpl.type.replace( /\$1/g, type ) ).localize()[0]
-						);				
-					} );
-					return elems;
-				})
-				.end()
+				.find( '.mw-moodBar-types' )
+					.append( function() {
+						var	$mwMoodBarTypes = $(this),
+							elems = [];
+						$.each( mb.conf.validTypes, function( id, type ) {
+							elems.push(
+								$( mb.tpl.type.replace( /\$1/g, type ) )
+									.localize()
+									.click( function( e ) {
+										$mwMoodBarTypes.addClass( 'mw-moodBar-types-select' );
+										mb.feedbackItem.type = $(this).attr( 'rel' );
+									} )
+									.get( 0 )
+							);				
+						} );
+						return elems;
+					} )
+					.end()
 				// Link what-button
 				.find( '.mw-moodBar-overlayWhat > a' )
 					.attr( 'href', function() {
@@ -67,7 +81,7 @@
 							return mw.util.wikiGetlink( target );
 						}
 					} )
-				.end();
+					.end();
 
 			// Inject overlay
 			mb.ui.overlay.appendTo( 'body' );

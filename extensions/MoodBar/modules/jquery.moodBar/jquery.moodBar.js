@@ -8,40 +8,42 @@
 	$.moodBar = {
 		/**
 		 * Submit a MoodBar feedback item.
-		 * @param params Object: Named parameters:
-		 * comment: The comments submitted
-		 * bucket: A bucket, for A/B testing.
-		 * anonymize: Boolean, whether or not to mark as anonymous
-		 * callback: A function, accepts a single 'data' parameter, to call when the
-		 *     request completes.
-		 * @return null
+		 * @param fbProps Object: Properties for the FeedbackItem:
+		 *  - comment: The comments submitted
+		 *  - bucket: A bucket, for A/B testing.
+		 *  - anonymize: Boolean, whether or not to mark as anonymous
+		 *  - callback: A function, accepts a single 'fbProps' parameter, to call when the
+		 *    request completes.
+		 *  - type: A string.
+		 * @return jqXHR
 		 */
-		'submit' : function( params ) {
-			var clientData = $.client.profile();
+		'submit' : function( fbProps ) {
+			var	clientData = $.client.profile(),
+				fbProps = $.extend( {
+					'page': mw.config.get( 'wgPageName' ),
+					'editmode': mw.config.get( 'wgAction' ) == 'edit' ? 1 : 0
+				}, fbProps ),
+				apiRequest = {
+					'action': 'moodbar',
+					'page': fbProps.page,
+					'comment': fbProps.comment,
+					'anonymize': fbProps.anonymize,
+					'editmode': fbProps.editmode,
+					'useragent': clientData.name + '/' + clientData.versionBase,
+					'system': clientData.platform,
+					'bucket': fbProps.bucket,
+					'type': fbProps.type,
+					'token': mw.user.tokens.get( 'editToken' ),
+					'format': 'json'
+				};
 
-			var apiRequest =
-			{
-				'action' : 'moodbar',
-				'page' : mw.config.get('wgPageName'),
-				'comment' : params.comment,
-				'anonymize' : params.anonymize,
-				'editmode' : (wgAction == 'edit') ? 1 : 0,
-				'useragent' : clientData.name + '/' + clientData.versionBase,
-				'system' : clientData.platform,
-				'bucket' : mb.conf.bucketKey,
-				'type' : params.type,
-				'token' : mw.user.tokens.get('editToken'),
-				'format' : 'json'
-			};
-			
-			var path = mediaWiki.util.wikiScript('api');
-			
-			$j.post( path, apiRequest,
-				function(data) {
-					if (params.callback) {
-						params.callback(data);
-					}
-				}, 'json' );
+			return $.ajax( {
+				type: 'post',
+				url: mw.util.wikiScript( 'api' ),
+				data: apiRequest,
+				success: fbProps.callback,
+				dataType: 'json'
+			} );
 		}
 	};
 } ) ( jQuery );

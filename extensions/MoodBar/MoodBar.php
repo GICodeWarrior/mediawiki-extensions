@@ -79,6 +79,7 @@ $wgResourceModules['ext.moodBar.core'] = $mbResourceTemplate + array(
 		'mediawiki.util',
 		'ext.moodBar.init', // just in case
 		'jquery.localize',
+		'jquery.moodBar',
 	),
 	'position' => 'bottom',
 );

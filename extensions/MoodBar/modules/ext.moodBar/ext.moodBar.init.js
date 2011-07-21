@@ -4,6 +4,7 @@
  * @author Timo Tijhof, 2011
  */
 ( function( $ ) {
+
 	var mb = mw.moodBar = {
 
 		conf: mw.config.get( 'mbConfig' ),
@@ -17,17 +18,16 @@
 
 		init: function() {
 			var ui = mb.ui;
-			
+
 			mb.conf.bucketKey = mw.user.bucket(
-				'moodbar-trigger',
-				{
-					'buckets' : {
-						'feedback' : 80,
-						'using' : 10,
-						'share' : 10
+				'moodbar-trigger', {
+					'buckets': {
+						'feedback': 80,
+						'using': 10,
+						'share': 10
 					},
-					'version' : 1,
-					'expires' : 30
+					'version': 1,
+					'expires': 30
 				}
 			);
 
@@ -53,7 +53,7 @@
 		inject: function() {
 			$( '#mw-head' ).append( mb.ui.pMoodbar );
 		}
-	
+
 	};
 
 	mb.init();
