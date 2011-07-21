@@ -49,11 +49,16 @@ $wgResourceModules['ext.moodBar.init'] = $mbResourceTemplate + array(
 	'scripts' => 'ext.moodBar/ext.moodBar.init.js',
 	'messages' => array(
 		'moodbar-trigger-using',
+		'moodbar-trigger-feedback',
+		'moodbar-trigger-share',
 		'tooltip-p-moodbar-trigger-using',
 		'moodbar-trigger-feedback',
 		'tooltip-p-moodbar-trigger-feedback',
 	),
 	'position' => 'top',
+	'dependencies' => array(
+		'mediawiki.user',
+	),
 );
 
 $wgResourceModules['ext.moodBar.core'] = $mbResourceTemplate + array(
