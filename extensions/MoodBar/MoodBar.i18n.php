@@ -30,8 +30,8 @@ $messages['en'] = array(
 	'tooltip-moodbar-what' => 'Learn more about this feature',
 	'moodbar-what-target' => 'http://www.mediawiki.org/wiki/MoodBar',
 	'moodbar-what-label' => 'What is this?',
-	'moodbar-what-expanded' => '▶', // Ignore, do not translate. &#x25BC;
-	'moodbar-what-collapsed' => '▼', // Ignore, do not translate. &#x25B6;
+	'moodbar-what-collapsed' => '▶', // Ignore, do not translate. &#x25BC;
+	'moodbar-what-expanded' => '▼', // Ignore, do not translate. &#x25B6;
 	'moodbar-what-content' => 'This feature is designed to help the Wikipedia community understand the experience of people editing Wikipedia.
 For more information, please visit the $1.',
 	'moodbar-what-link' => 'feature page',
@@ -40,6 +40,8 @@ For more information, please visit the $1.',
 	'moodbar-form-note' => '140 character maximum',
 	'moodbar-form-note-dynamic' => '$1 characters remaining',
 	'moodbar-form-submit' => 'Send Feedback ▶',
+	'moodbar-form-policy-text' => 'By submitting, $1',
+	'moodbar-form-policy-label' => 'our policy',
 	// Special:MoodBar
 	'right-moodbar-view' => 'View and export MoodBar feedback',
 	'moodbar-admin-title' => 'MoodBar feedback',
@@ -91,6 +93,14 @@ See also:
 * {{msg|moodbar-what-label}}',
 	'moodbar-what-target' => 'Complete URL (including http://) or article name where more info can be found.',
 	'moodbar-what-label' => 'Link text for the page where more info abut MoodBar can be found.',
+	'moodbar-form-policy-text' => 'Text displayed below the input area.
+
+See also:
+* {{msg|moodbar-form-policy-label}}',
+	'moodbar-form-policy-label' => 'Label text for the link to the privacy policy,.
+
+See also:
+* {{msg|moodbar-form-policy-text}}',
 );
 
 /** Message documentation (Message documentation)

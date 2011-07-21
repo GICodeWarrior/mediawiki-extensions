@@ -81,6 +81,8 @@ $wgResourceModules['ext.moodBar.core'] = $mbResourceTemplate + array(
 		'moodbar-form-title',
 		'moodbar-form-note',
 		'moodbar-form-note-dynamic',
+		'moodbar-form-policy-text',
+		'moodbar-form-policy-label',
 		'moodbar-form-submit',
 	),
 	'dependencies' => array(

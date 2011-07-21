@@ -10,7 +10,7 @@
 
 		tpl: {
 			overlay: '\
-				<div id="mw-moodBar-overlay">\
+				<div id="mw-moodBar-overlayWrap"><div id="mw-moodBar-overlay">\
 					<span class="mw-moodBar-overlayClose"><a href="#"><html:msg key="moodbar-close" /></a></span>\
 					<div class="mw-moodBar-overlayTitle"><html:msg key="moodbar-intro-using" /></div>\
 					<div class="mw-moodBar-types"></div>\
@@ -19,8 +19,9 @@
 							<span class="mw-moodBar-formNote"><html:msg key="moodbar-form-note" /></span>\
 							<html:msg key="moodbar-form-title" />\
 						</div>\
-						<input type="text" maxlength="140" class="mw-moodBar-formInput" />\
+						<textarea maxlength="140" class="mw-moodBar-formInput" /></textarea>\
 						<input type="button" class="mw-moodBar-formSubmit" />\
+						\
 					</div>\
 					<span class="mw-moodBar-overlayWhat">\
 						<a title-msg="tooltip-moodbar-what">\
@@ -29,7 +30,7 @@
 						</a>\
 						<div class="mw-moodBar-overlayWhatContent"></div>\
 					</span>\
-				</div>',
+				</div></div>',
 			type: '\
 				<div class="mw-moodBar-type mw-moodBar-type-$1" rel="$1">\
 					<span class="mw-moodBar-typeTitle"><html:msg key="moodbar-type-$1-title" /></span>\
@@ -56,7 +57,7 @@
 					alert(1);
 				} else {
 					alert(0);
-				}		
+				}
 			}
 		},
 
@@ -93,7 +94,7 @@
 												.removeClass( 'mw-moodBar-selected' );
 									} )
 									.get( 0 )
-							);				
+							);
 						} );
 						return elems;
 					} )
@@ -128,19 +129,15 @@
 					.html(
 						function() {
 							var message, linkMessage, link;
-							
-							message = mw.message('moodbar-what-content');
-							linkMessage = mw.msg('moodbar-what-link');
-							link = mw.html.element('a',
-								{
-									'href' : mb.conf.infoUrl,
-									'title' : linkMessage
+
+							message = mw.message( 'moodbar-what-content' );
+							linkMessage = mw.msg( 'moodbar-what-link' );
+							link = mw.html.element( 'a', {
+									'href': mb.conf.infoUrl,
+									'title': linkMessage
 								}, linkMessage );
-							
-							message = message.escaped();
-							message = message.replace( /\$1/, link );
-							
-							return message;
+
+							return message.escaped().replace( /\$1/, link );
 						}
 					)
 					.end()
@@ -148,15 +145,20 @@
 				.find( '.mw-moodBar-formSubmit' )
 					.val( mw.msg( 'moodbar-form-submit' ) )
 					.click( function() {
-					
+						mb.feedbackItem.comment = mb.ui.overlay.find( 'mw-moodBar-formInput' ).val();
 					} )
 					.end();
 
-			// Inject overlay
-			mb.ui.overlay.appendTo( 'body' );
+			mb.ui.overlay
+				// Inject overlay
+				.appendTo( 'body' )
+				// Fix the width after the icons and titles are localized and inserted
+				.width( function( i, width ) {
+					return width;
+				} );
 
 			// Bind triger
-			mb.ui.trigger.click( mb.event.trigger );	
+			mb.ui.trigger.click( mb.event.trigger );
 		}
 	} );
 
