@@ -7,6 +7,21 @@ es.Block = function() {
 	this.document = null;
 }
 
+/**
+ * Association between block type name and block class
+ * Example: "paragraph" => es.ParagraphBlock
+ * 
+ */
+es.Block.models = {};
+
+es.Block.newFromWikidom = function( wikidomBlock ) {
+	if ( wikidomBlock.type in es.Block.models ) {
+		return es.Block.models[wikidomBlock.type].newFromWikidom( wikidomBlock );
+	} else {
+		throw 'Unknown block type: ' + wikidomBlock.type;
+	}
+};
+
 es.Block.prototype.getLength = function() {
 	throw 'Block.getLength not implemented in this subclass.';
 };
