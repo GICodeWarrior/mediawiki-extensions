@@ -179,6 +179,8 @@ class MBFeedbackItem {
 			return $value instanceof Title;
 		} elseif ( $key == 'type' ) {
 			return in_array( $value, self::$validTypes );
+		} elseif ( $key == 'comment' ) {
+			return mb_strlen( $value ) <= 140;
 		}
 		
 		return true;
