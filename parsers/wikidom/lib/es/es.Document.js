@@ -5,7 +5,7 @@
  * @returns {es.Document}
  */
 es.Document = function( blocks ) {
-	es.Container.call( this, blocks, 'document', 'blocks' );
+	es.Container.call( this, 'document', 'blocks', blocks );
 	this.width = null;
 }
 

@@ -4,7 +4,7 @@
  * @param items {Array} List of items
  * @returns {es.Container}
  */
-es.Container = function( items, typeName, listName ) {
+es.Container = function( typeName, listName, items ) {
 	es.EventEmitter.call( this );
 	if ( typeof typeName !== 'string' ) {
 		typeName = 'container';
