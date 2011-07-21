@@ -21,7 +21,7 @@
 
 			mb.conf.bucketKey = mw.user.bucket(
 				'moodbar-trigger',
-				mw.config.get('mbConfig').bucketConfig
+				mb.conf.bucketConfig
 			);
 
 			// Create portlet
