@@ -689,13 +689,6 @@ $messages['sq'] = array(
 	'userimages-noimages' => '$1 nuk ka figura të ngarkuara.',
 );
 
-/** Serbian (Српски / Srpski) */
-$messages['sr'] = array(
-	'userimages-caption' => 'Слике које је послао корисник $1',
-	'userimages-noname' => 'Погрешно корисничко име или корисник није послао ни једну слику.',
-	'userimages-noimages' => '$1 нема послатих слика.',
-);
-
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */

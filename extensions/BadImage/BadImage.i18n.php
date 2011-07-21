@@ -2435,29 +2435,6 @@ $messages['sl'] = array(
 	'right-badimages' => 'Posodabljanje seznama škodljivih slik',
 );
 
-/** Serbian (Српски / Srpski) */
-$messages['sr'] = array(
-	'badimages' => 'Списак лоших слика',
-	'badimages-add-btn' => 'додај',
-	'badimages-added' => '$1 је додата у списак.',
-	'badimages-count' => "Тренутно се '''$1''' слика налази на списку лоших слика.",
-	'badimages-name' => 'Име:',
-	'badimages-not-added' => 'Ову слику је немогуће додати.',
-	'badimages-not-removed' => 'Ову слику је немогуће уклонити.',
-	'badimages-reason' => 'Разлог:',
-	'badimages-remove' => '(уклони)',
-	'badimages-remove-btn' => 'Уклони',
-	'badimages-remove-confirm' => 'Молимо вас потврдите да желите да уклоните $1 са списка:',
-	'badimages-removed' => '$1 је уклоњена са списка.',
-	'badimages-subheading' => 'Тренутно у списку',
-	'badimages-unprivileged' => '(Немате овлашћења за мењање списка)',
-	'badimages-log-name' => 'Списак лоших слика',
-	'badimages-log-header' => 'Ово је историја промена за [[{{MediaWiki:Badimages-page}}|списак лоших слика]].',
-	'badimages-log-add' => 'додата [[$1]] у списак лоших слика',
-	'badimages-log-remove' => 'уклоњена [[$1]] са списка лоших слика',
-	'badimages-page' => '{{ns:help}}:Списак лоших слика',
-);
-
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Sasa Stefanovic
