@@ -9,6 +9,14 @@
 
 		conf: mw.config.get( 'mbConfig' ),
 
+		cookiePrefix: function() {
+			return 'ext.moodBar@' + mb.conf.bucketConfig.version + '-';
+		},
+
+		isDisabled: function() {
+			return $.cookie( mb.cookiePrefix() + 'disabled' ) == '1';
+		},
+
 		ui: {
 			// jQuery objects
 			pMoodbar: null,
@@ -49,6 +57,8 @@
 
 	};
 
-	mb.init();
+	if ( !mb.isDisabled() ) {
+		mb.init();
+	}
 
 } )( jQuery );

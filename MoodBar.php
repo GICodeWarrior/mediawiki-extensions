@@ -121,9 +121,10 @@ $wgMoodBarConfig = array(
 					'using' => 10,
 					'share' => 10,
 				),
-			'version' => 1,
+			'version' => 2,
 			'expires' => 30,
 		),
 	'infoUrl' => 'http://www.mediawiki.org/wiki/MoodBar',
 	'privacyUrl' => 'about:blank',
+	'disableExpiration' => 365,
 );

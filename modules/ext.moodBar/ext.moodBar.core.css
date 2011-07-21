@@ -40,6 +40,10 @@
 	text-align: center;
 }
 
+.mw-moodBar-type {
+	cursor: pointer;
+}
+
 .mw-moodBar-typeTitle,
 .mw-moodBar-privacy,
 .mw-moodBar-overlayWhat {
@@ -65,6 +69,11 @@
 .mw-moodBar-formInput {
 	width: 100%;
 	outline: none;
+}
+
+.mw-moodBar-privacy,
+.mw-moodBar-overlayWhatContent {
+	font-size: 10px;
 }
 
 .mw-moodBar-formSubmit {

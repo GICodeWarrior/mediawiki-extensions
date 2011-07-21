@@ -17,7 +17,7 @@
 		 *  - type: A string.
 		 * @return jqXHR
 		 */
-		'submit' : function( fbProps ) {
+		'submit': function( fbProps ) {
 			var	clientData = $.client.profile(),
 				fbProps = $.extend( {
 					'page': mw.config.get( 'wgPageName' ),
