@@ -84,6 +84,9 @@ $wgResourceModules['ext.moodBar.core'] = $mbResourceTemplate + array(
 		'moodbar-form-policy-text',
 		'moodbar-form-policy-label',
 		'moodbar-form-submit',
+		'moodbar-privacy',
+		'moodbar-privacy-link',
+		'moodbar-disable-link',
 	),
 	'dependencies' => array(
 		'mediawiki.util',
@@ -122,4 +125,5 @@ $wgMoodBarConfig = array(
 			'expires' => 30,
 		),
 	'infoUrl' => 'http://www.mediawiki.org/wiki/MoodBar',
+	'privacyUrl' => 'about:blank',
 );

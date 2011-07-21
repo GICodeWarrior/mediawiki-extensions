@@ -20,6 +20,7 @@
 							<html:msg key="moodbar-form-title" />\
 						</div>\
 						<textarea maxlength="140" class="mw-moodBar-formInput" /></textarea>\
+						<div class="mw-moodBar-privacy"></div>\
 						<input type="button" class="mw-moodBar-formSubmit" />\
 						\
 					</div>\
@@ -133,12 +134,47 @@
 				.find( '.mw-moodBar-overlayWhatContent' )
 					.html(
 						function() {
-							var message, linkMessage, link;
+							var 	message, linkMessage, link,
+								disableMsg, disableLink, out;
 
 							message = mw.message( 'moodbar-what-content' );
 							linkMessage = mw.msg( 'moodbar-what-link' );
 							link = mw.html.element( 'a', {
 									'href': mb.conf.infoUrl,
+									'title': linkMessage
+								}, linkMessage );
+
+							out = message.escaped().replace( /\$1/, link );
+							out = mw.html.element( 'p', {},
+								new mw.html.Raw( out )
+							);
+							
+							disableMsg = mw.msg( 'moodbar-disable-link' )
+							disableLink = mw.html.element( 'a', {
+								'href' : '#',
+								'class' : 'mw-moodBar-disable'
+							}, disableMsg );
+							
+							out += mw.html.element( 'p', {},
+								new mw.html.Raw( disableLink )
+							);
+							
+							return out;
+						}
+					)
+					.find('.mw-moodBar-disable')
+					.click( mb.event.disable )
+					.end()
+					.end()
+				.find( '.mw-moodBar-privacy' )
+					.html(
+						function() {
+							var message, linkMessage, link;
+
+							message = mw.message( 'moodbar-privacy' );
+							linkMessage = mw.msg( 'moodbar-privacy-link' );
+							link = mw.html.element( 'a', {
+									'href': mb.conf.privacyUrl,
 									'title': linkMessage
 								}, linkMessage );
 
