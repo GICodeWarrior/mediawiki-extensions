@@ -90,6 +90,8 @@ $wgResourceModules['ext.moodBar.core'] = $mbResourceTemplate + array(
 		'moodbar-loading-title',
 		'moodbar-error-title',
 		'moodbar-success-title',
+		'moodbar-loading-subtitle',
+		'moodbar-error-subtitle',
 		'moodbar-success-subtitle',
 	),
 	'dependencies' => array(
