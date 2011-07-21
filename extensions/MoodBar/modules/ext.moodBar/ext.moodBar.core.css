@@ -42,8 +42,28 @@
 	font-size: 12px;
 }
 
+.mw-moodBar-form,
 .mw-moodBar-overlayWhatContent {
 	display: none;
+	overflow: hidden;
+}
+
+.mw-moodBar-formNote {
+	float: right;
+	font-size: 10px;
+	color: #7e7e7e;
+}
+
+.mw-moodBar-formTitle {
+	font-size: 18px;
+}
+
+.mw-moodBar-formInput {
+	width: 100%;
+}
+
+.mw-moodBar-formSubmit {
+	float: right;
 }
 
 /**
