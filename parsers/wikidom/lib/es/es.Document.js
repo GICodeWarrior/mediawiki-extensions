@@ -9,6 +9,18 @@ es.Document = function( blocks ) {
 	this.width = null;
 }
 
+es.Document.newFromWikidom = function( wikidomBlocks ) {
+	var blocks = [];
+	var block;
+	for ( var i = 0; i < wikidomBlocks.length; i++ ) {
+		block = es.Block.newFromWikidom( wikidomBlocks[i] );
+		if ( block ) {
+			blocks.push( block );
+		}
+	}
+	return new es.Document( blocks );
+}
+
 es.Document.prototype.renderBlocks = function() {
 	// Bypass rendering when width has not changed
 	var width = this.$.innerWidth();
