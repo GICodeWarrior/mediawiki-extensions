@@ -34,6 +34,7 @@ $messages['qqq'] = array(
 	'semanticformsinputs-dateformatshort' => "{{doc-important|This is a machine-readable date format string!| <br>It is used by a function to format a date. It will not be read by a human user. Do not translate each letter literally! Instead insert the date format for your language using the english-based letters. See http://docs.jquery.com/UI/Datepicker/formatDate }}
 
 {{doc-important|This is an ''optional'' message. Do not translate it, if it would remain unchanged in your language. }}",
+	'semanticformsinputs-firstdayofweek' => '0 - sunday, 1 - monday...',
 );
 
 /** Afrikaans (Afrikaans)
@@ -483,6 +484,7 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author F.trott
  * @author MaxSem
  * @author Александр Сигачёв
  * @author Сrower
@@ -494,6 +496,7 @@ $messages['ru'] = array(
 	'semanticformsinputs-prev' => 'Предыдущая',
 	'semanticformsinputs-next' => 'Следующая',
 	'semanticformsinputs-today' => 'Сегодня',
+	'semanticformsinputs-firstdayofweek' => '1',
 );
 
 /** Telugu (తెలుగు)
