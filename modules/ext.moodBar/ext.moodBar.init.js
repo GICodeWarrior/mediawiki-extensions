@@ -20,15 +20,8 @@
 			var ui = mb.ui;
 
 			mb.conf.bucketKey = mw.user.bucket(
-				'moodbar-trigger', {
-					'buckets': {
-						'feedback': 80,
-						'using': 10,
-						'share': 10
-					},
-					'version': 1,
-					'expires': 30
-				}
+				'moodbar-trigger',
+				mw.config.get('mbConfig').bucketConfig
 			);
 
 			// Create portlet
