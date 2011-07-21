@@ -1420,21 +1420,6 @@ $messages['sk'] = array(
 	'countedits-nocontribs' => 'Táto wiki neobsahuje zatiaľ žiadne príspevky.',
 );
 
-/** Serbian (Српски / Srpski)
- * @author Sasa Stefanovic
- */
-$messages['sr'] = array(
-	'countedits' => 'Бројач измена',
-	'countedits-warning' => "'''Упозорење:''' Не судите о књизи по њеном омоту. Не судите о кориснику по његовом броју измена.",
-	'countedits-username' => 'Корисник:',
-	'countedits-ok' => 'У реду',
-	'countedits-nosuchuser' => 'Не постоји корисник са именом $1.',
-	'countedits-resultheader' => 'Резултати за $1',
-	'countedits-resulttext' => '$1 има $2 измена',
-	'countedits-mostactive' => 'Најактивнији корисници',
-	'countedits-nocontribs' => 'Не постоје прилози на овој вики.',
-);
-
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Sasa Stefanovic
