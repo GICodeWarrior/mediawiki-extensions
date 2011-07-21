@@ -40,11 +40,11 @@
 					<span class="mw-moodBar-typeTitle"><html:msg key="moodbar-type-$1-title" /></span>\
 				</div>',
 			loading: '\
-				<div class="mw-moodBar-loading"><html:msg key="mw-moodbar-loading-title"/></div>',
+				<div class="mw-moodBar-loading"><html:msg key="moodbar-loading-title"/></div>',
 			success: '\
-				<div><html:msg key="mw-moodbar-success-title" /></div>',
+				<div><html:msg key="moodbar-success-title" /></div>',
 			error: '\
-				<div><html:msg key="mw-moodbar-error-title" /></div>'
+				<div><html:msg key="moodbar-error-title" /></div>'
 		},
 
 		event: {
