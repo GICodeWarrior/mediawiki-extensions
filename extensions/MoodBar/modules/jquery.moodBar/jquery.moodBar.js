@@ -33,7 +33,7 @@
 					'system': clientData.platform,
 					'bucket': fbProps.bucket,
 					'type': fbProps.type,
-					'token': mw.user.tokens.get( 'editToken' ),
+					'token': mw.config.get('mbConfig').editToken,
 					'format': 'json'
 				};
 

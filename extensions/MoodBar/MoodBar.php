@@ -63,6 +63,10 @@ $wgResourceModules['ext.moodBar.init'] = $mbResourceTemplate + array(
 	),
 );
 
+if ( !$oldVersion ) {
+	$wgResourceModules['ext.moodBar.init']['dependencies'][] = 'mediawiki.user';
+}
+
 $wgResourceModules['ext.moodBar.core'] = $mbResourceTemplate + array(
 	'styles' => 'ext.moodBar/ext.moodBar.core.css',
 	'scripts' => 'ext.moodBar/ext.moodBar.core.js',

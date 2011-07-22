@@ -54,6 +54,7 @@ class MoodBarHooks {
 		$vars['mbConfig'] = array(
 			'validTypes' => MBFeedbackItem::getValidTypes(),
 			'userBuckets' => MoodBarHooks::getUserBuckets( $wgUser ),
+			'editToken' => $wgUser->editToken(),
 		) + $wgMoodBarConfig;
 		return true;
 	}
