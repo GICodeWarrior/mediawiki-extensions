@@ -16,7 +16,7 @@ class SQL2Wiki {
 	private $mError = null;
 
 	private $ignoreAttributes = array( 'database', 'inline', 'fieldseparator', 'lineseparator', 'cache', 'expand', 'preexpand', 'quiet' );
-	private $ignoteTabAttributes = array( 'tablestyle', 'hrowstyle', 'hcellstyle', 'rowstyle', 'cellstyle', 'style', 'noheader' );
+	private $ignoreTabAttributes = array( 'tableclass', 'tablestyle', 'hrowstyle', 'hcellstyle', 'rowstyle', 'cellstyle', 'style', 'noheader' );
 
 	public static function initTags( &$parser ) {
 		$parser->setHook( "sql2wiki", "SQL2Wiki::renderSQL" );
@@ -30,7 +30,9 @@ class SQL2Wiki {
 
 			$sql = ( $s2w->shouldPreexpand() ) ? $parser->recursiveTagParse( $input ) : $input;
 			
-			$s2w->execute( $sql );
+			if ( !$s2w->execute( $sql ) ) {
+				return $s2w->mError;
+			}
 			
 			if ( ( $inline = $s2w->getInlineTag() ) !== false )
 				$ret = $s2w->parseInline();
@@ -56,7 +58,9 @@ class SQL2Wiki {
 
 			$sql = ( $s2w->shouldPreexpand() ) ? $parser->recursiveTagParse( $input ) : $input;
 			
-			$s2w->execute( $sql );
+			if ( !$s2w->execute( $sql ) ) {
+				return $s2w->mError;
+			}
 
 			$ret = $s2w->parseInline();
 
@@ -71,7 +75,7 @@ class SQL2Wiki {
 	
 	public function __construct( $args, $PLSQLMode = false ) {
 		global $wgExSql2WikiDatabases;
-		
+
 		$this->mArgs = $args;
 		$this->mPLSQLMode = $PLSQLMode;
 
@@ -129,22 +133,18 @@ class SQL2Wiki {
 	
 	public function execute( $sql ) {
 
-		$ignore = $this->mDB->ignoreErrors( true );
 		$this->initDBMSOutput();
-		
-		$this->mResult = $this->mDB->query( $sql );
 
-		$this->getDBMSOutput();
-		$this->mDB->ignoreErrors( $ignore );
-
-		if ( $this->mDB->lastError() != null ) {
-			if ( ( isset( $this->mArgs["quiet"] ) && $this->mArgs["quiet"] == 'true' ) ) {
-				$this->mError = wfMsgForContent( 'sql2wiki-err-failed_to_execute',  $sql, $this->mDB->lastError() );
+		try {
+			$this->mResult = $this->mDB->query( $sql, 'SQL2Wiki::execute', true );
+			$this->getDBMSOutput();
+		} catch (DBQueryError $ex) {
+			if ( !( isset( $this->mArgs["quiet"] ) && $this->mArgs["quiet"] == 'true' ) ) {
+				$this->mError = wfMsgForContent( 'sql2wiki-err-failed_to_execute',  $sql, $ex->error );
 			}
-
 			return false;
-		} 
-       
+		}
+
 		return true;	
 	}
 	
@@ -233,11 +233,12 @@ class SQL2Wiki {
 			return '';
 		}
 
+		$tableClass = isset( $this->mArgs["tableclass"] ) ? $this->mArgs["tableclass"] : 'wikitable';
 		$tableStyle = isset( $this->mArgs["tablestyle"] ) ? $this->mArgs["tablestyle"] : 'border: black solid 1px;';
 
-		$attributes = array_diff_key( $this->mArgs, array_flip( $this->ignoreAttributes ), array_flip( $this->ignoteTabAttributes ) );
+		$attributes = array_diff_key( $this->mArgs, array_flip( $this->ignoreAttributes ), array_flip( $this->ignoreTabAttributes ) );
 
-		$output = Xml::openElement( 'table', array_merge( $attributes, array( 'style' => $tableStyle ) ) );
+		$output = Xml::openElement( 'table', array_merge( $attributes, array( 'style' => $tableStyle, 'class' => $tableClass ) ) );
 
 		if ( !isset( $this->mArgs["noheader"] ) || $this->mArgs["noheader"] != 'true' ) {
 			$headerRowStyle = isset( $this->mArgs["hrowstyle"] ) ? $this->mArgs["hrow_style"] : '';
