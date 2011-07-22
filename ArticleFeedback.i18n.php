@@ -3739,6 +3739,7 @@ $messages['nn'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Event
  * @author Nghtwlkr
  * @author Sjurhamre
  */
@@ -3759,10 +3760,12 @@ $messages['no'] = array(
 	'articlefeedback-survey-submit' => 'Send',
 	'articlefeedback-survey-title' => 'Svar på noen få spørsmål',
 	'articlefeedback-survey-thanks' => 'Takk for at du fylte ut undersøkelsen.',
+	'articlefeedback-survey-disclaimer' => 'For å stimulere til å forbedre denne funksjonaliteten kan din tilbakemelding deles anonymt med Wikipedia-samfunnet.',
 	'articlefeedback-error' => 'En feil har oppstått. Prøv igjen senere.',
 	'articlefeedback-form-switch-label' => 'Vurder denne siden',
 	'articlefeedback-form-panel-title' => 'Vurder denne siden',
-	'articlefeedback-form-panel-instructions' => 'Ta deg tid til å vurdere denne siden.',
+	'articlefeedback-form-panel-explanation' => 'Hva er dette?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:ArticleFeedback',
 	'articlefeedback-form-panel-clear' => 'Fjern denne vurderingen',
 	'articlefeedback-form-panel-expertise' => 'Jeg er svært kunnskapsrik på dette området (valgfritt)',
 	'articlefeedback-form-panel-expertise-studies' => 'Jeg har en relevant høyskole-/universitetsgrad',
@@ -3785,12 +3788,27 @@ $messages['no'] = array(
 	'articlefeedback-report-ratings' => '$1 vurderinger',
 	'articlefeedback-field-trustworthy-label' => 'Pålitelig',
 	'articlefeedback-field-trustworthy-tip' => 'Føler du at denne siden har tilstrekkelig med siteringer og at disse siteringene kommer fra pålitelige kilder?',
+	'articlefeedback-field-trustworthy-tooltip-4' => 'Godt anerkjente kilder',
+	'articlefeedback-field-trustworthy-tooltip-5' => 'Spesielt anerkjente kilder',
 	'articlefeedback-field-complete-label' => 'Fullfør',
 	'articlefeedback-field-complete-tip' => 'Føler du at denne siden dekker de vesentlige emneområdene som den burde?',
+	'articlefeedback-field-complete-tooltip-1' => 'Mangler det meste av informasjonen',
+	'articlefeedback-field-complete-tooltip-2' => 'Inneholder noe informasjon',
+	'articlefeedback-field-complete-tooltip-3' => 'Inneholder viktig informasjon, med noen mangler',
+	'articlefeedback-field-complete-tooltip-4' => 'Inneholder det meste av nøkkelinformasjonen',
+	'articlefeedback-field-complete-tooltip-5' => 'Omfattende dekning',
 	'articlefeedback-field-objective-label' => 'Objektiv',
 	'articlefeedback-field-objective-tip' => 'Føler du at denne siden viser en rettferdig representasjon av alle perspektiv på problemet?',
+	'articlefeedback-field-objective-tooltip-1' => 'Sterkt subjektivt',
+	'articlefeedback-field-objective-tooltip-2' => 'Moderat subjektivt',
+	'articlefeedback-field-objective-tooltip-3' => 'Minimalt subjektivt',
+	'articlefeedback-field-objective-tooltip-4' => 'Ingen åpenbar subjektivitet',
+	'articlefeedback-field-objective-tooltip-5' => 'Helt objektivt',
 	'articlefeedback-field-wellwritten-label' => 'Velskrevet',
 	'articlefeedback-field-wellwritten-tip' => 'Føler du at denne siden er godt organisert og godt skrevet?',
+	'articlefeedback-field-wellwritten-tooltip-3' => 'Tilstrekkelig klart',
+	'articlefeedback-field-wellwritten-tooltip-4' => 'God klarhet',
+	'articlefeedback-field-wellwritten-tooltip-5' => 'Enestående klarhet',
 	'articlefeedback-pitch-reject' => 'Kanskje senere',
 	'articlefeedback-pitch-or' => 'eller',
 	'articlefeedback-pitch-thanks' => 'Takk. Dine vurderinger har blitt lagret.',
@@ -3813,7 +3831,10 @@ Prøv igjen senere.',
 	'articleFeedback-table-heading-page' => 'Side',
 	'articleFeedback-table-heading-average' => 'Gjennomsnitt',
 	'articleFeedback-copy-above-highlow-tables' => 'Dette er en eksperimentell funksjon.  Vennligst gi tilbakemelding på [$1 diskusjonssiden].',
-	'articleFeedback-copy-below-highlow-tables' => 'Disse tabellene inneholder sider som har mottatt minst 10 vurderinger i løpet av de siste 24 timene.  Gjennomsnittene beregnes ved å ta gjennomsnittet av alle vurderingene som er sendt inn i løpet av de siste 24 timene.',
+	'articlefeedback-dashboard-bottom' => "'''NB''': Vi vil fortsette å eksperimentere med forskjellige måter å eksponere artikler i disse oversiktene.  For tiden inkluderer oversiktene følgende artikler:
+ * sider med høyeste/laveste rangering: artikler som har mottatt minst 10 rangeringer innen de siste 24 timene.  Middelverdien blir beregnet fra alle rangeringer mottatt det siste døgnet.
+ * siste lavrangeringer: artikler som har fått 70% eller lavere (2 stjerner eller lavere) klassifisering i vilkårlig kategori de siste 24 timene. Bare artikler som har mottatt minst 10 rangeringer de siste 24 timene blir inkludert.",
+	'articlefeedback-disable-preference' => 'Skjul Artikkeltilbakemelding på sidene',
 	'articlefeedback-emailcapture-response-body' => 'Hei!
 
 Takk for din interesse i å hjelpe oss med å forbedre {{SITENAME}}. Vennligst bekreft e-posten din ved å klikke på lenken under:
