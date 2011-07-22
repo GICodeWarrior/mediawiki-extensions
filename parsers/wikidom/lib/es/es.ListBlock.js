@@ -28,23 +28,30 @@ es.ListBlockList.prototype.getLength = function() {
 };
 
 es.ListBlockList.prototype.getLocation = function( offset ) {
+
 	var itemOffset = 0,
 		itemLength;
+
 	for ( var i = 0; i < this.items.length; i++ ) {
+
 		itemLength = this.items[i].getLength();
+
 		if ( offset >= itemOffset && offset < itemOffset + itemLength ) {
+
 			if ( offset - itemOffset < this.items[i].content.getLength() ) {
 				return {
 					'item': this.items[i],
-					'offset': itemOffset
+					'offset': offset - itemOffset
 				};
 			}
+
 			var location = this.items[i].getLocation( offset - itemOffset );
 			return {
 				'item': location.item,
-				'offset': itemOffset + location.offset
+				'offset': /*itemOffset +*/ location.offset
 			}
 		}
+
 		itemOffset += itemLength;
 	}
 };
@@ -100,17 +107,23 @@ es.ListBlockItem.prototype.getLength = function() {
 
 
 
-es.ListBlockList.prototype.getLocation = function( offset ) {
-	if ( offset < this.content.length ) {
+es.ListBlockItem.prototype.getLocation = function( offset ) {
+
+	if ( offset < this.content.getLength() ) {
 		return {
 			'item': this,
 			'offset': offset
 		};
 	}
+
+	offset -= this.content.getLength();
+
 	var listOffset = 0,
 		listLength;
+	
 	for ( var i = 0; i < this.lists.length; i++ ) {
-		listLength = this.lists[i].length;
+		listLength = this.lists[i].getLength();
+
 		if ( offset >= listOffset && offset < listOffset + listLength ) {
 			return this.lists[i].getLocation( offset - listOffset );
 		}
