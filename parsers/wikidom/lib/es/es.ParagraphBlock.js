@@ -97,7 +97,7 @@ es.ParagraphBlock.prototype.annotateContent = function( method, annotation, star
  * @param offset {Integer} Offset to find word nearest to
  * @return {Object} Range object of boundaries
  */
-es.Block.prototype.getWordBoundaries = function( offset ) {
+es.ParagraphBlock.prototype.getWordBoundaries = function( offset ) {
 	return this.content.getWordBoundaries( offset );
 };
 
@@ -109,7 +109,7 @@ es.Block.prototype.getWordBoundaries = function( offset ) {
  * @param offset {Integer} Offset to find section nearest to
  * @return {Object} Range object of boundaries
  */
-es.Block.prototype.getSectionBoundaries = function( offset ) {
+es.ParagraphBlock.prototype.getSectionBoundaries = function( offset ) {
 	return new es.Range( 0, this.content.getLength() );
 };
 
