@@ -321,13 +321,13 @@ class PollResults extends qp_SpecialPage {
 		/*
 		# currently, error is not stored in DB, only the vote and long / short interpretations
 		# todo: is it worth to store it?
-		if ( $pollStore->interpAnswer->error != '' ) {
-			return '<strong class="error">' . qp_Setup::specialchars( $pollStore->interpAnswer->error ) . '</strong>';
+		if ( $pollStore->interpResult->error != '' ) {
+			return '<strong class="error">' . qp_Setup::specialchars( $pollStore->interpResult->error ) . '</strong>';
 		}
 		*/
 		$out .= '<div class="interp_answer">' . wfMsg( 'qp_results_interpretation_header' ) .
-				'<div class="interp_answer_body">' . nl2br( wfMsg( 'qp_results_short_interpretation', qp_Setup::specialChars( $pollStore->interpAnswer->short ) ) ) . '</div>' .
-				'<div class="interp_answer_body">' . nl2br( wfMsg( 'qp_results_long_interpretation', qp_Setup::specialChars( $pollStore->interpAnswer->long ) ) ) . '</div>' .
+				'<div class="interp_answer_body">' . nl2br( wfMsg( 'qp_results_short_interpretation', qp_Setup::specialChars( $pollStore->interpResult->short ) ) ) . '</div>' .
+				'<div class="interp_answer_body">' . nl2br( wfMsg( 'qp_results_long_interpretation', qp_Setup::specialChars( $pollStore->interpResult->long ) ) ) . '</div>' .
 				'</div>';
 		return $out;
 	}

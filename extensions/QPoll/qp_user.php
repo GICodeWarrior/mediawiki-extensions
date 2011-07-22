@@ -98,8 +98,8 @@ class qp_Setup {
 	static $messagesLoaded = false; // check whether the extension's localized messages are loaded
 	static $article; // Article instance we got from hook parameter
 	static $user; // User instance we got from hook parameter
-	# extension's namespaces with their canonical names
-	static $namespaces = array(
+	# interpretation script namespaces with their canonical names
+	static $interpNamespaces = array(
 		NS_QP_INTERPRETATION => 'Interpretation',
 		NS_QP_INTERPRETATION_TALK => 'Interpretation_talk'
 	);
@@ -225,7 +225,7 @@ class qp_Setup {
 			'view/qp_pollstatsview.php' => 'qp_PollStatsView',
 
 			# storage
-			'qp_pollstore.php' => array( 'qp_QuestionData', 'qp_InterpAnswer', 'qp_PollStore' ),
+			'qp_pollstore.php' => array( 'qp_QuestionData', 'qp_InterpResult', 'qp_PollStore' ),
 
 			# results page
 			'qp_results.php' => array( 'qp_SpecialPage', 'qp_QueryPage', 'PollResults' ),
@@ -247,21 +247,26 @@ class qp_Setup {
 		$wgHooks['CanonicalNamespaces'][] =
 		new qp_Setup;
 
-		# define namespaces for the interpretation scripts and their talk pages
-		foreach ( self::$namespaces as $ns_idx => $canonical_name ) {
-			if ( isset( $wgExtraNamespaces[$ns_idx] ) ) {
-				die( "QPoll requires namespace index {$ns_idx} which is already used by another extension. Either disable another extension or change the namespace index." );
-			}
-			$wgNamespaceProtection[$ns_idx] = array( 'editinterpretation' );
-		}
 		if ( self::mediaWikiVersionCompare( '1.17' ) ) {
-			foreach ( self::$namespaces as $ns_idx => $canonical_name ) {
+			# define namespaces for the interpretation scripts and their talk pages
+			# used only for non-localized namespace names in MW < 1.17
+			if ( !is_array( $wgExtraNamespaces ) ) {
+				$wgExtraNamespaces = array();
+			}
+			foreach ( self::$interpNamespaces as $ns_idx => $canonical_name ) {
+				if ( isset( $wgExtraNamespaces[$ns_idx] ) ) {
+					die( "QPoll requires namespace index {$ns_idx} which is already used by another extension. Either disable another extension or change the namespace index." );
+				}
+			}
+			foreach ( self::$interpNamespaces as $ns_idx => $canonical_name ) {
 				$wgExtraNamespaces[$ns_idx] = $canonical_name;
 			}
 		}
-
+		
+		foreach ( self::$interpNamespaces as $ns_idx => $canonical_name ) {
+			$wgNamespaceProtection[$ns_idx] = array( 'editinterpretation' );
+		}
 		# groups which has permission to access poll results by default
-		$wgGroupPermissions['user']['showresults'] = true;
 		$wgGroupPermissions['sysop']['pollresults'] = true;
 		$wgGroupPermissions['bureaucrat']['pollresults'] = true;
 		$wgGroupPermissions['polladmin']['pollresults'] = true;
@@ -510,7 +515,7 @@ class qp_Setup {
 	public static function onCanonicalNamespaces( &$list ) {
 		# do not use array_merge() as it will destroy negative indexes in $list
 		# thus completely ruining the namespaces list
-		foreach ( self::$namespaces as $ns_idx => $canonical_name ) {
+		foreach ( self::$interpNamespaces as $ns_idx => $canonical_name ) {
 			$list[$ns_idx] = $canonical_name;
 		}
 		return true;

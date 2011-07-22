@@ -228,7 +228,7 @@ class qp_Poll extends qp_AbstractPoll {
 			$this->pollStore->setLastUser( $this->username );
 			$this->pollStore->setUserVote();
 		}
-		if ( $this->pollStore->interpAnswer->isError() ) {
+		if ( $this->pollStore->interpResult->isError() ) {
 			# no redirect when there are script-generated proposal errors (quiz mode)
 			return false;
 		}

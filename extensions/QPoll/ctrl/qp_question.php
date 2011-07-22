@@ -623,12 +623,12 @@ class qp_Question extends qp_AbstractQuestion {
 	 *          false, when there are no script-generated error messages
 	 */
 	function getProposalsErrors() {
-		$interpAnswer = &$this->poll->pollStore->interpAnswer;
-		if ( !is_array( $interpAnswer->qpErrors ) ||
-				!isset( $interpAnswer->qpErrors[$this->mQuestionId] ) ) {
+		$interpResult = &$this->poll->pollStore->interpResult;
+		if ( !is_array( $interpResult->qpErrors ) ||
+				!isset( $interpResult->qpErrors[$this->mQuestionId] ) ) {
 			return false;
 		}
-		return $interpAnswer->qpErrors[$this->mQuestionId];
+		return $interpResult->qpErrors[$this->mQuestionId];
 	}
 
 } /* end of qp_Question class */
