@@ -19,10 +19,11 @@ $messages['en'] = array(
 	'moodbar-trigger-feedback' => 'Feedback about editing',
 	'moodbar-trigger-share' => 'Share your experience',
 	'tooltip-p-moodbar-trigger-using' => '',
-	'moodbar-intro-using' => 'Using $1 made me...',
 	'tooltip-p-moodbar-trigger-feedback' => '',
+	'tooltip-p-moodbar-trigger-share' => '',
 	// Overlay
 	'moodbar-close' => '(close)',
+	'moodbar-intro-using' => 'Using $1 made me...',
 	'moodbar-intro-feedback' => 'Feedback:',
 	'moodbar-type-happy-title' => 'Happy',
 	'moodbar-type-sad-title' => 'Sad',
