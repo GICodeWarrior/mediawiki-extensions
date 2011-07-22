@@ -753,18 +753,21 @@ class qp_PollStore {
 		if ( $this->username === $username ) {
 			return;
 		}
-		$this->username = $username;
 		$res = self::$db->select( 'qp_users','uid','name=' . self::$db->addQuotes( $username ), __METHOD__ );
 		$row = self::$db->fetchObject( $res );
-		if ( $row == false ) {
+		if ( $row === false ) {
 			if ( $store_new_user_to_db ) {
-				self::$db->insert( 'qp_users', array( 'name'=>$this->username ), __METHOD__ . ':UpdateUser' );
+				self::$db->insert( 'qp_users', array( 'name' => $username ), __METHOD__ . ':UpdateUser' );
 				$this->last_uid = intval( self::$db->insertId() );
+				# set username, user was created
+				$this->username = $username;
 			} else {
 				$this->last_uid = null;
 			}
 		} else {
 			$this->last_uid = intval( $row->uid );
+			# set username, used was loaded
+			$this->username = $username;
 		}
 		$res = self::$db->select( 'qp_users_polls',
 			array( 'attempts', 'short_interpretation', 'long_interpretation' ),
