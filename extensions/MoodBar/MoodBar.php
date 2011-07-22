@@ -58,8 +58,8 @@ $wgResourceModules['ext.moodBar.init'] = $mbResourceTemplate + array(
 		'tooltip-p-moodbar-trigger-feedback',
 	),
 	'position' => 'top',
-	'dependencies' => $oldVersion ? array() : array(
-		'mediawiki.user',
+	'dependencies' => array(
+		'jquery.cookie',
 	),
 );
 
@@ -101,7 +101,6 @@ $wgResourceModules['ext.moodBar.core'] = $mbResourceTemplate + array(
 		'ext.moodBar.init', // just in case
 		'jquery.localize',
 		'jquery.moodBar',
-		'jquery.cookie',
 	),
 	'position' => 'bottom',
 );
