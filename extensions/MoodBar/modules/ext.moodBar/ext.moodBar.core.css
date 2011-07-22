@@ -50,6 +50,18 @@
 	font-size: 12px;
 }
 
+.mw-moodBar-overlayWhat > a:hover {
+	text-decoration: none !important;
+}
+
+a:hover .mw-moodBar-overlayWhatLabel {
+	text-decoration: underline;
+}
+
+.mw-moodBar-overlayWhatTrigger {
+	text-decoration: none;
+}
+
 .mw-moodBar-form,
 .mw-moodBar-overlayWhatContent {
 	display: none;
