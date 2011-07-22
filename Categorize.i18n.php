@@ -105,6 +105,16 @@ $messages['ms'] = array(
 	'categorize-advice' => 'Klik pada label yang ingin anda atributkan kepada laman ini:',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Event
+ */
+$messages['no'] = array(
+	'categorize-desc' => 'Legger til inndatafelt for redigerings- og opplastingsside for å tillate brukere å knytte kategorier til siden',
+	'categorize-title' => 'Kunnskapskvalifisering',
+	'categorize-footer' => 'Hvis du ønsker å legge til en etikett, vennligst kontakt oss på ...',
+	'categorize-advice' => 'Klikk på etikettene som du ønsker å knytte til denne siden:',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
