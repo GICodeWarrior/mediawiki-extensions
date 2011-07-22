@@ -32,7 +32,7 @@
 					'system': clientData.platform,
 					'bucket': fbProps.bucket,
 					'type': fbProps.type,
-					'token': mw.config.get('mbConfig').editToken,
+					'token': mw.config.get('mbEditToken'),
 					'format': 'json'
 				};
 				

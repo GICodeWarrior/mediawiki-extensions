@@ -50,12 +50,17 @@ class MoodBarHooks {
 	 * ResourceLoaderGetConfigVars hook
 	 */
 	public static function resourceLoaderGetConfigVars( &$vars ) {
-		global $wgUser, $wgMoodBarConfig;
+		global $wgMoodBarConfig;
 		$vars['mbConfig'] = array(
 			'validTypes' => MBFeedbackItem::getValidTypes(),
 			'userBuckets' => MoodBarHooks::getUserBuckets( $wgUser ),
-			'editToken' => $wgUser->editToken(),
 		) + $wgMoodBarConfig;
+		return true;
+	}
+	
+	public static function makeGlobalVariablesScript( &$vars ) {
+		global $wgUser;
+		$vars['mbEditToken'] = $wgUser->editToken();
 		return true;
 	}
 	
