@@ -100,6 +100,13 @@ $messages['nl'] = array(
 	'creativecommonsrdf-desc' => 'Creative Commons RDF-metadata',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Event
+ */
+$messages['no'] = array(
+	'creativecommonsrdf-desc' => 'CreativeCommons RDF-metadata',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

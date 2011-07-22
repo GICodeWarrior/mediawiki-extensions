@@ -331,6 +331,19 @@ $messages['nl'] = array(
 	'emailusers-toomanyrecipientsselected' => 'Er zijn te veel ontvangers geselecteerd. U mag maximaal {{PLURAL:$1|$1 ontvanger|$1 ontvangers}} selecteren.',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Event
+ */
+$messages['no'] = array(
+	'emailusers-desc' => 'Tillater brukere å sende e-post til flere mottakere',
+	'right-sendbatchemail' => 'Send e-post samtidig til flere mottakere',
+	'emailusers' => 'E-post-brukere',
+	'emailusers-target-reverse' => 'Send til alle brukere unntatt noen utvalgte',
+	'emailusers-norecipient' => 'Det finnes ingen du kan sende e-post til.',
+	'emailusers-norecipientselected' => 'Ingen mottakere er valgt.',
+	'emailusers-toomanyrecipientsselected' => 'For mange mottakere er valgt ({{PLURAL:$1|maximum $1|maximum $1}}).',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Dragonòt
  */

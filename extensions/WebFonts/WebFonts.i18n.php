@@ -278,13 +278,14 @@ $messages['no'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'webfonts' => 'WebFonts',
-	'webfonts-desc' => 'Anseriss sorziss an pagine',
-	'webfonts-load' => 'Selession-a sorziss',
-	'webfonts-disable-preference' => 'Disabìlita anseriment sorziss (WebFonts)',
+	'webfonts' => "Caràter dl'aragnà",
+	'webfonts-desc' => 'Anserì ij caràter ant le pàgine',
+	'webfonts-load' => "Ch'a selession-a un tipo ëd caràter",
+	'webfonts-disable-preference' => "Disabilité l'anseriment ëd tipo ëd caràter (Caràter dl'aragnà)",
 );
 
 /** Pashto (پښتو)

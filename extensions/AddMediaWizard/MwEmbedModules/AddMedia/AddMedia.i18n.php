@@ -4246,6 +4246,10 @@ De kanns $1, un dann $2.',
 	'mwe-cc_sa_title' => 'Afjeleidt Werke onger desellve Bedenunge wigger jävve',
 	'mwe-cc_pd_title' => 'Allmende (jemeinfrei, <i lang="en">public domain</i>)',
 	'mwe-unknown_license' => 'En onbikannte Lizänz',
+	'mwe-no-import-by-url' => 'Dat Wiki heh udder Do als Metmaacher kanns kei Datteije vun främbse <i lang="en">URL</i>s empoteere.
+<p>Moß De enlogge?</p>
+<p>Häß De dat Rääsch, vun <i lang="en">URL</i>?s jät huh ze laade?
+Hät dat Wiki <code lang="en">$1</code> enjeschalldt?</p>',
 	'mwe-results_from' => 'Wat eruß kohm bei $1',
 	'mwe-missing_desc_see_source' => 'Dat Denge hee es unbeschrevve. Loor op dä [$1 Ojinaal-Sigg] noh, un hellf met, dat mer dat beschrevve krijje.',
 	'mwe-am-config_error' => 'Dä Hexemeister för Meedije hädd_enne Fähler en singe Enshtällunge: $1',
@@ -4266,6 +4270,8 @@ De kanns $1, un dann $2.',
 	'mwe-return-search-results' => 'Jangk retuur noh däm, wat bei em Söhke eruß kohm',
 	'mwe-importing_asset' => 'Ben aam Empotteere',
 	'mwe-preview_insert_resource' => 'Vör_Aansesch övver et Ennfööje vun „$1“',
+	'mwe-do-more-modification' => 'Mieh ändere',
+	'mwe-checking-resource' => 'Ben noh de Quäll söhke',
 	'mwe-resource-needs-import' => 'De Quäll $1 moß noh $2 empotteet wääde
 ',
 	'mwe-warning-upload-to-commons' => '$1 schleiht vör, dat De noh de <i lang="en">Wikimedia Commons</i> huhlääds.
@@ -4290,6 +4296,9 @@ Donn bloß noh heh däm Wiki huhlaade, wann De $2 jelässe häs.
 	'mwe-am-metavid-title' => '<i lang="en">Metavid.org</i>',
 	'mwe-am-metavid-desc' => '<i lang="en">Metavid.org</i>, e jemeinsam Aschiif vum
 US House and Senate floor proceedings',
+	'mwe-am-search-timeout' => 'Et Söhke es nit ann e Engk jekumme.
+Dä ẞööver künnt zoh vill ze donn han.
+Do kanns_et shpääder norr_ens probbeere.',
 	'mwe-upload-transcoded-status' => 'Ömjesaz',
 	'mwe-upload-transcode-in-progress' => 'Et Huhlaade un Ömsäze es ungerwähß (Donn heh dat Finster nit zohmaache)',
 	'mwe-upload-multi' => '{{PLURAL:$1|Ein Datei|$1 Dateie|Kein Datteije}} huhlaade',
@@ -4744,6 +4753,7 @@ $messages['ml'] = array(
 	'mwe-cc_pd_title' => 'പൊതുസഞ്ചയം',
 	'mwe-unknown_license' => 'അപരിചിതമായ അനുമതി',
 	'mwe-results_from' => '$1 മുതലുള്ള ഫലങ്ങൾ',
+	'mwe-your-recent-uploads' => 'നിങ്ങളുടെ അപ്‌ലോഡുകൾ',
 	'mwe-no_recent_uploads' => 'സമീപകാലത്ത് അപ്‌ലോഡുകൾ നടന്നിട്ടില്ല',
 	'mwe-upload-a-file' => 'ഒരു പുതിയ പ്രമാണം അപ്‌ലോഡ് ചെയ്യുക',
 	'mwe-resource_page_desc' => 'സ്രോതസ്സ് താളിന്റെ വിവരണം:',

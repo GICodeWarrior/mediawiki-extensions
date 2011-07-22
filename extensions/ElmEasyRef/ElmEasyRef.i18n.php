@@ -162,9 +162,11 @@ $messages['nl'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Event
  * @author Nghtwlkr
  */
 $messages['no'] = array(
+	'elm-easyref-desc' => 'Legg inn nedtrekksfelt for å vise referanseinnholdet',
 	'elm-easyref-ref' => 'Referanse $1',
 	'elm-easyref-close' => 'Lukk',
 );

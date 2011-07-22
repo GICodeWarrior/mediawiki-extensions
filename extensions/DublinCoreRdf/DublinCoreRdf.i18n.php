@@ -115,6 +115,13 @@ $messages['nl'] = array(
 	'dublincorerdf-desc' => 'Dublin Core RDF-metadata',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Event
+ */
+$messages['no'] = array(
+	'dublincorerdf-desc' => 'Dublin Core RDF-metadata',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

@@ -424,6 +424,13 @@ $messages['mk'] = array(
 	'apisb-query-meta' => 'Метаинформации',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Junaidpv
+ */
+$messages['ml'] = array(
+	'apisb-result' => 'ഫലം',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Anakmalaysia
  */
