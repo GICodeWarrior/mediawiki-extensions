@@ -28,7 +28,7 @@
 					'page': fbProps.page,
 					'comment': fbProps.comment,
 					'anonymize': fbProps.anonymize,
-					'useragent': clientData.name + '/' + clientData.versionBase,
+					'useragent': clientData.name + '/' + clientData.versionNumber,
 					'system': clientData.platform,
 					'bucket': fbProps.bucket,
 					'type': fbProps.type,
