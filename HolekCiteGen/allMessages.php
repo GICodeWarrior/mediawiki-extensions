@@ -1000,6 +1000,7 @@ $messages['sv'] = array(
 	'ts-citegen-Tools' => 'Verktyg',
 	'ts-citegen-Other-languages' => 'Andra språk',
 	'ts-citegen-Errors-title' => 'Fel',
+	'ts-citegen-base-disabled' => 'Fel: Databasen %s är inte tillgänglig',
 );
 
 /** Silesian (Ślůnski)

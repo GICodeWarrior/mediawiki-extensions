@@ -1319,6 +1319,7 @@ $messages['sv'] = array(
 	'toolbase-footer-source' => 'Visa källa',
 	'toolbase-footer-language' => 'Ändra språk',
 	'toolbase-footer-translate' => 'Översätt',
+	'toolbase-navigation' => 'Navigation',
 	'toolbase-navigation-homepage' => 'Hemsida',
 	'toolbase-navigation-user_id' => 'Hitta användar-ID',
 	'toolbase-navigation-autoedits' => 'Automatiserad redigeringsräknare',
