@@ -121,51 +121,66 @@ a:hover .mw-moodBar-overlayWhatLabel {
 
 /* Happy */
 .mw-moodBar-types .mw-moodBar-type-happy {
+	/* @embed */
 	background-image: url(images/type-happy-normal.png);
 }
 .mw-moodBar-types-hover .mw-moodBar-type-happy {
+	/* @embed */
 	background-image: url(images/type-happy-hoverside.png);
 }
 .mw-moodBar-types-hover .mw-moodBar-type-happy:hover {
+	/* @embed */
 	background-image: url(images/type-happy-hovered.png);
 }
 .mw-moodBar-types-select .mw-moodBar-type-happy  {
+	/* @embed */
 	background-image: url(images/type-happy-dull.png);
 }
 .mw-moodBar-types-select .mw-moodBar-type-happy.mw-moodBar-selected {
+	/* @embed */
 	background-image: url(images/type-happy-selected.png);
 }
 
 /* Sad */
 .mw-moodBar-types .mw-moodBar-type-sad {
+	/* @embed */
 	background-image: url(images/type-sad-normal.png);
 }
 .mw-moodBar-types-hover .mw-moodBar-type-sad {
+	/* @embed */
 	background-image: url(images/type-sad-hoverside.png);
 }
 .mw-moodBar-types-hover .mw-moodBar-type-sad:hover {
+	/* @embed */
 	background-image: url(images/type-sad-hovered.png);
 }
 .mw-moodBar-types-select .mw-moodBar-type-sad {
+	/* @embed */
 	background-image: url(images/type-sad-dull.png);
 }
 .mw-moodBar-types-select .mw-moodBar-type-sad.mw-moodBar-selected {
+	/* @embed */
 	background-image: url(images/type-sad-selected.png);
 }
 
 /* Confused */
 .mw-moodBar-types .mw-moodBar-type-confused {
+	/* @embed */
 	background-image: url(images/type-confused-normal.png);
 }
 .mw-moodBar-types-hover .mw-moodBar-type-confused {
+	/* @embed */
 	background-image: url(images/type-confused-hoverside.png);
 }
 .mw-moodBar-types-hover .mw-moodBar-type-confused:hover {
+	/* @embed */
 	background-image: url(images/type-confused-hovered.png);
 }
 .mw-moodBar-types-select .mw-moodBar-type-confused {
+	/* @embed */
 	background-image: url(images/type-confused-dull.png);
 }
 .mw-moodBar-types-select .mw-moodBar-type-confused.mw-moodBar-selected {
+	/* @embed */
 	background-image: url(images/type-confused-selected.png);
 }
