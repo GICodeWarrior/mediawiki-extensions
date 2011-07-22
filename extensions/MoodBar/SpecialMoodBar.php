@@ -64,8 +64,6 @@ class MoodBarPager extends TablePager {
 	// Overridden from TablePager, it's just easier because
 	// we're doing things with a proper object model
 	function formatRow( $row ) {
-		$item = MBFeedbackItem::load( $row );
-		
 		$out = '';
 		
 		$data = MBFeedbackItem::load( $row );
