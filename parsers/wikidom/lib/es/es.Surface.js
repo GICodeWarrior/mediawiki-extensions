@@ -66,6 +66,15 @@ es.Surface = function( $container, doc ) {
 			'blur': function( e ) {
 				$document.unbind('.editSurface');
 				surface.cursor.hide();
+			},
+			'cut': function( e ) {
+				return surface.onCut( e );			
+			},
+			'copy': function( e ) {
+				return surface.onCopy( e );			
+			},
+			'paste': function( e ) {
+				return surface.onPaste( e );			
 			}
 		} );
 	
@@ -121,9 +130,15 @@ es.Surface.prototype.onKeyDown = function( e ) {
 				}
 				this.drawSelection();
 			}
-			break;		
+			break;
 		case 17: // Control
 			this.ctrlDown = true;
+			break;
+		case 18: // Alt
+			this.altDown = true;
+			break;
+		case 91: // Command
+			this.commandDown = true;
 			break;
 		case 37: // Left arrow
 			this.initialHorizontalCursorPosition = null;
@@ -171,6 +186,9 @@ es.Surface.prototype.onKeyDown = function( e ) {
 			this.handleDelete();
 			break;
 		default:
+			if ( this.ctrlDown || this.altDown || this.commandDown ) {
+				break;
+			}
 			this.initialHorizontalCursorPosition = null;
 			this.cursor.hide();
 			if ( this.keyboard.keydownTimeout ) {
@@ -178,26 +196,47 @@ es.Surface.prototype.onKeyDown = function( e ) {
 			}
 			var surface = this;
 			this.keyboard.keydownTimeout = setTimeout( function () {
-				var val = surface.$input.val();
-				surface.$input.val( '' );
-				if ( val.length > 0 ) {
-					if ( surface.selection.from && surface.selection.to ) {
-						var deleteSelection = surface.selection;
-						deleteSelection.normalize();
-						surface.location = surface.selection.start;
-						surface.deleteContent( deleteSelection );
-					}
-					var insertLocation = surface.location;
-					surface.selection = new es.Selection();
-					surface.location = new es.Location(
-						surface.location.block, surface.location.offset + val.length
-					);
-					surface.insertContent( insertLocation, val.split('') );
-				}
+				surface.insertFromInput();
 			}, 10 );
 			break;
 	}
 	return true;
+};
+
+es.Surface.prototype.insertFromInput = function() {
+	var val = this.$input.val();
+	this.$input.val( '' );
+	if ( val.length > 0 ) {
+		if ( this.selection.from && this.selection.to ) {
+			var deleteSelection = this.selection;
+			deleteSelection.normalize();
+			this.location = this.selection.start;
+			this.deleteContent( deleteSelection );
+		}
+		var insertLocation = this.location;
+		this.selection = new es.Selection();
+		this.location = new es.Location(
+			this.location.block, this.location.offset + val.length
+		);
+		this.insertContent( insertLocation, val.split('') );
+	}
+};
+
+es.Surface.prototype.onCut = function( e ) {
+	// TODO: Keep a Content object copy of the selection
+};
+
+es.Surface.prototype.onCopy = function( e ) {
+	// TODO: Keep a Content object copy of the selection
+};
+
+es.Surface.prototype.onPaste = function( e ) {
+	// TODO: If clipboard data is same as previous copy, use the Content object version
+	var surface = this;
+	// Catch content just AFTER paste
+	setTimeout( function() {
+		surface.insertFromInput();
+	}, 0 );
 };
 
 es.Surface.prototype.onKeyUp = function( e ) {
@@ -210,6 +249,12 @@ es.Surface.prototype.onKeyUp = function( e ) {
 			break;
 		case 17: // Control
 			this.ctrlDown = false;
+			break;
+		case 18: // Alt
+			this.altDown = false;
+			break;
+		case 91: // Command
+			this.commandDown = false;
 			break;
 		default:		
 			var surface = this;
@@ -307,7 +352,7 @@ es.Surface.prototype.onMouseDown = function( e ) {
 	}
 	this.initialHorizontalCursorPosition = null;
 	if ( !this.$input.is(':focus') ) {
-		this.$input.focus();
+		this.$input.focus().select();
 	}
 	return false;
 };
@@ -335,8 +380,9 @@ es.Surface.prototype.onMouseUp = function( e ) {
  * @return {Boolean} If selection is visibly painted
  */
 es.Surface.prototype.drawSelection = function() {
-	var blockWidth;
-
+	var blockWidth,
+		text = '';
+	
 	if ( this.selection.from && this.selection.to ) {
 		this.selection.normalize();
 		var from = {
@@ -399,12 +445,13 @@ es.Surface.prototype.drawSelection = function() {
 					this.$rangeFill.hide();
 				}
 			}
+			text += from.location.block.getText( from.location.offset, to.location.offset );
 		} else {
 			// Multiple block selection
 			blockWidth = Math.max(
-					from.location.block.$.width(),
-					to.location.block.$.width()
-				);
+				from.location.block.$.width(),
+				to.location.block.$.width()
+			);
 			var fromBlockOffset = from.location.block.$.offset(),
 				toBlockOffset = to.location.block.$.offset(),
 				blockLeft = Math.min( fromBlockOffset.left, toBlockOffset.left );
@@ -433,10 +480,13 @@ es.Surface.prototype.drawSelection = function() {
 						- ( fromBlockOffset.top + from.position.bottom )
 				} )
 				.show();
+			// TODO: Get text from multiple-block selection
 		}
+		this.$input.val( text ).select();
 		this.$ranges.show();
 		return true;
 	}
+	this.$input.val( text ).select();
 	this.$ranges.hide();
 	return false;
 };

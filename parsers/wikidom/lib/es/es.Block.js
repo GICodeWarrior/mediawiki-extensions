@@ -77,11 +77,32 @@ es.Block.prototype.insertContent = function( offset, content ) {
 /**
  * Deletes content in a block within a range.
  * 
- * @param offset {Integer} Position to start removing content from
- * @param length {Integer} Length of content to remove
+ * @param offset {Integer} Offset to start removing content from
+ * @param length {Integer} Offset to start removing content to
  */
-es.Block.prototype.deleteContent = function( offset, length ) {
+es.Block.prototype.deleteContent = function( start, end ) {
 	throw 'Block.deleteContent not implemented in this subclass.';
+};
+
+/**
+ * Gets content within a range.
+ * 
+ * @param start {Integer} Offset to get content from
+ * @param end {Integer} Offset to get content to
+ */
+es.Block.prototype.getContent = function( start, end ) {
+	throw 'Block.getContent not implemented in this subclass.';
+};
+
+/**
+ * Gets content as plain text within a range.
+ * 
+ * @param start {Integer} Offset to start get text from
+ * @param end {Integer} Offset to start get text to
+ * @param render {Boolean} If annotations should have any influence on output
+ */
+es.Block.prototype.getText = function( start, end, render ) {
+	throw 'Block.getText not implemented in this subclass.';
 };
 
 /**

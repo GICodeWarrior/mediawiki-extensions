@@ -262,11 +262,15 @@ es.Content.renderAnnotation = function( bias, annotation, stack ) {
  * 
  * Range arguments (start and end) are clamped if out of range.
  * 
+ * TODO: Implement render option, which will allow annotations to influence output, such as an
+ * image outputing it's URL
+ * 
  * @param start {Integer} Optional beginning of range, if omitted range will begin at 0
  * @param end {Integer} Optional end of range, if omitted range will end a this.data.length
+ * @param render {Boolean} If annotations should have any influence on output
  * @return {String} Plain text within given range
  */
-es.Content.prototype.substring = function( start, end ) {
+es.Content.prototype.getText = function( start, end, render ) {
 	// Wrap values
 	start = Math.max( 0, start || 0 );
 	if ( end === undefined ) {

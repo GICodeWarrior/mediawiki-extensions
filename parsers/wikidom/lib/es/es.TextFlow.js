@@ -201,7 +201,7 @@ es.TextFlow.prototype.scanBoundaries = function() {
 	 * "boundaries" array. Slices of the "words" array can be joined, producing the escaped HTML of
 	 * the words.
 	 */
-	var text = this.content.substring();
+	var text = this.content.getText();
 	// Purge "boundaries" and "words" arrays
 	this.boundaries = [0];
 	// Reset RegExp object's state
@@ -381,7 +381,7 @@ es.TextFlow.prototype.appendLine = function( start, end, wordOffset, fractional 
 	$line[0].innerHTML = this.content.render( start, end );
 	// Collect line information
 	rs.lines.push({
-		'text': this.content.substring( start, end ),
+		'text': this.content.getText( start, end ),
 		'start': start,
 		'end': end,
 		'width': $line.outerWidth(),
