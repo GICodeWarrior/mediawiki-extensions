@@ -7,6 +7,7 @@ es.ListBlockList = function( style, items ) {
 	for ( var i = 0; i < items.length; i++ ) {
 		listItems.push( new es.ListBlockItem( items[i].line, items[i].lists || [] ) );
 	}
+
 	/*
 	 * Initialize container
 	 * 
@@ -37,14 +38,6 @@ es.ListBlockList.prototype.getLocationFromOffset = function( offset ) {
 		itemLength = this.items[i].getLength();
 
 		if ( offset >= itemOffset && offset < itemOffset + itemLength ) {
-
-			if ( offset - itemOffset < this.items[i].content.getLength() ) {
-				return {
-					'item': this.items[i],
-					'offset': offset - itemOffset
-				};
-			}
-
 			var location = this.items[i].getLocationFromOffset( offset - itemOffset );
 			return {
 				'item': location.item,
@@ -105,18 +98,17 @@ es.ListBlockItem.prototype.getLength = function() {
 	return length;
 };
 
-
-
 es.ListBlockItem.prototype.getLocationFromOffset = function( offset ) {
+	var contentLength = this.content.getLength(); 
 
-	if ( offset < this.content.getLength() ) {
+	if ( offset < contentLength ) {
 		return {
 			'item': this,
 			'offset': offset
 		};
 	}
 
-	offset -= this.content.getLength();
+	offset -= contentLength;
 
 	var listOffset = 0,
 		listLength;
@@ -165,6 +157,46 @@ es.ListBlock.prototype.getLength = function() {
  */
 es.ListBlock.prototype.renderContent = function( offset ) {
 	this.list.renderContent( offset );
+};
+
+es.ListBlock.prototype.getPosition = function( offset ) {
+	var location = this.list.getLocationFromOffset( offset ),
+		position = location.item.flow.getPosition( location.offset ),
+		blockOffset = this.$.offset(),
+		lineOffset = location.item.$line.find( '.editSurface-list-content' ).offset();
+
+		
+		
+	position.top += lineOffset.top - blockOffset.top; 
+	position.left += lineOffset.left - blockOffset.left;
+	position.bottom += lineOffset.top - blockOffset.top;
+	
+	return position;
+};
+
+es.ListBlock.prototype.getOffset = function( position ) {
+	var $lines = this.$.find( '.editSurface-line' ),
+		$line,
+		blockOffset = this.$.offset();
+	var length = 0;
+	$lines.each( function() {
+		if ( position.top <= ( $(this).offset().top - blockOffset.top ) ) {
+			return false;
+		}
+		length += $(this).closest( '.editSurface-item' ).data('item').content.getLength();
+		$line = $(this);
+	} );
+
+	var item = $line.closest( '.editSurface-item' ).data( 'item' ),
+		lineOffset = $line.parent().offset();
+		length -= item.content.getLength();
+
+
+	position.top -= lineOffset.top - blockOffset.top; 
+	position.left -= lineOffset.left - blockOffset.left;
+	position.bottom -= lineOffset.top - blockOffset.top;
+
+	return length +  item.flow.getOffset( position );
 };
 
 es.Block.models['list'] = es.ListBlock;
