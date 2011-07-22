@@ -24,7 +24,8 @@ class MoodBarHooks {
 		if ( $skin->getSkinName() !== 'vector' ) {
 			return false;
 		}
-		$user = $output->getUser();
+		global $wgUser;
+		$user = $wgUser;
 		
 		if ( $user->isAnon() ) {
 			return false;
