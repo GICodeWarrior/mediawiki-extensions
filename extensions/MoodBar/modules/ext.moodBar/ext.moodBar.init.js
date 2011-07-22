@@ -14,7 +14,15 @@
 		},
 
 		isDisabled: function() {
-			return $.cookie( mb.cookiePrefix() + 'disabled' ) == '1';
+			var cookieDisabled = ($.cookie( mb.cookiePrefix() + 'disabled' ) == '1');
+			var browserDisabled = false;
+			var clientInfo = $.client.profile();
+			
+			if ( clientInfo.name == 'msie' && clientInfo.versionNumber < 8 ) {
+				browserDisabled = true;
+			}
+			
+			return cookieDisabled || browserDisabled;
 		},
 
 		ui: {
