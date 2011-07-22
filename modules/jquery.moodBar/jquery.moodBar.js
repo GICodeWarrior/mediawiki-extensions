@@ -28,7 +28,6 @@
 					'page': fbProps.page,
 					'comment': fbProps.comment,
 					'anonymize': fbProps.anonymize,
-					'editmode': fbProps.editmode,
 					'useragent': clientData.name + '/' + clientData.versionBase,
 					'system': clientData.platform,
 					'bucket': fbProps.bucket,
@@ -36,6 +35,11 @@
 					'token': mw.config.get('mbConfig').editToken,
 					'format': 'json'
 				};
+				
+				// API treats any value as true.
+				if ( fbProps.editmode ) {
+					apiRequest.editmode = true;
+				}
 
 			return $.ajax( {
 				type: 'post',
