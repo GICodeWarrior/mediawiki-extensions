@@ -231,7 +231,7 @@
 				.appendTo( 'body' )
 				// Fix the width after the icons and titles are localized and inserted
 				.width( function( i, width ) {
-					return width;
+					return width + 10;
 				} );
 
 			// Bind triger
