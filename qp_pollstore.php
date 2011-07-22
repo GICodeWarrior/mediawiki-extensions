@@ -909,9 +909,10 @@ class qp_PollStore {
 
 		# prepare array of user answers that will be passed to the interpreter
 		$poll_answer = array();
-		foreach ( $this->Questions as $qkey => &$qdata ) {
+
+		foreach ( $this->Questions as &$qdata ) {
 			$questions = array();
-			foreach( $qdata->ProposalText as $propkey => &$proposal_text ) {
+			foreach ( $qdata->ProposalText as $propkey => &$proposal_text ) {
 				$proposals = array();
 				foreach ( $qdata->Categories as $catkey => &$cat_name ) {
 					$text_answer = '';
@@ -922,11 +923,13 @@ class qp_PollStore {
 				}
 				$questions[$propkey] = $proposals;
 			}
-			$poll_answer[$qkey] = $questions;
+			if ( $this->isUsedQuestion( $qdata->question_id ) ) {
+				$poll_answer[$qdata->question_id] = $questions;
+			}
 		}
 
 		# interpret the poll answer to get interpretation answer
-		$this->interpResult = qp_Interpret::getResult( $interpArticle, array( 'answer' => $poll_answer ) );
+		$this->interpResult = qp_Interpret::getResult( $interpArticle, array( 'answer' => $poll_answer, 'randomQuestions' => $this->randomQuestions ) );
 	}
 
 	// warning: requires qp_PollStorage::last_uid to be set
