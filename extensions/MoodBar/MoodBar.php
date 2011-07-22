@@ -53,9 +53,9 @@ $wgResourceModules['ext.moodBar.init'] = $mbResourceTemplate + array(
 		'moodbar-trigger-using',
 		'moodbar-trigger-feedback',
 		'moodbar-trigger-share',
-		'tooltip-p-moodbar-trigger-using',
-		'moodbar-trigger-feedback',
 		'tooltip-p-moodbar-trigger-feedback',
+		'tooltip-p-moodbar-trigger-using',
+		'tooltip-p-moodbar-trigger-share',
 	),
 	'position' => 'top',
 	'dependencies' => array(
