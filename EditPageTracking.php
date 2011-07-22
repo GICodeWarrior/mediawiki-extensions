@@ -75,6 +75,9 @@ abstract class EditPageTracking {
 		
 		$wgUser->mFirstEditPage = $timestamp;
 		
+		$cacheKey = wfMemcKey( 'first-edit-page', $wgUser->getId() );
+		$wgMemc->set($cacheKey, $timestamp, 86400);
+		
 		return true;
 	}
 	
