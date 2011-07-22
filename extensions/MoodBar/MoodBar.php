@@ -44,6 +44,8 @@ $mbResourceTemplate = array(
 	'remoteExtPath' => 'MoodBar/modules'
 );
 
+$oldVersion = version_compare( $wgVersion, '1.17', '<=' );
+
 $wgResourceModules['ext.moodBar.init'] = $mbResourceTemplate + array(
 	'styles' => 'ext.moodBar/ext.moodBar.init.css',
 	'scripts' => 'ext.moodBar/ext.moodBar.init.js',
@@ -56,7 +58,7 @@ $wgResourceModules['ext.moodBar.init'] = $mbResourceTemplate + array(
 		'tooltip-p-moodbar-trigger-feedback',
 	),
 	'position' => 'top',
-	'dependencies' => array(
+	'dependencies' => $oldVersion ? array() : array(
 		'mediawiki.user',
 	),
 );
