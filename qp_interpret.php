@@ -43,16 +43,20 @@ class qp_Interpret {
 	 * Glues the content of <qpinterpret> tags together, checks "lang" attribute
 	 * and calls appropriate interpretator to evaluate the user answer
 	 * 
-	 * @param $interpArticle  _existing_ article with interpretation script enclosed in <qpinterp> tags
-	 * @param $answers  array of user selected categories for every proposal & question of the poll
-	 * @return instance of qp_InterpAnswer class
+	 * @param $interpArticle  _existing_ Article with interpretation script enclosed in <qpinterp> tags
+	 * @param $injectVars  array with the following possible keys:
+	 *                     key 'answer' array of user selected categories for
+	 *                     every proposal & question of the poll;
+	 *                     key 'usedQuestions' array of used questions for randomized polls
+	 *                     or false, when the poll questions were not randomized
+	 * @return instance of qp_InterpResult class (interpretation result)
 	 */
-	static function getAnswer( $interpArticle, $answers ) {
+	static function getResult( $interpArticle, $injectVars ) {
 		global $wgParser;
 		$matches = array();
 		# extract <qpinterpret> tags from the article content
 		$wgParser->extractTagsAndParams( array( qp_Setup::$interpTag ), $interpArticle->getRawText(), $matches );
-		$interpAnswer = new qp_InterpAnswer();
+		$interpResult = new qp_InterpResult();
 		# glue content of all <qpinterpret> tags at the page together
 		$interpretScript = '';
 		$lang = '';
@@ -62,12 +66,12 @@ class qp_Interpret {
 			# however we do not want to limit interpretation language,
 			# so the attribute is enforced to use
 			if ( !isset( $attrs['lang'] ) ) {
-				return $interpAnswer->setError( wfMsg( 'qp_error_eval_missed_lang_attr' ) );
+				return $interpResult->setError( wfMsg( 'qp_error_eval_missed_lang_attr' ) );
 			}
 			if ( $lang == '' ) {
 				$lang = $attrs['lang'];
 			} elseif ( $attrs['lang'] != $lang ) {
-				return $interpAnswer->setError( wfMsg( 'qp_error_eval_mix_languages', $lang, $attrs['lang'] ) );
+				return $interpResult->setError( wfMsg( 'qp_error_eval_mix_languages', $lang, $attrs['lang'] ) );
 			}
 			if ( $tagName == qp_Setup::$interpTag ) {
 				$interpretScript .= $content;
@@ -75,43 +79,43 @@ class qp_Interpret {
 		}
 		switch ( $lang ) {
 		case 'php' :
-			$result = qp_Eval::interpretAnswer( $interpretScript, $answers, $interpAnswer );
-			if ( $result instanceof qp_InterpAnswer ) {
+			$result = qp_Eval::interpretAnswer( $interpretScript, $injectVars, $interpResult );
+			if ( $result instanceof qp_InterpResult ) {
 				# evaluation error (environment error) , return it;
-				return $interpAnswer;
+				return $interpResult;
 			}
 			break;
 		default :
-			return $interpAnswer->setError( wfMsg( 'qp_error_eval_unsupported_language', $lang ) );
+			return $interpResult->setError( wfMsg( 'qp_error_eval_unsupported_language', $lang ) );
 		}
 		/*** process the result ***/
 		if ( !is_array( $result ) ) {
-			return $interpAnswer->setError( wfMsg( 'qp_error_interpretation_no_return' ) );
+			return $interpResult->setError( wfMsg( 'qp_error_interpretation_no_return' ) );
 		}
-		# initialize $interpAnswer->qpError[] member array
+		# initialize $interpResult->qpError[] member array
 		foreach ( $result as $qidx => $question ) {
 			if ( is_int( $qidx ) && is_array( $question ) ) {
 				foreach ( $question as $pidx => $error ) {
 					if ( is_int( $pidx ) ) {
-						$interpAnswer->setQPerror( $qidx, $pidx, $error );
+						$interpResult->setQPerror( $qidx, $pidx, $error );
 					}
 				}
 			}
 		}
 		if ( isset( $result['error'] ) && trim( $result['error'] ) != '' ) {
 			# script-generated error for the whole answer
-			return $interpAnswer->setError( (string) $result['error'] );
+			return $interpResult->setError( (string) $result['error'] );
 		}
 		# if there were question/proposal errors, return them;
-		if ( $interpAnswer->isError() ) {
-			return $interpAnswer->setDefaultErrorMessage();
+		if ( $interpResult->isError() ) {
+			return $interpResult->setDefaultErrorMessage();
 		}
 		if ( !isset( $result['short'] ) || !isset( $result['long'] ) ) {
-			return $interpAnswer->setError( wfMsg( 'qp_error_interpretation_no_return' ) );
+			return $interpResult->setError( wfMsg( 'qp_error_interpretation_no_return' ) );
 		}
-		$interpAnswer->short = (string) $result['short'];
-		$interpAnswer->long = (string) $result['long'];
-		return $interpAnswer;
+		$interpResult->short = (string) $result['short'];
+		$interpResult->long = (string) $result['long'];
+		return $interpResult;
 	}
 
 } /* end of qp_Interpret class */

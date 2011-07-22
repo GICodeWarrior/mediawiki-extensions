@@ -104,11 +104,11 @@ class qp_PollView extends qp_AbstractView {
 		$qpoll_div = array( '__tag'=>'div', 'class'=>'qpoll' );
 		$qpoll_div[] = array( '__tag'=>'a', 'name'=>$this->ctrl->getPollTitleFragment( null, '' ), 0=>'' );
 		# output script-generated error, when available
-		if ( ( $scriptError = $this->ctrl->pollStore->interpAnswer->error ) != '' ) {
+		if ( ( $scriptError = $this->ctrl->pollStore->interpResult->error ) != '' ) {
 			$qpoll_div[] = array( '__tag'=>'div', 'class'=>'interp_error', qp_Setup::specialchars( $scriptError ) );
 		}
 		# output long result, when available
-		if ( ( $longAnswer = $this->ctrl->pollStore->interpAnswer->long ) != '' ) {
+		if ( ( $longAnswer = $this->ctrl->pollStore->interpResult->long ) != '' ) {
 			$qpoll_div[] = array( '__tag'=>'div', 'class'=>'interp_answer', qp_Setup::specialchars( $longAnswer ) );
 		}
 		# create voting form and fill it with messages and inputs

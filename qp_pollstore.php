@@ -108,7 +108,10 @@ class qp_QuestionData {
 
 } /* end of qp_QuestionData class */
 
-class qp_InterpAnswer {
+/**
+ * An interpretation result of user answer to the quiz
+ */
+class qp_InterpResult {
 	# short answer. it is supposed to be sortable and accountable in statistics
 	# blank value means short answer is unavailable
 	var $short = '';
@@ -172,7 +175,7 @@ class qp_InterpAnswer {
 		return $this->error != '' || is_array( $this->qpErrors );
 	}
 
-} /* end of qp_InterpAnswer class */
+} /* end of qp_InterpResult class */
 
 /**
  * poll storage and retrieval using DB
@@ -205,7 +208,7 @@ class qp_PollStore {
 	var $interpNS = 0;
 	var $interpDBkey = null;
 	# interpretation of user answer
-	var $interpAnswer;
+	var $interpResult;
 
 	# array of QuestionData instances (data from/to DB)
 	var $Questions = null;
@@ -238,7 +241,7 @@ class qp_PollStore {
 		if ( self::$db == null ) {
 			self::$db = & wfGetDB( DB_MASTER );
 		}
-		$this->interpAnswer = new qp_InterpAnswer();
+		$this->interpResult = new qp_InterpResult();
 		if ( is_array($argv) && array_key_exists( "from", $argv ) ) {
 			$this->Questions = Array();
 			$this->mCompletedPostData = 'NA';
@@ -770,9 +773,9 @@ class qp_PollStore {
 		if ( self::$db->numRows( $res ) != 0 ) {
 			$row = self::$db->fetchObject( $res );
 			$this->attempts = $row->attempts;
-			$this->interpAnswer = new qp_InterpAnswer();
-			$this->interpAnswer->short = $row->short_interpretation;
-			$this->interpAnswer->long = $row->long_interpretation;
+			$this->interpResult = new qp_InterpResult();
+			$this->interpResult->short = $row->short_interpretation;
+			$this->interpResult->long = $row->long_interpretation;
 		}
 //	todo: change to "insert ... on duplicate key update ..." when last_insert_id() bugs will be fixed
 	}
@@ -891,10 +894,10 @@ class qp_PollStore {
 
 	/**
 	 * Prepares an array of user answer to the current poll and interprets these
-	 * Stores the result in $this->interpAnswer
+	 * Stores the result in $this->interpResult
 	 */
 	private function interpretVote() {
-		$this->interpAnswer = new qp_InterpAnswer();
+		$this->interpResult = new qp_InterpResult();
 		$interpTitle = $this->getInterpTitle();
 		if ( $interpTitle === null ) {
 			return;
@@ -903,8 +906,9 @@ class qp_PollStore {
 		if ( !$interpArticle->exists() ) {
 			return;
 		}
+
 		# prepare array of user answers that will be passed to the interpreter
-		$poll_answer = array( false );
+		$poll_answer = array();
 		foreach ( $this->Questions as $qkey => &$qdata ) {
 			$questions = array();
 			foreach( $qdata->ProposalText as $propkey => &$proposal_text ) {
@@ -916,14 +920,13 @@ class qp_PollStore {
 						$proposals[$catkey] = $qdata->ProposalCategoryText[ $propkey ][ $id_key ];
 					}
 				}
-				$questions[] = $proposals;
+				$questions[$propkey] = $proposals;
 			}
-			$poll_answer[] = $questions;
+			$poll_answer[$qkey] = $questions;
 		}
-		# only the questions are numbered from 1;
-		unset( $poll_answer[0] );
+
 		# interpret the poll answer to get interpretation answer
-		$this->interpAnswer = qp_Interpret::getAnswer( $interpArticle, $poll_answer );
+		$this->interpResult = qp_Interpret::getResult( $interpArticle, array( 'answer' => $poll_answer ) );
 	}
 
 	// warning: requires qp_PollStorage::last_uid to be set
@@ -951,8 +954,8 @@ class qp_PollStore {
 			$this->interpretVote();
 			# update interpretation result and number of syntax-valid resubmit attempts
 			$qp_users_polls = self::$db->tableName( 'qp_users_polls' );
-			$short = self::$db->addQuotes( $this->interpAnswer->short );
-			$long = self::$db->addQuotes( $this->interpAnswer->long );
+			$short = self::$db->addQuotes( $this->interpResult->short );
+			$long = self::$db->addQuotes( $this->interpResult->long );
 			$this->attempts++;
 			$stmt = "INSERT INTO {$qp_users_polls} (uid,pid,short_interpretation,long_interpretation)\n VALUES ( " . intval( $this->last_uid ) . ", " . intval( $this->pid ) . ", {$short}, {$long} )\n ON DUPLICATE KEY UPDATE attempts = " . intval( $this->attempts ) . ", short_interpretation = {$short} , long_interpretation = {$long}";
 			self::$db->query( $stmt, __METHOD__ );

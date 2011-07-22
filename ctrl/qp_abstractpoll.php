@@ -86,8 +86,9 @@ class qp_AbstractPoll {
 		qp_Setup::onLoadAllMessages();
 		# *** get visual style poll attributes ***
 		$perRow = intval( array_key_exists( 'perrow', $argv ) ? $argv['perrow'] : 1 );
-		if ( $perRow < 1 )
+		if ( $perRow < 1 ) {
 			$perRow = 1;
+		}
 		$view->setController( $this, $perRow );
 		$this->view = $view;
 		# reset the unique index number of the question in the current poll (used to instantiate the questions)
@@ -101,12 +102,6 @@ class qp_AbstractPoll {
 			}
 			$this->view->showResults = self::parseShowResults( $argv['showresults'] );
 		}
-		# check whether current user has rights for showresults
-		$user = User::newFromName( $this->username );
-		if ( !$user->isAllowed( 'showresults' ) ) {
-			$this->view->showResults = false;
-		}
-		unset( $user );
 
 		# every poll on the page should have unique poll id, to minimize the risk of collisions
 		# it is required to be set manually via id="value" parameter

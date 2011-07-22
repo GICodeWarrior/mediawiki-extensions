@@ -328,25 +328,33 @@ class qp_Eval {
 	/**
 	 * Interpretates the answer with selected script
 	 * @param $interpretScript  string source code of interpretation script
-	 * @param $answers          array of user selected categories for every proposal & question of the poll
-	 * @param $interpAnswer     instance of qp_InterpAnswer class
-	 * @modifies $interpAnswer
+	 * @param $injectVars       array of PHP data to inject into interpretation script;
+	 *                          key of element will become variable name
+	 *                          in the interpretation script;
+	 *                          value of element will become variable value
+	 *                          in the interpretation script;
+	 * @param $interpResult     instance of qp_InterpResult class
+	 * @modifies $interpResult
 	 * @return                  array script result to check, or
-	 *                          qpInterpAnswer $interpAnswer (in case of error)
+	 *                          qp_InterpResult $interpResult (in case of error)
 	 */
-	function interpretAnswer( $interpretScript, $answers, qp_InterpAnswer $interpAnswer ) {
+	function interpretAnswer( $interpretScript, $injectVars, qp_InterpResult $interpResult ) {
 		# template page evaluation
 		if ( ( $check = self::selfCheck() ) !== true ) {
 			# self-check error
-			return $interpAnswer->setError( wfMsg( 'qp_error_eval_self_check', $check ) );
+			return $interpResult->setError( wfMsg( 'qp_error_eval_self_check', $check ) );
 		}
 		$evalScript = '';
 		if ( ( $check = self::checkAndTransformCode( $interpretScript, $evalScript ) ) !== true ) {
 			# possible malicious code
-			return $interpAnswer->setError( $check );
+			return $interpResult->setError( $check );
 		}
 		# inject poll answer into the interpretation script
-		$evalScript = "\$" . self::$pseudoNamespace . "a = unserialize( base64_decode( '" . base64_encode( serialize( $answers ) ) . "' ) ); /* */ " . $evalScript;
+		$evalInject = '';
+		foreach ( $injectVars as $varname => $var ) {
+			$evalInject .= "\$" . self::$pseudoNamespace . "{$varname} = unserialize( base64_decode( '" . base64_encode( serialize( $var ) ) . "' ) ); ";
+		}
+		$evalScript = "{$evalInject}/* */ {$evalScript}";
 		$result = eval( $evalScript );
 		return $result;
 	}
