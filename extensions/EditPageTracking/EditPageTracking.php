@@ -39,7 +39,7 @@ abstract class EditPageTracking {
 	 * Monitors edit page usage
 	 */
 	public static function onEditForm( EditPage $editPage ) {
-		global $wgUser, $wgEditPageTrackingRegistrationCutoff;
+		global $wgUser, $wgEditPageTrackingRegistrationCutoff, $wgMemc;
 		
 		// Anonymous users
 		if ( $wgUser->isAnon() ) {
@@ -74,7 +74,7 @@ abstract class EditPageTracking {
 		$dbw->insert( 'edit_page_tracking', $row, __METHOD__ );
 		
 		$wgUser->mFirstEditPage = $timestamp;
-		
+	
 		$cacheKey = wfMemcKey( 'first-edit-page', $wgUser->getId() );
 		$wgMemc->set($cacheKey, $timestamp, 86400);
 		
