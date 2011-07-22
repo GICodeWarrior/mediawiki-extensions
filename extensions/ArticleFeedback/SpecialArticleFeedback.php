@@ -362,7 +362,7 @@ class SpecialArticleFeedback extends SpecialPage {
 	 * everyone feels warm and fuzzy about having more 'highs', as
 	 * it were...
 	 *
-	 * @param array Pre-orderd from lowest to highest
+	 * @param array Pre-orderd from highest to lowest
 	 * @return array Containing the... highest rated article data
 	 */
 	protected function getDailyHighs( $highs_lows ) {
@@ -372,7 +372,10 @@ class SpecialArticleFeedback extends SpecialPage {
 		} else {
 			$num_highs = $num_ratings / 2;
 		}
-		return array_slice( $highs_lows, -$num_highs, $num_highs );
+		$highs = array_slice( $highs_lows, -$num_highs, $num_highs );
+		
+		// Sort descending
+		return array_reverse( $highs );
 	}
 
 	/**
