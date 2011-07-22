@@ -245,6 +245,17 @@ $messages['nl'] = array(
 	'fileattach-editcomment' => 'Het bestand [[File:$1|$1]] is toegevoegd',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Event
+ */
+$messages['no'] = array(
+	'fileattach-desc' => 'Tillater filer å bli lastet opp til aktuell side',
+	'fileattach-attachments' => 'Filvedlegg',
+	'fileattach-attachfile' => 'Legg ved fil',
+	'fileattach-uploadheading' => 'Legg ved fil til $1',
+	'fileattach-editcomment' => 'Fil [[File:$1|$1]] vedlagt',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Dragonòt
  */
