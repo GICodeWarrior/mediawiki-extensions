@@ -23,7 +23,7 @@ $messages['en'] = array(
 	'tooltip-p-moodbar-trigger-share' => '',
 	// Overlay
 	'moodbar-close' => '(close)',
-	'moodbar-intro-using' => 'Using $1 made me...',
+	'moodbar-intro-using' => 'Editing $1 made me...',
 	'moodbar-intro-feedback' => 'Feedback:',
 	'moodbar-type-happy-title' => 'Happy',
 	'moodbar-type-sad-title' => 'Sad',
@@ -33,11 +33,11 @@ $messages['en'] = array(
 	'moodbar-what-label' => 'What is this?',
 	'moodbar-what-collapsed' => '▶', // Ignore, do not translate. &#x25BC;
 	'moodbar-what-expanded' => '▼', // Ignore, do not translate. &#x25B6;
-	'moodbar-what-content' => 'This feature is designed to help the Wikipedia community understand the experience of people editing Wikipedia.
+	'moodbar-what-content' => 'This feature is designed to help the Wikipedia community understand the experience of people editing the encyclopedia.
 For more information, please visit the $1.',
 	'moodbar-what-link' => 'feature page',
-	'moodbar-privacy' => 'By submitting, you agree that we may use your feedback as explained in $1.',
-	'moodbar-privacy-link' => 'our policy',
+	'moodbar-privacy' => 'By submitting, you agree to transparency under these $1.',
+	'moodbar-privacy-link' => 'terms',
 	'moodbar-disable-link' => "I'm not interested.  Please disable this feature.",
 	'moodbar-form-title' => 'Because...',
 	'moodbar-form-note' => '140 character maximum',
