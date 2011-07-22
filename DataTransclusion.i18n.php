@@ -245,6 +245,20 @@ Le premier argument ou « modèle » est obligatoire.',
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'datatransclusion-missing-source' => 'Niona sôrsa de balyês est spècefiâ.
+Lo second argument ou ben « sôrsa » est oblegatouèro.',
+	'datatransclusion-unknown-source' => 'Crouye sôrsa de balyês spècefiâ.
+« $1 » est encognu.',
+	'datatransclusion-missing-key' => 'Niona cllâf est spècefiâ.
+$2 sont les cllâfs valides por la sôrsa de balyês $1.',
+	'datatransclusion-bad-argument-by' => 'Crouye cllâf de champ spècefiâ.
+« $2 » est pas una cllâf de champ dens la sôrsa de balyês « $1 ».
+{{PLURAL:$4|La cllâf valida est|Les cllâfs valides sont}} : $3.',
+	'datatransclusion-missing-argument-key' => 'Gins de valor de cllâf spècefiâ.
+Lo second argument ou ben « cllâf » est oblegatouèro.',
+	'datatransclusion-missing-argument-template' => 'Nion modèlo est spècefiâ.
+Lo second argument ou ben « modèlo » est oblegatouèro.',
+	'datatransclusion-record-not-found' => 'Nion encartâjo que contrôle $2 = $3 at étâ trovâ dens la sôrsa de balyês $1.',
 	'datatransclusion-bad-template-name' => 'Crouyo nom de modèlo : $1.',
 	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> ègziste pas.',
 );
