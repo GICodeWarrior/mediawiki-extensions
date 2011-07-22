@@ -170,6 +170,13 @@ $messages['nl'] = array(
 	'customusersignup-desc' => 'Maakt het mogelijk aangepaste berichten weer te geven tijdens het aanmaken van gebruikers',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Event
+ */
+$messages['no'] = array(
+	'customusersignup-desc' => 'Tillater brukertilpassede meldinger under opprettelsen av brukerkontoer',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */
