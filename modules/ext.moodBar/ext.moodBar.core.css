@@ -36,6 +36,7 @@
 	min-width: 42px;
 	margin: 15px;
 	padding: 42px 0 5px 0;
+	/* @embed */
 	background: transparent url(images/type-unknown.png) center top no-repeat;
 	text-align: center;
 }
@@ -100,6 +101,7 @@ a:hover .mw-moodBar-overlayWhatLabel {
 }
 
 .mw-moodBar-state-loading {
+	/* @embed */
 	background: url(images/ajax-spinner.gif) left center no-repeat;
 	padding: 20px 0 0 90px;
 	height: 77px;
