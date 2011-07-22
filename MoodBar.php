@@ -101,6 +101,7 @@ $wgResourceModules['ext.moodBar.core'] = $mbResourceTemplate + array(
 		'ext.moodBar.init', // just in case
 		'jquery.localize',
 		'jquery.moodBar',
+		'jquery.cookie',
 	),
 	'position' => 'bottom',
 );
