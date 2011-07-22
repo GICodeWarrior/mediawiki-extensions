@@ -169,14 +169,15 @@
 							var 	message, linkMessage, link,
 								disableMsg, disableLink, out;
 
-							message = mw.message( 'moodbar-what-content' );
+							message = mw.msg( 'moodbar-what-content' );
 							linkMessage = mw.msg( 'moodbar-what-link' );
 							link = mw.html.element( 'a', {
 									'href': mb.conf.infoUrl,
 									'title': linkMessage
 								}, linkMessage );
 
-							out = message.escaped().replace( /\$1/, link );
+							out = mw.html.escape( message )
+								.replace( /\$1/, link );
 							out = mw.html.element( 'p', {},
 								new mw.html.Raw( out )
 							);
@@ -203,14 +204,15 @@
 						function() {
 							var message, linkMessage, link;
 
-							message = mw.message( 'moodbar-privacy' );
+							message = mw.msg( 'moodbar-privacy' );
 							linkMessage = mw.msg( 'moodbar-privacy-link' );
 							link = mw.html.element( 'a', {
 									'href': mb.conf.privacyUrl,
 									'title': linkMessage
 								}, linkMessage );
 
-							return message.escaped().replace( /\$1/, link );
+							return mw.html.escape( message )
+								.replace( /\$1/, link );
 						}
 					)
 					.end()
