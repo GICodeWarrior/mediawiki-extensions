@@ -48,7 +48,7 @@ es.ListBlockList.prototype.getLocation = function( offset ) {
 			var location = this.items[i].getLocation( offset - itemOffset );
 			return {
 				'item': location.item,
-				'offset': /*itemOffset +*/ location.offset
+				'offset': location.offset
 			}
 		}
 
