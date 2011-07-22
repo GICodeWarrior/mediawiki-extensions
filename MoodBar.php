@@ -61,6 +61,7 @@ $wgResourceModules['ext.moodBar.init'] = $mbResourceTemplate + array(
 	'position' => 'top',
 	'dependencies' => array(
 		'jquery.cookie',
+		'jquery.client',
 	),
 );
 
@@ -115,7 +116,6 @@ $wgResourceModules['jquery.moodBar'] = $mbResourceTemplate + array(
 	'scripts' => 'jquery.moodBar/jquery.moodBar.js',
 	'dependencies' => array(
 		'mediawiki.util',
-		'jquery.client',
 	),
 );
 
