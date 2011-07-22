@@ -25,6 +25,7 @@ $wgAPIModules['moodbar'] = 'ApiMoodBar';
 $wgAutoloadClasses['MoodBarHooks'] = dirname(__FILE__).'/MoodBar.hooks.php';
 $wgHooks['BeforePageDisplay'][] = 'MoodBarHooks::onPageDisplay';
 $wgHooks['ResourceLoaderGetConfigVars'][] = 'MoodBarHooks::resourceLoaderGetConfigVars';
+$wgHooks['MakeGlobalVariablesScript'][] = 'MoodBarHooks::makeGlobalVariablesScript';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'MoodBarHooks::onLoadExtensionSchemaUpdates';
 
 // Special page
