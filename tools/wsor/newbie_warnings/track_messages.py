@@ -91,7 +91,7 @@ class Database:
 		cursor = self.usersConn.cursor(MySQLdb.cursors.DictCursor)
 		cursor.execute(
 			"""
-			SELECT rc_timestamp AS time 
+			SELECT SQL_NO_CACHE rc_timestamp AS time 
 			FROM recentchanges 
 			ORDER BY rc_timestamp DESC 
 			LIMIT 1

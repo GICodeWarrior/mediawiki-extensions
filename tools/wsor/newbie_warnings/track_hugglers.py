@@ -19,6 +19,7 @@ def emit(event, p, time):
 			time
 		])
 	)
+	sys.stdout.flush()
 			
 
 def main():
@@ -149,10 +150,7 @@ class Database:
 					ON r.rev_page = p.page_id
 				WHERE p.page_namespace = 3
 				AND r.rev_timestamp >= %(timestamp)s
-				AND (
-					r.rev_comment LIKE %(like)s OR
-					r.rev_comment LIKE %(clue)s
-				)
+				AND r.rev_comment LIKE %(like)s
 			""",
 			{
 				"timestamp": timestamp,
@@ -167,7 +165,7 @@ class Database:
 		userString = ",".join(safe(u) for u in users)
 		if len(userString) != 0:
 			cursor.execute("""
-				SELECT 
+				SELECT
 					u.user_id,
 					u.user_name,
 					count(*) as messages

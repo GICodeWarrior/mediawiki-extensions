@@ -181,3 +181,18 @@ SELECT
 FROM user_newtalk nt
 WHERE nt.user_ip IN ("EpochFail")
 GROUP BY nt.user_ip, NULL;
+
+
+SELECT 
+	p.page_id as user_talk_id, 
+	p.page_title as user_talk_page,
+	REPLACTE(p.page_title, "_", " ") as user_name,
+	tl.tl_title as template
+FROM enwiki.templatelinks tl
+INNER JOIN enwiki.page p 
+	ON page_id = tl_from 
+WHERE tl_title IN ('Z49','Z50','Z51','Z52','Z53','Z54','Z55','Z56') 
+AND tl_namespace = 10 
+AND page_namespace = 3
+
+
