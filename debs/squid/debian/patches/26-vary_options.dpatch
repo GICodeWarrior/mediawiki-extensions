@@ -359,10 +359,8 @@ diff -urNad squid-2.7.9~/src/store.c squid-2.7.9/src/store.c
      storeSetPublicKey(state->e);
      if (!state->oe) {
          /* New entry, create new unique ID */
-@@ -1071,20 +1076,8 @@
- 	}
- 	newkey = storeKeyPublicByRequest(mem->request);
- 	if (mem->vary_headers && !EBIT_TEST(e->flags, KEY_EARLY_PUBLIC)) {
+@@ -1077,15 +1077,3 @@
+        if (mem->vary_headers && !EBIT_TEST(e->flags, KEY_EARLY_PUBLIC)) {
 -	    String vary = StringNull;
  	    vary_id_t vary_id;
 -	    String varyhdr;
@@ -378,6 +376,4 @@ diff -urNad squid-2.7.9~/src/store.c squid-2.7.9/src/store.c
 -	    stringClean(&varyhdr);
 -#endif
 +	    String vary = httpHeaderGetVary(&mem->reply->header);
- 	    /* Create or update the vary object */
- 	    vary_id = storeAddVary(mem->store_url, mem->url, mem->method, newkey, httpHeaderGetStr(&mem->reply->header, HDR_ETAG), strBuf(vary), mem->vary_headers, mem->vary_encoding);
- 	    if (vary_id.create_time)  {
+ 
