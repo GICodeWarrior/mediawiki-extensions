@@ -150,11 +150,29 @@ class Rating {
 			),
 			__METHOD__
 		);
-		// Article moves not logged
+		// Article moves not logged - yet
 	}
 
-	public static function getLogs() {
+	public static function filterArticles( $filters ) {
 		$dbr = wfGetDB( DB_SLAVE );
+		$clean_filters = array();
+		foreach($filters as $column => $value) {
+			if( ! ( !isset($value) or $value == null or $value == "" )) {
+				$clean_filters[$column] = $value;
+			}
+		}
+		$query = $dbr->select(
+			'ratings',
+			'*',
+			$clean_filters,
+			__METHOD__
+		);
 
+		$articles = array();
+		foreach( $query as $article_row ) {
+			$article = (array)$article_row;
+			array_push( $articles, $article );
+		}
+		return $articles;
 	}
 }
