@@ -20,12 +20,19 @@ class SpecialFilterRatings extends SpecialPage {
 		$project = $wgRequest->getVal('project');
 		$importance = $wgRequest->getVal('importance');
 		$quality = $wgRequest->getVal('quality');
+		$categories = $wgRequest->getVal('categories');
 
 		$filters = array(
 			'r_project' => $project,
 			'r_importance' => $importance,
-			'r_quality' => $quality
+			'r_quality' => $quality,
+			'categories' => $categories
 		);
+
+		$categories = explode(',', $wgRequest->getVal('categories'));
+		foreach($categories as &$category) {
+			$category = trim($category);
+		}
 		$entries = Rating::filterArticles($filters);
 
 		$this->setHeaders();
