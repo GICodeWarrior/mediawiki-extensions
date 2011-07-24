@@ -939,6 +939,9 @@ class CheckVars {
 		static $specialGlobals = array( '$IP', '$parserMemc', '$messageMemc', '$hackwhere', '$haveProctitle' );
 		static $nonGlobals = array(	'$wgOptionalMessages', '$wgIgnoredMessages', '$wgEXIFMessages', # Used by Translate extension, read from maintenance/languages/messageTypes.inc
 									'$wgMessageStructure', '$wgBlockComments' ); # Used by Translate extension and maintenance/language/writeMessagesArray.inc, read from maintenance/languages/messages.inc
+									
+		if ( $name == '$wgHooks' && $this->mClass == 'Installer' && $this->mFunction == 'includeExtensions')
+			return false;
 
 		return ( ( substr( $name, 0, 3 ) == '$wg' ) || ( substr( $name, 0, 3 ) == '$eg' ) || in_array( $name, $specialGlobals ) ) && !in_array( $name, $nonGlobals );
 	}
