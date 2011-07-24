@@ -871,14 +871,20 @@ Muton: $1.',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Bencmq
  * @author Gzdavidwong
  */
 $messages['zh-hans'] = array(
+	'securepasswords-desc' => '生成更安全的密码哈希值，并添加密码强度检测',
+	'securepasswords-valid' => '您的密码无效或者太短。
+它必须：$1。',
 	'securepasswords-minlength' => '长度至少需要$1个字符',
 	'securepasswords-lowercase' => '包含最少一个小写字母',
 	'securepasswords-uppercase' => '包含最少一个大写字母',
 	'securepasswords-digit' => '包含最少一个数字',
+	'securepasswords-special' => '包含至少一个特殊字符 （特殊字符是：$1）',
 	'securepasswords-username' => '不与您的用户名相同',
+	'securepasswords-word' => '不是一个单词',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
