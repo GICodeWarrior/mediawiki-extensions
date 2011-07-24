@@ -80,6 +80,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'categorize-desc' => "Setzt eng Këscht derbäi fir eng Säit eropzelueden an z'änneren déi de Benotzer erlaabt fir Kategorien mat Säiten ze verbannen",
 	'categorize-title' => 'Qualifikatioun vum Wëssen',
 	'categorize-footer' => 'Wann Dir eng Etiquette derbäisetze wëllt da mellt Iech w.e.g. bei eis op ...',
 	'categorize-advice' => 'Klickt op déi Etiquetten déi Dir mat dësem Artikel verbanne wëllt:',
