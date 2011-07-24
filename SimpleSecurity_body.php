@@ -227,7 +227,14 @@ class SimpleSecurity {
 	 * Patches SQL queries to ensure that the old_id field is present in all requests for the old_text field
 	 * otherwise the title that the old_text is associated with can't be determined
 	 */
-	static function patchSQL( $match ) {
+	static function patchSQL( $sql ) {
+		return preg_replace_callback( "/(?<=SELECT ).+?(?= FROM)/", 'SimpleSecurity::patchSQL_internal', $sql, 1 );
+	}
+
+	/**
+	 * Callback for patchSQL()
+	 */
+	static private function patchSQL_internal( $match ) {
 		if ( !preg_match( "/old_text/", $match[0] ) ) return $match[0];
 		$fields = str_replace( " ", "", $match[0] );
 		return ( $fields == "*" || preg_match( "/old_id/", $fields ) ) ? $fields : "$fields,old_id";
@@ -372,8 +379,7 @@ class SimpleSecurity {
 		# - fetchObject method is overridden to validate row content based on old_id
 		eval( 'class Database_SimpleSecurity extends Database' .  ucfirst( $wgDBtype ) . ' {
 			public function query( $sql, $fname = "", $tempIgnore = false ) {
-				$patched = preg_replace_callback( "/(?<=SELECT ).+?(?= FROM)/", array("SimpleSecurity", "patchSQL"), $sql, 1 );
-				return parent::query( $patched, $fname, $tempIgnore );
+				return parent::query( SimpleSecurity::PatchSQL( $sql ), $fname, $tempIgnore );
 			}
 			function fetchObject( $res ) {
 				global $wgSimpleSecurity;
