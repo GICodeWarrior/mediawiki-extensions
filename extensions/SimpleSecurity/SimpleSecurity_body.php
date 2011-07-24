@@ -228,16 +228,16 @@ class SimpleSecurity {
 	 * otherwise the title that the old_text is associated with can't be determined
 	 */
 	static function patchSQL( $sql ) {
-		return preg_replace_callback( "/(?<=SELECT ).+?(?= FROM)/", 'SimpleSecurity::patchSQL_internal', $sql, 1 );
+		return preg_replace_callback( "/^SELECT\b\s*(.+?)\s*\bFROM\b/i", 'SimpleSecurity::patchSQL_internal', $sql, 1 );
 	}
 
 	/**
 	 * Callback for patchSQL()
 	 */
 	static private function patchSQL_internal( $match ) {
-		if ( !preg_match( "/old_text/", $match[0] ) ) return $match[0];
-		$fields = str_replace( " ", "", $match[0] );
-		return ( $fields == "*" || preg_match( "/old_id/", $fields ) ) ? $fields : "$fields,old_id";
+		if ( !preg_match( "/old_text/", $match[1] ) ) return $match[0];
+		$fields = str_replace( " ", "", $match[1] );
+		return ( preg_match( "/old_id/", $fields ) ) ? $match[0] : "SELECT $fields, old_id FROM";
 	}
 
 
