@@ -386,9 +386,11 @@ $messages['kk-cyrl'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
-	'seealso' => 'សូមមើលផងដែរ',
+	'seealso' => 'មើលផងដែរ',
+	'seealso-desc' => "Localised 'មើលផងដែរ' headings using the tag <code><nowiki><seealso></nowiki></code>",
 );
 
 /** Korean (한국어)
