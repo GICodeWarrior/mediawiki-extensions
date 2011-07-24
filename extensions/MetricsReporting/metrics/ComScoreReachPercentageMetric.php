@@ -11,7 +11,7 @@ class ComScoreReachPercentageMetric extends ApiAnalyticsBase {
 
 	protected function getQueryInfo() {
 		return array(
-			'table' => array( 'comscore', 'comscore_regions'),
+			'table' => array( 'comscore', 'comscore_regions' ),
 			'conds' => array(),
 			'options' => array( 'GROUP BY' => 'comscore.region_code, date', 'ORDER BY' => 'comscore.region_code, date' ),
 			'join_conds' => array( 'comscore_regions' => array( 'LEFT JOIN', "comscore.region_code = comscore_regions.region_code" )
@@ -20,7 +20,7 @@ class ComScoreReachPercentageMetric extends ApiAnalyticsBase {
 	}
 
 	protected function getQueryFields() {
-		return array( 'date', 'reach', 'comscore.region_code', 'region_name');
+		return array( 'date', 'reach', 'comscore.region_code', 'region_name' );
 	}
 
 	protected function takesReportLanguage(){

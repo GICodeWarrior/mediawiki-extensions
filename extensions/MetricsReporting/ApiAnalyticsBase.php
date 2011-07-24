@@ -49,6 +49,7 @@ abstract class ApiAnalyticsBase extends ApiBase {
 		if ( $params['startmonth'] && !$params['endmonth'] ) {
 			$query['conds']['date'] = $params['startmonth'];
 		} else {
+			// Note: date must be YYYY-MM-DD, using YYYY-MM may make nasty queries
 			//add 1 month to end of date because of the way data is stored
 			$endMonth = date( "Y-m-d", strtotime( $params['endmonth'] . " +1 month" ) );
 
