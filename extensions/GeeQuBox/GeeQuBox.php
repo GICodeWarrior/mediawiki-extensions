@@ -67,7 +67,7 @@ class GeeQuBox {
 
 	public function gqbAddLightBox( $page ) { 
 		if ( !$this->_hasGallery )
-			return false;
+			return true;	// return true or else other parser hooks won't be executed
 
 		try {
 			self::$_page = $page;
@@ -76,7 +76,7 @@ class GeeQuBox {
 			return true;
 		} catch ( Exception $e ) {
 			wfDebug('GeeQuBox::'.$e->getMessage());
-			return false;
+			return true;	// see above message on returns
 		}
 	}
 
