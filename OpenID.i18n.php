@@ -1852,9 +1852,7 @@ Voit valita omasi alla olevista vaihtoehdoista.',
 	'openidconvertsuccesstext' => 'OpenID:si on muunnettu muotoon $1.',
 	'openidconvertyourstext' => 'Tämä on jo OpenID:si.',
 	'openidconvertothertext' => 'Tämä on jonkun muun OpenID.',
-	'openidalreadyloggedin' => "'''Olet jo kirjautuneena sisään, $1!'''
-
-Jos haluat käyttää OpenID:tä kirjautumiseen jatkossa, voit [[Special:OpenIDConvert|muuntaa tunnuksesi käyttämään OpenID:tä]].",
+	'openidalreadyloggedin' => 'Olet jo kirjautuneena sisään.',
 	'openidnousername' => 'Käyttäjätunnus puuttuu.',
 	'openidbadusername' => 'Käyttäjätunnus on virheellinen.',
 	'openidautosubmit' => 'Tämä sivu sisältää lomakkeen, joka lähettää itse itsensä, jos JavaScript käytössä.
