@@ -13,13 +13,16 @@ class FilterRatingsTemplate extends QuickTemplate {
 <p>
 Project Name: <input type="text" name="project" value="<?php echo $filters['r_project']?>" /> 
 Importance: <input type="text" name="importance" value="<?php echo $filters['r_importance']?>" /> 
-Quality: <input type="text" name="quality" value="<?php echo $filters['r_quality']?>" /> 
+Quality: <input type="text" name="quality" value="<?php echo $filters['r_quality']?>" />
+<br />
+Categories (comma separated): <input type="text" name="categories" value="<?php echo $filters['categories']?>" />
 <input type="submit" />
 </p>
 </form>
 
 <div id="">
 <?php if( count($articles) > 0 ) { ?>
+<h3>Results</h3>
 	<table>
 	<tr>
 		<th>Article</th>

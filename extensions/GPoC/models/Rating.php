@@ -153,25 +153,55 @@ class Rating {
 		// Article moves not logged - yet
 	}
 
-	public static function filterArticles( $filters ) {
-		$dbr = wfGetDB( DB_SLAVE );
-		$clean_filters = array();
-		foreach($filters as $column => $value) {
-			if( ! ( !isset($value) or $value == null or $value == "" )) {
-				$clean_filters[$column] = $value;
+	private static function checkArticle( $article, $category_filters ) {
+		// Check category
+		if( count( $category_filters ) == 0 || ( count($category_filters) == 1 && empty( $category_filters[0] ) ) ) {
+			return true;
+		}
+
+		foreach( $category_filters as $category ) {
+			if( in_array( $category, $article['categories'] ) ) {
+				return true;
 			}
 		}
+		return false;
+	}
+
+	public static function filterArticles( $filters ) {
+		$database_filters_columns = array( 'r_project', 'r_importance', 'r_quality' );		
+		
+		$dbr = wfGetDB( DB_SLAVE );
+		$database_filters = array();
+
+		foreach($filters as $column => $value) {
+			if( ! ( !isset($value) or $value == null or $value == "" ) && in_array( $value, $database_filters_columns ) ) {
+				$database_filters[$column] = $value;
+			}
+		}
+
+		$category_filters = explode( ',', trim( $filters['categories'] ) );
 		$query = $dbr->select(
 			'ratings',
 			'*',
-			$clean_filters,
+			$database_filters,
 			__METHOD__
 		);
 
 		$articles = array();
 		foreach( $query as $article_row ) {
 			$article = (array)$article_row;
-			array_push( $articles, $article );
+			$title = Title::makeTitle( $article['r_namespace'], $article['r_article'] );
+			$article['title'] = $title;
+			$categories = array_keys( $title->getParentCategories() );
+			$article['categories'] = array();
+			foreach( $categories as $category ) {
+				$split = explode(':', $category);
+				array_push( $article['categories'], trim( $split[1] ) );
+			}
+
+			if( Rating::checkArticle( $article, $category_filters ) ) {
+				array_push( $articles, $article );
+			}
 		}
 		return $articles;
 	}
