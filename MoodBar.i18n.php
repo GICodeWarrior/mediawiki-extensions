@@ -113,24 +113,29 @@ See also:
 );
 
 /** Message documentation (Message documentation)
+ * @author Purodha
  * @author SPQRobin
  */
 $messages['qqq'] = array(
-	'moodbar-desc' => 'This is a feature in development. See [[mw:MoodBar 0.1/Design]] for background information.',
+	'moodbar-desc' => '{{desc}}
+This is a feature in development. See [[mw:MoodBar 0.1/Design]] for background information.',
 	'moodbar-trigger-using' => "Link text of the MoodBar overlay trigger. \$1 is the SITENAME. The implied sentence is ''\"Using [Sitename] made me happy/sad/...\"''. See [[mw:MoodBar 0.1/Design]] for background development information.",
-	'moodbar-intro-using' => '[[File:MoodBar-Step-1.png|right|200px]]
-Intro title of the MoodBar overlay trigger. $1 is the SITENAME.',
 	'moodbar-trigger-feedback' => 'Link text of the MoodBar overlay trigger. $1 is the SITENAME.',
 	'moodbar-close' => 'Link text of the close-button. Make sure to include parentheses.
 
 See also:
 * {{msg|parentheses}}',
+	'moodbar-intro-using' => '[[File:MoodBar-Step-1.png|right|200px]]
+Intro title of the MoodBar overlay trigger. $1 is the SITENAME.',
 	'moodbar-intro-feedback' => 'Intro title of the MoodBar overlay trigger. $1 is the SITENAME.',
 	'tooltip-moodbar-what' => 'Tooltip displayed when hovering the What-link.
 
 See also:
 * {{msg|moodbar-what-label}}',
 	'moodbar-what-label' => 'Link text for the page where more info abut MoodBar can be found.',
+	'moodbar-privacy' => 'Parameters:
+*$1 - a link having the anchor text {{msg-mw|moodbar-privacy-link}}',
+	'moodbar-privacy-link' => 'This is the anchor text being used in the link replacing $1 in the message {{msg-mw|moodbar-privacy}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -151,14 +156,15 @@ $messages['be-tarask'] = array(
 
 /** German (Deutsch)
  * @author Kghbln
+ * @author Purodha
  */
 $messages['de'] = array(
-	'moodbar-desc' => 'Ermöglicht es Benutzern dem Seitenbetreiber ihre Stimmung bezüglich des Bearbeitens von Seiten mitzuteilen',
+	'moodbar-desc' => 'Ermöglicht es Benutzern dem Betreiber des Wikis ihre Stimmung bezüglich des Bearbeitens von Seiten mitzuteilen',
 	'moodbar-trigger-using' => 'Bearbeite $1 …',
 	'moodbar-trigger-feedback' => 'Rückmeldung zum Bearbeiten',
 	'moodbar-trigger-share' => 'Teile uns deinen Eindruck mit',
-	'moodbar-intro-using' => '$1 zu nutzen macht mich …',
 	'moodbar-close' => '(schließen)',
+	'moodbar-intro-using' => '$1 zu bearbeiten macht mich …',
 	'moodbar-intro-feedback' => 'Rückmeldung:',
 	'moodbar-type-happy-title' => 'Glücklich',
 	'moodbar-type-sad-title' => 'Traurig',
@@ -168,8 +174,8 @@ $messages['de'] = array(
 	'moodbar-what-content' => 'Diese Funktion wurde entwickelt, damit man eine Rückmeldung geben kann, wie man sich beim Bearbeiten von Seiten in der Wikipedia fühlt.
 Weitere Informationen hierzu sind an der folgenden Stelle zu finden: $1.',
 	'moodbar-what-link' => 'Seite zu den Funktionen',
-	'moodbar-privacy' => 'Mit dem Speichern erklärst du dich damit einverstanden, dass wir deine Rückmeldung nutzen können, wie wir es in $1 beschrieben haben.',
-	'moodbar-privacy-link' => 'unserer Richtlinie',
+	'moodbar-privacy' => 'Mit dem Speichern erklärst du dich mit diesen $1 einverstanden.',
+	'moodbar-privacy-link' => 'Bedingungen',
 	'moodbar-disable-link' => 'Ich bin nicht interessiert. Bitte diese Funktion deaktivieren.',
 	'moodbar-form-title' => 'Weil …',
 	'moodbar-form-note' => 'Maximal 140 Zeichen',
@@ -243,6 +249,14 @@ $messages['frp'] = array(
 	'moodbar-header-user' => 'Utilisator',
 	'moodbar-header-useragent' => 'Agent utilisator',
 	'moodbar-header-comment' => 'Comentèros',
+	'moodbar-header-namespace' => 'Èspâço de noms',
+	'moodbar-header-own-talk' => 'Pâge de discussion a sè',
+	'moodbar-type-happy' => 'Herox',
+	'moodbar-type-sad' => 'Tristo',
+	'moodbar-type-confused' => 'Confondu',
+	'moodbar-user-anonymized' => 'Anonimisâ',
+	'moodbar-user-ip' => 'Adrèce IP',
+	'moodbar-user-user' => 'Utilisator encartâ',
 );
 
 /** Galician (Galego)
@@ -261,12 +275,12 @@ $messages['he'] = array(
 	'moodbar-desc' => 'מתן אפשרות למשתמשם לשלוח את "מצב הרוח" שלהם למפעיל האתר',
 	'moodbar-trigger-using' => 'עריכה $1...',
 	'moodbar-trigger-feedback' => 'משוב על עריכה',
-	'moodbar-intro-using' => 'שימוש ב{{GRAMMAR:תחילית|$1}} עשה אותה...',
 	'moodbar-close' => '(סגירה)',
+	'moodbar-intro-using' => 'עריכת $1 גרמה לי ...',
 	'moodbar-intro-feedback' => 'משוב:',
-	'moodbar-type-happy-title' => 'שמח',
-	'moodbar-type-sad-title' => 'עצוב',
-	'moodbar-type-confused-title' => 'מבולבל',
+	'moodbar-type-happy-title' => 'שמחה',
+	'moodbar-type-sad-title' => 'עצב',
+	'moodbar-type-confused-title' => 'בלבול',
 	'tooltip-moodbar-what' => 'מידע נוסף על התכונה הזאת',
 	'moodbar-what-label' => 'מה זה?',
 	'right-moodbar-view' => 'הצגה וייצוא של של משוב מסרגל מצב הרוח',
@@ -295,8 +309,8 @@ $messages['ia'] = array(
 	'moodbar-trigger-using' => 'Modificar $1...',
 	'moodbar-trigger-feedback' => 'Commentos super le modification',
 	'moodbar-trigger-share' => 'Divider tu experientia',
-	'moodbar-intro-using' => 'Le uso de $1 me rendeva...',
 	'moodbar-close' => '(clauder)',
+	'moodbar-intro-using' => 'Le uso de $1 me rendeva...',
 	'moodbar-intro-feedback' => 'Reaction:',
 	'moodbar-type-happy-title' => 'Felice',
 	'moodbar-type-sad-title' => 'Triste',
@@ -347,25 +361,50 @@ Pro ulterior information, per favor visita le $1.',
 	'moodbar-user-user' => 'Usator registrate',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'moodbar-close' => '(zohmaache)',
+	'moodbar-privacy' => 'Wä heh jät enjitt, moß met dä $1 enverschtande sen, söns moß mer et sennlohße.',
+	'moodbar-privacy-link' => 'Begengonge',
+	'moodbar-success-title' => 'Mer bedanke uns.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
 $messages['lb'] = array(
 	'moodbar-desc' => 'Erméiglecht et spezifesche Benotzer fir dem Responsabele vum Site hir Stëmmung ze schécken',
 	'moodbar-trigger-using' => 'Ännert $1...',
-	'moodbar-trigger-feedback' => 'Feedback',
+	'moodbar-trigger-feedback' => "Feedback iwwert d'Änneren",
 	'moodbar-close' => '(zoumaachen)',
 	'moodbar-intro-feedback' => 'Feedback:',
 	'moodbar-type-happy-title' => 'Glécklech',
 	'moodbar-type-sad-title' => 'Traureg',
 	'moodbar-what-label' => 'Wat ass dat?',
+	'moodbar-disable-link' => 'Ech sinn net interesséiert. Schalt dës Fonctioun w.e.g. aus.',
+	'moodbar-form-title' => 'Well...',
+	'moodbar-form-note' => 'Maximal 140 Zeechen',
+	'moodbar-form-policy-label' => 'eis Richtlinnen',
+	'moodbar-success-title' => 'Merci!',
+	'moodbar-error-title' => 'Ups!',
+	'moodbar-admin-empty' => 'Keng Resultater',
 	'moodbar-header-timestamp' => 'Zäitstempel',
 	'moodbar-header-type' => 'Typ',
 	'moodbar-header-page' => 'Säit',
 	'moodbar-header-usertype' => 'Benotzer-Typ',
 	'moodbar-header-user' => 'Benotzer',
+	'moodbar-header-editmode' => 'Ännerungsmodus',
 	'moodbar-header-comment' => 'Bemierkungen',
 	'moodbar-header-user-editcount' => 'Compteur vun den Ännerunge pro Benotzer',
+	'moodbar-header-namespace' => 'Nummraum',
+	'moodbar-header-own-talk' => 'Eegen Diskussiounssäit',
+	'moodbar-type-happy' => 'Glécklech',
+	'moodbar-type-sad' => 'Traureg',
+	'moodbar-user-anonymized' => 'Anonymiséiert',
+	'moodbar-user-ip' => 'IP-Adress',
+	'moodbar-user-user' => 'Registréierte Benotzer',
 );
 
 /** Macedonian (Македонски)
@@ -376,8 +415,8 @@ $messages['mk'] = array(
 	'moodbar-trigger-using' => 'Уредување на $1...',
 	'moodbar-trigger-feedback' => 'Мислења за уредувањето',
 	'moodbar-trigger-share' => 'Споделете го вашето искуство',
-	'moodbar-intro-using' => '$1 ме...',
 	'moodbar-close' => '(затвори)',
+	'moodbar-intro-using' => 'Уредувањето на $1 ме...',
 	'moodbar-intro-feedback' => 'Мислења',
 	'moodbar-type-happy-title' => 'усреќи',
 	'moodbar-type-sad-title' => 'натажи',
@@ -387,8 +426,8 @@ $messages['mk'] = array(
 	'moodbar-what-content' => 'Оваа функција е предвидена да ѝ овозможува на заедницата да го осознае искуството на луѓето што ја уредуваат Википедија.
 Повеќе информации ќе добиете на $1.',
 	'moodbar-what-link' => 'страница за функцијата',
-	'moodbar-privacy' => 'Поднесувајќи го ова, се согласувате дека можеме да го користиме вашето мислење, како што е објаснето во $1.',
-	'moodbar-privacy-link' => 'нашите правила',
+	'moodbar-privacy' => 'Поднесувајќи го ова, се согласувате на транспарентност под следниве $1.',
+	'moodbar-privacy-link' => 'услови',
 	'moodbar-disable-link' => 'Не сум заинтересиран. Оневозможи ја функцијава.',
 	'moodbar-form-title' => 'Бидејќи...',
 	'moodbar-form-note' => 'највеќе 140 знаци',
@@ -436,18 +475,25 @@ $messages['nl'] = array(
 	'moodbar-trigger-using' => 'Het bewerken van $1...',
 	'moodbar-trigger-feedback' => 'Terugkoppeling over het bewerken',
 	'moodbar-trigger-share' => 'Deel uw ervaring',
-	'moodbar-intro-using' => 'Het gebruiken van $1 maakte mij...',
 	'moodbar-close' => '(sluiten)',
+	'moodbar-intro-using' => 'Het gebruiken van $1 maakte mij...',
 	'moodbar-intro-feedback' => 'Terugkoppeling:',
 	'moodbar-type-happy-title' => 'Blij',
 	'moodbar-type-sad-title' => 'Triest',
 	'moodbar-type-confused-title' => 'Verward',
 	'tooltip-moodbar-what' => 'Meer informatie over deze functie',
 	'moodbar-what-label' => 'Wat is dit?',
+	'moodbar-what-content' => 'Deze functie is ontworpen om de Wikipedia-gemeenschap de ervaring van mensen die Wikipedia bewerken, te helpen begrijpen.
+Voor meer informatie, ga naar de $1.',
+	'moodbar-privacy-link' => 'ons beleid',
+	'moodbar-disable-link' => 'Ik ben niet geïnteresseerd. Schakel deze functie uit.',
 	'moodbar-form-title' => 'Omdat...',
 	'moodbar-form-note' => 'Maximaal 140 tekens',
 	'moodbar-form-note-dynamic' => '$1 tekens resterend',
-	'moodbar-form-submit' => 'Feedback verzenden ▶',
+	'moodbar-form-submit' => 'Feedback delen ▶',
+	'moodbar-form-policy-label' => 'ons beleid',
+	'moodbar-success-title' => 'Bedankt!',
+	'moodbar-error-title' => 'Oeps!',
 	'right-moodbar-view' => 'MoodBar-terugkoppeling bekijken en exporteren',
 	'moodbar-admin-title' => 'MoodBar-terugkoppeling',
 	'moodbar-admin-intro' => 'Deze pagina laat u toe om terugkoppeling die met de MoodBar is verzonden, te bekijken',
@@ -481,8 +527,8 @@ $messages['pt'] = array(
 	'moodbar-trigger-using' => 'A editar $1...',
 	'moodbar-trigger-feedback' => 'Comentários sobre edição',
 	'moodbar-trigger-share' => 'Partilhe a sua experiência',
-	'moodbar-intro-using' => 'Usar a $1 tornou-me...',
 	'moodbar-close' => '(fechar)',
+	'moodbar-intro-using' => 'Usar a $1 tornou-me...',
 	'moodbar-intro-feedback' => 'Comentários:',
 	'moodbar-type-happy-title' => 'Feliz',
 	'moodbar-type-sad-title' => 'Triste',
