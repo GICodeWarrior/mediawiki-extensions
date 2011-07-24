@@ -126,7 +126,17 @@ Message d'erreur : <code>$2</code>",
  */
 $messages['frp'] = array(
 	'sql2wiki' => 'SQL2Vouiqui',
+	'sql2wiki-desc' => 'Fâre vêre les balyês SQL tot drêt dens les pâges',
+	'sql2wiki-special' => 'Ègzécutar lo code SQL2Vouiqui sur lo clic',
 	'sql2wiki-cache_refresh' => 'Rafrèchir',
+	'sql2wiki-err-invalid_db_id' => 'SQL2Vouiqui : numerô de bâsa de balyês manquent ou ben envalido',
+	'sql2wiki-err-invalid_type' => 'SQL2Vouiqui : tipo manquent ou ben envalido',
+	'sql2wiki-err-failed_to_connect' => 'SQL2Vouiqui : empossiblo de sè branchiér a $1 !',
+	'sql2wiki-err-failed_to_execute' => 'SQL2Vouiqui : empossiblo d’ègzécutar l’enstruccion :
+
+« $1 »
+
+avouéc lo mèssâjo d’èrror : « $2 » !',
 );
 
 /** Galician (Galego)

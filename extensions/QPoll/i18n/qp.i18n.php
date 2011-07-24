@@ -1065,6 +1065,7 @@ $messages['frp'] = array(
 	'qp_results_line_qupl' => 'Pâge « $1 » Sondâjo « $2 » : $3',
 	'qp_results_line_qpl' => 'Pâge « $1 » Sondâjo « $2 » : $3, $4, $5, $6',
 	'qp_header_line_qpul' => '$1 [ Pâge « $2 » Sondâjo « $3 » ]',
+	'qp_interpetation_wrong_answer' => 'Crouye rèponsa',
 	'qp_export_to_xls' => 'Èxportar les statistiques u format XLS',
 	'qp_voices_to_xls' => 'Èxportar los votos u format XLS',
 	'qp_users_answered_questions' => '$1 {{PLURAL:$1|utilisator a|utilisators on}}t rèpondu a les quèstions',
@@ -1787,6 +1788,7 @@ $messages['lb'] = array(
 	'qp_error_too_few_categories' => 'Et musse mindestens zwou Kategorien definéiert sinn',
 	'qp_error_too_few_spans' => 'All Kategoriegrupp muss mindestens aus zwou Ënnerkategorie bestoen',
 	'qp_error_no_answer' => 'Propos ouni Äntwert',
+	'qp_error_eval_unsupported_language' => 'Net ënnerstëtzte Interpretatiouns-Sprooch "$1"',
 );
 
 /** Malagasy (Malagasy)

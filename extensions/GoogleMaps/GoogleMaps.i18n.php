@@ -2061,6 +2061,7 @@ $wgGoogleMapsMessages['fo'] = array(
  * @author Grondin
  * @author IAlex
  * @author Meithal
+ * @author Od1n
  * @author Sherbrooke
  * @author Urhixidur
  * @author Zetud
@@ -2075,7 +2076,7 @@ $wgGoogleMapsMessages['fr'] = array(
 	'gm-make-marker' => 'Légende (wiki annotation OK) :',
 	'gm-remove' => 'Enlever',
 	'gm-caption' => 'Légende',
-	'gm-tab-title' => "Titre de l'onglet",
+	'gm-tab-title' => 'Titre de l’onglet',
 	'gm-tab' => 'Onglet',
 	'gm-start-path' => 'Démarrer le trajet',
 	'gm-trace-area' => 'tracer une zone',
@@ -2096,7 +2097,7 @@ $wgGoogleMapsMessages['fr'] = array(
 	'gm-width' => 'Largeur',
 	'gm-height' => 'Hauteur',
 	'gm-scale-control' => 'Échelle',
-	'gm-overview-control' => "Vue d'ensemble",
+	'gm-overview-control' => 'Vue d’ensemble',
 	'gm-selector-control' => 'Sélection carte/satellite',
 	'gm-zoom-control' => 'Navigation',
 	'gm-large' => 'Grande',

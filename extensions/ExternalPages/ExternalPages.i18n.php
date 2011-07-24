@@ -374,6 +374,13 @@ $messages['ka'] = array(
 	'externalpages-no-page' => 'გვერდი არ არის მითითებული',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author វ័ណថារិទ្ធ
+ */
+$messages['km'] = array(
+	'externalpages' => 'ទំព័រខាងក្រៅ',
+);
+
 /** Korean (한국어)
  * @author Kwj2772
  */

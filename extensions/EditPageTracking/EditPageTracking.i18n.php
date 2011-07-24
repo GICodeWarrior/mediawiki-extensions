@@ -16,6 +16,20 @@ $messages['en'] = array(
 	'editpagetracking-desc' => 'Records the first time each user views the edit page',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'editpagetracking-desc' => '{{desc}}',
+);
+
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author Wizardist
+ */
+$messages['be-tarask'] = array(
+	'editpagetracking-desc' => 'Захоўвае першае наведваньне старонкі рэдагаваньня ўдзельнікам',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -35,6 +49,20 @@ $messages['he'] = array(
  */
 $messages['ia'] = array(
 	'editpagetracking-desc' => 'Registra le prime vice que cata usator visualisa le pagina de modification',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'editpagetracking-desc' => 'Deiht et eezde Mohl faß hallde, wann ene Metmaacher op en Sigg för et Ändere kütt.',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'editpagetracking-desc' => "Enregistréiert déi éischte Kéier wann e Benotzer d'Ännerungssäit kuckt",
 );
 
 /** Macedonian (Македонски)
