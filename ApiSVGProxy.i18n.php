@@ -287,7 +287,7 @@ $messages['ms'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
-	'apisvgproxy-desc' => "Geef SVG-bestanen deur vanof een bestaansmap of meugelijke bestaansmap op ofstaand naor 't lokale domein",
+	'apisvgproxy-desc' => 'Geef SVG-bestaanden deur vanaof een bestaandsmap of meugelike bestaandsmap op aofstaand naor t lokale domein',
 );
 
 /** Dutch (Nederlands)
