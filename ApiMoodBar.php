@@ -3,28 +3,28 @@
 class ApiMoodBar extends ApiBase {
 	public function execute() {
 		$params = $this->extractRequestParams();
-		
+
 		$params['page'] = Title::newFromText( $params['page'] );
-		
+
 		// Params are deliberately named the same as the properties,
 		//  just slurp them through.
 		$item = MBFeedbackItem::create( array() );
-		
+
 		$setParams = array();
 		foreach( $params as $key => $value ) {
 			if ( $item->isValidKey( $key ) ) {
 				$setParams[$key] = $value;
 			}
 		}
-		
+
 		$item->setProperties( $setParams );
-		
+
 		$item->save();
-		
+
 		$result = array( 'result' => 'success' );
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
-	
+
 	public function needsToken() {
 		return true;
 	}
@@ -70,13 +70,7 @@ class ApiMoodBar extends ApiBase {
 	public function getVersion() {
 		return __CLASS__ . ': $Id$';
 	}
-	
-	public function getPossibleErrors() {
-		return array_merge( parent::getPossibleErrors(), array(
-			
-		) );
-	}
-	
+
 	public function getParamDescription() {
 		return array(
 			'page' => 'The page the feedback is on',
@@ -91,7 +85,7 @@ class ApiMoodBar extends ApiBase {
 			'token' => 'An edit token',
 		);
 	}
-	
+
 	public function getDescription() {
 		return 'Allows users to submit feedback about their experiences on the site';
 	}

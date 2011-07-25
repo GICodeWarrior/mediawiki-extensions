@@ -13,12 +13,12 @@ class MBFeedbackItem {
 			'comment', // The feedback itself
 			'page', // The page where it was submitted
 			'type',
-			
+
 			// Housekeeping
 			'timestamp',
 			'user', // User object who submitted the feedback
 			'anonymize',
-			
+
 			// Statistics
 			'useragent',
 			'system',
@@ -27,22 +27,22 @@ class MBFeedbackItem {
 			'bucket',
 			'user-editcount',
 		);
-	
+
 	/** Valid values for the 'type' parameter. **/
 	protected static $validTypes = array( 'happy', 'sad', 'confused' );
-		
+
 	/**
 	 * Default constructor.
 	 * Don't use this, use either MBFeedbackItem::newFromRow or MBFeedbackItem::create
 	 */
 	protected function __construct() {
 		$this->data = array_fill_keys( $this->validMembers, null );
-		
+
 		// Non-nullable boolean fields
 		$this->setProperty('anonymize', false);
 		$this->setProperty('editmode', false);
 	}
-	
+
 	/**
 	 * Factory function to create a new MBFeedbackItem
 	 * @param $info Associative array of values
@@ -55,7 +55,7 @@ class MBFeedbackItem {
 		$newObject->initialiseNew( $info );
 		return $newObject;
 	}
-	
+
 	/**
 	 * Initialiser for new MBFeedbackItems
 	 * @param $info Associative array of values
@@ -63,16 +63,16 @@ class MBFeedbackItem {
 	 */
 	protected function initialiseNew( $info ) {
 		global $wgUser;
-		
+
 		$template = array(
 			'user' => $wgUser,
 			'timestamp' => wfTimestampNow(),
 		);
-		
+
 		$this->setProperties( $template );
 		$this->setProperties( $info );
 	}
-	
+
 	/**
 	 * Factory function to load an MBFeedbackItem from a DB row.
 	 * @param $row A row, from DatabaseBase::fetchObject
@@ -83,7 +83,7 @@ class MBFeedbackItem {
 		$newObject->initialiseFromRow( $row );
 		return $newObject;
 	}
-	
+
 	/**
 	 * Initialiser for MBFeedbackItems loaded from the database
 	 * @param $row A row object from DatabaseBase::fetchObject
@@ -103,9 +103,9 @@ class MBFeedbackItem {
 			'editmode' => $row->mbf_editing,
 			'user-editcount' => $row->mbf_user_editcount,
 		);
-		
+
 		$properties['page'] = Title::makeTitleSafe( $row->mbf_namespace, $row->mbf_title );
-		
+
 		if ( !empty($row->user_id) ) {
 			$properties['user'] = User::newFromRow( $row );
 		} elseif ( $row->mbf_user_id > 0 ) {
@@ -113,10 +113,10 @@ class MBFeedbackItem {
 		} else {
 			$properties['user'] = User::newFromName( $row->mbf_user_ip );
 		}
-		
+
 		$this->setProperties( $properties );
 	}
-	
+
 	/**
 	 * Set a group of properties. Throws an exception on invalid property.
 	 * @param $values An associative array of properties to set.
@@ -126,15 +126,15 @@ class MBFeedbackItem {
 			if ( ! $this->isValidKey($key) ) {
 				throw new MWException( "Attempt to set invalid property $key" );
 			}
-			
+
 			if ( ! $this->validatePropertyValue($key, $value) ) {
 				throw new MWException( "Attempt to set invalid value for $key" );
 			}
-			
+
 			$this->data[$key] = $value;
 		}
 	}
-	
+
 	/**
 	 * Set a group of values.
 	 * @param $key The property to set.
@@ -143,7 +143,7 @@ class MBFeedbackItem {
 	public function setProperty( $key, $value ) {
 		$this->setProperties( array( $key => $value ) );
 	}
-	
+
 	/**
 	 * Get a property.
 	 * @param $key The property to get
@@ -153,10 +153,10 @@ class MBFeedbackItem {
 		if ( ! $this->isValidKey($key) ) {
 			throw new MWException( "Attempt to get invalid property $key" );
 		}
-		
+
 		return $this->data[$key];
 	}
-	
+
 	/**
 	 * Check a property key for validity.
 	 * If a property key is valid, it will be prefilled to NULL.
@@ -165,7 +165,7 @@ class MBFeedbackItem {
 	public function isValidKey( $key ) {
 		return in_array( $key, $this->validMembers );
 	}
-	
+
 	/**
 	 * Check if a property value is valid for that property
 	 * @param $key The key of the property to check.
@@ -182,36 +182,36 @@ class MBFeedbackItem {
 		} elseif ( $key == 'comment' ) {
 			return mb_strlen( $value ) <= 140;
 		}
-		
+
 		return true;
 	}
-	
+
 	/**
 	 * Writes this MBFeedbackItem to the database.
 	 * Throws an exception if this it is already in the database.
 	 * @return The MBFeedbackItem's new ID.
 	 */
 	public function save() {
-	
+
 		if ( $this->getProperty('id') ) {
 			throw new MWException( "This ".__CLASS__." is already in the database." );
 		}
-		
+
 		// Add edit count if necessary
 		if ( $this->getProperty('user-editcount') === null &&
 			$this->getProperty('user') )
 		{
 			$value = $this->getProperty('user');
-			
+
 			if ( $value->isAnon() ) {
 				$this->setProperty( 'user-editcount', 0 );
 			} else {
 				$this->setProperty( 'user-editcount', $value->getEditCount() );
 			}
 		}
-		
+
 		$dbw = wfGetDB( DB_MASTER );
-		
+
 		$row = array(
 			'mbf_id' => $dbw->nextSequenceValue( 'moodbar_feedback_mbf_id' ),
 			'mbf_type' => $this->getProperty('type'),
@@ -225,7 +225,7 @@ class MBFeedbackItem {
 			'mbf_editing' => $this->getProperty('editmode'),
 			'mbf_user_editcount' => $this->getProperty('user-editcount'),
 		);
-		
+
 		$user = $this->getProperty('user');
 		if ( $user->isAnon() ) {
 			$row['mbf_user_id'] = 0;
@@ -233,25 +233,25 @@ class MBFeedbackItem {
 		} else {
 			$row['mbf_user_id'] = $user->getId();
 		}
-		
+
 		$page = $this->getProperty('page');
 		if ( $page ) {
 			$row['mbf_namespace'] = $page->getNamespace();
 			$row['mbf_title'] = $page->getDBkey();
 		}
-		
+
 		$dbw->insert( 'moodbar_feedback', $row, __METHOD__ );
-		
+
 		$this->setProperty( 'id', $dbw->insertId() );
-		
+
 		return $this->getProperty('id');
 	}
-	
+
 	/**
 	 * Gets the valid types of a feedback item.
 	 */
 	public static function getValidTypes() {
 		return self::$validTypes;
 	}
-	
+
 }

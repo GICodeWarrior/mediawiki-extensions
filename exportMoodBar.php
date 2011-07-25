@@ -24,33 +24,33 @@ class ExportMoodBar extends Maintenance {
 			'useragent',
 			'comment',
 		);
-	
+
 	public function __construct() {
 		parent::__construct();
 		$this->mDescription = "Exports MoodBar feedback";
 		$this->addOption( 'since-id', 'Get feedback after this ID' );
 		$this->addOption( 'since-time', 'Get feedback after this time' );
 	}
-	
+
 	public function execute() {
 		$dbr = wfGetDB( DB_SLAVE );
 		$lastRowCount = 1;
 		$fh = fopen('php://stdout', 'w');
-		
+
 		$offsetCond = array( 1 );
-		
+
 		if ( $this->getOption('since-id') ) {
 			$offsetCond[] = 'mbf_id > '.$dbr->addQuotes( $this->getArg('since-id') );
 		}
-		
+
 		if ( $this->getOption('since-time') ) {
 			$ts = $dbr->timestamp( $this->getArg('since-id') );
 			$offsetCond[] = 'mbf_timestamp > '.$dbr->addQuotes( $ts );
 		}
-		
+
 		fputcsv( $fh, $this->fields );
 		$lastId = 0;
-		
+
 		while ( $lastRowCount > 0 ) {
 			$res = $dbr->select(
 					array('moodbar_feedback','user'),
@@ -65,27 +65,27 @@ class ExportMoodBar extends Maintenance {
 						)
 					)
 				);
-				
+
 			$lastRowCount = $dbr->numRows( $res );
-			
+
 			foreach( $res as $row ) {
 				$this->outputRow( $fh, $row );
 				$lastId = $row->mbf_id;
 			}
-			
+
 			$offsetCond = 'mbf_id > ' . $dbr->addQuotes( $lastId );
 		}
 	}
-	
+
 	protected function outputRow( $fh, $row ) {
 		$item = MBFeedbackItem::load( $row );
 		$user = User::newFromRow( $row );
 		$outData = array();
-		
+
 		foreach( $this->fields as $field ) {
 			$outData[] = MoodBarFormatter::getInternalRepresentation( $item, $field );
 		}
-		
+
 		fputcsv( $fh, $outData );
 	}
 }
