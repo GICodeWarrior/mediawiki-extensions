@@ -348,7 +348,6 @@ class PollResults extends qp_SpecialPage {
 		$userTitle = Title::makeTitleSafe( NS_USER, $userName );
 		$user_link = $this->qpLink( $userTitle, $userName );
 		$pollStore->setLastUser( $userName, false );
-		$pollStore->loadRandomQuestions();
 		if ( !$pollStore->loadUserVote() ) {
 			return '';
 		}
