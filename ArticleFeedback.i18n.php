@@ -3006,6 +3006,7 @@ $messages['lb'] = array(
 	'articlefeedback-survey-message-success' => "Merci datt Dir d'Ëmfro ausgefëllt hutt.",
 	'articlefeedback-survey-message-error' => 'Et ass e Feeler geschitt.
 Probéiert w.e.g. méi spéit nach emol.',
+	'articleFeedback-table-caption-dailyhighsandlows' => "D'Héichten an d'Déifte vun haut",
 	'articleFeedback-table-caption-dailyhighs' => 'Säite mat den héchste Bewäertungen: $1',
 	'articleFeedback-table-caption-dailylows' => 'Säite mat den niddregste Bewäertungen: $1',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Déi gréisst Ännerungen an dëser Woch',
