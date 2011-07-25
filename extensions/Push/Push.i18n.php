@@ -21,6 +21,18 @@ $messages['en'] = array(
 	'right-bulkpush' => 'Authorization to use bulk push functionality (ie Special:Push).',
 	'right-pushadmin' => 'Authorization to modify push targets and push settings.',
 
+	'group-pusher' => 'Pushers',
+	'group-pusher-member' => 'Pusher',
+	'grouppage-pusher' => 'Project:Pushers',
+
+	'group-bulkpusher' => 'Bulk pushers',
+	'group-bulkpusher-member' => 'Bulk pusher',
+	'grouppage-bulkpusher' => 'Project:Bulk_pushers',
+
+	'group-filepusher' => 'File pushers',
+	'group-filepusher-member' => 'File pusher',
+	'grouppage-filepusher' => 'Project:File_pushers',
+
 	'push-err-captacha' => 'Could not push to $1 due to captcha.',
 	'push-err-captcha-page' => 'Could not push page $1 to all targets due to CAPTCHA.',
 	'push-err-authentication' => 'Authentication at $1 failed. $2',
