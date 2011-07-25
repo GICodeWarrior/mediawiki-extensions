@@ -473,7 +473,7 @@ $messages['nds'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
-	'ajaxquerypages-desc' => "Voeg wat AJAX toe an QueryPages zoas [[Special:Shortpages|korte pagina's]]",
+	'ajaxquerypages-desc' => "Do wat AJAX bie QueryPages zo as [[Special:Shortpages|korte pagina's]]",
 );
 
 /** Nepali (नेपाली)
