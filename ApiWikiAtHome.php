@@ -153,7 +153,7 @@ class ApiWikiAtHome extends ApiBase {
 		if( !$status->isGood() ){
 			return $this->dieUsageMsg( array('code'=>'fileerror', 'info'=>'Could Not Move The Uploaded File') );
 		}*/
-		wfMkdirParents( $thumbPath );
+		wfMkdirParents( $thumbPath, null, __METHOD__ );
 		if( !move_uploaded_file($uploadedJobFile, $destTarget) ){
 			return $this->dieUsage( 'Could Not Move The Uploaded File', 'fileerror' );
 		}
