@@ -81,6 +81,7 @@ es.ListBlockItem.prototype.getOffsetFromPosition = function( position ) {
 			}
 		}
 	}
+	return null;
 };
 
 es.ListBlockItem.prototype.renderContent = function( offset ) {
