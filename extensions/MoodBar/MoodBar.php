@@ -34,7 +34,6 @@ $wgSpecialPages['MoodBar'] = 'SpecialMoodBar';
 
 // User rights
 $wgAvailableRights[] = 'moodbar-view';
-$wgGroupPermissions['moodbar']['moodbar-view'] = true;
 
 // Internationalisation
 $wgExtensionMessagesFiles['MoodBar'] = dirname(__FILE__).'/MoodBar.i18n.php';
@@ -45,18 +44,16 @@ $mbResourceTemplate = array(
 	'remoteExtPath' => 'MoodBar/modules'
 );
 
-$oldVersion = version_compare( $wgVersion, '1.17', '<=' );
-
 $wgResourceModules['ext.moodBar.init'] = $mbResourceTemplate + array(
 	'styles' => 'ext.moodBar/ext.moodBar.init.css',
 	'scripts' => 'ext.moodBar/ext.moodBar.init.js',
 	'messages' => array(
-		'moodbar-trigger-using',
 		'moodbar-trigger-feedback',
 		'moodbar-trigger-share',
+		'moodbar-trigger-editing',
 		'tooltip-p-moodbar-trigger-feedback',
-		'tooltip-p-moodbar-trigger-using',
 		'tooltip-p-moodbar-trigger-share',
+		'tooltip-p-moodbar-trigger-editing',
 	),
 	'position' => 'top',
 	'dependencies' => array(
@@ -64,6 +61,8 @@ $wgResourceModules['ext.moodBar.init'] = $mbResourceTemplate + array(
 		'jquery.client',
 	),
 );
+
+$oldVersion = version_compare( $wgVersion, '1.17', '<=' );
 
 if ( !$oldVersion ) {
 	$wgResourceModules['ext.moodBar.init']['dependencies'][] = 'mediawiki.user';
@@ -74,8 +73,9 @@ $wgResourceModules['ext.moodBar.core'] = $mbResourceTemplate + array(
 	'scripts' => 'ext.moodBar/ext.moodBar.core.js',
 	'messages' => array(
 		'moodbar-close',
-		'moodbar-intro-using',
 		'moodbar-intro-feedback',
+		'moodbar-intro-share',
+		'moodbar-intro-editing',
 		'moodbar-type-happy-title',
 		'moodbar-type-sad-title',
 		'moodbar-type-confused-title',
@@ -131,10 +131,10 @@ $wgMoodBarConfig = array(
 			'buckets' =>
 				array(
 					'feedback' => 80,
-					'using' => 10,
 					'share' => 10,
+					'editing' => 10,
 				),
-			'version' => 2,
+			'version' => 3,
 			'expires' => 30,
 		),
 	'infoUrl' => 'http://www.mediawiki.org/wiki/MoodBar',

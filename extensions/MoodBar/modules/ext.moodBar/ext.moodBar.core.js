@@ -15,7 +15,7 @@
 					<div class="mw-moodBar-overlayContent"></div>\
 				</div></div>',
 			userinput: '\
-					<div class="mw-moodBar-overlayTitle"><html:msg key="moodbar-intro-using" /></div>\
+					<div class="mw-moodBar-overlayTitle"><html:msg key="INTROTITLE" /></div>\
 					<div class="mw-moodBar-types"></div>\
 					<div class="mw-moodBar-form">\
 						<div class="mw-moodBar-formTitle">\
@@ -59,7 +59,8 @@
 		event: {
 			trigger: function( e ) {
 				e.preventDefault();
-				if ( !mb.ui.overlay.is( ':visible' ) ) {
+				if ( mb.ui.overlay.is( ':hidden' ) ) {
+					mb.swapContent( mb.tpl.userinput );
 					mb.ui.overlay.show();
 				} else {
 					mb.ui.overlay.hide();
@@ -94,22 +95,8 @@
 			}
 		},
 
-		core: function() {
-			var msgOptions = { params: {} };
-			msgOptions.params['moodbar-intro-using'] = [mw.config.get( 'wgSiteName' )];
-
-			// Create overlay
-			mb.ui.overlay = $( mb.tpl.overlayBase )
-				// Fill content with user input screen
-				.find( '.mw-moodBar-overlayContent' )
-					.html( mb.tpl.userinput )
-					.end()
-				// Handle all html:msgs
-				.localize( msgOptions )
-				// Bind close-toggle
-				.find( '.mw-moodBar-overlayClose' )
-					.click( mb.event.trigger )
-					.end()
+		prepareUserinputContent: function( overlay ) {
+			overlay
 				// Populate type selector
 				.find( '.mw-moodBar-types' )
 					.append( function() {
@@ -166,7 +153,7 @@
 				.find( '.mw-moodBar-overlayWhatContent' )
 					.html(
 						function() {
-							var 	message, linkMessage, link,
+							var	message, linkMessage, link,
 								disableMsg, disableLink, out;
 
 							message = mw.msg( 'moodbar-what-content' );
@@ -225,6 +212,18 @@
 						$.moodBar.submit( mb.feedbackItem );
 					} )
 					.end();
+		},
+
+		core: function() {
+
+			// Create overlay
+			mb.ui.overlay = $( mb.tpl.overlayBase )
+				.localize()
+				// Bind close-toggle
+				.find( '.mw-moodBar-overlayClose' )
+					.click( mb.event.trigger )
+					.end();
+			mb.swapContent( mb.tpl.userinput );
 
 			mb.ui.overlay
 				// Inject overlay
@@ -237,11 +236,25 @@
 			// Bind triger
 			mb.ui.trigger.click( mb.event.trigger );
 		},
+
 		swapContent: function( tpl ) {
+			var msgOptions = {
+				keys: {
+					INTROTITLE: 'moodbar-intro-' + mb.conf.bucketKey
+				},
+				params: {
+					INTROTITLE: [mw.config.get( 'wgSiteName' )]
+				}
+			};
+
 			mb.ui.overlay
 				.find( '.mw-moodBar-overlayContent' )
 					.html( tpl )
-					.localize();
+					.localize( msgOptions );
+
+			if ( tpl == mb.tpl.userinput ) {
+				mb.prepareUserinputContent( mb.ui.overlay );
+			}
 			return true;
 		}
 	} );
