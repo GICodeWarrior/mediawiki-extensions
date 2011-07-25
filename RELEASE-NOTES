@@ -8,6 +8,7 @@ Latest version of the release notes: http://svn.wikimedia.org/viewvc/mediawiki/t
 2011-0x-xx
 
 * Added PushAPIAfterPush and PushAPIAfterImagePush hooks to the API modules.
+* Added pusher, file pusher and bulk pusher user rights groups.
 
 === Version 1.0 ===
 2011-05-26

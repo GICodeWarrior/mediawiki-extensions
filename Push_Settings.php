@@ -33,6 +33,14 @@ $wgGroupPermissions['autoconfirmed']['filepush'] = true;
 $wgGroupPermissions['sysop']['filepush'] = true;
 // $wgGroupPermissions['sysop']['pushadmin'] = true;
 
+$wgGroupPermissions['pusher']['push'] = true;
+
+$wgGroupPermissions['bulkpusher']['bulkpush'] = true;
+$wgGroupPermissions['bulkpusher']['push'] = true;
+
+$wgGroupPermissions['filepusher']['filepush'] = true;
+$wgGroupPermissions['filepusher']['push'] = true;
+
 # Show the push action as a tab (if not, it's displayed in the actions dropdown).
 # This only works for skins with an actions dropdown. For others push will always appear as a tab.
 $egPushShowTab = false;
