@@ -1,6 +1,6 @@
 <?php
 $messages = array();
- 
+
 $messages['en'] = array(
 	'collabwatchlist' => 'Collaborative watchlist',
 	'specialcollabwatchlist' => 'Collaborative watchlist special page',
