@@ -5,7 +5,7 @@
 class CollabWatchlistChangesList extends EnhancedChangesList {
 	protected $user;
 	protected $tagCheckboxIndex = 0;
-	
+
 	/**
 	 * Collaborative Watchlist contructor
 	 * @param User $user
@@ -15,7 +15,7 @@ class CollabWatchlistChangesList extends EnhancedChangesList {
 		parent::__construct($skin);
 		$this->user = $user;
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see includes/EnhancedChangesList#beginRecentChangesList()
@@ -25,13 +25,13 @@ class CollabWatchlistChangesList extends EnhancedChangesList {
 		$gwlSpeciaPageTitle = SpecialPage::getTitleFor( 'CollabWatchlist' );
 		$result = Xml::openElement('form', array(
 			'class' => 'mw-collaborative-watchlist-addtag-form',
-			'method' => 'post', 
+			'method' => 'post',
 			'action' => $gwlSpeciaPageTitle->getLocalUrl( array( 'action' => 'setTags' ))));
 		$result .= Xml::input('redirTarget', false, $wgRequest->getFullRequestURL(), array('type' => 'hidden'));
 		$result .= parent::beginRecentChangesList();
 		return $result;
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see includes/EnhancedChangesList#endRecentChangesList()
@@ -50,7 +50,7 @@ class CollabWatchlistChangesList extends EnhancedChangesList {
 		$result .= Xml::closeElement('form');
 		return $result;
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see includes/EnhancedChangesList#insertBeforeRCFlags($r, $rcObj)
@@ -62,18 +62,18 @@ class CollabWatchlistChangesList extends EnhancedChangesList {
 			'value' => ($rcObj->getTitle() . '|' . $rcObj->getAttribute('rc_this_oldid') . '|' . $rcObj->getAttribute('rc_id'))));
 		$this->tagCheckboxIndex++;
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see includes/EnhancedChangesList#insertBeforeRCFlagsBlock($r, $block)
 	 */
 	protected function insertBeforeRCFlagsBlock( &$r, &$block ) {
 		$r .= Xml::element('input', array(
-			'name' => 'collaborative-watchlist-addtag-placeholder', 
+			'name' => 'collaborative-watchlist-addtag-placeholder',
 			'type' => 'checkbox',
 			'style' => 'visibility: hidden;'));
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see includes/ChangesList#insertRollback($s, $rc)
@@ -96,7 +96,7 @@ class CollabWatchlistChangesList extends EnhancedChangesList {
 			}
 		}
 	}
-	
+
 	/**
 	 * Fetch an appropriate changes list class for the specified user
 	 * Some users might want to use an enhanced list format, for instance
@@ -113,7 +113,7 @@ class CollabWatchlistChangesList extends EnhancedChangesList {
 			return $list;
 		}
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see includes/ChangesList#insertTags($s, $rc, $classes)
@@ -125,7 +125,7 @@ class CollabWatchlistChangesList extends EnhancedChangesList {
 			$s .= ' ' . $tagSummary;
 		}
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see includes/EnhancedChangesList#insertHistLink($s, $rc, $title, $params, $sep)
@@ -133,7 +133,7 @@ class CollabWatchlistChangesList extends EnhancedChangesList {
 	protected function insertHistLink( &$s, &$rc, $title, $params = array(), $sep = NULL ) {
 		// No history
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see includes/EnhancedChangesList#insertCurrAndLastLinks($s, $rc)
@@ -143,7 +143,7 @@ class CollabWatchlistChangesList extends EnhancedChangesList {
 		$s .= $rc->curlink;
 		$s .= ')';
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see includes/EnhancedChangesList#insertUserAndTalkLinks($s, $rc)
@@ -151,16 +151,16 @@ class CollabWatchlistChangesList extends EnhancedChangesList {
 	protected function insertUserAndTalkLinks( &$s, &$rc ) {
 		$s .= $rc->userlink;
 	}
-	
+
 	/**
-	 * Insert the tags of the given change 
+	 * Insert the tags of the given change
 	 */
 	private function formatReviewSummaryRow( $rc, $page ) {
 		global $wgRequest;
 		$s = '';
 		if( !$rc )
 			return $s;
-		
+
 		$attr = $rc->mAttribs;
 		$tagRows = $attr['collabwatchlist_tags'];
 
@@ -177,7 +177,7 @@ class CollabWatchlistChangesList extends EnhancedChangesList {
 				ChangeTags::tagDescription( $tag )
 			);
 			$classes[] = Sanitizer::escapeClass( "mw-collabwatchlist-tag-$tag" );
-			
+
 			/** Insert links to user page, user talk page and eventually a blocking link */
 			$userLink = $this->skin->userLink( $tagRow['user_id'], $tagRow['user_name'] );
 			$delTagTarget = CollabWatchlistEditor::getUnsetTagUrl( $wgRequest->getFullRequestURL(), $attr['rc_title'], $tagRow['rl_id'], $tag, $attr['rc_id'] );
@@ -188,10 +188,10 @@ class CollabWatchlistChangesList extends EnhancedChangesList {
 		$markers = Xml::tags( 'span', array( 'class' => 'mw-collabwatchlist-tag-markers' ), $markers );
 		return array( $markers, $classes );
 	}
-	
+
 	/** Generate a form 'select' element for the collaborative watchlists and a 'select' element for choosing a tag.
 	 * The tag selector reacts on the watchlist selector and displays the relevant tags only, if javascript is enabled.
-	 * 
+	 *
 	 * @see #collabWatchlistSelector()
 	 * @see #tagSelector()
 	 * @param String $rlLabel The label for the collab watchlist select tag
@@ -205,7 +205,7 @@ class CollabWatchlistChangesList extends EnhancedChangesList {
 		$ret = self::collabWatchlistSelector($glWlIdAndName, $selected, $all, $element_name, $rlLabel, $rlElementId, $tagElementIdBase);
 		$ret .= '&nbsp;';
 		$ret .= self::tagSelector(array_keys($glWlIdAndName), $tagLabel);
-		// Make sure the correct tags for the default selection are set 
+		// Make sure the correct tags for the default selection are set
 		$ret .= Xml::element( 'script',
 			array(
 				'type' => $wgJsMimeType,
@@ -230,11 +230,11 @@ class CollabWatchlistChangesList extends EnhancedChangesList {
 	 * @return string
 	 */
 	public static function collabWatchlistSelector( $glWlIdAndName, $selected = '', $all = null, $element_name = 'collabwatchlist', $label = null, $element_id = 'collabwatchlist', $tagElementIdBase = null ) {
-		global $wgContLang, $wgScriptPath, $wgJsMimeType;
+		global $wgScriptPath, $wgJsMimeType;
 		$ret = '';
 		if(isset($tagElementIdBase)) {
 			$jsPath = "$wgScriptPath/extensions/CollabWatchlist/js";
-			$ret .= Xml::element( 'script', 
+			$ret .= Xml::element( 'script',
 				array(
 					'type' => $wgJsMimeType,
 					'src' => "$jsPath/CollabWatchlist.js",
@@ -260,7 +260,7 @@ class CollabWatchlistChangesList extends EnhancedChangesList {
 			if( $index === 0 )
 				$name = wfMsg( 'blankcollabwatchlist' );
 			$options[] = Xml::option( $name, $index, $index === $selected, isset($tagElementIdBase) ?
-				array('onclick' => 'onCollabWatchlistSelection("' . $tagElementIdBase . '", this.value)') : 
+				array('onclick' => 'onCollabWatchlistSelection("' . $tagElementIdBase . '", this.value)') :
 				array()
 			);
 		}
@@ -279,10 +279,10 @@ class CollabWatchlistChangesList extends EnhancedChangesList {
 		}
 		return $ret;
 	}
-	
+
 	/**
 	 * Build a drop-down box for selecting a collaborative watchlist tag
-	 * 
+	 *
 	 * @param array $rlIds A list of collaborative watchlist ids
 	 * @param String $label The label for the select tag
 	 * @param String $elemId The id of the select tag
@@ -323,12 +323,12 @@ class CollabWatchlistChangesList extends EnhancedChangesList {
 			'name' => 'collabwatchlisttag-rl',
 			'class' => 'mw-collaborative-watchlist-tag-selector')) .
 		Xml::closeElement('select');
-		
+
 		return $ret;
 	}
-	
+
 	/** Returns an array mapping from collab watchlist tag names to information about the tag
-	 * 
+	 *
 	 * The info is an array with the following keys:
 	 * 'rt_description' The description of the tag
 	 * 'rl_ids' An array of collab watchlist ids the tag belongs to
@@ -346,17 +346,16 @@ class CollabWatchlistChangesList extends EnhancedChangesList {
 			__METHOD__
 		);
 		$list = array();
-		while( $row = $res->fetchObject() ) {
+		foreach( $res as $row ) {
 			if(array_key_exists($row->rt_name, $list)) {
 				$list[$row->rt_name]['rl_ids'][] = $row->rl_id;
 			} else {
 				$list[$row->rt_name] = array('rt_description' => $row->rt_description, 'rl_ids' => array($row->rl_id));
 			}
 		}
-		$dbr->freeResult( $res );
 		return $list;
 	}
-	
+
 	//XXX Cache the result of this method in this class
 	/** Get an array mapping from collab watchlist id to its name, filtering by member type
 	 * The method return only collab watchlist the given user is a member of, restricted by the allowed member types
@@ -376,13 +375,12 @@ class CollabWatchlistChangesList extends EnhancedChangesList {
 			 # Join conditions
 			array(	'collabwatchlistuser' => array('JOIN', $wgDBprefix . 'collabwatchlist.rl_id = ' . $wgDBprefix . 'collabwatchlistuser.rl_id') )
 		);
-		while( $row = $res->fetchObject() ) {
+		foreach( $res as $row ) {
 			$list[$row->rl_id] = $row->rl_name;
 		}
-		$dbr->freeResult( $res );
 		return $list;
 	}
-	
+
 	//XXX Copied from HistoryPage, we should patch HistoryPage to export that functionality
 	// as a static function
 	/**
@@ -393,7 +391,7 @@ class CollabWatchlistChangesList extends EnhancedChangesList {
 	 * @return String Undo Link
 	 */
 	public static function generateUndoLink($skin, $title, $revision, $undoAfterRevision) {
-		if( ! $revision instanceof Revision || ! $undoAfterRevision instanceof Revision || 
+		if( ! $revision instanceof Revision || ! $undoAfterRevision instanceof Revision ||
 			! $title instanceof Title || !$skin instanceof Skin )
 			return null;
 		# Create undo tooltip for the first (=latest) line only

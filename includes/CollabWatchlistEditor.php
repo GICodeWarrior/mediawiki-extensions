@@ -22,7 +22,7 @@ class CollabWatchlistEditor {
 	const USERS_EDIT_RAW = 7;
 	const NEW_LIST = 8;
 	const DELETE_LIST = 9;
-	
+
 	/**
 	 * Main execution point
 	 *
@@ -267,14 +267,14 @@ class CollabWatchlistEditor {
 			return $tokenOk;
 		return $this->checkPermissions( $user, $rlId, $memberTypes );
 	}
-	
+
 	private function checkPermissions( $user, $rlId, $memberTypes = array(COLLABWATCHLISTUSER_OWNER) ) {
 		// Check permissions
 		$dbr = wfGetDB( DB_MASTER );
 		$res = $dbr->select( 'collabwatchlistuser',
-			'COUNT(*) AS count', 
+			'COUNT(*) AS count',
 			array( 'rl_id' => $rlId, 'user_id' => $user->getId(), 'rlu_type' => $memberTypes ),
-			__METHOD__ 
+			__METHOD__
 		);
 		$row = $dbr->fetchObject( $res );
 		return $row->count >= 1;
@@ -311,7 +311,7 @@ class CollabWatchlistEditor {
 		}
 		return array_unique( $titles );
 	}
-	
+
 	private function extractTypeTypeTextAndUsername( $typeAndUsernameStr ) {
 		$type = COLLABWATCHLISTUSER_USER;
 		$typeText = COLLABWATCHLISTUSER_USER_TEXT;
@@ -332,7 +332,7 @@ class CollabWatchlistEditor {
 		}
 		return array($type, $typeText, $titleText);
 	}
-	
+
 	/**
 	 * Extract a list of users from a blob of text, returning
 	 * (prefixed) strings
@@ -358,7 +358,7 @@ class CollabWatchlistEditor {
 		}
 		return array_unique( $titles );
 	}
-	
+
 	/**
 	 * Extract a list of tags from a blob of text, returning
 	 * (prefixed) strings
@@ -425,7 +425,7 @@ class CollabWatchlistEditor {
 		}
 		$output->addHTML( "</ul>\n" );
 	}
-	
+
 	/**
 	 * Print out a list of tags with description
 	 *
@@ -458,7 +458,7 @@ class CollabWatchlistEditor {
 		$row = $dbr->fetchObject( $res );
 		return $row->count;
 	}
-	
+
 	/**
 	 * Count the number of users on a collaborative watchlist
 	 *
@@ -471,7 +471,7 @@ class CollabWatchlistEditor {
 		$row = $dbr->fetchObject( $res );
 		return $row->count;
 	}
-	
+
 	/**
 	 * Count the number of tags on a collaborative watchlist
 	 *
@@ -484,7 +484,7 @@ class CollabWatchlistEditor {
 		$row = $dbr->fetchObject( $res );
 		return $row->count;
 	}
-	
+
 	/**
 	 * Count the number of set edit tags on a collaborative watchlist
 	 *
@@ -519,16 +519,15 @@ class CollabWatchlistEditor {
 			array(	'page' => array('JOIN', 'page.page_id = collabwatchlistcategory.cat_page_id') )
 		);
 		if( $res->numRows() > 0 ) {
-			while( $row = $res->fetchObject() ) {
+			foreach( $res as $row ) {
 				$title = Title::makeTitleSafe( $row->page_namespace, $row->page_title );
 				if( $title instanceof Title && !$title->isTalkPage() )
 					$list[] = $row->subtract ? '- ' . $title->getPrefixedText() : $title->getPrefixedText();
 			}
-			$res->free();
 		}
 		return $list;
 	}
-	
+
 	/**
 	 * Prepare a list of users on a collaborative watchlist
 	 * and return an array of (prefixed) strings
@@ -550,15 +549,14 @@ class CollabWatchlistEditor {
 			array(	'user' => array('JOIN', 'user.user_id = collabwatchlistuser.user_id') )
 		);
 		if( $res->numRows() > 0 ) {
-			while( $row = $res->fetchObject() ) {
+			foreach( $res as $row ) {
 				$typeText = fnCollabWatchlistUserTypeToText($row->rlu_type);
 				$list[] = $typeText . ' ' . $row->user_name;
 			}
-			$res->free();
 		}
 		return $list;
 	}
-	
+
 	/**
 	 * Prepare a list of tags on a collaborative watchlist
 	 * and return an array of tag names mapping to tag descriptions
@@ -577,10 +575,9 @@ class CollabWatchlistEditor {
 			), __METHOD__
 		);
 		if( $res->numRows() > 0 ) {
-			while( $row = $res->fetchObject() ) {
+			foreach( $res as $row ) {
 				$list[$row->rt_name] = $row->rt_description;
 			}
-			$res->free();
 		}
 		return $list;
 	}
@@ -596,7 +593,7 @@ class CollabWatchlistEditor {
 	private function getWatchlistInfo( $rlId ) {
 		$titles = array();
 		$dbr = wfGetDB( DB_MASTER );
-		
+
 		$res = $dbr->select(
 			array('collabwatchlistcategory', 'page'),
 			array('page_title', 'page_namespace', 'page_id', 'page_len', 'page_is_redirect', 'subtract'),
@@ -607,10 +604,10 @@ class CollabWatchlistEditor {
 			 # Join conditions
 			array(	'page' => array('JOIN', 'page.page_id = collabwatchlistcategory.cat_page_id') )
 		);
-		
+
 		if( $res && $dbr->numRows( $res ) > 0 ) {
 			$cache = LinkCache::singleton();
-			while( $row = $dbr->fetchObject( $res ) ) {
+			foreach( $res as $row ) {
 				$title = Title::makeTitleSafe( $row->page_namespace, $row->page_title );
 				if( $title instanceof Title ) {
 					// Update the link cache while we're at it
@@ -645,7 +642,7 @@ class CollabWatchlistEditor {
 		}
 		return $count;
 	}
-	
+
 	/**
 	 * Show a message indicating the number of categories on the collaborative watchlist,
 	 * and return this count for additional checking
@@ -663,7 +660,7 @@ class CollabWatchlistEditor {
 		}
 		return $count;
 	}
-	
+
 	/**
 	 * Show a message indicating the number of set tags for edits on the collaborative watchlist,
 	 * and return this count for additional checking
@@ -681,7 +678,7 @@ class CollabWatchlistEditor {
 		}
 		return $count;
 	}
-	
+
 	/**
 	 * Show a message indicating the number of categories on the collaborative watchlist,
 	 * and return this count for additional checking
@@ -699,7 +696,7 @@ class CollabWatchlistEditor {
 		}
 		return $count;
 	}
-	
+
 	/**
 	 * Remove all categories from a collaborative watchlist
 	 *
@@ -744,7 +741,7 @@ class CollabWatchlistEditor {
 		$dbw->insert( 'collabwatchlistcategory', $rows, __METHOD__, 'IGNORE' );
 		return $added;
 	}
-	
+
 	/**
 	 * Add a list of users to a collaborative watchlist
 	 *
@@ -772,7 +769,7 @@ class CollabWatchlistEditor {
 		$dbw->insert( 'collabwatchlistuser', $rows, __METHOD__, 'IGNORE' );
 		return $added;
 	}
-	
+
 	private function setTags( $titlesAndTagInfo, $tag, $userId, $rlId, $comment, $setPatrolled = false) {
 		//XXX Attach a hook to delete tags from the collabwatchlistrevisiontag table as soon as the actual tags are deleted from the change_tags table
 		$allowedTagsAndInfo = $this->getCollabWatchlistTags($rlId);
@@ -792,7 +789,7 @@ class CollabWatchlistEditor {
 				}
 			}
 			// Add the tagged revisions to the collaborative watchlist
-			$sql = 'INSERT IGNORE INTO collabwatchlistrevisiontag (ct_id, rl_id, user_id, rrt_comment) 
+			$sql = 'INSERT IGNORE INTO collabwatchlistrevisiontag (ct_id, rl_id, user_id, rrt_comment)
 					SELECT ct_id, ' . $dbw->strencode($rlId) . ',' .
 						$dbw->strencode($userId) . ',' .
 						$dbw->addQuotes($comment) . ' FROM change_tag WHERE ct_tag = ? AND ct_rc_id ';
@@ -809,7 +806,7 @@ class CollabWatchlistEditor {
 			return true;
 		}
 	}
-	
+
 	private function unsetTags( $titlesAndTagInfo, $tag, $userId, $rlId ) {
 		$dbw = wfGetDB( DB_MASTER );
 		foreach( $titlesAndTagInfo as $title => $infos ) {
@@ -820,8 +817,8 @@ class CollabWatchlistEditor {
 				$rcIds[] = $info['rc_id'];
 			}
 			// Remove the tag from the collaborative watchlist
-			$sql = 'delete collabwatchlistrevisiontag from collabwatchlistrevisiontag JOIN change_tag 
-					ON change_tag.ct_id = collabwatchlistrevisiontag.ct_id 
+			$sql = 'delete collabwatchlistrevisiontag from collabwatchlistrevisiontag JOIN change_tag
+					ON change_tag.ct_id = collabwatchlistrevisiontag.ct_id
 					WHERE ct_tag = ? AND ct_rc_id ';
 			if( count($rcIds) > 1 ) {
 				$sql .= 'IN (' . $dbw->makeList($rcIds) . ')';
@@ -835,7 +832,7 @@ class CollabWatchlistEditor {
 			$dbw->freePrepared($prepSql);
 		}
 	}
-	
+
 	/**
 	 * Add a list of tags to a collaborative watchlist
 	 *
@@ -893,7 +890,7 @@ class CollabWatchlistEditor {
 			}
 		}
 	}
-	
+
 	/**
 	 * Remove a list of users from a collaborative watchlist
 	 *
@@ -922,7 +919,7 @@ class CollabWatchlistEditor {
 		//XXX Check if we can simply rename the hook, or if we need to register it
 		//wfRunHooks('UnwatchArticleComplete',array(&$user,&$article));
 	}
-	
+
 	/**
 	 * Remove a list of tags from a collaborative watchlist
 	 *
@@ -970,7 +967,7 @@ class CollabWatchlistEditor {
 			$output->addHTML( $form );
 		}
 	}
-	
+
 	private function showNewListForm( $output ) {
 		global $wgUser;
 		$self = SpecialPage::getTitleFor( 'CollabWatchlist' );
@@ -984,7 +981,7 @@ class CollabWatchlistEditor {
 		$form .= '</fieldset></form>';
 		$output->addHTML( $form );
 	}
-	
+
 	private function showDeleteListForm( $output, $rlId ) {
 		global $wgUser;
 		$self = SpecialPage::getTitleFor( 'CollabWatchlist' );
@@ -1000,7 +997,7 @@ class CollabWatchlistEditor {
 		$form .= '</fieldset></form>';
 		$output->addHTML( $form );
 	}
-	
+
 	private function createNewList($name) {
 		global $wgUser;
 		if( !isset($name) || empty($name) )
@@ -1014,7 +1011,7 @@ class CollabWatchlistEditor {
 				'rl_name'    => $name,
 				'rl_start'	=> wfTimestamp(TS_ISO_8601),
 			), __METHOD__, 'IGNORE' );
-	
+
 			$affected = $dbw->affectedRows();
 			if( $affected ) {
 				$newid = $dbw->insertId();
@@ -1039,7 +1036,7 @@ class CollabWatchlistEditor {
 			$dbw->rollback();
 		}
 	}
-	
+
 	private function deleteList($rlId) {
 		if( !isset($rlId) || empty($rlId) )
 			return;
@@ -1188,7 +1185,7 @@ class CollabWatchlistEditor {
 		$form .= '</fieldset></form>';
 		$output->addHTML( $form );
 	}
-	
+
 	/**
 	 * Show a form for editing the tags of a collaborative watchlist in "raw" mode
 	 *
@@ -1218,7 +1215,7 @@ class CollabWatchlistEditor {
 		$form .= '</fieldset></form>';
 		$output->addHTML( $form );
 	}
-	
+
 	/**
 	 * Show a form for editing the users of a collaborative watchlist in "raw" mode
 	 *
@@ -1293,7 +1290,7 @@ class CollabWatchlistEditor {
 	 */
 	public static function buildTools( $listIdsAndNames, $skin ) {
 		global $wgLang, $wgUser;
-		$modes = array( 'view' => false, 'delete' => 'delete', 'edit' => 'edit', 
+		$modes = array( 'view' => false, 'delete' => 'delete', 'edit' => 'edit',
 			'rawCategories' => 'rawCategories', 'rawTags' => 'rawTags',
 			'rawUsers' => 'rawUsers' );
 		$r = '';
@@ -1323,9 +1320,9 @@ class CollabWatchlistEditor {
 		}
 		return $r;
 	}
-	
+
 	/** Returns a URL for unsetting a specific tag on a specific edit on a given list
-	 * 
+	 *
 	 * @param String $redirUrl The url to redirect after the tag was removed
 	 * @param String $pageName The name of the page the tag is set on
 	 * @param int $rlId The id of the collab watchlist
