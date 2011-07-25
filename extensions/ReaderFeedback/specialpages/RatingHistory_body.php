@@ -50,7 +50,7 @@ class RatingHistory extends UnlistedSpecialPage
 		}
 		$this->period = $period;
 		$this->dScale = 20;
-		
+
 		$this->now = time(); // one time for whole request
 
 		$this->showForm();
@@ -66,7 +66,7 @@ class RatingHistory extends UnlistedSpecialPage
 		}
 		$this->showGraphs();
 	}
-	
+
 	protected function showTable() {
 		global $wgOut;
 		# Show latest month of results
@@ -81,7 +81,7 @@ class RatingHistory extends UnlistedSpecialPage
 			);
 		}
 	}
-	
+
 	protected function showForm() {
 		global $wgOut, $wgScript;
 		$form = Xml::openElement( 'form', array( 'name' => 'reviewedpages',
@@ -96,7 +96,7 @@ class RatingHistory extends UnlistedSpecialPage
 		$form .= "</fieldset></form>\n";
 		$wgOut->addHTML( $form );
 	}
-	
+
    	/**
 	* Get a selector of time period options
 	* @param int $selected, selected level
@@ -111,7 +111,7 @@ class RatingHistory extends UnlistedSpecialPage
 		$s .= Xml::closeElement('select')."\n";
 		return $s;
 	}
-	
+
 	protected function showGraphs() {
 		global $wgOut;
 		$data = false;
@@ -157,7 +157,7 @@ class RatingHistory extends UnlistedSpecialPage
 					}
 					$html .= "<h3>" . wfMsgHtml("readerfeedback-$tag") . "$viewLink</h3>\n" .
 						Xml::openElement( 'div', array('class' => 'rfb-reader_feedback_graph') ) .
-						Xml::openElement( 'img', array('src' => $url,'alt' => $tag) ) . 
+						Xml::openElement( 'img', array('src' => $url,'alt' => $tag) ) .
 						Xml::closeElement( 'img' ) .
 						Xml::closeElement( 'div' ) . "\n" .
 						wfMsgExt('ratinghistory-graph-scale', 'parse', $this->dScale ) . "\n";
@@ -200,7 +200,7 @@ class RatingHistory extends UnlistedSpecialPage
 		}
 		$wgOut->addHTML( $html );
 	}
-	
+
 	/**
 	* Generate an HTML table for this tag
 	* @param string $tag
@@ -210,7 +210,7 @@ class RatingHistory extends UnlistedSpecialPage
 	public function makeHTMLTable( $tag, $filePath ) {
 		$dir = dirname($filePath);
 		// Make sure directory exists
-		if( !is_dir($dir) && !wfMkdirParents( $dir, 0777 ) ) {
+		if( !is_dir($dir) && !wfMkdirParents( $dir, 0777, __METHOD__ ) ) {
 			return false;
 		}
 		// Define the data using the DB rows
@@ -250,7 +250,7 @@ class RatingHistory extends UnlistedSpecialPage
 		fclose( $fp );
 		return $chart;
 	}
-	
+
 	/**
 	* Generate a graph for this tag
 	* @param string $tag
@@ -269,7 +269,7 @@ class RatingHistory extends UnlistedSpecialPage
 		// Set file path
 		$dir = dirname($filePath);
 		// Make sure directory exists
-		if( !file_exists($dir) && !wfMkdirParents( $dir, 0777 ) ) {
+		if( !file_exists($dir) && !wfMkdirParents( $dir, 0777, __METHOD__ ) ) {
 			throw new MWException( 'Could not create file directory!' );
 		}
 		$plot->SetOutputFile( $filePath );
@@ -350,7 +350,7 @@ class RatingHistory extends UnlistedSpecialPage
 		$plot->DrawGraph();
 		return true;
 	}
-	
+
 	/**
 	* Generate a graph for this tag
 	* @param string $tag
@@ -366,7 +366,7 @@ class RatingHistory extends UnlistedSpecialPage
 		// Set file path
 		$dir = dirname($filePath);
 		// Make sure directory exists
-		if( !file_exists($dir) && !wfMkdirParents( $dir, 0777 ) ) {
+		if( !file_exists($dir) && !wfMkdirParents( $dir, 0777, __METHOD__ ) ) {
 			throw new MWException( 'Could not create file directory!' );
 		}
 		// Set some parameters
@@ -458,7 +458,7 @@ class RatingHistory extends UnlistedSpecialPage
 		$plot->styleTagsY = 'font-family: sans-serif; font-size: 11pt;';
 		$plot->format['dave'] = array( 'style' => 'stroke:blue; stroke-width:1;' );
 		$plot->format['rave'] = array( 'style' => 'stroke:green; stroke-width:1;' );
-		$plot->format['dcount'] = array( 'style' => 'stroke:red; stroke-width:1;' ); 
+		$plot->format['dcount'] = array( 'style' => 'stroke:red; stroke-width:1;' );
 			#'attributes' => "marker-end='url(#circle)'");
 		$pageText = $wgContLang->truncate( $this->page->getPrefixedText(), 65 );
 		$plot->title = wfMsgExt('ratinghistory-graph',array('parsemag','content'),
@@ -467,7 +467,7 @@ class RatingHistory extends UnlistedSpecialPage
 		$plot->backgroundStyle = 'fill:#F0F0F0;';
 		// extra code for markers
 		// FIXME: http://studio.imagemagick.org/pipermail/magick-bugs/2003-January/001038.html
-		/* $plot->extraSVG = 
+		/* $plot->extraSVG =
 			'<defs>
 			  <marker id="circle" style="stroke:red; stroke-width:0; fill:red;"
 				viewBox="0 0 10 10" refX="5" refY="7" orient="0"
@@ -508,7 +508,7 @@ class RatingHistory extends UnlistedSpecialPage
 		}
 		return true;
 	}
-	
+
 	protected function doQuery( $tag ) {
 		// Set cutoff time for period
 		$dbr = wfGetDB( DB_SLAVE );
@@ -517,7 +517,7 @@ class RatingHistory extends UnlistedSpecialPage
 		$cutoff = $dbr->addQuotes( wfTimestamp( TS_MW, $cutoff_unixtime ) );
 		$res = $dbr->select( 'reader_feedback_history',
 			array( 'rfh_total', 'rfh_count', 'rfh_date' ),
-			array( 'rfh_page_id' => $this->page->getArticleId(), 
+			array( 'rfh_page_id' => $this->page->getArticleId(),
 				'rfh_tag' => $tag,
 				"rfh_date >= {$cutoff}"),
 			__METHOD__,
@@ -543,7 +543,7 @@ class RatingHistory extends UnlistedSpecialPage
 		}
 		return array($res,$ave,$maxC,$days);
 	}
-	
+
 	/**
 	* Get the path to where the corresponding graph file should be
 	* @param string $tag
@@ -555,7 +555,7 @@ class RatingHistory extends UnlistedSpecialPage
 		$rel = $this->getRelPath( $tag, $ext );
 		return "{$wgUploadDirectory}/graphs/{$rel}";
 	}
-	
+
 	/**
 	* Get the url to where the corresponding graph file should be
 	* @param string $tag
@@ -567,7 +567,7 @@ class RatingHistory extends UnlistedSpecialPage
 		$rel = $this->getRelPath( $tag, $ext );
 		return "{$wgUploadPath}/graphs/{$rel}";
 	}
-	
+
 	public function getRelPath( $tag, $ext = '' ) {
 		$ext = $ext ? $ext : self::getCachedFileExtension();
 		$pageId = $this->page->getArticleId();
@@ -577,7 +577,7 @@ class RatingHistory extends UnlistedSpecialPage
 		}
 		return "{$pageId}/{$tag}/l{$this->period}d.{$ext}";
 	}
-	
+
 	public static function getCachedFileExtension() {
 		global $wgSvgGraphDir, $wgPHPlotDir;
 		if( $wgSvgGraphDir || $wgPHPlotDir ) {
@@ -587,7 +587,7 @@ class RatingHistory extends UnlistedSpecialPage
 		}
 		return $ext;
 	}
-	
+
 	public static function getSourceFileExtension() {
 		global $wgSvgGraphDir, $wgPHPlotDir;
 		if( $wgSvgGraphDir ) {
@@ -599,7 +599,7 @@ class RatingHistory extends UnlistedSpecialPage
 		}
 		return $ext;
 	}
-	
+
 	protected function getUserList() {
 		global $wgMemc;
 		if( $this->period > 93 ) {
@@ -609,7 +609,7 @@ class RatingHistory extends UnlistedSpecialPage
 		// Check cache
 		if( !$this->doPurge ) {
 			$set = $wgMemc->get($key);
-			// Cutoff is at the 24 hour mark due to the way the aggregate 
+			// Cutoff is at the 24 hour mark due to the way the aggregate
 			// schema groups ratings by date for graphs.
 			$cache_cutoff = $this->now - ($this->now % 86400);
 			if( is_array($set) && count($set) == 2 ) {
@@ -666,7 +666,7 @@ class RatingHistory extends UnlistedSpecialPage
 		$wgMemc->set( $key, array( $html, $this->now ), 24*3600 );
 		return $html;
 	}
-	
+
 	public function purgePage() {
 		global $wgUploadDirectory;
 		foreach( ReaderFeedback::getFeedbackTags() as $tag => $weight ) {
@@ -684,7 +684,7 @@ class RatingHistory extends UnlistedSpecialPage
 		}
 		return true;
 	}
-	
+
 	/**
 	* Check if a graph file is expired. Set $this->dScale.
 	* @param string $tag
@@ -717,7 +717,7 @@ class RatingHistory extends UnlistedSpecialPage
 		# If there are new votes, graph is stale
 		return ( $file_unixtime < $tagTimestamp );
 	}
-	
+
 	/**
 	* Get highest touch timestamp of the tags. This uses a tiny filesort.
 	* @param $page Title
@@ -725,7 +725,7 @@ class RatingHistory extends UnlistedSpecialPage
 	*/
 	public static function getTouched( $page ) {
 		$dbr = wfGetDB( DB_SLAVE );
-		$tagTimestamp = $dbr->selectField( 'reader_feedback_pages', 
+		$tagTimestamp = $dbr->selectField( 'reader_feedback_pages',
 			'MAX(rfp_touched)',
 			array( 'rfp_page_id' => $page->getArticleId() ),
 			__METHOD__ );

@@ -158,7 +158,7 @@ class NonFreeVideoHandler extends MediaHandler {
 				# Seek to midpoint by default, it tends to be more interesting than the start
 				$thumbTime = $length / 2;
 			}
-			wfMkdirParents( dirname( $dstPath ) );
+			wfMkdirParents( dirname( $dstPath ), null, __METHOD__ );
 			if(!is_file($dstPath)){
 				$cmd = wfEscapeShellArg( $wgFFmpegLocation ) .
 				' -ss ' . intval( $thumbTime ) . ' ' .

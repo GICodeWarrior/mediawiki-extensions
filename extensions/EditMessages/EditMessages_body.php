@@ -8,7 +8,7 @@ class EditMessagesPage extends SpecialPage {
 
 	function execute( $subpage = '' ) {
 		global $wgOut, $wgRequest;
-		
+
 		$this->setHeaders();
 
 		$messageName = $wgRequest->getVal( 'messageName' );
@@ -121,7 +121,7 @@ class EditMessagesPage extends SpecialPage {
 		);
 		$dcRegex = '/[0-7]{1,3}|x[0-9A-Fa-f]{1,2}/';
 
-		wfMkdirParents( "$wgTmpDirectory/EditMessages" );
+		wfMkdirParents( "$wgTmpDirectory/EditMessages", null, __METHOD__ );
 		$out = '';
 		foreach ( $originalMsgs as $lang => $origValue ) {
 			if ( !isset( $newMsgs[$lang] ) ) {

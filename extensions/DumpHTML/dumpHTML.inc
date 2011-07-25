@@ -1180,7 +1180,7 @@ ENDTEXT;
 
 	function mkdir( $dir ) {
 		//if ( wfIsWindows() ) {
-			return wfMkdirParents( $dir, 0755 );
+			return wfMkdirParents( $dir, 0755, __METHOD__ );
 		/*} else {
 			$dir = escapeshellarg( $dir );
 			`mkdir -p -- $dir`;

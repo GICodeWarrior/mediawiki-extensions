@@ -60,7 +60,7 @@ function doJobLoop(){
 	$file = wfLocalFile( $fTitle );
 	$thumbPath = $file->getThumbPath( $jobSet->set_encodekey );
 	//make sure the directory is ready:
-	wfMkdirParents( $thumbPath );
+	wfMkdirParents( $thumbPath, null, __METHOD__ );
 
 	$destTarget = $thumbPath . '.ogg';
 	//issue the encoding command
