@@ -17,24 +17,24 @@ class SpecialMoodBar extends SpecialPage {
 			'mbf_user_agent' => 'useragent',
 			'mbf_comment' => 'comment',
 		);
-		
+
 	function __construct() {
 		parent::__construct( 'MoodBar', 'moodbar-view' );
 	}
-	
+
 	function execute($par) {
 		global $wgUser, $wgOut;
-		
+
 		if ( !$this->userCanExecute( $wgUser ) ) {
 			$this->displayRestrictionError();
 			return;
 		}
-		
+
 		$wgOut->setPageTitle( wfMsg( 'moodbar-admin-title' ) );
 		$wgOut->addWikiMsg( 'moodbar-admin-intro' );
-		
+
 		$pager = new MoodBarPager();
-		
+
 		if ( $pager->getNumRows() > 0 ) {
 			$wgOut->addHTML(
 				$pager->getNavigationBar() .
@@ -50,38 +50,38 @@ class SpecialMoodBar extends SpecialPage {
 class MoodBarPager extends TablePager {
 	function getFieldNames() {
 		static $headers = null;
-		
+
 		if ( is_null( $headers ) ) {
 			$headers = array();
 			foreach( SpecialMoodBar::$fields as $field => $property ) {
 				$headers[$field] = wfMessage("moodbar-header-$property")->text();
 			}
 		}
-		
+
 		return $headers;
 	}
-	
+
 	// Overridden from TablePager, it's just easier because
 	// we're doing things with a proper object model
 	function formatRow( $row ) {
 		$out = '';
-		
+
 		$data = MBFeedbackItem::load( $row );
 		$outData = null;
-		
+
 		foreach( SpecialMoodBar::$fields as $field ) {
 			$outData = MoodBarFormatter::getHTMLRepresentation( $data, $field );
 			$out .= Xml::tags( 'td', null, $outData );
 		}
-		
+
 		$out = Xml::tags( 'tr', $this->getRowAttrs($row), $out ) . "\n";
 		return $out;
 	}
-	
+
 	function formatValue( $name, $value ) {
 		return '';
 	}
-	
+
 	function getQueryInfo() {
 		$info = array(
 			'tables' => array('moodbar_feedback', 'user'),
@@ -93,14 +93,14 @@ class MoodBarPager extends TablePager {
 				),
 			),
 		);
-		
+
 		return $info;
 	}
-	
+
 	function getDefaultSort() {
 		return 'mbf_id';
 	}
-	
+
 	function isFieldSortable( $name ) {
 		$sortable = array(
 			'mbf_id',
@@ -108,10 +108,10 @@ class MoodBarPager extends TablePager {
 			'mbf_user_id',
 			'mbf_namespace',
 		);
-		
+
 		return in_array( $name, $sortable );
 	}
-	
+
 	function getTitle() {
 		return SpecialPage::getTitleFor( 'MoodBar' );
 	}

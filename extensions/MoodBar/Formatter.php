@@ -15,7 +15,7 @@ abstract class MoodBarFormatter {
 		switch( $field ) {
 			case 'page':
 				$title = $data->getProperty('page');
-				
+
 				global $wgUser;
 				$linker = $wgUser->getSkin();
 				$outData = $linker->link( $title );
@@ -38,10 +38,10 @@ abstract class MoodBarFormatter {
 				$outData = htmlspecialchars( $outData );
 				break;
 		}
-		
+
 		return $outData;
 	}
-	
+
 	/**
 	 * Gets an internal representation of $field from $data.
 	 * @param $data MBFeedbackItem to retrieve the data from.
@@ -50,7 +50,7 @@ abstract class MoodBarFormatter {
 	 */
 	public static function getInternalRepresentation( $data, $field ) {
 		$outData = null;
-		
+
 		switch( $field ) {
 			case 'namespace':
 				$page = $data->getProperty('page');
@@ -86,7 +86,7 @@ abstract class MoodBarFormatter {
 			default:
 				$outData = $data->getProperty($field);
 		}
-		
+
 		return $outData;
 	}
 }

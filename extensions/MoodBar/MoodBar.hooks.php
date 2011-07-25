@@ -8,10 +8,10 @@ class MoodBarHooks {
 		if ( self::shouldShowMoodbar( $output, $skin ) ) {
 			$output->addModules( array( 'ext.moodBar.init', 'ext.moodBar.core' ) );
 		}
-		
+
 		return true;
 	}
-	
+
 	/**
 	 * Determines whether or not we should show the MoodBar.
 	 */
@@ -26,11 +26,11 @@ class MoodBarHooks {
 		}
 		global $wgUser;
 		$user = $wgUser;
-		
+
 		if ( $user->isAnon() ) {
 			return false;
 		}
-		
+
 		// Only show MoodBar for users registered after a certain time
 		global $wgMoodBarCutoffTime;
 		if ( $wgMoodBarCutoffTime &&
@@ -38,14 +38,14 @@ class MoodBarHooks {
 		{
 			return false;
 		}
-		
+
 		if ( class_exists('EditPageTracking') ) {
 			return ((bool)EditPageTracking::getFirstEditPage($user));
 		}
-		
+
 		return true;
 	}
-	
+
 	/**
 	 * ResourceLoaderGetConfigVars hook
 	 */
@@ -57,27 +57,27 @@ class MoodBarHooks {
 		) + $wgMoodBarConfig;
 		return true;
 	}
-	
+
 	public static function makeGlobalVariablesScript( &$vars ) {
 		global $wgUser;
 		$vars['mbEditToken'] = $wgUser->editToken();
 		return true;
 	}
-	
+
 	/**
 	 * Runs MoodBar schema updates
 	 */
 	public static function onLoadExtensionSchemaUpdates( $updater = null ) {
 		$updater->addExtensionUpdate( array( 'addTable', 'moodbar_feedback',
 			dirname(__FILE__).'/sql/MoodBar.sql', true ) );
-			
+
 		$updater->addExtensionUpdate( array( 'addField', 'moodbar_feedback',
 			'mbf_user_editcount', dirname(__FILE__).'/sql/mbf_user_editcount.sql', true )
 		);
-			
+
 		return true;
 	}
-	
+
 	/**
 	 * Gets the MoodBar testing bucket that a user is in.
 	 * @param $user The user to check
@@ -86,9 +86,9 @@ class MoodBarHooks {
 	public static function getUserBuckets( $user ) {
 		$id = $user->getID();
 		$buckets = array();
-		
+
 		// No show-time bucketing yet. This method is a stub.
-		
+
 		sort($buckets);
 		return $buckets;
 	}
