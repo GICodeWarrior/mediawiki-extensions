@@ -1891,7 +1891,7 @@ $messages['nds'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
-	'badimages-add-btn' => 'Toevoegen',
+	'badimages-add-btn' => 'Derbie doon',
 );
 
 /** Dutch (Nederlands)
