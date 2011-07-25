@@ -17,6 +17,10 @@ $messages = array();
 $messages['en'] = array(
 	'livetranslate-desc' => 'Enables live translation of page content using the Google Translate service',
 	'right-managetms' => '[[Special:SpecialLiveTranslate|Modify]] the list of translation memories',
+	
+	'group-tmxadmin' => 'TMX admins',
+	'group-tmxadmin-member' => 'TMX admin',
+	'grouppage-tmxadmin' => 'Project:TMX_admins',
 
 	// Translation interface
 	'livetranslate-translate-to' => 'Translate this page to',

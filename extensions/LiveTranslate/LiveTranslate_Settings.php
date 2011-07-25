@@ -25,6 +25,7 @@ $egLiveTranslateLanguages = array(
 
 # Permission to mannage translation memories.
 $wgGroupPermissions['sysop']['managetms'] = true;
+$wgGroupPermissions['tmxadmin']['managetms'] = true;
 
 # Default translation memory type.
 # TMT_LTF, TMT_TMX, TMT_GCSV
