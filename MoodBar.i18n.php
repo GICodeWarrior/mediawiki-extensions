@@ -115,20 +115,21 @@ See also:
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author Raymond
  * @author SPQRobin
  */
 $messages['qqq'] = array(
 	'moodbar-desc' => '{{desc}}
 This is a feature in development. See [[mw:MoodBar 0.1/Design]] for background information.',
-	'moodbar-trigger-editing' => "Link text of the MoodBar overlay trigger. \$1 is the SITENAME. The implied sentence is ''\"Using [Sitename] made me happy/sad/...\"''. See [[mw:MoodBar 0.1/Design]] for background development information.",
 	'moodbar-trigger-feedback' => 'Link text of the MoodBar overlay trigger. $1 is the SITENAME.',
+	'moodbar-trigger-editing' => "Link text of the MoodBar overlay trigger. \$1 is the SITENAME. The implied sentence is ''\"Using [Sitename] made me happy/sad/...\"''. See [[mw:MoodBar 0.1/Design]] for background development information.",
 	'moodbar-close' => 'Link text of the close-button. Make sure to include parentheses.
 
 See also:
 * {{msg|parentheses}}',
+	'moodbar-intro-feedback' => 'Intro title of the MoodBar overlay trigger. $1 is the SITENAME.',
 	'moodbar-intro-editing' => '[[File:MoodBar-Step-1.png|right|200px]]
 Intro title of the MoodBar overlay trigger. $1 is the SITENAME.',
-	'moodbar-intro-feedback' => 'Intro title of the MoodBar overlay trigger. $1 is the SITENAME.',
 	'tooltip-moodbar-what' => 'Tooltip displayed when hovering the What-link.
 
 See also:
@@ -161,12 +162,12 @@ $messages['be-tarask'] = array(
  */
 $messages['de'] = array(
 	'moodbar-desc' => 'Ermöglicht es Benutzern dem Betreiber des Wikis ihre Stimmung bezüglich des Bearbeitens von Seiten mitzuteilen',
-	'moodbar-trigger-editing' => 'Bearbeite $1 …',
 	'moodbar-trigger-feedback' => 'Rückmeldung zum Bearbeiten',
 	'moodbar-trigger-share' => 'Teile uns deinen Eindruck mit',
+	'moodbar-trigger-editing' => 'Bearbeite $1 …',
 	'moodbar-close' => '(schließen)',
-	'moodbar-intro-editing' => '$1 zu bearbeiten macht mich …',
 	'moodbar-intro-feedback' => 'Rückmeldung:',
+	'moodbar-intro-editing' => '$1 zu bearbeiten macht mich …',
 	'moodbar-type-happy-title' => 'Glücklich',
 	'moodbar-type-sad-title' => 'Traurig',
 	'moodbar-type-confused-title' => 'Verwirrt',
@@ -274,11 +275,11 @@ $messages['gl'] = array(
  */
 $messages['he'] = array(
 	'moodbar-desc' => 'מתן אפשרות למשתמשם לשלוח את "מצב הרוח" שלהם למפעיל האתר',
-	'moodbar-trigger-editing' => 'עריכה $1...',
 	'moodbar-trigger-feedback' => 'משוב על עריכה',
+	'moodbar-trigger-editing' => 'עריכה $1...',
 	'moodbar-close' => '(סגירה)',
+	'moodbar-intro-feedback' => 'עריכת $1 גרמה לי ...',
 	'moodbar-intro-editing' => 'עריכת $1 גרמה לי ...',
-	'moodbar-intro-feedback' => 'משוב:',
 	'moodbar-type-happy-title' => 'שמחה',
 	'moodbar-type-sad-title' => 'עצב',
 	'moodbar-type-confused-title' => 'בלבול',
@@ -307,12 +308,12 @@ $messages['he'] = array(
  */
 $messages['ia'] = array(
 	'moodbar-desc' => 'Permitte al usatores specificate de inviar lor "humor" retro al operator del sito',
-	'moodbar-trigger-editing' => 'Modificar $1...',
 	'moodbar-trigger-feedback' => 'Commentos super le modification',
 	'moodbar-trigger-share' => 'Divider tu experientia',
+	'moodbar-trigger-editing' => 'Modificar $1...',
 	'moodbar-close' => '(clauder)',
-	'moodbar-intro-editing' => 'Le uso de $1 me rendeva...',
 	'moodbar-intro-feedback' => 'Reaction:',
+	'moodbar-intro-editing' => 'Le uso de $1 me rendeva...',
 	'moodbar-type-happy-title' => 'Felice',
 	'moodbar-type-sad-title' => 'Triste',
 	'moodbar-type-confused-title' => 'Confuse',
@@ -377,8 +378,8 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'moodbar-desc' => 'Erméiglecht et spezifesche Benotzer fir dem Responsabele vum Site hir Stëmmung ze schécken',
-	'moodbar-trigger-editing' => 'Ännert $1...',
 	'moodbar-trigger-feedback' => "Feedback iwwert d'Änneren",
+	'moodbar-trigger-editing' => 'Ännert $1...',
 	'moodbar-close' => '(zoumaachen)',
 	'moodbar-intro-feedback' => 'Feedback:',
 	'moodbar-type-happy-title' => 'Glécklech',
@@ -413,12 +414,12 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'moodbar-desc' => 'Им овозможува на одредени корисници да му го соопштуваат нивното „расположение“ на операторот на мрежното место',
-	'moodbar-trigger-editing' => 'Уредување на $1...',
 	'moodbar-trigger-feedback' => 'Мислења за уредувањето',
 	'moodbar-trigger-share' => 'Споделете го вашето искуство',
+	'moodbar-trigger-editing' => 'Уредување на $1...',
 	'moodbar-close' => '(затвори)',
-	'moodbar-intro-editing' => 'Уредувањето на $1 ме...',
 	'moodbar-intro-feedback' => 'Мислења',
+	'moodbar-intro-editing' => 'Уредувањето на $1 ме...',
 	'moodbar-type-happy-title' => 'усреќи',
 	'moodbar-type-sad-title' => 'натажи',
 	'moodbar-type-confused-title' => 'збуни',
@@ -473,12 +474,12 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'moodbar-desc' => 'Laat bepaalde gebruikers toe hun "gemoedstoestand" naar de sitebeheerders te verzenden',
-	'moodbar-trigger-editing' => 'Het bewerken van $1...',
 	'moodbar-trigger-feedback' => 'Terugkoppeling over het bewerken',
 	'moodbar-trigger-share' => 'Deel uw ervaring',
+	'moodbar-trigger-editing' => 'Het bewerken van $1...',
 	'moodbar-close' => '(sluiten)',
-	'moodbar-intro-editing' => 'Het gebruiken van $1 maakte mij...',
 	'moodbar-intro-feedback' => 'Terugkoppeling:',
+	'moodbar-intro-editing' => 'Het gebruiken van $1 maakte mij...',
 	'moodbar-type-happy-title' => 'Blij',
 	'moodbar-type-sad-title' => 'Triest',
 	'moodbar-type-confused-title' => 'Verward',
@@ -525,12 +526,12 @@ Voor meer informatie, ga naar de $1.',
  */
 $messages['pt'] = array(
 	'moodbar-desc' => 'Permite que os utilizadores especificados enviem ao operador do site uma indicação do seu estado de espírito',
-	'moodbar-trigger-editing' => 'A editar $1...',
 	'moodbar-trigger-feedback' => 'Comentários sobre edição',
 	'moodbar-trigger-share' => 'Partilhe a sua experiência',
+	'moodbar-trigger-editing' => 'A editar $1...',
 	'moodbar-close' => '(fechar)',
-	'moodbar-intro-editing' => 'Usar a $1 tornou-me...',
 	'moodbar-intro-feedback' => 'Comentários:',
+	'moodbar-intro-editing' => 'Usar a $1 tornou-me...',
 	'moodbar-type-happy-title' => 'Feliz',
 	'moodbar-type-sad-title' => 'Triste',
 	'moodbar-type-confused-title' => 'Confuso',
