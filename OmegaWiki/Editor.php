@@ -693,8 +693,7 @@ class RecordSetTableEditor extends RecordSetEditor {
 	}
 
 	public function edit( IdStack $idPath, $value ) {
-		global
-			$wgStylePath;
+		global $wgStylePath, $wgScriptPath ;
 
 		$result = '<table id="' . $idPath->getId() . '" class="wiki-data-table">';
 		$key = $value->getKey();
