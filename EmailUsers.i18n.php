@@ -345,16 +345,17 @@ $messages['no'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'emailusers-desc' => "Përmëtte a j'utent ëd mandé corej a pi ricevent",
-	'right-sendbatchemail' => 'Manda corel a pi ricevent al midem temp',
-	'emailusers' => 'Utent ëd corel',
-	'emailusers-target-reverse' => "Manda a tùit j'utent an gavand coj selessionà",
-	'emailusers-norecipient' => "A-i é pa gnun ch'it peuss-ie mandeje ëd corel.",
-	'emailusers-norecipientselected' => "Pa gnun ricevent a l'é selessionà.",
-	'emailusers-toomanyrecipientsselected' => 'Tròp ricevent a son selessionà ({{PLURAL:$1|màssim $1|màssim $1}}).',
+	'emailusers-desc' => "Përmëtte a j'utent ëd mandé dij mëssagi ëd pòsta eletrònica a vàire destinatari",
+	'right-sendbatchemail' => 'Mandé un mëssagi ëd pòsta eletrònica a vàire destinatari ansema',
+	'emailusers' => 'Uilisator ëd la pòsta eletrònica',
+	'emailusers-target-reverse' => "Mandé a tùit j'utent gavà a coj selessionà",
+	'emailusers-norecipient' => 'A-i é gnun a chi a peula mandeje un mëssagi an pòsta eletrònica',
+	'emailusers-norecipientselected' => "Gnun destinatari a l'é stàit selessionà.",
+	'emailusers-toomanyrecipientsselected' => 'Tròpi destinatari a son selessionà ({{PLURAL:$1|màssim $1|màssim $1}}).',
 );
 
 /** Pashto (پښتو)
