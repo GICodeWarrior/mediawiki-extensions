@@ -7,7 +7,7 @@ es.ListBlockItem = function( line, lists ) {
 	for ( var i = 0; i < lists.length; i++ ) {
 		itemLists.push( new es.ListBlockList( lists[i].style, lists[i].items || [] ) );
 	}
-	/*
+	/*var contentLength = this.content.getLength(
 	 * Initialize container
 	 * 
 	 * - Adds class to container: "editSurface-item"
@@ -28,7 +28,7 @@ es.ListBlockItem = function( line, lists ) {
 }
 
 es.ListBlockItem.prototype.getLength = function() {
-	var length = this.content.getLength();
+	var length = this.content.getLength() + 1;
 	for ( var i = 0; i < this.lists.length; i++ ) {
 		length += this.lists[i].getLength();
 	}
@@ -36,7 +36,7 @@ es.ListBlockItem.prototype.getLength = function() {
 };
 
 es.ListBlockItem.prototype.getLocationFromOffset = function( offset ) {
-	var contentLength = this.content.getLength();
+	var contentLength = this.content.getLength() + 1;
 	
 	if ( offset < contentLength ) {
 		return {
@@ -75,7 +75,7 @@ es.ListBlockItem.prototype.getOffsetFromPosition = function( position ) {
 		for ( var i = 0; i < this.lists.length; i++ ) {
 			offset =  this.lists[i].getOffsetFromPosition( position );
 			if ( offset != null ) {
-				return globalOffset + offset + this.content.getLength();
+				return globalOffset + offset + this.content.getLength() + 1;
 			} else {
 				globalOffset += this.lists[i].getLength();
 			}
