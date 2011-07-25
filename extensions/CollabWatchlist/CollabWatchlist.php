@@ -11,8 +11,8 @@ EOT;
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'CollabWatchlist',
-	'author' =>'Florian Hackenberger', 
-	'url' => 'http://www.mediawiki.org/wiki/User:Flohack', 
+	'author' =>'Florian Hackenberger',
+	'url' => 'http://www.mediawiki.org/wiki/User:Flohack',
 	'description' => 'Provides collaborative watchlists based on categories',
 	'descriptionmsg' => 'specialcollabwatchlist-desc',
 	'version' => '0.9.0',
@@ -25,7 +25,6 @@ $wgCollabWatchlistIncludes = $wgDir . 'includes/';
 $wgExtensionMessagesFiles['CollabWatchlist'] = $wgDir . 'CollabWatchlist.i18n.php';
 $wgExtensionAliasesFiles['CollabWatchlist'] = $wgDir . 'CollabWatchlist.alias.php';
 
-//$wgAutoloadClasses['CollabWatchlist'] = $wgDir . 'CollabWatchlist.body.php'; # Tell MediaWiki to load the extension body.
 $wgAutoloadClasses['SpecialCollabWatchlist'] = $wgCollabWatchlistIncludes . 'SpecialCollabWatchlist.php';
 $wgAutoloadClasses['CollabWatchlistChangesList'] = $wgCollabWatchlistIncludes . 'CollabWatchlistChangesList.php';
 $wgAutoloadClasses['CategoryTreeManip'] = $wgCollabWatchlistIncludes . 'CategoryTreeManip.php';
@@ -36,7 +35,7 @@ $wgSpecialPageGroups['Collabwatchlist'] = 'other';
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'fnCollabWatchlistDbSchema';
 $wgHooks['GetPreferences'][] = 'fnCollabWatchlistPreferences';
- 
+
 function fnCollabWatchlistDbSchema() {
     global $wgExtNewTables;
     $wgSql = dirname(__FILE__) . '/sql/';

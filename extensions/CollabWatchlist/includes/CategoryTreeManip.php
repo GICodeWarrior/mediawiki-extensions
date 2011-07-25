@@ -10,7 +10,7 @@
  * @author fhackenberger
  */
 class CategoryTreeManip {
-	
+
 	var $root;
 	var $name;
 	var $id;
@@ -18,7 +18,7 @@ class CategoryTreeManip {
 	var $parents = array();
 	var $enabled = true;
 	var $children = array();
-	
+
 	/**
 	 * Constructor
 	 */
@@ -32,7 +32,7 @@ class CategoryTreeManip {
 		}
 		$this->parents = $parents;
 	}
-	
+
 	private function addChildren($children) {
 		if(!is_array($children))
 			throw new Exception('Argument must be an array');
@@ -40,7 +40,7 @@ class CategoryTreeManip {
 			$this->children[$child->id] = $child;
 		}
 	}
-	
+
 	private function addParents($parents) {
 		if(!is_array($parents))
 			throw new Exception('Argument must be an array');
@@ -48,18 +48,17 @@ class CategoryTreeManip {
 			$this->parents[$parent->id] = $parent;
 		}
 	}
-	
+
 	/** Disable this category node and all subcategory nodes
 	 * @return
 	 */
 	public function disable() {
 		$this->recursiveDisable();
 	}
-	
+
 	/** Disable the given categories (by id) and all their subcategories
-	 * 
+	 *
 	 * @param array $catPageIds The page ids of the categories to disable
-	 * @return
 	 */
 	public function disableCategoryIds($catPageIds) {
 		foreach($catPageIds as $catId) {
@@ -69,7 +68,7 @@ class CategoryTreeManip {
 			}
 		}
 	}
-	
+
 	private function recursiveDisable($visitedNodeIds = array()) {
 		if(!$this->enabled || array_key_exists($this->id, $visitedNodeIds))
 			return; # Break the recursion
@@ -77,12 +76,12 @@ class CategoryTreeManip {
 		$visitedNodeIds[] = $this->id;
 		foreach($this->children as $cat) {
 			$cat->recursiveDisable($visitedNodeIds);
-		} 
+		}
 	}
-	
+
 	/** Returns a list of enables category names, including
 	 * all subcategories.
-	 * 
+	 *
 	 * @return array An array of category names
 	 */
 	public function getEnabledCategoryNames() {
@@ -93,16 +92,16 @@ class CategoryTreeManip {
 		}
 		return $enabledCategories;
 	}
-	
+
 	/** Returns a map of enabled categories, including
 	 * all subcategories.
-	 * 
+	 *
 	 * @return array An array mapping from category page ids to CategoryTreeManip objects
 	 */
 	public function getEnabledNodeMap() {
 		return $this->root->recursiveGetEnabledNodeMap();
 	}
-	
+
 	private function recursiveGetEnabledNodeMap(&$foundNodes = array()) {
 		if(isset($this->id)) {
 			if(!$this->enabled || array_key_exists($this->id, $foundNodes))
@@ -114,9 +113,9 @@ class CategoryTreeManip {
 		}
 		return $foundNodes;
 	}
-	
+
 	/** Returns a CategoryTreeManip node, given a category page id
-	 * 
+	 *
 	 * @param $catPageId The page id of the category to retrieve
 	 * @return CategoryTreeManip The node
 	 */
@@ -124,14 +123,14 @@ class CategoryTreeManip {
 		if(array_key_exists($catPageId, $this->root->catPageIdToNode))
 			return $this->root->catPageIdToNode[$catPageId];
 	}
-	
+
 	private function addNode($node) {
 		$this->root->catPageIdToNode[$node->id] = $node;
 	}
-	
+
 	/** Build the category tree, given a list of category names.
 	 * All categories and subcategories are enabled by default.
-	 * 
+	 *
 	 * @param array $catNames An array of strings representing category names
 	 * @return
 	 */
@@ -147,7 +146,7 @@ class CategoryTreeManip {
 			);
 			$parentList = array();
 			$childList = array();
-			while( $row = $res->fetchObject() ) {
+			foreach( $res as $row ) {
 				$parentList[$row->parName][] = array($row->childId, $row->childName);
 				if(array_key_exists($row->childId, $childList)) {
 					$childEntry = $childList[$row->childId];
@@ -156,8 +155,7 @@ class CategoryTreeManip {
 					$childList[$row->childId] = array($row->childName, array($row->parName));
 				}
 			}
-			$dbr->freeResult( $res );
-			
+
 			if(!isset($parentNameToNode) && !empty($parentList)) {
 				// Fetch the page ids of the $catNames and add the parent categories if needed
 				$res = $dbr->select( array('page' ), # Tables
@@ -165,7 +163,7 @@ class CategoryTreeManip {
 					array('page_title' => array_keys($parentList))  # Conditions
 				);
 				$parentNameToNode = array();
-				while( $row = $res->fetchObject() ) {
+				foreach( $res as $row ) {
 					$node = $this->getNodeForCatPageId($row->page_id);
 					if(!isset($node)) {
 						$node = new CategoryTreeManip($row->page_id, $row->page_title, $this->root);
@@ -174,9 +172,8 @@ class CategoryTreeManip {
 					}
 					$parentNameToNode[$row->page_title] = $node;
 				}
-				$dbr->freeResult( $res );
 			}
-			
+
 			$newChildNameToNode = array();
 			// Add the new child nodes
 			foreach($childList as $childPageId => $childInfo) {
@@ -192,7 +189,7 @@ class CategoryTreeManip {
 					$childNode->addParents(array($parent));
 				}
 			}
-			
+
 			// Prepare for the next loop
 			$parentNameToNode = $newChildNameToNode;
 			$catNames = array_keys($parentNameToNode);

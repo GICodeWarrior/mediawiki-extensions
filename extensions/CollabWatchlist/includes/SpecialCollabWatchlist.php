@@ -3,12 +3,12 @@ class SpecialCollabWatchlist extends SpecialPage {
 	function __construct() {
 		parent::__construct( 'CollabWatchlist' );
 	}
- 
+
 	function execute( $par ) {
 		global $wgUser, $wgOut, $wgLang, $wgRequest;
-		global $wgRCShowWatchingUsers, $wgEnotifWatchlist;
+		global $wgRCShowWatchingUsers;
 		global $wgEnotifWatchlist;
-		
+
 		// Add feed links
 		$wlToken = $wgUser->getOption( 'watchlisttoken' );
 		if (!$wlToken) {
@@ -16,27 +16,27 @@ class SpecialCollabWatchlist extends SpecialPage {
 			$wgUser->setOption( 'watchlisttoken', $wlToken );
 			$wgUser->saveSettings();
 		}
-		
-		global $wgServer, $wgScriptPath, $wgFeedClasses;
+
+		global $wgFeedClasses;
 		$apiParams = array( 'action' => 'feedwatchlist', 'allrev' => 'allrev',
 							'wlowner' => $wgUser->getName(), 'wltoken' => $wlToken );
 		$feedTemplate = wfScript('api').'?';
-		
+
 		foreach( $wgFeedClasses as $format => $class ) {
 			$theseParams = $apiParams + array( 'feedformat' => $format );
 			$url = $feedTemplate . wfArrayToCGI( $theseParams );
 			$wgOut->addFeedLink( $format, $url );
 		}
-	
+
 		$skin = $wgUser->getSkin();
 		$specialTitle = SpecialPage::getTitleFor( 'CollabWatchlist' );
 		$wgOut->setRobotPolicy( 'noindex,nofollow' );
-	
+
 		# Anons don't get a watchlist
 		if( $wgUser->isAnon() ) {
 			$wgOut->setPageTitle( wfMsg( 'watchnologin' ) );
 			$llink = $skin->linkKnown(
-				SpecialPage::getTitleFor( 'Userlogin' ), 
+				SpecialPage::getTitleFor( 'Userlogin' ),
 				wfMsgHtml( 'loginreqlink' ),
 				array(),
 				array( 'returnto' => $specialTitle->getPrefixedText() )
@@ -44,9 +44,9 @@ class SpecialCollabWatchlist extends SpecialPage {
 			$wgOut->addHTML( wfMsgWikiHtml( 'watchlistanontext', $llink ) );
 			return;
 		}
-	
+
 		$wgOut->setPageTitle( wfMsg( 'collabwatchlist' ) );
-	
+
 		$listIdsAndNames = CollabWatchlistChangesList::getCollabWatchlistIdAndName($wgUser->getId());
 		$sub = wfMsgExt(
 			'watchlistfor2',
@@ -56,9 +56,9 @@ class SpecialCollabWatchlist extends SpecialPage {
 		);
 		$sub .= '<br />' . CollabWatchlistEditor::buildTools( $listIdsAndNames, $wgUser->getSkin() );
 		$wgOut->setSubtitle( $sub );
-	
+
 		$uid = $wgUser->getId();
-		
+
 		// The filter form has one checkbox for each tag, build an array
 		$postValues = $wgRequest->getValues();
 		$tagFilter = array();
@@ -71,7 +71,7 @@ class SpecialCollabWatchlist extends SpecialPage {
 		if( empty($tagFilter) ) {
 			$tagFilter = explode('|', $wgRequest->getVal('filterTags'));
 		}
-	
+
 		$defaults = array(
 		/* float */ 'days'      => floatval( $wgUser->getOption( 'watchlistdays' ) ), /* 3.0 or 0.5, watch further below */
 		/* bool  */ 'hideMinor' => (int)$wgUser->getBoolOption( 'watchlisthideminor' ),
@@ -87,9 +87,9 @@ class SpecialCollabWatchlist extends SpecialPage {
 		/* ?     */ 'invertTags'=> false,
 		/* ?     */ 'filterTags'=> '',
 		);
-	
+
 		extract($defaults);
-	
+
 		# Extract variables from the request, falling back to user preferences or
 		# other default values if these don't exist
 		$prefs['days']      = floatval( $wgUser->getOption( 'watchlistdays' ) );
@@ -102,7 +102,7 @@ class SpecialCollabWatchlist extends SpecialPage {
 		$prefs['hidepatrolled' ] = $wgUser->getBoolOption( 'watchlisthidepatrolled' );
 		$prefs['invertTags' ] = $wgUser->getBoolOption( 'collabwatchlistinverttags' );
 		$prefs['filterTags' ] = $wgUser->getOption( 'collabwatchlistfiltertags' );
-		
+
 		# Get query variables
 		$days      = $wgRequest->getVal(  'days'     , $prefs['days'] );
 		$hideMinor = $wgRequest->getBool( 'hideMinor', $prefs['hideminor'] );
@@ -114,7 +114,7 @@ class SpecialCollabWatchlist extends SpecialPage {
 		$hidePatrolled = $wgRequest->getBool( 'hidePatrolled'  , $prefs['hidepatrolled'] );
 		$filterTags = implode('|', $tagFilter);
 		$invertTags = $wgRequest->getBool( 'invertTags'  , $prefs['invertTags'] );
-		
+
 		# Get collabwatchlist value, if supplied, and prepare a WHERE fragment
 		$collabWatchlist = $wgRequest->getIntOrNull( 'collabwatchlist' );
 		$invert = $wgRequest->getBool( 'invert' );
@@ -127,16 +127,16 @@ class SpecialCollabWatchlist extends SpecialPage {
 		if(array_key_exists($collabWatchlist, $listIdsAndNames)) {
 			$wgOut->addHTML( Xml::element('h2', null, $listIdsAndNames[$collabWatchlist]) );
 		}
-		
+
 		if( ( $mode = CollabWatchlistEditor::getMode( $wgRequest, $par ) ) !== false ) {
 			$editor = new CollabWatchlistEditor();
 			$editor->execute( $collabWatchlist, $listIdsAndNames, $wgOut, $wgRequest, $mode );
 			return;
 		}
-	
+
 		$dbr = wfGetDB( DB_SLAVE, 'watchlist' );
 		$recentchanges = $dbr->tableName( 'recentchanges' );
-	
+
 		$nitems = $dbr->selectField( 'collabwatchlistcategory', 'COUNT(*)',
 			$collabWatchlist == 0 ? array() : array('rl_id' => $collabWatchlist
 			), __METHOD__ );
@@ -144,10 +144,10 @@ class SpecialCollabWatchlist extends SpecialPage {
 			$wgOut->addWikiMsg( 'nowatchlist' );
 			return;
 		}
-	
+
 		// Dump everything here
 		$nondefaults = array();
-	
+
 		wfAppendToArrayIfNotDefault( 'days'     , $days          , $defaults, $nondefaults);
 		wfAppendToArrayIfNotDefault( 'hideMinor', (int)$hideMinor, $defaults, $nondefaults );
 		wfAppendToArrayIfNotDefault( 'hideBots' , (int)$hideBots , $defaults, $nondefaults);
@@ -160,21 +160,21 @@ class SpecialCollabWatchlist extends SpecialPage {
 		wfAppendToArrayIfNotDefault( 'filterTags', $filterTags   , $defaults, $nondefaults );
 		wfAppendToArrayIfNotDefault( 'invertTags', $invertTags   , $defaults, $nondefaults );
 		wfAppendToArrayIfNotDefault( 'invert', $invert   , $defaults, $nondefaults );
-		
+
 		if( $days <= 0 ) {
 			$andcutoff = '';
 		} else {
 			$andcutoff = "rc_timestamp > '".$dbr->timestamp( time() - intval( $days * 86400 ) )."'";
 		}
-	
+
 		# If the watchlist is relatively short, it's simplest to zip
 		# down its entirety and then sort the results.
-	
+
 		# If it's relatively long, it may be worth our while to zip
 		# through the time-sorted page list checking for watched items.
-	
+
 		# Up estimate of watched items by 15% to compensate for talk pages...
-	
+
 		# Toggles
 		$andHideOwn   = $hideOwn   ? "rc_user != $uid" : '';
 		$andHideBots  = $hideBots  ? "rc_bot = 0" : '';
@@ -183,7 +183,7 @@ class SpecialCollabWatchlist extends SpecialPage {
 		$andHideAnons = $hideAnons ? "rc_user != 0" : '';
 		$andHideListUser = $hideListUser ? $this->wlGetFilterClauseListUser($collabWatchlist) : '';
 		$andHidePatrolled = $wgUser->useRCPatrol() && $hidePatrolled ? "rc_patrolled != 1" : '';
-	
+
 		# Toggle watchlist content (all recent edits or just the latest)
 		if( $wgUser->getOption( 'extendwatchlist' )) {
 			$andLatest='';
@@ -195,22 +195,22 @@ class SpecialCollabWatchlist extends SpecialPage {
 			$limitWatchlist = 0;
 			$usePage = true;
 		}
-	
+
 		# Show a message about slave lag, if applicable
 		if( ( $lag = $dbr->getLag() ) > 0 )
 			$wgOut->showLagWarning( $lag );
-	
+
 		# Create output form
 		$form  = Xml::fieldset( wfMsg( 'watchlist-options' ), false, array( 'id' => 'mw-watchlist-options' ) );
-	
+
 		# Show watchlist header
 		$form .= wfMsgExt( 'collabwatchlist-details', array( 'parseinline' ), $wgLang->formatNum( $nitems ) );
-	
+
 		if( $wgUser->getOption( 'enotifwatchlistpages' ) && $wgEnotifWatchlist) {
 			$form .= wfMsgExt( 'wlheader-enotif', 'parse' ) . "\n";
 		}
 		$form .= '<hr />';
-		
+
 		$tables = array( 'recentchanges', 'categorylinks' );
 		$fields = array( "{$recentchanges}.*" );
 		$categoryClause = $this->wlGetFilterClauseForCollabWatchlistIds($collabWatchlist, 'cl_to', 'rc_cur_id');
@@ -223,7 +223,7 @@ class SpecialCollabWatchlist extends SpecialPage {
 		if( !empty($tagFilter) ) {
 			// The tag filter causes a query runtime of O(MxN), where M is relative to the number
 			// of recentchanges we select (from a table which is purged periodically, limited to 250)
-			// and N is relative the number of change_tag entries for a recentchange. Doing it 
+			// and N is relative the number of change_tag entries for a recentchange. Doing it
 			// the other way around (selecting from change_tag first, is probably slower, as the
 			// change_tag table is never purged.
 			// Using the tag_summary table for filtering is difficult, at least I have been unable to
@@ -235,8 +235,8 @@ class SpecialCollabWatchlist extends SpecialPage {
 			} else {
 				$filter = 'NOT EXISTS ';
 			}
-			$filter .= '(select ct_rc_id from change_tag 
-					JOIN collabwatchlistrevisiontag ON collabwatchlistrevisiontag.ct_id = change_tag.ct_id 
+			$filter .= '(select ct_rc_id from change_tag
+					JOIN collabwatchlistrevisiontag ON collabwatchlistrevisiontag.ct_id = change_tag.ct_id
 					WHERE ct_rc_id = recentchanges.rc_id AND ct_tag ';
 			if( count($tagFilter) > 1 )
 				$filter .= 'IN (' . $dbr->makeList($tagFilter) . '))';
@@ -257,23 +257,23 @@ class SpecialCollabWatchlist extends SpecialPage {
 		if( $andHideAnons ) $conds[] = $andHideAnons;
 		if( $andHideListUser ) $conds[] = $andHideListUser;
 		if( $andHidePatrolled ) $conds[] = $andHidePatrolled;
-	
+
 		$rollbacker = $wgUser->isAllowed('rollback');
 		if ( $usePage || $rollbacker ) {
 			$tables[] = 'page';
 			$join_conds['page'] = array('LEFT JOIN','rc_cur_id=page.page_id');
-			if ($rollbacker) 
+			if ($rollbacker)
 				$fields[] = 'page_latest';
 		}
-	
+
 		ChangeTags::modifyDisplayQuery( $tables, $fields, $conds, $join_conds, $options, '' );
 		wfRunHooks('SpecialCollabWatchlistQuery', array(&$conds,&$tables,&$join_conds,&$fields) );
-		
+
 		$res = $dbr->select( $tables, $fields, $conds, __METHOD__, $options, $join_conds );
 		$numRows = $dbr->numRows( $res );
-	
+
 		/* Start bottom header */
-	
+
 		$wlInfo = '';
 		if( $days >= 1 ) {
 			$wlInfo = wfMsgExt( 'rcnote', 'parseinline',
@@ -289,11 +289,11 @@ class SpecialCollabWatchlist extends SpecialPage {
 					$wgLang->formatNum( round($days*24) )
 				) . '<br />';
 		}
-	
+
 		$cutofflinks = "\n" . $this->wlCutoffLinks( $days, 'CollabWatchlist', $nondefaults ) . "<br />\n";
-	
+
 		$thisTitle = SpecialPage::getTitleFor( 'CollabWatchlist' );
-	
+
 		# Spit out some control panel links
 		$links[] = $this->wlShowHideLink( $nondefaults, 'rcshowhideminor', 'hideMinor', $hideMinor );
 		$links[] = $this->wlShowHideLink( $nondefaults, 'rcshowhidebots', 'hideBots', $hideBots );
@@ -301,11 +301,11 @@ class SpecialCollabWatchlist extends SpecialPage {
 		$links[] = $this->wlShowHideLink( $nondefaults, 'rcshowhideliu', 'hideLiu', $hideLiu );
 		$links[] = $this->wlShowHideLink( $nondefaults, 'rcshowhidemine', 'hideOwn', $hideOwn );
 		$links[] = $this->wlShowHideLink( $nondefaults, 'collabwatchlistshowhidelistusers', 'hideListUser', $hideListUser );
-		
+
 		if( $wgUser->useRCPatrol() ) {
 			$links[] = $this->wlShowHideLink( $nondefaults, 'rcshowhidepatr', 'hidePatrolled', $hidePatrolled );
 		}
-	
+
 		# Namespace filter and put the whole form together.
 		$form .= $wlInfo;
 		$form .= $cutofflinks;
@@ -352,35 +352,35 @@ class SpecialCollabWatchlist extends SpecialPage {
 		$form .= Xml::closeElement( 'form' );
 		$form .= Xml::closeElement( 'fieldset' );
 		$wgOut->addHTML( $form );
-	
+
 		# If there's nothing to show, stop here
 		if( $numRows == 0 ) {
 			$wgOut->addWikiMsg( 'watchnochange' );
 			return;
 		}
-	
+
 		/* End bottom header */
-	
+
 		/* Do link batch query */
 		$linkBatch = new LinkBatch;
-		while ( $row = $dbr->fetchObject( $res ) ) {
+		foreach ( $res as $row ) {
 			$userNameUnderscored = str_replace( ' ', '_', $row->rc_user_text );
 			if ( $row->rc_user != 0 ) {
 				$linkBatch->add( NS_USER, $userNameUnderscored );
 			}
 			$linkBatch->add( NS_USER_TALK, $userNameUnderscored );
-	
+
 			$linkBatch->add( $row->rc_namespace, $row->rc_title );
 		}
 		$linkBatch->execute();
 		$dbr->dataSeek( $res, 0 );
-	
+
 		$list = CollabWatchlistChangesList::newFromUser( $wgUser );
 		$list->setWatchlistDivs();
-		
+
 		$s = $list->beginRecentChangesList();
 		$counter = 1;
-		while ( $obj = $dbr->fetchObject( $res ) ) {
+		foreach ( $res as $obj ) {
 			# Make RC entry
 			$rc = RecentChange::newFromRow( $obj );
 			$rc->counter = $counter++;
@@ -396,7 +396,7 @@ class SpecialCollabWatchlist extends SpecialPage {
 			} else {
 				$rc->numberofWatchingusers = 0;
 			}
-			
+
 			$tags = $this->wlTagsForRevision($obj->rc_this_oldid, array($collabWatchlist), $invert);
 //			if( isset($tags) ) {
 //				// Filter recentchanges which contain unwanted tags
@@ -411,71 +411,71 @@ class SpecialCollabWatchlist extends SpecialPage {
 			$attrs = $rc->getAttributes();
 			$attrs['collabwatchlist_tags'] = $tags;
 			$rc->setAttribs($attrs);
-	
+
 			$s .= $list->recentChangesLine( $rc, false, $counter );
 		}
 		$s .= $list->endRecentChangesList();
-	
+
 		$dbr->freeResult( $res );
 		$wgOut->addHTML( $s );
 	}
-	
+
 	function wlShowHideLink( $options, $message, $name, $value ) {
 		global $wgUser;
-	
+
 		$showLinktext = wfMsgHtml( 'show' );
 		$hideLinktext = wfMsgHtml( 'hide' );
 		$title = SpecialPage::getTitleFor( 'CollabWatchlist' );
 		$skin = $wgUser->getSkin();
-	
+
 		$label = $value ? $showLinktext : $hideLinktext;
 		$options[$name] = 1 - (int) $value;
-	
+
 		return wfMsgHtml( $message, $skin->linkKnown( $title, $label, array(), $options ) );
 	}
-	
-	
+
+
 	function wlHoursLink( $h, $page, $options = array() ) {
 		global $wgUser, $wgLang, $wgContLang;
-	
+
 		$sk = $wgUser->getSkin();
 		$title = Title::newFromText( $wgContLang->specialPage( $page ) );
 		$options['days'] = ($h / 24.0);
-	
+
 		$s = $sk->linkKnown(
 			$title,
 			$wgLang->formatNum( $h ),
 			array(),
 			$options
 		);
-	
+
 		return $s;
 	}
-	
+
 	function wlDaysLink( $d, $page, $options = array() ) {
 		global $wgUser, $wgLang, $wgContLang;
-	
+
 		$sk = $wgUser->getSkin();
 		$title = Title::newFromText( $wgContLang->specialPage( $page ) );
 		$options['days'] = $d;
 		$message = ($d ? $wgLang->formatNum( $d ) : wfMsgHtml( 'watchlistall2' ) );
-	
+
 		$s = $sk->linkKnown(
 			$title,
 			$message,
 			array(),
 			$options
 		);
-	
+
 		return $s;
 	}
-	
+
 	/**
 	 * Returns html
 	 */
 	function wlCutoffLinks( $days, $page = 'CollabWatchlist', $options = array() ) {
 		global $wgLang;
-	
+
 		$hours = array( 1, 2, 6, 12 );
 		$days = array( 1, 3, 7 );
 		$i = 0;
@@ -492,7 +492,7 @@ class SpecialCollabWatchlist extends SpecialPage {
 			$wgLang->pipeList( $days ),
 			$this->wlDaysLink( 0, $page, $options ) );
 	}
-	
+
 	/**
 	 * Count the number of items on a user's watchlist
 	 *
@@ -501,21 +501,21 @@ class SpecialCollabWatchlist extends SpecialPage {
 	 */
 	function wlCountItems( &$user, $talk = true ) {
 		$dbr = wfGetDB( DB_SLAVE, 'watchlist' );
-	
+
 		# Fetch the raw count
-		$res = $dbr->select( 'watchlist', 'COUNT(*) AS count', 
+		$res = $dbr->select( 'watchlist', 'COUNT(*) AS count',
 			array( 'wl_user' => $user->mId ), 'wlCountItems' );
 		$row = $dbr->fetchObject( $res );
 		$count = $row->count;
 		$dbr->freeResult( $res );
-	
+
 		# Halve to remove talk pages if needed
 		if( !$talk )
 			$count = floor( $count / 2 );
-	
+
 		return( $count );
 	}
-	
+
 	/** Returns an array of maps representing collab watchlist tags. The following fields are present
 	 * in each map:
 	 * - rl_id Id of the collaborative watchlist
@@ -553,13 +553,12 @@ class SpecialCollabWatchlist extends SpecialPage {
 			)
 		);
 		$tags = array();
-		while( $row = $res->fetchObject() ) {
+		foreach( $res as $row ) {
 			$tags[] = get_object_vars( $row );
 		}
-		$dbr->freeResult( $res );
 		return $tags;
 	}
-	
+
 	function wlGetFilterClauseForCollabWatchlistIds($rl_ids, $catNameCol, $pageIdCol) {
 		$excludedCatPageIds = array();
 		$includedCatPageIds = array();
@@ -573,7 +572,7 @@ class SpecialCollabWatchlist extends SpecialPage {
 			array(	'collabwatchlistcategory' => array('JOIN', 'collabwatchlist.rl_id = collabwatchlistcategory.rl_id'),
 					'page' => array('JOIN', 'page.page_id = collabwatchlistcategory.cat_page_id') )
 		);
-		while( $row = $res->fetchObject() ) {
+		foreach( $res as $row ) {
 			if($row->page_namespace == NS_CATEGORY) {
 				if($row->subtract) {
 					$excludedCatPageIds[$row->cat_page_id] = $row->page_title;
@@ -584,8 +583,7 @@ class SpecialCollabWatchlist extends SpecialPage {
 				$includedPageIds[$row->cat_page_id] = $row->page_title;
 			}
 		}
-		$dbr->freeResult( $res );
-		
+
 		if($includedCatPageIds) {
 			$catTree = new CategoryTreeManip();
 			$catTree->initialiseFromCategoryNames(array_values($includedCatPageIds));
@@ -603,7 +601,7 @@ class SpecialCollabWatchlist extends SpecialPage {
 		}
 		return $collabWatchlistClause;
 	}
-	
+
 	function wlGetFilterClauseListUser($rl_id) {
 		$excludedUserIds = array();
 		$dbr = wfGetDB( DB_SLAVE );
@@ -612,17 +610,16 @@ class SpecialCollabWatchlist extends SpecialPage {
 			array('collabwatchlistuser.rl_id' => $rl_id)  # Conditions
 		);
 		$clause = '';
-		while( $row = $res->fetchObject() ) {
+		foreach( $res as $row ) {
 			$excludedUserIds[] = $row->user_id;
 		}
 		if($res->numRows() > 0) {
 			$clause = '( rc_user NOT IN (';
 			$clause .= implode(',', $this->addQuotes($dbr, $excludedUserIds)) . ') )';
 		}
-		$dbr->freeResult( $res );
 		return $clause;
 	}
-	
+
 	public static function addQuotes($db, $strings) {
 		$result = array();
 		foreach($strings as $string) {
