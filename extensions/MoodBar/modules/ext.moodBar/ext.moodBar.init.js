@@ -18,7 +18,7 @@
 			var browserDisabled = false;
 			var clientInfo = $.client.profile();
 			
-			if ( clientInfo.name == 'msie' && clientInfo.versionNumber < 8 ) {
+			if ( clientInfo.name == 'msie' && clientInfo.versionNumber < 9 ) {
 				browserDisabled = true;
 			}
 			
