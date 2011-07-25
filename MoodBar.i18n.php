@@ -15,16 +15,17 @@ $messages = array();
 $messages['en'] = array(
 	'moodbar-desc' => 'Allows specified users to send their "mood" back to the site operator',
 	// Portlet link
-	'moodbar-trigger-using' => 'Editing $1...',
 	'moodbar-trigger-feedback' => 'Feedback about editing',
 	'moodbar-trigger-share' => 'Share your experience',
-	'tooltip-p-moodbar-trigger-using' => '',
+	'moodbar-trigger-editing' => 'Editing $1...',
 	'tooltip-p-moodbar-trigger-feedback' => '',
 	'tooltip-p-moodbar-trigger-share' => '',
+	'tooltip-p-moodbar-trigger-editing' => '',
 	// Overlay
 	'moodbar-close' => '(close)',
-	'moodbar-intro-using' => 'Editing $1 made me...',
-	'moodbar-intro-feedback' => 'Feedback:',
+	'moodbar-intro-feedback' => 'Editing $1 made me... ',
+	'moodbar-intro-share' => 'My experience on $1 made me...',
+	'moodbar-intro-editing' => 'Editing $1 made me...',
 	'moodbar-type-happy-title' => 'Happy',
 	'moodbar-type-sad-title' => 'Sad',
 	'moodbar-type-confused-title' => 'Confused',
@@ -88,9 +89,9 @@ For more information, please visit the $1.',
 
 $messages['qqq'] = array(
 	'moodbar-desc' => 'This is a feature in development. See [[mw:MoodBar 0.1/Design]] for background information.',
-	'moodbar-trigger-using' => "Link text of the MoodBar overlay trigger. \$1 is the SITENAME. The implied sentence is ''\"Using [Sitename] made me happy/sad/...\"''. See [[mw:MoodBar 0.1/Design]] for background development information.",
+	'moodbar-trigger-editing' => "Link text of the MoodBar overlay trigger. \$1 is the SITENAME. The implied sentence is ''\"Using [Sitename] made me happy/sad/...\"''. See [[mw:MoodBar 0.1/Design]] for background development information.",
 	'moodbar-trigger-feedback' => 'Link text of the MoodBar overlay trigger. $1 is the SITENAME.',
-	'moodbar-intro-using' => 'Intro title of the MoodBar overlay trigger. $1 is the SITENAME.',
+	'moodbar-intro-editing' => 'Intro title of the MoodBar overlay trigger. $1 is the SITENAME.',
 	'moodbar-intro-feedback' => 'Intro title of the MoodBar overlay trigger. $1 is the SITENAME.',
 	'moodbar-close' => 'Link text of the close-button. Make sure to include parentheses.
 
@@ -119,13 +120,13 @@ See also:
 $messages['qqq'] = array(
 	'moodbar-desc' => '{{desc}}
 This is a feature in development. See [[mw:MoodBar 0.1/Design]] for background information.',
-	'moodbar-trigger-using' => "Link text of the MoodBar overlay trigger. \$1 is the SITENAME. The implied sentence is ''\"Using [Sitename] made me happy/sad/...\"''. See [[mw:MoodBar 0.1/Design]] for background development information.",
+	'moodbar-trigger-editing' => "Link text of the MoodBar overlay trigger. \$1 is the SITENAME. The implied sentence is ''\"Using [Sitename] made me happy/sad/...\"''. See [[mw:MoodBar 0.1/Design]] for background development information.",
 	'moodbar-trigger-feedback' => 'Link text of the MoodBar overlay trigger. $1 is the SITENAME.',
 	'moodbar-close' => 'Link text of the close-button. Make sure to include parentheses.
 
 See also:
 * {{msg|parentheses}}',
-	'moodbar-intro-using' => '[[File:MoodBar-Step-1.png|right|200px]]
+	'moodbar-intro-editing' => '[[File:MoodBar-Step-1.png|right|200px]]
 Intro title of the MoodBar overlay trigger. $1 is the SITENAME.',
 	'moodbar-intro-feedback' => 'Intro title of the MoodBar overlay trigger. $1 is the SITENAME.',
 	'tooltip-moodbar-what' => 'Tooltip displayed when hovering the What-link.
@@ -150,7 +151,7 @@ $messages['af'] = array(
  */
 $messages['be-tarask'] = array(
 	'moodbar-desc' => 'Дазваляе вызначаным удзельнікам дасылаць іх «настрой» апэратару сайта',
-	'moodbar-trigger-using' => 'Выкарыстоўваючы $1…',
+	'moodbar-trigger-editing' => 'Выкарыстоўваючы $1…',
 	'moodbar-trigger-feedback' => 'Водгук',
 );
 
@@ -160,11 +161,11 @@ $messages['be-tarask'] = array(
  */
 $messages['de'] = array(
 	'moodbar-desc' => 'Ermöglicht es Benutzern dem Betreiber des Wikis ihre Stimmung bezüglich des Bearbeitens von Seiten mitzuteilen',
-	'moodbar-trigger-using' => 'Bearbeite $1 …',
+	'moodbar-trigger-editing' => 'Bearbeite $1 …',
 	'moodbar-trigger-feedback' => 'Rückmeldung zum Bearbeiten',
 	'moodbar-trigger-share' => 'Teile uns deinen Eindruck mit',
 	'moodbar-close' => '(schließen)',
-	'moodbar-intro-using' => '$1 zu bearbeiten macht mich …',
+	'moodbar-intro-editing' => '$1 zu bearbeiten macht mich …',
 	'moodbar-intro-feedback' => 'Rückmeldung:',
 	'moodbar-type-happy-title' => 'Glücklich',
 	'moodbar-type-sad-title' => 'Traurig',
@@ -264,7 +265,7 @@ $messages['frp'] = array(
  */
 $messages['gl'] = array(
 	'moodbar-desc' => 'Permite que os usuarios especificados envíen ao operador do sitio o seu "humor"',
-	'moodbar-trigger-using' => 'Usando $1...',
+	'moodbar-trigger-editing' => 'Usando $1...',
 	'moodbar-trigger-feedback' => 'Comentarios',
 );
 
@@ -273,10 +274,10 @@ $messages['gl'] = array(
  */
 $messages['he'] = array(
 	'moodbar-desc' => 'מתן אפשרות למשתמשם לשלוח את "מצב הרוח" שלהם למפעיל האתר',
-	'moodbar-trigger-using' => 'עריכה $1...',
+	'moodbar-trigger-editing' => 'עריכה $1...',
 	'moodbar-trigger-feedback' => 'משוב על עריכה',
 	'moodbar-close' => '(סגירה)',
-	'moodbar-intro-using' => 'עריכת $1 גרמה לי ...',
+	'moodbar-intro-editing' => 'עריכת $1 גרמה לי ...',
 	'moodbar-intro-feedback' => 'משוב:',
 	'moodbar-type-happy-title' => 'שמחה',
 	'moodbar-type-sad-title' => 'עצב',
@@ -306,11 +307,11 @@ $messages['he'] = array(
  */
 $messages['ia'] = array(
 	'moodbar-desc' => 'Permitte al usatores specificate de inviar lor "humor" retro al operator del sito',
-	'moodbar-trigger-using' => 'Modificar $1...',
+	'moodbar-trigger-editing' => 'Modificar $1...',
 	'moodbar-trigger-feedback' => 'Commentos super le modification',
 	'moodbar-trigger-share' => 'Divider tu experientia',
 	'moodbar-close' => '(clauder)',
-	'moodbar-intro-using' => 'Le uso de $1 me rendeva...',
+	'moodbar-intro-editing' => 'Le uso de $1 me rendeva...',
 	'moodbar-intro-feedback' => 'Reaction:',
 	'moodbar-type-happy-title' => 'Felice',
 	'moodbar-type-sad-title' => 'Triste',
@@ -376,7 +377,7 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'moodbar-desc' => 'Erméiglecht et spezifesche Benotzer fir dem Responsabele vum Site hir Stëmmung ze schécken',
-	'moodbar-trigger-using' => 'Ännert $1...',
+	'moodbar-trigger-editing' => 'Ännert $1...',
 	'moodbar-trigger-feedback' => "Feedback iwwert d'Änneren",
 	'moodbar-close' => '(zoumaachen)',
 	'moodbar-intro-feedback' => 'Feedback:',
@@ -412,11 +413,11 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'moodbar-desc' => 'Им овозможува на одредени корисници да му го соопштуваат нивното „расположение“ на операторот на мрежното место',
-	'moodbar-trigger-using' => 'Уредување на $1...',
+	'moodbar-trigger-editing' => 'Уредување на $1...',
 	'moodbar-trigger-feedback' => 'Мислења за уредувањето',
 	'moodbar-trigger-share' => 'Споделете го вашето искуство',
 	'moodbar-close' => '(затвори)',
-	'moodbar-intro-using' => 'Уредувањето на $1 ме...',
+	'moodbar-intro-editing' => 'Уредувањето на $1 ме...',
 	'moodbar-intro-feedback' => 'Мислења',
 	'moodbar-type-happy-title' => 'усреќи',
 	'moodbar-type-sad-title' => 'натажи',
@@ -472,11 +473,11 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'moodbar-desc' => 'Laat bepaalde gebruikers toe hun "gemoedstoestand" naar de sitebeheerders te verzenden',
-	'moodbar-trigger-using' => 'Het bewerken van $1...',
+	'moodbar-trigger-editing' => 'Het bewerken van $1...',
 	'moodbar-trigger-feedback' => 'Terugkoppeling over het bewerken',
 	'moodbar-trigger-share' => 'Deel uw ervaring',
 	'moodbar-close' => '(sluiten)',
-	'moodbar-intro-using' => 'Het gebruiken van $1 maakte mij...',
+	'moodbar-intro-editing' => 'Het gebruiken van $1 maakte mij...',
 	'moodbar-intro-feedback' => 'Terugkoppeling:',
 	'moodbar-type-happy-title' => 'Blij',
 	'moodbar-type-sad-title' => 'Triest',
@@ -524,11 +525,11 @@ Voor meer informatie, ga naar de $1.',
  */
 $messages['pt'] = array(
 	'moodbar-desc' => 'Permite que os utilizadores especificados enviem ao operador do site uma indicação do seu estado de espírito',
-	'moodbar-trigger-using' => 'A editar $1...',
+	'moodbar-trigger-editing' => 'A editar $1...',
 	'moodbar-trigger-feedback' => 'Comentários sobre edição',
 	'moodbar-trigger-share' => 'Partilhe a sua experiência',
 	'moodbar-close' => '(fechar)',
-	'moodbar-intro-using' => 'Usar a $1 tornou-me...',
+	'moodbar-intro-editing' => 'Usar a $1 tornou-me...',
 	'moodbar-intro-feedback' => 'Comentários:',
 	'moodbar-type-happy-title' => 'Feliz',
 	'moodbar-type-sad-title' => 'Triste',
