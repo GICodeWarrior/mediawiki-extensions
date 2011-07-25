@@ -413,7 +413,7 @@ $messages['nds'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
-	'antibot-desc' => "Eenvoudig raamwark veur 't naokieken op spambots",
+	'antibot-desc' => 'Eenvoudig raamwark veur t naokieken op moekbots',
 );
 
 /** Nepali (नेपाली)

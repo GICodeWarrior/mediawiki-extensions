@@ -202,9 +202,11 @@ $messages['frp'] = array(
 	'notificator-notify' => 'Notifiar',
 	'notificator-notify-address-or-name' => 'Notifiar $1',
 	'notificator-return-to' => 'Tornar a',
+	'notificator-notification-not-sent' => 'La notificacion est pas mandâ.',
 	'notificator-change-tag' => 'changement',
 	'notificator-new-tag' => 'novél',
 	'notificator-subject' => 'Sujèt :',
+	'notificator-error-parameter-missing' => 'Èrror : paramètre manquent.',
 );
 
 /** Galician (Galego)

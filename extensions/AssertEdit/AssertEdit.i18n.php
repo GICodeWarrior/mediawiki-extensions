@@ -571,9 +571,9 @@ $messages['nds'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
-	'assert_edit_title' => 'Bevestiging mislok',
-	'assertedit-desc' => 'Maak rolbevestigingen meugelijk veur gebruuk deur bots.',
-	'assert_edit_message' => 'De evreugen bevestiging ($1) is mislok.',
+	'assert_edit_title' => 'Bevestiging mislokt',
+	'assertedit-desc' => 'Maakt rolbevestigingen meugelik veur gebruuk deur bots.',
+	'assert_edit_message' => 'De evreugen bevestiging ($1) is mislokt.',
 );
 
 /** Dutch (Nederlands)
@@ -738,11 +738,12 @@ $messages['shi'] = array(
 );
 
 /** Sinhala (සිංහල)
+ * @author Singhalawap
  * @author Thameera123
  */
 $messages['si'] = array(
 	'assert_edit_title' => 'ස්ථිර කිරීම අසමත් විය',
-	'assertedit-desc' => 'බොට්වරුන්ගේ ප්‍රයෝජනය සඳහා සංස්කරණ ස්ථිර කිරීම් එකතු කරයි',
+	'assertedit-desc' => 'රොබෝවරුන්ගේ ප්‍රයෝජනය සඳහා සංස්කරණ ස්ථිර කිරීම් එකතු කරයි',
 	'assert_edit_message' => 'සඳහන් කළ ස්ථිර කිරීම ($1) අසමත් විය',
 );
 
