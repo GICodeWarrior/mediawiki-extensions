@@ -184,6 +184,10 @@ class qp_InterpResult {
 class qp_PollStore {
 
 	static $db = null;
+	# indicates whether random questions must be erased / regenerated when the value of
+	# 'randomize' attribute is changed from non-zero to zero and back
+	static $purgeRandomQuestions = false;
+
 	/// DB keys
 	var $pid = null;
 	var $last_uid = null;
@@ -191,29 +195,36 @@ class qp_PollStore {
 	# username is used for caching of setLastUser() method (which now may be called multiple times);
 	# also used by randomizer
 	var $username = '';
-	/// common properties
+
+	/*** common properties ***/
 	var $mArticleId = null;
 	# unique id of poll, used for addressing, also with 'qp_' prefix as the fragment part of the link
 	var $mPollId = null;
 	# order of poll on the page
 	var $mOrderId = null;
+
+	/*** optional attributes ***/
 	# dependance from other poll address in the following format: "page#otherpollid"
 	var $dependsOn = null;
-	# attempts of voting (passing the quiz). number of resubmits
-	# note: resubmits are counted for syntax-correct answer (the vote is stored),
-	# yet the answer still might be logically incorrect (quiz is not passed / partially passed)
-	var $attempts = 0;
-
 	# NS & DBkey of Title object representing interpretation template for Special:Pollresults page
 	var $interpNS = 0;
 	var $interpDBkey = null;
 	# interpretation of user answer
 	var $interpResult;
+	# 1..n - number of random indexes from poll's header; 0 - poll questions are not randomized
+	# pollstore loads / saves random indexes for every user only when this property is NOT zero
+	# which improves performance of non-randomized polls
+	var $randomQuestionCount = null;
 
 	# array of QuestionData instances (data from/to DB)
 	var $Questions = null;
 	# array of random indexes of Questions[] array (optional)
 	var $randomQuestions = false;
+
+	# attempts of voting (passing the quiz). number of resubmits
+	# note: resubmits are counted for syntax-correct answer (when the vote is stored),
+	# yet the answer still might be logically incorrect (quiz is not passed / partially passed)
+	var $attempts = 0;
 
 	# poll processing state, read with getState()
 	#
@@ -277,29 +288,42 @@ class qp_PollStore {
 							}
 						}
 					}
-					if ( $is_post ) {
-						$this->setPid();
-					} else {
-						$this->loadPid();
+					if ( array_key_exists( 'randomQuestionCount', $argv ) ) {
+						$this->randomQuestionCount = $argv['randomQuestionCount'];
+					}
+					# do not load / create the poll when article id is unavailable
+					# (only during newly created page submission)
+					if ( $this->mArticleId != 0 ) {
+						if ( $is_post ) {
+							$this->setPid();
+						} else {
+							$this->loadPid();
+							if ( is_null( $this->pid ) ) {
+								# try to create poll description (DB state was incomplete)
+								$this->setPid();
+							}
+						}
 					}
 					break;
 				case 'pid' :
 					if ( array_key_exists( 'pid', $argv ) ) {
 						$pid = intval( $argv[ 'pid' ] );
 						$res = self::$db->select( 'qp_poll_desc',
-							array( 'article_id', 'poll_id','order_id', 'dependance', 'interpretation_namespace', 'interpretation_title' ),
+							array( 'article_id', 'poll_id','order_id', 'dependance', 'interpretation_namespace', 'interpretation_title', 'random_question_count' ),
 							array( 'pid'=>$pid ),
 							__METHOD__ . ":create from pid" );
 						$row = self::$db->fetchObject( $res );
-						if ( $row!=false ) {
-							$this->pid = $pid;
-							$this->mArticleId = $row->article_id;
-							$this->mPollId = $row->poll_id;
-							$this->mOrderId = $row->order_id;
-							$this->dependsOn = $row->dependance;
-							$this->interpNS = $row->interpretation_namespace;
-							$this->interpDBkey = $row->interpretation_title;
+						if ( $row === false ) {
+							throw new MWException( 'Attempt to create poll from non-existent poll id in ' . __METHOD__ );
 						}
+						$this->pid = $pid;
+						$this->mArticleId = $row->article_id;
+						$this->mPollId = $row->poll_id;
+						$this->mOrderId = $row->order_id;
+						$this->dependsOn = $row->dependance;
+						$this->interpNS = $row->interpretation_namespace;
+						$this->interpDBkey = $row->interpretation_title;
+						$this->randomQuestionCount = $row->random_question_count;
 					}
 					break;
 			}
@@ -338,10 +362,19 @@ class qp_PollStore {
 
 	# returns Title object, to get a URI path, use Title::getFullText()/getPrefixedText() on it
 	function getTitle() {
-		$res = null;
-		if ( $this->mArticleId !==null && $this->mPollId !== null ) {
-			$res = Title::newFromID( $this->mArticleId );
-			$res->setFragment( qp_AbstractPoll::s_getPollTitleFragment( $this->mPollId ) );
+		if ( $this->mArticleId === 0 ) {
+			throw new MWException( __METHOD__ . ' cannot be called for unsaved new pages' );
+		}
+		if ( is_null( $this->mArticleId ) ) {
+			throw new MWException( 'Unknown article id in ' . __METHOD__ );
+		}
+		if ( is_null( $this->mPollId ) ) {
+			throw new MWException( 'Unknown poll id in ' . __METHOD__ );
+		}
+		$res = Title::newFromID( $this->mArticleId );
+		$res->setFragment( qp_AbstractPoll::s_getPollTitleFragment( $this->mPollId ) );
+		if ( !( $res instanceof Title ) ) {
+			throw new MWException( 'Invalid title created in ' . __METHOD__ );
 		}
 		return $res;
 	}
@@ -699,9 +732,15 @@ class qp_PollStore {
 	 * Will be overriden in memory when number of random questions was changed
 	 */
 	function loadRandomQuestions() {
+		if ( $this->mArticleId == 0 ) {
+			$this->randomQuestions = false;
+			return;
+		}
+		if ( is_null( $this->pid ) ) {
+			throw new MWException( __METHOD__ . ' cannot be called when pid was not set' );
+		}
 		if ( is_null( $this->last_uid ) ) {
-			$this->setPid();
-			$this->setLastUser( $this->username );
+			throw new MWException( __METHOD__ . ' cannot be called when uid was not set' );
 		}
 		$res = self::$db->select( 'qp_random_questions', 'question_id', array( 'uid' => $this->last_uid, 'pid' => $this->pid ), __METHOD__ );
 		$this->randomQuestions = array();
@@ -710,6 +749,8 @@ class qp_PollStore {
 		}
 		if ( count( $this->randomQuestions ) === 0 ) {
 			$this->randomQuestions = false;
+		} else {
+			sort( $this->randomQuestions, SORT_NUMERIC );
 		}
 	}
 
@@ -720,8 +761,14 @@ class qp_PollStore {
 	 *   when number of random questions for poll was changed
 	 */
 	function setRandomQuestions() {
-		if ( is_null( $this->pid ) || is_null( $this->last_uid ) ) {
-			throw new MWException( __METHOD__ . ' cannot be called when pid/uid was not set' );
+		if ( $this->mArticleId == 0 ) {
+			return;
+		}
+		if ( is_null( $this->pid ) ) {
+			throw new MWException( __METHOD__ . ' cannot be called when pid was not set' );
+		}
+		if ( is_null( $this->last_uid ) ) {
+			throw new MWException( __METHOD__ . ' cannot be called when uid was not set' );
 		}
 		if ( is_array( $this->randomQuestions ) ) {
 			$data = array();
@@ -740,7 +787,7 @@ class qp_PollStore {
 		}
 		# this->randomQuestions === false; this poll is not randomized anymore
 		self::$db->delete( 'qp_random_questions',
-			array( 'pid'=>$this->pid ),
+			array( 'pid'=>$this->pid, 'uid'=>$this->last_uid ),
 			__METHOD__ . ':remove question random seed'
 		);
 	}
@@ -763,6 +810,7 @@ class qp_PollStore {
 				$this->username = $username;
 			} else {
 				$this->last_uid = null;
+				return;
 			}
 		} else {
 			$this->last_uid = intval( $row->uid );
@@ -780,6 +828,10 @@ class qp_PollStore {
 			$this->interpResult->short = $row->short_interpretation;
 			$this->interpResult->long = $row->long_interpretation;
 		}
+		$this->randomQuestions = false;
+		if ( $this->randomQuestionCount != 0 ) {
+			$this->loadRandomQuestions();
+		}
 //	todo: change to "insert ... on duplicate key update ..." when last_insert_id() bugs will be fixed
 	}
 
@@ -795,10 +847,12 @@ class qp_PollStore {
 	}
 
 	private function loadPid() {
+		if ( $this->mArticleId === 0 ) {
+			return;
+		}
 		$res = self::$db->select( 'qp_poll_desc',
-			array( 'pid', 'order_id', 'dependance', 'interpretation_namespace', 'interpretation_title' ),
-			'article_id=' . self::$db->addQuotes( $this->mArticleId ) . ' and ' .
-			'poll_id=' . self::$db->addQuotes( $this->mPollId ),
+			array( 'pid', 'order_id', 'dependance', 'interpretation_namespace', 'interpretation_title', 'random_question_count' ),
+			array( 'article_id' => $this->mArticleId, 'poll_id' => $this->mPollId ),
 			__METHOD__ );
 		$row = self::$db->fetchObject( $res );
 		if ( $row != false ) {
@@ -814,19 +868,25 @@ class qp_PollStore {
 				$this->interpNS = $row->interpretation_namespace;
 				$this->interpDBkey = $row->interpretation_title;
 			}
+			if ( is_null( $this->randomQuestionCount ) ) {
+				$this->randomQuestionCount = $row->random_question_count;
+			}
 			$this->updatePollAttributes( $row );
 		}
 	}
 
 	private function setPid() {
+		if ( $this->mArticleId === 0 ) {
+			throw new MWException( 'Cannot save new poll description during new page preprocess in ' . __METHOD__ );
+		}
 		$res = self::$db->select( 'qp_poll_desc',
-			array( 'pid', 'order_id', 'dependance', 'interpretation_namespace', 'interpretation_title' ),
+			array( 'pid', 'order_id', 'dependance', 'interpretation_namespace', 'interpretation_title', 'random_question_count' ),
 			'article_id=' . self::$db->addQuotes( $this->mArticleId ) . ' and ' .
 			'poll_id=' . self::$db->addQuotes( $this->mPollId ) );
 		$row = self::$db->fetchObject( $res );
 		if ( $row == false ) {
 			self::$db->insert( 'qp_poll_desc',
-				array( 'article_id'=>$this->mArticleId, 'poll_id'=>$this->mPollId, 'order_id'=>$this->mOrderId, 'dependance'=>$this->dependsOn, 'interpretation_namespace'=>$this->interpNS, 'interpretation_title'=>$this->interpDBkey ),
+				array( 'article_id'=>$this->mArticleId, 'poll_id'=>$this->mPollId, 'order_id'=>$this->mOrderId, 'dependance'=>$this->dependsOn, 'interpretation_namespace'=>$this->interpNS, 'interpretation_title'=>$this->interpDBkey, 'random_question_count'=>$this->randomQuestionCount ),
 				__METHOD__ . ':update poll' );
 			$this->pid = self::$db->insertId();
 		} else {
@@ -837,16 +897,27 @@ class qp_PollStore {
 	}
 
 	private function updatePollAttributes( $row ) {
+		self::$db->begin();
 		if ( $this->mOrderId != $row->order_id ||
 				$this->dependsOn != $row->dependance ||
 				$this->interpNS != $row->interpretation_namespace ||
-				$this->interpDBkey != $row->interpretation_title ) {
+				$this->interpDBkey != $row->interpretation_title ||
+				( $rqcChanged = $this->randomQuestionCount != $row->random_question_count ) ) {
 			$res = self::$db->replace( 'qp_poll_desc',
 				array( 'poll', 'article_poll' ),
-				array( 'pid'=>$this->pid, 'article_id'=>$this->mArticleId, 'poll_id'=>$this->mPollId, 'order_id'=>$this->mOrderId, 'dependance'=>$this->dependsOn, 'interpretation_namespace'=>$this->interpNS, 'interpretation_title'=>$this->interpDBkey ),
+				array( 'pid'=>$this->pid, 'article_id'=>$this->mArticleId, 'poll_id'=>$this->mPollId, 'order_id'=>$this->mOrderId, 'dependance'=>$this->dependsOn, 'interpretation_namespace'=>$this->interpNS, 'interpretation_title'=>$this->interpDBkey, 'random_question_count'=>$this->randomQuestionCount ),
 				__METHOD__ . ':poll attributes update'
 			);
 		}
+		if ( $rqcChanged &&
+				$this->randomQuestionCount == 0 &&
+				self::$purgeRandomQuestions ) {
+			# the poll questions are not randomized anymore
+			self::$db->delete( 'qp_random_questions',
+				array( 'pid' => $this->pid ),
+				__METHOD__ . ':delete unused random seeds' );
+		}
+		self::$db->commit();
 	}
 
 	private function setQuestionDesc() {

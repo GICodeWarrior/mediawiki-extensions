@@ -127,10 +127,11 @@ class qp_Poll extends qp_AbstractPoll {
 			}
 		}
 		$newPollStore = array(
-				'poll_id'=>$this->mPollId,
-				'order_id'=>$this->mOrderId,
-				'dependance'=>$this->dependsOn,
-				'interpretation'=>$this->interpretation
+				'poll_id' => $this->mPollId,
+				'order_id' => $this->mOrderId,
+				'randomQuestionCount' => $this->randomQuestionCount,
+				'dependance' => $this->dependsOn,
+				'interpretation' => $this->interpretation
 		);
 		if ( ( $dependanceResult = $this->checkDependance( $this->dependsOn ) ) !== true ) {
 			# return an error string
@@ -173,34 +174,22 @@ class qp_Poll extends qp_AbstractPoll {
 	}
 
 	function setUsedQuestions() {
-		# todo: make global settings to perform all of this conditionally
-		# load random questions from DB (when available)
-		# setLastUser will not load/store user data, when pid is null
-		$this->pollStore->setLastUser( $this->username );
-		# loadRandomQuestions will call setPid() and setLastUser() in such case
-		$this->pollStore->loadRandomQuestions();
-		if ( $this->randomQuestionCount > 0 ) {
-			if ( $this->randomQuestionCount > $this->questions->totalCount() ) {
-				$this->randomQuestionCount = $this->questions->totalCount();
-			}
-			if ( is_array( $this->pollStore->randomQuestions ) ) {
-				if ( count( $this->pollStore->randomQuestions ) == $this->randomQuestionCount ) {
-					# count of random questions was not changed, no need to regenerate seed
-					$this->questions->setUsedQuestions( $this->pollStore->randomQuestions );
-					return;
-				}
-			}
-			# generate or regenerate random questions
-			$this->questions->randomize( $this->randomQuestionCount );
-			$this->pollStore->randomQuestions = $this->questions->getUsedQuestions();
-		} else {
-			if ( !is_array( $this->pollStore->randomQuestions ) ) {
-				# random questions are disabled and no previous seed in DB
+		if ( $this->randomQuestionCount === 0 ) {
+			return;
+		}
+		if ( $this->randomQuestionCount > $this->questions->totalCount() ) {
+			$this->randomQuestionCount = $this->questions->totalCount();
+		}
+		if ( is_array( $this->pollStore->randomQuestions ) ) {
+			if ( count( $this->pollStore->randomQuestions ) == $this->randomQuestionCount ) {
+				# count of random questions was not changed, no need to regenerate seed
+				$this->questions->setUsedQuestions( $this->pollStore->randomQuestions );
 				return;
 			}
-			# there was stored random seed, will remove it at the end of this function
-			$this->pollStore->randomQuestions = false;
 		}
+		# generate or regenerate random questions
+		$this->questions->randomize( $this->randomQuestionCount );
+		$this->pollStore->randomQuestions = $this->questions->getUsedQuestions();
 		# store random questions into DB
 		$this->pollStore->setRandomQuestions();
 	}

@@ -12,6 +12,7 @@ CREATE TABLE `qp_poll_desc` (
   `dependance` mediumtext NOT NULL,
   interpretation_namespace int NOT NULL,
   interpretation_title varchar(255) binary NOT NULL,
+  random_question_count int NOT NULL default 0,
   PRIMARY KEY poll (pid),
   UNIQUE INDEX article_poll (article_id,poll_id(128))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -85,5 +86,6 @@ CREATE TABLE `qp_random_questions` (
   `pid` int unsigned NOT NULL,
   `question_id` int unsigned NOT NULL,
   PRIMARY KEY user_poll_question (uid,pid,question_id),
-  INDEX user_seed (uid,pid)
+  INDEX user_seed (uid,pid),
+  INDEX poll (pid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
