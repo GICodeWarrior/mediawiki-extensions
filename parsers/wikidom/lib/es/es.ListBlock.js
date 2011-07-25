@@ -87,6 +87,22 @@ es.ListBlock.prototype.getOffset = function( position ) {
 	return this.list.getOffsetFromPosition( position );
 };
 
+es.ListBlock.prototype.insertContent = function( offset, content ) {
+	var location = this.list.getLocationFromOffset( offset );
+	location.item.flow.content.insert( location.offset, content );
+};
+
+es.ListBlock.prototype.deleteContent = function( start, end ) {
+	// Normalize start/end
+	if ( end < start ) {
+		var tmp = end;
+		end = start;
+		start = tmp;
+	}
+	var location = this.list.getLocationFromOffset( start );
+	location.item.flow.content.remove( location.offset, location.offset + end - start );
+};
+
 es.Block.models['list'] = es.ListBlock;
 
 es.extend( es.ListBlock, es.Block );
