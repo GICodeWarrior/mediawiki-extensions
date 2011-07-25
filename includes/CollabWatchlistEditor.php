@@ -34,16 +34,16 @@ class CollabWatchlistEditor {
 	 */
 	public function execute( $rlId, $listIdsAndNames, $output, $request, $mode ) {
 		global $wgUser, $wgCollabWatchlistPermissionDeniedPage;
-		if( wfReadOnly() ) {
+		if ( wfReadOnly() ) {
 			$output->readOnlyPage();
 			return;
 		}
-		if( ($mode === self::EDIT_CLEAR ||
+		if ( ( $mode === self::EDIT_CLEAR ||
 			$mode === self::CATEGORIES_EDIT_RAW ||
 			$mode === self::USERS_EDIT_RAW ||
 			$mode === self::EDIT_NORMAL ||
 			$mode === self::TAGS_EDIT_RAW ||
-			$mode === self::DELETE_LIST) && (!isset($rlId) || $rlId === 0) ) {
+			$mode === self::DELETE_LIST ) && ( !isset( $rlId ) || $rlId === 0 ) ) {
 			$thisTitle = SpecialPage::getTitleFor( 'CollabWatchlist' );
 			$output->redirect( $thisTitle->getLocalURL() );
 			return;
@@ -55,25 +55,25 @@ class CollabWatchlistEditor {
 				// Pass on to the raw editor, from which it's very easy to clear.
 			case self::CATEGORIES_EDIT_RAW:
 				$output->setPageTitle( $listIdsAndNames[$rlId] . ' ' . wfMsg( 'collabwatchlistedit-raw-title' ) );
-				if( $request->wasPosted() ) {
-					if( ! $this->checkToken( $request, $wgUser, $rlId ) ) {
+				if ( $request->wasPosted() ) {
+					if ( ! $this->checkToken( $request, $wgUser, $rlId ) ) {
 						$output->redirect( $permissionDeniedTarget );
 						break;
 					}
 					$wanted = $this->extractCollabWatchlistCategories( $request->getText( 'titles' ) );
 					$current = $this->getCollabWatchlistCategories( $rlId );
-					if( count( $wanted ) > 0 ) {
+					if ( count( $wanted ) > 0 ) {
 						$toWatch = array_diff( $wanted, $current );
 						$toUnwatch = array_diff( $current, $wanted );
 						$toWatch = $this->watchTitles( $toWatch, $rlId );
 						$this->unwatchTitles( $toUnwatch, $rlId );
-						if( count( $toWatch ) > 0 || count( $toUnwatch ) > 0 )
+						if ( count( $toWatch ) > 0 || count( $toUnwatch ) > 0 )
 							$output->addHTML( wfMsgExt( 'collabwatchlistedit-raw-done', 'parse' ) );
-						if( ( $count = count( $toWatch ) ) > 0 ) {
+						if ( ( $count = count( $toWatch ) ) > 0 ) {
 							$output->addHTML( wfMsgExt( 'collabwatchlistedit-raw-added', 'parse', $count ) );
 							$this->showTitles( $toWatch, $output, $wgUser->getSkin() );
 						}
-						if( ( $count = count( $toUnwatch ) ) > 0 ) {
+						if ( ( $count = count( $toUnwatch ) ) > 0 ) {
 							$output->addHTML( wfMsgExt( 'collabwatchlistedit-raw-removed', 'parse', $count ) );
 							$this->showTitles( $toUnwatch, $output, $wgUser->getSkin() );
 						}
@@ -87,36 +87,36 @@ class CollabWatchlistEditor {
 				break;
 			case self::USERS_EDIT_RAW:
 				$output->setPageTitle( $listIdsAndNames[$rlId] . ' ' . wfMsg( 'collabwatchlistedit-users-raw-title' ) );
-				if( $request->wasPosted() ) {
-					if( ! $this->checkToken( $request, $wgUser, $rlId ) ) {
+				if ( $request->wasPosted() ) {
+					if ( ! $this->checkToken( $request, $wgUser, $rlId ) ) {
 						$output->redirect( $permissionDeniedTarget );
 						break;
 					}
 					$wanted = $this->extractCollabWatchlistUsers( $request->getText( 'titles' ) );
 					$current = $this->getCollabWatchlistUsers( $rlId );
-					$isOwnerCb = create_function('$a', 'return stripos($a, "' . COLLABWATCHLISTUSER_OWNER_TEXT . ' ' . '") === 0;');
-					$wantedOwners = array_filter($wanted, $isOwnerCb);
-					if( count( $wantedOwners ) < 1 ) {
+					$isOwnerCb = create_function( '$a', 'return stripos($a, "' . COLLABWATCHLISTUSER_OWNER_TEXT . ' ' . '") === 0;' );
+					$wantedOwners = array_filter( $wanted, $isOwnerCb );
+					if ( count( $wantedOwners ) < 1 ) {
 						// Make sure there is at least one owner left
-						$currentOwners = array_filter($current, $isOwnerCb);
-						$reAddedOwner = current($currentOwners);
+						$currentOwners = array_filter( $current, $isOwnerCb );
+						$reAddedOwner = current( $currentOwners );
 						$wanted[] = $reAddedOwner;
-						list($type, $typeText, $titleText) = $this->extractTypeTypeTextAndUsername( $reAddedOwner );
+						list( $type, $typeText, $titleText ) = $this->extractTypeTypeTextAndUsername( $reAddedOwner );
 						$output->addHTML( wfMsgExt( 'collabwatchlistedit-users-last-owner', 'parse' ) );
-						$this->showTitles( array($titleText), $output, $wgUser->getSkin() );
+						$this->showTitles( array( $titleText ), $output, $wgUser->getSkin() );
 					}
-					if( count( $wanted ) > 0 ) {
+					if ( count( $wanted ) > 0 ) {
 						$toAdd = array_diff( $wanted, $current );
 						$toDel = array_diff( $current, $wanted );
 						$toAdd = $this->addUsers( $toAdd, $rlId );
 						$this->delUsers( $toDel, $rlId );
-						if( count( $toAdd ) > 0 || count( $toDel ) > 0 )
+						if ( count( $toAdd ) > 0 || count( $toDel ) > 0 )
 							$output->addHTML( wfMsgExt( 'collabwatchlistedit-users-raw-done', 'parse' ) );
-						if( ( $count = count( $toAdd ) ) > 0 ) {
+						if ( ( $count = count( $toAdd ) ) > 0 ) {
 							$output->addHTML( wfMsgExt( 'collabwatchlistedit-users-raw-added', 'parse', $count ) );
 							$this->showTitles( $toAdd, $output, $wgUser->getSkin() );
 						}
-						if( ( $count = count( $toDel ) ) > 0 ) {
+						if ( ( $count = count( $toDel ) ) > 0 ) {
 							$output->addHTML( wfMsgExt( 'collabwatchlistedit-users-raw-removed', 'parse', $count ) );
 							$this->showTitles( $toDel, $output, $wgUser->getSkin() );
 						}
@@ -130,25 +130,25 @@ class CollabWatchlistEditor {
 				break;
 			case self::TAGS_EDIT_RAW:
 				$output->setPageTitle( $listIdsAndNames[$rlId] . ' ' . wfMsg( 'collabwatchlistedit-tags-raw-title' ) );
-				if( $request->wasPosted() ) {
-					if( ! $this->checkToken( $request, $wgUser, $rlId ) ) {
+				if ( $request->wasPosted() ) {
+					if ( ! $this->checkToken( $request, $wgUser, $rlId ) ) {
 						$output->redirect( $permissionDeniedTarget );
 						break;
 					}
 					$wanted = $this->extractCollabWatchlistTags( $request->getText( 'titles' ) );
 					$current = $this->getCollabWatchlistTags( $rlId );
-					if( count( $wanted ) > 0 ) {
+					if ( count( $wanted ) > 0 ) {
 						$newTags = array_diff_assoc( $wanted, $current );
 						$removeTags = array_diff_assoc( $current, $wanted );
-						$this->removeTags( array_keys($removeTags), $rlId );
+						$this->removeTags( array_keys( $removeTags ), $rlId );
 						$this->addTags( $newTags, $rlId );
-						if( count( $newTags ) > 0 || count( $removeTags ) > 0 )
+						if ( count( $newTags ) > 0 || count( $removeTags ) > 0 )
 							$output->addHTML( wfMsgExt( 'collabwatchlistedit-tags-raw-done', 'parse' ) );
-						if( ( $count = count( $newTags ) ) > 0 ) {
+						if ( ( $count = count( $newTags ) ) > 0 ) {
 							$output->addHTML( wfMsgExt( 'collabwatchlistedit-tags-raw-added', 'parse', $count ) );
 							$this->showTagList( $newTags, $output, $wgUser->getSkin() );
 						}
-						if( ( $count = count( $removeTags ) ) > 0 ) {
+						if ( ( $count = count( $removeTags ) ) > 0 ) {
 							$output->addHTML( wfMsgExt( 'collabwatchlistedit-tags-raw-removed', 'parse', $count ) );
 							$this->showTagList( $removeTags, $output, $wgUser->getSkin() );
 						}
@@ -162,8 +162,8 @@ class CollabWatchlistEditor {
 				break;
 			case self::EDIT_NORMAL:
 				$output->setPageTitle( $listIdsAndNames[$rlId] . ' ' . wfMsg( 'collabwatchlistedit-normal-title' ) );
-				if( $request->wasPosted() ) {
-					if( ! $this->checkToken( $request, $wgUser, $rlId ) ) {
+				if ( $request->wasPosted() ) {
+					if ( ! $this->checkToken( $request, $wgUser, $rlId ) ) {
 						$output->redirect( $permissionDeniedTarget );
 						break;
 					}
@@ -177,26 +177,26 @@ class CollabWatchlistEditor {
 				break;
 			case self::SET_TAGS:
 				$redirTarget = SpecialPage::getTitleFor( 'CollabWatchlist' )->getLocalUrl();
-				if( $request->wasPosted() ) {
-					$rlId = $request->getInt('collabwatchlist', -1);
-					if( ! $this->checkPermissions( $wgUser, $rlId, array(COLLABWATCHLISTUSER_USER, COLLABWATCHLISTUSER_OWNER) ) ) {
+				if ( $request->wasPosted() ) {
+					$rlId = $request->getInt( 'collabwatchlist', -1 );
+					if ( ! $this->checkPermissions( $wgUser, $rlId, array( COLLABWATCHLISTUSER_USER, COLLABWATCHLISTUSER_OWNER ) ) ) {
 						$output->redirect( $permissionDeniedTarget );
 						break;
 					}
-					$redirTarget = $request->getText('redirTarget', $redirTarget);
-					$tagToAdd = $request->getText('collabwatchlisttag');
-					$tagcomment = $request->getText('tagcomment');
-					$setPatrolled = $request->getBool('setpatrolled', false);
+					$redirTarget = $request->getText( 'redirTarget', $redirTarget );
+					$tagToAdd = $request->getText( 'collabwatchlisttag' );
+					$tagcomment = $request->getText( 'tagcomment' );
+					$setPatrolled = $request->getBool( 'setpatrolled', false );
 					$pagesToTag = array();
-					if( strlen($tagToAdd) !== 0 && $rlId !== -1 ) {
+					if ( strlen( $tagToAdd ) !== 0 && $rlId !== -1 ) {
 						$postValues = $request->getValues();
-						foreach( $postValues as $key => $value ) {
-							if( stripos($key, 'collaborative-watchlist-addtag-') === 0 ) {
-								$pageRevRcId = explode('|', $value);
-								if( count($pageRevRcId) < 3 ) {
+						foreach ( $postValues as $key => $value ) {
+							if ( stripos( $key, 'collaborative-watchlist-addtag-' ) === 0 ) {
+								$pageRevRcId = explode( '|', $value );
+								if ( count( $pageRevRcId ) < 3 ) {
 									continue;
 								}
-								$pagesToTag[$pageRevRcId[0]][] = array('rev_id' => $pageRevRcId[1], 'rc_id' => $pageRevRcId[2]);
+								$pagesToTag[$pageRevRcId[0]][] = array( 'rev_id' => $pageRevRcId[1], 'rc_id' => $pageRevRcId[2] );
 							}
 						}
 						$this->setTags( $pagesToTag, $tagToAdd, $wgUser->getId(), $rlId, $tagcomment, $setPatrolled );
@@ -205,48 +205,48 @@ class CollabWatchlistEditor {
 				$output->redirect( $redirTarget );
 				break;
 			case self::UNSET_TAGS:
-				$rlId = $request->getInt('collabwatchlist', -1);
-				if( ! $this->checkPermissions( $wgUser, $rlId, array(COLLABWATCHLISTUSER_USER, COLLABWATCHLISTUSER_OWNER) ) ) {
+				$rlId = $request->getInt( 'collabwatchlist', -1 );
+				if ( ! $this->checkPermissions( $wgUser, $rlId, array( COLLABWATCHLISTUSER_USER, COLLABWATCHLISTUSER_OWNER ) ) ) {
 					$output->redirect( $permissionDeniedTarget );
 					break;
 				}
 				$redirTarget = SpecialPage::getTitleFor( 'CollabWatchlist' )->getLocalUrl();
-				$redirTarget = $request->getText('redirTarget', $redirTarget);
-				$page = $request->getText('collabwatchlistpage');
-				$tagToDel = $request->getText('collabwatchlisttag');
-				$rcId = $request->getInt('collabwatchlistrcid', -1);
-				if( strlen($page) !== 0 && strlen($tagToDel) !== 0 && $rlId !== -1 && $rcId !== -1 ) {
-					$pagesToUntag[$page][] = array('rc_id' => $rcId);
+				$redirTarget = $request->getText( 'redirTarget', $redirTarget );
+				$page = $request->getText( 'collabwatchlistpage' );
+				$tagToDel = $request->getText( 'collabwatchlisttag' );
+				$rcId = $request->getInt( 'collabwatchlistrcid', -1 );
+				if ( strlen( $page ) !== 0 && strlen( $tagToDel ) !== 0 && $rlId !== -1 && $rcId !== -1 ) {
+					$pagesToUntag[$page][] = array( 'rc_id' => $rcId );
 					$this->unsetTags( $pagesToUntag, $tagToDel, $wgUser->getId(), $rlId );
 				}
 				$output->redirect( $redirTarget );
 				break;
 			case self::NEW_LIST:
-				if( $request->wasPosted() ) {
+				if ( $request->wasPosted() ) {
 					$redirTarget = SpecialPage::getTitleFor( 'CollabWatchlist' )->getLocalUrl();
-					$listId = $this->createNewList($request->getText('listname'));
-					if( isset($listId) ) {
+					$listId = $this->createNewList( $request->getText( 'listname' ) );
+					if ( isset( $listId ) ) {
 						$output->redirect( $redirTarget );
 					} else {
 						$output->addHTML( wfMsgExt( 'collabwatchlistnew-name-exists', 'parse' ) );
 					}
 				} else {
-					$this->showNewListForm($output);
+					$this->showNewListForm( $output );
 				}
 				break;
 			case self::DELETE_LIST:
 				$output->setPageTitle( $listIdsAndNames[$rlId] . ' ' . wfMsg( 'collabwatchlistdelete-title' ) );
-				$rlId = $request->getInt('collabwatchlist', -1);
-				if( $request->wasPosted() ) {
-					if( ! $this->checkToken( $request, $wgUser, $rlId ) ) {
+				$rlId = $request->getInt( 'collabwatchlist', -1 );
+				if ( $request->wasPosted() ) {
+					if ( ! $this->checkToken( $request, $wgUser, $rlId ) ) {
 						$output->redirect( $permissionDeniedTarget );
 						break;
 					}
-					$this->deleteList($rlId);
+					$this->deleteList( $rlId );
 					$redirTarget = SpecialPage::getTitleFor( 'CollabWatchlist' )->getLocalUrl();
 					$output->redirect( $redirTarget );
 				} else {
-					$this->showDeleteListForm($output, $rlId);
+					$this->showDeleteListForm( $output, $rlId );
 				}
 				break;
 		}
@@ -261,14 +261,14 @@ class CollabWatchlistEditor {
 	 * @param $memberTypes Which types of members are allowed
 	 * @return bool
 	 */
-	private function checkToken( $request, $user, $rlId, $memberTypes = array(COLLABWATCHLISTUSER_OWNER) ) {
+	private function checkToken( $request, $user, $rlId, $memberTypes = array( COLLABWATCHLISTUSER_OWNER ) ) {
 		$tokenOk = $user->matchEditToken( $request->getVal( 'token' ), 'watchlistedit' ) && $request->getVal( 'collabwatchlist' ) !== 0;
-		if( $tokenOk === false )
+		if ( $tokenOk === false )
 			return $tokenOk;
 		return $this->checkPermissions( $user, $rlId, $memberTypes );
 	}
 
-	private function checkPermissions( $user, $rlId, $memberTypes = array(COLLABWATCHLISTUSER_OWNER) ) {
+	private function checkPermissions( $user, $rlId, $memberTypes = array( COLLABWATCHLISTUSER_OWNER ) ) {
 		// Check permissions
 		$dbr = wfGetDB( DB_MASTER );
 		$res = $dbr->select( 'collabwatchlistuser',
@@ -289,22 +289,22 @@ class CollabWatchlistEditor {
 	 */
 	private function extractCollabWatchlistCategories( $list ) {
 		$titles = array();
-		if( !is_array( $list ) ) {
+		if ( !is_array( $list ) ) {
 			$list = explode( "\n", trim( $list ) );
-			if( !is_array( $list ) )
+			if ( !is_array( $list ) )
 				return array();
 		}
-		foreach( $list as $text ) {
+		foreach ( $list as $text ) {
 			$subtract = false;
 			$text = trim( $text );
 			$titleText = $text;
-			if( stripos($text, '- ') === 0 ) {
+			if ( stripos( $text, '- ' ) === 0 ) {
 				$subtract = true;
-				$titleText = trim( substr($text, 2) );
+				$titleText = trim( substr( $text, 2 ) );
 			}
-			if( strlen( $text ) > 0 ) {
+			if ( strlen( $text ) > 0 ) {
 				$title = Title::newFromText( $titleText );
-				if( $title instanceof Title && $title->isWatchable() ) {
+				if ( $title instanceof Title && $title->isWatchable() ) {
 					$titles[] = $subtract ? '- ' . $title->getPrefixedText() : $title->getPrefixedText();
 				}
 			}
@@ -317,20 +317,20 @@ class CollabWatchlistEditor {
 		$typeText = COLLABWATCHLISTUSER_USER_TEXT;
 		$text = trim( $typeAndUsernameStr );
 		$titleText = $text;
-		if( stripos($text, COLLABWATCHLISTUSER_OWNER_TEXT . ' ') === 0 ) {
+		if ( stripos( $text, COLLABWATCHLISTUSER_OWNER_TEXT . ' ' ) === 0 ) {
 			$type = COLLABWATCHLISTUSER_OWNER;
 			$typeText = COLLABWATCHLISTUSER_OWNER_TEXT;
-			$titleText = trim( substr($text, strlen(COLLABWATCHLISTUSER_OWNER_TEXT . ' ')) );
-		}else if( stripos($text, COLLABWATCHLISTUSER_USER_TEXT . ' ') === 0 ) {
+			$titleText = trim( substr( $text, strlen( COLLABWATCHLISTUSER_OWNER_TEXT . ' ' ) ) );
+		} else if ( stripos( $text, COLLABWATCHLISTUSER_USER_TEXT . ' ' ) === 0 ) {
 			$type = COLLABWATCHLISTUSER_USER;
 			$typeText = COLLABWATCHLISTUSER_USER_TEXT;
-			$titleText = trim( substr($text, strlen(COLLABWATCHLISTUSER_USER_TEXT . ' ')) );
-		}else if( stripos($text, COLLABWATCHLISTUSER_TRUSTED_EDITOR_TEXT . ' ') === 0 ) {
+			$titleText = trim( substr( $text, strlen( COLLABWATCHLISTUSER_USER_TEXT . ' ' ) ) );
+		} else if ( stripos( $text, COLLABWATCHLISTUSER_TRUSTED_EDITOR_TEXT . ' ' ) === 0 ) {
 			$type = COLLABWATCHLISTUSER_TRUSTED_EDITOR;
 			$typeText = COLLABWATCHLISTUSER_TRUSTED_EDITOR_TEXT;
-			$titleText = trim( substr($text, strlen(COLLABWATCHLISTUSER_TRUSTED_EDITOR_TEXT . ' ')) );
+			$titleText = trim( substr( $text, strlen( COLLABWATCHLISTUSER_TRUSTED_EDITOR_TEXT . ' ' ) ) );
 		}
-		return array($type, $typeText, $titleText);
+		return array( $type, $typeText, $titleText );
 	}
 
 	/**
@@ -342,16 +342,16 @@ class CollabWatchlistEditor {
 	 */
 	private function extractCollabWatchlistUsers( $list ) {
 		$titles = array();
-		if( !is_array( $list ) ) {
+		if ( !is_array( $list ) ) {
 			$list = explode( "\n", trim( $list ) );
-			if( !is_array( $list ) )
+			if ( !is_array( $list ) )
 				return array();
 		}
-		foreach( $list as $text ) {
-			list($type, $typeText, $titleText) = $this->extractTypeTypeTextAndUsername( $text );
-			if( strlen( $text ) > 0 ) {
-				$user = User::newFromName($titleText);
-				if( $user instanceof User ) {
+		foreach ( $list as $text ) {
+			list( $type, $typeText, $titleText ) = $this->extractTypeTypeTextAndUsername( $text );
+			if ( strlen( $text ) > 0 ) {
+				$user = User::newFromName( $titleText );
+				if ( $user instanceof User ) {
 					$titles[] = $typeText . ' ' . $user->getName();
 				}
 			}
@@ -368,21 +368,21 @@ class CollabWatchlistEditor {
 	 */
 	private function extractCollabWatchlistTags( $list ) {
 		$tags = array();
-		if( !is_array( $list ) ) {
+		if ( !is_array( $list ) ) {
 			$list = explode( "\n", trim( $list ) );
-			if( !is_array( $list ) )
+			if ( !is_array( $list ) )
 				return array();
 		}
-		foreach( $list as $text ) {
+		foreach ( $list as $text ) {
 			$subtract = false;
-			$text = trim($text);
-			if( strlen( $text ) > 0 ) {
-				$pipepos = stripos($text, '|');
+			$text = trim( $text );
+			if ( strlen( $text ) > 0 ) {
+				$pipepos = stripos( $text, '|' );
 				$description = '';
-				if( $pipepos > 0 ) {
-					if( ($pipepos + 1) < strlen($text) )
-						$description = trim(substr($text, $pipepos + 1));
-					$text = trim(substr($text, 0, $pipepos));
+				if ( $pipepos > 0 ) {
+					if ( ( $pipepos + 1 ) < strlen( $text ) )
+						$description = trim( substr( $text, $pipepos + 1 ) );
+					$text = trim( substr( $text, 0, $pipepos ) );
 				}
 				$tags[$text] = $description;
 			}
@@ -404,10 +404,10 @@ class CollabWatchlistEditor {
 		$talk = wfMsgHtml( 'talkpagelinktext' );
 		// Do a batch existence check
 		$batch = new LinkBatch();
-		foreach( $titles as $title ) {
-			if( !$title instanceof Title )
+		foreach ( $titles as $title ) {
+			if ( !$title instanceof Title )
 				$title = Title::newFromText( $title );
-			if( $title instanceof Title ) {
+			if ( $title instanceof Title ) {
 				$batch->addObj( $title );
 				$batch->addObj( $title->getTalkPage() );
 			}
@@ -415,10 +415,10 @@ class CollabWatchlistEditor {
 		$batch->execute();
 		// Print out the list
 		$output->addHTML( "<ul>\n" );
-		foreach( $titles as $title ) {
-			if( !$title instanceof Title )
+		foreach ( $titles as $title ) {
+			if ( !$title instanceof Title )
 				$title = Title::newFromText( $title );
-			if( $title instanceof Title ) {
+			if ( $title instanceof Title ) {
 				$output->addHTML( "<li>" . $skin->link( $title )
 				. ' (' . $skin->link( $title->getTalkPage(), $talk ) . ")</li>\n" );
 			}
@@ -439,7 +439,7 @@ class CollabWatchlistEditor {
 	private function showTagList( $tagsAndDesc, $output, $skin ) {
 		// Print out the list
 		$output->addHTML( "<ul>\n" );
-		foreach( $tagsAndDesc as $title => $description ) {
+		foreach ( $tagsAndDesc as $title => $description ) {
 			$output->addHTML( "<li>" . $title
 			. ' (' . $description . ")</li>\n" );
 		}
@@ -509,19 +509,19 @@ class CollabWatchlistEditor {
 		$list = array();
 		$dbr = wfGetDB( DB_MASTER );
 		$res = $dbr->select(
-			array('collabwatchlistcategory', 'page'),
-			array('page_title', 'page_namespace', 'subtract'),
+			array( 'collabwatchlistcategory', 'page' ),
+			array( 'page_title', 'page_namespace', 'subtract' ),
 			array(
 				'rl_id' => $rlId,
 			),
 			__METHOD__, array(),
 			 # Join conditions
-			array(	'page' => array('JOIN', 'page.page_id = collabwatchlistcategory.cat_page_id') )
+			array(	'page' => array( 'JOIN', 'page.page_id = collabwatchlistcategory.cat_page_id' ) )
 		);
-		if( $res->numRows() > 0 ) {
-			foreach( $res as $row ) {
+		if ( $res->numRows() > 0 ) {
+			foreach ( $res as $row ) {
 				$title = Title::makeTitleSafe( $row->page_namespace, $row->page_title );
-				if( $title instanceof Title && !$title->isTalkPage() )
+				if ( $title instanceof Title && !$title->isTalkPage() )
 					$list[] = $row->subtract ? '- ' . $title->getPrefixedText() : $title->getPrefixedText();
 			}
 		}
@@ -539,18 +539,18 @@ class CollabWatchlistEditor {
 		$list = array();
 		$dbr = wfGetDB( DB_MASTER );
 		$res = $dbr->select(
-			array('collabwatchlistuser', 'user'),
-			array('user_name', 'rlu_type'),
+			array( 'collabwatchlistuser', 'user' ),
+			array( 'user_name', 'rlu_type' ),
 			array(
 				'rl_id' => $rlId,
 			),
 			__METHOD__, array(),
 			 # Join conditions
-			array(	'user' => array('JOIN', 'user.user_id = collabwatchlistuser.user_id') )
+			array(	'user' => array( 'JOIN', 'user.user_id = collabwatchlistuser.user_id' ) )
 		);
-		if( $res->numRows() > 0 ) {
-			foreach( $res as $row ) {
-				$typeText = fnCollabWatchlistUserTypeToText($row->rlu_type);
+		if ( $res->numRows() > 0 ) {
+			foreach ( $res as $row ) {
+				$typeText = fnCollabWatchlistUserTypeToText( $row->rlu_type );
 				$list[] = $typeText . ' ' . $row->user_name;
 			}
 		}
@@ -568,14 +568,14 @@ class CollabWatchlistEditor {
 		$list = array();
 		$dbr = wfGetDB( DB_MASTER );
 		$res = $dbr->select(
-			array('collabwatchlisttag'),
-			array('rt_name', 'rt_description'),
+			array( 'collabwatchlisttag' ),
+			array( 'rt_name', 'rt_description' ),
 			array(
 				'rl_id' => $rlId,
 			), __METHOD__
 		);
-		if( $res->numRows() > 0 ) {
-			foreach( $res as $row ) {
+		if ( $res->numRows() > 0 ) {
+			foreach ( $res as $row ) {
 				$list[$row->rt_name] = $row->rt_description;
 			}
 		}
@@ -595,30 +595,30 @@ class CollabWatchlistEditor {
 		$dbr = wfGetDB( DB_MASTER );
 
 		$res = $dbr->select(
-			array('collabwatchlistcategory', 'page'),
-			array('page_title', 'page_namespace', 'page_id', 'page_len', 'page_is_redirect', 'subtract'),
+			array( 'collabwatchlistcategory', 'page' ),
+			array( 'page_title', 'page_namespace', 'page_id', 'page_len', 'page_is_redirect', 'subtract' ),
 			array(
 				'rl_id' => $rlId,
 			),
 			__METHOD__, array(),
 			 # Join conditions
-			array(	'page' => array('JOIN', 'page.page_id = collabwatchlistcategory.cat_page_id') )
+			array(	'page' => array( 'JOIN', 'page.page_id = collabwatchlistcategory.cat_page_id' ) )
 		);
 
-		if( $res && $dbr->numRows( $res ) > 0 ) {
+		if ( $res && $dbr->numRows( $res ) > 0 ) {
 			$cache = LinkCache::singleton();
-			foreach( $res as $row ) {
+			foreach ( $res as $row ) {
 				$title = Title::makeTitleSafe( $row->page_namespace, $row->page_title );
-				if( $title instanceof Title ) {
+				if ( $title instanceof Title ) {
 					// Update the link cache while we're at it
-					if( $row->page_id ) {
+					if ( $row->page_id ) {
 						$cache->addGoodLinkObj( $row->page_id, $title, $row->page_len, $row->page_is_redirect );
 					} else {
 						$cache->addBadLinkObj( $title );
 					}
 					// Ignore non-talk
-					if( !$title->isTalkPage() )
-						$titles[$row->page_namespace][$row->page_title] = array('redirect' => $row->page_is_redirect, 'subtract' => $row->subtract);
+					if ( !$title->isTalkPage() )
+						$titles[$row->page_namespace][$row->page_title] = array( 'redirect' => $row->page_is_redirect, 'subtract' => $row->subtract );
 				}
 			}
 		}
@@ -634,7 +634,7 @@ class CollabWatchlistEditor {
 	 * @return int
 	 */
 	private function showItemCount( $output, $rlId ) {
-		if( ( $count = $this->countCollabWatchlistCategories( $rlId ) ) > 0 ) {
+		if ( ( $count = $this->countCollabWatchlistCategories( $rlId ) ) > 0 ) {
 			$output->addHTML( wfMsgExt( 'collabwatchlistedit-numitems', 'parse',
 				$GLOBALS['wgLang']->formatNum( $count ) ) );
 		} else {
@@ -652,7 +652,7 @@ class CollabWatchlistEditor {
 	 * @return int
 	 */
 	private function showTagItemCount( $output, $rlId ) {
-		if( ( $count = $this->countCollabWatchlistTags( $rlId ) ) > 0 ) {
+		if ( ( $count = $this->countCollabWatchlistTags( $rlId ) ) > 0 ) {
 			$output->addHTML( wfMsgExt( 'collabwatchlistedit-tags-numitems', 'parse',
 				$GLOBALS['wgLang']->formatNum( $count ) ) );
 		} else {
@@ -670,7 +670,7 @@ class CollabWatchlistEditor {
 	 * @return int
 	 */
 	private function showSetTagsItemCount( $output, $rlId ) {
-		if( ( $count = $this->countCollabWatchlistSetTags( $rlId ) ) > 0 ) {
+		if ( ( $count = $this->countCollabWatchlistSetTags( $rlId ) ) > 0 ) {
 			$output->addHTML( wfMsgExt( 'collabwatchlistedit-set-tags-numitems', 'parse',
 				$GLOBALS['wgLang']->formatNum( $count ) ) );
 		} else {
@@ -688,7 +688,7 @@ class CollabWatchlistEditor {
 	 * @return int
 	 */
 	private function showUserItemCount( $output, $rlId ) {
-		if( ( $count = $this->countCollabWatchlistUsers( $rlId ) ) > 0 ) {
+		if ( ( $count = $this->countCollabWatchlistUsers( $rlId ) ) > 0 ) {
 			$output->addHTML( wfMsgExt( 'collabwatchlistedit-users-numitems', 'parse',
 				$GLOBALS['wgLang']->formatNum( $count ) ) );
 		} else {
@@ -720,16 +720,16 @@ class CollabWatchlistEditor {
 		$dbw = wfGetDB( DB_MASTER );
 		$rows = array();
 		$added = array();
-		foreach( $titles as $title ) {
+		foreach ( $titles as $title ) {
 			$subtract = false;
 			$title = trim( $title );
 			$titleText = $title;
-			if( stripos($title, '- ') === 0 ) {
+			if ( stripos( $title, '- ' ) === 0 ) {
 				$subtract = true;
-				$titleText = trim( substr($title, 2) );
+				$titleText = trim( substr( $title, 2 ) );
 			}
 			$titleObj = Title::newFromText( $titleText );
-			if( $titleObj instanceof Title && $titleObj->exists() ) {
+			if ( $titleObj instanceof Title && $titleObj->exists() ) {
 				$rows[] = array(
 					'rl_id' => $rlId,
 					'cat_page_id' => $titleObj->getArticleID(),
@@ -754,10 +754,10 @@ class CollabWatchlistEditor {
 		$dbw = wfGetDB( DB_MASTER );
 		$rows = array();
 		$added = array();
-		foreach( $users as $userString ) {
-			list($type, $typeText, $titleText) = $this->extractTypeTypeTextAndUsername( $userString );
-			$user = User::newFromName($titleText);
-			if( $user instanceof User && $user->getId() !== 0) {
+		foreach ( $users as $userString ) {
+			list( $type, $typeText, $titleText ) = $this->extractTypeTypeTextAndUsername( $userString );
+			$user = User::newFromName( $titleText );
+			if ( $user instanceof User && $user->getId() !== 0 ) {
 				$rows[] = array(
 					'rl_id' => $rlId,
 					'user_id' => $user->getId(),
@@ -770,48 +770,48 @@ class CollabWatchlistEditor {
 		return $added;
 	}
 
-	private function setTags( $titlesAndTagInfo, $tag, $userId, $rlId, $comment, $setPatrolled = false) {
-		//XXX Attach a hook to delete tags from the collabwatchlistrevisiontag table as soon as the actual tags are deleted from the change_tags table
-		$allowedTagsAndInfo = $this->getCollabWatchlistTags($rlId);
-		if(!array_key_exists($tag, $allowedTagsAndInfo)) {
+	private function setTags( $titlesAndTagInfo, $tag, $userId, $rlId, $comment, $setPatrolled = false ) {
+		// XXX Attach a hook to delete tags from the collabwatchlistrevisiontag table as soon as the actual tags are deleted from the change_tags table
+		$allowedTagsAndInfo = $this->getCollabWatchlistTags( $rlId );
+		if ( !array_key_exists( $tag, $allowedTagsAndInfo ) ) {
 			return false;
 		}
 		$dbw = wfGetDB( DB_MASTER );
-		foreach( $titlesAndTagInfo as $title => $infos ) {
+		foreach ( $titlesAndTagInfo as $title => $infos ) {
 			$rcIds = array();
 			// Add entries for the tag to the change_tags table
 			// optionally mark edit as patrolled
-			foreach( $infos as $infoKey => $info ) {
-				ChangeTags::addTags($tag, $info['rc_id'], $info['rev_id']);
+			foreach ( $infos as $infoKey => $info ) {
+				ChangeTags::addTags( $tag, $info['rc_id'], $info['rev_id'] );
 				$rcIds[] = $info['rc_id'];
-				if( $setPatrolled ) {
-					RecentChange::markPatrolled($info['rc_id']);
+				if ( $setPatrolled ) {
+					RecentChange::markPatrolled( $info['rc_id'] );
 				}
 			}
 			// Add the tagged revisions to the collaborative watchlist
 			$sql = 'INSERT IGNORE INTO collabwatchlistrevisiontag (ct_id, rl_id, user_id, rrt_comment)
-					SELECT ct_id, ' . $dbw->strencode($rlId) . ',' .
-						$dbw->strencode($userId) . ',' .
-						$dbw->addQuotes($comment) . ' FROM change_tag WHERE ct_tag = ? AND ct_rc_id ';
-			if( count($rcIds) > 1 ) {
-				$sql .= 'IN (' . $dbw->makeList($rcIds) . ')';
+					SELECT ct_id, ' . $dbw->strencode( $rlId ) . ',' .
+						$dbw->strencode( $userId ) . ',' .
+						$dbw->addQuotes( $comment ) . ' FROM change_tag WHERE ct_tag = ? AND ct_rc_id ';
+			if ( count( $rcIds ) > 1 ) {
+				$sql .= 'IN (' . $dbw->makeList( $rcIds ) . ')';
 				$params = array( $tag );
-			}else {
+			} else {
 				$sql .= '= ?';
 				$params = array( $tag, $rcIds[0] );
 			}
-			$prepSql = $dbw->prepare($sql);
-			$res = $dbw->execute($prepSql, $params);
-			$dbw->freePrepared($prepSql);
+			$prepSql = $dbw->prepare( $sql );
+			$res = $dbw->execute( $prepSql, $params );
+			$dbw->freePrepared( $prepSql );
 			return true;
 		}
 	}
 
 	private function unsetTags( $titlesAndTagInfo, $tag, $userId, $rlId ) {
 		$dbw = wfGetDB( DB_MASTER );
-		foreach( $titlesAndTagInfo as $title => $infos ) {
+		foreach ( $titlesAndTagInfo as $title => $infos ) {
 			$rcIds = array();
-			foreach( $infos as $infoKey => $info ) {
+			foreach ( $infos as $infoKey => $info ) {
 			// XXX Remove entries for the tag from the change_tags table
 //				ChangeTags::addTags($tag, $info['rc_id'], $info['rev_id']);
 				$rcIds[] = $info['rc_id'];
@@ -820,16 +820,16 @@ class CollabWatchlistEditor {
 			$sql = 'delete collabwatchlistrevisiontag from collabwatchlistrevisiontag JOIN change_tag
 					ON change_tag.ct_id = collabwatchlistrevisiontag.ct_id
 					WHERE ct_tag = ? AND ct_rc_id ';
-			if( count($rcIds) > 1 ) {
-				$sql .= 'IN (' . $dbw->makeList($rcIds) . ')';
+			if ( count( $rcIds ) > 1 ) {
+				$sql .= 'IN (' . $dbw->makeList( $rcIds ) . ')';
 				$params = array( $tag );
-			}else {
+			} else {
 				$sql .= '= ?';
 				$params = array( $tag, $rcIds[0] );
 			}
-			$prepSql = $dbw->prepare($sql);
-			$res = $dbw->execute($prepSql, $params);
-			$dbw->freePrepared($prepSql);
+			$prepSql = $dbw->prepare( $sql );
+			$res = $dbw->execute( $prepSql, $params );
+			$dbw->freePrepared( $prepSql );
 		}
 	}
 
@@ -844,7 +844,7 @@ class CollabWatchlistEditor {
 	private function addTags( $titles, $rlId ) {
 		$dbw = wfGetDB( DB_MASTER );
 		$rows = array();
-		foreach( $titles as $title => $description ) {
+		foreach ( $titles as $title => $description ) {
 			$rows[] = array(
 				'rl_id' => $rlId,
 				'rt_name' => $title,
@@ -865,16 +865,16 @@ class CollabWatchlistEditor {
 	 */
 	private function unwatchTitles( $titles, $rlId ) {
 		$dbw = wfGetDB( DB_MASTER );
-		foreach( $titles as $title ) {
+		foreach ( $titles as $title ) {
 			$subtract = false;
 			$title = trim( $title );
 			$titleText = $title;
-			if( stripos($title, '- ') === 0 ) {
+			if ( stripos( $title, '- ' ) === 0 ) {
 				$subtract = true;
-				$titleText = trim( substr($title, 2) );
+				$titleText = trim( substr( $title, 2 ) );
 			}
 			$title = Title::newFromText( $titleText );
-			if( $title instanceof Title ) {
+			if ( $title instanceof Title ) {
 				$dbw->delete(
 					'collabwatchlistcategory',
 					array(
@@ -884,9 +884,9 @@ class CollabWatchlistEditor {
 					),
 					__METHOD__
 				);
-				$article = new Article($title);
-				//XXX Check if we can simply rename the hook, or if we need to register it
-				wfRunHooks('UnwatchArticleComplete',array(&$user,&$article));
+				$article = new Article( $title );
+				// XXX Check if we can simply rename the hook, or if we need to register it
+				wfRunHooks( 'UnwatchArticleComplete', array( &$user, &$article ) );
 			}
 		}
 	}
@@ -901,10 +901,10 @@ class CollabWatchlistEditor {
 	 */
 	private function delUsers( $users, $rlId ) {
 		$dbw = wfGetDB( DB_MASTER );
-		foreach( $users as $userString ) {
-			list($type, $typeText, $titleText) = $this->extractTypeTypeTextAndUsername( $userString );
-			$user = User::newFromName($titleText);
-			if( $user instanceof User && $user->getId() !== 0) {
+		foreach ( $users as $userString ) {
+			list( $type, $typeText, $titleText ) = $this->extractTypeTypeTextAndUsername( $userString );
+			$user = User::newFromName( $titleText );
+			if ( $user instanceof User && $user->getId() !== 0 ) {
 				$dbw->delete(
 					'collabwatchlistuser',
 					array(
@@ -916,8 +916,8 @@ class CollabWatchlistEditor {
 				);
 			}
 		}
-		//XXX Check if we can simply rename the hook, or if we need to register it
-		//wfRunHooks('UnwatchArticleComplete',array(&$user,&$article));
+		// XXX Check if we can simply rename the hook, or if we need to register it
+		// wfRunHooks('UnwatchArticleComplete',array(&$user,&$article));
 	}
 
 	/**
@@ -930,7 +930,7 @@ class CollabWatchlistEditor {
 	 */
 	private function removeTags( $titles, $rlId ) {
 		$dbw = wfGetDB( DB_MASTER );
-		foreach( $titles as $title ) {
+		foreach ( $titles as $title ) {
 			$dbw->delete(
 				'collabwatchlisttag',
 				array(
@@ -939,9 +939,9 @@ class CollabWatchlistEditor {
 				),
 				__METHOD__
 			);
-			//$article = new Article($title);
-			//XXX Check if we can simply rename the hook, or if we need to register it
-			//wfRunHooks('UnwatchArticleComplete',array(&$user,&$article));
+			// $article = new Article($title);
+			// XXX Check if we can simply rename the hook, or if we need to register it
+			// wfRunHooks('UnwatchArticleComplete',array(&$user,&$article));
 		}
 	}
 
@@ -953,7 +953,7 @@ class CollabWatchlistEditor {
 	 */
 	private function showNormalForm( $output, $rlId ) {
 		global $wgUser;
-		if( ( $count = $this->showItemCount( $output, $rlId ) ) > 0 ) {
+		if ( ( $count = $this->showItemCount( $output, $rlId ) ) > 0 ) {
 			$self = SpecialPage::getTitleFor( 'CollabWatchlist' );
 			$form  = Xml::openElement( 'form', array( 'method' => 'post',
 				'action' => $self->getLocalUrl( array( 'action' => 'edit' ) ) ) );
@@ -976,7 +976,7 @@ class CollabWatchlistEditor {
 		$form .= Html::hidden( 'token', $wgUser->editToken( 'watchlistedit' ) );
 		$form .= "<fieldset>\n<legend>" . wfMsgHtml( 'collabwatchlistnew-legend' ) . "</legend>";
 		$form .= wfMsgExt( 'collabwatchlistnew-explain', 'parse' );
-		$form .= Xml::label( wfMsg('collabwatchlistnew-name'), 'listname' ) . '&nbsp;' . Xml::input( 'listname' ) . '&nbsp;';
+		$form .= Xml::label( wfMsg( 'collabwatchlistnew-name' ), 'listname' ) . '&nbsp;' . Xml::input( 'listname' ) . '&nbsp;';
 		$form .= '<p>' . Xml::submitButton( wfMsg( 'collabwatchlistnew-submit' ) ) . '</p>';
 		$form .= '</fieldset></form>';
 		$output->addHTML( $form );
@@ -991,16 +991,16 @@ class CollabWatchlistEditor {
 		$form .= Html::hidden( 'collabwatchlist', $rlId );
 		$form .= "<fieldset>\n<legend>" . wfMsgHtml( 'collabwatchlistdelete-legend' ) . "</legend>";
 		$form .= wfMsgExt( 'collabwatchlistdelete-explain', 'parse' );
-		$this->showUserItemCount($output, $rlId);
-		$this->showSetTagsItemCount($output, $rlId);
+		$this->showUserItemCount( $output, $rlId );
+		$this->showSetTagsItemCount( $output, $rlId );
 		$form .= '<p>' . Xml::submitButton( wfMsg( 'collabwatchlistdelete-submit' ) ) . '</p>';
 		$form .= '</fieldset></form>';
 		$output->addHTML( $form );
 	}
 
-	private function createNewList($name) {
+	private function createNewList( $name ) {
 		global $wgUser;
-		if( !isset($name) || empty($name) )
+		if ( !isset( $name ) || empty( $name ) )
 			return;
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->begin();
@@ -1009,13 +1009,13 @@ class CollabWatchlistEditor {
 			$dbw->insert( 'collabwatchlist', array(
 				'rl_id'           => $rl_id,
 				'rl_name'    => $name,
-				'rl_start'	=> wfTimestamp(TS_ISO_8601),
+				'rl_start'	=> wfTimestamp( TS_ISO_8601 ),
 			), __METHOD__, 'IGNORE' );
 
 			$affected = $dbw->affectedRows();
-			if( $affected ) {
+			if ( $affected ) {
 				$newid = $dbw->insertId();
-			}else {
+			} else {
 				return;
 			}
 			$rlu_id = $dbw->nextSequenceValue( 'collabwatchlistuser_rlu_id_seq' );
@@ -1026,19 +1026,19 @@ class CollabWatchlistEditor {
 				'rlu_type'	=> COLLABWATCHLISTUSER_OWNER,
 			), __METHOD__, 'IGNORE' );
 			$affected = $dbw->affectedRows();
-			if( ! $affected ) {
+			if ( ! $affected ) {
 				$dbw->rollback();
 				return;
 			}
 			$dbw->commit();
 			return $newid;
-		}catch(Exception $e) {
+		} catch ( Exception $e ) {
 			$dbw->rollback();
 		}
 	}
 
-	private function deleteList($rlId) {
-		if( !isset($rlId) || empty($rlId) )
+	private function deleteList( $rlId ) {
+		if ( !isset( $rlId ) || empty( $rlId ) )
 			return;
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->begin();
@@ -1059,13 +1059,13 @@ class CollabWatchlistEditor {
 				'rl_id' => $rlId,
 			), __METHOD__ );
 			$affected = $dbw->affectedRows();
-			if( ! $affected ) {
+			if ( ! $affected ) {
 				$dbw->rollback();
 				return;
 			}
 			$dbw->commit();
 			return $rlId;
-		}catch(Exception $e) {
+		} catch ( Exception $e ) {
 			$dbw->rollback();
 		}
 	}
@@ -1082,7 +1082,7 @@ class CollabWatchlistEditor {
 		$list = "";
 		$toc = $skin->tocIndent();
 		$tocLength = 0;
-		foreach( $this->getWatchlistInfo( $rlId ) as $namespace => $pages ) {
+		foreach ( $this->getWatchlistInfo( $rlId ) as $namespace => $pages ) {
 			$tocLength++;
 			$heading = htmlspecialchars( $this->getNamespaceHeading( $namespace ) );
 			$anchor = "editwatchlist-ns" . $namespace;
@@ -1091,14 +1091,14 @@ class CollabWatchlistEditor {
 			$toc .= $skin->tocLine( $anchor, $heading, $tocLength, 1 ) . $skin->tocLineEnd();
 
 			$list .= "<ul>\n";
-			foreach( $pages as $dbkey => $info ) {
+			foreach ( $pages as $dbkey => $info ) {
 				$title = Title::makeTitleSafe( $namespace, $dbkey );
 				$list .= $this->buildRemoveLine( $title, $info, $skin );
 			}
 			$list .= "</ul>\n";
 		}
 		// ISSUE: omit the TOC if the total number of titles is low?
-		if( $tocLength > 1 ) {
+		if ( $tocLength > 1 ) {
 			$list = $skin->tocList( $toc ) . $list;
 		}
 		return $list;
@@ -1129,10 +1129,10 @@ class CollabWatchlistEditor {
 		global $wgLang;
 
 		$link = $skin->link( $title );
-		if( $catInfo['redirect'] )
+		if ( $catInfo['redirect'] )
 			$link = '<span class="watchlistredir">' . $link . '</span>';
 		$tools[] = $skin->link( $title->getTalkPage(), wfMsgHtml( 'talkpagelinktext' ) );
-		if( $title->exists() ) {
+		if ( $title->exists() ) {
 			$tools[] = $skin->link(
 				$title,
 				wfMsgHtml( 'history_short' ),
@@ -1141,7 +1141,7 @@ class CollabWatchlistEditor {
 				array( 'known', 'noclasses' )
 			);
 		}
-		if( $title->getNamespace() == NS_USER && !$title->isSubpage() ) {
+		if ( $title->getNamespace() == NS_USER && !$title->isSubpage() ) {
 			$tools[] = $skin->link(
 				SpecialPage::getTitleFor( 'Contributions', $title->getText() ),
 				wfMsgHtml( 'contributions' ),
@@ -1151,7 +1151,7 @@ class CollabWatchlistEditor {
 			);
 		}
 		return "<li>"
-			. ($catInfo['subtract'] ? '<span class="collabwatchlistsubtract">- </span>' : '')
+			. ( $catInfo['subtract'] ? '<span class="collabwatchlistsubtract">- </span>' : '' )
 			. Xml::check( 'titles[]', false, array( 'value' => $catInfo['subtract'] ? '- ' . $title->getPrefixedText() : $title->getPrefixedText() ) )
 			. $link . " (" . $wgLang->pipeList( $tools ) . ")" . "</li>\n";
 		}
@@ -1178,7 +1178,7 @@ class CollabWatchlistEditor {
 		$form .= Xml::openElement( 'textarea', array( 'id' => 'titles', 'name' => 'titles',
 			'rows' => $wgUser->getIntOption( 'rows' ), 'cols' => $wgUser->getIntOption( 'cols' ) ) );
 		$categories = $this->getCollabWatchlistCategories( $rlId );
-		foreach( $categories as $category )
+		foreach ( $categories as $category )
 			$form .= htmlspecialchars( $category ) . "\n";
 		$form .= '</textarea>';
 		$form .= '<p>' . Xml::submitButton( wfMsg( 'watchlistedit-raw-submit' ) ) . '</p>';
@@ -1208,7 +1208,7 @@ class CollabWatchlistEditor {
 		$form .= Xml::openElement( 'textarea', array( 'id' => 'titles', 'name' => 'titles',
 			'rows' => $wgUser->getIntOption( 'rows' ), 'cols' => $wgUser->getIntOption( 'cols' ) ) );
 		$tags = $this->getCollabWatchlistTags( $rlId );
-		foreach( $tags as $tag => $description )
+		foreach ( $tags as $tag => $description )
 			$form .= htmlspecialchars( $tag ) . "|" . $description . "\n";
 		$form .= '</textarea>';
 		$form .= '<p>' . Xml::submitButton( wfMsg( 'collabwatchlistedit-tags-raw-submit' ) ) . '</p>';
@@ -1238,7 +1238,7 @@ class CollabWatchlistEditor {
 		$form .= Xml::openElement( 'textarea', array( 'id' => 'titles', 'name' => 'titles',
 			'rows' => $wgUser->getIntOption( 'rows' ), 'cols' => $wgUser->getIntOption( 'cols' ) ) );
 		$users = $this->getCollabWatchlistUsers( $rlId );
-		foreach( $users as $userString )
+		foreach ( $users as $userString )
 			$form .= htmlspecialchars( $userString ) . "\n";
 		$form .= '</textarea>';
 		$form .= '<p>' . Xml::submitButton( wfMsg( 'collabwatchlistedit-users-raw-submit' ) ) . '</p>';
@@ -1302,11 +1302,11 @@ class CollabWatchlistEditor {
 			array(),
 			array( 'known', 'noclasses' )
 		) . '<br />';
-		if( !isset($listIdsAndNames) || empty($listIdsAndNames) )
+		if ( !isset( $listIdsAndNames ) || empty( $listIdsAndNames ) )
 			return $r;
-		foreach( $listIdsAndNames as $listId => $listName) {
+		foreach ( $listIdsAndNames as $listId => $listName ) {
 			$tools = array();
-			foreach( $modes as $mode => $subpage ) {
+			foreach ( $modes as $mode => $subpage ) {
 				// can use messages 'watchlisttools-view', 'watchlisttools-edit', 'watchlisttools-raw'
 				$tools[] = $skin->link(
 					SpecialPage::getTitleFor( 'CollabWatchlist', $subpage ),
@@ -1331,13 +1331,13 @@ class CollabWatchlistEditor {
 	 * @return String an URL string
 	 */
 	public static function getUnsetTagUrl( $redirUrl, $pageName, $rlId, $tag, $rcId ) {
-		return SpecialPage::getTitleFor( 'CollabWatchlist' )->getLocalUrl(array(
+		return SpecialPage::getTitleFor( 'CollabWatchlist' )->getLocalUrl( array(
 			'action' => 'unsetTags',
 			'redirTarget' => $redirUrl,
 			'collabwatchlisttag' => $tag,
 			'collabwatchlist' => $rlId,
 			'collabwatchlistpage' => $pageName,
 			'collabwatchlistrcid' => $rcId
-		));
+		) );
 	}
 }
