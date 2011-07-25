@@ -64,7 +64,7 @@ es.ListBlockItem.prototype.getOffsetFromPosition = function( position ) {
 		offset = null,
 		globalOffset = null;
 
-	if ( position.top > itemOffset.top && position.top < itemOffset.top + itemHeight ) {
+	if ( position.top >= itemOffset.top && position.top < itemOffset.top + itemHeight ) {
 		if ( position.top < itemOffset.top + this.$line.height() ) {
 			position.top -= itemOffset.top;
 			position.left -= itemOffset.left;

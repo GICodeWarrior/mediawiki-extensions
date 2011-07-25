@@ -34,11 +34,7 @@ es.ListBlockList.prototype.getLocationFromOffset = function( offset ) {
 	for ( var i = 0; i < this.items.length; i++ ) {
 		itemLength = this.items[i].getLength();
 		if ( offset >= itemOffset && offset < itemOffset + itemLength ) {
-			var location = this.items[i].getLocationFromOffset( offset - itemOffset );
-			return {
-				'item': location.item,
-				'offset': location.offset
-			}
+			return this.items[i].getLocationFromOffset( offset - itemOffset );
 		}
 		itemOffset += itemLength;
 	}
@@ -47,7 +43,7 @@ es.ListBlockList.prototype.getLocationFromOffset = function( offset ) {
 es.ListBlockList.prototype.getOffsetFromPosition = function( position ) {
 	var itemOffset = null,
 		globalOffset = null;
-
+	
 	for ( var i = 0; i < this.items.length; i++ ) {
 		itemOffset = this.items[i].getOffsetFromPosition( position );
 		
