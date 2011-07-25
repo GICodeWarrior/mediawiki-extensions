@@ -593,7 +593,7 @@ es.Surface.prototype.moveCursorRight = function() {
 		}
 	}
 	this.cursor.show(
-		block.flow.getPosition( offset ),
+		block.getPosition( offset ),
 		block.$.offset()
 	);
 	
@@ -617,7 +617,7 @@ es.Surface.prototype.moveCursorLeft = function() {
 		}
 	}
 	this.cursor.show(
-		block.flow.getPosition( offset ),
+		block.getPosition( offset ),
 		block.$.offset()
 	);
 	
