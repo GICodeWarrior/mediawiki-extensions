@@ -262,7 +262,7 @@ class OggHandler extends MediaHandler {
 			$thumbTime = $length / 2;
 		}
 
-		wfMkdirParents( dirname( $dstPath ) );
+		wfMkdirParents( dirname( $dstPath ), null, __METHOD__ );
 
 		global $wgOggThumbLocation;
 		if ( $wgOggThumbLocation !== false ) {
@@ -271,7 +271,7 @@ class OggHandler extends MediaHandler {
 			$status = $this->runFFmpeg( $file->getPath(), $dstPath, $thumbTime );
 		}
 		if ( $status === true ) {
-			return new OggVideoDisplay( $file, $file->getURL(), $dstUrl, $width, $height, 
+			return new OggVideoDisplay( $file, $file->getURL(), $dstUrl, $width, $height,
 				$length, $dstPath );
 		} else {
 			return new MediaTransformError( 'thumbnail_error', $width, $height, $status );
@@ -279,7 +279,7 @@ class OggHandler extends MediaHandler {
 	}
 
 	/**
-	 * Run FFmpeg to generate a still image from a video file, using a frame close 
+	 * Run FFmpeg to generate a still image from a video file, using a frame close
 	 * to the given number of seconds from the start.
 	 *
 	 * Returns true on success, or an error message on failure.
@@ -287,10 +287,10 @@ class OggHandler extends MediaHandler {
 	function runFFmpeg( $videoPath, $dstPath, $time ) {
 		global $wgFFmpegLocation;
 		wfDebug( __METHOD__." creating thumbnail at $dstPath\n" );
-		$cmd = wfEscapeShellArg( $wgFFmpegLocation ) . 
+		$cmd = wfEscapeShellArg( $wgFFmpegLocation ) .
 			# FFmpeg only supports integer numbers of seconds
 			' -ss ' . intval( $time ) . ' ' .
-			' -i ' . wfEscapeShellArg( $videoPath ) . 
+			' -i ' . wfEscapeShellArg( $videoPath ) .
 			# MJPEG, that's the same as JPEG except it's supported ffmpeg
 			# No audio, one frame
 			' -f mjpeg -an -vframes 1 ' .
@@ -318,7 +318,7 @@ class OggHandler extends MediaHandler {
 	}
 
 	/**
-	 * Run oggThumb to generate a still image from a video file, using a frame 
+	 * Run oggThumb to generate a still image from a video file, using a frame
 	 * close to the given number of seconds from the start.
 	 *
 	 * Returns true on success, or an error message on failure.
@@ -335,11 +335,11 @@ class OggHandler extends MediaHandler {
 
 		if ( $this->removeBadFile( $dstPath, $retval ) || $retval ) {
 			// oggThumb spams both stderr and stdout with useless progress
-			// messages, and then often forgets to output anything when 
+			// messages, and then often forgets to output anything when
 			// something actually does go wrong. So interpreting its output is
 			// a challenge.
 			$lines = explode( "\n", str_replace( "\r\n", "\n", $returnText ) );
-			if ( count( $lines ) > 0 
+			if ( count( $lines ) > 0
 				&& preg_match( '/invalid option -- \'n\'$/', $lines[0] ) )
 			{
 				return wfMsgForContent( 'ogg-oggThumb-version', '0.9' );
