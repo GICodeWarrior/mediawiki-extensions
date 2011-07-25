@@ -41,7 +41,7 @@ class WebStoreCommon {
 		}
 		$this->windows = wfIsWindows();
 
-		
+
 	}
 
 	function setErrorHandler() {
@@ -184,7 +184,7 @@ EOT;
 		$success = true;
 		do {
 			// Create destination directory
-			if ( !wfMkdirParents( dirname( $dstPath ) ) ) {
+			if ( !wfMkdirParents( dirname( $dstPath ), null, __METHOD__ ) ) {
 				$this->errors[] = new WebStoreError( 'webstore_dest_mkdir', $dstPath );
 				$success = false;
 				break;
@@ -253,7 +253,7 @@ EOT;
 		do {
 			// Create destination directory
 			$dstDir = dirname( $dstPath );
-			if ( !wfMkdirParents( $dstDir ) ) {
+			if ( !wfMkdirParents( $dstDir, null, __METHOD__ ) ) {
 				$this->errors[] = new WebStoreError( 'webstore_dest_mkdir', $dstDir );
 				$success = false;
 				break;
