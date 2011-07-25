@@ -195,6 +195,7 @@ $messages['lb'] = array(
 	'ratings-desc' => 'Erméiglecht et Benotzer fir verschidden "Eegeschaften" vu Säiten ze bewäerten',
 	'right-rate' => 'Bestëmmten Eegeschafte vun enger Säit bewäerten',
 	'ratings-par-page' => "D'Säit op déi sech d'Bewäertung bezitt.",
+	'ratings-par-tag' => 'De Bewäertungs-Tag. Den Tag gëtt u watfir eng "Eegeschaft" vun der Säit bewäert gëtt.',
 	'ratings-par-showdisabled' => 'Bewäertunge weisen wann de Benotzer net mat ofstëmme kann (Read-Only Modus)',
 	'ratings-current-score' => 'Aktuell Benotzerbewäertung: $1 ($2 {{PLURAL:$2|Bewäertung|Bewäertungen}})',
 	'ratings-no-votes-yet' => 'Et huet nach keen dëst bewäert.',
@@ -236,19 +237,20 @@ De huidige waardering van gebruikers wordt weergegeven als er al gewaardeerd is.
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'ratings-desc' => 'A përmëtt a j\'utent ëd valuté "propietà" diferente dle pagine',
-	'ratings-starsratings-desc' => "A mosta un control ëd valutassion sempi dë stèile an përmëttend a l'utent ëd valuté na serta propietà ëd na pagina.
-Ël vot corent ëd l'utent a sarà visualisà inissialment quand ch'a l'ha già votà.",
-	'ratings-par-page' => "La pagina ch'a l'é valutà.",
-	'ratings-par-tag' => 'La tichëtta ëd valutassion. La tichëtta a indica che "propietà" dla pagina a l\'é valutà.',
-	'ratings-par-showdisabled' => "Mosta valutassion quand l'utent a peul pa voté (mach an letura).",
-	'ratings-par-incsummary' => "Mosté un somari dij vot corent sota l'element an valutassion?",
-	'ratings-votesummary-desc' => 'A mosta un curt somari dij vot për la pagina specificà e le cobie ëd propietà.',
+	'ratings-desc' => 'A përmët a j\'utent ëd valuté "propietà" diferente dle pàgine',
+	'ratings-starsratings-desc' => "A smon un contròl ëd valutassion sempi an stèile an përmëttend a l'utent ëd valuté na serta propietà ëd na pàgina.
+Ël vot atual ëd l'utent a sarà visualisà inissialment quand ch'a l'ha già votà.",
+	'ratings-par-page' => "La pàgina ch'a l'é valutà.",
+	'ratings-par-tag' => 'La tichëtta ëd valutassion. La tichëtta a mòstra che "propietà" dla pàgina a l\'é valutà.',
+	'ratings-par-showdisabled' => "Smon-e le valutassion quand l'utent a peul pa voté (mach an letura).",
+	'ratings-par-incsummary' => "Mostré un resumé dij vot atuaj dzora a l'element an valutassion?",
+	'ratings-votesummary-desc' => 'A mostra un curt resumé dij vot për la pàgina e la cobia ëd propietà spessificà.',
 	'ratings-current-score' => "Valutassion corenta dl'utent: $1 ($2 {{PLURAL:$2|valutassion|valutassion}})",
-	'ratings-no-votes-yet' => "Pa gnun a l'ha anco' valutà son-sì.",
+	'ratings-no-votes-yet' => "Pa gnun a l'ha anco' valutà sossì.",
 );
 
 /** Portuguese (Português)
