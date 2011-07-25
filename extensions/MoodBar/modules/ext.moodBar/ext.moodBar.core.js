@@ -238,14 +238,18 @@
 		},
 
 		swapContent: function( tpl ) {
-			var msgOptions = {
-				keys: {
-					INTROTITLE: 'moodbar-intro-' + mb.conf.bucketKey
-				},
-				params: {
-					INTROTITLE: [mw.config.get( 'wgSiteName' )]
-				}
-			};
+			var	sitenameParams = [mw.config.get( 'wgSiteName' )], // Cache common params
+				msgOptions = {
+					keys: {
+						INTROTITLE: 'moodbar-intro-' + mb.conf.bucketKey
+					},
+					params: {
+						INTROTITLE: sitenameParams,
+						'moodbar-loading-subtitle': sitenameParams,
+						'moodbar-success-subtitle': sitenameParams,
+						'moodbar-error-subtitle': sitenameParams
+					}
+				};
 
 			mb.ui.overlay
 				.find( '.mw-moodBar-overlayContent' )

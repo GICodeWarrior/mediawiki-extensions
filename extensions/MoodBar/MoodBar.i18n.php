@@ -50,7 +50,7 @@ For more information, please visit the $1.',
 	'moodbar-success-title' => 'Thanks!',
 	'moodbar-error-title' => 'Oops!',
 	'moodbar-loading-subtitle' => 'We are sharing your feedback…',
-	'moodbar-success-subtitle' => 'Sharing your mood helps us make Wikipedia better.',
+	'moodbar-success-subtitle' => 'Sharing your editing experience helps us improve $1.',
 	'moodbar-error-subtitle' => 'Something went wrong! Please try sharing your mood again later.',
 	// Special:MoodBar
 	'right-moodbar-view' => 'View and export MoodBar feedback',
@@ -111,6 +111,12 @@ See also:
 
 See also:
 * {{msg|moodbar-form-policy-text}}',
+	'moodbar-loading-title' => 'Title of the screen when the widget is loading.',
+	'moodbar-success-title' => 'Title of the screen after the feedback was successfullyully submitted.',
+	'moodbar-error-title' => 'Title of the screen when after an error occurred and submission aborted.',
+	'moodbar-loading-subtitle' => 'Subtitle of Loading-screen. $1 is the SITENAME',
+	'moodbar-success-subtitle' => 'Subtitle of screen when feedback was successfullyully submitted. $1 is the SITENAME',
+	'moodbar-error-subtitle' => 'Subtitle of screen when an error occurred. $1 is the SITENAME',
 );
 
 /** Message documentation (Message documentation)
