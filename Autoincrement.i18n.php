@@ -293,7 +293,7 @@ $messages['ms'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
-	'autoincrement-desc' => 'Voeg een variabele <nowiki>{{AUTOINCREMENT}}</nowiki> toe dee autematisch op-ehoog wönnen',
+	'autoincrement-desc' => 'Zet der een variabele <nowiki>{{AUTOINCREMENT}}</nowiki> bie die automaties op-eheugt wörden',
 );
 
 /** Dutch (Nederlands)
