@@ -27,6 +27,8 @@ $wgExtensionCredits['parserhook'][] = array(
 
 /**
  * Register hook function
+ *
+ * @param $parser Parser
  */
 function efSortSetHook( $parser ) {
 	$parser->setHook( 'sort', 'efRenderSort' );
