@@ -315,7 +315,7 @@ $messages['nds'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
-	'emailaddressimage-desc' => 'Voeg <code>&lt;email&gt;</code> toe um een netposadres as ofbeelding te laoten zien',
+	'emailaddressimage-desc' => 'Zet <code>&lt;email&gt;</code> derbie um een netpostadres as aofbeelding te laoten zien',
 );
 
 /** Dutch (Nederlands)
