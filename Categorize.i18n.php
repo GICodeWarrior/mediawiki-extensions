@@ -126,3 +126,10 @@ $messages['pt'] = array(
 	'categorize-advice' => 'Clique as categorias que pretende atribuir a esta página:',
 );
 
+/** Ukrainian (Українська)
+ * @author Microcell
+ */
+$messages['uk'] = array(
+	'categorize-title' => 'Кваліфікація знань',
+);
+
