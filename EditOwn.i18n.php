@@ -331,7 +331,7 @@ $messages['nds'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
-	'editown-desc' => "Gebrukers zonder 't rech ''editall'' kunnen allinnig pagina's bewarken dee ze zelf emaak hemmen",
+	'editown-desc' => "Gebrukers zonder t recht ''editall'' kunnen allenig pagina's bewarken die ze zelf emaakt hebben",
 );
 
 /** Dutch (Nederlands)
