@@ -128,9 +128,17 @@ int main(int argc, char **argv) {
 			char *substring_start = in_buff->url + ovector[2*i];
 			int substring_length = ovector[2*i+1] - ovector[2*i];
 			if (i == 1) {
-				sprintf(lang, "%.*s", substring_length, substring_start);
+				if (substring_length >= sizeof(lang)) {
+					substring_length = sizeof(lang) - 2;
+				}
+				memcpy(lang, substring_start, substring_length);
+				lang[substring_length] = '\0';
 			} else if (i == 2) {
-				sprintf(path, "%.*s", substring_length, substring_start);
+				if (substring_length >= MAX_BUFF) {
+					substring_length = MAX_BUFF - 2;
+				}
+				memcpy(path, substring_start, substring_length);
+				path[substring_length] = '\0';
 			}
 		}
 
