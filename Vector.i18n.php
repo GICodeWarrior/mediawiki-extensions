@@ -1191,11 +1191,11 @@ $messages['nah'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
-	'vector-collapsiblenav-preference' => "Inklapbaor navigasiemenu inschakelen bie 't gebruuk van Vector",
+	'vector-collapsiblenav-preference' => 'Inklapbaor navigasiemenu inschakelen bie t gebruuk van Vector',
 	'vector-collapsiblenav-more' => 'Meer talen',
-	'vector-editwarning-warning' => 'A-j disse pagina ofsluten dan kan \'t ween dat der wieziging dee-j emaak hemmen kwiet raken.
-A-j an-emeld bin, dan ku-j disse waorschuwing uutzetten in \'t tabblad "Bewarken" in joew veurkeuren.',
-	'vector-editwarning-preference' => 'Waorschuw mien a-k een bewörken pagina of wil sluten dee-j nog neet op-esleugen is',
+	'vector-editwarning-warning' => "A'j disse pagina aofsluten dan kan t ween dat der wieziging die'j emaakt hebben kwiet raken.
+A'j an-emeld bin, dan ku'j disse waorschuwing uutzetten in t tabblad \"Bewarken\" in joew veurkeuren.",
+	'vector-editwarning-preference' => "Waorschuw mien a'k een bewörken pagina of wil sluten die'j nog niet op-esleugen is",
 	'vector-simplesearch-search' => 'Zeuken',
 	'vector-simplesearch-containing' => 'bevat...',
 );
