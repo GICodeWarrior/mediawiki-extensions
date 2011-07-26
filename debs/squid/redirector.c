@@ -54,8 +54,7 @@ int main(int argc, char **argv) {
 	char buff[MAX_BUFF];
 	setbuf(stdout, NULL);
 
-	struct IN_BUFF *in_buff = NULL;
-	in_buff = (struct IN_BUFF *)malloc(sizeof(struct IN_BUFF));
+	struct IN_BUFF in_buff;
 	pattern = "^http:\\/\\/(\\w+)\\.wikipedia\\.org[:\\d]*\\/(.*)";
 	pcre_extra *pe;
 
@@ -81,17 +80,17 @@ int main(int argc, char **argv) {
 
 	while(fgets(buff, MAX_BUFF, stdin) != NULL) {
 
-		if (load_in_buff(buff, in_buff) != 0) {
+		if (load_in_buff(buff, &in_buff) != 0) {
 			fprintf(stderr, "Error loading data %s\n", buff);
 			continue;
 		}
 
-		subject_length = (int)strlen(in_buff->url);
+		subject_length = (int)strlen(in_buff.url);
 
 		rc = pcre_exec(
 				re,                   /* the compiled pattern */
 				pe,                   /* no extra data - we didn't study the pattern */
-				in_buff->url,         /* the subject string */
+				in_buff.url,         /* the subject string */
 				subject_length,       /* the length of the subject */
 				0,                    /* start at offset 0 in the subject */
 				0,                    /* default options */
@@ -101,7 +100,7 @@ int main(int argc, char **argv) {
 		if (rc < 0) {
 			switch(rc) {
 				case PCRE_ERROR_NOMATCH:
-					printf("%s\n", in_buff->url);
+					printf("%s\n", in_buff.url);
 					fflush(stdout);
 					
 					break;
@@ -117,7 +116,7 @@ int main(int argc, char **argv) {
 
 		for (i = 0; i < rc; i++) {
 
-			char *substring_start = in_buff->url + ovector[2*i];
+			char *substring_start = in_buff.url + ovector[2*i];
 			int substring_length = ovector[2*i+1] - ovector[2*i];
 			if (i == 1) {
 				if (substring_length >= sizeof(lang)) {
