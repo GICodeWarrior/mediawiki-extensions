@@ -1,20 +1,30 @@
 <?php
+/**
+ * Internationalisation file for Collaborative watchlist extension.
+ *
+ * @file
+ * @ingroup Extensions
+ */
+ 
 $messages = array();
 
+/** English
+ * @author Florian Hackenberger
+ */
 $messages['en'] = array(
 	'collabwatchlist' => 'Collaborative watchlist',
+	'collabwatchlist-desc' => 'Provides collaborative watchlists based on categories',
 	'specialcollabwatchlist' => 'Collaborative watchlist special page',
-	'specialcollabwatchlist-desc' => 'Collaborative watchlist special page description',
 	'collabwatchlist-details'    => '{{PLURAL:$1|$1 category/page|$1 categories/pages}} on this collaborative watchlist.',
 	'collabwatchlisttagselect' => 'Tag',
 	'collabwatchlisttagcomment' => 'Comment',
 	'collabwatchlistsettagbutton' => 'Set tag',
 	'collabwatchlist-unset-tag' => 'x',
 	'collabwatchlisttools-view' => 'Display',
-	'collabwatchlisttools-edit' => 'Edit Categories',
-	'collabwatchlisttools-rawCategories' => 'Raw Edit Categories',
-	'collabwatchlisttools-rawTags' => 'Raw Edit Tags',
-	'collabwatchlisttools-rawUsers' => 'Raw Edit Users',
+	'collabwatchlisttools-edit' => 'Edit categories',
+	'collabwatchlisttools-rawCategories' => 'Raw edit categories',
+	'collabwatchlisttools-rawTags' => 'Raw edit tags',
+	'collabwatchlisttools-rawUsers' => 'Raw edit users',
 	'collabwatchlisttools-delete' => 'Delete',
 	'collabwatchlistsall' => 'All lists',
 	'collabwatchlistfiltertags' => 'Filter tags',
@@ -65,11 +75,14 @@ $messages['en'] = array(
 	'collabwatchlistedit-raw-done' => 'The collaborative watchlist has been updated',
 	'collabwatchlistedit-raw-added' => '{{PLURAL:$1|1 page/category was|$1 pages/categories were}} added:',
 	'collabwatchlistedit-raw-removed' => '{{PLURAL:$1|1 page/category was|$1 pages/categories were}} removed',
-	'collabwatchlistedit-normal-submit' => 'Speichern',
+	'collabwatchlistedit-normal-submit' => 'Save',
 	'collabwatchlistshowhidelistusers' => '$1 list users',
 	'tog-collabwatchlisthidelistusers' => 'Hide edits from collaborative watchlist users',
 );
 
+/** English
+ * @author Florian Hackenberger
+ */
 $messages['de'] = array(
 	'collabwatchlist' => 'Kollaborative Beobachtungsliste',
 	'specialcollabwatchlist' => 'Kollaborative Beobachtungsliste Spezialseite',
@@ -138,3 +151,4 @@ $messages['de'] = array(
 	'collabwatchlistshowhidelistusers' => 'Listenbenutzer $1',
 	'tog-collabwatchlisthidelistusers' => 'Bearbeitungen von Benutzern der kollaborativen Beobachtungsliste ausblenden',
 );
+
