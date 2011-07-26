@@ -30,9 +30,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name'        => 'TreeAndMenu',
 	'author'      => array( '[http://www.organicdesign.co.nz/User:Nad Nad]', '[http://www.organicdesign.co.nz/User:Sven Sven]' ),
 	'url'         => 'http://www.mediawiki.org/wiki/Extension:TreeAndMenu',
-	'description' => 'Adds #tree and #menu parser functions which contain bullet-lists to be rendered as collapsible treeview\'s or dropdown menus.
-	                  The treeview\'s use the [http://www.destroydrop.com/javascripts/tree dTree] JavaScript tree menu,
-	                  and the dropdown menu\'s use [http://www.htmldog.com/articles/suckerfish/dropdowns/ Son of Suckerfish]',
+	'descriptionmsg' => 'treeandmenu-desc',
 	'version'     => TREEANDMENU_VERSION
 );
 
