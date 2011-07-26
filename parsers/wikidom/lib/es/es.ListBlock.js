@@ -116,7 +116,9 @@ es.ListBlock.prototype.getWordBoundaries = function( offset ) {
 };
 
 es.ListBlock.prototype.getSectionBoundaries = function( offset ) {
-	return new es.Range( 0, this.getLength() );
+	var location = this.list.getLocationFromOffset( offset ),
+		start = offset - location.offset;
+	return new es.Range( start, start + location.item.content.getLength() );
 };
 
 es.Block.models['list'] = es.ListBlock;
