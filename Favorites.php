@@ -21,7 +21,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'name' => 'Favorites',
 	'author' => 'Jeremy Lemley',
-	'description' => 'A method of creating a favorites list',
+	'descriptionmsg' => 'favorites-desc',
 	'version' => '0.0.2',
 	'url' => "http://www.mediawiki.org/wiki/Extension:Favorites",
 );
