@@ -1,9 +1,35 @@
 <?php
+/**
+ * Implements Special:CollabWatchlist
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
+ * @ingroup SpecialPage CollabWatchlist
+ */
 class SpecialCollabWatchlist extends SpecialPage {
 	function __construct() {
 		parent::__construct( 'CollabWatchlist' );
 	}
 
+	/**
+	 * Main execution point
+	 *
+	 * @param $par Parameter passed to the page
+	 */
 	function execute( $par ) {
 		global $wgUser, $wgOut, $wgLang, $wgRequest;
 		global $wgRCShowWatchingUsers;
@@ -433,8 +459,14 @@ class SpecialCollabWatchlist extends SpecialPage {
 
 		return wfMsgHtml( $message, $skin->linkKnown( $title, $label, array(), $options ) );
 	}
-
-
+	
+	/**
+	 * Creates a link for the days query parameter with hours
+	 * @param $h The number of hours
+	 * @param $page String: The name of the target page for the link
+	 * @param $options Mixed: Additional query parameters
+	 * @return String: Html for the link
+	 */
 	function wlHoursLink( $h, $page, $options = array() ) {
 		global $wgUser, $wgLang, $wgContLang;
 
@@ -452,6 +484,13 @@ class SpecialCollabWatchlist extends SpecialPage {
 		return $s;
 	}
 
+	/**
+	 * Creates a link for the days query parameter with days
+	 * @param $d The number of days
+	 * @param $page String: The name of the target page for the link
+	 * @param $options Mixed: Additional query parameters
+	 * @return String: Html for the link
+	 */
 	function wlDaysLink( $d, $page, $options = array() ) {
 		global $wgUser, $wgLang, $wgContLang;
 
@@ -559,6 +598,16 @@ class SpecialCollabWatchlist extends SpecialPage {
 		return $tags;
 	}
 
+	/**
+	 * Constructs the filter SQL clause for the given collaborative watchlist ids.
+	 * It filters entries which are not relevant for the given watchlists. I.e.
+	 * entries which don't belong to a category and are not listed explicitly as a 
+	 * page for one of the given watchlists.
+	 * @param $rl_ids Array: A list of collaborative watchlist ids
+	 * @param $catNameCol String: The name of the column containing category names
+	 * @param $pageIdCol String: The name of the column containing page ids
+	 * @return String: An SQL clause usable in the conditions parameter of $db->select()
+	 */
 	function wlGetFilterClauseForCollabWatchlistIds( $rl_ids, $catNameCol, $pageIdCol ) {
 		$excludedCatPageIds = array();
 		$includedCatPageIds = array();
@@ -583,7 +632,7 @@ class SpecialCollabWatchlist extends SpecialPage {
 				$includedPageIds[$row->cat_page_id] = $row->page_title;
 			}
 		}
-
+		
 		if ( $includedCatPageIds ) {
 			$catTree = new CategoryTreeManip();
 			$catTree->initialiseFromCategoryNames( array_values( $includedCatPageIds ) );
@@ -601,7 +650,13 @@ class SpecialCollabWatchlist extends SpecialPage {
 		}
 		return $collabWatchlistClause;
 	}
-
+	
+	/**
+	 * Constructs the user filter SQL clause for the given collaborative watchlist ids.
+	 * It filters entries from the users of the given watchlists.
+	 * @param $rl_ids Array: A list of collaborative watchlist ids
+	 * @return String: An SQL clause usable in the conditions parameter of $db->select()
+	 */
 	function wlGetFilterClauseListUser( $rl_id ) {
 		$excludedUserIds = array();
 		$dbr = wfGetDB( DB_SLAVE );
@@ -620,6 +675,12 @@ class SpecialCollabWatchlist extends SpecialPage {
 		return $clause;
 	}
 
+	/**
+	 * Runs $db->addQuotes() for each of the strings
+	 * @param $db Database: The db object to use
+	 * @param $strings Array: A list of strings to quote
+	 * @return Array: The $strings quoted by $db->addQuotes()
+	 */	
 	public static function addQuotes( $db, $strings ) {
 		$result = array();
 		foreach ( $strings as $string ) {

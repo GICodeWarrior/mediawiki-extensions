@@ -66,7 +66,7 @@ class CollabWatchlistEditor {
 						$toWatch = array_diff( $wanted, $current );
 						$toUnwatch = array_diff( $current, $wanted );
 						$toWatch = $this->watchTitles( $toWatch, $rlId );
-						$this->unwatchTitles( $toUnwatch, $rlId );
+						$this->unwatchTitles( $toUnwatch, $rlId, $wgUser );
 						if ( count( $toWatch ) > 0 || count( $toUnwatch ) > 0 )
 							$output->addHTML( wfMsgExt( 'collabwatchlistedit-raw-done', 'parse' ) );
 						if ( ( $count = count( $toWatch ) ) > 0 ) {
@@ -168,7 +168,7 @@ class CollabWatchlistEditor {
 						break;
 					}
 					$titles = $this->extractCollabWatchlistCategories( $request->getArray( 'titles' ) );
-					$this->unwatchTitles( $titles, $rlId );
+					$this->unwatchTitles( $titles, $rlId, $wgUser );
 					$output->addHTML( wfMsgExt( 'collabwatchlistedit-normal-done', 'parse',
 						$GLOBALS['wgLang']->formatNum( count( $titles ) ) ) );
 					$this->showTitles( $titles, $output, $wgUser->getSkin() );
@@ -863,7 +863,7 @@ class CollabWatchlistEditor {
 	 * @param $titles An array of strings
 	 * @param $rlId The id of the collaborative watchlist
 	 */
-	private function unwatchTitles( $titles, $rlId ) {
+	private function unwatchTitles( $titles, $rlId, $user ) {
 		$dbw = wfGetDB( DB_MASTER );
 		foreach ( $titles as $title ) {
 			$subtract = false;
