@@ -14,7 +14,7 @@
 
 if ( !defined( 'MEDIAWIKI' ) ) die( 'Not an entry point.' );
 
-define( 'TREEANDMENU_VERSION','1.2.2, 2011-07-08' );
+define( 'TREEANDMENU_VERSION','1.2.3, 2011-07-26' );
 
 # Set any unset images to default titles
 if ( !isset( $wgTreeViewImages ) || !is_array( $wgTreeViewImages ) ) $wgTreeViewImages = array();
@@ -264,11 +264,8 @@ class TreeAndMenu {
 		$text = preg_replace( "/\x7f1$u\x7f.+?[\\r\\n]+/m", '', $text ); # Remove all unreplaced row information
 
 		# Add the dTRee script if not loaded yet
-		if( !$this->js++ ) {
-			$script = "<script type=\"$wgJsMimeType\" src=\"{$this->baseUrl}/dtree.js\"></script>";
-			if( method_exists( $wgOut, 'addModules' ) ) $wgOut->addHtml( $script );
-			else $wgOut->addScript( $script );
-		}
+		if( !$this->js++ ) $text = "<script type=\"$wgJsMimeType\" src=\"{$this->baseUrl}/dtree.js\"></script>\n$text";
+
 		return true;
 	}
  
