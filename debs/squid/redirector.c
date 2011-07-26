@@ -46,13 +46,11 @@ int main(int argc, char **argv) {
 	pcre *re;
 	const char *error;
 	char *pattern;
-	unsigned char *name_table;
 	int erroffset;
 	int ovector[OVECCOUNT];
 	int subject_length;
 	int rc, i;
 	char buff[MAX_BUFF];
-	setbuf(stdout, NULL);
 
 	struct IN_BUFF in_buff;
 	pattern = "^http:\\/\\/(\\w+)\\.wikipedia\\.org[:\\d]*\\/(.*)";
@@ -68,6 +66,7 @@ int main(int argc, char **argv) {
 
 	/* make standard output line buffered */
 	//setvbuf(stdout, NULL, _IOLBF, 0);
+	setbuf(stdout, NULL);
 	
 	re = pcre_compile(
 				pattern,              /* the pattern */
