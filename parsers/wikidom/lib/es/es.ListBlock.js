@@ -115,6 +115,10 @@ es.ListBlock.prototype.getWordBoundaries = function( offset ) {
 	return boundaries;
 };
 
+es.ListBlock.prototype.getSectionBoundaries = function( offset ) {
+	return new es.Range( 0, this.getLength() );
+};
+
 es.Block.models['list'] = es.ListBlock;
 
 es.extend( es.ListBlock, es.Block );
