@@ -5,18 +5,19 @@
  * @addtogroup Extensions
  */
 
-$aliases = array();
+$specialPageAliases = array();
 
 /** English
- * @author Aaron Schulz
+ * @author Florian Hackenberger
  */
-$aliases['en'] = array(
-	'Collabwatchlist' => array( 'Collaborative watchlist' ),
+$specialPageAliases['en'] = array(
+	'Collabwatchlist' => array( 'CollaborativeWatchlist' ),
 );
 
 /** German (Deutsch)
- * @author Raimond Spekking
+ * @author Florian Hackenberger
  */
-$aliases['de'] = array(
-	'Collabwatchlist' => array( 'Kollaborative Beobachtungsliste' ),
+$specialPageAliases['de'] = array(
+	'Collabwatchlist' => array( 'Kollaborative_Beobachtungsliste' ),
 );
+

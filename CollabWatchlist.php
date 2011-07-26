@@ -10,11 +10,11 @@ EOT;
 
 
 $wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
 	'name' => 'CollabWatchlist',
 	'author' => 'Florian Hackenberger',
 	'url' => 'http://www.mediawiki.org/wiki/User:Flohack',
-	'description' => 'Provides collaborative watchlists based on categories',
-	'descriptionmsg' => 'specialcollabwatchlist-desc',
+	'descriptionmsg' => 'collabwatchlist-desc',
 	'version' => '0.9.0',
 );
 
