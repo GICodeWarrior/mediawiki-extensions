@@ -1,3 +1,13 @@
+/* 
+ *
+ * Squid Redirect Helper - reads from stdin, outputs 302 to $1.m.wikipedia.org/$2 
+ * if original matches "^http:\\/\\/(\\w+)\\.wikipedia\\.org[:\\d]*\\/(.*)" 
+ * A new base url in place of m.wikiedpia.org may be provided as the only argument. 
+ *
+ * To compile: gcc -O3 -o redirector -lpcre redirector.c
+ *
+ */
+
 #include <stdio.h>
 #include<stdlib.h>
 #include<string.h>
