@@ -14,3 +14,11 @@ $messages['en'] = array(
 The treeview's use the [http://www.destroydrop.com/javascripts/tree dTree] JavaScript tree menu, and the dropdown menu's use [http://www.htmldog.com/articles/suckerfish/dropdowns/ Son of Suckerfish]",
 );
 
+/** German (Deutsch)
+ * @author Kghbln
+ */
+$messages['de'] = array(
+	'treeandmenu-desc' => 'Fügt die Parserfunktionen <code><nowiki>#tree</nowiki></code> und <code><nowiki>#menu</nowiki></code> hinzu, die Aufzählungslisten in Form einer Baumansicht ein- und ausklappbar machen oder als Aufklappmenü darstellen können.
+Die Baumansicht nutzt hierzu [http://www.destroydrop.com/javascripts/tree dTree] sowie das Aufklappmenü [http://www.htmldog.com/articles/suckerfish/dropdowns/ Son of Suckerfish]',
+);
+
