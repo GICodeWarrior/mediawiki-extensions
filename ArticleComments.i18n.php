@@ -1958,6 +1958,27 @@ $messages['uk'] = array(
 	'processcomment' => 'Переглянути коментарі до матеріалу',
 );
 
+/** Urdu (اردو)
+ * @author محبوب عالم
+ */
+$messages['ur'] = array(
+	'article-comments-title-string' => 'عنوان',
+	'article-comments-name-string' => 'نام',
+	'article-comments-name-field' => 'نام (ضروری):',
+	'article-comments-comment-string' => 'تبصرہ',
+	'article-comments-comment-field' => 'تبصرہ:',
+	'article-comments-submit-button' => 'بھیجو',
+	'article-comments-leave-comment-link' => 'تبصرہ چھوڑئیے ۔۔۔',
+	'article-comments-required-field' => '"$1" ضروری ہے۔',
+	'article-comments-submission-failed' => 'تبصرہ بھیجنا ناکام',
+	'article-comments-failure-reasons' => 'معذرت، آپ کا تبصرہ درج ذیل {{PLURAL:$1|وجہ|وجوہات}} کی بناء پر نہیں بھیجا جاسکا:',
+	'article-comments-no-comments' => 'معذرت، صفحہ "[[$1]]" فی الحال تبصرے قبول نہیں کررہا۔',
+	'article-comments-commenter-said' => '$1 نے کہا ...',
+	'article-comments-submission-succeeded' => 'تبصرہ کامیابی سے بھیج دیا گیا',
+	'article-comments-submission-success' => 'آپ نے "[[$1]]" کیلئے تبصرہ کامیابی سے بھیج دیا',
+	'article-comments-user-is-blocked' => 'آپ کا کھاتا فی الحال "[[$1]]" میں تدوین کرنے سے ممنوع ہے۔',
+);
+
 /** Yiddish (ייִדיש)
  * @author פוילישער
  */
