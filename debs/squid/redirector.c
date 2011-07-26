@@ -75,6 +75,11 @@ int main(int argc, char **argv) {
 				&erroffset,           /* for error offset */
 				NULL);                /* use default character tables */
 
+	if (!re) {
+		fprintf(stderr, "pcre_compile failed at offset %d: %s\n", erroffset, error);
+		exit(1);
+	}
+	
 	pe = pcre_study(re, 0,  &error);
 
 	while(fgets(buff, MAX_BUFF, stdin) != NULL) {
