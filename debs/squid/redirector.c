@@ -3,7 +3,7 @@
 #include<string.h>
 #include <pcre.h>
 
-#define MAX_BUFF 4096
+#define MAX_BUFF 8256
 #define OVECCOUNT 30    /* should be a multiple of 3 */
 
 struct IN_BUFF {
