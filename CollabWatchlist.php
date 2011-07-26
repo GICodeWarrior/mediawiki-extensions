@@ -36,15 +36,30 @@ $wgHooks['LoadExtensionSchemaUpdates'][] = 'fnCollabWatchlistDbSchema';
 $wgHooks['GetPreferences'][] = 'fnCollabWatchlistPreferences';
 
 function fnCollabWatchlistDbSchema() {
-    global $wgExtNewTables;
-    $wgSql = dirname( __FILE__ ) . '/sql/';
-    $wgExtNewTables[] = array( 'collabwatchlist',  $wgSql . 'collabwatchlist.sql' );
-    $wgExtNewTables[] = array( 'collabwatchlistuser',  $wgSql . 'collabwatchlistuser.sql' );
-    $wgExtNewTables[] = array( 'collabwatchlistcategory',  $wgSql . 'collabwatchlistcategory.sql' );
-    $wgExtNewTables[] = array( 'collabwatchlistrevisiontag', $wgSql . 'collabwatchlistrevisiontag.sql' );
-    $wgExtNewTables[] = array( 'collabwatchlisttag', $wgSql . 'collabwatchlisttag.sql' );
-    $wgExtNewFields[] = array( 'change_tag', 'ct_id', $wgSql . 'patch-change_tag_id.sql' );
-    return true;
+	$wgSql = dirname(__FILE__) . '/sql/';
+	if ( $updater === null ) { // <= 1.16 support
+		global $wgExtNewTables;
+		$wgExtNewTables[] = array('collabwatchlist',  $wgSql . 'collabwatchlist.sql');
+		$wgExtNewTables[] = array('collabwatchlistuser',  $wgSql . 'collabwatchlistuser.sql');
+		$wgExtNewTables[] = array('collabwatchlistcategory',  $wgSql . 'collabwatchlistcategory.sql');
+		$wgExtNewTables[] = array('collabwatchlistrevisiontag', $wgSql . 'collabwatchlistrevisiontag.sql');
+		$wgExtNewTables[] = array('collabwatchlisttag', $wgSql . 'collabwatchlisttag.sql');
+		$wgExtNewFields[] = array('change_tag', 'ct_id', $wgSql . 'patch-change_tag_id.sql');
+	} else { // >= 1.17 support
+		$updater->addExtensionUpdate( array ( 'addTable', 'collabwatchlist',
+			$wgSql . 'collabwatchlist.sql', true ) );
+		$updater->addExtensionUpdate( array ( 'addTable', 'collabwatchlistuser',
+			$wgSql . 'collabwatchlistuser.sql', true ) );
+		$updater->addExtensionUpdate( array ( 'addTable', 'collabwatchlistcategory',
+			$wgSql . 'collabwatchlistcategory.sql', true ) );
+		$updater->addExtensionUpdate( array ( 'addTable', 'collabwatchlistrevisiontag',
+			$wgSql . 'collabwatchlistrevisiontag.sql', true ) );
+		$updater->addExtensionUpdate( array ( 'addTable', 'collabwatchlisttag',
+			$wgSql . 'collabwatchlisttag.sql', true ) );
+		$updater->addExtensionUpdate( array( 'modifyField', 'change_tag', 'ct_id',
+			$wgSql . 'patch-change_tag_id.sql', true ) );
+	}
+	return true;
 }
 
 function fnCollabWatchlistPreferences( $user, &$preferences ) {
