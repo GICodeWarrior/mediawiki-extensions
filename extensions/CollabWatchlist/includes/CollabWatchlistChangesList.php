@@ -106,7 +106,7 @@ class CollabWatchlistChangesList extends EnhancedChangesList {
 	 */
 	public static function newFromUser( &$user ) {
 		$sk = $user->getSkin();
-		$list = NULL;
+		$list = null;
 		if ( wfRunHooks( 'FetchChangesList', array( &$user, &$sk, &$list ) ) ) {
 			return new CollabWatchlistChangesList( $sk, $user );
 		} else {
@@ -130,7 +130,7 @@ class CollabWatchlistChangesList extends EnhancedChangesList {
 	 * (non-PHPdoc)
 	 * @see includes/EnhancedChangesList#insertHistLink($s, $rc, $title, $params, $sep)
 	 */
-	protected function insertHistLink( &$s, &$rc, $title, $params = array(), $sep = NULL ) {
+	protected function insertHistLink( &$s, &$rc, $title, $params = array(), $sep = null ) {
 		// No history
 	}
 
@@ -218,7 +218,7 @@ class CollabWatchlistChangesList extends EnhancedChangesList {
 	/**
 	 * Build a drop-down box for selecting a collaborative watchlist
 	 * This method optionally adds javascript for changing a tag selector
-	 * depending on the selected review list
+	 * depending on the selected review list.
 	 *
 	 * @param $glWlIdAndName Mixed: The result from getCollabWatchlistIdAndName()
 	 * @param $selected Mixed: Reviewlist which should be pre-selected
@@ -230,18 +230,9 @@ class CollabWatchlistChangesList extends EnhancedChangesList {
 	 * @return string
 	 */
 	public static function collabWatchlistSelector( $glWlIdAndName, $selected = '', $all = null, $element_name = 'collabwatchlist', $label = null, $element_id = 'collabwatchlist', $tagElementIdBase = null ) {
-		global $wgScriptPath, $wgJsMimeType;
+		global $wgOut;
+		$wgOut->addModules( 'ext.CollabWatchlist' );
 		$ret = '';
-		if ( isset( $tagElementIdBase ) ) {
-			$jsPath = "$wgScriptPath/extensions/CollabWatchlist/js";
-			$ret .= Xml::element( 'script',
-				array(
-					'type' => $wgJsMimeType,
-					'src' => "$jsPath/CollabWatchlist.js",
-				),
-				'', false
-			);
-		}
 		$options = array();
 
 		// Godawful hack... we'll be frequently passed selected namespaces

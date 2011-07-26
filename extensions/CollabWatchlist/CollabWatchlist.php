@@ -29,6 +29,16 @@ $wgAutoloadClasses['CollabWatchlistChangesList'] = $wgCollabWatchlistIncludes . 
 $wgAutoloadClasses['CategoryTreeManip'] = $wgCollabWatchlistIncludes . 'CategoryTreeManip.php';
 $wgAutoloadClasses['CollabWatchlistEditor'] = $wgCollabWatchlistIncludes . 'CollabWatchlistEditor.php';
 
+$wgResourceModules['ext.CollabWatchlist'] = array(
+        'scripts' => array( 'js/CollabWatchlist.js' ),
+ 
+        // ResourceLoader needs to know where your files are; specify your
+        // subdir relative to "/extensions" (or $wgExtensionAssetsPath)
+        'localBasePath' => dirname( __FILE__ ),
+        'remoteExtPath' => 'CollabWatchlist',
+	'position' => 'top',
+);
+
 $wgSpecialPages['Collabwatchlist'] = 'SpecialCollabWatchlist'; # Let MediaWiki know about your new special page.
 $wgSpecialPageGroups['Collabwatchlist'] = 'other';
 

@@ -22,7 +22,7 @@ class CategoryTreeManip {
 	/**
 	 * Constructor
 	 */
-	function __construct( $id = NULL, $name = NULL, $root = NULL, $parents = array() ) {
+	function __construct( $id = null, $name = null, $root = null, $parents = array() ) {
 		$this->id = $id;
 		$this->name = $name;
 		if ( !is_null( $root ) ) {
