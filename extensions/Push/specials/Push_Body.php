@@ -26,7 +26,7 @@ class SpecialPush extends SpecialPage {
 	 * @see SpecialPage::getDescription
 	 */
 	public function getDescription() {
-		return wfMsg( 'special-' . strtolower( $this->mName ) );
+		return wfMsg( 'special-' . strtolower( $this->getName() ) );
 	}
 
 	/**
