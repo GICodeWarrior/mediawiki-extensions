@@ -107,6 +107,14 @@ es.ListBlock.prototype.deleteContent = function( start, end ) {
 	location.item.flow.content.remove( location.offset, location.offset + end - start );
 };
 
+es.ListBlock.prototype.getWordBoundaries = function( offset ) {
+	var location = this.list.getLocationFromOffset( offset );
+	var boundaries = location.item.flow.content.getWordBoundaries( location.offset );
+	boundaries.start += offset - location.offset; 
+	boundaries.end += offset - location.offset;
+	return boundaries;
+};
+
 es.Block.models['list'] = es.ListBlock;
 
 es.extend( es.ListBlock, es.Block );
