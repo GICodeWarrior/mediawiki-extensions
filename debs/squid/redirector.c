@@ -26,20 +26,20 @@ struct IN_BUFF {
 };
 
 int load_in_buff(char *buff, struct IN_BUFF *in_buff) {
-  in_buff->url = strtok(buff, " ");
-  in_buff->src_address = strtok(NULL, " ");
-  in_buff->ident= strtok(NULL, " ");
-  in_buff->method= strtok(NULL, " \n");;
-  
-  if (!in_buff->src_address || !in_buff->ident || !in_buff->method) {
-    return 1;
-  }
-  
-  if(strlen(in_buff->url) <= 4) {
-    return 1;
-  }
+	in_buff->url = strtok(buff, " ");
+	in_buff->src_address = strtok(NULL, " ");
+	in_buff->ident= strtok(NULL, " ");
+	in_buff->method= strtok(NULL, " \n");;
 
-  return 0;
+	if (!in_buff->src_address || !in_buff->ident || !in_buff->method) {
+		return 1;
+	}
+  
+	if(strlen(in_buff->url) <= 4) {
+		return 1;
+	}
+
+	return 0;
 }
 
 int main(int argc, char **argv) {
@@ -66,7 +66,7 @@ int main(int argc, char **argv) {
 		sprintf(replacement_url, replacement_url_pattern, command_line_url);	
 	}
 
-    	/* make standard output line buffered */
+	/* make standard output line buffered */
 	//setvbuf(stdout, NULL, _IOLBF, 0);
 	
 	re = pcre_compile(
