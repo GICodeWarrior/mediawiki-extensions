@@ -46,7 +46,7 @@ class RandomExcludeBlank extends RandomPage {
 
 		if( is_null( $title ) ) {
 			$this->setHeaders();
-			$wgOut->addWikiMsg( strtolower( $this->mName ) . '-nopages',  $wgContLang->getNsText( $this->namespace ) );
+			$wgOut->addWikiMsg( strtolower( $this->getName() ) . '-nopages',  $wgContLang->getNsText( $this->namespace ) );
 			return;
 		}
 
