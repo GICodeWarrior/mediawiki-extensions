@@ -2,15 +2,15 @@
  *
  * Squid Redirect Helper - reads from stdin, outputs 302 to $1.m.wikipedia.org/$2 
  * if original matches "^http:\\/\\/(\\w+)\\.wikipedia\\.org[:\\d]*\\/(.*)" 
- * A new base url in place of m.wikiedpia.org may be provided as the only argument. 
+ * A new base url in place of m.wikipedia.org may be provided as the only argument. 
  *
  * To compile: gcc -O3 -o redirector -lpcre redirector.c
  *
  */
 
 #include <stdio.h>
-#include<stdlib.h>
-#include<string.h>
+#include <stdlib.h>
+#include <string.h>
 #include <pcre.h>
 
 #define MAX_BUFF 8256
@@ -108,13 +108,20 @@ int main(int argc, char **argv) {
 
 		if (rc < 0) {
 			switch(rc) {
-				case PCRE_ERROR_NOMATCH: printf("%s\n", in_buff->url); break;
-				default: printf("Matching error %d\n", rc); break;
+				case PCRE_ERROR_NOMATCH:
+					printf("%s\n", in_buff->url);
+					fflush(stdout);
+					
+					break;
+				default:
+					fprintf(stderr, "Matching error %d\n", rc);
+					break;
 			}
+			continue;
 		}
 
 		char lang[20] = "";
-                char path[MAX_BUFF] = "";
+		char path[MAX_BUFF] = "";
 
 		for (i = 0; i < rc; i++) {
 
