@@ -9,6 +9,7 @@
  */
 
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 #include <string.h>
 #include <malloc.h>
@@ -25,23 +26,15 @@ struct IN_BUFF {
 };
 
 int load_in_buff(char *buff, struct IN_BUFF *in_buff) {
-  int converted;
- 
-  strcpy(in_buff->url, "");
-  strcpy(in_buff->src_address, "");
-  strcpy(in_buff->ident, "");
-  strcpy(in_buff->method, "");
+  in_buff->url = strtok(buff, " ");
+  in_buff->src_address = strtok(NULL, " ");
+  in_buff->ident= strtok(NULL, " ");
+  in_buff->method= strtok(NULL, " \n");;
   
-  converted = sscanf(buff, "%s %s %s %s\n", in_buff->url, in_buff->src_address, in_buff->ident, in_buff->method);
-  
-  if(converted != 4) {
+  if (!in_buff->src_address || !in_buff->ident || !in_buff->method) {
     return 1;
   }
   
-  if(strcmp(in_buff->src_address, "") == 0) {
-    return 1;
-  }
-
   if(strlen(in_buff->url) <= 4) {
     return 1;
   }
@@ -63,10 +56,6 @@ int main(int argc, char **argv) {
 
 	struct IN_BUFF *in_buff = NULL;
 	in_buff = (struct IN_BUFF *)malloc(sizeof(struct IN_BUFF));
-	in_buff->url = malloc(MAX_BUFF);
-	in_buff->src_address = malloc(MAX_BUFF);
-	in_buff->ident = malloc(MAX_BUFF);
-	in_buff->method = malloc(MAX_BUFF);
 	pattern = "^http:\\/\\/(\\w+)\\.wikipedia\\.org[:\\d]*\\/(.*)";
 	pcre_extra *pe;
 
