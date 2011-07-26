@@ -1474,8 +1474,8 @@ $messages['nah'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
-	'group-patroller' => 'contreleurs',
-	'group-patroller-member' => 'contreleur',
+	'group-patroller' => 'kontroleurs',
+	'group-patroller-member' => 'kontroleur',
 );
 
 /** Dutch (Nederlands)
