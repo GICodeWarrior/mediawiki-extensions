@@ -1,7 +1,18 @@
 <?php
-$messages = array();
-$messages['en'] = array(
+/**
+ * Internationalisation for Favorites
+ *
+ * @file
+ * @ingroup Extensions
+ */
 
+$messages = array();
+
+/** English (en)
+ * @author Jeremy Lemley
+ */
+$messages['en'] = array(
+'favorites-desc' => 'Creating a favorites list',
 
 # Edit pages
 'favoritethis'                        => 'Favorite this page',
