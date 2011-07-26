@@ -1967,7 +1967,7 @@ $messages['nds-nl'] = array(
 	'prefstats-factor-twoweeks' => 'twee weken',
 	'prefstats-factor-fourweeks' => 'vier weken',
 	'prefstats-factor-default' => 'weerumme naor de standardschaole',
-	'prefstats-legend-out' => 'Of-emeld',
+	'prefstats-legend-out' => 'Aofemeld',
 	'prefstats-legend-in' => 'An-emeld',
 );
 

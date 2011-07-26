@@ -244,7 +244,7 @@ $messages['ms'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
-	'conditionalshowsection-desc' => 'Voeg de code <code><nowiki>cshow</nowiki></code> toe um veurweerdelijk een parregraaf wikitekse te laoten zien of te verbargen',
+	'conditionalshowsection-desc' => 'Zet de kode <code><nowiki>cshow</nowiki></code> derbie um veurweerdelik een paragraaf wikitekste te laoten zien of te verbargen',
 );
 
 /** Dutch (Nederlands)

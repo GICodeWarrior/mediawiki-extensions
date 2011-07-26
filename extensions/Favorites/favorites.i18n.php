@@ -87,3 +87,87 @@ You can also [[Special:Favoritelist/edit|use the standard editor]].',
 'favoritelisttools-raw'  => 'Edit raw favorites',
 
 );
+
+/** German (Deutsch)
+ * @author Kghbln
+ */
+$messages['de'] = array(
+	'favorites-desc' => 'Ermöglicht das Erstellen von Favoritenlisten',
+	'favoritethis' => 'Diese Seite auf die Favoritenliste setzen',
+	'prefs-favoritelist' => 'Favoriten',
+	'prefs-favoritelist-token' => 'Favoriten-Token:',
+	'prefs-advancedfavoritelist' => 'Erweiterte Optionen',
+	'favoritelist' => 'Meine Favoriten',
+	'myfavoritelist' => 'Meine Favoriten',
+	'favoritelistfor' => "(für '''$1''')",
+	'nofavoritelist' => 'Es befinden sich keine Einträge in deiner Favoritenliste.',
+	'favoritelistanontext' => 'Du musst dich $1, um deine Favoritenliste sehen oder Einträge auf ihr bearbeiten zu können.',
+	'favoritenologin' => 'Nicht angemeldet',
+	'favoritenologintext' => 'Du musst [[Special:UserLogin|angemeldet]] sein, um deine Favoritenliste bearbeiten zu können.',
+	'addedfavorite' => 'Zur Favoritenliste hinzugefügt',
+	'addedfavoritetext' => 'Die Seite „[[:$1]]“ wurde zu deiner [[Special:Favoritelist|Favoritenliste]] hinzugefügt.',
+	'removedfavorite' => 'Von der Favoritenliste entfernt',
+	'removedfavoritetext' => 'Die Seite „[[:$1]]“ wurde von deiner [[Special:Favoritelist|Favoritenliste]] entfernt.',
+	'favorite' => 'Zur Favoritenliste hinzufügen',
+	'favoritethispage' => 'Diese Seite zur Favoritenliste hinzufügen',
+	'unfavorite' => 'Von der Favoritenliste entfernen',
+	'unfavoritethispage' => 'Diese Seite von der Favoritenliste entfernen',
+	'favoritelist-options' => 'Optionen zu Favoriten',
+	'favoriteing' => 'Speichere …',
+	'unfavoriteing' => 'Entferne …',
+	'tooltip-pt-favoritelist' => 'Die Liste der Seiten, die sich auf deiner Favoritenliste befinden',
+	'tooltip-ca-favorite' => 'Füge diese Seite zu deiner Favoritenliste hinzu',
+	'tooltip-ca-unfavorite' => 'Entferne diese Seite von deiner Favoritenliste',
+	'tooltip-favorite' => 'Füge diese Seite zu deiner Favoritenliste hinzu',
+	'favoritelistall2' => 'alle',
+	'favoritelistedit-numitems' => 'Deine Favoritenliste enthält {{PLURAL:$1|einen Eintrag |$1 Einträge}}. Die Diskussionsseiten wurden dabei nicht mitgezählt.',
+	'favoritelistedit-noitems' => 'Deine Favoritenliste enthält keine Einträge.',
+	'favoritelistedit-normal-title' => 'Favoritenliste bearbeiten',
+	'favoritelistedit-normal-legend' => 'Einträge aus der Favoritenliste entfernen',
+	'favoritelistedit-normal-explain' => 'Dies sind die Einträge deiner Favoritenliste.
+Um Einträge zu entfernen, markiere die Kästchen neben den Einträgen und klicke am Ende der Seite auf „{{int:Favoritelistedit-normal-submit}}“.
+Du kannst deine Beobachtungsliste auch im [[Special:Favoritelist/raw|Listenformat bearbeiten]].',
+	'favoritelistedit-normal-submit' => 'Einträge entfernen',
+	'favoritelistedit-normal-done' => '{{PLURAL:$1|Ein Eintrag wurde|$1 Einträge wurden}} von deiner Favoritenliste entfernt:',
+	'favoritelistedit-raw-title' => 'im Listenformat bearbeiten',
+	'favoritelistedit-raw-legend' => 'Favoritenliste im Listenformat bearbeiten',
+	'favoritelistedit-raw-explain' => 'Dies sind die Einträge deiner Favoritenliste im Listenformat. Die Einträge können zeilenweise gelöscht oder hinzugefügt werden.
+Pro Zeile ist ein Eintrag erlaubt.
+Sobald du fertig bist, klicke auf „{{int:Favoritelistedit-raw-submit}}“.
+Du kannst auch die [[Special:Favoritelist/edit|Standardseite]] zum Bearbeiten benutzen.',
+	'favoritelistedit-raw-titles' => 'Einträge:',
+	'favoritelistedit-raw-submit' => 'Favoritenliste aktualisieren',
+	'favoritelistedit-raw-done' => 'Deine Favoritenliste wurde aktualisiert.',
+	'favoritelistedit-raw-added' => '{{PLURAL:$1|Ein Eintrag wurde|$1 Einträge wurden}} hinzugefügt:',
+	'favoritelistedit-raw-removed' => '{{PLURAL:$1|Ein Eintrag wurde|$1 Einträge wurden}} entfernt:',
+	'favoritelisttools-view' => 'Favoritenliste ansehen',
+	'favoritelisttools-edit' => 'Favoritenliste ansehen und bearbeiten',
+	'favoritelisttools-raw' => 'Favoritenliste im Listenformat bearbeiten',
+);
+
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
+ * @author Kghbln
+ */
+$messages['de-formal'] = array(
+	'nofavoritelist' => 'Es befinden sich keine Einträge in Ihrer Favoritenliste.',
+	'favoritelistanontext' => 'Sie müssen sich $1, um Ihre Favoritenliste sehen oder Einträge auf ihr bearbeiten zu können.',
+	'favoritenologintext' => 'Sie müssen [[Special:UserLogin|angemeldet]] sein, um Ihre Favoritenliste bearbeiten zu können.',
+	'addedfavoritetext' => 'Die Seite „[[:$1]]“ wurde zu Ihrer [[Special:Favoritelist|Favoritenliste]] hinzugefügt.',
+	'removedfavoritetext' => 'Die Seite „[[:$1]]“ wurde von Ihrer [[Special:Favoritelist|Favoritenliste]] entfernt.',
+	'tooltip-pt-favoritelist' => 'Die Liste der Seiten, die sich auf Ihrer Favoritenliste befinden',
+	'tooltip-ca-favorite' => 'Fügen Sie diese Seite zu Ihrer Favoritenliste hinzu',
+	'tooltip-ca-unfavorite' => 'Entfernen Sie diese Seite von Ihrer Favoritenliste',
+	'tooltip-favorite' => 'Fügen Sie diese Seite zu Ihrer Favoritenliste hinzu',
+	'favoritelistedit-numitems' => 'Ihre Favoritenliste enthält {{PLURAL:$1|einen Eintrag|$1 Einträge}}. Die Diskussionsseiten wurden dabei nicht mitgezählt.',
+	'favoritelistedit-noitems' => 'Ihre Favoritenliste enthält keine Einträge.',
+	'favoritelistedit-normal-explain' => 'Dies sind die Einträge Ihrer Favoritenliste.
+Um Einträge zu entfernen, markieren Sie die Kästchen neben den Einträgen und klicken Sie am Ende der Seite auf „{{int:Favoritelistedit-normal-submit}}“.
+Sie können Ihre Favoritenliste auch im [[Special:Favoritelist/raw|Listenformat bearbeiten]].',
+	'favoritelistedit-normal-done' => '{{PLURAL:$1|Ein Eintrag wurde|$1 Einträge wurden}} von Ihrer Favoritenliste entfernt:',
+	'favoritelistedit-raw-explain' => 'Dies sind die Einträge Ihrer Favoritenliste im Listenformat. Die Einträge können zeilenweise gelöscht oder hinzugefügt werden.
+Pro Zeile ist ein Eintrag erlaubt.
+Sobald Sie fertig sind, klicken Sie auf „{{int:Favoritelistedit-raw-submit}}“.
+Sie können auch die [[Special:Favoritelist/edit|Standardseite]] zum Bearbeiten benutzen.',
+	'favoritelistedit-raw-done' => 'Ihre Favoritenliste wurde aktualisiert.',
+);
+

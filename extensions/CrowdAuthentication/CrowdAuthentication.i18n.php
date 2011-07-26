@@ -269,7 +269,7 @@ $messages['ms'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
-	'crowdauthentication-desc' => 'Uutbreidingsmedule van de echheidscontrole veur Atlassian Crowd',
+	'crowdauthentication-desc' => 'Uutbreidingsmodule van de echtheidskontrole veur Atlassian Crowd',
 );
 
 /** Dutch (Nederlands)

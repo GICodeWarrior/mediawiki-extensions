@@ -7141,7 +7141,7 @@ $messages['nah'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
-	'mv-category-media-count' => '$1 mediasegmenten in kattegerie',
+	'mv-category-media-count' => '$1 mediasegmenten in kategorie',
 	'mv_edit' => 'Bewark',
 );
 

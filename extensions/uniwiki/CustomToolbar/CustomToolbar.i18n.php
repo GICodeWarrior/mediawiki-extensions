@@ -1946,13 +1946,13 @@ $messages['myv'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
-	'ct_bold_sample' => 'Vet-edrokken tekse',
-	'ct_bold_tip_ins' => 'Vet-edrokken tekse invoegen',
-	'ct_bold_tip_wrap' => 'Disse tekse vet-edrok maken',
-	'ct_bold_caption' => 'Vet-edrok',
-	'ct_italic_tip_ins' => 'Schunedrokken tekse invoegen',
-	'ct_italic_tip_wrap' => 'Disse tekse schunedrok maken',
-	'ct_italic_caption' => 'Schunedrok',
+	'ct_bold_sample' => 'Vet-edrokten tekste',
+	'ct_bold_tip_ins' => 'Vet-edrokten tekste invoegen',
+	'ct_bold_tip_wrap' => 'Disse tekste vet-edrokt maken',
+	'ct_bold_caption' => 'Vet-edrokt',
+	'ct_italic_tip_ins' => 'Schunedrokten tekste invoegen',
+	'ct_italic_tip_wrap' => 'Disse tekste schunedrokt maken',
+	'ct_italic_caption' => 'Schunedrokt',
 );
 
 /** Dutch (Nederlands)

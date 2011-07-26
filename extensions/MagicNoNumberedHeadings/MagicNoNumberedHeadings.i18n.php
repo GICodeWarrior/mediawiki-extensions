@@ -248,7 +248,7 @@ $messages['mk'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
-	'magicnonumberedheadings-desc' => 'Voeg \'t magische woord "<nowiki>__NONUMBEREDHEADINGS__</nowiki>" toe',
+	'magicnonumberedheadings-desc' => 'Zet t magiese woord "<nowiki>__NONUMBEREDHEADINGS__</nowiki>" derbie',
 );
 
 /** Dutch (Nederlands)

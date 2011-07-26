@@ -315,7 +315,7 @@ $messages['ms'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
-	'contributorsaddon-desc' => 'Maak JavaScript-floepviensters bie de verwiezingen van de "belangriekste schrievers"',
+	'contributorsaddon-desc' => 'Maakt JavaScript-floepviensters bie de verwiezingen van de "belangriekste schrievers"',
 );
 
 /** Dutch (Nederlands)

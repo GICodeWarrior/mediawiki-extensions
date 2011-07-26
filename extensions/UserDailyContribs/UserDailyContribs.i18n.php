@@ -380,7 +380,7 @@ $messages['mt'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
-	'userdailycontribs-desc' => 'Dagelijkse gebrukersbiedragen veur de uutbreidingen um gebrukersklik mee te volgen',
+	'userdailycontribs-desc' => 'Dagelikse gebrukersbiedragen veur de uutbreidingen um gebrukersklik mee te volgen',
 );
 
 /** Dutch (Nederlands)

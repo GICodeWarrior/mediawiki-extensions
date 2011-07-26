@@ -312,7 +312,7 @@ $messages['ms'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
-	'clientside-desc' => "Biejt functies veur 't anmaken van code in cliëntziedfermaoten zoas HTML, CSS en JavaScript",
+	'clientside-desc' => 'Biejt funksies veur t anmaken van kode in kliëntziedformaoten zo as HTML, CSS en JavaScript',
 );
 
 /** Dutch (Nederlands)

@@ -1060,8 +1060,8 @@ $messages['mzn'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
-	'gep-addcategorybutton' => 'Toevoegen',
-	'gep-addsectionbutton' => 'Toevoegen',
+	'gep-addcategorybutton' => 'Derbie doon',
+	'gep-addsectionbutton' => 'Derbie doon',
 );
 
 /** Dutch (Nederlands)

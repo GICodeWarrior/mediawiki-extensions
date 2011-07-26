@@ -58,11 +58,15 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
  * @author Jeroen De Dauw
+ * @author Kghbln
  * @author Purodha
  * @author Raymond
  */
 $messages['qqq'] = array(
 	'livetranslate-desc' => '{{desc}}',
+	'group-tmxadmin' => 'TMX = Translation Memory eXchange',
+	'group-tmxadmin-member' => 'TMX = Translation Memory eXchange',
+	'grouppage-tmxadmin' => 'TMX = Translation Memory eXchange',
 	'livetranslate-translate-to' => 'There is an [https://secure.wikimedia.org/wikipedia/mediawiki/wiki/File:Lte-article.png example screenshot of use].
 Look at the right side in the line below the ruler under the "Main Page" header.',
 	'livetranslate-button-translate' => 'There is an [https://secure.wikimedia.org/wikipedia/mediawiki/wiki/File:Lte-article.png example screenshot of use].
@@ -241,6 +245,9 @@ $messages['bs'] = array(
 $messages['de'] = array(
 	'livetranslate-desc' => 'Ermöglicht die unmittelbare Übersetzung des Seiteninhalts mit „Google Übersetzer“',
 	'right-managetms' => 'Liste der Übersetzungsspeicher [[Special:SpecialLiveTranslate|anpassen]]',
+	'group-tmxadmin' => 'TMX-Administratoren',
+	'group-tmxadmin-member' => 'TMX-Administrator',
+	'grouppage-tmxadmin' => 'Project:TMX-Administratoren',
 	'livetranslate-translate-to' => 'Diese Seite in folgende Sprache übersetzen:',
 	'livetranslate-button-translate' => 'Übersetze',
 	'livetranslate-button-translating' => 'Übersetze …',
@@ -617,6 +624,7 @@ $messages['ku-latn'] = array(
 $messages['lb'] = array(
 	'livetranslate-desc' => 'Erméiglecht d\'live Iwwersetzen vu Säiteninhalt mam Service "Google Translate"',
 	'right-managetms' => "[[Special:SpecialLiveTranslate|Ännert]] d'Lëscht vun Iwwersetzungen am Späicher",
+	'grouppage-tmxadmin' => 'Project:TMX-Administrateuren',
 	'livetranslate-translate-to' => 'Iwwersetzt dës Säit op',
 	'livetranslate-button-translate' => 'Iwwersetzen',
 	'livetranslate-button-translating' => 'Iwwersetzen...',
@@ -649,6 +657,9 @@ $messages['lb'] = array(
 $messages['mk'] = array(
 	'livetranslate-desc' => 'Овозможува преведување на содржината на една страница во живо, користејќи Google Translate',
 	'right-managetms' => '[[Special:SpecialLiveTranslate|Менување]] на списокот на преводни памтила',
+	'group-tmxadmin' => 'Администратори на TMX',
+	'group-tmxadmin-member' => 'Администратор на TMX',
+	'grouppage-tmxadmin' => 'Project:Админи_на_TMX',
 	'livetranslate-translate-to' => 'Преведи ја страницава на',
 	'livetranslate-button-translate' => 'Преведи',
 	'livetranslate-button-translating' => 'Преведувам...',
@@ -692,6 +703,9 @@ $messages['ms'] = array(
 $messages['nl'] = array(
 	'livetranslate-desc' => 'Maakt het mogelijk paginainhoud live te vertalen met behulp van de dienst Google Translate',
 	'right-managetms' => 'De lijst met vertaalgeheugens [[Special:SpecialLiveTranslate|wijzigen]]',
+	'group-tmxadmin' => 'TMX-beheerders',
+	'group-tmxadmin-member' => 'TMX-beheerder',
+	'grouppage-tmxadmin' => 'Project:TMX-beheerders',
 	'livetranslate-translate-to' => 'Pagina vertalen in het',
 	'livetranslate-button-translate' => 'Vertalen',
 	'livetranslate-button-translating' => 'Bezig met vertalen...',
@@ -808,6 +822,9 @@ $messages['ps'] = array(
 $messages['pt'] = array(
 	'livetranslate-desc' => 'Permite a tradução imediata do conteúdo das páginas usando o serviço Google Translate',
 	'right-managetms' => '[[Special:SpecialLiveTranslate|Modificar]] a lista de memórias de tradução',
+	'group-tmxadmin' => 'Administradores TMX',
+	'group-tmxadmin-member' => 'Administrador TMX',
+	'grouppage-tmxadmin' => 'Project:Administradores_TMX',
 	'livetranslate-translate-to' => 'Traduzir esta página para',
 	'livetranslate-button-translate' => 'Traduzir',
 	'livetranslate-button-translating' => 'A traduzir...',

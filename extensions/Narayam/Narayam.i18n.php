@@ -715,6 +715,7 @@ $messages['ms'] = array(
 
 /** Dutch (Nederlands)
  * @author GerardM
+ * @author SPQRobin
  * @author Siebrand
  */
 $messages['nl'] = array(
@@ -729,6 +730,8 @@ $messages['nl'] = array(
 	'narayam-kn-inscript' => 'Kannada InScript',
 	'narayam-ml' => 'Transliteratie in Malayalam',
 	'narayam-ml-inscript' => 'Malayalam InScript',
+	'narayam-ne' => 'Transliteratie in Nepalees',
+	'narayam-ne-inscript' => 'Nepalees InScript',
 	'narayam-or' => 'Transliteratie in Oriya',
 	'narayam-or-inscript' => 'Oriya InScript',
 	'narayam-sa' => 'Transliteratie in Sanskriet',
@@ -834,6 +837,8 @@ $messages['pt'] = array(
 	'narayam-kn-inscript' => 'InScript para canarim',
 	'narayam-ml' => 'Transliteração do malaiala',
 	'narayam-ml-inscript' => 'InScript para malaiala',
+	'narayam-ne' => 'Transliteração de nepali',
+	'narayam-ne-inscript' => 'InScript para nepali',
 	'narayam-or' => 'Transliteração do oriá',
 	'narayam-or-inscript' => 'InScript para oriá',
 	'narayam-sa' => 'Transliteração do sânscrito',
