@@ -15,7 +15,7 @@ if ( !defined( 'SF_VERSION' ) ) {
 	die( 'This is a Semantic Forms extension. You need to install Semantic Forms first.' );
 }
 
-define( 'SFI_VERSION', '0.4.1' );
+define( 'SFI_VERSION', '0.4.2 alpha' );
 
 // create and initialize settings
 $sfigSettings = new SFISettings();
@@ -36,10 +36,10 @@ $dir = dirname( __FILE__ );
 require_once( $dir . '/SFI_Settings.php' );
 
 $wgExtensionMessagesFiles['SemanticFormsInputs'] = $dir . '/SemanticFormsInputs.i18n.php';
-$wgExtensionFunctions[] = "wfSFISetup";
+$wgExtensionFunctions[] = 'wfSFISetup';
 $wgAutoloadClasses['SFIInputs'] = $dir . '/SFI_Inputs.php';
 
-/*
+/**
  * Class to encapsulate all settings
  */
 class SFISettings {
@@ -63,11 +63,11 @@ class SFISettings {
 	public $datePickerDayNames;
 }
 
-/*
+/**
  * Registers the input types with Semantic Forms.
  */
 function wfSFISetup() {
-	global $sfgFormPrinter, $wgOut;
+	global $sfgFormPrinter;
 
 	$sfgFormPrinter->setInputTypeHook( 'regexp', array( 'SFIInputs', 'regexpHTML' ), array() );
 	$sfgFormPrinter->setInputTypeHook( 'datepicker', array( 'SFIInputs', 'jqDatePickerHTML' ), array() );
@@ -77,6 +77,8 @@ function wfSFISetup() {
 //	$sfgFormPrinter->setInputTypeHook( 'wysiwyg', array( 'SFIInputs', 'wysiwygHTML' ), array() );
 	$sfgFormPrinter->setInputTypeHook( 'menuselect', array( 'SFIInputs', 'menuselectHTML' ), array() );
 
-	// TODO: obsolete as of MW 1.16, remove around 1.18 or so
-	wfLoadExtensionMessages( 'SemanticFormsInputs' );
+	// This function has been deprecated in 1.16, but needed for earlier versions.
+	if ( version_compare( $wgVersion, '1.16', '<' ) ) {
+		wfLoadExtensionMessages( 'SemanticFormsInputs' );
+	}
 }
