@@ -257,10 +257,6 @@ es.Surface.prototype.onKeyUp = function( e ) {
 			this.commandDown = false;
 			break;
 		default:		
-			var surface = this;
-			setTimeout( function() {
-				//surface.cursor.show( surface.location.block.flow.getPosition( surface.location.offset ), surface.location.block.$.offset() );
-			}, 0 );
 			break;
 	}
 	return true;
