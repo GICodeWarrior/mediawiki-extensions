@@ -238,7 +238,7 @@ $messages['mk'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
-	'editsectionhilitelink-desc' => "Markeer de parregraaf dee van toepassing is bie 't sillecteren van de verwiezing ''bewarken''",
+	'editsectionhilitelink-desc' => "Markeer de paragraaf die van toepassing is bie t selekteren van de verwiezing ''bewarken''",
 );
 
 /** Dutch (Nederlands)
