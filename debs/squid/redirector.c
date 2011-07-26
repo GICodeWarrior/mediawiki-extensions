@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <malloc.h>
 #include <pcre.h>
 
 #define MAX_BUFF 8256
@@ -62,11 +63,10 @@ int main(int argc, char **argv) {
 
 	struct IN_BUFF *in_buff = NULL;
 	in_buff = (struct IN_BUFF *)malloc(sizeof(struct IN_BUFF));
-	in_buff->url = (char *)malloc(MAX_BUFF);
-	in_buff->src_address = (char *)malloc(MAX_BUFF);
-	in_buff->ident = (char *)malloc(MAX_BUFF);
-	in_buff->method = (char *)malloc(MAX_BUFF);
-	int buff_status = 0;
+	in_buff->url = malloc(MAX_BUFF);
+	in_buff->src_address = malloc(MAX_BUFF);
+	in_buff->ident = malloc(MAX_BUFF);
+	in_buff->method = malloc(MAX_BUFF);
 	pattern = "^http:\\/\\/(\\w+)\\.wikipedia\\.org[:\\d]*\\/(.*)";
 	pcre_extra *pe;
 
@@ -92,7 +92,10 @@ int main(int argc, char **argv) {
 
 	while(fgets(buff, MAX_BUFF, stdin) != NULL) {
 
-		buff_status = load_in_buff(buff, in_buff);
+		if (load_in_buff(buff, in_buff) != 0) {
+			fprintf(stderr, "Error loading data %s\n", buff);
+			continue;
+		}
 
 		subject_length = (int)strlen(in_buff->url);
 
