@@ -103,6 +103,10 @@ class qp_Setup {
 		NS_QP_INTERPRETATION => 'Interpretation',
 		NS_QP_INTERPRETATION_TALK => 'Interpretation_talk'
 	);
+	# stores interpretation script line numbers separately for
+	# every script language (currently only php eval is implemented)
+	# key is value of <qpinterpret> xml tag 'lang' attribute, value is source line counter
+	static $scriptLinesCount = array();
 
 	/**
 	 * default configuration settings
@@ -478,9 +482,18 @@ class qp_Setup {
 	static function showScript( $input, $argv, $parser, $frame = false ) {
 		$lines_count = count( preg_split( '`(\r\n|\n|\r)`', $input, -1 ) );
 		$line_numbers = '';
-		for ( $i = 1; $i <= $lines_count; $i++ ) {
+		if ( !isset( $argv['lang'] ) ) {
+			return '<strong class="error">' . wfMsg( 'qp_error_eval_missed_lang_attr' ) . '</strong>';
+		}
+		$lang = $argv['lang'];
+		if ( !array_key_exists( $lang, self::$scriptLinesCount ) ) {
+			self::$scriptLinesCount[$lang] = 1;
+		}
+		$slc = &self::$scriptLinesCount[$lang];
+		for ( $i = $slc; $i < $slc + $lines_count; $i++ ) {
 			$line_numbers .= "{$i}\n";
 		}
+		$slc = $i;
 		$out =
 		array( '__tag'=>'div', 'class'=>'qpoll',
 			array( '__tag'=>'div', 'class'=>'line_numbers', $line_numbers ),
