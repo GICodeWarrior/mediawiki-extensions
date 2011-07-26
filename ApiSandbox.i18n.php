@@ -717,6 +717,9 @@ $messages['uk'] = array(
 	'apisb-no-js' => "'''Помилка''': ця функція вимагає JavaScript.",
 	'apisb-intro' => "Ця сторінка служить для експериментування з '''MediaWiki API'''.
 Звертайтеся до [http://www.mediawiki.org/wiki/API документації] для докладнішої інформації про використання API.",
+	'apisb-parameters' => 'Параметри',
+	'apisb-result' => 'Результат',
+	'apisb-request-url' => 'URL-адреса запиту:',
 );
 
 /** Vietnamese (Tiếng Việt)
