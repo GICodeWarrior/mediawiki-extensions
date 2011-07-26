@@ -14,7 +14,7 @@
 
 if ( !defined( 'MEDIAWIKI' ) ) die( 'Not an entry point.' );
 
-define( 'TREEANDMENU_VERSION','1.2.3, 2011-07-26' );
+define( 'TREEANDMENU_VERSION','1.2.4, 2011-07-26' );
 
 # Set any unset images to default titles
 if ( !isset( $wgTreeViewImages ) || !is_array( $wgTreeViewImages ) ) $wgTreeViewImages = array();
@@ -221,9 +221,13 @@ class TreeAndMenu {
 								$$pos .= "<a href=\"javascript: $objid.{$arg}All();\">&#160;{$arg} all</a>&#160;";
 						if ( $top ) $top = "<p>&#160;$top</p>";				
 						if ( $bottom ) $bottom = "<p>&#160;$bottom</p>";
-						$html = "$top<div class='$class' id='$id'>
+
+						# Add the dTRee script if not loaded yet
+						$dTreeScript = $this->js++ ? "" : "<script type=\"$wgJsMimeType\" src=\"{$this->baseUrl}/dtree.js\"></script>";
+
+						$html = "$top<div class='$class' id='$id'>$dTreeScript
 								<script type=\"$wgJsMimeType\">/*<![CDATA[*/
-									// TreeAndMenu{$this->version}
+									// TreeAndMenu-{$this->version}
 									tree = new dTree('$objid');
 									for (i in tree.icon) tree.icon[i] = '{$this->baseUrl}/'+tree.icon[i];{$this->images}
 									tree.config.useLines = {$this->useLines};
@@ -260,12 +264,7 @@ class TreeAndMenu {
 				}
 			}
 		}
-
 		$text = preg_replace( "/\x7f1$u\x7f.+?[\\r\\n]+/m", '', $text ); # Remove all unreplaced row information
-
-		# Add the dTRee script if not loaded yet
-		if( !$this->js++ ) $text = "<script type=\"$wgJsMimeType\" src=\"{$this->baseUrl}/dtree.js\"></script>\n$text";
-
 		return true;
 	}
  
