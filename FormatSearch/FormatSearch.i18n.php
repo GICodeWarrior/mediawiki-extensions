@@ -288,7 +288,7 @@ $messages['mk'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
-	'formatsearch-desc' => 'Keert de zeukrisseltaotenpagina an',
+	'formatsearch-desc' => 'Keert de zeukresultaotenpagina an',
 );
 
 /** Dutch (Nederlands)

@@ -264,7 +264,7 @@ $messages['ms'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
-	'csshooks-desc' => "Voeg CSS toe an de HTML-uutvoer van pagina's veur betere vormgeving",
+	'csshooks-desc' => "Zet CSS bie de HTML-uutvoer van pagina's veur betere vormgeving",
 );
 
 /** Dutch (Nederlands)

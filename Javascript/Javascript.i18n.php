@@ -267,7 +267,7 @@ $messages['mk'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
-	'javascript-desc' => 'Voeg uniwiki.js mit JavaScript-code dee edeeld wonnen tussen de Uniwiki-uutbreidingen toe an elke pagina',
+	'javascript-desc' => 'Zet uniwiki.js mit JavaScript-kode die edeeld wörden tussen de Uniwiki-uutbreidingen op elke pagina',
 );
 
 /** Dutch (Nederlands)
