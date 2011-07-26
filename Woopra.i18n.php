@@ -332,7 +332,7 @@ $messages['ms'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
-	'woopra-desc' => "Maak 't meugelijk um de [http://www.woopra.com/ Woopra Live Tracking-pregrammetuur] te gebruken veur MediaWiki",
+	'woopra-desc' => 'Maakt t meugelik um de [http://www.woopra.com/ Woopra Live Tracking-programmatuur] te gebruken veur MediaWiki',
 );
 
 /** Dutch (Nederlands)
