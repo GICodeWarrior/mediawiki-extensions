@@ -2427,28 +2427,28 @@ $messages['nds'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
-	'ogg-desc' => 'Haandelt veur Ogg Theora- en Vorbisbestanen, mit JavaScriptmediaspeuler',
+	'ogg-desc' => 'Haandelt veur Ogg Theora- en Vorbis-bestaanden, mit JavaScript-mediaspeuler',
 	'ogg-short-audio' => 'Ogg $1 geluudsbestaand, $2',
 	'ogg-short-video' => 'Ogg $1 videobestaand, $2',
 	'ogg-short-general' => 'Ogg $1 mediabestaand, $2',
 	'ogg-long-audio' => '(Ogg $1 geluudsbestaand, lengte $2, $3)',
 	'ogg-long-video' => '(Ogg $1 videobestaand, lengte $2, $4×$5 pixels, $3)',
-	'ogg-long-multiplexed' => '(Ogg emultiplexed geluuds-/videobestaand, $1, lengte $2, $4×$5 pixels, $3 totaal)',
+	'ogg-long-multiplexed' => '(Ogg-emultiplext geluuds-/videobestaand, $1, lengte $2, $4×$5 pixels, $3 totaal)',
 	'ogg-long-general' => '(Ogg-mediabestaand, lengte $2, $3)',
 	'ogg-long-error' => '(Ongeldig ogg-bestaand: $1)',
-	'ogg-play' => 'Ofspeulen',
+	'ogg-play' => 'Aofspeulen',
 	'ogg-pause' => 'Pauze',
 	'ogg-stop' => 'Stop',
-	'ogg-play-video' => 'Video ofspeulen',
-	'ogg-play-sound' => 'Geluud ofspeulen',
+	'ogg-play-video' => 'Video aofspeulen',
+	'ogg-play-sound' => 'Geluud aofspeulen',
 	'ogg-no-player' => 'Joew system hef gien ondersteunende mediaspeulers.
-Instelleer een <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">mediaspeuler</a>.',
-	'ogg-no-xiphqt' => '\'t Lik derop da-j de compenent XiphQT veur QuickTime neet hemmen.
-QuickTime kan Ogg-bestanen neet ofspeulen zonder disse compenent.
-Instelleer <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">XiphQT</a> of kies een aandere mediaspeuler.',
+Installeer een <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">mediaspeuler</a>.',
+	'ogg-no-xiphqt' => 't Lik derop da\'j de komponent XiphQT veur QuickTime niet hebben.
+QuickTime kan Ogg-bestaanden niet aofspeulen zonder dit komponent.
+Installeer <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">XiphQT</a> of kies een aandere mediaspeuler.',
 	'ogg-player-videoElement' => 'Standardondersteuning in webkieker',
 	'ogg-player-oggPlugin' => 'Webkiekeruutbreiding',
-	'ogg-player-thumbnail' => 'Allinnig stilstaond beeld',
+	'ogg-player-thumbnail' => 'Allenig stilstaond beeld',
 	'ogg-player-soundthumb' => 'Gien mediaspeuler',
 	'ogg-player-selected' => '(ekeuzen)',
 	'ogg-use-player' => 'Gebruuk mediaspeuler:',
@@ -2456,8 +2456,8 @@ Instelleer <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_do
 	'ogg-dismiss' => 'Sluten',
 	'ogg-download' => 'Bestaand binnenhaolen',
 	'ogg-desc-link' => 'Over dit bestaand',
-	'ogg-oggThumb-version' => 'Veur OggHandler he-j oggThumb-versie $1 of hoger neudig.',
-	'ogg-oggThumb-failed' => 'oggThumb kon gien ofbeeldingsoverzichte anmaken.',
+	'ogg-oggThumb-version' => "Veur OggHandler he'j oggThumb-versie $1 of hoger neudig.",
+	'ogg-oggThumb-failed' => 'oggThumb kon gien aofbeeldingsoverzichte anmaken.',
 );
 
 /** Dutch (Nederlands)
