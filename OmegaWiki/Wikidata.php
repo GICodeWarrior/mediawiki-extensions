@@ -141,17 +141,21 @@ class DefaultWikidataApplication {
 	 * @return true if permission to edit, false if not
 	**/
 	public function edit() {
-		global
-			$wgOut, $wgRequest, $wgUser;
-			
+		global $wgOut, $wgRequest, $wgUser;
+
 		$wgOut->enableClientCache( false );
 
+		if ( $wgUser->isBlockedFrom( $this->getTitle(), false ) ) {
+			$wgOut->blockedPage() ;
+			return false;                                                 
+		}
+
 		$dc = wdGetDataSetContext();
- 		if ( !$wgUser->isAllowed( 'editwikidata-' . $dc ) ) {
- 			$wgOut->addWikiText( wfMsgSc( "noedit", $dc->fetchName() ) );
+		if ( !$wgUser->isAllowed( 'editwikidata-' . $dc ) ) {
+			$wgOut->addWikiText( wfMsgSc( "noedit", $dc->fetchName() ) );
 			$wgOut->setPageTitle( wfMsgSc( "noedit_title" ) );
- 			return false;
- 		}
+			return false;
+		}
 
 		if ( $wgRequest->getText( 'save' ) != '' )
 			$this->saveWithinTransaction();
