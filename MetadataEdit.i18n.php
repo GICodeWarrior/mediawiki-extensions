@@ -860,7 +860,7 @@ $messages['nds'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
-	'metadataedit-desc' => "Kattegerieën, taalverwiezingen en mallen dee toe-estaon bin in een ampart vienster plaosen tiejens 't bewarken van pagina's",
+	'metadataedit-desc' => "Kategorieën, taalverwiezingen en mallen die toe-estaon bin in een ampart vienster plaotsen tiejens t bewarken van pagina's",
 	'metadata_help' => 'Metadata:',
 );
 
