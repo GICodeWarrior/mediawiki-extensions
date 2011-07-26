@@ -1,7 +1,8 @@
 /**
+ * es.ParagraphBlock
  * 
  * @extends {es.Block}
- * @param lines {Array} List of line objects
+ * @param lines {Array} List of Wikidom line objects
  * @returns {es.ParagraphBlock}
  */
 es.ParagraphBlock = function( lines ) {
@@ -14,12 +15,20 @@ es.ParagraphBlock = function( lines ) {
 	this.flow.on( 'render', function() {
 		block.emit( 'update' );
 	} );
-}
+};
 
+/**
+ * Creates a new list block object from Wikidom data.
+ * 
+ * @param wikidomList {Object} Wikidom data to convert from
+ */
 es.ParagraphBlock.newFromWikidom = function( wikidomBlock ) {
 	return new es.ParagraphBlock( wikidomBlock.lines );
 };
 
+/**
+ * Gets the length of all block content.
+ */
 es.ParagraphBlock.prototype.getLength = function() {
 	return this.content.getLength();
 };
@@ -48,6 +57,20 @@ es.ParagraphBlock.prototype.deleteContent = function( start, end ) {
 		start = tmp;
 	}
 	this.content.remove( start, end );
+};
+
+/**
+ * Applies an annotation to a given range.
+ * 
+ * If a range arguments are not provided, all content will be annotated.
+ * 
+ * @param method {String} Way to apply annotation ("toggle", "add" or "remove")
+ * @param annotation {Object} Annotation to apply
+ * @param start {Integer} Offset to begin annotating from
+ * @param end {Integer} Offset to stop annotating to
+ */
+es.ParagraphBlock.prototype.annotateContent = function( method, annotation, start, end ) {
+	this.content.annotate( method, annotation, start, end );
 };
 
 /**
@@ -99,20 +122,6 @@ es.ParagraphBlock.prototype.getPosition = function( offset ) {
 };
 
 /**
- * Applies an annotation to a given range.
- * 
- * If a range arguments are not provided, all content will be annotated.
- * 
- * @param method {String} Way to apply annotation ("toggle", "add" or "remove")
- * @param annotation {Object} Annotation to apply
- * @param start {Integer} Offset to begin annotating from
- * @param end {Integer} Offset to stop annotating to
- */
-es.ParagraphBlock.prototype.annotateContent = function( method, annotation, start, end ) {
-	this.content.annotate( method, annotation, start, end );
-};
-
-/**
  * Gets the start and end points of the word closest a given offset.
  * 
  * @param offset {Integer} Offset to find word nearest to
@@ -134,6 +143,9 @@ es.ParagraphBlock.prototype.getSectionBoundaries = function( offset ) {
 	return new es.Range( 0, this.content.getLength() );
 };
 
-es.Block.models['paragraph'] = es.ParagraphBlock; 
+/**
+ * Extend es.Block to support paragraph block creation with es.Block.newFromWikidom
+ */
+es.Block.models.paragraph = es.ParagraphBlock; 
 
 es.extend( es.ParagraphBlock, es.Block );

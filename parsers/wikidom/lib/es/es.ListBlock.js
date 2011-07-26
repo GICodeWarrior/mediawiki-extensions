@@ -1,5 +1,10 @@
 /**
  * es.ListBlock
+ * 
+ * @extends {es.Block}
+ * @param style {String} Type of list, either "number" or "bullet"
+ * @param items {Array} List of es.ListBlockItems to append initially to the root list
+ * @return {es.ListBlock}
  */
 es.ListBlock = function( style, items ) {
 	es.Block.call( this );
@@ -11,19 +16,88 @@ es.ListBlock = function( style, items ) {
 	this.list.on( 'update', function() {
 		block.emit( 'update' );
 	} );
-}
+};
 
+/**
+ * Creates a new list block object from Wikidom data.
+ * 
+ * @param wikidomList {Object} Wikidom data to convert from
+ */
 es.ListBlock.newFromWikidom = function( wikidomList ) {
 	return new es.ListBlock( wikidomList.style, wikidomList.items );
 };
 
-es.ListBlock.prototype.getText = function() {
-	return '';
-};
-
+/**
+ * Gets the length of all block content.
+ */
 es.ListBlock.prototype.getLength = function() {
 	// Compensate for n+1 virtual position on the last item's content
 	return this.list.getLength() - 1;
+};
+
+/**
+ * Inserts content into a block at an offset.
+ * 
+ * @param offset {Integer} Position to insert content at
+ * @param content {Object} Content to insert
+ */
+es.ListBlock.prototype.insertContent = function( offset, content ) {
+	var location = this.list.getLocationFromOffset( offset );
+	location.item.flow.content.insert( location.offset, content );
+};
+
+/**
+ * Deletes content in a block within a range.
+ * 
+ * @param offset {Integer} Offset to start removing content from
+ * @param length {Integer} Offset to start removing content to
+ */
+es.ListBlock.prototype.deleteContent = function( start, end ) {
+	// Normalize start/end
+	if ( end < start ) {
+		var tmp = end;
+		end = start;
+		start = tmp;
+	}
+	var location = this.list.getLocationFromOffset( start );
+	location.item.flow.content.remove( location.offset, location.offset + end - start );
+};
+
+/**
+ * Applies an annotation to a given range.
+ * 
+ * If a range arguments are not provided, all content will be annotated.
+ * 
+ * @param method {String} Way to apply annotation ("toggle", "add" or "remove")
+ * @param annotation {Object} Annotation to apply
+ * @param start {Integer} Offset to begin annotating from
+ * @param end {Integer} Offset to stop annotating to
+ */
+es.ListBlock.prototype.annotateContent = function( method, annotation, start, end ) {
+	throw 'ListBlock.annotateContent not implemented yet.';
+};
+
+/**
+ * Gets content within a range.
+ * 
+ * @param start {Integer} Offset to get content from
+ * @param end {Integer} Offset to get content to
+ */
+es.ListBlock.prototype.getContent = function() {
+	// TODO: Implement me!
+	return new Content();
+};
+
+/**
+ * Gets content as plain text within a range.
+ * 
+ * @param start {Integer} Offset to start get text from
+ * @param end {Integer} Offset to start get text to
+ * @param render {Boolean} If annotations should have any influence on output
+ */
+es.ListBlock.prototype.getText = function() {
+	// TODO: Implement me!
+	return '';
 };
 
 /**
@@ -33,6 +107,28 @@ es.ListBlock.prototype.renderContent = function( offset ) {
 	this.list.renderContent( offset );
 };
 
+/**
+ * Gets the offset of a position.
+ * 
+ * @param position {Integer} Offset to translate
+ */
+es.ListBlock.prototype.getOffset = function( position ) {
+	if ( position.top < 0 ) {
+		return 0;
+	} else if ( position.top >= this.$.height() ) {
+		return this.getLength();
+	}
+	var blockOffset = this.$.offset();
+	position.top += blockOffset.top;
+	position.left += blockOffset.left;
+	return this.list.getOffsetFromPosition( position );
+};
+
+/**
+ * Gets the position of an offset.
+ * 
+ * @param offset {Integer} Offset to translate
+ */
 es.ListBlock.prototype.getPosition = function( offset ) {
 	var location = this.list.getLocationFromOffset( offset )
 		position = location.item.flow.getPosition( location.offset ),
@@ -52,9 +148,42 @@ es.ListBlock.prototype.getPosition = function( offset ) {
 	return position;
 };
 
+/**
+ * Gets the start and end points of the word closest a given offset.
+ * 
+ * @param offset {Integer} Offset to find word nearest to
+ * @return {Object} Range object of boundaries
+ */
+es.ListBlock.prototype.getWordBoundaries = function( offset ) {
+	var location = this.list.getLocationFromOffset( offset );
+	var boundaries = location.item.flow.content.getWordBoundaries( location.offset );
+	boundaries.start += offset - location.offset; 
+	boundaries.end += offset - location.offset;
+	return boundaries;
+};
+
+/**
+ * Gets the start and end points of the section closest a given offset.
+ * 
+ * @param offset {Integer} Offset to find section nearest to
+ * @return {Object} Range object of boundaries
+ */
+es.ListBlock.prototype.getSectionBoundaries = function( offset ) {
+	var location = this.list.getLocationFromOffset( offset ),
+		start = offset - location.offset;
+	return new es.Range( start, start + location.item.content.getLength() );
+};
+
+/**
+ * Iteratively execute a callback on each item in the list.
+ * 
+ * Traversal is performed in a depth-first pattern, which is equivilant to a vertical scan of list
+ * items. To stop traversal, return false within the callback function.
+ * 
+ * @param callback {Function} Function to execute for each item, accepts an item and index argument
+ * @return {Boolean} Whether all items were traversed, or traversal was cut short
+ */
 es.ListBlock.prototype.traverseItems = function( callback ) {
-	// Recursively walk the tree of list items and their lists, depth first, until we get to the
-	// same item as location.item, incrementing position.line for each line that occurs before it
 	var stack = [{ 'list': this.list, 'index': 0 }],
 		list,
 		item,
@@ -89,48 +218,9 @@ es.ListBlock.prototype.traverseItems = function( callback ) {
 	return true;
 };
 
-es.ListBlock.prototype.getOffset = function( position ) {
-	if ( position.top < 0 ) {
-		return 0;
-	} else if ( position.top >= this.$.height() ) {
-		return this.getLength();
-	}
-	var blockOffset = this.$.offset();
-	position.top += blockOffset.top;
-	position.left += blockOffset.left;
-	return this.list.getOffsetFromPosition( position );
-};
-
-es.ListBlock.prototype.insertContent = function( offset, content ) {
-	var location = this.list.getLocationFromOffset( offset );
-	location.item.flow.content.insert( location.offset, content );
-};
-
-es.ListBlock.prototype.deleteContent = function( start, end ) {
-	// Normalize start/end
-	if ( end < start ) {
-		var tmp = end;
-		end = start;
-		start = tmp;
-	}
-	var location = this.list.getLocationFromOffset( start );
-	location.item.flow.content.remove( location.offset, location.offset + end - start );
-};
-
-es.ListBlock.prototype.getWordBoundaries = function( offset ) {
-	var location = this.list.getLocationFromOffset( offset );
-	var boundaries = location.item.flow.content.getWordBoundaries( location.offset );
-	boundaries.start += offset - location.offset; 
-	boundaries.end += offset - location.offset;
-	return boundaries;
-};
-
-es.ListBlock.prototype.getSectionBoundaries = function( offset ) {
-	var location = this.list.getLocationFromOffset( offset ),
-		start = offset - location.offset;
-	return new es.Range( start, start + location.item.content.getLength() );
-};
-
-es.Block.models['list'] = es.ListBlock;
+/**
+ * Extend es.Block to support list block creation with es.Block.newFromWikidom
+ */
+es.Block.models.list = es.ListBlock;
 
 es.extend( es.ListBlock, es.Block );
