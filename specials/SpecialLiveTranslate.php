@@ -28,7 +28,7 @@ class SpecialLiveTranslate extends SpecialPage {
 	 * @since 0.4
 	 */
 	public function getDescription() {
-		return wfMsg( 'special-' . strtolower( $this->mName ) );
+		return wfMsg( 'special-' . strtolower( $this->getName() ) );
 	}
 	
 	/**
