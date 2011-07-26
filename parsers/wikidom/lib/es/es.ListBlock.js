@@ -43,22 +43,32 @@ es.ListBlock.prototype.getPosition = function( offset ) {
 	position.left += lineOffset.left - blockOffset.left;
 	position.bottom += lineOffset.top - blockOffset.top;
 	
+	this.traverseItems( function( item ) {
+		if ( item === location.item ) {
+			return false;
+		}
+		position.line += item.flow.lines.length;
+	} );
+	return position;
+};
+
+es.ListBlock.prototype.traverseItems = function( callback ) {
 	// Recursively walk the tree of list items and their lists, depth first, until we get to the
 	// same item as location.item, incrementing position.line for each line that occurs before it
 	var stack = [{ 'list': this.list, 'index': 0 }],
 		list,
 		item,
 		pop,
-		parent;
+		parent,
+		index = 0;
 	while ( stack.length ) {
 		iteration = stack[stack.length - 1];
 		pop = true;
 		while ( iteration.index < iteration.list.items.length ) {
 			item = iteration.list.items[iteration.index++];
-			if ( item === location.item ) {
-				return position;
+			if ( callback( item, index++ ) === false ) {
+				return false;
 			}
-			position.line += item.flow.lines.length;
 			if ( item.lists.length ) {
 				parent = stack.length;
 				for ( var i = 0; i < item.lists.length; i++ ) {
@@ -76,7 +86,7 @@ es.ListBlock.prototype.getPosition = function( offset ) {
 			}
 		}
 	}
-	return position;
+	return true;
 };
 
 es.ListBlock.prototype.getOffset = function( position ) {
