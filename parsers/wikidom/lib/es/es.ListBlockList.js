@@ -2,10 +2,17 @@
  * es.ListBlockList
  */
 es.ListBlockList = function( style, items ) {
+	// Inheritance
+	es.EventEmitter.call( this );
+	
 	// Convert items to es.ListBlockItem objects
-	var listItems = [];
+	var listItems = [],
+		list = this;
 	for ( var i = 0; i < items.length; i++ ) {
 		listItems.push( new es.ListBlockItem( items[i].line, items[i].lists || [] ) );
+		listItems[i].on( 'update', function() {
+			list.emit( 'update' );
+		} );
 	}
 
 	/*
@@ -65,4 +72,5 @@ es.ListBlockList.prototype.renderContent = function( offset ) {
 	}
 };
 
+es.extend( es.ListBlockList, es.EventEmitter );
 es.extend( es.ListBlockList, es.Container );

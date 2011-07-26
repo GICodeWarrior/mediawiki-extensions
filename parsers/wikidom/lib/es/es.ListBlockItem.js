@@ -2,6 +2,9 @@
  * es.ListBlockItem
  */
 es.ListBlockItem = function( line, lists ) {
+	// Inheritance
+	es.EventEmitter.call( this );
+
 	// Convert items to es.ListBlockItem objects
 	var itemLists = [];
 	for ( var i = 0; i < lists.length; i++ ) {
@@ -92,4 +95,5 @@ es.ListBlockItem.prototype.renderContent = function( offset ) {
 	}
 };
 
+es.extend( es.ListBlockItem, es.EventEmitter );
 es.extend( es.ListBlockItem, es.Container );

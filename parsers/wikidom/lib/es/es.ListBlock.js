@@ -7,6 +7,10 @@ es.ListBlock = function( style, items ) {
 	this.$ = this.list.$
 		.addClass( 'editSurface-block' )
 		.data( 'block', this );
+	var block = this;
+	this.list.on( 'update', function() {
+		block.emit( 'update' );
+	} );
 }
 
 es.ListBlock.newFromWikidom = function( wikidomList ) {
