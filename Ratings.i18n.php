@@ -197,6 +197,8 @@ $messages['lb'] = array(
 	'ratings-par-page' => "D'Säit op déi sech d'Bewäertung bezitt.",
 	'ratings-par-tag' => 'De Bewäertungs-Tag. Den Tag gëtt u watfir eng "Eegeschaft" vun der Säit bewäert gëtt.',
 	'ratings-par-showdisabled' => 'Bewäertunge weisen wann de Benotzer net mat ofstëmme kann (Read-Only Modus)',
+	'ratings-par-incsummary' => 'E Resumé vun den aktuelle Bewäertungen iwwer dem Element dat bewäert gëtt weisen?',
+	'ratings-votesummary-desc' => 'Weist e kuerze Resumé vun de Bewäertungen fir déi spezifizéiert Säit an de bewäerte Beräich.',
 	'ratings-current-score' => 'Aktuell Benotzerbewäertung: $1 ($2 {{PLURAL:$2|Bewäertung|Bewäertungen}})',
 	'ratings-no-votes-yet' => 'Et huet nach keen dëst bewäert.',
 );
