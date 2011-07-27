@@ -15,6 +15,11 @@ es.Range = function( from, to ) {
 	this.normalize();
 };
 
+es.Range.prototype.containsOffset = function( offset ) {
+	this.normalize();
+	return offset >= this.start && offset < this.end;
+};
+
 es.Range.prototype.getLength = function() {
 	return Math.abs( this.from - this.to );
 };

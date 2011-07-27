@@ -147,7 +147,7 @@ es.TextFlow.prototype.getPosition = function( offset ) {
 		};
 	while ( position.line < lineCount ) {
 		line = this.lines[position.line];
-		if ( offset >= line.range.start && offset < line.range.end ) {
+		if ( line.range.containsOffset( offset ) ) {
 			position.bottom = position.top + line.height;
 			break;
 		}
