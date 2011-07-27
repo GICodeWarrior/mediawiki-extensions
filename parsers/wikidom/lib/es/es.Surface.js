@@ -584,7 +584,7 @@ es.Surface.prototype.moveCursorDown = function() {
 };
 
 /**
- * Moves the cursor backward of the current position.
+ * Moves the cursor forward of the current position.
  */
 es.Surface.prototype.moveCursorRight = function() {
 	var block = this.location.block,
@@ -608,7 +608,7 @@ es.Surface.prototype.moveCursorRight = function() {
 };
 
 /**
- * Moves the cursor forward of the current position.
+ * Moves the cursor backward of the current position.
  */
 es.Surface.prototype.moveCursorLeft = function() {
 	var block = this.location.block,
