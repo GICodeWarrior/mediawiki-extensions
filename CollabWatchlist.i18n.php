@@ -80,6 +80,13 @@ $messages['en'] = array(
 	'tog-collabwatchlisthidelistusers' => 'Hide edits from collaborative watchlist users',
 );
 
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'collabwatchlist' => 'Агульны сьпіс назіраньня',
+);
+
 /** German (Deutsch)
  * @author Florian Hackenberger
  * @author Kghbln
@@ -150,5 +157,132 @@ $messages['de'] = array(
 	'collabwatchlistedit-normal-submit' => 'Speichern',
 	'collabwatchlistshowhidelistusers' => 'Listenbenutzer $1',
 	'tog-collabwatchlisthidelistusers' => 'Bearbeitungen von Benutzern der kollaborativen Beobachtungsliste ausblenden',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'collabwatchlist' => 'Gemeinsam Iwwerwaachungslëscht',
+	'specialcollabwatchlist' => 'Spezialsäit Gemeinsam Iwwerwwaachungslëscht',
+	'collabwatchlisttagcomment' => 'Bemierkung',
+	'collabwatchlisttools-view' => 'Weisen',
+	'collabwatchlisttools-edit' => 'Kategorien änneren',
+	'collabwatchlisttools-delete' => 'Läschen',
+	'collabwatchlistsall' => 'All Lëschten',
+	'collabwatchlistedit-users-raw-submit' => 'Späicheren',
+	'collabwatchlistedit-raw-titles' => 'Kategorien:',
+	'collabwatchlistedit-users-raw-titles' => 'Benotzer:',
+	'collabwatchlistedit-normal-title' => 'Kategorien änneren',
+	'collabwatchlistedit-normal-legend' => 'Kategorie vun der Iwwerwaachungslëscht erofhuelen',
+	'collabwatchlistedit-normal-explain' => 'Kategorie vun Ärer Iwwerwaachungslëscht stinn hei drënner.',
+	'collabwatchlistedit-tags-raw-submit' => 'Späicheren',
+	'collabwatchlistedit-tags-raw-done' => 'Déi gemeinsam Iwwerwaachungslëscht gouf aktualiséiert',
+	'collabwatchlistedit-users-raw-done' => 'Déi gemeinsam Iwwerwaachungslëscht gouf aktualiséiert.',
+	'collabwatchlisttools-newList' => 'Nei gemeinsam Iwwerwaachungslëscht',
+	'collabwatchlistdelete-submit' => 'Läschen',
+	'collabwatchlistnew-name' => 'Numm vun der Lëscht',
+	'collabwatchlistedit-raw-done' => 'Déi gemeinsam Iwwerwaachungslëscht gouf aktualiséiert',
+	'collabwatchlistedit-normal-submit' => 'Späicheren',
+	'collabwatchlistshowhidelistusers' => '$1 Lëscht vun de Benotzer',
+	'tog-collabwatchlisthidelistusers' => 'Ännerunge vu Benotzer vun der gemeinsamer Iwwerwaachungslëscht verstoppen',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'collabwatchlist' => 'Соработен список на набљудувања',
+	'collabwatchlist-desc' => 'Овозможува соработни `списоци на набљудувања на основа на категории',
+	'specialcollabwatchlist' => 'Специјална страница за соработни списоци на набљудувања',
+	'collabwatchlist-details' => '{{PLURAL:$1|$1 категорија/страница|$1 категории/страници}} на овој соработен список ан набљудувања.',
+	'collabwatchlisttagselect' => 'Ознака',
+	'collabwatchlisttagcomment' => 'Коментар',
+	'collabwatchlistsettagbutton' => 'Постави ознака',
+	'collabwatchlisttools-view' => 'Прикажи',
+	'collabwatchlisttools-edit' => 'Уреди категории',
+	'collabwatchlisttools-rawCategories' => 'Категории за сирово уредување',
+	'collabwatchlisttools-rawTags' => 'Ознаки за сирово уредување',
+	'collabwatchlisttools-rawUsers' => 'Корисници за сирово уредување',
+	'collabwatchlisttools-delete' => 'Избриши',
+	'collabwatchlistsall' => 'Сите списоци',
+	'collabwatchlistfiltertags' => 'Филтрирање на ознаки',
+	'collabwatchlistedit-users-raw-submit' => 'Зачувај',
+	'collabwatchlistedit-raw-title' => 'Категории за сирово уредување',
+	'collabwatchlistedit-tags-raw-title' => 'Ознаки за сирово уредување',
+	'collabwatchlistedit-users-raw-title' => 'Корисници за сирово уредување',
+	'collabwatchlistedit-users-last-owner' => 'Мора да има барем еден сопственик',
+	'collabwatchlistedit-numitems' => 'Оваој соработен список на набљудувања содржи {{PLURAL:$1|1 категорија|$1 категории}}',
+	'collabwatchlistedit-noitems' => 'Овој соработен список на набљудувања не содржи категории.',
+	'collabwatchlistedit-tags-numitems' => 'Оваој соработен список на набљудувања содржи {{PLURAL:$1|1 ознака|$1 ознаки}}',
+	'collabwatchlistedit-tags-noitems' => 'Оваој соработен список на набљудувања не содржи ознаки.',
+	'collabwatchlistedit-users-numitems' => 'Оваој соработен список на набљудувања содржи {{PLURAL:$1|1 корисник|$1 корисници}}',
+	'collabwatchlistedit-users-noitems' => 'Оваој соработен список на набљудувања не содржи корисници.',
+	'collabwatchlistedit-raw-legend' => 'Категории за сирово уредување на соработни списоци на набљудувања',
+	'collabwatchlistedit-users-raw-legend' => 'Корисници за сирово уредување на соработни списоци на набљудувања',
+	'collabwatchlistedit-tags-raw-legend' => 'Ознаки за сирово уредување на соработни списоци на набљудувања',
+	'collabwatchlistedit-raw-titles' => 'Категории:',
+	'collabwatchlistedit-tags-raw-submit' => 'Зачувај',
+);
+
+/** Dutch (Nederlands)
+ * @author SPQRobin
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'collabwatchlist' => 'Collaboratieve volglijst',
+	'collabwatchlist-desc' => 'Biedt een collaboratieve volglijst gebaseerd op categorieën',
+	'specialcollabwatchlist' => 'Collaboratieve volglijst',
+	'collabwatchlist-details' => "{{PLURAL:$1|$1 categorie/pagina|$1 categorieën/pagina's}} in deze collaboratieve volglijst.",
+	'collabwatchlisttagselect' => 'Label',
+	'collabwatchlisttagcomment' => 'Opmerking',
+	'collabwatchlistsettagbutton' => 'Label instellen',
+	'collabwatchlisttools-view' => 'Weergeven',
+	'collabwatchlisttools-edit' => 'Categorieën bewerken',
+	'collabwatchlisttools-rawCategories' => 'Ruwe categorieënlijst bewerken',
+	'collabwatchlisttools-rawTags' => 'Ruwe labellijst bewerken',
+	'collabwatchlisttools-rawUsers' => 'Ruwe gebruikerslijst bewerken',
+	'collabwatchlisttools-delete' => 'Verwijderen',
+	'collabwatchlistsall' => 'Alle lijsten',
+	'collabwatchlistfiltertags' => 'Labels filteren',
+	'collabwatchlistedit-users-raw-submit' => 'Opslaan',
+	'collabwatchlistedit-raw-title' => 'Ruwe categorieënlijst bewerken',
+	'collabwatchlistedit-tags-raw-title' => 'Ruwe labellijst bewerken',
+	'collabwatchlistedit-users-raw-title' => 'Ruwe gebruikerslijst bewerken',
+	'collabwatchlistedit-users-last-owner' => 'Er moet ten minste één eigenaar zijn',
+	'collabwatchlistedit-numitems' => 'Deze collaboratieve volglijst bevat {{PLURAL:$1|1 categorie|$1 categorieën}}',
+	'collabwatchlistedit-noitems' => 'Deze collaboratieve volglijst bevat geen categorieën.',
+	'collabwatchlistedit-tags-numitems' => 'Deze collaboratieve volglijst bevat {{PLURAL:$1|1 label|$1 labels}}',
+	'collabwatchlistedit-tags-noitems' => 'Deze collaboratieve volglijst bevat geen labels.',
+	'collabwatchlistedit-users-numitems' => 'Deze collaboratieve volglijst bevat {{PLURAL:$1|1 gebruiker|$1 gebruikers}}',
+	'collabwatchlistedit-users-noitems' => 'Deze collaboratieve volglijst bevat geen gebruikers.',
+	'collabwatchlistedit-raw-legend' => 'Ruwe categorieënlijst van de collaboratieve volglijst bewerken',
+	'collabwatchlistedit-users-raw-legend' => 'Ruwe gebruikerslijst van de collaboratieve volglijst bewerken',
+	'collabwatchlistedit-tags-raw-legend' => 'Ruwe labellijst van de collaboratieve volglijst bewerken',
+	'collabwatchlistedit-raw-titles' => 'Categorieën:',
+	'collabwatchlistedit-tags-raw-titles' => 'Labels:',
+	'collabwatchlistedit-users-raw-titles' => 'Gebruikers:',
+	'collabwatchlistedit-tags-raw-submit' => 'Opslaan',
+	'collabwatchlistinverttags' => 'Labelfilter omkeren',
+	'collabwatchlistdelete-submit' => 'Verwijderen',
+	'collabwatchlistnew-explain' => 'De naam van de lijst moet uniek zijn.',
+	'collabwatchlistnew-submit' => 'Aanmaken',
+	'collabwatchlistedit-normal-submit' => 'Opslaan',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'collabwatchlisttagcomment' => 'వ్యాఖ్య',
+	'collabwatchlisttools-delete' => 'తొలగించు',
+	'collabwatchlistsall' => 'అన్ని జాబితాలు',
+	'collabwatchlistedit-users-raw-submit' => 'భద్రపరచు',
+	'collabwatchlistedit-raw-titles' => 'వర్గాలు:',
+	'collabwatchlistedit-users-raw-titles' => 'వాడుకరులు:',
+	'collabwatchlistedit-tags-raw-submit' => 'భద్రపరచు',
+	'collabwatchlistdelete-submit' => 'తొలగించు',
+	'collabwatchlistnew-name' => 'జాబితా పేరు',
+	'collabwatchlistedit-normal-submit' => 'భద్రపరచు',
 );
 
