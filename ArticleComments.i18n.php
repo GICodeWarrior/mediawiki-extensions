@@ -169,6 +169,42 @@ $messages['ba'] = array(
 	'processcomment' => 'Мәҡәләгә иҫкәрмә өҫтәү бара',
 );
 
+/** Bavarian (Boarisch)
+ * @author Mucalexx
+ */
+$messages['bar'] = array(
+	'article-comments-desc' => 'Erméglichts Kómmtentirn voh Inhoidsseiten',
+	'article-comments-title-string' => 'Titel',
+	'article-comments-name-string' => 'Nåm',
+	'article-comments-name-field' => 'Nåm (erforderlich):',
+	'article-comments-url-field' => 'Webseiten:',
+	'article-comments-url-string' => 'URL',
+	'article-comments-comment-string' => 'Kommentar',
+	'article-comments-comment-field' => 'Kommentar:',
+	'article-comments-submit-button' => 'Speichern',
+	'article-comments-leave-comment-link' => 'Gib an Kommentar ob ...',
+	'article-comments-invalid-field' => 'Dé Eihgob <nowiki>[$2]</nowiki> ois $1 is ungütig.',
+	'article-comments-required-field' => '$1 is a Pflichtföd.',
+	'article-comments-submission-failed' => 'Dé Obgob vom Kommentar is föögschlong.',
+	'article-comments-failure-reasons' => 'Dé Obgob vom Kommentar is ausm {{PLURAL:$1| fóigenden Grund|dé fóigenden Grynd}} föögschlong:',
+	'article-comments-no-comments' => 'Fyr dé Seiten „[[$1]]“ kennern im Móment koane Kommentare obgeem wern.',
+	'article-comments-talk-page-starter' => '<noinclude>Kommentare zur da Seiten „[[$1]]“
+<comments />
+----- __NOEDITSECTION__</noinclude>',
+	'article-comments-commenter-said' => '$1 sogt …',
+	'article-comments-summary' => "A Kommentar is voh $1 ywer d' Prógrammdaweiterung ArticleComments obgeem worn.",
+	'article-comments-submission-succeeded' => 'Dé Obgob vom Kommentar is durchgfyrd worn.',
+	'article-comments-submission-success' => "Du host erfóigreich an Kommentar fyr d' Seiten „[[$1]]“ obgeem.",
+	'article-comments-submission-view-all' => 'Du kåst [[$1|olle Kommentare zua derer Seiten]] åschaung',
+	'article-comments-user-is-blocked' => "Du derfst d' Seiten „[[$1]]“ derzeid néd beorweiten.",
+	'article-comments-comment-bad-mode' => "Fyr d' Kommentiarung is a ungütiger Módus ågeem.
+Méglich san d' Módusse „plain“, „normal“ und „wiki“.",
+	'article-comments-comment-missing-name-parameter' => 'Da Nåm fööd',
+	'article-comments-comment-missing-date-parameter' => "'s Daatum fööd",
+	'article-comments-no-spam' => "Minderstens oahne vo d' Ågom is ois Spam identifizird worn.",
+	'processcomment' => 'Kommentirn voh Inhoidsseiten vaorweiten',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
