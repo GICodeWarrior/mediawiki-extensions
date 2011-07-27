@@ -2,9 +2,17 @@
 /**
  * Additional input types for [http://www.mediawiki.org/wiki/Extension:SemanticForms Semantic Forms].
  *
+ * @defgroup SFI Semantic Forms Inputs
  * @author Stephan Gambke
  * @author Sanyam Goyal
- * @version 0.4.1
+ * @version 0.4.2 alpha
+ */
+
+/**
+ * The main file of the Semantic Forms Inputs extension
+ *
+ * @file
+ * @ingroup SFI
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -67,7 +75,7 @@ class SFISettings {
  * Registers the input types with Semantic Forms.
  */
 function wfSFISetup() {
-	global $sfgFormPrinter;
+	global $sfgFormPrinter, $wgVersion;
 
 	$sfgFormPrinter->setInputTypeHook( 'regexp', array( 'SFIInputs', 'regexpHTML' ), array() );
 	$sfgFormPrinter->setInputTypeHook( 'datepicker', array( 'SFIInputs', 'jqDatePickerHTML' ), array() );
