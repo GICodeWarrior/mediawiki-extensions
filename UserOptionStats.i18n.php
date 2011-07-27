@@ -486,6 +486,7 @@ $messages['lb'] = array(
 	'useroptionstats-desc' => '[[Special:UserOptionStats|Spezialsäit]], fir de Gebrauch vun de Benotzeroptiounen op MediaWiki unzeweisen',
 	'uos-warn' => 'PHPlot ass net installéiert!',
 	'uos-choose' => 'Wielt eng vun dëse Benotzerastellungen: $1',
+	'uos-choose-hidden' => 'Wielt eng vun dëse verstoppte Benotzerastellungen: $1',
 	'uos-unknown' => '*Standardastellung',
 	'uos-other' => '*Anerer',
 	'uos-title' => 'Verdeelung vun de Wäerter vun der Benotzerastellung $1',
