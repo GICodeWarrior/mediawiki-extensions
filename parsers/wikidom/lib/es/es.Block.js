@@ -88,10 +88,9 @@ es.Block.prototype.insertContent = function( offset, content ) {
 /**
  * Deletes content in a block within a range.
  * 
- * @param offset {Integer} Offset to start removing content from
- * @param length {Integer} Offset to start removing content to
+ * @param range {es.Range} Range of content to remove
  */
-es.Block.prototype.deleteContent = function( start, end ) {
+es.Block.prototype.deleteContent = function( range ) {
 	throw 'Block.deleteContent not implemented in this subclass.';
 };
 
@@ -102,31 +101,28 @@ es.Block.prototype.deleteContent = function( start, end ) {
  * 
  * @param method {String} Way to apply annotation ("toggle", "add" or "remove")
  * @param annotation {Object} Annotation to apply
- * @param start {Integer} Offset to begin annotating from
- * @param end {Integer} Offset to stop annotating to
+ * @param range {es.Range} Range of content to annotate
  */
-es.Block.prototype.annotateContent = function( method, annotation, start, end ) {
+es.Block.prototype.annotateContent = function( method, annotation, range ) {
 	throw 'Block.annotateContent not implemented in this subclass.';
 };
 
 /**
  * Gets content within a range.
  * 
- * @param start {Integer} Offset to get content from
- * @param end {Integer} Offset to get content to
+ * @param range {es.Range} Range of content to get
  */
-es.Block.prototype.getContent = function( start, end ) {
+es.Block.prototype.getContent = function( range) {
 	throw 'Block.getContent not implemented in this subclass.';
 };
 
 /**
  * Gets content as plain text within a range.
  * 
- * @param start {Integer} Offset to start get text from
- * @param end {Integer} Offset to start get text to
+ * @param range {es.Range} Range of text to get
  * @param render {Boolean} If annotations should have any influence on output
  */
-es.Block.prototype.getText = function( start, end, render ) {
+es.Block.prototype.getText = function( range, render ) {
 	throw 'Block.getText not implemented in this subclass.';
 };
 

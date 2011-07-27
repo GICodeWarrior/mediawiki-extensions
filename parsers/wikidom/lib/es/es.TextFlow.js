@@ -90,10 +90,10 @@ es.TextFlow.prototype.getOffset = function( position ) {
 	 */
 	var $ruler = $( '<div class="editSurface-ruler"></div>' ).appendTo( this.$ ),
 		ruler = $ruler[0],
-		fit = this.fitCharacters( line.start, line.end, ruler, position.left );
-	ruler.innerHTML = this.content.render( line.start, fit.end );
+		fit = this.fitCharacters( line.range, ruler, position.left );
+	ruler.innerHTML = this.content.render( new es.Range( line.range.start, fit.end ) );
 	var left = ruler.clientWidth;
-	ruler.innerHTML = this.content.render( line.start, fit.end + 1 );
+	ruler.innerHTML = this.content.render( new es.Range( line.range.start, fit.end + 1 ) );
 	var right = ruler.clientWidth;
 	var center = Math.round( left + ( ( right - left ) / 2 ) );
 	$ruler.remove();
@@ -103,7 +103,7 @@ es.TextFlow.prototype.getOffset = function( position ) {
 		// If the position is right of the center of the character it's on top of, increment offset
 		fit.end + ( position.left >= center ? 1 : 0 ),
 		// If the line ends in a non-boundary character, decrement offset
-		line.end + ( this.boundaryTest.exec( line.text.substr( -1 ) ) ? -1 : 0 )
+		line.range.end + ( this.boundaryTest.exec( line.text.substr( -1 ) ) ? -1 : 0 )
 	);
 };
 
@@ -147,7 +147,7 @@ es.TextFlow.prototype.getPosition = function( offset ) {
 		};
 	while ( position.line < lineCount ) {
 		line = this.lines[position.line];
-		if ( offset >= line.start && offset < line.end ) {
+		if ( offset >= line.range.start && offset < line.range.end ) {
 			position.bottom = position.top + line.height;
 			break;
 		}
@@ -174,10 +174,10 @@ es.TextFlow.prototype.getPosition = function( offset ) {
 	 * Since the left position will be zero for the first character in the line, so we can skip
 	 * measuring for those cases.
 	 */
-	if ( line.start < offset ) {
+	if ( line.range.start < offset ) {
 		var $ruler = $( '<div class="editSurface-ruler"></div>' ).appendTo( this.$ ),
 			ruler = $ruler[0];
-		ruler.innerHTML = this.content.render( line.start, offset );
+		ruler.innerHTML = this.content.render( new es.Range( line.range.start, offset ) );
 		position.left = ruler.clientWidth;
 		$ruler.remove();
 	}
@@ -240,7 +240,7 @@ es.TextFlow.prototype.renderIteration = function( limit ) {
 		charFit = null,
 		wordCount = this.boundaries.length;
 	while ( ++iteration <= limit && rs.wordOffset < wordCount - 1 ) {
-		wordFit = this.fitWords( rs.wordOffset, wordCount - 1, rs.ruler, rs.width );
+		wordFit = this.fitWords( new es.Range( rs.wordOffset, wordCount - 1 ), rs.ruler, rs.width );
 		fractional = false;
 		if ( wordFit.width > rs.width ) {
 			// The first word didn't fit, we need to split it up
@@ -249,12 +249,16 @@ es.TextFlow.prototype.renderIteration = function( limit ) {
 			rs.wordOffset++;
 			lineEnd = this.boundaries[rs.wordOffset];
 			do {
-				charFit = this.fitCharacters( charOffset, lineEnd, rs.ruler, rs.width );
+				charFit = this.fitCharacters(
+					new es.Range( charOffset, lineEnd ), rs.ruler, rs.width
+				);
 				// If we were able to get the rest of the characters on the line OK
 				if ( charFit.end === lineEnd) {
 					// Try to fit more words on the line
 					wordFit = this.fitWords(
-						rs.wordOffset, wordCount - 1, rs.ruler, rs.width - charFit.width
+						new es.Range( rs.wordOffset, wordCount - 1 ),
+						rs.ruler,
+						rs.width - charFit.width
 					);
 					if ( wordFit.end > rs.wordOffset ) {
 						lineOffset = rs.wordOffset;
@@ -262,7 +266,7 @@ es.TextFlow.prototype.renderIteration = function( limit ) {
 						charFit.end = lineEnd = this.boundaries[rs.wordOffset];
 					}
 				}
-				this.appendLine( charOffset, charFit.end, lineOffset, fractional );
+				this.appendLine( new es.Range( charOffset, charFit.end ), lineOffset, fractional );
 				// Move on to another line
 				charOffset = charFit.end;
 				// Mark the next line as fractional
@@ -270,7 +274,7 @@ es.TextFlow.prototype.renderIteration = function( limit ) {
 			} while ( charOffset < lineEnd );
 		} else {
 			lineEnd = this.boundaries[wordFit.end];
-			this.appendLine( lineStart, lineEnd, rs.wordOffset, fractional );
+			this.appendLine( new es.Range( lineStart, lineEnd ), rs.wordOffset, fractional );
 			rs.wordOffset = wordFit.end;
 		}
 		lineStart = lineEnd;
@@ -344,10 +348,10 @@ es.TextFlow.prototype.render = function( offset ) {
 			currentLine = this.lines.length - 1;
 		for ( var i = this.lines.length - 1; i >= 0; i-- ) {
 			var line = this.lines[i];
-			if ( line.start < offset && line.end > offset ) {
+			if ( line.range.start < offset && line.range.end > offset ) {
 				currentLine = i;
 			}
-			if ( ( line.end < offset && !line.fractional ) || i === 0 ) {
+			if ( ( line.range.end < offset && !line.fractional ) || i === 0 ) {
 				rs.lines = this.lines.slice( 0, i );
 				rs.wordOffset = line.wordOffset;
 				gap = currentLine - i;
@@ -365,12 +369,13 @@ es.TextFlow.prototype.render = function( offset ) {
 /**
  * Adds a line containing a given range of text to the end of the DOM and the "lines" array.
  * 
+ * @param range {es.Range} Range of content to append
  * @param start {Integer} Beginning of text range for line
  * @param end {Integer} Ending of text range for line
  * @param wordOffset {Integer} Index within this.words which the line begins with
  * @param fractional {Boolean} If the line begins in the middle of a word
  */
-es.TextFlow.prototype.appendLine = function( start, end, wordOffset, fractional ) {
+es.TextFlow.prototype.appendLine = function( range, wordOffset, fractional ) {
 	var rs = this.renderState,
 		lineCount = rs.lines.length;
 	$line = this.$.find( '.editSurface-line[line-index=' + lineCount + ']' );
@@ -378,12 +383,11 @@ es.TextFlow.prototype.appendLine = function( start, end, wordOffset, fractional 
 		$line = $( '<div class="editSurface-line" line-index="' + lineCount + '"></div>' )
 			.appendTo( this.$ );
 	}
-	$line[0].innerHTML = this.content.render( start, end );
+	$line[0].innerHTML = this.content.render( range );
 	// Collect line information
 	rs.lines.push({
-		'text': this.content.getText( start, end ),
-		'start': start,
-		'end': end,
+		'text': this.content.getText( range ),
+		'range': range,
 		'width': $line.outerWidth(),
 		'height': $line.outerHeight(),
 		'wordOffset': wordOffset,
@@ -415,14 +419,15 @@ es.TextFlow.prototype.appendLine = function( start, end, wordOffset, fractional 
  * starting with [offset .. limit], which usually results in reducing the end position in all but
  * the last line, and in most cases more than 3 times, before changing directions.
  * 
- * @param start {Integer} Index within "words" to begin fitting from
- * @param end {Integer} Index within "words" to stop fitting to
+ * @param range {es.Range} Range of content to try to fit
  * @param ruler {HTMLElement} Element to take measurements with
  * @param width {Integer} Maximum width to allow the line to extend to
  * @return {Integer} Last index within "words" that contains a word that fits
  */
-es.TextFlow.prototype.fitWords = function( start, end, ruler, width ) {
-	var offset = start,
+es.TextFlow.prototype.fitWords = function( range, ruler, width ) {
+	var offset = range.start,
+		start = range.start,
+		end = range.end,
 		charOffset = this.boundaries[offset],
 		middle,
 		lineWidth,
@@ -435,7 +440,7 @@ es.TextFlow.prototype.fitWords = function( start, end, ruler, width ) {
 		// Measure and cache width of substring
 		cacheKey = charOffset + ':' + charMiddle;
 		// Prepare the line for measurement using pre-escaped HTML
-		ruler.innerHTML = this.content.render( charOffset, charMiddle );
+		ruler.innerHTML = this.content.render( new es.Range( charOffset, charMiddle ) );
 		// Test for over/under using width of the rendered line
 		this.widthCache[cacheKey] = lineWidth = ruler.clientWidth;
 		
@@ -457,7 +462,7 @@ es.TextFlow.prototype.fitWords = function( start, end, ruler, width ) {
 	if ( end === middle - 1 ) {
 		// A final measurement is required
 		var charStart = this.boundaries[start];
-		ruler.innerHTML = this.content.render( charOffset, charStart );
+		ruler.innerHTML = this.content.render( new es.Range( charOffset, charStart ) );
 		lineWidth = this.widthCache[charOffset + ':' + charStart] = ruler.clientWidth;
 	}
 	return { 'end': start, 'width': lineWidth };
@@ -470,14 +475,15 @@ es.TextFlow.prototype.fitWords = function( start, end, ruler, width ) {
  * used to detect when the first character was too long to fit on a line. In such cases the result
  * will contain the index of the first character and it's width.
  * 
- * @param start {Integer} Index within "text" to begin fitting from
- * @param end {Integer} Index within "text" to stop fitting to
+ * @param range {es.Range} Range of content to try to fit
  * @param ruler {HTMLElement} Element to take measurements with
  * @param width {Integer} Maximum width to allow the line to extend to
  * @return {Integer} Last index within "text" that contains a character that fits
  */
-es.TextFlow.prototype.fitCharacters = function( start, end, ruler, width ) {
-	var offset = start,
+es.TextFlow.prototype.fitCharacters = function( range, ruler, width ) {
+	var offset = range.start,
+		start = range.start,
+		end = range.end,
 		middle,
 		lineWidth,
 		cacheKey;
@@ -491,7 +497,7 @@ es.TextFlow.prototype.fitCharacters = function( start, end, ruler, width ) {
 			lineWidth = this.widthCache[cacheKey];
 		} else {
 			// Fill the line with a portion of the text, escaped as HTML
-			ruler.innerHTML = this.content.render( offset, middle );
+			ruler.innerHTML = this.content.render( new es.Range( offset, middle ) );
 			// Test for over/under using width of the rendered line
 			this.widthCache[cacheKey] = lineWidth = ruler.clientWidth;
 		}
@@ -517,7 +523,7 @@ es.TextFlow.prototype.fitCharacters = function( start, end, ruler, width ) {
 			lineWidth = this.widthCache[cacheKey];
 		} else {
 			// A final measurement is required
-			ruler.innerHTML = this.content.render( offset, start );
+			ruler.innerHTML = this.content.render( new es.Range( offset, start ) );
 			lineWidth = this.widthCache[cacheKey] = ruler.clientWidth;
 		}
 	}

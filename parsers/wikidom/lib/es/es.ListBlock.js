@@ -49,18 +49,14 @@ es.ListBlock.prototype.insertContent = function( offset, content ) {
 /**
  * Deletes content in a block within a range.
  * 
- * @param offset {Integer} Offset to start removing content from
- * @param length {Integer} Offset to start removing content to
+ * @param range {es.Range} Range of content to remove
  */
-es.ListBlock.prototype.deleteContent = function( start, end ) {
-	// Normalize start/end
-	if ( end < start ) {
-		var tmp = end;
-		end = start;
-		start = tmp;
-	}
-	var location = this.list.getLocationFromOffset( start );
-	location.item.flow.content.remove( location.offset, location.offset + end - start );
+es.ListBlock.prototype.deleteContent = function( range ) {
+	range.normalize();
+	var location = this.list.getLocationFromOffset( range.start );
+	location.item.flow.content.remove(
+		new es.Range( location.offset, location.offset + range.getLength() )
+	);
 };
 
 /**
@@ -70,22 +66,23 @@ es.ListBlock.prototype.deleteContent = function( start, end ) {
  * 
  * @param method {String} Way to apply annotation ("toggle", "add" or "remove")
  * @param annotation {Object} Annotation to apply
- * @param start {Integer} Offset to begin annotating from
- * @param end {Integer} Offset to stop annotating to
+ * @param range {es.Range} Range of content to annotate
  */
-es.ListBlock.prototype.annotateContent = function( method, annotation, start, end ) {
+es.ListBlock.prototype.annotateContent = function( method, annotation, range ) {
+	range.normalize();
 	// TODO: Support annotating multiple items at once
-	var location = this.list.getLocationFromOffset( start );
-	location.item.content.annotate( method, annotation, location.offset, location.offset + end - start );
+	var location = this.list.getLocationFromOffset( range.start );
+	location.item.content.annotate(
+		method, annotation, new es.Range( location.offset, location.offset + range.getLength() )
+	);
 };
 
 /**
  * Gets content within a range.
  * 
- * @param start {Integer} Offset to get content from
- * @param end {Integer} Offset to get content to
+ * @param range {es.Range} Range of content to get
  */
-es.ListBlock.prototype.getContent = function() {
+es.ListBlock.prototype.getContent = function( range ) {
 	// TODO: Implement me!
 	return new Content();
 };
@@ -93,11 +90,10 @@ es.ListBlock.prototype.getContent = function() {
 /**
  * Gets content as plain text within a range.
  * 
- * @param start {Integer} Offset to start get text from
- * @param end {Integer} Offset to start get text to
+ * @param range {Range} Range of text to get
  * @param render {Boolean} If annotations should have any influence on output
  */
-es.ListBlock.prototype.getText = function() {
+es.ListBlock.prototype.getText = function( range ) {
 	// TODO: Implement me!
 	return '';
 };

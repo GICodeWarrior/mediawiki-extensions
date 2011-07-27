@@ -46,17 +46,10 @@ es.ParagraphBlock.prototype.insertContent = function( offset, content ) {
 /**
  * Deletes content in a block within a range.
  * 
- * @param start {Integer} Offset to start removing content from
- * @param end {Integer} Offset to start removing content to
+ * @param range {es.Range} Range of content to remove
  */
-es.ParagraphBlock.prototype.deleteContent = function( start, end ) {
-	// Normalize start/end
-	if ( end < start ) {
-		var tmp = end;
-		end = start;
-		start = tmp;
-	}
-	this.content.remove( start, end );
+es.ParagraphBlock.prototype.deleteContent = function( range ) {
+	this.content.remove( range );
 };
 
 /**
@@ -66,11 +59,10 @@ es.ParagraphBlock.prototype.deleteContent = function( start, end ) {
  * 
  * @param method {String} Way to apply annotation ("toggle", "add" or "remove")
  * @param annotation {Object} Annotation to apply
- * @param start {Integer} Offset to begin annotating from
- * @param end {Integer} Offset to stop annotating to
+ * @param range {es.Range} Range of content to annotate
  */
-es.ParagraphBlock.prototype.annotateContent = function( method, annotation, start, end ) {
-	this.content.annotate( method, annotation, start, end );
+es.ParagraphBlock.prototype.annotateContent = function( method, annotation, range ) {
+	this.content.annotate( method, annotation, range );
 };
 
 /**
@@ -79,19 +71,18 @@ es.ParagraphBlock.prototype.annotateContent = function( method, annotation, star
  * @param start {Integer} Offset to get content from
  * @param end {Integer} Offset to get content to
  */
-es.Block.prototype.getContent = function( start, end ) {
-	return this.content.slice( start, end );
+es.Block.prototype.getContent = function( range ) {
+	return this.content.getContent( range );
 };
 
 /**
  * Gets content as plain text within a range.
  * 
- * @param start {Integer} Offset to start get text from
- * @param end {Integer} Offset to start get text to
+ * @param range {es.Range} Range of text to get
  * @param render {Boolean} If annotations should have any influence on output
  */
-es.Block.prototype.getText = function( start, end, render ) {
-	return this.content.getText( start, end, render );
+es.Block.prototype.getText = function( range, render ) {
+	return this.content.getText( range, render );
 };
 
 /**
@@ -146,6 +137,6 @@ es.ParagraphBlock.prototype.getSectionBoundaries = function( offset ) {
 /**
  * Extend es.Block to support paragraph block creation with es.Block.newFromWikidom
  */
-es.Block.models.paragraph = es.ParagraphBlock; 
+es.Block.models.paragraph = es.ParagraphBlock;
 
 es.extend( es.ParagraphBlock, es.Block );

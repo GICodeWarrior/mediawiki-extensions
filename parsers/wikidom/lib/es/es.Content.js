@@ -265,23 +265,22 @@ es.Content.renderAnnotation = function( bias, annotation, stack ) {
  * TODO: Implement render option, which will allow annotations to influence output, such as an
  * image outputing it's URL
  * 
+ * @param range {es.Range} Range of text to get
  * @param start {Integer} Optional beginning of range, if omitted range will begin at 0
  * @param end {Integer} Optional end of range, if omitted range will end a this.data.length
  * @param render {Boolean} If annotations should have any influence on output
  * @return {String} Plain text within given range
  */
-es.Content.prototype.getText = function( start, end, render ) {
-	// Wrap values
-	start = Math.max( 0, start || 0 );
-	if ( end === undefined ) {
-		end = this.data.length;
+es.Content.prototype.getText = function( range, render ) {
+	if ( !range ) {
+		range = new es.Range( 0, this.data.length );
 	} else {
-		end = Math.min( this.data.length, end );
+		range.normalize();
 	}
 	// Copy characters
 	var text = '';
 	var i;
-	for ( i = start; i < end; i++ ) {
+	for ( i = range.start; i < range.end; i++ ) {
 		// If not using in IE6 or IE7 (which do not support array access for strings) use this..
 		// text += this.data[i][0];
 		// Otherwise use this...
@@ -295,12 +294,16 @@ es.Content.prototype.getText = function( start, end, render ) {
  * 
  * Range arguments (start and end) are clamped if out of range.
  * 
- * @param start {Integer} Optional beginning of range, if omitted range will begin at 0
- * @param end {Integer} Optional end of range, if omitted range will end a this.data.length
+ * @param range {es.Range} Range of content to get
  * @return {es.Content} New content object
  */
-es.Content.prototype.slice = function( start, end ) {
-	return new es.Content( this.data.slice( start, end ) );
+es.Content.prototype.getContent = function( range ) {
+	if ( !range ) {
+		range = new es.Range( 0, this.data.length );
+	} else {
+		range.normalize();
+	}
+	return new es.Content( this.data.slice( range.start, range.end ) );
 };
 
 /**
@@ -335,14 +338,13 @@ es.Content.prototype.insert = function( offset, content ) {
 /**
  * Removes content data within a specific range.
  * 
- * @param start {Integer} Beginning of range
- * @param end {Integer} End of range
+ * @param range {Range} Range of content to remove
  */
-es.Content.prototype.remove = function( start, end ) {
-	this.data.splice( start, end - start );
+es.Content.prototype.remove = function( range ) {
+	range.normalize();
+	this.data.splice( range.start, range.getLength() );
 	this.emit( 'remove', {
-		'start': start,
-		'end': end
+		'range': range
 	} );
 	this.emit( 'change', { 'type': 'remove' } );
 };
@@ -362,16 +364,15 @@ es.Content.prototype.getLength = function() {
  * Strict coverage may be used to compare not only annotation types, but also their data. Since new
  * line characters are never annotated, they are always considered covered.
  * 
- * @param start {Integer} Beginning of range
- * @param end {Integer} End of range
+ * @param range {es.Range} Range of content to analyze
  * @param annotation {Object} Annotation to compare with
  * @param strict {Boolean} Optionally compare annotation data as well as type
  * @return {Array} List of indexes of covered characters within content data
  */
-es.Content.prototype.coverageOfAnnotation = function( start, end, annotation, strict ) {
+es.Content.prototype.coverageOfAnnotation = function( range, annotation, strict ) {
 	var coverage = [];
 	var i, index;
-	for ( i = start; i < end; i++ ) {
+	for ( i = range.start; i < range.end; i++ ) {
 		index = this.indexOfAnnotation( i, annotation );
 		if ( typeof this.data[i] !== 'string' && index !== -1 ) {
 			if ( strict ) {
@@ -427,18 +428,19 @@ es.Content.prototype.indexOfAnnotation = function( offset, annotation, strict ) 
  * 
  * @param method {String} Way to apply annotation ("toggle", "add" or "remove")
  * @param annotation {Object} Annotation to apply
- * @param start {Integer} Offset to begin annotating from
- * @param end {Integer} Offset to stop annotating to
+ * @param range {es.Range} Range of content to annotate
  */
-es.Content.prototype.annotate = function( method, annotation, start, end ) {
+es.Content.prototype.annotate = function( method, annotation, range ) {
+	if ( !range ) {
+		range = new es.Range( 0, this.data.length );
+	} else {
+		range.normalize();
+	}
 	var i;
-
-	start = Math.max( start, 0 );
-	end = Math.min( end, this.data.length );
 	if ( method === 'toggle' ) {
-		var coverage = this.coverageOfAnnotation( start, end, annotation, false );
-		if ( coverage.length === end - start ) {
-			var strictCoverage = this.coverageOfAnnotation( start, end, annotation, true );
+		var coverage = this.coverageOfAnnotation( range, annotation, false );
+		if ( coverage.length === range.getLength() ) {
+			var strictCoverage = this.coverageOfAnnotation( range, annotation, true );
 			method = strictCoverage.length === coverage.length ? 'remove' : 'add';
 		} else {
 			method = 'add';
@@ -446,7 +448,7 @@ es.Content.prototype.annotate = function( method, annotation, start, end ) {
 	}
 	if ( method === 'add' ) {
 		var duplicate;
-		for ( i = start; i < end; i++ ) {
+		for ( i = range.start; i < range.end; i++ ) {
 			duplicate = -1;
 			if ( typeof this.data[i] === 'string' ) {
 				// Never annotate new lines
@@ -468,7 +470,7 @@ es.Content.prototype.annotate = function( method, annotation, start, end ) {
 			}
 		}
 	} else if ( method === 'remove' ) {
-		for ( i = start; i < end; i++ ) {
+		for ( i = range.start; i < range.end; i++ ) {
 			if ( typeof this.data[i] !== 'string' ) {
 				if ( annotation.type === 'all' ) {
 					// Remove all annotations by converting the annotated character to a plain
@@ -486,8 +488,7 @@ es.Content.prototype.annotate = function( method, annotation, start, end ) {
 	this.emit( 'annotate', {
 		'method': method,
 		'annotation': annotation,
-		'start': start,
-		'end': end
+		'range': range
 	} );
 	this.emit( 'change', { 'type': 'annotate' } );
 };
@@ -499,9 +500,9 @@ es.Content.prototype.annotate = function( method, annotation, start, end ) {
  * @param end {Integer} End of range
  * @param {String} Rendered HTML of content data
  */
-es.Content.prototype.render = function( start, end ) {
-	if ( start || end ) {
-		return this.slice( start, end ).render();
+es.Content.prototype.render = function( range ) {
+	if ( range ) {
+		return this.getContent( range ).render();
 	}
 	var out = '',
 		left = '',
@@ -584,20 +585,16 @@ es.Content.prototype.getLines = function() {
 		line,
 		offset = 0,
 		i, j, k;
-
 	for ( i = 0; i < this.data.length; i++ ) {
-
 		if ( line == null ) {
 			line = {
 				text : '',
 				annotations : []
 			};
 		}
-		
 		right = this.data[i];
 		leftPlain = typeof left === 'string';
 		rightPlain = typeof right === 'string';
-		
 		if ( rightPlain && right == "\n" ) {
 			lines.push(line);
 			line = null;
@@ -605,7 +602,6 @@ es.Content.prototype.getLines = function() {
 			left = '';
 			continue;
 		}
-
 		if ( !leftPlain ) {
 			for ( j = 1; j < left.length; j++ ) {
 				for ( k = line.annotations.length - 1; k >= 0; k-- ) {
@@ -618,7 +614,6 @@ es.Content.prototype.getLines = function() {
 				}
 			}
 		}
-
 		if ( !rightPlain ) {
 			for ( j = 1; j < right.length; j++ ) {
 				if ( leftPlain || this.indexOfAnnotation( i - 1, right[j], true ) === -1 ) {
@@ -631,16 +626,12 @@ es.Content.prototype.getLines = function() {
 				}
 			}
 		}
-		
 		line.text += rightPlain ? right : right[0];
-
 		left = right;
 	}
-
 	if ( line != null ) {
 		lines.push(line);
 	}
-	
 	return lines;
 };
 

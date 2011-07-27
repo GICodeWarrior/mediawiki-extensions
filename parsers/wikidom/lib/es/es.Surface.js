@@ -18,7 +18,7 @@ es.Surface = function( $container, doc ) {
 		'clickDelay': 500,
 		'clickTimeout': null,
 		'clickPosition': null,
-		'hotSpotRadius': 2
+		'hotSpotRadius': 1
 	};
 	this.keyboard = {
 		'selecting': false,
@@ -452,7 +452,9 @@ es.Surface.prototype.drawSelection = function() {
 					this.$rangeFill.hide();
 				}
 			}
-			text += from.location.block.getText( from.location.offset, to.location.offset );
+			text += from.location.block.getText(
+				new es.Range( from.location.offset, to.location.offset )
+			);
 		} else {
 			// Multiple block selection
 			blockWidth = Math.max(
@@ -499,7 +501,7 @@ es.Surface.prototype.drawSelection = function() {
 };
 
 /**
- * Sets the selection to a new range.
+ * Sets the selection to a new es.Range.
  * 
  * @param from {es.Selection} Selection to apply
  */
@@ -653,7 +655,7 @@ es.Surface.prototype.deleteContent = function( selection ) {
 		to = selection.end;
 	if ( from.block === to.block ) {
 		// Single block deletion
-		from.block.deleteContent( from.offset, to.offset );
+		from.block.deleteContent( new es.Range( from.offset, to.offset ) );
 	} else {
 		// Multiple block deletion
 		var block;
@@ -661,13 +663,13 @@ es.Surface.prototype.deleteContent = function( selection ) {
 			block = this.doc.blocks[i];
 			if ( block === from.block ) {
 				// From offset to length
-				block.deleteContent( from.offset, block.getLength() );
+				block.deleteContent( new es.Range( from.offset, block.getLength() ) );
 			} else if ( block === to.block ) {
 				// From 0 to offset
-				block.deleteContent( 0, to.offset );
+				block.deleteContent( new es.Range( 0, to.offset ) );
 			} else {
 				// Full coverage
-				block.deleteContent( 0, block.getLength() );
+				block.deleteContent( new es.Range( 0, block.getLength() ) );
 			}
 		}
 	}
@@ -696,7 +698,7 @@ es.Surface.prototype.annotateContent = function( method, annotation, selection )
 		to = selection.end;
 	if ( from.block === to.block ) {
 		// Single block annotation
-		from.block.annotateContent( method, annotation, from.offset, to.offset );
+		from.block.annotateContent( method, annotation, new es.Range( from.offset, to.offset ) );
 	} else {
 		// Multiple block annotation
 		var block;
@@ -704,13 +706,15 @@ es.Surface.prototype.annotateContent = function( method, annotation, selection )
 			block = this.doc.blocks[i];
 			if ( block === from.block ) {
 				// From offset to length
-				block.annotateContent( method, annotation, from.offset, block.getLength() );
+				block.annotateContent(
+					method, annotation, new es.Range( from.offset, block.getLength() )
+				);
 			} else if ( block === to.block ) {
 				// From 0 to offset
-				block.annotateContent( method, annotation, 0, to.offset );
+				block.annotateContent( method, annotation, new es.Range( 0, to.offset ) );
 			} else {
 				// Full coverage
-				block.annotateContent( method, annotation, 0, block.getLength() );
+				block.annotateContent( method, annotation, new es.Range( 0, block.getLength() ) );
 			}
 		}
 	}

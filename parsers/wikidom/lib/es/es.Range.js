@@ -10,14 +10,10 @@
  * @property end {Integer}
  */
 es.Range = function( from, to ) {
-	this.set( from, to );
-};
-
-es.Range.prototype.set = function( from, to ) {
 	this.from = from || 0;
 	this.to = to || from;
 	this.normalize();
-}
+};
 
 es.Range.prototype.getLength = function() {
 	return Math.abs( this.from - this.to );
