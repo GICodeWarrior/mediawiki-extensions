@@ -41,6 +41,13 @@ $messages['ba'] = array(
 	'autoincrement-desc' => 'Үҙгәреүсән перехватчик (variable hook), <nowiki>{{AUTOINCREMENT}}</nowiki> үҙгәреүсәнде өҫтә.',
 );
 
+/** Bavarian (Boarisch)
+ * @author Mucalexx
+ */
+$messages['bar'] = array(
+	'autoincrement-desc' => "A Variaabel-Hook, der d' autómaatisch aufferzöhende Variabel <nowiki>{{AUTOINCREMENT}}</nowiki> dazuafygd",
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
