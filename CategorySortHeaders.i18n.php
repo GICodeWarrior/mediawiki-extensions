@@ -76,6 +76,13 @@ $messages['ms'] = array(
 	'categorysortheaders-desc' => "Membolehkan penentuan pengatas isih 'aksara pertama' berbilang aksara untuk menyeranaikan laman dalam kategori dengan menggunakan sintaks seperti <nowiki>[[category:Foo|bahagian ^Header^Invisible kunci isih]]</nowiki>",
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'categorysortheaders-desc' => "Maakt het mogelijk om aangepaste sorteervolgorden (op meerdere tekens) toe te voegen aan pagina's voor opname in categorieën, met de opmaak <nowiki>[[category:Foo:Categorienaam|ˆHeader^Onzichtbaar deel van de sorteervolgorde]]</nowiki>",
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Event
  */
