@@ -87,9 +87,9 @@ $messages['ba'] = array(
  * @author Mucalexx
  */
 $messages['bar'] = array(
-	'assert_edit_title' => 'Auhspruch is föjgschlong',
-	'assertedit-desc' => 'Ergänzt an Beorweitungsåspruch fyr Bots',
-	'assert_edit_message' => 'Da ågeewane Aspruch ($1) is föjgschlong.',
+	'assert_edit_title' => 'Åspruch is föögschlong',
+	'assertedit-desc' => 'Ergänzd an Beorweitungsåspruch fyr Bots',
+	'assert_edit_message' => 'Da ågeewerne Åspruch ($1) is föögschlong.',
 );
 
 /** Southern Balochi (بلوچی مکرانی)
