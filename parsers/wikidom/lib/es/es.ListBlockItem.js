@@ -30,6 +30,15 @@ es.ListBlockItem = function( line, lists ) {
 	} );
 }
 
+/**
+ * Gets the index of the item within it's list.
+ * 
+ * @returns {Integer} Index of item
+ */
+es.ListBlockItem.prototype.getIndex = function() {
+	return this.list._list.indexOf( this );
+};
+
 es.ListBlockItem.prototype.getLength = function() {
 	var length = this.content.getLength() + 1;
 	for ( var i = 0; i < this.lists.length; i++ ) {
