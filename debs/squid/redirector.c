@@ -20,21 +20,11 @@
 
 struct IN_BUFF {
   char *url;
-  char *src_address;
-  char *ident;
-  char *method;
 };
 
 int load_in_buff(char *buff, struct IN_BUFF *in_buff) {
 	in_buff->url = strtok(buff, " ");
-	in_buff->src_address = strtok(NULL, " ");
-	in_buff->ident= strtok(NULL, " ");
-	in_buff->method= strtok(NULL, " \n");;
 
-	if (!in_buff->src_address || !in_buff->ident || !in_buff->method) {
-		return 1;
-	}
-  
 	if(strlen(in_buff->url) <= 4) {
 		return 1;
 	}
@@ -104,7 +94,7 @@ int main(int argc, char **argv) {
 		if (rc < 0) {
 			switch(rc) {
 				case PCRE_ERROR_NOMATCH:
-					printf("%s\n", in_buff.url);
+					printf("%s", in_buff.url);
 					fflush(stdout);
 					
 					break;
