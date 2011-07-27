@@ -378,10 +378,10 @@ es.TextFlow.prototype.render = function( offset ) {
 es.TextFlow.prototype.appendLine = function( range, wordOffset, fractional ) {
 	var rs = this.renderState,
 		lineCount = rs.lines.length;
-	$line = this.$.find( '.editSurface-line[line-index=' + lineCount + ']' );
+	$line = this.$.children( '[line-index=' + lineCount + ']' );
 	if ( !$line.length ) {
-		$line = $( '<div class="editSurface-line" line-index="' + lineCount + '"></div>' )
-			.appendTo( this.$ );
+		$line = $( '<div class="editSurface-line" line-index="' + lineCount + '"></div>' );
+		this.$.append( $line );
 	}
 	$line[0].innerHTML = this.content.render( range );
 	// Collect line information
