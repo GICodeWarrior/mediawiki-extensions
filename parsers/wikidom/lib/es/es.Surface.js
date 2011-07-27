@@ -22,7 +22,13 @@ es.Surface = function( $container, doc ) {
 	};
 	this.keyboard = {
 		'selecting': false,
-		'keydownTimeout': null
+		'keydownTimeout': null,
+		'keys': {
+			'shift': false,
+			'control': false,
+			'command': false,
+			'alt': false
+		}
 	};
 	
 	// MouseDown on surface
@@ -122,7 +128,7 @@ es.Surface.prototype.getLocationFromEvent = function( e ) {
 es.Surface.prototype.onKeyDown = function( e ) {
 	switch ( e.keyCode ) {
 		case 16: // Shift
-			this.shiftDown = true;
+			this.keyboard.keys.shift = true;
 			if ( !this.keyboard.selecting ) {
 				this.keyboard.selecting = true;
 				if ( !this.selection.to ) {
@@ -132,18 +138,18 @@ es.Surface.prototype.onKeyDown = function( e ) {
 			}
 			break;
 		case 17: // Control
-			this.ctrlDown = true;
+			this.keyboard.keys.control = true;
 			break;
 		case 18: // Alt
-			this.altDown = true;
+			this.keyboard.keys.alt = true;
 			break;
 		case 91: // Command
-			this.commandDown = true;
+			this.keyboard.keys.command = true;
 			break;
 		case 37: // Left arrow
 			this.initialHorizontalCursorPosition = null;
 			this.moveCursorLeft();
-			if ( this.shiftDown && this.keyboard.selecting ) {
+			if ( this.keyboard.keys.shift && this.keyboard.selecting ) {
 				this.selection.to = this.location;
 			} else {
 				this.selection = new es.Selection();
@@ -152,7 +158,7 @@ es.Surface.prototype.onKeyDown = function( e ) {
 			break;
 		case 38: // Up arrow
 			this.moveCursorUp();
-			if ( this.shiftDown && this.keyboard.selecting ) {
+			if ( this.keyboard.keys.shift && this.keyboard.selecting ) {
 				this.selection.to = this.location;
 			} else {
 				this.selection = new es.Selection();
@@ -162,7 +168,7 @@ es.Surface.prototype.onKeyDown = function( e ) {
 		case 39: // Right arrow
 			this.initialHorizontalCursorPosition = null;
 			this.moveCursorRight();
-			if ( this.shiftDown && this.keyboard.selecting ) {
+			if ( this.keyboard.keys.shift && this.keyboard.selecting ) {
 				this.selection.to = this.location;
 			} else {
 				this.selection = new es.Selection();
@@ -171,7 +177,7 @@ es.Surface.prototype.onKeyDown = function( e ) {
 			break;
 		case 40: // Down arrow
 			this.moveCursorDown();
-			if ( this.shiftDown && this.keyboard.selecting ) {
+			if ( this.keyboard.keys.shift && this.keyboard.selecting ) {
 				this.selection.to = this.location;
 			} else {
 				this.selection = new es.Selection();
@@ -186,7 +192,7 @@ es.Surface.prototype.onKeyDown = function( e ) {
 			this.handleDelete();
 			break;
 		default:
-			if ( this.ctrlDown || this.altDown || this.commandDown ) {
+			if ( this.keyboard.keys.control || this.keyboard.keys.alt || this.keyboard.keys.command ) {
 				break;
 			}
 			this.initialHorizontalCursorPosition = null;
@@ -242,21 +248,21 @@ es.Surface.prototype.onPaste = function( e ) {
 es.Surface.prototype.onKeyUp = function( e ) {
 	switch ( e.keyCode ) {
 		case 16: // Shift
-			this.shiftDown = false;
+			this.keyboard.keys.shift = false;
 			if ( this.keyboard.selecting ) {
 				this.keyboard.selecting = false;
 			}
 			break;
 		case 17: // Control
-			this.ctrlDown = false;
+			this.keyboard.keys.control = false;
 			break;
 		case 18: // Alt
-			this.altDown = false;
+			this.keyboard.keys.alt = false;
 			break;
 		case 91: // Command
-			this.commandDown = false;
+			this.keyboard.keys.command = false;
 			break;
-		default:		
+		default:
 			break;
 	}
 	return true;
@@ -317,8 +323,12 @@ es.Surface.prototype.onMouseDown = function( e ) {
 		this.location = this.getLocationFromEvent( e );
 		switch ( this.mouse.clicks ) {
 			case 1:
-				// Clear selection and move cursor to nearest offset
-				this.selection = new es.Selection( this.location );
+				if ( this.keyboard.keys.shift ) {
+					this.selection = new es.Selection( this.selection.from, this.location );
+				} else {
+					// Clear selection and move cursor to nearest offset
+					this.selection = new es.Selection( this.location );
+				}
 				var cursorPosition = this.location.block.getPosition( this.location.offset );
 				this.cursor.show( cursorPosition, this.location.block.$.offset() );
 				this.$input.css( 'top', cursorPosition.top );
