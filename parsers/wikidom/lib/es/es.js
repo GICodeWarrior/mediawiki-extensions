@@ -65,6 +65,18 @@ es.Position = function( left, top, bottom ) {
 	this.bottom = bottom || this.top;
 };
 
+es.Position.newFromEventScreenPosition = function( event ) {
+	return new es.Position( event.screenX, event.screenY );
+};
+
+es.Position.newFromEventPagePosition = function( event ) {
+	return new es.Position( event.pageX, event.pageY );
+};
+
+es.Position.newFromEventLayerPosition = function( event ) {
+	return new es.Position( event.layerX, event.layerY );
+};
+
 es.Position.prototype.at = function( position ) {
 	return this.left === position.left && this.top === position.top;
 };

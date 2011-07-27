@@ -307,7 +307,7 @@ es.Surface.prototype.handleDelete = function() {
 es.Surface.prototype.onMouseDown = function( e ) {
 	if ( e.button === 0 ) {
 		clearTimeout( this.mouse.clickTimeout );
-		var clickPosition = new es.Position( e.pageX, e.pageY );
+		var clickPosition = es.Position.newFromEventPagePosition( e );
 		if ( !this.mouse.clickPosition
 				|| this.mouse.clickPosition.near( clickPosition, this.hotSpotRadius ) ) {
 			// Same location, keep counting
