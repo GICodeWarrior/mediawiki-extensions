@@ -78,14 +78,14 @@ es.ListBlock.prototype.deleteContent = function( range ) {
  */
 es.ListBlock.prototype.annotateContent = function( method, annotation, range ) {
 	range.normalize();
-
 	var locationStart = this.list.getLocationFromOffset( range.start ),
 		locationEnd = this.list.getLocationFromOffset( range.end );
-
 	if ( locationStart.item == locationEnd.item ) {
-
-		locationStart.item.content.annotate( method, annotation, locationStart.offset, locationStart.offset + range.end - range.start );		
-
+		locationStart.item.content.annotate(
+			method,
+			annotation,
+			new es.Range( locationStart.offset, locationStart.offset + range.end - range.start )
+		);
 	} else {
 		var itemsToAnnotate;
 		this.traverseItems( function( item, index ) {
@@ -99,12 +99,22 @@ es.ListBlock.prototype.annotateContent = function( method, annotation, range ) {
 				itemsToAnnotate = [];
 			}
 		} );
-		
-		locationStart.item.content.annotate( method, annotation, locationStart.offset, locationStart.item.content.getLength() );
-		locationEnd.item.content.annotate( method, annotation, 0, locationEnd.offset);
-		
+		locationStart.item.content.annotate(
+			method,
+			annotation,
+			new es.Range( locationStart.offset, locationStart.item.content.getLength() )
+		);
+		locationEnd.item.content.annotate(
+			method,
+			annotation,
+			new es.Range( 0, locationEnd.offset )
+		);
 		for ( var i = 0; i < itemsToAnnotate.length; i++ ) {
-			itemsToAnnotate[i].content.annotate( method, annotation, 0, itemsToAnnotate[i].content.getLength());
+			itemsToAnnotate[i].content.annotate(
+				method,
+				annotation,
+				new es.Range( 0, itemsToAnnotate[i].content.getLength() )
+			);
 		}
 	}	
 };
