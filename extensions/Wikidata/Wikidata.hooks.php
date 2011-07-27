@@ -4,20 +4,16 @@ class WikidataHooks {
 
 	public static function onBeforePageDisplay( &$out, &$skin ) {
 		global $wgLang, $wgScriptPath;
-		$out->addScript( "<script type='text/javascript' src='$wgScriptPath/extensions/Wikidata/OmegaWiki/suggest.js'></script>" );
-		$out->addScript( "<script type='text/javascript' src='$wgScriptPath/extensions/Wikidata/OmegaWiki/omegawiki-ajax.js'></script>" );
 
-		if ( $wgLang->isRTL() ) {
-			$rtl = '-rtl';
+		$out->addScriptFile ( "{$wgScriptPath}/extensions/Wikidata/OmegaWiki/suggest.js");
+		$out->addScriptFile ( "{$wgScriptPath}/extensions/Wikidata/OmegaWiki/omegawiki-ajax.js");
 
-			# FIXME: Why are we including Gadget CSS here, this is Wikidata?
-			$wgOut->addHTML( '<style type="text/css">/*<![CDATA[*/ @import "/index.php?title=MediaWiki:Gadget-rtl.css&action=raw&ctype=text/css"; /*]]>*/</style>' );
-		} else {
-			$rtl = '';
-		}
+		$rtl = '' ;
+		if ( $wgLang->isRTL() ) $rtl = '-rtl';
 
-		$out->addLink( array( 'rel' => 'stylesheet', 'type' => 'text/css', 'media' => 'screen', 'href' => "$wgScriptPath/extensions/Wikidata/OmegaWiki/suggest$rtl.css" ) );
-		$out->addLink( array( 'rel' => 'stylesheet', 'type' => 'text/css', 'media' => 'screen', 'href' => "$wgScriptPath/extensions/Wikidata/OmegaWiki/tables$rtl.css" ) );
+		$out->addStyle("{$wgScriptPath}/extensions/Wikidata/OmegaWiki/suggest{$rtl}.css", 'screen');
+		$out->addStyle("{$wgScriptPath}/extensions/Wikidata/OmegaWiki/tables{$rtl}.css", 'screen');
+
 		return true;
 	}
 
