@@ -1,10 +1,19 @@
 /**
- * Renders and provides access to flowed text.
+ * Flowing text renderer.
  * 
+ * @class
+ * @constructor
  * @extends {es.EventEmitter}
- * @param $container {jQuery Selection} Element to render into
+ * @param $container {jQuery} Element to render into
  * @param content {es.Content} Initial content to render
- * @returns {es.TextFlow}
+ * @property $ {jQuery}
+ * @property content {es.Content}
+ * @property boundaries {Array}
+ * @property lines {Array}
+ * @property width {Integer}
+ * @property bondaryTest {RegExp}
+ * @property widthCache {Object}
+ * @property renderState {Object}
  */
 es.TextFlow = function( $container, content ) {
 	// Inheritance

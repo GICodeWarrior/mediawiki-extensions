@@ -1,14 +1,16 @@
-/* Classes */
-
 /**
+ * Annotated content.
+ * 
  * Content objects are wrappers around arrays of plain or annotated characters. Data in this form
  * is ultimately equivalent to but more efficient to work with than WikiDom line objects (plain text
  * paired with offset annotation), especially when performing substring operations. Content can be
  * derived from or converted to one or more WikiDom line objects.
  * 
+ * @class
+ * @constructor
  * @extends {es.EventEmitter}
  * @param content {Array} List of plain or annotated characters
- * @returns {es.Content}
+ * @property data {Array}
  */
 es.Content = function( content ) {
 	es.EventEmitter.call( this );

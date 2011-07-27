@@ -1,8 +1,23 @@
 /**
+ * Wikitext document editing surface.
  * 
- * @param $container
- * @param doc
- * @returns {Surface}
+ * @class
+ * @constructor
+ * @param $container {jQuery}
+ * @param doc {es.Document}
+ * @property $ {jQuery}
+ * @property doc {es.Document}
+ * @property location {es.Location}
+ * @property selection {es.Selection}
+ * @property initialHorizontalPosition {Integer}
+ * @property mouse {Object}
+ * @property keyboard {Object}
+ * @property $ranges {jQuery}
+ * @property $rangeStart {jQuery}
+ * @property $rangeFill {jQuery}
+ * @property $rangeEnd {jQuery}
+ * @property cursor {es.Cursor}
+ * @property $input {jQuery}
  */
 es.Surface = function( $container, doc ) {
 	var surface = this;

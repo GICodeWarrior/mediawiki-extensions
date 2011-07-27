@@ -1,9 +1,13 @@
 /**
+ * Document block.
+ * 
  * Base object for all blocks, providing basic shared functionality and stubs for required
  * implementations.
  * 
+ * @class
+ * @constructor
  * @extends {es.EventEmitter}
- * @returns {es.Block}
+ * @property document {es.Document}
  */
 es.Block = function() {
 	es.EventEmitter.call( this );

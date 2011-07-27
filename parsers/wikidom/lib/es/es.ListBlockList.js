@@ -1,5 +1,14 @@
 /**
- * es.ListBlockList
+ * Number or bullet list.
+ * 
+ * @class
+ * @constructor
+ * @extends {es.EventEmitter}
+ * @extends {es.Container}
+ * @param style {String} Style of list, either "number" or "bullet"
+ * @param items {Array} List of es.ListBlockItem objects to initialize list with
+ * @property style {String} Style of list
+ * @property items {Array} List of es.ListBlockItem objects
  */
 es.ListBlockList = function( style, items ) {
 	// Inheritance

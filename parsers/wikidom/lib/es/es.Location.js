@@ -1,9 +1,12 @@
 /**
- * Content location, an offset within a block.
+ * Offset within a block.
  * 
- * @param block {es.Block} Location target
- * @param offset {Integer} Location offset
- * @returns {es.Location}
+ * @class
+ * @constructor
+ * @param block {es.Block} Block offset is within
+ * @param offset {Integer} Offset within block
+ * @property block {es.Block} Block offset is within
+ * @property offset {Integer} Offset within block (optional, default: 0)
  */
 es.Location = function( block, offset ) {
 	this.block = block;

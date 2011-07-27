@@ -1,8 +1,16 @@
 /**
+ * Generic synchronized Object/Element container.
  * 
+ * @class
+ * @constructor
  * @extends {es.EventEmitter}
+ * @param typeName {String}
+ * @param listName {String}
  * @param items {Array} List of items
- * @returns {es.Container}
+ * @property _typeName {String}
+ * @property _listName {String}
+ * @property _list {Array}
+ * @property $ {jQuery}
  */
 es.Container = function( typeName, listName, items ) {
 	es.EventEmitter.call( this );

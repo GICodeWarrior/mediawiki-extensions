@@ -1,3 +1,10 @@
+/**
+ * Event emitter.
+ * 
+ * @class
+ * @constructor
+ * @property events {Object}
+ */
 es.EventEmitter = function() {
 	this.events = {};
 }

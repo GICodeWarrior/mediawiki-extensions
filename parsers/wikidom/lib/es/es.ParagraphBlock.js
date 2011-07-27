@@ -1,9 +1,13 @@
 /**
- * es.ParagraphBlock
+ * Paragraph block.
  * 
+ * @class
+ * @constructor
  * @extends {es.Block}
  * @param lines {Array} List of Wikidom line objects
- * @returns {es.ParagraphBlock}
+ * @property content {es.Content}
+ * @property $ {jQuery}
+ * @property flow {es.TextFlow}
  */
 es.ParagraphBlock = function( lines ) {
 	es.Block.call( this );

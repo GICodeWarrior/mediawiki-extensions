@@ -1,10 +1,14 @@
 /**
  * es.ListBlock
  * 
+ * 
+ * @class
+ * @constructor
  * @extends {es.Block}
  * @param style {String} Type of list, either "number" or "bullet"
  * @param items {Array} List of es.ListBlockItems to append initially to the root list
- * @return {es.ListBlock}
+ * @property list {es.ListBlockList}
+ * @property $ {jQuery}
  */
 es.ListBlock = function( style, items ) {
 	es.Block.call( this );

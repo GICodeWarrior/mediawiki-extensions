@@ -1,6 +1,10 @@
 /**
+ * Blinking cursor.
  * 
- * @returns {es.Cursor}
+ * @class
+ * @constructor
+ * @property cursorInterval {Interval}
+ * @property $ {jQuery}
  */
 es.Cursor = function() {
 	this.cursorInterval = null;

@@ -1,12 +1,16 @@
 /**
- * Pixel position, a 2D position within a rendered document.
+ * Pixel position.
  * 
  * This can also support an optional bottom field, to represent a vertical line, such as a cursor.
  * 
+ * @class
+ * @constructor
  * @param left {Integer} Horizontal position
  * @param top {Integer} Vertical top position
  * @param bottom {Integer} Vertical bottom position of bottom (optional, default: top)
- * @returns {es.Position}
+ * @property left {Integer} Horizontal position
+ * @property top {Integer} Vertical top position
+ * @property bottom {Integer} Vertical bottom position of bottom
  */
 es.Position = function( left, top, bottom ) {
 	this.left = left || 0;

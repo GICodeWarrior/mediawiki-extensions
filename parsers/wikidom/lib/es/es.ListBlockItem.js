@@ -1,5 +1,17 @@
 /**
- * es.ListBlockItem
+ * List item.
+ * 
+ * @class
+ * @constructor
+ * @extends {es.EventEmitter}
+ * @extends {es.Container}
+ * @param line {Object} WikiDom line object to convert and use initially
+ * @param lists {Array} List of WikiDom list objects to convert and use initially
+ * @property lists {Array}
+ * @property $line
+ * @property $content
+ * @property content
+ * @property flow
  */
 es.ListBlockItem = function( line, lists ) {
 	// Inheritance

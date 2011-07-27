@@ -1,8 +1,12 @@
 /**
+ * Ordered collection of blocks.
  * 
+ * @class
+ * @constructor
  * @extends {es.EventEmitter}
  * @param blocks {Array} List of blocks
- * @returns {es.Document}
+ * @property blocks {Array}
+ * @property width {Integer}
  */
 es.Document = function( blocks ) {
 	es.Container.call( this, 'document', 'blocks', blocks );

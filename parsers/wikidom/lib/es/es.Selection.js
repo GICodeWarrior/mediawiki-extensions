@@ -1,9 +1,14 @@
 /**
  * Content selection, a pair of locations.
  * 
+ * @class
+ * @constructor
  * @param from {es.Location} Starting location
  * @param to {es.Location} Ending location
- * @returns {es.Selection}
+ * @property from {es.Location}
+ * @property to {es.Location}
+ * @property start {es.Location}
+ * @property end {es.Location}
  */
 es.Selection = function( from, to ) {
 	this.from = from;

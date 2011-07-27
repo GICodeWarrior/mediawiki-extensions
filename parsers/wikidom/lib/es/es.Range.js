@@ -1,9 +1,10 @@
 /**
  * Range of content.
  * 
+ * @class
+ * @constructor
  * @param start {Integer} Starting point
  * @param end {Integer} Ending point
- * @returns {es.Range}
  * @property to {Integer}
  * @property from {Integer}
  * @property start {Integer}
