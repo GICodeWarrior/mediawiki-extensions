@@ -14,12 +14,16 @@ es.Block = function() {
 	this.document = null;
 }
 
+/* Static Members */
+
 /**
  * Association between block type-name and block constructor
  * 
  * @example "paragraph" => es.ParagraphBlock
  */
 es.Block.models = {};
+
+/* Static Methods */
 
 /**
  * Creates a new block object from Wikidom data.
@@ -33,6 +37,8 @@ es.Block.newFromWikidom = function( wikidomBlock ) {
 		throw 'Unknown block type: ' + wikidomBlock.type;
 	}
 };
+
+/* Methods */
 
 /**
  * Gets the index of the block within it's document.
@@ -174,5 +180,7 @@ es.Block.prototype.getWordBoundaries = function( offset ) {
 es.Block.prototype.getSectionBoundaries = function( offset ) {
 	throw 'Block.getSectionBoundaries not implemented in this subclass.';
 };
+
+/* Inheritance */
 
 es.extend( es.Block, es.EventEmitter );

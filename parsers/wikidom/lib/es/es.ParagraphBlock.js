@@ -21,6 +21,8 @@ es.ParagraphBlock = function( lines ) {
 	} );
 };
 
+/* Static Methods */
+
 /**
  * Creates a new list block object from Wikidom data.
  * 
@@ -29,6 +31,8 @@ es.ParagraphBlock = function( lines ) {
 es.ParagraphBlock.newFromWikidom = function( wikidomBlock ) {
 	return new es.ParagraphBlock( wikidomBlock.lines );
 };
+
+/* Methods */
 
 /**
  * Gets the length of all block content.
@@ -138,9 +142,13 @@ es.ParagraphBlock.prototype.getSectionBoundaries = function( offset ) {
 	return new es.Range( 0, this.content.getLength() );
 };
 
+/* Registration */
+
 /**
  * Extend es.Block to support paragraph block creation with es.Block.newFromWikidom
  */
 es.Block.models.paragraph = es.ParagraphBlock;
+
+/* Inheritance */
 
 es.extend( es.ParagraphBlock, es.Block );

@@ -22,6 +22,8 @@ es.ListBlock = function( style, items ) {
 	} );
 };
 
+/* Static Methods */
+
 /**
  * Creates a new list block object from Wikidom data.
  * 
@@ -30,6 +32,8 @@ es.ListBlock = function( style, items ) {
 es.ListBlock.newFromWikidom = function( wikidomList ) {
 	return new es.ListBlock( wikidomList.style, wikidomList.items );
 };
+
+/* Methods */
 
 /**
  * Gets the length of all block content.
@@ -244,9 +248,13 @@ es.ListBlock.prototype.traverseItems = function( callback ) {
 	return true;
 };
 
+/* Registration */
+
 /**
  * Extend es.Block to support list block creation with es.Block.newFromWikidom
  */
 es.Block.models.list = es.ListBlock;
+
+/* Inheritance */
 
 es.extend( es.ListBlock, es.Block );
