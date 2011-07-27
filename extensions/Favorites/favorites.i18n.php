@@ -100,7 +100,7 @@ $messages['de'] = array(
 	'favoritelist' => 'Meine Favoriten',
 	'myfavoritelist' => 'Meine Favoriten',
 	'favoritelistfor' => "(für '''$1''')",
-	'nofavoritelist' => 'Es befinden sich keine Einträge in deiner Favoritenliste.',
+	'nofavoritelist' => 'Es befinden sich keine Einträge auf deiner Favoritenliste.',
 	'favoritelistanontext' => 'Du musst dich $1, um deine Favoritenliste sehen oder Einträge auf ihr bearbeiten zu können.',
 	'favoritenologin' => 'Nicht angemeldet',
 	'favoritenologintext' => 'Du musst [[Special:UserLogin|angemeldet]] sein, um deine Favoritenliste bearbeiten zu können.',
@@ -149,7 +149,7 @@ Du kannst auch die [[Special:Favoritelist/edit|Standardseite]] zum Bearbeiten be
  * @author Kghbln
  */
 $messages['de-formal'] = array(
-	'nofavoritelist' => 'Es befinden sich keine Einträge in Ihrer Favoritenliste.',
+	'nofavoritelist' => 'Es befinden sich keine Einträge auf Ihrer Favoritenliste.',
 	'favoritelistanontext' => 'Sie müssen sich $1, um Ihre Favoritenliste sehen oder Einträge auf ihr bearbeiten zu können.',
 	'favoritenologintext' => 'Sie müssen [[Special:UserLogin|angemeldet]] sein, um Ihre Favoritenliste bearbeiten zu können.',
 	'addedfavoritetext' => 'Die Seite „[[:$1]]“ wurde zu Ihrer [[Special:Favoritelist|Favoritenliste]] hinzugefügt.',
@@ -169,5 +169,127 @@ Pro Zeile ist ein Eintrag erlaubt.
 Sobald Sie fertig sind, klicken Sie auf „{{int:Favoritelistedit-raw-submit}}“.
 Sie können auch die [[Special:Favoritelist/edit|Standardseite]] zum Bearbeiten benutzen.',
 	'favoritelistedit-raw-done' => 'Ihre Favoritenliste wurde aktualisiert.',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'favorites-desc' => 'Eng Lescht mat Favoriten uleeën',
+	'favoritethis' => 'Dës Säit bäi meng Favoriten derbäisetzen',
+	'prefs-favoritelist' => 'Favoriten',
+	'prefs-advancedfavoritelist' => 'Méi Optiounen',
+	'favoritelist' => 'Meng Favoriten',
+	'favoritelistfor' => "(fir '''$1''')",
+	'nofavoritelist' => 'Är Lëscht vun de Favoriten ass eidel.',
+	'favoritenologin' => 'Net ageloggt',
+	'favorite' => "Op d'Lëscht vun de Favoriten derbäisetzen",
+	'favoriteing' => 'Späicheren...',
+	'unfavoriteing' => 'Erofhuelen...',
+	'tooltip-ca-favorite' => "Setzt dës Säit op d'Lëscht vun Äre Favoriten derbäi",
+	'favoritelistall2' => 'all',
+	'favoritelistedit-noitems' => 'De Lëscht vun Äre Favoriten ass eidel.',
+	'favoritelistedit-normal-title' => 'Lëscht vun de Favoriten änneren',
+	'favoritelistedit-normal-legend' => 'Säite vun der Lëscht vun de Favoriten erofhuelen',
+	'favoritelistedit-normal-explain' => 'D\'Säite vun der Lëscht vun Äre Favorite stinn hei drënner.
+Fir eng Säit ewechzehuelen, klickt op d\'Haischen niewendrun a klickt duerno op "{{int:Favoritelistedit-normal-submit}}".
+Dir kënnt och [[Special:Favoritelist/raw|déi net-formatéiert Lëscht änneren]].',
+	'favoritelistedit-normal-submit' => 'Säiten erofhuelen',
+	'favoritelistedit-raw-titles' => 'Säiten:',
+	'favoritelistedit-raw-submit' => 'Lëscht vun de Favoriten aktualiséieren',
+	'favoritelistedit-raw-done' => "D'Lëscht vun Äre Favorite gouf aktualiséiert.",
+	'favoritelisttools-view' => 'Favorite weisen',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'favoritelistfor' => "(за '''$1''')",
+	'favoriteing' => 'Бендисувам...',
+	'unfavoriteing' => 'Одбендисувам...',
+	'favoritelistall2' => 'сите',
+	'favoritelistedit-raw-titles' => 'Наслови:',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'favoritelistall2' => 'alle',
+	'favoritelistedit-normal-submit' => "Pagina's verwijderen",
+	'favoritelistedit-normal-done' => 'Er {{PLURAL:$1|is 1 pagina|zijn $1 pagina’s}} verwijderd uit uw favorieten:',
+	'favoritelistedit-raw-title' => 'Ruwe favorietenlijst bewerken',
+	'favoritelistedit-raw-legend' => 'Ruwe favorietenlijst bewerken',
+	'favoritelistedit-raw-explain' => 'Hieronder staan pagina’s uit uw favorietenlijst.
+U kunt de lijst bewerken door pagina’s te verwijderen en toe te voegen.
+Eén pagina per regel.
+Als u klaar bent, klik dan op "{{int:Favoritelistedit-raw-submit}}".
+U kunt ook [[Special:Favoritelist/edit|het standaard bewerkingsscherm gebruiken]].',
+	'favoritelistedit-raw-titles' => 'Pagina’s:',
+	'favoritelistedit-raw-submit' => 'Favorieten bijwerken',
+	'favoritelistedit-raw-done' => 'Uw favorieten zijn bijgewerkt.',
+	'favoritelistedit-raw-added' => 'Er {{PLURAL:$1|is 1 pagina|zijn $1 pagina’s}} toegevoegd:',
+	'favoritelistedit-raw-removed' => 'Er {{PLURAL:$1|is 1 pagina|zijn $1 pagina’s}} verwijderd:',
+	'favoritelisttools-view' => 'Favorieten bekijken',
+	'favoritelisttools-edit' => 'Favorieten bekijken en bewerken',
+	'favoritelisttools-raw' => 'Ruwe favorietenlijst bewerken',
+);
+
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'favorites-desc' => 'Criar uma lista de páginas preferidas',
+	'favoritethis' => 'Adicionar esta página às preferidas',
+	'prefs-favoritelist' => 'Preferidas',
+	'prefs-favoritelist-token' => 'Chave das preferidas:',
+	'prefs-advancedfavoritelist' => 'Opções avançadas',
+	'favoritelist' => 'Preferidas',
+	'myfavoritelist' => 'Preferidas',
+	'favoritelistfor' => "(de '''$1''')",
+	'nofavoritelist' => 'A lista de páginas preferidas está vazia.',
+	'favoritelistanontext' => '$1 para ver ou editar a lista de páginas preferidas.',
+	'favoritenologin' => 'Não está autenticado',
+	'favoritenologintext' => 'Precisa de estar [[Special:UserLogin|autenticado]] para modificar a sua lista de páginas preferidas.',
+	'addedfavorite' => 'Adicionada às preferidas',
+	'addedfavoritetext' => 'A página "[[:$1]]" foi adicionada à sua lista de [[Special:Favoritelist|páginas preferidas]].',
+	'removedfavorite' => 'Removida das preferidas',
+	'removedfavoritetext' => 'A página "[[:$1]]" foi removida da sua lista de [[Special:Favoritelist|páginas preferidas]].',
+	'favorite' => 'Preferida',
+	'favoritethispage' => 'Adicionar esta página às preferidas',
+	'unfavorite' => 'Remover esta página das preferidas',
+	'unfavoritethispage' => 'Remover das preferidas',
+	'favoritelist-options' => 'Opções das páginas preferidas',
+	'favoriteing' => 'A adicionar às preferidas...',
+	'unfavoriteing' => 'A remover das preferidas...',
+	'tooltip-pt-favoritelist' => 'A lista das páginas cujas mudanças está a monitorizar',
+	'tooltip-ca-favorite' => 'Adicionar esta página às suas páginas preferidas',
+	'tooltip-ca-unfavorite' => 'Remover esta página das páginas preferidas',
+	'tooltip-favorite' => 'Adicionar esta página às suas preferidas',
+	'favoritelistall2' => 'todas',
+	'favoritelistedit-numitems' => 'A sua lista de páginas preferidas contém {{PLURAL:$1|uma página|$1 páginas}}, excluindo páginas de discussão.',
+	'favoritelistedit-noitems' => 'A sua lista de página preferidas está vazia.',
+	'favoritelistedit-normal-title' => 'Editar a lista de preferidas',
+	'favoritelistedit-normal-legend' => 'Remover páginas das preferidas',
+	'favoritelistedit-normal-explain' => 'As suas páginas preferidas são listadas abaixo.
+Para remover uma página, marque a caixa de selecção correspondente e clique o botão "{{int:Favoritelistedit-normal-submit}}".
+Também pode [[Special:Favoritelist/raw|editar a lista em forma de texto]].',
+	'favoritelistedit-normal-submit' => 'Remover páginas',
+	'favoritelistedit-normal-done' => '{{PLURAL:$1|Foi removida uma página|Foram removidas $1 páginas}} da sua lista de páginas preferidas:',
+	'favoritelistedit-raw-title' => 'Editar a lista de preferidas em forma de texto',
+	'favoritelistedit-raw-legend' => 'Editar a lista de preferidas em forma de texto',
+	'favoritelistedit-raw-explain' => 'A lista de páginas preferidas é apresentada abaixo e pode editá-la, adicionando ou removendo páginas;
+uma página por linha.
+Quando terminar, clique "{{int:Favoritelistedit-raw-submit}}".
+Também pode [[Special:Favoritelist/edit|editar a lista da maneira convencional]].',
+	'favoritelistedit-raw-titles' => 'Páginas:',
+	'favoritelistedit-raw-submit' => 'Actualizar as preferidas',
+	'favoritelistedit-raw-done' => 'A sua lista de páginas preferidas foi actualizada.',
+	'favoritelistedit-raw-added' => '{{PLURAL:$1|Foi adicionada uma página|Foram adicionadas $1 páginas}}:',
+	'favoritelistedit-raw-removed' => '{{PLURAL:$1|Foi removida uma página|Foram removidas $1 páginas}}:',
+	'favoritelisttools-view' => 'Ver Páginas Preferidas',
+	'favoritelisttools-edit' => 'Ver e editar a lista de páginas preferidas',
+	'favoritelisttools-raw' => 'Editar a lista de preferidas em forma de texto',
 );
 

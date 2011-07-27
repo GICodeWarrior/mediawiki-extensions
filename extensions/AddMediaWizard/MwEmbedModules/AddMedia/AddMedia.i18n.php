@@ -1319,6 +1319,7 @@ $messages['br'] = array(
 /** Bosnian (Bosanski)
  * @author CERminator
  * @author Martorell
+ * @author Palapa
  * @author Solde
  * @author Toniher
  */
@@ -1358,6 +1359,8 @@ $messages['bs'] = array(
 	'mwe-ignore-any-warnings' => 'Zanemari sva upozorenja',
 	'mwe-i-would-like-to' => 'Želio bih',
 	'mwe-upload-own-file' => 'postaviti moj vlastiti rad na $1',
+	'mwe-upload-once-done' => 'Molim $1.
+Kada završite svoje slanje podataka, $2',
 	'mwe-upload-in-progress' => 'Postavljanje u toku (ne zatvarajte ovaj prozor)',
 	'mwe-uploaded-status' => 'Postavljeno',
 	'mwe-uploaded-time-remaining' => 'Preostalo vrijeme: $1',

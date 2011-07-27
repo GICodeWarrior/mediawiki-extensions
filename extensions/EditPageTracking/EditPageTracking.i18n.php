@@ -86,3 +86,17 @@ $messages['pt'] = array(
 	'editpagetracking-desc' => 'Regista a primeira vez que cada utilizador visita a página de edição',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'editpagetracking-desc' => 'Zabeleži, ko vsak uporabnik prvič obišče urejevalno stran',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'editpagetracking-desc' => 'Ghi nhớ lần đầu tiên người dùng xem trang sửa đổi',
+);
+

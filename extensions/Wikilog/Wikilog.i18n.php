@@ -6483,9 +6483,11 @@ $messages['si'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'wikilog-desc' => 'Doda zmožnosti bloganja in ustvari križanec med wikijem in blogom',
 	'wikilog-auto' => 'Wikilog Samodejno',
 	'wikilog-help' => '{{ns:Help}}:Wikilog',
 	'right-wl-postcomment' => 'Objavljanje pripomb k člankom wikiloga',
+	'right-wl-moderation' => 'Upravljanje pripomb člankov wikilog',
 	'wikilog-specialwikilog-title' => 'Wikilogi',
 	'wikilog-log-pagename' => 'Dnevnik dejanj Wikilog',
 	'wikilog-log-pagetext' => 'Spodaj se nahaja seznam dejanj wikiloga.',

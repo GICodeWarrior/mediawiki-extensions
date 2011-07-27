@@ -106,6 +106,16 @@ $messages['ms'] = array(
 	'categorize-advice' => 'Klik pada label yang ingin anda atributkan kepada laman ini:',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'categorize-desc' => 'Voegt een invoerveld toe aan de bewerkings- en uploadpagina waarmee gebruiker categorieën kunnen toevoegen',
+	'categorize-title' => 'Kenniskwalificatie',
+	'categorize-footer' => 'Neem contact met ons op als u een label wilt toevoegen...',
+	'categorize-advice' => 'Klik op de labels als u een eigenschap aan deze pagina wilt toevoegen:',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Event
  */

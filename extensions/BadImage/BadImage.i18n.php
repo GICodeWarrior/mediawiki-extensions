@@ -280,15 +280,20 @@ $messages['ba'] = array(
 
 /** Bavarian (Boarisch)
  * @author Man77
+ * @author Mucalexx
  */
 $messages['bar'] = array(
-	'badimages' => 'Listn vu ned eawünschte Büidln',
-	'badimages-added' => '$1 is zu da Listn dazua dã woan',
-	'badimages-count' => "D'Listn vu de uneawünschtn Büidln håd '''$1''' {{PLURAL:$1|Eintråg|Einträge}}",
-	'badimages-name' => 'Nãm:',
-	'badimages-not-added' => 'Des Büidl håd ned dazuagfügt wean kina.',
-	'badimages-not-removed' => "S'Büidl håd ned entfeand wean kina.",
+	'badimages' => 'Listen voh néd erwynschde Büdeln',
+	'badimages-add-btn' => 'Dazuadoah',
+	'badimages-added' => '$1 is zua da Listen dazuadå worn',
+	'badimages-count' => "D' Listen voh d' néd erwynschten Büdeln hod '''$1''' {{PLURAL:$1|Eihtrog|Eihtrég}}",
+	'badimages-name' => 'Nåm:',
+	'badimages-not-added' => 'Dés Büdel hod néd dazuagfygd wern kinner.',
+	'badimages-not-removed' => 'Dés Büdel hod néd entfernd wern kinner.',
 	'badimages-reason' => 'Grund:',
+	'badimages-remove' => '(entferner)',
+	'badimages-remove-btn' => 'Entferner',
+	'badimages-log-name' => 'Listen voh néd erwynschde Büdeln',
 );
 
 /** Bikol Central (Bikol Central)
