@@ -74,7 +74,9 @@ es.ListBlock.prototype.deleteContent = function( start, end ) {
  * @param end {Integer} Offset to stop annotating to
  */
 es.ListBlock.prototype.annotateContent = function( method, annotation, start, end ) {
-	throw 'ListBlock.annotateContent not implemented yet.';
+	// TODO: Support annotating multiple items at once
+	var location = this.list.getLocationFromOffset( start );
+	location.item.content.annotate( method, annotation, location.offset, location.offset + end - start );
 };
 
 /**
