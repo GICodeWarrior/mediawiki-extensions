@@ -74,11 +74,35 @@ es.ListBlock.prototype.deleteContent = function( range ) {
  */
 es.ListBlock.prototype.annotateContent = function( method, annotation, range ) {
 	range.normalize();
-	// TODO: Support annotating multiple items at once
-	var location = this.list.getLocationFromOffset( range.start );
-	location.item.content.annotate(
-		method, annotation, new es.Range( location.offset, location.offset + range.getLength() )
-	);
+
+	var locationStart = this.list.getLocationFromOffset( range.start ),
+		locationEnd = this.list.getLocationFromOffset( range.end );
+
+	if ( locationStart.item == locationEnd.item ) {
+
+		locationStart.item.content.annotate( method, annotation, locationStart.offset, locationStart.offset + range.end - range.start );		
+
+	} else {
+		var itemsToAnnotate;
+		this.traverseItems( function( item, index ) {
+			if ( item == locationEnd.item ) {
+				return false;
+			}
+			if ( $.isArray( itemsToAnnotate ) ) {
+				itemsToAnnotate.push( item );
+			}
+			if ( item == locationStart.item ) {
+				itemsToAnnotate = [];
+			}
+		} );
+		
+		locationStart.item.content.annotate( method, annotation, locationStart.offset, locationStart.item.content.getLength() );
+		locationEnd.item.content.annotate( method, annotation, 0, locationEnd.offset);
+		
+		for ( var i = 0; i < itemsToAnnotate.length; i++ ) {
+			itemsToAnnotate[i].content.annotate( method, annotation, 0, itemsToAnnotate[i].content.getLength());
+		}
+	}	
 };
 
 /**
