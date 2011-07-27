@@ -43,9 +43,10 @@ es.Position.prototype.plumbWith = function( position ) {
 };
 
 es.Position.prototype.near = function( position, range ) {
-	var x = this.left - position.left,
-		y = this.top - position.top;
-	return Math.sqrt( x * x, y * y ) <= range;
+	return Math.sqrt(
+		Math.pow( this.left - position.left, 2 ),
+		Math.pow( this.top - position.top )
+	) <= range;
 };
 
 es.Position.prototype.above = function( position ) {
