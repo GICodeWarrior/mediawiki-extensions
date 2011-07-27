@@ -17,8 +17,8 @@ es.Surface = function( $container, doc ) {
 		'clicks': 0,
 		'clickDelay': 500,
 		'clickTimeout': null,
-		'clickX': null,
-		'clickY': null
+		'clickPosition': null,
+		'hotSpotRadius': 2
 	};
 	this.keyboard = {
 		'selecting': false,
@@ -307,7 +307,9 @@ es.Surface.prototype.handleDelete = function() {
 es.Surface.prototype.onMouseDown = function( e ) {
 	if ( e.button === 0 ) {
 		clearTimeout( this.mouse.clickTimeout );
-		if ( this.mouse.clickX === e.pageX && this.mouse.clickY === e.pageY ) {
+		var clickPosition = new es.Position( e.pageX, e.pageY );
+		if ( !this.mouse.clickPosition
+				|| this.mouse.clickPosition.near( clickPosition, this.hotSpotRadius ) ) {
 			// Same location, keep counting
 			this.mouse.clicks++;
 			var surface = this;
@@ -317,8 +319,7 @@ es.Surface.prototype.onMouseDown = function( e ) {
 		} else {
 			// New location, start over
 			this.mouse.clicks = 1;
-			this.mouse.clickX = e.pageX;
-			this.mouse.clickY = e.pageY;
+			this.mouse.clickPosition = clickPosition;
 		}
 		this.location = this.getLocationFromEvent( e );
 		switch ( this.mouse.clicks ) {
