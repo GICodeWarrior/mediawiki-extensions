@@ -114,9 +114,11 @@ class qp_Eval {
 		# math
 		'round', 'trunc', 'ceil', 'floor',
 		# arrays
-		'is_array', 'array_search',
+		'is_array', 'array_search', 'count',
 		# strings
-		'preg_match', 'preg_split'
+		'trim', 'preg_match', 'preg_match_all', 'preg_split', 'qp_lc',
+		# debug
+		'qp_debug'
 	);
 
 	# disallowed superglobals
@@ -222,6 +224,12 @@ class qp_Eval {
 	 * @return 
 	 */
 	static function selfCheck() {
+		# remove unavailable functions from allowed calls list
+		foreach ( self::$allowedCalls as $key => $fname ) {
+			if ( !function_exists( $fname ) ) {
+				self::$allowedCalls[$key] = null;
+			}
+		}
 		# the following var is used to check access to extension's locals
 		# in the eval scope
 		$selfCheck = 1;

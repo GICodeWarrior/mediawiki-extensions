@@ -78,6 +78,30 @@ if ( isset( $wgResourceModules ) ) {
 	);
 }
 
+function qp_debug() {
+	$args = func_get_args();
+	if ( count( $args ) < 2 ) {
+		return;
+	}
+	list( $var_name, $var_value ) = $args;
+	$debug = true;
+	if ( count( $args ) > 2 ) {
+		$debug = $args[2];
+	}
+	if ( $debug === true) {
+		ob_start();
+		var_dump( $var_value );
+		$var_value = ob_get_contents();
+		ob_end_clean();
+		wfDebugLog( 'qpoll', "{$var_name} = {$var_value}\n" );
+	}
+}
+
+function qp_lc( $text ) {
+	global $wgContLang;
+	return $wgContLang->lc( $text );
+}
+
 /**
  * Extension's global settings and initializiers
  * should be purely static and preferrably have no constructor
@@ -184,6 +208,7 @@ class qp_Setup {
 		global $wgHooks;
 		global $wgExtraNamespaces, $wgNamespaceProtection;
 		global $wgGroupPermissions;
+		global $wgDebugLogGroups;
 
 		# core check and local / remote path
 		self::coreRequirements();
@@ -280,6 +305,8 @@ class qp_Setup {
 		# into the source of interpretation scripts
 		$wgGroupPermissions['sysop']['editinterpretation'] = true;
 		$wgGroupPermissions['bureaucrat']['editinterpretation'] = true;
+
+		$wgDebugLogGroups['qpoll'] = 'qpoll_debug_log.txt';
 	}
 
 	static function mediaWikiVersionCompare( $version, $operator = '<' ) {
