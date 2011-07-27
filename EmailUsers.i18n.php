@@ -303,6 +303,7 @@ $messages['lb'] = array(
 	'emailusers-target-reverse' => 'Un all Benotzer schécken, ausser deenen déi erausgesicht sinn',
 	'emailusers-norecipient' => 'Et gëtt keen deem Dir eng Mail schécke kënnt.',
 	'emailusers-norecipientselected' => 'Et ass keen Destinataire erausgesicht.',
+	'emailusers-toomanyrecipientsselected' => 'Et sinn ze vill Destinatairen erausgesicht ({{PLURAL:$1|maximum $1|maximum $1}}).',
 );
 
 /** Macedonian (Македонски)
