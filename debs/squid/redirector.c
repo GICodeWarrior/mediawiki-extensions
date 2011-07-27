@@ -19,13 +19,19 @@
 #define OVECCOUNT 30    /* should be a multiple of 3 */
 
 struct IN_BUFF {
+  char *chan;
   char *url;
 };
 
 int load_in_buff(char *buff, struct IN_BUFF *in_buff) {
-	in_buff->url = strtok(buff, " ");
+	in_buff->chan = strtok(buff, " ");
+	in_buff->url = strtok(NULL, " ");
 
-	if(strlen(in_buff->url) <= 4) {
+	if(strlen(in_buff->chan) < 1) {
+		return 1;
+	}
+
+	if(in_buff->url == NULL || strlen(in_buff->url) <= 4) {
 		return 1;
 	}
 
@@ -94,7 +100,7 @@ int main(int argc, char **argv) {
 		if (rc < 0) {
 			switch(rc) {
 				case PCRE_ERROR_NOMATCH:
-					printf("%s", in_buff.url);
+					printf("%s %s\n", in_buff.chan, in_buff.url);
 					fflush(stdout);
 					
 					break;
@@ -128,6 +134,7 @@ int main(int argc, char **argv) {
 		}
 
 		if (strlen(path) > 0) {
+			printf("%s ", in_buff.chan);
 			printf(replacement_url, lang, path);
 		}
 
