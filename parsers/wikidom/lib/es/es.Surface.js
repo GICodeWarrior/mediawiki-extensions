@@ -308,8 +308,8 @@ es.Surface.prototype.onMouseDown = function( e ) {
 	if ( e.button === 0 ) {
 		clearTimeout( this.mouse.clickTimeout );
 		var clickPosition = es.Position.newFromEventPagePosition( e );
-		if ( !this.mouse.clickPosition
-				|| this.mouse.clickPosition.near( clickPosition, this.hotSpotRadius ) ) {
+		if ( this.mouse.clickPosition &&
+				this.mouse.clickPosition.near( clickPosition, this.mouse.hotSpotRadius ) ) {
 			// Same location, keep counting
 			this.mouse.clicks++;
 			var surface = this;
