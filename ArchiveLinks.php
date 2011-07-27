@@ -28,4 +28,5 @@ $wgArchiveLinksConfig = array(
 	'use_multiple_archives' => false,
 	'run_spider_in_loop' => false,
 	'in_progress_ignore_delay' => 7200,
+	'generate_feed' => true,
 );
