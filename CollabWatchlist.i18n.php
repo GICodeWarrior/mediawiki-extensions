@@ -80,11 +80,29 @@ $messages['en'] = array(
 	'tog-collabwatchlisthidelistusers' => 'Hide edits from collaborative watchlist users',
 );
 
+/** Message documentation (Message documentation)
+ * @author EugeneZelenko
+ */
+$messages['qqq'] = array(
+	'collabwatchlisttagcomment' => '{{Identical|Comment}}',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
 	'collabwatchlist' => 'Агульны сьпіс назіраньня',
+	'collabwatchlist-desc' => 'Падае агульныя сьпісы назіраньня заснаваныя на катэгорыях',
+	'specialcollabwatchlist' => 'Спэцыяльная старонка агульнага сьпісу назіраньня',
+	'collabwatchlist-details' => '{{PLURAL:$1|$1 катэгорыя/старонка|$1 катэгорыі/старонкі|$1 катэгорыяў/старонак}} у гэтым агульным сьпісе назіраньня.',
+	'collabwatchlisttagselect' => 'Тэг',
+	'collabwatchlisttagcomment' => 'Камэнтар',
+	'collabwatchlistsettagbutton' => 'Устанавіць тэг',
+	'collabwatchlisttools-view' => 'Паказаць',
+	'collabwatchlisttools-edit' => 'Рэдагаваць катэгорыі',
+	'collabwatchlisttools-rawCategories' => 'Рэдагаваць катэгорыі як тэкст',
+	'collabwatchlisttools-rawTags' => 'Рэдагаваць тэгі як тэкст',
 );
 
 /** German (Deutsch)
@@ -221,8 +239,42 @@ $messages['mk'] = array(
 	'collabwatchlistedit-raw-legend' => 'Категории за сирово уредување на соработни списоци на набљудувања',
 	'collabwatchlistedit-users-raw-legend' => 'Корисници за сирово уредување на соработни списоци на набљудувања',
 	'collabwatchlistedit-tags-raw-legend' => 'Ознаки за сирово уредување на соработни списоци на набљудувања',
+	'collabwatchlistedit-raw-explain' => 'Категориите на соработниот список на набљудувања се прикажани подолу, и можат да се уредуваат со надополнување или отстранување на ставки од списокот',
+	'collabwatchlistedit-tags-raw-explain' => 'Категориите на соработниот список на набљудувања се прикажани подолу, и можат да се уредуваат со надополнување или отстранување на ставки од списокот',
+	'collabwatchlistedit-users-raw-explain' => 'Категориите на соработниот список на набљудувања се прикажани подолу, и можат да се уредуваат со надополнување или отстранување на ставки од списокот',
 	'collabwatchlistedit-raw-titles' => 'Категории:',
+	'collabwatchlistedit-tags-raw-titles' => 'Ознаки:',
+	'collabwatchlistedit-users-raw-titles' => 'Корисник:',
+	'collabwatchlistedit-normal-title' => 'Уредување на категории',
+	'collabwatchlistedit-normal-legend' => 'Отстранување на категории од список на набљудувања',
+	'collabwatchlistedit-normal-explain' => 'Категориите на списокот на набљудувања се прикажани подолу.',
 	'collabwatchlistedit-tags-raw-submit' => 'Зачувај',
+	'collabwatchlistedit-normal-done' => '{{PLURAL:$1|Отстранета е 1 категорија|Отстранети се $1 категории}} од соработниот список на набљудувања:',
+	'collabwatchlistedit-tags-raw-done' => 'Соработниот список на набљудувања е подновен.',
+	'collabwatchlistedit-users-raw-done' => 'Соработниот список на набљудувања е подновен.',
+	'collabwatchlistedit-tags-raw-added' => '{{PLURAL:$1|Додадена е 1 ознака|Додадени се $1 ознаки}}:',
+	'collabwatchlistedit-users-raw-added' => '{{PLURAL:$1|Додаден е 1 корисник|Додадени се $1 корисници}}:',
+	'collabwatchlistedit-tags-raw-removed' => '{{PLURAL:$1|Отстранета е 1 ознака|Отстранети се $1 ознаки}}:',
+	'collabwatchlistedit-users-raw-removed' => '{{PLURAL:$1|Отстранет е 1 корисник|Отстранети се $1 корисници}}:',
+	'collabwatchlistinverttags' => 'Обратен филтер на ознаки',
+	'collabwatchlistpatrol' => 'Патролирај уредувања',
+	'collabwatchlisttools-newList' => 'Нов соработен список на набљудувања',
+	'collabwatchlistdelete-legend' => 'Избриши соработен список на набљудувања',
+	'collabwatchlistdelete-explain' => 'Бришејќи го соработниот список на набљудувања ќе ги избришете сите траги од него. Ознаките поставени на уредувањата сепак ќе бидат зачувани.',
+	'collabwatchlistdelete-submit' => 'Избриши',
+	'collabwatchlistdelete-title' => 'Избриши соработен список на набљудувања',
+	'collabwatchlistedit-set-tags-numitems' => 'Овој соработен список на набљудувања има {{PLURAL:$1|1 зададена ознака|$1 зададени ознаки}}',
+	'collabwatchlistedit-set-tags-noitems' => 'На овој соработен список на набљудувања не му се зададени ознаки',
+	'collabwatchlistnew-legend' => 'Создај нов соработен список на набљудувања',
+	'collabwatchlistnew-explain' => 'Списокот треба да има уникатно име.',
+	'collabwatchlistnew-name' => 'Име на списокот',
+	'collabwatchlistnew-submit' => 'Создај',
+	'collabwatchlistedit-raw-done' => 'Соработниот список на набљудувања е подновен',
+	'collabwatchlistedit-raw-added' => '{{PLURAL:$1|Додадена е 1 страница/категорија was|Додадени се $1 страници/категории}}:',
+	'collabwatchlistedit-raw-removed' => '{{PLURAL:$1|Отстранета е 1 страница/категорија was|Отстранети се $1 страници/категории}}:',
+	'collabwatchlistedit-normal-submit' => 'Зачувај',
+	'collabwatchlistshowhidelistusers' => '$1 корисници на списокот',
+	'tog-collabwatchlisthidelistusers' => 'Скриј ги уедувањата од корисници на соработни списоци на набљудувања',
 );
 
 /** Dutch (Nederlands)
@@ -268,6 +320,77 @@ $messages['nl'] = array(
 	'collabwatchlistnew-explain' => 'De naam van de lijst moet uniek zijn.',
 	'collabwatchlistnew-submit' => 'Aanmaken',
 	'collabwatchlistedit-normal-submit' => 'Opslaan',
+);
+
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'collabwatchlist' => 'Lista colaborativa de páginas vigiadas',
+	'collabwatchlist-desc' => 'Permite ter listas colaborativas de páginas vigiadas, com base em categorias',
+	'specialcollabwatchlist' => 'Página especial para a lista colaborativa de páginas vigiadas',
+	'collabwatchlist-details' => '{{PLURAL:$1|$1 categoria ou página|$1 categorias ou páginas}} nesta lista colaborativa de páginas vigiadas.',
+	'collabwatchlisttagselect' => 'Etiqueta',
+	'collabwatchlisttagcomment' => 'Comentário',
+	'collabwatchlistsettagbutton' => 'Colocar etiqueta',
+	'collabwatchlisttools-view' => 'Mostrar',
+	'collabwatchlisttools-edit' => 'Editar categorias',
+	'collabwatchlisttools-rawCategories' => 'Editar categorias na forma de texto',
+	'collabwatchlisttools-rawTags' => 'Editar etiquetas na forma de texto',
+	'collabwatchlisttools-rawUsers' => 'Editar utilizadores na forma de texto',
+	'collabwatchlisttools-delete' => 'Eliminar',
+	'collabwatchlistsall' => 'Todas as listas',
+	'collabwatchlistfiltertags' => 'Filtrar etiquetas',
+	'collabwatchlistedit-users-raw-submit' => 'Gravar',
+	'collabwatchlistedit-raw-title' => 'Editar categorias na forma de texto',
+	'collabwatchlistedit-tags-raw-title' => 'Editar etiquetas na forma de texto',
+	'collabwatchlistedit-users-raw-title' => 'Editar utilizadores na forma de texto',
+	'collabwatchlistedit-users-last-owner' => 'Tem de existir pelo menos um proprietário',
+	'collabwatchlistedit-numitems' => 'Esta lista colaborativa de páginas vigiadas contém {{PLURAL:$1|1 categoria|$1 categorias}}',
+	'collabwatchlistedit-noitems' => 'Esta lista colaborativa de páginas vigiadas não contém categorias.',
+	'collabwatchlistedit-tags-numitems' => 'Esta lista colaborativa de páginas vigiadas contém {{PLURAL:$1|1 etiqueta|$1 etiquetas}}',
+	'collabwatchlistedit-tags-noitems' => 'Esta lista colaborativa de páginas vigiadas não contém etiquetas.',
+	'collabwatchlistedit-users-numitems' => 'Esta lista colaborativa de páginas vigiadas contém {{PLURAL:$1|1 utilizador|$1 utilizadores}}',
+	'collabwatchlistedit-users-noitems' => 'Esta lista colaborativa de páginas vigiadas não contém utilizadores.',
+	'collabwatchlistedit-raw-legend' => 'Editar categorias da lista colaborativa de páginas vigiadas, na forma de texto',
+	'collabwatchlistedit-users-raw-legend' => 'Editar utilizadores da lista colaborativa de páginas vigiadas, na forma de texto',
+	'collabwatchlistedit-tags-raw-legend' => 'Editar etiquetas da lista colaborativa de páginas vigiadas, na forma de texto',
+	'collabwatchlistedit-raw-explain' => 'As categorias da lista colaborativa de páginas vigiadas são mostradas abaixo e podem ser adicionadas ou removidas da lista',
+	'collabwatchlistedit-tags-raw-explain' => 'As etiquetas da lista colaborativa de páginas vigiadas são mostradas abaixo e podem ser adicionadas ou removidas da lista',
+	'collabwatchlistedit-users-raw-explain' => 'Os utilizadores da lista colaborativa de páginas vigiadas são mostrados abaixo e podem ser adicionados ou removidos da lista',
+	'collabwatchlistedit-raw-titles' => 'Categorias:',
+	'collabwatchlistedit-tags-raw-titles' => 'Etiquetas:',
+	'collabwatchlistedit-users-raw-titles' => 'Utilizadores:',
+	'collabwatchlistedit-normal-title' => 'Editar categorias',
+	'collabwatchlistedit-normal-legend' => 'Remover categorias da lista de páginas vigiadas',
+	'collabwatchlistedit-normal-explain' => 'As categorias da sua lista de páginas vigiadas são mostradas abaixo.',
+	'collabwatchlistedit-tags-raw-submit' => 'Gravar',
+	'collabwatchlistedit-normal-done' => '{{PLURAL:$1|1 categoria foi removida|$1 categorias foram removidas}} da lista colaborativa de páginas vigiadas:',
+	'collabwatchlistedit-tags-raw-done' => 'A lista colaborativa de páginas vigiadas foi actualizada.',
+	'collabwatchlistedit-users-raw-done' => 'A lista colaborativa de páginas vigiadas foi actualizada.',
+	'collabwatchlistedit-tags-raw-added' => '{{PLURAL:$1|Foi adicionada 1 etiqueta|Foram adicionadas $1 etiquetas}}:',
+	'collabwatchlistedit-users-raw-added' => '{{PLURAL:$1|Foi adicionado 1 utilizador|Foram adicionados $1 utilizadores}}:',
+	'collabwatchlistedit-tags-raw-removed' => '{{PLURAL:$1|Foi removida 1 etiqueta|Foram removidas $1 etiquetas}}:',
+	'collabwatchlistedit-users-raw-removed' => '{{PLURAL:$1|Foi removido 1 utilizador|Foram removidos $1 utilizadores}}:',
+	'collabwatchlistinverttags' => 'Inverter o filtro de etiquetas',
+	'collabwatchlistpatrol' => 'Patrulhar edições',
+	'collabwatchlisttools-newList' => 'Nova lista colaborativa de páginas vigiadas',
+	'collabwatchlistdelete-legend' => 'Eliminar uma lista colaborativa de páginas vigiadas',
+	'collabwatchlistdelete-explain' => 'A eliminação de uma lista colaborativa de páginas vigiadas remove todos os vestígios dessa lista. As etiquetas que foram colocadas nas edições são mantidas.',
+	'collabwatchlistdelete-submit' => 'Eliminar',
+	'collabwatchlistdelete-title' => 'Eliminar a lista colaborativa de páginas vigiadas',
+	'collabwatchlistedit-set-tags-numitems' => 'Esta lista colaborativa de páginas vigiadas tem {{PLURAL:$1|1 etiqueta colocada|$1 etiquetas colocadas}}',
+	'collabwatchlistedit-set-tags-noitems' => 'Esta lista colaborativa de páginas vigiadas não tem etiquetas colocadas.',
+	'collabwatchlistnew-legend' => 'Criar uma lista colaborativa de páginas vigiadas nova',
+	'collabwatchlistnew-explain' => 'O nome da lista colaborativa tem de ser único.',
+	'collabwatchlistnew-name' => 'Nome da lista',
+	'collabwatchlistnew-submit' => 'Criar',
+	'collabwatchlistedit-raw-done' => 'A lista colaborativa de páginas vigiadas foi actualizada',
+	'collabwatchlistedit-raw-added' => '{{PLURAL:$1|1 página ou categoria foi adicionada|$1 páginas ou categorias foram adicionadas}}:',
+	'collabwatchlistedit-raw-removed' => '{{PLURAL:$1|1 página ou categoria foi removida|$1 páginas ou categorias foram removidas}}:',
+	'collabwatchlistedit-normal-submit' => 'Gravar',
+	'collabwatchlistshowhidelistusers' => '$1 utilizadores da lista',
+	'tog-collabwatchlisthidelistusers' => 'Esconder edições dos utilizadores da lista colaborativa de páginas vigiadas',
 );
 
 /** Telugu (తెలుగు)
