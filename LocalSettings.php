@@ -55,7 +55,7 @@ $wgDBuser           = "root";
 $wgDBpassword       = "leakywiks";
 
 # MySQL specific settings
-$wgDBprefix         = "";
+$wgDBprefix         = "mw2";
 
 # MySQL table options to use during installation or update
 $wgDBTableOptions   = "ENGINE=InnoDB, DEFAULT CHARSET=binary";
@@ -99,11 +99,11 @@ $wgUseTeX           = false;
 # Site language code, should be one of ./languages/Language(.*).php
 $wgLanguageCode = "en";
 
-$wgSecretKey = "790d7ee286c2fb4187b434ceb0fef12b45f30023a3d4613af8cddb164d7705aa";
+$wgSecretKey = "cea5a22adfa63e596b38ff892af5ab63fecaca26a43a4c9df1a35c0a85e85259";
 
 # Site upgrade key. Must be set to a string (default provided) to turn on the
 # web installer while LocalSettings.php is in place
-$wgUpgradeKey = "ab66efc4edb006fd";
+$wgUpgradeKey = "5fd6cb729fc715bf";
 
 ## Default skin: you can change the default skin. Use the internal symbolic
 ## names, ie 'standard', 'nostalgia', 'cologneblue', 'monobook', 'vector':
@@ -122,11 +122,14 @@ $wgRightsIcon = "";
 # Path to the GNU diff3 utility. Used for conflict resolution.
 $wgDiff3 = "/usr/bin/diff3";
 
+# Enabled Extensions. Most extensions are enabled by including the base extension file here
+# but check specific extension documentation for more details
+# The following extensions were automatically enabled:
+require( "extensions/SwiftMedia/SwiftMedia.php" );
+
 
 # End of automatically generated settings.
 # Add more configuration options below.
-
-require_once( "$IP/extensions/SwiftMedia/SwiftMedia.php" );
 
 $wgUploadDirectory = "$IP/images/swift";
 // we don't need this and will ignore it. $wgDeletedDirectory = "{$wgUploadDirectory}/deleted";
@@ -155,3 +158,4 @@ $wgLocalFileRepo = array(
 $wgDebugLogFile = "/var/www/debug/abcd";
 $wgDebugTimestamps = true;
 $wgShowExceptionDetails = true;
+
