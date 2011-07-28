@@ -5,20 +5,18 @@
  * @class
  * @constructor
  * @extends {es.Block}
- * @param style {String} Type of list, either "number" or "bullet"
- * @param items {Array} List of es.ListBlockItems to append initially to the root list
+ * @param list {es.ListBlockList} Root list to initialize with
  * @property list {es.ListBlockList}
  * @property $ {jQuery}
  */
-es.ListBlock = function( style, items ) {
+es.ListBlock = function( list ) {
 	es.Block.call( this );
-	this.list = new es.ListBlockList( style, items );
+	this.list = list || new es.ListBlockList();
 	this.$ = this.list.$
 		.addClass( 'editSurface-block' )
 		.data( 'block', this );
-	var block = this;
 	this.list.on( 'update', function() {
-		block.emit( 'update' );
+		this.emit( 'update' );
 	} );
 };
 
@@ -30,7 +28,7 @@ es.ListBlock = function( style, items ) {
  * @param wikidomList {Object} Wikidom data to convert from
  */
 es.ListBlock.newFromWikidom = function( wikidomList ) {
-	return new es.ListBlock( wikidomList.style, wikidomList.items );
+	return new es.ListBlock( es.ListBlockList.newFromWikidom( wikidomList ) );
 };
 
 /* Methods */

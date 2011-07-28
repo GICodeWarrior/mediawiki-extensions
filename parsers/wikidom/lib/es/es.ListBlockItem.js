@@ -5,8 +5,8 @@
  * @constructor
  * @extends {es.EventEmitter}
  * @extends {es.Container}
- * @param line {Object} WikiDom line object to convert and use initially
- * @param lists {Array} List of WikiDom list objects to convert and use initially
+ * @param line {es.Content} Item content
+ * @param lists {Array} List of item sub-lists
  * @property lists {Array}
  * @property $line
  * @property $content
@@ -14,33 +14,32 @@
  * @property flow
  */
 es.ListBlockItem = function( line, lists ) {
-	// Inheritance
 	es.EventEmitter.call( this );
-
-	// Convert items to es.ListBlockItem objects
-	var itemLists = [];
-	for ( var i = 0; i < lists.length; i++ ) {
-		itemLists.push( new es.ListBlockList( lists[i].style, lists[i].items || [] ) );
-	}
-	/*var contentLength = this.content.getLength(
-	 * Initialize container
-	 * 
-	 * - Adds class to container: "editSurface-item"
-	 * - Sets .data( 'item', this )
-	 * - Adds this.lists array
-	 */
-	es.Container.call( this, 'item', 'lists', itemLists );
-	
-	this.$line = $( '<div class="editSurface-list-line"></div>' ).prependTo( this.$ )
-	this.$content = $( '<div class="editSurface-list-content"></div>' ).appendTo( this.$line );
-	
-	this.content = line ? es.Content.newFromLine( line ) : new es.Content();
+	es.Container.call( this, 'item', 'lists', lists );
+	this.content = line || new es.Content();
+	this.$line = $( '<div class="editSurface-list-line"></div>' );
+	this.$content = $( '<div class="editSurface-list-content"></div>' );
+	this.$.prepend( this.$line.append( this.$content ) );
 	this.flow = new es.TextFlow( this.$content, this.content );
-	var item = this;
 	this.flow.on( 'render', function() {
-		item.emit( 'update' );
+		this.emit( 'update' );
 	} );
 }
+
+/* Static Methods */
+
+es.ListBlockItem.newFromWikidom = function( wikidomItem ) {
+	// Convert items to es.ListBlockItem objects
+	var lists = [];
+	if ( wikidomItem.lists ) {
+		for ( var i = 0; i < wikidomItem.lists.length; i++ ) {
+			lists.push( es.ListBlockList.newFromWikidom( wikidomItem.lists[i] ) );
+		}
+	}
+	return new es.ListBlockItem( es.Content.newFromLine( wikidomItem.line ), lists );
+};
+
+/* Methods */
 
 /**
  * Gets the index of the item within it's list.

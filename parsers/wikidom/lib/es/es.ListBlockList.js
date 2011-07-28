@@ -11,30 +11,22 @@
  * @property items {Array} List of es.ListBlockItem objects
  */
 es.ListBlockList = function( style, items ) {
-	// Inheritance
 	es.EventEmitter.call( this );
-	
-	// Convert items to es.ListBlockItem objects
-	var listItems = [],
-		list = this;
-	for ( var i = 0; i < items.length; i++ ) {
-		listItems.push( new es.ListBlockItem( items[i].line, items[i].lists || [] ) );
-		listItems[i].on( 'update', function() {
-			list.emit( 'update' );
-		} );
-	}
+	es.Container.call( this, 'list', 'items', items );
+	this.style = style || 'bullet';
+};
 
-	/*
-	 * Initialize container
-	 * 
-	 * - Adds class to container: "editSurface-list"
-	 * - Sets .data( 'list', this )
-	 * - Adds this.items array
-	 */
-	es.Container.call( this, 'list', 'items', listItems );
-	
-	this.style = style;
-}
+/* Static Methods */
+
+es.ListBlockList.newFromWikidom = function( wikidomList ) {
+	var items = [];
+	for ( var i = 0; i < wikidomList.items.length; i++ ) {
+		items.push( es.ListBlockItem.newFromWikidom( wikidomList.items[i] ) );
+	}
+	return new es.ListBlockList( wikidomList.style, items );
+};
+
+/* Methods */
 
 es.ListBlockList.prototype.getLength = function() {
 	var length = 0;
