@@ -98,12 +98,14 @@ class SwiftFile extends LocalFile {
 	/** isVisible inherited */
 
 	function getPath() {
-		return $this->getLocalCopy($this->repo->container, $this->getRel());
+		$this->temp_path = $this->repo->getLocalCopy($this->repo->container, $this->getRel());
+		return $this->temp_path;
 	}
 
 	/** Get the path of the archive directory, or a particular file if $suffix is specified */
 	function getArchivePath( $suffix = false ) {
-		return $this->getLocalCopy($this->repo->getZoneContainer('public'), $this->getArchiveRel( $suffix ));
+		$this->temp_path = $this->repo->getLocalCopy($this->repo->getZoneContainer('public'), $this->getArchiveRel( $suffix ));
+		return $this->temp_path;
 	}
 
 	/** Get the path of the thumbnail directory, or a particular file if $suffix is specified */
@@ -112,76 +114,14 @@ class SwiftFile extends LocalFile {
 		if ( $suffix !== false ) {
 			$path .= '/' . $suffix;
 		}
-		return $this->getLocalCopy($this->repo->getZoneContainer('thumb'), $path);
-	}
-
-	/**
-	 * Get a local path corresponding to a virtual URL
-	 */
-	function getContainerRel( $url ) {
-		if ( substr( $url, 0, 9 ) != 'mwrepo://' ) {
-			throw new MWException( __METHOD__.": unknown protocol" );
-		}
-
-		$bits = explode( '/', substr( $url, 9 ), 3 );
-		if ( count( $bits ) != 3 ) {
-			throw new MWException( __METHOD__.": invalid mwrepo URL: $url" );
-		}
-		list( $repo, $zone, $rel ) = $bits;
-		if ( $repo !== $this->name ) {
-			throw new MWException( __METHOD__.": fetching from a foreign repo is not supported" );
-		}
-		$container = $this->getZoneContainer( $zone );
-		if ( $container === false) {
-			throw new MWException( __METHOD__.": invalid zone: $zone" );
-		}
-		return array($container, rawurldecode( $rel ));
-	}
-
-	/**
-	 * Called from elsewhere to turn a virtual URL into a path.
-	 */
-	function resolveVirtualUrl( $url ) {
-		$path = getContainerRel( $url );
-		list($c, $r) = $path;
-		return $this->getLocalCopy($c, $r);
-	}
-
-
-	/** Given a container and relative path, return an absolute path pointing at a copy of the file */
-	function getLocalCopy($container, $rel) {
-		// if we already have a local copy, return it.
-		if ($this->temp_path) { return $this->temp_path; }
-
-		// get a temporary place to put the original.
-		$this->temp_path = tempnam( wfTempDir(), 'swift_in_' );
-
-		/* Fetch the image out of Swift */
-		$conn = $this->repo->connect();
-		$cont = $this->repo->get_container($conn,$container);
-
-		try {
-			$obj = $cont->get_object($rel);
-		} catch (NoSuchObjectException $e) {
-			throw new MWException( "Unable to open original file at $container/$rel");
-		}
-
-		wfDebug(  __METHOD__ . " writing to " . $this->temp_path . "\n");
-		try {
-			$obj->save_to_filename( $this->temp_path);
-		} catch (IOException $e) {
-			throw new MWException( __METHOD__ . ": error opening '$e'" );
-		} catch (InvalidResponseException $e) {
-			throw new MWException( __METHOD__ . "unexpected response '$e'" );
-		}
-
+		$this->temp_path = $this->repo->getLocalCopy($this->repo->getZoneContainer('thumb'), $path);
 		return $this->temp_path;
 	}
 
 	function __destruct() {
 		if ($this->temp_path) {
 			// Clean up temporary data.
-			unlink($this->temp_path);
+			unlink( $this->temp_path );
 			$this->temp_path = null;
 		}
 	}
@@ -707,8 +647,6 @@ class SwiftRepo extends LocalRepo {
 	 *        that the source files should be deleted if possible
 	 */
 	function publishBatch( $triplets, $flags = 0 ) {
-		$conn = $this->connect();
-		$container = $this->get_container($conn,$this->container);
 
 		# paranoia
 		$status = $this->newGood( array() );
@@ -721,15 +659,14 @@ class SwiftRepo extends LocalRepo {
 			if ( !$this->validateFilename( $archiveRel ) ) {
 				throw new MWException( "Validation error in $archiveRel" );
 			}
-			if ( !is_file( $srcPath ) ) {
-				// Make a list of files that don't exist for return to the caller
-				$status->fatal( 'filenotfound', $srcPath );
-			}
 		}
 
 		if ( !$status->ok ) {
 			return $status;
 		}
+
+		$conn = $this->connect();
+		$container = $this->get_container($conn,$this->container);
 
 		foreach ( $triplets as $i => $triplet ) {
 			list( $srcPath, $dstRel, $archiveRel ) = $triplet;
@@ -748,12 +685,25 @@ class SwiftRepo extends LocalRepo {
 				$status->value[$i] = 'new';
 			}
 
+			// Where are we copying this from?
+			if (self::isVirtualUrl( $srcPath )) {
+				$src = $this->getContainerRel( $srcPath );
+				list ($srcContainer, $srcRel) = $src;
+				$srcc = $this->get_container($conn, $srcContainer);
+
+				$this->swiftcopy($srcc, $srcRel, $container, $dstRel);
+				if ( $flags & self::DELETE_SOURCE ) {
+					$this->swift_delete( $srcc, $srcRel );
+				}
+			} else {
+				$this->write_swift_object( $srcPath, $container, $dstRel);
+				// php-cloudfiles throws exceptions, so failure never gets here.
+				if ( $flags & self::DELETE_SOURCE ) {
+					unlink ( $srcPath );
+				}		
+			}
+
 			$good = true;
-			$this->write_swift_object( $srcPath, $container, $dstRel);
-			// php-cloudfiles throws exceptions, so failure never gets here.
-			if ( $flags & self::DELETE_SOURCE ) {
-				unlink ( $srcPath );
-			}		
 
 			if ( $good ) {
 				$status->successCount++;
@@ -863,6 +813,30 @@ class SwiftRepo extends LocalRepo {
 				return false;
 		}
 	}
+
+	/**
+	 * Get a local path corresponding to a virtual URL
+	 */
+	function getContainerRel( $url ) {
+		if ( substr( $url, 0, 9 ) != 'mwrepo://' ) {
+			throw new MWException( __METHOD__.": unknown protocol" );
+		}
+
+		$bits = explode( '/', substr( $url, 9 ), 3 );
+		if ( count( $bits ) != 3 ) {
+			throw new MWException( __METHOD__.": invalid mwrepo URL: $url" );
+		}
+		list( $repo, $zone, $rel ) = $bits;
+		if ( $repo !== $this->name ) {
+			throw new MWException( __METHOD__.": fetching from a foreign repo is not supported" );
+		}
+		$container = $this->getZoneContainer( $zone );
+		if ( $container === false) {
+			throw new MWException( __METHOD__.": invalid zone: $zone" );
+		}
+		return array($container, rawurldecode( $rel ));
+	}
+
 	/**
 	 * Remove a temporary file or mark it for garbage collection
 	 * @param $virtualUrl String: the virtual URL returned by storeTemp
@@ -882,6 +856,62 @@ class SwiftRepo extends LocalRepo {
 	}
 
 	/**
+	 * Called from elsewhere to turn a virtual URL into a path.
+	 * Make sure you delete this file after you've used it!!
+	 */
+	function resolveVirtualUrl( $url ) {
+		$path = $this->getContainerRel( $url );
+		list($c, $r) = $path;
+		return $this->getLocalCopy($c, $r);
+	}
+
+
+	/**
+	 * Given a container and relative path, return an absolute path pointing at a
+	 * copy of the file MUST delete the produced file, or else store it in
+	 * SwiftFile->temp_path so it will be deleted when the object goes out of
+	 * scope.
+	 */
+	function getLocalCopy($container, $rel) {
+
+		// get a temporary place to put the original.
+		$temp_path = tempnam( wfTempDir(), 'swift_in_' );
+
+		/* Fetch the image out of Swift */
+		$conn = $this->connect();
+		$cont = $this->get_container($conn,$container);
+
+		try {
+			$obj = $cont->get_object($rel);
+		} catch (NoSuchObjectException $e) {
+			throw new MWException( "Unable to open original file at $container/$rel");
+		}
+
+		wfDebug(  __METHOD__ . " writing to " . $temp_path . "\n");
+		try {
+			$obj->save_to_filename( $temp_path);
+		} catch (IOException $e) {
+			throw new MWException( __METHOD__ . ": error opening '$e'" );
+		} catch (InvalidResponseException $e) {
+			throw new MWException( __METHOD__ . "unexpected response '$e'" );
+		}
+
+		return $temp_path;
+	}
+
+
+        /**
+	 * Get properties of a file with a given virtual URL
+	 * The virtual URL must refer to this repo
+	 */
+        function getFileProps( $virtualUrl ) {
+		$path = $this->resolveVirtualUrl( $virtualUrl );
+		$ret = File::getPropsFromPath( $path );
+		unlink( $path );
+	}
+
+
+	/**
 	 * Get an UploadStash associated with this repo.
 	 *
 	 * @return UploadStash
@@ -892,9 +922,31 @@ class SwiftRepo extends LocalRepo {
 }
 
 class SwiftStash extends UploadStash {
+	/**
+	 * Wrapper function for subclassing.
+	 */
+	protected function newFile(  $path, $key, $data ) {
+		wfDebug( __METHOD__ . ": deleting $key\n" );
+		return new SwiftStashFile( $this, $this->repo, $path, $key, $data );
+	}
+
 }
 
 class SwiftStashFile extends UploadStashFile {
+	//public function __construct( $stash, $repo, $path, $key, $data ) {
+	//	// We don't call parent:: because UploadStashFile expects to be able to call $this->resolveURL() and get a pathname.
+	//	$this->sessionStash = $stash;
+	//	$this->sessionKey = $key;
+	//	$this->sessionData = $data;
+	//	wfDebug( __METHOD__ . ": ($stash, $repo, $path, $key, $data)\n" );
+
+	//	UnregisteredLocalFile::__construct( false, $repo, $path, false );
+	//	$this->name = basename( $this->path );
+
+	//}
+
+	//function getPath() {
+	//}
 }
 
 /**
