@@ -47,11 +47,11 @@ es.Surface = function( $container, doc ) {
 	};
 	
 	// MouseDown on surface
-	this.$.bind({
+	this.$.bind( {
 		'mousedown' : function(e) {
 			return surface.onMouseDown( e );
 		}
-	});
+	} );
 	
 	// Selection
 	this.$ranges = $( '<div class="editSurface-ranges"></div>' ).prependTo( this.$ );
@@ -324,12 +324,13 @@ es.Surface.prototype.onMouseDown = function( e ) {
 		clearTimeout( this.mouse.clickTimeout );
 		var clickPosition = es.Position.newFromEventPagePosition( e );
 		if ( this.mouse.clickPosition &&
-				this.mouse.clickPosition.near( clickPosition, this.mouse.hotSpotRadius ) ) {
+				clickPosition.near( this.mouse.clickPosition, this.mouse.hotSpotRadius ) ) {
 			// Same location, keep counting
 			this.mouse.clicks++;
 			var surface = this;
 			this.mouse.clickTimeout = setTimeout( function() {
 				surface.mouse.clicks = 0;
+				surface.mouse.clickPosition = null;
 			}, this.mouse.clickDelay );
 		} else {
 			// New location, start over
