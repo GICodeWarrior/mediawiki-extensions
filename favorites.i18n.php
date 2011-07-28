@@ -205,11 +205,57 @@ Dir kënnt och [[Special:Favoritelist/raw|déi net-formatéiert Lëscht änneren
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
+	'favorites-desc' => 'Создај список на бендисани',
+	'favoritethis' => 'Бендисај ја станицава',
+	'prefs-favoritelist' => 'Бендисани',
+	'prefs-favoritelist-token' => 'Жетон за бендисани:',
+	'prefs-advancedfavoritelist' => 'Напредни поставки',
+	'favoritelist' => 'Мои бендисани',
+	'myfavoritelist' => 'Мои бендисани',
 	'favoritelistfor' => "(за '''$1''')",
+	'nofavoritelist' => 'Немате бендисани.',
+	'favoritelistanontext' => '$1 за да ги погледате или уредите бендисаните.',
+	'favoritenologin' => 'Не сте најавени',
+	'favoritenologintext' => 'Мора да сте [[Special:UserLogin|најавени]] за да можете да ги менувате бендисаните.',
+	'addedfavorite' => 'Додадено во бендисаните',
+	'addedfavoritetext' => 'Страницата „[[:$1]]“ е додадена во [[Special:Favoritelist|бендисаните]].',
+	'removedfavorite' => 'Отстрането од бендисаните',
+	'removedfavoritetext' => 'Страницата „[[:$1]]“ е отстранета од [[Special:Favoritelist|бендисаните]].',
+	'favorite' => 'Бендисај',
+	'favoritethispage' => 'Бендисај ја страницава',
+	'unfavorite' => 'Одбендисај',
+	'unfavoritethispage' => 'Одбендисај ја страницава',
+	'favoritelist-options' => 'Поставки за бендисани',
 	'favoriteing' => 'Бендисувам...',
 	'unfavoriteing' => 'Одбендисувам...',
+	'tooltip-pt-favoritelist' => 'Список на страници кои сте избрале да ги набљудувате',
+	'tooltip-ca-favorite' => 'Додај ја страницава во бендисаните',
+	'tooltip-ca-unfavorite' => 'Отстрани ја страницава од бендисаните',
+	'tooltip-favorite' => 'Додај ја страницава во бендисаните',
 	'favoritelistall2' => 'сите',
+	'favoritelistedit-numitems' => 'Во бендисаните има {{PLURAL:$1|1 наслов|$1 наслови}}, без страниците за разговор.',
+	'favoritelistedit-noitems' => 'Немате наслови во бендисаните.',
+	'favoritelistedit-normal-title' => 'Уреди бендисани',
+	'favoritelistedit-normal-legend' => 'Отстрани наслови од бендисаните',
+	'favoritelistedit-normal-explain' => 'Насловите во вашиот список на набљудувања се прикажани подолу.
+За да избришете наслов, штиклирајте го квадратчето лево од насловот, и стиснете на „{{int:Favoritelistedit-normal-submit}}“.
+Можете да го [[Special:Favoritelist/raw|уредите сировниот список]].',
+	'favoritelistedit-normal-submit' => 'Отстрани наслови',
+	'favoritelistedit-normal-done' => '{{PLURAL:$1|1 наслов|$1 наслови}} се отстранети од бендисаните:',
+	'favoritelistedit-raw-title' => 'Уреди сиров список на бендисани',
+	'favoritelistedit-raw-legend' => 'Уреди сиров список на бендисани',
+	'favoritelistedit-raw-explain' => 'Насловите во бендисаните се прикажани подолу, и можат да се уредуваат со додавање или бришење на ставки од списокот;
+по еден наслов во секој ред.
+Кога ќе завршите, стиснете на „{{int:Favoritelistedit-raw-submit}}“.
+Можете и да го [[Special:Favoritelist/edit|употребите обичниот уредувач]].',
 	'favoritelistedit-raw-titles' => 'Наслови:',
+	'favoritelistedit-raw-submit' => 'Поднови бендисани',
+	'favoritelistedit-raw-done' => 'Бендисаните се подновени.',
+	'favoritelistedit-raw-added' => '{{PLURAL:$1|Додаден е 1 наслов|Додадени се $1 наслови}}:',
+	'favoritelistedit-raw-removed' => '{{PLURAL:$1|Отстранет е 1 наслов|Отстранети се $1 наслови}}:',
+	'favoritelisttools-view' => 'Погледај „Бендисани“',
+	'favoritelisttools-edit' => 'Погледај и уреди „Бендисани“',
+	'favoritelisttools-raw' => 'Уреди сирови бендисани',
 );
 
 /** Dutch (Nederlands)
