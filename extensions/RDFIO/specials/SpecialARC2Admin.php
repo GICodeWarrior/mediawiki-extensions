@@ -3,14 +3,14 @@
 if ( !defined( 'MEDIAWIKI' ) ) {
     echo <<<EOT
 To install my extension, put the following line in LocalSettings.php:
-require_once( "\$IP/extensions/RDFIO/specials/SpecialARC2Admin.php" );
+require_once( "\$IP/extensions/RDFIO/specials/ARC2Admin.php" );
 EOT;
     exit( 1 );
 }
 
 $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
-	'name' => 'SpecialARC2Admin',
+	'name' => 'ARC2Admin',
 	'author' => 'Samuel Lampa',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:SMWRDFConnector',
 	'descriptionmsg' => 'rdfio-arc2admin-desc',
@@ -19,7 +19,7 @@ $wgExtensionCredits['specialpage'][] = array(
 
 $dir = dirname( __FILE__ ) . '/';
 
-$wgAutoloadClasses['SpecialARC2Admin'] = $dir . 'SpecialARC2Admin_body.php'; # Tell MediaWiki to load the extension body.
-$wgExtensionMessagesFiles['SpecialARC2Admin'] = $dir . '../RDFIO.i18n.php';
-$wgExtensionAliasFiles['SpecialARC2Admin'] = $dir . '../RDFIO.alias.php';
-$wgSpecialPages['SpecialARC2Admin'] = 'SpecialARC2Admin'; # Let MediaWiki know about your new special page.
+$wgAutoloadClasses['ARC2Admin'] = $dir . 'SpecialARC2Admin_body.php'; # Tell MediaWiki to load the extension body.
+$wgExtensionMessagesFiles['ARC2Admin'] = $dir . '../RDFIO.i18n.php';
+$wgExtensionAliasFiles['ARC2Admin'] = $dir . '../RDFIO.alias.php';
+$wgSpecialPages['ARC2Admin'] = 'ARC2Admin'; # Let MediaWiki know about your new special page.
