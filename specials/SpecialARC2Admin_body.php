@@ -4,7 +4,7 @@
  * @author samuel.lampa@gmail.com
  * @package SMWRDFConnector
  */
-class SpecialARC2Admin extends SpecialPage {
+class ARC2Admin extends SpecialPage {
 
 	protected $m_issysop;
 
