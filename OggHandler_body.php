@@ -95,7 +95,7 @@ class OggHandler extends MediaHandler {
 			// Check for height param and adjust width accordingly
 			if ( isset( $params['height'] ) && $params['height'] != -1 ) {
 				if( $params['width'] * $srcHeight > $params['height'] * $srcWidth ) {
-					$params['width'] = wfFitBoxWidth( $srcWidth, $srcHeight, $params['height'] );
+					$params['width'] = self::fitBoxWidth( $srcWidth, $srcHeight, $params['height'] );
 				}
 			}
 
