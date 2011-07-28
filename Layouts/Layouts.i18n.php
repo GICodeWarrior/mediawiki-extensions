@@ -623,8 +623,14 @@ $messages['mn'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'layouts-desc' => 'Mengisi halaman yang baru diwujudkan dengan "tata letak" yang boleh disunting untuk menggalakkan struktur bersama untuk laman-laman',
+	'layouts_title' => 'Cipta laman',
 	'layouts_chooselayout' => 'Pilih tataletak untuk $1:',
+	'layouts_nolayout' => 'Tiada tataletak',
+	'layouts_continue' => 'Sambung',
 	'layouts_choosecategory' => 'Pilih kategori untuk $1:',
+	'layouts_unknown' => 'Tidak diketahui',
+	'layouts_tagline' => "Laman ini dijana oleh tataletak '''$1'''.",
 );
 
 /** Erzya (Эрзянь)

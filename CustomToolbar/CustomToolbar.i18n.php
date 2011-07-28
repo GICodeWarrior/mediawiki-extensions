@@ -1891,6 +1891,7 @@ $messages['mn'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'ct-desc' => 'Menyediakan bar alat yang boleh diperluas',
 	'ct_bold_sample' => 'Teks tebal',
 	'ct_bold_tip_ins' => 'Isikan teks tebal',
 	'ct_bold_tip_wrap' => 'Tebalkan teks ini',
@@ -1914,11 +1915,24 @@ $messages['ms'] = array(
 	'ct_math_tip_ins' => 'Sisipkan rumus matematik (LaTeX)',
 	'ct_math_tip_wrap' => 'Jadikan teks ini formula matematik (LaTeX)',
 	'ct_math_caption' => 'Rumus',
+	'ct_nowiki_sample' => 'Isikan teks tak berformat di sini',
+	'ct_nowiki_tip_ins' => 'Abaikan pemformatan wiki',
+	'ct_nowiki_tip_wrap' => 'Abaikan pemformatan wiki untuks teks ini',
 	'ct_nowiki_caption' => 'Tiada wiki',
+	'ct_horizontal_tip' => 'Sisipkan garis melintang (gunakan dengan hemat)',
+	'ct_horizontal_caption' => 'Garis melintang',
 	'ct_upload' => 'Muat naik $1',
+	'ct_select' => 'Pilih $1 untuk dimuat naik:',
+	'ct_caption' => 'Bubuh kapsyen (pilihan):',
+	'ct_link' => 'Bubuh nama pautan (pilihan):',
 	'ct_submit' => 'Pergi!',
 	'ct_close' => 'Tutup tetingkap',
+	'ct_success' => 'Fail berjaya dimuat naik!',
+	'ct_popupblocked' => 'Tetimbul muat naik dihalang daripada dibuka. Sila semak penyekat tetimbul (pop-up blocker) anda.',
 	'ct_user_user' => 'Pengguna',
+	'ct_user_tip' => 'Sisipkan pautan kepada laman pengguna',
+	'ct_user_caption' => 'Pautan pengguna',
+	'ct_user_sample' => 'Nama pengguna',
 );
 
 /** Maltese (Malti)

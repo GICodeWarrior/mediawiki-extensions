@@ -399,6 +399,16 @@ $messages['mk'] = array(
 	'formatchanges-editedby' => '$1 - уредено од $2 ($3)',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'formatchanges-desc' => 'Memformatkan semula [[Special:RecentChanges|perubahan terkini]]',
+	'formatchanges-anonymous' => 'Tanpa nama',
+	'formatchanges-createdby' => '$1 - dicipta oleh $2 ($3)',
+	'formatchanges-editedby' => '$1 - disunting oleh $2 ($3)',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

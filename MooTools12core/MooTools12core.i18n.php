@@ -267,6 +267,13 @@ $messages['mk'] = array(
 	'mootools12core-desc' => 'Додава [http://mootools.net mootools-1.2-core-yc.js], компактна JavaScript шема, на секоја страница',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'mootools12core-desc' => 'Menambahkan [http://mootools.net mootools-1.2-core-yc.js], sejenis rangka kerja JavaScript yang padat, pada setiap laman',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */
