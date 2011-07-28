@@ -290,6 +290,13 @@ $messages['ml'] = array(
 	'localisationupdate-desc' => 'പ്രാദേശികഭാഷയിലാക്കിയ സന്ദേശങ്ങൾ കഴിയുന്നത്ര വേഗം ചേർക്കാൻ ഉപയോഗിക്കുന്നു',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'localisationupdate-desc' => 'Memastikan kekemaskinian mesej-mesej yang disetempatkan',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
