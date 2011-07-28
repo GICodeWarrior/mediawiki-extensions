@@ -234,6 +234,13 @@ $messages['mk'] = array(
 	'editsectionhilitelink-desc' => 'Посинете го соодветниот дел од страницата кога ќе го донесете глушецот до врската за уредување',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'editsectionhilitelink-desc' => 'Menyerlahkan bahagian laman yang sesuai apabila anda menggerakkan tetikut ke atas pautan sunting',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */
