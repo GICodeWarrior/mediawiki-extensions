@@ -47,6 +47,13 @@ $messages['mk'] = array(
 	'signupapi-desc' => 'Го чисти Special:UserLogin од содржините за пријава и додава API за пријавување',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'signupapi-desc' => 'Membersihkan bahan-bahan berkenaan pendaftaran daripada Special:UserLogin serta membubuh API untuk pendaftaran',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
