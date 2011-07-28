@@ -21,8 +21,9 @@ es.ListBlockItem = function( line, lists ) {
 	this.$content = $( '<div class="editSurface-list-content"></div>' );
 	this.$.prepend( this.$line.append( this.$content ) );
 	this.flow = new es.TextFlow( this.$content, this.content );
+	var listBlockItem = this;
 	this.flow.on( 'render', function() {
-		this.emit( 'update' );
+		listBlockItem.emit( 'update' );
 	} );
 }
 

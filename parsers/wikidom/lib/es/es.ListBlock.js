@@ -15,8 +15,9 @@ es.ListBlock = function( list ) {
 	this.$ = this.list.$
 		.addClass( 'editSurface-block' )
 		.data( 'block', this );
+	var listBlock = this;
 	this.list.on( 'update', function() {
-		this.emit( 'update' );
+		listBlock.emit( 'update' );
 	} );
 };
 
