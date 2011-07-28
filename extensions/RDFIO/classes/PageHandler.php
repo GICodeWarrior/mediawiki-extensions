@@ -117,7 +117,7 @@ class RDFIOPageHandler {
                         'action' => 'edit',
                         'title' => $this->m_wikititlefull, // For the faux request, the namespace must be included in text form
                         'section' => '0',
-                        'summary' => 'New Page (by SMWRDFConnector)',
+                        'summary' => 'New Page (by RDFIO)',
                         'text' => '<!-- Empty page -->',
                         'token' => $this->m_edittoken
         ) );
