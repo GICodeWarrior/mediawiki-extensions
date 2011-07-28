@@ -34,7 +34,7 @@ $messages['be-tarask'] = array(
  * @author Kghbln
  */
 $messages['de'] = array(
-	'editpagetracking-desc' => 'Ermöglicht die Aufzeichnung des erstens Besuchs einer Bearbeitungsseite durch einen Benutzer',
+	'editpagetracking-desc' => 'Ermöglicht das Nachvollziehen des erstens Besuchs einer Bearbeitungsseite durch einen Benutzer',
 );
 
 /** Hebrew (עברית)
@@ -70,6 +70,13 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'editpagetracking-desc' => 'Ја евидентира првата посета (погледнување) на страницата за уредување на секој корисник',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'editpagetracking-desc' => 'Merakam kali pertama setiap pengguna melihat laman penyuntingan',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
