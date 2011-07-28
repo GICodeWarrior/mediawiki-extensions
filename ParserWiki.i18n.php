@@ -168,6 +168,13 @@ $messages['mk'] = array(
 	'parserwiki-desc' => 'Овозможува утврдување на граматика во едно вики и употреба на таа граматика за внос на информации во тоа вики',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'parserwiki-desc' => 'Membolehkan penakrifan nahu dalam wiki agar nahu itu digunakan untuk menginput maklumat ke dalam wiki yang sama',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
