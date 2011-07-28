@@ -287,6 +287,13 @@ $messages['ml'] = array(
 	'geolite-desc' => 'ലഘുവായ ജിയോഐപി തിരിച്ചുവിടൽ',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'geolite-desc' => 'Lightweight GeoIp Redirection',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
