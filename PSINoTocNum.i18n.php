@@ -253,6 +253,13 @@ $messages['mr'] = array(
 	'psinotocnum-desc' => 'नवीन जादूईशब्द "<nowiki>__NOTOCNUM__</nowiki>"',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'psinotocnum-desc' => 'Kata sakti baru "<nowiki>__NOTOCNUM__</nowiki>"',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
