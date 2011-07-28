@@ -101,6 +101,7 @@ $messages['bar'] = array(
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Wizardist
  * @author Zedlik
  */
 $messages['be-tarask'] = array(
@@ -108,6 +109,7 @@ $messages['be-tarask'] = array(
 	'useroptionstats-desc' => '[[Special:UserOptionStats|Спэцыяльная старонка]] для стварэньня справаздачы па выкарыстаньню наладаў ўдзельнікаў MediaWiki',
 	'uos-warn' => 'PHPlot не ўсталяваны!',
 	'uos-choose' => 'Выберыце адну з наступных наладаў удзельніка: $1',
+	'uos-choose-hidden' => 'Выберыце адну з наступных схаваных наладаў удзельніка: $1',
 	'uos-unknown' => '*Па змоўчваньні',
 	'uos-other' => '*Іншая',
 	'uos-title' => 'Разьмеркаваньне значэньняў наладаў удзельнікаў $1',
