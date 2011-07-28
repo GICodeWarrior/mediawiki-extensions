@@ -163,6 +163,13 @@ $messages['mk'] = array(
 	'qrcode-desc' => 'Создава и додава png со QR-код во вики-страница',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'qrcode-desc' => 'Menjana dan membubuh imej-imej QR Code pada laman wiki',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
