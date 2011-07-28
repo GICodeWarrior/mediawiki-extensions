@@ -68,18 +68,18 @@ class FCKeditorSkin {
 		if( $thumb ) {
 			$ret .= "_fck_mw_type=\"thumb"."\" ";
 			$class .= "fck_mw_frame";
-		} elseif( $framed ) {
+		} else if( $framed ) {
 			$ret .= "_fck_mw_type=\"frame"."\" ";
 			$class .= "fck_mw_frame";
 		}
 
 		if( $align == 'right' ) {
 			$class .= ( $class ? ' ' : '' ) . 'fck_mw_right';
-		} elseif( $align == 'center' ) {
+		} else if( $align == 'center' ) {
 			$class .= ( $class ? ' ' : '' ) . 'fck_mw_center';
-		} elseif( $align == 'left' ) {
+		} else if( $align == 'left' ) {
 			$class .= ( $class ? ' ' : '' ) . 'fck_mw_left';
-		} elseif( $framed || $thumb ) {
+		} else if( $framed || $thumb ) {
 			$class .= ( $class ? ' ' : '' ) . 'fck_mw_right';
 		}
 
