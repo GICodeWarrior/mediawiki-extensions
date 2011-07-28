@@ -85,7 +85,10 @@ function getLanguageIso639_3ForId( $id ) {
 	
 }
 
-/* Return SQL query string for fetching language names. */
+/**
+ * Returns a SQL query string for fetching language names in a given language.
+ * @param $lang_code the language in which to retrieve the language names 
+ **/
 function getSQLForLanguageNames( $lang_code ) {
 	/* Use a simpler query if the user's language is English. */
 	/* getLanguageIdForCode( 'en' ) = 85 */
@@ -104,15 +107,3 @@ function getSQLForLanguageNames( $lang_code ) {
 			' AND language_id NOT IN ( SELECT language_id FROM language_names WHERE name_language_id =  ' . $lang_id .
 			' ) ) ' ;
 }
-
-function getLanguageIdForName( $name ) {
-	$dbr = wfGetDB( DB_SLAVE );
-	$queryResult = $dbr->query( "SELECT language_id FROM language_names WHERE language_name=" . $dbr->addQuotes( $name ) );
-	
-	if ( $languageId = $dbr->fetchObject( $queryResult ) )
-		return $languageId->language_id;
-	else
-		return 0;
-}
-
-
