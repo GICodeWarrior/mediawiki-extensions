@@ -150,6 +150,13 @@ $messages['mk'] = array(
 	'slimboxthumbs-desc' => 'Прикажува слики во полна големина со [http://www.digitalia.be/software/slimbox2 Slimbox 2] при кликнување на минијатурите',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'slimboxthumbs-desc' => 'Memaparkan imej bersaiz penuh dengan [http://www.digitalia.be/software/slimbox2 Slimbox 2] apabila mengklik gambar kenit',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
