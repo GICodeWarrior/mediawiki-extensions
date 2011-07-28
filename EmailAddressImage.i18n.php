@@ -304,6 +304,13 @@ $messages['mr'] = array(
 	'emailaddressimage-desc' => 'एखादा इमेल पत्ता चित्र म्हणून दर्शविण्यासाठी लागणारी <code>&lt;email&gt;</code> खूण वाढविते',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'emailaddressimage-desc' => 'Membubuh <code>&lt;email&gt;</code> untuk memaparkan alamat e-mel dalam bentuk imej',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
