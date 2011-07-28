@@ -311,6 +311,13 @@ $messages['mk'] = array(
 	'tooltip-desc' => 'Додава <code>&lt;tooltip&gt;</code> и <code>{{#tooltip:}}</code> ознака',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'tooltip-desc' => 'Membubuh tag <code>&lt;tooltip&gt;</code> dan <code>{{#tooltip:}}</code>',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
