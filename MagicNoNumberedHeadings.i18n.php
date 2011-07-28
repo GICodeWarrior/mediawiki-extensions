@@ -244,6 +244,13 @@ $messages['mk'] = array(
 	'magicnonumberedheadings-desc' => 'Го додава волшебниот збор „<nowiki>__NONUMBEREDHEADINGS__</nowiki>“',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'magicnonumberedheadings-desc' => 'Membubuh kata sakti "<nowiki>__NONUMBEREDHEADINGS__</nowiki>"',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */
