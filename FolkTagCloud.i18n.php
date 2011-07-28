@@ -144,6 +144,13 @@ $messages['mk'] = array(
 	'folktagcloud-desc' => 'Додава својство за Семантички МедијаВики за означување на страници со кориснички-прилагодени натписи и парсерска ознака за да се прикажуваат во облак',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'folktagcloud-desc' => 'Membubuh sifat Semantic Mediawiki untuk mengetag laman-laman dengan label-label tentuan pengguna dan tag penghurai untuk memaparkannya dalam awan tag',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
