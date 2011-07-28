@@ -1,6 +1,8 @@
 /**
  * Flowing text renderer.
  * 
+ * TODO: Cleanup code and comments
+ * 
  * @class
  * @constructor
  * @extends {es.EventEmitter}

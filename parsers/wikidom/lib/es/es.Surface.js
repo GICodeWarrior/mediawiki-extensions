@@ -1,6 +1,8 @@
 /**
  * Wikitext document editing surface.
  * 
+ * TODO: Cleanup code and comments
+ * 
  * @class
  * @constructor
  * @param $container {jQuery}
