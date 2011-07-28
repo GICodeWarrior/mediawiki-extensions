@@ -241,6 +241,13 @@ $messages['mk'] = array(
 	'jskit-desc' => 'Интегрира js-kit алатки на викистраница',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'jskit-desc' => 'Menggabungkan alat-alatan js-kit kepada laman wiki',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
