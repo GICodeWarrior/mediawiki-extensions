@@ -220,6 +220,13 @@ $messages['mr'] = array(
 	'preloader-desc' => 'नवीन पानांसाठी बदलता येण्याजोगी नामविश्व बॉइलरप्लेट देते',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'preloader-desc' => 'Menyediakan teks plat dandang seruang nama yang boleh disuaikan untuk laman baru',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
