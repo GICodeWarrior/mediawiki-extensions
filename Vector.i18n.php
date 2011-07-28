@@ -27,11 +27,13 @@ If you are logged in, you can disable this warning in the "Editing" section of y
 /** Message documentation (Message documentation)
  * @author Fryed-peach
  * @author Lloffiwr
+ * @author Nemo bis
  * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'vector' => 'UI means User Interface. Vector is the name of an interface skin.',
 	'vector-desc' => '{{desc}}',
+	'vector-collapsiblenav-preference' => 'The message refers to the sidebar, whose sections are collapsible in Vector skin (some of them collapsed by default and some no); the preference disables collapsing entirely and is among "Advanced options" in the "Appearence" section.',
 	'vector-editwarning-warning' => "{{doc-important|Do ''not'' use <nowiki>{{int:prefs-editing}}</nowiki> for \"Editing\". It is forbidden in this message, see [[mwr:68405]].}}",
 	'vector-simplesearch-search' => 'Greyed out default text in the simple search box in the Vector skin. (It disappears and lets the user enter the requested search terms when the search box receives focus.)
 
