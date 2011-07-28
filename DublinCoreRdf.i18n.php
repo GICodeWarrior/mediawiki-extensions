@@ -108,6 +108,13 @@ $messages['mk'] = array(
 	'dublincorerdf-desc' => 'RDF-метаподатоци од Dublin Core',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'dublincorerdf-desc' => 'Dublin Core RDF-metadata',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
