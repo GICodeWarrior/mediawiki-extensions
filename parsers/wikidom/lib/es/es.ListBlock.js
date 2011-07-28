@@ -24,12 +24,15 @@ es.ListBlock = function( list ) {
 /* Static Methods */
 
 /**
- * Creates a new list block object from Wikidom data.
+ * Creates a new list block object from WikiDom data.
  * 
- * @param wikidomList {Object} Wikidom data to convert from
+ * @param wikidomParagraphBlock {Object} WikiDom data to convert from
  */
-es.ListBlock.newFromWikidom = function( wikidomList ) {
-	return new es.ListBlock( es.ListBlockList.newFromWikidom( wikidomList ) );
+es.ListBlock.newFromWikiDomListBlock = function( wikidomListBlock ) {
+	if ( wikidomListBlock.type !== 'list' ) {
+		throw 'Invalid block type error. List block expected to be of type "list".';
+	}
+	return new es.ListBlock( es.ListBlockList.newFromWikiDomList( wikidomListBlock ) );
 };
 
 /* Methods */
@@ -260,9 +263,9 @@ es.ListBlock.prototype.traverseItems = function( callback ) {
 /* Registration */
 
 /**
- * Extend es.Block to support list block creation with es.Block.newFromWikidom
+ * Extend es.Block to support list block creation with es.Block.newFromWikiDom
  */
-es.Block.models.list = es.ListBlock;
+es.Block.blockConstructors.list = es.ListBlock.newFromWikiDomListBlock;
 
 /* Inheritance */
 

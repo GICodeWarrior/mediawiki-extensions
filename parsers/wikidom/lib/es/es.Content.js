@@ -24,6 +24,9 @@ es.Content = function( content ) {
  * 
  * Each supported annotation renderer must have an open and close property, each either a string or
  * a function which accepts a data argument.
+ * 
+ * @static
+ * @member
  */
 es.Content.annotationRenderers = {
 	'template': {
@@ -60,6 +63,12 @@ es.Content.annotationRenderers = {
 	}
 };
 
+/**
+ * Mapping of character and HTML entities or renderings.
+ * 
+ * @static
+ * @member
+ */
 es.Content.htmlCharacters = {
 	'&': '&amp;',
 	'<': '&lt;',
@@ -80,10 +89,12 @@ es.Content.htmlCharacters = {
  * the other. An asymmetrical test may also be performed, which checks only that properties in the
  * first object are present in the second object, but not the inverse.
  * 
+ * @static
+ * @method
  * @param a {Object} First object to compare
  * @param b {Object} Second object to compare
  * @param asymmetrical {Boolean} Whether to check only that b contains values from a
- * @return {Boolean} If the objects contain the same values as each other
+ * @returns {Boolean} If the objects contain the same values as each other
  */
 es.Content.compareObjects = function( a, b, asymmetrical ) {
 	var aValue, bValue, aType, bType;
@@ -106,8 +117,10 @@ es.Content.compareObjects = function( a, b, asymmetrical ) {
 /**
  * Gets a recursive copy of an object's string, number and plain-object property.
  * 
+ * @static
+ * @method
  * @param source {Object} Object to copy
- * @return {Object} Copy of source object
+ * @returns {Object} Copy of source object
  */
 es.Content.copyObject = function( source ) {
 	var destination = {};
@@ -125,19 +138,59 @@ es.Content.copyObject = function( source ) {
 };
 
 /**
+ * Creates a new Content object from a WikiDom line object.
+ * 
+ * @static
+ * @method
+ * @param wikidomLine {Object} WikiDom compatible line object - @see Content.convertLine
+ * @returns {es.Content} New content object containing data derived from the WikiDom line
+ */
+es.Content.newFromWikiDomLine = function( wikidomLine ) {
+	return new es.Content( es.Content.convertWikiDomLine( wikidomLine ) );
+};
+
+/**
+ * Creates a new Content object from a list of WikiDom line objects.
+ * 
+ * This plural version of Content.newFromLine inserts non-annotated new line characters between
+ * lines, preserving the divisions between the original line objects. When Content objects are
+ * converted to WikiDom line objects, these new line characters are used to split the content data
+ * into multiple line objects, thus making a clean round trip possible.
+ * 
+ * @static
+ * @method
+ * @param wikidomLines {Array} List of WikiDom compatible line objects
+ * @returns {es.Content} New content object containing data derived from the WikiDom line
+ */
+es.Content.newFromWikiDomLines = function( wikidomLines ) {
+	var data = [];
+	var i;
+	for ( i = 0; i < wikidomLines.length; i++ ) {
+		data = data.concat( es.Content.convertWikiDomLine( wikidomLines[i] ) );
+		if ( i < wikidomLines.length - 1 ) {
+			data.push( '\n' );
+		}
+	}
+	return new es.Content( data );
+};
+
+/**
  * Gets content data from a WikiDom line object, which uses a series of offset-based annotations to
  * supplement plain text.
  * 
- * @param line {Object} WikiDom compatible line object, containing text and optionally annotations
- * properties, the latter of which being an array of annotation objects including range information
- * @return {Array} List of plain or annotated characters
+ * @static
+ * @method
+ * @param wikidomLine {Object} WikiDom compatible line object, containing text and optionally
+ * annotations properties, the latter of which being an array of annotation objects including range
+ * information
+ * @returns {Array} List of plain or annotated characters
  */
-es.Content.convertLine = function( line ) {
+es.Content.convertWikiDomLine = function( wikidomLine ) {
 	// Convert string to array of characters
-	var data = line.text.split('');
+	var data = wikidomLine.text.split('');
 	var i;
-	for ( i in line.annotations ) {
-		var src = line.annotations[i];
+	for ( i in wikidomLine.annotations ) {
+		var src = wikidomLine.annotations[i];
 		// Build simplified annotation object
 		var dst = { 'type': src.type };
 		if ( 'data' in src ) {
@@ -164,48 +217,17 @@ es.Content.convertLine = function( line ) {
 };
 
 /**
- * Creates a new Content object from a WikiDom line object.
- * 
- * @param line {Object} WikiDom compatible line object - @see Content.convertLine
- * @return {es.Content} New content object containing data derived from the WikiDom line
- */
-es.Content.newFromLine = function( line ) {
-	return new es.Content( es.Content.convertLine( line ) );
-};
-
-/**
- * Creates a new Content object from a list of WikiDom line objects.
- * 
- * This plural version of Content.newFromLine inserts non-annotated new line characters between
- * lines, preserving the divisions between the original line objects. When Content objects are
- * converted to WikiDom line objects, these new line characters are used to split the content data
- * into multiple line objects, thus making a clean round trip possible.
- * 
- * @param line {Array} List of WikiDom compatible line objects - @see Content.convertLine
- * @return {es.Content} New content object containing data derived from the WikiDom line
- */
-es.Content.newFromLines = function( lines ) {
-	var data = [];
-	var i;
-	for ( i = 0; i < lines.length; i++ ) {
-		data = data.concat( es.Content.convertLine( lines[i] ) );
-		if ( i < lines.length - 1 ) {
-			data.push( '\n' );
-		}
-	}
-	return new es.Content( data );
-};
-
-/**
  * Gets a rendered opening or closing of an annotation.
  * 
  * Tag nesting is handled using a stack, which keeps track of what is currently open. A common stack
  * argument should be used while rendering content.
  * 
+ * @static
+ * @method
  * @param bias {String} Which side of the annotation to render, either "open" or "close"
  * @param annotation {Object} Annotation to render
  * @param stack {Array} List of currently open annotations
- * @return {String} Rendered annotation
+ * @returns {String} Rendered annotation
  */
 es.Content.renderAnnotation = function( bias, annotation, stack ) {
 	var renderers = es.Content.annotationRenderers,
@@ -267,11 +289,12 @@ es.Content.renderAnnotation = function( bias, annotation, stack ) {
  * TODO: Implement render option, which will allow annotations to influence output, such as an
  * image outputing it's URL
  * 
+ * @method
  * @param range {es.Range} Range of text to get
  * @param start {Integer} Optional beginning of range, if omitted range will begin at 0
  * @param end {Integer} Optional end of range, if omitted range will end a this.data.length
  * @param render {Boolean} If annotations should have any influence on output
- * @return {String} Plain text within given range
+ * @returns {String} Plain text within given range
  */
 es.Content.prototype.getText = function( range, render ) {
 	if ( !range ) {
@@ -296,8 +319,9 @@ es.Content.prototype.getText = function( range, render ) {
  * 
  * Range arguments (start and end) are clamped if out of range.
  * 
+ * @method
  * @param range {es.Range} Range of content to get
- * @return {es.Content} New content object
+ * @returns {es.Content} New content object
  */
 es.Content.prototype.getContent = function( range ) {
 	if ( !range ) {
@@ -313,8 +337,11 @@ es.Content.prototype.getContent = function( range ) {
  * 
  * Inserted content will inherit annotations from neighboring content.
  * 
+ * @method
  * @param offset {Integer} Position to insert content at
  * @param content {Array} Content data to insert
+ * @emits "insert" with offset and content data properties
+ * @emits "change" with type:"insert" data property
  */
 es.Content.prototype.insert = function( offset, content ) {
 	// TODO: Prefer to not take annotations from a neighbor that's a space character
@@ -340,7 +367,10 @@ es.Content.prototype.insert = function( offset, content ) {
 /**
  * Removes content data within a specific range.
  * 
+ * @method
  * @param range {Range} Range of content to remove
+ * @emits "remove" with range data property
+ * @emits "change" with type:"remove" data property
  */
 es.Content.prototype.remove = function( range ) {
 	range.normalize();
@@ -354,7 +384,8 @@ es.Content.prototype.remove = function( range ) {
 /**
  * Gets the length of the content data.
  * 
- * @return {Integer} Length of content data
+ * @method
+ * @returns {Integer} Length of content data
  */
 es.Content.prototype.getLength = function() {
 	return this.data.length; 
@@ -366,10 +397,11 @@ es.Content.prototype.getLength = function() {
  * Strict coverage may be used to compare not only annotation types, but also their data. Since new
  * line characters are never annotated, they are always considered covered.
  * 
+ * @method
  * @param range {es.Range} Range of content to analyze
  * @param annotation {Object} Annotation to compare with
  * @param strict {Boolean} Optionally compare annotation data as well as type
- * @return {Array} List of indexes of covered characters within content data
+ * @returns {Array} List of indexes of covered characters within content data
  */
 es.Content.prototype.coverageOfAnnotation = function( range, annotation, strict ) {
 	var coverage = [];
@@ -396,9 +428,11 @@ es.Content.prototype.coverageOfAnnotation = function( range, annotation, strict 
  * 
  * Strict coverage may be used to compare not only annotation types, but also their data.
  * 
+ * @method
  * @param offset {Integer} Index of character within content data to find annotation within
  * @param annotation {Object} Annotation to compare with
  * @param strict {Boolean} Optionally compare annotation data as well as type
+ * @returns {Integer} Index of first instance of annotation in content
  */
 es.Content.prototype.indexOfAnnotation = function( offset, annotation, strict ) {
 	var annotatedChar = this.data[offset];
@@ -428,9 +462,12 @@ es.Content.prototype.indexOfAnnotation = function( offset, annotation, strict ) 
  * The toggle method will use add if any of the content within the range is not already covered by
  * the annotation, or remove if all of it is.
  * 
+ * @method
  * @param method {String} Way to apply annotation ("toggle", "add" or "remove")
  * @param annotation {Object} Annotation to apply
  * @param range {es.Range} Range of content to annotate
+ * @emits "annotate" with method, annotation and range data properties
+ * @emits "change" with type:"annotate" data property
  */
 es.Content.prototype.annotate = function( method, annotation, range ) {
 	if ( !range ) {
@@ -498,6 +535,7 @@ es.Content.prototype.annotate = function( method, annotation, range ) {
 /**
  * Gets an HTML rendering of a range of content data.
  * 
+ * @method
  * @param start {Integer} Beginning of range
  * @param end {Integer} End of range
  * @param {String} Rendered HTML of content data
@@ -550,8 +588,9 @@ es.Content.prototype.render = function( range ) {
 /**
  * Gets the start and end points of the word closest a given offset.
  * 
+ * @method
  * @param offset {Integer} Offset to find word nearest to
- * @return {Object} Range object of boundaries
+ * @returns {Object} Range object of boundaries
  */
 es.Content.prototype.getWordBoundaries = function( offset ) {
 	if ( offset < 0 || offset > this.data.length ) {
@@ -578,6 +617,12 @@ es.Content.prototype.getWordBoundaries = function( offset ) {
 	return new es.Range( start, end );
 };
 
+/**
+ * Get WikiDom line objects from content.
+ * 
+ * @method
+ * @returns {Array} List of WikiDom line objects
+ */
 es.Content.prototype.getLines = function() {
 	var lines = [],
 		right = '',
@@ -636,5 +681,7 @@ es.Content.prototype.getLines = function() {
 	}
 	return lines;
 };
+
+/* Inheritance */
 
 es.extend( es.Content, es.EventEmitter );

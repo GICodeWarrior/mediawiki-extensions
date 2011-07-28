@@ -4,14 +4,14 @@
  * @class
  * @constructor
  * @extends {es.Block}
- * @param lines {Array} List of Wikidom line objects
- * @property content {es.Content}
- * @property $ {jQuery}
- * @property flow {es.TextFlow}
+ * @param content {es.Content} Paragraph content
+ * @property content {es.Content} Paragraph content
+ * @property $ {jQuery} Container element
+ * @property flow {es.TextFlow} Text flow object
  */
-es.ParagraphBlock = function( lines ) {
+es.ParagraphBlock = function( content ) {
 	es.Block.call( this );
-	this.content = es.Content.newFromLines( lines || [] );
+	this.content = content || new es.Content();
 	this.$ = $( '<div class="editSurface-block editSurface-paragraph"></div>' )
 		.data( 'block', this );
 	this.flow = new es.TextFlow( this.$, this.content );
@@ -24,18 +24,26 @@ es.ParagraphBlock = function( lines ) {
 /* Static Methods */
 
 /**
- * Creates a new list block object from Wikidom data.
+ * Creates a new list block object from WikiDom data.
  * 
- * @param wikidomList {Object} Wikidom data to convert from
+ * @static
+ * @method
+ * @param wikidomParagraphBlock {Object} WikiDom data to convert from
  */
-es.ParagraphBlock.newFromWikidom = function( wikidomBlock ) {
-	return new es.ParagraphBlock( wikidomBlock.lines );
+es.ParagraphBlock.newFromWikiDomParagraphBlock = function( wikidomParagraphBlock ) {
+	if ( wikidomParagraphBlock.type !== 'paragraph' ) {
+		throw 'Invalid block type error. Paragraph block expected to be of type "paragraph".';
+	}
+	return new es.ParagraphBlock( es.Content.newFromWikiDomLines( wikidomParagraphBlock.lines ) );
 };
 
 /* Methods */
 
 /**
  * Gets the length of all block content.
+ * 
+ * @method
+ * @param {Integer} Length of content
  */
 es.ParagraphBlock.prototype.getLength = function() {
 	return this.content.getLength();
@@ -44,6 +52,7 @@ es.ParagraphBlock.prototype.getLength = function() {
 /**
  * Inserts content into a block at an offset.
  * 
+ * @method
  * @param offset {Integer} Position to insert content at
  * @param content {Object} Content to insert
  */
@@ -54,6 +63,7 @@ es.ParagraphBlock.prototype.insertContent = function( offset, content ) {
 /**
  * Deletes content in a block within a range.
  * 
+ * @method
  * @param range {es.Range} Range of content to remove
  */
 es.ParagraphBlock.prototype.deleteContent = function( range ) {
@@ -65,6 +75,7 @@ es.ParagraphBlock.prototype.deleteContent = function( range ) {
  * 
  * If a range arguments are not provided, all content will be annotated.
  * 
+ * @method
  * @param method {String} Way to apply annotation ("toggle", "add" or "remove")
  * @param annotation {Object} Annotation to apply
  * @param range {es.Range} Range of content to annotate
@@ -76,8 +87,9 @@ es.ParagraphBlock.prototype.annotateContent = function( method, annotation, rang
 /**
  * Gets content within a range.
  * 
- * @param start {Integer} Offset to get content from
- * @param end {Integer} Offset to get content to
+ * @method
+ * @param range {es.Range} Range of content to get
+ * @returns {es.Content} Content within range
  */
 es.Block.prototype.getContent = function( range ) {
 	return this.content.getContent( range );
@@ -86,8 +98,10 @@ es.Block.prototype.getContent = function( range ) {
 /**
  * Gets content as plain text within a range.
  * 
+ * @method
  * @param range {es.Range} Range of text to get
  * @param render {Boolean} If annotations should have any influence on output
+ * @returns {String} Text within range
  */
 es.Block.prototype.getText = function( range, render ) {
 	return this.content.getText( range, render );
@@ -96,7 +110,8 @@ es.Block.prototype.getText = function( range, render ) {
 /**
  * Renders content into a container.
  * 
- * @param $container {jQuery Selection} Container to render into
+ * @method
+ * @param offset {Integer} Offset to begin rendering from, if possible
  */
 es.ParagraphBlock.prototype.renderContent = function( offset ) {
 	this.flow.render( offset );
@@ -105,7 +120,9 @@ es.ParagraphBlock.prototype.renderContent = function( offset ) {
 /**
  * Gets the offset of a position.
  * 
- * @param position {Integer} Offset to translate
+ * @method
+ * @param position {es.Position} Position to translate
+ * @returns {Integer} Offset nearest to position
  */
 es.ParagraphBlock.prototype.getOffset = function( position ) {
 	return this.flow.getOffset( position );
@@ -114,7 +131,9 @@ es.ParagraphBlock.prototype.getOffset = function( position ) {
 /**
  * Gets the position of a location.
  * 
+ * @method
  * @param offset {Integer} Offset to translate
+ * @returns {es.Position} Position of offset
  */
 es.ParagraphBlock.prototype.getPosition = function( offset ) {
 	return this.flow.getPosition( offset );
@@ -123,8 +142,9 @@ es.ParagraphBlock.prototype.getPosition = function( offset ) {
 /**
  * Gets the start and end points of the word closest a given offset.
  * 
+ * @method
  * @param offset {Integer} Offset to find word nearest to
- * @return {Object} Range object of boundaries
+ * @returns {Object} Range object of boundaries
  */
 es.ParagraphBlock.prototype.getWordBoundaries = function( offset ) {
 	return this.content.getWordBoundaries( offset );
@@ -135,8 +155,9 @@ es.ParagraphBlock.prototype.getWordBoundaries = function( offset ) {
  * 
  * For a paragraph, there's only one section.
  * 
+ * @method
  * @param offset {Integer} Offset to find section nearest to
- * @return {Object} Range object of boundaries
+ * @returns {Object} Range object of boundaries
  */
 es.ParagraphBlock.prototype.getSectionBoundaries = function( offset ) {
 	return new es.Range( 0, this.content.getLength() );
@@ -145,9 +166,9 @@ es.ParagraphBlock.prototype.getSectionBoundaries = function( offset ) {
 /* Registration */
 
 /**
- * Extend es.Block to support paragraph block creation with es.Block.newFromWikidom
+ * Extend es.Block to support paragraph block creation with es.Block.newFromWikiDom
  */
-es.Block.models.paragraph = es.ParagraphBlock;
+es.Block.blockConstructors.paragraph = es.ParagraphBlock.newFromWikiDomParagraphBlock;
 
 /* Inheritance */
 

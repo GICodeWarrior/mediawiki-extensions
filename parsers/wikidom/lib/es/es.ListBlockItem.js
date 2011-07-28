@@ -29,15 +29,15 @@ es.ListBlockItem = function( line, lists ) {
 
 /* Static Methods */
 
-es.ListBlockItem.newFromWikidom = function( wikidomItem ) {
+es.ListBlockItem.newFromWikiDomListItem = function( wikidomItem ) {
 	// Convert items to es.ListBlockItem objects
 	var lists = [];
 	if ( wikidomItem.lists ) {
 		for ( var i = 0; i < wikidomItem.lists.length; i++ ) {
-			lists.push( es.ListBlockList.newFromWikidom( wikidomItem.lists[i] ) );
+			lists.push( es.ListBlockList.newFromWikiDomList( wikidomItem.lists[i] ) );
 		}
 	}
-	return new es.ListBlockItem( es.Content.newFromLine( wikidomItem.line ), lists );
+	return new es.ListBlockItem( es.Content.newFromWikiDomLine( wikidomItem.line ), lists );
 };
 
 /* Methods */

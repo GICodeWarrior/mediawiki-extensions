@@ -18,10 +18,10 @@ es.ListBlockList = function( style, items ) {
 
 /* Static Methods */
 
-es.ListBlockList.newFromWikidom = function( wikidomList ) {
+es.ListBlockList.newFromWikiDomList = function( wikidomList ) {
 	var items = [];
 	for ( var i = 0; i < wikidomList.items.length; i++ ) {
-		items.push( es.ListBlockItem.newFromWikidom( wikidomList.items[i] ) );
+		items.push( es.ListBlockItem.newFromWikiDomListItem( wikidomList.items[i] ) );
 	}
 	return new es.ListBlockList( wikidomList.style, items );
 };

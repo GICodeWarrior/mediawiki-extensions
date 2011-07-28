@@ -23,20 +23,20 @@ es.Block = function() {
  * @member
  * @example "paragraph" => es.ParagraphBlock
  */
-es.Block.models = {};
+es.Block.blockConstructors = {};
 
 /* Static Methods */
 
 /**
- * Creates a new block object from Wikidom data.
+ * Creates a new block object from WikiDom data.
  * 
  * @static
  * @method
- * @param wikidomBlock {Object} Wikidom data to convert from
+ * @param wikidomBlock {Object} WikiDom data to convert from
  */
-es.Block.newFromWikidom = function( wikidomBlock ) {
-	if ( wikidomBlock.type in es.Block.models ) {
-		return es.Block.models[wikidomBlock.type].newFromWikidom( wikidomBlock );
+es.Block.newFromWikiDomBlock = function( wikidomBlock ) {
+	if ( wikidomBlock.type in es.Block.blockConstructors ) {
+		return es.Block.blockConstructors[wikidomBlock.type]( wikidomBlock );
 	} else {
 		throw 'Unknown block type: ' + wikidomBlock.type;
 	}
