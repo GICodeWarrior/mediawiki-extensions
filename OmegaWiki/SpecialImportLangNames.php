@@ -23,7 +23,9 @@ class SpecialImportLangNames extends SpecialPage {
 
 		$dbr = wfGetDB( DB_MASTER );
 
-		/* Get collection ID for "ISO 639-3 codes" collection. */
+		/* Get collection ID for "ISO 639-3 codes" collection.
+		 if we want to find $collection_id , we can use the following query */
+		/*
 		$sql = "SELECT collection_id FROM {$dc}_collection" .
 			" JOIN {$dc}_defined_meaning ON defined_meaning_id = collection_mid" .
 			" JOIN {$dc}_expression ON" .
@@ -33,6 +35,9 @@ class SpecialImportLangNames extends SpecialPage {
 			' LIMIT 1';
 		$collection_id_res = $dbr->query( $sql );
 		$collection_id = $this->fetchResult( $dbr->fetchRow( $collection_id_res ) );
+		*/
+		// but having "ISO 639-3 codes" hardcoded is the same as having "145264" hardcoded
+		$collection_id = 145264 ;
 
 		/* Get defined meaning IDs and ISO codes for languages in collection. */
 		$sql = "SELECT member_mid,internal_member_id FROM {$dc}_collection_contents" .
@@ -41,20 +46,20 @@ class SpecialImportLangNames extends SpecialPage {
 		$lang_res = $dbr->query( $sql );
 		$editable = '';
 		$first = true;
+
 		while ( $lang_row = $dbr->fetchRow( $lang_res ) ) {
 			$iso_code = $lang_row['internal_member_id'];
 			$dm_id = $lang_row['member_mid'];
 
 			/*	Get the language ID for the current language. */
-			$sql = 'SELECT language_id FROM language' .
-				' WHERE iso639_3 LIKE ' . $dbr->addQuotes( $iso_code ) .
-				' LIMIT 1';
-			$lang_id_res = $dbr->query( $sql );
-			if ( $dbr->numRows( $lang_id_res ) ) {
-				if ( !$first )
+			$lang_id = getLanguageIdForIso639_3( $iso_code ) ;
+
+			if ( $lang_id ) {
+				if ( !$first ) {
 					$wgOut->addHTML( '<br />' . "\n" );
-				else
+				} else {
 					$first = false;
+				}
 				$wgOut->addHTML( wfMsg( 'importlangnames_added', $iso_code ) );
 
 				/* Add current language to list of portals/DMs. */
@@ -64,41 +69,39 @@ class SpecialImportLangNames extends SpecialPage {
 					' LIMIT 1';
 				$dm_expr_res = $dbr->query( $sql );
 				$dm_expr = $this->fetchResult( $dbr->fetchRow( $dm_expr_res ) );
-				if ( $editable != '' )
-					$editable .= "\n";
+				if ( $editable != '' ) $editable .= "\n";
 				$editable .= '*[[Portal:' . $iso_code . ']] - [[DefinedMeaning:' . $dm_expr . ' (' . $dm_id . ')]]';
-			}
-			else {
+
+				/*	Delete all language names that match current language ID. */
+				$sql = 'DELETE FROM language_names' .
+					' WHERE language_id = ' . $lang_id;
+				$dbr->query( $sql );
+
+				/*	Get syntrans expressions for names of language and IDs for the languages the names are in. */
+				$sql = "SELECT spelling,language_id FROM {$dc}_expression" .
+					" JOIN {$dc}_syntrans" .
+					" ON {$dc}_expression.expression_id = {$dc}_syntrans.expression_id" .
+					' WHERE defined_meaning_id = ' . $dm_id .
+					' AND ' . getLatestTransactionRestriction( "{$dc}_expression" ) .
+					' AND ' . getLatestTransactionRestriction( "{$dc}_syntrans" ) .
+					' GROUP BY language_id ORDER BY NULL';
+				$syntrans_res = $dbr->query( $sql );
+				while ( $syntrans_row = $dbr->fetchRow( $syntrans_res ) ) {
+					$sql = 'INSERT INTO language_names' .
+						' (`language_id`,`name_language_id`,`language_name`)' .
+						' VALUES(' . $lang_id . ', ' .
+						$syntrans_row['language_id'] . ', ' .
+						$dbr->addQuotes( $syntrans_row['spelling'] ) . ')';
+					$dbr->query( $sql );
+				}
+
+			} else {
 				if ( !$first )
 					$wgOut->addHTML( '<br />' . "\n" );
 				else
 					$first = false;
 				$wgOut->addHTML( wfMsg( 'importlangnames_not_found', $iso_code ) );
 				continue;
-			}
-			$lang_id = $this->fetchResult( $dbr->fetchRow( $lang_id_res ) );
-
-			/*	Delete all language names that match current language ID. */
-			$sql = 'DELETE FROM language_names' .
-				' WHERE language_id = ' . $lang_id;
-			$dbr->query( $sql );
-
-			/*	Get syntrans expressions for names of language and IDs for the languages the names are in. */
-			$sql = "SELECT spelling,language_id FROM {$dc}_expression" .
-				" JOIN {$dc}_syntrans" .
-				" ON {$dc}_expression.expression_id = {$dc}_syntrans.expression_id" .
-				' WHERE defined_meaning_id = ' . $dm_id .
-				' AND ' . getLatestTransactionRestriction( "{$dc}_expression" ) .
-				' AND ' . getLatestTransactionRestriction( "{$dc}_syntrans" ) .
-				' GROUP BY language_id ORDER BY NULL';
-			$syntrans_res = $dbr->query( $sql );
-			while ( $syntrans_row = $dbr->fetchRow( $syntrans_res ) ) {
-				$sql = 'INSERT INTO language_names' .
-					' (`language_id`,`name_language_id`,`language_name`)' .
-					' VALUES(' . $lang_id . ', ' .
-					$syntrans_row['language_id'] . ', ' .
-					$dbr->addQuotes( $syntrans_row['spelling'] ) . ')';
-				$dbr->query( $sql );
 			}
 		}
 		$this->addDMsListToPage( $editable, 'Editable_languages' );
