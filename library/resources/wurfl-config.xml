@@ -8,7 +8,7 @@
     </wurfl>
     <allow-reload>true</allow-reload>
     <persistence>
-        <provider>file</provider>
-        <params>dir=cache</params>
+	<provider>mwmemcache</provider>
+        <params>serverip=127.0.0.1</params>
     </persistence>
 </wurfl-config>
