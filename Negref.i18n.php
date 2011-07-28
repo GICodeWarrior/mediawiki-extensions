@@ -179,6 +179,13 @@ $messages['mk'] = array(
 	'negref-desc' => 'Дава ознака за нагодување на местоположбата на било која <nowiki><ref/></nowiki> ознака во влезен текст за поправка на извесни случаи на употреба на шаблони',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'negref-desc' => 'Menyediakan tag untuk merundingkan lokasi sebarang tag <nowiki><ref/></nowiki> di dalam teks input untuk membetulkan beberapa kes penggunaan templat',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
