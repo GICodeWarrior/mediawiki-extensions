@@ -7,6 +7,7 @@
  * @param typeName {String}
  * @param listName {String}
  * @param items {Array} List of items
+ * @emits "update" when items argument causes items to be appended
  * @property _typeName {String}
  * @property _listName {String}
  * @property _list {Array}
@@ -32,11 +33,12 @@ es.Container = function( typeName, listName, items ) {
 			this.append( items[i] );
 		}
 	}
-}
+};
 
 /**
  * Gets the first item in the container.
  * 
+ * @method
  * @returns {Object}
  */
 es.Container.prototype.first = function() {
@@ -46,6 +48,7 @@ es.Container.prototype.first = function() {
 /**
  * Gets the last item in the container.
  * 
+ * @method
  * @returns {Object}
  */
 es.Container.prototype.last = function() {
@@ -56,7 +59,11 @@ es.Container.prototype.last = function() {
 /**
  * Adds an item to the end of the container.
  * 
+ * Also inserts item's Element object to the DOM and adds a listener to its "update" events.
+ * 
+ * @method
  * @param {Object} Item to append
+ * @emits "update"
  */
 es.Container.prototype.append = function( item ) {
 	item[this._typeName] = this;
@@ -72,7 +79,11 @@ es.Container.prototype.append = function( item ) {
 /**
  * Adds an item to the beginning of the container.
  * 
+ * Also inserts item's Element object to the DOM and adds a listener to its "update" events.
+ * 
+ * @method
  * @param {Object} Item to prepend
+ * @emits "update"
  */
 es.Container.prototype.prepend = function( item ) {
 	item[this._typeName] = this;
@@ -88,8 +99,12 @@ es.Container.prototype.prepend = function( item ) {
 /**
  * Adds an item to the container after an existing item.
  * 
+ * Also inserts item's Element object to the DOM and adds a listener to its "update" events.
+ * 
+ * @method
  * @param item {Object} Item to insert
  * @param before {Object} Item to insert before, if null then item will be inserted at the end
+ * @emits "update"
  */
 es.Container.prototype.insertBefore = function( item, before ) {
 	item[this._typeName] = this;
@@ -108,8 +123,13 @@ es.Container.prototype.insertBefore = function( item, before ) {
 };
 /**
  * Adds an item to the container after an existing item.
+ * 
+ * Also inserts item's Element object to the DOM and adds a listener to its "update" events.
+ * 
+ * @method
  * @param item {Object} Item to insert
  * @param after {Object} Item to insert after, if null then item will be inserted at the end
+ * @emits "update"
  */
 es.Container.prototype.insertAfter = function( item, after ) {
 	item[this._typeName] = this;
@@ -130,7 +150,11 @@ es.Container.prototype.insertAfter = function( item, after ) {
 /**
  * Removes an item from the container.
  * 
+ * Also detaches item's Element object to the DOM and removes all listeners its "update" events.
+ * 
+ * @method
  * @param {Object} Item to remove
+ * @emits "update"
  */
 es.Container.prototype.remove = function( item ) {
 	item.removeAllListeners( 'update' );
