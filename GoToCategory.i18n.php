@@ -224,6 +224,13 @@ $messages['mr'] = array(
 	'gotocategory-desc' => "'पानावर उडी मारा' कडे जाण्यासाठीचे कार्य वाढविण्यासाठी शोध शब्द वर्ग: नामविश्वाप्रमाणे तपासतो",
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'gotocategory-desc' => "Menyemak istilah carian dengan ruang nama Category: untuk kefungsian 'melompat ke halaman'",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
