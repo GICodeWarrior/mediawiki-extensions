@@ -923,6 +923,7 @@ $messages['mn'] = array(
 $messages['ms'] = array(
 	'indexfunc-badtitle' => 'Tajuk tidak sah: "$1"',
 	'index-search' => 'Cari:',
+	'index-submit' => 'Serahkan',
 );
 
 /** Dutch (Nederlands)
