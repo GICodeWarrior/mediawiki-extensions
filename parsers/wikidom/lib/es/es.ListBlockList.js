@@ -18,6 +18,14 @@ es.ListBlockList = function( style, items ) {
 
 /* Static Methods */
 
+/**
+ * Creates an EditSurface list object from a WikiDom list object.
+ * 
+ * @static
+ * @method
+ * @param wikidomListItem {Object} WikiDom list item
+ * @returns {es.ListBlockItem} EditSurface list block item
+ */
 es.ListBlockList.newFromWikiDomList = function( wikidomList ) {
 	var items = [];
 	for ( var i = 0; i < wikidomList.items.length; i++ ) {
@@ -28,6 +36,12 @@ es.ListBlockList.newFromWikiDomList = function( wikidomList ) {
 
 /* Methods */
 
+/**
+ * Gets the length of content in both the line and sub-lists.
+ * 
+ * @method
+ * @returns {Integer} Length of content 
+ */
 es.ListBlockList.prototype.getLength = function() {
 	var length = 0;
 	for ( var i = 0; i < this.items.length; i++ ) {
@@ -36,6 +50,14 @@ es.ListBlockList.prototype.getLength = function() {
 	return length;
 };
 
+/**
+ * Gets a location from an offset.
+ * 
+ * @method
+ * @param offset {Integer} Offset to get location for
+ * @returns {Object} Location object with item and offset properties, where offset is local
+ * to item.
+ */
 es.ListBlockList.prototype.getLocationFromOffset = function( offset ) {
 	var itemOffset = 0,
 		itemLength;
@@ -48,6 +70,14 @@ es.ListBlockList.prototype.getLocationFromOffset = function( offset ) {
 	}
 };
 
+/**
+ * Gets an offset within the list from a position.
+ * 
+ * @method
+ * @param position {es.Position} Position to translate
+ * @returns {Integer} Offset nearest position
+ * @returns {Null} If offset could not be found
+ */
 es.ListBlockList.prototype.getOffsetFromPosition = function( position ) {
 	var itemOffset = null,
 		globalOffset = null;
@@ -64,7 +94,10 @@ es.ListBlockList.prototype.getOffsetFromPosition = function( position ) {
 };
 
 /**
- * Renders content into a container.
+ * Renders items.
+ * 
+ * @method
+ * @param offset {Integer} Offset to render from if possible
  */
 es.ListBlockList.prototype.renderContent = function( offset ) {
 	// TODO: Abstract offset and use it when rendering
@@ -72,6 +105,8 @@ es.ListBlockList.prototype.renderContent = function( offset ) {
 		this.items[i].renderContent();
 	}
 };
+
+/* Inheritance */
 
 es.extend( es.ListBlockList, es.EventEmitter );
 es.extend( es.ListBlockList, es.Container );

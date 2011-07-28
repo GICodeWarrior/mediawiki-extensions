@@ -11,24 +11,34 @@
 es.Document = function( blocks ) {
 	es.Container.call( this, 'document', 'blocks', blocks );
 	this.width = null;
-}
+};
 
 /* Static Methods */
 
-es.Document.newFromWikiDomDocument = function( wikidomBlocks ) {
+/**
+ * Creates new es.Document from a WikiDom Document object
+ * 
+ * @method
+ * @param {Object} WikiDom document object
+ * @returns {es.Document} EditSurface document object
+ */
+es.Document.newFromWikiDomDocument = function( wikidomDocument ) {
 	var blocks = [];
-	var block;
-	for ( var i = 0; i < wikidomBlocks.length; i++ ) {
-		block = es.Block.newFromWikiDomBlock( wikidomBlocks[i] );
-		if ( block ) {
-			blocks.push( block );
+	if ( $.isArray( wikidomDocument.blocks ) ) {
+		for ( var i = 0; i < wikidomDocument.blocks.length; i++ ) {
+			blocks.push( es.Block.newFromWikiDomBlock( wikidomDocument.blocks[i] ) );
 		}
 	}
 	return new es.Document( blocks );
-}
+};
 
 /* Methods */
 
+/**
+ * Forces all blocks in the document to render.
+ * 
+ * @method
+ */
 es.Document.prototype.renderBlocks = function() {
 	// Bypass rendering when width has not changed
 	var width = this.$.innerWidth();

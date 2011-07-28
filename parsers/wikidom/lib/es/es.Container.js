@@ -4,14 +4,11 @@
  * @class
  * @constructor
  * @extends {es.EventEmitter}
- * @param typeName {String}
- * @param listName {String}
- * @param items {Array} List of items
+ * @param typeName {String} Property name to set references to this object to in child objects
+ * @param listName {String} Property name for list of child objects
+ * @param items {Array} List of initial items
  * @emits "update" when items argument causes items to be appended
- * @property _typeName {String}
- * @property _listName {String}
- * @property _list {Array}
- * @property $ {jQuery}
+ * @property $ {jQuery} Container element
  */
 es.Container = function( typeName, listName, items ) {
 	es.EventEmitter.call( this );
@@ -35,11 +32,13 @@ es.Container = function( typeName, listName, items ) {
 	}
 };
 
+/* Methods */
+
 /**
  * Gets the first item in the container.
  * 
  * @method
- * @returns {Object}
+ * @returns {Object} First child object
  */
 es.Container.prototype.first = function() {
 	return this._list.length ? this._list[0] : null;
@@ -49,7 +48,7 @@ es.Container.prototype.first = function() {
  * Gets the last item in the container.
  * 
  * @method
- * @returns {Object}
+ * @returns {Object} Last child object
  */
 es.Container.prototype.last = function() {
 	return this._list.length
@@ -163,5 +162,7 @@ es.Container.prototype.remove = function( item ) {
 	item.$.detach();
 	this.emit( 'update' );
 };
+
+/* Inheritance */
 
 es.extend( es.Container, es.EventEmitter );

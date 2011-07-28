@@ -9,12 +9,12 @@
  * @class
  * @constructor
  * @extends {es.EventEmitter}
- * @param content {Array} List of plain or annotated characters
- * @property data {Array}
+ * @param data {Array} List of plain or annotated characters
+ * @property data {Array} List of plain or annotated characters
  */
-es.Content = function( content ) {
+es.Content = function( data ) {
 	es.EventEmitter.call( this );
-	this.data = content || [];
+	this.data = data || [];
 };
 
 /* Static Members */
@@ -83,67 +83,12 @@ es.Content.htmlCharacters = {
 /* Static Methods */
 
 /**
- * Recursively compares string and number property between two objects.
- * 
- * A false result may be caused by property inequality or by properties in one object missing from
- * the other. An asymmetrical test may also be performed, which checks only that properties in the
- * first object are present in the second object, but not the inverse.
- * 
- * @static
- * @method
- * @param a {Object} First object to compare
- * @param b {Object} Second object to compare
- * @param asymmetrical {Boolean} Whether to check only that b contains values from a
- * @returns {Boolean} If the objects contain the same values as each other
- */
-es.Content.compareObjects = function( a, b, asymmetrical ) {
-	var aValue, bValue, aType, bType;
-	var k;
-	for ( k in a ) {
-		aValue = a[k];
-		bValue = b[k];
-		aType = typeof aValue;
-		bType = typeof bValue;
-		if ( aType !== bType
-				|| ( ( aType === 'string' || aType === 'number' ) && aValue !== bValue )
-				|| ( $.isPlainObject( aValue ) && !es.Content.compareObjects( aValue, bValue ) ) ) {
-			return false;
-		}
-	}
-	// If the check is not asymmetrical, recursing with the arguments swapped will verify our result
-	return asymmetrical ? true : es.Content.compareObjects( b, a, true );
-};
-
-/**
- * Gets a recursive copy of an object's string, number and plain-object property.
- * 
- * @static
- * @method
- * @param source {Object} Object to copy
- * @returns {Object} Copy of source object
- */
-es.Content.copyObject = function( source ) {
-	var destination = {};
-	var key;
-	for ( key in source ) {
-		sourceValue = source[key];
-		sourceType = typeof sourceValue;
-		if ( sourceType === 'string' || sourceType === 'number' ) {
-			destination[key] = sourceValue;
-		} else if ( $.isPlainObject( sourceValue ) ) {
-			destination[key] = es.Content.copyObject( sourceValue );
-		}
-	}
-	return destination;
-};
-
-/**
  * Creates a new Content object from a WikiDom line object.
  * 
  * @static
  * @method
  * @param wikidomLine {Object} WikiDom compatible line object - @see Content.convertLine
- * @returns {es.Content} New content object containing data derived from the WikiDom line
+ * @returns {es.Content} EditSurface content object containing data derived from the WikiDom line
  */
 es.Content.newFromWikiDomLine = function( wikidomLine ) {
 	return new es.Content( es.Content.convertWikiDomLine( wikidomLine ) );
@@ -214,6 +159,61 @@ es.Content.convertWikiDomLine = function( wikidomLine ) {
 		}
 	}
 	return data;
+};
+
+/**
+ * Recursively compares string and number property between two objects.
+ * 
+ * A false result may be caused by property inequality or by properties in one object missing from
+ * the other. An asymmetrical test may also be performed, which checks only that properties in the
+ * first object are present in the second object, but not the inverse.
+ * 
+ * @static
+ * @method
+ * @param a {Object} First object to compare
+ * @param b {Object} Second object to compare
+ * @param asymmetrical {Boolean} Whether to check only that b contains values from a
+ * @returns {Boolean} If the objects contain the same values as each other
+ */
+es.Content.compareObjects = function( a, b, asymmetrical ) {
+	var aValue, bValue, aType, bType;
+	var k;
+	for ( k in a ) {
+		aValue = a[k];
+		bValue = b[k];
+		aType = typeof aValue;
+		bType = typeof bValue;
+		if ( aType !== bType
+				|| ( ( aType === 'string' || aType === 'number' ) && aValue !== bValue )
+				|| ( $.isPlainObject( aValue ) && !es.Content.compareObjects( aValue, bValue ) ) ) {
+			return false;
+		}
+	}
+	// If the check is not asymmetrical, recursing with the arguments swapped will verify our result
+	return asymmetrical ? true : es.Content.compareObjects( b, a, true );
+};
+
+/**
+ * Gets a recursive copy of an object's string, number and plain-object property.
+ * 
+ * @static
+ * @method
+ * @param source {Object} Object to copy
+ * @returns {Object} Copy of source object
+ */
+es.Content.copyObject = function( source ) {
+	var destination = {};
+	var key;
+	for ( key in source ) {
+		sourceValue = source[key];
+		sourceType = typeof sourceValue;
+		if ( sourceType === 'string' || sourceType === 'number' ) {
+			destination[key] = sourceValue;
+		} else if ( $.isPlainObject( sourceValue ) ) {
+			destination[key] = es.Content.copyObject( sourceValue );
+		}
+	}
+	return destination;
 };
 
 /**
@@ -294,7 +294,7 @@ es.Content.renderAnnotation = function( bias, annotation, stack ) {
  * @param start {Integer} Optional beginning of range, if omitted range will begin at 0
  * @param end {Integer} Optional end of range, if omitted range will end a this.data.length
  * @param render {Boolean} If annotations should have any influence on output
- * @returns {String} Plain text within given range
+ * @returns {String} Text within given range
  */
 es.Content.prototype.getText = function( range, render ) {
 	if ( !range ) {
@@ -321,7 +321,7 @@ es.Content.prototype.getText = function( range, render ) {
  * 
  * @method
  * @param range {es.Range} Range of content to get
- * @returns {es.Content} New content object
+ * @returns {es.Content} New content object containing content within range
  */
 es.Content.prototype.getContent = function( range ) {
 	if ( !range ) {
@@ -623,7 +623,7 @@ es.Content.prototype.getWordBoundaries = function( offset ) {
  * @method
  * @returns {Array} List of WikiDom line objects
  */
-es.Content.prototype.getLines = function() {
+es.Content.prototype.getWikiDomLines = function() {
 	var lines = [],
 		right = '',
 		rightPlain,

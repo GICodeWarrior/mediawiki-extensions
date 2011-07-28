@@ -73,7 +73,7 @@
 		<!-- Demo -->
 		<script>
 			$(document).ready( function() {
-				doc = es.Document.newFromWikidom([
+				doc = es.Document.newFromWikiDomDocument( { 'blocks': [
 					{
 						"type": "paragraph",
 						"lines": [
@@ -122,21 +122,18 @@
 								'line': { 'text': 'Operating Systems' },
 								'lists': [
 									{
-										'type': 'list',
 										'style': 'bullet',
 										'items': [
 											{
 												'line': { 'text': 'Linux' },
 												'lists': [
 													{
-														'type': 'list',
 														'style': 'bullet',
 														'items': [
 															{
 																'line': { 'text': 'Ubuntu' },
 																'lists': [
 																	{
-																		'type': 'list',
 																		'style': 'bullet',
 																		'items': [
 																			{
@@ -227,7 +224,7 @@
 							{ 'text': 'Text might have\ttabs\tin it too. Not all text will end in a line breaking character' }
 						]
 					}
-				]);
+				] } );
 				var surface = new es.Surface( $('#es-editor'), doc );
 				
 				$( '#es-toolbar .es-toolbarTool' ).mousedown( function( e ) {

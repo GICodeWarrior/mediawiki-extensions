@@ -5,10 +5,10 @@
  * @constructor
  * @param from {es.Location} Starting location
  * @param to {es.Location} Ending location
- * @property from {es.Location}
- * @property to {es.Location}
- * @property start {es.Location}
- * @property end {es.Location}
+ * @property from {es.Location} Starting location
+ * @property to {es.Location} Ending location
+ * @property start {es.Location} Normalized starting location
+ * @property end {es.Location} Normalized ending location
  */
 es.Selection = function( from, to ) {
 	this.from = from;
@@ -17,8 +17,15 @@ es.Selection = function( from, to ) {
 	this.end = to;
 }
 
+/* Methods */
+
 /**
- * Ensures that "from" is before "to".
+ * Sets start and end properties, ensuring start is always before end.
+ * 
+ * This should always be called before using the start or end properties. Do not call this unless
+ * you are about to use these properties.
+ * 
+ * @method
  */
 es.Selection.prototype.normalize = function() {
 	if ( this.from.block.getIndex() < this.to.block.getIndex()
@@ -36,6 +43,7 @@ es.Selection.prototype.normalize = function() {
  * 
  * If from and to are adjacent blocks, or the same block, the result will always be an empty array.
  * 
+ * @method
  * @returns {Array} List of blocks
  */
 es.Selection.prototype.through = function() {

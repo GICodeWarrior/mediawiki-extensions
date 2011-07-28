@@ -7,12 +7,12 @@
  * @class
  * @constructor
  * @extends {es.EventEmitter}
- * @property document {es.Document}
+ * @property document {es.Document} Document block is attached to
  */
 es.Block = function() {
 	es.EventEmitter.call( this );
 	this.document = null;
-}
+};
 
 /* Static Members */
 
@@ -33,12 +33,14 @@ es.Block.blockConstructors = {};
  * @static
  * @method
  * @param wikidomBlock {Object} WikiDom data to convert from
+ * @returns {es.Block} EditSurface block object
+ * @throws "Unknown block type error" if block type does exist in es.Block.blockConstructors
  */
 es.Block.newFromWikiDomBlock = function( wikidomBlock ) {
 	if ( wikidomBlock.type in es.Block.blockConstructors ) {
 		return es.Block.blockConstructors[wikidomBlock.type]( wikidomBlock );
 	} else {
-		throw 'Unknown block type: ' + wikidomBlock.type;
+		throw 'Unknown block type error. Block type does exist in es.Block.blockConstructors';
 	}
 };
 
@@ -48,7 +50,8 @@ es.Block.newFromWikiDomBlock = function( wikidomBlock ) {
  * Gets the index of the block within it's document.
  * 
  * @method
- * @returns {Integer} Index of block
+ * @returns {Integer} Index of block in document
+ * @throws "Missing document error" if block is not attached to a document
  */
 es.Block.prototype.getIndex = function() {
 	if ( !this.document ) {
@@ -63,6 +66,7 @@ es.Block.prototype.getIndex = function() {
  * @method
  * @returns {es.Block} Block directly proceeding this one
  * @returns {Null} If block does not exist in document
+ * @throws "Missing document error" if block is not attached to a document
  */
 es.Block.prototype.nextBlock = function() {
 	if ( !this.document ) {
@@ -78,6 +82,7 @@ es.Block.prototype.nextBlock = function() {
  * @method
  * @returns {es.Block} Block directly preceding this one
  * @returns {Null} If block does not exist in document
+ * @throws "Missing document error" if block is not attached to a document
  */
 es.Block.prototype.previousBlock = function() {
 	if ( !this.document ) {

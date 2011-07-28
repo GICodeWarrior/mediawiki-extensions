@@ -1,6 +1,5 @@
 /**
- * es.ListBlock
- * 
+ * Creates a list block.
  * 
  * @class
  * @constructor
@@ -26,7 +25,10 @@ es.ListBlock = function( list ) {
 /**
  * Creates a new list block object from WikiDom data.
  * 
+ * @static
+ * @method
  * @param wikidomParagraphBlock {Object} WikiDom data to convert from
+ * @returns {es.ListBlock} EditSurface list block
  */
 es.ListBlock.newFromWikiDomListBlock = function( wikidomListBlock ) {
 	if ( wikidomListBlock.type !== 'list' ) {
@@ -39,6 +41,9 @@ es.ListBlock.newFromWikiDomListBlock = function( wikidomListBlock ) {
 
 /**
  * Gets the length of all block content.
+ * 
+ * @method
+ * @returns {Integer} Length of content
  */
 es.ListBlock.prototype.getLength = function() {
 	// Compensate for n+1 virtual position on the last item's content
@@ -48,6 +53,7 @@ es.ListBlock.prototype.getLength = function() {
 /**
  * Inserts content into a block at an offset.
  * 
+ * @method
  * @param offset {Integer} Position to insert content at
  * @param content {Object} Content to insert
  */
@@ -59,6 +65,7 @@ es.ListBlock.prototype.insertContent = function( offset, content ) {
 /**
  * Deletes content in a block within a range.
  * 
+ * @method
  * @param range {es.Range} Range of content to remove
  */
 es.ListBlock.prototype.deleteContent = function( range ) {
@@ -74,6 +81,7 @@ es.ListBlock.prototype.deleteContent = function( range ) {
  * 
  * If a range arguments are not provided, all content will be annotated.
  * 
+ * @method
  * @param method {String} Way to apply annotation ("toggle", "add" or "remove")
  * @param annotation {Object} Annotation to apply
  * @param range {es.Range} Range of content to annotate
@@ -124,18 +132,22 @@ es.ListBlock.prototype.annotateContent = function( method, annotation, range ) {
 /**
  * Gets content within a range.
  * 
+ * @method
  * @param range {es.Range} Range of content to get
+ * @returns {es.Content} Content within range
  */
 es.ListBlock.prototype.getContent = function( range ) {
 	// TODO: Implement me!
-	return new Content();
+	return new es.Content();
 };
 
 /**
  * Gets content as plain text within a range.
  * 
+ * @method
  * @param range {Range} Range of text to get
  * @param render {Boolean} If annotations should have any influence on output
+ * @returns {String} Text within range
  */
 es.ListBlock.prototype.getText = function( range ) {
 	// TODO: Implement me!
@@ -144,6 +156,9 @@ es.ListBlock.prototype.getText = function( range ) {
 
 /**
  * Renders content into a container.
+ * 
+ * @method
+ * @param offset {Integer} Offset to render from, if possible
  */
 es.ListBlock.prototype.renderContent = function( offset ) {
 	this.list.renderContent( offset );
@@ -152,7 +167,9 @@ es.ListBlock.prototype.renderContent = function( offset ) {
 /**
  * Gets the offset of a position.
  * 
- * @param position {Integer} Offset to translate
+ * @method
+ * @param position {es.Position} Position to translate
+ * @returns {Integer} Offset nearest to position
  */
 es.ListBlock.prototype.getOffset = function( position ) {
 	if ( position.top < 0 ) {
@@ -169,7 +186,9 @@ es.ListBlock.prototype.getOffset = function( position ) {
 /**
  * Gets the position of an offset.
  * 
+ * @method
  * @param offset {Integer} Offset to translate
+ * @returns {es.Position} Position of offset
  */
 es.ListBlock.prototype.getPosition = function( offset ) {
 	var location = this.list.getLocationFromOffset( offset )
@@ -193,8 +212,9 @@ es.ListBlock.prototype.getPosition = function( offset ) {
 /**
  * Gets the start and end points of the word closest a given offset.
  * 
+ * @method
  * @param offset {Integer} Offset to find word nearest to
- * @return {Object} Range object of boundaries
+ * @returns {Object} Range object of boundaries
  */
 es.ListBlock.prototype.getWordBoundaries = function( offset ) {
 	var location = this.list.getLocationFromOffset( offset );
@@ -207,8 +227,9 @@ es.ListBlock.prototype.getWordBoundaries = function( offset ) {
 /**
  * Gets the start and end points of the section closest a given offset.
  * 
+ * @method
  * @param offset {Integer} Offset to find section nearest to
- * @return {Object} Range object of boundaries
+ * @returns {Object} Range object of boundaries
  */
 es.ListBlock.prototype.getSectionBoundaries = function( offset ) {
 	var location = this.list.getLocationFromOffset( offset ),
@@ -222,8 +243,9 @@ es.ListBlock.prototype.getSectionBoundaries = function( offset ) {
  * Traversal is performed in a depth-first pattern, which is equivilant to a vertical scan of list
  * items. To stop traversal, return false within the callback function.
  * 
+ * @method
  * @param callback {Function} Function to execute for each item, accepts an item and index argument
- * @return {Boolean} Whether all items were traversed, or traversal was cut short
+ * @returns {Boolean} Whether all items were traversed, or traversal was cut short
  */
 es.ListBlock.prototype.traverseItems = function( callback ) {
 	var stack = [{ 'list': this.list, 'index': 0 }],

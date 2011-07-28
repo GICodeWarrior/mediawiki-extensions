@@ -29,6 +29,8 @@ es.ParagraphBlock = function( content ) {
  * @static
  * @method
  * @param wikidomParagraphBlock {Object} WikiDom data to convert from
+ * @returns {es.ParagraphBlock} EditSurface paragraph block
+ * @throws "Invalid block type error" if block type is not "paragraph"
  */
 es.ParagraphBlock.newFromWikiDomParagraphBlock = function( wikidomParagraphBlock ) {
 	if ( wikidomParagraphBlock.type !== 'paragraph' ) {
