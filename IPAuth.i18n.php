@@ -284,6 +284,13 @@ $messages['mk'] = array(
 	'ipauth-desc' => 'Автоматско најавување од фиксни IP-адреси',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'ipauth-desc' => 'Log masuk secara automatik dari alamat IP yang tetap',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
