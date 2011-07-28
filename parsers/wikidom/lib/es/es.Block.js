@@ -21,7 +21,7 @@ es.Block = function() {
  * 
  * @static
  * @member
- * @example "paragraph" => es.ParagraphBlock
+ * @example { 'paragraph': es.ParagraphBlock.newFromWikiDomParagraphBlock }
  */
 es.Block.blockConstructors = {};
 
@@ -61,7 +61,8 @@ es.Block.prototype.getIndex = function() {
  * Gets the next block in the document.
  * 
  * @method
- * @returns {es.Block|Null} Block directly proceeding this one, or null if none exists
+ * @returns {es.Block} Block directly proceeding this one
+ * @returns {Null} If block does not exist in document
  */
 es.Block.prototype.nextBlock = function() {
 	if ( !this.document ) {
@@ -75,7 +76,8 @@ es.Block.prototype.nextBlock = function() {
  * Gets the previous block in the document.
  * 
  * @method
- * @returns {es.Block|Null} Block directly preceding this one, or null if none exists
+ * @returns {es.Block} Block directly preceding this one
+ * @returns {Null} If block does not exist in document
  */
 es.Block.prototype.previousBlock = function() {
 	if ( !this.document ) {
