@@ -194,6 +194,8 @@ $messages['ksh'] = array(
 $messages['lb'] = array(
 	'ratings-desc' => 'Erméiglecht et Benotzer fir verschidden "Eegeschaften" vu Säiten ze bewäerten',
 	'right-rate' => 'Bestëmmten Eegeschafte vun enger Säit bewäerten',
+	'ratings-starsratings-desc' => 'Weist en einfache Bewäertungssystem mat Hëllef vu Stären, deen de Benotzer et erlaabt fir eng Rei Eegeschafte vun enger Säit ze bewäerten.
+Déi aktuell Bewäertung vun engem Benotzer gëtt gewisen, wann e seng Bewäertung schonn ofginn huet.',
 	'ratings-par-page' => "D'Säit op déi sech d'Bewäertung bezitt.",
 	'ratings-par-tag' => 'De Bewäertungs-Tag. Den Tag gëtt u watfir eng "Eegeschaft" vun der Säit bewäert gëtt.',
 	'ratings-par-showdisabled' => 'Bewäertunge weisen wann de Benotzer net mat ofstëmme kann (Read-Only Modus)',
