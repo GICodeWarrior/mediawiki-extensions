@@ -198,6 +198,13 @@ $messages['mk'] = array(
 	'mwembed-desc' => 'Додатокот MwEmbed дава поддршка за mwEmbed-модули и додатоци',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'mwembed-desc' => 'Memberikan sokongan untuk modul-modul dan sambungan-sambungan mwEmbed',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
