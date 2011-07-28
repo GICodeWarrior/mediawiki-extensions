@@ -3,7 +3,7 @@
 if ( !defined( 'MEDIAWIKI' ) ) {
     echo <<<EOT
 To install my extension, put the following line in LocalSettings.php:
-require_once( "\$IP/extensions/RDFIO/specials/ARC2Admin.php" );
+require_once( "\$IP/extensions/RDFIO/specials/SpecialARC2Admin.php" );
 EOT;
     exit( 1 );
 }
