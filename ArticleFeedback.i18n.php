@@ -951,7 +951,7 @@ $messages['de'] = array(
 	'articlefeedback-error' => 'Ein Fehler ist aufgetreten. Bitte versuche es später erneut.',
 	'articlefeedback-form-switch-label' => 'Diese Seite einschätzen',
 	'articlefeedback-form-panel-title' => 'Diese Seite einschätzen',
-	'articlefeedback-form-panel-explanation' => 'Was ist das?',
+	'articlefeedback-form-panel-explanation' => 'Worum handelt es sich?',
 	'articlefeedback-form-panel-explanation-link' => 'Project:Artikeleinschätzung',
 	'articlefeedback-form-panel-clear' => 'Einschätzung entfernen',
 	'articlefeedback-form-panel-expertise' => 'Ich habe umfangreiche Kenntnisse zu diesem Thema (optional)',
@@ -984,7 +984,7 @@ $messages['de'] = array(
 	'articlefeedback-field-complete-tip' => 'Hast du den Eindruck, dass diese Seite alle wichtigen Aspekte enthält, die mit dessen Inhalt zusammenhängen?',
 	'articlefeedback-field-complete-tooltip-1' => 'Enthält kaum Informationen',
 	'articlefeedback-field-complete-tooltip-2' => 'Enthält einige Informationen',
-	'articlefeedback-field-complete-tooltip-3' => 'Enthält wichtige Informationen, weist aber Lücken auf',
+	'articlefeedback-field-complete-tooltip-3' => 'Enthält wichtige Information- en, hat aber Lücken',
 	'articlefeedback-field-complete-tooltip-4' => 'Enthält die meisten wichtigen Informationen',
 	'articlefeedback-field-complete-tooltip-5' => 'Enthält umfassende Informationen',
 	'articlefeedback-field-objective-label' => 'Sachlich',
@@ -2666,12 +2666,12 @@ $messages['ka'] = array(
 	'articlefeedback-form-panel-title' => 'ამ გვერდის შეფასება',
 	'articlefeedback-form-panel-clear' => 'შეფასება წაიშალა',
 	'articlefeedback-form-panel-expertise' => 'მე მაქვს წინასწარი ცოდნა ამ თემის შესახებ (არასავალდებულო)',
-	'articlefeedback-form-panel-expertise-studies' => 'მე ეს უმაღლეს სასწავლებელში ვისწავლე',
+	'articlefeedback-form-panel-expertise-studies' => 'მე ეს კოლეჯში/უმაღლეს სასწავლებელში ვისწავლე',
 	'articlefeedback-form-panel-expertise-profession' => 'ეს ჩემი პროფესიის ნაწილია',
-	'articlefeedback-form-panel-expertise-hobby' => 'ეს ჩემს ჰობისა და ინტერესებს მოიცავს',
+	'articlefeedback-form-panel-expertise-hobby' => 'ამ თემასთან დაკავშირებით მე ღრმა პირადული ინტერესები მაქვს',
 	'articlefeedback-form-panel-expertise-other' => 'ჩემი ცოდნის წყარო აქ მოცემული არაა',
 	'articlefeedback-form-panel-helpimprove-privacy' => 'ანონიმურობის პოლიტიკა',
-	'articlefeedback-form-panel-submit' => 'დაეთანხმე შეფასებას',
+	'articlefeedback-form-panel-submit' => 'თანხმობა შეფასებაზე',
 	'articlefeedback-form-panel-success' => 'შენახულია წარმატებით',
 	'articlefeedback-report-switch-label' => 'გვერდის შეფასებების ხილვა',
 	'articlefeedback-report-panel-title' => 'ამ გვერდის შეფასებები',
@@ -2691,7 +2691,7 @@ $messages['ka'] = array(
 	'articlefeedback-pitch-thanks' => 'გმადლობთ! თქვენი შეფასება შენახულია.',
 	'articlefeedback-pitch-survey-message' => 'გთხოვთ, გამონახეთ მცირე დრო პატარა გამოკითხვაში მონაწილეობის მისაღებად.',
 	'articlefeedback-pitch-survey-accept' => 'გამოკითხვის დაწყება',
-	'articlefeedback-pitch-join-message' => 'იცით, რომ თქვენ შეგიძლიათ სამომხმარებლო ანგარიშის შექმნა? საკუთარი ანგარიშით შეგიძლიათ აკონტროლოთ თქვენი რედაქტირებები, ჩაერთოთ დებატებში და გახდეთ ვიკისაზოგადოების ნაწილი.',
+	'articlefeedback-pitch-join-message' => 'იცით, რომ თქვენ შეგიძლიათ სამომხმარებლო ანგარიშის შექმნა?',
 	'articlefeedback-pitch-join-accept' => 'გახსენი ანგარიში',
 	'articlefeedback-pitch-join-login' => 'შესვლა',
 	'articlefeedback-pitch-edit-message' => 'იცით, რომ თქვენ ამ სტატიის რედაქტირება შეგიძლიათ?',
@@ -2976,7 +2976,7 @@ $messages['lb'] = array(
 	'articlefeedback-field-complete-tooltip-1' => 'Kaum Informatiounen',
 	'articlefeedback-field-complete-tooltip-2' => 'E puer Informatiounen',
 	'articlefeedback-field-complete-tooltip-3' => 'Wichteg Informatiounen awer net komplett',
-	'articlefeedback-field-complete-tooltip-4' => 'Déi wichtegst Informatiounen',
+	'articlefeedback-field-complete-tooltip-4' => 'All wichteg Informatioune stinn dran',
 	'articlefeedback-field-complete-tooltip-5' => 'Komplett Informatiounen',
 	'articlefeedback-field-objective-label' => 'Net virageholl',
 	'articlefeedback-field-objective-tip' => 'Hutt Dir den Androck datt dës Säit eng ausgeglache Presentatioun vun alle Perspektive vun dësem Thema weist?',
@@ -2984,9 +2984,9 @@ $messages['lb'] = array(
 	'articlefeedback-field-objective-tooltip-2' => 'E bëssen eesäiteg',
 	'articlefeedback-field-objective-tooltip-3' => 'Eng Grëtz eesäiteg',
 	'articlefeedback-field-objective-tooltip-4' => 'Net offensichtlech eesäiteg',
-	'articlefeedback-field-objective-tooltip-5' => 'Ganz eesäiteg',
+	'articlefeedback-field-objective-tooltip-5' => 'Guer net eesäiteg',
 	'articlefeedback-field-wellwritten-label' => 'Gutt geschriwwen',
-	'articlefeedback-field-wellwritten-tip' => 'Hutt Dir den Androck datt dës Säit gutt organiséiert a gutt geschriwwen ass?',
+	'articlefeedback-field-wellwritten-tip' => 'Hutt Dir den Androck datt dës Säit gutt strukturéiert a gutt geschriwwen ass?',
 	'articlefeedback-field-wellwritten-tooltip-1' => 'Onverständlech',
 	'articlefeedback-field-wellwritten-tooltip-2' => 'Schwéier ze verstoen',
 	'articlefeedback-field-wellwritten-tooltip-3' => 'Kloer',
@@ -3015,6 +3015,28 @@ Probéiert w.e.g. méi spéit nach emol.',
 	'articleFeedback-table-heading-average' => 'Duerchschnëtt',
 	'articleFeedback-copy-above-highlow-tables' => 'Dëst ass eng experimentell Fonctioun. Gitt eis w.e.g. Äre Feedback op der [$1 Diskussiouns-Säit].',
 	'articlefeedback-disable-preference' => 'De Widget vun der Artikelbewäertung net op de Säite weisen',
+	'articlefeedback-emailcapture-response-body' => "Bonjour! 
+
+Merci fir Ären Interessie fir d'Verbesserung vu(n) {{SITENAME}}.
+
+Huelt Iech w.e.g. een Ament Zäit fir Är Mailadress ze confirméieren, andeem Dir op dëse Link klickt:
+
+$1
+
+Dir kënnt och dës Säit besichen:
+
+$2
+
+Gitt do dëse Confirmatiouns-Code an:
+
+$3
+
+Mir mellen eis geschwënn, fir Iech ze soe, wéi Dir hëllefe kënnt fir {{SITENAME}} ze verbesseren.
+
+Wann Dir dës Ufro net ausgeléist hutt, ignoréiert dës Mail einfach. Mir schécken Iech dann och näischt méi.
+
+E schéine Bonjour a villmols merci,
+Är {{SITENAME}}-Equipe",
 );
 
 /** Limburgish (Limburgs)
@@ -5160,11 +5182,17 @@ $messages['sv'] = array(
 	'articlefeedback-survey-message-error' => 'Ett fel har uppstått. 
 Försök igen senare.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Dagens toppar och dalar',
+	'articleFeedback-table-caption-dailyhighs' => 'Sidor med högst betyg: $1',
+	'articleFeedback-table-caption-dailylows' => 'Sidor med lägst betyg: $1',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Veckans mest ändrade',
 	'articleFeedback-table-caption-recentlows' => 'Senaste dalar',
 	'articleFeedback-table-heading-page' => 'Sida',
 	'articleFeedback-table-heading-average' => 'Genomsnittlig',
 	'articleFeedback-copy-above-highlow-tables' => 'Detta är en experimentell funktion. Lämna feedback på [$1 diskussionssidan].',
+	'articlefeedback-dashboard-bottom' => "'''OBS''': Vi kommer att fortsätta experimentera med olika sätt att belysa artiklar i dessa instrumentpaneler. För närvarande inkluderar instrumentpanelen följande artiklar:
+* Sidor med den högst/lägst betyg: Artiklar som har fått minst tio betygsättningar inom de senaste 24 timmarna. Medelvärden räknas ut genom att ta genomsnittet av alla betygssättningar som har skickats in inom de senaste 24 timmarna.
+* Nyliga bottenrekord: Artiklar som fått 70 % eller fler låga (två stjärnor eller lägre) betygssättningar i någon kategori under de senaste 24 timmarna. Endast artiklar som fått minst tio betygssättningar inom de senaste 24 timmarna inkluderas.",
+	'articlefeedback-disable-preference' => 'Visa inte artikelbedömnings-widget på sidor',
 	'articlefeedback-emailcapture-response-body' => 'Hej!
 
 Tack för att ha uttryckt intresse av att hjälpa till att förbättra {{SITENAME}}.
@@ -5671,7 +5699,7 @@ $messages['zh-hans'] = array(
 	'articlefeedback-form-panel-submit' => '提交评价',
 	'articlefeedback-form-panel-pending' => '你的评价尚未提交',
 	'articlefeedback-form-panel-success' => '保存成功',
-	'articlefeedback-form-panel-expiry-title' => '您的评级已过期',
+	'articlefeedback-form-panel-expiry-title' => '你的评价已过时',
 	'articlefeedback-form-panel-expiry-message' => '请重新评估本页并提交新评价。',
 	'articlefeedback-report-switch-label' => '查看页面评价',
 	'articlefeedback-report-panel-title' => '页面评价',
@@ -5693,7 +5721,7 @@ $messages['zh-hans'] = array(
 	'articlefeedback-field-wellwritten-tip' => '你觉得此页是完善和写得很好吗？',
 	'articlefeedback-field-wellwritten-tooltip-1' => '不知所云',
 	'articlefeedback-field-wellwritten-tooltip-2' => '难以理解',
-	'articlefeedback-pitch-reject' => '或许晚些时候',
+	'articlefeedback-pitch-reject' => '以后再说',
 	'articlefeedback-pitch-or' => '或者',
 	'articlefeedback-pitch-thanks' => '谢谢！你的评价已保存。',
 	'articlefeedback-pitch-survey-message' => '请花些时间完成简短的调查。',
