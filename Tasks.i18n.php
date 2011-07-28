@@ -1281,6 +1281,7 @@ Jos sinua ei ole ohjattu eteenpäin muutaman sekunnin kuluessa, napsauta $1.',
  * @author Grondin
  * @author IAlex
  * @author Korrigan
+ * @author Od1n
  * @author Verdy p
  */
 $messages['fr'] = array(
@@ -1334,7 +1335,7 @@ $messages['fr'] = array(
 	'tasks_search_tasks' => 'Tâches',
 	'tasks_search_status' => 'Statut',
 	'tasks_search_no_tasks_chosen_note' => '(Aucune sélection, recherche de tous types de tâches.)',
-	'tasks_search_results' => 'Résultats de recherche',
+	'tasks_search_results' => 'Résultats de la recherche',
 	'tasks_previous' => 'Précédent',
 	'tasks_next' => 'Suivant',
 	'tasks_sort' => 'Trier',
