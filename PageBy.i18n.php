@@ -469,6 +469,7 @@ $messages['mr'] = array(
  */
 $messages['ms'] = array(
 	'pageby-contributors' => 'Penyumbang:',
+	'pageby-anon' => '<i>tanpa nama</i>',
 );
 
 /** Dutch (Nederlands)
