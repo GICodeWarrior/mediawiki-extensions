@@ -141,6 +141,13 @@ $messages['mk'] = array(
 	'specialtalk-desc' => 'Додава јазиче за разговор во [[Special:SpecialPages|специјалните страници]]',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'specialtalk-desc' => 'Membubuh tab bincang pada [[Special:SpecialPages|laman khas]]',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
