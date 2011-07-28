@@ -722,6 +722,7 @@ $messages['mn'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'emergencydesysop-submit' => 'Serahkan',
 	'emergencydesysop-nogroups' => 'Tiada',
 );
 

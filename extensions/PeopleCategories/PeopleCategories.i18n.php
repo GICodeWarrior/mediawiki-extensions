@@ -195,6 +195,13 @@ $messages['mk'] = array(
 	'peoplecategories-desc' => 'Го менува приказот на називите на страниците за назначените категории од „Име Презиме“ во „Презиме Име“',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'peoplecategories-desc' => 'Menukar nama laman yang dipaparkan daripada "Nama-Pertama Nama-Akhir" kepada "Nama-Akhir, Nama-Pertama" di laman-laman kategori tertentu',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

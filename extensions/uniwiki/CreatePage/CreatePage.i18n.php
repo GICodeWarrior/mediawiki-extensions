@@ -725,6 +725,14 @@ $messages['mn'] = array(
  */
 $messages['ms'] = array(
 	'createpage' => 'Cipta laman',
+	'uwcreatepage-desc' => 'Menyediakan [[Special:CreatePage|laman khas]] untuk membuat laman baru',
+	'createpage_submitbutton' => 'Serahkan',
+	'createpage_instructions' => 'Isikan tajuk laman yang anda ingin cipta:',
+	'createpage_entertitle' => 'Sila isikan tajuk laman anda.',
+	'createpage_titleexists' => 'Laman bertajuk [[$1]] sudah wujud.
+Adakah anda inging menyunting laman yang sedia ada itu?',
+	'createpage_tryagain' => 'Tidak. Saya ingin membuat laman baru dengan tajuk yang berbeza.',
+	'createpage_editexisting' => 'Ya. Saya ingin menyumbang kepada halaman yang sedia ada.',
 	'createpage-badtitle' => '"$1" tidak boleh digunakan sebagai tajuk laman',
 );
 

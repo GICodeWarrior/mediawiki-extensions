@@ -267,6 +267,14 @@ $messages['mk'] = array(
 	'nll-lastseparator' => '&#32;и&#32;',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'nll-desc' => 'Pemformatan senarai yang mudah dalam bahasa-bahasa semula jadi',
+	'nll-lastseparator' => '&#32;dan&#32;',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Ricardo gs
  */

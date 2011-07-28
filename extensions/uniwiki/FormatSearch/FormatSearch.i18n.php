@@ -284,6 +284,13 @@ $messages['mk'] = array(
 	'formatsearch-desc' => 'Ја исчистува страницата со резултати од пребарување',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'formatsearch-desc' => 'Membersihkan laman hasil carian',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */

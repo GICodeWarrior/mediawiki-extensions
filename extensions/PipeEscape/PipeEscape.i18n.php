@@ -227,6 +227,13 @@ $messages['mk'] = array(
 	'pipeescape-desc' => 'Парсерска функција <code>#!</code> која се користи кога сакате цртите да бидат само црти',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'pipeescape-desc' => 'Fungsi penghurai <code>#!</code> supaya aksara paip kekal sekadar aksara paip tanpa fungsi khas',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

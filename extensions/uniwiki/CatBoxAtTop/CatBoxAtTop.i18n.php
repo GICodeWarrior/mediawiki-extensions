@@ -386,6 +386,7 @@ $messages['mn'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'catboxattop-desc' => 'Membubuh kotak kategori di sudut atas kanan laman',
 	'catboxattop-categories' => 'Kategori',
 );
 

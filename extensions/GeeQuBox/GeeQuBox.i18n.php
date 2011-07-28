@@ -136,6 +136,13 @@ $messages['mk'] = array(
 	'geequbox-desc' => 'Создава ефекти на светлосна кутија (Lightbox) користејќи го приклучокот за jQuery',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'geequbox-desc' => "Menjana kesan 'lightbox' dengan menggunakan pemalam lightbox jQuery",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

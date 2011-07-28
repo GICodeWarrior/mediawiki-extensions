@@ -103,6 +103,13 @@ $messages['mk'] = array(
 	'resumableupload-desc' => 'Поддршка за одложено подигање',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'resumableupload-desc' => 'Sokongan muat naik yang boleh pulih',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

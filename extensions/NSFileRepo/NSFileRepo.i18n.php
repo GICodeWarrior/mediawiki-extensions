@@ -198,6 +198,13 @@ $messages['ml'] = array(
 	'nsfilerepo-desc' => 'അപ്‌ലോഡ് ചെയ്യുന്ന പ്രമാണങ്ങൾക്ക് നാമമേഖലയനുസരിച്ച് വിശേഷഗുണങ്ങൾ നൽകുക',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'nsfilerepo-desc' => 'Memberikan ciri-ciri berasaskan ruang nama kepada fail-fail yang dimuat naik',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -146,6 +146,13 @@ $messages['mk'] = array(
 	'pageobjectmodel-desc' => 'Додава збир од класи за одделување на МедијаВики-ева синтакса што овозможува лесно извлекување и работење со страници во други програми',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'pageobjectmodel-desc' => 'Menambahkan satu set kelas untuk peniskalaan sintaks MediaWiki untuk memudahkan pengekstrakan dan manipulasi laman dalam program lain',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

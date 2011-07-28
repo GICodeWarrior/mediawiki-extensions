@@ -220,6 +220,13 @@ $messages['mk'] = array(
 	'wlfeed-desc' => 'Подобрени класи на создавање на емитувања на новости',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'wlfeed-desc' => 'Kelas penjanaan suapan yang dipertingkat',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

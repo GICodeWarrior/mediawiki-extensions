@@ -320,6 +320,13 @@ $messages['mr'] = array(
 	'editown-desc' => 'ज्या सदस्यांना सर्वसंपादन अधिकार नाहीत ते फक्त त्यांनी तयार केलेली पानेच संपादित करू शकतात',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'editown-desc' => 'Pengguna tanpa hak sunting semua (editall) boleh menyunting laman-laman yang diciptanya sahaja',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

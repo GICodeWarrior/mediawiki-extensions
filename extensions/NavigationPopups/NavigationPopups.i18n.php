@@ -244,6 +244,13 @@ $messages['mr'] = array(
 	'navigationpopups-desc' => 'मीडियाविकि मध्ये ल्युपिनच्या नेव्हिगेशन स्क्रीप्ट्स पॉप-अप्स लोड करतो',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'navigationpopups-desc' => 'Memuatkan tetimbul skrip pandu arah Lupin di MediaWiki',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

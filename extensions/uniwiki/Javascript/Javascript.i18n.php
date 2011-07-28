@@ -263,6 +263,13 @@ $messages['mk'] = array(
 	'javascript-desc' => 'Го додава uniwiki.js на секоја страница што содржи JavaScript код кој е заеднички за Uniwiki додатоците',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'javascript-desc' => 'Menambahkan uniwiki.js pada setiap laman yang mengandungi kod JavaScript yang dikongsi sesama sambungan Uniwiki',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */

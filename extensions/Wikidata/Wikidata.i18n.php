@@ -8961,6 +8961,7 @@ $messages['ms'] = array(
 	'datasearch_language' => 'Bahasa:',
 	'ow_exporttsv_languages' => 'Bahasa:',
 	'ow_save' => 'Simpan',
+	'ow_transaction_user' => 'Nama pengguna:',
 	'ow_transaction_remove' => 'Buang',
 	'ow_transaction_summary' => 'Ringkasan',
 	'ow_dm_OK' => 'OK',

@@ -36,11 +36,25 @@ $messages['ksh'] = array(
 	'editsectionclearerlink-desc' => 'Määt dä Lenk för der Enhald vun Afschnedde ze ändere besser ze bruche, endämm dat mieh Müjjeleschkeite aanjezeisch wääde, wam_mer met der Muus drovver jöck.',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'editsectionclearerlink-desc' => "Verbesssert d'Benotzbarkeet vun de Linke fir Abschnitter z'änneren mat Aktiounen déi bäi Mausbeweegungen ageblennt ginn",
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
 	'editsectionclearerlink-desc' => 'Подобрување на употребливоста на врските за уредување на поднаслови со лебдечки дејства',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'editsectionclearerlink-desc' => 'Meningkatkan kebolehgunaan pautan sunting bahagian dengan tindakan hover bahagian dan pautan',
 );
 
 /** Portuguese (Português)

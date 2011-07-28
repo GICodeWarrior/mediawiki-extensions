@@ -139,6 +139,13 @@ $messages['mk'] = array(
 	'snmpquery-desc' => 'Додава на функции SNMPget и SNMPwalk и овозможува резултатите да се прикажат во викито',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'snmpquery-desc' => 'Menambahkan fungsi-fungsi SNMPget dan SNMPwalk serta membolehkan pemaparan hasilnya dalam wiki',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

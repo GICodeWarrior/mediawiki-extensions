@@ -149,6 +149,13 @@ $messages['mk'] = array(
 	'livelets-desc' => 'Овозможува превметгнување на страници кои се вчитуваат по содржината на главната страница и можт да се подновуваат автоматски со Ajax',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'livelets-desc' => 'Membolehkan laman untuk ditransklusi yang dimuatkan selepas kandungan utama laman dan boleh dikemas kini secara dinamik dengan Ajax',
+);
+
 /** Dutch (Nederlands)
  * @author McDutchie
  */

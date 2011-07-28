@@ -271,6 +271,13 @@ $messages['mk'] = array(
 	'stringfunctions-desc' => 'Ги проширува можностите на парсерот со функции за работа со низи',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'stringfunctions-desc' => 'Meningkatkan penghurai dengan fungsi rentetan',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

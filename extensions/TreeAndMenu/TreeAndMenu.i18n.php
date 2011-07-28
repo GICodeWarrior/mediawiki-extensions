@@ -37,6 +37,14 @@ $messages['mk'] = array(
 Разгранетите претстави го користат стеблото [http://www.destroydrop.com/javascripts/tree dTree] од JavaScript, а паѓачките менија користат [http://www.htmldog.com/articles/suckerfish/dropdowns/ Son of Suckerfish]',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'treeandmenu-desc' => 'Membubuh fungsi penghurai <code><nowiki>#tree</nowiki></code> dan <code><nowiki>#menu</nowiki></code> yang mengandungi senarai berbulet untuk dipaparkan dalam bentuk paparan pepohon boleh lipat atau juntai bawah.
+Paparan pepohon menggunakan menu pepohon JavaScript [http://www.destroydrop.com/javascripts/tree dTree], sementara menu juntai bawah menggunakan [http://www.htmldog.com/articles/suckerfish/dropdowns/ Son of Suckerfish]',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

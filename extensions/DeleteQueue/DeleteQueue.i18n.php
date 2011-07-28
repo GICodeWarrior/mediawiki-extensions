@@ -4555,6 +4555,7 @@ $messages['mn'] = array(
 $messages['ms'] = array(
 	'deletequeue-delnom-otherreason' => 'Sebab lain',
 	'deletequeue-review-reason' => 'Komen:',
+	'deletequeue-vote-submit' => 'Serahkan',
 	'deletequeue-list-queue' => 'Baris gilir:',
 	'deletequeue-list-search' => 'Cari',
 	'deletequeue-list-header-page' => 'Laman',

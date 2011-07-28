@@ -259,6 +259,13 @@ $messages['mk'] = array(
 	'tab0-desc' => 'Додава јазиче „0“ во страницата за уредување, поврзувајќи го првиот дел од страницата со страницата за уредување',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'tab0-desc' => 'Membubuh tab "0" untuk dipautkan dengan laman penyuntingan bahagian pertama laman',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

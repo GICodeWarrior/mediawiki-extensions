@@ -1026,6 +1026,11 @@ $messages['mn'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'gep-desc' => 'Tambahan kepada laman penyuntingan agar lebih mesra pengguna',
+	'gep-emailsubject' => '[$1] Cadangan kategori: $2',
+	'gep-emailbody' => 'Pengguna "$1" mencadangkan kategori "$2" untuk tapak "$3".',
+	'gep-emailfailure' => 'Maaf, cadangan anda tidak dapat diproses.',
+	'gep-emailsuccess' => 'Terima kasih kerana mencadangkan kategori: $1.',
 	'gep-categories' => 'Kategori',
 	'gep-addcategory' => 'Tambahkan kategori',
 	'gep-addcategorybutton' => 'Tambahkan',
@@ -1037,6 +1042,9 @@ $messages['ms'] = array(
 	'gep-addsectionbutton' => 'Tambahkan',
 	'gep-classicmode' => 'Mod klasik',
 	'gep-genericmode' => 'Mod generik',
+	'gep-nosectioninstructions' => 'Laman ini tiada bahagian.
+Tambahkan bahagian dengan menggunakan alat-alatan pada bar menu.',
+	'gep-nocategories' => 'Sila pilih sekurang-kurangnya satu kategori sebelum menyimpan',
 );
 
 /** Erzya (Эрзянь)

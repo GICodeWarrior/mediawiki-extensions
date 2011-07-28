@@ -692,9 +692,35 @@ $messages['mk'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'livetranslate-desc' => 'Membolehkan penterjemahan kandungan laman secara langsung dengan menggunakan khidmat Google Translate',
+	'right-managetms' => '[[Special:SpecialLiveTranslate|Ubah suai]] senarai ingatan terjemahan',
+	'group-tmxadmin' => 'Pentadbir TMX',
+	'group-tmxadmin-member' => 'Pentadbir TMX',
+	'grouppage-tmxadmin' => 'Project:TMX_admins',
+	'livetranslate-translate-to' => 'Terjemahkan laman ini kepada',
+	'livetranslate-button-translate' => 'Terjemah',
+	'livetranslate-button-translating' => 'Menterjemah...',
+	'livetranslate-button-revert' => 'Tunjukkan yang asal',
+	'livetranslate-dictionary-error' => 'Kamus penterjemahan langsung tidak boleh diperoleh. Tiada perkataan yang akan diberi layanan khas dalam proses penterjemahan.',
+	'livetranslate-dictionary-empty' => 'Dalam kamus belum ada kata-kata. Klik tab "sunting" untuk mengisikan kata-kata.',
+	'livetranslate-dictionary-count' => 'Terdapat $1 patah kata dalam $2 bahasa. Klib tab "sunting" untuk menambah kata.',
+	'livetranslate-dictionary-unallowed-langs' => '{{PLURAL:$2|Bahasa|Bahasa-bahasa}} ini kini tidak ditetapkan sebagai sasaran terjemahan yang dibenarkan: $1. Ubah suai bahasa yang dibenarkan pada konfigurasi wiki anda, atau gugurkannya daripada kamus.',
+	'livetranslate-dictionary-goto-edit' => 'Ubah suai ingatan terjemahan.',
+	'special-livetranslate' => 'Penterjemahan langsung',
+	'livetranslate-tmtype-ltf' => 'Format Penterjemahan Langsung',
+	'livetranslate-tmtype-tmx' => 'Translation Memory eXchange',
+	'livetranslate-tmtype-gcsv' => 'Google CSV',
+	'livetranslate-special-no-tms-yet' => 'Belum ada ingatan penterjemahan.',
+	'livetranslate-special-button' => 'Simpan dan kemas kini',
 	'livetranslate-special-type' => 'Jenis',
 	'livetranslate-special-location' => 'Lokasi',
 	'livetranslate-special-remove' => 'Buang',
+	'livetranslate-special-local' => 'Tempatan',
+	'livetranslate-special-add-tm' => 'Tambahkan ingatan terjemahan baru',
+	'livetranslate-special-current-tms' => 'Ingatan terjemahan sedia ada',
+	'livetranslate-special-tms-update' => 'Kemas kini ingatan terjemahan',
+	'livetranslate-special-update' => 'Kemas kini ingatan terjemahan',
+	'livetranslate-importtms-param-miscmatch' => 'Salah padan antara jumlah lokasi dan jenis',
 );
 
 /** Dutch (Nederlands)

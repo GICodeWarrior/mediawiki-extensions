@@ -206,6 +206,13 @@ $messages['mk'] = array(
 	'semanticinternalobjects-desc' => 'Задавање на внатрешни објекти во Семантички МедијаВики',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'semanticinternalobjects-desc' => 'Penetapan objek dalaman di Semantic MediaWiki',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

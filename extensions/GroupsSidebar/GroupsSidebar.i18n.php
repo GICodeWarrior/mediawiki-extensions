@@ -187,6 +187,13 @@ $messages['mk'] = array(
 	'groupssidebar-desc' => 'Овој додаток им овозможува на администраторите на мрежните места да вклучат елементи во страничните ленти за поедини кориснички групи',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'groupssidebar-desc' => 'Sambungan ini membolehkan pentadbir tapak menyertakan unsur-unsur bar sisi untuk kumpulan pengguna tertentu',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

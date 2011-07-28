@@ -304,6 +304,13 @@ $messages['mr'] = array(
 	'gnuplot-desc' => 'Gnuplot मध्ये <code><nowiki><gnuplot></nowiki></code> खूण वाढविते',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'gnuplot-desc' => 'Membubuh tag <code><nowiki><gnuplot></nowiki></code> untuk menggunakan Gnuplot',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

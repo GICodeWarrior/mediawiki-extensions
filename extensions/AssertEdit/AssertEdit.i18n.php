@@ -184,12 +184,13 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'assert_edit_title' => 'Anspruch fehlgeschlagen',
-	'assertedit-desc' => 'Ergänzt Bearbeitungs-Anspruch für Bots',
-	'assert_edit_message' => 'Der angegebene Anspruch ($1) ist fehlgeschlagen.',
+	'assert_edit_title' => 'Die Überprüfung der Bearbeitungsberechtigung ist fehlgeschlagen.',
+	'assertedit-desc' => 'Ergänzt für Bots eine Überprüfung der Bearbeitungsberechtigung',
+	'assert_edit_message' => 'Der Überprüfung der angegebenen Bearbeitungsberechtigung ($1) ist fehlgeschlagen.',
 );
 
 /** Zazaki (Zazaki)

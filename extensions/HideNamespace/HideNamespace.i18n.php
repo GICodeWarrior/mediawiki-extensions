@@ -187,6 +187,13 @@ $messages['mk'] = array(
 	'hidens-desc' => 'Сокрива именски простор во заглавието кога некоја страница е во назначениот именски простор или кога  ќе се повика парсерската функција <code><nowiki>{{#hidens:}}</nowiki></code>',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'hidens-desc' => 'Menyorokkan ruang nama dalam pengatas dan tajuk apabila laman berada dalam ruang nama yang dinyatakan, atau apabila fungsi penghurai <code><nowiki>{{#hidens:}}</nowiki></code> dipanggil',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

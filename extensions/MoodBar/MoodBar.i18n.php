@@ -526,6 +526,67 @@ $messages['ml'] = array(
 	'moodbar-user-user' => 'അംഗത്വമെടുത്ത ഉപയോക്താവ്',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'moodbar-desc' => 'Membolehkan pengguna tertentu menghantar "emosi" mereka kepada pengendali tapak',
+	'moodbar-trigger-feedback' => 'Maklum balas tentang penyuntingan',
+	'moodbar-trigger-share' => 'Kongsi pengalaman anda',
+	'moodbar-trigger-editing' => 'Menyunting $1...',
+	'moodbar-close' => '(tutup)',
+	'moodbar-intro-feedback' => 'Menyunting $1 membuat saya...',
+	'moodbar-intro-share' => 'Pengalaman saya di $1 membuat saya...',
+	'moodbar-intro-editing' => 'Menyunting $1 membuat saya...',
+	'moodbar-type-happy-title' => 'Gembira',
+	'moodbar-type-sad-title' => 'Sedih',
+	'moodbar-type-confused-title' => 'Keliru',
+	'tooltip-moodbar-what' => 'Ketahui lebih lanjut mengenai ciri ini',
+	'moodbar-what-label' => 'Apakah ini?',
+	'moodbar-what-content' => 'Ciri ini direka untuk membantu komuniti Wikipedia memahami pengalaman sesiapa yang menyunting ensiklopedia ini.
+Untuk maklumat lanjut, sila layari $1.',
+	'moodbar-what-link' => 'laman ciri',
+	'moodbar-privacy' => 'Dengan penyerahan ini, anda bersetuju dengan ketelusan di bawah $1 ini.',
+	'moodbar-privacy-link' => 'syarat-syarat',
+	'moodbar-disable-link' => 'Saya tak minat. Sila matikan ciri ini.',
+	'moodbar-form-title' => 'Kerana...',
+	'moodbar-form-note' => 'maksimum 140 aksara',
+	'moodbar-form-note-dynamic' => '$1 aksara lagi',
+	'moodbar-form-submit' => 'Kongsi Maklum Balas',
+	'moodbar-form-policy-text' => 'Dengan penyerahan ini, $1',
+	'moodbar-form-policy-label' => 'dasar kami',
+	'moodbar-loading-title' => 'Berkongsi...',
+	'moodbar-success-title' => 'Terima kasih!',
+	'moodbar-error-title' => 'Alamak!',
+	'moodbar-success-subtitle' => 'Berkongsi pengalaman menyunting anda membantu kami meningkatkan $1.',
+	'moodbar-error-subtitle' => 'Ada yang tak kena! Sila cuba berkongsi emosi anda nanti.',
+	'right-moodbar-view' => 'Lihat dan eksport maklum balas MoodBar',
+	'moodbar-admin-title' => 'Maklum balas MoodBar',
+	'moodbar-admin-intro' => 'Laman ini membolehkan anda melihat maklum balas yang dihantar bersama MoodBar.',
+	'moodbar-admin-empty' => 'Tiada hasil',
+	'moodbar-header-id' => 'ID maklum balas',
+	'moodbar-header-timestamp' => 'Cop masa',
+	'moodbar-header-type' => 'Jenis',
+	'moodbar-header-page' => 'Laman',
+	'moodbar-header-usertype' => 'Jenis pengguna',
+	'moodbar-header-user' => 'Pengguna',
+	'moodbar-header-editmode' => 'Mod sunting',
+	'moodbar-header-bucket' => 'Timba ujian',
+	'moodbar-header-system' => 'Jenis sistem',
+	'moodbar-header-locale' => 'Lokal',
+	'moodbar-header-useragent' => 'Ejen Pengguna',
+	'moodbar-header-comment' => 'Komen',
+	'moodbar-header-user-editcount' => 'Kiraan suntingan pengguna',
+	'moodbar-header-namespace' => 'Ruang nama',
+	'moodbar-header-own-talk' => 'Laman perbincangan sendiri',
+	'moodbar-type-happy' => 'Gembira',
+	'moodbar-type-sad' => 'Sedih',
+	'moodbar-type-confused' => 'Keliru',
+	'moodbar-user-anonymized' => 'Rahsia',
+	'moodbar-user-ip' => 'Alamat IP',
+	'moodbar-user-user' => 'Pengguna berdaftar',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  */
