@@ -186,6 +186,13 @@ $messages['mk'] = array(
 	'svgzoom-desc' => 'Додава можност на МедијаВики за приближување и влечење при гледање на SVG податотеки',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'svgzoom-desc' => 'Menambahkan kebolehan menyorot dan mengezum pada MediaWiki apabila menggunakan fail SVG',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
