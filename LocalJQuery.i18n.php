@@ -54,6 +54,13 @@ $messages['mk'] = array(
 	'localjquery-desc' => 'Вчитај jQuery од [[MediaWiki:JQuery.js]] (со ResourceLoader)',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'localjquery-desc' => 'Memuatkan jQuery dari [[MediaWiki:JQuery.js]] (dengan ResourceLoader)',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  */
