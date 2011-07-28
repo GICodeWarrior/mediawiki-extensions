@@ -220,6 +220,13 @@ $messages['mk'] = array(
 	'redirect-desc' => 'Овозможува лесно поставување на пренасочувањата при [[MediaWiki:Redirect-addnewaccount|создавањето на сметки]] и [[MediaWiki:Redirect-userlogoutcomplete|одјавување]]',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'redirect-desc' => 'Memudahkan konfigurasi lencongan pada [[MediaWiki:Redirect-addnewaccount|pembukaan akaun]] dan [[MediaWiki:Redirect-userlogoutcomplete|log keluar]]',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
