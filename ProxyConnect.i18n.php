@@ -145,6 +145,13 @@ $messages['mk'] = array(
 	'proxyconnect-desc' => 'Ја спроведува функцијата за опслужувачката страна на Поврзување преку застапник',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'proxyconnect-desc' => 'Melaksanakan kefungsian Proxy Connect di sebelah pelayan',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
