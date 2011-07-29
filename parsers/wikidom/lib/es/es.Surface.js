@@ -146,8 +146,8 @@ es.Surface.prototype.onKeyDown = function( e ) {
 	switch ( e.keyCode ) {
 		case 36: // Home
 			this.initialHorizontalCursorPosition = null;
-			var line = this.location.block.getLineFromOffset( this.location.offset );
-			this.location = new es.Location( this.location.block, line.range.start );
+			var range = this.location.block.getLineBoundaries( this.location.offset );
+			this.location = new es.Location( this.location.block, range.start );
 			this.cursor.show(
 				this.location.block.getPosition( this.location.offset ),
 				this.location.block.$.offset()
@@ -155,8 +155,8 @@ es.Surface.prototype.onKeyDown = function( e ) {
 			break;
 		case 35: // End
 			this.initialHorizontalCursorPosition = null;
-			var line = this.location.block.getLineFromOffset( this.location.offset );
-			this.location = new es.Location( this.location.block, line.range.end-1 );
+			var range = this.location.block.getLineBoundaries( this.location.offset );
+			this.location = new es.Location( this.location.block, range.end );
 			this.cursor.show(
 				this.location.block.getPosition( this.location.offset ),
 				this.location.block.$.offset()
@@ -628,6 +628,8 @@ es.Surface.prototype.moveCursorRight = function() {
 	var block = this.location.block,
 		offset = this.location.offset;
 	
+	console.log(offset);
+	
 	if ( offset < block.getLength() ) {
 		offset++;
 	} else {
@@ -643,6 +645,7 @@ es.Surface.prototype.moveCursorRight = function() {
 	);
 	
 	this.location = new es.Location( block, offset );
+	console.log(offset);
 };
 
 /**

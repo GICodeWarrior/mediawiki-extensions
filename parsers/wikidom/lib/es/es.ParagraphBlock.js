@@ -165,17 +165,15 @@ es.ParagraphBlock.prototype.getSectionBoundaries = function( offset ) {
 	return new es.Range( 0, this.content.getLength() );
 };
 
-es.ParagraphBlock.prototype.getLineFromOffset = function( offset ) {
+es.ParagraphBlock.prototype.getLineBoundaries = function( offset ) {
 	var line;
-
 	for ( var i = 0; i < this.flow.lines.length; i++ ) {
 		line = this.flow.lines[i];
 		if ( offset >= line.range.start && offset < line.range.end ) {
 			break;
 		}
 	}
-
-	return line;
+	return new es.Range( line.range.start, line.range.end < this.getLength() ? line.range.end - 1 : line.range.end );
 };
 
 /* Registration */
