@@ -240,9 +240,7 @@ class SpecialSuggest extends SpecialPage {
 		$dc = wdGetDataSetContext();
 		$dbr = wfGetDB( DB_SLAVE );
 
-		$language = $wgLang->getCode() ;
-		$lng = ' ( SELECT language_id FROM language WHERE wikimedia_key = ' . $dbr->addQuotes( $language ) . ' ) ';
-
+		$userlang = ' ( SELECT language_id FROM language WHERE wikimedia_key = ' . $dbr->addQuotes( $wgLang->getCode() ) . ' LIMIT 1 ) ';
 		$classMids = $wgDefaultClassMids ;
 
 		if ( $syntransId != 0 ) {
@@ -252,8 +250,10 @@ class SpecialSuggest extends SpecialPage {
 				" FROM {$dc}_syntrans" .
 				" JOIN {$dc}_expression ON {$dc}_expression.expression_id = {$dc}_syntrans.expression_id" .
 				" WHERE {$dc}_syntrans.syntrans_sid = " . $syntransId .
-				' AND ' . getLatestTransactionRestriction( "{$dc}_syntrans" ) .
-				' AND ' . getLatestTransactionRestriction( "{$dc}_expression" );
+				" LIMIT 1 " ;
+				// not needed: syntransId is unique
+				// ' AND ' . getLatestTransactionRestriction( "{$dc}_syntrans" ) .
+				// ' AND ' . getLatestTransactionRestriction( "{$dc}_expression" );
 			$lang_res = $dbr->query( $sql );
 			$language_id = $dbr->fetchObject( $lang_res )->language_id;
 
@@ -263,17 +263,18 @@ class SpecialSuggest extends SpecialPage {
 				" WHERE language.language_id = $language_id" .
 				" AND {$dc}_collection_contents.collection_id = 145264" .
 				" AND language.iso639_3 = {$dc}_collection_contents.internal_member_id" .
-				' AND ' . getLatestTransactionRestriction( "{$dc}_collection_contents" );
+				' AND ' . getLatestTransactionRestriction( "{$dc}_collection_contents" ) .
+				' LIMIT 1 ' ;
 			$lang_res = $dbr->query( $sql );
 			$language_dm_id = $dbr->fetchObject( $lang_res )->member_mid;
 
 			$classMids = array_merge ( $wgDefaultClassMids , array($language_dm_id) ) ;
 		}
 
-		if ( count( $classMids ) > 0 )
-			$defaultClassRestriction = " OR {$dc}_class_attributes.class_mid IN (" . join( $classMids, ", " ) . ")";
-		else
-			$defaultClassRestriction = "";
+		$classRestriction = "";
+		if ( count( $classMids ) > 0 ) {
+			$classRestriction = " OR {$dc}_class_attributes.class_mid IN (" . join( $classMids, ", " ) . ")";
+		}
 
 		$filteredAttributesRestriction = $this->getFilteredAttributesRestriction( $annotationAttributeId );
 
@@ -288,12 +289,15 @@ class SpecialSuggest extends SpecialPage {
 		" AND {$dc}_expression.expression_id = {$dc}_syntrans.expression_id" .
 		$filteredAttributesRestriction . " ";
 
-		$sql .=
-		" AND ( language_id=$lng " .
-			' OR ( ' .
-			' language_id=85 ' .
-			" AND {$dc}_syntrans.defined_meaning_id NOT IN ( SELECT defined_meaning_id FROM {$dc}_syntrans synt, {$dc}_expression exp WHERE exp.expression_id = synt.expression_id AND exp.language_id=$lng ) " .
-		' ) ) ' ;
+		// fallback is English
+		$sql .= " AND ( language_id=$userlang " ;
+
+		if ( $userlang != 85 ) {
+			$sql .= ' OR ( ' .
+				' language_id=85 ' .
+				" AND NOT EXISTS ( SELECT * FROM {$dc}_syntrans synt2, {$dc}_expression exp2 WHERE synt2.defined_meaning_id = {$dc}_syntrans.defined_meaning_id AND exp2.expression_id = synt2.expression_id AND exp2.language_id=$userlang AND synt2.remove_transaction_id IS NULL LIMIT 1 ) ) " ;
+		}
+		$sql .= ' ) ' ;
 
 		$sql .=
 			' AND ' . getLatestTransactionRestriction( "{$dc}_class_attributes" ) .
@@ -305,7 +309,7 @@ class SpecialSuggest extends SpecialPage {
 			" WHERE  {$dc}_class_membership.class_member_mid = " . $definedMeaningId .
 			' AND ' . getLatestTransactionRestriction( "{$dc}_class_membership" ) .
 			' )' .
-			$defaultClassRestriction .
+			$classRestriction .
 			')';
 
 		$sql .= ') AS filtered GROUP BY attribute_mid';
@@ -383,7 +387,7 @@ class SpecialSuggest extends SpecialPage {
 		$dc = wdGetDataSetContext();
 
 		$dbr = wfGetDB( DB_SLAVE );
-		$lng = '( SELECT language_id FROM language WHERE wikimedia_key = ' . $dbr->addQuotes( $language ) . ' )';
+		$userlang = ' ( SELECT language_id FROM language WHERE wikimedia_key = ' . $dbr->addQuotes( $language ) . ' LIMIT 1 ) ';
 
 		// exp.spelling, txt.text_text
 		$sql = "SELECT member_mid, spelling " .
@@ -394,18 +398,18 @@ class SpecialSuggest extends SpecialPage {
 			" AND synt.defined_meaning_id = col_contents.member_mid " .
 //			" AND synt.identical_meaning=1 " .
 			" AND exp.expression_id = synt.expression_id " .
-			" AND dm.defined_meaning_id = synt.defined_meaning_id " .
-			" AND ( " .
-				" exp.language_id=$lng " .
-				" OR (" .
-					" exp.language_id=85 " .
-					" AND dm.defined_meaning_id NOT IN " .
-						" ( SELECT defined_meaning_id FROM {$dc}_syntrans synt_bis, {$dc}_expression exp_bis " .
-						" WHERE exp_bis.expression_id = synt_bis.expression_id AND exp_bis.language_id=$lng " .
-						" AND synt_bis.remove_transaction_id IS NULL AND exp_bis.remove_transaction_id IS NULL ) " .
-					" ) " .
-				" ) " .
-			" AND " . getLatestTransactionRestriction( "col" ) .
+			" AND dm.defined_meaning_id = synt.defined_meaning_id " ;
+
+		// fallback is English
+		$sql .= " AND ( exp.language_id=$userlang " ;
+		if ( $userlang != 85 ) {
+			$sql .= ' OR ( ' .
+				' language_id=85 ' .
+				" AND NOT EXISTS ( SELECT * FROM {$dc}_syntrans synt2, {$dc}_expression exp2 WHERE synt2.defined_meaning_id = synt.defined_meaning_id AND exp2.expression_id = synt2.expression_id AND exp2.language_id=$userlang AND synt2.remove_transaction_id IS NULL LIMIT 1 ) ) " ;
+		}
+		$sql .= ' ) ' ;
+
+		$sql .= " AND " . getLatestTransactionRestriction( "col" ) .
 			" AND " . getLatestTransactionRestriction( "col_contents" ) .
 			" AND " . getLatestTransactionRestriction( "synt" ) .
 			" AND " . getLatestTransactionRestriction( "exp" ) .
@@ -442,25 +446,25 @@ class SpecialSuggest extends SpecialPage {
 	private function getSQLForCollection( $language ) {
 		$dc = wdGetDataSetContext();
 		$dbr = wfGetDB( DB_SLAVE );
-		$lng = '( SELECT language_id FROM language WHERE wikimedia_key = ' . $dbr->addQuotes( $language ) . ' )';
+		$userlang = ' ( SELECT language_id FROM language WHERE wikimedia_key = ' . $dbr->addQuotes( $language ) . ' LIMIT 1 ) ';
 
 		$sql = "SELECT collection_id, spelling " .
 			" FROM {$dc}_expression exp, {$dc}_collection col, {$dc}_syntrans synt, {$dc}_defined_meaning dm " .
 			" WHERE exp.expression_id=synt.expression_id " .
 			" AND synt.defined_meaning_id=col.collection_mid " .
-			" AND dm.defined_meaning_id = synt.defined_meaning_id " .
+			" AND dm.defined_meaning_id = synt.defined_meaning_id " ;
 //			" AND synt.identical_meaning=1" .
-			" AND ( " .
-				" exp.language_id=$lng " .
-				" OR (" .
-					" exp.language_id=85 " .
-					" AND dm.defined_meaning_id NOT IN " .
-						" ( SELECT defined_meaning_id FROM {$dc}_syntrans synt_bis, {$dc}_expression exp_bis " .
-						" WHERE exp_bis.expression_id = synt_bis.expression_id AND exp_bis.language_id=$lng " .
-						" AND synt_bis.remove_transaction_id IS NULL AND exp_bis.remove_transaction_id IS NULL ) " .
-					" ) " .
-				" ) " .
-			" AND " . getLatestTransactionRestriction( "synt" ) .
+
+		// fallback is English
+		$sql .= " AND ( exp.language_id=$userlang " ;
+		if ( $userlang != 85 ) {
+			$sql .= ' OR ( ' .
+				' language_id=85 ' .
+				" AND NOT EXISTS ( SELECT * FROM {$dc}_syntrans synt2, {$dc}_expression exp2 WHERE synt2.defined_meaning_id = synt.defined_meaning_id AND exp2.expression_id = synt2.expression_id AND exp2.language_id=$userlang AND synt2.remove_transaction_id IS NULL LIMIT 1 ) ) " ;
+		}
+		$sql .= ' ) ' ;
+
+		$sql .= " AND " . getLatestTransactionRestriction( "synt" ) .
 			" AND " . getLatestTransactionRestriction( "exp" ) .
 			" AND " . getLatestTransactionRestriction( "col" ) .
 			" AND " . getLatestTransactionRestriction( "dm" );
