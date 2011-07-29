@@ -85,6 +85,8 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'collabwatchlisttagcomment' => '{{Identical|Comment}}',
+	'collabwatchlisttools-delete' => '{{Identical|Delete}}',
+	'collabwatchlistedit-users-raw-submit' => '{{Identical|Save}}',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
@@ -103,6 +105,14 @@ $messages['be-tarask'] = array(
 	'collabwatchlisttools-edit' => 'Рэдагаваць катэгорыі',
 	'collabwatchlisttools-rawCategories' => 'Рэдагаваць катэгорыі як тэкст',
 	'collabwatchlisttools-rawTags' => 'Рэдагаваць тэгі як тэкст',
+	'collabwatchlisttools-rawUsers' => 'Рэдагаваць удзельнікаў як тэкст',
+	'collabwatchlisttools-delete' => 'Выдаліць',
+	'collabwatchlistsall' => 'Усе сьпісы',
+	'collabwatchlistfiltertags' => 'Фільтраваць тэгі',
+	'collabwatchlistedit-users-raw-submit' => 'Захаваць',
+	'collabwatchlistedit-raw-title' => 'Рэдагаваць катэгорыі як тэкст',
+	'collabwatchlistedit-tags-raw-title' => 'Рэдагаваць тэгі як тэкст',
+	'collabwatchlistedit-users-raw-title' => 'Рэдагаваць удзельнікаў як тэкст',
 );
 
 /** German (Deutsch)
@@ -177,30 +187,58 @@ $messages['de'] = array(
 	'tog-collabwatchlisthidelistusers' => 'Bearbeitungen von Benutzern der kollaborativen Beobachtungsliste ausblenden',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author Welathêja
+ */
+$messages['ku-latn'] = array(
+	'collabwatchlisttools-delete' => 'Jê bibe',
+	'collabwatchlistedit-users-raw-submit' => 'Tomar bike',
+	'collabwatchlistedit-normal-submit' => 'Tomar bike',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
 $messages['lb'] = array(
 	'collabwatchlist' => 'Gemeinsam Iwwerwaachungslëscht',
+	'collabwatchlist-desc' => 'Erméiglecht gemeinsam Iwwerwaachungslëschten déi op Kategorie baséieren',
 	'specialcollabwatchlist' => 'Spezialsäit Gemeinsam Iwwerwwaachungslëscht',
+	'collabwatchlist-details' => '{{PLURAL:$1|$1 Kategorie/Säit|$1 Kategorien/Säiten}} op dëser gemeinsamer Iwwerwaachungslëscht.',
+	'collabwatchlisttagselect' => 'Tag',
 	'collabwatchlisttagcomment' => 'Bemierkung',
 	'collabwatchlisttools-view' => 'Weisen',
 	'collabwatchlisttools-edit' => 'Kategorien änneren',
 	'collabwatchlisttools-delete' => 'Läschen',
 	'collabwatchlistsall' => 'All Lëschten',
 	'collabwatchlistedit-users-raw-submit' => 'Späicheren',
+	'collabwatchlistedit-numitems' => 'Dës gemeinsam Iwwerwaachungslëscht huet {{PLURAL:$1|1 Kategorie |$1 Kategorien}}',
+	'collabwatchlistedit-noitems' => 'Op dëser gemeinsamer Iwwerwaachungslëscht sti keng Kategorien.',
+	'collabwatchlistedit-users-numitems' => 'Dës gemeinsam Iwwerwaachungslëscht huet {{PLURAL:$1|1 Benotzer|$1 Benotzer}}',
+	'collabwatchlistedit-users-noitems' => 'Op dëser gemeinsamer Iwwerwaachungslëscht sti keng Benotzer.',
+	'collabwatchlistedit-users-raw-legend' => 'Benotzer vun der gemeinsamer Iwwerwaachungslëscht onformatéiert änneren',
 	'collabwatchlistedit-raw-titles' => 'Kategorien:',
 	'collabwatchlistedit-users-raw-titles' => 'Benotzer:',
 	'collabwatchlistedit-normal-title' => 'Kategorien änneren',
 	'collabwatchlistedit-normal-legend' => 'Kategorie vun der Iwwerwaachungslëscht erofhuelen',
 	'collabwatchlistedit-normal-explain' => 'Kategorie vun Ärer Iwwerwaachungslëscht stinn hei drënner.',
 	'collabwatchlistedit-tags-raw-submit' => 'Späicheren',
+	'collabwatchlistedit-normal-done' => '{{PLURAL:$1|1 Kategorie gouf|$1 Kategorië goufe}} vun der gemeinsamer Iwwerwaachungslëscht erofgeholl:',
 	'collabwatchlistedit-tags-raw-done' => 'Déi gemeinsam Iwwerwaachungslëscht gouf aktualiséiert',
 	'collabwatchlistedit-users-raw-done' => 'Déi gemeinsam Iwwerwaachungslëscht gouf aktualiséiert.',
+	'collabwatchlistedit-users-raw-added' => '$1 Benotzer {{PLURAL:$1|gouf|goufen}} derbäigesat:',
+	'collabwatchlistedit-users-raw-removed' => '$1 Benotzer {{PLURAL:$1|gouf|goufen}} ewechgeholl:',
+	'collabwatchlistpatrol' => 'Ännerunge kontrolléieren',
 	'collabwatchlisttools-newList' => 'Nei gemeinsam Iwwerwaachungslëscht',
+	'collabwatchlistdelete-legend' => 'Eng gemeinsam Iwwerwaachungslëscht läschen',
 	'collabwatchlistdelete-submit' => 'Läschen',
+	'collabwatchlistdelete-title' => 'Gemeinsam Iwwerwaachungslëscht läschen',
+	'collabwatchlistnew-legend' => 'Eng nei gemeinsam Iwwerwaachungslëscht uleeën',
+	'collabwatchlistnew-explain' => 'Den Numm vun der Lëscht muss eenzeg sinn (et däerf keng zweet Lëscht mat deemselwechten Numm ginn)',
 	'collabwatchlistnew-name' => 'Numm vun der Lëscht',
+	'collabwatchlistnew-submit' => 'Uleeën',
 	'collabwatchlistedit-raw-done' => 'Déi gemeinsam Iwwerwaachungslëscht gouf aktualiséiert',
+	'collabwatchlistedit-raw-added' => '{{PLURAL:$1|1 Kategorie/Säit gouf|$1 Kategorien/Säite goufen}} derbäigesat:',
+	'collabwatchlistedit-raw-removed' => '{{PLURAL:$1|1 Kategorie/Säit gouf|$1 Kategorien/Säite goufen}} ewechgeholl:',
 	'collabwatchlistedit-normal-submit' => 'Späicheren',
 	'collabwatchlistshowhidelistusers' => '$1 Lëscht vun de Benotzer',
 	'tog-collabwatchlisthidelistusers' => 'Ännerunge vu Benotzer vun der gemeinsamer Iwwerwaachungslëscht verstoppen',
@@ -314,6 +352,9 @@ $messages['nl'] = array(
 	'collabwatchlistedit-raw-titles' => 'Categorieën:',
 	'collabwatchlistedit-tags-raw-titles' => 'Labels:',
 	'collabwatchlistedit-users-raw-titles' => 'Gebruikers:',
+	'collabwatchlistedit-normal-title' => 'Categorieën bewerken',
+	'collabwatchlistedit-normal-legend' => 'Categorieën verwijderen uit volglijst',
+	'collabwatchlistedit-normal-explain' => 'Categorieën op uw volglijst ​​worden hieronder weergegeven.',
 	'collabwatchlistedit-tags-raw-submit' => 'Opslaan',
 	'collabwatchlistinverttags' => 'Labelfilter omkeren',
 	'collabwatchlistdelete-submit' => 'Verwijderen',
