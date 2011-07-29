@@ -415,6 +415,14 @@ $messages['ksh'] = array(
 	'right-ArticleToCategory2AddCat' => 'En Saachjropp en en Saachjrop donn',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author Welathêja
+ */
+$messages['ku-latn'] = array(
+	'articletocategory2-create-article-under-category-button' => 'Biafirîne',
+	'articletocategory2-create-category-under-category-button' => 'Biafirîne',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Les Meloures
  * @author Robby
