@@ -47,6 +47,13 @@ $messages['ia'] = array(
 	'localjquery-desc' => 'Cargar jQuery ab [[MediaWiki:JQuery.js]] (con ResourceLoader)',
 );
 
+/** Italian (Italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'localjquery-desc' => 'Carica jQuery da [[MediaWiki:JQuery.js]] (con ResourceLoader)',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
