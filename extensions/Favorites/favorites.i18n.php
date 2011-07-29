@@ -259,9 +259,14 @@ $messages['mk'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author SPQRobin
  * @author Siebrand
  */
 $messages['nl'] = array(
+	'favoritelist' => 'Mijn favorieten',
+	'myfavoritelist' => 'Mijn favorieten',
+	'favoritelistfor' => "(voor '''$1''')",
+	'favoritenologin' => 'Niet aangemeld',
 	'favoritelistall2' => 'alle',
 	'favoritelistedit-normal-submit' => "Pagina's verwijderen",
 	'favoritelistedit-normal-done' => 'Er {{PLURAL:$1|is 1 pagina|zijn $1 pagina’s}} verwijderd uit uw favorieten:',

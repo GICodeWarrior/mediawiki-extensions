@@ -3770,7 +3770,7 @@ Potresti $1, poi $2',
 	'mwe-cc_nc_title' => 'Non commerciale',
 	'mwe-cc_nd_title' => 'Non opere derivate',
 	'mwe-cc_sa_title' => 'Condividi allo stesso modo',
-	'mwe-cc_pd_title' => 'Pubblico Dominio',
+	'mwe-cc_pd_title' => 'Pubblico dominio',
 	'mwe-unknown_license' => 'Licenza sconosciuta',
 	'mwe-no-import-by-url' => "Questo utente o wiki <b>non può</b> importare risorse da URL remoto.
 <p>Devi effettuare l'accesso? </p>

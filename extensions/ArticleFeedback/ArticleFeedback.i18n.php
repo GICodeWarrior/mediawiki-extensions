@@ -1134,6 +1134,7 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Glavkos
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
@@ -1172,6 +1173,13 @@ $messages['el'] = array(
 	'articlefeedback-form-panel-expiry-message' => 'Παρακαλούμε να επανεκτιμήσετε αυτή τη σελίδα και να υποβάλετε νέες βαθμολογίες.',
 	'articlefeedback-report-switch-label' => 'Δείτε τις βαθμολογήσεις της σελίδας',
 	'articlefeedback-report-panel-title' => 'Βαθμολογήσεις σελίδας',
+	'articlefeedback-report-empty' => 'Δεν υπάρχουν αξιολογήσεις',
+	'articlefeedback-report-ratings' => '$1 αξιολογήσεις',
+	'articlefeedback-field-trustworthy-label' => 'Αξιόπιστη',
+	'articlefeedback-field-complete-label' => 'Πλήρης',
+	'articlefeedback-field-complete-tooltip-3' => 'Περιέχει βασικές πληροφορίες, αλλά με κενά',
+	'articlefeedback-field-objective-label' => 'Στόχος',
+	'articlefeedback-pitch-reject' => 'Ίσως αργότερα',
 	'articlefeedback-pitch-or' => 'ή',
 	'articlefeedback-pitch-thanks' => 'Ευχαριστώ! Οι βαθμολογίες σας έχουν αποθηκευτεί.',
 	'articlefeedback-pitch-survey-message' => 'Αφιερώστε λίγο χρόνο για να συμπληρώσετε μια μικρή έρευνα.',
@@ -2939,6 +2947,7 @@ $messages['lb'] = array(
 	'articlefeedback-survey-submit' => 'Späicheren',
 	'articlefeedback-survey-title' => 'Beäntwert w.e.g. e puer Froen',
 	'articlefeedback-survey-thanks' => 'Merci datt Dir eis Ëmfro ausgefëllt hutt.',
+	'articlefeedback-survey-disclaimer' => 'Fir ze hëllefe fir dës Fonctioun ze verbesseren, kann Äre Feedback anonym an der Wikipedia Gemeinschaft verbreet ginn.',
 	'articlefeedback-error' => 'Et ass e Feeler geschitt. Probéiert w.e.g. méi spéit nach emol.',
 	'articlefeedback-form-switch-label' => 'Dës Säit bewäerten',
 	'articlefeedback-form-panel-title' => 'Dës Säit bewäerten',

@@ -798,8 +798,10 @@ $messages['ksh'] = array(
 
 /** Kurdish (Latin) (Kurdî (Latin))
  * @author Bangin
+ * @author Welathêja
  */
 $messages['ku-latn'] = array(
+	'chemFunctions_ListPage' => 'Çavkaniyên kîmyayî',
 	'chemFunctions_Name' => 'Nava IUPAC',
 );
 
