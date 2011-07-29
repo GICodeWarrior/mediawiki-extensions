@@ -1651,12 +1651,13 @@ $messages['or'] = array(
 	'imagetagging-imghistory' => 'ଇତିହାସ',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
+ * @author Bouron
  */
 $messages['os'] = array(
 	'imagetagging-imghistory' => 'Истори',
-	'imagetagging-tagcancel-button' => 'Нæ бæззы',
+	'imagetagging-tagcancel-button' => 'Ныууадзын',
 );
 
 /** Deitsch (Deitsch)
