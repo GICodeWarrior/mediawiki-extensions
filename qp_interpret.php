@@ -40,6 +40,23 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 class qp_Interpret {
 
 	/**
+	 * Lint the code of specified language by appropriate interpretator
+	 * @param   $lang  string language key (eg. 'php')
+	 * @param   $code  string source code
+	 * @return  bool   true, when code has no syntax errors;
+	 *          string  error message from lint
+	 */
+	static function lint( $lang, $code ) {
+		switch ( $lang ) {
+		case 'php' :
+			return qp_Eval::lint( $code );
+		default :
+			# unknown languages syntax is "valid" because it cannot be checked
+			return true;
+		}
+	}
+
+	/**
 	 * Glues the content of <qpinterpret> tags together, checks "lang" attribute
 	 * and calls appropriate interpretator to evaluate the user answer
 	 * 

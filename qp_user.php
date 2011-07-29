@@ -521,12 +521,12 @@ class qp_Setup {
 			$line_numbers .= "{$i}\n";
 		}
 		$slc = $i;
-		$out =
-		array( '__tag'=>'div', 'class'=>'qpoll',
-			array( '__tag'=>'div', 'class'=>'line_numbers', $line_numbers ),
-			array( '__tag'=>'div', 'class'=>'script_view', qp_Setup::specialchars( $input ) . "\n" )
-		);
-
+		$out = array( '__tag'=>'div', 'class'=>'qpoll', 0 => array() );
+		if ( is_string( $lintResult = qp_Interpret::lint( $lang, $input ) ) ) {
+			$out[0][] = array( '__tag'=>'div', 'class'=>'interp_error', qp_Setup::specialchars( $lintResult ) );
+		}
+		$out[0][] = array( '__tag'=>'div', 'class'=>'line_numbers', $line_numbers );
+		$out[0][] = array( '__tag'=>'div', 'class'=>'script_view', qp_Setup::specialchars( $input ) . "\n" );
 		$markercount = count( self::$markerList );
 		$marker = "!qpoll-script-view{$markercount}-qpoll!";
 		self::$markerList[$markercount] = qp_Renderer::renderHTMLobject( $out );

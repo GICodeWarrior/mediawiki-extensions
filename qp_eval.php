@@ -112,7 +112,7 @@ class qp_Eval {
 	# allowed functions
 	static $allowedCalls = array(
 		# math
-		'round', 'trunc', 'ceil', 'floor',
+		'round', 'ceil', 'floor',
 		# arrays
 		'is_array', 'array_search', 'count',
 		# strings
@@ -218,6 +218,48 @@ class qp_Eval {
 	);
 
 	/**
+	 * Calls php interpreter to lint interpretation script code
+	 * @param  $code   string with php code
+	 * @return bool    true, when code has no syntax errors;
+	 *         string  error message from php lint
+	 */
+	static function lint( $code ) {
+		$pipes = array();
+		$spec = array(
+			0 => array( 'pipe', 'r' ),
+			1 => array( 'pipe', 'w' ),
+			2 => array( 'pipe', 'w' )
+		);
+		if ( !function_exists( 'proc_open' ) ) {
+			return wfMsg( 'qp_error_eval_unable_to_lint' );
+		}
+		$process = proc_open( 'php -l', $spec, $pipes );
+		if ( !is_resource( $process ) ) {
+			return wfMsg( 'qp_error_eval_unable_to_lint' );
+		}
+		fwrite( $pipes[0], "<?php $code" );
+		fclose( $pipes[0] );
+		$out = array( 1 => '', 2 => '' );
+		foreach ( $out as $key => &$text ) {
+			while ( !feof( $pipes[$key] ) ) {
+				$text .= fgets( $pipes[$key], 1024 );
+			}
+			fclose( $pipes[$key] );
+		}
+		$retval = proc_close( $process );
+		if ( $retval == 0 ) {
+			# no lint errors
+			return true;
+		}
+		if ( ( $result = trim( implode( $out ) ) ) == '' ) {
+			# lint errors but no meaningful error message
+			return wfMsg( 'qp_error_eval_unable_to_lint' );
+		}
+		# lint error message
+		return $result;
+	}
+
+	/**
 	 * Check against the list of known disallowed code (for eval)
 	 * should be executed before every eval, because PHP upgrade can introduce
 	 * incompatibility leading to secure hole at any time
@@ -227,7 +269,7 @@ class qp_Eval {
 		# remove unavailable functions from allowed calls list
 		foreach ( self::$allowedCalls as $key => $fname ) {
 			if ( !function_exists( $fname ) ) {
-				self::$allowedCalls[$key] = null;
+				unset( self::$allowedCalls[$key] );
 			}
 		}
 		# the following var is used to check access to extension's locals
@@ -320,7 +362,7 @@ class qp_Eval {
 						return wfMsg( 'qp_error_eval_variable_function_call', token_name( $token_id ), QP_Setup::specialchars( $content ), $line );
 					}
 					# disallow non-allowed function calls based on the list
-					if ( $token_id === T_STRING && array_search( $content, self::$allowedCalls ) === false ) {
+					if ( $token_id === T_STRING && array_search( $content, self::$allowedCalls, true ) === false ) {
 						return wfMsg( 'qp_error_eval_illegal_function_call', token_name( $token_id ), QP_Setup::specialchars( $content ), $line );
 					}
 				}
