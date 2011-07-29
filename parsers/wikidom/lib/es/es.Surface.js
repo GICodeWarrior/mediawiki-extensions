@@ -234,10 +234,10 @@ es.Surface.prototype.insertFromInput = function() {
 			var deleteSelection = this.selection;
 			deleteSelection.normalize();
 			this.location = this.selection.start;
+			this.selection = new es.Selection();
 			this.deleteContent( deleteSelection );
 		}
 		var insertLocation = this.location;
-		this.selection = new es.Selection();
 		this.location = new es.Location(
 			this.location.block, this.location.offset + val.length
 		);
