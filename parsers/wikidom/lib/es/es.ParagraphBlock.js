@@ -165,6 +165,19 @@ es.ParagraphBlock.prototype.getSectionBoundaries = function( offset ) {
 	return new es.Range( 0, this.content.getLength() );
 };
 
+es.ParagraphBlock.prototype.getLineFromOffset = function( offset ) {
+	var line;
+
+	for ( var i = 0; i < this.flow.lines.length; i++ ) {
+		line = this.flow.lines[i];
+		if ( offset >= line.range.start && offset < line.range.end ) {
+			break;
+		}
+	}
+
+	return line;
+};
+
 /* Registration */
 
 /**

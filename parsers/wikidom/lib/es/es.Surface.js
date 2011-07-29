@@ -144,6 +144,24 @@ es.Surface.prototype.getLocationFromEvent = function( e ) {
 
 es.Surface.prototype.onKeyDown = function( e ) {
 	switch ( e.keyCode ) {
+		case 36: // Home
+			this.initialHorizontalCursorPosition = null;
+			var line = this.location.block.getLineFromOffset( this.location.offset );
+			this.location = new es.Location( this.location.block, line.range.start );
+			this.cursor.show(
+				this.location.block.getPosition( this.location.offset ),
+				this.location.block.$.offset()
+			);
+			break;
+		case 35: // End
+			this.initialHorizontalCursorPosition = null;
+			var line = this.location.block.getLineFromOffset( this.location.offset );
+			this.location = new es.Location( this.location.block, line.range.end-1 );
+			this.cursor.show(
+				this.location.block.getPosition( this.location.offset ),
+				this.location.block.$.offset()
+			);
+			break;
 		case 16: // Shift
 			this.keyboard.keys.shift = true;
 			if ( !this.keyboard.selecting ) {
