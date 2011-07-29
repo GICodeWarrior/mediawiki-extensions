@@ -114,7 +114,7 @@ class qp_Eval {
 		# math
 		'round', 'ceil', 'floor',
 		# arrays
-		'is_array', 'array_search', 'count',
+		'is_array', 'array_search', 'count', 'array_intersect', 'array_diff',
 		# strings
 		'trim', 'preg_match', 'preg_match_all', 'preg_split', 'qp_lc',
 		# debug
