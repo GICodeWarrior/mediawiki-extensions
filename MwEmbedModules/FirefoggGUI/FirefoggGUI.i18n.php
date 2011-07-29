@@ -2926,10 +2926,15 @@ Bes esu joot, un donn der <b><i lang="en">Firebug</i></b> för heh di Sigg ußsc
 
 /** Kurdish (Latin) (Kurdî (Latin))
  * @author George Animal
+ * @author Welathêja
  */
 $messages['ku-latn'] = array(
 	'fogg-title-title' => 'Sernav',
 	'fogg-title-help' => 'Sernavekî ji bo klîba te',
+	'fogg-date-title' => 'Dem',
+	'fogg-organization-title' => 'Rêxistin',
+	'fogg-license-title' => 'Destûr',
+	'fogg-hidepreview' => 'Pêşdîtinê veşêre',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
