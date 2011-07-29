@@ -1,0 +1,125 @@
+#!/usr/bin/python
+# coding: utf-8
+# :vim:ft=python
+
+''' editor lifecycle data fitting tool '''
+
+import sys
+import os
+from functools import partial
+import numpy as np
+from argparse import ArgumentParser
+from scipy.optimize import curve_fit
+
+from models import Expon, PowerLaw, StretchedExpon
+import scale
+
+__prog__ = os.path.basename(os.path.abspath(__file__))
+
+_maxfev = 10000
+
+parent = ArgumentParser(add_help=False)
+parent.add_argument('data_file', metavar='DATA')
+parent.add_argument('-output', dest='output_file', metavar='FILE')
+parent.add_argument('-title')
+group = parent.add_mutually_exclusive_group()
+group.add_argument('-loglog', action='store_true')
+group.add_argument('-loglin', action='store_true')
+parent.add_argument('-constrained', action='store_true')
+parent.add_argument('-batch', action='store_true', help='do not show graphics')
+parent.add_argument('-force', action='store_true', help='force overwrite')
+
+parser = ArgumentParser(description=__doc__)
+subparsers = parser.add_subparsers(help='Parametric models supported')
+
+parser_expon = subparsers.add_parser('expon', parents=[parent])
+parser_expon.set_defaults(modelclass=Expon)
+
+parser_stretch = subparsers.add_parser('stretchedexp', parents=[parent])
+parser_stretch.set_defaults(modelclass=StretchedExpon)
+
+parser_power = subparsers.add_parser('powerlaw', parents=[parent])
+parser_power.set_defaults(modelclass=PowerLaw)
+
+def plotfit(model, x, y, ye, data=None):
+    xx = np.linspace(x.min(), x.max(), endpoint=True, num=1000)
+    yy = model(xx)
+    pp.errorbar(x, y, ye / 2, fmt='. ', label=data or 'data', color='k', ecolor='none')
+    model_label = model.name.split()
+    if len(model_label) > 1:
+        model_label[1] = model_label[1][:3] + '.'
+    model_label = ' '.join(model_label[:2]).capitalize()
+    pp.plot(xx, yy, 'r--', label='{} fit'.format(model_label), lw=2.5)
+    if ns.loglog:
+        pp.xscale('log')
+        pp.yscale('log')
+    elif ns.loglin:
+        pp.xscale('power', exponent=model.beta)
+        pp.yscale('log')
+    pp.legend(loc='best')
+    if ns.title is not None:
+        pp.title(ns.title)
+    pp.xlabel('Days since registration')
+    pp.ylabel('Edits/day')
+
+    # residuals - uncomment lines to produce relative residuals plots
+    pp.figure()
+    r = model(x) - y
+#    rm = r[True - np.isinf(r)].max()
+#    r /= np.abs(rm)
+    pp.axhline(y=0, c='k')
+    pp.plot(x, r, '.:k')
+    pp.title('Fit residuals')
+    pp.xlabel('Days since registration')
+#    pp.ylabel(r'Relative residual $\xi / \max{|\xi|}$')
+#    pp.ylim(-1,1)
+    pp.draw()
+
+def _testoverwrite(*files):
+    exit_flag = False
+    for fn in files:
+        if os.path.exists(fn):
+            exit_flag = True
+            print '%s: error: cannot overwrite %s' % (__prog__, fn)
+    if exit_flag:
+        sys.exit(1)
+
+def main(ns):
+    x, y, ye = np.loadtxt(ns.data_file, unpack=True)
+    model = ns.modelclass()
+    if ns.constrained:
+        pest, pcov = model.fit(x, y, ye=ye, maxfev=_maxfev, constrained=1)
+    else:
+        pest, pcov = model.fit(x, y, ye=ye, maxfev=_maxfev)
+    perr = np.sqrt(np.diag(pcov)) / 2.
+    model.setparams(*zip(pest, perr))
+    gof, resid, Rsquared = model.gof(x, y, ye)
+    model.goftest = gof
+    model.residtest = resid
+    model.Rsquared = Rsquared
+    print model.summary(dataset=ns.data_file, observations=len(x))
+    plotfit(model, x, y, ye, data=os.path.splitext(ns.data_file)[0])
+    if ns.output_file is not None:
+        fn, ext = os.path.splitext(ns.output_file)
+        fmt = ext[1:]
+        if ns.batch and fmt.lower() != 'pdf':
+            print '%s: error: batch mode supports only PDF format' % __prog__
+            sys.exit(1)
+        resid_output_file = fn + '_residuals' + ext
+        if not ns.force:
+            _testoverwrite(ns.output_file, resid_output_file)
+        pp.figure(1)
+        pp.savefig(ns.output_file, format=fmt)
+        print '%s: output saved to %s' % (__prog__, ns.output_file)
+        pp.figure(2)
+        pp.savefig(resid_output_file, format=fmt)
+        print '%s: output saved to %s' % (__prog__, resid_output_file)
+    pp.show()
+
+if __name__ == '__main__':
+    ns = parser.parse_args()
+    if ns.batch:
+        import matplotlib
+        matplotlib.use('PDF')
+    import matplotlib.pyplot as pp
+    main(ns)

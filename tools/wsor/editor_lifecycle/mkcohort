@@ -1,0 +1,118 @@
+#!/usr/bin/python
+# coding: utf-8
+# :vim:ft=python
+
+''' creates cohort files, filtering out bots '''
+
+'''
+This script reads an index file, which is a tab-separated text file like the
+following:
+
+    34	    WojPob	        20010129110725	2524
+    94	    AstroNomer	        20010207222248	1532
+    43	    Lee Daniel Crocker	20010314020407	4388
+    86	    Stephen Gilbert	20010326191355	3599
+    3	    Tobias Hoevekamp	20010326202105	1903
+    1273    Wathiik	        20010510171751	1772
+    3371    Arno	        20010721180708	2700
+    122	    Ap	                20010722201619	2137
+    182	    Rjstott	        20010726102546	2602
+    64	    Uriyan	        20010727141651	1634
+
+Where fields are: id, name, date, count. Dates are parsed using dateutil, so
+other formats are allowed too (e.g.  2010-01-29 11:07:25). Currently the last
+column (editcount) is not used, but the script still expects to find it, so you
+can put whatever you want in it.
+
+The script will aggregate users based on the date field and will lookup for
+files of the form <id>.npy in the current directory. These files contain the
+daily edits count for any individual user, stored using the NumPy binary array
+format. If data files are not in the current directory, a different path can be
+specified from the command line (-P/--datapath)
+
+Based on the level of aggregation (say: months), the script will create a
+compressed ZIP archive with the user edit counts data files (e.g.: 2010-01.npz
+for all users from January 2010). This compressed archive can be later processed
+with the script `fitting' or with the load() function from NumPy. 
+
+The script will produce in output the name of the produced files, how many users
+it contains, and how many suspected BOT users it filtered out from the index
+(use --bot to include them). The script filters out a user base on the name
+field: if the name contains the pattern 'bot' at the beginning or at the end of
+any word, it will be filtered out (e.g. "Botuser IV" will match, but "Francis
+Abbott" won't).
+
+Please note that the index file must be already sorted by date, in order for the
+group by date aggregation to work. You can use `sort' from the commmand line,
+e.g.:
+
+    $~ sort -t$'\t' -k3 -h unsorted.tsv
+
+should sort file unsorted.tsv. 
+'''
+
+import re
+import os
+import sys
+import csv
+from argparse import ArgumentParser, FileType
+from contextlib import closing
+from itertools import groupby
+from dateutil.parser import parser as DateParser
+from zipfile import ZipFile
+
+__prog__ = os.path.basename(os.path.abspath(__file__))
+_botpat = r'\bbot|bot\b' 
+_fields = ['id', 'name', 'date', 'count']
+
+def yearkey(date):
+    return date.year, 
+
+def monthkey(date):
+    return date.year, date.month
+
+def daykey(date):
+    return date.year, date.month, date.day
+
+parser = ArgumentParser(description=__doc__)
+parser.add_argument('index', type=FileType('r'), help='*must* be already sorted')
+group = parser.add_mutually_exclusive_group(required=1)
+group.add_argument('--year', help='group by year', action='store_const',
+        const=yearkey, dest='keyfunc')
+group.add_argument('--month', help='group by month', action='store_const',
+        const=monthkey, dest='keyfunc')
+group.add_argument('--day', help='group by day', action='store_const', 
+        const=daykey, dest='keyfunc')
+parser.add_argument('--bots', action='store_true', help='do NOT filter out bots')
+parser.add_argument('-P', '--datapath', help='data files location',
+        default=os.path.curdir)
+
+dateparser = DateParser()
+
+if __name__ == '__main__':
+    ns = parser.parse_args()
+    reader = csv.DictReader(ns.index, _fields, dialect='excel-tab')
+
+    def _keyfunc(row):
+        date = dateparser.parse(row['date'])
+        return ns.keyfunc(date)
+
+    for key, subiter in groupby(reader, _keyfunc):
+        tot_users = 0
+        tot_bots = 0
+        datestr = '-'.join(map(lambda k : '%02d' % k, key)) # (2010,1) -> '2010-01'
+        zipfn = '{}.npz'.format(datestr)
+        with closing(ZipFile(zipfn, 'w')) as zf:
+            for row in subiter:
+                user_id = row['id']
+                if ns.bots or (re.search(_botpat, row['name'], re.I) is None):
+                    fn = os.path.join(ns.datapath, '{}.npy'.format(user_id ))
+                    if os.path.exists(fn):
+                        zf.write(fn, user_id)
+                    else:
+                        print >> sys.stderr, '%s: warning: missing %s' %\
+                                (__prog__, fn)
+                else:
+                    tot_bots += 1
+                tot_users += 1
+        print '%s created (users: %5d, bots %5d)' % (zipfn, tot_users, tot_bots)

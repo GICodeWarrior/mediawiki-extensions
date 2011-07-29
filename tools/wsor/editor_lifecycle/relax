@@ -1,0 +1,49 @@
+#!/usr/bin/python
+#:vim:ft=python
+
+''' batch model fitting '''
+
+import re
+import os
+import sys
+import numpy as np
+from argparse import ArgumentParser
+from models import StretchedExpon
+from datetime import datetime
+
+__prog__ = os.path.basename(os.path.abspath(__file__))
+
+parser = ArgumentParser(description=__doc__)
+parser.add_argument('data', nargs='+')
+
+ns = parser.parse_args()
+
+output = []
+
+# XXX format should not be fixed to 2010-1 !!
+# TODO should use the len file
+
+for d in ns.data:
+    k = re.match('(.*?)_.+\.?.*', d).groups()[0]
+    t = datetime.strptime(k, '%Y-%m')
+    if not os.path.exists(d):
+        continue
+    x, y, ye = np.loadtxt(d, unpack=1)
+    model = StretchedExpon()
+    model.A = y[0]
+    idx = ye > 0
+    x = x[idx]
+    y = y[idx]
+    ye = ye[idx]
+    if len(x)>10: # st. dev. 0 means only 1 user 
+        pest, pcov = model.fit(x, y, ye, maxfev=100000, warning=False)
+        perr = np.sqrt(np.diag(pcov)) / 2.
+        model.setparams(*zip(pest,perr))
+        mrt = model.mrt(model.tau, model.beta)
+    else:
+        mrt = np.nan
+    output.append((t, mrt))
+
+output = np.asarray(output, dtype=np.dtype([('date', object), ('mrt', np.double)]))
+np.save('mrt.npy', output)
+print 'output saved to mrt.npy'
