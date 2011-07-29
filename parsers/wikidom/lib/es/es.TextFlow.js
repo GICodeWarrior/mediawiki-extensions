@@ -174,6 +174,7 @@ es.TextFlow.prototype.getPosition = function( offset ) {
 	 * an exception to be thrown.
 	 */
 	if ( position.line === lineCount ) {
+		line.range.end++;
 		position.line--;
 		position.bottom = position.top;
 		position.top -= line.height;
