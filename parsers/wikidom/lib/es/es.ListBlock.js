@@ -237,6 +237,23 @@ es.ListBlock.prototype.getSectionBoundaries = function( offset ) {
 	return new es.Range( start, start + location.item.content.getLength() );
 };
 
+es.ListBlock.prototype.getLineBoundaries = function( offset ) {
+	var location = this.list.getLocationFromOffset( offset ),
+		line;
+	
+	for ( var i = 0; i < location.item.flow.lines.length; i++ ) {
+		line = location.item.flow.lines[i];
+		if ( location.offset >= line.range.start && location.offset < line.range.end ) {
+			break;
+		}
+	}
+	
+	return new es.Range(
+		( offset - location.offset ) + line.range.start,
+		( offset - location.offset ) + ( line.range.end < location.item.content.getLength() ? line.range.end - 1 : line.range.end )
+	);
+};
+
 /**
  * Iteratively execute a callback on each item in the list.
  * 

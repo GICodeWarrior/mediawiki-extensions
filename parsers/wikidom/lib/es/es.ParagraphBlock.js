@@ -173,7 +173,10 @@ es.ParagraphBlock.prototype.getLineBoundaries = function( offset ) {
 			break;
 		}
 	}
-	return new es.Range( line.range.start, line.range.end < this.getLength() ? line.range.end - 1 : line.range.end );
+	return new es.Range(
+		line.range.start,
+		line.range.end < this.getLength() ? line.range.end - 1 : line.range.end
+	);
 };
 
 /* Registration */
