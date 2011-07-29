@@ -78,25 +78,38 @@ if ( isset( $wgResourceModules ) ) {
 	);
 }
 
-function qp_debug() {
+/**
+ * Interpretation script debug function
+ * @param $args  array $args[0] - string message
+ *                     $args[1] - variable to dump (optional)
+ *                     $args[2] - bool true / false enable / disable output (optional)
+ */
+function qp_debug( /* $args */ ) {
 	$args = func_get_args();
-	if ( count( $args ) < 2 ) {
+	if ( count( $args ) < 1 ) {
 		return;
 	}
-	list( $var_name, $var_value ) = $args;
+	$message = $args[0];
 	$debug = true;
 	if ( count( $args ) > 2 ) {
 		$debug = $args[2];
 	}
-	if ( $debug === true) {
+	if ( $debug !== true) {
+		return;
+	}
+	if ( count( $args ) > 1 ) {
 		ob_start();
-		var_dump( $var_value );
+		var_dump( $args[1] );
 		$var_value = ob_get_contents();
 		ob_end_clean();
-		wfDebugLog( 'qpoll', "{$var_name} = {$var_value}\n" );
+		$message = "{$message} = {$var_value}\n";
 	}
+	wfDebugLog( 'qpoll', $message );
 }
 
+/**
+ * Interpretation script text lowercase function (according to content language)
+ */
 function qp_lc( $text ) {
 	global $wgContLang;
 	return $wgContLang->lc( $text );
