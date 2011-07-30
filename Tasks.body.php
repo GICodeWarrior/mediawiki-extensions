@@ -702,7 +702,7 @@ class SpecialTasks extends IncludableSpecialPage {
 			return true;
 		}
 
-		global $wgOut, $action, $wgRequest, $wgUser;
+		global $wgOut, $wgRequest, $wgUser;
 		$out = '';
 		$tasks = array();
 		$wgOut->addLink(array(
@@ -731,7 +731,7 @@ class SpecialTasks extends IncludableSpecialPage {
 
 		# And ... out!
 		$returnto = $wgRequest->getVal( 'returnto' );
-		if( $this->isValidRedirect( $returnto ) ) {
+		if( $this->isValidRedirect( $title, $returnto ) ) {
 			# Forward to other page
 			$wgOut->redirect( $returnto );
 
@@ -753,13 +753,12 @@ class SpecialTasks extends IncludableSpecialPage {
 	 * @param string $url
 	 * @return bool
 	 */
-	function isValidRedirect( $url ) {
+	function isValidRedirect( $title, $url ) {
 		if( $url == '' ) {
 			return false;
 		}
 
-		global $wgTitle;
-		$url1 = $wgTitle->getFullURL();
+		$url1 = $title->getFullURL();
 		$url1 = explode( '/', $url1 );
 		$url1 = $url1[0] . '/' . $url1[1] .'/' . $url1[2];
 		$url2 = explode( '/', $url );
