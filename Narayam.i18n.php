@@ -598,6 +598,7 @@ $messages['lb'] = array(
 	'narayam-eo' => 'Esperanto',
 	'narayam-kn' => 'Kannada (Transliteratioun)',
 	'narayam-ml' => 'Malayalam-Transliteratioun',
+	'narayam-sa' => 'Sanskrit-Transliteratioun',
 	'narayam-sa-inscript' => 'Sanskrit (InScript)',
 	'narayam-ta99' => 'Tamil99',
 	'narayam-ta' => 'Tamil-Transliteratioun',
