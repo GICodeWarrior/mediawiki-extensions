@@ -37,6 +37,13 @@ $messages['de'] = array(
 	'editpagetracking-desc' => 'Ermöglicht das Nachvollziehen des erstens Besuchs einer Bearbeitungsseite durch einen Benutzer',
 );
 
+/** French (Français)
+ * @author Tpt
+ */
+$messages['fr'] = array(
+	'editpagetracking-desc' => "Enregistre la première fois que chaque utilisateur ouvre la page d'édition",
+);
+
 /** Hebrew (עברית)
  * @author Amire80
  */

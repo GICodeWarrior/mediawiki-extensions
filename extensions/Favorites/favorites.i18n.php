@@ -263,6 +263,7 @@ $messages['mk'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
+	'prefs-favoritelist' => 'Favorieten',
 	'favoritelist' => 'Mijn favorieten',
 	'myfavoritelist' => 'Mijn favorieten',
 	'favoritelistfor' => "(voor '''$1''')",

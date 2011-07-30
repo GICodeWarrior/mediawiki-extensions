@@ -270,11 +270,13 @@ $messages['lb'] = array(
 	'notificator-notify' => 'Informéieren',
 	'notificator-notify-address-or-name' => '$1 informéieren',
 	'notificator-return-to' => 'Zréck op',
+	'notificator-e-mail-address-invalid' => "D'Mailadress déi ugi gouf ass net valabel.",
 	'notificator-notification-not-sent' => "D'Informatioun gouf net geschéckt.",
 	'notificator-change-tag' => 'Ännerung',
 	'notificator-new-tag' => 'nei',
 	'notificator-following-e-mail-sent-to' => 'Dës Mail gouf un den $1 geschéckt:',
 	'notificator-subject' => 'Sujet:',
+	'notificator-error-sending-e-mail' => 'Beim Schécke vun der Noriicht per Mail un $1 ass e Feeler geschitt.',
 	'notificator-error-parameter-missing' => 'Feeler: Parameter feelt.',
 	'notificator-notified-already' => "$1 gouf schonn iwwer dës Säit oder d'Ännerung vun dëser Säit informéiert.",
 );
