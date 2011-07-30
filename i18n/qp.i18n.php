@@ -661,6 +661,7 @@ $messages['cs'] = array(
 );
 
 /** German (Deutsch)
+ * @author ChrisiPK
  * @author Imre
  * @author Kghbln
  * @author The Evil IP address
@@ -749,6 +750,7 @@ Um die Abstimmung zu speichern, übermittle sie während du nicht auf eine Antra
 	'qp_error_eval_illegal_variable_name' => 'PHP-Token $1 mit dem nicht zulässigen Variablenname $2 ist in Zeile $3 nicht zulässig',
 	'qp_error_eval_variable_function_call' => 'PHP-Token $1 mit der veränderlichen Funktion $2 ist in Zeile $3 nicht zulässig',
 	'qp_error_eval_self_check' => 'Der folgende Selbsttest eval() ist gescheitert: $1. Es wird eine nicht unterstützte Version von PHP verwendet, welche die sichere Ausführung des Skripts eval() nicht zulässt.',
+	'qp_error_eval_unable_to_lint' => 'Statische Code-Analyse konnte nicht durchgeführt werden (überprüfe deine Systemkonfiguration)',
 );
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
@@ -2305,6 +2307,7 @@ Para gravar uma sondagem, submeta-a sem ter respondido a nenhuma pergunta.',
 	'qp_error_eval_illegal_variable_name' => 'A chave PHP $1 não permite o nome da variável $2 na linha $3',
 	'qp_error_eval_variable_function_call' => 'A chave PHP $1 com a função variável $2 não é permitida na linha $3',
 	'qp_error_eval_self_check' => 'A seguinte auto-verificação eval() falhou: $1. tem uma versão do PHP que não é suportada, o que não permite executar código eval de forma segura.',
+	'qp_error_eval_unable_to_lint' => 'Não foi possível processar no lint (verifique a configuração do sistema)',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
