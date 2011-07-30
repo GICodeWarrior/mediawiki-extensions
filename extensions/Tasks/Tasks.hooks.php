@@ -115,18 +115,24 @@ class TasksHooks {
 	 * Display in sidebar
 	 */
 	public static function onSkinTemplateToolboxEnd( &$tpl ) { # Checked for HTML and MySQL insertion attacks
-		global $wgTitle;
-		if( $wgTitle->isTalkPage() ) {
+		if ( method_exists( $tpl, 'getSkin' ) ) {
+			$title = $tpl->getSkin()->getTitle();
+		} else {
+			global $wgTitle;
+			$title = $wgTitle;
+		}
+
+		if( $title->isTalkPage() ) {
 			# No talk pages please
 			return true;
 		}
-		if( $wgTitle->getNamespace() < 0 ) {
+		if( $title->getNamespace() < 0 ) {
 			# No special pages please
 			return true;
 		}
 
 		$st = new SpecialTasks;
-		$tasks = $st->get_open_task_list( $wgTitle, true );
+		$tasks = $st->get_open_task_list( $title, true );
 		if( count( $tasks ) == 0 ) {
 			# No tasks
 			return true;
@@ -269,13 +275,15 @@ class TasksHooks {
 	 * @return bool true to continue running other hooks, false to abort operation
 	 */
 	public static function onSkinTemplateNavigation( $skin, &$content_actions ) { # Checked for HTML and MySQL insertion attacks
-		global $wgTitle, $wgRequest;
+		global $wgRequest;
 
-		if( $wgTitle->isTalkPage() ) {
+		$title = $skin->getTitle();
+
+		if( $title->isTalkPage() ) {
 			# No talk pages please
 			return true;
 		}
-		if( $wgTitle->getNamespace() < 0 ) {
+		if( $title->getNamespace() < 0 ) {
 			# No special pages please
 			return true;
 		}
@@ -283,7 +291,7 @@ class TasksHooks {
 		$content_actions['actions']['tasks'] = array(
 			'class' => ($wgRequest->getVal( 'action', 'view' ) == 'tasks') ? 'selected' : false,
 			'text' => wfMsgHTML('tasks_tab'),
-			'href' => $wgTitle->getLocalUrl( 'action=tasks' )
+			'href' => $title->getLocalUrl( 'action=tasks' )
 		);
 		return true;
 	}
