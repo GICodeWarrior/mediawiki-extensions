@@ -507,6 +507,7 @@ $messages['bg'] = array(
 	'fogg-installed' => 'Firefogg е инсталиран.',
 	'fogg-not-installed' => 'Firefogg не е инсталиран или не е активиран.',
 	'fogg-please-install-install-linktext' => 'Инсталиране на Firefogg',
+	'fogg-please-install-about-linktext' => 'за Firefogg',
 );
 
 /** Bengali (বাংলা)
