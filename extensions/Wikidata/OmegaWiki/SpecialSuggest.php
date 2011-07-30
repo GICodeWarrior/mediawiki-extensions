@@ -248,12 +248,8 @@ class SpecialSuggest extends SpecialPage {
 			// this first query returns the language_id
 			$sql = 'SELECT language_id' .
 				" FROM {$dc}_syntrans" .
-				" JOIN {$dc}_expression ON {$dc}_expression.expression_id = {$dc}_syntrans.expression_id" .
 				" WHERE {$dc}_syntrans.syntrans_sid = " . $syntransId .
 				" LIMIT 1 " ;
-				// not needed: syntransId is unique
-				// ' AND ' . getLatestTransactionRestriction( "{$dc}_syntrans" ) .
-				// ' AND ' . getLatestTransactionRestriction( "{$dc}_expression" );
 			$lang_res = $dbr->query( $sql );
 			$language_id = $dbr->fetchObject( $lang_res )->language_id;
 
