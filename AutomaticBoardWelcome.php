@@ -8,7 +8,7 @@
  * @file
  * @ingroup Extensions
  * @version 0.1
- * @date 20 July 2011
+ * @date 30 July 2011
  * @author Jack Phoenix <jack@countervandalism.net>
  * @license http://en.wikipedia.org/wiki/Public_domain Public domain
  */
@@ -43,13 +43,23 @@ function wfSendUserBoardMessageOnRegistration( $user, $byEmail ) {
 			return true;
 		}
 
+		// Just quit if we're in read-only mode
+		if ( wfReadOnly() ) {
+			return true;
+		}
+
 		$dbr = wfGetDB( DB_SLAVE );
-		// Get all users who are in the 'sysop' group from the database
+		// Get all users who are in the 'sysop' group and aren't blocked from
+		// the database
 		$res = $dbr->select(
-			'user_groups',
+			array( 'user_groups', 'ipblocks' ),
 			array( 'ug_group', 'ug_user' ),
-			array( 'ug_group' => 'sysop' ),
-			__METHOD__
+			array( 'ug_group' => 'sysop', 'ipb_user' => null ),
+			__METHOD__,
+			array(),
+			array(
+				'ipblocks' => array( 'LEFT JOIN', 'ipb_user = ug_user' )
+			)
 		);
 
 		$adminUids = array();
@@ -61,24 +71,21 @@ function wfSendUserBoardMessageOnRegistration( $user, $byEmail ) {
 		$random = array_rand( array_flip( $adminUids ), 1 );
 		$sender = User::newFromId( $random );
 
-		// Ignore blocked users who have +sysop and only send out the message
-		// when we can, i.e. when the DB is *not* locked
-		if ( !$sender->isBlocked() && !wfReadOnly() ) {
-			$senderUid = $sender->getId();
-			$senderName = $sender->getName();
+		$senderUid = $sender->getId();
+		$senderName = $sender->getName();
 
-			$b = new UserBoard();
-			$b->sendBoardMessage(
-				$senderUid, // sender's UID
-				$senderName, // sender's name
-				$user->getId(),
-				$user->getName(),
-				// passing the senderName as an argument here so that we can do
-				// stuff like [[User talk:$1|contact me]] or w/e in the message
-				wfMsgForContent( 'user-board-welcome-message', $senderName )
-				// the final argument is message type: 0 (default) for public
-			);
-		}
+		// Send the message
+		$b = new UserBoard();
+		$b->sendBoardMessage(
+			$senderUid, // sender's UID
+			$senderName, // sender's name
+			$user->getId(),
+			$user->getName(),
+			// passing the senderName as an argument here so that we can do
+			// stuff like [[User talk:$1|contact me]] or w/e in the message
+			wfMsgForContent( 'user-board-welcome-message', $senderName )
+			// the final argument is message type: 0 (default) for public
+		);
 	}
 	return true;
 }
