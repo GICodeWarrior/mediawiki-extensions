@@ -247,8 +247,9 @@ class SpecialSuggest extends SpecialPage {
 			// find the language of the syntrans and add attributes of that language by adding the language DM to the list of default classes
 			// this first query returns the language_id
 			$sql = 'SELECT language_id' .
-				" FROM {$dc}_syntrans" .
+				" FROM {$dc}_syntrans, {$dc}_expression" .
 				" WHERE {$dc}_syntrans.syntrans_sid = " . $syntransId .
+				" AND {$dc}_expression.expression_id = {$dc}_syntrans.expression_id " .
 				" LIMIT 1 " ;
 			$lang_res = $dbr->query( $sql );
 			$language_id = $dbr->fetchObject( $lang_res )->language_id;
