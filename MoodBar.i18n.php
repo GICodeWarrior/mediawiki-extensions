@@ -245,14 +245,28 @@ $messages['es'] = array(
 
 /** French (Français)
  * @author Crochet.david
+ * @author Tpt
  */
 $messages['fr'] = array(
 	'moodbar-desc' => 'Permet aux utilisateurs spécifiés d’envoyer leur retour d’« humeur » à l’exploitant du site',
+	'moodbar-trigger-feedback' => 'Vos commentaires sur la modification',
+	'moodbar-trigger-share' => 'Partagez votre expérience',
 	'moodbar-close' => '(fermer)',
+	'moodbar-type-happy-title' => 'Heureux',
+	'moodbar-type-sad-title' => 'Triste',
+	'tooltip-moodbar-what' => 'En savoir plus sur cette fonctionnalité',
+	'moodbar-what-label' => "Qu'est-ce que c'est?",
+	'moodbar-what-content' => "Cette fonction est conçue pour aider la communauté Wikipédia à comprendre le ressenti des personnes éditant l'encyclopédie.
+Pour plus d'informations consulter la $1 .",
+	'moodbar-what-link' => 'page décrivant la fonction',
 	'moodbar-success-title' => 'Merci !',
+	'moodbar-error-title' => 'Oups !',
 	'moodbar-admin-empty' => 'Aucun résultat',
 	'moodbar-header-page' => 'Page',
 	'moodbar-header-user' => 'Utilisateur',
+	'moodbar-header-user-editcount' => "Compteur d'édition",
+	'moodbar-type-happy' => 'Heureux',
+	'moodbar-type-sad' => 'Triste',
 );
 
 /** Franco-Provençal (Arpetan)
