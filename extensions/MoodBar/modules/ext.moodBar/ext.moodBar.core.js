@@ -25,7 +25,7 @@
 						<div class="mw-moodBar-formInputs">\
 							<textarea rows="3" maxlength="140" class="mw-moodBar-formInput" /></textarea>\
 							<div class="mw-moodBar-privacy"></div>\
-							<input type="button" class="mw-moodBar-formSubmit" />\
+							<input type="button" class="mw-moodBar-formSubmit" disabled="disabled" />\
 						</div>\
 					</div>\
 					<span class="mw-moodBar-overlayWhat">\
@@ -108,7 +108,8 @@
 									.localize()
 									.click( function( e ) {
 										var $el = $( this );
-										mb.ui.overlay.find( '.mw-moodBar-form' ).slideDown( 'fast' );
+										mb.ui.overlay.find( '.mw-moodBar-formSubmit').removeAttr('disabled');
+										mb.ui.overlay.find( '.mw-moodBar-formInput' ).focus();
 										$mwMoodBarTypes.addClass( 'mw-moodBar-types-select' );
 										mb.feedbackItem.type = $el.attr( 'rel' );
 										$el.addClass( 'mw-moodBar-selected' );
