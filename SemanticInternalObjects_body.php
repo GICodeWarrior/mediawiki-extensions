@@ -150,8 +150,8 @@ class SIOSQLStore extends SMWSQLStore2 {
 					'value_num' => $valueNum
 				);
 				
-				// getUnit() was removed in SMW 1.6
-				if ( method_exists( $value, 'getUnit' ) ) {
+				// 'value_unit' DB field was removed in SMW 1.6
+				if ( version_compare( SMW_VERSION, '1.6 alpha', '<' ) ) {
 					$upAttr['value_unit'] = $value->getUnit();
 				}
 				
