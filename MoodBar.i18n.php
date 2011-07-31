@@ -51,7 +51,7 @@ For more information, please visit the $1.',
 	'moodbar-error-title' => 'Oops!',
 	'moodbar-loading-subtitle' => 'We are sharing your feedback…',
 	'moodbar-success-subtitle' => 'Sharing your editing experience helps us improve $1.',
-	'moodbar-error-subtitle' => 'Something went wrong! Please try sharing your mood again later.',
+	'moodbar-error-subtitle' => 'Something went wrong! Please try sharing your feedback again later.',
 	// Special:MoodBar
 	'right-moodbar-view' => 'View and export MoodBar feedback',
 	'moodbar-admin-title' => 'MoodBar feedback',

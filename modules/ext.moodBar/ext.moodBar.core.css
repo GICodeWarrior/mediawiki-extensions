@@ -51,9 +51,13 @@
 	font-size: 12px;
 }
 
-.mw-moodBar-form,
+
 .mw-moodBar-overlayWhatContent {
 	display: none;
+	overflow: hidden;
+}
+
+.mw-moodBar-form {
 	overflow: hidden;
 }
 
