@@ -59,6 +59,7 @@ class GPoCHooks {
 		$du->addExtensionTable( "ratings", "$base/ratings.sql");
 		$du->addExtensionTable( "project_stats", "$base/project_stats.sql" );
 		$du->addExtensionTable( "assessment_changelog", "$base/log.sql" );
+		$du->addExtensionTable( "selections", "$base/selections.sql" );
 		return true;
 	}
 }

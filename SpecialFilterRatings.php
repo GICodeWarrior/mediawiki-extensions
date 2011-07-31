@@ -21,6 +21,8 @@ class SpecialFilterRatings extends SpecialPage {
 		$importance = $wgRequest->getVal('importance');
 		$quality = $wgRequest->getVal('quality');
 		$categories = $wgRequest->getVal('categories');
+        $action = $wgRequest->getVal('action');
+        $selection_name = $wgRequest->getVal('selection');
 
 		$filters = array(
 			'r_project' => $project,
@@ -37,11 +39,18 @@ class SpecialFilterRatings extends SpecialPage {
 
 		$this->setHeaders();
 
-		$wgOut->setPageTitle("Filter Articles by Ratings");
+        $wgOut->setPageTitle("Filter Articles by Ratings");
+
+        if( $action == 'addtoselection' ) {
+            Selection::addEntries($selection_name, $entries);
+        }
 
 		$template = new FilterRatingsTemplate();
 		$template->set( 'filters', $filters );
-		$template->set( 'articles', $entries );
+        $template->set( 'articles', $entries );
+        $template->set( 'action', $action );
+        $template->set( 'selection', $selection );
+
 		$wgOut->addTemplate( $template );
 	}
 }
