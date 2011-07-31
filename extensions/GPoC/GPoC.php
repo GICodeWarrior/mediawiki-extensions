@@ -23,11 +23,11 @@ $wgAutoloadClasses['GPoCHooks'] = $dir . 'GPoC.hooks.php';
 $wgAutoloadClasses['Statistics'] = $dir . 'models/Statistics.php';
 $wgAutoloadClasses['Rating'] = $dir . 'models/Rating.php';
 $wgAutoloadClasses['AssessmentChangeLog'] = $dir . 'models/Log.php';
+$wgAutoloadClasses['Selection'] = $dir . 'models/Selection.php';
 $wgAutoloadClasses['TableDisplay'] = $dir . 'TableDisplay.php';
 $wgAutoloadClasses['AssessmentsExtractor'] = $dir . 'AssessmentsExtractor.php';
 $wgAutoloadClasses['SpecialAssessmentLog'] = $dir . 'SpecialAssessmentLog.php';
 $wgAutoloadClasses['SpecialFilterRatings'] = $dir . 'SpecialFilterRatings.php';
-
 
 $wgAutoloadClasses['FilterRatingsTemplate'] = $dir . 'templates/FilterRatingsTemplate.php';
 

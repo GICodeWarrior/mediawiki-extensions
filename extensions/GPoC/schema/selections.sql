@@ -1,0 +1,20 @@
+-- Replace /*_*/ with the proper prefix
+-- Replace /*$wgDBTableOptions*/ with the correct options
+
+CREATE TABLE IF NOT EXISTS /*_*/selections (
+    s_selection_name        varchar(63)  not null,   
+    -- project name
+
+    s_namespace      int unsigned not null,
+    -- article namespace
+
+    s_article        varchar(255) not null,
+    -- article name
+
+	s_timestamp      binary(14) not null,
+    -- timestamp when entry was added
+
+    primary key (s_selection_name, s_namespace, s_article)
+) /*$wgDBTableOptions*/;
+
+CREATE INDEX /*i*/s_selection_name ON /*_*/selections (s_selection_name);

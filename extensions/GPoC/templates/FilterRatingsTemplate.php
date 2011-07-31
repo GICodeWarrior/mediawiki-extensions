@@ -7,6 +7,8 @@ class FilterRatingsTemplate extends QuickTemplate {
 	public function execute() {
 		$articles = $this->data['articles'];
 		$filters = $this->data['filters'];
+		$action = $this->data['action'];
+		$selection = $this->data['selection'];
 ?>
 
 <form method="GET">
@@ -19,7 +21,11 @@ Categories (comma separated): <input type="text" name="categories" value="<?php 
 <input type="submit" />
 </p>
 </form>
-
+<div id="notice">
+<?php if( $action == 'addtoselection' ) { ?> 
+Articles successfully added to selection <?php echo $selection; ?>
+<?php } ?>
+</div>
 <div id="">
 <?php if( count($articles) > 0 ) { ?>
 <h3>Results</h3>
