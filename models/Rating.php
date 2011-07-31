@@ -173,12 +173,11 @@ class Rating {
 		$dbr = wfGetDB( DB_SLAVE );
 		$database_filters = array();
 
-		foreach($filters as $column => $value) {
-			if( ! ( !isset($value) or $value == null or $value == "" ) && in_array( $value, $database_filters_columns ) ) {
+        foreach($filters as $column => $value) {
+			if( ! ( !isset($value) or $value == null or $value == "" ) && in_array( $column, $database_filters_columns ) ) {
 				$database_filters[$column] = $value;
 			}
 		}
-
 		$category_filters = explode( ',', trim( $filters['categories'] ) );
 		$query = $dbr->select(
 			'ratings',
