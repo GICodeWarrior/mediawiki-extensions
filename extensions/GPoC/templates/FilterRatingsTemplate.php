@@ -31,15 +31,17 @@ Articles successfully added to selection <?php echo $selection; ?>
 <h3>Results</h3>
 	<table>
 	<tr>
+        <th>Project</th>
 		<th>Article</th>
 		<th>Importance</th>
-		<th>Quality</th>
+        <th>Quality</th>
 	</tr>	
 	<?php foreach( $articles as $article ) { ?>
 	<tr>
-	<td><?php echo $article['r_article']; ?></td>	
+    <td><?php echo $article['r_project'] ?></td>
+    <td><a href="<?php echo $article['title']->getLinkURL(); ?>"><?php echo $article['r_article']; ?></a></td>	
 	<td><?php echo $article['r_importance']; ?></td>	
-	<td><?php echo $article['r_quality']; ?></td>	
+    <td><?php echo $article['r_quality']; ?></td>	
 	</tr>
 	<?php } ?>
 	</table>
