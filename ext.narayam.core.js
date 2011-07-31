@@ -186,7 +186,7 @@ $.narayam = new ( function() {
 		
 		// Leave non-ASCII stuff alone, as well as anything involving
 		// Alt (except for extended keymaps), Ctrl and Meta
-		if ( e.which < 32 || ( e.altKey && !currentScheme.extended_keyboard ) || e.ctrlKey ) {
+		if ( e.which < 32 || ( e.altKey && !currentScheme.extended_keyboard ) || e.ctrlKey || e.metaKey ) {
 			return true;
 		}
 		
