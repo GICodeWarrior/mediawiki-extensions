@@ -51,16 +51,16 @@ var lines = [
 	}
 ];
 
-var content = es.Content.newFromLines( lines );
+var content = es.Content.newFromWikiDomLines( lines );
 
 /* Tests */
 
-test( 'Content modification', 17, function() {
+test( 'Content modification', 13, function() {
 
-	
 	content.on( 'change', function( args ) {
 		ok( true, 'Change events get triggered after ' + args.type + ' events' );
 	} );
+
 	content.on( 'insert', function( args ) {
 		ok( true, 'Insert events get triggered' );
 		equal( args.offset, 5, 'Insert events have correct offsets' );
@@ -68,12 +68,11 @@ test( 'Content modification', 17, function() {
 		deepEqual( content.data.slice( 5, 8 ), ['a', 'b', 'c'], 'Content is inserted correctly' );
 		// +1 change event
 	} );
+
 	content.on( 'annotate', function( args ) {
 		ok( true, 'Annotate events get triggered' );
 		equal( args.method, 'add', 'Annotate events have correct method' );
 		deepEqual( args.annotation, { 'type': 'italic' }, 'Annotate events have correct annotation' );
-		equal( args.start, 5, 'Annotate events have correct start points' );
-		equal( args.end, 6, 'Annotate events have correct end points' );
 		deepEqual(
 			content.data.slice( 4, 8 ),
 			[' ', ['a', { 'type': 'italic' }], 'b', 'c'],
@@ -81,10 +80,9 @@ test( 'Content modification', 17, function() {
 		);
 		// +1 change event
 	} );
+
 	content.on( 'remove', function( args ) {
 		ok( true, 'Remove events get triggered' );
-		equal( args.start, 5, 'Remove events have correct start points' );
-		equal( args.end, 8, 'Remove events have correct end points' );
 		deepEqual(
 			content.data.slice( 4, 8 ),
 			[' ', 'i', 's', ' '],
@@ -92,10 +90,14 @@ test( 'Content modification', 17, function() {
 		);
 		// +1 change event
 	} );
+
 	content.insert( 5, ['a', 'b', 'c'] );
-	content.annotate( 'add', { 'type': 'italic' }, 5, 6 );
-	content.remove( 5, 8 );
+	content.annotate( 'add', { 'type': 'italic' }, new es.Range( 5, 6 ) );
+	content.remove( new es.Range( 5, 8 ) );
 } );
+
+
+/*
 
 test( 'Content export', 2, function() {
 
@@ -269,3 +271,4 @@ test( 'Content access', 8, function() {
 		'Content.slice returns correct range of data when called with start and end arguments'
 	);
 } );
+*/
