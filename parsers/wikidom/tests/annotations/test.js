@@ -55,7 +55,7 @@ var content = es.Content.newFromWikiDomLines( lines );
 
 /* Tests */
 
-test( 'Content modification', 13, function() {
+test( 'Content modification', 17, function() {
 
 	content.on( 'change', function( args ) {
 		ok( true, 'Change events get triggered after ' + args.type + ' events' );
@@ -73,6 +73,8 @@ test( 'Content modification', 13, function() {
 		ok( true, 'Annotate events get triggered' );
 		equal( args.method, 'add', 'Annotate events have correct method' );
 		deepEqual( args.annotation, { 'type': 'italic' }, 'Annotate events have correct annotation' );
+		equal( args.range.start, 5, 'Remove events have correct start points' );
+		equal( args.range.end, 6, 'Remove events have correct end points' );
 		deepEqual(
 			content.data.slice( 4, 8 ),
 			[' ', ['a', { 'type': 'italic' }], 'b', 'c'],
@@ -83,6 +85,8 @@ test( 'Content modification', 13, function() {
 
 	content.on( 'remove', function( args ) {
 		ok( true, 'Remove events get triggered' );
+		equal( args.range.start, 5, 'Remove events have correct start points' );
+		equal( args.range.end, 8, 'Remove events have correct end points' );
 		deepEqual(
 			content.data.slice( 4, 8 ),
 			[' ', 'i', 's', ' '],
