@@ -50,6 +50,7 @@ $wgAutoloadClasses['LiveTranslateHooks'] 			= $egLiveTranslateIP . '/LiveTransla
 $wgAutoloadClasses['ApiImportTranslationMemories']	= $egLiveTranslateIP . '/api/ApiImportTranslationMemories.php';
 $wgAutoloadClasses['ApiLiveTranslate']	 			= $egLiveTranslateIP . '/api/ApiLiveTranslate.php';
 $wgAutoloadClasses['ApiQueryLiveTranslate']	 		= $egLiveTranslateIP . '/api/ApiQueryLiveTranslate.php';
+$wgAutoloadClasses['ApiQueryTranslationMemories']	= $egLiveTranslateIP . '/api/ApiQueryTranslationMemories.php';
 
 $incDirIP = $egLiveTranslateIP . '/includes/';
 $wgAutoloadClasses['LiveTranslateFunctions']	 	= $incDirIP . 'LiveTranslate_Functions.php';
@@ -69,6 +70,7 @@ $wgSpecialPageGroups['LiveTranslate'] = 'pagetools';
 $wgAPIModules['importtms'] = 'ApiImportTranslationMemories';
 $wgAPIModules['livetranslate'] = 'ApiLiveTranslate';
 $wgAPIListModules['livetranslate'] = 'ApiQueryLiveTranslate';
+$wgAPIListModules['translationmemories'] = 'ApiQueryTranslationMemories';
 
 $wgHooks['ArticleViewHeader'][] = 'LiveTranslateHooks::onArticleViewHeader';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'LiveTranslateHooks::onSchemaUpdate';
