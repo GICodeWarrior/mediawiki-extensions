@@ -194,7 +194,7 @@ es.ListBlock.prototype.getPosition = function( offset ) {
 	var location = this.list.getLocationFromOffset( offset )
 		position = location.item.flow.getPosition( location.offset ),
 		blockOffset = this.$.offset(),
-		lineOffset = location.item.$line.find( '.editSurface-list-content' ).offset();
+		lineOffset = location.item.$content.offset();
 	
 	position.top += lineOffset.top - blockOffset.top; 
 	position.left += lineOffset.left - blockOffset.left;

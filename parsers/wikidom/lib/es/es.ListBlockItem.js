@@ -16,11 +16,20 @@
 es.ListBlockItem = function( content, lists ) {
 	es.EventEmitter.call( this );
 	es.Container.call( this, 'item', 'lists', lists, 'li' );
+	
+	this.content = content || new es.Content();
+	this.$content = $( '<div class="editSurface-list-content"></div>' );
+	this.$.prepend( this.$content );
+	this.flow = new es.TextFlow( this.$content, this.content );
+	
+	/*	
 	this.content = content || new es.Content();
 	this.$line = $( '<div class="editSurface-list-line"></div>' );
 	this.$content = $( '<div class="editSurface-list-content"></div>' );
 	this.$.prepend( this.$line.append( this.$content ) );
 	this.flow = new es.TextFlow( this.$content, this.content );
+	*/
+	
 	var listBlockItem = this;
 	this.flow.on( 'render', function() {
 		listBlockItem.emit( 'update' );
@@ -119,7 +128,7 @@ es.ListBlockItem.prototype.getOffsetFromPosition = function( position ) {
 		globalOffset = null;
 
 	if ( position.top >= itemOffset.top && position.top < itemOffset.top + itemHeight ) {
-		if ( position.top < itemOffset.top + this.$line.height() ) {
+		if ( position.top < itemOffset.top + this.$content.height() ) {
 			position.top -= itemOffset.top;
 			position.left -= itemOffset.left;
 			return globalOffset + this.flow.getOffset( position );
