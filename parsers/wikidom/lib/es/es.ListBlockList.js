@@ -12,8 +12,11 @@
  */
 es.ListBlockList = function( style, items ) {
 	es.EventEmitter.call( this );
+	es.Container.call( this, 'list', 'items', items, 'ul' );
 	this.style = style || 'bullet';
-	es.Container.call( this, 'list', 'items', items, this.style == 'bullet' ? 'ul' : 'ol' );
+	if ( this.style == 'number' ) {
+		this.$.css('list-style', 'decimal');
+	}
 };
 
 /* Static Methods */
