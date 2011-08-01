@@ -230,6 +230,12 @@ final class LiveTranslateHooks {
 					'memory_id',
 					$egLiveTranslateIP . '/sql/LT_addTMField.sql'
 				);
+				
+				$wgExtNewFields[] = array(
+					'live_translate_memories',
+					'memory_version_hash',
+					$egLiveTranslateIP . '/sql/LT_addTMHashField.sql'
+				);
 			}
 			else {
 				$updater->addExtensionUpdate( array(
@@ -258,6 +264,14 @@ final class LiveTranslateHooks {
 					'live_translate',
 					'memory_id',
 					$egLiveTranslateIP . '/sql/LT_addTMField.sql',
+					true
+				) );
+				
+				$updater->addExtensionUpdate( array(
+					'addField',
+					'live_translate_memories',
+					'memory_version_hash',
+					$egLiveTranslateIP . '/sql/LT_addTMHashField.sql',
 					true
 				) );
 			}

@@ -43,6 +43,7 @@ $egLiveTranslateIP = dirname( __FILE__ );
 unset( $useExtensionPath );
 
 $wgExtensionMessagesFiles['LiveTranslate'] 			= $egLiveTranslateIP . '/LiveTranslate.i18n.php';
+$wgExtensionAliasesFiles['LiveTranslate'] 			= $egLiveTranslateIP . '/LiveTranslate.i18n.alias.php';
 $wgExtensionMessagesFiles['LiveTranslateMagic'] 	= $egLiveTranslateIP . '/LiveTranslate.i18n.magic.php';
 
 $wgAutoloadClasses['LiveTranslateHooks'] 			= $egLiveTranslateIP . '/LiveTranslate.hooks.php';

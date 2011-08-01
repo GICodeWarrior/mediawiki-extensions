@@ -7,6 +7,7 @@ Latest version of the release notes: http://svn.wikimedia.org/viewvc/mediawiki/t
 === Version 1.2 ===
 2011-xx-xx
 
+* Added i18n alias file.
 * Added TMX admin user rights group.
 
 === Version 1.1.1 ===

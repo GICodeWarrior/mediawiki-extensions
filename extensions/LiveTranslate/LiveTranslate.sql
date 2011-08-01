@@ -1,4 +1,6 @@
 -- MySQL version of the database schema for the Live Translate extension.
+-- Licence: GNU GPL v3+
+-- Author: Jeroen De Dauw < jeroendedauw@gmail.com >
 
 -- Special translations table.
 CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/live_translate (
@@ -16,7 +18,8 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/live_translate_memories (
   memory_location         VARCHAR(255)      NOT NULL,  
   memory_local            INT(1) unsigned   NOT NULL,
   memory_lang_count       INT(2) unsigned   NOT NULL,
-  memory_tu_count         INT(8) unsigned   NOT NULL
+  memory_tu_count         INT(8) unsigned   NOT NULL,
+  memory_version_hash     VARCHAR(255)      NOT NULL default '...'
 ) /*$wgDBTableOptions*/;
 
-INSERT INTO /*$wgDBprefix*/live_translate_memories VALUES (NULL, 0, "Live Translate Dictionary", 1, 0, 0);
+INSERT INTO /*$wgDBprefix*/live_translate_memories VALUES (NULL, 0, "Live Translate Dictionary", 1, 0, 0, "...");
