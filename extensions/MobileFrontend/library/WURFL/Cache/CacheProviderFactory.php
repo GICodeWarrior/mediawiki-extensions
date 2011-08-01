@@ -1,37 +1,42 @@
 <?php
 /**
- * WURFL API
+ * Copyright (c) 2011 ScientiaMobile, Inc.
  *
- * LICENSE
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
  *
- * This file is released under the GNU General Public License. Refer to the
- * COPYING file distributed with this package.
- *
- * Copyright (c) 2008-2009, WURFL-Pro S.r.l., Rome, Italy
- *
- *
+ * Refer to the COPYING file distributed with this package.
  *
  * @category   WURFL
  * @package    WURFL_Cache
- * @copyright  WURFL-PRO SRL, Rome, Italy
- * @license
+ * @copyright  ScientiaMobile, Inc.
+ * @license    GNU Affero General Public License
  * @version    $id$
  */
-
-
+/**
+ * Cache Provider factory
+ * @package    WURFL_Cache
+ */
 class WURFL_Cache_CacheProviderFactory  {
 
+	const FILE_CACHE_PROVIDER_DIR = "devices";
 	const DEFAULT_CACHE_PROVIDER_NAME = "file";
-
+	
+	/**
+	 * @var WURFL_Cache_CacheProvider
+	 */
+	private static $_cacheProvider;
+	
 	// prevent instantiation
 	private function __construct(){}
 	private function __clone(){}
-
 	
 	/**
-	 * Returns A CacheProvider
-	 *
-	 * @return CacheProvider
+	 * Returns a CacheProvider based on the given $cacheConfig
+	 * @param WURFL_Configuration_Config $cacheConfig 
+	 * @return WURFL_Cache_CacheProvider
 	 */
 	public static function getCacheProvider($cacheConfig=null) {
 		$cacheConfig = is_null($cacheConfig) ? WURFL_Configuration_ConfigHolder::getWURFLConfig()->cache : $cacheConfig;
@@ -57,12 +62,7 @@ class WURFL_Cache_CacheProviderFactory  {
 				self::$_cacheProvider = new WURFL_Cache_NullCacheProvider();
 				break;
 		}
-
-
 		return self::$_cacheProvider;
 	}
-
-	const FILE_CACHE_PROVIDER_DIR = "devices";
-	private static $_cacheProvider;
 }
 

@@ -1,43 +1,53 @@
 <?php
 /**
- * WURFL API
+ * Copyright (c) 2011 ScientiaMobile, Inc.
  *
- * LICENSE
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
  *
- * This file is released under the GNU General Public License. Refer to the
- * COPYING file distributed with this package.
+ * Refer to the COPYING file distributed with this package.
  *
- * Copyright (c) 2008-2009, WURFL-Pro S.r.l., Rome, Italy
- * 
- * 
  *
  * @category   WURFL
  * @package    WURFL_Xml_PersistenceProvider
- * @copyright  WURFL-PRO SRL, Rome, Italy
- * @license
+ * @copyright  ScientiaMobile, Inc.
+ * @license    GNU Affero General Public License
  * @version    $id$
+ */
+/**
+ * Persistence Provider Manager
+ * @package    WURFL_Xml_PersistenceProvider
  */
 class WURFL_Xml_PersistenceProvider_PersistenceProviderManager {
 	
+	/**
+	 * @var WURFL_Xml_PersistenceProvider
+	 */
 	private static $_persistenceProvider;
 	
 	/**
-	 * 
-	 * @param unknown_type $wurflConfig
+	 * Returns the persistence provider based on the given $wurflConfig
+	 * @param WURFL_Configuration_Config $wurflConfig
+	 * @return WURFL_Xml_PersistenceProvider Persistence Provider
 	 */
 	public static function getPersistenceProvider($persistenceConfig = null) {
-		
 		if (! isset ( self::$_persistenceProvider )) {
 			self::_initialize ( $persistenceConfig );
 		}
-		
 		return self::$_persistenceProvider;
 	}
 	
+	/**
+	 * Initializes the Persistence Provider Manager
+	 * @param array $persistenceConfig Persistence configuration
+	 * @see WURFL_Configuration_ConfigHolder::getWURFLConfig()
+	 */
 	private static function _initialize($persistenceConfig) {
     	
     	$persistenceConfig = is_null($persistenceConfig) ? WURFL_Configuration_ConfigHolder::getWURFLConfig()->persistence : $persistenceConfig;
-		$provider = $persistenceConfig ["provider"];
+		$provider = $persistenceConfig["provider"];
 		$persistenceParams = isset($persistenceConfig["params"]) ? $persistenceConfig["params"] : array();
 		
 		switch ($provider) {

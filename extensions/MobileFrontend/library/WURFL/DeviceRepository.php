@@ -1,43 +1,53 @@
 <?php
 /**
- * WURFL API
+ * Copyright (c) 2011 ScientiaMobile, Inc.
  *
- * LICENSE
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
  *
- * This file is released under the GNU General Public License. Refer to the
- * COPYING file distributed with this package.
- *
- * Copyright (c) 2008-2009, WURFL-Pro S.r.l., Rome, Italy
- *
- *
+ * Refer to the COPYING file distributed with this package.
  *
  * @category   WURFL
  * @package    WURFL
- * @copyright  WURFL-PRO SRL, Rome, Italy
- * @license
+ * @copyright  ScientiaMobile, Inc.
+ * @license    GNU Affero General Public License
  * @version    $id$
- * 
+ */
+/**
+ * Provides methods for accessing a repository of WURFL Devices
+ * @package    WURFL
  */
 interface WURFL_DeviceRepository {
 	
 	/**
-	 * Return the WURFLInfo containing 
-	 * 	- version
-	 *  - lastupdated
+	 * Return a WURFL_Xml_Info object containing: 
+	 *  - version
+	 *  - lastUpdated
+	 *  - officialURL
+	 *  @return WURFL_Xml_Info WURFL Version info
 	 */
 	public function getWURFLInfo();
-		
+	
+	/**
+	 * Returns loaded WURFL version
+	 * @return string Loaded WURFL version
+	 */
 	public function getVersion();
 	
+	/**
+	 * Returns loaded WURFL last updated date
+	 * @return string Loaded WURFL last updated date
+	 */
 	public function getLastUpdated();
 	
 	/**
-	 * Returns a device for the given device Id
+	 * Returns a device for the given $deviceId
 	 *
 	 * @param string $deviceId
 	 * @return WURFL_Device
-	 * @throws WURFL_Exception if $deviceID is not defined in wurfl
-	 * devices repository
+	 * @throws WURFL_Exception if $deviceID is not defined in device repository
 	 */
 	public function getDevice($deviceId);
 	
@@ -48,7 +58,7 @@ interface WURFL_DeviceRepository {
 	public function getAllDevices();
 	
 	/**
-	 * Returns an array of all the devices id
+	 * Returns an array of all the device ids
 	 *
 	 * @return array
 	 */
@@ -87,15 +97,14 @@ interface WURFL_DeviceRepository {
 	
 	
 	/**
-	 * Returns an array Of group IDs defined in wurfl
+	 * Returns an array of the group IDs defined in wurfl
 	 *
 	 * @return array
 	 */
 	public function getListOfGroups();
 	
 	/**
-	 * Returns an array of all capability names defined in
-	 * the given group ID
+	 * Returns an array of all capability names defined in the given group ID
 	 *
 	 * @param string $groupID
 	 * @return array of capability names
@@ -103,11 +112,10 @@ interface WURFL_DeviceRepository {
 	public function getCapabilitiesNameForGroup($groupID);
 	
 	/**
-	 * Returns the group id in which the given capabiliy name
-	 * belongs to
+	 * Returns the group id in which the given capabiliy name belongs to
 	 *
 	 * @param string $capabilitity
-	 * @return string
+	 * @return string Group ID
 	 */
 	public function getGroupIDForCapability($capability);
 

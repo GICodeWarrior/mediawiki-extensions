@@ -1,37 +1,35 @@
 <?php
 /**
- * WURFL API
+ * Copyright (c) 2011 ScientiaMobile, Inc.
  *
- * LICENSE
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
  *
- * This file is released under the GNU General Public License. Refer to the
- * COPYING file distributed with this package.
+ * Refer to the COPYING file distributed with this package.
  *
- * Copyright (c) 2008-2009, WURFL-Pro S.r.l., Rome, Italy
- * 
- *  
  *
  * @category   WURFL
  * @package    WURFL_Cache
- * @copyright  WURFL-PRO SRL, Rome, Italy
- * @license
+ * @copyright  ScientiaMobile, Inc.
+ * @license    GNU Affero General Public License
  * @version    $id$
  */
 
-
 /**
- * Cache is the base interface for any type of caching implementation.
+ * WURFL_Cache_CacheProvider is the base interface for any type of caching implementation.
  * It provides an API that allows storing and retrieving resources.
  *
  *
  * @category   WURFL
- * @package    WURFL
- * @copyright  WURFL-PRO SRL, Rome, Italy
- * @license
- * @version    $id$
+ * @package    WURFL_Cache
  */
 interface WURFL_Cache_CacheProvider {
 	
+	/**
+	 * @var string Key for storing the expiration
+	 */
 	const EXPIRATION = "expiration";
 	
 	const ONE_HOUR = 3600;
@@ -45,21 +43,20 @@ interface WURFL_Cache_CacheProvider {
 	/**
 	 * Put the the computed data into the cache so that it can be
 	 * retrieved later.
-	 * @param string key for accesing the data
-	 * @param mixed the actual data been stored
+	 * @param string $key Key for accessing the data
+	 * @param mixed $value The actual data been stored
 	 */
 	function put($key, $value);
 
 	/**
-	 * Get the previosly saved data.
-	 * @param string key for accesing the data
-	 * @return mixed the actual data been stored
+	 * Get the previously saved data.
+	 * @param string $key Key for accessing the data
+	 * @return mixed the actual data been retrieved
 	 */
 	function get($key);
 	
 	/**
-	 * Invalidates the Cache
-	 *
+	 * Invalidates the Cache, removing all cached devices
 	 */
 	function clear();
 }
