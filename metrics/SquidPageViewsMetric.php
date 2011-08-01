@@ -44,9 +44,9 @@ class SquidPageViewsMetric extends ApiAnalyticsBase {
 
 		parent::normaliseQueryParameters( $normalise );
 		if ( $normalise ) {
-			$this->queryFields = array( 'SUM(views_mobile_normalized)', 'SUM(views_non_mobile_normalized)' );
+			$this->queryFields = array( 'date', 'SUM(views_mobile_normalized)', 'SUM(views_non_mobile_normalized)' );
 		} else {
-			$this->queryFields = array( 'views_mobile_raw', 'views_non_mobile_raw' );
+			$this->queryFields = array( 'date', 'views_mobile_raw', 'views_non_mobile_raw' );
 		}
 	}
 
