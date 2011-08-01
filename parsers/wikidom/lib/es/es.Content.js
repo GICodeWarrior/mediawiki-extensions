@@ -131,6 +131,9 @@ es.Content.newFromWikiDomLines = function( wikidomLines ) {
  * @returns {Array} List of plain or annotated characters
  */
 es.Content.convertWikiDomLine = function( wikidomLine ) {
+	if ( !wikidomLine ) {
+		return [];
+	}
 	// Convert string to array of characters
 	var data = wikidomLine.text.split('');
 	var i;
