@@ -603,7 +603,7 @@ class RecordAdmin {
 			switch ( $type ) {
 				case 'text':
 					$html = preg_replace( "|value\s*=\s*\".*?\"|i", "", $html );
-					if( $v ) $html = preg_replace( "|(/?>)$|", " value=\"$v\" $1", $html );
+					if( $v ) $html = preg_replace( "|(/?>)$|", " value=\"" . htmlentities( $v ) . "\" $1", $html );
 				break;
 				case 'bool':
 					$html = preg_replace( "|checked|i", "", $html );
