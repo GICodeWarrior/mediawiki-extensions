@@ -131,7 +131,8 @@ class ApiImportTranslationMemories extends ApiBase {
 			'live_translate_memories',
 			array(
 				'memory_lang_count' => $tm->getLanguageAmount(),
-				'memory_tu_count' => $wordId
+				'memory_tu_count' => $wordId,
+				'memory_version_hash' => uniqid(),
 			),
 			array( 'memory_id' => $memoryId )
 		);
