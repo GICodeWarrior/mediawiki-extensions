@@ -1,22 +1,24 @@
 <?php
 /**
- * WURFL API
+ * Copyright (c) 2011 ScientiaMobile, Inc.
  *
- * LICENSE
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
  *
- * This file is released under the GNU General Public License. Refer to the
- * COPYING file distributed with this package.
- *
- * Copyright (c) 2008-2009, WURFL-Pro S.r.l., Rome, Italy
- *
- *
+ * Refer to the COPYING file distributed with this package.
  *
  * @category   WURFL
  * @package    WURFL_Storage
- * @copyright  WURFL-PRO SRL, Rome, Italy
- * @license
+ * @copyright  ScientiaMobile, Inc.
+ * @license    GNU Affero General Public License
  * @author     Fantayeneh Asres Gizaw
  * @version    $id$
+ */
+/**
+ * WURFL Storage
+ * @package    WURFL_Storage
  */
 class WURFL_Storage_Mysql extends WURFL_Storage_Base {
 
@@ -86,14 +88,7 @@ class WURFL_Storage_Mysql extends WURFL_Storage_Base {
 
 		if (is_resource($test)) mysql_free_result($test);
 	}
-
-	/**
-	 * Saves the object.
-	 *
-	 * @param stting $objectId
-	 * @param mixed $object
-	 * @return
-	 */
+	
 	public function save($objectId, $object) {
 		$object=mysql_escape_string(serialize($object));
 		$objectId=$this->encode("",$objectId);
@@ -145,7 +140,7 @@ class WURFL_Storage_Mysql extends WURFL_Storage_Base {
 
 	/**
 	 * Ensures the existance of the the PHP Extension mysql
-	 *
+	 * @throws WURFL_Xml_PersistenceProvider_Exception required extension is unavailable
 	 */
 	private function _ensureModuleExistance() {
 		if(!extension_loaded("mysql")) {

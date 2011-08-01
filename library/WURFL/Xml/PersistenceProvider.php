@@ -1,21 +1,23 @@
 <?php
 /**
- * WURFL API
+ * Copyright (c) 2011 ScientiaMobile, Inc.
  *
- * LICENSE
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
  *
- * This file is released under the GNU General Public License. Refer to the
- * COPYING file distributed with this package.
- *
- * Copyright (c) 2008-2009, WURFL-Pro S.r.l., Rome, Italy
- *
- *
+ * Refer to the COPYING file distributed with this package.
  *
  * @category   WURFL
  * @package    WURFL_Xml
- * @copyright  WURFL-PRO SRL, Rome, Italy
- * @license
+ * @copyright  ScientiaMobile, Inc.
+ * @license    GNU Affero General Public License
  * @version    $id$
+ */
+/**
+ * Persistence provider interface
+ * @package    WURFL_Xml
  */
 interface WURFL_Xml_PersistenceProvider {
 	/**
@@ -32,6 +34,7 @@ interface WURFL_Xml_PersistenceProvider {
      * provider
      *
      * @param string $objectId
+     * @return mixed value
      */
     public function load($objectId);
 	
@@ -44,14 +47,19 @@ interface WURFL_Xml_PersistenceProvider {
     public function remove($objectId);
     
     /**
-     * Removes all of entries from the persistace provider.
-     *
+     * Removes all of entries from the persistence provider.
      */
     public function clear();
     
-    
+    /**
+     * Returns true if WURFL is currently loaded in the persistence provider
+     * @return bool
+     */
     public function isWURFLLoaded();
 
+    /**
+	 * Sets the WURFL Loaded flag on the persistence provider
+	 */
     public function setWURFLLoaded();
 
 }

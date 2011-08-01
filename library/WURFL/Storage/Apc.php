@@ -1,22 +1,24 @@
 <?php
 /**
- * WURFL API
+ * Copyright (c) 2011 ScientiaMobile, Inc.
  *
- * LICENSE
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
  *
- * This file is released under the GNU General Public License. Refer to the
- * COPYING file distributed with this package.
- *
- * Copyright (c) 2008-2009, WURFL-Pro S.r.l., Rome, Italy
- *
- *
+ * Refer to the COPYING file distributed with this package.
  *
  * @category   WURFL
  * @package    WURFL_Storage
- * @copyright  WURFL-PRO SRL, Rome, Italy
- * @license
+ * @copyright  ScientiaMobile, Inc.
+ * @license    GNU Affero General Public License
  * @author     Fantayeneh Asres Gizaw
  * @version    $id$
+ */
+/**
+ * APC Storage class
+ * @package    WURFL_Storage
  */
 class WURFL_Storage_Apc extends WURFL_Storage_Base {
 
@@ -45,7 +47,7 @@ class WURFL_Storage_Apc extends WURFL_Storage_Base {
 
     public function load($objectId) {
         $value = apc_fetch($this->encode($this->apcNameSpace(), $objectId));
-        return $value !== false ? $value : NULL;
+        return $value !== false ? $value : null;
     }
 
     public function remove($objectId) {
@@ -71,7 +73,7 @@ class WURFL_Storage_Apc extends WURFL_Storage_Base {
 
     /**
      * Ensures the existence of the the PHP Extension apc
-     *
+     * @throws WURFL_Xml_PersistenceProvider_Exception required extension is unavailable
      */
     private function ensureModuleExistence() {
         if (!(extension_loaded(self::EXTENSION_MODULE_NAME) && ini_get('apc.enabled') == true)) {

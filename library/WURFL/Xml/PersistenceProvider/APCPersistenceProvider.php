@@ -1,30 +1,29 @@
 <?php
 /**
- * WURFL API
+ * Copyright (c) 2011 ScientiaMobile, Inc.
  *
- * LICENSE
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
  *
- * This file is released under the GNU General Public License. Refer to the
- * COPYING file distributed with this package.
- *
- * Copyright (c) 2008-2009, WURFL-Pro S.r.l., Rome, Italy
- *
- *
+ * Refer to the COPYING file distributed with this package.
  *
  * @category   WURFL
  * @package    WURFL_Xml_PersistenceProvider 
- * @copyright  WURFL-PRO SRL, Rome, Italy
- * @license
+ * @copyright  ScientiaMobile, Inc.
+ * @license    GNU Affero General Public License
  * @version    $id$
+ */
+/**
+ * Persistence provider for APC
+ * @package    WURFL_Xml_PersistenceProvider
  */
 class WURFL_Xml_PersistenceProvider_APCPersistenceProvider extends WURFL_Xml_PersistenceProvider_AbstractPersistenceProvider {
 	
 	const EXTENSION_MODULE_NAME = "apc";
 	
 	protected $persistenceIdentifier = "APC_PERSISTENCE_PROVIDER";
-	
-	public function __construct() {
-	}
 	
 	public function initialize() {
 		$this->_ensureModuleExistance ();

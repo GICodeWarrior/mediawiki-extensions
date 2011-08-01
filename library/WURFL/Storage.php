@@ -1,20 +1,18 @@
 <?php
 /**
- * WURFL API
+ * Copyright (c) 2011 ScientiaMobile, Inc.
  *
- * LICENSE
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
  *
- * This file is released under the GNU General Public License. Refer to the
- * COPYING file distributed with this package.
- *
- * Copyright (c) 2008-2009, WURFL-Pro S.r.l., Rome, Italy
- *
- *
+ * Refer to the COPYING file distributed with this package.
  *
  * @category   WURFL
  * @package    WURFL_Cache
- * @copyright  WURFL-PRO SRL, Rome, Italy
- * @license
+ * @copyright  ScientiaMobile, Inc.
+ * @license    GNU Affero General Public License
  * @version    $id$
  */
 
@@ -23,17 +21,18 @@
  * Cache is the base interface for any type of caching implementation.
  * It provides an API that allows storing and retrieving resources.
  *
- *
  * @category   WURFL
  * @package    WURFL
- * @copyright  WURFL-PRO SRL, Rome, Italy
- * @license
+ * @copyright  ScientiaMobile, Inc.
+ * @license    GNU Affero General Public License
  * @version    $id$
  */
 interface WURFL_Storage {
 
+	/**
+	 * @var string Key for storing data expiration times
+	 */
 	const EXPIRATION = "expiration";
-
 	const ONE_HOUR = 3600;
 	const ONE_DAY = 86400;
 	const ONE_WEEK = 604800;

@@ -1,20 +1,18 @@
 <?php
 /**
- * WURFL API
+ * Copyright (c) 2011 ScientiaMobile, Inc.
  *
- * LICENSE
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
  *
- * This file is released under the GNU General Public License. Refer to the
- * COPYING file distributed with this package.
- *
- * Copyright (c) 2008-2009, WURFL-Pro S.r.l., Rome, Italy
- *
- *
+ * Refer to the COPYING file distributed with this package.
  *
  * @category   WURFL
  * @package    WURFL_Xml_PersistenceProvider
- * @copyright  WURFL-PRO SRL, Rome, Italy
- * @license
+ * @copyright  ScientiaMobile, Inc.
+ * @license    GNU Affero General Public License
  * @version    $id$
  */
 
@@ -25,8 +23,8 @@
  *
  * @category   WURFL
  * @package    WURFL_Storage
- * @copyright  WURFL-PRO SRL, Rome, Italy
- * @license
+ * @copyright  ScientiaMobile, Inc.
+ * @license    GNU Affero General Public License
  * @author     Fantayeneh Asres Gizaw
  * @version    $id$
  */
@@ -35,70 +33,62 @@ abstract class WURFL_Storage_Base implements WURFL_Storage {
     const APPLICATION_PREFIX = "WURFL_";
     const WURFL_LOADED = "WURFL_WURFL_LOADED";
 
-
-    public function __construct() {
-    }
+	/**
+	 * Creates a new WURFL_Storage_Base
+	 * @param array $params
+	 */
+    public function __construct($params = array()) {}
 
     /**
-     * Saves the object.
-     *
+     * Saves the object
      * @param string $objectId
      * @param mixed $object
-     * @return
      */
-    public function save($objectId, $object) {
-    }
+    public function save($objectId, $object) {}
 
     /**
      * Returns the object identified by $objectId
-     *
      * @param string $objectId
+     * @return mixed value
      */
-    public function load($objectId) {
-    }
+    public function load($objectId) {}
 
 
     /**
-     * Removes from the persistence provider the
-     * object identified by $objectId
-     *
+     * Removes the object identified by $objectId from the persistence provider
      * @param string $objectId
      */
-    public function remove($objectId) {
-    }
+    public function remove($objectId) {}
 
 
     /**
-     * Removes all entry from the Persistence Provider
-     *
+     * Removes all entries from the Persistence Provider
      */
-    public function clear() {
-    }
+    public function clear() {}
 
 
     /**
      * Checks if WURFL is Loaded
-     *
-     * @return boolean
+     * @return bool
      */
     public function isWURFLLoaded() {
         return $this->load(self::WURFL_LOADED);
     }
 
     /**
-     * Sets a flag
-     *
-     * @return
+     * Sets the WURFL Loaded flag
+     * @param bool $loaded
      */
-    public function setWURFLLoaded($loaded = TRUE) {
+    public function setWURFLLoaded($loaded = true) {
         $this->save(self::WURFL_LOADED, $loaded);
     }
 
 
-    /*
+    /**
 	 * Encode the Object Id using the Persistence Identifier
-	 *
+	 * @param string $namespace
 	 * @param string $input
+	 * @return string $input with the given $namespace as a prefix
 	 */
     protected function encode($namespace, $input) {
         return join(":", array(self::APPLICATION_PREFIX, $namespace, $input));
@@ -106,11 +96,11 @@ abstract class WURFL_Storage_Base implements WURFL_Storage {
 
     /**
      * Decode the Object Id
-     *
-     * @param unknown_type $input
+     * @param string $input
+     * @return string value
      */
     protected function decode($namespace, $input) {
-        $inputs = split(":", $input);
+        $inputs = explode(":", $input);
         return $input[2];
     }
 

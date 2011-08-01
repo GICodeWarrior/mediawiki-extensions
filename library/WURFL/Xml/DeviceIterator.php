@@ -1,42 +1,51 @@
 <?php
-
 /**
- * WURFL API
+ * Copyright (c) 2011 ScientiaMobile, Inc.
  *
- * LICENSE
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
  *
- * This file is released under the GNU General Public License. Refer to the
- * COPYING file distributed with this package.
- *
- * Copyright (c) 2008-2009, WURFL-Pro S.r.l., Rome, Italy
- *
- *
+ * Refer to the COPYING file distributed with this package.
  *
  * @category   WURFL
  * @package    WURFL_Xml
- * @copyright  WURFL-PRO SRL, Rome, Italy
- * @license
+ * @copyright  ScientiaMobile, Inc.
+ * @license    GNU Affero General Public License
  * @version    $id$
  *
+ */
+/**
+ * Extracts device capabilities from XML file
+ * @package    WURFL_Xml
  */
 class WURFL_Xml_DeviceIterator extends WURFL_Xml_AbstractIterator {
 	
 	private $capabilitiesToSelect = array ();
 	private $filterCapabilities;
 	
+	/**
+	 * @param string $inputFile XML file to be processed
+	 * @param array $capabilities Capabiities to process
+	 */
 	function __construct($inputFile, $capabilities = array()) {
 		parent::__construct ( $inputFile );
 		foreach ( $capabilities as $groupId => $capabilityNames ) {
 			$trimmedCapNames = $this->removeSpaces ( $capabilityNames );
 			$capabilitiesAsArray = array ();
 			if (strlen ( $trimmedCapNames ) != 0) {
-				$capabilitiesAsArray = split ( ',', $trimmedCapNames );
+				$capabilitiesAsArray = explode ( ',', $trimmedCapNames );
 			}
 			$this->capabilitiesToSelect [$groupId] = $capabilitiesAsArray;
 		}
-		$this->filterCapabilities = empty ( $this->capabilitiesToSelect ) ? FALSE : TRUE;
+		$this->filterCapabilities = empty ( $this->capabilitiesToSelect ) ? false : true;
 	}
 	
+	/**
+	 * Removes spaces from the given $subject
+	 * @param string $subject
+	 */
 	private function removeSpaces($subject) {
 		return str_replace ( " ", "", $subject );
 	}
@@ -101,21 +110,32 @@ class WURFL_Xml_DeviceIterator extends WURFL_Xml_AbstractIterator {
 
 	}
 	
+	/**
+	 * Returns true if the group element needs to be processed
+	 * @param string $groupId
+	 * @return bool
+	 */
 	private function needToReadGroup($groupId) {
 		if ($this->filterCapabilities) {
-			return isset ( $this->capabilitiesToSelect [$groupId] );
+			return array_key_exists($groupId, $this->capabilitiesToSelect);
 		}
 		return true;
 	}
 	
+	/**
+	 * Returns true if the given $groupId's $capabilityName needs to be read
+	 * @param string $groupId
+	 * @param string $capabilityName
+	 * @return bool
+	 */
 	private function neededToReadCapability($groupId, $capabilityName) {
-		if (isset ( $this->capabilitiesToSelect [$groupId] )) {
-			$capabilities = $this->capabilitiesToSelect [$groupId];
-			if (empty ( $capabilities )) {
+		if (array_key_exists($groupId, $this->capabilitiesToSelect)) {
+			$capabilities = $this->capabilitiesToSelect[$groupId];
+			if (empty($capabilities)) {
 				return true;
 			}
-			foreach ( $capabilities as $capability ) {
-				if (strcmp ( $capabilityName, $capability ) === 0) {
+			foreach ($capabilities as $capability) {
+				if (strcmp($capabilityName, $capability) === 0) {
 					return true;
 				}
 			}
@@ -126,11 +146,15 @@ class WURFL_Xml_DeviceIterator extends WURFL_Xml_AbstractIterator {
 	}
 	
 	private function moveToGroupEndElement() {
-		while ( ! $this->groupEndElement () ) {
-			$this->xmlReader->read ();
+		while (!$this->groupEndElement()) {
+			$this->xmlReader->read();
 		}
 	}
 	
+	/**
+	 * Returns true if the current element is the ending tag of a group
+	 * @return bool
+	 */
 	private function groupEndElement() {
 		return ($this->xmlReader->name === "group") && ($this->xmlReader->nodeType === XMLReader::END_ELEMENT);
 	}

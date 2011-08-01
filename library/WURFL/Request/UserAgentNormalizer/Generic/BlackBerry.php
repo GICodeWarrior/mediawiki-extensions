@@ -1,40 +1,32 @@
 <?php
 /**
- * WURFL API
+ * Copyright (c) 2011 ScientiaMobile, Inc.
  *
- * LICENSE
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
  *
- * This file is released under the GNU General Public License. Refer to the
- * COPYING file distributed with this package.
- *
- * Copyright (c) 2008-2009, WURFL-Pro S.r.l., Rome, Italy
- *
- *
+ * Refer to the COPYING file distributed with this package.
  *
  * @category   WURFL
  * @package    WURFL_Request_UserAgentNormalizer_Generic
- * @copyright  WURFL-PRO SRL, Rome, Italy
- * @license
+ * @copyright  ScientiaMobile, Inc.
+ * @license    GNU Affero General Public License
  * @author     Fantayeneh Asres Gizaw
  * @version    $id$
  */
+/**
+ * User Agent Normalizer - returns the substring starting from "BlackBerry"
+ * @package    WURFL_Request_UserAgentNormalizer_Generic
+ */
 class WURFL_Request_UserAgentNormalizer_Generic_BlackBerry implements WURFL_Request_UserAgentNormalizer_Interface  {
 
-	/**
-	 * This method returns the substring starting from "BlackBerry"
-	 *
-	 * @param string $userAgent
-	 * @return string
-	 */
 	public function normalize($userAgent) {
-
 		$index = strrpos($userAgent, "BlackBerry");
 		if ($index > 0 && strpos($userAgent, "AppleWebKit") === FALSE) {
 			return substr($userAgent, $index);
 		}
 		return $userAgent;
 	}
-
 }
-
-

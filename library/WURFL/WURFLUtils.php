@@ -1,29 +1,30 @@
 <?php
 /**
- * WURFL API
+ * Copyright (c) 2011 ScientiaMobile, Inc.
  *
- * LICENSE
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
  *
- * This file is released under the GNU General Public License. Refer to the
- * COPYING file distributed with this package.
- *
- * Copyright (c) 2008-2009, WURFL-Pro S.r.l., Rome, Italy
- *
- *
+ * Refer to the COPYING file distributed with this package.
  *
  * @category   WURFL
  * @package    WURFL
- * @copyright  WURFL-PRO SRL, Rome, Italy
- * @license
+ * @copyright  ScientiaMobile, Inc.
+ * @license    GNU Affero General Public License
  * @version    $id$
+ */
+/**
+ * WURFL related utilities
+ * @package    WURFL
  */
 class WURFL_WURFLUtils {
 
 	/**
-	 * returns the User Agent From $_SERVER or Empty
-     * String if not found one
+	 * returns the User Agent From $request or empty string if not found one
 	 *
-	 * @param $_SERVER $request
+	 * @param array $request HTTP Request array (normally $_SERVER)
 	 * @return string
 	 */
 	public static function getUserAgent($request) {			
@@ -42,11 +43,9 @@ class WURFL_WURFLUtils {
 	}
 
 	/**
-	 * returns the UA Profile from the $_SERVER object
-	 *
-	 *
-	 * @param $_SERVER $request
-	 * @return  string
+	 * Returns the UA Profile from the $request
+	 * @param array $request HTTP Request array (normally $_SERVER)
+	 * @return string UAProf URL
 	 */
 	public static function getUserAgentProfile($request) {
 		if (isset($request["HTTP_X_WAP_PROFILE"])) {
@@ -67,18 +66,18 @@ class WURFL_WURFLUtils {
 			}
 		}
 
-		return NULL;
+		return null;
 	}
 
 	/**
-	 * Checks if the requester device is xhtml enaabled
+	 * Checks if the requester device is xhtml enabled
 	 *
-	 * @param $_SERVER $request
-	 * @return boolean
+	 * @param array $request HTTP Request array (normally $_SERVER)
+	 * @return bool
 	 */
 	public static function isXhtmlRequester($request) {
 		if (!isset($request["accept"])) {
-			return FALSE;
+			return false;
 		}
 		
 		$accept = $request["accept"];
@@ -94,7 +93,11 @@ class WURFL_WURFLUtils {
 
 	}
 
-
+	/**
+	 * Returns true if given $deviceID is the 'generic' WURFL device
+	 * @param string $deviceID
+	 * @return bool
+	 */
 	public static function isGeneric($deviceID) {
 		if (strcmp($deviceID, WURFL_Constants::GENERIC) === 0) {
 			return true;
@@ -102,6 +105,12 @@ class WURFL_WURFLUtils {
 		return false;
 	}
 	
+	/**
+	 * Recursively merges $array1 with $array2, returning the result
+	 * @param array $array1
+	 * @param array $array2
+	 * @return array
+	 */
 	public static function array_merge_recursive_unique($array1, $array2) {
 		// LOOP THROUGH $array2
 		foreach($array2 AS $k => $v) {
@@ -125,6 +134,6 @@ class WURFL_WURFLUtils {
 
 		return $array1;
 	}
-	
+
 }
 

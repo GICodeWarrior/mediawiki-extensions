@@ -1,32 +1,27 @@
 <?php
 /**
- * WURFL API
+ * Copyright (c) 2011 ScientiaMobile, Inc.
  *
- * LICENSE
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
  *
- * This file is released under the GNU General Public License. Refer to the
- * COPYING file distributed with this package.
+ * Refer to the COPYING file distributed with this package.
  *
- * Copyright (c) 2008-2009, WURFL-Pro S.r.l., Rome, Italy
- * 
- * 
  *
  * @category   WURFL
  * @package    WURFL_Cache
- * @copyright  WURFL-PRO SRL, Rome, Italy
- * @license
+ * @copyright  ScientiaMobile, Inc.
+ * @license    GNU Affero General Public License
  * @version    $id$
  */
 
 /**
  * A Cache Provider that uses the File System as a storage
  *
- *
  * @category   WURFL
- * @package    WURFL
- * @copyright  WURFL-PRO SRL, Rome, Italy
- * @license
- * @version    $id$
+ * @package    WURFL_Cache
  */
 
 class WURFL_Cache_FileCacheProvider implements WURFL_Cache_CacheProvider {
@@ -93,7 +88,7 @@ class WURFL_Cache_FileCacheProvider implements WURFL_Cache_CacheProvider {
 		return WURFL_FileUtils::join ( array ($this->root, $this->spread ( md5 ( $key ) ) ) );
 	}
 	
-	function spread($md5, $n = 2) {
+	public function spread($md5, $n = 2) {
 		$path = "";
 		for($i = 0; $i < $n; $i ++) {
 			$path .= $md5 [$i] . DIRECTORY_SEPARATOR;

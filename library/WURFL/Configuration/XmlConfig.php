@@ -1,68 +1,91 @@
 <?php
 /**
- * WURFL API
+ * Copyright (c) 2011 ScientiaMobile, Inc.
  *
- * LICENSE
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
  *
- * This file is released under the GNU General Public License. Refer to the
- * COPYING file distributed with this package.
- *
- * Copyright (c) 2008-2009, WURFL-Pro S.r.l., Rome, Italy
- *
- *
+ * Refer to the COPYING file distributed with this package.
  *
  * @category   WURFL
  * @package    WURFL_Configuration
- * @copyright  WURFL-PRO SRL, Rome, Italy
- * @license
+ * @copyright  ScientiaMobile, Inc.
+ * @license    GNU Affero General Public License
  * @version    $id$
+ */
+/**
+ * XML Configuration
+ * @package    WURFL_Configuration
  */
 class WURFL_Configuration_XmlConfig extends WURFL_Configuration_Config {
 
-
-    private $configurationDir;
-
-    /**
-     * Constructor
-     *
-     * @param string $confLocation
-     */
-    function __construct($configFilePath) {
-        $this->configurationDir = dirname($configFilePath);
-        $this->initialize($configFilePath);
-    }
-
-
-    protected function initialize($configurationFilePath) {
-        $xmlConfig = simplexml_load_file($configurationFilePath);
+	/**
+	 * Initialize XML Configuration
+	 */
+    protected function initialize() {
+        $xmlConfig = simplexml_load_file($this->configFilePath);
         $this->wurflFile = $this->wurflFile($xmlConfig->xpath("/wurfl-config/wurfl/main-file"));
         $this->wurflPatches = $this->wurflPatches($xmlConfig->xpath("/wurfl-config/wurfl/patches/patch"));
         $this->allowReload = $this->allowReload($xmlConfig->xpath('/wurfl-config/allow-reload'));
         $this->persistence = $this->persistence($xmlConfig->xpath('/wurfl-config/persistence'));
         $this->cache = $this->persistence($xmlConfig->xpath('/wurfl-config/cache'));
+        $this->logDir = $this->logDir($xmlConfig->xpath('/wurfl-config/logDir'));
     }
 
-    private function wurflFile($maiFileElement) {
-        return $this->fullPath((string) $maiFileElement[0]);
+    /**
+     * Returns the full path to the WURFL file
+     * @param array $mainFileElement array of SimpleXMLElement objects 
+     * @return string full path
+     */
+    private function wurflFile($mainFileElement) {
+        return parent::getFullPath((string) $mainFileElement[0]);
     }
-
+    
+    /**
+     * Returns an array of full path WURFL patches
+     * @param array $patchElements array of SimpleXMLElement objects
+     * @return array WURFL Patches
+     */
     private function wurflPatches($patchElements) {
         $patches = array();
         if ($patchElements) {
             foreach ($patchElements as $patchElement) {
-                $patches[] = $this->fullPath((string) $patchElement);
+                $patches[] = parent::getFullPath((string) $patchElement);
             }
         }
         return $patches;
     }
 
+    /**
+     * Returns true if reload is allowed, according to $allowReloadElement
+     * @param array $allowReloadElement array of SimpleXMLElement objects
+     */
     private function allowReload($allowReloadElement) {
         if (!empty($allowReloadElement)) {
             return (bool) $allowReloadElement[0];
         }
         return false;
     }
+    
+    /**
+     * Returns log directory from XML config
+     * @param array $logDirElement array of SimpleXMLElement objects
+     * @return string Log directory
+     */
+	private function logDir($logDirElement) {
+        if (!empty($logDirElement)) {
+            return parent::getFullPath((string) $logDirElement[0]);
+        }
+        return null;
+    }
 
+    /**
+     * Returns persistence provider info from XML config
+     * @param array $persistenceElement array of SimpleXMLElement objects
+     * @return array Persistence info
+     */
     private function persistence($persistenceElement) {
         $persistence = array();
         if ($persistenceElement) {
@@ -72,18 +95,11 @@ class WURFL_Configuration_XmlConfig extends WURFL_Configuration_Config {
         return $persistence;
     }
 
-
-
-    //************************* Utility Functions ********************************//
-
-    private function fullPath($path) {
-        if(realpath($path) && !(basename($path) === $path )) {
-            return realpath($path);
-        }
-
-        return join(DIRECTORY_SEPARATOR, array($this->configurationDir, $path));
-    }
-
+    /**
+     * Converts given CSV $params to array of parameters
+	 * @param string $params Comma-seperated list of parameters
+	 * @return array Parameters
+     */
     private function _toArray($params) {
         $paramsArray = array();
 
@@ -91,18 +107,20 @@ class WURFL_Configuration_XmlConfig extends WURFL_Configuration_Config {
             $paramNameValue = explode("=", $param);
             if(count($paramNameValue) > 1) {
                 if (strcmp(WURFL_Configuration_Config::DIR, $paramNameValue[0]) == 0) {
-                    $paramNameValue[1] = $this->fullPath($paramNameValue[1]);
+                    $paramNameValue[1] = parent::getFullPath($paramNameValue[1]);
                 }
                 $paramsArray[trim($paramNameValue[0])] = trim($paramNameValue[1]);                                
             }
         }
-
-
         return $paramsArray;
     }
 
  
-    const  WURFL_CONF_SCHEMA = '<?xml version="1.0" encoding="utf-8" ?>
+    /**
+     * WURFL XML Schema
+     * @var string
+     */
+    const WURFL_CONF_SCHEMA = '<?xml version="1.0" encoding="utf-8" ?>
 	<element name="wurfl-config" xmlns="http://relaxng.org/ns/structure/1.0">
     	<element name="wurfl">
     		<element name="main-file"><text/></element>
@@ -114,6 +132,9 @@ class WURFL_Configuration_XmlConfig extends WURFL_Configuration_Config {
   		</element>
         <optional>
   		    <element name="allow-reload"><text/></element>
+        </optional>
+        <optional>
+  		    <element name="logDir"><text/></element>
         </optional>
   		<element name="persistence">
       		<element name="provider"><text/></element>
@@ -128,7 +149,4 @@ class WURFL_Configuration_XmlConfig extends WURFL_Configuration_Config {
       		</optional>
   		</element>
 	</element>';
-
 }
-
-?>

@@ -1,21 +1,23 @@
 <?php
 /**
- * WURFL API
+ * Copyright (c) 2011 ScientiaMobile, Inc.
  *
- * LICENSE
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
  *
- * This file is released under the GNU General Public License. Refer to the
- * COPYING file distributed with this package.
- *
- * Copyright (c) 2008-2009, WURFL-Pro S.r.l., Rome, Italy
- *
- *
+ * Refer to the COPYING file distributed with this package.
  *
  * @category   WURFL
  * @package    WURFL_Cache
- * @copyright  WURFL-PRO SRL, Rome, Italy
- * @license
+ * @copyright  ScientiaMobile, Inc.
+ * @license    GNU Affero General Public License
  * @version    $id$
+ */
+/**
+ * MySQL Cache Provider
+ * @package    WURFL_Cache
  */
 class WURFL_Cache_MysqlCacheProvider implements WURFL_Cache_CacheProvider {
 
@@ -29,17 +31,47 @@ class WURFL_Cache_MysqlCacheProvider implements WURFL_Cache_CacheProvider {
 	const DEFAULT_KEYCOLUMN = "key";
 	const DEFAULT_VALUECOLUMN = "value";
 	
-	
+	/**
+	 * @var int mysql link resource
+	 */
 	private $_link;
+	/**
+	 * @var string mysql host 
+	 */
 	private $_host;
+	/**
+	 * @var string mysql database name 
+	 */
 	private $_db;
+	/**
+	 * @var string mysql user 
+	 */
 	private $_user;
+	/**
+	 * @var string mysql password 
+	 */
 	private $_pass;
+	/**
+	 * @var string mysql port 
+	 */
 	private $_port;
+	/**
+	 * @var string mysql table for storing cached data 
+	 */
 	private $_table;
+	/**
+	 * @var string mysql key column name 
+	 */
 	private $_keycolumn;
+	/**
+	 * @var string mysql value column name 
+	 */
 	private $_valuecolumn;
 	
+	/**
+	 * Creates a new MySQL Cache Provider with the given $params
+	 * @param array $params
+	 */
 	public function __construct($params) {
 		if (is_array($params)) {
 			$this->_host = isset($params["host"]) ? $params["host"] : self::DEFAULT_HOST;
@@ -55,45 +87,51 @@ class WURFL_Cache_MysqlCacheProvider implements WURFL_Cache_CacheProvider {
 	}
 
 	/**
-	 * Initializes the Memcache Module
-	 *
+	 * Initializes the MySQL Module
+	 * @throws WURFL_Xml_PersistenceProvider_Exception Various database errors
 	 */
 	public final function initialize() {
 		$this->_ensureModuleExistance();
-		
-		/* Initializes link to MySql */
-		$this->_link = mysql_connect("$this->_host:$this->_port",$this->_user,$this->_pass);
-		if (mysql_error($this->_link)) {
-			throw new WURFL_Xml_PersistenceProvider_Exception("Couldn't link to $this->_host (".mysql_error($this->_link).")");
+		// Initializes link to MySQL
+		$this->_link = mysql_connect("$this->_host:$this->_port", $this->_user, $this->_pass);
+		if (!$this->_link) {
+			throw new WURFL_Xml_PersistenceProvider_Exception("Couldn't connect to $this->_host (".mysql_error($this->_link).")");
 		}
 		
-		/* Initializes link to database */
-		$success=mysql_select_db($this->_db,$this->_link);
-		if (!$success) {
-			throw new WURFL_Xml_PersistenceProvider_Exception("Couldn't change to database $this->_db (".mysql_error($this->_link).")");
+		// Initializes link to database
+		if (!mysql_select_db($this->_db, $this->_link)) {
+			throw new WURFL_Xml_PersistenceProvider_Exception("Couldn't change to database to $this->_db (".mysql_error($this->_link).")");
 		}
 		
-		/* Is Table there? */
+		// Check for database
 		$test = mysql_query("SHOW TABLES FROM $this->_db LIKE '$this->_table'",$this->_link);
 		if (!is_resource($test)) {
 			throw new WURFL_Xml_PersistenceProvider_Exception("Couldn't show tables from database $this->_db (".mysql_error($this->_link).")");
 		}
 		
 		// create table if it's not there.
-		if (mysql_num_rows($test)==0) {
-			$sql="CREATE TABLE `$this->_db`.`$this->_table` (                               
-                      `key` varchar(255) collate latin1_general_ci NOT NULL,          
-                      `value` mediumblob NOT NULL,                                    
-                      `ts` timestamp NOT NULL default CURRENT_TIMESTAMP,              
-                      PRIMARY KEY  (`key`)                                            
-                    ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci";
-			$success=mysql_query($sql,$this->_link);
+		if (mysql_num_rows($test) == 0) {
+			$query = sprintf("CREATE TABLE `%s`.`%s` (
+                      `%s` varchar(255) collate latin1_general_ci NOT NULL,
+                      `%s` mediumblob NOT NULL,
+                      `ts` timestamp NOT NULL default CURRENT_TIMESTAMP,
+                      PRIMARY KEY  (`%s`)
+                    ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci",
+				$this->_db,
+				$this->_table,
+				$this->_keycolumn,
+				$this->_valuecolumn,
+				$this->_keycolumn
+			);
+			$success = mysql_query($query, $this->_link);
 			if (!$success) {
 				throw new WURFL_Xml_PersistenceProvider_Exception("Table $this->_table missing in $this->_db (".mysql_error($this->_link).")");
 			}
 		} 
 		
-		if (is_resource($test)) mysql_free_result($test);
+		if (is_resource($test)) {
+			mysql_free_result($test);
+		}
 	}
 
 	function get($key) {
@@ -114,18 +152,18 @@ class WURFL_Cache_MysqlCacheProvider implements WURFL_Cache_CacheProvider {
 	}
 
 	function put($key, $value) {
-		$value=mysql_escape_string(serialize($value));
-		$key=mysql_escape_string($key);
-		$sql = "delete from `$this->_db`.`$this->_table` where `key`='$key'";
-		$success=mysql_query($sql,$this->_link);
+		$value = mysql_escape_string(serialize($value));
+		$key = mysql_escape_string($key);
+		$sql = sprintf("DELETE FROM `%s`.`%s` WHERE `key` = '%s'", $this->_db, $this->_table, $key);
+		$success = mysql_query($sql, $this->_link);
 		if (!$success) {
-			throw new WURFL_Xml_PersistenceProvider_Exception("MySql error ".mysql_error($this->_link)."deleting $key in $this->_db");
+			throw new WURFL_Xml_PersistenceProvider_Exception("MySql error ".mysql_error($this->_link)." while deleting $key in $this->_db");
 		}
 
-		$sql="insert into `$this->_db`.`$this->_table` (`key`,`value`) VALUES ('$key','$value')";
-		$success=mysql_query($sql,$this->_link);
+		$sql = sprintf("INSERT INTO `%s`.`%s` (`key`,`value`) VALUES ('%s','%s')", $this->_db, $this->_table, $key, $value);
+		$success = mysql_query($sql,$this->_link);
 		if (!$success) {
-			throw new WURFL_Xml_PersistenceProvider_Exception("MySql error ".mysql_error($this->_link)."setting $key in $this->_db");
+			throw new WURFL_Xml_PersistenceProvider_Exception("MySql error ".mysql_error($this->_link)." while setting $key in $this->_db");
 		}
 		return $success;
 	}
@@ -133,19 +171,19 @@ class WURFL_Cache_MysqlCacheProvider implements WURFL_Cache_CacheProvider {
 	function clear() {
 		
 	}
-
-	function close( ) {
+	
+	function close() {
 		mysql_close($this->_link);
 		$this->_link = null;
 	}
 
 	/**
 	 * Ensures the existance of the the PHP Extension memcache
-	 *
+	 * @throws WURFL_Xml_PersistenceProvider_Exception mysql extension is not present
 	 */
 	private function _ensureModuleExistance() {
 		if(!extension_loaded(self::EXTENSION_MODULE_NAME)) {
-			throw new WURFL_Xml_PersistenceProvider_Exception("The PHP extension mysql must be installed and loaded in order to use the mysql.");
+			throw new WURFL_Xml_PersistenceProvider_Exception("The PHP extension mysql must be installed and loaded in order to use the mysql cache provider.");
 		}
 	}
 }
