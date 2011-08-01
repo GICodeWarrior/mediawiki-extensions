@@ -30,18 +30,13 @@
 	position: relative;
 }
 
-/*
 .editSurface-list {
-	padding-left: 1em;
+	padding-left: 2.5em;
 }
 
-.editSurface-list-line {
-	padding-left: 1em;
-	background-image: url(../../demos/es/images/bullet.png);
-	background-position: left 0.5em;
-	background-repeat: no-repeat;
+.editSurface-item {
+	padding-left: 0em;
 }
-*/
 
 .editSurface-line,
 .editSurface-ruler {
