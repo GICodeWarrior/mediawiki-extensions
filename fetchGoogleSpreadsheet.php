@@ -54,12 +54,12 @@ class FetchGoogleSpreadsheet extends Maintenance {
 		//var_dump( $authToken );
 
 		$http = MWHttpRequest::factory( $url, array(
-												'method' => 'GET'
+												'method' => 'GET',
 											)
 										);
 		$http->setCookieJar( $cookies );
 		$http->setHeader( 'GData-Version', '3.0' );
-		$http->setHeader( 'GAuthorization', "GoogleLogin auth=\"{$authToken}\"" );
+		$http->setHeader( 'Authorization', "GoogleLogin auth=\"{$authToken}\"" );
 
 		$res = $http->execute();
 		var_dump( $res );
