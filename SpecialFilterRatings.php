@@ -15,14 +15,14 @@ class SpecialFilterRatings extends SpecialPage {
 
 	// prototypey code 
 	public function execute( $par ) {
-        global $wgOut, $wgRequest;
+		global $wgOut, $wgRequest;
 
 		$project = $wgRequest->getVal('project');
 		$importance = $wgRequest->getVal('importance');
 		$quality = $wgRequest->getVal('quality');
 		$categories = $wgRequest->getVal('categories');
-        $action = $wgRequest->getVal('action');
-        $selection_name = $wgRequest->getVal('selection');
+		$action = $wgRequest->getVal('action');
+		$selection_name = $wgRequest->getVal('selection');
 
 		$filters = array(
 			'r_project' => $project,
@@ -39,17 +39,17 @@ class SpecialFilterRatings extends SpecialPage {
 
 		$this->setHeaders();
 
-        $wgOut->setPageTitle("Filter Articles by Ratings");
+		$wgOut->setPageTitle("Filter Articles by Ratings");
 
-        if( $action == 'addtoselection' ) {
-            Selection::addEntries($selection_name, $entries);
-        }
+		if( $action == 'addtoselection' ) {
+			Selection::addEntries($selection_name, $entries);
+		}
 
 		$template = new FilterRatingsTemplate();
 		$template->set( 'filters', $filters );
-        $template->set( 'articles', $entries );
-        $template->set( 'action', $action );
-        $template->set( 'selection', $selection );
+		$template->set( 'articles', $entries );
+		$template->set( 'action', $action );
+		$template->set( 'selection', $selection );
 
 		$wgOut->addTemplate( $template );
 	}
