@@ -1,9 +1,9 @@
 <?php
 
 /**
- * API module to get special words for a language stored by the Live Translate extension.
+ * API module to get a list of translation memories.
  *
- * @since 0.2
+ * @since 1.2
  *
  * @file ApiQueryLiveTranslate.php
  * @ingroup LiveTranslate
@@ -11,9 +11,10 @@
  * @licence GNU GPL v3+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class ApiQueryLiveTranslate extends ApiQueryBase {
+class ApiQueryTranslationMemories extends ApiQueryBase {
+	
 	public function __construct( $main, $action ) {
-		parent :: __construct( $main, $action, 'lt' );
+		parent :: __construct( $main, $action, 'qtm' );
 	}
 
 	/**
@@ -23,61 +24,50 @@ class ApiQueryLiveTranslate extends ApiQueryBase {
 		// Get the requests parameters.
 		$params = $this->extractRequestParams();
 		
-		if ( !isset( $params['language'] ) ) {
-			$this->dieUsageMsg( array( 'missingparam', 'language' ) );
-		}			
+		$this->addTables( 'live_translate_memories' );
 		
-		$this->addTables( 'live_translate' );
+		foreach ( $params['props'] as &$prop ) {
+			$prop = "memory_$prop";
+		}
 		
-		$this->addFields( array(
-			'word_id',
-			'word_translation'
-		) );
+		$this->addFields( $params['props'] );
 		
-		$this->addWhere( array(
-			'word_language' => $params['language']
-		) );
+		if ( count( $params['ids'] ) > 0 ) {
+			$this->addWhere( array(
+				'memory_id' => $params['ids']
+			) );
+		}
 
 		if ( !is_null( $params['continue'] ) ) {
 			$dbr = wfGetDB( DB_SLAVE );
-			$this->addWhere( 'word_id >= ' . $dbr->addQuotes( $params['continue'] ) );			
+			$this->addWhere( 'memory_id >= ' . $dbr->addQuotes( $params['continue'] ) );			
 		}
 		
 		$this->addOption( 'LIMIT', $params['limit'] + 1 );
-		$this->addOption( 'ORDER BY', 'word_id ASC' );		
+		$this->addOption( 'ORDER BY', 'memory_id ASC' );		
 		
-		$words = $this->select( __METHOD__ );
-		$specialWords = array();
+		$memories = $this->select( __METHOD__ );
+		$resultMemories = array();
 		$count = 0;
 		
-		while ( $word = $words->fetchObject() ) {
+		while ( $memory = $memories->fetchObject() ) {
 			if ( ++$count > $params['limit'] ) {
 				// We've reached the one extra which shows that
 				// there are additional pages to be had. Stop here...
-				$this->setContinueEnumParameter( 'continue', $word->word_id );
+				$this->setContinueEnumParameter( 'continue', $memory->memory_id );
 				break;
 			}
 
-			$specialWords[] = $word->word_translation;
+			$resultMemories[$memory->memory_id] = (array)$memory;
 		}
 		
-		$toggeledSpecials = array();
+		$this->getResult()->setIndexedTagName( $resultMemories, 'memory' );
 		
-		foreach ( $specialWords as $word ) {
-			$toggledWord = LiveTranslateFunctions::getToggledCase( $word );
-			
-			if ( $toggledWord ) {
-				$toggeledSpecials[] = $toggledWord;
-			}
-		}
-		
-		foreach ( array_unique( array_merge( $specialWords, $toggeledSpecials ) ) as $word ) {
-			$this->getResult()->addValue(
-				'words',
-				null,
-				$word
-			);			
-		}
+		$this->getResult()->addValue(
+			null,
+			'memories',
+			$resultMemories
+		);
 	}
 	
 	/**
@@ -86,9 +76,23 @@ class ApiQueryLiveTranslate extends ApiQueryBase {
 	 */
 	public function getAllowedParams() {
 		return array (
-			'language' => array(
-				ApiBase::PARAM_TYPE => 'string',
-				//ApiBase::PARAM_REQUIRED => true,
+			'props' => array(
+				ApiBase::PARAM_DFLT => 'id|type|location|local|lang_count|tu_count|version_hash',
+				ApiBase::PARAM_ISMULTI => true,
+				ApiBase::PARAM_TYPE => array(
+					'id',
+					'type',
+					'location',
+					'local',
+					'lang_count',
+					'tu_count',
+					'version_hash',
+				),
+			),
+			'ids' => array(
+				ApiBase::PARAM_DFLT => '',
+				ApiBase::PARAM_ISMULTI => true,
+				ApiBase::PARAM_TYPE => 'integer',
 			),
 			'limit' => array(
 				ApiBase :: PARAM_DFLT => 500,
@@ -107,7 +111,8 @@ class ApiQueryLiveTranslate extends ApiQueryBase {
 	 */
 	public function getParamDescription() {
 		return array (
-			'language' => 'The language for which to return special words',
+			'props' => 'Translation memory properties to query',
+			'ids' => 'Limit the results to translation memories with an ID in this list',
 			'continue' => 'Offset number from where to continue the query',
 			'limit'   => 'Max amount of words to return',
 		);
@@ -118,7 +123,7 @@ class ApiQueryLiveTranslate extends ApiQueryBase {
 	 * @see includes/api/ApiBase#getDescription()
 	 */
 	public function getDescription() {
-		return 'This module returns all special words defined in the wikis Live Translate Dictionary for a given language';
+		return 'This module returns all matching translation memories';
 	}
 	
 	/**
@@ -127,7 +132,6 @@ class ApiQueryLiveTranslate extends ApiQueryBase {
 	 */
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
-			array( 'missingparam', 'language' ),
 		) );
 	}	
 	
@@ -137,12 +141,12 @@ class ApiQueryLiveTranslate extends ApiQueryBase {
 	 */
 	protected function getExamples() {
 		return array (
-			'api.php?action=query&list=livetranslate&ltlanguage',
+			'api.php?action=query&list=translationmemories',
 		);
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id$';
+		return __CLASS__ . ': $Id:  $';
 	}	
 	
 }
