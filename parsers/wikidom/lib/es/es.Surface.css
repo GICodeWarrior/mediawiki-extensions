@@ -30,6 +30,7 @@
 	position: relative;
 }
 
+/*
 .editSurface-list {
 	padding-left: 1em;
 }
@@ -40,6 +41,7 @@
 	background-position: left 0.5em;
 	background-repeat: no-repeat;
 }
+*/
 
 .editSurface-line,
 .editSurface-ruler {

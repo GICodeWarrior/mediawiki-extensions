@@ -15,7 +15,7 @@
  */
 es.ListBlockItem = function( content, lists ) {
 	es.EventEmitter.call( this );
-	es.Container.call( this, 'item', 'lists', lists );
+	es.Container.call( this, 'item', 'lists', lists, 'li' );
 	this.content = content || new es.Content();
 	this.$line = $( '<div class="editSurface-list-line"></div>' );
 	this.$content = $( '<div class="editSurface-list-content"></div>' );
@@ -122,7 +122,6 @@ es.ListBlockItem.prototype.getOffsetFromPosition = function( position ) {
 		if ( position.top < itemOffset.top + this.$line.height() ) {
 			position.top -= itemOffset.top;
 			position.left -= itemOffset.left;
-			position.left += this.$.parent().offset().left - itemOffset.left;
 			return globalOffset + this.flow.getOffset( position );
 		}
 		

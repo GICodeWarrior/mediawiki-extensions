@@ -10,7 +10,7 @@
  * @emits "update" when items argument causes items to be appended
  * @property $ {jQuery} Container element
  */
-es.Container = function( typeName, listName, items ) {
+es.Container = function( typeName, listName, items, tagName ) {
 	es.EventEmitter.call( this );
 	if ( typeof typeName !== 'string' ) {
 		typeName = 'container';
@@ -18,10 +18,13 @@ es.Container = function( typeName, listName, items ) {
 	if ( typeof listName !== 'string' ) {
 		listName = 'items';
 	}
+	if ( typeof tagName !== 'string' ) {
+		tagName = 'div';
+	}
 	this._typeName = typeName;
 	this._listName = listName;
 	this._list = this[listName] = [];
-	this.$ = $( '<div></div>' )
+	this.$ = $( '<' + tagName + '/>' )
 		.addClass( 'editSurface-' + typeName )
 		.data( typeName, this );
 	// Auto-append

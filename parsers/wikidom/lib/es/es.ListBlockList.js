@@ -12,8 +12,8 @@
  */
 es.ListBlockList = function( style, items ) {
 	es.EventEmitter.call( this );
-	es.Container.call( this, 'list', 'items', items );
 	this.style = style || 'bullet';
+	es.Container.call( this, 'list', 'items', items, this.style == 'bullet' ? 'ul' : 'ol' );
 };
 
 /* Static Methods */
