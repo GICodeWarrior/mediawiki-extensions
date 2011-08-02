@@ -7,8 +7,10 @@
 CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/collabwatchlistrevisiontag (
   -- The id of this entry
   rrt_id integer unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  -- Foreign key to change_tag.ct_id
-  ct_id integer unsigned NOT NULL,
+  -- See change_tag.ct_tag
+  ct_tag varbinary(255) NOT NULL,
+  -- See change_tag.ct_rc_id
+  ct_rc_id int NOT NULL default 0,
   -- Foreign key to collabwatchlist.rl_id
   rl_id integer unsigned NOT NULL,
   -- Foreign key to user.user_id
@@ -17,5 +19,5 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/collabwatchlistrevisiontag (
   -- Comment for the tag
   rrt_comment varchar(255),
   
-  UNIQUE KEY (ct_id, rl_id)
+  UNIQUE KEY (ct_tag, ct_rc_id, rl_id)
 ) /*$wgDBTableOptions*/;
