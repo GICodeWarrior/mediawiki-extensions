@@ -49,10 +49,10 @@ int main(int argc, char **argv) {
 	char buff[MAX_BUFF];
 
 	struct IN_BUFF in_buff;
-	pattern = "^http:\\/\\/(\\w+)\\.wikipedia\\.org[:\\d]*\\/(.*)";
+	pattern = "^http:\\/\\/(\\w+)\\.wikipedia\\.org[:\\d]*\\/wiki\\/(.*)";
 	pcre_extra *pe;
 
-	char replacement_url[MAX_BUFF] = "302:http://%s.m.wikipedia.org/%s\n";
+	char replacement_url[MAX_BUFF] = "302:http://%s.m.wikipedia.org/wiki/%s\n";
 
 	if (argv[1] != NULL) {
 		char replacement_url_pattern[] = "302:%s\n";
