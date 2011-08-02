@@ -18,7 +18,8 @@ require_once( "$IP/extensions/SemanticMediaWiki/includes/storage/SMW_SQLStore2.p
 class SMWARC2Store extends SMWSQLStore2 {
     protected $arc2store;
 
-    public function SMWARC2Store() {
+    public function __construct() {
+        parent::__construct();
         global $wgDBserver, $wgDBname, $wgDBuser, $wgDBpassword, $smwgARC2StoreConfig;
 
         /* instantiation */
