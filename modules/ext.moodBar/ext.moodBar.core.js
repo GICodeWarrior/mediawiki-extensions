@@ -11,6 +11,7 @@
 		tpl: {
 			overlayBase: '\
 				<div id="mw-moodBar-overlayWrap"><div id="mw-moodBar-overlay">\
+					<div id="mw-moodBar-pokey"></div>\
 					<span class="mw-moodBar-overlayClose"><a href="#"><html:msg key="moodbar-close" /></a></span>\
 					<div class="mw-moodBar-overlayContent"></div>\
 				</div></div>',
