@@ -10,8 +10,7 @@
  * @file Push.php
  * @ingroup Push
  *
- * @licence GNU GPL v3
- *
+ * @licence GNU GPL v3+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 

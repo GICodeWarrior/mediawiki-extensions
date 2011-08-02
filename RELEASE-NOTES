@@ -5,10 +5,11 @@ Latest version of the release notes: http://svn.wikimedia.org/viewvc/mediawiki/t
 
 
 === Version 1.1 ===
-2011-0x-xx
+2011-08-xx
 
 * Added PushAPIAfterPush and PushAPIAfterImagePush hooks to the API modules.
 * Added pusher, file pusher and bulk pusher user rights groups.
+* Fixed timeout issue occuring when pushing a page with many images from the tab interface.
 
 === Version 1.0 ===
 2011-05-26
