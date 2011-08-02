@@ -146,9 +146,6 @@ class SpecialCollabWatchlist extends SpecialPage {
 		$invert = $wgRequest->getBool( 'invert' );
 		if ( !is_null( $collabWatchlist ) && $collabWatchlist !== 'all' ) {
 			$collabWatchlist = intval( $collabWatchlist );
-		} else {
-			$collabWatchlist = 0;
-			return;
 		}
 		if ( array_key_exists( $collabWatchlist, $listIdsAndNames ) ) {
 			$wgOut->addHTML( Xml::element( 'h2', null, $listIdsAndNames[$collabWatchlist] ) );
@@ -159,6 +156,8 @@ class SpecialCollabWatchlist extends SpecialPage {
 			$editor->execute( $collabWatchlist, $listIdsAndNames, $wgOut, $wgRequest, $mode );
 			return;
 		}
+		if ( !$collabWatchlist )
+			return;
 
 		$dbr = wfGetDB( DB_SLAVE, 'watchlist' );
 		$recentchanges = $dbr->tableName( 'recentchanges' );
