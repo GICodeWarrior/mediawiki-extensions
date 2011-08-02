@@ -152,6 +152,12 @@ es.Surface.prototype.onKeyDown = function( e ) {
 				this.location.block.getPosition( this.location.offset ),
 				this.location.block.$.offset()
 			);
+			if ( this.keyboard.keys.shift && this.keyboard.selecting ) {
+				this.selection.to = this.location;
+			} else {
+				this.selection = new es.Selection();
+			}
+			this.drawSelection();
 			break;
 		case 35: // End
 			this.initialHorizontalCursorPosition = null;
@@ -161,6 +167,12 @@ es.Surface.prototype.onKeyDown = function( e ) {
 				this.location.block.getPosition( this.location.offset ),
 				this.location.block.$.offset()
 			);
+			if ( this.keyboard.keys.shift && this.keyboard.selecting ) {
+				this.selection.to = this.location;
+			} else {
+				this.selection = new es.Selection();
+			}
+			this.drawSelection();
 			break;
 		case 16: // Shift
 			this.keyboard.keys.shift = true;
