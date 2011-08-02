@@ -10,8 +10,8 @@ $messages = array();
 
 /** English */
 $messages['en'] = array(
-	'treeandmenu-desc' => "Adds <code><nowiki>#tree</nowiki></code> and <code><nowiki>#menu</nowiki></code> parser functions which contain bullet-lists to be rendered as collapsible treeview's or dropdown menus.
-The treeview's use the [http://www.destroydrop.com/javascripts/tree dTree] JavaScript tree menu, and the dropdown menu's use [http://www.htmldog.com/articles/suckerfish/dropdowns/ Son of Suckerfish]",
+	'treeandmenu-desc' => "Adds <code><nowiki>#tree</nowiki></code> and <code><nowiki>#menu</nowiki></code> parser functions which contain bullet-lists to be rendered as collapsible treeviews or dropdown menus.
+The treeviews use the [http://www.destroydrop.com/javascripts/tree dTree] JavaScript tree menu, and the dropdown menus use [http://www.htmldog.com/articles/suckerfish/dropdowns/ Son of Suckerfish]",
 );
 
 /** Message documentation (Message documentation)
