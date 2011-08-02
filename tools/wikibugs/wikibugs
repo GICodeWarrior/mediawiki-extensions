@@ -67,7 +67,6 @@ if ($from =~ /^bugzilla-daemon/) {
       $user = $who[0];
     }
   }
-  die $user;
 
   my @changed_fields = split /\s+/, $mail->header( 'X-Bugzilla-Changed-Fields' );
 
