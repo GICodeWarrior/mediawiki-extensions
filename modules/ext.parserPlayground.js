@@ -124,12 +124,17 @@ var addParserModes = function(modes, parserClass, className, detail) {
 				var pp = context.parserPlayground;
 				pp.parser = new parserClass();
 				// hack
+				pp.env = new MWParserEnvironment({
+					tagHooks: {
+						'ref': MWRefTagHook
+					}
+				});
 				if (pp.parser instanceof MediaWikiParser) {
 					pp.serializer = pp.parser;
 					pp.renderer = pp.parser;
 				} else {
 					pp.serializer = new MWTreeSerializer();
-					pp.renderer = new MWTreeRenderer();
+					pp.renderer = new MWTreeRenderer(pp.env);
 				}
 				context.parserPlayground.fn.initDisplay();
 				$.cookie('pp-editmode', className, {
