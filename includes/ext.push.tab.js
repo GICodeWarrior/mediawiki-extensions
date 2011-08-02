@@ -5,7 +5,7 @@
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
  */
 
-(function($) { $( document ).ready( function() {
+(function( $ ) { $( document ).ready( function() {
 	
 	// Compatibility with pre-RL code.
 	// Messages will have been loaded into wgPushMessages.
@@ -23,6 +23,8 @@
 		}
 	}
 	
+	mw = mediaWiki;
+	
 	var pages;
 	var targetData = [];
 	
@@ -32,7 +34,7 @@
 	
 	$('.push-button').click(function() {
 		this.disabled = true;
-		this.innerHTML = mediaWiki.msg( 'push-button-pushing' );
+		this.innerHTML = mw.msg( 'push-button-pushing' );
 		
 		var errorDiv = $( '#targeterrors' + $(this).attr( 'targetid' ) );
 		errorDiv.fadeOut( 'fast' );			
@@ -55,7 +57,7 @@
 	
 	$('#push-all-button').click(function() {
 		this.disabled = true;
-		this.innerHTML = mediaWiki.msg( 'push-button-pushing' );
+		this.innerHTML = mw.msg( 'push-button-pushing' );
 		$.each($(".push-button"), function(i,v) {
 			$(v).click();
 		});
@@ -116,7 +118,7 @@
 			}
 
 			if ( files.length > 0 ) {
-				$('#txtFileList').text( '(' + mediaWiki.msg( 'push-tab-embedded-files' ) + ' ' );
+				$('#txtFileList').text( '(' + mw.msg( 'push-tab-embedded-files' ) + ' ' );
 				
 				for ( i in files ) {
 					if ( i > 0 ) $('#txtFileList').append( ', ' );
@@ -126,7 +128,7 @@
 				$('#txtFileList').append( ')' );
 			}
 			else {
-				$('#txtFileList').text( mediaWiki.msg( 'push-tab-no-embedded-files' ) );
+				$('#txtFileList').text( mw.msg( 'push-tab-no-embedded-files' ) );
 			}
 		}
 	}
@@ -173,7 +175,7 @@
 						var revision = remotePage.revisions[0];
 						var dateTime = revision.timestamp.split( 'T' );
 
-						var message = mediaWiki.msg(
+						var message = mw.msg(
 							'push-tab-last-edit',
 							revision.user,
 							dateTime[0],
@@ -182,7 +184,7 @@
 					}
 					else {
 						$( '#targetlink' + targetId ).attr( {'class': 'new'} );
-						var message = mediaWiki.msg( 'push-tab-not-created' );
+						var message = mw.msg( 'push-tab-not-created' );
 					}
 					
 					infoDiv.text( message );
@@ -218,7 +220,7 @@
 			
 			if ( overideTemplates.length > 0 ) {
 				$( '#targettemplateconflicts' + targetId )
-					.text( mediaWiki.msg( 'push-tab-template-override', overideTemplates.join( ', ' ) ) )
+					.text( mw.msg( 'push-tab-template-override', overideTemplates.join( ', ' ) ) )
 					.fadeIn( 'slow' );
 			}
 			else {
@@ -241,7 +243,7 @@
 			
 			if ( overideFiles.length > 0 ) {
 				$( '#targetfileconflicts' + targetId )
-					.text( mediaWiki.msg( 'push-tab-files-override', overideFiles.join( ', ' ) ) )
+					.text( mw.msg( 'push-tab-files-override', overideFiles.join( ', ' ) ) )
 					.fadeIn( 'slow' );
 			}
 			else {
@@ -267,14 +269,14 @@
 					handleError( sender, targetUrl, data.error );
 				}
 				else if ( data.length > 0 && data[0].edit && data[0].edit.captcha ) {
-					handleError( sender, targetUrl, { info: mediaWiki.msg( 'push-err-captacha', targetName ) } );
+					handleError( sender, targetUrl, { info: mw.msg( 'push-err-captacha', targetName ) } );
 				}
 				else {
 					if ( $('#checkIncFiles').length != 0 && $('#checkIncFiles').attr('checked') ) {
 						setButtonToImgPush( sender, targetUrl, targetName );
 					}
 					else {
-						sender.innerHTML = mediaWiki.msg( 'push-button-completed' );
+						sender.innerHTML = mw.msg( 'push-button-completed' );
 						setTimeout( function() {reEnableButton( sender, targetUrl, targetName );}, 1000 );
 					}
 				}
@@ -282,40 +284,50 @@
 		); 	
 	}
 	
-	function setButtonToImgPush( button, targetUrl, targetName ) {
-		button.innerHTML = mediaWiki.msg( 'push-button-pushing-files' );
-		initiateImagePush( button, targetUrl, targetName );
+	function handleFilePushingCompletion( sender, targetUrl, targetName ) {
+		sender.innerHTML = mw.msg( 'push-button-completed' );
+		
+		setTimeout( function() {
+			reEnableButton( sender, targetUrl, targetName );
+		}, 1000 );	
 	}
 	
-	function initiateImagePush( sender, targetUrl, targetName ) {
-		var images = window.wgPushPageFiles.concat( window.wgPushTemplateFiles );
+	function setButtonToImgPush( button, targetUrl, targetName ) {
+		button.innerHTML = mw.msg( 'push-button-pushing-files' );
 		
+		var images = window.wgPushPageFiles.concat( window.wgPushTemplateFiles );
+		var currentFile = images.pop();
+		
+		initiateImagePush( button, targetUrl, targetName, images, currentFile, handleFilePushingCompletion );
+	}
+	
+	function initiateImagePush( sender, targetUrl, targetName, images, fileName, callback ) {
 		$.getJSON(
 			wgScriptPath + '/api.php',
 			{
 				'action': 'pushimages',
 				'format': 'json',
-				'images': images.join( '|' ), 
+				'images': fileName, 
 				'targets': targetUrl
 			},
 			function( data ) {
 				var fail = false;
 				
 				if ( data.error ) {
-					data.error.info = mediaWiki.msg( 'push-tab-err-filepush', data.error.info );
+					data.error.info = mw.msg( 'push-tab-err-filepush', data.error.info );
 					handleError( sender, targetUrl, data.error );
 					fail = true;					
 				}
 				else {
 					for ( i in data ) {
 						if ( data[i].error ) {
-							data[i].error.info = mediaWiki.msg( 'push-tab-err-filepush', data[i].error.info );
+							data[i].error.info = mw.msg( 'push-tab-err-filepush', data[i].error.info );
 							handleError( sender, targetUrl, data[i].error );
 							fail = true;
 							break;
 						}
 						else if ( !data[i].upload ) {
-							data[i].error.info = mediaWiki.msg( 'push-tab-err-filepush-unknown' );
+							data[i].error.info = mw.msg( 'push-tab-err-filepush-unknown' );
 							handleError( sender, targetUrl, data[i].error );
 							fail = true;
 							break;						
@@ -324,15 +336,20 @@
 				}
 
 				if ( !fail ) {
-					sender.innerHTML = mediaWiki.msg( 'push-button-completed' );
-					setTimeout( function() {reEnableButton( sender, targetUrl, targetName );}, 1000 );						
+					if ( images.length > 0 ) {
+						var currentFile = images.pop();
+						initiateImagePush( sender, targetUrl, targetName, images, currentFile, callback );
+					}
+					else {
+						callback( sender, targetUrl, targetName );
+					}
 				}
 			}
 		);			
 	}
 	
 	function reEnableButton( button, targetUrl, targetName ) {
-		button.innerHTML = mediaWiki.msg( 'push-button-text' );
+		button.innerHTML = mw.msg( 'push-button-text' );
 		button.disabled = false;
 		
 		getRemoteArticleInfo( $(button).attr( 'targetid' ), $(button).attr( 'pushtarget' ) );
@@ -352,7 +369,7 @@
 			
 			if ( !hasDisabled ) {
 				pushAllButton.attr( "disabled", false );
-				pushAllButton.text( mediaWiki.msg( 'push-button-all' ) );
+				pushAllButton.text( mw.msg( 'push-button-all' ) );
 			}			
 		}
 	}	
@@ -361,14 +378,14 @@
 		var errorDiv = $( '#targeterrors' + $(sender).attr( 'targetid' ) );
 
 		if ( error.code && error.code == 'uploaddisabled' ) {
-			error.info = mediaWiki.msg( 'push-tab-err-uploaddisabled' );
+			error.info = mw.msg( 'push-tab-err-uploaddisabled' );
 		}
 		
 		errorDiv.text( error.info );
 		errorDiv.fadeIn( 'slow' );			
 		
-		sender.innerHTML = mediaWiki.msg( 'push-button-failed' );	
+		sender.innerHTML = mw.msg( 'push-button-failed' );	
 		setTimeout( function() {reEnableButton( sender );}, 2500 );
 	}
 	
-} ); })(jQuery);
+} ); })( jQuery );
