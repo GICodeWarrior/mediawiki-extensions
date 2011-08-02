@@ -23,7 +23,7 @@ $messages['en'] = array(
 	'tooltip-p-moodbar-trigger-editing' => '',
 	// Overlay
 	'moodbar-close' => '(close)',
-	'moodbar-intro-feedback' => 'Editing $1 made me... ',
+	'moodbar-intro-feedback' => 'Editing $1 made me...',
 	'moodbar-intro-share' => 'My experience on $1 made me...',
 	'moodbar-intro-editing' => 'Editing $1 made me...',
 	'moodbar-type-happy-title' => 'Happy',
