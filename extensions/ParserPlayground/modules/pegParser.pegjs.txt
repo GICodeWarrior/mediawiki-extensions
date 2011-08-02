@@ -109,7 +109,7 @@ inline
 
 inline_element
   = comment
-  / ref
+  / xmlish_tag
   / extlink
   / template
   / link
@@ -182,7 +182,7 @@ template_param_text
 
 template_param_text_chunk
   = comment
-  / ref
+  / xmlish_tag
   / extlink
   / template
   / link
@@ -237,6 +237,10 @@ italic_text
   = h:( !italic_marker x:(anything) { return x } )+ { return h.join(''); }
 
 
+xmlish_tag =
+    ref /
+    references
+
 ref = ref_full / ref_empty
 
 /* Can we do backreferences to genericize this? */
@@ -280,6 +284,51 @@ ref_content
   = !ref_end a:inline_element {
   return a;
 }
+
+/* fixme probably have to programatically add these */
+references = references_full / references_empty
+
+references_full
+  = start:references_start ">" content:references_content* close:references_end {
+    return {
+        type: 'ext',
+        name: 'references',
+        params: start.params,
+		ws: start.ws,
+        content: content,
+        close: close
+    }
+}
+
+references_empty
+  = start:references_start close:(space* "/>") {
+    return {
+        type: 'ext',
+        name: 'references',
+		ws: start.ws,
+        params: start.params,
+		close: close
+    }
+}
+
+references_start
+  = "<references" params:ext_param* ws:space* {
+  return {
+	params: params,
+	ws: ws
+  };
+}
+
+references_end
+  = all:("</references" space* ">") {
+  return all.join('');
+}
+
+references_content
+  = !references_end a:inline_element {
+  return a;
+}
+
 
 ext_param
   = space* name:ext_param_name "=" val:ext_param_val {

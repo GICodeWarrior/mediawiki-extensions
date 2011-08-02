@@ -93,6 +93,11 @@ MWRefTagHook = function( env ) {
 };
 
 MWReferencesTagHook = function( env ) {
+	if (!('cite' in env)) {
+		env.cite = {
+			refGroups: {}
+		};
+	}
 	var refGroups = env.cite.refGroups;
 	
 	var arrow = '↑';
@@ -127,7 +132,7 @@ MWReferencesTagHook = function( env ) {
 		out.content.push(' ');
 		out.content.push({
 			type: 'placeholder',
-			content: ref.node.content
+			content: ref.node.content || []
 		});
 		return out;
 	};
@@ -138,12 +143,13 @@ MWReferencesTagHook = function( env ) {
 		}, node.params);
 		if (options.group in refGroups) {
 			var group = refGroups[options.group];
+			var listItems = $.map(group.refs, renderLine);
 			return {
 				type: 'ol',
 				attrs: {
 					'class': 'references'
 				},
-				content: $.each(group, renderLine),
+				content: listItems,
 				origNode: node
 			}
 		} else {

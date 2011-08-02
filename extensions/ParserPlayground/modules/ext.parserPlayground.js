@@ -126,7 +126,8 @@ var addParserModes = function(modes, parserClass, className, detail) {
 				// hack
 				pp.env = new MWParserEnvironment({
 					tagHooks: {
-						'ref': MWRefTagHook
+						'ref': MWRefTagHook,
+						'references': MWReferencesTagHook
 					}
 				});
 				if (pp.parser instanceof MediaWikiParser) {
