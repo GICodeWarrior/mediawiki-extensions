@@ -6,12 +6,6 @@ $wgAutoloadClasses['SpecialRecordAdmin'] = dirname( __FILE__ ) . '/RecordAdmin_b
 $wgSpecialPages['RecordAdmin']           = 'SpecialRecordAdmin';
 $wgSpecialPageGroups['RecordAdmin']      = 'wiki';
 
-$wgExtensionFunctions[] = 'wfSetupSpecialRecordAdmin';
-function wfSetupSpecialRecordAdmin() {
-	global $wgSpecialRecordAdmin;
-	$wgSpecialRecordAdmin = new SpecialRecordAdmin();
-}
-
 $wgExtensionCredits['specialpage'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Record administration',
