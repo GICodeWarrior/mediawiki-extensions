@@ -119,7 +119,8 @@ function processTest(item) {
 		} else {
 			var environment = new MWParserEnvironment({
 				tagHooks: {
-					'ref': MWRefTagHook
+					'ref': MWRefTagHook,
+					'references': MWReferencesTagHook
 				}
 			});
 			var renderer = new MWTreeRenderer(environment);

@@ -121,7 +121,10 @@ MWTreeRenderer.prototype.treeToHtml = function(tree, callback, inspectorMap) {
 			}
 			break;
 		case 'span':
-			var $span = $('<span>');
+		case 'ol':
+		case 'ul':
+		case 'li':
+			var $span = $('<' + tree.type + '>');
 			if ('attrs' in tree) {
 				$.map(tree.attrs, function(val, key) {
 					$span.attr(key, val); // @fixme safety!
@@ -147,73 +150,6 @@ MWTreeRenderer.prototype.treeToHtml = function(tree, callback, inspectorMap) {
 			var $ext = $('<span>'); // hmmmm
 			subParseArray([transformed], $ext);
 			node = $ext[0];
-			// @fixme 
-			/*
-			if (tree.name == 'ref') {
-				// Save the reference for later!
-				// @fixme names etc?
-				if (self.context.refs === undefined) {
-					self.context.refs = [];
-					self.context.refsByName = {};
-				}
-				var refNum;
-				var name = extensionAttribute(tree, 'name');
-				if (name !== null && name in self.context.refsByName) {
-					// Already seen!
-					refNum = self.context.refsByName[name];
-					var origRef = self.context.refs[refNum - 1];
-					if ('content' in tree && tree.content && !('content' in origRef && origRef.content)) {
-						// Earlier one was empty; replace it with this one.
-						self.context.refs[refNum - 1] = tree;
-					}
-				} else {
-					// New one!
-					self.context.refs.push(tree);
-					refNum = self.context.refs.length;
-					if (name !== null) {
-						self.context.refsByName[name] = refNum;
-					}
-				}
-
-				var ref = $('<span class="ref parseNode">[</span>');
-				$('<a></a>')
-					.text(refNum + '')
-					.attr('src', '#ref-' + refNum)
-					.appendTo(ref);
-				ref.append(']');
-				node = ref[0];
-			} else if (tree.name == 'references') {
-				// Force inline expansion of references with a given group
-				// @fixme support multiple groups etc
-				var references = $('<ol class="references parseNode"></ol>');
-				var oldRefs = self.context.refs;
-				self.context.refs = [];
-				$.each(oldRefs, function(i, subtree) {
-					var ref = $('<li class="ref parseNode" id="ref-' + i + '"></li>');
-					if ('content' in subtree) {
-						subParseArray(subtree.content, ref);
-					}
-					ref.data('parseNode', subtree); // assign the node for the tree inspector
-					if (inspectorMap) {
-						inspectorMap.put(subtree, ref[0]); // store for reverse lookup
-					}
-					references.append(ref);
-				});
-				node = references[0];
-			} else if (tree.name == 'cite') {
-				// Kinda like a ref but inline.
-				// @fixme validate and output the tag parameters
-				var cite = $('<span class="cite parseNode"></span>');
-				if ('content' in tree) {
-					subParseArray(tree.content, cite);
-				}
-				node = cite[0];
-			} else {
-				// @fixme unrecognized exts should output as text + rendered contents?
-				callback(null, 'Unrecognized extension in parse tree');
-				return;
-			}
-			*/
 			break;
 		case 'comment':
 			var h = $('<span class="parseNode comment"></span>').text('<!--' + tree.text + '-->');
