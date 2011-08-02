@@ -81,6 +81,8 @@ class CategoryLoader(WSORSlaveDataLoader):
     
     def __init__(self):
         
+        self.__DEBUG__ = True
+        
         self._query_names_['build_subcat_tbl'] = "CREATE TABLE rfaulk.categorylinks_cp select * from enwiki.categorylinks where cl_type = 'subcat'"
         self._query_names_['drop_subcat_tbl'] = "drop table if exists rfaulk.categorylinks_cp;"
         self._query_names_['get_first_rec'] = "select cl_from from categorylinks_cp limit 1"
@@ -89,10 +91,30 @@ class CategoryLoader(WSORSlaveDataLoader):
         self._query_names_['get_subcategories'] = "select cl_to from categorylinks_cp where cl_from = %s"
         self._query_names_['delete_from_recs'] = "delete from rfaulk.categorylinks_cp where cl_from = %s"
         self._query_names_['is_empty'] = "select * from rfaulk.categorylinks_cp limit 1"
+        self._query_names_['get_category_links'] = "select cl_from, cl_to from categorylinks_cp limit 100"
         
         WSORSlaveDataLoader.__init__(self)    
         logging.info('Creating CategoryLoader')
     
+    """
+        
+    """
+    def get_category_links(self):
+        
+        try:
+            sql = self._query_names_['get_category_links']
+            logging.info('Executing: ' + sql)
+            results = self.execute_SQL(sql)
+
+        except:
+
+            logging.error('Could not retrieve page_id.')
+            return -1
+        
+        return results
+    
+    
+
     """
         Retrives the integer page id
     """    
@@ -209,6 +231,8 @@ class CategoryLoader(WSORSlaveDataLoader):
     
     """
         Execution entry point of the class - builds a full category hierarchy from categorylinks
+        
+        CURRENTLY THE EDGES ARE PROCESSED IN A NON=-RECURSIVE WAY, this is much faster
     """ 
     def extract_hierarchy(self):
                         
@@ -220,11 +244,30 @@ class CategoryLoader(WSORSlaveDataLoader):
         directed_graph = nx.DiGraph()
         
         """ while there are rows left in categorylinks_cp  """
+        
+        """
         while(not self.is_empty()):
-            
+        
             category_title = self.get_first_record_from_category_links()
             self.build_category_tree(directed_graph, category_title)            
             directed_graph.add_weighted_edges_from([('ALL', category_title, 1)])
+        """
+        
+        links = self.get_category_links()
+        count = 0
+        
+        for row in links:
+            
+            cl_from = int(row[0])
+            cl_to = str(row[1])
+            cl_from = self.get_page_title(cl_from)
+            
+            directed_graph.add_weighted_edges_from([(cl_from, cl_to, 1)])
+            
+            if self.__DEBUG__:
+                
+                logging.debug('%s: %s -> %s' % (str(count), cl_from, cl_to))
+                count = count + 1
         
         logging.info('Category links finished processing.')
         
@@ -293,32 +336,7 @@ class CategoryLoader(WSORSlaveDataLoader):
         else:
             return True
     
-    """
-       The cl_from key is formatted in uppercase with non-uniform whitespace
 
-    def normalize_field_cl_from(self, category):
-        
-        category = category.lower()
-        words = category.split('\n')[0] # only keep text before the a carraige return 
-        words = words.split()
-        len_words = len(words)
-        
-        category = ''
-        category_camel = ''
-        
-
-        for i in range(len_words - 1):
-            category = category + words[i] + ' '
-            category_camel = category_camel + words[i][0].upper() + words[i][1:] + ' '
-        
-        category = category + words[len_words - 1]
-        category_camel = category_camel + words[len_words - 1][0].upper() + words[len_words - 1][1:]
-        
-        category_upper = category.upper()
-        category_lower = category.lower()
-        
-        return category_upper, category_lower, category_camel
-        """
         
 """
     Inherits WSORSlaveDataLoader
