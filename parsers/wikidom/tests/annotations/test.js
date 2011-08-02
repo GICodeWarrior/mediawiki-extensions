@@ -55,6 +55,12 @@ var content = es.Content.newFromWikiDomLines( lines );
 
 /* Tests */
 
+test( 'Range', 2, function() {
+	var range = new es.Range( 50, 10 );
+	equal( range.getLength(), 40, 'Range.getLength returns correct length' );
+	ok( range.containsOffset(11), 'Range.containsOffset returns correct value' );
+} );
+
 test( 'Content modification', 17, function() {
 
 	content.on( 'change', function( args ) {
