@@ -61,6 +61,9 @@ $wgResourceModules['ext.codeEditor.ace'] = array(
 
 $wgResourceModules['ext.parserPlayground'] = array(
 	'scripts' => array(
+		'mediawiki.parser.environment.js',
+		'ext.cite.taghook.ref.js',
+
 		'lib.jsdiff.js',
 		'lib.pegjs.js',
 		'jquery.nodetree.js',

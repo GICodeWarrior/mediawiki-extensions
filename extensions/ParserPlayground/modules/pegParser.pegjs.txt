@@ -239,8 +239,9 @@ italic_text
 
 ref = ref_full / ref_empty
 
+/* Can we do backreferences to genericize this? */
 ref_full
-  = start:ref_start ">" content:ref_content+ close:ref_end {
+  = start:ref_start ">" content:ref_content* close:ref_end {
     return {
         type: 'ext',
         name: 'ref',

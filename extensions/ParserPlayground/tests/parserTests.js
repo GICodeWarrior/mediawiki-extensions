@@ -39,6 +39,9 @@ global.document = $('<div>')[0].ownerDocument;
 global.PEG = _require('lib.pegjs.js');
 
 // Our code...
+_import('mediawiki.parser.environment.js', ['MWParserEnvironment']);
+_import('ext.cite.taghook.ref.js', ['MWRefTagHook']);
+
 _import('ext.parserPlayground.serializer.js', ['MWTreeSerializer']);
 _import('ext.parserPlayground.renderer.js', ['MWTreeRenderer']);
 _import('ext.parserPlayground.pegParser.js', ['PegParser']);
@@ -47,10 +50,16 @@ _import('ext.parserPlayground.pegParser.js', ['PegParser']);
 PegParser.src = fs.readFileSync(path.join(basePath, 'pegParser.pegjs.txt'), 'utf8');
 
 var parser = new PegParser();
-var renderer = new MWTreeRenderer();
+
+var testFileName = '../../../tests/parser/parserTests.txt'; // default
+if (process.argv.length > 2) {
+	// hack :D
+	testFileName = process.argv[2];
+	console.log(testFileName);
+}
 
 var testParser = PEG.buildParser(fs.readFileSync('parserTests.pegjs', 'utf8'));
-var testFile = fs.readFileSync('../../../tests/parser/parserTests.txt', 'utf8');
+var testFile = fs.readFileSync(testFileName, 'utf8');
 
 
 try {
@@ -108,6 +117,12 @@ function processTest(item) {
 		if (err) {
 			console.log('PARSE FAIL', err);
 		} else {
+			var environment = new MWParserEnvironment({
+				tagHooks: {
+					'ref': MWRefTagHook
+				}
+			});
+			var renderer = new MWTreeRenderer(environment);
 			renderer.treeToHtml(tree, function(node, err) {
 				if (err) {
 					console.log('RENDER FAIL', err);

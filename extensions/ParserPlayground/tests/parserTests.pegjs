@@ -33,7 +33,8 @@ chunk =
     comment /
     article /
     test /
-    line
+    line /
+    hooks
 
 
 
@@ -112,3 +113,18 @@ start_test =
 end_test =
     "!!" ws? "end" ws? eol
 
+
+hooks =
+    start_hooks text:text end_hooks
+{
+    return {
+        type: 'hooks',
+        text: text
+    }
+}
+
+start_hooks =
+    "!!" ws? "hooks" ":"? ws? eol
+
+end_hooks =
+    "!!" ws? "endhooks" ws? eol

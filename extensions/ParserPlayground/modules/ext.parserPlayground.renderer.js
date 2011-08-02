@@ -1,9 +1,9 @@
 /**
  * @param {ParserContext} context
  */
-function MWTreeRenderer(context) {
+function MWTreeRenderer(env) {
 	// whee
-	this.context = context || {};
+	this.env = env || {};
 }
 
 /**
@@ -45,6 +45,7 @@ MWTreeRenderer.prototype.treeToHtml = function(tree, callback, inspectorMap) {
 			// A sequence of block-level elements...
 			var page = $('<div class="parseNode"></div>');
 			subParseArray(tree.content, page);
+			/*
 			if (self.context.refs) {
 				// We're at the end; drop all the remaining refs!
 				subParseArray([{
@@ -52,6 +53,7 @@ MWTreeRenderer.prototype.treeToHtml = function(tree, callback, inspectorMap) {
 					name: 'references'
 				}], page);
 			}
+			*/
 			node = page[0];
 			break;
 		case 'para':
@@ -111,7 +113,42 @@ MWTreeRenderer.prototype.treeToHtml = function(tree, callback, inspectorMap) {
 			t.append('}}');
 			node = t[0];
 			break;
+		case 'placeholder':
+			if ('content' in tree) {
+				var $place = $('<span>'); // hmmmm
+				subParseArray(tree.content, $place);
+				node = $place[0];
+			}
+			break;
+		case 'span':
+			var $span = $('<span>');
+			if ('attrs' in tree) {
+				$.map(tree.attrs, function(val, key) {
+					$span.attr(key, val); // @fixme safety!
+				});
+				if ('content' in tree) {
+					subParseArray(tree.content, $span);
+				}
+			}
+			node = $span[0];
+			break;
+		case 'hashlink':
+			var $a = $('<a>');
+			$a.attr('href', '#' + tree.target);
+			subParseArray(tree.content, $a);
+			node = $a[0];
+			break;
 		case 'ext':
+			var hook = this.env.getTagHook(tree.name);
+			if (!hook) {
+				console.log('kabooom! no ext ' + tree.name)
+			}
+			var transformed = hook.execute(tree);
+			var $ext = $('<span>'); // hmmmm
+			subParseArray([transformed], $ext);
+			node = $ext[0];
+			// @fixme 
+			/*
 			if (tree.name == 'ref') {
 				// Save the reference for later!
 				// @fixme names etc?
@@ -176,6 +213,7 @@ MWTreeRenderer.prototype.treeToHtml = function(tree, callback, inspectorMap) {
 				callback(null, 'Unrecognized extension in parse tree');
 				return;
 			}
+			*/
 			break;
 		case 'comment':
 			var h = $('<span class="parseNode comment"></span>').text('<!--' + tree.text + '-->');
