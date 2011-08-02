@@ -15,7 +15,6 @@ $wgAttachmentHeading = 'Attachments';
 
 $dir = dirname( __FILE__ );
 $wgExtensionMessagesFiles['FileAttach'] = "$dir/FileAttach.i18n.php";
-$wgExtensionFunctions[] = 'wfSetupFileAttach';
 $wgExtensionCredits['other'][] = array(
 	'path'        => __FILE__,
 	'name'        => 'FileAttach',
@@ -27,23 +26,14 @@ $wgExtensionCredits['other'][] = array(
 
 class FileAttach {
 
-	var $uploadForm = false;
-	var $attachto = false;
-	var $wgOut = false;
-
-	function __construct() {
-		global $wgHooks;
-		$wgHooks['BeforePageDisplay'][] = $this;
-		$wgHooks['UploadForm:initial'][] = array( $this, 'onUploadFormInitial' );
-		$wgHooks['UploadForm:BeforeProcessing'][] = array( $this, 'onUploadFormBeforeProcessing' );
-		$wgHooks['SkinTemplateTabs'][] = $this;
-		$wgHooks['SkinTemplateNavigation'][] = $this;
-	}
+	private static $uploadForm = false;
+	public static $attachto = false;
+	public static $wgOut = false;
 
 	/*
 	 * Modify the upload form and attachment heading
 	 */
-	function onBeforePageDisplay( &$out, &$skin ) {
+	public static function onBeforePageDisplay( $out, $skin ) {
 		global $wgParser, $wgAttachmentHeading;
 
 		# Bail if page inappropriate for attachments
@@ -62,7 +52,7 @@ class FileAttach {
 					$name = $title->getText();
 					$alt = "title=\"$name\"";
 					if( strlen( $name ) > 15 ) $name = preg_replace( "|^(............).+(\.\w+$)|", "$1...$2", $name );
-					$icon = $this->getIcon( $file );
+					$icon = self::getIcon( $file );
 					$url = wfFindFile( $title )->getURL();
 					$img = "<a $alt href=\"$url\"><img style=\"padding-bottom:30px\" src=\"$icon\" width=\"80px\" height=\"80px\" /></a>";
 					$text = "<a $alt href=\"$url\" style=\"color:black;font-size:10px;position:relative;left:-67px;top:30px;\">$name</a>";
@@ -78,7 +68,7 @@ class FileAttach {
 		}
 
 		# Modify the upload form
-		if( $this->uploadForm ) {
+		if( self::$uploadForm ) {
 			global $wgRequest;
 			if( $attachto = $wgRequest->getText( 'attachto' ) ) {
 				$out->mPagetitle = wfMsg( 'fileattach-uploadheading', $attachto );
@@ -92,21 +82,21 @@ class FileAttach {
 	/*
 	 * Note if this is the upload form or warning form so that we can modify it before page display
 	 */
-	function onUploadFormInitial( $form ) {
-		$this->uploadForm = true;
+	public static function onUploadFormInitial( $form ) {
+		self::$uploadForm = true;
 		return true;
 	}
 
 	/*
 	 * Check if the upload should attach to an article
 	 */
-	function onUploadFormBeforeProcessing( $form ) {
+	public static function onUploadFormBeforeProcessing( $form ) {
 		global $wgRequest, $wgHooks;
 		if( $attachto = $wgRequest->getText( 'attachto', '' ) ) {
-			$this->uploadForm = true;
+			self::$uploadForm = true;
 			$title = Title::newFromText( $attachto );
-			$this->attachto = new Article( $title );
-			$wgHooks['SpecialUploadComplete'][] = $this;
+			self::$attachto = new Article( $title );
+			$wgHooks['SpecialUploadComplete'][] = 'FileAttach::onSpecialUploadComplete';
 		}
 		return true;
 	}
@@ -115,21 +105,21 @@ class FileAttach {
 	 * Change the redirection after upload to the page the file attached to,
 	 * and attach the file to the article
 	 */
-	function onSpecialUploadComplete( $upload ) {
+	public static function onSpecialUploadComplete( $upload ) {
 		global $wgOut, $wgRequest, $wgAttachmentHeading;
-		$this->wgOut = $wgOut;
+		self::$wgOut = $wgOut;
 		$wgOut = new FileAttachDummyOutput;
 		$filename = $wgRequest->getText( 'wpDestFile' );
-		$text = preg_replace( "|(\s+==\s*$wgAttachmentHeading\s*==)\s+|s", "$1\n*[[:File:$filename]]\n", $this->attachto->getContent(), 1, $count );
+		$text = preg_replace( "|(\s+==\s*$wgAttachmentHeading\s*==)\s+|s", "$1\n*[[:File:$filename]]\n", self::$attachto->getContent(), 1, $count );
 		if( $count == 0 ) $text .= "\n\n== $wgAttachmentHeading ==\n*[[:File:$filename]]\n";
-		$this->attachto->doEdit( $text, wfMsg( 'fileattach-editcomment', $filename ), EDIT_UPDATE );
+		self::$attachto->doEdit( $text, wfMsg( 'fileattach-editcomment', $filename ), EDIT_UPDATE );
 		return true;
 	}
 
 	/*
 	 * Return an icon path from passed filename
 	 */
-	function getIcon( $filename ) {
+	private static function getIcon( $filename ) {
 		global $wgStylePath, $wgStyleDirectory;
 		$ext = strtolower( preg_match( "|\.(\w+)$|", $filename, $ext ) ? "-$ext[1]" : "" );
 		$path = "common/images/icons/fileicon";
@@ -137,18 +127,16 @@ class FileAttach {
 		return $icon;
 	}
 
-	function onSkinTemplateTabs( $skin, &$actions ) {
-		global $wgTitle;
-		$attachto = $wgTitle->getPrefixedText();
-		$url = Title::newFromText( 'Upload', NS_SPECIAL )->getLocalURL( array( 'attachto' => $attachto ) );
+	public static function onSkinTemplateTabs( $skin, &$actions ) {
+		$attachto = $skin->getTitle()->getPrefixedText();
+		$url = SpecialPage::getTitleFor( 'Upload' )->getLocalURL( array( 'attachto' => $attachto ) );
 		$actions['attach'] = array( 'text' => wfMsg( 'fileattach-attachfile' ), 'class' => false, 'href' => $url );
 		return true;
 	}
 
-	function onSkinTemplateNavigation( $skin, &$actions ) {
-		global $wgTitle;
-		$attachto = $wgTitle->getPrefixedText();
-		$url = Title::newFromText( 'Upload', NS_SPECIAL )->getLocalURL( array( 'attachto' => $attachto ) );
+	public static function onSkinTemplateNavigation( $skin, &$actions ) {
+		$attachto = $skin->getTitle()->getPrefixedText();
+		$url = SpecialPage::getTitleFor( 'Upload' )->getLocalURL( array( 'attachto' => $attachto ) );
 		$actions['views']['attach'] = array( 'text' => wfMsg( 'fileattach-attachfile' ), 'class' => false, 'href' => $url );
 		return true;
 	}
@@ -164,13 +152,14 @@ class FileAttach {
  */
 class FileAttachDummyOutput {
 	function redirect( $url ) {
-		global $wgFileAttach, $wgOut;
-		$wgOut = $wgFileAttach->wgOut;
-		$wgOut->redirect( $wgFileAttach->attachto->getTitle()->getFullURL() );
+		global $wgOut;
+		$wgOut = FileAttach::$wgOut;
+		$wgOut->redirect( FileAttach::$attachto->getTitle()->getFullURL() );
 	}
 }
 
-function wfSetupFileAttach() {
-	global $wgFileAttach;
-	$wgFileAttach = new FileAttach();
-}
+$wgHooks['BeforePageDisplay'][] = 'FileAttach::onBeforePageDisplay';
+$wgHooks['UploadForm:initial'][] = 'FileAttach::onUploadFormInitial';
+$wgHooks['UploadForm:BeforeProcessing'][] = 'FileAttach::onUploadFormBeforeProcessing';
+$wgHooks['SkinTemplateTabs'][] = 'FileAttach::onSkinTemplateTabs';
+$wgHooks['SkinTemplateNavigation'][] = 'FileAttach::onSkinTemplateNavigation';
