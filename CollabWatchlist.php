@@ -46,15 +46,16 @@ $wgHooks['LoadExtensionSchemaUpdates'][] = 'fnCollabWatchlistDbSchema';
 $wgHooks['GetPreferences'][] = 'fnCollabWatchlistPreferences';
 
 function fnCollabWatchlistDbSchema() {
+	global $updater;
 	$wgSql = dirname(__FILE__) . '/sql/';
 	if ( $updater === null ) { // <= 1.16 support
-		global $wgExtNewTables;
+		global $wgExtNewTables, $wgExtNewFields;
 		$wgExtNewTables[] = array('collabwatchlist',  $wgSql . 'collabwatchlist.sql');
 		$wgExtNewTables[] = array('collabwatchlistuser',  $wgSql . 'collabwatchlistuser.sql');
 		$wgExtNewTables[] = array('collabwatchlistcategory',  $wgSql . 'collabwatchlistcategory.sql');
 		$wgExtNewTables[] = array('collabwatchlistrevisiontag', $wgSql . 'collabwatchlistrevisiontag.sql');
 		$wgExtNewTables[] = array('collabwatchlisttag', $wgSql . 'collabwatchlisttag.sql');
-		$wgExtNewFields[] = array('change_tag', 'ct_id', $wgSql . 'patch-change_tag_id.sql');
+		$wgExtNewFields[] = array('collabwatchlistrevisiontag', 'ct_rc_id', $wgSql . 'patch-collabwatchlist_noctid.sql');
 	} else { // >= 1.17 support
 		$updater->addExtensionUpdate( array ( 'addTable', 'collabwatchlist',
 			$wgSql . 'collabwatchlist.sql', true ) );
@@ -66,8 +67,8 @@ function fnCollabWatchlistDbSchema() {
 			$wgSql . 'collabwatchlistrevisiontag.sql', true ) );
 		$updater->addExtensionUpdate( array ( 'addTable', 'collabwatchlisttag',
 			$wgSql . 'collabwatchlisttag.sql', true ) );
-		$updater->addExtensionUpdate( array( 'modifyField', 'change_tag', 'ct_id',
-			$wgSql . 'patch-change_tag_id.sql', true ) );
+		$updater->addExtensionUpdate( array( 'modifyField', 'collabwatchlistrevisiontag', 'ct_rc_id',
+			$wgSql . 'patch-collabwatchlist_noctid.sql', true ) );
 	}
 	return true;
 }
@@ -81,8 +82,22 @@ function fnCollabWatchlistPreferences( $user, &$preferences ) {
 	return true;
 }
 
+// You might want to disable that, as it causes quite a bit of database
+// and (if enabled) cache load and size
+$wgCollabWatchlistRecursiveCatScan = true;
+// The depth of the category tree we are building. -1 means infinite
+// 0 fetches no child categories at all
+$wgCollabWatchlistRecursiveCatMaxDepth = -1;
 $wgCollabWatchlistNSPrefix = 'CollabWatchlist';
 $wgCollabWatchlistPermissionDeniedPage = 'CollabWatchlistPermissionDenied';
+
+# Unit tests
+$wgHooks['UnitTestsList'][] = 'efCollabWatchlistUnitTests';
+
+function efCollabWatchlistUnitTests( &$files ) {
+	$files[] = dirname( __FILE__ ) . '/tests/CollabWatchlistTest.php';
+	return true;
+}
 
 /**#@+
  * Collaborative watchlist user types

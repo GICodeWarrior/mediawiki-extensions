@@ -10,19 +10,31 @@
  * @author fhackenberger
  */
 class CategoryTreeManip {
-
-	var $root;
-	var $name;
-	var $id;
-	var $catPageIdToNode = array();
-	var $parents = array();
-	var $enabled = true;
-	var $children = array();
+	const CACHE_KEY = 'categorytree';
+	const CACHE_KEY_CHILDCATEGORIES = 'childcats';
+	const CACHE_KEY_CATEGORYPAGEID = 'catpageid';
+	// How long the cache for child categories and category page ids should last
+	protected $cacheDurationSec;
+	// Whether the cache should be used to speed up building the tree
+	// We always fill the cache, though
+	protected $cacheEnabled = true;
+	// The depth of the tree we are building. -1 means infinite
+	// 0 fetches no child categories at all
+	protected $maxDepth = -1;
+	protected $root;
+	public $name;
+	public $id;
+	// Maps from the page id of a category to instances of this class
+	protected $catPageIdToNode = array();
+	protected $parents = array();
+	protected $enabled = true;
+	protected $children = array();
 
 	/**
 	 * Constructor
 	 */
 	function __construct( $id = null, $name = null, $root = null, $parents = array() ) {
+		$this->cacheDurationSec = 15 * 60;
 		$this->id = $id;
 		$this->name = $name;
 		if ( !is_null( $root ) ) {
@@ -32,10 +44,26 @@ class CategoryTreeManip {
 		}
 		$this->parents = $parents;
 	}
+	
+	public function getCacheEnabled() {
+		return $this->cacheEnabled;
+	}
+	
+	public function setCacheEnabled( $enabled ) {
+		$this->cacheEnabled = $enabled;
+	}
+	
+	public function getMaxDepth() {
+		return $this->maxDepth;
+	}
+	
+	public function setMaxDepth( $maxDepth ) {
+		$this->maxDepth = $maxDepth;
+	}
 
 	private function addChildren( $children ) {
 		if ( !is_array( $children ) )
-			throw new Exception( 'Argument must be an array' );
+		throw new Exception( 'Argument must be an array' );
 		foreach ( $children as $child ) {
 			$this->children[$child->id] = $child;
 		}
@@ -43,7 +71,7 @@ class CategoryTreeManip {
 
 	private function addParents( $parents ) {
 		if ( !is_array( $parents ) )
-			throw new Exception( 'Argument must be an array' );
+		throw new Exception( 'Argument must be an array' );
 		foreach ( $parents as $parent ) {
 			$this->parents[$parent->id] = $parent;
 		}
@@ -71,7 +99,7 @@ class CategoryTreeManip {
 
 	private function recursiveDisable( $visitedNodeIds = array() ) {
 		if ( !$this->enabled || array_key_exists( $this->id, $visitedNodeIds ) )
-			return; # Break the recursion
+		return; # Break the recursion
 		$this->enabled = false;
 		$visitedNodeIds[] = $this->id;
 		foreach ( $this->children as $cat ) {
@@ -105,7 +133,7 @@ class CategoryTreeManip {
 	private function recursiveGetEnabledNodeMap( &$foundNodes = array() ) {
 		if ( isset( $this->id ) ) {
 			if ( !$this->enabled || array_key_exists( $this->id, $foundNodes ) )
-				return $foundNodes; # Break the recursion
+			return $foundNodes; # Break the recursion
 			$foundNodes[$this->id] = $this;
 		}
 		foreach ( $this->children as $cat ) {
@@ -121,11 +149,28 @@ class CategoryTreeManip {
 	 */
 	public function getNodeForCatPageId( $catPageId ) {
 		if ( array_key_exists( $catPageId, $this->root->catPageIdToNode ) )
-			return $this->root->catPageIdToNode[$catPageId];
+		return $this->root->catPageIdToNode[$catPageId];
 	}
 
 	private function addNode( $node ) {
 		$this->root->catPageIdToNode[$node->id] = $node;
+	}
+	
+	public function printTree() {
+		print "all categories:\n";
+		foreach( $this->catPageIdToNode as $catPageId => $node ) {
+			print $catPageId . ": " . $node->name . " enabled: " . $node->enabled . "\n";
+		}
+		print "child categories:\n";
+		$this->printTreeRecursive( $this->root, '' );
+	}
+	
+	protected function printTreeRecursive( $node, $prefix ) {
+		if( $node->id )
+			print $node->id . ": " . $node->name . " enabled: " . $node->enabled . "\n";
+		foreach( $node->children as $child ) {
+			$this->printTreeRecursive( $child, $prefix . '  ' );
+		}
 	}
 
 	/** Build the category tree, given a list of category names.
@@ -135,47 +180,46 @@ class CategoryTreeManip {
 	 * @return
 	 */
 	public function initialiseFromCategoryNames( $catNames ) {
-		$dbr = wfGetDB( DB_SLAVE );
+		$currDepth = 0;
+		// This method builds the category tree breadth-first in an
+		// iterative fashion.
 		while ( $catNames ) {
-			$res = $dbr->select( array( 'categorylinks', 'page' ), # Tables
-				array( 'cl_to AS parName', 'cl_from AS childId', 'page_title AS childName' ), # Fields
-				array( 'cl_to' => $catNames, 'page_namespace' => NS_CATEGORY ),  # Conditions
-				__METHOD__, array(),
-				 # Join conditions
-				array( 'page' => array( 'JOIN', 'page_id = cl_from' ) )
-			);
+			if($this->maxDepth > 0 && $currDepth > $this->maxDepth)
+				break;
+			// Get a list of child categories (array of hashmaps)
+			$res = $this->getChildCategories( $catNames );
+			// Maps parent category name -> array ( array ( child id , child name ) )
 			$parentList = array();
+			// Maps child category id -> array( child id, array ( parent name, ... ) )
 			$childList = array();
+			// Build $parentList and $childList
 			foreach ( $res as $row ) {
-				$parentList[$row->parName][] = array( $row->childId, $row->childName );
-				if ( array_key_exists( $row->childId, $childList ) ) {
-					$childEntry = $childList[$row->childId];
-					$childEntry[1][] = $row->parName;
+				$parentList[$row['parName']][] = array( $row['childId'], $row['childName'] );
+				if ( array_key_exists( $row['childId'], $childList ) ) {
+					$childEntry = $childList[$row['childId']];
+					$childEntry[1][] = $row['parName'];
 				} else {
-					$childList[$row->childId] = array( $row->childName, array( $row->parName ) );
+					$childList[$row['childId']] = array( $row['childName'], array( $row['parName'] ) );
 				}
 			}
 
+			// Fetch the page ids of the $catNames and build the node objects for them
 			if ( !isset( $parentNameToNode ) && !empty( $parentList ) ) {
-				// Fetch the page ids of the $catNames and add the parent categories if needed
-				$res = $dbr->select( array( 'page' ), # Tables
-					array( 'page_id, page_title' ), # Fields
-					array( 'page_title' => array_keys( $parentList ) )  # Conditions
-				);
+				$res = $this->getCategoryPageIds( array_keys( $parentList ) );
 				$parentNameToNode = array();
 				foreach ( $res as $row ) {
-					$node = $this->getNodeForCatPageId( $row->page_id );
+					$node = $this->getNodeForCatPageId( $row['page_id'] );
 					if ( !isset( $node ) ) {
-						$node = new CategoryTreeManip( $row->page_id, $row->page_title, $this->root );
+						$node = new CategoryTreeManip( $row['page_id'], $row['page_title'], $this->root );
 						$this->addNode( $node );
 						$this->addChildren( array( $node ) );
 					}
-					$parentNameToNode[$row->page_title] = $node;
+					$parentNameToNode[$row['page_title']] = $node;
 				}
 			}
 
 			$newChildNameToNode = array();
-			// Add the new child nodes
+			// Create and add the new node objects for all child categories
 			foreach ( $childList as $childPageId => $childInfo ) {
 				$childNode = $this->getNodeForCatPageId( $childPageId );
 				if ( !isset( $childNode ) ) {
@@ -193,6 +237,112 @@ class CategoryTreeManip {
 			// Prepare for the next loop
 			$parentNameToNode = $newChildNameToNode;
 			$catNames = array_keys( $parentNameToNode );
+			$currDepth++;
 		}
 	}
+	
+	/** Retrieve a list of child categories for all the given category names
+	 * Uses the cache if enabled
+	 * @param $catNames Array: List of category names
+	 * @return Mixed: Array of Maps with keys: parName, childId, childName
+	 */
+	protected function getChildCategories( $catNames ) {
+		global $wgMemc;
+		$dbr = wfGetDB( DB_SLAVE );
+		$childList = array();
+		$nonCachedCatNames = array();
+		// Try cache first
+		if( $this->cacheEnabled ) {
+			foreach( $catNames as $catName ) {
+				$key = wfMemcKey( self::CACHE_KEY, self::CACHE_KEY_CHILDCATEGORIES, $catName );
+				$res = $wgMemc->get( $key );
+				if( $res != '' ) {
+					$childList = array_merge( $childList, $res );
+				} else {
+					$nonCachedCatNames[$catName] = false;
+				}
+			}
+		} else {
+			$nonCachedCatNames = array_fill_keys( $catNames, false );
+		}
+
+		// Select the child categories of all categories we have not found in the cache
+		$res = array();
+		if( !empty( $nonCachedCatNames ) ) {
+			// Select the direct child categories of all category names
+			// I.e. category name, child category id and child category name
+			$res = $dbr->select( array( 'categorylinks', 'page' ), # Tables
+				array( 'cl_to AS parName', 'cl_from AS childId', 'page_title AS childName' ), # Fields
+				array( 'cl_to' => array_keys($nonCachedCatNames), 'page_namespace' => NS_CATEGORY ),  # Conditions
+				__METHOD__, array( 'GROUP BY' => 'cl_to' ), # Options
+				array( 'page' => array( 'JOIN', 'page_id = cl_from' ) ) # Join conditions
+			);
+		}
+		
+		// Prepare and store cache objects
+		$cacheObj = array();
+		foreach ( $res as $row ) {
+			unset($nonCachedCatNames[$row->parName]);
+			if( !isset( $currCatName ) )
+				$currCatName = $row->parName;
+			if( $currCatName != $row->parName ) {
+				$key = wfMemcKey( self::CACHE_KEY, self::CACHE_KEY_CHILDCATEGORIES, $currCatName );
+				$wgMemc->set( $key, $cacheObj, $this->cacheDurationSec );
+				$childList = array_merge( $childList, $cacheObj );
+				$cacheObj = array();
+				$currCatName = $row->parName;
+			}
+			$cacheObj[] = array( 'parName' => $row->parName, 'childId' => $row->childId, 'childName' => $row->childName );
+		}
+		// Store the last bunch
+		if( !empty( $cacheObj ) ) {
+			$key = wfMemcKey( self::CACHE_KEY, self::CACHE_KEY_CHILDCATEGORIES, $currCatName );
+			$wgMemc->set( $key, $cacheObj, $this->cacheDurationSec );
+			$childList = array_merge( $childList, $cacheObj );
+		}
+		// Store empty values for leaf categories, otherwise we would query the DB because we did not find a cache entry
+		foreach( array_keys($nonCachedCatNames ) as $currCatName ) {
+			$key = wfMemcKey( self::CACHE_KEY, self::CACHE_KEY_CHILDCATEGORIES, $currCatName );
+			$wgMemc->set( $key, array(), $this->cacheDurationSec );
+		}
+		return $childList;
+	}
+	
+	/** Retrieve the page ids of the category pages for the given categories
+	 * 
+	 * @param $catNames Array: A list of category names you would like to query for
+	 * @return Array: An array of maps with keys: page_id, page_title
+	 */
+	protected function getCategoryPageIds( $catNames ) {
+		global $wgMemc;
+		$dbr = wfGetDB( DB_SLAVE );
+		$pageInfo = array();
+		$nonCachedCatNames = array();
+		// Try cache first
+		if( $this->cacheEnabled ) {
+			foreach( $catNames as $catName ) {
+				$res = $wgMemc->get( wfMemcKey( self::CACHE_KEY, self::CACHE_KEY_CATEGORYPAGEID, $catName ) );
+				if( $res != '' ) {
+					$pageInfo[] = array( 'page_id' => $res, 'page_title' => $catName );
+				} else {
+					$nonCachedCatNames[] = $catName;
+				}
+			}
+		}
+		// Select the child categories of all categories we have not found in the cache
+		$res = array();
+		if( !empty( $nonCachedCatNames ) ) {
+			$res = $dbr->select( array( 'page' ), # Tables
+				array( 'page_id, page_title' ), # Fields
+				array( 'page_title' => $nonCachedCatNames )  # Conditions
+			);
+		}
+		// Prepare and store cache object
+		foreach ( $res as $row ) {
+			$pageInfo[] = array( 'page_id' => $row->page_id, 'page_title' => $row->page_title );
+			$wgMemc->set( wfMemcKey( self::CACHE_KEY, self::CACHE_KEY_CATEGORYPAGEID, $row->page_title ), $row->page_id, $this->cacheDurationSec );
+		}
+		return $pageInfo;
+	}
+
 }

@@ -789,8 +789,8 @@ class CollabWatchlistEditor {
 				}
 			}
 			// Add the tagged revisions to the collaborative watchlist
-			$sql = 'INSERT IGNORE INTO collabwatchlistrevisiontag (ct_id, rl_id, user_id, rrt_comment)
-					SELECT ct_id, ' . $dbw->strencode( $rlId ) . ',' .
+			$sql = 'INSERT IGNORE INTO collabwatchlistrevisiontag (ct_rc_id, ct_tag, rl_id, user_id, rrt_comment)
+					SELECT ct_rc_id, ct_tag, ' . $dbw->strencode( $rlId ) . ',' .
 						$dbw->strencode( $userId ) . ',' .
 						$dbw->addQuotes( $comment ) . ' FROM change_tag WHERE ct_tag = ? AND ct_rc_id ';
 			if ( count( $rcIds ) > 1 ) {
@@ -817,9 +817,7 @@ class CollabWatchlistEditor {
 				$rcIds[] = $info['rc_id'];
 			}
 			// Remove the tag from the collaborative watchlist
-			$sql = 'delete collabwatchlistrevisiontag from collabwatchlistrevisiontag JOIN change_tag
-					ON change_tag.ct_id = collabwatchlistrevisiontag.ct_id
-					WHERE ct_tag = ? AND ct_rc_id ';
+			$sql = 'DELETE FROM collabwatchlistrevisiontag WHERE ct_tag = ? AND ct_rc_id ';
 			if ( count( $rcIds ) > 1 ) {
 				$sql .= 'IN (' . $dbw->makeList( $rcIds ) . ')';
 				$params = array( $tag );

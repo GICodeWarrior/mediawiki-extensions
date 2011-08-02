@@ -260,9 +260,8 @@ class SpecialCollabWatchlist extends SpecialPage {
 			} else {
 				$filter = 'NOT EXISTS ';
 			}
-			$filter .= '(select ct_rc_id from change_tag
-					JOIN collabwatchlistrevisiontag ON collabwatchlistrevisiontag.ct_id = change_tag.ct_id
-					WHERE ct_rc_id = recentchanges.rc_id AND ct_tag ';
+			$filter .= '(SELECT cwlrt.ct_rc_id FROM collabwatchlistrevisiontag cwlrt
+					WHERE cwlrt.ct_rc_id = recentchanges.rc_id AND cwlrt.ct_tag ';
 			if ( count( $tagFilter ) > 1 )
 				$filter .= 'IN (' . $dbr->makeList( $tagFilter ) . '))';
 			else
@@ -582,11 +581,11 @@ class SpecialCollabWatchlist extends SpecialPage {
 		}
 		// $table, $vars, $conds='', $fname = 'Database::select', $options = array(), $join_conds = array()
 		$res = $dbr->select( array( 'change_tag', 'collabwatchlistrevisiontag', 'user' ), # Tables
-			array( 'rl_id', 'ct_tag', 'collabwatchlistrevisiontag.user_id', 'user_name', 'rrt_comment' ), # Fields
-			array( 'ct_rev_id' => $rev_id ) + $cond,  # Conditions
+			array( 'rl_id', 'collabwatchlistrevisiontag.ct_tag', 'collabwatchlistrevisiontag.user_id', 'user_name', 'rrt_comment' ), # Fields
+			array( 'change_tag.ct_rev_id' => $rev_id ) + $cond,  # Conditions
 			__METHOD__, array(),
 			 # Join conditions
-			array(	'collabwatchlistrevisiontag' => array( 'JOIN', 'change_tag.ct_id = collabwatchlistrevisiontag.ct_id' ),
+			array(	'collabwatchlistrevisiontag' => array( 'JOIN', 'change_tag.ct_rc_id = collabwatchlistrevisiontag.ct_rc_id AND change_tag.ct_tag = collabwatchlistrevisiontag.ct_tag' ),
 					'user' => array( 'JOIN', 'collabwatchlistrevisiontag.user_id = user.user_id' )
 			)
 		);
@@ -608,6 +607,7 @@ class SpecialCollabWatchlist extends SpecialPage {
 	 * @return String: An SQL clause usable in the conditions parameter of $db->select()
 	 */
 	function wlGetFilterClauseForCollabWatchlistIds( $rl_ids, $catNameCol, $pageIdCol ) {
+		global $wgCollabWatchlistRecursiveCatScan;
 		$excludedCatPageIds = array();
 		$includedCatPageIds = array();
 		$includedPageIds = array();
@@ -632,8 +632,9 @@ class SpecialCollabWatchlist extends SpecialPage {
 			}
 		}
 		
-		if ( $includedCatPageIds ) {
+		if ( $wgCollabWatchlistRecursiveCatScan && $includedCatPageIds ) {
 			$catTree = new CategoryTreeManip();
+			$catTree->setMaxDepth($wgCollabWatchlistRecursiveCatScan);
 			$catTree->initialiseFromCategoryNames( array_values( $includedCatPageIds ) );
 			$catTree->disableCategoryIds( array_keys( $excludedCatPageIds ) );
 			$enabledCategoryNames = $catTree->getEnabledCategoryNames();
