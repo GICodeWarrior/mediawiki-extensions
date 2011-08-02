@@ -184,12 +184,14 @@ es.Surface.prototype.onKeyDown = function( e ) {
 				this.drawSelection();
 			}
 			break;
+/*
 		case 17: // Control
 			this.keyboard.keys.control = true;
 			break;
 		case 18: // Alt
 			this.keyboard.keys.alt = true;
 			break;
+*/
 		case 91: // Command
 			this.keyboard.keys.command = true;
 			break;
