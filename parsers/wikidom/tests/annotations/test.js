@@ -100,15 +100,12 @@ test( 'Content modification', 17, function() {
 	content.remove( new es.Range( 5, 8 ) );
 } );
 
-
-/*
-
 test( 'Content export', 2, function() {
 
 	deepEqual(
-		content.getLines(),
+		content.getWikiDomLines(),
 		lines,
-		'Content.getLines returns correct array of all lines'
+		'Content.getWikiDomLines returns correct array of all lines'
 	);
 
 	var lines1 = [
@@ -154,44 +151,31 @@ test( 'Content export', 2, function() {
 	];
 
 	deepEqual(
-		es.Content.newFromLines( lines1 ).getLines(),
+		es.Content.newFromWikiDomLines( lines1 ).getWikiDomLines(),
 		lines1,
-		'Content.getLines returns correct array of all lines for annotations overlapping between lines'
+		'Content.getWikiDomLines returns correct array of all lines for annotations overlapping between lines'
 	);
 	
 
 } );
 
-test( 'Content access', 8, function() {
-
+test( 'Content access', 4, function() {
 	equal(
-		content.substring( 3, 39 ),
+		content.getText( new es.Range( 3, 39 ) ),
 		's is a test paragraph!\nParagraphs ca',
 		'Content.substring returns correct plain text when called with start and end arguments'
 	);
+	
 	equal(
-		content.substring( 39 ),
+		content.getText( new es.Range( 39, content.getLength() ) ),
 		'n have more than one line.',
 		'Content.substring uses data length if called without end argument'
 	);
-	equal(
-		content.substring( -10, 10 ),
-		'This is a ',
-		'Content.substring clamps negetive start arguments'
-	);
-	equal(
-		content.substring( 39, 100000000000 ),
-		'n have more than one line.',
-		'Content.substring clamps out of range end arguments'
-	);
-	equal(
-		content.substring(),
-		'This is a test paragraph!\nParagraphs can have more than one line.',
-		'Content.substring returns all text when called without arguments'
-	);
+
 	equal( content.getLength(), 65, 'Content.getLength returns correct length' );
+
 	deepEqual(
-		content.slice().data,
+		content.data,
 		[
 			["T", { "type": "italic" }],
 			["h", { "type": "italic" }],
@@ -261,18 +245,4 @@ test( 'Content access', 8, function() {
 		],
 		'Content.slice returns all data when called without arguments'
 	);
-	deepEqual(
-		content.slice( 3, 10 ).data,
-		[
-			["s", { "type": "italic" }],
-			" ",
-			"i",
-			"s",
-			" ",
-			["a", { "type": "xlink", "data": { "url":"http://www.a.com" } }],
-			[" ", { "type": "xlink", "data": { "url":"http://www.a.com" } }]
-		],
-		'Content.slice returns correct range of data when called with start and end arguments'
-	);
 } );
-*/
