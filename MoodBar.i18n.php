@@ -34,7 +34,7 @@ $messages['en'] = array(
 	'moodbar-what-label' => 'What is this?',
 	'moodbar-what-collapsed' => '▶', // Ignore, do not translate. &#x25BC;
 	'moodbar-what-expanded' => '▼', // Ignore, do not translate. &#x25B6;
-	'moodbar-what-content' => 'This feature is designed to help the community understand the experience of people editing the encyclopedia.
+	'moodbar-what-content' => 'This feature is designed to help the community understand the experience of people editing the site.
 For more information, please visit the $1.',
 	'moodbar-what-link' => 'feature page',
 	'moodbar-privacy' => 'By submitting, you agree to transparency under these $1.',
