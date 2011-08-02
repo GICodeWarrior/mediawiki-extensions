@@ -33,7 +33,7 @@ class WURFL_Storage_Mwmemcache extends WURFL_Storage_Base {
 		return $wgMemc->set( $this->encode( $this->namespace, $objectId ), $object, $this->expiration );
 	}
 
-	
+
 	/**
 	 * Load the object.
 	 *
@@ -44,7 +44,7 @@ class WURFL_Storage_Mwmemcache extends WURFL_Storage_Base {
 	public function load($objectId) {
 		global $wgMemc;
 		$value = $wgMemc->get( $this->encode( $this->namespace, $objectId ) );
-		return $value;
+		return $value ? $value : null; // WURFL expects null on cache miss
 	}
 
 
