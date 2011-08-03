@@ -10,7 +10,9 @@ if( !defined( 'MEDIAWIKI' ) ) die( 'Not an entry point.' );
  * @author Siebrand Mazeland
  * @licence GNU General Public Licence 2.0 or later
  */
-define( 'RECORDADMIN_VERSION', '1.2.10, 2011-08-01' );
+define( 'RECORDADMIN_VERSION', '1.3.0, 2011-08-03' );
+
+$wgRecordAdminExtPath = preg_replace( "|^.*(/extensions/.*$)|", "$wgScriptPath$1", dirname( __FILE__ ) );
 
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['RecordAdmin'] = $dir . 'RecordAdmin.i18n.php';
@@ -35,7 +37,16 @@ $wgExtensionCredits['other'][] = array(
 
 $wgExtensionFunctions[] = 'wfSetupRecordAdmin';
 function wfSetupRecordAdmin() {
-	global $wgRecordAdmin;
+	global $wgRecordAdmin, $wgResourceModules, $wgRecordAdminExtPath;
+
+	$wgResourceModules['ext.recordadmin'] = array(
+		'scripts' => array( 'recordadmin.js' ),
+		'styles' => array(),
+		'dependencies' => array( 'jquery' ),
+		'localBasePath' => dirname( __FILE__ ),
+		'remoteExtPath' => $wgRecordAdminExtPath
+	);
+
 	$wgRecordAdmin = new RecordAdmin();
 }
 
