@@ -276,8 +276,8 @@ class SpecialSuggest extends SpecialPage {
 		$filteredAttributesRestriction = $this->getFilteredAttributesRestriction( $annotationAttributeId );
 
 		$sql =
-		'SELECT attribute_mid, MAX(spelling) as spelling FROM (' .
-		'SELECT attribute_mid, spelling' .
+		'SELECT object_id, attribute_mid, MAX(spelling) as spelling FROM (' .
+		'SELECT object_id, attribute_mid, spelling' .
 		" FROM {$dc}_bootstrapped_defined_meanings, {$dc}_class_attributes, {$dc}_syntrans, {$dc}_expression" .
 		" WHERE {$dc}_bootstrapped_defined_meanings.name = " . $dbr->addQuotes( $attributesLevel ) .
 		" AND {$dc}_bootstrapped_defined_meanings.defined_meaning_id = {$dc}_class_attributes.level_mid" .
@@ -309,7 +309,7 @@ class SpecialSuggest extends SpecialPage {
 			$classRestriction .
 			')';
 
-		$sql .= ') AS filtered GROUP BY attribute_mid';
+		$sql .= ') AS filtered GROUP BY object_id';
 
 		return $sql;
 	}
@@ -620,7 +620,7 @@ class SpecialSuggest extends SpecialPage {
 		$recordSet = new ArrayRecordSet( new Structure( $o->id, $optionAttributeAttribute ), new Structure( $o->id ) );
 
 		while ( $row = $dbr->fetchObject( $queryResult ) )
-			$recordSet->addRecord( array( $row->attribute_mid, $row->spelling ) );
+			$recordSet->addRecord( array( $row->object_id, $row->spelling ) );
 
 		$editor = createSuggestionsTableViewer( null );
 		$editor->addEditor( createShortTextViewer( $optionAttributeAttribute ) );

@@ -36,12 +36,10 @@ class SpecialSelect extends SpecialPage {
 
 		$sql = "SELECT {$dc}_option_attribute_options.option_id,{$dc}_option_attribute_options.option_mid" .
 				" FROM {$dc}_option_attribute_options" .
-				" JOIN {$dc}_class_attributes ON {$dc}_class_attributes.object_id = {$dc}_option_attribute_options.attribute_id" .
-				" WHERE {$dc}_class_attributes.attribute_mid = " . $optionAttribute .
+				" WHERE {$dc}_option_attribute_options.attribute_id = " . $optionAttribute .
 				" AND ({$dc}_option_attribute_options.language_id = " . $objectLanguage .
 				" OR {$dc}_option_attribute_options.language_id = 0)" .
-				' AND ' . getLatestTransactionRestriction( "{$dc}_option_attribute_options" ) .
-				' AND ' . getLatestTransactionRestriction( "{$dc}_class_attributes" );
+				' AND ' . getLatestTransactionRestriction( "{$dc}_option_attribute_options" ) ;
 		$options_res = $dbr->query( $sql );
 
 		$optionsString = '';

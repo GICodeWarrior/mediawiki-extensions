@@ -205,8 +205,7 @@ class SynonymTranslationController extends DefaultUpdateController {
 	public function update( $keyPath, $record ) {
 		$definedMeaningId = $keyPath->peek( 1 )->definedMeaningId;
 		$syntransId = $keyPath->peek( 0 )->syntransId;
-		$identicalMeaning = $record->identicalMeaning;
-		updateSynonymOrTranslationWithId( $syntransId, $identicalMeaning );
+		updateSynonymOrTranslationWithId( $syntransId, $record->identicalMeaning );
 	}
 }
 
