@@ -63,6 +63,11 @@ final class LiveTranslateFunctions {
 				Html::linkedScript( $egLiveTranslateScriptPath . '/includes/ext.livetranslate.js' )
 			);
 			
+			$wgOut->addHeadItem(
+				'ext.livetranslate.tm',
+				Html::linkedScript( $egLiveTranslateScriptPath . '/includes/ext.lt.tm.js' )
+			);
+			
 			switch( $GLOBALS['egLiveTranslateService'] ) {
 				case LTS_GOOGLE:
 					$wgOut->addHeadItem(

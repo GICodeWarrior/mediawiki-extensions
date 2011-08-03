@@ -94,7 +94,10 @@ if ( defined( 'MW_SUPPORTS_RESOURCE_MODULES' ) ) {
 	);
 	
 	$wgResourceModules['ext.livetranslate'] = $moduleTemplate + array(
-		'scripts' => array( 'includes/ext.livetranslate.js' ),
+		'scripts' => array(
+			'includes/ext.lt.tm.js',
+			'includes/ext.livetranslate.js'
+		),
 		'dependencies' => array( 'jquery' ),
 		'messages' => $egLTJSMessages
 	);
