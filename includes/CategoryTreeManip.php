@@ -166,17 +166,18 @@ class CategoryTreeManip {
 	}
 	
 	protected function printTreeRecursive( $node, $prefix ) {
-		if( $node->id )
-			print $node->id . ": " . $node->name . " enabled: " . $node->enabled . "\n";
+		if( $node->id ) {
+			print $prefix . $node->id . ": " . $node->name . " enabled: " . $node->enabled . "\n";
+		}
 		foreach( $node->children as $child ) {
-			$this->printTreeRecursive( $child, $prefix . '  ' );
+			$this->printTreeRecursive( $child, $prefix . "  " );
 		}
 	}
 
 	/** Build the category tree, given a list of category names.
 	 * All categories and subcategories are enabled by default.
 	 *
-	 * @param array $catNames An array of strings representing category names
+	 * @param array $catNames An array of strings representing category names (without namespace prefix)
 	 * @return
 	 */
 	public function initialiseFromCategoryNames( $catNames ) {
@@ -248,7 +249,6 @@ class CategoryTreeManip {
 	 */
 	protected function getChildCategories( $catNames ) {
 		global $wgMemc;
-		$dbr = wfGetDB( DB_SLAVE );
 		$childList = array();
 		$nonCachedCatNames = array();
 		// Try cache first
@@ -269,13 +269,17 @@ class CategoryTreeManip {
 		// Select the child categories of all categories we have not found in the cache
 		$res = array();
 		if( !empty( $nonCachedCatNames ) ) {
+			$dbr = wfGetDB( DB_SLAVE );
 			// Select the direct child categories of all category names
 			// I.e. category name, child category id and child category name
-			$res = $dbr->select( array( 'categorylinks', 'page' ), # Tables
-				array( 'cl_to AS parName', 'cl_from AS childId', 'page_title AS childName' ), # Fields
-				array( 'cl_to' => array_keys($nonCachedCatNames), 'page_namespace' => NS_CATEGORY ),  # Conditions
+			// select cp.page_title AS parName, cl.cl_from AS childId, p.page_title AS childName 
+			// from page cp join categorylinks cl on cp.page_title = cl.cl_to
+			// join page p on p.page_id = cl.cl_from where p.page_namespace = '14';
+			$res = $dbr->select( array( 'cp' => 'page', 'cl' => 'categorylinks', 'p' => 'page' ), # Tables
+				array( 'cp.page_title AS parName', 'cl.cl_from AS childId', 'p.page_title AS childName' ), # Fields
+				array( 'cp.page_title' => array_keys($nonCachedCatNames), 'cp.page_namespace' => NS_CATEGORY ),  # Conditions
 				__METHOD__, array( 'GROUP BY' => 'cl_to' ), # Options
-				array( 'page' => array( 'JOIN', 'page_id = cl_from' ) ) # Join conditions
+				array( 'cl' => array( 'JOIN', 'cp.page_title = cl.cl_to' ), 'p' => array( 'JOIN', 'p.page_id = cl.cl_from') ) # Join conditions
 			);
 		}
 		
@@ -315,7 +319,6 @@ class CategoryTreeManip {
 	 */
 	protected function getCategoryPageIds( $catNames ) {
 		global $wgMemc;
-		$dbr = wfGetDB( DB_SLAVE );
 		$pageInfo = array();
 		$nonCachedCatNames = array();
 		// Try cache first
@@ -332,6 +335,7 @@ class CategoryTreeManip {
 		// Select the child categories of all categories we have not found in the cache
 		$res = array();
 		if( !empty( $nonCachedCatNames ) ) {
+			$dbr = wfGetDB( DB_SLAVE );
 			$res = $dbr->select( array( 'page' ), # Tables
 				array( 'page_id, page_title' ), # Fields
 				array( 'page_title' => $nonCachedCatNames )  # Conditions
