@@ -11,29 +11,30 @@ class ISToken {
 	const TBreak = 'break';
 	const TCatch = 'catch';
 	const TColon = 'colon';	// :
-	const TCompareOperator = 'comareop';	// <, >, <= or >=
+	const TCompareOperator = 'compareop';	// <, >, <= or >=
 	const TComma = 'comma';	// ,
 	const TContains = 'contains';
 	const TContinue = 'continue';
+	const TDelete = 'delete';
 	const TElse = 'else';
 	const TEqualsToOperator = 'equalsto';	// ==, ===, != or !==
 	const TFalse = 'false';
 	const TFloat = 'float';
-	const TForeach = 'foreach';
+	const TFor = 'for';
 	const TID = 'id';
 	const TIf = 'if';
 	const TIn = 'in';
 	const TInt = 'int';
 	const TBoolInvert = 'invert';	// !
 	const TIsset = 'isset';
-	const TLeftBrace = 'leftbrace';	// (
+	const TLeftBracket = 'leftbracket';	// (
 	const TLeftCurly = 'leftcurly';	// {
 	const TLeftSquare = 'leftsquare';	// [
 	const TLogicalOperator = 'logicop';	// &, | or ^
 	const TMulOperator = 'mul';	// *, / or %
 	const TNull = 'null';
 	const TPow = 'pow';	// **
-	const TRightBrace = 'rightbrace';	// )
+	const TRightBracket = 'rightbracket';	// )
 	const TRightCurly = 'rightcurly';	// }
 	const TRightSquare = 'rightsquare';	// ]
 	const TSemicolon = 'semicolon';	// ;
@@ -43,7 +44,6 @@ class ISToken {
 	const TTrinary = 'trinary';	// ?
 	const TTrue = 'true';
 	const TTry = 'try';
-	const TUnset = 'unset';
 
 	var $type;
 	var $value;
@@ -164,7 +164,7 @@ class ISParserOutput {
 
 	public function appendTokenCount( &$interpr ) {
 		global $wgInlineScriptsLimits;
-		$interpr->mTokens += $this->mTokens;
+		$interpr->mTokens += @$this->mTokensCount;
 		if( $interpr->mTokens > $wgInlineScriptsLimits['tokens'] )
 			throw new ISUserVisibleException( 'toomanytokens', 0 );
 	}

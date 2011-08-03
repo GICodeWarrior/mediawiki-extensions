@@ -127,7 +127,7 @@ if( a ** 2 < 50 )
 Template:Bullets
 !! text
 <wikiscript>
-foreach( a in args() )
+for( a in args() )
 	out( "* " + a + "\n" );
 </wikiscript>
 !! endarticle
@@ -259,12 +259,12 @@ split()/join()
 !! end
 
 !! test
-isset/unset
+isset/delete
 !! input
 <wikiscript>
 a = null;
 b = 1;
-unset( b );
+delete( b );
 out( 'a: ' + isset( a ) + '; b: ' + int( isset( b ) ) );
 !! result
 <p>a: 1; b: 0
@@ -302,7 +302,7 @@ Lists: foreach
 !! input
 <wikiscript>
 a = [ 1, 2, 3, 4, 5 ];
-foreach( n in a )
+for( n in a )
 	out( n * n + "\n\n");
 </wikiscript>
 !! result
@@ -318,7 +318,7 @@ foreach( n in a )
 List merging
 !! input
 <wikiscript>
-foreach( element in [ 7, 4 ] + [ 2, 8 ] )
+for( element in [ 7, 4 ] + [ 2, 8 ] )
 	out( element );
 </wikiscript>
 !! result
@@ -331,12 +331,12 @@ Lists: loop control (break/continue)
 !! input
 <wikiscript>
 a = [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ];
-foreach( e in a ) {
+for( e in a ) {
 	if( e >= 6 & e < 9 )
 		continue;
 	out( e );
 }
-foreach( e in a ) {
+for( e in a ) {
 	if( e == 3 )
 		break;
 	out( e );

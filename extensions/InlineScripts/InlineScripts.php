@@ -39,7 +39,7 @@ $wgAutoloadClasses['ISLRParser'] = $dir . 'interpreter/LRParser.php';
 $wgParserTestFiles[] = $dir . 'interpreterTests.txt';
 $wgHooks['ParserFirstCallInit'][] = 'InlineScriptsHooks::setupParserHook';
 $wgHooks['ParserClearState'][] = 'InlineScriptsHooks::clearState';
-$wgHooks['ParserLimitReport'][] = 'InlineScriptsHooks::reportLimits';
+//$wgHooks['ParserLimitReport'][] = 'InlineScriptsHooks::reportLimits';
 
 $wgInlineScriptsLimits = array(
 	/**
@@ -140,7 +140,7 @@ class InlineScriptsHooks {
 	 * @param  $report
 	 * @return bool
 	 */
-	public static function reportLimits( &$parser, &$report ) {
+	public static function reportLimits( $parser, &$report ) {
 		global $wgInlineScriptsLimits;
 		$i = self::getInterpreter();
 		$report .=

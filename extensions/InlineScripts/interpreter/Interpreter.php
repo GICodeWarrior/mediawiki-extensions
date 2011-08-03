@@ -178,7 +178,7 @@ class InlineScriptEvaluationContext {
 									return new ISData();
 								}
 							}
-						case 'foreach':
+						case 'for':
 							$array = $this->evaluateNode( $c[4], $rec + 1 );
 							if( $array->type != ISData::DList )
 								throw new ISUserVisibleException( 'invalidforeach', $c[0]->type );
@@ -322,8 +322,8 @@ class InlineScriptEvaluationContext {
 					switch( $type ) {
 						case 'isset':
 							return new ISData( ISData::DBool, $this->checkIsset( $c[2], $rec ) );
-						case 'unset':
-							$this->unsetVar( $c[2], $rec );
+						case 'delete':
+							$this->deleteVar( $c[2], $rec );
 							return new ISData();
 						default:
 							throw new ISException( "Unknown keyword: {$type}" );
@@ -352,7 +352,7 @@ class InlineScriptEvaluationContext {
 					}
 				} else {
 					switch( $c[0]->type ) {
-						case 'leftbrace':
+						case 'leftbracket':
 							return $this->evaluateNode( $c[1], $rec + 1 );
 						case 'leftsquare':
 							return new ISData( ISData::DList, $this->parseArray( $c[1], $rec + 1 ) );
@@ -516,12 +516,12 @@ class InlineScriptEvaluationContext {
 		}
 	}
 	
-	protected function unsetVar( $lval, $rec ) {
+	protected function deleteVar( $lval, $rec ) {
 		$c = $lval->getChildren();
 		$line = $c[0]->line;
 		$varname = $c[0]->value;
 		if( isset( $c[1] ) ) {
-			throw new ISException( 'unset() is not usable for array elements' );
+			throw new ISException( 'delete() is not usable for array elements' );
 		}
 		unset( $this->mVars[$varname] );
 	}

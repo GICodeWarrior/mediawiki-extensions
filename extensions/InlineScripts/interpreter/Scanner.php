@@ -30,8 +30,8 @@ class ISScanner implements Iterator {
 
 	static $mKeywords = array(
 		'in', 'true', 'false', 'null', 'contains', 'break',
-		'if', 'then', 'else', 'foreach', 'do', 'try', 'catch',
-		'continue', 'isset', 'unset',
+		'if', 'then', 'else', 'for', 'do', 'try', 'catch',
+		'continue', 'isset', 'delete',
 	);
 
 	public function __construct( $code ) {
@@ -263,7 +263,7 @@ class ISScanner implements Iterator {
 			case '!':
 				return ISToken::TBoolInvert;
 			case '(':
-				return ISToken::TLeftBrace;
+				return ISToken::TLeftBracket;
 			case '{':
 				return ISToken::TLeftCurly;
 			case '[':
@@ -279,7 +279,7 @@ class ISScanner implements Iterator {
 			case '**':
 				return ISToken::TPow;
 			case ')':
-				return ISToken::TRightBrace;
+				return ISToken::TRightBracket;
 			case '}':
 				return ISToken::TRightCurly;
 			case ']':
