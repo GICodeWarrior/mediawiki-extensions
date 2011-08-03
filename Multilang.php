@@ -8,28 +8,18 @@
  * @author Rob Church <robchur@gmail.com>
  */
  
-if( defined( 'MEDIAWIKI' ) ) {
-
-	$wgExtensionCredits['parserhook'][] = array(
-		'path'           => __FILE__,
-		'name'           => 'Multilang',
-		'author'         => '',
-		'url'            => 'http://www.mediawiki.org/wiki/Extension:Multilang',
-	);
-
-	$wgAutoloadClasses['Multilang'] = dirname( __FILE__ ) . '/Multilang.class.php';
-	$wgExtensionFunctions[] = 'efMultilang';
-	
-	function efMultilang() {
-		global $wgMultilang, $wgParser, $wgHooks;
-		# Use of a StubObject means we can have a single, persistent instance
-		# that will remember what's going on between parse runs, and we can
-		# defer initialisation until we need to call a hook function
-		$wgMultilang = new StubObject( 'wgMultilang', 'Multilang' );
-		$wgParser->setHook( 'language', array( &$wgMultilang, 'languageBlock' ) );
-		$wgParser->setHook( 'multilang', array( &$wgMultilang, 'outputBlock' ) );
-		$wgHooks['ParserClearState'][] = array( &$wgMultilang, 'clearState' );
-	}
-
+if( !defined( 'MEDIAWIKI' ) ) {
+	die;
 }
 
+$wgExtensionCredits['parserhook'][] = array(
+	'path'           => __FILE__,
+	'name'           => 'Multilang',
+	'author'         => '',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:Multilang',
+);
+
+$wgAutoloadClasses['Multilang'] = dirname( __FILE__ ) . '/Multilang.class.php';
+
+$wgHooks['ParserClearState'][] = 'Multilang::clearState';
+$wgHooks['ParserFirstCallInit'][] = 'Multilang::onParserFirstCallInit';
