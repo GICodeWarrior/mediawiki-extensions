@@ -181,8 +181,8 @@ es.ParagraphBlock.prototype.getLineBoundaries = function( offset ) {
 
 es.ParagraphBlock.prototype.getWikiDom = function() {
 	return {
-		lines: this.content.getWikiDomLines(),
-		type: 'paragraph'
+		type: 'paragraph',
+		lines: this.content.getWikiDomLines()
 	};
 };
 

@@ -39,7 +39,7 @@
 				width: 95%;
 				margin: auto;
 			}
-			#wikitext-source {
+			.source {
 				min-height: 150px; 
 				margin: 0;
 				padding: 1em;
@@ -69,13 +69,16 @@
 				<td width="50%">
 					<div id="source-wrapper">
 						<h3>Wikitext Source</h3>
-						<div id="wikitext-source"></div>
+						<div id="wikitext-source" class="source"></div>
+						<h3>JSON Source</h3>
+						<div id="json-source" class="source"></div>
 					</div>		
 				</td>				
 			</tr>			
 		</table>
 
 		<script type="text/javascript" src="../../lib/jquery.js"></script>
+		<script type="text/javascript" src="../../lib/jquery.json.js"></script>
 		<script type="text/javascript" src="../../lib/es/es.js"></script>
 		<script type="text/javascript" src="../../lib/es/es.EventEmitter.js"></script>
 		<script type="text/javascript" src="../../lib/es/es.Position.js"></script>
@@ -93,7 +96,7 @@
 		<script type="text/javascript" src="../../lib/es/es.ListBlockItem.js"></script>
 		<script type="text/javascript" src="../../lib/es/es.ListBlock.js"></script>
 		<script type="text/javascript" src="../../lib/es/es.Cursor.js"></script>
-
+		<script type="text/javascript" src="../../lib/FormatJSON.js"></script>
 		<script src="../../lib/wiki.js" type="text/javascript"></script>
 		<script src="../../lib/wiki.util.js" type="text/javascript"></script>
 		<script src="../../lib/wiki.AnnotationRenderer.js" type="text/javascript"></script>
@@ -317,8 +320,9 @@
 						clearTimeout( previewTimeout );
 					}
 					previewTimeout = setTimeout( function () {
-						console.log(doc.getWikiDomDocument());
-						$( '#wikitext-source' ).text( wikitextRenderer.render( doc.getWikiDomDocument() ) );
+						var data = doc.getWikiDomDocument();
+						$( '#wikitext-source' ).text( wikitextRenderer.render( data ) );
+						$( '#json-source' ).text( FormatJSON( data ) );	
 					}, 100 );
 				} );
 
