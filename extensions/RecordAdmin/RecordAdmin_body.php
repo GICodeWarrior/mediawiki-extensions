@@ -20,7 +20,6 @@ class RecordAdmin {
 
 		# Name to use for creating a new record either via RecordAdmin or a public form
 		$this->guid();
-		
 
 		# Make recordID's of articles created with public forms available via recordid tag
 		$wgParser->setHook( $wgRecordAdminTag, array( $this, 'expandTag' ) );
