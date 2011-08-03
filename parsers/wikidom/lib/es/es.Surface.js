@@ -641,9 +641,7 @@ es.Surface.prototype.moveCursorDown = function() {
 es.Surface.prototype.moveCursorRight = function() {
 	var block = this.location.block,
 		offset = this.location.offset;
-	
-	console.log(offset);
-	
+
 	if ( offset < block.getLength() ) {
 		offset++;
 	} else {
@@ -659,7 +657,6 @@ es.Surface.prototype.moveCursorRight = function() {
 	);
 	
 	this.location = new es.Location( block, offset );
-	console.log(offset);
 };
 
 /**
