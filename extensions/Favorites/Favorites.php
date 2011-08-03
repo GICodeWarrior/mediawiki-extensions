@@ -22,7 +22,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Favorites',
 	'author' => 'Jeremy Lemley',
 	'descriptionmsg' => 'favorites-desc',
-	'version' => '0.0.7',
+	'version' => '0.1.0',
 	'url' => "http://www.mediawiki.org/wiki/Extension:Favorites",
 );
 
@@ -55,8 +55,9 @@ $wgHooks['SkinTemplateTabs'][] = 'fnNavTabs';  // For other skins
 //add or remove
 $wgHooks['UnknownAction'][] = 'fnAction';
 
-//handle page moves
+//handle page moves and deletes
 $wgHooks['TitleMoveComplete'][] = 'fnHookMoveToFav';
+$wgHooks['ArticleDeleteComplete'][] = 'fnHookDeleteFav';
 
 //add CSS
 $wgHooks['BeforePageDisplay'][] = 'fnAddCss';
@@ -93,6 +94,14 @@ function fnNavTabs( $skin, &$content_actions ){
 function fnHookMoveToFav(&$title, &$nt, &$wgUser, $pageid, $redirid ) {
 	$favTitle = new FavTitle();
 	$favTitle->moveToFav($title, $nt, $wgUser, $pageid, $redirid );
+	return true;
+}
+
+function fnHookDeleteFav(&$article, &$user, $reason, $id ){
+	$dbw = wfGetDB( DB_MASTER );
+	$dbw->delete('favoritelist', array(
+		'fl_title' => $article->mTitle->getDBKey()), 
+		$fname = 'Database::delete');
 	return true;
 }
 
