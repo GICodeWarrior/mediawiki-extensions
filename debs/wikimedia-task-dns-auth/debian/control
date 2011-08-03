@@ -7,7 +7,12 @@ Standards-Version: 3.6.2
 
 Package: wikimedia-task-dns-auth
 Architecture: all
-Depends: pdns-server (>= 2.9.22), pdns-backend-geo (>= 2.9.22), pdns-backend-pipe (>= 2.9.22), python, rsync
+Depends: pdns-server (>= 2.9.22),
+    pdns-backend-geo (>= 2.9.22),
+    pdns-backend-pipe (>= 2.9.22),
+    python,
+    rsync,
+    subversion
 Description: Provides a Wikimedia authoritative DNS server
  Package wikimedia-task-dns-auth depends on the appropriate packages
  that need to be installed on a Wikimedia authoritative DNS server,

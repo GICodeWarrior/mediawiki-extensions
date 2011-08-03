@@ -17,7 +17,7 @@ LANGLIST=$POWERDNSDIR/langlist
 LANGLISTSOURCE=""
 DBLIST=$POWERDNSDIR/all.dblist
 DBLISTSOURCE=""
-SVNROOT=file:///var/lib/svnroot
+SVNROOT="svn+ssh://sockpuppet.pmtpa.wmnet/svnroot/configuration"
 REPONAME=pdns-templates
 
 PATH=/bin:/usr/bin:/usr/local/bin
