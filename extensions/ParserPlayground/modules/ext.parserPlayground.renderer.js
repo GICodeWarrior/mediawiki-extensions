@@ -129,9 +129,9 @@ MWTreeRenderer.prototype.treeToHtml = function(tree, callback, inspectorMap) {
 				$.map(tree.attrs, function(val, key) {
 					$span.attr(key, val); // @fixme safety!
 				});
-				if ('content' in tree) {
-					subParseArray(tree.content, $span);
-				}
+			}
+			if ('content' in tree) {
+				subParseArray(tree.content, $span);
 			}
 			node = $span[0];
 			break;

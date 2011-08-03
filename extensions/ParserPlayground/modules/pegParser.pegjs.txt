@@ -15,6 +15,7 @@ newline
 block
   = br
   / h
+  / li
   / para
 
 h = h1 / h2 / h3 / h4 / h5 / h6
@@ -345,3 +346,21 @@ ext_param_val
   = t:[0-9A-Za-z]+ { return {text: t.join('') } }
   / "'" t:[^'>]+ "'" { return { quote: "'", text: t.join('') } }
   / '"' t:[^">]+ '"' { return { quote: '"', text: t.join('') } }
+
+
+li = bullets:list_char+ 
+    c:(inline / anything)
+    newline 
+{
+    return {
+        type: 'li',
+        listStyle: bullets,
+        content: c
+    };
+}
+
+list_char =
+    '*' /
+    '#' /
+    ':' /
+    ';'

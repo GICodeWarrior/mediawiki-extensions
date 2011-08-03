@@ -128,6 +128,10 @@ function processTest(item) {
 				if (err) {
 					console.log('RENDER FAIL', err);
 				} else {
+					console.log('EXPECTED:');
+					console.log(item.result + "\n");
+					
+					console.log('RENDERED:');
 					console.log(node.innerHTML + "\n");
 				}
 			});
