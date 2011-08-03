@@ -6,11 +6,13 @@ if( !defined( 'MEDIAWIKI' ) ) {
 class SelectionTemplate extends QuickTemplate {
 	public function execute() {
 		$articles = $this->data['articles'];
+		$name = $this->data['name'];
+		$csv_link = $this->data['csv_link'];
 ?>
 
 <div id="">
 <?php if( count($articles) > 0 ) { ?>
-<h3>Results</h3>
+<h3>Articles in Selection <?php echo $name; ?></h3> <small><a href="<?php echo $csv_link; ?>">Export CSV</a></small>
 	<table>
 	<tr>
 		<th>Article</th>
@@ -25,7 +27,7 @@ class SelectionTemplate extends QuickTemplate {
 	<?php } ?>
 	</table>
 <?php } else { ?> 
-<p>No results found</p>
+<p>No such selection found</p>
 <?php } ?>
 </div>
 

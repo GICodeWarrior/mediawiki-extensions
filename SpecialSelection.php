@@ -32,7 +32,7 @@ class SpecialSelection extends SpecialPage {
 	public function execute( $par ) {
         global $wgOut, $wgRequest;
 
-		$name = $par;
+		$name = $wgRequest->getVal('name');
 		$action = $wgRequest->getVal('action'); 		
 
 		$entries = Selection::getSelection( $name );
@@ -49,8 +49,15 @@ class SpecialSelection extends SpecialPage {
 			$wgOut->disable();
 			$this->makeCSV( $entries, $name );
 		}
+
+		$csv_link = $this->getFullTitle()->getFullUrl( array( 
+			'action' => 'csv',
+			'name' => $name
+		) );
 		$template = new SelectionTemplate();
 		$template->set( 'articles', $entries );
+		$template->set( 'name', $name );
+		$template->set( 'csv_link', $csv_link );
 
 		$wgOut->addTemplate( $template );
 	}
