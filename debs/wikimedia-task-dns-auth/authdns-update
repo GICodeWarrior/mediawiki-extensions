@@ -17,6 +17,8 @@ LANGLIST=$POWERDNSDIR/langlist
 LANGLISTSOURCE=""
 DBLIST=$POWERDNSDIR/all.dblist
 DBLISTSOURCE=""
+SVNROOT=file:///var/lib/svnroot
+REPONAME=pdns-templates
 
 PATH=/bin:/usr/bin:/usr/local/bin
 
@@ -38,7 +40,11 @@ done
 
 echo "Will skip slave(s) $SKIP."
 
-# First, remove backup files that might be read as zonefiles
+# export the current templates from svn
+echo "Checking out the current revision of the templates"
+svn export --force $SVNROOT/$REPONAME $POWERDNSDIR/templates
+
+# remove backup files that might be read as zonefiles
 echo "Removing backup files"
 rm -f $POWERDNSDIR/templates/*~ $POWERDNSDIR/geomaps/*~ 
 

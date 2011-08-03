@@ -1,3 +1,9 @@
+wikimedia-task-dns-auth (0.15) hardy; urgency=low
+
+  * svn integration in authdns-update
+
+ -- Ben Hartshorne <bhartshorne@wikimedia.org>  Tue, 03 Aug 2011 00:04:03 +0000
+
 wikimedia-task-dns-auth (0.14) hardy; urgency=low
 
   * changed CNAME for local.m.w.org to m.w.o from mobile1
