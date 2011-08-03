@@ -12,7 +12,7 @@ __date__ = "June 27th, 2011"
 
 
 """ Import python base modules """
-import sys, getopt, re, datetime, logging, MySQLdb, settings
+import sys, getopt, re, datetime, logging, MySQLdb, settings, operator
 import networkx as nx
 
 """ Import Analytics modules """
@@ -91,13 +91,13 @@ class CategoryLoader(WSORSlaveDataLoader):
         self._query_names_['get_subcategories'] = "select cl_to from categorylinks_cp where cl_from = %s"
         self._query_names_['delete_from_recs'] = "delete from rfaulk.categorylinks_cp where cl_from = %s"
         self._query_names_['is_empty'] = "select * from rfaulk.categorylinks_cp limit 1"
-        self._query_names_['get_category_links'] = "select cl_from, cl_to from categorylinks_cp limit 100"
+        self._query_names_['get_category_links'] = "select cl_from, cl_to from categorylinks_cp limit 10000"
         
         WSORSlaveDataLoader.__init__(self)    
         logging.info('Creating CategoryLoader')
     
     """
-        
+        Retrieves all rows out of the category links table
     """
     def get_category_links(self):
         
@@ -236,8 +236,8 @@ class CategoryLoader(WSORSlaveDataLoader):
     """ 
     def extract_hierarchy(self):
                         
-        #self.drop_category_links_cp_table()
-        #self.create_category_links_cp_table()
+        self.drop_category_links_cp_table()
+        self.create_category_links_cp_table()
                     
         """ Create graph """
         logging.info('Initializing directed graph...')
@@ -256,22 +256,81 @@ class CategoryLoader(WSORSlaveDataLoader):
         links = self.get_category_links()
         count = 0
         
+        out_degrees = dict()
+        in_degrees = dict()
+        subcategories = dict()
+        
+        """ Process subcategory links """
         for row in links:
             
             cl_from = int(row[0])
             cl_to = str(row[1])
             cl_from = self.get_page_title(cl_from)
+        
+            try:
+                subcategories[cl_from].append(cl_to)
             
+            except KeyError:    
+                subcategories[cl_from] = list()
+                subcategories[cl_from].append(cl_to)
+                
+            try:
+                out_degrees[cl_from] = out_degrees[cl_from] + 1
+            except KeyError:
+                out_degrees[cl_from] = 1
+            
+            try:
+                in_degrees[cl_to] = in_degrees[cl_to] + 1
+            except KeyError:
+                in_degrees[cl_to] = 1
+                     
             directed_graph.add_weighted_edges_from([(cl_from, cl_to, 1)])
             
-            if self.__DEBUG__:
+            if self.__DEBUG__ and count % 1000 == 0:
                 
                 logging.debug('%s: %s -> %s' % (str(count), cl_from, cl_to))
-                count = count + 1
+            
+            count = count + 1
+        
+        logging.info('Sorting in degree list.')
+        sorted_in_degrees = sorted(in_degrees.iteritems(), key=operator.itemgetter(1), reverse=True)
+        logging.info('Sorting out degree list.')
+        sorted_out_degrees = sorted(out_degrees.iteritems(), key=operator.itemgetter(1), reverse=True)
+        
+        in_only, out_only = self.get_uni_directionally_linked_categories(sorted_in_degrees, sorted_out_degrees)
         
         logging.info('Category links finished processing.')
         
-        return directed_graph
+        return directed_graph, in_degrees, out_degrees, sorted_in_degrees, sorted_out_degrees, subcategories, in_only, out_only
+    
+    
+    """
+        Returns 
+    """
+    def get_uni_directionally_linked_categories(self, in_degrees, out_degrees):
+        
+        logging.info('Generating lists of categories have either only in degrees or out degrees.')
+        
+        in_keys = list()
+        for i in in_degrees:
+            in_keys.append(i[0])
+        
+        out_keys = list()
+        for i in out_degrees:
+            out_keys.append(i[0])
+        
+        in_only = list()
+        out_only = list()
+        
+        for i in in_degrees:
+            if not(i[0] in out_keys):
+                in_only.append(i) 
+            
+        for i in out_degrees:
+            if not(i[0] in in_keys):
+                out_only.append(i)
+        
+        return in_only, out_only
     
     
     """ drop rfaulk.categorylinks_cp """
