@@ -26,7 +26,7 @@ class SpecialCollabWatchlist extends SpecialWatchlist {
 	 * Constructor
 	 */
 	public function __construct(){
-		//XXX That's a nasty, SpecialWatchlist should have a corresponding constructor,
+		//XXX That's nasty, SpecialWatchlist should have a corresponding constructor,
 		// or expose the methods we need publicly
 		SpecialPage::__construct( 'CollabWatchlist' );
 	}
