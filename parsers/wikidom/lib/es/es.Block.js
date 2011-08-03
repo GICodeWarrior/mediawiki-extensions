@@ -214,6 +214,10 @@ es.Block.prototype.getSectionBoundaries = function( offset ) {
 	throw 'Block.getSectionBoundaries not implemented in this subclass.';
 };
 
+es.Block.prototype.getWikiDom = function() {
+	throw 'Block.getWikiDom not implemented in this subclass.';
+};
+
 /* Inheritance */
 
 es.extend( es.Block, es.EventEmitter );

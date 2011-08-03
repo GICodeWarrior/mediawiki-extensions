@@ -93,7 +93,13 @@
 		<script type="text/javascript" src="../../lib/es/es.ListBlockItem.js"></script>
 		<script type="text/javascript" src="../../lib/es/es.ListBlock.js"></script>
 		<script type="text/javascript" src="../../lib/es/es.Cursor.js"></script>
-		
+
+		<script src="../../lib/wiki.js" type="text/javascript"></script>
+		<script src="../../lib/wiki.util.js" type="text/javascript"></script>
+		<script src="../../lib/wiki.AnnotationRenderer.js" type="text/javascript"></script>
+		<script src="../../lib/wiki.HtmlRenderer.js" type="text/javascript"></script>
+		<script src="../../lib/wiki.WikitextRenderer.js" type="text/javascript"></script>
+
 		<!-- Demo -->
 		<script>
 			$(document).ready( function() {
@@ -138,6 +144,7 @@
 							{ 'text': "A soft return is the break resulting from line wrap or word wrap, whereas a hard return is an intentional break, creating a new paragraph." },
 						]
 					},
+					/*
 					{
 						'type': 'list',
 						'style': 'number',
@@ -238,13 +245,13 @@
 							}
 						]
 					},
+					*/
 					{
 						'type': 'paragraph',
 						'lines': [
 							{ 'text': 'The soft returns are usually placed after the ends of complete words, or after the punctuation that follows complete words. However, word wrap may also occur following a hyphen.' },
 							{ 'text': 'Word wrap following hyphens is sometimes not desired, and can be avoided by using a so-called non-breaking hyphen instead of a regular hyphen. On the other hand, when using word processors, invisible hyphens, called soft hyphens, can also be inserted inside words so that word wrap can occur following the soft hyphens.' },
 							{ 'text': 'Sometimes, word wrap is not desirable between words. In such cases, word wrap can usually be avoided by using a hard space or non-breaking space between the words, instead of regular spaces.' },
-							{ 'text': 'OccasionallyThereAreWordsThatAreSoLongTheyExceedTheWidthOfTheLineAndEndUpWrappingBetweenMultipleLines.' },
 							{ 'text': 'Text might have\ttabs\tin it too. Not all text will end in a line breaking character' }
 						]
 					}
@@ -302,6 +309,19 @@
 					surface.annotateContent( 'remove', { 'type': 'all' } );
 					return false;
 				} );
+
+				var previewTimeout = null;
+				var wikitextRenderer = new wiki.WikitextRenderer();
+				doc.on( 'update', function() {
+					if ( previewTimeout !== null ) {
+						clearTimeout( previewTimeout );
+					}
+					previewTimeout = setTimeout( function () {
+						console.log(doc.getWikiDomDocument());
+						$( '#wikitext-source' ).text( wikitextRenderer.render( doc.getWikiDomDocument() ) );
+					}, 100 );
+				} );
+
 			} );
 		</script>
 	</body>

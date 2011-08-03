@@ -52,6 +52,14 @@ es.Document.prototype.renderBlocks = function() {
 	}
 };
 
+es.Document.prototype.getWikiDomDocument = function() {
+	var wikidom = { blocks: [ ] };
+	for ( var i = 0; i < this.blocks.length; i++ ) {
+		wikidom.blocks.push( this.blocks[i].getWikiDom() );
+	}
+	return wikidom;
+};
+
 /* Inheritance */
 
 es.extend( es.Document, es.Container );
