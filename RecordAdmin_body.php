@@ -108,36 +108,20 @@ class RecordAdmin {
 			$editPage->editFormTextTop = $tabset;
 
 			# JS to add an onSubmit method that adds the record forms contents to hidden values in the edit form
-			$wgOut->addScript( "<script type='$wgJsMimeType'>
-				function raRecordForms() {
-					var forms = [ $jsFormsList ];
-					for( i = 0; i < forms.length; i++ ) {
-						var type = forms[i];
-						var form = document.getElementById( type + '-form' );
-						var tags = [ 'input', 'select', 'textarea' ];
-						for( j = 0; j < tags.length; j++ ) {
-							var inputs = form.getElementsByTagName( tags[j] );
-							for( k = 0; k < inputs.length; k++ ) {
-								var input = jQuery( inputs[k] );
-								if( input.attr('type') != 'checkbox' || input.attr('checked') ) {
-									var multi = input.val();
-									if( typeof( multi ) == 'object' ) multi = multi.join('\\n');
-									var key = type + ':' + inputs[k].getAttribute('name');
-									var hidden = jQuery( document.createElement( 'input' ) );
-									hidden.attr( 'name', key );
-									hidden.attr( 'type', 'hidden' );
-									hidden.val( multi );
-									jQuery( '#editform' ).append( hidden );
-								}
-							}
-						}
+			if( is_callable( array( $wgOut, 'addModules' ) ) ) {
+				$wgOut->addModules( 'ext.recordadmin' );
+			} else {
+				global $wgRecordAdminExtPath;
+				$wgOut->addScript( "<script type=\"$wgJsMimeType\" src=\"$wgRecordAdminExtPath/recordadmin.js\"></script>" );
+				$wgOut->addScript( "<script type=\"$wgJsMimeType\">
+					function raAddRecordFormSubmit() {
+						jQuery( '#editform' ).attr( 'onsubmit', 'raRecordForms()' );
 					}
-				}
-				function raAddToSubmit() {
-					jQuery( '#editform' ).attr( 'onsubmit', 'raRecordForms()' );
-				}
-				addOnloadHook( raAddToSubmit );
-			</script>" );
+					addOnloadHook( raAddRecordFormSubmit );</script>"
+				);
+			}
+			$wgOut->addScript( "<script type=\"$wgJsMimeType\">var forms = [ $jsFormsList ];</script>" );
+
 		}
 
 
