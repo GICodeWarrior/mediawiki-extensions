@@ -20,9 +20,15 @@
  * @file
  * @ingroup SpecialPage CollabWatchlist
  */
-class SpecialCollabWatchlist extends SpecialPage {
-	function __construct() {
-		parent::__construct( 'CollabWatchlist' );
+class SpecialCollabWatchlist extends SpecialWatchlist {
+	
+	/**
+	 * Constructor
+	 */
+	public function __construct(){
+		//XXX That's a nasty, SpecialWatchlist should have a corresponding constructor,
+		// or expose the methods we need publicly
+		SpecialPage::__construct( 'CollabWatchlist' );
 	}
 
 	/**
@@ -314,20 +320,20 @@ class SpecialCollabWatchlist extends SpecialPage {
 				) . '<br />';
 		}
 
-		$cutofflinks = "\n" . $this->wlCutoffLinks( $days, 'CollabWatchlist', $nondefaults ) . "<br />\n";
+		$cutofflinks = "\n" . self::cutoffLinks( $days, 'CollabWatchlist', $nondefaults ) . "<br />\n";
 
 		$thisTitle = SpecialPage::getTitleFor( 'CollabWatchlist' );
 
 		# Spit out some control panel links
-		$links[] = $this->wlShowHideLink( $nondefaults, 'rcshowhideminor', 'hideMinor', $hideMinor );
-		$links[] = $this->wlShowHideLink( $nondefaults, 'rcshowhidebots', 'hideBots', $hideBots );
-		$links[] = $this->wlShowHideLink( $nondefaults, 'rcshowhideanons', 'hideAnons', $hideAnons );
-		$links[] = $this->wlShowHideLink( $nondefaults, 'rcshowhideliu', 'hideLiu', $hideLiu );
-		$links[] = $this->wlShowHideLink( $nondefaults, 'rcshowhidemine', 'hideOwn', $hideOwn );
-		$links[] = $this->wlShowHideLink( $nondefaults, 'collabwatchlistshowhidelistusers', 'hideListUser', $hideListUser );
+		$links[] = self::showHideLink( $nondefaults, 'rcshowhideminor', 'hideMinor', $hideMinor );
+		$links[] = self::showHideLink( $nondefaults, 'rcshowhidebots', 'hideBots', $hideBots );
+		$links[] = self::showHideLink( $nondefaults, 'rcshowhideanons', 'hideAnons', $hideAnons );
+		$links[] = self::showHideLink( $nondefaults, 'rcshowhideliu', 'hideLiu', $hideLiu );
+		$links[] = self::showHideLink( $nondefaults, 'rcshowhidemine', 'hideOwn', $hideOwn );
+		$links[] = self::showHideLink( $nondefaults, 'collabwatchlistshowhidelistusers', 'hideListUser', $hideListUser );
 
 		if ( $wgUser->useRCPatrol() ) {
-			$links[] = $this->wlShowHideLink( $nondefaults, 'rcshowhidepatr', 'hidePatrolled', $hidePatrolled );
+			$links[] = self::showHideLink( $nondefaults, 'rcshowhidepatr', 'hidePatrolled', $hidePatrolled );
 		}
 
 		# Namespace filter and put the whole form together.
@@ -443,114 +449,14 @@ class SpecialCollabWatchlist extends SpecialPage {
 		$dbr->freeResult( $res );
 		$wgOut->addHTML( $s );
 	}
-
-	function wlShowHideLink( $options, $message, $name, $value ) {
-		global $wgUser;
-
-		$showLinktext = wfMsgHtml( 'show' );
-		$hideLinktext = wfMsgHtml( 'hide' );
-		$title = SpecialPage::getTitleFor( 'CollabWatchlist' );
-		$skin = $wgUser->getSkin();
-
-		$label = $value ? $showLinktext : $hideLinktext;
-		$options[$name] = 1 - (int) $value;
-
-		return wfMsgHtml( $message, $skin->linkKnown( $title, $label, array(), $options ) );
-	}
 	
 	/**
-	 * Creates a link for the days query parameter with hours
-	 * @param $h The number of hours
-	 * @param $page String: The name of the target page for the link
-	 * @param $options Mixed: Additional query parameters
-	 * @return String: Html for the link
-	 */
-	function wlHoursLink( $h, $page, $options = array() ) {
-		global $wgUser, $wgLang, $wgContLang;
-
-		$sk = $wgUser->getSkin();
-		$title = Title::newFromText( $wgContLang->specialPage( $page ) );
-		$options['days'] = ( $h / 24.0 );
-
-		$s = $sk->linkKnown(
-			$title,
-			$wgLang->formatNum( $h ),
-			array(),
-			$options
-		);
-
-		return $s;
-	}
-
-	/**
-	 * Creates a link for the days query parameter with days
-	 * @param $d The number of days
-	 * @param $page String: The name of the target page for the link
-	 * @param $options Mixed: Additional query parameters
-	 * @return String: Html for the link
-	 */
-	function wlDaysLink( $d, $page, $options = array() ) {
-		global $wgUser, $wgLang, $wgContLang;
-
-		$sk = $wgUser->getSkin();
-		$title = Title::newFromText( $wgContLang->specialPage( $page ) );
-		$options['days'] = $d;
-		$message = ( $d ? $wgLang->formatNum( $d ) : wfMsgHtml( 'watchlistall2' ) );
-
-		$s = $sk->linkKnown(
-			$title,
-			$message,
-			array(),
-			$options
-		);
-
-		return $s;
-	}
-
-	/**
 	 * Returns html
-	 */
-	function wlCutoffLinks( $days, $page = 'CollabWatchlist', $options = array() ) {
-		global $wgLang;
-
-		$hours = array( 1, 2, 6, 12 );
-		$days = array( 1, 3, 7 );
-		$i = 0;
-		foreach ( $hours as $h ) {
-			$hours[$i++] = $this->wlHoursLink( $h, $page, $options );
-		}
-		$i = 0;
-		foreach ( $days as $d ) {
-			$days[$i++] = $this->wlDaysLink( $d, $page, $options );
-		}
-		return wfMsgExt( 'wlshowlast',
-			array( 'parseinline', 'replaceafter' ),
-			$wgLang->pipeList( $hours ),
-			$wgLang->pipeList( $days ),
-			$this->wlDaysLink( 0, $page, $options ) );
-	}
-
-	/**
-	 * Count the number of items on a user's watchlist
 	 *
-	 * @param $talk Include talk pages
-	 * @return integer
+	 * @return string
 	 */
-	function wlCountItems( &$user, $talk = true ) {
-		$dbr = wfGetDB( DB_SLAVE, 'watchlist' );
-
-		# Fetch the raw count
-		$res = $dbr->select( 'watchlist', 'COUNT(*) AS count',
-			array( 'wl_user' => $user->mId ), 'wlCountItems' );
-		$row = $dbr->fetchObject( $res );
-		$count = $row->count;
-		$dbr->freeResult( $res );
-
-		# Halve to remove talk pages if needed
-		if ( !$talk )
-			$count = floor( $count / 2 );
-
-		return( $count );
+	protected static function cutoffLinks( $days, $page = 'Watchlist', $options = array() ) {
+		return SpecialWatchlist::cutoffLinks( $days, $page, $options );
 	}
 
 	/** Returns an array of maps representing collab watchlist tags. The following fields are present
