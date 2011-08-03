@@ -474,7 +474,7 @@ abstract class RecordSetEditor extends DefaultEditor {
 				$addValues = $editor->getAddValues( $idPath );
 				$i = 0 ;
 				foreach ( $addValues as $value ) {
-					if ( ! $results[$i] ) {
+					if ( ! array_key_exists($i, $results ) ) {
 						$results[$i] = new ArrayRecord( $structure );
 					}
 					$results[$i]->setAttributeValue( $attribute, $value );
@@ -865,7 +865,7 @@ abstract class RecordEditor extends DefaultEditor {
 				$addValues = $editor->getAddValues( $idPath );
 				$i = 0 ;
 				foreach ( $addValues as $value ) {
-					if ( ! $results[$i] ) {
+					if ( ! array_key_exists($i, $results ) ) {
 						$results[$i] = new ArrayRecord( $this->getAddStructure() );
 					}
 					$results[$i]->setAttributeValue( $attribute, $value );
@@ -1494,6 +1494,7 @@ class OptionAttributeEditor extends AttributeEditor {
 			$syntransId = $idPath->getKeyStack()->peek( 0 )->syntransId;
 			if ( ! $syntransId ) $syntransId = 0 ; // in the case of a DM option attribute, there is no syntrans in the PathId
 
+			// note: it is normal that the "updateSelectOptions(" has no closing parenthesis. An additional parameter and ')' is added by the function updateSuggestValue (suggest.js)
 			$parameters = array(
 				"level" => $this->attributesLevelName,
 				"definedMeaningId" => $idPath->getDefinedMeaningId(),
@@ -1503,17 +1504,17 @@ class OptionAttributeEditor extends AttributeEditor {
 			);
 			return getSuggest( $this->addId( $idPath->getId() ), $this->suggestType(), $parameters );
 		}
-		else
-			return '';
+		else return '';
 	}
 
 	public function getEditHTML( IdStack $idPath, $value ) {
 		global $wgOptionSuffix;
+		// note: it is normal that the "updateSelectOptions(" has no closing parenthesis. An additional parameter and ')' is added by the function updateSuggestValue (suggest.js)
 		$parameters = array(
 			"level" => $this->attributesLevelName,
 			"onUpdate" => 'updateSelectOptions(\'' . $this->updateId( $idPath->getId() ) . $wgOptionSuffix . '\''
 		);
-		
+
 		return getSuggest( $this->updateId( $idPath->getId() ), $this->suggestType(), $parameters );
 	}
 }
