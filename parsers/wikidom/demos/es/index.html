@@ -86,8 +86,8 @@
 									{ 'type': 'italic', 'range': { 'start': 17, 'end': 26 } },
 									// "wrap is" should be a link to "#"
 									{
-										'type': 'link',
-										'data': { 'href': './' },
+										'type': 'xlink',
+										'data': { 'href': '#' },
 										'range': { 'start': 22, 'end': 29 }
 									},
 								]
@@ -202,7 +202,7 @@
 									'text': 'Fourth item',
 									'annotations': [
 										{
-											'type': 'link',
+											'type': 'ilink',
 											'range': {
 												'start': 7,
 												'end': 11
@@ -269,7 +269,7 @@
 				} );
 				$( '#es-toolbar-link' ).click( function() {
 					surface.annotateContent( 'toggle', {
-						'type': 'link',
+						'type': 'xlink',
 						'data': { 'href': '#' }
 					} );
 					return false;

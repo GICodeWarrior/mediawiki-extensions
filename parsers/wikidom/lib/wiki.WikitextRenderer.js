@@ -142,7 +142,7 @@ wiki.WikitextRenderer = function( context ) {
 						ar.wrapWithText( an.range, '\'\'', '\'\'' );
 						break;
 					case 'xlink':
-						ar.wrapWithText( an.range, '[' + an.data.url + ' ', ']' );
+						ar.wrapWithText( an.range, '[' + an.data.href + ' ', ']' );
 						break;
 					case 'ilink':
 						ar.wrapWithText( an.range, '[[' + an.data.title + '|', ']]' );

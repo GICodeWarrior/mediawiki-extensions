@@ -55,9 +55,15 @@ es.Content.annotationRenderers = {
 		},
 		'close': '</span>',
 	},
-	'link': {
+	'xlink': {
 		'open': function( data ) {
 			return '<span class="editSurface-format-link" data-href="' + data.href + '">';
+		},
+		'close': '</span>'
+	},
+	'ilink': {
+		'open': function( data ) {
+			return '<span class="editSurface-format-link" data-title="' + data.title + '">';
 		},
 		'close': '</span>'
 	}
