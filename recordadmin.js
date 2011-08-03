@@ -9,7 +9,7 @@ window.raRecordForms = function () {
 				var input = jQuery( inputs[k] );
 				if( input.attr('type') != 'checkbox' || input.attr('checked') ) {
 					var multi = input.val();
-					if( typeof( multi ) == 'object' ) multi = multi.join('\\n');
+					if( typeof( multi ) == 'object' ) multi = multi.join('\n');
 					var key = type + ':' + inputs[k].getAttribute('name');
 					var hidden = jQuery( document.createElement( 'input' ) );
 					hidden.attr( 'name', key );
