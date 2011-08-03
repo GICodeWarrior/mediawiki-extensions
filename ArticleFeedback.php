@@ -139,6 +139,7 @@ $wgExtensionCredits['other'][] = array(
 		'Adam Miller',
 		'Nimish Gautam',
 		'Arthur Richards',
+		'Timo Tijhof',
 	),
 	'version' => '0.2.0',
 	'descriptionmsg' => 'articlefeedback-desc',

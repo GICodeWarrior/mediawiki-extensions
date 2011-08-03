@@ -12,6 +12,10 @@ jQuery( function( $ ) {
 		&& mw.config.get( 'wgArticleId' ) > 0
 		// View pages
 		&& ( mw.config.get( 'wgAction' ) == 'view' || mw.config.get( 'wgAction' ) == 'purge' )
+		// If user is logged in, showiong on action=purge is OK,
+		// but if user is logged out, action=purge shows a form instead of the article,
+		// so return false in that case.
+		&& !( mw.config.get( 'wgAction' ) == 'purge' && mw.user.anonymous() )
 		// Current revision
 		&& mw.util.getParamValue( 'diff' ) == null
 		&& mw.util.getParamValue( 'oldid' ) == null
