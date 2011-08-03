@@ -38,6 +38,14 @@ while [ -n "$1" ]; do
 	shift
 done
 
+if ssh-add -l>/dev/null 2>&1
+then
+    echo "Found your ssh agent."
+else
+    echo "Can't contact your ssh agent.  You must forward your ssh agent to use this script."
+    exit 2
+fi
+
 echo "Will skip slave(s) $SKIP."
 
 # export the current templates from svn
