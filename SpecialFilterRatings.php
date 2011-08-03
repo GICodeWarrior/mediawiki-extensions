@@ -49,7 +49,7 @@ class SpecialFilterRatings extends SpecialPage {
 		$template->set( 'filters', $filters );
 		$template->set( 'articles', $entries );
 		$template->set( 'action', $action );
-		$template->set( 'selection', $selection );
+		$template->set( 'selection', $selection_name );
 
 		$wgOut->addTemplate( $template );
 	}

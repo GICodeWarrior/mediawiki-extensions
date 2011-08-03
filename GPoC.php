@@ -28,8 +28,10 @@ $wgAutoloadClasses['TableDisplay'] = $dir . 'TableDisplay.php';
 $wgAutoloadClasses['AssessmentsExtractor'] = $dir . 'AssessmentsExtractor.php';
 $wgAutoloadClasses['SpecialAssessmentLog'] = $dir . 'SpecialAssessmentLog.php';
 $wgAutoloadClasses['SpecialFilterRatings'] = $dir . 'SpecialFilterRatings.php';
+$wgAutoloadClasses['SpecialSelection'] = $dir . 'SpecialSelection.php';
 
 $wgAutoloadClasses['FilterRatingsTemplate'] = $dir . 'templates/FilterRatingsTemplate.php';
+$wgAutoloadClasses['SelectionTemplate'] = $dir . 'templates/SelectionTemplate.php';
 
 $wgHooks['ArticleSaveComplete'][] = 'GPoCHooks::ArticleSaveComplete';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'GPoCHooks::SetupSchema';
@@ -41,5 +43,6 @@ $wgHooks['TitleMoveComplete'][] = 'GPoCHooks::TitleMoveComplete';
 
 $wgSpecialPages['AssessmentLog'] = 'SpecialAssessmentLog';
 $wgSpecialPages['FilterRatings'] = 'SpecialFilterRatings';
+$wgSpecialPages['Selection'] = 'SpecialSelection';
 
 // Configuration

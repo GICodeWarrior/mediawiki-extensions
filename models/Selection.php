@@ -21,4 +21,24 @@ class Selection {
 			);
 		}
 	}
+
+	public static function getSelection( $name ) {
+		$dbr = wfGetDB( DB_SLAVE );
+
+		$query = $dbr->select(
+			'selections',
+			'*',
+			array('s_selection_name' => $name),
+			__METHOD__
+		);
+
+		$articles = array();
+		foreach( $query as $article_row ) {
+			$article = (array)$article_row;
+			$title = Title::makeTitle( $article['s_namespace'], $article['s_article'] );
+			$article['title'] = $title;
+			array_push( $articles, $article );
+		}
+		return $articles;
+	}
 }
