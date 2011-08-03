@@ -25,7 +25,7 @@ class SpecialCollabWatchlist extends SpecialWatchlist {
 	/**
 	 * Constructor
 	 */
-	public function __construct(){
+	public function __construct() {
 		//XXX That's nasty, SpecialWatchlist should have a corresponding constructor,
 		// or expose the methods we need publicly
 		SpecialPage::__construct( 'CollabWatchlist' );
@@ -149,7 +149,6 @@ class SpecialCollabWatchlist extends SpecialWatchlist {
 
 		# Get collabwatchlist value, if supplied, and prepare a WHERE fragment
 		$collabWatchlist = $wgRequest->getIntOrNull( 'collabwatchlist' );
-		$invert = $wgRequest->getBool( 'invert' );
 		if ( !is_null( $collabWatchlist ) && $collabWatchlist !== 'all' ) {
 			$collabWatchlist = intval( $collabWatchlist );
 		}
@@ -190,7 +189,6 @@ class SpecialCollabWatchlist extends SpecialWatchlist {
 		wfAppendToArrayIfNotDefault( 'hidePatrolled', (int)$hidePatrolled, $defaults, $nondefaults );
 		wfAppendToArrayIfNotDefault( 'filterTags', $filterTags   , $defaults, $nondefaults );
 		wfAppendToArrayIfNotDefault( 'invertTags', $invertTags   , $defaults, $nondefaults );
-		wfAppendToArrayIfNotDefault( 'invert', $invert   , $defaults, $nondefaults );
 
 		if ( $days <= 0 ) {
 			$andcutoff = '';
@@ -361,7 +359,6 @@ class SpecialCollabWatchlist extends SpecialWatchlist {
 		}
 		$form .= Xml::checkLabel( wfMsg( 'collabwatchlistinverttags' ), 'invertTags', 'nsinvertTags', $invertTags ) . '<br />';
 		$form .= CollabWatchlistChangesList::collabWatchlistSelector( $listIdsAndNames, $collabWatchlist, '', 'collabwatchlist', wfMsg( 'collabwatchlist' ) ) . '&nbsp;';
-		$form .= Xml::checkLabel( wfMsg( 'invert' ), 'invert', 'nsinvert', $invert ) . '&nbsp;';
 		$form .= Xml::submitButton( wfMsg( 'allpagessubmit' ) ) . '</p>';
 		$form .= Html::hidden( 'days', $days );
 		if ( $hideMinor )
@@ -427,7 +424,7 @@ class SpecialCollabWatchlist extends SpecialWatchlist {
 				$rc->numberofWatchingusers = 0;
 			}
 
-			$tags = $this->wlTagsForRevision( $obj->rc_this_oldid, array( $collabWatchlist ), $invert );
+			$tags = $this->wlTagsForRevision( $obj->rc_this_oldid, array( $collabWatchlist ) );
 //			if( isset($tags) ) {
 //				// Filter recentchanges which contain unwanted tags
 //				$tagNames = array();
@@ -468,19 +465,14 @@ class SpecialCollabWatchlist extends SpecialWatchlist {
 	 * - rrt_comment Collabwatchlist tag comment
 	 * @param $rev_id
 	 * @param $rl_ids
-	 * @param $invert
 	 * @return unknown_type
 	 */
-	function wlTagsForRevision( $rev_id, $rl_ids = array(), $invert = false, $filterTags = array() ) {
+	function wlTagsForRevision( $rev_id, $rl_ids = array(), $filterTags = array() ) {
 		// Some DB stuff
 		$dbr = wfGetDB( DB_SLAVE );
 		$cond = array();
 		if ( isset( $rl_ids ) && !( count( $rl_ids ) == 1 && $rl_ids[0] == 0 ) ) {
-			if ( $invert ) {
-				$cond[] = "rl_id NOT IN (" . $dbr->makeList( $rl_ids ) . ")";
-			} else {
-				$cond = array( "rl_id" => $rl_ids );
-			}
+			$cond = array( "rl_id" => $rl_ids );
 		}
 		if ( isset( $filterTags ) && count( $filterTags ) > 0 ) {
 			$cond[] = "ct_tag not in (" . $dbr->makeList( $filterTags ) . ")";
@@ -579,6 +571,21 @@ class SpecialCollabWatchlist extends SpecialWatchlist {
 			$clause .= implode( ',', $this->addQuotes( $dbr, $excludedUserIds ) ) . ') )';
 		}
 		return $clause;
+	}
+	
+	//XXX SpecialWatchlist should let us pass the page title
+	public static function showHideLink( $options, $message, $name, $value ) {
+		global $wgUser;
+
+		$showLinktext = wfMsgHtml( 'show' );
+		$hideLinktext = wfMsgHtml( 'hide' );
+		$title = SpecialPage::getTitleFor( 'CollabWatchlist' );
+		$skin = $wgUser->getSkin();
+
+		$label = $value ? $showLinktext : $hideLinktext;
+		$options[$name] = 1 - (int) $value;
+
+		return wfMsgHtml( $message, $skin->linkKnown( $title, $label, array(), $options ) );
 	}
 
 	/**
