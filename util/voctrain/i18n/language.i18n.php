@@ -4377,6 +4377,26 @@ $messages['ru'] = array(
 	'voctrain_other' => 'Другой',
 );
 
+/** Sakha (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'voctrain_Hello_World' => 'АЛАМАЙ, БИИКИ!',
+	'voctrain_Permission_Denied' => 'Киирии хааччахтаммыт',
+	'voctrain_try_again_' => 'өссө төгүл?',
+	'voctrain_Action_unknown' => 'Биллибэт дьайыы',
+	'voctrain_I_don_t_know_what_to_do_with_action_' => 'Маны «%action» тугу гынарбын билбэппин.',
+	'voctrain_User_added' => 'Кыттааччы эбилиннэ',
+	'voctrain_Hello_username_welcome_to_the_omega_language_trainer' => 'Аламай, %username, Omega тылларын үөрэтиигэ киирбиккинэн',
+	'voctrain_continue' => 'салгыы',
+	'voctrain_hello_place' => 'аламай, манна %place',
+	'voctrain_bye' => 'этэҥҥэ',
+	'voctrain_Set_up_your_exercise' => 'Эн эрчиллиигин туруоруу',
+	'voctrain_Number_of_questions' => 'Ыйытыы ахсаана',
+	'voctrain_Languages' => 'Тыллар',
+	'voctrain_Please_specify_the_languages_you_want_to_test_in' => 'Бука диэн, тургутууну барыахтаах тылларгын ый',
+);
+
 /** Sinhala (සිංහල)
  * @author පසිඳු කාවින්ද
  */
