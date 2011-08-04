@@ -787,8 +787,8 @@ $messages['nds'] = array(
  */
 $messages['nds-nl'] = array(
 	'crossnamespacelinks' => "Pagina's mit verwiezingen naor aandere naamruumtes",
-	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Laot verwiezingen zien tussen naamruumtes]] die niet zollen mötten bestaon in {{SITENAME}}',
-	'crossnamespacelinks-summary' => 'Disse pagina verstrekt een lieste mit verwiezingen van een pagina in de ensyklopedienaamruumte naor een pagina in een aandere naamruumte (behalven de naamruumtes: {{ns:special}}, {{ns:talk}}, {{ns:project}} en {{ns:template}}), je wörden an-eraojen um disse naamruumtes niet te gebruken.',
+	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Laot verwiezingen zien tussen naamruumtes]] die niet zollen mutten bestaon in {{SITENAME}}',
+	'crossnamespacelinks-summary' => 'Disse pagina verstrekt n lieste mit verwiezingen van n pagina in de ensyklopedienaamruumte naor n pagina in n aandere naamruumte (behalven de naamruumtes: {{ns:special}}, {{ns:talk}}, {{ns:project}} en {{ns:template}}), je wörden an-eraojen um disse naamruumtes niet te gebruken.',
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|verwiezing|verwiezingen}} naor $3',
 );
 
