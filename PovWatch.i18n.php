@@ -1480,7 +1480,7 @@ $messages['mk'] = array(
 	'povwatch_subscribed' => 'Сега сте запишани на PovWatch',
 	'povwatch_not_subscribed' => 'Не сте запишани на PovWatch, така што не можете да се отпишете.',
 	'povwatch_unsubscribed' => 'Сега сте отпишани од PovWatch',
-	'povwatch_invalid_title' => 'Назначениот наслов е неважечки',
+	'povwatch_invalid_title' => 'Наведениот наслов е неважечки',
 	'povwatch_pushed' => '[[$1]] е успешно вметната во  $2 кориснички {{PLURAL:$2|список на набљудувања|списоци на набљудувања}}',
 	'povwatch_intro' => 'НгтНадзор (PovWatch) е служба која овозможува дискретно вметнување на спорни страници во списоците на набљудувања на запишани администратори.
 
