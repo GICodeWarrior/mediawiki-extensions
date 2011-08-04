@@ -700,12 +700,12 @@ es.Content.prototype.getWikiDomLines = function() {
 		} else if ( !leftPlain && !rightPlain ) {
 			// [formatted][formatted] pair, open/close any differences
 			for ( j = 1; j < left.length; j++ ) {
-				if ( right.indexOf( left[j] ) === -1 ) {
+				if ( this.indexOfAnnotation( i , left[j], true ) === -1 ) {					
 					this.handleAnnotation( 'close', left[j], line.annotations, i - offset );
 				}
 			}
 			for ( j = 1; j < right.length; j++ ) {
-				if ( left.indexOf( right[j] ) === -1 ) {
+				if ( this.indexOfAnnotation( i - 1, right[j], true ) === -1 ) {
 					this.handleAnnotation( 'open', right[j], line.annotations, i - offset );
 				}
 			}
