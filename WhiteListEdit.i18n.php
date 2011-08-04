@@ -1880,9 +1880,11 @@ Halaman ini hanya dapat diterapkan pada pengguna yang dibatasi",
 	'group-manager-member' => 'Manajer',
 );
 
-/** Igbo (Igbo) */
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
 $messages['ig'] = array(
-	'whitelisttableedit' => 'Rüwa',
+	'whitelisttableedit' => 'Mèzi',
 	'whitelistnever' => 'Anáobulạ',
 );
 
