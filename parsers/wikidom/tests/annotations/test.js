@@ -153,6 +153,73 @@ test( 'Content export', 2, function() {
 				}
 				
 			]
+		},
+		{
+			"text": "test3",
+			"annotations": [
+				{
+					"type": "bold",
+					"range": {
+						"start": 0,
+						"end": 5
+					}
+				},
+				{
+					"type": "italic",
+					"range": {
+						"start": 0,
+						"end": 5
+					}
+				}
+				
+			]
+		},
+		{
+			"text": "test4 test4 test4",
+			"annotations": [
+				{
+					"type": "bold",
+					"range": {
+						"start": 0,
+						"end": 2
+					}
+				},
+				{
+					"type": "bold",
+					"range": {
+						"start": 3,
+						"end": 5
+					}
+				},
+				{
+					"type": "italic",
+					"range": {
+						"start": 6,
+						"end": 8
+					}
+				},
+				{
+					"type": "italic",
+					"range": {
+						"start": 9,
+						"end": 11
+					}
+				},
+				{
+					"type": "bold",
+					"range": {
+						"start": 12,
+						"end": 14
+					}
+				},
+				{
+					"type": "bold",
+					"range": {
+						"start": 15,
+						"end": 17
+					}
+				}
+			]
 		}
 	];
 
