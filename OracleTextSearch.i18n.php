@@ -93,6 +93,14 @@ $messages['mk'] = array(
 	'oracletextsearch-desc' => 'Пребарување на содржини/метаподатоци на подигнати податотеки користејќи го индексирањето на Oracle Text',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'oracletextsearch' => 'OracleTextSearch',
+	'oracletextsearch-desc' => 'Mencari kandungan/metadata fail yang dimuat naik dengan menggunakan pengindeksan Oracle Text',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
