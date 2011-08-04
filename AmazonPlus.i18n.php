@@ -882,7 +882,7 @@ $messages['id'] = array(
  * @author Ukabia
  */
 $messages['ig'] = array(
-	'amazonplus-more' => 'nà nké ozór',
+	'amazonplus-more' => 'ọzȯ kwa',
 );
 
 /** Italian (Italiano)
