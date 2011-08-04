@@ -231,6 +231,14 @@ $messages['mk'] = array(
 	'logofunctions-filenotexist' => 'Грешка: [[File:$1]] не постои',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'logofunctions-desc' => 'Menambahkan fungsi penghurai tentang logo wiki',
+	'logofunctions-filenotexist' => 'Ralat: [[File:$1]] tidak wujud',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
