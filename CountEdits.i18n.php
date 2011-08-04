@@ -1293,7 +1293,7 @@ $messages['pt'] = array(
 	'countedits-warning' => "'''Atenção:''' Não julgue um livro pela capa.
 Não julgue um contribuidor pela contagem das suas edições.",
 	'countedits-username' => 'Utilizador:',
-	'countedits-ok' => 'Ok',
+	'countedits-ok' => 'OK',
 	'countedits-nosuchuser' => 'Não foi encontrado um utilizador com o nome $1.',
 	'countedits-resultheader' => 'Resultados para $1',
 	'countedits-resulttext' => '$1 fez $2 {{PLURAL:$2|edição|edições}}',
