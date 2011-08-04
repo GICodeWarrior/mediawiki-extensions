@@ -812,9 +812,11 @@ $messages['ie'] = array(
 	'editmsg-patch-success' => 'Corectet che success.',
 );
 
-/** Igbo (Igbo) */
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
 $messages['ig'] = array(
-	'editmsg-search' => 'Chöwá',
+	'editmsg-search' => 'Chọwa',
 );
 
 /** Italian (Italiano)
