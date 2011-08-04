@@ -638,7 +638,7 @@ es.Content.prototype.handleAnnotation = function( bias, annotation, stack, index
 		annotation.range = { start: index };
 		stack.push( annotation );				
 	} else if ( bias === 'close' ) {
-		for ( var i = 0; i < stack.length; i++ ) {
+		for ( var i = stack.length - 1; i >= 0; i-- ) {
 			if ( stack[i].type === annotation.type ) {
 				if ( es.Content.compareObjects( stack[i].data, annotation.data ) ) {
 					stack[i].range.end = index;
@@ -716,7 +716,7 @@ es.Content.prototype.getWikiDomLines = function() {
 	if ( line != null ) {
 		if ( right ) {
 			for ( j = 1; j < right.length; j++ ) {
-				this.handleAnnotation( 'close', right[j], line.annotations, i - offset );
+				//this.handleAnnotation( 'close', right[j], line.annotations, i - offset );
 			}
 		}
 		if ( !line.annotations.length ) {
