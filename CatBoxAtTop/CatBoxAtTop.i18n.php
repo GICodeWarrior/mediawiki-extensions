@@ -672,9 +672,10 @@ $messages['yi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
-	'catboxattop-categories' => '页面分类',
+	'catboxattop-categories' => '分类',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
