@@ -592,7 +592,8 @@ es.Content.prototype.render = function( range ) {
 			? es.Content.htmlCharacters[right[0]] : right[0];
 		left = right;		
 	}
-	if ( right ) {
+	// close all remaining tags at the end of the content
+	if ( !rightPlain && right ) {
 		for ( j = 1; j < right.length; j++ ) {
 			out += es.Content.renderAnnotation( 'close', right[j], stack );
 		}
