@@ -203,7 +203,7 @@ $messages['id'] = array(
  * @author Ukabia
  */
 $messages['ig'] = array(
-	'apisvgproxy-desc' => 'Ihe íshí nke akwukwo orunotu shı (o nweriki di ebe ntakiri) akwukwo orunotu nke ebe ihe di ga ébé di nsó',
+	'apisvgproxy-desc' => 'Ihe íshí nke usòrò shı (o nweriki di ebe ntakiri) usòrò nke ebe ihe di ga ébé di nsó',
 );
 
 /** Italian (Italiano)
@@ -287,7 +287,7 @@ $messages['ms'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
-	'apisvgproxy-desc' => 'Geef SVG-bestaanden deur vanaof een bestaandsmap of meugelike bestaandsmap op aofstaand naor t lokale domein',
+	'apisvgproxy-desc' => 'Geef SVG-bestaanden deur vanaof n bestaandsmap of meugelike bestaandsmap op aofstaand naor t lokale domein',
 );
 
 /** Dutch (Nederlands)
