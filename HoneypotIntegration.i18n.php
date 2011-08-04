@@ -302,6 +302,14 @@ $messages['ml'] = array(
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'തേൻകുട പദ്ധതിപ്രകാരം, ഐ.പി. വിലാസങ്ങൾ ഉണർത്തിവിട്ട സമീപകാല സാഹചര്യങ്ങളുടെ എണ്ണം',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'honeypot-desc' => 'Menyediakan persepaduan dengan [http://projecthoneypot.org/ Project Honey Pot] untuk laman MediaWiki',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Bilangan peristiwa terbaru yang dicetuskan oleh alamat IP ini, mengikut Project Honey Pot',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
