@@ -24,7 +24,7 @@ class FetchGoogleSpreadsheet extends Maintenance {
 														'service' => 'wise', // Spreadsheet service is "wise"
 														'Email' => '',
 														'Passwd' => '',
-														'source' => Http::userAgent() . ' MetricsReporting',
+														'source' => Http::userAgent() . ' MetricsReporting/' . METRICS_REPORTING_VERSION,
 													)
 											)
 		);
@@ -93,16 +93,16 @@ class FetchGoogleSpreadsheet extends Maintenance {
 
 			// 1. open and closing tags on same line - no change
 			if (preg_match('/.+<\/\w[^>]*>$/', $token, $matches)) {
-			  $indent=0;
-			// 2. closing tag - outdent now
+				$indent=0;
+				// 2. closing tag - outdent now
 			} elseif (preg_match('/^<\/\w/', $token, $matches)) {
-			  $pad -= 3;$indent = 0;
-			// 3. opening tag - don't pad this one, only subsequent tags
+				$pad -= 3;$indent = 0;
+				// 3. opening tag - don't pad this one, only subsequent tags
 			} elseif (preg_match('/^<\w[^>]*[^\/]>.*$/', $token, $matches)) {
-			 $indent=2;
-			// 4. no indentation needed
+				$indent=2;
+				// 4. no indentation needed
 			} else {
-			  $indent = 0;
+				$indent = 0;
 			}
 
 			// pad the line with the required number of leading spaces
