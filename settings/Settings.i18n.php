@@ -11542,7 +11542,7 @@ $messages['ig'] = array(
 	'configure-setting-wgActionPaths-key' => 'Ọmé',
 	'configure-setting-wgArticleRobotPolicies-key' => 'Íshí ihü',
 	'configure-setting-wgExtraLanguageNames-value' => 'Áhà',
-	'configure-setting-wgDebugLogGroups-value' => 'Fail',
+	'configure-setting-wgDebugLogGroups-value' => 'Usòrò',
 );
 
 /** Ingush (ГІалгІай Ğalğaj)
@@ -22649,7 +22649,7 @@ $messages['zh-hans'] = array(
 	'configure-setting-wgLogRestrictions-key' => '记录类型',
 	'configure-setting-wgLogRestrictions-value' => '需要的读取权限',
 	'configure-setting-wgSpecialPageGroups' => '特殊页面组别',
-	'configure-setting-wgSpecialPageGroups-key' => '组别',
+	'configure-setting-wgSpecialPageGroups-key' => '用户组',
 	'configure-setting-wgAutopromote-value' => '条件',
 	'configure-setting-wgAccountCreationThrottle' => '每个IP地址可创建的账户数量',
 	'configure-setting-wgEnableAPI' => '启用API',
