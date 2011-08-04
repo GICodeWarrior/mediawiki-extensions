@@ -367,6 +367,14 @@ $messages['mr'] = array(
 	'minnamelength-desc' => 'कमीतकमी आवश्यक सदस्यनाव लांबी ठरवा',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'minnamelength-error' => 'Nama pengguna anda terlalu pendek. Panjang minimum ialah $1.',
+	'minnamelength-desc' => 'Menetapkan kepanjangan minimum nama pengguna',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
