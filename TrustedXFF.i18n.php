@@ -320,7 +320,7 @@ $messages['nds'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
-	'trustedxff-desc' => 'Beheert een lieste mit adressen van vertrouwde proxyservers ([http://meta.wikimedia.org/wiki/XFF_project XFF-project])',
+	'trustedxff-desc' => 'Beheert n lieste mit adressen van vertrouwde proxyservers ([http://meta.wikimedia.org/wiki/XFF_project XFF-project])',
 );
 
 /** Dutch (Nederlands)
