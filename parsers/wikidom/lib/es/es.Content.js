@@ -592,7 +592,7 @@ es.Content.prototype.render = function( range ) {
 			? es.Content.htmlCharacters[right[0]] : right[0];
 		left = right;		
 	}
-	if ( !rightPlain ) {
+	if ( right ) {
 		for ( j = 1; j < right.length; j++ ) {
 			out += es.Content.renderAnnotation( 'close', right[j], stack );
 		}
@@ -673,6 +673,14 @@ es.Content.prototype.getWikiDomLines = function() {
 		leftPlain = typeof left === 'string';
 		rightPlain = typeof right === 'string';
 		if ( rightPlain && right == "\n" ) {
+			if ( left ) {
+				for ( j = 1; j < left.length; j++ ) {
+					this.handleAnnotation( 'close', left[j], line.annotations, i - offset );
+				}
+			}
+			if ( !line.annotations.length ) {
+				delete line.annotations;
+			}
 			lines.push(line);
 			line = null;
 			offset = i + 1;
@@ -711,7 +719,10 @@ es.Content.prototype.getWikiDomLines = function() {
 				this.handleAnnotation( 'close', right[j], line.annotations, i - offset );
 			}
 		}
-		lines.push(line);
+		if ( !line.annotations.length ) {
+			delete line.annotations;
+		}
+		lines.push( line );
 	}
 	return lines;	
 };
