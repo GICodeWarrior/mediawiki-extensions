@@ -318,20 +318,20 @@ class SpecialCollabWatchlist extends SpecialWatchlist {
 				) . '<br />';
 		}
 
-		$cutofflinks = "\n" . self::cutoffLinks( $days, 'CollabWatchlist', $nondefaults ) . "<br />\n";
+		$cutofflinks = "\n" . $this->cutoffLinks( $days, 'CollabWatchlist', $nondefaults ) . "<br />\n";
 
 		$thisTitle = SpecialPage::getTitleFor( 'CollabWatchlist' );
 
 		# Spit out some control panel links
-		$links[] = self::showHideLink( $nondefaults, 'rcshowhideminor', 'hideMinor', $hideMinor );
-		$links[] = self::showHideLink( $nondefaults, 'rcshowhidebots', 'hideBots', $hideBots );
-		$links[] = self::showHideLink( $nondefaults, 'rcshowhideanons', 'hideAnons', $hideAnons );
-		$links[] = self::showHideLink( $nondefaults, 'rcshowhideliu', 'hideLiu', $hideLiu );
-		$links[] = self::showHideLink( $nondefaults, 'rcshowhidemine', 'hideOwn', $hideOwn );
-		$links[] = self::showHideLink( $nondefaults, 'collabwatchlistshowhidelistusers', 'hideListUser', $hideListUser );
+		$links[] = $this->showHideLink( $nondefaults, 'rcshowhideminor', 'hideMinor', $hideMinor );
+		$links[] = $this->showHideLink( $nondefaults, 'rcshowhidebots', 'hideBots', $hideBots );
+		$links[] = $this->showHideLink( $nondefaults, 'rcshowhideanons', 'hideAnons', $hideAnons );
+		$links[] = $this->showHideLink( $nondefaults, 'rcshowhideliu', 'hideLiu', $hideLiu );
+		$links[] = $this->showHideLink( $nondefaults, 'rcshowhidemine', 'hideOwn', $hideOwn );
+		$links[] = $this->showHideLink( $nondefaults, 'collabwatchlistshowhidelistusers', 'hideListUser', $hideListUser );
 
 		if ( $wgUser->useRCPatrol() ) {
-			$links[] = self::showHideLink( $nondefaults, 'rcshowhidepatr', 'hidePatrolled', $hidePatrolled );
+			$links[] = $this->showHideLink( $nondefaults, 'rcshowhidepatr', 'hidePatrolled', $hidePatrolled );
 		}
 
 		# Namespace filter and put the whole form together.
@@ -452,7 +452,7 @@ class SpecialCollabWatchlist extends SpecialWatchlist {
 	 *
 	 * @return string
 	 */
-	protected static function cutoffLinks( $days, $page = 'Watchlist', $options = array() ) {
+	protected function cutoffLinks( $days, $page = 'Watchlist', $options = array() ) {
 		return SpecialWatchlist::cutoffLinks( $days, $page, $options );
 	}
 
@@ -574,7 +574,7 @@ class SpecialCollabWatchlist extends SpecialWatchlist {
 	}
 	
 	//XXX SpecialWatchlist should let us pass the page title
-	public static function showHideLink( $options, $message, $name, $value ) {
+	public function showHideLink( $options, $message, $name, $value ) {
 		global $wgUser;
 
 		$showLinktext = wfMsgHtml( 'show' );
