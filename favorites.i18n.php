@@ -88,6 +88,15 @@ You can also [[Special:Favoritelist/edit|use the standard editor]].',
 
 );
 
+/** Message documentation (Message documentation)
+ * @author Hamilton Abreu
+ * @author Kghbln
+ */
+$messages['qqq'] = array(
+	'prefs-favoritelist-token' => "This message is basically the same as {{msg-mw|Prefs-watchlist-token}}. A token is a piece of information in this context that is used to prove one's identity electronically[http://en.wikipedia.org/wiki/Security_token]. Have a look at the Watchlist tab in [[Special:Preferences]]. There is a token there for accessing your watchlist RSS feed without having to log in (you are using your token to identify yourself).",
+	'favoritelistanontext' => '$1 is substituted by {{msg|loginreqlink}}',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -158,7 +167,7 @@ $messages['de-formal'] = array(
 	'tooltip-ca-favorite' => 'Fügen Sie diese Seite zu Ihrer Favoritenliste hinzu',
 	'tooltip-ca-unfavorite' => 'Entfernen Sie diese Seite von Ihrer Favoritenliste',
 	'tooltip-favorite' => 'Fügen Sie diese Seite zu Ihrer Favoritenliste hinzu',
-	'favoritelistedit-numitems' => 'Ihre Favoritenliste enthält {{PLURAL:$1|einen Eintrag|$1 Einträge}}.',
+	'favoritelistedit-numitems' => 'Ihre Favoritenliste enthält {{PLURAL:$1|einen Eintrag|$1 Einträge}}. Die Diskussionsseiten wurden dabei nicht mitgezählt.',
 	'favoritelistedit-noitems' => 'Ihre Favoritenliste enthält keine Einträge.',
 	'favoritelistedit-normal-explain' => 'Dies sind die Einträge Ihrer Favoritenliste.
 Um Einträge zu entfernen, markieren Sie die Kästchen neben den Einträgen und klicken Sie am Ende der Seite auf „{{int:Favoritelistedit-normal-submit}}“.
@@ -171,6 +180,63 @@ Sie können auch die [[Special:Favoritelist/edit|Standardseite]] zum Bearbeiten 
 	'favoritelistedit-raw-done' => 'Ihre Favoritenliste wurde aktualisiert.',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'favorites-desc' => 'Crear un lista de favorites',
+	'favoritethis' => 'Favorir iste pagina',
+	'prefs-favoritelist' => 'Favorites',
+	'prefs-favoritelist-token' => 'Indicio de favorites:',
+	'prefs-advancedfavoritelist' => 'Optiones avantiate',
+	'favoritelist' => 'Mi favorites',
+	'myfavoritelist' => 'Mi favorites',
+	'favoritelistfor' => "(de '''$1''')",
+	'nofavoritelist' => 'Tu non ha elementos favorite.',
+	'favoritelistanontext' => 'Per favor $1 pro vider o modificar elementos favorite.',
+	'favoritenologin' => 'Non identificate',
+	'favoritenologintext' => 'Es necessari [[Special:UserLogin|aperir un session]] pro modificar tu favorites.',
+	'addedfavorite' => 'Addite al favorites',
+	'addedfavoritetext' => 'Le pagina "[[:$1]]" ha essite addite a tu [[Special:Favoritelist|favorites]].',
+	'removedfavorite' => 'Removite del favorites',
+	'removedfavoritetext' => 'Le pagina "[[:$1]]" ha essite removite de tu [[Special:Favoritelist|your favorites]].',
+	'favorite' => 'Favorite',
+	'favoritethispage' => 'Favorir iste pagina',
+	'unfavorite' => 'Disfavorir',
+	'unfavoritethispage' => 'Cessar de favorir',
+	'favoritelist-options' => 'Optiones de favorites',
+	'favoriteing' => 'Favorir…',
+	'unfavoriteing' => 'Disfavorir…',
+	'tooltip-pt-favoritelist' => 'Le lista de paginas del quales tu seque le modificationes',
+	'tooltip-ca-favorite' => 'Adder iste pagina a tu favorites',
+	'tooltip-ca-unfavorite' => 'Remover iste pagina de tu favorites',
+	'tooltip-favorite' => 'Adder iste pagina a tu favorites',
+	'favoritelistall2' => 'totes',
+	'favoritelistedit-numitems' => 'Tu ha {{PLURAL:$1|1 titulo|$1 titulos}} favorite, excludente le paginas de discussion.',
+	'favoritelistedit-noitems' => 'Tu non ha titulos favorite.',
+	'favoritelistedit-normal-title' => 'Modificar favorites',
+	'favoritelistedit-normal-legend' => 'Remover titulos del favorites',
+	'favoritelistedit-normal-explain' => 'Le titulos in tu lista de favorites es monstrate hic infra.
+Pro eliminar un titulo, marca le quadrato correspondente, e clicca "{{int:Watchlistedit-normal-submit}}".
+Tu pote etiam [[Special:Favoritelist/raw|modificar le lista in forma crude]].',
+	'favoritelistedit-normal-submit' => 'Remover titulos',
+	'favoritelistedit-normal-done' => '{{PLURAL:$1|1 titulo|$1 titulos}} ha essite removite de tu lista de favorites:',
+	'favoritelistedit-raw-title' => 'Modificar lista de favorites in forma crude',
+	'favoritelistedit-raw-legend' => 'Modificar lista de favorites in forma crude',
+	'favoritelistedit-raw-explain' => 'Le titulos in tu lista de favorites es monstrate hic infra, e pote esser modificate per adder e eliminar entratas del lista;
+un titulo per linea.
+Quando tu ha finite, clicca super "{{int:Favoritelistedit-raw-submit}}".
+Tu pote etiam [[Special:Favoritelist/edit|usar le editor standard]].',
+	'favoritelistedit-raw-titles' => 'Titulos:',
+	'favoritelistedit-raw-submit' => 'Actualisar favorites',
+	'favoritelistedit-raw-done' => 'Tu lista de favorites ha essite actualisate.',
+	'favoritelistedit-raw-added' => '{{PLURAL:$1|1 titulo|$1 titulos}} ha essite addite:',
+	'favoritelistedit-raw-removed' => '{{PLURAL:$1|1 titulo|$1 titulos}} ha essite removite:',
+	'favoritelisttools-view' => 'Vider favorites',
+	'favoritelisttools-edit' => 'Vider e modificar favorites',
+	'favoritelisttools-raw' => 'Modificar lista de favorites in forma crude',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -180,13 +246,20 @@ $messages['lb'] = array(
 	'prefs-favoritelist' => 'Favoriten',
 	'prefs-advancedfavoritelist' => 'Méi Optiounen',
 	'favoritelist' => 'Meng Favoriten',
+	'myfavoritelist' => 'Meng Favoriten',
 	'favoritelistfor' => "(fir '''$1''')",
 	'nofavoritelist' => 'Är Lëscht vun de Favoriten ass eidel.',
 	'favoritenologin' => 'Net ageloggt',
 	'favorite' => "Op d'Lëscht vun de Favoriten derbäisetzen",
+	'favoritethispage' => 'Dës Säit bäi meng Favoriten derbäisetzen',
+	'unfavorite' => 'Vun der Lëscht vun de Favoriten erofhuelen',
+	'unfavoritethispage' => 'Dës Säit vu menge Favoriten ewechhuelen',
+	'favoritelist-options' => 'Optioune vun de Favoriten',
 	'favoriteing' => 'Späicheren...',
 	'unfavoriteing' => 'Erofhuelen...',
 	'tooltip-ca-favorite' => "Setzt dës Säit op d'Lëscht vun Äre Favoriten derbäi",
+	'tooltip-ca-unfavorite' => 'Dës Säit vun der Lëscht vun Äre Favoriten erofhuelen?',
+	'tooltip-favorite' => "Dës Säit op d'Lëscht vun Äre Favoriten derbäisetzen",
 	'favoritelistall2' => 'all',
 	'favoritelistedit-noitems' => 'De Lëscht vun Äre Favoriten ass eidel.',
 	'favoritelistedit-normal-title' => 'Lëscht vun de Favoriten änneren',
@@ -195,10 +268,16 @@ $messages['lb'] = array(
 Fir eng Säit ewechzehuelen, klickt op d\'Haischen niewendrun a klickt duerno op "{{int:Favoritelistedit-normal-submit}}".
 Dir kënnt och [[Special:Favoritelist/raw|déi net-formatéiert Lëscht änneren]].',
 	'favoritelistedit-normal-submit' => 'Säiten erofhuelen',
+	'favoritelistedit-raw-title' => 'Net-formatéiert Favoritelëscht änneren',
+	'favoritelistedit-raw-legend' => 'Net-formatéiert Favoritelëscht änneren',
 	'favoritelistedit-raw-titles' => 'Säiten:',
 	'favoritelistedit-raw-submit' => 'Lëscht vun de Favoriten aktualiséieren',
 	'favoritelistedit-raw-done' => "D'Lëscht vun Äre Favorite gouf aktualiséiert.",
+	'favoritelistedit-raw-added' => '{{PLURAL:$1|1 Säit gouf|$1 Säite goufen}} derbäigesat:',
+	'favoritelistedit-raw-removed' => '{{PLURAL:$1|1 Säit gouf|$1 Säite goufen}} ewechgeholl:',
 	'favoritelisttools-view' => 'Favorite weisen',
+	'favoritelisttools-edit' => 'Lëscht vun de Favorite weisen an änneren',
+	'favoritelisttools-raw' => 'Lëscht vun de Favoriten net-formatéiert änneren',
 );
 
 /** Macedonian (Македонски)
@@ -233,7 +312,7 @@ $messages['mk'] = array(
 	'tooltip-ca-unfavorite' => 'Отстрани ја страницава од бендисаните',
 	'tooltip-favorite' => 'Додај ја страницава во бендисаните',
 	'favoritelistall2' => 'сите',
-	'favoritelistedit-numitems' => 'Во бендисаните има {{PLURAL:$1|1 наслов|$1 наслови}}.',
+	'favoritelistedit-numitems' => 'Во бендисаните има {{PLURAL:$1|1 наслов|$1 наслови}}, без страниците за разговор.',
 	'favoritelistedit-noitems' => 'Немате наслови во бендисаните.',
 	'favoritelistedit-normal-title' => 'Уреди бендисани',
 	'favoritelistedit-normal-legend' => 'Отстрани наслови од бендисаните',
@@ -258,17 +337,56 @@ $messages['mk'] = array(
 	'favoritelisttools-raw' => 'Уреди сирови бендисани',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'favorites-desc' => 'പ്രിയങ്കരങ്ങളായ താളുകളുടെ പട്ടിക സൃഷ്ടിക്കുന്നു',
+	'favoritethis' => 'ഈ താൾ പ്രിയങ്കരമാക്കുക',
+	'prefs-favoritelist' => 'പ്രിയങ്കരങ്ങൾ',
+	'prefs-favoritelist-token' => 'പ്രിയങ്കരമാക്കിയതിന്റെ ചീട്ട്:',
+	'prefs-advancedfavoritelist' => 'വിപുലമായ ഉപാധികൾ',
+	'favoritelist' => 'എനിക്കു പ്രിയങ്കരമായവ',
+	'myfavoritelist' => 'എനിക്കു പ്രിയങ്കരമായവ',
+	'favoritelistfor' => "('''$1''' എന്നതിന്)",
+	'nofavoritelist' => 'താങ്കളുടെ പ്രിയങ്കരങ്ങളിൽ ഇനങ്ങളൊന്നുമില്ല.',
+	'favoritelistanontext' => 'താങ്കളുടെ പ്രിയങ്കരങ്ങൾ കാണുവാനോ തിരുത്തുവാനോ $1 ചെയ്യുക.',
+	'favoritenologin' => 'പ്രവേശിച്ചിട്ടില്ല',
+	'favoritenologintext' => 'താങ്കളുടെ പ്രിയങ്കരങ്ങൾ തിരുത്തുവാൻ താങ്കൾ [[Special:UserLogin|ലോഗിൻ]] ചെയ്തിരിക്കണം.',
+	'addedfavorite' => 'പ്രിയങ്കരങ്ങളിലേയ്ക്ക് ചേർത്തു',
+	'addedfavoritetext' => '"[[:$1]]" എന്ന ഈ താൾ താങ്കളുടെ [[Special:Favoritelist|പ്രിയങ്കരങ്ങളിലേയ്ക്ക്]] ചേർത്തു.',
+	'removedfavorite' => 'പ്രിയങ്കരങ്ങളിൽ നിന്ന് നീക്കം ചെയ്തു',
+	'removedfavoritetext' => '[[Special:Favoritelist|താങ്കളുടെ പ്രിയങ്കരങ്ങളിൽ]] നിന്നും "[[:$1]]" എന്ന താൾ നീക്കം ചെയ്തിരിക്കുന്നു.',
+	'favorite' => 'പ്രിയങ്കരം',
+	'favoritethispage' => 'ഈ താൾ പ്രിയങ്കരമാക്കുക',
+	'unfavorite' => 'പ്രിയങ്കരമല്ലാതാക്കുക',
+	'unfavoritethispage' => 'പ്രിയങ്കരമാക്കൽ അവസാനിപ്പിക്കുക',
+	'favoritelist-options' => 'പ്രിയങ്കരമാക്കലിന്റെ ഐച്ഛികങ്ങൾ',
+	'favoriteing' => 'പ്രിയങ്കരമാക്കുന്നു...',
+	'unfavoriteing' => 'പ്രിയങ്കരമല്ലാതാക്കുന്നു...',
+	'tooltip-pt-favoritelist' => 'താങ്കൾ മാറ്റങ്ങൾ ശ്രദ്ധിക്കുന്ന താളുകളുടെ പട്ടിക',
+	'tooltip-ca-favorite' => 'ഈ താൾ താങ്കളുടെ പ്രിയങ്കരങ്ങളിലേയ്ക്ക് ചേർക്കുക',
+	'tooltip-ca-unfavorite' => 'ഈ താൾ താങ്കളുടെ പ്രിയങ്കരങ്ങളിൽ നിന്ന് നീക്കം ചെയ്യുക',
+	'tooltip-favorite' => 'ഈ താൾ താങ്കളുടെ പ്രിയങ്കരങ്ങളിലേയ്ക്ക് ചേർക്കുക',
+	'favoritelistall2' => 'എല്ലാം',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
  */
 $messages['nl'] = array(
 	'prefs-favoritelist' => 'Favorieten',
+	'prefs-favoritelist-token' => 'Favorietensleutel:',
 	'favoritelist' => 'Mijn favorieten',
 	'myfavoritelist' => 'Mijn favorieten',
 	'favoritelistfor' => "(voor '''$1''')",
+	'favoritelistanontext' => 'Om uw favorieten te bekijken of te bewerken moet u zich $1.',
 	'favoritenologin' => 'Niet aangemeld',
+	'addedfavorite' => 'Toegevoegd aan favorieten',
+	'removedfavorite' => 'Verwijderd uit favorieten',
 	'favoritelistall2' => 'alle',
+	'favoritelistedit-normal-title' => 'Favorieten bewerken',
 	'favoritelistedit-normal-submit' => "Pagina's verwijderen",
 	'favoritelistedit-normal-done' => 'Er {{PLURAL:$1|is 1 pagina|zijn $1 pagina’s}} verwijderd uit uw favorieten:',
 	'favoritelistedit-raw-title' => 'Ruwe favorietenlijst bewerken',
@@ -288,6 +406,13 @@ U kunt ook [[Special:Favoritelist/edit|het standaard bewerkingsscherm gebruiken]
 	'favoritelisttools-raw' => 'Ruwe favorietenlijst bewerken',
 );
 
+/** ‪Nederlands (informeel)‬ (‪Nederlands (informeel)‬)
+ * @author Siebrand
+ */
+$messages['nl-informal'] = array(
+	'favoritelistanontext' => 'Om je favorieten te bekijken of te bewerken moet je je $1.',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
@@ -295,7 +420,7 @@ $messages['pt'] = array(
 	'favorites-desc' => 'Criar uma lista de páginas preferidas',
 	'favoritethis' => 'Adicionar esta página às preferidas',
 	'prefs-favoritelist' => 'Preferidas',
-	'prefs-favoritelist-token' => 'Chave das preferidas:',
+	'prefs-favoritelist-token' => 'Senha secreta da lista de páginas preferidas:',
 	'prefs-advancedfavoritelist' => 'Opções avançadas',
 	'favoritelist' => 'Preferidas',
 	'myfavoritelist' => 'Preferidas',
@@ -320,7 +445,7 @@ $messages['pt'] = array(
 	'tooltip-ca-unfavorite' => 'Remover esta página das páginas preferidas',
 	'tooltip-favorite' => 'Adicionar esta página às suas preferidas',
 	'favoritelistall2' => 'todas',
-	'favoritelistedit-numitems' => 'A sua lista de páginas preferidas contém {{PLURAL:$1|uma página|$1 páginas}}.',
+	'favoritelistedit-numitems' => 'A sua lista de páginas preferidas contém {{PLURAL:$1|uma página|$1 páginas}}, excluindo páginas de discussão.',
 	'favoritelistedit-noitems' => 'A sua lista de página preferidas está vazia.',
 	'favoritelistedit-normal-title' => 'Editar a lista de preferidas',
 	'favoritelistedit-normal-legend' => 'Remover páginas das preferidas',
