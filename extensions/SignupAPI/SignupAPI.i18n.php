@@ -26,6 +26,13 @@ $messages['de'] = array(
 	'signupapi-desc' => 'Entfernt bestehende Inhalte und Funktionen der Spezialseite Anmelden und fügt stattdessen eine Programmierschnittstelle zur Anmeldung hinzu',
 );
 
+/** French (Français)
+ * @author Sherbrooke
+ */
+$messages['fr'] = array(
+	'signupapi-desc' => 'Nettoie la page Spécial:Connexion des informations utilisées à la création de compte et insère un API pour la création de compte',
+);
+
 /** Hebrew (עברית)
  * @author Amire80
  */

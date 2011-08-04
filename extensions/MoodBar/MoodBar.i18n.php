@@ -160,8 +160,8 @@ $messages['af'] = array(
  */
 $messages['be-tarask'] = array(
 	'moodbar-desc' => 'Дазваляе вызначаным удзельнікам дасылаць іх «настрой» апэратару сайта',
-	'moodbar-trigger-editing' => 'Выкарыстоўваючы $1…',
 	'moodbar-trigger-feedback' => 'Водгук',
+	'moodbar-trigger-editing' => 'Выкарыстоўваючы $1…',
 );
 
 /** German (Deutsch)
@@ -169,7 +169,7 @@ $messages['be-tarask'] = array(
  * @author Purodha
  */
 $messages['de'] = array(
-	'moodbar-desc' => 'Ermöglicht es Benutzern dem Betreiber des Wikis ihre Stimmung bezüglich des Bearbeitens von Seiten mitzuteilen',
+	'moodbar-desc' => 'Ermöglicht es bestimmten Benutzern eine Rückmeldung bezüglich des Bearbeitens von Seiten zu geben',
 	'moodbar-trigger-feedback' => 'Rückmeldung zum Bearbeiten',
 	'moodbar-trigger-share' => 'Teile uns deinen Eindruck mit',
 	'moodbar-trigger-editing' => 'Bearbeite $1 …',
@@ -182,7 +182,7 @@ $messages['de'] = array(
 	'moodbar-type-confused-title' => 'verwirrt',
 	'tooltip-moodbar-what' => 'Mehr zu dieser Funktion in Erfahrung bringen',
 	'moodbar-what-label' => 'Worum handelt es sich?',
-	'moodbar-what-content' => 'Diese Funktion wurde entwickelt, damit man eine Rückmeldung geben kann, wie man sich beim Bearbeiten von Seiten in der Wikipedia fühlt.
+	'moodbar-what-content' => 'Diese Funktion wurde entwickelt, damit man eine Rückmeldung geben kann, wie man sich beim Bearbeiten von Seiten dieser Website fühlt.
 Weitere Informationen hierzu sind an der folgenden Stelle zu finden: $1.',
 	'moodbar-what-link' => 'Seite zu den Funktionen',
 	'moodbar-privacy' => 'Mit dem Speichern erklärst du dich mit diesen $1 einverstanden.',
@@ -198,7 +198,7 @@ Weitere Informationen hierzu sind an der folgenden Stelle zu finden: $1.',
 	'moodbar-success-title' => 'Vielen Dank!',
 	'moodbar-error-title' => 'Hoppla!',
 	'moodbar-success-subtitle' => 'Uns deine Stimmung mitzuteilen hilft uns dabei $1 weiter zu verbessern.',
-	'moodbar-error-subtitle' => 'Etwas ist schief gelaufen. Bitte versuche es später noch einmal uns deine Stimmung mitzuteilen.',
+	'moodbar-error-subtitle' => 'Etwas ist schief gelaufen. Bitte versuche es später noch einmal uns deine Rückmeldung mitzuteilen.',
 	'right-moodbar-view' => 'Rückmeldung zur Stimmung ansehen und exportieren',
 	'moodbar-admin-title' => 'Rückmeldung zur Stimmung',
 	'moodbar-admin-intro' => 'Auf dieser Seite können die Rückmeldungen zur Stimmung angesehen werden',
@@ -232,8 +232,8 @@ Weitere Informationen hierzu sind an der folgenden Stelle zu finden: $1.',
 $messages['de-formal'] = array(
 	'moodbar-trigger-share' => 'Teilen Sie uns Ihren Eindruck mit',
 	'moodbar-privacy' => 'Mit dem Speichern erklären Sie sich mit diesen $1 einverstanden.',
-	'moodbar-success-subtitle' => 'Uns Ihre Stimmung mitzuteilen hilft uns dabei die Wikipedia weiter zu verbessern.',
-	'moodbar-error-subtitle' => 'Etwas ist schief gelaufen. Bitte versuchen Sie es später noch einmal uns Ihre Stimmung mitzuteilen.',
+	'moodbar-success-subtitle' => 'Uns Ihre Stimmung mitzuteilen hilft uns dabei $1 weiter zu verbessern.',
+	'moodbar-error-subtitle' => 'Etwas ist schief gelaufen. Bitte versuchen Sie es später noch einmal uns Ihre Rückmeldung mitzuteilen.',
 );
 
 /** Spanish (Español)
@@ -294,8 +294,8 @@ $messages['frp'] = array(
  */
 $messages['gl'] = array(
 	'moodbar-desc' => 'Permite que os usuarios especificados envíen ao operador do sitio o seu "humor"',
-	'moodbar-trigger-editing' => 'Usando $1...',
 	'moodbar-trigger-feedback' => 'Comentarios',
+	'moodbar-trigger-editing' => 'Usando $1...',
 );
 
 /** Hebrew (עברית)
@@ -335,23 +335,24 @@ $messages['he'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'moodbar-desc' => 'Permitte al usatores specificate de inviar lor "humor" retro al operator del sito',
+	'moodbar-desc' => 'Permitte al usatores specificate de fornir retroaction super lor experientia durante le modification',
 	'moodbar-trigger-feedback' => 'Commentos super le modification',
 	'moodbar-trigger-share' => 'Divider tu experientia',
 	'moodbar-trigger-editing' => 'Modificar $1...',
 	'moodbar-close' => '(clauder)',
-	'moodbar-intro-feedback' => 'Reaction:',
+	'moodbar-intro-feedback' => 'Modificar $1 me rendeva…',
+	'moodbar-intro-share' => 'Mi experientia in $1 me rendeva…',
 	'moodbar-intro-editing' => 'Le uso de $1 me rendeva...',
 	'moodbar-type-happy-title' => 'Felice',
 	'moodbar-type-sad-title' => 'Triste',
 	'moodbar-type-confused-title' => 'Confuse',
 	'tooltip-moodbar-what' => 'Lege plus a proposito de iste function',
 	'moodbar-what-label' => 'Que es isto?',
-	'moodbar-what-content' => 'Iste function es designate pro adjutar le communitate de Wikipedia a comprender le experientia del personas qui modifica Wikipedia.
+	'moodbar-what-content' => 'Iste function es concipite pro adjutar le communitate a comprender le experientia del personas qui modifica le sito.
 Pro ulterior information, per favor visita le $1.',
 	'moodbar-what-link' => 'pagina de function',
-	'moodbar-privacy' => 'Per submitter, tu te declara de accordo que nos pote usar tu commento como explicate in $1.',
-	'moodbar-privacy-link' => 'nostre politica',
+	'moodbar-privacy' => 'Per submitter, tu te declara de accordo que tu contribution sia public in concordantia con iste $1.',
+	'moodbar-privacy-link' => 'conditiones',
 	'moodbar-disable-link' => 'Isto non me interessa. Per favor disactiva iste function.',
 	'moodbar-form-title' => 'Perque...',
 	'moodbar-form-note' => 'maximo 140 characteres',
@@ -362,8 +363,8 @@ Pro ulterior information, per favor visita le $1.',
 	'moodbar-loading-title' => 'Invio in curso...',
 	'moodbar-success-title' => 'Gratias!',
 	'moodbar-error-title' => 'Ups!',
-	'moodbar-success-subtitle' => 'Specificar tu humor nos adjuta a meliorar Wikipedia.',
-	'moodbar-error-subtitle' => 'Un problema ha occurrite! Per favor tenta specificar tu humor de novo plus tarde.',
+	'moodbar-success-subtitle' => 'Per specificar tu experientia durante le modification, tu nos adjuta a meliorar $1.',
+	'moodbar-error-subtitle' => 'Un problema ha occurrite! Per favor tenta specificar tu retroaction de novo plus tarde.',
 	'right-moodbar-view' => 'Vider e exportar reactiones del Barra de Humor',
 	'moodbar-admin-title' => 'Reactiones del Barra de Humor',
 	'moodbar-admin-intro' => 'Iste pagina permitte vider reactiones submittite con le Barra de Humor',
@@ -405,7 +406,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'moodbar-desc' => 'Erméiglecht et spezifesche Benotzer fir dem Responsabele vum Site hir Stëmmung ze schécken',
+	'moodbar-desc' => 'Erméiglecht et spezifesche Benotzer fir dem Responsabele vum Site hir Erfarunge beim Änneren ze schécken',
 	'moodbar-trigger-feedback' => "Feedback iwwert d'Änneren",
 	'moodbar-trigger-share' => 'Deelt Är Erfahrungen',
 	'moodbar-trigger-editing' => 'Ännert $1...',
@@ -450,7 +451,7 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'moodbar-desc' => 'Им овозможува на одредени корисници да му го соопштуваат нивното „расположение“ на операторот на мрежното место',
+	'moodbar-desc' => '!Им овозможува на одредени корисници да даваат мислење за уредувањето',
 	'moodbar-trigger-feedback' => 'Мислења за уредувањето',
 	'moodbar-trigger-share' => 'Споделете го вашето искуство',
 	'moodbar-trigger-editing' => 'Уредување на $1...',
@@ -463,7 +464,7 @@ $messages['mk'] = array(
 	'moodbar-type-confused-title' => 'збуни',
 	'tooltip-moodbar-what' => 'Дознајте повеќе за оваа функција',
 	'moodbar-what-label' => 'Што е ова?',
-	'moodbar-what-content' => 'Оваа функција е предвидена да ѝ овозможува на заедницата да го осознае искуството на луѓето што ја уредуваат Википедија.
+	'moodbar-what-content' => 'Оваа функција е предвидена да ѝ овозможува на заедницата да го осознае искуството на луѓето што го уредуваат мрежното место.
 Повеќе информации ќе добиете на $1.',
 	'moodbar-what-link' => 'страница за функцијата',
 	'moodbar-privacy' => 'Поднесувајќи го ова, се согласувате на транспарентност под следниве $1.',
@@ -479,7 +480,7 @@ $messages['mk'] = array(
 	'moodbar-success-title' => 'Благодариме!',
 	'moodbar-error-title' => 'Упс!',
 	'moodbar-success-subtitle' => 'Споделувајќи го вашето уредувачко искуство ни помагате да ја подобриме $1.',
-	'moodbar-error-subtitle' => 'Нешто не е в ред! Обидете се да го споделите вашето расположение подоцна.',
+	'moodbar-error-subtitle' => 'Нешто не е во ред! Обидете се да го споделите вашето мислење подоцна.',
 	'right-moodbar-view' => 'Преглед и извоз на мислења од MoodBar',
 	'moodbar-admin-title' => 'Мислења со MoodBar',
 	'moodbar-admin-intro' => 'Оваа страница служи за преглед на мислења поднесени со MoodBar',
@@ -522,23 +523,37 @@ $messages['ml'] = array(
 	'moodbar-type-confused-title' => 'ആശയക്കുഴപ്പമായി',
 	'tooltip-moodbar-what' => 'ഈ വിശേഷഗുണത്തെക്കുറിച്ച് കൂടുതൽ അറിയുക',
 	'moodbar-what-label' => 'എന്താണിത്?',
+	'moodbar-what-content' => 'വിജ്ഞാനകോശം തിരുത്തുന്നവരുടെ അനുഭവങ്ങൾ വിക്കിപീഡിയ സമൂഹത്തിനു മനസ്സിലാക്കാനായാണ് ഈ സൗകര്യം രൂപകല്പന ചെയ്തിരിക്കുന്നത്.
+കൂടുതൽ വിവരങ്ങൾക്ക് ദയവായി $1 സന്ദർശിക്കുക.',
+	'moodbar-what-link' => 'സവിശേഷതാ താൾ',
 	'moodbar-privacy-link' => 'നിബന്ധനകൾ',
 	'moodbar-disable-link' => 'എനിക്കു താത്പര്യമില്ല. ദയവായി ഈ സൗകര്യം വേണ്ട.',
 	'moodbar-form-title' => 'കാരണം...',
 	'moodbar-form-note' => 'പരമാവധി 140 അക്ഷരങ്ങൾ',
 	'moodbar-form-note-dynamic' => '$1 അക്ഷരങ്ങൾകൂടിയുണ്ട്',
+	'moodbar-form-submit' => 'അഭിപ്രായങ്ങൾ പങ്ക്‌വെയ്ക്കുക',
+	'moodbar-form-policy-text' => 'സമർപ്പിക്കുമ്പോൾ, $1',
 	'moodbar-form-policy-label' => 'ഞങ്ങളുടെ നയം',
 	'moodbar-loading-title' => 'പങ്ക്‌വെയ്ക്കുന്നു...',
 	'moodbar-success-title' => 'നന്ദി!',
 	'moodbar-error-title' => 'അയ്യോ!',
+	'moodbar-success-subtitle' => 'താങ്കളുടെ തിരുത്തൽ അനുഭവങ്ങൾ പങ്ക് വെയ്ക്കുന്നതു $1 മെച്ചപ്പെടുത്താൻ സഹായകമാകും.',
+	'moodbar-error-subtitle' => 'എന്തോ കുഴപ്പമുണ്ടായി! ദയവായി താങ്കളുടെ അനുഭവം അല്പസമയത്തിനു ശേഷം പങ്ക് വെയ്ക്കുക.',
 	'moodbar-admin-empty' => 'ഫലങ്ങൾ ഒന്നുമില്ല',
 	'moodbar-header-timestamp' => 'സമയമുദ്ര',
 	'moodbar-header-type' => 'തരം',
 	'moodbar-header-page' => 'താൾ',
+	'moodbar-header-usertype' => 'ഉപയോക്തൃതരം',
 	'moodbar-header-user' => 'ഉപയോക്താവ്',
+	'moodbar-header-system' => 'സിസ്റ്റം തരം',
 	'moodbar-header-comment' => 'അഭിപ്രായങ്ങൾ',
+	'moodbar-header-user-editcount' => 'ഉപയോക്തൃ തിരുത്തലുകളുടെ എണ്ണം',
 	'moodbar-header-namespace' => 'നാമമേഖല',
 	'moodbar-header-own-talk' => 'സ്വന്തം സം‌വാദം താൾ',
+	'moodbar-type-happy' => 'സന്തോഷം',
+	'moodbar-type-sad' => 'ദുഃഖം',
+	'moodbar-type-confused' => 'ആശയക്കുഴപ്പം',
+	'moodbar-user-anonymized' => 'അജ്ഞാതവത്കരിച്ചു',
 	'moodbar-user-ip' => 'ഐ.പി. വിലാസം',
 	'moodbar-user-user' => 'അംഗത്വമെടുത്ത ഉപയോക്താവ്',
 );
@@ -547,7 +562,7 @@ $messages['ml'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
-	'moodbar-desc' => 'Membolehkan pengguna tertentu menghantar "emosi" mereka kepada pengendali tapak',
+	'moodbar-desc' => 'Membolehkan pengguna tertentu menghantar maklum balas mereka kepada pengendali tapak',
 	'moodbar-trigger-feedback' => 'Maklum balas tentang penyuntingan',
 	'moodbar-trigger-share' => 'Kongsi pengalaman anda',
 	'moodbar-trigger-editing' => 'Menyunting $1...',
@@ -560,7 +575,7 @@ $messages['ms'] = array(
 	'moodbar-type-confused-title' => 'Keliru',
 	'tooltip-moodbar-what' => 'Ketahui lebih lanjut mengenai ciri ini',
 	'moodbar-what-label' => 'Apakah ini?',
-	'moodbar-what-content' => 'Ciri ini direka untuk membantu komuniti Wikipedia memahami pengalaman sesiapa yang menyunting ensiklopedia ini.
+	'moodbar-what-content' => 'Ciri ini direka untuk membantu komuniti memahami pengalaman sesiapa yang menyunting ensiklopedia ini.
 Untuk maklumat lanjut, sila layari $1.',
 	'moodbar-what-link' => 'laman ciri',
 	'moodbar-privacy' => 'Dengan penyerahan ini, anda bersetuju dengan ketelusan di bawah $1 ini.',
@@ -576,7 +591,7 @@ Untuk maklumat lanjut, sila layari $1.',
 	'moodbar-success-title' => 'Terima kasih!',
 	'moodbar-error-title' => 'Alamak!',
 	'moodbar-success-subtitle' => 'Berkongsi pengalaman menyunting anda membantu kami meningkatkan $1.',
-	'moodbar-error-subtitle' => 'Ada yang tak kena! Sila cuba berkongsi emosi anda nanti.',
+	'moodbar-error-subtitle' => 'Ada yang tak kena! Sila cuba berkongsi maklum balas anda kemudian.',
 	'right-moodbar-view' => 'Lihat dan eksport maklum balas MoodBar',
 	'moodbar-admin-title' => 'Maklum balas MoodBar',
 	'moodbar-admin-intro' => 'Laman ini membolehkan anda melihat maklum balas yang dihantar bersama MoodBar.',
@@ -606,9 +621,10 @@ Untuk maklumat lanjut, sila layari $1.',
 
 /** Dutch (Nederlands)
  * @author SPQRobin
+ * @author Siebrand
  */
 $messages['nl'] = array(
-	'moodbar-desc' => 'Laat bepaalde gebruikers toe hun "gemoedstoestand" naar de sitebeheerders te verzenden',
+	'moodbar-desc' => 'Maakt het voor bepaalde gebruikers mogelijk terugkoppeling te geven over hun ervaringen tijdens het bewerken',
 	'moodbar-trigger-feedback' => 'Terugkoppeling over het bewerken',
 	'moodbar-trigger-share' => 'Deel uw ervaring',
 	'moodbar-trigger-editing' => 'Het bewerken van $1...',
@@ -621,8 +637,8 @@ $messages['nl'] = array(
 	'moodbar-type-confused-title' => 'Verward',
 	'tooltip-moodbar-what' => 'Meer informatie over deze functie',
 	'moodbar-what-label' => 'Wat is dit?',
-	'moodbar-what-content' => 'Deze functie is ontworpen om de Wikipedia-gemeenschap de ervaring van mensen die Wikipedia bewerken, te helpen begrijpen.
-Voor meer informatie, ga naar de $1.',
+	'moodbar-what-content' => 'Deze functie is ontworpen om de gemeenschap de ervaring van mensen die de site bewerken, te helpen begrijpen.
+Ga naar de $1 voor mee informatie.',
 	'moodbar-what-link' => 'pagina over deze functie',
 	'moodbar-privacy' => 'Door te delen gaat u akkoord met transparantie onder deze $1.',
 	'moodbar-privacy-link' => 'voorwaarden',
@@ -637,7 +653,7 @@ Voor meer informatie, ga naar de $1.',
 	'moodbar-success-title' => 'Bedankt!',
 	'moodbar-error-title' => 'Oeps!',
 	'moodbar-success-subtitle' => 'Door het delen van uw ervaringen bij het bewerken, helpt u mee $1 te verbeteren.',
-	'moodbar-error-subtitle' => 'Er is iets misgegaan! Probeer later opnieuw uw gemoedstoestand te delen.',
+	'moodbar-error-subtitle' => 'Er is iets misgegaan! Probeer later opnieuw uw terugkoppeling te delen.',
 	'right-moodbar-view' => 'MoodBar-terugkoppeling bekijken en exporteren',
 	'moodbar-admin-title' => 'MoodBar-terugkoppeling',
 	'moodbar-admin-intro' => 'Deze pagina laat u toe om terugkoppeling die met de MoodBar is verzonden, te bekijken',
@@ -665,11 +681,64 @@ Voor meer informatie, ga naar de $1.',
 	'moodbar-user-user' => 'Geregistreerde gebruiker',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Event
+ */
+$messages['no'] = array(
+	'moodbar-header-user' => 'Bruker',
+	'moodbar-header-editmode' => 'Redigeringsmodus',
+	'moodbar-header-bucket' => 'Testebøtte',
+	'moodbar-header-system' => 'Systemtype',
+	'moodbar-header-comment' => 'Kommentarer',
+	'moodbar-header-user-editcount' => 'Brukerens antall redigeringer',
+	'moodbar-header-namespace' => 'Navnerom',
+	'moodbar-header-own-talk' => 'Egen diskusjonsside',
+	'moodbar-type-happy' => 'Glad',
+	'moodbar-type-sad' => 'Trist',
+	'moodbar-type-confused' => 'Forvirret',
+	'moodbar-user-anonymized' => 'Anonymisert',
+	'moodbar-user-ip' => 'IP-adresse',
+	'moodbar-user-user' => 'Registrert bruker',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'moodbar-desc' => 'Pozwala określonym użytkownikom na wyrażenie opinii o posiadanym doświadczeniu w edytowaniu',
+	'moodbar-trigger-feedback' => 'Opinia na temat edytowania',
+	'moodbar-trigger-share' => 'Podziel się swoim doświadczeniem',
+	'moodbar-trigger-editing' => 'Edytowanie {{GRAMMAR:D.lp|$1}}...',
+	'moodbar-close' => '(zamknij)',
+	'moodbar-intro-feedback' => 'Edytowanie {{GRAMMAR:D.lp|$1}} przyniosło mi...',
+	'moodbar-intro-share' => 'Moje doświadczenie w {{GRAMMAR:MS.lp|$1}} przyniosło mi...',
+	'moodbar-intro-editing' => 'Edytowanie {{GRAMMAR:D.lp|$1}} przyniosło mi...',
+	'moodbar-type-happy-title' => 'zadowolenie',
+	'moodbar-type-sad-title' => 'rozczarowanie',
+	'moodbar-type-confused-title' => 'mieszane uczucia',
+	'tooltip-moodbar-what' => 'Więcej informacji na temat tej funkcji',
+	'moodbar-what-label' => 'O co tu chodzi?',
+	'moodbar-what-content' => 'Ten dodatek pomaga społeczności zrozumieć doświadczenia osób edytujących projekt.
+Więcej informacji uzyskasz na $1.',
+	'moodbar-what-link' => 'tej stronie',
+	'moodbar-privacy' => 'Przesyłając, wyrażasz zgodę na udostępnienie na następujących $1.',
+	'moodbar-privacy-link' => 'warunkach',
+	'moodbar-disable-link' => 'Nie jestem zainteresowany. Proszę wyłączyć tę funkcję.',
+	'moodbar-form-title' => 'Ponieważ...',
+	'moodbar-form-note' => 'maksymalnie 140 znaków',
+	'moodbar-form-note-dynamic' => 'pozostało $1 znaków',
+	'moodbar-form-submit' => 'Udostępnij opinię',
+	'moodbar-form-policy-text' => 'Przesyłając, $1',
+	'moodbar-form-policy-label' => 'naszej polityki',
+	'moodbar-loading-title' => 'Udostępnianie...',
+	'moodbar-success-title' => 'Dziękujemy!',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
 $messages['pt'] = array(
-	'moodbar-desc' => 'Permite que os utilizadores especificados enviem ao operador do site uma indicação do seu estado de espírito',
+	'moodbar-desc' => 'Permite que os utilizadores especificados enviem ao operador do site uma indicação da sua experiência de edição',
 	'moodbar-trigger-feedback' => 'Comentários sobre edição',
 	'moodbar-trigger-share' => 'Partilhe a sua experiência',
 	'moodbar-trigger-editing' => 'A editar $1...',
@@ -682,7 +751,7 @@ $messages['pt'] = array(
 	'moodbar-type-confused-title' => 'Confuso',
 	'tooltip-moodbar-what' => 'Saiba mais sobre esta funcionalidade',
 	'moodbar-what-label' => 'O que é isto?',
-	'moodbar-what-content' => 'Esta funcionalidade foi concebida para ajudar a comunidade da Wikipédia a compreender a experiência das pessoas que editam a Wikipédia.
+	'moodbar-what-content' => 'Esta funcionalidade foi concebida para ajudar a comunidade a compreender a experiência das pessoas que editam o site.
 Para mais informações, visite $1.',
 	'moodbar-what-link' => 'a página da funcionalidade',
 	'moodbar-privacy' => 'Ao gravar, concorda que os seus comentários podem ser tornados públicos tal como explicado $1.',
@@ -698,7 +767,7 @@ Para mais informações, visite $1.',
 	'moodbar-success-title' => 'Obrigado!',
 	'moodbar-error-title' => 'Erro!',
 	'moodbar-success-subtitle' => 'Partilhar connosco o seu estado de espírito ajuda-nos a melhorar a $1.',
-	'moodbar-error-subtitle' => 'Algo correu mal! Tente novamente mais tarde, por favor.',
+	'moodbar-error-subtitle' => 'Algo correu mal! Tente enviar os seus comentários novamente mais tarde, por favor.',
 	'right-moodbar-view' => 'Ver e exportar os comentários da MoodBar',
 	'moodbar-admin-title' => 'Comentários da MoodBar',
 	'moodbar-admin-intro' => 'Esta página permite-lhe ver os comentários enviados com a MoodBar',
@@ -737,7 +806,7 @@ $messages['ru'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
-	'moodbar-desc' => 'Omogoča določenim uporabnikom pošiljanje svojega »razpoloženja« upravljavcu mesta',
+	'moodbar-desc' => 'Omogoča določenim uporabnikom pošiljanje povratne informacije o svoji urejevalski izkušnji',
 	'moodbar-trigger-feedback' => 'Povratne informacije o urejanju',
 	'moodbar-trigger-share' => 'Delite svoje izkušnje',
 	'moodbar-trigger-editing' => 'Urejanje $1 ...',
@@ -750,7 +819,7 @@ $messages['sl'] = array(
 	'moodbar-type-confused-title' => 'Zmeden',
 	'tooltip-moodbar-what' => 'Več informacij o tej funkciji',
 	'moodbar-what-label' => 'Kaj je to?',
-	'moodbar-what-content' => 'Funkcija je oblikovana kot pomoč skupnosti Wikipedije pri razumevanju izkušnje ljudi, ki urejajo enciklopedijo.
+	'moodbar-what-content' => 'Funkcija je oblikovana kot pomoč skupnosti pri razumevanju izkušnje ljudi, ki urejajo stran.
 Za več informacij obiščite $1.',
 	'moodbar-what-link' => 'stran z opisom',
 	'moodbar-privacy' => 'S potrditvijo se strinjate s preglednostjo pod naslednjimi $1.',
@@ -766,7 +835,7 @@ Za več informacij obiščite $1.',
 	'moodbar-success-title' => 'Hvala!',
 	'moodbar-error-title' => 'Ups!',
 	'moodbar-success-subtitle' => 'Deljenje vaše urejevalne izkušnje nam pomaga izboljšati $1.',
-	'moodbar-error-subtitle' => 'Nekaj je šlo narobe! Prosimo, poskusite znova deliti svoje razpoloženje pozneje.',
+	'moodbar-error-subtitle' => 'Nekaj je šlo narobe! Prosimo, poskusite znova deliti svojo povratno informacijo pozneje.',
 	'right-moodbar-view' => 'Ogled in izvoz povratnih informacij MoodBar',
 	'moodbar-admin-title' => 'Povratne informacije MoodBar',
 	'moodbar-admin-intro' => 'Ta stran vam omogoča ogled povratnih informacij, poslanih z MoodBar.',
@@ -808,23 +877,29 @@ $messages['vi'] = array(
 	'moodbar-intro-editing' => 'Việc sửa đổi $1 làm cho tôi có vẻ…',
 	'moodbar-type-happy-title' => 'Hài lòng',
 	'moodbar-type-sad-title' => 'Bực mình',
+	'moodbar-type-confused-title' => 'Bối rối',
 	'tooltip-moodbar-what' => 'Tìm hiểu thêm về tính năng này',
 	'moodbar-what-label' => 'Này là gì?',
 	'moodbar-what-content' => 'Tính năng này có mục đích giúp cộng đồng Wikipedia hiểu biết những ấn tượng của người xây dựng bách khoa toàn thư.
 Để biết thêm chi tiết, xin ghé vào $1.',
 	'moodbar-what-link' => 'trang tính năng',
+	'moodbar-privacy' => 'Bằng cách gửi thông tin, bạn đồng ý phát hành thông tin này công khai theo các $1 này.',
 	'moodbar-privacy-link' => 'điều khoản',
 	'moodbar-disable-link' => 'Thôi, xin tắt tính năng này.',
 	'moodbar-form-title' => 'Bởi vì…',
 	'moodbar-form-note' => 'tối đa 150 ký tự nữa',
 	'moodbar-form-note-dynamic' => 'còn $1 ký tự',
 	'moodbar-form-submit' => 'Chia sẻ phản hồi',
+	'moodbar-form-policy-text' => 'Bằng cách gửi thông tin, $1',
 	'moodbar-form-policy-label' => 'chính sách của chúng ta',
 	'moodbar-loading-title' => 'Đang chia sẻ…',
 	'moodbar-success-title' => 'Cám ơn!',
 	'moodbar-error-title' => 'Oái!',
+	'moodbar-success-subtitle' => 'Việc chia sẻ những ấn tượng về quá trình sửa đổi giúp chúng tôi cải thiện $1.',
+	'moodbar-error-subtitle' => 'Oái, đã bị trục trặc! Xin vui lòng chia sẻ tâm trạng của bạn lát nữa.',
 	'right-moodbar-view' => 'Xem và xuất phản hồi MoodBar',
 	'moodbar-admin-title' => 'Phản hồi về MoodBar',
+	'moodbar-admin-intro' => 'Trang này cho phép đọc các phản hồi được gửi dùng MoodBar.',
 	'moodbar-admin-empty' => 'Không có kết quả',
 	'moodbar-header-id' => 'ID của bài phản hồi',
 	'moodbar-header-timestamp' => 'Thời gian',
@@ -833,6 +908,7 @@ $messages['vi'] = array(
 	'moodbar-header-usertype' => 'Kiểu người dùng',
 	'moodbar-header-user' => 'Người dùng',
 	'moodbar-header-editmode' => 'Chế độ sửa đổi',
+	'moodbar-header-bucket' => 'Phiên bản thử nghiệm',
 	'moodbar-header-system' => 'Loại hệ thống',
 	'moodbar-header-locale' => 'Địa phương',
 	'moodbar-header-useragent' => 'Trình duyệt',
@@ -842,6 +918,8 @@ $messages['vi'] = array(
 	'moodbar-header-own-talk' => 'Trang thảo luận của chính mình',
 	'moodbar-type-happy' => 'Hài lòng',
 	'moodbar-type-sad' => 'Bực mình',
+	'moodbar-type-confused' => 'Bối rối',
+	'moodbar-user-anonymized' => 'Ẩn danh',
 	'moodbar-user-ip' => 'Địa chỉ IP',
 	'moodbar-user-user' => 'Người dùng đăng ký',
 );

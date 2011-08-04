@@ -225,6 +225,13 @@ $messages['gl'] = array(
 	'svgedit-toolbar-insert' => 'Debuxo SVG',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'svgedit-editor-close' => 'Ἀκυροῦν',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  * @author Purodha

@@ -3880,8 +3880,8 @@ $messages['ig'] = array(
 	'wikilog-form-name' => 'Áhạ:',
 	'wikilog-form-author' => 'Ọdè ákwúkwó:',
 	'wikilog-form-date' => 'Ubọchị:',
-	'wikilog-edit-lc' => 'rüwa',
-	'wikilog-delete-lc' => 'gbakashia',
+	'wikilog-edit-lc' => 'mèzi',
+	'wikilog-delete-lc' => 'kàcha',
 	'wikilog-page-lc' => 'ihü',
 	'wikilog-history-lc' => 'akíkó mbu',
 );

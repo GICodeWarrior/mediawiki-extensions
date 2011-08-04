@@ -228,7 +228,7 @@ $messages['id'] = array(
  * @author Ukabia
  */
 $messages['ig'] = array(
-	'clientside-desc' => 'Ne nyé ihe ȯmé í ké ókịkẹ ọgúgú màkà ihe orunotu nke ébé-onyé-jị nwèrè dí kà HTML, CSS na JavaScript',
+	'clientside-desc' => 'Ne nyé ihe ȯmé í ké ókịkẹ ọgúgú màkà ihe nsónùsòrò nke ébé-onyé-jị nwèrè dí kà HTML, CSS na JavaScript',
 );
 
 /** Italian (Italiano)

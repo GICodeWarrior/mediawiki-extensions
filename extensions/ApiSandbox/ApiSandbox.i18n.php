@@ -579,7 +579,11 @@ $messages['pt-br'] = array(
 $messages['roa-tara'] = array(
 	'apisb-parameters' => 'Parametre',
 	'apisb-result' => 'Resultate',
+	'apisb-select-value' => "Scacchie 'nu valore",
 	'apisb-ns-main' => '(Prengepàle)',
+	'apisb-submit' => "Fà 'na richieste",
+	'apisb-query-prop' => 'probbietà',
+	'apisb-query-list' => 'Elenghe',
 );
 
 /** Russian (Русский)
@@ -744,6 +748,7 @@ $messages['vi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Hydra
+ * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
 	'apisb-desc' => '允许调试 [http://www.mediawiki.org/wiki/API MediaWiki API] 从浏览器的调用',
@@ -757,7 +762,7 @@ $messages['zh-hans'] = array(
 	'apisb-select-action' => '选择操作',
 	'apisb-select-query' => '查询又如何？',
 	'apisb-select-value' => '选择值',
-	'apisb-loading' => '正在加载...',
+	'apisb-loading' => '正在载入...',
 	'apisb-load-error' => '加载 API 说明时出错',
 	'apisb-request-error' => '执行 API 请求时出错',
 	'apisb-namespaces-error' => '加载命名空间出错误',

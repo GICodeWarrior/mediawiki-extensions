@@ -3106,7 +3106,7 @@ $messages['yue'] = array(
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
-	'prefstats' => '喜好统计',
+	'prefstats' => '偏好统计',
 	'prefstats-desc' => '追踪统计，有多少用户启用了特定的设置',
 	'prefstats-title' => '喜好统计',
 	'prefstats-list-intro' => '直到现时，以下的喜好设置会追踪下来。

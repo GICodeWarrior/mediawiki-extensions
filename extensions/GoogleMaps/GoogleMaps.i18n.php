@@ -2936,8 +2936,8 @@ $wgGoogleMapsMessages['ig'] = array(
 	'gm-no-zoom-control' => 'Efù',
 	'gm-yes' => 'Eeh',
 	'gm-no' => 'Mbà',
-	'gm-search' => 'Chöwá',
-	'gm-save-path' => 'Donyéré',
+	'gm-search' => 'Chọwa',
+	'gm-save-path' => 'Domá',
 	'gm-back' => 'azú',
 	'gm-earth' => 'Àlà',
 	'gm-moon' => 'Önwa',
@@ -6771,6 +6771,7 @@ $wgGoogleMapsMessages['yue'] = array(
  * @author <anonymous>
  * @author PhiLiP
  * @author Wmr89502270
+ * @author Xiaomingyan
  */
 $wgGoogleMapsMessages['zh-hans'] = array(
 	'gm-desc' => '轻松地创建地图的wiki-fied标志',
@@ -6836,7 +6837,7 @@ $wgGoogleMapsMessages['zh-hans'] = array(
 	'gm-back' => '返回',
 	'gm-kml-include' => '外部的 KML/GeoRSS：',
 	'gm-kml-include-link' => '新增至地图',
-	'gm-kml-loading' => '载入中……',
+	'gm-kml-loading' => '正在载入...',
 	'gm-kml-export' => '导出此地图至KML',
 	'gm-earth' => '地球',
 	'gm-moon' => '月亮',

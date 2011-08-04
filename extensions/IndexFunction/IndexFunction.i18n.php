@@ -739,9 +739,11 @@ ketikan beberapa karakter pertama dan tekan tombol kirim untuk mencari judul hal
 Klik tanda panah untuk melihat semua halaman indeks di dalam judul itu.',
 );
 
-/** Igbo (Igbo) */
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
 $messages['ig'] = array(
-	'index-search' => 'Chöwá',
+	'index-search' => 'Chọwa:',
 );
 
 /** Italian (Italiano)

@@ -222,6 +222,7 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Danke7
+ * @author Fitoschido
  * @author Sanbec
  */
 $messages['es'] = array(
@@ -230,6 +231,8 @@ $messages['es'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Crear',
 	'articletocategory2-create-category-under-category-text' => 'Añadir una categoría a esta categoría',
 	'articletocategory2-create-category-under-category-button' => 'Crear',
+	'right-ArticleToCategory2' => 'Agregar página a categoría',
+	'right-ArticleToCategory2AddCat' => 'Añadir categoría a otra',
 );
 
 /** Persian (فارسی)

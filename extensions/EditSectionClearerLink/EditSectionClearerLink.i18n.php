@@ -29,6 +29,20 @@ $messages['de'] = array(
 	'editsectionclearerlink-desc' => 'Verbessert die Nutzbarkeit der Links für die Bearbeitung von Seitenabschnitten durch zusätzliche Aktionen, die beim Überfahren mit der Maus eingeblendet werden',
 );
 
+/** French (Français)
+ * @author Sherbrooke
+ */
+$messages['fr'] = array(
+	'editsectionclearerlink-desc' => 'Améliore la convivialité des liens de modifications des sections en ayant recours à des actions de sections et de survol.',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'editsectionclearerlink-desc' => 'Meliorar le usabilitate del ligamines pro modificar section per le addition de actiones "hover" a cata section e ligamine',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */

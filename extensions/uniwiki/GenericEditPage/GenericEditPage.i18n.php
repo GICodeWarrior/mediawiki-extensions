@@ -1811,6 +1811,7 @@ $messages['yi'] = array(
  * @author Gaoxuewei
  * @author Gzdavidwong
  * @author Liangent
+ * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
 	'gep-desc' => '使编辑页面对用户更加友好',
@@ -1818,7 +1819,7 @@ $messages['zh-hans'] = array(
 	'gep-emailbody' => '用户 "$1" 建议将站点 "$3" 分类为 "$2" 。',
 	'gep-emailfailure' => '抱歉，您的建议无法被处理。',
 	'gep-emailsuccess' => '感谢您推荐分类： $1。',
-	'gep-categories' => '页面分类',
+	'gep-categories' => '分类',
 	'gep-addcategory' => '增加一个分类',
 	'gep-addcategorybutton' => '增加',
 	'gep-suggestcategory' => '推荐一个分类',

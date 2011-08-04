@@ -225,7 +225,7 @@ $messages['id'] = array(
  * @author Ukabia
  */
 $messages['ig'] = array(
-	'ipauth-desc' => 'Í bátá na áká orunotu shí IP dị ike ébé ótù',
+	'ipauth-desc' => 'Í bátá na áká nsónùsòrò shí IP dị ike ébé ótù',
 );
 
 /** Italian (Italiano)

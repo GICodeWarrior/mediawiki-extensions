@@ -1952,10 +1952,11 @@ As avaliações são as seguintes:
  * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Mihai
+ * @author Minisarm
  */
 $messages['ro'] = array(
-	'ratinghistory' => 'Istoricul evaluării paginii',
-	'ratinghistory-leg' => 'Informații despre istoricul evaluarii pentru [[:$1|$1]]',
+	'ratinghistory' => 'Istoric evaluare pagină',
+	'ratinghistory-leg' => 'Informații istoric evaluare pentru [[:$1|$1]]',
 	'ratinghistory-tab' => 'evaluare',
 	'ratinghistory-link' => 'Evaluarea paginii',
 	'ratinghistory-thanks' => "''<span style=\"color:darkred;\">Mulțumim pentru că ați revizuit această pagină!</span>''",
@@ -1966,14 +1967,17 @@ $messages['ro'] = array(
 	'ratinghistory-3years' => 'ultimii 3 ani',
 	'ratinghistory-ave' => 'Medie: $1',
 	'ratinghistory-chart' => 'Evaluările cititorilor de-a lungul timpului',
-	'ratinghistory-purge' => 'curăța cache-ul',
+	'ratinghistory-purge' => 'curăță memoria cache',
 	'ratinghistory-table' => 'Privire de ansamblu asupra evaluării cititorilor',
 	'ratinghistory-users' => 'Utilizatori care și-au exprimat opinia',
-	'ratinghistory-svg' => 'Vizualizează drept SVG',
+	'ratinghistory-graph' => 'Parametrul $2 pentru „$3” ($1 {{PLURAL:$1|evaluare|evaluări}})',
+	'ratinghistory-svg' => 'Vizualizare ca SVG',
 	'ratinghistory-table-rating' => 'Evaluare',
 	'ratinghistory-table-votes' => 'Voturi',
 	'ratinghistory-none' => 'Nu există suficiente date disponibile pentru a genera grafice în acest moment.',
-	'right-feedback' => 'Folosiți formularul de feedback-ul pentru a evalua o pagină',
+	'ratinghistory-ratings' => "'''Legendă:''' '''(1)''' - Slab; '''(2)''' - Redus; '''(3)''' - Mediu; '''(4)''' - Ridicat; '''(5)''' - Excelent;",
+	'ratinghistory-graph-scale' => "'''Evaluări pe zi''' <span style=\"color:red;\">''(roșu)''</span> afișate la o scară de ''1:\$1''.",
+	'right-feedback' => 'Folosiți formularul de feedback pentru a evalua o pagină',
 );
 
 /** Tarandíne (Tarandíne)

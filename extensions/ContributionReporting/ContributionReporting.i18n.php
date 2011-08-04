@@ -4542,6 +4542,7 @@ $messages['roa-tara'] = array(
 	'fundraiserstats-tab-maximums' => 'Massime (USD)',
 	'fundraiserstats-tab-ytd' => 'Anne-a-date (USD)',
 	'fundraiserstats-customize' => 'Personalizze',
+	'fundraiserstats-show-years' => 'Fà vedè le anne ca seguene:',
 	'fundraiserstats-utc' => '(da UTC)',
 );
 

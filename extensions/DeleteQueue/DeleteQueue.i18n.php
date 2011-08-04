@@ -3677,7 +3677,7 @@ Anda dapat [{{fullurl:{{FULLPAGENAME}}|action=delvote}} mendaftarkan dukungan at
  * @author Ukabia
  */
 $messages['ig'] = array(
-	'deletequeue-list-search' => 'Chöwá',
+	'deletequeue-list-search' => 'Chọwa',
 	'deletequeue-case-reason' => 'Mgbághapụtà:',
 );
 

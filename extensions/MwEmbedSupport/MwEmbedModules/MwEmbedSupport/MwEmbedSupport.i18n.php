@@ -350,6 +350,14 @@ $messages['gl'] = array(
 	'mwe-test-plural' => '{{PLURAL:$1|Fíxose unha proba|Fixéronse $1 probas}}',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'mwe-ok' => 'εἶεν',
+	'mwe-cancel' => 'Ἀκυροῦν',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */

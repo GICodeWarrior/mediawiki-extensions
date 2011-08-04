@@ -256,6 +256,14 @@ $messages['mk'] = array(
 	'flv-long-desc' => 'Flash-видео, $1 × $2 пиксели, големина на податотеката: $3',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'flvhandler_desc' => 'Benarkan penambahan fail Flash Video (.flv) sebagai fail piawai (cth. <nowiki>[[</nowiki>{{ns:file}}:Movie.flv<nowiki>]]</nowiki>)',
+	'flv-long-desc' => 'Flash Video, $1 × $2 piksel, saiz fail: $3',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

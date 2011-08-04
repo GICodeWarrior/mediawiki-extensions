@@ -278,7 +278,7 @@ $messages['ms'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
-	'mootools12core-desc' => 'Zet [http://mootools.net mootools-1.2-core-yc.js],  een kompakt JavaScript-raamwark, op elke pagina',
+	'mootools12core-desc' => 'Zet [http://mootools.net mootools-1.2-core-yc.js],  n kompakt JavaScript-raamwark, op elke pagina',
 );
 
 /** Dutch (Nederlands)

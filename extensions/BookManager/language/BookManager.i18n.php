@@ -169,6 +169,8 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'bookmanager-desc' => 'Herramientas para libros',
+	'bm-booktools-section' => 'Herramientas del libro',
+	'bm-randomchapter-link' => 'Capítulo al azar',
 	'bm-printversion' => 'Versión para imprimir',
 	'bm-printversion-desc' => 'Genera una [[Special:PrintVersion|versión para imprimir]] de un libro',
 	'bm-printversion-no-book' => 'Introduce el nombre de un libro para obtener su versión impresa.',

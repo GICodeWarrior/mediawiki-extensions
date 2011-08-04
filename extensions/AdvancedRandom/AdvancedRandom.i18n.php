@@ -492,9 +492,9 @@ $messages['nds'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
-	'advancedrandom' => 'Zo mer een pagina (gevorderd)',
-	'advancedrandom-desc' => 'Vraag een willekeurige overlegpagina of pagina uut de heufdnaamruumte op die verwiest naor een op-egeven pagina.
-Kan gebruukt wörden as [[{{#special:advancedrandom}}/{{ns:template}}:Uutelocht/{{ns:talk}}]] um een willekeurig etalazie-artikel weer te geven of as [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] um een willekeurig GFDL-elisenseerd bestaand te bekieken',
+	'advancedrandom' => 'Zo mer n pagina (gevorderd)',
+	'advancedrandom-desc' => 'Vraag n willekeurige overlegpagina of pagina uut de heufdnaamruumte op die verwiest naor n op-egeven pagina.
+Kan gebruukt wörden as [[{{#special:advancedrandom}}/{{ns:template}}:Uutelocht/{{ns:talk}}]] um n willekeurig etalazie-artikel weer te geven of as [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] um n willekeurig GFDL-elisenseerd bestaand te bekieken',
 );
 
 /** Nepali (नेपाली)

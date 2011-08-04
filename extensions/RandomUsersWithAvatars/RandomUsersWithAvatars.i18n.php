@@ -268,6 +268,14 @@ $messages['mk'] = array(
 	'random-users-avatars-desc' => 'Додава ознака <code>&lt;randomuserswithavatars&gt;</code> за прикажување на аватари на случајно-избрани корисници',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'random-users-avatars-title' => 'Bertemu dengan komuniti',
+	'random-users-avatars-desc' => 'Membubuh tag <code>&lt;randomuserswithavatars&gt;</code> untuk memaparkan avatar pengguna yang dipilih secara rawak',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author Tvdm

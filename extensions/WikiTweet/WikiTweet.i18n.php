@@ -141,6 +141,15 @@ $messages['de'] = array(
 	'wikitweet-fewsecondsago' => 'Vor wenigen Sekunden',
 );
 
+/** Spanish (Español)
+ * @author Fitoschido
+ */
+$messages['es'] = array(
+	'wikitweet-desc' => 'Crear un feed como el de Twitter, en MediaWiki',
+	'wikitweet-pleaselogin' => 'Inicia sesión para twittear.',
+	'wikitweet-moretweets' => 'Más tweets...',
+);
+
 /** French (Français)
  * @author Balzac 40
  * @author Thomas FAURÉ

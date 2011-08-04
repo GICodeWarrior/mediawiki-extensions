@@ -1235,11 +1235,11 @@ $messages['id'] = array(
 $messages['ig'] = array(
 	'recordadmin-createsuccess' => '$1 kèrè',
 	'recordadmin-badtitle' => 'Ishi edemede öjö!',
-	'recordadmin-buttonsearch' => 'Chöwá',
+	'recordadmin-buttonsearch' => 'Chọwa',
 	'recordadmin-buttoncreate' => 'Ké',
-	'recordadmin-buttonsave' => 'Donyéré',
-	'recordadmin-editlink' => 'rüwa',
-	'recordadmin-actions' => 'Mmèmé',
+	'recordadmin-buttonsave' => 'Domá',
+	'recordadmin-editlink' => 'mèzi',
+	'recordadmin-actions' => 'Mèzi',
 );
 
 /** Ido (Ido)
@@ -1629,6 +1629,7 @@ $messages['nn'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Event
  * @author Nghtwlkr
  */
 $messages['no'] = array(
@@ -1670,7 +1671,7 @@ $messages['no'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Ingen «$1»',
-	'recordadmin-edit-info' => 'Denne siden innholder maler som har sine egne skjema som du kan fylle ut fra dette fane-settet',
+	'recordadmin-edit-info' => 'Siden inneholder maler som har sine egne skjemaer du kan fylle ut ved valg blant angitte faner.<br />Alternativt <a href="$1">kan du bruke standard MediaWiki-redigeringsfunksjonalitet uten malskjemaer</a>.',
 	'recordadmin-properties' => 'Egenskaper',
 );
 

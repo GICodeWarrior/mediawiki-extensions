@@ -296,6 +296,14 @@ $messages['mr'] = array(
 	'tog-microid' => 'बाह्य सेवांचे खाते प्रमाणित करण्यासाठी एक <a href="http://microid.org/">MicroID</a> प्रकाशित करा',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'microid-desc' => 'Membubuh [http://www.microid.org/ MicroID] pada nama pengguna untuk mengesahkan akaun dengan perkhidmatan luar',
+	'tog-microid' => 'Siarkan <a href="http://microid.org/">MicroID</a> untuk mengesahkan akaun dengan perkhidmatan luar',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
