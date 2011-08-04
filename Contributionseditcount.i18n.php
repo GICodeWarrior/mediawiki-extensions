@@ -493,7 +493,7 @@ $messages['nds'] = array(
  */
 $messages['nds-nl'] = array(
 	'contributionseditcount' => 'Disse gebruker hef {{PLURAL:$1|één bewarking|$1 bewarkingen}} edaon.',
-	'contributionseditcount-desc' => 'Laot een bewarkingsteller zien op de pagina [[Special:Contributions|gebrukersbiedragen]]',
+	'contributionseditcount-desc' => 'Laot n bewarkingsteller zien op de pagina [[Special:Contributions|gebrukersbiedragen]]',
 );
 
 /** Dutch (Nederlands)
