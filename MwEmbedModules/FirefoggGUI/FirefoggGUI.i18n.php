@@ -4222,6 +4222,7 @@ Cchiù \'mbormazziune sus <a href="http://en.wikipedia.org/wiki/Video_denoising"
 	'fogg-please-install-install-linktext' => 'Installe Firefogg',
 	'fogg-please-install-about-linktext' => 'sus a Firefogg',
 	'fogg-latest-firefox' => 'urteme Firefox',
+	'fogg-badtoken' => "'U gettone non g'è valide",
 	'fogg-preview' => "Andeprime d'u video",
 	'fogg-hidepreview' => "Scunne l'andeprime",
 );

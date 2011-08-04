@@ -2252,7 +2252,7 @@ Retrovu poste.',
 $messages['es'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 de $2',
 	'mwe-upload-unknown-size' => 'Tamaño desconocido',
-	'mwe-cancel-confim' => 'Estás seguro que deseas cancelar?',
+	'mwe-cancel-confim' => '¿Estás seguro de que quieres cancelar?',
 	'mwe-successfulupload' => 'Carga exitosa',
 	'mwe-uploaderror' => 'Error en carga',
 	'mwe-uploadwarning' => 'Advertencia en carga',
@@ -2280,8 +2280,9 @@ $messages['es'] = array(
 	'mwe-summary' => 'Resumen',
 	'mwe-date-of-work' => 'Fecha del trabajo',
 	'mwe-error_not_loggedin' => 'No pareces haber iniciado sesión o tener privilegios de carga',
-	'mwe-error-not-loggedin-file' => 'No pareces haber in iniciado sesión o hubo un error en el software. Puedes $1 e intentar nuevamente',
-	'mwe-link-login' => 'inicio de sesión',
+	'mwe-error-not-loggedin-file' => 'Parece que no has iniciado sesión, o hubo un error de software.
+Puedes $1 e intentarlo de nuevo',
+	'mwe-link-login' => 'iniciar sesión',
 	'mwe-watch-this-file' => 'Seguir este archivo',
 	'mwe-ignore-any-warnings' => 'Ignorar las advertencias',
 	'mwe-i-would-like-to' => 'Me gustaría',
@@ -4260,6 +4261,7 @@ Hät dat Wiki <code lang="en">$1</code> enjeschalldt?</p>',
 	'mwe-your-recent-uploads-to' => 'Ding beß jez noh {{GRAMMAR:Akkusativ|$1}} huhjelaade Dateije
 ',
 	'mwe-no_recent_uploads' => 'Nix es köözlesch huhjelaade woode.',
+	'mwe-not-logged-in-uploads' => 'Künt sin, dat De nit enjelogg bes un dröm de neußte huhjelaade Datteije nit aanjezeisch wääde künne. [$1 Donn enlogge] un [$2 versöhg_et norr_ens].',
 	'mwe-upload-a-file' => 'En neu Dattei huh laade',
 	'mwe-upload-a-file-to' => 'Donn en Dattei noh {{GRAMMAR:Akkusativ|$1}} huh laade.
 ',
@@ -7677,6 +7679,7 @@ $messages['yo'] = array(
  * @author Mark85296341
  * @author PhiLiP
  * @author Shizhao
+ * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
 	'mwe-upload-stats-fileprogress' => '$2中的$1',
@@ -7706,7 +7709,7 @@ $messages['zh-hans'] = array(
 	'mwe-select_ownwork' => '我要上传完全属于自己的作品，并且基于以下的授权协议：',
 	'mwe-license_cc-by-sa' => 'Creative Commons Share Alike (3.0)',
 	'mwe-upload' => '上传文件',
-	'mwe-destfilename' => '目标文件名',
+	'mwe-destfilename' => '目标文件名：',
 	'mwe-summary' => '摘要',
 	'mwe-date-of-work' => '作品日期',
 	'mwe-error_not_loggedin' => '你似乎没有登录或者没有上传权限。',
