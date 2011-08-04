@@ -259,6 +259,14 @@ $messages['mr'] = array(
 	'randomrootpage-desc' => 'अविशिष्ट मूळ पान मिळविण्यासाठीचे [[Special:Randomrootpage|विशेष पान]]',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'randomrootpage' => 'Laman akar rawak',
+	'randomrootpage-desc' => '[[Special:Randomrootpage|Laman khas]] yang mengambil laman akar secara rawak',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */
