@@ -79,6 +79,13 @@ $messages['mk'] = array(
 	'editpagetracking-desc' => 'Ја евидентира првата посета (погледнување) на страницата за уредување на секој корисник',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'editpagetracking-desc' => 'ഓരോ ഉപയോക്താവും തിരുത്താനുള്ള താൾ ആദ്യം സന്ദർശിച്ചതെപ്പോഴെന്നു ശേഖരിക്കുന്നു',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Anakmalaysia
  */
@@ -91,6 +98,13 @@ $messages['ms'] = array(
  */
 $messages['no'] = array(
 	'editpagetracking-desc' => 'Det blir registrert første gang hver bruker ser på redigeringssiden',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'editpagetracking-desc' => 'Zapamiętuje dla każdego użytkownika kiedy po raz pierwszy otworzył on stronę edycji',
 );
 
 /** Portuguese (Português)
