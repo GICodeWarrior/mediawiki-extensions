@@ -776,9 +776,11 @@ Silakan masukkan {{PLURAL:$2|isian|isian}} itu.',
 	'formsaveerrortext' => "Terjadi kesalahan yang tak dikenal sewaktu menyimpan halaman '$1'.",
 );
 
-/** Igbo (Igbo) */
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
 $messages['ig'] = array(
-	'formsave' => 'Donyéré',
+	'formsave' => 'Domá',
 );
 
 /** Ido (Ido)
