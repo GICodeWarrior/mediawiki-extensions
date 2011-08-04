@@ -558,9 +558,11 @@ $messages['id'] = array(
 	'right-inspectcache' => 'Lihat dan hapus entri singgahan',
 );
 
-/** Igbo (Igbo) */
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
 $messages['ig'] = array(
-	'inspectcache-delete' => 'Gbakashia',
+	'inspectcache-delete' => 'Kàcha',
 );
 
 /** Italian (Italiano)
