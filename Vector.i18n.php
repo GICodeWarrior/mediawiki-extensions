@@ -607,6 +607,13 @@ Jos olet kirjautuneena sisään, voit poistaa tämän varoituksen käytöstä as
 	'vector-simplesearch-containing' => 'sisältää...',
 );
 
+/** Faroese (Føroyskt)
+ * @author Diupwijk
+ */
+$messages['fo'] = array(
+	'vector-simplesearch-search' => 'Leita',
+);
+
 /** French (Français)
  * @author IAlex
  * @author Jean-Frédéric
@@ -843,7 +850,7 @@ Jika Anda telah masuk log, Anda dapat mematikan peringatan ini lewat "Penyunting
  * @author Ukabia
  */
 $messages['ig'] = array(
-	'vector-simplesearch-search' => 'Chöwá',
+	'vector-simplesearch-search' => 'Chọwa',
 );
 
 /** Ido (Ido)
@@ -1197,8 +1204,8 @@ $messages['nds-nl'] = array(
 	'vector-collapsiblenav-more' => 'Meer talen',
 	'vector-editwarning-warning' => "A'j disse pagina aofsluten dan kan t ween dat der wieziging die'j emaakt hebben kwiet raken.
 A'j an-emeld bin, dan ku'j disse waorschuwing uutzetten in t tabblad \"Bewarken\" in joew veurkeuren.",
-	'vector-editwarning-preference' => "Waorschuw mien a'k een bewörken pagina of wil sluten die'j nog niet op-esleugen is",
-	'vector-simplesearch-search' => 'Zeuken',
+	'vector-editwarning-preference' => "Waorschuw mien a'k n bewörken pagina of wil sluten die'j nog niet op-esleugen is",
+	'vector-simplesearch-search' => 'Zeuken / zuken / zuiken',
 	'vector-simplesearch-containing' => 'bevat...',
 );
 
