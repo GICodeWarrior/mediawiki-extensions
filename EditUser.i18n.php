@@ -519,7 +519,7 @@ $messages['gl'] = array(
  * @author Omnipaedista
  */
 $messages['grc'] = array(
-	'edituser-username' => 'Ὄνομα',
+	'edituser-username' => 'Ὄνομα χρωμένου:',
 	'edituser-dosearch' => 'Ζητεῖν',
 );
 
@@ -687,9 +687,11 @@ $messages['id'] = array(
 	'right-edituser-exempt' => 'Orang lain tidak dapat menyunting preferensi pengguna ini',
 );
 
-/** Igbo (Igbo) */
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
 $messages['ig'] = array(
-	'edituser-dosearch' => 'Chöwá',
+	'edituser-dosearch' => 'Chọwa',
 );
 
 /** Ido (Ido)
