@@ -2967,7 +2967,7 @@ Anda tidak akan dapat masuk log tanpa OpenID.',
 $messages['ig'] = array(
 	'openidoptional' => 'I cho, ka I chogị',
 	'openidchoosepassword' => 'Okwúngáfè:',
-	'openid-urls-delete' => 'Gbakashia',
+	'openid-urls-delete' => 'Kàcha',
 );
 
 /** Icelandic (Íslenska)
@@ -2989,7 +2989,7 @@ $messages['is'] = array(
  */
 $messages['it'] = array(
 	'openid-desc' => 'Effettua il login alla wiki con [http://openid.net/ OpenID] e agli altri siti web che utilizzano OpenID con un account wiki',
-	'openidlogin' => 'Login con OpenID',
+	'openidlogin' => 'Entra / crea account con OpenID',
 	'openidserver' => 'server OpenID',
 	'openidxrds' => 'file Yadis',
 	'openidconvert' => 'convertitore OpenID',
@@ -3019,7 +3019,7 @@ Per favore consulta un [[Special:ListUsers/sysop|amministratore]].',
 	'openidemail' => 'Indirizzo e-mail',
 	'openidlanguage' => 'Lingua',
 	'openidtimezone' => 'Fuso orario',
-	'openidchooselegend' => 'Scelta del nome utente',
+	'openidchooselegend' => "Scelta del nome utente e dell'account",
 	'openidchooseinstructions' => 'Tutti gli utenti hanno bisogno di un nickname;
 puoi sceglierne uno dalle opzioni seguenti.',
 	'openidchoosenick' => 'Il tuo nickname ($1)',
@@ -3036,9 +3036,7 @@ puoi sceglierne uno dalle opzioni seguenti.',
 	'openidconvertsuccesstext' => 'Il tuo OpenID è stato convertito con successo a $1.',
 	'openidconvertyourstext' => 'Questo è già il tuo OpenID.',
 	'openidconvertothertext' => "Questo è l'OpenID di qualcun altro.",
-	'openidalreadyloggedin' => "'''Hai già effettuato il login, $1!'''
-
-Se desideri usare OpenID per effettuare il login in futuro, puoi [[Special:OpenIDConvert|convertire il tuo account per utilizzare OpenID]].",
+	'openidalreadyloggedin' => "Hai già effettuato l'accesso.",
 	'openidnousername' => 'Nessun nome utente specificato.',
 	'openidbadusername' => 'Nome utente specificato errato.',
 	'openidautosubmit' => 'Questa pagina include un modulo che dovrebbe essere inviato automaticamente se hai JavaScript attivato. Se non lo è, prova a premere il pulsante "Continue".',
@@ -3075,6 +3073,7 @@ Non saresti in grado di accedere senza un OpenID.',
 	'openid-provider-label-yahoo' => 'Accedi utilizzando il tuo account Yahoo',
 	'openid-provider-label-aol' => 'Inserisci il tuo screenname AOL',
 	'openid-provider-label-other-username' => 'Inserisci il tuo $1 nome utente',
+	'openid-dashboard-number-openid-users' => 'Numero di utenti con OpenID',
 );
 
 /** Japanese (日本語)
