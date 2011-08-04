@@ -1997,9 +1997,9 @@ $messages['id'] = array(
  * @author Ukabia
  */
 $messages['ig'] = array(
-	'tasks_delete' => 'Gbakashia',
-	'tasks_more_like_it' => 'nà nké ozór',
-	'tasks_search_form_title' => 'Chöwá',
+	'tasks_delete' => 'Kàcha',
+	'tasks_more_like_it' => 'ọzȯ kwa',
+	'tasks_search_form_title' => 'Chọwa',
 );
 
 /** Italian (Italiano)
