@@ -662,6 +662,7 @@ $messages['pt-br'] = array(
  * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Mihai
+ * @author Minisarm
  * @author Stelistcristi
  */
 $messages['ro'] = array(
@@ -669,6 +670,7 @@ $messages['ro'] = array(
 	'ratedpages-list' => 'Mai jos este o listă de pagini sortate după evaluarea venită de la cititori.',
 	'ratedpages-none' => 'Nu există pagini în această listă',
 	'ratedpages-graphs' => 'evaluarea datelor',
+	'ratedpages-count' => '$1 {{PLURAL:$1|evaluare|evaluări}}',
 );
 
 /** Tarandíne (Tarandíne)
