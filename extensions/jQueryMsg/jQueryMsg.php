@@ -29,7 +29,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'jQueryMsg',
-	'author' array( 'Neil Kandalgaonkar', 'Ian Baker' ),
+	'author' => array( 'Neil Kandalgaonkar', 'Ian Baker' ),
 	'version' => '0.1.0',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:jQueryMsg',
 	'descriptionmsg' => 'jquerymsg-desc',
