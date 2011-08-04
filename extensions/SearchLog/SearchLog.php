@@ -25,7 +25,7 @@ $wgSpecialPages['SearchLog'] = 'SpecialSearchLog';
 
 // Permissions
 $wgAvailableRights[] = 'searchlog-read';
-$wgGroupPermissions['*']['searchlog-read'];
+$wgGroupPermissions['*']['searchlog-read'] = false;
 
 // Credits
 $wgExtensionCredits['specialpage'][] = array(
@@ -38,18 +38,15 @@ $wgExtensionCredits['specialpage'][] = array(
 );
 
 // Hooks/ext functions
-$wgExtensionFunctions[]   = 'wfSetupSearchLog';
+$wgHooks['BeforeInitialize'][]   = 'wfLogSearchRequest';
 
-# Called from $wgExtensionFunctions array when initialising extensions
-function wfSetupSearchLog() {
-	global $wgUser;
-
+function wfLogSearchRequest( $title, $unused, $output, $user, $request, $mw ) {
 	# If a search has been posted, log the info
-	if ( isset($_REQUEST['search'] ) ) {
-		$search = $_REQUEST['search'];
-		if ( isset( $_REQUEST['fulltext'] ) ) {
+	$search = $request->getVal( 'search' );
+	if ( $search !== null ) {
+		if ( $request->getCheck( 'fulltext' ) ) {
 			$type = 'fulltext';
-		} elseif ( isset( $_REQUEST['go'] ) ) {
+		} elseif ( $request->getCheck( 'go' ) ) {
 			$type = 'go';
 		} else {
 			$type = 'other';
@@ -57,15 +54,16 @@ function wfSetupSearchLog() {
 
 		# Append the data to the file
 		if ( empty( $search ) ) {
-			$search = $_REQUEST[$type];
+			$search = $request->getVal( $type );
 		}
 		wfSuppressWarnings();
 		$fh = fopen( SpecialSearchLog::getLogName(), 'a' );
 		wfRestoreWarnings();
 		if ( $fh ) {
-			$text = date( 'Ymd,H:i:s,' ) . $wgUser->getName() . ",$type,$search";
+			$text = date( 'Ymd,H:i:s,' ) . $user->getName() . ",$type,$search";
 			fwrite( $fh, "$text\n" );
 			fclose( $fh );
 		}
 	}
+	return true;
 }
