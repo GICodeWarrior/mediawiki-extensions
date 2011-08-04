@@ -22,7 +22,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Favorites',
 	'author' => 'Jeremy Lemley',
 	'descriptionmsg' => 'favorites-desc',
-	'version' => '0.1.0',
+	'version' => '0.1.4',
 	'url' => "http://www.mediawiki.org/wiki/Extension:Favorites",
 );
 
@@ -124,10 +124,10 @@ function favParser_Render ( $input, $argv, $parser) {
         # The parser function itself
         # The input parameters are wikitext with templates expanded
         # The output should be wikitext too
-        $output = "Parser Output goes here.";
+        //$output = "Parser Output goes here.";
         
         $favParse = new FavParser();
-        $output = $favParse->wfSpecialFavoritelist();
+        $output = $favParse->wfSpecialFavoritelist($argv, $parser);
 		$parser->disableCache();
         return $output;
         
