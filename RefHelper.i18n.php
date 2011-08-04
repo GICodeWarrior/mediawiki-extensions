@@ -835,7 +835,7 @@ $messages['ig'] = array(
 	'refhelper-year' => 'Afọr:',
 	'refhelper-category' => 'Ébéonọr $1:',
 	'refhelper-create' => 'Ké',
-	'refhelper-search' => 'Chöwá',
+	'refhelper-search' => 'Chọwa',
 );
 
 /** Italian (Italiano) */
