@@ -89,7 +89,7 @@ class FavoritedItem {
 	 */
 	public static function duplicateEntries( $ot, $nt ) {
 		FavoritedItem::doDuplicateEntries( $ot->getSubjectPage(), $nt->getSubjectPage() );
-		FavoritedItem::doDuplicateEntries( $ot->getTalkPage(), $nt->getTalkPage() );
+		//FavoritedItem::doDuplicateEntries( $ot->getTalkPage(), $nt->getTalkPage() );
 	}
 
 	/**
