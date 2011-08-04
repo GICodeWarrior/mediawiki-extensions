@@ -750,10 +750,12 @@ $messages['nl'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Event
  * @author Sjurhamre
  */
 $messages['no'] = array(
 	'narayam-desc' => 'Gjør det mulgi å lage egendefinerte inndatametorer for inndatafelt',
+	'narayam-eo' => 'Esperanto',
 );
 
 /** Oriya (ଓଡ଼ିଆ)
