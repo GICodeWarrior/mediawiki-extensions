@@ -28,8 +28,6 @@ class WebConfiguration extends SiteConfiguration {
 	 * directory
 	 */
 	public function initialise( $useCache = true ) {
-		parent::initialise();
-
 		// Special case for manage.php maintenance script so that it can work
 		// even if the current configuration is broken
 		if ( defined( 'EXT_CONFIGURE_NO_EXTRACT' ) )
