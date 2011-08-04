@@ -716,7 +716,7 @@ es.Content.prototype.getWikiDomLines = function() {
 	if ( line != null ) {
 		if ( right ) {
 			for ( j = 1; j < right.length; j++ ) {
-				//this.handleAnnotation( 'close', right[j], line.annotations, i - offset );
+				this.handleAnnotation( 'close', right[j], line.annotations, i - offset );
 			}
 		}
 		if ( !line.annotations.length ) {
