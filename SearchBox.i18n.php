@@ -452,7 +452,7 @@ $messages['id'] = array(
  * @author Ukabia
  */
 $messages['ig'] = array(
-	'searchbox-search' => 'Chöwá',
+	'searchbox-search' => 'Chọwa',
 	'searchbox-go' => 'Gá',
 	'searchbox-namespaces' => 'Ámááhà:',
 );
