@@ -104,10 +104,11 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Fitoschido
  * @author Sanbec
  */
 $messages['es'] = array(
-	'navigationpopups-desc' => "Carga las ventanas emergentes de navegación de ''Lupin'' en MediaWiki",
+	'navigationpopups-desc' => 'Carga las ventanas emergentes de navegación de Lupin en MediaWiki',
 );
 
 /** Basque (Euskara)
