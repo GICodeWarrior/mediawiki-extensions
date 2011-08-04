@@ -17,7 +17,6 @@ class FetchGoogleSpreadsheet extends Maintenance {
 		$url = $this->getArg( 0 );
 
 		// Headers
-		// GData-Version: 3.0
 		$http = MWHttpRequest::factory( 'https://www.google.com/accounts/ClientLogin', array(
 													'method' => 'POST',
 													'postData' => array(
@@ -25,7 +24,7 @@ class FetchGoogleSpreadsheet extends Maintenance {
 														'service' => 'wise', // Spreadsheet service is "wise"
 														'Email' => '',
 														'Passwd' => '',
-														'source' => Http::userAgent(),
+														'source' => Http::userAgent() . ' MetricsReporting',
 													)
 											)
 		);
@@ -42,7 +41,7 @@ class FetchGoogleSpreadsheet extends Maintenance {
 		$authToken = null;
 		$pos = strpos( $content, 'Auth' );
 		if ( $pos !== false ) {
-			$authToken = rtrim( substr( $content, $pos + 6 ) );
+			$authToken = rtrim( substr( $content, $pos + strlen( "Auth=" ) ) );
 		}
 
 		if ( $authToken === null ) {
@@ -50,7 +49,7 @@ class FetchGoogleSpreadsheet extends Maintenance {
 		}
 
 		$cookies = $http->getCookieJar();
-		var_dump( $cookies );
+		//var_dump( $cookies );
 		//var_dump( $authToken );
 
 		$http = MWHttpRequest::factory( $url, array(
@@ -62,8 +61,8 @@ class FetchGoogleSpreadsheet extends Maintenance {
 		$http->setHeader( 'Authorization', "GoogleLogin auth=\"{$authToken}\"" );
 
 		$res = $http->execute();
-		var_dump( $res );
-		var_dump( $http->getResponseHeaders() );
+		//var_dump( $res );
+		//var_dump( $http->getResponseHeaders() );
 		$content = $http->getContent();
 		var_dump( $content );
 	}
