@@ -140,6 +140,7 @@ To save a poll, submit it while not answering to any proposal questions.',
  * @author Fryed-peach
  * @author Hamilton Abreu
  * @author IAlex
+ * @author Kghbln
  * @author McDutchie
  * @author Purodha
  * @author Siebrand
@@ -177,6 +178,7 @@ $messages['qqq'] = array(
 	'qp_error_too_many_spans' => 'There cannot be more category groups defined than the total count of subcategories.',
 	'qp_error_too_few_spans' => 'Every category group should include at least two subcategories',
 	'qp_error_eval_variable_variable_access' => "\"variable variable\" is ''not'' a typo, see: http://php.net/manual/en/language.variables.variable.php",
+	'qp_error_eval_unable_to_lint' => '"Lint" is the term that is now applied generically to tools that flag suspicious usage in software written in any computer language [[w:en:Lint_%28software%29]].',
 );
 
 /** Afrikaans (Afrikaans)
@@ -750,7 +752,7 @@ Um die Abstimmung zu speichern, übermittle sie während du nicht auf eine Antra
 	'qp_error_eval_illegal_variable_name' => 'PHP-Token $1 mit dem nicht zulässigen Variablenname $2 ist in Zeile $3 nicht zulässig',
 	'qp_error_eval_variable_function_call' => 'PHP-Token $1 mit der veränderlichen Funktion $2 ist in Zeile $3 nicht zulässig',
 	'qp_error_eval_self_check' => 'Der folgende Selbsttest eval() ist gescheitert: $1. Es wird eine nicht unterstützte Version von PHP verwendet, welche die sichere Ausführung des Skripts eval() nicht zulässt.',
-	'qp_error_eval_unable_to_lint' => 'Statische Code-Analyse konnte nicht durchgeführt werden (überprüfe deine Systemkonfiguration)',
+	'qp_error_eval_unable_to_lint' => 'Die statische Code-Analyse konnte nicht durchgeführt werden (bitte die Systemkonfiguration prüfen)',
 );
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
@@ -1515,6 +1517,7 @@ Pro salveguardar un sondage, submitte lo sin responder a alcun question de propo
 	'qp_error_eval_illegal_variable_name' => 'Le indicio PHP $1 ha un nomine de variabile non permittite $2 in linea $3',
 	'qp_error_eval_variable_function_call' => 'Le indicio PHP $1 con le function variabile $2 non es permittite in linea $3',
 	'qp_error_eval_self_check' => 'Le sequente auto-test de eval() ha fallite: $1. Tu ha un version non supportate de PHP, le qual non permitte le execution secur de scripts de evalutation.',
+	'qp_error_eval_unable_to_lint' => 'Impossibile analysar le codice-fonte con "lint" (verifica le configuration del systema)',
 );
 
 /** Indonesian (Bahasa Indonesia)
