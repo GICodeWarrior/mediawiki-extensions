@@ -508,6 +508,7 @@ $messages['frp'] = array(
 	'editmsg-get-patch' => 'Fâre un patch',
 	'editmsg-new-search' => 'Rechèrche novèla',
 	'editmsg-apply-patch' => 'Aplicar lo patch',
+	'editmsg-patch-success' => 'Patch aplicâ avouéc reusséta.',
 );
 
 /** Western Frisian (Frysk)
