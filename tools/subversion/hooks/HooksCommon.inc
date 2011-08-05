@@ -52,7 +52,6 @@ class CommitInfo {
 	 *
 	 * @param $repository String name of repository
 	 * @param $transaction
-	 * @param array $tests array of test names to run
      */
     public function __construct( $repo, $txn ) {
         $this->repo = $repo;
