@@ -29,6 +29,14 @@ $messages['de'] = array(
 Die Baumansicht nutzt hierzu [http://www.destroydrop.com/javascripts/tree dTree] sowie das Aufklappmenü [http://www.htmldog.com/articles/suckerfish/dropdowns/ Son of Suckerfish]',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'treeandmenu-desc' => 'Adde le functiones analysator <code><nowiki>#tree</nowiki></code> e <code><nowiki>#menu</nowiki></code> le quales contine listas a punctos a presentar como vistas arborescente plicabile o menus disrolante.
+Le vistas arborescente usa le menu JavaScript arborescente [http://www.destroydrop.com/javascripts/tree dTree], e le menus disrolante usa [http://www.htmldog.com/articles/suckerfish/dropdowns/ Son of Suckerfish]',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
