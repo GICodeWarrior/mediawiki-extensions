@@ -638,10 +638,23 @@ es.Content.prototype.getWordBoundaries = function( offset ) {
  * 
  * @method
  */
-es.Content.prototype.closeAnnotations = function( stack, index ) {
-	for ( var i = 0; i < stack.length; i++) {
-		if ( !stack[i].range.end ) {
-			stack[i].range.end = index;
+es.Content.prototype.handleAnnotation = function( bias, stack, index, annotation ) {
+	if ( bias === 'open' ) {
+		var annotation = es.Content.copyObject( annotation );
+		annotation.range = {
+			start: index
+		};
+		stack.push( annotation );	
+	} else {
+		for ( var i = stack.length - 1; i >= 0; i-- ) {
+			if ( !stack[i].range.end ) {
+				if ( annotation && stack[i].type === annotation.type && es.Content.compareObjects( stack[i].data, annotation.data ) ) {
+					stack[i].range.end = index;
+					break;
+				} else {
+					stack[i].range.end = index;
+				}
+			}
 		}
 	}
 };
@@ -673,7 +686,7 @@ es.Content.prototype.getWikiDomLines = function() {
 		rightPlain = typeof right === 'string';
 		
 		if ( rightPlain && right == "\n" ) {
-			this.closeAnnotations( line.annotations, i - offset );
+			this.handleAnnotation( 'close', line.annotations, i - offset );
 			lines.push(line);
 			line = null;
 			offset = i + 1;
@@ -683,37 +696,32 @@ es.Content.prototype.getWikiDomLines = function() {
 		
 		if ( !leftPlain && rightPlain ) {
 			// [formatted][plain] pair, close any annotations for left
-			this.closeAnnotations( line.annotations, i - offset );
-		} else if ( !rightPlain ) {
-			// [plain|formatted][formatted]
-			if ( !leftPlain ) {
-				for ( j = 1; j < left.length; j++ ) {
-					if ( this.indexOfAnnotation( i , left[j], true ) === -1 ) {
-						for ( k = line.annotations.length - 1; k >= 0; k-- ) {
-							if ( line.annotations[k].type === left[j].type ) {
-								if ( es.Content.compareObjects( line.annotations[k].data, left[j].data ) ) {
-									line.annotations[k].range.end = i - offset;
-									break;
-								}
-							}
-						}
-					}
+			this.handleAnnotation( 'close', line.annotations, i - offset );
+		} else if ( leftPlain && !rightPlain ) {
+			// [plain][formatted] pair, open any annotations for right
+			for ( j = 1; j < right.length; j++ ) {
+				this.handleAnnotation( 'open', line.annotations, i - offset, right[j] );
+			}
+		} else if ( !leftPlain && !rightPlain ) {
+			// [formatted][formatted] pair, open/close any differences
+			for ( j = 1; j < left.length; j++ ) {
+				if ( right.indexOf( left[j] ) === -1 ) {
+					this.handleAnnotation( 'close', line.annotations, i - offset, left[j] );
 				}
 			}
 			for ( j = 1; j < right.length; j++ ) {
-				if ( leftPlain || this.indexOfAnnotation( i - 1, right[j], true ) === -1 ) {
-					var annotation = es.Content.copyObject( right[j] );
-					annotation.range = { start: i - offset };
-					line.annotations.push( annotation );	
+				if ( left.indexOf( right[j] ) === -1 ) {
+					this.handleAnnotation( 'open', line.annotations, i - offset, right[j] );
 				}
 			}
 		}
+
 		line.text += rightPlain ? right : right[0];
 		left = right;		
 	}
 
 	if ( line != null ) {
-		this.closeAnnotations( line.annotations, i - offset );
+		this.handleAnnotation( 'close', line.annotations, i - offset );
 		lines.push( line );
 	}
 	return lines;	
