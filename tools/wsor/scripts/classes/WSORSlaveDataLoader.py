@@ -76,7 +76,7 @@ class WSORSlaveDataLoader(DataLoader):
     """
     def pickle_var(self, var, filename):
         
-        pickle.dump( favorite_color, open( settings.__data_file_dir__ + filename, "wb" ) )
+        pickle.dump( var, open( settings.__data_file_dir__ + filename, "wb" ) )
 
 
     """
@@ -349,7 +349,7 @@ class CategoryLoader(WSORSlaveDataLoader):
         directed_graph = nx.DiGraph()
         trace = [topic]
         
-        topic_couts = self._recursive_construct_topic_tree(directed_graph, topic, subcategories, trace)
+        topic_counts = self._recursive_construct_topic_tree(directed_graph, topic, subcategories, trace)
         
         return directed_graph, topic_counts
         
@@ -369,13 +369,13 @@ class CategoryLoader(WSORSlaveDataLoader):
             return 1    # there is a topic count of 1
         
         """ Recursively build linkages for each """
-        logging.info(str(trace))
+        # logging.info(str(trace))
         for sub_topic in topic_subcategories:
             
             if not(sub_topic in trace):
                                 
                 logging.info(topic + ' --> ' + sub_topic)
-                
+                    
                 copy_trace = trace[:]
                 copy_trace.append(sub_topic)
                 
@@ -392,7 +392,7 @@ class CategoryLoader(WSORSlaveDataLoader):
                 
                 topic_counts = topic_counts + 1 
                 
-        return topic_couts
+        return topic_counts
                 
 """
     Inherits WSORSlaveDataLoader
