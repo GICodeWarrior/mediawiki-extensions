@@ -633,6 +633,11 @@ es.Content.prototype.getWordBoundaries = function( offset ) {
 	return new es.Range( start, end );
 };
 
+/**
+ * Helper function for Content.getWikiDomLines()
+ * 
+ * @method
+ */
 es.Content.prototype.handleAnnotation = function( bias, annotation, stack, index ) {
 	if ( bias === 'open' ) {
 		var annotation = es.Content.copyObject( annotation );
