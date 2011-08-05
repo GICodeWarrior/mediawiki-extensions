@@ -475,6 +475,20 @@ $messages['mr'] = array(
 	'cspammer-log-page' => 'स्पॅमर सूची शेरा',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'commentspammer-save-blocked' => 'Alamat IP anda disyarki merupakan spammer komen, jadi laman ini tidak disimpan.
+Sila [[Special:UserLogin|log masuk atau buka akaun]] untuk mengelakkan perkara begini.',
+	'commentspammer-desc' => 'Menolak suntingan daripada spammer komen yang disyaki dalam senarai hitam DNS',
+	'commentspammer-log-msg' => 'suntingan daripada [[Special:Contributions/$1|$1]] kepada [[:$2]].',
+	'commentspammer-log-msg-info' => 'Kali terakhir dispam $1 hari lalu, tahap ancaman adalah $2, dan kanun kesalahan ialah $3.
+[http://www.projecthoneypot.org/search_ip.php?ip=$4 Lihat butiran], atau [[Special:Blockip/$4|sekat]] sahaja.',
+	'cspammerlogpagetext' => 'Rekod suntingan yang dibenarkan atau ditolak berasaskan sama ada puncanya merupakan spammer komen yang dikenali.',
+	'cspammer-log-page' => 'Log spammer komen',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
