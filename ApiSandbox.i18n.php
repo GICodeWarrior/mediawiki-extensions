@@ -222,6 +222,7 @@ $messages['frp'] = array(
 	'apisb-request-url' => 'Requéta URL :',
 	'apisb-request-post' => 'Balyês POST :',
 	'apisb-select-action' => 'Chouèsir una accion',
+	'apisb-select-query' => 'Que fôt-o entèrrogiér ?',
 	'apisb-select-value' => 'Chouèsir la valor',
 	'apisb-loading' => 'Chargement...',
 	'apisb-load-error' => 'Èrror pendent lo chargement de la dèscripcion de l’API',
@@ -748,6 +749,7 @@ $messages['vi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Hydra
+ * @author PhiLiP
  * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
@@ -762,7 +764,7 @@ $messages['zh-hans'] = array(
 	'apisb-select-action' => '选择操作',
 	'apisb-select-query' => '查询又如何？',
 	'apisb-select-value' => '选择值',
-	'apisb-loading' => '正在载入...',
+	'apisb-loading' => '载入中……',
 	'apisb-load-error' => '加载 API 说明时出错',
 	'apisb-request-error' => '执行 API 请求时出错',
 	'apisb-namespaces-error' => '加载命名空间出错误',
