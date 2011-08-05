@@ -389,9 +389,7 @@ class CategoryLoader(WSORSlaveDataLoader):
                 logging.info('LOOP: '  + topic + ' --> ' + sub_topic)
                 
                 directed_graph.add_weighted_edges_from([(topic, 'LOOP TO: ' + sub_topic, 1)]) 
-                
-                topic_counts = topic_counts + 1 
-                
+                                
         return topic_counts
                 
 """
