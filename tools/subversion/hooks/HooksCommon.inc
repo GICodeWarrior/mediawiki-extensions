@@ -19,13 +19,13 @@ class CommitInfo {
 	 * Location of svnlook, in case it's not in $PATH
 	 * @var string
 	 */
-	protected $svnlook = '/opt/local/bin/svnlook';
+	protected $svnlook = '/usr/bin/svnlook';
 
 	/**
 	 * Location of PHP binary, in case it's not in $PATH
 	 * @var string
 	 */
-	protected $php = '/opt/local/bin/php';
+	protected $php = '/usr/bin/php';
 
 	/**
 	 * Tests to run, with their configuration
