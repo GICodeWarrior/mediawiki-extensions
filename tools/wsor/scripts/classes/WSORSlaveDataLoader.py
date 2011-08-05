@@ -12,7 +12,7 @@ __date__ = "June 27th, 2011"
 
 
 """ Import python base modules """
-import sys, getopt, re, datetime, logging, MySQLdb, settings, operator
+import sys, getopt, re, datetime, logging, MySQLdb, settings, operator, pickle
 import networkx as nx
 
 """ Import Analytics modules """
@@ -69,6 +69,22 @@ class WSORSlaveDataLoader(DataLoader):
         
         self._cur_enwiki_.close()
         self._db_enwiki_.close()
+    
+    
+    """
+        copy the session variables to file
+    """
+    def pickle_var(self, var, filename):
+        
+        pickle.dump( favorite_color, open( settings.__data_file_dir__ + filename, "wb" ) )
+
+
+    """
+        unpack the session variables to file
+    """
+    def unpickle_var(self, filename):
+        
+        return pickle.load( open( settings.__data_file_dir__ + filename ) )
 
 
 """
@@ -91,7 +107,7 @@ class CategoryLoader(WSORSlaveDataLoader):
         self._query_names_['get_subcategories'] = "select cl_to from categorylinks_cp where cl_from = %s"
         self._query_names_['delete_from_recs'] = "delete from rfaulk.categorylinks_cp where cl_from = %s"
         self._query_names_['is_empty'] = "select * from rfaulk.categorylinks_cp limit 1"
-        self._query_names_['get_category_links'] = "select cl_from, cl_to from categorylinks_cp limit 10000"
+        self._query_names_['get_category_links'] = "select cl_from, cl_to from categorylinks_cp"
         
         WSORSlaveDataLoader.__init__(self)    
         logging.info('Creating CategoryLoader')
@@ -108,7 +124,7 @@ class CategoryLoader(WSORSlaveDataLoader):
 
         except:
 
-            logging.error('Could not retrieve page_id.')
+            logging.error('Could not retrieve category links.')
             return -1
         
         return results
@@ -147,87 +163,14 @@ class CategoryLoader(WSORSlaveDataLoader):
         except Exception as inst:
             
             logging.error('Could not retrieve page_title.')
-            return -1
+            logging.error(str(type(inst)))      # the exception instance
+            logging.error(str(inst.args))       # arguments stored in .args
+            logging.error(inst.__str__())       # __str__ allows args to printed directly
+            
+            return ''
         
         return title
         
-    """
-        Look at the first category in caegorylinks_cp
-    """
-    def get_first_record_from_category_links(self):
-        
-        try:
-            
-            sql = self._query_names_['get_first_rec']
-            #logging.info('Executing: ' + sql)
-            results = self.execute_SQL(sql)
-            
-            #logging.info('Retrieved first row from rfaulk.categorylinks_cp.')
-            category_page_id = int(results[0][0])
-            category_page_title = self.get_page_title(category_page_id)
-                        
-        except Exception as inst:
-            
-            logging.error('Could not retrieve page_title.')
-            return ''
-                    
-        return category_page_title
-    
-    
-    """
-        Finds and returns a list of sub categories
-    """
-    def get_subcategories(self, category_title):
-        
-        subcategories = list()
-        
-        # category_upper, category_lower, category_camel = self.normalize_field_cl_from(category)
-        
-        """ Retrieve the sub categories and add to list """
-        category_page_id = self.get_page_id(category_title)
-        category_page_id_str = str(category_page_id)
-        sql_select = self._query_names_['get_subcategories'] % category_page_id_str
-        sql_delete = self._query_names_['delete_from_recs'] % category_page_id_str
-        
-        try:
-            #logging.info('Executing: ' + sql_select)
-            results = self.execute_SQL(sql_select)
-            #logging.info('Retrieved sub-categories of %s.' % category_page_id_str)
-            
-            for row in results:
-                subcategories.append(row[0])
-            
-            #logging.info('Executing: ' + sql_delete)
-            self.execute_SQL(sql_delete)
-            #logging.info('Removed references from the category with page_id %s.' % category_page_id_str)
-               
-        except Exception as inst:
-            
-            logging.error('Could not retrieve sub-categories.')
-            return []
-            
-        return subcategories
-
-        
-        
-    """
-        Recursively builds subtree of categories
-    """
-    def build_category_tree(self, directed_graph, category_title):
-        
-        # logging.info('Creating directed links for category: %s' % category_title)
-        
-        """ Get sub-categories """
-        sub_categories = self.get_subcategories(category_title)
-        
-        """ Build nodes for each """
-        for sub_cat in sub_categories:
-            
-            directed_graph.add_weighted_edges_from([(category_title, sub_cat,1)])
-            self.build_category_tree(directed_graph, sub_cat)
-            
-        return directed_graph
-    
     
     """
         Execution entry point of the class - builds a full category hierarchy from categorylinks
@@ -236,10 +179,11 @@ class CategoryLoader(WSORSlaveDataLoader):
     """ 
     def extract_hierarchy(self):
                         
-        self.drop_category_links_cp_table()
-        self.create_category_links_cp_table()
+        #self.drop_category_links_cp_table()
+        #self.create_category_links_cp_table()
                     
         """ Create graph """
+        
         logging.info('Initializing directed graph...')
         directed_graph = nx.DiGraph()
         
@@ -297,7 +241,7 @@ class CategoryLoader(WSORSlaveDataLoader):
         logging.info('Sorting out degree list.')
         sorted_out_degrees = sorted(out_degrees.iteritems(), key=operator.itemgetter(1), reverse=True)
         
-        in_only, out_only = self.get_uni_directionally_linked_categories(sorted_in_degrees, sorted_out_degrees)
+        in_only, out_only = self.get_uni_directionally_linked_categories(sorted_in_degrees, sorted_out_degrees, in_degrees, out_degrees)
         
         logging.info('Category links finished processing.')
         
@@ -307,27 +251,23 @@ class CategoryLoader(WSORSlaveDataLoader):
     """
         Returns 
     """
-    def get_uni_directionally_linked_categories(self, in_degrees, out_degrees):
+    def get_uni_directionally_linked_categories(self, in_degrees, out_degrees, in_degrees_by_key, out_degrees_by_key ):
         
         logging.info('Generating lists of categories have either only in degrees or out degrees.')
-        
-        in_keys = list()
-        for i in in_degrees:
-            in_keys.append(i[0])
-        
-        out_keys = list()
-        for i in out_degrees:
-            out_keys.append(i[0])
         
         in_only = list()
         out_only = list()
         
         for i in in_degrees:
-            if not(i[0] in out_keys):
-                in_only.append(i) 
-            
+            try:
+                out_degrees_by_key[i[0]]
+            except KeyError:
+                in_only.append(i)
+                
         for i in out_degrees:
-            if not(i[0] in in_keys):
+            try:
+                in_degrees_by_key[i[0]]
+            except KeyError:
                 out_only.append(i)
         
         return in_only, out_only
@@ -395,8 +335,65 @@ class CategoryLoader(WSORSlaveDataLoader):
         else:
             return True
     
-
         
+    """
+        Are there any records remaining in rfaulk.categorylinks_cp ??
+        
+        Use a trace to detect any loops
+    """
+    def construct_topic_tree(self, topic, subcategories):
+        
+        """ Create graph """
+        
+        logging.info('Initializing directed graph...')
+        directed_graph = nx.DiGraph()
+        trace = [topic]
+        
+        topic_couts = self._recursive_construct_topic_tree(directed_graph, topic, subcategories, trace)
+        
+        return directed_graph, topic_counts
+        
+    """
+        Are there any records remaining in rfaulk.categorylinks_cp ??
+    """
+    def _recursive_construct_topic_tree(self, directed_graph, topic, subcategories, trace):
+        
+        topic_counts = 0
+        
+        """ Extract the subtopics of topic """
+        try:
+            topic_subcategories = subcategories[topic]
+        
+        except KeyError:
+            """ There are no subcategories for this topic """
+            return 1    # there is a topic count of 1
+        
+        """ Recursively build linkages for each """
+        logging.info(str(trace))
+        for sub_topic in topic_subcategories:
+            
+            if not(sub_topic in trace):
+                                
+                logging.info(topic + ' --> ' + sub_topic)
+                
+                copy_trace = trace[:]
+                copy_trace.append(sub_topic)
+                
+                directed_graph.add_weighted_edges_from([(topic, sub_topic, 1)]) 
+                sub_topic_counts = self._recursive_construct_topic_tree(directed_graph, sub_topic, subcategories, copy_trace)
+                
+                topic_counts = topic_counts + sub_topic_counts 
+                
+            else:
+                
+                logging.info('LOOP: '  + topic + ' --> ' + sub_topic)
+                
+                directed_graph.add_weighted_edges_from([(topic, 'LOOP TO: ' + sub_topic, 1)]) 
+                
+                topic_counts = topic_counts + 1 
+                
+        return topic_couts
+                
 """
     Inherits WSORSlaveDataLoader
     
