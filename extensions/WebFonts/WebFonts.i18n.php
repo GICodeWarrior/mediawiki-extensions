@@ -98,6 +98,7 @@ $messages['es'] = array(
 	'webfonts' => 'WebFonts',
 	'webfonts-desc' => 'Incrustar tipografías en las páginas',
 	'webfonts-load' => 'Seleccionar tipografía',
+	'webfonts-reset' => 'Restablecer',
 	'webfonts-disable-preference' => 'Desactivar la incrustación de tipografías (WebFonts)',
 );
 

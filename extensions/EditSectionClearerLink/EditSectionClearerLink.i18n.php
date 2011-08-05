@@ -71,6 +71,13 @@ $messages['ms'] = array(
 	'editsectionclearerlink-desc' => 'Meningkatkan kebolehgunaan pautan sunting bahagian dengan tindakan hover bahagian dan pautan',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'editsectionclearerlink-desc' => 'Verbeter de bruikbaarheid van de paragraafbewerkingverwijzing met "over verwijzing zweven"-handelingen',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

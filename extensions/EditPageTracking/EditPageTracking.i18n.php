@@ -93,6 +93,13 @@ $messages['ms'] = array(
 	'editpagetracking-desc' => 'Merakam kali pertama setiap pengguna melihat laman penyuntingan',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'editpagetracking-desc' => 'Legt de eerste keer dat iedere gebruiker de bewerkingspagina bekijkt vast',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Event
  */

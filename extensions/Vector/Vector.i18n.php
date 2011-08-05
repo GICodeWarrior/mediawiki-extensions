@@ -533,12 +533,12 @@ Se vi ensalutas, vi povas malŝalti ĉi tiun averton en la sekcio "Grandeco de r
 $messages['es'] = array(
 	'vector' => 'Mejoras de interfaz de usuario para Vector',
 	'vector-desc' => 'Mejora los elementos de la interfaz de usuario del skin Vector.',
-	'vector-collapsiblenav-preference' => 'Activar el menú de navegación izquierda plegable en la piel Vector',
+	'vector-collapsiblenav-preference' => 'Activar menús plegables en la barra lateral de la piel Vector',
 	'vector-collapsiblenav-more' => 'Más idiomas',
-	'vector-editwarning-warning' => 'Dejar esta página le causará la pérdida de cualquier cambio que haya hecho.
-Si está "logueado", puede deshabilitar esta advertencia en la sección "Edición" de sus preferencias.',
+	'vector-editwarning-warning' => 'El dejar esta página causará la pérdida de cualquier cambio que hayas realizado.
+Si has iniciado sesión, puedes desactivar este aviso en la sección «Edición» en tus preferencias.',
 	'vector-editwarning-preference' => 'Advertirme cuando abandone una página editada con cambios sin grabar',
-	'vector-simplesearch-search' => 'Búsqueda',
+	'vector-simplesearch-search' => 'Buscar',
 	'vector-simplesearch-containing' => 'conteniendo...',
 	'vector-noexperiments-preference' => 'Excluirme de características experimentales',
 );

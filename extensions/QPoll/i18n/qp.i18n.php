@@ -1113,6 +1113,7 @@ $messages['gl'] = array(
 	'qp_results_line_qupl' => 'Páxina "$1", enquisa "$2": $3',
 	'qp_results_line_qpl' => 'Páxina "$1", enquisa "$2": $3, $4, $5, $6',
 	'qp_header_line_qpul' => '$1 [ Páxina "$2", enquisa "$3" ]',
+	'qp_interpetation_wrong_answer' => 'Resposta incorrecta',
 	'qp_export_to_xls' => 'Exportar as estatísticas en formato XLS',
 	'qp_voices_to_xls' => 'Exportar as voces en formato XLS',
 	'qp_users_answered_questions' => '$1 {{PLURAL:$1|usuario respondeu|usuarios responderon}} ás preguntas',

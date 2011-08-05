@@ -40,6 +40,13 @@ $messages['de'] = array(
 	'resumableupload-desc' => 'Ermöglicht das Wiederaufnehmen des Hochladens',
 );
 
+/** Spanish (Español)
+ * @author Fitoschido
+ */
+$messages['es'] = array(
+	'resumableupload-desc' => 'Soporte de carga reanudable',
+);
+
 /** French (Français)
  * @author IAlex
  */
