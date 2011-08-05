@@ -1,8 +1,8 @@
 Source: wikimedia-task-dns-auth
-Section: unknown
+Section: net
 Priority: optional
 Maintainer: Mark Bergsma <mark@wikimedia.org>
-Build-Depends: debhelper (>= 4.0.0), pdns-server (>= 2.9.22)
+Build-Depends: debhelper (>= 4.0.0), pdns-server
 Standards-Version: 3.6.2
 
 Package: wikimedia-task-dns-auth
