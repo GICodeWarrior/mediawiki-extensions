@@ -50,16 +50,18 @@ class CommitInfo {
 	/**
 	 * Class constructor
 	 *
-	 * @param $repository String name of repository
-	 * @param $transaction
-     */
-    public function __construct( $repo, $txn ) {
-        $this->repo = $repo;
-        $this->transaction = $txn;
-    }
+	 * @param $repo String name of repository
+	 * @param txn
+	 */
+	public function __construct( $repo, $txn ) {
+		$this->repo = $repo;
+		$this->transaction = $txn;
+	}
 
-    /**
+	/**
 	 * Run SVN pre-commit tests
+	 *
+	 * @return int
 	 */
 	public function runPreCommitTests() {
 		$result = 0;
@@ -78,17 +80,17 @@ class CommitInfo {
 		return $result;
 	}
 
-    /**
-     * Get commit log message
-     *
-     * @return string
-     */
-    private function getLogMessage() {
-        $output = null;
-        $cmd = "{$this->svnlook} log -t '{$this->transaction}' '{$this->repo}'";
-        exec( $cmd, $output );
-        return implode( $output );
-    }
+	/**
+	 * Get commit log message
+	 *
+	 * @return string
+	 */
+	private function getLogMessage() {
+		$output = null;
+		$cmd = "{$this->svnlook} log -t '{$this->transaction}' '{$this->repo}'";
+		exec( $cmd, $output );
+		return implode( $output );
+	}
 
 	/**
 	 * Get commit files list
@@ -105,10 +107,10 @@ class CommitInfo {
 			$pos = strpos( $item, ' ' );
 			$status = substr( $item, 0, $pos );
 			$file = trim( substr( $item, $pos ) );
-            $list[$file] = $status;
-        }
-        return $list;
-    }
+			$list[$file] = $status;
+		}
+		return $list;
+	}
 
 	/**
 	 * Get array of modified and added files
@@ -140,7 +142,9 @@ class CommitInfo {
 	/**
 	 * Check if log message validates length rules
 	 *
-	 * @param int $minlength minimum length of log message
+	 * @param $minLength int minimum length of log message
+	 * @param $regex string
+	 *
 	 * @return bool
 	 */
 	protected function testLogMessageLength( $minLength = 1, $regex = '' ) {
@@ -150,7 +154,7 @@ class CommitInfo {
 			if ( $minLength <= 1 ) {
 				return "Log message should not be empty. Please specify descriptive log message.";
 			} else {
-				return "You log message is too short ($length). It should be at least $minlength characters long.";
+				return "You log message is too short ($length). It should be at least $minLength characters long.";
 			}
 		} elseif( !preg_match( "/$regex/i", $msg ) ) {
 			return "Please provide a descriptive commit message with letters.";
@@ -158,6 +162,10 @@ class CommitInfo {
 		return true;
 	}
 
+	/**
+	 * @param $fileTypes array
+	 * @return bool|string
+	 */
 	protected function testPHPLint( $fileTypes ) {
 		$output = null;
 		$result = '';
