@@ -38,6 +38,9 @@ class CommitInfo {
 		'testPHPLint' => array(
 			array( 'php', 'php5', 'phtml', 'inc' ), /** valid types to check **/
 		),
+		'testBadUsers' => array(
+			array( 'root' ), /** users we don't want commits from **/
+		),
 	);
 
 	/**
@@ -90,6 +93,18 @@ class CommitInfo {
 		$cmd = "{$this->svnlook} log -t '{$this->transaction}' '{$this->repo}'";
 		exec( $cmd, $output );
 		return implode( $output );
+	}
+
+	/**
+	 * Get commit author
+	 *
+	 * @return string
+	 */
+	private function getAuthor() {
+		$output = null;
+		$cmd = "{$this->svnlook} author -t '{$this->transaction}' '{$this->repo}'";
+		exec( $cmd, $output );
+		return trim( implode( $output ) );
 	}
 
 	/**
@@ -163,6 +178,8 @@ class CommitInfo {
 	}
 
 	/**
+	 * Check if PHP-related files pass a basic lint test
+	 *
 	 * @param $fileTypes array
 	 * @return bool|string
 	 */
@@ -180,5 +197,19 @@ class CommitInfo {
 			}
 		}
 		return $result !== '' ? $result : true;
+	}
+
+	/**
+	 * Some users we don't like committing as (eg: root). Bail and yell at them.
+	 *
+	 * @param $badUsers array of bad user names
+	 * @return bool|string
+	 */
+	protected function testBadUsers( $badUsers ) {
+		$ourUser = $this->getAuthor();
+		if( in_array( $ourUser, $badUsers ) ) {
+			return "Please do not commit as '{$ourUser}', use your real commit name";
+		}
+		return true;
 	}
 }
