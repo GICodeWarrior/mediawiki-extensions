@@ -236,6 +236,15 @@ $messages['mk'] = array(
 Користете: &lt;stockchart ticker="AAPL"/&gt;',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'stockcharts-desc' => 'Membubuh tag <nowiki><stockchart ticker="AAPL"/></nowiki> untuk carta saham kewangan yang interaktif',
+	'stockcharts-missingticker' => 'Untuk membenamkan carta saham, anda perlu sekurang-kurangnya menentukan satu ticker.
+Gunakan: <stockchart Ticker="AAPL"/>',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
