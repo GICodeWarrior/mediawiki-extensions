@@ -91,6 +91,8 @@ $messages['qqq'] = array(
 	'collabwatchlistedit-raw-titles' => '{{Identical|Categories}}',
 	'collabwatchlistedit-users-raw-titles' => '{{Identical|User}}',
 	'collabwatchlistedit-tags-raw-submit' => '{{Identical|Save}}',
+	'collabwatchlistdelete-submit' => '{{Identical|Delete}}',
+	'collabwatchlistnew-submit' => '{{Identical|Create}}',
 	'collabwatchlistedit-normal-submit' => '{{Identical|Save}}',
 	'collabwatchlistshowhidelistusers' => '$1 can be "Show" ({{msg-mw|show}}) or "Hide" ({{msg-mw|hide}}). (source: [[Thread:Support/About MediaWiki:Collabwatchlistshowhidelistusers/en|this thread]])',
 );
@@ -150,14 +152,21 @@ $messages['be-tarask'] = array(
 	'collabwatchlistpatrol' => 'Патруляваныя рэдагаваньні',
 	'collabwatchlisttools-newList' => 'Новы агульны сьпіс назіраньня',
 	'collabwatchlistdelete-legend' => 'Выдаліць агульны сьпіс назіраньня',
-	'collabwatchlistdelete-explain' => 'Выдаленьне агульнага сьпісу назіраньня прывядзе да выдаленьня ўсіх сувязяў сьпісу назіраньня. Тэгі, якія былі пастаўленыя на рэдагаваньні будуць захаваныя.',
+	'collabwatchlistdelete-explain' => 'Выдаленьне агульнага сьпісу назіраньня прывядзе да выдаленьня яго бясьсьледна. Тэгі, якія былі пастаўленыя на рэдагаваньні, будуць захаваныя.',
 	'collabwatchlistdelete-submit' => 'Выдаліць',
 	'collabwatchlistdelete-title' => 'Выдаліць агульны сьпіс назіраньня',
-	'collabwatchlistedit-set-tags-numitems' => 'Гэты агульны сьпіс назіраньня ўтрымлівае ўсталяваныя {{PLURAL:$1|1 тэг|$1 тэгі|$1 тэгаў}}',
-	'collabwatchlistedit-set-tags-noitems' => 'Гэты агульны сьпіс назіраньня не ўтрымлівае ўсталяваных тэгаў.',
+	'collabwatchlistedit-set-tags-numitems' => 'Гэты агульны сьпіс назіраньня ўтрымлівае $1 {{PLURAL:|ўстаноўлены тэг|ўстаноўленыя тэгі|ўстаноўленых тэгаў}}',
+	'collabwatchlistedit-set-tags-noitems' => 'Гэты агульны сьпіс назіраньня не ўтрымлівае ўстаноўленых тэгаў.',
 	'collabwatchlistnew-legend' => 'Стварыць новы агульны сьпіс назіраньня',
+	'collabwatchlistnew-explain' => 'Назва сьпісу павінна быць унікальнай.',
+	'collabwatchlistnew-name' => 'Назва сьпісу',
 	'collabwatchlistnew-submit' => 'Стварыць',
+	'collabwatchlistedit-raw-done' => 'Агульны сьпіс назіраньня быў абноўлены',
+	'collabwatchlistedit-raw-added' => '{{PLURAL:$1|Была дададзеная $1 старонка ці катэгорыя|Былі дададзеныя $1 старонкі ці катэгорыі|Былі дададзеныя $1 старонак ці катэгорыяў}}:',
+	'collabwatchlistedit-raw-removed' => '{{PLURAL:$1|Была выдаленая $1 старонка ці катэгорыя|Былі выдаленыя $1 старонкі ці катэгорыі|Былі выдаленыя $1 старонак ці катэгорыяў}}:',
 	'collabwatchlistedit-normal-submit' => 'Захаваць',
+	'collabwatchlistshowhidelistusers' => '$1 сьпіс удзельнікаў',
+	'tog-collabwatchlisthidelistusers' => 'Схаваць рэдагаваньні ўдзельнікаў агульнага сьпісу назіраньня',
 );
 
 /** German (Deutsch)
@@ -301,6 +310,39 @@ $messages['fr'] = array(
 	'collabwatchlistedit-normal-submit' => 'Enregistrer',
 	'collabwatchlistshowhidelistusers' => '$1 utilisateurs de la liste',
 	'tog-collabwatchlisthidelistusers' => 'Cacher les contributions des utilisateurs de la liste de suivi collaborative',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'collabwatchlisttagselect' => 'Balisa',
+	'collabwatchlisttagcomment' => 'Comentèro',
+	'collabwatchlistsettagbutton' => 'Dèfenir la balisa',
+	'collabwatchlisttools-view' => 'Fâre vêre',
+	'collabwatchlisttools-edit' => 'Changiér les catègories',
+	'collabwatchlisttools-rawCategories' => 'Changiér en bloco les catègories',
+	'collabwatchlisttools-rawTags' => 'Changiér en bloco les balises',
+	'collabwatchlisttools-rawUsers' => 'Changiér en bloco los utilisators',
+	'collabwatchlisttools-delete' => 'Suprimar',
+	'collabwatchlistsall' => 'Totes les listes',
+	'collabwatchlistfiltertags' => 'Filtrar les balises',
+	'collabwatchlistedit-users-raw-submit' => 'Encartar',
+	'collabwatchlistedit-raw-title' => 'Changiér en bloco les catègories',
+	'collabwatchlistedit-tags-raw-title' => 'Changiér en bloco les balises',
+	'collabwatchlistedit-users-raw-title' => 'Changiér en bloco los utilisators',
+	'collabwatchlistedit-raw-titles' => 'Catègories :',
+	'collabwatchlistedit-tags-raw-titles' => 'Balises :',
+	'collabwatchlistedit-users-raw-titles' => 'Utilisators :',
+	'collabwatchlistedit-normal-title' => 'Changiér les catègories',
+	'collabwatchlistedit-tags-raw-submit' => 'Encartar',
+	'collabwatchlistinverttags' => 'Envèrsar lo filtro de balises',
+	'collabwatchlistpatrol' => 'Contrôlo des changements',
+	'collabwatchlistdelete-submit' => 'Suprimar',
+	'collabwatchlistnew-name' => 'Nom de la lista',
+	'collabwatchlistnew-submit' => 'Fâre',
+	'collabwatchlistedit-normal-submit' => 'Encartar',
+	'collabwatchlistshowhidelistusers' => '$1 utilisators de la lista',
 );
 
 /** Galician (Galego)
@@ -613,6 +655,10 @@ $messages['nl'] = array(
 	'collabwatchlistedit-normal-done' => 'Er {{PLURAL:$1|is 1 categorie|zijn $1 categorieën}} verwijderd uit de gezamenlijke volglijst:',
 	'collabwatchlistedit-tags-raw-done' => 'De gezamenlijke volglijst is bijgewerkt.',
 	'collabwatchlistedit-users-raw-done' => 'De gezamenlijke volglijst is bijgewerkt.',
+	'collabwatchlistedit-tags-raw-added' => 'Er {{PLURAL:$1|is 1 label|zijn $1 labels}} toegevoegd:',
+	'collabwatchlistedit-users-raw-added' => 'Er {{PLURAL:$1|is 1 gebruiker|zijn $1 gebruikers}} toegevoegd:',
+	'collabwatchlistedit-tags-raw-removed' => 'Er {{PLURAL:$1|is 1 label|zijn $1 labels}} verwijderd:',
+	'collabwatchlistedit-users-raw-removed' => 'Er {{PLURAL:$1|is 1 gebruiker|zijn $1 gebruikers}} verwijderd:',
 	'collabwatchlistinverttags' => 'Labelfilter omkeren',
 	'collabwatchlistpatrol' => 'Wijzigingen controleren',
 	'collabwatchlisttools-newList' => 'Nieuwe gezamenlijke volglijst',
