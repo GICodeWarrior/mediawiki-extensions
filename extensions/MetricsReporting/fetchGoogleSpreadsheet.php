@@ -45,8 +45,9 @@ class FetchGoogleSpreadsheet extends Maintenance {
 		}
 
 		if ( $authToken === null ) {
-			$this->error( 'No auth token', true );
+			$this->error( 'No auth token returned. Check your Google Credentials', true );
 		}
+		$this->output( 'Authorised. Got an authorisation token from Google' );
 
 		$cookies = $http->getCookieJar();
 		//var_dump( $cookies );
@@ -69,8 +70,6 @@ class FetchGoogleSpreadsheet extends Maintenance {
 
 	/**
 	 * Pretty print xml string
-	 *
-	 * From http://recursive-design.com/blog/2007/04/05/format-xml-with-php/
 	 *
 	 * @param $xml string
 	 * @return string
