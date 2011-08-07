@@ -26,6 +26,7 @@ $wgExtensionCredits['other'][] = array(
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['PostComment'] = $dir . 'Postcomment.i18n.php';
 
+$wgHooks['SkinAfterContent'][] = 'wfPostcommentForm';
 $wgSpecialPages['Postcomment'] = 'SpecialPostcomment';
 
 class SpecialPostcomment extends UnlistedSpecialPage {
@@ -122,22 +123,21 @@ class SpecialPostcomment extends UnlistedSpecialPage {
 	}
 }
 
-function wfPostcommentForm() {
-	global $wgUser, $wgTitle, $wgRequest;
+function wfPostcommentForm( &$data, $sk ) {
+	global $wgUser, $wgRequest;
 
 	$action = $wgRequest->getVal( 'action', 'view' );
+	$title = $sk->getTitle();
 
 	// just for talk pages
-	if ( !$wgTitle->isTalkPage() || $action != 'view' ) {
-		return;
+	if ( !$title->isTalkPage() || $action != 'view' ) {
+		return true;
 	}
 
-	if ( !$wgTitle->userCan( 'edit', true ) ) {
-		echo  wfMsg( 'postcomment_discussionprotected' );
-		return;
+	if ( !$title->userCan( 'edit', true ) ) {
+		$data .= wfMsgHtml( 'postcomment_discussionprotected' );
+		return true;
 	}
-
-	$sk = $wgUser->getSkin();
 
 	$user_str = '';
 	if ($wgUser->getID() == 0) {
@@ -148,15 +148,15 @@ function wfPostcommentForm() {
 	}
 
 	$pc = SpecialPage::getTitleFor( 'Postcomment' );
-	if ( $wgTitle->getNamespace() == NS_USER_TALK ) {
-		$msg = wfMsg( 'postcomment_leavemessagefor', $wgTitle->getText() );
+	if ( $title->getNamespace() == NS_USER_TALK ) {
+		$msg = wfMsg( 'postcomment_leavemessagefor', $title->getText() );
 	} else {
 		$msg = wfMsg( 'postcomment_addcommentdiscussionpage' );
 	}
 
-	echo "<br /><br />
+	$data .= "<hr /><br />
 <form name=\"commentForm\" method=\"POST\" action=\"{$pc->getFullURL()}\">
-<input name=\"target\" type=\"hidden\" value=\"" . htmlspecialchars( $wgTitle->getPrefixedDBkey() ) . "\"/>
+<input name=\"target\" type=\"hidden\" value=\"" . htmlspecialchars( $title->getPrefixedDBkey() ) . "\"/>
 <table>
 	<tr>
 		<td colspan=\"2\" valign=\"top\">
@@ -185,4 +185,5 @@ function wfPostcommentForm() {
 	</tr>
 </table>
 </form>";
+	return true;
 }
