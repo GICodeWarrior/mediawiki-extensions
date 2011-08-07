@@ -71,7 +71,9 @@
 		 * @param  percentage of scale. eg 1.2 for 120% scale
 		 */
 		scale : function (percentage){
-			$("p,li,h1,h2,h3,h4,h5,textarea,input").css('font-size', percentage + "em");
+			//TODO: Not Implemented. Need to find a better way to emulate fontconfig font-scale feature.
+			//Changing the font-size of few selectors does not work properly and not able to achieve 
+			//uniform scaling.
 		},
 
 		/**
