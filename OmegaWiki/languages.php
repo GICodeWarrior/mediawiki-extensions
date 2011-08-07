@@ -100,10 +100,10 @@ function getSQLForLanguageNames( $lang_code ) {
 	/* Fall back on English in cases where a language name is not present in the
 		user's preferred language. */
 	else
-		return 'SELECT language_id AS row_id, language_name' .
-			' FROM language_names' .
-			' WHERE name_language_id = ' . $lang_id .
-			' OR ( name_language_id = 85 ' .
-			' AND language_id NOT IN ( SELECT language_id FROM language_names WHERE name_language_id =  ' . $lang_id .
-			' ) ) ' ;
+		return 'SELECT language.language_id AS row_id, COALESCE(ln1.language_name,ln2.language_name) AS language_name' .
+			' FROM language' .
+			' LEFT JOIN language_names AS ln1 ON language.language_id = ln1.language_id' .
+			' AND ln1.name_language_id = ' . $lang_id .
+			' JOIN language_names AS ln2 ON language.language_id = ln2.language_id AND ln2.name_language_id = 85 ' ;
+
 }
