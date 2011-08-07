@@ -74,7 +74,7 @@ es.EventEmitter.prototype.on = es.EventEmitter.prototype.addListener;
 es.EventEmitter.prototype.once = function( type, listener ) {
 	var eventEmitter = this;
 	return this.addListener( type, function listenerWrapper() {
-		that.removeListener( type, listenerWrapper );
+		eventEmitter.removeListener( type, listenerWrapper );
 		listener.apply( eventEmitter, arguments );
 	} );
 };
