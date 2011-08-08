@@ -1231,6 +1231,7 @@ $messages['yi'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author PhiLiP
  * @author Sweeite012f
  * @author 阿pp
  */
@@ -1247,7 +1248,7 @@ $messages['zh-hans'] = array(
 	'commentbox-regex' => '/\\n==\\s*注释\\s*==\\s*\\n/i',
 	'commentbox-errorpage-title' => '创建注释时出错',
 	'commentbox-error-page-nonexistent' => '此页面不存在 ！',
-	'commentbox-error-namespace' => '此命名空间不允许使用注释！',
+	'commentbox-error-namespace' => '此名字空间禁止使用评论！',
 	'commentbox-error-empty-comment' => '不允许使用空注释 ！',
 );
 
