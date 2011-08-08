@@ -85,6 +85,18 @@ $messages['de'] = array(
 	'researchtools-page-prefs' => 'Statistiken zu Benutzereinstellungen',
 );
 
+/** Spanish (Español)
+ * @author Fitoschido
+ */
+$messages['es'] = array(
+	'researchtools' => 'Herramientas de investigación',
+	'researchtools-desc' => 'Conjunto de herramientas útiles para la realización de estudios de investigación de usuarios',
+	'researchtools-page-dashboard' => 'Tablero',
+	'researchtools-page-surveys' => 'Respuestas a la encuesta',
+	'researchtools-page-clicks' => 'Seguimiento de clics',
+	'researchtools-page-prefs' => 'Estadísticas de preferencias',
+);
+
 /** French (Français)
  * @author Crochet.david
  * @author Sherbrooke
