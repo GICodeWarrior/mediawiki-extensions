@@ -90,13 +90,18 @@ es.ListBlock.prototype.annotateContent = function( method, annotation, range ) {
 	range.normalize();
 	var locationStart = this.list.getLocationFromOffset( range.start ),
 		locationEnd = this.list.getLocationFromOffset( range.end );
+	
 	if ( locationStart.item == locationEnd.item ) {
+		// annotating content within one item
 		locationStart.item.content.annotate(
 			method,
 			annotation,
 			new es.Range( locationStart.offset, locationStart.offset + range.end - range.start )
 		);
 	} else {
+		// annotating content across multiple items
+
+		// collect all items to be later annotate - you can not modify during traversing
 		var itemsToAnnotate;
 		this.traverseItems( function( item, index ) {
 			if ( item == locationEnd.item ) {
@@ -109,16 +114,22 @@ es.ListBlock.prototype.annotateContent = function( method, annotation, range ) {
 				itemsToAnnotate = [];
 			}
 		} );
+
+		// annotate content in the first item - from offset to end
 		locationStart.item.content.annotate(
 			method,
 			annotation,
 			new es.Range( locationStart.offset, locationStart.item.content.getLength() )
 		);
+
+		// annotate content in the last item - from beginning to offset
 		locationEnd.item.content.annotate(
 			method,
 			annotation,
 			new es.Range( 0, locationEnd.offset )
 		);
+
+		// annotate content in all items in between first and last items
 		for ( var i = 0; i < itemsToAnnotate.length; i++ ) {
 			itemsToAnnotate[i].content.annotate(
 				method,
