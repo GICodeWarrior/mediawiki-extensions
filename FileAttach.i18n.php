@@ -322,6 +322,17 @@ $messages['tl'] = array(
 	'fileattach-editcomment' => 'Nailakip ang talaksang [[File:$1|$1]]',
 );
 
+/** Ukrainian (Українська)
+ * @author Dim Grits
+ */
+$messages['uk'] = array(
+	'fileattach-desc' => 'Дозволяє працювати з файлами для завантаження на дану сторінку',
+	'fileattach-attachments' => 'Прикріплені файли',
+	'fileattach-attachfile' => 'Прикріпити файли',
+	'fileattach-uploadheading' => 'Прикріпити файл до $1',
+	'fileattach-editcomment' => 'Файл [[File:$1|$1]] прикріплений',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Hydra
  */
