@@ -38,6 +38,13 @@
 		$.extend( this.options, options );
 	};
 	
+	/**
+	 * Obtain a single instance of lt.memory.
+	 * 
+	 * @since 1.2 
+	 * 
+	 * @return {lt.memory}
+	 */
 	lt.memory.singleton = function() {
 		if ( typeof lt.memoryinstance === 'undefined' ) {
 			lt.memoryinstance = new lt.memory();
@@ -64,23 +71,56 @@
 			}
 		},
 
-		hasLocalStorage: function( itemName ) {
-			return localStorage.getItem( this.options.lsprefix + itemName ) !== null;
-		},
-		
+		/**
+		 * Gets an item from localStorage.
+		 * 
+		 * @protected
+		 * @since 1.2 
+		 * 
+		 * @param {string} itemName The name of the item to obtain.
+		 * 
+		 * @return {Object}
+		 */
 		obtainFromLS: function( itemName ) {
 			return JSON.parse( localStorage.getItem( this.options.lsprefix +  itemName ) );
 		},
 		
+		/**
+		 * Writes an item to localStorage.
+		 * 
+		 * @protected
+		 * @since 1.2 
+		 * 
+		 * @param {string} itemName The name of the item to write.
+		 * @param {Object} object The object to write.
+		 */
 		writeToLS: function( itemName, object ) {
 			localStorage.setItem( this.options.lsprefix +  itemName, JSON.stringify( object ) )
 		},
 		
+		/**
+		 * Removes an item from localStorage.
+		 * 
+		 * @protected
+		 * @since 1.2 
+		 * 
+		 * @param {string} itemName The name of the item to remove.
+		 */
 		removeFromLS: function( itemName ) {
 			lt.debug( 'tm: removing item from LS: ' + this.options.lsprefix + itemName );
 			localStorage.removeItem( this.options.lsprefix +  itemName );
 		},
 		
+		/**
+		 * Obtains the translation memory hashes, needed to determine
+		 * if local caches should be invalidated. 
+		 * 
+		 * @protected
+		 * @since 1.2 
+		 * 
+		 * @param {Object} args Options
+		 * @param {Function} callback Function that will be called with the hashes once obtained.
+		 */
 		getMemoryHashes: function( args, callback ) {
 			var defaults = {
 				apiPath: window.wgScriptPath
