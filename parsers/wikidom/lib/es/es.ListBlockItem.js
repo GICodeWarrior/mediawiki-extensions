@@ -11,7 +11,7 @@
  * @property lists {Array} List of item sub-lists
  * @property $line {jQuery} Line element
  * @property $content {jQuery} Content element
- * @property flow {es.TextFlow} Text flow object for content
+ * @property flow {es.Flow} Text flow object for content
  */
 es.ListBlockItem = function( content, lists ) {
 	es.EventEmitter.call( this );
@@ -20,14 +20,14 @@ es.ListBlockItem = function( content, lists ) {
 	this.content = content || new es.Content();
 	this.$content = $( '<div class="editSurface-list-content"></div>' );
 	this.$.prepend( this.$content );
-	this.flow = new es.TextFlow( this.$content, this.content );
+	this.flow = new es.Flow( this.$content, this.content );
 	
 	/*	
 	this.content = content || new es.Content();
 	this.$line = $( '<div class="editSurface-list-line"></div>' );
 	this.$content = $( '<div class="editSurface-list-content"></div>' );
 	this.$.prepend( this.$line.append( this.$content ) );
-	this.flow = new es.TextFlow( this.$content, this.content );
+	this.flow = new es.Flow( this.$content, this.content );
 	*/
 	
 	var listBlockItem = this;
