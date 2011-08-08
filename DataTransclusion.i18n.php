@@ -759,11 +759,11 @@ $messages['uk'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Hydra
+ * @author PhiLiP
  */
 $messages['zh-hans'] = array(
 	'datatransclusion-desc' => '导入和呈现从外部数据源的数据记录',
-	'datatransclusion-missing-source' => '未指定数据源。
-第二次或"源"参数是必需的。',
+	'datatransclusion-missing-source' => '没有指定数据源。第二次或“源”参数是必需的。',
 	'datatransclusion-unknown-source' => '指定错误的数据源。
 "$1"未知的。',
 );
