@@ -182,13 +182,7 @@ class SpecialSuggest extends SpecialPage {
 				break;
 		}
 
-		ob_start();
-		var_dump( $queryResult );
-		var_dump( $recordSet );
-		var_dump( $editor );
-		wfDebug( ob_get_contents() );
-		ob_end_clean();
-
+		$dbr->freeResult( $queryResult );
 		$output = $editor->view( new IdStack( $prefix . 'table' ), $recordSet );
 		// $output="<table><tr><td>HELLO ERIK!</td></tr></table>";
 		// wfDebug($output);
