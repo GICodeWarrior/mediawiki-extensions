@@ -83,6 +83,9 @@ $egLTJSMessages = array(
 	'livetranslate-button-translate',
 	'livetranslate-button-translating',
 	'livetranslate-dictionary-error',
+	'livetranslate-button-translate',
+	'livetranslate-button-revert',
+	'livetranslate-translate-to',
 );
 
 // For backward compatibility with MW < 1.17.
@@ -95,10 +98,12 @@ if ( defined( 'MW_SUPPORTS_RESOURCE_MODULES' ) ) {
 	
 	$wgResourceModules['ext.livetranslate'] = $moduleTemplate + array(
 		'scripts' => array(
+			'includes/ext.livetranslate.js',
 			'includes/ext.lt.tm.js',
-			'includes/ext.livetranslate.js'
+			'includes/jquery.replaceText.js',
+			'includes/jquery.liveTranslate.js'
 		),
-		'dependencies' => array( 'jquery' ),
+		'dependencies' => array( 'jquery', 'jquery.ui.button' ),
 		'messages' => $egLTJSMessages
 	);
 	

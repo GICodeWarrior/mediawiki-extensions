@@ -9,11 +9,11 @@
 google.load("language", "1");
 google.setOnLoadCallback(function(){google.language.getBranding("googlebranding");});
 
-(function( $ ){ window.translationService = function() {
+(function( $, lt ){ window.translationService = function() {
 	
 	var self = this;
 	
-	this.done = function( targetLang ){};
+	this.done = function(){};
 	
 	this.runningJobs = 0;
 	
@@ -32,7 +32,7 @@ google.setOnLoadCallback(function(){google.language.getBranding("googlebranding"
 	 * @param {DOM element} element
 	 */
 	this.translateChunk = function( untranslatedsentences, chunks, currentMaxSize, sourceLang, targetLang, element ) {
-		ltdebug( 'Google: Translating chunk' );
+		lt.debug( 'Google: Translating chunk' );
 		var remainingPart = false;
 		var partToUse = false;
 		var sentenceCount = 0;
@@ -79,7 +79,7 @@ google.setOnLoadCallback(function(){google.language.getBranding("googlebranding"
 		
 		// If the lenght is 0, the element has been translated.
 		if ( chunk.length == 0 ) {
-			this.handleTranslationCompletion( targetLang );
+			this.handleTranslationCompletion();
 			return;
 		}
 
@@ -92,7 +92,7 @@ google.setOnLoadCallback(function(){google.language.getBranding("googlebranding"
 			sourceLang,
 			targetLang,
 			function(result) {
-				ltdebug( 'Google: Translated chunk' );
+				lt.debug( 'Google: Translated chunk' );
 				
 				if ( result.translation ) {
 					chunks.push( leadingSpace + result.translation + tailingSpace );
@@ -106,7 +106,7 @@ google.setOnLoadCallback(function(){google.language.getBranding("googlebranding"
 					// If the current chunk was smaller then the max size, node translation is complete, so update text.
 					self.textAreaElement.innerHTML = chunks.join( '' ); // This is a hack to decode quotes.
 					element.replaceData( 0, element.length, self.textAreaElement.value );
-					self.handleTranslationCompletion( targetLang );
+					self.handleTranslationCompletion();
 				}
 				else {
 					// If there is more work to do, move on to the next chunk.
@@ -125,17 +125,17 @@ google.setOnLoadCallback(function(){google.language.getBranding("googlebranding"
 	 * @param {string} targetLang
 	 */
 	this.translateElement = function( element, sourceLang, targetLang ) {
-		ltdebug( 'Google: Translating element' );
+		lt.debug( 'Google: Translating element' );
 		this.runningJobs++;
 		
 		var maxChunkLength = 500;
 
 		element.contents().each( function() {
-			ltdebug( 'Google: Element conent item' );
+			lt.debug( 'Google: Element conent item' );
 			
 			// If it's a text node, then translate it.
 			if ( this.nodeType == 3 && typeof this.data === 'string' && $.trim( this.data ).length > 0 ) {
-				ltdebug( 'Google: Found content node' );
+				lt.debug( 'Google: Found content node' );
 				
 				self.runningJobs++;
 				self.translateChunk(
@@ -153,29 +153,27 @@ google.setOnLoadCallback(function(){google.language.getBranding("googlebranding"
 				&& !$( this ).hasClass( 'notranslate' ) && !$( this ).hasClass( 'printfooter' )
 				&& $( this ).text().length > 0 ) {
 				
-				ltdebug( 'Google: Found child node' );
+				lt.debug( 'Google: Found child node' );
 				self.translateElement( $( this ), sourceLang, targetLang );
 			}
 			else {
-				ltdebug( 'Google: Found ignore node' );
+				lt.debug( 'Google: Found ignore node' );
 			}
 		} );
 		
-		this.handleTranslationCompletion( targetLang );
+		this.handleTranslationCompletion();
 	}
 	
 	/**
 	 * Should be called every time a DOM element has been translated.
 	 * By use of the runningJobs var, completion of the translation process is detected,
 	 * and further handled by this function.
-	 * 
-	 * @param {string} targetLang
 	 */
-	this.handleTranslationCompletion = function( targetLang ) {
+	this.handleTranslationCompletion = function() {
 		if ( !--this.runningJobs ) {
-			ltdebug( 'Google: translation process done' );
-			this.done( targetLang );
+			lt.debug( 'Google: translation process done' );
+			this.done();
 		}
 	}
 	
-}; })( jQuery );
+}; })( jQuery, window.liveTranslate );
