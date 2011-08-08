@@ -20,7 +20,6 @@ class SpecialSuggest extends SpecialPage {
 		require_once( "RecordSet.php" );
 		require_once( "Editor.php" );
 		require_once( "HTMLtable.php" );
-		# require_once("WikiDataAPI.php");
 		require_once( "Transaction.php" );
 		require_once( "OmegaWikiEditors.php" );
 		require_once( "Utilities.php" );
@@ -136,11 +135,11 @@ class SpecialSuggest extends SpecialPage {
 
 		// print only 10 results
 		$sql .= "10";
-	
+
 		# == Actual query here
 		// wfdebug("]]]".$sql."\n");
 		$queryResult = $dbr->query( $sql );
-	
+
 		$o->id = new Attribute( "id", wfMsg( 'ow_ID' ), "id" );
 	
 		# == Process query
@@ -240,7 +239,14 @@ class SpecialSuggest extends SpecialPage {
 		$dc = wdGetDataSetContext();
 		$dbr = wfGetDB( DB_SLAVE );
 
-		$userlang = ' ( SELECT language_id FROM language WHERE wikimedia_key = ' . $dbr->addQuotes( $wgLang->getCode() ) . ' LIMIT 1 ) ';
+		$sql = ' ( SELECT language_id FROM language WHERE wikimedia_key = ' . $dbr->addQuotes( $wgLang->getCode() ) . ' LIMIT 1 ) ';
+		$lang_res = $dbr->query( $sql );
+		if ( $row = $dbr->fetchObject($lang_res) ) {
+			$userlang = $row->language_id ;
+		} else {
+			$userlang = 85 ;
+		}
+
 		$classMids = $wgDefaultClassMids ;
 
 		if ( $syntransId != 0 ) {
@@ -250,7 +256,6 @@ class SpecialSuggest extends SpecialPage {
 				" FROM {$dc}_expression" .
 				" WHERE {$dc}_expression.expression_id = (SELECT expression_id FROM {$dc}_syntrans WHERE {$dc}_syntrans.syntrans_sid = {$syntransId} LIMIT 1) " .
 				" LIMIT 1 " ;
-
 			$lang_res = $dbr->query( $sql );
 			$language_id = $dbr->fetchObject( $lang_res )->language_id;
 
@@ -275,31 +280,37 @@ class SpecialSuggest extends SpecialPage {
 
 		$filteredAttributesRestriction = $this->getFilteredAttributesRestriction( $annotationAttributeId );
 
-		$sql =
-		'SELECT object_id, attribute_mid, MAX(spelling) as spelling FROM (' .
-		'SELECT object_id, attribute_mid, spelling' .
-		" FROM {$dc}_bootstrapped_defined_meanings, {$dc}_class_attributes, {$dc}_syntrans, {$dc}_expression" .
-		" WHERE {$dc}_bootstrapped_defined_meanings.name = " . $dbr->addQuotes( $attributesLevel ) .
-		" AND {$dc}_bootstrapped_defined_meanings.defined_meaning_id = {$dc}_class_attributes.level_mid" .
-		" AND {$dc}_class_attributes.attribute_type = " . $dbr->addQuotes( $attributesType ) .
-		" AND {$dc}_syntrans.defined_meaning_id = {$dc}_class_attributes.attribute_mid" .
-		" AND {$dc}_expression.expression_id = {$dc}_syntrans.expression_id" .
-		$filteredAttributesRestriction . " ";
 
-		// fallback is English
-		$sql .= " AND ( language_id=$userlang " ;
+		// fallback is English, and second fallback is the DM id
+		if ( $userlang != 85 ) {
+			$sql = "SELECT object_id, attribute_mid, COALESCE( exp_lng.spelling, exp_en.spelling, attribute_mid ) AS spelling" ;
+		} else {
+			$sql = "SELECT object_id, attribute_mid, COALESCE( exp_en.spelling, attribute_mid ) AS spelling" ;
+		}
+		$sql .= " FROM {$dc}_bootstrapped_defined_meanings, {$dc}_class_attributes" ;
+		if ( $userlang != 85 ) {
+			$sql .= " LEFT JOIN ( {$dc}_syntrans synt_lng, {$dc}_expression exp_lng )" .
+				" ON ( {$dc}_class_attributes.attribute_mid = synt_lng.defined_meaning_id" .
+				" AND exp_lng.expression_id = synt_lng.expression_id" .
+				" AND exp_lng.language_id = {$userlang} )" ;
+		}
+		$sql .= " LEFT JOIN ( {$dc}_syntrans synt_en, {$dc}_expression exp_en )" .
+			" ON ( {$dc}_class_attributes.attribute_mid = synt_en.defined_meaning_id" .
+			" AND exp_en.expression_id = synt_en.expression_id" .
+			" AND exp_en.language_id = 85 )" ; // English
+
+		$sql .= " WHERE {$dc}_bootstrapped_defined_meanings.name = " . $dbr->addQuotes( $attributesLevel ) .
+			" AND {$dc}_bootstrapped_defined_meanings.defined_meaning_id = {$dc}_class_attributes.level_mid" .
+			" AND {$dc}_class_attributes.attribute_type = " . $dbr->addQuotes( $attributesType ) .
+			$filteredAttributesRestriction . " ";
 
 		if ( $userlang != 85 ) {
-			$sql .= ' OR ( ' .
-				' language_id=85 ' .
-				" AND NOT EXISTS ( SELECT * FROM {$dc}_syntrans synt2, {$dc}_expression exp2 WHERE synt2.defined_meaning_id = {$dc}_syntrans.defined_meaning_id AND exp2.expression_id = synt2.expression_id AND exp2.language_id=$userlang AND synt2.remove_transaction_id IS NULL LIMIT 1 ) ) " ;
+			$sql .= " AND synt_lng.remove_transaction_id IS NULL" ;
 		}
-		$sql .= ' ) ' ;
+		$sql .= " AND synt_en.remove_transaction_id IS NULL" ;
 
 		$sql .=
 			' AND ' . getLatestTransactionRestriction( "{$dc}_class_attributes" ) .
-			' AND ' . getLatestTransactionRestriction( "{$dc}_expression" ) .
-			' AND ' . getLatestTransactionRestriction( "{$dc}_syntrans" ) .
 			" AND ({$dc}_class_attributes.class_mid IN (" .
 			' SELECT class_mid ' .
 			" FROM   {$dc}_class_membership" .
@@ -309,7 +320,8 @@ class SpecialSuggest extends SpecialPage {
 			$classRestriction .
 			')';
 
-		$sql .= ') AS filtered GROUP BY object_id';
+		// group by to obtain unicity
+		$sql .= ' GROUP BY object_id';
 
 		return $sql;
 	}
