@@ -472,6 +472,7 @@ vers $2
  */
 $messages['frp'] = array(
 	'wikisync' => 'Sincronisacion de vouiquis',
+	'wikisync-desc' => 'Balye una [[Special:WikiSync|pâge spèciâla]] que pèrmèt de sincronisar los dèrriérs changements dessus doux vouiquis — yon local et yon distant.',
 	'wikisync_direction' => 'Volyéd chouèsir la dirèccion de la sincronisacion',
 	'wikisync_local_root' => 'Racena du seto vouiqui local',
 	'wikisync_remote_root' => 'Racena du seto vouiqui distant',
@@ -490,15 +491,49 @@ $messages['frp'] = array(
 	'wikisync_scheduler_log' => 'Jornal du planifior',
 	'wikisync_scheduler_setup' => 'Configuracion du planifior',
 	'wikisync_scheduler_turn_on' => 'Activar lo planifior',
+	'wikisync_scheduler_switch_direction' => 'Bascular ôtomaticament la dirèccion de sincronisacion',
+	'wikisync_scheduler_time_interval' => 'Temps en menutes entre-mié les sincronisacions ôtomatiques',
 	'wikisync_apply_button' => 'Aplicar',
 	'wikisync_log_imported_by' => 'Importâ per [[Special:WikiSync|WikiSync]]',
 	'wikisync_log_uploaded_by' => 'Tèlèchargiê per [[Special:WikiSync|WikiSync]]',
 	'wikisync_api_result_unknown_action' => 'Accion encognua de l’API',
 	'wikisync_api_result_exception' => 'Una èxcèpcion est arrevâ pendent l’apèl de l’API locala',
+	'wikisync_api_result_noaccess' => 'Solament los membros de {{PLURAL:$2|ceta tropa|cetes tropes}} pôvont fâre cela accion : $1',
 	'wikisync_api_result_invalid_parameter' => 'Valor envalida du paramètre',
+	'wikisync_api_result_http' => 'Una èrror HTTP est arrevâ pendent la requéta de balyês de l’API distanta',
+	'wikisync_api_result_NoName' => 'Vos éd pas dèfeni lo paramètre <code>lgname</code>',
+	'wikisync_api_result_Illegal' => 'Vos éd balyê un crouyo nom d’utilisator',
+	'wikisync_api_result_NotExists' => 'Lo nom d’utilisator que vos éd balyê ègziste pas',
+	'wikisync_api_result_EmptyPass' => 'Vos éd pas dèfeni lo paramètre <code>lgpassword</code> ou ben vos l’éd lèssiê vouedo',
+	'wikisync_api_result_WrongPass' => 'Lo mot de pâssa que vos éd balyê est fôx',
+	'wikisync_api_result_WrongPluginPass' => 'Lo mot de pâssa que vos éd balyê est fôx',
 	'wikisync_api_result_Blocked' => 'L’utilisator est blocâ',
+	'wikisync_api_result_mustbeposted' => 'Lo modulo de branchement at fôta d’una requéta POST',
+	'wikisync_api_result_no_import_rights' => 'Cél utilisator est pas ôtorisâ a importar des fichiérs de vouedâ XML',
+	'wikisync_api_result_Success' => 'Branchiê avouéc reusséta sur lo seto vouiqui distant',
+	'wikisync_js_last_op_error' => 'La dèrriére opèracion at retornâ una èrror.
+
+Code : $1
+
+Mèssâjo : $2
+
+Apoyéd dessus [D’acôrd] por tornar tentar la dèrriére opèracion',
+	'wikisync_js_synchronization_confirmation' => 'Éte-vos de sûr de volêr emmodar la sincronisacion
+
+dês $1
+
+de vers $2
+
+a comptar de la vèrsion $3 ?',
+	'wikisync_js_synchronization_success' => 'La sincronisacion at étâ complètâ avouéc reusséta',
+	'wikisync_js_already_synchronized' => 'Los vouiquis sôrsa et dèstinacion semblont étre ja sincronisâs',
+	'wikisync_js_sync_to_itself' => 'Vos pouede pas sincronisar lo vouiqui avouéc lui-mémo',
 	'wikisync_js_revision' => 'Vèrsion $1',
 	'wikisync_js_scheduler_countdown' => '$1 {{PLURAL:$1|menuta que réste|menutes que réstont}}',
+	'wikisync_js_sync_start_ltr' => 'Emmodâ de la sincronisacion dês lo vouiqui local de vers lo vouiqui distant a $1',
+	'wikisync_js_sync_start_rtl' => 'Emmodâ de la sincronisacion dês lo vouiqui distant de vers lo vouiqui local a $1',
+	'wikisync_js_sync_end_ltr' => 'Fin de la sincronisacion dês lo vouiqui local de vers lo vouiqui distant a $1',
+	'wikisync_js_sync_end_rtl' => 'Fin de la sincronisacion dês lo vouiqui distant de vers lo vouiqui local a $1',
 );
 
 /** Galician (Galego)
