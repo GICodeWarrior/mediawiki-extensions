@@ -61,5 +61,3 @@ $wgHooks['UploadForm:initial'][]             = array( 'CategorizeHooks::fnCatego
 $wgHooks['EditPage::attemptSave'][]          = array( 'CategorizeHooks::fnCategorizeSaveHook', false );
 $wgHooks['UploadForm:BeforeProcessing'][]    = array( 'CategorizeHooks::fnCategorizeSaveHook', true );
 $wgHooks['OutputPageParserOutput'][]         = 'CategorizeHooks::fnCategorizeOutputHook';
-$wgHooks['LoadAllMessages'][]                = 'CategorizeHooks::fnCategorizeMessageHook';
-?>
