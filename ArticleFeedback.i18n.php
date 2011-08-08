@@ -937,6 +937,17 @@ Děkujeme, s pozdravem
 tým {{grammar:2sg|{{SITENAME}}}}',
 );
 
+/** Danish (Dansk)
+ * @author Sarrus
+ */
+$messages['da'] = array(
+	'articlefeedback-survey-question-origin' => 'Hvilken side var du på, da du startede denne undersøgelse?',
+	'articlefeedback-survey-answer-whyrated-other' => 'Andre',
+	'articlefeedback-survey-question-useful-iffalse' => 'Hvorfor?',
+	'articlefeedback-survey-question-comments' => 'Har du nogle yderligere kommentarer?',
+	'articlefeedback-survey-submit' => 'Indsend',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  * @author Metalhead64
@@ -1800,15 +1811,35 @@ $messages['frp'] = array(
 	'articlefeedback-report-empty' => 'Gins d’èstimacion',
 	'articlefeedback-report-ratings' => 'Èstimacions $1',
 	'articlefeedback-field-trustworthy-label' => 'Digno de confiance',
+	'articlefeedback-field-trustworthy-tooltip-1' => 'Manca de sôrses fiâbles',
+	'articlefeedback-field-trustworthy-tooltip-2' => 'Pou de sôrses fiâbles',
+	'articlefeedback-field-trustworthy-tooltip-3' => 'Sôrses fiâbles sufisentes',
+	'articlefeedback-field-trustworthy-tooltip-4' => 'Bônes sôrses fiâbles',
 	'articlefeedback-field-complete-label' => 'Complèt',
+	'articlefeedback-field-complete-tooltip-1' => 'Manque la plepârt de les enformacions',
+	'articlefeedback-field-complete-tooltip-2' => 'Y at quârques enformacions',
+	'articlefeedback-field-complete-tooltip-3' => 'Y at les enformacions cllâfs, mas avouéc des manques',
+	'articlefeedback-field-complete-tooltip-4' => 'Y at la plepârt de les enformacions cllâfs',
+	'articlefeedback-field-complete-tooltip-5' => 'Cuvèrta complèta',
 	'articlefeedback-field-objective-label' => 'Emparciâl',
+	'articlefeedback-field-objective-tooltip-1' => 'Fortament bièsiê',
+	'articlefeedback-field-objective-tooltip-2' => 'Biès moderâs',
+	'articlefeedback-field-objective-tooltip-4' => 'Gins de biès visiblo',
+	'articlefeedback-field-objective-tooltip-5' => 'Pas du tot bièsiê',
 	'articlefeedback-field-wellwritten-label' => 'Bien ècrit',
+	'articlefeedback-field-wellwritten-tooltip-1' => 'Pas compréhensiblo',
+	'articlefeedback-field-wellwritten-tooltip-2' => 'Mâlésiê a comprendre',
+	'articlefeedback-field-wellwritten-tooltip-3' => 'Cllartât justa',
+	'articlefeedback-field-wellwritten-tooltip-4' => 'Bôna cllartât',
+	'articlefeedback-field-wellwritten-tooltip-5' => 'Cllartât èxcèpcionèla',
 	'articlefeedback-pitch-reject' => 'Pôt-étre ples târd',
 	'articlefeedback-pitch-or' => 'ou ben',
 	'articlefeedback-pitch-thanks' => 'Grant-marci ! Voutra èstimacion at étâ encartâ.',
 	'articlefeedback-pitch-survey-accept' => 'Emmodar l’enquéta',
+	'articlefeedback-pitch-join-message' => 'Volyâd-vos fâre un compto ?',
 	'articlefeedback-pitch-join-accept' => 'Fâre un compto',
 	'articlefeedback-pitch-join-login' => 'Sè branchiér',
+	'articlefeedback-pitch-edit-message' => 'Saviâd-vos que vos pouede changiér cela pâge ?',
 	'articlefeedback-pitch-edit-accept' => 'Changiér ceta pâge',
 	'articlefeedback-survey-message-success' => 'Grant-marci d’avêr rempli lo quèstionèro.',
 	'articlefeedback-survey-message-error' => 'Una èrror est arrevâ.
@@ -5488,16 +5519,18 @@ Lütfen daha sonra tekrar deneyin.',
 
 /** Ukrainian (Українська)
  * @author Arturyatsko
+ * @author Dim Grits
  * @author Microcell
  * @author Тест
  */
 $messages['uk'] = array(
-	'articlefeedback' => 'Оцінка статті',
+	'articlefeedback' => 'Панель оцінювання статті',
 	'articlefeedback-desc' => 'Оцінка статті (експериментальний варіант)',
+	'articlefeedback-survey-question-origin' => 'На якій сторінці ви були, коли почали це опитування?',
 	'articlefeedback-survey-question-whyrated' => 'Будь ласка, розкажіть нам, чому Ви оцінили цю сторінку сьогодні (позначте все, що відповідає):',
 	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'Я хотів внести свій внесок у загальний рейтинг сторінки',
-	'articlefeedback-survey-answer-whyrated-development' => 'Я сподіваюся, що мій рейтинг буде позитивно впливати на розвиток сторінки',
-	'articlefeedback-survey-answer-whyrated-contribute-wiki' => 'Я хотів внести свій внесок у {{SITENAME}}',
+	'articlefeedback-survey-answer-whyrated-development' => 'Я сподіваюся, що моя оцінка буде позитивно впливати на розвиток цієї сторінки',
+	'articlefeedback-survey-answer-whyrated-contribute-wiki' => 'Я хотів би зробити внесок до {{SITENAME}}',
 	'articlefeedback-survey-answer-whyrated-sharing-opinion' => 'Мені подобається ділитися своєю думкою',
 	'articlefeedback-survey-answer-whyrated-didntrate' => 'Я не оцінив сторінку сьогодні, але хочу залишити відгук про цю функцію',
 	'articlefeedback-survey-answer-whyrated-other' => 'Інше',
@@ -5507,16 +5540,23 @@ $messages['uk'] = array(
 	'articlefeedback-survey-submit' => 'Відправити',
 	'articlefeedback-survey-title' => 'Будь ласка, дайте відповідь на кілька питань',
 	'articlefeedback-survey-thanks' => 'Дякуємо за заповнення опитування.',
+	'articlefeedback-survey-disclaimer' => 'Щоб покращити цю функцію, ваш відгук може бути анонімно наданий спільноті Вікіпедії.',
 	'articlefeedback-error' => 'Сталася помилка. Будь ласка, повторіть спробу пізніше.',
 	'articlefeedback-form-switch-label' => 'Оцінити цю сторінку',
+	'articlefeedback-form-panel-title' => 'Оцініть цю сторінку',
 	'articlefeedback-form-panel-explanation' => 'Що це таке?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:ArticleFeedback (Проект:Відгуки на сторінки)',
 	'articlefeedback-form-panel-clear' => 'Вилучити оцінку',
-	'articlefeedback-form-panel-expertise' => 'Я маю широкі знання в цій галузі (опціонально)',
-	'articlefeedback-form-panel-expertise-studies' => 'В мене є відповідна ступінь від університету/коледжу',
+	'articlefeedback-form-panel-expertise' => "Я досить обізнаний в цій темі (необов'язково)",
+	'articlefeedback-form-panel-expertise-studies' => 'В мене є відповідна спеціальна освіта',
 	'articlefeedback-form-panel-expertise-profession' => 'Це стосується моєї професії',
 	'articlefeedback-form-panel-expertise-hobby' => 'Це моє палке особисте захоплення',
+	'articlefeedback-form-panel-expertise-other' => 'Джерело моїх знань не зазначене в списку',
+	'articlefeedback-form-panel-helpimprove' => 'Я хотів би допомогти в поліпшенні Вікіпедії, надішліть мені електронного листа (за бажанням)',
+	'articlefeedback-form-panel-helpimprove-note' => 'Ми надішлемо вам підтвердження електронною поштою. Ми не будемо передавати вашу адресу будь-кому. $1',
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Політика конфіденційності',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Політика конфіденційності',
+	'articlefeedback-form-panel-submit' => 'Надіслати оцінки',
 	'articlefeedback-form-panel-pending' => 'Ваші оцінки ще не були відправлені',
 	'articlefeedback-form-panel-success' => 'Успішно збережено',
 	'articlefeedback-form-panel-expiry-title' => 'Ваші оцінки застарілі',
@@ -5525,14 +5565,70 @@ $messages['uk'] = array(
 	'articlefeedback-report-panel-title' => 'Оцінки сторінки',
 	'articlefeedback-report-panel-description' => 'Поточні середні оцінки.',
 	'articlefeedback-report-empty' => 'Не оцінювалася',
+	'articlefeedback-report-ratings' => 'оцінено раз: $1',
+	'articlefeedback-field-trustworthy-label' => 'Достовірність',
+	'articlefeedback-field-trustworthy-tip' => 'Як ви вважаєте, чи достатньо ця сторінка має цитат, чи узяті вони з надійних джерел?',
+	'articlefeedback-field-trustworthy-tooltip-1' => 'Авторитетне джерело відсутнє',
+	'articlefeedback-field-trustworthy-tooltip-2' => 'Мало достовірних джерел',
+	'articlefeedback-field-trustworthy-tooltip-3' => 'Адекватні авторитетні джерела',
+	'articlefeedback-field-trustworthy-tooltip-4' => 'Добрі авторитетні джерела',
+	'articlefeedback-field-trustworthy-tooltip-5' => 'Чудові авторитетні джерела',
+	'articlefeedback-field-complete-label' => 'Повнота',
+	'articlefeedback-field-complete-tip' => 'Чи вважаєте ви, що ця сторінка в достатній мірі охоплює основні питання цієї теми?',
+	'articlefeedback-field-complete-tooltip-1' => 'Відсутні велика частина інформації',
+	'articlefeedback-field-complete-tooltip-2' => 'Містить деяку інформацію',
+	'articlefeedback-field-complete-tooltip-3' => 'Містить ключову інформацію, але з прогалинами',
+	'articlefeedback-field-complete-tooltip-4' => 'Містить загальну інформацію',
+	'articlefeedback-field-complete-tooltip-5' => 'Всебічне охоплення теми',
+	'articlefeedback-field-objective-label' => 'Нейтральність',
+	'articlefeedback-field-objective-tip' => "Чи вважаєте ви, що на цій сторінці об'єктивно висвітлений предмет з усіх точок зору?",
+	'articlefeedback-field-objective-tooltip-1' => 'Досить упереджена',
+	'articlefeedback-field-objective-tooltip-2' => 'Помірно упереджена',
+	'articlefeedback-field-objective-tooltip-3' => 'Мінімально упереджена',
+	'articlefeedback-field-objective-tooltip-4' => 'Немає вочевидь упереджених речень',
+	'articlefeedback-field-objective-tooltip-5' => 'Абсолютно неупереджена',
+	'articlefeedback-field-wellwritten-label' => 'Стиль викладення інформації',
+	'articlefeedback-field-wellwritten-tip' => 'Чи вважаєте ви, що ця сторінка добре структурована і має гарний стиль викладення матеріалу?',
+	'articlefeedback-field-wellwritten-tooltip-1' => 'Незрозуміла',
+	'articlefeedback-field-wellwritten-tooltip-2' => 'Важко зрозуміти',
+	'articlefeedback-field-wellwritten-tooltip-3' => 'Адекватна ясність викладення матеріалу',
+	'articlefeedback-field-wellwritten-tooltip-4' => 'Легко читається',
+	'articlefeedback-field-wellwritten-tooltip-5' => 'Винятково легко читається',
 	'articlefeedback-pitch-reject' => 'Можливо, пізніше',
 	'articlefeedback-pitch-or' => 'або',
+	'articlefeedback-pitch-thanks' => 'Дякуємо! Ваші оцінки були збережені.',
+	'articlefeedback-pitch-survey-message' => 'Будь ласка, знайдіть хвилинку, щоб швидко оцінити статтю.',
+	'articlefeedback-pitch-survey-accept' => 'Почати опитування',
+	'articlefeedback-pitch-join-message' => 'Ви хочете створити обліковий запис?',
+	'articlefeedback-pitch-join-body' => 'Обліковий запис допоможе вам відстежувати зміни, брати участь в обговореннях і бути частиною спільноти.',
 	'articlefeedback-pitch-join-accept' => 'Створити обліковий запис',
 	'articlefeedback-pitch-join-login' => 'Увійти до системи',
+	'articlefeedback-pitch-edit-message' => 'Чи знаєте ви, що ви можете редагувати цю сторінку?',
 	'articlefeedback-pitch-edit-accept' => 'Редагувати цю сторінку',
+	'articlefeedback-survey-message-success' => 'Дякуємо за участь в опитуванні.',
+	'articlefeedback-survey-message-error' => 'Сталася помилка. Будь ласка, повторіть спробу пізніше.',
+	'articleFeedback-table-caption-dailyhighsandlows' => 'Лідери та аутсайдери цього дня.',
+	'articleFeedback-table-caption-dailyhighs' => 'Сторінки з найвищими оцінками: $1',
+	'articleFeedback-table-caption-dailylows' => 'Сторінки з найнижчими оцінками: $1',
+	'articleFeedback-table-caption-weeklymostchanged' => 'На цьому тижні найбільш змінилися',
+	'articleFeedback-table-caption-recentlows' => 'Останні зниження рейтингу',
 	'articleFeedback-table-heading-page' => 'Сторінка',
 	'articleFeedback-table-heading-average' => 'Середнє',
 	'articleFeedback-copy-above-highlow-tables' => 'Це експериментальна можливість. Прохання висловлювати коментарі на [$1 сторінці обговорення].',
+	'articlefeedback-dashboard-bottom' => "'''Примітка''': Ми будемо продовжувати експериментувати з різними способами наповнення цієї панелі. На даний час панель включає такі статті:
+* Сторінки з високим/низьким рейтингом: статті, які отримали щонайменше 10 оцінок протягом останніх 24 годин. Середня оцінка розраховується після обробки усіх оцінок за останні 24 години.
+* Чинні аутсайдери: Статті, які отримали 70% і нижче (2 зірки і нижче) оцінки в будь-якій категорії за останні 24 години. Враховуються тільки статті, які отримали щонайменше 10 оцінок за останні 24 години.",
+	'articlefeedback-disable-preference' => "Не показувати на сторінках віджет зворотнього зв'язку",
+	'articlefeedback-emailcapture-response-body' => 'Привіт! 
+Дякуємо за інтерес до {{SITENAME}}! Будь ласка, знайдіть декілька секунд, щоб підтвердити адресу електронної пошти, натиснувши на посилання нижче:
+$1
+Ви також можете відвідати: 
+$2
+і ввести наступний код підтвердження:
+$3
+Ми повідомимо вам як ви можете допомогти поліпшити {{SITENAME}}.
+Якщо ви не відправляли цей запит, не звертайте уваги на цей лист, і ми не потурбуємо вас більше.
+З найкращими побажаннями, команда {{SITENAME}}.',
 );
 
 /** Vèneto (Vèneto)
