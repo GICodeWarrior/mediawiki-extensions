@@ -1,0 +1,8 @@
+This demo was a proof of concept. It helped guide the design of the EditSurface code, but also
+revealed some dead-ends.
+
+Lessons learned:
+* Browsers apply kerning to text, making it impossible utilize caching when measuring the width of
+  rendered text without sacrificing accuracy.
+* Pre-calculating metrics is not critical to the problem, since we flow more often than we request
+  metrics for cursor placement or selection painting.
