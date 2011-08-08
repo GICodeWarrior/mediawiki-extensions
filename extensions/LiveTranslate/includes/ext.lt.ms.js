@@ -6,16 +6,15 @@
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
  */
 
-(function( $ ){ window.translationService = function() {
+(function( $, lt ){ window.translationService = function() {
 	
 	var self = this;
 	
-	this.done = function( targetLang ){};
+	this.done = function(){};
 	
 	this.runningJobs = 0;
 	this.checkingForIdle = false;
 	this.lastCompletion;
-//	window.fooz = 0;
 	
 	/**
 	 * Determines a chunk to translate of an DOM elements contents and calls the Microsoft Translate API.
@@ -29,7 +28,7 @@
 	 * @param {DOM element} element
 	 */
 	this.translateChunk = function( untranslatedsentences, chunks, currentMaxSize, sourceLang, targetLang, element ) {
-		ltdebug( 'MS: Translating chunk' );
+		lt.debug( 'MS: Translating chunk' );
 		var remainingPart = false;
 		var partToUse = false;
 		var sentenceCount = 0;
@@ -76,7 +75,7 @@
 		
 		// If the lenght is 0, the element has been translated.
 		if ( chunk.length == 0 ) {
-			this.handleTranslationCompletion( targetLang );
+			this.handleTranslationCompletion();
 			return;
 		}
 		
@@ -85,7 +84,7 @@
 		var tailingSpace = ( chunk.length > 1 && chunk.substr( chunk.length - 1, 1 ) == ' ' ) ? ' ' : '';
 		
 		var chunckTranslationDone = function( translation ) {
-			ltdebug( 'MS: Translated chunk' );
+			lt.debug( 'MS: Translated chunk' );
 			
 			if ( translation ) {
 				chunks.push( leadingSpace + translation + tailingSpace );
@@ -100,8 +99,8 @@
 				window.textAreaElement.innerHTML = chunks.join( '' ); // This is a hack to decode quotes.
 				element.replaceData( 0, element.length, window.textAreaElement.value );
 
-				ltdebug( 'MS: Translated element' );
-				self.handleTranslationCompletion( targetLang );
+				lt.debug( 'MS: Translated element' );
+				self.handleTranslationCompletion();
 			}
 			else {
 				// If there is more work to do, move on to the next chunk.
@@ -130,17 +129,17 @@
 	 * @param {string} targetLang
 	 */
 	this.translateElement = function( element, sourceLang, targetLang ) {
-		ltdebug( 'MS: Translating element' );
+		lt.debug( 'MS: Translating element' );
 		this.runningJobs++;
 		
 		var maxChunkLength = 500;
 
 		element.contents().each( function() {
-			ltdebug( 'MS: Element conent item' );
+			lt.debug( 'MS: Element conent item' );
 			
 			// If it's a text node, then translate it.
 			if ( this.nodeType == 3 && typeof this.data === 'string' && $.trim( this.data ).length > 0 ) {
-				ltdebug( 'MS: Found content node' );
+				lt.debug( 'MS: Found content node' );
 				
 				self.runningJobs++;
 				
@@ -170,28 +169,28 @@
 				&& !$( this ).hasClass( 'notranslate' ) && !$( this ).hasClass( 'printfooter' )
 				&& $( this ).text().length > 0 ) {
 				
-				ltdebug( 'MS: Found child node' );
+				lt.debug( 'MS: Found child node' );
 				self.translateElement( $( this ), sourceLang, targetLang );
 			}
 			else {
-				ltdebug( 'MS: Found ignore node' );
+				lt.debug( 'MS: Found ignore node' );
 			}
 		} );
 		
-		this.handleTranslationCompletion( targetLang );
+		this.handleTranslationCompletion();
 	}
 	
-	this.invokeDone = function( targetLang ) {
-		ltdebug( 'MS: translation process done' );
-		ltdebug( this.runningJobs );
+	this.invokeDone = function() {
+		lt.debug( 'MS: translation process done' );
+		lt.debug( this.runningJobs );
 		this.runningJobs = 0;
-		this.done( targetLang );		
+		this.done();		
 	}
 	
 	this.checkForIdleness = function( targetLang, hits ) {
-		ltdebug( 'MS: checkForIdleness' );
-		ltdebug( 'MS: last + 250: ' + ( this.lastCompletion + 250 ) );
-		ltdebug( 'MS: now: ' + (new Date()).getTime() );
+		lt.debug( 'MS: checkForIdleness' );
+		lt.debug( 'MS: last + 250: ' + ( this.lastCompletion + 250 ) );
+		lt.debug( 'MS: now: ' + (new Date()).getTime() );
 		
 		if ( this.lastCompletion + 250 < (new Date()).getTime() ) {
 			hits++;
@@ -212,10 +211,8 @@
 	 * Should be called every time a DOM element has been translated.
 	 * By use of the runningJobs var, completion of the translation process is detected,
 	 * and further handled by this function.
-	 * 
-	 * @param {string} targetLang
 	 */
-	this.handleTranslationCompletion = function( targetLang ) {
+	this.handleTranslationCompletion = function() {
 		if ( !this.checkingForIdle && this.runningJobs > 1 && this.runningJobs < 20 ) {
 			this.checkingForIdle = true;
 			setTimeout( function() { self.checkForIdleness( targetLang, 0 ); }, 250 );
@@ -226,9 +223,9 @@
 		}
 		
 		if ( !--this.runningJobs ) {
-			this.invokeDone( targetLang );
+			this.invokeDone();
 		}
 	}
 	
 	
-}; })( jQuery );
+}; })( jQuery, window.liveTranslate );
