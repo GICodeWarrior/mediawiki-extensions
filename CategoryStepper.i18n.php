@@ -819,11 +819,12 @@ $messages['vo'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Chenxiaoqino
+ * @author PhiLiP
  */
 $messages['zh-hans'] = array(
 	'categorystepper-desc' => '显示一个分类跳转盒可以让使用者按照字母顺序在同一页面中的多个分类间跳转',
 	'categorystepper-end' => '（分类结尾）',
-	'categorystepper-start' => '（分类开�头）',
+	'categorystepper-start' => '（分类开头）',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
