@@ -1957,6 +1957,7 @@ $messages['gl'] = array(
  */
 $messages['grc'] = array(
 	'fogg-title-title' => 'Ἐπιγραφή',
+	'fogg-date-title' => 'Ἡμερομηνία',
 );
 
 /** Swiss German (Alemannisch)

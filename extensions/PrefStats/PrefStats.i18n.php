@@ -1960,6 +1960,8 @@ $messages['nah'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
+	'prefstats' => 'Veurkeurenstaotistieken',
+	'prefstats-title' => 'Veurkeurenstaotistieken',
 	'prefstats-factor-hour' => 'ure',
 	'prefstats-factor-sixhours' => 'zes uren',
 	'prefstats-factor-day' => 'dag',

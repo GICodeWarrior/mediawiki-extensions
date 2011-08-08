@@ -89,12 +89,25 @@ You can also [[Special:Favoritelist/edit|use the standard editor]].',
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Hamilton Abreu
  * @author Kghbln
  */
 $messages['qqq'] = array(
+	'prefs-favoritelist' => '{{Identical|Favorite}}',
 	'prefs-favoritelist-token' => "This message is basically the same as {{msg-mw|Prefs-watchlist-token}}. A token is a piece of information in this context that is used to prove one's identity electronically[http://en.wikipedia.org/wiki/Security_token]. Have a look at the Watchlist tab in [[Special:Preferences]]. There is a token there for accessing your watchlist RSS feed without having to log in (you are using your token to identify yourself).",
 	'favoritelistanontext' => '$1 is substituted by {{msg|loginreqlink}}',
+);
+
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'favorites-desc' => 'Стварэньне сьпісу ўлюблёных',
+	'favoritethis' => 'Зрабіць гэтую старонку ўлюблёнай',
+	'prefs-favoritelist' => 'Улюблёныя',
+	'prefs-favoritelist-token' => 'Ключ улюблёных:',
 );
 
 /** German (Deutsch)
@@ -264,12 +277,16 @@ $messages['lb'] = array(
 	'favorites-desc' => 'Eng Lescht mat Favoriten uleeën',
 	'favoritethis' => 'Dës Säit bäi meng Favoriten derbäisetzen',
 	'prefs-favoritelist' => 'Favoriten',
+	'prefs-favoritelist-token' => 'Favoriten-Token:',
 	'prefs-advancedfavoritelist' => 'Méi Optiounen',
 	'favoritelist' => 'Meng Favoriten',
 	'myfavoritelist' => 'Meng Favoriten',
 	'favoritelistfor' => "(fir '''$1''')",
 	'nofavoritelist' => 'Är Lëscht vun de Favoriten ass eidel.',
 	'favoritenologin' => 'Net ageloggt',
+	'addedfavorite' => "Bäi d'Favoriten derbäigesat",
+	'addedfavoritetext' => 'D\'Säit "[[:$1]]" gouf bäi Är [[Special:Favoritelist|Favoriten]] derbäigesat.',
+	'removedfavorite' => 'Vun der Lëscht vun de Favoriten erofgeholl',
 	'favorite' => "Op d'Lëscht vun de Favoriten derbäisetzen",
 	'favoritethispage' => 'Dës Säit bäi meng Favoriten derbäisetzen',
 	'unfavorite' => 'Vun der Lëscht vun de Favoriten erofhuelen',
@@ -281,6 +298,7 @@ $messages['lb'] = array(
 	'tooltip-ca-unfavorite' => 'Dës Säit vun der Lëscht vun Äre Favoriten erofhuelen?',
 	'tooltip-favorite' => "Dës Säit op d'Lëscht vun Äre Favoriten derbäisetzen",
 	'favoritelistall2' => 'all',
+	'favoritelistedit-numitems' => 'An der Lëscht vun Äre {{PLURAL:$1|Favoriten ass 1 Titel|Favorite sinn $1 Titelen}}.',
 	'favoritelistedit-noitems' => 'De Lëscht vun Äre Favoriten ass eidel.',
 	'favoritelistedit-normal-title' => 'Lëscht vun de Favoriten änneren',
 	'favoritelistedit-normal-legend' => 'Säite vun der Lëscht vun de Favoriten erofhuelen',

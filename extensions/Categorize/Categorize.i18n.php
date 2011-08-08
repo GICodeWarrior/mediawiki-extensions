@@ -56,6 +56,13 @@ $messages['fr'] = array(
 	'categorize-advice' => 'Cliquez sur les labels que vous souhaitez attribuer à cet article :',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'categorize-title' => 'Qualificacion des savêrs',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

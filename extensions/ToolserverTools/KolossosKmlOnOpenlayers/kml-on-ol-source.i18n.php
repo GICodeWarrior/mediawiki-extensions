@@ -655,7 +655,7 @@ $messages['tr'] = array(
 	'ts-kml-on-ol-thumbnails' => 'Tırnak resimler',
 	'ts-kml-on-ol-help' => 'Yardım',
 	'ts-kml-on-ol-all' => 'Hepsi',
-	'ts-kml-on-ol-map-by' => 'Harita üretici',
+	'ts-kml-on-ol-map-by' => 'Haritayı sunan',
 );
 
 /** Ukrainian (Українська)

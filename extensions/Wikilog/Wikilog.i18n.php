@@ -3039,6 +3039,7 @@ $messages['grc'] = array(
 	'wikilog-form-category' => 'Κατηγορία:',
 	'wikilog-form-name' => 'Ὄνομα:',
 	'wikilog-form-author' => 'Δημιουργός:',
+	'wikilog-form-date' => 'Ἡμερομηνία:',
 	'wikilog-form-comment' => 'Σχόλιον:',
 	'wikilog-edit-lc' => 'μεταγράφειν',
 );

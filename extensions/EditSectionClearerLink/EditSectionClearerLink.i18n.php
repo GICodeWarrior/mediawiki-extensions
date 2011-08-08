@@ -22,6 +22,13 @@ $messages['qqq'] = array(
 	'editsectionclearerlink-desc' => '{{desc}}',
 );
 
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'editsectionclearerlink-desc' => 'Паляпшае зручнасьць карыстаньня спасылкамі рэдагаваньня сэкцыяў, праз дзеяньні курсору мышы пры лунаньні над сэкцыямі і спасылкамі',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

@@ -22546,6 +22546,7 @@ $messages['yi'] = array(
  * @author Gzdavidwong
  * @author Hydra
  * @author Liangent
+ * @author PhiLiP
  * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
@@ -22705,7 +22706,7 @@ $messages['zh-hans'] = array(
 	'configure-setting-wgXMLMimeTypes-key' => 'MIME类型',
 	'configure-setting-wgXhtmlDefaultNamespace' => '默认XHTML名字空间',
 	'configure-setting-wgXhtmlNamespaces' => '其他XHTML名字空间',
-	'configure-setting-wgXhtmlNamespaces-key' => '名称空间',
+	'configure-setting-wgXhtmlNamespaces-key' => '名字空间',
 	'configure-setting-wgLocaltimezone' => '本地时区',
 	'configure-setting-wgUseAjax' => '启用AJAX',
 	'configure-setting-wgAjaxExportList' => '可呼叫的AJAX功能',

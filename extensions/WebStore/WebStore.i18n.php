@@ -1020,8 +1020,10 @@ $1',
  */
 $messages['frp'] = array(
 	'inplace_access_disabled' => 'L’accès a ceti sèrviço est dèsactivâ por tôs los cliants.',
+	'inplace_access_denied' => 'Ceti sèrviço est rètrent per adrèce IP u cliant.',
 	'inplace_scaler_not_enough_params' => 'Pas prod de paramètres.',
 	'inplace_scaler_invalid_image' => 'Émâge fôssa, empossiblo de dètèrmenar sa talye.',
+	'webstore_access' => 'Ceti sèrviço est rètrent per adrèce IP u cliant.',
 	'webstore_path_invalid' => 'Lo nom de fichiér est pas justo.',
 	'webstore_dest_open' => 'Empossiblo d’uvrir lo fichiér de dèstinacion « $1 ».',
 	'webstore_dest_mkdir' => 'Empossiblo de fâre lo rèpèrtouèro de dèstinacion « $1 ».',

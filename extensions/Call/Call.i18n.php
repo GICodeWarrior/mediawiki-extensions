@@ -1427,10 +1427,11 @@ $messages['vo'] = array(
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
  * @author Hydra
+ * @author PhiLiP
  */
 $messages['zh-hans'] = array(
 	'call' => '呼叫',
-	'call-desc' => '创建一个超链接到模板（或一般页面）的参数传递。可用于在浏览器的命令行或在维基文本中使用。',
+	'call-desc' => '创建一个超链接到模板（或一般页面）的参数传递。可用于在浏览器的命令行或在wiki文本中使用。',
 	'call-text' => '作为参数，调用扩展预计 wiki 页面，该页面的可选参数。<br /><br />
 
 示例一： <tt>[[{{#special:call}}/My template,parm1=value1]]</tt><br />

@@ -1154,6 +1154,13 @@ Para gardar unha enquisa, envíea sen responder a ningunha pregunta.',
 	'qp_error_unique' => 'A pregunta de tipo unique() ten definidas máis propostas que respostas posibles: imposible de completar',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'qp_source_link' => 'Πηγή',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */

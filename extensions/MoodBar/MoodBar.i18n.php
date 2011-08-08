@@ -237,10 +237,11 @@ $messages['de-formal'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Fitoschido
  */
 $messages['es'] = array(
-	'moodbar-desc' => 'Permite a usuarios específicos enviar su «estado de ánimo» hacia el operador del sitio',
+	'moodbar-desc' => 'Permite a usuarios específicos enviar comentarios sobre su experiencia de edición',
 );
 
 /** French (Français)
@@ -305,8 +306,22 @@ $messages['gl'] = array(
 	'moodbar-trigger-share' => 'Comparta a súa experiencia',
 	'moodbar-trigger-editing' => 'Usando $1...',
 	'moodbar-close' => '(pechar)',
+	'moodbar-intro-feedback' => 'Editar $1 fixo que agora estea...',
+	'moodbar-intro-share' => 'A miña experiencia en $1 fixo que agora estea...',
+	'moodbar-intro-editing' => 'Editar $1 fixo que agora estea...',
+	'moodbar-type-happy-title' => 'Contento',
+	'moodbar-type-sad-title' => 'Triste',
+	'moodbar-type-confused-title' => 'Confuso',
+	'tooltip-moodbar-what' => 'Máis información sobre esta característica',
 	'moodbar-what-label' => 'Que é isto?',
+	'moodbar-what-content' => 'Esta característica está deseñada para axudar á comunidade a entender a experiencia da xente á hora de editar o sitio.
+Para obter máis información, bótelle unha ollada á $1 .',
+	'moodbar-what-link' => 'páxina da característica',
+	'moodbar-privacy-link' => 'termos',
+	'moodbar-disable-link' => 'Non estou interesado. Desactivar esta característica.',
 	'moodbar-form-title' => 'Porque...',
+	'moodbar-form-note' => '140 caracteres como máximo',
+	'moodbar-form-note-dynamic' => '$1 caracteres restantes',
 	'moodbar-form-policy-label' => 'a nosa política',
 	'moodbar-loading-title' => 'Compartindo...',
 	'moodbar-success-title' => 'Grazas!',
@@ -986,5 +1001,57 @@ $messages['vi'] = array(
 	'moodbar-user-anonymized' => 'Ẩn danh',
 	'moodbar-user-ip' => 'Địa chỉ IP',
 	'moodbar-user-user' => 'Người dùng đăng ký',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author PhiLiP
+ */
+$messages['zh-hans'] = array(
+	'moodbar-desc' => '允许指定的用户提供他们的编辑体验反馈',
+	'moodbar-trigger-feedback' => '有关编辑的反馈',
+	'moodbar-trigger-share' => '分享你的经验',
+	'moodbar-trigger-editing' => '编辑$1……',
+	'moodbar-close' => '（关闭）',
+	'moodbar-intro-feedback' => '编辑$1让我……',
+	'moodbar-type-happy-title' => '开心',
+	'moodbar-type-sad-title' => '不快',
+	'moodbar-type-confused-title' => '困惑',
+	'tooltip-moodbar-what' => '了解有关此功能的详细信息',
+	'moodbar-what-label' => '这是什么？',
+	'moodbar-what-content' => '此功能可以帮助社区了解人们在编辑此网站时的体验。详细信息请访问$1。',
+	'moodbar-what-link' => '功能页面',
+	'moodbar-privacy' => '提交后，您将同意在$1下的透明度。',
+	'moodbar-privacy-link' => '条款',
+	'moodbar-disable-link' => '我不感兴趣，请禁用此功能。',
+	'moodbar-form-title' => '因为……',
+	'moodbar-form-note' => '最多140字',
+	'moodbar-form-note-dynamic' => '剩余$1字',
+	'moodbar-form-submit' => '分享反馈',
+	'moodbar-form-policy-text' => '提交后，$1',
+	'moodbar-form-policy-label' => '我们的政策',
+	'moodbar-loading-title' => '分享中……',
+	'moodbar-success-title' => '感谢！',
+	'moodbar-error-title' => '糟糕！',
+	'moodbar-success-subtitle' => '分享您的编辑体验，帮助我们改善$1。',
+	'moodbar-error-subtitle' => '出错啦！请重试分享您的反馈意见。',
+	'right-moodbar-view' => '查看和导出MoodBar反馈',
+	'moodbar-admin-title' => 'MoodBar反馈',
+	'moodbar-admin-intro' => '此页面允许你查看通过MoodBar提交的反馈。',
+	'moodbar-admin-empty' => '没有结果',
+	'moodbar-header-id' => '反馈ID',
+	'moodbar-header-timestamp' => '时间戳',
+	'moodbar-header-type' => '类型',
+	'moodbar-header-page' => '页面',
+	'moodbar-header-usertype' => '用户类型',
+	'moodbar-header-user' => '用户',
+	'moodbar-header-editmode' => '编辑模式',
+	'moodbar-header-bucket' => '分桶测试',
+	'moodbar-header-system' => '系统类型',
+	'moodbar-header-locale' => '地区',
+	'moodbar-header-useragent' => '用户客户端',
+	'moodbar-header-comment' => '评论',
+	'moodbar-header-user-editcount' => '用户编辑次数',
+	'moodbar-header-namespace' => '名字空间',
+	'moodbar-header-own-talk' => '自己的讨论页',
 );
 

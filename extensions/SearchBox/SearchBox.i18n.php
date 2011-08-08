@@ -1021,13 +1021,14 @@ $messages['yi'] = array(
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
  * @author Gzdavidwong
+ * @author PhiLiP
  * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
 	'searchbox-desc' => '允许搜索形式列入',
 	'searchbox-search' => '搜索',
 	'searchbox-go' => '提交',
-	'searchbox-namespaces' => '名称空间:',
+	'searchbox-namespaces' => '名字空间：',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

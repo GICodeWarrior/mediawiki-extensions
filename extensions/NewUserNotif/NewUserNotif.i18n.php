@@ -477,6 +477,17 @@ $messages['mr'] = array(
 $3 वर एक नवीन सदस्य नोंदणी, $2, $4 ला झालेली आहे.',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'newusernotifsubj' => 'Pemberitahuan pengguna baru untuk $1',
+	'newusernotif-desc' => 'Menghantar e-mel pemberitahuan apabila akaun pengguna dibuka',
+	'newusernotifbody' => 'Apa khabar $1,
+
+Satu akaun pengguna baru, $2, telah dibuka di $3 pada $4.',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

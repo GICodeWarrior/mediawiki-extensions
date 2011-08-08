@@ -145,6 +145,13 @@ $messages['fr'] = array(
 	'wikimediamobile-desc' => 'MediaWiki contient des fonctions pour le projet Wikimedia-mobile hébergé sur http://github.com/hcatlin/wikimedia-mobile',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'wikimediamobile-desc' => 'MediaWiki contint des fonccions por lo projèt Wikimedia-mobile hèbèrgiê dessus http://github.com/hcatlin/wikimedia-mobile.',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
