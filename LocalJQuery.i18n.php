@@ -89,3 +89,10 @@ $messages['ru'] = array(
 	'localjquery-desc' => 'Загружает jQuery из [[MediaWiki:JQuery.js]] (с помощью ResourceLoader)',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author PhiLiP
+ */
+$messages['zh-hans'] = array(
+	'localjquery-desc' => '从[[MediaWiki.JQuery.js]]中加载jQuery（使用ResourceLoader）',
+);
+
