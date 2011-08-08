@@ -148,6 +148,17 @@
 			);	
 		},
 		
+		/**
+		 * Compare two translation memory hashes. 
+		 * 
+		 * @protected
+		 * @since 1.2 
+		 * 
+		 * @param {Object} a First hash
+		 * @param {Object} b Second hash
+		 * 
+		 * @return {boolean} If the hashes match or not
+		 */
 		hashesMatch: function( a, b ) {
 			if ( a === null || b === null ) {
 				return false;
@@ -173,6 +184,16 @@
 			return true;
 		},
 		
+		/**
+		 * Invalidate localStorage if needed, and make sure the 
+		 * hash is up to date. 
+		 * 
+		 * @protected
+		 * @since 1.2 
+		 * 
+		 * @param {Object} options Options
+		 * @param {Function} callback Called when localStorage has been cleaned.
+		 */
 		cleanLocalStorage: function( options, callback ) {
 			options = $.extend( {}, { forceCheck: false }, options );
 			
@@ -203,6 +224,15 @@
 			}
 		},
 		
+		/**
+		 * Fetches translations for the specified words from the server.
+		 * 
+		 * @protected
+		 * @since 1.2 
+		 * 
+		 * @param {Object} args Options
+		 * @param {Function} callback Function that will be called with the translations once obtained.
+		 */
 		obtainTranslationsFromServer: function( args, callback ) {
 			var defaults = {
 				offset: -1,
