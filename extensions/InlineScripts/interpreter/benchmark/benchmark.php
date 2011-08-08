@@ -29,7 +29,7 @@ function runtest( $lang, $source ) {
 	if ($lang == 'php') {
 		return eval($source);
 	} else {
-		$scriptParser = new InlineScriptInterpreter();
+		$scriptParser = new ISInterpreter();
 		$parser = new Parser();
 		$frame = null; //new Frame();
 		return $scriptParser->evaluate( $source, $parser, $frame );

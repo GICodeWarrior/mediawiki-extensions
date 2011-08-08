@@ -33,7 +33,7 @@ $wgExtensionCredits['parserhook']['InlineScripts'] = array(
 
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['InlineScripts'] = $dir . 'InlineScripts.i18n.php';
-$wgAutoloadClasses['InlineScriptInterpreter'] = $dir . 'interpreter/Interpreter.php';
+$wgAutoloadClasses['ISInterpreter'] = $dir . 'interpreter/Interpreter.php';
 $wgAutoloadClasses['ISScanner'] = $dir . 'interpreter/Scanner.php';
 $wgAutoloadClasses['ISLRParser'] = $dir . 'interpreter/LRParser.php';
 $wgParserTestFiles[] = $dir . 'interpreterTests.txt';
@@ -61,6 +61,7 @@ $wgInlineScriptsLimits = array(
 );
 
 $wgInlineScriptsParserClass = 'ISLRParser';
+$wgInlineScriptsUseCache = false;
 
 class InlineScriptsHooks {
 	static $scriptParser = null;
@@ -128,7 +129,9 @@ class InlineScriptsHooks {
 			return "<strong class=\"error\">{$msg}</strong>";
 		}
 		if( !(isset( $attribs['noparse'] ) && $attribs['noparse']) ) {
+			wfProfileIn( __METHOD__ . '-replacevars' );
 			$result = $parser->replaceVariables( $result, $frame );
+			wfProfileOut( __METHOD__ . '-replacevars' );
 		}
 		wfProfileOut( __METHOD__ );
 		return trim( $result );
@@ -156,7 +159,7 @@ class InlineScriptsHooks {
 	 */
 	public static function getInterpreter() {
 		if( !self::$scriptParser ) {
-			self::$scriptParser = new InlineScriptInterpreter();
+			self::$scriptParser = new ISInterpreter();
 		}
 		return self::$scriptParser;
 	}

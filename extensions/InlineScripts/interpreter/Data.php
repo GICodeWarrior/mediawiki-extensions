@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Class implementing data in the scripts.
+ */
 class ISData {
 	// Data types
 	const DInt    = 'int';
@@ -8,9 +11,10 @@ class ISData {
 	const DBool   = 'bool';
 	const DFloat  = 'float';
 	const DList   = 'list';	// int -> value
+	const DAssoc  = 'assoc';	// associative array
 
-	var $type;
-	var $data;
+	public $type;
+	public $data;
 
 	public function __construct( $type = self::DNull, $val = null ) {
 		$this->type = $type;
@@ -52,7 +56,7 @@ class ISData {
 			return new ISData();
 		}
 
-		if( $orig->type == self::DList ) {
+		if( $orig->isArray() ) {
 			if( $target == self::DBool )
 				return new ISData( self::DBool, (bool)count( $orig->data ) );
 			if( $target == self::DFloat ) {
@@ -99,7 +103,7 @@ class ISData {
 
 	// Checks whether a is in b
 	public static function keywordIn( $a, $b ) {
-		if( $b->type == self::DList ) {
+		if( $b->isArray() ) {
 			foreach( $b->data as $elem ) {
 				if( self::equals( $elem, $a ) )
 					return new ISData( self::DBool, true );
@@ -109,7 +113,7 @@ class ISData {
 			$a = $a->toString();
 			$b = $b->toString();
 			
-			if ($a == '' || $b == '') {
+			if( $a == '' || $b == '' ) {
 				return new ISData( self::DBool, false );
 			}
 			
@@ -164,7 +168,7 @@ class ISData {
 			$b = $b->toFloat();
 		}
 
-		if ($op != '*' && $b == 0) {
+		if( $op != '*' && $b == 0 ) {
 			throw new ISUserVisibleException( 'dividebyzero', $pos, array($a) );
 		}
 
@@ -178,10 +182,10 @@ class ISData {
 		else
 			throw new ISException( "Invalid multiplication-related operation: {$op}" ); // Should never happen
 			
-		if ($type == self::DInt)
-			$data = intval($data);
+		if( $type == self::DInt )
+			$data = intval( $data );
 		else
-			$data = doubleval($data);
+			$data = doubleval( $data );
 		
 		return new ISData( $type, $data );
 	}
@@ -203,37 +207,11 @@ class ISData {
 		else
 			return new ISData( self::DFloat, $a->toFloat() - $b->toFloat() );
 	}
-	
-	public function setValueByIndices( $val, $indices, $line ) {
-		if( $this->type == self::DNull && $indices[0] === null ) {
-			$this->type = self::DList;
-			$this->value = array();
-			$this->setValueByIndices( $val, $indices, $line );
-		} elseif( $this->type == self::DList ) {
-			if( $indices[0] === null ) {
-				$this->data[] = $val;
-			} else {
-				$idx = $indices[0]->toInt();
-				if( $idx < 0 || $idx >= count( $this->data ) )
-					throw new ISUserVisibleException( 'outofbounds', $line, array( count( $this->data ), $idx ) );
-				if( count( $indices ) > 1 )
-					$this->data[$idx]->setValueByIndices( $val, array_slice( $indices, 1 ), $line );
-				else
-					$this->data[$idx] = $val;
-			}
-		}
+
+	public function isArray() {
+		return $this->type == self::DList || $this->type == self::DAssoc;
 	}
 
-	public function checkIssetByIndices( $indices ) {
-		if( $indices ) {
-			$idx = array_shift( $indices );
-			if( $this->type != self::DList || $idx >= count( $this->data ) )
-				return false;
-			return $this->checkIssetByIndices( $indices );
-		} else {
-			return true;
-		}
-	}
 
 	/** Convert shorteners */
 	public function toBool() {
@@ -254,5 +232,9 @@ class ISData {
 
 	public function toList() {
 		return self::castTypes( $this, self::DList )->data;
+	}
+	
+	public function toAssoc() {
+		return self::castTypes( $this, self::DAssoc )->data;
 	}
 }

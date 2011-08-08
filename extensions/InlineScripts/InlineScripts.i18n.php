@@ -12,7 +12,7 @@ $messages = array();
  * @author Victor Vasiliev
  */
 $messages['en'] = array(
-	'inlinescripts-desc' => 'Provides a build into wikitext scripting language',
+	'inlinescriprs-desc' => 'Provides a build into wikitext scripting language',
 
 	'inlinescripts-exception-unexceptedtoken' => 'Unexpected token $1 at line $2: expected $3',
 	'inlinescripts-exception-unclosedstring' => 'Unclosed string at char $1',
@@ -20,7 +20,7 @@ $messages['en'] = array(
 	'inlinescripts-exception-toomanytokens' => 'Exceeded tokens limit',
 	'inlinescripts-exception-toomanyevals' => 'Exceeded evaluations limit',
 	'inlinescripts-exception-recoverflow' => 'Too deep abstract syntax tree',
-	'inlinescripts-exception-notanarray' => 'Tried to get an element of a non-array at line $1',
+	'inlinescripts-exception-notanarray' => 'Tried to get or set an element of a non-array at line $1',
 	'inlinescripts-exception-outofbounds' => 'Got out of array bounds at line $1',
 	'inlinescripts-exception-notenoughargs' => 'Not enough arguments for function at line $1',
 	'inlinescripts-exception-dividebyzero' => 'Division by zero at line $1',
@@ -29,6 +29,7 @@ $messages['en'] = array(
 	'inlinescripts-exception-emptyidx' => 'Trying to get a value of an empty index at line $1',
 	'inlinescripts-exception-unknownvar' => 'Trying to use an undeclared variable at line $1',
 	'inlinescripts-exception-unknownfunction' => 'Trying to use an unnknown function at line $1',
+	'inlinescripts-exception-notlist' => 'Trying to append an element to the end of \'\'associated\'\' array at line $1',
 );
 
 // == Magic words ==

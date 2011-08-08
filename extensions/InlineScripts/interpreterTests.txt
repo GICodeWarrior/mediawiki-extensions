@@ -377,3 +377,33 @@ out( isset( lst[1] ) + isset( lst[2] ) + isset( list[3] ) );
 <p>2
 </p>
 !! end
+
+!! test
+Associated arrays: basics
+!! input
+<wikiscript>
+a = { "a" : 2, "b" : 13 };
+a["c"] = 21;
+
+for( k : v in a ) {
+	out( k + " = " + v + "\n\n" );
+}
+</wikiscript>
+!! result
+<p>a = 2
+</p><p>b = 13
+</p><p>c = 21
+</p>
+!! end
+
+!! test
+Mixed arrays
+!! input
+<wikiscript>
+a["b"][][0][]["c"] = 11;
+out( a["b"][0][0][0]["c"] );
+</wikiscript>
+!! result
+<p>11
+</p>
+!! end

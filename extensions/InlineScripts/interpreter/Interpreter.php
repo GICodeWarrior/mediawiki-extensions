@@ -8,18 +8,28 @@
 require_once( 'Shared.php' );
 require_once( 'Data.php' );
 
-class InlineScriptInterpreter {
+/**
+ * The global interpreter object.
+ */
+class ISInterpreter {
 	const ParserVersion = 1;
 	
-	var $mCodeParser, $mMaxRecursion, $mEvaluations, $mTokens;
+	var $mCodeParser, $mMaxRecursion, $mEvaluations, $mTokens, $mUseCache;
 
 	public function __construct() {
-		global $wgInlineScriptsParserClass;
+		global $wgInlineScriptsParserClass, $wgInlineScriptsUseCache;
+
 		$this->mCodeParser = new $wgInlineScriptsParserClass( $this );
 		$this->mMaxRecursion =
 			$this->mEvaluations =
 			$this->mTokens =
 			0;
+
+		$this->mUseCache = $wgInlineScriptsUseCache;
+	}
+
+	public function disableCache() {
+		$this->mUseCache = false;
 	}
 
 	public function checkRecursionLimit( $rec ) {
@@ -43,18 +53,26 @@ class InlineScriptInterpreter {
 
 	public function execute( $code, $parser, $frame ) {
 		wfProfileIn( __METHOD__ );
-		$context = new InlineScriptEvaluationContext( $this, $parser, $frame );
+		$context = new ISEvaluationContext( $this, $parser, $frame );
 		$ast = $this->parseCode( $code );
+		
+		wfProfileIn( __METHOD__ . '-evaluation' );
 		$context->evaluateNode( $ast, 0 )->toString();
+		wfProfileOut( __METHOD__ . '-evaluation' );
+		
 		wfProfileOut( __METHOD__ );
 		return $context->mOut;
 	}
 
 	public function evaluate( $code, $parser, $frame ) {
 		wfProfileIn( __METHOD__ );
-		$context = new InlineScriptEvaluationContext( $this, $parser, $frame );
+		$context = new ISEvaluationContext( $this, $parser, $frame );
 		$ast = $this->parseCode( $code );
+
+		wfProfileIn( __METHOD__ . '-evaluation' );
 		$result = $context->evaluateNode( $ast, 0 )->toString();
+		wfProfileOut( __METHOD__ . '-evaluation' );
+
 		wfProfileOut( __METHOD__ );
 		return $result;
 	}
@@ -68,13 +86,13 @@ class InlineScriptInterpreter {
 
 		$memcKey = 'isparser:ast:' . md5( $code );
 
-		if( isset( $parserCache[$memcKey] ) ) {
+		if( $this->mUseCache && isset( $parserCache[$memcKey] ) ) {
 			wfProfileOut( __METHOD__ );
 			return $parserCache[$memcKey];
 		}
 
 		$cached = $parserMemc->get( $memcKey );
-		if( @$cached instanceof ISParserOutput && !$cached->isOutOfDate() ) {
+		if( $this->mUseCache && @$cached instanceof ISParserOutput && !$cached->isOutOfDate() ) {
 			$cached->appendTokenCount( $this );
 			$parserCache[$memcKey] = $cached->getParserTree();
 			wfProfileOut( __METHOD__ );
@@ -97,7 +115,7 @@ class InlineScriptInterpreter {
  * An internal class used by InlineScript. Used to evaluate a parsed code
  * in a sepereate context with its own output, variables and parser frame.
  */
-class InlineScriptEvaluationContext {
+class ISEvaluationContext {
 	var $mVars, $mOut, $mParser, $mFrame, $mInterpreter;
 
 	static $mFunctions = array(
@@ -141,6 +159,11 @@ class InlineScriptEvaluationContext {
 		$this->mFrame = $frame;
 	}
 
+	/**
+	 * The core interpreter method. Evaluates a single AST node.
+	 * The $rec parameter must be increated by 1 each time the function is called
+	 * recursively.
+	 */
 	public function evaluateNode( $node, $rec ) {
 		if( !$node instanceof ISParserTreeNode ) {
 			throw new ISException( 'evaluateNode() accepts only nonterminals' );
@@ -180,11 +203,19 @@ class InlineScriptEvaluationContext {
 							}
 						case 'for':
 							$array = $this->evaluateNode( $c[4], $rec + 1 );
-							if( $array->type != ISData::DList )
+							if( !$array->isArray() )
 								throw new ISUserVisibleException( 'invalidforeach', $c[0]->type );
 							$last = new ISData();
-							foreach( $array->data as $item ) {
-								$this->setVar( $c[2], $item, $rec );
+							$lvalues =  $c[2]->getChildren();
+
+							foreach( $array->data as $key => $item ) {
+								// <forlvalue> ::= <lvalue> | <lvalue> colon <lvalue>
+								if( count( $lvalues ) > 1 ) {
+									$this->setVar( $lvalues[0], ISData::newFromPHPVar( $key ), $rec );
+									$this->setVar( $lvalues[2], $item, $rec );
+								} else {
+									$this->setVar( $lvalues[0], $item, $rec );
+								}
 								try {
 									$last = $this->evaluateNode( $c[6], $rec + 1 );
 								} catch( ISUserVisibleException $e ) {
@@ -312,7 +343,7 @@ class InlineScriptEvaluationContext {
 						throw new ISUserVisibleException( 'unknownfunction', $c[0]->line );
 					$func = self::$mFunctions[$funcname];
 					if( $c[2] instanceof ISParserTreeNode ) {
-						$args = $this->parseArray( $c[2], $rec );
+						$args = $this->parseArray( $c[2], $rec, $dummy );
 					} else {
 						$args = array();
 					}
@@ -321,7 +352,8 @@ class InlineScriptEvaluationContext {
 					$type = $c[0]->mChildren[0]->value;
 					switch( $type ) {
 						case 'isset':
-							return new ISData( ISData::DBool, $this->checkIsset( $c[2], $rec ) );
+							$val = $this->getVar( $c[2], $rec, true );
+							return new ISData( ISData::DBool, $val !== null );
 						case 'delete':
 							$this->deleteVar( $c[2], $rec );
 							return new ISData();
@@ -355,7 +387,10 @@ class InlineScriptEvaluationContext {
 						case 'leftbracket':
 							return $this->evaluateNode( $c[1], $rec + 1 );
 						case 'leftsquare':
-							return new ISData( ISData::DList, $this->parseArray( $c[1], $rec + 1 ) );
+						case 'leftcurly':
+							$arraytype = null;
+							$array = $this->parseArray( $c[1], $rec + 1, $arraytype );
+							return new ISData( $arraytype, $array );
 						case 'break':
 							throw new ISUserVisibleException( 'break', $c[0]->line );
 						case 'continue':
@@ -371,89 +406,190 @@ class InlineScriptEvaluationContext {
 	/*
 	 * Converts commaList* to a PHP array.
 	 */
-	protected function parseArray( $node, $rec ) {
+	protected function parseArray( $node, $rec, &$arraytype ) {
 		$c = $node->getChildren();
-		switch( $node->getType() ) {
-			case 'commalist':
-				return $this->parseArray( $c[0], $rec );
+		$type = $node->getType();
+		if( $type == 'commalist' ) {
+			return $this->parseArray( $c[0], $rec, $arraytype );
+		}
+
+		wfProfileIn( __METHOD__ );
+
+		// <commaListWhatever> ::= <commaListWhatever> comma <expr> | <expr>
+		$elements = $result = array();
+		while( isset( $c[2] ) ) {
+			array_unshift( $elements, $c[2] );
+			$c = $c[0]->getChildren();
+		}
+		array_unshift( $elements, $c[0] );
+
+		switch( $type ) {
 			case 'commalistplain':
-				$elements = $result = array();
-				while( isset( $c[2] ) ) {
-					array_unshift( $elements, $c[2] );
-					$c = $c[0]->getChildren();
-				}
-				array_unshift( $elements, $c[0] );
-				foreach( $elements as $elem )
+				foreach( $elements as $elem ) {
 					$result[] = $this->evaluateNode( $elem, $rec + 1 );
+				}
+
+				$arraytype = ISData::DList;
+				wfProfileOut( __METHOD__ );
 				return $result;
+
 			case 'commalistassoc':
-				throw new ISException( 'Not implemented' );
+				foreach( $elements as $elem ) {
+					//<keyValue> ::= <expr> colon <expr>
+					list( $key, $crap, $value ) = $elem->getChildren();
+					$key = $this->evaluateNode( $key, $rec + 1 );
+					$value = $this->evaluateNode( $value, $rec + 1 );
+					$result[ $key->toString() ] = $value;
+				}
+				
+				$arraytype = ISData::DAssoc;
+				wfProfileOut( __METHOD__ );
+				return $result;
 		}
 	}
 
-	protected function getVar( $lval, $rec ) {
-		$c = $lval->getChildren();
-		$line = $c[0]->line;
-		$varname = $c[0]->value;
-		if( !isset( $this->mVars[$varname] ) ) {
-			throw new ISUserVisibleException( 'unknownvar', $line, array( $varname ) );
+	/**
+	 * Returns a value of the variable in $lval. If $nullIfNotSet is set to true,
+	 * returns null if variable does not exist, otherwise throws an exception.
+	 */
+	protected function getVar( $lval, $rec, $nullIfNotSet = false ) {
+		// <lvalue> ::= id | <lvalue> <arrayIdx>
+		// <arrayIdx> ::= leftsquare <expr> rightsquare | leftsquare rightsquare
+
+		if( !$this->mInterpreter->checkRecursionLimit( $rec ) ) {
+			throw new ISUserVisibleException( 'recoverflow', 0 );
 		}
-		if( isset( $c[1] ) ) {
-			$indices = array();
-			$c = $c[1]->getChildren();
-			while( isset( $c[1] ) ) {
-				array_unshift( $indices, $c[1] );
-				$c = $c[0]->getChildren();
+
+		$c = $lval->getChildren();
+		if( $c[0] instanceof ISToken ) {
+			$varname = $c[0]->value;
+			if( !isset( $this->mVars[$varname] ) ) {
+				if( $nullIfNotSet )
+					return null;
+				else
+					throw new ISUserVisibleException( 'unknownvar', $c[0]->line, array( $varname ) );
 			}
-			array_unshift( $indices, $c[0] );
-			foreach( $indices as &$idx ) {
-				$c = $idx->getChildren();
-				if( !$c[1] instanceof ISParserTreeNode )
-					throw new ISUserVisibleException( 'emptyidx', $line );
-				$idx = $this->evaluateNode( $c[1], $rec + 1 );
+			return $this->mVars[$varname];
+		} else {
+			$idxchildren = $c[1]->getChildren();
+			$var = $this->getVar( $c[0], $rec + 1, $nullIfNotSet );
+			if( $nullIfNotSet && $var === null )
+				return null;
+
+			if( count( $idxchildren ) == 2 ) {
+				// x = a[]. a[] is still legitimage in a[] = x
+				throw new ISUserVisibleException( 'emptyidx', $idxchildren[0]->line );
 			}
 
-			$val = $this->mVars[$varname];
-			foreach( $indices as $idx ) {
-				if( $val->type == ISData::DList ) {
-					$idx = $idx->toInt();
-					if( count( $val->data ) <= $idx )
-						throw new ISUserVisibleException( 'outofbounds', $line );
-					$val = $val->data[$idx];
+			switch( $var->type ) {
+				case ISData::DList:
+					$idx = $this->evaluateNode( $idxchildren[1], $rec + 1 )->toInt();
+					if( $idx >= count( $var->data ) ) {
+						if( $nullIfNotSet )
+							return null;
+						else
+							throw new ISUserVisibleException( 'outofbounds', $idxchildren[0]->line );
+					}
+					return $var->data[$idx];
+				case ISData::DAssoc:
+					$idx = $this->evaluateNode( $idxchildren[1], $rec + 1 )->toString();
+					if( !isset( $var->data[$idx] ) ) {
+						if( $nullIfNotSet )
+							return null;
+						else
+							throw new ISUserVisibleException( 'outofbounds', $idxchildren[0]->line );
+					}
+					return $var->data[$idx];
+				default:
+					throw new ISUserVisibleException( 'notanarray', $idxchildren[0]->line );
+			}
+		}
+	}
+
+	/**
+	 * Gets the line of the first terminal in the node.
+	 */
+	protected function getLine( $node ) {
+		while( $node instanceof ISParserTreeNode ) {
+			$children = $node->getChildren();
+			$node = $children[0];
+		}
+		return $node->line;
+	}
+
+	/**
+	 * Changes the value of variable or array element specified in $lval to $newval.
+	 */
+	protected function setVar( $lval, $newval, $rec ) {
+		$var = &$this->setVarGetRef( $lval, $rec );
+		$var = $newval;
+		unset( $var );
+	}
+
+	/**
+	 * Recursive function that return the link to the place
+	 * where the new value of the variable must be set.
+	 */
+	protected function &setVarGetRef( $lval, $rec ) {
+		if( !$this->mInterpreter->checkRecursionLimit( $rec ) ) {
+			throw new ISUserVisibleException( 'recoverflow', 0 );
+		}
+
+		$c = $lval->getChildren();
+		if( count( $c ) == 1 ) {
+			if( !isset( $this->mVars[ $c[0]->value ] ) )
+				$this->mVars[ $c[0]->value ] = new ISPlaceholder();
+			return $this->mVars[ $c[0]->value ];
+		} else {
+			$ref = &$this->setVarGetRef( $c[0], $rec + 1 );
+
+			// <arrayIdx> ::= leftsquare <expr> rightsquare | leftsquare rightsquare
+			$idxc = $c[1]->getChildren();
+			if( $ref instanceof ISPlaceholder ) {
+				if( count( $idxc ) > 2 ) {
+					$index = $this->evaluateNode( $idxc[1], $rec + 1 );
+					if( $index->type == ISData::DInt )
+						$ref = new ISData( ISData::DList, array() );
+					else
+						$ref = new ISData( ISData::DAssoc, array() );
 				} else {
-					throw new ISUserVisibleException( 'notanarray', $line );
+					$ref = new ISData( ISData::DList, array() );
 				}
 			}
-			return $val;
-		} else {
-			return $this->mVars[$varname];
-		}
-	}
 
-	protected function setVar( $lval, $newval, $rec ) {
-		$c = $lval->getChildren();
-		$varname = $c[0]->value;
-		if( isset( $c[1] ) ) {
-			$lineno = 0;
-			$idxs = array();
-			while( isset( $c[1] ) && $c[1]->getType() == 'arrayidxs' ) {
-				$c = $c[1]->getChildren();
-				$idxs[] = $c[0];
+			switch( $ref->type ) {
+				case ISData::DList:
+					if( count( $idxc ) > 2 ) {
+						if( !isset( $index ) )
+							$index = $this->evaluateNode( $idxc[1], $rec + 1 );
+						$key = $index->toInt();
+
+						if( $key < 0 || $key > count( $ref->data ) )
+							throw new ISUserVisibleException( 'outofbounds', $idxc[0]->line );
+					} else {
+						$key = count( $ref->data );
+					}
+
+					if( !isset( $ref->data[$key] ) )
+						$ref->data[$key] = new ISPlaceholder();
+
+					return $ref->data[$key];
+				case ISData::DAssoc:
+					if( count( $idxc ) > 2 ) {
+						if( !isset( $index ) )
+							$index = $this->evaluateNode( $idxc[1], $rec + 1 );
+						$key = $index->toString();
+
+						if( !isset( $ref->data[$key] ) )
+							$ref->data[$key] = new ISPlaceholder();
+						return $ref->data[$key];
+					} else {
+						throw new ISUserVisibleException( 'notlist', $idxc[0]->line );
+					}
+					break;
+				default:
+					throw new ISUserVisibleException( 'notanarray', $idxc[0]->line );
 			}
-			if( !isset( $this->mVars[$varname] ) ) 
-				$this->mVars[$varname] = new ISData( ISData::DList, array() );
-			foreach( $idxs as &$idx ) {
-				$idxchildren = $idx->getChildren();
-				if( !$lineno )
-					$lineno = $idxchildren[0]->line;
-				if( count( $idxchildren ) > 2 )
-					$idx = $this->evaluateNode( $idxchildren[1], $rec + 1 );
-				else
-					$idx = null;
-			}
-			$this->mVars[$varname]->setValueByIndices( $newval, $idxs, $lineno );
-		} else {
-			$this->mVars[$varname] = $newval;
 		}
 	}
 
@@ -475,45 +611,6 @@ class InlineScriptEvaluationContext {
 	protected function checkParamsCount( $args, $pos, $count ) {
 		if( count( $args ) < $count )
 			throw new ISUserVisibleException( 'notenoughargs', $pos );
-	}
-
-	protected function checkIsset( $lval, $rec ) {
-		$c = $lval->getChildren();
-		$line = $c[0]->line;
-		$varname = $c[0]->value;
-		if( !isset( $this->mVars[$varname] ) ) {
-			return false;
-		}
-		if( isset( $c[1] ) ) {
-			$indices = array();
-			$c = $c[1]->getChildren();
-			while( isset( $c[1] ) ) {
-				array_unshift( $indices, $c[1] );
-				$c = $c[0]->getChildren();
-			}
-			array_unshift( $indices, $c[0] );
-			foreach( $indices as &$idx ) {
-				$c = $idx->getChildren();
-				if( !$c[1] instanceof ISParserTreeNode )
-					throw new ISUserVisibleException( 'emptyidx', $line );
-				$idx = $this->evaluateNode( $c[1], $rec + 1 );
-			}
-
-			$val = $this->mVars[$varname];
-			foreach( $indices as $idx ) {
-				if( $val->type == ISData::DList ) {
-					$idx = $idx->toInt();
-					if( count( $val->data ) <= $idx )
-						return false;
-					$val = $val->data[$idx];
-				} else {
-					return false;
-				}
-			}
-			return true;
-		} else {
-			return true;
-		}
 	}
 	
 	protected function deleteVar( $lval, $rec ) {

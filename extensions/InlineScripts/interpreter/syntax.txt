@@ -4,7 +4,7 @@
 <stmt> ::= <expr> semicolon
 <stmt> ::= if leftbracket <expr> rightbracket <stmt>
 <stmt> ::= if leftbracket <expr> rightbracket <stmt> else <stmt>
-<stmt> ::= for leftbracket  <lvalue> in <expr> rightbracket <stmt>
+<stmt> ::= for leftbracket  <forlvalue> in <expr> rightbracket <stmt>
 <stmt> ::= try <stmt> catch leftbracket <lvalue> rightbracket <stmt>
 <stmt> ::= leftcurly <stmts> rightcurly
 
@@ -23,14 +23,14 @@
 <exprFunction> ::= id leftbracket <commaListPlain> rightbracket | id leftbracket rightbracket
 <exprFunction> ::= <varfunc> leftbracket <lvalue> rightbracket | <exprAtom>
 <exprAtom> ::= <lvalue> | <atom> | break | continue
-<exprAtom> ::= leftbracket <expr> rightbracket | leftsquare <commaList> rightsquare
+<exprAtom> ::= leftbracket <expr> rightbracket
+<exprAtom> ::= leftsquare <commaListPlain> rightsquare | leftcurly <commaListAssoc> rightcurly
 
 <varfunc> ::= isset | delete
-<commaList> ::= <commaListAssoc> | <commaListPlain>
 <commaListPlain> ::= <commaListPlain> comma <expr> | <expr>
 <commaListAssoc> ::= <commaListAssoc> comma <keyValue> | <keyValue>
 <keyValue> ::= <expr> colon <expr>
 <atom> ::= string | int | float | true | false | null
-<lvalue> ::= id <arrayIdxs> | id
-<arrayIdxs> ::= <arrayIdx> <arrayIdxs> | <arrayIdx>
+<lvalue> ::= id | <lvalue> <arrayIdx>
 <arrayIdx> ::= leftsquare <expr> rightsquare | leftsquare rightsquare
+<forlvalue> ::= <lvalue> | <lvalue> colon <lvalue>

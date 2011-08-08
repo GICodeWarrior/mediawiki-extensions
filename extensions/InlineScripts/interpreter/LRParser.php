@@ -4,28 +4,36 @@
  * LR parser for inline scripts.
  * Inputs tokens and LR table (ACTION/GOTO).
  * Outputs parser tree.
+ * 
+ * See http://en.wikipedia.org/wiki/LR_parser for details of how does that works.
  */
 
 class ISLRParser implements ISParser {
-	const Version = 1;
-
 	const Shift = 0;
 	const Reduce = 1;
 	const Accept = 2;
 
 	var $mNonterminals, $mProductions, $mAction, $mGoto;
 
+	public static function getVersion() {
+		return ISLRTable::Timestamp;
+	}
+
 	public function __construct() {
 		$this->loadGrammar();
 	}
 
 	private function loadGrammar() {
+		wfProfileIn( __METHOD__ );
+		
 		require_once( 'LRTable.php' );
 
 		$this->mNonterminals = ISLRTable::$nonterminals;
 		$this->mProductions = ISLRTable::$productions;
 		$this->mAction = ISLRTable::$action;
 		$this->mGoto = ISLRTable::$goto;
+		
+		wfProfileOut( __METHOD__ );
 	}
 
 	public function needsScanner() {
@@ -37,19 +45,26 @@ class ISLRParser implements ISParser {
 		$scanner->rewind();
 		$tokenCount = 0;
 
+		wfProfileIn( __METHOD__ );
+
 		for( ; ; ) {
 			$token = $scanner->current();
 			$cur = $token->type;
-			if( !$token ) 
+			if( !$token ) {
+				wfProfileOut( __METHOD__ );
 				throw new ISException( 'Non-token input in LRParser::parse' );
+			}
 
 			$tokenCount++;
-			if( $tokenCount > $maxTokens )
+			if( $tokenCount > $maxTokens ) {
+				wfProfileOut( __METHOD__ );
 				throw new ISUserVisibleException( 'toomanytokens', $token->line );
+			}
 
 			list( $stateval, $state ) = end( $states );
 			$act = @$this->mAction[$state][$cur];
 			if( !$act ) {
+				wfProfileOut( __METHOD__ );
 				throw new ISUserVisibleException( 'unexceptedtoken', $token->line,
 					array( $token, implode( ', ', array_keys( @$this->mAction[$state] ) ) ) );
 			}
@@ -77,6 +92,8 @@ class ISLRParser implements ISParser {
 					break;
 			}
 		}
+
+		wfProfileOut( __METHOD__ );
 
 		return new ISParserOutput( $states[1][0], $tokenCount );
 	}

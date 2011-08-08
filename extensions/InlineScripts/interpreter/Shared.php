@@ -5,6 +5,9 @@
  * inline scripts interpreter.
  */
 
+/**
+ * This class represents a terminal of the script grammar.
+ */
 class ISToken {
 	// Constant values should match ones in syntax.txt
 	const TEnd = '$';
@@ -60,6 +63,9 @@ class ISToken {
 	}
 }
 
+/**
+ * This class represents a non-terminal of the script grammar.
+ */
 class ISParserTreeNode {
 	var $mType, $mChildren;
 
@@ -68,14 +74,17 @@ class ISParserTreeNode {
 	}
 
 	public function addChild( $node ) {
+		// Since we do not want a long chain of "exprSomething -> exprWhatever" in the parser tree,
+		// we cut it out at the parsing stage
 		if( $node instanceof ISParserTreeNode ) {
-			$children = $node->getChildren();
+			$children = $node->getChildren();			
 			if( count( $children ) == 1 && strpos( $node->mType, "expr" ) === 0
 			  && strpos( @$children[0]->mType, "expr" ) === 0 ) {
 				$this->mChildren[] = $children[0];
 				return;
 			}
 		}
+
 		$this->mChildren[] = $node;
 	}
 
@@ -150,7 +159,7 @@ class ISParserOutput {
 		global $wgInlineScriptsParserClass;
 		$this->mTree = $tree;
 		$this->mTokensCount = $tokens;
-		$this->mVersion = constant( "$wgInlineScriptsParserClass::Version" );
+		$this->mVersion = $wgInlineScriptsParserClass::getVersion();
 	}
 
 	public function getParserTree() {
@@ -159,7 +168,7 @@ class ISParserOutput {
 
 	public function isOutOfDate() {
 		global $wgInlineScriptsParserClass;
-		return constant( "$wgInlineScriptsParserClass::Version" ) > $this->mVersion;
+		return $wgInlineScriptsParserClass::getVersion() > $this->mVersion;
 	}
 
 	public function appendTokenCount( &$interpr ) {
@@ -169,3 +178,6 @@ class ISParserOutput {
 			throw new ISUserVisibleException( 'toomanytokens', 0 );
 	}
 }
+
+// Used by ISEvaluationContext::setVar
+class ISPlaceholder {}

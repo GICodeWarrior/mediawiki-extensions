@@ -61,9 +61,12 @@ class Grammar {
 			if( !$line )
 				continue;
 
-			list( $name, $vals ) = self::parseLine( $g, $line, $i );
-			foreach( $vals as $val )
-				$g->addProduction( $name, $val );
+			$namevalpailr = self::parseLine( $g, $line, $i );
+			if( $namevalpailr ) {
+				list( $name, $vals ) = $namevalpailr;
+				foreach( $vals as $val )
+					$g->addProduction( $name, $val );
+			}
 		}
 		foreach( $g->mProductions as $prod ) {
 			list( $ntid, $prod ) = $prod;
@@ -81,6 +84,8 @@ class Grammar {
 		wfSuppressWarnings();	// @ doesn't help to supress "uninitialized string offset" warning
 
 		self::skipWhitespace( $line, $i );
+		if( $line[$i] == '#' )
+			return null;
 		if( $line[$i] != '<' )
 			die( "Invalid BNF at line $lnum" );
 		$i++;
@@ -485,6 +490,8 @@ END;
  */
 
 class ISLRTable {
+
+const Timestamp = '{$date}';
 
 
 ENDOFHEADER;
