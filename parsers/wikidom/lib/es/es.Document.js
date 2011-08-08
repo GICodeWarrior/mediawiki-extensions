@@ -13,6 +13,13 @@ es.Document = function( blocks ) {
 	this.width = null;
 };
 
+/* Static Members */
+
+/**
+ * List of registered document serializers.
+ */
+es.Document.serializers = {};
+
 /* Static Methods */
 
 /**
@@ -33,6 +40,19 @@ es.Document.newFromWikiDomDocument = function( wikidomDocument ) {
 };
 
 /* Methods */
+
+es.Document.prototype.serialize = function( serializer, context ) {
+	if ( context === undefined ) {
+		context = new es.Document.Context();
+	}
+	if ( serializer in es.Document.serializers ) {
+		return es.Document.serializers[serializer]( this.getWikiDomDocument(), context );
+	}
+};
+
+es.Document.prototype.getSerializers = function() {
+	return es.Document.serializers;
+};
 
 /**
  * Forces all blocks in the document to render.

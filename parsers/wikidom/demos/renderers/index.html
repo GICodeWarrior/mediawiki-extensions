@@ -58,26 +58,28 @@
 		<div id="json-source" class="source"></div>
 		<script src="../../lib/jquery.js"></script>
 		<script src="../../lib/FormatJSON.js"></script>
-		<script src="../../lib/wiki.js" type="text/javascript"></script>
-		<script src="../../lib/wiki.util.js" type="text/javascript"></script>
-		<script src="../../lib/wiki.AnnotationRenderer.js" type="text/javascript"></script>
-		<script src="../../lib/wiki.HtmlRenderer.js" type="text/javascript"></script>
-		<script src="../../lib/wiki.WikitextRenderer.js" type="text/javascript"></script>
+		<script src="../../lib/es/es.js"></script>
+		<script src="../../lib/es/es.EventEmitter.js"></script>
+		<script src="../../lib/es/es.Container.js"></script>
+		<script src="../../lib/es/es.AnnotationSerializer.js"></script>
+		<script src="../../lib/es/es.Document.js"></script>
+		<script src="../../lib/es/es.Document.Context.js"></script>
+		<script src="../../lib/es/es.Document.Serializer.js"></script>
+		<script src="../../lib/es/es.Document.WikitextSerializer.js"></script>
+		<script src="../../lib/es/es.Document.HtmlSerializer.js"></script>
+		<script src="../../lib/es/es.Document.JsonSerializer.js"></script>
 		<script>
 			$( document ).ready( function() {
 				$.getJSON( 'document.js', function( data ) {
-					// HTML
-					var htmlRenderer = new wiki.HtmlRenderer();
-					var html = htmlRenderer.render( data );
+					var context = new es.Document.Context(),
+						htmlSerializer = new es.Document.HtmlSerializer( context ),
+						wikitextSerializer = new es.Document.HtmlSerializer( context ),
+						jsonSerializer = new es.Document.JsonSerializer( context ),
+						html = htmlSerializer.serializeDocument( data );
 					$( '#html-rendering' ).append( html );
 					$( '#html-source' ).text( html );
-					// Wikitext
-					var wikitextRenderer = new wiki.WikitextRenderer();
-					var wikitext = wikitextRenderer.render( data );
-					$( '#wikitext-source' ).text( wikitext );
-					// JSON
-					var json = FormatJSON( data );
-					$( '#json-source' ).text( json );
+					$( '#wikitext-source' ).text( wikitextSerializer.serializeDocument( data ) );
+					$( '#json-source' ).text( jsonSerializer.serializeDocument( data ) );
 				} );
 			} );
 		</script>

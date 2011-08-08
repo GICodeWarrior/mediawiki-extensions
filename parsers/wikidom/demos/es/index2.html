@@ -78,31 +78,32 @@
 			</tr>			
 		</table>
 
-		<script type="text/javascript" src="../../lib/jquery.js"></script>
-		<script type="text/javascript" src="../../lib/es/es.js"></script>
-		<script type="text/javascript" src="../../lib/es/es.EventEmitter.js"></script>
-		<script type="text/javascript" src="../../lib/es/es.Position.js"></script>
-		<script type="text/javascript" src="../../lib/es/es.Location.js"></script>
-		<script type="text/javascript" src="../../lib/es/es.Range.js"></script>
-		<script type="text/javascript" src="../../lib/es/es.Selection.js"></script>
-		<script type="text/javascript" src="../../lib/es/es.Content.js"></script>
-		<script type="text/javascript" src="../../lib/es/es.Container.js"></script>
-		<script type="text/javascript" src="../../lib/es/es.Block.js"></script>
-		<script type="text/javascript" src="../../lib/es/es.Document.js"></script>
-		<script type="text/javascript" src="../../lib/es/es.Surface.js"></script>
-		<script type="text/javascript" src="../../lib/es/es.Flow.js"></script>
-		<script type="text/javascript" src="../../lib/es/es.ParagraphBlock.js"></script>
-		<script type="text/javascript" src="../../lib/es/es.ListBlockList.js"></script>
-		<script type="text/javascript" src="../../lib/es/es.ListBlockItem.js"></script>
-		<script type="text/javascript" src="../../lib/es/es.ListBlock.js"></script>
-		<script type="text/javascript" src="../../lib/es/es.Cursor.js"></script>
-		<script type="text/javascript" src="../../lib/FormatJSON.js"></script>
-		<script src="../../lib/wiki.js" type="text/javascript"></script>
-		<script src="../../lib/wiki.util.js" type="text/javascript"></script>
-		<script src="../../lib/wiki.AnnotationRenderer.js" type="text/javascript"></script>
-		<script src="../../lib/wiki.HtmlRenderer.js" type="text/javascript"></script>
-		<script src="../../lib/wiki.WikitextRenderer.js" type="text/javascript"></script>
-
+		<script src="../../lib/jquery.js"></script>
+		<script src="../../lib/FormatJSON.js"></script>
+		<script src="../../lib/es/es.js"></script>
+		<script src="../../lib/es/es.EventEmitter.js"></script>
+		<script src="../../lib/es/es.Position.js"></script>
+		<script src="../../lib/es/es.Location.js"></script>
+		<script src="../../lib/es/es.Range.js"></script>
+		<script src="../../lib/es/es.Selection.js"></script>
+		<script src="../../lib/es/es.Content.js"></script>
+		<script src="../../lib/es/es.Container.js"></script>
+		<script src="../../lib/es/es.Block.js"></script>
+		<script src="../../lib/es/es.Document.js"></script>
+		<script src="../../lib/es/es.AnnotationSerializer.js"></script>
+		<script src="../../lib/es/es.Document.Context.js"></script>
+		<script src="../../lib/es/es.Document.Serializer.js"></script>
+		<script src="../../lib/es/es.Document.WikitextSerializer.js"></script>
+		<script src="../../lib/es/es.Document.HtmlSerializer.js"></script>
+		<script src="../../lib/es/es.Document.JsonSerializer.js"></script>
+		<script src="../../lib/es/es.Surface.js"></script>
+		<script src="../../lib/es/es.Flow.js"></script>
+		<script src="../../lib/es/es.ParagraphBlock.js"></script>
+		<script src="../../lib/es/es.ListBlockList.js"></script>
+		<script src="../../lib/es/es.ListBlockItem.js"></script>
+		<script src="../../lib/es/es.ListBlock.js"></script>
+		<script src="../../lib/es/es.Cursor.js"></script>
+		
 		<!-- Demo -->
 		<script>
 			$(document).ready( function() {
@@ -314,15 +315,13 @@
 				} );
 
 				var previewTimeout = null;
-				var wikitextRenderer = new wiki.WikitextRenderer();
 				doc.on( 'update', function() {
 					if ( previewTimeout !== null ) {
 						clearTimeout( previewTimeout );
 					}
 					previewTimeout = setTimeout( function () {
-						var data = doc.getWikiDomDocument();
-						$( '#wikitext-source' ).text( wikitextRenderer.render( data ) );
-						$( '#json-source' ).text( FormatJSON( data ) );	
+						$( '#wikitext-source' ).text( doc.serialize( 'wikitext' ) );
+						$( '#json-source' ).text( doc.serialize( 'json' ) );	
 					}, 100 );
 				} );
 

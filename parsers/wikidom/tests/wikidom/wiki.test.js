@@ -1,20 +1,20 @@
 module( 'Wiki DOM Serialization' );
 
-var context = new wiki.Context();
+var context = new es.Document.Context(),
+	htmlSerializer = new es.Document.HtmlSerializer( context ),
+	wikitextSerializer = new es.Document.WikitextSerializer( context );
 
 function assertSerializations( tests ) {
-	var htmlRenderer = new wiki.HtmlRenderer( context );
-	var wikitextRenderer = new wiki.WikitextRenderer( context );
 	for ( var i = 0; i < tests.length; i++ ) {
 		equals(
-			htmlRenderer.render( tests[i].dom ),
+			htmlSerializer.serializeDocument( tests[i].dom ),
 			tests[i].html,
 			'Serialize ' + tests[i].subject + ' to HTML'
 		);
 	}
 	for ( var i = 0; i < tests.length; i++ ) {
 		equals(
-			wikitextRenderer.render( tests[i].dom ),
+			wikitextSerializer.serializeDocument( tests[i].dom ),
 			tests[i].wikitext,
 			'Serialize ' + tests[i].subject + ' to Wikitext'
 		);
