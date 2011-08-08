@@ -2893,6 +2893,7 @@ $messages['gl'] = array(
  * @author Omnipaedista
  */
 $messages['grc'] = array(
+	'mwe-filesource' => 'Πηγή:',
 	'mwe-upload' => 'Ἐπιφορτίζειν ἀρχεῖον',
 	'mwe-summary' => 'Σύνοψις',
 	'mwe-am-results_next' => 'ἑπομέναι',
@@ -7791,7 +7792,7 @@ $messages['zh-hans'] = array(
 	'mwe-am-commons' => '维基共享资源用于存储自由版权的教育性多媒体内容（图像、声音和视频剪辑）',
 	'mwe-am-kaltura-title' => 'Kaltura 搜索 (所有来源)',
 	'mwe-am-kaltura' => 'Kaltura对多个自由版权媒体文件搜索提供者进行汇总搜索',
-	'mwe-am-this_wiki-title' => '本维基',
+	'mwe-am-this_wiki-title' => '本wiki',
 	'mwe-am-this_wiki-desc' => '本地wiki',
 	'mwe-am-archive_org-desc' => '互联网档案馆是一个文物保存性质的数字图书馆',
 	'mwe-am-flickr-desc' => 'Flickr.com是一个在线的照片共享网站',
