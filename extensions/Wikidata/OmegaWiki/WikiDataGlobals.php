@@ -1,6 +1,7 @@
 <?php
 
 define( 'NS_EXPRESSION', 16 );
+define( 'NS_DEFINEDMEANING', 24 );
 
 require_once( "Wikidata.php" );
 
