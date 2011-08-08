@@ -5,8 +5,10 @@ Latest version of the release notes: http://svn.wikimedia.org/viewvc/mediawiki/t
 
 
 === Version 1.2 ===
-2011-xx-xx
+2011-0x-xx
 
+* Rewrote translation control JavaScript to a jQuery plugin.
+* Added caching layer utilizing memory and LocalStorage when available to speed up local translations.
 * Added API module to query translation memories.
 * Added i18n alias file.
 * Added TMX admin user rights group.
