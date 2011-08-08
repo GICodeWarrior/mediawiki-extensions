@@ -262,15 +262,16 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Fitoschido
  * @author Imre
  * @author Jatrobat
  * @author Sanbec
  */
 $messages['es'] = array(
 	'randomincategory' => 'Página aleatoria en categoría',
-	'randomincategory-desc' => '[[Special:Randomincategory|página especial]] para obtener una página aleatoria en categoría',
+	'randomincategory-desc' => '[[Special:Randomincategory|página especial]] para obtener una página al azar en una categoría',
 	'randomincategory-toolbox' => 'Página aleatoria',
-	'randomincategory-nocategory' => 'Categoría $1 no existe o está vacía',
+	'randomincategory-nocategory' => 'La categoría $1 no existe o está vacía',
 	'randomincategory-label' => 'Categoría:',
 	'randomincategory-submit' => 'Ir',
 );
