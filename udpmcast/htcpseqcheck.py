@@ -37,7 +37,10 @@ class RingBuffer(deque):
         self.counts = Counter()
         self.buffersize = buffersize
         
-        deque.__init__(self, iterable, maxlen)
+        try:
+            deque.__init__(self, iterable, maxlen)
+        except TypeError:
+            deque.__init__(self, iterable)
     
     def add(self, seqnr):
         """
