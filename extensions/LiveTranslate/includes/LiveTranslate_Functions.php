@@ -60,12 +60,10 @@ final class LiveTranslateFunctions {
 			
 			$wgOut->addHeadItem(
 				'ext.livetranslate',
-				Html::linkedScript( $egLiveTranslateScriptPath . '/includes/ext.livetranslate.js' )
-			);
-			
-			$wgOut->addHeadItem(
-				'ext.livetranslate.tm',
-				Html::linkedScript( $egLiveTranslateScriptPath . '/includes/ext.lt.tm.js' )
+				Html::linkedScript( $egLiveTranslateScriptPath . '/includes/ext.livetranslate.js' ) .
+				Html::linkedScript( $egLiveTranslateScriptPath . '/includes/ext.lt.tm.js' ) .
+				Html::linkedScript( $egLiveTranslateScriptPath . '/includes/jquery.replaceText.js' ) .
+				Html::linkedScript( $egLiveTranslateScriptPath . '/includes/jquery.liveTranslate.js' )
 			);
 			
 			switch( $GLOBALS['egLiveTranslateService'] ) {

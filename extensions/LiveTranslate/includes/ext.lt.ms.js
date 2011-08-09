@@ -16,6 +16,9 @@
 	this.checkingForIdle = false;
 	this.lastCompletion;
 	
+	// This is to enable a hack to decode quotes.
+	this.textAreaElement = document.createElement( 'textarea' );
+	
 	/**
 	 * Determines a chunk to translate of an DOM elements contents and calls the Microsoft Translate API.
 	 * Then calls itself if there is any remaining work to be done.
@@ -96,8 +99,8 @@
 			
 			if ( untranslatedsentences.length == 0 ) {
 				// If the current chunk was smaller then the max size, node translation is complete, so update text.
-				window.textAreaElement.innerHTML = chunks.join( '' ); // This is a hack to decode quotes.
-				element.replaceData( 0, element.length, window.textAreaElement.value );
+				self.textAreaElement.innerHTML = chunks.join( '' ); // This is a hack to decode quotes.
+				element.replaceData( 0, element.length, self.textAreaElement.value );
 
 				lt.debug( 'MS: Translated element' );
 				self.handleTranslationCompletion();
@@ -187,7 +190,7 @@
 		this.done();		
 	}
 	
-	this.checkForIdleness = function( targetLang, hits ) {
+	this.checkForIdleness = function( hits ) {
 		lt.debug( 'MS: checkForIdleness' );
 		lt.debug( 'MS: last + 250: ' + ( this.lastCompletion + 250 ) );
 		lt.debug( 'MS: now: ' + (new Date()).getTime() );
@@ -200,10 +203,10 @@
 		}
 		
 		if ( hits > 4 ) {
-			this.invokeDone( targetLang );
+			this.invokeDone();
 		}
 		else if ( this.runningJobs > 0 ) {
-			setTimeout( function() { self.checkForIdleness( targetLang, hits ); }, 250 );
+			setTimeout( function() { self.checkForIdleness( hits ); }, 250 );
 		}
 	}
 	
@@ -215,7 +218,7 @@
 	this.handleTranslationCompletion = function() {
 		if ( !this.checkingForIdle && this.runningJobs > 1 && this.runningJobs < 20 ) {
 			this.checkingForIdle = true;
-			setTimeout( function() { self.checkForIdleness( targetLang, 0 ); }, 250 );
+			setTimeout( function() { self.checkForIdleness( 0 ); }, 250 );
 		}
 		
 		if ( this.checkingForIdle ) {
