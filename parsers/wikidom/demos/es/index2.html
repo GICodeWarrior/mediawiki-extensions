@@ -79,7 +79,6 @@
 		</table>
 
 		<script src="../../lib/jquery.js"></script>
-		<script src="../../lib/FormatJSON.js"></script>
 		<script src="../../lib/es/es.js"></script>
 		<script src="../../lib/es/es.EventEmitter.js"></script>
 		<script src="../../lib/es/es.Position.js"></script>
@@ -314,14 +313,17 @@
 					return false;
 				} );
 
-				var previewTimeout = null;
+				var previewTimeout = null,
+					context = new es.Document.Context();
 				doc.on( 'update', function() {
 					if ( previewTimeout !== null ) {
 						clearTimeout( previewTimeout );
 					}
 					previewTimeout = setTimeout( function () {
-						$( '#wikitext-source' ).text( doc.serialize( 'wikitext' ) );
-						$( '#json-source' ).text( doc.serialize( 'json' ) );	
+						$( '#wikitext-source' ).text( doc.serialize( 'wikitext', context ) );
+						$( '#json-source' ).text(
+							doc.serialize( 'json', context, { 'indentWith': '  ' } )
+						);	
 					}, 100 );
 				} );
 

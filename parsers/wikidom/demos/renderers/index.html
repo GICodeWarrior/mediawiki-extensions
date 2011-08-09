@@ -57,7 +57,6 @@
 		<h2>JSON Source</h2>
 		<div id="json-source" class="source"></div>
 		<script src="../../lib/jquery.js"></script>
-		<script src="../../lib/FormatJSON.js"></script>
 		<script src="../../lib/es/es.js"></script>
 		<script src="../../lib/es/es.EventEmitter.js"></script>
 		<script src="../../lib/es/es.Container.js"></script>
@@ -74,7 +73,7 @@
 					var context = new es.Document.Context(),
 						htmlSerializer = new es.Document.HtmlSerializer( context ),
 						wikitextSerializer = new es.Document.HtmlSerializer( context ),
-						jsonSerializer = new es.Document.JsonSerializer( context ),
+						jsonSerializer = new es.Document.JsonSerializer( context, { 'indentWith': '  ' } ),
 						html = htmlSerializer.serializeDocument( data );
 					$( '#html-rendering' ).append( html );
 					$( '#html-source' ).text( html );

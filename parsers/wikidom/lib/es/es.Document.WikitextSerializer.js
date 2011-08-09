@@ -5,10 +5,14 @@
  * @constructor
  * @extends {es.Document.Serializer}
  * @param context {es.WikiContext} Context of the wiki the document is a part of
+ * @property options {Object} List of options for serialization
  * @property serializers {Object} List of serializing methods indexed by symbolic object names
  */
-es.Document.WikitextSerializer = function( context ) {
+es.Document.WikitextSerializer = function( context, options ) {
 	es.Document.Serializer.call( this, context );
+	this.options = $.extend( {
+		// defaults
+	}, options || {} );
 	this.serializers = {
 		'comment': this.serializeComment,
 		'horizontal-rule': this.serializeHorizontalRule,
@@ -159,8 +163,8 @@ es.Document.WikitextSerializer.prototype.serializeLine = function( line ) {
 
 /* Registration */
 
-es.Document.serializers.wikitext = function( doc, context ) {
-	var serializer = new es.Document.WikitextSerializer( context )
+es.Document.serializers.wikitext = function( doc, context, options ) {
+	var serializer = new es.Document.WikitextSerializer( context, options )
 	return serializer.serializeDocument( doc );
 };
 

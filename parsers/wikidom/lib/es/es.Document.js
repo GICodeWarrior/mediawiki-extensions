@@ -41,12 +41,9 @@ es.Document.newFromWikiDomDocument = function( wikidomDocument ) {
 
 /* Methods */
 
-es.Document.prototype.serialize = function( serializer, context ) {
-	if ( context === undefined ) {
-		context = new es.Document.Context();
-	}
+es.Document.prototype.serialize = function( serializer, context, options ) {
 	if ( serializer in es.Document.serializers ) {
-		return es.Document.serializers[serializer]( this.getWikiDomDocument(), context );
+		return es.Document.serializers[serializer]( this.getWikiDomDocument(), context, options );
 	}
 };
 
