@@ -17,16 +17,17 @@ class FetchGoogleSpreadsheet extends Maintenance {
 		$url = $this->getArg( 0 );
 
 		// Headers
-		$http = MWHttpRequest::factory( 'https://www.google.com/accounts/ClientLogin', array(
-													'method' => 'POST',
-													'postData' => array(
-														'accountType' => 'HOSTED_OR_GOOGLE',
-														'service' => 'wise', // Spreadsheet service is "wise"
-														'Email' => '',
-														'Passwd' => '',
-														'source' => Http::userAgent() . ' MetricsReporting/' . METRICS_REPORTING_VERSION,
-													)
-											)
+		$http = MWHttpRequest::factory( 'https://www.google.com/accounts/ClientLogin',
+			array(
+				'method' => 'POST',
+				'postData' => array(
+					'accountType' => 'HOSTED_OR_GOOGLE',
+					'service' => 'wise', // Spreadsheet service is "wise"
+					'Email' => '',
+					'Passwd' => '',
+					'source' => Http::userAgent() . ' MetricsReporting/' . METRICS_REPORTING_VERSION,
+				)
+			)
 		);
 
 		$res = $http->execute();
@@ -54,9 +55,9 @@ class FetchGoogleSpreadsheet extends Maintenance {
 		//var_dump( $authToken );
 
 		$http = MWHttpRequest::factory( $url, array(
-												'method' => 'GET',
-											)
-										);
+				'method' => 'GET',
+			)
+		);
 		$http->setCookieJar( $cookies );
 		$http->setHeader( 'GData-Version', '3.0' );
 		$http->setHeader( 'Authorization', "GoogleLogin auth=\"{$authToken}\"" );
