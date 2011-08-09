@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="phpundercontrol.org" buildafterfailed="false">
+<project name="MediaWiki (trunk)" buildafterfailed="false">
   <plugin name="svn" classname="net.sourceforge.cruisecontrol.sourcecontrols.SVN" />
   <modificationset quietperiod="60">
     <svn localWorkingCopy="projects/${project.name}/source/"/>

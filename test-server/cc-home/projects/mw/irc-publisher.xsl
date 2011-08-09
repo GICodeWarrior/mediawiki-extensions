@@ -9,7 +9,7 @@
       method="text"
       encoding="UTF-8" />
 
-  <xsl:template match="/cruisecontrol/build[@error]">Something broke.  See &lt;http://ci.tesla.usability.wikimedia.org/cruisecontrol/buildresults/mw&gt;.
+  <xsl:template match="/cruisecontrol/build[@error]">Something broke.  See &lt;http://ci.tesla.usability.wikimedia.org/cruisecontrol/&gt;.
 <xsl:call-template name="get-last-modified"/>
   </xsl:template>
 
