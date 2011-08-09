@@ -306,6 +306,7 @@ class ArticleFeedbackHooks {
 		$vars['wgArticleFeedbackTracking'] = $wgArticleFeedbackTracking;
 		$vars['wgArticleFeedbackOptions'] = $wgArticleFeedbackOptions;
 		$vars['wgArticleFeedbackNamespaces'] = $wgArticleFeedbackNamespaces;
+		$vars['wgArticleFeedbackWhatsThisPage'] = wfMsgForContent( 'articlefeedback-form-panel-explanation-link' );
 		return true;
 	}
 	
