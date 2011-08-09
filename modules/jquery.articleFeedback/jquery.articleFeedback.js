@@ -505,7 +505,7 @@ $.articleFeedback = {
 					.end()
 				.find( '.articleFeedback-explanation-link' )
 					.attr( 'href', mw.config.get( 'wgArticlePath' ).replace(
-						'$1', mw.msg( 'articlefeedback-form-panel-explanation-link' )
+						'$1', mw.config.get( 'wgArticleFeedbackWhatsThisPage' )
 					) )
 					.end()
 				.find( '.articleFeedback-pitches' )
