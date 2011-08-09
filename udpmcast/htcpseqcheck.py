@@ -122,7 +122,7 @@ def checkhtcpseq(diagram, srcaddr):
             # Lost packets
             print "%d lost packet(s) from %s, last id %d" % (counts['lost'], srcaddr, transid)
         elif counts['ancient']:
-            print "Ancient packet from %s, id %d, latest id was %d" % (srcaddr, transid, sb[-1][0])
+            print "Ancient packet from %s, id %d" % (srcaddr, transid)
         
         if counts['lost'] and sb.counts['dequeued']:
             print "%d/%d losses (%.2f%%), %d out-of-order, %d dups, %d ancient, %d received from %s" % (
