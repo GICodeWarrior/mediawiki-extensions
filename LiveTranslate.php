@@ -103,7 +103,7 @@ if ( defined( 'MW_SUPPORTS_RESOURCE_MODULES' ) ) {
 			'includes/jquery.replaceText.js',
 			'includes/jquery.liveTranslate.js'
 		),
-		'dependencies' => array( 'jquery', 'jquery.ui.button' ),
+		'dependencies' => array( 'jquery'/*, 'jquery.ui.button'*/ ),
 		'messages' => $egLTJSMessages
 	);
 	
