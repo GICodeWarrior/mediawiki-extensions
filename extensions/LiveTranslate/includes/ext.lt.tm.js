@@ -112,8 +112,8 @@
 		},
 		
 		/**
-		 * Obtains the translation memory hashes, needed to determine
-		 * if local caches should be invalidated. 
+		 * Obtains the translation memory hashes (via the translationmemories API query module), 
+		 * needed to determine if local caches should be invalidated. 
 		 * 
 		 * @protected
 		 * @since 1.2 
@@ -225,7 +225,7 @@
 		},
 		
 		/**
-		 * Fetches translations for the specified words from the server.
+		 * Fetches translations for the specified words from the server using the livetranslate API module.
 		 * 
 		 * @protected
 		 * @since 1.2 
@@ -266,6 +266,15 @@
 			);	
 		},
 		
+		/**
+		 * Fetches words for the specified words from the server using the livetranslate API query module.
+		 * 
+		 * @protected
+		 * @since 1.2 
+		 * 
+		 * @param {Object} args Options
+		 * @param {Function} callback Function that will be called with the words once obtained.
+		 */
 		obtainWordsFromServer: function( args, callback ) {
 			var _this = this;
 			
@@ -321,7 +330,13 @@
 		},
 		
 		/**
+		 * Gets translations of the specified words in the specified language to
+		 * the specified language.
 		 * 
+		 * @since 1.2 
+		 * 
+		 * @param {Object} args Options
+		 * @param {Function} callback Function that will be called with the translations once obtained.
 		 */
 		getTranslations: function( args, callback ) {
 			var _this = this;
@@ -403,6 +418,14 @@
 			}
 		},
 		
+		/**
+		 * Gets the special words for the specified language, ie words that have local translations.
+		 * 
+		 * @since 1.2 
+		 * 
+		 * @param {string} language
+		 * @param {Function} callback Function that will be called with the words once obtained.
+		 */
 		getSpecialWords: function( language, callback ) {
 			var _this = this;
 			
