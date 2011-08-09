@@ -7,11 +7,93 @@
 # $Id$
 
 import socket, getopt, sys, os, signal, pwd, grp, struct
+    
+from datetime import datetime, timedelta
+from collections import deque
+
+try:
+    from collections import Counter
+except ImportError:
+    from compat import Counter
+    
+# Globals
 
 debugging = False
-sourceseq = {}
-loss, total = 0, 0
-sources = []
+sourcebuf = {}
+totalcounts = Counter()
+
+def debug(msg):
+    global debugging
+    if debugging:
+        print >> sys.stderr, "DEBUG:", msg
+
+
+class RingBuffer(deque):
+    """
+    Implements TCP window like behavior
+    """
+    
+    def __init__(self, iterable=[], maxlen=None, buffersize=timedelta(seconds=5)):
+        self.counts = Counter()
+        self.buffersize = buffersize
+        
+        deque.__init__(self, iterable, maxlen)
+    
+    def add(self, seqnr):
+        """
+        Expects a sequence nr and adds it to the ringbuffer
+        """
+        
+        ts = datetime.utcnow()
+        counts = Counter()
+        try:
+            headseq, tailseq = self[0][0], self[-1][0]
+        except IndexError:
+            headseq, tailseq = seqnr-1, seqnr-1
+        
+        try:
+            if seqnr == tailseq + 1:
+                # Normal case, in-order arrival
+                self.append((seqnr, ts, True))
+                debug("Appended seqnr %d, timestamp %s" % (seqnr, ts))
+            elif seqnr > tailseq + 1:
+                # Packet(s) missing, fill the gap
+                for seq in range(tailseq+1, seqnr):
+                    self.append((seq, ts, False))
+                self.append((seqnr, ts, True))
+                debug("Filled gap of %d packets before new packet seqnr %d, timestamp %s" % (seqnr-tailseq-1, seqnr, ts))
+            elif seqnr < headseq:
+                counts['ancient'] += 1
+            elif seqnr <= tailseq:
+                # Late packet
+                assert self[seqnr-headseq][0] == seqnr          # Incorrect seqnr?
+                
+                if self[seqnr-headseq][2]:
+                    counts['dups'] += 1  # Already exists
+                    debug("Duplicate packet %d" % seqnr)
+                else:
+                    # Store with original timestamp
+                    self[seqnr-headseq] = (seqnr, self[seqnr-headseq][1], True)
+                    counts['outoforder'] += 1
+                    debug("Inserted late packet %d, timestamp %s" % (seqnr, ts))
+        except:
+            raise
+        else:
+            counts['received'] += 1
+            # Purge old packets    
+            self.deque(ts, counts)
+            return counts
+        
+    def deque(self, now=datetime.utcnow(), counts=Counter()):
+        while self and self[0][1] < now - self.buffersize:
+            packet = self.popleft()
+            counts['dequeued'] += 1
+            debug("Dequeued packet id %d, timestamp %s, received %s" % packet)
+            if not packet[2]:
+                counts['lost'] += 1
+        
+        self.counts.update(counts)        
+
 
 def createDaemon():
    """
@@ -82,15 +164,10 @@ def createDaemon():
 
    # Redirect the standard file descriptors to /dev/null.
    os.open("/dev/null", os.O_RDONLY)    # standard input (0)
-   os.open("/dev/null", os.O_RDWR)       # standard output (1)
-   os.open("/dev/null", os.O_RDWR)       # standard error (2)
+   os.open("/dev/null", os.O_RDWR)      # standard output (1)
+   os.open("/dev/null", os.O_RDWR)      # standard error (2)
 
    return(0)
-
-def debug(msg):
-    global debugging
-    if debugging:
-        print msg;
 
 def receive_htcp(sock):
     portnr = sock.getsockname()[1];
@@ -102,24 +179,42 @@ def receive_htcp(sock):
         checkhtcpseq(diagram, srcaddr[0])
 
 def checkhtcpseq(diagram, srcaddr):
-    global sourceseq, loss, total, sources
+    global sourcebuf, totalcounts
 
-    sources.append(srcaddr)
     transid = struct.unpack('!I', diagram[8:12])[0]
+
+    sb = sourcebuf.setdefault(srcaddr, RingBuffer())
     try:
-        diff = transid - sourceseq[srcaddr]
-    except:
-        return
+        counts = sb.add(transid)
+    except IndexError:
+        pass
     else:
-        total += diff
-        if diff != 1:
-            loss += diff-1
-            print "Out of order or", diff-1, "missing packet(s) from", srcaddr, "id", transid, "last received id was", sourceseq[srcaddr]
-	    print "Last 10 sources:", " ".join(sources[-10:])
-            print "%d/%d losses (%f%%), %d sources" % (loss, total, float(loss)*100/total, len(sourceseq.keys()))
-    finally:
-        sourceseq[srcaddr] = transid
-	if total % 100 == 0: sources = sources[-10:]
+        totalcounts.update(counts)
+        if counts['lost']:
+            # Lost packets
+            print "%d lost packet(s) from %s, last id %d" % (counts['lost'], srcaddr, transid)
+        elif counts['ancient']:
+            print "Ancient packet from %s, id %d, latest id was %d" % (srcaddr, transid, sb[-1][0])
+        
+        if counts['lost'] and sb.counts['dequeued']:
+            print "%d/%d losses (%.2f%%), %d out-of-order, %d dups, %d ancient, %d received from %s" % (
+                sb.counts['lost'],
+                sb.counts['dequeued'],
+                float(sb.counts['lost'])*100/sb.counts['dequeued'],
+                sb.counts['outoforder'],
+                sb.counts['dups'],
+                sb.counts['ancient'],
+                sb.counts['received'],
+                srcaddr)
+            print "Totals: %d/%d losses (%.2f%%), %d out-of-order, %d dups, %d ancient, %d received from %d sources" % (
+                totalcounts['lost'],
+                totalcounts['dequeued'],
+                float(totalcounts['lost'])*100/totalcounts['dequeued'],
+                totalcounts['outoforder'],
+                totalcounts['dups'],
+                totalcounts['ancient'],
+                totalcounts['received'],
+                len(sourcebuf.keys()))
 
 def join_multicast_group(sock, multicast_group):
     import struct
@@ -185,8 +280,8 @@ if __name__ == '__main__':
 
         # Open the UDP socket
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
-	sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-	sock.bind((host, portnr))
+        sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        sock.bind((host, portnr))
         
         # Join a multicast group if requested
         if multicast_group is not None:
