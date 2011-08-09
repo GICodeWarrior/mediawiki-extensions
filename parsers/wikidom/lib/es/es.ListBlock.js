@@ -70,10 +70,57 @@ es.ListBlock.prototype.insertContent = function( offset, content ) {
  */
 es.ListBlock.prototype.deleteContent = function( range ) {
 	range.normalize();
-	var location = this.list.getLocationFromOffset( range.start );
-	location.item.flow.content.remove(
-		new es.Range( location.offset, location.offset + range.getLength() )
-	);
+
+	var locationStart = this.list.getLocationFromOffset( range.start ),
+		locationEnd = this.list.getLocationFromOffset( range.end );
+	
+	if ( locationStart.item == locationEnd.item ) {
+
+		locationStart.item.content.remove(
+			new es.Range( locationStart.offset, locationStart.offset + range.getLength() )
+		);
+		
+	} else {
+		var contentToAppend = locationEnd.item.flow.content.getContent(
+			new es.Range(
+				locationEnd.offset,
+				locationEnd.item.flow.content.getLength()
+			)
+		);
+		locationStart.item.flow.content.remove(
+			new es.Range( locationStart.offset, locationStart.item.flow.content.getLength() )
+		);
+		locationStart.item.flow.content.insert( locationStart.offset, contentToAppend.data );
+
+		var itemsToDelete;
+		this.traverseItems( function( item, index ) {
+			if ( $.isArray( itemsToDelete ) ) {
+				itemsToDelete.push( item );
+			}
+			if ( item == locationEnd.item ) {
+				return false;
+			}
+			if ( item == locationStart.item ) {
+				itemsToDelete = [];
+			}
+		} );
+
+		for ( var i = itemsToDelete.length - 1; i >= 0; i-- ) {
+			if ( itemsToDelete[i].getLength() - 1 === itemsToDelete[i].flow.content.getLength() ) {
+				itemsToDelete[i].list.remove(itemsToDelete[i]);
+			} else {
+				itemsToDelete[i].flow.content.remove( new es.Range( 0, itemsToDelete[i].flow.content.getLength() ) );
+			}
+		}
+
+		/*
+		var start = locationEnd.item;
+		while(start) {
+			start = start.list.item;
+			console.log("-")
+		}
+		*/
+	}
 };
 
 /**
