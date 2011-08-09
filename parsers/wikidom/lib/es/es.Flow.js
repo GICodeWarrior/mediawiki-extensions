@@ -335,7 +335,15 @@ es.Flow.prototype.render = function( offset ) {
 	
 	// Clear caches that were specific to the previous render
 	this.widthCache = {};
-	
+
+	// In case of empty content we still want to display empty with non-breaking space inside
+	// This is very important for lists
+	if(this.content.getLength() === 0) {
+		this.$.empty().append( '<div class="editSurface-line" line-index="0">&nbsp;</div>' );
+		this.emit( 'render' );
+		return;
+	}
+
 	/*
 	 * Container measurement
 	 * 
