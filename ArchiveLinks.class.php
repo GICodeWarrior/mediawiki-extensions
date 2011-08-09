@@ -42,6 +42,8 @@ class ArchiveLinks {
 			$old_id = $article->getTitle();
 			$old_id = $old_id->getPreviousRevisionID( $page_id );
 			
+			die('firing');
+			
 			$db_result['links_on_page'] = $db_master->select( 'el_archive_link_history', '*', array( 'hist_page_id' => $page_id ), __METHOD__ );
 			
 			$old_external_links = array();
@@ -55,7 +57,7 @@ class ArchiveLinks {
 				$new_external_links = array_diff( $external_links, $old_external_links );
 				unset( $old_external_links );
 
-				die( var_dump( $old_external_links ) );
+				//die( var_dump( $old_external_links ) );
 			} elseif ( count( $external_links ) > 0 ) {
 				$new_external_links = $external_links;
 			}
@@ -67,27 +69,13 @@ class ArchiveLinks {
 			if ( count( $new_external_links ) <= $wgArchiveLinksConfig['link_insert_max'] ) {
 				//insert the links into the queue now
 				foreach( $new_external_links as $link ) {
-					/*$db_result['blacklist'] = $db_slave->select( 'el_archive_blacklist', '*', array( 'bl_url' => $link ), __METHOD__, array( 'LIMIT' => '1', ) );
+					$this->feed_insert_links( $link );
+					
+					/*
 
 					
 					/*
-					if ( $db_result['blacklist-numrows'] === 0 && $db_result['queue-numrows'] === 0 ) {
-						//this link is new to the wiki
-						$db_master->insert( 'el_archive_queue', array(
-							'page_id' => $page_id,
-							'url' => $link,
-							'delay_time' => '0',
-							'insertion_time' => $time,
-							'in_progress' => '0',
-						));
-
-						$db_master->insert( 'el_archive_link_history', array(
-							'page_id' => $page_id,
-							'url' => $link,
-							'delay_time' => '0',
-							'insertion_time' => $time,
-							'in_progress' => '0',
-						));
+					
 					} elseif ( $db_result['history-row']['hist_insertion_time'] >= $time - $wgArchiveLinksConfig['global_rearchive_time'] ) {
 						$db_result['history_page'] = $db_slave->select( 'el_archive_link_history', '*', array( 'hist_url' => $link, 'page_id' => $page_id ), __METHOD__, array( 'LIMIT' => '1', 'ORDER BY' => 'hist_id DESC' ) );
 
@@ -224,10 +212,63 @@ class ArchiveLinks {
 			$url = $this->strencode( $url );
 		}
 		
-        $db_result['queue'] = $db_slave->select( 'el_archive_queue', '*', array( 'url' => $link ), __METHOD__, array( 'LIMIT' => '1', ) );
-
-        $db_result['queue-numrows'] = $db_result['queue']->numRows();
-        $db_result['blacklist-numrows'] = $db_result['blacklist']->numRows();
+		$db_result['queue'] = $db_slave->select( 'el_archive_queue', '*', array( 'url' => $link ), __METHOD__, array( 'LIMIT' => '1', ) );
+		$db_result['blacklist'] = $db_slave->select( 'el_archive_blacklist', '*', array( 'bl_url' => $link ), __METHOD__, array( 'LIMIT' => '1', ) );
+        
+		$db_result['queue-numrows'] = $db_result['queue']->numRows();
+		$db_result['blacklist-numrows'] = $db_result['blacklist']->numRows();
+		
+		if ( $db_result['blacklist-numrows'] === 0 && $db_result['queue-numrows'] === 0 ) {
+			$db_master->insert( 'el_archive_queue', array(
+				'page_id' => $page_id,
+				'url' => $link,
+				'delay_time' => '0',
+				'insertion_time' => $time,
+				'in_progress' => '0',
+			));
+			
+			$db_master->insert( 'el_archive_link_history', array(
+				'page_id' => $page_id,
+				'url' => $link,
+				'delay_time' => '0',
+				'insertion_time' => $time,
+				'in_progress' => '0',
+			));
+		}
+	}
+	
+	public static function schemaUpdate ( $updater = null ) {
+		$path = dirname( __FILE__ );
+		$updater->addExtesionUpdate( array(
+			'addTable',
+			'el_archive_link_history',
+			$path . '/setuptables.sql',
+			true
+		));
+		$updater->addExtesionUpdate( array(
+			'addTable',
+			'el_archive_queue',
+			$path . '/setuptables.sql',
+			true
+		));
+		$updater->addExtesionUpdate( array(
+			'addTable',
+			'el_archive_log',
+			$path . '/setuptables.sql',
+			true
+		));
+		$updater->addExtesionUpdate( array(
+			'addTable',
+			'el_archive_resource',
+			$path . '/setuptables.sql',
+			true
+		));
+		$updater->addExtesionUpdate( array(
+			'addTable',
+			'el_archive_link_blacklist',
+			$path . '/setuptables.sql',
+			true
+		));		
 	}
 }
 

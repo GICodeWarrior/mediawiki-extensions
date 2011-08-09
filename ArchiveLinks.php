@@ -19,14 +19,18 @@ $wgAutoloadClasses['SpecialViewArchive'] = "$path/SpecialViewArchive.php";
 
 $wgHooks['ArticleSaveComplete'][] = 'ArchiveLinks::queueExternalLinks';
 $wgHooks['LinkerMakeExternalLink'][] = 'ArchiveLinks::rewriteLinks';
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'ArchiveLinks::schemaUpdates';
 
 $wgSpecialPages['ModifyArchiveBlacklist'] = 'SpecialModifyArchiveBlacklist';
 $wgSpecialPages['ViewArchive'] = 'SpecialViewArchive';
 
+$wgAutoloadClasses['ApiQueryArchiveFeed'] = "$path/ApiQueryArchiveFeed.php";
+$wgAPIListModules['archivefeed'] = 'ApiQueryArchiveFeed';
+
 $wgArchiveLinksConfig = array(
-	'archive_service' => 'wikiwix',
+	'archive_service' => 'internet_archive',
 	'use_multiple_archives' => false,
 	'run_spider_in_loop' => false,
 	'in_progress_ignore_delay' => 7200,
-	'generate_feed' => true,
+	'generate_feed' => false,
 );
