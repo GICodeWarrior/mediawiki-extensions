@@ -6,7 +6,10 @@
 #
 # $Id$
 
-import socket, getopt, sys, pwd, grp, struct
+import util
+import socket, getopt, sys, pwd, grp, struct, threading
+
+from util import debug
     
 from datetime import datetime, timedelta
 from collections import deque
@@ -18,15 +21,10 @@ except ImportError:
     
 # Globals
 
-debugging = False
 sourcebuf = {}
-totalcounts = Counter()
-
-def debug(msg):
-    global debugging
-    if debugging:
-        print >> sys.stderr, "DEBUG:", msg
-
+totalcounts, slidingcounts = Counter(), Counter()
+slidingdeque = deque()
+stats_lock = threading.Lock()
 
 class RingBuffer(deque):
     """
@@ -106,55 +104,59 @@ def receive_htcp(sock):
 
         checkhtcpseq(diagram, srcaddr[0])
 
+def update_sliding_counts(counts, maxlen=10000):
+    "Implements a sliding window of counts"
+    global slidingdeque, slidingcounts
+    
+    slidingcounts += counts
+    slidingdeque.append(counts)
+    
+    if len(slidingdeque) > maxlen:
+        slidingcounts -= slidingdeque.popleft()   
+
 def checkhtcpseq(diagram, srcaddr):
-    global sourcebuf, totalcounts
+    global sourcebuf, totalcounts, slidingcounts, stats_lock
 
     transid = struct.unpack('!I', diagram[8:12])[0]
 
-    sb = sourcebuf.setdefault(srcaddr, RingBuffer())
-    try:
-        counts = sb.add(transid)
-    except IndexError:
-        pass
-    else:
-        totalcounts.update(counts)
-        if counts['lost']:
-            # Lost packets
-            print "%d lost packet(s) from %s, last id %d" % (counts['lost'], srcaddr, transid)
-        elif counts['ancient']:
-            print "Ancient packet from %s, id %d" % (srcaddr, transid)
-        
-        if counts['lost'] and sb.counts['dequeued']:
-            print "%d/%d losses (%.2f%%), %d out-of-order, %d dups, %d ancient, %d received from %s" % (
-                sb.counts['lost'],
-                sb.counts['dequeued'],
-                float(sb.counts['lost'])*100/sb.counts['dequeued'],
-                sb.counts['outoforder'],
-                sb.counts['dups'],
-                sb.counts['ancient'],
-                sb.counts['received'],
-                srcaddr)
-            print "Totals: %d/%d losses (%.2f%%), %d out-of-order, %d dups, %d ancient, %d received from %d sources" % (
-                totalcounts['lost'],
-                totalcounts['dequeued'],
-                float(totalcounts['lost'])*100/totalcounts['dequeued'],
-                totalcounts['outoforder'],
-                totalcounts['dups'],
-                totalcounts['ancient'],
-                totalcounts['received'],
-                len(sourcebuf.keys()))
-
-def join_multicast_group(sock, multicast_group):
-    import struct
-
-    ip_mreq = struct.pack('!4sl', socket.inet_aton(multicast_group),
-        socket.INADDR_ANY)
-    sock.setsockopt(socket.IPPROTO_IP,
-                    socket.IP_ADD_MEMBERSHIP,
-                    ip_mreq)
-
-    # We do not want to see our own messages back
-    sock.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_LOOP, 0)
+    with stats_lock:    # Critical section
+        sb = sourcebuf.setdefault(srcaddr, RingBuffer())
+        try:
+            counts = sb.add(transid)
+        except IndexError:
+            pass
+        else:
+            totalcounts.update(counts)
+            update_sliding_counts(counts)
+            
+            # Don't bother printing stats if sys.stdout is set to None
+            if not sys.stdout: return
+            
+            if counts['lost']:
+                # Lost packets
+                print "%d lost packet(s) from %s, last id %d" % (counts['lost'], srcaddr, transid)
+            elif counts['ancient']:
+                print "Ancient packet from %s, id %d" % (srcaddr, transid)
+            
+            if counts['lost'] and sb.counts['dequeued']:
+                print "%d/%d losses (%.2f%%), %d out-of-order, %d dups, %d ancient, %d received from %s" % (
+                    sb.counts['lost'],
+                    sb.counts['dequeued'],
+                    float(sb.counts['lost'])*100/sb.counts['dequeued'],
+                    sb.counts['outoforder'],
+                    sb.counts['dups'],
+                    sb.counts['ancient'],
+                    sb.counts['received'],
+                    srcaddr)
+                print "Totals: %d/%d losses (%.2f%%), %d out-of-order, %d dups, %d ancient, %d received from %d sources" % (
+                    slidingcounts['lost'],
+                    slidingcounts['dequeued'],
+                    float(slidingcounts['lost'])*100/slidingcounts['dequeued'],
+                    totalcounts['outoforder'],
+                    totalcounts['dups'],
+                    totalcounts['ancient'],
+                    totalcounts['received'],
+                    len(sourcebuf.keys()))
 
 def print_help():
     print 'Usage:\n\thtcpseqcheck [ options ]\n'
@@ -191,7 +193,7 @@ if __name__ == '__main__':
         elif option == '-g':
             group = value
         elif option == '-v':
-            debugging = True
+            util.debugging = True
 
     try:
         # Change uid and gid
@@ -204,23 +206,25 @@ if __name__ == '__main__':
 
         # Become a daemon
         if daemon:
-            from util import createDaemon
-            createDaemon()
+            util.createDaemon()
 
-        # Open the UDP socket
-        sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
-        sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        sock.bind((host, portnr))
+        sock = util.open_htcp_socket(host, portnr)
         
         # Join a multicast group if requested
         if multicast_group is not None:
             debug('Joining multicast group ' + multicast_group)
-            join_multicast_group(sock, multicast_group)
+            util.join_multicast_group(sock, multicast_group)
 
-        # Multiplex everything that comes in
+        # Start receiving HTCP packets
         receive_htcp(sock)
     except socket.error, msg:
         print msg[1];
     except KeyboardInterrupt:
         pass
 
+
+# Ganglia gmond module support
+try:
+    from htcpseqcheck_ganglia import metric_init, metric_cleanup
+except ImportError:
+    pass

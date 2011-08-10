@@ -1,7 +1,44 @@
 # util.py
 # utility functions shared by udpmcast and htcpseqcheck
 
-import os, signal
+import sys, os, signal, socket
+
+# Globals
+
+debugging = False
+
+def debug(msg):
+    global debugging
+    
+    if debugging:
+        print >> sys.stderr, "DEBUG:", msg
+        
+def open_htcp_socket(host="", portnr=4827):
+    # Open the UDP socket
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
+    sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    sock.bind((host, portnr))
+    
+    return sock
+
+def join_multicast_group(sock, multicast_group):
+    import struct
+
+    ip_mreq = struct.pack('!4sl', socket.inet_aton(multicast_group),
+        socket.INADDR_ANY)
+    sock.setsockopt(socket.IPPROTO_IP,
+                    socket.IP_ADD_MEMBERSHIP,
+                    ip_mreq)
+
+    # We do not want to see our own messages back
+    sock.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_LOOP, 0)
+
+def set_multicast_ttl(sock, ttl):
+    # Set the multicast TTL if requested
+    sock.setsockopt(socket.IPPROTO_IP,
+                    socket.IP_MULTICAST_TTL,
+                    ttl)  
+
 
 def createDaemon():
    """

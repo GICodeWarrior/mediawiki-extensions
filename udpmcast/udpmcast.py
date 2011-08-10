@@ -6,14 +6,10 @@
 #
 # $Id$
 
+import util
 import socket, getopt, sys, pwd, grp
 
-debugging = False
-
-def debug(msg):
-    global debugging
-    if debugging:
-        print msg;
+from util import debugging
 
 def multicast_diagrams(sock, addrrules):
     portnr = sock.getsockname()[1];
@@ -88,7 +84,7 @@ if __name__ == '__main__':
             elif option == '-g':
                 group = value
             elif option == '-v':
-                debugging = True
+                util.debugging = True
             elif option == '-t':
                 multicast_ttl = int(value)
 
@@ -101,25 +97,20 @@ if __name__ == '__main__':
             print "Error: Could not change uid or gid."
             sys.exit(-1)
 
+
         # Become a daemon
         if daemon:
-            from util import createDaemon
-            createDaemon()
+            util.createDaemon()
 
-        # Open the UDP socket
-        sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        sock.bind((host, portnr))
-        
-        # Set the multicast TTL if requested
+        sock = util.open_htcp_socket(host, portnr)
+
         if multicast_ttl is not None:
-            sock.setsockopt(socket.IPPROTO_IP,
-                    socket.IP_MULTICAST_TTL,
-                    multicast_ttl)  
+            util.set_multicast_ttl(sock, multicast_ttl)
 
         # Join a multicast group if requested
         if multicast_group is not None:
             debug('Joining multicast group ' + multicast_group)
-            join_multicast_group(sock, multicast_group)
+            util.join_multicast_group(sock, multicast_group)
 
         # Parse the argument list
         addrrules = { 0: [] }
