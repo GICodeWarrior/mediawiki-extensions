@@ -163,10 +163,10 @@ function efJSKitRender( $input, $args, $parser, $type ) {
 }
 
 # Appends the javascript
-function efJSKit(&$out, &$text) {
-	global $wgJSKitNamespaces, $wgJSKitAlways, $wgTitle;
-	$ns = $wgTitle->getNamespace();
-	if( !$wgTitle->getArticleId() ) {
+function efJSKit( $out, &$text ) {
+	global $wgJSKitNamespaces, $wgJSKitAlways;
+	$ns = $out->getTitle()->getNamespace();
+	if( !$out->getTitle()->getArticleId() ) {
 		// special page or wrong namespace, so don't do anything
 		return true;
 	}
