@@ -54,16 +54,3 @@ $wgResourceModules['ext.jQueryMsg'] = array(
 );
 
 $wgExtensionMessagesFiles['jQueryMsg'] = $dir . 'jQueryMsg.i18n.php';
-
-/*
-$wgAutoloadClasses['EditSectionClearerLinkHooks'] = $dir . 'EditSectionClearerLink.hooks.php';
-
-// Register edit link create hook
-$wgHooks['DoEditSectionLink'][] = 'EditSectionClearerLinkHooks::reviseLink';
-
-// Register section create hook
-$wgHooks['ParserSectionCreate'][] = 'EditSectionClearerLinkHooks::reviseSection';
-
-// Register css add script hook
-$wgHooks['OutputPageParserOutput'][] = 'EditSectionClearerLinkHooks::addPageResources';
-*/
