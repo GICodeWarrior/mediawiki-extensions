@@ -5,4 +5,4 @@ CREATE TABLE IF NOT EXISTS /*_*/sourcetracking (
   `source_ns` int(11) NOT NULL,
   `source_article` int(10) NOT NULL,
   PRIMARY KEY (`trackingid`)
-)/*$wgDBTableOptions*/
+)/*$wgDBTableOptions*/;
