@@ -237,38 +237,39 @@ class ArchiveLinks {
 		}
 	}
 	
-	public static function schemaUpdate ( $updater = null ) {
+	public static function schemaUpdates ( $updater = null ) {
 		$path = dirname( __FILE__ );
-		$updater->addExtesionUpdate( array(
+		$updater->addExtensionUpdate( array(
 			'addTable',
 			'el_archive_link_history',
 			$path . '/setuptables.sql',
 			true
 		));
-		$updater->addExtesionUpdate( array(
+		$updater->addExtensionUpdate( array(
 			'addTable',
 			'el_archive_queue',
 			$path . '/setuptables.sql',
 			true
 		));
-		$updater->addExtesionUpdate( array(
+		$updater->addExtensionUpdate( array(
 			'addTable',
 			'el_archive_log',
 			$path . '/setuptables.sql',
 			true
 		));
-		$updater->addExtesionUpdate( array(
+		$updater->addExtensionUpdate( array(
 			'addTable',
 			'el_archive_resource',
 			$path . '/setuptables.sql',
 			true
 		));
-		$updater->addExtesionUpdate( array(
+		$updater->addExtensionUpdate( array(
 			'addTable',
 			'el_archive_link_blacklist',
 			$path . '/setuptables.sql',
 			true
-		));		
+		));
+		return true;
 	}
 }
 
