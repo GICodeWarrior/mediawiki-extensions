@@ -1,16 +1,8 @@
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
-
-CREATE TABLE IF NOT EXISTS `sourcetracking` (
-  `trackingid` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS /*_*/sourcetracking (
+  `trackingid` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `userid` int(10) NOT NULL,
   `source_action` varbinary(255) DEFAULT NULL,
   `source_ns` int(11) NOT NULL,
   `source_article` int(10) NOT NULL,
   PRIMARY KEY (`trackingid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+)/*$wgDBTableOptions*/
