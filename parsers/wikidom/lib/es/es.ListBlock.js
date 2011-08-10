@@ -119,28 +119,36 @@ es.ListBlock.prototype.deleteContent = function( range ) {
 			itemLevel = item.getLevel();
 
 			if ( toDeleteCollecting === false && toDelete.length === 0 ) {
+				// collect items from before the selection as possible parents for items that may need adoption
+				// only one item per level
 				newParents[ itemLevel ] = {
 					item: item,
-					firstChild: item.lists[0] ? item.lists[0].first() : null
+					child: item.lists[0] ? item.lists[0].first() : null
 				};
 				newParents = newParents.slice( 0, itemLevel + 1 );
 			}
 
 			if ( toDeleteCollecting ) {
+				// keep collecting items for deletion
 				toDelete.push( item );
 			}
 			
 			if ( item == locationStart.item ) {
+				// start collecting items for deletion
 				toDeleteCollecting = true;
 			}		
 
 			if ( item == locationEnd.item ) {
+				// stop collecting items for deletion
+				// start collecting items for adoption
 				toDeleteCollecting = false;
 				toAdoptCollecting = true;
 				return true;
 			}
 
 			if ( toAdoptCollecting ) {
+				// collect items for adoption
+				// only those which parents will be removed
 				if( toDelete.indexOf ( item.list.item ) !== -1 ) {
 					toAdopt.push( item );
 				}
@@ -150,15 +158,26 @@ es.ListBlock.prototype.deleteContent = function( range ) {
 
 		for ( var i = 0; i < toAdopt.length; i++ ) {
 			toAdoptLevel = toAdopt[i].getLevel();
-			newParent = newParents[ toAdoptLevel - 1 ] ? newParents[ toAdoptLevel -1 ] : newParents[ newParents.length - 1 ];
 			
-			if( newParent.firstChild && toAdoptLevel > startItemLevel ) {
-				newParent.item.lists[0].insertBefore( toAdopt[i], newParent.firstChild );
+			// determine new parent for item to adopt
+			if ( newParents[ toAdoptLevel - 1 ] ) {
+				newParent = newParents[ toAdoptLevel - 1 ];
+			} else {
+				newParent = newParents[ newParents.length - 1 ]
+			}
+
+			if( newParent.child && toAdoptLevel > startItemLevel ) {
+				newParent.item.lists[0].insertBefore( toAdopt[i], newParent.child );
 			} else {
 				if ( newParent.item.lists[0] ) {
 					newParent.item.lists[0].append( toAdopt[i] );
 				} else {
-					newParent.item.append( new es.ListBlockList( toAdopt[i].list.style, [ toAdopt[i] ] ) );
+					newParent.item.append(
+						new es.ListBlockList(
+							toAdopt[i].list.style,
+							[ toAdopt[i] ]
+						)
+					);
 				}
 			}
 		}
