@@ -147,6 +147,30 @@ es.ListBlockItem.prototype.getOffsetFromPosition = function( position ) {
 };
 
 /**
+ * Gets a depth level for the item in list.
+ * Example:
+ * 
+ * # level 0
+ * ## level 1
+ * # level 0
+ * ### level 2
+ * 
+ * @method
+ * @returns {Integer} Depth level
+ */
+es.ListBlockItem.prototype.getLevel = function( position ) {
+	var start = this.list.item,
+		level = 0;
+
+	while ( start ) {
+		start = start.list.item;
+		level++;
+	}
+
+	return level;
+};
+
+/**
  * Renders content and sub-lists.
  * 
  * @method
