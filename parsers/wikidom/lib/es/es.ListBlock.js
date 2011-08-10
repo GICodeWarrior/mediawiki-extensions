@@ -182,7 +182,7 @@ es.ListBlock.prototype.deleteContent = function( range ) {
 			}
 		}
 
-		for ( var i = toDelete.length - 1; i >= 0; i-- ) {
+		for ( var i = 0; i < toDelete.length; i++ ) {
 			toDelete[i].list.remove( toDelete[i] );
 		}
 	}
