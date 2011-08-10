@@ -75,51 +75,82 @@ es.ListBlock.prototype.deleteContent = function( range ) {
 		locationEnd = this.list.getLocationFromOffset( range.end );
 	
 	if ( locationStart.item == locationEnd.item ) {
+		
+		// delete content within one item
 
 		locationStart.item.content.remove(
 			new es.Range( locationStart.offset, locationStart.offset + range.getLength() )
 		);
 		
 	} else {
-		var contentToAppend = locationEnd.item.flow.content.getContent(
+
+		// delete content across multiple items
+
+		// delete selected content in first selected item
+		locationStart.item.content.remove(
 			new es.Range(
-				locationEnd.offset,
-				locationEnd.item.flow.content.getLength()
+				locationStart.offset,
+				locationStart.item.content.getLength()
 			)
 		);
-		locationStart.item.flow.content.remove(
-			new es.Range( locationStart.offset, locationStart.item.flow.content.getLength() )
+		
+		// grab not selected content from last selected item..
+		var toAppend = locationEnd.item.content.getContent(
+			new es.Range(
+				locationEnd.offset,
+				locationEnd.item.content.getLength()
+			)
 		);
-		locationStart.item.flow.content.insert( locationStart.offset, contentToAppend.data );
+		
+		// ..and insert it at the end of first selected item
+		locationStart.item.content.insert( locationStart.offset, toAppend.data );
 
-		var itemsToDelete;
+		var toDelete = [],
+			toAdopt = [],
+			newParents = [],
+			toDeleteCollecting = false,
+			toAdoptCollecting = false;
+
 		this.traverseItems( function( item, index ) {
-			if ( $.isArray( itemsToDelete ) ) {
-				itemsToDelete.push( item );
+
+			if ( toDeleteCollecting === false && toDelete.length === 0 ) {
+				newParents[ item.getLevel() ] = item;
 			}
-			if ( item == locationEnd.item ) {
-				return false;
+			
+			if ( toDeleteCollecting ) {
+				toDelete.push( item );
 			}
+			
 			if ( item == locationStart.item ) {
-				itemsToDelete = [];
+				toDeleteCollecting = true;
+			}		
+
+			if ( item == locationEnd.item ) {
+				toDeleteCollecting = false;
+				toAdoptCollecting = true;
+				return true;
 			}
+
+			if ( toAdoptCollecting ) {
+				if( toDelete.indexOf ( item.list.item ) !== -1 ) {
+					toAdopt.push( item );
+				}
+			}
+
 		} );
 
-		for ( var i = itemsToDelete.length - 1; i >= 0; i-- ) {
-			if ( itemsToDelete[i].getLength() - 1 === itemsToDelete[i].flow.content.getLength() ) {
-				itemsToDelete[i].list.remove(itemsToDelete[i]);
-			} else {
-				itemsToDelete[i].flow.content.remove( new es.Range( 0, itemsToDelete[i].flow.content.getLength() ) );
-			}
-		}
+		var toAdoptLevel,
+			newParent;
 
-		/*
-		var start = locationEnd.item;
-		while(start) {
-			start = start.list.item;
-			console.log("-")
+		for ( var i = toAdopt.length - 1; i >= 0; i-- ) {
+			toAdoptLevel = toAdopt[i].getLevel();
+			newParent = newParents[ toAdoptLevel ] ? newParents[ toAdoptLevel ] : newParents[ newParents.length - 1 ];
+			newParent.lists[0].prepend( toAdopt[i] );
 		}
-		*/
+		
+		for ( var i = toDelete.length - 1; i >= 0; i-- ) {
+			toDelete[i].list.remove(toDelete[i]);
+		}
 	}
 };
 
