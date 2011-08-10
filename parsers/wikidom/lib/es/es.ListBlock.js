@@ -109,14 +109,23 @@ es.ListBlock.prototype.deleteContent = function( range ) {
 			toAdopt = [],
 			newParents = [],
 			toDeleteCollecting = false,
-			toAdoptCollecting = false;
+			toAdoptCollecting = false,
+			itemLevel,
+			toAdoptLevel,
+			newParent,
+			startItemLevel = locationStart.item.getLevel();
 
 		this.traverseItems( function( item, index ) {
+			itemLevel = item.getLevel();
 
 			if ( toDeleteCollecting === false && toDelete.length === 0 ) {
-				newParents[ item.getLevel() ] = item;
+				newParents[ itemLevel ] = {
+					item: item,
+					firstChild: item.lists[0] ? item.lists[0].first() : null
+				};
+				newParents = newParents.slice( 0, itemLevel + 1 );
 			}
-			
+
 			if ( toDeleteCollecting ) {
 				toDelete.push( item );
 			}
@@ -139,17 +148,23 @@ es.ListBlock.prototype.deleteContent = function( range ) {
 
 		} );
 
-		var toAdoptLevel,
-			newParent;
-
-		for ( var i = toAdopt.length - 1; i >= 0; i-- ) {
+		for ( var i = 0; i < toAdopt.length; i++ ) {
 			toAdoptLevel = toAdopt[i].getLevel();
-			newParent = newParents[ toAdoptLevel ] ? newParents[ toAdoptLevel ] : newParents[ newParents.length - 1 ];
-			newParent.lists[0].prepend( toAdopt[i] );
+			newParent = newParents[ toAdoptLevel - 1 ] ? newParents[ toAdoptLevel -1 ] : newParents[ newParents.length - 1 ];
+			
+			if( newParent.firstChild && toAdoptLevel > startItemLevel ) {
+				newParent.item.lists[0].insertBefore( toAdopt[i], newParent.firstChild );
+			} else {
+				if ( newParent.item.lists[0] ) {
+					newParent.item.lists[0].append( toAdopt[i] );
+				} else {
+					newParent.item.append( new es.ListBlockList( toAdopt[i].list.style, [ toAdopt[i] ] ) );
+				}
+			}
 		}
-		
+
 		for ( var i = toDelete.length - 1; i >= 0; i-- ) {
-			toDelete[i].list.remove(toDelete[i]);
+			toDelete[i].list.remove( toDelete[i] );
 		}
 	}
 };
