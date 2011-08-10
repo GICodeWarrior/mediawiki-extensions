@@ -42,8 +42,6 @@ class ArchiveLinks {
 			$old_id = $article->getTitle();
 			$old_id = $old_id->getPreviousRevisionID( $page_id );
 			
-			die('firing');
-			
 			$db_result['links_on_page'] = $db_master->select( 'el_archive_link_history', '*', array( 'hist_page_id' => $page_id ), __METHOD__ );
 			
 			$old_external_links = array();
@@ -68,96 +66,56 @@ class ArchiveLinks {
 			
 			if ( count( $new_external_links ) <= $wgArchiveLinksConfig['link_insert_max'] ) {
 				//insert the links into the queue now
-				foreach( $new_external_links as $link ) {
-					$this->feed_insert_links( $link );
-					
-					/*
+				foreach( $new_external_links as $link ) {					
+					$db_result['queue'] = $db_slave->select( 'el_archive_queue', '*', array( 'url' => $link ), __METHOD__, array( 'LIMIT' => '1', ) );
+					$db_result['blacklist'] = $db_slave->select( 'el_archive_blacklist', '*', array( 'bl_url' => $link ), __METHOD__, array( 'LIMIT' => '1', ) );
 
-					
-					/*
-					
-					} elseif ( $db_result['history-row']['hist_insertion_time'] >= $time - $wgArchiveLinksConfig['global_rearchive_time'] ) {
-						$db_result['history_page'] = $db_slave->select( 'el_archive_link_history', '*', array( 'hist_url' => $link, 'page_id' => $page_id ), __METHOD__, array( 'LIMIT' => '1', 'ORDER BY' => 'hist_id DESC' ) );
+					$db_result['queue-numrows'] = $db_result['queue']->numRows();
+					$db_result['blacklist-numrows'] = $db_result['blacklist']->numRows();
 
-						$db_result['history_page-numrows'] = $db_result['history_page']->numRows();
-						$db_result['history_page-row'] = $db_result['history_page']->fetchRow();
+					if ( $db_result['blacklist-numrows'] === 0 && $db_result['queue-numrows'] === 0 ) {
+						$db_master->insert( 'el_archive_queue', array(
+							'page_id' => $page_id,
+							'url' => $link,
+							'delay_time' => '0',
+							'insertion_time' => $time,
+							'in_progress' => '0',
+						));
 
-						if ( $db_result['history_page-numrows'] === 0 && $db_result['history-row']['hist_insertion_time'] >= $time - $wgArchiveLinksConfig['previous_archive_lockout_time'] ) {
-							//this link is new to this particular page but has been archived on another page less than the rearchive delay
-							//grab a new version of it in case the content has changed
-							$db_master->insert( 'el_archive_queue', array(
-								'page_id' => $page_id,
-								'url' => $link,
-								'delay_time' => '0',
-								'insertion_time' => $time,
-								'in_progress' => '0',
-							));
-
-							$db_master->insert( 'el_archive_link_history', array(
-								'page_id' => $page_id,
-								'url' => $link,
-								'delay_time' => '0',
-								'insertion_time' => $time,
-								'in_progress' => '0',
-							));
-
-						}
-
-						if ( $db_result['history_page-row']['insertion_time'] >= $time - $wgArchiveLinksConfig['page_rearchive_time']) {
-
-						}
-					}*/
+						$db_master->insert( 'el_archive_link_history', array(
+							'hist_page_id' => $page_id,
+							'hist_url' => $link,
+							'hist_insertion_time' => $time,
+						));
+					}
 				}
 			} else {
 				//insert everything as a job and do the work later to avoid lagging page save
 			}
 			
 		} else {
-
 			foreach ( $external_links as $link => $unused_value ) {
-				$link = $db_slave->strencode( $link );
+				//$db_result['resource'] = $db_slave->select( 'el_archive_resource', '*', '`el_archive_resource`.`resource_url` = "' . $db_slave->strencode( $link ) . '"');
+				$db_result['blacklist'] = $db_slave->select( 'el_archive_blacklist', '*', array( 'bl_url' => $link ), __METHOD__ );
+				$db_result['queue'] = $db_slave->select( 'el_archive_queue', '*', array( 'url' => $link ), __METHOD__ );
 
-				if ( $wgArchiveLinksConfig['generate_feed'] === true ) {
-
-
-
-					/*$diff_eng = new DifferenceEngine( null, $old_id, $page_id, null, false );
-
-					$diff = $diff_eng->getDiffBody();
-					die( var_dump($diff) );
-					 */
-
-					//file_put_contents('stf.txt', var_export( $diff, TRUE ) );
-
-					/*
-					 * Querying the db server with selects for every link on the page would potentially be a whole bunch of unnecessary load
-					 * Let's take the diff first then do it on a job instead...
-					 * 
-*/
-
-				} else {
-					//$db_result['resource'] = $db_slave->select( 'el_archive_resource', '*', '`el_archive_resource`.`resource_url` = "' . $db_slave->strencode( $link ) . '"');
-					$db_result['blacklist'] = $db_slave->select( 'el_archive_blacklist', '*', array( 'bl_url' => $link ), __METHOD__ );
-					$db_result['queue'] = $db_slave->select( 'el_archive_queue', '*', array( 'url' => $link ), __METHOD__ );
-
-					if ( $db_result['blacklist']->numRows() === 0 ) {
-						if ( $db_result['queue']->numRows() === 0 ) {
-							// this probably a first time job
-							// but we should check the logs and resource table
-							// to make sure
-							$db_master->insert( 'el_archive_queue', array (
-								'page_id' => $page_id,
-								'url' => $link,
-								'delay_time' => '0',
-								'insertion_time' => $time,
-								'in_progress' => '0',
-							));
-						} else {
-							//this job is already in the queue, why?
-							// * most likely reason is it has already been inserted by another page
-							// * or we are checking it later because the site was down at last archival
-							//  in either case we don't really need to do anything right now, so skip...
-						}
+				if ( $db_result['blacklist']->numRows() === 0 ) {
+					if ( $db_result['queue']->numRows() === 0 ) {
+						// this probably a first time job
+						// but we should check the logs and resource table
+						// to make sure
+						$db_master->insert( 'el_archive_queue', array (
+							'page_id' => $page_id,
+							'url' => $link,
+							'delay_time' => '0',
+							'insertion_time' => $time,
+							'in_progress' => '0',
+						));
+					} else {
+						//this job is already in the queue, why?
+						// * most likely reason is it has already been inserted by another page
+						// * or we are checking it later because the site was down at last archival
+						//  in either case we don't really need to do anything right now, so skip...
 					}
 				}
 			}
@@ -204,36 +162,6 @@ class ArchiveLinks {
 			return false;
 		} else {
 			return true;
-		}
-	}
-	
-	public function feed_insert_links ( $url, $escaped = false ) {
-		if ( !$escaped ) {
-			$url = $this->strencode( $url );
-		}
-		
-		$db_result['queue'] = $db_slave->select( 'el_archive_queue', '*', array( 'url' => $link ), __METHOD__, array( 'LIMIT' => '1', ) );
-		$db_result['blacklist'] = $db_slave->select( 'el_archive_blacklist', '*', array( 'bl_url' => $link ), __METHOD__, array( 'LIMIT' => '1', ) );
-        
-		$db_result['queue-numrows'] = $db_result['queue']->numRows();
-		$db_result['blacklist-numrows'] = $db_result['blacklist']->numRows();
-		
-		if ( $db_result['blacklist-numrows'] === 0 && $db_result['queue-numrows'] === 0 ) {
-			$db_master->insert( 'el_archive_queue', array(
-				'page_id' => $page_id,
-				'url' => $link,
-				'delay_time' => '0',
-				'insertion_time' => $time,
-				'in_progress' => '0',
-			));
-			
-			$db_master->insert( 'el_archive_link_history', array(
-				'page_id' => $page_id,
-				'url' => $link,
-				'delay_time' => '0',
-				'insertion_time' => $time,
-				'in_progress' => '0',
-			));
 		}
 	}
 	
