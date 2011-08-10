@@ -43,7 +43,7 @@ $wgExtensionMessagesFiles['AjaxLogin'] = $dir . 'AjaxLogin.i18n.php';
 // Hook things up
 $wgHooks['BeforePageDisplay'][] = 'AjaxLoginJS';
 $wgHooks['SkinAfterContent'][] = 'GetAjaxLoginForm';
-$wgHooks['ResourceLoaderConfigVars'][] = 'efAddAjaxLoginVariables';
+$wgHooks['ResourceLoaderGetConfigVars'][] = 'efAddAjaxLoginVariables';
 
 /**
  * Adds required JavaScript & CSS files to the HTML output of a page if AjaxLogin is enabled
