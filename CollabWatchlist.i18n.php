@@ -349,6 +349,7 @@ $messages['frp'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
+	'collabwatchlist' => 'Lista de vixilancia colaborativa',
 	'collabwatchlisttagselect' => 'Etiqueta',
 	'collabwatchlisttagcomment' => 'Comentario',
 	'collabwatchlisttools-view' => 'Visualización',
@@ -606,6 +607,13 @@ $messages['mk'] = array(
 	'collabwatchlistedit-normal-submit' => 'Зачувај',
 	'collabwatchlistshowhidelistusers' => '$1 корисници на списокот',
 	'tog-collabwatchlisthidelistusers' => 'Скриј ги уедувањата од корисници на соработни списоци на набљудувања',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'collabwatchlisttagcomment' => 'Komen',
 );
 
 /** Dutch (Nederlands)
