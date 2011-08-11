@@ -2436,6 +2436,7 @@ $2',
 $messages['ms'] = array(
 	'whitelisttablemodifyall' => 'Semua',
 	'whitelisttablemodifynone' => 'Tiada',
+	'whitelisttableedit' => 'Sunting',
 	'whitelisttableremove' => 'Buang',
 );
 
