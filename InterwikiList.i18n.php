@@ -532,6 +532,18 @@ $messages['mk'] = array(
 	'interwikilist-prefix' => 'Интервики префикс:',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'interwikilist' => 'Senarai antara wiki',
+	'interwikilist-desc' => 'Menambahkan [[Special:Interwikilist|laman khas]] untuk melihat pautan-pautan antara wiki yang sedia ada',
+	'interwikilist-linkname' => 'Pautan antara wiki',
+	'interwikilist-target' => 'URL sasaran',
+	'interwikilist-filter' => 'Senarai penapis',
+	'interwikilist-prefix' => 'Awalan antara wiki:',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */
