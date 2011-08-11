@@ -97,3 +97,10 @@ $messages['pt'] = array(
 	'categorysortheaders-desc' => 'Permite especificar cabeçalhos de ordenação personalizados, com vários caracteres, nas páginas de categoria. <!--<nowiki>[[category:Foo|^Header^Invisible part of sortkey]]</nowiki>-->',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author PhiLiP
+ */
+$messages['zh-hans'] = array(
+	'categorysortheaders-desc' => '允许自定义多个字符为分类中排序页面列表的“索引字”，使用语法为<nowiki>[[category:Foo|^索引字^其余部分]]</nowiki>',
+);
+
