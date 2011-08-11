@@ -95,7 +95,7 @@ endif
 %:	
 	test -d debian/patched || install -d debian/patched
 	dpatch  apply-all
-	dh $@ --parallel
+	dh $@ 
 
 # Disable build tests for some architectures
 ifneq (,$(findstring :$(DEB_HOST_ARCH):,$(DISABLE_TEST_ARCH_LIST)))
