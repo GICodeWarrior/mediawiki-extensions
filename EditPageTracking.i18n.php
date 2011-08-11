@@ -135,3 +135,10 @@ $messages['vi'] = array(
 	'editpagetracking-desc' => 'Ghi nhớ lần đầu tiên người dùng xem trang sửa đổi',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author PhiLiP
+ */
+$messages['zh-hans'] = array(
+	'editpagetracking-desc' => '记录每个用户第一次查看编辑页面的时间',
+);
+
