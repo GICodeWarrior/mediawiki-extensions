@@ -7078,6 +7078,7 @@ $messages['ms'] = array(
 	'mv_remove_reason' => 'Sebab penghapusan:',
 	'mv_upload_file' => 'Muat naik fail',
 	'mv_tool_search' => 'Cari',
+	'mv_play' => 'Mainkan',
 	'mv_remove' => 'buang',
 	'mv_existing_categories' => '{{PLURAL:$1|kategori|kategori}}:',
 	'mv_search_categories' => 'Kategori',
