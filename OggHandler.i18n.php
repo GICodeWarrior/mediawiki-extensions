@@ -2370,6 +2370,7 @@ $messages['mr'] = array(
 
 /** Malay (Bahasa Melayu)
  * @author AVRS
+ * @author Anakmalaysia
  * @author Aviator
  */
 $messages['ms'] = array(
@@ -2382,7 +2383,7 @@ $messages['ms'] = array(
 	'ogg-long-multiplexed' => '(fail audio/video multipleks Ogg, $1, tempoh $2, $4×$5 piksel, keseluruhan $3)',
 	'ogg-long-general' => '(fail media Ogg, tempoh $2, $3)',
 	'ogg-long-error' => '(Fail Ogg tidak sah: $1)',
-	'ogg-play' => 'Main',
+	'ogg-play' => 'Mainkan',
 	'ogg-pause' => 'Jeda',
 	'ogg-stop' => 'Henti',
 	'ogg-play-video' => 'Main video',
