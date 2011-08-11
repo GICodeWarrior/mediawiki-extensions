@@ -31,6 +31,8 @@ class RingBuffer(deque):
     Implements TCP window like behavior
     """
     
+    RESTART_WINDOW = 10
+    
     def __init__(self, iterable=[], maxlen=None, buffersize=timedelta(seconds=5)):
         self.counts = Counter()
         self.buffersize = buffersize
@@ -64,7 +66,16 @@ class RingBuffer(deque):
                 self.append((seqnr, ts, True))
                 debug("Filled gap of %d packets before new packet seqnr %d, timestamp %s" % (seqnr-tailseq-1, seqnr, ts))
             elif seqnr < headseq:
-                counts['ancient'] += 1
+                if seqnr < RESTART_WINDOW:
+                    debug("Source %s started from scratch with seqnr %d" % (seqnr, ts))
+                    self.clear()
+                    # Clear some counters
+                    for c in ['dequeued', 'lost', 'dups', 'outoforder', 'ancient']:
+                        self.counts[c] = 0
+                    counts['restarts'] += 1
+                    self.append((seqnr, ts, True))
+                else:
+                    counts['ancient'] += 1
             elif seqnr <= tailseq:
                 # Late packet
                 assert self[seqnr-headseq][0] == seqnr          # Incorrect seqnr?
@@ -139,22 +150,24 @@ def checkhtcpseq(diagram, srcaddr):
                 print "Ancient packet from %s, id %d" % (srcaddr, transid)
             
             if counts['lost'] and sb.counts['dequeued']:
-                print "%d/%d losses (%.2f%%), %d out-of-order, %d dups, %d ancient, %d received from %s" % (
+                print "%d/%d losses (%.2f%%), %d out-of-order, %d dups, %d ancient, %d restarts, %d received from %s" % (
                     sb.counts['lost'],
                     sb.counts['dequeued'],
                     float(sb.counts['lost'])*100/sb.counts['dequeued'],
                     sb.counts['outoforder'],
                     sb.counts['dups'],
                     sb.counts['ancient'],
+                    sb.counts['restarts'],
                     sb.counts['received'],
                     srcaddr)
-                print "Totals: %d/%d losses (%.2f%%), %d out-of-order, %d dups, %d ancient, %d received from %d sources" % (
+                print "Totals: %d/%d losses (%.2f%%), %d out-of-order, %d dups, %d ancient, %d restarts, %d received from %d sources" % (
                     slidingcounts['lost'],
                     slidingcounts['dequeued'],
                     float(slidingcounts['lost'])*100/slidingcounts['dequeued'],
                     totalcounts['outoforder'],
                     totalcounts['dups'],
                     totalcounts['ancient'],
+                    totalcounts['restarts'],
                     totalcounts['received'],
                     len(sourcebuf.keys()))
 
