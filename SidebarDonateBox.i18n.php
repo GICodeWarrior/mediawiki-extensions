@@ -184,6 +184,14 @@ $messages['mk'] = array(
 	'DONATE' => 'Донирајте',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'sidebardonatebox-desc' => 'Membubuh kotak dermaan tersuai di bar sisi',
+	'DONATE' => 'Derma',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
