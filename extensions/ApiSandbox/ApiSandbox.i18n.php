@@ -375,6 +375,7 @@ $messages['lb'] = array(
 	'apisb-load-error' => 'Feeler beim Luede vun der API- Beschreiwung',
 	'apisb-namespaces-error' => 'Feeler beim Luede vun den Nummraim',
 	'apisb-ns-main' => '(Haapt)',
+	'apisb-submit' => 'Ufro maachen',
 	'apisb-query-prop' => 'Eegeschaften',
 	'apisb-query-list' => 'Lëschten',
 	'apisb-query-meta' => 'Meta-Informatioun',

@@ -923,6 +923,7 @@ $messages['mr'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Aviator
  */
 $messages['ms'] = array(
@@ -933,6 +934,9 @@ $messages['ms'] = array(
 	'importfreeimages_owner' => 'Pemilik',
 	'importfreeimages_importthis' => 'import ini',
 	'importfreeimages_next' => '$1 berikutnya',
+	'importfreeimages_size_small' => 'Kecil',
+	'importfreeimages_size_medium' => 'Sederhana',
+	'importfreeimages_size_large' => 'Besar',
 );
 
 /** Maltese (Malti)

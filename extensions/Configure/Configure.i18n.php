@@ -7628,6 +7628,7 @@ $messages['ms'] = array(
 	'configure-section-search' => 'Cari',
 	'configure-section-copyright' => 'Hak cipta',
 	'configure-select-wiki-submit' => 'Pilih',
+	'configure-throttle-action-edit' => 'Sunting',
 	'configure-throttle-group' => 'Jenis',
 	'configure-condition-operator-or' => 'Atau',
 );

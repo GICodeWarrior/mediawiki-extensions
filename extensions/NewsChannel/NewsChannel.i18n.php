@@ -521,6 +521,19 @@ $messages['ml'] = array(
 	'newschannel_submit_button' => 'ഫീഡ് സൃഷ്ടിക്കുക',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'newschannel' => 'Saluran berita',
+	'newschannel-desc' => 'Melaksanakan satu saluran berita dalam bentuk [[Special:NewsChannel|laman khas]] yang dinamik',
+	'newschannel_format' => 'Format:',
+	'newschannel_limit' => 'Had:',
+	'newschannel_include_category' => 'Kategori tambahan:',
+	'newschannel_exclude_category' => 'Kategori terkecuali:',
+	'newschannel_submit_button' => 'Cipta suapan',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

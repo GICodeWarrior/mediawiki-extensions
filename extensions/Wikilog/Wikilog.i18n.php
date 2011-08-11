@@ -4799,17 +4799,23 @@ $messages['ms'] = array(
 	'wikilog-authors' => 'Pengarang',
 	'wikilog-title' => 'Tajuk',
 	'wikilog-actions' => 'Tindakan',
+	'wikilog-comments' => 'Komen',
 	'wikilog-view-summary' => 'Ringkasan',
 	'wikilog-anonymous-mark' => '(tanpa nama)',
 	'wikilog-pager-prev' => 'sebelumnya',
 	'wikilog-pager-next' => 'berikutnya',
+	'wikilog-has-comments' => '{{PLURAL:$1|satu komen|$1 komen}}',
+	'wikilog-title-comments' => 'Komen - $1',
 	'wikilog-form-name' => 'Nama:',
 	'wikilog-form-author' => 'Pengarang:',
 	'wikilog-form-date' => 'Tarikh:',
+	'wikilog-form-comment' => 'Komen:',
 	'wikilog-submit' => 'Serahkan',
+	'wikilog-edit-lc' => 'sunting',
 	'wikilog-delete-lc' => 'hapuskan',
 	'wikilog-approve-lc' => 'luluskan',
 	'wikilog-page-lc' => 'laman',
+	'wikilog-history-lc' => 'sejarah',
 );
 
 /** Nedersaksisch (Nedersaksisch)

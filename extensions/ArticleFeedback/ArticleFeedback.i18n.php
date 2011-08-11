@@ -946,6 +946,8 @@ $messages['da'] = array(
 	'articlefeedback-survey-question-useful-iffalse' => 'Hvorfor?',
 	'articlefeedback-survey-question-comments' => 'Har du nogle yderligere kommentarer?',
 	'articlefeedback-survey-submit' => 'Indsend',
+	'articlefeedback-pitch-join-message' => 'Ønskede du at oprette en konto?',
+	'articlefeedback-pitch-join-accept' => 'Opret en konto',
 );
 
 /** German (Deutsch)
@@ -2171,6 +2173,20 @@ $3
 כל טוב, ותודה
 
 צוות {{SITENAME}}',
+);
+
+/** Hindi (हिन्दी)
+ * @author Mayur
+ */
+$messages['hi'] = array(
+	'articlefeedback' => 'लेख प्रतिक्रिया डैशबोर्ड',
+	'articlefeedback-desc' => 'लेख सुझाव प्रतिक्रिया',
+	'articlefeedback-survey-question-origin' => 'आप कौनसे पृष्ठ पर थे जब आपने यह सर्वेक्षण शुरु किया था?',
+	'articlefeedback-survey-question-whyrated' => 'कृपया हमें बताये कि आपने क्यों आज इस पृष्ठ का मूल्यांकन किया (सभी लागु होने वाले विकल्प चुने):',
+	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'मैं पृष्ठ की समग्र रेटिंग के लिए योगदान करना चाहता था',
+	'articlefeedback-survey-answer-whyrated-development' => 'मुझे आशा है कि मेरी रेटिंग पृष्ठ के सकारात्मक विकास को प्रभावित करेगी',
+	'articlefeedback-survey-answer-whyrated-contribute-wiki' => 'मैं {{SITENAME}} को योगदान करना चाहता था।',
+	'articlefeedback-survey-answer-whyrated-sharing-opinion' => 'मुझे मेरे विचार साझा करना पसन्द है।',
 );
 
 /** Croatian (Hrvatski)
@@ -5565,17 +5581,17 @@ $messages['uk'] = array(
 	'articlefeedback-report-panel-title' => 'Оцінки сторінки',
 	'articlefeedback-report-panel-description' => 'Поточні середні оцінки.',
 	'articlefeedback-report-empty' => 'Не оцінювалася',
-	'articlefeedback-report-ratings' => 'оцінено раз: $1',
+	'articlefeedback-report-ratings' => 'Кількість оцінок: $1',
 	'articlefeedback-field-trustworthy-label' => 'Достовірність',
 	'articlefeedback-field-trustworthy-tip' => 'Як ви вважаєте, чи достатньо ця сторінка має цитат, чи узяті вони з надійних джерел?',
-	'articlefeedback-field-trustworthy-tooltip-1' => 'Авторитетне джерело відсутнє',
-	'articlefeedback-field-trustworthy-tooltip-2' => 'Мало достовірних джерел',
+	'articlefeedback-field-trustworthy-tooltip-1' => 'Авторитетні джерела відсутні',
+	'articlefeedback-field-trustworthy-tooltip-2' => 'Недостатньо достовірних джерел',
 	'articlefeedback-field-trustworthy-tooltip-3' => 'Адекватні авторитетні джерела',
 	'articlefeedback-field-trustworthy-tooltip-4' => 'Добрі авторитетні джерела',
 	'articlefeedback-field-trustworthy-tooltip-5' => 'Чудові авторитетні джерела',
 	'articlefeedback-field-complete-label' => 'Повнота',
 	'articlefeedback-field-complete-tip' => 'Чи вважаєте ви, що ця сторінка в достатній мірі охоплює основні питання цієї теми?',
-	'articlefeedback-field-complete-tooltip-1' => 'Відсутні велика частина інформації',
+	'articlefeedback-field-complete-tooltip-1' => 'Відсутня велика частина інформації',
 	'articlefeedback-field-complete-tooltip-2' => 'Містить деяку інформацію',
 	'articlefeedback-field-complete-tooltip-3' => 'Містить ключову інформацію, але з прогалинами',
 	'articlefeedback-field-complete-tooltip-4' => 'Містить загальну інформацію',
@@ -5587,10 +5603,10 @@ $messages['uk'] = array(
 	'articlefeedback-field-objective-tooltip-3' => 'Мінімально упереджена',
 	'articlefeedback-field-objective-tooltip-4' => 'Немає вочевидь упереджених речень',
 	'articlefeedback-field-objective-tooltip-5' => 'Абсолютно неупереджена',
-	'articlefeedback-field-wellwritten-label' => 'Стиль викладення інформації',
+	'articlefeedback-field-wellwritten-label' => 'Стиль',
 	'articlefeedback-field-wellwritten-tip' => 'Чи вважаєте ви, що ця сторінка добре структурована і має гарний стиль викладення матеріалу?',
 	'articlefeedback-field-wellwritten-tooltip-1' => 'Незрозуміла',
-	'articlefeedback-field-wellwritten-tooltip-2' => 'Важко зрозуміти',
+	'articlefeedback-field-wellwritten-tooltip-2' => 'Важке сприйняття',
 	'articlefeedback-field-wellwritten-tooltip-3' => 'Адекватна ясність викладення матеріалу',
 	'articlefeedback-field-wellwritten-tooltip-4' => 'Легко читається',
 	'articlefeedback-field-wellwritten-tooltip-5' => 'Винятково легко читається',
@@ -5603,7 +5619,7 @@ $messages['uk'] = array(
 	'articlefeedback-pitch-join-body' => 'Обліковий запис допоможе вам відстежувати зміни, брати участь в обговореннях і бути частиною спільноти.',
 	'articlefeedback-pitch-join-accept' => 'Створити обліковий запис',
 	'articlefeedback-pitch-join-login' => 'Увійти до системи',
-	'articlefeedback-pitch-edit-message' => 'Чи знаєте ви, що ви можете редагувати цю сторінку?',
+	'articlefeedback-pitch-edit-message' => 'Чи знаєте ви, що цю сторінку можна редагувати?',
 	'articlefeedback-pitch-edit-accept' => 'Редагувати цю сторінку',
 	'articlefeedback-survey-message-success' => 'Дякуємо за участь в опитуванні.',
 	'articlefeedback-survey-message-error' => 'Сталася помилка. Будь ласка, повторіть спробу пізніше.',
@@ -5803,6 +5819,7 @@ $messages['yo'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Hydra
+ * @author PhiLiP
  * @author Shizhao
  * @author Xiaomingyan
  * @author 阿pp
@@ -5824,6 +5841,7 @@ $messages['zh-hans'] = array(
 	'articlefeedback-survey-submit' => '提交',
 	'articlefeedback-survey-title' => '请回答几个问题',
 	'articlefeedback-survey-thanks' => '谢谢您回答问卷。',
+	'articlefeedback-survey-disclaimer' => '若要帮助我们改善此功能，您可以将您的反馈意见匿名分享给维基百科社区。',
 	'articlefeedback-error' => '发生了一个错误。请稍后重试。',
 	'articlefeedback-form-switch-label' => '评价本文',
 	'articlefeedback-form-panel-title' => '评价本文',
@@ -5899,7 +5917,32 @@ $messages['zh-hans'] = array(
 	'articleFeedback-table-heading-page' => '页面',
 	'articleFeedback-table-heading-average' => '平均',
 	'articleFeedback-copy-above-highlow-tables' => '这是一个实验的功能。请在 [$1 讨论页] 提供反馈意见。',
+	'articlefeedback-dashboard-bottom' => "'''注意'''：我们仍将尝试用各种不同的方式在面板上组织条目。目前，此面板包括下列条目：
+* 最高或最低分的页面：在过去24小时内至少得到10次评分的条目。平均值计算以过去24小时内提交的所有评分为准。
+* 近期低分：过去24小时内，在任何类别得到过70%或低分（2星或更低）的条目。只会展示在过去24小时内至少得到10次评分的条目。",
 	'articlefeedback-disable-preference' => '不在页面显示条目反馈部件',
+	'articlefeedback-emailcapture-response-body' => '您好！
+
+谢谢您表示愿意帮助我们改善{{SITENAME}}。
+
+请花一点时间，点击下面的链接来确认您的电子邮件：
+
+$1
+
+您还可以访问：
+
+$2
+
+然后输入下列确认码：
+
+$3
+
+我们会在短期内联系您，并向您介绍帮助我们改善{{SITENAME}}的方式。
+
+如果这项请求并非由您发起，请忽略这封电子邮件，我们不会再向您发送任何邮件。
+
+祝好，致谢，
+{{SITENAME}}团队',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

@@ -560,8 +560,8 @@ $messages['lzz'] = array(
  */
 $messages['mg'] = array(
 	'whatismyip' => 'Inona ny Adiresy IP ako',
-	'whatismyip-desc' => "Ampiseho ny adiresy IP an'ny mpikambana anatin'ny [[Special:WhatIsMyIP]]",
-	'whatismyip-out' => 'Ny IP anao',
+	'whatismyip-desc' => "Maneho ny adiresy IP-n'ny mpikambana ankehitriy",
+	'whatismyip-out' => 'Adiresy IP-nao :',
 );
 
 /** Macedonian (Македонски)

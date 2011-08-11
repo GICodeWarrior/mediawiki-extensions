@@ -1511,6 +1511,7 @@ $messages['ms'] = array(
 	'recordadmin-buttoncreate' => 'Cipta',
 	'recordadmin-buttonreset' => 'Set semula',
 	'recordadmin-buttonsave' => 'Simpan',
+	'recordadmin-editlink' => 'sunting',
 	'recordadmin-actions' => 'Sunting',
 );
 

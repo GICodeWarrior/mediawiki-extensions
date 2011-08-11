@@ -507,6 +507,13 @@ $messages['ml'] = array(
 	'discussionthreading-threadnewsectionhint' => 'പുതിയൊരു ചരട് തുടങ്ങുക',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'discussionthreading-threadnewsection' => 'baru',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

@@ -1795,6 +1795,7 @@ $messages['lb'] = array(
 	'qp_error_invalid_question_type' => 'Net-valabelen Typ vu Fro: $1',
 	'qp_error_already_used_poll_id' => "D'Ëmfro-Nummer (poll id) gouf op dëser Säit scho benotzt (id=$1).",
 	'qp_error_vote_dependance_poll' => "Stëmmt w.e.g. fir d'éischt bäi der Ëmfro $1 of.",
+	'qp_error_too_many_spans' => "Zevill Gruppe vu Kategorien fir d'Gesamtzuel vun definéierten Ënnerkategorien",
 	'qp_error_unanswered_span' => 'Ënnerkategorie ouni Äntwert',
 	'qp_error_non_unique_choice' => 'Dës Fro brauch eng Äntwert mat enger eenzeger Propos',
 	'qp_error_category_name_empty' => 'Den Numm vun der Kategorie ass eidel',
@@ -1907,6 +1908,7 @@ id-бројот може да содржи само букви, бројки и 
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'qp_vote_button' => 'Undi',
 	'qp_source_link' => 'Sumber',
 	'qp_users_link' => 'Pengguna',
 );

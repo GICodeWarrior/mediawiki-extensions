@@ -255,6 +255,14 @@ $messages['mk'] = array(
 	'wikiarticlefeeds_combined_description' => 'Ова е комбинирано емитување, со содржини од неколку напојни извори.',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'wikiarticlefeeds-desc' => 'Menghasilkan suapan yang dijana daripada laman MediaWiki',
+	'wikiarticlefeeds_combined_description' => 'Ini ialah suapan gabungan yang mengandungi perkara-perkara daripada beberapa sumber suapan.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
