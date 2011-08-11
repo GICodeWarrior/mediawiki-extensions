@@ -668,6 +668,13 @@ $messages['ka'] = array(
 	'fundraiserportal-tourmaline-close' => 'დამალე ეს ფორმა ამიერიდან',
 );
 
+/** کھوار (کھوار)
+ * @author Rachitrali
+ */
+$messages['khw'] = array(
+	'fundraiserportal-desc' => 'عطیہ دیور',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author វ័ណថារិទ្ធ
  */
