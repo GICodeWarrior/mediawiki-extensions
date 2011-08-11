@@ -1,6 +1,8 @@
 /**
  * Generic synchronized Object/Element container.
  * 
+ * Child objects must extend es.EventEmitter.
+ * 
  * @class
  * @constructor
  * @extends {es.EventEmitter}
@@ -59,12 +61,28 @@ es.Container.prototype.last = function() {
 };
 
 /**
+ * Iterates over items, executing a callback for each.
+ * 
+ * Returning false in the callback will stop iteration.
+ * 
+ * @method
+ * @param callback {Function} Function to call on each item which takes item and index arguments
+ */
+es.Container.prototype.each = function( callback ) {
+	for ( var i = 0; i < this._list.length; i++ ) {
+		if ( !callback( this._list[i], i ) ) {
+			break;
+		}
+	}
+};
+
+/**
  * Adds an item to the end of the container.
  * 
  * Also inserts item's Element object to the DOM and adds a listener to its "update" events.
  * 
  * @method
- * @param {Object} Item to append
+ * @param item {Object} Item to append
  * @emits "update"
  */
 es.Container.prototype.append = function( item ) {
@@ -84,7 +102,7 @@ es.Container.prototype.append = function( item ) {
  * Also inserts item's Element object to the DOM and adds a listener to its "update" events.
  * 
  * @method
- * @param {Object} Item to prepend
+ * @param item {Object} Item to prepend
  * @emits "update"
  */
 es.Container.prototype.prepend = function( item ) {
@@ -130,7 +148,7 @@ es.Container.prototype.insertBefore = function( item, before ) {
  * 
  * @method
  * @param item {Object} Item to insert
- * @param after {Object} Item to insert after, if null then item will be inserted at the end
+ * @param after {Object} Item to insert after, if null item will be inserted at the end
  * @emits "update"
  */
 es.Container.prototype.insertAfter = function( item, after ) {
@@ -155,7 +173,7 @@ es.Container.prototype.insertAfter = function( item, after ) {
  * Also detaches item's Element object to the DOM and removes all listeners its "update" events.
  * 
  * @method
- * @param {Object} Item to remove
+ * @param item {Object} Item to remove
  * @emits "update"
  */
 es.Container.prototype.remove = function( item ) {

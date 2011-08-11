@@ -12,9 +12,10 @@
  * @param data {Array} List of plain or annotated characters
  * @property data {Array} List of plain or annotated characters
  */
-es.Content = function( data ) {
+es.Content = function( data, attributes ) {
 	es.EventEmitter.call( this );
 	this.data = data || [];
+	this.attributes = attributes || {};
 };
 
 /* Static Members */
@@ -291,6 +292,38 @@ es.Content.renderAnnotation = function( bias, annotation, stack ) {
 /* Methods */
 
 /**
+ * Gets the length of the content data.
+ * 
+ * @method
+ * @returns {Integer} Length of content data
+ */
+es.Content.prototype.getLength = function() {
+	return this.data.length; 
+};
+
+/**
+ * Gets the value of an attribute.
+ * 
+ * @method
+ * @param name {String} Name of attribute to get value for
+ * @returns {Mixed} Value of attribute, or undefined if attribute does not exist
+ */
+es.Content.prototype.getAttribute = function( name ) {
+	return this.attributes[name];
+};
+
+/**
+ * Sets the value of an attribute.
+ * 
+ * @method
+ * @param name {String} Name of attribute to set value for
+ * @param value {Mixed} Value to set attribute to
+ */
+es.Content.prototype.setAttribute = function( name, value ) {
+	this.attributes[name] = value;
+};
+
+/**
  * Gets plain text version of the content within a specific range.
  * 
  * Range arguments (start and end) are clamped if out of range.
@@ -388,16 +421,6 @@ es.Content.prototype.remove = function( range ) {
 		'range': range
 	} );
 	this.emit( 'change', { 'type': 'remove' } );
-};
-
-/**
- * Gets the length of the content data.
- * 
- * @method
- * @returns {Integer} Length of content data
- */
-es.Content.prototype.getLength = function() {
-	return this.data.length; 
 };
 
 /**
