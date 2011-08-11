@@ -312,6 +312,7 @@ $messages['mk'] = array(
  */
 $messages['ms'] = array(
 	'notificator-e-mail-address' => 'alamat e-mel',
+	'notificator-new-tag' => 'baru',
 );
 
 /** Dutch (Nederlands)
