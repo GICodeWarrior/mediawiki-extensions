@@ -19,6 +19,13 @@ $messages['be-tarask'] = array(
 	'localjquery-desc' => 'Загрузка jQuery з [[MediaWiki:JQuery.js]] (праз ResourceLoader)',
 );
 
+/** Catalan (Català)
+ * @author Toniher
+ */
+$messages['ca'] = array(
+	'localjquery-desc' => 'Carrega el jQuery de [[MediaWiki:JQuery.js]] (amb el ResourceLoader)',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
