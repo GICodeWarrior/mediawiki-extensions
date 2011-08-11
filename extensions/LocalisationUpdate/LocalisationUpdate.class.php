@@ -516,13 +516,8 @@ class LocalisationUpdate {
 			}
 		}
 
-		try {
-		                // Get the real array.
-		                $compare_messages = self::parsePHP( $comparefilecontents, 'compare_messages' );
-		} catch (Exception $ex) {
-		var_dump( $basefile, $comparefile );
-		die();
-		}
+		// Get the real array.
+		$compare_messages = self::parsePHP( $comparefilecontents, 'compare_messages' );
 
 		// If both files are the same, they can be skipped.
 		if ( $basehash == $comparehash && !$alwaysGetResult ) {
