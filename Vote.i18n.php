@@ -1312,16 +1312,24 @@ $messages['mr'] = array(
 $messages['ms'] = array(
 	'vote' => 'Undi',
 	'vote-desc' => 'Menyediakan keupayaan undian ringkas',
+	'vote-header' => "Anda boleh mengundi untuk '''Maharajalela Sedunia''' di sini!",
 	'vote-current' => "Undian terkini anda adalah untuk '''$1'''.",
+	'vote-legend' => 'Taruh atau pinda undian',
 	'vote-caption' => 'Pilihan anda:',
+	'vote-choices' => 'joker|The Joker
+penguin|The Penguin
+riddler|Riddler',
 	'vote-submit' => 'Undi',
 	'vote-registered' => 'Undian anda telah didaftar',
 	'vote-view-results' => 'Lihat hasil',
 	'vote-results' => 'Keputusan undian',
 	'vote-results-choice' => 'Pilihan',
 	'vote-results-count' => 'Kira',
+	'vote-results-none' => 'Tiada undian yang ditaruh pada masa ini.',
 	'vote-login' => 'Anda perlu [$1 log masuk] untuk mengundi.',
 	'vote-invalid-choice' => 'Anda mesti memilih salah satu dari pilihan yang ada.',
+	'right-vote' => 'Mengundi',
+	'right-voteadmin' => 'Lihat keputusan undian',
 );
 
 /** Maltese (Malti)
