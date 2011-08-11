@@ -1151,6 +1151,7 @@ $messages['vi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Hydra
+ * @author PhiLiP
  * @author 阿pp
  */
 $messages['zh-hans'] = array(
@@ -1165,6 +1166,8 @@ $messages['zh-hans'] = array(
 	'narayam-kn-inscript' => '卡纳达语 InScript',
 	'narayam-ml' => '马拉雅拉姆语音译',
 	'narayam-ml-inscript' => '马拉雅拉姆语 InScript',
+	'narayam-ne' => '尼泊尔文转写',
+	'narayam-ne-inscript' => '尼泊尔文InScript',
 	'narayam-or' => '奥里亚文音译',
 	'narayam-or-inscript' => '奥里亚文 InScript',
 	'narayam-sa' => '梵语的音译',
