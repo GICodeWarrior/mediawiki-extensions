@@ -2053,6 +2053,8 @@ $messages['frp'] = array(
 	'openid-add-url' => 'Apondre un OpenID novél',
 	'openid-login-or-create-account' => 'Sè branchiér ou ben fâre un compto novél',
 	'openid-provider-label-openid' => 'Buchiéd voutra adrèce OpenID',
+	'openid-provider-label-aol' => 'Buchiéd voutron nom AOL',
+	'openid-provider-label-other-username' => 'Buchiéd voutron nom d’utilisator $1',
 	'openid-dashboard-title' => 'Tablô de bôrd OpenID',
 	'openid-dashboard-title-admin' => 'Tablô de bôrd OpenID (administrator)',
 );
