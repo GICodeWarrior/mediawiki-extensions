@@ -1455,6 +1455,7 @@ $messages['mr'] = array(
  */
 $messages['ms'] = array(
 	'imagetagging-article' => 'Laman:',
+	'imagetagging-imghistory' => 'Sejarah',
 	'imagetagging-tagcancel-button' => 'Batalkan',
 );
 
