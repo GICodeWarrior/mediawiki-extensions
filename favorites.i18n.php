@@ -97,6 +97,8 @@ $messages['qqq'] = array(
 	'prefs-favoritelist' => '{{Identical|Favorite}}',
 	'prefs-favoritelist-token' => "This message is basically the same as {{msg-mw|Prefs-watchlist-token}}. A token is a piece of information in this context that is used to prove one's identity electronically[http://en.wikipedia.org/wiki/Security_token]. Have a look at the Watchlist tab in [[Special:Preferences]]. There is a token there for accessing your watchlist RSS feed without having to log in (you are using your token to identify yourself).",
 	'favoritelistanontext' => '$1 is substituted by {{msg|loginreqlink}}',
+	'favorite' => '{{Identical|Favorite}}',
+	'favoritelistall2' => '{{Identical|All}}',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
@@ -108,6 +110,38 @@ $messages['be-tarask'] = array(
 	'favoritethis' => 'Зрабіць гэтую старонку ўлюблёнай',
 	'prefs-favoritelist' => 'Улюблёныя',
 	'prefs-favoritelist-token' => 'Ключ улюблёных:',
+	'prefs-advancedfavoritelist' => 'Дадатковыя налады',
+	'favoritelist' => 'Мае ўлюблёныя',
+	'myfavoritelist' => 'Мае ўлюблёныя',
+	'favoritelistfor' => "(для '''$1''')",
+	'nofavoritelist' => 'Ваш сьпіс улюблёных пусты.',
+	'favoritelistanontext' => 'Вам патрэбна $1, каб праглядаць альбо рэдагаваць сьпіс улюблёных.',
+	'favoritenologin' => 'Вы не ўвайшлі ў сыстэму',
+	'favoritenologintext' => 'Вам неабходна [[Special:UserLogin|ўвайсьці ў сыстэму]], каб зьмяніць Ваш сьпіс улюблёных.',
+	'addedfavorite' => 'Дададзеныя ва ўлюблёныя',
+	'addedfavoritetext' => 'Старонка «[[:$1]]» была дададзеная ў Ваш [[Special:Favoritelist|сьпіс улюблёных]].',
+	'removedfavorite' => 'Выдаленыя з улюблёных',
+	'removedfavoritetext' => 'Старонка «[[:$1]]» была выдаленая з [[Special:Favoritelist|Вашага сьпісу ўлюблёных]].',
+	'favorite' => 'Улюблёныя',
+	'favoritethispage' => 'Зрабіць гэтую старонку ўлюблёнай',
+	'unfavorite' => 'Выдаліць з улюблёных',
+	'unfavoritethispage' => 'Спыніць даданьне да ўлюблёных',
+	'favoritelist-options' => 'Налады сьпісу ўлюблёных',
+	'favoriteing' => 'Даданьне да сьпісу ўлюблёных…',
+	'unfavoriteing' => 'Выдаленьне са сьпісу ўлюблёных…',
+	'tooltip-pt-favoritelist' => 'Сьпіс старонак, за зьменамі якіх Вы назіраеце',
+	'tooltip-ca-favorite' => 'Дадаць гэтую старонку ва ўлюблёныя',
+	'tooltip-ca-unfavorite' => 'Выдаліць гэтую старонку з улюблёных',
+	'tooltip-favorite' => 'Дадаць гэтую старонку ва ўлюблёныя',
+	'favoritelistall2' => 'усе',
+	'favoritelistedit-numitems' => 'Сьпіс Вашых улюблёных утрымлівае $1 {{PLURAL:$1|назву|назвы|назваў}}.',
+	'favoritelistedit-noitems' => 'Сьпіс Вашых улюблёных не ўтрымлівае назваў.',
+	'favoritelistedit-normal-title' => 'Рэдагаваць сьпіс улюблёных',
+	'favoritelistedit-normal-legend' => 'Выдаліць назвы з улюблёных',
+	'favoritelistedit-normal-explain' => 'Ніжэй пададзеныя назвы з Вашага сьпісу ўлюблёных.
+Для выдаленьня назвы са сьпісу пазначце адпаведныя пазыцыі і націсьніце кнопку «{{int:Favoritelistedit-normal-submit}}».
+Таксама Вы можаце [[Special:Favoritelist/raw|рэдагаваць нефарматаваны сьпіс]].',
+	'favoritelistedit-normal-submit' => 'Выдаліць назвы',
 );
 
 /** German (Deutsch)
@@ -287,6 +321,7 @@ $messages['lb'] = array(
 	'addedfavorite' => "Bäi d'Favoriten derbäigesat",
 	'addedfavoritetext' => 'D\'Säit "[[:$1]]" gouf bäi Är [[Special:Favoritelist|Favoriten]] derbäigesat.',
 	'removedfavorite' => 'Vun der Lëscht vun de Favoriten erofgeholl',
+	'removedfavoritetext' => 'D\'Säit "[[:$1]]" gouf vun [[Special:Favoritelist|ärer Lëscht vun de Favoriten]] erofgeholl.',
 	'favorite' => "Op d'Lëscht vun de Favoriten derbäisetzen",
 	'favoritethispage' => 'Dës Säit bäi meng Favoriten derbäisetzen',
 	'unfavorite' => 'Vun der Lëscht vun de Favoriten erofhuelen',
@@ -294,6 +329,7 @@ $messages['lb'] = array(
 	'favoritelist-options' => 'Optioune vun de Favoriten',
 	'favoriteing' => 'Späicheren...',
 	'unfavoriteing' => 'Erofhuelen...',
+	'tooltip-pt-favoritelist' => 'Lëscht vu Säiten, bei deenen Dir op Ännerungen oppasst',
 	'tooltip-ca-favorite' => "Setzt dës Säit op d'Lëscht vun Äre Favoriten derbäi",
 	'tooltip-ca-unfavorite' => 'Dës Säit vun der Lëscht vun Äre Favoriten erofhuelen?',
 	'tooltip-favorite' => "Dës Säit op d'Lëscht vun Äre Favoriten derbäisetzen",
