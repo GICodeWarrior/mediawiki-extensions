@@ -5570,6 +5570,7 @@ $messages['tt-cyrl'] = array(
 /** Ukrainian (Українська)
  * @author Ahonc
  * @author Aleksandrit
+ * @author Dim Grits
  * @author NickK
  * @author Prima klasy4na
  * @author Тест
@@ -5641,6 +5642,7 @@ $messages['uk'] = array(
 	'fundraiserstats-tab-averages' => 'У середньому (долари США)',
 	'fundraiserstats-tab-maximums' => 'Максимуми (долари США)',
 	'fundraiserstats-tab-ytd' => 'З початку року (USD)',
+	'fundraiserstats-customize' => 'Налаштувати',
 	'fundraiserstats-show-years' => 'Показати наступні роки:',
 	'fundraiserstats-time-zone' => 'Часовий пояс:',
 );
