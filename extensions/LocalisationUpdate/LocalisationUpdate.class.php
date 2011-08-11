@@ -124,7 +124,7 @@ class LocalisationUpdate {
 	}
 
 	/**
-	 * Update the Mediawiki Core Messages.
+	 * Update the MediaWiki Core Messages.
 	 *
 	 * @param $verbose Boolean
 	 *
@@ -179,7 +179,7 @@ class LocalisationUpdate {
 		}
 
 		// Log some nice info.
-		self::myLog( "{$changedCount} Mediawiki messages are updated" );
+		self::myLog( "{$changedCount} MediaWiki messages are updated" );
 
 		return $changedCount;
 	}
@@ -606,6 +606,11 @@ class LocalisationUpdate {
 		}
 	}
 
+	/**
+	 * @param $php
+	 * @param $varname
+	 * @return bool|array
+	 */
 	public static function parsePHP( $php, $varname ) {
 		try {
 			$reader = new QuickArrayReader("<?php $php");
