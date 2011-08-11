@@ -183,6 +183,7 @@ $messages['bs'] = array(
 /** Catalan (Català)
  * @author SMP
  * @author Solde
+ * @author Toniher
  */
 $messages['ca'] = array(
 	'inspectcache' => 'Inspecciona la memòria cau',
@@ -194,7 +195,7 @@ $messages['ca'] = array(
 	'inspectcache-delete' => 'Elimina',
 	'inspectcache-deleted' => 'Memòria cau eliminada',
 	'inspectcache-list' => 'Llista',
-	'right-inspectcache' => 'Veure i eliminar entrades de la memòria cau',
+	'right-inspectcache' => 'Permet veure i eliminar les entrades de la memòria cau',
 );
 
 /** Sorani (کوردی) */
