@@ -11,7 +11,7 @@ KNOWN ISSUES:
 /**
  * Directory to store serialized cache files in. Defaults to $wgCacheDirectory.
  * It's OK to share this directory among wikis as long as the wiki you run
- * update.php on has all extensions the other wikis using the same directory 
+ * update.php on has all extensions the other wikis using the same directory
  * have.
  * NOTE: If this variable and $wgCacheDirectory are both false, this extension
  *       WILL NOT WORK.
@@ -32,7 +32,6 @@ $wgLocalisationUpdateDirectory = false;
 $wgLocalisationUpdateSVNURL = "http://svn.wikimedia.org/svnroot/mediawiki/trunk";
 
 $wgLocalisationUpdateRetryAttempts = 5;
-
 
 // Info about me!
 $wgExtensionCredits['other'][] = array(
