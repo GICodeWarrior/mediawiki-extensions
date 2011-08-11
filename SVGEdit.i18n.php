@@ -389,7 +389,15 @@ $messages['mk'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'svgedit-editbutton-edit' => 'Sunting lukisan',
+	'svgedit-summary-label' => 'Sunting ringkasan',
+	'svgedit-summary-default' => '/* Diubah suai dalam svg-edit */',
+	'svgedit-editor-save-close' => 'Simpan dan tutup',
 	'svgedit-editor-close' => 'Batalkan',
+	'svgedit-desc' => 'Penyuntingan lukisan SVG dalam pelayar dengan [http://code.google.com/p/svg-edit/ SVG-Edit]',
+	'svgedit-edit-tab' => 'Sunting lukisan',
+	'svgedit-edit-tab-tooltip' => 'Anda boleh menyunting lukisan SVG ini dalam pelayar anda',
+	'svgedit-toolbar-insert' => 'Lukisan SVG',
 );
 
 /** Dutch (Nederlands)
