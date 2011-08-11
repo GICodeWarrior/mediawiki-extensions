@@ -547,9 +547,21 @@ $messages['cu'] = array(
 	'changeauthor-pagenameform-go' => 'прѣиди́',
 );
 
-/** Danish (Dansk) */
+/** Danish (Dansk)
+ * @author Sarrus
+ */
 $messages['da'] = array(
+	'changeauthor' => 'Skift versionens forfatter',
+	'changeauthor-desc' => 'Tillader ændringer af en versions forfatter',
+	'changeauthor-title' => 'Skift en versions forfatter',
+	'changeauthor-search-box' => 'Søg versioner',
+	'changeauthor-pagename-or-revid' => 'Sidenavnets eller versionens ID:',
 	'changeauthor-pagenameform-go' => 'Gå',
+	'changeauthor-comment' => 'Kommentar:',
+	'changeauthor-changeauthors-multi' => 'Skift {{PLURAL:$1| Forfatter |forfattere}}',
+	'changeauthor-explanation-multi' => 'Med denne formular kan du ændre en versions forfatter.
+Du skal blot ændre et eller flere brugernavne i oversigten herunder, evt. skrive en begrundelse og derefter klikke på "Skift forfatter(e)"-knappen.',
+	'changeauthor-changeauthors-single' => 'Skift forfatter',
 );
 
 /** German (Deutsch)
