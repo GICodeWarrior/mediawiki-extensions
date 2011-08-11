@@ -1,3 +1,9 @@
+varnish3 (3.0.0-1wmf2) lucid; urgency=low
+
+  * Change time format to match squid (minus milliseconds) 
+
+ -- Asher Feldman <afledman@wikimedia.org>  Thu, 11 Aug 2011 21:28:29 +0000
+
 varnish3 (3.0.0-1wmf1) lucid; urgency=low
 
   * udp log patch
