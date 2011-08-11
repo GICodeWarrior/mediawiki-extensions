@@ -573,8 +573,10 @@ $messages['vo'] = array(
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
  * @author Liangent
+ * @author PhiLiP
  */
 $messages['zh-hans'] = array(
+	'spl3-desc' => '使用标签<code><nowiki><splist /></nowiki></code>自动创建子页面列表',
 	'spl3_debug' => '未知的选项$1的数值',
 	'spl3_nosubpages' => '$1没有子页面来显示',
 );
