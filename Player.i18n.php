@@ -1010,10 +1010,16 @@ $messages['mr'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'player' => 'Pemain',
+	'player-desc' => 'Ciri pemainan media multimedia terbenam yang menggunakan pemalam pelayar yang umum, dan satu [[Special:Player|laman khas]]',
 	'player-title' => 'Pemain',
 	'player-playertitle' => 'Pemain: $1',
 	'player-file' => 'Nama fail',
+	'player-play' => 'Mainkan',
+	'player-not-allowed' => 'format tidak dibenarkan',
+	'player-not-found' => 'fail tidak dijumpai',
 	'player-invalid-title' => 'tajuk tidak sah',
+	'player-clicktoplay' => 'Mainkan $1',
 	'player-goto-player' => 'pemain',
 	'player-goto-page' => 'Laman',
 	'player-goto-file' => 'fail',
