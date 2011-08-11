@@ -66,7 +66,7 @@ class RingBuffer(deque):
                 self.append((seqnr, ts, True))
                 debug("Filled gap of %d packets before new packet seqnr %d, timestamp %s" % (seqnr-tailseq-1, seqnr, ts))
             elif seqnr < headseq:
-                if seqnr < RESTART_WINDOW:
+                if seqnr < self.RESTART_WINDOW:
                     debug("Source %s started from scratch with seqnr %d" % (seqnr, ts))
                     self.clear()
                     # Clear some counters
