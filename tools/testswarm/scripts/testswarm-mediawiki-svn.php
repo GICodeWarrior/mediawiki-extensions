@@ -99,8 +99,8 @@ $browsers = "popularbeta";
 # All the suites that you wish to run within this job
 # (can be any number of suites)
 
-## Comment out to insert static suite list here (ie. QUnit modules)
-#$suites = array(
+## Dynamically generated later on based on glob() for "{qunitDir}/suites/resources/*/*.js"
+#$filenames = array(
 #	'foo.js',
 #	'bar.util.js',
 #	'jquery.baz.js',
@@ -108,7 +108,7 @@ $browsers = "popularbeta";
 
 $curlOpts = array(
 	CURLOPT_RETURNTRANSFER => 1,
-	CURLOPT_USERAGENT => 'TestSwarm/20110511 (Wikimedia Toolserver; toolserver.org/~krinkle) Contact/krinkle@toolserver.org',
+	CURLOPT_USERAGENT => 'TestSwarm/Build20110812 (Wikimedia Toolserver; toolserver.org/~krinkle) Contact/krinkle@toolserver.org',
 	CURLOPT_POST => true,
 );
 
@@ -205,7 +205,7 @@ function doingStuff(){
 	# Get array of modules
 	
 	$unitDir = glob( "$revTargetTmpDir/{$svnCoRepoInfo['qunitDir']}/suites/resources/*/*.js" );
-	$suites = array_map( 'basename', $unitDir );
+	$filenames = array_map( 'basename', $unitDir );
 	
 	# Add jobs
 	
@@ -223,10 +223,15 @@ function doingStuff(){
 		
 		$query = http_build_query( $params );
 	
-		foreach ( $suites as $suite ) {
-			$suiteName = substr( $suite, -8 ) == '.test.js' ? substr( $suite, 0, -8 ) : $suite;
-			$query .= "&suites[]=" . rawurlencode( $suite ) .
-			          "&urls[]=" . getTestUrl( $svnHeadRevTop, $suite );
+		foreach ( $filenames as $filename ) {
+			# Switch-over period is done, QUnit module()-calls must now be filename without '.test.js'
+			#$suiteName = substr( $filename, -8 ) == '.test.js' ? substr( $filename, 0, -8 ) : $filename;
+			if ( substr( $filename, -8 ) == '.test.js' ) {
+				$suiteName = substr( $filename, 0, -8 );
+				$query .= 
+					"&suites[]=" . rawurlencode( $suiteName ) .
+					"&urls[]=" . getTestUrl( $svnHeadRevTop, $suiteName );
+			}	
 		}
 	
 		logger( "cURL url: $swarmUrl" );
