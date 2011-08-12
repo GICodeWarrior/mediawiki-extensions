@@ -90,6 +90,18 @@ es.Content.htmlCharacters = {
 /* Static Methods */
 
 /**
+ * Creates a new Content object from plain text.
+ * 
+ * @static
+ * @method
+ * @param text {String} Text to convert
+ * @returns {es.Content} EditSurface content object containing converted text
+ */
+es.Content.newFromText = function( text ) {
+	return new es.Content( text.split('') );
+};
+
+/**
  * Creates a new Content object from a WikiDom line object.
  * 
  * @static

@@ -6,54 +6,80 @@
  * @param operations {Array} List of operations
  * @property operations {Array} List of operations
  */
-es.Content.Transaction = function( operations ) {
-	this.operations = operations || [];
+es.Content.Transaction = function( content, operations ) {
+	this.content = content;
+	this.operations = [];
+	if ( arguments.length > 1 ) {
+		var range = new es.Range();
+		for ( var i = 1; i < arguments.length; i++ ) {
+			var operation = arguments[i];
+			switch ( operation.getType() ) {
+				case 'retain':
+				case 'delete':
+					range.to = range.from + operation.getLength();
+					if ( !operation.hasContent() ) {
+						operation.setContent( content.getContent( range ) );
+					}
+					range.from = range.to;
+					break;
+			}
+			this.operations.push( operation );
+		}
+	}
 };
 
 es.Content.Transaction.prototype.add = function( operation ) {
 	this.operations.push( operation );
 };
 
-es.Content.Transaction.prototype.commit = function( from ) {
+es.Content.Transaction.prototype.commit = function() {
 	var range = new es.Range(),
 		to = new es.Content();
 	for ( var i = 0; i < this.operations.length; i++ ) {
 		var operation = this.operations[i];
-		range.to = range.from + operation.getLength();
 		switch (operation.getType()) {
 			case 'retain':
-				to.insert( to.getLength(), from.getData( range ) );
+				range.to = range.from + operation.getLength();
+				// Automatically add content to operation
+				if ( !operation.hasContent() ) {
+					operation.setContent( this.content.getContent( range ) );
+				}
+				to.insert( to.getLength(), operation.getContent().getData() );
 				range.from = range.to;
 				break;
 			case 'insert':
-				to.insert( to.getLength(), operation.getContent() );
+				to.insert( to.getLength(), operation.getContent().getData() );
 				break;
 			case 'delete':
-				// TODO: Validate operation.getContent against content being skipped
-				offset += operation.getLength();
+				range.to = range.from + operation.getLength();
+				// Automatically add content to operation
+				if ( !operation.hasContent() ) {
+					operation.setContent( this.content.getContent( range ) );
+				}
+				range.from = range.to;
 				break;
 		}
 	}
 	return to;
 };
 
-es.Content.Transaction.prototype.rollback = function( from ) {
+es.Content.Transaction.prototype.rollback = function() {
 	var range = new es.Range(),
 		to = new es.Content();
 	for ( var i = 0; i < this.operations.length; i++ ) {
 		var operation = this.operations[i];
-		range.to = range.from + operation.getLength();
 		switch (operation.getType()) {
 			case 'retain':
-				to.insert( to.getLength(), from.getData( range ) );
+				range.to = range.from + operation.getLength();
+				to.insert( to.getLength(), operation.getContent().getData() );
 				range.from = range.to;
 				break;
-			case 'insert':
-				// TODO: Validate operation.getContent against content being skipped
-				offset += operation.getLength();
-				break;
 			case 'delete':
-				to.insert( to.getLength(), operation.getContent() );
+				to.insert( to.getLength(), operation.getContent().getData() );
+				break;
+			case 'insert':
+				range.to = range.from + operation.getLength();
+				range.from = range.to;
 				break;
 		}
 	}
