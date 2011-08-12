@@ -2,16 +2,24 @@ es.ListBlockItem = function( content, style, level ) {
 	es.EventEmitter.call( this );
 
 	this.content = content || new es.Content();
-	this.$ = $( '<div class="editSurface-listItem editSurface-listItem-content"></div>' )
-			.addClass( 'editSurface-listItem-level' + level )
-			.addClass( 'editSurface-listItem-' + style );
-	this.flow = new es.Flow( this.$, this.content );
+	this.$icon = $( '<div class="editSurface-listItem-icon"></div>' );
+	this.$content = $( '<div class="editSurface-listItem-content"></div>' );
+	this.$ = $( '<div class="editSurface-listItem"></div>' )
+		.append( this.$icon )
+		.append( this.$content );
+	this.setStyle( style );
+	this.setLevel( level );
+	this.flow = new es.Flow( this.$content, this.content );
 	// Listen to render events and trigger update event upstream
 	var listBlockItem = this;
 	this.flow.on( 'render', function() {
 		listBlockItem.emit( 'update' );
 	} );
 }
+
+es.ListBlockItem.prototype.setNumber = function( number ) {
+	this.$icon.text( number + '.' );
+};
 
 es.ListBlockItem.prototype.setLevel = function( level ) {
 	this.$.removeClass( 'editSurface-listItem-level' + this.level );

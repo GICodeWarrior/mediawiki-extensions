@@ -33,6 +33,7 @@
 }
 
 .editSurface-listItem {
+	position: relative;
 	padding: 0 0 0 1em;
 	background-position: left 0.6em;
 	background-repeat: no-repeat;
@@ -43,7 +44,19 @@
 }
 
 .editSurface-listItem-number {
-	background-image: url(images/hash.png);
+	/* */
+}
+
+.editSurface-listItem-bullet .editSurface-listItem-icon {
+	display: none;
+}
+
+.editSurface-listItem-number .editSurface-listItem-icon {
+	position: absolute;
+	right: 100%;
+	margin-right: -0.5em;
+	height: 1.5em;
+	line-height: 1.5em;
 }
 
 .editSurface-listItem-level0 {
