@@ -14,6 +14,9 @@ CREATE TABLE IF NOT EXISTS /*_*/selections (
 	s_timestamp      binary(14) not null,
     -- timestamp when entry was added
 
+	s_revision       int unsigned,
+    -- manually set revision
+
     primary key (s_selection_name, s_namespace, s_article)
 ) /*$wgDBTableOptions*/;
 
