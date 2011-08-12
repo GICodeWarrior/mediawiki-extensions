@@ -1,5 +1,4 @@
 es.ListBlockList = function( items ) {
-	es.EventEmitter.call( this );
 	es.Container.call( this, 'list', 'items', items );
 };
 
@@ -34,5 +33,4 @@ es.ListBlockList.flattenList = function( wikidomList, items, level ) {
 	}
 };
 
-es.extend( es.ListBlockList, es.EventEmitter );
 es.extend( es.ListBlockList, es.Container );
