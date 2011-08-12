@@ -15,21 +15,21 @@ class SelectionTemplate extends QuickTemplate {
 <h3>Articles in Selection <?php echo $name; ?></h3> <small><a href="<?php echo $csv_link; ?>">Export CSV</a></small>
 	<table>
 	<tr>
-		<th>Article</th>
-		<th>Added on</th>
-		<th>Revision</th>
-		<th>Actions</th>
+		<th style="width:150px">Article</th>
+		<th style="width:150px">Added on</th>
+		<th style="width:75px">Revision</th>
+		<th style="width:300px">Actions</th>
 	</tr>	
 	<?php foreach( $articles as $article ) { ?>
-	<tr>
+	<tr class="article-row" data-namespace="<?php echo $article['s_namespace']; ?>" data-article="<?php echo $article['s_article']; ?>">
 	<td><a href="<?php echo $article['title']->getLinkURL(); ?>"><?php echo $article['s_article']; ?></a></td>
 	<td><?php echo wfTimeStamp( TS_ISO_8601, $article['s_timestamp'] );	?></td>
 	<td><?php if($article['s_revision'] != null) { ?>
-		<a href="<?php echo $article['title']->getLinkUrl(array('oldid' => $article['s_revision'])); ?>"><?php echo $article['s_revision']; ?></a>
+		<a href="<?php echo $article['title']->getLinkUrl(array('oldid' => $article['s_revision'])); ?>" class="revision-link"><?php echo $article['s_revision']; ?></a>
 		<?php } ?>
 	</td>
 	<td>
-		<div class="item-actions" data-namespace="<?php echo $article['s_namespace']; ?>" data-article="<?php echo $article['s_article']; ?>">
+		<div class="item-actions">
 		<div class="revision-input" style="display:none">
 			<input type="text" class="revision-id" placeholder="Enter revision id" value="<?php echo $article['s_revision']; ?>" />
 			(<a href="#" class="revision-save">Save</a> | <a href="#" class="revision-cancel">Cancel</a>)
@@ -47,19 +47,22 @@ class SelectionTemplate extends QuickTemplate {
 </div>
 
 		<script type="text/javascript">
+		// Should this be a RL module?
 		$(document).ready(function() {
 			$(".change-revision").click(function() {
-				var parent = $(this).parent("div.item-actions");
-				var input_box = parent.children(".revision-input");
+				var parent = $(this).parents(".article-row");
+				var input_box = $(".revision-input", parent);
 				input_box.fadeToggle();
 				return false;
 			});
 			$(".revision-save").click(function() {
-				var parent = $(this).parents("div.item-actions");
+				var parent = $(this).parents(".article-row");
 				var ns = parent.attr("data-namespace"),
 					article = parent.attr("data-article");
 				var input = $("input.revision-id", parent);
-				var input_box = parent.children(".revision-input");
+				var input_box = $(".revision-input", parent);
+				var revlink = $(".revision-link", parent);
+
 				var revid = input.val();
 
 				$.post('', {
@@ -67,14 +70,18 @@ class SelectionTemplate extends QuickTemplate {
 					namespace: ns,
 					article: article,
 					revision: revid
-				}, function() {
+				}, function(raw_data) {
+					var data = $.parseJSON(raw_data)
+					console.log(data);					
 					input_box.fadeOut();
+					revlink.hide();
+					revlink.attr("href", data.revision_url).html(data.revision).fadeIn();
 				});
 
 				return false;
 			});
 			$(".delete-article").click(function() {
-				var parent = $(this).parents("div.item-actions");
+				var parent = $(this).parents(".article-row");
 				var ns = parent.attr("data-namespace"),
 					article = parent.attr("data-article");
 
@@ -83,6 +90,7 @@ class SelectionTemplate extends QuickTemplate {
 					namespace: ns,
 					article: article
 				}, function() {
+					parent.fadeOut();
 				});
 
 				return false;
