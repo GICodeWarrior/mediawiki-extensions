@@ -375,6 +375,22 @@ es.Content.prototype.getContent = function( range ) {
 };
 
 /**
+ * Gets content data within a specific range.
+ * 
+ * @method
+ * @param range {es.Range} Range of content to get
+ * @returns {Array} Array of plain text and annotated characters within range
+ */
+es.Content.prototype.getData = function( range ) {
+	if ( !range ) {
+		range = new es.Range( 0, this.data.length );
+	} else {
+		range.normalize();
+	}
+	return this.data.slice( range.start, range.end );
+};
+
+/**
  * Inserts content data at a specific position.
  * 
  * Inserted content will inherit annotations from neighboring content.
