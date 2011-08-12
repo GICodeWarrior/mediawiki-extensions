@@ -7,8 +7,6 @@ class FilterRatingsTemplate extends QuickTemplate {
 	public function execute() {
 		$articles = $this->data['articles'];
 		$filters = $this->data['filters'];
-		$action = $this->data['action'];
-		$selection = $this->data['selection'];
 ?>
 
 <form method="GET" id="filterForm">
@@ -20,17 +18,13 @@ Quality: <input type="text" name="quality" value="<?php echo $filters['r_quality
 Categories (comma separated): <input type="text" name="categories" value="<?php echo $filters['categories']?>" />
 <input type="submit" id="submit-query" />
 </p>
+</form>
 <div>
 Add to Selection: 
 <input type="text" name="selection" id="selection" />
-<input type="hidden" name="action" id="action" />
 <input type="button" id="add-to-selection" value="Add" />
 </div>
-</form>
 <div id="notice">
-<?php if( $action == 'addtoselection' ) { ?> 
-Articles successfully added to selection <?php echo $selection; ?>
-<?php } ?>
 </div>
 <div id="">
 <?php if( count($articles) > 0 ) { ?>
@@ -59,14 +53,14 @@ Articles successfully added to selection <?php echo $selection; ?>
 		<script type="text/javascript">
 		// Should I use RL for tiny snippets like this too?
 		$("#add-to-selection").click(function() {
-			$("#action").val("addtoselection");
-			$("#filterForm").submit();			
-			return false;
-		});
-		$("#submit-query").click(function() {
-			$("#selection").val("");
-			// Hitting submit shouldn't add to selection
-			$("#filterForm").submit();			
+			var selection = $("#selection").val();
+			$.post("", {
+				action: "addtoselection",
+				selection: selection
+			}, function(raw_data) {
+				var data = $.parseJSON(raw_data);
+				$("#notice").html("Added to selection <a href='" + data.selection_url + "'>" + selection + "</a>");
+			});
 			return false;
 		});
 		</script>
