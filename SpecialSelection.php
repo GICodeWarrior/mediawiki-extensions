@@ -32,10 +32,6 @@ class SpecialSelection extends SpecialPage {
 		fclose( $outstream );
 	}
 
-	public function onSubmit( $data ) {
-		var_dump($data);
-	}
-
 	public function execute( $par ) {
         global $wgOut, $wgRequest;
 
