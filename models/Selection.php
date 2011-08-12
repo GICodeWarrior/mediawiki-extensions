@@ -39,6 +39,19 @@ class Selection {
 		return $success;
 	}
 
+	public static function deleteArticle( $name, $namespace, $article ) {
+		$dbw = wfGetDB( DB_MASTER );
+		$success = $dbw->delete(
+			'selections',
+			array(
+				's_selection_name' => $name,
+				's_namespace' => $namespace,
+				's_article' => $article
+			),
+			__METHOD__
+		);
+		return $success;
+	}
 	public static function getSelection( $name ) {
 		$dbr = wfGetDB( DB_SLAVE );
 

@@ -46,14 +46,22 @@ class SpecialSelection extends SpecialPage {
 			$wgOut->disable();
 			$namespace = $wgRequest->getVal( 'namespace' );
 			$article = $wgRequest->getVal( 'article' );
-			$revision = $wgRequest->getVal( 'revision' );
 
-			$success = Selection::setRevision( $name, $namespace, $article, $revision );
+			$action = $wgRequest->getVal( 'action' );
+			if( $action == 'setrevision' ) {			
+				$revision = $wgRequest->getVal( 'revision' );
+				$success = Selection::setRevision( $name, $namespace, $article, $revision );
 
-			$return = array(
-				'status' => $success,
-				'revision' => $revision
-			);
+				$return = array(
+					'status' => $success,
+					'revision' => $revision
+				);
+			} else if ( $action == 'deletearticle') { 
+				$success = Selection::deleteArticle( $name, $namespace, $article );
+				$return = array(
+					'status' => $success
+				);
+			}
 			echo json_encode($return);
 			return;
 		}

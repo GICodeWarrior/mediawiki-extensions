@@ -63,6 +63,7 @@ class SelectionTemplate extends QuickTemplate {
 				var revid = input.val();
 
 				$.post('', {
+					action: 'setrevision',
 					namespace: ns,
 					article: article,
 					revision: revid
@@ -72,6 +73,21 @@ class SelectionTemplate extends QuickTemplate {
 
 				return false;
 			});
+			$(".delete-article").click(function() {
+				var parent = $(this).parents("div.item-actions");
+				var ns = parent.attr("data-namespace"),
+					article = parent.attr("data-article");
+
+				$.post('', {
+					action: 'deletearticle',
+					namespace: ns,
+					article: article
+				}, function() {
+				});
+
+				return false;
+			});
+
 			$(".revision-cancel").click(function() {
 				var parent = $(this).parents("div.item-actions");
 				var input_box = parent.children(".revision-input");
