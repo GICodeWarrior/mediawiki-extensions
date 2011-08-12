@@ -51,10 +51,12 @@ class SpecialSelection extends SpecialPage {
 			if( $action == 'setrevision' ) {			
 				$revision = $wgRequest->getVal( 'revision' );
 				$success = Selection::setRevision( $name, $namespace, $article, $revision );
-
+				$title = Title::makeTitle( $namespace, $article );
+				$url = $title->getLinkUrl( array( 'oldid' => $revision ) );
 				$return = array(
 					'status' => $success,
-					'revision' => $revision
+					'revision' => $revision,
+					'revision_url' => $url
 				);
 			} else if ( $action == 'deletearticle') { 
 				$success = Selection::deleteArticle( $name, $namespace, $article );
