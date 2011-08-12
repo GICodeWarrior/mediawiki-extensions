@@ -17,30 +17,52 @@ class SpecialSelection extends SpecialPage {
 		$outstream = fopen( "php://output", "w" );
 		$headers = array(
 			'article',
+			'revision',
 			'added'
 		);
 		fputcsv( $outstream, $headers );
 		foreach( $articles as $article ) {
 			$row = array(
 				$article['title']->getFullText(),
+				$article['s_revision'],
 				wfTimeStamp( TS_ISO_8601, $article['s_timestamp'] )
 			);
 			fputcsv( $outstream, $row );
 		}
 		fclose( $outstream );
 	}
+
+	public function onSubmit( $data ) {
+		var_dump($data);
+	}
+
 	public function execute( $par ) {
         global $wgOut, $wgRequest;
 
-		$name = $wgRequest->getVal('name');
-		$action = $wgRequest->getVal('action'); 		
+		$name = $wgRequest->getVal( 'name' );
+		$format = $wgRequest->getVal( 'format' ); 		
 
+		if( $wgRequest->wasPosted() ) {
+			$wgOut->disable();
+			$namespace = $wgRequest->getVal( 'namespace' );
+			$article = $wgRequest->getVal( 'article' );
+			$revision = $wgRequest->getVal( 'revision' );
+
+			$success = Selection::setRevision( $name, $namespace, $article, $revision );
+
+			$return = array(
+				'status' => $success,
+				'revision' => $revision
+			);
+			echo json_encode($return);
+			return;
+		}
 		$entries = Selection::getSelection( $name );
 		$this->setHeaders();
 
 		$wgOut->setPageTitle("Selection");
 
-		if( $action == 'csv' ) {
+		if( $format == 'csv' ) {
 			$wgRequest->response()->header( 'Content-type: text/csv' );
 			// Is there a security issue in letting the name be arbitrary?
 			$wgRequest->response()->header(
@@ -51,7 +73,7 @@ class SpecialSelection extends SpecialPage {
 		}
 
 		$csv_link = $this->getFullTitle()->getFullUrl( array( 
-			'action' => 'csv',
+			'format' => 'csv',
 			'name' => $name
 		) );
 		$template = new SelectionTemplate();

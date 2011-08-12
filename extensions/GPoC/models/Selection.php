@@ -22,6 +22,23 @@ class Selection {
 		}
 	}
 
+	public static function setRevision( $name, $namespace, $article, $revision ) {	
+		$dbw = wfGetDB( DB_MASTER );
+		$success = $dbw->update(
+			'selections',
+			array(
+				's_revision' => $revision
+			),
+			array(
+				's_selection_name' => $name,
+				's_namespace' => $namespace,
+				's_article' => $article
+			),
+			__METHOD__
+		);
+		return $success;
+	}
+
 	public static function getSelection( $name ) {
 		$dbr = wfGetDB( DB_SLAVE );
 
