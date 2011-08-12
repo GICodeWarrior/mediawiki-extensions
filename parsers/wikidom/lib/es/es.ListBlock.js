@@ -25,4 +25,7 @@ es.ListBlock.prototype.renderContent = function( offset ) {
 };
 
 es.Block.blockConstructors.list = es.ListBlock.newFromWikiDomListBlock;
+
+/* Inherit */
+
 es.extend( es.ListBlock, es.Block );
