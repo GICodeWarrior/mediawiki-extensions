@@ -95,16 +95,17 @@ Efallai yr hoffech fynd at:
 
 /** German (Deutsch)
  * @author Kghbln
+ * @author SVG
  */
 $messages['de'] = array(
-	'special404-desc' => 'Ermöglicht eine benutzerdefinierte Zielseite für den Fall das der HTTP-Fehler „404 Not Found“ auftritt',
-	'error404' => '404 Not Found',
+	'special404-desc' => 'Ermöglicht eine benutzerdefinierte Zielseite für den Fall, dass der HTTP-Fehler „404 Not Found“ auftritt',
+	'error404' => '404 Nicht gefunden',
 	'special404-body' => 'Die gewünschte URL wurde nicht gefunden.
 
 Sollte tatsächlich {{fullurl:$1}} aufgerufen werden?
 
 Vielleicht sollte stattdessen folgende Seite aufgerufen werden:
-* [[{{MediaWiki:Mainpage}}|Hauptseite]]',
+* [[{{MediaWiki:Mainpage}}]]',
 );
 
 /** Lower Sorbian (Dolnoserbski)
