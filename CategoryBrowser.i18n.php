@@ -1490,6 +1490,8 @@ Endre eller oppgrader nettleseren din, om mulig.',
  * @author Odisha1
  */
 $messages['or'] = array(
+	'cb_previous_items_link' => 'ପୂର୍ବବର୍ତ୍ତୀ',
+	'cb_next_items_link' => 'ପରବର୍ତ୍ତୀ',
 	'cb_cat_files' => 'ଫାଇଲ',
 );
 
