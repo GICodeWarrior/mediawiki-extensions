@@ -14,6 +14,14 @@ es.ListBlockList.prototype.renderContent = function( offset ) {
 	}
 };
 
+es.ListBlockList.prototype.traverseItems = function( callback ) {
+	for( var i = 0; i < this.items.length; i++ ) {
+		if ( callback( this.items[i], i ) === false ) {
+			return false;
+		}
+	}
+};
+
 es.ListBlockList.flattenList = function( wikidomList, items, level ) {
 	for ( var i = 0; i < wikidomList.items.length; i++ ) {
 		items.push(

@@ -57,28 +57,30 @@ es.ListBlock.prototype.getOffset = function( position ) {
 	} else if ( position.top >= this.$.height() ) {
 		return this.getLength();
 	}
-
-	var globalOffset = 0,
-		i,
+	
+	var offset = 0,
 		itemOffset,
 		itemHeight,
 		blockOffset = this.$.offset();
 
 	position.top += blockOffset.top;
 	position.left += blockOffset.left;
-
-	for( i = 0; i < this.list.items.length; i++ ) {
-		itemOffset = this.list.items[i].$content.offset();
-		itemHeight = this.list.items[i].$content.height();
-
+	
+	this.list.traverseItems( function( item, index ) {
+		itemOffset = item.$content.offset();
+		itemHeight = item.$content.height();
+		
 		if ( position.top >= itemOffset.top && position.top < itemOffset.top + itemHeight ) {
 			position.top -= itemOffset.top;
 			position.left -= itemOffset.left;
-			return globalOffset + this.list.items[i].flow.getOffset( position );
+			offset += item.flow.getOffset( position );
+			return false;
 		}
 		
-		globalOffset += this.list.items[i].content.getLength() + 1;
-	}
+		offset += item.content.getLength() + 1;
+	} );
+
+	return offset;
 };
 
 /**
@@ -90,28 +92,25 @@ es.ListBlock.prototype.getOffset = function( position ) {
  */
 es.ListBlock.prototype.getPosition = function( offset ) {
 	var globalOffset = 0,
-		i,
 		itemLength,
 		position,
-		contentOffset,
 		blockOffset = this.$.offset();
 	
-	for( i = 0; i < this.list.items.length; i++ ) {
-		itemLength = this.list.items[i].content.getLength();
+	this.list.traverseItems( function( item, index ) {
+		itemLength = item.content.getLength();
 		if ( offset >= globalOffset && offset < globalOffset + itemLength ) {
-			position = this.list.items[i].flow.getPosition( offset - globalOffset );
-			contentOffset = this.list.items[i].$content.offset();
-			
+			position = item.flow.getPosition( offset - globalOffset );
+			contentOffset = item.$content.offset();
 			position.top += contentOffset.top - blockOffset.top;
 			position.left += contentOffset.left - blockOffset.left;
 			position.bottom += contentOffset.top - blockOffset.top;
-			
-			position.line = i;
-			
-			return position;
+			position.line = index;
+			return false;
 		}
 		globalOffset += itemLength + 1;
-	}
+	} );
+	
+	return position;
 };
 
 /* Registration */
