@@ -4,11 +4,10 @@ class FlagPageTabInstaller {
 	function __construct( ) { }
 
 	function insertTab( $skin, &$content_actions ) {
-		global $wgTitle;
-		if ( !$wgTitle->exists() ) {
-			return false;
+		if ( !$skin->getTitle()->exists() ) {
+			return true;
 		}
-		$linkParam = "page=" . $wgTitle->getPrefixedURL();
+		$linkParam = "page=" . $skin->getTitle()->getPrefixedURL();
 		
 		$special = SpecialPage::getTitleFor( 'FlagPage' );
 		$content_actions['flagpage'] = array(
@@ -22,7 +21,7 @@ class FlagPageTabInstaller {
 		// the old '$content_actions' array is thankfully just a
 		// sub-array of this one
 		// copied from Extension:ApprovedRevs (r74381). Author: yaron
-		self::insertTab( $skin, $links['views'] );
+		self::insertTab( $sktemplate, $links['views'] );
 		return true;
 	}
 }
