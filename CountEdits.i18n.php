@@ -1213,6 +1213,14 @@ $messages['oc'] = array(
 	'countedits-nocontribs' => 'Cap de contribucion sus aqueste wiki.',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Odisha1
+ */
+$messages['or'] = array(
+	'countedits-username' => 'ବ୍ୟବାହରକାରୀଙ୍କର ନାଆଁ:',
+	'countedits-ok' => 'ଠିକ ଅଛି',
+);
+
 /** Ossetic (Иронау)
  * @author Amikeco
  */
