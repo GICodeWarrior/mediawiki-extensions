@@ -110,6 +110,22 @@ Sutesik va telo xo vol gotir blodaf gu man sebukscek.',
 	'talkhere-collapse' => 'palsera va krentbetasiki',
 );
 
+/** Bavarian (Boarisch)
+ * @author Mucalexx
+ */
+$messages['bar'] = array(
+	'talkhere-desc' => "Baud d' Dischkrirseiten in a Seiten einé",
+	'talkhere-foottext' => "D' Kommentare óm san méglicherweis voh Bsuacher hinterlossen worn.
+
+Dé Betreiwer voh derer Webseiten kennern koah Vaåntwortung fyrn Inhoid voh dé Kommentare ywernemmer.",
+	'talkhere-talkpage' => 'Dischkrirseiten',
+	'talkhere-notalk' => "''(Nó koane Kommentare)''",
+	'talkhere-addcomment' => 'Kommentar dazuadoah',
+	'talkhere-beforeinput' => 'Kommentare bittscheh unten eihgeem.',
+	'talkhere-loading' => 'Editor werd gloon ...',
+	'talkhere-collapse' => 'Editor vaberng',
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */
