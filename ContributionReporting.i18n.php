@@ -4039,6 +4039,14 @@ $messages['oc'] = array(
 	'fundraiserstats-tab-ytd' => 'Annada en cors (dolars US)',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Odisha1
+ */
+$messages['or'] = array(
+	'contrib-hist-name' => 'ନାମ',
+	'contribstats-month' => 'ମାସ',
+);
+
 /** Ossetic (Иронау)
  * @author Amikeco
  */
