@@ -4009,6 +4009,8 @@ Hilsen {{SITENAME}}-teamet',
  */
 $messages['or'] = array(
 	'articlefeedback-survey-submit' => 'ଦାଖଲକରିବା',
+	'articleFeedback-table-heading-page' => 'ପୃଷ୍ଠା',
+	'articleFeedback-table-heading-average' => 'ହାରାହାରି',
 );
 
 /** Ossetic (Иронау)
