@@ -559,7 +559,7 @@ $messages['oc'] = array(
  * @author Odisha1
  */
 $messages['or'] = array(
-	'categoryonupload-label' => 'ଶ୍ରେଣୀ:',
+	'categoryonupload-label' => 'ବିଭାଗ:',
 );
 
 /** Picard (Picard)
