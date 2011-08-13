@@ -2157,6 +2157,14 @@ Tornar cap a :
 	'right-crosswikiblock' => "Blocar e desblocar d'utilizaires sus d'autres wikis",
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Odisha1
+ */
+$messages['or'] = array(
+	'crosswikiblock-reason' => 'କାରଣ:',
+	'crosswikiunblock-reason' => 'କାରଣ:',
+);
+
 /** Ossetic (Иронау)
  * @author Amikeco
  */

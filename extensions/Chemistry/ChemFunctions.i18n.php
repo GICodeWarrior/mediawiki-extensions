@@ -992,6 +992,13 @@ $messages['oc'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform, dintrant erronèu!',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Odisha1
+ */
+$messages['or'] = array(
+	'chemFunctions_Formula' => 'ସୂତ୍ର',
+);
+
 /** Picard (Picard)
  * @author Geoleplubo
  */

@@ -673,6 +673,13 @@ Podètz pas crear aquesta pagina, mas la podètz [{{fullurl:{{FULLPAGENAME}}|act
 <createbox>break=no</createbox>",
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Odisha1
+ */
+$messages['or'] = array(
+	'createbox-create' => 'ତିଆରି',
+);
+
 /** Deitsch (Deitsch)
  * @author Xqt
  */

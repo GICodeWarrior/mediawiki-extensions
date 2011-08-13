@@ -61,3 +61,11 @@ $messages['pt'] = array(
 As árvores usam o menu árvore [http://www.destroydrop.com/javascripts/tree dTree] do JavaScript e os menus descendentes usam [http://www.htmldog.com/articles/suckerfish/dropdowns/ Son of Suckerfish]',
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'treeandmenu-desc' => 'Добавляет функции парсера <code><nowiki>#tree</nowiki></code> и <code><nowiki>#menu</nowiki></code>, позволяющие выводить списки как раскрываемые деревья или выпадающие меню.
+Для раскрывающихся деревьев используется JavaScript-скрипт [http://www.destroydrop.com/javascripts/tree dTree], для выпадающих меню — [http://www.htmldog.com/articles/suckerfish/dropdowns/ Son of Suckerfish]',
+);
+

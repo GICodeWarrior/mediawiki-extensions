@@ -534,8 +534,9 @@ $messages['no'] = array(
  * @author Psubhashish
  */
 $messages['or'] = array(
+	'categorymultisort-defaultsortkey-name' => 'ପୂର୍ବ ନିର୍ଦ୍ଧାରିତ',
 	'categorymultisort-go' => 'ଯିବା',
-	'prefs-category' => 'ଶ୍ରେଣୀ:',
+	'prefs-category' => 'ବିଭାଗ',
 );
 
 /** Deitsch (Deitsch)

@@ -2053,6 +2053,7 @@ $messages['oc'] = array(
  * @author Odisha1
  */
 $messages['or'] = array(
+	'badimages-add-btn' => 'ଯୋଡ଼ିବେ',
 	'badimages-name' => 'ନାମ:',
 	'badimages-reason' => 'କାରଣ:',
 	'badimages-remove' => '(ବାହାର କରିବା)',

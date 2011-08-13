@@ -1489,6 +1489,7 @@ Tilgjengelige moduser er «plain», «normal» og «wiki».',
  */
 $messages['or'] = array(
 	'article-comments-name-string' => 'ନାମ',
+	'article-comments-url-string' => 'ୟୁ.ଆର୍.ଏଲ୍.',
 	'article-comments-comment-string' => 'ମତାମତ',
 	'article-comments-comment-field' => 'ମତାମତ:',
 	'article-comments-submit-button' => 'ଦାଖଲକରିବା',

@@ -2866,6 +2866,17 @@ $messages['oc'] = array(
 	'tasks-pref-showtaskcomments' => 'Veire la pagina de comentaris a prepaus dels prètzfaches.',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Odisha1
+ */
+$messages['or'] = array(
+	'tasks_search_form_title' => 'ଖୋଜିବା',
+	'tasks_search_status' => 'ସ୍ଥିତି',
+	'tasks_previous' => 'ପୂର୍ବବର୍ତ୍ତୀ',
+	'tasks_next' => 'ପରବର୍ତ୍ତୀ',
+	'tasks_status_open' => 'ଖୋଲ',
+);
+
 /** Ossetic (Иронау)
  * @author Amikeco
  */

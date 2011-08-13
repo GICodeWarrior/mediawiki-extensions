@@ -893,6 +893,14 @@ $messages['oc'] = array(
 	'contrib-tracking-button' => 'Contunhar',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Odisha1
+ */
+$messages['or'] = array(
+	'contrib-tracking-error' => 'ତ୍ରୁଟି',
+	'contrib-tracking-button' => 'ଚାଲୁରଖ',
+);
+
 /** Deitsch (Deitsch)
  * @author Xqt
  */
