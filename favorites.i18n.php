@@ -99,6 +99,7 @@ $messages['qqq'] = array(
 	'favoritelistanontext' => '$1 is substituted by {{msg|loginreqlink}}',
 	'favorite' => '{{Identical|Favorite}}',
 	'favoritelistall2' => '{{Identical|All}}',
+	'favoritelistedit-raw-titles' => '{{Identical|Title}}',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
@@ -142,6 +143,19 @@ $messages['be-tarask'] = array(
 Для выдаленьня назвы са сьпісу пазначце адпаведныя пазыцыі і націсьніце кнопку «{{int:Favoritelistedit-normal-submit}}».
 Таксама Вы можаце [[Special:Favoritelist/raw|рэдагаваць нефарматаваны сьпіс]].',
 	'favoritelistedit-normal-submit' => 'Выдаліць назвы',
+	'favoritelistedit-normal-done' => '$1 {{PLURAL:$1|назва была выдаленая|назвы былі выдаленыя|назваў былі выдаленыя}} з Вашага сьпісу ўлюблёных:',
+	'favoritelistedit-raw-title' => 'Рэдагаваць нефарматаваны сьпіс улюблёных',
+	'favoritelistedit-raw-legend' => 'Рэдагаваць нефарматаваны сьпіс улюблёных',
+	'favoritelistedit-raw-explain' => 'Ніжэй пададзены сьпіс назваў з Вашага сьпісу ўлюблёных, і Вы можаце яго рэдагаваць, дадаючы і выдаляючы іх;
+адна назва ў радку.
+Пасьля заканчэньня рэдагаваньня, націсьніце «{{int:Favoritelistedit-raw-submit}}».
+Таксама Вы можаце [[Special:Favoritelist/edit|выкарыстаць стандартны інтэрфэйс рэдагаваньня]].',
+	'favoritelistedit-raw-titles' => 'Назвы:',
+	'favoritelistedit-raw-submit' => 'Абнавіць сьпіс улюблёных',
+	'favoritelistedit-raw-done' => 'Ваш сьпіс улюблёных быў абноўлены.',
+	'favoritelistedit-raw-added' => '$1 {{PLURAL:$1|назва была дададзеная|назвы былі дададзеныя|назваў былі дададзеныя}}:',
+	'favoritelistedit-raw-removed' => '$1 {{PLURAL:$1|назва была выдаленая|назвы былі выдаленыя|назваў былі выдаленыя}}:',
+	'favoritelisttools-view' => 'Паказаць сьпіс улюблёных',
 );
 
 /** German (Deutsch)
