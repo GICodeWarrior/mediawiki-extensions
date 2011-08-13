@@ -3669,6 +3669,13 @@ $messages['oc'] = array(
 	'fogg-hidepreview' => 'Amagar la previsualizacion',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Odisha1
+ */
+$messages['or'] = array(
+	'fogg-license-title' => 'ଲାଇସେନ୍ସ',
+);
+
 /** Deitsch (Deitsch)
  * @author Xqt
  */

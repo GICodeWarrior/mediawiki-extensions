@@ -5379,7 +5379,11 @@ $messages['oc'] = array(
  * @author Odisha1
  */
 $messages['or'] = array(
+	'mwe-filesource' => 'ଉତ୍ସ:',
 	'mwe-link-login' => 'ଲଗଇନ',
+	'mwe-am-results_next' => 'ପରବର୍ତ୍ତୀ',
+	'mwe-am-results_prev' => 'ପୂର୍ବବର୍ତ୍ତୀ',
+	'mwe-am-layout' => 'ବିନ୍ୟାସ:',
 );
 
 /** Ossetic (Иронау)
