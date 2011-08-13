@@ -121,14 +121,15 @@ $messages['cs'] = array(
 /** German (Deutsch)
  * @author Als-Holder
  * @author DaSch
+ * @author Kghbln
  * @author Revolus
  */
 $messages['de'] = array(
-	'stalkerlog-desc' => 'Fügt ein [[Special:Log/stalkerlog|Logbuch]] der An- und Abmeldungen hinzu',
-	'stalkerlog-log-login' => 'angemeldet.',
-	'stalkerlog-log-logout' => 'abgemeldet.',
+	'stalkerlog-desc' => 'Ergänzt ein [[Special:Log/stalkerlog|Logbuch]] der An- und Abmeldungen von Benutzern',
+	'stalkerlog-log-login' => 'meldete sich an.',
+	'stalkerlog-log-logout' => 'meldete sich ab.',
 	'stalkerlog-log-type' => 'Authentifizierungs-Logbuch',
-	'stalkerlog-log-text' => 'Dies ist das Logbuch der An- und Abmeldungen.',
+	'stalkerlog-log-text' => 'Dies ist das Logbuch der An- und Abmeldungen von Benutzern.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
