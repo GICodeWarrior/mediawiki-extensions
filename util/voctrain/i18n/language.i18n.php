@@ -4981,6 +4981,7 @@ $messages['tl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Emperyan
  * @author Homonihilis
  * @author Joseph
  * @author Karduelis
@@ -4989,10 +4990,15 @@ $messages['tr'] = array(
 	'voctrain_Hello_World' => 'MERHABA VİKİ!',
 	'voctrain_Permission_Denied' => 'İzin Reddedildi',
 	'voctrain_try_again_' => 'tekrar dene?',
+	'voctrain_Action_unknown' => 'Bilinmeyen eylem',
 	'voctrain_User_added' => 'Kullanıcı eklendi',
 	'voctrain_Hello_username_welcome_to_the_omega_language_trainer' => 'Merhaba, %username, omega dil eğitmenine hoşgeldiniz',
 	'voctrain_continue' => 'devam et',
+	'voctrain_bye' => 'güle güle',
+	'voctrain_Number_of_questions' => 'Soru sayısı',
 	'voctrain_Languages' => 'Diller',
+	'voctrain_Please_specify_the_languages_you_want_to_test_in' => 'Denemek istediğiniz dilleri lütfen belirtiniz',
+	'voctrain_Questions' => 'Sorular',
 	'voctrain_Answers' => 'Cevaplar',
 	'voctrain_other' => 'diğer',
 );
