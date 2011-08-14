@@ -12,7 +12,7 @@ class SpecialUserDebugInfo extends SpecialPage {
 	public function execute( $subpage ) {
 		$this->setHeaders();
 		global $wgOut;
-		$wgOut->addHTML( Xml::openElement( 'table', array( 'class' => 'TablePager' ) ) );
+		$wgOut->addHTML( Xml::openElement( 'table', array( 'class' => 'wikitable' ) ) );
 
 		$wgOut->addHTML( '<thead>' );
 		$wgOut->addHTML( '<tr>' );
@@ -33,7 +33,7 @@ class SpecialUserDebugInfo extends SpecialPage {
 			$this->printRow( 'userdebuginfo-remotehost', $_SERVER['REMOTE_HOST'] );
 		}
 
-		$this->printRow( 'userdebuginfo-remoteaddr', $_SERVER['REMOTE_ADDR'] );
+		$this->printRow( 'userdebuginfo-remoteaddr', wfGetIP() );
 		$this->printRow( 'userdebuginfo-language', htmlspecialchars( $_SERVER['HTTP_ACCEPT_LANGUAGE'] ) );
 
 		$wgOut->addHTML( '</tbody>' );
