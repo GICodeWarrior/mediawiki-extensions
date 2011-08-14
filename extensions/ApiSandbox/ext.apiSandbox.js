@@ -193,7 +193,13 @@ jQuery( function( $ ) {
 
 	function createInputs( info ) {
 		currentInfo = info;
-		$help.html( smartEscape( info.description ) );
+		var desc = smartEscape( info.description );
+		if ( isset( info.helpurls ) && isset( info.helpurls[0] ) && info.helpurls[0] ) {
+			desc = desc.replace( /^([^\r\n\.]*)/, 
+				'<a target="_blank" href="' + mw.html.escape( info.helpurls[0] ) + '">$1</a>'
+			);
+		}
+		$help.html( desc );
 		var s = '<table class="api-sandbox-options">\n<tbody>';
 		for ( var i = 0; i < info.parameters.length; i++ ) {
 			var param = info.parameters[i],
