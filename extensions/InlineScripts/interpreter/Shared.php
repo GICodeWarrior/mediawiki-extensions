@@ -1,9 +1,28 @@
 <?php
-
 /**
- * This file contains implementation-independent interface files for
- * inline scripts interpreter.
+ * Built-in scripting language for MediaWiki: implementation-independent interface 
+ * for scripts parser.
+ * Copyright (C) 2009-2011 Victor Vasiliev <vasilvv@gmail.com>
+ * http://www.mediawiki.org/
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
  */
+
+if( !defined( 'MEDIAWIKI' ) )
+	die();
 
 /**
  * This class represents a terminal of the script grammar.
@@ -11,6 +30,7 @@
 class ISToken {
 	// Constant values should match ones in syntax.txt
 	const TEnd = '$';
+	const TAppend = 'append';
 	const TBreak = 'break';
 	const TCatch = 'catch';
 	const TColon = 'colon';	// :
@@ -19,6 +39,7 @@ class ISToken {
 	const TContains = 'contains';
 	const TContinue = 'continue';
 	const TDelete = 'delete';
+	const TDoubleColon = 'doublecolon';
 	const TElse = 'else';
 	const TEqualsToOperator = 'equalsto';	// ==, ===, != or !==
 	const TFalse = 'false';
@@ -37,16 +58,19 @@ class ISToken {
 	const TMulOperator = 'mul';	// *, / or %
 	const TNull = 'null';
 	const TPow = 'pow';	// **
+	const TReturn = 'return';
 	const TRightBracket = 'rightbracket';	// )
 	const TRightCurly = 'rightcurly';	// }
 	const TRightSquare = 'rightsquare';	// ]
 	const TSemicolon = 'semicolon';	// ;
 	const TSet = 'setto';	// =
+	const TSelf = 'self';
 	const TString = 'string';
 	const TSumOperator = 'sum';	// + or -
 	const TTrinary = 'trinary';	// ?
 	const TTrue = 'true';
 	const TTry = 'try';
+	const TYield = 'yield';
 
 	var $type;
 	var $value;
@@ -92,6 +116,14 @@ class ISParserTreeNode {
 		return $this->mChildren;
 	}
 
+	public function getChildrenCount() {
+		return count( $this->mChildren );
+	}
+
+	public function hasSingleChild() {
+		return count( $this->mChildren ) == 1;
+	}
+
 	public function getType() {
 		return $this->mType;
 	}
@@ -117,6 +149,9 @@ class ISParserTreeNode {
 	}
 }
 
+/**
+ * Generalized script parser.
+ */
 interface ISParser {
 	/**
 	 * If this function returns true, code scanner is passed to parse().
@@ -130,7 +165,7 @@ interface ISParser {
 	 * @param maxTokens int Maximal amount of tokens
 	 * @return ISParserTreeNode
 	 */
-	public function parse( $input, $maxTokens );
+	public function parse( $input, $module, $maxTokens );
 }
 
 class ISException extends MWException {}
@@ -138,12 +173,14 @@ class ISException extends MWException {}
 // Exceptions that we might conceivably want to report to ordinary users
 // (i.e. exceptions that don't represent bugs in the extension itself)
 class ISUserVisibleException extends ISException {
-	function __construct( $exception_id, $line, $params = array() ) {
-		$msg = wfMsgExt( 'inlinescripts-exception-' . $exception_id, array(), array_merge( array($line), $params ) );
+	function __construct( $exception_id, $module, $line, $params = array() ) {
+		$codelocation = wfMsg( 'inlinescripts-codelocation', $module, $line );
+		$msg = wfMsgExt( 'inlinescripts-exception-' . $exception_id, array(), array_merge( array( $codelocation ), $params ) );
 		parent::__construct( $msg );
 
 		$this->mExceptionID = $exception_id;
 		$this->mLine = $line;
+		$this->mModule = $module;
 		$this->mParams = $params;
 	}
 
@@ -152,6 +189,46 @@ class ISUserVisibleException extends ISException {
 	}
 }
 
+/**
+ * Exceptions caused by the error on script transclusion error, i.e. not in script.
+ */
+class ISTransclusionException extends ISException {
+	function __construct( $exception_id, $params = array() ) {
+		$msg = wfMsgExt( 'inlinescripts-transerror-' . $exception_id, array(), $params );
+		parent::__construct( $msg );
+
+		$this->mExceptionID = $exception_id;
+		$this->mParams = $params;
+	}
+}
+
+/**
+ * Exceptions used for control structures that need to break out of deep function
+ * nesting level (e.g. break or continue).
+ */
+class ISControlException extends ISUserVisibleException {}
+
+/**
+ * Exception that allows to return from a function.
+ */
+class ISReturnException extends ISControlException {
+	function __construct( $result, $empty ) {
+		$this->mResult = $result;
+		$this->mEmpty = $empty;
+	}
+	
+	function getResult() {
+		return $this->mResult;
+	}
+
+	function isEmpty() {
+		return $this->mEmpty;
+	}
+}
+
+/**
+ * Code parser output.
+ */
 class ISParserOutput {
 	var $mTree, $mTokensCount, $mVersion;
 
@@ -166,16 +243,8 @@ class ISParserOutput {
 		return $this->mTree;
 	}
 
-	public function isOutOfDate() {
-		global $wgInlineScriptsParserClass;
-		return $wgInlineScriptsParserClass::getVersion() > $this->mVersion;
-	}
-
-	public function appendTokenCount( &$interpr ) {
-		global $wgInlineScriptsLimits;
-		$interpr->mTokens += @$this->mTokensCount;
-		if( $interpr->mTokens > $wgInlineScriptsLimits['tokens'] )
-			throw new ISUserVisibleException( 'toomanytokens', 0 );
+	public function getVersion() {
+		return $this->mVersion;
 	}
 }
 

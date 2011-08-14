@@ -1,7 +1,7 @@
 <?php
 /**
- * Built-in scripting language for MediaWiki
- * Copyright (C) 2009 Victor Vasiliev <vasilvv@gmail.com>
+ * Built-in scripting language for MediaWiki.
+ * Copyright (C) 2009-2011 Victor Vasiliev <vasilvv@gmail.com>
  * http://www.mediawiki.org/
  *
  * This program is free software; you can redistribute it and/or modify
@@ -27,140 +27,103 @@ $wgExtensionCredits['parserhook']['InlineScripts'] = array(
 	'path'           => __FILE__,
 	'name'           => 'InlineScripts',
 	'author'         => 'Victor Vasiliev',
-	'descriptionmsg' => 'inlinescriprs-desc',
+	'descriptionmsg' => 'inlinescripts-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:InlineScripts',
 );
 
 $dir = dirname(__FILE__) . '/';
-$wgExtensionMessagesFiles['InlineScripts'] = $dir . 'InlineScripts.i18n.php';
+$wgExtensionMessagesFiles['InlineScripts'] = $dir . 'i18n/Messages.php';
+$wgExtensionMessagesFiles['InlineScriptsMagic'] = $dir . 'i18n/Magic.php';
+$wgExtensionMessagesFiles['InlineScriptsNamespaces'] = $dir . 'i18n/Namespaces.php';
+
+$wgAutoloadClasses['ISHooks'] = $dir . '/Hooks.php';
+$wgAutoloadClasses['ISLinksUpdateHooks'] = $dir . '/LinksUpdate.php';
+
 $wgAutoloadClasses['ISInterpreter'] = $dir . 'interpreter/Interpreter.php';
 $wgAutoloadClasses['ISScanner'] = $dir . 'interpreter/Scanner.php';
 $wgAutoloadClasses['ISLRParser'] = $dir . 'interpreter/LRParser.php';
-$wgParserTestFiles[] = $dir . 'interpreterTests.txt';
-$wgHooks['ParserFirstCallInit'][] = 'InlineScriptsHooks::setupParserHook';
-$wgHooks['ParserClearState'][] = 'InlineScriptsHooks::clearState';
-//$wgHooks['ParserLimitReport'][] = 'InlineScriptsHooks::reportLimits';
 
+$wgParserTestFiles[] = $dir . 'interpreterTests.txt';
+$wgHooks['ParserFirstCallInit'][] = 'ISHooks::setupParserHook';
+$wgHooks['ParserLimitReport'][] = 'ISHooks::reportLimits';
+$wgHooks['ParserClearState'][] = 'ISHooks::clearState';
+$wgHooks['ParserTestTables'][] = 'ISHooks::addTestTables';
+
+$wgHooks['CanonicalNamespaces'][] = 'ISHooks::addCanonicalNamespaces';
+$wgHooks['ArticleViewCustom'][] = 'ISHooks::handleScriptView';
+$wgHooks['TitleIsWikitextPage'][] = 'ISHooks::isWikitextPage';
+
+$wgHooks['LinksUpdate'][] = 'ISLinksUpdateHooks::updateLinks';
+$wgHooks['ArticleEditUpdates'][] = 'ISLinksUpdateHooks::purgeCache';
+$wgHooks['ParserAfterTidy'][] = 'ISLinksUpdateHooks::appendToOutput';
+$wgHooks['BacklinkCacheGetPrefix'][] = 'ISLinksUpdateHooks::getBacklinkCachePrefix';
+$wgHooks['BacklinkCacheGetConditions'][] = 'ISLinksUpdateHooks::getBacklinkCacheConditions';
+
+/** Configuration */
+
+/**
+ * Script namespace numbers. Should be redefined before
+ * the inlcusion of the extension.
+ */
+if( !isset( $wgScriptsNamespaceNumbers ) ) {
+	$wgScriptsNamespaceNumbers = array(
+		'Module' => 20,
+		'Module_talk' => 21,
+	);
+}
+
+/**
+ * Different limits of the scripts.
+ */
 $wgInlineScriptsLimits = array(
 	/**
 	 * Maximal amount of tokens (strings, keywords, numbers, operators,
-	 * but not whitespace) to be parsed.
+	 * but not whitespace) in a single module to be parsed.
 	 */
-	'tokens' => 100000,
+	'tokens' => 1000000,
+
 	/**
 	 * Maximal amount of operations (multiplications, comarsions, function
 	 * calls) to be done.
 	 */
-	'evaluations' => 10000,
+	'evaluations' => 300000,
+
 	/**
-	 * Maximal depth of recursion when evaluating the parser tree. For
+	 * Maximal depth of recursion when evaluating the parser tree in a single function. For
 	 * example 2 + 2 * 2 ** 2 is parsed to (2 + (2 * (2 ** 2))) and needs
 	 * depth 3 to be parsed.
 	 */
-	'depth' => 250,
+	'depth' => 100,
 );
 
+/**
+ * Turn on to true if you have linked or copied wikiscripts.php and
+ * SyntaxHighlight_GeSHi extension is enabled.
+ */
+$wgInlineScriptsUseGeSHi = false;
+
+/**
+ * Class of the actual parser. Must implement ISParser interface, as well as
+ * static getVersion() method.
+ */
 $wgInlineScriptsParserClass = 'ISLRParser';
-$wgInlineScriptsUseCache = false;
 
-class InlineScriptsHooks {
-	static $scriptParser = null;
+/**
+ * Should be enabled unless you are debugging or just have sado-masochistic
+ * attitude towards your server.
+ */
+$wgInlineScriptsUseCache = true;
 
-	/**
-	 * Register parser hook
-	 * @param $parser Parser
-	 */
-	public static function setupParserHook( &$parser ) {
-		$parser->setFunctionTagHook( 'wikiscript', 'InlineScriptsHooks::scriptHook', SFH_OBJECT_ARGS );
-		$parser->setFunctionHook( 'inline', 'InlineScriptsHooks::inlineHook', SFH_OBJECT_ARGS );
-		return true;
-	}
+/**
+ * Indicates whether the function recursion is enabled. If it is, then users may
+ * build a Turing-complete machinge and do nice things like parsers, etc in wikitext!
+ */
+$wgInlineScriptsAllowRecursion = false;
 
-	/**
-	 * @static
-	 * @param  $parser Parser
-	 * @return bool
-	 */
-	public static function clearState( &$parser ) {
-		$parser->is_evalsCount = 0;
-		$parser->is_tokensCount = 0;
-		$parser->is_maxDepth = 0;
-		return true;
-	}
+/**
+ * Maximun call stack depth. Includes functions and invokations of parse() function.
+ */
+$wgInlineScriptsMaxCallStackDepth = 25;
 
-	/**
-	 * @static
-	 * @param  $parser Parser
-	 * @param  $frame
-	 * @param  $args
-	 * @return string
-	 */
-	public static function inlineHook( &$parser, $frame, $args ) {
-		wfProfileIn( __METHOD__ );
-		$scriptParser = self::getInterpreter();
-		try {
-			$result = $scriptParser->evaluate( $parser->mStripState->unstripBoth( $args[0] ),
-				$parser, $frame );
-		} catch( ISException $e ) {
-			$msg = nl2br( htmlspecialchars( $e->getMessage() ) );
-			wfProfileOut( __METHOD__ );
-			return "<strong class=\"error\">{$msg}</strong>";
-		}
-		wfProfileOut( __METHOD__ );
-		return trim( $result );
-	}
-
-	/**
-	 * @static
-	 * @param  $parser Parser
-	 * @param  $frame
-	 * @param  $code
-	 * @param  $attribs
-	 * @return string
-	 */
-	public static function scriptHook( &$parser, $frame, $code, $attribs ) {
-		wfProfileIn( __METHOD__ );
-		$scriptParser = self::getInterpreter();
-		try {
-			$result = $scriptParser->execute( $code, $parser, $frame );
-		} catch( ISException $e ) {
-			$msg = nl2br( htmlspecialchars( $e->getMessage() ) );
-			wfProfileOut( __METHOD__ );
-			return "<strong class=\"error\">{$msg}</strong>";
-		}
-		if( !(isset( $attribs['noparse'] ) && $attribs['noparse']) ) {
-			wfProfileIn( __METHOD__ . '-replacevars' );
-			$result = $parser->replaceVariables( $result, $frame );
-			wfProfileOut( __METHOD__ . '-replacevars' );
-		}
-		wfProfileOut( __METHOD__ );
-		return trim( $result );
-	}
-
-	/**
-	 * @static
-	 * @param  $parser Parser
-	 * @param  $report
-	 * @return bool
-	 */
-	public static function reportLimits( $parser, &$report ) {
-		global $wgInlineScriptsLimits;
-		$i = self::getInterpreter();
-		$report .=
-			"Inline scripts parser evaluations: {$i->mEvaluations}/{$wgInlineScriptsLimits['evaluations']}\n" .
-			"Inline scripts tokens: {$i->mTokens}/{$wgInlineScriptsLimits['tokens']}\n" .
-			"Inline scripts AST maximal depth: {$i->mMaxRecursion}/{$wgInlineScriptsLimits['depth']}\n";
-		return true;
-	}
-
-	/**
-	 * @static
-	 * @return InlineScriptInterpreter
-	 */
-	public static function getInterpreter() {
-		if( !self::$scriptParser ) {
-			self::$scriptParser = new ISInterpreter();
-		}
-		return self::$scriptParser;
-	}
-}
+define( 'NS_MODULE', $wgScriptsNamespaceNumbers['Module'] );
+define( 'NS_MODULE_TALK', $wgScriptsNamespaceNumbers['Module_talk'] );

@@ -1,4 +1,28 @@
 <?php
+/**
+ * Built-in scripting language for MediaWiki: data.
+ * Based on the AbuseFilter AFData.
+ * Copyright (C) 2008-2011 Victor Vasiliev <vasilvv@gmail.com>, Andrew Garrett <andrew@epstone.net>
+ * http://www.mediawiki.org/
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
+ */
+
+if( !defined( 'MEDIAWIKI' ) )
+	die();
 
 /**
  * Class implementing data in the scripts.
@@ -155,7 +179,7 @@ class ISData {
 		throw new ISException( "Invalid comparison operation: {$op}" ); // Should never happen
 	}
 	
-	public static function mulRel( $a, $b, $op, $pos ) {	
+	public static function mulRel( $a, $b, $op, $module, $pos ) {	
 		// Figure out the type.
 		if( ( $a->type == self::DFloat || $b->type == self::DFloat ) &&
 			$op != '/' ) {
@@ -169,7 +193,7 @@ class ISData {
 		}
 
 		if( $op != '*' && $b == 0 ) {
-			throw new ISUserVisibleException( 'dividebyzero', $pos, array($a) );
+			throw new ISUserVisibleException( 'dividebyzero', $module, $pos, array($a) );
 		}
 
 		$data = null;
@@ -195,12 +219,16 @@ class ISData {
 			return new ISData( self::DString, $a->toString() . $b->toString() );
 		elseif( $a->type == self::DList && $b->type == self::DList )
 			return new ISData( self::DList, array_merge( $a->toList(), $b->toList() ) );
+		elseif( $a->type == self::DList )
+			return new ISData( self::DList, array_merge( $a->toList(), array( $b ) ) );
+		elseif( $a->type == self::DAssoc && $b->type == self::DAssoc )
+			return new ISData( self::DAssoc, array_merge( $a->toAssoc(), $b->toAssoc() ) );
 		elseif( $a->type == self::DInt && $b->type == self::DInt )
 			return new ISData( self::DInt, $a->toInt() + $b->toInt() );
 		else
 			return new ISData( self::DFloat, $a->toFloat() + $b->toFloat() );
 	}
-	
+
 	public static function sub( $a, $b ) {
 		if( $a->type == self::DInt && $b->type == self::DInt )
 			return new ISData( self::DInt, $a->toInt() - $b->toInt() );

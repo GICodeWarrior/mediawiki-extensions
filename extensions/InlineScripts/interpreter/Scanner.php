@@ -1,4 +1,28 @@
 <?php
+/**
+ * Built-in scripting language for MediaWiki: scanner.
+ * Based on the AbuseFilter scanner.
+ * Copyright (C) 2008-2011 Victor Vasiliev <vasilvv@gmail.com>, Andrew Garrett <andrew@epstone.net>
+ * http://www.mediawiki.org/
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
+ */
+
+if( !defined( 'MEDIAWIKI' ) )
+	die();
 
 /**
  * Lexical analizator for inline scripts. Splits strings to tokens.
@@ -7,7 +31,7 @@
 require_once( 'Shared.php' );
 
 class ISScanner implements Iterator {
-	var $mCode, $mPos, $mCur, $mEof;
+	var $mModule, $mCode, $mPos, $mCur, $mEof;
 
 	// Order is important. The punctuation-matching regex requires that
 	//  ** comes before *, etc. They are sorted to make it easy to spot
@@ -19,7 +43,7 @@ class ISScanner implements Iterator {
 		'**', '*', 			// Multiplication/exponentiation
 		'/', '+', '-', '%', // Other arithmetic
 		'&', '|', '^', 		// Logic
-		'?', ':', 			// Ternery
+		'?', '::', ':', 	// Ternery
 		'<=','<', 			// Less than
 		'>=', '>', 			// Greater than
 		'===', '==', '=', 	// Equality
@@ -29,12 +53,12 @@ class ISScanner implements Iterator {
 	);
 
 	static $mKeywords = array(
-		'in', 'true', 'false', 'null', 'contains', 'break',
-		'if', 'then', 'else', 'for', 'do', 'try', 'catch',
-		'continue', 'isset', 'delete',
+		'append', 'break', 'catch', 'contains', 'continue', 'delete', 'else', 'false', 'for',
+		'function', 'if', 'in', 'isset', 'null', 'return', 'self', 'then', 'true', 'try', 'yield',
 	);
 
-	public function __construct( $code ) {
+	public function __construct( $module, $code ) {
+		$this->mModule = $module;
 		$this->mCode = $code;
 		$this->rewind();
 	}
@@ -88,6 +112,16 @@ class ISScanner implements Iterator {
 		if ( substr($this->mCode, $this->mPos, 2) == '/*' ) {
 			$this->mPos = strpos( $this->mCode, '*/', $this->mPos ) + 2;
 			return self::nextToken();
+		}
+
+		if( substr( $this->mCode, $this->mPos, 2 ) == '//' ) {
+			$newlinePos = strpos( $this->mCode, "\n", $this->mPos );
+			if( $newlinePos === false ) {
+				return array( null, ISToken::TEnd );
+			} else {
+				$this->mPos = $newlinePos + 1;
+				return self::nextToken();
+			}
 		}
 
 		// Strings
@@ -144,7 +178,7 @@ class ISScanner implements Iterator {
 					$this->mPos++;
 				}
 			}
-			throw new ISUserVisibleException( 'unclosedstring', $this->mPos, array() );
+			throw new ISUserVisibleException( 'unclosedstring', $this->mModule, $this->mPos, array() );
 		}
 
 		// Find operators
@@ -231,7 +265,7 @@ class ISScanner implements Iterator {
 		$matches = array();
 
 		if ( preg_match( $idSymbolRegex, $this->mCode, $matches, 0, $this->mPos ) ) {
-			$tok = strtolower( $matches[0] );
+			$tok = $matches[0];
 
 			$type = in_array( $tok, self::$mKeywords )
 				? $tok : ISToken::TID;
@@ -241,11 +275,13 @@ class ISScanner implements Iterator {
 		}
 
 		throw new ISUserVisibleException(
-			'unrecognisedtoken', $this->mPos, array( substr( $this->mCode, $this->mPos ) ) );
+			'unrecognisedtoken', $this->mModule, $this->mPos, array( substr( $this->mCode, $this->mPos ) ) );
 	}
 
 	private static function getOperatorType( $op ) {
 		switch( $op ) {
+			case '::':
+				return ISToken::TDoubleColon;
 			case ':':
 				return ISToken::TColon;
 			case ',':

@@ -462,8 +462,8 @@ END;
 		return 'array( ' . implode( ', ', $result ) . ' )';
 	}
 
-	public function buildPHPFile() {
-		$date = gmdate( 'Y-m-d H:i' );
+	public function buildPHPFile( $ts ) {
+		$date = $ts;
 		$s = <<<ENDOFHEADER
 <?php
 
@@ -534,10 +534,28 @@ ENDOFHEADER;
 		$s .= "}\n";
 		return $s;
 	}
+	
+	public function buildPHPVersionFile( $ts ) {
+		return <<<EOF
+<?php
+
+/**
+ * This file includes timestamp which indicates the version of LRTable.php file.
+ * Since the file is too large, loading it every time is expensive and we store the
+ * version in separate file.
+ */
+
+define( 'IS_LR_VERSION', "{$ts}" );
+
+EOF;
+	}
 }
+
+$ts = gmdate( 'Y-m-d H:i:s' );
 
 $definition = file_get_contents( dirname( __FILE__ ) . '/syntax.txt' );
 $grammar = Grammar::parse( $definition );
 $grammar->buildLRTable();
 file_put_contents( 'LRTableBuildReport.html', $grammar->buildHTMLDump() );
-file_put_contents( 'LRTable.php', $grammar->buildPHPFile() );
+file_put_contents( 'LRTable.php', $grammar->buildPHPFile( $ts ) );
+file_put_contents( 'LRTableVersion.php', $grammar->buildPHPVersionFile( $ts ) );

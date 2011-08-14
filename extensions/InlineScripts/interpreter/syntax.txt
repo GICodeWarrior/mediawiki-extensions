@@ -1,6 +1,11 @@
-<program> ::= <stmts>
-<stmts> ::= <stmts> <stmt> | <stmt>
+<module> ::= <functions>
+<functions> ::= <function> <functions> | <function>
 
+<function> ::= function id leftbracket <args> rightbracket leftcurly <stmts> rightcurly
+<function> ::= function id leftbracket rightbracket leftcurly <stmts> rightcurly
+<args> ::= id comma <args> | id
+
+<stmts> ::= <stmts> <stmt> | <stmt>
 <stmt> ::= <expr> semicolon
 <stmt> ::= if leftbracket <expr> rightbracket <stmt>
 <stmt> ::= if leftbracket <expr> rightbracket <stmt> else <stmt>
@@ -8,7 +13,9 @@
 <stmt> ::= try <stmt> catch leftbracket <lvalue> rightbracket <stmt>
 <stmt> ::= leftcurly <stmts> rightcurly
 
-<expr> ::= <exprSet>
+<expr> ::= <exprReturn>
+<exprReturn> ::= return | return <exprSet> | <exprSet>
+<exprReturn> ::= append <exprSet> | yield <exprSet>
 <exprSet> ::= <lvalue> setto <exprSet> | <exprTrinary>
 <exprTrinary> ::= <exprLogical> trinary <exprTrinary> colon <exprTrinary> | <exprLogical>
 <exprLogical> ::= <exprLogical> logicop <exprCompare> | <exprCompare>
@@ -20,13 +27,15 @@
 <exprInvert>  ::= invert <exprKeyword> | <exprKeyword>
 <exprKeyword> ::= <exprUnary> in <exprUnary> | <exprUnary> contains <exprUnary> | <exprUnary>
 <exprUnary> ::= sum <exprFunction> | <exprFunction>
-<exprFunction> ::= id leftbracket <commaListPlain> rightbracket | id leftbracket rightbracket
+<exprFunction> ::= <funcid> leftbracket <commaListPlain> rightbracket | <funcid> leftbracket rightbracket
 <exprFunction> ::= <varfunc> leftbracket <lvalue> rightbracket | <exprAtom>
 <exprAtom> ::= <lvalue> | <atom> | break | continue
 <exprAtom> ::= leftbracket <expr> rightbracket
 <exprAtom> ::= leftsquare <commaListPlain> rightsquare | leftcurly <commaListAssoc> rightcurly
 
 <varfunc> ::= isset | delete
+<funcid> ::= id | <exprAtom> doublecolon id | self doublecolon id
+
 <commaListPlain> ::= <commaListPlain> comma <expr> | <expr>
 <commaListAssoc> ::= <commaListAssoc> comma <keyValue> | <keyValue>
 <keyValue> ::= <expr> colon <expr>

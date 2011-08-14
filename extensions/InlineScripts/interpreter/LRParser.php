@@ -8,30 +8,32 @@
  * See http://en.wikipedia.org/wiki/LR_parser for details of how does that works.
  */
 
+require_once( 'LRTableVersion.php' );
+
 class ISLRParser implements ISParser {
 	const Shift = 0;
 	const Reduce = 1;
 	const Accept = 2;
 
-	var $mNonterminals, $mProductions, $mAction, $mGoto;
+	var $mLoaded, $mNonterminals, $mProductions, $mAction, $mGoto;
 
 	public static function getVersion() {
-		return ISLRTable::Timestamp;
-	}
-
-	public function __construct() {
-		$this->loadGrammar();
+		return IS_LR_VERSION;
 	}
 
 	private function loadGrammar() {
 		wfProfileIn( __METHOD__ );
-		
+
+		if( $this->mLoaded )
+			return;
+
 		require_once( 'LRTable.php' );
 
 		$this->mNonterminals = ISLRTable::$nonterminals;
 		$this->mProductions = ISLRTable::$productions;
 		$this->mAction = ISLRTable::$action;
 		$this->mGoto = ISLRTable::$goto;
+		$this->mLoaded = true;
 		
 		wfProfileOut( __METHOD__ );
 	}
@@ -40,7 +42,9 @@ class ISLRParser implements ISParser {
 		return true;
 	}
 
-	public function parse( $scanner, $maxTokens ) {
+	public function parse( $scanner, $module, $maxTokens ) {
+		$this->loadGrammar();
+
 		$states = array( array( null, 0 ) );
 		$scanner->rewind();
 		$tokenCount = 0;
@@ -58,15 +62,15 @@ class ISLRParser implements ISParser {
 			$tokenCount++;
 			if( $tokenCount > $maxTokens ) {
 				wfProfileOut( __METHOD__ );
-				throw new ISUserVisibleException( 'toomanytokens', $token->line );
+				throw new ISUserVisibleException( 'toomanytokens', $module, $token->line );
 			}
 
 			list( $stateval, $state ) = end( $states );
 			$act = @$this->mAction[$state][$cur];
 			if( !$act ) {
 				wfProfileOut( __METHOD__ );
-				throw new ISUserVisibleException( 'unexceptedtoken', $token->line,
-					array( $token, implode( ', ', array_keys( @$this->mAction[$state] ) ) ) );
+				throw new ISUserVisibleException( 'unexceptedtoken', $module, $token->line,
+					array( $token, implode( ', ', array_keys( @$this->mAction[$state] ) ), $state ) );
 			}
 			if( $act[0] == self::Shift ) {
 					$states[] = array( $token, $act[1] );
