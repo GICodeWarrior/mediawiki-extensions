@@ -27,43 +27,35 @@ class SpecialUserDebugInfo extends SpecialPage {
 
 		$wgOut->addHTML( '<tbody>' );
 
-		$wgOut->addHTML( '<tr>' );
-		$wgOut->addHTML( '<td>' );
-		$wgOut->addWikiMsg( 'userdebuginfo-useragent' );
-		$wgOut->addHTML( '</td>' );
-
-		$wgOut->addHTML( '<td>' );
-		$wgOut->addHTML( $_SERVER['HTTP_USER_AGENT'] );
-		$wgOut->addHTML( '</td>' );
-
-		$wgOut->addHTML( '</tr>' );
+		$this->printRow( 'userdebuginfo-useragent', htmlspecialchars( $_SERVER['HTTP_USER_AGENT'] ) );
 
 		if ( isset( $_SERVER['REMOTE_HOST'] ) ) {
-			$wgOut->addHTML( '<tr>' );
-			$wgOut->addHTML( '<td>' );
-			$wgOut->addWikiMsg( 'userdebuginfo-remotehost' );
-			$wgOut->addHTML( '</td>' );
-
-			$wgOut->addHTML( '<td>' );
-			$wgOut->addHTML( $_SERVER['REMOTE_HOST'] );
-			$wgOut->addHTML( '</td>' );
-
-			$wgOut->addHTML( '</tr>' );
+			$this->printRow( 'userdebuginfo-remotehost', $_SERVER['REMOTE_HOST'] );
 		}
 
-		$wgOut->addHTML( '<tr>' );
-		$wgOut->addHTML( '<td>' );
-		$wgOut->addWikiMsg( 'userdebuginfo-remoteaddr' );
-		$wgOut->addHTML( '</td>' );
-
-		$wgOut->addHTML( '<td>' );
-		$wgOut->addHTML( $_SERVER['REMOTE_ADDR'] );
-		$wgOut->addHTML( '</td>' );
-
-		$wgOut->addHTML( '</tr>' );
+		$this->printRow( 'userdebuginfo-remoteaddr', $_SERVER['REMOTE_ADDR'] );
 
 		$wgOut->addHTML( '</tbody>' );
 		$wgOut->addHTML( '</table>' );
+	}
+
+	/**
+	 * @param $key
+	 * @param $value
+	 * @return void
+	 */
+	private function printRow( $key, $value ) {
+		global $wgOut;
+		$wgOut->addHTML( '<tr>' );
+		$wgOut->addHTML( '<td>' );
+		$wgOut->addWikiMsg( $key );
+		$wgOut->addHTML( '</td>' );
+
+		$wgOut->addHTML( '<td>' );
+		$wgOut->addHTML( $value );
+		$wgOut->addHTML( '</td>' );
+
+		$wgOut->addHTML( '</tr>' );
 	}
 }
 
