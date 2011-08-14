@@ -25,7 +25,8 @@ final class LiveTranslateHooks {
 	 */
 	public static function onArticleViewHeader( Article &$article, &$outputDone, &$useParserCache ) {
 		global $egLiveTranslateLanguages;
-
+		$egLiveTranslateLanguages = array_unique( $egLiveTranslateLanguages );
+		
 		$title = $article->getTitle();
 
 		$currentLang = LiveTranslateFunctions::getCurrentLang( $title );
