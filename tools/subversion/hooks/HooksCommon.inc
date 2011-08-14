@@ -60,7 +60,7 @@ class CommitInfo {
 		'pingURL' => array(
 			'http://www.mediawiki.org/w/api.php?action=codeupdate&format=xml&repo=MediaWiki&rev=$REV',
 		),
-		'pingURL' => array(
+		'pingJenkins' => array(
 			'http://ci2.tesla.usability.wikimedia.org:8080/subversion/$UUID/notifyCommit?rev=$REV',
 		),
 	);
@@ -106,7 +106,7 @@ class CommitInfo {
 	 */
 	public function runPostCommitPings() {
 		foreach( $this->postCommitPings as $ping => $params ) {
-			call_user_func_array( array( $this, $test ), $params );
+			call_user_func_array( array( $this, $ping ), $params );
 		}
 		return 0;
 	}
@@ -116,7 +116,7 @@ class CommitInfo {
 	 *
 	 * @return string
 	 */
-	private function getLogMessage() {
+	protected function getLogMessage() {
 		$output = null;
 		$cmd = "{$this->svnlook} log -t '{$this->transaction}' '{$this->repo}'";
 		exec( $cmd, $output );
@@ -128,7 +128,7 @@ class CommitInfo {
 	 *
 	 * @return string
 	 */
-	private function getAuthor() {
+	protected function getAuthor() {
 		$output = null;
 		$cmd = "{$this->svnlook} author -t '{$this->transaction}' '{$this->repo}'";
 		exec( $cmd, $output );
@@ -140,7 +140,7 @@ class CommitInfo {
 	 *
 	 * @return array filenames are keys and status letters are values
 	 */
-	private function getCommitList() {
+	protected function getCommitList() {
 		$output = null;
 		$cmd = "{$this->svnlook} changed -t '{$this->transaction}' '{$this->repo}'";
 		exec( $cmd, $output );
@@ -161,7 +161,7 @@ class CommitInfo {
 	 * @param $fileTypes array of file types used for filtering
 	 * @return array
 	 */
-	private function getChangedFiles( array $fileTypes = array() ) {
+	protected function getChangedFiles( array $fileTypes = array() ) {
 		$list = $this->getCommitList();
 		$files = array();
 		foreach ( $list as $file => $status ) {
@@ -187,7 +187,7 @@ class CommitInfo {
 	 *
 	 * @return String
 	 */
-	private function getRepoUUID() {
+	protected function getRepoUUID() {
 		$output = null;
 		$cmd = "{$this->svnlook} uuid '{$this->repo}'";
 		exec( $cmd, $output );
@@ -202,7 +202,7 @@ class CommitInfo {
 	 *
 	 * @return bool
 	 */
-	private function testLogMessageLength( $minLength = 1, $regex = '' ) {
+	protected function testLogMessageLength( $minLength = 1, $regex = '' ) {
 		$msg = trim( $this->getLogMessage() );
 		$length = strlen( $msg );
 		if ( $length < $minLength ) {
@@ -223,7 +223,7 @@ class CommitInfo {
 	 * @param $fileTypes array
 	 * @return bool|string
 	 */
-	private function testPHPLint( $fileTypes ) {
+	protected function testPHPLint( $fileTypes ) {
 		$output = null;
 		$result = '';
 		$changedFiles = $this->getChangedFiles( $fileTypes );
@@ -245,7 +245,7 @@ class CommitInfo {
 	 * @param $badUsers array of bad user names
 	 * @return bool|string
 	 */
-	private function testBadUsers( $badUsers ) {
+	protected function testBadUsers( $badUsers ) {
 		$ourUser = $this->getAuthor();
 		if( in_array( $ourUser, $badUsers ) ) {
 			return "Please do not commit as '{$ourUser}', use your real commit name";
@@ -259,7 +259,7 @@ class CommitInfo {
 	 * @param $smtp String SMTP host to use
 	 * @todo Make the CR header less hardcoded
 	 */
-	private function notifyMailingList( $list, $smtp, $header = '' ) {
+	protected function notifyMailingList( $list, $smtp, $header = '' ) {
 		$cmd = "{$this->svnnotify} --repos-path \"{$this->repo}\" --revision \"{$this->transaction}\""
 			. " --to \"{$list}\" --smtp {$smtp} --subject-prefix \"SVN: \""
 			. " --subject-cx --no-first-line --with-diff --user-domain \"svn.wikimedia.org\""
@@ -272,8 +272,17 @@ class CommitInfo {
 	 * @param $ciaScript String Name of the bot script
 	 * @param $acctName String Name of the account with cia.vc
 	 */
-	private function notifyIRCBot( $ciaScript, $acctName ) {
+	protected function notifyIRCBot( $ciaScript, $acctName ) {
 		exec( "{$ciaScript} \"{$this->repo}\" \"{$this->transaction}\" \"{$acctName}\"" );
+	}
+	
+	/**
+	 * Jenkins needs a little more info than a normal ping. So append post data.
+	 */
+	protected function pingJenkins( $url ) {
+		$output = null;
+		exec( "{$this->svnlook} changed --revision {$this->transaction} {$this->repo}", $output );
+		$this->pingUrl( $url, implode( "\n", $output ) );
 	}
 
 	/**
@@ -281,13 +290,14 @@ class CommitInfo {
 	 * @param $url String A url to submit revision info to $REV will be replaced
 	 * with the revision number, and $UUID will become the repo unique identifier
 	 */
-	private function pingURL( $url ) {
+	protected function pingURL( $url, $postData = '' ) {
 		$url = str_replace( array( '$REV', '$UUID' ),
 			array( $this->transaction, $this->getRepoUUID() ), $url );
 		$ch = curl_init();
 		curl_setopt( $ch, CURLOPT_URL,$url );
 		curl_setopt( $ch, CURLOPT_POST, true );
-		curl_setopt( $ch, CURLOPT_POSTFIELDS, '' );
+		curl_setopt( $ch, CURLOPT_POSTFIELDS, $postData );
+		curl_setopt( $ch, CURLOPT_USERAGENT, 'post-commit-cr-hook/0.1' );
 		curl_exec( $ch );
 		curl_close( $ch );
 	}
