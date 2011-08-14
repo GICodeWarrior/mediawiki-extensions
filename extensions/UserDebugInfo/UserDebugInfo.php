@@ -1,4 +1,8 @@
 <?php
+/**
+ * @copyright Copyright © 2011 Sam Reed
+ * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
+ */
 
 $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
