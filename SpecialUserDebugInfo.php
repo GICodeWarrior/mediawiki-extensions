@@ -34,15 +34,15 @@ class SpecialUserDebugInfo extends SpecialPage {
 		}
 
 		$this->printRow( 'userdebuginfo-remoteaddr', $_SERVER['REMOTE_ADDR'] );
+		$this->printRow( 'userdebuginfo-language', htmlspecialchars( $_SERVER['HTTP_ACCEPT_LANGUAGE'] ) );
 
 		$wgOut->addHTML( '</tbody>' );
 		$wgOut->addHTML( '</table>' );
 	}
 
 	/**
-	 * @param $key
-	 * @param $value
-	 * @return void
+	 * @param $key string Message key to be converted for output
+	 * @param $value string Text to output
 	 */
 	private function printRow( $key, $value ) {
 		global $wgOut;
