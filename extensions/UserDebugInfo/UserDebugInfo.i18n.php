@@ -13,6 +13,7 @@ $messages['en'] = array(
 	'userdebuginfo-remoteaddr' => 'HTTP remote address',
 	'userdebuginfo-key' => 'Key',
 	'userdebuginfo-value' => 'Value',
+	'userdebuginfo-language' => 'Language',
 );
 
 /**
