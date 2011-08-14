@@ -10,6 +10,11 @@
 	
 	var _this = this;
 	
+	/**
+	 * Start both the local and remote components of the translation process.
+	 * 
+	 * @since 1.2
+	 */
 	this.doTranslations = function() {
 		_this.runningJobs = 2;
 		
@@ -17,6 +22,15 @@
 		_this.doRemoteTranslation( _this.completeTranslationProcess );
 	};
 	
+	/**
+	 * Finds and returns the special words in the page by looking
+	 * for spans with notranslate class. This obviously only works
+	 * after these tags have been inserted with insertSpecialWords.
+	 * 
+	 * @since 1.2
+	 * 
+	 * @return Array
+	 */
 	this.findSpecialWords = function() {
 		var words = [];
 		
@@ -26,7 +40,16 @@
 		
 		return words;
 	};
-	
+
+	/**
+	 * Does the local transltaions by obtaining the
+	 * translations for the special words and replacing
+	 * them where a translation is available.
+	 * 
+	 * @since 1.2
+	 * 
+	 * @param {Function} callback
+	 */
 	this.doLocalTranslation = function( callback ) {
 		_this.memory.getTranslations(
 			{
@@ -49,13 +72,27 @@
 		);
 	};
 	
+	/**
+	 * Does the remote translation, ie everything not in notranslate spans.
+	 * 
+	 * @since 1.2
+	 * 
+	 * @param {Function} callback
+	 */
 	this.doRemoteTranslation = function( callback ) {
 		var translator = new window.translationService();
 		translator.done = callback;
 		lt.debug( 'Initiating remote translation' );
 		translator.translateElement( $( '#bodyContent' ), _this.currentLang, _this.select.val() );
 	};
-	
+
+	/**
+	 * Function to be called once a transslation job has finished.
+	 * Once there are no more running jobs, the state of the translation
+	 * control is updated to translation completion.
+	 * 
+	 * @since 1.2
+	 */
 	this.completeTranslationProcess = function() {
 		if ( !--_this.runningJobs ) {
 			_this.translateButton.attr( "disabled", false ).text( lt.msg( 'livetranslate-button-translate' ) );
@@ -66,6 +103,8 @@
 	
 	/**
 	 * Inserts notranslate spans around the words specified in the passed array in the page content.
+	 * 
+	 * @since 1.2
 	 * 
 	 * @param {Array} words
 	 */
@@ -82,6 +121,13 @@
 		}
 	};
 	
+	/**
+	 * Obtain the special words and wrap occurances of them into notranslate spans. 
+	 * 
+	 * @since 1.2
+	 * 
+	 * @param {Function} callback
+	 */
 	this.obatinAndInsetSpecialWords = function( callback ) {
 		// TODO: only run at first translation
 		_this.memory.getSpecialWords( _this.currentLang, function( specialWords ) {
@@ -92,6 +138,12 @@
 		} );
 	};
 	
+	/**
+	 * Setup the translation control.
+	 * Should be called on construction.
+	 * 
+	 * @since 1.2
+	 */
 	this.setup = function() {
 		var defaults = {
 			languages: {},
@@ -123,6 +175,11 @@
 		_this.bindEvents();
 	};
 	
+	/**
+	 * Build up the HTML for the translation control and add it to the DOM element.
+	 * 
+	 * @since 1.2
+	 */
 	this.buildHtml = function() {
 		_this.attr( {
 			style: 'display:inline; float:right',
@@ -150,6 +207,11 @@
 		_this.append( _this.select, _this.translateButton, _this.revertButton );	
 	};
 	
+	/**
+	 * Bind the event handlers to the components of the transltaion control.
+	 * 
+	 * @since 1.2
+	 */
 	this.bindEvents = function() {
 		_this.translateButton.click( function() {
 			_this.originalHtml = $( '#bodyContent' ).html();
