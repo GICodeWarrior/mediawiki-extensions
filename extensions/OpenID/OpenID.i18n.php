@@ -53,7 +53,8 @@ Please consult an [[Special:ListUsers/sysop|administrator]].',
 
 Your OpenID is $2 .
 
-This and further OpenIDs, and an optional account password, can be managed in your [[Special:Preferences|preferences]].",
+This and optional further OpenIDs can be managed in the [[Special:Preferences#prefsection-openid|OpenID tab]] of your preferences.<br/>
+An optional account password can be added in your [[Special:Preferences#prefsection-personal|User profile]].",
 	'openidusernameprefix' => 'OpenIDUser',
 	'openidserverlogininstructions' => '$3 requests that you enter your password for your user $2 page $1 (this is your OpenID URL)',
 	'openidtrustinstructions' => 'Check if you want to share data with $1.',
@@ -87,7 +88,7 @@ you can choose one from the options below.',
 	'openidalreadyloggedin' => 'You are already logged in.',
 	'openidalreadyloggedintext' => "'''You are already logged in, $1!'''
 
-You can manage (view, delete, add further) OpenIDs in the OpenID tab of your [[Special:Preferences|preferences]].",
+You can manage (view, delete, add further) OpenIDs in the [[Special:Preferences#prefsection-openid|OpenID tab]] of your preferences.",
 	'openidnousername' => 'No username specified.',
 	'openidbadusername' => 'Bad username specified.',
 	'openidautosubmit' => 'This page includes a form that should be automatically submitted if you have JavaScript enabled.
