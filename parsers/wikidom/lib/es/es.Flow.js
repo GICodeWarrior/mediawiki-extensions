@@ -83,6 +83,10 @@ es.Flow.prototype.getOffset = function( position ) {
 		}
 		i++;
 	}
+	
+	i =  this.getLineIndexFromPosition(position);
+	console.log(i);
+	
 	// Positions below the last line always jump to the last offset
 	if ( i == lineCount ) {
 		return this.content.getLength();
@@ -116,6 +120,23 @@ es.Flow.prototype.getOffset = function( position ) {
 		// If the line ends in a non-boundary character, decrement offset
 		line.range.end + ( this.boundaryTest.exec( line.text.substr( -1 ) ) ? -1 : 0 )
 	);
+};
+
+/**
+ * Gets a line index for a given position.
+ * 
+ * @param position {Object} Position to find line index for
+ * @return {Integer} Line index
+ */
+es.Flow.prototype.getLineIndexFromPosition = function( position ) {
+	var i, top = 0;
+	for ( i = 0; i < this.lines.length; i++ ) {
+		top += this.lines[i].height;
+		if ( position.top <= top ) {
+			break;
+		}
+	}
+	return i;
 };
 
 /**
