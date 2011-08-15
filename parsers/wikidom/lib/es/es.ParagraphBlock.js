@@ -105,7 +105,7 @@ es.Block.prototype.getContent = function( range ) {
  * @param render {Boolean} If annotations should have any influence on output
  * @returns {String} Text within range
  */
-es.Block.prototype.getText = function( range, render ) {
+es.ParagraphBlock.prototype.getText = function( range, render ) {
 	return this.content.getText( range, render );
 };
 
