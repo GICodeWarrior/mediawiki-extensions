@@ -21,7 +21,7 @@ class FetchGoogleSpreadsheet extends MetricsMaintenance {
 					'service' => 'wise', // Spreadsheet service is "wise"
 					'Email' => '',
 					'Passwd' => '',
-					'source' => Http::userAgent() . ' MetricsReporting/' . METRICS_REPORTING_VERSION,
+					'source' => self::getUserAgent(),
 				)
 			)
 		);
@@ -47,22 +47,10 @@ class FetchGoogleSpreadsheet extends MetricsMaintenance {
 		$this->output( "Authorised. Got an authorisation token from Google\n" );
 
 		$cookies = $http->getCookieJar();
-		//var_dump( $cookies );
-		//var_dump( $authToken );
+		$http = $this->buildAuthedRequest( $url, $authToken, $cookies );
 
-		$http = MWHttpRequest::factory( $url, array(
-				'method' => 'GET',
-			)
-		);
-		$http->setCookieJar( $cookies );
-		$http->setHeader( 'GData-Version', '3.0' );
-		$http->setHeader( 'Authorization', "GoogleLogin auth=\"{$authToken}\"" );
-
-		$res = $http->execute();
-		//var_dump( $res );
-		//var_dump( $http->getResponseHeaders() );
+		$http->execute();
 		$content = $http->getContent();
-		//var_dump( $this->formatXmlString( $content ) );
 
 		$reader = new XMLReader();
 		$reader->XML( $content );
@@ -82,6 +70,13 @@ class FetchGoogleSpreadsheet extends MetricsMaintenance {
 			$reader->next( 'entry' );
 		}
 
+		foreach( $worksheets as $sheet ) {
+			$http = $this->buildAuthedRequest( $sheet, $authToken, $cookies );
+			$http->execute();
+			$content = $http->getContent();
+			var_dump( $this->formatXmlString( $content ) );
+		}
+
 		$this->output( "Finished!\n" );
 	}
 
@@ -97,6 +92,33 @@ class FetchGoogleSpreadsheet extends MetricsMaintenance {
 		$dom->loadXML( $xml );
 		$dom->formatOutput = true;
 		return $dom->saveXml();
+	}
+
+	/**
+	 * @param $url string
+	 * @param $token string
+	 * @param $cookies CookieJar
+	 * @return MWHttpRequest
+	 */
+	function buildAuthedRequest( $url, $token, $cookies = null ) {
+		$http = MWHttpRequest::factory( $url, array(
+				'method' => 'GET',
+				'source' => self::getUserAgent(),
+			)
+		);
+		if ( $cookies !== null ) {
+			$http->setCookieJar( $cookies );
+		}
+		$http->setHeader( 'GData-Version', '3.0' );
+		$http->setHeader( 'Authorization', "GoogleLogin auth=\"{$token}\"" );
+		return $http;
+	}
+
+	/**
+	 * @return string
+	 */
+	private static function getUserAgent() {
+		return Http::userAgent() . ' MetricsReporting/' . METRICS_REPORTING_VERSION;
 	}
 }
 
