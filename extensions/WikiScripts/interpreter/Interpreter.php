@@ -31,7 +31,7 @@ require_once( 'CallStack.php' );
 /**
  * The global interpreter object. Each parser has one.
  */
-class ISInterpreter {
+class WSInterpreter {
 	const ParserVersion = 1;
 	
 	var $mParser, $mUseCache, $mUsedModules, $mCallStack;
@@ -41,12 +41,12 @@ class ISInterpreter {
 	static $mCodeParser;
 
 	public function __construct( $parser ) {
-		global $wgInlineScriptsUseCache;
+		global $wgScriptsUseCache;
 
 		$this->mParser = $parser;
-		$this->mUseCache = $wgInlineScriptsUseCache;
+		$this->mUseCache = $wgScriptsUseCache;
 
-		$this->mCallStack = new ISCallStack( $this );
+		$this->mCallStack = new WSCallStack( $this );
 		$this->mUsedModules = array();
 		$this->mMaxRecursion =
 		$this->mEvaluations =
@@ -54,19 +54,19 @@ class ISInterpreter {
 	}
 
 	public static function invokeCodeParser( $code, $module, $method = 'parse' ) {
-		global $wgInlineScriptsParserClass, $wgInlineScriptsLimits;
+		global $wgScriptsParserClass, $wgScriptsLimits;
 
 		if( !self::$mCodeParser ) {
-			self::$mCodeParser = new $wgInlineScriptsParserClass();
+			self::$mCodeParser = new $wgScriptsParserClass();
 		}
 
 		if( self::$mCodeParser->needsScanner() ) {
-			$input = new ISScanner( $module, $code );
+			$input = new WSScanner( $module, $code );
 		} else {
 			$input = $code;
 		}
 
-		return self::$mCodeParser->$method( $input, $module, $wgInlineScriptsLimits['tokens'] );
+		return self::$mCodeParser->$method( $input, $module, $wgScriptsLimits['tokens'] );
 	}
 
 	/**
@@ -75,7 +75,7 @@ class ISInterpreter {
 	public static function invalidateModule( $title ) {
 		global $parserMemc;
 
-		$key = ISModule::getCacheKey( $title );
+		$key = WSModule::getCacheKey( $title );
 		$parserMemc->delete( $key );
 	}
 
@@ -108,29 +108,29 @@ class ISInterpreter {
 	 * @return Boolean
 	 */
 	public function checkRecursionLimit( $rec ) {
-		global $wgInlineScriptsLimits;
+		global $wgScriptsLimits;
 		if( $rec > $this->mMaxRecursion )
 			$this->mMaxRecursion = $rec;
-		return $rec <= $wgInlineScriptsLimits['depth'];
+		return $rec <= $wgScriptsLimits['depth'];
 	}
 
 	/**
 	 * Increases the number of evaluations.
 	 * 
-	 * @param $module ISModule Module where the evaluation happens
+	 * @param $module WSModule Module where the evaluation happens
 	 * @param $line int Line number of the evaluation
 	 * @return Boolean
 	 */
 	public function increaseEvaluationsCount( $module, $line ) {
-		global $wgInlineScriptsLimits;
+		global $wgScriptsLimits;
 		$this->mEvaluations++;
-		if( $this->mEvaluations > $wgInlineScriptsLimits['evaluations'] )
-			throw new ISUserVisibleException( 'toomanyevals', $module, $line );
+		if( $this->mEvaluations > $wgScriptsLimits['evaluations'] )
+			throw new WSUserVisibleException( 'toomanyevals', $module, $line );
 	}
 
 	public function getMaxTokensLeft() {
-		global $wgInlineScriptsLimits;
-		return $wgInlineScriptsLimits['tokens'];
+		global $wgScriptsLimits;
+		return $wgScriptsLimits['tokens'];
 	}
 
 	/**
@@ -159,7 +159,7 @@ class ISInterpreter {
 		$this->addModuleTitle( $title );
 
 		// Try local cache
-		$key = ISModule::getCacheKey( $title );
+		$key = WSModule::getCacheKey( $title );
 		if( $this->mUseCache && isset( $this->mParserCache[$key] ) ) {
 			$module = $this->mParserCache[$key];
 			$this->addModuleTitle( $module->getTitle() );
@@ -171,7 +171,7 @@ class ISInterpreter {
 		wfProfileIn( __METHOD__ . '-unserialize' );
 		$cached = $parserMemc->get( $key );
 		wfProfileOut( __METHOD__ . '-unserialize' );
-		if( $this->mUseCache && @$cached instanceof ISModule && !$cached->isOutOfDate() ) {
+		if( $this->mUseCache && @$cached instanceof WSModule && !$cached->isOutOfDate() ) {
 			$this->mParserCache[$key] = $cached;
 			$this->addModuleTitle( $cached->getTitle() );
 			wfProfileOut( __METHOD__ );
@@ -187,7 +187,7 @@ class ISInterpreter {
 		// Parse
 		$moduleName = $rev->getTitle()->getText();
 		$out = self::invokeCodeParser( $rev->getText(), $moduleName );
-		$module = ISModule::newFromParserOutput( $this, $rev->getTitle(), $rev->getId(), $out );
+		$module = WSModule::newFromParserOutput( $this, $rev->getTitle(), $rev->getId(), $out );
 
 		// Save to cache
 		$this->mParserCache[$key] = $module;
@@ -214,50 +214,50 @@ class ISInterpreter {
 	/**
 	 * Invokes the user function from script code.
 	 * 
-	 * @param $module ISModule/string Module or its name
+	 * @param $module WSModule/string Module or its name
 	 * @param $name string Name of the function
-	 * @param $args array(ISData) Arguments of the function
-	 * @param $parentContext ISEvaluationContext The context from which the function was invoked
+	 * @param $args array(WSData) Arguments of the function
+	 * @param $parentContext WSEvaluationContext The context from which the function was invoked
 	 * @param $line The line from which the function was invoked.
-	 * @return ISData
+	 * @return WSData
 	 */
 	public function invokeUserFunctionFromModule( $module, $name, $args, $parentContext, $line ) {
-		global $wgInlineScriptsAllowRecursion, $wgInlineScriptsMaxCallStackDepth;
+		global $wgScriptsAllowRecursion, $wgScriptsMaxCallStackDepth;
 
 		// Load module
-		if( $module instanceof ISModule ) {
+		if( $module instanceof WSModule ) {
 			$moduleName = $module->getName();
 		} else {
 			$moduleName = $module;
 
 			$moduleTitle = Title::makeTitleSafe( NS_MODULE, $moduleName );
 			if( !$moduleTitle instanceof Title || $moduleTitle->getNamespace() != NS_MODULE ) {
-				throw new ISUserVisibleException( 'nonexistent-module', $parentContext->mModuleName, $line, array( $moduleName ) );
+				throw new WSUserVisibleException( 'nonexistent-module', $parentContext->mModuleName, $line, array( $moduleName ) );
 			}
 
 			$module = $this->getModule( $moduleTitle );
 			if( !$module ) {
-				throw new ISUserVisibleException( 'nonexistent-module', $parentContext->mModuleName, $line, array( $moduleName ) );
+				throw new WSUserVisibleException( 'nonexistent-module', $parentContext->mModuleName, $line, array( $moduleName ) );
 			}
 		}
 
 		// Load the function and handle possible errors
 		$function = $module->getFunction( $name );
 		if( !$function ) {
-			throw new ISUserVisibleException( 'unknownfunction-user', $parentContext->mModuleName, $line, array( $moduleName, $name ) );
+			throw new WSUserVisibleException( 'unknownfunction-user', $parentContext->mModuleName, $line, array( $moduleName, $name ) );
 		}
 		if( count( $args ) < $function->getMinArgCount() ) {
-			throw new ISUserVisibleException( 'notenoughargs-user', $parentContext->mModuleName, $line, array( $moduleName, $name ) );
+			throw new WSUserVisibleException( 'notenoughargs-user', $parentContext->mModuleName, $line, array( $moduleName, $name ) );
 		}
-		if( !$wgInlineScriptsAllowRecursion && $this->mCallStack->contains( $moduleName, $name ) ) {
-			throw new ISUserVisibleException( 'recursion', $parentContext->mModuleName, $line, array( $moduleName, $name ) );
+		if( !$wgScriptsAllowRecursion && $this->mCallStack->contains( $moduleName, $name ) ) {
+			throw new WSUserVisibleException( 'recursion', $parentContext->mModuleName, $line, array( $moduleName, $name ) );
 		}
 		if( $this->mCallStack->isFull() ) {
-			throw new ISUserVisibleException( 'toodeeprecursion', $parentContext->mModuleName, $line, array( $wgInlineScriptsMaxCallStackDepth ) );
+			throw new WSUserVisibleException( 'toodeeprecursion', $parentContext->mModuleName, $line, array( $wgScriptsMaxCallStackDepth ) );
 		}
 
 		// Prepare the context and the arguments
-		$context = new ISEvaluationContext( $this, $module, $name, $parentContext->getFrame() );
+		$context = new WSEvaluationContext( $this, $module, $name, $parentContext->getFrame() );
 		foreach( $args as $n => $arg ) {
 			if( isset( $function->args[$n] ) ) {
 				$argname = $function->args[$n];
@@ -286,42 +286,42 @@ class ISInterpreter {
 	 * @return string
 	 */
 	public function invokeUserFunctionFromWikitext( $moduleName, $name, $args, $frame ) {
-		global $wgInlineScriptsAllowRecursion;
+		global $wgScriptsAllowRecursion;
 
 		// Load module
 		$moduleTitle = Title::makeTitleSafe( NS_MODULE, $moduleName );
 		if( !$moduleTitle instanceof Title || $moduleTitle->getNamespace() != NS_MODULE ) {
-			throw new ISTransclusionException( 'nonexistent-module', array( $moduleName ) );
+			throw new WSTransclusionException( 'nonexistent-module', array( $moduleName ) );
 		}
 
 		$module = $this->getModule( $moduleTitle );
 		if( !$module ) {
-			throw new ISTransclusionException( 'nonexistent-module', array( $moduleName ) );
+			throw new WSTransclusionException( 'nonexistent-module', array( $moduleName ) );
 		}
 
 		// Load the function and handle possible errors
 		$function = $module->getFunction( $name );
 		if( !$function ) {
-			throw new ISTransclusionException( 'unknownfunction-user', array( $moduleName, $name ) );
+			throw new WSTransclusionException( 'unknownfunction-user', array( $moduleName, $name ) );
 		}
 		if( count( $args ) < $function->getMinArgCount() ) {
-			throw new ISTransclusionException( 'notenoughargs-user', array( $moduleName, $name ) );
+			throw new WSTransclusionException( 'notenoughargs-user', array( $moduleName, $name ) );
 		}
-		if( !$wgInlineScriptsAllowRecursion && $this->mCallStack->contains( $moduleName, $name ) ) {
-			throw new ISTransclusionException( 'recursion', array( $moduleName, $name ) );
+		if( !$wgScriptsAllowRecursion && $this->mCallStack->contains( $moduleName, $name ) ) {
+			throw new WSTransclusionException( 'recursion', array( $moduleName, $name ) );
 		}
 		if( $this->mCallStack->isFull() ) {
 			// Depsite seeming an unlikely place, this may actually happen if the user will try to bypass the
 			// stack depth limit by using parse( '{{i:module|func}}' )
-			throw new ISTransclusionException( 'toodeeprecursion', array( $wgInlineScriptsMaxCallStackDepth ) );
+			throw new WSTransclusionException( 'toodeeprecursion', array( $wgScriptsMaxCallStackDepth ) );
 		}
 
 		// Prepare the context and the arguments
-		$context = new ISEvaluationContext( $this, $module, $name, $frame );
+		$context = new WSEvaluationContext( $this, $module, $name, $frame );
 		foreach( $args as $n => $arg ) {
 			if( isset( $function->args[$n] ) ) {
 				$argname = $function->args[$n];
-				$context->setArgument( $argname, new ISData( ISData::DString, strval( $arg ) ) );
+				$context->setArgument( $argname, new WSData( WSData::DString, strval( $arg ) ) );
 			}
 		}
 
@@ -339,12 +339,12 @@ class ISInterpreter {
 	protected function doInvokeFunction( $function, $context ) {
 		// Indicates whether the data from append/yield should be used
 		$useOutput = true;
-		$result = new ISData();
+		$result = new WSData();
 
 		try {
 			$context->evaluateNode( $function->body, 0 );
-		} catch( ISException $e ) {
-			if( $e instanceof ISReturnException ) {
+		} catch( WSException $e ) {
+			if( $e instanceof WSReturnException ) {
 				$result = $e->getResult();
 				$useOutput = $e->isEmpty();
 			} else {
@@ -364,7 +364,7 @@ class ISInterpreter {
 /**
  * Represents an individual module.
  */
-class ISModule {
+class WSModule {
 	var $mTitle, $mFunctions, $mParserVersion;
 
 	// Revision ID
@@ -377,7 +377,7 @@ class ISModule {
 	 * Initializes module from the code parser output.
 	 */
 	public static function newFromParserOutput( $interpreter, $title, $revid, $output ) {
-		$m = new ISModule();
+		$m = new WSModule();
 		$m->mTitle = $title;
 		$m->mRevID = $revid;
 		$m->mParserVersion = $output->getVersion();
@@ -391,7 +391,7 @@ class ISModule {
 			// <function> ::= function id leftbracket <arglist> rightbracket leftcurly <stmts> rightcurly (total 8)
 			// <function> ::= function id leftbracket rightbracket leftcurly <stmts> rightcurly (total 7)
 			$c = $funcnode->getChildren();
-			$func = new ISFunction();
+			$func = new WSFunction();
 			$func->name = $c[1]->value;
 
 			if( $funcnode->getChildrenCount() == 8 ) {
@@ -465,15 +465,15 @@ class ISModule {
 	 * Returns whether the module should be reparsed or not.
 	 */
 	public function isOutOfDate() {
-		global $wgInlineScriptsParserClass;
-		return $wgInlineScriptsParserClass::getVersion() != $this->mParserVersion;
+		global $wgScriptsParserClass;
+		return $wgScriptsParserClass::getVersion() != $this->mParserVersion;
 	}
 }
 
 /**
  * Represents a function.
  */
-class ISFunction {
+class WSFunction {
 	public $name;
 	public $args;
 	public $body;

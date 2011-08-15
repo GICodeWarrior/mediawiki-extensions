@@ -27,7 +27,7 @@ if( !defined( 'MEDIAWIKI' ) )
 /**
  * This class represents a terminal of the script grammar.
  */
-class ISToken {
+class WSToken {
 	// Constant values should match ones in syntax.txt
 	const TEnd = '$';
 	const TAppend = 'append';
@@ -90,7 +90,7 @@ class ISToken {
 /**
  * This class represents a non-terminal of the script grammar.
  */
-class ISParserTreeNode {
+class WSParserTreeNode {
 	var $mType, $mChildren;
 
 	public function __construct( $parser, $id ) {
@@ -101,7 +101,7 @@ class ISParserTreeNode {
 	public function addChild( $node ) {
 		// Since we do not want a long chain of "exprSomething -> exprWhatever" in the parser tree,
 		// we cut it out at the parsing stage
-		if( $node instanceof ISParserTreeNode ) {
+		if( $node instanceof WSParserTreeNode ) {
 			$children = $node->getChildren();			
 			if( count( $children ) == 1 && strpos( $node->mType, "expr" ) === 0
 			  && strpos( @$children[0]->mType, "expr" ) === 0 ) {
@@ -137,7 +137,7 @@ class ISParserTreeNode {
 	public function formatStringArray() {
 		$s = array( "<nonterminal type=\"{$this->mType}\">" );
 		foreach( $this->mChildren as $child ) {
-			if( $child instanceof ISParserTreeNode ) {
+			if( $child instanceof WSParserTreeNode ) {
 				$sub = $child->formatStringArray();
 				foreach( $sub as $str )
 					$s[] = "\t" . $str;
@@ -153,7 +153,7 @@ class ISParserTreeNode {
 /**
  * Generalized script parser.
  */
-interface ISParser {
+interface WSParser {
 	/**
 	 * If this function returns true, code scanner is passed to parse().
 	 * Otherwise, code itself is passed.
@@ -162,29 +162,29 @@ interface ISParser {
 
 	/**
 	 * Parses code (in text or scanner) to parser tree.
-	 * @param input ISScanner Input (scanner or string)
+	 * @param input WSScanner Input (scanner or string)
 	 * @param maxTokens int Maximal amount of tokens
-	 * @return ISParserTreeNode
+	 * @return WSParserTreeNode
 	 */
 	public function parse( $input, $module, $maxTokens );
 
 	/**
 	 * Returns an array of the syntax errors in the code
-	 * @param input ISSCanner Input (scanner or string)
+	 * @param input WSSCanner Input (scanner or string)
 	 * @param maxTokens int Maximal amount of tokens
 	 * @return array(string)
 	 */
 	 public function getSyntaxErrors( $input, $moudle, $maxTokens );
 }
 
-class ISException extends MWException {}
+class WSException extends MWException {}
 
 // Exceptions that we might conceivably want to report to ordinary users
 // (i.e. exceptions that don't represent bugs in the extension itself)
-class ISUserVisibleException extends ISException {
+class WSUserVisibleException extends WSException {
 	function __construct( $exception_id, $module, $line, $params = array() ) {
-		$codelocation = wfMsg( 'inlinescripts-codelocation', $module, $line );
-		$msg = wfMsgExt( 'inlinescripts-exception-' . $exception_id, array(), array_merge( array( $codelocation ), $params ) );
+		$codelocation = wfMsg( 'wikiscripts-codelocation', $module, $line );
+		$msg = wfMsgExt( 'wikiscripts-exception-' . $exception_id, array(), array_merge( array( $codelocation ), $params ) );
 		parent::__construct( $msg );
 
 		$this->mExceptionID = $exception_id;
@@ -201,9 +201,9 @@ class ISUserVisibleException extends ISException {
 /**
  * Exceptions caused by the error on script transclusion error, i.e. not in script.
  */
-class ISTransclusionException extends ISException {
+class WSTransclusionException extends WSException {
 	function __construct( $exception_id, $params = array() ) {
-		$msg = wfMsgExt( 'inlinescripts-transerror-' . $exception_id, array(), $params );
+		$msg = wfMsgExt( 'wikiscripts-transerror-' . $exception_id, array(), $params );
 		parent::__construct( $msg );
 
 		$this->mExceptionID = $exception_id;
@@ -215,12 +215,12 @@ class ISTransclusionException extends ISException {
  * Exceptions used for control structures that need to break out of deep function
  * nesting level (e.g. break or continue).
  */
-class ISControlException extends ISUserVisibleException {}
+class WSControlException extends WSUserVisibleException {}
 
 /**
  * Exception that allows to return from a function.
  */
-class ISReturnException extends ISControlException {
+class WSReturnException extends WSControlException {
 	function __construct( $result, $empty ) {
 		$this->mResult = $result;
 		$this->mEmpty = $empty;
@@ -238,14 +238,14 @@ class ISReturnException extends ISControlException {
 /**
  * Code parser output.
  */
-class ISParserOutput {
+class WSParserOutput {
 	var $mTree, $mTokensCount, $mVersion;
 
 	public function __construct( $tree, $tokens ) {
-		global $wgInlineScriptsParserClass;
+		global $wgScriptsParserClass;
 		$this->mTree = $tree;
 		$this->mTokensCount = $tokens;
-		$this->mVersion = $wgInlineScriptsParserClass::getVersion();
+		$this->mVersion = $wgScriptsParserClass::getVersion();
 	}
 
 	public function getParserTree() {
@@ -257,5 +257,5 @@ class ISParserOutput {
 	}
 }
 
-// Used by ISEvaluationContext::setVar
-class ISPlaceholder {}
+// Used by WSEvaluationContext::setVar
+class WSPlaceholder {}

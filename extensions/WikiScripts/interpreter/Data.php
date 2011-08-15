@@ -27,7 +27,7 @@ if( !defined( 'MEDIAWIKI' ) )
 /**
  * Class implementing data in the scripts.
  */
-class ISData {
+class WSData {
 	// Data types
 	const DInt    = 'int';
 	const DString = 'string';
@@ -47,82 +47,82 @@ class ISData {
 
 	public static function newFromPHPVar( $var ) {
 		if( is_string( $var ) )
-			return new ISData( self::DString, $var );
+			return new WSData( self::DString, $var );
 		elseif( is_int( $var ) )
-			return new ISData( self::DInt, $var );
+			return new WSData( self::DInt, $var );
 		elseif( is_float( $var ) )
-			return new ISData( self::DFloat, $var );
+			return new WSData( self::DFloat, $var );
 		elseif( is_bool( $var ) )
-			return new ISData( self::DBool, $var );
+			return new WSData( self::DBool, $var );
 		elseif( is_array( $var ) ) {
 			if( !$var )
-				return new ISData( self::DList, array() );
+				return new WSData( self::DList, array() );
 			$result = array();
 			foreach( $var as $item )
 				$result[] = self::newFromPHPVar( $item );
-			return new ISData( self::DList, $result );
+			return new WSData( self::DList, $result );
 		}
 		elseif( is_null( $var ) )
-			return new ISData();
+			return new WSData();
 		else
-			throw new ISException(
-				"Data type " . gettype( $var ) . " is not supported by InlineScrtips" );
+			throw new WSException(
+				"Data type " . gettype( $var ) . " is not supported by WikiScrtips" );
 	}
 	
 	public function dup() {
-		return new ISData( $this->type, $this->data );
+		return new WSData( $this->type, $this->data );
 	}
 	
 	public static function castTypes( $orig, $target ) {
 		if( $orig->type == $target )
 			return $orig->dup();
 		if( $target == self::DNull ) {
-			return new ISData();
+			return new WSData();
 		}
 
 		if( $orig->isArray() ) {
 			if( $target == self::DBool )
-				return new ISData( self::DBool, (bool)count( $orig->data ) );
+				return new WSData( self::DBool, (bool)count( $orig->data ) );
 			if( $target == self::DFloat ) {
-				return new ISData( self::DFloat, doubleval( count( $orig->data  ) ) );
+				return new WSData( self::DFloat, doubleval( count( $orig->data  ) ) );
 			}
 			if( $target == self::DInt ) {
-				return new ISData( self::DInt, intval( count( $orig->data ) ) );
+				return new WSData( self::DInt, intval( count( $orig->data ) ) );
 			}
 			if( $target == self::DString ) {
 				$s = array();
 				foreach( $orig->data as $item )
 					$s[] = $item->toString();
-				return new ISData( self::DString, implode( "\n", $s ) );
+				return new WSData( self::DString, implode( "\n", $s ) );
 			}
 		}
 
 		if( $target == self::DBool ) {
-			return new ISData( self::DBool, (bool)$orig->data );
+			return new WSData( self::DBool, (bool)$orig->data );
 		}
 		if( $target == self::DFloat ) {
-			return new ISData( self::DFloat, doubleval( $orig->data ) );
+			return new WSData( self::DFloat, doubleval( $orig->data ) );
 		}
 		if( $target == self::DInt ) {
-			return new ISData( self::DInt, intval( $orig->data ) );
+			return new WSData( self::DInt, intval( $orig->data ) );
 		}
 		if( $target == self::DString ) {
-			return new ISData( self::DString, strval( $orig->data ) );
+			return new WSData( self::DString, strval( $orig->data ) );
 		}
 		if( $target == self::DList ) {
-			return new ISData( self::DList, array( $orig ) );
+			return new WSData( self::DList, array( $orig ) );
 		}
 	}
 	
 	public static function boolInvert( $value ) {
-		return new ISData( self::DBool, !$value->toBool() );
+		return new WSData( self::DBool, !$value->toBool() );
 	}
 
 	public static function pow( $base, $exponent ) {
 		if( $base->type == self::DInt && $exponent->type == self::DInt )
-			return new ISData( self::DInt, pow( $base->toInt(), $exponent->toInt() ) );
+			return new WSData( self::DInt, pow( $base->toInt(), $exponent->toInt() ) );
 		else
-			return new ISData( self::DFloat, pow( $base->toFloat(), $exponent->toFloat() ) );
+			return new WSData( self::DFloat, pow( $base->toFloat(), $exponent->toFloat() ) );
 	}
 
 	// Checks whether a is in b
@@ -130,18 +130,18 @@ class ISData {
 		if( $b->isArray() ) {
 			foreach( $b->data as $elem ) {
 				if( self::equals( $elem, $a ) )
-					return new ISData( self::DBool, true );
+					return new WSData( self::DBool, true );
 			}
-			return new ISData( self::DBool, false );
+			return new WSData( self::DBool, false );
 		} else {
 			$a = $a->toString();
 			$b = $b->toString();
 			
 			if( $a == '' || $b == '' ) {
-				return new ISData( self::DBool, false );
+				return new WSData( self::DBool, false );
 			}
 			
-			return new ISData( self::DBool, in_string( $a, $b ) );
+			return new WSData( self::DBool, in_string( $a, $b ) );
 		}
 	}
 	
@@ -151,32 +151,32 @@ class ISData {
 
 	public static function unaryMinus( $data ) {
 		if( $data->type == self::DInt ) {
-			return new ISData( $data->type, -$data->toInt() );
+			return new WSData( $data->type, -$data->toInt() );
 		} else {
-			return new ISData( $data->type, -$data->toFloat() );
+			return new WSData( $data->type, -$data->toFloat() );
 		}
 	}
 	
 	public static function compareOp( $a, $b, $op ) {
 		if( $op == '==' )
-			return new ISData( self::DBool, self::equals( $a, $b ) );
+			return new WSData( self::DBool, self::equals( $a, $b ) );
 		if( $op == '!=' )
-			return new ISData( self::DBool, !self::equals( $a, $b ) );
+			return new WSData( self::DBool, !self::equals( $a, $b ) );
 		if( $op == '===' )
-			return new ISData( self::DBool, $a->type == $b->type && self::equals( $a, $b ) );
+			return new WSData( self::DBool, $a->type == $b->type && self::equals( $a, $b ) );
 		if( $op == '!==' )
-			return new ISData( self::DBool, $a->type != $b->type || !self::equals( $a, $b ) );
+			return new WSData( self::DBool, $a->type != $b->type || !self::equals( $a, $b ) );
 		$a = $a->toString();
 		$b = $b->toString();
 		if( $op == '>' )
-			return new ISData( self::DBool, $a > $b );
+			return new WSData( self::DBool, $a > $b );
 		if( $op == '<' )
-			return new ISData( self::DBool, $a < $b );
+			return new WSData( self::DBool, $a < $b );
 		if( $op == '>=' )
-			return new ISData( self::DBool, $a >= $b );
+			return new WSData( self::DBool, $a >= $b );
 		if( $op == '<=' )
-			return new ISData( self::DBool, $a <= $b );
-		throw new ISException( "Invalid comparison operation: {$op}" ); // Should never happen
+			return new WSData( self::DBool, $a <= $b );
+		throw new WSException( "Invalid comparison operation: {$op}" ); // Should never happen
 	}
 	
 	public static function mulRel( $a, $b, $op, $module, $pos ) {	
@@ -193,7 +193,7 @@ class ISData {
 		}
 
 		if( $op != '*' && $b == 0 ) {
-			throw new ISUserVisibleException( 'dividebyzero', $module, $pos, array($a) );
+			throw new WSUserVisibleException( 'dividebyzero', $module, $pos, array($a) );
 		}
 
 		$data = null;
@@ -204,36 +204,36 @@ class ISData {
 		elseif( $op == '%' )
 			$data = $a % $b;
 		else
-			throw new ISException( "Invalid multiplication-related operation: {$op}" ); // Should never happen
+			throw new WSException( "Invalid multiplication-related operation: {$op}" ); // Should never happen
 			
 		if( $type == self::DInt )
 			$data = intval( $data );
 		else
 			$data = doubleval( $data );
 		
-		return new ISData( $type, $data );
+		return new WSData( $type, $data );
 	}
 	
 	public static function sum( $a, $b ) {
 		if( $a->type == self::DString || $b->type == self::DString )
-			return new ISData( self::DString, $a->toString() . $b->toString() );
+			return new WSData( self::DString, $a->toString() . $b->toString() );
 		elseif( $a->type == self::DList && $b->type == self::DList )
-			return new ISData( self::DList, array_merge( $a->toList(), $b->toList() ) );
+			return new WSData( self::DList, array_merge( $a->toList(), $b->toList() ) );
 		elseif( $a->type == self::DList )
-			return new ISData( self::DList, array_merge( $a->toList(), array( $b ) ) );
+			return new WSData( self::DList, array_merge( $a->toList(), array( $b ) ) );
 		elseif( $a->type == self::DAssoc && $b->type == self::DAssoc )
-			return new ISData( self::DAssoc, array_merge( $a->toAssoc(), $b->toAssoc() ) );
+			return new WSData( self::DAssoc, array_merge( $a->toAssoc(), $b->toAssoc() ) );
 		elseif( $a->type == self::DInt && $b->type == self::DInt )
-			return new ISData( self::DInt, $a->toInt() + $b->toInt() );
+			return new WSData( self::DInt, $a->toInt() + $b->toInt() );
 		else
-			return new ISData( self::DFloat, $a->toFloat() + $b->toFloat() );
+			return new WSData( self::DFloat, $a->toFloat() + $b->toFloat() );
 	}
 
 	public static function sub( $a, $b ) {
 		if( $a->type == self::DInt && $b->type == self::DInt )
-			return new ISData( self::DInt, $a->toInt() - $b->toInt() );
+			return new WSData( self::DInt, $a->toInt() - $b->toInt() );
 		else
-			return new ISData( self::DFloat, $a->toFloat() - $b->toFloat() );
+			return new WSData( self::DFloat, $a->toFloat() - $b->toFloat() );
 	}
 
 	public function isArray() {

@@ -25,12 +25,12 @@ if( !defined( 'MEDIAWIKI' ) )
 	die();
 
 /**
- * Lexical analizator for inline scripts. Splits strings to tokens.
+ * Lexical analizator for scripts. Splits strings to tokens.
  */
 
 require_once( 'Shared.php' );
 
-class ISScanner implements Iterator {
+class WSScanner implements Iterator {
 	var $mModule, $mCode, $mPos, $mCur, $mEof;
 
 	// Order is important. The punctuation-matching regex requires that
@@ -87,14 +87,14 @@ class ISScanner implements Iterator {
 	}
 
 	private function move() {
-		if( $this->mEof || ( $this->mCur && $this->mCur->type == ISToken::TEnd ) ) {
+		if( $this->mEof || ( $this->mCur && $this->mCur->type == WSToken::TEnd ) ) {
 			$this->mEof = true;
 			return $this->mCur = null;
 		}
 		list( $val, $type ) = $this->nextToken();
 
 		$lineno = count( explode( "\n", substr( $this->mCode, 0, $this->mPos ) ) );
-		return $this->mCur = new ISToken( $type, $val, $lineno );
+		return $this->mCur = new WSToken( $type, $val, $lineno );
 	}
 
 	private function nextToken() {
@@ -106,7 +106,7 @@ class ISScanner implements Iterator {
 			$this->mPos += strlen($matches[0]);		
 
 		if( $this->mPos >= strlen($this->mCode) )
-			return array( null, ISToken::TEnd );
+			return array( null, WSToken::TEnd );
 
 		// Comments
 		if ( substr($this->mCode, $this->mPos, 2) == '/*' ) {
@@ -117,7 +117,7 @@ class ISScanner implements Iterator {
 		if( substr( $this->mCode, $this->mPos, 2 ) == '//' ) {
 			$newlinePos = strpos( $this->mCode, "\n", $this->mPos );
 			if( $newlinePos === false ) {
-				return array( null, ISToken::TEnd );
+				return array( null, WSToken::TEnd );
 			} else {
 				$this->mPos = $newlinePos + 1;
 				return self::nextToken();
@@ -132,7 +132,7 @@ class ISScanner implements Iterator {
 			while( $this->mPos < $strLen ) {
 				if( $this->mCode[$this->mPos] == $type ) {
 					$this->mPos++;
-					return array( $tok, ISToken::TString );
+					return array( $tok, WSToken::TString );
 				}
 
 				// Performance: Use a PHP function (implemented in C)
@@ -178,7 +178,7 @@ class ISScanner implements Iterator {
 					$this->mPos++;
 				}
 			}
-			throw new ISUserVisibleException( 'unclosedstring', $this->mModule, $this->mPos, array() );
+			throw new WSUserVisibleException( 'unclosedstring', $this->mModule, $this->mPos, array() );
 		}
 
 		// Find operators
@@ -252,8 +252,8 @@ class ISScanner implements Iterator {
 						? doubleval( $num )
 						: intval( $num ),
 					$float
-						? ISToken::TFloat
-						: ISToken::TInt,
+						? WSToken::TFloat
+						: WSToken::TInt,
 				);
 			}
 		}
@@ -268,73 +268,73 @@ class ISScanner implements Iterator {
 			$tok = $matches[0];
 
 			$type = in_array( $tok, self::$mKeywords )
-				? $tok : ISToken::TID;
+				? $tok : WSToken::TID;
 
 			$this->mPos += strlen( $tok );
 			return array( $tok, $type );
 		}
 
-		throw new ISUserVisibleException(
+		throw new WSUserVisibleException(
 			'unrecognisedtoken', $this->mModule, $this->mPos, array( substr( $this->mCode, $this->mPos ) ) );
 	}
 
 	private static function getOperatorType( $op ) {
 		switch( $op ) {
 			case '::':
-				return ISToken::TDoubleColon;
+				return WSToken::TDoubleColon;
 			case ':':
-				return ISToken::TColon;
+				return WSToken::TColon;
 			case ',':
-				return ISToken::TComma;
+				return WSToken::TComma;
 			case '>':
 			case '<':
 			case '>=':
 			case '<=':
-				return ISToken::TCompareOperator;
+				return WSToken::TCompareOperator;
 			case '==':
 			case '!=':
 			case '===':
 			case '!==':
-				return ISToken::TEqualsToOperator;
+				return WSToken::TEqualsToOperator;
 			case '!':
-				return ISToken::TBoolInvert;
+				return WSToken::TBoolInvert;
 			case '(':
-				return ISToken::TLeftBracket;
+				return WSToken::TLeftBracket;
 			case '{':
-				return ISToken::TLeftCurly;
+				return WSToken::TLeftCurly;
 			case '[':
-				return ISToken::TLeftSquare;
+				return WSToken::TLeftSquare;
 			case '&':
 			case '|':
 			case '^':
-				return ISToken::TLogicalOperator;
+				return WSToken::TLogicalOperator;
 			case '*':
 			case '/':
 			case '%':
-				return ISToken::TMulOperator;
+				return WSToken::TMulOperator;
 			case '**':
-				return ISToken::TPow;
+				return WSToken::TPow;
 			case ')':
-				return ISToken::TRightBracket;
+				return WSToken::TRightBracket;
 			case '}':
-				return ISToken::TRightCurly;
+				return WSToken::TRightCurly;
 			case ']':
-				return ISToken::TRightSquare;
+				return WSToken::TRightSquare;
 			case ';':
-				return ISToken::TSemicolon;
+				return WSToken::TSemicolon;
 			case '=':
 			case '+=':
 			case '-=':
 			case '*=':
 			case '/=':
-				return ISToken::TSet;
+				return WSToken::TSet;
 			case '+':
 			case '-':
-				return ISToken::TSumOperator;
+				return WSToken::TSumOperator;
 			case '?':
-				return ISToken::TTrinary;
+				return WSToken::TTrinary;
 			default:
-				throw new ISException( "Invalid operator: {$op}" );
+				throw new WSException( "Invalid operator: {$op}" );
 		}
 	}
 }

@@ -29,7 +29,7 @@ if( !defined( 'MEDIAWIKI' ) )
  * Class that contains hooks related to tracking links to scripts and invalidating
  * pages on script change.
  */
-class ISLinksUpdateHooks {
+class WSLinksUpdateHooks {
 	/**
 	 * Appends script links to the output.
 	 */
@@ -51,7 +51,7 @@ class ISLinksUpdateHooks {
 			$new = array();
 		}
 		
-		$isupdate = new ISLinksUpdate( $update, $new );
+		$isupdate = new WSLinksUpdate( $update, $new );
 		$isupdate->run();
 		return true;
 	}
@@ -64,7 +64,7 @@ class ISLinksUpdateHooks {
 
 		if( $article->mTitle->getNamespace() == NS_MODULE ) {
 			// Invalidate the script cache
-			ISInterpreter::invalidateModule( $article->mTitle );
+			WSInterpreter::invalidateModule( $article->mTitle );
 			
 			// Invalidate caches of articles which include the script
 			$wgDeferredUpdateList[] = new HTMLCacheUpdate( $article->mTitle, 'scriptlinks' );
@@ -105,7 +105,7 @@ class ISLinksUpdateHooks {
  * A class that updates links on scripts like phase3/includes/LinksUpdate.php does that
  * with templates.
  */
-class ISLinksUpdate {
+class WSLinksUpdate {
 	var $mUpdate, $mId, $mNew;
 
 	public function __construct( $update, $new ) {
