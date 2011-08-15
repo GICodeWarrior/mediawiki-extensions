@@ -93,7 +93,7 @@ es.ParagraphBlock.prototype.annotateContent = function( method, annotation, rang
  * @param range {es.Range} Range of content to get
  * @returns {es.Content} Content within range
  */
-es.Block.prototype.getContent = function( range ) {
+es.ParagraphBlock.prototype.getContent = function( range ) {
 	return this.content.getContent( range );
 };
 
