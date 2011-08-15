@@ -10,27 +10,28 @@
 es.Content.Transaction = function( content, operations ) {
 	this.content = content;
 	this.operations = [];
+	this.length = 0;
 	if ( arguments.length > 1 ) {
 		// Support variadic arguments
 		if ( !$.isArray( operations ) ) {
 			operations = Array.prototype.slice.call( arguments, 1 );
 		}
-		var range = new es.Range();
 		for ( var i = 0; i < operations.length; i++ ) {
-			var operation = operations[i];
-			switch ( operation.getType() ) {
-				case 'retain':
-				case 'remove':
-					range.to = range.from + operation.getLength();
-					if ( !operation.hasContent() ) {
-						operation.setContent( content.getContent( range ) );
-					}
-					range.from = range.to;
-					break;
-			}
-			this.operations.push( operation );
+			this.add( operations[i] );
 		}
 	}
+};
+
+es.Content.Transaction.prototype.add = function( operation ) {
+	// Auto-add content to operations which affect a range but don't have content (yet)
+	var range = new es.Range( this.length, this.length + operation.getLength() );
+	if ( operation.getLength() && !operation.hasContent() ) {
+		if ( !operation.hasContent() ) {
+			operation.setContent( content.getContent( range ) );
+		}
+	}
+	this.length += operation.getAdvance();
+	this.operations.push( operation );
 };
 
 /**
@@ -41,84 +42,84 @@ es.Content.Transaction = function( content, operations ) {
  * @param insert {es.Content} Content to insert (optional)
  */
 es.Content.Transaction.newFromReplace = function( content, range, insert ) {
-	var operations = [];
+	var transaction = new es.Content.Transaction( content );
 	range.normalize();
 	if ( content.getLength() ) {
 		// Delete range
 		if ( range.start ) {
 			// Use content up until the range begins
-			operations.push( new es.Content.Operation( 'retain', range.start ) );
+			transaction.add( new es.Content.Operation.Retain( range.start ) );
 		}
 		// Skip over the range
 		if ( range.getLength() ) {
-			operations.push( new es.Content.Operation( 'remove', range.getLength() ) );
+			transaction.add( new es.Content.Operation.Remove( range.getLength() ) );
 		}
 	}
 	if ( insert ) {
 		// Add content to the output
-		operations.push( new es.Content.Operation( 'insert', insert ) );
+		transaction.add( new es.Content.Operation.Insert( insert ) );
 	}
 	// Retain remaining content
 	if ( range.end < content.getLength() ) {
-		operations.push(
-			new es.Content.Operation( 'retain', content.getLength() - range.end )
-		);
+		transaction.add( new es.Content.Operation.Retain( content.getLength() - range.end ) );
 	}
-	return new es.Content.Transaction( content, operations );
+	return transaction;
+};
+
+/**
+ * Builds a transaction that applies annotations
+ * 
+ * TODO: Support method argument
+ * 
+ * @param content {es.Content} Content to operate on
+ * @param range {es.Range} Range of content to annotate, content will be retained
+ * @param method {String} Mode of application; "add", "remove", or "toggle"
+ * @param annotation {Object} Annotation to apply
+ */
+es.Content.Transaction.newFromAnnotate = function( content, range, method, annotation ) {
+	var transaction = new es.Content.Transaction();
+	range.normalize();
+	if ( content.getLength() ) {
+		if ( range.start ) {
+			// Use content up until the range begins
+			transaction.add( new es.Content.Operation.Retain( range.start ) );
+		}
+		if ( range.getLength() ) {
+			// Apply annotation to range
+			transaction.add( new es.Content.Operation.Begin( annotation ) );
+			transaction.add( new es.Content.Operation.Retain( range.getLength() ) );
+			transaction.add( new es.Content.Operation.End( annotation ) );
+		}
+		// Retain remaining content
+		if ( range.end < content.getLength() ) {
+			transaction.add( new es.Content.Operation.Begin( content.getLength() - range.end ) );
+		}
+	}
+	return transaction;
 };
 
 es.Content.Transaction.prototype.commit = function() {
-	var range = new es.Range(),
-		to = new es.Content();
+	var offset = 0,
+		content = new es.Content(),
+		annotations = [];
 	for ( var i = 0; i < this.operations.length; i++ ) {
-		var operation = this.operations[i];
-		switch (operation.getType()) {
-			case 'retain':
-				range.to = range.from + operation.getLength();
-				// Automatically add content to operation
-				if ( !operation.hasContent() ) {
-					operation.setContent( this.content.getContent( range ) );
-				}
-				to.insert( to.getLength(), operation.getContent().getData() );
-				range.from = range.to;
-				break;
-			case 'insert':
-				to.insert( to.getLength(), operation.getContent().getData() );
-				break;
-			case 'remove':
-				range.to = range.from + operation.getLength();
-				// Automatically add content to operation
-				if ( !operation.hasContent() ) {
-					operation.setContent( this.content.getContent( range ) );
-				}
-				range.from = range.to;
-				break;
-		}
+		var length = this.operations[i].commit( content, annotations );
+		// TODO: Apply annotations in stack
+		offset += length;
 	}
-	return to;
+	return content;
 };
 
 es.Content.Transaction.prototype.rollback = function() {
-	var range = new es.Range(),
-		to = new es.Content();
+	var offset = 0,
+		content = new es.Content(),
+		annotations = [];
 	for ( var i = 0; i < this.operations.length; i++ ) {
-		var operation = this.operations[i];
-		switch (operation.getType()) {
-			case 'retain':
-				range.to = range.from + operation.getLength();
-				to.insert( to.getLength(), operation.getContent().getData() );
-				range.from = range.to;
-				break;
-			case 'remove':
-				to.insert( to.getLength(), operation.getContent().getData() );
-				break;
-			case 'insert':
-				range.to = range.from + operation.getLength();
-				range.from = range.to;
-				break;
-		}
+		var length = this.operations[i].rollback( content, annotations );
+		// TODO: Apply annotations in stack
+		offset += length;
 	}
-	return to;
+	return content;
 };
 
 es.Content.Transaction.prototype.optimize = function() {
