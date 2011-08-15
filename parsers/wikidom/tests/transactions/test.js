@@ -52,16 +52,52 @@ test( 'Insert, retain and remove', 4, function() {
 			content, new es.Range( 5, 7), 'used to be'
 		)
 	};
+	var before = content.getData(),
+		after = [
+			["T", { "type": "italic" }],
+			["h", { "type": "italic" }],
+			["i", { "type": "italic" }],
+			["s", { "type": "italic" }],
+			" ",
+			"u",
+			"s",
+			"e",
+			"d",
+			" ",
+			"t",
+			"o",
+			" ",
+			"b",
+			"e",
+			" ",
+			["a", { "type": "xlink", "data": { "url":"http://www.a.com" } }],
+			[" ", { "type": "xlink", "data": { "url":"http://www.a.com" } }],
+			["t", { "type": "xlink", "data": { "url":"http://www.a.com" } }, { "type": "bold" }],
+			["e", { "type": "xlink", "data": { "url":"http://www.a.com" } }, { "type": "bold" }],
+			["s", { "type": "xlink", "data": { "url":"http://www.a.com" } }, { "type": "bold" }],
+			["t", { "type": "xlink", "data": { "url":"http://www.a.com" } }, { "type": "bold" }],
+			" ",
+			"p",
+			"a",
+			"r",
+			"a",
+			"g",
+			"r",
+			"a",
+			"p",
+			"h",
+			"!"
+		]
 	for ( var method in transactions ) {
 		var transaction = transactions[method];
-		equal(
-			transaction.commit( content ).getText(),
-			'This used to be a test paragraph!',
+		deepEqual(
+			transaction.commit( content ).getData(),
+			after,
 			'Committing transaction built with ' + method
 		);
-		equal(
-			transaction.rollback( content ).getText(),
-			'This is a test paragraph!',
+		deepEqual(
+			transaction.rollback( content ).getData(),
+			before,
 			'Rolling back transaction built ' + method
 		);
 	}
