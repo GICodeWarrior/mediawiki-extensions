@@ -92,7 +92,7 @@ class ISHooks {
 
 			$result = $i->invokeUserFunctionFromWikitext( $moduleName, $funcName, $args, $frame );
 		} catch( ISException $e ) {
-			$msg = nl2br( htmlspecialchars( $e->getMessage() ) );
+			$msg = $e->getMessage();
 			wfProfileOut( __METHOD__ );
 			return "<strong class=\"error\">{$msg}</strong>";
 		}
@@ -173,6 +173,32 @@ class ISHooks {
 	public static function addCanonicalNamespaces( &$list ) {
 		$list[NS_MODULE] = 'Module';
 		$list[NS_MODULE_TALK] = 'Module_talk';
+		return true;
+	}
+
+	public static function validateScript( $editor, $text, $section, &$error ) {
+		global $wgUser;
+		$title = $editor->mTitle;
+
+		if( $title->getNamespace() == NS_MODULE ) {
+			$errors = ISInterpreter::getSyntaxErrors( $title->getText(), $text );
+			if( !$errors ) {
+				return true;
+			}
+
+			$errmsg = wfMsgExt( 'inlinescripts-error', array( 'parsemag' ), array( count( $errors ) ) );
+			$errlines = '* ' . implode( "\n* ", array_map( 'wfEscapeWikiText', $errors ) );
+			$error = <<<HTML
+<div class="errorbox">
+{$errmsg}
+{$errlines}
+</div>
+<br clear="all" />
+HTML;
+
+			return true;
+		}
+		
 		return true;
 	}
 }

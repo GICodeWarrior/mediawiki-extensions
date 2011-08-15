@@ -18,11 +18,12 @@ $messages['en'] = array(
 	'inlinescripts-call-fromwikitext' => '$1::$2 called by wikitext',
 	'inlinescripts-call-parse' => 'parse( "$1" )',
 
+	'inlinescripts-error' => 'Following parsing {{plural:$1|error|errors}} detected:',
 	'inlinescripts-codelocation' => 'in module $1 at line $2',
 
 	'inlinescripts-exception-unexceptedtoken' => 'Unexpected token $2 $1: expected $3 (parser state $4)',
-	'inlinescripts-exception-unclosedstring' => 'Unclosed string in module $1 at char $2',
-	'inlinescripts-exception-unrecognisedtoken' => 'Unrecognized token in module $1 at char $2',
+	'inlinescripts-exception-unclosedstring' => 'Unclosed string $1',
+	'inlinescripts-exception-unrecognisedtoken' => 'Unrecognized token $1',
 	'inlinescripts-exception-toomanytokens' => 'Exceeded tokens limit',
 	'inlinescripts-exception-toomanyevals' => 'Exceeded evaluations limit $1',
 	'inlinescripts-exception-recoverflow' => 'Too deep abstract syntax tree',
@@ -42,10 +43,12 @@ $messages['en'] = array(
 	'inlinescripts-exception-nonexistent-module' => 'Call to non-existent module $2 $1',
 	'inlinescripts-exception-unknownfunction-user' => 'Trying to use an unnknown user function $2::$3 $1',
 	'inlinescripts-exception-recursion' => 'Function loop detected when calling function $2::$3 $1',
+	'inlinescripts-exception-toodeeprecursion' => 'The maximum function nesting limit of $2 exceeded $1',
 
 	'inlinescripts-transerror-notenoughargs-user' => 'Not enough arguments for function $1::$2',
 	'inlinescripts-transerror-nonexistent-module' => 'Call to non-existent module $1',
 	'inlinescripts-transerror-unknownfunction-user' => 'Trying to use an unnknown user function $1::$2',
 	'inlinescripts-transerror-recursion' => 'Function loop detected when calling function $1::$2',
 	'inlinescripts-transerror-nofunction' => 'Missing function name when invoking the script',
+	'inlinescripts-transerror-toodeeprecursion' => 'The maximum function nesting limit of $1 exceeded',
 );

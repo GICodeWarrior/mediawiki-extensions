@@ -52,6 +52,7 @@ $wgHooks['ParserTestTables'][] = 'ISHooks::addTestTables';
 $wgHooks['CanonicalNamespaces'][] = 'ISHooks::addCanonicalNamespaces';
 $wgHooks['ArticleViewCustom'][] = 'ISHooks::handleScriptView';
 $wgHooks['TitleIsWikitextPage'][] = 'ISHooks::isWikitextPage';
+$wgHooks['EditFilter'][] = 'ISHooks::validateScript';
 
 $wgHooks['LinksUpdate'][] = 'ISLinksUpdateHooks::updateLinks';
 $wgHooks['ArticleEditUpdates'][] = 'ISLinksUpdateHooks::purgeCache';

@@ -34,25 +34,57 @@ require_once( 'CallStack.php' );
 class ISInterpreter {
 	const ParserVersion = 1;
 	
-	var $mParser, $mCodeParser, $mUseCache, $mUsedModules, $mCallStack;
-	var $mMaxRecursion, $mEvaluations, $mTokens;
-
+	var $mParser, $mUseCache, $mUsedModules, $mCallStack;
+	var $mMaxRecursion, $mEvaluations;
 	var $mParserCache;	// Unserializing can be expensive as well
 
+	static $mCodeParser;
+
 	public function __construct( $parser ) {
-		global $wgInlineScriptsParserClass, $wgInlineScriptsUseCache;
+		global $wgInlineScriptsUseCache;
 
 		$this->mParser = $parser;
-		$this->mCodeParser = new $wgInlineScriptsParserClass( $this );
 		$this->mUseCache = $wgInlineScriptsUseCache;
 
 		$this->mCallStack = new ISCallStack( $this );
 		$this->mUsedModules = array();
 		$this->mMaxRecursion =
-			$this->mEvaluations =
-			$this->mTokens =
+		$this->mEvaluations =
 			0;
 	}
+
+	public static function invokeCodeParser( $code, $module, $method = 'parse' ) {
+		global $wgInlineScriptsParserClass, $wgInlineScriptsLimits;
+
+		if( !self::$mCodeParser ) {
+			self::$mCodeParser = new $wgInlineScriptsParserClass();
+		}
+
+		if( self::$mCodeParser->needsScanner() ) {
+			$input = new ISScanner( $module, $code );
+		} else {
+			$input = $code;
+		}
+
+		return self::$mCodeParser->$method( $input, $module, $wgInlineScriptsLimits['tokens'] );
+	}
+
+	/**
+	 * Invalidate the module by title.
+	 */
+	public static function invalidateModule( $title ) {
+		global $parserMemc;
+
+		$key = ISModule::getCacheKey( $title );
+		$parserMemc->delete( $key );
+	}
+
+	/**
+	 * Checks the syntax of the script and returns an array of syntax errors.
+	 */
+	 public static function getSyntaxErrors( $module, $text ) {
+		 return self::invokeCodeParser( $text, $module, 'getSyntaxErrors' );
+	 }
 
 	/**
 	 * Disable cache for benchmarking or debugging purposes.
@@ -98,7 +130,7 @@ class ISInterpreter {
 
 	public function getMaxTokensLeft() {
 		global $wgInlineScriptsLimits;
-		return $wgInlineScriptsLimits['tokens'] - $this->mTokens;
+		return $wgInlineScriptsLimits['tokens'];
 	}
 
 	/**
@@ -154,9 +186,8 @@ class ISInterpreter {
 
 		// Parse
 		$moduleName = $rev->getTitle()->getText();
-		$scanner = new ISScanner( $moduleName, $rev->getText() );
-		$out = $this->mCodeParser->parse( $scanner, $moduleName, $this->getMaxTokensLeft() );
-		$module = ISModule::newFromParserOutput( $this, $rev->getTitle(), $out );
+		$out = self::invokeCodeParser( $rev->getText(), $moduleName );
+		$module = ISModule::newFromParserOutput( $this, $rev->getTitle(), $rev->getId(), $out );
 
 		// Save to cache
 		$this->mParserCache[$key] = $module;
@@ -191,7 +222,7 @@ class ISInterpreter {
 	 * @return ISData
 	 */
 	public function invokeUserFunctionFromModule( $module, $name, $args, $parentContext, $line ) {
-		global $wgInlineScriptsAllowRecursion;
+		global $wgInlineScriptsAllowRecursion, $wgInlineScriptsMaxCallStackDepth;
 
 		// Load module
 		if( $module instanceof ISModule ) {
@@ -220,6 +251,9 @@ class ISInterpreter {
 		}
 		if( !$wgInlineScriptsAllowRecursion && $this->mCallStack->contains( $moduleName, $name ) ) {
 			throw new ISUserVisibleException( 'recursion', $parentContext->mModuleName, $line, array( $moduleName, $name ) );
+		}
+		if( $this->mCallStack->isFull() ) {
+			throw new ISUserVisibleException( 'toodeeprecursion', $parentContext->mModuleName, $line, array( $wgInlineScriptsMaxCallStackDepth ) );
 		}
 
 		// Prepare the context and the arguments
@@ -276,6 +310,11 @@ class ISInterpreter {
 		if( !$wgInlineScriptsAllowRecursion && $this->mCallStack->contains( $moduleName, $name ) ) {
 			throw new ISTransclusionException( 'recursion', array( $moduleName, $name ) );
 		}
+		if( $this->mCallStack->isFull() ) {
+			// Depsite seeming an unlikely place, this may actually happen if the user will try to bypass the
+			// stack depth limit by using parse( '{{i:module|func}}' )
+			throw new ISTransclusionException( 'toodeeprecursion', array( $wgInlineScriptsMaxCallStackDepth ) );
+		}
 
 		// Prepare the context and the arguments
 		$context = new ISEvaluationContext( $this, $module, $name, $frame );
@@ -327,15 +366,20 @@ class ISInterpreter {
  */
 class ISModule {
 	var $mTitle, $mFunctions, $mParserVersion;
+
+	// Revision ID
+	// Not used now, will be used if we ever introduce the function output cache
+	var $mRevID;
 	
 	protected function __construct() {}
 
 	/**
 	 * Initializes module from the code parser output.
 	 */
-	public static function newFromParserOutput( $interpreter, $title, $output ) {
+	public static function newFromParserOutput( $interpreter, $title, $revid, $output ) {
 		$m = new ISModule();
 		$m->mTitle = $title;
+		$m->mRevID = $revid;
 		$m->mParserVersion = $output->getVersion();
 		$m->mFunctions = array();
 

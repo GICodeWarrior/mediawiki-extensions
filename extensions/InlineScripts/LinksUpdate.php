@@ -62,9 +62,13 @@ class ISLinksUpdateHooks {
 	public static function purgeCache( &$article, &$editInfo, $changed ) {
 		global $wgDeferredUpdateList;
 
-		// Invalidate caches of articles which include the script
-		if( $article->mTitle->getNamespace() == NS_MODULE )
+		if( $article->mTitle->getNamespace() == NS_MODULE ) {
+			// Invalidate the script cache
+			ISInterpreter::invalidateModule( $article->mTitle );
+			
+			// Invalidate caches of articles which include the script
 			$wgDeferredUpdateList[] = new HTMLCacheUpdate( $article->mTitle, 'scriptlinks' );
+		}
 
 		return true;
 	}

@@ -47,6 +47,8 @@ class ISCallStack {
 
 	public function isFull() {
 		global $wgInlineScriptsMaxCallStackDepth;
+		
+		return count( $this->mStack ) >= $wgInlineScriptsMaxCallStackDepth;
 	}
 
 	public function contains( $module, $name ) {

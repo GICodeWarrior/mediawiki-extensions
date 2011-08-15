@@ -15,7 +15,7 @@ class ISLRParser implements ISParser {
 	const Reduce = 1;
 	const Accept = 2;
 
-	var $mLoaded, $mNonterminals, $mProductions, $mAction, $mGoto;
+	static $mLoaded, $mNonterminals, $mProductions, $mAction, $mGoto;
 
 	public static function getVersion() {
 		return IS_LR_VERSION;
@@ -24,16 +24,16 @@ class ISLRParser implements ISParser {
 	private function loadGrammar() {
 		wfProfileIn( __METHOD__ );
 
-		if( $this->mLoaded )
+		if( self::$mLoaded )
 			return;
 
 		require_once( 'LRTable.php' );
 
-		$this->mNonterminals = ISLRTable::$nonterminals;
-		$this->mProductions = ISLRTable::$productions;
-		$this->mAction = ISLRTable::$action;
-		$this->mGoto = ISLRTable::$goto;
-		$this->mLoaded = true;
+		self::$mNonterminals = ISLRTable::$nonterminals;
+		self::$mProductions = ISLRTable::$productions;
+		self::$mAction = ISLRTable::$action;
+		self::$mGoto = ISLRTable::$goto;
+		self::$mLoaded = true;
 		
 		wfProfileOut( __METHOD__ );
 	}
@@ -43,7 +43,7 @@ class ISLRParser implements ISParser {
 	}
 
 	public function parse( $scanner, $module, $maxTokens ) {
-		$this->loadGrammar();
+		self::loadGrammar();
 
 		$states = array( array( null, 0 ) );
 		$scanner->rewind();
@@ -66,17 +66,17 @@ class ISLRParser implements ISParser {
 			}
 
 			list( $stateval, $state ) = end( $states );
-			$act = @$this->mAction[$state][$cur];
+			$act = @self::$mAction[$state][$cur];
 			if( !$act ) {
 				wfProfileOut( __METHOD__ );
 				throw new ISUserVisibleException( 'unexceptedtoken', $module, $token->line,
-					array( $token, implode( ', ', array_keys( @$this->mAction[$state] ) ), $state ) );
+					array( $token, implode( ', ', array_keys( @self::$mAction[$state] ) ), $state ) );
 			}
 			if( $act[0] == self::Shift ) {
 					$states[] = array( $token, $act[1] );
 					$scanner->next();
 			} elseif( $act[0] == self::Reduce ) {
-					list( $nonterm, $prod ) = $this->mProductions[$act[1]];
+					list( $nonterm, $prod ) = self::$mProductions[$act[1]];
 					$len = count( $prod );
 
 					// Change state
@@ -91,7 +91,7 @@ class ISLRParser implements ISParser {
 						list( $val ) = $symbol;
 						$node->addChild( $val );
 					}
-					$states[] = array( $node, $this->mGoto[$state][$nonterm] );
+					$states[] = array( $node, self::$mGoto[$state][$nonterm] );
 			} elseif( $act[0] == self::Accept ) {
 					break;
 			}
@@ -100,5 +100,15 @@ class ISLRParser implements ISParser {
 		wfProfileOut( __METHOD__ );
 
 		return new ISParserOutput( $states[1][0], $tokenCount );
+	}
+	
+	public function getSyntaxErrors( $input, $module, $maxTokens ) {
+		try {
+			$this->parse( $input, $module, $maxTokens );
+		} catch( ISUserVisibleException $e ) {
+			return array( $e->getMessage() );
+		}
+
+		return array();
 	}
 }

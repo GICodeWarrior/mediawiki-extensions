@@ -94,7 +94,8 @@ class ISParserTreeNode {
 	var $mType, $mChildren;
 
 	public function __construct( $parser, $id ) {
-		$this->mType = $parser->mNonterminals[$id];
+		$parserClass = get_class( $parser );
+		$this->mType = $parserClass::$mNonterminals[$id];
 	}
 
 	public function addChild( $node ) {
@@ -166,6 +167,14 @@ interface ISParser {
 	 * @return ISParserTreeNode
 	 */
 	public function parse( $input, $module, $maxTokens );
+
+	/**
+	 * Returns an array of the syntax errors in the code
+	 * @param input ISSCanner Input (scanner or string)
+	 * @param maxTokens int Maximal amount of tokens
+	 * @return array(string)
+	 */
+	 public function getSyntaxErrors( $input, $moudle, $maxTokens );
 }
 
 class ISException extends MWException {}
