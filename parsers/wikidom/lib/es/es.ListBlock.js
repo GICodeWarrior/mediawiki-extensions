@@ -98,7 +98,7 @@ es.ListBlock.prototype.getPosition = function( offset ) {
 	
 	this.list.traverseItems( function( item, index ) {
 		itemLength = item.content.getLength();
-		if ( offset >= globalOffset && offset < globalOffset + itemLength ) {
+		if ( offset >= globalOffset && offset <= globalOffset + itemLength ) {
 			position = item.flow.getPosition( offset - globalOffset );
 			contentOffset = item.$content.offset();
 			position.top += contentOffset.top - blockOffset.top;
@@ -111,6 +111,10 @@ es.ListBlock.prototype.getPosition = function( offset ) {
 	} );
 	
 	return position;
+};
+
+es.ListBlock.prototype.getText = function( range, render ) {
+	return "";
 };
 
 /* Registration */
