@@ -44,7 +44,7 @@ class FetchGoogleSpreadsheet extends MetricsMaintenance {
 		if ( $authToken === null ) {
 			$this->error( 'No auth token returned. Check your Google Credentials', true );
 		}
-		$this->output( 'Authorised. Got an authorisation token from Google' );
+		$this->output( "Authorised. Got an authorisation token from Google\n" );
 
 		$cookies = $http->getCookieJar();
 		//var_dump( $cookies );
@@ -62,7 +62,27 @@ class FetchGoogleSpreadsheet extends MetricsMaintenance {
 		//var_dump( $res );
 		//var_dump( $http->getResponseHeaders() );
 		$content = $http->getContent();
-		var_dump( $this->formatXmlString( $content ) );
+		//var_dump( $this->formatXmlString( $content ) );
+
+		$reader = new XMLReader();
+		$reader->XML( $content );
+
+		while ( $reader->read() && $reader->name !== 'entry' );
+
+		$worksheets = array();
+		while ( $reader->name === 'entry' ) {
+
+			$node = new SimpleXMLElement( $reader->readOuterXML() );
+
+			$src = (string)$node->content["src"];
+			$this->output( 'Worksheet found: ' . $src );
+			$worksheets[] = $src;
+
+			// go to next <entry />
+			$reader->next( 'entry' );
+		}
+
+		$this->output( "Finished!\n" );
 	}
 
 	/**
