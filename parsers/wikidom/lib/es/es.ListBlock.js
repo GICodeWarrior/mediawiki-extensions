@@ -89,32 +89,52 @@ es.ListBlock.prototype.getOffset = function( position ) {
  * @returns {es.Position} Position of offset
  */
 es.ListBlock.prototype.getPosition = function( offset ) {
-	var globalOffset = 0,
-		globalLines = 0,
-		itemLength,
-		position,
+	var location = this.getLocationFromOffset( offset ),
+		position = location.item.flow.getPosition( location.offset ),
+		contentOffset = location.item.$content.offset(),
 		blockOffset = this.$.offset();
-	
-	this.list.traverseItems( function( item, index ) {
-		itemLength = item.content.getLength();
-		if ( offset >= globalOffset && offset <= globalOffset + itemLength ) {
-			position = item.flow.getPosition( offset - globalOffset );
-			contentOffset = item.$content.offset();
-			position.top += contentOffset.top - blockOffset.top;
-			position.left += contentOffset.left - blockOffset.left;
-			position.bottom += contentOffset.top - blockOffset.top;
-			position.line += globalLines;
-			return false;
-		}
-		globalOffset += itemLength + 1;
-		globalLines += item.flow.lines.length;
-	} );
+
+	position.top += contentOffset.top - blockOffset.top;
+	position.left += contentOffset.left - blockOffset.left;
+	position.bottom += contentOffset.top - blockOffset.top;
+	position.line += location.linesBefore;
 	
 	return position;
 };
 
 es.ListBlock.prototype.getText = function( range, render ) {
 	return "";
+};
+
+/**
+ * Gets a location from an offset.
+ * 
+ * @method
+ * @param offset {Integer} Offset to get location for
+ * @returns {Object} Location object with item, offset and linesBefore properties, where offset
+ * is local to item and linesBefore is total number of flow lines above returned item
+ */
+es.ListBlock.prototype.getLocationFromOffset = function( offset ) {
+	var globalOffset = 0,
+		linesBefore = 0,
+		itemLength,
+		location;
+	
+	this.list.traverseItems( function( item, index ) {
+		itemLength = item.content.getLength();
+		if ( offset >= globalOffset && offset <= globalOffset + itemLength ) {
+			location = {
+				'item' : item,
+				'offset' : offset - globalOffset,
+				'linesBefore': linesBefore
+			};
+			return false;
+		}
+		globalOffset += itemLength + 1;
+		linesBefore += item.flow.lines.length;
+	} );
+	
+	return location;
 };
 
 /* Registration */
