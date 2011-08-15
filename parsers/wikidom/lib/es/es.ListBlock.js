@@ -69,14 +69,12 @@ es.ListBlock.prototype.getOffset = function( position ) {
 	this.list.traverseItems( function( item, index ) {
 		itemOffset = item.$content.offset();
 		itemHeight = item.$content.height();
-		
 		if ( position.top >= itemOffset.top && position.top < itemOffset.top + itemHeight ) {
 			position.top -= itemOffset.top;
 			position.left -= itemOffset.left;
 			offset += item.flow.getOffset( position );
 			return false;
 		}
-		
 		offset += item.content.getLength() + 1;
 	} );
 
@@ -92,6 +90,7 @@ es.ListBlock.prototype.getOffset = function( position ) {
  */
 es.ListBlock.prototype.getPosition = function( offset ) {
 	var globalOffset = 0,
+		globalLines = 0,
 		itemLength,
 		position,
 		blockOffset = this.$.offset();
@@ -104,10 +103,11 @@ es.ListBlock.prototype.getPosition = function( offset ) {
 			position.top += contentOffset.top - blockOffset.top;
 			position.left += contentOffset.left - blockOffset.left;
 			position.bottom += contentOffset.top - blockOffset.top;
-			position.line = index;
+			position.line += globalLines;
 			return false;
 		}
 		globalOffset += itemLength + 1;
+		globalLines += item.flow.lines.length;
 	} );
 	
 	return position;
