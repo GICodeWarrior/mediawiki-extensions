@@ -11,21 +11,22 @@ class SpecialUserDebugInfo extends SpecialPage {
 
 	public function execute( $subpage ) {
 		$this->setHeaders();
-		global $wgOut;
-		$wgOut->addHTML( Xml::openElement( 'table', array( 'class' => 'wikitable' ) ) );
 
-		$wgOut->addHTML( '<thead>' );
-		$wgOut->addHTML( '<tr>' );
-		$wgOut->addHTML( '<th>' );
-		$wgOut->addWikiMsg( 'userdebuginfo-key' );
-		$wgOut->addHTML( '</th>' );
-		$wgOut->addHTML( '<th>' );
-		$wgOut->addWikiMsg( 'userdebuginfo-value' );
-		$wgOut->addHTML( '</th>' );
-		$wgOut->addHTML( '</tr>' );
-		$wgOut->addHTML( '</thead>' );
+		$out = $this->getOutput();
+		$out->addHTML( Xml::openElement( 'table', array( 'class' => 'wikitable' ) ) );
 
-		$wgOut->addHTML( '<tbody>' );
+		$out->addHTML( '<thead>' );
+		$out->addHTML( '<tr>' );
+		$out->addHTML( '<th>' );
+		$out->addWikiMsg( 'userdebuginfo-key' );
+		$out->addHTML( '</th>' );
+		$out->addHTML( '<th>' );
+		$out->addWikiMsg( 'userdebuginfo-value' );
+		$out->addHTML( '</th>' );
+		$out->addHTML( '</tr>' );
+		$out->addHTML( '</thead>' );
+
+		$out->addHTML( '<tbody>' );
 
 		$this->printRow( 'userdebuginfo-useragent', htmlspecialchars( $_SERVER['HTTP_USER_AGENT'] ) );
 
@@ -36,8 +37,8 @@ class SpecialUserDebugInfo extends SpecialPage {
 		$this->printRow( 'userdebuginfo-remoteaddr', wfGetIP() );
 		$this->printRow( 'userdebuginfo-language', htmlspecialchars( $_SERVER['HTTP_ACCEPT_LANGUAGE'] ) );
 
-		$wgOut->addHTML( '</tbody>' );
-		$wgOut->addHTML( '</table>' );
+		$out->addHTML( '</tbody>' );
+		$out->addHTML( '</table>' );
 	}
 
 	/**
@@ -45,17 +46,17 @@ class SpecialUserDebugInfo extends SpecialPage {
 	 * @param $value string Text to output
 	 */
 	private function printRow( $key, $value ) {
-		global $wgOut;
-		$wgOut->addHTML( '<tr>' );
-		$wgOut->addHTML( '<td>' );
-		$wgOut->addWikiMsg( $key );
-		$wgOut->addHTML( '</td>' );
+		$out = $this->getOutput();
+		$out->addHTML( '<tr>' );
+		$out->addHTML( '<td>' );
+		$out->addWikiMsg( $key );
+		$out->addHTML( '</td>' );
 
-		$wgOut->addHTML( '<td>' );
-		$wgOut->addHTML( $value );
-		$wgOut->addHTML( '</td>' );
+		$out->addHTML( '<td>' );
+		$out->addHTML( $value );
+		$out->addHTML( '</td>' );
 
-		$wgOut->addHTML( '</tr>' );
+		$out->addHTML( '</tr>' );
 	}
 }
 
