@@ -176,7 +176,7 @@ class SwiftFile extends LocalFile {
 			$container = $this->repo->get_container($conn,$this->repo->container . "%2Fthumb");
 			$this->repo->write_swift_object( $thumbTemp, $container, $this->getRel() . "/" . $thumbName);
 			// php-cloudfiles throws exceptions, so failure never gets here.
-			
+
 			// Clean up temporary data.
 			unlink($thumbTemp);
 
@@ -238,7 +238,7 @@ class SwiftFile extends LocalFile {
 			//if ( in_array( $ext, $wgExcludeFromThumbnailPurge ) ) {
 			//	continue;
 			//}
-			
+
 			$urls[] = $this->getThumbUrl($file);
 			$this->repo->swift_delete($container, $file);
 		}
@@ -345,9 +345,9 @@ class SwiftRepo extends LocalRepo {
 			$obj = $dstc->create_object($dstRel);
 			$obj->load_from_filename( $srcPath, True);
 		} catch (SyntaxException $e) {
-		       throw new MWException( "missing required parameters" );
+			throw new MWException( "missing required parameters" );
 		} catch (BadContentTypeException $e) {
-		       throw new MWException( "No Content-Type was/could be set" );
+			throw new MWException( "No Content-Type was/could be set" );
 		} catch (InvalidResponseException $e) {
 			throw new MWException( __METHOD__ . "unexpected response '$e'" );
 		} catch (IOException $e) {
@@ -365,11 +365,11 @@ class SwiftRepo extends LocalRepo {
 		try {
 			$container->delete_object($rel);
 		} catch (SyntaxException $e) {
-		       throw new MWException( "Swift object name not well-formed: '$e'" );
+			throw new MWException( "Swift object name not well-formed: '$e'" );
 		} catch (NoSuchObjectException $e) {
-		       throw new MWException( "Swift object we are trying to delete does not exist: '$e'" );
+			throw new MWException( "Swift object we are trying to delete does not exist: '$e'" );
 		} catch (InvalidResponseException $e) {
-		       throw new MWException( "unexpected response '$e'" );
+			throw new MWException( "unexpected response '$e'" );
 		}
 	}
 
@@ -385,10 +385,10 @@ class SwiftRepo extends LocalRepo {
 	 * @return $status
 	 */
 	function storeBatch( $triplets, $flags = 0 ) {
-		wfDebug( __METHOD__  . ': Storing ' . count( $triplets ) . 
+		wfDebug( __METHOD__  . ': Storing ' . count( $triplets ) .
 			" triplets; flags: {$flags}\n" );
-		
-		// Validate each triplet 
+
+		// Validate each triplet
 		$status = $this->newGood();
 		foreach ( $triplets as $i => $triplet ) {
 			list( $srcPath, $dstZone, $dstRel ) = $triplet;
@@ -399,7 +399,7 @@ class SwiftRepo extends LocalRepo {
 
 			// Check overwriting
 			if (0) { #FIXME
-			if ( !( $flags & self::OVERWRITE ) && file_exists( $dstPath ) ) {
+			if ( !( $flags & self::OVERWRITE ) && file_exists( $dstPath ) ) { // FIXME: $dstPath is undefined
 				if ( $flags & self::OVERWRITE_SAME ) {
 					$hashSource = sha1_file( $srcPath );
 					$hashDest = sha1_file( $dstPath );
@@ -445,15 +445,15 @@ class SwiftRepo extends LocalRepo {
 				// php-cloudfiles throws exceptions, so failure never gets here.
 				if ( $flags & self::DELETE_SOURCE ) {
 					unlink ( $srcPath );
-				}		
+				}
 			}
 
 			if ( !( $flags & self::SKIP_VALIDATION ) ) {
 				// FIXME: Swift will return the MD5 of the data written.
-				if (0) { // ( $hashDest === false || $hashSource !== $hashDest ) 
-					wfDebug( __METHOD__ . ': File copy validation failed: ' . 
+				if (0) { // ( $hashDest === false || $hashSource !== $hashDest )
+					wfDebug( __METHOD__ . ': File copy validation failed: ' .
 						"$srcPath ($hashSource) to $dstPath ($hashDest)\n" );
-					
+
 					$status->error( 'filecopyerror', $srcPath, $dstPath );
 					$good = false;
 				}
@@ -491,7 +491,7 @@ class SwiftRepo extends LocalRepo {
 
 		// Do the append to the next name
 		$status = $this->store( $srcPath, 'temp', sprintf("%s.%05d", $toAppendPath, $nextone) );
-	
+
 		if ( $flags & self::DELETE_SOURCE ) {
 			unlink( $srcPath );
 		}
@@ -504,8 +504,8 @@ class SwiftRepo extends LocalRepo {
 	 */
 	function appendFinish( $toAppendPath ){
 		$conn = $this->connect();
-		$container = $this->repo->get_container( $conn,$this->repo->container . "%2Ftemp" );
-		$parts = $container->list_objects( 0, NULL, $srcPath );
+		$container = $this->repo->get_container( $conn, $this->repo->container . "%2Ftemp" );
+		$parts = $container->list_objects( 0, NULL, $srcPath ); // FIXME: $srcPath is undefined
 		// list_objects() returns a sorted list.
 
 		// The first object as the same name as the destination, so
@@ -520,7 +520,7 @@ class SwiftRepo extends LocalRepo {
 			$obj = $container->get_object( $part );
 			$biggie->write( $obj->read() );
 		}
-		return newGood();
+		return Status::newGood();
 	}
 
 	/**
@@ -545,7 +545,7 @@ class SwiftRepo extends LocalRepo {
 			list( $srcRel, $archiveRel ) = $pair;
 
 			$triplets[] = array( "mwrepo://{$this->name}/public/$srcRel", 'deleted', $archiveRel );
-			
+
 		}
 		$status = $this->storeBatch( $triplets, FileRepo::OVERWRITE_SAME | FileRepo::DELETE_SOURCE );
 		return $status;
@@ -700,7 +700,7 @@ class SwiftRepo extends LocalRepo {
 				// php-cloudfiles throws exceptions, so failure never gets here.
 				if ( $flags & self::DELETE_SOURCE ) {
 					unlink ( $srcPath );
-				}		
+				}
 			}
 
 			$good = true;
@@ -717,9 +717,9 @@ class SwiftRepo extends LocalRepo {
 
 	/**
 	 * Deletes a batch of files. Each file can be a (zone, rel) pairs, a
-	 * virtual url or a real path. It will try to delete each file, but 
+	 * virtual url or a real path. It will try to delete each file, but
 	 * ignores any errors that may occur
-	 * 
+	 *
 	 * @param $pairs array List of files to delete
 	 */
 	function cleanupBatch( $files ) {
@@ -730,7 +730,7 @@ class SwiftRepo extends LocalRepo {
 				list( $cont, $rel ) = $file;
 			} else {
 				if ( self::isVirtualUrl( $file ) ) {
-					// This is a virtual url, resolve it 
+					// This is a virtual url, resolve it
 					$path = $this->getContainerRel( $file );
 					list( $cont, $rel) = $path;
 				} else {
@@ -738,7 +738,7 @@ class SwiftRepo extends LocalRepo {
 					throw new MWException( __METHOD__.": $file needs an unlink()" );
 				}
 			}
-			
+
 			wfDebug( __METHOD__.": $cont/$rel\n" );
 			$container = $this->get_container($conn,$cont);
 			$this->swift_delete( $container, $rel );
@@ -900,11 +900,11 @@ class SwiftRepo extends LocalRepo {
 	}
 
 
-        /**
+		/**
 	 * Get properties of a file with a given virtual URL
 	 * The virtual URL must refer to this repo
 	 */
-        function getFileProps( $virtualUrl ) {
+		function getFileProps( $virtualUrl ) {
 		$path = $this->resolveVirtualUrl( $virtualUrl );
 		$ret = File::getPropsFromPath( $path );
 		unlink( $path );
@@ -1005,7 +1005,7 @@ class OldSwiftFile extends SwiftFile {
 			return false;
 		}
 	}
-	
+
 	/**
 	 * Fields in the oldimage table
 	 */
