@@ -19,7 +19,7 @@ require_once( dirname( dirname( dirname( dirname( __FILE__ ) ) ) ) . '/maintenan
 
 class Grammar {
 	var $mTerminals, $mNonterminals, $mProductions, $mSymbols;
-	var $mFirst, $mFollow, $mAction, $mGoto;
+	var $mFirst, $mFollow, $mAction, $mGoto, $mCanon;
 
 	private function __construct() {
 		$this->mTerminals =
@@ -28,16 +28,25 @@ class Grammar {
 			array();
 	}
 
+	/**
+	 * Returns the ID of the nonterminal
+	 */
 	private function getNonterminalID( $name ) {
 		if( !in_array( $name, $this->mNonterminals ) )
 			$this->mNonterminals[] = $name;
 		return array_search( $name, $this->mNonterminals );
 	}
 
+	/**
+	 * Adds productions
+	 */
 	private function addProduction( $nonterm, $prod ) {
 		$this->mProductions[] = array( $nonterm, $prod );
 	}
 
+	/**
+	 * Returns all possible productions for the nonterminal.
+	 */
 	private function getProdsForNt( $nonterm ) {
 		$prods = array();
 		for( $i = 0; $i < count( $this->mProductions ); $i++ ) {
@@ -52,12 +61,16 @@ class Grammar {
 		return $this->mNonterminals[$id];
 	}
 
+	/**
+	 * Returns the grammar object for a given BNF definition.
+	 */
 	public static function parse( $def ) {
 		$g = new Grammar();
 		$def = strtolower( $def );
 		$lines = explode( "\n", $def );
 		for( $i = 1; $i <= count( $lines ); $i++ ) {
-			$line = trim( $lines[$i - 1] );
+			$line = preg_replace( '/#(.+)/us', '', $lines[$i - 1] );
+			$line = trim( $line );
 			if( !$line )
 				continue;
 
@@ -79,13 +92,14 @@ class Grammar {
 		return $g;
 	}
 
+	/**
+	 * Parses a line in the BNF file.
+	 */
 	private static function parseLine( $g, $line, $lnum ) {
 		$i = 0;
 		wfSuppressWarnings();	// @ doesn't help to supress "uninitialized string offset" warning
 
 		self::skipWhitespace( $line, $i );
-		if( $line[$i] == '#' )
-			return null;
 		if( $line[$i] != '<' )
 			die( "Invalid BNF at line $lnum" );
 		$i++;
@@ -129,11 +143,19 @@ class Grammar {
 		return array( $name, $prods );
 	}
 
+	/**
+	 * Skips all the whitespace in the line and updates $pos
+	 */
 	private static function skipWhitespace( $line, &$pos ) {
 		while( ctype_space( $line[$pos] ) && $pos + 1 < strlen( $line ) )
 			$pos++;
 	}
 
+	/**
+	 * Builds the FIRST() table.
+	 * 
+	 * FIRST( x ) is a set of terminals with which the productions of x may begin.
+	 */
 	private function buildFirstTable() {
 		foreach( $this->mSymbols as $symbol )
 			$this->mFirst[$symbol] = array();
@@ -157,6 +179,11 @@ class Grammar {
 		}
 	}
 
+	/**
+	 * Builds the FOLLOW() table.
+	 * 
+	 * FOLLOW( x ) is a set of all terminals that may immediately after x.
+	 */
 	private function buildFollowTable() {
 		foreach( $this->mSymbols as $symbol )
 			$this->mFollow[$symbol] = array();
@@ -191,27 +218,31 @@ class Grammar {
 	}
 
 	private function itemsClosure( $items ) {
-		for( ; ; ) {
-			$oldsize = count( $items );
-			foreach( $items as $item ) {
-				list( $prodid, $idx ) = $item;
-				list( $unused, $prod ) = $this->mProductions[$prodid];
-				if( is_int( @$prod[$idx] ) ) {
-					foreach( $this->getProdsForNt( $prod[$idx] ) as $id => $newProd ) {
-						$item = array( $id, 0 );
-						if( !in_array( $item, $items ) )
-							$items[] = $item;
+		$limit = count( $items );
+
+		for( $i = 0; $i < $limit; $i++ ) {
+			$item = $items[$i];
+
+			list( $prodid, $idx ) = $item;
+			list( $unused, $prod ) = $this->mProductions[$prodid];
+			if( is_int( @$prod[$idx] ) ) {
+				foreach( $this->getProdsForNt( $prod[$idx] ) as $id => $newProd ) {
+					$item = array( $id, 0 );
+					if( !in_array( $item, $items ) ) {
+						$items[] = $item;
+						$limit++;
 					}
 				}
 			}
-			if( count( $items ) == $oldsize )
-				return $items;
 		}
+
+		return $items;
 	}
 
 	public function itemsGoto( $items, $symbol ) {
 		if( is_null( $symbol ) )
 			return array();
+
 		$result = array();
 		foreach( $items as $item ) {
 			list( $prodid, $idx ) = $item;
@@ -225,18 +256,20 @@ class Grammar {
 	public function buildCanonicalSet() {
 		$r = array( $this->itemsClosure( array( array( 0, 0 ) ) ) );
 		$symbols = array_merge( $this->mTerminals, array_keys( $this->mNonterminals ) );
-		for( ; ; ) {
-			$oldsize = count( $r );
-			foreach( $r as $set ) {
-				foreach( $symbols as $symbol ) {
-					$goto = $this->itemsGoto( $set, $symbol );
-					if( $goto && !in_array( $goto, $r ) )
-						$r[] = $goto;
+
+		$limit = 1;
+
+		for( $i = 0; $i < $limit; $i++ ) {
+			$set = $r[$i];
+			foreach( $symbols as $symbol ) {
+				$goto = $this->itemsGoto( $set, $symbol );
+				if( $goto && !in_array( $goto, $r ) ) {
+					$r[] = $goto;
+					$limit++;
 				}
 			}
-			if( $oldsize == count( $r ) )
-				break;
 		}
+
 		return $r;
 	}
 
@@ -244,6 +277,7 @@ class Grammar {
 		$this->buildFirstTable();
 		$this->buildFollowTable();
 		$canonSet = $this->buildCanonicalSet();
+
 		$actionTable = array();
 		$gotoTable = array();
 		for( $i = 0; $i < count( $canonSet ); $i++ ) {
@@ -283,8 +317,10 @@ class Grammar {
 			$actionTable[$i] = $row;
 			$gotoTable[$i] = $rowGoto;
 		}
+
 		$this->mAction = $actionTable;
 		$this->mGoto = $gotoTable;
+		$this->mCanon = $canonSet;
 	}
 
 	/** Debug */
@@ -300,18 +336,23 @@ class Grammar {
 		return implode( ' ', $s );
 	}
 
-	public function formatItem( $item ) {
+	public function formatItem( $item, $html = false ) {
 		list( $prodid, $idx ) = $item;
 		list( $subj, $val ) = $this->mProductions[$prodid];
-		$s = array( $this->getNtName( $subj ), "->" );
+		$subjname = $this->getNtName( $subj );
+		$s = $html ?
+			array( "<b>{$subjname}</b>",  '&rarr;' ) :
+			array( $subjname, '->' );
 		for( $i = 0; $i <= count( $val ); $i++ ) {
 			if( $i == $idx )
-				$s[] = '(!)';
+				$s[] = $html ? '&bullet;' : '(!)';
 			if( $symbol = @$val[$i] ) {
 				if( is_string( $symbol ) )
-					$s[] = strtoupper( $symbol );
+					$s[] = $html ? $symbol : strtoupper( $symbol );
 				else
-					$s[] = $this->getNtName( $symbol );
+					$s[] = $html ?
+						'<b>' . $this->getNtName( $symbol ) . '</b>' :
+						$this->getNtName( $symbol );
 			}
 		}
 		return implode( ' ', $s );
@@ -374,7 +415,7 @@ caption {
 <body>
 <p>Here is the dump of LR table itself, as well as data used to build it.</p>
 <p>Navigate: <a href="#first">FIRST()</a> | <a href="#follow">FOLLOW()</a> | <a href="#prods">Productions</a>
- | <a href="#table">ACTION/GOTO</a></p>
+ | <a href="#canon">Canonical set</a> | <a href="#table">ACTION/GOTO</a></p>
 END;
 
 		$s .= "<h1><a name='first' id='first'>FIRST()</h1><table><tr><th>Symbol</th><th>FIRST(Symbol)</th></tr>\n";
@@ -401,30 +442,54 @@ END;
 		}
 		$s .= "</table>\n";
 
+		// Find max length of a canonical set
+		$max = 1;
+		foreach( $this->mCanon as $state ) {
+			$max = max( $max, count( $state ) );
+		}
+
+		$s .= "<h1><a name='canon' id='canon' />Canonical set</h1>";
+		$s .= "<table><tr><th>State ID</th><th colspan={$max}>Items</th></tr>\n";
+		for( $i = 0; $i < count( $this->mCanon ); $i++ ) {
+			$s .= "<tr id='state{$i}'><td><a href='#lrtable{$i}'><b>{$i}</b></a></td>";
+			for( $j = 0; $j < $max; $j++ )
+				$s .= isset( $this->mCanon[$i][$j] ) ?
+					"<td style='white-space: nowrap'>" . $this->formatItem( $this->mCanon[$i][$j], true ) . "</li>" :
+					"<td></td>";
+			$s .= "</tr>\n";
+		}
+		$s .= "</table>\n";
+
 		$termLen = count( $this->mTerminals );
 		$nontermLen = count( $this->mNonterminals );
-		$s .= "<h1><a name='table' id='action'>LR-table (ACTION/GOTO)</h1><table><tr><th rowspan=2>State ID</th>" .
+		$s .= "<h1><a name='table' id='action'>LR-table (ACTION/GOTO)</h1><table><tr><th rowspan=2>State ID</th><th rowspawn=2>State item</th>" .
 			"<th colspan={$termLen}>ACTION</th><th colspan={$nontermLen}>GOTO</th></tr><tr><th>" .
 			implode( '</th><th>', $this->mTerminals ) . '</th><th>' . implode( '</th><th>', array_values( $this->mNonterminals ) ) . "</th></tr>\n";
 		for( $id = 0; $id < count( $this->mAction ); $id++ ) {
 			$row = $this->mAction[$id];
 			$goto = $this->mGoto[$id];
-			$s .= "\t<tr><td><b>{$id}</b></td>";
+			
+			// Output ID
+			$s .= "\t<tr id='lrtable{$id}'><td><b><a href='#state{$id}'>{$id}</a></b></td>";
+
+			// Output ACTION
 			foreach( $this->mTerminals as $t ) {
 				$act = @$row[$t];
 				if( $act ) {
 					switch( $act[0] ) {
 						case 'shift':
-							$s .= "<td>s{$act[1]}</td>"; break;
+							$s .= "<td style='background-color: #FFF0A0'>s{$act[1]}</td>"; break;
 						case 'reduce':
-							$s .= "<td>r{$act[1]}</td>"; break;
+							$s .= "<td style='background-color: #A0B5FF'>r{$act[1]}</td>"; break;
 						case 'accept':
-							$s .= "<td>acc</td>"; break;
+							$s .= "<td style='background-color: #AAFFA0'>acc</td>"; break;
 					}
 				} else {
 					$s .= "<td></td>";
 				}
 			}
+
+			// Output GOTO
 			foreach( $this->mNonterminals as $ntid => $ntname ) {
 				if( isset( $goto[$ntid] ) ) {
 					$s .= "<td>{$goto[$ntid]}</td>";
