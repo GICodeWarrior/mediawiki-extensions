@@ -58,7 +58,7 @@
 +	int sockfd, portno, n;
 +	struct sockaddr_in serv_addr;
 +	struct hostent *server;
-+	u_char ttl = 1;
++	u_char ttl = 6;
 +	char host[500];
 +	char port[10];
 +	

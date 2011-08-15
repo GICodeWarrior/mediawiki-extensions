@@ -1,3 +1,9 @@
+varnish3 (3.0.0-1wmf3) lucid; urgency=low
+
+  * Increase mcast ttl from 1 to 6
+
+ -- Asher Feldman <afledman@wikimedia.org>  Thu, 15 Aug 2011 20:32:29 +0000
+
 varnish3 (3.0.0-1wmf2) lucid; urgency=low
 
   * Change time format to match squid (minus milliseconds) 
