@@ -1,11 +1,21 @@
 source("loader/user_sessions.R")
+source("loader/user_survival.R")
 
 library(lattice)
 library(doBy)
 
 user_sessions = load_user_sessions()
+user_survival = load_user_survival()
+user_sessions = merge(
+	user_sessions,
+	user_survival
+)
 user_sessions$year = strftime(user_sessions$first_edit, format="%Y")
-user_sessions$early_survival = user_sessions$last_edit - user_sessions$es_0_end >= 30
+user_sessions$early_survival = with(
+	user_sessions,
+	last_edit - es_0_end >= 30*24 & 
+	es_1_start - es_0_end <= 30*24*6
+)
 
 year_props = with(
 	summaryBy(
@@ -340,15 +350,48 @@ user_sessions$initial_rejection = with(
 		naReplace(es_2_edits, 0)
 	)
 )
+
 sc = scale
 summary(glm(
-	early_survival ~
-	sc(es_0_edits) *
-	sc(years_since_2001) *
-	sc(initial_rejection), 
-	data=user_sessions[
-		user_sessions$es_0_edits > 3,
-	],
+	#early_survival ~
+	surviving ~
+	investment *
+	year *
+	rejection, 
+	data=with(
+		user_sessions[
+			user_sessions$es_0_edits > 3,
+		],
+		data.frame(
+			early_survival = early_survival,
+			investment     = scale(es_0_edits),
+			year           = scale(years_since_2001),
+			rejection      = scale(initial_rejection)
+		)
+	),
+	family=binomial(link="logit")
+))
+
+
+sc = scale
+summary(glm(
+	surviving ~
+	investment *
+	#page_len *
+	year *
+	rejection, 
+	data=with(
+		user_sessions[
+			user_sessions$es_0_edits > 3,
+		],
+		data.frame(
+			surviving      = surviving,
+			investment     = scale(es_0_edits),
+			#page_len       = scale(es_0_mean_len),
+			year           = scale(years_since_2001),
+			rejection      = scale(initial_rejection)
+		)
+	),
 	family=binomial(link="logit")
 ))
 
@@ -455,3 +498,111 @@ xyplot(
 	)
 )
 dev.off()
+
+year_group_props = transformBy(
+	n ~ year,
+	data = year_edits_props,
+	prop=n/sum(n),
+	total=sum(n)
+)
+year_group_props = transformBy(
+	prop ~ es_0_bucket,
+	data = year_group_props,
+	controlled.prop=prop/max(prop)
+)
+
+
+png("plots/year_group_props.png", height=768, width=1024)
+xyplot(
+	controlled.prop ~ year | as.factor(es_0_bucket),
+	data = year_group_props[year_group_props$es_0_bucket <= 16,],
+	panel=function(x, y, subscripts, ...){
+		panel.xyplot(x, y, ...)
+		f = year_group_props[year_group_props$es_0_bucket <= 16,][subscripts,]
+		p = f$controlled.prop
+		n = f$total
+		se = sqrt(p*(1-p)/n)
+		#panel.arrows(x, p+se, x, p-se, ends="both", col="#777777", angle=90, length=.05)
+	},
+	type="o",
+	main="Controlled Proportion of new editors initial investment (1st edit session edits) by year",
+	ylab="Controlled Proportion of new editors",
+	xlab="Year",
+	sub="Proportions controlled such that the maximum prop for a first edit session group = 1",
+	layout=c(1,5)
+)
+dev.off()
+
+ifNA = function(v, repl){
+	sapply(
+		v, 
+		function(v){
+			if(is.na(v)){
+				repl
+			}else{
+				v
+			}
+		}
+	)
+}
+
+user_sessions$early_edits = with(
+	user_sessions, 
+	ifNA(es_0_edits, 0) + 
+	ifNA(es_1_edits, 0) + 
+	ifNA(es_2_edits, 0)
+)
+user_sessions$early_rejected = with(
+	user_sessions, 
+	ifNA(es_0_reverted, 0) + 
+	ifNA(es_1_reverted, 0) + 
+	ifNA(es_2_reverted, 0) +
+	ifNA(es_0_deleted, 0) + 
+	ifNA(es_1_deleted, 0) + 
+	ifNA(es_2_deleted, 0)
+)
+
+user_sessions$early_rejection = with(
+	user_sessions, 
+	early_rejected/early_edits
+)
+
+year_rejected_props = with(
+	summaryBy(
+		early_rejection ~ year + es_0_bucket,
+		data=user_sessions[
+			!is.na(user_sessions$year) &
+			user_sessions$es_0_bucket <= 256,
+		],
+		FUN=c(mean, sd, length)
+	),
+	data.frame(
+		year           = year,
+		es_0_bucket    = es_0_bucket,
+		rejection      = early_rejection.mean,
+		sd             = early_rejection.sd,
+		n              = early_rejection.length
+	)
+)
+
+png("plots/year_group_rejection.png", height=768, width=1024)
+xyplot(
+	rejection ~ year | as.factor(es_0_bucket),
+	data = year_rejected_props[year_rejected_props$es_0_bucket <= 16,],
+	panel=function(x, y, subscripts, ...){
+		panel.xyplot(x, y, ...)
+		f = year_rejected_props[year_rejected_props$es_0_bucket <= 16,][subscripts,]
+		m  = f$rejection
+		sd = f$sd
+		n  = f$n
+		se = sd/sqrt(n)
+		panel.arrows(x, m+se, x, m-se, ends="both", col="#777777", angle=90, length=.05)
+	},
+	type="o",
+	main="Rejection proportion by year and first session edits",
+	ylab="Rejection proportion",
+	xlab="Year",
+	layout=c(1,5)
+)
+dev.off()
+	

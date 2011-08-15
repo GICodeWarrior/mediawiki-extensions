@@ -70,42 +70,73 @@ def main():
 		'user_name',
 		'first_edit',
 		'last_edit',
-		'edit_count'
+		'edit_count',
+		'first_warning',
 	]
 	for i in range(0, args.n):
 		headers.append("es_%s_start" % i)
 		headers.append("es_%s_end" % i)
-		headers.append("es_%s_edits" % i)
-		headers.append("es_%s_reverted" % i)
-		headers.append("es_%s_vandalism" % i)
-		headers.append("es_%s_deleted" % i)
+		
+		headers.append("main_es_%s_edits" % i)
+		headers.append("main_es_%s_reverted" % i)
+		headers.append("main_es_%s_vandalism" % i)
+		headers.append("main_es_%s_deleted" % i)
+		headers.append("main_es_%s_mean_len" % i)
+		
+		headers.append("other_es_%s_edits" % i)
+		headers.append("other_es_%s_reverted" % i)
+		headers.append("other_es_%s_vandalism" % i)
+		headers.append("other_es_%s_deleted" % i)
+		headers.append("other_es_%s_mean_len" % i)
 	
 			
 	print("\t".join(headers))
 	
-	logging.info("Loading users:")
+	logging.info("Loading users...")
 	
-	users = []
-	for user in db.getSampledUsers():
-		users.append(user)
-		LOGGING_STREAM.write(".")
-	LOGGING_STREAM.write("\n")
-	
-	logging.info("Processing users:")
+	users = list(db.getSampledUsers())
+	logging.info("Processing users...")
 	for user in users:
 		i = 0
+		warning = db.getFirstWarning(user['user_name'])
+		if warning != None:
+			user['first_warning'] = warning['rev_timestamp']
+		
 		for session in sessions(db.getEdits(user['user_id']), args.session):
 			user['es_%s_start' % i] = session[0]['timestamp']
 			user['es_%s_end' % i] = session[-1]['timestamp']
-			user['es_%s_edits' % i] = len(session)
-			user['es_%s_reverted' % i] = 0
-			user['es_%s_vandalism' % i] = 0
-			user['es_%s_deleted' % i] = 0
+			user['main_es_%s_edits' % i] = 0
+			user['main_es_%s_reverted' % i] = 0
+			user['main_es_%s_vandalism' % i] = 0
+			user['main_es_%s_deleted' % i] = 0
 			
+			user['other_es_%s_edits' % i] = 0
+			user['other_es_%s_reverted' % i] = 0
+			user['other_es_%s_vandalism' % i] = 0
+			user['other_es_%s_deleted' % i] = 0
+			
+			mainSum = 0
+			otherSum = 0
 			for edit in session:
-				user['es_%s_reverted' % i] += edit['is_reverted']
-				user['es_%s_vandalism' % i] += edit['is_vandalism']
-				user['es_%s_deleted' % i] += edit['deleted']
+				if edit['page_namespace'] == 0:
+					user['main_es_%s_edits' % i] += 1
+					user['main_es_%s_reverted' % i] += edit['is_reverted']
+					user['main_es_%s_vandalism' % i] += edit['is_vandalism']
+					user['main_es_%s_deleted' % i] += edit['deleted']
+					mainSum += edit['rev_len']
+				else:
+					user['other_es_%s_edits' % i] += 1
+					user['other_es_%s_reverted' % i] += edit['is_reverted']
+					user['other_es_%s_vandalism' % i] += edit['is_vandalism']
+					user['other_es_%s_deleted' % i] += edit['deleted']
+					otherSum += edit['rev_len']
+					
+			
+			if user['main_es_%s_edits' % i] > 0:
+				user['main_es_%s_mean_len' % i] = mainSum/user['main_es_%s_edits' % i]
+			
+			if user['other_es_%s_edits' % i] > 0:
+				user['other_es_%s_mean_len' % i] = otherSum/user['other_es_%s_edits' % i]
 			
 			i += 1
 			if i >= args.n:
@@ -113,7 +144,7 @@ def main():
 			
 		
 		args.out.write("\t".join(encode(user.get(h)) for h in headers) + "\n")
-		LOGGING_STREAM.write(".")
+		logging.debug("\t %s:%s" % (user['user_id'], user['user_name'])) 
 	
 	LOGGING_STREAM.write("\n")
 			
@@ -166,6 +197,36 @@ class Database:
 		for row in cursor:
 			yield row
 			
+	
+	def getFirstWarning(self, username):
+		cursor = self.usersConn.cursor(MySQLdb.cursors.SSDictCursor)
+		cursor.execute(
+			"""
+			SELECT 
+				rev_id,
+				rev_user,
+				rev_user_text,
+				rev_comment,
+				rev_timestamp
+			FROM page p
+			INNER JOIN revision r
+				ON r.rev_page = p.page_id
+			WHERE p.page_title = REPLACE(%(user_name)s, " ", "_")
+			AND p.page_namespace = 3
+			AND r.rev_user_text != %(user_name)s
+			AND (
+				r.rev_comment RLIKE "(Message re\\. \\[\\[[^]]+\\]\\])|(Level [0-9]+ warning re\\. \\[\\[[^]]+\\]\\])" OR
+				r.rev_comment RLIKE "Warning \\[\\[Special:Contributions/[^\|]+|[^\]]+\\]\\] - #[0-9]+"
+			)
+			ORDER BY rev_timestamp
+			LIMIT 1
+			""",
+			{
+				'user_name': username
+			}
+		)
+		for row in cursor:
+			return row
 		
 	
 	def getEdits(self, userId, chronologically=True):
@@ -181,14 +242,20 @@ class Database:
 			SELECT 
 				r.rev_id,
 				r.rev_timestamp,
+				IFNULL(r.rev_len, 0) AS rev_len,
 				rvtd.revision_id IS NOT NULL AS is_reverted,
 				rvtd.is_vandalism IS NOT NULL AND rvtd.is_vandalism = TRUE AS is_vandalism,
-				False AS deleted
+				False AS deleted,
+				p.page_namespace,
+				p.page_title
 			FROM revision r
 			LEFT JOIN halfak.reverted_20110115 rvtd
 				ON r.rev_id = rvtd.revision_id
+			INNER JOIN page p
+				ON p.page_id = r.rev_page
 			WHERE rev_user = %(user_id)s
 			ORDER BY r.rev_timestamp """ + direction + """
+			LIMIT 1000
 			""",
 			{
 				'user_id': userId
@@ -199,12 +266,16 @@ class Database:
 			SELECT
 				ar_rev_id    AS rev_id,
 				ar_timestamp AS rev_timestamp,
+				IFNULL(ar_len, 0) AS rev_len,
 				False        AS is_reverted,
 				False        AS is_vandalism,
-				True         AS deleted
+				True         AS deleted,
+				ar_namespace AS page_namespace,
+				ar_title     AS page_title
 			FROM archive
 			WHERE ar_user = %(user_id)s
 			ORDER BY ar_timestamp """ + direction + """
+			LIMIT 1000
 			""",
 			{
 				'user_id': userId
@@ -234,14 +305,6 @@ class Database:
 		
 		revisionCursor.close()
 		archiveCursor.close()
-			
-		
-	
-	def getFirstEdits(self, userId, maximum=10000):
-		return self.getEdits(userId, maximum, chronologically=True)
-	
-	def getLastEdits(self, userId, maximum=10000):
-		return self.getEdits(userId, maximum, chronologically=False)
 	
 	
 if __name__ == "__main__": main()

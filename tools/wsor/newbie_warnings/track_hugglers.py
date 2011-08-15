@@ -9,6 +9,15 @@ def encode(v):
 	
 	return str(v).encode("string-escape")
 
+def decode(v):
+	if v == "\\N": return None
+	else: return v
+
+def intOrNone(v):
+	if v == None:
+		return None
+	else:
+		return int(v)
 
 def emit(event, p, time):
 	print(
@@ -46,6 +55,12 @@ def main():
 		default="enwiki"
 	)
 	parser.add_argument(
+		'-i', '--input',
+		type=lambda fn:open(fn, 'w'),
+		help='Load a previous file',
+		default=sys.stdin
+	)
+	parser.add_argument(
 		'-o', '--out',
 		type=lambda fn:open(fn, 'a+'), 
 		help='Where should output be appended',
@@ -67,10 +82,25 @@ def main():
 		db=args.db, 
 		read_default_file=args.cnf
 	)
+
+	currUsers = set()	
+	oldPosts = {}
+	lastTime = db.getTime()
+	if not args.input.isatty():
+		logging.info("Loading old data.")
+		for line in args.input:
+			parts = line.strip().split("\t")
+			#sys.stderr.write(str(parts) + "\n")
+			if len(parts) == 4:
+				userName = parts[2]
+				oldPosts[userName] = {'user_name': userName, 'user_id': intOrNone(decode(parts[1])), 'posting': parts[3], 'messages': 1}
+				lastTime = parts[3]
+				LOGGING_STREAM.write(".")
+			else:
+				LOGGING_STREAM.write("|")
+	
 	
 	try:
-		oldPosts = {}
-		lastTime = db.getTime()
 		time.sleep(5)
 		while True:
 			logging.info("Tracking %s posts.  Looking for new ones since %s." % (len(oldPosts), lastTime))
@@ -108,6 +138,7 @@ def main():
 		logging.info("Keyboard interrupt detected.  Shutting down.")
 	except Exception as e:
 		logging.error(str(e))
+		raise e
 		
 	print(repr(oldPosts))
 	print(lastTime)
