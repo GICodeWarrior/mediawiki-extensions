@@ -125,7 +125,8 @@ es.Flow.prototype.getOffset = function( position ) {
  * left, top and bottom positions, which could be used to draw a cursor, highlighting, etc.
  * 
  * @param offset {Integer} Offset within content
- * @return {Object} Object containing left, top and bottom properties, each positions in pixels
+ * @return {Object} Object containing left, top and bottom properties, each positions in pixels as
+ * well as a line index
  */
 es.Flow.prototype.getPosition = function( offset ) {
 	/*

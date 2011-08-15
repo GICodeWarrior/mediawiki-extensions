@@ -8,14 +8,17 @@
  * @param left {Integer} Horizontal position
  * @param top {Integer} Vertical top position
  * @param bottom {Integer} Vertical bottom position of bottom (optional, default: top)
+ * @param line {Integer} Rendered line index (optional, default: undefined)
  * @property left {Integer} Horizontal position
  * @property top {Integer} Vertical top position
  * @property bottom {Integer} Vertical bottom position of bottom
+ * @property line {Integer} Rendered line index
  */
-es.Position = function( left, top, bottom ) {
+es.Position = function( left, top, bottom, line ) {
 	this.left = left || 0;
 	this.top = top || 0;
 	this.bottom = bottom || this.top;
+	this.line = line;
 };
 
 /* Static Methods */
