@@ -1,0 +1,630 @@
+# Test cases for MediaWiki inline scripts engine
+
+!! article
+Module:Basic mathematics
+!! text
+function run() {
+	return -2 + 2 * 2 ** 2 - 3 * 7 % 5;
+}
+!! endarticle
+
+!! test
+Basic mathematics
+!! input
+{{i:Basic mathematics|run}}
+!! result
+<p>5
+</p>
+!! end
+
+!! article
+Module:Pow associativity
+!! text
+function run() {
+	// Not 4096
+	return 4 ** 3 ** 2;
+}
+!! endarticle
+
+!! test
+** associativity
+!! input
+{{i:Pow associativity|run}}
+!! result
+<p>262144
+</p>
+!! end
+
+!! article
+Module:String contecation
+!! text
+function add( a, b ) {
+	// if you pass 3 and 7, it would be 37, because all arguments from wikitext
+	// are strings
+	return a + b;
+}
+!! endarticle
+
+!! test
+String contecation
+!! input
+{{i:string contecation|add|3|7}}
+!! result
+<p>37
+</p>
+!! end
+
+!! article
+Module:Multiple variable assignment
+!! text
+function run() {
+	// if you pass 3 and 7, it would be 37, because all arguments from wikitext
+	// are strings
+	a = b = 3;
+	return a + b;
+}
+!! endarticle
+
+!! test
+Multiple variable assignment
+!! input
+{{i:Multiple variable assignment|run}}
+!! result
+<p>6
+</p>
+!! end
+
+!! article
+Module:Assigment with arithmetics
+!! text
+function run() {
+	a = 2;
+	a += 3;
+	a -= 7;
+	return a;
+}
+!! endarticle
+
+!! test
+Assigment with arithmetics (+=, -=, etc)
+!! input
+{{i:Assigment with arithmetics|run}}
+!! result
+<p>-2
+</p>
+!! end
+
+!! article
+Module:Boolean shortcut
+!! text
+function run() {
+	/* Only first statement should be performed */
+	!(b = 2) | (b = 3) | (b = 4);
+	return b;
+}
+!! endarticle
+
+!! test
+Boolean shortcut
+!! input
+{{i:boolean shortcut|run}}
+!! result
+<p>3
+</p>
+!! end
+
+!! article
+Module:Equality
+!! text
+function run() {
+	return "2" == 2 & "2" !== 2 & 4 === (2 + 2) &
+		null == "" & false == null & 0 == "";
+}
+!! endarticle
+
+!! test
+Equality
+!! input
+{{i:equality|run}}
+!! result
+<p>1
+</p>
+!! end
+
+!! article
+Module:Comparisons
+!! text
+function run() {
+	return 2 > 1 & 2 >= 2 & 2 <= 2 & 1 < 2;
+}
+!! endarticle
+
+!! test
+Comparsions
+!! input
+{{i:comparisons|run}}
+!! result
+<p>1
+</p>
+!! end
+
+!! article
+Module:Trivial
+!! text
+function getText() {
+	return "AA";
+}
+!! endarticle
+
+!! test
+Integration with other functions
+!! input
+{{lc:{{i:trivial|getText}}}}
+!! result
+<p>aa
+</p>
+!! end
+
+!! article
+Module:Conditions
+!! text
+function run() {
+	return 2 + 2 == 4 ? "a" : "b";
+}
+!! endarticle
+
+!! test
+Conditions (?)
+!! input
+{{i:conditions|run}}
+!! result
+<p>a
+</p>
+!! end
+
+!! article
+Module:Conditions (if-then-else)
+!! text
+function run() {
+	if( 2 * 7 > 3 * 4 ) {
+		a = 7;
+	} else {
+		a = 10;
+	}
+
+	if( a ** 2 < 50 )
+		return "ok";
+}
+!! endarticle
+
+!! test
+Conditions (if-then, if-then-else)
+!! input
+{{i:Conditions (if-then-else)|run}}
+!! result
+<p>ok
+</p>
+!! end
+
+!! article
+Module:Bullets
+!! text
+function run() {
+	out = "";
+	for( a in args() )
+		out += "* " + a + "\n";
+	return out;
+}
+!! endarticle
+
+!! article
+Template:Bullets
+!! text
+{{i:bullets|run}}
+!! endarticle
+
+!! test
+args() function
+!! input
+{{bullets|a|b|c}}
+!! result
+<ul><li> a
+</li><li> b
+</li><li> c
+</li></ul>
+
+!! end
+
+!! article
+Module:TranscludedSwitch
+!! text
+function run() {
+	return isTranscluded() ? arg(1) : "?!";
+}
+!! endarticle
+
+!! article
+Template:TranscludedSwitch
+!! text
+{{i:TranscludedSwitch|run}}
+!! endarticle
+
+!! test
+isTranscluded()/arg() check
+!! input
+{{TranscludedSwitch|11}}
+!! result
+<p>11
+</p>
+!! end
+
+!! article
+Module:Empty argument handling check
+!! text
+function run() {
+	return arg("test") === null;
+}
+!! endarticle
+
+!! test
+Empty argument handling check
+!! input
+{{i:Empty argument handling check|run}}
+!! result
+<p>1
+</p>
+!! end
+
+!! article
+Module:Casts
+!! text
+function run() {
+	return string(float(2)) === "2.0" & int(7.99) === 7;
+}
+!! endarticle
+
+!! test
+Casts
+!! input
+{{i:Casts|run}}
+!! result
+<p>1
+</p>
+!! end
+
+!! article
+Module:Exception handling
+!! text
+function run() {
+	try
+		2 / 0;
+	catch( e )
+		return e;
+}
+!! endarticle
+
+!! test
+Exception handling
+!! input
+{{i:Exception handling|run}}
+!! result
+<p>dividebyzero
+</p>
+!! end
+
+!! article
+Template:Numberofsomething
+!! text
+721
+!! endarticle
+
+!! article
+Module:Numberofsomething
+!! text
+function run() {
+	numofsmth = int( parse( '{{numberofsomething}}' ) ) + 279;
+	return '{{numberofsomething}}: ' + numofsmth;
+}
+!! endarticle
+
+!! test
+Template access via parse()
+!! input
+{{i:Numberofsomething|run}}
+!! result
+<p>{{numberofsomething}}: 1000
+</p>
+!! end
+
+!! article
+Module:123
+!! text
+function run1() {
+	return 123;
+}
+
+function run2() {
+	return parse( '{{123}}' );
+}
+!! endarticle
+
+!! article
+Template:123
+!! text
+{{i:123|run1}}
+!! endarticle
+
+!! test
+Nested wikiscripts via parse()
+!! input
+{{i:123|run2}}
+!! result
+<p>123
+</p>
+!! end
+
+!! article
+Module:String functions 1
+!! text
+function run() {
+	return lc( 'FOO' ) == 'foo' & uc( 'foo' ) == 'FOO' &
+		ucfirst( 'bar' ) == 'Bar' & urlencode( 'a="b"' ) == "a%3D%22b%22";
+}
+!! endarticle
+
+!! test
+String functions 1
+!! input
+{{i:String functions 1|run}}
+!! result
+<p>1
+</p>
+!! end
+
+!! article
+Module:String functions 2
+!! text
+function run() {
+	return strlen( "тест" ) == 4 & substr( "слово", 1, 2 ) == "ло" &
+		strreplace( "abcd", 'bc', 'ad' ) == 'aadd';
+}
+!! endarticle
+
+!! test
+String functions 2
+!! input
+{{i:String functions 2|run}}
+!! result
+<p>1
+</p>
+!! end
+
+!! article
+Module:split/join
+!! text
+function run() {
+	return join( '!', split( ':', 'a:b:c:d' ) ) + join( ' ', '', 'e', 'f' );
+}
+!! endarticle
+
+!! test
+split()/join()
+!! input
+{{i:split/join|run}}
+!! result
+<p>a!b!c!d e f
+</p>
+!! end
+
+!! article
+Module:isset/delete
+!! text
+function run() {
+	a = null;
+	b = 1;
+	delete( b );
+	return 'a: ' + isset( a ) + '; b: ' + int( isset( b ) );
+}
+!! endarticle
+
+!! test
+isset/delete
+!! input
+{{i:isset/delete|run}}
+!! result
+<p>a: 1; b: 0
+</p>
+!! end
+
+!! article
+Module:in/contains
+!! text
+function run() {
+	return int( "a" in "b" + "c" in "cd" + "foobar" contains "oo" + "foobar" contains "baz" );
+}
+!! endarticle
+
+!! test
+in/contains
+!! input
+{{i:in/contains|run}}
+!! result
+<p>2
+</p>
+!! end
+
+#
+## Lists
+#
+
+!! article
+Module:Lists: basics
+!! text
+function run() {
+	a = [ b = "a", b = "b", b = "c" ];
+	return a[1] + b;
+}
+!! endarticle
+
+!! test
+Lists: basics
+!! input
+{{i:Lists: basics|run}}
+!! result
+<p>bc
+</p>
+!! end
+
+!! article
+Module:Lists: foreach
+!! text
+function run() {
+	a = [ 1, 2, 3, 4, 5 ];
+	for( n in a )
+		append n * n + "\n\n";
+}
+!! endarticle
+
+!! test
+Lists: foreach
+!! input
+{{i:Lists: foreach|run}}
+!! result
+<p>1
+</p><p>4
+</p><p>9
+</p><p>16
+</p><p>25
+</p>
+!! end
+
+!! article
+Module:List merging
+!! text
+function run() {
+	for( element in [ 7, 4 ] + [ 2, 8 ] + 1 )
+		append string( element );
+}
+!! endarticle
+
+!! test
+List merging
+!! input
+{{i:List merging|run}}
+!! result
+<p>74281
+</p>
+!! end
+
+!! article
+Module:Lists: loop control (break/continue)
+!! text
+function run() {
+	a = [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ];
+	for( e in a ) {
+		if( e >= 6 & e < 9 )
+			continue;
+		append string( e );
+	}
+	for( e in a ) {
+		if( e == 3 )
+			break;
+		append e;
+	}
+}
+!! endarticle
+
+!! test
+Lists: loop control (break/continue)
+!! input
+{{i:Lists: loop control (break/continue)|run}}
+!! result
+<p>12345912
+</p>
+!! end
+
+!! article
+Module:Lists: changing value of an element
+!! text
+function run() {
+	a = [ [ 2, 3 ], [ 5, 6 ], 7 ];
+	a[1][0] = 3;
+	a[0][] = 1;
+	return a;
+}
+!! endarticle
+
+!! test
+Lists: changing value of an element
+!! input
+{{i:Lists: changing value of an element|run}}
+!! result
+<p>2
+3
+1
+3
+6
+7
+</p>
+!! end
+
+!! article
+Module:Lists: isset
+!! text
+function run() {
+	lst = [ 'a', 'b', 'c' ];
+	return isset( lst[1] ) + isset( lst[2] ) + isset( list[3] );
+}
+!! endarticle
+
+!! test
+Lists: isset
+!! input
+{{i:Lists: isset|run}}
+!! result
+<p>2
+</p>
+!! end
+
+!! article
+Module:Associated arrays: basics
+!! text
+function run() {
+	a = { "a" : 2, "b" : 13 };
+	a["c"] = 21;
+
+	for( k : v in a ) {
+		append k + " = " + v + "\n\n";
+	}
+}
+!! endarticle
+
+!! test
+Associated arrays: basics
+!! input
+{{i:Associated arrays: basics|run}}
+!! result
+<p>a = 2
+</p><p>b = 13
+</p><p>c = 21
+</p>
+!! end
+
+!! article
+Module:Mixed arrays
+!! text
+function run() {
+	a["b"][][]["c"] = 11;
+	return a["b"][0][0]["c"];
+}
+!! endarticle
+
+!! test
+Mixed arrays
+!! input
+{{i:Mixed arrays|run}}
+!! result
+<p>11
+</p>
+!! end
+
