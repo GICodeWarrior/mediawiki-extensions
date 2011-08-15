@@ -18,11 +18,11 @@ $wgExtensionCredits['other'][] = array(
 $wgMetricAPIModules = array();
 
 $wgMetricsDBserver         = '';
-//$wgMetricsDBport           = 5432;
 $wgMetricsDBname           = '';
 $wgMetricsDBuser           = '';
 $wgMetricsDBpassword       = '';
 $wgMetricsDBtype           = 'mysql';
+$wgMetricsDBprefix         = '';
 
 $dir = dirname( __FILE__ ) . '/';
 

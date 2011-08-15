@@ -14,14 +14,15 @@ abstract class MetricsMaintenance extends Maintenance {
 	 */
 	protected function getDB() {
 		if ( is_null( $this->db ) ) {
-			global $wgMetricsDBserver, $wgMetricsDBname, $wgMetricsDBuser, $wgMetricsDBpassword, $wgMetricsDBtype;
+			global $wgMetricsDBserver, $wgMetricsDBname, $wgMetricsDBuser,
+				$wgMetricsDBpassword, $wgMetricsDBtype, $wgMetricsDBprefix;
 			$this->db = DatabaseBase::factory( $wgMetricsDBtype,
 				array(
 					'host' => $wgMetricsDBserver,
 					'user' => $wgMetricsDBuser,
 					'password' => $wgMetricsDBpassword,
 					'dbname' => $wgMetricsDBname,
-					'tablePrefix' => '',
+					'tablePrefix' => $wgMetricsDBprefix,
 				)
 			);
 			//$this->db->query( "SET names utf8" );
