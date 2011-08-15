@@ -26,7 +26,7 @@ es.Content.Operation = function( type, content, data ) {
 			this.length = this.content.getLength();
 			break;
 	}
-	this.data = data || {};
+	this.data = data || null;
 };
 
 es.Content.Operation.prototype.getType = function() {
