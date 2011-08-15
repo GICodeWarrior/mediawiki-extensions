@@ -192,6 +192,10 @@ es.Block.prototype.getPosition = function( offset ) {
 	throw 'Block.getPosition not implemented in this subclass.';
 };
 
+es.Block.prototype.getLineIndex = function( offset ) {
+	throw 'Block.getLineIndex not implemented in this subclass.';
+};
+
 /**
  * Gets the start and end points of the word closest a given offset.
  * 

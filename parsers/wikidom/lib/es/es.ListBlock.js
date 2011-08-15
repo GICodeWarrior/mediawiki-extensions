@@ -97,9 +97,26 @@ es.ListBlock.prototype.getPosition = function( offset ) {
 	position.top += contentOffset.top - blockOffset.top;
 	position.left += contentOffset.left - blockOffset.left;
 	position.bottom += contentOffset.top - blockOffset.top;
-	position.line += location.linesBefore;
-	
+
 	return position;
+};
+
+es.ListBlock.prototype.getLineIndex = function( offset ) {
+	var globalOffset = 0,
+		lineIndex = 0,
+		itemLength;
+
+	this.list.traverseItems( function( item, index ) {
+		itemLength = item.content.getLength();
+		if ( offset >= globalOffset && offset <= globalOffset + itemLength ) {
+			lineIndex += item.flow.getLineIndex( offset - globalOffset );
+			return false;
+		}
+		globalOffset += itemLength + 1;
+		lineIndex += item.flow.lines.length;
+	} );
+
+	return lineIndex;
 };
 
 es.ListBlock.prototype.getText = function( range, render ) {

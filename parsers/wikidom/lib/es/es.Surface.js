@@ -452,13 +452,16 @@ es.Surface.prototype.drawSelection = function() {
 			};
 		if ( from.location.block === to.location.block ) {
 			var block = from.location.block,
-				blockOffset = block.$.offset();
+				blockOffset = block.$.offset(),
+				fromLineIndex = from.location.block.getLineIndex( this.selection.start.offset ),
+				toLineIndex = to.location.block.getLineIndex( this.selection.end.offset );
+
 			if ( from.location.offset === to.location.offset ) {
 				// No selection, just hide them all
 				this.$rangeStart.hide();
 				this.$rangeFill.hide();
 				this.$rangeEnd.hide();
-			} else if ( from.position.line === to.position.line ) {
+			} else if ( fromLineIndex === toLineIndex ) {
 				// Single line selection
 				this.$rangeStart
 					.css( {
@@ -489,7 +492,7 @@ es.Surface.prototype.drawSelection = function() {
 						'height': to.position.bottom - to.position.top
 					} )
 					.show();
-				if ( from.position.line + 1 < to.position.line ) {
+				if ( fromLineIndex + 1 < toLineIndex ) {
 					this.$rangeFill
 						.css( {
 							'top': blockOffset.top + from.position.bottom,

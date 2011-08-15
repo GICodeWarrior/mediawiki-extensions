@@ -50,6 +50,14 @@ es.Flow = function( $container, content ) {
 	this.scanBoundaries();
 }
 
+es.Flow.prototype.getLineIndex = function( offset ) {
+	for ( var i = 0; i < this.lines.length; i++ ) {
+		if ( this.lines[i].range.containsOffset( offset ) ) {
+			return i;
+		}
+	}
+};
+
 /**
  * Gets offset within content closest to of a given position.
  * 
@@ -74,14 +82,21 @@ es.Flow.prototype.getOffset = function( position ) {
 		return 0;
 	}
 	// Find which line the position is inside of
-	var lineIndex = this.getLineIndexFromPosition( position );
-	
+	var i = 0,
+		top = 0;
+	while ( i < lineCount ) {
+		top += this.lines[i].height;
+		if ( position.top <= top ) {
+			break;
+		}
+		i++;
+	}
 	// Positions below the last line always jump to the last offset
-	if ( lineIndex == lineCount ) {
+	if ( i == lineCount ) {
 		return this.content.getLength();
 	}
 	// Alias current line object
-	var line = this.lines[lineIndex];
+	var line = this.lines[i];
 	
 	/*
 	 * Offset finding
@@ -109,23 +124,6 @@ es.Flow.prototype.getOffset = function( position ) {
 		// If the line ends in a non-boundary character, decrement offset
 		line.range.end + ( this.boundaryTest.exec( line.text.substr( -1 ) ) ? -1 : 0 )
 	);
-};
-
-/**
- * Gets a line index for a given position.
- * 
- * @param position {Object} Position to find line index for
- * @return {Integer} Line index
- */
-es.Flow.prototype.getLineIndexFromPosition = function( position ) {
-	var i, top = 0;
-	for ( i = 0; i < this.lines.length; i++ ) {
-		top += this.lines[i].height;
-		if ( position.top <= top ) {
-			break;
-		}
-	}
-	return i;
 };
 
 /**
@@ -161,20 +159,20 @@ es.Flow.prototype.getPosition = function( offset ) {
 	 */
 	var line,
 		lineCount = this.lines.length,
+		lineIndex = 0,
 		position = {
 			'left': 0,
 			'top': 0,
-			'bottom': 0,
-			'line': 0
+			'bottom': 0
 		};
-	while ( position.line < lineCount ) {
-		line = this.lines[position.line];
+	while ( lineIndex < lineCount ) {
+		line = this.lines[lineIndex];
 		if ( line.range.containsOffset( offset ) ) {
 			position.bottom = position.top + line.height;
 			break;
 		}
 		position.top += line.height;
-		position.line++;
+		lineIndex++;
 	}
 	
 	/*
@@ -184,8 +182,7 @@ es.Flow.prototype.getPosition = function( offset ) {
 	 * line, a virtual n+1 position is supported. Offsets beyond this virtual position will cause
 	 * an exception to be thrown.
 	 */
-	if ( position.line === lineCount ) {
-		position.line--;
+	if ( lineIndex === lineCount ) {
 		position.bottom = position.top;
 		position.top -= line.height;
 	}

@@ -141,6 +141,10 @@ es.ParagraphBlock.prototype.getPosition = function( offset ) {
 	return this.flow.getPosition( offset );
 };
 
+es.ParagraphBlock.prototype.getLineIndex = function( offset ) {
+	return this.flow.getLineIndex( offset );
+};
+
 /**
  * Gets the start and end points of the word closest a given offset.
  * 
