@@ -1,12 +1,8 @@
 <?php
 
-$IP = getenv( 'MW_INSTALL_PATH' );
-if ( $IP === false ) {
-	$IP = dirname( __FILE__ ) . '/../..';
-}
-require( "$IP/maintenance/Maintenance.php" );
+require( "MetricsMaintenance.php" );
 
-class FetchGoogleSpreadsheet extends Maintenance {
+class FetchGoogleSpreadsheet extends MetricsMaintenance {
 	public function __construct() {
 		parent::__construct();
 		$this->mDescription = "Grabs and does stuff with a Google Documents Spreadsheet";
