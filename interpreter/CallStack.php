@@ -1,39 +1,39 @@
 <?php
 
-abstract class ISCallStackEntry {
+abstract class WSCallStackEntry {
 	abstract function toString();
 }
 
-abstract class ISCallStackFunctionEntry extends ISCallStackEntry {
+abstract class WSCallStackFunctionEntry extends WSCallStackEntry {
 	public $module;
 	public $function;
 }
 
-class ISCallStackFunctionFromModuleEntry extends ISCallStackFunctionEntry {
+class WSCallStackFunctionFromModuleEntry extends WSCallStackFunctionEntry {
 	public $invokingModule;
 	public $line;
 	
 	public function toString() {
-		return wfMsg( 'inlinescripts-call-frommodule', $this->module, $this->function,
+		return wfMsg( 'wikiscripts-call-frommodule', $this->module, $this->function,
 			$this->invokingModule, $this->line );
 	}
 }
 
-class ISCallStackFunctionFromWikitextEntry extends ISCallStackFunctionEntry {
+class WSCallStackFunctionFromWikitextEntry extends WSCallStackFunctionEntry {
 	public function toString() {
-		return wfMsg( 'inlinescripts-call-frommodule', $this->module, $this->function );
+		return wfMsg( 'wikiscripts-call-frommodule', $this->module, $this->function );
 	}
 }
 
-class ISCallStackParseEntry extends ISCallStackEntry {
+class WSCallStackParseEntry extends WSCallStackEntry {
 	public $text;
 
 	public function toString() {
-		return wfMsg( 'inlinescripts-call-parse', $this->text );
+		return wfMsg( 'wikiscripts-call-parse', $this->text );
 	}
 }
 
-class ISCallStack {
+class WSCallStack {
 	var $mInterpreter, $mStack;
 
 	public function __construct( $interpreter ) {
@@ -46,14 +46,14 @@ class ISCallStack {
 	}
 
 	public function isFull() {
-		global $wgInlineScriptsMaxCallStackDepth;
+		global $wgScriptsMaxCallStackDepth;
 		
-		return count( $this->mStack ) >= $wgInlineScriptsMaxCallStackDepth;
+		return count( $this->mStack ) >= $wgScriptsMaxCallStackDepth;
 	}
 
 	public function contains( $module, $name ) {
 		foreach( $this->mStack as $entry ) {
-			if( $entry instanceof ISCallStackFunctionEntry ) {
+			if( $entry instanceof WSCallStackFunctionEntry ) {
 				if( $entry->module == $module && $entry->function == $name ) {
 					return true;
 				}
@@ -63,7 +63,7 @@ class ISCallStack {
 	}
 
 	public function addFunctionFromModule( $module, $name, $invokingModule, $line ) {
-		$entry = new ISCallStackFunctionFromModuleEntry();
+		$entry = new WSCallStackFunctionFromModuleEntry();
 		$entry->module = $module;
 		$entry->function = $name;
 		$entry->invokingModule = $invokingModule;
@@ -72,7 +72,7 @@ class ISCallStack {
 	}
 
 	public function addFunctionFromWikitext( $module, $name ) {
-		$entry = new ISCallStackFunctionFromWikitextEntry();
+		$entry = new WSCallStackFunctionFromWikitextEntry();
 		$entry->module = $module;
 		$entry->function = $name;
 		$this->mStack[] = $entry;
@@ -83,7 +83,7 @@ class ISCallStack {
 			$wikitext = substr( $wikitext, 0, 64 ) . "...";
 		}
 
-		$entry = new ISCallStackParseEntry();
+		$entry = new WSCallStackParseEntry();
 		$entry->text = $wikitext;
 		$this->mStack[] = $entry;
 	}

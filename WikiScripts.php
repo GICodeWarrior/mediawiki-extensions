@@ -23,42 +23,42 @@
 if( !defined( 'MEDIAWIKI' ) )
 	die();
 
-$wgExtensionCredits['parserhook']['InlineScripts'] = array(
+$wgExtensionCredits['parserhook']['WikiScripts'] = array(
 	'path'           => __FILE__,
-	'name'           => 'InlineScripts',
+	'name'           => 'WikiScripts',
 	'author'         => 'Victor Vasiliev',
-	'descriptionmsg' => 'inlinescripts-desc',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:InlineScripts',
+	'descriptionmsg' => 'wikiscripts-desc',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:WikiScripts',
 );
 
 $dir = dirname(__FILE__) . '/';
-$wgExtensionMessagesFiles['InlineScripts'] = $dir . 'i18n/Messages.php';
-$wgExtensionMessagesFiles['InlineScriptsMagic'] = $dir . 'i18n/Magic.php';
-$wgExtensionMessagesFiles['InlineScriptsNamespaces'] = $dir . 'i18n/Namespaces.php';
+$wgExtensionMessagesFiles['WikiScripts'] = $dir . 'i18n/Messages.php';
+$wgExtensionMessagesFiles['WikiScriptsMagic'] = $dir . 'i18n/Magic.php';
+$wgExtensionMessagesFiles['WikiScriptsNamespaces'] = $dir . 'i18n/Namespaces.php';
 
-$wgAutoloadClasses['ISHooks'] = $dir . '/Hooks.php';
-$wgAutoloadClasses['ISLinksUpdateHooks'] = $dir . '/LinksUpdate.php';
+$wgAutoloadClasses['WSHooks'] = $dir . '/Hooks.php';
+$wgAutoloadClasses['WSLinksUpdateHooks'] = $dir . '/LinksUpdate.php';
 
-$wgAutoloadClasses['ISInterpreter'] = $dir . 'interpreter/Interpreter.php';
-$wgAutoloadClasses['ISScanner'] = $dir . 'interpreter/Scanner.php';
-$wgAutoloadClasses['ISLRParser'] = $dir . 'interpreter/LRParser.php';
+$wgAutoloadClasses['WSInterpreter'] = $dir . 'interpreter/Interpreter.php';
+$wgAutoloadClasses['WSScanner'] = $dir . 'interpreter/Scanner.php';
+$wgAutoloadClasses['WSLRParser'] = $dir . 'interpreter/LRParser.php';
 
 $wgParserTestFiles[] = $dir . 'interpreterTests.txt';
-$wgHooks['ParserFirstCallInit'][] = 'ISHooks::setupParserHook';
-$wgHooks['ParserLimitReport'][] = 'ISHooks::reportLimits';
-$wgHooks['ParserClearState'][] = 'ISHooks::clearState';
-$wgHooks['ParserTestTables'][] = 'ISHooks::addTestTables';
+$wgHooks['ParserFirstCallInit'][] = 'WSHooks::setupParserHook';
+$wgHooks['ParserLimitReport'][] = 'WSHooks::reportLimits';
+$wgHooks['ParserClearState'][] = 'WSHooks::clearState';
+$wgHooks['ParserTestTables'][] = 'WSHooks::addTestTables';
 
-$wgHooks['CanonicalNamespaces'][] = 'ISHooks::addCanonicalNamespaces';
-$wgHooks['ArticleViewCustom'][] = 'ISHooks::handleScriptView';
-$wgHooks['TitleIsWikitextPage'][] = 'ISHooks::isWikitextPage';
-$wgHooks['EditFilter'][] = 'ISHooks::validateScript';
+$wgHooks['CanonicalNamespaces'][] = 'WSHooks::addCanonicalNamespaces';
+$wgHooks['ArticleViewCustom'][] = 'WSHooks::handleScriptView';
+$wgHooks['TitleIsWikitextPage'][] = 'WSHooks::isWikitextPage';
+$wgHooks['EditFilter'][] = 'WSHooks::validateScript';
 
-$wgHooks['LinksUpdate'][] = 'ISLinksUpdateHooks::updateLinks';
-$wgHooks['ArticleEditUpdates'][] = 'ISLinksUpdateHooks::purgeCache';
-$wgHooks['ParserAfterTidy'][] = 'ISLinksUpdateHooks::appendToOutput';
-$wgHooks['BacklinkCacheGetPrefix'][] = 'ISLinksUpdateHooks::getBacklinkCachePrefix';
-$wgHooks['BacklinkCacheGetConditions'][] = 'ISLinksUpdateHooks::getBacklinkCacheConditions';
+$wgHooks['LinksUpdate'][] = 'WSLinksUpdateHooks::updateLinks';
+$wgHooks['ArticleEditUpdates'][] = 'WSLinksUpdateHooks::purgeCache';
+$wgHooks['ParserAfterTidy'][] = 'WSLinksUpdateHooks::appendToOutput';
+$wgHooks['BacklinkCacheGetPrefix'][] = 'WSLinksUpdateHooks::getBacklinkCachePrefix';
+$wgHooks['BacklinkCacheGetConditions'][] = 'WSLinksUpdateHooks::getBacklinkCacheConditions';
 
 /** Configuration */
 
@@ -76,7 +76,7 @@ if( !isset( $wgScriptsNamespaceNumbers ) ) {
 /**
  * Different limits of the scripts.
  */
-$wgInlineScriptsLimits = array(
+$wgScriptsLimits = array(
 	/**
 	 * Maximal amount of tokens (strings, keywords, numbers, operators,
 	 * but not whitespace) in a single module to be parsed.
@@ -101,30 +101,30 @@ $wgInlineScriptsLimits = array(
  * Turn on to true if you have linked or copied wikiscripts.php and
  * SyntaxHighlight_GeSHi extension is enabled.
  */
-$wgInlineScriptsUseGeSHi = false;
+$wgScriptsUseGeSHi = false;
 
 /**
- * Class of the actual parser. Must implement ISParser interface, as well as
+ * Class of the actual parser. Must implement WSParser interface, as well as
  * static getVersion() method.
  */
-$wgInlineScriptsParserClass = 'ISLRParser';
+$wgScriptsParserClass = 'WSLRParser';
 
 /**
  * Should be enabled unless you are debugging or just have sado-masochistic
  * attitude towards your server.
  */
-$wgInlineScriptsUseCache = true;
+$wgScriptsUseCache = true;
 
 /**
  * Indicates whether the function recursion is enabled. If it is, then users may
  * build a Turing-complete machinge and do nice things like parsers, etc in wikitext!
  */
-$wgInlineScriptsAllowRecursion = false;
+$wgScriptsAllowRecursion = false;
 
 /**
  * Maximun call stack depth. Includes functions and invokations of parse() function.
  */
-$wgInlineScriptsMaxCallStackDepth = 25;
+$wgScriptsMaxCallStackDepth = 25;
 
 define( 'NS_MODULE', $wgScriptsNamespaceNumbers['Module'] );
 define( 'NS_MODULE_TALK', $wgScriptsNamespaceNumbers['Module_talk'] );

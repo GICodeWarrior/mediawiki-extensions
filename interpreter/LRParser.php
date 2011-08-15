@@ -1,7 +1,7 @@
 <?php
 
 /**
- * LR parser for inline scripts.
+ * LR parser for scripts.
  * Inputs tokens and LR table (ACTION/GOTO).
  * Outputs parser tree.
  * 
@@ -10,7 +10,7 @@
 
 require_once( 'LRTableVersion.php' );
 
-class ISLRParser implements ISParser {
+class WSLRParser implements WSParser {
 	const Shift = 0;
 	const Reduce = 1;
 	const Accept = 2;
@@ -18,7 +18,7 @@ class ISLRParser implements ISParser {
 	static $mLoaded, $mNonterminals, $mProductions, $mAction, $mGoto;
 
 	public static function getVersion() {
-		return IS_LR_VERSION;
+		return WS_LR_VERSION;
 	}
 
 	private function loadGrammar() {
@@ -29,10 +29,10 @@ class ISLRParser implements ISParser {
 
 		require_once( 'LRTable.php' );
 
-		self::$mNonterminals = ISLRTable::$nonterminals;
-		self::$mProductions = ISLRTable::$productions;
-		self::$mAction = ISLRTable::$action;
-		self::$mGoto = ISLRTable::$goto;
+		self::$mNonterminals = WSLRTable::$nonterminals;
+		self::$mProductions = WSLRTable::$productions;
+		self::$mAction = WSLRTable::$action;
+		self::$mGoto = WSLRTable::$goto;
 		self::$mLoaded = true;
 		
 		wfProfileOut( __METHOD__ );
@@ -56,20 +56,20 @@ class ISLRParser implements ISParser {
 			$cur = $token->type;
 			if( !$token ) {
 				wfProfileOut( __METHOD__ );
-				throw new ISException( 'Non-token input in LRParser::parse' );
+				throw new WSException( 'Non-token input in LRParser::parse' );
 			}
 
 			$tokenCount++;
 			if( $tokenCount > $maxTokens ) {
 				wfProfileOut( __METHOD__ );
-				throw new ISUserVisibleException( 'toomanytokens', $module, $token->line );
+				throw new WSUserVisibleException( 'toomanytokens', $module, $token->line );
 			}
 
 			list( $stateval, $state ) = end( $states );
 			$act = @self::$mAction[$state][$cur];
 			if( !$act ) {
 				wfProfileOut( __METHOD__ );
-				throw new ISUserVisibleException( 'unexceptedtoken', $module, $token->line,
+				throw new WSUserVisibleException( 'unexceptedtoken', $module, $token->line,
 					array( $token, implode( ', ', array_keys( @self::$mAction[$state] ) ), $state ) );
 			}
 			if( $act[0] == self::Shift ) {
@@ -86,7 +86,7 @@ class ISLRParser implements ISParser {
 					$str = array_reverse( $str );
 					list( $stateval, $state ) = end( $states );
 
-					$node = new ISParserTreeNode( $this, $nonterm );
+					$node = new WSParserTreeNode( $this, $nonterm );
 					foreach( $str as $symbol ) {
 						list( $val ) = $symbol;
 						$node->addChild( $val );
@@ -99,13 +99,13 @@ class ISLRParser implements ISParser {
 
 		wfProfileOut( __METHOD__ );
 
-		return new ISParserOutput( $states[1][0], $tokenCount );
+		return new WSParserOutput( $states[1][0], $tokenCount );
 	}
 	
 	public function getSyntaxErrors( $input, $module, $maxTokens ) {
 		try {
 			$this->parse( $input, $module, $maxTokens );
-		} catch( ISUserVisibleException $e ) {
+		} catch( WSUserVisibleException $e ) {
 			return array( $e->getMessage() );
 		}
 

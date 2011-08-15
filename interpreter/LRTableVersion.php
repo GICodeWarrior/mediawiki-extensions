@@ -6,4 +6,4 @@
  * version in separate file.
  */
 
-define( 'IS_LR_VERSION', "2011-08-13 21:53:42" );
+define( 'WS_LR_VERSION', "2011-08-13 21:53:42" );

@@ -21,18 +21,18 @@
  */
 
 /**
- * Hooks for InlineScripts extension.
+ * Hooks for WikiScripts extension.
  */
-class ISHooks {
+class WSHooks {
 	/**
 	 * Returns the interpreter for a given parser.
 	 * 
 	 * @static
-	 * @return InlineScriptInterpreter
+	 * @return WSIntepreter
 	 */
 	public static function getInterpreter( $parser ) {
 		if( !isset( $parser->is_interpreter ) || !$parser->is_interpreter ) {
-			$parser->is_interpreter = new ISInterpreter( $parser );
+			$parser->is_interpreter = new WSInterpreter( $parser );
 		}
 		return $parser->is_interpreter;
 	}
@@ -42,7 +42,7 @@ class ISHooks {
 	 * @param $parser Parser
 	 */
 	public static function setupParserHook( &$parser ) {
-		$parser->setFunctionHook( 'i', 'ISHooks::callHook', SFH_NO_HASH | SFH_OBJECT_ARGS );
+		$parser->setFunctionHook( 'i', 'WSHooks::callHook', SFH_NO_HASH | SFH_OBJECT_ARGS );
 		return true;
 	}
 
@@ -81,7 +81,7 @@ class ISHooks {
 
 		try {
 			if( count( $args ) < 2 ) {
-				throw new ISTransclusionException( 'nofunction' );
+				throw new WSTransclusionException( 'nofunction' );
 			}
 
 			$moduleName = $parser->mStripState->unstripBoth( array_shift( $args ) );
@@ -91,7 +91,7 @@ class ISHooks {
 			}
 
 			$result = $i->invokeUserFunctionFromWikitext( $moduleName, $funcName, $args, $frame );
-		} catch( ISException $e ) {
+		} catch( WSException $e ) {
 			$msg = $e->getMessage();
 			wfProfileOut( __METHOD__ );
 			return "<strong class=\"error\">{$msg}</strong>";
@@ -112,10 +112,10 @@ class ISHooks {
 	 * @return bool
 	 */
 	public static function handleScriptView( $text, $title, $output ) {
-		global $wgInlineScriptsUseGeSHi;
+		global $wgScriptsUseGeSHi;
 
 		if( $title->getNamespace() == NS_MODULE ) {
-			if( $wgInlineScriptsUseGeSHi ) {
+			if( $wgScriptsUseGeSHi ) {
 				$geshi = SyntaxHighlight_GeSHi::prepare( $text, 'wikiscript' );
 				$geshi->set_language_path( dirname( __FILE__ ) . '/geshi' );
 				$geshi->set_language( 'wikiscript' );
@@ -159,11 +159,11 @@ class ISHooks {
 	 * @return bool
 	 */
 	public static function reportLimits( $parser, &$report ) {
-		global $wgInlineScriptsLimits;
+		global $wgScriptsLimits;
 		$i = self::getInterpreter( $parser );
 		$report .=
-			"Inline scripts parser evaluations: {$i->mEvaluations}/{$wgInlineScriptsLimits['evaluations']}\n" .
-			"Inline scripts AST maximal depth: {$i->mMaxRecursion}/{$wgInlineScriptsLimits['depth']}\n";
+			"Scripts parser evaluations: {$i->mEvaluations}/{$wgScriptsLimits['evaluations']}\n" .
+			"Scripts AST maximal depth: {$i->mMaxRecursion}/{$wgScriptsLimits['depth']}\n";
 		return true;
 	}
 
@@ -181,12 +181,12 @@ class ISHooks {
 		$title = $editor->mTitle;
 
 		if( $title->getNamespace() == NS_MODULE ) {
-			$errors = ISInterpreter::getSyntaxErrors( $title->getText(), $text );
+			$errors = WSInterpreter::getSyntaxErrors( $title->getText(), $text );
 			if( !$errors ) {
 				return true;
 			}
 
-			$errmsg = wfMsgExt( 'inlinescripts-error', array( 'parsemag' ), array( count( $errors ) ) );
+			$errmsg = wfMsgExt( 'wikiscripts-error', array( 'parsemag' ), array( count( $errors ) ) );
 			$errlines = '* ' . implode( "\n* ", array_map( 'wfEscapeWikiText', $errors ) );
 			$error = <<<HTML
 <div class="errorbox">
