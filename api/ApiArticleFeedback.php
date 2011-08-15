@@ -56,7 +56,6 @@ class ApiArticleFeedback extends ApiBase {
 			array(
 				'ORDER BY' => 'aa_revision DESC',
 				'LIMIT' => count( $wgArticleFeedbackRatings ),
-				'LOCK IN SHARE MODE', // Prevent race conditions
 			)
 		);
 
