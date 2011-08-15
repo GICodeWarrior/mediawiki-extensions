@@ -328,10 +328,10 @@ class Stylizer {
 }
 
 /**
- * From 
+ * From
  * http://code.google.com/p/tylerhall/source/browse/trunk/class.args.php
  * http://clickontyler.com/blog/2008/11/parse-command-line-arguments-in-php/ - MIT License
- 
+
   Copyright (c) 2008 Tyler Hall
 
  Permission is hereby granted, free of charge, to any person obtaining a copy

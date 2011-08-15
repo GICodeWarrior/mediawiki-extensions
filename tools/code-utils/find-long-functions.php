@@ -26,7 +26,7 @@
  * Below are some debugging notes. Mainly the PHP token we use.
  *
  * T_WHITESPACE \t  \r\n
- * T_FUNCTION 
+ * T_FUNCTION
  * T_ENDDECLARE
  * T_DECLARE
  * 0 : token index
@@ -54,22 +54,22 @@ function _analyze_tokens( $token_array ) {
 	$tokens->rewind();
 
 	// loop while we get tokens from the iterator
-	while( $tokens->valid() ) {
+	while ( $tokens->valid() ) {
 		$token = $tokens->current();
 
 		# handles braces returned as strings by token_get_all()
-		if( is_string( $token ) ) {
-			if( $token == '{' ) {
+		if ( is_string( $token ) ) {
+			if ( $token == '{' ) {
 				$state['depth']++;
-			} elseif( $token == '}' ) {
+			} elseif ( $token == '}' ) {
 				$state['depth']--;
-				if( $state['depth'] === $state['cdepth'] ) {
+				if ( $state['depth'] === $state['cdepth'] ) {
 					$l = $state['cur_line'] - $state['cstart_line'];
 					print "Done with class {$state['class']}, $l lines long.\n\n";
 					$state['class']  = '';
 					$state['cdepth'] = null;
 					$state['cstart_line'] = null;
-				} elseif( $state['depth'] === $state['fdepth'] ) {
+				} elseif ( $state['depth'] === $state['fdepth'] ) {
 					$l = $state['cur_line'] - $state['fstart_line'];
 					printf( "%5s lines for %s.\n", $l, $state['function'] );
 					$state['function']  = '';
@@ -77,7 +77,7 @@ function _analyze_tokens( $token_array ) {
 					$state['fstart_line'] = null;
 				}
 			} else { print "Got unwanted string: $token\n"; }
-				
+
 			debug_state( $state, $token );
 
 			$tokens->next();
@@ -93,10 +93,10 @@ function _analyze_tokens( $token_array ) {
 			break;
 		case T_CLASS:
 		case T_FUNCTION:
-			# find the token giving function or class name	
+			# find the token giving function or class name
 			$name_token = $tokens->nextOfKind( T_STRING );
 
-			if( $token[0] == T_CLASS ) {
+			if ( $token[0] == T_CLASS ) {
 				$TYPE = 'class';
 				$state['cdepth'] = $state['depth'];
 				$state['cstart_line'] = $state['cur_line'];
@@ -106,7 +106,7 @@ function _analyze_tokens( $token_array ) {
 				$TYPE = 'function';
 				$state['fdepth'] = $state['depth'];
 				$state['fstart_line'] = $state['cur_line'];
-				if( $state['class'] ) {
+				if ( $state['class'] ) {
 					$state['function'] = $state['class'] . '::' . $name_token[1];
 				} else {
 					$state['function'] = $name_token[1];
@@ -131,11 +131,11 @@ function debug_state( $state, $token = null ) {
 		$state['fdepth'],
 		$state['depth']
 	);
-	if( is_array( $token ) ) {
+	if ( is_array( $token ) ) {
 		printf( "line %s - %s: %s\n", $token[2], token_name( $token[0] ), $token[1] );
 	} else {
 		print "string $token\n";
-	}		
+	}
 }
 
 /**
@@ -147,14 +147,14 @@ class TokenIterator extends ArrayIterator {
 	}
 
 	/**
-	 * Skip tokens until we reach the wanted token, return it. 
+	 * Skip tokens until we reach the wanted token, return it.
 	 */
 	function nextOfKind( $wanted_token_index ) {
 		$found = false;
-		while( true ) {
+		while ( true ) {
 			$this->next();
 			$token = $this->current();
-			if( $token[0] == $wanted_token_index ) {
+			if ( $token[0] == $wanted_token_index ) {
 				return $token;
 			}
 		}
@@ -173,13 +173,13 @@ $unwanted_tokens = array( T_WHITESPACE );
  */
 function _filter( $token ) {
 	global $wanted_tokens, $wanted_strings, $unwanted_tokens ;
-	if( false && is_array( $token ) ) {
+	if ( false && is_array( $token ) ) {
 		return in_array( $token[0] , $wanted_tokens );
 	}
-	if( is_array( $token ) ) {
+	if ( is_array( $token ) ) {
 		return !in_array( $token[0] , $unwanted_tokens );
 	}
-	if( is_string( $token ) ) {
+	if ( is_string( $token ) ) {
 		return in_array( $token, $wanted_strings );
 	}
 	return true;
@@ -187,7 +187,7 @@ function _filter( $token ) {
 
 function analyze_file( $file ) {
 	$content = file_get_contents( $file );
-	if( $content === false ) {
+	if ( $content === false ) {
 		print "Could not open file $file\n";
 		return null;
 	}
@@ -199,13 +199,13 @@ function analyze_file( $file ) {
 
 
 # Print usage when no source file given
-if( $argc == 1 ) {
+if ( $argc == 1 ) {
 	die( "Usage: $argv[0] <PHP_source_file> [<PHP_source_file> [...]]\n" );
 }
 array_shift( $argv );  // skip script name
 
 # Parse each file given as an argument, one after the other...
-foreach( $argv as $arg ) {
+foreach ( $argv as $arg ) {
 	print "Trying file $arg...\n";
 	analyze_file( $arg );
 }

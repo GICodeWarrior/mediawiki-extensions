@@ -6,7 +6,7 @@
  * Run as:
  *  find phase3/ \( -name \*.php -or -name \*.inc \) -not \( -name diffLanguage.php -o -name LocalSettings.php -o -name Parser?????.php \) -exec php tools/code-utils/check-vars.php \{\} +
  */
-if( ! $IP = getenv( 'MW_INSTALL_PATH' ) ) {
+if ( ! $IP = getenv( 'MW_INSTALL_PATH' ) ) {
 	$IP = dirname( __FILE__ ) . "/../../phase3/";
 }
 
@@ -98,9 +98,9 @@ class CheckVars {
 		'session_is_registered' => 'Deprecated since PHP 5.3.0.',
 		'set_magic_quotes_runtime' => 'Deprecated since PHP 5.3.0.',
 
-		'var_dump' => 'Debugging function.', //r81671#c13996
-		//'print_r' => 'Debugging function if second parameter is not true.',
-		'wfVarDump' => 'Debugging function.', //var_export() wrapper
+		'var_dump' => 'Debugging function.', // r81671#c13996
+		// 'print_r' => 'Debugging function if second parameter is not true.',
+		'wfVarDump' => 'Debugging function.', // var_export() wrapper
 		);
 
 	static $enabledWarnings = array(
@@ -139,8 +139,8 @@ class CheckVars {
 		asort( $w ); // sort by status
 		print "Keywords disabled by default:\n";
 		$prevStatus = false;
-		foreach( $w as $key => $status ) {
-			if( $status !== $prevStatus ) {
+		foreach ( $w as $key => $status ) {
+			if ( $status !== $prevStatus ) {
 				$prevStatus = $status;
 				print "Keywords enabled by default:\n";
 			}
@@ -246,7 +246,7 @@ class CheckVars {
 
 	function saveDeprecatedList( $filename ) {
 		$data = "<?php\n\$mwDeprecatedFunctions = array(\n";
-		foreach( $this->mDeprecatedFunctionList as $depre => $classes ) {
+		foreach ( $this->mDeprecatedFunctionList as $depre => $classes ) {
 			$data .= "\t'$depre' => array( '" . implode( "', '", $classes ) . "' ),\n";
 		}
 		$data .= "\n);\n\n";
@@ -264,7 +264,7 @@ class CheckVars {
 	function saveParentList( $filename ) {
 		global $mwParentClasses;
 		$data = "<?php\n\$mwParentClasses = array(\n";
-		foreach( $mwParentClasses as $class => $parent ) {
+		foreach ( $mwParentClasses as $class => $parent ) {
 			$data .= "\t'$class' => '$parent' ,\n";
 		}
 		$data .= "\n);\n\n";
@@ -343,7 +343,7 @@ class CheckVars {
 					$this->warning( 'double-;', "Empty statement" );
 				} elseif ( $lastMeaningfulToken[0] == T_FOR ) {
 					# But not on infinte for loops: for ( ; ; )
-					$currentToken = array(';', ';', $lastMeaningfulToken[2] );
+					$currentToken = array( ';', ';', $lastMeaningfulToken[2] );
 				}
 			}
 
@@ -588,8 +588,8 @@ class CheckVars {
 								$this->mInProfilingFunction = true;
 								$this->mAfterProfileOut = 0;
 							} elseif ( $lastMeaningfulToken[1] == 'wfProfileOut' ) {
-								global $mwParentClasses;//echo "wfProfileOut $this->mClass " . ( isset( $mwParentClasses[ $this->mClass ] ) ? $mwParentClasses[ $this->mClass ] : "" ). "\n";
-								if ( ( isset( $mwParentClasses[ $this->mClass ] ) && $mwParentClasses[ $this->mClass ] == 'ImageHandler') ||
+								global $mwParentClasses;// echo "wfProfileOut $this->mClass " . ( isset( $mwParentClasses[ $this->mClass ] ) ? $mwParentClasses[ $this->mClass ] : "" ). "\n";
+								if ( ( isset( $mwParentClasses[ $this->mClass ] ) && $mwParentClasses[ $this->mClass ] == 'ImageHandler' ) ||
 									( $this->mClass == 'Hooks' && $this->mFunction == 'run' ) ) {
 									// Do not treat as profiling any more. ImageHandler sons have profile sections just for their wfShellExec(). wfRunHooks profiles each hook.
 									$this->mInProfilingFunction = false;
@@ -768,7 +768,7 @@ class CheckVars {
 							/* Maintenance.php lines 374 and 894 */
 							/* LocalisationCache.php, MessageCache.php, AutoLoader.php */
 						} else {
-							//$this->warning( "require uses unknown variable {$token[1]} in line {$token[2]}" );
+							// $this->warning( "require uses unknown variable {$token[1]} in line {$token[2]}" );
 							$requirePath .= $token[1];
 						}
 					} elseif ( $token[0] == T_STRING && $token[1] == 'RUN_MAINTENANCE_IF_MAIN' ) {
@@ -804,7 +804,7 @@ class CheckVars {
 						return;
 					}
 					$class = $mwParentClasses[ $class ];
-				} while( true );
+				} while ( true );
 			} else if ( isset( $token['base'] ) ) { # Avoid false positives for local functions, see maintenance/rebuildInterwiki.inc
 				$this->warning( 'deprecated-might', "Non deprecated function $this->mFunction may be calling deprecated function " .
 					implode( '/', $mwDeprecatedFunctions[ $token[1] ] ) . "::" . $token[1] . " in line {$token[2]}" );
@@ -825,12 +825,12 @@ class CheckVars {
 				return;
 			}
 
-			if ( isset( self::$poisonedFunctions[ strtolower($token[1]) ] ) ) {
+			if ( isset( self::$poisonedFunctions[ strtolower( $token[1] ) ] ) ) {
 				if ( $token[1] == 'var_dump' && ( substr( $this->mFunction, 0, 4 ) == 'dump' ) || basename( $this->mFilename ) == 'ApiFormatDump.php' ) {
 					// Allow var_dump if the function purpose is really to dump contents
 					return;
 				}
-				$this->warning( 'poisoned-function', "Poisoned function {$token[1]} called from {$this->mFunction} in line {$token[2]}: " . self::$poisonedFunctions[strtolower($token[1])] );
+				$this->warning( 'poisoned-function', "Poisoned function {$token[1]} called from {$this->mFunction} in line {$token[2]}: " . self::$poisonedFunctions[strtolower( $token[1] )] );
 				return;
 			}
 
@@ -899,7 +899,7 @@ class CheckVars {
 		} else {
 			return null;
 		}
-		$className = $this->checkClassName( array( 1=> ucfirst( $name ) ) , 'no' );
+		$className = $this->checkClassName( array( 1 => ucfirst( $name ) ) , 'no' );
 		if ( $className ) {
 			return $className;
 		}
@@ -939,8 +939,8 @@ class CheckVars {
 		static $specialGlobals = array( '$IP', '$parserMemc', '$messageMemc', '$hackwhere', '$haveProctitle' );
 		static $nonGlobals = array(	'$wgOptionalMessages', '$wgIgnoredMessages', '$wgEXIFMessages', # Used by Translate extension, read from maintenance/languages/messageTypes.inc
 									'$wgMessageStructure', '$wgBlockComments' ); # Used by Translate extension and maintenance/language/writeMessagesArray.inc, read from maintenance/languages/messages.inc
-									
-		if ( $name == '$wgHooks' && $this->mClass == 'Installer' && $this->mFunction == 'includeExtensions')
+
+		if ( $name == '$wgHooks' && $this->mClass == 'Installer' && $this->mFunction == 'includeExtensions' )
 			return false;
 
 		return ( ( substr( $name, 0, 3 ) == '$wg' ) || ( substr( $name, 0, 3 ) == '$eg' ) || in_array( $name, $specialGlobals ) ) && !in_array( $name, $nonGlobals );
@@ -1084,7 +1084,7 @@ class CheckVars {
 	}
 }
 
-if( $argc < 2 ) {
+if ( $argc < 2 ) {
 	die (
 "Usage:
 	php $argv[0] [options] <PHP_source_file1> <PHP_source_file2> ...
@@ -1094,7 +1094,7 @@ Options:
 	--generate-parent-list
 	-Whelp : available warnings methods
 	-W[no]key : disabled/enable key warning.
-");
+" );
 }
 
 $cv = new CheckVars();
@@ -1111,11 +1111,11 @@ if ( $argv[0] == '--generate-parent-list' ) {
 
 foreach ( $argv as $arg ) {
 	if ( preg_match( '/^-W(no-)?(.*)/', $arg, $m ) ) {
-		if( $m[2] === 'help' ) {
+		if ( $m[2] === 'help' ) {
 			CheckVars::dumpWarningsKeywords();
 			exit;
 		} elseif ( !isset( CheckVars::$enabledWarnings[ $m[2] ] ) ) {
-			var_dump($m);
+			var_dump( $m );
 			die( "Wrong warning name $arg\n" );
 		}
 		CheckVars::$enabledWarnings[ $m[2] ] = strlen( $m[1] ) == 0;
