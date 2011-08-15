@@ -111,12 +111,10 @@ es.ListBlock.prototype.getText = function( range, render ) {
  * 
  * @method
  * @param offset {Integer} Offset to get location for
- * @returns {Object} Location object with item, offset and linesBefore properties, where offset
- * is local to item and linesBefore is total number of flow lines above returned item
+ * @returns {Object} Location object with item and offset, where offset is local to item
  */
 es.ListBlock.prototype.getLocationFromOffset = function( offset ) {
 	var globalOffset = 0,
-		linesBefore = 0,
 		itemLength,
 		location;
 	
@@ -125,13 +123,11 @@ es.ListBlock.prototype.getLocationFromOffset = function( offset ) {
 		if ( offset >= globalOffset && offset <= globalOffset + itemLength ) {
 			location = {
 				'item' : item,
-				'offset' : offset - globalOffset,
-				'linesBefore': linesBefore
+				'offset' : offset - globalOffset
 			};
 			return false;
 		}
 		globalOffset += itemLength + 1;
-		linesBefore += item.flow.lines.length;
 	} );
 	
 	return location;

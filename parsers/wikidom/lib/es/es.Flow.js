@@ -74,25 +74,14 @@ es.Flow.prototype.getOffset = function( position ) {
 		return 0;
 	}
 	// Find which line the position is inside of
-	var i = 0,
-		top = 0;
-	while ( i < lineCount ) {
-		top += this.lines[i].height;
-		if ( position.top <= top ) {
-			break;
-		}
-		i++;
-	}
-	
-	i =  this.getLineIndexFromPosition(position);
-	console.log(i);
+	var lineIndex = this.getLineIndexFromPosition( position );
 	
 	// Positions below the last line always jump to the last offset
-	if ( i == lineCount ) {
+	if ( lineIndex == lineCount ) {
 		return this.content.getLength();
 	}
 	// Alias current line object
-	var line = this.lines[i];
+	var line = this.lines[lineIndex];
 	
 	/*
 	 * Offset finding
