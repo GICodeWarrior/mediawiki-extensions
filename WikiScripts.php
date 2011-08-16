@@ -43,6 +43,9 @@ $wgAutoloadClasses['WSInterpreter'] = $dir . 'interpreter/Interpreter.php';
 $wgAutoloadClasses['WSScanner'] = $dir . 'interpreter/Scanner.php';
 $wgAutoloadClasses['WSLRParser'] = $dir . 'interpreter/LRParser.php';
 
+$wgAutoloadClasses['WSStringLibrary'] = $dir . 'interpreter/lib/String.php';
+$wgAutoloadClasses['WSTemplateLibrary'] = $dir . 'interpreter/lib/Template.php';
+
 $wgParserTestFiles[] = $dir . 'interpreterTests.txt';
 $wgHooks['ParserFirstCallInit'][] = 'WSHooks::setupParserHook';
 $wgHooks['ParserLimitReport'][] = 'WSHooks::reportLimits';
@@ -108,6 +111,11 @@ $wgScriptsUseGeSHi = false;
  * static getVersion() method.
  */
 $wgScriptsParserClass = 'WSLRParser';
+
+$wgScriptsLibraryClasses = array(
+	'str' => 'WSStringLibrary',
+	'tpl' => 'WSTemplateLibrary',
+);
 
 /**
  * Should be enabled unless you are debugging or just have sado-masochistic

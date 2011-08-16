@@ -26,6 +26,7 @@ if( !defined( 'MEDIAWIKI' ) )
 require_once( 'Shared.php' );
 require_once( 'Data.php' );
 require_once( 'EvaluationContext.php' );
+require_once( 'Library.php' );
 require_once( 'CallStack.php' );
 
 /**
@@ -258,6 +259,7 @@ class WSInterpreter {
 
 		// Prepare the context and the arguments
 		$context = new WSEvaluationContext( $this, $module, $name, $parentContext->getFrame() );
+		$context->setArguments( $args );
 		foreach( $args as $n => $arg ) {
 			if( isset( $function->args[$n] ) ) {
 				$argname = $function->args[$n];
@@ -318,12 +320,16 @@ class WSInterpreter {
 
 		// Prepare the context and the arguments
 		$context = new WSEvaluationContext( $this, $module, $name, $frame );
+		$argsData = array();
 		foreach( $args as $n => $arg ) {
+			$data = new WSData( WSData::DString, strval( $arg ) );
+			$argsData[] = $data;
 			if( isset( $function->args[$n] ) ) {
 				$argname = $function->args[$n];
-				$context->setArgument( $argname, new WSData( WSData::DString, strval( $arg ) ) );
+				$context->setArgument( $argname, $data );
 			}
 		}
+		$context->setArguments( $argsData );
 
 		// Push function into call stack
 		$this->mCallStack->addFunctionFromWikitext( $moduleName, $name );

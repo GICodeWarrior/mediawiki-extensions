@@ -30,39 +30,22 @@ if( !defined( 'MEDIAWIKI' ) )
  * Handles evaluation of an individual functions.
  */
 class WSEvaluationContext {
-	var $mVars, $mFrame, $mName, $mInterpreter, $mModule;
+	var $mVars, $mArgs, $mFrame, $mName, $mInterpreter, $mModule;
 
 	var $mOutput, $mListOutput;
 
-	static $mFunctions = array(
-		/* String functions */
-		'lc' => 'funcLc',
-		'uc' => 'funcUc',
-		'ucfirst' => 'funcUcFirst',
-		'urlencode' => 'funcUrlencode',
-		'grammar' => 'funcGrammar',
-		'plural' => 'funcPlural',
-		'anchorencode' => 'funcAnchorEncode',
-		'strlen' => 'funcStrlen',
-		'substr' => 'funcSubstr',
-		'strreplace' => 'funcStrreplace',
-		'split' => 'funcSplit', 
-
-		/* Array functions */
-		'join' => 'funcJoin',
-		'count' => 'funcCount',
-
-		/* Parser interaction functions */
-		'arg' => 'funcArg',
-		'args' => 'funcArgs',
-		'isTranscluded' => 'funcIsTranscluded',
-		'parse' => 'funcParse',
-
+	/**
+	 * Several built-in constructions are impletmented as function.
+	 * If you want to add a new function, you will need to create a library
+	 * or modify existing one.
+	 */
+	static $mBuiltInFunctions = array(
 		/* Cast functions */
 		'string' => 'castString',
 		'int' => 'castInt',
 		'float' => 'castFloat',
 		'bool' => 'castBool',
+		'length' => 'getLength',
 	);
 
 	public function __construct( $interpreter, $module, $name, $frame ) {
@@ -99,6 +82,10 @@ class WSEvaluationContext {
 
 	public function setArgument( $name, $value ) {
 		$this->mVars[$name] = $value->dup();
+	}
+
+	public function setArguments( $args ) {
+		$this->mArgs = $args;
 	}
 
 	/**
@@ -322,10 +309,12 @@ class WSEvaluationContext {
 					$idch = $c[0]->getChildren();
 					if( count( $idch ) == 1 ) {
 						$funcname = $idch[0]->value;
-						if( !isset( self::$mFunctions[$funcname] ) ) 
-							throw new WSUserVisibleException( 'unknownfunction', $this->mModuleName, $idch[0]->line, array( $funcname ) );
-						$func = self::$mFunctions[$funcname];
-						return $this->$func( $args, $idch[0]->line );
+						if( isset( self::$mBuiltInFunctions[$funcname] ) )  {
+							$func = self::$mBuiltInFunctions[$funcname];
+							return $this->$func( $args, $idch[0]->line );
+						} else {
+							return WSLibrary::callFunction( $funcname, $args, $this, $idch[0]->line );
+						}
 					} else {
 						$funcname = $idch[2]->value;
 						if( $idch[0] instanceof WSToken ) {
@@ -611,135 +600,19 @@ class WSEvaluationContext {
 		unset( $this->mVars[$varname] );
 	}
 
+	public function error( $name, $line, $params = array() ) {
+		throw new WSUserVisibleException( $name, $this->mModuleName, $line, $params );
+	}
+
 	/** Functions */
-	protected function funcArg( $args, $pos ) {
+	protected function getLength( $args, $pos ) {
 		$this->checkParamsCount( $args, $pos, 1 );
+		$data = $args[0];
 
-		$argName = $args[0]->toString();
-		$default = isset( $args[1] ) ? $args[1] : new WSData();
-		if( $this->mFrame->getArgument( $argName ) === false )
-			return $default;
+		if( $data->isArray() )
+			return new WSData( WSData::DInt, count( $data->data ) );
 		else
-			return new WSData( WSData::DString, $this->mFrame->getArgument( $argName ) );
-	}
-
-	protected function funcArgs( $args, $pos ) {
-		return WSData::newFromPHPVar( $this->mFrame->getNumberedArguments() );
-	}
-
-	protected function funcIsTranscluded( $args, $pos ) {
-		return new WSData( WSData::DBool, $this->mFrame->isTemplate() );
-	}
-
-	protected function funcParse( $args, $pos ) {
-		$this->checkParamsCount( $args, $pos, 1 );
-
-		$text = $args[0]->toString();
-		$this->mInterpreter->mCallStack->addParse( $text );
-
-		$oldOT = $this->mParser->mOutputType;
-		$this->mParser->setOutputType( Parser::OT_PREPROCESS );
-		$parsed = $this->mParser->replaceVariables( $text, $this->mFrame );
-		$parsed = $this->mParser->mStripState->unstripBoth( $parsed );
-		$this->mParser->setOutputType( $oldOT );
-
-		$this->mInterpreter->mCallStack->pop();
-		return new WSData( WSData::DString, $parsed );
-	}
-	
-	protected function funcLc( $args, $pos ) {
-		global $wgContLang;
-		$this->checkParamsCount( $args, $pos, 1 );
-		return new WSData( WSData::DString, $wgContLang->lc( $args[0]->toString() ) );
-	}
-
-	protected function funcUc( $args, $pos ) {
-		global $wgContLang;
-		$this->checkParamsCount( $args, $pos, 1 );
-		return new WSData( WSData::DString, $wgContLang->uc( $args[0]->toString() ) );
-	}
-
-	protected function funcUcFirst( $args, $pos ) {
-		global $wgContLang;
-		$this->checkParamsCount( $args, $pos, 1 );
-		return new WSData( WSData::DString, $wgContLang->ucfirst( $args[0]->toString() ) );
-	}
-
-	protected function funcUrlencode( $args, $pos ) {
-		$this->checkParamsCount( $args, $pos, 1 );
-		return new WSData( WSData::DString, urlencode( $args[0]->toString() ) );
-	}
-
-	protected function funcAnchorEncode( $args, $pos ) {
-		$this->checkParamsCount( $args, $pos, 1 );
-
-		$s = urlencode( $args[0]->toString() );
-		$s = strtr( $s, array( '%' => '.', '+' => '_' ) );
-		$s = str_replace( '.3A', ':', $s );
-
-		return new WSData( WSData::DString, $s );
-	}
-
-	protected function funcGrammar( $args, $pos ) {
-		$this->checkParamsCount( $args, $pos, 2 );
-		list( $case, $word ) = $args;
-		$res = $this->mParser->getFunctionLang()->convertGrammar(
-			$word->toString(), $case->toString() );
-		return new WSData( WSData::DString, $res );
-	}
-
-	protected function funcPlural( $args, $pos ) {
-		$this->checkParamsCount( $args, $pos, 2 );
-		$num = $args[0]->toInt();
-		for( $i = 1; $i < count( $args ); $i++ )
-			$forms[] = $args[$i]->toString();
-		$res = $this->mParser->getFunctionLang()->convertPlural( $num, $forms );
-		return new WSData( WSData::DString, $res );
-	}
-
-	protected function funcStrlen( $args, $pos ) {
-		$this->checkParamsCount( $args, $pos, 1 );
-		return new WSData( WSData::DInt, mb_strlen( $args[0]->toString() ) );
-	}
-
-	protected function funcSubstr( $args, $pos ) {
-		$this->checkParamsCount( $args, $pos, 3 );
-		$s = $args[0]->toString();
-		$start = $args[1]->toInt();
-		$end = $args[2]->toInt();
-		return new WSData( WSData::DString, mb_substr( $s, $start, $end ) );
-	}
-
-	protected function funcStrreplace( $args, $pos ) {
-		$this->checkParamsCount( $args, $pos, 3 );
-		$s = $args[0]->toString();
-		$old = $args[1]->toString();
-		$new = $args[2]->toString();
-		return new WSData( WSData::DString, str_replace( $old, $new, $s ) );
-	}
-
-	protected function funcSplit( $args, $pos ) {
-		$this->checkParamsCount( $args, $pos, 2 );
-		$list = explode( $args[0]->toString(), $args[1]->toString() );
-		return WSData::newFromPHPVar( $list );
-	}
-
-	protected function funcJoin( $args, $pos ) {
-		$this->checkParamsCount( $args, $pos, 2 );
-		$seperator = $args[0]->toString();
-		if( $args[1]->type == WSData::DList ) {
-			$bits = $args[1]->data;
-		} else {
-			$bits = array_slice( $args, 1 );
-		}
-		foreach( $bits as &$bit )
-			$bit = $bit->toString();
-		return new WSData( WSData::DString, implode( $seperator, $bits ) );
-	}
-
-	protected function funcCount( $args, $pos ) {
-		$this->checkParamsCount( $args, $pos, 1 );
-		return new WSData( WSData::DInt, count( $args[0]->toList()->data ) );
+			return new WSData( WSData::DInt, mb_strlen( $data->toString() ) );
 	}
 
 	protected function castString( $args, $pos ) {

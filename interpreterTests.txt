@@ -210,10 +210,7 @@ Conditions (if-then, if-then-else)
 Module:Bullets
 !! text
 function run() {
-	out = "";
-	for( a in args() )
-		out += "* " + a + "\n";
-	return out;
+	return str_join_list( tpl_numbered_args(), "\n", "* " );
 }
 !! endarticle
 
@@ -239,7 +236,7 @@ args() function
 Module:TranscludedSwitch
 !! text
 function run() {
-	return isTranscluded() ? arg(1) : "?!";
+	return tpl_is_transcluded() ? tpl_arg(1) : "?!";
 }
 !! endarticle
 
@@ -250,7 +247,7 @@ Template:TranscludedSwitch
 !! endarticle
 
 !! test
-isTranscluded()/arg() check
+tpl_is_transcluded()/tpl_arg() check
 !! input
 {{TranscludedSwitch|11}}
 !! result
@@ -262,7 +259,7 @@ isTranscluded()/arg() check
 Module:Empty argument handling check
 !! text
 function run() {
-	return arg("test") === null;
+	return tpl_arg("test") === null;
 }
 !! endarticle
 
@@ -322,13 +319,13 @@ Template:Numberofsomething
 Module:Numberofsomething
 !! text
 function run() {
-	numofsmth = int( parse( '{{numberofsomething}}' ) ) + 279;
+	numofsmth = int( tpl_parse( '{{numberofsomething}}' ) ) + 279;
 	return '{{numberofsomething}}: ' + numofsmth;
 }
 !! endarticle
 
 !! test
-Template access via parse()
+Template access via tpl_parse()
 !! input
 {{i:Numberofsomething|run}}
 !! result
@@ -344,7 +341,7 @@ function run1() {
 }
 
 function run2() {
-	return parse( '{{123}}' );
+	return tpl_parse( '{{123}}' );
 }
 !! endarticle
 
@@ -355,7 +352,7 @@ Template:123
 !! endarticle
 
 !! test
-Nested wikiscripts via parse()
+Nested wikiscripts via tpl_parse()
 !! input
 {{i:123|run2}}
 !! result
@@ -367,8 +364,8 @@ Nested wikiscripts via parse()
 Module:String functions 1
 !! text
 function run() {
-	return lc( 'FOO' ) == 'foo' & uc( 'foo' ) == 'FOO' &
-		ucfirst( 'bar' ) == 'Bar' & urlencode( 'a="b"' ) == "a%3D%22b%22";
+	return str_lowercase( 'FOO' ) == 'foo' & str_uppercase( 'foo' ) == 'FOO' &
+		str_uppercase_first( 'bar' ) == 'Bar' & str_url_encode( 'a="b"' ) == "a%3D%22b%22";
 }
 !! endarticle
 
@@ -385,8 +382,8 @@ String functions 1
 Module:String functions 2
 !! text
 function run() {
-	return strlen( "тест" ) == 4 & substr( "слово", 1, 2 ) == "ло" &
-		strreplace( "abcd", 'bc', 'ad' ) == 'aadd';
+	return str_length( "тест" ) == 4 & str_sub( "слово", 1, 2 ) == "ло" &
+		str_replace( "abcd", 'bc', 'ad' ) == 'aadd';
 }
 !! endarticle
 
@@ -403,7 +400,7 @@ String functions 2
 Module:split/join
 !! text
 function run() {
-	return join( '!', split( ':', 'a:b:c:d' ) ) + join( ' ', '', 'e', 'f' );
+	return str_join_list( str_split( 'a:b:c:d', ':' ), '!' ) + str_join( ' ', '', 'e', 'f' );
 }
 !! endarticle
 
