@@ -8,7 +8,7 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
- * 
+ *
  * QPoll is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -21,13 +21,13 @@
  * ***** END LICENSE BLOCK *****
  *
  * QPoll is a poll tool for MediaWiki.
- * 
+ *
  * To activate this extension :
  * * Create a new directory named QPoll into the directory "extensions" of MediaWiki.
  * * Place the files from the extension archive there.
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/QPoll/qp_user.php";
- * 
+ *
  * @version 0.8.0a
  * @link http://www.mediawiki.org/wiki/Extension:QPoll
  * @author QuestPC <questpc@rambler.ru>
@@ -109,10 +109,10 @@ class PollResults extends qp_SpecialPage {
 			$wgOut->addExtensionStyle( qp_Setup::$ScriptPath . '/clientside/qp_results.css' );
 		}
 		if ( self::$UsersLink == "" ) {
-			self::$UsersLink = $this->qpLink( $this->getTitle(), wfMsg( 'qp_users_list' ), array( "style"=>"font-weight:bold;" ), array( 'action'=>'users' ) );
+			self::$UsersLink = $this->qpLink( $this->getTitle(), wfMsg( 'qp_users_list' ), array( "style" => "font-weight:bold;" ), array( 'action' => 'users' ) );
 		}
 		if ( self::$PollsLink == "" ) {
-			self::$PollsLink = $this->qpLink( $this->getTitle(), wfMsg( 'qp_polls_list' ), array( "style"=>"font-weight:bold;" ) );
+			self::$PollsLink = $this->qpLink( $this->getTitle(), wfMsg( 'qp_polls_list' ), array( "style" => "font-weight:bold;" ) );
 		}
 		$wgOut->addHTML( '<div class="qpoll">' );
 		$output = "";
@@ -134,9 +134,9 @@ class PollResults extends qp_SpecialPage {
 			$question_id = $wgRequest->getVal( 'qid' );
 			$proposal_id = $wgRequest->getVal( 'pid' );
 			$cid = $wgRequest->getVal( 'cid' );
-			switch ($cmd) {
+			switch ( $cmd ) {
 				case 'stats':
-					if ( $pid !==null ) {
+					if ( $pid !== null ) {
 						$pid = intval( $pid );
 						$output = self::getPollsLink();
 						$output .= self::getUsersLink();
@@ -144,19 +144,19 @@ class PollResults extends qp_SpecialPage {
 					}
 					break;
 				case 'stats_xls':
-						if ( $pid !==null ) {
+						if ( $pid !== null ) {
 							$pid = intval( $pid );
 							$this->statsToXLS( $pid );
 						}
 					break;
 				case 'voices_xls':
-						if ( $pid !==null ) {
+						if ( $pid !== null ) {
 							$pid = intval( $pid );
 							$this->voicesToXLS( $pid );
 						}
 					break;
 				case 'uvote':
-					if ( $pid !== null && $uid !==null ) {
+					if ( $pid !== null && $uid !== null ) {
 						$pid = intval( $pid );
 						$uid = intval( $uid );
 						$output = self::getPollsLink();
@@ -165,7 +165,7 @@ class PollResults extends qp_SpecialPage {
 					}
 					break;
 				case 'qpcusers':
-					if ( $pid !==null && $question_id !==null && $proposal_id !== null && $cid !== null ) {
+					if ( $pid !== null && $question_id !== null && $proposal_id !== null && $cid !== null ) {
 						$pid = intval( $pid );
 						$question_id = intval( $question_id );
 						$proposal_id = intval( $proposal_id );
@@ -228,7 +228,7 @@ class PollResults extends qp_SpecialPage {
 		if ( !is_array( $fields ) ) {
 			$fields = array( $fields );
 		}
-		foreach( $fields as $field ) {
+		foreach ( $fields as $field ) {
 			if ( !$db->fieldExists( $table, $field ) ) {
 				return false;
 			}
@@ -280,8 +280,8 @@ class PollResults extends qp_SpecialPage {
 		}
 		/* start of SQL updates */
 		$scriptsToRun = $tablesUpgrade = array();
-		foreach( $addFields as $script => &$table_list ) {
-			foreach( $table_list as $table => &$fields_list ) {
+		foreach ( $addFields as $script => &$table_list ) {
+			foreach ( $table_list as $table => &$fields_list ) {
 				if ( !$this->fieldsExists( $table, $fields_list ) ) {
 					$scriptsToRun[$script] = true;
 					if ( array_search( $table, $tablesUpgrade ) === false ) {
@@ -290,7 +290,7 @@ class PollResults extends qp_SpecialPage {
 				}
 			}
 		}
-		foreach( $scriptsToRun as $script => $val ) {
+		foreach ( $scriptsToRun as $script => $val ) {
 			if ( ( $r = $db->sourceFile( qp_Setup::$ExtDir . "/archives/{$script}" ) ) !== true ) {
 				return $r;
 			}
@@ -336,7 +336,7 @@ class PollResults extends qp_SpecialPage {
 		if ( $pid === null || $uid === null ) {
 			return '';
 		}
-		$pollStore = new qp_PollStore( array( 'from'=>'pid', 'pid'=> $pid ) );
+		$pollStore = new qp_PollStore( array( 'from' => 'pid', 'pid' => $pid ) );
 		if ( $pollStore->pid === null ) {
 			return '';
 		}
@@ -373,20 +373,20 @@ class PollResults extends qp_SpecialPage {
 
 	private function displayUserQuestionVote( &$qdata ) {
 		$output = "<div class=\"qpoll\">\n" . "<table class=\"pollresults\">\n";
-		$output .= qp_Renderer::displayRow( array_map( array( $this, 'categoryentities' ), $qdata->CategorySpans ), array( 'class'=>'spans' ), 'th', array( 'count'=>'colspan', 'name'=>0 ) );
-		$output .= qp_Renderer::displayRow( array_map( array( $this, 'categoryentities' ), $qdata->Categories ), '', 'th', array( 'name'=>0 ) );
+		$output .= qp_Renderer::displayRow( array_map( array( $this, 'categoryentities' ), $qdata->CategorySpans ), array( 'class' => 'spans' ), 'th', array( 'count' => 'colspan', 'name' => 0 ) );
+		$output .= qp_Renderer::displayRow( array_map( array( $this, 'categoryentities' ), $qdata->Categories ), '', 'th', array( 'name' => 0 ) );
 		# multiple choice polls doesn't use real spans, instead, every column is like "span"
 		$spansUsed = count( $qdata->CategorySpans ) > 0 || $qdata->type == "multipleChoice";
-		foreach( $qdata->ProposalText as $propkey => &$proposal_text ) {
+		foreach ( $qdata->ProposalText as $propkey => &$proposal_text ) {
 			$row = Array();
 			foreach ( $qdata->Categories as $catkey => &$cat_name ) {
-				$cell = Array( 0=>"" );
+				$cell = Array( 0 => "" );
 				if ( array_key_exists( $propkey, $qdata->ProposalCategoryId ) &&
 							( $id_key = array_search( $catkey, $qdata->ProposalCategoryId[ $propkey ] ) ) !== false ) {
 					$text_answer = $qdata->ProposalCategoryText[ $propkey ][ $id_key ];
 					if ( $text_answer != '' ) {
 						if ( strlen( $text_answer ) > 20 ) {
-							$cell[ 0 ] = array( '__tag'=>'div', 'style'=>'width:10em; height:5em; overflow:auto', 0=>qp_Setup::entities( $text_answer ) );
+							$cell[ 0 ] = array( '__tag' => 'div', 'style' => 'width:10em; height:5em; overflow:auto', 0 => qp_Setup::entities( $text_answer ) );
 						} else {
 							$cell[ 0 ] = qp_Setup::entities( $text_answer );
 						}
@@ -405,7 +405,7 @@ class PollResults extends qp_SpecialPage {
 				}
 				$row[] = $cell;
 			}
-			$row[] = array( 0=>qp_Setup::entities( $proposal_text ), "style"=>"text-align:left;" );
+			$row[] = array( 0 => qp_Setup::entities( $proposal_text ), "style" => "text-align:left;" );
 			$output .= qp_Renderer::displayRow( $row );
 		}
 		$output .= "</table>\n" . "</div>\n";
@@ -415,7 +415,7 @@ class PollResults extends qp_SpecialPage {
 	private function showVotes( $pid ) {
 		$output = "";
 		if ( $pid !== null ) {
-			$pollStore = new qp_PollStore( array( 'from'=>'pid', 'pid'=> $pid ) );
+			$pollStore = new qp_PollStore( array( 'from' => 'pid', 'pid' => $pid ) );
 			if ( $pollStore->pid !== null ) {
 				$pollStore->loadQuestions();
 				$pollStore->loadTotals();
@@ -424,8 +424,8 @@ class PollResults extends qp_SpecialPage {
 				# 'parentheses' is unavailable in 1.14.x
 				$poll_link = $this->qpLink( $poll_title, $poll_title->getPrefixedText() . wfMsg( 'word-separator' ) . wfMsg( 'qp_parentheses', $pollStore->mPollId ) );
 				$output .= wfMsg( 'qp_browse_to_poll', $poll_link ) . "<br />\n";
-				$output .= $this->qpLink( $this->getTitle(), wfMsg( 'qp_export_to_xls' ), array( "style"=>"font-weight:bold;" ), array( 'action'=>'stats_xls', 'id'=>$pid ) ) . "<br />\n";
-				$output .= $this->qpLink( $this->getTitle(), wfMsg( 'qp_voices_to_xls' ), array( "style"=>"font-weight:bold;" ), array( 'action'=>'voices_xls', 'id'=>$pid ) ) . "<br />\n";
+				$output .= $this->qpLink( $this->getTitle(), wfMsg( 'qp_export_to_xls' ), array( "style" => "font-weight:bold;" ), array( 'action' => 'stats_xls', 'id' => $pid ) ) . "<br />\n";
+				$output .= $this->qpLink( $this->getTitle(), wfMsg( 'qp_voices_to_xls' ), array( "style" => "font-weight:bold;" ), array( 'action' => 'voices_xls', 'id' => $pid ) ) . "<br />\n";
 				foreach ( $pollStore->Questions as $qkey => &$qdata ) {
 					$output .= "<br />\n<b>" . $qkey . ".</b> " . qp_Setup::entities( $qdata->CommonQuestion ) . "<br />\n";
 					$output .= $this->displayQuestionStats( $pid, $qdata );
@@ -439,7 +439,7 @@ class PollResults extends qp_SpecialPage {
 		if ( $pid === null ) {
 			return;
 		}
-		$pollStore = new qp_PollStore( array( 'from'=>'pid', 'pid'=> $pid ) );
+		$pollStore = new qp_PollStore( array( 'from' => 'pid', 'pid' => $pid ) );
 		if ( $pollStore->pid === null ) {
 			return;
 		}
@@ -456,12 +456,12 @@ class PollResults extends qp_SpecialPage {
 			$xls_worksheet->setInputEncoding( "utf-8" );
 			$xls_worksheet->setPaper( 9 );
 			$xls_rownum = 0;
-			$format_heading = &$xls_workbook->addformat( array( 'bold'=>1 ) );
-			$format_answer = &$xls_workbook->addformat( array( 'fgcolor'=>0x1A, 'border'=>1 ) );	$format_answer->setAlign('left');
-			$format_even = &$xls_workbook->addformat( array( 'fgcolor'=>0x2A, 'border'=>1 ) );
-			$format_even->setAlign('left');
-			$format_odd = &$xls_workbook->addformat( array( 'fgcolor'=>0x23, 'border'=>1 ) );
-			$format_odd->setAlign('left');
+			$format_heading = &$xls_workbook->addformat( array( 'bold' => 1 ) );
+			$format_answer = &$xls_workbook->addformat( array( 'fgcolor' => 0x1A, 'border' => 1 ) );	$format_answer->setAlign( 'left' );
+			$format_even = &$xls_workbook->addformat( array( 'fgcolor' => 0x2A, 'border' => 1 ) );
+			$format_even->setAlign( 'left' );
+			$format_odd = &$xls_workbook->addformat( array( 'fgcolor' => 0x23, 'border' => 1 ) );
+			$format_odd->setAlign( 'left' );
 			$first_question = true;
 			foreach ( $pollStore->Questions as $qkey => &$qdata ) {
 				if ( $first_question ) {
@@ -475,7 +475,7 @@ class PollResults extends qp_SpecialPage {
 				$xls_worksheet->write( $xls_rownum++, 1, qp_Excel::prepareExcelString( $qdata->CommonQuestion ), $format_heading );
 				if ( count( $qdata->CategorySpans ) > 0 ) {
 					$row = array();
-					foreach( $qdata->CategorySpans as &$span ) {
+					foreach ( $qdata->CategorySpans as &$span ) {
 						$row[] = qp_Excel::prepareExcelString( $span[ "name" ] );
 						for ( $i = 1; $i < $span[ "count" ]; $i++ ) {
 							$row[] = "";
@@ -484,7 +484,7 @@ class PollResults extends qp_SpecialPage {
 					$xls_worksheet->writerow( $xls_rownum++, 0, $row );
 				}
 				$row = array();
-				foreach( $qdata->Categories as &$categ ) {
+				foreach ( $qdata->Categories as &$categ ) {
 					$row[] = qp_Excel::prepareExcelString( $categ[ "name" ] );
 				}
 				$xls_worksheet->writerow( $xls_rownum++, 0, $row );
@@ -503,15 +503,15 @@ class PollResults extends qp_SpecialPage {
 					foreach ( $uvoices as $uid => &$pvoices ) {
 						# output square table of proposal / category answers for each uid in uvoices array
 						$voicesTable = array();
-						foreach( $qdata->ProposalText as $propkey => &$proposal_text ) {
+						foreach ( $qdata->ProposalText as $propkey => &$proposal_text ) {
 							$row = array_fill( 0, count( $qdata->Categories ), '' );
 							if ( isset( $pvoices[$propkey] ) ) {
 								foreach ( $pvoices[$propkey] as $catkey => $text_answer ) {
 									$row[$catkey] = qp_Excel::prepareExcelString( $text_answer );
 								}
 								if ( $spansUsed ) {
-									foreach( $row as $catkey=>&$cell ) {
-										$cell = array( 0=>$cell );
+									foreach ( $row as $catkey => &$cell ) {
+										$cell = array( 0 => $cell );
 										if ( $qdata->type == "multipleChoice" ) {
 											$cell[ "format" ] = ( ( $catkey & 1 ) === 0 ) ? $format_even : $format_odd;
 										} else {
@@ -536,11 +536,11 @@ class PollResults extends qp_SpecialPage {
 			$xls_workbook->close();
 			header( 'Content-Type: application/x-msexcel; name="' . $poll_id . '.xls"' );
 			header( 'Content-Disposition: inline; filename="' . $poll_id . '.xls"' );
-			$fxls=@fopen( $xls_fname, "rb" );
+			$fxls = @fopen( $xls_fname, "rb" );
 			@fpassthru( $fxls );
 			@unlink( $xls_fname );
 			exit();
-		} catch( Exception $e ) {
+		} catch ( Exception $e ) {
 			die( "Error while exporting poll statistics to Excel table\n" );
 		}
 	}
@@ -549,7 +549,7 @@ class PollResults extends qp_SpecialPage {
 		if ( $pid === null ) {
 			return;
 		}
-		$pollStore = new qp_PollStore( array( 'from'=>'pid', 'pid'=> $pid ) );
+		$pollStore = new qp_PollStore( array( 'from' => 'pid', 'pid' => $pid ) );
 		if ( $pollStore->pid === null ) {
 			return;
 		}
@@ -567,15 +567,15 @@ class PollResults extends qp_SpecialPage {
 			$xls_worksheet->setPaper( 9 );
 			$xls_rownum = 0;
 			$percent_num_format = '[Blue]0.0%;[Red]-0.0%;[Black]0%';
-			$format_heading = &$xls_workbook->addformat( array( 'bold'=>1 ) );
-			$format_percent = &$xls_workbook->addformat( array( 'fgcolor'=>0x1A, 'border'=>1 ) );
-			$format_percent->setAlign('left');
+			$format_heading = &$xls_workbook->addformat( array( 'bold' => 1 ) );
+			$format_percent = &$xls_workbook->addformat( array( 'fgcolor' => 0x1A, 'border' => 1 ) );
+			$format_percent->setAlign( 'left' );
 			$format_percent->setNumFormat( $percent_num_format );
-			$format_even = &$xls_workbook->addformat( array( 'fgcolor'=>0x2A, 'border'=>1 ) );
-			$format_even->setAlign('left');
+			$format_even = &$xls_workbook->addformat( array( 'fgcolor' => 0x2A, 'border' => 1 ) );
+			$format_even->setAlign( 'left' );
 			$format_even->setNumFormat( $percent_num_format );
-			$format_odd = &$xls_workbook->addformat( array( 'fgcolor'=>0x23, 'border'=>1 ) );
-			$format_odd->setAlign('left');
+			$format_odd = &$xls_workbook->addformat( array( 'fgcolor' => 0x23, 'border' => 1 ) );
+			$format_odd->setAlign( 'left' );
 			$format_odd->setNumFormat( $percent_num_format );
 			$first_question = true;
 			foreach ( $pollStore->Questions as $qkey => &$qdata ) {
@@ -590,7 +590,7 @@ class PollResults extends qp_SpecialPage {
 				$xls_worksheet->write( $xls_rownum++, 1, qp_Excel::prepareExcelString( $qdata->CommonQuestion ), $format_heading );
 				if ( count( $qdata->CategorySpans ) > 0 ) {
 					$row = array();
-					foreach( $qdata->CategorySpans as &$span ) {
+					foreach ( $qdata->CategorySpans as &$span ) {
 						$row[] = qp_Excel::prepareExcelString( $span[ "name" ] );
 						for ( $i = 1; $i < $span[ "count" ]; $i++ ) {
 							$row[] = "";
@@ -599,7 +599,7 @@ class PollResults extends qp_SpecialPage {
 					$xls_worksheet->writerow( $xls_rownum++, 0, $row );
 				}
 				$row = array();
-				foreach( $qdata->Categories as &$categ ) {
+				foreach ( $qdata->Categories as &$categ ) {
 					$row[] = qp_Excel::prepareExcelString( $categ[ "name" ] );
 				}
 				$xls_worksheet->writerow( $xls_rownum++, 0, $row );
@@ -610,11 +610,11 @@ class PollResults extends qp_SpecialPage {
 */
 				$percentsTable = array();
 				$spansUsed = count( $qdata->CategorySpans ) > 0 || $qdata->type == "multipleChoice";
-				foreach( $qdata->ProposalText as $propkey => &$proposal_text ) {
+				foreach ( $qdata->ProposalText as $propkey => &$proposal_text ) {
 					if ( isset( $qdata->Percents[ $propkey ] ) ) {
 						$row = $qdata->Percents[ $propkey ];
 						foreach ( $row as $catkey => &$cell ) {
-							$cell = array( 0=>$cell );
+							$cell = array( 0 => $cell );
 							if ( $spansUsed ) {
 								if ( $qdata->type == "multipleChoice" ) {
 									$cell[ "format" ] = ( ( $catkey & 1 ) === 0 ) ? $format_even : $format_odd;
@@ -639,11 +639,11 @@ class PollResults extends qp_SpecialPage {
 			$xls_workbook->close();
 			header( 'Content-Type: application/x-msexcel; name="' . $poll_id . '.xls"' );
 			header( 'Content-Disposition: inline; filename="' . $poll_id . '.xls"' );
-			$fxls=@fopen( $xls_fname, "rb" );
+			$fxls = @fopen( $xls_fname, "rb" );
 			@fpassthru( $fxls );
 			@unlink( $xls_fname );
 			exit();
-		} catch( Exception $e ) {
+		} catch ( Exception $e ) {
 			die( "Error while exporting poll statistics to Excel table\n" );
 		}
 	}
@@ -651,11 +651,11 @@ class PollResults extends qp_SpecialPage {
 	private function displayQuestionStats( $pid, &$qdata ) {
 		$current_title = $this->getTitle();
 		$output = "<div class=\"qpoll\">\n" . "<table class=\"pollresults\">\n";
-		$output .= qp_Renderer::displayRow( array_map( array( $this, 'categoryentities' ), $qdata->CategorySpans ), array( 'class'=>'spans' ), 'th', array( 'count'=>'colspan', 'name'=>0 ) );
-		$output .= qp_Renderer::displayRow( array_map( array( $this, 'categoryentities' ), $qdata->Categories ), '', 'th', array( 'name'=>0 ) );
+		$output .= qp_Renderer::displayRow( array_map( array( $this, 'categoryentities' ), $qdata->CategorySpans ), array( 'class' => 'spans' ), 'th', array( 'count' => 'colspan', 'name' => 0 ) );
+		$output .= qp_Renderer::displayRow( array_map( array( $this, 'categoryentities' ), $qdata->Categories ), '', 'th', array( 'name' => 0 ) );
 		# multiple choice polls doesn't use real spans, instead, every column is like "span"
 		$spansUsed = count( $qdata->CategorySpans ) > 0 || $qdata->type == "multipleChoice";
-		foreach( $qdata->ProposalText as $propkey => &$proposal_text ) {
+		foreach ( $qdata->ProposalText as $propkey => &$proposal_text ) {
 			if ( isset( $qdata->Votes[ $propkey ] ) ) {
 				if ( $qdata->Percents === null ) {
 					$row = $qdata->Votes[ $propkey ];
@@ -665,12 +665,12 @@ class PollResults extends qp_SpecialPage {
 						# Replace spaces with en spaces
 						$formatted_cell = str_replace( " ", "&#8194;", sprintf( '%3d%%', intval( round( 100 * $cell ) ) ) );
 						# only percents !=0 are displayed as link
-						if ( $cell == 0.0 && $qdata->question_id !==null ) {
-							$cell = array( 0=> $formatted_cell, "style"=>"color:gray" );
+						if ( $cell == 0.0 && $qdata->question_id !== null ) {
+							$cell = array( 0 => $formatted_cell, "style" => "color:gray" );
 						} else {
-							$cell = array( 0=>$this->qpLink( $current_title, $formatted_cell,
-								array( "title"=>wfMsgExt( 'qp_votes_count', array( 'parsemag' ), $qdata->Votes[ $propkey ][ $catkey ] ) ),
-								array( "action"=>"qpcusers", "id"=>$pid, "qid"=>$qdata->question_id, "pid"=>$propkey, "cid"=>$catkey ) ) );
+							$cell = array( 0 => $this->qpLink( $current_title, $formatted_cell,
+								array( "title" => wfMsgExt( 'qp_votes_count', array( 'parsemag' ), $qdata->Votes[ $propkey ][ $catkey ] ) ),
+								array( "action" => "qpcusers", "id" => $pid, "qid" => $qdata->question_id, "pid" => $propkey, "cid" => $catkey ) ) );
 						}
 						if ( $spansUsed ) {
 							if ( $qdata->type == "multipleChoice" ) {
@@ -687,7 +687,7 @@ class PollResults extends qp_SpecialPage {
 				# this proposal has no statistics (no votes)
 				$row = array_fill( 0, count( $qdata->Categories ), '' );
 			}
-			$row[] = array( 0=>qp_Setup::entities( $proposal_text ), "style"=>"text-align:left;" );
+			$row[] = array( 0 => qp_Setup::entities( $proposal_text ), "style" => "text-align:left;" );
 			$output .= qp_Renderer::displayRow( $row );
 		}
 		$output .= "</table>\n" . "</div>\n";
@@ -716,18 +716,18 @@ abstract class qp_QueryPage extends qp_SpecialPage {
 		parent::__construct( $this->queryPageName() );
 	}
 
-	function doQuery( $offset, $limit, $shownavigation=true ) {
+	function doQuery( $offset, $limit, $shownavigation = true ) {
 		global $wgOut, $wgContLang;
 
 		$res = $this->getIntervalResults( $offset, $limit );
 		$num = count( $res );
 
-		if($shownavigation) {
+		if ( $shownavigation ) {
 			$wgOut->addHTML( $this->getPageHeader() );
 
 			// if list is empty, display a warning
-			if( $num == 0 ) {
-				$wgOut->addHTML( '<p>' . wfMsgHTML('specialpage-empty') . '</p>' );
+			if ( $num == 0 ) {
+				$wgOut->addHTML( '<p>' . wfMsgHTML( 'specialpage-empty' ) . '</p>' );
 				return;
 			}
 
@@ -747,7 +747,7 @@ abstract class qp_QueryPage extends qp_SpecialPage {
 			if ( ! $this->listoutput )
 				$s[] = $this->openList( $offset );
 
-			foreach ($res as $r) {
+			foreach ( $res as $r ) {
 				$format = $this->formatResult( $r );
 				if ( $format ) {
 					$s[] = $this->listoutput ? $format : "<li>{$format}</li>\n";
@@ -759,7 +759,7 @@ abstract class qp_QueryPage extends qp_SpecialPage {
 			$str = $this->listoutput ? $wgContLang->listToText( $s ) : implode( '', $s );
 			$wgOut->addHTML( $str );
 		}
-		if($shownavigation) {
+		if ( $shownavigation ) {
 			$wgOut->addHTML( "<p>{$sl}</p>\n" );
 		}
 		return $num;
@@ -818,10 +818,10 @@ class qp_UsersList extends qp_QueryPage {
 		$this->cmd = $cmd;
 		if ( $cmd == 'users' ) {
 			$this->order_by = 'count(pid) DESC, name ASC ';
-			$this->different_order_by_link = $this->qpLink( $this->getTitle(), wfMsg( 'qp_order_by_username' ), array(), array( "action"=>"users_a" ) );
+			$this->different_order_by_link = $this->qpLink( $this->getTitle(), wfMsg( 'qp_order_by_username' ), array(), array( "action" => "users_a" ) );
 		} else {
 			$this->order_by = 'name ';
-			$this->different_order_by_link = $this->qpLink( $this->getTitle(), wfMsg( 'qp_order_by_polls_count' ), array(), array( "action"=>"users" ) );
+			$this->different_order_by_link = $this->qpLink( $this->getTitle(), wfMsg( 'qp_order_by_polls_count' ), array(), array( "action" => "users" ) );
 		}
 	}
 
@@ -834,11 +834,11 @@ class qp_UsersList extends qp_QueryPage {
 			array( 'qu.uid as uid', 'name as username', 'count(pid) as pidcount' ),
 			'qu.uid=qup.uid',
 			__METHOD__,
-			array( 'GROUP BY'=>'qup.uid',
-						'ORDER BY'=>$this->order_by,
-						'OFFSET'=>intval( $offset ),
-						'LIMIT'=>intval( $limit ) ) );
-		while( $row = $db->fetchObject( $res ) ) {
+			array( 'GROUP BY' => 'qup.uid',
+						'ORDER BY' => $this->order_by,
+						'OFFSET' => intval( $offset ),
+						'LIMIT' => intval( $limit ) ) );
+		while ( $row = $db->fetchObject( $res ) ) {
 			$result[] = $row;
 		}
 		return $result;
@@ -852,8 +852,8 @@ class qp_UsersList extends qp_QueryPage {
 			$userName = $result->username;
 			$userTitle = Title::makeTitleSafe( NS_USER, $userName );
 			$user_link = $this->qpLink( $userTitle, $userName );
-			$user_polls_link = $this->qpLink( $this->getTitle(), wfMsgExt( 'qp_user_polls_link', array( 'parsemag' ), $result->pidcount, $userName ) , array(), array( "uid"=>$uid, "action"=>"upolls" ) );
-			$user_missing_polls_link = $this->qpLink( $this->getTitle(), wfMsgExt( 'qp_user_missing_polls_link', 'parsemag', $userName ) , array(), array( "uid"=>$uid, "action"=>"nupolls" ) );
+			$user_polls_link = $this->qpLink( $this->getTitle(), wfMsgExt( 'qp_user_polls_link', array( 'parsemag' ), $result->pidcount, $userName ) , array(), array( "uid" => $uid, "action" => "upolls" ) );
+			$user_missing_polls_link = $this->qpLink( $this->getTitle(), wfMsgExt( 'qp_user_missing_polls_link', 'parsemag', $userName ) , array(), array( "uid" => $uid, "action" => "nupolls" ) );
 			$link = $user_link . ': ' . $user_polls_link . ', ' . $user_missing_polls_link;
 		}
 		return $link;
@@ -921,7 +921,7 @@ class qp_UserPollsList extends qp_QueryPage {
 		$query .= "ORDER BY page_namespace, page_title, poll_id ";
 		$query .= "LIMIT " . intval( $offset ) . ", " . intval( $limit );
 		$res = $db->query( $query, __METHOD__ );
-		while( $row = $db->fetchObject( $res ) ) {
+		while ( $row = $db->fetchObject( $res ) ) {
 			$result[] = $row;
 		}
 		return $result;
@@ -933,7 +933,7 @@ class qp_UserPollsList extends qp_QueryPage {
 		$pagename = qp_Setup::specialchars( $wgContLang->convert( $poll_title->getPrefixedText() ) );
 		$pollname = qp_Setup::specialchars( $result->poll_id );
 		$goto_link = $this->qpLink( $poll_title, wfMsg( 'qp_source_link' ) );
-		$voice_link = $this->qpLink( $this->getTitle(), wfMsg( 'qp_voice_link' . ($this->inverse ? "_inv" : "") ), array(), array( "id"=>intval( $result->pid), "uid"=>$this->uid, "action"=>"uvote" ) );
+		$voice_link = $this->qpLink( $this->getTitle(), wfMsg( 'qp_voice_link' . ( $this->inverse ? "_inv" : "" ) ), array(), array( "id" => intval( $result->pid ), "uid" => $this->uid, "action" => "uvote" ) );
 		$link = wfMsg( 'qp_results_line_qupl', $pagename, $pollname, $voice_link );
 		return $link;
 	}
@@ -959,10 +959,10 @@ class qp_PollsList extends qp_QueryPage {
 			array( 'page_namespace as ns', 'page_title as title', 'pid', 'poll_id', 'order_id' ),
 			'page_id=article_id',
 			__METHOD__,
-			array( 'ORDER BY'=>'page_namespace, page_title, order_id',
-						'OFFSET'=>intval( $offset ),
-						'LIMIT'=>intval( $limit ) ) );
-		while( $row = $db->fetchObject( $res ) ) {
+			array( 'ORDER BY' => 'page_namespace, page_title, order_id',
+						'OFFSET' => intval( $offset ),
+						'LIMIT' => intval( $limit ) ) );
+		while ( $row = $db->fetchObject( $res ) ) {
 			$result[] = $row;
 		}
 		return $result;
@@ -974,9 +974,9 @@ class qp_PollsList extends qp_QueryPage {
 		$pagename = qp_Setup::specialchars( $wgContLang->convert( $poll_title->getPrefixedText() ) );
 		$pollname = qp_Setup::specialchars( $result->poll_id );
 		$goto_link = $this->qpLink( $poll_title, wfMsg( 'qp_source_link' ) );
-		$voices_link = $this->qpLink( $this->getTitle(), wfMsg( 'qp_stats_link' ), array(), array( "id"=>intval( $result->pid), "action"=>"stats" ) );
-		$users_link = $this->qpLink( $this->getTitle(), wfMsg( 'qp_users_link' ), array(), array( "id"=>intval( $result->pid), "action"=>"pulist" ) );
-		$not_participated_link = $this->qpLink( $this->getTitle(), wfMsg( 'qp_not_participated_link' ), array(), array( "id"=>intval( $result->pid), "action"=>"npulist" ) );
+		$voices_link = $this->qpLink( $this->getTitle(), wfMsg( 'qp_stats_link' ), array(), array( "id" => intval( $result->pid ), "action" => "stats" ) );
+		$users_link = $this->qpLink( $this->getTitle(), wfMsg( 'qp_users_link' ), array(), array( "id" => intval( $result->pid ), "action" => "pulist" ) );
+		$not_participated_link = $this->qpLink( $this->getTitle(), wfMsg( 'qp_not_participated_link' ), array(), array( "id" => intval( $result->pid ), "action" => "npulist" ) );
 		$link = wfMsg( 'qp_results_line_qpl', $pagename, $pollname, $goto_link, $voices_link, $users_link, $not_participated_link );
 		return $link;
 	}
@@ -1015,10 +1015,10 @@ class qp_PollUsersList extends qp_QueryPage {
 			$pagename = qp_Setup::specialchars( $wgContLang->convert( $poll_title->getPrefixedText() ) );
 			$pollname = qp_Setup::specialchars( $row->poll_id );
 			$goto_link = $this->qpLink( $poll_title, wfMsg( 'qp_source_link' ) );
-			$spec = wfMsg( 'qp_header_line_qpul', wfMsg( $this->inverse ? 'qp_not_participated_link' : 'qp_users_link'), $pagename, $pollname );
+			$spec = wfMsg( 'qp_header_line_qpul', wfMsg( $this->inverse ? 'qp_not_participated_link' : 'qp_users_link' ), $pagename, $pollname );
 			$head[] = PollResults::getPollsLink();
 			$head[] = PollResults::getUsersLink();
-			$head[] = array( '__tag'=>'div', 'class'=>'head', 0=>$spec );
+			$head[] = array( '__tag' => 'div', 'class' => 'head', 0 => $spec );
 			$head[] = ' (' . $goto_link . ')';
 			$link = qp_Renderer::renderHTMLobject( $head );
 		}
@@ -1033,11 +1033,11 @@ class qp_PollUsersList extends qp_QueryPage {
 		$query = "SELECT uid, name as username ";
 		$query .= "FROM $qp_users ";
 		$query .= "WHERE uid " . ( $this->inverse ? "NOT " : "" ) . "IN ";
-		$query .= "(SELECT uid FROM $qp_users_polls WHERE pid=" . $db->addQuotes($this->pid) . ") ";
+		$query .= "(SELECT uid FROM $qp_users_polls WHERE pid=" . $db->addQuotes( $this->pid ) . ") ";
 		$query .= "ORDER BY uid ";
 		$query .= "LIMIT " . intval( $offset ) . ", " . intval( $limit );
 		$res = $db->query( $query, __METHOD__ );
-		while( $row = $db->fetchObject( $res ) ) {
+		while ( $row = $db->fetchObject( $res ) ) {
 			$result[] = $row;
 		}
 		return $result;
@@ -1051,7 +1051,7 @@ class qp_PollUsersList extends qp_QueryPage {
 			$userName = $result->username;
 			$userTitle = Title::makeTitleSafe( NS_USER, $userName );
 			$user_link = $this->qpLink( $userTitle, $userName );
-			$voice_link = $this->qpLink( $this->getTitle(), wfMsg( 'qp_voice_link' . ($this->inverse ? "_inv" : "") ), array(), array( "id"=>intval( $this->pid), "uid"=>$uid, "action"=>"uvote" ) );
+			$voice_link = $this->qpLink( $this->getTitle(), wfMsg( 'qp_voice_link' . ( $this->inverse ? "_inv" : "" ) ), array(), array( "id" => intval( $this->pid ), "uid" => $uid, "action" => "uvote" ) );
 			$link = wfMsg( 'qp_results_line_qpul', $user_link, $voice_link );
 		}
 		return $link;
@@ -1101,7 +1101,7 @@ class qp_UserCellList extends qp_QueryPage {
 		$link = "";
 		$db = & wfGetDB( DB_SLAVE );
 		if ( $this->pid !== null ) {
-			$pollStore = new qp_PollStore( array( 'from'=>'pid', 'pid'=> $this->pid ) );
+			$pollStore = new qp_PollStore( array( 'from' => 'pid', 'pid' => $this->pid ) );
 			if ( $pollStore->pid !== null ) {
 				$pollStore->loadQuestions();
 				$poll_title = Title::makeTitle( intval( $this->ns ), $this->title, qp_AbstractPoll::getPollTitleFragment( $this->poll_id, '' ) );
@@ -1111,7 +1111,7 @@ class qp_UserCellList extends qp_QueryPage {
 				$spec = wfMsg( 'qp_header_line_qpul', wfMsg( 'qp_users_link' ), $pagename, $pollname );
 				$head[] = PollResults::getPollsLink();
 				$head[] = PollResults::getUsersLink();
-				$head[] = array( '__tag'=>'div', 'class'=>'head', 0=>$spec );
+				$head[] = array( '__tag' => 'div', 'class' => 'head', 0 => $spec );
 				# 'parentheses' are unavailable in MW 1.14.x
 				$head[] = wfMsg( 'qp_parentheses',  $goto_link ) . '<br />';
 				$ques_found = false;
@@ -1135,7 +1135,7 @@ class qp_UserCellList extends qp_QueryPage {
 							qp_Setup::entities( $ques->CommonQuestion ),
 							qp_Setup::entities( $proptext ),
 							qp_Setup::entities( $cat_name ) ) . '<br />';
-						$head[] = array( '__tag'=>'div', 'class'=>'head', 'style'=>'padding-left:2em;', 0=>$qpa );
+						$head[] = array( '__tag' => 'div', 'class' => 'head', 'style' => 'padding-left:2em;', 0 => $qpa );
 						$link = qp_Renderer::renderHTMLobject( $head );
 					}
 				}
@@ -1155,7 +1155,7 @@ class qp_UserCellList extends qp_QueryPage {
 		$query .= "WHERE pid=" . $db->addQuotes( $this->pid ) . " AND question_id=" . $db->addQuotes( $this->question_id ) . " AND proposal_id=" . $db->addQuotes( $this->proposal_id ) . " AND cat_id=" . $db->addQuotes( $this->cat_id ) . " ";
 		$query .= "LIMIT " . intval( $offset ) . ", " . intval( $limit );
 		$res = $db->query( $query, __METHOD__ );
-		while( $row = $db->fetchObject( $res ) ) {
+		while ( $row = $db->fetchObject( $res ) ) {
 			$result[] = $row;
 		}
 		return $result;
@@ -1169,8 +1169,8 @@ class qp_UserCellList extends qp_QueryPage {
 			$userName = $result->username;
 			$userTitle = Title::makeTitleSafe( NS_USER, $userName );
 			$user_link = $this->qpLink( $userTitle, $userName );
-			$voice_link = $this->qpLink( $this->getTitle(), wfMsg( 'qp_voice_link' . ($this->inverse ? "_inv" : "" ) ), array(), array( "id"=>intval( $this->pid), "uid"=>$uid, "action"=>"uvote" ) );
-			$text_answer = ($result->text_answer == '') ? '' : '<i>' . qp_Setup::entities( $result->text_answer ) . '</i>';
+			$voice_link = $this->qpLink( $this->getTitle(), wfMsg( 'qp_voice_link' . ( $this->inverse ? "_inv" : "" ) ), array(), array( "id" => intval( $this->pid ), "uid" => $uid, "action" => "uvote" ) );
+			$text_answer = ( $result->text_answer == '' ) ? '' : '<i>' . qp_Setup::entities( $result->text_answer ) . '</i>';
 			$link = wfMsg( 'qp_results_line_qucl', $user_link, $voice_link, $text_answer );
 		}
 		return $link;

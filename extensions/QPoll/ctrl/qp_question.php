@@ -26,7 +26,7 @@ class qp_Question extends qp_AbstractQuestion {
 			$this->Percents = $qdata->Percents;
 		} else {
 			# no percents - no stats
-			$this->view->showResults = Array( 'type'=>0 );
+			$this->view->showResults = Array( 'type' => 0 );
 		}
 	}
 
@@ -77,14 +77,14 @@ class qp_Question extends qp_AbstractQuestion {
 	function store( qp_PollStore &$pollStore ) {
 		if ( $pollStore->pid !== null ) {
 			$pollStore->Questions[ $this->mQuestionId ] = new qp_QuestionData( array(
-				'from'=>'postdata',
-				'type'=>$this->mType,
-				'common_question'=>$this->mCommonQuestion,
-				'categories'=>$this->mCategories,
-				'category_spans'=>$this->mCategorySpans,
-				'proposal_text'=>$this->mProposalText,
-				'proposal_category_id'=>$this->mProposalCategoryId,
-				'proposal_category_text'=>$this->mProposalCategoryText ) );
+				'from' => 'postdata',
+				'type' => $this->mType,
+				'common_question' => $this->mCommonQuestion,
+				'categories' => $this->mCategories,
+				'category_spans' => $this->mCategorySpans,
+				'proposal_text' => $this->mProposalText,
+				'proposal_category_id' => $this->mProposalCategoryId,
+				'proposal_category_text' => $this->mProposalCategoryText ) );
 		}
 	}
 
@@ -138,10 +138,10 @@ class qp_Question extends qp_AbstractQuestion {
 		$this->raws = preg_split( '`\n`su', $input, -1, PREG_SPLIT_NO_EMPTY );
 		$categorySpans = false;
 		if ( isset( $this->raws[1] ) ) {
-			$categorySpans = preg_match( $this->mCategoryPattern, $this->raws[1]."\n", $matches );
+			$categorySpans = preg_match( $this->mCategoryPattern, $this->raws[1] . "\n", $matches );
 		}
 		if ( !$categorySpans && isset( $this->raws[0] ) ) {
-			preg_match( $this->mCategoryPattern, $this->raws[0]."\n", $matches );
+			preg_match( $this->mCategoryPattern, $this->raws[0] . "\n", $matches );
 		}
 		# parse the header - spans and categories
 		$catString = isset( $matches[1] ) ? $matches[1] : '';
@@ -178,7 +178,7 @@ class qp_Question extends qp_AbstractQuestion {
 	function questionParseBody( $inputType ) {
 		# Parameters used in some special cases.
 		$proposalId = -1;
-		foreach( $this->raws as $raw ) {
+		foreach ( $this->raws as $raw ) {
 			if ( !preg_match( $this->mProposalPattern, $raw, $matches ) ) {
 				continue;
 			}
@@ -191,7 +191,7 @@ class qp_Question extends qp_AbstractQuestion {
 			$this->mProposalText[ $proposalId ] = trim( $text );
 			foreach ( $this->mCategories as $catId => $catDesc ) {
 				$row[ $catId ] = Array();
-				$inp = Array( '__tag'=>'input' );
+				$inp = Array( '__tag' => 'input' );
 				$this->view->spanState->className = 'sign';
 				# Determine the input's name and value.
 				switch( $this->mType ) {
@@ -237,7 +237,7 @@ class qp_Question extends qp_AbstractQuestion {
 					if ( count( $this->mProposalText ) > count( $this->mCategories ) ) {
 						# if there was no previous errors, hightlight the whole row
 						if ( $this->getState() == '' ) {
-							foreach( $row as &$cell ) {
+							foreach ( $row as &$cell ) {
 								QP_Renderer::addClass( $cell, 'error' );
 							}
 						}
@@ -256,9 +256,9 @@ class qp_Question extends qp_AbstractQuestion {
 				}
 			}
 			# If the proposal text is empty, the question has a syntax error.
-			if( trim( $text ) == '' ) {
+			if ( trim( $text ) == '' ) {
 				$text = $this->view->bodyErrorMessage( wfMsg( 'qp_error_proposal_text_empty' ), 'error' );
-				foreach( $row as &$cell ) {
+				foreach ( $row as &$cell ) {
 					QP_Renderer::addClass( $cell, 'error' );
 				}
 			}
@@ -266,7 +266,7 @@ class qp_Question extends qp_AbstractQuestion {
 			if ( $this->poll->mBeingCorrected && !array_key_exists( $proposalId, $this->mProposalCategoryId ) ) {
 				# if there was no previous errors, hightlight the whole row
 				if ( $this->getState() == '' ) {
-					foreach( $row as &$cell ) {
+					foreach ( $row as &$cell ) {
 						QP_Renderer::addClass( $cell, 'error' );
 					}
 				}
@@ -286,7 +286,7 @@ class qp_Question extends qp_AbstractQuestion {
 		}
 		$this->mProposalPattern .= '(.*)`u';
 		$proposalId = -1;
-		foreach( $this->raws as $raw ) {
+		foreach ( $this->raws as $raw ) {
 			# empty proposal text and row
 			$text = null;
 			$row = Array();
@@ -311,7 +311,7 @@ class qp_Question extends qp_AbstractQuestion {
 			foreach ( $this->mCategories as $catId => $catDesc ) {
 				$typeId  = $matches[ $catId ];
 				$row[ $catId ] = Array();
-				$inp = Array( '__tag'=>'input' );
+				$inp = Array( '__tag' => 'input' );
 				# Determine the input's name and value.
 				switch ( $typeId ) {
 					case '<>':
@@ -389,7 +389,7 @@ class qp_Question extends qp_AbstractQuestion {
 					throw new Exception( 'qp_error' );
 				}
 				# If the proposal text is empty, the question has a syntax error.
-				if( trim( $text ) == '' ) {
+				if ( trim( $text ) == '' ) {
 					$text = $this->view->bodyErrorMessage( wfMsg( 'qp_error_proposal_text_empty' ), 'error' );
 					throw new Exception( 'qp_error' );
 				}
@@ -402,9 +402,9 @@ class qp_Question extends qp_AbstractQuestion {
 						throw new Exception( 'qp_error' );
 					}
 				}
-			} catch( Exception $e ) {
+			} catch ( Exception $e ) {
 				if ( $e->getMessage() == 'qp_error' ) {
-					foreach( $row as &$cell ) {
+					foreach ( $row as &$cell ) {
 						QP_Renderer::addClass( $cell, 'error' );
 					}
 				} else {
@@ -417,7 +417,7 @@ class qp_Question extends qp_AbstractQuestion {
 
 	/**
 	 * build internal & visual representation of question categories
-	 * 
+	 *
 	 * @param  $input			the raw source of categories
 	 */
 	function parseCategories( $input ) {
@@ -427,8 +427,8 @@ class qp_Question extends qp_AbstractQuestion {
 		$matching_braces = Array();
 		$curr_elem = '';
 		$categories = Array();
-		foreach( $cat_split as $part ) {
-			switch ($part) {
+		foreach ( $cat_split as $part ) {
+			switch ( $part ) {
 				case '|' :
 					if ( count( $matching_braces ) == 0 ) {
 						# delimeters are working only when braces are completely closed
@@ -469,7 +469,7 @@ class qp_Question extends qp_AbstractQuestion {
 		}
 		foreach ( $categories as $catkey => $category ) {
 			# If a category name is empty, the question has a syntax error.
-			if( $category == '' ) {
+			if ( $category == '' ) {
 				$category = $this->view->bodyErrorMessage( wfMsg( 'qp_error_category_name_empty' ), 'error' );
 			}
 			$this->mCategories[ $catkey ]["name"] = $category;
@@ -483,7 +483,7 @@ class qp_Question extends qp_AbstractQuestion {
 	/**
 	 * build internal & visual representation of question category spans
 	 * ( also known as metacategories or "category groups" )
-	 * 
+	 *
 	 * @param  $input			the raw source of category spans
 	 */
 	# warning: parseCategorySpans() should be called after parseCategories()
@@ -502,7 +502,7 @@ class qp_Question extends qp_AbstractQuestion {
 				array_shift( $span_split );
 				if ( isset( $span_split[0] ) && in_array( $span_split[0], array( '!', '|' ) ) ) {
 					$delim = $span_split[0];
-					foreach( $span_split as $part ) {
+					foreach ( $span_split as $part ) {
 						if ( $part == $delim ) {
 							if ( count( $matching_braces ) == 0 ) {
 								# delimeters are working only when braces are completely closed
@@ -546,7 +546,7 @@ class qp_Question extends qp_AbstractQuestion {
 			}
 			# analyze previousely build "raw" spans array
 			# Less than one span is a syntax error.
-			if( !array_key_exists(0, $spans) ) {
+			if ( !array_key_exists( 0, $spans ) ) {
 				return $this->view->bodyErrorMessage( wfMsg( "qp_error_too_few_spans" ), "error" );
 			}
 			# fill undefined spans with the last span value
@@ -577,22 +577,22 @@ class qp_Question extends qp_AbstractQuestion {
 			# populate mCategorySpans and row
 			if ( $this->view->proposalsFirst ) {
 				// add empty <th> at the begin of row to "compensate" proposal text
-				$row[] = array( '__tag'=>'td', 0=>"", 'style'=>'border:none;', '__end'=>"\n" );
+				$row[] = array( '__tag' => 'td', 0 => "", 'style' => 'border:none;', '__end' => "\n" );
 			}
 			$colspanBase = ( $lastDefinedSpanKey == 0 ) ? 1 : 0;
 			$colspan = 1;
 			$categorySpanId = 0;
 			foreach ( $spans[0] as $spanKey => $spanType ) {
 				$spanCategory = trim( $spans[1][$spanKey] );
-				if ( $spanCategory=="" ) {
+				if ( $spanCategory == "" ) {
 					$colspan++;
 				} else {
-					$row[] = array( "count"=>$colspan + $colspanBase, 0=>$this->view->rtp( $spanCategory ) );
+					$row[] = array( "count" => $colspan + $colspanBase, 0 => $this->view->rtp( $spanCategory ) );
 					if ( $spanType == "|" ) { // "!" is a comment header, not a real category span
 						$this->mCategorySpans[ $categorySpanId ]['name'] = $spanCategory;
 						$this->mCategorySpans[ $categorySpanId ]['count'] = $colspan;
 						for ( $i = $spanKey;
-							$i >=0 && array_key_exists( $i, $this->mCategories ) && !array_key_exists( 'spanId', $this->mCategories[ $i ] );
+							$i >= 0 && array_key_exists( $i, $this->mCategories ) && !array_key_exists( 'spanId', $this->mCategories[ $i ] );
 							$i-- ) {
 							$this->mCategories[$i]['spanId'] = $categorySpanId;
 						}
@@ -603,14 +603,14 @@ class qp_Question extends qp_AbstractQuestion {
 			}
 			if ( !$this->view->proposalsFirst ) {
 				// add empty <th> at the end of row to "compensate" proposal text
-				$row[] = array( '__tag'=>'td', 0=>"", 'style'=>'border:none;', '__end'=>"\n" );
+				$row[] = array( '__tag' => 'td', 0 => "", 'style' => 'border:none;', '__end' => "\n" );
 			}
 		}
 		return $row;
 	}
 
 	function isUniqueProposalCategoryId( $proposalId, $catId ) {
-		foreach( $this->mProposalCategoryId as $proposalCategoryId ) {
+		foreach ( $this->mProposalCategoryId as $proposalCategoryId ) {
 			if ( in_array( $catId, $proposalCategoryId ) ) {
 				return false;
 			}

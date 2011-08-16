@@ -8,7 +8,7 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
- * 
+ *
  * QPoll is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -21,13 +21,13 @@
  * ***** END LICENSE BLOCK *****
  *
  * QPoll is a poll tool for MediaWiki.
- * 
+ *
  * To activate this extension :
  * * Create a new directory named QPoll into the directory "extensions" of MediaWiki.
  * * Place the files from the extension archive there.
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/QPoll/qp_user.php";
- * 
+ *
  * @version 0.8.0a
  * @link http://www.mediawiki.org/wiki/Extension:QPoll
  * @author QuestPC <questpc@rambler.ru>
@@ -94,7 +94,7 @@ function qp_debug( /* $args */ ) {
 	if ( count( $args ) > 2 ) {
 		$debug = $args[2];
 	}
-	if ( $debug !== true) {
+	if ( $debug !== true ) {
 		return;
 	}
 	if ( count( $args ) > 1 ) {
@@ -169,19 +169,19 @@ class qp_Setup {
 
 	static function coreRequirements() {
 		$required_classes_and_methods = array(
-			array( 'Article'=>'doPurge' ),
-			array( 'Linker'=>'link' ),
-			array( 'OutputPage'=>'isPrintable' ),
-			array( 'Parser'=>'getTitle' ),
-			array( 'Parser'=>'setHook' ),
-			array( 'Parser'=>'recursiveTagParse' ),
-			array( 'ParserCache'=>'getKey' ),
-			array( 'ParserCache'=>'singleton' ),
-			array( 'Title'=>'getArticleID' ),
-			array( 'Title'=>'getPrefixedText' ),
-			array( 'Title'=>'makeTitle' ),
-			array( 'Title'=>'makeTitleSafe' ),
-			array( 'Title'=>'newFromID' )
+			array( 'Article' => 'doPurge' ),
+			array( 'Linker' => 'link' ),
+			array( 'OutputPage' => 'isPrintable' ),
+			array( 'Parser' => 'getTitle' ),
+			array( 'Parser' => 'setHook' ),
+			array( 'Parser' => 'recursiveTagParse' ),
+			array( 'ParserCache' => 'getKey' ),
+			array( 'ParserCache' => 'singleton' ),
+			array( 'Title' => 'getArticleID' ),
+			array( 'Title' => 'getPrefixedText' ),
+			array( 'Title' => 'makeTitle' ),
+			array( 'Title' => 'makeTitleSafe' ),
+			array( 'Title' => 'newFromID' )
 		);
 		foreach ( $required_classes_and_methods as &$check ) {
 			list( $object, $method ) = each( $check );
@@ -225,10 +225,10 @@ class qp_Setup {
 
 		# core check and local / remote path
 		self::coreRequirements();
-		self::$ExtDir = str_replace( "\\", "/", dirname(__FILE__) );
+		self::$ExtDir = str_replace( "\\", "/", dirname( __FILE__ ) );
 		$dirs = explode( '/', self::$ExtDir );
 		$top_dir = array_pop( $dirs );
-		self::$ScriptPath = $wgScriptPath . '/extensions' . ( ( $top_dir == 'extensions' ) ? '' : '/' . $top_dir ); 
+		self::$ScriptPath = $wgScriptPath . '/extensions' . ( ( $top_dir == 'extensions' ) ? '' : '/' . $top_dir );
 
 		# language files
 		# extension messages
@@ -304,7 +304,7 @@ class qp_Setup {
 				$wgExtraNamespaces[$ns_idx] = $canonical_name;
 			}
 		}
-		
+
 		foreach ( self::$interpNamespaces as $ns_idx => $canonical_name ) {
 			$wgNamespaceProtection[$ns_idx] = array( 'editinterpretation' );
 		}
@@ -331,7 +331,7 @@ class qp_Setup {
 		global $wgUser, $wgSquidServers;
 		global $wgUsePrivateIPs;
 		if ( self::$anon_forwarded_for === true && $wgUser->isAnon() ) {
-			/* collect the originating IPs 
+			/* collect the originating IPs
 				borrowed from ProxyTools::wfGetIP
 				bypass trusted proxies list check */
 			# Client connecting to this webserver
@@ -352,7 +352,7 @@ class qp_Setup {
 			}
 			$username = "";
 			foreach ( $ipchain as $i => $curIP ) {
-				if( $wgUsePrivateIPs || IP::isPublic( $curIP ) ) {
+				if ( $wgUsePrivateIPs || IP::isPublic( $curIP ) ) {
 					$username .= IP::canonicalize( $curIP ) . '/';
 				}
 			}
@@ -382,7 +382,7 @@ class qp_Setup {
 
 	static function ParserFunctionsWords( $lang ) {
 		$words = array();
-		$words[ 'en' ] = array( 'qpuserchoice'=>array( 0, 'qpuserchoice' ) );
+		$words[ 'en' ] = array( 'qpuserchoice' => array( 0, 'qpuserchoice' ) );
 		# English is used as a fallback, and the English synonyms are
 		# used if a translation has not been provided for a given word
 		return ( $lang == 'en' || !array_key_exists( $lang, $words ) )
@@ -391,7 +391,7 @@ class qp_Setup {
 	}
 
 	static function onLanguageGetMagic( &$magicWords, $langCode ) {
-		foreach( self::ParserFunctionsWords( $langCode ) as $word => $trans )
+		foreach ( self::ParserFunctionsWords( $langCode ) as $word => $trans )
 			$magicWords [$word ] = $trans;
 		return true;
 	}
@@ -414,7 +414,7 @@ class qp_Setup {
 		self::$article = $article;
 		# borrowed from Title::getUserPermissionsErrors() MW v1.16
 		if ( !StubObject::isRealObject( $user ) ) {
-			//Since StubObject is always used on globals, we can unstub $wgUser here and set $user = $wgUser
+			// Since StubObject is always used on globals, we can unstub $wgUser here and set $user = $wgUser
 			global $wgUser;
 			$wgUser->_unstub( '', 5 );
 			$user = $wgUser;
@@ -436,10 +436,10 @@ class qp_Setup {
 		} elseif ( self::$global_showresults > 2 ) {
 			self::$global_showresults = 2;
 		}
-		if ( isset( $_COOKIE[$wgCookiePrefix.'QPoll'] ) ) {
+		if ( isset( $_COOKIE[$wgCookiePrefix . 'QPoll'] ) ) {
 			$request->response()->setCookie( 'QPoll', '', time() - 86400 ); // clear cookie
 			self::clearCache();
-		} elseif ( $request->getVal('pollId') !== null ) {
+		} elseif ( $request->getVal( 'pollId' ) !== null ) {
 			self::clearCache();
 		}
 		return true;
@@ -483,7 +483,7 @@ class qp_Setup {
 
 	/**
 	 * Call the poll parser on an input text.
-	 * 
+	 *
 	 * @param  $input				Text between <qpoll> and </qpoll> tags, in QPoll syntax.
 	 * @param  $argv				An array containing any arguments passed to the extension
 	 * @param  &$parser			The wikitext parser.
@@ -512,7 +512,7 @@ class qp_Setup {
 
 	/**
 	 * Show interpetation script source with line numbering (for debugging convenience)
-	 * 
+	 *
 	 * @param  $input				Text between <qpinterpret> and </qpinterper> tags, subset of PHP syntax.
 	 * @param  $argv				An array containing any arguments passed to the extension
 	 * @param  &$parser			The wikitext parser.
@@ -534,12 +534,12 @@ class qp_Setup {
 			$line_numbers .= "{$i}\n";
 		}
 		$slc = $i;
-		$out = array( '__tag'=>'div', 'class'=>'qpoll', 0 => array() );
+		$out = array( '__tag' => 'div', 'class' => 'qpoll', 0 => array() );
 		if ( is_string( $lintResult = qp_Interpret::lint( $lang, $input ) ) ) {
-			$out[0][] = array( '__tag'=>'div', 'class'=>'interp_error', qp_Setup::specialchars( $lintResult ) );
+			$out[0][] = array( '__tag' => 'div', 'class' => 'interp_error', qp_Setup::specialchars( $lintResult ) );
 		}
-		$out[0][] = array( '__tag'=>'div', 'class'=>'line_numbers', $line_numbers );
-		$out[0][] = array( '__tag'=>'div', 'class'=>'script_view', qp_Setup::specialchars( $input ) . "\n" );
+		$out[0][] = array( '__tag' => 'div', 'class' => 'line_numbers', $line_numbers );
+		$out[0][] = array( '__tag' => 'div', 'class' => 'script_view', qp_Setup::specialchars( $input ) . "\n" );
 		$markercount = count( self::$markerList );
 		$marker = "!qpoll-script-view{$markercount}-qpoll!";
 		self::$markerList[$markercount] = qp_Renderer::renderHTMLobject( $out );
@@ -590,7 +590,7 @@ class qp_Renderer {
 			if ( array_key_exists( '__tag', $tag ) ) {
 				# list inside of tag
 				$tag_open .= "<" . $tag[ '__tag' ];
-				foreach( $tag as $attr_key=>&$attr_val ) {
+				foreach ( $tag as $attr_key => &$attr_val ) {
 					if ( is_int( $attr_key ) ) {
 						if ( $tag_val === null )
 							$tag_val = "";
@@ -621,7 +621,7 @@ class qp_Renderer {
 			} else {
 				# tagless list
 				$tag_val = "";
-				foreach( $tag as $attr_key=>&$attr_val ) {
+				foreach ( $tag as $attr_key => &$attr_val ) {
 					if ( is_int( $attr_key ) ) {
 						if ( is_array( $attr_val ) ) {
 							# recursive tags
@@ -632,8 +632,8 @@ class qp_Renderer {
 						}
 					} else {
 						ob_start();
-						var_dump($tag);
-						$tagdump=ob_get_contents();
+						var_dump( $tag );
+						$tagdump = ob_get_contents();
 						ob_end_clean();
 						$tag_val = "invalid argument: tagless list cannot have tag attribute values in key=$attr_key, $tagdump";
 					}
@@ -667,13 +667,13 @@ class qp_Renderer {
 		if ( count( $row ) > 0 ) {
 			foreach ( $row as &$cell ) {
 				if ( !is_array( $cell ) ) {
-					$cell = array( 0=>$cell );
+					$cell = array( 0 => $cell );
 				}
 				$cell[ '__tag' ] = $celltag;
 				$cell[ '__end' ] = "\n";
 				if ( is_array( $attribute_maps ) ) {
 					# converts ("count"=>3) to ("colspan"=>3) in table headers - don't use frequently
-					foreach ( $attribute_maps as $key=>$val ) {
+					foreach ( $attribute_maps as $key => $val ) {
 						if ( array_key_exists( $key, $cell ) ) {
 							$cell[ $val ] = $cell[ $key ];
 							unset( $cell[ $key ] );
@@ -681,7 +681,7 @@ class qp_Renderer {
 					}
 				}
 			}
-			$result = array( '__tag'=>'tr', 0=>$row, '__end'=>"\n" );
+			$result = array( '__tag' => 'tr', 0 => $row, '__end' => "\n" );
 			if ( is_array( $rowattrs ) ) {
 				$result = array_merge( $rowattrs, $result );
 			} elseif ( $rowattrs !== "" )  {
@@ -702,13 +702,13 @@ class qp_Renderer {
 			$row = 0;
 			foreach ( $column as &$cell ) {
 				if ( !is_array( $cell ) ) {
-					$cell = array( 0=>$cell );
+					$cell = array( 0 => $cell );
 				}
 				$cell[ '__tag' ] = $celltag;
 				$cell[ '__end' ] = "\n";
 				if ( is_array( $attribute_maps ) ) {
 					# converts ("count"=>3) to ("rowspan"=>3) in table headers - don't use frequently
-					foreach ( $attribute_maps as $key=>$val ) {
+					foreach ( $attribute_maps as $key => $val ) {
 						if ( array_key_exists( $key, $cell ) ) {
 							$cell[ $val ] = $cell[ $key ];
 							unset( $cell[ $key ] );
@@ -721,7 +721,7 @@ class qp_Renderer {
 					$cell[ 0 ] = __METHOD__ . ':invalid rowattrs supplied';
 				}
 				if ( !array_key_exists( $row, $table ) ) {
-					$table[ $row ] = array( '__tag'=>'tr', '__end'=>"\n" );
+					$table[ $row ] = array( '__tag' => 'tr', '__end' => "\n" );
 				}
 				$table[ $row ][] = $cell;
 				if ( array_key_exists( 'rowspan', $cell ) ) {
@@ -730,7 +730,7 @@ class qp_Renderer {
 					$row++;
 				}
 			}
-			$result = array( '__tag'=>'tr', 0=>$column, '__end'=>"\n" );
+			$result = array( '__tag' => 'tr', 0 => $column, '__end' => "\n" );
 		}
 	}
 
@@ -744,11 +744,11 @@ class qp_Renderer {
 	// if you want to use the resulting row with renderHTMLobject(), don't forget to apply attrs=array('__tag'=>'td')
 	static function applyAttrsToRow( &$row, $attrs ) {
 		if ( is_array( $attrs ) && count( $attrs > 0 ) ) {
-			foreach( $row as &$cell ) {
+			foreach ( $row as &$cell ) {
 				if ( !is_array( $cell ) ) {
 					$cell = array_merge( $attrs, array( $cell ) );
-				} else { 
-					foreach( $attrs as $attr_key=>$attr_val ) {
+				} else {
+					foreach ( $attrs as $attr_key => $attr_val ) {
 						if ( !array_key_exists( $attr_key, $cell ) ) {
 							$cell[ $attr_key ] = $attr_val;
 						}
@@ -826,7 +826,7 @@ class qp_FunctionsHook {
 	function qpuserchoiceValidResult( $qdata ) {
 		$result = '';
 		if ( array_key_exists( $this->proposal_id, $qdata->ProposalCategoryId ) ) {
-			foreach( $qdata->ProposalCategoryId[ $this->proposal_id ] as $id_key => $cat_id ) {
+			foreach ( $qdata->ProposalCategoryId[ $this->proposal_id ] as $id_key => $cat_id ) {
 				if ( $result != '' ) {
 					$result .= '~';
 				}

@@ -8,7 +8,7 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
- * 
+ *
  * QPoll is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -21,13 +21,13 @@
  * ***** END LICENSE BLOCK *****
  *
  * QPoll is a poll tool for MediaWiki.
- * 
+ *
  * To activate this extension :
  * * Create a new directory named QPoll into the directory "extensions" of MediaWiki.
  * * Place the files from the extension archive there.
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/QPoll/qp_user.php";
- * 
+ *
  * @version 0.8.0a
  * @link http://www.mediawiki.org/wiki/Extension:QPoll
  * @author QuestPC <questpc@rambler.ru>
@@ -90,7 +90,7 @@ class qp_QuestionView extends qp_AbstractView {
 	function initProposalView() {
 		$this->rawClass = 'proposal';
 		# stdClass instance used to draw borders around table cells via css
-		$this->spanState = (object) array( 'id'=>0, 'prevId'=>-1, 'wasChecked'=>true, 'isDrawing'=>false, 'cellsLeft'=>0, 'className'=>'sign' );
+		$this->spanState = (object) array( 'id' => 0, 'prevId' => -1, 'wasChecked' => true, 'isDrawing' => false, 'cellsLeft' => 0, 'className' => 'sign' );
 	}
 
 	static function newFromBaseView( $baseView ) {
@@ -103,20 +103,20 @@ class qp_QuestionView extends qp_AbstractView {
 
 	function setLayout( $layout, $textwidth ) {
 		if ( count( $layout ) > 0 ) {
-			$this->transposed = strpos( $layout[1], 'transpose' ) !== false; 
-			$this->proposalsFirst = strpos( $layout[1], 'proposals' ) !== false; 
+			$this->transposed = strpos( $layout[1], 'transpose' ) !== false;
+			$this->proposalsFirst = strpos( $layout[1], 'proposals' ) !== false;
 		}
 		# setup question layout parameters
 		if ( $this->transposed ) {
 			$this->spanType = 'rowspan';
 			$this->categoriesStyle = 'text-align:left; vertical-align:middle; ';
-			$this->signClass = array( 'first'=>'signt', 'middle'=>'signm', 'last'=>'signb' );
+			$this->signClass = array( 'first' => 'signt', 'middle' => 'signm', 'last' => 'signb' );
 			$this->proposalTextStyle = 'text-align:center; padding-left: 5px; padding-right: 5px; ';
 			$this->proposalTextStyle .= ( $this->proposalsFirst ) ? ' vertical-align: bottom;' : 'vertical-align:top;';
 		} else {
 			$this->spanType = 'colspan';
 			$this->categoriesStyle = '';
-			$this->signClass = array( 'first'=>'signl', 'middle'=>'signc', 'last'=>'signr' );
+			$this->signClass = array( 'first' => 'signl', 'middle' => 'signc', 'last' => 'signr' );
 			$this->proposalTextStyle = 'vertical-align:middle; ';
 			$this->proposalTextStyle .= ( $this->proposalsFirst ) ? 'padding-right: 10px;' : 'padding-left: 10px;';
 		}
@@ -134,7 +134,7 @@ class qp_QuestionView extends qp_AbstractView {
 			# use the value from the question
 			$this->showResults = qp_AbstractPoll::parseShowResults( $showresults[1] );
 			# apply undefined attributes from the poll's showresults definition
-			foreach( $this->pollShowResults as $attr => $val ) {
+			foreach ( $this->pollShowResults as $attr => $val ) {
 				if ( $attr != 'type' && !isset( $this->showResults[$attr] ) ) {
 					$this->showResults[$attr] = $val;
 				}
@@ -148,26 +148,26 @@ class qp_QuestionView extends qp_AbstractView {
 		# if needed to setup templates depending on question type
 		# right now, cell templates depend only on input type and showresults type
 		if ( $this->showResults['type'] != 0 ) {
-			$this->{'cellTemplate' . $this->showResults['type']}();
+			$this-> { 'cellTemplate' . $this->showResults['type'] } ();
 		}
 	}
 
 	/**
 	 * Builds tagarray of categories
 	 * @param     $categories  "raw" categories
-	 */	
+	 */
 	function buildCategoriesRow( $categories ) {
 		$row = array();
 		if ( $this->proposalsFirst ) {
 			// add empty <th> at the begin of row to "compensate" proposal text
-			$row[] = array( '__tag'=>'td', 0=>"", 'style'=>'border:none;', '__end'=>"\n" );
+			$row[] = array( '__tag' => 'td', 0 => "", 'style' => 'border:none;', '__end' => "\n" );
 		}
 		foreach ( $categories as $cat ) {
 			$row[] = $this->rtp( $cat['name'] );
 		}
 		if ( !$this->proposalsFirst ) {
 			// add empty <th> at the end of row to "compensate" proposal text
-			$row[] = array( '__tag'=>'td', 0=>"", 'style'=>'border:none;', '__end'=>"\n" );
+			$row[] = array( '__tag' => 'td', 0 => "", 'style' => 'border:none;', '__end' => "\n" );
 		}
 		return $row;
 	}
@@ -180,14 +180,14 @@ class qp_QuestionView extends qp_AbstractView {
 		$row = array();
 		if ( $this->proposalsFirst ) {
 			// add empty <th> at the begin of row to "compensate" proposal text
-			$row[] = array( '__tag'=>'td', 0=>"", 'style'=>'border:none;', '__end'=>"\n" );
+			$row[] = array( '__tag' => 'td', 0 => "", 'style' => 'border:none;', '__end' => "\n" );
 		}
-		foreach( $categorySpans as &$span ) {
-			$row[] = array( "count"=>$span['count'], 0=>$this->rtp( $span['name'] ) );
+		foreach ( $categorySpans as &$span ) {
+			$row[] = array( "count" => $span['count'], 0 => $this->rtp( $span['name'] ) );
 		}
 		if ( !$this->proposalsFirst ) {
 			// add empty <th> at the end of row to "compensate" proposal text
-			$row[] = array( '__tag'=>'td', 0=>"", 'style'=>'border:none;', '__end'=>"\n" );
+			$row[] = array( '__tag' => 'td', 0 => "", 'style' => 'border:none;', '__end' => "\n" );
 		}
 		return $row;
 	}
@@ -201,7 +201,7 @@ class qp_QuestionView extends qp_AbstractView {
 	}
 
 	function addHeaderError() {
-		$this->hview[] = array( '__tag'=>'div', 'class'=>'proposalerror', $this->headerErrorMessage );
+		$this->hview[] = array( '__tag' => 'div', 'class' => 'proposalerror', $this->headerErrorMessage );
 	}
 
 	/**
@@ -224,12 +224,12 @@ class qp_QuestionView extends qp_AbstractView {
 	function addSpanRow( $row ) {
 		# apply categoriesStyle
 		if ( $this->categoriesStyle != '' ) {
-			qp_Renderer::applyAttrsToRow( $row, array( 'style'=>$this->categoriesStyle ) );
+			qp_Renderer::applyAttrsToRow( $row, array( 'style' => $this->categoriesStyle ) );
 		}
 		$this->hview[] = (object) array(
 			'row' => $row,
 			'className' => 'spans',
-			'attribute_maps' => array( 'count'=>$this->spanType, 'name'=>0 )
+			'attribute_maps' => array( 'count' => $this->spanType, 'name' => 0 )
 		);
 	}
 
@@ -239,12 +239,12 @@ class qp_QuestionView extends qp_AbstractView {
 	function addCategoryRow( $row ) {
 		# apply categoriesStyle
 		if ( $this->categoriesStyle != '' ) {
-			qp_Renderer::applyAttrsToRow( $row, array( 'style'=>$this->categoriesStyle ) );
+			qp_Renderer::applyAttrsToRow( $row, array( 'style' => $this->categoriesStyle ) );
 		}
 		$this->hview[] = (object) array(
 			'row' => $row,
 			'className' => 'categories',
-			'attribute_maps' => array( 'name'=>0 )
+			'attribute_maps' => array( 'name' => 0 )
 		);
 	}
 
@@ -325,7 +325,7 @@ class qp_QuestionView extends qp_AbstractView {
 		# which should never have $this->ctrl->poll->mBeingCorrected === true
 		if ( $spanState->cellsLeft <= 1 ) {
 			# end of new span
-			if ( $this->ctrl->poll->mBeingCorrected && 
+			if ( $this->ctrl->poll->mBeingCorrected &&
 					!$spanState->wasChecked &&
 					$this->ctrl->mRequest->getVal( $name ) != $value ) {
 				# the span (a part of proposal) was submitted but unanswered
@@ -382,7 +382,7 @@ class qp_QuestionView extends qp_AbstractView {
 		foreach ( $this->pview as $propview ) {
 			$row = &$propview->row;
 			$rowattrs = array( 'class' => $propview->className );
-			$text = array( '__tag'=>'td', '__end'=>"\n", 'class'=>'proposaltext', 'style'=>$this->proposalTextStyle, 0=>$this->rtp( $propview->text ) );
+			$text = array( '__tag' => 'td', '__end' => "\n", 'class' => 'proposaltext', 'style' => $this->proposalTextStyle, 0 => $this->rtp( $propview->text ) );
 			# insert proposal text to the beginning / end according to proposalsFirst property
 			if ( $this->proposalsFirst ) {
 				# first element is proposaltext
@@ -405,7 +405,7 @@ class qp_QuestionView extends qp_AbstractView {
 	 * @modifies parent controller
 	 */
 	function renderQuestion() {
-		$output_table = array( '__tag'=>'table', '__end'=>"\n", 'class'=>'object' );
+		$output_table = array( '__tag' => 'table', '__end' => "\n", 'class' => 'object' );
 		# Determine the side border color the question.
 		if ( $this->ctrl->getState() != '' ) {
 			if ( isset( $output_table['class'] ) ) {
@@ -416,12 +416,12 @@ class qp_QuestionView extends qp_AbstractView {
 			# set poll controller state according to question controller state
 			$this->ctrl->applyStateToParent();
 		}
-		$output_table[] = array( '__tag'=>'tbody', '__end'=>"\n", 0=>$this->renderTable() );
-		$tags = array( '__tag'=>'div', '__end'=>"\n", 'class'=>'question',
-			0=>array( '__tag'=>'div', '__end'=>"\n", 'class'=>'header',
-				0=>array( '__tag'=>'span', 'class'=>'questionId', 0=>$this->ctrl->usedId )
+		$output_table[] = array( '__tag' => 'tbody', '__end' => "\n", 0 => $this->renderTable() );
+		$tags = array( '__tag' => 'div', '__end' => "\n", 'class' => 'question',
+			0 => array( '__tag' => 'div', '__end' => "\n", 'class' => 'header',
+				0 => array( '__tag' => 'span', 'class' => 'questionId', 0 => $this->ctrl->usedId )
 			),
-			1=>array( '__tag'=>'div', 0=>$this->rtp( $this->ctrl->mCommonQuestion ) )
+			1 => array( '__tag' => 'div', 0 => $this->rtp( $this->ctrl->mCommonQuestion ) )
 		);
 		$tags[] = &$output_table;
 		return qp_Renderer::renderHTMLobject( $tags );
@@ -435,20 +435,20 @@ class qp_QuestionView extends qp_AbstractView {
 	}
 
 	function addShowResults( $inp, $proposalId, $catId ) {
-		return $this->{'addShowResults' . $this->showResults['type']}( $inp, $proposalId, $catId );
+		return $this-> { 'addShowResults' . $this->showResults['type'] } ( $inp, $proposalId, $catId );
 	}
 
 	# cell templates for the selected showresults
 	var $cellTemplate = Array();
-	var $cellTemplateParam = Array( 'inp'=>'', 'percents'=>'', 'bar1style'=>'', 'bar2style'=>'' );
+	var $cellTemplateParam = Array( 'inp' => '', 'percents' => '', 'bar1style' => '', 'bar2style' => '' );
 
 	# setup a template for showresults=1
 	# showresults=1 cellTemplate has only one variant
 	function cellTemplate1() {
 		$this->cellTemplate =
-			array( 
-				0=>array( '__tag'=>'div', 0=>&$this->cellTemplateParam['inp'] ),
-				1=>array( '__tag'=>'div', 'class'=>'stats', 0=>&$this->cellTemplateParam['percents'] )
+			array(
+				0 => array( '__tag' => 'div', 0 => &$this->cellTemplateParam['inp'] ),
+				1 => array( '__tag' => 'div', 'class' => 'stats', 0 => &$this->cellTemplateParam['percents'] )
 			);
 		if ( isset( $this->showResults['color'] ) ) {
 			$this->cellTemplate[1]['style'] = 'color:' . $this->showResults['color'] . ';';
@@ -485,34 +485,34 @@ class qp_QuestionView extends qp_AbstractView {
 			$percentstyle .= 'background:' . $this->showResults['textbackground'] . ';';
 		}
 		# html arrays used in templates below
-		$bar = array( '__tag'=>'div', 'class'=>'stats1',
-			0=>array( '__tag'=>'div', 'class'=>'bar0', 0=>&$this->cellTemplateParam['inp'] ),
-			1=>array( '__tag'=>'div', 'class'=>'bar1', 'style'=>&$this->cellTemplateParam['bar1style'], 0=>'&#160;' ),
-			2=>array( '__tag'=>'div', 'class'=>'bar2', 'style'=>&$this->cellTemplateParam['bar2style'], 0=>'&#160;' ),
-			3=>array( '__tag'=>'div', 'class'=>'bar0', 'style'=>$percentstyle, 0=>&$this->cellTemplateParam['percents'] )
+		$bar = array( '__tag' => 'div', 'class' => 'stats1',
+			0 => array( '__tag' => 'div', 'class' => 'bar0', 0 => &$this->cellTemplateParam['inp'] ),
+			1 => array( '__tag' => 'div', 'class' => 'bar1', 'style' => &$this->cellTemplateParam['bar1style'], 0 => '&#160;' ),
+			2 => array( '__tag' => 'div', 'class' => 'bar2', 'style' => &$this->cellTemplateParam['bar2style'], 0 => '&#160;' ),
+			3 => array( '__tag' => 'div', 'class' => 'bar0', 'style' => $percentstyle, 0 => &$this->cellTemplateParam['percents'] )
 		);
-		$bar2 = array( '__tag'=>'div', 'class'=>'stats1',
-			0=>array( '__tag'=>'div', 'class'=>'bar0', 0=>'&#160;' ),
-			1=>&$bar[1],
-			2=>&$bar[2],
-			3=>&$bar[3]
+		$bar2 = array( '__tag' => 'div', 'class' => 'stats1',
+			0 => array( '__tag' => 'div', 'class' => 'bar0', 0 => '&#160;' ),
+			1 => &$bar[1],
+			2 => &$bar[2],
+			3 => &$bar[3]
 		);
 		# has two available templates ('bar','textinput')
 		$this->cellTemplate = array(
-			'bar'=>$bar,
-			'textinput'=>array( '__tag'=>'table', 'class'=>'stats',
-				0=>array( '__tag'=>'tr',
-					0=>array( '__tag'=>'td', 0=>&$this->cellTemplateParam['inp'] ),
+			'bar' => $bar,
+			'textinput' => array( '__tag' => 'table', 'class' => 'stats',
+				0 => array( '__tag' => 'tr',
+					0 => array( '__tag' => 'td', 0 => &$this->cellTemplateParam['inp'] ),
 				),
-				1=>array( '__tag'=>'tr',
-					0=>array( '__tag'=>'td',
-						0=>$bar2
+				1 => array( '__tag' => 'tr',
+					0 => array( '__tag' => 'td',
+						0 => $bar2
 					)
 				)
 			),
 			# the following entries are not real templates, but pre-calculated values of css attributes taken from showresults parameter
-			'bar1showres'=>'',
-			'bar2showres'=>''
+			'bar1showres' => '',
+			'bar2showres' => ''
 		);
 		# dynamical styles, width: in percents will be added during rendering in addShowResults
 		if ( isset( $this->showResults['color'] ) ) {
@@ -532,7 +532,7 @@ class qp_QuestionView extends qp_AbstractView {
 			# there is a stat in cell
 			$this->cellTemplateParam['percents'] = $percents . '%';
 			$this->cellTemplateParam['bar1style'] = 'width:' . $percents . 'px;' . $this->cellTemplate[ 'bar1showres' ];
-			$this->cellTemplateParam['bar2style'] = 'width:' . (100 - $percents) . 'px;' . $this->cellTemplate[ 'bar2showres' ];
+			$this->cellTemplateParam['bar2style'] = 'width:' . ( 100 - $percents ) . 'px;' . $this->cellTemplate[ 'bar2showres' ];
 			if ( $inp['type'] == 'text' ) {
 				return qp_Renderer::renderHTMLobject( $this->cellTemplate['textinput'] );
 			} else {

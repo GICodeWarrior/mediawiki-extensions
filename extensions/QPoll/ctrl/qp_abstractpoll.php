@@ -8,7 +8,7 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
- * 
+ *
  * QPoll is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -21,13 +21,13 @@
  * ***** END LICENSE BLOCK *****
  *
  * QPoll is a poll tool for MediaWiki.
- * 
+ *
  * To activate this extension :
  * * Create a new directory named QPoll into the directory "extensions" of MediaWiki.
  * * Place the files from the extension archive there.
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/QPoll/qp_user.php";
- * 
+ *
  * @version 0.8.0a
  * @link http://www.mediawiki.org/wiki/Extension:QPoll
  * @author QuestPC <questpc@rambler.ru>
@@ -73,9 +73,9 @@ class qp_AbstractPoll {
 	// qp_pollStore instance that will be used to transfer poll data from/to DB
 	var $pollStore = null;
 
-	/** 
+	/**
 	 * Constructor
-	 * 
+	 *
 	 * @public
 	 */
 	function __construct( $argv, qp_AbstractView $view ) {
@@ -106,21 +106,21 @@ class qp_AbstractPoll {
 		# every poll on the page should have unique poll id, to minimize the risk of collisions
 		# it is required to be set manually via id="value" parameter
 		# ( used only in "declaration" mode )
-		$this->mPollId = array_key_exists('id', $argv) ? trim( $argv['id'] ) : null;
+		$this->mPollId = array_key_exists( 'id', $argv ) ? trim( $argv['id'] ) : null;
 	}
 
 	/**
 	 * Convert the input text to an HTML output.
-	 * 
+	 *
 	 * @param  $input				Text between <qpoll> and </qpoll> tags, in QPoll syntax.
 	 */
 	function parsePoll( $input ) {
-		if ( ($result = $this->getPollStore() ) !== true ) {
+		if ( ( $result = $this->getPollStore() ) !== true ) {
 			# error message box (invalid poll attributes)
 			return $result;
 		}
 		if ( $this->parseInput( $input ) === true ) {
-			# no output generation - due to active redirect or access denied 
+			# no output generation - due to active redirect or access denied
 			return '';
 		} else {
 			# increase the order_id counter for the future successfully declared polls
@@ -162,7 +162,7 @@ class qp_AbstractPoll {
 
 	function isValidPollId( $pollId ) {
 		// more non-allowed chars ?
-		return !preg_match('`#`u', $pollId );
+		return !preg_match( '`#`u', $pollId );
 	}
 
 	function isUniquePollId( $pollId ) {
@@ -190,7 +190,7 @@ class qp_AbstractPoll {
 			} else {
 				return false;
 			}
-		} 
+		}
 		if ( $pollIdPart == '' ) {
 			return false;
 		}
@@ -202,7 +202,7 @@ class qp_AbstractPoll {
 	}
 
 	// parses source showresults xml parameter value and returns the corresponding showResults array
-	// input: $str contains entries separated by ';' 
+	// input: $str contains entries separated by ';'
 	//   entry 1 is a number of showresults type (always presented)
 	//   entries 2..n are optional css-style list of attributes and their values
 	// returns showResults parsed array
@@ -217,7 +217,7 @@ class qp_AbstractPoll {
 				$showResults['type'] = 0;
 			}
 			if ( $showResults['type'] != 0 && count( $attrs ) > 0 ) {
-				foreach( $attrs as &$attr ) {
+				foreach ( $attrs as &$attr ) {
 					preg_match( '`([A-Za-z]+):([#\w]+)`u', $attr, $matches );
 					if ( count( $matches ) == 3 ) {
 						$showResults[ $matches[1] ] = $matches[2];

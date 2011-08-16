@@ -8,7 +8,7 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
- * 
+ *
  * QPoll is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -21,13 +21,13 @@
  * ***** END LICENSE BLOCK *****
  *
  * QPoll is a poll tool for MediaWiki.
- * 
+ *
  * To activate this extension :
  * * Create a new directory named QPoll into the directory "extensions" of MediaWiki.
  * * Place the files from the extension archive there.
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/QPoll/qp_user.php";
- * 
+ *
  * @version 0.8.0a
  * @link http://www.mediawiki.org/wiki/Extension:QPoll
  * @author QuestPC <questpc@rambler.ru>
@@ -57,15 +57,15 @@ class qp_Poll extends qp_AbstractPoll {
 	function __construct( $argv, qp_PollView $view ) {
 		parent::__construct( $argv, $view );
 		# dependance attr
-		if ( array_key_exists('dependance', $argv) ) {
+		if ( array_key_exists( 'dependance', $argv ) ) {
 			$this->dependsOn = trim( $argv['dependance'] );
 		}
 		# interpretation attr
-		if ( array_key_exists('interpretation', $argv) ) {
+		if ( array_key_exists( 'interpretation', $argv ) ) {
 			$this->interpretation = trim( $argv['interpretation'] );
 		}
 		# randomize attr
-		if ( array_key_exists('randomize', $argv) ) {
+		if ( array_key_exists( 'randomize', $argv ) ) {
 			if ( $argv['randomize'] === 'randomize' ) {
 				$this->randomQuestionCount = 1;
 			} else {
@@ -77,7 +77,7 @@ class qp_Poll extends qp_AbstractPoll {
 		}
 		# max_attempts attr
 		$this->maxAttempts = qp_Setup::$max_submit_attempts;
-		if ( array_key_exists('max_attempts', $argv) ) {
+		if ( array_key_exists( 'max_attempts', $argv ) ) {
 			$this->maxAttempts = intval( trim( $argv['max_attempts'] ) );
 			# do not allow to specify more submit attempts than is set by global level in qp_Setup
 			if ( qp_Setup::$max_submit_attempts > 0 &&
@@ -94,7 +94,7 @@ class qp_Poll extends qp_AbstractPoll {
 		# order_id is used to sort out polls on the Special:PollResults statistics page
 		$this->mOrderId = self::$sOrderId;
 		# Determine if this poll is being corrected or not, according to the pollId
-		$this->mBeingCorrected = ( $this->mRequest->getVal('pollId') == $this->mPollId );
+		$this->mBeingCorrected = ( $this->mRequest->getVal( 'pollId' ) == $this->mPollId );
 	}
 
 	# prepare qp_PollStore object
@@ -144,7 +144,7 @@ class qp_Poll extends qp_AbstractPoll {
 			$newPollStore['from'] = 'poll_post';
 			$this->pollStore = new qp_PollStore( $newPollStore );
 			$this->pollStore->loadQuestions();
-			$this->pollStore->setLastUser( $this->username, false ); 
+			$this->pollStore->setLastUser( $this->username, false );
 			$this->pollStore->loadUserAlreadyVoted();
 		} else {
 			$newPollStore['from'] = 'poll_get';
@@ -223,7 +223,7 @@ class qp_Poll extends qp_AbstractPoll {
 		}
 		if ( $this->pollStore->voteDone ) {
 			if ( qp_Setup::$cache_control ) {
-				$this->mResponse->setcookie( 'QPoll', 'clearCache', time()+20 );
+				$this->mResponse->setcookie( 'QPoll', 'clearCache', time() + 20 );
 			}
 			$this->mResponse->header( 'HTTP/1.0 302 Found' );
 			$this->mResponse->header( 'Location: ' . $wgTitle->getFullURL() . $this->getPollTitleFragment() );
@@ -313,13 +313,13 @@ class qp_Poll extends qp_AbstractPoll {
 		$unparsedQuestions = preg_split( $splitPattern, $input, -1, PREG_SPLIT_NO_EMPTY );
 		$questionPattern = '`(.*?[^|\}])\}[ \t]*(\n(.*)|$)`su';
 		# first pass: parse the headers
-		foreach( $unparsedQuestions as $unparsedQuestion ) {
+		foreach ( $unparsedQuestions as $unparsedQuestion ) {
 			# If this "unparsedQuestion" is not a full question,
 			# we put the text into a buffer to add it at the beginning of the next question.
-			if( !empty( $buffer ) ) {
+			if ( !empty( $buffer ) ) {
 				$unparsedQuestion = "$buffer\n\n{" . $unparsedQuestion;
 			}
-			if( preg_match( $questionPattern, $unparsedQuestion, $matches ) ) {
+			if ( preg_match( $questionPattern, $unparsedQuestion, $matches ) ) {
 				$buffer = "";
 				$header = isset( $matches[1] ) ? $matches[1] : '';
 				$body = isset( $matches[3] ) ? $matches[3] : null;
@@ -397,12 +397,12 @@ class qp_Poll extends qp_AbstractPoll {
 		# to the users who hasn't voted
 		if ( qp_Setup::$global_showresults <= 1 && !$question->alreadyVoted ) {
 			# suppress statistical results when the current user hasn't voted the question
-			$question->view->showResults = array( 'type'=>0 );
+			$question->view->showResults = array( 'type' => 0 );
 		}
-		# parse the question body 
+		# parse the question body
 		# will populate $question->view which can be modified accodring to quiz results
 		# warning! parameters are passed only by value, not the reference
-		$question->{$question->mType . 'ParseBody'}();
+		$question-> { $question->mType . 'ParseBody' } ();
 		if ( $this->mBeingCorrected ) {
 			if ( $question->getState() == '' ) {
 				# question is OK, store it into pollStore
