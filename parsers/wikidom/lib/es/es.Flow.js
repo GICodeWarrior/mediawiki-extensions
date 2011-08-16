@@ -51,13 +51,12 @@ es.Flow = function( $container, content ) {
 }
 
 es.Flow.prototype.getLineIndex = function( offset ) {
-	var i;
-	for ( i = 0; i < this.lines.length; i++ ) {
+	for ( var i = 0; i < this.lines.length; i++ ) {
 		if ( this.lines[i].range.containsOffset( offset ) ) {
-			break;
+			return i;
 		}
 	}
-	return i;
+	return this.lines.length - 1;
 };
 
 /**
