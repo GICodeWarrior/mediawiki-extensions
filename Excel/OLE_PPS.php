@@ -43,31 +43,31 @@ class OLE_PPS extends PEAR
     * @var string
     */
     var $Name;
- 
+
     /**
     * The PPS type. Dir, Root or File
     * @var integer
     */
     var $Type;
- 
+
     /**
     * The index of the previous PPS
     * @var integer
     */
     var $PrevPps;
- 
+
     /**
     * The index of the next PPS
     * @var integer
     */
     var $NextPps;
- 
+
     /**
     * The index of it's first child if this is a Dir or Root PPS
     * @var integer
     */
     var $DirPps;
- 
+
     /**
     * A timestamp
     * @var integer
@@ -125,7 +125,7 @@ class OLE_PPS extends PEAR
     * @param string  $data  The (usually binary) source data of the PPS
     * @param array   $children Array containing children PPS for this PPS
     */
-    function __construct($No, $name, $type, $prev, $next, $dir, $time_1st, $time_2nd, $data, $children)
+    function __construct( $No, $name, $type, $prev, $next, $dir, $time_1st, $time_2nd, $data, $children )
     {
         $this->No      = $No;
         $this->Name    = $name;
@@ -137,8 +137,8 @@ class OLE_PPS extends PEAR
         $this->Time2nd = $time_2nd;
         $this->_data      = $data;
         $this->children   = $children;
-        if ($data != '') {
-            $this->Size = strlen($data);
+        if ( $data != '' ) {
+            $this->Size = strlen( $data );
         } else {
             $this->Size = 0;
         }
@@ -152,15 +152,15 @@ class OLE_PPS extends PEAR
     */
     function _DataLen()
     {
-        if (!isset($this->_data)) {
+        if ( !isset( $this->_data ) ) {
             return 0;
         }
-        if (isset($this->_PPS_FILE)) {
-            fseek($this->_PPS_FILE, 0);
-            $stats = fstat($this->_PPS_FILE);
+        if ( isset( $this->_PPS_FILE ) ) {
+            fseek( $this->_PPS_FILE, 0 );
+            $stats = fstat( $this->_PPS_FILE );
             return $stats[7];
         } else {
-            return strlen($this->_data);
+            return strlen( $this->_data );
         }
     }
 
@@ -173,26 +173,26 @@ class OLE_PPS extends PEAR
     function _getPpsWk()
     {
         $ret = $this->Name;
-        for ($i = 0; $i < (64 - strlen($this->Name)); $i++) {
+        for ( $i = 0; $i < ( 64 - strlen( $this->Name ) ); $i++ ) {
             $ret .= "\x00";
         }
-        $ret .= pack("v", strlen($this->Name) + 2)  // 66
-              . pack("c", $this->Type)              // 67
-              . pack("c", 0x00) //UK                // 68
-              . pack("V", $this->PrevPps) //Prev    // 72
-              . pack("V", $this->NextPps) //Next    // 76
-              . pack("V", $this->DirPps)  //Dir     // 80
+        $ret .= pack( "v", strlen( $this->Name ) + 2 )  // 66
+              . pack( "c", $this->Type )              // 67
+              . pack( "c", 0x00 ) // UK                // 68
+              . pack( "V", $this->PrevPps ) // Prev    // 72
+              . pack( "V", $this->NextPps ) // Next    // 76
+              . pack( "V", $this->DirPps )  // Dir     // 80
               . "\x00\x09\x02\x00"                  // 84
               . "\x00\x00\x00\x00"                  // 88
               . "\xc0\x00\x00\x00"                  // 92
               . "\x00\x00\x00\x46"                  // 96 // Seems to be ok only for Root
               . "\x00\x00\x00\x00"                  // 100
-              . OLE::LocalDate2OLE($this->Time1st)       // 108
-              . OLE::LocalDate2OLE($this->Time2nd)       // 116
-              . pack("V", isset($this->_StartBlock)? 
-                        $this->_StartBlock:0)        // 120
-              . pack("V", $this->Size)               // 124
-              . pack("V", 0);                        // 128
+              . OLE::LocalDate2OLE( $this->Time1st )       // 108
+              . OLE::LocalDate2OLE( $this->Time2nd )       // 116
+              . pack( "V", isset( $this->_StartBlock ) ?
+                        $this->_StartBlock:0 )        // 120
+              . pack( "V", $this->Size )               // 124
+              . pack( "V", 0 );                        // 128
         return $ret;
     }
 
@@ -202,17 +202,17 @@ class OLE_PPS extends PEAR
     *
     * @access private
     * @param array &$pps_array Reference to the array of PPS's for the whole OLE
-    *                          container 
+    *                          container
     * @return integer          The index for this PPS
     */
-    function _savePpsSetPnt(&$pps_array) 
+    function _savePpsSetPnt( &$pps_array )
     {
-        $pps_array[count($pps_array)] = &$this;
-        $this->No = count($pps_array) - 1;
+        $pps_array[count( $pps_array )] = &$this;
+        $this->No = count( $pps_array ) - 1;
         $this->PrevPps = 0xFFFFFFFF;
         $this->NextPps = 0xFFFFFFFF;
-        if (count($this->children) > 0) {
-            $this->DirPps = $this->children[0]->_savePpsSetPnt($pps_array);
+        if ( count( $this->children ) > 0 ) {
+            $this->DirPps = $this->children[0]->_savePpsSetPnt( $pps_array );
         } else {
             $this->DirPps = 0xFFFFFFFF;
         }

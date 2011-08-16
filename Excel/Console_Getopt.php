@@ -70,9 +70,9 @@ class Console_Getopt
      * the non-option arguments
      * @access public
      */
-    function getopt2($args, $short_options, $long_options = null, $skip_unknown = false)
+    function getopt2( $args, $short_options, $long_options = null, $skip_unknown = false )
     {
-        return Console_Getopt::doGetopt(2, $args, $short_options, $long_options, $skip_unknown);
+        return Console_Getopt::doGetopt( 2, $args, $short_options, $long_options, $skip_unknown );
     }
 
     /**
@@ -87,9 +87,9 @@ class Console_Getopt
      * @return array two-element array containing the list of parsed options and
      * the non-option arguments
      */
-    function getopt($args, $short_options, $long_options = null, $skip_unknown = false)
+    function getopt( $args, $short_options, $long_options = null, $skip_unknown = false )
     {
-        return Console_Getopt::doGetopt(1, $args, $short_options, $long_options, $skip_unknown);
+        return Console_Getopt::doGetopt( 1, $args, $short_options, $long_options, $skip_unknown );
     }
 
     /**
@@ -103,74 +103,74 @@ class Console_Getopt
      *
      * @return array
      */
-    function doGetopt($version, $args, $short_options, $long_options = null, $skip_unknown = false)
+    function doGetopt( $version, $args, $short_options, $long_options = null, $skip_unknown = false )
     {
         // in case you pass directly readPHPArgv() as the first arg
-        if (PEAR::isError($args)) {
+        if ( PEAR::isError( $args ) ) {
             return $args;
         }
 
-        if (empty($args)) {
-            return array(array(), array());
+        if ( empty( $args ) ) {
+            return array( array(), array() );
         }
 
         $non_opts = $opts = array();
 
-        settype($args, 'array');
+        settype( $args, 'array' );
 
-        if ($long_options) {
-            sort($long_options);
+        if ( $long_options ) {
+            sort( $long_options );
         }
 
         /*
          * Preserve backwards compatibility with callers that relied on
          * erroneous POSIX fix.
          */
-        if ($version < 2) {
-            if (isset($args[0]{0}) && $args[0]{0} != '-') {
-                array_shift($args);
+        if ( $version < 2 ) {
+            if ( isset( $args[0] { 0 } ) && $args[0] { 0 } != '-' ) {
+                array_shift( $args );
             }
         }
 
-        reset($args);
-        while (list($i, $arg) = each($args)) {
+        reset( $args );
+        while ( list( $i, $arg ) = each( $args ) ) {
             /* The special element '--' means explicit end of
                options. Treat the rest of the arguments as non-options
                and end the loop. */
-            if ($arg == '--') {
-                $non_opts = array_merge($non_opts, array_slice($args, $i + 1));
+            if ( $arg == '--' ) {
+                $non_opts = array_merge( $non_opts, array_slice( $args, $i + 1 ) );
                 break;
             }
 
-            if ($arg{0} != '-' || (strlen($arg) > 1 && $arg{1} == '-' && !$long_options)) {
-                $non_opts = array_merge($non_opts, array_slice($args, $i));
+            if ( $arg { 0 } != '-' || ( strlen( $arg ) > 1 && $arg { 1 } == '-' && !$long_options ) ) {
+                $non_opts = array_merge( $non_opts, array_slice( $args, $i ) );
                 break;
-            } elseif (strlen($arg) > 1 && $arg{1} == '-') {
-                $error = Console_Getopt::_parseLongOption(substr($arg, 2),
+            } elseif ( strlen( $arg ) > 1 && $arg { 1 } == '-' ) {
+                $error = Console_Getopt::_parseLongOption( substr( $arg, 2 ),
                                                           $long_options,
                                                           $opts,
                                                           $args,
-                                                          $skip_unknown);
-                if (PEAR::isError($error)) {
+                                                          $skip_unknown );
+                if ( PEAR::isError( $error ) ) {
                     return $error;
                 }
-            } elseif ($arg == '-') {
+            } elseif ( $arg == '-' ) {
                 // - is stdin
-                $non_opts = array_merge($non_opts, array_slice($args, $i));
+                $non_opts = array_merge( $non_opts, array_slice( $args, $i ) );
                 break;
             } else {
-                $error = Console_Getopt::_parseShortOption(substr($arg, 1),
+                $error = Console_Getopt::_parseShortOption( substr( $arg, 1 ),
                                                            $short_options,
                                                            $opts,
                                                            $args,
-                                                           $skip_unknown);
-                if (PEAR::isError($error)) {
+                                                           $skip_unknown );
+                if ( PEAR::isError( $error ) ) {
                     return $error;
                 }
             }
         }
 
-        return array($opts, $non_opts);
+        return array( $opts, $non_opts );
     }
 
     /**
@@ -185,51 +185,51 @@ class Console_Getopt
      * @access private
      * @return void
      */
-    function _parseShortOption($arg, $short_options, &$opts, &$args, $skip_unknown)
+    function _parseShortOption( $arg, $short_options, &$opts, &$args, $skip_unknown )
     {
-        for ($i = 0; $i < strlen($arg); $i++) {
-            $opt     = $arg{$i};
+        for ( $i = 0; $i < strlen( $arg ); $i++ ) {
+            $opt     = $arg { $i } ;
             $opt_arg = null;
 
             /* Try to find the short option in the specifier string. */
-            if (($spec = strstr($short_options, $opt)) === false || $arg{$i} == ':') {
-                if ($skip_unknown === true) {
+            if ( ( $spec = strstr( $short_options, $opt ) ) === false || $arg { $i } == ':' ) {
+                if ( $skip_unknown === true ) {
                     break;
                 }
 
                 $msg = "Console_Getopt: unrecognized option -- $opt";
-                return PEAR::raiseError($msg);
+                return PEAR::raiseError( $msg );
             }
 
-            if (strlen($spec) > 1 && $spec{1} == ':') {
-                if (strlen($spec) > 2 && $spec{2} == ':') {
-                    if ($i + 1 < strlen($arg)) {
+            if ( strlen( $spec ) > 1 && $spec { 1 } == ':' ) {
+                if ( strlen( $spec ) > 2 && $spec { 2 } == ':' ) {
+                    if ( $i + 1 < strlen( $arg ) ) {
                         /* Option takes an optional argument. Use the remainder of
                            the arg string if there is anything left. */
-                        $opts[] = array($opt, substr($arg, $i + 1));
+                        $opts[] = array( $opt, substr( $arg, $i + 1 ) );
                         break;
                     }
                 } else {
                     /* Option requires an argument. Use the remainder of the arg
                        string if there is anything left. */
-                    if ($i + 1 < strlen($arg)) {
-                        $opts[] = array($opt,  substr($arg, $i + 1));
+                    if ( $i + 1 < strlen( $arg ) ) {
+                        $opts[] = array( $opt,  substr( $arg, $i + 1 ) );
                         break;
-                    } elseif (list(, $opt_arg) = each($args)) {
+                    } elseif ( list( , $opt_arg ) = each( $args ) ) {
                         /* Else use the next argument. */;
-                        if (Console_Getopt::_isShortOpt($opt_arg)
-                            || Console_Getopt::_isLongOpt($opt_arg)) {
+                        if ( Console_Getopt::_isShortOpt( $opt_arg )
+                            || Console_Getopt::_isLongOpt( $opt_arg ) ) {
                             $msg = "option requires an argument --$opt";
-                            return PEAR::raiseError("Console_Getopt:" . $msg);
+                            return PEAR::raiseError( "Console_Getopt:" . $msg );
                         }
                     } else {
                         $msg = "option requires an argument --$opt";
-                        return PEAR::raiseError("Console_Getopt:" . $msg);
+                        return PEAR::raiseError( "Console_Getopt:" . $msg );
                     }
                 }
             }
 
-            $opts[] = array($opt, $opt_arg);
+            $opts[] = array( $opt, $opt_arg );
         }
     }
 
@@ -241,10 +241,10 @@ class Console_Getopt
      * @access private
      * @return bool
      */
-    function _isShortOpt($arg)
+    function _isShortOpt( $arg )
     {
-        return strlen($arg) == 2 && $arg[0] == '-'
-               && preg_match('/[a-zA-Z]/', $arg[1]);
+        return strlen( $arg ) == 2 && $arg[0] == '-'
+               && preg_match( '/[a-zA-Z]/', $arg[1] );
     }
 
     /**
@@ -255,10 +255,10 @@ class Console_Getopt
      * @access private
      * @return bool
      */
-    function _isLongOpt($arg)
+    function _isLongOpt( $arg )
     {
-        return strlen($arg) > 2 && $arg[0] == '-' && $arg[1] == '-' &&
-               preg_match('/[a-zA-Z]+$/', substr($arg, 2));
+        return strlen( $arg ) > 2 && $arg[0] == '-' && $arg[1] == '-' &&
+               preg_match( '/[a-zA-Z]+$/', substr( $arg, 2 ) );
     }
 
     /**
@@ -272,72 +272,72 @@ class Console_Getopt
      * @access private
      * @return void|PEAR_Error
      */
-    function _parseLongOption($arg, $long_options, &$opts, &$args, $skip_unknown)
+    function _parseLongOption( $arg, $long_options, &$opts, &$args, $skip_unknown )
     {
-        @list($opt, $opt_arg) = explode('=', $arg, 2);
+        @list( $opt, $opt_arg ) = explode( '=', $arg, 2 );
 
-        $opt_len = strlen($opt);
+        $opt_len = strlen( $opt );
 
-        for ($i = 0; $i < count($long_options); $i++) {
+        for ( $i = 0; $i < count( $long_options ); $i++ ) {
             $long_opt  = $long_options[$i];
-            $opt_start = substr($long_opt, 0, $opt_len);
+            $opt_start = substr( $long_opt, 0, $opt_len );
 
-            $long_opt_name = str_replace('=', '', $long_opt);
+            $long_opt_name = str_replace( '=', '', $long_opt );
 
             /* Option doesn't match. Go on to the next one. */
-            if ($long_opt_name != $opt) {
+            if ( $long_opt_name != $opt ) {
                 continue;
             }
 
-            $opt_rest = substr($long_opt, $opt_len);
+            $opt_rest = substr( $long_opt, $opt_len );
 
             /* Check that the options uniquely matches one of the allowed
                options. */
-            if ($i + 1 < count($long_options)) {
-                $next_option_rest = substr($long_options[$i + 1], $opt_len);
+            if ( $i + 1 < count( $long_options ) ) {
+                $next_option_rest = substr( $long_options[$i + 1], $opt_len );
             } else {
                 $next_option_rest = '';
             }
 
-            if ($opt_rest != '' && $opt{0} != '=' &&
-                $i + 1 < count($long_options) &&
-                $opt == substr($long_options[$i+1], 0, $opt_len) &&
+            if ( $opt_rest != '' && $opt { 0 } != '=' &&
+                $i + 1 < count( $long_options ) &&
+                $opt == substr( $long_options[$i + 1], 0, $opt_len ) &&
                 $next_option_rest != '' &&
-                $next_option_rest{0} != '=') {
+                $next_option_rest { 0 } != '=' ) {
 
                 $msg = "Console_Getopt: option --$opt is ambiguous";
-                return PEAR::raiseError($msg);
+                return PEAR::raiseError( $msg );
             }
 
-            if (substr($long_opt, -1) == '=') {
-                if (substr($long_opt, -2) != '==') {
+            if ( substr( $long_opt, -1 ) == '=' ) {
+                if ( substr( $long_opt, -2 ) != '==' ) {
                     /* Long option requires an argument.
                        Take the next argument if one wasn't specified. */;
-                    if (!strlen($opt_arg) && !(list(, $opt_arg) = each($args))) {
+                    if ( !strlen( $opt_arg ) && !( list( , $opt_arg ) = each( $args ) ) ) {
                         $msg = "Console_Getopt: option requires an argument --$opt";
-                        return PEAR::raiseError($msg);
+                        return PEAR::raiseError( $msg );
                     }
 
-                    if (Console_Getopt::_isShortOpt($opt_arg)
-                        || Console_Getopt::_isLongOpt($opt_arg)) {
+                    if ( Console_Getopt::_isShortOpt( $opt_arg )
+                        || Console_Getopt::_isLongOpt( $opt_arg ) ) {
                         $msg = "Console_Getopt: option requires an argument --$opt";
-                        return PEAR::raiseError($msg);
+                        return PEAR::raiseError( $msg );
                     }
                 }
-            } elseif ($opt_arg) {
+            } elseif ( $opt_arg ) {
                 $msg = "Console_Getopt: option --$opt doesn't allow an argument";
-                return PEAR::raiseError($msg);
+                return PEAR::raiseError( $msg );
             }
 
-            $opts[] = array('--' . $opt, $opt_arg);
+            $opts[] = array( '--' . $opt, $opt_arg );
             return;
         }
 
-        if ($skip_unknown === true) {
+        if ( $skip_unknown === true ) {
             return;
         }
 
-        return PEAR::raiseError("Console_Getopt: unrecognized option --$opt");
+        return PEAR::raiseError( "Console_Getopt: unrecognized option --$opt" );
     }
 
     /**
@@ -350,11 +350,11 @@ class Console_Getopt
     function readPHPArgv()
     {
         global $argv;
-        if (!is_array($argv)) {
-            if (!@is_array($_SERVER['argv'])) {
-                if (!@is_array($GLOBALS['HTTP_SERVER_VARS']['argv'])) {
+        if ( !is_array( $argv ) ) {
+            if ( !@is_array( $_SERVER['argv'] ) ) {
+                if ( !@is_array( $GLOBALS['HTTP_SERVER_VARS']['argv'] ) ) {
                     $msg = "Could not read cmd args (register_argc_argv=Off?)";
-                    return PEAR::raiseError("Console_Getopt: " . $msg);
+                    return PEAR::raiseError( "Console_Getopt: " . $msg );
                 }
                 return $GLOBALS['HTTP_SERVER_VARS']['argv'];
             }

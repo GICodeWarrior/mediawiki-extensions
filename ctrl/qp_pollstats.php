@@ -8,7 +8,7 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
- * 
+ *
  * QPoll is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -21,13 +21,13 @@
  * ***** END LICENSE BLOCK *****
  *
  * QPoll is a poll tool for MediaWiki.
- * 
+ *
  * To activate this extension :
  * * Create a new directory named QPoll into the directory "extensions" of MediaWiki.
  * * Place the files from the extension archive there.
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/QPoll/qp_user.php";
- * 
+ *
  * @version 0.8.0a
  * @link http://www.mediawiki.org/wiki/Extension:QPoll
  * @author QuestPC <questpc@rambler.ru>
@@ -59,7 +59,7 @@ class qp_PollStats extends qp_AbstractPoll {
 			return self::fatalError( 'qp_error_dependance_in_stats_mode' );
 		}
 		$this->pollStore = qp_PollStore::newFromAddr( $this->pollAddr );
-		if ( !($this->pollStore instanceof qp_PollStore) || $this->pollStore->pid === null ) {
+		if ( !( $this->pollStore instanceof qp_PollStore ) || $this->pollStore->pid === null ) {
 			return self::fatalError( 'qp_error_no_such_poll', $this->pollAddr );
 		}
 		if ( !$this->pollStore->loadQuestions() ) {
@@ -99,7 +99,7 @@ class qp_PollStats extends qp_AbstractPoll {
 			} else {
 				$attr_str = '';
 			}
-			if ( ($type = $question->parseAttributes( $attr_str )) != '' ) {
+			if ( ( $type = $question->parseAttributes( $attr_str ) ) != '' ) {
 				# there cannot be type attribute of question in statistical display mode
 				$question->setState( 'error', wfMsg( 'qp_error_type_in_stats_mode', $type ) );
 			}

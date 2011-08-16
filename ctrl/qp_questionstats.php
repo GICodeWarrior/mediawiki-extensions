@@ -34,7 +34,7 @@ class qp_QuestionStats extends qp_AbstractQuestion {
 			$this->Percents = $qdata->Percents;
 		} else {
 			# no percents - no stats
-			$this->view->showResults = Array( 'type'=>0 );
+			$this->view->showResults = Array( 'type' => 0 );
 		}
 	}
 

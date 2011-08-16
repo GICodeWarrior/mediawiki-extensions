@@ -8,7 +8,7 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
- * 
+ *
  * QPoll is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -21,13 +21,13 @@
  * ***** END LICENSE BLOCK *****
  *
  * QPoll is a poll tool for MediaWiki.
- * 
+ *
  * To activate this extension :
  * * Create a new directory named QPoll into the directory "extensions" of MediaWiki.
  * * Place the files from the extension archive there.
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/QPoll/qp_user.php";
- * 
+ *
  * @version 0.8.0a
  * @link http://www.mediawiki.org/wiki/Extension:QPoll
  * @author QuestPC <questpc@rambler.ru>
@@ -69,9 +69,9 @@ class qp_PollStatsView extends qp_AbstractView {
 			# render the question statistics only when showResuls isn't 0 (suppress stats)
 			if ( $question->view->showResults['type'] != 0 ) {
 				if ( $this->perRow > 1 ) {
-					$write_col[] = array( '__tag'=>'td', 'valign'=>'top', 0=>$question->view->renderQuestion(), '__end'=>"\n" );
+					$write_col[] = array( '__tag' => 'td', 'valign' => 'top', 0 => $question->view->renderQuestion(), '__end' => "\n" );
 					if ( $this->currCol == 1 ) {
-						$write_row[] = array( '__tag'=>'tr', 0=>$write_col, '__end'=>"\n" );
+						$write_row[] = array( '__tag' => 'tr', 0 => $write_col, '__end' => "\n" );
 						$write_col = Array();
 					}
 					if ( --$this->currCol < 1 ) {
@@ -86,10 +86,10 @@ class qp_PollStatsView extends qp_AbstractView {
 		}
 		if ( $this->perRow > 1 && $this->currCol != $this->perRow ) {
 			# add last incomplete row
-			$write_row[] = array( '__tag'=>'tr', '__end'=>"\n", 0=>$write_col );
+			$write_row[] = array( '__tag' => 'tr', '__end' => "\n", 0 => $write_col );
 		}
 		if ( $this->perRow > 1 ) {
-			$question_table = array( '__tag'=>'table', 0=>array( '__tag'=>'tbody', 0=>&$write_row, '__end'=>"\n" ), '__end'=>"\n" );
+			$question_table = array( '__tag' => 'table', 0 => array( '__tag' => 'tbody', 0 => &$write_row, '__end' => "\n" ), '__end' => "\n" );
 			return qp_Renderer::renderHTMLobject( $question_table );
 		} else {
 			return qp_Renderer::renderHTMLobject( $write_row );
@@ -102,7 +102,7 @@ class qp_PollStatsView extends qp_AbstractView {
 	 */
 	function renderPoll() {
 		# Generates the output.
-		$qpoll_div = array( '__tag'=>'div', 'class'=>'qpoll', 0=>$this->renderQuestionViews() );
+		$qpoll_div = array( '__tag' => 'div', 'class' => 'qpoll', 0 => $this->renderQuestionViews() );
 		return qp_Renderer::renderHTMLobject( $qpoll_div );
 	}
 

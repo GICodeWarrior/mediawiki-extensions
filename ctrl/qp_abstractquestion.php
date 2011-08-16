@@ -54,7 +54,7 @@ abstract class qp_AbstractQuestion {
 
 	/**
 	 * Mutator of the question state
-	 * 
+	 *
 	 * @protected
 	 * @param  $pState - state of the question
 	 * @param  $error_message - optional main_header_parsing error message
@@ -71,7 +71,7 @@ abstract class qp_AbstractQuestion {
 
 	/**
 	 * Accessor of the question state.
-	 * 
+	 *
 	 * @protected
 	 */
 	function getState() {
@@ -82,8 +82,8 @@ abstract class qp_AbstractQuestion {
 	# @param   $attr_str - source text with question attributes
 	# @return  string : type of the question, empty when not defined
 	function parseAttributes( $attr_str ) {
-		$paramkeys = array( 't[yi]p[eo]'=>null, 'layout'=>null, 'textwidth'=>null, 'showresults'=>null );
-		foreach( $paramkeys as $key=>&$val ) {
+		$paramkeys = array( 't[yi]p[eo]' => null, 'layout' => null, 'textwidth' => null, 'showresults' => null );
+		foreach ( $paramkeys as $key => &$val ) {
 			preg_match( '`' . $key . '?="(.*?)"`u', $attr_str, $val );
 		}
 		$type = $paramkeys[ 't[yi]p[eo]' ];

@@ -8,7 +8,7 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
- * 
+ *
  * QPoll is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -21,13 +21,13 @@
  * ***** END LICENSE BLOCK *****
  *
  * QPoll is a poll tool for MediaWiki.
- * 
+ *
  * To activate this extension :
  * * Create a new directory named QPoll into the directory "extensions" of MediaWiki.
  * * Place the files from the extension archive there.
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/QPoll/qp_user.php";
- * 
+ *
  * @version 0.8.0a
  * @link http://www.mediawiki.org/wiki/Extension:QPoll
  * @author QuestPC <questpc@rambler.ru>
@@ -56,7 +56,7 @@ class qp_QuestionCollection {
 		sort( $except, SORT_NUMERIC );
 		# calculate average gap between except-values
 		$except_count = count( $except );
-		$avg_gap = ($max - $min + 1 - $except_count) / ($except_count + 1);
+		$avg_gap = ( $max - $min + 1 - $except_count ) / ( $except_count + 1 );
 		if ( $avg_gap <= 0 ) {
 			return false;
 		}
@@ -66,7 +66,7 @@ class qp_QuestionCollection {
 		$except_count += 2;
 		# iterate through all values of except. If gap between 2 values is higher than average gap,
 		# create random in this gap
-		for ($i = 1; $i < $except_count; $i++) {
+		for ( $i = 1; $i < $except_count; $i++ ) {
 			if ( $except[$i] - $except[$i - 1] - 1 >= $avg_gap ) {
 				return mt_rand( $except[$i - 1] + 1, $except[$i] - 1 );
 			}

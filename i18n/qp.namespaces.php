@@ -3,7 +3,7 @@
 $namespaceNames = array();
 
 // For wikis without QPoll installed.
-if ( ! defined('NS_QP_INTERPRETATION') ) {
+if ( ! defined( 'NS_QP_INTERPRETATION' ) ) {
 	define( 'NS_QP_INTERPRETATION', 800 );
 	define( 'NS_QP_INTERPRETATION_TALK', 801 );
 }

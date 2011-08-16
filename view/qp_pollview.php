@@ -8,7 +8,7 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
- * 
+ *
  * QPoll is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -21,13 +21,13 @@
  * ***** END LICENSE BLOCK *****
  *
  * QPoll is a poll tool for MediaWiki.
- * 
+ *
  * To activate this extension :
  * * Create a new directory named QPoll into the directory "extensions" of MediaWiki.
  * * Place the files from the extension archive there.
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/QPoll/qp_user.php";
- * 
+ *
  * @version 0.8.0a
  * @link http://www.mediawiki.org/wiki/Extension:QPoll
  * @author QuestPC <questpc@rambler.ru>
@@ -68,9 +68,9 @@ class qp_PollView extends qp_AbstractView {
 		while ( is_object( $question = $this->ctrl->questions->iterate() ) ) {
 			$question->view->renderInterpErrors();
 			if ( $this->perRow > 1 ) {
-				$write_col[] = array( '__tag'=>'td', 'valign'=>'top', 0=>$question->view->renderQuestion(), '__end'=>"\n" );
+				$write_col[] = array( '__tag' => 'td', 'valign' => 'top', 0 => $question->view->renderQuestion(), '__end' => "\n" );
 				if ( $this->currCol == 1 ) {
-					$write_row[] = array( '__tag'=>'tr', 0=>$write_col, '__end'=>"\n" );
+					$write_row[] = array( '__tag' => 'tr', 0 => $write_col, '__end' => "\n" );
 					$write_col = Array();
 				}
 				if ( --$this->currCol < 1 ) {
@@ -84,10 +84,10 @@ class qp_PollView extends qp_AbstractView {
 		}
 		if ( $this->perRow > 1 && $this->currCol != $this->perRow ) {
 			# add last incomplete row
-			$write_row[] = array( '__tag'=>'tr', '__end'=>"\n", 0=>$write_col );
+			$write_row[] = array( '__tag' => 'tr', '__end' => "\n", 0 => $write_col );
 		}
 		if ( $this->perRow > 1 ) {
-			$question_table = array( '__tag'=>'table', 0=>array( '__tag'=>'tbody', 0=>&$write_row, '__end'=>"\n" ), '__end'=>"\n" );
+			$question_table = array( '__tag' => 'table', 0 => array( '__tag' => 'tbody', 0 => &$write_row, '__end' => "\n" ), '__end' => "\n" );
 			return qp_Renderer::renderHTMLobject( $question_table );
 		} else {
 			return qp_Renderer::renderHTMLobject( $write_row );
@@ -101,36 +101,36 @@ class qp_PollView extends qp_AbstractView {
 	function renderPoll() {
 		global $wgOut, $wgRequest;
 		# Generates the output.
-		$qpoll_div = array( '__tag'=>'div', 'class'=>'qpoll' );
-		$qpoll_div[] = array( '__tag'=>'a', 'name'=>$this->ctrl->getPollTitleFragment( null, '' ), 0=>'' );
+		$qpoll_div = array( '__tag' => 'div', 'class' => 'qpoll' );
+		$qpoll_div[] = array( '__tag' => 'a', 'name' => $this->ctrl->getPollTitleFragment( null, '' ), 0 => '' );
 		# output script-generated error, when available
 		if ( ( $scriptError = $this->ctrl->pollStore->interpResult->error ) != '' ) {
-			$qpoll_div[] = array( '__tag'=>'div', 'class'=>'interp_error', qp_Setup::specialchars( $scriptError ) );
+			$qpoll_div[] = array( '__tag' => 'div', 'class' => 'interp_error', qp_Setup::specialchars( $scriptError ) );
 		}
 		# output long result, when available
 		if ( ( $longAnswer = $this->ctrl->pollStore->interpResult->long ) != '' ) {
-			$qpoll_div[] = array( '__tag'=>'div', 'class'=>'interp_answer', qp_Setup::specialchars( $longAnswer ) );
+			$qpoll_div[] = array( '__tag' => 'div', 'class' => 'interp_answer', qp_Setup::specialchars( $longAnswer ) );
 		}
 		# create voting form and fill it with messages and inputs
-		$qpoll_form = array( '__tag'=>'form', 'method'=>'post', 'action'=>$this->ctrl->getPollTitleFragment(), '__end'=>"\n" );
+		$qpoll_form = array( '__tag' => 'form', 'method' => 'post', 'action' => $this->ctrl->getPollTitleFragment(), '__end' => "\n" );
 		$qpoll_div[] = &$qpoll_form;
 		# Determine the content of the settings table.
 		$settings = Array();
 		if ( $this->ctrl->mState != '' ) {
-			$settings[0][] = array( '__tag'=>'td', 'class'=>'margin cell_error' );
-			$settings[0][] = array( '__tag'=>'td', 0=>wfMsgHtml( 'qp_result_' . $this->ctrl->mState ) );
+			$settings[0][] = array( '__tag' => 'td', 'class' => 'margin cell_error' );
+			$settings[0][] = array( '__tag' => 'td', 0 => wfMsgHtml( 'qp_result_' . $this->ctrl->mState ) );
 		}
 		# Build the settings table.
 		if ( count( $settings ) > 0 ) {
-			$settingsTable = array( '__tag'=>'table', 'class'=>'settings', '__end'=>"\n" );
-			foreach($settings as $settingsTr) {
-				$settingsTable[] = array( '__tag'=>'tr', 0=> $settingsTr, '__end'=>"\n" );
-			}		
+			$settingsTable = array( '__tag' => 'table', 'class' => 'settings', '__end' => "\n" );
+			foreach ( $settings as $settingsTr ) {
+				$settingsTable[] = array( '__tag' => 'tr', 0 => $settingsTr, '__end' => "\n" );
+			}
 			$qpoll_form[] = &$settingsTable;
 		}
-		$qpoll_form[] = array( '__tag'=>'input', 'type'=>'hidden', 'name'=>'pollId', 'value'=>$this->ctrl->mPollId );
-		$qpoll_form[] = array( '__tag'=>'div', 'class'=>'pollQuestions', 0=>$this->renderQuestionViews() );
-		$submitBtn = array( '__tag'=>'input', 'type'=>'submit' );
+		$qpoll_form[] = array( '__tag' => 'input', 'type' => 'hidden', 'name' => 'pollId', 'value' => $this->ctrl->mPollId );
+		$qpoll_form[] = array( '__tag' => 'div', 'class' => 'pollQuestions', 0 => $this->renderQuestionViews() );
+		$submitBtn = array( '__tag' => 'input', 'type' => 'submit' );
 		$submitMsg = 'qp_vote_button';
 		if ( $this->ctrl->pollStore->isAlreadyVoted() ) {
 			$submitMsg = 'qp_vote_again_button';
@@ -153,13 +153,13 @@ class qp_PollView extends qp_AbstractView {
 			$submitBtn[ 'disabled' ] = 'disabled';
 		}
 		$submitBtn[ 'value' ] = wfMsgHtml( $submitMsg );
-		$p = array( '__tag'=>'p' );
+		$p = array( '__tag' => 'p' );
 		$p[] = $submitBtn;
 		# output no more attempts message, when applicable
 		if ( $atLeft === false ) {
-			$p[] = array( '__tag'=>'span', 'class'=>'attempts_counter', qp_Setup::specialchars( wfMsg( 'qp_error_no_more_attempts' ) ) );
+			$p[] = array( '__tag' => 'span', 'class' => 'attempts_counter', qp_Setup::specialchars( wfMsg( 'qp_error_no_more_attempts' ) ) );
 		} elseif ( $atLeft !== true ) {
-			$p[] = array( '__tag'=>'span', 'class'=>'attempts_counter', qp_Setup::specialchars( wfMsgExt( 'qp_submit_attempts_left', array( 'parsemag' ), intval( $atLeft ) ) ) );
+			$p[] = array( '__tag' => 'span', 'class' => 'attempts_counter', qp_Setup::specialchars( wfMsgExt( 'qp_submit_attempts_left', array( 'parsemag' ), intval( $atLeft ) ) ) );
 		}
 
 		$qpoll_form[] = &$p;
