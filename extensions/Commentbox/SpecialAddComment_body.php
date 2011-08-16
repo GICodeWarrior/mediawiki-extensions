@@ -75,37 +75,15 @@ class SpecialAddComment extends UnlistedSpecialPage {
 		// Append <br /> after each newline, except if the user started a new paragraph
 		$Comment = preg_replace( '/(?<!\n)\n(?!\n)/', "<br />\n", $Comment );
 		$text .= "\n\n" . $subject . $Comment . "\n<br />" . $sig;
-		try {
-			$req = new FauxRequest( array(
-						'action'  => 'edit',
-						'title'   => $title->getPrefixedText(),
-						'text'    => $text,
-						'summary' => wfMsgForContent( 'commentbox-log' ),
-						'token'   => $wgUser->editToken(),
-						), true );
-			$api = new ApiMain( $req, true );
-			$api->execute();
-			wfDebug( "Completed API-Save\n" );
-			// we only reach this point if Api doesn't throw an exception
-			$data = $api->getResultData();
-			if ( $data['edit']['result'] == 'Failure' ) {
-				$spamurl = $data['edit']['spamblacklist'];
-				if ( $spamurl != '' )
-					throw new Exception( "Die Seite enthaelt die Spam-Url ``{$spamurl}''" );
-				else
-					throw new Exception( "Unbekannter Fehler" );
-			}
-		} catch ( Exception $e ) {
-			global $wgOut;
-			$wgOut->setPageTitle( wfMsg( 'commentbox-errorpage-title' ) );
-			$wgOut->addHTML( "<div class='errorbox'>" . htmlspecialchars( $e->getMessage() ) . "</div><br clear='both' />" );
-			if ( $title != null )
-				$wgOut->returnToMain( false, $title );
-			return;
-		}
+		$status = $article->doEdit( $text, wfMsgForContent( 'commentbox-log' ) );
 
-		$wgOut->redirect( $title->getFullURL() );
-		return;
+		if ( $status->isOK() ) {
+			$wgOut->redirect( $title->getFullURL() );
+		} else {
+			$wgOut->setPageTitle( wfMsg( 'commentbox-errorpage-title' ) );
+			$wgOut->addWikiText( $status->getWikiText() );
+			$wgOut->returnToMain( false, $title );
+		}
 	}
 
 	function fail( $str, $title = null ) {
