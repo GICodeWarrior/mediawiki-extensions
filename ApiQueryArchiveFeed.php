@@ -2,7 +2,7 @@
 
 class ApiQueryArchiveFeed extends ApiQueryBase {
 	function __construct ( $query, $moduleName ) {
-		parent::__construct( $query, $moduleName, 'al' );
+		parent::__construct( $query, $moduleName, 'arl' );
 	}
 	
 	public function execute ( ) {
@@ -10,7 +10,7 @@ class ApiQueryArchiveFeed extends ApiQueryBase {
 		
 		$this->addTables( 'el_archive_queue' );
 		$this->addFields( '*' );
-		$this->addWhereRange( 'insertion_time', $params['dir'], $params['start'], $params['end'] );
+		$this->addWhereRange( 'queue_id', $params['dir'], $params['start'], $params['end'] );
 		$this->addOption( 'LIMIT', $params['limit'] + 1 );
 		
 		$res = $this->select( __METHOD__ );
@@ -22,10 +22,11 @@ class ApiQueryArchiveFeed extends ApiQueryBase {
 		foreach ( $res as $row ) {
 			//much of this is stolen from ApiQueryRecentChanges
 			if ( ++ $count > $params['limit'] ) {
-				$this->setContinueEnumParameter( 'start', wfTimestamp( TS_UNIX, $row->insertion_time ) );
+				$this->setContinueEnumParameter( 'start', $row->queue_id );
 				break;
 			}
 			
+			$val['feed_id'] = $row->queue_id;
 			$val['time'] = $row->insertion_time;
             $val['page_id'] = $row->page_id;
             $val['url'] = $row->url;
@@ -33,7 +34,7 @@ class ApiQueryArchiveFeed extends ApiQueryBase {
 			$fit = $result->addValue( array( 'query', $this->getModuleName() ), null, $val );
 			
 			if ( !$fit ) {
-				$this->setContinueEnumParameter( 'start', wfTimestamp( TS_UNIX, $row->insertion_time ) );
+				$this->setContinueEnumParameter( 'start', $row->queue_id );
 				break;
 			}
 		}
@@ -55,10 +56,10 @@ class ApiQueryArchiveFeed extends ApiQueryBase {
 				ApiBase::PARAM_MAX2 => ApiBase::LIMIT_BIG2
 			),
 			'start' => array(
-				ApiBase::PARAM_TYPE => 'timestamp'
+				ApiBase::PARAM_TYPE => 'integer'
 			),
 			'end' => array(
-				ApiBase::PARAM_TYPE => 'timestamp'
+				ApiBase::PARAM_TYPE => 'integer'
 			),
 			'dir' => array(
 				ApiBase::PARAM_DFLT => 'older',
