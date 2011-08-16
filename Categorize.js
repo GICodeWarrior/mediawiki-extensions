@@ -30,15 +30,15 @@ Array.prototype.unique = function () {
 var csQuery = '';
 addEvent(document, "mouseup",keyPressHandler);
 
-function sendRequest(q,e) { 
+function sendRequest(q,e) {
 	if ([e.keyCode||e.which] == 27 ) {
 		var resultDiv = document.getElementById('searchResults');
 		resultDiv.style.visibility = 'hidden';
-	        e.preventDefault? e.preventDefault() : e.returnValue = false; 
+	        e.preventDefault? e.preventDefault() : e.returnValue = false;
 	}
 
 	// remove characters that don't work in category names
-	strQuery = new String(q.value);	
+	strQuery = new String(q.value);
 
 	//CUT OFF EXISTING, COMPLETE CATEGORIES
 	if(strQuery.lastIndexOf(';')!=-1){
@@ -51,7 +51,7 @@ function sendRequest(q,e) {
 		strQuery = strQueryR;
 		q.value = strQueryR;
 	}
-		
+
 
 	if ( strQuery.toString() != csQuery.toString() ) {
 		strQuery = strQuery.replace(/ /g,"_");
@@ -75,7 +75,7 @@ function sendRequest(q,e) {
 					}
 					result.name = item.replace(/_/g," ");
 					csWord = result.name;
-					
+
 					csHTML = '<span class="csSelect">' + csWord.substr(0, csQuery.length) + '</span>' + csWord.substr(csQuery.length) + " ";
 					result.innerHTML = csHTML;
 					result.onmouseover = highlight;
@@ -84,17 +84,17 @@ function sendRequest(q,e) {
 					result.title = 'Click here to add category to the category list!';
 					result.className="cs";
 					resultDiv.style.lineHeight='1';
-					resultDiv.appendChild(result);  
+					resultDiv.appendChild(result);
 				});
 			}
-	
-	
+
+
 		});
-		
-		
+
+
 	}
 }
-// WAIT FOR SERVER RESPONSE AND DISPLAY SUGGESTIONS    
+// WAIT FOR SERVER RESPONSE AND DISPLAY SUGGESTIONS
 ajaxResponse = function handleResponse(response) {
 	resultSet = response.responseText;
 	var resultDiv = document.getElementById('searchResults');
@@ -117,7 +117,7 @@ ajaxResponse = function handleResponse(response) {
 			}
 			result.name = resultSet[f].replace(/_/g," ");
 			csWord = result.name;
-			
+
 			csHTML = '<span class="csSelect">' + csWord.substr(0, csQuery.length) + '</span>' + csWord.substr(csQuery.length) + " ";
 			result.innerHTML = csHTML;
 			result.onmouseover = highlight;
@@ -126,12 +126,12 @@ ajaxResponse = function handleResponse(response) {
 			result.title = 'Click here to add category to the category list!';
 			result.className="cs";
 			resultDiv.style.lineHeight='1';
-			resultDiv.appendChild(result);  
+			resultDiv.appendChild(result);
 		}
-	}        
+	}
 }
 
-        
+
 // SELECT CATEGORY FROM SUGGEST DIV AND ADD IT TO THE INPUT BOX
 function selectEntry () {
 	  	var strExistingValues = document.getElementById('txtSelectedCategories2').value;
@@ -140,7 +140,7 @@ function selectEntry () {
 			strExistingValues = strExistingValues.substr(0, intIndex+1);
 		  	document.getElementById('txtSelectedCategories2').value = strExistingValues + this.name;
 		} else {
-			document.getElementById('txtSelectedCategories2').value = this.name;		  				
+			document.getElementById('txtSelectedCategories2').value = this.name;
 		}
 		document.getElementById('searchResults').style.visibility='hidden';
 		document.getElementById('searchResults').innerHTML='';
@@ -150,7 +150,7 @@ function selectEntry () {
 function highlight (){
 	this.className='highlight';
 }
-	
+
 function unHighlight (){
 	this.className='cs';
 }
@@ -186,10 +186,10 @@ function addEvent(el, sEvt, PFnc)
    function keyPressHandler(e) {
 		var resultDiv = document.getElementById('searchResults');
 		resultDiv.style.visibility = 'hidden';
-	    e.preventDefault? e.preventDefault() : e.returnValue = false; 
+	    e.preventDefault? e.preventDefault() : e.returnValue = false;
       //}
    }
-  
+
 $(document).ready(function() {
 	$('.xlabel').click(function(){
 		var xvalue = $(this).text();

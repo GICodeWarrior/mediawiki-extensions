@@ -35,21 +35,21 @@ class ApiQueryCategorize extends ApiQueryBase {
 		$params = $this->extractRequestParams();
 		$strquery = $params['strquery'];
 		$result = $this->getResult();
-		
-		if(isset($strquery) && $strquery != NULL) {
+
+		if ( isset( $strquery ) && $strquery != NULL ) {
 			$searchString = str_replace( '%' , '\%' , $strquery );
 			$searchString = str_replace( '_' , '\_' , $searchString );
 			$searchString = str_replace( '|' , '%'  , $searchString );
-			$dbr = $this->getDB();;
-			
+			$dbr = $this->getDB(); ;
+
 			$suggestStrings = array();
-			
+
 			$this->addTables( 'categorylinks' );
 			$this->addFields( 'DISTINCT cl_to' );
-			$this->addWhere ( " UPPER(CONVERT(cl_to using latin1)) LIKE UPPER(CONVERT('$searchString%' using latin1)) ");
+			$this->addWhere ( " UPPER(CONVERT(cl_to using latin1)) LIKE UPPER(CONVERT('$searchString%' using latin1)) " );
 			$res = $this->select( __METHOD__ );
 			while ( $row = $res->fetchObject() ) {
-				array_push($suggestStrings,$row->cl_to);
+				array_push( $suggestStrings, $row->cl_to );
 				$fit = $result->addValue( array( 'query', $this->getModuleName() ), null, $row->cl_to );
 				if ( !$fit ) {
 					$this->setContinueEnumParameter( 'start', wfTimestamp( TS_ISO_8601, $row->afl_timestamp ) );
@@ -78,7 +78,7 @@ class ApiQueryCategorize extends ApiQueryBase {
 	public function getDescription() {
 		return 'Show categories beginning by "strquery" string.';
 	}
-	
+
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
 			// to fill
