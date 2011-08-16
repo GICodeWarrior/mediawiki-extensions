@@ -110,7 +110,10 @@ class WSData {
 			return new WSData( self::DString, strval( $orig->data ) );
 		}
 		if( $target == self::DList ) {
-			return new WSData( self::DList, array( $orig ) );
+			if( $orig->type == self::DAssoc )
+				return new WSData( self::DList, array_values( $orig->data ) );
+			else
+				return new WSData( self::DList, array( $orig ) );
 		}
 	}
 	
