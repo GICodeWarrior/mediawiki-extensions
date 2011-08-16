@@ -119,6 +119,32 @@ es.ListBlock.prototype.getLineIndex = function( offset ) {
 	return lineIndex;
 };
 
+/**
+ * Gets the length of all block content.
+ * 
+ * @method
+ * @returns {Integer} Length of content
+ */
+es.ListBlock.prototype.getLength = function(  ) {
+	var length = 0;
+	this.list.traverseItems( function( item, index ) {
+		length += item.content.getLength() + 1;
+	} );
+	return length === 0 ? 0 : length - 1;
+};
+
+/**
+ * Inserts content into a block at an offset.
+ * 
+ * @method
+ * @param offset {Integer} Position to insert content at
+ * @param content {Object} Content to insert
+ */
+es.ListBlock.prototype.insertContent = function( offset, content ) {
+	var location = this.getLocationFromOffset( offset );
+	location.item.flow.content.insert( location.offset, content );
+};
+
 es.ListBlock.prototype.getText = function( range, render ) {
 	return "";
 };
