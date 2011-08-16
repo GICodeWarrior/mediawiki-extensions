@@ -96,9 +96,9 @@ function acGetOption( $input, $name, $value = null ) {
 function acMakeBox( $input, $argv, $parser ) {
 	global $wgRequest, $wgScript;
 	if( $wgRequest->getVal( 'action' ) == 'create' ) {
-		$prefix = $wgRequest->getVal( 'prefix' );
-		$preload = $wgRequest->getVal( 'preload' );
-		$editintro = $wgRequest->getVal( 'editintro' );
+		$prefix = acGetOption( $input, 'prefix' );
+		$preload = acGetOption( $input, 'preload' );
+		$editintro = acGetOption( $input, 'editintro' ); 
 		$text = $parser->getTitle()->getPrefixedText();
 		if( $prefix && strpos( $text, $prefix ) === 0 ) {
 			$text = substr( $text, strlen( $prefix ) );
