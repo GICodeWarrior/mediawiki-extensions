@@ -9,7 +9,7 @@
 $messages = array();
 
 $messages['en'] = array(
-	'signupapi-desc' => 'Cleans up Special:UserLogin from signup related stuff & adds an API for signup',
+	'signupapi-desc' => 'Cleans up the [[Special:UserLogin|login page]] from signup related stuff and adds an API for signup',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
