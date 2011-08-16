@@ -31,7 +31,7 @@ span.xcategorize2{
 }
 span.xcategorize3 {
 	background-color:#FBB6CA;
-	
+
 }
 span.xcategorize4 {
 	background-color:#FBDEB6;
@@ -73,7 +73,7 @@ table#xtable td{
 
 /*Suggest search results DIV*/
 #searchResults {
-	line-height: 1.6; 
+	line-height: 1.6;
 	overflow: auto;
 	max-height: 170px;
 	height: expression(
@@ -116,7 +116,7 @@ input#txtSelectedCategories {
 	color: #2d5381;
 }
 
-	
+
 /*Highlighted category in search results list*/
 span.highlight {
 	/*background-color: rgb(231,71,71);*/
@@ -129,13 +129,13 @@ span.highlight {
 	margin: 0px;
 }
 
-	
+
 span.cs {
 	/*color: rgb(231,71,71);*/
 	color: #1C537A;
 	background-color: white;
 	cursor: pointer;
-	line-Height: 1.6;  
+	line-Height: 1.6;
 	padding: 3px 4px;
 /*	width: 278px; */
 	margin: 0px;
@@ -146,7 +146,7 @@ span.csSelect {
 	text-decoration: underline;
 	font-weight: bold;
 }
-	
+
 /*Highlighted category in search results list*/
 p.highlight {
 	/*background-color: rgb(231,71,71);*/
@@ -159,7 +159,7 @@ p.highlight {
 	margin: 0px;
 }
 
-	
+
 p.cs {
 	/*color: rgb(231,71,71);*/
 	color: #1C537A;

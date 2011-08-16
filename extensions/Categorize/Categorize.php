@@ -6,10 +6,10 @@
  * @licence GNU General Public Licence 3.0
  * @description Adds input box to edit and upload page which allows users to assign categories to the article. When a user starts typing the name of a category, the extension queries the database to find categories that match the user input. Furthermore, a best categories labels cloud is displayed.
  *
-*/
+ */
 
 ## Abort if not used within Mediawiki
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
 	die();
 }
