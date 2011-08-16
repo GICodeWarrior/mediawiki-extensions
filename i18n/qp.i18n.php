@@ -132,8 +132,8 @@ To save a poll, submit it while not answering to any proposal questions.',
 	'qp_error_eval_variable_variable_access' => 'PHP token $1 with variable variable $2 is not allowed in line $3.',
 	'qp_error_eval_illegal_variable_name' => 'PHP token $1 has disallowed variable name $2 in line $3.',
 	'qp_error_eval_variable_function_call' => 'PHP token $1 with variable function $2 is not allowed in line $3.',
-	'qp_error_eval_self_check' => 'The following eval() self-check was failed: $1. You have unsupported version of PHP, which does not allow to run eval scripts securely.',
-	'qp_error_eval_unable_to_lint' => 'Unable to lint (check your system configuration).',
+	'qp_error_eval_self_check' => 'The following eval() self-check has failed: $1. You have unsupported version of PHP, which does not allow to run eval scripts securely.',
+	'qp_error_eval_unable_to_lint' => 'Unable to lint. Check your system configuration.',
 );
 
 /** Message documentation (Message documentation)
