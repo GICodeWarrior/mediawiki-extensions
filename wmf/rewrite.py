@@ -9,6 +9,7 @@ import webob.exc
 import re
 from eventlet.green import urllib2
 import wmf.client
+import wmf.config
 import time
 
 # the auth system turns our login and key into an account / token pair.
@@ -20,7 +21,6 @@ class Copy2(object):
     Given an open file and a Swift object, we hand back an iterator which reads from the file,
     writes a copy into a Swift object, and returns what it read.
     """
-    token = 'AUTH_tk95804b3cb6a44cfd994c28742cd3333f'
     token = None
 
     def __init__(self, conn, app, url, container, obj, authurl, login, key, content_type=None, modified=None):
@@ -73,7 +73,7 @@ class WMFRewrite(object):
 
     def __init__(self, app, conf):
         self.app = app
-        self.account = account
+        self.account = wmf.config.account
         self.authurl = conf['url'].strip()
         self.login = conf['login'].strip()
         self.key = conf['key'].strip()
@@ -127,11 +127,21 @@ class WMFRewrite(object):
                         app_iter=app_iter)(env, start_response) #01a
             elif status == 404: #4
                 # go to the thumb media store for unknown files
-                reqorig.host = 'ms5.pmtpa.wmnet'
+                reqorig.host = wmf.config.thumbhost
                 # upload doesn't like our User-agent, otherwise we could call it using urllib2.url()
                 opener = urllib2.build_opener()
-                opener.addheaders = [('User-agent', 'Mozilla/5.0')]
-                upcopy = opener.open(reqorig.url)
+                opener.addheaders = [('User-agent', wmf.config.user_agent)]
+                # At least in theory, we shouldn't be handing out links to files that we don't have
+                # (or in the case of thumbs, can't generate). However, someone may have a formerly
+                # valid link to a file, so we should do them the favor of giving them a 404.
+                try:
+                    upcopy = opener.open(reqorig.url)
+                except urllib2.HTTPError,status:
+                    if status == 404:
+                        return webob.exc.HTTPNotFound('Expected original file not found')(env, start_response)
+                    else:
+                        return webob.exc.HTTPNotFound('Unexpected error %s' % `status`)(env, start_response)
+
                 # get the Content-Type.
                 uinfo = upcopy.info()
                 c_t = uinfo.gettype()

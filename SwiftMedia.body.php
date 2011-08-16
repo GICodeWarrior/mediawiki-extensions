@@ -87,7 +87,7 @@ class SwiftFile extends LocalFile {
 
 		parent::__construct( $title, $repo );
 
-		$this->temp_path = false; // Points to our local copy.
+		$this->tempPath = false; // Points to our local copy.
 	}
 
 	/** splitMime inherited */
@@ -98,14 +98,14 @@ class SwiftFile extends LocalFile {
 	/** isVisible inherited */
 
 	function getPath() {
-		$this->temp_path = $this->repo->getLocalCopy($this->repo->container, $this->getRel());
-		return $this->temp_path;
+		$this->tempPath = $this->repo->getLocalCopy($this->repo->container, $this->getRel());
+		return $this->tempPath;
 	}
 
 	/** Get the path of the archive directory, or a particular file if $suffix is specified */
 	function getArchivePath( $suffix = false ) {
-		$this->temp_path = $this->repo->getLocalCopy($this->repo->getZoneContainer('public'), $this->getArchiveRel( $suffix ));
-		return $this->temp_path;
+		$this->tempPath = $this->repo->getLocalCopy($this->repo->getZoneContainer('public'), $this->getArchiveRel( $suffix ));
+		return $this->tempPath;
 	}
 
 	/** Get the path of the thumbnail directory, or a particular file if $suffix is specified */
@@ -114,15 +114,15 @@ class SwiftFile extends LocalFile {
 		if ( $suffix !== false ) {
 			$path .= '/' . $suffix;
 		}
-		$this->temp_path = $this->repo->getLocalCopy($this->repo->getZoneContainer('thumb'), $path);
-		return $this->temp_path;
+		$this->tempPath = $this->repo->getLocalCopy($this->repo->getZoneContainer('thumb'), $path);
+		return $this->tempPath;
 	}
 
 	function __destruct() {
-		if ($this->temp_path) {
+		if ($this->tempPath) {
 			// Clean up temporary data.
-			unlink( $this->temp_path );
-			$this->temp_path = null;
+			unlink( $this->tempPath );
+			$this->tempPath = null;
 		}
 	}
 
@@ -869,13 +869,13 @@ class SwiftRepo extends LocalRepo {
 	/**
 	 * Given a container and relative path, return an absolute path pointing at a
 	 * copy of the file MUST delete the produced file, or else store it in
-	 * SwiftFile->temp_path so it will be deleted when the object goes out of
+	 * SwiftFile->tempPath so it will be deleted when the object goes out of
 	 * scope.
 	 */
 	function getLocalCopy($container, $rel) {
 
 		// get a temporary place to put the original.
-		$temp_path = tempnam( wfTempDir(), 'swift_in_' );
+		$tempPath = tempnam( wfTempDir(), 'swift_in_' );
 
 		/* Fetch the image out of Swift */
 		$conn = $this->connect();
@@ -887,16 +887,16 @@ class SwiftRepo extends LocalRepo {
 			throw new MWException( "Unable to open original file at $container/$rel");
 		}
 
-		wfDebug(  __METHOD__ . " writing to " . $temp_path . "\n");
+		wfDebug(  __METHOD__ . " writing to " . $tempPath . "\n");
 		try {
-			$obj->save_to_filename( $temp_path);
+			$obj->save_to_filename( $tempPath);
 		} catch (IOException $e) {
 			throw new MWException( __METHOD__ . ": error opening '$e'" );
 		} catch (InvalidResponseException $e) {
 			throw new MWException( __METHOD__ . "unexpected response '$e'" );
 		}
 
-		return $temp_path;
+		return $tempPath;
 	}
 
 
@@ -908,6 +908,7 @@ class SwiftRepo extends LocalRepo {
 		$path = $this->resolveVirtualUrl( $virtualUrl );
 		$ret = File::getPropsFromPath( $path );
 		unlink( $path );
+		return $ret;
 	}
 
 
