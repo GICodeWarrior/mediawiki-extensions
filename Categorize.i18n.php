@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Internationalisation file for extension Categorize.
  *
@@ -8,7 +7,7 @@
  * @author Andreas Rindler (mediawiki at jenandi dot com) and Thomas Fauré (faure dot thomas at gmail dot com)
  * @license GNU General Public Licence 3.0
  *
-*/
+ */
 
 $messages = array();
 
@@ -16,10 +15,10 @@ $messages = array();
  * @author Thomas Fauré
  */
 $messages['en'] = array(
-	'categorize-desc'        => 'Adds input box to edit and upload page which allows users to assign categories to the page',
+	'categorize-desc'        => 'Adds an input box to edit and upload pages which allows users to assign categories',
 	'categorize-title'       => 'Knowledge qualification',
 	'categorize-subtitle'    => '',
-	'categorize-footer'      => 'If you want to add a label, please contact us at ...',
+	'categorize-footer'      => 'If you want to add a label, please contact an [[Special:ListUsers/sysop|administrator]].',
 	'categorize-advice'      => 'Click on the labels you want to attribute to this page:'
 );
 
