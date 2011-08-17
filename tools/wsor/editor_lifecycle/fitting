@@ -1,0 +1,218 @@
+#!/usr/bin/python
+# coding: utf-8
+# :vim:ft=python
+
+''' editor lifecycle data fitting tool '''
+
+import sys
+import os
+import numpy as np
+import matplotlib.pyplot as pp
+from matplotlib.font_manager import FontProperties
+from argparse import ArgumentParser
+from scipy.optimize import curve_fit
+
+from lifecycle.models import Expon, PowerLaw, StretchedExpon
+import lifecycle.scale
+
+__prog__ = os.path.basename(os.path.abspath(__file__))
+
+_maxfev = 100000
+
+parent = ArgumentParser(add_help=False)
+parent.add_argument('data_files', metavar='DATA', nargs='+')
+parent.add_argument('-output', dest='output_file', metavar='FILE')
+parent.add_argument('-title')
+group = parent.add_mutually_exclusive_group()
+group.add_argument('-loglog', action='store_true')
+group.add_argument('-logpow', action='store_true')
+parent.add_argument('-constrain', choices=['head', 'tail', 'both'])
+parent.add_argument('-batch', action='store_true', help='do not show graphics')
+parent.add_argument('-force', action='store_true', help='force overwrite')
+parent.add_argument('-minsize', type=int)
+
+parser = ArgumentParser(description=__doc__)
+subparsers = parser.add_subparsers(help='Parametric models supported')
+
+parser_expon = subparsers.add_parser('expon', parents=[parent])
+parser_expon.set_defaults(modelclass=Expon)
+
+parser_stretch = subparsers.add_parser('stretchedexp', parents=[parent])
+parser_stretch.set_defaults(modelclass=StretchedExpon)
+
+parser_power = subparsers.add_parser('powerlaw', parents=[parent])
+parser_power.set_defaults(modelclass=PowerLaw)
+
+class DataError(Exception):
+    pass
+
+class TooFewDataError(DataError):
+    pass
+
+class EmptyDataError(DataError):
+    pass
+
+def plotfit(model, x, y, ye, label='data', **kwargs):
+    xx = np.linspace(x.min(), x.max(), endpoint=True, num=1000)
+    yy = model(xx)
+    kwargs['ecolor'] = 'none'
+    kwargs['ls'] = 'none'
+    pp.errorbar(x, y, ye / 2, label=label, **kwargs)
+    model_label = model.name.split()
+    if len(model_label) > 1:
+        model_label[1] = model_label[1][:3] + '.'
+    model_label = ' '.join(model_label[:2]).capitalize()
+    c = kwargs.get('color', 'r')
+    pp.plot(xx, yy, '--', color=c, label='{} fit'.format(model_label), lw=2.5)
+    if ns.loglog:
+        pp.xscale('log')
+        pp.yscale('log')
+    elif ns.logpow:
+        pp.xscale('power', exponent=model.beta)
+        pp.yscale('log')
+    pp.legend(loc='best', prop=FontProperties(size='x-small'))
+    if ns.title is not None:
+        pp.title(ns.title)
+    pp.xlabel('Days since registration')
+    pp.ylabel('Edits/day')
+
+def plotresid(model, x, y, label='data', **kwargs):
+    r = model(x) - y
+#    rm = r[True - np.isinf(r)].max()
+#    r /= np.abs(rm)
+    pp.axhline(y=0, c='k')
+    kwargs['ls'] = ':'
+    pp.plot(x, r, label=label, **kwargs)
+    pp.title('Fit residuals')
+    pp.xlabel('Days since registration')
+#    pp.ylabel(r'Relative residual $\xi / \max{|\xi|}$')
+#    pp.ylim(-1,1)
+    pp.draw()
+
+def _testoverwrite(*files):
+    exit_flag = False
+    for fn in files:
+        if os.path.exists(fn):
+            exit_flag = True
+            print '%s: error: cannot overwrite %s' % (__prog__, fn)
+    if exit_flag:
+        sys.exit(1)
+
+# TODO add usecols and option for taking only observations based on minimum
+# sample size
+
+def fit(data_file, modelclass, constrain=None, minsize=None):
+    '''
+    Fits a model to data. Data are read from `data_file` and the model is
+    specified as a `modelclass` (see `lifecycle.models`). The data file should
+    contain a (N,4) array where columns are x, y, ye (errors) and n (sample
+    sizes -- number of users on which the average rate y is computed).
+
+    Parameters
+    ----------
+    If `modelclass` is any of `Expon` or `StretchedExpon`, one can constrain the
+    value of some parameters before performing the fit. To this end one can use
+    the parameter `constrain`, which can be any of the following strings: 
+    'both', 'head', or 'tail'. Their meaning is the following:
+
+    * head : A = y[0]
+    * tail : C = y[-1]
+    * both : A = y[0] and C = y[-1]
+    '''
+    x, y, ye, n = np.loadtxt(data_file, unpack=True)
+    idx = ye > 0
+    if minsize:
+        idx = idx * (n > minsize)
+    if not np.any(idx):
+        raise EmptyDataError()
+    if np.sum(idx) < len(modelclass.__params__):
+        raise TooFewDataError()
+    x = x[idx]
+    y = y[idx]
+    ye = ye[idx]
+    model = modelclass()
+    if constrain in ['head', 'both']:
+        model.A = y[np.argmin(np.abs(x))]
+    if constrain in ['tail', 'both']:
+        model.C = y.min()
+    pest, pcov = model.fit(x, y, ye=ye, maxfev=_maxfev)
+    if not np.isscalar(pcov):
+        perr = np.sqrt(np.diag(pcov)) / 2.
+        model.setparams(*zip(pest, perr))
+    else:
+        model.setparams(*pest)
+    gof, resid, Rsquared = model.gof(x, y, ye)
+    model.goftest = gof
+    model.residtest = resid
+    model.Rsquared = Rsquared
+    print model.summary(dataset=data_file, observations=len(x))
+    return x, y, ye, model
+
+def main(ns):
+    # import matploblib 
+    from matplotlib.lines import lineMarkers as markers
+    markers = dict(filter(
+            lambda k : isinstance(k[0],str) and k[1] is not '_draw_nothing',
+            markers.items())).keys()
+    colors = 'bgcmykw'
+
+    data = []
+    models = []
+    labels = []
+
+    # fit all datasets
+    for f in ns.data_files:
+        try:
+            x, y, ye, model = fit(f, ns.modelclass, ns.constrain, ns.minsize)
+        except TooFewDataError:
+            print >> sys.stderr, '%s: warning: too few data: %s' % (__prog__, f)
+            continue
+        except EmptyDataError:
+            print >> sys.stderr, '%s: warning: no usable data: %s'% (__prog__, f)
+            continue
+        data.append((x,y,ye))
+        models.append(model)
+        labels.append(os.path.splitext(f)[0])
+    
+    # plot fits 
+    pp.figure()
+    pp.hold(1)
+    for i, ((x, y, ye), model, label) in enumerate(zip(data, models, labels)):
+        m = markers[i % len(markers)]
+        c = colors[i % len(colors)]
+        plotfit(model, x, y, ye, label, marker=m, color=c)
+
+    # plot residuals
+    pp.figure()
+    pp.hold(1)
+    for i, ((x, y, ye), model, label) in enumerate(zip(data, models, labels)):
+        m = markers[i % len(markers)]
+        c = colors[i % len(colors)]
+        plotresid(model, x, y, label, marker=m, color=c)
+
+    # save figures
+    if ns.output_file is not None:
+        fn, ext = os.path.splitext(ns.output_file)
+        fmt = ext[1:]
+        if ns.batch and fmt.lower() != 'pdf':
+            print '%s: error: batch mode supports only PDF format' % __prog__
+            sys.exit(1)
+        resid_output_file = fn + '_residuals' + ext
+        if not ns.force:
+            _testoverwrite(ns.output_file, resid_output_file)
+        pp.figure(1)
+        pp.savefig(ns.output_file, format=fmt)
+        print '%s: output saved to %s' % (__prog__, ns.output_file)
+        pp.figure(2)
+        pp.savefig(resid_output_file, format=fmt)
+        print '%s: output saved to %s' % (__prog__, resid_output_file)
+
+    pp.show()
+
+if __name__ == '__main__':
+    ns = parser.parse_args()
+#    if ns.batch:
+#        import matplotlib
+#        matplotlib.use('PDF')
+#    import matplotlib.pyplot as pp
+    main(ns)

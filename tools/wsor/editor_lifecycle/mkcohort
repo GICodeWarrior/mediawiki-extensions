@@ -1,0 +1,73 @@
+#!/usr/bin/python
+#:vim:ft=python
+
+''' finding better cohorts by real user activity '''
+
+import os
+import sys
+import csv
+import numpy as np
+
+from collections import deque
+from itertools import groupby
+from argparse import ArgumentParser, FileType
+from dateutil.parser import parser as DateParser
+
+__prog__ = os.path.basename(__file__)
+
+def yearkey(date):
+    return date.year, 
+
+def monthkey(date):
+    return date.year, date.month
+
+def daykey(date):
+    return date.year, date.month, date.day
+
+parser = ArgumentParser(description=__doc__)
+parser.add_argument('data', type=FileType('r'))
+group = parser.add_mutually_exclusive_group(required=1)
+group.add_argument('--day', dest='keyfunc', const=daykey, action='store_const')
+group.add_argument('--month', dest='keyfunc', const=monthkey, action='store_const')
+group.add_argument('--year', dest='keyfunc', const=yearkey, action='store_const')
+
+parser.add_argument('--minspan', default=3600, type=int)
+parser.add_argument('--mincount', default=2, type=int)
+
+date_parser = DateParser()
+fieldnames = ['user', 'max_timestamp', 'min_timestamp', 'editcount']
+
+def activity(rowiterator, mincount, minspan):
+    for row in rowiterator:
+        user = float(row['user'])
+        min_timestamp = date_parser.parse(row['min_timestamp'])
+        max_timestamp = date_parser.parse(row['max_timestamp'])
+        editcount = float(row['editcount'])
+        span = (max_timestamp - min_timestamp).total_seconds()
+        if (editcount > mincount) and (span > minspan):
+            yield user, editcount / span
+
+def magnitude(x):
+    return np.floor(np.log10(x))
+
+if __name__ == '__main__':
+    ns = parser.parse_args()
+    reader = csv.DictReader(ns.data, fieldnames=fieldnames, delimiter='\t',
+            quoting=csv.QUOTE_NONE)
+
+    def cohortdatefunc(row):
+        return ns.keyfunc(date_parser.parse(row['min_timestamp']))
+
+    for cohortdate, subiter in groupby(reader, cohortdatefunc):
+        data = np.asarray(list(activity(subiter, ns.mincount, ns.minspan)))
+        if len(data) > 0:
+            user, rate = data.T
+            idx = rate.argsort()
+            data = list(data[idx])
+            kf = lambda k : magnitude(k[1])
+            for m, subsubiter in groupby(data, kf):
+                outrow = deque([ '-'.join(map(str, cohortdate)), '%d' % m ])
+                for u, e in subsubiter:
+                    outrow.append('%d' % u)
+                print '\t'.join(outrow)
+

@@ -1,0 +1,81 @@
+#!/usr/bin/python
+#:vim:ft=python
+
+''' batch model fitting (usable with xargs)'''
+
+import re
+import os
+import sys
+import numpy as np
+from argparse import ArgumentParser
+
+from lifecycle.models import StretchedExpon
+
+__prog__ = os.path.basename(__file__)
+
+parser = ArgumentParser(description=__doc__)
+parser.add_argument('data_file', metavar='data')
+parser.add_argument('-m', '--min-size', type=int, default=0)
+parser.add_argument('-c', '--constrain', choices=['head', 'tail', 'both'])
+parser.add_argument('--maxfev', type=int, default=10000)
+parser.add_argument('--debug', action='store_true')
+parser.add_argument('--split-name', action='store_true', help='split input file'
+        ' name into date and a rate part.')
+
+if __name__ == '__main__':
+    # parse command line
+    ns = parser.parse_args()
+
+    # read data, filter data
+    x, y, ye, n = np.loadtxt(ns.data_file, unpack=1)
+    idx = (ye > 0) * (n > ns.min_size)
+    if idx.sum() == 0:
+        print >> sys.stderr, '%s: error: no data meeting requirements in %s'\
+                % (__prog__, ns.data_file)
+        sys.exit(1)
+    if idx.sum() < 4:
+        print >> sys.stderr, '%s: error: non identifiable data in %s'\
+                % (__prog__, ns.data_file)
+        sys.exit(1)
+
+    # create model, set constraints
+    model = StretchedExpon()
+    if ns.constrain in ['head', 'both']:
+        model.A = y[np.argmin(np.abs(x))]
+    if ns.constrain in ['tail', 'both']:
+        model.C = y.min()
+
+    # fit model
+    try:
+        pest, pcov = model.fit(x[idx], y[idx], ye[idx], maxfev=ns.maxfev, warning=False)
+    except ValueError, e:
+        print >> sys.stderr, '%s: error: "%s" when fitting %s' % (__prog__,
+                e.message, ns.data_file)
+        if ns.debug:
+            raise
+        else:
+            sys.exit(1)
+    if np.isscalar(pcov) or np.isinf(pcov).any():
+        print >> sys.stderr, '%s: error: bad covariance matrix in %s' % (\
+                __prog__, ns.data_file)
+        sys.exit(1)
+
+    # compute errors, MRT
+    perr = np.sqrt(np.diag(pcov)) / 2.
+    model.setparams(*zip(pest,perr))
+    mrt = model.mrt(model.tau, model.beta)
+    N = len(model.__params__)
+    params = np.empty((N * 2 + 1,), dtype=float)
+    params[:N] = [ model.A, model.tau, model.beta, model.C ]
+    params[N:2*N] = map(lambda k : k or np.nan, [ model.A_err, model.tau_err,
+        model.beta_err, model.C_err ])
+    params[-1] = mrt
+    
+    # print output line
+    key, _ = os.path.splitext(ns.data_file)
+    if ns.split_name:
+        key = key.split('_')
+    else:
+        key = [ key ] 
+    params = map(lambda k : '%12.5g' % k, params)
+    print '\t'.join(key + params)

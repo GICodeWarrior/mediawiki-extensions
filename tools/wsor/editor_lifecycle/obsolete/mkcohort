@@ -1,0 +1,196 @@
+#!/usr/bin/python
+# coding: utf-8
+# :vim:ft=python
+
+# TODO: obsolete
+
+''' creates cohort files, filtering out bots '''
+
+'''
+This script reads two files: an ZIP archive file, and an index file, which is a
+tab-separated text file like the following:
+
+    34	    WojPob	        20010129110725	2524
+    94	    AstroNomer	        20010207222248	1532
+    43	    Lee Daniel Crocker	20010314020407	4388
+    86	    Stephen Gilbert	20010326191355	3599
+    3	    Tobias Hoevekamp	20010326202105	1903
+    1273    Wathiik	        20010510171751	1772
+    3371    Arno	        20010721180708	2700
+    122	    Ap	                20010722201619	2137
+    182	    Rjstott	        20010726102546	2602
+    64	    Uriyan	        20010727141651	1634
+
+Where fields are: id, name, date, count. Dates are parsed using dateutil, so
+other formats are allowed too (e.g.  2010-01-29 11:07:25). 
+
+The script will aggregate users based on the date field and will lookup for
+files of the form <id>.npy in the archive file. Each of these files contains the
+daily edits count for a single user, stored using the NumPy binary array
+format. A relative path within the ZIP archive can be specified from the command
+line with -P/--datapath. Once the data for a cohort (e.g.  an aggregated group
+of users) have been collected, the script will compute the average activity rate
+since the first day of activity for all users in that cohort.
+
+The script produces two files per each cohort: a tab-separated values file with
+cohort average activity rate, and a compressed NumPy binary archive with the
+user data array files.
+
+For each discovered cohort, the script will print on the console the date of the
+cohort, how many users it contains, and how many suspected BOT users it filtered
+out from the index. Use --bot disable this chieck and always include them. The
+check is as follows: if the name contains the pattern 'bot' at the beginning or
+at the end of any word, it will be filtered out (e.g. "Botuser IV" will match,
+but "Francis Abbott" won't). If arguments -mincount or -maxcount (or both) are
+passed, the script will process only users whose edit count is below the minimum
+count, or above the maximum count, or both.
+
+Please note that the index file must be already sorted by date, in order for the
+group by date aggregation to work. You can use `sort' from the commmand line,
+e.g.:
+
+    $~ sort -t$'\t' -k3 -h unsorted.tsv
+
+should sort file unsorted.tsv. 
+'''
+
+import re
+import os
+import sys
+import csv
+import numpy as np
+from argparse import ArgumentParser, FileType
+from contextlib import closing
+from itertools import groupby
+from dateutil.parser import parser as DateParser
+from datetime import datetime
+from zipfile import ZipFile
+
+from rates import computerates
+
+__prog__ = os.path.basename(os.path.abspath(__file__))
+_botpat = r'\bbot|bot\b' 
+_fields = ['id', 'name', 'date', 'count']
+
+def yearkey(date):
+    return date.year, 
+
+def monthkey(date):
+    return date.year, date.month
+
+def daykey(date):
+    return date.year, date.month, date.day
+
+parser = ArgumentParser(description=__doc__)
+parser.add_argument('index', type=FileType('r'), help='*must* be already sorted')
+parser.add_argument('archive_path', metavar='archive', help='data archive in ZIP '
+        'format')
+group = parser.add_mutually_exclusive_group(required=1)
+group.add_argument('--year', help='group by year', action='store_const',
+        const=yearkey, dest='keyfunc')
+group.add_argument('--month', help='group by month', action='store_const',
+        const=monthkey, dest='keyfunc')
+group.add_argument('--day', help='group by day', action='store_const', 
+        const=daykey, dest='keyfunc')
+parser.add_argument('--bots', action='store_true', help='do NOT filter out bots')
+parser.add_argument('-P', '--datapath', help='relative path of files within '
+        'archive', default='')
+parser.add_argument('-mincount', type=int)
+parser.add_argument('-maxcount', type=int)
+parser.add_argument('-minperyear', type=int)
+parser.add_argument('-maxperyear', type=int)
+parser.add_argument('-n', '--dry-run', action='store_true', help='write to '
+        'console all actions, but do not produce any file')
+parser.add_argument('-every', type=int, help='default: average over %(default)d days',
+        default=30, metavar='NUM')
+parser.add_argument('-ns', type=int, action='append', help='select only these NS',
+        dest='only')
+
+dateparser = DateParser()
+
+# dummy ZipFile class in case we do not want do anything!
+class DummyZipFile:
+    def __init__(self, fn, mode):
+        pass
+    def close(self):
+        pass
+    def write(self, fn, *args):
+        pass
+
+if __name__ == '__main__':
+    ns = parser.parse_args()
+    reader = csv.DictReader(ns.index, _fields, quoting=csv.QUOTE_NONE,
+            delimiter='\t')
+    archive = ZipFile(ns.archive_path)
+
+    def _keyfunc(row):
+        try:
+            date = dateparser.parse(row['date'])
+        except:
+            print row
+            raise
+
+        return ns.keyfunc(date)
+
+    # group by index by date of registration
+    for key, subiter in groupby(reader, _keyfunc):
+
+        # reset indices and define output file names from cohort period
+        tot_users = 0
+        tot_bots = 0
+        datestr = '-'.join(map(lambda k : '%02d' % k, key)) # (2010,1) -> '2010-01'
+        zipfn = '{}.npz'.format(datestr)
+        tsvfn = '{}.tsv'.format(datestr)
+
+        # if user wants to do a dry-run, replace the Zip files class with the
+        # dummy one
+        if ns.dry_run:
+            ZipFile = DummyZipFile
+
+        # for each user, determine if may go in cohort
+        with closing(ZipFile(zipfn, 'w')) as zf:
+            for row in subiter:
+
+                # compute user details (edit count, yearly activity rate, etc.)
+                # and other useful variables
+                user_id = row['id']
+                count = int(row['count'])
+                user_date = dateparser.parse(row['date'])
+                now_date = datetime.now()
+                activity_span = float((now_date - user_date).days) # in days
+                yearly_rate = count / activity_span * 365.0
+                bot_flag = re.search(_botpat, row['name'], re.I) is not None
+                tot_bots += bot_flag # update counts of bot matches
+
+                # define paths 
+                basepath = '{}.npy'.format(user_id) 
+                archivepath = os.path.join(ns.datapath, basepath)
+
+                # check cohort membership (keep if conjunction of all given
+                # criteria is true, that is, discard if any given criterion is
+                # false)
+                if ns.mincount is not None and count <= ns.mincount:
+                    continue
+                if ns.maxcount is not None and count >= ns.maxcount:
+                    continue
+                if ns.minperyear is not None and yearly_rate <= ns.minperyear:
+                    continue
+                if ns.maxperyear is not None and yearly_rate >= ns.maxperyear:
+                    continue
+                # user can turn this test off by passing --bots
+                if not ns.bots and bot_flag:
+                    continue
+                try:
+                    zf.writestr(basepath, archive.read(archivepath))
+                except KeyError:
+                    print >> sys.stderr, '%s: warning: %s not in archive' %\
+                            (__prog__, archivepath)
+                tot_users += 1
+
+        if tot_users > 0:
+            rates = computerates(zipfn, ns.every, onlyns=ns.only)
+            np.savetxt(tsvfn, rates, fmt='%f')
+
+            print '%s: %s, %s created (users: %5d, skipped bots %5d)' % (
+                    __prog__, tsvfn, zipfn, tot_users, tot_bots)
+            sys.stdout.flush()
