@@ -3152,7 +3152,7 @@ $messages['ru'] = array(
 	'math_WrongFontEncodingWithHint' => 'Символ «$1» не может использоваться в кодировке шрифта «$2» (попробуйте использовать команду «$3{...}»)',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(
