@@ -16,6 +16,7 @@ class ArchiveLinksSpider extends Maintenance {
 	private $db_slave;
 	private $db_result;
 	private $jobs;
+	private $downloaded_files;
 
 	public function execute( ) {
 		global $wgArchiveLinksConfig, $wgLoadBalancer, $path;
@@ -63,56 +64,71 @@ class ArchiveLinksSpider extends Maintenance {
 	
 	private function call_wget( $url ) {
 		global $wgArchiveLinksConfig, $path;
+		
+		//Check Configuration
+		if ( isset( $wgArchiveLinksConfig['file_types'] ) ) {
+			if ( is_array( $wgArchiveLinksConfig['file_types']) ){
+				$accept_file_types = '-A ' . implode( ',', $wgArchiveLinksConfig['file_types'] );
+			} else {
+				$accept_file_types = '-A ' . $wgArchiveLinksConfig['file_types'];
+			}
+		} else {
+			//we should set a default, for now we will disable this for testing purposes, but this should be closed sometime later...
+			$accept_file_types = '';
+		}
+		//At the current time we are only adding support for the local filestore, but swift support is something that will be added later
+		//Add shutup operator for PHP notice, it's okay if this is not set as it's an optional config value
+		switch( @$wgArchiveLinksConfig['filestore'] ) {
+			case 'local':
+			default:
+				if ( isset( $wgArchiveLinksConfig['subfolder_name'] ) ) {
+					$dir = $path . $wgArchiveLinksConfig['subfolder_name'];
+				} elseif ( isset( $wgArchiveLinksConfig['content_path'] ) ) {
+					$dir =  realpath( $wgArchiveLinksConfig['content_path'] );
+					if ( !$dir ) {
+						die ( 'The path you have set for $wgArchiveLinksConfig[\'content_path\'] does not exist. ' .
+								'This makes the spider a very sad panda. Please either create it or use a different setting.');
+					}
+				} else {
+					$dir = $path . '/archived_content/';
+				}
+				$dir = $dir . sha1( time() . ' - ' . $url );
+				mkdir( $dir, 0644, TRUE );
+				$log_dir = $dir . '/log.txt';
+				$log_dir_esc = escapeshellarg($log_dir);
+				$dir = escapeshellarg( $dir );
+				$sanitized_url = escapeshellarg( $url );
+		}
+
+		if ( ! isset( $wgArchiveLinksConfig['wget_quota'] ) ) {
+			//We'll set the default max quota for any specific web page for 8 mb, which is kind of a lot but should allow for large images
+			$wgArchiveLinksConfig['wget_quota'] = '8m';
+		}
+
+		if ( !isset( $wgArchiveLinksConfig['retry_times'] ) ) {
+			//by default wget is set to retry something 20 times which is probably *way* too high for our purposes
+			//this has the potential to really slow it down as --waitretry is set to 10 seconds by default, meaning that it would take
+			//serveral minutes to go through all the retries which has the potential to stall the spider unnecessarily
+			$wgArchiveLinksConfig['retry_times'] = '3';
+		}
+		
+		
+		//Do stuff with wget
 		if ( isset( $wgArchiveLinksConfig['wget_path'] ) && file_exists( $wgArchiveLinksConfig['wget_path'] ) ) {
 			die ( 'Support is not yet added for wget in a different directory' );
 		} elseif ( file_exists( "$path/wget.exe" ) ) {
-			if ( isset( $wgArchiveLinksConfig['file_types'] ) ) {
-				if ( is_array( $wgArchiveLinksConfig['file_types']) ){
-					$accept_file_types = '-A ' . implode( ',', $wgArchiveLinksConfig['file_types'] );
-				} else {
-					$accept_file_types = '-A ' . $wgArchiveLinksConfig['file_types'];
+			wfShellExec( "cd $path" );
+			//echo "\n\nwget.exe -nv -p -H -E -k -t {$wgArchiveLinksConfig['retry_times']} -Q{$wgArchiveLinksConfig['retry_times']} -o $log_dir -P $dir $accept_file_types $sanitized_url\n\n";
+			wfShellExec( "wget.exe -nv -p -H -E -k -t {$wgArchiveLinksConfig['retry_times']} -Q {$wgArchiveLinksConfig['wget_quota']} -o $log_dir_esc -P $dir $accept_file_types $sanitized_url" );
+			$this->parse_wget_log( $log_dir, $url );
+			/*foreach( $this->downloaded_files as $file ) {
+				if ( $file['status'] === 'success' ) {
+					
+				} elseif ( $file['status'] === 'failure' ) {
+					echo 'bar';
 				}
-			} else {
-				//we should set a default, for now we will disable this for testing purposes, but this should be closed sometime later...
-				$accept_file_types = '';
-			}
-			//At the current time we are only adding support for the local filestore, but swift support is something that will be added later
-			//Add shutup operator for PHP notice, it's okay if this is not set as it's an optional config value
-			switch( @$wgArchiveLinksConfig['filestore'] ) {
-				case 'local':
-				default:
-					if ( isset( $wgArchiveLinksConfig['subfolder_name'] ) ) {
-						$dir = $path . $wgArchiveLinksConfig['subfolder_name'];
-					} elseif ( isset( $wgArchiveLinksConfig['content_path'] ) ) {
-						$dir =  realpath( $wgArchiveLinksConfig['content_path'] );
-						if ( !$dir ) {
-							die ( 'The path you have set for $wgArchiveLinksConfig[\'content_path\'] does not exist. ' .
-									'This makes the spider a very sad panda. Please either create it or use a different setting.');
-						}
-					} else {
-						$dir = $path . '/archived_content/';
-					}
-					$dir = $dir . sha1( time() . ' - ' . $url );
-					mkdir( $dir, 0644, TRUE );
-					$dir = escapeshellarg( $dir );
-					$sanitized_url = escapeshellarg( $url );
-			}
-			
-			if ( ! isset( $wgArchiveLinksConfig['wget_quota'] ) ) {
-				//We'll set the default max quota for any specific web page for 8 mb, which is kind of a lot but should allow for large images
-				$quota = '8m';
-			}
-			
-			if ( !isset( $wgArchiveLinksConfig['retry_times'] ) ) {
-				//by default wget is set to retry something 20 times which is probably *way* too high for our purposes
-				//this has the potential to really slow it down as --waitretry is set to 10 seconds by default, meaning that it would take
-				//serveral minutes to go through all the retries which has the potential to stall the spider unnecessarily
-				$wgArchiveLinksConfig['retry_times'] = '3';
-			}
-			
-			shell_exec( "cd $path" );
-			shell_exec( "wget.exe -nv -p -H -E -k -t {$wgArchiveLinksConfig['retry_times']} -Q{$wgArchiveLinksConfig['retry_times']} -o $dir/log.txt -P $dir $accept_file_types $sanitized_url" );
-			$this->parse_wget_log( "$dir/log.txt", $url );
+			}*/
+			$this->db_master->insert( $this->downloaded_files[0]['url'] );
 		} else {
 			//this is primarily designed with windows in mind and no built in wget, so yeah, *nix support should be added, in other words note to self...
 			die ( 'wget must be installed in order for the spider to function in wget mode' );
@@ -121,11 +137,11 @@ class ArchiveLinksSpider extends Maintenance {
 
 	private function check_queue( ) {
 		//need to fix this to use arrays instead of what I'm doing now
-		$this->db_result['job-fetch'] = $this->db_slave->select('el_archive_queue', '*', '`el_archive_queue`.`delay_time` <= ' . time()
-						. ' AND `el_archive_queue`.`in_progress` = 0'
-						. ' ORDER BY `el_archive_queue`.`queue_id` ASC'
-						. ' LIMIT 1');
-
+		$this->db_result['job-fetch'] = $this->db_slave->select( 'el_archive_queue', '*',
+				array( 'delay_time' => ' >=' . time(), 'in_progress' => '0'),
+				__METHOD__,
+				array( 'ORDER BY' =>  'queue_id ASC', 'LIMIT' => '1' ));
+		
 		if ( $this->db_result['job-fetch']->numRows() > 0 ) {
 			$row = $this->db_result['job-fetch']->fetchRow();
 			
@@ -244,36 +260,51 @@ class ArchiveLinksSpider extends Maintenance {
 	}
 	
 	private function parse_wget_log( $log_path, $url ) {
-		$fp = fopen( $log_path, 'r' ) or die( 'can\'t find wget log file to parse' );
+		//We have a die statement here, PHP error unnecessary
+		@$fp = fopen( $log_path, 'r' ) or die( 'can\'t find wget log file to parse' );
 		
-		$downloaded_files = array ( 'failed' => array(), 'success' => array() );
+		$this->downloaded_files = array ( );
+		
+		$line_regexes = array ( 
+			'url' => '%^\d{4}-(?:\d{2}(?:-|:| )?){5}URL:(http://.*?) \[.+?\] ->%',
+			'finish' => '%^Downloaded: \d+ files, (\d(?:.\d)?+(?:K|M)).*%',
+			'sole_url' => '%^(http://.*):%',
+			'error' => '%^\d{4}-(?:\d{2}-?){2} (?:\d{2}:?){3} ERROR (\d){3}:(.+)%',
+			'quota_exceed' => '%^Download quota of .*? EXCEEDED!%',
+			'finish_line' => '%^FINISHED --(\d{4}-(?:\d{2}(?:-|:| )){5})-%',
+		);
 		
 		while ( $line = fgets( $fp ) ) {
-			$line_regexes = array ( 
-				'url' => '%\^d{4}-(?:\d{2}-?){2} (?:\d{2}:?){3} URL:(http://.*) \[.+\] ->%',
-				'finish' => '%^Downloaded: \d+ files, (\d+(?:K|M)).*%',
-				'sole_url' => '%^(http://.*):%',
-				'error' => '%^\d{4}-(?:\d{2}-?){2} (?:\d{2}:?){3} ERROR (\d){3}:(.+)%',
-				
-			);
 			foreach( $line_regexes as $line_type => $regex ) {
 				if ( preg_match( $regex, $line, $matches ) ) {
 					switch ( $line_type ) {
 						case 'url':
-							$downloaded_files['success'][] = $matches[1];
+							$this->downloaded_files[] = array (
+								'status' => 'success',
+								'url' => $matches[1]
+								);
 							$last_line = 'url';
 							break;
 						case 'sole_url':
-							$downloaded_files['failed'][]['url'] = $matches[1];
+							$this->downloaded_files[] = array (
+								'status' => 'failed',
+								'url' => $matches[1]
+								);
 							break;
 						case 'error':
-							end( $downloaded_files['failed'] );
-							$array_key = key( $downloaded_files['failed'] );
-							$downloaded_files['failed'][$array_key]['error_code'] = $matches[1];
-							$downloaded_files['failed'][$array_key]['error_text'] = $matches[2];
+							//this is a contination of the previous line, so just add stuff to that
+							end( $this->downloaded_files );
+							$array_key = key( $this->downloaded_files );
+							$this->downloaded_files[$array_key]['error_code'] = $matches[1];
+							$this->downloaded_files[$array_key]['error_text'] = $matches[2];
 							break;
 						case 'finish':
 							$finish_time = $matches[1];
+							break;
+						case 'finish_line':
+							//this is kind of useless, it contains the date/time stamp of when the download finished
+							break;
+						case 'quote_exceed':
 							break;
 						default:
 							//we missed a line type, this is mainly for testing purposes and shouldn't happen when parsing the log
@@ -283,6 +314,8 @@ class ArchiveLinksSpider extends Maintenance {
 				}
 			}
 		}
+		
+		return $this->downloaded_files;
 	}
 }
 
