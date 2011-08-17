@@ -38,6 +38,7 @@ $messages['en'] = array(
 	'wikiscripts-exception-unknownfunction' => 'Trying to use an unnknown built-in function $2 $1',
 	'wikiscripts-exception-notlist' => 'Trying to append an element to the end of \'\'associated\'\' array $1',
 	'wikiscripts-exception-appendyield' => 'Trying to use append and yield in the same function $1',
+	'wikiscripts-exception-assocbadmerge' => 'Trying to merge an assoicated array with a non-array $1',
 
 	'wikiscripts-exception-notenoughargs-user' => 'Not enough arguments for function $2::$3 $1',
 	'wikiscripts-exception-nonexistent-module' => 'Call to non-existent module $2 $1',

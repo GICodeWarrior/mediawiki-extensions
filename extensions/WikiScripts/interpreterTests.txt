@@ -81,6 +81,8 @@ function run() {
 	a = 2;
 	a += 3;
 	a -= 7;
+	a *= 3;
+	a /= 5;
 	return a;
 }
 !! endarticle
@@ -90,7 +92,7 @@ Assigment with arithmetics (+=, -=, etc)
 !! input
 {{i:Assigment with arithmetics|run}}
 !! result
-<p>-2
+<p>-1.2
 </p>
 !! end
 

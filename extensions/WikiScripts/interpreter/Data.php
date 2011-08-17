@@ -217,21 +217,27 @@ class WSData {
 		return new WSData( $type, $data );
 	}
 	
-	public static function sum( $a, $b ) {
-		if( $a->type == self::DString || $b->type == self::DString )
-			return new WSData( self::DString, $a->toString() . $b->toString() );
-		elseif( $a->type == self::DList && $b->type == self::DList )
+	public static function sum( $a, $b, $module, $line ) {
+		// Lists
+		if( $a->type == self::DList && $b->type == self::DList )
 			return new WSData( self::DList, array_merge( $a->toList(), $b->toList() ) );
 		elseif( $a->type == self::DList )
 			return new WSData( self::DList, array_merge( $a->toList(), array( $b ) ) );
 		elseif( $b->type == self::DList )
 			return new WSData( self::DList, array_merge( array( $a ), $b->toList() ) );
+		// Associated arrays
 		elseif( $a->type == self::DAssoc && $b->type == self::DAssoc )
 			return new WSData( self::DAssoc, array_merge( $a->toAssoc(), $b->toAssoc() ) );
-		elseif( $a->type == self::DInt && $b->type == self::DInt )
-			return new WSData( self::DInt, $a->toInt() + $b->toInt() );
-		else
+		elseif( $a->type == self::DAssoc || $b->type == self::DAssoc )
+			throw new WSUserVisibleException( 'assocbadmerge', $module, $line );
+		// Strings
+		elseif( $a->type == self::DString || $b->type == self::DString )
+			return new WSData( self::DString, $a->toString() . $b->toString() );
+		// Number, booleans and null
+		elseif( $a->type == self::DFloat || $b->type == self::DFloat )
 			return new WSData( self::DFloat, $a->toFloat() + $b->toFloat() );
+		else
+			return new WSData( self::DInt, $a->toInt() + $b->toInt() );
 	}
 
 	public static function sub( $a, $b ) {
