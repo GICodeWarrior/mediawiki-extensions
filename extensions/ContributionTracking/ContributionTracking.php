@@ -35,7 +35,7 @@ $wgAutoloadClasses['ApiContributionTracking'] = $dir . 'ApiContributionTracking.
 $wgAutoloadClasses['ContributionTrackingProcessor'] = $dir . 'ContributionTracking.processor.php';
 
 //this only works if contribution tracking is inside a mediawiki DB, which typically it isn't.
-//$wgHooks['LoadExtensionSchemaUpdates'][] = 'efContributionTrackingLoadUpdates';
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'efContributionTrackingLoadUpdates';
 
 // Resource modules
 $ctResourceTemplate = array(
