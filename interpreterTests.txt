@@ -11,7 +11,7 @@ function run() {
 !! test
 Basic mathematics
 !! input
-{{i:Basic mathematics|run}}
+{{#invoke:Basic mathematics|run}}
 !! result
 <p>5
 </p>
@@ -29,7 +29,7 @@ function run() {
 !! test
 ** associativity
 !! input
-{{i:Pow associativity|run}}
+{{#invoke:Pow associativity|run}}
 !! result
 <p>262144
 </p>
@@ -48,7 +48,7 @@ function add( a, b ) {
 !! test
 String contecation
 !! input
-{{i:string contecation|add|3|7}}
+{{#invoke:string contecation|add|3|7}}
 !! result
 <p>37
 </p>
@@ -68,7 +68,7 @@ function run() {
 !! test
 Multiple variable assignment
 !! input
-{{i:Multiple variable assignment|run}}
+{{#invoke:Multiple variable assignment|run}}
 !! result
 <p>6
 </p>
@@ -90,7 +90,7 @@ function run() {
 !! test
 Assigment with arithmetics (+=, -=, etc)
 !! input
-{{i:Assigment with arithmetics|run}}
+{{#invoke:Assigment with arithmetics|run}}
 !! result
 <p>-1.2
 </p>
@@ -109,7 +109,7 @@ function run() {
 !! test
 Boolean shortcut
 !! input
-{{i:boolean shortcut|run}}
+{{#invoke:boolean shortcut|run}}
 !! result
 <p>3
 </p>
@@ -127,7 +127,7 @@ function run() {
 !! test
 Equality
 !! input
-{{i:equality|run}}
+{{#invoke:equality|run}}
 !! result
 <p>1
 </p>
@@ -144,7 +144,7 @@ function run() {
 !! test
 Comparsions
 !! input
-{{i:comparisons|run}}
+{{#invoke:comparisons|run}}
 !! result
 <p>1
 </p>
@@ -161,7 +161,7 @@ function getText() {
 !! test
 Integration with other functions
 !! input
-{{lc:{{i:trivial|getText}}}}
+{{lc:{{#invoke:trivial|getText}}}}
 !! result
 <p>aa
 </p>
@@ -178,7 +178,7 @@ function run() {
 !! test
 Conditions (?)
 !! input
-{{i:conditions|run}}
+{{#invoke:conditions|run}}
 !! result
 <p>a
 </p>
@@ -202,7 +202,7 @@ function run() {
 !! test
 Conditions (if-then, if-then-else)
 !! input
-{{i:Conditions (if-then-else)|run}}
+{{#invoke:Conditions (if-then-else)|run}}
 !! result
 <p>ok
 </p>
@@ -219,7 +219,7 @@ function run() {
 !! article
 Template:Bullets
 !! text
-{{i:bullets|run}}
+{{#invoke:bullets|run}}
 !! endarticle
 
 !! test
@@ -245,7 +245,7 @@ function run() {
 !! article
 Template:TranscludedSwitch
 !! text
-{{i:TranscludedSwitch|run}}
+{{#invoke:TranscludedSwitch|run}}
 !! endarticle
 
 !! test
@@ -268,7 +268,7 @@ function run() {
 !! test
 Empty argument handling check
 !! input
-{{i:Empty argument handling check|run}}
+{{#invoke:Empty argument handling check|run}}
 !! result
 <p>1
 </p>
@@ -285,7 +285,7 @@ function run() {
 !! test
 Casts
 !! input
-{{i:Casts|run}}
+{{#invoke:Casts|run}}
 !! result
 <p>1
 </p>
@@ -305,7 +305,7 @@ function run() {
 !! test
 Exception handling
 !! input
-{{i:Exception handling|run}}
+{{#invoke:Exception handling|run}}
 !! result
 <p>dividebyzero
 </p>
@@ -329,7 +329,7 @@ function run() {
 !! test
 Template access via tpl_parse()
 !! input
-{{i:Numberofsomething|run}}
+{{#invoke:Numberofsomething|run}}
 !! result
 <p>{{numberofsomething}}: 1000
 </p>
@@ -350,13 +350,13 @@ function run2() {
 !! article
 Template:123
 !! text
-{{i:123|run1}}
+{{#invoke:123|run1}}
 !! endarticle
 
 !! test
 Nested wikiscripts via tpl_parse()
 !! input
-{{i:123|run2}}
+{{#invoke:123|run2}}
 !! result
 <p>123
 </p>
@@ -374,7 +374,7 @@ function run() {
 !! test
 String functions 1
 !! input
-{{i:String functions 1|run}}
+{{#invoke:String functions 1|run}}
 !! result
 <p>1
 </p>
@@ -392,7 +392,7 @@ function run() {
 !! test
 String functions 2
 !! input
-{{i:String functions 2|run}}
+{{#invoke:String functions 2|run}}
 !! result
 <p>1
 </p>
@@ -409,7 +409,7 @@ function run() {
 !! test
 split()/join()
 !! input
-{{i:split/join|run}}
+{{#invoke:split/join|run}}
 !! result
 <p>a!b!c!d e f
 </p>
@@ -429,7 +429,7 @@ function run() {
 !! test
 isset/delete
 !! input
-{{i:isset/delete|run}}
+{{#invoke:isset/delete|run}}
 !! result
 <p>a: 1; b: 0
 </p>
@@ -446,7 +446,7 @@ function run() {
 !! test
 in/contains
 !! input
-{{i:in/contains|run}}
+{{#invoke:in/contains|run}}
 !! result
 <p>2
 </p>
@@ -468,7 +468,7 @@ function run() {
 !! test
 Lists: basics
 !! input
-{{i:Lists: basics|run}}
+{{#invoke:Lists: basics|run}}
 !! result
 <p>bc
 </p>
@@ -487,7 +487,7 @@ function run() {
 !! test
 Lists: foreach
 !! input
-{{i:Lists: foreach|run}}
+{{#invoke:Lists: foreach|run}}
 !! result
 <p>1
 </p><p>4
@@ -509,7 +509,7 @@ function run() {
 !! test
 List merging
 !! input
-{{i:List merging|run}}
+{{#invoke:List merging|run}}
 !! result
 <p>74281
 </p>
@@ -536,7 +536,7 @@ function run() {
 !! test
 Lists: loop control (break/continue)
 !! input
-{{i:Lists: loop control (break/continue)|run}}
+{{#invoke:Lists: loop control (break/continue)|run}}
 !! result
 <p>12345912
 </p>
@@ -556,7 +556,7 @@ function run() {
 !! test
 Lists: changing value of an element
 !! input
-{{i:Lists: changing value of an element|run}}
+{{#invoke:Lists: changing value of an element|run}}
 !! result
 <p>2
 3
@@ -579,7 +579,7 @@ function run() {
 !! test
 Lists: isset
 !! input
-{{i:Lists: isset|run}}
+{{#invoke:Lists: isset|run}}
 !! result
 <p>2
 </p>
@@ -598,7 +598,7 @@ function run() {
 !! test
 Lists: unset
 !! input
-{{i:Lists: unset|run}}
+{{#invoke:Lists: unset|run}}
 !! result
 <p>a
 b
@@ -622,7 +622,7 @@ function run() {
 !! test
 Associated arrays: basics
 !! input
-{{i:Associated arrays: basics|run}}
+{{#invoke:Associated arrays: basics|run}}
 !! result
 <p>a = 2
 </p><p>b = 13
@@ -647,7 +647,7 @@ function run() {
 !! test
 Associated arrays: isset/unset
 !! input
-{{i:Associated arrays: isset/unset|run}}
+{{#invoke:Associated arrays: isset/unset|run}}
 !! result
 <p>a = 2
 </p><p>c = 48
@@ -667,7 +667,7 @@ function run() {
 !! test
 Mixed arrays
 !! input
-{{i:Mixed arrays|run}}
+{{#invoke:Mixed arrays|run}}
 !! result
 <p>11
 </p>
