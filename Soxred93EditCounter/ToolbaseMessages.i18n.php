@@ -253,6 +253,7 @@ Mard oc'h deuet eus lec'h all dre ul liamm, kasit <a href=\"\$1\">ur c'hemenn ev
 $messages['bs'] = array(
 	'toolbase-header-title' => 'Alati od X-a!',
 	'toolbase-header-bugs' => 'Greške',
+	'toolbase-header-sitenotice' => 'Globalna poruka Toolservera: $1',
 	'toolbase-replag' => 'Zastoj servera od $1',
 	'toolbase-replag-years' => 'godine',
 	'toolbase-replag-months' => 'mjeseci',
@@ -272,11 +273,26 @@ $messages['bs'] = array(
 	'toolbase-userid-submit' => 'Uzmi korisnički ID',
 	'toolbase-userid-title' => 'Traženje korisničkog ID',
 	'toolbase-userid-result' => 'Korisnički ID za <b>$1</b> na <a href="$3"><b>$3</b></a> je <b>$2</b>.',
+	'toolbase-autoedits-title' => 'Automatizirani računar izmjena',
 	'toolbase-autoedits-submit' => 'Izračunaj',
+	'toolbase-autoedits-approximate' => '<b>Približan</b> broj izmjena koristeći...',
+	'toolbase-autoedits-totalauto' => 'Ukupan broj automatiziranih izmjena',
+	'toolbase-autoedits-totalall' => 'Ukupan broj izmjena',
 	'toolbase-autoedits-pct' => 'Procenat automatskih izmjena',
 	'toolbase-main-title' => 'Dobrodošli!',
+	'toolbase-main-content' => 'Dobrodošli na alat X!a! Ovaj komplet alata je još uvijek u procesu pretvaranja u <a href="$1">Symfony</a> okvir. Ovaj proces će potrajati, ali bi zasad trebao raditi. 
+
+Za spisak alata koji trenutno rade na ovom okviru, pogledajte alatnu traku s desne strane.
+
+Greške možete prijaviti na <a href="$2">Google Code</a>.',
 	'toolbase-main-404' => 'Datoteka nije pronađena',
+	'toolbase-main-404-content' => 'Ups! Stranica nije pronađena!
+
+Provjerite da li ste unijeli pravilan URL.
+Ako ste odnekud pratili link, molimo <a href="$1">prijavite grešku</a>.
+</ul>',
 	'toolbase-form-wiki' => 'Wiki',
+	'toolbase-error-nouser' => '$1 nije valjan korisnik',
 	'toolbase-error-nowiki' => '$1.$2.org nije valjana wiki',
 	'toolbase-error-toomanyedits' => '$1 ima $2 izmjena. Ovaj alat ima najviše $3 izmjena.',
 );
