@@ -15,7 +15,7 @@ class SpecialArticleFeedback extends SpecialPage {
 	}
 
 	public function execute( $par ) {
-		global $wgUser, $wgOut, $wgRequest, $wgLang, $wgArticleFeedbackDashboard, $wgArticleFeedbackDashboardTalkPage;
+		global $wgOut, $wgLang, $wgArticleFeedbackDashboard, $wgArticleFeedbackDashboardTalkPage;
 
 		$wgOut->addModules( 'ext.articleFeedback.dashboard' );
 		$this->setHeaders();
@@ -111,7 +111,7 @@ class SpecialArticleFeedback extends SpecialPage {
 	 * @return String: HTML table of daily highs and lows
 	 */
 	protected function renderDailyHighsAndLows( $pages, $caption ) {
-		global $wgOut, $wgUser;
+		global $wgUser;
 
 		// Pre-fill page ID cache
 		$ids = array();
@@ -129,7 +129,7 @@ class SpecialArticleFeedback extends SpecialPage {
 					continue;
 				}
 				$row['page'] = $wgUser->getSkin()->link( $pageTitle, $pageTitle->getPrefixedText() );
-				foreach ( $page['ratings'] as $id => $value ) {
+				foreach ( $page['ratings'] as $value ) {
 					$row[] = array(
 						'text' => $this->formatNumber( $value ),
 						'attr' => array(
@@ -167,7 +167,7 @@ class SpecialArticleFeedback extends SpecialPage {
 	 * @return String: HTML table of weekly most changed
 	 */
 	protected function renderWeeklyMostChanged() {
-		global $wgOut, $wgUser;
+		global $wgUser;
 
 		$rows = array();
 		foreach ( $this->getWeeklyMostChanged() as $page ) {
@@ -201,8 +201,7 @@ class SpecialArticleFeedback extends SpecialPage {
 	 * @return String: HTML table of recent lows
 	 */
 	protected function renderProblems() {
-		global $wgOut, $wgUser, $wgArticleFeedbackRatings;
-
+		global $wgUser;
 
 		$problems = $this->getProblems();
 
@@ -221,7 +220,7 @@ class SpecialArticleFeedback extends SpecialPage {
 				continue;
 			}
 			$row['page'] = $wgUser->getSkin()->link( $pageTitle, $pageTitle->getPrefixedText() );
-			foreach ( $page['ratings'] as $id => $value ) {
+			foreach ( $page['ratings'] as $value ) {
 				$row[] = array(
 					'text' => $this->formatNumber( $value ),
 					'attr' => array(
