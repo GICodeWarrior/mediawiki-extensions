@@ -531,7 +531,7 @@ Die Bewertung erfolgt nach:
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
-	'ratinghistory-thanks' => "''<font color=\"darkred\">Danke, dass Sie sich für die Bewertung dieser Seite einen Moment Zeit genommen haben!</font>''",
+	'ratinghistory-thanks' => "''<span style=\"color:darkred;\">Danke, dass Sie sich für die Bewertung dieser Seite einen Moment Zeit genommen haben!</span>''",
 );
 
 /** Zazaki (Zazaki)
@@ -2076,7 +2076,7 @@ $messages['rue'] = array(
 	'ratinghistory-ratings' => "'''Леґенда:''' '''(1)''' — слаба; '''(2)''' — низка; '''(3)''' — середня; '''(4)''' — высока; '''(5)''' — выняткова;",
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(

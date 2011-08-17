@@ -2301,7 +2301,7 @@ $messages['rue'] = array(
 	'readerfeedback-tt-review' => 'Одослати оцінку',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(

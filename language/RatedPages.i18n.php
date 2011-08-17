@@ -707,7 +707,7 @@ $messages['rue'] = array(
 	'ratedpages-count' => '$1 {{PLURAL:$1|оцінка|оцінкы|оцінок}}',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(
