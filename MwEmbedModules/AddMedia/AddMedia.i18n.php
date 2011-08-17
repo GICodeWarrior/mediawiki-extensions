@@ -436,6 +436,7 @@ $messages['ar'] = array(
 );
 
 /** Aramaic (ܐܪܡܝܐ)
+ * @author Assele
  * @author Basharh
  * @author Michaelovic
  */
@@ -584,8 +585,6 @@ $1 танылырға һәм $2',
 Һуңыраҡ ҡабатлап ҡарағыҙ',
 	'mwe-upload-transcoded-status' => 'Яңынан кодланды',
 	'mwe-upload-transcode-in-progress' => 'Яңынан кодлау һәм тейәү бара (был тәҙрәне япмағыҙ)',
-	
-	
 	'mwe-upload-multi' => '{{PLURAL:$1|файлды|файлдарҙы}} тейәргә',
 	'mwe-review-upload' => '{{PLURAL:$1|файлды|файлдарҙы}} тейәүҙе ҡарап сығырға',
 );
@@ -807,132 +806,6 @@ $messages['ba'] = array(
 	'mwe-upload-transcode-in-progress' => 'Яңынан кодлау һәм тейәү бара (был тәҙрәне япмағыҙ)',
 	'mwe-upload-multi' => '{{PLURAL:$1|файлды|файлдарҙы}} тейәргә',
 	'mwe-review-upload' => '{{PLURAL:$1|файлды|файлдарҙы}} тейәүҙе ҡарап сығырға',
-);
-
-/** Belarusian (Беларуская)
- * @author Тест
- */
-$messages['be'] = array(
-	);
-
-/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
- * @author EugeneZelenko
- * @author Jim-by
- * @author Wizardist
- * @author Zedlik
- */
-$messages['be-tarask'] = array(
-	'mwe-upload-stats-fileprogress' => '$1 з $2',
-	'mwe-upload-unknown-size' => 'Невядомы памер',
-	'mwe-cancel-confim' => 'Вы ўпэўненыя, што жадаеце адмяніць?',
-	'mwe-successfulupload' => 'Пасьпяховая загрузка',
-	'mwe-uploaderror' => 'Памылка загрузкі',
-	'mwe-uploadwarning' => 'Папярэджаньне загрузкі',
-	'mwe-unknown-error' => 'Невядомая памылка:',
-	'mwe-return-to-form' => 'Вярнуцца да формы',
-	'mwe-file-exists-duplicate' => 'Гэты файл дублюе наступныя файлы:',
-	'mwe-fileexists' => 'Файл з такой назвай ужо існуе. Калі ласка, праверце <b><tt>$1</tt></b>, калі Вы ня ўпэўненыя, што жадаеце яго замяніць.',
-	'mwe-fileexists-thumb' => 'Існуючы файл',
-	'mwe-ignorewarning' => 'Праігнараваць папярэджаньне і захаваць файл',
-	'mwe-file-thumbnail-no' => 'Назва файла пачынаецца з <b><tt>$1</tt></b>',
-	'mwe-go-to-resource' => 'Перайсьці на старонку рэсурсу',
-	'mwe-upload-misc-error' => 'Невядомая памылка загрузкі',
-	'mwe-wgfogg_warning_bad_extension' => 'Вы выбралі файл з пашырэньнем, якое не падтрымліваецца (<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_file_types">падрабязнасьці</a>).',
-	'mwe-thumbnail-more' => 'Павялічыць',
-	'mwe-filesource' => 'Крыніца:',
-	'mwe-filestatus' => 'Умовы распаўсюджаньня і выкарыстаньня:',
-	'mwe-loading-add-media-wiz' => 'Загрузка майстра даданьня мэдыя',
-	'mwe-imported_from' => '$1 імпартавана з [$2 $3]. Глядзіце пачатковую [$4 старонку рэсурсу] для дадатковай інфармацыі.',
-	'mwe-import-description' => '$1, імпартавана з $2',
-	'mwe-select_file' => 'Выбраць файл',
-	'mwe-select_ownwork' => 'Я загружаю выключна ўласную працу згодна ўмоваў ліцэнзіі:',
-	'mwe-license_cc-by-sa' => 'Creative Commons Share Alike (3.0)',
-	'mwe-upload' => 'Загрузіць файл',
-	'mwe-destfilename' => 'Мэтавая назва файла:',
-	'mwe-summary' => 'Апісаньне',
-	'mwe-date-of-work' => 'Дата стварэньня працы',
-	'mwe-error_not_loggedin' => 'Выглядае, што Вы не ўвайшлі ў сыстэму альбо ня маеце дазволу на загрузку.',
-	'mwe-error-not-loggedin-file' => 'Вы не ўвайшлі ў сыстэму, альбо адбылася памылка праграмнага забесьпячэньня. Вы можаце $1 і паспрабаваць зноў',
-	'mwe-link-login' => 'увайсьці',
-	'mwe-watch-this-file' => 'Праглядзець гэты файл',
-	'mwe-ignore-any-warnings' => 'Ігнараваць любыя папярэджаньні',
-	'mwe-i-would-like-to' => 'Я жадаю',
-	'mwe-upload-own-file' => 'Загрузіць уласную працу ў $1',
-	'mwe-upload-not-my-file' => 'Загрузіць мэдыя, якія не зьяўляюцца маёй працай, у $1',
-	'mwe-upload-once-done' => 'Калі ласка $1. Пасьля сканчэньня Вашай загрузкі, $2',
-	'mwe-upload-in-new-win-link' => 'загрузіць у новым акне ці закладцы',
-	'mwe-upload-refresh' => 'абнавіць сьпіс загрузак',
-	'mwe-ie-inline-upload' => 'Убудаваная загрузка ў цяперашні час адключаная для Internet Explorer. Вы можаце $1, потым $2',
-	'mwe-upload-in-progress' => 'Працягваецца загрузка (не зачыняйце гэтае акно)',
-	'mwe-uploaded-status' => 'Загружаны',
-	'mwe-transcoded-status' => 'Перакадыраваны',
-	'mwe-uploaded-time-remaining' => 'Засталося часу: $1',
-	'mwe-upload-done' => 'Вашая загрузка <i>павінна быць</i> даступнай.',
-	'mwe-add_media_wizard' => 'Майстар даданьня мэдыа',
-	'mwe-media_search' => 'Пошук мэдыя',
-	'mwe-am-box_layout' => 'У выглядзе поля',
-	'mwe-am-list_layout' => 'У выглядзе сьпісу',
-	'mwe-am-results_desc' => 'Вынікі $1 да $2',
-	'mwe-am-results_desc_total' => 'Вынікі ад $1 да $2 з $3',
-	'mwe-am-results_next' => 'наступныя',
-	'mwe-am-results_prev' => 'папярэднія',
-	'mwe-am-no_results' => 'Няма вынікаў пошуку для <b>$1</b>',
-	'mwe-upload_tab' => 'Загрузіць файл',
-	'mwe-am-layout' => 'Выгляд:',
-	'mwe-am-resource_edit' => 'Рэдагаваць рэсурс: $1',
-	'mwe-resource_description_page' => 'Старонка апісаньня рэсурсу',
-	'mwe-link' => 'спасылка',
-	'mwe-am-do_insert' => 'Выканаць устаўку',
-	'mwe-cc_by_title' => 'Згадваньне аўтара',
-	'mwe-cc_nc_title' => 'Некамэрцыйнае',
-	'mwe-cc_nd_title' => 'Вытворныя працы не дазваляюцца',
-	'mwe-cc_sa_title' => 'З захаваньнем умоваў',
-	'mwe-cc_pd_title' => 'Грамадзкі набытак',
-	'mwe-unknown_license' => 'Невядомая ліцэнзія',
-	'mwe-no-import-by-url' => "Гэты ўдзельнік альбо {{SITENAME}} <b>ня можа</b> імпартаваць аб'екты з вонкавых URL-адрасоў. <p>Вам неабходна ўвайсьці ў сыстэму?</p><p>Вы маеце правы upload_by_url?<br />Ці дазволеная ў {{GRAMMAR:месны|{{SITENAME}}}} $1?</p>",
-	'mwe-results_from' => 'Вынікі з $1',
-	'mwe-missing_desc_see_source' => "Гэты аб'ект ня мае апісаньня. Калі ласка, праверце [$1 крыніцу] і дапамажыце дадаць яго апісаньне.",
-	'mwe-am-config_error' => 'Памылка канфігурацыі майстра даданьня мэдыя: $1',
-	'mwe-your-recent-uploads-to' => 'Вашыя апошнія загрузкі ў $1',
-	'mwe-no_recent_uploads' => 'Няма апошніх загрузак',
-	'mwe-not-logged-in-uploads' => 'Магчыма Вы не ўвайшлі ў сыстэму, таму апошнія загрузкі ня могуць быць паказаныя. [$1 Калі ласка, увайдзіце ў сыстэму] і [$2 паспрабуйце яшчэ раз].',
-	'mwe-ie-eye-permision' => 'Калі Вы выкарыстоўваеце Internet Explorer і ўвайшлі ў сыстэму, магчыма Вам трэба зьмяніць налады прыватнасьці',
-	'mwe-upload-a-file' => 'Загрузіць новы файл',
-	'mwe-upload-a-file-to' => 'Загрузіць новы файл у $1',
-	'mwe-resource_page_desc' => 'Апісаньне старонкі рэсурсу:',
-	'mwe-edit_resource_desc' => 'Рэдагаваць вікі-тэксту апісаньня рэсурсу:',
-	'mwe-local_resource_title' => 'Назва лякальнага рэсурсу:',
-	'mwe-watch_this_page' => 'Назіраць за гэтай старонкай',
-	'mwe-do_import_resource' => 'Імпартаваць рэсурс',
-	'mwe-update_preview' => 'Абнавіць папярэдні прагляд',
-	'mwe-return-search-results' => 'Вярнуцца да вынікаў пошуку',
-	'mwe-importing_asset' => 'Імпартаваньне ўласьцівасьці',
-	'mwe-preview_insert_resource' => 'Папярэдні прагляд устаўкі рэсурсу: $1',
-	'mwe-do-more-modification' => 'Зрабіць іншыя зьмены',
-	'mwe-checking-resource' => 'Праверка рэсурсу',
-	'mwe-resource-needs-import' => 'Неабходны імпарт рэсурсу $1 на $2',
-	'mwe-warning-upload-to-commons' => '$1 рэкамэндуе Вам загрузіць на ВікіСховішча, загружайце лякальна пасьля таго, як прачытаеце $2',
-	'mwe-local-upload-policy-link' => 'правілы лякальных загрузак',
-	'mwe-ftype-svg' => 'файл вэктарнай выявы ў фармаце SVG',
-	'mwe-ftype-jpg' => 'файл выявы ў фармаце JPEG',
-	'mwe-ftype-png' => 'файл выявы ў фармаце PNG',
-	'mwe-ftype-oga' => 'аўдыё-файл ў фармаце Ogg',
-	'mwe-ftype-ogg' => 'Відэа-файл ў фармаце Ogg',
-	'mwe-ftype-unk' => 'Невядомы фармат файла',
-	'mwe-am-commons-title' => 'ВікіСховішча',
-	'mwe-am-commons' => 'ВікіСховішча — архіў мэдыя-матэрыялаў, якія распаўсюджваюцца згодна ўмоваў вольных ліцэнзіяў (выявы, аўдыё- і відэа-кліпы)',
-	'mwe-am-kaltura-title' => 'Пошук Kaltura (усе крыніцы)',
-	'mwe-am-kaltura' => 'Агрэгаваны пошук Kaltura для мэдыя з вольнымі ліцэнзіямі з дапамогай некалькіх пошукавых сыстэмаў',
-	'mwe-am-this_wiki-title' => '{{SITENAME}}',
-	'mwe-am-this_wiki-desc' => 'Лякальная вікі',
-	'mwe-am-archive_org-desc' => 'Internet Archive — лічбавая бібліятэка культурных артэфактаў',
-	'mwe-am-flickr-desc' => 'Flickr.com — анляйн рэсурс абмену фотаздымкамі',
-	'mwe-am-metavid-desc' => 'Metavid.org — архіў матэрыялаў слуханьняў Палаты прадстаўнікоў і Сэнату ЗША',
-	'mwe-am-search-timeout' => 'Пошукавы запыт ня скончаны. Верагодна сэрвэр перагружаны. Вы можаце паспрабаваць зноў, праз некаторы час',
-	'mwe-upload-transcoded-status' => 'Перакадыраваны',
-	'mwe-upload-transcode-in-progress' => 'Працягваецца перакадыроўка і загрузка (не зачыняйце гэта акно)',
-	'mwe-upload-multi' => 'Загрузіць {{PLURAL:$1|файл|файлы}}',
-	'mwe-review-upload' => 'Праглядзець загрузку {{PLURAL:$1|файла|файлаў}}',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
@@ -1766,9 +1639,13 @@ $messages['de'] = array(
 );
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
+ * @author Aspar
  * @author F.trott
  * @author Kghbln
+ * @author Mirzali
+ * @author Purodha
  * @author The Evil IP address
+ * @author Xoser
  */
 $messages['de-formal'] = array(
 	'mwe-cancel-confim' => 'Möchten Sie  wirklich abbrechen?',
@@ -1779,16 +1656,17 @@ $messages['de-formal'] = array(
 	'mwe-upload-once-done' => 'Bitte $1. Sobald Sie das Hochladen beendet haben, $2',
 	'mwe-upload-refresh' => 'aktualisieren Sie Ihre Liste der hochzuladenden Dateien',
 	'mwe-ie-inline-upload' => 'Das Inline-Hochladen ist momentan für den Internet Explorer deaktiviert. Sie können $1, danach $2',
-	'mwe-upload-done' => 'Ihr Upload <i>sollte</i> zugänglich sein.',
+	'mwe-upload-done' => 'Ihre hochgeladenen Dateien <i>sollte</i> zugänglich sein.',
 	'mwe-no-import-by-url' => 'Dieser Benutzer oder dieses Wiki <b>kann keine</b> Dateien fremder URLs importieren. <p>Müssen Sie sich anmelden?</p><p>Verfügen Sie über das notwendige Benutzerrecht „upload_by_url“?<br />Wurde $1 bei diesem Wiki aktiviert?</p>',
 	'mwe-missing_desc_see_source' => 'Diese Datei verfügt über keine Beschreibung. Bitte sehen Sie sich [$1 die Quelle] an und helfen Sie mit, sie zu beschreiben.',
+	'mwe-your-recent-uploads' => 'Ihre Uploads',
 	'mwe-your-recent-uploads-to' => 'Ihre bisherigen Uploads nach $1',
 	'mwe-not-logged-in-uploads' => 'Es kann sein, dass Sie nicht angemeldet sind, weswegen keine aktuellen Uploads angezeigt werden können. Bitte [$1 anmelden] und es [$2 erneut versuchen]',
 	'mwe-ie-eye-permision' => 'Sofern Sie den Internet Explorer nutzen und angemeldet sind, müssen Sie gegebenenfalls Ihre Einstellung zur Privatsphäre anpassen',
 	'mwe-do-more-modification' => 'Führen Sie mehr Anpassungen durch',
 	'mwe-warning-upload-to-commons' => '$1 empfiehlt das Hochladen nach Wikimedia Commons. Laden Sie erst lokal hoch, nachdem Sie $2 gelesen haben',
 	'mwe-am-search-timeout' => 'Die Suchanfrage konnte nicht abgeschlossen werden. Der Server könnte ausgefallen oder ausgelastet sein. Sie können es später noch einmal versuchen',
-	);
+);
 
 /** Zazaki (Zazaki)
  * @author Aspar
@@ -1796,23 +1674,26 @@ $messages['de-formal'] = array(
  * @author Xoser
  */
 $messages['diq'] = array(
-	'mwe-upload-stats-fileprogress' => '$2 de $1',
-	'mwe-upload-unknown-size' => 'Ebat nizanyeno',
-	'mwe-cancel-confim' => 'şıma raşta qayili iptal keri?',
-	'mwe-successfulupload' => 'barkerdış bıserkewteyo',
-	'mwe-uploaderror' => 'Ğeletê bar kerdişî',
-	'mwe-uploadwarning' => 'hişyariya barkerdışi',
-	'mwe-unknown-error' => 'xetaya ke nêzaniyeno',
-	'mwe-return-to-form' => 'agêr form',
-	'mwe-file-exists-duplicate' => 'na dosya zey dosyaya cêrına',
-	'mwe-fileexists' => 'no name de ca ra yew dosya esta. eke şıma emin niê bıvurni, kerem kerê <b><tt>$1</tt></b> kontrol bıkerê.',
-	'mwe-fileexists-thumb' => 'dosyaya mewcud',
-	'mwe-ignorewarning' => 'goş hişyariya mekuwi u dosya newe ra bar bıker',
-	'mwe-file-thumbnail-no' => 'nameyê dosyayi pê <b><tt>$1</tt></b> destpêkeno',
-	'mwe-go-to-resource' => 'şo pelê çımeyi',
-	'mwe-upload-misc-error' => 'xetaya barkerdışi yo ke nêzaniyeno',
+	'mwe-upload-stats-fileprogress' => '$1 be $2 ra',
+	'mwe-upload-unknown-size' => 'Gırdina nêzanıtiye',
+	'mwe-cancel-confim' => 'Şıma raşti qayılê ke ibtal kerê?',
+	'mwe-successfulupload' => 'Barkerdış kewt ra ser',
+	'mwe-uploaderror' => 'Xeta barkerdışi',
+	'mwe-uploadwarning' => 'İqazê barkerdışi',
+	'mwe-unknown-error' => 'Xeta nêzanıtiye:',
+	'mwe-return-to-form' => 'Agêre ra form',
+	'mwe-file-exists-duplicate' => 'Na dosya zey dosya cêrêna:',
+	'mwe-fileexists' => 'Ebe nê namey ra dosya xora esta. Eke şıma emin niyê bıvurnê, kerem kerê <b><tt>$1</tt></b> qontrol kerê.',
+	'mwe-fileexists-thumb' => 'Dosya mewcude',
+	'mwe-ignorewarning' => 'İqazi qebul meke u dosya ancia zi bar ke',
+	'mwe-file-thumbnail-no' => 'Namey dosya be <b><code>$1</code></b> destpêkeno',
+	'mwe-go-to-resource' => 'Şo pela çımey',
+	'mwe-upload-misc-error' => 'Xeta barkerdışia nêzanıtiye',
 	'mwe-wgfogg_warning_bad_extension' => 'Şıma jû dosya be herakerdışo bêdestek çinıte we (<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_file_fypes">melumato zêdêr</a>).',
-	'mwe-loading-add-media-wiz' => 'sihırbazê medya ardışi bar beno',
+	'mwe-thumbnail-more' => 'Gırd ke',
+	'mwe-filesource' => 'Çıme:',
+	'mwe-filestatus' => 'Halê heqa telifi',
+	'mwe-loading-add-media-wiz' => 'Sihırbazê medya ardışi bar beno',
 	'mwe-imported_from' => 'adresa $1 [$2 $3]i ra kırışt zerreyi. qey malumato zêd bıewnê [ pelê çımeyê $4 ] orjinali.',
 	'mwe-select_file' => 'dosya bıweçinê',
 	'mwe-select_ownwork' => 'ez bıtemami xebatê xo bar kena, lisans zey cêrın o',
@@ -1873,7 +1754,6 @@ $messages['diq'] = array(
 	'mwe-am-metavid-desc' => 'Metavid.org, yew videyo arşivê meclisê DAY (Dewletê Amerikayê Yewbiyayey)',
 	'mwe-upload-transcoded-status' => 'newe ra kod bı',
 	'mwe-upload-transcode-in-progress' => 'newe ra kodkerdış u barkerdış dewam keno (na pencıra ramecanê)',
-	
 	'mwe-upload-multi' => '{{PLURAL:$1|dosya|dosyayan}} bar bike',
 	'mwe-review-upload' => '{{PLURAL:$1|bar biyayen|bar biyayenan}} kontrol bike',
 );
@@ -2530,6 +2410,58 @@ $messages['fa'] = array(
 	'mwe-am-flickr-desc' => 'Flickr.com، یک وب گاه برخط برای اشتراک گذاری تصاویر',
 	'mwe-upload-multi' => 'بارگذاری {{PLURAL:$1|پرونده|پرونده‌ها}}',
 	'mwe-review-upload' => 'بازبینی پروندهٔ {{PLURAL:$1|بارگذاری|بارگذاری‌ها}}',
+);
+
+/** Finnish (Suomi)
+ * @author Crt
+ * @author Nike
+ * @author Olli
+ * @author Silvonen
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'mwe-upload-stats-fileprogress' => '$1 / $2',
+	'mwe-upload-unknown-size' => 'Tuntematon koko',
+	'mwe-cancel-confim' => 'Oletko varma, että haluat peruuttaa?',
+	'mwe-successfulupload' => 'Lähetys onnistui',
+	'mwe-uploaderror' => 'Lähetysvirhe',
+	'mwe-uploadwarning' => 'Lähetysvaroitus',
+	'mwe-unknown-error' => 'Tuntematon virhe:',
+	'mwe-return-to-form' => 'Palaa lomakkeeseen',
+	'mwe-file-exists-duplicate' => 'Tämä tiedosto on kaksoiskappale seuraavasta tiedostosta:',
+	'mwe-fileexists' => 'Samanniminen tiedosto on jo olemassa. Tarkista <b><code>$1</code></b>, jos et ole varma, haluatko vaihtaa sitä.',
+	'mwe-fileexists-thumb' => 'Olemassa oleva tiedosto',
+	'mwe-ignorewarning' => 'Tallenna tiedosto varoituksesta huolimatta.',
+	'mwe-file-thumbnail-no' => 'Tiedostonimi alkaa <b><code>$1</code></b>',
+	'mwe-go-to-resource' => 'Siirry resurssisivulle',
+	'mwe-upload-misc-error' => 'Tuntematon lähetysvirhe',
+	'mwe-wgfogg_warning_bad_extension' => 'Olet valinnut tiedoston, jolla on tiedostotyyppi, jota ei tueta (<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_file_fypes">lisätietoja</a>).',
+	'mwe-thumbnail-more' => 'Suurenna',
+	'mwe-filesource' => 'Lähde:',
+	'mwe-filestatus' => 'Tekijänoikeudellinen tila:',
+	'mwe-loading-add-media-wiz' => 'Ladataan ohjattua medianlisäystoimintoa',
+	'mwe-select_file' => 'Valitse tiedosto',
+	'mwe-upload' => 'Tallenna tiedosto',
+	'mwe-summary' => 'Yhteenveto',
+	'mwe-watch-this-file' => 'Tarkkaile tätä tiedostoa',
+	'mwe-ignore-any-warnings' => 'Ohita kaikki varoitukset',
+	'mwe-add_media_wizard' => 'Lisää media ohjatusti',
+	'mwe-media_search' => 'Mediahaku',
+	'mwe-am-results_desc' => 'Tulokset $1-$2',
+	'mwe-am-results_next' => 'seuraava',
+	'mwe-am-results_prev' => 'edellinen',
+	'mwe-link' => 'linkki',
+	'mwe-unknown_license' => 'Tuntematon lisenssi',
+	'mwe-watch_this_page' => 'Tarkkaile tätä sivua',
+	'mwe-update_preview' => 'Päivitä esikatselu',
+	'mwe-ftype-svg' => 'SVG-vektoritiedosto',
+	'mwe-ftype-jpg' => 'JPEG-kuvatiedosto',
+	'mwe-ftype-png' => 'PNG-kuvatiedosto',
+	'mwe-ftype-oga' => 'Ogg-äänitiedosto',
+	'mwe-ftype-ogg' => 'Ogg-videotiedosto',
+	'mwe-ftype-unk' => 'Tuntematon tiedostomuoto',
+	'mwe-am-this_wiki-title' => 'Tämä wiki',
+	'mwe-am-this_wiki-desc' => 'Paikallinen wiki',
 );
 
 /** French (Français)
@@ -3950,6 +3882,7 @@ $messages['ja'] = array(
 /** Georgian (ქართული)
  * @author BRUTE
  * @author David1010
+ * @author គីមស៊្រុន
  */
 $messages['ka'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 $2-დან',
@@ -3973,77 +3906,32 @@ $messages['ka'] = array(
 	'mwe-am-results_desc' => 'შედეგები',
 	'mwe-am-results_next' => 'შემდეგი',
 	'mwe-am-results_prev' => 'წინა',
-	);
+);
 
-/** Khmer (ភាសាខ្មែរ)
- * @author គីមស៊្រុន
+/** Kirmanjki (Kırmancki)
+ * @author Mirzali
  */
-$messages['km'] = array(
-	'mwe-upload-stats-fileprogress' => '$1 ក្នុងចំណោម $2',
-	'mwe-upload-unknown-size' => 'មិនដឹងទំហំ',
-	'mwe-cancel-confim' => 'អ្នកប្រាកដហើយឬថាចង់ចាកចេញ?',
-	'mwe-successfulupload' => 'ផ្ទុកឡើងបានសំរេច',
-	'mwe-uploaderror' => 'បញ្ហាក្នុងការផ្ទុកឡើង',
-	'mwe-uploadwarning' => 'ការព្រមានស្ដីពីការផ្ទុកឡើង',
-	'mwe-unknown-error' => 'កំហុសមិនស្គាល់',
-	'mwe-return-to-form' => 'ត្រលប់ទៅកាន់បែបបទវិញ',
-	'mwe-file-exists-duplicate' => 'ឯកសារនេះដូចគ្នាបេះបិទនឹងឯកសារខាងក្រោមនេះ៖',
-	'mwe-fileexists' => 'ឯកសារដែលមានឈ្មោះនេះមានរួចហើយ។ សូមពិនិត្យមើល <b><code>$1</code></b> ប្រសិនបើអ្នកមិនប្រាកដទេថាអ្នកចង់ប្ដូរវា។',
-	'mwe-fileexists-thumb' => 'ឯកសារមានហើយ',
-	'mwe-ignorewarning' => 'មិនខ្វល់​ការព្រមាន ហើយរក្សាទុក​ឯកសារ​តែម្តង',
-	'mwe-file-thumbnail-no' => 'ឈ្មោះឯកសារផ្ដើមដោយ <b><code>$1</code></b>',
-	'mwe-go-to-resource' => 'ទៅកាន់ទំព័រប្រភព',
-	'mwe-upload-misc-error' => 'បញ្ហាក្នុងការផ្ទុកឡើង',
-	'mwe-thumbnail-more' => 'ពង្រីក',
-	'mwe-filesource' => 'ប្រភព៖',
-	'mwe-filestatus' => 'ស្ថានភាពរក្សាសិទ្ធិ៖',
-	'mwe-imported_from' => '$1 នាំចូលពី [$2 $3]។ សូមមើលប្រភពដើម [$4 ទំព័រប្រភព] សំរាប់ព័ត៌មានបន្ថែម។',
-	'mwe-import-description' => '$1, នាំចូលពី $2',
-	'mwe-select_file' => 'ជ្រើសយកឯកសារ',
-	'mwe-select_ownwork' => 'ខ្ញុំកំពុងផ្ទុកឡើងស្នាដៃផ្ទាល់ខ្លួនរបស់ខ្ញុំទាំងស្រុង និងដាក់វាក្រោមអាជ្ញាប័ណ្ឌ៖',
-	'mwe-license_cc-by-sa' => 'Creative Commons Share Alike (3.0)',
-	'mwe-upload' => 'ផ្ទុកឯកសារឡើង',
-	'mwe-destfilename' => 'ឈ្មោះឯកសារគោលដៅ៖',
-	'mwe-summary' => 'ចំណារពន្យល់',
-	'mwe-date-of-work' => 'កាលបរិច្ឆេទរបស់ស្នាដៃនេះ',
-	'mwe-error_not_loggedin' => 'អ្នកហាក់ដូចជាមិនទាន់កត់ឈ្មោះចូល ឬ មិនមានសិទ្ធិក្នុងការផ្ទុកឡើងទេ។',
-	'mwe-error-not-loggedin-file' => 'អ្នកហាក់ដូចជាមិនទាន់កត់ឈ្មោះចូលទេ ឬ មានបញ្ហាក្នុងសូហ្វវែរ។ អ្នកអាច$1រួចសាកល្បងម្ដងទៀត',
-	'mwe-link-login' => 'កត់ឈ្មោះចូល',
-	'mwe-watch-this-file' => 'តាមដាន​ឯកសារ​នេះ',
-	'mwe-ignore-any-warnings' => 'មិនខ្វល់​ការព្រមាន​ណាទាំងអស់',
-	'mwe-i-would-like-to' => 'ខ្ញុំចង់',
-	'mwe-upload-own-file' => 'ផ្ទុកឡើងស្នាដៃរបស់ខ្ញុំទៅ $1',
-	'mwe-upload-not-my-file' => 'ផ្ទុកឡើងមេឌាដែលមិនមែនជាស្នាដៃរបស់ខ្ញុំទៅ $1',
-	'mwe-upload-once-done' => 'សូម$1។ ពេលអ្នកផ្ទុកឡើងរួចរាល់ហើយ សូម$2',
-	'mwe-upload-in-new-win-link' => 'ផ្ទុកឡើងនៅក្នុងផ្ទាំងថ្មីឬថេបថ្មី',
-	'mwe-ie-inline-upload' => 'ការផ្ទុកឡើងនាពេលព្រមគ្នាមិនអាចធ្វើបានទេសំរាប់ Internet Explorer នាពេលនេះ។ អ្នកអាច$1, រួច$2',
-	'mwe-upload-in-progress' => 'កំពុងផ្ទុកឡើង (កុំបិទផ្ទាំងនេះអោយសោះ)',
-	'mwe-uploaded-status' => 'បានផ្ទុកឡើងរួចរាល់',
-	'mwe-uploaded-time-remaining' => 'នៅសល់រយៈពេល៖ $1',
-	'mwe-media_search' => 'ការស្វែងរកមេឌា',
-	'mwe-am-box_layout' => 'ប្លង់ប្រអប់',
-	'mwe-am-list_layout' => 'ប្លង់តារាង',
-	'mwe-am-results_desc' => 'លទ្ធផល $1 ដល់ $2',
-	'mwe-am-results_desc_total' => 'លទ្ធផល $1 ដល់ $2 ក្នុងចំណោម $3',
-	'mwe-am-results_next' => 'បន្ទាប់',
-	'mwe-am-results_prev' => 'មុន',
-	'mwe-am-no_results' => 'រកមិនឃើញលទ្ធផលសំរាប់<b>$1</b>ទេ',
-	'mwe-upload_tab' => 'ផ្ទុកឯកសារឡើង',
-	'mwe-am-layout' => 'ប្លង់៖',
-	'mwe-am-resource_edit' => 'កែប្រែប្រភព៖ $1',
-	'mwe-resource_description_page' => 'ទំព័រពិពណ៌នារបស់ប្រភព',
-	'mwe-link' => 'តំណ​ភ្ជាប់',
-	'mwe-cc_nc_title' => 'គ្មានលក្ខណៈពាណិជ្ជកម្ម',
-	'mwe-cc_pd_title' => 'ដូម៉ែនសាធារណៈ',
-	'mwe-unknown_license' => 'អាជ្ញាប័ណ្ឌមិនស្គាល់',
-	'mwe-results_from' => 'លទ្ធផលពី $1',
-	'mwe-your-recent-uploads-to' => 'ការផ្ទុកឡើងទៅកាន់ $1 នាពេលថ្មីៗនេះរបស់អ្នក',
-	'mwe-no_recent_uploads' => 'គ្មានការផ្ទុកឡើងនាពេលថ្មីៗនេះទេ',
-	'mwe-not-logged-in-uploads' => 'អ្នកប្រហែលចាមិនទាន់បាន់កត់ឈ្មោះចូលទេ ហេតុនេះគ្មានការផ្ទុកឡើងនាពេលថ្មីៗនេះសំរាប់បង្ហាញទេ។ $1 កត់ឈ្មោះចូលរួច $2',
-	'mwe-ie-eye-permision' => 'ប្រសិនបើអ្នកកំពុងប្រើប្រាស់ Internet Explorer ដើម្បីកត់ឈ្មោះចូល នោះអ្នកប្រហែលជាត្រូវតំរូវការកំណត់ភាពឯកជនរបស់អ្នកហើយ',
-	'mwe-upload-a-file' => 'ផ្ទុកឡើងឯកសារថ្មីមួយ',
-	'mwe-upload-a-file-to' => 'ផ្ទុកឡើងឯកសារថ្មីមួយទៅ $1',
-	'mwe-resource_page_desc' => 'ចំណារពន្យល់ពីទំព័រប្រភព៖',
+$messages['kiu'] = array(
+	'mwe-upload-stats-fileprogress' => '$1 / $2',
+	'mwe-upload-unknown-size' => 'Gırşênia nêzanıtiye',
+	'mwe-cancel-confim' => 'Sıma raşti qayılê ke ibtal kerê?',
+	'mwe-successfulupload' => 'Barkerdis kot ra ser',
+	'mwe-uploaderror' => 'Xeta barkerdene',
+	'mwe-uploadwarning' => 'İqazê barkerdene',
+	'mwe-unknown-error' => 'Xeta nêzanaiye:',
+	'mwe-return-to-form' => 'Peyser so form',
+	'mwe-file-exists-duplicate' => 'Na dosya zê dosya cêrêna:',
+	'mwe-fileexists' => 'Ebe nê namey ra dosya hora esta. Eke sıma emin niyê bıvurnê, kerem kerê <b><tt>$1</tt></b> qontrol kerê.',
+	'mwe-fileexists-thumb' => 'Dosya mewcude',
+	'mwe-ignorewarning' => 'İqazi qewıl meke u dosya oncia ki bar ke',
+	'mwe-file-thumbnail-no' => 'Namê dosya be <b><code>$1</code></b> dest nano pıra',
+	'mwe-go-to-resource' => 'So pela çımey',
+	'mwe-upload-misc-error' => 'Xeta barkerdişia nêzanıtiye',
+	'mwe-wgfogg_warning_bad_extension' => 'Sıma jü dosya be hirakerdiso bêdestek çinıte we (<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_file_fypes">melumato jêdêr</a>).',
+	'mwe-thumbnail-more' => 'Gırs ke',
+	'mwe-filesource' => 'Çıme:',
+	'mwe-filestatus' => 'Halê heqa telifi:',
+	'mwe-loading-add-media-wiz' => 'Sihırbazê medya ardışi bar beno',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -4431,38 +4319,6 @@ $messages['lez'] = array(
 	'mwe-link-login' => 'Инна куьн тlар',
 	'mwe-am-results_next' => 'къведай',
 	'mwe-upload_tab' => 'Парвиниз шикил',
-);
-
-/** Limburgish (Limburgs)
- * @author Ooswesthoesbes
- */
-$messages['li'] = array(
-	);
-
-/** Latvian (Latviešu)
- * @author Papuass
- */
-$messages['lv'] = array(
-	'mwe-upload-unknown-size' => 'Nezināms izmērs',
-	'mwe-successfulupload' => 'Augšupielāde veiksmīga',
-	'mwe-uploaderror' => 'Augšupielādes kļūda',
-	'mwe-uploadwarning' => 'Augšupielādes brīdinājums',
-	'mwe-unknown-error' => 'Nezināma kļūda:',
-	'mwe-upload-misc-error' => 'Nezināma augšupielādes kļūda',
-	'mwe-thumbnail-more' => 'Palielināt',
-	'mwe-filestatus' => 'Autortiesību statuss:',
-	'mwe-upload' => 'Augšupielādēt failu',
-	'mwe-summary' => 'Kopsavilkums',
-	'mwe-link-login' => 'pieslēgties',
-	'mwe-watch-this-file' => 'Uzraudzīt šo failu',
-	'mwe-ignore-any-warnings' => 'Ignorēt visus brīdinājumus',
-	'mwe-uploaded-status' => 'Augšupielādēts',
-	'mwe-ftype-svg' => 'SVG vektoru fails',
-	'mwe-ftype-jpg' => 'JPEG attēla fails',
-	'mwe-ftype-png' => 'PNG attēla fails',
-	'mwe-ftype-oga' => 'Ogg audio fails',
-	'mwe-ftype-ogg' => 'Ogg video fails',
-	'mwe-ftype-unk' => 'Nezināms faila formāts',
 );
 
 /** Lithuanian (Lietuvių)
@@ -4945,6 +4801,7 @@ $messages['myv'] = array(
 );
 
 /** Nepali (नेपाली)
+ * @author Bhawani Gautam
  * @author Bhawani Gautam Rhk
  */
 $messages['ne'] = array(
@@ -5386,7 +5243,7 @@ $messages['or'] = array(
 	'mwe-am-layout' => 'ବିନ୍ୟାସ:',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(
@@ -6242,6 +6099,7 @@ $messages['scn'] = array(
 );
 
 /** Sinhala (සිංහල)
+ * @author Helix84
  * @author Pasanbhathiya2
  */
 $messages['si'] = array(
@@ -6282,137 +6140,6 @@ $messages['si'] = array(
 	'mwe-update_preview' => 'මූලාශ්‍ර පිටුවේ පෙර දසුන යාවත් කාලීන කිරීම',
 	'mwe-return-search-results' => 'යලිත් සෙවුම් ප්‍රතිඵල වෙත යන්න',
 	'mwe-do-more-modification' => 'තවදුරටත් නවීකරණය කරන්න',
-	);
-
-/** Slovak (Slovenčina)
- * @author Helix84
- */
-$messages['sk'] = array(
-	'mwe-upload-stats-fileprogress' => '$1 z $2',
-	'mwe-upload-unknown-size' => 'Neznáma veľkosť',
-	'mwe-cancel-confim' => 'Ste si istý, že chcete prerušiť?',
-	'mwe-successfulupload' => 'Nahrávanie úspešné',
-	'mwe-uploaderror' => 'Chyba pri nahrávaní',
-	'mwe-uploadwarning' => 'Upozornenie pri nahrávaní',
-	'mwe-unknown-error' => 'Neznáma chyba:',
-	'mwe-return-to-form' => 'Späť na formulár',
-	'mwe-file-exists-duplicate' => 'Tento súbor je duplikátom nasledujúceho súboru:',
-	'mwe-fileexists' => 'Súbor s týmto názvom už existuje. Prosím, skontrolujte <b><tt>$1</tt></b> ak si nie ste istý, či ho chcete zmeniť.',
-	'mwe-fileexists-thumb' => 'Existujúci súbor',
-	'mwe-ignorewarning' => 'Ignorovať upozornenie a napriek nemu uložiť súbor',
-	'mwe-file-thumbnail-no' => 'Názov súboru začína <code><b>$1</b></code>',
-	'mwe-go-to-resource' => 'Prejsť na stránku zdroja',
-	'mwe-upload-misc-error' => 'Neznáma chyba pri nahrávaní',
-	'mwe-wgfogg_warning_bad_extension' => 'Vybrali ste súbor s nepodporovanou príponou (<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_file_fypes">ďalšie informácie</a> ).',
-	'mwe-thumbnail-more' => 'Zväčšiť',
-	'mwe-filesource' => 'Zdroj:',
-	'mwe-filestatus' => 'Stav autorských práv:',
-	'mwe-loading-add-media-wiz' => 'Načítava sa sprievodca pridaním multimédií',
-	
-	
-	
-	
-	'mwe-imported_from' => '$1 je importovaný z [$2 $3]. Ďalšie informácie na pôvodnej [$4 stránke zdrojov].',
-	'mwe-import-description' => '$1, importované z $2',
-	'mwe-select_file' => 'Vybrať súbor',
-	'mwe-select_ownwork' => 'Nahrávam dielo, ktoré je kompletne moje vlastné a licencujem ho za podmienok:',
-	'mwe-license_cc-by-sa' => 'Creative Commons Share Alike (3.0)',
-	'mwe-upload' => 'Nahrať súbor',
-	'mwe-destfilename' => 'Cieľový názov súboru:',
-	'mwe-summary' => 'Zhrnutie',
-	'mwe-date-of-work' => 'Dátum diela',
-	'mwe-error_not_loggedin' => 'Zdá sa, že nie ste prihlásený alebo nemáte oprávnenie nahrávať.',
-	'mwe-error-not-loggedin-file' => 'Zdá sa, že nie ste prihlásený alebo došlo k chybe v softvéri.
-Môžete sa $1 a skúsiť to znova',
-	'mwe-link-login' => 'prihlásiť',
-	'mwe-watch-this-file' => 'Sledovať tento súbor',
-	'mwe-ignore-any-warnings' => 'Ignorovať všetky upozornenia',
-	'mwe-i-would-like-to' => 'Rád by som',
-	'mwe-upload-own-file' => 'Nahral svoje vlastné dielo na $1',
-	'mwe-upload-not-my-file' => 'Nahral multimédiá, ktoré nie sú moje vlastné dielo na $1',
-	'mwe-upload-once-done' => 'Prosím, $1.
-Po dokončení nahrávania $2',
-	'mwe-upload-in-new-win-link' => 'nahrajte súbor v novom okne alebo karte',
-	'mwe-upload-refresh' => 'obnovte svoj zoznam nahraných súborov',
-	'mwe-ie-inline-upload' => 'Inline nahrávanie je v súčasnosti vypnuté pre Internet Explorer. 
-Môžete $1, potom $2',
-	'mwe-upload-in-progress' => 'Prebieha nahrávanie (nezatvárajte toto okno)',
-	'mwe-uploaded-status' => 'Nahrané',
-	'mwe-transcoded-status' => 'Prekódované',
-	'mwe-uploaded-time-remaining' => 'Zostávajúci čas: $1',
-	'mwe-upload-done' => 'Súbor, ktorý ste nahrali <i>by mal byť</i> prístupný.',
-	'mwe-add_media_wizard' => 'Sprievodca pridaním multimédia',
-	'mwe-media_search' => 'Hľadanie multimédií',
-	'mwe-am-box_layout' => 'Rozloženie okna',
-	'mwe-am-list_layout' => 'Rozloženie zoznamu',
-	'mwe-am-results_desc' => 'Výsledky $1 až $2',
-	'mwe-am-results_desc_total' => 'Výsledky $1 až $2 z $3',
-	'mwe-am-results_next' => 'ďalej',
-	'mwe-am-results_prev' => 'späť',
-	'mwe-am-no_results' => 'Žiadne výsledky vyhľadávania <b>$1</b>',
-	'mwe-upload_tab' => 'Nahrať súbor',
-	'mwe-am-layout' => 'Rozloženie:',
-	'mwe-am-resource_edit' => 'Upraviť zdroj: $1',
-	'mwe-resource_description_page' => 'Stránka s popisom zdroja',
-	'mwe-link' => 'odkaz',
-	'mwe-am-do_insert' => 'Vložiť',
-	'mwe-cc_by_title' => 'uvedenie autora',
-	'mwe-cc_nc_title' => 'nekomerčné využitie',
-	'mwe-cc_nd_title' => 'žiadne odvodené diela',
-	'mwe-cc_sa_title' => 'zachovať licenciu',
-	'mwe-cc_pd_title' => 'voľné dielo',
-	'mwe-unknown_license' => 'neznáma licencia',
-	'mwe-no-import-by-url' => 'Tento používateľ alebo wiki <b>nemôže</b> importovať súbory zo vzdialených URL. 
-<p>Nie ste prihlásený?</p>
-<p>Je pre vás nastavené oprávnenie upload_by_url? 
-Má wiki zapnuté $1?</p>',
-	'mwe-results_from' => 'Výsledky z $1',
-	'mwe-missing_desc_see_source' => 'Súboru chýba popis.
-Pozrite si prosím [$1 pôvodný zdroj] a pomôžte ho popísať.',
-	'mwe-am-config_error' => 'Chyba Sprievodcu pridaním multimédia: $1',
-	'mwe-your-recent-uploads-to' => 'Vaše posledné nahrané súbory na $1',
-	'mwe-no_recent_uploads' => 'Nemáte žiadne nedávno nahrané súbory',
-	'mwe-not-logged-in-uploads' => 'Možno sa posledné nahrané súbory nezobrazujú preto, že nie ste prihlásený.
-$1 prihláste sa a $2',
-	'mwe-ie-eye-permision' => 'Ak používate Internet Explorer a ste prihlásený, budete možno musieť upraviť svoje nastavenia ochrany osobných údajov',
-	'mwe-upload-a-file' => 'Nahrať nový súbor',
-	'mwe-upload-a-file-to' => 'Nahrať nový súbor na $1',
-	'mwe-resource_page_desc' => 'Popisná stránka zdroja:',
-	'mwe-edit_resource_desc' => 'Upraviť popis zdroja ako wiki text:',
-	'mwe-local_resource_title' => 'Lokálny názov zdroja:',
-	'mwe-watch_this_page' => 'Sledovať túto stránku',
-	'mwe-do_import_resource' => 'Importovať zdroj',
-	'mwe-update_preview' => 'Aktualizovať náhľad',
-	'mwe-return-search-results' => 'Návrat na výsledky hľadania',
-	'mwe-importing_asset' => 'Importuje sa položka',
-	'mwe-preview_insert_resource' => 'Náhľad vloženia zdroja: $1',
-	'mwe-do-more-modification' => 'Vykonať ďalšie zmeny',
-	'mwe-checking-resource' => 'Kontroluje sa zdroj',
-	'mwe-resource-needs-import' => 'Zdroj $1 musí byť importovaný do $2',
-	'mwe-warning-upload-to-commons' => '$1 odporúča, aby ste nahrávali na Wikimedia Commons. Nahrávajte lokálne iba ak ste si prečítali $2',
-	'mwe-local-upload-policy-link' => 'miestnu politiku nahrávania',
-	'mwe-ftype-svg' => 'vektorový súbor SVG',
-	'mwe-ftype-jpg' => 'obrázkový súbor JPEG',
-	'mwe-ftype-png' => 'obrázkový súbor PNG',
-	'mwe-ftype-oga' => 'zvukový súbor OGG',
-	'mwe-ftype-ogg' => 'videosúbor Ogg',
-	'mwe-ftype-unk' => 'neznámy formát súboru',
-	'mwe-am-commons' => 'Wikimedia Commons, archív slobodne licencovaného vzdelávacieho multimediálneho obsahu (obrázky, zvuk a videá)',
-	'mwe-am-kaltura-title' => 'Vyhľadávanie Kaltura (všetky zdroje)',
-	'mwe-am-kaltura' => 'Kaltura - agregované vyhľadávanie voľne licencovaných multimédií prostredníctvom viacerých poskytovateľov vyhľadávania',
-	'mwe-am-this_wiki-title' => 'Táto wiki',
-	'mwe-am-this_wiki-desc' => 'Lokálna wiki',
-	'mwe-am-archive_org-desc' => 'Internet Archive, digitálna knižnica kultúrnych artefaktov',
-	'mwe-am-flickr-desc' => 'Flickr.com, stránka na zdieľanie fotografií online',
-	'mwe-am-metavid-desc' => 'Metavid.org, komunitný archív zborníkov americkej Snemovne a Senátu',
-	'mwe-am-search-timeout' => 'Vyhľadávacia požiadavka nebola dokončená.
-Server môže byť nedostupný z dôvodu veľkej záťaže.
-Môžete to skúsiť znova neskôr',
-	'mwe-upload-transcoded-status' => 'Prekódované',
-	'mwe-upload-transcode-in-progress' => 'Prebieha prekódovanie a nahrávanie (nezatvárajte toto okno)',
-	
-	'mwe-upload-multi' => 'Nahrať {{PLURAL:$1|súbor|súbory}}',
-	'mwe-review-upload' => 'Skontrolovať {{PLURAL:$1|nahraný súbor|nahrané súbory}}',
 );
 
 /** Slovak (Slovenčina)
@@ -6683,7 +6410,7 @@ $messages['sr-ec'] = array(
 	'mwe-ftype-ogg' => 'Ogg видео фајл',
 	'mwe-ftype-unk' => 'Непознати формат фајла',
 	'mwe-am-this_wiki-title' => 'Ова викија',
-	);
+);
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Rancher
@@ -7024,6 +6751,7 @@ $messages['tet'] = array(
 );
 
 /** Thai (ไทย)
+ * @author Hanberke
  * @author Woraponboonkerd
  */
 $messages['th'] = array(
@@ -7047,11 +6775,9 @@ $messages['th'] = array(
 	'mwe-filesource' => 'แหล่งที่มา:',
 	'mwe-filestatus' => 'สถานะลิขสิทธิ์:',
 	'mwe-loading-add-media-wiz' => 'กำลังโหลดตัวช่วยสร้างสื่อ',
-	);
+);
 
-/** Turkmen (Türkmençe)
- * @author Hanberke
- */
+/** Turkmen (Türkmençe) */
 $messages['tk'] = array(
 	'mwe-am-results_prev' => 'Öňki',
 	'mwe-upload_tab' => 'Ýükle',
@@ -7287,7 +7013,6 @@ Lütfen [$1 kaynağı] kontrol edin ve açıklamaya yardımcı olun.',
 	'mwe-am-metavid-desc' => 'Metavid.org, ABD Meclis ve Senato görüşmelerinin topluluk arşivi',
 	'mwe-upload-transcoded-status' => 'Yeniden kodlandı',
 	'mwe-upload-transcode-in-progress' => 'Yeniden kodlama ve yükleme sürüyor (bu pencereyi kapatmayın)',
-	
 	'mwe-upload-multi' => '{{PLURAL:$1|Dosyayı|Dosyaları}} yükle',
 	'mwe-review-upload' => 'Dosya {{PLURAL:$1|yüklemesini|yüklemelerini}} incele',
 );
@@ -7807,5 +7532,65 @@ $messages['zh-hans'] = array(
 	'mwe-upload-transcode-in-progress' => '正在转码并上传中（不要关闭这个窗口）',
 	'mwe-upload-multi' => '上传$1个文件',
 	'mwe-review-upload' => '审阅文件$1个上传',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ * @author Pbdragonwang
+ */
+$messages['zh-hant'] = array(
+	'mwe-upload-stats-fileprogress' => '$2中的$1',
+	'mwe-upload-unknown-size' => '未知的大小',
+	'mwe-cancel-confim' => '你真的要取消嗎？',
+	'mwe-successfulupload' => '上傳成功',
+	'mwe-uploaderror' => '上傳錯誤',
+	'mwe-uploadwarning' => '上傳警告',
+	'mwe-unknown-error' => '未知錯誤：',
+	'mwe-return-to-form' => '返回到表單',
+	'mwe-file-exists-duplicate' => '該檔案與下列檔案重複：',
+	'mwe-fileexists' => '已存在相同名稱的檔案。如果你不確定是否要修改它，請檢查<b><tt>$1</tt></b>。',
+	'mwe-fileexists-thumb' => '已存在檔案',
+	'mwe-ignorewarning' => '忽略警告並儲存檔案',
+	'mwe-file-thumbnail-no' => '檔案名以<b><tt>$1</tt></b>開頭',
+	'mwe-go-to-resource' => '前往資源頁',
+	'mwe-upload-misc-error' => '未知的上傳錯誤',
+	'mwe-wgfogg_warning_bad_extension' => '你選擇了一個不支援的檔案格式(<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_file_fypes">更多資訊</a>)。',
+	'mwe-thumbnail-more' => '放大',
+	'mwe-filesource' => '來源：',
+	'mwe-filestatus' => '版權狀態：',
+	'mwe-loading-add-media-wiz' => '載入中加入媒體精靈',
+	'mwe-select_file' => '選擇檔案',
+	'mwe-upload' => '上傳檔案',
+	'mwe-destfilename' => '目標檔案名：',
+	'mwe-summary' => '摘要',
+	'mwe-link-login' => '登入',
+	'mwe-watch-this-file' => '監視這個檔案',
+	'mwe-ignore-any-warnings' => '忽略任何警告',
+	'mwe-i-would-like-to' => '我想',
+	'mwe-upload-in-new-win-link' => '在新的視窗或分頁上傳',
+	'mwe-uploaded-status' => '已上傳',
+	'mwe-add_media_wizard' => '新增媒體精靈',
+	'mwe-media_search' => '媒體檔案搜尋',
+	'mwe-am-no_results' => '沒有 <b>$1</b> 的搜尋結果',
+	'mwe-upload_tab' => '上傳檔案',
+	'mwe-am-resource_edit' => '編輯資源：$1',
+	'mwe-resource_description_page' => '資源描述頁',
+	'mwe-link' => '連結',
+	'mwe-cc_by_title' => '署名',
+	'mwe-unknown_license' => '未知的許可協議',
+	'mwe-results_from' => '關於 $1 的結果',
+	'mwe-no_recent_uploads' => '最近沒有上傳',
+	'mwe-upload-a-file' => '上傳一個新的檔案',
+	'mwe-upload-a-file-to' => '上傳新的檔案到$1',
+	'mwe-return-search-results' => '返回到搜尋結果',
+	'mwe-do-more-modification' => '進一步修改',
+	'mwe-checking-resource' => '檢查資源',
+	'mwe-local-upload-policy-link' => '本地上傳方針',
+	'mwe-ftype-unk' => '未知的檔案格式',
+	'mwe-am-kaltura-title' => 'Kaltura 搜尋（所有來源）',
+	'mwe-am-flickr-desc' => 'Flickr.com，一個線上的照片分享網站',
+	'mwe-am-search-timeout' => '搜尋請求沒有完成。 
+伺服器可能過載。 
+您可以稍後再試',
 );
 
