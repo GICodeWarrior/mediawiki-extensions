@@ -6,9 +6,9 @@
 if ( !defined('MEDIAWIKI') ) {
         die( '' );
 }
- 
+
 class InterwikiList extends SpecialPage {
-	
+
 	// Privates
 	private $mTitle; // The title for this specialpage
 
@@ -17,9 +17,9 @@ class InterwikiList extends SpecialPage {
 	*/
 	public function InterwikiList() {
 		parent::__construct("InterwikiList");
-		
+
 	}
-	
+
 	/**
 	 * Execute
 	 */
@@ -30,8 +30,8 @@ class InterwikiList extends SpecialPage {
 		$prefix = $wgRequest->getText( 'iwsearch', $par );
 		$wgOut->addHTML( $this->getInterwikis( $prefix ) );
 	}
-	
-	/** 
+
+	/**
 	* Get all Interwiki Links - the heart of the function
 	* @param $prefix string Prefix to search for in list
 	* @return string HTML
@@ -55,14 +55,14 @@ class InterwikiList extends SpecialPage {
 		$text = Xml::fieldSet( wfMsg('interwikilist-filter'), $form );
 
 		$interwikiList = array();
-		while( $row = $dbr->fetchObject( $results ) ) {
+		foreach( $results as $row ) {
 			$interwikiList[ "mw-iwlist-" . $row->iw_prefix ] = array( $row->iw_prefix, $row->iw_url );
 		}
 		$dbr->freeResult( $results );
 
-		$text .= Xml::buildTable( $interwikiList, 
+		$text .= Xml::buildTable( $interwikiList,
 								 array( 'id' => 'sv-software' ),
-								 array( wfMsg( 'interwikilist-linkname'), 
+								 array( wfMsg( 'interwikilist-linkname'),
 										wfMsg( 'interwikilist-target' ) ) );
 		return $text;
 	}

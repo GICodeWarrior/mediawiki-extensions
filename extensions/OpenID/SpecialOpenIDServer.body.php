@@ -166,6 +166,9 @@ class SpecialOpenIDServer extends SpecialOpenID {
 
 	# Returns an Auth_OpenID_Server from the libraries. Utility.
 
+	/**
+	 * @return Auth_OpenID_Server
+	 */
 	function getServer() {
 		global $wgOpenIDServerStorePath,
 		  $wgOpenIDServerStoreType;

@@ -571,7 +571,7 @@ class OAIRepo {
 
 	function fetchRecord( $pageid ) {
 		$db = $this->_db;
-		
+
 		$tables = array( 'updates', 'page', 'revision', 'text' );
 		$fields = array( 'page_namespace', 'page_title', 'old_text', 'old_flags',
 				'rev_id', 'rev_deleted', 'rev_comment', 'rev_user',
@@ -584,11 +584,11 @@ class OAIRepo {
 		$join_conds = array( 'page' => array( 'LEFT JOIN', 'page_id=up_page' ),
 				'revision' => array( 'LEFT JOIN', 'page_latest=rev_id' ),
 				'text' => array( 'LEFT JOIN', 'rev_text_id=old_id' ) );
-				
+
 		$conds['up_page'] = $pageid;
-		
+
 		$options['LIMIT'] = 1;
-		
+
 		wfRunHooks( 'OAIFetchRecordQuery', array( &$tables, &$fields, &$conds,
 						&$options, &$join_conds ) );
 
@@ -597,9 +597,9 @@ class OAIRepo {
 	}
 
 	function fetchRows( $from, $until, $chunk, $token = null ) {
-		
+
 		$db = $this->_db;
-		
+
 		$tables = array( 'updates', 'page', 'revision', 'text' );
 		$fields = array( 'page_namespace', 'page_title', 'old_text', 'old_flags',
 				'rev_id', 'rev_deleted', 'rev_comment', 'rev_user',
@@ -612,7 +612,7 @@ class OAIRepo {
 		$join_conds = array( 'page' => array( 'LEFT JOIN', 'page_id=up_page' ),
 				'revision' => array( 'LEFT JOIN', 'page_latest=rev_id' ),
 				'text' => array( 'LEFT JOIN', 'rev_text_id=old_id' ) );
-				
+
 		if( $token ) {
 			$conds[] = 'up_sequence>=' . $db->addQuotes( $token );
 			$options['ORDER BY'] = 'up_sequence';
@@ -625,9 +625,9 @@ class OAIRepo {
 		if( $until ) {
 			$conds[] = 'up_timestamp<=' .$db->addQuotes( $db->timestamp( $until ) );
 		}
-		
+
 		$options['LIMIT'] = $chunk;
-		
+
 		wfRunHooks( 'OAIFetchRowsQuery', array( &$tables, &$fields, &$conds,
 						&$options, &$join_conds ) );
 
