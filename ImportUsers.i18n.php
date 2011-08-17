@@ -1529,7 +1529,7 @@ $messages['or'] = array(
 	'importusers-email' => 'ଇ-ମେଲ',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(
