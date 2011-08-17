@@ -1,0 +1,6 @@
+.*.swp
+*.pyc
+data/*
+dist/*
+MANIFEST
+build
