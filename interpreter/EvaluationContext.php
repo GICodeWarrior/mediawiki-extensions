@@ -190,7 +190,12 @@ class WSEvaluationContext {
 							throw new WSUserVisibleException( 'appendyield', $this->mModuleName, $c[0]->line );
 						}
 
-						$this->mOutput = WSData::sum( $this->mOutput, $this->evaluateNode( $c[1], $rec + 1 ) );
+						$this->mOutput = WSData::sum(
+							$this->mOutput,
+							$this->evaluateNode( $c[1], $rec + 1 ),
+							$this->mModuleName,
+							$c[0]->line
+						);
 						break 2;
 					case 'yield':
 						if( $this->mOutput->type != WSData::DNull ) {
@@ -255,7 +260,7 @@ class WSEvaluationContext {
 				$arg2 = $this->evaluateNode( $c[2], $rec + 1 );
 				switch( $c[1]->value ) {
 					case '+':
-						return WSData::sum( $arg1, $arg2 );
+						return WSData::sum( $arg1, $arg2, $this->mModuleName, $c[1]->line );
 					case '-':
 						return WSData::sub( $arg1, $arg2 );
 				}
@@ -573,13 +578,13 @@ class WSEvaluationContext {
 	protected function getValueForSetting( $old, $new, $set, $line ) {
 		switch( $set ) {
 			case '+=':
-				return WSData::sum( $old, $new );
+				return WSData::sum( $old, $new, $this->mModuleName, $line );
 			case '-=':
 				return WSData::sub( $old, $new );
 			case '*=':
-				return WSData::mulRel( $old, $new, '*', $line );
+				return WSData::mulRel( $old, $new, '*', $this->mModuleName, $line );
 			case '/=':
-				return WSData::mulRel( $old, $new, '/', $line );
+				return WSData::mulRel( $old, $new, '/', $this->mModuleName, $line );
 			default:
 				return $new;
 		}
