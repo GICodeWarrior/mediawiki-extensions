@@ -144,6 +144,17 @@ $messages['dsb'] = array(
 	'emailusers-toomanyrecipientsselected' => 'Pśewjele dostawarjow jo wubrane ({{PLURAL:$1|maksimalnje $1|maksimalnje $1|maksimalnje $1maksimalnje $1}}).',
 );
 
+/** Spanish (Español)
+ * @author Fitoschido
+ */
+$messages['es'] = array(
+	'emailusers-desc' => 'Permite a los usuarios enviar mensajes de correo-e a múltiples destinatarios',
+	'right-sendbatchemail' => 'Enviar mensajes de correo-e a múltiples destinatarios a la vez',
+	'emailusers-target-reverse' => 'Enviar a todos los usuarios excepto a los seleccionados',
+	'emailusers-norecipientselected' => 'No se seleccionó ningún destinatario.',
+	'emailusers-toomanyrecipientsselected' => 'Hay demasiados destinatarios seleccionados ({{PLURAL:$1|$1 máximo|$1 máximo}}).',
+);
+
 /** Persian (فارسی)
  * @author Mjbmr
  */
@@ -343,6 +354,19 @@ $messages['no'] = array(
 	'emailusers-norecipient' => 'Det finnes ingen du kan sende e-post til.',
 	'emailusers-norecipientselected' => 'Ingen mottakere er valgt.',
 	'emailusers-toomanyrecipientsselected' => 'For mange mottakere er valgt ({{PLURAL:$1|maximum $1|maximum $1}}).',
+);
+
+/** Polish (Polski)
+ * @author Woytecr
+ */
+$messages['pl'] = array(
+	'emailusers-desc' => 'Zezwolenie użytkownikom na wysyłanie wiadomości do wielu odbiorców',
+	'right-sendbatchemail' => 'Wyślij wiadomość e-mail do wielu adresatów w tym samym czasie',
+	'emailusers' => 'Wyślij e‐mail do użytkowników',
+	'emailusers-target-reverse' => 'Wyślij do wszystkich użytkowników za wyjątkiem wybranych',
+	'emailusers-norecipient' => 'Nie ma nikogo, komu możesz wysłać e-mail.',
+	'emailusers-norecipientselected' => 'Nie wybrano odbiorcy',
+	'emailusers-toomanyrecipientsselected' => 'Wybrano zbyt wiele odbiorców (maksymalnie: $1)',
 );
 
 /** Piedmontese (Piemontèis)
