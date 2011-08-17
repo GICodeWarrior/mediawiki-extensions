@@ -1080,7 +1080,7 @@ $messages['ru'] = array(
 	'right-asksql' => 'выполнение SQL-запросов',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author Bert Jickty
  */
 $messages['sah'] = array(
