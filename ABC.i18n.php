@@ -285,7 +285,7 @@ $messages['dsb'] = array(
 	'abcdownload' => 'Ześěgnuś:',
 );
 
-/** Dusun Bundu-liwan (Dusun Bundu-liwan)
+/** Central Dusun (Dusun Bundu-liwan)
  * @author FRANCIS5091
  * @author FRANELYA
  */
@@ -806,6 +806,7 @@ $messages['nds-nl'] = array(
 );
 
 /** Nepali (नेपाली)
+ * @author Bhawani Gautam
  * @author Bhawani Gautam Rhk
  * @author सरोज कुमार ढकाल
  */
@@ -854,7 +855,7 @@ $messages['or'] = array(
 	'abcdownload' => 'ଡାଉନଲୋଡ:',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(
@@ -976,7 +977,7 @@ $messages['rue'] = array(
 	'abcdownload' => 'Скачати:',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(
