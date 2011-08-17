@@ -2877,7 +2877,7 @@ $messages['or'] = array(
 	'tasks_status_open' => 'ଖୋଲ',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(
