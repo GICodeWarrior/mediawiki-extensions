@@ -808,7 +808,7 @@ $messages['oc'] = array(
 	'showprocesslist-info' => 'Entresenhas',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(
