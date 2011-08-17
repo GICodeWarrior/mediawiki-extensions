@@ -97,7 +97,7 @@ $wgScriptsLimits = array(
 	 * example 2 + 2 * 2 ** 2 is parsed to (2 + (2 * (2 ** 2))) and needs
 	 * depth 3 to be parsed.
 	 */
-	'depth' => 100,
+	'depth' => 35,
 );
 
 /**
