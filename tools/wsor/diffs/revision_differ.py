@@ -1,7 +1,24 @@
 #!/usr/local/bin/pypy
-
-import logging,traceback
-import sys, re
+################################################################################
+# Revision Differ
+#
+# This script was written to be a streaming mapper for wikihadoop 
+# (see https://github.com/whym/wikihadoop).  By default, this script runs under
+# pypy (much faster), but it can also be run under CPython 2.7+.
+#
+# Required to run this script are
+#  - diff_match_patch.py (provided)
+#  - xml_simulator.py (provided)
+#  - wikimedia-utilities (https://bitbucket.org/halfak/wikimedia-utilities)
+#
+# Author: Aaron Halfaker (aaron.halfaker@gmail.com)
+# 
+# This software licensed as GPLv2(http://www.gnu.org/licenses/gpl-2.0.html). and 
+# is provided WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or 
+# implied.
+#
+################################################################################
+import logging, traceback, sys, re
 from StringIO import StringIO
 
 from diff_match_patch import diff_match_patch
@@ -12,12 +29,12 @@ import wmf
 
 def tokenize(content):
 	return re.findall(
-                r"[\w]+" +   #Word
-                r"|\[\[" +   #Opening internal link
-                r"|\]\]" +   #Closing internal link
-                r"|\{\{" +   #Opening template
+		r"[\w]+" +   #Word
+		r"|\[\[" +   #Opening internal link
+		r"|\]\]" +   #Closing internal link
+		r"|\{\{" +   #Opening template
 		r"|\}\}" +   #Closing template
-                r"|\{\{\{" + #Opening template var
+		r"|\{\{\{" + #Opening template var
 		r"|\}\}\}" + #Closing template var
 		r"|\n+" +    #Line breaks
 		r"| +" +     #Spaces
@@ -29,8 +46,8 @@ def tokenize(content):
 		r"|\|\}" +   #Closing table
 		r"|\|\-" +   #Table row
 		r"|.",       #Misc character
-                content
-        )
+		content
+	)
 
 def hashTokens(tokens, hash2Token=[], token2Hash={}):
 	hashBuffer = StringIO()
@@ -56,15 +73,15 @@ def simpleDiff(content1, content2, tokenize=tokenize, sep='', report=[-1,0,1]):
 	
 	dmp = diff_match_patch()
 	
-        diffs = dmp.diff_main(hashes1, hashes2, checklines=False)
-        
-        position = 0
-        for (ar,hashes) in diffs:
-        	content = unhash(hashes,h2t,sep=sep)
-        	if ar in report:
-        		yield position, ar, content
-        	
-        	if ar != -1: position += len(content)
+	diffs = dmp.diff_main(hashes1, hashes2, checklines=False)
+	
+	position = 0
+	for (ar,hashes) in diffs:
+		content = unhash(hashes,h2t,sep=sep)
+		if ar in report:
+			yield position, ar, content
+		
+		if ar != -1: position += len(content)
 
 
 metaXML = """
@@ -100,6 +117,8 @@ metaXML = """
 </namespaces>
 </siteinfo>
 """
+
+
 xmlSim = RecordingFileWrapper(sys.stdin, pre=metaXML, post='</mediawiki>')
 
 try:
@@ -113,7 +132,9 @@ for page in dump.readPages():
 	sys.stderr.write('Processing: %s - %s\n' % (page.getId(), page.getTitle().encode('UTF-8')))
 	try:
 		lastRev = None
+		currRevId = None
 		for revision in page.readRevisions():
+			currRevId = revision.getId()
 			if lastRev == None:
 				lastRev = revision
 			else:
@@ -135,16 +156,8 @@ for page in dump.readPages():
 					row.append(":".join(repr(v) for v in d))
 				
 				print("\t".join(row))
+				sys.stderr.write('reporter:counter:SkippingTaskCounters,MapProcessedRecords,1\n')
 				
 	except Exception as e:
-		sys.stderr.write('%s' % e)
-		#fh.write('%s' % e)
-		#logging.error(
-		#	"Failed to process page %s:%s - %s" % (
-		#		page.getId(),
-		#		page.getTitle(),
-		#		e
-		#	))
-		#logging.error(traceback.print_exc())
-#fh.close()
-#sys.exit(0)
+		sys.stderr.write('%s - while processing revId=%s\n' % (e, currRevId))
+		traceback.print_exc(file=sys.stderr)

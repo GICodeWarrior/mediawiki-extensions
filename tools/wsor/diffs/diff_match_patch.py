@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 """Diff Match and Patch
 
 Copyright 2006 Google Inc.
