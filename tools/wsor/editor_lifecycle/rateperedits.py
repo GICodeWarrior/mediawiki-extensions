@@ -1,6 +1,8 @@
 #!/usr/bin/python
 
-'''plots number of edits vs activity rate '''
+''' Plots number of edits vs activity rate. Reproduces similar plot from
+Radicchi (2009), Phys. Rev. E 80, 026118, that used data from a snapshot of the
+logging table from 2008. '''
 
 import re
 import os
