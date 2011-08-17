@@ -1,0 +1,81 @@
+#!/usr/bin/python
+
+import re
+import os
+import sys
+
+import numpy as np
+import matplotlib.pyplot as pp
+
+from argparse import ArgumentParser
+from datetime import datetime
+from dateutil.parser import parser as DateParser
+from matplotlib.font_manager import FontProperties
+
+__prog__ = os.path.basename(__file__)
+
+parser = ArgumentParser(description=__doc__)
+parser.add_argument('data_paths', metavar='data', nargs='+')
+parser.add_argument('-title',)
+
+markers = 'ov^<>sp*+xD'
+colors = 'bgrcmykw'
+
+dateparser = DateParser()
+
+class UnsupportedFileFormatError(Exception):
+    pass
+
+def load(path):
+    ''' detect extension and loads data using numpy.io functions '''
+    _, ext = os.path.splitext(path)
+    if re.match('^\.npy$', ext, re.I):
+        return np.load(path)[:,[0,-1]]
+    elif re.match('^\.tsv$', ext, re.I) or re.match('^\.txt$', ext, re.I):
+        default = datetime(2001,1,1)
+        def parse(timestamp):
+            return dateparser.parse(timestamp, default)
+        conv = {0: parse, -1: float}
+        data = np.loadtxt(path, delimiter='\t', converters=conv, dtype=object)
+        return data[:, [0,-1]]
+    raise UnsupportedFileFormatError(path)
+
+def clean(data):
+    data = filter(lambda k : k[1] < 3000 and k[1] > 0, data)
+    data = sorted(data, key=lambda k : k[0])
+    return zip(*data)
+
+def main(ns):
+    
+    # create figure and axis
+    fig = pp.figure(figsize=(8,4))
+    ax = fig.add_axes(pp.axes([.15,.1,.8,.8], axisbg='antiquewhite'))
+    M = len(markers)
+    C = len(colors)
+
+    # plot lines
+    for i, path in enumerate(ns.data_paths):
+        try:
+            name, ext = os.path.splitext(path)
+            name.replace('_',' ')
+            data = load(path)
+            dates, mrt = clean(data)
+            ax.plot(dates, mrt, ':'+markers[i % M]+colors[i % C], label=name)
+        except UnsupportedFileFormatError,e:
+            print >> sys.stderr, '%s: error: unsupported file type %s (.npy,'\
+                    '.tsv, .txt accepted)' % (__prog__, e.args[0])
+            sys.exit(1)
+
+    pp.title('100-500 edits/year')
+    pp.ylabel('average time to inactivity')
+    pp.xlabel('')
+    pp.legend(loc='best', prop=FontProperties(size='small'))
+    pp.minorticks_on()
+    pp.grid("on")
+    pp.savefig('test.pdf')
+    pp.show()
+
+if __name__ == '__main__':
+    ns = parser.parse_args()
+    main(ns)
+
