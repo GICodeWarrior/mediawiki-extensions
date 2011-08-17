@@ -9,7 +9,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,     // Magic so that svn revision number can be shown
 	'name' => 'Notificator',
 	'descriptionmsg' => 'notificator-desc',
-	'version' => '1.0.2',
+	'version' => '1.1',
 	'author' => 'Patrick Nagel',
 	'url' => "http://www.mediawiki.org/wiki/Extension:Notificator",
 );
@@ -31,9 +31,11 @@ $wgExtensionAliasesFiles['Notificator'] = $dir . '/Notificator.alias.php';
 // Setting default here, to avoid register_globals vulnerabilites
 $ngFromAddress = $wgPasswordSenderName . '<' . $wgPasswordSender . '>';
 
-function notificator_AddDatabaseTable() {
-	global $wgExtNewTables;
-	$wgExtNewTables[] = array( 'notificator', dirname( __FILE__ ) . '/Notificator.sql' );
+function notificator_AddDatabaseTable( $updater ) {
+	$updater->addExtensionUpdate( array( 'addTable', 'notificator',
+		dirname( __FILE__ ) . '/Notificator.sql', true ) );
+	$updater->addExtensionUpdate( array( 'modifyField', 'notificator', 'receiver_email',
+		dirname( __FILE__ ) . '/Notificator.patch.sql', true ) );
 	return true;
 }
 
