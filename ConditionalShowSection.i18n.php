@@ -198,7 +198,7 @@ $messages['ja'] = array(
 	'conditionalshowsection-desc' => 'ある部分のウィキテキストの表示・非表示を条件によって切り替えられる cshow タグを追加する',
 );
 
-/** Kabardian (Cyrillic) (къэбэрдеибзэ/qabardjajəbza (Cyrillic))
+/** Kabardian (Cyrillic) (Адыгэбзэ (Cyrillic))
  * @author Тамэ Балъкъэрхэ
  */
 $messages['kbd-cyrl'] = array(
@@ -311,7 +311,7 @@ $messages['ru'] = array(
 	'conditionalshowsection-desc' => 'Добавляет тег cshow для условного показа или сокрытия раздела викитекста.',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(
