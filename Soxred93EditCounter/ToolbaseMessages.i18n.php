@@ -82,7 +82,8 @@ $messages['qqq'] = array(
 	'toolbase-userid-submit' => 'Text on the submit button for the user_id tool',
 	'toolbase-userid-title' => 'Header on the user_id tool',
 	'toolbase-userid-result' => 'Message shown when someone gets the user id on the user_id tool',
-	'toolbase-main-title' => 'General greeting, used on homepage',
+	'toolbase-main-title' => 'General greeting, used on homepage
+{{Identical|Welcome}}',
 	'toolbase-main-content' => 'Content of the homepage',
 	'toolbase-main-404' => 'Header shown for a 404 error',
 	'toolbase-main-404-content' => 'Content of the 404 error page',
