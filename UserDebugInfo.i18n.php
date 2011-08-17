@@ -16,10 +16,8 @@ $messages['en'] = array(
 	'userdebuginfo-language' => 'Language',
 );
 
-/**
- * Message documentation (Message documentation)
- * @author Reedy
- */
+/** Message documentation (Message documentation) */
 $messages['qqq'] = array(
 	'userdebuginfo-desc' => '{{desc}}',
 );
+
