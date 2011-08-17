@@ -89,17 +89,33 @@ private function getDiffCss() {
 
 public static function receiverIsValid( $receiver ) {
 	// Returns true if the parameter is a valid e-mail address, false if not
-	$receiverIsValid = false;
+	$receiverIsValid = true;
 
+	// There may be multiple e-mail addresses, divided by commas - which is valid
+	// for us, but not for the validation functions we use below. So get the single
+	// address into an array first, validate them one by one, and only if all are ok,
+	// return true.
+	$receiverArray = explode( ',', str_replace ( ', ', ',', $receiver ) );
+
+	// To make sure some joker doesn't copy in a large number of e-mail addresses
+	// and spams them all, lets set a (admittedly arbitrary) limit of 10.
+	if ( count( $receiverArray ) > 10 ) {
+		return false;
+	}
+
+	if ( method_exists( 'Sanitizer', 'validateEmail' ) ) {
 	// User::isValidEmailAddr() has been moved to Sanitizer::validateEmail as of
 	// MediaWiki version 1.18 (I think).
-	if ( method_exists( 'Sanitizer', 'validateEmail' ) ) {
-		if ( Sanitizer::validateEmail( $receiver ) ) {
-			$receiverIsValid = true;
+		foreach ( $receiverArray as $singleEmailAddress ) {
+			if ( ! Sanitizer::validateEmail( $singleEmailAddress ) ) {
+				$receiverIsValid = false;
+			}
 		}
 	} else {
-		if ( User::isValidEmailAddr( $receiver ) ) {
-			$receiverIsValid = true;
+		foreach ( $receiverArray as $singleEmailAddress ) {
+			if ( ! User::isValidEmailAddr( $singleEmailAddress ) ) {
+				$receiverIsValid = false;
+			}
 		}
 	}
 	return $receiverIsValid;
