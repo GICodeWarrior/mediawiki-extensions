@@ -725,7 +725,7 @@ $messages['ru'] = array(
 	'categoryintersection-results' => 'Поиск дал {{PLURAL:$1|$1 результат|$1 результата|$1 результатов}}.',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(
