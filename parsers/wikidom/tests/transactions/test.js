@@ -77,7 +77,7 @@ test( 'Insert, retain and remove', 4, function() {
 			"!"
 		] );
 	
-	var tx = new es.Content.Transaction(),
+	var tx = new es.Transaction(),
 		insertion = es.Content.newFromText( 'used to be' ),
 		removal = content.getContent( new es.Range( 5, 7 ) );
 	
@@ -124,7 +124,7 @@ test( 'Annotating', 4, function() {
 			"!"
 		] );
 	
-	var tx = new es.Content.Transaction(),
+	var tx = new es.Transaction(),
 		annotation = { 'method': 'add', 'annotation': { 'type': 'italic' } };
 	
 	tx.add( 'retain', 4 );

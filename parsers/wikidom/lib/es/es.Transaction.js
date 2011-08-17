@@ -6,7 +6,7 @@
  * @param content {es.Content} Content to operate on
  * @property operations {Array} List of operations
  */
-es.Content.Transaction = function() {
+es.Transaction = function() {
 	this.operations = [];
 	this.cursor = 0;
 };
@@ -14,7 +14,7 @@ es.Content.Transaction = function() {
 /**
  * List of operation implementations.
  */
-es.Content.Transaction.operations = ( function() {
+es.Transaction.operations = ( function() {
 	function annotate( con, add, rem ) {
 		// Ensure that modifications to annotated characters do not affect other uses of the same
 		// content by isolating it - performing a deep-slice
@@ -117,20 +117,20 @@ es.Content.Transaction.operations = ( function() {
 	};
 } )();
 
-es.Content.Transaction.prototype.getCursor = function() {
+es.Transaction.prototype.getCursor = function() {
 	return this.cursor;
 };
 
-es.Content.Transaction.prototype.reset = function() {
+es.Transaction.prototype.reset = function() {
 	this.operations = [];
 	this.cursor = 0;
 };
 
-es.Content.Transaction.prototype.add = function( type, val ) {
-	if ( !( type in es.Content.Transaction.operations ) ) {
+es.Transaction.prototype.add = function( type, val ) {
+	if ( !( type in es.Transaction.operations ) ) {
 		throw 'Unknown operation error. Operation type is not supported: ' + type;
 	}
-	var model = es.Content.Transaction.operations[type];
+	var model = es.Transaction.operations[type];
 	this.operations.push( {
 		'type': type,
 		'val': val,
@@ -139,7 +139,7 @@ es.Content.Transaction.prototype.add = function( type, val ) {
 	this.cursor += model.advance( val );
 };
 
-es.Content.Transaction.prototype.commit = function( src ) {
+es.Transaction.prototype.commit = function( src ) {
 	var cur = 0,
 		dst = new es.Content(),
 		add = [],
@@ -153,7 +153,7 @@ es.Content.Transaction.prototype.commit = function( src ) {
 	return dst;
 };
 
-es.Content.Transaction.prototype.rollback = function( src ) {
+es.Transaction.prototype.rollback = function( src ) {
 	var cur = 0,
 		dst = new es.Content(),
 		add = [],
