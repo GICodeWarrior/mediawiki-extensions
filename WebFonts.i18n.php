@@ -278,6 +278,13 @@ $messages['no'] = array(
 	'webfonts-disable-preference' => 'Deaktiver innbygging av fonter (WebFonts)',
 );
 
+/** Polish (Polski)
+ * @author Woytecr
+ */
+$messages['pl'] = array(
+	'webfonts-load' => 'Wybierz czcionkę',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  * @author Dragonòt
