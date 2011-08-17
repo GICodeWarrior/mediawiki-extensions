@@ -7,7 +7,7 @@
  */
 
 class ArticleFeedbackHooks {
-	
+
 	protected static $modules = array(
 		'ext.articleFeedback.startup' => array(
 			'scripts' => 'ext.articleFeedback/ext.articleFeedback.startup.js',
@@ -121,11 +121,15 @@ class ArticleFeedbackHooks {
 			),
 		),
 	);
-	
+
 	/* Static Methods */
-	
+
 	/**
 	 * LoadExtensionSchemaUpdates hook
+	 *
+	 * @param $updater DatabaseUpdater
+	 *
+	 * @return bool
 	 */
 	public static function loadExtensionSchemaUpdates( $updater = null ) {
 		if ( $updater === null ) {
@@ -137,43 +141,41 @@ class ArticleFeedbackHooks {
 		} else {
 			$dir = dirname( __FILE__ );
 			$db = $updater->getDB();
-			if ( !$db->tableExists( 'article_feedback' ) ) {
+
+			if ( $db->tableExists( 'article_assessment' ) ) {
 				// Rename tables
-				if ( $db->tableExists( 'article_assessment' ) ) {
-					$updater->addExtensionUpdate( array(
-						'addTable',
-						'article_feedback',
-						$dir . '/sql/RenameTables.sql',
-						true
-					) );
-				} else {
-					// Initial install tables
-					$updater->addExtensionUpdate( array(
-						'addTable',
-						'article_feedback',
-						$dir . '/sql/ArticleFeedback.sql',
-						true
-					) );
-				}
-			}
-			if ( !$db->fieldExists( 'article_feedback', 'aa_design_bucket', __METHOD__ ) ) {
 				$updater->addExtensionUpdate( array(
-					'addField',
+					'addTable',
 					'article_feedback',
-					'aa_design_bucket',
-					$dir . '/sql/AddRatingBucket.sql',
+					$dir . '/sql/RenameTables.sql',
 					true
 				) );
-			}
-			if ( !$db->fieldExists( 'article_feedback_properties', 'afp_value_text', __METHOD__ ) ) {
+			} else {
+				// Initial install tables
 				$updater->addExtensionUpdate( array(
-					'addField',
-					'article_feedback_properties',
-					'afp_value_text',
-					$dir . '/sql/AddPropertiesValueText.sql',
+					'addTable',
+					'article_feedback',
+					$dir . '/sql/ArticleFeedback.sql',
 					true
 				) );
 			}
+
+			$updater->addExtensionUpdate( array(
+				'addField',
+				'article_feedback',
+				'aa_design_bucket',
+				$dir . '/sql/AddRatingBucket.sql',
+				true
+			) );
+
+			$updater->addExtensionUpdate( array(
+				'addField',
+				'article_feedback_properties',
+				'afp_value_text',
+				$dir . '/sql/AddPropertiesValueText.sql',
+				true
+			) );
+
 			$updater->addExtensionUpdate( array(
 				'addTable',
 				'article_feedback_properties',
@@ -196,52 +198,29 @@ class ArticleFeedbackHooks {
 				$dir . '/sql/AddRevisionsTable.sql',
 				true
 			) );
-			
-			if ( $db->tableExists( 'article_feedback_stats_highs_lows') ) {
-				if ( !$db->tableExists( 'article_feedback_stats_types' )) {
-					// add article_feedback_stats_type if necessaray
-					$updater->addExtensionUpdate( array(
-						'addTable',
-						'article_feedback_stats_types',
-						$dir . '/sql/AddArticleFeedbackStatsTypeTable.sql',
-						true
-					) );
-				}
-				
-				$updater->addExtensionUpdate( array(
-					'addTable',
-					'article_feedback_stats',
-					$dir . '/sql/AddArticleFeedbackStatsTable.sql',
-					true
-				) );
-				
-				// migrate article_feedback_stats_highs_lows to article_feedback_stats
-				$updater->addExtensionUpdate( array(
-					'applyPatch',
-					$dir . '/sql/MigrateArticleFeedbackStatsHighsLows.sql',
-					true
-				) );
-			} else {
-				// add article_feedback_stats and article_feedback_stats_type
-				if ( !$db->tableExists( 'article_feedback_stats_types' )) {
-					$updater->addExtensionUpdate( array(
-						'addTable',
-						'article_feedback_stats_types',
-						$dir . '/sql/AddArticleFeedbackStatsTypeTable.sql',
-						true
-					) );
-				}
-				
-				if ( !$db->tableExists( 'article_feedback_stats' )) {
-					$updater->addExtensionUpdate( array(
-						'addTable',
-						'article_feedback_stats',
-						$dir . '/sql/AddArticleFeedbackStatsTable.sql',
-						true
-					) );
-				}
-			}
-			
+
+			// add article_feedback_stats_type if necessaray
+			$updater->addExtensionUpdate( array(
+				'addTable',
+				'article_feedback_stats_types',
+				$dir . '/sql/AddArticleFeedbackStatsTypeTable.sql',
+				true
+			) );
+
+			$updater->addExtensionUpdate( array(
+				'addTable',
+				'article_feedback_stats',
+				$dir . '/sql/AddArticleFeedbackStatsTable.sql',
+				true
+			) );
+
+			// migrate article_feedback_stats_highs_lows to article_feedback_stats
+			$updater->addExtensionUpdate( array(
+				'applyPatch',
+				$dir . '/sql/MigrateArticleFeedbackStatsHighsLows.sql',
+				true
+			) );
+
 			$updater->addExtensionUpdate( array(
 				'addIndex',
 				'article_feedback',
@@ -252,7 +231,7 @@ class ArticleFeedbackHooks {
 		}
 		return true;
 	}
-	
+
 	/**
 	 * ParserTestTables hook
 	 */
@@ -264,7 +243,7 @@ class ArticleFeedbackHooks {
 		$tables[] = 'article_feedback_properties';
 		return true;
 	}
-	
+
 	/**
 	 * BeforePageDisplay hook
 	 */
@@ -272,7 +251,7 @@ class ArticleFeedbackHooks {
 		$out->addModules( 'ext.articleFeedback.startup' );
 		return true;
 	}
-	
+
 	/*
 	 * ResourceLoaderRegisterModules hook
 	 */
@@ -287,7 +266,7 @@ class ArticleFeedbackHooks {
 		}
 		return true;
 	}
-	
+
 	/*
 	 * ResourceLoaderGetConfigVars hook
 	 */
@@ -309,7 +288,7 @@ class ArticleFeedbackHooks {
 		$vars['wgArticleFeedbackWhatsThisPage'] = wfMsgForContent( 'articlefeedback-form-panel-explanation-link' );
 		return true;
 	}
-	
+
 	/**
 	 * Add the preference in the user preferences with the GetPreferences hook.
 	 * @param $user User
