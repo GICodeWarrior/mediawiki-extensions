@@ -943,7 +943,7 @@ $messages['rue'] = array(
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|одказ|одказы|одказів}} до $3',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(
@@ -1120,7 +1120,7 @@ $messages['tl'] = array(
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|kawing|mga kawing}} sa $3',
 );
 
-/** Tonga (lea faka-Tonga) */
+/** Tongan (lea faka-Tonga) */
 $messages['to'] = array(
 	'crossnamespacelinks' => 'Ngaahi fehokotaki vā fakalava',
 	'crossnamespacelinkstext' => '$1: {{PLURAL:$2||ngaahi}} fehokotaki ʻe $2 ki he $3',
