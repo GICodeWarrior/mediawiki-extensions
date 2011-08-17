@@ -9,7 +9,7 @@
  * @property width {Integer}
  */
 es.Document = function( blocks ) {
-	es.Container.call( this, 'document', 'blocks', blocks );
+	es.DomContainer.call( this, 'document', 'blocks', blocks );
 	this.width = null;
 };
 
@@ -79,4 +79,4 @@ es.Document.prototype.getWikiDomDocument = function() {
 
 /* Inheritance */
 
-es.extend( es.Document, es.Container );
+es.extend( es.Document, es.DomContainer );

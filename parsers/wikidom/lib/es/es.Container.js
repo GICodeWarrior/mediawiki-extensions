@@ -1,5 +1,5 @@
 /**
- * Generic synchronized Object/Element container.
+ * Generic Object container.
  * 
  * Child objects must extend es.EventEmitter.
  * 
@@ -9,10 +9,10 @@
  * @param typeName {String} Property name to set references to this object to in child objects
  * @param listName {String} Property name for list of child objects
  * @param items {Array} List of initial items
+ * @emits "append" when items argument causes items to be appended
  * @emits "update" when items argument causes items to be appended
- * @property $ {jQuery} Container element
  */
-es.Container = function( typeName, listName, items, tagName ) {
+es.Container = function( typeName, listName, items ) {
 	es.EventEmitter.call( this );
 	if ( typeof typeName !== 'string' ) {
 		typeName = 'container';
@@ -20,15 +20,9 @@ es.Container = function( typeName, listName, items, tagName ) {
 	if ( typeof listName !== 'string' ) {
 		listName = 'items';
 	}
-	if ( typeof tagName !== 'string' ) {
-		tagName = 'div';
-	}
 	this._typeName = typeName;
 	this._listName = listName;
 	this._list = this[listName] = [];
-	this.$ = $( '<' + tagName + '/>' )
-		.addClass( 'editSurface-' + typeName )
-		.data( typeName, this );
 	// Auto-append
 	if ( $.isArray( items ) ) {
 		for ( var i = 0; i < items.length; i++ ) {
@@ -92,7 +86,7 @@ es.Container.prototype.append = function( item ) {
 		container.emit( 'update' );
 	} );
 	this._list.push( item );
-	this.$.append( item.$ );
+	this.emit( 'append', item );
 	this.emit( 'update' );
 };
 
@@ -112,7 +106,7 @@ es.Container.prototype.prepend = function( item ) {
 		container.emit( 'update' );
 	} );
 	this._list.unshift( item );
-	this.$.prepend( item.$ );
+	this.emit( 'prepend', item );
 	this.emit( 'update' );
 };
 
@@ -134,11 +128,10 @@ es.Container.prototype.insertBefore = function( item, before ) {
 	} );
 	if ( before ) {
 		this._list.splice( before.getIndex(), 0, item );
-		item.$.insertBefore( before.$ );
 	} else {
 		this._list.push( item );
-		this.$.append( item.$ );
 	}
+	this.emit( 'insertBefore', item, before );
 	this.emit( 'update' );
 };
 /**
@@ -159,11 +152,10 @@ es.Container.prototype.insertAfter = function( item, after ) {
 	} );
 	if ( after ) {
 		this._list.splice( after.getIndex() + 1, 0, item );
-		item.$.insertAfter( after.$ );
 	} else {
 		this._list.push( item );
-		this.$.append( item.$ );
 	}
+	this.emit( 'insertAfter', item, after );
 	this.emit( 'update' );
 };
 
@@ -180,7 +172,7 @@ es.Container.prototype.remove = function( item ) {
 	item.removeAllListeners( 'update' );
 	this._list.splice( item.getIndex(), 1 );
 	item[this._typeName] = null;
-	item.$.detach();
+	this.emit( 'remove', item );
 	this.emit( 'update' );
 };
 

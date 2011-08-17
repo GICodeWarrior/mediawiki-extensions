@@ -1,5 +1,5 @@
 es.ListBlockList = function( items ) {
-	es.Container.call( this, 'list', 'items', items );
+	es.DomContainer.call( this, 'list', 'items', items );
 };
 
 es.ListBlockList.newFromWikiDomList = function( wikidomList ) {
@@ -41,4 +41,4 @@ es.ListBlockList.flattenList = function( wikidomList, items, level ) {
 	}
 };
 
-es.extend( es.ListBlockList, es.Container );
+es.extend( es.ListBlockList, es.DomContainer );
