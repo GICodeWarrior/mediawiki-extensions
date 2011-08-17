@@ -391,7 +391,7 @@ $messages['ru'] = array(
 	'gnuplot-desc' => 'Добавляет тег <code><nowiki><gnuplot></nowiki></code> для использования Gnuplot',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(
