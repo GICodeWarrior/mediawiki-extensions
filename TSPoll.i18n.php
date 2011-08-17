@@ -369,7 +369,7 @@ $messages['ru'] = array(
 	'tspoll-id-error' => 'Не указан ID!',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(
