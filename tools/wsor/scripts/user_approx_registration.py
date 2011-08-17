@@ -12,7 +12,9 @@ def encode(v):
 
 def main():
 	parser = argparse.ArgumentParser(
-		description='Gathers editor data for first and last session'
+		description='Gathers approximate registration date by walking ' + 
+		'backwards through the user table and guessing at registration ' + 
+		'dates based on user_id.  Assumes user_id is ordered.'
 	)
 	parser.add_argument(
 		'date',
@@ -59,8 +61,7 @@ def main():
 		'user_registration'
 	]
 	
-	lowestDate = args.date	
-	logging.info("foo")
+	lowestDate = args.date
 	for user in db.getUsersBefore(args.date):
 		if user['user_registration'] == None:
 			LOGGING_STREAM.write("!")
@@ -73,8 +74,7 @@ def main():
 	
 	LOGGING_STREAM.write("\n")
 	
-			
-	
+
 
 
 class Database:
