@@ -2039,7 +2039,7 @@ $messages['rue'] = array(
 	'changeauthor-comment' => 'Коментарь:',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(
