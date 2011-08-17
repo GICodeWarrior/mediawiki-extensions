@@ -12,6 +12,6 @@ Required to run this script:
 
 Author: Aaron Halfaker (aaron.halfaker@gmail.com)
 
-This software licensed as GPLv2(http://www.gnu.org/licenses/gpl-2.0.html). and 
+This software licensed as GPLv2(http://www.gnu.org/licenses/gpl-2.0.html) and 
 is provided WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or 
 implied.

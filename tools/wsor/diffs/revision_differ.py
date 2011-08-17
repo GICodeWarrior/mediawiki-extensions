@@ -140,6 +140,13 @@ for page in dump.readPages():
 			else:
 				namespace, title = wmf.normalizeTitle(page.getTitle(), namespaces=dump.namespaces)
 				nsId = dump.namespaces[namespace]
+				if revision.getContributor() != None:
+					userId = revision.getContributor().getId()
+					userName = revision.getContributor().getUsername()
+				else:
+					userId = None
+					userName = None
+
 				row = [
 					repr(revision.getId()),
 					repr(page.getId()),
@@ -148,8 +155,8 @@ for page in dump.readPages():
 					repr(revision.getTimestamp()),
 					repr(revision.getComment()),
 					repr(revision.getMinor()),
-					repr(revision.getContributor().getId()),
-					repr(revision.getContributor().getUsername())
+					repr(userId),
+					repr(userName)
 				]
 				
 				for d in simpleDiff(lastRev.getText(), revision.getText(), report=[-1,1]):
