@@ -30,7 +30,7 @@ $messages['en'] = array(
 $messages['be-tarask'] = array(
 	'categorize-desc' => 'Дадае поле ўводу для рэдагаваньня і загрузкі старонкі, якое дазваляе ўдзельнікам далучаць старонкі да катэгорыяў',
 	'categorize-title' => 'Ацэнка ведаў',
-	'categorize-footer' => 'Калі жадаеце дадаць надпіс, скантактуйцеся з намі…',
+	'categorize-footer' => 'Калі жадаеце дадаць надпіс, скантактуйцеся з [[Special:ListUsers/sysop|адміністратарам]].',
 	'categorize-advice' => 'Націсьніце на меткі, якія Вы жадаеце дадаць да гэтай старонкі:',
 );
 
@@ -55,8 +55,8 @@ $messages['de-formal'] = array(
  * @author Fitoschido
  */
 $messages['es'] = array(
-	'categorize-desc' => 'Añade un cuadro de entrada para editar y cargar páginas que permite al usuario asignar categorías a la página',
-	'categorize-footer' => 'Si quiere añadir una etiqueta, póngase en contacto con nosotros en ...',
+	'categorize-desc' => 'Añade un cuadro de entrada para editar y cargar páginas que permiten a los usuarios asignar categorías',
+	'categorize-footer' => 'Si quieres añadir una etiqueta, contacta a un [[Special:ListUsers/sysop|administrador]].',
 	'categorize-advice' => 'Pulse en las etiquetas que quiere atribuir a esta página:',
 );
 
@@ -104,7 +104,7 @@ $messages['ksh'] = array(
 $messages['lb'] = array(
 	'categorize-desc' => "Setzt eng Këscht derbäi fir eng Säit eropzelueden an z'änneren déi de Benotzer erlaabt fir Kategorien mat Säiten ze verbannen",
 	'categorize-title' => 'Qualifikatioun vum Wëssen',
-	'categorize-footer' => 'Wann Dir eng Etiquette derbäisetze wëllt da mellt Iech w.e.g. bei eis op ...',
+	'categorize-footer' => 'Wann Dir eng Etiquette derbäisetze wëllt da mellt Iech w.e.g. bei engem [[Special:ListUsers/sysop|Administrateur]].',
 	'categorize-advice' => 'Klickt op déi Etiquetten déi Dir mat dësem Artikel verbanne wëllt:',
 );
 
@@ -114,7 +114,7 @@ $messages['lb'] = array(
 $messages['mk'] = array(
 	'categorize-desc' => 'Додава поле за внесување на категории во страницата за уредување и страницата за подигање',
 	'categorize-title' => 'Определување на знаењата',
-	'categorize-footer' => 'Ако сакате да додадете признак, контактирајте нè на ...',
+	'categorize-footer' => 'Ако сакате да додадете признак, обратете се кај [[Special:ListUsers/sysop|администратор]].',
 	'categorize-advice' => 'Стиснете на признаците што сакате да ѝ ги припишете на страницава:',
 );
 
@@ -124,7 +124,7 @@ $messages['mk'] = array(
 $messages['ms'] = array(
 	'categorize-desc' => 'Menambahkan petak input untuk menyunting dan memuat naik laman yang membolehkan pengguna memperuntukkan kategori kepada laman',
 	'categorize-title' => 'Kelayakan pengetahuan',
-	'categorize-footer' => 'Jika anda ingin menambahkan label, sila hubungi kami di ...',
+	'categorize-footer' => 'Jika anda ingin menambahkan label, sila hubungi kami seorang [[Special:ListUsers/sysop|pentadbir]].',
 	'categorize-advice' => 'Klik pada label yang ingin anda atributkan kepada laman ini:',
 );
 
