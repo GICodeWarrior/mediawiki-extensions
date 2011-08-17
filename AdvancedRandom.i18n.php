@@ -498,6 +498,7 @@ Kan gebruukt wörden as [[{{#special:advancedrandom}}/{{ns:template}}:Uutelocht/
 );
 
 /** Nepali (नेपाली)
+ * @author Bhawani Gautam
  * @author Bhawani Gautam Rhk
  * @author सरोज कुमार ढकाल
  */
