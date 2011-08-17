@@ -187,7 +187,7 @@ Bidde þole.',
 	'youtubeauthsub_jserror_nodesc' => 'Bidde ƿrīt mearcunge for þǣre scēaƿe.',
 );
 
-/** Angika (अंगिका)
+/** Angika (अङ्गिका)
  * @author Angpradesh
  */
 $messages['anp'] = array(
@@ -2574,7 +2574,7 @@ Siatz pacient.',
 	'youtubeauthsub_jserror_nodesc' => 'Picatz una descripcion per la vidèo.',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(
@@ -2961,7 +2961,7 @@ YouTube може даякый час тырвати, покы ся ваше ві
 	'youtubeauthsub_jserror_nokeywords' => 'Просиме, задайте єдно або веце ключовых слов.',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(
