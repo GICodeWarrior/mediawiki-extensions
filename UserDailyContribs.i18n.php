@@ -469,7 +469,7 @@ $messages['rue'] = array(
 	'userdailycontribs-desc' => 'Штоденны приспевкы хоснователїв про росшырїня што слїдує клікнутя',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(
