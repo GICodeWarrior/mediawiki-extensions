@@ -96,7 +96,7 @@ class RecordAdmin {
 				$values = $this->valuesFromText( $record );
 				$this->populateForm( $values );
 				$tabset .= "<fieldset><legend>$type " . strtolower( wfMsg( 'recordadmin-properties' ) ) . "</legend>\n";
-				$tabset .= "<form id=\"$type-form\" class=\"$type-record recordadmin\">$this->form</form>\n";
+				$tabset .= "<form id=\"$type-form\" class=\"{$this->formClass}\"{$this->formAtts}>$this->form</form>\n";
 				$tabset .= "</fieldset>";
 			}
 
