@@ -267,7 +267,9 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'globaluserrights' => 'Administracion des drêts d’utilisator globâls',
 	'gur-rightslog-name' => 'Jornal des drêts globâls',
+	'right-userrights-global' => 'Administrar los drêts d’utilisator globâls',
 );
 
 /** Galician (Galego)
