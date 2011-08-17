@@ -1377,7 +1377,7 @@ $messages['oc'] = array(
 	'bookinfo-provider' => 'Fornidor de donadas : $1',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(
@@ -1584,7 +1584,7 @@ $messages['rue'] = array(
 	'bookinfo-error-invalidisbn' => 'Зазначене неправилне ISBN.',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(
