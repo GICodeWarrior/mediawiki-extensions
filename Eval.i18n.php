@@ -495,7 +495,7 @@ $messages['ms'] = array(
 	'eval' => 'Eval',
 	'eval-desc' => 'Membubuh [[Special:Eval|satu antara muka]] pada fungsi <code>eval()</code>',
 	'eval_submit' => 'Buat penilaian',
-	'eval_escape' => 'Output lepasan',
+	'eval_escape' => 'Lepaskan output',
 	'eval_out' => 'Output',
 	'eval_code' => 'Kod',
 );
