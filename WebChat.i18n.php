@@ -177,13 +177,14 @@ Andernfalls wird automatisch ein Chatname erzeugt, der allerdings auch noch im N
 );
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
+ * @author Kghbln
  * @author Merlissimo
  */
 $messages['de-formal'] = array(
-	'webchat-header' => 'Mit dieser Spezialseite können Sie in Echtzeit mit anderen Benutzern kommunizieren.
-Zum Verbinden klicken Sie den „Connect“-Knopf.
-Sollten Sie angemeldet sein, wird standardmäßig Ihr Wiki-Benutzername als Chatname verwendet.
-Andernfalls wird der Chatname automatisch erzeugt. Dieser kann aber noch geändert werden.',
+	'webchat-header' => 'Über diese Spezialseite kann man in Echtzeit mit anderen Benutzern kommunizieren.
+Zum Anmelden klicken Sie auf die Schaltfläche „Verbinden“.
+Sollten Sie im Wiki angemeldet sein, wird standardmäßig Ihr Wiki-Benutzername als Chatname verwendet.
+Andernfalls wird automatisch ein Chatname erzeugt, der allerdings auch noch im Nachhinein geändert werden kann.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
