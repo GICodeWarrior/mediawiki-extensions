@@ -4,8 +4,7 @@ This script was written to be a streaming mapper for wikihadoop
 (see https://github.com/whym/wikihadoop).  By default, this script runs under
 pypy (much faster), but it can also be run under CPython 2.7+.
 
-
-Required to run this script are
+Required to run this script:
  - revision_differ.py (provided)
  - diff_match_patch.py (provided)
  - xml_simulator.py (provided)
