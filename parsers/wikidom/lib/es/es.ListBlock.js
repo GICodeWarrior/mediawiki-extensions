@@ -44,6 +44,8 @@ es.ListBlock.prototype.renderContent = function( offset ) {
 	this.list.renderContent( offset );
 };
 
+/* Public Methods */
+
 /**
  * Gets the offset of a position.
  * 
@@ -66,18 +68,19 @@ es.ListBlock.prototype.getOffset = function( position ) {
 	position.top += blockOffset.top;
 	position.left += blockOffset.left;
 	
-	this.list.traverseItems( function( item, index ) {
-		itemOffset = item.$content.offset();
-		itemHeight = item.$content.height();
-		if ( position.top >= itemOffset.top && position.top < itemOffset.top + itemHeight ) {
-			position.top -= itemOffset.top;
-			position.left -= itemOffset.left;
-			offset += item.flow.getOffset( position );
-			return false;
+	for ( var i = 0; i < this.list.items.length; i++ ) {
+		itemOffset = this.list.items[i].$content.offset();
+		if ( position.top >= itemOffset.top ) {
+			itemHeight = this.list.items[i].$content.height();
+			if ( position.top < itemOffset.top + itemHeight ) {
+				position.top -= itemOffset.top;
+				position.left -= itemOffset.left;
+				offset += this.list.items[i].flow.getOffset( position );
+				break;
+			}
 		}
-		offset += item.content.getLength() + 1;
-	} );
-
+		offset += this.list.items[i].content.getLength() + 1;
+	}
 	return offset;
 };
 
@@ -101,22 +104,51 @@ es.ListBlock.prototype.getPosition = function( offset ) {
 	return position;
 };
 
+/**
+ * Gets the flow line index within specific offset.
+ * 
+ * @method
+ * @param offset {Integer} Offset
+ * @returns {Integer} Line index
+ */
 es.ListBlock.prototype.getLineIndex = function( offset ) {
-	var globalOffset = 0,
-		lineIndex = 0,
-		itemLength;
+	var itemLength,
+		globalOffset = 0,
+		lineIndex = 0;
 
-	this.list.traverseItems( function( item, index ) {
-		itemLength = item.content.getLength();
+	for ( var i = 0; i < this.list.items.length; i++ ) {
+		itemLength = this.list.items[i].content.getLength();
 		if ( offset >= globalOffset && offset <= globalOffset + itemLength ) {
-			lineIndex += item.flow.getLineIndex( offset - globalOffset );
-			return false;
+			lineIndex += this.list.items[i].flow.getLineIndex( offset - globalOffset );
+			break;
 		}
 		globalOffset += itemLength + 1;
-		lineIndex += item.flow.lines.length;
-	} );
-
+		lineIndex += this.list.items[i].flow.lines.length; // TODO: add method getLineCount() to es.Flow
+	}
 	return lineIndex;
+};
+
+/**
+ * Gets a location from an offset.
+ * 
+ * @method
+ * @param offset {Integer} Offset to get location for
+ * @returns {Object} Location object with item and offset, where offset is local to item
+ */
+es.ListBlock.prototype.getLocationFromOffset = function( offset ) {
+	var itemLength,
+		globalOffset = 0;
+	for ( var i = 0; i < this.list.items.length; i++ ) {
+		itemLength = this.list.items[i].content.getLength();
+		if ( offset >= globalOffset && offset <= globalOffset + itemLength ) {
+			return {
+				'item' : this.list.items[i],
+				'offset' : offset - globalOffset
+			}
+		}
+		globalOffset += itemLength + 1;
+	}
+	throw 'Offset is out of block range';
 };
 
 /**
@@ -125,11 +157,11 @@ es.ListBlock.prototype.getLineIndex = function( offset ) {
  * @method
  * @returns {Integer} Length of content
  */
-es.ListBlock.prototype.getLength = function(  ) {
+es.ListBlock.prototype.getLength = function() {
 	var length = 0;
-	this.list.traverseItems( function( item, index ) {
-		length += item.content.getLength() + 1;
-	} );
+	for ( var i = 0; i < this.list.items.length; i++ ) {
+		length += this.list.items[i].content.getLength() + 1;
+	}
 	return length === 0 ? 0 : length - 1;
 };
 
@@ -147,33 +179,6 @@ es.ListBlock.prototype.insertContent = function( offset, content ) {
 
 es.ListBlock.prototype.getText = function( range, render ) {
 	return "";
-};
-
-/**
- * Gets a location from an offset.
- * 
- * @method
- * @param offset {Integer} Offset to get location for
- * @returns {Object} Location object with item and offset, where offset is local to item
- */
-es.ListBlock.prototype.getLocationFromOffset = function( offset ) {
-	var globalOffset = 0,
-		itemLength,
-		location;
-	
-	this.list.traverseItems( function( item, index ) {
-		itemLength = item.content.getLength();
-		if ( offset >= globalOffset && offset <= globalOffset + itemLength ) {
-			location = {
-				'item' : item,
-				'offset' : offset - globalOffset
-			};
-			return false;
-		}
-		globalOffset += itemLength + 1;
-	} );
-	
-	return location;
 };
 
 /* Registration */
