@@ -902,7 +902,7 @@ $messages['rue'] = array(
 	'communityvoice-ratings-error-no-title' => 'У значцї про оцінку хыбить назва.',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(
