@@ -15,10 +15,10 @@ es.AnnotationSerializer = function() {
  * Insertions for the same range will be nested in order of declaration.
  * @example
  *     stack = new es.AnnotationSerializer();
- *     stack.wrapWithText( { 'from': 1, 'to': 2 }, '[', ']' );
- *     stack.wrapWithText( { 'from': 1, 'to': 2 }, '{', '}' );
+ *     stack.add( new es.Range( 1, 2 ), '[', ']' );
+ *     stack.add( new es.Range( 1, 2 ), '{', '}' );
  *     // Outputs: "a[{b}]c"
- *     console.log( stack.apply( 'abc' ) );
+ *     console.log( stack.render( 'abc' ) );
  * 
  * @param range {es.Range} Range to insert text around
  * @param pre {String} Text to insert before range
