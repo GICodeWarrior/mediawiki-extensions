@@ -50,7 +50,7 @@ $wgResourceModules['jquery.contributionTracking'] = array(
 
 /**
  * The default 'return to' URL for a thank you page after posting to the contribution
- * 
+ *
  * NO trailing slash, please
  */
 $wgContributionTrackingReturnToURLDefault = 'http://wikimediafoundation.org/wiki/Thank_You';
@@ -71,7 +71,7 @@ $wgContributionTrackingPayPalIPN = 'https://civicrm.wikimedia.org/fundcore_gatew
 $wgContributionTrackingPayPalRecurringIPN = 'https://civicrm.wikimedia.org/fundcore_gateway/paypal';
 
 /**
- * 'Business' string for PayPal 
+ * 'Business' string for PayPal
  */
 $wgContributionTrackingPayPalBusiness = 'donations@wikimedia.org';
 
@@ -88,17 +88,30 @@ function efContributionTrackingUnitTests( &$files ) {
 // api modules
 $wgAPIModules['contributiontracking'] = 'ApiContributionTracking';
 
-function efContributionTrackingLoadUpdates(){
- 	global $wgExtNewTables, $wgExtNewFields;
- 	$dir = dirname( __FILE__ ) . '/';
- 	$wgExtNewTables[] = array( 'contribution_tracking', $dir . 'ContributionTracking.sql' );
- 	$wgExtNewTables[] = array( 'contribution_tracking_owa_ref', $dir . 'ContributionTracking_OWA_ref.sql' );
- 	
- 	$wgExtNewFields[] = array(
- 		'contribution_tracking',
- 		'owa_session',
- 		$dir . 'patch-owa.sql',
- 	);
- 	return true; 	
-	
+/**
+ * @param $updater DatabaseUpdater
+ * @return bool
+ */
+function efContributionTrackingLoadUpdates( $updater = null ){
+
+	$dir = dirname( __FILE__ ) . '/';
+	if ( $updater === null ) {
+		global $wgExtNewTables, $wgExtNewFields;
+
+		$wgExtNewTables[] = array( 'contribution_tracking', $dir . 'ContributionTracking.sql' );
+		$wgExtNewTables[] = array( 'contribution_tracking_owa_ref', $dir . 'ContributionTracking_OWA_ref.sql' );
+
+		$wgExtNewFields[] = array(
+			'contribution_tracking',
+			'owa_session',
+			$dir . 'patch-owa.sql',
+		);
+	} else {
+		$updater->addExtensionTable( 'contribution_tracking', $dir . 'ContributionTracking.sql' );
+		$updater->addExtensionTable( 'contribution_tracking_owa_ref', $dir . 'ContributionTracking_OWA_ref.sql' );
+		$updater->addExtensionUpdate( array( 'addField', 'contribution_tracking', 'owa_session',
+			$dir . 'patch-owa.sql', true ) );
+	}
+ 	return true;
+
 }
