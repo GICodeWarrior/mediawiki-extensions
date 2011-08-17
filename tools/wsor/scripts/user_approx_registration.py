@@ -1,5 +1,4 @@
 import sys, MySQLdb, MySQLdb.cursors, argparse, os, logging, types
-import wmf
 
 def encode(v):
 	if v == None: return "\N"
