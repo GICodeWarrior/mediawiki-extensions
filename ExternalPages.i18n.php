@@ -589,7 +589,7 @@ $messages['rue'] = array(
 	'externalpages-no-page' => 'Не была уведжена сторінка',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(
