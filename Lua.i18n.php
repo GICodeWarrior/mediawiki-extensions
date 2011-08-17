@@ -564,7 +564,7 @@ $messages['oc'] = array(
 	'lua_overflow_time' => 'Durada maximala d’execucion atencha',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(
