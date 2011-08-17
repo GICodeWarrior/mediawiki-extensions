@@ -657,7 +657,7 @@ $messages['oc'] = array(
 	'right-whatismyip' => 'Veire [[Special:WhatIsMyIP|sa pròpria adreça IP]]',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(
