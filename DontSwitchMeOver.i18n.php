@@ -432,7 +432,7 @@ $messages['rue'] = array(
 	'dontswitchmeover-pref' => 'Не мінити мій зволеный взгляд почас переходу на іншый імпліцітный взгляд',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(
