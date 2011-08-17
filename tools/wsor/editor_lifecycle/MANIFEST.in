@@ -1,3 +1,0 @@
-include *.py
-include *.sh
-include db.cfg
