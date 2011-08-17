@@ -842,7 +842,7 @@ $messages['rue'] = array(
 	'backforth-next' => 'Наст. ($1)',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(
