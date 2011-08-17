@@ -823,7 +823,7 @@ $messages['oc'] = array(
 	'right-watchers-list' => '[[Special:Watchers|Far la lista dels utilizaires que seguisson una pagina especifica]]',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(
