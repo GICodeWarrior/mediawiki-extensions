@@ -5242,7 +5242,7 @@ $messages['or'] = array(
 	'deletequeue-case-expiry' => 'ଅଚଳ ହେବ:',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(
