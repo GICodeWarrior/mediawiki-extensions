@@ -1064,7 +1064,7 @@ $messages['oc'] = array(
 	'scanset_prev' => '&lt; Precedent',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(
@@ -1241,7 +1241,7 @@ $messages['rue'] = array(
 	'scanset_prev' => '&lt; Попередня',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(
