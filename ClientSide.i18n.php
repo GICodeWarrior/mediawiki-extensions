@@ -393,7 +393,7 @@ $messages['rue'] = array(
 	'clientside-desc' => 'Додавать функції про ґенерованя коду в кліентскых форматах, як суть  HTML, CSS і JavaScript',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(
