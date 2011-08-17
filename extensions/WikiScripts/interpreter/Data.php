@@ -218,6 +218,14 @@ class WSData {
 	}
 	
 	public static function sum( $a, $b, $module, $line ) {
+		// If one operand is array and other is null, return the array
+		if( $a->isArray() && $b->type == self::DNull ) {
+			return $a->dup();
+		}
+		if( $b->isArray() && $a->type == self::DNull ) {
+			return $b->dup();
+		}
+
 		// Lists
 		if( $a->type == self::DList && $b->type == self::DList )
 			return new WSData( self::DList, array_merge( $a->toList(), $b->toList() ) );
