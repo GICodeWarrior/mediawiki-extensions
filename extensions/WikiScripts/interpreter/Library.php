@@ -64,12 +64,21 @@ abstract class WSLibraryModuleBase implements WSLibraryModule {
 	public function callFunction( $name, $args, $context, $line ) {
 		$funcs = $this->getFunctions();
 		list( $method, $minArgs ) = $funcs[ $name ];
+		$fullname = __CLASS__ . "::{$method}";
 
 		$argsNumber = count( $args );
 		if( $argsNumber < $minArgs ) {
 			$context->error( 'notenoughargs', $line, array( $name, $minArgs, $argsNumber ) );
 		}
 
-		return $this->$method( $args, $context, $line );
+		wfProfileIn( $fullname );
+		try {
+			$result = $this->$method( $args, $context, $line );
+			wfProfileOut( $fullname );
+			return $result;
+		} catch( WSException $e ) {
+			wfProfileOut( $fullname );
+			throw $e;
+		}
 	}
 }
