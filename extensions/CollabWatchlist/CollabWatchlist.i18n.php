@@ -796,9 +796,11 @@ $messages['te'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author PhiLiP
  * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
 	'collabwatchlistedit-raw-titles' => '分类：',
+	'collabwatchlistedit-tags-raw-submit' => '保存',
 );
 

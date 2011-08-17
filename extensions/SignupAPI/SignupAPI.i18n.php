@@ -52,7 +52,7 @@ $messages['ia'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'signupapi-desc' => 'Го чисти Special:UserLogin од содржините за пријава и додава API за пријавување',
+	'signupapi-desc' => 'Ја чисти [[Special:UserLogin|страницата за најава]] од содржините за пријава и додава API за пријавување',
 );
 
 /** Malay (Bahasa Melayu)

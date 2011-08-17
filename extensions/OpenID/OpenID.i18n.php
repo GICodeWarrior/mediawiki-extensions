@@ -5224,9 +5224,9 @@ Posvetujte se z [[Special:ListUsers/sysop|administratorjem]].',
 	'openidsuccess' => 'Preverjanje je uspelo',
 	'openidsuccesstext' => "'''Preverjanje je bilo uspešno, prijavljeni ste kot uporabnik $1'''.
 
-Vaš OpenID je $2 .
+Vaš OpenID je $2.
 
-Ta in izbirne nadaljne OpenID-je lahko uprabljate na [[Special:Preferences#prefsection-openid|zavihku OpenID]] v svojih nastavitvah.<br/>
+Ta in izbirne nadaljne OpenID-je lahko uprabljate na [[Special:Preferences#prefsection-openid|zavihku OpenID]] v svojih nastavitvah.<br />
 Izbirno geslo računa lahko dodate v svojih [[Special:Preferences#prefsection-personal|Podatkih o uporabniku]].",
 	'openidusernameprefix' => 'UporabnikOpenID',
 	'openidserverlogininstructions' => '$3 zahteva, da vnesete svoje geslo za vašega uporabnika $2, stran $1 (URL OpenID).',

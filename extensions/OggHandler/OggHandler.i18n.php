@@ -2502,7 +2502,7 @@ Installeer <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_do
 	'ogg-download' => 'Bestaand binnenhaolen',
 	'ogg-desc-link' => 'Over dit bestaand',
 	'ogg-oggThumb-version' => "Veur OggHandler he'j oggThumb-versie $1 of hoger neudig.",
-	'ogg-oggThumb-failed' => 'oggThumb kon gien aofbeeldingsoverzichte anmaken.',
+	'ogg-oggThumb-failed' => 'oggThumb kon gien miniatuuraofbeelding anmaken.',
 );
 
 /** Dutch (Nederlands)
