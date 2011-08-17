@@ -69,7 +69,7 @@ def main():
 		'teaching',
 		'image'
 	]
-	print("\t".join(headers))
+	#print("\t".join(headers))
 	
 	logging.info("Getting huggling messages.")
 	for post in db.getHugglingsSince(args.since):
