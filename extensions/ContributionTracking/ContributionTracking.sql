@@ -10,6 +10,8 @@ CREATE TABLE IF NOT EXISTS /*_*/`contribution_tracking` (
   `optout` tinyint(1) unsigned NOT NULL,
   `language` varchar(8) default NULL,
   `ts` char(14) default NULL,
+  `owa_session` varchar(255) default NULL,
+  `owa_ref` int(11) default NULL,
   PRIMARY KEY  (`id`),
   UNIQUE KEY `contribution_id` (`contribution_id`),
   KEY `ts` (`ts`)
