@@ -40,8 +40,24 @@ $messages['be-tarask'] = array(
 $messages['de'] = array(
 	'categorize-desc' => 'Fügt beim Eingabe- und Hochladefenster ein zusätzliches Eingabefeld hinzu, welches das Zuweisen von Kategorien ermöglicht',
 	'categorize-title' => 'Kategorisierung',
-	'categorize-footer' => 'Kontaktiere uns, sofern eine Kategorie hinzugefügt werden soll …',
+	'categorize-footer' => 'Sofern du eine Bezeichnung hinzufügen lassen möchtest, kontaktiere hierzu bitte einen [[Special:ListUsers/sysop|Administrator]].',
 	'categorize-advice' => 'Die Kategorien anklicken, die hinzugefügt werden sollen:',
+);
+
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
+ * @author Kghbln
+ */
+$messages['de-formal'] = array(
+	'categorize-footer' => 'Sofern Sie eine Bezeichnung hinzufügen lassen möchten, kontaktieren Sie hierzu bitte einen [[Special:ListUsers/sysop|Administrator]].',
+);
+
+/** Spanish (Español)
+ * @author Fitoschido
+ */
+$messages['es'] = array(
+	'categorize-desc' => 'Añade un cuadro de entrada para editar y cargar páginas que permite al usuario asignar categorías a la página',
+	'categorize-footer' => 'Si quiere añadir una etiqueta, póngase en contacto con nosotros en ...',
+	'categorize-advice' => 'Pulse en las etiquetas que quiere atribuir a esta página:',
 );
 
 /** French (Français)
@@ -51,7 +67,7 @@ $messages['de'] = array(
 $messages['fr'] = array(
 	'categorize-desc' => 'Ajoute une zone de saisie à la page d’édition et de téléversement permettant aux utilisateurs d’assigner des catégories à la page',
 	'categorize-title' => 'Qualification des savoirs',
-	'categorize-footer' => 'Si vous souhaitez ajouter un label, contactez ...',
+	'categorize-footer' => 'Si vous souhaitez ajouter un label, veuillez contacter un [[Special:ListUsers/sysop|administrateur]].',
 	'categorize-advice' => 'Cliquez sur les labels que vous souhaitez attribuer à cet article :',
 );
 
@@ -118,7 +134,7 @@ $messages['ms'] = array(
 $messages['nl'] = array(
 	'categorize-desc' => 'Voegt een invoerveld toe aan de bewerkings- en uploadpagina waarmee gebruiker categorieën kunnen toevoegen',
 	'categorize-title' => 'Kenniskwalificatie',
-	'categorize-footer' => 'Neem contact met ons op als u een label wilt toevoegen...',
+	'categorize-footer' => 'Neem contact met een [[Special:ListUsers/sysop|beheerder]] als u een label wilt toevoegen.',
 	'categorize-advice' => 'Klik op de labels als u een eigenschap aan deze pagina wilt toevoegen:',
 );
 
@@ -132,6 +148,15 @@ $messages['no'] = array(
 	'categorize-advice' => 'Klikk på etikettene som du ønsker å knytte til denne siden:',
 );
 
+/** Polish (Polski)
+ * @author Woytecr
+ */
+$messages['pl'] = array(
+	'categorize-desc' => 'Dodaje pole na strony edycji i przesyłania pozwalające użytkownikom na przypisanie kategorii dla danej strony',
+	'categorize-title' => 'Kwalifikacja wiedzy',
+	'categorize-footer' => 'Jeśli chcesz dodać etykietę, prosimy o kontakt na ...',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
@@ -140,6 +165,14 @@ $messages['pt'] = array(
 	'categorize-title' => 'Estruturação de conhecimento',
 	'categorize-footer' => 'Se quiser adicionar uma categoria, contacte-nos em...',
 	'categorize-advice' => 'Clique as categorias que pretende atribuir a esta página:',
+);
+
+/** Swedish (Svenska)
+ * @author Ainali
+ */
+$messages['sv'] = array(
+	'categorize-desc' => 'Lägger till inmatningsruta för att redigera och ladda upp sida som tillåter användare att tilldela kategorier till sidan',
+	'categorize-title' => 'Kunskapskvalificering',
 );
 
 /** Ukrainian (Українська)
