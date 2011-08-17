@@ -25,15 +25,14 @@ class FetchGoogleSpreadsheet extends MetricsMaintenance {
 				)
 			)
 		);
+		$http->setHeader( 'User-Agent', self::getUserAgent() );
 
 		$res = $http->execute();
 		if ( $http->getStatus() == 403 ) {
 			$this->error( '403', true );
 		}
-		//var_dump( $res );
-		//var_dump( $http->getResponseHeaders() );
+
 		$content = $http->getContent();
-		//var_dump( $content );
 
 		$authToken = null;
 		$pos = strpos( $content, 'Auth' );
@@ -62,7 +61,8 @@ class FetchGoogleSpreadsheet extends MetricsMaintenance {
 
 			$node = new SimpleXMLElement( $reader->readOuterXML() );
 
-			$src = (string)$node->content["src"];
+			//$src = (string)$node->content["src"];
+			$src = $node->content->attributes()->src;
 			$this->output( 'Worksheet found: ' . $src );
 			$worksheets[] = $src;
 
@@ -103,9 +103,9 @@ class FetchGoogleSpreadsheet extends MetricsMaintenance {
 	function buildAuthedRequest( $url, $token, $cookies = null ) {
 		$http = MWHttpRequest::factory( $url, array(
 				'method' => 'GET',
-				'source' => self::getUserAgent(),
 			)
 		);
+		$http->setHeader( 'User-Agent', self::getUserAgent() );
 		if ( $cookies !== null ) {
 			$http->setCookieJar( $cookies );
 		}
