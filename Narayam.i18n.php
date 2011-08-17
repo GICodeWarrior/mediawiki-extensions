@@ -945,7 +945,7 @@ $messages['ru'] = array(
 	'narayam-bn-nkb' => 'Бенгальский NKB',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(
