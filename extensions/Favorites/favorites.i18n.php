@@ -156,6 +156,8 @@ $messages['be-tarask'] = array(
 	'favoritelistedit-raw-added' => '$1 {{PLURAL:$1|назва была дададзеная|назвы былі дададзеныя|назваў былі дададзеныя}}:',
 	'favoritelistedit-raw-removed' => '$1 {{PLURAL:$1|назва была выдаленая|назвы былі выдаленыя|назваў былі выдаленыя}}:',
 	'favoritelisttools-view' => 'Паказаць сьпіс улюблёных',
+	'favoritelisttools-edit' => 'Прагляд і рэдагаваньне сьпісу ўлюблёных',
+	'favoritelisttools-raw' => 'Рэдагаваць нефарматаваны сьпіс улюблёных',
 );
 
 /** German (Deutsch)
@@ -241,11 +243,38 @@ Sie können auch die [[Special:Favoritelist/edit|Standardseite]] zum Bearbeiten 
 	'favoritelistedit-raw-done' => 'Ihre Favoritenliste wurde aktualisiert.',
 );
 
+/** French (Français)
+ * @author Hashar
+ */
+$messages['fr'] = array(
+	'favorites-desc' => 'Créer une liste de favoris',
+	'favoritethis' => 'Ajouter cette page aux favorits',
+	'prefs-favoritelist' => 'Favoris',
+	'prefs-favoritelist-token' => 'Jeton des favorits :',
+	'prefs-advancedfavoritelist' => 'Options avancées',
+	'favoritelist' => 'Mes favoris',
+	'myfavoritelist' => 'Mes favoris',
+	'favoritelistfor' => '(pour « $1 »)',
+	'favoritenologin' => 'Non connecté',
+	'addedfavorite' => 'Ajouté aux favoris',
+	'favorite' => 'Favoris',
+	'favoritelist-options' => 'Options Favoris',
+	'favoritelistedit-normal-title' => 'Modifier favoris',
+	'favoritelistedit-normal-submit' => 'Retirer les titres',
+	'favoritelistedit-normal-done' => '{{PLURAL:$1|un titre a était retiré|$1 titres ont été retirées}} de vos favoris :',
+	'favoritelistedit-raw-titles' => 'Titres :',
+	'favoritelistedit-raw-submit' => 'Mise à jour favoris',
+	'favoritelisttools-view' => 'Voir Favoris',
+	'favoritelisttools-edit' => 'Voir et modifier les favoris',
+);
+
 /** Franco-Provençal (Arpetan)
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'prefs-advancedfavoritelist' => 'Chouèx avanciês',
 	'favoritelistfor' => "(de '''$1''')",
+	'favoritenologin' => 'Pas branchiê',
 	'favoritelistedit-normal-submit' => 'Enlevar los titros',
 	'favoritelistedit-raw-titles' => 'Titros :',
 );
@@ -332,6 +361,7 @@ $messages['lb'] = array(
 	'favoritelistfor' => "(fir '''$1''')",
 	'nofavoritelist' => 'Är Lëscht vun de Favoriten ass eidel.',
 	'favoritenologin' => 'Net ageloggt',
+	'favoritenologintext' => "Dir musst [[Special:UserLogin|ageloggt sinn]], fir Är Favoriten z'änneren.",
 	'addedfavorite' => "Bäi d'Favoriten derbäigesat",
 	'addedfavoritetext' => 'D\'Säit "[[:$1]]" gouf bäi Är [[Special:Favoritelist|Favoriten]] derbäigesat.',
 	'removedfavorite' => 'Vun der Lëscht vun de Favoriten erofgeholl',
@@ -523,6 +553,63 @@ U kunt ook [[Special:Favoritelist/edit|het standaard bewerkingsscherm gebruiken]
  */
 $messages['nl-informal'] = array(
 	'favoritelistanontext' => 'Om je favorieten te bekijken of te bewerken moet je je $1.',
+);
+
+/** Polish (Polski)
+ * @author Woytecr
+ */
+$messages['pl'] = array(
+	'favorites-desc' => 'Tworzenie listy ulubionych',
+	'favoritethis' => 'Dodaj tę stronę do ulubionych',
+	'prefs-favoritelist' => 'Ulubione',
+	'prefs-favoritelist-token' => 'Klucz listy ulubionych',
+	'prefs-advancedfavoritelist' => 'Opcje zaawansowane',
+	'favoritelist' => 'Moje ulubione',
+	'myfavoritelist' => 'Moje ulubione',
+	'favoritelistfor' => "(dla '''$1''')",
+	'nofavoritelist' => 'Nie masz żadnych pozycji na swojej liście ulubionych.',
+	'favoritelistanontext' => 'Prosimy $1 aby zobaczyć lub edytować pozycje twojej listy ulubionych.',
+	'favoritenologin' => 'Nie zalogowany',
+	'favoritenologintext' => 'Musisz być [[Special:UserLogin|zalogowany]] aby modyfikować swoją listę ulubionych.',
+	'addedfavorite' => 'Dodano do ulubionych',
+	'addedfavoritetext' => 'Strona "[[:$1]]" została dodana do twoich [[Special:Favoritelist|ulubionych]].',
+	'removedfavorite' => 'Usunięto z ulubionych',
+	'removedfavoritetext' => 'Strona "[[:$1]]" została usunięta z twojej listy [[Special:Favoritelist|ulubionych]].',
+	'favorite' => 'Ulubiony',
+	'favoritethispage' => 'Dodaj tę stronę do ulubionych',
+	'unfavorite' => 'Usuń z ulubionych',
+	'unfavoritethispage' => 'Zatrzymaj dodawanie do ulubionych',
+	'favoritelist-options' => 'Opcje Ulubionych',
+	'favoriteing' => 'Dodawanie do ulubionych...',
+	'unfavoriteing' => 'Usuwanie z ulubionych...',
+	'tooltip-pt-favoritelist' => 'Lista stron obserwowanych przez Ciebie',
+	'tooltip-ca-favorite' => 'Dodaj tę stronę do ulubionych',
+	'tooltip-ca-unfavorite' => 'Usuń tę stronę z ulubionych',
+	'tooltip-favorite' => 'Dodaj tę stronę do ulubionych',
+	'favoritelistall2' => 'wszystkie',
+	'favoritelistedit-numitems' => 'Twoje ulubione zawierają {{PLURAL:$1|1 tytuł|$1 tytuły}}.',
+	'favoritelistedit-noitems' => 'Twoje ulubione nie zawierają tytułów.',
+	'favoritelistedit-normal-title' => 'Edycja ulubionych',
+	'favoritelistedit-normal-legend' => 'Usuń tytuły z ulubionych',
+	'favoritelistedit-normal-explain' => 'Tytuły na twojej liście ulubionych pokazane są poniżej.
+Aby usunąć tytuły, zaznacz pole obok nich i kliknij "{{int:Favoritelistedit-normal-submit}}".
+Możesz też [[Special:Favoritelist/raw|edytować tekstową listę]].',
+	'favoritelistedit-normal-submit' => 'Usuń tytuły',
+	'favoritelistedit-normal-done' => '{{PLURAL:$1|1 tytuł został usunięty|$1 tytuły zostały usunięte}} z twojej listy ulubionych:',
+	'favoritelistedit-raw-title' => 'Edycja tekstowa listy ulubionych',
+	'favoritelistedit-raw-legend' => 'Edycja tekstowa listy ulubionych',
+	'favoritelistedit-raw-explain' => 'Tytuły na twojej liście ulubionych pokazane są poniżej i mogą być edytowane poprzez dodawanie lub usuwanie z listy;
+jedna linia zawiera jeden tytuł.
+Jeżeli skończysz, kliknij "{{int:Favoritelistedit-raw-submit}}".
+Możesz też [[Special:Favoritelist/edit|użyć standardowego edytora]].',
+	'favoritelistedit-raw-titles' => 'Tytuły:',
+	'favoritelistedit-raw-submit' => 'Aktualizuj ulubione',
+	'favoritelistedit-raw-done' => 'Twoje ulubione zostały zaktualizowane.',
+	'favoritelistedit-raw-added' => 'Dodano {{PLURAL:$1|1 tytuł|$1 tytułów}}:',
+	'favoritelistedit-raw-removed' => 'Usunięto {{PLURAL:$1|1 tytuł|$1 tytuły}}:',
+	'favoritelisttools-view' => 'Wyświetl ulubione',
+	'favoritelisttools-edit' => 'Przeglądanie i edycja ulubionych',
+	'favoritelisttools-raw' => 'Edycja tekstowa listy ulubionych',
 );
 
 /** Portuguese (Português)

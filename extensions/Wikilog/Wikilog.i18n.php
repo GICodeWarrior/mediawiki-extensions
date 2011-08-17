@@ -1902,7 +1902,7 @@ Der Kommentar wird erst erscheinen, nachdem er von einem Moderator geprüft wurd
  */
 $messages['de-formal'] = array(
 	'wikilog-comment-feed-description' => 'Lesen Sie die neuesten Kommentare dieses Feeds.',
-	'wikilog-posting-anonymously' => 'Sie sind zur Zeit nicht angemeldet; Ihr Kommentar wird anonym versendet, identifiziert durch Ihre Internetverbindungsadresse. Sie sollten oben entweder ein Pseudonym angeben, um den Kommentar zu identifizieren oder sich $1, damit er passend zugeordnet wird.',
+	'wikilog-posting-anonymously' => 'Sie sind zurzeit nicht angemeldet; Ihr Kommentar wird anonym versendet, identifiziert durch Ihre Internetverbindungsadresse. Sie sollten oben entweder ein Pseudonym angeben, um den Kommentar zu identifizieren oder sich $1, damit er passend zugeordnet wird.',
 	'wikilog-anonymous-moderated' => 'Nachdem Sie Ihren Kommentar absenden, wird er nicht sofort auf dieser Seite angezeigt.
 Der Kommentar wird nur erscheinen, nachdem er von einem Moderator freigegeben wurde.',
 );

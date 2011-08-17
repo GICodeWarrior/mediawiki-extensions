@@ -206,7 +206,9 @@ $messages['frp'] = array(
 	'svgedit-summary-default' => '/* Changiê avouéc svg-edit */',
 	'svgedit-editor-save-close' => 'Encartar et cllôre',
 	'svgedit-editor-close' => 'Anular',
+	'svgedit-desc' => 'Changement des dèssins u format SVG dens voutron navigator en utilisent [http://code.google.com/p/svg-edit/ SVG-Edit].',
 	'svgedit-edit-tab' => 'Changiér lo dèssin',
+	'svgedit-edit-tab-tooltip' => 'Vos pouede changiér cél dèssin SVG dens voutron navigator',
 	'svgedit-toolbar-insert' => 'Dèssin SVG',
 );
 

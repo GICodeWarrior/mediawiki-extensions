@@ -513,7 +513,7 @@ $messages['rue'] = array(
 	'mwsearch-desc' => 'Плаґін MWSearch',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(

@@ -364,7 +364,7 @@ $messages['ja'] = array(
 	'nstab-comments' => 'コメント',
 );
 
-/** Jamaican Creole English (Jamaican Creole English)
+/** Jamaican Creole English (Patios)
  * @author Yocahuna
  */
 $messages['jam'] = array(
@@ -570,7 +570,7 @@ $messages['rue'] = array(
 	'nstab-comments' => 'Коментарь',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(

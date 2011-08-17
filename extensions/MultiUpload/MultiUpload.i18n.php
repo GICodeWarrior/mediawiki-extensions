@@ -56,7 +56,7 @@ $messages['krl'] = array(
 	'multipleupload' => 'Panna fajlit',
 );
 
-/** Goanese Konkani (Latin) (कोंकणी/Konknni  (Latin))
+/** Goan Konkani (Latin) (कोंकणी/Konknni  (Latin))
  * @author Deepak D'Souza
  */
 $messages['gom-latn'] = array(
@@ -1453,7 +1453,7 @@ $messages['ru'] = array(
 	'multiupload-blank' => 'Нет выбранных файлов',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(

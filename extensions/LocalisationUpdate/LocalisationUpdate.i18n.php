@@ -108,10 +108,11 @@ $messages['cy'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Purodha
  */
 $messages['de'] = array(
-	'localisationupdate-desc' => 'Lokalisierte Texte und Nachrichten möglichst aktuell halten',
+	'localisationupdate-desc' => 'Ermöglicht es lokalisierte Texte und Nachrichten so aktuell wie möglich zu halten',
 );
 
 /** Lower Sorbian (Dolnoserbski)

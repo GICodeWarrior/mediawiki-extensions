@@ -36,7 +36,7 @@ $messages['aln'] = array(
 	'antibot-desc' => 'kuadrin e thjeshtë për kontrolle Spambot dhe payloads shkaktojnë',
 );
 
-/** Angika (अंगिका)
+/** Angika (अङ्गिका)
  * @author Angpradesh
  */
 $messages['anp'] = array(
@@ -322,7 +322,7 @@ $messages['jv'] = array(
 	'antibot-desc' => 'Krangka kerja prasaja kanggo mriksa spambot lan lat pamicu',
 );
 
-/** Kabardian (Cyrillic) (къэбэрдеибзэ/qabardjajəbza (Cyrillic))
+/** Kabardian (Cyrillic) (Адыгэбзэ (Cyrillic))
  * @author Amire80
  */
 $messages['kbd-cyrl'] = array(
@@ -417,6 +417,7 @@ $messages['nds-nl'] = array(
 );
 
 /** Nepali (नेपाली)
+ * @author Bhawani Gautam
  * @author Bhawani Gautam Rhk
  * @author सरोज कुमार ढकाल
  */
@@ -453,7 +454,7 @@ $messages['oc'] = array(
 	'antibot-desc' => 'Quadre simple per las verificacions del bòt antispam e de las cargas utilas del trigger.',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(
@@ -531,7 +532,7 @@ $messages['rue'] = array(
 	'antibot-desc' => 'Просте середовище про детекцію спамуючіх ботів і охорону перед нима',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(

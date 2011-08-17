@@ -527,14 +527,18 @@ $messages['or'] = array(
 
 /** Polish (Polski)
  * @author Sp5uhe
+ * @author Woytecr
  */
 $messages['pl'] = array(
 	'apisb-parameters' => 'Parametry',
 	'apisb-result' => 'Rezultat',
+	'apisb-request-url' => 'Żądanie URL:',
+	'apisb-request-post' => 'Dane POST:',
 	'apisb-select-action' => 'Wybierz działanie',
 	'apisb-select-value' => 'Wybierz wartość',
 	'apisb-loading' => 'Trwa ładowanie…',
 	'apisb-ns-main' => '(główna)',
+	'apisb-submit' => 'Wykonaj żądanie',
 	'apisb-query-prop' => 'Właściwości',
 	'apisb-query-list' => 'Listy',
 	'apisb-query-meta' => 'Matainformacje',

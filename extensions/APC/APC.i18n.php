@@ -5327,7 +5327,7 @@ $messages['or'] = array(
 	'viewapc-ls-limit-none' => 'ସବୁ',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(
@@ -6101,7 +6101,7 @@ $messages['rue'] = array(
 	'viewapc-ls-limit-none' => 'Вшыткы',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(

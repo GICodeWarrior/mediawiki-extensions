@@ -405,7 +405,7 @@ $messages['ru'] = array(
 	'uploadblacklist-desc' => 'Добавляет возможность использования чёрного списка загрузок',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(

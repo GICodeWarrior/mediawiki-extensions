@@ -342,7 +342,7 @@ $messages['ru'] = array(
 	'crowdauthentication-desc' => 'Модуль аутентификации для Atlassian Crowd',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(

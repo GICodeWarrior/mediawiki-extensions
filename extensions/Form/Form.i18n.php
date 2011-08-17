@@ -81,17 +81,18 @@ $messages['an'] = array(
 );
 
 /** Arabic (العربية)
+ * @author AwamerT
  * @author Meno25
  * @author OsamaK
  */
 $messages['ar'] = array(
-	'form-desc' => '[[Special:Form|واجهة استمارة]] لبدء الصفحات الجديدة',
-	'form' => 'استمارة',
-	'formnoname' => 'لا اسم استمارة',
-	'formnonametext' => 'يجب أن توفر اسم استمارة، مثل "Special:Form/Nameofform".',
-	'formbadname' => 'اسم استمارة سيء',
-	'formbadnametext' => 'لا توجد استمارة بهذا الاسم.',
-	'formpattern' => '$1-استمارة',
+	'form-desc' => '[[Special:Form|form interface]] لبدء الصفحات الجديدة',
+	'form' => 'نموذج',
+	'formnoname' => 'لا يوجد اسم نموذج',
+	'formnonametext' => 'يجب توفير اسم للنموذج، مثل "Special:Form/Nameofform".',
+	'formbadname' => 'اسم نموذج سيء',
+	'formbadnametext' => 'لا يوجد نموذج بذلك الاسم.',
+	'formpattern' => '$1- نموذج',
 	'formtitlepattern' => 'أضف $1 جديدا',
 	'formsave' => 'احفظ',
 	'formindexmismatch-title' => 'نمط الاسم والقالب لا يتطابقان',
@@ -99,7 +100,7 @@ $messages['ar'] = array(
 	'formarticleexists' => 'الصفحة موجودة',
 	'formarticleexiststext' => 'الصفحة [[$1]] موجودة بالفعل.',
 	'formbadpagename' => 'اسم صفحة سيء',
-	'formbadrecaptcha' => 'قيم غير صحيحة لreCaptcha. حاول مرة ثانية.',
+	'formbadrecaptcha' => 'قيم غير صحيحة لreCaptcha. حاول مرة أخرى.',
 	'formbadpagenametext' => 'بيانات الاستمارة التي أدخلتها تصنع اسم صفحة سيئا، "$1".',
 	'formrequiredfielderror' => '{{PLURAL:$2||الحقل $1 مطلوب|الحقلان $1 مطلوبان|الحقول $1 مطلوبة}} لهذه الاستمارة.
 من فضلك {{PLURAL:$2||املأه|املأهما|املأها}}.',
@@ -1200,7 +1201,7 @@ Vos {{PLURAL:$2|lo|los}} cal emplenar.',
 	'formsaveerrortext' => "Una error desconeguda s'es producha pendent lo salvament de ''$1''.",
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(

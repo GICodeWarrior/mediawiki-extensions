@@ -404,7 +404,7 @@ $messages['ru'] = array(
 	'contributorsaddon-desc' => 'Добавляет всплывающее JavaScript-поле для ссылки «Основные авторы»',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(

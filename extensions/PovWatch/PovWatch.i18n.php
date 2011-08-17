@@ -1846,7 +1846,7 @@ $messages['oc'] = array(
 	'action-povwatch_user' => "apondre aquesta pagina a la lista de seguiment d'autres utilizaires",
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(
@@ -2111,7 +2111,7 @@ $messages['ru'] = array(
 	'action-povwatch_user' => 'добавить эту страницу в список наблюдения другого участника',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(

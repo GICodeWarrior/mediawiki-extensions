@@ -515,7 +515,7 @@ $messages['ru'] = array(
 	'templatelink_newtitle' => '$1 (включение)',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(

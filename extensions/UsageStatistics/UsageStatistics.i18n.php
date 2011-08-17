@@ -1797,7 +1797,7 @@ $messages['oc'] = array(
 	'right-viewsystemstats' => "Vejatz las [[Special:UserStats|estatisticas d'utilizacion del wiki]]",
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(

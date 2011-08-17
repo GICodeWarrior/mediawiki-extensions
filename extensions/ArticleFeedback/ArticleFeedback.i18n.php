@@ -197,7 +197,6 @@ $messages['af'] = array(
 	'articlefeedback-survey-thanks' => 'Dankie dat u die opname ingevul het.',
 	'articlefeedback-form-switch-label' => 'Verskaf terugvoer',
 	'articlefeedback-form-panel-title' => 'U terugvoer',
-	'articlefeedback-form-panel-instructions' => "Neem asseblief 'n oomblik om vir hierdie bladsy te stem.",
 	'articlefeedback-form-panel-submit' => 'Stuur terugvoer',
 	'articlefeedback-report-switch-label' => 'Wys resultate',
 	'articlefeedback-pitch-reject' => 'Nee dankie',
@@ -233,7 +232,6 @@ $messages['ar'] = array(
 	'articlefeedback-survey-thanks' => 'شكرا لملء الاستبيان.',
 	'articlefeedback-form-switch-label' => 'تقديم استبيان',
 	'articlefeedback-form-panel-title' => 'ملاحظاتك',
-	'articlefeedback-form-panel-instructions' => 'الرجاء قضاء بعض وقت لتقييم هذه الصفحة.',
 	'articlefeedback-form-panel-clear' => 'أزل هذا التقييم',
 	'articlefeedback-form-panel-helpimprove-privacy' => 'سياسة الخصوصية',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:سياسة الخصوصية',
@@ -299,7 +297,6 @@ $messages['ba'] = array(
 	'articlefeedback-error' => 'Хата килеп сыҡты. Зинһар, һуңыраҡ яңынан ҡабатлап ҡарағыҙ.',
 	'articlefeedback-form-switch-label' => 'Был битте баһалау',
 	'articlefeedback-form-panel-title' => 'Был битте баһалау',
-	'articlefeedback-form-panel-instructions' => 'Зинһар, был битте баһалар өсөн ваҡытығыҙҙы бүлегеҙ.',
 	'articlefeedback-form-panel-clear' => 'Был баһаламаны юйырға',
 	'articlefeedback-form-panel-expertise' => 'Мин был һорау менән яҡшы танышмын',
 	'articlefeedback-form-panel-expertise-studies' => 'Мин был һорау буйынса юғары белем алғанмын',
@@ -480,16 +477,23 @@ $messages['bg'] = array(
 	'articlefeedback-survey-submit' => 'Изпращане',
 	'articlefeedback-survey-title' => 'Моля, отговорете на няколко въпроса',
 	'articlefeedback-survey-thanks' => 'Благодарим ви, че попълнихте въпросника!',
+	'articlefeedback-form-switch-label' => 'Оценяване на страницата',
+	'articlefeedback-form-panel-title' => 'Оценяване на страницата',
 	'articlefeedback-form-panel-explanation' => 'Какво е това?',
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Защита на личните данни',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Защита на личните данни',
-	'articlefeedback-report-switch-label' => 'Показване на резултатите',
+	'articlefeedback-report-switch-label' => 'Преглеждане на оценките на страницата',
+	'articlefeedback-report-empty' => 'Няма оценки',
 	'articlefeedback-pitch-or' => 'или',
+	'articlefeedback-pitch-thanks' => 'Благодарности! Вашите оценки бяха съхранени.',
 	'articlefeedback-pitch-join-accept' => 'Създаване на сметка',
 	'articlefeedback-pitch-join-login' => 'Влизане',
 	'articlefeedback-pitch-edit-accept' => 'Редактиране на тази страница',
+	'articleFeedback-table-caption-dailyhighs' => 'Страници с най-високи оценки: $1',
+	'articleFeedback-table-caption-dailylows' => 'Страници с най-ниски оценки: $1',
 	'articleFeedback-table-heading-page' => 'Страница',
 	'articleFeedback-copy-above-highlow-tables' => 'Това е експериментална функцоиналност. Можете да дадете мнения и препоръки на [$1 беседата].',
+	'articlefeedback-disable-preference' => 'Без показване на притурката за Оценяване на статиите в страниците',
 );
 
 /** Bengali (বাংলা)
@@ -515,7 +519,6 @@ $messages['bn'] = array(
 	'articlefeedback-error' => 'একটি ত্রুটি দেখা দিয়েছে। অনুগ্রহপূর্বক পরবর্তীতে আবার চেষ্টা করুন।',
 	'articlefeedback-form-switch-label' => 'এই পাতটি রেট করুন',
 	'articlefeedback-form-panel-title' => 'এই পাতটি রেট করুন',
-	'articlefeedback-form-panel-instructions' => 'অনুগ্রহপূর্বক কিছু সময় নিয়ে এই পাতাটি রেট করুন।',
 	'articlefeedback-form-panel-clear' => 'এই রেটিংটি অপসারণ করো',
 	'articlefeedback-form-panel-expertise' => 'আমি এই বিষয়টি সম্পর্কে উচ্চমানের জ্ঞান রাখি (ঐচ্ছিক)',
 	'articlefeedback-form-panel-expertise-studies' => 'আমার এই সম্পর্কিত কলেজ/বিশ্ববিদ্যালয়ের ডিগ্রি রয়েছে',
@@ -794,7 +797,6 @@ $messages['ca'] = array(
 	'articlefeedback-survey-thanks' => "Gràcies per omplir l'enquesta.",
 	'articlefeedback-form-switch-label' => 'Proporciona informació',
 	'articlefeedback-form-panel-title' => 'Els teus comentaris',
-	'articlefeedback-form-panel-instructions' => 'Si us plau dedica un moment per valorar aquesta pàgina.',
 	'articlefeedback-form-panel-submit' => 'Envia comentaris',
 	'articlefeedback-form-panel-success' => 'Desat correctament',
 	'articlefeedback-report-switch-label' => 'Mostra els resultats',
@@ -1246,7 +1248,6 @@ $messages['eo'] = array(
 	'articlefeedback-error' => 'Eraro okazis. Bonvolu reprovi baldaŭ.',
 	'articlefeedback-form-switch-label' => 'Taksu ĉi tiun paĝon',
 	'articlefeedback-form-panel-title' => 'Taksi ĉi tiun paĝon',
-	'articlefeedback-form-panel-instructions' => 'Bonvolu pasigi momenton por taksi ĉi tiun paĝon.',
 	'articlefeedback-form-panel-clear' => 'Forigi ĉi tiun taksadon',
 	'articlefeedback-form-panel-expertise' => 'Mi estas fake sperta pri ĉi tiu temo (nedeviga)',
 	'articlefeedback-form-panel-expertise-studies' => 'Mi havas ĉi-teman diplomon de kolegio aŭ universitato',
@@ -1554,7 +1555,6 @@ $messages['eu'] = array(
 	'articlefeedback-error' => 'Arazo bat egon da. Saia zaitez beranduago.',
 	'articlefeedback-form-switch-label' => 'Kalifikatu orri hau',
 	'articlefeedback-form-panel-title' => 'Kalifikatu orri hau',
-	'articlefeedback-form-panel-instructions' => 'Har ezazu mesedez une bat orri hau baloratzeko.',
 	'articlefeedback-form-panel-clear' => 'Balorazio hau ezabatu',
 	'articlefeedback-form-panel-expertise' => 'Gai honen inguruko ezagutza handia dut (aukerazkoa)',
 	'articlefeedback-form-panel-expertise-studies' => 'Unibertsitateko titulazio bat dut gai honetan',
@@ -2008,7 +2008,6 @@ $messages['gsw'] = array(
 	'articlefeedback-error' => 'S het e Fähler gee. Bitte versuech s speter nomol.',
 	'articlefeedback-form-switch-label' => 'Die Syte yyschetze',
 	'articlefeedback-form-panel-title' => 'Die Syte yyschetze',
-	'articlefeedback-form-panel-instructions' => 'Bitte nimm Dir churz Zyt un tue dää Artikel yyschetze.',
 	'articlefeedback-form-panel-clear' => 'Yyschetzig uuseneh',
 	'articlefeedback-form-panel-expertise' => 'Ich haa umfangrychi Chänntnis zue däm Thema',
 	'articlefeedback-form-panel-expertise-studies' => 'Ich haa ne entsprächende Hochschuelabschluss',
@@ -2488,7 +2487,6 @@ $messages['id'] = array(
 	'articlefeedback-error' => 'Telah terjadi sebuah kesalahan. Silakan coba lagi nanti.',
 	'articlefeedback-form-switch-label' => 'Berikan nilai halaman ini',
 	'articlefeedback-form-panel-title' => 'Nilai halaman ini',
-	'articlefeedback-form-panel-instructions' => 'Harap luangkan waktu untuk menilai halaman ini.',
 	'articlefeedback-form-panel-clear' => 'Hapus penilaian ini',
 	'articlefeedback-form-panel-expertise' => 'Saya sangat mengetahui topik ini (opsional)',
 	'articlefeedback-form-panel-expertise-studies' => 'Saya memiliki gelar perguruan tinggi yang relevan',
@@ -2539,7 +2537,6 @@ Silakan coba lagi.',
 	'articleFeedback-table-heading-page' => 'Halaman',
 	'articleFeedback-table-heading-average' => 'Rata-rata',
 	'articleFeedback-copy-above-highlow-tables' => 'Ini adalah fitur percobaan. Harap berikan masukan pada [$1 halaman pembicaraan].',
-	'articleFeedback-copy-below-highlow-tables' => 'Tabel berikut berisi halaman yang telah menerima sedikitnya 10 penilaian dalam 24 jam terakhir. Nilai rata-rata dihitung dengan mengambil rerata dari semua nilai yang dikirim dalam 24 jam terakhir.',
 	'articlefeedback-emailcapture-response-body' => 'Halo!
 
 Terima kasih atas minat Anda untuk membantu meningkatkan {{SITENAME}}.
@@ -3220,7 +3217,6 @@ $messages['lv'] = array(
 	'articlefeedback-error' => 'Radusies kļūda. Lūdzu, mēģiniet vēlāk vēlreiz.',
 	'articlefeedback-form-switch-label' => 'Novērtējiet šo lapu',
 	'articlefeedback-form-panel-title' => 'Novērtējiet šo lapu',
-	'articlefeedback-form-panel-instructions' => 'Lūdzu, veltiet laiku lapas novērtēšanai.',
 	'articlefeedback-form-panel-clear' => 'Noņemt šo vērtējumu',
 	'articlefeedback-form-panel-expertise' => 'Es esmu ļoti zinošs par šo tēmu (atzīmēt pēc izvēles)',
 	'articlefeedback-form-panel-expertise-studies' => 'Man ir attiecīgās jomas augstākās izglītības grāds',
@@ -3667,6 +3663,7 @@ $messages['nah'] = array(
 );
 
 /** Nepali (नेपाली)
+ * @author Bhawani Gautam
  * @author Bhawani Gautam Rhk
  */
 $messages['ne'] = array(
@@ -4013,7 +4010,7 @@ $messages['or'] = array(
 	'articleFeedback-table-heading-average' => 'ହାରାହାରି',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(
@@ -4168,7 +4165,6 @@ $messages['pms'] = array(
 	'articlefeedback-error' => "A l'é capitaje n'eror. Për piasì preuva pi tard.",
 	'articlefeedback-form-switch-label' => 'Vàluta sta pagina',
 	'articlefeedback-form-panel-title' => 'Vàluta sta pagina',
-	'articlefeedback-form-panel-instructions' => 'Për piasì pija un moment për valuté sta pagina',
 	'articlefeedback-form-panel-clear' => 'Gava sta valutassion',
 	'articlefeedback-form-panel-expertise' => 'Mi i conòsso motobin sto argoment (opsional)',
 	'articlefeedback-form-panel-expertise-studies' => "Mi i l'heu un diploma ëd colegi/università përtinent",
@@ -4404,7 +4400,6 @@ $messages['pt-br'] = array(
 	'articlefeedback-error' => 'Ocorreu um erro. Por favor, tente novamente mais tarde.',
 	'articlefeedback-form-switch-label' => 'Avaliar esta página',
 	'articlefeedback-form-panel-title' => 'Avaliar esta página',
-	'articlefeedback-form-panel-instructions' => 'Dedique um momento a avaliar esta página abaixo, por favor.',
 	'articlefeedback-form-panel-clear' => 'Remover esta avaliação',
 	'articlefeedback-form-panel-expertise' => 'Estou muito bem informado sobre este tema (opcional)',
 	'articlefeedback-form-panel-expertise-studies' => 'Tenho um título universitário relacionado',
@@ -4455,7 +4450,6 @@ Tente novamente mais tarde, por favor.',
 	'articleFeedback-table-heading-page' => 'Página',
 	'articleFeedback-table-heading-average' => 'Média',
 	'articleFeedback-copy-above-highlow-tables' => 'Esta funcionalidade é experimental. Deixe os seus comentários na [$1 página de discussão], por favor.',
-	'articleFeedback-copy-below-highlow-tables' => 'Estas tabelas contêm artigos que receberam pelo menos 10 avaliações nas últimas 24 horas. As médias são calculadas pela média aritmética de todas as avaliações enviadas nas últimas 24 horas.',
 	'articlefeedback-emailcapture-response-body' => 'Olá,
 
 Obrigado por expressar interesse em ajudar a melhorar a {{SITENAME}}.
@@ -4791,7 +4785,6 @@ $messages['rue'] = array(
 	'articlefeedback-survey-title' => 'Просиме, одповіджте на пару вопросів',
 	'articlefeedback-survey-thanks' => 'Дякуєме за выповнїня звідованя.',
 	'articlefeedback-form-panel-title' => 'Ваш назор',
-	'articlefeedback-form-panel-instructions' => 'Просиме, найдьте собі час про оцінку той статї.',
 	'articlefeedback-report-switch-label' => 'Указати резултаты',
 	'articlefeedback-field-trustworthy-tip' => 'Маєте чутя, же тота сторінка достаточно одказує на жрідла і хоснованы жрідла суть способны довірованя?',
 	'articlefeedback-field-complete-label' => 'Комплетность',
@@ -4801,7 +4794,7 @@ $messages['rue'] = array(
 	'articlefeedback-pitch-join-accept' => 'Вытворити конто',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(
@@ -4910,7 +4903,6 @@ $messages['sk'] = array(
 	'articlefeedback-error' => 'Vyskytla sa chyba. Prosím, skúste to neskôr.',
 	'articlefeedback-form-switch-label' => 'Ohodnotiť túto stránku',
 	'articlefeedback-form-panel-title' => 'Ohodnotiť túto stránku',
-	'articlefeedback-form-panel-instructions' => 'Prosím, venujte chvíľku ohodnoteniu tejto stránky.',
 	'articlefeedback-form-panel-clear' => 'Odstrániť toto hodnotenie',
 	'articlefeedback-form-panel-expertise' => 'Mám veľké vedomosti o tejto téme (nepovinné)',
 	'articlefeedback-form-panel-expertise-studies' => 'Mám v tejto oblasti univerzitný titul',
@@ -5108,7 +5100,6 @@ $messages['sr-ec'] = array(
 	'articlefeedback-error' => 'Дошло је до грешке. Покушајте поново.',
 	'articlefeedback-form-switch-label' => 'Оцени ову страницу',
 	'articlefeedback-form-panel-title' => 'Оцењивање странице',
-	'articlefeedback-form-panel-instructions' => 'Издвојте тренутак да оцените ову страницу.',
 	'articlefeedback-form-panel-clear' => 'Уклони ову оцену',
 	'articlefeedback-form-panel-expertise' => 'Добро сам упознат/а са овом темом (необавезно)',
 	'articlefeedback-form-panel-expertise-studies' => 'Имам релевантну универзитетску диплому',
@@ -5159,7 +5150,6 @@ $messages['sr-ec'] = array(
 	'articleFeedback-table-heading-page' => 'Страница',
 	'articleFeedback-table-heading-average' => 'Просек',
 	'articleFeedback-copy-above-highlow-tables' => 'Ово је експериментални додатак. Молимо вас да пошаљете повратну информацију на [$1 страници за разговор].',
-	'articleFeedback-copy-below-highlow-tables' => 'Ове табеле садрже странице које имају најмање десет оцена у последња 24 часа. Просек се рачуна аритметичком средином свих оцена у последња 24 часа.',
 	'articlefeedback-emailcapture-response-body' => 'Здраво!
 
 Хвала вам што сте показали жељу да помогнете у унапређењу пројекта {{SITENAME}}.
@@ -5970,7 +5960,6 @@ $messages['zh-hant'] = array(
 	'articlefeedback-error' => '發生了錯誤。請稍後再試。',
 	'articlefeedback-form-switch-label' => '評價這個網頁',
 	'articlefeedback-form-panel-title' => '評價這個網頁',
-	'articlefeedback-form-panel-instructions' => '請花一點時間來評價這個網頁。',
 	'articlefeedback-form-panel-clear' => '刪除本次評級',
 	'articlefeedback-form-panel-expertise' => '我有先驗知識對這個話題',
 	'articlefeedback-form-panel-expertise-studies' => '我在大學已經研究',

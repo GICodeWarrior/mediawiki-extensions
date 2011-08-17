@@ -1271,6 +1271,7 @@ $messages['myv'] = array(
 );
 
 /** Nepali (नेपाली)
+ * @author Bhawani Gautam
  * @author Bhawani Gautam Rhk
  */
 $messages['ne'] = array(
@@ -1626,7 +1627,7 @@ $messages['ru'] = array(
 	'mwe-clipedit-layout_left' => 'Макет с изображением слева',
 );
 
-/** Yakut (Саха тыла) */
+/** Sakha (Саха тыла) */
 $messages['sah'] = array(
 	'mwe-clipedit-crop' => 'Ойууну быс',
 	'mwe-clipedit-apply_crop' => 'Ойууга төгүрүччу быһыыны тутун',

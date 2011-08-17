@@ -38,6 +38,17 @@ $messages['br'] = array(
 	'trustedmath-not-found' => "N'eus ket eus ar bajenn [[:$1]]",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'trustedmath-desc' => 'Omogućava umetanje LaTeX jednačina na stranicu, slično kao ugrađeni matematički uređivač, ali bez zavisnosti od Ocaml',
+	'trustedmath-permission-error' => 'Neprovjereni matematski izrazi su onemogućeni na ovoj wiki',
+	'trustedmath-path-error' => 'Greška pri pravljenju matematskog direktorija',
+	'trustedmath-convert-error' => 'Greška pri pravljenju matematske slike. "$1" vratila <tt><nowiki>$2</nowiki></tt>.',
+	'trustedmath-not-found' => 'Stranica [[:$1]] ne postoji',
+);
+
 /** Catalan (Català)
  * @author SMP
  */

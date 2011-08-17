@@ -698,7 +698,7 @@ $messages['ru'] = array(
 	'categorywatch-autocat' => 'Автоматически наблюдается $1',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(

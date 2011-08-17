@@ -29,6 +29,14 @@ $messages['de'] = array(
 Die Baumansicht nutzt hierzu [http://www.destroydrop.com/javascripts/tree dTree] sowie das Aufklappmenü [http://www.htmldog.com/articles/suckerfish/dropdowns/ Son of Suckerfish]',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'treeandmenu-desc' => 'הוספת פונקציות המפענח <code dir="ltr"><nowiki>#tree</nowiki></code> ו־<code dir="ltr"><nowiki>#menu</nowiki></code> שמכילות רשימות תבליטים שיוצגו כעצים שאפשר לקפל או תפריטים נפתחים.
+תצוגת העץ משתמשת בתפריט [http://www.destroydrop.com/javascripts/tree dTree] והפתריטים המפתחים משתמשים ב־[http://www.htmldog.com/articles/suckerfish/dropdowns/ Son of Suckerfish]',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -51,6 +59,14 @@ $messages['mk'] = array(
 $messages['ms'] = array(
 	'treeandmenu-desc' => 'Membubuh fungsi penghurai <code><nowiki>#tree</nowiki></code> dan <code><nowiki>#menu</nowiki></code> yang mengandungi senarai berbulet untuk dipaparkan dalam bentuk paparan pepohon boleh lipat atau juntai bawah.
 Paparan pepohon menggunakan menu pepohon JavaScript [http://www.destroydrop.com/javascripts/tree dTree], sementara menu juntai bawah menggunakan [http://www.htmldog.com/articles/suckerfish/dropdowns/ Son of Suckerfish]',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'treeandmenu-desc' => "Voegt de parserfuncties <code><nowiki>#tree</nowiki></code> en <code><nowiki>#menu</nowiki></code> toe die ervoor zorgen dat ongenummerde lijsten worden weergegeven als inklapbare boomstructuren of dropdownmenu's.
+Hiervoor worden de componenten [http://www.destroydrop.com/javascripts/tree dTree] en [http://www.htmldog.com/articles/suckerfish/dropdowns/ Son of Suckerfish] gebruikt",
 );
 
 /** Portuguese (Português)

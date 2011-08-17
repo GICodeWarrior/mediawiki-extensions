@@ -141,6 +141,13 @@ $messages['de'] = array(
 	'wikitweet-fewsecondsago' => 'Vor wenigen Sekunden',
 );
 
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
+ * @author Kghbln
+ */
+$messages['de-formal'] = array(
+	'wikitweet-intheroom' => 'Sie sind beim Feedstrang',
+);
+
 /** Spanish (Español)
  * @author Fitoschido
  */
@@ -383,6 +390,17 @@ $messages['nl'] = array(
 	'wikitweet-timeago' => '$1 geleden',
 	'wikitweet-inthefuture' => 'In de toekomst!',
 	'wikitweet-fewsecondsago' => 'Een paar seconden geleden',
+);
+
+/** Polish (Polski)
+ * @author Woytecr
+ */
+$messages['pl'] = array(
+	'wikitweet-subscribe' => 'Subskrybuj',
+	'wikitweet-unsubscribe' => 'nie subskrybuj',
+	'wikitweet-delete' => 'usuń',
+	'wikitweet-timeago' => '$1 temu',
+	'wikitweet-inthefuture' => 'W przyszłości!!',
 );
 
 /** Pashto (پښتو)

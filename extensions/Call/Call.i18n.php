@@ -1158,7 +1158,7 @@ $messages['rue'] = array(
 	'call' => 'Call',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(

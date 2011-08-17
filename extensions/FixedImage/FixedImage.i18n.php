@@ -462,7 +462,7 @@ $messages['ru'] = array(
 	'fixedimage-desc' => 'Добавляет тег <code>&lt;fundraising&gt;</code> как изображение',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(

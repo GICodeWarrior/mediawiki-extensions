@@ -417,7 +417,7 @@ $messages['ru'] = array(
 	'emailaddressimage-desc' => 'Добавляет <code>&lt;email&gt;</code> чтобы показывать адреса электронной почты в виде изображений',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(

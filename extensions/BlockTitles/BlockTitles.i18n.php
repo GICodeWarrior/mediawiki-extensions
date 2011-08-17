@@ -608,7 +608,7 @@ $messages['oc'] = array(
 	'block_title_error' => "O planhèm, lo títol d'aqueste article es pas autorizat a èsser salvat.",
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(
@@ -701,7 +701,7 @@ $messages['ru'] = array(
 	'block_title_error' => 'Извините, страница с подобным названием не может быть сохранена.',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(

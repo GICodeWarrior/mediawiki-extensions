@@ -1461,7 +1461,7 @@ $messages['rue'] = array(
 	'amazonplus-less' => 'менше',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(

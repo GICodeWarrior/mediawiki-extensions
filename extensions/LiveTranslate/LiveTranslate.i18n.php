@@ -117,6 +117,9 @@ $messages['az'] = array(
 $messages['be-tarask'] = array(
 	'livetranslate-desc' => 'Дазваляе пераклады тэкстаў старонак на ляту ў Google Translate',
 	'right-managetms' => '[[Special:SpecialLiveTranslate|зьмена]] сьпісу памяці перакладаў',
+	'group-tmxadmin' => 'Адміністратары TMX',
+	'group-tmxadmin-member' => 'Адміністратар TMX',
+	'grouppage-tmxadmin' => 'Project:Адміністратары TMX',
 	'livetranslate-translate-to' => 'Перакласьці гэту старонку на',
 	'livetranslate-button-translate' => 'Перакласьці',
 	'livetranslate-button-translating' => 'Ідзе пераклад…',
@@ -347,11 +350,15 @@ $messages['eu'] = array(
 
 /** French (Français)
  * @author Crochet.david
+ * @author Hashar
  * @author Sherbrooke
  */
 $messages['fr'] = array(
 	'livetranslate-desc' => 'Permet la traduction immédiate du contenu de la page en utilisant le service de traduction de Google',
 	'right-managetms' => '[[Special:SpecialLiveTranslate|Modifier]] la liste des mémoires de traduction',
+	'group-tmxadmin' => 'Admins TMX',
+	'group-tmxadmin-member' => 'Admin TMX',
+	'grouppage-tmxadmin' => 'Project:Admins_TMX',
 	'livetranslate-translate-to' => 'Traduire cette page en',
 	'livetranslate-button-translate' => 'Traduire',
 	'livetranslate-button-translating' => 'Traduction en cours...',
@@ -826,6 +833,7 @@ $messages['no'] = array(
 /** Polish (Polski)
  * @author Byulent
  * @author Sp5uhe
+ * @author Woytecr
  */
 $messages['pl'] = array(
 	'livetranslate-desc' => 'Włącza tłumaczenie zawartości strony na żywo z wykorzystaniem serwisu tłumaczącego Google',
@@ -837,6 +845,8 @@ $messages['pl'] = array(
 	'livetranslate-dictionary-empty' => 'Na razie brak jest jeszcze słów w słowniku. Kliknij zakładkę „Edytuj“ aby jakieś dodać.',
 	'livetranslate-dictionary-count' => '{{PLURAL:$1|Jest $1 słowo|Są $1 słowa|Jest $1 słów}} w $2 {{PLURAL:$2|języku|językach}}. Kliknij zakładkę „Edytuj“ aby dodać następne.',
 	'livetranslate-dictionary-unallowed-langs' => '{{PLURAL:$2|Język $1 nie jest obecnie dostępny jako docelowy|Języki $1 nie są obecnie dostępne jako docelowe}} dla tłumaczeń. Zmień dopuszczalne języki w konfiguracji swojej wiki lub usuń to ze słownika.',
+	'livetranslate-special-type' => 'Typ',
+	'livetranslate-special-remove' => 'Usuń',
 );
 
 /** Piedmontese (Piemontèis)

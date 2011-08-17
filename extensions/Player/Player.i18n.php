@@ -1137,7 +1137,7 @@ $messages['oc'] = array(
 	'player-goto-file' => 'fichièr',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(

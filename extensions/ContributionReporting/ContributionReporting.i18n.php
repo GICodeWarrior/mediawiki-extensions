@@ -1453,6 +1453,7 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Aleator
  * @author Crazymadlover
+ * @author DJ Nietzsche
  * @author Imre
  * @author Omnipaedista
  * @author Remember the dot
@@ -1526,6 +1527,11 @@ $messages['es'] = array(
 	'fundraiserstats-tab-averages' => 'Promedios (USD)',
 	'fundraiserstats-tab-maximums' => 'Máximos (USD)',
 	'fundraiserstats-tab-ytd' => 'Año hasta la fecha (USD)',
+	'fundraiserstats-instructions' => 'Para ver las estadísticas de cualquier día, coloca el cursor sobre la barra correspondiente a ese día. Cada año tiene un color diferente en el gráfico.',
+	'fundraiserstats-customize' => 'Personalizar',
+	'fundraiserstats-show-years' => 'Mostrar los siguientes años:',
+	'fundraiserstats-time-zone' => 'Zona horaria:',
+	'fundraiserstats-utc' => '(de UTC)',
 );
 
 /** Estonian (Eesti)
@@ -4047,7 +4053,7 @@ $messages['or'] = array(
 	'contribstats-month' => 'ମାସ',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(
@@ -4699,7 +4705,7 @@ $messages['rue'] = array(
 	'fundraiserstats-tab-ytd' => 'З початку року (USD)',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(

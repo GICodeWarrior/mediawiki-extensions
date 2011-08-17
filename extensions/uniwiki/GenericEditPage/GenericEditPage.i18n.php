@@ -1176,7 +1176,7 @@ Apondètz-ne en utilizant las aisinas dins la barra de menut.',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(

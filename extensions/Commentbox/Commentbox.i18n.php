@@ -980,7 +980,7 @@ $messages['rue'] = array(
 	'commentbox-name' => 'Імя:',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(

@@ -43,6 +43,13 @@ $messages['fr'] = array(
 	'editsectionclearerlink-desc' => 'Améliore la convivialité des liens de modifications des sections en ayant recours à des actions de sections et de survol.',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'editsectionclearerlink-desc' => 'לשפר את השמישות של קישורי עריכת פסקה בזמן ריחוף הסמן מעל פסקה או קישור',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

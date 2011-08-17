@@ -793,7 +793,7 @@ $messages['oc'] = array(
 	'right-findspam' => 'Recercar de spam aponduts recentament',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(
@@ -916,7 +916,7 @@ $messages['rue'] = array(
 	'findspam-ok' => 'ОК',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(

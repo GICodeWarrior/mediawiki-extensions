@@ -220,7 +220,7 @@ $messages['ja'] = array(
 	'apisvgproxy-desc' => 'SVGファイルを（リモート含む）ファイル・リポジトリからローカルのドメインにプロキシする',
 );
 
-/** Kabardian (Cyrillic) (къэбэрдеибзэ/qabardjajəbza (Cyrillic))
+/** Kabardian (Cyrillic) (Адыгэбзэ (Cyrillic))
  * @author Amire80
  */
 $messages['kbd-cyrl'] = array(

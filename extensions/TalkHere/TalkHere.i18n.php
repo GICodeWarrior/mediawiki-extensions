@@ -579,13 +579,14 @@ I gestori del sito non possono assumersi la responsabilità per il contenuto di 
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Hosiryuhosi
+ * @author Ohgi
  */
 $messages['ja'] = array(
 	'talkhere-desc' => 'ノートページを主ページの中に置く',
 	'talkhere-foottext' => '以上のコメントはサイトの訪問者によるものかもしれません。
 
 このサイトの運営者はそのようなコメントの内容について責任を取ることはできません。',
-	'talkhere-talkpage' => '会話ページ',
+	'talkhere-talkpage' => 'トークページ',
 	'talkhere-notalk' => "''(まだコメントなし)''",
 	'talkhere-addcomment' => 'コメントの追加',
 	'talkhere-beforeinput' => '以下にコメントを追加できます',

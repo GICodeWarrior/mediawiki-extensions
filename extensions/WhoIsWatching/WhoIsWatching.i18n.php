@@ -629,7 +629,7 @@ $messages['oc'] = array(
 	'specialwhoiswatchingaddbtn' => 'Apondre los utilizaires seleccionats',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(

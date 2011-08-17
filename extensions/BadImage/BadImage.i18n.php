@@ -712,11 +712,12 @@ $messages['eo'] = array(
  * @author Antur
  * @author BicScope
  * @author Crazymadlover
+ * @author Fitoschido
  * @author Mor
  * @author Sanbec
  */
 $messages['es'] = array(
-	'badimages' => 'Lista de malas imágenes',
+	'badimages' => 'Lista de imágenes en lista negra',
 	'badimage-desc' => 'Lista de imágenes malas de las capacibilodades de MediaWiki',
 	'badimages-add-btn' => 'Agregar',
 	'badimages-added' => '$1 fue agregada satisfactoriamente a la lista.',
@@ -731,7 +732,7 @@ $messages['es'] = array(
 	'badimages-removed' => '$1 ha sido borrado de la lista.',
 	'badimages-subheading' => 'Items actuales',
 	'badimages-unprivileged' => '(No tiene permiso para alterar la lista)',
-	'badimages-log-name' => 'Lista de malas imágenes',
+	'badimages-log-name' => 'Lista de imágenes en lista negra',
 	'badimages-log-header' => 'Éste es un registro de cambios a la [[{{MediaWiki:Badimages-page}}|lista de malas imágenes]].',
 	'badimages-log-add' => '[[$1]] fue añadida satisfactoriamente a la lista de malas imágenes',
 	'badimages-log-remove' => '[[$1]] ha sido eliminada satisfactoriamente de la lista de malas imágenes',
@@ -2060,7 +2061,7 @@ $messages['or'] = array(
 	'badimages-remove-btn' => 'ବାହାର କରିବା',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(
@@ -2309,7 +2310,7 @@ $messages['rue'] = array(
 	'badimages-remove-btn' => 'Одстранити',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(

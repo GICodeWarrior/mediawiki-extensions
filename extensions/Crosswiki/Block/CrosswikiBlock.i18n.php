@@ -2165,7 +2165,7 @@ $messages['or'] = array(
 	'crosswikiunblock-reason' => 'କାରଣ:',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(

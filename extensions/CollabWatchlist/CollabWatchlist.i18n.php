@@ -688,6 +688,26 @@ $messages['nl'] = array(
 	'tog-collabwatchlisthidelistusers' => 'Bewerkingen van gebruikers van de gezamenlijke volglijst verbergen',
 );
 
+/** Polish (Polski)
+ * @author Woytecr
+ */
+$messages['pl'] = array(
+	'collabwatchlisttools-view' => 'Wyświetl',
+	'collabwatchlisttools-edit' => 'Edytuj kategorie',
+	'collabwatchlisttools-delete' => 'Usuń',
+	'collabwatchlistedit-users-raw-submit' => 'Zapisz',
+	'collabwatchlistedit-raw-titles' => 'Kategorie:',
+	'collabwatchlistedit-users-raw-titles' => 'Użytkownicy:',
+	'collabwatchlistedit-normal-title' => 'Edytuj kategorie',
+	'collabwatchlistedit-tags-raw-submit' => 'Zapisz',
+	'collabwatchlistedit-users-raw-added' => 'Dodano {{PLURAL:$1|1 użytkownika|$1 użytkowników}}:',
+	'collabwatchlistedit-users-raw-removed' => 'Usunięto {{PLURAL:$1|1 użytkownika|$1 użytkowników}}:',
+	'collabwatchlistdelete-submit' => 'Usuń',
+	'collabwatchlistnew-name' => 'Nazwa listy',
+	'collabwatchlistnew-submit' => 'Utwórz',
+	'collabwatchlistedit-normal-submit' => 'Zapisz',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

@@ -448,7 +448,7 @@ $messages['ru'] = array(
 	'oairepository' => 'Хранилище OAI',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(

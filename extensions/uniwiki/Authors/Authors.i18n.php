@@ -465,7 +465,7 @@ $messages['oc'] = array(
 	'authors_anonymous' => 'Anomin',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(

@@ -2164,7 +2164,7 @@ Consultatz vòstres paramètres de blocatge dels popups.',
 	'ct_user_sample' => 'Nom de l’utilizaire',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(

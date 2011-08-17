@@ -827,7 +827,7 @@ $messages['oc'] = array(
 	'right-inspectcache' => "Afichar e suprimir las entradas de l'amagatal",
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(

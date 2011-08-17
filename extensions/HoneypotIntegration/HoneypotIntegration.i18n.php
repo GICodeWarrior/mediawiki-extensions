@@ -391,7 +391,7 @@ $messages['ru'] = array(
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Количество последних событий, вызвавших попадание IP-адреса в соответствие с проектом Honey Pot',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(

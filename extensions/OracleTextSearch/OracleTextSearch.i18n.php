@@ -101,6 +101,14 @@ $messages['ms'] = array(
 	'oracletextsearch-desc' => 'Mencari kandungan/metadata fail yang dimuat naik dengan menggunakan pengindeksan Oracle Text',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'oracletextsearch' => 'Oracle tekstzoeken',
+	'oracletextsearch-desc' => 'Inhoud en metadata doorzoeken voor geüploade bestanden via Oracle Textindexering',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

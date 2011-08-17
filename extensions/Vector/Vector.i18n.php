@@ -1441,7 +1441,7 @@ $messages['rue'] = array(
 	'vector-simplesearch-containing' => 'обсягуючій...',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(

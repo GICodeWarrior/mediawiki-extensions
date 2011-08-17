@@ -2744,7 +2744,7 @@ Aquesta pagina s’aplica pas qu’als utilizaires disposant de dreches restrenc
 	'group-manager-member' => 'Gestionari',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  * @author Bouron
  */

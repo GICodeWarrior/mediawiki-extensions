@@ -1035,7 +1035,7 @@ $messages['rue'] = array(
 	'fundraiserportal-tourmaline-close' => 'Сховати тото одтеперь',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(

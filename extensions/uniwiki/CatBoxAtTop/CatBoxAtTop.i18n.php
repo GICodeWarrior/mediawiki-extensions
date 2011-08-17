@@ -445,7 +445,7 @@ $messages['oc'] = array(
 	'catboxattop-categories' => 'Categorias',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(

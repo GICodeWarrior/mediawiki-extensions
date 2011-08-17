@@ -757,6 +757,7 @@ $messages['frp'] = array(
 	'todo-list-change' => 'Changiér',
 	'todo-list-cancel' => 'Anular',
 	'todo-new-item' => 'Novél èlèment',
+	'todo-not-updated' => 'Empossiblo de betar a jorn l’encartâjo dens la bâsa de balyês',
 	'todo-issue-summary' => 'Rèsumâ du problèmo :',
 	'todo-form-details' => 'Dètalys :',
 	'todo-form-email' => 'Por recêvre un mèssâjo de notificacion quand l’èlèment serat cllôs, enscrîde voutra adrèce dens lo câdro ce-desot :',
@@ -1563,7 +1564,7 @@ $messages['oc'] = array(
 	'right-todosubmit' => 'Restrénher los dreches de las listas personalas de causas de far',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(

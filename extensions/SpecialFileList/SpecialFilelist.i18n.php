@@ -764,7 +764,7 @@ $messages['rue'] = array(
 	'filelist-image-desc' => 'опис',
 );
 
-/** Yakut (Саха тыла) */
+/** Sakha (Саха тыла) */
 $messages['sah'] = array(
 	'filelist-image-desc' => 'быһаарыы',
 );

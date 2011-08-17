@@ -320,7 +320,7 @@ $messages['ru'] = array(
 	'editsectionhilitelink-desc' => 'Подсвечивает на странице соответствующий раздел, когда вы перемещаете указатель мыши на ссылку «править»',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(

@@ -617,7 +617,7 @@ $messages['ru'] = array(
 	'cspammer-log-page' => 'Журнал спам-комментариев',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(

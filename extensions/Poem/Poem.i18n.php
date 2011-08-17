@@ -506,7 +506,7 @@ $messages['ru'] = array(
 	'poem-desc' => 'Добавляет тег <code>&lt;poem&gt;</code> для форматирования стихов',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(

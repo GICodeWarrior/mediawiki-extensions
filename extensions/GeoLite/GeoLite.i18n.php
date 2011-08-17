@@ -372,7 +372,7 @@ $messages['rue'] = array(
 	'geolite-desc' => 'Полегшене напрямлїня GeoIP',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(

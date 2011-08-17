@@ -702,7 +702,7 @@ $messages['rue'] = array(
 	'assert_edit_message' => 'Зазначене тверджіня ($1) ся не выконує.',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(

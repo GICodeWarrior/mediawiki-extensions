@@ -303,17 +303,20 @@ Bitte überprüfe die Schreibweise.',
 );
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
+ * @author Kghbln
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
-	'ajaxLogin1' => 'Sie müssen ein neues Passwort eingeben um die Anmeldung durchzuführen.
+	'ajaxLogin1' => 'Sie müssen ein neues Passwort eingeben, um die Anmeldung durchzuführen.
 Dies geschieht auf einer anderen Seite, so dass Sie Ihre aktuellen Änderungen auf dieser Seite möglicherweise verlieren werden.',
 	'ajaxLogin2' => 'Sind Sie sicher?
-Möglicherweise gehen Ihre aktuellen Änderungen verloren, wenn Sie diese Seite verlassen.',
+Möglicherweise gehen Ihre aktuellen Änderungen an dieser Seite verloren, sofern Sie sie jetzt verlassen.',
 	'ajaxlogin-create' => 'Erstellen Sie ein Benutzerkonto',
-	'al-nosuchuser' => 'Es gibt keinen Benutzer mit dem Namen „$1“.
+	'al-nosuchuser' => 'Es gibt keinen Benutzer namens „$1“.
 Benutzernamen können sich in der Groß- und Kleinschreibung unterscheiden.
-Bitte prüfen Sie die Schreibweise.',
+Bitte überprüfen Sie die Schreibweise.',
+	'al-createblocked' => 'Ihre IP-Adresse wurde für die Erstellung von Benutzerkonten gesperrt.',
+	'al-throttled' => 'Sie haben zu häufig versucht Ihr Passwort anzugeben. Bitte warten Sie $1 {{PLURAL:$1|Sekunde|Sekunden}} bis zum nächsten Versuch.',
 );
 
 /** Zazaki (Zazaki)
@@ -545,6 +548,7 @@ $messages['he'] = array(
 );
 
 /** Hindi (हिन्दी)
+ * @author Bhawani Gautam
  * @author Bhawani Gautam Rhk
  * @author Rsrikanth05
  */
@@ -873,6 +877,7 @@ $messages['myv'] = array(
 );
 
 /** Nepali (नेपाली)
+ * @author Bhawani Gautam
  * @author Bhawani Gautam Rhk
  */
 $messages['ne'] = array(
@@ -1100,7 +1105,7 @@ $messages['ru'] = array(
 	'al-throttled' => 'Вы сделали слишком много попыток ввода пароля. Пожалуйста, подождите $1 {{PLURAL:$1|секунду|секунды|секунд}}, прежде чем повторить.',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(

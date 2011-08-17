@@ -791,7 +791,7 @@ $messages['oc'] = array(
 	'languageselector-setlang' => 'Definir',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(
@@ -907,7 +907,7 @@ $messages['rue'] = array(
 	'languageselector-setlang' => 'становити',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(

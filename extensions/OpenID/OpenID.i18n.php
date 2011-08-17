@@ -160,6 +160,9 @@ You would not able to log in without an OpenID.',
  */
 $messages['qqq'] = array(
 	'openid-desc' => '{{desc}}',
+	'openidsuccesstext' => 'Parameters:
+* $1 is a username
+* $2 is an OpenID.',
 	'openidserverlogininstructions' => 'The message is shown to users when they want to log in on another site ($3) with their MediaWiki userpage url (this MediaWiki as OpenID server) acting as OpenID identity. 
 
 If not logged in by cookie or session, the MediaWiki prompts the user to log in as user $2. After a successful login to the MediaWiki which acts as OpenID server, the process flow is redirected to the other OpenID consumer site, where the user will be logged via their (MediaWiki userpage) OpenID.
@@ -180,6 +183,8 @@ Parameters:
 	'openidtimezone' => '{{Identical|Time zone}}',
 	'openidchoosepassword' => '{{Identical|Password}}',
 	'openidalreadyloggedin' => '',
+	'openidalreadyloggedintext' => 'Parameters:
+* $1 is a username.',
 	'openidautosubmit' => '{{doc-important|"Continue" will never be localised. It is hardcoded in a PHP extension. Translations could be made like ""Continue" (translation)"}}',
 	'openiddelete-button' => '{{Identical|Confirm}}',
 	'openid-openids-were-not-merged' => 'When merging user accounts by UserMerge or similar extensions, OpenID(s) are not merged if $wgOpenIDMergeOnAccountMerge=false (default).',
@@ -1199,7 +1204,8 @@ Bitte benachrichtige einen [[Special:ListUsers/sysop|Administrator]].',
 
 Deine OpenID lautet $2.
 
-Diese und weitere OpenIDs, sowie das fakultative Benutzerkontopasswort, können auf der Seite mit den [[Special:Preferences|Kontoeinstellungen]] verwaltet werden.",
+Diese und weitere OpenIDs können unter dem Reiter [[Special:Preferences#prefsection-openid|OpenID]] deiner Kontoeinstellungen verwaltet werden.<br />
+Ein fakultatives Benutzerkontopasswort kann hingegen unter dem Reiter [[Special:Preferences#prefsection-personal|Benutzerdaten]] deiner Kontoeinstellungen festgelegt werden.",
 	'openidusernameprefix' => 'OpenID-Benutzer',
 	'openidserverlogininstructions' => '$3 erfordert die Eingabe deines Passworts für dein Benutzerkonto $2 auf der Seite $1 (OpenID-URL)',
 	'openidtrustinstructions' => 'Prüfe, ob du Daten mit $1 teilen möchtest.',
@@ -1233,7 +1239,7 @@ du kannst einen aus der untenstehenden Liste auswählen.',
 	'openidalreadyloggedin' => 'Du bist bereits angemeldet.',
 	'openidalreadyloggedintext' => "'''Du bist bereits angemeldet, $1.'''
 
-Du kannst diese und weitere OpenIDs auf der Seite mit den [[Special:Preferences|Kontoeinstellungen]] unter dem Reiter OpenID verwalten (ansehen, löschen, weitere hinzufügen).",
+Du kannst diese und weitere OpenIDs unter dem Reiter [[Special:Preferences#prefsection-openid|OpenID]] deiner Kontoeinstellungen verwalten (ansehen, löschen sowie weitere hinzufügen).",
 	'openidnousername' => 'Kein Benutzername angegeben.',
 	'openidbadusername' => 'Falscher Benutzername angegeben.',
 	'openidautosubmit' => 'Diese Seite enthält ein Formular, das automatisch übertragen wird, wenn JavaSkript aktiviert ist. Falls nicht, klicke bitte auf „Continue“ (Weiter).',
@@ -1297,7 +1303,8 @@ Bitte benachrichtigen Sie einen [[Special:ListUsers/sysop|Administrator]].',
 
 Ihre OpenID lautet $2.
 
-Diese und weitere OpenIDs, sowie das fakultative Benutzerkontopasswort, können auf der Seite mit den [[Special:Preferences|Kontoeinstellungen]] verwaltet werden.",
+Diese und weitere OpenIDs können unter dem Reiter [[Special:Preferences#prefsection-openid|OpenID]] Ihrer Kontoeinstellungen verwaltet werden.<br />
+Ein fakultatives Benutzerkontopasswort kann hingegen unter dem Reiter [[Special:Preferences#prefsection-personal|Benutzerdaten]] Ihrer Kontoeinstellungen festgelegt werden.",
 	'openidserverlogininstructions' => '$3 erfordert die Eingabe Ihres Passworts für Ihr Benutzerkonto $2 auf der Seite $1 (OpenID-URL)',
 	'openidtrustinstructions' => 'Prüfen Sie, ob Sie Daten mit $1 teilen möchten.',
 	'openidchooseinstructions' => 'Alle Benutzer benötigen einen Benutzernamen;
@@ -1312,7 +1319,7 @@ Sie können einen aus der untenstehenden Liste auswählen.',
 	'openidalreadyloggedin' => 'Sie sind bereits angemeldet.',
 	'openidalreadyloggedintext' => "'''Sie sind bereits angemeldet, $1.'''
 
-Sie können diese und weitere OpenIDs auf der Seite mit den [[Special:Preferences|Kontoeinstellungen]] unter dem Reiter OpenID verwalten (ansehen, löschen, weitere hinzufügen).",
+Sie können diese und weitere OpenIDs unter dem Reiter [[Special:Preferences#prefsection-openid|OpenID]] Ihrer Kontoeinstellungen verwalten (ansehen, löschen sowie weitere hinzufügen).",
 	'openidautosubmit' => 'Diese Seite enthält ein Formular, das automatisch übertragen wird, wenn JavaSkript aktiviert ist. Falls nicht, klicken Sie bitte auf „Continue“ (Weiter).',
 	'openidclientonlytext' => 'Sie können keine Benutzerkonten aus diesem Wiki als OpenID für andere Seiten verwenden.',
 	'openidlogininstructions' => '{{SITENAME}} unterstützt den [http://openid.net/ OpenID-Standard] für eine einheitliche Anmeldung auf mehreren Websites.
@@ -1891,7 +1898,7 @@ Et kykenisi kirjautumaan ilman OpenID-tunnusta.',
 	'openid-provider-label-google' => 'Kirjaudu sisään käyttämällä Google-tunnuksiasi',
 	'openid-provider-label-yahoo' => 'Kirjaudu sisään käyttämällä Yahoo-tunnuksiasi',
 	'openid-provider-label-aol' => 'Anna AOL-käyttäjänimesi',
-	'openid-provider-label-other-username' => 'Anna sinun $1-käyttäjätunnuksesi',
+	'openid-provider-label-other-username' => 'Anna $1-käyttäjätunnuksesi',
 );
 
 /** French (Français)
@@ -2330,11 +2337,13 @@ $messages['he'] = array(
 	'openidfailure' => 'האימות נכשל',
 	'openidfailuretext' => 'אימות כתובת ה־OpenID נכשל. הודעת השגיאה: "$1"',
 	'openidsuccess' => 'האימות הושלם בהצלחה',
-	'openidsuccesstext' => "'''אימות וכניסה מוצלחים בתור משתמש $1'''.
+	'openidsuccesstext' => "אימות וכניסה מוצלחים בתור משתמש $1'''.
 
 ה־OpenID שלך הוא $2 .
 
-ניתן לנההל את ה־OpenID הזה ואת הבאים אחריו וכן את ססמה האפשרית לחשבון ב[[Special:Preferences|דף ההעדפות]].",
+ניתן לההל את ה־OpenID הזה ואת הבאים אחריו ב[[Special:Preferences#prefsection-openid|לשונית OpenID]] בדף ההעדפות שלך.<br />
+
+ניתן להוסיף ססמה לחשבון ב[[Special:Preferences#prefsection-personal|דף המידע האישי בהעדפות]].",
 	'openidusernameprefix' => 'משתמשOpenID',
 	'openidserverlogininstructions' => 'אתר $3 דורש שתכתבו את סיסמתכם לדף המשתמש $2 בכתובת $1 (זוהי כתובת ה־OpenID שלכם)',
 	'openidtrustinstructions' => 'סמנו אם ברצונכם לשתף מידע עם $1.',
@@ -2366,9 +2375,9 @@ $messages['he'] = array(
 	'openidconvertyourstext' => 'זהו כבר ה־OpenID שלכם.',
 	'openidconvertothertext' => 'זהו ה־OpenID של מישהו אחר.',
 	'openidalreadyloggedin' => 'אתם כבר מחוברים לחשבון.',
-	'openidalreadyloggedintext' => "'''$1, אתם כבר מחוברים לחשבון!'''
+	'openidalreadyloggedintext' => "'''$1, {{GENDER:$1|אתה כבר מחובר|את כבר מחוברת}} לחשבון!'''
 
-אפשר לנהל (להציג, למחוק ולהוסיף) מזהי OpenID בלשונית OpenID ב[[Special:Preferences|דף ההעדפות]].",
+אפשר לנהל (להציג, למחוק ולהוסיף) מזהי OpenID ב[[Special:Preferences#prefsection-openid|לשונית OpenID]] בדף ההעדפות שלך.",
 	'openidnousername' => 'לא צוין שם משתמש.',
 	'openidbadusername' => 'שם המשתמש שצוין אינו תקין.',
 	'openidautosubmit' => 'דף זה מכיל טופס שאמור להשלח אוטומטית אם יש לכם JavaScript פעיל.
@@ -2776,7 +2785,8 @@ Per favor contacta un [[Special:ListUsers/sysop|administrator]].',
 
 Tu OpenID es $2 .
 
-Iste OpenID e alteres, e un contrasigno facultative del conto, pote esser gerite in tu [[Special:Preferences|preferentias]].",
+Iste OpenID e alteres (si presente) pote esser gerite in le [[Special:Preferences#prefsection-openid|scheda OpenID]] de tu preferentias.<br />
+Es possibile specificar un contrasigno pro le conto in tu [[Special:Preferences#prefsection-personal|profilo de usator]].",
 	'openidusernameprefix' => 'Usator OpenID',
 	'openidserverlogininstructions' => 'Le sito $3 requesta que tu entra le contrasigno de tu conto "$2", pagina $1 (isto es tu URL de OpenID).',
 	'openidtrustinstructions' => 'Controla si tu vole repartir datos con $1.',
@@ -2810,7 +2820,7 @@ tu pote seliger un del optiones in basso.',
 	'openidalreadyloggedin' => 'Tu es jam authenticate.',
 	'openidalreadyloggedintext' => "'''Tu es jam authenticate, \$1!'''
 
-Tu pote gerer (vider, deler, adder altere) OpenIDs in le scheda \"OpenID\" de tu [[Special:Preferences|preferentias]].",
+Tu pote gerer (vider, deler, adder altere) OpenIDs in le [[Special:Preferences#prefsection-openid|scheda \"OpenID\"]] de tu preferentias.",
 	'openidnousername' => 'Nulle nomine de usator specificate.',
 	'openidbadusername' => 'Mal nomine de usator specificate.',
 	'openidautosubmit' => 'Iste pagina include un formulario que debe esser submittite automaticamente si tu ha JavaScript activate.
@@ -3511,11 +3521,12 @@ Kontaktéiert w.e.g. een [[Special:ListUsers/sysop|Administrateur]].",
 	'openidfailure' => 'Feeler bei der Iwwerpréifung',
 	'openidfailuretext' => 'D\'iwwerpréifung vun der OpeniD URL huet net fonctionnéiert. Feeler Message: "$1"',
 	'openidsuccess' => 'Iwwerpréifung huet geklappt',
-	'openidsuccesstext' => "D'Iwwerpréifung an d'Aloggen als Benotzer $1 huet geklappt'''.
+	'openidsuccesstext' => "'''D'Iwwerpréifung an d'Aloggen als Benotzer $1 huet geklappt'''.
 
 Är OpenID ass $2.
 
-Dës a weider OpenId'en, an en optionaalt Passwuert, kann an Ären [[Special:Preferences|Astellungen]] geréiert ginn.",
+Dës a weider OpenId'en, , kann am [[Special:Preferences#prefsection-openid|OpenID Tab]] vun Ären Astellungen geréiert ginn.<br />
+En optionaalt Passwuert fir de Benotzerkont kann an Ärem [[Special:Preferences#prefsection-personal|Benotzerprofil]] derbäigesat ginn.",
 	'openidusernameprefix' => 'OpenIDBenotzer',
 	'openidserverlogininstructions' => '$3 freet datt Dir Äert Passwuert agitt fir Är $2-Benotzersäit $1 (dëst ass Är OpenID URL).',
 	'openidtrustinstructions' => 'Klickt un wann Dir Donnéeën mat $1 deele wellt.',
@@ -3644,7 +3655,8 @@ $messages['mk'] = array(
 
 Вашиот OpenID гласи $2 .
 
-На страницата [[Special:Preferences|нагодувања]] можете поставите други OpenID-ја и лозинка за сметката (незадолжително).",
+Можете да раководите со ова и други незадолжителни OpenID-ја во [[Special:Preferences#prefsection-openid|јазичето за OpenID]] во вашите нагодувања.<br />
+По желба можете да додадете и лозинка на сметката во вашиот [[Special:Preferences#prefsection-personal|корисничкиот профил]].",
 	'openidusernameprefix' => 'OpenIDКорисник',
 	'openidserverlogininstructions' => '$3 бара да ја внесете лозинката за вашиот корисник $2 страница $1 (OpenID URL)',
 	'openidtrustinstructions' => 'Штиклирајте ако сакате да споделувате податоци со $1.',
@@ -3678,7 +3690,7 @@ $messages['mk'] = array(
 	'openidalreadyloggedin' => 'Веќе сте најавени.',
 	'openidalreadyloggedintext' => "'''Веќе сте најавени, $1!'''
 
-Можете да раководите со (погледате, избришете, додавате повеќе) OpenID-ја во јазичето за OpenID во вашите [[Special:Preferences|нагодувања]].",
+Можете да раководите со (погледате, избришете, додавате повеќе) OpenID-ја во [[Special:Preferences#prefsection-openid|јазичето за OpenID]] во вашите нагодувања",
 	'openidnousername' => 'Нема назначено корисничко име.',
 	'openidbadusername' => 'Беше назначено грешно име.',
 	'openidautosubmit' => 'На оваа страница стои образец кој треба да се поднесе автоматски ако имате овозможено JavaScript.
@@ -3984,11 +3996,12 @@ Raadpleeg een  [[Special:ListUsers/sysop|beheerder]].",
 	'openidfailure' => 'Verificatie mislukt',
 	'openidfailuretext' => 'De verificatie van de OpenID URL is mislukt. Foutmelding: "$1"',
 	'openidsuccess' => 'Verificatie uitgevoerd',
-	'openidsuccesstext' => "'''De controle is geslaag en u bent aangemeld als gebruiker $1.'''
+	'openidsuccesstext' => "'''De controle is geslaagd en u bent aangemeld als gebruiker $1.'''
 
 Uw OpenID is $2 .
 
-Dit OpenID en andere OpenID's en optioneel een wachtwoord voor deze gebruiker, kunnen beheerd worden in uw [[Special:Preferences|voorkeuren]].",
+Dit OpenID en andere toekomstige OpenID's kunt u beheren in het [[Special:Preferences#prefsection-openid|tabblad OpenID]] van uw voorkeuren.<br />
+Optioneel kunt u een wachtwoord instellen voor deze gebruiker in uw [[Special:Preferences#prefsection-personal|gebruikersprofiel]].",
 	'openidusernameprefix' => 'OpenIDGebruiker',
 	'openidserverlogininstructions' => '$3 vraag om het invoeren van uw wachtwoord voor uw gebruiker $2 pagina $1 (URL voor OpenID).',
 	'openidtrustinstructions' => 'Controleer of u gegevens wilt delen met $1.',
@@ -4021,7 +4034,7 @@ Dit OpenID en andere OpenID's en optioneel een wachtwoord voor deze gebruiker, k
 	'openidalreadyloggedin' => 'U bent al aangemeld.',
 	'openidalreadyloggedintext' => "'''U bent al aangemeld, $1!'''
 
-U kunt OpenID's beheren (bekijken, verwijderen en toevoegen) in het tabblad OpenID in uw [[Special:Preferences|voorkeuren]].",
+U kunt OpenID's beheren (bekijken, verwijderen en toevoegen) in het [[Special:Preferences#prefsection-openid|tabblad OpenID]] in uw voorkeuren.",
 	'openidnousername' => 'Er is geen gebruikersnaam opgegeven.',
 	'openidbadusername' => 'De opgegeven gebruikersnaam is niet toegestaan.',
 	'openidautosubmit' => 'Deze pagina bevat een formulier dat automatisch wordt verzonden als JavaScript is ingeschaked.
@@ -4344,7 +4357,7 @@ Vos poiretz pas pus connectar amb aquesta OpenID.",
 	'openid-provider-label-other-username' => "Picatz vòstre nom d'utilizaire $1",
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(
@@ -4827,7 +4840,8 @@ Vă rugăm să contactați un [[Special:ListUsers/sysop|administrator]].',
 
 OpenID-ul dumneavoastră este $2 .
 
-Acesta și alte OpenID-uri, precum și o parolă opțională a contului, pot fi gestionate în cadrul [[Special:Preferences|preferințelor]] dumneavoastră.",
+Acesta și alte OpenID-uri opționale pot fi administrate în [[Special:Preferences#prefsection-openid|fila OpenID]] din cadrul preferințelor dumneavoastră.<br />
+O parolă opțională a contului poate fi adăugată în secțiunea [[Special:Preferences#prefsection-personal|Informații personale]].",
 	'openidusernameprefix' => 'Utilizator OpenID',
 	'openidserverlogininstructions' => '$3 vă solicită să introduceți parola pentru pagina $2 dumneavoastră de utilizator $1 (URL OpenID)',
 	'openidtrustinstructions' => 'Verificați dacă doriți să partajați datele cu $1.',
@@ -5212,7 +5226,8 @@ Posvetujte se z [[Special:ListUsers/sysop|administratorjem]].',
 
 Vaš OpenID je $2 .
 
-Ta in nadaljnje OpenID-je ter izbirno geslo računa lahko upravljate v svojih [[Special:Preferences|nastavitvah]].",
+Ta in izbirne nadaljne OpenID-je lahko uprabljate na [[Special:Preferences#prefsection-openid|zavihku OpenID]] v svojih nastavitvah.<br/>
+Izbirno geslo računa lahko dodate v svojih [[Special:Preferences#prefsection-personal|Podatkih o uporabniku]].",
 	'openidusernameprefix' => 'UporabnikOpenID',
 	'openidserverlogininstructions' => '$3 zahteva, da vnesete svoje geslo za vašega uporabnika $2, stran $1 (URL OpenID).',
 	'openidtrustinstructions' => 'Označite, če želite deliti podatke s $1.',
@@ -5246,7 +5261,7 @@ svojega si lahko izberete med spodnjimi možnostmi.',
 	'openidalreadyloggedin' => 'Ste že prijavljeni.',
 	'openidalreadyloggedintext' => "'''$1, ste že prijavljeni!'''
 
-OpenID-je lahko upravljate (si jih ogledate, izbrišete in drugo) na zavihku OpenID v vaših [[Special:Preferences|nastavitvah]].",
+OpenID-je lahko upravljate (si jih ogledate, izbrišete in drugo) na [[Special:Preferences#prefsection-openid|zavihku OpenID]] v vaših nastavitvah.",
 	'openidnousername' => 'Uporabniško ime ni določeno.',
 	'openidbadusername' => 'Določeno je neustrezno uporabniško ime.',
 	'openidautosubmit' => 'Ta stran vsebuje obrazec, ki bi se moral potrditi samodejno, če imate omogočen JavaScript.

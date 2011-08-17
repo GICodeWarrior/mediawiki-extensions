@@ -24,9 +24,13 @@ $messages['af'] = array(
 
 /** Arabic (العربية)
  * @author ;Hiba;1
+ * @author AwamerT
  */
 $messages['ar'] = array(
 	'activestrategy' => 'استراتيجية نشطة',
+	'active-strategy-desc' => 'يوضح عدد التعديلات على صفحات التخطيط الاستراتيجي',
+	'active-strategy-intro' => ' عدد من التعديلات لصفحات المهام في السابق',
+	'nedits' => '$1 {{PLURAL:$1|تعديل|تعديلات}}',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
@@ -483,7 +487,7 @@ $messages['ru'] = array(
 	'nedits' => '$1 {{PLURAL:$1|правка|правки|правок}}',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(

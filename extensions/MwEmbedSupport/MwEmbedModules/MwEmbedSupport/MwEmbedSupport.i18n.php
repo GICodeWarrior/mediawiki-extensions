@@ -26,6 +26,7 @@ $messages['en'] = array(
  * @author EugeneZelenko
  * @author Fryed-peach
  * @author Nike
+ * @author Raymond
  */
 $messages['qqq'] = array(
 	'mwe-loading' => '{{Identical|Loading}}',

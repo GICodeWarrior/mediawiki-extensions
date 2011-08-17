@@ -606,7 +606,7 @@ $messages['ru'] = array(
 	'contributionseditcount-desc' => 'Показывает количество сделанных правок на [[Special:Contributions|странице вклада участника]]',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(

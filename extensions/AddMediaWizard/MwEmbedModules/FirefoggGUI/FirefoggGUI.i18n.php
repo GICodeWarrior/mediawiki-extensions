@@ -1056,12 +1056,13 @@ $messages['de-formal'] = array(
  * @author Xoser
  */
 $messages['diq'] = array(
-	'fogg-save_local_file' => 'Ogg qeyd bıker',
-	'fogg-help-sticky' => 'ardim (qey dusnayişi bıtıknê)',
-	'fogg-cg-preset' => 'eyaro ver: <strong>$1</strong>',
-	'fogg-cg-quality' => 'qaliteya bıngeyın u kontrolê resolutioni',
-	'fogg-cg-meta' => 'qey klibi metadata',
-	'fogg-cg-range' => 'benatê dayişê kodkerdışi',
+	'fogg-wont-upload-to-server' => 'Note: Dosya videoyê şıma cayê cı de kod bena u yewbina xızmetkari rê bar nêbena.',
+	'fogg-save_local_file' => 'Dosya rê kod ke',
+	'fogg-help-sticky' => 'Yardım (semedê dusnayışi bıtıknê)',
+	'fogg-cg-preset' => 'Eyarê veri: <strong>$1</strong>',
+	'fogg-cg-quality' => 'Qalita bıngeyıne u qontrolê qerari',
+	'fogg-cg-meta' => 'Qandê klipi metadata',
+	'fogg-cg-range' => 'Bênatey kodkerdışi',
 	'fogg-cg-advVideo' => 'kontrolê kodkerdışê videoyi yo dewlemend biyaye',
 	'fogg-cg-advAudio' => 'kontrolê kodkerdışê vengi yo dewlemend biyaye',
 	'fogg-preset-custom' => 'eyarê xusûsiyi',
@@ -2782,6 +2783,16 @@ $messages['ja'] = array(
 $messages['ka'] = array(
 	'fogg-date-title' => 'თარიღი',
 	'fogg-select_file' => 'ფაილის არჩევა',
+);
+
+/** Kirmanjki (Kırmancki)
+ * @author Mirzali
+ */
+$messages['kiu'] = array(
+	'fogg-wont-upload-to-server' => 'Note: Dosya videoê sıma caê cı de kod bena u zobina xızmetkari rê bar nêbena.',
+	'fogg-save_local_file' => 'Dosya rê kod ke',
+	'fogg-help-sticky' => 'Yardım (seba zeleqnayişi bıteqnê)',
+	'fogg-cg-preset' => 'Ayarê veri: <strong>$1</strong>',
 );
 
 /** Khmer (ភាសាខ្មែរ)

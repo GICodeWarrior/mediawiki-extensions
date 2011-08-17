@@ -30,7 +30,7 @@ $messages['af'] = array(
 	'addmediawizard-desc' => 'Wizard vir byvoeg van media, ontwikkel in samewerking met Kaltura en die Wikimedia-stigting',
 );
 
-/** Angika (अंगिका)
+/** Angika (अङ्गिका)
  * @author Angpradesh
  */
 $messages['anp'] = array(
@@ -324,7 +324,7 @@ $messages['ja'] = array(
 	'addmediawizard-loading' => 'メディア追加ウィザードを読み込み中',
 );
 
-/** Kabardian (Cyrillic) (къэбэрдеибзэ/qabardjajəbza (Cyrillic))
+/** Kabardian (Cyrillic) (Адыгэбзэ (Cyrillic))
  * @author Amire80
  * @author Beco1977
  */

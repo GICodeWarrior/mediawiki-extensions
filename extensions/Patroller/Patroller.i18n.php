@@ -904,6 +904,7 @@ $messages['he'] = array(
 
 /** Hindi (हिन्दी)
  * @author Kaustubh
+ * @author Mayur
  */
 $messages['hi'] = array(
 	'patrol' => 'बदलावोंपर नजर रखें',
@@ -928,6 +929,7 @@ $messages['hi'] = array(
 	'group-patroller' => 'निरीक्षक',
 	'group-patroller-member' => 'निरीक्षक',
 	'grouppage-patroller' => '{{ns:project}}:निरीक्षक',
+	'right-patroller' => 'पृष्ठ निरीक्षण करें',
 );
 
 /** Hiligaynon (Ilonggo)
@@ -1603,7 +1605,7 @@ $messages['oc'] = array(
 	'right-patroller' => 'Paginas de patrolha',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(
@@ -1823,7 +1825,7 @@ $messages['rue'] = array(
 	'group-patroller-member' => 'патрола',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(

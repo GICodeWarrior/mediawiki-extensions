@@ -3671,6 +3671,7 @@ Neniu kopia operacio okazis.',
  * @author Baiji
  * @author BicScope
  * @author Crazymadlover
+ * @author Fitoschido
  * @author Kobazulo
  * @author Locos epraix
  * @author McDutchie
@@ -3707,7 +3708,7 @@ $messages['es'] = array(
 	'datasearch_search_text' => 'Buscar texto:',
 	'datasearch_within_words' => 'Con las palabras:',
 	'datasearch_within_ext_ids' => 'Con identificadores externos:',
-	'datasearch_showing_only' => 'Mostrando sólo un máximo de {{PLURAL:$1|un resultado|$1 resultados}} (de $2).',
+	'datasearch_showing_only' => 'Mostrando solo un máximo de {{PLURAL:$1|un resultado|$1 resultados}} (de $2).',
 	'datasearch_match_ext_ids' => 'Identificadores externos coincidentes <i>$1</i>',
 	'datasearch_match_words' => 'Palabras coincidentes <i>$1</i> y significados asociados',
 	'datasearch_match_words_lang' => 'Palabras en <i>$1</i> coincidencia <i>$2</i> y significados asociados',
@@ -10074,7 +10075,7 @@ $messages['or'] = array(
 	'ow_history' => 'ଇତିହାସ',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(

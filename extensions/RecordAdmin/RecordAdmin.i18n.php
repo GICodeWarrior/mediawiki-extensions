@@ -1718,7 +1718,7 @@ $messages['oc'] = array(
 	'recordadmin-notset' => 'Pas cap de « $1 »',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(

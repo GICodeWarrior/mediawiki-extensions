@@ -171,13 +171,52 @@ $messages['qqq'] = array(
 * $4 is a link to the poll statistics with link label {{msg-mw|qp_stats_link}}
 * $5 is a link to the users that participated in the poll with link label {{msg-mw|qp_users_link}}
 * $6 is a link to the with link label {{msg-mw|qp_not_participated_link}}',
+	'qp_results_submit_attempts' => 'Parameters:
+* $1 is the number of submit attempts',
+	'qp_results_short_interpretation' => 'Parameters:
+* $1 is a piece of free text.',
+	'qp_results_long_interpretation' => 'Parameters:
+* $1 is a piece of free text.',
 	'qp_error_missed_dependance_poll' => 'Parameters:
 * $1 is the poll ID of the poll having an error.
 * $2 is a link to the page with the poll, that this erroneous poll depends on.
 * $3 is the poll ID of the poll, which this erroneous poll depends on.',
 	'qp_error_too_many_spans' => 'There cannot be more category groups defined than the total count of subcategories.',
 	'qp_error_too_few_spans' => 'Every category group should include at least two subcategories',
-	'qp_error_eval_variable_variable_access' => "\"variable variable\" is ''not'' a typo, see: http://php.net/manual/en/language.variables.variable.php",
+	'qp_error_eval_missed_lang_attr' => '{{doc-important|Do not translate "lang" as it is the name of an XML attribute that is not localised.}}',
+	'qp_error_eval_mix_languages' => 'Parameters:
+* $1 is a language code,
+* $2 is a language code.',
+	'qp_error_eval_unsupported_language' => 'Parameters:
+* $1 is a language code.',
+	'qp_error_eval_illegal_token' => 'Parameters:
+* $1 is a PHP token
+* $2 is a PHP token value
+* $3 is a line number in a script.',
+	'qp_error_eval_illegal_superglobal' => 'Parameters:
+* $1 is a PHP token
+* $2 is a PHP superglobal value
+* $3 is a line number in a script.',
+	'qp_error_eval_illegal_function_call' => 'Parameters:
+* $1 is a PHP token
+* $2 is a function
+* $3 is a line number in a script.',
+	'qp_error_eval_variable_variable_access' => '"variable variable" is \'\'not\'\' a typo, see: http://php.net/manual/en/language.variables.variable.php
+
+Parameters:
+* $1 is a PHP token
+* $2 is a PHP variable variable name
+* $3 is a line number in a script.',
+	'qp_error_eval_illegal_variable_name' => 'Parameters:
+* $1 is a PHP token
+* $2 is a variable name
+* $3 is a line number in a script.',
+	'qp_error_eval_variable_function_call' => 'Parameters:
+* $1 is a PHP token
+* $2 is a variable function name
+* $3 is a line number in a script.',
+	'qp_error_eval_self_check' => 'Parameters:
+* $1 is self check that has failed.',
 	'qp_error_eval_unable_to_lint' => '"Lint" is the term that is now applied generically to tools that flag suspicious usage in software written in any computer language [[w:en:Lint_%28software%29]].',
 );
 
@@ -1947,6 +1986,11 @@ $messages['nl'] = array(
 	'qp_results_line_qpl' => 'Pagina "$1", peiling "$2": $3, $4, $5, $6',
 	'qp_header_line_qpul' => '$1 [ pagina "$2", peiling "$3" ]',
 	'qp_header_line_qucl' => '$1. $2<br />$3 ??? $4',
+	'qp_results_submit_attempts' => 'Pogingen tot opslaan: $1',
+	'qp_results_interpretation_header' => 'Antwoordinterpretatie',
+	'qp_results_short_interpretation' => 'Korte uitleg: $1',
+	'qp_results_long_interpretation' => 'Lange uitleg: $1',
+	'qp_poll_has_no_interpretation' => 'Voor deze peiling is geen uitlegsjabloon aangegeven in de koptekst van de peiling.',
 	'qp_interpetation_wrong_answer' => 'Fout antwoord',
 	'qp_export_to_xls' => 'Statistieken naar XLS-formaat exporteren',
 	'qp_voices_to_xls' => 'Stemmen in XLS-formaat exporteren',
@@ -1986,6 +2030,20 @@ Sla een peiling op door deze op te slaan zonder dat enig voorstel is beantwoord.
 	'qp_error_too_few_spans' => 'Voor iedere categorieklasse dienen tenminste twee mogelijk antwoorden gedefinieerd te zijn',
 	'qp_error_no_answer' => 'Onbeantwoord voorstel',
 	'qp_error_unique' => 'Voor de vraag van het type unique() zijn meer voorstellen dan mogelijke antwoorden gedefinieerd. Dat is niet recht te breien.',
+	'qp_error_no_more_attempts' => 'U hebt bereikt maximale aantal pogingen voor meedoen in deze peiling bereikt.',
+	'qp_error_interpretation_no_return' => 'Het uitlegscript had geen resultaat.',
+	'qp_error_no_json_decode' => 'Voor de interpretatie van peilingresultaten  is de PHP-functie json_decode() nodig.',
+	'qp_error_eval_missed_lang_attr' => 'Het XML-attribuut "lang" is verplicht om een correct interpretatietaal te kiezen.',
+	'qp_error_eval_mix_languages' => 'Bij enkelvoudige schriftinterpretatie kunnen geen twee verschillende interpretatietalen gebruikt worden: "$1" en "$2".',
+	'qp_error_eval_unsupported_language' => 'Niet-ondersteunde interpretatietaal: "$1".',
+	'qp_error_eval_illegal_token' => 'Het PHP-token $1 met de waarde $2 is niet toegestaan in regel $3.',
+	'qp_error_eval_illegal_superglobal' => 'Het PHP-token $1 met de superglobal $2 is niet toegestaan in regel $3.',
+	'qp_error_eval_illegal_function_call' => 'Het PHP-token $1 met de functie $2 is niet toegestaan in regel $3.',
+	'qp_error_eval_variable_variable_access' => 'Het PHP-token $1 met de variabele variabele $2 is niet toegestaan in regel $3.',
+	'qp_error_eval_illegal_variable_name' => 'Het PHP-token $1 heeft een ongeldige variabelenaam $2 in regel $3.',
+	'qp_error_eval_variable_function_call' => 'Het PHP-token $1 met de variabele functie $2 is niet toegestaan in regel $3.',
+	'qp_error_eval_self_check' => 'De volgende zelfcontrole met eval() is mislukt: $1. U gebruikt een niet-ondersteunde versie van PHP waarmee eval-scripts niet veilig kunnen worden uitgevoerd.',
+	'qp_error_eval_unable_to_lint' => 'Lint uitvoeren was niet mogelijk. Controleer uw systeeminstellingen.',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)

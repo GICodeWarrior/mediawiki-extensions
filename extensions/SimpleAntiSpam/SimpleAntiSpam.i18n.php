@@ -676,7 +676,7 @@ $messages['rue'] = array(
 	'simpleantispam-desc' => 'Придасть до формуларїв просте овірїня ботів/спаму',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(

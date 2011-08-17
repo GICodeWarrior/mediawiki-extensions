@@ -783,7 +783,7 @@ $messages['oc'] = array(
 	'profiling-no-data' => 'Cap de donada correspondenta pas trobada',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(

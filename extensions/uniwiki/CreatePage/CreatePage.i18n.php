@@ -824,7 +824,7 @@ La volètz modificar ?",
 	'createpage-badtitle' => '« $1 » pòt pas èsser utilizat coma nom de pagina',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(
@@ -971,7 +971,7 @@ $messages['ru'] = array(
 	'createpage-badtitle' => '«$1» нельзя использовать как заголовок страницы',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(
