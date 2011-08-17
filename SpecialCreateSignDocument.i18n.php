@@ -1511,7 +1511,7 @@ La podètz [{{fullurl:{{#Special:SignDocument}}|doc=$2}} testar].",
 O pòt pas èsser un segond còp.',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(
