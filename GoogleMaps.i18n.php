@@ -319,7 +319,7 @@ $wgGoogleMapsMessages['an'] = array(
 	'gm-save-path' => 'Alzar',
 );
 
-/** Angika (अंगिका)
+/** Angika (अङ्गिका)
  * @author Angpradesh
  */
 $wgGoogleMapsMessages['anp'] = array(
@@ -5096,7 +5096,7 @@ $wgGoogleMapsMessages['rue'] = array(
 	'gm-mars' => 'Марс',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $wgGoogleMapsMessages['sah'] = array(
@@ -6917,6 +6917,49 @@ $wgGoogleMapsMessages['zh-hant'] = array(
 	'gm-kml-export' => '匯出此地圖至 KML',
 	'gm-earth' => '地球',
 	'gm-moon' => '月亮',
+	'gm-mars' => '火星',
+);
+
+/** Chinese (Hong Kong) (‪中文(香港)‬)
+ * @author C933103
+ */
+$wgGoogleMapsMessages['zh-hk'] = array(
+	'gm-incompatible-browser' => '您必須使用相容的網頁瀏覽器查看顯示於此的地圖。',
+	'gm-incompatible-browser-link' => '按此處以查看相容瀏覽器的列表。',
+	'gm-no-editor' => '抱歉！您的瀏覽器不支援此互動式地圖製作元件，請試試看最新版的 <a href="http://www.microsoft.com/ie">IE</a> (Windows)  或 <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac, and Linux) 。',
+	'gm-balloon-title' => '標題：',
+	'gm-balloon-link-article' => '連結至此頁（可選）：',
+	'gm-make-marker' => '標題（可用維基標記）：',
+	'gm-remove' => '移除',
+	'gm-tab' => '分頁',
+	'gm-start-path' => '開始一條路徑',
+	'gm-trace-area' => '區域追蹤',
+	'gm-save-point' => '儲存並關閉',
+	'gm-load-map-from-article' => '從此頁面載入地圖：',
+	'gm-no-maps' => '此頁內沒有地圖可供載入。',
+	'gm-refresh-list' => '更新列表',
+	'gm-load-map' => '載入地圖',
+	'gm-clip-result' => '新增至地圖',
+	'gm-no-results' => '抱歉，無結果',
+	'gm-searching' => '搜尋中......',
+	'gm-map' => '街道圖',
+	'gm-note' => '注意：在您「儲存」、「預覽」或「載入地圖」前，請確定您已經複製了您想保存到下方頁面的東西！',
+	'gm-instructions' => '以下是可供建立上面地圖的維基語法標記。',
+	'gm-are-you-sure' => '您肯定嗎？',
+	'gm-clear-all-points' => '清除所有標示點',
+	'gm-refresh-points' => '重新整理標示點',
+	'gm-width' => '寛',
+	'gm-height' => '高',
+	'gm-scale-control' => '比例',
+	'gm-selector-control' => '選擇街道圖／衛星地圖',
+	'gm-large' => '大',
+	'gm-medium' => '中',
+	'gm-small' => '小',
+	'gm-yes' => '是',
+	'gm-no' => '否',
+	'gm-save-path' => '儲存',
+	'gm-earth' => '地球',
+	'gm-moon' => '月球',
 	'gm-mars' => '火星',
 );
 
