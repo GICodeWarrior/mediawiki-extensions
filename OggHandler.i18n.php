@@ -2655,7 +2655,7 @@ $messages['or'] = array(
 	'ogg-dismiss' => 'ବନ୍ଦ କରନ୍ତୁ',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(
