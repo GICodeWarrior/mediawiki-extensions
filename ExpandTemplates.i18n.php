@@ -1562,7 +1562,7 @@ $messages['oc'] = array(
 	'expand_templates_preview' => 'Previsualizacion',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(
@@ -1782,7 +1782,7 @@ $messages['rue'] = array(
 	'expand_templates_preview' => 'Нагляд',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(
@@ -2131,7 +2131,7 @@ Ginagawa ito nito sa pamamagitan ng pagtawag sa mga kaugnay na mga tanghalang pa
 	'expand_templates_preview' => 'Paunang tingin',
 );
 
-/** Tonga (lea faka-Tonga) */
+/** Tongan (lea faka-Tonga) */
 $messages['to'] = array(
 	'expandtemplates' => 'Fakalahiange ʻa e ngaahi sīpinga',
 );
@@ -2361,7 +2361,7 @@ $messages['zh-tw'] = array(
 	'expandtemplates' => '展開模板',
 	'expandtemplates-desc' => '[[Special:ExpandTemplates|展開模板、模版擴展語法以及變數]]去顯示展開之wiki文字和預覽處理後之頁面',
 	'expand_templates_intro' => '本特殊頁面用於將一些文字中的模版展開，包括模版中引用的模版。同時也展開解譯器函數如<nowiki> {{</nowiki>#if:...}}，以及變數如<nowiki>{{< /nowiki>CURRENTDAY}}&mdash;實際上，幾乎所有在雙括弧中的內容都被展開。本特殊頁面是通過使用 MediaWiki的相關解釋階段的功能完成的。',
-	'expand_templates_title' => '上下文標題，用於 {{PAGENAME}} 等：',
+	'expand_templates_title' => '上下文標題，用於 {{FULLPAGENAME}} 等：',
 	'expand_templates_input' => '輸入文字：',
 	'expand_templates_output' => '結果：',
 	'expand_templates_xml_output' => 'XML輸出',
