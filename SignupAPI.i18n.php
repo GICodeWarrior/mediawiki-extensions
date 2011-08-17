@@ -23,21 +23,22 @@ $messages['be-tarask'] = array(
  * @author Kghbln
  */
 $messages['de'] = array(
-	'signupapi-desc' => 'Entfernt bestehende Inhalte und Funktionen der Spezialseite Anmelden und fügt stattdessen eine Programmierschnittstelle zur Anmeldung hinzu',
+	'signupapi-desc' => 'Bereinigt bestehende Inhalte und Funktionen der [[Special:UserLogin|Spezialseite Anmelden]] und fügt stattdessen eine Programmierschnittstelle zur Anmeldung hinzu',
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Sherbrooke
  */
 $messages['fr'] = array(
-	'signupapi-desc' => 'Nettoie la page Spécial:Connexion des informations utilisées à la création de compte et insère un API pour la création de compte',
+	'signupapi-desc' => 'Nettoie la page [[Special:UserLogin|page de connexion]] des informations utilisées à la création de compte et insère un API pour la création de compte',
 );
 
 /** Hebrew (עברית)
  * @author Amire80
  */
 $messages['he'] = array(
-	'signupapi-desc' => 'ניקוי Special:UserLogin מדברים שקשורים לרישום והוספת ממשק תכנות (API) לרישום',
+	'signupapi-desc' => 'ניקוי [[Special:UserLogin|דף הכניסה]] מדברים שקשורים לרישום והוספת ממשק תכנות (API) לרישום',
 );
 
 /** Interlingua (Interlingua)
@@ -59,6 +60,13 @@ $messages['mk'] = array(
  */
 $messages['ms'] = array(
 	'signupapi-desc' => 'Membersihkan bahan-bahan berkenaan pendaftaran daripada Special:UserLogin serta membubuh API untuk pendaftaran',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'signupapi-desc' => 'Schoont de [[Special:UserLogin|aanmeldpagina]] en voegt een API voor aanmelden toe',
 );
 
 /** Portuguese (Português)
