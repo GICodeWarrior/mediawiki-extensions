@@ -1036,7 +1036,7 @@ $messages['sa'] = array(
 	'metadata_help' => 'अधिदत्तम् (मेटाडाटा):',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(
