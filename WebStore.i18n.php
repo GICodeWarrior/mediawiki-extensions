@@ -2111,7 +2111,7 @@ $1",
 	'webstore_no_handler' => 'Aqueste tipe MIME pòt pas èsser transformat.',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(
