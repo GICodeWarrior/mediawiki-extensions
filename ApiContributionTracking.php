@@ -191,7 +191,7 @@ class ApiContributionTracking extends ApiBase {
 	}
 
 	public function getVersion() {
-		return "1.0"; //Is this really _that_ arbitrary?
+		return __CLASS__ . ': $Id$';
 	}
 
 }
