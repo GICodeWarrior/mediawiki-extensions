@@ -1172,7 +1172,7 @@ $messages['ru'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: ошибка ввода!',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(
