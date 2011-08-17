@@ -391,7 +391,7 @@ $messages['ru'] = array(
 	'opensearchxml-desc' => 'Интерфейс предоставления текстовых выдержек [http://www.opensearch.org OpenSearch] XML',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(
