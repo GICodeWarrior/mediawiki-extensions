@@ -425,7 +425,7 @@ $messages['ru'] = array(
 	'skinperpage-desc' => 'Добавляет тег <code>&lt;skin&gt;</code> для указания оформления страницы',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(
