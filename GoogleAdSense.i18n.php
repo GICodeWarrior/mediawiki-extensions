@@ -39,7 +39,7 @@ $messages['aln'] = array(
 	'googleadsense-desc' => 'Shton [http://www.google.com/adsense Google AdSense] të sidebar',
 );
 
-/** Angika (अंगिका)
+/** Angika (अङ्गिका)
  * @author Angpradesh
  */
 $messages['anp'] = array(
@@ -131,7 +131,7 @@ $messages['dsb'] = array(
 	'googleadsense-desc' => 'Pśidawa [http://www.google.com/adsense Google AdSense] k nabocnej smuze',
 );
 
-/** Dusun Bundu-liwan (Dusun Bundu-liwan)
+/** Central Dusun (Dusun Bundu-liwan)
  * @author FRANCIS5091
  */
 $messages['dtp'] = array(
@@ -356,7 +356,7 @@ $messages['oc'] = array(
 	'googleadsense-desc' => 'Apond [http://www.google.com/adsense Google AdSense] a la barra laterala',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(
