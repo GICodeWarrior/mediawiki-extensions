@@ -57,7 +57,7 @@ def main(ns):
     for i, path in enumerate(ns.data_paths):
         try:
             name, ext = os.path.splitext(path)
-            name.replace('_',' ')
+            name = name.replace('_',' ')
             data = load(path)
             dates, mrt = clean(data)
             ax.plot(dates, mrt, ':'+markers[i % M]+colors[i % C], label=name)
