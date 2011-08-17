@@ -42,7 +42,8 @@ class WSHooks {
 	 * @param $parser Parser
 	 */
 	public static function setupParserHook( &$parser ) {
-		$parser->setFunctionHook( 'i', 'WSHooks::callHook', SFH_NO_HASH | SFH_OBJECT_ARGS );
+		$parser->setFunctionHook( 'invoke', 'WSHooks::callHook', SFH_OBJECT_ARGS );
+		$parser->setFunctionHook( 's', 'WSHooks::transcludeHook', SFH_NO_HASH | SFH_OBJECT_ARGS );
 		return true;
 	}
 
@@ -67,7 +68,7 @@ class WSHooks {
 	}
 
 	/**
-	 * Handles the {{i:module|func}} construction.
+	 * Handles the {{#invoke:module|func}} construction.
 	 * 
 	 * @static
 	 * @param  $parser Parser
@@ -76,29 +77,48 @@ class WSHooks {
 	 * @return string
 	 */
 	public static function callHook( &$parser, $frame, $args ) {
+		if( count( $args ) < 2 ) {
+				throw new WSTransclusionException( 'nofunction' );
+		}
+
+		$module = $parser->mStripState->unstripBoth( array_shift( $args ) );
+		$function = $frame->expand( array_shift( $args ) );
+		return self::doRunHook( $parser, $frame, $module, $function, $args );
+	}
+
+	/**
+	 * Handles the transclusion of the script ({{s:module}} hook).
+	 * 
+	 * @static
+	 * @param  $parser Parser
+	 * @param  $frame
+	 * @param  $args
+	 * @return string
+	 */
+	public static function transcludeHook( &$parser, $frame, $args ) {
+		$module = $parser->mStripState->unstripBoth( array_shift( $args ) );
+		return self::doRunHook( $parser, $frame, $module, 'main', $args );
+	}
+
+	private static function doRunHook( &$parser, $frame, $module, $function, $args ) {
 		wfProfileIn( __METHOD__ );
-		$i = self::getInterpreter( $parser );
 
 		try {
-			if( count( $args ) < 2 ) {
-				throw new WSTransclusionException( 'nofunction' );
-			}
+			$i = self::getInterpreter( $parser );
 
-			$moduleName = $parser->mStripState->unstripBoth( array_shift( $args ) );
-			$funcName = $frame->expand( array_shift( $args ) );
 			foreach( $args as &$arg ) {
 				$arg = $frame->expand( $arg );
 			}
 
-			$result = $i->invokeUserFunctionFromWikitext( $moduleName, $funcName, $args, $frame );
+			$result = $i->invokeUserFunctionFromWikitext( $module, $function, $args, $frame );
+
+			wfProfileOut( __METHOD__ );
+			return trim( $result );
 		} catch( WSException $e ) {
 			$msg = $e->getMessage();
 			wfProfileOut( __METHOD__ );
 			return "<strong class=\"error\">{$msg}</strong>";
 		}
-
-		wfProfileOut( __METHOD__ );
-		return trim( $result );
 	}
 
 	/**

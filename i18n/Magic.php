@@ -3,5 +3,6 @@
 $magicWords = array();
 
 $magicWords['en'] = array(
-	'i' => array( 0, 'i' ),
+	'invoke' => array( 0, 'invoke' ),
+	's' => array( 0, 's' ),
 );
