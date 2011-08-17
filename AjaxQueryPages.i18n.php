@@ -341,7 +341,7 @@ $messages['jv'] = array(
 	'ajaxquerypages-desc' => 'Nambahaké sawetara AJAX ing QueryPages kayata [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
-/** Kabardian (Cyrillic) (къэбэрдеибзэ/qabardjajəbza (Cyrillic))
+/** Kabardian (Cyrillic) (Адыгэбзэ (Cyrillic))
  * @author Amire80
  */
 $messages['kbd-cyrl'] = array(
@@ -581,7 +581,7 @@ $messages['ru'] = array(
 	'ajaxquerypages-desc' => 'Добавляет немного AJAX в QueryPages, например, [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(
