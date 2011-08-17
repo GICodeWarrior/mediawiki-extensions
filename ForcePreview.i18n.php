@@ -454,7 +454,7 @@ $messages['oc'] = array(
 	'right-forcepreviewexempt' => "Pòt èsser salvat sens l'utilizacion de la previsualizacion",
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(
