@@ -1056,7 +1056,7 @@ $messages['oc'] = array(
 	'importfreeimages_next' => '$1 seguents',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(
