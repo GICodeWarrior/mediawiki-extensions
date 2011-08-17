@@ -224,6 +224,8 @@ class WSData {
 			return new WSData( self::DList, array_merge( $a->toList(), $b->toList() ) );
 		elseif( $a->type == self::DList )
 			return new WSData( self::DList, array_merge( $a->toList(), array( $b ) ) );
+		elseif( $b->type == self::DList )
+			return new WSData( self::DList, array_merge( array( $a ), $b->toList() ) );
 		elseif( $a->type == self::DAssoc && $b->type == self::DAssoc )
 			return new WSData( self::DAssoc, array_merge( $a->toAssoc(), $b->toAssoc() ) );
 		elseif( $a->type == self::DInt && $b->type == self::DInt )
