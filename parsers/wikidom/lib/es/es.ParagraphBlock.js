@@ -57,9 +57,10 @@ es.ParagraphBlock.prototype.getLength = function() {
  * @method
  * @param offset {Integer} Position to insert content at
  * @param content {Object} Content to insert
+ * @param autoAnnotate {Boolean} Content to insert
  */
-es.ParagraphBlock.prototype.insertContent = function( offset, content ) {
-	this.content.insert( offset, content );
+es.ParagraphBlock.prototype.insertContent = function( offset, content, autoAnnotate ) {
+	this.content.insert( offset, content, autoAnnotate );
 };
 
 /**

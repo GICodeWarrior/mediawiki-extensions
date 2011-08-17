@@ -3,125 +3,166 @@
  * 
  * @class
  * @constructor
- * @param operations {Array} List of operations - can also be the first in a list of variadic
- * arguments, each containing a single operation
+ * @param content {es.Content} Content to operate on
  * @property operations {Array} List of operations
  */
-es.Content.Transaction = function( content, operations ) {
-	this.content = content;
+es.Content.Transaction = function() {
 	this.operations = [];
-	this.length = 0;
-	if ( arguments.length > 1 ) {
-		// Support variadic arguments
-		if ( !$.isArray( operations ) ) {
-			operations = Array.prototype.slice.call( arguments, 1 );
-		}
-		for ( var i = 0; i < operations.length; i++ ) {
-			this.add( operations[i] );
-		}
-	}
-};
-
-es.Content.Transaction.prototype.add = function( operation ) {
-	// Auto-add content to operations which affect a range but don't have content (yet)
-	var range = new es.Range( this.length, this.length + operation.getLength() );
-	if ( operation.getLength() && !operation.hasContent() ) {
-		if ( !operation.hasContent() ) {
-			operation.setContent( content.getContent( range ) );
-		}
-	}
-	this.length += operation.getAdvance();
-	this.operations.push( operation );
+	this.cursor = 0;
 };
 
 /**
- * Builds a transaction that removes and or inserts content.
- * 
- * @param content {es.Content} Content to operate on
- * @param range {es.Range} Range of content to remove, or zero length range when inserting only
- * @param insert {es.Content} Content to insert (optional)
+ * List of operation implementations.
  */
-es.Content.Transaction.newFromReplace = function( content, range, insert ) {
-	var transaction = new es.Content.Transaction( content );
-	range.normalize();
-	if ( content.getLength() ) {
-		// Delete range
-		if ( range.start ) {
-			// Use content up until the range begins
-			transaction.add( new es.Content.Operation.Retain( range.start ) );
+es.Content.Transaction.operations = ( function() {
+	function annotate( con, add, rem ) {
+		// Ensure that modifications to annotated characters do not affect other uses of the same
+		// content by isolating it - performing a deep-slice
+		con.isolate();
+		for ( var i = 0; i < add.length; i++ ) {
+			con.annotate( 'add', add[i] );
 		}
-		// Skip over the range
-		if ( range.getLength() ) {
-			transaction.add( new es.Content.Operation.Remove( range.getLength() ) );
+		for ( var i = 0; i < rem.length; i++ ) {
+			con.annotate( 'remove', rem[i] );
 		}
 	}
-	if ( insert ) {
-		// Add content to the output
-		transaction.add( new es.Content.Operation.Insert( insert ) );
+	function retain( val, cur, src, dst, add, rem ) {
+		var con = src.getContent( new es.Range( cur, cur + val ) );
+		if ( add.length || rem.length ) {
+			annotate( con, add, rem );
+		}
+		dst.insert( dst.getLength(), con.getData() );
+		return val;
 	}
-	// Retain remaining content
-	if ( range.end < content.getLength() ) {
-		transaction.add( new es.Content.Operation.Retain( content.getLength() - range.end ) );
+	function insert( val, cur, src, dst, add, rem ) {
+		var con = val.getContent();
+		if ( add.length || rem.length ) {
+			annotate( con, add, rem );
+		}
+		dst.insert( dst.getLength(), con.getData() );
+		return 0;
 	}
-	return transaction;
+	function start( val, cur, src, dst, add, rem ) {
+		if ( val.method === 'add' ) {
+			add.push( val.annotation );
+		} else if ( val.method === 'remove' ) {
+			rem.push( val.annotation );
+		} else {
+			throw 'Annotation method error. Unsupported annotation method: ' + val.method;
+		}
+		return 0;
+	}
+	function end( val, cur, src, dst, add, rem ) {
+		var stack;
+		if ( val.method === 'add' ) {
+			stack = add;
+		} else if ( val.method === 'remove' ) {
+			stack = rem;
+		} else {
+			throw 'Annotation method error. Unsupported annotation method: ' + val.method;
+		}
+		var index;
+		for ( var i = 0; i < stack.length; i++ ) {
+			// TODO: Compare data too: es.Content.compareObjects( stack[i], val.annotation )
+			if ( stack[i].type === val.annotation.type ) {
+				index = i;
+				break;
+			}
+		}
+		if ( index === undefined ) {
+			throw 'Annotation stack error. Annotation is missing.';
+		}
+		stack.splice( index, 1 );
+		return 0;
+	}
+	function measure( val ) {
+		return val.getLength();
+	}
+	function pass( val ) {
+		return val;
+	}
+	function zero( val ) {
+		return 0;
+	}
+	return {
+		'retain': {
+			'commit': retain,
+			'rollback': retain,
+			'advance': pass
+		},
+		'insert': {
+			'commit': insert,
+			'rollback': measure,
+			'advance': zero
+		},
+		'remove': {
+			'commit': measure,
+			'rollback': insert,
+			'advance': measure
+		},
+		'start': {
+			'commit': start,
+			'rollback': function( val, cur, src, dst, add, rem ) {
+				return start( val, cur, src, dst, rem, add );
+			},
+			'advance': zero
+		},
+		'end': {
+			'commit': end,
+			'rollback': function( val, cur, src, dst, add, rem ) {
+				return end( val, cur, src, dst, rem, add );
+			},
+			'advance': zero
+		}
+	};
+} )();
+
+es.Content.Transaction.prototype.getCursor = function() {
+	return this.cursor;
 };
 
-/**
- * Builds a transaction that applies annotations
- * 
- * TODO: Support method argument
- * 
- * @param content {es.Content} Content to operate on
- * @param range {es.Range} Range of content to annotate, content will be retained
- * @param method {String} Mode of application; "add", "remove", or "toggle"
- * @param annotation {Object} Annotation to apply
- */
-es.Content.Transaction.newFromAnnotate = function( content, range, method, annotation ) {
-	var transaction = new es.Content.Transaction();
-	range.normalize();
-	if ( content.getLength() ) {
-		if ( range.start ) {
-			// Use content up until the range begins
-			transaction.add( new es.Content.Operation.Retain( range.start ) );
-		}
-		if ( range.getLength() ) {
-			// Apply annotation to range
-			transaction.add( new es.Content.Operation.Begin( annotation ) );
-			transaction.add( new es.Content.Operation.Retain( range.getLength() ) );
-			transaction.add( new es.Content.Operation.End( annotation ) );
-		}
-		// Retain remaining content
-		if ( range.end < content.getLength() ) {
-			transaction.add( new es.Content.Operation.Begin( content.getLength() - range.end ) );
-		}
-	}
-	return transaction;
+es.Content.Transaction.prototype.reset = function() {
+	this.operations = [];
+	this.cursor = 0;
 };
 
-es.Content.Transaction.prototype.commit = function() {
-	var offset = 0,
-		content = new es.Content(),
-		annotations = [];
+es.Content.Transaction.prototype.add = function( type, val ) {
+	if ( !( type in es.Content.Transaction.operations ) ) {
+		throw 'Unknown operation error. Operation type is not supported: ' + type;
+	}
+	var model = es.Content.Transaction.operations[type];
+	this.operations.push( {
+		'type': type,
+		'val': val,
+		'model': model
+	} );
+	this.cursor += model.advance( val );
+};
+
+es.Content.Transaction.prototype.commit = function( src ) {
+	var cur = 0,
+		dst = new es.Content(),
+		add = [],
+		rem = [],
+		adv;
 	for ( var i = 0; i < this.operations.length; i++ ) {
-		var length = this.operations[i].commit( content, annotations );
-		// TODO: Apply annotations in stack
-		offset += length;
+		var op = this.operations[i];
+		adv = op.model.commit( op.val, cur, src, dst, add, rem );
+		cur += adv;
 	}
-	return content;
+	return dst;
 };
 
-es.Content.Transaction.prototype.rollback = function() {
-	var offset = 0,
-		content = new es.Content(),
-		annotations = [];
+es.Content.Transaction.prototype.rollback = function( src ) {
+	var cur = 0,
+		dst = new es.Content(),
+		add = [],
+		rem = [],
+		adv;
 	for ( var i = 0; i < this.operations.length; i++ ) {
-		var length = this.operations[i].rollback( content, annotations );
-		// TODO: Apply annotations in stack
-		offset += length;
+		var op = this.operations[i];
+		adv = op.model.rollback( op.val, cur, src, dst, add, rem );
+		cur += adv;
 	}
-	return content;
-};
-
-es.Content.Transaction.prototype.optimize = function() {
-	// reduce consecutive operations of the same type to single operations if possible
+	return dst;
 };

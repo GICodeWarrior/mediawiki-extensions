@@ -380,9 +380,8 @@ es.Content.prototype.getText = function( range, render ) {
 es.Content.prototype.getContent = function( range ) {
 	if ( !range ) {
 		range = new es.Range( 0, this.data.length );
-	} else {
-		range.normalize();
 	}
+	range.normalize();
 	return new es.Content( this.data.slice( range.start, range.end ) );
 };
 
@@ -396,10 +395,29 @@ es.Content.prototype.getContent = function( range ) {
 es.Content.prototype.getData = function( range ) {
 	if ( !range ) {
 		range = new es.Range( 0, this.data.length );
-	} else {
-		range.normalize();
 	}
+	range.normalize();
 	return this.data.slice( range.start, range.end );
+};
+
+/**
+ * Breaks cross references, which occur when content is copied around.
+ * 
+ * Because content data is an array of characters, or arrays containing a character and any
+ * number of references to annotation objects, slicing the array still leaves annotated characters
+ * as references to shared memory. This should be used only when annotations are going to be
+ * changed because it is rather expensive.
+ * 
+ * @method
+ */
+es.Content.prototype.isolate = function() {
+	var i = 0,
+		length = this.data.length;
+	while ( i < length ) {
+		// The slice method works for array or string character type
+		this.data[i] = this.data[i].slice( 0 );
+		i++;
+	}
 };
 
 /**
@@ -413,17 +431,19 @@ es.Content.prototype.getData = function( range ) {
  * @emits "insert" with offset and content data properties
  * @emits "change" with type:"insert" data property
  */
-es.Content.prototype.insert = function( offset, content ) {
-	// TODO: Prefer to not take annotations from a neighbor that's a space character
-	var neighbor = this.data[Math.max( offset - 1, 0 )];
-	if ( $.isArray( neighbor ) ) {
-		var annotations = neighbor.slice( 1 );
-		var i;
-		for ( i = 0; i < content.length; i++ ) {
-			if ( typeof content[i] === 'string' ) {
-				content[i] = [content[i]];
+es.Content.prototype.insert = function( offset, content, autoAnnotate ) {
+	if ( autoAnnotate ) {
+		// TODO: Prefer to not take annotations from a neighbor that's a space character
+		var neighbor = this.data[Math.max( offset - 1, 0 )];
+		if ( $.isArray( neighbor ) ) {
+			var annotations = neighbor.slice( 1 );
+			var i;
+			for ( i = 0; i < content.length; i++ ) {
+				if ( typeof content[i] === 'string' ) {
+					content[i] = [content[i]];
+				}
+				content[i] = content[i].concat( annotations );
 			}
-			content[i] = content[i].concat( annotations );
 		}
 	}
 	Array.prototype.splice.apply( this.data, [offset, 0].concat( content ) );
@@ -554,7 +574,7 @@ es.Content.prototype.annotate = function( method, annotation, range ) {
 				if ( this.data[i] === '\n' ) {
 					continue;
 				}
-				// Auto-initialize as annotated character
+				// Auto-convert to annotated character format
 				this.data[i] = [this.data[i]];
 			} else {
 				// Detect duplicate annotation
@@ -580,6 +600,10 @@ es.Content.prototype.annotate = function( method, annotation, range ) {
 				var j;
 				while ( ( j = this.indexOfAnnotation( i, annotation ) ) !== -1 ) {
 					this.data[i].splice( j, 1 );
+				}
+				// Auto-convert to plain character format
+				if ( this.data[i].length === 1 ) {
+					this.data[i] = this.data[i][0];
 				}
 			}
 		}

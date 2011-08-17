@@ -40,20 +40,8 @@ var content = es.Content.newFromWikiDomLines( lines );
 /* Tests */
 
 test( 'Insert, retain and remove', 4, function() {
-	var transactions = {
-		'by calling constructor manually': new es.Content.Transaction(
-			content,
-			new es.Content.Operation.Retain( 5 ),
-			new es.Content.Operation.Insert( es.Content.newFromText( 'used to be' ) ),
-			new es.Content.Operation.Remove( 2 ),
-			new es.Content.Operation.Retain( 18 )
-		),
-		'using es.Content.Transaction.newFromReplace': new es.Content.Transaction.newFromReplace(
-			content, new es.Range( 5, 7), new es.Content.newFromText( 'used to be' )
-		)
-	};
-	var before = content.getData(),
-		after = [
+	var before = content.getContent(),
+		after = new es.Content( [
 			["T", { "type": "italic" }],
 			["h", { "type": "italic" }],
 			["i", { "type": "italic" }],
@@ -87,39 +75,28 @@ test( 'Insert, retain and remove', 4, function() {
 			"p",
 			"h",
 			"!"
-		];
-	for ( var method in transactions ) {
-		var transaction = transactions[method];
-		deepEqual(
-			transaction.commit( content ).getData(),
-			after,
-			'Committing transaction built with ' + method
-		);
-		deepEqual(
-			transaction.rollback( content ).getData(),
-			before,
-			'Rolling back transaction built ' + method
-		);
-	}
+		] );
+	
+	var tx = new es.Content.Transaction(),
+		insertion = es.Content.newFromText( 'used to be' ),
+		removal = content.getContent( new es.Range( 5, 7 ) );
+	
+	tx.add( 'retain', 5 );
+	tx.add( 'insert', insertion );
+	tx.add( 'remove', removal );
+	tx.add( 'retain', 18 );
+	
+	var committed = tx.commit( content );
+	equal( committed.getText(), after.getText(), 'Committing' );
+	deepEqual( committed.getData(), after.getData(), 'Committing' );
+	var rolledback = tx.rollback( committed );
+	equal( rolledback.getText(), before.getText(), 'Rolling back' );
+	deepEqual( rolledback.getData(), before.getData(), 'Rolling back' );
 } );
 
-/*
 test( 'Annotating', 4, function() {
-	var transactions = {
-		'by calling constructor manually': new es.Content.Transaction(
-			content,
-			new es.Content.Operation( 'retain', 4 ),
-			new es.Content.Operation( 'begin', { 'type': 'italic' } ),
-			new es.Content.Operation( 'retain', 3 ),
-			new es.Content.Operation( 'end', { 'type': 'italic' } ),
-			new es.Content.Operation( 'retain', 18 )		
-		),
-		'using es.Content.Transaction.newFromAnnotate': new es.Content.Transaction.newFromAnnotate(
-			content, new es.Range( 4, 7), 'add', { 'type': 'italic' }
-		)
-	};
-	var before = content.getData(),
-		after = [
+	var before = content.getContent(),
+		after = new es.Content( [
 			["T", { "type": "italic" }],
 			["h", { "type": "italic" }],
 			["i", { "type": "italic" }],
@@ -145,19 +122,22 @@ test( 'Annotating', 4, function() {
 			"p",
 			"h",
 			"!"
-		];
-	for ( var method in transactions ) {
-		var transaction = transactions[method];
-		deepEqual(
-			transaction.commit( content ).getData(),
-			after,
-			'Committing transaction built with ' + method
-		);
-		deepEqual(
-			transaction.rollback( content ).getData(),
-			before,
-			'Rolling back transaction built ' + method
-		);
-	}
+		] );
+	
+	var tx = new es.Content.Transaction(),
+		annotation = { 'method': 'add', 'annotation': { 'type': 'italic' } };
+	
+	tx.add( 'retain', 4 );
+	tx.add( 'start', annotation );
+	tx.add( 'retain', 3 );
+	tx.add( 'end', annotation );
+	tx.add( 'retain', 18 );
+	
+	var committed = tx.commit( content );
+	
+	equal( committed.getText(), after.getText(), 'Committing' );
+	deepEqual( committed.getData(), after.getData(), 'Committing' );
+	var rolledback = tx.rollback( committed );
+	equal( rolledback.getText(), before.getText(), 'Rolling back' );
+	deepEqual( rolledback.getData(), before.getData(), 'Rolling back' );
 } );
-*/

@@ -108,8 +108,9 @@ es.Block.prototype.getLength = function() {
  * @method
  * @param offset {Integer} Position to insert content at
  * @param content {Object} Content to insert
+ * @param autoAnnotate {Boolean} Content to insert
  */
-es.Block.prototype.insertContent = function( offset, content ) {
+es.Block.prototype.insertContent = function( offset, content, autoAnnotate ) {
 	throw 'Block.insertContent not implemented in this subclass.';
 };
 
