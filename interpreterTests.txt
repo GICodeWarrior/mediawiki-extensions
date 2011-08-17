@@ -673,3 +673,35 @@ Mixed arrays
 </p>
 !! end
 
+!! article
+Module:Using append with arrays
+!! text
+function testAssoc() {
+	append { "a" : 2 };
+	append { "b" : 3 };
+}
+
+function testList() {
+	append [ 1, 2 ];
+	append [ 3, 4 ];
+}
+
+function main() {
+	for( k : v in self::testAssoc() ) {
+		append k + " = " + v + "; ";
+	}
+
+	for( v in self::testList() ) {
+		append v + "; ";
+	}
+}
+!! endarticle
+
+!! test
+Using append with arrays
+!! input
+{{s:Using append with arrays}}
+!! result
+<p>a = 2; b = 3; 1; 2; 3; 4;
+</p>
+!! end
