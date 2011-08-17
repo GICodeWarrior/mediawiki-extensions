@@ -591,13 +591,27 @@ class WSEvaluationContext {
 	}
 	
 	protected function deleteVar( $lval, $rec ) {
+		// First throw an exception if a variable does not exist
+		$this->getVar( $lval, $rec + 1 );
+
 		$c = $lval->getChildren();
-		$line = $c[0]->line;
-		$varname = $c[0]->value;
-		if( isset( $c[1] ) ) {
-			throw new WSException( 'delete() is not usable for array elements' );
+		if( $c[0] instanceof WSToken ) {
+			// Variable
+			$varname = $c[0]->value;
+			unset( $this->mVars[$varname] );
+		} else {
+			// Array element
+			$ref = $this->setVarGetRef( $c[0], $rec + 1 );
+			$idxchildren = $c[1]->getChildren();
+			$key = $this->evaluateNode( $idxchildren[1], $rec + 1 );
+
+			if( $ref->type == WSData::DAssoc ) {
+				unset( $ref->data[$key->toString()] );
+			} else {
+				array_splice( $ref->data, $key->toInt(), 1 );
+			}
+			unset( $ref );
 		}
-		unset( $this->mVars[$varname] );
 	}
 
 	public function error( $name, $line, $params = array() ) {

@@ -162,6 +162,7 @@ class WSInterpreter {
 		// Try local cache
 		$key = WSModule::getCacheKey( $title );
 		if( $this->mUseCache && isset( $this->mParserCache[$key] ) ) {
+			wfIncrStats( 'script_pcache_hit_local' );
 			$module = $this->mParserCache[$key];
 			$this->addModuleTitle( $module->getTitle() );
 			wfProfileOut( __METHOD__ );
@@ -172,23 +173,31 @@ class WSInterpreter {
 		wfProfileIn( __METHOD__ . '-unserialize' );
 		$cached = $parserMemc->get( $key );
 		wfProfileOut( __METHOD__ . '-unserialize' );
-		if( $this->mUseCache && @$cached instanceof WSModule && !$cached->isOutOfDate() ) {
-			$this->mParserCache[$key] = $cached;
-			$this->addModuleTitle( $cached->getTitle() );
-			wfProfileOut( __METHOD__ );
-			return $cached;
+		if( $this->mUseCache && @$cached instanceof WSModule ) {
+			if( !$cached->isOutOfDate() ) {
+				wfIncrStats( 'script_pcache_hit_object' );
+				$this->mParserCache[$key] = $cached;
+				$this->addModuleTitle( $cached->getTitle() );
+				wfProfileOut( __METHOD__ );
+				return $cached;
+			} else {
+				wfIncrStats( 'script_pcache_expired' );
+			}
 		}
 
 		// Load from database
+		wfIncrStats( 'script_pcache_missing' );
 		$rev = self::getModuleRev( $title );
-		if( !$rev || $rev->getTitle()->getNamespace() != NS_MODULE ) {
-			return false;
-		}
 
-		// Parse
-		$moduleName = $rev->getTitle()->getText();
-		$out = self::invokeCodeParser( $rev->getText(), $moduleName );
-		$module = WSModule::newFromParserOutput( $this, $rev->getTitle(), $rev->getId(), $out );
+		if( $rev && $rev->getTitle()->getNamespace() == NS_MODULE ) {
+			// Parse
+			$moduleName = $rev->getTitle()->getText();
+			$out = self::invokeCodeParser( $rev->getText(), $moduleName );
+			$module = WSModule::newFromParserOutput( $this, $rev->getTitle(), $rev->getId(), $out );
+		} else {
+			// Invalid module. Still record that to cache
+			$module = false;
+		}
 
 		// Save to cache
 		$this->mParserCache[$key] = $module;

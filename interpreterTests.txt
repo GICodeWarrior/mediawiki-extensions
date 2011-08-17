@@ -584,6 +584,27 @@ Lists: isset
 !! end
 
 !! article
+Module:Lists: unset
+!! text
+function run() {
+	lst = [ 'a', 'b', 'c', 'd' ];
+	delete( lst[2] );
+	return lst;
+}
+!! endarticle
+
+!! test
+Lists: unset
+!! input
+{{i:Lists: unset|run}}
+!! result
+<p>a
+b
+d
+</p>
+!! end
+
+!! article
 Module:Associated arrays: basics
 !! text
 function run() {
@@ -604,6 +625,31 @@ Associated arrays: basics
 <p>a = 2
 </p><p>b = 13
 </p><p>c = 21
+</p>
+!! end
+
+!! article
+Module:Associated arrays: isset/unset
+!! text
+function run() {
+	a = { "a" : 2, "b" : 13, "c" : 48 };
+	delete( a['b'] );
+	a["e"] = isset( a['a'] );
+
+	for( k : v in a ) {
+		append k + " = " + v + "\n\n";
+	}
+}
+!! endarticle
+
+!! test
+Associated arrays: isset/unset
+!! input
+{{i:Associated arrays: isset/unset|run}}
+!! result
+<p>a = 2
+</p><p>c = 48
+</p><p>e = 1
 </p>
 !! end
 

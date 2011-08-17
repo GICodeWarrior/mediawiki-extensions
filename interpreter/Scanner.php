@@ -91,9 +91,12 @@ class WSScanner implements Iterator {
 			$this->mEof = true;
 			return $this->mCur = null;
 		}
+
+		wfProfileIn( __METHOD__ );
 		list( $val, $type ) = $this->nextToken();
 
 		$lineno = count( explode( "\n", substr( $this->mCode, 0, $this->mPos ) ) );
+		wfProfileOut( __METHOD__ );
 		return $this->mCur = new WSToken( $type, $val, $lineno );
 	}
 
