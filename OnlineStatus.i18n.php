@@ -935,7 +935,7 @@ $messages['oc'] = array(
 	'onlinestatus-pref-offlineonlogout' => 'Cambiar mon estatut a fòra linha quand me desconnècti',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(
