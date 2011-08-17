@@ -797,7 +797,7 @@ $messages['oc'] = array(
 	'randomincategory-submit' => 'Amodar',
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(
