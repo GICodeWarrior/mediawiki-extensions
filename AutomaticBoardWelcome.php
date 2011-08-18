@@ -7,7 +7,7 @@
  *
  * @file
  * @ingroup Extensions
- * @version 0.1
+ * @version 0.1.1
  * @date 30 July 2011
  * @author Jack Phoenix <jack@countervandalism.net>
  * @license http://en.wikipedia.org/wiki/Public_domain Public domain
@@ -18,10 +18,11 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 // Extension credits that will show up on Special:Version
 $wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
 	'name' => 'Automatic Board Welcome',
-	'version' => '0.1',
+	'version' => '0.1.1',
 	'author' => 'Jack Phoenix',
-	'description' => 'Automatically posts [[MediaWiki:User-board-welcome-message|a welcome message]] on new users\' user boards after account creation',
+	'descriptionmsg' => 'automaticboardwelcome-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Automatic_Board_Welcome',
 );
 
