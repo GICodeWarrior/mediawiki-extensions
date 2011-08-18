@@ -80,22 +80,13 @@ es.Transaction.operations = ( function() {
 		} else {
 			throw 'Annotation method error. Unsupported annotation method: ' + val.method;
 		}
+		// Find the index of a comparable annotation (checking for same value, not reference)
 		var index;
 		for ( var i = 0; i < stack.length; i++ ) {
-			// Type check
-			if ( stack[i].type !== val.annotation.type ) {
-				// Nope
-				continue;
+			if ( es.Content.compareObjects( stack[i], val.annotation ) ) {
+				index = i;
+				break;
 			}
-			// Data check
-			if ( ( stack[i].data || stack[i].data )
-					&& !es.Content.compareObjects( stack[i], val.annotation ) ) {
-				// Nope
-				continue;
-			}
-			// Found it!
-			index = i;
-			break;
 		}
 		if ( index === undefined ) {
 			throw 'Annotation stack error. Annotation is missing.';
