@@ -4,6 +4,25 @@
  * Transactions contain a series of operations, such as retain, insert, remove, start and end. Each
  * operation describes a step that must be taken to construct a new version of a content object.
  * 
+ * @example
+ *     // Given the following content... 
+ *     var content = es.Content.newFromText( 'abc' );
+ *     
+ *     // Build transaction
+ *     var tx = new es.Transaction();
+ *     tx.add( 'retain', 1 );
+ *     tx.add( 'remove', content.getData( new es.Range( 1, 2 ) ) );
+ *     tx.add( 'insert', es.Content.newFromText( 'B' ) );
+ *     tx.add( 'retain', 1 );
+ *     
+ *     // Commit transaction to content
+ *     var committed = tx.commit( content );
+ *     console.log( committed.getText() ); // Logs "aBc"
+ *     
+ *     // Apply transaction to content
+ *     var rolledback = tx.rollback( content );
+ *     console.log( rolledback.getText() ); // Logs "abc"
+ * 
  * @class
  * @constructor
  * @param content {es.Content} Content to operate on
