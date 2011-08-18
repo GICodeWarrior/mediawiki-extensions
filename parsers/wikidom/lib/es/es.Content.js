@@ -161,7 +161,7 @@ es.Content.convertWikiDomLine = function( wikidomLine ) {
 		// Build simplified annotation object
 		var dst = { 'type': src.type };
 		if ( 'data' in src ) {
-			dst.data = es.Content.copyObject( src.data );
+			dst.data = es.copyObject( src.data );
 		}
 		// Apply annotation to range
 		var k;
@@ -181,61 +181,6 @@ es.Content.convertWikiDomLine = function( wikidomLine ) {
 		}
 	}
 	return data;
-};
-
-/**
- * Recursively compares string and number property between two objects.
- * 
- * A false result may be caused by property inequality or by properties in one object missing from
- * the other. An asymmetrical test may also be performed, which checks only that properties in the
- * first object are present in the second object, but not the inverse.
- * 
- * @static
- * @method
- * @param a {Object} First object to compare
- * @param b {Object} Second object to compare
- * @param asymmetrical {Boolean} Whether to check only that b contains values from a
- * @returns {Boolean} If the objects contain the same values as each other
- */
-es.Content.compareObjects = function( a, b, asymmetrical ) {
-	var aValue, bValue, aType, bType;
-	var k;
-	for ( k in a ) {
-		aValue = a[k];
-		bValue = b[k];
-		aType = typeof aValue;
-		bType = typeof bValue;
-		if ( aType !== bType
-				|| ( ( aType === 'string' || aType === 'number' ) && aValue !== bValue )
-				|| ( $.isPlainObject( aValue ) && !es.Content.compareObjects( aValue, bValue ) ) ) {
-			return false;
-		}
-	}
-	// If the check is not asymmetrical, recursing with the arguments swapped will verify our result
-	return asymmetrical ? true : es.Content.compareObjects( b, a, true );
-};
-
-/**
- * Gets a recursive copy of an object's string, number and plain-object property.
- * 
- * @static
- * @method
- * @param source {Object} Object to copy
- * @returns {Object} Copy of source object
- */
-es.Content.copyObject = function( source ) {
-	var destination = {};
-	var key;
-	for ( key in source ) {
-		sourceValue = source[key];
-		sourceType = typeof sourceValue;
-		if ( sourceType === 'string' || sourceType === 'number' ) {
-			destination[key] = sourceValue;
-		} else if ( $.isPlainObject( sourceValue ) ) {
-			destination[key] = es.Content.copyObject( sourceValue );
-		}
-	}
-	return destination;
 };
 
 /**
@@ -470,7 +415,7 @@ es.Content.prototype.coverageOfAnnotation = function( range, annotation, strict 
 		index = this.indexOfAnnotation( i, annotation );
 		if ( typeof this.data[i] !== 'string' && index !== -1 ) {
 			if ( strict ) {
-				if ( es.Content.compareObjects( this.data[i][index].data, annotation.data ) ) {
+				if ( es.compareObjects( this.data[i][index].data, annotation.data ) ) {
 					coverage.push( i );
 				}
 			} else {
@@ -501,7 +446,7 @@ es.Content.prototype.indexOfAnnotation = function( offset, annotation, strict ) 
 		for ( i = 1; i < this.data[offset].length; i++ ) {
 			if ( annotatedChar[i].type === annotation.type ) {
 				if ( strict ) {
-					if ( es.Content.compareObjects( annotatedChar[i].data, annotation.data ) ) {
+					if ( es.compareObjects( annotatedChar[i].data, annotation.data ) ) {
 						return i;
 					}
 				} else {
@@ -716,7 +661,7 @@ es.Content.prototype.getWordBoundaries = function( offset ) {
  */
 es.Content.prototype.handleAnnotation = function( bias, stack, index, annotation ) {
 	if ( bias === 'open' ) {
-		var newAnnotation = es.Content.copyObject( annotation );
+		var newAnnotation = es.copyObject( annotation );
 		newAnnotation.range = {
 			start: index
 		};
@@ -725,7 +670,7 @@ es.Content.prototype.handleAnnotation = function( bias, stack, index, annotation
 		for ( var i = stack.length - 1; i >= 0; i-- ) {
 			if ( !stack[i].range.end ) {
 				if ( annotation ) {
-					if ( stack[i].type === annotation.type && es.Content.compareObjects( stack[i].data, annotation.data ) ) {
+					if ( stack[i].type === annotation.type && es.compareObjects( stack[i].data, annotation.data ) ) {
 						stack[i].range.end = index;
 						break;
 					}

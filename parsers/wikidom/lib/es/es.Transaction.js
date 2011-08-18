@@ -83,7 +83,7 @@ es.Transaction.operations = ( function() {
 		// Find the index of a comparable annotation (checking for same value, not reference)
 		var index;
 		for ( var i = 0; i < stack.length; i++ ) {
-			if ( es.Content.compareObjects( stack[i], val.annotation ) ) {
+			if ( es.compareObjects( stack[i], val.annotation ) ) {
 				index = i;
 				break;
 			}
