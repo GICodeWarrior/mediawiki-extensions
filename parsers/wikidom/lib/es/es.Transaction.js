@@ -82,11 +82,20 @@ es.Transaction.operations = ( function() {
 		}
 		var index;
 		for ( var i = 0; i < stack.length; i++ ) {
-			// TODO: Compare data too: es.Content.compareObjects( stack[i], val.annotation )
-			if ( stack[i].type === val.annotation.type ) {
-				index = i;
-				break;
+			// Type check
+			if ( stack[i].type !== val.annotation.type ) {
+				// Nope
+				continue;
 			}
+			// Data check
+			if ( ( stack[i].data || stack[i].data )
+					&& !es.Content.compareObjects( stack[i], val.annotation ) ) {
+				// Nope
+				continue;
+			}
+			// Found it!
+			index = i;
+			break;
 		}
 		if ( index === undefined ) {
 			throw 'Annotation stack error. Annotation is missing.';
