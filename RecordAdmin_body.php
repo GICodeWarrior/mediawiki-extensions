@@ -957,7 +957,7 @@ class RecordAdmin {
 				elseif( $k == 'groupby' )  $groupby  = $v;
 				elseif( $k == 'format' )   $format   = $v;
 				elseif( $k == 'cols' )     $cols     = self::split( $v, ',' );
-				elseif( $k == 'sortable' ) $sortable = preg_match( "/(1|yes|true|on)/i", $v );
+				elseif( $k == 'sortable' ) $sortable = !empty( $v );
 				elseif( $k == 'template' ) $template = $v;
 				elseif( $k == 'count' )    $count    = $v;
 				elseif( $k == 'export' )   $export   = $v;
