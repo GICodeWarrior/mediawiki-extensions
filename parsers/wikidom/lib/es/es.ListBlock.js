@@ -235,10 +235,10 @@ es.ListBlock.prototype.deleteContent = function( range ) {
 		// delete all selected items except first one
 		var deleting = false;
 		for ( var i = 0; i < this.list.items.length; i++ ) {
-			if ( this.list.items[i] == locationStart.item ) {
+			if ( this.list.items[i] === locationStart.item ) {
 				deleting = true;
 				continue;
-			} else if ( this.list.items[i] == locationEnd.item ) {
+			} else if ( this.list.items[i] === locationEnd.item ) {
 				this.list.items[i].list.remove( this.list.items[i] );
 				break;
 			}
