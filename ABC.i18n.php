@@ -558,6 +558,13 @@ $messages['ka'] = array(
 	'abcdownload' => 'ჩამოტვირთვა:',
 );
 
+/** کھوار (کھوار)
+ * @author Rachitrali
+ */
+$messages['khw'] = array(
+	'abcdownload' => 'ڈاون لوڈ',
+);
+
 /** Kirmanjki (Kırmancki)
  * @author Mirzali
  */
