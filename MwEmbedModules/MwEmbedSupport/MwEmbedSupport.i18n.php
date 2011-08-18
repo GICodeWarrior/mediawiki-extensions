@@ -260,6 +260,7 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Fitoschido
  * @author Translationista
  */
 $messages['es'] = array(
@@ -267,7 +268,7 @@ $messages['es'] = array(
 	'mwe-error_load_lib' => 'Error: JavaScript $1 no ha podido ser recuperado o no define $2',
 	'mwe-apiproxy-setup' => 'Configurando proxi de la API',
 	'mwe-load-drag-item' => 'Cargando el objeto arrastrado',
-	'mwe-ok' => 'OK',
+	'mwe-ok' => 'Aceptar',
 	'mwe-cancel' => 'Cancelar',
 	'mwe-enable-gadget' => 'Habilitar multimedia beta (mwEmbed) en todas las páginas',
 	'mwe-enable-gadget-done' => 'Se ha habilitado el gadget multimedia beta',
