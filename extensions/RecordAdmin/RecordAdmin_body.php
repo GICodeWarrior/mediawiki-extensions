@@ -307,7 +307,7 @@ class RecordAdmin {
 		if( $groupby ) $groupby = self::split( $groupby, ',' );
 
 		$type     = $this->type;
-		$id       = ($sortable && $sortable != 1) ? " id=\"$sortable\"" : "";
+		$id       = strlen($sortable) > 5 ? " id=\"$sortable\"" : "";
 		$sortable = $sortable ? " sortable" : "";
 		$br       = $sortable ? "<br />" : "";
 		$format   = $wgRequest->getText( 'export' );
