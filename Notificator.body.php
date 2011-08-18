@@ -77,16 +77,6 @@ private function checkDatabaseTableExists() {
 	return $res;
 }
 
-private function getDiffCss() {
-	$ret = '';
-	$file = fopen( dirname( __FILE__ ) . '/diff-in-mail.css', 'r' );
-	while ( !feof( $file ) ) {
-		$ret = $ret . fgets( $file, 4096 );
-	}
-	fclose ( $file );
-	return $ret;
-}
-
 public static function receiverIsValid( $receiver ) {
 	// Returns true if the parameter is a valid e-mail address, false if not
 	$receiverIsValid = true;
@@ -169,7 +159,7 @@ public static function getNotificationDiffHtml( $oldRevId, $revId ) {
 	$differenceEngineObj = new DifferenceEngine( $titleObj, $oldRevId, $revId );
 
 	$notificationDiffHtml = '<style media="screen" type="text/css">' .
-		Notificator::getDiffCss() . '</style><table class="diff">
+		file_get_contents( dirname( __FILE__ ) . '/diff-in-mail.css' ) . '</style><table class="diff">
 <col class="diff-marker" />
 <col class="diff-content" />
 <col class="diff-marker" />
