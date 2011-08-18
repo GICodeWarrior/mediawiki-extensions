@@ -1,10 +1,5 @@
 <?php
 
-if ( !defined( 'MEDIAWIKI' ) ) {
-	echo "Not a valid entry point";
-	exit( 1 );
-}
-
 class Notificator {
 
 public static function notificator_Render( $parser, $receiver = '', $receiverLabel = '' ) {
