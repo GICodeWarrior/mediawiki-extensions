@@ -2,12 +2,12 @@
 ## 01-varnishncsa-udp.dpatch by  <root@ragweed.knams.wikimedia.org>
 ##
 ## All lines beginning with `## DP:' are a description of the patch.
-## DP: add udp multicast support, seq number
+## DP: multicast udp logging w/seq numbering 
 
 @DPATCH@
 
 --- varnish3-3.0.0~/bin/varnishncsa/varnishncsa.c	2011-08-09 23:55:17.000000000 +0000
-+++ varnish3-3.0.0/bin/varnishncsa/varnishncsa.c	2011-08-11 21:22:37.000000000 +0000
++++ varnish3-3.0.0/bin/varnishncsa/varnishncsa.c	2011-08-18 21:22:53.000000000 +0000
 @@ -79,6 +79,13 @@
  #include "varnishapi.h"
  #include "base64.h"
@@ -127,3 +127,12 @@
  
  	vd = VSM_New();
  	VSL_Setup(vd);
+@@ -739,7 +794,7 @@
+ 				fprintf(stderr, "-f and -F can not be combined\n");
+ 				exit(1);
+ 			}
+-			format = "%{X-Forwarded-For}i %l %u %t \"%r\" %s %b \"%{Referer}i\" \"%{User-agent}i\"";
++			format = "%{X-Forwarded-For}i %n %l %u %t \"%r\" %s %b \"%{Referer}i\" \"%{User-agent}i\"";
+ 			format_flag = 1;
+ 			break;
+ 		case 'F':

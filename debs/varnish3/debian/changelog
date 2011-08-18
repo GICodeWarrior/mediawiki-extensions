@@ -1,8 +1,14 @@
+varnish3 (3.0.0-1wmf4) lucid; urgency=low
+
+  * -f (xff ip's) option defaulted to ncsa log format, now like wmf squids
+
+ -- Asher Feldman <afledman@wikimedia.org>  Thu, 18 Aug 2011 21:32:29 +0000
+
 varnish3 (3.0.0-1wmf3) lucid; urgency=low
 
   * Increase mcast ttl from 1 to 6
 
- -- Asher Feldman <afledman@wikimedia.org>  Thu, 15 Aug 2011 20:32:29 +0000
+ -- Asher Feldman <afledman@wikimedia.org>  Mon, 15 Aug 2011 20:32:29 +0000
 
 varnish3 (3.0.0-1wmf2) lucid; urgency=low
 
