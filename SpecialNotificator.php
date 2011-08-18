@@ -21,7 +21,7 @@ function execute( $par ) {
 	$revId = $wgRequest->getText( 'revId' );
 	$receiver = $wgRequest->getText( 'receiver' );
 
-	if ( ! $pageId || ! $revId || ! $receiver ) {
+	if ( !$pageId || !$revId || !$receiver ) {
 		$output = '<span class="error">' . htmlspecialchars(
 			wfMsg( 'notificator-special-page-accessed-directly' ) ) . '</span>';
 	} else {
@@ -29,7 +29,7 @@ function execute( $par ) {
 		$pageTitle = $titleObj->getFullText();
 		$linkToPage = $titleObj->getFullURL();
 
-		if ( ! Notificator::receiverIsValid( $receiver ) ) {
+		if ( !Notificator::receiverIsValid( $receiver ) ) {
 			$output = '<span class="error">' . htmlspecialchars(
 				wfMsg( 'notificator-e-mail-address-invalid' ) . ' ' .
 				wfMsg( 'notificator-notification-not-sent' ) ) . '</span>';
