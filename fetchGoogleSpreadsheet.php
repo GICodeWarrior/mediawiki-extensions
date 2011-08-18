@@ -61,20 +61,33 @@ class FetchGoogleSpreadsheet extends MetricsMaintenance {
 
 			$node = new SimpleXMLElement( $reader->readOuterXML() );
 
-			//$src = (string)$node->content["src"];
-			$src = $node->content->attributes()->src;
-			$this->output( 'Worksheet found: ' . $src );
+			// Worksheet based feed
+			// $src = (string)$node->link[2]['href'];
+			//$src = $node->link[2]->attributes()->href;
+
+			// List based feed
+			// $src = (string)$node->content["src"];
+			// $src = $node->content->attributes()->src;
+
+			// Cell based feed
+			// $src = (string)$node->link["href"];
+			// $src = $node->link->attributes()->href;
+
+			$this->output( 'Worksheet found: ' . $src . "\n" );
 			$worksheets[] = $src;
 
 			// go to next <entry />
 			$reader->next( 'entry' );
 		}
 
+		$this->output( "\n" );
+
 		foreach( $worksheets as $sheet ) {
 			$http = $this->buildAuthedRequest( $sheet, $authToken, $cookies );
 			$http->execute();
 			$content = $http->getContent();
 			var_dump( $this->formatXmlString( $content ) );
+			$this->output( "\n" );
 		}
 
 		$this->output( "Finished!\n" );
