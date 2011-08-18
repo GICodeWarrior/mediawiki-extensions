@@ -184,6 +184,35 @@ es.ListBlock.prototype.getLength = function() {
 	return length === 0 ? 0 : length - 1;
 };
 
+
+/**
+ * Gets the start and end points of the word closest a given offset.
+ * 
+ * @method
+ * @param offset {Integer} Offset to find word nearest to
+ * @returns {Object} Range object of boundaries
+ */
+es.ListBlock.prototype.getWordBoundaries = function( offset ) {
+	var location = this.getLocationFromOffset( offset ),
+		boundaries = location.item.flow.content.getWordBoundaries( location.offset );
+	boundaries.start += offset - location.offset; 
+	boundaries.end += offset - location.offset;
+	return boundaries;
+};
+
+/**
+ * Gets the start and end points of the section closest a given offset.
+ * 
+ * @method
+ * @param offset {Integer} Offset to find section nearest to
+ * @returns {Object} Range object of boundaries
+ */
+es.ListBlock.prototype.getSectionBoundaries = function( offset ) {
+	var location = this.getLocationFromOffset( offset ),
+		start = offset - location.offset;
+	return new es.Range( start, start + location.item.content.getLength() );
+};
+
 /**
  * Inserts content into a block at an offset.
  * 
