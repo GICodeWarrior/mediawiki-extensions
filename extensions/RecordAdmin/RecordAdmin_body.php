@@ -418,8 +418,8 @@ class RecordAdmin {
 					$text = str_replace( '%SELECT%', $sel, $text );
 					$table .= "$text\n";
 				} else {
-					$tsc    = $this->formatDate( $r['created'] );
-					$tsm    = $this->formatDate( $r['modified'] );
+					$tsc    = '<span style="display:none">' . ( 3e11 + date( 'U', $r['created'] ) ) . '</span>' . $this->formatDate( $r['created'] );
+					$tsm    = '<span style="display:none">' . ( 3e11 + date( 'U', $r['modified'] ) ) . '</span>' . $this->formatDate( $r['modified'] );
 					$t      = $r[0];
 					$u      = $t->getLocalURL();
 					$col    = $r['title'];
