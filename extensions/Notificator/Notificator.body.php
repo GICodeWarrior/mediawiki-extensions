@@ -11,12 +11,12 @@ public static function notificator_Render( $parser, $receiver = '', $receiverLab
 
 	global $wgScript, $wgTitle;
 
-	if ( ! $receiverLabel ) {
+	if ( !$receiverLabel ) {
 		$receiverLabel = $receiver;
 	}
 
 	// Check that the database table is in place
-	if ( ! Notificator::checkDatabaseTableExists() ) {
+	if ( !Notificator::checkDatabaseTableExists() ) {
 		$output = '<span class="error">' .
 			htmlspecialchars( wfMsg( 'notificator-db-table-does-not-exist' ) ) . '</span>';
 		return array( $output, 'noparse' => true, 'isHTML' => true );
@@ -107,13 +107,13 @@ public static function receiverIsValid( $receiver ) {
 	// User::isValidEmailAddr() has been moved to Sanitizer::validateEmail as of
 	// MediaWiki version 1.18 (I think).
 		foreach ( $receiverArray as $singleEmailAddress ) {
-			if ( ! Sanitizer::validateEmail( $singleEmailAddress ) ) {
+			if ( !Sanitizer::validateEmail( $singleEmailAddress ) ) {
 				$receiverIsValid = false;
 			}
 		}
 	} else {
 		foreach ( $receiverArray as $singleEmailAddress ) {
-			if ( ! User::isValidEmailAddr( $singleEmailAddress ) ) {
+			if ( !User::isValidEmailAddr( $singleEmailAddress ) ) {
 				$receiverIsValid = false;
 			}
 		}
@@ -127,7 +127,7 @@ public static function getLastNotifiedRevId( $pageId, $revId, $receiver ) {
 	//            (= notified already)
 	// Returns revId from the database - if there is no record, return 0
 
-	if ( ! $pageId || ! $revId || ! $receiver ) {
+	if ( !$pageId || !$revId || !$receiver ) {
 		return -1;
 	}
 
@@ -146,7 +146,7 @@ public static function getLastNotifiedRevId( $pageId, $revId, $receiver ) {
 
 	$oldRevId = $row['rev_id'];
 
-	if ( ! $oldRevId ) {
+	if ( !$oldRevId ) {
 		$oldRevId = 0;
 	} elseif ( $oldRevId == $revId ) {
 		$oldRevId = -2;
