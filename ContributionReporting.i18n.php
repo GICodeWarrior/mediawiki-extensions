@@ -5021,6 +5021,7 @@ $messages['sr-el'] = array(
  * @author Boivie
  * @author Cohan
  * @author Fluff
+ * @author MagnusA
  * @author Najami
  * @author Per
  * @author Tobulos1
@@ -5038,7 +5039,7 @@ $messages['sv'] = array(
 	'contrib-hist-anonymous' => 'Anonym',
 	'contributionstatistics' => 'Bidragstatistik',
 	'contribstats-desc' => 'Visar statistik för lämnade bidrag till Wikimedia Foundation',
-	'contribstats-daily-totals' => '{{PLURAL:$1|Totalt idag|Dygnstotaler för de senaste $1 dagarna}}',
+	'contribstats-daily-totals' => '{{PLURAL:$1|Totalt det senaste dygnet|Totalt de senaste $1 dygnen}}',
 	'contribstats-monthly-totals' => '{{PLURAL:$1|Totalt den här månaden|Månadstotaler för de senaste $1 månaderna}}',
 	'contribstats-month-range-totals' => '{{PLURAL:$1|Totalt för $1 månad|Månadstotaler för $1 månader}}',
 	'contribstats-currency-range-totals' => 'Valutatotaler (från $1 till $2)',
