@@ -2321,6 +2321,7 @@ $messages['su'] = array(
 /** Swedish (Svenska)
  * @author Boivie
  * @author GameOn
+ * @author MagnusA
  */
 $messages['sv'] = array(
 	'clicktracking' => 'Klickspårning för användbarhetsinitiativet',
@@ -2333,7 +2334,7 @@ $messages['sv'] = array(
 	'ct-total-header' => 'Totala antalet klick',
 	'ct-start-date' => 'Startdatum (YYYYMMDD)',
 	'ct-end-date' => 'Slutdatum (YYYYMMDD)',
-	'ct-increment-by' => 'Antal dagar varje datapunkt representerar',
+	'ct-increment-by' => 'Antal dygn varje datapunkt representerar',
 	'ct-change-graph' => 'Ändra graf',
 	'ct-beginner' => 'Nybörjare',
 	'ct-intermediate' => 'Mellannivå',

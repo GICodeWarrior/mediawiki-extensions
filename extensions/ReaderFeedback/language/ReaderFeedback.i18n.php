@@ -1166,6 +1166,42 @@ $messages['he'] = array(
 	'readerfeedback-tt-review' => 'שליחת ביקורת',
 );
 
+/** Hindi (हिन्दी)
+ * @author Mayur
+ * @author Vibhijain
+ */
+$messages['hi'] = array(
+	'readerfeedback-desc' => 'पाठकों के लिए स्पष्ट कहा रेटिंग्स के रूप में प्रतिक्रिया देने के लिए पृष्ठ सत्यापन की अनुमति देता है',
+	'readerfeedback' => 'आपका इस पृष्ठ के बारे में क्या सोचना है?',
+	'readerfeedback-text' => "''इस पृष्ठ के नीचे की दर के लिए एक क्षण ले कृपया. आपकी प्रतिक्रिया बहुमूल्य है और हमें हमारी वेबसाइट को बेहतर बनाने में मदद करता है.''",
+	'readerfeedback-reliability' => 'विश्वसनीयता',
+	'readerfeedback-completeness' => 'पूर्णता',
+	'readerfeedback-npov' => 'तटस्थता',
+	'readerfeedback-presentation' => 'प्रस्तुति',
+	'readerfeedback-overall' => 'कुल मिलाकर',
+	'readerfeedback-level-none' => '(अनिश्चित)',
+	'readerfeedback-level-0' => 'अनुपयुक्त',
+	'readerfeedback-level-1' => 'कम',
+	'readerfeedback-level-2' => 'साफ',
+	'readerfeedback-level-3' => 'उच्च',
+	'readerfeedback-level-4' => 'उत्कृष्ट',
+	'readerfeedback-submit' => 'भेजें',
+	'readerfeedback-main' => 'केवल सामग्री पृष्ठों का मूल्यांकन किया जा सकता है.',
+	'readerfeedback-success' => "' ' इस पृष्ठ की समीक्षा करने के लिए धन्यवाद! ' ' ([$2 परिणाम देखें]) ([$3 टिप्पणी या प्रश्न?])।",
+	'readerfeedback-voted' => "'''ऐसा प्रतीत होता है कि आपने पहले से ही  इस पृष्ठ का मूल्यांकन किया गया है''' ([ $2 परिणाम देखने के]) ([ $3 टिप्पणी या प्रश्न?]).",
+	'readerfeedback-error' => "' ' इस पृष्ठ रेटिंग करते समय कोई त्रुटि उत्पन्न हुई ' ' ([$2 परिणाम देखें]) ([$3 टिप्पणी या प्रश्न?])।",
+	'readerfeedback-submitting' => 'सबमिट ...',
+	'readerfeedback-finished' => 'धन्यवाद!',
+	'readerfeedback-tagfilter' => 'टैग:',
+	'readerfeedback-tierfilter' => 'रेटिंग(मूल्यांकन):',
+	'readerfeedback-tier-high' => 'उच्च',
+	'readerfeedback-tier-medium' => 'मध्यम',
+	'readerfeedback-tier-poor' => 'अनुपयुक्त',
+	'tooltip-ca-ratinghist' => 'इस पृष्ठ के रीडर रेटिंग',
+	'specialpages-group-feedback' => 'पाठक मूल्याँकन',
+	'readerfeedback-tt-review' => 'समीक्षा भेजें',
+);
+
 /** Croatian (Hrvatski)
  * @author Ex13
  * @author Roberta F.

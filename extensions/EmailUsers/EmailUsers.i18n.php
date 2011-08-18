@@ -156,10 +156,12 @@ $messages['es'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Americophile
  * @author Mjbmr
  */
 $messages['fa'] = array(
 	'emailusers-desc' => 'اجازه دادن به کاربران برای ارسال پست الکترونیکی به چندین گیرنده',
+	'right-sendbatchemail' => 'به طور همزمان به چندین گیرنده ای‌میل بفرستید',
 	'emailusers' => 'نامه به کاربران',
 	'emailusers-target-reverse' => 'ارسال به همه کاربران به جز آن‌هایی که انتخاب شده‌اند',
 	'emailusers-norecipient' => 'هیچ‌کس برای ارسال پست الکترونیکی وجود ندارد.',

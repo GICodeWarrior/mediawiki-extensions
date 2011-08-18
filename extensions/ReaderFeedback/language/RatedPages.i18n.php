@@ -348,6 +348,19 @@ $messages['he'] = array(
 	'ratedpages-count' => '{{PLURAL:$1|דירוג אחד|$1 דירוגים}}',
 );
 
+/** Hindi (हिन्दी)
+ * @author Mayur
+ * @author Vibhijain
+ */
+$messages['hi'] = array(
+	'ratedpages' => 'पाठक मूल्याँकन',
+	'ratedpages-leg' => 'मूल्यांकन पृष्ठों के साथ एक बड़ा संख्या रेटेड खोजें',
+	'ratedpages-list' => 'नीचे उनके पाठक प्रतिक्रिया दर्ज़ा के आधार पर छाँटे पृष्ठों की एक सूची है.',
+	'ratedpages-none' => 'इस सूची में कोई पृष्ठ नहीं हैं',
+	'ratedpages-graphs' => 'रेटिंग डेटा',
+	'ratedpages-count' => '$1 {{PLURAL:$1| समीक्षा | समीक्षा}}',
+);
+
 /** Croatian (Hrvatski)
  * @author Roberta F.
  * @author SpeedyGonsales

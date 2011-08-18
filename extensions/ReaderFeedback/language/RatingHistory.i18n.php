@@ -1033,6 +1033,42 @@ $messages['he'] = array(
 	'right-feedback' => 'השתמשו בטופס המשוב כדי לדרג דף',
 );
 
+/** Hindi (हिन्दी)
+ * @author Mayur
+ * @author Vibhijain
+ */
+$messages['hi'] = array(
+	'ratinghistory' => 'पेज रेटिंग इतिहास',
+	'ratinghistory-leg' => 'रेटिंग के लिए इतिहास [[:$1|$1]]',
+	'ratinghistory-tab' => 'मूल्यांकन',
+	'ratinghistory-link' => 'पृष्ठ रेटिंग',
+	'ratinghistory-thanks' => '\'<span style="color:darkred;">इस पृष्ठ की समीक्षा करने के लिए एक पल लेने के लिए धन्यवाद!</span>\'',
+	'ratinghistory-period' => 'समय अवधि:',
+	'ratinghistory-month' => 'पिछला माह',
+	'ratinghistory-3months' => 'पिछले 3 माह',
+	'ratinghistory-year' => 'पिछले साल',
+	'ratinghistory-3years' => 'पिछले 3 वर्षों',
+	'ratinghistory-ave' => 'औसत: $1',
+	'ratinghistory-chart' => 'समय के साथ रीडर रेटिंग',
+	'ratinghistory-purge' => 'कैशे साफ़ करें',
+	'ratinghistory-table' => 'रीडर रेटिंग का ओवरव्यू',
+	'ratinghistory-users' => 'वह सदस्य जिन्होनें आकलन किया',
+	'ratinghistory-graph' => '$2 of "$3" ($1 {{PLURAL:$1|review|reviews}})',
+	'ratinghistory-svg' => 'एसवीजी के रूप में देखें',
+	'ratinghistory-table-rating' => 'मूल्यांकन',
+	'ratinghistory-table-votes' => 'वोट',
+	'ratinghistory-none' => 'इस समय वहाँ पर्याप्त पाठक प्रतिक्रिया डेटा रेखांकन के लिए उपलब्ध नहीं है.',
+	'ratinghistory-ratings' => "' ' लेजेंड: ' ' ' '' (1) '' - अनुपयुक्त; ' '' (2) '' - कम; ' '' (3) '' - निष्पक्ष; ' '' (4) '' - उच्च; ' '' (5) '' - उत्कृष्ट;",
+	'ratinghistory-legend' => "The '''daily number of reviews''' <span style=\"color:red;\">''(red)''</span>, '''daily average rating''' <span style=\"color:blue;\">''(blue)''</span>,
+and '''running average rating''' <span style=\"color:green;\">''(green)''</span> are graphed below, by date.
+The '''running average rating''' is simply the average of all the daily ratings ''within'' this time frame for each day.
+The ratings are as follows:
+
+'''(1)''' - Poor; '''(2)''' - Low; '''(3)''' - Fair; '''(4)''' - High; '''(5)''' - Excellent;",
+	'ratinghistory-graph-scale' => "'''प्रति दिन समीक्षा''' <span style=\"color:red;\">''(लाल)''</span> ''1:\$1'' पैमाने.पर दिखाया",
+	'right-feedback' => 'एक पन्ने का मूल्यांकन करने के लिए आकलन फार्म का उपयोग करें',
+);
+
 /** Croatian (Hrvatski)
  * @author Roberta F.
  * @author SpeedyGonsales
