@@ -230,6 +230,13 @@ Honelakoa izan behar du: $1.',
 	'securepasswords-username' => 'erabiltzaile izenetik desberdina izan',
 );
 
+/** Persian (فارسی)
+ * @author Americophile
+ */
+$messages['fa'] = array(
+	'securepasswords-word' => 'کلمه نباشد.',
+);
+
 /** Finnish (Suomi)
  * @author Nike
  * @author Str4nd
