@@ -22,7 +22,7 @@ es.ListBlock = function( list ) {
 		listBlock.emit( 'update' );
 	} );
 	
-	this.renumber();
+	this.enumerate();
 };
 
 /* Static Methods */
@@ -48,7 +48,7 @@ es.ListBlock.prototype.renderContent = function( offset ) {
 
 /* Public Methods */
 
-es.ListBlock.prototype.renumber = function( position ) {
+es.ListBlock.prototype.enumerate = function() {
 	var itemLevel,
 		levels = [];
 
