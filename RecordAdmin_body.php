@@ -307,8 +307,9 @@ class RecordAdmin {
 		if( $groupby ) $groupby = self::split( $groupby, ',' );
 
 		$type     = $this->type;
-		$sortable = $sortable ? ' sortable' : '';
-		$br       = $sortable ? '<br />' : '';
+		$id       = ($sortable && $sortable != 'yes') ? " id=\"$sortable\"" : "";
+		$sortable = $sortable ? " sortable" : "";
+		$br       = $sortable ? "<br />" : "";
 		$format   = $wgRequest->getText( 'export' );
 
 		# If exporting as pdf, ensure the parser renders full URL's
@@ -321,7 +322,7 @@ class RecordAdmin {
 		}
 
 		# Table header (col0-3 class atts are for backward compatibility, only use named from now on)
-		$table = "<table class='recordadmin$sortable $type-record'>\n<tr>";
+		$table = "<table$id class='recordadmin$sortable $type-record'>\n<tr>";
 		$th = array(
 			'select'   => "<th class='col-select'>"        . wfMsg( 'recordadmin-select' )       . "$br</th>",
 			'title'    => "<th class='col0 col-title'>"    . wfMsg( 'recordadmin-title', $type ) . "$br</th>",

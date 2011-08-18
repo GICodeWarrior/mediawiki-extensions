@@ -10,7 +10,7 @@ if( !defined( 'MEDIAWIKI' ) ) die( 'Not an entry point.' );
  * @author Siebrand Mazeland
  * @licence GNU General Public Licence 2.0 or later
  */
-define( 'RECORDADMIN_VERSION', '1.3.3, 2011-08-18' );
+define( 'RECORDADMIN_VERSION', '1.3.4, 2011-08-18' );
 
 $wgRecordAdminExtPath = preg_replace( "|^.*(/extensions/.*$)|", "$wgScriptPath$1", dirname( __FILE__ ) );
 
