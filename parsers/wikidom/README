@@ -1,12 +1,15 @@
-= WikiDom =
+= WikiDom and Edit Surface =
 
-WikiDom is a document object model for Wikitext.
+WikiDom is a serializable document object model for Wikitext. Once a parser is created that can emit
+a WikiDom structure, EditSurface will be usable as a visual editor for Wikitext. EditSurface is a
+WikiDom compatible visual editor, which departs from HTML ContentEditable-based editors and uses
+the HTML DOM to render the entire document and editing user interface elements.
 
 == Contents of this directory ==
 
 * demos - A variety of demonstrative web pages
 * lib - Common dependencies
-* lib/wiki.js - WikiDom library
+* lib/es - EditSurface code
 * tests - QUnit tests
 
 == Status of components ==
@@ -16,7 +19,7 @@ WikiDom is a document object model for Wikitext.
 * Processors
 ** Templates: not yet started
 ** Hooks: not yet started
-* Renderers
+* Serializers
 ** HTML: basic functionaltiy
 ** Wikitext: basic functionaltiy
 
@@ -33,7 +36,6 @@ a variety of objects.
 : A single line of text with annotation information to describe formatting, rendering and meaning.
 ; Item
 : A line of text and optionally a series of nested lists.
-
 
 === Blocks ===
 
@@ -85,13 +87,4 @@ a dialog or inspector.
 
 === Plans ===
 
-* Re-flow lines without deleting paragraph elements
-* Auto-update selection on resize
-* Handle keyboard input for:
-** moving cursor
-** making selection
-** inserting and deleting
-* Support multiple font styles in the same paragraph
-* Support "black-box" in-line elements, treat them as a single character
-* Add list editor
 * Add table editor
