@@ -208,7 +208,7 @@ es.ListBlock.prototype.deleteContent = function( range ) {
 	var locationStart = this.getLocationFromOffset( range.start ),
 		locationEnd = this.getLocationFromOffset( range.end );
 
-	if ( locationStart.item == locationEnd.item ) {
+	if ( locationStart.item === locationEnd.item ) {
 		// delete content within one item
 		locationStart.item.content.remove(
 			new es.Range( locationStart.offset, locationStart.offset + range.getLength() )
@@ -268,7 +268,7 @@ es.ListBlock.prototype.annotateContent = function( method, annotation, range ) {
 	var locationStart = this.getLocationFromOffset( range.start ),
 		locationEnd = this.getLocationFromOffset( range.end );
 
-	if ( locationStart.item == locationEnd.item ) {
+	if ( locationStart.item === locationEnd.item ) {
 		// annotate content within one item
 		locationStart.item.content.annotate(
 			method,
