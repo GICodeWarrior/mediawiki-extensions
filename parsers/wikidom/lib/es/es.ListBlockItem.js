@@ -1,3 +1,13 @@
+/**
+ * Creates a list block item.
+ * 
+ * @class
+ * @constructor
+ * @extends {es.EventEmitter}
+ * @param content {es.Content}
+ * @param style {String}
+ * @param level {Integer}
+ */
 es.ListBlockItem = function( content, style, level ) {
 	es.EventEmitter.call( this );
 
@@ -16,6 +26,8 @@ es.ListBlockItem = function( content, style, level ) {
 		listBlockItem.emit( 'update' );
 	} );
 }
+
+/* Public Methods */
 
 es.ListBlockItem.prototype.setNumber = function( number ) {
 	this.$icon.text( number + '.' );
@@ -37,4 +49,5 @@ es.ListBlockItem.prototype.renderContent = function( offset ) {
 	this.flow.render();
 };
 
+/* Inheritance */
 es.extend( es.ListBlockItem, es.EventEmitter );

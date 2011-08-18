@@ -1,25 +1,29 @@
+/**
+ * Creates a list block list.
+ * 
+ * @class
+ * @constructor
+ * @extends {es.Container}
+ * @param list {es.ListBlockItem} Flat list to initialize with
+ */
 es.ListBlockList = function( items ) {
 	es.DomContainer.call( this, 'list', 'items', items );
 };
 
+/* Static Methods */
+
+/**
+ * Creates a new list block list object from WikiDom data.
+ * 
+ * @static
+ * @method
+ * @param wikidomList {Object} WikiDom data to convert from
+ * @returns {es.ListBlockList} List block list
+ */
 es.ListBlockList.newFromWikiDomList = function( wikidomList ) {
 	var items = [];
 	es.ListBlockList.flattenList( wikidomList, items, 0 );
 	return new es.ListBlockList( items );
-};
-
-es.ListBlockList.prototype.renderContent = function( offset ) {
-	for ( var i = 0; i < this.items.length; i++ ) {
-		this.items[i].renderContent();
-	}
-};
-
-es.ListBlockList.prototype.traverseItems = function( callback ) {
-	for( var i = 0; i < this.items.length; i++ ) {
-		if ( callback( this.items[i], i ) === false ) {
-			return false;
-		}
-	}
 };
 
 es.ListBlockList.flattenList = function( wikidomList, items, level ) {
@@ -41,4 +45,14 @@ es.ListBlockList.flattenList = function( wikidomList, items, level ) {
 	}
 };
 
+/* Public Methods */
+
+es.ListBlockList.prototype.renderContent = function( offset ) {
+	// TODO: If offset is passed then render only item containing that offset
+	for ( var i = 0; i < this.items.length; i++ ) {
+		this.items[i].renderContent();
+	}
+};
+
+/* Inheritance */
 es.extend( es.ListBlockList, es.DomContainer );
