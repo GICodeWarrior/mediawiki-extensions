@@ -33,6 +33,8 @@ $wgAutoloadClasses['ApiAnalyticsBase'] = $dir . 'ApiAnalyticsBase.php';
 
 $metricsDir = $dir . 'metrics/';
 
+$wgAutoloadClasses['GenericMetricBase'] = $metricsDir . 'GenericMetricBase.php';
+
 $wgAutoloadClasses['ComScoreReachPercentageMetric'] = $metricsDir . 'ComScoreReachPercentageMetric.php';
 $wgMetricAPIModules['comscorereachpercentage'] = 'ComScoreReachPercentageMetric';
 
