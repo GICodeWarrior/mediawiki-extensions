@@ -273,10 +273,7 @@ es.ListBlock.prototype.annotateContent = function( method, annotation, range ) {
 		locationStart.item.content.annotate(
 			method,
 			annotation,
-			new es.Range(
-				locationStart.offset,
-				locationStart.offset + range.end - range.start
-			)
+			new es.Range( locationStart.offset, locationStart.offset + range.getLength() )
 		);
 	} else {
 		// annotate content across multiple items
