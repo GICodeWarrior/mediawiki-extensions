@@ -196,6 +196,62 @@ es.ListBlock.prototype.insertContent = function( offset, content ) {
 	location.item.flow.content.insert( location.offset, content );
 };
 
+/**
+ * Deletes content in a block within a range.
+ * 
+ * @method
+ * @param range {es.Range} Range of content to remove
+ */
+es.ListBlock.prototype.deleteContent = function( range ) {
+	range.normalize();
+	
+	var locationStart = this.getLocationFromOffset( range.start ),
+		locationEnd = this.getLocationFromOffset( range.end );
+
+	if ( locationStart.item == locationEnd.item ) {
+		// delete content within one item
+		locationStart.item.content.remove(
+			new es.Range( locationStart.offset, locationStart.offset + range.getLength() )
+		);		
+	} else {
+		// delete content across multiple items
+		
+		// delete selected content from first selected item
+		locationStart.item.content.remove(
+			new es.Range(
+				locationStart.offset,
+				locationStart.item.content.getLength()
+			)
+		);
+
+		// grab not selected content from last selected item and append it to first selected item
+		locationStart.item.content.insert( locationStart.offset, locationEnd.item.content.getContent(
+			new es.Range(
+				locationEnd.offset,
+				locationEnd.item.content.getLength()
+			)
+		).data );
+
+		// delete all selected items except first one
+		var deleting = false;
+		for ( var i = 0; i < this.list.items.length; i++ ) {
+			if ( this.list.items[i] == locationStart.item ) {
+				deleting = true;
+				continue;
+			} else if ( this.list.items[i] == locationEnd.item ) {
+				this.list.items[i].list.remove( this.list.items[i] );
+				break;
+			}
+			if ( deleting ) {
+				this.list.items[i].list.remove( this.list.items[i] );
+				i--;
+			}
+		}
+		
+		this.enumerate();
+	}
+};
+
 es.ListBlock.prototype.getText = function( range, render ) {
 	return "";
 };
