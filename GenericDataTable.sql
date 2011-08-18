@@ -1,4 +1,4 @@
-CREATE TABLE `GenericDataTable` (
+CREATE TABLE /*_*/GenericDataTable (
   `date`           date NOT NULL,
   `language_code`  char (15) DEFAULT NULL,
   `project_code`   varchar (10) DEFAULT NULL,
