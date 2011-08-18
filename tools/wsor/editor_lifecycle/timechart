@@ -1,0 +1,79 @@
+#!/usr/bin/python
+
+''' plots cohort rate date '''
+
+import os
+import sys
+
+import numpy as np
+import matplotlib.pyplot as pp
+
+from argparse import ArgumentParser
+from matplotlib.font_manager import FontProperties
+
+__prog__ = os.path.basename(__file__)
+
+parser = ArgumentParser(description=__doc__)
+parser.add_argument('data_paths', metavar='data', nargs='+')
+parser.add_argument('-m', '--minsize', type=int, default=0)
+parser.add_argument('-o', '--output', dest='output_path', metavar='FILE')
+parser.add_argument('-T', '--title')
+
+markers = 'ov^<>sp*+xD'
+colors = 'bgrcmykw'
+
+if __name__ == '__main__':
+    ns = parser.parse_args()
+
+    # create figure
+    fig = pp.figure(figsize=(10,4))
+    ax = fig.add_axes(pp.axes([.1,.1,.65,.8], axisbg='ghostwhite'))
+    M = len(markers)
+    C = len(colors)
+
+    lines = []
+
+    for i, path in enumerate(ns.data_paths):
+
+        # load cohort data and filter out estimates based on samples with size
+        # smaller than minimum requested
+        days, rate, rate_err, size = np.loadtxt(path, delimiter='\t', unpack=1)
+        idx = size >= ns.minsize
+        days = days[idx]
+        rate = rate[idx]
+        rate_err = rate_err[idx]
+        if len(days) == 0:
+            print >> sys.stderr, '%s: warning: skipping empty dataset: %s' % \
+                    (__prog__, path)
+            continue
+ 
+        # plot errorbars
+        l, (wu, wd), mc = ax.errorbar(days, rate, rate_err, marker=markers[i % M], color=colors[i
+            % C], label=os.path.splitext(path)[0].replace('_',' '),
+            ecolor='none', ls=':', lw=2)
+        lines.append(l)
+        pp.setp(wd, ls='none')
+
+    # decorate figure
+    pp.xlabel('days since registration')
+    pp.ylabel('edits/day')
+    pp.figlegend(lines, [ l.get_label() for l in lines ], 
+            loc='center right', prop=FontProperties(size='small'))
+    pp.minorticks_on()
+    pp.grid("on")
+    pp.axis('tight')
+
+    pp.draw()
+    if ns.title is not None:
+        pp.title(ns.title)
+    pp.draw()
+
+    # save to file, is output path specified
+    if ns.output_path is not None:
+        _, ext = os.path.splitext(ns.output_path)
+        fmt = ext.strip('.') or 'pdf'
+        pp.savefig(ns.output_path, fmt=ext)
+        print '%s: output saved to %s' % (__prog__, ns.output_path)
+
+    pp.show()
+

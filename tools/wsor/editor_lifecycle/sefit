@@ -19,8 +19,6 @@ parser.add_argument('-m', '--min-size', type=int, default=0)
 parser.add_argument('-c', '--constrain', choices=['head', 'tail', 'both'])
 parser.add_argument('--maxfev', type=int, default=10000)
 parser.add_argument('--debug', action='store_true')
-parser.add_argument('--split-name', action='store_true', help='split input file'
-        ' name into date and a rate part.')
 
 if __name__ == '__main__':
     # parse command line
@@ -37,17 +35,20 @@ if __name__ == '__main__':
         print >> sys.stderr, '%s: error: non identifiable data in %s'\
                 % (__prog__, ns.data_file)
         sys.exit(1)
+    x = x[idx]
+    y = y[idx]
+    ye = ye[idx]
 
-    # create model, set constraints
+    # create model, set fit constraints if any
     model = StretchedExpon()
     if ns.constrain in ['head', 'both']:
         model.A = y[np.argmin(np.abs(x))]
     if ns.constrain in ['tail', 'both']:
         model.C = y.min()
 
-    # fit model
+    # fit model to data
     try:
-        pest, pcov = model.fit(x[idx], y[idx], ye[idx], maxfev=ns.maxfev, warning=False)
+        pest, pcov = model.fit(x, y, ye, maxfev=ns.maxfev, warning=False)
     except ValueError, e:
         print >> sys.stderr, '%s: error: "%s" when fitting %s' % (__prog__,
                 e.message, ns.data_file)
@@ -60,22 +61,18 @@ if __name__ == '__main__':
                 __prog__, ns.data_file)
         sys.exit(1)
 
-    # compute errors, MRT
+    # compute errors, MRT, GoF, coefficient of determination
     perr = np.sqrt(np.diag(pcov)) / 2.
     model.setparams(*zip(pest,perr))
     mrt = model.mrt(model.tau, model.beta)
-    N = len(model.__params__)
-    params = np.empty((N * 2 + 1,), dtype=float)
-    params[:N] = [ model.A, model.tau, model.beta, model.C ]
-    params[N:2*N] = map(lambda k : k or np.nan, [ model.A_err, model.tau_err,
-        model.beta_err, model.C_err ])
-    params[-1] = mrt
-    
-    # print output line
+    gof, resid, Rsquared = model.gof(x, y, ye)
+    model.goftest = gof
+    model.residtest = resid
+    model.Rsquared = Rsquared
+
+    # print output
     key, _ = os.path.splitext(ns.data_file)
-    if ns.split_name:
-        key = key.split('_')
-    else:
-        key = [ key ] 
-    params = map(lambda k : '%12.5g' % k, params)
-    print '\t'.join(key + params)
+    key = key.split('_')
+    output = [ mrt, model.Rsquared, model.goftest[0], model.goftest[1] ]
+    output = map(lambda k : '%12.5g' % k, output)
+    print '\t'.join(key + output)
