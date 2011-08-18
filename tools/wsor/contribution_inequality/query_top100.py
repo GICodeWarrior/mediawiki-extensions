@@ -1,4 +1,7 @@
 #!/usr/bin/python
+
+''' returns the top 100 contributors to a given page '''
+
 from argparse import ArgumentParser
 import os
 from oursql import connect
