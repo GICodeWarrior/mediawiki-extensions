@@ -21,6 +21,8 @@ es.ListBlock = function( list ) {
 	this.list.on( 'update', function() {
 		listBlock.emit( 'update' );
 	} );
+	
+	this.renumber();
 };
 
 /* Static Methods */
@@ -45,6 +47,23 @@ es.ListBlock.prototype.renderContent = function( offset ) {
 };
 
 /* Public Methods */
+
+es.ListBlock.prototype.renumber = function( position ) {
+	var itemLevel,
+		levels = [];
+
+	for ( var i = 0; i < this.list.items.length; i++ ) {
+		itemLevel = this.list.items[i].level;
+		levels = levels.slice(0, itemLevel + 1);
+		
+		if ( this.list.items[i].style === 'number' ) {
+			if ( !levels[itemLevel] ) {
+				levels[itemLevel] = 0;
+			}
+			this.list.items[i].setNumber( ++levels[itemLevel] );
+		}
+	}
+};
 
 /**
  * Gets the offset of a position.
