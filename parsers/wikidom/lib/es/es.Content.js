@@ -401,26 +401,6 @@ es.Content.prototype.getData = function( range ) {
 };
 
 /**
- * Breaks cross references, which occur when content is copied around.
- * 
- * Because content data is an array of characters, or arrays containing a character and any
- * number of references to annotation objects, slicing the array still leaves annotated characters
- * as references to shared memory. This should be used only when annotations are going to be
- * changed because it is rather expensive.
- * 
- * @method
- */
-es.Content.prototype.isolate = function() {
-	var i = 0,
-		length = this.data.length;
-	while ( i < length ) {
-		// The slice method works for array or string character type
-		this.data[i] = this.data[i].slice( 0 );
-		i++;
-	}
-};
-
-/**
  * Inserts content data at a specific position.
  * 
  * Inserted content will inherit annotations from neighboring content.
@@ -550,12 +530,33 @@ es.Content.prototype.indexOfAnnotation = function( offset, annotation, strict ) 
  * @emits "change" with type:"annotate" data property
  */
 es.Content.prototype.annotate = function( method, annotation, range ) {
+	// Support calling without a range argument, using the full content range as default
 	if ( !range ) {
 		range = new es.Range( 0, this.data.length );
 	} else {
 		range.normalize();
 	}
-	var i;
+	/*
+	 * Because content data is an array of either strings containing a single character each or
+	 * references to arrays containing a single character string followed by a series of references
+	 * to annotation objects, making a "copy" by slicing content data will cause references to
+	 * annotated characters in the content data to be shared between the original and the "copy". To
+	 * ensure that modifications to annotated characters in the content data do not affect the data
+	 * of other content objects, annotated characters must be sliced individually. This is too
+	 * expensive to do on all content on every copy, so we only do it when we are going to modify
+	 * the annotation information, and on a few annotated characters as possible.
+	 */
+	for ( var i = range.start; i < range.end; i++ ) {
+		if ( typeof this.data[i] !== 'string' ) {
+			this.data[i] = this.data[i].slice( 0 );
+		}
+		i++;
+	}
+	/*
+	 * Support toggle method by automatically choosing add or remove based on the coverage of the 
+	 * content being annotated; if the content is not covered or partially covered add will be used,
+	 * if the content is completely covered, remove will be used.
+	 */
 	if ( method === 'toggle' ) {
 		var coverage = this.coverageOfAnnotation( range, annotation, false );
 		if ( coverage.length === range.getLength() ) {
@@ -567,7 +568,7 @@ es.Content.prototype.annotate = function( method, annotation, range ) {
 	}
 	if ( method === 'add' ) {
 		var duplicate;
-		for ( i = range.start; i < range.end; i++ ) {
+		for ( var i = range.start; i < range.end; i++ ) {
 			duplicate = -1;
 			if ( typeof this.data[i] === 'string' ) {
 				// Never annotate new lines
@@ -589,7 +590,7 @@ es.Content.prototype.annotate = function( method, annotation, range ) {
 			}
 		}
 	} else if ( method === 'remove' ) {
-		for ( i = range.start; i < range.end; i++ ) {
+		for ( var i = range.start; i < range.end; i++ ) {
 			if ( typeof this.data[i] !== 'string' ) {
 				if ( annotation.type === 'all' ) {
 					// Remove all annotations by converting the annotated character to a plain

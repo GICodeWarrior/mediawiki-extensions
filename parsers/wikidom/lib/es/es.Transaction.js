@@ -1,5 +1,8 @@
 /**
- * Creates an operation to be applied to a content object.
+ * Creates a transaction which can be applied to a content object.
+ * 
+ * Transactions contain a series of operations, such as retain, insert, remove, start and end. Each
+ * operation describes a step that must be taken to construct a new version of a content object.
  * 
  * @class
  * @constructor
@@ -12,13 +15,10 @@ es.Transaction = function() {
 };
 
 /**
- * List of operation implementations.
+ * List of operation implementations. 
  */
 es.Transaction.operations = ( function() {
 	function annotate( con, add, rem ) {
-		// Ensure that modifications to annotated characters do not affect other uses of the same
-		// content by isolating it - performing a deep-slice
-		con.isolate();
 		for ( var i = 0; i < add.length; i++ ) {
 			con.annotate( 'add', add[i] );
 		}
@@ -147,8 +147,7 @@ es.Transaction.prototype.commit = function( src ) {
 		adv;
 	for ( var i = 0; i < this.operations.length; i++ ) {
 		var op = this.operations[i];
-		adv = op.model.commit( op.val, cur, src, dst, add, rem );
-		cur += adv;
+		cur += op.model.commit( op.val, cur, src, dst, add, rem );
 	}
 	return dst;
 };
@@ -161,8 +160,7 @@ es.Transaction.prototype.rollback = function( src ) {
 		adv;
 	for ( var i = 0; i < this.operations.length; i++ ) {
 		var op = this.operations[i];
-		adv = op.model.rollback( op.val, cur, src, dst, add, rem );
-		cur += adv;
+		cur += op.model.rollback( op.val, cur, src, dst, add, rem );
 	}
 	return dst;
 };
