@@ -113,9 +113,7 @@ class RecordAdmin {
 				global $wgRecordAdminExtPath;
 				$wgOut->addScript( "<script type=\"$wgJsMimeType\" src=\"$wgRecordAdminExtPath/recordadmin.js\"></script>" );
 				$wgOut->addScript( "<script type=\"$wgJsMimeType\">
-					function raAddRecordFormSubmit() {
-						jQuery( '#editform' ).attr( 'onsubmit', 'raRecordForms()' );
-					}
+					function raAddRecordFormSubmit() { jQuery( '#editform' ).submit( raRecordForms ); }
 					addOnloadHook( raAddRecordFormSubmit );</script>"
 				);
 			}
@@ -270,11 +268,11 @@ class RecordAdmin {
 			case '=':
 				$cond = $re ? preg_match( $b, $a ) : ( empty( $b ) ? true : ( $a == $b ) );
 			break;
-			
+
 			case '!=':
 				$cond = $re ? !preg_match( $b, $a ) : ( empty( $b ) ? true : ( $a != $b ) );
 			break;
-			
+
 			default:
 				$a = preg_replace( "|(\d\d)[-/](\d\d)[-/](\d\d\d\d)|", "$3/$2/$1", $a ); # hack for dd/mm/yyyy format - best to use yyyy-mm-dd
 				$b = preg_replace( "|(\d\d)[-/](\d\d)[-/](\d\d\d\d)|", "$3/$2/$1", $b );

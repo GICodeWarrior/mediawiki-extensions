@@ -2,7 +2,7 @@ window.raRecordForms = function () {
 	for( i = 0; i < window.forms.length; i++ ) {
 		var type = forms[i];
 		var form = document.getElementById( type.toLowerCase() + '-form' );
-		form.onsubmit();
+		if( form.onsubmit() === false ) return false;
 		var tags = [ 'input', 'select', 'textarea' ];
 		for( j = 0; j < tags.length; j++ ) {
 			var inputs = form.getElementsByTagName( tags[j] );
@@ -22,4 +22,4 @@ window.raRecordForms = function () {
 		}
 	}
 };
-jQuery( '#editform' ).attr( 'onsubmit', 'raRecordForms()' );
+jQuery( '#editform' ).submit( raRecordForms );
