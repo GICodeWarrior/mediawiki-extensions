@@ -49,5 +49,9 @@ es.ListBlockItem.prototype.renderContent = function( offset ) {
 	this.flow.render();
 };
 
+es.ListBlockItem.prototype.getIndex = function( ) {
+	return this.list.items.indexOf( this );
+};
+
 /* Inheritance */
 es.extend( es.ListBlockItem, es.EventEmitter );
