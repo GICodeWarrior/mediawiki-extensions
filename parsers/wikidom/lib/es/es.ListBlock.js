@@ -252,6 +252,78 @@ es.ListBlock.prototype.deleteContent = function( range ) {
 	}
 };
 
+/**
+ * Applies an annotation to a given range.
+ * 
+ * If a range arguments are not provided, all content will be annotated.
+ * 
+ * @method
+ * @param method {String} Way to apply annotation ("toggle", "add" or "remove")
+ * @param annotation {Object} Annotation to apply
+ * @param range {es.Range} Range of content to annotate
+ */
+es.ListBlock.prototype.annotateContent = function( method, annotation, range ) {
+	range.normalize();
+	
+	var locationStart = this.getLocationFromOffset( range.start ),
+		locationEnd = this.getLocationFromOffset( range.end );
+
+	if ( locationStart.item == locationEnd.item ) {
+		// annotate content within one item
+		locationStart.item.content.annotate(
+			method,
+			annotation,
+			new es.Range(
+				locationStart.offset,
+				locationStart.offset + range.end - range.start
+			)
+		);
+	} else {
+		// annotate content across multiple items
+		
+		// annotate content in the first item - from offset to end
+		locationStart.item.content.annotate(
+			method,
+			annotation,
+			new es.Range(
+				locationStart.offset,
+				locationStart.item.content.getLength()
+			)
+		);
+
+		// annotate content in the last item - from beginning to offset
+		locationEnd.item.content.annotate(
+			method,
+			annotation,
+			new es.Range(
+				0,
+				locationEnd.offset
+			)
+		);
+		
+		// annotate all content in selected items except first and last one
+		var annotating = false;
+		for ( var i = 0; i < this.list.items.length; i++ ) {
+			if ( this.list.items[i] === locationStart.item ) {
+				annotating = true;
+				continue;
+			} else if ( this.list.items[i] === locationEnd.item ) {
+				break;
+			}
+			if ( annotating ) {
+				this.list.items[i].content.annotate(
+					method,
+					annotation,
+					new es.Range(
+						0,
+						this.list.items[i].content.getLength()
+					)
+				);
+			}
+		}
+	}
+};
+
 es.ListBlock.prototype.getText = function( range, render ) {
 	return "";
 };
