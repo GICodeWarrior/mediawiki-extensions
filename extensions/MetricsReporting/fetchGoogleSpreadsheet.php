@@ -66,7 +66,7 @@ class FetchGoogleSpreadsheet extends MetricsMaintenance {
 			//$src = $node->link[2]->attributes()->href;
 
 			// List based feed
-			// $src = (string)$node->content["src"];
+			$src = (string)$node->content["src"];
 			// $src = $node->content->attributes()->src;
 
 			// Cell based feed
