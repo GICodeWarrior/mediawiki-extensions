@@ -11,11 +11,11 @@ class FilterRatingsTemplate extends QuickTemplate {
 
 <form method="GET" id="filterForm">
 <p>
-Project Name: <input type="text" name="project" value="<?php echo $filters['r_project']?>" /> 
-Importance: <input type="text" name="importance" value="<?php echo $filters['r_importance']?>" /> 
-Quality: <input type="text" name="quality" value="<?php echo $filters['r_quality']?>" />
+Project Name: <input type="text" name="project" value="<?php echo htmlentities( $filters['r_project'] ); ?>" />
+Importance: <input type="text" name="importance" value="<?php echo htmlentities( $filters['r_importance'] ); ?>" />
+Quality: <input type="text" name="quality" value="<?php echo htmlentities( $filters['r_quality'] ); ?>" />
 <br />
-Categories (comma separated): <input type="text" name="categories" value="<?php echo $filters['categories']?>" />
+Categories (comma separated): <input type="text" name="categories" value="<?php echo htmlentities( $filters['categories'] ); ?>" />
 <input type="submit" id="submit-query" />
 </p>
 </form>
@@ -38,10 +38,10 @@ Add to Selection:
 	</tr>	
 	<?php foreach( $articles as $article ) { ?>
 	<tr>
-	<td><?php echo $article['r_project'] ?></td>
-	<td><a href="<?php echo $article['title']->getLinkURL(); ?>"><?php echo $article['r_article']; ?></a></td>	
-	<td><?php echo $article['r_importance']; ?></td>	
-	<td><?php echo $article['r_quality']; ?></td>	
+	<td><?php echo htmlentities( $article['r_project'] ); ?></td>
+	<td><a href="<?php echo htmlentities( $article['title']->getLinkURL() ); ?>"><?php echo htmlentities( $article['r_article'] ); ?></a></td>
+	<td><?php echo htmlentities( $article['r_importance'] ); ?></td>
+	<td><?php echo htmlentities( $article['r_quality'] ); ?></td>
 	</tr>
 	<?php } ?>
 	</table>
