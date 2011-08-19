@@ -1033,6 +1033,30 @@ $messages['he'] = array(
 	'ct-update-table' => 'עדכון הטבלה',
 );
 
+/** Hindi (हिन्दी)
+ * @author Vibhijain
+ */
+$messages['hi'] = array(
+	'clicktracking' => 'प्रयोज्य पहल क्लिक ट्रैकिंग',
+	'ct-event-name' => 'इवेंट नाम',
+	'ct-expert-header' => 'क्लिक "विशेषज्ञ"',
+	'ct-intermediate-header' => 'क्लिक "मध्यवर्ती"',
+	'ct-beginner-header' => 'क्लिक "शुरुआत"',
+	'ct-total-header' => 'कुल क्लिकें',
+	'ct-start-date' => 'प्रारंभ दिनांक (YYYYMMDD)',
+	'ct-end-date' => 'समाप्ति तिथि (YYYYMMDD)',
+	'ct-change-graph' => 'ग्राफ बदलें',
+	'ct-beginner' => 'शुरुआत',
+	'ct-intermediate' => 'मध्यम',
+	'ct-expert' => 'विशेषज्ञ',
+	'ct-date-range' => 'तिथि सीमा',
+	'ct-editing' => 'अभी बदलाव कर रहें हैं:',
+	'ct-anon-users' => 'अज्ञात उपयोगकर्ता',
+	'ct-user-contribs' => 'कुल प्रयोक्ता योगदान',
+	'ct-and' => 'और',
+	'ct-update-table' => 'अद्यतन तालिका',
+);
+
 /** Croatian (Hrvatski)
  * @author Ex13
  * @author Mvrban
