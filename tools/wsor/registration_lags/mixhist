@@ -1,0 +1,72 @@
+#!/usr/bin/python
+# vim:ft=python
+
+''' plot histogram of waiting time data in log-space '''
+
+from argparse import ArgumentParser
+from pylab import *
+import os
+from scikits.learn.mixture import GMM
+from scipy.stats import norm
+
+from graphics import mixturehist
+
+parser = ArgumentParser(description=__doc__)
+parser.add_argument('data_file', metavar='data', help='NumPy array file')
+parser.add_argument('components', type=int)
+parser.add_argument('-subtitle', metavar='TEXT')
+
+times = array([1/86400., 60/86400., 3600/86400., 1, 7, 30, 365])
+logtimes = log(times)
+timestexts = ['1 sec', '1 min', '1 hr', '1 d', '1 week', '1 month', '1 year']
+
+if __name__ == '__main__':
+    ns = parser.parse_args()
+
+    data = np.load(ns.data_file)
+    w = - diff(data, axis=1)
+    w = np.log(w[w > 0] / 86400.)
+ 
+    print 'fitting GMM with {} components'.format(ns.components)
+    gmm = GMM(ns.components)
+    gmm.fit(w[:, None])
+    means = np.ravel(gmm.means)
+    covars = np.ravel(gmm.covars)
+    weights = np.ravel(gmm.weights)
+
+    print
+    for i, (m, v, p) in enumerate(zip(means, covars, weights)):
+        print 'component {}'.format(i + 1)
+        print '-------------'
+        mu = np.exp(m + v / 2)
+        med = np.exp(m)
+        var = (np.exp(v) - 1) * np.exp(2 * m + v)
+        print 'mean: %8.4g' % mu
+        print 'median: %8.4g' % med
+        print 'std. dev.: %8.4g' % np.sqrt(var)
+        print 'weight: %8.4g' % p
+        print
+
+    comps = [ norm(m, np.sqrt(v)) for m, v in zip(means, covars) ]
+    mixturehist(w, comps, weights, 50, 1000)
+
+    ym, yM = ylim()
+
+    for t, l in zip(logtimes, timestexts):
+        axvline(t, color='k', ls=':')
+        text(t+.1, yM - 0.05 * (yM-ym), l, fontsize='small', color='k', rotation=-30)
+
+    xlabel('log(days)')
+    ylabel('density')
+
+    _title = 'Time between registration and first edit (N = {})'.format(len(w))
+    if ns.subtitle:
+        _title += '\n' + ns.subtitle
+    title(_title)
+
+    draw()
+
+    fn = os.path.splitext(ns.data_file)[0] + '.pdf'
+    savefig(fn, format='pdf')
+    print 'output saved into {}'.format(fn)
+    show()

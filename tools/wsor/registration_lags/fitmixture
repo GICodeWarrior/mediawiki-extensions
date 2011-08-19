@@ -1,0 +1,39 @@
+#!/usr/bin/python
+# vim:ft=python
+
+''' fits lags data to a gaussian mixture model '''
+
+import os
+from argparse import ArgumentParser
+import numpy as np
+from scikits.learn.mixture import GMM
+
+parser = ArgumentParser(description=__doc__)
+parser.add_argument('data_file', metavar='data', help='NumPy array file')
+parser.add_argument('components', type=int)
+
+ns = parser.parse_args()
+
+data = np.load(ns.data_file)
+w = - np.diff(data, axis=1)
+w = np.log(w[w > 0] / 86400.)
+
+key = os.path.splitext(os.path.basename(ns.data_file))[0]
+out = [key]
+
+if len(w) > ns.components:
+    gmm = GMM(ns.components)
+    gmm.fit(w[:, None])
+
+    means = np.ravel(gmm.means)
+    covars = np.ravel(gmm.covars)
+    weights = np.ravel(gmm.weights)
+
+    idx = means.argsort()
+    out.extend(means[idx]) 
+    out.extend(covars[idx]) 
+    out.extend(weights[idx])
+else:
+    out.extend([np.nan] * 3 * ns.components)
+
+print '\t'.join(map(str, out))

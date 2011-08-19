@@ -1,0 +1,31 @@
+#!/usr/bin/python
+# :vim:ft=python
+
+import os
+from pylab import *
+from datetime import datetime
+from argparse import ArgumentParser
+
+parser = ArgumentParser()
+parser.add_argument('data_file', metavar='data')
+
+ns = parser.parse_args()
+
+ts = loadtxt(ns.data_file, dtype=dtype('S7,f,f,f,f,f,f'))
+
+cf = lambda k : datetime.strptime(k, '%Y-%m')
+x = map(cf, ts['f0'])
+
+plot(x, ts['f1'], 'o w')
+plot(x, ts['f2'], 'd k')
+axis('auto')
+xlabel('time')
+ylabel('log-days')
+title('GMM means, all NS (revision + archive)')
+draw()
+
+pdf_file = os.path.splitext(ns.data_file)[0] + '.pdf'
+savefig(pdf_file)
+print 'output saved to %s.' % pdf_file
+
+show()
