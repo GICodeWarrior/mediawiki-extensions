@@ -47,7 +47,7 @@ class GPoCHooks {
 		if( $title->getNamespace() == NS_TALK && $revision ) {
 			// All conditions to minimize the situations we've to run the job to update the data
 			$preparedText = $article->prepareTextForEdit( $text )->output->getText();
-			$extractor = new AssessmentsExtractor( $article, $preparedText );
+			$extractor = new AssessmentsExtractor( $preparedText );
 			$assessments = $extractor->extractAssessments();
 			GPoCHooks::updateDatabase( $title, $assessments, $revision );
 		}

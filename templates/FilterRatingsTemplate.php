@@ -59,7 +59,7 @@ Add to Selection:
 				selection: selection
 			}, function(raw_data) {
 				var data = $.parseJSON(raw_data);
-				$("#notice").html("Added to selection <a href='" + data.selection_url + "'>" + selection + "</a>");
+				$("#notice").hide().html("Added to selection <a href='" + data.selection_url + "'>" + selection + "</a>").fadeIn();
 			});
 			return false;
 		});
