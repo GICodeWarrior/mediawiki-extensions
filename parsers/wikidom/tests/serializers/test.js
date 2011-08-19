@@ -4,20 +4,34 @@ var context = new es.Document.Context(),
 	htmlSerializer = new es.Document.HtmlSerializer( context ),
 	wikitextSerializer = new es.Document.WikitextSerializer( context );
 
-function assertSerializations( tests ) {
+function assertSerializations( tests, domToDom ) {
 	for ( var i = 0; i < tests.length; i++ ) {
-		equals(
-			htmlSerializer.serializeDocument( tests[i].dom ),
-			tests[i].html,
-			'Serialize ' + tests[i].subject + ' to HTML'
-		);
+		if ( typeof tests[i].html !== 'undefined' ) {
+			equals(
+				htmlSerializer.serializeDocument( tests[i].dom ),
+				tests[i].html,
+				'Serialize ' + tests[i].subject + ' to HTML'
+			);
+		}
 	}
 	for ( var i = 0; i < tests.length; i++ ) {
-		equals(
-			wikitextSerializer.serializeDocument( tests[i].dom ),
-			tests[i].wikitext,
-			'Serialize ' + tests[i].subject + ' to Wikitext'
-		);
+		if ( typeof tests[i].wikitext !== 'undefined' ) {
+			equals(
+				wikitextSerializer.serializeDocument( tests[i].dom ),
+				tests[i].wikitext,
+				'Serialize ' + tests[i].subject + ' to Wikitext'
+			);
+		}
+	}
+	if ( typeof domToDom !== 'undefined' && domToDom === true ) {
+		var doc;
+		for ( var i = 0; i < tests.length; i++ ) {
+			deepEqual(
+				doc = es.Document.newFromWikiDomDocument( tests[i].dom ).getWikiDomDocument(),
+				tests[i].dom,
+				'Serialize ' + tests[i].subject + ' to Wikidom'
+			);
+		}
 	}
 }
 
@@ -172,7 +186,7 @@ test( 'Paragraphs', function() {
 			'html': '<p>Line with <strong>bold</strong> and <em>italic</em> text</p>',
 			'wikitext': 'Line with \'\'\'bold\'\'\' and \'\'italic\'\' text'
 		}
-   	] );
+   	], true );
 } );
 
 // Lists
@@ -207,7 +221,7 @@ test( 'Lists', function() {
 			'wikitext': '* 1\n* 2\n* 3'
 		},
   		{
-			'subject': 'mixed-style nested lists',
+			'subject': 'mixed-style nested lists (1)',
 			'dom': { 'blocks': [ {
 				'type': 'list',
 				'style': 'bullet',
@@ -231,8 +245,47 @@ test( 'Lists', function() {
 			'html': '<ul>\n<li>1\n<ol>\n<li>1.1</li>\n<li>1.2</li>\n<li>1.3</li>\n</ol>'
 				+ '\n</li>\n<li>2</li>\n</ul>',
 			'wikitext': '* 1\n*# 1.1\n*# 1.2\n*# 1.3\n* 2'
+		},
+  		{
+			'subject': 'mixed-style nested lists (2)',
+			'dom': { 'blocks': [ {
+				'type': 'list',
+				'style': 'bullet',
+				'items': [
+					{
+						'line': { 'text': '1' },
+						'lists': [
+							{
+								'style': 'number',
+								'items': [
+									{ 'line': { 'text': '1.1' } },
+									{ 'line': { 'text': '1.2' } },
+									{ 'line': { 'text': '1.3' } }
+								]
+							},
+							{
+								'style': 'bullet',
+								'items': [
+									{ 'line': { 'text': '1.4' } },
+									{ 'line': { 'text': '1.5' } },
+									{ 'line': { 'text': '1.6' } }
+								]
+							},
+							{
+								'style': 'number',
+								'items': [
+									{ 'line': { 'text': '1.7' } },
+									{ 'line': { 'text': '1.8' } },
+									{ 'line': { 'text': '1.9' } }
+								]
+							}
+						]
+					},
+					{ 'line': { 'text': '2' } }
+				]
+			} ] }
 		}
-	] );
+	], true );
 } );
 
 // Tables
