@@ -355,10 +355,62 @@ es.ListBlock.prototype.getText = function( range, render ) {
 };
 
 es.ListBlock.prototype.getWikiDom = function() {
-	return {
-		'type': 'list',
-		'items': []
-	};
+	var previousStyle,
+		stack = [],
+		previousLevel = -1,
+		items = this.list.items;
+
+	for( var i = 0; i < items.length; i++) {
+		var item = items[i];
+
+		if(item.level === previousLevel) {
+			if(item.style !== previousStyle) {
+				var x = stack.pop();
+				if(!stack[stack.length - 1].items[stack[stack.length - 1].items.length - 1].lists) {
+					stack[stack.length - 1].items[stack[stack.length - 1].items.length - 1].lists = [];
+				}
+				stack[stack.length - 1].items[stack[stack.length - 1].items.length - 1].lists.push(x);
+				stack.push( {
+					'items' : [],
+					'style' : item.style
+				} );
+				previousStyle = item.style;
+			}
+		}
+		
+		if(item.level > previousLevel) {
+			console.log(item.content.getText());
+			stack.push( {
+				'items' : [],
+				'style' : item.style
+			} );
+			previousLevel = item.level;
+
+		}
+		
+		if(item.level < previousLevel) {
+			var x = stack.pop();
+			if(!stack[stack.length - 1].items[stack[stack.length - 1].items.length - 1].lists) {
+				stack[stack.length - 1].items[stack[stack.length - 1].items.length - 1].lists = []
+			}
+			stack[stack.length - 1].items[stack[stack.length - 1].items.length - 1].lists.push(x);
+
+			previousLevel = item.level;
+			previousStyle = item.style;
+		}
+		
+		if(item.level == previousLevel) {
+			stack[stack.length - 1].items.push(
+				{
+					'line' : item.content.getWikiDomLines()[0]
+				}
+			);
+			previousStyle = item.style;
+		}
+	}
+	
+	stack[0].type = 'list';
+	return stack[0];
 };
 
 /* Registration */
