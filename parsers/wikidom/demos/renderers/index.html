@@ -72,7 +72,7 @@
 				$.getJSON( 'document.js', function( data ) {
 					var context = new es.Document.Context(),
 						htmlSerializer = new es.Document.HtmlSerializer( context ),
-						wikitextSerializer = new es.Document.HtmlSerializer( context ),
+						wikitextSerializer = new es.Document.WikitextSerializer( context ),
 						jsonSerializer = new es.Document.JsonSerializer( context, { 'indentWith': '  ' } ),
 						html = htmlSerializer.serializeDocument( data );
 					$( '#html-rendering' ).append( html );
