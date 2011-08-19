@@ -243,6 +243,22 @@ Sie können auch die [[Special:Favoritelist/edit|Standardseite]] zum Bearbeiten 
 	'favoritelistedit-raw-done' => 'Ihre Favoritenliste wurde aktualisiert.',
 );
 
+/** Spanish (Español)
+ * @author Mor
+ */
+$messages['es'] = array(
+	'favorites-desc' => 'Creando una lista de favoritos',
+	'favoritethis' => 'Marcar esta página como favorita',
+	'prefs-favoritelist' => 'Favoritos',
+	'prefs-advancedfavoritelist' => 'Opciones avanzadas',
+	'addedfavorite' => 'Añadido a favoritos',
+	'removedfavorite' => 'Quitar de Favoritos',
+	'favoritelist-options' => 'Opciones de Favoritos',
+	'tooltip-ca-favorite' => 'Añadir esta página a tus favoritos',
+	'tooltip-ca-unfavorite' => 'Eliminar esta página de tus favoritos',
+	'favoritelistedit-normal-title' => 'Editar favoritos',
+);
+
 /** French (Français)
  * @author Hashar
  */
