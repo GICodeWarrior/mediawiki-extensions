@@ -354,6 +354,13 @@ es.ListBlock.prototype.getText = function( range, render ) {
 	return "";
 };
 
+es.ListBlock.prototype.getWikiDom = function() {
+	return {
+		'type': 'list',
+		'items': []
+	};
+};
+
 /* Registration */
 
 /**
