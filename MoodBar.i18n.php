@@ -120,6 +120,7 @@ See also:
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Purodha
  * @author Raymond
  * @author SPQRobin
@@ -132,7 +133,8 @@ This is a feature in development. See [[mw:MoodBar 0.1/Design]] for background i
 	'moodbar-close' => 'Link text of the close-button. Make sure to include parentheses.
 
 See also:
-* {{msg|parentheses}}',
+* {{msg|parentheses}}
+{{Identical|Close}}',
 	'moodbar-intro-feedback' => 'Intro title of the MoodBar overlay trigger. $1 is the SITENAME.',
 	'moodbar-intro-editing' => '[[File:MoodBar-Step-1.png|right|200px]]
 Intro title of the MoodBar overlay trigger. $1 is the SITENAME.',
@@ -157,11 +159,15 @@ $messages['af'] = array(
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
-	'moodbar-desc' => 'Дазваляе вызначаным удзельнікам дасылаць іх «настрой» апэратару сайта',
-	'moodbar-trigger-feedback' => 'Водгук',
+	'moodbar-desc' => 'Дазваляе вызначаным удзельнікам дасылаць іх водгук пра вопыт у рэдагаваньні',
+	'moodbar-trigger-feedback' => 'Водгук пра рэдагаваньне',
+	'moodbar-trigger-share' => 'Падзяліцца Вашым вопытам',
 	'moodbar-trigger-editing' => 'Выкарыстоўваючы $1…',
+	'moodbar-close' => '(зачыніць)',
+	'moodbar-intro-feedback' => 'Рэдагаваньне {{GRAMMAR:родны|$1}} дало мне…',
 );
 
 /** German (Deutsch)
@@ -698,6 +704,7 @@ $messages['ml'] = array(
 	'moodbar-header-page' => 'താൾ',
 	'moodbar-header-usertype' => 'ഉപയോക്തൃതരം',
 	'moodbar-header-user' => 'ഉപയോക്താവ്',
+	'moodbar-header-editmode' => 'തിരുത്തൽ രൂപം',
 	'moodbar-header-system' => 'സിസ്റ്റം തരം',
 	'moodbar-header-comment' => 'അഭിപ്രായങ്ങൾ',
 	'moodbar-header-user-editcount' => 'ഉപയോക്തൃ തിരുത്തലുകളുടെ എണ്ണം',
