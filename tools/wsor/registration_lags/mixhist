@@ -3,6 +3,9 @@
 
 ''' plot histogram of waiting time data in log-space '''
 
+__author__ = "Giovanni Luca Ciampaglia"
+__email__ = "gciampaglia@wikimedia.org"
+
 from argparse import ArgumentParser
 from pylab import *
 import os

@@ -4,6 +4,9 @@
 Radicchi (2009), Phys. Rev. E 80, 026118, that used data from a snapshot of the
 logging table from 2008. '''
 
+__author__ = "Giovanni Luca Ciampaglia"
+__email__ = "gciampaglia@wikimedia.org"
+
 import re
 import os
 import sys

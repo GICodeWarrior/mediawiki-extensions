@@ -1,6 +1,9 @@
 #!/usr/bin/python
 # :vim:ft=python
 
+__author__ = "Giovanni Luca Ciampaglia"
+__email__ = "gciampaglia@wikimedia.org"
+
 import os
 from pylab import *
 from datetime import datetime

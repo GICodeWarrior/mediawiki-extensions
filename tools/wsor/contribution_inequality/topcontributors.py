@@ -2,6 +2,9 @@
 
 ''' lists top contributors by year and namespace '''
 
+__author__ = "Giovanni Luca Ciampaglia"
+__email__ = "gciampaglia@wikimedia.org"
+
 import os
 import sys
 import csv

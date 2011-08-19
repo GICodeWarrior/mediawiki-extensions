@@ -3,6 +3,9 @@
 
 ''' fits lags data to a gaussian mixture model '''
 
+__author__ = "Giovanni Luca Ciampaglia"
+__email__ = "gciampaglia@wikimedia.org"
+
 import os
 from argparse import ArgumentParser
 import numpy as np

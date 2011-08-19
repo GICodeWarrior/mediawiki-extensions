@@ -4,6 +4,9 @@
 
 ''' editor lifecycle data fitting tool '''
 
+__author__ = "Giovanni Luca Ciampaglia"
+__email__ = "gciampaglia@wikimedia.org"
+
 import sys
 import os
 import numpy as np

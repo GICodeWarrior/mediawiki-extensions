@@ -1,5 +1,8 @@
 #!/usr/bin/python
 
+__author__ = "Giovanni Luca Ciampaglia"
+__email__ = "gciampaglia@wikimedia.org"
+
 import sys
 import os
 import numpy as np

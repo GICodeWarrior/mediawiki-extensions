@@ -2,6 +2,9 @@
 
 ''' plots cohort rate date '''
 
+__author__ = "Giovanni Luca Ciampaglia"
+__email__ = "gciampaglia@wikimedia.org"
+
 import os
 import sys
 

@@ -4,6 +4,9 @@ from matplotlib import cm
 from scipy.stats import gaussian_kde
 from matplotlib.collections import LineCollection
 
+__author__ = "Giovanni Luca Ciampaglia"
+__email__ = "gciampaglia@wikimedia.org"
+
 def stackedarea(x, components, weights, cmap=cm.YlGnBu, **kwargs):
     '''
     Produces a stacked area plot from given components and weights.

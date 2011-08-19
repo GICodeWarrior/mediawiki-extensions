@@ -3,6 +3,9 @@
 
 ''' batch model fitting (usable with xargs)'''
 
+__author__ = "Giovanni Luca Ciampaglia"
+__email__ = "gciampaglia@wikimedia.org"
+
 import re
 import os
 import sys

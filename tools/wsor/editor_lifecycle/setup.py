@@ -1,5 +1,8 @@
 from distutils.core import setup
 
+__author__ = "Giovanni Luca Ciampaglia"
+__email__ = "gciampaglia@wikimedia.org"
+
 setup(
         name='lifecycle',
         description='WMF summer of research project',

@@ -1,6 +1,9 @@
 #!/usr/bin/python
 ''' computes gini coefficient of contribution to namespace per year '''
 
+__author__ = "Giovanni Luca Ciampaglia"
+__email__ = "gciampaglia@wikimedia.org"
+
 import os
 import sys
 import csv
