@@ -45,30 +45,29 @@ $wgSpecialPageGroups['Collabwatchlist'] = 'other';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'fnCollabWatchlistDbSchema';
 $wgHooks['GetPreferences'][] = 'fnCollabWatchlistPreferences';
 
-function fnCollabWatchlistDbSchema() {
-	global $updater;
-	$wgSql = dirname(__FILE__) . '/sql/';
+function fnCollabWatchlistDbSchema( $updater = null ) {
+	$sqlDir = dirname(__FILE__) . '/sql/';
 	if ( $updater === null ) { // <= 1.16 support
 		global $wgExtNewTables, $wgExtNewFields;
-		$wgExtNewTables[] = array('collabwatchlist',  $wgSql . 'collabwatchlist.sql');
-		$wgExtNewTables[] = array('collabwatchlistuser',  $wgSql . 'collabwatchlistuser.sql');
-		$wgExtNewTables[] = array('collabwatchlistcategory',  $wgSql . 'collabwatchlistcategory.sql');
-		$wgExtNewTables[] = array('collabwatchlistrevisiontag', $wgSql . 'collabwatchlistrevisiontag.sql');
-		$wgExtNewTables[] = array('collabwatchlisttag', $wgSql . 'collabwatchlisttag.sql');
-		$wgExtNewFields[] = array('collabwatchlistrevisiontag', 'ct_rc_id', $wgSql . 'patch-collabwatchlist_noctid.sql');
+		$wgExtNewTables[] = array('collabwatchlist',  $sqlDir . 'collabwatchlist.sql');
+		$wgExtNewTables[] = array('collabwatchlistuser',  $sqlDir . 'collabwatchlistuser.sql');
+		$wgExtNewTables[] = array('collabwatchlistcategory',  $sqlDir . 'collabwatchlistcategory.sql');
+		$wgExtNewTables[] = array('collabwatchlistrevisiontag', $sqlDir . 'collabwatchlistrevisiontag.sql');
+		$wgExtNewTables[] = array('collabwatchlisttag', $sqlDir . 'collabwatchlisttag.sql');
+		$wgExtNewFields[] = array('collabwatchlistrevisiontag', 'ct_rc_id', $sqlDir . 'patch-collabwatchlist_noctid.sql');
 	} else { // >= 1.17 support
 		$updater->addExtensionUpdate( array ( 'addTable', 'collabwatchlist',
-			$wgSql . 'collabwatchlist.sql', true ) );
+			$sqlDir . 'collabwatchlist.sql', true ) );
 		$updater->addExtensionUpdate( array ( 'addTable', 'collabwatchlistuser',
-			$wgSql . 'collabwatchlistuser.sql', true ) );
+			$sqlDir . 'collabwatchlistuser.sql', true ) );
 		$updater->addExtensionUpdate( array ( 'addTable', 'collabwatchlistcategory',
-			$wgSql . 'collabwatchlistcategory.sql', true ) );
+			$sqlDir . 'collabwatchlistcategory.sql', true ) );
 		$updater->addExtensionUpdate( array ( 'addTable', 'collabwatchlistrevisiontag',
-			$wgSql . 'collabwatchlistrevisiontag.sql', true ) );
+			$sqlDir . 'collabwatchlistrevisiontag.sql', true ) );
 		$updater->addExtensionUpdate( array ( 'addTable', 'collabwatchlisttag',
-			$wgSql . 'collabwatchlisttag.sql', true ) );
+			$sqlDir . 'collabwatchlisttag.sql', true ) );
 		$updater->addExtensionUpdate( array( 'modifyField', 'collabwatchlistrevisiontag', 'ct_rc_id',
-			$wgSql . 'patch-collabwatchlist_noctid.sql', true ) );
+			$sqlDir . 'patch-collabwatchlist_noctid.sql', true ) );
 	}
 	return true;
 }
