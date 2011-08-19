@@ -658,23 +658,29 @@ es.Content.prototype.getWordBoundaries = function( offset ) {
  * 
  * @method
  */
-es.Content.prototype.handleAnnotation = function( bias, stack, index, annotation ) {
+es.Content.prototype.handleAnnotation = function( bias, line, index, annotation ) {
 	if ( bias === 'open' ) {
 		var newAnnotation = es.copyObject( annotation );
 		newAnnotation.range = {
 			start: index
 		};
-		stack.push( newAnnotation );	
+		if ( !line.annotations ) {
+			line.annotations = [ newAnnotation ];
+		} else {
+			line.annotations.push( newAnnotation );
+		}
 	} else {
-		for ( var i = stack.length - 1; i >= 0; i-- ) {
-			if ( !stack[i].range.end ) {
-				if ( annotation ) {
-					if ( stack[i].type === annotation.type && es.compareObjects( stack[i].data, annotation.data ) ) {
-						stack[i].range.end = index;
-						break;
+		if ( line.annotations ) {
+			for ( var i = line.annotations.length - 1; i >= 0; i-- ) {
+				if ( !line.annotations[i].range.end ) {
+					if ( annotation ) {
+						if ( line.annotations[i].type === annotation.type && es.compareObjects( line.annotations[i].data, annotation.data ) ) {
+							line.annotations[i].range.end = index;
+							break;
+						}
+					} else {
+						line.annotations[i].range.end = index;
 					}
-				} else {
-					stack[i].range.end = index;
 				}
 			}
 		}
@@ -700,7 +706,7 @@ es.Content.prototype.getWikiDomLines = function() {
 	for ( i = 0; i < this.data.length; i++ ) {
 		
 		if ( line == null ) {
-			line = { text : '', annotations : [] };
+			line = { text : '' };
 		}
 		
 		right = this.data[i];
@@ -708,7 +714,7 @@ es.Content.prototype.getWikiDomLines = function() {
 		rightPlain = typeof right === 'string';
 		
 		if ( rightPlain && right == "\n" ) {
-			this.handleAnnotation( 'close', line.annotations, i - offset );
+			this.handleAnnotation( 'close', line, i - offset );
 			lines.push(line);
 			line = null;
 			offset = i + 1;
@@ -718,22 +724,22 @@ es.Content.prototype.getWikiDomLines = function() {
 		
 		if ( !leftPlain && rightPlain ) {
 			// [formatted][plain] pair, close any annotations for left
-			this.handleAnnotation( 'close', line.annotations, i - offset );
+			this.handleAnnotation( 'close', line, i - offset );
 		} else if ( leftPlain && !rightPlain ) {
 			// [plain][formatted] pair, open any annotations for right
 			for ( j = 1; j < right.length; j++ ) {
-				this.handleAnnotation( 'open', line.annotations, i - offset, right[j] );
+				this.handleAnnotation( 'open', line, i - offset, right[j] );
 			}
 		} else if ( !leftPlain && !rightPlain ) {
 			// [formatted][formatted] pair, open/close any differences
 			for ( j = 1; j < left.length; j++ ) {
 				if ( this.indexOfAnnotation( i , left[j], true ) === -1 ) {
-					this.handleAnnotation( 'close', line.annotations, i - offset, left[j] );
+					this.handleAnnotation( 'close', line, i - offset, left[j] );
 				}
 			}
 			for ( j = 1; j < right.length; j++ ) {
 				if ( this.indexOfAnnotation( i - 1, right[j], true ) === -1 ) {
-					this.handleAnnotation( 'open', line.annotations, i - offset, right[j] );
+					this.handleAnnotation( 'open', line, i - offset, right[j] );
 				}
 			}
 		}
@@ -743,7 +749,7 @@ es.Content.prototype.getWikiDomLines = function() {
 	}
 
 	if ( line != null ) {
-		this.handleAnnotation( 'close', line.annotations, i - offset );
+		this.handleAnnotation( 'close', line, i - offset );
 		lines.push( line );
 	}
 	return lines;	
