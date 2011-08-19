@@ -269,15 +269,16 @@ class ContributionTrackingProcessor {
 	 * @return array
 	 */
 	static function mergeArrayDefaults( $params, $defaults, $nullify=false ) {
-		foreach ( $defaults as $key => $value ) {
+		$ret = $defaults;
+		foreach ( $ret as $key => $value ) {
 			if ( array_key_exists( $key, $params ) ) {
-				$defaults[$key] = $params[$key];
+				$ret[$key] = $params[$key];
 			}
-			if ( $nullify && $defaults[$key] === '' ) {
-				$defaults[$key] = null;
+			if ( $nullify && $ret[$key] === '' ) {
+				$ret[$key] = null;
 			}
 		}
-		return $defaults;
+		return $ret;
 	}
 
 	/**
