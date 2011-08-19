@@ -379,24 +379,31 @@ es.ListBlock.prototype.getWikiDom = function() {
 		}
 		
 		if(item.level > previousLevel) {
-			console.log(item.content.getText());
-			stack.push( {
-				'items' : [],
-				'style' : item.style
-			} );
-			previousLevel = item.level;
-
+			
+			for(var ii = previousLevel; ii < item.level; ii++) {
+				stack.push( {
+					'items' : [],
+					'style' : item.style
+				} );
+				previousLevel = item.level;
+			}
 		}
 		
 		if(item.level < previousLevel) {
-			var x = stack.pop();
-			if(!stack[stack.length - 1].items[stack[stack.length - 1].items.length - 1].lists) {
-				stack[stack.length - 1].items[stack[stack.length - 1].items.length - 1].lists = []
-			}
-			stack[stack.length - 1].items[stack[stack.length - 1].items.length - 1].lists.push(x);
+			for(var ii = previousLevel; ii > item.level; ii--) {
 
-			previousLevel = item.level;
-			previousStyle = item.style;
+				var x = stack.pop();
+				if(stack[stack.length - 1].items.length == 0) {
+					stack[stack.length - 1].items.push({});
+				}
+				if(!stack[stack.length - 1].items[stack[stack.length - 1].items.length - 1].lists) {
+					stack[stack.length - 1].items[stack[stack.length - 1].items.length - 1].lists = []
+				}
+				stack[stack.length - 1].items[stack[stack.length - 1].items.length - 1].lists.push(x);
+	
+				previousLevel = item.level;
+				previousStyle = item.style;
+			}
 		}
 		
 		if(item.level == previousLevel) {
