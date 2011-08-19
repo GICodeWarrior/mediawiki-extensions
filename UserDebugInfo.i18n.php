@@ -63,3 +63,11 @@ $messages['nl'] = array(
 	'userdebuginfo-language' => 'Taal',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'userdebuginfo-value' => 'విలువ',
+	'userdebuginfo-language' => 'భాష',
+);
+
