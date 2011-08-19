@@ -205,28 +205,14 @@ $(document).ready( function() {
 		surface.annotateContent( 'remove', { 'type': 'all' } );
 		return false;
 	} );
-	$( '#es-toolbar-json' ).click( function() {
-		showData = showData === 'json' ? false : 'json';
+	$( '.es-toolbarGroup-preview .es-toolbarTool' ).click( function() {
+		var type = $(this).attr( 'rel' );
+		showData = showData === type ? false : type;
 		if ( showData ) {
 			$( 'body' ).addClass( 'es-showData' );
-			$( '#es-json' ).show();
-			$( '#es-wikitext' ).hide();
-			$( '#es-toolbar-wikitext' ).removeClass( 'es-toolbarTool-down' );
-			$(this).addClass( 'es-toolbarTool-down' );
-		} else {
-			$( 'body' ).removeClass( 'es-showData' );
-			$(this).removeClass( 'es-toolbarTool-down' );
-		}
-		doc.renderBlocks();
-		doc.emit( 'update' );
-	} );
-	$( '#es-toolbar-wikitext' ).click( function() {
-		showData = showData === 'wikitext' ? false : 'wikitext';
-		if ( showData ) {
-			$( 'body' ).addClass( 'es-showData' );
-			$( '#es-wikitext' ).show();
-			$( '#es-json' ).hide();
-			$( '#es-toolbar-json' ).removeClass( 'es-toolbarTool-down' );
+			$( '.es-preview' ).hide();
+			$( '#es-preview-' + type ).show();
+			$( '.es-toolbarGroup-preview .es-toolbarTool' ).removeClass( 'es-toolbarTool-down' );
 			$(this).addClass( 'es-toolbarTool-down' );
 		} else {
 			$( 'body' ).removeClass( 'es-showData' );
@@ -244,12 +230,20 @@ $(document).ready( function() {
 				clearTimeout( previewTimeout );
 			}
 			previewTimeout = setTimeout( function () {
-				if ( showData === 'json' ) {
-					$( '#es-json' ).text( doc.serialize( 'json', context, {
-						'indentWith': '  '
-					} ) );
-				} else if ( showData === 'wikitext' ) {
-					$( '#es-wikitext' ).text( doc.serialize( 'wikitext', context ) );
+				switch ( showData ) {
+					case 'json':
+						$( '#es-preview-json' )
+							.text( doc.serialize( 'json', context, { 'indentWith': '  ' } ) );
+						break;
+					case 'wikitext':
+						$( '#es-preview-wikitext' ).text( doc.serialize( 'wikitext', context ) );
+						break;
+					case 'html':
+						$( '#es-preview-html' ).text( doc.serialize( 'html', context ) );
+						break;
+					case 'render':
+						$( '#es-preview-render' ).html( doc.serialize( 'html', context ) );
+						break;
 				}
 			}, 100 );
 		}

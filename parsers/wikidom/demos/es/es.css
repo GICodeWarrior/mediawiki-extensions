@@ -6,29 +6,38 @@ body {
 	padding: 0;
 	overflow-y: scroll;
 	-webkit-user-select: none;
+	background-color: white;
+}
+#es-base {
+	margin: 2em;
+	-webkit-box-shadow: 0 0.25em 1.5em 0 #dddddd;
+	-moz-box-shadow: 0 0.25em 1.5em 0 #dddddd;
+	box-shadow: 0 0.25em 1.5em 0 #dddddd;
+	-webkit-border-radius: 0.5em;
+	-moz-border-radius: 0.5em;
+	-o-border-radius: 0.5em;
+	border-radius: 0.5em;
 }
 #es-toolbar,
 #es-panes {
-	margin-left: 1.5%;
-	width: 97%;
 	border: solid 1px #dddddd;
 }
 #es-toolbar {
 	border-bottom: none;
-	border-top-right-radius: 0.25em;
 	-webkit-border-top-right-radius: 0.25em;
 	-moz-border-top-right-radius: 0.25em;
 	-o-border-top-right-radius: 0.25em;
-	border-top-left-radius: 0.25em;
+	border-top-right-radius: 0.25em;
 	-webkit-border-top-left-radius: 0.25em;
 	-moz-border-top-left-radius: 0.25em;
 	-o-border-top-left-radius: 0.25em;
+	border-top-left-radius: 0.25em;
 	background-image: url(images/fade-up.png);
 	background-position: bottom left;
 	background-repeat: repeat-x;
 }
 .es-showData #es-visual,
-.es-showData #es-data {
+.es-showData #es-previews {
 	width: 50%;
 	float: left;
 	overflow: hidden;
@@ -36,13 +45,15 @@ body {
 .es-showData #es-editor {
 	border-right: solid 1px #dddddd;
 }
+#es-editor {
+	font-size: 0.8em;
+}
 .es-toolbarGroup {
 	float: left;
 	padding: 0.25em;
 }
-.es-toolbarGroup-right {
+.es-toolbarGroup-preview {
 	float: right;
-	padding: 0.25em;
 }
 .es-toolbarDivider {
 	float: left;
@@ -84,16 +95,23 @@ body {
 	width: 22px;
 	height: 22px;
 }
-#es-data {
+#es-previews {
 	display: none;
 }
-.es-showData #es-data {
+.es-showData #es-previews {
 	display: block;
 }
-.es-code {
+.es-preview {
 	margin: 0;
 	padding: 1em;
+}
+.es-code {
 	white-space: pre-wrap;
 	font-family: "Droid Sans Mono", "Courier New", monospace;
 	font-size: 0.7em;
+}
+.es-render {
+	font-size: 0.8em;
+	line-height: 1.5em;
+	padding-top: 0;
 }
