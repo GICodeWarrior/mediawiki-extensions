@@ -180,6 +180,14 @@ Pšikłady:
 	'flagpage-tab' => 'Wobznamjeniś',
 );
 
+/** Spanish (Español)
+ * @author Mor
+ */
+$messages['es'] = array(
+	'flagpage-nopageselectedtitle' => 'No hay página seleccionada',
+	'flagpage-nopageselected' => 'No ha especificado una página',
+);
+
 /** Persian (فارسی)
  * @author Huji
  * @author Mjbmr

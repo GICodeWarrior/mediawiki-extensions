@@ -84,7 +84,7 @@ $messages['frp'] = array(
 $messages['ia'] = array(
 	'categorize-desc' => 'Insere un quadro de entrata in le paginas de modification e de incargamento que permitte al usatores de assignar categorias al pagina',
 	'categorize-title' => 'Qualification de cognoscentia',
-	'categorize-footer' => 'SI tu vole adder un etiquetta, per favor contacta nos a ...',
+	'categorize-footer' => 'Si tu vole adder un etiquetta, per favor contacta un [[Special:ListUsers/sysop|administrator]].',
 	'categorize-advice' => 'Clicca super le etiquettas que tu vole attribuer a iste pagina:',
 );
 

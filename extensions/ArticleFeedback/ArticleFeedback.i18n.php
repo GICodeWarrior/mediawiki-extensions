@@ -1485,7 +1485,10 @@ $messages['et'] = array(
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Privaatsuspõhimõtted',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Privaatsuspõhimõtted',
 	'articlefeedback-form-panel-submit' => 'Saada hinnang',
-	'articlefeedback-form-panel-pending' => 'Sinu hinnangut pole veel saadetud',
+	'articlefeedback-form-panel-pending' => 'Sinu hinnangut pole veel saadetud.',
+	'articlefeedback-form-panel-success' => 'Edukalt salvestatud',
+	'articlefeedback-form-panel-expiry-title' => 'Sinu hinnangud on aegunud.',
+	'articlefeedback-form-panel-expiry-message' => 'Palun iseloomusta uuesti seda lehekülge ja saada uued hinnangud.',
 	'articlefeedback-report-switch-label' => 'Vaata leheküljele antud hinnanguid',
 	'articlefeedback-report-panel-title' => 'Leheküljele antud hinnangud',
 	'articlefeedback-report-panel-description' => 'Praegused keskmised hinnangud',
@@ -1526,6 +1529,8 @@ $messages['et'] = array(
 	'articlefeedback-pitch-edit-accept' => 'Redigeeri',
 	'articlefeedback-survey-message-error' => 'Ilmnes tõrge.
 Palun proovi hiljem uuesti.',
+	'articleFeedback-table-caption-dailyhighs' => 'Parimate hinnangutega leheküljed: $1',
+	'articleFeedback-table-caption-dailylows' => 'Halvimate hinnangutega leheküljed: $1',
 	'articleFeedback-table-heading-page' => 'Lehekülg',
 	'articleFeedback-table-heading-average' => 'Keskmine',
 );

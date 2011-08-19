@@ -639,6 +639,13 @@ $messages['pms'] = array(
 	'assert_edit_message' => "L'assersion spessificà ($1) a l'é falìa.",
 );
 
+/** Western Punjabi (پنجابی)
+ * @author Khalid Mahmood
+ */
+$messages['pnb'] = array(
+	'assert_edit_title' => 'کوشش فیل',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

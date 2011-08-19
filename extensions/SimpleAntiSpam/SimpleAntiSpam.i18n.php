@@ -617,6 +617,13 @@ Vemp '''PA''' sòn-sì!",
 	'simpleantispam-desc' => 'A gionta un sempi control spam/bot a le forme',
 );
 
+/** Western Punjabi (پنجابی)
+ * @author Khalid Mahmood
+ */
+$messages['pnb'] = array(
+	'simpleantispam' => 'تھواڈی تبدیلی نیں سپام روک پربندھ چلادتا اے',
+);
+
 /** Portuguese (Português)
  * @author 555
  */
