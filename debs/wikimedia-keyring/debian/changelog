@@ -1,3 +1,9 @@
+wikimedia-keyring (2011.08.19.1) lucid-wikimedia; urgency=low
+
+  * Changing distro
+
+ -- Sam Reed <reedy@wikimedia.org>  Thu, 19 Aug 2011 00:20:00 +0000
+
 wikimedia-keyring (2006.10.11.1) hoary; urgency=low
 
   * Convert to Wikimedia
