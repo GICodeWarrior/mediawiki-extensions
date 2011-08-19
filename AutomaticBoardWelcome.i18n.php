@@ -16,11 +16,25 @@ $messages['en'] = array(
 
 );
 
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'automaticboardwelcome-desc' => 'Аўтаматычна разьмяшчае [[MediaWiki:User-board-welcome-message|вітальнае паведамленьне]] на дошцы новага карыстальніка пасьля стварэньне рахунку',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
 $messages['de'] = array(
 	'automaticboardwelcome-desc' => 'Ermöglicht, nach der Neuanlage eines Kontos, die Erstellung einer automatischen [[MediaWiki:User-board-welcome-message|Willkommensnachricht]] auf der entsprechenden Benutzerseite',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'automaticboardwelcome-desc' => 'Insere automaticamente un [[MediaWiki:User-board-welcome-message|message de benvenita]] in le tabuliero personal de nove usatores post le creation del conto',
 );
 
 /** Macedonian (Македонски)
