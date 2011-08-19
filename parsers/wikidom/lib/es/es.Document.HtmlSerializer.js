@@ -155,11 +155,34 @@ es.Document.HtmlSerializer.prototype.serializeLine = function( line ) {
 				case 'italic':
 					addXml( an.range, 'em' );
 					break;
+				case 'size':
+					switch ( an.data.type ) {
+						case 'big':
+							addXml( an.range, 'big' );
+							break;
+						case 'small':
+							addXml( an.range, 'small' );
+							break;
+					}
+					break;
+				case 'script':
+					switch ( an.data.type ) {
+						case 'super':
+							addXml( an.range, 'sup' );
+							break;
+						case 'sub':
+							addXml( an.range, 'sub' );
+							break;
+					}
+					break;
 				case 'xlink':
 					addXml( an.range, 'a', { 'href': an.data.url } );
 					break;
 				case 'ilink':
 					addXml( an.range, 'a', { 'href': '/wiki/' + an.data.title } );
+					break;
+				case 'template':
+					as.add( an.range, an.data.html, '' );
 					break;
 			}
 		}
