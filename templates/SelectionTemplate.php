@@ -12,7 +12,7 @@ class SelectionTemplate extends QuickTemplate {
 
 <div id="">
 <?php if( count($articles) > 0 ) { ?>
-<h3>Articles in Selection <?php echo $name; ?></h3> <small><a href="<?php echo $csv_link; ?>">Export CSV</a></small>
+<h3>Articles in Selection <?php echo htmlentities( $name ); ?></h3> <small><a href="<?php echo htmlentities( $csv_link ); ?>">Export CSV</a></small>
 	<table>
 	<tr>
 		<th style="width:150px">Article</th>
@@ -21,17 +21,17 @@ class SelectionTemplate extends QuickTemplate {
 		<th style="width:300px">Actions</th>
 	</tr>	
 	<?php foreach( $articles as $article ) { ?>
-	<tr class="article-row" data-namespace="<?php echo $article['s_namespace']; ?>" data-article="<?php echo $article['s_article']; ?>">
-	<td><a href="<?php echo $article['title']->getLinkURL(); ?>"><?php echo $article['s_article']; ?></a></td>
+	<tr class="article-row" data-namespace="<?php echo htmlentities( $article['s_namespace'] ); ?>" data-article="<?php echo htmlentities( $article['s_article'] ); ?>">
+	<td><a href="<?php echo $article['title']->getLinkURL(); ?>"><?php echo htmlentities( $article['s_article'] ); ?></a></td>
 	<td><?php echo wfTimeStamp( TS_ISO_8601, $article['s_timestamp'] );	?></td>
 	<td><?php if($article['s_revision'] != null) { ?>
-		<a href="<?php echo $article['title']->getLinkUrl(array('oldid' => $article['s_revision'])); ?>" class="revision-link"><?php echo $article['s_revision']; ?></a>
+		<a href="<?php echo htmlentities( $article['title']->getLinkUrl( array( 'oldid' => $article['s_revision'] ) ) ); ?>" class="revision-link"><?php echo htmlentities( $article['s_revision'] ); ?></a>
 		<?php } ?>
 	</td>
 	<td>
 		<div class="item-actions">
 		<div class="revision-input" style="display:none">
-			<input type="text" class="revision-id" placeholder="Enter revision id" value="<?php echo $article['s_revision']; ?>" />
+			<input type="text" class="revision-id" placeholder="Enter revision id" value="<?php echo htmlentities( $article['s_revision'] ); ?>" />
 			(<a href="#" class="revision-save">Save</a> | <a href="#" class="revision-cancel">Cancel</a>)
 		</div>
 		<a href="#" class="change-revision">Set Revision</a> |
