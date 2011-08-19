@@ -28,8 +28,7 @@ es.Selection = function( from, to ) {
  * @method
  */
 es.Selection.prototype.normalize = function() {
-	if ( this.from.block.getIndex() < this.to.block.getIndex()
-			|| ( this.from.block === this.to.block && this.from.offset < this.to.offset ) ) {
+	if ( this.from.compareWith( this.to ) < 1 ) {
 		this.start = this.from;
 		this.end = this.to;
 	} else {
@@ -38,22 +37,80 @@ es.Selection.prototype.normalize = function() {
 	}
 };
 
-/**
- * Gets all blocks selected completely, between from and to.
- * 
- * If from and to are adjacent blocks, or the same block, the result will always be an empty array.
- * 
- * @method
- * @returns {Array} List of blocks
- */
-es.Selection.prototype.through = function() {
-	var through = [];
-	if ( this.from !== this.to && this.from.nextBlock() !== this.to ) {
-		var next = this.from.nextBlock();
-		while ( next && next !== this.to ) {
-			through.push( next );
-			next = next.nextBlock();
+es.Selection.prototype.prepareInsert = function( content ) {
+	this.normalize();
+	if ( this.start ) {
+		var mutation;
+		if ( this.end && this.start.compareWith( end ) < 0 ) {
+			mutation = this.prepareRemove();
+		} else {
+			mutation = new es.Mutation();
 		}
+		mutation.add( this.start.block.getId(), this.start.block.prepareInsert( content ) );
+		return mutation;
 	}
-	return through;
+	throw 'Mutation preparation error. Can not insert content at undefined location.';
+};
+
+es.Selection.prototype.prepareRemove = function() {
+	this.normalize();
+	var mutation = new es.Mutation();
+	if ( this.start.block === this.end.block ) {
+		// Single block deletion
+		mutation.add(
+			this.start.block.getId(),
+			this.start.block.prepareRemove( new es.Range( this.start.offset, this.end.offset ) )
+		);
+	} else {
+		// Multiple block deletion
+		var block = this.start.block.next();
+		// First
+		mutation.add(
+			block.getId(),
+			block.prepareRemove( new es.Range( this.start.offset, block.getLength() ) )
+		);
+		while ( ( block = block.next() ) !== this.end.block ) {
+			// Middle
+			mutation.add(
+				block.getId(), block.prepareRemove( new es.Range( 0, block.getLength() ) )
+			);
+		}
+		// Last
+		mutation.add( block.getId(), block.prepareRemove( new es.Range( 0, this.end.offset ) ) );
+	}
+	return mutation;
+};
+
+es.Selection.prototype.prepareAnnotate = function() {
+	this.normalize();
+	var mutation = new es.Mutation();
+	if ( this.start.block === this.end.block ) {
+		// Single block annotation
+		mutation.add(
+			this.start.block.getId(), 
+			this.start.block.prepareRemove( new es.Range( this.start.offset, this.end.offset ) )
+		);
+	} else {
+		// Multiple block annotation
+		var block = this.start.block.next();
+		// First
+		mutation.add(
+			block.getId(),
+			block.prepareAnnotate(
+				annotation, new es.Range( this.start.offset, block.getLength() )
+			)
+		);
+		while ( ( block = block.next() ) !== this.end.block ) {
+			// Middle
+			mutation.add(
+				block.getId(), 
+				block.prepareAnnotate( annotation, new es.Range( 0, block.getLength() ) )
+			);
+		}
+		// Last
+		mutation.add(
+			block.getId(), block.prepareAnnotate( annotation, new es.Range( 0, this.end.offset ) )
+		);
+	}
+	return mutation;
 };
