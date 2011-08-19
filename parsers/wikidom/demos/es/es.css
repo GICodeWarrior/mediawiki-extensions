@@ -1,0 +1,99 @@
+body {
+	font-family: "Arial";
+	font-size: 1em;
+	width: 100%;
+	margin: 1em 0;
+	padding: 0;
+	overflow-y: scroll;
+	-webkit-user-select: none;
+}
+#es-toolbar,
+#es-panes {
+	margin-left: 1.5%;
+	width: 97%;
+	border: solid 1px #dddddd;
+}
+#es-toolbar {
+	border-bottom: none;
+	border-top-right-radius: 0.25em;
+	-webkit-border-top-right-radius: 0.25em;
+	-moz-border-top-right-radius: 0.25em;
+	-o-border-top-right-radius: 0.25em;
+	border-top-left-radius: 0.25em;
+	-webkit-border-top-left-radius: 0.25em;
+	-moz-border-top-left-radius: 0.25em;
+	-o-border-top-left-radius: 0.25em;
+	background-image: url(images/fade-up.png);
+	background-position: bottom left;
+	background-repeat: repeat-x;
+}
+.es-showData #es-visual,
+.es-showData #es-data {
+	width: 50%;
+	float: left;
+	overflow: hidden;
+}
+.es-showData #es-editor {
+	border-right: solid 1px #dddddd;
+}
+.es-toolbarGroup {
+	float: left;
+	padding: 0.25em;
+}
+.es-toolbarGroup-right {
+	float: right;
+	padding: 0.25em;
+}
+.es-toolbarDivider {
+	float: left;
+	width: 1px;
+	height: 24px;
+	margin: 0.5em 0 0.5em 0.5em;
+	background-color: #dddddd;
+}
+.es-toolbarLabel {
+	float: left;
+	padding: 0.5em 0.75em;
+	line-height: 22px;
+	font-size: 0.8em;
+	color: #555555;
+}
+.es-toolbarTool {
+	float: left;
+	padding: 0.25em;
+	border: solid 1px transparent;
+	border-radius: 0.125em;
+	-webkit-border-radius: 0.125em;
+	-moz-border-radius: 0.125em;
+	-o-border-radius: 0.125em;
+	cursor: pointer;
+}
+.es-toolbarTool:hover,
+.es-toolbarTool-down:hover {
+	border-color: #eeeeee;
+}
+.es-toolbarTool:active,
+.es-toolbarTool-down {
+	border-color: #dddddd;
+	background-image: url(images/fade-down.png);
+	background-position: top left;
+	background-repeat: repeat-x;
+}
+.es-toolbarTool img {
+	display: block;
+	width: 22px;
+	height: 22px;
+}
+#es-data {
+	display: none;
+}
+.es-showData #es-data {
+	display: block;
+}
+.es-code {
+	margin: 0;
+	padding: 1em;
+	white-space: pre-wrap;
+	font-family: "Droid Sans Mono", "Courier New", monospace;
+	font-size: 0.7em;
+}
