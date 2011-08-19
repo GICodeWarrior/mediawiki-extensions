@@ -366,12 +366,22 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Dferg
  * @author Fitoschido
+ * @author Mor
  */
 $messages['es'] = array(
 	'e-mailpage' => 'Página de correo electrónico',
 	'ea-group-info' => 'Además puedes enviar la página a los miembros de un grupo',
 	'ea-pagesend' => 'Página «$1» enviada desde $2',
 	'ea-denied' => 'Acceso denegado',
+	'ea-from' => 'De:',
+	'ea-to' => 'Para:',
+	'ea-cc' => 'CC (con copia):',
+	'ea-send' => 'Enviar',
+	'ea-subject' => 'Asunto:',
+	'ea-message' => 'Mensaje:',
+	'ea-data' => 'Fecha',
+	'ea-selectrecord' => 'Estas plantillas se pueden utilizar para rellenar los campos en el contenido del mensaje',
+	'ea-allusers' => 'Todos los usuarios',
 );
 
 /** Persian (فارسی)
