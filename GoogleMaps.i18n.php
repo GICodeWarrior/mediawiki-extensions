@@ -514,21 +514,29 @@ $wgGoogleMapsMessages['arz'] = array(
 
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
+ * @author PPerviz
  * @author PrinceValiant
  */
 $wgGoogleMapsMessages['az'] = array(
 	'gm-balloon-title' => 'Başlıq:',
+	'gm-refresh-list' => 'Siyahını yenilə',
+	'gm-no-results' => 'Bağışlayın, nəticələr yoxdur',
 	'gm-searching' => 'axtarılır...',
 	'gm-map' => 'Xəritə',
 	'gm-are-you-sure' => 'Əminsinizmi?',
 	'gm-width' => 'Genişlik',
 	'gm-height' => 'Hündürlük',
+	'gm-zoom-control' => 'Naviqasiya',
+	'gm-medium' => 'Orta',
 	'gm-small' => 'Kiçik',
 	'gm-no-zoom-control' => 'Heç biri',
 	'gm-yes' => 'Bəli',
 	'gm-no' => 'Xeyr',
 	'gm-search' => 'Axtar',
+	'gm-meters' => 'metrlər',
+	'gm-miles' => 'millər',
 	'gm-save-path' => 'Qeyd et',
+	'gm-back' => 'geri',
 	'gm-kml-loading' => 'yüklənir…',
 	'gm-earth' => 'Earth',
 	'gm-moon' => 'Ay',
