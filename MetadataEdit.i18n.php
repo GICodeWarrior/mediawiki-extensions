@@ -686,9 +686,10 @@ $messages['ksh'] = array(
 
 /** Kurdish (Latin) (Kurdî (Latin))
  * @author Bangin
+ * @author Gomada
  */
 $messages['ku-latn'] = array(
-	'metadata_help' => "Data'yên meta:",
+	'metadata_help' => 'Daneyên meta:',
 );
 
 /** Cornish (Kernowek)
