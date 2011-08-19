@@ -489,13 +489,12 @@ es.Content.prototype.annotate = function( method, annotation, range ) {
 	 * ensure that modifications to annotated characters in the content data do not affect the data
 	 * of other content objects, annotated characters must be sliced individually. This is too
 	 * expensive to do on all content on every copy, so we only do it when we are going to modify
-	 * the annotation information, and on a few annotated characters as possible.
+	 * the annotation information, and on as few annotated characters as possible.
 	 */
 	for ( var i = range.start; i < range.end; i++ ) {
 		if ( typeof this.data[i] !== 'string' ) {
 			this.data[i] = this.data[i].slice( 0 );
 		}
-		i++;
 	}
 	/*
 	 * Support toggle method by automatically choosing add or remove based on the coverage of the 
