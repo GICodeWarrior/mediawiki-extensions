@@ -245,7 +245,6 @@ es.Surface.prototype.onKeyDown = function( e ) {
 				break;
 			}
 			this.initialHorizontalCursorPosition = null;
-			this.cursor.hide();
 			if ( this.keyboard.keydownTimeout ) {
 				clearTimeout( this.keyboard.keydownTimeout );
 			}
