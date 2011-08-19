@@ -1,3 +1,9 @@
+php5-fss (0.0.1-5ubuntu1~lucid1) lucid-wikimedia; urgency=low	
+
+  * Remove deprecated hash comment from fss.ini
+
+ -- Sam Reed <reedy@wikimedia.org>  Fri, 19 Aug 2011 00:09:00 +0000
+
 php5-fss (0.0.1-4ubuntu1~lucid1) lucid-wikimedia; urgency=low	
 
   * Include patch for php 5.3
