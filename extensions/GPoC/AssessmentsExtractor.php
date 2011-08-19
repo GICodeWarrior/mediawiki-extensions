@@ -5,12 +5,10 @@
  **/
 class AssessmentsExtractor
 {
-	private $mArticle;
 	private $mText;
 
-	function __construct( $article, $preparedText ) {
+	function __construct( $preparedText ) {
 		$this->mText = $preparedText;
-		$this->mArticle = $article;
 	}	
 
 	public function extractAssessments() {
