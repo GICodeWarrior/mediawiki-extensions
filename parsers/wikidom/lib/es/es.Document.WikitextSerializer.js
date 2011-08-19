@@ -125,7 +125,9 @@ es.Document.WikitextSerializer.prototype.serializeParameter = function( paramete
 es.Document.WikitextSerializer.prototype.serializeItem = function( item, path ) {
 	if ( 'lists' in item && item.lists.length ) {
 		var out = [];
-		out.push( path + ' ' + this.serializeLine( item.line ) );
+		if ( item.line ) {
+			out.push( path + ' ' + this.serializeLine( item.line ) );
+		}
 		for ( var l = 0, lMax = item.lists.length; l < lMax; l++ ) {
 			out.push( this.serializeList( item.lists[l], path ) );
 		}
