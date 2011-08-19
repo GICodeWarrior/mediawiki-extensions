@@ -241,6 +241,16 @@ $messages['de'] = array(
 	'tog-collabwatchlisthidelistusers' => 'Bearbeitungen von Benutzern der kollaborativen Beobachtungsliste ausblenden',
 );
 
+/** Spanish (Español)
+ * @author Mor
+ */
+$messages['es'] = array(
+	'collabwatchlistedit-raw-titles' => 'Categorías:',
+	'collabwatchlistedit-tags-raw-titles' => 'Etiquetas:',
+	'collabwatchlistedit-users-raw-titles' => 'Usuarios:',
+	'collabwatchlistedit-normal-title' => 'Editar categorías',
+);
+
 /** French (Français)
  * @author Seb35
  */
@@ -470,6 +480,25 @@ $messages['ia'] = array(
 	'collabwatchlistedit-normal-submit' => 'Salveguardar',
 	'collabwatchlistshowhidelistusers' => '$1 usatores del lista',
 	'tog-collabwatchlisthidelistusers' => 'Celar modificationes del usatores del observatorio collaborative',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Farras
+ */
+$messages['id'] = array(
+	'collabwatchlist' => 'Daftar pantauan kolaboratif',
+	'collabwatchlisttagselect' => 'Penanda',
+	'collabwatchlisttagcomment' => 'Komentar',
+	'collabwatchlistsettagbutton' => 'Atur penanda',
+	'collabwatchlisttools-view' => 'Tampilan',
+	'collabwatchlisttools-edit' => 'Sunting kategori',
+	'collabwatchlisttools-rawCategories' => 'Sunting mentah kategori',
+	'collabwatchlisttools-rawTags' => 'Sunting mentah penanda',
+	'collabwatchlisttools-rawUsers' => 'Sunting mentah pengguna',
+	'collabwatchlisttools-delete' => 'Hapus',
+	'collabwatchlistsall' => 'Semua daftar',
+	'collabwatchlistfiltertags' => 'Sembunyikan penanda',
+	'collabwatchlistedit-users-raw-submit' => 'Simpan',
 );
 
 /** Kurdish (Latin) (Kurdî (Latin))
