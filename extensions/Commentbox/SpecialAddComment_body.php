@@ -20,12 +20,7 @@ class SpecialAddComment extends UnlistedSpecialPage {
 			return;
 		}
 		$this->setHeaders();
-		
 
-		if ( !$this->userCanExecute( $wgUser ) ) {
-			$this->displayRestrictionError();
-			return;
-		}
 		$Pagename = $wgRequest->getText( 'wpPageName' );
 		$Author   = $wgRequest->getText( 'wpAuthor', '' );
 		$Comment  = $wgRequest->getText( 'wpComment', '' );
@@ -75,14 +70,38 @@ class SpecialAddComment extends UnlistedSpecialPage {
 		// Append <br /> after each newline, except if the user started a new paragraph
 		$Comment = preg_replace( '/(?<!\n)\n(?!\n)/', "<br />\n", $Comment );
 		$text .= "\n\n" . $subject . $Comment . "\n<br />" . $sig;
-		$status = $article->doEdit( $text, wfMsgForContent( 'commentbox-log' ) );
 
-		if ( $status->isOK() ) {
+		$reqArr = array(
+			'wpTextbox1' => $text,
+			'wpSummary' => wfMsgForContent( 'commentbox-log' ),
+			'wpEditToken' => $wgUser->editToken(),
+			'wpIgnoreBlankSummary' => '',
+			'wpStarttime' => wfTimestampNow(),
+			'wpEdittime' => $article->getTimestamp(),
+		);
+		$request = new FauxRequest( $reqArr, true );
+		$ep = new EditPage( $article );
+		$ep->setContextTitle( $title );
+		$ep->importFormData( $request );
+		$details = array(); // Passed by ref
+		$retval = $ep->internalAttemptSave( $details );
+
+		switch ( $retval ) {
+		case EditPage::AS_SUCCESS_UPDATE:
 			$wgOut->redirect( $title->getFullURL() );
-		} else {
-			$wgOut->setPageTitle( wfMsg( 'commentbox-errorpage-title' ) );
-			$wgOut->addWikiText( $status->getWikiText() );
-			$wgOut->returnToMain( false, $title );
+			break;
+		case EditPage::AS_SPAM_ERROR:
+			$ep->spamPageWithContent( $details['spam'] );
+			break;
+		case EditPage::AS_BLOCKED_PAGE_FOR_USER:
+			$wgOut->blockedPage();
+			break;
+		case EditPage::AS_READ_ONLY_PAGE_ANON:
+		case EditPage::AS_READ_ONLY_PAGE_LOGGED:
+			$wgOut->permissionRequired( 'edit' );
+			break;
+		case EditPage::AS_READ_ONLY_PAGE:
+			$wgOut->readOnlyPage();
 		}
 	}
 
