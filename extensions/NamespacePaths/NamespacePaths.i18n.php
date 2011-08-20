@@ -29,6 +29,13 @@ $messages['he'] = array(
 	'namespacepaths-desc' => 'אפשרות למפות נתיבי ערכים מותאמים אישית למרחבי שם של ויקי. למשל, למפות דפים כמו עזרה:דף לנתיב <span dir="ltr">/help/דף</span> במקום <span dir="ltr">/wiki/עזרה:דף</span>.',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'namespacepaths-desc' => 'Permitte personalisar le camminos de articulos e facer los corresponder a spatios de nomines del wiki. P.ex.: paginas como Adjuta:A pote haber le cammino /adjuta/Pagina in loco de /wiki/Adjuta:Pagina.',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

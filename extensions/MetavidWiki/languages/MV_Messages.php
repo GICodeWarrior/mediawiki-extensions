@@ -10107,6 +10107,7 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Ainali
  * @author Dafer45
  * @author Lejonel
  * @author M.M.S.
@@ -10116,6 +10117,8 @@ $messages['su'] = array(
  * @author Rotsee
  */
 $messages['sv'] = array(
+	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Video Metadata Editor & Media Sök]',
+	'mvadmin' => 'Adminfunktioner för MetavidWiki',
 	'metavid' => 'Metavid-sida',
 	'mv_missing_stream' => 'Missat dataflöde: $1',
 	'specialpages-group-mv_group' => 'Specialsidor för MetaVidWiki',
@@ -10141,6 +10144,8 @@ $messages['sv'] = array(
 	'mv_edit_stream_files' => 'Redigera dataflödesfiler',
 	'mv_path_type_url_anx' => 'full media-URL',
 	'mv_path_type_wiki_title' => 'mediatitel på wiki',
+	'mv_path_type_url_file' => 'fullständig media URL med hjälp av lokal sökning',
+	'mv_path_type_mp4_stream' => 'MP4-stream-server',
 	'mv_path_type_label' => 'vägtyp',
 	'mv_base_offset_label' => 'grundmotvikt',
 	'mv_duration_label' => 'Varaktighet',
@@ -10151,7 +10156,7 @@ $messages['sv'] = array(
 	'mv_updated_stream_files' => 'Uppdaterad dataflödesfilslogg',
 	'mv_removed_file_stream' => 'Raderad dataflödesfil: $1',
 	'mv_missing_stream_text' => 'Dataflödesfilen som du efterfrågade, <b>$1</b> är inte tillgänglig.<br />Du bör kontrollera <a href="$2">dataflödeslistan</a><br />Eller så kan du <a href="$3">lägga till dataflödet</a>.',
-	'mv_user_cant_edit' => 'Du måste kanske ha [$1 Log in] för att redigera, $2',
+	'mv_user_cant_edit' => 'Du måste kanske [$1 Logga in] för att redigera, $2',
 	'mv_add_stream_file' => 'Lägg till dataflödesfil',
 	'mv_media_path' => 'mediaväg',
 	'mv_file_list' => 'Dataflödesfiler',
@@ -10166,7 +10171,7 @@ $messages['sv'] = array(
 	'mv_error_stream_insert' => 'insättning av dataflöde misslyckades',
 	'mv_redirect_and_delete_reason' => 'raderad omdirigeringssida',
 	'mv_remove_reason' => 'Anledning för radering:',
-	'mv_stream_delete_warrning' => "'''Radering av detta dataflöde kommer också föra till radering av $1 delar av assosierat metadata'''<br />",
+	'mv_stream_delete_warrning' => "'''Borttagning av denna ström kommer också att ta bort $1 {{PLURAL:$1|del|delar}} av associerad metadata'''<br />",
 	'mv_label_stream_type' => 'Dataflödestyp',
 	'mv_metavid_file' => 'Existerande fil på server',
 	'mv_metavid_live' => 'Sätt upp direktöverföring',

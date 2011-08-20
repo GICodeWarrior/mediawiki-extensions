@@ -37,6 +37,13 @@ $messages['ia'] = array(
 	'automaticboardwelcome-desc' => 'Insere automaticamente un [[MediaWiki:User-board-welcome-message|message de benvenita]] in le tabuliero personal de nove usatores post le creation del conto',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'automaticboardwelcome-desc' => "Schreift automatesch [[MediaWiki:User-board-welcome-message|e Begréissungs-Message]] op d'Benotzersäit vun neie Benotzer esoubal si hire Kont opgemaach hunn",
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

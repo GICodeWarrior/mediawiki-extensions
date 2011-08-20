@@ -239,6 +239,15 @@ $messages['et'] = array(
 	'gur-rightslog-name' => 'Globaal õiguste logiraamat',
 );
 
+/** Persian (فارسی)
+ * @author Mjbmr
+ */
+$messages['fa'] = array(
+	'globaluserrights' => 'مدیریت اختیارات جهانی کاربر',
+	'gur-rightslog-name' => 'سیاههٔ اختیارات سراسری',
+	'right-userrights-global' => 'مدیریت اختیارات جهانی کاربر',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  */
