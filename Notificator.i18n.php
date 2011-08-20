@@ -274,6 +274,7 @@ $messages['lb'] = array(
 	'notificator-notification-not-sent' => "D'Informatioun gouf net geschéckt.",
 	'notificator-change-tag' => 'Ännerung',
 	'notificator-new-tag' => 'nei',
+	'notificator-notification-text-changes' => '$1 wëllt Iech vun dësen Ännerungen op $2 informéieren:',
 	'notificator-following-e-mail-sent-to' => 'Dës Mail gouf un den $1 geschéckt:',
 	'notificator-subject' => 'Sujet:',
 	'notificator-error-sending-e-mail' => 'Beim Schécke vun der Noriicht per Mail un $1 ass e Feeler geschitt.',
