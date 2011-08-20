@@ -1321,11 +1321,14 @@ Prepričajte se, da ste pravilno vnesli URL.
 );
 
 /** Swedish (Svenska)
+ * @author Ainali
  * @author WikiPhoenix
  */
 $messages['sv'] = array(
 	'toolbase-header-title' => 'X!s verktyg (BETA)',
 	'toolbase-header-bugs' => 'Buggar',
+	'toolbase-header-sitenotice' => 'Global Toolserver Sitenotice: $1',
+	'toolbase-replag' => 'Server släpat med $1',
 	'toolbase-replag-years' => 'år',
 	'toolbase-replag-months' => 'månader',
 	'toolbase-replag-weeks' => 'veckor',
@@ -1333,6 +1336,7 @@ $messages['sv'] = array(
 	'toolbase-replag-hours' => 'timmar',
 	'toolbase-replag-minutes' => 'minuter',
 	'toolbase-replag-seconds' => 'sekunder',
+	'toolbase-footer-exectime' => 'Utfördes på $1 sekunder',
 	'toolbase-footer-source' => 'Visa källa',
 	'toolbase-footer-language' => 'Ändra språk',
 	'toolbase-footer-translate' => 'Översätt',
@@ -1344,6 +1348,10 @@ $messages['sv'] = array(
 	'toolbase-userid-title' => 'Hitta ett användar-ID',
 	'toolbase-autoedits-title' => 'Automatiserad redigeringskalkylator',
 	'toolbase-autoedits-submit' => 'Beräkna',
+	'toolbase-autoedits-approximate' => '<b>Ungefärligt</b> antal ändringar med hjälp av ...',
+	'toolbase-autoedits-totalauto' => 'Totalt antal automatiserade redigeringar',
+	'toolbase-autoedits-totalall' => 'Totalt antal redigeringar',
+	'toolbase-autoedits-pct' => 'Procent av automatiserade redigeringar',
 	'toolbase-main-title' => 'Välkommen!',
 	'toolbase-main-404' => 'Filen hittades inte',
 	'toolbase-main-404-content' => 'Hoppsan! Ingen sida hittades!
@@ -1353,6 +1361,7 @@ Om du följde en länk från någonstans, var god <a href="$1">skicka en buggrap
 	'toolbase-form-wiki' => 'Wiki',
 	'toolbase-error-nouser' => '$1 är inte ett giltigt användarnamn',
 	'toolbase-error-nowiki' => '$1.$2.org är inte en giltig wiki',
+	'toolbase-error-toomanyedits' => '$1 har $2 redigeringar. Detta verktyg har ett maximum på $3 redigeringar.',
 );
 
 /** Telugu (తెలుగు)
