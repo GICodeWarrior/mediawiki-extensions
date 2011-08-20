@@ -1613,7 +1613,7 @@ Saia zaitez bearnduago.',
  * @author ZxxZxxZ
  */
 $messages['fa'] = array(
-	'articlefeedback' => 'ارزیابی مقاله‌ها',
+	'articlefeedback' => 'داشبورد بازخورد مقاله',
 	'articlefeedback-desc' => 'ارزیابی مقاله‌ها (نسخهٔ آزمایشی)',
 	'articlefeedback-survey-question-whyrated' => 'لطفاً به ما اطلاع دهید که چرا شما امروز به این صفحه نمره دادید (تمام موارد مرتبط را انتخاب کنید):',
 	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'می‌خواستم در نمره کلی صفحه مشارکت کنم',
@@ -1628,10 +1628,58 @@ $messages['fa'] = array(
 	'articlefeedback-survey-submit' => 'ارسال',
 	'articlefeedback-survey-title' => 'لطفاً به چند پرسش پاسخ دهید',
 	'articlefeedback-survey-thanks' => 'از این که نظرسنجی را تکمیل کردید متشکریم.',
+	'articlefeedback-error' => 'خطایی رخ داده است. لطفا بعداً دوباره سعی کنید.',
+	'articlefeedback-form-switch-label' => 'رای دادن به این صفحه',
+	'articlefeedback-form-panel-title' => 'رای دادن به این صفحه',
+	'articlefeedback-form-panel-explanation' => 'این چیست؟',
+	'articlefeedback-form-panel-explanation-link' => 'Project:بازخورد مقاله',
+	'articlefeedback-form-panel-clear' => 'حذف این رتبه بندی',
+	'articlefeedback-form-panel-helpimprove-privacy' => 'سیاست حفظ اسرار',
+	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:سیاست حفظ اسرار',
+	'articlefeedback-form-panel-submit' => 'ثبت رأی',
+	'articlefeedback-form-panel-success' => 'با موفقیت ذخیره شد',
 	'articlefeedback-report-switch-label' => 'مشاهدهٔ آرای صفحه',
+	'articlefeedback-report-panel-title' => 'درجه‌بندی صفحه',
+	'articlefeedback-report-empty' => 'بدون رأی',
+	'articlefeedback-report-ratings' => '$1 رأی',
 	'articlefeedback-field-complete-label' => 'کامل بودن',
+	'articlefeedback-field-objective-label' => 'بی‌طرفی',
+	'articlefeedback-field-wellwritten-label' => 'خوب نوشته شده',
+	'articlefeedback-pitch-reject' => 'شاید بعداً',
 	'articlefeedback-pitch-or' => 'یا',
 	'articlefeedback-pitch-thanks' => 'با تشکر! رتبه‌بندی‌های شما، ذخیره شده‌است.',
+	'articlefeedback-pitch-survey-accept' => 'شروع نظرسنجی',
+	'articlefeedback-pitch-join-accept' => 'ایجاد یک حساب کاربری',
+	'articlefeedback-pitch-join-login' => 'ورود به سامانه',
+	'articlefeedback-pitch-edit-message' => 'آیا می دانید که شما می توانید این صفحه را ویرایش کنید؟',
+	'articlefeedback-pitch-edit-accept' => 'ویرایش این صفحه',
+	'articleFeedback-table-caption-dailyhighs' => 'صفحات با بالاترین رأی:$1',
+	'articleFeedback-table-caption-dailylows' => 'صفحات با کمترین رأی:$1',
+	'articleFeedback-table-heading-page' => 'صفحه',
+	'articleFeedback-table-heading-average' => 'میانگین',
+	'articlefeedback-disable-preference' => 'ابزار نظرسنجی مقاله را در صفحات نشان نده',
+	'articlefeedback-emailcapture-response-body' => 'سلام!
+
+از شما برای ابراز علاقه در بهبود {{SITENAME}} تشکر می‌کنم.
+
+لطفاً لحظه‌ای برای تأیید پست الکترونیکی خود با کلیک بر روی پیوند مقابل وقت بگذارید: 
+
+$1
+
+شما همچنین می‌توانید صفحهٔ مقابل را مشاهده کنید:
+
+$2
+
+و کد تأیید مقابل را وارد کنید:
+
+$3
+
+ما به زودی با شما برای چگونگی کمک به {{SITENAME}} تماس می‌گیریم.
+
+اگر شما این درخواست را نکرده بودید، لطفاً این درخواست را نادیده بگیرید و ما چیز دیگری برای شما ارسال نمی‌کنیم.
+
+با تشکر از شما، بهترین آرزوها را برایتان داریم،
+گروه {{SITENAME}}',
 );
 
 /** Finnish (Suomi)
@@ -4781,6 +4829,7 @@ Pe piacere pruève arrete.",
 );
 
 /** Russian (Русский)
+ * @author AlexSm
  * @author Assele
  * @author Catrope
  * @author MaxSem
@@ -4829,7 +4878,7 @@ $messages['ru'] = array(
 	'articlefeedback-report-panel-title' => 'Оценки страницы',
 	'articlefeedback-report-panel-description' => 'Текущие средние оценки.',
 	'articlefeedback-report-empty' => 'Нет оценок',
-	'articlefeedback-report-ratings' => '$1 {{PLURAL:$1|оценка|оценки|оценок}}',
+	'articlefeedback-report-ratings' => 'оценок: $1',
 	'articlefeedback-field-trustworthy-label' => 'Достоверность',
 	'articlefeedback-field-trustworthy-tip' => 'Считаете ли вы, что на этой странице достаточно ссылок на источники, что источники являются достоверными?',
 	'articlefeedback-field-trustworthy-tooltip-1' => 'Нет авторитетных источников',
@@ -5477,12 +5526,15 @@ $messages['te'] = array(
 	'articlefeedback-survey-submit' => 'దాఖలుచెయ్యి',
 	'articlefeedback-survey-title' => 'దయచేసి కొన్ని ప్రశ్నలకి సమాధానమివ్వండి',
 	'articlefeedback-survey-thanks' => 'ఈ సర్వేని పూరించినందుకు కృతజ్ఞతలు.',
+	'articlefeedback-form-panel-explanation' => 'ఇది ఏమిటి?',
 	'articlefeedback-form-panel-helpimprove-privacy' => 'గోప్యతా విధానం',
 	'articlefeedback-report-panel-title' => 'పుట మూల్యాంకన',
 	'articlefeedback-report-ratings' => '$1 మూల్యాంకనలు',
 	'articlefeedback-pitch-or' => 'లేదా',
 	'articlefeedback-pitch-join-login' => 'ప్రవేశించండి',
 	'articlefeedback-pitch-edit-accept' => 'ఈ పుటని మార్చండి',
+	'articleFeedback-table-heading-page' => 'పుట',
+	'articleFeedback-table-heading-average' => 'సగటు',
 );
 
 /** Tetum (Tetun)
