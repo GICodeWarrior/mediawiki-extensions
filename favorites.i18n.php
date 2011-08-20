@@ -244,6 +244,7 @@ Sie können auch die [[Special:Favoritelist/edit|Standardseite]] zum Bearbeiten 
 );
 
 /** Spanish (Español)
+ * @author Dferg
  * @author Mor
  */
 $messages['es'] = array(
@@ -251,6 +252,7 @@ $messages['es'] = array(
 	'favoritethis' => 'Marcar esta página como favorita',
 	'prefs-favoritelist' => 'Favoritos',
 	'prefs-advancedfavoritelist' => 'Opciones avanzadas',
+	'favoritelistfor' => "(para '''$1''')",
 	'addedfavorite' => 'Añadido a favoritos',
 	'removedfavorite' => 'Quitar de Favoritos',
 	'favoritelist-options' => 'Opciones de Favoritos',
@@ -381,6 +383,7 @@ $messages['lb'] = array(
 	'myfavoritelist' => 'Meng Favoriten',
 	'favoritelistfor' => "(fir '''$1''')",
 	'nofavoritelist' => 'Är Lëscht vun de Favoriten ass eidel.',
+	'favoritelistanontext' => "Dir musst Iech $1 fir d'Lëscht vun Äre Favoriten ze gesinn oder z'änneren.",
 	'favoritenologin' => 'Net ageloggt',
 	'favoritenologintext' => "Dir musst [[Special:UserLogin|ageloggt sinn]], fir Är Favoriten z'änneren.",
 	'addedfavorite' => "Bäi d'Favoriten derbäigesat",
@@ -407,6 +410,7 @@ $messages['lb'] = array(
 Fir eng Säit ewechzehuelen, klickt op d\'Haischen niewendrun a klickt duerno op "{{int:Favoritelistedit-normal-submit}}".
 Dir kënnt och [[Special:Favoritelist/raw|déi net-formatéiert Lëscht änneren]].',
 	'favoritelistedit-normal-submit' => 'Säiten erofhuelen',
+	'favoritelistedit-normal-done' => '{{PLURAL:$1|1 Säit gouf|$1 Säite goufe}} vun der Lëscht vun Äre Favoriten erofgeholl:',
 	'favoritelistedit-raw-title' => 'Net-formatéiert Favoritelëscht änneren',
 	'favoritelistedit-raw-legend' => 'Net-formatéiert Favoritelëscht änneren',
 	'favoritelistedit-raw-titles' => 'Säiten:',
