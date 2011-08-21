@@ -1,5 +1,6 @@
 import numpy as np
-from scipy.interpolate import splrep, splev
+from scipy.interpolate import splrep, splev, UnivariateSpline
+from scipy.optimize import fmin
 
 def spsmooth(x, y, ye, **kwargs):
     ''' 
@@ -42,4 +43,17 @@ def spsmooth(x, y, ye, **kwargs):
 
     return np.mean(best)
         
-           
+def find_peak(x,y,ye,k=3):
+    '''
+    Finds maximum in time series (x_i, y_i) using smoothing splines
+
+    Parameters
+    ----------
+    x,y - data
+    ye  - standard errors estimates
+    k   - spline degree (must be <= 5)
+    '''
+    s = spsmooth(x, y, ye, k=k)
+    spl = UnivariateSpline(x, y, ye ** -1, k=k, s=s)
+    xp = fmin(lambda k : -spl(k), x.mean())
+    return xp, spl
