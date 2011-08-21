@@ -135,6 +135,22 @@ $messages['arz'] = array(
 	'vector-simplesearch-containing' => 'جوّاه...',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'vector' => "Meyores de la interfaz d'usuariu pa Vector",
+	'vector-desc' => "Meyora los elementos de la interfaz d'usuariu del aspeutu Vector.",
+	'vector-collapsiblenav-preference' => 'Activar anubrir elementos nel panel llateral del aspeutu Vector',
+	'vector-collapsiblenav-more' => 'Más llingües',
+	'vector-editwarning-warning' => 'Salir d\'esta páxina pue facer que se pierda cualesquier cambiu fechu.
+Si aniciasti sesión, puedes desactivar esti avisu na seición "Edición" de les tos preferencies.',
+	'vector-editwarning-preference' => "Avisame cuando salga d'una páxina d'edición con cambios ensin guardar",
+	'vector-simplesearch-search' => 'Guetar',
+	'vector-simplesearch-containing' => 'que contién...',
+	'vector-noexperiments-preference' => 'Escluíme de carauterístiques esperimentales',
+);
+
 /** Azerbaijani (Azərbaycanca)
  * @author PPerviz
  */
