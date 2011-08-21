@@ -6,16 +6,16 @@
  * @ingroup Extensions
  * @author Jim R. Wilson
  * @author Jack Phoenix <jack@countervandalism.net>
- * @version 0.2
+ * @version 0.2.1
  * @copyright Copyright © 2007 Jim R. Wilson
- * @copyright Copyright © 2010 Jack Phoenix
+ * @copyright Copyright © 2010-2011 Jack Phoenix
  * @license The MIT License - http://www.opensource.org/licenses/mit-license.php
  * -----------------------------------------------------------------------
  * Description:
  *	 This is a MediaWiki extension which adds a parser function for embedding
  *	 your own shoutbox into a page.
  * Requirements:
- *	 MediaWiki 1.12+
+ *	 MediaWiki 1.16+
  * Installation:
  *	 1. Drop the files in $IP/extensions/ShoutBox
  *		 Note: $IP is your MediaWiki install dir.
@@ -56,11 +56,24 @@ if( !defined( 'MEDIAWIKI' ) ) {
 # Credits
 $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'ShoutBox',
-	'version' => '0.2',
+	'version' => '0.2.1',
 	'author' => array( 'Jim R. Wilson', 'Jack Phoenix' ),
 	'url' => 'http://www.mediawiki.org/wiki/Extension:ShoutBox',
 	'description' => 'Adds a parser function for embedding your own shoutbox',
 );
+
+// Configuration settings
+$wgShoutBoxMinWidth = 100;
+
+$wgShoutBoxMaxWidth = 600;
+
+$wgShoutBoxMinHeight = 100;
+
+$wgShoutBoxMaxHeight = 1024;
+
+$wgShoutBoxDefaultId = false;
+
+$wgShoutBoxCSS = false;
 
 // Internationalization file
 $dir = dirname( __FILE__ ) . '/';
@@ -78,8 +91,9 @@ class ShoutBox {
 
 	/**
 	 * Sets up parser functions.
+	 *
 	 * @param $parser Object: instance of running Parser.
-	 * @return true
+	 * @return Boolean: true
 	 */
 	public static function setup( &$parser ) {
 		# Setup parser hook
@@ -89,9 +103,10 @@ class ShoutBox {
 
 	/**
 	 * Adds magic words for parser functions.
+	 *
 	 * @param $magicWords Array: available magic words
 	 * @param $langCode String: language code
-	 * @return Boolean Always true
+	 * @return Boolean: always true
 	 */
 	public static function parserFunctionMagic( &$magicWords, $langCode = 'en' ) {
 		$magicWords['shoutbox'] = array( 0, 'shoutbox' );
@@ -100,11 +115,12 @@ class ShoutBox {
 
 	/**
 	 * Embeds ShoutBox
+	 *
 	 * @param $parser Object: Instance of running Parser.
 	 * @param $id Integer: Identifier of the ShoutBox (optional - if global default is available)
 	 * @param $width Integer: Width of box (optional)
 	 * @param $height Integer: Height of box (optional)
-	 * @return String Encoded representation of input params (to be processed later)
+	 * @return String: encoded representation of input params (to be processed later)
 	 */
 	public static function parserFunction( $parser, $id = null, $width = null, $height = null ) {
 		$params = array(
@@ -116,10 +132,12 @@ class ShoutBox {
 	}
 
 	/**
-	 * Performs placeholder corrections to bypass MW parser function output restraints.
+	 * Performs placeholder corrections to bypass MW parser function output
+	 * restraints.
+	 *
 	 * @param $parser Object: Instance of running Parser.
 	 * @param $text String: Text of nearly fully rendered wikitext.
-	 * @return Boolean Always true
+	 * @return Boolean: always true
 	 */
 	public static function placeholderCorrections( $parser, $text ) {
 		$text = preg_replace_callback(
@@ -131,42 +149,32 @@ class ShoutBox {
 	}
 
 	/**
-	 * Performs placeholder corrections to bypass MW parser function output restraints.
+	 * Performs placeholder corrections to bypass MW parser function output
+	 * restraints.
+	 *
 	 * @param $matches Array: An array of matches to the placeholder regular expression.
-	 * @return String Embedded video frame if params are sane|error message
+	 * @return String: embedded shoutbox if params are sane|error message
 	 */
 	public static function processShoutBoxParams( $matches ) {
-		wfLoadExtensionMessages( 'ShoutBox' );
+		global $wgShoutBoxMinWidth, $wgShoutBoxMaxWidth;
+		global $wgShoutBoxMinHeight, $wgShoutBoxMaxHeight;
+		global $wgShoutBoxDefaultId, $wgShoutBoxCSS;
+
 		$params = @unserialize( @base64_decode( $matches[1] ) );
 		if( !$params ) {
-			return '<div class="errorbox">'
-				. wfMsg( 'shoutbox-unparsable-param-string', @htmlspecialchars( $matches[1] ) ) .
+			return '<div class="errorbox">' .
+				wfMsg( 'shoutbox-unparsable-param-string', @htmlspecialchars( $matches[1] ) ) .
 			'</div>';
 		}
 
-		global $wgShoutBoxMinWidth, $wgShoutBoxMaxWidth;
-		global $wgShoutBoxMinHeight, $wgShoutBoxMaxHeight;
-		if( !is_numeric( $wgShoutBoxMinWidth ) || $wgShoutBoxMinWidth < 100 ) {
-			$wgShoutBoxMinWidth = 100;
-		}
-		if( !is_numeric( $wgShoutBoxMaxWidth ) || $wgShoutBoxMaxWidth > 600 ) {
-			$wgShoutBoxMaxWidth = 600;
-		}
-		if( !is_numeric( $wgShoutBoxMinHeight ) || $wgShoutBoxMinHeight < 100 ) {
-			$wgShoutBoxMinHeight = 100;
-		}
-		if( !is_numeric( $wgShoutBoxMaxHeight ) || $wgShoutBoxMaxHeight > 1024 ) {
-			$wgShoutBoxMaxHeight = 1024;
-		}
-
-		global $wgShoutBoxDefaultId;
 		$id = $params['id'];
 		if( $id === null ) {
 			$id = $wgShoutBoxDefaultId;
 		}
+
 		if( $id == null || !is_numeric( $id ) ) {
-			return '<div class="errorbox">'
-				. wfMsg( 'shoutbox-bad-id', @htmlspecialchars( $id ) ) .
+			return '<div class="errorbox">' .
+				wfMsg( 'shoutbox-bad-id', @htmlspecialchars( $id ) ) .
 			'</div>';
 		}
 
@@ -194,22 +202,23 @@ class ShoutBox {
 				!is_numeric( $params['height'] ) ||
 				$params['height'] < $wgShoutBoxMinWidth ||
 				$params['height'] > $wgShoutBoxMaxWidth
-			) {
+			)
+			{
 				return '<div class="errorbox">' .
-				wfMsg( 'shoutbox-illegal-height', @htmlspecialchars( $params['height'] ) ) .
+					wfMsg( 'shoutbox-illegal-height', @htmlspecialchars( $params['height'] ) ) .
 				'</div>';
 			}
 			$height = $params['height'];
 		}
 
-		global $wgShoutBoxCSS;
 		if( $wgShoutBoxCSS ) {
 			$url = wfMsgForContent( 'shoutbox-url-with-css', $id, urlencode( $wgShoutBoxCSS ) );
 		} else {
 			$url = wfMsgForContent( 'shoutbox-url', $id );
 		}
 
-		return '<iframe src="' . $url . '" width="' . $width . '" height="' . $height . '" frameborder="0" allowTransparency="true"></iframe>';
+		return '<iframe src="' . $url . '" width="' . $width . '" height="' .
+			$height . '" frameborder="0" allowTransparency="true"></iframe>';
 	}
 
 }
