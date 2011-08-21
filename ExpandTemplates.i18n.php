@@ -1323,7 +1323,7 @@ $messages['mk'] = array(
 Ова го врши со повикување на релевантната парсерска етапа од самиот МедијаВики.',
 	'expand_templates_title' => 'Наслов на контекстот, за {{FULLPAGENAME}} и тн.:',
 	'expand_templates_input' => 'Влезен текст:',
-	'expand_templates_output' => 'Резултат',
+	'expand_templates_output' => 'Извод',
 	'expand_templates_xml_output' => 'XML излез',
 	'expand_templates_ok' => 'ОК',
 	'expand_templates_remove_comments' => 'Отстрани коментари',
