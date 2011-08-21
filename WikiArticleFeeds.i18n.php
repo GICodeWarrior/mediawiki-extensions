@@ -47,6 +47,14 @@ $messages['ar'] = array(
 	'wikiarticlefeeds_combined_description' => 'هذا تلقيم مركب، يحتوي على مدخلات من عدة مصادر للتلقيم.',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'wikiarticlefeeds-desc' => 'Produz fluxos RSS xeneraos poles páxines de MediaWiki',
+	'wikiarticlefeeds_combined_description' => "Esti ye un fluxu combináu, que contién elementos de fluxos d'orixe distintu.",
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */
