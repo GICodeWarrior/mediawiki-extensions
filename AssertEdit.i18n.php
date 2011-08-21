@@ -644,6 +644,8 @@ $messages['pms'] = array(
  */
 $messages['pnb'] = array(
 	'assert_edit_title' => 'کوشش فیل',
+	'assertedit-desc' => 'بوٹ ورتن لئی نشان لاؤ',
+	'assert_edit_message' => 'خاص نشان ($1) نئیں چلیا۔',
 );
 
 /** Portuguese (Português)
