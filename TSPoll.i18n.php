@@ -30,6 +30,15 @@ $messages['ar'] = array(
 	'tspoll-id-error' => 'لا رقم معطى!',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'tspoll-desc' => 'Incluír el [http://www.toolserver.org/~jan/poll/index.php Toolserver-Poll-Skript] como etiqueta HTML',
+	'tspoll-fetch-error' => '¡Fallu al buscar la URL!',
+	'tspoll-id-error' => '¡Nun se dio denguna ID!',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
