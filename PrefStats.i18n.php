@@ -2182,6 +2182,19 @@ Configura $wgPrefStatsTrackPrefs për trassé l epreferense.',
 	'prefstats-legend-in' => 'Sërnù drinta',
 );
 
+/** Western Punjabi (پنجابی)
+ * @author Khalid Mahmood
+ */
+$messages['pnb'] = array(
+	'prefstats-factor-hour' => 'کینٹہ',
+	'prefstats-factor-sixhours' => 'چھے کینٹے',
+	'prefstats-factor-day' => 'دیاڑھ',
+	'prefstats-factor-week' => 'ہفتہ',
+	'prefstats-factor-twoweeks' => 'دو ہفتے',
+	'prefstats-factor-fourweeks' => 'چار ہفتے',
+	'prefstats-factor-default' => 'ڈیفالٹ ناپ ول چلو',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
