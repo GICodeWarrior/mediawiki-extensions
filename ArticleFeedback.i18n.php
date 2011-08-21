@@ -1533,6 +1533,30 @@ Palun proovi hiljem uuesti.',
 	'articleFeedback-table-caption-dailylows' => 'Halvimate hinnangutega leheküljed: $1',
 	'articleFeedback-table-heading-page' => 'Lehekülg',
 	'articleFeedback-table-heading-average' => 'Keskmine',
+	'articlefeedback-disable-preference' => 'Ära näita lehekülgedel artikli hindamise dialoogikasti',
+	'articlefeedback-emailcapture-response-body' => 'Tere!
+
+Aitäh, et näitasid üles huvi {{GRAMMAR:genitive|{{SITENAME}}}} täiustamise vastu.
+
+Palun leia hetk, et oma e-posti aadress kinnitada. Selleks klõpsa allolevale lingile:
+
+$1
+
+Samuti võid külastata lehekülge
+
+$2
+
+ja sisestada seal järgmise kinnituskoodi:
+
+$3
+
+Anname sulle peagi teada, kuidas saad {{GRAMMAR:partitive|{{SITENAME}}}} täiustada.
+
+Kui sa pole sellist teadet palunud, siis eira seda e-kirja ja me ei saada sulle rohkem midagi.
+
+Kõike paremat!
+
+{{GRAMMAR:genitive|{{SITENAME}}}} meeskond',
 );
 
 /** Basque (Euskara)
@@ -2461,9 +2485,10 @@ Prošu spytaj pozdźišo hišće raz.',
  * @author Dani
  * @author Hunyadym
  * @author Misibacsi
+ * @author Tgr
  */
 $messages['hu'] = array(
-	'articlefeedback' => 'Szócikk értékelése',
+	'articlefeedback' => 'Cikk értékelése',
 	'articlefeedback-desc' => 'Cikk értékelése (kísérleti változat)',
 	'articlefeedback-survey-question-origin' => 'Milyen oldalon voltál, amikor elkezdted ezt a felmérést?',
 	'articlefeedback-survey-question-whyrated' => 'Kérjük, mondd el nekünk, miért értékelted ezt az oldalt (jelöld meg a megfelelőket):',
@@ -3295,6 +3320,9 @@ Probéiert w.e.g. méi spéit nach emol.',
 	'articleFeedback-table-heading-page' => 'Säit',
 	'articleFeedback-table-heading-average' => 'Duerchschnëtt',
 	'articleFeedback-copy-above-highlow-tables' => 'Dëst ass eng experimentell Fonctioun. Gitt eis w.e.g. Äre Feedback op der [$1 Diskussiouns-Säit].',
+	'articlefeedback-dashboard-bottom' => "'''Informatioun:''' Mir probéiere weider ënnerschiddlech Méiglechkeeten aus fir Artikelen op dësen Arbechts- an Iwwersichtsäiten ze weisen. Momentan ginn hei dës Artikele gewisen:
+* Säite mat de beschten / schlechtste Bewäertungen: Artikel déi mindestens zéng Bewäertungen während de leschte 24 Stonne kritt hunn. D'Durchschnëttswäerter sinn dobäi de Mëttelwäert vun alle Bewäertunge vun de leschte 24 Stonnen.
+* Aktuell schlechte Bewäertungen: Artikel déi während de leschte 24 Stonne 70 % oder méi schlecht Bewäertungen (zwee Stären oder manner) an enger Kategorien kritt hunn. Nëmmen Artikel mat mindestens zéng Bewäertunge während de leschte 24 Stonne ginn dobäi berücksichtegt",
 	'articlefeedback-disable-preference' => 'De Widget vun der Artikelbewäertung net op de Säite weisen',
 	'articlefeedback-emailcapture-response-body' => "Bonjour! 
 
