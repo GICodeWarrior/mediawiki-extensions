@@ -478,6 +478,14 @@ $messages['mn'] = array(
 	'categorymultisort-go' => 'Явах',
 );
 
+/** Marathi (मराठी)
+ * @author Htt
+ */
+$messages['mr'] = array(
+	'categorymultisort-go' => 'चला',
+	'prefs-category' => 'वर्ग',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Anakmalaysia
  */

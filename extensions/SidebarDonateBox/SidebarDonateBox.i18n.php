@@ -28,6 +28,7 @@ $messages['qqq'] = array(
  */
 $messages['ast'] = array(
 	'sidebardonatebox-desc' => 'Amiesta un cuadru de donativos personalizáu a la barra llateral',
+	'DONATE' => 'Donativos',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)

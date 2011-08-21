@@ -35,6 +35,14 @@ $messages['de'] = array(
 	'userdebuginfo-language' => 'Sprache',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'userdebuginfo-value' => 'Wäert',
+	'userdebuginfo-language' => 'Sprooch',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

@@ -37,6 +37,13 @@ $messages['ar'] = array(
 	'localisationupdate-desc' => 'يبقي الرسائل المترجمة محدثة كأفضل ما يكون',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'localisationupdate-desc' => 'Caltién los mensaxes llocalizaos tan anovaos como se pueda',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  */

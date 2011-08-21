@@ -8849,6 +8849,7 @@ $messages['mn'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Htt
  * @author Kaustubh
  * @author Mahitgar
  */
@@ -8934,7 +8935,7 @@ $messages['mr'] = array(
 	'ow_LinkAttribute' => 'वैशिष्ट्य',
 	'ow_LinkAttributeValues' => 'दुवे',
 	'ow_Property' => 'मालमत्ता',
-	'ow_Value' => 'मुल्य',
+	'ow_Value' => 'किंमत',
 	'ow_meaningsoftitle' => '"$1"चे अर्थ',
 	'ow_meaningsofsubtitle' => '<em>विकिदुवा:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>परवानगी नाकारली</h2>',

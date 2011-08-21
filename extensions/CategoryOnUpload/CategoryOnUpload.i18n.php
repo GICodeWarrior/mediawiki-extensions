@@ -489,6 +489,13 @@ $messages['ml'] = array(
 	'categoryonupload-label' => 'വർഗ്ഗം:',
 );
 
+/** Marathi (मराठी)
+ * @author Htt
+ */
+$messages['mr'] = array(
+	'categoryonupload-label' => 'वर्ग:',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Aurora
  * @author Aviator

@@ -409,7 +409,7 @@ $messages['mk'] = array(
 	Повеќе напатствија за користење ќе најдете на [http://www.mediawiki.org/wiki/API?uselang=mk документацијата на API].",
 	'apisb-api-disabled' => 'API е оневозможен на ова мрежно место.',
 	'apisb-parameters' => 'Параметри',
-	'apisb-result' => 'Резултат',
+	'apisb-result' => 'Извод',
 	'apisb-request-url' => 'URL на барањето:',
 	'apisb-request-post' => 'POST-податоци:',
 	'apisb-select-action' => 'Одберете дејство',
@@ -716,6 +716,18 @@ Sumangguni sa [http://www.mediawiki.org/wiki/API dokumentasyon ng API] para sa k
 	'apisb-query-prop' => 'Mga katangiang-ari',
 	'apisb-query-list' => 'Mga talaan',
 	'apisb-query-meta' => 'Kabatirang meta',
+);
+
+/** Turkish (Türkçe)
+ * @author Emperyan
+ */
+$messages['tr'] = array(
+	'apisb-parameters' => 'Parametreler',
+	'apisb-result' => 'Sonuç',
+	'apisb-loading' => 'Yükleniyor...',
+	'apisb-ns-main' => '(Ana)',
+	'apisb-query-prop' => 'Özellikler',
+	'apisb-query-list' => 'Listeler',
 );
 
 /** Ukrainian (Українська)

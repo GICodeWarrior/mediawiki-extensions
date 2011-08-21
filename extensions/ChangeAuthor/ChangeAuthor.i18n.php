@@ -1555,6 +1555,7 @@ $messages['mn'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Htt
  * @author Kaustubh
  * @author Mahitgar
  */
@@ -1566,7 +1567,7 @@ $messages['mr'] = array(
 	'changeauthor-pagename-or-revid' => 'पानाचे नाव किंवा आवृत्ती क्रमांक:',
 	'changeauthor-pagenameform-go' => 'चला',
 	'changeauthor-comment' => 'प्रतिक्रीया:',
-	'changeauthor-changeauthors-multi' => 'लेखक बदला',
+	'changeauthor-changeauthors-multi' => '{{PLURAL:$1|लेखक|लेखक}} बदला',
 	'changeauthor-explanation-multi' => "खालील अर्ज वापरुन तुम्ही आवृत्त्यांचे लेखक बदलू शकता. खालील यादीतील एक किंवा अनेक सदस्यनावे बदला, शेरा लिहा (वैकल्पिक) व 'लेखक बदला' या कळीवर टिचकी द्या.",
 	'changeauthor-changeauthors-single' => 'लेखक बदला',
 	'changeauthor-explanation-single' => "हा अर्ज वापरून तुम्ही एका आवृत्तीचा लेखक बदलू शकता. फक्त खाली सदस्यनाव बदला, शेरा लिहा (वैकल्पिक) व 'लेखक बदला' कळीवर टिचकी द्या.",

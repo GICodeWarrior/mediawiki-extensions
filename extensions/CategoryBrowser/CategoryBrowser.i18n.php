@@ -1303,6 +1303,20 @@ $messages['mn'] = array(
 	'cb_all_op' => 'Бүгдийг',
 );
 
+/** Marathi (मराठी)
+ * @author Htt
+ */
+$messages['mr'] = array(
+	'cb_previous_items_link' => 'मागे',
+	'cb_next_items_link' => 'पुढे',
+	'cb_all_op' => 'सर्व',
+	'cb_or_op' => 'किंवा',
+	'cb_and_op' => 'आणि',
+	'cb_edit_left_hint' => 'शक्य असल्यास, डावीकडे हलवा',
+	'cb_edit_right_hint' => 'शक्य असल्यास, उजवीकडे हलवा',
+	'cb_edit_remove_hint' => 'शक्य असल्यास वगळा',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Anakmalaysia
  */

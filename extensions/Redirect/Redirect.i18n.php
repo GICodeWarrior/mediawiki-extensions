@@ -38,6 +38,13 @@ $messages['arz'] = array(
 	'redirect-desc' => 'يسمح بضبط سهل للتحويلات عند [[MediaWiki:Redirect-addnewaccount|إنشاء الحساب]] و [[MediaWiki:Redirect-userlogoutcomplete|تسجيل الخروج]]',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'redirect-desc' => 'Permite la configuración fácil de redireiciones en [[MediaWiki:Redirect-addnewaccount|creación de cuenta]] y [[MediaWiki:Redirect-userlogoutcomplete|desconexón]]',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
