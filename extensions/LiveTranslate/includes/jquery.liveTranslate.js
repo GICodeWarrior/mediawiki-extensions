@@ -182,13 +182,13 @@
 	 */
 	this.buildHtml = function() {
 		_this.attr( {
-			style: 'display:inline; float:right',
+			style: 'display:inline; float:right'
 		} ).attr( 'class', 'notranslate' );
 		
 		_this.html( lt.msg( 'livetranslate-translate-to' ) );
 		
 		_this.select = $( '<select />' ).attr( {
-			id: 'ltselect' + _this.uniqueId,
+			id: 'ltselect' + _this.uniqueId
 		} );
 		
 		for ( langCode in options.languages ) {
@@ -196,7 +196,7 @@
 		}
 		
 		_this.translateButton = $( '<button />' ).attr( {
-			id: 'livetranslatebutton' + _this.uniqueId,
+			id: 'livetranslatebutton' + _this.uniqueId
 		} ).text( lt.msg( 'livetranslate-button-translate' ) ); // .button()
 		
 		_this.revertButton = $( '<button />' ).attr( {
