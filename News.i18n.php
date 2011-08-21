@@ -34,6 +34,13 @@ $messages['arz'] = array(
 	'newsextension-desc' => 'يعرض أحدث تغييرات معدلة فى صفحات الويكى أو كتلقيم آر إس إس أو أتوم.',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'newsextension-desc' => 'Amuesa cambios recientes personalizaos nuna páxina wiki, o como fluxu RSS o Atom',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬) */
 $messages['be-tarask'] = array(
 	'newsextension-desc' => 'Паказаць налады апошніх зьменаў як старонкі вікі ці у выглядзе RSS ці Atom',
