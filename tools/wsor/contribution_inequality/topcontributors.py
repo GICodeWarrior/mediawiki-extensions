@@ -9,6 +9,7 @@ import os
 import sys
 import csv
 
+from oursql import connect
 from itertools import groupby
 from contextlib import closing
 from argparse import ArgumentParser, FileType
@@ -24,15 +25,22 @@ parser.add_argument('data_path', metavar='data')
 parser.add_argument('output_file', metavar='output_file', type=FileType('w'))
 parser.add_argument('-t', '--top', dest='maxlen', type=int, default=100,
         help='Top users to list. default: %(default)d', metavar='NUM')
+parser.add_argument('-u', '--user-names', action='store_true', help='query DB'
+        ' for contributor\'s name')
 
 colors = 'bgrcmykw'
 styles = ['-', '--', '-.', ':']
 markers = 'ov^<>1234'
+query = 'select user_name from user where user_id = ?'
 
 if __name__ == '__main__':
 
     ns = parser.parse_args() 
     databyns = {}
+
+    if ns.user_names:
+        conn = connect(read_default_file=os.path.expanduser("~/.my.cnf"))
+        names_cache = {}
     
     with closing(open(ns.data_path)) as f:
         reader = csv.DictReader(f, delimiter='\t', quoting=csv.QUOTE_NONE)
@@ -40,6 +48,20 @@ if __name__ == '__main__':
         for key, subiter in groupby(reader, groupfunc):
             # smart way to keep only the tail
             users = deque((row['user_id'] for row in subiter ), maxlen=ns.maxlen)
+
+            if ns.user_names:
+                user_names = []
+                for uid in users:
+                    try:
+                        user_name = names_cache[uid]
+                    except KeyError:
+                        cu = conn.cursor()
+                        cu.execute(query, (uid,))
+                        user_name, = cu.fetchone()
+                        names_cache[uid] = user_name
+                    user_names.append(user_name)
+                users = map(lambda k : '"%s"' % k, user_names)
+
             print >> ns.output_file, '\t'.join(key + tuple(users))
             ns.output_file.flush()
             
