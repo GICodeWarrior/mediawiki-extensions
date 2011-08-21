@@ -48,6 +48,33 @@ $messages['qqq'] = array(
 	'wikitweet-anonymous' => '{{Identical|Anonymous}}',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'wikitweet-desc' => "Crear un fluxu como'l de Twitter, en MediaWiki",
+	'wikitweet-pleaselogin' => 'Por favor, anicia sesión pa twitear.',
+	'wikitweet-moretweets' => 'Más tweets...',
+	'wikitweet-infoajax' => "Usa la teunoloxía AJAX y s'anueva automáticamente cada 5 segundos ensin tener que recargar la páxina.",
+	'wikitweet-submit' => 'Tweet',
+	'wikitweet-submitandmail' => 'Tweet y corréu electrónicu',
+	'wikitweet-intheroom' => 'Tas na sala',
+	'wikitweet-subscribe' => 'suscribir',
+	'wikitweet-subscribed' => 'suscritu',
+	'wikitweet-unsubscribe' => 'desuscribir',
+	'wikitweet-delete' => 'desaniciar',
+	'wikitweet-inform' => 'pol informador',
+	'wikitweet-private' => 'priváu',
+	'wikitweet-answer' => 'respuesta a',
+	'wikitweet-anonymous' => 'anónimu',
+	'wikitweet-tweets-tagged' => 'Tweets etiquetaos',
+	'wikitweet-back-timeline' => 'Tornar a la llinia temporal',
+	'wikitweet-tweets-from-room' => 'Tweets de la sala',
+	'wikitweet-timeago' => 'hai $1',
+	'wikitweet-inthefuture' => '¡Nel futuru!',
+	'wikitweet-fewsecondsago' => 'hai unos segundos',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
