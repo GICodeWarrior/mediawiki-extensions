@@ -22,11 +22,10 @@ jQuery( function( $ ) {
 	var actionCache = [],
 	    propCache = [],
 	    namespaces = [],
-	    currentInfo = {},
-	    apiPhp = mw.config.get( 'wgServer' ) + mw.config.get( 'wgScriptPath' ) + '/api' + mw.config.get( 'wgScriptExtension' );
+	    currentInfo = {};
 
 	// load namespaces
-	$.getJSON( apiPhp,
+	$.getJSON( mw.util.wikiScript( 'api' ),
 		{ format: 'json', action: 'query', meta: 'siteinfo', siprop: 'namespaces' },
 		function( data ) {
 			if ( isset( data.query ) && isset( data.query.namespaces ) ) {
@@ -50,7 +49,7 @@ jQuery( function( $ ) {
 	$query.change( updateBasics );
 
 	$submit.click( function() {
-		var url = apiPhp + '?action=' + $action.val(),
+		var url = mw.util.wikiScript( 'api' ) + '?action=' + $action.val(),
 		    info = currentInfo; // in case it changes later
 		if ( $action.val() == 'query' ) {
 			url += '&' + $query.val();
