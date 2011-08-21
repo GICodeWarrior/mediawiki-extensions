@@ -23,6 +23,13 @@ $messages['qqq'] = array(
 	'dublincorerdf-desc' => '{{desc}}',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'dublincorerdf-desc' => 'Metadatos RDF de Dublin Core',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Jim-by
  */
