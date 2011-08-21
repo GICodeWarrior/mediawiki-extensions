@@ -487,6 +487,13 @@ $messages['ml'] = array(
 	'articletocategory2-create-category-under-category-button' => 'സൃഷ്ടിക്കുക',
 );
 
+/** Marathi (मराठी)
+ * @author Htt
+ */
+$messages['mr'] = array(
+	'articletocategory2-create-category-under-category-button' => 'तयार करा',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Anakmalaysia
  */
