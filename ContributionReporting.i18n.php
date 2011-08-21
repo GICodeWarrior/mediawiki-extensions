@@ -5203,6 +5203,7 @@ $messages['te'] = array(
 	'fundraiserstats-tab-ytd' => 'సంవత్సరంలో-ఇప్పటివరకు (USD)',
 	'fundraiserstats-show-years' => 'ఈ సంవత్సరాలను చూపించు:',
 	'fundraiserstats-time-zone' => 'కాల మండలం:',
+	'fundraiserstats-utc' => '(UTC నుండి)',
 );
 
 /** Tetum (Tetun)
