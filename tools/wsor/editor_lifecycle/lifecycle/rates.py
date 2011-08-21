@@ -7,11 +7,14 @@
 
 import os
 import sys
-from argparse import ArgumentParser, FileType
+
 import numpy as np
-from scipy.sparse import coo_matrix
-from collections import deque
 import datetime as dt
+
+from argparse import ArgumentParser, FileType
+from scipy.sparse import coo_matrix
+from scipy.stats import gmean
+from collections import deque
 
 __prog__ = os.path.basename(os.path.abspath(__file__))
 
@@ -41,18 +44,16 @@ namespaces = {
 MAX_NS = np.max(namespaces.values()) # 109 as of August 2011
 
 def estimaterate(edits, step):
-    '''
-    This function takes the daily edit history of an individual editor, and a
-    step parameter; it estimates the daily activity of the editor. It returns
-    the daily rates every `step' days.
-    '''
+    edits = np.asfarray(edits)
     N = len(edits)
-    if N % step:
-        NN = np.ceil(N / float(step)) * step
-        tmp = np.zeros((NN,), dtype=edits.dtype)
-        tmp[:N] = edits
-        edits = tmp
-    return edits.reshape((-1, step)).sum(axis=-1) / float(step)
+    tmp = []
+    rem = N % step
+    for i in xrange(0, N, step): # step-size chunks
+        if i + step <= N:
+            tmp.append(edits[i:i+step].sum() / step)
+        else:
+            tmp.append(edits[i:].sum() / (N-i))
+    return np.asarray(tmp)
 
 def itercycles(npzarchive, every, users=None, onlyns=None):
     '''
@@ -76,17 +77,25 @@ def itercycles(npzarchive, every, users=None, onlyns=None):
         rates = estimaterate(np.asarray(M.sum(axis=1)).ravel(), every)
         yield np.c_[np.arange(len(rates)) * every, rates]
 
-def average(ratesbyday):
+def average(ratesbyday, geometric=False):
     '''
     Computes average cycle with standard errors. Takes in input a dictionary
-    returned by groupbydayssince()
+    returned by groupbydayssince(). If geometric, compute the geometric mean
+    and standard deviation instead.
     '''
     all_days = sorted(ratesbyday.keys())
     result = deque()
     for d in all_days:
         s = ratesbyday[d]
-        sqN = np.sqrt(len(s))
-        result.append((d, np.mean(s), np.std(s)/np.sqrt(len(s)), len(s)))
+        N = len(s)
+        if geometric:
+            s = np.ma.masked_equal(s, 0.0)
+            m = gmean(s)
+            sem = np.exp(np.std(np.log(s), ddof=1)) / np.sqrt(N)
+        else:
+            m = np.mean(s)
+            sem = np.std(s, ddof=1)
+        result.append((d, m, sem, N))
     return np.asarray(result)
 
 def groupbyday(npzarchive, every, users=None, onlyns=None):
@@ -137,19 +146,21 @@ def find_inactives(npzarchive, inactivity, minimum_activity, maximum_activity):
                 inactives.append(uid)
     return inactives
 
-def computerates(fn, every, users=None, onlyns=None):
+def computerates(fn, every, users=None, onlyns=None, geometric=False):
     '''
     Returns an array of average activity vs day since registration with standard
     errors of the average
 
     Parameters
     ----------
-    onlyns - compute edit counts only over specified list of namespaces
-    users  - compute rates only for these users
-    every  - compute daily rates in strides of length `every'
+    onlyns    - compute edit counts only over specified list of namespaces
+    users     - compute rates only for these users
+    every     - compute daily rates in strides of length `every'
+    geometric - computes geometric mean of average rate by day since
+                registration
     '''
     npzarchive = np.load(fn)
-    rates = average(groupbyday(npzarchive, every, users, onlyns))
+    rates = average(groupbyday(npzarchive, every, users, onlyns), geometric)
     return rates
 
 parser = ArgumentParser(description=__doc__)

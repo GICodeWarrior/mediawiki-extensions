@@ -1,0 +1,49 @@
+#!/usr/bin/python
+
+'''
+computes average activity rates from downloaded user counts archive files
+'''
+
+__author__ = "Giovanni Luca Ciampaglia"
+__email__ = "gciampaglia@wikimedia.org"
+
+import sys
+import os
+import numpy as np
+
+from argparse import ArgumentParser
+
+from lifecycle.rates import computerates
+
+parser = ArgumentParser(description=__doc__)
+parser.add_argument('input_path_list', metavar='data', nargs='+')
+parser.add_argument('-outdir', dest='output_dir', default=os.curdir)
+parser.add_argument('-every', type=int, help='default: average over %(default)d days',
+        default=30, metavar='NUM')
+parser.add_argument('-n', '--namespace', type=int, action='append', help='select only these NS',
+        dest='only')
+parser.add_argument('-G', '--geometric', action='store_true', help='compute '
+        'geometric mean and standard deviation of data')
+
+__prog__ = os.path.basename(__file__)
+
+def main(ns):
+
+    for path in ns.input_path_list:
+
+        # define output path
+        output_path = os.path.basename(path)
+        output_path = os.path.splitext(output_path)[0] + '.tsv'
+        output_path = os.path.join(ns.output_dir, output_path)
+
+        # compute rates for this cohort and save them to file
+        rates = computerates(path, ns.every, onlyns=ns.only,
+                geometric=ns.geometric)
+        np.savetxt(output_path, rates, fmt='%d\t%12.8g\t%12.8g\t%d')
+        print '%s: output saved to %s' % (__prog__, output_path)
+
+if __name__ == '__main__':
+    # get arguments from command line
+    ns = parser.parse_args()
+    main(ns)
+
