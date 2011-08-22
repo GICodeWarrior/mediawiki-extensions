@@ -257,13 +257,14 @@ $messages['no'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'fileattach-desc' => "A përmëtt che j'archivi a sio carià an sla pagina corenta",
+	'fileattach-desc' => "A përmët che j'archivi a sio carià an sla pagina corenta",
 	'fileattach-attachments' => "Alegà a j'archivi",
-	'fileattach-attachfile' => 'Alega archivi',
-	'fileattach-uploadheading' => 'Alega archivi a $1',
+	'fileattach-attachfile' => "Gionté n'archivi",
+	'fileattach-uploadheading' => "Gionté n'archivi a $1",
 	'fileattach-editcomment' => 'Archivi [[File:$1|$1]] alegà',
 );
 
