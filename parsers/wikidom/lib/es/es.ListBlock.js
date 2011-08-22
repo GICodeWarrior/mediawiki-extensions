@@ -219,10 +219,11 @@ es.ListBlock.prototype.getSectionBoundaries = function( offset ) {
  * @method
  * @param offset {Integer} Position to insert content at
  * @param content {Object} Content to insert
+ * @param autoAnnotate {Boolean} Content to insert
  */
-es.ListBlock.prototype.insertContent = function( offset, content ) {
+es.ListBlock.prototype.insertContent = function( offset, content, autoAnnotate ) {
 	var location = this.getLocationFromOffset( offset );
-	location.item.flow.content.insert( location.offset, content );
+	location.item.flow.content.insert( location.offset, content, autoAnnotate );
 };
 
 /**
