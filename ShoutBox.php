@@ -55,11 +55,12 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 # Credits
 $wgExtensionCredits['parserhook'][] = array(
+        'path' =>  __FILE__,
 	'name' => 'ShoutBox',
-	'version' => '0.2.1',
+	'version' => '0.2.2',
 	'author' => array( 'Jim R. Wilson', 'Jack Phoenix' ),
 	'url' => 'http://www.mediawiki.org/wiki/Extension:ShoutBox',
-	'description' => 'Adds a parser function for embedding your own shoutbox',
+	'descriptionmsg' => 'shoutbox-desc',
 );
 
 // Configuration settings
