@@ -12,6 +12,14 @@ class SpecialViewArchive extends SpecialPage {
 		parent::__construct( 'ViewArchive' );
 	}
 
+	/**
+	 * Main function for the view archive page. This queries the resource table, disables
+	 * output, and then displays the archived version of whichever page you'd like to view.
+	 * 
+	 * @global $wgOut object
+	 * @global $wgRequest object
+	 * @param $par
+	 */
 	public function execute( $par ) {
 		global $wgOut, $wgRequest;
 		
@@ -74,6 +82,12 @@ class SpecialViewArchive extends SpecialPage {
 		}
 	}
 	
+	/**
+	 * Uses the HTML functions to output the appropiate form for the special page if no archived version
+	 * exists or if no query has been specified by the user yet.
+	 * 
+	 * @global $wgOut object
+	 */
 	private function output_form( ) {
 		global $wgOut;
 		$this->setHeaders();
