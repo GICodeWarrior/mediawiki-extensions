@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-''' plots cohort rate date '''
+''' plots cohort rate versus day since first edit '''
 
 __author__ = "Giovanni Luca Ciampaglia"
 __email__ = "gciampaglia@wikimedia.org"
@@ -13,6 +13,8 @@ import matplotlib.pyplot as pp
 
 from argparse import ArgumentParser
 from matplotlib.font_manager import FontProperties
+
+from lifecycle.cvsmooth import find_peak
 
 __prog__ = os.path.basename(__file__)
 
@@ -59,24 +61,34 @@ if __name__ == '__main__':
         marker = markers[i % M]
         if ns.no_errbars:
             l, = ax.plot(days, rate, marker=marker, color=color, label=label,
-                    ls=':', lw=2) 
+                    ls='none', lw=2, mfc='none', mec=color) 
         else:
-            l, (wu, wd), mc = ax.errorbar(days, rate, rate_err, 
-                    marker=marker, color=color, label=label, ecolor='none', 
-                    ls=':', lw=2)
+            l, (wu, wd), mc = ax.errorbar(days, rate, rate_err / 2.0, 
+                    marker=marker, mec=color, label=label, ecolor='lightgrey', 
+                    ls='none', lw=2, mfc='none')
             pp.setp(wd, ls='none')
+
+        xp, spl = find_peak(days, rate, rate_err / 2.0)
+
+        x = np.linspace(days.min(), days.max(), endpoint=True, num=100)
+
+        y = spl(x)
+
+        ax.plot(x, y, label='spline fit', color=color, ls='--', marker='none',
+                lw=2)
+
+        ax.axvline(xp, color=color)
 
         lines.append(l)
 
     # decorate figure
-    pp.xlabel('days since registration')
+    pp.xlabel('days since first edit')
     pp.ylabel('edits/day')
     pp.figlegend(lines, [ l.get_label() for l in lines ], 
             loc='center right', prop=FontProperties(size='small'))
     pp.minorticks_on()
     pp.grid("on")
     pp.axis('tight')
-#    pp.ylim(0,np.ceil(ymax * 1.01)) # fix this!
 
     pp.draw()
     if ns.title is not None:

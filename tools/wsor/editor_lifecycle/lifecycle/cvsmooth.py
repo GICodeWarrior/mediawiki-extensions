@@ -1,10 +1,11 @@
 import numpy as np
 from scipy.interpolate import splrep, splev, UnivariateSpline
-from scipy.optimize import fmin
+from scipy.optimize import fmin_tnc
+import scipy.optimize.tnc as tnc
 
 def spsmooth(x, y, ye, **kwargs):
     ''' 
-    Finds the best spline smoothing factor by leave-one-out cross validation
+    Finds the best spline smoothing factor using leave-one-out cross validation
 
     Additional keyword arguments are passed to splrep (e.g. k for the degree)
     '''
@@ -55,5 +56,17 @@ def find_peak(x,y,ye,k=3):
     '''
     s = spsmooth(x, y, ye, k=k)
     spl = UnivariateSpline(x, y, ye ** -1, k=k, s=s)
-    xp = fmin(lambda k : -spl(k), x.mean())
-    return xp, spl
+    f = lambda k : -spl(k)
+    fprime = np.vectorize(lambda k : - spl.derivatives(k)[1])
+    xp_best = None
+    yp_best = -np.inf
+    bounds = [(x.min(), x.max())]
+    for i in xrange(5):
+        x0 = (x.ptp() * np.random.rand() + x.min(),)
+        xp, nfeval, rc = fmin_tnc(f, x0, fprime=fprime, bounds=bounds,
+                messages=tnc.MSG_NONE)
+        yp = spl(xp)
+        if yp >= yp_best:
+            xp_best = xp
+            yp_best = yp
+    return xp_best, spl
