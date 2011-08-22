@@ -129,6 +129,9 @@ class SignupForm extends SpecialPage {
 
 	public function execute( $par ) {
 
+                global $wgOut;
+                $wgOut->addModules( 'mediawiki.special.usersignup' );
+
 		if ( session_id() == '' ) {
 			wfSetupSession();
 		}
@@ -737,6 +740,7 @@ class SignupForm extends SpecialPage {
 
 		$wgOut->disallowUserJs(); // just in case...
 		$wgOut->addTemplate( $template );
+                $wgOut->addModules( 'ext.SignupAPI' );
 	}
 
 	/**

@@ -10,6 +10,11 @@ $messages = array();
 
 $messages['en'] = array(
 	'signupapi-desc' => 'Cleans up the [[Special:UserLogin|login page]] from signup related stuff and adds an API for signup',
+        'signupapi-enterpassword' => 'You must enter a password',
+        'signupapi-weak' => 'Weak',
+        'signupapi-medium' => 'Medium',
+        'signupapi-strong' => 'Strong',
+        'signupapi-passwordsmatch' => 'Passwords Match',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
