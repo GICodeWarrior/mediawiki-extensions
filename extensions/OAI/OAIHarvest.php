@@ -271,14 +271,23 @@ class OAIUpdateRecord {
 		$this->_page = $pageData;
 	}
 
+	/**
+	 * @return int
+	 */
 	function getArticleId() {
 		return IntVal( $this->_page['id'] );
 	}
 
+	/**
+	 * @return bool
+	 */
 	function isDeleted() {
 		return isset( $this->_page['deleted'] );
 	}
 
+	/**
+	 * @return Title
+	 */
 	function getTitle() {
 		return Title::newFromText( $this->_page['title'] );
 	}
@@ -419,8 +428,9 @@ class OAIUpdateRecord {
 	}
 
 	/**
-	 * @param int $pageId
-	 * @param Title $title
+	 * @param $db DatabaseBase
+	 * @param $pageId int
+	 * @param $title Title
 	 * @return Article
 	 */
 	function prepareArticle( $db, $pageId, $title ) {
@@ -539,6 +549,7 @@ class OAIUpdateRecord {
 		echo "File updating temporarily broken on 1.11, sorry!\n";
 		return;
 
+		/*
 		$timestamp = wfTimestamp( TS_UNIX, $this->getTimestamp( $upload['timestamp'] ) );
 		if( file_exists( $filename )
 			&& filemtime( $filename ) == $timestamp
@@ -575,6 +586,7 @@ class OAIUpdateRecord {
 
 		touch( $filename, $timestamp );
 		echo " done.\n";
+		*/
 	}
 
 	/**
@@ -600,12 +612,12 @@ class OAIUpdateRecord {
 	}
 
 	/**
-	 * @param DomNode $node
+	 * @param $node DomNode
+	 * @return OAIUpdateRecord
 	 */
 	static function newFromNode( $node ) {
 		$pageData = OAIUpdateRecord::readRecord( $node );
-		$record = new OAIUpdateRecord( $pageData );
-		return $record;
+		return new OAIUpdateRecord( $pageData );
 	}
 
 	/**
