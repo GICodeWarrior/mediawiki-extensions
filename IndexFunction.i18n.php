@@ -126,10 +126,11 @@ $messages['arc'] = array(
 
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
+ * @author Wertuose
  */
 $messages['az'] = array(
 	'index-search' => 'Axtar:',
-	'index-submit' => 'Yolla',
+	'index-submit' => 'Təsdiq et',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
