@@ -285,18 +285,19 @@ $messages['nl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'searchlog' => 'Sërché Registr',
-	'searchlog-desc' => "A registra l'usagi dla box d'arserca e a përmëtt ëd conté ij totaj dle paròle ciav an mente d'un dàit antërval ëd temp",
-	'searchlog-cantopen' => 'A peul pa deurbe ël file ëd registr <tt>$1</tt>',
-	'searchlog-heading' => "Sërca paròle ciav dovrà ant l'antërval $1",
-	'searchlog-unicode' => 'Mosta riga Unicode',
-	'searchlog-timeperiod' => 'Selession-a antërval ëd temp:',
-	'searchlog-entire' => 'Registr anter',
-	'searchlog-phrase' => 'Sërca fras',
-	'searchlog-occurences' => "Nùmer d'ocorense an mente ëd l'antërval",
+	'searchlog' => "Argistr ëd j'arserche",
+	'searchlog-desc' => "A registra l'usagi dla casela d'arserca e a përmët ëd conté ij totaj dle paròle ciav durant un dàit antërval ëd temp",
+	'searchlog-cantopen' => "A peul pa deurbe l'archivi ëd registr <tt>$1</tt>",
+	'searchlog-heading' => "Paròle ciav d'arserca dovrà ant l'antërval $1",
+	'searchlog-unicode' => "Smon-e coma l'Unicode",
+	'searchlog-timeperiod' => "Selessioné n'antërval ëd temp:",
+	'searchlog-entire' => "Tut l'argistr",
+	'searchlog-phrase' => 'Sërché fras',
+	'searchlog-occurences' => "Nùmer d'ocorense durant l'antërval",
 	'right-searchlog-read' => "Varda ël registr d'arserca",
 );
 

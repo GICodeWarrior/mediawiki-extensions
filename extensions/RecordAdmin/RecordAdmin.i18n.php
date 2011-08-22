@@ -252,9 +252,10 @@ $messages['arz'] = array(
 
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
+ * @author Wertuose
  */
 $messages['az'] = array(
-	'recordadmin-submit' => 'Yolla',
+	'recordadmin-submit' => 'Təsdiq et',
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 );

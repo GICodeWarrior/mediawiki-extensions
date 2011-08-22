@@ -413,6 +413,9 @@ Dir kënnt och [[Special:Favoritelist/raw|déi net-formatéiert Lëscht änneren
 	'favoritelistedit-normal-done' => '{{PLURAL:$1|1 Säit gouf|$1 Säite goufe}} vun der Lëscht vun Äre Favoriten erofgeholl:',
 	'favoritelistedit-raw-title' => 'Net-formatéiert Favoritelëscht änneren',
 	'favoritelistedit-raw-legend' => 'Net-formatéiert Favoritelëscht änneren',
+	'favoritelistedit-raw-explain' => "D'Titele vun Äre Favorite ginn hei drënner gewisen a kënne geännert ginn andeems der d'Säiten op d'Lëscht derbäisetze oder erofhuelt; eng Säit pro Linn.
+Wann Dir fäerdeg sidd, klickt \"{{int:Favoritelistedit-raw-submit}}\".
+Dir kënnt och [[Special:Favoritelist/edit|de Standard Editeur benotzen]].",
 	'favoritelistedit-raw-titles' => 'Säiten:',
 	'favoritelistedit-raw-submit' => 'Lëscht vun de Favoriten aktualiséieren',
 	'favoritelistedit-raw-done' => "D'Lëscht vun Äre Favorite gouf aktualiséiert.",

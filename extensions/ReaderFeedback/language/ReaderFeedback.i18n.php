@@ -226,9 +226,10 @@ $messages['ast'] = array(
 
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
+ * @author Wertuose
  */
 $messages['az'] = array(
-	'readerfeedback-submit' => 'Yolla',
+	'readerfeedback-submit' => 'Təsdiq et',
 );
 
 /** Bashkir (Башҡортса)

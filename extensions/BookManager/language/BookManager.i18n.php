@@ -492,6 +492,7 @@ $messages['sr-ec'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Ainali
  * @author Lokal Profil
  * @author Tobulos1
  * @author WikiPhoenix
@@ -499,6 +500,7 @@ $messages['sr-ec'] = array(
 $messages['sv'] = array(
 	'bookmanager-desc' => 'Verktyg för böcker',
 	'bm-booktools-section' => 'Bokverktyg',
+	'bm-randomchapter-link' => 'Slumpmässigt kapitel',
 	'bm-printversion' => 'Utskriftsversion',
 	'bm-printversion-desc' => 'Skapar en [[Special:PrintVersion|utskriftsversion]] av en bok',
 	'bm-printversion-no-book' => 'Ange namnet på en bok för att få den i utskriftsversion.',

@@ -651,12 +651,13 @@ $messages['ast'] = array(
 
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
+ * @author Wertuose
  */
 $messages['az'] = array(
 	'deletequeue-delnom-otherreason' => 'Digər səbəb',
 	'deletequeue-review-reason' => 'Şərhlər:',
 	'deletequeue-vote-reason' => 'Şərhlər:',
-	'deletequeue-vote-submit' => 'Yolla',
+	'deletequeue-vote-submit' => 'Təsdiq et',
 	'deletequeue-list-status' => 'Status:',
 	'deletequeue-list-search' => 'Axtar',
 	'deletequeue-case-page' => 'Səhifə:',

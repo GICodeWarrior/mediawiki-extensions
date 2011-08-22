@@ -72,12 +72,12 @@ $messages['cs'] = array(
  */
 $messages['de'] = array(
 	'embedvideo-desc' => 'Stellt eine Parser-Funktion zur Einbettung von Videos aus populären Repositorien bereit',
-	'embedvideo-missing-params' => 'Ein erforderlicher Parameter fehlt.',
+	'embedvideo-missing-params' => 'Es fehlt ein erforderlicher Parameter.',
 	'embedvideo-bad-params' => 'Es wurde ein mangelhafter Parameter empfangen.',
 	'embedvideo-unparsable-param-string' => 'Es wurde die Zeichenkette „<code>$1</code>“ empfangen, die nicht geparst werden kann.',
 	'embedvideo-unrecognized-service' => 'Das Video-Repositorium „<code>$1</code>“ wird nicht unterstützt.',
 	'embedvideo-bad-id' => 'Es wurde eine mangelhafte Identifikation „$1“ für das Repositorium „$2“ empfangen.',
-	'embedvideo-illegal-width' => 'Es wurde ein ungültiger <i>width</i>-Parameter „$1“ empfangen.',
+	'embedvideo-illegal-width' => 'Es wurde der ungültige <i>width</i>-Parameter „<tt>$1</tt>“ angegeben.',
 );
 
 /** Lower Sorbian (Dolnoserbski)

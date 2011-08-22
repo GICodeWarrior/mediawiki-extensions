@@ -185,10 +185,11 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'customusersignup-desc' => 'A përmëtt ëd përsonalisé ij mëssagi an mente dël process ëd creassion dël cont',
+	'customusersignup-desc' => 'A përmët ëd përsonalisé ij mëssagi an mente dël process ëd creassion dël cont',
 );
 
 /** Portuguese (Português)
