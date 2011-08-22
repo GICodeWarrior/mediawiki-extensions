@@ -69,6 +69,9 @@ class OAIRepo {
 		$this->_errors[] = array( $code, $message );
 	}
 
+	/**
+	 * @return bool
+	 */
 	function errorCondition() {
 		return !empty( $this->_errors );
 	}
@@ -241,8 +244,11 @@ class OAIRepo {
 		}
 	}
 
+	/**
+	 * @param $responseSize int
+	 */
 	private function logRequest( $responseSize ) {
-		global $oaiAudit, $wgDBname;
+		global $oaiAudit, $wgDBname, $wgRequest;
 		if( $oaiAudit ) {
 			$db = $this->getAuditDatabase();
 			$db->insert(
@@ -250,7 +256,7 @@ class OAIRepo {
 				array(
 					'oa_client' => $this->_clientId,
 					'oa_timestamp' => $db->timestamp(),
-					'oa_ip' => wfGetIP(),
+					'oa_ip' => $wgRequest->getIP(),
 					'oa_agent' => @$_SERVER['HTTP_USER_AGENT'],
 					'oa_dbname' => $wgDBname,
 					'oa_response_size' => $responseSize,
@@ -692,7 +698,6 @@ class OAIRepo {
 				'namespace'	=> 'http://www.mediawiki.org/xml/lsearch-0.1/',
 				'schema'    => 'http://www.mediawiki.org/xml/lsearch-0.1.xsd' ) );
 	}
-
 }
 
 class OAIRecord {
@@ -775,10 +780,16 @@ class WikiOAIRecord extends OAIRecord {
 		$this->_writer    = $writer;
 	}
 
+	/**
+	 * @return bool
+	 */
 	function isDeleted() {
 		return $this->_deleted;
 	}
 
+	/**
+	 * @return string
+	 */
 	function getIdentifier() {
 		return OAIRepo::identifierPrefix() . $this->_id;
 	}
