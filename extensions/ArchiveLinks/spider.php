@@ -312,8 +312,7 @@ class ArchiveLinksSpider extends Maintenance {
 	 * @return array
 	 */
 	private function parse_wget_log( $log_path, $url ) {
-		//We have a die statement here, PHP error unnecessary
-		@$fp = fopen( $log_path, 'r' ) or die( 'can\'t find wget log file to parse' );
+		$fp = fopen( $log_path, 'r' ) or die( 'can\'t find wget log file to parse' );
 		
 		$this->downloaded_files = array ( );
 		
