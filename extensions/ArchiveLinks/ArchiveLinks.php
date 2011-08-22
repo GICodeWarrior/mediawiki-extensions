@@ -27,10 +27,27 @@ $wgSpecialPages['ViewArchive'] = 'SpecialViewArchive';
 $wgAutoloadClasses['ApiQueryArchiveFeed'] = "$path/ApiQueryArchiveFeed.php";
 $wgAPIListModules['archivefeed'] = 'ApiQueryArchiveFeed';
 
+// Tests
+/*$wgHooks['UnitTestsList'][] = 'efArchiveLinksUnitTests';
+
+function efArchiveLinksUnitTests( &$files ) {
+	$files[] = dirname( __FILE__ ) . '/ArchiveLinksTests.php';
+	return true;
+}*/
+
 $wgArchiveLinksConfig = array(
 	'archive_service' => 'internet_archive',
 	'use_multiple_archives' => false,
 	'run_spider_in_loop' => false,
 	'in_progress_ignore_delay' => 7200,
-	'generate_feed' => false,
+	'generate_feed' => true,
+);
+
+$wgExtensionCredits['other'][] = array(
+        'path' => __FILE__,
+        'name' => 'ArchiveLinks',
+        'description' => 'Enables archival of external links on the wiki to prevent linkrot.',
+        'version' => '0.1',
+        'author' => 'Kevin Brown',
+        'url' => '',
 );

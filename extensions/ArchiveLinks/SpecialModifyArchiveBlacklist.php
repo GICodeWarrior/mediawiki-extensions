@@ -6,6 +6,14 @@ class SpecialModifyArchiveBlacklist extends SpecialPage {
 		parent::__construct('ModifyArchiveBlacklist');
 	}
 
+	/**
+	 * Main function for special page. At the current time only produces html for the blacklist.
+	 * Should support updating the blacklist.
+	 * 
+	 * @global $wgOut object
+	 * @global $wgRequest object
+	 * @param $par
+	 */
 	public function execute($par) {
 		global $wgOut, $wgRequest;
 		$this->setHeaders();

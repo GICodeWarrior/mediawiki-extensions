@@ -8,7 +8,14 @@ class ArchiveLinks {
     private $db_slave;
     private $db_result;
     
-    
+    /**
+	 * This is the primary function for the Archive Links Extension
+	 * It fires off of the ArticleSaveComplete hook and is primarily responsible for updating
+	 * the appropiate tables to began the process of archival
+	 * 
+	 * @param $article object article object from ArticleSaveComplete hook
+	 * @return bool
+	 */
 	public static function queueExternalLinks ( &$article ) {
 		global $wgParser, $wgArchiveLinksConfig;
 		$external_links = $wgParser->getOutput();
@@ -63,7 +70,7 @@ class ArchiveLinks {
 			if ( !isset( $wgArchiveLinksConfig['link_insert_max'] ) ) {
 				$wgArchiveLinksConfig['link_insert_max'] = 100;
 			}
-			
+			die ( count( $new_external_links ));
 			if ( count( $new_external_links ) <= $wgArchiveLinksConfig['link_insert_max'] ) {
 				//insert the links into the queue now
 				foreach( $new_external_links as $link ) {					
@@ -92,7 +99,6 @@ class ArchiveLinks {
 			} else {
 				//insert everything as a job and do the work later to avoid lagging page save
 			}
-			
 		} else {
 			foreach ( $external_links as $link => $unused_value ) {
 				//$db_result['resource'] = $db_slave->select( 'el_archive_resource', '*', '`el_archive_resource`.`resource_url` = "' . $db_slave->strencode( $link ) . '"');
@@ -126,8 +132,19 @@ class ArchiveLinks {
 		return true;
 	}
 	
+	/**
+	 * This is the function resposible for rewriting the link html to insert the [cache] link
+	 * after each external link on the page. This function will get called once for every external link.
+	 * 
+	 * @global $wgArchiveLinksConfig array
+	 * @param $url string The url of the page (what would appear in href)
+	 * @param $text string The assoicated text of the URL (what would go between the anchor tags)
+	 * @param $link string The rewritten text of the URL
+	 * @param $attributes array Any attributes for the anchor tag
+	 * @return bool
+	 */
 	public static function rewriteLinks (  &$url, &$text, &$link, &$attributes ) {
-		if ( array_key_exists('rel', $attributes) && $attributes['rel'] === 'nofollow' ) {
+		if ( isset( $attributes['rel'] ) && $attributes['rel'] === 'nofollow' ) {
 			global $wgArchiveLinksConfig;
 			if ( $wgArchiveLinksConfig['use_multiple_archives'] ) {
 				//need to add support for more than one archival service at once
@@ -135,19 +152,24 @@ class ArchiveLinks {
 			} else {
 				switch ( $wgArchiveLinksConfig['archive_service'] ) {
 					case 'local':
-					//We need to have something to figure out where the filestore is...
-					$link_to_archive = urlencode( substr_replace( $url, '', 0, 7 ) );
-					break;
+						//We need to have something to figure out where the filestore is...
+						$link_to_archive = urlencode( substr_replace( $url, '', 0, 7 ) );
+						break;
 					case 'wikiwix':
-					$link_to_archive = 'http://archive.wikiwix.com/cache/?url=' . $url;
-					break;
+						$link_to_archive = 'http://archive.wikiwix.com/cache/?url=' . $url;
+						break;
 					case 'webcitation':
-					$link_to_archive = 'http://webcitation.org/query?url=' . $url;
-					break;
+						$link_to_archive = 'http://webcitation.org/query?url=' . $url;
+						break;
 					case 'internet_archive':
 					default:
-					$link_to_archive = 'http://wayback.archive.org/web/*/' . $url;
-					break;
+						if ( /*$wgArchiveLinksConfig['generate_feed'] === true*/ false ) {
+							$db_slave = wfGetDB( DB_SLAVE );
+							$db_slave->select( 'el_archive_link_history','*');
+						} else {
+							$link_to_archive = 'http://wayback.archive.org/web/*/' . $url;
+						}
+						break;
 				}
 			}
 			
@@ -165,6 +187,13 @@ class ArchiveLinks {
 		}
 	}
 	
+	/**
+	 * This function is responsible for any database updates within the extension and hooks into
+	 * update.php
+	 * 
+	 * @param $updater object Passed by the LoadExtensionSchemaUpdates hook
+	 * @return bool
+	 */
 	public static function schemaUpdates ( $updater = null ) {
 		$path = dirname( __FILE__ );
 		$updater->addExtensionUpdate( array(

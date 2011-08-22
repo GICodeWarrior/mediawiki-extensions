@@ -18,6 +18,16 @@ class ArchiveLinksSpider extends Maintenance {
 	private $jobs;
 	private $downloaded_files;
 
+	/**
+	 * Primary function called from Maintenance.php to run the actual spider. 
+	 * Queries the queue and then downloads and stores each link for which archival
+	 * has been requested
+	 *  
+	 * @global $wgArchiveLinksConfig array
+	 * @global $wgLoadBalancer object
+	 * @global $path string Install path of mediawiki
+	 * @return bool
+	 */
 	public function execute( ) {
 		global $wgArchiveLinksConfig, $wgLoadBalancer, $path;
 
@@ -62,6 +72,15 @@ class ArchiveLinksSpider extends Maintenance {
 		return null;
 	}
 	
+	/**
+	 * This function goes and checks to make sure the configuration values are valid
+	 * Then calls wget, finds the result and updates the appropiate database tables to
+	 * record it. 
+	 * 
+	 * @global $wgArchiveLinksConfig array
+	 * @global $path string
+	 * @param $url string the URL that is to be archvied
+	 */
 	private function call_wget( $url ) {
 		global $wgArchiveLinksConfig, $path;
 		
@@ -135,6 +154,12 @@ class ArchiveLinksSpider extends Maintenance {
 		}
 	}
 
+	/**
+	 * This function checks the archive queue without any attempt to work around replag.
+	 * Only one URL is taken at a time.
+	 * 
+	 * @return mixed The URL to archive on success, False on failure
+	 */
 	private function check_queue( ) {
 		//need to fix this to use arrays instead of what I'm doing now
 		$this->db_result['job-fetch'] = $this->db_slave->select( 'el_archive_queue', '*',
@@ -156,7 +181,11 @@ class ArchiveLinksSpider extends Maintenance {
 
 	/**
 	 * This function checks a local file for a local block of jobs that is to be done
-	 * if there is none that exists it gets a block, creates one, and waits to avoid any replag problems
+	 * if there is none that exists it gets a block, creates one, and waits for the 
+	 * data to propagate to avoid any replag problems. All urls are not returned directly
+	 * but are put into $this->jobs.
+	 * 
+	 * @return bool
 	 */
 	private function replication_check_queue( ) {
 		global $path, $wgArchiveLinksConfig;
@@ -231,6 +260,13 @@ class ArchiveLinksSpider extends Maintenance {
 		return $retval;
 	}
 	
+	
+	/**
+	 * This function checks for duplicates in the queue table, if it finds one it keeps the oldest and deletes
+	 * everything else.
+	 *
+	 * @param $url
+	 */
 	private function delete_dups( $url ) {
 		//Since we querried the slave to check for dups when we insterted instead of the master let's check
 		//that the job isn't in the queue twice, we don't want to archive it twice
@@ -250,6 +286,14 @@ class ArchiveLinksSpider extends Maintenance {
 		}
 	}
 	
+	
+	/**
+	 * This function sets in_progess in the queue table to 1 so other instances of the spider know that
+	 * the job is in the process of being archived.
+	 * 
+	 * @param $row array The row of the database result from the database object.
+	 * @return bool
+	 */
 	private function reserve_job( $row ) {
 		// this function was pulled out of replication_check_queue, need to fix the vars in here
 		$this->jobs['execute_urls'][] = $row['url'];
@@ -259,6 +303,14 @@ class ArchiveLinksSpider extends Maintenance {
 		return true;
 	}
 	
+	/**
+	 * Uses regular expressions to parse the log file of wget in non-verbose mode
+	 * This is then returned to call_wget and updated in the db
+	 *
+	 * @param $log_path string Path to the wget log file
+	 * @param $url string URL of the page that was archived
+	 * @return array
+	 */
 	private function parse_wget_log( $log_path, $url ) {
 		//We have a die statement here, PHP error unnecessary
 		@$fp = fopen( $log_path, 'r' ) or die( 'can\'t find wget log file to parse' );

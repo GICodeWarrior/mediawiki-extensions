@@ -5,6 +5,10 @@ class ApiQueryArchiveFeed extends ApiQueryBase {
 		parent::__construct( $query, $moduleName, 'arl' );
 	}
 	
+	/**
+	 * This is the primary execute function for the API. It processes the query and returns
+	 * a valid API result.
+	 */
 	public function execute ( ) {
 		$params = $this->extractRequestParams();
 		
