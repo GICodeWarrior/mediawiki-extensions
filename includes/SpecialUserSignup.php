@@ -49,13 +49,13 @@ class SignupForm extends SpecialPage {
         const INIT_FAILED = 18;
 
 	//Initialise all variables to be used
-	var $mUsername, $mPassword, $mRetype, $mReturnTo, $mCookieCheck, $mPosted;
+	var $tempUsername, $mPassword, $mRetype, $mReturnTo, $mCookieCheck, $mPosted;
 	var $mAction, $mCreateaccount, $mCreateaccountMail;
 	var $mRemember, $mEmail, $mDomain, $mLanguage;
 	var $mSkipCookieCheck, $mReturnToQuery, $mToken, $mStickHTTPS;
 	var $mType, $mReason, $mRealName;
 	var $abortError = '';
-	var $mUser, $mConfirmationMailStatus, $mRunCookieRedirect, $mRunCreationConfirmation;
+	var $tempUser, $mConfirmationMailStatus, $mRunCookieRedirect, $mRunCreationConfirmation;
         var $mSourceAction, $mSourceNS, $msourceArticle;
 
 	/**
@@ -167,26 +167,26 @@ class SignupForm extends SpecialPage {
 			return;
 		}
 
-		$mUser = $this->addNewaccountInternal();
+		$tempUser = $this->addNewaccountInternal();
 
-		if ( $mUser == null ) {
+		if ( $tempUser == null ) {
 			return;
 		}
 
 		// Wipe the initial password and mail a temporary one
-		$mUser->setPassword( null );
-		$mUser->saveSettings();
-		$result = $this->mailPasswordInternal( $mUser, false, 'createaccount-title', 'createaccount-text' );
+		$tempUser->setPassword( null );
+		$tempUser->saveSettings();
+		$result = $this->mailPasswordInternal( $tempUser, false, 'createaccount-title', 'createaccount-text' );
 
-		wfRunHooks( 'AddNewAccount', array( $mUser, true ) );
-		$mUser->addNewUserLogEntry( true, $this->mReason );
+		wfRunHooks( 'AddNewAccount', array( $tempUser, true ) );
+		$tempUser->addNewUserLogEntry( true, $this->mReason );
 
 		$wgOut->setPageTitle( wfMsg( 'accmailtitle' ) );
 
 		if( !$result->isGood() ) {
 			$this->mainSignupForm( wfMsg( 'mailerror', $result->getWikiText() ) );
 		} else {
-			$wgOut->addWikiMsg( 'accmailtext', $mUser->getName(), $mUser->getEmail() );
+			$wgOut->addWikiMsg( 'accmailtext', $tempUser->getName(), $tempUser->getEmail() );
 			$wgOut->returnToMain( false );
 		}
 	}
@@ -194,29 +194,29 @@ class SignupForm extends SpecialPage {
 	/**
 	 * @private
 	 */
-	function addNewAccount($mUser) {
+	function addNewAccount($tempUser) {
 		global $wgUser, $wgEmailAuthentication, $wgOut;
 
 		# If we showed up language selection links, and one was in use, be
 		# smart (and sensible) and save that language as the user's preference
 		global $wgLoginLanguageSelector;
 		if( $wgLoginLanguageSelector && $this->mLanguage ) {
-			$mUser->setOption( 'language', $this->mLanguage );
+			$tempUser->setOption( 'language', $this->mLanguage );
 		}
 
 		# Send out an email authentication message if needed
 		if( $wgEmailAuthentication ) {
-			$this->mConfirmationMailStatus = $mUser->sendConfirmationMail();
+			$this->mConfirmationMailStatus = $tempUser->sendConfirmationMail();
 		}
 
 		# Save settings (including confirmation token)
-		$mUser->saveSettings();
+		$tempUser->saveSettings();
 
 		# If not logged in, assume the new account as the current one and set
 		# session cookies then show a "welcome" message or a "need cookies"
 		# message as needed
 		if( $wgUser->isAnon() ) {
-			$wgUser = $mUser;
+			$wgUser = $tempUser;
 			$wgUser->setCookies();
 			wfRunHooks( 'AddNewAccount', array( $wgUser, false ) );
 			$wgUser->addNewUserLogEntry();
@@ -228,8 +228,8 @@ class SignupForm extends SpecialPage {
 			}
 		} else {
                         $this->mRunCreationConfirmation = true;
-			wfRunHooks( 'AddNewAccount', array( $mUser, false ) );
-			$mUser->addNewUserLogEntry( false, $this->mReason );
+			wfRunHooks( 'AddNewAccount', array( $tempUser, false ) );
+			$tempUser->addNewUserLogEntry( false, $this->mReason );
 			return true;
 		}
 	}
@@ -293,14 +293,14 @@ class SignupForm extends SpecialPage {
 			return self::IP_BLOCKED;
 		}
 
-		# Now create a dummy user ($mUser) and check if it is valid
+		# Now create a dummy user ($tempUser) and check if it is valid
 		$name = trim( $this->mUsername );
-		$mUser = User::newFromName( $name, 'creatable' );
-		if ( !is_object( $mUser ) ) {
+		$tempUser = User::newFromName( $name, 'creatable' );
+		if ( !is_object( $tempUser ) ) {
 			return self::NO_NAME;
 		}
 
-		if ( 0 != $mUser->idForName() ) {
+		if ( 0 != $tempUser->idForName() ) {
 			return self::USER_EXISTS;
 		}
 
@@ -309,7 +309,7 @@ class SignupForm extends SpecialPage {
 		}
 
 		# check for minimal password length
-		$valid = $mUser->getPasswordValidity( $this->mPassword );
+		$valid = $tempUser->getPasswordValidity( $this->mPassword );
 		if ( $valid !== true ) {
 			if ( !$this->mCreateaccountMail ) {
 				return self::INVALID_PASS;
@@ -333,11 +333,11 @@ class SignupForm extends SpecialPage {
 
 		# Set some additional data so the AbortNewAccount hook can be used for
 		# more than just username validation
-		$mUser->setEmail( $this->mEmail );
-		$mUser->setRealName( $this->mRealName );
+		$tempUser->setEmail( $this->mEmail );
+		$tempUser->setRealName( $this->mRealName );
 
 		$abortError = '';
-		if( !wfRunHooks( 'AbortNewAccount', array( $mUser, &$abortError ) ) ) {
+		if( !wfRunHooks( 'AbortNewAccount', array( $tempUser, &$abortError ) ) ) {
 			// Hook point to add extra creation throttles and blocks
 			return self::BLOCKED_BY_HOOK;
 		}
@@ -354,18 +354,18 @@ class SignupForm extends SpecialPage {
 			$wgMemc->incr( $key );
 		}
 
-		if( !$wgAuth->addUser( $mUser, $this->mPassword, $this->mEmail, $this->mRealName ) ) {
+		if( !$wgAuth->addUser( $tempUser, $this->mPassword, $this->mEmail, $this->mRealName ) ) {
 			return self::EXTR_DB_ERROR;
 		}
 
 		self::clearCreateaccountToken();
 
-		$mUser = $this->initUser( $mUser, false );
-                if( $mUser == null ) {
+		$tempUser = $this->initUser( $tempUser, false );
+                if( $tempUser == null ) {
                         return self::INIT_FAILED;
                 }
 		
-                $this->addNewAccount( $mUser );
+                $this->addNewAccount( $tempUser );
                 return self::SUCCESS;
 	}
 
@@ -373,44 +373,44 @@ class SignupForm extends SpecialPage {
 	 * Actually add a user to the database.
 	 * Give it a User object that has been initialised with a name.
 	 *
-	 * @param $mUser User object.
+	 * @param $tempUser User object.
 	 * @param $autocreate boolean -- true if this is an autocreation via auth plugin
 	 * @return User object.
 	 * @private
 	 */
-	function initUser( $mUser, $autocreate = false ) {
+	function initUser( $tempUser, $autocreate = false ) {
 		global $wgAuth;
 
-		$mUser->addToDatabase();
+		$tempUser->addToDatabase();
 
 		if ( $wgAuth->allowPasswordChange() ) {
-			$mUser->setPassword( $this->mPassword );
+			$tempUser->setPassword( $this->mPassword );
 		}
 
-		$mUser->setEmail( $this->mEmail );
-		$mUser->setRealName( $this->mRealName );
-		$mUser->setToken();
+		$tempUser->setEmail( $this->mEmail );
+		$tempUser->setRealName( $this->mRealName );
+		$tempUser->setToken();
 
-		$wgAuth->initUser( $mUser, $autocreate );
+		$wgAuth->initUser( $tempUser, $autocreate );
 
 		if ( $this->mExtUser ) {
-			$this->mExtUser->linkToLocal( $mUser->getId() );
+			$this->mExtUser->linkToLocal( $tempUser->getId() );
 			$email = $this->mExtUser->getPref( 'emailaddress' );
 			if ( $email && !$this->mEmail ) {
-				$mUser->setEmail( $email );
+				$tempUser->setEmail( $email );
 			}
 		}
 
-		$mUser->setOption( 'rememberpassword', $this->mRemember ? 1 : 0 );
-		$mUser->saveSettings();
+		$tempUser->setOption( 'rememberpassword', $this->mRemember ? 1 : 0 );
+		$tempUser->saveSettings();
 
 		# Update user count
 		$ssUpdate = new SiteStatsUpdate( 0, 0, 0, 0, 1 );
 		$ssUpdate->doUpdate();
 
-                $this->addToSourceTracking( $mUser );
+                $this->addToSourceTracking( $tempUser );
 
-		return $mUser;
+		return $tempUser;
 	}
 
 	function processSignup() {
@@ -434,7 +434,7 @@ class SignupForm extends SpecialPage {
                                  if( $this->mRunCreationConfirmation ) {
                                      $self = SpecialPage::getTitleFor( 'Userlogin' );
                                      $wgOut->setPageTitle( wfMsgHtml( 'accountcreated' ) );
-			             $wgOut->addWikiMsg( 'accountcreatedtext', $mUser->getName() );
+			             $wgOut->addWikiMsg( 'accountcreatedtext', $tempUser->getName() );
 			             $wgOut->returnToMain( false, $self );
                                  }
 
@@ -529,33 +529,33 @@ class SignupForm extends SpecialPage {
 	}
 
 	/**
-	 * @param $mUser User object
+	 * @param $tempUser User object
 	 * @param $throttle Boolean
 	 * @param $emailTitle String: message name of email title
 	 * @param $emailText String: message name of email text
 	 * @return Status object
 	 * @private
 	 */
-	function mailPasswordInternal( $mUser, $throttle = true, $emailTitle = 'passwordremindertitle', $emailText = 'passwordremindertext' ) {
+	function mailPasswordInternal( $tempUser, $throttle = true, $emailTitle = 'passwordremindertitle', $emailText = 'passwordremindertext' ) {
 		global $wgServer, $wgScript, $wgUser, $wgNewPasswordExpiry;
 
-		if ( $mUser->getEmail() == '' ) {
-			return Status::newFatal( 'noemail', $mUser->getName() );
+		if ( $tempUser->getEmail() == '' ) {
+			return Status::newFatal( 'noemail', $tempUser->getName() );
 		}
 		$ip = wfGetIP();
 		if( !$ip ) {
 			return Status::newFatal( 'badipaddress' );
 		}
 
-		wfRunHooks( 'User::mailPasswordInternal', array( &$wgUser, &$ip, &$mUser ) );
+		wfRunHooks( 'User::mailPasswordInternal', array( &$wgUser, &$ip, &$tempUser ) );
 
-		$np = $mUser->randomPassword();
-		$mUser->setNewpassword( $np, $throttle );
-		$mUser->saveSettings();
-		$mUserserLanguage = $mUser->getOption( 'language' );
-		$m = wfMsgExt( $emailText, array( 'parsemag', 'language' => $mUserserLanguage ), $ip, $mUser->getName(), $np,
+		$np = $tempUser->randomPassword();
+		$tempUser->setNewpassword( $np, $throttle );
+		$tempUser->saveSettings();
+		$tempUserserLanguage = $tempUser->getOption( 'language' );
+		$m = wfMsgExt( $emailText, array( 'parsemag', 'language' => $tempUserserLanguage ), $ip, $tempUser->getName(), $np,
 				$wgServer . $wgScript, round( $wgNewPasswordExpiry / 86400 ) );
-		$result = $mUser->sendMail( wfMsgExt( $emailTitle, array( 'parsemag', 'language' => $mUserserLanguage ) ), $m );
+		$result = $tempUser->sendMail( wfMsgExt( $emailTitle, array( 'parsemag', 'language' => $tempUserserLanguage ) ), $m );
 
 		return $result;
 	}
@@ -730,6 +730,7 @@ class SignupForm extends SpecialPage {
 		$wgAuth->modifyUITemplate( $template, $this->mType );
 
 		wfRunHooks( 'UserCreateForm', array( &$template ) );
+                wfRunHooks( 'SignupForm' );
 
 		// Changes the title depending on permissions for creating account
 		if ( $wgUser->isAllowed( 'createaccount' ) ) {
@@ -740,20 +741,20 @@ class SignupForm extends SpecialPage {
 
 		$wgOut->disallowUserJs(); // just in case...
 		$wgOut->addTemplate( $template );
-                $wgOut->addModules( 'ext.SignupAPI' );
+                
 	}
 
 	/**
 	 * @private
 	 *
-	 * @param $mUserser User
+	 * @param $tempUserser User
 	 *
 	 * @return Boolean
 	 */
-	function showCreateOrLoginLink( &$mUserser ) {
+	function showCreateOrLoginLink( &$tempUserser ) {
 		if( $this->mType == 'signup' ) {
                         return true;
-		} elseif( $mUserser->isAllowed( 'createaccount' ) ) {
+		} elseif( $tempUserser->isAllowed( 'createaccount' ) ) {
                         return true;
 		} else {
                         return false;
@@ -905,9 +906,9 @@ class SignupForm extends SpecialPage {
 		}
 	}
 
-        private function addToSourceTracking( $mUser ) {
+        private function addToSourceTracking( $tempUser ) {
                 $sourcetracking_data = array(
-				'userid' => $mUser->getId(),
+				'userid' => $tempUser->getId(),
 				'source_action' => $this->mSourceAction,
 				'source_ns' => $this->mSourceNS,
                                 'source_article' => $this->msourceArticle
