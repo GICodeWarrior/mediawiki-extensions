@@ -33,6 +33,21 @@ $messages['be-tarask'] = array(
  */
 $messages['de'] = array(
 	'signupapi-desc' => 'Bereinigt bestehende Inhalte und Funktionen der [[Special:UserLogin|Spezialseite Anmelden]] und fügt stattdessen eine Programmierschnittstelle zur Anmeldung hinzu',
+	'signupapi-ok' => 'OK',
+	'signupapi-enterpassword' => 'Du musst ein Passwort eingeben.',
+	'signupapi-passwordtooshort' => 'Das Passwort ist zu kurz.',
+	'signupapi-weak' => 'schwach',
+	'signupapi-medium' => 'mittel',
+	'signupapi-strong' => 'stark',
+	'signupapi-badretype' => 'Die beiden Passwörter stimmen nicht überein.',
+	'signupapi-passwordsmatch' => 'Die beiden Passwörter stimmen überein.',
+);
+
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
+ * @author Kghbln
+ */
+$messages['de-formal'] = array(
+	'signupapi-enterpassword' => 'Sie müssen ein Passwort eingeben.',
 );
 
 /** French (Français)
@@ -62,6 +77,14 @@ $messages['ia'] = array(
  */
 $messages['mk'] = array(
 	'signupapi-desc' => 'Ја чисти [[Special:UserLogin|страницата за најава]] од содржините за пријава и додава API за пријавување',
+	'signupapi-ok' => 'ОК',
+	'signupapi-enterpassword' => 'Мора да внесете лозинка.',
+	'signupapi-passwordtooshort' => 'Лозинката е прекратка',
+	'signupapi-weak' => 'Слаба',
+	'signupapi-medium' => 'Средна',
+	'signupapi-strong' => 'Силна',
+	'signupapi-badretype' => 'Внесените лозинки не се совпаѓаат',
+	'signupapi-passwordsmatch' => 'Лозинките се совпаѓаат',
 );
 
 /** Malay (Bahasa Melayu)
