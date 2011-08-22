@@ -35,7 +35,7 @@ es.Flow = function( $container, content ) {
 	var flow = this;
 	function render( args ) {
 		flow.scanBoundaries();
-		flow.render( args.offset );
+		flow.render( args ? args.offset : 0 );
 	}
 	this.content.on( 'insert', render );
 	this.content.on( 'remove', render );
