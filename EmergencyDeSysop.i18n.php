@@ -113,9 +113,10 @@ $messages['arz'] = array(
 
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
+ * @author Wertuose
  */
 $messages['az'] = array(
-	'emergencydesysop-submit' => 'Yolla',
+	'emergencydesysop-submit' => 'Təsdiq et',
 	'emergencydesysop-nogroups' => 'Heç biri',
 );
 
