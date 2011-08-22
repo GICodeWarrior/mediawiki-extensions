@@ -142,7 +142,8 @@ Intro title of the MoodBar overlay trigger. $1 is the SITENAME.',
 
 See also:
 * {{msg|moodbar-what-label}}',
-	'moodbar-what-label' => 'Link text for the page where more info abut MoodBar can be found.',
+	'moodbar-what-label' => 'Link text for the page where more info abut MoodBar can be found.
+{{Identical|What is this}}',
 	'moodbar-what-content' => '$1 is the message {{msg-mw|moodbar-what-link}} which links to the page [[mw:MoodBar|MoodBar]] on MediaWiki.org.',
 	'moodbar-what-link' => 'This is the link embedded as parameter $1 in {{msg-mw|moodbar-what-content}}.',
 	'moodbar-privacy' => 'Parameters:
@@ -168,6 +169,16 @@ $messages['be-tarask'] = array(
 	'moodbar-trigger-editing' => 'Выкарыстоўваючы $1…',
 	'moodbar-close' => '(зачыніць)',
 	'moodbar-intro-feedback' => 'Рэдагаваньне {{GRAMMAR:родны|$1}} дало мне…',
+	'moodbar-intro-share' => 'Мой вопыт на {{GRAMMAR:родны|$1}} даў мне…',
+	'moodbar-intro-editing' => 'Рэдагаваньне {{GRAMMAR:родны|$1}} дало мне…',
+	'moodbar-type-happy-title' => 'Задавальненьне',
+	'moodbar-type-sad-title' => 'Расчараваньне',
+	'moodbar-type-confused-title' => 'Зьмешаныя пачуцьці',
+	'tooltip-moodbar-what' => 'Даведацца болей пра гэтую магчымасьць',
+	'moodbar-what-label' => 'Што гэта?',
+	'moodbar-what-content' => 'Гэтая магчымасьць распрацаваная для дапамогі супольнасьці зразумець вопыт людзей, якія рэдагуюць сайт. 
+Для дадатковай інфармацыі, калі ласка, наведайце $1.',
+	'moodbar-what-link' => 'старонка магчымасьці',
 );
 
 /** German (Deutsch)
