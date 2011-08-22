@@ -362,58 +362,64 @@ es.ListBlock.prototype.getWikiDom = function() {
 
 	for( var i = 0; i < items.length; i++) {
 		var item = items[i];
+		
+		if ( item.level === previousLevel ) {
+			if ( item.style !== previousStyle ) {
+				if ( !stack[stack.length - 2].items[stack[stack.length - 2].items.length - 1].lists ) {
+					stack[stack.length - 2].items[stack[stack.length - 2].items.length - 1].lists = [];
+				}
+				stack[stack.length - 2].items[stack[stack.length - 2].items.length - 1].lists.push( stack.pop() );
+				stack.push( { 'style' : item.style, 'items' : [] } );
+				previousStyle = item.style;
+			}
+		}
 
+		/**
+		 * Cases:
+		 *
+		 *  # item 1
+		 *  ## item 2 (item)
+		 *
+		 * or
+		 *
+		 *  # item 1
+		 *  #### item 2 (item)
+		 *
+		 * and first item in list
+		 *
+		 *  # item 1 (item)
+		 *
+		 * or
+		 *
+		 *  #### item 1 (item)
+		 */
+		if( item.level > previousLevel ) {
+			for( var j = previousLevel; j < item.level; j++ ) {
+				stack.push( { 'style' : item.style, 'items' : [] } );
+			}
+			previousLevel = item.level;
+		}
+
+		if ( item.level < previousLevel ) {
+			for ( var j = previousLevel; j > item.level; j-- ) {
+				if( !stack[stack.length - 2].items[stack[stack.length - 2].items.length - 1].lists ) {
+					stack[stack.length - 2].items[stack[stack.length - 2].items.length - 1].lists = []
+				}
+				stack[stack.length - 2].items[stack[stack.length - 2].items.length - 1].lists.push( stack.pop() );
+				previousLevel = item.level;
+			}
+		}
+		
 		if(item.level === previousLevel) {
-			if(item.style !== previousStyle) {
-				var x = stack.pop();
-				if(!stack[stack.length - 1].items[stack[stack.length - 1].items.length - 1].lists) {
-					stack[stack.length - 1].items[stack[stack.length - 1].items.length - 1].lists = [];
-				}
-				stack[stack.length - 1].items[stack[stack.length - 1].items.length - 1].lists.push(x);
-				stack.push( {
-					'items' : [],
-					'style' : item.style
-				} );
-				previousStyle = item.style;
+			if( item.content.getLength() > 0 ) {
+				stack[stack.length - 1].items.push( { 'line' : item.content.getWikiDomLines()[0] } );
 			}
-		}
-		
-		if(item.level > previousLevel) {
-			
-			for(var ii = previousLevel; ii < item.level; ii++) {
-				stack.push( {
-					'items' : [],
-					'style' : item.style
-				} );
-				previousLevel = item.level;
-			}
-		}
-		
-		if(item.level < previousLevel) {
-			for(var ii = previousLevel; ii > item.level; ii--) {
-
-				var x = stack.pop();
-				if(stack[stack.length - 1].items.length == 0) {
-					stack[stack.length - 1].items.push({});
-				}
-				if(!stack[stack.length - 1].items[stack[stack.length - 1].items.length - 1].lists) {
-					stack[stack.length - 1].items[stack[stack.length - 1].items.length - 1].lists = []
-				}
-				stack[stack.length - 1].items[stack[stack.length - 1].items.length - 1].lists.push(x);
-	
-				previousLevel = item.level;
-				previousStyle = item.style;
-			}
-		}
-		
-		if(item.level == previousLevel) {
-			stack[stack.length - 1].items.push(
-				{
-					'line' : item.content.getWikiDomLines()[0]
-				}
-			);
 			previousStyle = item.style;
 		}
+	}
+	
+	if ( stack.length !== 1 ) {
+		throw 'At this point stack should contain exactly one element.';
 	}
 	
 	stack[0].type = 'list';
