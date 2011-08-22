@@ -123,6 +123,7 @@ $messages['arc'] = array(
 
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
+ * @author Wertuose
  */
 $messages['az'] = array(
 	'article-comments-name-string' => 'Ad',
@@ -130,7 +131,7 @@ $messages['az'] = array(
 	'article-comments-url-string' => 'URL',
 	'article-comments-comment-string' => 'Şərh',
 	'article-comments-comment-field' => 'Şərh:',
-	'article-comments-submit-button' => 'Yolla',
+	'article-comments-submit-button' => 'Təsdiq et',
 );
 
 /** Bashkir (Башҡортса)
