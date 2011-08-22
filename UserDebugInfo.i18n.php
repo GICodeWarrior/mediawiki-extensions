@@ -21,6 +21,15 @@ $messages['qqq'] = array(
 	'userdebuginfo-desc' => '{{desc}}',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'userdebuginfo-key' => "Alc'hwez",
+	'userdebuginfo-value' => 'Talvoudenn',
+	'userdebuginfo-language' => 'Yezh',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
