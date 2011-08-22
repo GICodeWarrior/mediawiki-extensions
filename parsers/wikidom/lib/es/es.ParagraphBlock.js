@@ -74,6 +74,15 @@ es.ParagraphBlock.prototype.deleteContent = function( range ) {
 };
 
 /**
+ * Deletes all content in a block.
+ * 
+ * @method
+ */
+es.ParagraphBlock.prototype.clearContent = function() {
+	this.content.clear();
+};
+
+/**
  * Applies an annotation to a given range.
  * 
  * If a range arguments are not provided, all content will be annotated.

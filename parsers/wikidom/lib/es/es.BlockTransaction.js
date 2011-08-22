@@ -50,7 +50,7 @@ es.BlockTransaction.operations = ( function() {
 		if ( add.length || rem.length ) {
 			annotate( con, add, rem );
 		}
-		dst.insert( dst.getLength(), con.getData() );
+		dst.insertContent( dst.getLength(), con.getData() );
 		return val;
 	}
 	function insert( val, cur, src, dst, add, rem ) {
@@ -58,7 +58,7 @@ es.BlockTransaction.operations = ( function() {
 		if ( add.length || rem.length ) {
 			annotate( con, add, rem );
 		}
-		dst.insert( dst.getLength(), con.getData() );
+		dst.insertContent( dst.getLength(), con.getData() );
 		return 0;
 	}
 	function start( val, cur, src, dst, add, rem ) {
@@ -158,28 +158,28 @@ es.BlockTransaction.prototype.add = function( type, val ) {
 	this.cursor += model.advance( val );
 };
 
-es.BlockTransaction.prototype.commit = function( src ) {
+es.BlockTransaction.prototype.commit = function( dst ) {
 	var cur = 0,
-		dst = new es.Content(),
+		src = dst.getContent(),
 		add = [],
 		rem = [],
 		adv;
+	dst.clearContent();
 	for ( var i = 0; i < this.operations.length; i++ ) {
 		var op = this.operations[i];
 		cur += op.model.commit( op.val, cur, src, dst, add, rem );
 	}
-	return dst;
 };
 
-es.BlockTransaction.prototype.rollback = function( src ) {
+es.BlockTransaction.prototype.rollback = function( dst ) {
 	var cur = 0,
-		dst = new es.Content(),
+		src = dst.getContent(),
 		add = [],
 		rem = [],
 		adv;
+	dst.clearContent();
 	for ( var i = 0; i < this.operations.length; i++ ) {
 		var op = this.operations[i];
 		cur += op.model.rollback( op.val, cur, src, dst, add, rem );
 	}
-	return dst;
 };

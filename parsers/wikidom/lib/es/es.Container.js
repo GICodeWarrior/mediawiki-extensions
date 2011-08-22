@@ -34,6 +34,16 @@ es.Container = function( typeName, listName, items ) {
 /* Methods */
 
 /**
+ * Gets an item at a specific index.
+ * 
+ * @method
+ * @returns {Object} Child object at index
+ */
+es.Container.prototype.get = function( index ) {
+	return this._list[index] || null;
+};
+
+/**
  * Gets the first item in the container.
  * 
  * @method

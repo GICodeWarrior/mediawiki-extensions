@@ -125,6 +125,15 @@ es.Block.prototype.deleteContent = function( range ) {
 };
 
 /**
+ * Deletes all content in a block.
+ * 
+ * @method
+ */
+es.Block.prototype.clearContent = function() {
+	throw 'Block.deleteContent not implemented in this subclass.';
+};
+
+/**
  * Applies an annotation to a given range.
  * 
  * If a range arguments are not provided, all content will be annotated.

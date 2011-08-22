@@ -46,7 +46,7 @@ es.Selection.prototype.prepareInsert = function( content ) {
 		} else {
 			mutation = new es.Mutation();
 		}
-		mutation.add( this.start.block.getId(), this.start.block.prepareInsert( content ) );
+		mutation.add( this.start.block.getIndex(), this.start.block.prepareInsert( content ) );
 		return mutation;
 	}
 	throw 'Mutation preparation error. Can not insert content at undefined location.';
@@ -58,7 +58,7 @@ es.Selection.prototype.prepareRemove = function() {
 	if ( this.start.block === this.end.block ) {
 		// Single block deletion
 		mutation.add(
-			this.start.block.getId(),
+			this.start.block.getIndex(),
 			this.start.block.prepareRemove( new es.Range( this.start.offset, this.end.offset ) )
 		);
 	} else {
@@ -66,17 +66,17 @@ es.Selection.prototype.prepareRemove = function() {
 		var block = this.start.block.next();
 		// First
 		mutation.add(
-			block.getId(),
+			block.getIndex(),
 			block.prepareRemove( new es.Range( this.start.offset, block.getLength() ) )
 		);
 		while ( ( block = block.next() ) !== this.end.block ) {
 			// Middle
 			mutation.add(
-				block.getId(), block.prepareRemove( new es.Range( 0, block.getLength() ) )
+				block.getIndex(), block.prepareRemove( new es.Range( 0, block.getLength() ) )
 			);
 		}
 		// Last
-		mutation.add( block.getId(), block.prepareRemove( new es.Range( 0, this.end.offset ) ) );
+		mutation.add( block.getIndex(), block.prepareRemove( new es.Range( 0, this.end.offset ) ) );
 	}
 	return mutation;
 };
@@ -87,7 +87,7 @@ es.Selection.prototype.prepareAnnotate = function() {
 	if ( this.start.block === this.end.block ) {
 		// Single block annotation
 		mutation.add(
-			this.start.block.getId(), 
+			this.start.block.getIndex(), 
 			this.start.block.prepareRemove( new es.Range( this.start.offset, this.end.offset ) )
 		);
 	} else {
@@ -95,7 +95,7 @@ es.Selection.prototype.prepareAnnotate = function() {
 		var block = this.start.block.next();
 		// First
 		mutation.add(
-			block.getId(),
+			block.getIndex(),
 			block.prepareAnnotate(
 				annotation, new es.Range( this.start.offset, block.getLength() )
 			)
@@ -103,13 +103,14 @@ es.Selection.prototype.prepareAnnotate = function() {
 		while ( ( block = block.next() ) !== this.end.block ) {
 			// Middle
 			mutation.add(
-				block.getId(), 
+				block.getIndex(), 
 				block.prepareAnnotate( annotation, new es.Range( 0, block.getLength() ) )
 			);
 		}
 		// Last
 		mutation.add(
-			block.getId(), block.prepareAnnotate( annotation, new es.Range( 0, this.end.offset ) )
+			block.getIndex(),
+			block.prepareAnnotate( annotation, new es.Range( 0, this.end.offset ) )
 		);
 	}
 	return mutation;

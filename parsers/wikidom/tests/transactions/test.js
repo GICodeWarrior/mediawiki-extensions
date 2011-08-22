@@ -87,12 +87,13 @@ test( 'Insert, retain and remove', 4, function() {
 	tx.add( 'remove', removal );
 	tx.add( 'retain', 18 );
 	
-	var committed = tx.commit( paragraph );
-	equal( committed.getText(), after.getText(), 'Committing' );
-	deepEqual( committed.getContent().getData(), after.getContent().getData(), 'Committing' );
-	var rolledback = tx.rollback( committed );
-	equal( rolledback.getText(), before.getText(), 'Rolling back' );
-	deepEqual( rolledback.getContent().getData(), before.getContent().getData(), 'Rolling back' );
+	tx.commit( paragraph );
+	equal( paragraph.getText(), after.getText(), 'Committing' );
+	deepEqual( paragraph.getContent().getData(), after.getContent().getData(), 'Committing' );
+	
+	tx.rollback( paragraph );
+	equal( paragraph.getText(), before.getText(), 'Rolling back' );
+	deepEqual( paragraph.getContent().getData(), before.getContent().getData(), 'Rolling back' );
 } );
 
 test( 'Annotating', 4, function() {
@@ -134,11 +135,11 @@ test( 'Annotating', 4, function() {
 	tx.add( 'end', annotation );
 	tx.add( 'retain', 18 );
 	
-	var committed = tx.commit( paragraph );
+	tx.commit( paragraph );
+	equal( paragraph.getText(), after.getText(), 'Committing' );
+	deepEqual( paragraph.getContent().getData(), after.getContent().getData(), 'Committing' );
 	
-	equal( committed.getText(), after.getText(), 'Committing' );
-	deepEqual( committed.getContent().getData(), after.getContent().getData(), 'Committing' );
-	var rolledback = tx.rollback( committed );
-	equal( rolledback.getText(), before.getText(), 'Rolling back' );
-	deepEqual( rolledback.getContent().getData(), before.getContent().getData(), 'Rolling back' );
+	tx.rollback( paragraph );
+	equal( paragraph.getText(), before.getText(), 'Rolling back' );
+	deepEqual( paragraph.getContent().getData(), before.getContent().getData(), 'Rolling back' );
 } );

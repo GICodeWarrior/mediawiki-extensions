@@ -397,6 +397,19 @@ es.Content.prototype.remove = function( range ) {
 };
 
 /**
+ * Removes all content data.
+ * 
+ * @method
+ * @emits "clear"
+ * @emits "change" with type:"clear" data property
+ */
+es.Content.prototype.clear = function() {
+	this.data = [];
+	this.emit( 'clear' );
+	this.emit( 'change', { 'type': 'clear' } );
+};
+
+/**
  * Gets a list of indexes within the content data which use a given annotation.
  * 
  * Strict coverage may be used to compare not only annotation types, but also their data. Since new
