@@ -25,6 +25,8 @@ $wgExtensionCredits['specialpage'][] = array(
 	'descriptionmsg' => 'signupapi-desc',
 );
 
+global $wgSignupAPISourceTracking,$wgSignupAPIUseAjax;
+echo "before, AJAX = $wgSignupAPIUseAjax, Source= $wgSignupAPISourceTracking";
 $wgSignupAPIUseAjax = true;
 $wgSignupAPISourceTracking = true;
 
@@ -40,23 +42,33 @@ $wgAutoloadClasses['ApiSignup']
   = $wgMyExtensionIncludes . '/APISignup.php';
 $wgSpecialPages['UserSignup'] = 'SignupForm';
 
+$wgAutoloadClasses['ValidateSignup']
+      = $wgMyExtensionIncludes . '/ValidateSignup.php';
+
+$wgAPIModules['signup'] = 'ApiSignup';
+
+$wgAPIModules['validatesignup'] = 'ValidateSignup';
+
+# Requires jquery.ui.progressbar for password strength validation
+$wgResourceModules['ext.SignupAPI'] = array(
+
+    'scripts' => array( 'includes/verification.js' ),
+    'messages' => array( 'signupapi-ok', 'signupapi-enterpassword', 'signupapi-passwordtooshort', 'signupapi-weak', 'signupapi-medium', 'signupapi-strong',  'signupapi-badretype', 'signupapi-passwordsmatch' ),
+    'dependencies' => array( 'jquery.ui.progressbar' ),
+    'localBasePath' => dirname( __FILE__ ),
+    'remoteExtPath' => 'SignupAPI'
+);
+
+
+
 if ( $wgSignupAPIUseAjax ) {
-    $wgAutoloadClasses['validateSignup']
-      = $wgMyExtensionIncludes . '/validateSignup.php';
-
-    $wgAPIModules['signup'] = 'ApiSignup';
-    $wgAPIModules['validatesignup'] = 'validateSignup';
-
-    # Requires jquery.ui.progressbar for password strength validation
-    $wgResourceModules['ext.SignupAPI'] = array(
-
-        'scripts' => array( 'includes/verification.js' ),
-        'messages' => array( 'ok', 'signupapi-enterpassword', 'passwordtooshort', 'signupapi-weak', 'signupapi-medium', 'signupapi-strong',  'badretype', 'signupapi-passwordsmatch' ),
-        'dependencies' => array( 'jquery.ui.progressbar' ),
-        'localBasePath' => dirname( __FILE__ ),
-        'remoteExtPath' => 'SignupAPI'
-    );
-
+    $wgHooks['SignupForm'][] = 'onSignupAPIUseAjax';
+    function onSignupAPIUseAjax() {
+        echo "Entered onSignupAPIUseAJax";
+        global $wgOut;
+        $wgOut->addModules( 'ext.SignupAPI' );
+        return true;
+    }
 }
 
 if ( $wgSignupAPISourceTracking ) {
@@ -73,8 +85,7 @@ if ( $wgSignupAPISourceTracking ) {
     # Add source tracking to personal URL's
     $wgHooks['PersonalUrls'][] = 'addSourceTracking';
 
-    function addSourceTracking( &$personal_urls, &$title )
-    {
+    function addSourceTracking( &$personal_urls, &$title ) {
         global $wgRequest,$wgUser;
 
         #generate source tracking parameters
@@ -133,12 +144,12 @@ if ( $wgSignupAPISourceTracking ) {
             $is_signup = $wgRequest->getText( 'type' ) == "signup";
             $createaccount_url = array(
                     'text' => wfMsg( 'createaccount' ),
-                    'href' => SkinTemplate::makeSpecialUrl( 'Usersignup', "$returnto&type=signup&wpSourceAction=$sourceAction&wpSourceNS=$sourceNS&wpSourceArticle=$sourceArticle" ),
+                    'href' => SkinTemplate::makeSpecialUrl( 'UserSignup', "$returnto&type=signup&wpSourceAction=$sourceAction&wpSourceNS=$sourceNS&wpSourceArticle=$sourceArticle" ),
                     'active' => $title->isSpecial( 'Userlogin' ) && $is_signup
             );
 
             if ( substr( $wgServer, 0, 5 ) === 'http:' && $wgSecureLogin ) {
-                    $title = SpecialPage::getTitleFor( 'Usersignup' );
+                    $title = SpecialPage::getTitleFor( 'UserSignup' );
                     $https_url = preg_replace( '/^http:/', 'https:', $title->getFullURL( "type=signup" ) );
                     $createaccount_url['href']  = $https_url;
                     $createaccount_url['class'] = 'link-https';
