@@ -35,38 +35,48 @@ es.Content.annotationRenderers = {
 			return '<span class="editSurface-format-object">' + data.html;
 		},
 		'close': '</span>',
+		'float': function( data ) {
+			console.log( data.html );
+			return $( data.html ).css( 'float' );
+		}
 	},
 	'bold': {
 		'open': '<span class="editSurface-format-bold">',
 		'close': '</span>',
+		'float': false
 	},
 	'italic': {
 		'open': '<span class="editSurface-format-italic">',
 		'close': '</span>',
+		'float': false
 	},
 	'size': {
 		'open': function( data ) {
 			return '<span class="editSurface-format-' + data.type + '">';
 		},
 		'close': '</span>',
+		'float': false
 	},
 	'script': {
 		'open': function( data ) {
 			return '<span class="editSurface-format-' + data.type + '">';
 		},
 		'close': '</span>',
+		'float': false
 	},
 	'xlink': {
 		'open': function( data ) {
 			return '<span class="editSurface-format-link" data-href="' + data.href + '">';
 		},
-		'close': '</span>'
+		'close': '</span>',
+		'float': false
 	},
 	'ilink': {
 		'open': function( data ) {
 			return '<span class="editSurface-format-link" data-title="' + data.title + '">';
 		},
-		'close': '</span>'
+		'close': '</span>',
+		'float': false
 	}
 };
 
@@ -343,6 +353,34 @@ es.Content.prototype.getData = function( range ) {
 	}
 	range.normalize();
 	return this.data.slice( range.start, range.end );
+};
+
+/**
+ * Checks if a range of content contains any floating objects.
+ * 
+ * @method
+ * @param range {es.Range} Range of content to check
+ * @returns {Boolean} If there's any floating objects in range
+ */
+es.Content.prototype.hasFloatingObjects = function( range ) {
+	if ( !range ) {
+		range = new es.Range( 0, this.data.length );
+	}
+	range.normalize();
+	for ( var i = 0; i < this.data.length; i++ ) {
+		if ( this.data[i].length > 1 ) {
+			for ( var j = 1; j < this.data[i].length; j++ ) {
+				var float = es.Content.annotationRenderers[this.data[i][j].type].float;
+				if ( float && typeof float === 'function' ) {
+					float = float( this.data[i][j].data );
+				}
+				if ( float ) {
+					return true;
+				}
+			}
+		}
+	}
+	return false;
 };
 
 /**

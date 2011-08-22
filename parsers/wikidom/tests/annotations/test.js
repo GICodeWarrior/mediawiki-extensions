@@ -50,7 +50,6 @@ var lines = [
 		]
 	}
 ];
-
 var content = es.Content.newFromWikiDomLines( lines );
 
 /* Tests */
@@ -318,4 +317,27 @@ test( 'Content access', 4, function() {
 		],
 		'Content.slice returns all data when called without arguments'
 	);
+} );
+
+var floating = es.Content.newFromWikiDomLines( [
+	{
+		"text": "Look,  a floating image!",
+		"annotations": [
+			{
+				"type": "template",
+				"data": {
+					"html": "<div style=\"float: right\">[image goes here]</div>"
+				},
+				"range": {
+					"start": 6,
+					"end": 7
+				}
+			}
+		]
+	}
+] );
+
+test( 'Floating objects in Content', 2, function() {
+	ok( !content.hasFloatingObjects(), 'Without floating objects' );
+	ok( floating.hasFloatingObjects(), 'With floating objects' );
 } );
