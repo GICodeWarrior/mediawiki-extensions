@@ -2186,6 +2186,8 @@ Configura $wgPrefStatsTrackPrefs për trassé l epreferense.',
  * @author Khalid Mahmood
  */
 $messages['pnb'] = array(
+	'prefstats-title' => 'پسند دے سعاب کتاب',
+	'prefstats-xaxis' => 'ویلہ (کینٹیاں چ)',
 	'prefstats-factor-hour' => 'کینٹہ',
 	'prefstats-factor-sixhours' => 'چھے کینٹے',
 	'prefstats-factor-day' => 'دیاڑھ',
@@ -2193,6 +2195,8 @@ $messages['pnb'] = array(
 	'prefstats-factor-twoweeks' => 'دو ہفتے',
 	'prefstats-factor-fourweeks' => 'چار ہفتے',
 	'prefstats-factor-default' => 'ڈیفالٹ ناپ ول چلو',
+	'prefstats-legend-out' => 'وکھرا کرنا',
+	'prefstats-legend-in' => 'چننا',
 );
 
 /** Pashto (پښتو)
