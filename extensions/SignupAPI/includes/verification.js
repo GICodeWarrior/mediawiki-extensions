@@ -6,7 +6,7 @@ function validateInput( fieldtype,fieldid ) {
         $.ajax({
            type: "POST",
            url: mw.util.wikiScript('api'),
-           data: "action=validatesignup&format=json&field="+fieldtype+"&inputVal="+inputVal,
+           data: {'action':'validatesignup', 'format':'json', 'field':fieldtype, 'inputVal':inputVal },
            dataType: 'json',
            success: function( jsondata ){
                  var image = "<img src='"+ imagePath + jsondata.signup.icon +"'>";
@@ -53,8 +53,7 @@ function checkRetype( pass,retype ) {
         if ( pass==retype ) {
                 image = "<img src='"+ imagePath +"MW-Icon-CheckMark.png'>";
                 message = mw.message( 'signupapi-passwordsmatch' );
-        }
-        else {
+        }else {
                 image = "<img src='"+ imagePath +"MW-Icon-NoMark.png'>";
                 message = mw.message( 'badretype' );
         }
@@ -71,10 +70,7 @@ $('#wpPassword2').after('<span id="wpPassword2val"></span><div id="progress" cla
 $('#wpRetype').after('<span id="wpRetypeval" class="wpRetypeval"></span>');
 $('#wpEmail').after('<span id="wpEmailval" class="wpEmailval"></span>');
 
-mw.loader.using( 'ext.SignupAPI', function() {
-                                     $("#progress").progressbar();
-                                   } );
-
+$("#progress").progressbar();
 console.log();
 $('div.ui-progressbar').css('background','#F2F5F7');
 
