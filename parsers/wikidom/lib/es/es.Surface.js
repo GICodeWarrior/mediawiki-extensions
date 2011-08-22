@@ -417,15 +417,18 @@ es.Surface.prototype.onMouseMove = function( e ) {
 	if ( e.button === 0 && this.mouse.selecting ) {
 		this.cursor.hide();
 		this.selection.to = this.getLocationFromEvent( e );
-		this.drawSelection();
+		if (! this.drawSelection() ) {
+			this.cursor.show();
+		}
 	}
 };
 
 es.Surface.prototype.onMouseUp = function( e ) {
 	if ( e.button === 0 && this.selection.to ) {
 		this.location = this.selection.to;
-		this.drawSelection();
-		this.cursor.hide();
+		if ( this.drawSelection() ) {
+			this.cursor.hide();
+		}
 	}
 	this.mouse.selecting = false;
 };
@@ -460,6 +463,8 @@ es.Surface.prototype.drawSelection = function() {
 				this.$rangeStart.hide();
 				this.$rangeFill.hide();
 				this.$rangeEnd.hide();
+				this.$input.val( '' );
+				return false;
 			} else if ( fromLineIndex === toLineIndex ) {
 				// Single line selection
 				this.$rangeStart

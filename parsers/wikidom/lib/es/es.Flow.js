@@ -33,18 +33,14 @@ es.Flow = function( $container, content ) {
 	
 	// Events
 	var flow = this;
-	this.content.on( 'insert', function( args ) {
+	function render( args ) {
 		flow.scanBoundaries();
 		flow.render( args.offset );
-	} );
-	this.content.on( 'remove', function( args ) {
-		flow.scanBoundaries();
-		flow.render( args.start );
-	} );
-	this.content.on( 'annotate', function( args ) {
-		flow.scanBoundaries();
-		flow.render( args.start );
-	} );
+	}
+	this.content.on( 'insert', render );
+	this.content.on( 'remove', render );
+	this.content.on( 'clear', render );
+	this.content.on( 'annotate', render );
 	
 	// Initialization
 	this.scanBoundaries();
@@ -70,6 +66,11 @@ es.Flow.prototype.getLineIndex = function( offset ) {
  * @return {Integer} Offset within content nearest the given coordinates
  */
 es.Flow.prototype.getOffset = function( position ) {
+	// Empty content shortcut
+	if ( this.content.getLength() === 0 ) {
+		return 0;
+	}
+	
 	/*
 	 * Line finding
 	 * 
@@ -344,11 +345,20 @@ es.Flow.prototype.render = function( offset ) {
 	
 	// Clear caches that were specific to the previous render
 	this.widthCache = {};
-
+	
 	// In case of empty content we still want to display empty with non-breaking space inside
 	// This is very important for lists
 	if(this.content.getLength() === 0) {
-		this.$.empty().append( '<div class="editSurface-line" line-index="0">&nbsp;</div>' );
+		var $line = $( '<div class="editSurface-line" line-index="0">&nbsp;</div>' );
+		this.$.empty().append( $line );
+		this.lines = [{
+			'text': ' ',
+			'range': new es.Range( 0,0 ),
+			'width': 0,
+			'height': $line.outerHeight(),
+			'wordOffset': 0,
+			'fractional': false
+		}];
 		this.emit( 'render' );
 		return;
 	}
