@@ -12,6 +12,7 @@ $messages = array();
  * @author Jim R. Wilson
  */
 $messages['en'] = array(
+	'shoutbox-desc' => 'Adds a parser function for embedding your own shoutbox',
 	'shoutbox-missing-params' => 'ShoutBox is missing a required parameter.',
 	'shoutbox-bad-params' => 'ShoutBox received a bad parameter.',
 	'shoutbox-unparsable-param-string' => 'ShoutBox received the unparsable parameter string "<tt>$1</tt>".',
