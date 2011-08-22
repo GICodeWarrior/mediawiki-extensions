@@ -142,7 +142,7 @@ es.ListBlock.prototype.getLineIndex = function( offset ) {
 			break;
 		}
 		globalOffset += itemLength + 1;
-		lineIndex += this.list.items[i].flow.lines.length; // TODO: add method getLineCount() to es.Flow
+		lineIndex += this.list.items[i].flow.lines.length; // TODO: add method getLineCount() to es.ContentFlow
 	}
 	return lineIndex;
 };

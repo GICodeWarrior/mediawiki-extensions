@@ -17,7 +17,7 @@
  * @property widthCache {Object}
  * @property renderState {Object}
  */
-es.Flow = function( $container, content ) {
+es.ContentFlow = function( $container, content ) {
 	// Inheritance
 	es.EventEmitter.call( this );
 	
@@ -46,7 +46,7 @@ es.Flow = function( $container, content ) {
 	this.scanBoundaries();
 }
 
-es.Flow.prototype.getLineIndex = function( offset ) {
+es.ContentFlow.prototype.getLineIndex = function( offset ) {
 	for ( var i = 0; i < this.lines.length; i++ ) {
 		if ( this.lines[i].range.containsOffset( offset ) ) {
 			return i;
@@ -65,7 +65,7 @@ es.Flow.prototype.getLineIndex = function( offset ) {
  * @param position.top {Integer} Vertical position in pixels
  * @return {Integer} Offset within content nearest the given coordinates
  */
-es.Flow.prototype.getOffset = function( position ) {
+es.ContentFlow.prototype.getOffset = function( position ) {
 	// Empty content shortcut
 	if ( this.content.getLength() === 0 ) {
 		return 0;
@@ -138,7 +138,7 @@ es.Flow.prototype.getOffset = function( position ) {
  * @return {Object} Object containing left, top and bottom properties, each positions in pixels as
  * well as a line index
  */
-es.Flow.prototype.getPosition = function( offset ) {
+es.ContentFlow.prototype.getPosition = function( offset ) {
 	/*
 	 * Range validation
 	 * 
@@ -209,7 +209,7 @@ es.Flow.prototype.getPosition = function( offset ) {
 /**
  * Updates the word boundary cache, which is used for word fitting.
  */
-es.Flow.prototype.scanBoundaries = function() {
+es.ContentFlow.prototype.scanBoundaries = function() {
 	/*
 	 * Word boundary scan
 	 * 
@@ -250,7 +250,7 @@ es.Flow.prototype.scanBoundaries = function() {
  * causing them to be fragmented. Word fragments are rendered on their own lines, except for their
  * remainder, which is combined with whatever proceeding words can fit on the same line.
  */
-es.Flow.prototype.renderIteration = function( limit ) {
+es.ContentFlow.prototype.renderIteration = function( limit ) {
 	var rs = this.renderState,
 		iteration = 0,
 		fractional = false,
@@ -332,7 +332,7 @@ es.Flow.prototype.renderIteration = function( limit ) {
  * 
  * @param offset {Integer} Offset to re-render from, if possible (not yet implemented)
  */
-es.Flow.prototype.render = function( offset ) {
+es.ContentFlow.prototype.render = function( offset ) {
 	var rs = this.renderState;
 	
 	// Check if rendering is currently underway
@@ -413,7 +413,7 @@ es.Flow.prototype.render = function( offset ) {
  * @param wordOffset {Integer} Index within this.words which the line begins with
  * @param fractional {Boolean} If the line begins in the middle of a word
  */
-es.Flow.prototype.appendLine = function( range, wordOffset, fractional ) {
+es.ContentFlow.prototype.appendLine = function( range, wordOffset, fractional ) {
 	var rs = this.renderState,
 		lineCount = rs.lines.length;
 	$line = this.$.children( '[line-index=' + lineCount + ']' );
@@ -462,7 +462,7 @@ es.Flow.prototype.appendLine = function( range, wordOffset, fractional ) {
  * @param width {Integer} Maximum width to allow the line to extend to
  * @return {Integer} Last index within "words" that contains a word that fits
  */
-es.Flow.prototype.fitWords = function( range, ruler, width ) {
+es.ContentFlow.prototype.fitWords = function( range, ruler, width ) {
 	var offset = range.start,
 		start = range.start,
 		end = range.end,
@@ -518,7 +518,7 @@ es.Flow.prototype.fitWords = function( range, ruler, width ) {
  * @param width {Integer} Maximum width to allow the line to extend to
  * @return {Integer} Last index within "text" that contains a character that fits
  */
-es.Flow.prototype.fitCharacters = function( range, ruler, width ) {
+es.ContentFlow.prototype.fitCharacters = function( range, ruler, width ) {
 	var offset = range.start,
 		start = range.start,
 		end = range.end,
@@ -568,4 +568,4 @@ es.Flow.prototype.fitCharacters = function( range, ruler, width ) {
 	return { 'end': start, 'width': lineWidth };
 };
 
-es.extend( es.Flow, es.EventEmitter );
+es.extend( es.ContentFlow, es.EventEmitter );

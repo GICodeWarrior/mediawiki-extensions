@@ -7,14 +7,14 @@
  * @param content {es.Content} Paragraph content
  * @property content {es.Content} Paragraph content
  * @property $ {jQuery} Container element
- * @property flow {es.Flow} Text flow object
+ * @property flow {es.ContentFlow} Text flow object
  */
 es.ParagraphBlock = function( content ) {
 	es.Block.call( this );
 	this.content = content || new es.Content();
 	this.$ = $( '<div class="editSurface-block editSurface-paragraph"></div>' )
 		.data( 'block', this );
-	this.flow = new es.Flow( this.$, this.content );
+	this.flow = new es.ContentFlow( this.$, this.content );
 	var block = this;
 	this.flow.on( 'render', function() {
 		block.emit( 'update' );

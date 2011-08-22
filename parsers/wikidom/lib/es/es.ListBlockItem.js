@@ -19,7 +19,7 @@ es.ListBlockItem = function( content, style, level ) {
 		.append( this.$content );
 	this.setStyle( style );
 	this.setLevel( level );
-	this.flow = new es.Flow( this.$content, this.content );
+	this.flow = new es.ContentFlow( this.$content, this.content );
 	// Listen to render events and trigger update event upstream
 	var listBlockItem = this;
 	this.flow.on( 'render', function() {
