@@ -29,8 +29,6 @@ $wgHooks['ArticleInsertComplete'][] = 'IndexFunctionHooks::onCreate';
 $wgHooks['EditPage::showEditForm:initial'][] = 'IndexFunctionHooks::editWarning';
 # Show a warning after page move, and do some cleanup
 $wgHooks['SpecialMovepageAfterMove'][] = 'IndexFunctionHooks::afterMove';
-# Load some Javascript for the special page
-$wgHooks['BeforePageDisplay'][] = 'efIndexJS';
 # Schema updates for update.php
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efIndexUpdateSchema';
 $wgHooks['ParserTestTables'][] = 'efParserTestTables';
@@ -77,17 +75,3 @@ function efParserTestTables( &$tables ) {
 	$tables[] = 'indexes';
 	return true;
 }
-
-function efIndexJS( &$out, &$sk ) {
-	global $wgTitle;
-	if ( $wgTitle->getPrefixedText() == SpecialPage::getTitleFor( 'Index' )->getPrefixedText() ) {
-		global $wgScriptPath;
-		$tag = Xml::element( 'script',
-			array( 'type'=>'text/javascript', 'src'=>"$wgScriptPath/extensions/IndexFunction/specialindex.js" ),
-			'', false
-		);
-		$out->addScript( $tag );
-	}
-	return true;
-}
-
