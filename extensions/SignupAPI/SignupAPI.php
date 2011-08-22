@@ -26,7 +26,6 @@ $wgExtensionCredits['specialpage'][] = array(
 );
 
 global $wgSignupAPISourceTracking,$wgSignupAPIUseAjax;
-echo "before, AJAX = $wgSignupAPIUseAjax, Source= $wgSignupAPISourceTracking";
 $wgSignupAPIUseAjax = true;
 $wgSignupAPISourceTracking = true;
 
