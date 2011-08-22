@@ -14,7 +14,7 @@ $messages['en'] = array(
         'signupapi-weak' => 'Weak',
         'signupapi-medium' => 'Medium',
         'signupapi-strong' => 'Strong',
-        'signupapi-passwordsmatch' => 'Passwords Match',
+        'signupapi-passwordsmatch' => 'Passwords match',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
