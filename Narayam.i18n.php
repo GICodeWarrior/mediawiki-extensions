@@ -800,14 +800,15 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'narayam-desc' => "A përmëtt ëd gionté métod përsonalisà d'input për ij camp d'input",
+	'narayam-desc' => "A përmët ëd gionté dij métod përsonalisà për scrive ant ij camp d'intrada",
 	'narayam-toggle-ime' => 'Për passé IM ($1)',
 	'narayam-help-page' => 'Help:Digitand',
-	'narayam-checkbox-tooltip' => "Për passé métod d'input anvisch e dëstiss",
-	'narayam-disable-preference' => 'Disabìlita Narayam Input Method Editor (IME)',
+	'narayam-checkbox-tooltip' => "Për ativé e disativé ël métod d'anseriment",
+	'narayam-disable-preference' => "Disabilité ël métod d'anseriment (IME) Narayam",
 	'narayam-eo' => 'Esperant',
 	'narayam-hi-inscript' => 'InScript Hindi',
 	'narayam-kn' => 'Trasliterassion Kannada',
