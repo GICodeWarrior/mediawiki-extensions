@@ -163,8 +163,9 @@ class SpecialIndex extends SpecialPage {
 	}
 	
 	function showSearchForm() {
-		global $wgOut, $wgRequest, $wgScript;
+		global $wgOut, $wgRequest, $wgScript, $wgExtensionAssetsPath;
 		$search = $wgRequest->getText( 'searchtext' );
+		$wgOut->addScriptFile( "$wgExtensionAssetsPath/IndexFunction/specialindex.js" );
 		$wgOut->addWikiMsg( 'index-search-explain' );
 		$form = Xml::openElement( 'fieldset', array( 'style'=>'line-height:200%' ) ) . 
 		Xml::element( 'legend', array(), wfMsgHtml( 'index-legend' ) ) . 

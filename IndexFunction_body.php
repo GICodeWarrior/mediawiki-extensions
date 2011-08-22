@@ -213,15 +213,14 @@ class IndexFunctionHooks {
 	}
 
 	// Called after parse, updates the index table
-	static function doIndexes( &$out, $parseroutput ) {
-		global $wgTitle;
+	static function doIndexes( $out, $parseroutput ) {
 		if ( !isset($parseroutput->mIndexes) ) {
 			$parseroutput->mIndexes = array();
 		}
 		if ( $parseroutput->getProperty( 'preview' ) ) {
 			return true;
 		}
-		$pageid = $wgTitle->getArticleID();
+		$pageid = $out->getTitle()->getArticleID();
 		$dbw = wfGetDB( DB_MASTER );
 		$res = $dbw->select( 'indexes', 
 			array( 'in_namespace', 'in_title' ),
