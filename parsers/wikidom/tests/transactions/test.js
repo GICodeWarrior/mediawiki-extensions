@@ -1,47 +1,48 @@
 module( 'Content Transactions' );
 
-var lines = [
-	{
-		"text": "This is a test paragraph!",
-		"annotations": [
-		    // Make "This" italic
-			{
-				"type": "italic",
-				"range": {
-					"start": 0,
-					"end": 4
-				}
-			},
-		    // Make "a test" a link
-			{
-				"type": "xlink",
-				"data": {
-					"url": "http://www.a.com"
+var paragraph = es.Block.newFromWikiDomBlock( {
+	'type': 'paragraph',
+	'lines': [
+		{
+			"text": "This is a test paragraph!",
+			"annotations": [
+			    // Make "This" italic
+				{
+					"type": "italic",
+					"range": {
+						"start": 0,
+						"end": 4
+					}
 				},
-				"range": {
-					"start": 8,
-					"end": 14
+			    // Make "a test" a link
+				{
+					"type": "xlink",
+					"data": {
+						"url": "http://www.a.com"
+					},
+					"range": {
+						"start": 8,
+						"end": 14
+					}
+				},
+			    // Make "test" bold
+				{
+					"type": "bold",
+					"range": {
+						"start": 10,
+						"end": 14
+					}
 				}
-			},
-		    // Make "test" bold
-			{
-				"type": "bold",
-				"range": {
-					"start": 10,
-					"end": 14
-				}
-			}
-		]
-	}
-];
-
-var content = es.Content.newFromWikiDomLines( lines );
+			]
+		}
+	]
+} );
 
 /* Tests */
 
 test( 'Insert, retain and remove', 4, function() {
-	var before = content.getContent(),
-		after = new es.Content( [
+	var before = new es.ParagraphBlock( paragraph.getContent() ),
+		after = new es.ParagraphBlock( new es.Content( [
 			["T", { "type": "italic" }],
 			["h", { "type": "italic" }],
 			["i", { "type": "italic" }],
@@ -75,27 +76,27 @@ test( 'Insert, retain and remove', 4, function() {
 			"p",
 			"h",
 			"!"
-		] );
+		] ) );
 	
-	var tx = new es.Transaction(),
+	var tx = new es.BlockTransaction(),
 		insertion = es.Content.newFromText( 'used to be' ),
-		removal = content.getContent( new es.Range( 5, 7 ) );
+		removal = paragraph.getContent( new es.Range( 5, 7 ) );
 	
 	tx.add( 'retain', 5 );
 	tx.add( 'insert', insertion );
 	tx.add( 'remove', removal );
 	tx.add( 'retain', 18 );
 	
-	var committed = tx.commit( content );
+	var committed = tx.commit( paragraph );
 	equal( committed.getText(), after.getText(), 'Committing' );
-	deepEqual( committed.getData(), after.getData(), 'Committing' );
+	deepEqual( committed.getContent().getData(), after.getContent().getData(), 'Committing' );
 	var rolledback = tx.rollback( committed );
 	equal( rolledback.getText(), before.getText(), 'Rolling back' );
-	deepEqual( rolledback.getData(), before.getData(), 'Rolling back' );
+	deepEqual( rolledback.getContent().getData(), before.getContent().getData(), 'Rolling back' );
 } );
 
 test( 'Annotating', 4, function() {
-	var before = content.getContent(),
+	var before = paragraph.getContent(),
 		after = new es.Content( [
 			["T", { "type": "italic" }],
 			["h", { "type": "italic" }],
@@ -124,7 +125,7 @@ test( 'Annotating', 4, function() {
 			"!"
 		] );
 	
-	var tx = new es.Transaction(),
+	var tx = new es.BlockTransaction(),
 		annotation = { 'method': 'add', 'annotation': { 'type': 'italic' } };
 	
 	tx.add( 'retain', 4 );
@@ -133,11 +134,11 @@ test( 'Annotating', 4, function() {
 	tx.add( 'end', annotation );
 	tx.add( 'retain', 18 );
 	
-	var committed = tx.commit( content );
+	var committed = tx.commit( paragraph );
 	
 	equal( committed.getText(), after.getText(), 'Committing' );
-	deepEqual( committed.getData(), after.getData(), 'Committing' );
+	deepEqual( committed.getContent().getData(), after.getContent().getData(), 'Committing' );
 	var rolledback = tx.rollback( committed );
 	equal( rolledback.getText(), before.getText(), 'Rolling back' );
-	deepEqual( rolledback.getData(), before.getData(), 'Rolling back' );
+	deepEqual( rolledback.getContent().getData(), before.getContent().getData(), 'Rolling back' );
 } );

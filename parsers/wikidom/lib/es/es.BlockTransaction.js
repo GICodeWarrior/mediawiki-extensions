@@ -6,21 +6,21 @@
  * 
  * @example
  *     // Given the following content... 
- *     var content = es.Content.newFromText( 'abc' );
+ *     var paragraph = new es.ParagraphBlock( es.Content.newFromText( 'abc' ) );
  *     
  *     // Build transaction
- *     var tx = new es.Transaction();
+ *     var tx = new es.BlockTransaction();
  *     tx.add( 'retain', 1 );
  *     tx.add( 'remove', content.getData( new es.Range( 1, 2 ) ) );
  *     tx.add( 'insert', es.Content.newFromText( 'B' ) );
  *     tx.add( 'retain', 1 );
  *     
- *     // Commit transaction to content
- *     var committed = tx.commit( content );
+ *     // Commit transaction to paragraph
+ *     var committed = tx.commit( paragraph );
  *     console.log( committed.getText() ); // Logs "aBc"
  *     
  *     // Apply transaction to content
- *     var rolledback = tx.rollback( content );
+ *     var rolledback = tx.rollback( paragraph );
  *     console.log( rolledback.getText() ); // Logs "abc"
  * 
  * @class
@@ -28,7 +28,7 @@
  * @param content {es.Content} Content to operate on
  * @property operations {Array} List of operations
  */
-es.Transaction = function() {
+es.BlockTransaction = function() {
 	this.operations = [];
 	this.cursor = 0;
 };
@@ -36,7 +36,7 @@ es.Transaction = function() {
 /**
  * List of operation implementations. 
  */
-es.Transaction.operations = ( function() {
+es.BlockTransaction.operations = ( function() {
 	function annotate( con, add, rem ) {
 		for ( var i = 0; i < add.length; i++ ) {
 			con.annotate( 'add', add[i] );
@@ -136,20 +136,20 @@ es.Transaction.operations = ( function() {
 	};
 } )();
 
-es.Transaction.prototype.getCursor = function() {
+es.BlockTransaction.prototype.getCursor = function() {
 	return this.cursor;
 };
 
-es.Transaction.prototype.reset = function() {
+es.BlockTransaction.prototype.reset = function() {
 	this.operations = [];
 	this.cursor = 0;
 };
 
-es.Transaction.prototype.add = function( type, val ) {
-	if ( !( type in es.Transaction.operations ) ) {
+es.BlockTransaction.prototype.add = function( type, val ) {
+	if ( !( type in es.BlockTransaction.operations ) ) {
 		throw 'Unknown operation error. Operation type is not supported: ' + type;
 	}
-	var model = es.Transaction.operations[type];
+	var model = es.BlockTransaction.operations[type];
 	this.operations.push( {
 		'type': type,
 		'val': val,
@@ -158,7 +158,7 @@ es.Transaction.prototype.add = function( type, val ) {
 	this.cursor += model.advance( val );
 };
 
-es.Transaction.prototype.commit = function( src ) {
+es.BlockTransaction.prototype.commit = function( src ) {
 	var cur = 0,
 		dst = new es.Content(),
 		add = [],
@@ -171,7 +171,7 @@ es.Transaction.prototype.commit = function( src ) {
 	return dst;
 };
 
-es.Transaction.prototype.rollback = function( src ) {
+es.BlockTransaction.prototype.rollback = function( src ) {
 	var cur = 0,
 		dst = new es.Content(),
 		add = [],
