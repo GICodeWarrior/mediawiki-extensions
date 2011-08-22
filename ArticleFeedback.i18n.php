@@ -169,6 +169,7 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedback-survey-title' => 'This text appears in the title bar of the survey dialog.',
 	'articlefeedback-survey-thanks' => 'This text appears when the user has successfully submitted the survey.',
 	'articlefeedback-survey-disclaimer' => 'This text appears on the survey form below the comment field and above the submit button.',
+	'articlefeedback-form-panel-explanation' => '{{Identical|What is this}}',
 	'articlefeedback-form-panel-explanation-link' => 'Do not translate "Project:". Also translate the "ArticleFeedback" special page name at [[Special:AdvancedTranslate]].',
 	'articlefeedback-form-panel-helpimprove-email-placeholder' => '{{Optional}}',
 	'articlefeedback-form-panel-helpimprove-privacy' => '{{Identical|Privacy}}',
@@ -267,10 +268,11 @@ $messages['arc'] = array(
 
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
+ * @author Wertuose
  */
 $messages['az'] = array(
 	'articlefeedback-survey-question-useful-iffalse' => 'Niyə?',
-	'articlefeedback-survey-submit' => 'Yolla',
+	'articlefeedback-survey-submit' => 'Təsdiq et',
 	'articleFeedback-table-heading-page' => 'Səhifə',
 );
 
@@ -4410,23 +4412,23 @@ $messages['pms'] = array(
 	'articlefeedback-field-objective-label' => 'Obietiv',
 	'articlefeedback-field-objective-tip' => 'A pensa che costa pàgina a smon na giusta rapresentassion ëd tute le prospetive dël problema?',
 	'articlefeedback-field-wellwritten-label' => 'Scrivù bin',
-	'articlefeedback-field-wellwritten-tip' => 'Pensës-to che sta pagina a sia bin-organisà e bin-scrivùa?',
+	'articlefeedback-field-wellwritten-tip' => 'A pensa che costa pàgina a sia bin organisà e bin ëscrivùa?',
 	'articlefeedback-pitch-reject' => 'Miraco pì tard',
 	'articlefeedback-pitch-or' => 'o',
-	'articlefeedback-pitch-thanks' => 'Mersì! toe valutassion a son stàite salvà.',
+	'articlefeedback-pitch-thanks' => 'Mersì! Soe valutassion a son ëstàite salvà.',
 	'articlefeedback-pitch-survey-message' => 'Për piasì pija un moment për completé un curt sondagi.',
-	'articlefeedback-pitch-survey-accept' => 'Ancamin-a sondagi',
+	'articlefeedback-pitch-survey-accept' => 'Ancaminé ël sondagi',
 	'articlefeedback-pitch-join-message' => 'Veus-to creé un cont?',
-	'articlefeedback-pitch-join-body' => 'Un cont at giuterà a trassé toe modìfiche, at anserirà an discussion, e a sarà part ëd la comunità.',
+	'articlefeedback-pitch-join-body' => 'Un cont a-j giutrà a steje dapress a soe modìfiche, a lo amplichërà ant le discussion e lo farà part ëd la comunità.',
 	'articlefeedback-pitch-join-accept' => 'Crea un cont',
 	'articlefeedback-pitch-join-login' => 'Intra',
-	'articlefeedback-pitch-edit-message' => "Sas-to ch'it peule modifiché sta pagina?",
+	'articlefeedback-pitch-edit-message' => "A lo savìa ch'a peul modifiché costa pàgina?",
 	'articlefeedback-pitch-edit-accept' => "Modìfica st'artìcol-sì",
 	'articlefeedback-survey-message-success' => "Mersì d'avèj compilà ël questionari.",
 	'articlefeedback-survey-message-error' => "A l'é capitaje n'eror. 
 Për piasì preuva torna pi tard.",
-	'articleFeedback-table-caption-dailyhighsandlows' => "Aut e bass d'ancheuj",
-	'articleFeedback-table-caption-weeklymostchanged' => 'Ij magior cangiament dë sta sman-a',
+	'articleFeedback-table-caption-dailyhighsandlows' => "J'àut e ij bass d'ancheuj",
+	'articleFeedback-table-caption-weeklymostchanged' => 'Ij pì modificà dë sta sman-a',
 	'articleFeedback-table-caption-recentlows' => 'Bass recent',
 	'articleFeedback-table-heading-page' => 'Pàgina',
 	'articleFeedback-table-heading-average' => 'Media',
