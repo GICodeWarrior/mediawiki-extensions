@@ -53,10 +53,10 @@ es.ListBlock.prototype.enumerate = function() {
 		levels = [];
 
 	for ( var i = 0; i < this.list.items.length; i++ ) {
-		itemLevel = this.list.items[i].level;
+		itemLevel = this.list.items[i].getLevel();
 		levels = levels.slice(0, itemLevel + 1);
 		
-		if ( this.list.items[i].style === 'number' ) {
+		if ( this.list.items[i].getStyle() === 'number' ) {
 			if ( !levels[itemLevel] ) {
 				levels[itemLevel] = 0;
 			}
@@ -356,75 +356,7 @@ es.ListBlock.prototype.getText = function( range, render ) {
 };
 
 es.ListBlock.prototype.getWikiDom = function() {
-	var previousStyle,
-		stack = [],
-		previousLevel = -1,
-		items = this.list.items;
 
-	for( var i = 0; i < items.length; i++) {
-		var item = items[i];
-		
-		if ( item.level === previousLevel ) {
-			if ( item.style !== previousStyle ) {
-				if ( !stack[stack.length - 2].items[stack[stack.length - 2].items.length - 1].lists ) {
-					stack[stack.length - 2].items[stack[stack.length - 2].items.length - 1].lists = [];
-				}
-				stack[stack.length - 2].items[stack[stack.length - 2].items.length - 1].lists.push( stack.pop() );
-				stack.push( { 'style' : item.style, 'items' : [] } );
-				previousStyle = item.style;
-			}
-		}
-
-		/**
-		 * Cases:
-		 *
-		 *  # item 1
-		 *  ## item 2 (item)
-		 *
-		 * or
-		 *
-		 *  # item 1
-		 *  #### item 2 (item)
-		 *
-		 * and first item in list
-		 *
-		 *  # item 1 (item)
-		 *
-		 * or
-		 *
-		 *  #### item 1 (item)
-		 */
-		if( item.level > previousLevel ) {
-			for( var j = previousLevel; j < item.level; j++ ) {
-				stack.push( { 'style' : item.style, 'items' : [] } );
-			}
-			previousLevel = item.level;
-		}
-
-		if ( item.level < previousLevel ) {
-			for ( var j = previousLevel; j > item.level; j-- ) {
-				if( !stack[stack.length - 2].items[stack[stack.length - 2].items.length - 1].lists ) {
-					stack[stack.length - 2].items[stack[stack.length - 2].items.length - 1].lists = []
-				}
-				stack[stack.length - 2].items[stack[stack.length - 2].items.length - 1].lists.push( stack.pop() );
-				previousLevel = item.level;
-			}
-		}
-		
-		if(item.level === previousLevel) {
-			if( item.content.getLength() > 0 ) {
-				stack[stack.length - 1].items.push( { 'line' : item.content.getWikiDomLines()[0] } );
-			}
-			previousStyle = item.style;
-		}
-	}
-	
-	if ( stack.length !== 1 ) {
-		throw 'At this point stack should contain exactly one element.';
-	}
-	
-	stack[0].type = 'list';
-	return stack[0];
 };
 
 /* Registration */

@@ -21,30 +21,30 @@ es.ListBlockList = function( items ) {
  * @returns {es.ListBlockList} List block list
  */
 es.ListBlockList.newFromWikiDomList = function( wikidomList ) {
-	var items = [];
-	es.ListBlockList.flattenList( wikidomList, items, 0 );
+	var items = [],
+		styles = [];
+	es.ListBlockList.flattenList( wikidomList, items, styles );
 	return new es.ListBlockList( items );
 };
 
-es.ListBlockList.flattenList = function( wikidomList, items, level ) {
+es.ListBlockList.flattenList = function( wikidomList, items, styles ) {
+	styles.push( wikidomList.style );
 	for ( var i = 0; i < wikidomList.items.length; i++ ) {
 		if ( typeof wikidomList.items[i].line !== 'undefined' ) {
 			items.push(
 				new es.ListBlockItem(
 					es.Content.newFromWikiDomLine( wikidomList.items[i].line ),
-					wikidomList.style,
-					level
+					styles.slice(0)
 				)
 			);
 		}
 		if ( wikidomList.items[i].lists ) {
-			level++;
 			for ( var j = 0; j < wikidomList.items[i].lists.length; j++ ) {
-				es.ListBlockList.flattenList( wikidomList.items[i].lists[j], items, level );
+				es.ListBlockList.flattenList( wikidomList.items[i].lists[j], items, styles );
 			}
-			level--;
 		}
 	}
+	styles.pop();
 };
 
 /* Public Methods */
