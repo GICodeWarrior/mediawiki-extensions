@@ -498,6 +498,11 @@ class AFPage {
 	 * @param string $rating_set_hash
 	 */
 	public function addRating( $rating_id, $rating_value, $rating_set_hash = null ) {
+		if ( intval( $rating_value ) == 0 ) {
+			// Ignore zero ratings
+			return;
+		}
+		
 		$this->ratings[ $rating_id ][] = $rating_value;
 
 		if ( $rating_set_hash ) {
