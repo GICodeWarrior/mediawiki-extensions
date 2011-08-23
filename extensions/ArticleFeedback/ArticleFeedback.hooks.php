@@ -215,11 +215,13 @@ class ArticleFeedbackHooks {
 			) );
 
 			// migrate article_feedback_stats_highs_lows to article_feedback_stats
-			$updater->addExtensionUpdate( array(
-				'applyPatch',
-				$dir . '/sql/MigrateArticleFeedbackStatsHighsLows.sql',
-				true
-			) );
+			if ( $db->tableExists( 'article_feedback_stats_highs_lows' ) ) {
+				$updater->addExtensionUpdate( array(
+					'applyPatch',
+					$dir . '/sql/MigrateArticleFeedbackStatsHighsLows.sql',
+					true
+				) );
+			}
 
 			$updater->addExtensionUpdate( array(
 				'addIndex',
