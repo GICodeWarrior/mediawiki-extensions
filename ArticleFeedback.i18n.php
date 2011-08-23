@@ -106,6 +106,7 @@ Please try again later.',
 	'articleFeedback-table-caption-recentlows' => 'Recent lows',
 	'articleFeedback-table-heading-page' => 'Page',
 	'articleFeedback-table-heading-average' => 'Average',
+	'articlefeedback-table-noratings' => '-',
 	'articleFeedback-copy-above-highlow-tables' => 'This is an experimental feature.  Please provide feedback on the [$1 discussion page].',
 	'articlefeedback-dashboard-bottom' => "'''Note''': We will continue to experiment with different ways of surfacing articles in these dashboards.  At present, the dashboards include the following articles:
 * Pages with highest/lowest ratings: articles that have received at least 10 ratings within the last 24 hours.  Averages are calculated by taking the mean of all ratings submitted within the last 24 hours.
@@ -180,6 +181,7 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedback-pitch-join-login' => '{{Identical|Log in}}',
 	'articleFeedback-table-heading-page' => '{{Identical|Page}}',
 	'articleFeedback-table-heading-average' => '{{Identical|Average}}',
+	'articlefeedback-table-noratings' => 'Text to display in a table cell if there is no number to be shown',
 	'articleFeedback-copy-above-highlow-tables' => 'The variable $1 will contain a full URL to a discussion page where the dashboard can be discussed - since the dashboard is powered by a special page, we can not rely on the built-in MediaWiki talk page.',
 );
 

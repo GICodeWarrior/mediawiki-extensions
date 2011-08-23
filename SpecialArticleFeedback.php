@@ -119,6 +119,8 @@ class SpecialArticleFeedback extends SpecialPage {
 			$ids[] = $page['page'];
 		}
 		self::populateTitleCache( $ids );
+		
+		$categories = self::getCategories();
 
 		$rows = array();
 		if ( $pages ) {
@@ -129,12 +131,19 @@ class SpecialArticleFeedback extends SpecialPage {
 					continue;
 				}
 				$row['page'] = $wgUser->getSkin()->link( $pageTitle, $pageTitle->getPrefixedText() );
-				foreach ( $page['ratings'] as $value ) {
+				foreach ( $categories as $catid => $catmsg ) {
+					if ( isset( $page['ratings'][$catid] ) ) {
+						$number = $this->formatNumber( $page['ratings'][$catid] );
+						$class = round( $page['ratings'][$catid] );
+					} else {
+						$number = wfMsg( 'articlefeedback-table-noratings' );
+						$class = 'none';
+					}
 					$row[] = array(
-						'text' => $this->formatNumber( $value ),
+						'text' => $number,
 						'attr' => array(
 							'class' => 'articleFeedback-table-column-rating ' .
-								'articleFeedback-table-column-score-' . round( $value )
+								'articleFeedback-table-column-score-' . $class
 						)
 					);
 				}
@@ -153,7 +162,7 @@ class SpecialArticleFeedback extends SpecialPage {
 			$caption,
 			array_merge(
 				array( wfMsg( 'articleFeedback-table-heading-page' ) ),
-				self::getCategories(),
+				$categories,
 				array( wfMsg( 'articleFeedback-table-heading-average' ) )
 			),
 			$rows,
@@ -168,15 +177,22 @@ class SpecialArticleFeedback extends SpecialPage {
 	 */
 	protected function renderWeeklyMostChanged() {
 		global $wgUser;
+		
+		$categories = self::getCategories();
 
 		$rows = array();
 		foreach ( $this->getWeeklyMostChanged() as $page ) {
 			$row = array();
 			$pageTitle = Title::newFromText( $page['page'] );
 			$row['page'] = $wgUser->getSkin()->link( $pageTitle, $pageTitle->getPrefixedText() );
-			foreach ( $page['changes'] as $id => $value ) {
+			foreach ( $categories as $catid => $catmsg ) {
+				if ( isset( $page['changes'][$catid] ) ) {
+					$number = $this->formatNumber( $page['changes'][$catid] );
+				} else {
+					$number = wfMsg( 'articlefeedback-table-noratings' );
+				}
 				$row[] = array(
-					'text' => $this->formatNumber( $value ),
+					'text' => $number,
 					'attr' => array(
 						'class' => 'articleFeedback-table-column-changes'
 					)
@@ -188,7 +204,7 @@ class SpecialArticleFeedback extends SpecialPage {
 			wfMsg( 'articleFeedback-table-caption-weeklymostchanged' ),
 			array_merge(
 				array( wfMsg( 'articleFeedback-table-heading-page' ) ),
-				self::getCategories()
+				$categories
 			),
 			$rows,
 			'articleFeedback-table-weeklymostchanged'
@@ -204,6 +220,7 @@ class SpecialArticleFeedback extends SpecialPage {
 		global $wgUser;
 
 		$problems = $this->getProblems();
+		$categories = self::getCategories();
 
 		// Pre-fill page ID cache
 		$ids = array();
@@ -220,12 +237,19 @@ class SpecialArticleFeedback extends SpecialPage {
 				continue;
 			}
 			$row['page'] = $wgUser->getSkin()->link( $pageTitle, $pageTitle->getPrefixedText() );
-			foreach ( $page['ratings'] as $value ) {
+			foreach ( $categories as $catid => $catmsg ) {
+				if ( isset( $page['ratings'][$catid] ) ) {
+					$number = $this->formatNumber( $page['ratings'][$catid] );
+					$class = round( $page['ratings'][$catid] );
+				} else {
+					$number = wfMsg( 'articlefeedback-table-noratings' );
+					$class = 'none';
+				}
 				$row[] = array(
-					'text' => $this->formatNumber( $value ),
+					'text' => $number,
 					'attr' => array(
 						'class' => 'articleFeedback-table-column-rating ' .
-							'articleFeedback-table-column-score-' . round( $value )
+							'articleFeedback-table-column-score-' . $class
 					)
 				);
 			}
@@ -242,7 +266,7 @@ class SpecialArticleFeedback extends SpecialPage {
 			wfMsg( 'articleFeedback-table-caption-recentlows' ),
 			array_merge(
 				array( wfMsg( 'articleFeedback-table-heading-page' ) ),
-				self::getCategories(),
+				$categories,
 				array( wfMsg( 'articleFeedback-table-heading-average' ) )
 			),
 			$rows,
@@ -414,7 +438,7 @@ class SpecialArticleFeedback extends SpecialPage {
 			}
 			$highs_lows[] = array(
 				'page' => $row->afs_page_id,
-				'ratings' => FormatJson::decode( $row->afs_data ),
+				'ratings' => FormatJson::decode( $row->afs_data, true ),
 				'average' => $row->afs_orderable_data
 			);
 		}
@@ -434,7 +458,7 @@ class SpecialArticleFeedback extends SpecialPage {
 			}
 			$problems[] = array(
 				'page' => $row->afs_page_id,
-				'ratings' => FormatJson::decode( $row->afs_data ),
+				'ratings' => FormatJson::decode( $row->afs_data, true ),
 				'average' => $row->afs_orderable_data
 			);
 		}
