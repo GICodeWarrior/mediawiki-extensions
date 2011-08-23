@@ -71,6 +71,7 @@ class ApiArticleFeedback extends ApiBase {
 
 		foreach( $wgArticleFeedbackRatings as $rating ) {
 			$lastRating = false;
+			$lastRevision = false;
 			if ( isset( $lastRatings[$rating] ) ) {
 				$lastRating = intval( $lastRatings[$rating]['value'] );
 				$lastRevision = intval( $lastRatings[$rating]['revision'] );
