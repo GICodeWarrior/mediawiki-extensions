@@ -356,7 +356,44 @@ es.ListBlock.prototype.getText = function( range, render ) {
 };
 
 es.ListBlock.prototype.getWikiDom = function() {
+	var items = this.list.items;
+	var stack = [];
 
+	for ( var i = 0; i < items.length; i++ ) {
+		var item = items[i];
+		var itemLevel = item.getLevel();
+
+		if ( itemLevel + 1 > stack.length ) {
+			for( var j = stack.length; j < itemLevel + 1; j++ ) {
+				stack.push( {
+					'style' : item.getStyle(j),
+					'items' : []
+				} );
+			}
+		}
+		
+		if ( itemLevel + 1 < stack.length ) {
+			for( var j = stack.length; j > itemLevel + 1; j-- ) {
+				if ( stack[stack.length - 2].items.length === 0 ) {
+					stack[stack.length - 2].items.push( {
+						'lists' : []
+					} );
+				} else if( !stack[stack.length - 2].items[stack[stack.length - 2].items.length - 1].lists ) {
+					stack[stack.length - 2].items[stack[stack.length - 2].items.length - 1].lists = [];
+				}
+				stack[stack.length - 2].items[stack[stack.length - 2].items.length - 1].lists.push( stack.pop() );
+			}
+		}
+		
+		if ( itemLevel + 1 === stack.length ) {
+			stack[stack.length - 1].items.push( {
+				'line' : item.content.getWikiDomLines()[0] }
+			);
+		}
+	}
+	
+	stack[0].type = 'list';
+	return stack[0];
 };
 
 /* Registration */
