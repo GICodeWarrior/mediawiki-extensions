@@ -378,7 +378,7 @@ es.ListBlock.prototype.getWikiDom = function() {
 					'style' : item.getStyle(),
 					'items' : []
 				} );
-				lastStyle = item.getStyle();				
+				//lastStyle = item.getStyle();				
 			}
 		}
 
@@ -410,6 +410,17 @@ es.ListBlock.prototype.getWikiDom = function() {
 			);
 			lastStyle = item.getStyle();
 		}
+	}
+	
+	for( var i = stack.length; i > 1; i-- ) {
+		if ( stack[stack.length - 2].items.length === 0 ) {
+			stack[stack.length - 2].items.push( {
+				'lists' : []
+			} );
+		} else if( !stack[stack.length - 2].items[stack[stack.length - 2].items.length - 1].lists ) {
+			stack[stack.length - 2].items[stack[stack.length - 2].items.length - 1].lists = [];
+		}
+		stack[stack.length - 2].items[stack[stack.length - 2].items.length - 1].lists.push( stack.pop() );		
 	}
 	
 	stack[0].type = 'list';
