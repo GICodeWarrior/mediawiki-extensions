@@ -2,9 +2,9 @@
 // @name           viaf
 // @namespace      viaf
 // @require	   https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js
-// @require        http://$$$yourhost$$$/js/jquery.cookie.js
-// @require        http://$$$yourhost$$$/js/jquery.ba-replacetext.js
-// @description    locate VIAF numbers in texts and urls on web pages. (c) T.Gries Version 0.198 201108230150
+// @require        http://svn.wikimedia.org/viewvc/mediawiki/trunk/tools/viaf/jquery.cookie.js?view=co
+// @require        http://svn.wikimedia.org/viewvc/mediawiki/trunk/tools/viaf/jquery.ba-replacetext.js?view=co
+// @description    locate VIAF numbers in texts and urls on web pages. (c) T.Gries Version 0.200 201108240125
 // @include        *
 // ==/UserScript==
 
@@ -25,6 +25,7 @@
  * 20110817     disabled the built-in update checker; it has set 1-day cookie
  * 		"update" for every page by mistake.
  * 20110823     changed viaf.org link composition
+ * 20110824     added google link
  *
  ***/
 
@@ -39,7 +40,7 @@ var markUrlDetectedItemsCSS = { "borderBottom" : "1px orangered dotted" };
 var maxVIAFNumbers = 30;
 
 // Script update checker source: http://a32.me/2009/11/greasemonkey/
-var VERSION = "0.198";
+var VERSION = "0.200";
 var SCRIPT_NAME = "viaf"
 var SCRIPT_URL = "http://$$$yourhost$$$/"+SCRIPT_NAME+".user.js"
 
@@ -138,6 +139,7 @@ $(".viaf").each(function(){
 	newLink.unshift( $( "<span> <a href='http://ru.librarything.com/commonknowledge/search.php?f=13&exact=1&q=VIAF%3A"+viaf+"' class='addedlink viaf' viaf='"+viaf+"'>ru</a></span>" ) );
 	newLink.unshift( $( "<span> <a href='http://yi.librarything.com/commonknowledge/search.php?f=13&exact=1&q=VIAF%3A"+viaf+"' class='addedlink viaf' viaf='"+viaf+"'>yi</a></span>" ) );
 	newLink.unshift( $( "<span> <a href='http://toolserver.org/%7Eapper/pd/person/viaf/"+viaf+"' class='addedlink viaf' viaf='"+viaf+"'>TS</a></span>" ) );
+	newLink.unshift( $( "<span> <a href='http://www.google.com/search?num=100&q=viaf+"+viaf+"' class='addedlink viaf' viaf='"+viaf+"'>G</a></span>" ) );
         // newLink.unshift( $( "<label class='show-summary'><input type='checkbox' class='show-summary-checkbox' checked='checked'><span id='show-summary-text'></span></label>" ) );
 
 	// add a space as the last character after the last added links
