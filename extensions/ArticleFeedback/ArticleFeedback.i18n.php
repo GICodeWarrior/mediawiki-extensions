@@ -181,7 +181,9 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedback-pitch-join-login' => '{{Identical|Log in}}',
 	'articleFeedback-table-heading-page' => '{{Identical|Page}}',
 	'articleFeedback-table-heading-average' => '{{Identical|Average}}',
-	'articlefeedback-table-noratings' => 'Text to display in a table cell if there is no number to be shown',
+	'articlefeedback-table-noratings' => '{{Optional}}
+
+Text to display in a table cell if there is no number to be shown',
 	'articleFeedback-copy-above-highlow-tables' => 'The variable $1 will contain a full URL to a discussion page where the dashboard can be discussed - since the dashboard is powered by a special page, we can not rely on the built-in MediaWiki talk page.',
 );
 
