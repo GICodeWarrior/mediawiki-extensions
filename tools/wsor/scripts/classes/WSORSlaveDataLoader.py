@@ -13,7 +13,7 @@ __date__ = "June 27th, 2011"
 
 """ Import python base modules """
 import sys, getopt, re, datetime, logging, MySQLdb, operator, pickle, shelve, random
-import networkx as nx
+import networkx as nx, numpy as np, scipy.stats as ss
 
 """ Import Analytics modules """
 from Fundraiser_Tools.classes.DataLoader import DataLoader
@@ -98,7 +98,10 @@ class WSORSlaveDataLoader(DataLoader):
 """
 class CategoryLoader(WSORSlaveDataLoader):
     
-    def __init__(self):
+    def __init__(self, subcategories):
+        
+        logging.info('Creating CategoryLoader')
+        WSORSlaveDataLoader.__init__(self)    
         
         self.__DEBUG__ = True
         
@@ -116,19 +119,26 @@ class CategoryLoader(WSORSlaveDataLoader):
         
         self._query_names_['create_page_category'] = "create table rfaulk.page_category (page_id int(8) unsigned, page_title varbinary(255), category varbinary(255));"
         self._query_names_['drop_page_category'] = "drop table if exists rfaulk.page_category;"
+        self._query_names_['index1_page_category'] = "create index idx_page_id on rfaulk.page_category (page_id);"
+        self._query_names_['index2_page_category'] = "create index idx_page_title on rfaulk.page_category (page_title);"
+        self._query_names_['index3_page_category'] = "create index idx_category on rfaulk.page_category (category);"
         self._query_names_['insert_page_category'] = "insert into rfaulk.page_category values %s;"
         
+        self._regexp_list_ = ['^[Aa]', '^[Bb]', '^[Cc]', '^[Dd]', '^[Ee]', '^[Ff]', '^[Gg]', '^[Hh]', '^[Ii]', '^[Jj]', '^[Kk]', '^[Ll]', '^[Mm]', '^[Nn]', '^[Oo]', '^[Pp]', '^[Qq]', '^[Rr]', \
+         '^[Ss]', '^[Tt]', '^[Tt]', '^[Uu]', '^[Vv]', '^[Ww]','^[Xx]', '^[Yy]', '^[Zz]', '^[^A-Za-z]']
         
-        WSORSlaveDataLoader.__init__(self)    
-        logging.info('Creating CategoryLoader')
+        self._max_depth_ = 50
+        self._main_topic_ = 'Main_topic_classifications'
+        self._top_level_cats_ = subcategories[self._main_topic_][:]
+        self._top_level_cats_.remove('Chronology')
         
-        self._max_depth_ = 100
-        self._top_level_cats_ = ['Natural_sciences', 'Applied_sciences', 'Mathematics', 'Literature', 'Visual_arts', 'Social_sciences', 'Film', 'Music', 'Television', 'Biography', 'Religion', 'Culture', 'Philosophy', 'Sports', 'Places']
+        
+        #self._top_level_cats_ = ['Natural_sciences', 'Applied_sciences', 'Mathematics', 'Literature', 'Visual_arts', 'Social_sciences', 'Film', 'Music', 'Television', 'People', 'Religion', 'Culture', 'Philosophy', 'Sports', 'Places']
         # self._top_level_cats_ = ['Natural_sciences', 'Mathematics', 'Arts', 'Social_sciences', 'Entertainment', 'Biography', 'Religion', 'Culture', 'Philosophy', 'Sports']
         self._block_words_ = ['categories', 'Categories', 'topic', 'Topic']
         self._block_cats_ = ['']
         self._topic_trees_ = dict()
-
+        
                     
     """
         Retrieves all rows out of the category links table
@@ -150,30 +160,23 @@ class CategoryLoader(WSORSlaveDataLoader):
     """
         Extract the categories for a given article
     """
-    def get_page_categories(self, page_id_list):
+    def get_page_categories(self, page_id):
         
-        categories = dict()
+        categories = list()
         where_clause = ''
         
-        """ Initialize category lists for each page """
-        for id in page_id_list:
-            categories[id] = list()
-                        
+        """ Execute SQL query to retrieve categories for page of page id """
         try:
             
-            for id in page_id_list:
-                where_clause = where_clause + 'cl_from = %s or ' % str(id)
-            where_clause = where_clause[:-4]
-            
+            where_clause = where_clause + 'cl_from = %s' % str(page_id)
             sql = self._query_names_['get_page_categories'] % where_clause
-            
-            logging.info('Retrieving page categories ...')            
+                      
             results = self.execute_SQL(sql)                        
             
             """ walk through results and add to category lists """
             for row in results:
                 id = int(row[0])
-                categories[id].append(row[1])
+                categories.append(row[1])
                     
         except Exception as inst:
             
@@ -182,7 +185,7 @@ class CategoryLoader(WSORSlaveDataLoader):
             logging.error(str(inst.args))       # arguments stored in .args
             logging.error(inst.__str__())       # __str__ allows args to printed directly
             
-            return {}
+            return []
         
         return categories
     
@@ -211,7 +214,7 @@ class CategoryLoader(WSORSlaveDataLoader):
     """    
     def get_page_title(self, page_id):
         
-        logging.info('Getting page titles ...')
+        # logging.info('Getting page titles ...')
         is_list = isinstance(page_id, (list))
                       
         try:
@@ -232,13 +235,18 @@ class CategoryLoader(WSORSlaveDataLoader):
                 title = dict()
                 
                 for row in results:
-                    title[int(row[0])] = str(row[1])
-                
+                    
+                    try:
+                        title[int(row[0])] = str(row[1])
+                        
+                    except:
+                        logging.error('Could not retrieve page_title for %s.' % row)
+                        pass
+                    
         except Exception as inst:
             
-            logging.error('Could not retrieve page_title for page_id = %s.' % page_id)            
-            self._log_file.write('Could not retrieve page_title for page_id = %s.\n' % (page_id))
-            
+            logging.error('Could not retrieve page_title for page_id.')            
+        
             return ''
         
         return title
@@ -253,8 +261,6 @@ class CategoryLoader(WSORSlaveDataLoader):
                         
         #self.drop_category_links_cp_table()
         #self.create_category_links_cp_table()
-        
-        self._log_file = open('category_miner.log', 'w')
         
         """ Create graph """
         
@@ -304,11 +310,10 @@ class CategoryLoader(WSORSlaveDataLoader):
                      
             directed_graph.add_weighted_edges_from([(cl_from, cl_to, 1)])
             
-            if self.__DEBUG__ and (cl_from == 'Probability' or cl_from == 'Mathematics' or cl_from == 'Science' or cl_from == 'Arts'):
+            #if self.__DEBUG__ and (cl_from == 'Probability' or cl_from == 'Mathematics' or cl_from == 'Science' or cl_from == 'Arts'):
             #if self.__DEBUG__ and count % 1000 == 0 :
                 
-                logging.debug('%s: %s -> %s' % (str(count), cl_from, cl_to))
-                self._log_file.write('%s: %s -> %s\n' % (str(count), cl_from, cl_to))
+             #   logging.debug('%s: %s -> %s' % (str(count), cl_from, cl_to))
                 
             count = count + 1
         
@@ -320,7 +325,6 @@ class CategoryLoader(WSORSlaveDataLoader):
         in_only, out_only = self.get_uni_directionally_linked_categories(sorted_in_degrees, sorted_out_degrees, in_degrees, out_degrees)
         
         logging.info('Category links finished processing.')
-        self._log_file.close()
         
         return directed_graph, in_degrees, out_degrees, sorted_in_degrees, sorted_out_degrees, subcategories, in_only, out_only
     
@@ -419,26 +423,30 @@ class CategoryLoader(WSORSlaveDataLoader):
         
         """ Create graph """
         
-        logging.info('Initializing directed graph...')
+        logging.info('Initializing directed graph and topic counts ...')
         graph = nx.Graph()        
+        topic_counts = dict()
         self._count_ = 1
         
-        subcategories['top_level_categories'] = self._top_level_cats_
-        topic = 'top_level_categories'
-        
         depth = 0
-        logging.info('Recursively contructing graph, MAX DEPTH = %s ...' % self._max_depth_)
-        shortest_paths, topic_counts = self._recursive_construct_topic_tree(graph, topic, subcategories, depth)
+        logging.info('Recursively contructing graph, MAX DEPTH = %s ...' % self._max_depth_)        
+        shortest_paths = self._recursive_construct_topic_tree(graph, self._main_topic_, subcategories, depth)
         
-        
-        """ Pickle the result """
-        #logging.info('Pickling the shortest paths ...')
-        #self.pickle_var(shortest_paths, 'shortest_paths.p')
-        
+        max_depth = 5
+        logging.info('Computing recursive sub-category counts, MAX DEPTH = %s ...' % max_depth)
+        count = 0
+        for title in shortest_paths[shortest_paths.keys()[0]].keys():
+            
+            # logging.info('topic counts processed for %s  ...' % title)
+            topic_counts[title] = self.get_subcategory_count(title, subcategories, 0, max_depth)
+            count = count + 1
+            
         """ Shelve the result """
         logging.info('Shelve the shortest paths ...')
-        d = shelve.open( settings.__data_file_dir__ + 'shortest_paths.s')
+        d = shelve.open( settings.__data_file_dir__ + 'topic_tree.s')
         d['shortest_paths'] = shortest_paths
+        d['topic_counts'] = topic_counts
+        
         d.close()
         
         return graph, shortest_paths
@@ -454,7 +462,6 @@ class CategoryLoader(WSORSlaveDataLoader):
     """
     def _recursive_construct_topic_tree(self, graph, topic, subcategories, depth):
                     
-        topic_counts = 1
         depth = depth + 1
         self._count_ = self._count_ + 1
         
@@ -483,30 +490,25 @@ class CategoryLoader(WSORSlaveDataLoader):
         
         """ Recursively build linkages for each .
             DFS determining topic tree - this provides  """
-        for sub_topic in topic_subcategories:
-            
-            if depth == 1:
-                logging.info('Processing top level catgory: %s' % sub_topic)
-
-            if not(graph.has_node(sub_topic)):
-                                
-                graph.add_edge(topic, sub_topic) 
+        """ Only go deeper if the maximum recursive depth has not been reached """
+        if depth < self._max_depth_: 
+            for sub_topic in topic_subcategories:
                 
-                """ Only go deeper if the maximum recursive depth has not been reached """
-                if depth < self._max_depth_: 
-                    sub_topic_counts = self._recursive_construct_topic_tree(graph, sub_topic, subcategories, depth)
-                else:
-                    sub_topic_counts = 1
+                if depth == 1:
+                    logging.info('Processing top level category: %s' % sub_topic)
+    
+                """ Check if the subtopic node is already in the graph - if so add a loop edge """
+                if not(graph.has_node(sub_topic)):
+                                    
+                    graph.add_edge(topic, sub_topic)                    
+                    self._recursive_construct_topic_tree(graph, sub_topic, subcategories, depth)                    
                     
-                topic_counts = topic_counts + sub_topic_counts 
-                
-            else:
-                
-                """ Add the 'loop' edge if and only if it is not a top level catagory """
-                if not(sub_topic in self._top_level_cats_):
-                    graph.add_edge(topic, sub_topic) 
-                    topic_counts = topic_counts + 1
-        
+                else:
+                    
+                    """ Add the 'loop' edge if and only if it is not a top level category """
+                    if not(sub_topic in self._top_level_cats_):
+                        graph.add_edge(topic, sub_topic)
+                                                
         """ After the recursion is complete compute the shortest paths """
         if depth == 1:
         
@@ -519,10 +521,14 @@ class CategoryLoader(WSORSlaveDataLoader):
                 """ Store the lengths rather than the paths """
                 for target in shortest_paths[sub_topic]:
                     shortest_paths[sub_topic][target] = len(shortest_paths[sub_topic][target])
+            
+            """ Get the shortest path lengths for the main topic also """
+            shortest_paths[self._main_topic_] = nx.single_source_dijkstra_path(graph, self._main_topic_)
+            for target in shortest_paths[self._main_topic_]:
+                    shortest_paths[self._main_topic_][target] = len(shortest_paths[self._main_topic_][target])
                     
-            return shortest_paths, topic_counts
+            return shortest_paths
         
-        return topic_counts
     
     """
         Pickles variables that store the state of the category graph 
@@ -539,88 +545,189 @@ class CategoryLoader(WSORSlaveDataLoader):
         self.pickle_var(out_only, 'out_only.p')
 
     """
-        @param page_ids: a list of pages to classify
-    """
-    def find_top_level_category(self, page_ids, shortest_paths):
+        Given a set of article ids determine their corresponding representation in category space
         
-        # self._topic_trees_ = dict()
+        @param page_ids: a list of pages to classify
+        @param shortest_paths: an dictionary of the shortest paths from all top level categories to sub categories
+    """
+    def find_top_level_category(self, page_ids, shortest_paths, topic_counts):
+        
         titles = dict()
-        depths = dict()
         page_categories = dict()
         page_tl_cat = dict()
-        cat_winner = dict()
-        win_count = dict()
+        # win_count = dict()
+        
+        self._num_tl_cats_ = len(self._top_level_cats_)        
+        tl_cat_vectors = dict()
         
         """ Get categories for pages - Initialize depth dictionaries for top level categories """
         logging.info('Initializing data structures ...')
-        page_categories = self.get_page_categories(page_ids)
-        titles = self.get_page_title(page_ids)
         
-        for page_id in page_ids:
-            # page_categories[page_id] = self.get_page_categories(page_id)
-            title = titles[page_id]
-            depths[title] = dict()
-            
-            """ Initialize dictionaries to store the depth scores for top level categories """
-            for category in page_categories[page_id]:
-                depths[title][category] = dict()
 
+        logging.info('Getting page titles and categories ...')
+        counter = 0
+        for id in page_ids:
+            titles[id] = self.get_page_title(id)
+            page_categories[id] = self.get_page_categories(id)
+            
+            counter = counter + 1
+            
+            if counter % 100000 == 0:
+                logging.info('%s page titles and categories processed ...' % counter)
+                            
         """ Iterate through each page, category, and top level category
             Perform a breadth first search for the node to determine the dept """
         logging.info('Finding category depths in each topic tree ...')
         
         for page_id in page_ids:
-                        
-            # logging.info('For %s classifying categories: %s...' % (title, str(page_categories[page_id])))            
+                      
+            """ 
+                Retrieve page categories for each page using one of the classification methods available
+                rank_categories_M1()
+                rank_categories_M2()
+            """
             title = titles[page_id]
-            cat_winner[title] = dict()
+            page_tl_cat[title] = self.rank_categories_M2(page_categories[page_id], shortest_paths, topic_counts)
+
             
-            """ Initialize the number of top level categorizations for each top level category """
-            win_count[title] = dict()
-            for tl_cat in self._top_level_cats_:
-                win_count[title][tl_cat] = 0
-            
-            """ Go through each category for a page and find out which top level cat is closest """
-            for category in page_categories[page_id]:
+        return titles, page_tl_cat #, tl_cat_vectors # , depths, cat_winner
+    
+    """
+        Method for determining top level category for a set of categories 
+        
+        This method looks at the closest top level categories for each category and chooses the category or categories that appear most.
+        
+        @param categories: String list of categories to classify
+        @param shortest_paths: dictionary of shortest paths indexed by categories
+         
+        @return: String indicating the top level category(ies)
+        
+    """
+    def rank_categories_M1(self, categories, shortest_paths):
+        
+        """ Initialize the number of top level categorizations for each top level category  """
+        win_count = dict()
+        for tl_cat in self._top_level_cats_:
+            win_count[tl_cat] = 0
                 
-                cat_winner[title][category] = list()
-                min_depth = self._max_depth_
-                for tl_cat in self._top_level_cats_:
-                    
-                    """ Use shortest paths """
-                    try:
-                        depths[title][category][tl_cat] = shortest_paths[tl_cat][category]
-                    except KeyError:
-                        depths[title][category][tl_cat] = 99
-                    
-                    if depths[title][category][tl_cat] < min_depth: 
-                        cat_winner[title][category].append(tl_cat)
-                        min_depth = depths[title][category][tl_cat]
-                    elif depths[title][category][tl_cat] == min_depth:
-                        cat_winner[title][category].append(tl_cat)                  # there can only be one winner
-                
-                """ Randomly choose to tie breakers """
-                if len(cat_winner[title][category]) > 0:
-                    random.shuffle(cat_winner[title][category])
-                    cat_winner[title][category] = cat_winner[title][category][0]
-                else: 
-                    cat_winner[title][category] = None
-                    
-                winner = cat_winner[title][category] # this a top level category
-                if not(winner == None):
-                    win_count[title][winner] = win_count[title][winner] + 1
+        for category in page_categories[page_id]:
             
-            """ Classify the top level categories for each page """
-            page_tl_cat[title] = None
-            best_count = 0
-            for tl_cat in self._top_level_cats_:
-                if win_count[title][tl_cat] > best_count:
-                    page_tl_cat[title] = tl_cat
-                    best_count = win_count[title][tl_cat]
-                elif win_count[title][tl_cat] == best_count and best_count > 0:
-                    page_tl_cat[title] = page_tl_cat[title] + ' / ' + tl_cat
-                    
-        return titles, page_tl_cat # , depths, cat_winner
+            cat_winner = list()
+            min_depth = self._max_depth_
+            
+            for index, tl_cat in enumerate(self._top_level_cats_):
+            # for tl_cat in self._top_level_cats_:
+                
+                """ Use shortest paths """
+                try:
+                    path_length = shortest_paths[tl_cat][category]                    
+                
+                except KeyError:
+                    path_length = self._max_depth_
+                
+                if path_length < min_depth: 
+                    cat_winner = [tl_cat]
+                    min_depth = path_length
+                elif path_length == min_depth:
+                    cat_winner.append(tl_cat)                  # there can only be one winner
+            
+            """ Randomly choose to tie breakers """
+            if len(cat_winner) > 0:
+                random.shuffle(cat_winner)
+                cat_winner = cat_winner[0]
+            else: 
+                cat_winner = None
+                
+            winner = cat_winner # this a top level category
+            if not(winner == None):
+                win_count[winner] = win_count[winner] + 1
+
+            
+        """ Classify the top level categories for each page """
+    
+        best_count = 0                      
+        
+        for tl_cat in self._top_level_cats_:
+            if win_count[tl_cat] > best_count:
+                page_tl_cat = tl_cat
+                best_count = win_count[tl_cat]
+            elif win_count[tl_cat] == best_count and best_count > 0:
+                page_tl_cat = page_tl_cat + ' / ' + tl_cat
+
+        return page_tl_cat
+    
+    """
+        Method for determining top level category for a set of categories 
+        
+        This method looks at the closest top level categories for each category and constructs vector representations based on path lengths. The dimensions of the 
+        vector space are the top level categories.  The value for a given dimension is determined by the sum of the path lengths from each category to the top-level
+        category where the summand is weighted by the distance of the category to the main topic
+        
+        @param categories: String list of categories to classify
+        @param shortest_paths: dictionary of shortest paths indexed by categories
+         
+        @return: String indicating the top level category(ies)
+    """
+    def rank_categories_M2(self, categories, shortest_paths, topic_counts):
+                
+        """ Go through each category for a page and find out which top level cat is closest """
+            
+        tl_cat_vectors = np.zeros(len(self._top_level_cats_))    # initialize the vector in top-level category space
+        page_tl_cat = [0] * len(self._top_level_cats_)           # the top level cats
+        
+        for category in categories:
+            
+            """ Compute the weight of this category """
+            try:                    
+                path_length_from_main = shortest_paths[self._main_topic_][category]
+            except:
+                path_length_from_main = self._max_depth_
+            
+            """ The fanout weight is based on the fanout of a category for a fixed depth .. if there is no fanout for this topic it probably has vary few or no
+                subtopics so assign a fanout of 1.0 """
+            try:
+                fanout_weight = float(topic_counts[category])
+            except:
+                fanout_weight = 1.0
+                pass
+        
+            """ The total weight of this category depends on the product of how far it lies from the root and the inverse of its fanout
+                this makes more specialized categories worth more """
+            category_weight = float(path_length_from_main) * fanout_weight
+            
+            # category_weight = 1 / float(path_length_from_main) * self._max_depth_
+
+            cat_winner = list()
+            min_depth = self._max_depth_
+            
+            for index, tl_cat in enumerate(self._top_level_cats_):
+                
+                """ Use shortest paths """
+                try:
+                    path_length = shortest_paths[tl_cat][category]
+                except KeyError:
+                    path_length = 100
+                
+                tl_cat_vectors[index] = tl_cat_vectors[index] + category_weight * np.power(path_length, 0.5)
+                          
+        """ Normalize the vector representation """
+        ranks = np.floor(ss.rankdata(tl_cat_vectors)) - 1
+        vec = max(tl_cat_vectors) - tl_cat_vectors
+        tl_cat_vectors = vec / float(sum(vec))
+        
+        """ Choose the top categories """ 
+        for i in range(self._num_tl_cats_):
+            index = np.argmin(ranks)              
+            ranks[index] = self._num_tl_cats_ + 1
+            page_tl_cat[i] = self._top_level_cats_[index]
+        
+        top_five_cats = ''   
+        for i in range(5):
+            top_five_cats = top_five_cats + page_tl_cat[i] + ', ' 
+        top_five_cats = top_five_cats[:-2]
+        page_tl_cat = top_five_cats
+            
+        return page_tl_cat
     
     """
         Builds a table containing all main namespace pages and their chosen categories
@@ -634,51 +741,84 @@ class CategoryLoader(WSORSlaveDataLoader):
         logging.info('CATEGORIZING PAGES: Initializing tables ... ')
         self.execute_SQL(sql_drop)
         self.execute_SQL(sql_create)
-        
-        logging.info('CATEGORIZING PAGES: Getting all pages ... ')
-        sql_get_page_ids = self._query_names_['get_all_page_ids']
-        results = self.execute_SQL(sql_get_page_ids)
-        
-        page_ids = list()
-        for row in results:
-            page_ids.append(int(row[0]))
+        self.execute_SQL(self._query_names_['index1_page_category'])
+        self.execute_SQL(self._query_names_['index2_page_category'])
+        self.execute_SQL(self._query_names_['index3_page_category'])
         
         logging.info('CATEGORIZING PAGES: Unshelving shortest paths ... ')
-        # shortest_paths = self.unpickle_var('shortest_paths.p')
+        d = shelve.open( settings.__data_file_dir__ + 'topic_tree.s')
         
-        d = shelve.open( settings.__data_file_dir__ + 'shortest_paths.s')
         shortest_paths = d['shortest_paths']
+        topic_counts = d['topic_counts']
         
-        logging.info('CATEGORIZING PAGES: Computing categories ... ')
-        titles, page_tl_cat = self.find_top_level_category(page_ids, shortest_paths)
-        ids = dict((i,v) for v,i in titles.iteritems())
-        
-        logging.info('CATEGORIZING PAGES: Performing inserts ... ')
-        page_id_str = ''
-        for title in page_tl_cat:
-            id = ids[title]
-            category = page_tl_cat[title]
+        """
+            Break up processing to handle records with page titles matching the regular expressions in _regexp_list_
+        """
+        for regexp in self._regexp_list_:
             
-            parts = title.split("'")
-            new_title = parts[0]
-            parts = parts[1:]
-            for part in parts:
-                 new_title = new_title + " " + part
-                 
-            page_id_str = "(%s,'%s','%s')" % (id, new_title, category)
-            try:
-                self.execute_SQL(sql_insert %  page_id_str)
-            except:
-                logging.info('Could not insert: %s ... ' % new_title)
-                pass
-            # page_ids.append(str(row[0]))
-       # page_id_str = page_id_str[:-1]
-        
-        #logging.info('CATEGORIZING PAGES: Inserting page ids into rfaulk.page_category ... ')
-        #self.execute_SQL(sql_insert %  page_id_str)
-        
+            logging.info('CATEGORIZING PAGES: Getting pages for %s ... ' % regexp)
+            
+            sql_get_page_ids = self._query_names_['get_all_page_ids'] + " and page_title regexp '%s';" % regexp
+            results = self.execute_SQL(sql_get_page_ids)
+            
+            page_ids = list()
+            for row in results:
+                page_ids.append(int(row[0]))
+            
+            logging.info('CATEGORIZING PAGES: Computing categories ... ')
+            titles, page_tl_cat = self.find_top_level_category(page_ids, shortest_paths, topic_counts)
+            ids = dict((i,v) for v,i in titles.iteritems())
+            
+            logging.info('CATEGORIZING PAGES: Performing inserts ... ')
+            page_id_str = ''
+            for title in page_tl_cat:
+                id = ids[title]
+                category = page_tl_cat[title]
+                
+                parts = title.split("'")
+                new_title = parts[0]
+                parts = parts[1:]
+                for part in parts:
+                     new_title = new_title + " " + part
+                     
+                page_id_str = "(%s,'%s','%s')" % (id, new_title, category)
+                try:
+                    self.execute_SQL(sql_insert %  page_id_str)
+                except:
+                    logging.info('Could not insert: %s ... ' % new_title)
+                    pass
+
+
         d.close()
+
+
+    """
+        Gets a subcategory count for a fixed depth of the category graph structure starting at a specified node
+        loops are ignored
         
+        @param topic:  The topic to produce a sub topic count for
+        @param subcategories: dictionary keyed on categories, values are subcategories
+        @param depth: the current depth of the recursion
+        @param max_depth: The maximum depth of the recursion
+        
+    """
+    def get_subcategory_count(self, topic, subcategories, depth, max_depth):
+        
+        topic_count = 1
+        
+        try:
+            topic_subcategories = subcategories[topic]
+            new_depth = depth + 1
+            
+            if depth < max_depth:
+                for sub_topic in topic_subcategories:
+                    topic_count = topic_count + self.get_subcategory_count(sub_topic, subcategories, new_depth, max_depth)
+        except:
+            # logging.info('No subcategories of %s' % topic)
+            pass
+
+        return topic_count
+    
 """
     Inherits WSORSlaveDataLoader
     
