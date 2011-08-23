@@ -3,8 +3,14 @@ which detects VIAF numbers on web pages and creates related links
 
 *** detailed information page will follow ***
 
-Version: see viaf.user.js
+Version: 0.200
 
+VIAF numbers:
+  http://en.wikipedia.org/wiki/Wikipedia:Authority_control#VIAF
+  "The VIAF ID corresponding to the subject of the article can be found on
+  http://viaf.org, which combines authority records from many organizations
+  worldwide into single datasets..."
+  
 The viaf.user.js script tries to generously detect VIAF numbers as part of a web
 page's text, and also as part of links (urls).
 
