@@ -1,0 +1,66 @@
+#!/usr/bin/python
+# :vim:ft=python
+
+''' compute activity peaks '''
+
+__author__ = "Giovanni Luca Ciampaglia"
+__email__ = "gciampaglia@wikimedia.org"
+
+import os
+import sys
+
+import numpy as np
+
+from argparse import ArgumentParser
+from lifecycle.cvsmooth import find_peak
+from scipy.interpolate import UnivariateSpline
+from warnings import catch_warnings, simplefilter
+
+__prog__ = os.path.basename(__file__)
+
+parser = ArgumentParser(description=__doc__)
+parser.add_argument('data_paths', metavar='data', nargs='+')
+parser.add_argument('-m', '--min-size', type=int, default=0)
+parser.add_argument('-o', '--output', dest='output_path', metavar='FILE')
+parser.add_argument('-i', '--iter', type=int, metavar='NUM', 
+        dest='bootstrap_iter', default=10000, 
+        help='bootstrap iterations (default: %(default)d)')
+
+if __name__ == '__main__':
+    ns = parser.parse_args()
+
+    if ns.output_path is not None:
+        output_file = open(ns.output_path, 'w')
+    else:
+        output_file = sys.stdout
+
+    print >> output_file,\
+            'date\tactivity\tpeak_date\tpeak_date_err\tpeak\tpeak_err'
+    for path in ns.data_paths:
+
+        # get date and activity rate for file name
+        basename = os.path.basename(path)
+        basename, _ = os.path.splitext(basename)
+        cohort_date, act = basename.split('_')
+        act = int(act)
+
+        # load data and check if fittable
+        x, y, ye, n = map(np.atleast_1d, np.loadtxt(path, unpack=1))
+        idx = (n > ns.min_size) * (ye > 0)
+        x = x[idx]
+        y = y[idx]
+        ye = ye[idx]
+        if len(x) - 1 <= 3: # takes into account the leave-one-out CV
+            print >> sys.stderr, 'skipping %s' % path
+            continue
+
+        # fit data and report peak activity and uncertainty
+        with catch_warnings():
+            simplefilter('ignore', category=Warning)
+            (xp, yp), (xperr, yperr), s, ests = find_peak(x, y, ye, 
+                    reps=ns.bootstrap_iter)
+            spl = UnivariateSpline(x, y, ye ** -1, s=s)
+        print >> output_file, '%s\t%d\t%12.5f\t%12.5f\t%12.5f\t%12.5f' % \
+                (cohort_date, act, xp, xperr, yp, yperr)
+
+

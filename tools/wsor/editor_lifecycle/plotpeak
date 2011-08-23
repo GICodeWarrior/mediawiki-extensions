@@ -1,9 +1,5 @@
 #!/usr/bin/python
-
-''' plots cohort rate versus day since first edit '''
-
-__author__ = "Giovanni Luca Ciampaglia"
-__email__ = "gciampaglia@wikimedia.org"
+# :vim:ft=python
 
 import os
 import sys
@@ -12,30 +8,34 @@ import numpy as np
 import matplotlib.pyplot as pp
 
 from argparse import ArgumentParser
+from collections import defaultdict
+from datetime import datetime
 from matplotlib.font_manager import FontProperties
-from scipy.interpolate import UnivariateSpline
-
-from lifecycle.cvsmooth import find_peak 
+from dateutil.parser import parser as DateParser
 
 __prog__ = os.path.basename(__file__)
 
 parser = ArgumentParser(description=__doc__)
 parser.add_argument('data_paths', metavar='data', nargs='+')
-parser.add_argument('-m', '--minsize', type=int, default=0)
 parser.add_argument('-o', '--output', dest='output_path', metavar='FILE')
 parser.add_argument('-T', '--title')
-parser.add_argument('-B', '--no-errbars', action='store_true', help='no error'
-        ' bars')
+
+date_parser = DateParser()
+default_date = datetime(2001,1,1)
 
 markers = 'ov^<>sp*+xD'
 colors = 'bgrcmykw'
+conv = defaultdict(lambda k : float)
+conv[0] = lambda k : date_parser.parse(k, default=default_date)
 
 if __name__ == '__main__':
     ns = parser.parse_args()
 
     # create figure
     fig = pp.figure(figsize=(10,4))
-    ax = fig.add_axes(pp.axes([.1,.1,.65,.8], axisbg='ghostwhite'))
+    ax1 = fig.add_axes(pp.axes([.1,.15,.65,.75], axisbg='ghostwhite'))
+    ax2 = ax1.twinx()
+
     M = len(markers)
     C = len(colors)
 
@@ -45,45 +45,40 @@ if __name__ == '__main__':
 
         # load cohort data and filter out estimates based on samples with size
         # smaller than minimum requested
-        days, rate, rate_err, size = map(np.ravel, np.loadtxt(path,
-            delimiter='\t', unpack=1))
-        idx = size >= ns.minsize
-        days = days[idx]
-        rate = rate[idx]
-        rate_err = rate_err[idx]
-        if len(days) == 0:
+        arr = np.loadtxt(path, delimiter='\t', dtype=object, converters=conv, 
+                skiprows=1)
+
+        if len(arr) == 0:
             print >> sys.stderr, '%s: warning: skipping empty dataset: %s' % \
                     (__prog__, path)
             continue
  
-        # plot errorbars or lines
+        date = arr[:, 0]
+        idx = np.argsort(date)
+        arr = arr[idx]
+        date = arr[:, 0]
+        act, peak_date, peak_date_err, peak, peak_err = map(np.asfarray, 
+                arr[:,1:].T)
+
         label = os.path.splitext(path)[0].replace('_',' ')
-        color = colors[i % C]
+
+#        color = colors[i % C]
         marker = markers[i % M]
-        if ns.no_errbars:
-            l, = ax.plot(days, rate, marker=marker, color=color, label=label,
-                    ls='none', lw=2, mfc='none', mec=color) 
-        else:
-            l, (wu, wd), mc = ax.errorbar(days, rate, rate_err / 2.0, 
-                    marker=marker, mec=color, label=label, ecolor='lightgrey', 
-                    ls='none', lw=2, mfc='none')
-            pp.setp(wd, ls='none')
+        l, (wu, wd), mc = ax1.errorbar(date, peak_date, peak_date_err / 2.0, 
+                marker=marker, mec='red', label=label, ecolor='lightgrey', 
+                ls='none', lw=2, mfc='none')
         lines.append(l)
 
-        # compute maximum
-        xp, xperr, s, ests = find_peak(days, rate, rate_err)
-        ax.axvline(xp, color=color)
+        l, (wu, wd), mc = ax2.errorbar(date, peak, peak_err / 2.0, 
+                marker=marker, mec='blue', label=label, ecolor='lightgrey', 
+                ls='none', lw=2, mfc='none')
 
-        # plot spline
-        spl = UnivariateSpline(days, rate, rate_err ** -1, s=s)
-        x = np.linspace(days.min(), days.max(), endpoint=True, num=100)
-        y = spl(x)
-        ax.plot(x, y, label='spline fit', color=color, ls='--', marker='none',
-                lw=2)
+        lines.append(l)
 
     # decorate figure
-    pp.xlabel('days since first edit')
-    pp.ylabel('edits/day')
+    ax1.set_xlabel('cohorts')
+    ax1.set_ylabel('peak day', color='red')
+    ax2.set_ylabel('peak edits/day', color='blue')
     pp.figlegend(lines, [ l.get_label() for l in lines ], 
             loc='center right', prop=FontProperties(size='small'))
     pp.minorticks_on()

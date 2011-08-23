@@ -1,13 +1,17 @@
+import sys
+
 import numpy as np
-from scipy.interpolate import splrep, splev, UnivariateSpline
+from scipy.interpolate import UnivariateSpline
 from scipy.optimize import fmin_tnc
 import scipy.optimize.tnc as tnc
+from multiprocessing import Pool
+from multiprocessing.pool import ApplyResult
 
 def spsmooth(x, y, ye, **kwargs):
     ''' 
     Finds the best spline smoothing factor using leave-one-out cross validation
 
-    Additional keyword arguments are passed to splrep (e.g. k for the degree)
+    Additional keyword arguments are passed to UnivariateSpline (e.g. k for the degree)
     '''
 
     best = []
@@ -33,8 +37,8 @@ def spsmooth(x, y, ye, **kwargs):
         err_best = np.inf
         
         for s in slist:
-            tck = splrep(train_x, train_y, w=train_w, s=s, **kwargs)
-            err = np.sqrt((splev(test_x, tck) - test_y) ** 2)
+            spl = UnivariateSpline(train_x, train_y, w=train_w, s=s)
+            err = np.sqrt((spl(test_x) - test_y) ** 2)
             
             if err < err_best:
                 s_best = s
@@ -43,18 +47,8 @@ def spsmooth(x, y, ye, **kwargs):
         best.append(s_best)
 
     return np.mean(best)
-        
-def find_peak(x,y,ye,k=3):
-    '''
-    Finds maximum in time series (x_i, y_i) using smoothing splines
 
-    Parameters
-    ----------
-    x,y - data
-    ye  - standard errors estimates
-    k   - spline degree (must be <= 5)
-    '''
-    s = spsmooth(x, y, ye, k=k)
+def _find_peak(x, y, ye, k=3, s=None):
     spl = UnivariateSpline(x, y, ye ** -1, k=k, s=s)
     f = lambda k : -spl(k)
     fprime = np.vectorize(lambda k : - spl.derivatives(k)[1])
@@ -65,8 +59,59 @@ def find_peak(x,y,ye,k=3):
         x0 = (x.ptp() * np.random.rand() + x.min(),)
         xp, nfeval, rc = fmin_tnc(f, x0, fprime=fprime, bounds=bounds,
                 messages=tnc.MSG_NONE)
+        xp = xp.item()
         yp = spl(xp)
         if yp >= yp_best:
             xp_best = xp
             yp_best = yp
-    return xp_best, spl
+    return xp_best, yp_best.item()
+
+def _init():
+    import signal
+    signal.signal(signal.SIGINT, signal.SIG_IGN)
+    import warnings
+    warnings.simplefilter("ignore", category=UserWarning)
+
+def find_peak(x, y, ye, k=3,reps=10000):
+    '''
+    Finds maximum in time series (x_i, y_i) using smoothing splines
+
+    Parameters
+    ----------
+    x,y - data
+    ye  - standard errors estimates
+    k   - spline degree (must be <= 5)
+
+    Returns
+    -------
+    xp      - maximum of the smoothing spline
+    xperr   - uncertainty in the maximum
+    s       - the smoothing factor (either the one passed, or the one estimated)
+    '''
+    # compute the peak
+    s = spsmooth(x, y, ye, k=k)
+    xp, yp = _find_peak(x, y, ye, k=k, s=s)
+    
+    # compute uncertainty by bootstrap
+    results = []
+    N = len(x)
+    pool = Pool()
+    spl = UnivariateSpline(x, y, ye ** -1, k=k, s=s)
+    yf = spl(x)
+    err = y - yf
+    kwds = {'k' : k, 's' : s}
+    try:
+        for i in xrange(reps):
+            idx = np.random.randint(0, len(x), len(x))
+            ys = yf + err[idx]
+            res = pool.apply_async(_find_peak, args=(x, ys, ye), 
+                    kwds=kwds)
+            results.append(res)
+        results = np.asarray(map(ApplyResult.get, results))
+        xerr = np.std(results[:,0], ddof=1, axis=0)
+        # geometric standard deviation
+        yerr = np.exp(np.std(np.log(results[:,1]), ddof=1))
+    finally:
+        pool.terminate()
+        pool.join()
+    return (xp, yp), (xerr, yerr), s, results
