@@ -66,7 +66,7 @@ function fnCollabWatchlistDbSchema( $updater = null ) {
 			$sqlDir . 'collabwatchlistrevisiontag.sql', true ) );
 		$updater->addExtensionUpdate( array ( 'addTable', 'collabwatchlisttag',
 			$sqlDir . 'collabwatchlisttag.sql', true ) );
-		$updater->addExtensionUpdate( array( 'modifyField', 'collabwatchlistrevisiontag', 'ct_rc_id',
+		$updater->addExtensionUpdate( array( 'addField', 'collabwatchlistrevisiontag', 'ct_rc_id',
 			$sqlDir . 'patch-collabwatchlist_noctid.sql', true ) );
 	}
 	return true;
