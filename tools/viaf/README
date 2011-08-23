@@ -1,0 +1,33 @@
+viaf.user.js, a Greasemonkey script
+which detects VIAF numbers on web pages and creates related links
+
+*** detailed information page will follow ***
+
+Version: see viaf.user.js
+
+The viaf.user.js script tries to generously detect VIAF numbers as part of a web
+page's text, and also as part of links (urls).
+
+Detected numbers are indicated with bright cyan colour to attract the
+user's attention.
+
+While detecting the numbers, the script adds new links to additional servers.
+
+Such new links come in yellow and have the detected VIAF number as part of the
+url, i.e. are deep links (single-click solution).
+
+Those VIAF numbers which are only part of a url (i.e not in the text) are not
+apparent without this script. Numbers as part of urls are treated in the same
+way as numbers in the text. The script adds a dotted red underline to urls which
+contain a VIAF which is detected by matching a magic regular expression
+(see program code for details).
+
+A summary box (6) lists all distinct VIAF numbers to facilitate cut & paste of
+the extracted numbers; this can be disabled in the program code.
+
+The set of further server urls can be adapted in the program code.
+It relies on jQuery and two further javascripts, which are fetched automatically
+and has an integrated update checker (currently disabled) which looks for newer
+versions of it and prompts the user in such case.
+
+It does not automatically install a newer version.
