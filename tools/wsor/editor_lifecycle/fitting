@@ -33,6 +33,8 @@ parent.add_argument('-constrain', choices=['head', 'tail', 'both'])
 parent.add_argument('-batch', action='store_true', help='do not show graphics')
 parent.add_argument('-force', action='store_true', help='force overwrite')
 parent.add_argument('-minsize', type=int)
+parent.add_argument('-c', '--chop-tail', type=int, default=0, metavar='NUM',
+        help='remove %(metavar)s tail observations')
 
 parser = ArgumentParser(description=__doc__)
 subparsers = parser.add_subparsers(help='Parametric models supported')
@@ -123,6 +125,10 @@ def fit(data_file, modelclass, constrain=None, minsize=None):
     * both : A = y[0] and C = y[-1]
     '''
     x, y, ye, n = np.loadtxt(data_file, unpack=True)
+    x = x[:-ns.chop_tail]
+    y = y[:-ns.chop_tail]
+    ye = ye[:-ns.chop_tail]
+    n = n[:-ns.chop_tail]
     idx = ye > 0
     if minsize:
         idx = idx * (n > minsize)

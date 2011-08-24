@@ -20,7 +20,10 @@ __prog__ = os.path.basename(__file__)
 
 parser = ArgumentParser(description=__doc__)
 parser.add_argument('data_paths', metavar='data', nargs='+')
-parser.add_argument('-m', '--min-size', type=int, default=0)
+parser.add_argument('-c', '--chop-tail', type=int, default=0, metavar='NUM',
+        help='remove %(metavar)s tail observations')
+parser.add_argument('-m', '--min-size', type=int, default=0, metavar='SIZE',
+        help='filter out observations with size <= %(metavar)s')
 parser.add_argument('-o', '--output', dest='output_path', metavar='FILE')
 parser.add_argument('-i', '--iter', type=int, metavar='NUM', 
         dest='bootstrap_iter', default=10000, 
@@ -46,6 +49,11 @@ if __name__ == '__main__':
 
         # load data and check if fittable
         x, y, ye, n = map(np.atleast_1d, np.loadtxt(path, unpack=1))
+        x = x[:-ns.chop_tail]
+        y = y[:-ns.chop_tail]
+        ye = ye[:-ns.chop_tail]
+        n = n[:-ns.chop_tail]
+
         idx = (n > ns.min_size) * (ye > 0)
         x = x[idx]
         y = y[idx]
