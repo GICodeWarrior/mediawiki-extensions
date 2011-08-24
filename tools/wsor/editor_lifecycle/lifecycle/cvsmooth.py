@@ -108,9 +108,12 @@ def find_peak(x, y, ye, k=3,reps=10000):
                     kwds=kwds)
             results.append(res)
         results = np.asarray(map(ApplyResult.get, results))
-        xerr = np.std(results[:,0], ddof=1, axis=0)
-        # geometric standard deviation
-        yerr = np.exp(np.std(np.log(results[:,1]), ddof=1))
+        if len(results):
+            xerr = np.std(results[:,0], ddof=1, axis=0)
+            # geometric standard deviation
+            yerr = np.exp(np.std(np.log(results[:,1]), ddof=1))
+        else:
+            xerr, yerr = np.nan, np.nan
     finally:
         pool.terminate()
         pool.join()
