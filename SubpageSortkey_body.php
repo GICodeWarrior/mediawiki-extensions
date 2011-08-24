@@ -52,7 +52,7 @@ class SubpageSortkey {
 
 		// Don't prefix an extra \n if the prefix is empty.
 		if ( $newPrefix !== ''
-			|| $wgSubpageSortkeyIfNoSubpageUseFullName
+			|| !$wgSubpageSortkeyIfNoSubpageUseFullName
 		) {
 			$unprefixed = $newPrefix . "\n" . $unprefixed;
 		}
