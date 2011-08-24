@@ -185,6 +185,16 @@ $messages['be-tarask'] = array(
 	'moodbar-form-title' => 'Таму што…',
 	'moodbar-form-note' => 'максымум 140 сымбаляў',
 	'moodbar-form-note-dynamic' => 'засталося $1 сымбаляў',
+	'moodbar-form-submit' => 'Падзяліцца водгукам',
+	'moodbar-form-policy-text' => 'Дасылаючы, $1',
+	'moodbar-form-policy-label' => 'нашыя правілы',
+	'moodbar-loading-title' => 'Адкрыцьцё доступу…',
+	'moodbar-success-title' => 'Дзякуй!',
+	'moodbar-error-title' => 'Ой!',
+	'moodbar-success-subtitle' => 'Адкрыцьцё доступу да Вашага вопыту рэдагаваньня дапамагае палепшыць {{GRAMMAR:вінавальны|$1}}.',
+	'moodbar-error-subtitle' => 'Нешта пайшло ня так! Калі ласка, паспрабуйце адкрыць доступ да вашага водгуку потым.',
+	'right-moodbar-view' => 'прагляд і экспарт водгукаў MoodBar',
+	'moodbar-admin-title' => 'Водгукі MoodBar',
 );
 
 /** German (Deutsch)
@@ -605,6 +615,7 @@ Fir méi Informatiounen, gitt w.e.g. op d'$1.",
 	'moodbar-error-title' => 'Ups!',
 	'moodbar-success-subtitle' => 'Eis Är Erfarunge beim Ännere matzedeelen hëlleft eis $1 ze verbesseren.',
 	'moodbar-admin-title' => 'MoodBar Feedback',
+	'moodbar-admin-intro' => 'Dës Säit erméiglecht et Iech fir de Feedback dee mat MoodBar erageschéckt gouf ze gesinn.',
 	'moodbar-admin-empty' => 'Keng Resultater',
 	'moodbar-header-timestamp' => 'Zäitstempel',
 	'moodbar-header-type' => 'Typ',
@@ -1070,6 +1081,7 @@ Za več informacij obiščite $1.',
 
 /** Swedish (Svenska)
  * @author Ainali
+ * @author Lokal Profil
  */
 $messages['sv'] = array(
 	'moodbar-desc' => 'Tillåter enskilda användare att ge feedback på deras redigeringsupplevelse',
@@ -1126,6 +1138,7 @@ För mer information, besök $1 .',
 	'moodbar-type-confused' => 'Förvirrad',
 	'moodbar-user-anonymized' => 'Anonymiserad',
 	'moodbar-user-ip' => 'IP-adress',
+	'moodbar-user-user' => 'Registrerad användare',
 );
 
 /** Vietnamese (Tiếng Việt)
