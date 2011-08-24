@@ -23,6 +23,7 @@
 	position: absolute;
 	top: -59px;
 	left: 14px;
+	/* @embed */
 	background: transparent url(images/pokey.png) center top no-repeat;
 	width: 49px;
 	height: 37px;
