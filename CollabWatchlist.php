@@ -13,7 +13,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'name' => 'CollabWatchlist',
 	'author' => 'Florian Hackenberger',
-	'url' => 'http://www.mediawiki.org/wiki/User:Flohack',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:CollabWatchlist',
 	'descriptionmsg' => 'collabwatchlist-desc',
 	'version' => '0.9.0',
 );
