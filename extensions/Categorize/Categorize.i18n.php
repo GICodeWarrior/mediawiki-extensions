@@ -144,7 +144,7 @@ $messages['nl'] = array(
 $messages['no'] = array(
 	'categorize-desc' => 'Legger til inndatafelt for redigerings- og opplastingsside for å tillate brukere å knytte kategorier til siden',
 	'categorize-title' => 'Kunnskapskvalifisering',
-	'categorize-footer' => 'Hvis du ønsker å legge til en etikett, vennligst kontakt oss på ...',
+	'categorize-footer' => 'Hvis du ønsker å legge til en etikett, vennligst kontakt en [[Special:ListUsers/sysop|administrator]].',
 	'categorize-advice' => 'Klikk på etikettene som du ønsker å knytte til denne siden:',
 );
 

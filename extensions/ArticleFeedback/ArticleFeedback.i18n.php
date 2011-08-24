@@ -2497,25 +2497,32 @@ $messages['hu'] = array(
 	'articlefeedback' => 'Cikk értékelése',
 	'articlefeedback-desc' => 'Cikk értékelése (kísérleti változat)',
 	'articlefeedback-survey-question-origin' => 'Milyen oldalon voltál, amikor elkezdted ezt a felmérést?',
-	'articlefeedback-survey-question-whyrated' => 'Kérjük, mondd el nekünk, miért értékelted ezt az oldalt (jelöld meg a megfelelőket):',
-	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'Azt akartam, hogy hozzájáruljak az oldal összesített értékeléséhez',
+	'articlefeedback-survey-question-whyrated' => 'Kérjük, mondd el nekünk, miért értékelted ezt az oldalt (jelöld meg ay összes megfelelőt):',
+	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'Befolyásolni akartam, milyen értékelés jelenik meg',
 	'articlefeedback-survey-answer-whyrated-development' => 'Remélem, hogy az értékelésem pozitívan befolyásolja az oldal fejlődését',
-	'articlefeedback-survey-answer-whyrated-contribute-wiki' => 'Azt akartam, hogy hozzájáruljak ehhez: {{SITENAME}}',
-	'articlefeedback-survey-answer-whyrated-sharing-opinion' => 'Szerettem volna megosztani a véleményemet',
-	'articlefeedback-survey-answer-whyrated-didntrate' => 'Ma még nem adtam értékelést, de szerettem volna visszajelzést adni erről a funkcióról',
+	'articlefeedback-survey-answer-whyrated-contribute-wiki' => 'Részt akartam venni a {{SITENAME}} készítésében',
+	'articlefeedback-survey-answer-whyrated-sharing-opinion' => 'Szeretem megosztani másokkal a véleményemet',
+	'articlefeedback-survey-answer-whyrated-didntrate' => 'Nem adtam le értékelést, de szerettem volna visszajelzést küldeni erről a funkcióról',
 	'articlefeedback-survey-answer-whyrated-other' => 'Egyéb',
-	'articlefeedback-survey-question-useful' => 'Hiszel abban, hogy az értékelések hasznosak és világosak?',
+	'articlefeedback-survey-question-useful' => 'Hasznosnak és világosnak érzed az értékeléseket?',
 	'articlefeedback-survey-question-useful-iffalse' => 'Miért?',
 	'articlefeedback-survey-question-comments' => 'Van még további észrevételed?',
 	'articlefeedback-survey-submit' => 'Értékelés küldése',
 	'articlefeedback-survey-title' => 'Kérjük, válaszolj néhány kérdésre',
 	'articlefeedback-survey-thanks' => 'Köszönjük a kérdőív kitöltését!',
-	'articlefeedback-error' => 'Hiba történt. Kérjük, próbálkozzon később.',
+	'articlefeedback-survey-disclaimer' => 'A szolgáltatás fejlesztésének érdekében a visszajelzésedet névtelenül megosztjuk a Wikipédia szerkesztőivel.',
+	'articlefeedback-error' => 'Hiba történt. Kérlek, próbálkozz később.',
 	'articlefeedback-form-switch-label' => 'Oldal értékelése',
 	'articlefeedback-form-panel-title' => 'Oldal értékelése',
 	'articlefeedback-form-panel-explanation' => 'Mi ez?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:Cikkértékelés',
 	'articlefeedback-form-panel-clear' => 'Értékelés eltávolítása',
-	'articlefeedback-form-panel-helpimprove' => 'Szeretnék segíteni a Wikipédia fejlesztésében, küldjetek nekem egy e-mailt (opcionális)',
+	'articlefeedback-form-panel-expertise' => 'Jól ismerem ezt a témát (nem kötelező)',
+	'articlefeedback-form-panel-expertise-studies' => 'Szakirányú felsőoktatási végzettségem van',
+	'articlefeedback-form-panel-expertise-profession' => 'A munkám része',
+	'articlefeedback-form-panel-expertise-hobby' => 'Szenvedélyem a téma',
+	'articlefeedback-form-panel-expertise-other' => 'Más okból vagyok jártas benne',
+	'articlefeedback-form-panel-helpimprove' => 'Szeretnék segíteni a Wikipédia fejlesztésében, küldjetek nekem egy e-mailt (nem kötelező)',
 	'articlefeedback-form-panel-helpimprove-note' => 'Küldeni fogunk neked egy visszaigazoló e-mailt. Nem osztjuk meg senkivel sem a címedet. $1',
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Adatvédelmi irányelvek',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Adatvédelmi irányelvek',
@@ -2530,33 +2537,80 @@ $messages['hu'] = array(
 	'articlefeedback-report-empty' => 'Nincs értékelés',
 	'articlefeedback-report-ratings' => '$1 értékelés',
 	'articlefeedback-field-trustworthy-label' => 'Megbízható',
-	'articlefeedback-field-trustworthy-tooltip-1' => 'Nem rendelkezik megbízható forrással',
-	'articlefeedback-field-trustworthy-tooltip-2' => 'Kevés megbízható forrás',
-	'articlefeedback-field-trustworthy-tooltip-3' => 'Megfelelő megbízható forrás',
+	'articlefeedback-field-trustworthy-tip' => 'Elég részletesen vannak-e megadva a források, és megbízhatóak-e?',
+	'articlefeedback-field-trustworthy-tooltip-1' => 'Hiányoznak a megbízható források',
+	'articlefeedback-field-trustworthy-tooltip-2' => 'Kevés a megbízható forrás',
+	'articlefeedback-field-trustworthy-tooltip-3' => 'Tűrhetően el van látva megbízható forrásokkal',
+	'articlefeedback-field-trustworthy-tooltip-4' => 'Jól el van látva megbízható forrásokkal',
+	'articlefeedback-field-trustworthy-tooltip-5' => 'Kitűnően el van látva megbízható forrásokkal',
 	'articlefeedback-field-complete-label' => 'Teljes',
+	'articlefeedback-field-complete-tip' => 'Elég alaposan tárgyalja-e a fontos témákat?',
 	'articlefeedback-field-complete-tooltip-1' => 'Hiányzik a legtöbb információ',
-	'articlefeedback-field-complete-tooltip-2' => 'Tartalmaz néhány információt',
+	'articlefeedback-field-complete-tooltip-2' => 'Tartalmaz némi információt',
 	'articlefeedback-field-complete-tooltip-3' => 'Tartalmazza a legfontosabb információkat, de hiányosságokkal',
 	'articlefeedback-field-complete-tooltip-4' => 'Tartalmazza a legtöbb fontos információt',
-	'articlefeedback-field-complete-tooltip-5' => 'Átfogó lefedettség',
+	'articlefeedback-field-complete-tooltip-5' => 'Minden fontos informciót tartalmaz',
 	'articlefeedback-field-objective-label' => 'Objektív',
+	'articlefeedback-field-objective-tip' => 'Elfogulatlanul mutatja-e be az összes nézőpontot?',
 	'articlefeedback-field-objective-tooltip-1' => 'Erősen elfogult',
 	'articlefeedback-field-objective-tooltip-2' => 'Mérsékelten elfogult',
-	'articlefeedback-field-objective-tooltip-3' => 'Minimális elfogultság',
+	'articlefeedback-field-objective-tooltip-3' => 'Csak minimálisan elfogult',
 	'articlefeedback-field-objective-tooltip-4' => 'Nincs nyilvánvaló elfogultság',
 	'articlefeedback-field-objective-tooltip-5' => 'Teljesen elfogulatlan',
 	'articlefeedback-field-wellwritten-label' => 'Jól megírt',
+	'articlefeedback-field-wellwritten-tip' => 'Áttekinthető és jól érthető-e az oldal?',
 	'articlefeedback-field-wellwritten-tooltip-1' => 'Érthetetlen',
-	'articlefeedback-field-wellwritten-tooltip-2' => 'Nehéz megérteni',
+	'articlefeedback-field-wellwritten-tooltip-2' => 'Nehezen érthető',
+	'articlefeedback-field-wellwritten-tooltip-3' => 'Valamennyire érthető',
+	'articlefeedback-field-wellwritten-tooltip-4' => 'Jól érthető',
+	'articlefeedback-field-wellwritten-tooltip-5' => 'Nagyon jól érthető',
 	'articlefeedback-pitch-reject' => 'Talán később',
 	'articlefeedback-pitch-or' => 'vagy',
+	'articlefeedback-pitch-thanks' => 'Köszönjük! Az értékelést elmentettük.',
+	'articlefeedback-pitch-survey-message' => 'Kérlek szánj egy kis időt egy rövid felmérés kitöltésére.',
+	'articlefeedback-pitch-survey-accept' => 'Felmérés megkezdése',
+	'articlefeedback-pitch-join-message' => 'Szerettél volna regisztrálni?',
+	'articlefeedback-pitch-join-body' => 'Ha regisztrálsz, könnyen nyomon tudod követni a szerkesztéseidet, jobban be tudsz kapcsolódni a megbeszélésekbe, és a közösség tagjává válhatsz.',
 	'articlefeedback-pitch-join-accept' => 'Fiók létrehozása',
 	'articlefeedback-pitch-join-login' => 'Bejelentkezés',
 	'articlefeedback-pitch-edit-message' => 'Tudtad, hogy szerkesztheted ezt az oldalt?',
 	'articlefeedback-pitch-edit-accept' => 'Oldal szerkesztése',
 	'articlefeedback-survey-message-success' => 'Köszönjük a kérdőív kitöltését!',
+	'articlefeedback-survey-message-error' => 'Hiba történt. Kérlek, próbáld meg később.',
+	'articleFeedback-table-caption-dailyhighsandlows' => 'A napi legjobbak és legrosszabbak',
+	'articleFeedback-table-caption-dailyhighs' => 'Legtöbbre értékelt oldalak: $1',
+	'articleFeedback-table-caption-dailylows' => 'Legkevesebbre értékelt oldalak: $1',
+	'articleFeedback-table-caption-weeklymostchanged' => 'A héten legtöbbet változott',
+	'articleFeedback-table-caption-recentlows' => 'Közelmúltbeli mélypontok',
 	'articleFeedback-table-heading-page' => 'Oldal',
 	'articleFeedback-table-heading-average' => 'Átlag',
+	'articleFeedback-copy-above-highlow-tables' => 'Ey egy kísérleti funkció, a [$1 vitalapján] tudoad véleményezni.',
+	'articlefeedback-dashboard-bottom' => "'''Megjegyzés''': Folyamatosan kísérletezni fogunk a cikkek listázásának különböző módjaival. Jelenleg a listák a következő cikkeket tartalmazzák:
+* a legmagasabbra ill. legalacsonyabbra értékelt oldalakat. Az átlagba csak az elmúlt 24 órában leadott értékelések számítanak bele, és legalább tíz ilyennek kell lennie.
+* Közelmúltbeli mélypontok: olyan szócikkek, amelyek valamelyik kérdésre legalább 70%-ban kaptak 1 vagy 2 csillagot az elmúlt 24 órában. Csak a legalább 10 értékelést kapott szócikkek szerepelnek.",
+	'articlefeedback-disable-preference' => 'Ne mutassa többet a cikkértékelő dobozt',
+	'articlefeedback-emailcapture-response-body' => 'Szia!
+
+Köszönjük, hogy érdeklődtél a {{SITENAME}} fejlesztése iránt.
+
+Kérlek, erősítsd meg az e-mail címedet az alábbi linkre kattintva:
+
+$1
+
+Ha ez valamiért nem működne, látogasd meg ezt az oldalt:
+
+$2
+
+és ott írd be az ellenőrző kódot:
+
+$3
+
+Rövidesen jelezzük, hogyan tudsz segíteni a {{SITENAME}} fejlesztésében.
+
+Ha nem te kérted ezt a levelet, hagyd figyelmen kívül, és nem fogunk több levelet küldeni.
+
+A legjobbakat kívánva
+A {{SITENAME}} csapata',
 );
 
 /** Interlingua (Interlingua)

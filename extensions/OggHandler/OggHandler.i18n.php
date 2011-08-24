@@ -2755,6 +2755,13 @@ $messages['pms'] = array(
 	'ogg-oggThumb-failed' => "oggThumb a l'ha falì a creé la figurin-a.",
 );
 
+/** Western Punjabi (پنجابی)
+ * @author Khalid Mahmood
+ */
+$messages['pnb'] = array(
+	'ogg-play' => 'چلاؤ',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

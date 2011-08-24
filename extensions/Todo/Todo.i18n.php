@@ -1959,6 +1959,7 @@ $4',
 
 /** Swedish (Svenska)
  * @author Lejonel
+ * @author Lokal Profil
  * @author M.M.S.
  * @author Najami
  */
@@ -1988,6 +1989,7 @@ $4',
 	'todo-list-change' => 'Ändra',
 	'todo-list-cancel' => 'Avbryt',
 	'todo-new-item' => 'Ny uppgift',
+	'todo-not-updated' => 'Kunde inte uppdatera databaspost',
 	'todo-issue-summary' => 'Sammandrag:',
 	'todo-form-details' => 'Detaljer:',
 	'todo-form-email' => 'Skriv in din e-postadress här för att motta meddelanden på e-post när uppgiften är slutförd:',

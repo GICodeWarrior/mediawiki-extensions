@@ -58,3 +58,10 @@ $messages['nl'] = array(
 	'automaticboardwelcome-desc' => 'Plaatst een [[MediaWiki:User-board-welcome-message|welkomstbericht]] op het gebruikersbord van nieuwe gebruikers',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Event
+ */
+$messages['no'] = array(
+	'automaticboardwelcome-desc' => 'Sender automatisk [[MediaWiki:User-board-welcome-message|en velkomstmelding] til nye brukeres brukertavler et opprettelse av konto',
+);
+
