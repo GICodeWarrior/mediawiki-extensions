@@ -22,16 +22,12 @@ $wgAutoloadClasses['LuaHooks'] = $dir . 'Lua.hooks.php';
 $wgAutoloadClasses['LuaError'] = $dir . 'Lua.wrapper.php';
 $wgAutoloadClasses['LuaWrapper'] = $dir . 'Lua.wrapper.php';
 
-if (!isset($wgLuaExternalInterpreter))
-	$wgLuaExternalInterpreter = FALSE;
-if (!isset($wgLuaExternalCompiler))
-	$wgLuaExternalCompiler = FALSE;
-if (!isset($wgLuaMaxLines))
-	$wgLuaMaxLines = 1000000;
-if (!isset($wgLuaMaxCalls))
-	$wgLuaMaxCalls = 2000;
-if (!isset($wgLuaMaxTime))
-	$wgLuaMaxTime = 5;
+$wgLuaExternalInterpreter = FALSE;
+$wgLuaExternalCompiler = FALSE;
+$wgLuaExtension = 'lua';
+$wgLuaMaxLines = 1000000;
+$wgLuaMaxCalls = 2000;
+$wgLuaMaxTime = 5;
 
 
 $wgHooks['ParserFirstCallInit'][] = 'LuaHooks::parserInit';
