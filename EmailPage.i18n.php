@@ -762,6 +762,7 @@ $messages['lb'] = array(
 	'ea-show' => 'Adressate weisen',
 	'ea-from' => 'Vum:',
 	'ea-to' => 'Fir:',
+	'ea-to-info' => 'Mailadresse kënne engem oder méi Komma, Stréchpunkt, Stären oder Zeeche fir eng nei Linn ("\\n") getrennt ginn',
 	'ea-cc' => 'Kopie:',
 	'ea-send' => 'Schécken!',
 	'ea-subject' => 'Sujet:',
