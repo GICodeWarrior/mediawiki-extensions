@@ -4,7 +4,7 @@
 // @require	   https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js
 // @require        http://svn.wikimedia.org/svnroot/mediawiki/trunk/tools/viaf/jquery.cookie.js
 // @require        http://svn.wikimedia.org/svnroot/mediawiki/trunk/tools/viaf/jquery.ba-replacetext.js
-// @description    locate VIAF numbers in texts and urls on web pages. (c) T.Gries Version 0.201 201108240720
+// @description    locate VIAF numbers in texts and urls on web pages. (c) T.Gries Version 0.203 201108242100
 // @include        *
 // ==/UserScript==
 
@@ -28,7 +28,7 @@
  * 20110824     added google link
  *              imported as a new project to svn.wikimedia.org;
  *              updated the require paths to pull required javascripts from there
- *
+ *              detection of VIAF, VIAF2 .. VIAF9
  ***/
 
 // wrapper see http://www.mediawiki.org/wiki/JQuery
@@ -42,7 +42,7 @@ var markUrlDetectedItemsCSS = { "borderBottom" : "1px orangered dotted" };
 var maxVIAFNumbers = 30;
 
 // Script update checker source: http://a32.me/2009/11/greasemonkey/
-var VERSION = "0.201";
+var VERSION = "0.203";
 var SCRIPT_NAME = "viaf"
 var SCRIPT_URL = "http://$$$yourhost$$$/"+SCRIPT_NAME+".user.js"
 
@@ -105,8 +105,7 @@ function doAnyOtherBusiness( viaf ) {
 // but don't look in an active textareas like mediawiki input textarea
 
 $("body *:not(textarea)")
-	.replaceText( /(viaf)(:|\/|%3A|%2F|\s|ID:|=|%3D)*([0-9]+)/gi, "$1$2<span class='viaf' viaf='$3'>$3</span" );
-
+	.replaceText( /(viaf[1-9]?)(:|\/|%3A|%2F|\s|ID:|=|%3D)+([0-9]+)/gi, "<span class='viaf viaf-in-text' viaf='$3'>$1$2$3</span>" );
 
 // PASS 2
 // try to retrieve viaf numbers in urls
@@ -121,7 +120,7 @@ $("a").each(function(){
 	if ( typeof url != "undefined" && url.match( magicUrlRegExp ) ) {
 	        if ( markUrlDetectedItems ) $this.css( markUrlDetectedItemsCSS );
 	        var viaf = RegExp.$1.replace( /[\D]*/g, '' );
-		$this.after( $("<span class='viaf' viaf='"+viaf+"'>&nbsp;"+viaf+"</span>") );
+		$this.after( $("<span class='viaf viaf-in-url' viaf='"+viaf+"'>&nbsp;"+viaf+"</span>") );
 	}
 
 })
@@ -142,7 +141,7 @@ $(".viaf").each(function(){
 	newLink.unshift( $( "<span> <a href='http://yi.librarything.com/commonknowledge/search.php?f=13&exact=1&q=VIAF%3A"+viaf+"' class='addedlink viaf' viaf='"+viaf+"'>yi</a></span>" ) );
 	newLink.unshift( $( "<span> <a href='http://toolserver.org/%7Eapper/pd/person/viaf/"+viaf+"' class='addedlink viaf' viaf='"+viaf+"'>TS</a></span>" ) );
 	newLink.unshift( $( "<span> <a href='http://www.google.com/search?num=100&q=viaf+"+viaf+"' class='addedlink viaf' viaf='"+viaf+"'>G</a></span>" ) );
-        // newLink.unshift( $( "<label class='show-summary'><input type='checkbox' class='show-summary-checkbox' checked='checked'><span id='show-summary-text'></span></label>" ) );
+	// newLink.unshift( $( "<label class='show-summary'><input type='checkbox' class='show-summary-checkbox' checked='checked'><span id='show-summary-text'></span></label>" ) );
 
 	// add a space as the last character after the last added links
         newLink.unshift( $("<span> </span>") );
@@ -166,6 +165,9 @@ $( ".show-summary-checkbox" )
 
 // style all detected numbers
 $( ".viaf" ).css( { "background":"cyan", "color":"black" } );
+
+// style all detected numbers in urls
+$( ".viaf-in-url" ).css( "border-bottom", "1px dotted black" );
 
 // style all added links
 $( ".addedlink" ).css( { "background":"yellow" , "color":"black" } );
