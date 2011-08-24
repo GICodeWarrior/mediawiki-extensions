@@ -717,6 +717,19 @@ $messages['nl'] = array(
 	'tog-collabwatchlisthidelistusers' => 'Bewerkingen van gebruikers van de gezamenlijke volglijst verbergen',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Event
+ */
+$messages['no'] = array(
+	'collabwatchlisttagselect' => 'Tagg',
+	'collabwatchlisttagcomment' => 'Kommentar',
+	'collabwatchlistsettagbutton' => 'Angi tagg',
+	'collabwatchlisttools-view' => 'Visning',
+	'collabwatchlisttools-edit' => 'Rediger kategorier',
+	'collabwatchlisttools-rawCategories' => 'Rå redigeringskategorier',
+	'collabwatchlisttools-rawTags' => 'Rå redigeringstagger',
+);
+
 /** Polish (Polski)
  * @author Woytecr
  */
