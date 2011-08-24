@@ -874,6 +874,17 @@ $messages['he'] = array(
 	'cb_edit_paste_right_hint' => 'להדביק את האופרטור למיקום הבא, אם אפשר',
 );
 
+/** Hindi (हिन्दी)
+ * @author Siddhartha Ghai
+ */
+$messages['hi'] = array(
+	'cb_cat_name_filter' => 'श्रेणी को नाम से खोजें:',
+	'cb_previous_items_link' => 'पिछला',
+	'cb_next_items_link' => 'अगला',
+	'cb_cat_subcats' => 'उपश्रेणियाँ',
+	'cb_cat_pages' => 'पन्ने',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
