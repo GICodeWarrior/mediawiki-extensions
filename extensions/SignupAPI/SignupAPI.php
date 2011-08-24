@@ -63,7 +63,6 @@ $wgResourceModules['ext.SignupAPI'] = array(
 if ( $wgSignupAPIUseAjax ) {
     $wgHooks['SignupForm'][] = 'onSignupAPIUseAjax';
     function onSignupAPIUseAjax() {
-        echo "Entered onSignupAPIUseAJax";
         global $wgOut;
         $wgOut->addModules( 'ext.SignupAPI' );
         return true;
