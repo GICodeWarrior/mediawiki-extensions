@@ -2,9 +2,9 @@
 // @name           viaf
 // @namespace      viaf
 // @require	   https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js
-// @require        http://svn.wikimedia.org/viewvc/mediawiki/trunk/tools/viaf/jquery.cookie.js?view=co
-// @require        http://svn.wikimedia.org/viewvc/mediawiki/trunk/tools/viaf/jquery.ba-replacetext.js?view=co
-// @description    locate VIAF numbers in texts and urls on web pages. (c) T.Gries Version 0.200 201108240125
+// @require        http://svn.wikimedia.org/svnroot/mediawiki/trunk/tools/viaf/jquery.cookie.js
+// @require        http://svn.wikimedia.org/svnroot/mediawiki/trunk/tools/viaf/jquery.ba-replacetext.js
+// @description    locate VIAF numbers in texts and urls on web pages. (c) T.Gries Version 0.201 201108240720
 // @include        *
 // ==/UserScript==
 
@@ -26,6 +26,8 @@
  * 		"update" for every page by mistake.
  * 20110823     changed viaf.org link composition
  * 20110824     added google link
+ *              imported as a new project to svn.wikimedia.org;
+ *              updated the require paths to pull required javascripts from there
  *
  ***/
 
@@ -40,7 +42,7 @@ var markUrlDetectedItemsCSS = { "borderBottom" : "1px orangered dotted" };
 var maxVIAFNumbers = 30;
 
 // Script update checker source: http://a32.me/2009/11/greasemonkey/
-var VERSION = "0.200";
+var VERSION = "0.201";
 var SCRIPT_NAME = "viaf"
 var SCRIPT_URL = "http://$$$yourhost$$$/"+SCRIPT_NAME+".user.js"
 
