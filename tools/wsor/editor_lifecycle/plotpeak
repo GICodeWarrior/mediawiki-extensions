@@ -19,12 +19,15 @@ parser = ArgumentParser(description=__doc__)
 parser.add_argument('data_paths', metavar='data', nargs='+')
 parser.add_argument('-o', '--output', dest='output_path', metavar='FILE')
 parser.add_argument('-T', '--title')
+parser.add_argument('-s', '--splitted', action='store_true')
+parser.add_argument('-y', '--stretch-ylim', action='store_true', help='works'
+        ' only in twin-axes mode')
 
 date_parser = DateParser()
 default_date = datetime(2001,1,1)
 
 markers = 'ov^<>sp*+xD'
-colors = 'bgrcmykw'
+colors = 'brcmgykw'
 conv = defaultdict(lambda k : float)
 conv[0] = lambda k : date_parser.parse(k, default=default_date)
 
@@ -32,9 +35,14 @@ if __name__ == '__main__':
     ns = parser.parse_args()
 
     # create figure
-    fig = pp.figure(figsize=(10,4))
-    ax1 = fig.add_axes(pp.axes([.1,.15,.65,.75], axisbg='ghostwhite'))
-    ax2 = ax1.twinx()
+    fig = pp.figure(figsize=(12,4))
+
+    if ns.splitted:
+        ax1 = fig.add_subplot(121)
+        ax2 = fig.add_subplot(122)
+    else:
+        ax1 = fig.add_axes(pp.axes([.1,.15,.65,.75], axisbg='ghostwhite'))
+        ax2 = ax1.twinx()
 
     M = len(markers)
     C = len(colors)
@@ -62,30 +70,56 @@ if __name__ == '__main__':
 
         label = os.path.splitext(path)[0].replace('_',' ')
 
-#        color = colors[i % C]
+        if ns.splitted:
+            color = colors[i % C]
+        else:
+            color = 'red'
+
         marker = markers[i % M]
         l, (wu, wd), mc = ax1.errorbar(date, peak_date, peak_date_err / 2.0, 
-                marker=marker, mec='red', label=label, ecolor='lightgrey', 
+                marker=marker, mec=color, label=label, ecolor='lightgrey', 
                 ls='none', lw=2, mfc='none')
         lines.append(l)
+
+        if ns.splitted:
+            color = colors[i % C]
+        else:
+            color = 'blue'
 
         l, (wu, wd), mc = ax2.errorbar(date, peak, peak_err / 2.0, 
-                marker=marker, mec='blue', label=label, ecolor='lightgrey', 
-                ls='none', lw=2, mfc='none')
+                marker=marker, mec=color, label=label, ecolor='lightgrey', 
+                ls='none', lw=2, mfc='none', color=color)
 
         lines.append(l)
+
+        if not ns.splitted and ns.stretch_ylim:
+            ym1, yM1 = ax1.get_ylim()
+            d1 = (yM1 - ym1) * .3
+            ax1.set_ylim(ym1, yM1 + d1)
+
+            ym2, yM2 = ax2.get_ylim()
+            d2 = (yM2 - ym2) * .3
+            ax2.set_ylim(ym2 - d2, yM2)
 
     # decorate figure
     ax1.set_xlabel('cohorts')
-    ax1.set_ylabel('peak day', color='red')
-    ax2.set_ylabel('peak edits/day', color='blue')
+    
+    if ns.splitted:
+        ax1.set_ylabel('peak day')
+        ax2.set_ylabel('peak value (edits/day)')
+    else:
+        ax1.set_ylabel('peak day', color='red')
+        ax2.set_ylabel('peak value (edits/day)', color='blue')
     pp.figlegend(lines, [ l.get_label() for l in lines ], 
-            loc='center right', prop=FontProperties(size='small'))
-    pp.minorticks_on()
-    pp.grid("on")
-    pp.axis('tight')
+            loc='upper right', prop=FontProperties(size='small'))
 
-    pp.draw()
+    ax1.minorticks_on()
+    ax1.grid("on")
+
+    if ns.splitted:
+        ax2.minorticks_on()
+        ax2.grid("on")
+
     if ns.title is not None:
         pp.title(ns.title)
     pp.draw()

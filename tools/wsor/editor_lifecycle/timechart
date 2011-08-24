@@ -71,7 +71,8 @@ if __name__ == '__main__':
         lines.append(l)
 
         # compute maximum
-        xp, xperr, s, ests = find_peak(days, rate, rate_err)
+        (xp, yp), (xperr, yperr), s, ests = find_peak(days, rate, rate_err,
+                reps=0)
         ax.axvline(xp, color=color)
 
         # plot spline

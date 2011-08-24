@@ -56,7 +56,7 @@ def main(ns):
     
     # create figure and axis
     fig = pp.figure(figsize=(10,4))
-    ax = fig.add_axes(pp.axes([.1,.1,.65,.8], axisbg='ghostwhite'))
+    ax = fig.add_axes(pp.axes([.1,.15,.65,.75], axisbg='ghostwhite'))
     M = len(markers)
     C = len(colors)
 
@@ -87,6 +87,8 @@ def main(ns):
     pp.xlabel('')
     pp.figlegend(ax.lines, [ l.get_label() for l in ax.lines ], 
             loc='center right', prop=FontProperties(size='small'))
+    for label in ax.xaxis.get_ticklabels():
+        label.set_rotation(-20)
     pp.minorticks_on()
     pp.grid("on")
     if ns.title is not None:
