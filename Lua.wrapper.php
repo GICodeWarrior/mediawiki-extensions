@@ -31,13 +31,14 @@ class LuaError extends Exception {
  */
 class LuaWrapper {
 	private $defunct, $lua, $proc, $pipes;
+	private $sandbox, $out;
 
 	/**
 	 * Creates a new LuaWrapper.
 	 */
 	public function __construct() {
 		global $wgLuaMaxLines, $wgLuaMaxCalls,
-		       $wgLuaExternalInterpreter, $wgLuaExternalCompiler;
+		       $wgLuaExternalInterpreter, $wgLuaExternalCompiler, $wgLuaExtension;
 
 		# Optionally byte-compile the wrapper library
 		$wrapperLib = dirname(__FILE__) . '/LuaWrapper.lua';
@@ -56,27 +57,7 @@ class LuaWrapper {
 		}
 
 		# Are we using the Lua PHP extension or an external binary?
-		if (!$wgLuaExternalInterpreter) {
-			# We're using the extension - verify it exists
-			if (!class_exists('lua')) {
-				$this->defunct = TRUE;
-				throw new LuaError('extension_notfound');
-			}
-
-			# Create a lua instance and load the wrapper library
-			$this->lua = new lua;
-			try {
-				$this->lua->evaluatefile($wrapperLib);
-				$this->lua->evaluate("wrap = make_wrapper($wgLuaMaxLines, $wgLuaMaxCalls)");
-			} catch (Exception $e) {
-				$this->destroy();
-				throw new LuaError('error_internal');
-			}
-
-			# Ready to go.
-			$this->defunct = FALSE;
-			return TRUE;
-		} else {
+		if ($wgLuaExternalInterpreter) {
 			# We're using an external binary; run the wrapper
 			# library as a shell-script, and it'll start an REPL
 			$luacmd = "$wgLuaExternalInterpreter $wrapperLib $wgLuaMaxLines $wgLuaMaxCalls";
@@ -97,6 +78,37 @@ class LuaWrapper {
 			# Ready to go.
 			$this->defunct = FALSE;
 			return TRUE;
+		} elseif ( $wgLuaExtension === 'lua' ) {
+			# We're using the extension - verify it exists
+			if (!class_exists('lua')) {
+				$this->defunct = TRUE;
+				throw new LuaError('extension_notfound');
+			}
+
+			# Create a lua instance and load the wrapper library
+			$this->lua = new lua;
+			try {
+				$this->lua->evaluatefile($wrapperLib);
+				$this->lua->evaluate("wrap = make_wrapper($wgLuaMaxLines, $wgLuaMaxCalls)");
+			} catch (Exception $e) {
+				$this->destroy();
+				throw new LuaError('error_internal');
+			}
+
+			# Ready to go.
+			$this->defunct = FALSE;
+			return TRUE;
+		} elseif ( $wgLuaExtension === 'luasandbox' ) {
+			if (!class_exists('luasandbox')) {
+				$this->defunct = TRUE;
+				throw new LuaError( 'extension_notfound' );
+			}
+
+			$this->sandbox = new LuaSandbox;
+			$this->sandbox->registerLibrary( 'mw', array( 'print' => array( $this, 'luaPrint' ) ) );
+			$this->sandbox->loadString( 'print = mw.print; io = {write = mw.print}' )->call();
+		} else {
+			throw new MWException( 'Invalid value for $wgLuaExtension' );
 		}
 	}
 
@@ -133,6 +145,16 @@ class LuaWrapper {
 			$res = $this->lua->wrap($input);
 			$out = $res[0];
 			$err = $res[1];
+		} elseif ( isset( $this->sandbox ) ) {
+			$err = '';
+			$out = '';
+			try {
+				$this->out = '';
+				$this->sandbox->loadString( $input )->call();
+				$out = $this->out;
+			} catch ( LuaSandboxError $e ) {
+				$err = $e->getMessage();
+			}
 		} else {
 			# We're using an external binary; send the chunk
 			# through the pipe
@@ -198,7 +220,9 @@ class LuaWrapper {
 			return FALSE;
 
 		# Destroy the lua instance and/or external process and pipes
-		if (isset($this->lua)) {
+		if ( isset( $this->sandbox ) ) {
+			$this->sandbox = null;
+		} elseif (isset($this->lua)) {
 			$this->lua = null;
 		} else {
 			if (isset($this->proc)) {
@@ -212,4 +236,19 @@ class LuaWrapper {
 		$this->defunct = TRUE;
 		return TRUE;
 	}
+
+	public function luaPrint() {
+		$args = func_get_args();
+		foreach ( $args as $i => $arg ) {
+			if ( $i >= 1 ) {
+				$this->out .= "\t";
+			}
+			if ( $arg instanceof LuaSandboxPlaceholder ) {
+				$this->out .= "[placeholder]";
+			} else {
+				$this->out .= $arg;
+			}
+		}
+	}
+
 }

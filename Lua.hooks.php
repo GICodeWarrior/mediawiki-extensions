@@ -32,30 +32,30 @@ class LuaHooks {
 	}
 
 	/** Parser hook for the <lua> tag */
-	public static function renderTag($input, $args, &$parser) {
-		global $wgLua;
-		# Create a new LuaWrapper if needed
-		if (!isset($wgLua))
-			$wgLua = new LuaWrapper;
-
-		# Process the tag's arguments into a chunk of Lua code
-		# that initializes them in the Lua sandbox
-		$arglist = '';
-		foreach ($args as $key => $value)
-			$arglist .= (preg_replace('/\W/', '', $key) . '=\'' .
-				     addslashes($parser->recursiveTagParse($value)) .
-				     '\';');
-		if ($arglist) {
-			try {
-				$wgLua->wrap($arglist);
-			} catch (LuaError $e) {
-				return $e->getMessage();
-			}
-		}
-
-		# Execute this Lua chunk, and send the results through the 
-		# Parser.
+	public static function renderTag($input, $args, $parser) {
 		try {
+			global $wgLua;
+			# Create a new LuaWrapper if needed
+			if (!isset($wgLua))
+				$wgLua = new LuaWrapper;
+
+			# Process the tag's arguments into a chunk of Lua code
+			# that initializes them in the Lua sandbox
+			$arglist = '';
+			foreach ($args as $key => $value)
+				$arglist .= (preg_replace('/\W/', '', $key) . '=\'' .
+						 addslashes($parser->recursiveTagParse($value)) .
+						 '\';');
+			if ($arglist) {
+				try {
+					$wgLua->wrap($arglist);
+				} catch (LuaError $e) {
+					return $e->getMessage();
+				}
+			}
+
+			# Execute this Lua chunk, and send the results through the 
+			# Parser.
 			return $parser->recursiveTagParse($wgLua->wrap($input));
 		} catch (LuaError $e) {
 			return $e->getMessage();
