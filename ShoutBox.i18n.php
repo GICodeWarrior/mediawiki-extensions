@@ -23,6 +23,16 @@ $messages['en'] = array(
 	'shoutbox-url-with-css' => 'http://$1.shoutbox.us/?LANG=US&extcss=$2',
 );
 
+/** Message documentation (Message documentation)
+ * @author Raymond
+ */
+$messages['qqq'] = array(
+	'shoutbox-url' => '{{Optional}}
+The language code "US" may be changed to your language code.',
+	'shoutbox-url-with-css' => '{{Optional}}
+The language code "US" may be changed to your language code.',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -47,5 +57,18 @@ $messages['mk'] = array(
 	'shoutbox-bad-id' => 'Зададовте лоша назнака (ID) „<tt>$1</tt>“',
 	'shoutbox-illegal-width' => 'Зададовте недопуштен параметар за ширина „$1“.',
 	'shoutbox-illegal-height' => 'Зададовте недопуштен параметар за висина „$1“.',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'shoutbox-desc' => 'Voegt een parserfunctie toe om uw eigen zeepkist (shout box) te kunnen toevoegen',
+	'shoutbox-missing-params' => 'ShoutBox mist een verplichte parameter.',
+	'shoutbox-bad-params' => 'ShoutBox heeft een onjuiste parameter ontvangen.',
+	'shoutbox-unparsable-param-string' => 'ShoutBox heeft niet te verwerken parametertekst ontvangen: "<tt>$1</tt>".',
+	'shoutbox-bad-id' => 'ShoutBox heeft een onjuist ID "<tt>$1</tt>" ontvangen.',
+	'shoutbox-illegal-width' => 'ShoutBox heeft een ongeldige breedteparameter "$1" ontvangen.',
+	'shoutbox-illegal-height' => 'ShoutBox heeft een ongeldige hoogteparameter "$1" ontvangen.',
 );
 
