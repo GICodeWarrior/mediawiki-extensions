@@ -2,8 +2,8 @@
 
 class DumpActiveEditors100Metric extends DumpActiveEditors5Metric {
 
-	public function __construct( ApiBase $query, $moduleName, $paramPrefix = '' ) {
-		parent::__construct( $query->getMain(), $moduleName, $paramPrefix );
+	public function __construct( ApiBase $query, $moduleName ) {
+		parent::__construct( $query->getMain(), $moduleName );
 		$this->numberOfActiveEditors = 100;
 	}
 

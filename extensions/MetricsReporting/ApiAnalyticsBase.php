@@ -9,8 +9,8 @@ abstract class ApiAnalyticsBase extends ApiBase {
 
 	protected $isCurrentlyNormalised = false;
 
-	public function __construct( ApiBase $query, $moduleName, $paramPrefix = '' ) {
-		parent::__construct( $query->getMain(), $moduleName, $paramPrefix );
+	public function __construct( ApiBase $query, $moduleName ) {
+		parent::__construct( $query->getMain(), $moduleName );
 	}
 
 	/**
