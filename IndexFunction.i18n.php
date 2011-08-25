@@ -517,7 +517,8 @@ $messages['frp'] = array(
 $messages['gl'] = array(
 	'indexfunc-desc' => 'Funcións analíticas para crear redireccións automáticas e páxinas de homónimos',
 	'indexfunc-badtitle' => 'Título inválido: "$1"',
-	'indexfunc-editwarning' => 'Aviso: este título é un título de índice para {{PLURAL:$2|a seguinte páxina|as seguintes páxinas}}:
+	'indexfunc-editwarning' => 'Aviso:
+Este título é un título de índice para {{PLURAL:$2|a seguinte páxina|as seguintes páxinas}}:
 $1
 Asegúrese de que a páxina que está a piques de crear aínda non foi creada cun título diferente.
 Se crea esta páxina, elimine este título de <nowiki>{{#index:}}</nowiki> {{PLURAL:$2|na páxina de enriba|nas páxinas de enriba}}.',
