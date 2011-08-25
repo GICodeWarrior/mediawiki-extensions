@@ -232,7 +232,7 @@ class MeanEditorEditPage extends EditPage {
 		}
 
 		# MeanEditor: also set the value of our checkbox
-		$checkboxes = $this->getCheckboxes( $tabindex, $wgUser->getSkin(),
+		$checkboxes = $this->getCheckboxes( $tabindex, //$wgUser->getSkin(),
 			array( 'minor' => $this->minoredit, 'watch' => $this->watchthis,
 			 'want_traditional_editor' => $this->userWantsTraditionalEditor) );
 			
