@@ -84,23 +84,31 @@ class FetchGoogleSpreadsheet extends MetricsMaintenance {
 		$this->output( "\n" );
 
 		foreach( $worksheets as $sheet ) {
-			//var_dump( $sheet );
 			$http = $this->buildAuthedRequest( $sheet, $authToken, $cookies );
 			$http->execute();
 			$content = $http->getContent();
-			//var_dump( $this->formatXmlString( $content ) );
-			//$this->output( "\n" );
 
-			$reader = new XMLReader();
-			$reader->XML( $content );
+			$this->output( 'Worksheet: ' . $sheet . "\n" );
+			$xml = new SimpleXMLElement( $content );
 
-			$this->output( 'Worksheet: ' . $src . "\n" );
+			$this->output( 'Spreadsheet tab title: ' . $xml->title . "\n" );
+			$this->output( "\n" );
 
-			while ( $reader->read() && $reader->name !== 'title' );
-			if ( $reader->name == 'title' ) {
-				$this->output( 'Title: ' . $reader->readString() . "\n" );
+			$sheetData = array();
+			// foreach "tab"
+			foreach( $xml->entry as $entry ) {
+				$namespaces = $entry->getNameSpaces( true );
+				$gsx = $entry->children( $namespaces['gsx'] );
+				foreach( get_object_vars( $gsx ) as $key => $value ) {
+					if ( !isset( $sheetData[$key] ) ) {
+						$sheetData[$key] = array();
+					}
+					$sheetData[$key][] = $value;
+					//$this->output( "{$key}: {$value}\n" );
+				}
 			}
-			$reader->close();
+			$this->output( "\n" );
+			var_dump( $sheetData );
 			$this->output( "\n" );
 		}
 
