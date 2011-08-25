@@ -11,11 +11,11 @@ class EditorsByGeographyMetric extends GenericMetricBase {
 		parent::__construct( 'editorsbygeography' );
 	}
 
-	public function getDescription(){
+	public function getDescription() {
 		return "Number of active unique registered editors by country";
 	}
 
-	protected function getExamples(){
+	protected function getExamples() {
 		return "";
 	}
 }
