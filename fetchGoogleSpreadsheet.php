@@ -73,20 +73,34 @@ class FetchGoogleSpreadsheet extends MetricsMaintenance {
 			// $src = (string)$node->link["href"];
 			// $src = $node->link->attributes()->href;
 
-			$this->output( 'Worksheet found: ' . $src . "\n" );
+			//$this->output( 'Worksheet found: ' . $src . "\n" );
 			$worksheets[] = $src;
 
 			// go to next <entry />
 			$reader->next( 'entry' );
 		}
 
+		$reader->close();
 		$this->output( "\n" );
 
 		foreach( $worksheets as $sheet ) {
+			//var_dump( $sheet );
 			$http = $this->buildAuthedRequest( $sheet, $authToken, $cookies );
 			$http->execute();
 			$content = $http->getContent();
-			var_dump( $this->formatXmlString( $content ) );
+			//var_dump( $this->formatXmlString( $content ) );
+			//$this->output( "\n" );
+
+			$reader = new XMLReader();
+			$reader->XML( $content );
+
+			$this->output( 'Worksheet: ' . $src . "\n" );
+
+			while ( $reader->read() && $reader->name !== 'title' );
+			if ( $reader->name == 'title' ) {
+				$this->output( 'Title: ' . $reader->readString() . "\n" );
+			}
+			$reader->close();
 			$this->output( "\n" );
 		}
 
