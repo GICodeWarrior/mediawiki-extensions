@@ -44,6 +44,15 @@ $messages['de'] = array(
 	'userdebuginfo-language' => 'Sprache',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'userdebuginfo-key' => 'Cllâf',
+	'userdebuginfo-value' => 'Valor',
+	'userdebuginfo-language' => 'Lengoua',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
