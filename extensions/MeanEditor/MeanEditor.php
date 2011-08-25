@@ -38,7 +38,6 @@ function substitute_hashed_img_urls($text)
 function deny_visual_because_of($reason, &$edit_context)
 {
 	global $wgOut;
-	wfLoadExtensionMessages('MeanEditor');
 	$wgOut->addHTML('<p class="visual_editing_denied errorbox">' . wfMsg('no_visual') . '<em class="visual_editing_denied_reason">'.$reason.'</em></p>');
 	# FIXME: Doesn't work. Why?
 	#$edit_context->editFormTextBeforeContent .= '<p class="visual_editing_denied errorbox">The visual editor can\'t be used for this page. Most likely, it contains advanced or unsopported features. If you can, try editing smaller paragraphs.<br /><br />Reason: <em class="visual_editing_denied_reason">'.$reason.'</em></p>';
@@ -50,7 +49,6 @@ function deny_visual_because_of($reason, &$edit_context)
 function meaneditor_wiki2html($article, $user, &$edit_context, &$wiki_text)
 {
 	global $wgUploadPath, $wgArticlePath;
-	wfLoadExtensionMessages('MeanEditor');
 	$meaneditor_page_src = str_replace('$1', '', $wgArticlePath);
 	
 	# Detect code sections (lines beginning with whitespace)
@@ -102,9 +100,9 @@ function meaneditor_wiki2html($article, $user, &$edit_context, &$wiki_text)
 	#$wiki_text=preg_replace('/\'\'\'(.*?)\'\'\'/','<strong>$1</strong>',$wiki_text);
 	#$wiki_text=preg_replace('/\'\'(.*?)\'\'/','<em>$1</em>',$wiki_text);
 	$obp = new Parser;
-	$obp->clearState();
 	$obp->setTitle('');
 	$obp->mOptions = new ParserOptions;
+	$obp->clearState();
 	$wiki_text = $obp->doAllQuotes($wiki_text);
 
 	#Substitute ===
@@ -262,8 +260,6 @@ function meaneditor_html2wiki($article, $user, &$edit_context, &$html_text)
 function meaneditor_showBox(&$edit_context, $html_text, $rows, $cols, $ew)
 {
 	global $wgOut, $wgArticlePath, $wgStylePath, $wgUploadPath, $wgLang;
-	wfLoadExtensionMessages('MeanEditor');
-	$sk = new Skin;
 	$wiki_path = str_replace('$1', '', $wgArticlePath);
 	$wgOut->addScriptFile('../../extensions/MeanEditor/wymeditor/jquery/jquery.js');
 	$wgOut->addScriptFile('../../extensions/MeanEditor/wymeditor/wymeditor/jquery.wymeditor.pack.js');
@@ -308,7 +304,7 @@ function meaneditor_showBox(&$edit_context, $html_text, $rows, $cols, $ew)
 						+ "</body>",
 					dialogImageHtml:  "<body class=\'wym_dialog wym_dialog_image\'"
 						+ " onload=\'WYMeditor.INIT_DIALOG(" + WYMeditor.INDEX + ")\'"
-						+ ">' . preg_replace('/[\r\n]+/', "", str_replace('</script>','</scr"+"ipt>',str_replace('"','\\"',str_replace('\'','\\\'',$sk->makeGlobalVariablesScript(false))))) . '"
+						+ ">"
 						+ "<script type=\'text/javascript\' src=\''.$wgStylePath.'/common/ajax.js\'></scr"+"ipt>"
 						+ "<script type=\'text/javascript\'>function meaneditor_responder(e) {"
 						+ "	divwait=document.getElementById(\'meaneditor_ajax_wait\');"
@@ -475,7 +471,6 @@ function recent_images($rsargs)
 		$return_empty = false;
 	}
 	if ($return_empty) {
-		wfLoadExtensionMessages('MeanEditor');
 		return '<tr><td colspan="2"><strong>' . wfMsgWikiHtml('no_recent_images') . '</strong>' . ($u->isLoggedIn() ? '' : wfMsgWikiHtml('try_login')) . '</td></tr>';
 	} else return $return_text;
 }
@@ -503,7 +498,6 @@ $wgHooks['UserToggles'][] = 'toggle_visualeditor_preference';
 # Regular Editpage hooks
 function meaneditor_checkboxes(&$editpage, &$checkboxes, &$tabindex)
 {
-	wfLoadExtensionMessages('MeanEditor');
 	$checkboxes['want_traditional_editor'] = '';
 	$attribs = array(
 		'tabindex'  => ++$tabindex,
