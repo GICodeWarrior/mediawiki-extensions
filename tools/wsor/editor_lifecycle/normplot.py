@@ -46,6 +46,7 @@ colors = 'brcmgyk'
 M = len(markers)
 C = len(colors)
 labeltempl = r'$10^{%d} \leq a < 10^{%d}$'
+labeltempl = '%d-%d edits/month'
 
 if __name__ == '__main__':
     ns = parser.parse_args()
@@ -68,13 +69,14 @@ if __name__ == '__main__':
         idx = np.argsort(cohort)
         cohort = cohort[idx]
         peak = peak[idx] / peak.mean()
+        labeldata = (10 ** (a - 1) * 86400.0 * 30, 10 ** a * 86400.0 * 30)
         l, = ax.plot(cohort, peak, marker=markers[i % M], color=colors[i % C], 
-                ls='none', mec=colors[i % C], label=labeltempl % (a-1, a), ms=8,
+                ls='none', mec=colors[i % C], label=labeltempl % labeldata, ms=8,
                 alpha=.65)
         lines.append(l)
 
     pp.figlegend(lines, [ l.get_label() for l in lines ], 
-            loc='center right', prop=FontProperties(size='medium'))
+            loc='center right', prop=FontProperties(size='small'))
 
     if ns.xlim:
         pp.xlim(datetime(ns.xlim[0],1,1), datetime(ns.xlim[1],1,1))
