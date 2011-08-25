@@ -15,11 +15,17 @@ $wgExtensionMessagesFiles['MeanEditor'] = dirname(__FILE__) . '/MeanEditor.i18n.
 $wgExtensionCredits['other'][] = array(
 	'name' => 'MeanEditor',
 	'author' => 'Jacopo Corbetta and Alessandro Pignotti for Antonio Gulli',
-	'description' => 'The mean, the safe and the ugly visual editor for non-technical users. Based on WYMeditor and jQuery.',
 	'descriptionmsg' => 'meaneditor_desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:MeanEditor',
 	'version' => '0.5.5'
 );
+
+$wgHooks['EditPage::wiki2html'][] = 'meaneditor_wiki2html';
+$wgHooks['EditPage::html2wiki'][] = 'meaneditor_html2wiki';
+$wgHooks['EditPage::showBox'][] = 'meaneditor_showBox';
+$wgHooks['CustomEditor'][] = 'meaneditor_customeditor';
+$wgHooks['EditPageBeforeEditChecks'][] = 'meaneditor_checkboxes';
+$wgHooks['EditPageBeforeEditToolbar'][] = 'meaneditor_disabletoolbar';
 
 function substitute_hashed_img_urls($text)
 {
@@ -515,10 +521,3 @@ function meaneditor_disabletoolbar(&$toolbar)
 	$toolbar = '';
 	return false;
 }
-
-$wgHooks['EditPage::wiki2html'][] = 'meaneditor_wiki2html';
-$wgHooks['EditPage::html2wiki'][] = 'meaneditor_html2wiki';
-$wgHooks['EditPage::showBox'][] = 'meaneditor_showBox';
-$wgHooks['CustomEditor'][] = 'meaneditor_customeditor';
-$wgHooks['EditPageBeforeEditChecks'][] = 'meaneditor_checkboxes';
-$wgHooks['EditPageBeforeEditToolbar'][] = 'meaneditor_disabletoolbar';
