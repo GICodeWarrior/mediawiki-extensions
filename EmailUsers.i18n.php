@@ -359,6 +359,7 @@ $messages['no'] = array(
 );
 
 /** Polish (Polski)
+ * @author Sp5uhe
  * @author Woytecr
  */
 $messages['pl'] = array(
@@ -366,9 +367,9 @@ $messages['pl'] = array(
 	'right-sendbatchemail' => 'Wyślij wiadomość e-mail do wielu adresatów w tym samym czasie',
 	'emailusers' => 'Wyślij e‐mail do użytkowników',
 	'emailusers-target-reverse' => 'Wyślij do wszystkich użytkowników za wyjątkiem wybranych',
-	'emailusers-norecipient' => 'Nie ma nikogo, komu możesz wysłać e-mail.',
-	'emailusers-norecipientselected' => 'Nie wybrano odbiorcy',
-	'emailusers-toomanyrecipientsselected' => 'Wybrano zbyt wiele odbiorców (maksymalnie: $1)',
+	'emailusers-norecipient' => 'Brak kogokolwiek, do którego mógłbyś wysłać e‐mail.',
+	'emailusers-norecipientselected' => 'Nie wybrano odbiorcy.',
+	'emailusers-toomanyrecipientsselected' => 'Wybrano zbyt wielu odbiorców ({{PLURAL:$1|maksymalnie $1|maksymalnie $1|maksymalnie $1}}).',
 );
 
 /** Piedmontese (Piemontèis)
