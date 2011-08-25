@@ -2099,7 +2099,8 @@ Por favor, consúlteo cun [[Special:ListUsers/sysop|administrador]] do sitio.',
 
 O seu OpenID é $2.
 
-Pode xestionar este e outros OpenID e contrasinais opcionais nas súas [[Special:Preferences|preferencias]].",
+Pode xestionar este e outros OpenID e contrasinais opcionais na [[Special:Preferences#prefsection-openid|lapela OpenID]] das súas preferencias.<br />
+Pode engadir un contrasinal opcional no seu [[Special:Preferences#prefsection-personal|perfil de usuario]].",
 	'openidusernameprefix' => 'Usuario do OpenID',
 	'openidserverlogininstructions' => '$3 solicita que insira o seu contrasinal para o seu usuario $2 páxina $1 (este é o enderezo URL do seu OpenID)',
 	'openidtrustinstructions' => 'Comprobe se quere compartir datos con $1.',
@@ -2132,7 +2133,7 @@ Pode xestionar este e outros OpenID e contrasinais opcionais nas súas [[Special
 	'openidalreadyloggedin' => 'Xa está identificado.',
 	'openidalreadyloggedintext' => "'''Xa está identificado como $1!'''
 
-Pode xestionar (ollar, borrar) os OpenID na lapela correspondente das súas [[Special:Preferences|preferencias]].",
+Pode xestionar (ollar, borrar, engadir) os OpenID na [[Special:Preferences#prefsection-openid|lapela OpenID]] das súas preferencias.",
 	'openidnousername' => 'Non foi especificado ningún nome de usuario.',
 	'openidbadusername' => 'O nome de usuario especificado é incorrecto.',
 	'openidautosubmit' => 'Esta páxina inclúe un formulario que debería ser enviado automaticamente se ten o JavaScript activado.
