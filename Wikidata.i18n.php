@@ -5033,7 +5033,7 @@ Por favor, vexa [[{{MediaWiki:Ow editing policy url}}|a nosa política de edici�
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>O mapa de conceptos permítelle identificar cal é a definición nun conxunto de datos que é idéntico ás definicións noutros conxuntos.</p>',
 	'ow_conceptmapping_no_action_specified' => 'A acción "$1" non está soportada.',
-	'ow_dm_OK' => 'De acordo',
+	'ow_dm_OK' => 'Aceptar',
 	'ow_dm_not_present' => 'non introducido',
 	'ow_dm_not_found' => 'non atopado na base de datos ou malformado',
 	'ow_mapping_successful' => 'Mapeados todos os campos marcados con [OK]<br />',
