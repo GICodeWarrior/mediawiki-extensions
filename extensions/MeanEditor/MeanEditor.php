@@ -1,17 +1,12 @@
 <?php
 # Alert the user that this is not a valid entry point to MediaWiki if they try to access the skin file directly.
-if (!defined('MEDIAWIKI'))
-{
-	echo <<<EOT
-	To install the MeanEditor extension put the following line in LocalSettings.php:
-	require_once( "$IP/extensions/MeanEditor/MeanEditor.php" );
-	
-	See README for more information.
-EOT;
-	         exit( 1 );
+if ( !defined( 'MEDIAWIKI' ) ) {
+	exit( 1 );
 }
 
-$wgExtensionMessagesFiles['MeanEditor'] = dirname(__FILE__) . '/MeanEditor.i18n.php';
+$meanEditorDir = dirname( __FILE__ );
+
+$wgExtensionMessagesFiles['MeanEditor'] = $meanEditorDir . '/MeanEditor.i18n.php';
 $wgExtensionCredits['other'][] = array(
 	'name' => 'MeanEditor',
 	'author' => 'Jacopo Corbetta and Alessandro Pignotti for Antonio Gulli',
@@ -19,6 +14,8 @@ $wgExtensionCredits['other'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:MeanEditor',
 	'version' => '0.5.5'
 );
+
+$wgAutoloadClasses['MeanEditorEditPage'] = $meanEditorDir . '/MeanEditorEditPage.body.php';
 
 $wgHooks['EditPage::wiki2html'][] = 'meaneditor_wiki2html';
 $wgHooks['EditPage::html2wiki'][] = 'meaneditor_html2wiki';
@@ -488,8 +485,6 @@ function toggle_visualeditor_preference(&$toggles)
 	return false;
 }
 
-require_once $IP . "/includes/EditPage.php";
-require_once "MeanEditorEditPage.body.php";
 function meaneditor_customeditor($article, $user)
 {
 	$editor = new MeanEditorEditPage( $article );
