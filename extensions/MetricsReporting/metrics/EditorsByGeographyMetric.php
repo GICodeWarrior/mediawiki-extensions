@@ -7,8 +7,8 @@ class EditorsByGeographyMetric extends GenericMetricBase {
 	/**
 	 * @param $tableName string
 	 */
-	function __construct() {
-		parent::__construct( 'editorsbygeography' );
+	function __construct( ApiBase $query, $moduleName, $paramPrefix = '', $tableName ) {
+		parent::__construct( $query->getMain(), $moduleName, $paramPrefix, 'editorsbygeography' );
 	}
 
 	public function getDescription() {
