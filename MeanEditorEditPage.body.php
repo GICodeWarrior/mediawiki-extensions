@@ -171,9 +171,6 @@ class MeanEditorEditPage extends EditPage {
 		wfProfileOut( __METHOD__ );
 	}
 
-
-
-
 	/**
 	 * We need to read the checkbox and the hidden value to know if the
 	 * visual editor was used or not
@@ -250,7 +247,6 @@ class MeanEditorEditPage extends EditPage {
 		$wgOut->addHTML( "</div><!-- editButtons -->\n</div><!-- editOptions -->\n" );
 	}
 
-	
 	# We need to add the class 'wymupdate' to all buttons
 	public function getEditButtons(&$tabindex) {
 		$buttons = array();
@@ -296,6 +292,5 @@ class MeanEditorEditPage extends EditPage {
 		wfRunHooks( 'EditPageBeforeEditButtons', array( &$this, &$buttons, &$tabindex ) );
 		return $buttons;
 	}
-
 
 }
