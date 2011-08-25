@@ -37,9 +37,13 @@ abstract class GenericMetricBase extends ApiAnalyticsBase {
 		return array( 'date', 'language_code', 'project_code', 'country_code', 'value' );
 	}
 
-	public abstract function getDescription();
+	public function getDescription() {
+		throw new Exception( "Not implemented" );
+	}
 
-	protected abstract function getExamples();
+	protected function getExamples() {
+		throw new Exception( "Not implemented" );
+	}
 
 	public function getVersion() {
 		return __CLASS__ . ': $Id$';
