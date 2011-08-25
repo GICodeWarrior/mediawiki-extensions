@@ -293,7 +293,7 @@ class MeanEditorEditPage extends EditPage {
 		return $buttons;
 	}
 
-	function substitute_hashed_img_urls($text) {
+	static function substitute_hashed_img_urls($text) {
 		while (preg_match('/\[\[Image:(.*?)\]\]/', $text, $matches)) {
 			$img = $matches[1];
 			$hash = md5($img);
@@ -306,7 +306,7 @@ class MeanEditorEditPage extends EditPage {
 		return $text;
 	}
 
-	function deny_visual_because_of($reason, &$edit_context) {
+	static function deny_visual_because_of($reason, &$edit_context) {
 		global $wgOut;
 		$wgOut->addHTML('<p class="visual_editing_denied errorbox">' . wfMsg('no_visual') . '<em class="visual_editing_denied_reason">'.$reason.'</em></p>');
 		# FIXME: Doesn't work. Why?
@@ -316,13 +316,13 @@ class MeanEditorEditPage extends EditPage {
 	}
 
 	# Return true to force traditional editing
-	function wiki2html($article, $user, &$edit_context, &$wiki_text) {
+	static function wiki2html($article, $user, &$edit_context, &$wiki_text) {
 		global $wgUploadPath, $wgArticlePath;
 		$meaneditor_page_src = str_replace('$1', '', $wgArticlePath);
 	
 		# Detect code sections (lines beginning with whitespace)
 		if (preg_match('/^[ \t]/m',$wiki_text))
-			return deny_visual_because_of(wfMsg('reason_whitespace'), $edit_context);
+			return self::deny_visual_because_of(wfMsg('reason_whitespace'), $edit_context);
 		
 		# Detect custom tags: only <br />, super/sub-scripts and references are supported at the moment
 		# TODO: expand the safe list
@@ -341,7 +341,7 @@ class MeanEditorEditPage extends EditPage {
 		$wiki_text=str_replace('<sub>','__TEMP__TEMP__sub',$wiki_text);
 		$wiki_text=str_replace('</sub>','__TEMP__TEMP__csub',$wiki_text);
 		if (!((strpos($wiki_text, '<')===FALSE) && (strpos($wiki_text, '>')===FALSE)))
-			return deny_visual_because_of(wfMsg('reason_tag'), $edit_context);
+			return self::deny_visual_because_of(wfMsg('reason_tag'), $edit_context);
 		$wiki_text=str_replace('__TEMP__TEMP__br','<br />', $wiki_text);
 		$wiki_text=str_replace('__TEMP__TEMP__allreferences','references_here',$wiki_text);
 		$wiki_text=str_replace('__TEMP__TEMP__sup','<sup>',$wiki_text);
@@ -355,7 +355,7 @@ class MeanEditorEditPage extends EditPage {
 		$unwanted_chars_at_beginning = array(':', ';');
 		foreach ($unwanted_chars_at_beginning as $uc)
 			if (preg_match('/^'.$uc.'/m',$wiki_text))
-				return deny_visual_because_of(wfMsg('reason_indent', $uc), $edit_context);
+				return self::deny_visual_because_of(wfMsg('reason_indent', $uc), $edit_context);
 	
 		# <hr>, from Parser.php... TODO: other regexps can be directly stolen from there
 		$wiki_text=preg_replace('/(^|\n)-----*/', '\\1<hr />', $wiki_text);
@@ -384,7 +384,7 @@ class MeanEditorEditPage extends EditPage {
 		if (!$wgHashedUploadDirectory) {
 			$wiki_text=preg_replace('/\[\[Image:(.*?)\]\]/','<img alt="\1" src="' . $wgUploadPath . '/\1" />',$wiki_text);
 		} else {
-			$wiki_text = substitute_hashed_img_urls($wiki_text);
+			$wiki_text = self::substitute_hashed_img_urls($wiki_text);
 		}
 
 		$wiki_text=preg_replace('/\[\[Image:(.*?)\]\]/','<img alt="\1" src="' . $wgUploadPath . '/\1" />',$wiki_text);
@@ -395,7 +395,7 @@ class MeanEditorEditPage extends EditPage {
 
 		#Substitute [[ syntax (internal links)
 		if (preg_match('/\[\[([^|\]]*?):(.*?)\|(.*?)\]\]/',$wiki_text,$unwanted_matches))
-			return deny_visual_because_of(wfMsg('reason_special_link', $unwanted_matches[0]), $edit_context);
+			return self::deny_visual_because_of(wfMsg('reason_special_link', $unwanted_matches[0]), $edit_context);
 		#Preserve #section links from the draconic feature detection
 		$wiki_text=preg_replace_callback('/\[\[(.*?)\|(.*?)\]\]/',
 			create_function('$matches', 'return "[[".str_replace("#","__TEMP_MEAN_hash",$matches[1])."|".str_replace("#","__TEMP_MEAN_hash",$matches[2])."]]";'),
@@ -428,7 +428,7 @@ class MeanEditorEditPage extends EditPage {
 		$unwanted_chars = array('[', ']', '|', '{', '}', '#', '*');
 		foreach ($unwanted_chars as $uc)
 			if (!($unwanted_match = strpos($wiki_text, $uc) === FALSE))
-				return deny_visual_because_of(wfMsg('reason_forbidden_char', $uc), $edit_context);
+				return self::deny_visual_because_of(wfMsg('reason_forbidden_char', $uc), $edit_context);
 
 		# Restore numbered entities
 		$wiki_text=str_replace('__TEMP__MEAN__nument','&#',$wiki_text);
@@ -453,7 +453,7 @@ class MeanEditorEditPage extends EditPage {
 		return false;
 	}
 
-	function html2wiki($article, $user, &$edit_context, &$html_text) {
+	static function html2wiki($article, $user, &$edit_context, &$html_text) {
 		global $wgArticlePath;
 		$meaneditor_page_src = str_replace('$1', '', $wgArticlePath);
 		$meaneditor_page_src_escaped = addcslashes($meaneditor_page_src, '/.');
@@ -518,7 +518,7 @@ class MeanEditorEditPage extends EditPage {
 		return false;
 	}
 
-	function showBox(&$edit_context, $html_text, $rows, $cols, $ew) {
+	static function showBox(&$edit_context, $html_text, $rows, $cols, $ew) {
 		global $wgOut, $wgArticlePath, $wgStylePath, $wgUploadPath, $wgLang;
 		$wiki_path = str_replace('$1', '', $wgArticlePath);
 		$wgOut->addScriptFile('../../extensions/MeanEditor/wymeditor/jquery/jquery.js');
