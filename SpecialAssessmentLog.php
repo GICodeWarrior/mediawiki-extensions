@@ -1,5 +1,6 @@
 <?php
 /**
+ * @todo Document this file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -7,6 +8,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 1 );
 }
 
+/**
+ * A special page showing various logs related to the assessment extension
+ */
 class SpecialAssessmentLog extends SpecialPage {
 
 	public function __construct() {
