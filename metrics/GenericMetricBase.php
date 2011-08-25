@@ -11,9 +11,15 @@ abstract class GenericMetricBase extends ApiAnalyticsBase {
 	protected $tableName;
 
 	/**
+	 * @param $query ApiBase
+	 * @param $moduleName
+	 * @param $paramPrefix string
 	 * @param $tableName string
+	 * @return GenericMetricBase
+	 *
 	 */
-	function __construct( $tableName ) {
+	function __construct( ApiBase $query, $moduleName, $paramPrefix = '', $tableName ) {
+		parent::__construct( $query->getMain(), $moduleName, $paramPrefix );
 		$this->tableName = $tableName;
 	}
 
