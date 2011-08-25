@@ -149,6 +149,10 @@ See also:
 	'moodbar-privacy' => 'Parameters:
 *$1 - a link having the anchor text {{msg-mw|moodbar-privacy-link}}',
 	'moodbar-privacy-link' => 'This is the anchor text being used in the link replacing $1 in the message {{msg-mw|moodbar-privacy}}',
+	'moodbar-header-timestamp' => '{{Identical|Timestamp}}',
+	'moodbar-header-type' => '{{Identical|Type}}',
+	'moodbar-header-page' => '{{Identical|Page}}',
+	'moodbar-header-user' => '{{Identical|User}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -195,6 +199,15 @@ $messages['be-tarask'] = array(
 	'moodbar-error-subtitle' => 'Нешта пайшло ня так! Калі ласка, паспрабуйце адкрыць доступ да вашага водгуку потым.',
 	'right-moodbar-view' => 'прагляд і экспарт водгукаў MoodBar',
 	'moodbar-admin-title' => 'Водгукі MoodBar',
+	'moodbar-admin-intro' => 'Гэтая старонка дазваляе Вам праглядаць водгукі пакінутыя праз MoodBar.',
+	'moodbar-admin-empty' => 'Вынікаў няма',
+	'moodbar-header-id' => 'Ідэнтыфікатар водгуку',
+	'moodbar-header-timestamp' => 'Дата/час',
+	'moodbar-header-type' => 'Тып',
+	'moodbar-header-page' => 'Старонка',
+	'moodbar-header-usertype' => 'Тып удзельніка',
+	'moodbar-header-user' => 'Удзельнік',
+	'moodbar-header-editmode' => 'Рэжым рэдагаваньня',
 );
 
 /** German (Deutsch)
@@ -935,6 +948,7 @@ Więcej informacji uzyskasz na $1.',
 	'moodbar-header-usertype' => 'Typ użytkownika',
 	'moodbar-header-user' => 'Użytkownik',
 	'moodbar-header-editmode' => 'Tryb edycji',
+	'moodbar-header-bucket' => 'Środowisko testowe',
 	'moodbar-header-system' => 'Typ systemu',
 	'moodbar-header-locale' => 'Preferencje językowe',
 	'moodbar-header-useragent' => 'Aplikacja klienta',
@@ -1015,7 +1029,16 @@ Para mais informações, visite $1.',
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'moodbar-desc' => 'Позволяет определенным участникам отправлять свои «настроения» обратно на сайт оператора',
+	'moodbar-desc' => 'Позволяет определенным участникам размещать отзывы о своём редакторском опыте',
+	'moodbar-trigger-feedback' => 'Отзыв о редактировании',
+	'moodbar-trigger-share' => 'Поделитесь опытом',
+	'moodbar-trigger-editing' => 'Редактирование  $1...',
+	'moodbar-close' => '(закрыть)',
+	'moodbar-intro-feedback' => 'Редактирование $1 сделало меня...',
+	'moodbar-intro-share' => 'Мой опыт на $1 сделали меня...',
+	'moodbar-intro-editing' => 'Редактирование $1 сделало меня...',
+	'moodbar-type-happy-title' => 'Счастливым',
+	'moodbar-type-sad-title' => 'Грустным',
 );
 
 /** Slovenian (Slovenščina)
@@ -1200,6 +1223,15 @@ $messages['vi'] = array(
 	'moodbar-user-anonymized' => 'Ẩn danh',
 	'moodbar-user-ip' => 'Địa chỉ IP',
 	'moodbar-user-user' => 'Người dùng đăng ký',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'moodbar-type-happy-title' => 'צופֿרידן',
+	'moodbar-type-sad-title' => 'אומערט',
+	'moodbar-type-confused-title' => 'צעמישט',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

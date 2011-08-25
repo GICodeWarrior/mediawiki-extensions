@@ -521,7 +521,7 @@ $messages['gl'] = array(
 	'countedits-warning' => "'''Advertencia:''' as aparencias enganan.
 Non xulgue a un colaborador polo seu número de edicións.",
 	'countedits-username' => 'Nome de usuario:',
-	'countedits-ok' => 'De acordo',
+	'countedits-ok' => 'Aceptar',
 	'countedits-nosuchuser' => 'Non existe ningún usuario chamado $1.',
 	'countedits-resultheader' => 'Resultados de $1',
 	'countedits-resulttext' => '$1 ten {{PLURAL:$2|feita unha edición|feitas $2 edicións}}',

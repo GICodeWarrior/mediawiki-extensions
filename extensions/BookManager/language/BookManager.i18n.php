@@ -403,7 +403,7 @@ $messages['pl'] = array(
 	'bm-printversion' => 'Wersja do druku',
 	'bm-printversion-desc' => 'Generuje [[Special:PrintVersion|wersję do druku]] książki',
 	'bm-printversion-no-book' => 'Proszę podać nazwę książki, aby uzyskać jej wersję do druku.',
-	'bm-printversion-inexistent-book' => 'Książka nie znaleziona. Proszę wprowadzić nazwę istniejącej książki aby otrzymać jej wersję do druku.',
+	'bm-printversion-inexistent-book' => 'Książka nie została odnaleziona. Proszę wprowadzić tytuł istniejącej książki, aby otrzymać jej wersję do druku.',
 );
 
 /** Piedmontese (Piemontèis)

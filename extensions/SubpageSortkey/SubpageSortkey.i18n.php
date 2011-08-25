@@ -24,10 +24,24 @@ $messages['de'] = array(
 	'subpagesortkey-desc' => 'Ermöglicht die Änderung des Standardsortierkriteriums einer Seite auf Basis ihres Namens zu dem ihrer Unterseite',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'subpagesortkey-desc' => 'Cambia a clave de ordenación por defecto dunha páxina para basearse no nome da súa subpáxina no canto do seu nome completo',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
 	'subpagesortkey-desc' => 'Смени го стандардниот клуч за подредување на една страница на основа на името на нејзината потстраница наместо целосното име',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'subpagesortkey-desc' => 'Wijzg de standaard zoeksleutel van een pagina gebaseerd op de naam van de subpagina in plaatst van de volledige naam',
 );
 

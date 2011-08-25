@@ -2760,6 +2760,10 @@ $messages['pms'] = array(
  */
 $messages['pnb'] = array(
 	'ogg-play' => 'چلاؤ',
+	'ogg-more' => 'مزید۔۔۔',
+	'ogg-dismiss' => 'بند کرو',
+	'ogg-download' => 'فائل ڈاؤنلوڈ کرو',
+	'ogg-desc-link' => 'ایس مورت بارے',
 );
 
 /** Pashto (پښتو)

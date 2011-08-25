@@ -114,6 +114,7 @@ $messages['qqq'] = array(
 	'sign-phone' => '{{Identical|Phone number}}',
 	'sign-email' => '{{Identical|E-mail address}}',
 	'sign-submit' => '{{Identical|Sign document}}',
+	'sign-viewfield-timestamp' => '{{Identical|Timestamp}}',
 	'sign-viewfield-realname' => '{{Identical|Name}}',
 	'sign-viewfield-address' => '{{Identical|Address}}',
 	'sign-viewfield-city' => '{{Identical|City}}',

@@ -22,6 +22,13 @@ $messages['de'] = array(
 	'namespacepaths-desc' => 'Ermöglicht für Namensräume die Darstellung benutzerdefinierter Pfade zu Artikeln',
 );
 
+/** French (Français)
+ * @author Gomoko
+ */
+$messages['fr'] = array(
+	'namespacepaths-desc' => "Permet à des chemins d'article personnalisés d'être mis en correspondance avec les espaces de noms du wiki. Par ex.: Faire correspondre des pages comme Aide:A à /aide/Page au lieu de /wiki/Aide:Page.",
+);
+
 /** Hebrew (עברית)
  * @author Amire80
  */

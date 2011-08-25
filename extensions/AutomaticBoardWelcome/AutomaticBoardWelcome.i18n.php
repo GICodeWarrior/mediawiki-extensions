@@ -30,6 +30,20 @@ $messages['de'] = array(
 	'automaticboardwelcome-desc' => 'Ermöglicht, nach der Neuanlage eines Kontos, die Erstellung einer automatischen [[MediaWiki:User-board-welcome-message|Willkommensnachricht]] auf der entsprechenden Benutzerseite',
 );
 
+/** French (Français)
+ * @author Gomoko
+ */
+$messages['fr'] = array(
+	'automaticboardwelcome-desc' => "Afficher automatiquement [[MediaWiki:User-board-welcome-message|un message d'accueil]] sur les pages utilisateur des nouveaux utilisateurs après leur création",
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'automaticboardwelcome-desc' => 'Publica automaticamente [[MediaWiki:User-board-welcome-message|unha mensaxe de benvida]] nos taboleiros dos usuarios despois da creación da conta',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

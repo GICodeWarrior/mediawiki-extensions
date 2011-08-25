@@ -44,6 +44,13 @@ $messages['fr'] = array(
 	'editpagetracking-desc' => "Enregistre la première fois que chaque utilisateur ouvre la page d'édition",
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'editpagetracking-desc' => 'Rexistra a primeira vez que cada usuario abre a páxina de edición',
+);
+
 /** Hebrew (עברית)
  * @author Amire80
  */
@@ -119,6 +126,13 @@ $messages['pl'] = array(
  */
 $messages['pt'] = array(
 	'editpagetracking-desc' => 'Regista a primeira vez que cada utilizador visita a página de edição',
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'editpagetracking-desc' => 'Записывает для каждого участника когда он впервые открыл страницу редактирования',
 );
 
 /** Slovenian (Slovenščina)

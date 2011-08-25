@@ -58,6 +58,14 @@ $messages['fr'] = array(
 	'signupapi-desc' => 'Nettoie la page [[Special:UserLogin|page de connexion]] des informations utilisées à la création de compte et insère un API pour la création de compte',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'signupapi-ok' => 'D’acôrd',
+	'signupapi-badretype' => 'Los mots de pâssa que vos éd buchiês sont pas pariérs.',
+);
+
 /** Hebrew (עברית)
  * @author Amire80
  */
@@ -99,6 +107,14 @@ $messages['ms'] = array(
  */
 $messages['nl'] = array(
 	'signupapi-desc' => 'Schoont de [[Special:UserLogin|aanmeldpagina]] en voegt een API voor aanmelden toe',
+	'signupapi-ok' => 'OK',
+	'signupapi-enterpassword' => 'U moet een wachtwoord invoeren',
+	'signupapi-passwordtooshort' => 'Het wachtwoord is te kort',
+	'signupapi-weak' => 'Zwak',
+	'signupapi-medium' => 'Gemiddeld',
+	'signupapi-strong' => 'Sterk',
+	'signupapi-badretype' => 'De ingevoerde wachtwoorden verschillen van elkaar.',
+	'signupapi-passwordsmatch' => 'De wachtwoorden zijn gelijk.',
 );
 
 /** Portuguese (Português)
