@@ -4,12 +4,8 @@
  *
  */
 class EditorsByGeographyMetric extends GenericMetricBase {
-	/**
-	 * @param $tableName string
-	 */
-	function __construct( ApiBase $query, $moduleName, $paramPrefix = '', $tableName ) {
-		parent::__construct( $query->getMain(), $moduleName, $paramPrefix, 'editorsbygeography' );
-	}
+
+	protected $tableName = 'editorsbygeography';
 
 	public function getDescription() {
 		return "Number of active unique registered editors by country";
