@@ -40,6 +40,13 @@ $messages['fr'] = array(
 	'localjquery-desc' => 'Charge jQuery depuis [[MediaWiki:JQuery.js]] (avec le ResourceLoader)',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'localjquery-desc' => 'Cargar o jQuery desde [[MediaWiki:JQuery.js]] (co Cargador de recursos)',
+);
+
 /** Hebrew (עברית)
  * @author Amire80
  */
