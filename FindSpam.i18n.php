@@ -379,7 +379,7 @@ $messages['gl'] = array(
 	'findspam' => 'Atopar spam',
 	'findspam-desc' => 'Engada unha [[Special:FindSpam|páxina especial]] que permita atopar recentemente spam engadido',
 	'findspam-ip' => 'Enderezo IP:',
-	'findspam-ok' => 'De acordo',
+	'findspam-ok' => 'Aceptar',
 	'findspam-notextfound' => 'Non foron atopadas contribucións',
 	'right-findspam' => 'Buscar o spam engadido recentemente',
 );
