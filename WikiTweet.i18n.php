@@ -420,10 +420,11 @@ $messages['nl'] = array(
 );
 
 /** Polish (Polski)
+ * @author Sp5uhe
  * @author Woytecr
  */
 $messages['pl'] = array(
-	'wikitweet-subscribe' => 'Subskrybuj',
+	'wikitweet-subscribe' => 'subskrybuj',
 	'wikitweet-unsubscribe' => 'nie subskrybuj',
 	'wikitweet-delete' => 'usuń',
 	'wikitweet-timeago' => '$1 temu',
