@@ -252,6 +252,7 @@ $messages['es'] = array(
 );
 
 /** French (Français)
+ * @author Gomoko
  * @author Seb35
  */
 $messages['fr'] = array(
@@ -285,14 +286,14 @@ $messages['fr'] = array(
 	'collabwatchlistedit-users-raw-legend' => 'Modifier en bloc les utilisateurs de la liste de suivi collaborative',
 	'collabwatchlistedit-tags-raw-legend' => 'Modifier en bloc les balises de la liste de suivi collaborative',
 	'collabwatchlistedit-raw-explain' => 'Les catégories de la liste de suivi collaborative sont affichées ci-dessous et peuvent être modifiées en en ajoutant ou en en retirant de la liste',
-	'collabwatchlistedit-tags-raw-explain' => 'Les catégories de la liste de suivi collaborative sont affichées ci-dessous et peuvent être modifiées en en ajoutant ou en en retirant de la liste',
-	'collabwatchlistedit-users-raw-explain' => 'Les catégories de la liste de suivi collaborative sont affichées ci-dessous et peuvent être modifiées en en ajoutant ou en en retirant de la liste',
+	'collabwatchlistedit-tags-raw-explain' => 'Les balises de la liste de suivi collaborative sont affichées ci-dessous et peuvent être modifiées en en ajoutant ou en en retirant de la liste',
+	'collabwatchlistedit-users-raw-explain' => 'Les utilisateurs de la liste de suivi collaborative sont affichés ci-dessous et peuvent être modifiées en en ajoutant ou en en retirant de la liste',
 	'collabwatchlistedit-raw-titles' => 'Catégories :',
 	'collabwatchlistedit-tags-raw-titles' => 'Balises :',
 	'collabwatchlistedit-users-raw-titles' => 'Utilisateurs :',
 	'collabwatchlistedit-normal-title' => 'Modifier les catégories',
-	'collabwatchlistedit-normal-legend' => 'Retirer des catégories de la liste de suivi',
-	'collabwatchlistedit-normal-explain' => 'Les catégories de votre liste de suivi sont montrées ci-dessous.',
+	'collabwatchlistedit-normal-legend' => 'Retirer des catégories de la liste de suivi collaborative',
+	'collabwatchlistedit-normal-explain' => 'Les catégories de votre liste de suivi  collaborative sont affichées ci-dessous.',
 	'collabwatchlistedit-tags-raw-submit' => 'Enregistrez',
 	'collabwatchlistedit-normal-done' => '{{PLURAL:$1|1 catégorie a été retirée|$1 catégories ont été retirées}} de la liste de suivi collaborative :',
 	'collabwatchlistedit-tags-raw-done' => 'La liste de suivi collaborative a été mise à jour.',
@@ -372,6 +373,7 @@ $messages['gl'] = array(
 	'collabwatchlistedit-users-raw-titles' => 'Usuarios:',
 	'collabwatchlistedit-normal-title' => 'Editar as categorías',
 	'collabwatchlistedit-tags-raw-submit' => 'Gardar',
+	'collabwatchlistpatrol' => 'Patrullar edicións',
 	'collabwatchlistdelete-submit' => 'Borrar',
 	'collabwatchlistnew-name' => 'Nome da lista',
 	'collabwatchlistnew-submit' => 'Crear',
