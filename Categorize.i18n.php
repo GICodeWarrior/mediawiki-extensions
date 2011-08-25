@@ -149,12 +149,13 @@ $messages['no'] = array(
 );
 
 /** Polish (Polski)
+ * @author Sp5uhe
  * @author Woytecr
  */
 $messages['pl'] = array(
-	'categorize-desc' => 'Dodaje pole na strony edycji i przesyłania pozwalające użytkownikom na przypisanie kategorii dla danej strony',
-	'categorize-title' => 'Kwalifikacja wiedzy',
-	'categorize-footer' => 'Jeśli chcesz dodać etykietę, prosimy o kontakt na ...',
+	'categorize-desc' => 'Dodaje do stron edycji i przesyłania pole pozwalające użytkownikom na przypisanie kategorii',
+	'categorize-title' => 'Porządkowanie wiedzy',
+	'categorize-footer' => 'Jeśli chcesz dodać etykietę, skontaktuj się z [[Special:ListUsers/sysop|administratorem]].',
 );
 
 /** Portuguese (Português)
