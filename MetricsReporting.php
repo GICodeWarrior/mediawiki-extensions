@@ -64,3 +64,6 @@ $wgMetricAPIModules['estimateoffline'] = 'EstimateOfflineMetric';
 
 $wgAutoloadClasses['SquidPageViewsMetric'] = $metricsDir . 'SquidPageViewsMetric.php';
 $wgMetricAPIModules['squidpageviews'] = 'SquidPageViewsMetric';
+
+$wgAutoloadClasses['EditorsByGeographyMetric'] = $metricsDir . 'EditorsByGeographyMetric.php';
+$wgMetricAPIModules['editorsbygeography'] = 'EditorsByGeographyMetric';
