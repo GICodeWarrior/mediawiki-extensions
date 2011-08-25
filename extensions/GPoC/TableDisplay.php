@@ -3,17 +3,33 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	exit( 1 );
 }
 
+/**
+ * @todo Document overall purpose of this class.
+ */
 class TableDisplay {
+
+	/**
+	 * Register our parser functions
+	 */
 	public static function ParserFunctionInit( &$parser ) {
 		$parser->setFunctionHook( 'AssessmentStats', 'TableDisplay::AssessmentStatsRender' );
 		return true;
 	}
 
+	/**
+	 * Register new magic words.
+	 */
 	public static function LanguageGetMagic( &$magicWords, $langCode ) {
 		$magicWords['AssessmentStats'] = array( 0, 'AssessmentStats' );
 		return true;
-	}	
+	}
 
+	/**
+	 * @todo Document!
+	 * @param string $projectName
+	 * @param unknown $projectStats
+	 * @return string A wikitable containing statistics for a project name
+	 */
 	private static function formatTable( $projectName, $projectStats ) {
 		// Column Headers
 		$col_headers = array_keys($projectStats['top']);
@@ -31,7 +47,12 @@ class TableDisplay {
 		$output .= "|}";
 		return $output;
 	}
-	
+
+	/**
+	 * Callback for AssessmentsStats parser function
+	 * @param Parser $parser Parser object passed by MW hook system (unused)
+	 * @param unknown A project object??
+	 */
 	public static function AssessmentStatsRender( $parser, $project ) {
 		$projectStats = Statistics::getProjectStats( $project );
 		$output = TableDisplay::formatTable( $project, $projectStats );
