@@ -33,6 +33,20 @@ $messages['de'] = array(
 	'categorysortheaders-desc' => 'Ermöglicht, unter Angabe eines abweichenden Titels zur Anzeige, die Einsortierung von Seiten in Kategorien <!--<nowiki>[[category:Foo|^Header^Invisible part of sortkey]]</nowiki>-->',
 );
 
+/** French (Français)
+ * @author Gomoko
+ */
+$messages['fr'] = array(
+	'categorysortheaders-desc' => "Permet de spécifier des entêtes de tri par 'premier caractère' avec plusieurs caractères pour classer les pages dans les catégories, en utilisant une syntaxe comme <nowiki>[[category:Foo|^Entête^Partie invisible de la clé de tri]]</nowiki>",
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'categorysortheaders-desc' => 'Permite especificar cabeceiras de ordenación personalizadas, con múltiples caracteres, para listar as páxinas baixo categorías mediante unha sintaxe como <nowiki>[[category:Foo|^Cabeceira^Parte invisible da clave de ordenación]]</nowiki>',
+);
+
 /** Hebrew (עברית)
  * @author Amire80
  */
