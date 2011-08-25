@@ -29,6 +29,14 @@ $messages['de'] = array(
 Die Baumansicht nutzt hierzu [http://www.destroydrop.com/javascripts/tree dTree] sowie das Aufklappmenü [http://www.htmldog.com/articles/suckerfish/dropdowns/ Son of Suckerfish]',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'treeandmenu-desc' => 'Endade as funcións analíticas <code><nowiki>#tree</nowiki></code> e <code><nowiki>#menu</nowiki></code>, que conteñen listas con asteriscos que se renderizarán como árbores contraíbles ou menús despregables.
+As árbores empregan o menú de árbore [http://www.destroydrop.com/javascripts/tree dTree] do JavaScript e os menús despregables usan [http://www.htmldog.com/articles/suckerfish/dropdowns/ Son of Suckerfish]',
+);
+
 /** Hebrew (עברית)
  * @author Amire80
  */
