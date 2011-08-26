@@ -32,7 +32,18 @@ $messages['en'] = array(
 	'wikitweet-tweets-from-room' => 'Tweets from room', 	
 	'wikitweet-timeago' => '$1 ago', 
 	'wikitweet-inthefuture' => 'In the future !!',
-	'wikitweet-fewsecondsago' => 'Few seconds ago'
+	'wikitweet-fewsecondsago' => 'Few seconds ago',
+	'wikitweet-status' => 'Status : ',
+	'wikitweet-status0' => 'Talk',
+	'wikitweet-status1' => 'Event',
+	'wikitweet-status2' => 'Warning',
+	'wikitweet-status3' => 'Alert',
+	'wikitweet-resolve' => 'resolve',
+	'wikitweet-concerns' => 'Concerns you',
+	'wikitweet-comment' => 'Comment',
+	'wikitweet-subscribers' => 'Subscribers:',
+	'wikitweet-hourly' => 'Hourly',
+	'wikitweet-perperson' => 'Per person',
 );
 
 /** Message documentation (Message documentation)
@@ -41,43 +52,11 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'wikitweet-desc' => '{{desc}}',
-	'wikitweet-subscribe' => '{{Identical|Subscribe}}',
-	'wikitweet-unsubscribe' => '{{Identical|Unsubscribe}}',
 	'wikitweet-delete' => '{{Identical|Delete}}',
-	'wikitweet-private' => '{{Identical|Private}}',
-	'wikitweet-anonymous' => '{{Identical|Anonymous}}',
-);
-
-/** Asturian (Asturianu)
- * @author Xuacu
- */
-$messages['ast'] = array(
-	'wikitweet-desc' => "Crear un fluxu como'l de Twitter, en MediaWiki",
-	'wikitweet-pleaselogin' => 'Por favor, anicia sesión pa twitear.',
-	'wikitweet-moretweets' => 'Más tweets...',
-	'wikitweet-infoajax' => "Usa la teunoloxía AJAX y s'anueva automáticamente cada 5 segundos ensin tener que recargar la páxina.",
-	'wikitweet-submit' => 'Tweet',
-	'wikitweet-submitandmail' => 'Tweet y corréu electrónicu',
-	'wikitweet-intheroom' => 'Tas na sala',
-	'wikitweet-subscribe' => 'suscribir',
-	'wikitweet-subscribed' => 'suscritu',
-	'wikitweet-unsubscribe' => 'desuscribir',
-	'wikitweet-delete' => 'desaniciar',
-	'wikitweet-inform' => 'pol informador',
-	'wikitweet-private' => 'priváu',
-	'wikitweet-answer' => 'respuesta a',
-	'wikitweet-anonymous' => 'anónimu',
-	'wikitweet-tweets-tagged' => 'Tweets etiquetaos',
-	'wikitweet-back-timeline' => 'Tornar a la llinia temporal',
-	'wikitweet-tweets-from-room' => 'Tweets de la sala',
-	'wikitweet-timeago' => 'hai $1',
-	'wikitweet-inthefuture' => '¡Nel futuru!',
-	'wikitweet-fewsecondsago' => 'hai unos segundos',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
- * @author Jim-by
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
@@ -87,20 +66,8 @@ $messages['be-tarask'] = array(
 	'wikitweet-infoajax' => 'выкарыстоўвае AJAX і абнаўляецца кожныя 5 сэкунд без перазагрузкі старонкі.',
 	'wikitweet-submit' => 'Дадаць паведамленьне',
 	'wikitweet-submitandmail' => 'Дадаць паведамленьне і даслаць электронны ліст',
-	'wikitweet-intheroom' => 'Вы ў пакоі',
-	'wikitweet-subscribe' => 'падпісацца',
-	'wikitweet-subscribed' => 'падпісаны',
-	'wikitweet-unsubscribe' => 'адпісацца',
 	'wikitweet-delete' => 'выдаліць',
-	'wikitweet-inform' => 'паведаміўшым',
-	'wikitweet-private' => 'прыватнае',
-	'wikitweet-answer' => 'адказ на',
-	'wikitweet-anonymous' => 'ананімнае',
-	'wikitweet-tweets-tagged' => 'Кароткія пазначаныя паведамленьні',
-	'wikitweet-back-timeline' => 'Вярнуцца да лініі часу',
-	'wikitweet-tweets-from-room' => 'Кароткія паведамленьні з пакою',
 	'wikitweet-timeago' => '$1 таму',
-	'wikitweet-inthefuture' => 'У будучыні !!',
 	'wikitweet-fewsecondsago' => 'Колькі сэкунд таму',
 );
 
@@ -109,8 +76,6 @@ $messages['be-tarask'] = array(
  */
 $messages['bg'] = array(
 	'wikitweet-delete' => 'изтриване',
-	'wikitweet-timeago' => 'Преди $1',
-	'wikitweet-fewsecondsago' => 'Преди няколко секунди',
 );
 
 /** Breton (Brezhoneg)
@@ -168,22 +133,6 @@ $messages['de'] = array(
 	'wikitweet-fewsecondsago' => 'Vor wenigen Sekunden',
 );
 
-/** German (formal address) (‪Deutsch (Sie-Form)‬)
- * @author Kghbln
- */
-$messages['de-formal'] = array(
-	'wikitweet-intheroom' => 'Sie sind beim Feedstrang',
-);
-
-/** Spanish (Español)
- * @author Fitoschido
- */
-$messages['es'] = array(
-	'wikitweet-desc' => 'Crear un feed como el de Twitter, en MediaWiki',
-	'wikitweet-pleaselogin' => 'Inicia sesión para twittear.',
-	'wikitweet-moretweets' => 'Más tweets...',
-);
-
 /** French (Français)
  * @author Balzac 40
  * @author Thomas FAURÉ
@@ -200,9 +149,9 @@ $messages['fr'] = array(
 	'wikitweet-subscribed' => 'abonné',
 	'wikitweet-unsubscribe' => 'se désabonner',
 	'wikitweet-delete' => 'supprimer',
-	'wikitweet-inform' => "via l'Informateur",
+	'wikitweet-inform' => "via @Sgeron",
 	'wikitweet-private' => 'privé',
-	'wikitweet-answer' => 'Répondre à',
+	'wikitweet-answer' => 'Citer',
 	'wikitweet-anonymous' => 'anonyme',
 	'wikitweet-tweets-tagged' => 'Tweets taggés',
 	'wikitweet-back-timeline' => 'Retour au flux',
@@ -210,6 +159,17 @@ $messages['fr'] = array(
 	'wikitweet-timeago' => 'Il y a $1',
 	'wikitweet-inthefuture' => 'Dans le futur !!',
 	'wikitweet-fewsecondsago' => 'Il y a quelques secondes',
+	'wikitweet-status' => 'Statut : ',
+	'wikitweet-status0' => 'Discussion',
+	'wikitweet-status1' => 'Événement',
+	'wikitweet-status2' => 'Attention',
+	'wikitweet-status3' => 'Alerte',
+	'wikitweet-resolve' => 'résoudre',
+	'wikitweet-concerns' => 'Vous concerne',
+	'wikitweet-comment' => 'Commenter',
+	'wikitweet-subscribers' => 'Abonnés :',
+	'wikitweet-hourly' => 'Heure par heure :',
+	'wikitweet-perperson' => 'Par personne',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -366,15 +326,11 @@ $messages['mk'] = array(
 
 /** Malay (Bahasa Melayu)
  * @author Anakmalaysia
- * @author Diagramma Della Verita
  */
 $messages['ms'] = array(
 	'wikitweet-desc' => 'Cipta suapan seakan-akan Twitter ke dalam MediaWiki',
 	'wikitweet-pleaselogin' => "Sila log masuk untuk 'menciak'.",
-	'wikitweet-moretweets' => 'Tweet lagi',
 	'wikitweet-infoajax' => 'menggunakan teknologi AJAX dan menambah isi sendiri setiap 5 saat tanpa memuatkan laman.',
-	'wikitweet-submit' => 'Tweet',
-	'wikitweet-submitandmail' => 'Tweet dan e-mel',
 	'wikitweet-intheroom' => 'Anda berada dalam bilik',
 	'wikitweet-subscribe' => 'langgan',
 	'wikitweet-subscribed' => 'dilanggan',
@@ -384,12 +340,6 @@ $messages['ms'] = array(
 	'wikitweet-private' => 'tertutup',
 	'wikitweet-answer' => 'jawab',
 	'wikitweet-anonymous' => 'tanpa nama',
-	'wikitweet-tweets-tagged' => 'Tweet tagged',
-	'wikitweet-back-timeline' => 'Kembali ke garis masa',
-	'wikitweet-tweets-from-room' => 'Tweet dari portal',
-	'wikitweet-timeago' => '$1 yang lalu',
-	'wikitweet-inthefuture' => 'Pada masa akan datang !!',
-	'wikitweet-fewsecondsago' => 'Beberapa saat yang lalu',
 );
 
 /** Dutch (Nederlands)
