@@ -13,7 +13,7 @@ class WikiTweetFunctions {
 	}
 	public static function send( $to, $from, $subject, $body, $replyto=null )
 	{
-		if(!$wgWikiTweet['email']){return false;}
+		//if(!$wgWikiTweet['email']){return false;}
 		$wgOutputEncoding = 'UTF-8';
 		$wgEnotifImpersonal = false;
 		$wgErrorString = '';
@@ -96,5 +96,32 @@ class WikiTweetFunctions {
 			$result = wfMsgExt( 'wikitweet-timeago', 'parse', $date_to_display );
 		}
 	return $result ;
+	}
+	
+	public static function getParentsRoomsString($i__room,$i__array)
+	{
+		$o__string = '>> ';
+		foreach(WikiTweetFunctions::_getParentsRoom($i__room,$i__array) as $l__room)
+		{
+			$o__string .= $l__room . '--';
+		}
+		return $o__string;
+	}
+	public static function _getParentsRoom($i__room,$i__array)
+	{
+		$o__room_parents = array();
+		foreach($i__array as $l__room_key=>$l__room_childs)
+		{
+			foreach($l__room_childs as $l__room_child)
+			{
+				if($l__room_child == $i__room)
+				{
+					$o__room_parents[] = $l__room_key;
+					$o__room_parents = array_merge($o__room_parents,WikiTweetFunctions::_getParentsRoom($l__room_key,$i__array));
+					break;
+				}
+			}
+		}
+		return $o__room_parents;
 	}
 }
