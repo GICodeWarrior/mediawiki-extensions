@@ -173,15 +173,15 @@ $wgHooks['ParserBeforeTidy'][] = array( $wgWikiArticleFeedsParser, 'itemTagsPlac
 $wgHooks['ParserFirstCallInit'][] = 'wfWikiArticleFeedsParserSetup';
 
 # Sets up the WikiArticleFeeds Parser hooks
-function wfWikiArticleFeedsParserSetup() {
-	global $wgParser, $wgWikiArticleFeedsParser;
+function wfWikiArticleFeedsParserSetup( $parser ) {
+	global $wgWikiArticleFeedsParser;
 
-	$wgParser->setHook( 'startFeed', array( $wgWikiArticleFeedsParser, 'feedStart' ) );
-	$wgParser->setHook( 'endFeed', array( $wgWikiArticleFeedsParser, 'feedEnd' ) );
-	$wgParser->setHook( 'feedBurner', array( $wgWikiArticleFeedsParser, 'burnFeed' ) );
-	$wgParser->setHook( 'itemTags', array( $wgWikiArticleFeedsParser, 'itemTagsTag' ) );
+	$parser->setHook( 'startFeed', array( $wgWikiArticleFeedsParser, 'feedStart' ) );
+	$parser->setHook( 'endFeed', array( $wgWikiArticleFeedsParser, 'feedEnd' ) );
+	$parser->setHook( 'feedBurner', array( $wgWikiArticleFeedsParser, 'burnFeed' ) );
+	$parser->setHook( 'itemTags', array( $wgWikiArticleFeedsParser, 'itemTagsTag' ) );
 
-	$wgParser->setFunctionHook( 'itemtags', array( $wgWikiArticleFeedsParser, 'itemTagsFunction' ) );
+	$parser->setFunctionHook( 'itemtags', array( $wgWikiArticleFeedsParser, 'itemTagsFunction' ) );
 	return true;
 }
 
