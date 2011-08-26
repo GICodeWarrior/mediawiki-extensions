@@ -44,6 +44,13 @@ $messages['en'] = array(
 	'wikitweet-subscribers' => 'Subscribers:',
 	'wikitweet-hourly' => 'Hourly',
 	'wikitweet-perperson' => 'Per person',
+	'wikitweet-inresponseto' => 'In response to:',
+	'wikitweet-from' => 'from',
+	'wikitweet-in' => 'in',
+	'wikitweet-directlink' => 'Direct link:',
+	'wikitweet-mailsent' => 'mail sent',
+	'wikitweet-viaroom' => 'via room',
+	'wikitweet-alertsolved' => 'one of your alert was resolved in',
 );
 
 /** Message documentation (Message documentation)
@@ -220,7 +227,7 @@ $messages['fr'] = array(
 	'wikitweet-timeago' => 'Il y a $1',
 	'wikitweet-inthefuture' => 'Dans le futur !!',
 	'wikitweet-fewsecondsago' => 'Il y a quelques secondes',
-	'wikitweet-status' => 'Statut : ',
+	'wikitweet-status' => 'Statut :',
 	'wikitweet-status0' => 'Discussion',
 	'wikitweet-status1' => 'Événement',
 	'wikitweet-status2' => 'Attention',
@@ -231,6 +238,13 @@ $messages['fr'] = array(
 	'wikitweet-subscribers' => 'Abonnés :',
 	'wikitweet-hourly' => 'Heure par heure :',
 	'wikitweet-perperson' => 'Par personne',
+	'wikitweet-inresponseto' => 'En réponse à :',
+	'wikitweet-from' => 'de',
+	'wikitweet-in' => 'dans',
+	'wikitweet-directlink' => 'Lien direct :',
+	'wikitweet-mailsent' => 'mail envoyé',
+	'wikitweet-viaroom' => 'via room',
+	'wikitweet-alertsolved' => 'Une de vos alertes a été résolue dans la salle',
 );
 
 /** Franco-Provençal (Arpetan)
