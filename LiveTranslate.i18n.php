@@ -389,6 +389,9 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'group-tmxadmin' => 'Administrators TMX',
+	'group-tmxadmin-member' => 'Administrator TMX',
+	'grouppage-tmxadmin' => 'Project:Administrators_TMX',
 	'livetranslate-translate-to' => 'Traduire ceta pâge en',
 	'livetranslate-button-translate' => 'Traduire',
 	'livetranslate-button-translating' => 'Traduccion en cors...',
