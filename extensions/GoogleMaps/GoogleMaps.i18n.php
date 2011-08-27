@@ -3194,6 +3194,7 @@ $wgGoogleMapsMessages['kaa'] = array(
  */
 $wgGoogleMapsMessages['kk-cyrl'] = array(
 	'gm-zoom-control' => 'Шарлау',
+	'gm-search' => 'Іздеу',
 );
 
 /** Kazakh (Latin) (Қазақша (Latin))

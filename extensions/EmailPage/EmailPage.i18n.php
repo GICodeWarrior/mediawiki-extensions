@@ -767,6 +767,7 @@ $messages['lb'] = array(
 	'ea-send' => 'Schécken!',
 	'ea-subject' => 'Sujet:',
 	'ea-message' => 'Message:',
+	'ea-message-info' => 'Virun den Inhalt vun der Säit een optionale Message am Wiki-Format setzen',
 	'ea-style' => 'Style:',
 	'ea-selectcss' => "Dir kënnt een ''CSS Stylesheet'' eraussichen",
 	'ea-data' => 'Donnéeën',

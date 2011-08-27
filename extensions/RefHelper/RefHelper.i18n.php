@@ -885,6 +885,13 @@ $messages['ja'] = array(
 [[Special:RefHelper|参考文献を手動で追加]]するか、または[[Special:RefSearch|追加する引用を検索]]できます。',
 );
 
+/** Kazakh (Cyrillic) (Қазақша (Cyrillic))
+ * @author GaiJin
+ */
+$messages['kk-cyrl'] = array(
+	'refhelper-search' => 'Іздеу',
+);
+
 /** Kalaallisut (Kalaallisut)
  * @author Qaqqalik
  */

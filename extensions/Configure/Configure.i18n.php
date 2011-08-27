@@ -1448,7 +1448,7 @@ $messages['bn'] = array(
 	'configure-section-resourceloader' => 'রিসোর্সলোডার',
 	'configure-section-namespaces' => 'নামস্থান',
 	'configure-section-stats' => 'সাইট পরিসংখ্যান',
-	'configure-section-skin' => 'স্কিন',
+	'configure-section-skin' => 'আবরণ (Skin)',
 	'configure-section-vector' => 'ভেক্টর স্কিন',
 	'configure-section-category' => 'বিষয়শ্রেণীসমূহ',
 	'configure-section-cache' => 'ক্যাশে',
@@ -6177,6 +6177,13 @@ $messages['ka'] = array(
  */
 $messages['kaa'] = array(
 	'configure-section-users' => 'Paydalanıwshılar',
+);
+
+/** Kazakh (Cyrillic) (Қазақша (Cyrillic))
+ * @author GaiJin
+ */
+$messages['kk-cyrl'] = array(
+	'configure-section-search' => 'Іздеу',
 );
 
 /** Kalaallisut (Kalaallisut)

@@ -5969,6 +5969,13 @@ $messages['jv'] = array(
 	'mv_protect_source_material' => 'Bahan sumber asli direksa saka panyuntingan',
 );
 
+/** Kazakh (Cyrillic) (Қазақша (Cyrillic))
+ * @author GaiJin
+ */
+$messages['kk-cyrl'] = array(
+	'mv_tool_search' => 'Іздеу',
+);
+
 /** Kalaallisut (Kalaallisut)
  * @author Qaqqalik
  */

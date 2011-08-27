@@ -490,6 +490,13 @@ $messages['ka'] = array(
 	'searchbox-namespaces' => 'სახელთა სივრცეები:',
 );
 
+/** Kazakh (Cyrillic) (Қазақша (Cyrillic))
+ * @author GaiJin
+ */
+$messages['kk-cyrl'] = array(
+	'searchbox-search' => 'Іздеу',
+);
+
 /** Kalaallisut (Kalaallisut)
  * @author Qaqqalik
  */

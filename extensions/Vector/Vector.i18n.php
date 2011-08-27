@@ -942,6 +942,13 @@ $messages['ka'] = array(
 	'vector-simplesearch-containing' => 'შეიცავს...',
 );
 
+/** Kazakh (Cyrillic) (Қазақша (Cyrillic))
+ * @author GaiJin
+ */
+$messages['kk-cyrl'] = array(
+	'vector-simplesearch-search' => 'Іздеу',
+);
+
 /** Kalaallisut (Kalaallisut)
  * @author Qaqqalik
  */
@@ -1324,6 +1331,16 @@ S'it ses logà, it peule disabilité st'avis-sì ant la session \"Quàder ëd mo
 	'vector-simplesearch-search' => 'Arserca',
 	'vector-simplesearch-containing' => 'contenent ...',
 	'vector-noexperiments-preference' => "Gav-me da j'esperiment ëd le funsion",
+);
+
+/** Western Punjabi (پنجابی)
+ * @author Khalid Mahmood
+ */
+$messages['pnb'] = array(
+	'vector-editwarning-preference' => 'جدوں میں کوئی صفحہ تبدیلی کر کے بچاۓ بغیر چھڈن لگاں تے منوں دس دیو',
+	'vector-simplesearch-search' => 'کھوج',
+	'vector-simplesearch-containing' => 'بند کر ریا اے۔۔۔',
+	'vector-noexperiments-preference' => 'منوں نویاں شیواں دے تجربیاں توں بار رکھو',
 );
 
 /** Pontic (Ποντιακά) */

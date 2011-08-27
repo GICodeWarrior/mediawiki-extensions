@@ -876,6 +876,13 @@ $messages['jv'] = array(
 	'editmsg-new-search' => 'Panggolèkan anyar',
 );
 
+/** Kazakh (Cyrillic) (Қазақша (Cyrillic))
+ * @author GaiJin
+ */
+$messages['kk-cyrl'] = array(
+	'editmsg-search' => 'Іздеу',
+);
+
 /** Kalaallisut (Kalaallisut)
  * @author Qaqqalik
  */

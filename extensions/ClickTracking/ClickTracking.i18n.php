@@ -1680,7 +1680,7 @@ $messages['ms'] = array(
 	'ct-user-contribs' => 'Jumlah sumbangan pengguna',
 	'ct-user-span' => 'Sumbangan pengguna dalam jangka masa',
 	'ct-and' => 'dan',
-	'ct-update-table' => 'Kemaskini jadual',
+	'ct-update-table' => 'Kemas kini jadual',
 );
 
 /** Maltese (Malti)

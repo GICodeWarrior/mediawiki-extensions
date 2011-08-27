@@ -96,11 +96,12 @@ $messages['bg'] = array(
 );
 
 /** Bengali (বাংলা)
+ * @author Bellayet
  * @author Wikitanvir
  */
 $messages['bn'] = array(
 	'semanticformsinputs-wrongformat' => 'ভুল বিন্যাস',
-	'semanticformsinputs-close' => 'বাতিল',
+	'semanticformsinputs-close' => 'বন্ধ',
 	'semanticformsinputs-prev' => 'পূর্ববর্তী',
 	'semanticformsinputs-next' => 'পরবর্তী',
 	'semanticformsinputs-today' => 'আজ',

@@ -1323,6 +1323,13 @@ $messages['ja'] = array(
 	'recordadmin-properties' => 'プロパティー',
 );
 
+/** Kazakh (Cyrillic) (Қазақша (Cyrillic))
+ * @author GaiJin
+ */
+$messages['kk-cyrl'] = array(
+	'recordadmin-buttonsearch' => 'Іздеу',
+);
+
 /** Kalaallisut (Kalaallisut)
  * @author Qaqqalik
  */
