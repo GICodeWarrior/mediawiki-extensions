@@ -2265,7 +2265,7 @@ $2',
 	'whitelistrequestconf' => "D'Ufro fir nei Säite gouf geschéckt un $1",
 	'whitelistnonrestricted' => "De Benotzer '''$1''' ass kee limitéierte Benotzer.
 Dës Säit ass nëmme valabel fir limitéiert Benotzer.",
-	'whitelistnever' => 'nie',
+	'whitelistnever' => 'ni',
 	'whitelistnummatches' => ' - $1 {{PLURAL:$1|Resultat|Resultater}}',
 	'right-restricttowhitelist' => 'Nëmme Säiten déi op der wäisser Lëscht stinn kucken an änneren',
 	'action-restricttowhitelist' => 'Nëmme Säiten déi op der wäisser Lëscht sti kucken an änneren',
