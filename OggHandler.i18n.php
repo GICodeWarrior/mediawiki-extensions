@@ -536,7 +536,7 @@ $messages['bn'] = array(
 	'ogg-player-selected' => '(নির্বাচিত)',
 	'ogg-use-player' => 'এই চালনাকারী সফটওয়্যার ব্যবহার করুন:',
 	'ogg-more' => 'আরও...',
-	'ogg-dismiss' => 'বন্ধ করা হোক',
+	'ogg-dismiss' => 'বন্ধ',
 	'ogg-download' => 'ফাইল ডাউনলোড করুন',
 	'ogg-desc-link' => 'এই ফাইলের বৃত্তান্ত',
 );
@@ -2760,6 +2760,16 @@ $messages['pms'] = array(
  */
 $messages['pnb'] = array(
 	'ogg-play' => 'چلاؤ',
+	'ogg-pause' => 'وقفہ',
+	'ogg-stop' => 'رکو',
+	'ogg-play-video' => 'وڈیو چلاؤ',
+	'ogg-play-sound' => 'واز چلاؤ',
+	'ogg-player-videoElement' => 'دیسی براؤزر سپورٹ',
+	'ogg-player-oggPlugin' => 'براؤزر پلگ ان',
+	'ogg-player-thumbnail' => 'صرف کذڑیاں مورتاں',
+	'ogg-player-soundthumb' => 'کوئی چلان والا نغیں۔',
+	'ogg-player-selected' => '(چنے)',
+	'ogg-use-player' => 'چلان والا ورتو:',
 	'ogg-more' => 'مزید۔۔۔',
 	'ogg-dismiss' => 'بند کرو',
 	'ogg-download' => 'فائل ڈاؤنلوڈ کرو',
