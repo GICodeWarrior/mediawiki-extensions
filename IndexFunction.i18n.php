@@ -806,6 +806,13 @@ $2
 	'index-details-explain' => '矢印の付いた項目は索引項目で、矢印をクリックするとその名前で索引に載っているすべてのページを表示します。',
 );
 
+/** Kazakh (Cyrillic) (Қазақша (Cyrillic))
+ * @author GaiJin
+ */
+$messages['kk-cyrl'] = array(
+	'index-search' => 'Іздеу:',
+);
+
 /** Kalaallisut (Kalaallisut)
  * @author Qaqqalik
  */
