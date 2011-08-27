@@ -753,6 +753,13 @@ $messages['jv'] = array(
 	'edituser-dosearch' => 'Golèk',
 );
 
+/** Kazakh (Cyrillic) (Қазақша (Cyrillic))
+ * @author GaiJin
+ */
+$messages['kk-cyrl'] = array(
+	'edituser-dosearch' => 'Іздеу',
+);
+
 /** Kalaallisut (Kalaallisut)
  * @author Qaqqalik
  */
