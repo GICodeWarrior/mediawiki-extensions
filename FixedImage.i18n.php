@@ -195,6 +195,13 @@ $messages['fr'] = array(
 	'fixedimage-desc' => 'Ajoute la balise <code>&lt;fundraising&gt;</code> comme une image',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'fixedimage-desc' => 'Apond la balisa <code>&lt;fundraising&gt;</code> coment una émâge.',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
