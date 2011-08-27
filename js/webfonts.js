@@ -63,7 +63,7 @@
 			//reset the font size from old configuration
 			$("body").css('font-size', $.webfonts.oldconfig["font-size"]);
 			//remove the cookie
-			$.cookie( 'webfonts-font', 'none' );
+			$.cookie( 'webfonts-font', 'none', { 'path': '/', 'expires': 30 } );
 		},
 
 		/**
