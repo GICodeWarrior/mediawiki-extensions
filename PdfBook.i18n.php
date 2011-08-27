@@ -46,10 +46,11 @@ $messages['be-tarask'] = array(
 );
 
 /** Bengali (বাংলা)
+ * @author Bellayet
  * @author Wikitanvir
  */
 $messages['bn'] = array(
-	'pdfbook-action' => 'পিডিএফ হিসেবে ছাপা',
+	'pdfbook-action' => 'পিডিএফ হিসেবে মুদ্রণ',
 	'pdfbook-log' => '$1 পিডিএফ বই হিসেবে তৈরিকৃত',
 );
 
