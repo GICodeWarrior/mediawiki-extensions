@@ -2209,6 +2209,13 @@ $messages['jv'] = array(
 	'tasks_logentry' => 'Kanggo "[[$1]]"',
 );
 
+/** Kazakh (Cyrillic) (Қазақша (Cyrillic))
+ * @author GaiJin
+ */
+$messages['kk-cyrl'] = array(
+	'tasks_search_form_title' => 'Іздеу',
+);
+
 /** Kalaallisut (Kalaallisut)
  * @author Qaqqalik
  */
