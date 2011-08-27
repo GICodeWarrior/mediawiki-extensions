@@ -397,6 +397,24 @@ $messages['mk'] = array(
 	'wikitweet-timeago' => 'пред $1',
 	'wikitweet-inthefuture' => 'Во иднина !!',
 	'wikitweet-fewsecondsago' => 'Пред неколку секунди',
+	'wikitweet-status' => 'Статус:',
+	'wikitweet-status0' => 'Разговор',
+	'wikitweet-status1' => 'Настан',
+	'wikitweet-status2' => 'Предупредување',
+	'wikitweet-status3' => 'Внимание',
+	'wikitweet-resolve' => 'реши',
+	'wikitweet-concerns' => 'Се однесува на вас',
+	'wikitweet-comment' => 'Коментар',
+	'wikitweet-subscribers' => 'Претплатници:',
+	'wikitweet-hourly' => 'На секој час',
+	'wikitweet-perperson' => 'По човек',
+	'wikitweet-inresponseto' => 'Како одговор на:',
+	'wikitweet-from' => 'од',
+	'wikitweet-in' => 'за',
+	'wikitweet-directlink' => 'Непосредна врска:',
+	'wikitweet-mailsent' => 'пораката е испратена',
+	'wikitweet-viaroom' => 'преку собата',
+	'wikitweet-alertsolved' => 'едно од укажаните беше решено за',
 );
 
 /** Malay (Bahasa Melayu)
@@ -428,6 +446,7 @@ $messages['ms'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author SPQRobin
  * @author Siebrand
  */
 $messages['nl'] = array(
@@ -452,6 +471,10 @@ $messages['nl'] = array(
 	'wikitweet-timeago' => '$1 geleden',
 	'wikitweet-inthefuture' => 'In de toekomst!',
 	'wikitweet-fewsecondsago' => 'Een paar seconden geleden',
+	'wikitweet-perperson' => 'Per persoon',
+	'wikitweet-inresponseto' => 'Als antwoord op:',
+	'wikitweet-directlink' => 'Directe verwijzing:',
+	'wikitweet-mailsent' => 'e-mail verzonden',
 );
 
 /** Polish (Polski)
