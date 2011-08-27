@@ -3969,6 +3969,13 @@ $messages['ja'] = array(
 	'deletequeue-case-needs-review' => 'この事例には[[$1|審査]]が必要です。',
 );
 
+/** Kazakh (Cyrillic) (Қазақша (Cyrillic))
+ * @author GaiJin
+ */
+$messages['kk-cyrl'] = array(
+	'deletequeue-list-search' => 'Іздеу',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author Thearith
