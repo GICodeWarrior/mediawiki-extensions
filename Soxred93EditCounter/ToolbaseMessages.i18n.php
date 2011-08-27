@@ -958,6 +958,13 @@ $messages['km'] = array(
 	'toolbase-navigation' => 'ការណែនាំ',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Rentenirer
+ */
+$messages['ksh'] = array(
+	'toolbase-main-title' => 'Wellkumme!',
+);
+
 /** Kurdish (Latin) (Kurdî (Latin))
  * @author George Animal
  */
