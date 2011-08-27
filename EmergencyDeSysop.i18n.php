@@ -398,6 +398,7 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'emergencydesysop' => 'Dèsisopâjo d’urgence',
 	'emergencydesysop-reason' => 'Rêson du retrèt',
 	'emergencydesysop-submit' => 'Sometre',
 	'emergencydesysop-nogroups' => 'Niona',
