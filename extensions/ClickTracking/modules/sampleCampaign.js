@@ -44,6 +44,7 @@ mw.activeCampaigns.ArticleSave = {
 	// "allActive" is reserved.
 	// If this function exists, it will be apply to every user not in the "none" bucket
 	allActive: function(){
+		// FIXME: Calling trackAction() from a click handler of a button that submits a form DOES NOT WORK cross-browser
 		// Add click tracking to save
 		jQuery( '#wpSave' ).click(function(){ jQuery.trackAction( 'save' ); });
 		// Add click tracking to preview

@@ -96,16 +96,17 @@ class ClickTrackingHooks {
 		global $wgResourceModules;
 
 		$cusResourceTemplate = array(
-		'localBasePath' => $localBasePath,
-		'remoteExtPath' => $remoteExtPath,
+			'localBasePath' => $localBasePath,
+			'remoteExtPath' => $remoteExtPath,
 		);
 		$wgResourceModules["ext.UserBuckets.$name"] = array(
 			'scripts' => "$name.js",
 			'dependencies' => 'jquery.clickTracking',
 		) + $cusResourceTemplate;
 		$wgResourceModules['ext.UserBuckets']['dependencies'] = array_merge(
-										  ( array ) $wgResourceModules['ext.UserBuckets']['dependencies'],
-							                array("ext.UserBuckets.$name"));
+			( array ) $wgResourceModules['ext.UserBuckets']['dependencies'],
+			array( "ext.UserBuckets.$name" )
+		);
 	}
 
 	/**
@@ -225,9 +226,9 @@ class ClickTrackingHooks {
 						$db_status_buckets = $db_status_buckets && $db_current_bucket_insert;
 					}
 				}//ifbuckets
+				$dbw->commit();
 			}//ifrecord
 
-			$dbw->commit();
 			$retval = $db_status && $db_status_buckets;
 		}
 		if ( $wgClickTrackingLog ) {
