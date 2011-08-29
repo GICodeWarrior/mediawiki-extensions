@@ -1,6 +1,5 @@
 MediaWiki OpenID extension README.OpenID-mediawiki-extension file
-version 0.933-beta
-12 July 2011
+version 0.934-beta 20110829
 
 Homepage and manual http://www.mediawiki.org/wiki/Extension:OpenID
 
@@ -117,8 +116,8 @@ for YADIS).
 
 Download and patch of openid library:
 
-    cd $IP/extensions/OpenID
-    make
+	cd $IP/extensions/OpenID
+	make
 
 The makefile downloads the openid-php library from http://www.openidenabled.com/php-openid/
 and applies a patch to avoid PHP errors because Call-time pass-by-reference is deprecated
@@ -139,8 +138,8 @@ the bottom of the file:
 Run update.php script in in your MediaWiki maintenance folder to conditionally create
 a new table in MediaWiki database as required by the OpenID extension:
 
-    cd $IP/maintenance
-    php update.php
+	cd $IP/maintenance
+	php update.php
 
 Theoretically it should work out of the box, but you'll almost definitely want
 to set the trust root and access controls (see Configuration below).
@@ -478,10 +477,13 @@ The big changes for the future:
   into that account now
 
 == CHANGES ==
+* 0.934 fixes
+  bug 29543 After logging in with OpenID, user page link in the personal toolbar
+  pt portlet) still has the User:IP link (needs refresh to link to
+  User:Username)
 * [http://svn.wikimedia.org/viewvc/mediawiki/tags/extensions/OpenID/REL_0_8_4/ 0.8.4] (April 16, 2009) - Added provider buttons to the OpenID login page with optional icons ($wgOpenIDShowProviderIcons)
 * [http://svn.wikimedia.org/viewvc/mediawiki/tags/extensions/OpenID/REL_0_8_4_1/ 0.8.4.1] (April 16, 2009) - Post-release fix to broken icon on user's page.
 * 0.9.1 fixes for PHP > 5.3.x; fixed bugs
   bug 27419 OpenID extension: disallow new account creation for those users without "createaccount" permission
   bug 27581 3 new OpenID login page parameters: $wgOpenIDAllowManualUsername, AllowAutomaticUsername, ProposeUsernameFromSREG
   bug 18635 Allow to use User pages as OpenIDs even if user is using OpenID already
-  
