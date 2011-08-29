@@ -29,6 +29,13 @@ $messages['ar'] = array(
 	'apisvgproxy-desc' => 'يُمرّر ملفات SVG من مستودع ملفات (يمكن أن يكون بعيدًا) إلى النطاق المحلي',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'apisvgproxy-desc' => "Tresllada ficheros SVG d'un repositoriu de ficheros (posiblemente remotu) al dominiu llocal.",
+);
+
 /** Bashkir (Башҡортса)
  * @author Comp1089
  */
