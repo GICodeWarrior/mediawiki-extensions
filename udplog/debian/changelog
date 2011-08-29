@@ -1,3 +1,9 @@
+udplog (1.7-1) lucid; urgency=low
+
+  * Rewrite multicast listen support
+
+ -- Asher Feldman <afledman@wikimedia.org>  Mon, 29 Aug 2011 23:17:35 +0000
+
 udplog (1.6-1) lucid; urgency=low
 
   * Fixed account creation in postinst: create system account.

@@ -185,17 +185,15 @@ int main(int argc, char** argv)
 	IPAddress any(INADDR_ANY);
 	SocketAddress saddr(any, (unsigned short int)port);
 	Socket socket;
+	socket = *(new UDPSocket());
+	if (!socket) {
+		cerr << "Unable to open socket\n";
+		return 1;
+	}
+	socket.Bind(saddr);
 	if(strcmp("0", multicastAddr.c_str())){ //if multicast
-                socket = *(new MulticastSocket(any, port, multicastAddr.c_str()));
-        }
-        else{
-                socket = *(new UDPSocket());
-	      	if (!socket) {
-                	cerr << "Unable to open socket\n";
-                	return 1;
-        	}
-		socket.Bind(saddr);
-        }
+		socket.Mcast(multicastAddr.c_str());
+	}
 	// Process received packets
 	boost::shared_ptr<SocketAddress> address;
 	const size_t bufSize = 65536;

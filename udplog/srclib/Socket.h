@@ -62,6 +62,22 @@ public:
 		}
 	}
 
+	int Mcast(const char* multicastAddr) { 
+		IPAddress any(INADDR_ANY);
+		struct ip_mreq imreq;
+
+		bzero(&imreq, sizeof(struct ip_mreq));
+		imreq.imr_multiaddr.s_addr = inet_addr(multicastAddr);
+		imreq.imr_interface.s_addr = INADDR_ANY;
+		if (setsockopt(fd, IPPROTO_IP, IP_ADD_MEMBERSHIP, (const void *)&imreq, 
+					sizeof(struct ip_mreq))) {
+			RaiseError("Socket::Mcast");
+			return errno;
+		} else {
+			return 0;
+		}
+	}
+
 	boost::shared_ptr<SocketAddress> GetPeerAddress() {
 		if (connect(fd, SocketAddress::GetBuffer(), SocketAddress::GetBufferLength()) < 0) {
 			RaiseError("Socket::GetPeerAddress");
@@ -154,29 +170,4 @@ public:
 	}
 };
 
-
-class MulticastSocket : public Socket
-{
-public:
-        MulticastSocket(int domain = PF_INET)
-                : Socket(domain, SOCK_DGRAM, 0) {}
-
-        MulticastSocket(IPAddress & addr, unsigned int port, const char* multicastAddr)
-                : Socket(addr.GetDomain(), SOCK_DGRAM, 0)
-        {
-                struct ip_mreq imreq;
-		bzero(&imreq, sizeof(struct ip_mreq));
-		boost::shared_ptr<SocketAddress> saddr = addr.NewSocketAddress(port);
-                if (Connect(*saddr)) {
-                        good = false;
-                }
-        	imreq.imr_multiaddr.s_addr = inet_addr(multicastAddr);
-   		imreq.imr_interface.s_addr = INADDR_ANY;
-
-   		// JOIN multicast group on default interface
-       		setsockopt(fd, IPPROTO_IP, IP_ADD_MEMBERSHIP, 
-                     (const void *)&imreq, sizeof(struct ip_mreq));
-   
-	}
-};
 #endif
