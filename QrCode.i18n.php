@@ -24,6 +24,13 @@ $messages['qqq'] = array(
 	'qrcode-desc' => 'To find out what "QR code" is and what it is called in your language, see the "in other languages" (interwiki) links at [[wikipedia:QR Code]]',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'qrcode-desc' => 'Xenera y amiesta imaxes QR Code a una páxina wiki',
+);
+
 /** Azerbaijani (Azərbaycanca)
  * @author Sortilegus
  */
