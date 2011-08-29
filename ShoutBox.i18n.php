@@ -46,6 +46,19 @@ $messages['de'] = array(
 	'shoutbox-illegal-height' => 'Es wurde der ungültige <i>height</i>-Parameter „<tt>$1</tt>“ angegeben.',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'shoutbox-desc' => 'Engade unha función analítica para a incorporación da súa propia caixa de mensaxes curtas',
+	'shoutbox-missing-params' => 'Falta un parámetro necesario para a caixa de mensaxes curtas.',
+	'shoutbox-bad-params' => 'A caixa de mensaxes curtas recibiu un parámetro incorrecto.',
+	'shoutbox-unparsable-param-string' => 'A caixa de mensaxes curtas recibiu unha secuencia de parámetros non analizable "<tt>$1</tt>".',
+	'shoutbox-bad-id' => 'A caixa de mensaxes curtas recibiu a identificación incorrecta "<tt>$1</tt>".',
+	'shoutbox-illegal-width' => 'A caixa de mensaxes curtas recibiu o parámetro de largo incorrecto "$1".',
+	'shoutbox-illegal-height' => 'A caixa de mensaxes curtas recibiu o parámetro de alto incorrecto "$1".',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
