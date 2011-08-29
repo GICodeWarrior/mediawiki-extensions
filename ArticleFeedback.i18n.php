@@ -2685,9 +2685,9 @@ $messages['ia'] = array(
 	'articlefeedback-form-panel-success' => 'Salveguardate con successo',
 	'articlefeedback-form-panel-expiry-title' => 'Tu evalutationes ha expirate',
 	'articlefeedback-form-panel-expiry-message' => 'Per favor re-evaluta iste pagina e submitte nove evalutationes.',
-	'articlefeedback-report-switch-label' => 'Vider evalutationes del pagina',
+	'articlefeedback-report-switch-label' => 'Monstrar evalutationes',
 	'articlefeedback-report-panel-title' => 'Evalutationes del pagina',
-	'articlefeedback-report-panel-description' => 'Evalutationes medie actual.',
+	'articlefeedback-report-panel-description' => 'Le media actual de evalutationes.',
 	'articlefeedback-report-empty' => 'Nulle evalutation',
 	'articlefeedback-report-ratings' => '$1 evalutationes',
 	'articlefeedback-field-trustworthy-label' => 'Digne de fide',
@@ -3414,9 +3414,9 @@ Probéiert w.e.g. méi spéit nach emol.',
 * Säite mat de beschten / schlechtste Bewäertungen: Artikel déi mindestens zéng Bewäertungen während de leschte 24 Stonne kritt hunn. D'Durchschnëttswäerter sinn dobäi de Mëttelwäert vun alle Bewäertunge vun de leschte 24 Stonnen.
 * Aktuell schlechte Bewäertungen: Artikel déi während de leschte 24 Stonne 70 % oder méi schlecht Bewäertungen (zwee Stären oder manner) an enger Kategorien kritt hunn. Nëmmen Artikel mat mindestens zéng Bewäertunge während de leschte 24 Stonne ginn dobäi berücksichtegt",
 	'articlefeedback-disable-preference' => 'De Widget vun der Artikelbewäertung net op de Säite weisen',
-	'articlefeedback-emailcapture-response-body' => "Bonjour! 
+	'articlefeedback-emailcapture-response-body' => 'Bonjour! 
 
-Merci fir Ären Interessie fir d'Verbesserung vu(n) {{SITENAME}}.
+Merci fir Ären Interessie fir {{SITENAME}} ze verbesseren.
 
 Huelt Iech w.e.g. een Ament Zäit fir Är Mailadress ze confirméieren, andeem Dir op dëse Link klickt:
 
@@ -3434,8 +3434,8 @@ Mir mellen eis geschwënn, fir Iech ze soe, wéi Dir hëllefe kënnt fir {{SITEN
 
 Wann Dir dës Ufro net ausgeléist hutt, ignoréiert dës Mail einfach. Mir schécken Iech dann och näischt méi.
 
-E schéine Bonjour a villmols merci,
-Är {{SITENAME}}-Equipe",
+E schéine Bonjour a villmools Merci,
+Är {{SITENAME}}-Equipe',
 );
 
 /** Limburgish (Limburgs)
