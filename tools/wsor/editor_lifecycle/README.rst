@@ -43,7 +43,7 @@ Workflow
 
 1. Fetch user rates using `ratesnobots.sql`::
 
-   mysql -BNe < ratesnobots.sql > rates.tsv
+   mysql -BN < ratesnobots.sql > rates.tsv
 
 Note: To be able to run this query, you must be able to access an internal
 resource of the Wikimedia Foundation, see here for more information:
@@ -62,9 +62,12 @@ page, you can recreate this information from a public dump of the
 
    SELECT DISTINCT ug_user FROM user_groups where ug_group = "bot"
 
-2. Use `mkcohort` to make cohorts. This will create a file where each line is a
-   cohort, specified by the first two columns. Columns after the second are the
-   IDs of users.
+2. Use `mkcohort` to define the cohorts. You can specify the temporal resolution
+   (yearly, daily, monthly) and other parameters such as minimum edit count and
+   minimum lifespan. This will create a tab-separated file where each line is a
+   cohort. The cohort specification (period, activity rate) is reported in the
+   first two columns. All columns after the first two (if any) represent IDs of
+   users.
 
 3. Use `fetchrates` to fetch daily edit counts using the cohort data. See
    `sge/rates.sh` if you want to run this query from within the toolserver. 
