@@ -113,9 +113,9 @@ class ContributionHistory extends SpecialPage {
 		);
 		$alt = true;
 		foreach ( $res as $row ) {
-            if ( $this->isTiny( $row ) ) {
-                continue; // Skip over micro payments generally < $1
-            }
+			if ( $this->isTiny( $row ) ) {
+				continue; // Skip over micro payments generally < $1
+			}
 			$contributionId = $row['contribution_id'];
 			$name = $this->formatName( $row );
 
