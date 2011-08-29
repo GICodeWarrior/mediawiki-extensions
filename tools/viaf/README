@@ -1,9 +1,16 @@
 viaf.user.js, a Greasemonkey script
 which detects VIAF numbers on web pages and creates related links
 
-*** detailed information page will follow ***
+Provisionally homepages and screenshots:
+
+	http://de.wikipedia.org/wiki/Wikipedia:WikiConvention/ \
+	Programm/VIAF/en#Greasemonkey_script (en)
+
+	http://de.wikipedia.org/wiki/Wikipedia:WikiConvention/ \
+	Programm/VIAF#Greasemonkey-Skript (de)
 
 Version: 0.203
+Last updated: 20110829
 
 What are VIAF numbers ?
 
@@ -45,6 +52,10 @@ versions of it and prompts the user in such case.
 It does not automatically install a newer version.
 
 == To Do ==
-* revise and enable the update mechanism
+* check detection and algorithm of VIAF2...VIAF9 numbers
+* check why it does not work inside <span class=plainlinks> </span> tags
 * add a user-interface or mechanism to enable/disable the summary alert box
   without the need to change program code
+* revise and enable the update mechanism
+* add a ajax request module to fetch author names for numbers from toolserver
+  and show them live on the current page; define a JSONP data format
