@@ -409,6 +409,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 		}
 
 		$wgUser = $user;
+		RequestContext::getMain()->setUser( $wgUser );
 
 		$this->clearValues();
 
@@ -471,6 +472,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 			if ( $user instanceof User ) {
 				$this->updateUser( $user, $sreg, $ax ); # update from server
 				$wgUser = $user;
+				RequestContext::getMain()->setUser( $wgUser );
 				$this->displaySuccessLogin( $openid );
 			} else {
 				// if we are hardcoding nickname, and a valid e-mail address was returned, create a user with this name
