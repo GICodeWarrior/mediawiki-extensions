@@ -16,6 +16,13 @@ $messages['en'] = array(
 	'creativecommonsrdf-desc' => 'CreativeCommons RDF-metadata',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'creativecommonsrdf-desc' => 'RDF de metadatos de CreativeCommons',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Wizardist
  */
