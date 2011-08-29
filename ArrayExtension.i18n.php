@@ -35,6 +35,13 @@ $messages['ar'] = array(
 	'arrayext-desc' => 'تخزين وحساب مصفوفات مسماة',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'arrayext-desc' => 'Almacenar y calcular matrices con nome',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  */
