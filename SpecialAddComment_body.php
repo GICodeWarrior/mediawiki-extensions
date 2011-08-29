@@ -84,7 +84,8 @@ class SpecialAddComment extends UnlistedSpecialPage {
 		$ep->setContextTitle( $title );
 		$ep->importFormData( $request );
 		$details = array(); // Passed by ref
-		$retval = $ep->internalAttemptSave( $details );
+		$status = $ep->internalAttemptSave( $details );
+		$retval = $status->value;
 
 		switch ( $retval ) {
 		case EditPage::AS_SUCCESS_UPDATE:
