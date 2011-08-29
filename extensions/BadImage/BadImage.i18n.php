@@ -2945,11 +2945,12 @@ $messages['yue'] = array(
  * @author PhiLiP
  * @author Shinjiman
  * @author Wmr89502270
+ * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
 	'badimages' => '不雅图像列表',
 	'badimage-desc' => '为MediaWiki增扩{{int:badimages}}功能',
-	'badimages-add-btn' => '加入',
+	'badimages-add-btn' => '添加',
 	'badimages-added' => '已经加入 $1 到列表中。',
 	'badimages-count' => "共有'''$1'''张图像被列入不雅图像列表。",
 	'badimages-name' => '名称：',

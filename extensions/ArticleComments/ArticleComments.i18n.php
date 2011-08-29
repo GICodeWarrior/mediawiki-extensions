@@ -1863,6 +1863,7 @@ $messages['sv'] = array(
 	'article-comments-commenter-said' => '$1 sa ...',
 	'article-comments-summary' => 'Kommentar från $1 - via ArticleComments-tillägg',
 	'article-comments-submission-succeeded' => 'Kommentarinlämning lyckades',
+	'article-comments-submission-success' => 'Du har lämnat en kommentar på "[[$1]]"',
 	'article-comments-submission-view-all' => 'Du kan visa [[$1|alla kommentarer på sidan]]',
 	'article-comments-user-is-blocked' => 'Ditt användarkonto är för närvarande blockerat  från att redigera "[[$1]] ".',
 	'article-comments-comment-missing-name-parameter' => 'Namn saknas',

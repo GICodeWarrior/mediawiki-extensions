@@ -184,6 +184,24 @@ $messages['de'] = array(
 	'wikitweet-timeago' => 'Vor $1',
 	'wikitweet-inthefuture' => 'In der Zukunft.',
 	'wikitweet-fewsecondsago' => 'Vor wenigen Sekunden',
+	'wikitweet-status' => 'Status:',
+	'wikitweet-status0' => 'Diskussion',
+	'wikitweet-status1' => 'Ereignis',
+	'wikitweet-status2' => 'Warnung',
+	'wikitweet-status3' => 'Alarmierung',
+	'wikitweet-resolve' => 'beheben',
+	'wikitweet-concerns' => 'Betrifft dich',
+	'wikitweet-comment' => 'Kommentar',
+	'wikitweet-subscribers' => 'Abonnenten:',
+	'wikitweet-hourly' => 'Stündlich',
+	'wikitweet-perperson' => 'Pro Person',
+	'wikitweet-inresponseto' => 'Als Antwort auf:',
+	'wikitweet-from' => 'von',
+	'wikitweet-in' => 'in',
+	'wikitweet-directlink' => 'Direkter Link:',
+	'wikitweet-mailsent' => 'E-Mail versandt',
+	'wikitweet-viaroom' => 'über Raum',
+	'wikitweet-alertsolved' => 'eine deiner Alarmierungen wurde behoben in',
 );
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
@@ -271,6 +289,10 @@ $messages['frp'] = array(
 	'wikitweet-back-timeline' => 'Retôrn u flux',
 	'wikitweet-tweets-from-room' => 'Tweets de la sâla',
 	'wikitweet-timeago' => 'cen fât $1',
+	'wikitweet-status2' => 'Avèrtissement',
+	'wikitweet-resolve' => 'solucionar',
+	'wikitweet-comment' => 'Comentèro',
+	'wikitweet-mailsent' => 'mèssâjo mandâ',
 );
 
 /** Galician (Galego)
@@ -298,6 +320,24 @@ $messages['gl'] = array(
 	'wikitweet-timeago' => 'hai $1',
 	'wikitweet-inthefuture' => 'No futuro!',
 	'wikitweet-fewsecondsago' => 'hai uns segundos',
+	'wikitweet-status' => 'Estado:',
+	'wikitweet-status0' => 'Conversa',
+	'wikitweet-status1' => 'Evento',
+	'wikitweet-status2' => 'Aviso',
+	'wikitweet-status3' => 'Alerta',
+	'wikitweet-resolve' => 'resolver',
+	'wikitweet-concerns' => 'Está involucrado',
+	'wikitweet-comment' => 'Comentario',
+	'wikitweet-subscribers' => 'Subscritores:',
+	'wikitweet-hourly' => 'Cada hora',
+	'wikitweet-perperson' => 'Por persoa',
+	'wikitweet-inresponseto' => 'En resposta a:',
+	'wikitweet-from' => 'de',
+	'wikitweet-in' => 'en',
+	'wikitweet-directlink' => 'Ligazón directa:',
+	'wikitweet-mailsent' => 'mensaxe enviada',
+	'wikitweet-viaroom' => 'a través da sala',
+	'wikitweet-alertsolved' => 'unha das súas alertas foi resolta en',
 );
 
 /** Interlingua (Interlingua)

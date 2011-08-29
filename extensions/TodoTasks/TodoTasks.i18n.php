@@ -68,6 +68,7 @@ $messages['af'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'tasklist' => 'قائمة المهام',
@@ -84,7 +85,7 @@ $messages['ar'] = array(
 لقائمة بالمشاريع الصحيحة، انظر [[MediaWiki:TodoTasksValidProjects]].",
 	'tasklistbyprojname' => "المهام الموكلة ل'''%s'''",
 	'tasklistchooseproj' => 'اختر المشروع:',
-	'tasklistprojdisp' => 'عرض',
+	'tasklistprojdisp' => 'اعرض',
 	'tasklistbyname' => '== قائمة العمل ل%s ==',
 	'tasklistnowguseprojects' => 'أنت ضبطت $wgUseProjects ك"false" ولا يمكنك استخدام هذه الصفحة.',
 	'tasklistnoprojects' => "خطأ: يبدو أنك فعلت '''\$wgUseProjects'''، لكن لم تنشيء [[MediaWiki:TodoTasksValidProjects]]. انظر [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 تعليمات التنصيب] لمزيد من التفاصيل.",

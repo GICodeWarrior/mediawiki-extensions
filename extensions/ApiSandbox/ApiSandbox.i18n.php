@@ -530,6 +530,7 @@ $messages['or'] = array(
  * @author Woytecr
  */
 $messages['pl'] = array(
+	'apisb-no-js' => "'''Błąd''': ta funkcja wymaga JavaScript.",
 	'apisb-parameters' => 'Parametry',
 	'apisb-result' => 'Rezultat',
 	'apisb-request-url' => 'Żądanie URL:',

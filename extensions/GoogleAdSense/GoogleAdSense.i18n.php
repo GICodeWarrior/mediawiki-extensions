@@ -60,6 +60,13 @@ $messages['arz'] = array(
 	'googleadsense-desc' => 'يضيف [http://www.google.com/adsense جوجل أدسنس] إلى الشريط الجانبي',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'googleadsense-desc' => 'Amiesta [http://www.google.com/adsense Google AdSense] a la barra llateral',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */

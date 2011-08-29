@@ -944,8 +944,11 @@ $messages['ka'] = array(
 
 /** Kazakh (Cyrillic) (Қазақша (Cyrillic))
  * @author GaiJin
+ * @author Kaztrans
  */
 $messages['kk-cyrl'] = array(
+	'vector-editwarning-warning' => 'Басқа бетке өтсеңіз сіздің жазған соңғы өңдемелеріңіз жойылуы мүмкін. 
+Егер сiз жүйеде тiркелсеңiз, онда сiз баптауларыңыздағы «Өңдеу» бөлігіне кіріп, бұл ескертуді өшіре аласыз.',
 	'vector-simplesearch-search' => 'Іздеу',
 );
 

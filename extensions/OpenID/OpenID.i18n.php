@@ -1903,6 +1903,7 @@ Et kykenisi kirjautumaan ilman OpenID-tunnusta.',
 
 /** French (Français)
  * @author Crochet.david
+ * @author Gomoko
  * @author Grondin
  * @author IAlex
  * @author McDutchie
@@ -1933,7 +1934,8 @@ Veuillez vous mettre en rapport avec un [[Special:ListUsers/sysop|administrateur
 
 Votre OpenID est $2.
 
-Cet OpenID et les autres, tout comme un mot de passe facultatif, peuvent être suivis dans vos [[Special:Preferences|préférences]].",
+Cet OpenID et d'autres optionnels peuvent être gérés dans l'[[Special:Preferences#prefsection-openid|onglet OpenID]] de vos préférences.<br />
+Un mot de passe facultatif de compte peut être ajouté dans votre [[Special:Preferences#prefsection-personal|profil utilisateur]].",
 	'openidusernameprefix' => 'Utilisateur OpenID',
 	'openidserverlogininstructions' => '$3 demande que vous entriez votre mot de passe pour votre page $1 utilisateur $2 (URL OpenID)',
 	'openidtrustinstructions' => 'Cochez si vous désirez partager les données avec $1.',
@@ -1966,7 +1968,7 @@ Cet OpenID et les autres, tout comme un mot de passe facultatif, peuvent être s
 	'openidalreadyloggedin' => 'Vous êtes déjà connecté.',
 	'openidalreadyloggedintext' => "'''Vous êtes déjà connecté, $1 !'''
 
-Vous pouvez gérer, (voir, supprimer et en ajouter d'autres) OpenID dans l'onglet de [[Special:Preferences|préférences]].",
+Vous pouvez gérer (voir, supprimer et en ajouter d'autres) OpenID dans l'onglet [[Special:Preferences#prefsection-openid|OpenID]] de vos préférences.",
 	'openidnousername' => 'Aucun nom d’utilisateur n’a été indiqué.',
 	'openidbadusername' => 'Un mauvais nom d’utilisatteur a été indiqué.',
 	'openidautosubmit' => 'Cette page comprend un formulaire qui pourrait être envoyé automatiquement si vous avez activé JavaScript.

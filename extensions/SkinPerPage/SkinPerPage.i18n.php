@@ -540,9 +540,10 @@ $messages['yue'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Shinjiman
+ * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
-	'skinperpage-desc' => '加入<code>&lt;skin&gt;</code>标签在每一页面中使用不同的皮肤',
+	'skinperpage-desc' => '添加“<code>&lt;skin&gt;</code>”标签在每一页面中使用不同的皮肤',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

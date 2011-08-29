@@ -399,6 +399,8 @@ $messages['no'] = array(
  * @author Woytecr
  */
 $messages['pl'] = array(
+	'bookmanager-desc' => 'Narzędzia książek',
+	'bm-booktools-section' => 'Narzędzia książki',
 	'bm-randomchapter-link' => 'Losowy rozdział',
 	'bm-printversion' => 'Wersja do druku',
 	'bm-printversion-desc' => 'Generuje [[Special:PrintVersion|wersję do druku]] książki',

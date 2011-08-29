@@ -367,23 +367,70 @@ $messages['frp'] = array(
  */
 $messages['gl'] = array(
 	'collabwatchlist' => 'Lista de vixilancia colaborativa',
+	'collabwatchlist-desc' => 'Proporciona listas de vixilancia colaborativas baseadas en categorías',
+	'specialcollabwatchlist' => 'Páxina especial da lista de vixilancia colaborativa',
+	'collabwatchlist-details' => '{{PLURAL:$1|$1 categoría ou páxina|$1 categorías ou páxinas}} nesta lista de vixilancia colaborativa.',
 	'collabwatchlisttagselect' => 'Etiqueta',
 	'collabwatchlisttagcomment' => 'Comentario',
+	'collabwatchlistsettagbutton' => 'Aplicar a etiqueta',
 	'collabwatchlisttools-view' => 'Visualización',
 	'collabwatchlisttools-edit' => 'Editar as categorías',
+	'collabwatchlisttools-rawCategories' => 'Edición normal de categorías',
+	'collabwatchlisttools-rawTags' => 'Edición normal de etiquetas',
+	'collabwatchlisttools-rawUsers' => 'Edición normal de usuarios',
 	'collabwatchlisttools-delete' => 'Borrar',
 	'collabwatchlistsall' => 'Todas as listas',
+	'collabwatchlistfiltertags' => 'Agochar as etiquetas',
 	'collabwatchlistedit-users-raw-submit' => 'Gardar',
+	'collabwatchlistedit-raw-title' => 'Edición normal de categorías',
+	'collabwatchlistedit-tags-raw-title' => 'Edición normal de etiquetas',
+	'collabwatchlistedit-users-raw-title' => 'Edición normal de usuarios',
+	'collabwatchlistedit-users-last-owner' => 'Debe haber, polo menos, un propietario',
+	'collabwatchlistedit-numitems' => 'Esta lista de vixilancia colaborativa contén {{PLURAL:$1|1 categoría|$1 categorías}}',
+	'collabwatchlistedit-noitems' => 'Esta lista de vixilancia colaborativa non contén categorías.',
+	'collabwatchlistedit-tags-numitems' => 'Esta lista de vixilancia colaborativa contén {{PLURAL:$1|1 etiqueta|$1 etiquetas}}',
+	'collabwatchlistedit-tags-noitems' => 'Esta lista de vixilancia colaborativa non contén etiquetas.',
+	'collabwatchlistedit-users-numitems' => 'Esta lista de vixilancia colaborativa contén {{PLURAL:$1|1 usuario|$1 usuarios}}',
+	'collabwatchlistedit-users-noitems' => 'Esta lista de vixilancia colaborativa non contén usuarios.',
+	'collabwatchlistedit-raw-legend' => 'Edición normal das categorías da lista de vixilancia colaborativa',
+	'collabwatchlistedit-users-raw-legend' => 'Edición normal dos usuarios da lista de vixilancia colaborativa',
+	'collabwatchlistedit-tags-raw-legend' => 'Edición normal das etiquetas da lista de vixilancia colaborativa',
+	'collabwatchlistedit-raw-explain' => 'A continuación están as categorías na lista de vixilancia colaborativa; pode editalas engadíndoas ou retirándoas da lista.',
+	'collabwatchlistedit-tags-raw-explain' => 'A continuación están as etiquetas na lista de vixilancia colaborativa; pode editalas engadíndoas ou retirándoas da lista.',
+	'collabwatchlistedit-users-raw-explain' => 'A continuación están os usuarios na lista de vixilancia colaborativa; pode editalos engadíndoos ou retirándoos da lista.',
 	'collabwatchlistedit-raw-titles' => 'Categorías:',
 	'collabwatchlistedit-tags-raw-titles' => 'Etiquetas:',
 	'collabwatchlistedit-users-raw-titles' => 'Usuarios:',
 	'collabwatchlistedit-normal-title' => 'Editar as categorías',
+	'collabwatchlistedit-normal-legend' => 'Eliminar categorías da lista de vixilancia colaborativa',
+	'collabwatchlistedit-normal-explain' => 'As categorías da súa lista de vixilancia colaborativa están a continuación.',
 	'collabwatchlistedit-tags-raw-submit' => 'Gardar',
+	'collabwatchlistedit-normal-done' => '{{PLURAL:$1|Eliminouse 1 categoría|Elimináronse $1 categorías}} da lista de vixilancia colaborativa:',
+	'collabwatchlistedit-tags-raw-done' => 'Actualizouse a lista de vixilancia colaborativa.',
+	'collabwatchlistedit-users-raw-done' => 'Actualizouse a lista de vixilancia colaborativa.',
+	'collabwatchlistedit-tags-raw-added' => '{{PLURAL:$1|Engadiuse unha etiqueta|Engadíronse $1 etiquetas}}:',
+	'collabwatchlistedit-users-raw-added' => '{{PLURAL:$1|Engadiuse un usuario|Engadíronse $1 usuarios}}:',
+	'collabwatchlistedit-tags-raw-removed' => '{{PLURAL:$1|Eliminouse unha etiqueta|Elimináronse $1 etiquetas}}:',
+	'collabwatchlistedit-users-raw-removed' => '{{PLURAL:$1|Eliminouse un usuario|Elimináronse $1 usuarios}}:',
+	'collabwatchlistinverttags' => 'Inverter o filtro de etiquetas',
 	'collabwatchlistpatrol' => 'Patrullar edicións',
+	'collabwatchlisttools-newList' => 'Nova lista de vixilancia colaborativa',
+	'collabwatchlistdelete-legend' => 'Borrar unha lista de vixilancia colaborativa',
+	'collabwatchlistdelete-explain' => 'Ao borrar unha lista de vixilancia colaborativa eliminará todo indicio desa lista. As etiquetas aplicadas nas edicións consérvanse.',
 	'collabwatchlistdelete-submit' => 'Borrar',
+	'collabwatchlistdelete-title' => 'Borrar a lista de vixilancia colaborativa',
+	'collabwatchlistedit-set-tags-numitems' => 'Esta lista de vixilancia colaborativa ten {{PLURAL:$1|1 etiqueta aplicada|$1 etiquetas aplicadas}}',
+	'collabwatchlistedit-set-tags-noitems' => 'Esta lista de vixilancia colaborativa non ten etiquetas aplicadas',
+	'collabwatchlistnew-legend' => 'Crear unha nova lista de vixilancia colaborativa',
+	'collabwatchlistnew-explain' => 'O nome da lista ten que ser único.',
 	'collabwatchlistnew-name' => 'Nome da lista',
 	'collabwatchlistnew-submit' => 'Crear',
+	'collabwatchlistedit-raw-done' => 'Actualizouse a lista de vixilancia colaborativa',
+	'collabwatchlistedit-raw-added' => '{{PLURAL:$1|Engadiuse 1 páxina ou categoría|Engadíronse $1 páxinas ou categorías}}:',
+	'collabwatchlistedit-raw-removed' => '{{PLURAL:$1|Eliminouse 1 páxina ou categoría|Elimináronse $1 páxinas ou categorías}}:',
 	'collabwatchlistedit-normal-submit' => 'Gardar',
+	'collabwatchlistshowhidelistusers' => '$1 os usuarios da lista',
+	'tog-collabwatchlisthidelistusers' => 'Agochar as edicións dos usuarios da lista de vixilancia colaborativa',
 );
 
 /** Swiss German (Alemannisch)
@@ -742,6 +789,8 @@ $messages['no'] = array(
  * @author Woytecr
  */
 $messages['pl'] = array(
+	'collabwatchlisttagselect' => 'Etykieta',
+	'collabwatchlisttagcomment' => 'Komentarz',
 	'collabwatchlisttools-view' => 'Wyświetl',
 	'collabwatchlisttools-edit' => 'Edytuj kategorie',
 	'collabwatchlisttools-delete' => 'Usuń',
@@ -755,6 +804,7 @@ $messages['pl'] = array(
 	'collabwatchlistdelete-submit' => 'Usuń',
 	'collabwatchlistnew-name' => 'Nazwa listy',
 	'collabwatchlistnew-submit' => 'Utwórz',
+	'collabwatchlistedit-raw-added' => '{{PLURAL:$1|1 strona lub kategoria została dodana|$1 stron lub kategorii zostało dodanych}}:',
 	'collabwatchlistedit-normal-submit' => 'Zapisz',
 );
 
@@ -827,6 +877,13 @@ $messages['pt'] = array(
 	'collabwatchlistedit-normal-submit' => 'Gravar',
 	'collabwatchlistshowhidelistusers' => '$1 utilizadores da lista',
 	'tog-collabwatchlisthidelistusers' => 'Esconder edições dos utilizadores da lista colaborativa de páginas vigiadas',
+);
+
+/** Russian (Русский)
+ * @author Alexandr Efremov
+ */
+$messages['ru'] = array(
+	'collabwatchlistedit-normal-submit' => 'Сохранить',
 );
 
 /** Telugu (తెలుగు)

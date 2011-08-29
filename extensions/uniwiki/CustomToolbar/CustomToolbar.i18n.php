@@ -186,13 +186,14 @@ $messages['am'] = array(
  * @author Meno25
  * @author OsamaK
  * @author Ouda
+ * @author Zack wadghiri
  */
 $messages['ar'] = array(
 	'ct-desc' => 'يضيف شريط أدوات ممدد',
-	'ct_bold_sample' => 'نص عريض',
-	'ct_bold_tip_ins' => 'إدراج نص عريض',
+	'ct_bold_sample' => 'نص غليظ',
+	'ct_bold_tip_ins' => 'إدراج نص غليظ',
 	'ct_bold_tip_wrap' => 'جعل هذا النص عريضا',
-	'ct_bold_caption' => 'عريض',
+	'ct_bold_caption' => 'غليظ',
 	'ct_italic_sample' => 'نص مائل',
 	'ct_italic_tip_ins' => 'إدراج نص مائل',
 	'ct_italic_tip_wrap' => 'اجعل هذا النص مائلا',

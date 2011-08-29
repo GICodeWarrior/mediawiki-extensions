@@ -24,6 +24,13 @@ $messages['de'] = array(
 	'subpagesortkey-desc' => 'Ermöglicht die Änderung des Standardsortierkriteriums einer Seite auf Basis ihres Namens zu dem ihrer Unterseite',
 );
 
+/** French (Français)
+ * @author Gomoko
+ */
+$messages['fr'] = array(
+	'subpagesortkey-desc' => "Modifie la clé de tri par défaut d'une page pour qu'elle soit basée sur le nom de sa sous-page plutôt que sur son nom complet",
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

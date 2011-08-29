@@ -16,6 +16,13 @@ $messages['en'] = array(
 
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'automaticboardwelcome-desc' => 'Publica automaticamente [[MediaWiki:User-board-welcome-message|un mensaxe de bienvenida]] nos tableros de los nuevos usuarios dempués de crear la cuenta',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
@@ -77,5 +84,12 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'automaticboardwelcome-desc' => 'Sender automatisk [[MediaWiki:User-board-welcome-message|en velkomstmelding] til nye brukeres brukertavler et opprettelse av konto',
+);
+
+/** Polish (Polski)
+ * @author Woytecr
+ */
+$messages['pl'] = array(
+	'automaticboardwelcome-desc' => 'Automatycznie wysyła [[MediaWiki:User-board-welcome-message|wiadomość powitalną]] nowym użytkownikom na ich stronach dyskusji po ukończeniu rejestracji',
 );
 

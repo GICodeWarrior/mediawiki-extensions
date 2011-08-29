@@ -153,6 +153,8 @@ See also:
 	'moodbar-header-type' => '{{Identical|Type}}',
 	'moodbar-header-page' => '{{Identical|Page}}',
 	'moodbar-header-user' => '{{Identical|User}}',
+	'moodbar-header-comment' => '{{Identical|Comment}}',
+	'moodbar-header-namespace' => '{{Identical|Namespace}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -160,6 +162,13 @@ See also:
  */
 $messages['af'] = array(
 	'moodbar-desc' => 'Laat spesifieke gebruikers toe om hulle gemoedstoestand aan die webwerf se operateur terug te stuur',
+);
+
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'moodbar-success-title' => 'شكرا!',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
@@ -212,6 +221,10 @@ $messages['be-tarask'] = array(
 	'moodbar-header-system' => 'Тып сыстэмы',
 	'moodbar-header-locale' => 'Моўныя асаблівасьці',
 	'moodbar-header-useragent' => 'Браўзэр',
+	'moodbar-header-comment' => 'Камэнтары',
+	'moodbar-header-user-editcount' => 'Колькасьць рэдагаваньняў удзельнікаў',
+	'moodbar-header-namespace' => 'Прастора назваў',
+	'moodbar-header-own-talk' => 'Уласная старонка гутарак',
 );
 
 /** German (Deutsch)
@@ -344,29 +357,34 @@ $messages['es'] = array(
 
 /** French (Français)
  * @author Crochet.david
+ * @author Gomoko
  * @author Hashar
  * @author Tpt
  */
 $messages['fr'] = array(
-	'moodbar-desc' => 'Permet aux utilisateurs spécifiés d’envoyer leur retour d’« humeur » à l’exploitant du site',
+	'moodbar-desc' => "Permet aux utilisateurs spécifiés de fournir leur ressenti sur leur expérience d'édition",
 	'moodbar-trigger-feedback' => 'Vos commentaires sur la modification',
 	'moodbar-trigger-share' => 'Partagez votre expérience',
 	'moodbar-trigger-editing' => 'Modifier $1 ...',
 	'moodbar-close' => '(fermer)',
 	'moodbar-intro-feedback' => "Modifier $1 m'a rendu ...",
+	'moodbar-intro-share' => "Mon expérience sur $1 m'a rendu...",
 	'moodbar-intro-editing' => "Modifier $1 m'a rendu ...",
 	'moodbar-type-happy-title' => 'Heureux',
 	'moodbar-type-sad-title' => 'Triste',
 	'moodbar-type-confused-title' => 'Confus',
 	'tooltip-moodbar-what' => 'En savoir plus sur cette fonctionnalité',
 	'moodbar-what-label' => "Qu'est-ce que c'est?",
-	'moodbar-what-content' => "Cette fonction est conçue pour aider la communauté Wikipédia à comprendre le ressenti des personnes éditant l'encyclopédie.
-Pour plus d'informations consulter la $1 .",
+	'moodbar-what-content' => "Cette fonctionnalité est conçue pour aider la communauté à comprendre le ressenti des personnes éditant le site.
+Pour plus d'information, consultez la $1.",
 	'moodbar-what-link' => 'page décrivant la fonction',
+	'moodbar-privacy' => 'En soumettant, vous acceptez une transparence en accord avec ces $1.',
+	'moodbar-privacy-link' => 'conditions',
 	'moodbar-disable-link' => 'Je ne suis pas intéressé. Désactiver cette fonctionnalité.',
 	'moodbar-form-title' => 'Parce que ...',
 	'moodbar-form-note' => '140 caractères maximum',
 	'moodbar-form-note-dynamic' => '$1 caractères restants',
+	'moodbar-form-submit' => 'Partager son ressenti',
 	'moodbar-form-policy-text' => 'En soumettant, $1',
 	'moodbar-form-policy-label' => 'notre politique',
 	'moodbar-loading-title' => 'Partager...',
@@ -374,15 +392,31 @@ Pour plus d'informations consulter la $1 .",
 	'moodbar-error-title' => 'Oups !',
 	'moodbar-success-subtitle' => 'Partager votre expérience  nous aide à améliorer $1.',
 	'moodbar-error-subtitle' => "Quelque chose s'est mal passé ! Essayer de partager vos commentaires plus tard.",
+	'right-moodbar-view' => 'Afficher et exporter vos ressentis MoodBar',
+	'moodbar-admin-title' => 'Ressenti MoodBar',
+	'moodbar-admin-intro' => "Cette page vous permet d'afficher les ressentis fournis avec ModdBar.",
 	'moodbar-admin-empty' => 'Aucun résultat',
+	'moodbar-header-id' => 'ID de ressenti',
+	'moodbar-header-timestamp' => 'Horodatage',
+	'moodbar-header-type' => 'Type',
 	'moodbar-header-page' => 'Page',
+	'moodbar-header-usertype' => "Type d'utilisateur",
 	'moodbar-header-user' => 'Utilisateur',
+	'moodbar-header-editmode' => 'Mode édition',
+	'moodbar-header-bucket' => 'Ensemble de test',
+	'moodbar-header-system' => 'Type de système',
+	'moodbar-header-locale' => 'Régional',
 	'moodbar-header-useragent' => 'Agent utilisateur',
+	'moodbar-header-comment' => 'Commentaires',
 	'moodbar-header-user-editcount' => "Compteur d'édition",
 	'moodbar-header-namespace' => 'Espace de noms',
+	'moodbar-header-own-talk' => 'Page de discussion personnelle',
 	'moodbar-type-happy' => 'Heureux',
 	'moodbar-type-sad' => 'Triste',
+	'moodbar-type-confused' => 'Confus',
+	'moodbar-user-anonymized' => 'Anonymisé',
 	'moodbar-user-ip' => 'Adresse IP',
+	'moodbar-user-user' => 'Utilisateur enregistré',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -423,7 +457,7 @@ $messages['gl'] = array(
 	'moodbar-desc' => 'Permite que os usuarios especificados dean a súa opinión sobre a súa experiencia de edición',
 	'moodbar-trigger-feedback' => 'Comentarios sobre a edición',
 	'moodbar-trigger-share' => 'Comparta a súa experiencia',
-	'moodbar-trigger-editing' => 'Usando $1...',
+	'moodbar-trigger-editing' => 'Editar $1...',
 	'moodbar-close' => '(pechar)',
 	'moodbar-intro-feedback' => 'Editar $1 fixo que agora estea...',
 	'moodbar-intro-share' => 'A miña experiencia en $1 fixo que agora estea...',
@@ -436,15 +470,23 @@ $messages['gl'] = array(
 	'moodbar-what-content' => 'Esta característica está deseñada para axudar á comunidade a entender a experiencia da xente á hora de editar o sitio.
 Para obter máis información, bótelle unha ollada á $1 .',
 	'moodbar-what-link' => 'páxina da característica',
+	'moodbar-privacy' => 'Se envía os seus comentarios, acepta publicalos baixo estes $1.',
 	'moodbar-privacy-link' => 'termos',
 	'moodbar-disable-link' => 'Non estou interesado. Desactivar esta característica.',
 	'moodbar-form-title' => 'Porque...',
 	'moodbar-form-note' => '140 caracteres como máximo',
 	'moodbar-form-note-dynamic' => '$1 caracteres restantes',
+	'moodbar-form-submit' => 'Compartir os comentarios',
+	'moodbar-form-policy-text' => 'Ao enviar, $1',
 	'moodbar-form-policy-label' => 'a nosa política',
 	'moodbar-loading-title' => 'Compartindo...',
 	'moodbar-success-title' => 'Grazas!',
 	'moodbar-error-title' => 'Vaites!',
+	'moodbar-success-subtitle' => 'Compartir a súa experiencia na edición axúdanos a mellorar $1.',
+	'moodbar-error-subtitle' => 'Algo foi mal! Intente compartir os seus comentarios máis tarde.',
+	'right-moodbar-view' => 'Ver e exportar a barra de comentarios',
+	'moodbar-admin-title' => 'Barra de comentarios',
+	'moodbar-admin-intro' => 'Esta páxina permite ver as valoracións enviadas a través da barra de comentarios.',
 	'moodbar-admin-empty' => 'Sen resultados',
 	'moodbar-header-id' => 'ID do comentario',
 	'moodbar-header-timestamp' => 'Data e hora',

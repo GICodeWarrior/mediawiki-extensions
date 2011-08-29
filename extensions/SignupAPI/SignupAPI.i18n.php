@@ -52,10 +52,19 @@ $messages['de-formal'] = array(
 
 /** French (Français)
  * @author Crochet.david
+ * @author Hashar
  * @author Sherbrooke
  */
 $messages['fr'] = array(
 	'signupapi-desc' => 'Nettoie la page [[Special:UserLogin|page de connexion]] des informations utilisées à la création de compte et insère un API pour la création de compte',
+	'signupapi-ok' => 'OK',
+	'signupapi-enterpassword' => 'Vous devez entrer un mot de passe',
+	'signupapi-passwordtooshort' => 'Le mot de passe est trop court',
+	'signupapi-weak' => 'Faible',
+	'signupapi-medium' => 'Moyen',
+	'signupapi-strong' => 'Fort',
+	'signupapi-badretype' => 'Les mots de passe que vous avez saisis ne correspondent pas.',
+	'signupapi-passwordsmatch' => 'Les mots de passe correspondent',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -64,6 +73,21 @@ $messages['fr'] = array(
 $messages['frp'] = array(
 	'signupapi-ok' => 'D’acôrd',
 	'signupapi-badretype' => 'Los mots de pâssa que vos éd buchiês sont pas pariérs.',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'signupapi-desc' => 'Limpa a [[Special:UserLogin|páxina de acceso ao sistema]] de información empregada para a creación de contas e engade un API para a creación de contas',
+	'signupapi-ok' => 'Aceptar',
+	'signupapi-enterpassword' => 'Ten que introducir un contrasinal',
+	'signupapi-passwordtooshort' => 'O contrasinal é curto de máis',
+	'signupapi-weak' => 'Débil',
+	'signupapi-medium' => 'Medio',
+	'signupapi-strong' => 'Forte',
+	'signupapi-badretype' => 'Os contrasinais que inseriu non coinciden',
+	'signupapi-passwordsmatch' => 'Os contrasinais coinciden',
 );
 
 /** Hebrew (עברית)

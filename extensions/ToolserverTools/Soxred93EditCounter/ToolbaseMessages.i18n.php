@@ -1152,6 +1152,13 @@ $messages['no'] = array(
 	'toolbase-error-nowiki' => '$1.$2.org er ikke en gyldig wiki',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'toolbase-main-title' => 'Wilkum!',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

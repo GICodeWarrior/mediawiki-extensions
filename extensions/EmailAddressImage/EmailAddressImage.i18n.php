@@ -44,6 +44,13 @@ $messages['arz'] = array(
 	'emailaddressimage-desc' => 'يضيف <code>&lt;email&gt;</code> لعرض عنوان بريد إلكترونى كصورة',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'emailaddressimage-desc' => "Amiesta <code>&lt;email&gt;</code> p'amosar una direición de corréu como imaxe",
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */

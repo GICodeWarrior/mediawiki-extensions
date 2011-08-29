@@ -22,6 +22,20 @@ Maybe you would like to look at:
 * [[{{MediaWiki:Mainpage}}|The main page]]',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'special404-desc' => "Ufre un destín para los fallos 404 nun s'alcontró",
+	'error404' => "404 Nun s'alcontró",
+	'special404-body' => "Nun s'alcontró la URL que solicitasti.
+
+¿Queríes escribir {{fullurl:$1}}?
+
+Seique quieras echa-y una güeyada a:
+* [[{{MediaWiki:Mainpage}}|La portada]]",
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by

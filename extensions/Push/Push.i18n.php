@@ -385,6 +385,7 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Gomoko
  * @author Sherbrooke
  */
 $messages['fr'] = array(
@@ -392,6 +393,15 @@ $messages['fr'] = array(
 	'right-push' => "Autorisation d'utiliser les fonctionnalités de ''Push''.",
 	'right-bulkpush' => "Autorisation d'utiliser les fonctionnalités de ''Push'' en vrac (c'est-à-dire ''Special:Push'').",
 	'right-pushadmin' => "Autorisation de modifier les cibles et les paramètres de ''Push''.",
+	'group-pusher' => 'Pousseurs',
+	'group-pusher-member' => 'Pousseur',
+	'grouppage-pusher' => 'Project:Pousseurs',
+	'group-bulkpusher' => 'Pousseurs en masse',
+	'group-bulkpusher-member' => 'Pousseur en masse',
+	'grouppage-bulkpusher' => 'Project:Pousseurs_en_masse',
+	'group-filepusher' => 'Pousseurs de fichier',
+	'group-filepusher-member' => 'Pousseur de fichier',
+	'grouppage-filepusher' => 'Project:Pousseurs_de_fichier',
 	'push-err-captacha' => "Impossible de pousser vers $1 en raison d'un CAPTCHA.",
 	'push-err-captcha-page' => 'Impossible de pousser la page $1 vers toutes les cibles en raison de CAPTCHA.',
 	'push-err-authentication' => "Échec de l'authentification à $1. $2",
@@ -511,6 +521,15 @@ $messages['gl'] = array(
 	'right-push' => 'Autorización para usar a funcionalidade de empuxe.',
 	'right-bulkpush' => 'Autorización para usar a funcionalidade de empuxe en masa (é dicir, Special:Push).',
 	'right-pushadmin' => 'Autorización para modificar os destinos e a configuración de empuxe.',
+	'group-pusher' => 'Impulsores',
+	'group-pusher-member' => 'Impulsor',
+	'grouppage-pusher' => 'Project:Impulsores',
+	'group-bulkpusher' => 'Impulsores en bloque',
+	'group-bulkpusher-member' => 'Impulsor en bloque',
+	'grouppage-bulkpusher' => 'Project:Impulsores en bloque',
+	'group-filepusher' => 'Impulsores de ficheiros',
+	'group-filepusher-member' => 'Impulsor de ficheiros',
+	'grouppage-filepusher' => 'Project:Impulsores de ficheiros',
 	'push-err-captacha' => 'Non se puido empurrar cara a $1 por mor do CAPTCHA.',
 	'push-err-captcha-page' => 'Non se puido empurrar a páxina "$1" cara a todos os destinos por mor do CAPTCHA.',
 	'push-err-authentication' => 'Fallou a autenticación en $1. $2',

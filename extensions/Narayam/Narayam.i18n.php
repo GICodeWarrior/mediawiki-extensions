@@ -269,6 +269,7 @@ $messages['eo'] = array(
 
 /** French (Français)
  * @author Coyau
+ * @author Gomoko
  * @author IAlex
  * @author Sherbrooke
  */
@@ -284,6 +285,8 @@ $messages['fr'] = array(
 	'narayam-kn-inscript' => 'InScript kannada',
 	'narayam-ml' => 'Translittération malayâlam',
 	'narayam-ml-inscript' => 'InScript malayâlam',
+	'narayam-ne' => 'Translittération népalaise',
+	'narayam-ne-inscript' => 'InScript népalais',
 	'narayam-or' => 'Translittération oriya',
 	'narayam-or-inscript' => 'InScript oriya',
 	'narayam-sa' => 'Translittération sanskrit',
@@ -1155,6 +1158,7 @@ $messages['vi'] = array(
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Hydra
  * @author PhiLiP
+ * @author Xiaomingyan
  * @author 阿pp
  */
 $messages['zh-hans'] = array(
@@ -1162,7 +1166,7 @@ $messages['zh-hans'] = array(
 	'narayam-toggle-ime' => '切换 IM ($1)',
 	'narayam-help-page' => 'Help:打字',
 	'narayam-checkbox-tooltip' => '要打开和关闭切换输入的法',
-	'narayam-disable-preference' => '禁用 Narayam 输入法编辑器 (IME)',
+	'narayam-disable-preference' => '停用Narayam输入法编辑器（IME）',
 	'narayam-eo' => '世界语',
 	'narayam-hi-inscript' => '印地语 InScript',
 	'narayam-kn' => '卡纳达语音译',

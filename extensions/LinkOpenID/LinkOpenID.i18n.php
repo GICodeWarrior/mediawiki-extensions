@@ -75,6 +75,18 @@ $messages['arz'] = array(
 	'linkopenid-prefstext-v2url' => 'مسار الخادم للهوية المفتوحة النسخة 2:',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'linkopenid-desc' => 'Permite que los usuarios enllacen la so cuenta con un OpenID esternu',
+	'linkopenid-prefstext-pre' => "Si tienes un OpenID d'orixe esternu puedes conseñalu equí.
+Esto te permite usar la to páxina d'usuariu tamién como un OpenID.",
+	'linkopenid-prefstext-openid' => 'El to OpenID:',
+	'linkopenid-prefstext-v1url' => "URL del sirvidor pa la versión 1.1 d'OpenID:",
+	'linkopenid-prefstext-v2url' => "URL del sirvidor pa la versión 2 d'OpenID:",
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
