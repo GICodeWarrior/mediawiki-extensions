@@ -43,6 +43,13 @@ $messages['arz'] = array(
 	'contributorsaddon-desc' => 'يضيف منبثقات JS onMouseOver إلى وصلات "المساهمون الأساسيون"',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'contributorsaddon-desc' => 'Amiesta ventanes emerxentes JavaScript a los enllaces de «Collaboradores principales»',
+);
+
 /** Azerbaijani (Azərbaycanca)
  * @author Sortilegus
  */
