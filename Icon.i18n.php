@@ -61,6 +61,15 @@ $messages['arz'] = array(
 	'icon-desc' => 'يسمح لك باستخدام الصور كأيقونات ووصلات أيقونة',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'icon-badimage' => 'Imaxe mala',
+	'icon-badwidth' => 'Anchor incorreutu',
+	'icon-desc' => "Permite usar imaxes como iconos ya iconos d'enllaz",
+);
+
 /** Kotava (Kotava)
  * @author Wikimistusik
  */
