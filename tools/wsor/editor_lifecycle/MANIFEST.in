@@ -1,5 +1,4 @@
-include *.py
-include *.sh
-include *.sql
-include sge/*.sh
-include obsolete/*
+include src/*
+include sql/*
+include scripts/*
+include *.rst

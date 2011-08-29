@@ -23,15 +23,22 @@ __email__ = "gciampaglia@wikimedia.org"
 
 setup(
         name='lifecycle',
-        description='WMF summer of research project',
-        version='0.0.0',
+        description='code for analysing activity of contributors',
+        version='0.1',
         author='Giovanni Luca Ciampaglia',
         author_email='gciampaglia@wikimedia.org',
-        packages=['lifecycle'],
+        packages=['src/lifecycle'],
         scripts=[
-            'fetchrates', 
-            'fitting', 
-            'relax', 
-            'mkcohort',
+            'src/fetchrates',
+            'src/mkcohort',
+            'src/comprates',
+            'src/plotpeak',
+            'src/normplot.py',
+            'src/rateperedits.py',
+            'src/comppeak',
+            'src/sefit',
+            'src/mrtchart',
+            'src/timechart',
+            'src/fitting',
         ]
 )
