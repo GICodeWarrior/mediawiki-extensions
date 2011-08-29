@@ -1,3 +1,9 @@
+varnish3 (3.0.0-1wmf5) lucid; urgency=low
+
+  * fix udp/mcast logging
+
+ -- Asher Feldman <afledman@wikimedia.org>  Thu, 29 Aug 2011 16:10:30 +0000
+
 varnish3 (3.0.0-1wmf4) lucid; urgency=low
 
   * -f (xff ip's) option defaulted to ncsa log format, now like wmf squids

@@ -2,12 +2,12 @@
 ## 01-varnishncsa-udp.dpatch by  <root@ragweed.knams.wikimedia.org>
 ##
 ## All lines beginning with `## DP:' are a description of the patch.
-## DP: multicast udp logging w/seq numbering 
+## DP: multicast udp logging w/seq numbering
 
 @DPATCH@
 
 --- varnish3-3.0.0~/bin/varnishncsa/varnishncsa.c	2011-08-09 23:55:17.000000000 +0000
-+++ varnish3-3.0.0/bin/varnishncsa/varnishncsa.c	2011-08-18 21:22:53.000000000 +0000
++++ varnish3-3.0.0/bin/varnishncsa/varnishncsa.c	2011-08-29 23:07:19.000000000 +0000
 @@ -79,6 +79,13 @@
  #include "varnishapi.h"
  #include "base64.h"
@@ -51,17 +51,19 @@
  			fprintf(fo, "%s", tbuf);
  			break;
  
-@@ -695,12 +708,54 @@
+@@ -695,12 +708,59 @@
  open_log(const char *ofn, int append)
  {
  	FILE *of;
 +	int sockfd, portno, n;
 +	struct sockaddr_in serv_addr;
++	struct in_addr iaddr;
 +	struct hostent *server;
-+	u_char ttl = 6;
++	u_char ttl = 10;
 +	char host[500];
 +	char port[10];
-+	
++	char loopch=0;
++
 +	sscanf(ofn, "%[^:]:%s", host, port);
 +
 +	portno = atoi(port);
@@ -70,34 +72,37 @@
 +	if (sockfd < 0) {
 +        	fprintf(stderr, "ERROR opening socket\n");
 +	}
- 
--	if ((of = fopen(ofn, append ? "a" : "w")) == NULL) {
--		perror(ofn);
++
 +   	server = gethostbyname(host);
 +
 +        if (server == NULL) {
 +		fprintf(stderr,"ERROR, no such host\n");
- 		exit(1);
++		exit(1);
 +        }
 +
 +	bzero((char *) &serv_addr, sizeof(serv_addr));
-+
-+	if ((ntohl(serv_addr.sin_addr.s_addr) >> 28) == 0xe) {
-+		serv_addr.sin_addr.s_addr = INADDR_ANY;
-+		setsockopt(sockfd, IPPROTO_IP, IP_MULTICAST_IF, &serv_addr,
-+	                       sizeof(struct sockaddr_in));
-+	       setsockopt(sockfd, IPPROTO_IP, IP_MULTICAST_TTL, &ttl,
-+	                       sizeof(unsigned char));
- 	}
--	return (of);
-+
+ 
+-	if ((of = fopen(ofn, append ? "a" : "w")) == NULL) {
+-		perror(ofn);
 +	serv_addr.sin_family = AF_INET;
 +	serv_addr.sin_port = htons(portno);
++	bcopy((char *)server->h_addr, (char *)&serv_addr.sin_addr.s_addr, 
++		server->h_length);	
++	if ((ntohl(serv_addr.sin_addr.s_addr) >> 28) == 0xe) {
++		iaddr.s_addr = INADDR_ANY; /* use DEFAULT interface */
++		setsockopt(sockfd, IPPROTO_IP, IP_MULTICAST_IF, &iaddr,
++			sizeof(struct in_addr));
++		setsockopt(sockfd, IPPROTO_IP, IP_MULTICAST_TTL, &ttl,
++			sizeof(unsigned char));
++		setsockopt(sockfd, IPPROTO_IP, IP_MULTICAST_LOOP, /* don't send to own interface */
++			(char *)&loopch, sizeof(loopch));
++	}
 +
 +	if (connect(sockfd,(struct sockaddr *) &serv_addr,sizeof(serv_addr)) < 0) {
 +		perror("socket");
-+		exit(1);
-+	}
+ 		exit(1);
+ 	}
+-	return (of);
 +
 +	FILE *sf = fdopen(sockfd, "w");
 +
@@ -109,7 +114,7 @@
  }
  
  /*--------------------------------------------------------------------*/
-@@ -711,7 +766,7 @@
+@@ -711,7 +771,7 @@
  
  	fprintf(stderr,
  	    "usage: varnishncsa %s [-aDV] [-n varnish_name] "
@@ -118,7 +123,7 @@
  	exit(1);
  }
  
-@@ -724,7 +779,7 @@
+@@ -724,7 +784,7 @@
  	const char *w_arg = NULL;
  	struct vpf_fh *pfh = NULL;
  	FILE *of;
@@ -127,7 +132,7 @@
  
  	vd = VSM_New();
  	VSL_Setup(vd);
-@@ -739,7 +794,7 @@
+@@ -739,7 +799,7 @@
  				fprintf(stderr, "-f and -F can not be combined\n");
  				exit(1);
  			}
