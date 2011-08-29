@@ -171,6 +171,7 @@ $messages['es'] = array(
 
 /** French (Français)
  * @author Crochet.david
+ * @author Gomoko
  */
 $messages['fr'] = array(
 	'notificator' => 'Notificator',
@@ -179,6 +180,7 @@ $messages['fr'] = array(
 	'notificator-e-mail-address' => 'adresse électronique',
 	'notificator-notify' => 'Notifier',
 	'notificator-notify-address-or-name' => 'Notifier $1',
+	'notificator-revs-not-from-same-title' => 'Les IDS de révision ne proviennent pas du même titre/page',
 	'notificator-return-to' => 'Revenir à',
 	'notificator-special-page-accessed-directly' => 'Cette page spéciale n’est pas directement accessibles. Il est destiné à être utilisé par un bouton Notificator.',
 	'notificator-e-mail-address-invalid' => 'L’adresse de courriel fournie n’est pas valide.',
@@ -191,6 +193,7 @@ $messages['fr'] = array(
 	'notificator-subject' => 'Objet :',
 	'notificator-error-sending-e-mail' => 'Il y avait une erreur lors de l’envoi de la notification par courriel à $1 .',
 	'notificator-error-parameter-missing' => 'Erreur : Paramètre manquant.',
+	'notificator-notified-already' => '$1 a déjà été averti de cette page ou de sa modification.',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -340,6 +343,17 @@ $messages['nl'] = array(
 	'notificator-error-sending-e-mail' => 'Er is een fout opgetreden bij het verzenden van de kennisgevingse-mail naar $1.',
 	'notificator-error-parameter-missing' => 'Fout: Ontbrekende parameter.',
 	'notificator-notified-already' => '$1 is reeds op de hoogte gebracht over deze pagina of paginawijziging.',
+);
+
+/** Polish (Polski)
+ * @author Woytecr
+ */
+$messages['pl'] = array(
+	'notificator-e-mail-address' => 'adres e-mail',
+	'notificator-return-to' => 'Wróć do',
+	'notificator-change-tag' => 'zmień',
+	'notificator-new-tag' => 'Nowy',
+	'notificator-subject' => 'Temat:',
 );
 
 /** Portuguese (Português)
