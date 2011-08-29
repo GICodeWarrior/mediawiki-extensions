@@ -23,6 +23,13 @@ $messages['qqq'] = array(
 	'specialtalk-desc' => '{{desc}}',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'specialtalk-desc' => "Amiesta una llingüeta d'alderique a les [[Special:SpecialPages|páxines especiales]]",
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Jim-by
  */
