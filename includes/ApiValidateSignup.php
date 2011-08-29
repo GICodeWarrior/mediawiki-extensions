@@ -10,7 +10,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  *
  * @ingroup API
  */
-class ValidateSignup extends ApiBase {
+class ApiValidateSignup extends ApiBase {
 
 	public function __construct( $main, $action ) {
 		parent::__construct( $main, $action );
@@ -32,7 +32,9 @@ class ValidateSignup extends ApiBase {
                         if ( 0 != $mUser->idForName() ) {
                                 $result['result'] = wfMsg( 'userexists' );
                                 $result['icon'] = "MW-Icon-NoMark.png";
-                        } else {
+                        }
+
+                        else {
                                 $result['result'] = wfMsg( 'ok' );
                                 $result['icon'] = "MW-Icon-CheckMark.png";
                         }
@@ -42,7 +44,8 @@ class ValidateSignup extends ApiBase {
                          if ( $valid = User::isValidEmailAddr( $params['inputVal'] ) ) {
                              $result['result']= wfMsg( 'ok' );
                              $result['icon'] = "MW-Icon-CheckMark.png";
-                         } else {
+                         }
+                         else {
                              $result['result']= wfMsg( 'invalidemailaddress' );
                              $result['icon'] = "MW-Icon-NoMark.png";
                          }

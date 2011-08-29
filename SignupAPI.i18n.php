@@ -10,18 +10,18 @@ $messages = array();
 
 $messages['en'] = array(
 	'signupapi-desc' => 'Cleans up the [[Special:UserLogin|login page]] from signup related stuff and adds an API for signup',
-        'signupapi-ok' => 'OK',
-        'signupapi-enterpassword' => 'You must enter a password',
-        'signupapi-passwordtooshort' => 'Password is too short',
-        'signupapi-weak' => 'Weak',
-        'signupapi-medium' => 'Medium',
-        'signupapi-strong' => 'Strong',
-        'signupapi-badretype' => 'The passwords you entered do not match',
-        'signupapi-passwordsmatch' => 'Passwords match',
+	'signupapi-ok' => 'OK',
+	'signupapi-enterpassword' => 'You must enter a password',
+	'signupapi-passwordtooshort' => 'Password is too short',
+	'signupapi-weak' => 'Weak',
+	'signupapi-medium' => 'Medium',
+	'signupapi-strong' => 'Strong',
+	'signupapi-badretype' => 'The passwords you entered do not match',
+	'signupapi-passwordsmatch' => 'Passwords match',
 
 );
 
-/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
@@ -43,7 +43,7 @@ $messages['de'] = array(
 	'signupapi-passwordsmatch' => 'Die beiden Passwörter stimmen überein.',
 );
 
-/** German (formal address) (‪Deutsch (Sie-Form)‬)
+/** German (formal address) (Deutsch (Sie-Form))
  * @author Kghbln
  */
 $messages['de-formal'] = array(

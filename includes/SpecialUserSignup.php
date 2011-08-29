@@ -26,7 +26,7 @@
  *
  * @ingroup SpecialPage
  */
-class SignupForm extends SpecialPage {
+class SpecialUserSignup extends SpecialPage {
 
 	const SUCCESS = 0;
 	const NO_NAME = 1;
@@ -46,7 +46,7 @@ class SignupForm extends SpecialPage {
 	const BLOCKED_BY_HOOK = 15;
 	const EXTR_DB_ERROR = 16;
 	const THROTLLED = 17;
-        const INIT_FAILED = 18;
+	const INIT_FAILED = 18;
 
 	//Initialise all variables to be used
 	var $tempUsername, $mPassword, $mRetype, $mReturnTo, $mCookieCheck, $mPosted;
@@ -56,7 +56,7 @@ class SignupForm extends SpecialPage {
 	var $mType, $mReason, $mRealName;
 	var $abortError = '';
 	var $tempUser, $mConfirmationMailStatus, $mRunCookieRedirect, $mRunCreationConfirmation;
-        var $mSourceAction, $mSourceNS, $msourceArticle;
+	var $mSourceAction, $mSourceNS, $msourceArticle;
 
 	/**
 	 * @var ExternalUser
@@ -105,9 +105,9 @@ class SignupForm extends SpecialPage {
 		$this->mSkipCookieCheck = $request->getCheck( 'wpSkipCookieCheck' );
 		$this->mToken = $request->getVal( 'wpCreateaccountToken' );
 
-                $this->mSourceAction = $request->getVal( 'wpSourceAction' );
-                $this->mSourceNS = $request->getVal( 'wpSourceNS' );
-                $this->msourceArticle = $request->getVal( 'wpSourceArticle' );
+		$this->mSourceAction = $request->getVal( 'wpSourceAction' );
+		$this->mSourceNS = $request->getVal( 'wpSourceNS' );
+		$this->msourceArticle = $request->getVal( 'wpSourceArticle' );
 
 		if( $wgEnableEmail ) {
 			$this->mEmail = $request->getText( 'wpEmail' );
@@ -129,9 +129,6 @@ class SignupForm extends SpecialPage {
 
 	public function execute( $par ) {
 
-                global $wgOut;
-                $wgOut->addModules( 'mediawiki.special.usersignup' );
-
 		if ( session_id() == '' ) {
 			wfSetupSession();
 		}
@@ -145,9 +142,9 @@ class SignupForm extends SpecialPage {
 			return;
 		} elseif( $this->mPosted ) {
 			if( $this->mCreateaccount ) {
-                            return $this->processSignup();
+				return $this->processSignup();
 			} elseif ( $this->mCreateaccountMail ) {
-			    return $this->addNewAccountMailPassword();
+				return $this->addNewAccountMailPassword();
 			}
 		}
 
@@ -157,11 +154,11 @@ class SignupForm extends SpecialPage {
 	/**
 	 * @private
 	 */
-	//Used for mailing password reset request
+	// Used for mailing password reset request
 	function addNewAccountMailPassword() {
 		global $wgOut;
 
-		//check if no email id was provided
+		// Check if no email id was provided
 		if ( $this->mEmail == '' ) {
 			$this->mainSignupForm( wfMsgExt( 'noemail', array( 'parsemag', 'escape' ), $this->mUsername ) );
 			return;
@@ -224,10 +221,10 @@ class SignupForm extends SpecialPage {
 				return true;
 			} else {
 				$this->mRunCookieRedirect = true;
-                                return true;
+				return true;
 			}
 		} else {
-                        $this->mRunCreationConfirmation = true;
+			$this->mRunCreationConfirmation = true;
 			wfRunHooks( 'AddNewAccount', array( $tempUser, false ) );
 			$tempUser->addNewUserLogEntry( false, $this->mReason );
 			return true;
@@ -270,7 +267,7 @@ class SignupForm extends SpecialPage {
 			self::setCreateaccountToken();
 			return self::NO_COOKIES;
 		}
-                
+
 		# The user didn't pass a createaccount token
 		if ( !$this->mToken ) {
 			return self::NEED_TOKEN;
@@ -329,7 +326,7 @@ class SignupForm extends SpecialPage {
 		# if email is provided then validate it
 		if( !empty( $this->mEmail ) && !Sanitizer::validateEmail( $this->mEmail ) ) {
 			return self::INVALID_EMAIL;
-		}                
+		}
 
 		# Set some additional data so the AbortNewAccount hook can be used for
 		# more than just username validation
@@ -361,12 +358,12 @@ class SignupForm extends SpecialPage {
 		self::clearCreateaccountToken();
 
 		$tempUser = $this->initUser( $tempUser, false );
-                if( $tempUser == null ) {
-                        return self::INIT_FAILED;
-                }
-		
-                $this->addNewAccount( $tempUser );
-                return self::SUCCESS;
+		if( $tempUser == null ) {
+			return self::INIT_FAILED;
+		}
+
+		$this->addNewAccount( $tempUser );
+		return self::SUCCESS;
 	}
 
 	/**
@@ -408,7 +405,7 @@ class SignupForm extends SpecialPage {
 		$ssUpdate = new SiteStatsUpdate( 0, 0, 0, 0, 1 );
 		$ssUpdate->doUpdate();
 
-                $this->addToSourceTracking( $tempUser );
+		$this->addToSourceTracking( $tempUser );
 
 		return $tempUser;
 	}
@@ -418,25 +415,25 @@ class SignupForm extends SpecialPage {
 
 		switch ( $this->addNewAccountInternal() ) {
 			case self::SUCCESS:
-                                if( $wgEmailAuthentication ) {
-                                    if( $this->mConfirmationMailStatus->isGood() ) {
-                                            $wgOut->addWikiMsg( 'confirmemail_oncreate' );
-                                        } else {
-                                            $wgOut->addWikiText( $this->mConfirmationMailStatus->getWikiText( 'confirmemail_sendfailed' ) );
-                                        }
-                                    }
+				if( $wgEmailAuthentication ) {
+					if( $this->mConfirmationMailStatus->isGood() ) {
+						$wgOut->addWikiMsg( 'confirmemail_oncreate' );
+					} else {
+						$wgOut->addWikiText( $this->mConfirmationMailStatus->getWikiText( 'confirmemail_sendfailed' ) );
+					}
+				}
 
-                                 if( $this->mRunCookieRedirect ) {
-                                     $this->cookieRedirectCheck( 'new' );
-                                 }
+ 				if( $this->mRunCookieRedirect ) {
+	 				$this->cookieRedirectCheck( 'new' );
+ 				}
 
-                                 # Confirm that the account was created
-                                 if( $this->mRunCreationConfirmation ) {
-                                     $self = SpecialPage::getTitleFor( 'Userlogin' );
-                                     $wgOut->setPageTitle( wfMsgHtml( 'accountcreated' ) );
-			             $wgOut->addWikiMsg( 'accountcreatedtext', $tempUser->getName() );
-			             $wgOut->returnToMain( false, $self );
-                                 }
+ 				# Confirm that the account was created
+ 				if( $this->mRunCreationConfirmation ) {
+	 				$self = SpecialPage::getTitleFor( 'Userlogin' );
+	 				$wgOut->setPageTitle( wfMsgHtml( 'accountcreated' ) );
+				 	$wgOut->addWikiMsg( 'accountcreatedtext', $tempUser->getName() );
+				 	$wgOut->returnToMain( false, $self );
+ 				}
 
 				$this->successfulCreation();
 				break;
@@ -519,8 +516,8 @@ class SignupForm extends SpecialPage {
 				$this->mainSignupForm( wfMsgExt( 'acct_creation_throttle_hit', array( 'parseinline' ), $wgAccountCreationThrottle ) );
 				break;
 
-                        case self::INIT_FAILED:
-                                $this->mainSignupForm( wfMsg( 'init_failed' ) );
+			case self::INIT_FAILED:
+				$this->mainSignupForm( wfMsg( 'init_failed' ) );
 				break;
 
 			default:
@@ -582,7 +579,7 @@ class SignupForm extends SpecialPage {
 
 	/**
 	 * Output a message that informs the user that they cannot create an account because
-	 * there is a block on them or their IP which prevents account creation.  Note that
+	 * there is a block on them or their IP which prevents account creation. Note that
 	 * User::isBlockedFromCreateAccount(), which gets this block, ignores the 'hardblock'
 	 * setting on blocks (bug 13611).
 	 * @param $block Block the block causing this error
@@ -710,9 +707,9 @@ class SignupForm extends SpecialPage {
 		$template->set( 'cansecurelogin', ( $wgSecureLogin === true ) );
 		$template->set( 'stickHTTPS', $this->mStickHTTPS );
 
-                $template->set( 'wpSourceAction', $this->mSourceAction );
-                $template->set( 'wpSourceNS', $this->mSourceNS );
-                $template->set( 'wpSourceArticle', $this->msourceArticle );
+		$template->set( 'wpSourceAction', $this->mSourceAction );
+		$template->set( 'wpSourceNS', $this->mSourceNS );
+		$template->set( 'wpSourceArticle', $this->msourceArticle );
 
 		if ( !self::getCreateaccountToken() ) {
 			self::setCreateaccountToken();
@@ -730,7 +727,7 @@ class SignupForm extends SpecialPage {
 		$wgAuth->modifyUITemplate( $template, $this->mType );
 
 		wfRunHooks( 'UserCreateForm', array( &$template ) );
-                wfRunHooks( 'SignupForm' );
+		wfRunHooks( 'SignupForm' );
 
 		// Changes the title depending on permissions for creating account
 		if ( $wgUser->isAllowed( 'createaccount' ) ) {
@@ -741,7 +738,7 @@ class SignupForm extends SpecialPage {
 
 		$wgOut->disallowUserJs(); // just in case...
 		$wgOut->addTemplate( $template );
-                
+
 	}
 
 	/**
@@ -753,11 +750,11 @@ class SignupForm extends SpecialPage {
 	 */
 	function showCreateOrLoginLink( &$tempUserser ) {
 		if( $this->mType == 'signup' ) {
-                        return true;
+			return true;
 		} elseif( $tempUserser->isAllowed( 'createaccount' ) ) {
-                        return true;
+			return true;
 		} else {
-                        return false;
+			return false;
 		}
 	}
 
@@ -906,17 +903,17 @@ class SignupForm extends SpecialPage {
 		}
 	}
 
-        private function addToSourceTracking( $tempUser ) {
-                $sourcetracking_data = array(
-				'userid' => $tempUser->getId(),
-				'source_action' => $this->mSourceAction,
-				'source_ns' => $this->mSourceNS,
-                                'source_article' => $this->msourceArticle
-			);
+	private function addToSourceTracking( $tempUser ) {
+		$sourcetracking_data = array(
+			'userid' => $tempUser->getId(),
+			'source_action' => $this->mSourceAction,
+			'source_ns' => $this->mSourceNS,
+			'source_article' => $this->msourceArticle
+		);
 
-                $dbw = wfGetDB( DB_MASTER );
-                $dbw->insert( 'sourcetracking', $sourcetracking_data );
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->insert( 'sourcetracking', $sourcetracking_data );
 
-                return true;
-        }
+		return true;
+	}
 }
