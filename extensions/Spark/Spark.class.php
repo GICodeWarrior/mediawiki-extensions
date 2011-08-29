@@ -33,7 +33,7 @@ final class SparkTag {
 	
 	public function __construct( array $args, $contents ) {
 		$this->parameters = $this->getSparkParameters( $args );
-		$this->contents = $contents;
+		$this->contents = $contents;//var_dump($this);exit;
 	}
 	
 	/**
@@ -55,6 +55,8 @@ final class SparkTag {
 						( is_null( $this->contents ) ? '' : htmlspecialchars( $this->contents ) ) .
 					'</div>';
 
+			$html = preg_replace( '/[ \t]+(\?)/', '$1', $html );
+			
 			return array( $parser->insertStripItem( $html, $parser->mStripState ), 'noparse' => true, 'isHTML' => true );
 		}
 		else {
