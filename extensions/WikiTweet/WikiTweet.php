@@ -28,8 +28,9 @@ if ( !$wgUseAjax ) {
 }
 
 // Hook up into MediaWiki
-$wgExtensionFunctions[] = 'wikiTweeter';
+//$wgExtensionFunctions[] = 'wikiTweeter';
 $wgHooks['LanguageGetMagic'][]	= 'wikiTweeterMagic';
+$wgHooks['ParserFirstCallInit'][] = 'wfWikiTweetRegisterHook';
 $wgExtensionCredits['parserhook'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'WikiTweet',
@@ -41,56 +42,17 @@ $wgExtensionCredits['parserhook'][] = array(
 
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['WikiTweet'] = $dir . 'WikiTweet.i18n.php';
-
 $wgAutoloadClasses['ApiQueryWikiTweet'] = "$dir/WikiTweet.api.php";
 $wgAPIListModules['wikitweet'] = 'ApiQueryWikiTweet';
-
 $wgAutoloadClasses['WikiTweetFunctions'] = "$dir/WikiTweet.functions.php";
 
-function wikiTweeter()
+function wfWikiTweetRegisterHook()
 {
-	global $wgExtensionMessagesFiles, $wgParser, $wgMessageCache;
-	// Set the hooks
-	$wgParser->setHook('wiki-tweet', 'wikiTweeterRender');
-	$wgParser->setFunctionHook('wiki-tweet', 'wikiTweeterFunction');
-	// Set our messages
-	$wgMessageCache->addMessages( array('wikiTweeter_cannotparse'=> 'wikiTweeter: Cannot parse parameter: '));
-	// loading extension messages
-	require_once($wgExtensionMessagesFiles['WikiTweet']);
-	$wgMessageCache->addMessagesByLang($messages);
-}
-
-// This manipulates the results of the wikiTweeter extension
-// into the same function as the <wiki-tweet> tag.
-function wikiTweeterFunction($parser)
-{
-	// Get the arguments
-	$fargs = func_get_args();
-	$input = array_shift($fargs);
-
-	// The first category is required
-	$rows = array_shift($fargs);
-	$params = array();
-	$params["rows"] = $rows;
-	$params["donotparse"] = 1;
-
-	// Split the rest of the arguments
-	foreach ($fargs as $parm)
-	{
-		// Split it into its components
-		$split = split("=", $parm);
-		if (!$split[1])
-		{
-			return htmlspecialchars(wfMsg(
-				'wikiTweeter_cannotparse')
-				. $parm);
-		}
-		// Save it
-		$params[$split[0]] = $split[1];
-	}
-
-	// Return the cloud
-	return wikiTweeterRender($input, $params, $parser);
+	global $wgParser;
+	//$wgParser->setHook('wiki-tweet', 'wikiTweeterRender');
+	//$wgParser->setFunctionHook('wiki-tweet', 'wikiTweeterFunction');
+	$wgParser->setHook( 'wiki-tweet', 'wikiTweeterRender' );
+	return true;
 }
 
 // Sets up the magic for the parser functions
@@ -247,12 +209,12 @@ function wikiTweeterRender($input, $args, $parser)
 				$res5 = $dbr->update('wikitweet_avatar',array('avatar'=>$avatar),array('user'=>str_replace(' ','_',mysql_real_escape_string($user))));
 			}
 	}
-	$class  = ($args["class"]) ? $args["class"] : "wiki-tweets";
-	$size   = ($args["size"])  ? $args["size"]  : "normal"     ;
-	$rows   = ($args["rows"])  ? $args["rows"]  : $wgWikiTweet["rows"]         ;
-	$room   = ($args["room"])  ? $args["room"]  : "main"       ;
+	$class  = (isset($args["class"])) ? $args["class"] : "wiki-tweets";
+	$size   = (isset($args["size"]))  ? $args["size"]  : "normal"     ;
+	$rows   = (isset($args["rows"]))  ? $args["rows"]  : $wgWikiTweet["rows"]         ;
+	$room   = (isset($args["room"]))  ? $args["room"]  : "main"       ;
 	$allowstatus = (isset($args["status"]))  ? true  : false ;
-	$alertslevel = ($args["alertslevel"])  ? $args["alertslevel"]  : "1" ;
+	$alertslevel = (isset($args["alertslevel"]))  ? $args["alertslevel"]  : "1" ;
 
 
 	// [GRAPH]
