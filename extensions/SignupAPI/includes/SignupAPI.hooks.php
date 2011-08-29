@@ -8,13 +8,7 @@
 
 class SignupAPIHooks {
 
-	function onSignupAPIUseAjax() {
-		global $wgOut;
-		$wgOut->addModules( 'ext.SignupAPI' );
-		return true;
-	}
-
-	function onSourceTracking() {
+	static function onSourceTracking() {
 		global $wgExtNewTables;
 
 		$wgExtNewTables[] = array(
@@ -24,7 +18,7 @@ class SignupAPIHooks {
 		return true;
 	}
 
-	function addSourceTracking( &$personal_urls, &$title ) {
+	static function addSourceTracking( &$personal_urls, &$title ) {
 		global $wgRequest, $wgUser, $wgServer, $wgSecureLogin;
 
 		// Generate source tracking parameters

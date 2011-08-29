@@ -67,10 +67,6 @@ $wgResourceModules['ext.SignupAPI'] = array(
 
 # Hooks
 
-if ( $wgSignupAPIUseAjax ) {
-	$wgHooks['SignupForm'][] = 'SignupAPIHooks::onSignupAPIUseAjax';
-}
-
 if ( $wgSignupAPISourceTracking ) {
 
 	// Schema updates for update.php
