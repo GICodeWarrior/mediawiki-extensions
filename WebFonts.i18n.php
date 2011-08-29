@@ -190,6 +190,13 @@ $messages['it'] = array(
 	'webfonts-disable-preference' => "Disattiva l'incorporazione dei caratteri (WebFont)",
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'webfonts-reset' => '再設定',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author វ័ណថារិទ្ធ
