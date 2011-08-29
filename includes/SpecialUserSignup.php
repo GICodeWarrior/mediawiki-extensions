@@ -128,6 +128,7 @@ class SpecialUserSignup extends SpecialPage {
 	}
 
 	public function execute( $par ) {
+		global $wgOut;
 
 		if ( session_id() == '' ) {
 			wfSetupSession();
@@ -136,6 +137,12 @@ class SpecialUserSignup extends SpecialPage {
 		if ( $par == 'signup' ) { # Check for [[Special:Userlogin/signup]]
 			$this->mType = 'signup';
 		}
+
+		// Ajax-ify ?
+		if ( $wgSignupAPIUseAjax ) {
+			$wgOut->addModules( 'ext.SignupAPI' );
+		}
+
 
 		if ( !is_null( $this->mCookieCheck ) ) {
 			$this->onCookieRedirectCheck( $this->mCookieCheck );
