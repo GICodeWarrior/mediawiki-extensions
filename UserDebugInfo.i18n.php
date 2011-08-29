@@ -53,6 +53,20 @@ $messages['frp'] = array(
 	'userdebuginfo-language' => 'Lengoua',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'userdebuginfo' => 'Información de depuración do usuario',
+	'userdebuginfo-desc' => 'Mostra información de depuración potencialmente útil sobre o usuario actual',
+	'userdebuginfo-useragent' => 'Axente de usuario HTTP',
+	'userdebuginfo-remotehost' => 'Servidor remoto HTTP',
+	'userdebuginfo-remoteaddr' => 'Enderezo remoto HTTP',
+	'userdebuginfo-key' => 'Clave',
+	'userdebuginfo-value' => 'Valor',
+	'userdebuginfo-language' => 'Lingua',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
