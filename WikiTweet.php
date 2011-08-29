@@ -46,10 +46,9 @@ $wgAutoloadClasses['ApiQueryWikiTweet'] = "$dir/WikiTweet.api.php";
 $wgAPIListModules['wikitweet'] = 'ApiQueryWikiTweet';
 $wgAutoloadClasses['WikiTweetFunctions'] = "$dir/WikiTweet.functions.php";
 
-function wfWikiTweetRegisterHook()
+function wfWikiTweetRegisterHook( $parser )
 {
-	global $wgParser;
-	$wgParser->setHook( 'wiki-tweet', 'wikiTweeterRender' );
+	$parser->setHook( 'wiki-tweet', 'wikiTweeterRender' );
 	return true;
 }
 
