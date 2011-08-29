@@ -196,7 +196,7 @@ class ContributionTrackingProcessorTest extends MediaWikiTestCase {
 				'business' => 'donations@wikimedia.org',
 				'item_number' => 'DONATE',
 				'no_note' => 0,
-				'return' => $returnTitle->getFullUrl(),
+				'return' => wfExpandUrl( $returnTitle->getFullUrl(), PROTO_HTTP ),
 				'currency_code' => 'USD',
 				'cmd' => '_xclick',
 				'notify_url' => 'https://civicrm.wikimedia.org/fundcore_gateway/paypal',
@@ -261,7 +261,7 @@ class ContributionTrackingProcessorTest extends MediaWikiTestCase {
 				'business' => 'donations@wikimedia.org',
 				'item_number' => 'DONATE',
 				'no_note' => 0,
-				'return' => $returnTitle->getFullURL(), //Important to the language test.
+				'return' => wfExpandUrl( $returnTitle->getFullUrl(), PROTO_HTTP ), //Important to the language test.
 				'currency_code' => 'USD',
 				'cmd' => '_xclick',
 				'notify_url' => 'https://civicrm.wikimedia.org/fundcore_gateway/paypal',
@@ -288,7 +288,7 @@ class ContributionTrackingProcessorTest extends MediaWikiTestCase {
 				'business' => 'donations@wikimedia.org',
 				'item_number' => 'DONATE',
 				'no_note' => 0,
-				'return' => $returnTitle->getFullURL(),
+				'return' => wfExpandUrl( $returnTitle->getFullUrl(), PROTO_HTTP ),
 				'currency_code' => 'USD',
 				'cmd' => '_xclick',
 				'notify_url' => 'https://civicrm.wikimedia.org/fundcore_gateway/paypal',
