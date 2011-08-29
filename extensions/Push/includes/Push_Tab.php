@@ -414,6 +414,7 @@ final class PushTab {
 			'format' => 'json',
 			'prop' => 'images',
 			'titles' => implode( '|', $pages ),
+			'imlimit' => 500
 		);
 		
 		$api = new ApiMain( new FauxRequest( $requestData, true ), true );

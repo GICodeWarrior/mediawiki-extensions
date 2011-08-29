@@ -117,7 +117,8 @@
 				'action': 'query',
 				'prop': 'images',
 				'format': 'json',
-				'titles': pageName
+				'titles': pageName,
+				'imlimit': 500
 			},
 			function( data ) {
 				if ( data.query ) {
