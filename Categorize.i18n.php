@@ -78,6 +78,16 @@ $messages['frp'] = array(
 	'categorize-title' => 'Qualificacion des savêrs',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'categorize-desc' => 'Engade unha caixa de entrada para editar e cargar páxinas, que permite aos usuarios asignar categorías',
+	'categorize-title' => 'Cualificación dos coñecementos',
+	'categorize-footer' => 'Se quere engadir unha etiqueta, póñase en contacto cun [[Special:ListUsers/sysop|administrador]].',
+	'categorize-advice' => 'Prema nas etiquetas que queira atribuír a esta páxina:',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
