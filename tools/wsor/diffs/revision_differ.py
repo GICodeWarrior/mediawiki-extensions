@@ -158,12 +158,17 @@ for page in dump.readPages():
 					repr(userId),
 					repr(userName)
 				]
+				try:
+					for d in simpleDiff(lastRev.getText(), revision.getText(), report=[-1,1]):
+						row.append(":".join(repr(v) for v in d))
+					
+					print("\t".join(row))
+					sys.stderr.write('reporter:counter:SkippingTaskCounters,MapProcessedRecords,1\n')
+				except Exception as e:
+					row.extend(["diff_fail", str(e).encode('string-escape')])
+					print("\t".join(row))
+					raise e
 				
-				for d in simpleDiff(lastRev.getText(), revision.getText(), report=[-1,1]):
-					row.append(":".join(repr(v) for v in d))
-				
-				print("\t".join(row))
-				sys.stderr.write('reporter:counter:SkippingTaskCounters,MapProcessedRecords,1\n')
 				
 	except Exception as e:
 		sys.stderr.write('%s - while processing revId=%s\n' % (e, currRevId))

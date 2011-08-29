@@ -26,8 +26,8 @@ def tokenize(content):
 		r"|\|\}" +   #Closing table
 		r"|\|\-" +   #Table row
 		r"|.",       #Misc character
-                content
-        )
+		content
+	)
 
 def hashTokens(tokens, hash2Token=[], token2Hash={}):
 	hashBuffer = StringIO()
@@ -94,6 +94,13 @@ def main():
 		print("Rev: id=%s\n\t%r\n\t%r" % (rev['rev_id'], rev['content'], content))
 		lastRev = rev
 	
+	content1 = open("content.2.txt", "r").read()
+	hashes1, h2t, t2h = hashTokens(tokenize(content))
+	print(len(hashes1))
+	
+	content = open("content.txt", "r").read()
+	hashes2, h2t, t2h = hashTokens(tokenize(content), h2t, t2h)
+	print(len(hashes2))
 			
 				
 		

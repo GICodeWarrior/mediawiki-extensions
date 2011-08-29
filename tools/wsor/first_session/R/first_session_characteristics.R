@@ -1,9 +1,15 @@
 source("loader/user_sessions.R")
+source("loader/user_survival.R")
 
 library(lattice)
 library(doBy)
 
 user_sessions = load_user_sessions()
+user_survival = load_user_survival()
+user_sessions = merge(
+	user_sessions,
+	user_survival
+)
 user_sessions$year = strftime(user_sessions$first_edit, format="%Y")
 user_sessions$early_survival = user_sessions$last_edit - user_sessions$es_0_end >= 30
 
@@ -246,7 +252,7 @@ dev.off()
 
 surviving_editors = with(
 	summaryBy(
-		early_survival ~ 
+		surviving ~ 
 		year,
 		data=user_sessions[!is.na(user_sessions$year),],
 		FUN=c(sum, length)
@@ -254,9 +260,9 @@ surviving_editors = with(
 	rbind(
 		data.frame(
 			year      = as.numeric(as.character(year)),
-			surviving = early_survival.sum,
-			n         = early_survival.length,
-			prop      = early_survival.sum/early_survival.length
+			surviving = surviving.sum,
+			n         = surviving.length,
+			prop      = surviving.sum/surviving.length
 		)
 	)
 )
@@ -298,7 +304,7 @@ dev.off()
 
 combined = rbind(
 	with(
-		three_es.rejection,
+		three_es.rejection[three_es.rejection$es == 0,],
 		data.frame(
 			x     = year,
 			y     = mean,
@@ -327,7 +333,7 @@ params = list(
 		lty=2
 	),
 	"edit session 0"=list(
-		col="#0000FF",
+		col="#BB0000",
 		pch=1,
 		lty=1
 	)#,
@@ -339,7 +345,7 @@ params = list(
 #	"edit session 2"=list(
 #		col="#00FF00",
 #		pch=3,
-3		lty=1
+#		lty=1
 #	)
 )
 xyplot(
