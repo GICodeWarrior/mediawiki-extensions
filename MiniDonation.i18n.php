@@ -619,9 +619,10 @@ $messages['yue'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Bencmq
+ * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
-	'donationform-desc' => '加入<code>&lt;donateform&gt;</code>标签以支持使用PayPal的捐赠',
+	'donationform-desc' => '添加“<code>&lt;donateform&gt;</code>”标签以支持通过PayPal捐赠',
 	'donationform-submit' => '经PayPal捐款',
 );
 
