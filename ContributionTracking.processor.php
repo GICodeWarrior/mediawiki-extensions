@@ -322,7 +322,7 @@ class ContributionTrackingProcessor {
 			$returnText = $input['return'];
 			$returnTitle = Title::newFromText( $returnText );
 			if ( $returnTitle ) {
-				$returnto = $returnTitle->getFullUrl();
+				$returnto = wfExpandUrl( $returnTitle->getFullUrl(), PROTO_CURRENT );
 			} else {
 				$returnto = $wgContributionTrackingReturnToURLDefault . "/$language";
 			}
