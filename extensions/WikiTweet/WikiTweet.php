@@ -49,8 +49,6 @@ $wgAutoloadClasses['WikiTweetFunctions'] = "$dir/WikiTweet.functions.php";
 function wfWikiTweetRegisterHook()
 {
 	global $wgParser;
-	//$wgParser->setHook('wiki-tweet', 'wikiTweeterRender');
-	//$wgParser->setFunctionHook('wiki-tweet', 'wikiTweeterFunction');
 	$wgParser->setHook( 'wiki-tweet', 'wikiTweeterRender' );
 	return true;
 }
