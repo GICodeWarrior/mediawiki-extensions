@@ -373,12 +373,56 @@ $messages['frp'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
+	'favorites-desc' => 'Crear unha lista de favoritos',
+	'favoritethis' => 'Engadir esta páxina aos favoritos',
+	'prefs-favoritelist' => 'Favoritos',
+	'prefs-favoritelist-token' => 'Pase para os favoritos:',
 	'prefs-advancedfavoritelist' => 'Opcións avanzadas',
 	'favoritelist' => 'Os meus favoritos',
 	'myfavoritelist' => 'Os meus favoritos',
 	'favoritelistfor' => "(de '''$1''')",
+	'nofavoritelist' => 'Non ten elementos na súa lista de favoritos.',
+	'favoritelistanontext' => 'Faga o favor de $1 ao sistema para ver ou editar os elementos da súa lista de favoritos.',
 	'favoritenologin' => 'Non accedeu ao sistema',
+	'favoritenologintext' => 'Debe [[Special:UserLogin|acceder ao sistema]] para modificar a súa lista de favoritos.',
+	'addedfavorite' => 'Engadido aos favoritos',
+	'addedfavoritetext' => 'A páxina "[[:$1]]" foi engadida [[Special:Favoritelist|á súa lista de favoritos]].',
+	'removedfavorite' => 'Eliminada dos favoritos',
+	'removedfavoritetext' => 'A páxina "[[:$1]]" foi eliminada [[Special:Favoritelist|da súa lista de favoritos]].',
+	'favorite' => 'Favorito',
+	'favoritethispage' => 'Engadir esta páxina aos favoritos',
+	'unfavorite' => 'Eliminar dos favoritos',
+	'unfavoritethispage' => 'Deixar de ter nos favoritos',
+	'favoritelist-options' => 'Opcións de favoritos',
+	'favoriteing' => 'Engadindo aos favoritos...',
+	'unfavoriteing' => 'Eliminando dos favoritos...',
+	'tooltip-pt-favoritelist' => 'A lista de páxinas cuxas modificacións está a seguir',
+	'tooltip-ca-favorite' => 'Engadir esta páxina aos seus favoritos',
+	'tooltip-ca-unfavorite' => 'Eliminar esta páxina dos seus favoritos',
+	'tooltip-favorite' => 'Engadir esta páxina aos seus favoritos',
+	'favoritelistall2' => 'todo',
+	'favoritelistedit-numitems' => 'Os seus favoritos conteñen {{PLURAL:$1|1 título|$1 títulos}}.',
+	'favoritelistedit-noitems' => 'Os seus favoritos non conteñen títulos.',
+	'favoritelistedit-normal-title' => 'Editar os favoritos',
+	'favoritelistedit-normal-legend' => 'Eliminar títulos dos favoritos',
+	'favoritelistedit-normal-explain' => 'Os títulos da súa lista de favoritos aparecen a continuación.
+Para eliminar un título, escóllao na súa caixa de selección e prema en "{{int:Favoritelistedit-normal-submit}}".
+Tamén pode [[Special:Favoritelist/raw|editar a lista simple]].',
+	'favoritelistedit-normal-submit' => 'Eliminar os títulos',
+	'favoritelistedit-normal-done' => '{{PLURAL:$1|Eliminouse un título|Elimináronse $1 títulos}} da súa lista de favoritos:',
+	'favoritelistedit-raw-title' => 'Editar a lista simple de favoritos',
+	'favoritelistedit-raw-legend' => 'Editar a lista simple de favoritos',
+	'favoritelistedit-raw-explain' => 'Os títulos da súa lista de favoritos aparecen a continuación. Pódense editar engadíndoos ou retirándoos da lista; un título por liña.
+Ao rematar, prema en "{{int:Favoritelistedit-raw-submit}}".
+Tamén pode [[Special:Favoritelist/edit|empregar o editor normal]].',
 	'favoritelistedit-raw-titles' => 'Títulos:',
+	'favoritelistedit-raw-submit' => 'Actualizar os favoritos',
+	'favoritelistedit-raw-done' => 'Actualizáronse os seus favoritos.',
+	'favoritelistedit-raw-added' => '{{PLURAL:$1|Engadiuse un título|Engadíronse $1 títulos}}:',
+	'favoritelistedit-raw-removed' => '{{PLURAL:$1|Eliminouse un título|Elimináronse $1 títulos}}:',
+	'favoritelisttools-view' => 'Ver os favoritos',
+	'favoritelisttools-edit' => 'Ver e editar os favoritos',
+	'favoritelisttools-raw' => 'Editar a lista simple de favoritos',
 );
 
 /** Interlingua (Interlingua)
@@ -764,5 +808,12 @@ Também pode [[Special:Favoritelist/edit|editar a lista da maneira convencional]
 	'favoritelisttools-view' => 'Ver Páginas Preferidas',
 	'favoritelisttools-edit' => 'Ver e editar a lista de páginas preferidas',
 	'favoritelisttools-raw' => 'Editar a lista de preferidas em forma de texto',
+);
+
+/** Russian (Русский)
+ * @author Alexandr Efremov
+ */
+$messages['ru'] = array(
+	'favoritelist' => 'Мое избранное',
 );
 
