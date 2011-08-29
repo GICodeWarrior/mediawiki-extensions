@@ -29,7 +29,7 @@ configure-stamp:
 
 build: build-stamp
 
-build-stamp: configure-stamp 
+build-stamp: configure-stamp
 	dh_testdir
 
 	touch build-stamp
@@ -39,19 +39,19 @@ clean:
 	dh_testroot
 	rm -f build-stamp configure-stamp
 
-	dh_clean 
+	dh_clean
 
 install: build
 	dh_testdir
 	dh_testroot
-	dh_clean -k 
+	dh_clean -k
 	dh_installdirs
 	dh_link
-	
+
 	# Install sync/check scripts
 	install -d -m 0755 $(DESTDIR)/usr/bin
 	install -d -m 0755 $(DESTDIR)/usr/sbin
-	install -m 0755 sync-common apache-sanity-check apache-start check-time scap-1skins scap-1 scap-2 $(DESTDIR)/usr/bin
+	install -m 0755 sync-common apache-sanity-check apache-start check-time scap-1skins scap-1 scap-2 mwversionsinuse $(DESTDIR)/usr/bin
 
 # Build architecture-independent files here.
 binary-indep: build install
@@ -61,12 +61,12 @@ binary-indep: build install
 binary-arch: build install
 	dh_testdir
 	dh_testroot
-	dh_installchangelogs 
+	dh_installchangelogs
 	dh_installdocs
 	dh_installexamples
 #	dh_install
 #	dh_installmenu
-#	dh_installdebconf	
+#	dh_installdebconf
 #	dh_installlogrotate
 #	dh_installemacsen
 #	dh_installpam
