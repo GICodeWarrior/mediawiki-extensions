@@ -51,6 +51,7 @@ $messages['en'] = array(
 	'wikitweet-mailsent' => 'mail sent',
 	'wikitweet-viaroom' => 'via room',
 	'wikitweet-alertsolved' => 'one of your alert was resolved in',
+	'wikitweet-cannotparse' => 'Cannot parse'
 );
 
 /** Message documentation (Message documentation)
@@ -245,6 +246,7 @@ $messages['fr'] = array(
 	'wikitweet-mailsent' => 'mail envoyé',
 	'wikitweet-viaroom' => 'via room',
 	'wikitweet-alertsolved' => 'Une de vos alertes a été résolue dans la salle',
+	'wikitweet-cannotparse' => 'Ne peux pas être parsé'
 );
 
 /** Franco-Provençal (Arpetan)
