@@ -3123,11 +3123,12 @@ $messages['yue'] = array(
  * @author Jimmy xu wrk
  * @author PhiLiP
  * @author Shinjiman
+ * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
-	'prefstats' => '偏好统计',
+	'prefstats' => '系统设置统计',
 	'prefstats-desc' => '追踪统计，有多少用户启用了特定的设置',
-	'prefstats-title' => '喜好统计',
+	'prefstats-title' => '系统设置统计',
 	'prefstats-list-intro' => '直到现时，以下的喜好设置会追踪下来。
 	点击其中一种设置去查看有关它的统计。',
 	'prefstats-noprefs' => '无喜好可供追踪。设置 $wgPrefStatsTrackPrefs 去追踪喜好。',
