@@ -1295,6 +1295,14 @@ Se sètz connectat amb vòstre compte, podètz levar aqueste avertiment dins la 
 	'vector-simplesearch-containing' => 'que conten...',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Odisha1
+ */
+$messages['or'] = array(
+	'vector-simplesearch-search' => 'ଖୋଜିବା',
+	'vector-simplesearch-containing' => 'ଧାରଣ ହେଉଛି...',
+);
+
 /** Deitsch (Deitsch)
  * @author Xqt
  */
