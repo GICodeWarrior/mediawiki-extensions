@@ -33,7 +33,7 @@ final class SparkTag {
 	
 	public function __construct( array $args, $contents ) {
 		$this->parameters = $this->getSparkParameters( $args );
-		$this->contents = $contents;//var_dump($this);exit;
+		$this->contents = $contents;
 	}
 	
 	/**
