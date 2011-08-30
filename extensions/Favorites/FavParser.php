@@ -4,7 +4,7 @@ class FavParser {
 
 	function wfSpecialFavoritelist($argv, $parser) {
 		
-		global $wgUser, $wgOut, $wgLang, $wgRequest, $wgArticle;
+		global $wgUser, $wgOut, $wgLang, $wgRequest;
 		global $wgRCShowFavoritingUsers, $wgEnotifFavoritelist, $wgShowUpdatedMarker;
 		$output = '';
 	
@@ -12,7 +12,7 @@ class FavParser {
 		$specialTitle = SpecialPage::getTitleFor( 'Favoritelist' );
 		//$wgOut->setRobotPolicy( 'noindex,nofollow' );
 		
-		$this->mTitle = $wgArticle->mTitle;
+		$this->mTitle = $parser->getTitle();
 		
 		if ($this->mTitle->getNamespace() == NS_USER && array_key_exists('userpage', $argv) && $argv['userpage']) {
 			$parts = explode( '/', $this->mTitle->getText() );
