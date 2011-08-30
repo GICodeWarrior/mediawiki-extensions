@@ -182,6 +182,7 @@ class FavoritesHooks {
 	public static function onArticleDeleteComplete(&$article, &$user, $reason, $id ){
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->delete( 'favoritelist', array(
+			'fl_namespace' => $article->mTitle->getNamespace(),
 			'fl_title' => $article->mTitle->getDBKey() ),
 			__METHOD__ );
 		return true;
