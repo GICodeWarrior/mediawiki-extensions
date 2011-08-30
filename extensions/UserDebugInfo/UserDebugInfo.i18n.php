@@ -44,6 +44,20 @@ $messages['de'] = array(
 	'userdebuginfo-language' => 'Sprache',
 );
 
+/** French (Français)
+ * @author Gomoko
+ */
+$messages['fr'] = array(
+	'userdebuginfo' => 'Information de débogage utilisateur',
+	'userdebuginfo-desc' => "Affiche certaines informations de débogage potentiellement utiles sur l'utilisateur courant",
+	'userdebuginfo-useragent' => 'User agent HTTP',
+	'userdebuginfo-remotehost' => 'Hôte distant HTTP',
+	'userdebuginfo-remoteaddr' => 'Adresse distante HTTP',
+	'userdebuginfo-key' => 'Clé',
+	'userdebuginfo-value' => 'Valeur',
+	'userdebuginfo-language' => 'Langue',
+);
+
 /** Franco-Provençal (Arpetan)
  * @author ChrisPtDe
  */

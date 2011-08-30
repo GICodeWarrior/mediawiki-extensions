@@ -4522,23 +4522,23 @@ Për piasì preuva torna pi tard.",
 	'articleFeedback-table-heading-average' => 'Media',
 	'articlefeedback-emailcapture-response-body' => "Cerea!
 
-Mersì për avèj signalà anteressi a giuté a mejoré {{SITENAME}}.
+Mersì për avèj signalà sò anteresse a giuté a amelioré {{SITENAME}}.
 
-Për piasì treuva un moment për confirmé tò corel an sgnacand an sël colegament sota:
+Për piasì, ch'a treuva un moment për confirmé soa adrëssa ëd pòsta eletrònica an sgnacand an sla liura sì-sota:
 
 $1
 
-It peule ëdcò visité:
+A peul ëdcò visité:
 
 $2
 
-E anserì ël còdes ëd confirma sì sota:
+E anserì ël còdes ëd confirmassion sì-sota:
 
 $3
 
-I saroma an contat për un pòch su com it peule giuté a mejoré {{SITENAME}}.
+I saroma tòst an contat con la manera ëd coma a peul giuté a amelioré {{SITENAME}}.
 
-S'it l'has pa ancaminà ti sta arcesta, për piasì ignora sto corel e noi it manderoma pi gnente d'àutr.
+S'a l'ha pa ancaminà chiel costa arcesta, për piasì ch'a lassa perde 's mëssagi e noi i-j manderoma pi gnente d'àutr.
 
 Tante bele ròbe, e mersì,
 L'echip ëd {{SITENAME}}",

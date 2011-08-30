@@ -915,9 +915,11 @@ $messages['wuu'] = array(
 	'mwe-cancel' => '取消',
 );
 
-/** Simplified Chinese (‪中文(简体)‬) */
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Xiaomingyan
+ */
 $messages['zh-hans'] = array(
-	'mwe-loading' => '载入中……',
+	'mwe-loading' => '正在载入...',
 	'mwe-ok' => '确定',
 	'mwe-cancel' => '取消',
 );

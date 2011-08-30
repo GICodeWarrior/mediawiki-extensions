@@ -93,3 +93,10 @@ $messages['pl'] = array(
 	'automaticboardwelcome-desc' => 'Automatycznie wysyła [[MediaWiki:User-board-welcome-message|wiadomość powitalną]] nowym użytkownikom na ich stronach dyskusji po ukończeniu rejestracji',
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'automaticboardwelcome-desc' => 'Автоматически оставляет [[MediaWiki:User-board-welcome-message|приветственное сообщение]] на досках новых участников после создания учётных записей.',
+);
+
