@@ -7,19 +7,22 @@ import sys
 from datetime import datetime, timedelta
 import argparse
 import random
-import gzip
+import myzip
 import re
 import os
 import urllib2
 from collections import deque, namedtuple
 import numpy as np
-import gc
 
 pageview_tuple = namedtuple('Pageview', 'date count')
 count_tuple = namedtuple('Count', 'pred real')
 
 def time_parse(x):
-    return datetime.strptime(x, 'pagecounts-%Y%m%d-%H%M%S.gz')
+    if x.endswith('.gz'):
+        return datetime.strptime(x, 'pagecounts-%Y%m%d-%H%M%S.gz')
+    elif x.endswith('.gz'):
+        return datetime.strptime(x, 'pagecounts-%Y%m%d-%H%M%S.xz')
+
 def time_format(x):
     return datetime.strftime(x, '%Y/%m/%d %H:%M:%S')
 def datetime2days(x):
@@ -28,7 +31,7 @@ def datetime2days(x):
 def load_wikistats_file(f):
     print >>sys.stderr, 'loading %s...' % f
     ret = {}
-    for line in gzip.open(f):
+    for line in myzip.open(f):
         line.strip()
         (lang,title,count,bytes) = line.split(' ')
         ret[(lang,title)] = count_tuple(float(count), int(count))
@@ -143,9 +146,6 @@ if __name__ == '__main__':
                     if options.inclusive:
                         ls.insert(len(ls), bursting.has_key(page))
                     writer.writerow([unicode(x) for x in ls])
-                except UnicodeEncodeError, e:
-                    print >>sys.stderr, '%s: %s' % (e, page)
-                    continue
                 except UnicodeDecodeError, e:
                     print >>sys.stderr, '%s: %s' % (e, page)
                     continue

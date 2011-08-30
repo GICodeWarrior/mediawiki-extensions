@@ -12,6 +12,7 @@ import csv
 import datetime
 import math
 import re
+import math
 from collections import namedtuple
 
 counter_tuple = namedtuple('counter', 'name filter color explode')
@@ -36,6 +37,9 @@ if __name__ == '__main__':
     parser.add_argument('-v', '--verbose',
                       dest='verbose', action='store_true', default=False,
                       help='turn on verbose message output')
+    parser.add_argument('-X', '--exclude-semiprotect',
+                      dest='nosemiprotect', action='store_true', default=False,
+                      help='')
     parser.add_argument('files', nargs='+')
     options = parser.parse_args()
 
@@ -52,13 +56,18 @@ if __name__ == '__main__':
                 counter_tuple('others', lambda x: x, '#CCCCCC', 0.0),
                ]
 
-    # counters = [counter_tuple('new registered users', lambda x: x[10] == 'REG'  and x[13] == 'NEW' and x[14] != 'SEMIPROTECT', '#4444FF', 0.1),
-    #             counter_tuple('old registered users', lambda x: x[10] == 'REG'  and x[13] == 'OLD' and x[14] != 'SEMIPROTECT', '#8888EE', 0.0),
-    #             counter_tuple('new IP users',         lambda x: x[10] == 'ANON' and x[13] == 'NEW' and x[14] != 'SEMIPROTECT', '#FF4444', 0.1),
-    #             counter_tuple('old IP users',         lambda x: x[10] == 'ANON' and x[13] == 'OLD' and x[14] != 'SEMIPROTECT', '#EE8888', 0.0),
-    #             counter_tuple('bots',                 lambda x: x[10] == 'REG_BOT' and x[14] != 'SEMIPROTECT',                 '#666666', 0.0),
-    #             #counter_tuple('others', lambda x: x, '#CCCCCC', 0.0),
+    # counters = [counter_tuple('w/ <30d edit history or IP', lambda x: x[10] == 'ANON'  or x[13] == 'NEW', '#FF4444', 0.1),
+    #             counter_tuple('w/ >30d edit history and registered', lambda x: x, '#CCCCCC', 0.0),
     #            ]
+
+    if options.nosemiprotect:
+        counters = [counter_tuple('new registered users', lambda x: x[10] == 'REG'  and x[13] == 'NEW' and x[14] != 'SEMIPROTECT', '#4444FF', 0.1),
+                    counter_tuple('old registered users', lambda x: x[10] == 'REG'  and x[13] == 'OLD' and x[14] != 'SEMIPROTECT', '#8888EE', 0.0),
+                    counter_tuple('new IP users',         lambda x: x[10] == 'ANON' and x[13] == 'NEW' and x[14] != 'SEMIPROTECT', '#FF4444', 0.1),
+                    counter_tuple('old IP users',         lambda x: x[10] == 'ANON' and x[13] == 'OLD' and x[14] != 'SEMIPROTECT', '#EE8888', 0.0),
+                    counter_tuple('bots',                 lambda x: x[10] == 'REG_BOT' and x[14] != 'SEMIPROTECT',                 '#666666', 0.0),
+                    #counter_tuple('others', lambda x: x, '#CCCCCC', 0.0),
+                    ]
 
     counters_map = {}
     for x in counters:
@@ -67,14 +76,17 @@ if __name__ == '__main__':
     ratios = []
     patt = re.compile('(\d+) / (\d+) / (\d+)')
     for (i,fname) in enumerate(options.files):
+        ratios.append(1.0)
         for line in open(fname).readlines():
             m = patt.search(line)
             if m:
-                ratios.append((float(m.group(1)) / float(m.group(2)) / float(m.group(3))) ** 0.5)
+                ratios[i] = (float(m.group(1)) / float(m.group(2)) / float(m.group(3))) ** 0.5
                 break
+
     sum_ratio = sum(ratios)
     counter_names = [x.name for x in counters]
 
+    # chart for breakdown of users
     plots = []
     matplotlib.rc('font', size=options.fsize)
     for (n,fname) in enumerate(options.files):
@@ -91,7 +103,8 @@ if __name__ == '__main__':
                     counts[c[0]].add(cols[options.field-1])
                     break
 
-        print counts#!
+        for (name,value) in counts.items():
+            print name, len(value)
         #plt.subplot(1, len(options.files), n+1)
         plt.axes([0, 0, ratios[n]/sum_ratio, ratios[n]/sum_ratio])
         plt.title(fname)
@@ -105,4 +118,39 @@ if __name__ == '__main__':
                    loc=(.8, .8))
 
         base,ext = os.path.splitext(fname)
+        print >>sys.stderr, 'output: ' + base
         plt.savefig('.'.join([base, 'svg']))
+
+    # chart for new editor retention
+    for (n,fname) in enumerate(options.files):
+        plt.figure(figsize=(10,10))
+        table = list(csv.reader(filter(lambda x: x[0] != '#', open(fname)), delimiter='\t'))
+        table = table[1:]
+        filt = lambda x: x[10] == 'REG'  and x[13] == 'NEW'
+        bin = lambda x: min(int(10 * math.log10(int(x[15]) + 1)), int(10 * math.log10(3000)))
+        username = lambda x: x[11]
+        users = {}
+        bins = {}
+        for cols in table:
+            if filt(cols) and not users.has_key(username(cols)):
+                users[username(cols)] = True
+                b = bin(cols)
+                bins.setdefault(b, 0)
+                bins[b] += 1
+
+        bins = sorted(bins.items(), key=lambda x: -x[0])
+        max_bin = max(x[0] for x in bins)
+
+        if max_bin == 0:
+            print >>sys.stderr, '%s: %s (no values)' % (fname, bins)
+            continue
+        print >>sys.stderr, '%s: %s' % (fname, bins)
+
+        p = plt.pie([x[1] for x in bins],
+                    pctdistance=1.2,
+                    autopct='%1.1f%%',
+                    colors=['#' + 3 * ('%02X' % int(255 - 255 * float(x[0]) / max_bin)) for x in bins])
+
+        base,ext = os.path.splitext(fname)
+        print >>sys.stderr, 'output: ' + base
+        plt.savefig('.'.join([base, 'retention', 'svg']))
