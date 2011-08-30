@@ -46,6 +46,19 @@ $messages['de'] = array(
 	'shoutbox-illegal-height' => 'Es wurde der ungültige <i>height</i>-Parameter „<tt>$1</tt>“ angegeben.',
 );
 
+/** French (Français)
+ * @author Gomoko
+ */
+$messages['fr'] = array(
+	'shoutbox-desc' => "Ajout une fonction d'analyse pour incorporer votre propre shoutbox",
+	'shoutbox-missing-params' => 'Il manque un paramètre obligatoire à la shoutbox.',
+	'shoutbox-bad-params' => 'La shoutbox a reçu un paramètre incorrect.',
+	'shoutbox-unparsable-param-string' => 'La shoutbox a reçu en paramètre la chaîne "<tt>$1</tt>", qui n\'est pas analysable.',
+	'shoutbox-bad-id' => 'La shoutbox a reçu un mauvais id: "<tt>$1</tt>".',
+	'shoutbox-illegal-width' => 'La shoutbox a reçu un paramètre "$1" de longueur incorrecte.',
+	'shoutbox-illegal-height' => 'La shoutbox a reçu un paramètre de hauteur incorrect: "$1".',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
