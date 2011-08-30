@@ -23,10 +23,11 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 // Extension credits that will show up on Special:Version
 $wgExtensionCredits['parserhook'][] = array(
+	'path' => __FILE__,
 	'name' => 'NewUsersList',
 	'version' => '1.0',
 	'author' => array( 'Aaron Wright', 'David Pean', 'Jack Phoenix' ),
-	'description' => 'Adds <tt>&lt;newusers&gt;</tt> parser tag to retrieve the list of new users and their avatars',
+	'descriptionmsg' => 'newuserslist-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:NewUsersList'
 );
 
