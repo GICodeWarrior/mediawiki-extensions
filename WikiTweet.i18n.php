@@ -202,6 +202,7 @@ $messages['de'] = array(
 	'wikitweet-mailsent' => 'E-Mail versandt',
 	'wikitweet-viaroom' => 'über Raum',
 	'wikitweet-alertsolved' => 'eine deiner Alarmierungen wurde behoben in',
+	'wikitweet-cannotparse' => 'Kann nicht geparst werden',
 );
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
@@ -457,6 +458,7 @@ $messages['mk'] = array(
 	'wikitweet-mailsent' => 'пораката е испратена',
 	'wikitweet-viaroom' => 'преку собата',
 	'wikitweet-alertsolved' => 'едно од укажаните беше решено за',
+	'wikitweet-cannotparse' => 'Не можам да парсирам',
 );
 
 /** Malay (Bahasa Melayu)
@@ -513,10 +515,25 @@ $messages['nl'] = array(
 	'wikitweet-timeago' => '$1 geleden',
 	'wikitweet-inthefuture' => 'In de toekomst!',
 	'wikitweet-fewsecondsago' => 'Een paar seconden geleden',
+	'wikitweet-status' => 'Status:',
+	'wikitweet-status0' => 'Overleg',
+	'wikitweet-status1' => 'Evenement',
+	'wikitweet-status2' => 'Waarschuwing',
+	'wikitweet-status3' => 'Alarm',
+	'wikitweet-resolve' => 'oplossen',
+	'wikitweet-concerns' => 'Heeft betrekking op u',
+	'wikitweet-comment' => 'Opmerking',
+	'wikitweet-subscribers' => 'Abonnees:',
+	'wikitweet-hourly' => 'Ieder uur',
 	'wikitweet-perperson' => 'Per persoon',
 	'wikitweet-inresponseto' => 'Als antwoord op:',
+	'wikitweet-from' => 'van',
+	'wikitweet-in' => 'in',
 	'wikitweet-directlink' => 'Directe verwijzing:',
 	'wikitweet-mailsent' => 'e-mail verzonden',
+	'wikitweet-viaroom' => 'via kamer',
+	'wikitweet-alertsolved' => 'een van uw waarschuwingen is opgelost in',
+	'wikitweet-cannotparse' => 'Het is niet mogelijk het volgende te verwerken:',
 );
 
 /** Polish (Polski)
