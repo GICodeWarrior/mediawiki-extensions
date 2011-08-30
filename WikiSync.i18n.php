@@ -1325,27 +1325,28 @@ rozpoczynając od wersji $3?',
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'wikisync' => 'Sincronisassion ëd wiki',
-	'wikisync-desc' => 'A dà na [[Special:WikiSync|pagina special]] për sincronisé i cambe recent ëd doe wiki, un-a local e un-a lontan-a',
+	'wikisync-desc' => "A dà na [[Special:WikiSync|pàgina special]] për sincronisé j'ùltime modìfiche ëd doe wiki, un-a local e un-a lontan-a",
 	'wikisync_direction' => 'Për piasì sern la diression ëd la sincronisassion',
 	'wikisync_local_root' => 'Radis dël sit ëd la wiki local',
 	'wikisync_remote_root' => 'Radis dël sit ëd la wiki lontan-a',
 	'wikisync_remote_log' => "Registr ëd j'operassion lontan-e",
-	'wikisync_clear_log' => 'Scansela registr',
-	'wikisync_login_to_remote_wiki' => 'Intra an la wiki lontan-a',
+	'wikisync_clear_log' => 'Scancelé ël registr',
+	'wikisync_login_to_remote_wiki' => 'Intré ant ël sistema ëd la wiki lontan-a',
 	'wikisync_remote_wiki_root' => 'Radis ëd la wiki lontan-a',
 	'wikisync_remote_wiki_example' => 'Përcors a api.php, për esempi: http://www.mediawiki.org/w',
-	'wikisync_remote_wiki_user' => 'Nòm utent ëd la wiki lontan-a',
-	'wikisync_remote_wiki_pass' => 'Ciav ëd la wiki lontan-a',
-	'wikisync_remote_login_button' => 'Intra',
-	'wikisync_sync_files' => 'Sincronisa archivi',
-	'wikisync_store_password' => 'Memorisa ciav ëd la wiki lontan-a',
-	'wikisync_storing_password_warning' => "Memorisé ciav lontan-e a l'é pa sigur e a l'é pa racomandà",
+	'wikisync_remote_wiki_user' => 'Stranòm an sla wiki lontan-a',
+	'wikisync_remote_wiki_pass' => 'Ciav an sla wiki lontan-a',
+	'wikisync_remote_login_button' => 'Intré ant ël sistema',
+	'wikisync_sync_files' => "Sincronisé dj'archivi",
+	'wikisync_store_password' => 'Memorisé la ciav ëd la wiki lontan-a',
+	'wikisync_storing_password_warning' => "La memorisassion ëd na ciav leugna a l'é pa sigur e a l'é pa racomandà",
 	'wikisync_synchronization_button' => 'Sincronisa',
-	'wikisync_scheduler_log' => 'Registr ëd lë scheduler',
+	'wikisync_scheduler_log' => 'Registr dël pianificator',
 	'wikisync_scheduler_setup' => 'Ampostassion ëd lë scheduler',
 	'wikisync_scheduler_turn_on' => 'Tira su lë scheduler',
 	'wikisync_scheduler_switch_direction' => 'Cangia automaticament la diression ëd la sincronisassion',
