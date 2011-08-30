@@ -2616,7 +2616,7 @@ Bitte erstelle sie und führe configure.sql darin aus oder korrigiere ihren Name
 	'configure-throttle-action-move' => 'Verschieben',
 	'configure-throttle-action-rollback' => 'Zurücksetzen',
 	'configure-throttle-action-mailpassword' => 'Passworterinnerung zuschicken',
-	'configure-throttle-action-emailuser' => 'E-Mail schicken',
+	'configure-throttle-action-emailuser' => 'E-Mail senden',
 	'configure-throttle-group-anon' => 'Alle anonymen Benutzer',
 	'configure-throttle-group-user' => 'Nach Benutzernamen',
 	'configure-throttle-group-newbie' => 'Nach neuen Benutzernamen',
