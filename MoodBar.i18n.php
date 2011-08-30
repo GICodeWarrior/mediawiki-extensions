@@ -155,6 +155,7 @@ See also:
 	'moodbar-header-user' => '{{Identical|User}}',
 	'moodbar-header-comment' => '{{Identical|Comment}}',
 	'moodbar-header-namespace' => '{{Identical|Namespace}}',
+	'moodbar-user-ip' => '{{Identical|IP Address}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -225,6 +226,12 @@ $messages['be-tarask'] = array(
 	'moodbar-header-user-editcount' => 'Колькасьць рэдагаваньняў удзельнікаў',
 	'moodbar-header-namespace' => 'Прастора назваў',
 	'moodbar-header-own-talk' => 'Уласная старонка гутарак',
+	'moodbar-type-happy' => 'Шчасьлівы',
+	'moodbar-type-sad' => 'Смутны',
+	'moodbar-type-confused' => 'Зьмешаныя пачуцьці',
+	'moodbar-user-anonymized' => 'Ананімны',
+	'moodbar-user-ip' => 'ІР-адрас',
+	'moodbar-user-user' => 'Зарэгістраваны ўдзельнік',
 );
 
 /** German (Deutsch)
