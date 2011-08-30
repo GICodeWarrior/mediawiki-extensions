@@ -1007,6 +1007,7 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Gomoko
  * @author IAlex
  * @author Jean-Frédéric
  * @author McDutchie
@@ -1022,6 +1023,7 @@ $messages['fr'] = array(
 	'qp_result_error' => 'Erreur de syntaxe',
 	'qp_vote_button' => 'Vote',
 	'qp_vote_again_button' => 'Changer votre vote',
+	'qp_submit_attempts_left' => '$1 {{PLURAL:$1|tentative restante|tentatives restantes}}',
 	'qp_polls_list' => 'Lister tous les sondages',
 	'qp_users_list' => 'Lister tous les utilisateurs',
 	'qp_browse_to_poll' => 'Aller jusqu’à $1',
@@ -1040,6 +1042,12 @@ $messages['fr'] = array(
 	'qp_results_line_qupl' => 'Page « $1 » Sondage « $2 » : $3',
 	'qp_results_line_qpl' => 'Page « $1 » Sondage « $2 » : $3, $4, $5, $6',
 	'qp_header_line_qpul' => '$1 [ Page « $2 » Sondage « $3 » ]',
+	'qp_results_submit_attempts' => 'Tentatives de soumission: $1',
+	'qp_results_interpretation_header' => 'Interprétation de la réponse',
+	'qp_results_short_interpretation' => 'Interprétation résumée: $1',
+	'qp_results_long_interpretation' => 'Interprétation longue: $1',
+	'qp_poll_has_no_interpretation' => "Ce scrutin n'a pas de modèle d'interprétation défini dans son entête.",
+	'qp_interpetation_wrong_answer' => 'Mauvaise réponse',
 	'qp_export_to_xls' => 'Exporter les statistiques au format XLS',
 	'qp_voices_to_xls' => 'Exporter les votes au format XLS',
 	'qp_users_answered_questions' => '$1 {{PLURAL:$1|utilisateur a|utilisateurs ont}} répondu aux questions',
@@ -1078,6 +1086,20 @@ Pour enregistrer un sondage, soumettez-le en ne répondant à aucune question de
 	'qp_error_too_few_spans' => 'Toute classe de catégorie nécessite au moins deux réponses possibles définies',
 	'qp_error_no_answer' => 'Proposition sans réponse',
 	'qp_error_unique' => 'La question de type unique() a plus de propositions qu’il n’y a de réponses possibles définies : impossible de compléter',
+	'qp_error_no_more_attempts' => 'Vous avez atteint le nombre maximal de tentatives de soumission pour ce sondage.',
+	'qp_error_interpretation_no_return' => "Le script d'interprétation n'a renvoyé aucun résultat.",
+	'qp_error_no_json_decode' => "L'interprétation des réponses au sondage nécessite la fonction PHP json_decode().",
+	'qp_error_eval_missed_lang_attr' => 'L\'attribut XML "lang" est obligatoire pour choisir la bonne langue d\'interprétation.',
+	'qp_error_eval_mix_languages' => 'Un même script d\'interprétation ne peut pas mélanger différentes langues d\'interprétation: "$1", $2".',
+	'qp_error_eval_unsupported_language' => 'Langue "$1" d\'interprétation non supportée.',
+	'qp_error_eval_illegal_token' => "L'élément PHP $1 avec la valeur $2 n'est pas autorisé en ligne $3.",
+	'qp_error_eval_illegal_superglobal' => "L'élément PHP $1 avec la superglobale $2 n'est pas autorisé en ligne $3.",
+	'qp_error_eval_illegal_function_call' => "L'élément PHP $1 avec la fonction $2 n'est pas autorisé en ligne $3.",
+	'qp_error_eval_variable_variable_access' => "L'élément PHP $1 avec la variable $2 n'est pas autorisé en ligne $3.",
+	'qp_error_eval_illegal_variable_name' => "L'élément PHP $1 a rejeté le nom de variable $2 en ligne $3.",
+	'qp_error_eval_variable_function_call' => "L'élément PHP $1 avec la fonction variable $2 n'est pas autorisé en ligne $3.",
+	'qp_error_eval_self_check' => "L'auto-vérification eval() suivante a échoué: $1. Votre version de PHP n'est pas supportée, ce qui ne permet pas d'exécuter des scripts d'évaluation de façon sûre.",
+	'qp_error_eval_unable_to_lint' => 'Impossible de contrôler (lint). Vérifiez la configuration de votre système.',
 );
 
 /** Franco-Provençal (Arpetan)
