@@ -2649,9 +2649,14 @@ $messages['oc'] = array(
 );
 
 /** Oriya (ଓଡ଼ିଆ)
+ * @author Odisha1
  * @author Psubhashish
  */
 $messages['or'] = array(
+	'ogg-play' => 'ଚଲାଇବା',
+	'ogg-pause' => 'ବିରତି',
+	'ogg-stop' => 'ବିରାମ',
+	'ogg-more' => 'ଅଧିକ...',
 	'ogg-dismiss' => 'ବନ୍ଦ କରନ୍ତୁ',
 );
 
