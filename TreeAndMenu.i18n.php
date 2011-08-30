@@ -29,6 +29,14 @@ $messages['de'] = array(
 Die Baumansicht nutzt hierzu [http://www.destroydrop.com/javascripts/tree dTree] sowie das Aufklappmenü [http://www.htmldog.com/articles/suckerfish/dropdowns/ Son of Suckerfish]',
 );
 
+/** French (Français)
+ * @author Gomoko
+ */
+$messages['fr'] = array(
+	'treeandmenu-desc' => "Ajoute les fonctions d'analyse <code><nowiki>#tree</nowiki></code> et <code><nowiki>#menu</nowiki></code> qui permettent aux listes à puces d'être rendues comme des arbres pliables ou des menus déroulants.
+Les arbres pliables utilisent le menu par arbre JavaScript [http://www.destroydrop.com/javascripts/tree dTree], et les menus déroulants utilisent [http://www.htmldog.com/articles/suckerfish/dropdowns/ Son of Suckerfish]",
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
