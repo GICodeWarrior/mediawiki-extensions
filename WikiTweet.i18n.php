@@ -339,6 +339,7 @@ $messages['gl'] = array(
 	'wikitweet-mailsent' => 'mensaxe enviada',
 	'wikitweet-viaroom' => 'a través da sala',
 	'wikitweet-alertsolved' => 'unha das súas alertas foi resolta en',
+	'wikitweet-cannotparse' => 'Non se pode analizar',
 );
 
 /** Interlingua (Interlingua)
