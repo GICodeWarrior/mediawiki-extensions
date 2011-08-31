@@ -20,7 +20,7 @@ $messages['en'] = array(
 	'signupapi-strong' => 'Strong',
 	'signupapi-badretype' => 'The passwords you entered do not match',
 	'signupapi-passwordsmatch' => 'Passwords match',
-	'signupapi-invalidemailaddress' => 'Email address in invalid',
+	'signupapi-invalidemailaddress' => 'E-mail address is invalid',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
