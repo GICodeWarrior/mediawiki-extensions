@@ -156,22 +156,19 @@
 			// Build font dropdown
 			$.webfonts.buildMenu(config );
 			//see if there is a font in cookie
-			cookie_font = $.cookie('webfonts-font');
-			if(cookie_font == null){
+			var cookie_font = $.cookie('webfonts-font');
+			if(!cookie_font){
 				$.webfonts.set( config[0]);
 				//mark it as checked
 				$('#webfont-'+config[0]).attr('checked', 'checked');
-			}
-			else{
-				if (cookie_font !=='none'){
-					$.webfonts.set( cookie_font);
-					//mark it as checked
-					$('#webfont-'+cookie_font).attr('checked', 'checked');
-				}
+			} else if (cookie_font !=='none') {
+				$.webfonts.set( cookie_font);
+				//mark it as checked
+				$('#webfont-'+cookie_font).attr('checked', 'checked');
 			}
 			
 			//if there are tags with font-family style definition, get a list of fonts to be loaded
-			var fontFamilies = new Array();
+			var fontFamilies = [];
 			$('body').find('*[style]').each(function(index){
 				if( this.style.fontFamily){
 					var fontFamilyItems =  this.style.fontFamily.split(",");
@@ -195,20 +192,20 @@
 		buildMenu : function(config)  {
 			var haveSchemes = false;
 			// Build font dropdown
-			$fontsMenu = $( '<ul />' ).attr('id','webfonts-fontsmenu');
+			var $fontsMenu = $( '<ul />' ).attr('id','webfonts-fontsmenu');
 			for ( var scheme in config ) {
-				$fontLink = $( '<input>' )
+				var $fontLink = $( '<input>' )
 					.attr("type","radio")
 					.attr("name","font")
 					.attr("id","webfont-"+config[scheme])
 					.attr("value",config[scheme] );
 					
-				$fontLabel =  $( '<label />' )
+				var $fontLabel =  $( '<label />' )
 					.attr("for","webfont-"+config[scheme])
 					.append( $fontLink )
 					.append( config[scheme] );
 					
-				$fontMenuItem = $( '<li />' )
+				var $fontMenuItem = $( '<li />' )
 					.val( config[scheme] )
 					.append( $fontLabel );
 					
@@ -217,13 +214,13 @@
 				(function (font) {
 					$fontLink.click( function( event ) {
 						$.webfonts.set( font );
-					})
+					});
 				}) (config[scheme]);
 
 				$fontsMenu.append($fontMenuItem);
 								
 			}
-			$resetLink = $( '<input />' )
+			var $resetLink = $( '<input />' )
 				.attr("type","radio")
 				.attr("name","font")
 				.attr("value","webfont-none")
@@ -232,14 +229,14 @@
 					$.webfonts.set( 'none');
 				});
 					
-			$resetLabel =  $( '<label />' )
+			var $resetLabel =  $( '<label />' )
 				.attr("for","webfont-none")
 				.append( $resetLink )
 				.append( mw.msg("webfonts-reset"));
 				
-			$resetLinkItem = $( '<li />' )
+			var $resetLinkItem = $( '<li />' )
 				.val( 'none')
-				.append( $resetLabel )	
+				.append( $resetLabel );
 				
 			$fontsMenu.append($resetLinkItem);
 				if ( !haveSchemes ) {
@@ -269,7 +266,7 @@
 				$($('#p-personal ul')[0]).prepend( $li );
 			}    
 		}
-	}
+	};
 
 	$( document ).ready( function() {
 		$.webfonts.setup();
