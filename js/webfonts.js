@@ -13,7 +13,7 @@
 				return;
 			}
 
-			if ( !font in $.webfonts.config.fonts ) {
+			if ( !(font in $.webfonts.config.fonts) ) {
 				console.log( "Requested unknown font", font );
 				return;
 			}
