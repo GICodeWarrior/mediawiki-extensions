@@ -253,7 +253,14 @@ class ContributionTrackingProcessor {
 			'amount_given' => '',
 			'contribution_tracking_id' => '',
 			'notify_url' => '',
-			'item_name' => ''
+			'item_name' => '',
+			'address1' => '',
+			'city' => '',			
+			'state' => '',
+			'zip' => '',
+			'country' => 'US',
+			'address_override' => '0'
+			
 		);
 	}
 
@@ -329,7 +336,7 @@ class ContributionTrackingProcessor {
 			$repost['fields']['return'] = $returnto;
 			$repost['fields']['currency_code'] = $input['currency_code'];
 
-			// additional fields to pass to PayPal from single-step credit card form
+			// additional fields to pass to PayPal from single-step credit card form and 1st step with address fields
 			if ( array_key_exists( 'fname', $input ) && !empty( $input['fname'] ) ) {
 				$repost['fields']['first_name'] = $input['fname'];
 			}
@@ -339,6 +346,32 @@ class ContributionTrackingProcessor {
 			if ( array_key_exists( 'email', $input ) && !empty( $input['email'] ) ) {
 				$repost['fields']['email'] = $input['email'];
 			}
+
+			if ( array_key_exists( 'address1', $input ) && !empty( $input['address1'] ) ) {
+				$repost['fields']['address1'] = $input['address1'];
+			}
+
+			if ( array_key_exists( 'city', $input ) && !empty( $input['city'] ) ) {
+				$repost['fields']['city'] = $input['city'];
+			}
+
+			if ( array_key_exists( 'state', $input ) && !empty( $input['state'] ) ) {
+				$repost['fields']['state'] = $input['state'];
+			}
+
+			if ( array_key_exists( 'zip', $input ) && !empty( $input['zip'] ) ) {
+				$repost['fields']['zip'] = $input['zip'];
+			}
+
+
+			if ( array_key_exists( 'country', $input ) && !empty( $input['country'] ) ) {
+				$repost['fields']['country'] = $input['country'];
+			}
+
+			if ( array_key_exists( 'address_override', $input ) && !empty( $input['address_override'] ) ) {
+				$repost['fields']['address_override'] = $input['address_override'];
+			}
+
 
 			// if this is a recurring donation, we have add'l fields to send to paypal
 			if ( $input['recurring_paypal'] && $input['recurring_paypal'] != 0 ) {
