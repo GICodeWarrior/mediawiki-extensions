@@ -9,7 +9,7 @@
 $messages = array();
 
 /**
- * @author Reedy
+ * @author Jack Phoenix
  */
 $messages['en'] = array(
 	'newuserslist-desc' => 'Adds <tt>&lt;newusers&gt;</tt> parser tag to retrieve the list of new users and their avatars',
