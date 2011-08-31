@@ -20,7 +20,8 @@ abstract class ApiAnalyticsBase extends ApiBase {
 	protected function getDB() {
 		if ( is_null( $this->mDb ) ) {
 			global $wgMetricsDBserver, $wgMetricsDBname, $wgMetricsDBuser,
-				$wgMetricsDBpassword, $wgMetricsDBtype, $wgMetricsDBprefix;
+				$wgMetricsDBpassword, $wgMetricsDBtype, $wgMetricsDBprefix,
+				$wgDebugDumpSql;
 			$this->mDb = DatabaseBase::factory( $wgMetricsDBtype,
 				array(
 					'host' => $wgMetricsDBserver,
@@ -28,6 +29,7 @@ abstract class ApiAnalyticsBase extends ApiBase {
 					'password' => $wgMetricsDBpassword,
 					'dbname' => $wgMetricsDBname,
 					'tablePrefix' => $wgMetricsDBprefix,
+					'flags' => ( $wgDebugDumpSql ? DBO_DEBUG : 0 ) | DBO_DEFAULT
 				)
 			);
 			//$this->mDb->query( "SET names utf8" );
