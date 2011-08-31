@@ -126,7 +126,7 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 			if( $image ) {
 				$thumb = $image->transform( array( 'width' => 50, 'height' => 50 ), 0 );
 				$item['Image'] = array(
-					'source' => wfExpandUrl( $thumb->getUrl(), PROTO_CANONICAL ),
+					'source' => wfExpandUrl( $thumb->getUrl(), PROTO_CURRENT ),
 					//alt
 					'width' => $thumb->getWidth(),
 					'height' => $thumb->getHeight() );
