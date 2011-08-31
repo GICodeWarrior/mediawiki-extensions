@@ -52,13 +52,16 @@ $wgResourceModules['ext.SignupAPI'] = array(
 	'scripts' => 'includes/verification.js',
 	'messages' => array(
 		'signupapi-ok',
+		'signupapi-noname',
+		'signupapi-userexists',
 		'signupapi-enterpassword',
 		'signupapi-passwordtooshort',
 		'signupapi-weak',
 		'signupapi-medium',
 		'signupapi-strong',
 		'signupapi-badretype',
-		'signupapi-passwordsmatch'
+		'signupapi-passwordsmatch',
+		'signupapi-invalidemailaddress',
 	),
 	'dependencies' => array( 'jquery.ui.progressbar' ),
 	'localBasePath' => dirname( __FILE__ ),
