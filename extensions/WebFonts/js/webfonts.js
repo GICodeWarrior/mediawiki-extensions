@@ -2,7 +2,7 @@
 
 	$.webfonts = {
 
-		
+
 		oldconfig: false,
 		config : $.webfonts.config,
 		/* Version number */
@@ -41,7 +41,7 @@
 			else{
 			    $.webfonts.scale(1);
 			}
-			
+
 			if ( 'normalization' in config ) {
 					$(document).ready(function() {
 						$.webfonts.normalize(config.normalization);
@@ -71,7 +71,7 @@
 		 */
 		scale : function (percentage){
 			//TODO: Not Implemented. Need to find a better way to emulate fontconfig font-scale feature.
-			//Changing the font-size of few selectors does not work properly and not able to achieve 
+			//Changing the font-size of few selectors does not work properly and not able to achieve
 			//uniform scaling.
 		},
 
@@ -100,7 +100,7 @@
 			  });
 			});
 		},
- 
+
 		/*
 		 * Construct the css required for the fontfamily, inject it to the head of the body
 		 * so that it gets loaded.
@@ -129,13 +129,13 @@
 			}
 
 			styleString += "\tfont-weight: normal;\n}\n</style>\n";
-			
+
 			//inject the css to the head of the page.
 			$(styleString).appendTo("head" );
 
 		},
 		/**
-		 * Setup the font selection menu. 
+		 * Setup the font selection menu.
 		 * It also apply the font from cookie, if any.
 		 */
 		setup: function() {
@@ -166,13 +166,13 @@
 				//mark it as checked
 				$('#webfont-'+cookie_font).attr('checked', 'checked');
 			}
-			
+
 			//if there are tags with font-family style definition, get a list of fonts to be loaded
 			var fontFamilies = [];
 			$('body').find('*[style]').each(function(index){
 				if( this.style.fontFamily){
 					var fontFamilyItems =  this.style.fontFamily.split(",");
-					$.each(fontFamilyItems, function(index, value) { 
+					$.each(fontFamilyItems, function(index, value) {
 						fontFamilies.push(value );
 					});
 				}
@@ -180,7 +180,7 @@
 			//get unique list
 			fontFamilies = $.unique(fontFamilies);
 			//load css for each of the item in fontfamily list
-			$.each(fontFamilies, function(index, fontFamily) { 
+			$.each(fontFamilies, function(index, fontFamily) {
 				//remove the ' characters if any.
 				fontFamily = fontFamily.replace(/'/g,'');
 				if ( fontFamily in $.webfonts.config.fonts ) {
@@ -199,16 +199,16 @@
 					.attr("name","font")
 					.attr("id","webfont-"+config[scheme])
 					.attr("value",config[scheme] );
-					
+
 				var $fontLabel =  $( '<label />' )
 					.attr("for","webfont-"+config[scheme])
 					.append( $fontLink )
 					.append( config[scheme] );
-					
+
 				var $fontMenuItem = $( '<li />' )
 					.val( config[scheme] )
 					.append( $fontLabel );
-					
+
 				haveSchemes = true;
 				//some closure trick :)
 				(function (font) {
@@ -218,7 +218,7 @@
 				}) (config[scheme]);
 
 				$fontsMenu.append($fontMenuItem);
-								
+
 			}
 			var $resetLink = $( '<input />' )
 				.attr("type","radio")
@@ -228,16 +228,16 @@
 				.click( function( event ) {
 					$.webfonts.set( 'none');
 				});
-					
+
 			var $resetLabel =  $( '<label />' )
 				.attr("for","webfont-none")
 				.append( $resetLink )
 				.append( mw.msg("webfonts-reset"));
-				
+
 			var $resetLinkItem = $( '<li />' )
 				.val( 'none')
 				.append( $resetLabel );
-				
+
 			$fontsMenu.append($resetLinkItem);
 				if ( !haveSchemes ) {
 					// No schemes available, don't show the tool
@@ -264,7 +264,7 @@
 			}
 			else{
 				$($('#p-personal ul')[0]).prepend( $li );
-			}    
+			}
 		}
 	};
 

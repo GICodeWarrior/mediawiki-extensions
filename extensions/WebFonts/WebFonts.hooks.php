@@ -8,9 +8,9 @@
 
 // WebFonts hooks
 class WebFontsHooks {
-
 	public static function addModules( $out, $skin ) {
 		global $wgUser;
+
 		if ( !$wgUser->getOption( 'webfontsDisable' ) ) {
 			$out->addModules( 'webfonts' );
 		}
@@ -25,8 +25,7 @@ class WebFontsHooks {
 			'label-message' => 'webfonts-disable-preference', // a system message
 			'section' => 'rendering/advancedrendering', // under 'Advanced options' section of 'Editing' tab
 		);
+
 		return true;
 	}
-
 }
-

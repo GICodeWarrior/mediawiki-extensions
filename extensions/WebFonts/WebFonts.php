@@ -41,7 +41,7 @@ $wgWebFontsEnabled = true;
 $wgResourceModules['webfonts'] = array(
 	'scripts' => 'js/webfonts.js',
 	'styles' => 'css/webfonts.css',
-	'localBasePath' => dirname( __FILE__ ),
+	'localBasePath' => $dir,
 	'remoteExtPath' => 'WebFonts',
 	'messages' => array( 'webfonts-load', 'webfonts-reset' ),
 	'dependencies' => 'webfonts.fontlist',
@@ -49,6 +49,6 @@ $wgResourceModules['webfonts'] = array(
 
 $wgResourceModules['webfonts.fontlist'] = array(
 	'scripts' => 'js/webfonts.fontlist.js',
-	'localBasePath' => dirname( __FILE__ ),
+	'localBasePath' => $dir,
 	'remoteExtPath' => 'WebFonts',
 );
