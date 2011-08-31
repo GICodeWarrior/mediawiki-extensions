@@ -27,7 +27,7 @@ function passwordStrength() {
     if (pwd.value.length==0) {
     strength.innerHTML = mw.message( 'signupapi-enterpassword' );
     } else if (pwd.value.length<minlength) {
-    strength.innerHTML = mw.message( 'passwordtooshort', minlength );
+    strength.innerHTML = mw.message( 'signupapi-passwordtooshort', minlength );
     $("#progress").progressbar({value: 10});
     $("div.ui-progressbar-value").css("background","red");
     } else if (strongRegex.test(pwd.value)) {
@@ -55,7 +55,7 @@ function checkRetype( pass,retype ) {
                 message = mw.message( 'signupapi-passwordsmatch' );
         }else {
                 image = "<img src='"+ imagePath +"MW-Icon-NoMark.png'>";
-                message = mw.message( 'badretype' );
+                message = mw.message( 'signupapi-badretype' );
         }
         valresult.innerHTML = image+message;
 }

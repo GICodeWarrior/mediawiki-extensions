@@ -11,6 +11,8 @@ $messages = array();
 $messages['en'] = array(
 	'signupapi-desc' => 'Cleans up the [[Special:UserLogin|login page]] from signup related stuff and adds an API for signup',
 	'signupapi-ok' => 'OK',
+	'signupapi-noname' => 'No username was specified',
+	'signupapi-userexists' => 'User exists',
 	'signupapi-enterpassword' => 'You must enter a password',
 	'signupapi-passwordtooshort' => 'Password is too short',
 	'signupapi-weak' => 'Weak',
@@ -18,7 +20,7 @@ $messages['en'] = array(
 	'signupapi-strong' => 'Strong',
 	'signupapi-badretype' => 'The passwords you entered do not match',
 	'signupapi-passwordsmatch' => 'Passwords match',
-
+	'signupapi-invalidemailaddress' => 'Email address in invalid',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
