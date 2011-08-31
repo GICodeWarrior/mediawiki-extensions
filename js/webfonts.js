@@ -108,23 +108,24 @@
 		 */
 		loadcss: function(fontfamily){
 			var fontconfig = $.webfonts.config.fonts[fontfamily];
+			var base = $.webfonts.config.basepath;
 			var styleString =
 				"<style type='text/css'>\n@font-face {\n"
 				+ "\tfont-family: '"+fontfamily+"';\n";
 			if ( 'eot' in fontconfig ) {
-				styleString += "\tsrc: url('"+fontconfig.eot+"');\n";
+				styleString += "\tsrc: url('"+base+fontconfig.eot+"');\n";
 			}
 			//If the font is present locally, use it.
 			styleString += "\tsrc: local('"+ fontfamily +"'),";
 
 			if ( 'woff' in fontconfig ) {
-				styleString += "\t\turl('"+fontconfig.woff+"') format('woff'),";
+				styleString += "\t\turl('"+base+fontconfig.woff+"') format('woff'),";
 			}
 			if ( 'svg' in fontconfig ) {
-				styleString += "\t\turl('"+fontconfig.svg+"#"+fontfamily+"') format('svg'),";
+				styleString += "\t\turl('"+base+fontconfig.svg+"#"+fontfamily+"') format('svg'),";
 			}
 			if ( 'ttf' in fontconfig ) {
-				styleString += "\t\turl('"+fontconfig.ttf+"') format('truetype');\n";
+				styleString += "\t\turl('"+base+fontconfig.ttf+"') format('truetype');\n";
 			}
 
 			styleString += "\tfont-weight: normal;\n}\n</style>\n";
