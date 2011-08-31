@@ -284,6 +284,38 @@ test( 'Lists', function() {
 					{ 'line': { 'text': '2' } }
 				]
 			} ] }
+		},
+  		{
+			'subject': 'mixed-style nested lists (3)',
+			'dom': { 'blocks': [ {
+				'type': 'list',
+				'style': 'number',
+				'items': [
+					{
+						'lists' : [
+							{
+								'style': 'number',
+								'items': [
+									{
+										'lists' : [
+											{
+												'style': 'number',
+												'items': [
+													{
+														'line' : {
+															'text' : 'test'
+														}
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			} ] }
 		}
 	], true );
 } );

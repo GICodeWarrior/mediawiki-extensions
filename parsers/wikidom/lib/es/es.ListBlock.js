@@ -42,11 +42,21 @@ es.ListBlock.newFromWikiDomListBlock = function( wikidomListBlock ) {
 	return new es.ListBlock( es.ListBlockList.newFromWikiDomList( wikidomListBlock ) );
 };
 
-es.ListBlock.prototype.renderContent = function( offset ) {
-	this.list.renderContent( offset );
+es.ListBlock.wikiDomPushPop = function( stack ) {
+	if ( stack[stack.length - 2].items.length === 0 ) {
+		stack[stack.length - 2].items.push( { 'lists' : [] } );
+	} else if( !stack[stack.length - 2].items[stack[stack.length - 2].items.length - 1].lists ) {
+		stack[stack.length - 2].items[stack[stack.length - 2].items.length - 1].lists = [];
+	}
+	stack[stack.length - 2].items[stack[stack.length - 2].items.length - 1].lists.push( stack.pop() );
+	return stack;
 };
 
 /* Public Methods */
+
+es.ListBlock.prototype.renderContent = function( offset ) {
+	this.list.renderContent( offset );
+};
 
 es.ListBlock.prototype.enumerate = function() {
 	var itemLevel,
@@ -363,66 +373,44 @@ es.ListBlock.prototype.getWikiDom = function() {
 	for ( var i = 0; i < items.length; i++ ) {
 		var item = items[i];
 		var itemLevel = item.getLevel();
-		
-		if ( itemLevel + 1 === stack.length ) {
-			if ( lastStyle !== null && lastStyle != item.getStyle() ) {
-				if ( stack[stack.length - 2].items.length === 0 ) {
-					stack[stack.length - 2].items.push( {
-						'lists' : []
-					} );
-				} else if( !stack[stack.length - 2].items[stack[stack.length - 2].items.length - 1].lists ) {
-					stack[stack.length - 2].items[stack[stack.length - 2].items.length - 1].lists = [];
-				}
-				stack[stack.length - 2].items[stack[stack.length - 2].items.length - 1].lists.push( stack.pop() );
-				stack.push( {
-					'style' : item.getStyle(),
-					'items' : []
-				} );
-				//lastStyle = item.getStyle();				
-			}
+
+		// if the current element level is the same as the previous one, but its style is different
+		if ( itemLevel + 1 === stack.length && lastStyle != item.getStyle() ) {
+			stack = es.ListBlock.wikiDomPushPop( stack );
+			stack.push( {
+				'style' : item.getStyle(),
+				'items' : []
+			} );
 		}
 
+		// if the current element level is higher than the previous one
 		if ( itemLevel + 1 > stack.length ) {
-			for( var j = stack.length; j < itemLevel + 1; j++ ) {
+			for ( var j = stack.length; j < itemLevel + 1; j++ ) {
 				stack.push( {
 					'style' : item.getStyle(j),
 					'items' : []
 				} );
 			}
 		}
-		
+
+		// if the current element level is lower then the previous one
 		if ( itemLevel + 1 < stack.length ) {
-			for( var j = stack.length; j > itemLevel + 1; j-- ) {
-				if ( stack[stack.length - 2].items.length === 0 ) {
-					stack[stack.length - 2].items.push( {
-						'lists' : []
-					} );
-				} else if( !stack[stack.length - 2].items[stack[stack.length - 2].items.length - 1].lists ) {
-					stack[stack.length - 2].items[stack[stack.length - 2].items.length - 1].lists = [];
-				}
-				stack[stack.length - 2].items[stack[stack.length - 2].items.length - 1].lists.push( stack.pop() );
+			for ( var j = stack.length; j > itemLevel + 1; j-- ) {
+				stack = es.ListBlock.wikiDomPushPop( stack );
 			}
 		}
 		
+		// if the current element level is the same as the previous one
 		if ( itemLevel + 1 === stack.length ) {
-			stack[stack.length - 1].items.push( {
-				'line' : item.content.getWikiDomLines()[0] }
-			);
+			stack[stack.length - 1].items.push( { 'line' : item.content.getWikiDomLines()[0] } );
 			lastStyle = item.getStyle();
 		}
 	}
-	
-	for( var i = stack.length; i > 1; i-- ) {
-		if ( stack[stack.length - 2].items.length === 0 ) {
-			stack[stack.length - 2].items.push( {
-				'lists' : []
-			} );
-		} else if( !stack[stack.length - 2].items[stack[stack.length - 2].items.length - 1].lists ) {
-			stack[stack.length - 2].items[stack[stack.length - 2].items.length - 1].lists = [];
-		}
-		stack[stack.length - 2].items[stack[stack.length - 2].items.length - 1].lists.push( stack.pop() );		
+
+	for ( var i = stack.length; i > 1; i-- ) {
+		stack = es.ListBlock.wikiDomPushPop( stack );
 	}
-	
+
 	stack[0].type = 'list';
 	return stack[0];
 };
