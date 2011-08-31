@@ -72,6 +72,13 @@ $messages['mk'] = array(
 	'automaticboardwelcome-desc' => 'Автоматски објевува [[MediaWiki:User-board-welcome-message|порака за добредојде]] на таблите на новите корисници откако ќе направат сметка',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'automaticboardwelcome-desc' => 'Mengepos [[MediaWiki:User-board-welcome-message|ucapan selamat datang]] secara automatik pada papan pengguna pengguna baru selepas pembukaan akaun',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
