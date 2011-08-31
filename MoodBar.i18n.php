@@ -138,6 +138,9 @@ See also:
 	'moodbar-intro-feedback' => 'Intro title of the MoodBar overlay trigger. $1 is the SITENAME.',
 	'moodbar-intro-editing' => '[[File:MoodBar-Step-1.png|right|200px]]
 Intro title of the MoodBar overlay trigger. $1 is the SITENAME.',
+	'moodbar-type-happy-title' => 'No gender support ([[bugzilla:30071|bug 30071]])',
+	'moodbar-type-sad-title' => 'No gender support ([[bugzilla:30071|bug 30071]])',
+	'moodbar-type-confused-title' => 'No gender support ([[bugzilla:30071|bug 30071]])',
 	'tooltip-moodbar-what' => 'Tooltip displayed when hovering the What-link.
 
 See also:
@@ -155,6 +158,9 @@ See also:
 	'moodbar-header-user' => '{{Identical|User}}',
 	'moodbar-header-comment' => '{{Identical|Comment}}',
 	'moodbar-header-namespace' => '{{Identical|Namespace}}',
+	'moodbar-type-happy' => 'No gender support ([[bugzilla:30071|bug 30071]])',
+	'moodbar-type-sad' => 'No gender support ([[bugzilla:30071|bug 30071]])',
+	'moodbar-type-confused' => 'No gender support ([[bugzilla:30071|bug 30071]])',
 	'moodbar-user-ip' => '{{Identical|IP Address}}',
 );
 
