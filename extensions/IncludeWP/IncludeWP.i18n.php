@@ -327,21 +327,22 @@ $messages['nl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'includewp-desc' => "IncudeWP a l'é n'estension lingera për anclude contnù ëd Wikipedia",
-	'includewp-loading-page' => 'Carié pagina...',
-	'includewp-show-full-page' => 'Mosta pagina antera',
-	'includewp-show-fragment' => 'Mosta mach ël prim paràgraf',
+	'includewp-desc' => "IncudeWP a l'é n'estension legera për anclude ël contnù ëd Wikipedia",
+	'includewp-loading-page' => 'Cariament ëd la pàgina...',
+	'includewp-show-full-page' => 'Smon-e tuta la pàgina',
+	'includewp-show-fragment' => 'Smon-e mach ël prim paràgraf',
 	'includewp-loading-failed' => 'Falì a carié la pagina.',
-	'includewp-licence-notice' => 'Ël contnù sota a riva da la pagina $1 <a href="$2">$3</a> licensià sota la <a href="$4">$5</a>.
-A-i é na <a href="$6">lista completa dj\'autor</a> disponibla.',
-	'includewp-parserhook-desc' => "Gancio dël parser ch'a përmëtt ëd visualisé contnù ëd na pagina ëd Wikipedia.",
-	'includewp-include-par-page' => "Ël nòm ëd la pagina (lontan-a) ch'it veule visualisé.",
-	'includewp-include-par-wiki' => 'Ël nòm ëd la wiki da andoa it veule pijé contnù. A deuv esse un-a dle wiki pëmëttùe, për defualt mach Wikipedia.',
-	'includewp-include-par-paragraphs' => "Ël nùmer ëd paràgraf ch'it veule mosté inissialment.",
-	'includewp-include-par-height' => "L'autëssa màssima an pixel dël div HTML anté ël contnù a l'é carià. Ampòstlo a 0 për gnun lìmit.",
+	'includewp-licence-notice' => 'Ël contnù sì-dzora a riva da la pàgina $1 <a href="$2">$3</a> sota la licensa <a href="$4">$5</a>.
+A-i é na <a href="$6">lista completa dj\'autor</a> disponìbil.',
+	'includewp-parserhook-desc' => "Gancio ëd l'analisator sintàtich ch'a përmët ëd visualisé ël contnù ëd na pàgina ëd Wikipedia.",
+	'includewp-include-par-page' => "Ël nòm ëd la pàgina (lontan-a) ch'a veul visualisé.",
+	'includewp-include-par-wiki' => 'Ël nòm ëd la wiki da andoa a veul pijé ël contnù. A dev esse un-a dle wiki pëmëttùe, për stàndard mach Wikipedia.',
+	'includewp-include-par-paragraphs' => "Ël nùmer ëd paràgraf ch'a veul visualisé inissialment.",
+	'includewp-include-par-height' => "L'autëssa màssima an pontin dël div HTML anté che ël contnù a l'é carià. Amposté a 0 për gnun lìmit.",
 );
 
 /** Pashto (پښتو)

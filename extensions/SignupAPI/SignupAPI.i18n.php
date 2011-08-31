@@ -36,6 +36,8 @@ $messages['be-tarask'] = array(
 $messages['de'] = array(
 	'signupapi-desc' => 'Bereinigt bestehende Inhalte und Funktionen der [[Special:UserLogin|Spezialseite Anmelden]] und fügt stattdessen eine Programmierschnittstelle zur Anmeldung hinzu',
 	'signupapi-ok' => 'OK',
+	'signupapi-noname' => 'Es wurde kein Benutzername angegeben.',
+	'signupapi-userexists' => 'Der Benutzer ist bereits vorhanden.',
 	'signupapi-enterpassword' => 'Du musst ein Passwort eingeben.',
 	'signupapi-passwordtooshort' => 'Das Passwort ist zu kurz.',
 	'signupapi-weak' => 'schwach',
@@ -43,6 +45,7 @@ $messages['de'] = array(
 	'signupapi-strong' => 'stark',
 	'signupapi-badretype' => 'Die beiden Passwörter stimmen nicht überein.',
 	'signupapi-passwordsmatch' => 'Die beiden Passwörter stimmen überein.',
+	'signupapi-invalidemailaddress' => 'Die E-Mail-Adresse ist ungültig.',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -83,6 +86,8 @@ $messages['frp'] = array(
 $messages['gl'] = array(
 	'signupapi-desc' => 'Limpa a [[Special:UserLogin|páxina de acceso ao sistema]] de información empregada para a creación de contas e engade un API para a creación de contas',
 	'signupapi-ok' => 'Aceptar',
+	'signupapi-noname' => 'Non especificou ningún nome de usuario',
+	'signupapi-userexists' => 'O usuario existe',
 	'signupapi-enterpassword' => 'Ten que introducir un contrasinal',
 	'signupapi-passwordtooshort' => 'O contrasinal é curto de máis',
 	'signupapi-weak' => 'Débil',
@@ -90,6 +95,7 @@ $messages['gl'] = array(
 	'signupapi-strong' => 'Forte',
 	'signupapi-badretype' => 'Os contrasinais que inseriu non coinciden',
 	'signupapi-passwordsmatch' => 'Os contrasinais coinciden',
+	'signupapi-invalidemailaddress' => 'O enderezo de correo electrónico é inválido',
 );
 
 /** Hebrew (עברית)
@@ -129,11 +135,14 @@ $messages['ms'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author SPQRobin
  * @author Siebrand
  */
 $messages['nl'] = array(
 	'signupapi-desc' => 'Schoont de [[Special:UserLogin|aanmeldpagina]] en voegt een API voor aanmelden toe',
 	'signupapi-ok' => 'OK',
+	'signupapi-noname' => 'Er is geen gebruikersnaam opgegeven',
+	'signupapi-userexists' => 'Gebruiker bestaat',
 	'signupapi-enterpassword' => 'U moet een wachtwoord invoeren',
 	'signupapi-passwordtooshort' => 'Het wachtwoord is te kort',
 	'signupapi-weak' => 'Zwak',
@@ -141,6 +150,7 @@ $messages['nl'] = array(
 	'signupapi-strong' => 'Sterk',
 	'signupapi-badretype' => 'De ingevoerde wachtwoorden verschillen van elkaar.',
 	'signupapi-passwordsmatch' => 'De wachtwoorden zijn gelijk.',
+	'signupapi-invalidemailaddress' => 'E-mailadres is ongeldig',
 );
 
 /** Portuguese (Português)
