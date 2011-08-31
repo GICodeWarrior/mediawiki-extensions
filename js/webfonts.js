@@ -8,7 +8,7 @@
 		/* Version number */
 		version: "0.1.2",
 		set: function( font ) {
-			if ( font === "none" ) {
+			if ( !font || font === "none" ) {
 				$.webfonts.reset();
 				return;
 			}
@@ -19,7 +19,6 @@
 			} else {
 				config = $.webfonts.config.fonts[font];
 			}
-
 			//load the style sheet for the font
 			$.webfonts.loadcss(font);
 
@@ -139,96 +138,24 @@
                  * It also apply the font from cookie, if any.
                  */
 		setup: function() {
-			var haveSchemes = false;
 			var config = mw.config.get( "wgWebFontsAvailable" );
 			// Build font dropdown
-			$fontsmenu = $( '<ul />' ).attr('id','webfonts-fontsmenu');
-			for ( var scheme in config ) {
-				$fontlink = $( '<input>' )
-					.attr("type","radio")
-					.attr("name","font")
-					.attr("id","webfont-"+config[scheme])
-					.attr("value",config[scheme] );
-					
-				$fontlabel =  $( '<label />' )
-					.attr("for","webfont-"+config[scheme])
-					.append( $fontlink )
-					.append( config[scheme] )
-							
-				$fontmenuitem = $( '<li />' )
-					.val( config[scheme] )
-					.append( $fontlabel )
-					
-
-				haveSchemes = true;
-				//some closure trick :)
-				(function (font) {
-					$fontlink.click( function( event ) {
-						$.webfonts.set( font );
-					})
-				}) (config[scheme]);
-
-				$fontsmenu.append($fontmenuitem);
+			$.webfonts.buildMenu(config );
+			//see if there is a font in cookie
+			cookie_font = $.cookie('webfonts-font');
+			if(cookie_font == null){
+				$.webfonts.set( config[0]);
+				//mark it as checked
+				$('#webfont-'+config[0]).attr('checked', 'checked');
 			}
-			$resetlink = $( '<input />' )
-					.attr("type","radio")
-					.attr("name","font")
-					.attr("value","webfont-none")
-					.attr("id","webfont-none")
-					.click( function( event ) {
-						$.webfonts.set( 'none');
-					});
-					
-			$resetlabel =  $( '<label />' )
-					.attr("for","webfont-none")
-					.append( $resetlink )
-					.append( mw.msg("webfonts-reset"));
-					
-			$resetlinkitem = $( '<li />' )
-				.val( 'none')
-				.append( $resetlabel )	
-
-				
-			$fontsmenu.append($resetlinkitem);
-
-			if (haveSchemes ) {
-
-				var $menudiv = $( '<div />' ).attr('id','webfonts-fonts')
-				.addClass( 'menu' )
-				.append( $fontsmenu )
-				.append();
-
-				var $div = $( '<div />' ).attr('id','webfonts-menu')
-				.addClass( 'webfontMenu' )
-				.append( "<a href='#'>"+ mw.msg("webfonts-load")+"</a>")
-				.append( $menudiv );
-
-				//this is the fonts link
-				var $li = $( '<li />' ).attr('id','pt-webfont')
-				.append( $div );
-
-				//if rtl, add to the right of top personal links. Else, to the left
-				if($('body').hasClass('rtl')){
-					$($('#p-personal ul')[0]).append( $li );
-				}
-				else{
-					$($('#p-personal ul')[0]).prepend( $li );
-				}    
-				//see if there is a font in cookie
-				cookie_font = $.cookie('webfonts-font');
-				if(cookie_font == null){
-					$.webfonts.set( config[0]);
+			else{
+				if (cookie_font !=='none'){
+					$.webfonts.set( cookie_font);
 					//mark it as checked
-					$('#webfont-'+config[0]).attr('checked', 'checked');
+					$('#webfont-'+cookie_font).attr('checked', 'checked');
 				}
-				else{
-					if (cookie_font !=='none'){
-						$.webfonts.set( cookie_font);
-						//mark it as checked
-						$('#webfont-'+cookie_font).attr('checked', 'checked');
-					}
-				}
-			}	
+			}
+			
 			//if there are tags with font-family style definition, get a list of fonts to be loaded
 			var fontFamilies = new Array();
 			$('body').find('*[style]').each(function(index){
@@ -250,8 +177,84 @@
 				}
 			});
 
-		}
+		},
+		buildMenu : function(config)  {
+			var haveSchemes = false;
+			// Build font dropdown
+			$fontsMenu = $( '<ul />' ).attr('id','webfonts-fontsmenu');
+			for ( var scheme in config ) {
+				$fontLink = $( '<input>' )
+					.attr("type","radio")
+					.attr("name","font")
+					.attr("id","webfont-"+config[scheme])
+					.attr("value",config[scheme] );
+					
+				$fontLabel =  $( '<label />' )
+					.attr("for","webfont-"+config[scheme])
+					.append( $fontLink )
+					.append( config[scheme] );
+					
+				$fontMenuItem = $( '<li />' )
+					.val( config[scheme] )
+					.append( $fontLabel );
+					
+				haveSchemes = true;
+				//some closure trick :)
+				(function (font) {
+					$fontLink.click( function( event ) {
+						$.webfonts.set( font );
+					})
+				}) (config[scheme]);
 
+				$fontsMenu.append($fontMenuItem);
+								
+			}
+			$resetLink = $( '<input />' )
+				.attr("type","radio")
+				.attr("name","font")
+				.attr("value","webfont-none")
+				.attr("id","webfont-none")
+				.click( function( event ) {
+					$.webfonts.set( 'none');
+				});
+					
+			$resetLabel =  $( '<label />' )
+				.attr("for","webfont-none")
+				.append( $resetLink )
+				.append( mw.msg("webfonts-reset"));
+				
+			$resetLinkItem = $( '<li />' )
+				.val( 'none')
+				.append( $resetLabel )	
+				
+			$fontsMenu.append($resetLinkItem);
+				if ( !haveSchemes ) {
+					// No schemes available, don't show the tool
+					return;
+				}
+
+			var $menuDiv = $( '<div />' ).attr('id','webfonts-fonts')
+					.addClass( 'menu' )
+					.append( $fontsMenu )
+					.append();
+
+			var $div = $( '<div />' ).attr('id','webfonts-menu')
+				.addClass( 'webfontMenu' )
+				.append( "<a href='#'>"+ mw.msg("webfonts-load")+"</a>")
+				.append( $menuDiv );
+
+			//this is the fonts link
+			var $li = $( '<li />' ).attr('id','pt-webfont')
+				.append( $div );
+
+			//if rtl, add to the right of top personal links. Else, to the left
+			if($('body').is( '.rtl' ) ){
+				$($('#p-personal ul')[0]).append( $li );
+			}
+			else{
+				$($('#p-personal ul')[0]).prepend( $li );
+			}    
+		}
 	}
 
 	$( document ).ready( function() {
