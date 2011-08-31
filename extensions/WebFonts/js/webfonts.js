@@ -2,7 +2,6 @@
 
 	$.webfonts = {
 
-
 		oldconfig: false,
 		config : $.webfonts.config,
 		/* Version number */
@@ -14,7 +13,9 @@
 			}
 
 			if ( !(font in $.webfonts.config.fonts) ) {
-				console.log( "Requested unknown font", font );
+				if ( window.console ) {
+					console.log( "Requested unknown font", font );
+				}
 				return;
 			}
 			var config = $.webfonts.config.fonts[font];
@@ -24,14 +25,15 @@
 
 			//save the current font and its size. Used for reset.
 			if ( !$.webfonts.oldconfig ) {
+				var $body = $("body");
 				$.webfonts.oldconfig = {
-					"font-family": $("body").css('font-family'),
-					"font-size":   $("body").css('font-size')
+					"font-family": $body.css('font-family'),
+					"font-size":   $body.css('font-size')
 				};
 			}
 
 			//Set the font, fallback fonts.Need to change the fonts of Input Select and Textarea explicitly.
-			$("body, input, select, textarea").css('font-family',  font +", Helvetica, Arial, sans-serif");
+			$("body, input, select, textarea").css('font-family', "'"+ font +"', Helvetica, Arial, sans-serif");
 
 			//scale the font of the page. Scale is in percentage.
 			// For example scale = 1.2 means  scale the font by 120 percentage
@@ -43,8 +45,8 @@
 			}
 
 			if ( 'normalization' in config ) {
-					$(document).ready(function() {
-						$.webfonts.normalize(config.normalization);
+				$(document).ready(function() {
+					$.webfonts.normalize(config.normalization);
 				});
 			}
 			//set the font option in cookie
@@ -54,13 +56,15 @@
 		/**
 		 * Reset the font with old configuration
 		 */
-		reset: function(){
-			$("body").css('font-family', $.webfonts.oldconfig["font-family"]);
+		reset: function() {
+			$("body").css({
+				'font-family': $.webfonts.oldconfig["font-family"],
+				//reset the font size from old configuration
+				'font-size': $.webfonts.oldconfig["font-size"]
+			);
 			//we need to reset the fonts of Input and Select explicitly.
 			$("input").css('font-family', $.webfonts.oldconfig["font-family"]);
 			$("select").css('font-family', $.webfonts.oldconfig["font-family"]);
-			//reset the font size from old configuration
-			$("body").css('font-size', $.webfonts.oldconfig["font-size"]);
 			//remove the cookie
 			$.cookie( 'webfonts-font', 'none', { 'path': '/', 'expires': 30 } );
 		},
@@ -69,7 +73,7 @@
 		 * Scale the font of the page by given percentage
 		 * @param  percentage of scale. eg 1.2 for 120% scale
 		 */
-		scale : function (percentage){
+		scale: function(percentage) {
 			//TODO: Not Implemented. Need to find a better way to emulate fontconfig font-scale feature.
 			//Changing the font-size of few selectors does not work properly and not able to achieve
 			//uniform scaling.
@@ -79,25 +83,24 @@
 		 * Does a find replace of string on the page.
 		 * @param normalization_rules hashmap of replacement rules.
 		 */
-		normalize: function(normalization_rules){
+		normalize: function(normalization_rules) {
 			$.each(normalization_rules, function(search, replace) {
 				var search_pattern = new RegExp(search,"g");
-				return $("*").each(function(){
-				var node = this.firstChild,
-				  val,
-				  new_val;
-				if ( node ) {
-				  do {
-					if ( node.nodeType === 3 ) {
-					  val = node.nodeValue;
-					  new_val = val.replace(search_pattern, replace );
-					  if ( new_val !== val ) {
-						  node.nodeValue = new_val;
-					  }
+				return $("*").each(function() {
+					var node = this.firstChild,
+						 val, new_val;
+					if ( node ) {
+						do {
+							if ( node.nodeType === 3 ) {
+								val = node.nodeValue;
+								new_val = val.replace(search_pattern, replace);
+								if ( new_val !== val ) {
+									node.nodeValue = new_val;
+								}
+							}
+						} while ( node = node.nextSibling );
 					}
-				  } while ( node = node.nextSibling );
-				}
-			  });
+				});
 			});
 		},
 
@@ -106,7 +109,7 @@
 		 * so that it gets loaded.
 		 * @param fontfamily The fontfamily name
 		 */
-		loadcss: function(fontfamily){
+		loadcss: function(fontfamily) {
 			var fontconfig = $.webfonts.config.fonts[fontfamily];
 			var base = mw.config.get( "wgExtensionAssetsPath" ) + "/WebFonts/fonts/";
 			var styleString =
@@ -116,7 +119,7 @@
 				styleString += "\tsrc: url('"+base+fontconfig.eot+"');\n";
 			}
 			//If the font is present locally, use it.
-			styleString += "\tsrc: local('"+ fontfamily +"'),";
+			styleString += "\tsrc: local('"+fontfamily+"'),";
 
 			if ( 'woff' in fontconfig ) {
 				styleString += "\t\turl('"+base+fontconfig.woff+"') format('woff'),";
@@ -131,7 +134,7 @@
 			styleString += "\tfont-weight: normal;\n}\n</style>\n";
 
 			//inject the css to the head of the page.
-			$(styleString).appendTo("head" );
+			$(styleString).appendTo("head");
 
 		},
 		/**
@@ -154,26 +157,22 @@
 			}
 
 			// Build font dropdown
-			$.webfonts.buildMenu(config );
+			$.webfonts.buildMenu(config);
 			//see if there is a font in cookie
-			var cookie_font = $.cookie('webfonts-font');
-			if(!cookie_font){
-				$.webfonts.set( config[0]);
-				//mark it as checked
-				$('#webfont-'+config[0]).attr('checked', 'checked');
-			} else if (cookie_font !=='none') {
-				$.webfonts.set( cookie_font);
+			var cookie_font = $.cookie('webfonts-font') || config[0];
+			if (cookie_font !== 'none') {
+				$.webfonts.set(cookie_font);
 				//mark it as checked
 				$('#webfont-'+cookie_font).attr('checked', 'checked');
 			}
 
 			//if there are tags with font-family style definition, get a list of fonts to be loaded
 			var fontFamilies = [];
-			$('body').find('*[style]').each(function(index){
-				if( this.style.fontFamily){
-					var fontFamilyItems =  this.style.fontFamily.split(",");
+			$('body').find('*[style]').each(function(index) {
+				if( this.style.fontFamily) {
+					var fontFamilyItems = this.style.fontFamily.split(",");
 					$.each(fontFamilyItems, function(index, value) {
-						fontFamilies.push(value );
+						fontFamilies.push(value);
 					});
 				}
 			});
@@ -182,23 +181,24 @@
 			//load css for each of the item in fontfamily list
 			$.each(fontFamilies, function(index, fontFamily) {
 				//remove the ' characters if any.
-				fontFamily = fontFamily.replace(/'/g,'');
+				fontFamily = fontFamily.replace(/'/g, '');
 				if ( fontFamily in $.webfonts.config.fonts ) {
 					$.webfonts.loadcss(fontFamily);
 				}
 			});
 
 		},
-		buildMenu : function(config)  {
+		buildMenu: function(config) {
 			var haveSchemes = false;
 			// Build font dropdown
 			var $fontsMenu = $( '<ul />' ).attr('id','webfonts-fontsmenu');
+			$fontsMenu.delegate('input:radio', 'change', function( event ) {
+				$.webfonts.set( $(this).val() );
+			});
 			for ( var scheme in config ) {
-				var $fontLink = $( '<input>' )
-					.attr("type","radio")
-					.attr("name","font")
+				var $fontLink = $( '<input type="radio" name="font" />' )
 					.attr("id","webfont-"+config[scheme])
-					.attr("value",config[scheme] );
+					.val( config[scheme] );
 
 				var $fontLabel =  $( '<label />' )
 					.attr("for","webfont-"+config[scheme])
@@ -210,12 +210,6 @@
 					.append( $fontLabel );
 
 				haveSchemes = true;
-				//some closure trick :)
-				(function (font) {
-					$fontLink.click( function( event ) {
-						$.webfonts.set( font );
-					});
-				}) (config[scheme]);
 
 				$fontsMenu.append($fontMenuItem);
 
@@ -229,20 +223,20 @@
 					$.webfonts.set( 'none');
 				});
 
-			var $resetLabel =  $( '<label />' )
+			var $resetLabel = $( '<label />' )
 				.attr("for","webfont-none")
 				.append( $resetLink )
 				.append( mw.msg("webfonts-reset"));
 
 			var $resetLinkItem = $( '<li />' )
-				.val( 'none')
+				.val( 'none' )
 				.append( $resetLabel );
 
 			$fontsMenu.append($resetLinkItem);
-				if ( !haveSchemes ) {
-					// No schemes available, don't show the tool
-					return;
-				}
+			if ( !haveSchemes ) {
+				// No schemes available, don't show the tool
+				return;
+			}
 
 			var $menuDiv = $( '<div />' ).attr('id','webfonts-fonts')
 					.addClass( 'menu' )
@@ -251,7 +245,7 @@
 
 			var $div = $( '<div />' ).attr('id','webfonts-menu')
 				.addClass( 'webfontMenu' )
-				.append( "<a href='#'>"+ mw.msg("webfonts-load")+"</a>")
+				.append( $('<a href="#" />').append(mw.msg("webfonts-load")) )
 				.append( $menuDiv );
 
 			//this is the fonts link
@@ -259,12 +253,8 @@
 				.append( $div );
 
 			//if rtl, add to the right of top personal links. Else, to the left
-			if($('body').is( '.rtl' ) ){
-				$($('#p-personal ul')[0]).append( $li );
-			}
-			else{
-				$($('#p-personal ul')[0]).prepend( $li );
-			}
+			var fn = $('body').hasClass( 'rtl' ) ? "append" : "prepend";
+			$('#p-personal ul:first')[fn]( $li );
 		}
 	};
 
