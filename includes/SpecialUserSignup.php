@@ -139,6 +139,7 @@ class SpecialUserSignup extends SpecialPage {
 		}
 
 		// Ajax-ify ?
+		global $wgSignupAPIUseAjax;
 		if ( $wgSignupAPIUseAjax ) {
 			$wgOut->addModules( 'ext.SignupAPI' );
 		}
