@@ -119,6 +119,10 @@ MWTreeSerializer.prototype.treeToSource = function(tree, callback) {
 			// @fixme validate that text doesn't contain '-->'
 			src = '<!--' + tree.text + '-->';
 			break;
+		case 'li':
+			src = tree.listStyle.join('');
+			src += subParseArray(tree.content) + '\n';
+			break;
 		default:
 			callback(null, 'Unrecognized parse tree node');
 			return;
