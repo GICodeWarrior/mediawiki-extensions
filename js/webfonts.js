@@ -1,5 +1,12 @@
 (function($){
 
+	function fontID(font) {
+		if ( typeof font !== 'string' ) {
+			return font;
+		}
+		return "webfont-"+font.toLowerCase().replace(/[_ ]/g, '-').replace(/[^-a-z]/g, '');
+	}
+
 	$.webfonts = {
 
 		oldconfig: false,
@@ -163,7 +170,7 @@
 			if (cookie_font && cookie_font !== 'none') {
 				$.webfonts.set(cookie_font);
 				//mark it as checked
-				$('#webfont-'+cookie_font).attr('checked', 'checked');
+				$('#'+fontID(cookie_font)).attr('checked', 'checked');
 			}
 
 			//if there are tags with font-family style definition, get a list of fonts to be loaded
@@ -197,11 +204,11 @@
 			});
 			for ( var scheme in config ) {
 				var $fontLink = $( '<input type="radio" name="font" />' )
-					.attr("id","webfont-"+config[scheme])
+					.attr("id",fontID(config[scheme]))
 					.val( config[scheme] );
 
 				var $fontLabel =  $( '<label />' )
-					.attr("for","webfont-"+config[scheme])
+					.attr("for",fontID(config[scheme]))
 					.append( $fontLink )
 					.append( config[scheme] );
 
