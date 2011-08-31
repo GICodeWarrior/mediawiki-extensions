@@ -36,7 +36,7 @@ def main():
 
 		dn = 'cn=' + groupname + ',ou=group,' + base
 		cn = groupname
-		objectClasses = ['posixGroup', 'groupOfUniqueNames', 'top']
+		objectClasses = ['posixGroup', 'groupOfNames', 'top']
 		if options.gidNumber:
 			try:
 				groupcheck = grp.getgrgid(options.gidNumber)
@@ -64,7 +64,7 @@ def main():
 					# TODO: make this use LDAP calls instead of getent
 					checkuid = pwd.getpwnam(raw_member)
 
-					# uniqueMember expects DNs
+					# member expects DNs
 					members.append('uid=' + raw_member + ',ou=people,' + base)
 				except KeyError:
 					sys.stderr.write(raw_member + " doesn't exist, and won't be added to the group.\n")
@@ -74,7 +74,7 @@ def main():
 		groupEntry['gidNumber'] = gidNumber
 		groupEntry['cn'] = cn
 		if members:
-			groupEntry['uniqueMember'] = members
+			groupEntry['member'] = members
 
 		modlist = ldap.modlist.addModlist(groupEntry)
 		ds.add_s(dn, modlist)

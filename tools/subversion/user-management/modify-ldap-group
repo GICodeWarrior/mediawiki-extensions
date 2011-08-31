@@ -67,23 +67,23 @@ def main():
 						checkuid = pwd.getpwnam(raw_member)
 
 						membertoadd = 'uid=' + raw_member + ',ou=people,' + base
-						# uniqueMember expects DNs
-						if 'uniqueMember' in NewPosixData.keys():
-							if membertoadd in NewPosixData['uniqueMember']:
+						# member expects DNs
+						if 'member' in NewPosixData.keys():
+							if membertoadd in NewPosixData['member']:
 								sys.stderr.write(raw_member + " is already a member of the group, skipping.\n")
 							else:
-								NewPosixData['uniqueMember'].append(membertoadd)
+								NewPosixData['member'].append(membertoadd)
 						else:
-							NewPosixData['uniqueMember'] = [ membertoadd ]
+							NewPosixData['member'] = [ membertoadd ]
 					except KeyError:
 						sys.stderr.write(raw_member + " doesn't exist, and won't be added to the group.\n")
 			elif options.deleteMembers:
 				raw_members = options.deleteMembers.split(',')
 				for raw_member in raw_members:
 					membertoremove = 'uid=' + raw_member + ',ou=people,' + base
-					if 'uniqueMember' in NewPosixData.keys():
-						if membertoremove in NewPosixData['uniqueMember']:
-							NewPosixData['uniqueMember'].remove(membertoremove)
+					if 'member' in NewPosixData.keys():
+						if membertoremove in NewPosixData['member']:
+							NewPosixData['member'].remove(membertoremove)
 						else:
        			 				sys.stderr.write(raw_member + " isn't a member of the group, skipping.\n")
 					else:
