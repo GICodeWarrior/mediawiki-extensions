@@ -134,10 +134,10 @@
 			$(styleString).appendTo("head" );
 
 		},
-                /**
-                 * Setup the font selection menu. 
-                 * It also apply the font from cookie, if any.
-                 */
+		/**
+		 * Setup the font selection menu. 
+		 * It also apply the font from cookie, if any.
+		 */
 		setup: function() {
 			var config = [];
 			var languages = $.webfonts.config.languages;
