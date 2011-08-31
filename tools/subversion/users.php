@@ -33,7 +33,7 @@ foreach ( $lines as $line ) {
 	$link = $userInfo['url'] ? "<a href=\"{$userInfo['url']}\">$encUsername</a>" : $encUsername;
 
 	$rows[$parts[0]] = <<<EOT
-<tr>
+<tr id="$encUsername">
 <td>$link</td>
 <td>{$userInfo['name']}</td>
 </tr>
