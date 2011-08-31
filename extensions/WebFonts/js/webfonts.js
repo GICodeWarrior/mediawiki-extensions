@@ -61,7 +61,7 @@
 				'font-family': $.webfonts.oldconfig["font-family"],
 				//reset the font size from old configuration
 				'font-size': $.webfonts.oldconfig["font-size"]
-			);
+			});
 			//we need to reset the fonts of Input and Select explicitly.
 			$("input").css('font-family', $.webfonts.oldconfig["font-family"]);
 			$("select").css('font-family', $.webfonts.oldconfig["font-family"]);
