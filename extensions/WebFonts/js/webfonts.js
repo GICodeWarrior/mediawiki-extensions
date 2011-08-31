@@ -160,7 +160,7 @@
 			$.webfonts.buildMenu(config);
 			//see if there is a font in cookie
 			var cookie_font = $.cookie('webfonts-font') || config[0];
-			if (cookie_font !== 'none') {
+			if (cookie_font && cookie_font !== 'none') {
 				$.webfonts.set(cookie_font);
 				//mark it as checked
 				$('#webfont-'+cookie_font).attr('checked', 'checked');
