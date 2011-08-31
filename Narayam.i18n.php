@@ -4,7 +4,7 @@
  *
  * @addtogroup Extensions
  * @author Junaid P V <http://junaidpv.in>
- * @copyright 2010 Junaid P V
+ * @copyright 2010-2011 Junaid P V
  * @license GNU General Public Licence 3.0 or later
  */
 

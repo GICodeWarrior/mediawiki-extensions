@@ -6,14 +6,14 @@
  * http://www.ucsc.lk/ltrl/services/layout/
  * License: GPLv3
  */
- 
+
 var rules = [
 ['`', '', '්‍ර'],
 ['~', '', 'ර්‍'],
 
 ['q', '', 'ු'],
 ['w', '', 'අ'],
-['e', '', 'ැ'], 
+['e', '', 'ැ'],
 ['r', '', 'ර'],
 ['t', '', 'එ'],
 ['y', '', 'හ'],
@@ -95,4 +95,4 @@ jQuery.narayam.addScheme( 'si-wijesekara', {
 	'keyBufferLength': 0,
 	'rules': rules,
 	'rules_x': rules_x
-} ); 
+} );

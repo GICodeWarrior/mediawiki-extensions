@@ -5,7 +5,7 @@
  * @date 2011-02-28
  * License: GPLv3
  */
- 
+
 var rules = [
 ['X', '', '\u0B01'],
 ['x', '', '\u0B02'],
