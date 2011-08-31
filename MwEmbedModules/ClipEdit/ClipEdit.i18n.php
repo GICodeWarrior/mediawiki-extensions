@@ -730,8 +730,8 @@ $messages['gl'] = array(
 	'mwe-clipedit-edit-video-tools' => 'Ferramentas de edición de vídeo:',
 	'mwe-clipedit-duration' => 'Duración:',
 	'mwe-clipedit-layout' => 'Disposición',
-	'mwe-clipedit-layout_right' => 'Disposición da imaxe do lado dereito',
-	'mwe-clipedit-layout_left' => 'Disposición da imaxe do lado esquerdo',
+	'mwe-clipedit-layout_right' => 'Disposición da imaxe ao lado dereito',
+	'mwe-clipedit-layout_left' => 'Disposición da imaxe ao lado esquerdo',
 );
 
 /** Swiss German (Alemannisch)
