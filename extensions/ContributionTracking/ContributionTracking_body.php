@@ -39,7 +39,7 @@ class ContributionTracking extends UnlistedSpecialPage {
 				'owa_ref' => $wgRequest->getVal( 'owa_ref', null ),
 				//'ts' => $ts,
 			);
-			#$contribution_tracking_id = ContributionTrackingProcessor::saveNewContribution( $tracked_contribution );
+			$contribution_tracking_id = ContributionTrackingProcessor::saveNewContribution( $tracked_contribution );
 		}
 
 		$params = array(
