@@ -598,7 +598,8 @@ $messages['be-tarask'] = array(
 
 Ваш OpenID: $2.
 
-Гэта дадатковы OpenID і неабавязковы пароль для рахунку могуць быць зьмененыя на старонцы Вашых [[Special:Preferences|наладаў]].",
+Гэты і дадатковыя OpenID могуць наладжаныя ў [[Special:Preferences#prefsection-openid|OpenID tab]].<br />
+Неабавязковы пароль для рахунка можа быць даданы ў Вашым [[Special:Preferences#prefsection-personal|профілі]].",
 	'openidusernameprefix' => 'КарыстальнікOpenID',
 	'openidserverlogininstructions' => 'Увядзіце Ваш пароль ніжэй, каб увайсьці на $3 як {{GENDER:$2|удзельнік|удзельніца}} $2 (старонка {{GENDER:$2|ўдзельніка|удзельніцы}} $1).',
 	'openidtrustinstructions' => 'Пазначце, калі Вы жадаеце даць доступ да зьвестак для $1.',
@@ -2136,7 +2137,7 @@ Pode engadir un contrasinal opcional no seu [[Special:Preferences#prefsection-pe
 	'openidalreadyloggedintext' => "'''Xa está identificado como $1!'''
 
 Pode xestionar (ollar, borrar, engadir) os OpenID na [[Special:Preferences#prefsection-openid|lapela OpenID]] das súas preferencias.",
-	'openidnousername' => 'Non foi especificado ningún nome de usuario.',
+	'openidnousername' => 'Non especificou ningún nome de usuario.',
 	'openidbadusername' => 'O nome de usuario especificado é incorrecto.',
 	'openidautosubmit' => 'Esta páxina inclúe un formulario que debería ser enviado automaticamente se ten o JavaScript activado.
 Se non é así, probe a premer no botón "Continue" (Continuar).',
