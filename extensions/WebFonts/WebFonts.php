@@ -32,11 +32,8 @@ $wgExtensionMessagesFiles['WebFonts'] = "$dir/WebFonts.i18n.php";
 
 // Register auto load for the page class
 $wgAutoloadClasses['WebFontsHooks'] = "$dir/WebFonts.hooks.php";
-require_once( "$dir/WebFonts.config.php" );
 
 $wgHooks['BeforePageDisplay'][] = 'WebFontsHooks::addModules';
-$wgHooks['ResourceLoaderGetConfigVars'][] = 'WebFontsHooks::addConfig';
-$wgHooks['MakeGlobalVariablesScript'][] = 'WebFontsHooks::addVariables';
 $wgHooks['GetPreferences'][] = 'WebFontsHooks::addPreference';
 
 $wgWebFontsEnabled = true;
@@ -47,4 +44,11 @@ $wgResourceModules['webfonts'] = array(
 	'localBasePath' => dirname( __FILE__ ),
 	'remoteExtPath' => 'WebFonts',
 	'messages' => array( 'webfonts-load', 'webfonts-reset' ),
+	'dependencies' => 'webfonts.fontlist',
+);
+
+$wgResourceModules['webfonts.fontlist'] = array(
+	'scripts' => 'js/webfonts.fontlist.js',
+	'localBasePath' => dirname( __FILE__ ),
+	'remoteExtPath' => 'WebFonts',
 );

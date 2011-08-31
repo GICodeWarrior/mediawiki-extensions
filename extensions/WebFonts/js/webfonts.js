@@ -4,7 +4,7 @@
 
 		
 		oldconfig: false,
-		config : mw.config.get( "wgWebFonts" ),
+		config : $.webfonts.config,
 		/* Version number */
 		version: "0.1.2",
 		set: function( font ) {
@@ -16,9 +16,9 @@
 			if ( !font in $.webfonts.config.fonts ) {
 				console.log( "Requested unknown font", font );
 				return;
-			} else {
-				config = $.webfonts.config.fonts[font];
 			}
+			var config = $.webfonts.config.fonts[font];
+
 			//load the style sheet for the font
 			$.webfonts.loadcss(font);
 
@@ -27,7 +27,7 @@
 				$.webfonts.oldconfig = {
 					"font-family": $("body").css('font-family'),
 					"font-size":   $("body").css('font-size')
-				}
+				};
 			}
 
 			//Set the font, fallback fonts.Need to change the fonts of Input Select and Textarea explicitly.
@@ -108,7 +108,7 @@
 		 */
 		loadcss: function(fontfamily){
 			var fontconfig = $.webfonts.config.fonts[fontfamily];
-			var base = $.webfonts.config.basepath;
+			var base = mw.config.get( "wgExtensionAssetsPath" ) + "/WebFonts/fonts/";
 			var styleString =
 				"<style type='text/css'>\n@font-face {\n"
 				+ "\tfont-family: '"+fontfamily+"';\n";
@@ -139,7 +139,20 @@
                  * It also apply the font from cookie, if any.
                  */
 		setup: function() {
-			var config = mw.config.get( "wgWebFontsAvailable" );
+			var config = [];
+			var languages = $.webfonts.config.languages;
+			var requested = [wgUserLanguage, wgContentLanguage];
+			for (var i = 0; i < requested.length; i++) {
+				if (requested[i] in languages) {
+					var fonts = languages[requested[i]];
+					for (var j = 0; j < fonts.length; j++) {
+						if ( $.inArray(fonts[j], config) === -1 ) {
+							config.push(fonts[j]);
+						}
+					}
+				}
+			}
+
 			// Build font dropdown
 			$.webfonts.buildMenu(config );
 			//see if there is a font in cookie
