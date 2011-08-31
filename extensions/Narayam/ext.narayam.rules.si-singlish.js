@@ -5,7 +5,7 @@
  * @credits With help from Nishantha Anuruddha (si.wikipedia.org/wiki/user:බිඟුවා)
  * License: GPLv3
  */
- 
+
 // Normal rules
 var rules = [
 ['\\\\([A-Za-z\\>_~\\.0-9])', '\\\\','$1'],
@@ -104,4 +104,4 @@ jQuery.narayam.addScheme( 'si-singlish', {
 	'lookbackLength': 5,
 	'keyBufferLength': 2,
 	'rules': rules
-} ); 
+} );

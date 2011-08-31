@@ -1,5 +1,4 @@
 <?php
-
 /**
  * NAME
  * 	Narayam
@@ -23,10 +22,10 @@
  * @copyright Copyright 2010 Junaid P V
  * @license GPLv3
  */
+
 if ( !defined( 'MEDIAWIKI' ) ) {
 	exit( 1 );
 }
-
 
 /* Configuration */
 
@@ -91,6 +90,8 @@ $wgNarayamSchemes = array(
 
 /* Setup */
 
+$dir = dirname( __FILE__ );
+
 // Register extension credits
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
@@ -102,7 +103,7 @@ $wgExtensionCredits['other'][] = array(
 );
 
 // Localization
-$wgExtensionMessagesFiles['Narayam'] = dirname( __FILE__ ) . '/Narayam.i18n.php';
+$wgExtensionMessagesFiles['Narayam'] = $dir . '/Narayam.i18n.php';
 
 // Register hook function
 $wgHooks['BeforePageDisplay'][] = 'NarayamHooks::addModules';
@@ -111,11 +112,11 @@ $wgHooks['MakeGlobalVariablesScript'][] = 'NarayamHooks::addVariables';
 $wgHooks['GetPreferences'][] = 'NarayamHooks::addPreference';
 
 // Autoloader
-$wgAutoloadClasses['NarayamHooks'] = dirname( __FILE__ ) . '/Narayam.hooks.php';
+$wgAutoloadClasses['NarayamHooks'] = $dir . '/Narayam.hooks.php';
 
 // ResourceLoader module registration
 $narayamTpl = array(
-	'localBasePath' => dirname( __FILE__ ),
+	'localBasePath' => $dir,
 	'remoteExtPath' => 'Narayam',
 );
 $wgResourceModules['ext.narayam'] = $narayamTpl + array(
