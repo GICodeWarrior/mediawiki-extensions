@@ -191,46 +191,65 @@
 				
 			$fontsmenu.append($resetlinkitem);
 
-			if ( !haveSchemes ) {
-				// No schemes available, don't show the tool
-				return;
-			}
+			if (haveSchemes ) {
 
-			var $menudiv = $( '<div />' ).attr('id','webfonts-fonts')
-			.addClass( 'menu' )
-			.append( $fontsmenu )
-			.append();
+				var $menudiv = $( '<div />' ).attr('id','webfonts-fonts')
+				.addClass( 'menu' )
+				.append( $fontsmenu )
+				.append();
 
-			var $div = $( '<div />' ).attr('id','webfonts-menu')
-			.addClass( 'webfontMenu' )
-			.append( "<a href='#'>"+ mw.msg("webfonts-load")+"</a>")
-			.append( $menudiv );
+				var $div = $( '<div />' ).attr('id','webfonts-menu')
+				.addClass( 'webfontMenu' )
+				.append( "<a href='#'>"+ mw.msg("webfonts-load")+"</a>")
+				.append( $menudiv );
 
-			//this is the fonts link
-			var $li = $( '<li />' ).attr('id','pt-webfont')
-			.append( $div );
+				//this is the fonts link
+				var $li = $( '<li />' ).attr('id','pt-webfont')
+				.append( $div );
 
-			//if rtl, add to the right of top personal links. Else, to the left
-			if($('body').hasClass('rtl')){
-				$($('#p-personal ul')[0]).append( $li );
-			}
-			else{
-				$($('#p-personal ul')[0]).prepend( $li );
-			}    
-			//see if there is a font in cookie
-			cookie_font = $.cookie('webfonts-font');
-			if(cookie_font == null){
-				$.webfonts.set( config[0]);
-				//mark it as checked
-				$('#webfont-'+config[0]).attr('checked', 'checked');
-			}
-			else{
-				if (cookie_font !=='none'){
-					$.webfonts.set( cookie_font);
-					//mark it as checked
-					$('#webfont-'+cookie_font).attr('checked', 'checked');
+				//if rtl, add to the right of top personal links. Else, to the left
+				if($('body').hasClass('rtl')){
+					$($('#p-personal ul')[0]).append( $li );
 				}
-			}
+				else{
+					$($('#p-personal ul')[0]).prepend( $li );
+				}    
+				//see if there is a font in cookie
+				cookie_font = $.cookie('webfonts-font');
+				if(cookie_font == null){
+					$.webfonts.set( config[0]);
+					//mark it as checked
+					$('#webfont-'+config[0]).attr('checked', 'checked');
+				}
+				else{
+					if (cookie_font !=='none'){
+						$.webfonts.set( cookie_font);
+						//mark it as checked
+						$('#webfont-'+cookie_font).attr('checked', 'checked');
+					}
+				}
+			}	
+			//if there are tags with font-family style definition, get a list of fonts to be loaded
+			var fontFamilies = new Array();
+			$('body').find('*[style]').each(function(index){
+				if( this.style.fontFamily){
+					var fontFamilyItems =  this.style.fontFamily.split(",");
+					$.each(fontFamilyItems, function(index, value) { 
+						fontFamilies.push(value );
+					});
+				}
+			});
+			//get unique list
+			fontFamilies = $.unique(fontFamilies);
+			//load css for each of the item in fontfamily list
+			$.each(fontFamilies, function(index, fontFamily) { 
+				//remove the ' characters if any.
+				fontFamily = fontFamily.replace(/'/g,'');
+				if ( fontFamily in $.webfonts.config.fonts ) {
+					$.webfonts.loadcss(fontFamily);
+				}
+			});
+
 		}
 
 	}
