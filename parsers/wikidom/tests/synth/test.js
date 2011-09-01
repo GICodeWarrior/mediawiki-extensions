@@ -157,28 +157,26 @@ test( 'Containers', function() {
 	// TODO: Events for appending, prepending, inserting and removing
 } );
 
+function ContentStub( name, size ) {
+	this.name = name;
+	this.size = size;
+}
+
+ContentStub.prototype.getLength = function() {
+	return this.size;
+};
 
 test( 'ContentSeries', function() {
-
-	var Stub = function( size ) {
-		this.size = size;
-	};
-
-	Stub.prototype.getLength = function() {
-		return this.size;
-	};
-
 	strictEqual(
-		( new Stub( 0 ) ).getLength(),
+		( new ContentStub( 'a', 0 ) ).getLength(),
 		0,
 		'Stub.getLength() returns value that it was initialized with'
 	);
-	
-	var a = new Stub( 0 ),
-		b = new Stub( 1 ),
-		c = new Stub( 2 ),
-		d = new Stub( 3 ),
-		e = new Stub( 4 ),
+	var a = new ContentStub( 'a', 0 ),
+		b = new ContentStub( 'b', 1 ),
+		c = new ContentStub( 'c', 2 ),
+		d = new ContentStub( 'd', 3 ),
+		e = new ContentStub( 'e', 4 ),
 		contentSeries = new es.ContentSeries( [ a, b, c, d, e ] ),
 		tests = [
 			{ 'input' : -1, 'output' : null },
@@ -208,4 +206,56 @@ test( 'ContentSeries', function() {
 		);
 	}
 
+} );
+
+test( 'ContentSeries Selection', function() {
+	var a = new ContentStub( 'a', 10 ),
+		b = new ContentStub( 'b', 10 ),
+		c = new ContentStub( 'c', 10 ),
+		contentSeries = new es.ContentSeries( [a, b, c] )
+		tests = [
+			{
+				'input': [5, 9],
+				'output': [{ 'item': a, 'from': 5, 'to': 9 }]
+			},
+			{
+				'input': [5, 10],
+				'output': [{ 'item': a, 'from': 5, 'to': 10 }]
+			},
+			{
+				'input': [5, 11],
+				'output': [{ 'item': a, 'from': 5, 'to': 10 }]
+			},
+			{
+				'input': [5, 12],
+				'output': [{ 'item': a, 'from': 5, 'to': 10 }, { 'item': b, 'from': 0, 'to': 1 }]
+			},
+			{
+				'input': [8, 16],
+				'output': [{ 'item': a, 'from': 8, 'to': 10 }, { 'item': b, 'from': 0, 'to': 5 }]
+			},
+			{
+				'input': [9, 16],
+				'output': [{ 'item': a, 'from': 9, 'to': 10 }, { 'item': b, 'from': 0, 'to': 5 }]
+			},
+			{
+				'input': [10, 16],
+				'output': [{ 'item': b, 'from': 0, 'to': 5 }]
+			},
+			{
+				'input': [11, 16],
+				'output': [{ 'item': b, 'from': 0, 'to': 5 }]
+			},
+			{
+				'input': [12, 16],
+				'output': [{ 'item': b, 'from': 1, 'to': 5 }]
+			}
+		];
+	for ( var i = 0; i < tests.length; i++ ) {
+		deepEqual(
+			contentSeries.select.apply( contentSeries, tests[i].input ),
+			tests[i].output,
+			'es.ContentSeries.select returns the correct items and ranges.'
+		);
+	}
 } );
