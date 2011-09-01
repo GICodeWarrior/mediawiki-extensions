@@ -15,6 +15,13 @@ $messages['en'] = array(
 	'namespacepaths-desc' => 'Allows custom article paths to be mapped to namespaces of the wiki. Eg: Mapping pages like Help:A to /help/Page instead of /wiki/Help:Page.',
 );
 
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'namespacepaths-desc' => 'Дазваляе нестандартныя шляхі да артыкулаў у прасторах назваў вікі. Напрыклад: Help:A ў /help/Старонка замест /wiki/Help:Старонка.',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
