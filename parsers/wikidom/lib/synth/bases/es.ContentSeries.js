@@ -12,11 +12,11 @@ es.ContentSeries = function( items ) {
 es.ContentSeries.prototype.lookup = function( offset ) {
 	if ( this.length ) {
 		var i = 0,
-			legnth = this.length,
+			length = this.length,
 			left = 0,
 			right;
 		while ( i < length ) {
-			right = left + this[i].getLength();
+			right = left + this[i].getLength() + 1;
 			if ( offset >= left && offset < right ) {
 				return this[i];
 			}
@@ -30,7 +30,7 @@ es.ContentSeries.prototype.lookup = function( offset ) {
 es.ContentSeries.prototype.offsetOf = function( item ) {
 	if ( this.length ) {
 		var i = 0,
-			legnth = this.length,
+			length = this.length,
 			left = 0;
 		while ( i < length ) {
 			if ( this[i] === item ) {
