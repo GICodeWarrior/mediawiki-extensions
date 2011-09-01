@@ -6,7 +6,7 @@ class OnlineStatus {
 	 *
 	 * @param mixed $title string of Title object, if it's a title, if has to be in
 	 *                     User: of User_talk: namespace.
-	 * @return either bool or null
+	 * @return array ( string status, string username 	) or null
 	 */
 	static function GetUserStatus( $title, $checkShowPref = false ){
 		if( is_object( $title ) ){
@@ -34,7 +34,7 @@ class OnlineStatus {
 			return null;
 		}
 
-		return $user->getOption( 'online' );
+		return array( $user->getOption( 'online' ), $username);
 	}
 
 	/**
@@ -111,9 +111,9 @@ class OnlineStatus {
 			return array( 'found' => false );
 
 		if( empty( $raw ) ){
-			return wfMsgNoTrans( 'onlinestatus-toggle-' . $status );
+			return wfMsgNoTrans( 'onlinestatus-toggle-' . $status[0] );
 		} else {
-			return $status;
+			return $status[0];
 		}
 	}
 
@@ -138,7 +138,7 @@ class OnlineStatus {
 				return true;
 			}
 
-			$ret = wfMsgNoTrans( 'onlinestatus-toggle-' . $status );
+			$ret = wfMsgNoTrans( 'onlinestatus-toggle-' . $status[0] );
 			$varCache['onlinestatus'] = $ret;
 		} elseif( $index == 'onlinestatus_word_raw' ){
 			$status = self::GetUserStatus( $parser->getTitle() );
@@ -147,7 +147,7 @@ class OnlineStatus {
 				return true;
 			}
 
-			$ret = $status;
+			$ret = $status[0];
 			$varCache['onlinestatus'] = $ret;
 		}
 
@@ -260,7 +260,7 @@ class OnlineStatus {
 
 		// For grep. Message keys used here:
 		// onlinestatus-subtitle-offline, onlinestatus-subtitle-onfline
-		$out->setSubtitle( wfMsgExt( 'onlinestatus-subtitle-' . $status, array( 'parse' ) ) );
+		$out->setSubtitle( wfMsgExt( 'onlinestatus-subtitle-' . $status[0], array( 'parse' ), $status[1] ) );
 
 		return true;
 	}
