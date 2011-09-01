@@ -37,6 +37,10 @@ $messages['qqq'] = array(
 	'onlinestatus-desc' => '{{desc}}',
 	'onlinestatus-tab' => '{{Identical|Status}}',
 	'onlinestatus-toggles-desc' => '{{Identical|Status}}',
+	'onlinestatus-subtitle-offline' => 'Parameters:
+* $1 can be used for GENDER support.',
+	'onlinestatus-subtitle-online' => 'Parameters:
+* $1 can be used for GENDER support.',
 );
 
 /** Afrikaans (Afrikaans)
