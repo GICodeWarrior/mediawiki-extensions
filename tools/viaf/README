@@ -9,8 +9,8 @@ Provisionally homepages and screenshots:
 	http://de.wikipedia.org/wiki/Wikipedia:WikiConvention/ \
 	Programm/VIAF#Greasemonkey-Skript (de)
 
-Version: 0.203
-Last updated: 20110829
+Version: 0.204
+README last updated: 20110901
 
 What are VIAF numbers ?
 
@@ -51,9 +51,12 @@ versions of it and prompts the user in such case.
 
 It does not automatically install a newer version.
 
+== solved ==
++ check why it does not work inside <span class=plainlinks> </span> tags
+  fixed in r95940 (0.204)
+
 == To Do ==
 * check detection and algorithm of VIAF2...VIAF9 numbers
-* check why it does not work inside <span class=plainlinks> </span> tags
 * add a user-interface or mechanism to enable/disable the summary alert box
   without the need to change program code
 * revise and enable the update mechanism
