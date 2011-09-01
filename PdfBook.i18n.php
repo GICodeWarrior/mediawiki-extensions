@@ -270,9 +270,10 @@ $messages['lb'] = array(
 
 /** Latvian (Latviešu)
  * @author GreenZeb
+ * @author Papuass
  */
 $messages['lv'] = array(
-	'pdfbook-action' => 'Drukāt PDF',
+	'pdfbook-action' => 'Drukāt kā PDF',
 	'pdfbook-log' => '$1 pārstrādāja šo kā grāmatu PDF failā',
 	'pdfbook-desc' => 'Izveido grāmatu no kategorijā esošajām lapām un pārstrādā to PDF formātā',
 );
