@@ -166,7 +166,7 @@ ContentStub.prototype.getLength = function() {
 	return this.size;
 };
 
-test( 'ContentSeries lookup and rangeOf', function() {
+test( 'ContentSeries lookup, rangeOf and getLengthOfItems', function() {
 	strictEqual(
 		( new ContentStub( 'a', 0 ) ).getLength(),
 		0,
@@ -178,6 +178,23 @@ test( 'ContentSeries lookup and rangeOf', function() {
 		d = new ContentStub( 'd', 3 ),
 		e = new ContentStub( 'e', 4 ),
 		contentSeries = new es.ContentSeries( [ a, b, c, d, e ] );
+		
+	var lengthOfItemsTests = [
+		{ 'input' : [ ], 'output' : 0 },
+		{ 'input' : [ a ], 'output' : 0 },
+		{ 'input' : [ a, b ], 'output' : 2 },
+		{ 'input' : [ a, b, c ], 'output' : 5 },
+		{ 'input' : [ a, b, c, d ], 'output' : 9 },
+		{ 'input' : [ a, b, c, d, e ], 'output' : 14 }
+	];
+
+	for ( var i = 0; i < lengthOfItemsTests.length; i++ ) {
+		strictEqual(
+			( new es.ContentSeries( lengthOfItemsTests[i].input ) ).getLengthOfItems(),
+			lengthOfItemsTests[i].output,
+			'es.ContentSeries.lookup finds the right item or returns null when out of range'
+		);
+	}
 
 	var lookupTests = [
 		{ 'input' : -1, 'output' : null },
@@ -197,7 +214,7 @@ test( 'ContentSeries lookup and rangeOf', function() {
 		{ 'input' : 13, 'output' : e },
 		{ 'input' : 14, 'output' : e },
 		{ 'input' : 15, 'output' : null }
-		];
+	];
 	
 	for ( var i = 0; i < lookupTests.length; i++ ) {
 		strictEqual(

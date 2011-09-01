@@ -43,12 +43,12 @@ es.ContentSeries.prototype.rangeOf = function( item ) {
 	return null;
 };
 
-es.ContentSeries.prototype.size = function() {
+es.ContentSeries.prototype.getLengthOfItems = function() {
 	var sum = 0;
 	for ( var i = 0, length = this.length; i < length; i++ ) {
 		sum += this[i].getLength();
 	}
-	return sum;
+	return Math.max( 0, sum + this.length - 1 );
 };
 
 es.ContentSeries.prototype.select = function( start, end ) {
