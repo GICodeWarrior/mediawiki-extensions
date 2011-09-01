@@ -64,25 +64,29 @@ es.ContentSeries.prototype.select = function( start, end ) {
 			length = this.length,
 			left = 0,
 			right,
-			inside = false;
+			inside = false,
+			from,
+			to;
 		while ( i < length ) {
 			right = left + this[i].getLength() + 1;
 			if ( inside ) {
-				items.push( {
-					'item': this[i],
-					'from': 0,
-					'to': Math.min( right - left - 1, end - left )
-				} );
+				// Append items until we reach the end
+				from = 0;
+				to = Math.min( right - left - 1, end - left );
+				if ( from !== to ) {
+					items.push( { 'item': this[i], 'from': from, 'to': to } );
+				}
 				if ( end >= left && end < right ) {
 					break;
 				}
 			} else if ( start >= left && start < right ) {
 				inside = true;
-				items.push( {
-					'item': this[i],
-					'from': Math.max( left, start ),
-					'to': Math.min( right - 1, end )
-				} );
+				// Append first item
+				from = start - left;
+				to = Math.min( right - 1, end - left );
+				if ( from !== to ) {
+					items.push( { 'item': this[i], 'from': from, 'to': to } );
+				}
 				if ( right >= end ) {
 					break;
 				}

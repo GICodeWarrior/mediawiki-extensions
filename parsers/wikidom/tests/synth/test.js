@@ -166,26 +166,26 @@ ContentStub.prototype.getLength = function() {
 	return this.size;
 };
 
-test( 'ContentSeries lookup, rangeOf and getLengthOfItems', function() {
+test( 'ContentSeries', function() {
 	strictEqual(
 		( new ContentStub( 'a', 0 ) ).getLength(),
 		0,
-		'Stub.getLength() returns value that it was initialized with'
+		'ContentStub.getLength() returns value that it was initialized with'
 	);
 	var a = new ContentStub( 'a', 0 ),
 		b = new ContentStub( 'b', 1 ),
 		c = new ContentStub( 'c', 2 ),
 		d = new ContentStub( 'd', 3 ),
 		e = new ContentStub( 'e', 4 ),
-		contentSeries = new es.ContentSeries( [ a, b, c, d, e ] );
+		contentSeries1 = new es.ContentSeries( [a, b, c, d, e] );
 		
 	var lengthOfItemsTests = [
-		{ 'input' : [ ], 'output' : 0 },
-		{ 'input' : [ a ], 'output' : 0 },
-		{ 'input' : [ a, b ], 'output' : 2 },
-		{ 'input' : [ a, b, c ], 'output' : 5 },
-		{ 'input' : [ a, b, c, d ], 'output' : 9 },
-		{ 'input' : [ a, b, c, d, e ], 'output' : 14 }
+		{ 'input': [], 'output': 0 },
+		{ 'input': [a], 'output': 0 },
+		{ 'input': [a, b], 'output': 2 },
+		{ 'input': [a, b, c], 'output': 5 },
+		{ 'input': [a, b, c, d], 'output': 9 },
+		{ 'input': [a, b, c, d, e], 'output': 14 }
 	];
 
 	for ( var i = 0; i < lengthOfItemsTests.length; i++ ) {
@@ -197,99 +197,125 @@ test( 'ContentSeries lookup, rangeOf and getLengthOfItems', function() {
 	}
 
 	var lookupTests = [
-		{ 'input' : -1, 'output' : null },
-		{ 'input' : 0, 'output' : a },
-		{ 'input' : 1, 'output' : b },
-		{ 'input' : 2, 'output' : b },
-		{ 'input' : 3, 'output' : c },
-		{ 'input' : 4, 'output' : c },
-		{ 'input' : 5, 'output' : c },
-		{ 'input' : 6, 'output' : d },
-		{ 'input' : 7, 'output' : d },
-		{ 'input' : 8, 'output' : d },
-		{ 'input' : 9, 'output' : d },
-		{ 'input' : 10, 'output' : e },
-		{ 'input' : 11, 'output' : e },
-		{ 'input' : 12, 'output' : e },
-		{ 'input' : 13, 'output' : e },
-		{ 'input' : 14, 'output' : e },
-		{ 'input' : 15, 'output' : null }
+		{ 'input': -1, 'output': null },
+		{ 'input': 0, 'output': a },
+		{ 'input': 1, 'output': b },
+		{ 'input': 2, 'output': b },
+		{ 'input': 3, 'output': c },
+		{ 'input': 4, 'output': c },
+		{ 'input': 5, 'output': c },
+		{ 'input': 6, 'output': d },
+		{ 'input': 7, 'output': d },
+		{ 'input': 8, 'output': d },
+		{ 'input': 9, 'output': d },
+		{ 'input': 10, 'output': e },
+		{ 'input': 11, 'output': e },
+		{ 'input': 12, 'output': e },
+		{ 'input': 13, 'output': e },
+		{ 'input': 14, 'output': e },
+		{ 'input': 15, 'output': null }
 	];
 	
 	for ( var i = 0; i < lookupTests.length; i++ ) {
 		strictEqual(
-			contentSeries.lookup( lookupTests[i].input ),
+			contentSeries1.lookup( lookupTests[i].input ),
 			lookupTests[i].output,
 			'es.ContentSeries.lookup finds the right item or returns null when out of range'
 		);
 	}
 	
 	var rangeOfTests = [
-		{ 'input' : a, 'output' : new es.Range( 0, 0 ) },
-		{ 'input' : b, 'output' : new es.Range( 1, 2 ) },
-		{ 'input' : c, 'output' : new es.Range( 3, 5 ) },
-		{ 'input' : d, 'output' : new es.Range( 6, 9 ) },
-		{ 'input' : e, 'output' : new es.Range( 10, 14 ) },
-		{ 'input' : null, 'output' : null }
+		{ 'input': a, 'output': new es.Range( 0, 0 ) },
+		{ 'input': b, 'output': new es.Range( 1, 2 ) },
+		{ 'input': c, 'output': new es.Range( 3, 5 ) },
+		{ 'input': d, 'output': new es.Range( 6, 9 ) },
+		{ 'input': e, 'output': new es.Range( 10, 14 ) },
+		{ 'input': null, 'output': null }
 	];
 	
 	for ( var i = 0; i < rangeOfTests.length; i++ ) {
 		deepEqual(
-			contentSeries.rangeOf( rangeOfTests[i].input ),
+			contentSeries1.rangeOf( rangeOfTests[i].input ),
 			rangeOfTests[i].output,
 			'es.ContentSeries.rangeOf returns the correct range or null if item is not found'
 		);
 	}
-
-} );
-
-test( 'ContentSeries Selection', function() {
-	var a = new ContentStub( 'a', 10 ),
-		b = new ContentStub( 'b', 10 ),
-		c = new ContentStub( 'c', 10 ),
-		contentSeries = new es.ContentSeries( [a, b, c] )
-		tests = [
-			{
-				'input': [5, 9],
-				'output': [{ 'item': a, 'from': 5, 'to': 9 }]
-			},
-			{
-				'input': [5, 10],
-				'output': [{ 'item': a, 'from': 5, 'to': 10 }]
-			},
-			{
-				'input': [5, 11],
-				'output': [{ 'item': a, 'from': 5, 'to': 10 }]
-			},
-			{
-				'input': [5, 12],
-				'output': [{ 'item': a, 'from': 5, 'to': 10 }, { 'item': b, 'from': 0, 'to': 1 }]
-			},
-			{
-				'input': [8, 16],
-				'output': [{ 'item': a, 'from': 8, 'to': 10 }, { 'item': b, 'from': 0, 'to': 5 }]
-			},
-			{
-				'input': [9, 16],
-				'output': [{ 'item': a, 'from': 9, 'to': 10 }, { 'item': b, 'from': 0, 'to': 5 }]
-			},
-			{
-				'input': [10, 16],
-				'output': [{ 'item': b, 'from': 0, 'to': 5 }]
-			},
-			{
-				'input': [11, 16],
-				'output': [{ 'item': b, 'from': 0, 'to': 5 }]
-			},
-			{
-				'input': [12, 16],
-				'output': [{ 'item': b, 'from': 1, 'to': 5 }]
-			}
-		];
-	for ( var i = 0; i < tests.length; i++ ) {
+	
+	var f = new ContentStub( 'f', 10 ),
+		g = new ContentStub( 'g', 10 ),
+		h = new ContentStub( 'h', 10 ),
+		contentSeries2 = new es.ContentSeries( [f, g, h] );
+	var selectTests = [
+		{
+			'input': [0, 5],
+			'output': [{ 'item': f, 'from': 0, 'to': 5 }],
+		},
+		{
+			'input': [11, 16],
+			'output': [{ 'item': g, 'from': 0, 'to': 5 }],
+		},
+		{
+			'input': [22, 27],
+			'output': [{ 'item': h, 'from': 0, 'to': 5 }],
+		},
+		{
+			'input': [0, 33],
+			'output': [
+				{ 'item': f, 'from': 0, 'to': 10 },
+				{ 'item': g, 'from': 0, 'to': 10 },
+				{ 'item': h, 'from': 0, 'to': 10 }
+			]
+		},
+		{
+			'input': [5, 27],
+			'output': [
+				{ 'item': f, 'from': 5, 'to': 10 },
+				{ 'item': g, 'from': 0, 'to': 10 },
+				{ 'item': h, 'from': 0, 'to': 5 }
+			]
+		},
+		{
+			'input': [5, 9],
+			'output': [{ 'item': f, 'from': 5, 'to': 9 }],
+		},
+		{
+			'input': [5, 10],
+			'output': [{ 'item': f, 'from': 5, 'to': 10 }]
+		},
+		{
+			'input': [5, 11],
+			'output': [{ 'item': f, 'from': 5, 'to': 10 }]
+		},
+		{
+			'input': [5, 12],
+			'output': [{ 'item': f, 'from': 5, 'to': 10 }, { 'item': g, 'from': 0, 'to': 1 }]
+		},
+		{
+			'input': [8, 16],
+			'output': [{ 'item': f, 'from': 8, 'to': 10 }, { 'item': g, 'from': 0, 'to': 5 }]
+		},
+		{
+			'input': [9, 16],
+			'output': [{ 'item': f, 'from': 9, 'to': 10 }, { 'item': g, 'from': 0, 'to': 5 }]
+		},
+		{
+			'input': [10, 16],
+			'output': [{ 'item': g, 'from': 0, 'to': 5 }]
+		},
+		{
+			'input': [11, 16],
+			'output': [{ 'item': g, 'from': 0, 'to': 5 }]
+		},
+		{
+			'input': [12, 16],
+			'output': [{ 'item': g, 'from': 1, 'to': 5 }]
+		}
+	];
+	
+	for ( var i = 0; i < selectTests.length; i++ ) {
 		deepEqual(
-			contentSeries.select.apply( contentSeries, tests[i].input ),
-			tests[i].output,
+			contentSeries2.select.apply( contentSeries2, selectTests[i].input ),
+			selectTests[i].output,
 			'es.ContentSeries.select returns the correct items and ranges.'
 		);
 	}
