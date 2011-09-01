@@ -85,21 +85,17 @@ class SpecialPostcomment extends UnlistedSpecialPage {
 		}
 		$dateStr = $wgLang->timeanddate( wfTimestampNow() );
 
-		//echo "$dateStr<br />";
-
 		$formattedComment = "
 	<div id=\"discussion_entry\"><table width=\"100%\">
-		<tr><td width=\"50%\" valign=\"top\" class=\"discussion_entry_user\">
-	[[User:$user|$real_name]] " . wfMsg( 'postcomment_said' ) . ":
-</td><td align=\"right\" width=\"50%\" class=\"discussion_entry_date\">" . wfMsg( 'postcomment_on' ) . " $dateStr<br />
+		<tr><td width=\"50%\" valign=\"top\" class=\"discussion_entry_user\">" .
+			wfMsgExt( 'postcomment-userwrote', array( 'parsemag' ), $user, $real_name ) . "
+</td><td align=\"right\" width=\"50%\" class=\"discussion_entry_date\">" . wfMsg( 'postcomment_on', $dateStr ) . "<br />
 	</td></tr><tr>
 <td colspan=2 class=\"discussion_entry_comment\">
 	$comment</td></tr>
 	<tr><td colspan=\"2\" class=\"discussion_entry_date\" padding=5>[[User_talk:$user#post|" . wfMsg('postcomment_replyto', $real_name) . "]]</td></tr>
 	</table></div>
-
 ";
-		//echo "$formattedComment";
 
 		$text = '';
 
@@ -109,9 +105,6 @@ class SpecialPostcomment extends UnlistedSpecialPage {
 		}
 
 		$text .= "\n\n$formattedComment\n\n";
-
-		//echo "updating with text:<br /> $text";
-		//exit;
 
 		$tmp = "";
 		if ( $wgFilterCallback && $wgFilterCallback( $t, $text, $tmp) ) {
