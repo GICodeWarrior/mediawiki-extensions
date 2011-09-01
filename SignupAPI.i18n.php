@@ -57,12 +57,15 @@ $messages['de-formal'] = array(
 
 /** French (Français)
  * @author Crochet.david
+ * @author Gomoko
  * @author Hashar
  * @author Sherbrooke
  */
 $messages['fr'] = array(
 	'signupapi-desc' => 'Nettoie la page [[Special:UserLogin|page de connexion]] des informations utilisées à la création de compte et insère un API pour la création de compte',
 	'signupapi-ok' => 'OK',
+	'signupapi-noname' => "Aucun nom d'utilisateur n'a été spécifié",
+	'signupapi-userexists' => "L'utilisateur existe déjà",
 	'signupapi-enterpassword' => 'Vous devez entrer un mot de passe',
 	'signupapi-passwordtooshort' => 'Le mot de passe est trop court',
 	'signupapi-weak' => 'Faible',
@@ -70,6 +73,7 @@ $messages['fr'] = array(
 	'signupapi-strong' => 'Fort',
 	'signupapi-badretype' => 'Les mots de passe que vous avez saisis ne correspondent pas.',
 	'signupapi-passwordsmatch' => 'Les mots de passe correspondent',
+	'signupapi-invalidemailaddress' => "L'adresse de courriel est invalide",
 );
 
 /** Franco-Provençal (Arpetan)
@@ -118,6 +122,8 @@ $messages['ia'] = array(
 $messages['mk'] = array(
 	'signupapi-desc' => 'Ја чисти [[Special:UserLogin|страницата за најава]] од содржините за пријава и додава API за пријавување',
 	'signupapi-ok' => 'ОК',
+	'signupapi-noname' => 'Немате наведено корисничко име',
+	'signupapi-userexists' => 'Корисникот постои',
 	'signupapi-enterpassword' => 'Мора да внесете лозинка.',
 	'signupapi-passwordtooshort' => 'Лозинката е прекратка',
 	'signupapi-weak' => 'Слаба',
@@ -125,6 +131,7 @@ $messages['mk'] = array(
 	'signupapi-strong' => 'Силна',
 	'signupapi-badretype' => 'Внесените лозинки не се совпаѓаат',
 	'signupapi-passwordsmatch' => 'Лозинките се совпаѓаат',
+	'signupapi-invalidemailaddress' => 'Е-поштата е неважечка',
 );
 
 /** Malay (Bahasa Melayu)
