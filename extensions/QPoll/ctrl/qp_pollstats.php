@@ -99,7 +99,10 @@ class qp_PollStats extends qp_AbstractPoll {
 			} else {
 				$attr_str = '';
 			}
-			if ( ( $type = $question->parseAttributes( $attr_str ) ) != '' ) {
+			$paramkeys = array();
+			$type = $this->getQuestionAttributes( $attr_str, $paramkeys );
+			$question->applyAttributes( $paramkeys );
+			if ( $type != '' ) {
 				# there cannot be type attribute of question in statistical display mode
 				$question->setState( 'error', wfMsg( 'qp_error_type_in_stats_mode', $type ) );
 			}

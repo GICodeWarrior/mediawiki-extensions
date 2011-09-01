@@ -74,23 +74,23 @@ class OLE_ChainedBlockStream extends PEAR
      * @param  string  absolute path of the opened stream (out parameter)
      * @return bool    true on success
      */
-    function stream_open( $path, $mode, $options, &$openedPath )
+    function stream_open($path, $mode, $options, &$openedPath)
     {
-        if ( $mode != 'r' ) {
-            if ( $options & STREAM_REPORT_ERRORS ) {
-                trigger_error( 'Only reading is supported', E_USER_WARNING );
+        if ($mode != 'r') {
+            if ($options & STREAM_REPORT_ERRORS) {
+                trigger_error('Only reading is supported', E_USER_WARNING);
             }
             return false;
         }
 
         // 25 is length of "ole-chainedblockstream://"
-        parse_str( substr( $path, 25 ), $this->params );
-        if ( !isset( $this->params['oleInstanceId'],
+        parse_str(substr($path, 25), $this->params);
+        if (!isset($this->params['oleInstanceId'],
                    $this->params['blockId'],
-                   $GLOBALS['_OLE_INSTANCES'][$this->params['oleInstanceId']] ) ) {
+                   $GLOBALS['_OLE_INSTANCES'][$this->params['oleInstanceId']])) {
 
-            if ( $options & STREAM_REPORT_ERRORS ) {
-                trigger_error( 'OLE stream not found', E_USER_WARNING );
+            if ($options & STREAM_REPORT_ERRORS) {
+                trigger_error('OLE stream not found', E_USER_WARNING);
             }
             return false;
         }
@@ -98,32 +98,32 @@ class OLE_ChainedBlockStream extends PEAR
 
         $blockId = $this->params['blockId'];
         $this->data = '';
-        if ( isset( $this->params['size'] ) &&
+        if (isset($this->params['size']) &&
             $this->params['size'] < $this->ole->bigBlockThreshold &&
-            $blockId != $this->ole->root->_StartBlock ) {
+            $blockId != $this->ole->root->_StartBlock) {
 
             // Block id refers to small blocks
-            $rootPos = $this->ole->_getBlockOffset( $this->ole->root->_StartBlock );
-            while ( $blockId != -2 ) {
+            $rootPos = $this->ole->_getBlockOffset($this->ole->root->_StartBlock);
+            while ($blockId != -2) {
                 $pos = $rootPos + $blockId * $this->ole->bigBlockSize;
                 $blockId = $this->ole->sbat[$blockId];
-                fseek( $this->ole->_file_handle, $pos );
-                $this->data .= fread( $this->ole->_file_handle, $this->ole->bigBlockSize );
+                fseek($this->ole->_file_handle, $pos);
+                $this->data .= fread($this->ole->_file_handle, $this->ole->bigBlockSize);
             }
         } else {
             // Block id refers to big blocks
-            while ( $blockId != -2 ) {
-                $pos = $this->ole->_getBlockOffset( $blockId );
-                fseek( $this->ole->_file_handle, $pos );
-                $this->data .= fread( $this->ole->_file_handle, $this->ole->bigBlockSize );
+            while ($blockId != -2) {
+                $pos = $this->ole->_getBlockOffset($blockId);
+                fseek($this->ole->_file_handle, $pos);
+                $this->data .= fread($this->ole->_file_handle, $this->ole->bigBlockSize);
                 $blockId = $this->ole->bbat[$blockId];
             }
         }
-        if ( isset( $this->params['size'] ) ) {
-            $this->data = substr( $this->data, 0, $this->params['size'] );
+        if (isset($this->params['size'])) {
+            $this->data = substr($this->data, 0, $this->params['size']);
         }
 
-        if ( $options & STREAM_USE_PATH ) {
+        if ($options & STREAM_USE_PATH) {
             $openedPath = $path;
         }
 
@@ -137,7 +137,7 @@ class OLE_ChainedBlockStream extends PEAR
     function stream_close()
     {
         $this->ole = null;
-        unset( $GLOBALS['_OLE_INSTANCES'] );
+        unset($GLOBALS['_OLE_INSTANCES']);
     }
 
     /**
@@ -145,12 +145,12 @@ class OLE_ChainedBlockStream extends PEAR
      * @param   int  maximum number of bytes to read
      * @return  string
      */
-    function stream_read( $count )
+    function stream_read($count)
     {
-        if ( $this->stream_eof() ) {
+        if ($this->stream_eof()) {
             return false;
         }
-        $s = substr( $this->data, $this->pos, $count );
+        $s = substr($this->data, $this->pos, $count);
         $this->pos += $count;
         return $s;
     }
@@ -161,10 +161,10 @@ class OLE_ChainedBlockStream extends PEAR
      */
     function stream_eof()
     {
-        $eof = $this->pos >= strlen( $this->data );
+        $eof = $this->pos >= strlen($this->data);
         // Workaround for bug in PHP 5.0.x: http://bugs.php.net/27508
-        if ( version_compare( PHP_VERSION, '5.0', '>=' ) &&
-            version_compare( PHP_VERSION, '5.1', '<' ) ) {
+        if (version_compare(PHP_VERSION, '5.0', '>=') &&
+            version_compare(PHP_VERSION, '5.1', '<')) {
 
            $eof = !$eof;
         }
@@ -187,14 +187,14 @@ class OLE_ChainedBlockStream extends PEAR
      * @param   int  SEEK_SET, SEEK_CUR or SEEK_END
      * @return  bool
      */
-    function stream_seek( $offset, $whence )
+    function stream_seek($offset, $whence)
     {
-        if ( $whence == SEEK_SET && $offset >= 0 ) {
+        if ($whence == SEEK_SET && $offset >= 0) {
             $this->pos = $offset;
-        } elseif ( $whence == SEEK_CUR && -$offset <= $this->pos ) {
+        } elseif ($whence == SEEK_CUR && -$offset <= $this->pos) {
             $this->pos += $offset;
-        } elseif ( $whence == SEEK_END && -$offset <= sizeof( $this->data ) ) {
-            $this->pos = strlen( $this->data ) + $offset;
+        } elseif ($whence == SEEK_END && -$offset <= sizeof($this->data)) {
+            $this->pos = strlen($this->data) + $offset;
         } else {
             return false;
         }
@@ -209,7 +209,7 @@ class OLE_ChainedBlockStream extends PEAR
     function stream_stat()
     {
         return array(
-            'size' => strlen( $this->data ),
+            'size' => strlen($this->data),
             );
     }
 

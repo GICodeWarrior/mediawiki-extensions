@@ -356,21 +356,73 @@ class qp_Poll extends qp_AbstractPoll {
 		}
 	}
 
-	# Convert a question on the page from QPoll syntax to HTML
-	# @param   $header : the text of question "main" header (common question and XML-like attrs)
-	#          $body   : the text of question body (starting with body header which defines categories and spans, followed by proposal list)
-	# @return            question object with parsed headers and no data loaded
-	function parseQuestionHeader( $header, $body ) {
-		$question = new qp_Question(
+	/**
+	 * Parse question main header (common question and XML attributes)
+	 * initializes common question and question type/subtype
+	 * @param  $input  the question's header in QPoll syntax
+	 * @return an instance of question that matches the header attributes
+	 */
+	function parseMainHeader( $header ) {
+		# split common question and question attributes from the header
+		@list( $common_question, $attr_str ) = preg_split( '`\n\|([^\|].*)\s*$`u', $header, -1, PREG_SPLIT_DELIM_CAPTURE );
+
+		$error_msg = '';
+		if ( isset( $attr_str ) ) {
+			$paramkeys = array();
+			$type = $this->getQuestionAttributes( $attr_str, $paramkeys );
+			if ( !array_key_exists( $type, qp_Setup::$questionTypes ) ) {
+				$error_msg = wfMsg( 'qp_error_invalid_question_type', qp_Setup::entities( $type ) );
+			}
+		} else {
+			$error_msg = wfMsg( 'qp_error_in_question_header', qp_Setup::entities( $header ) );
+		}
+
+		if ( $error_msg !== '' ) {
+			$question = new qp_StubQuestion(
+				$this,
+				qp_QuestionView::newFromBaseView( $this->view ),
+				++$this->mQuestionId
+			);
+			$question->setState( 'error', $error_msg );
+			return $question;
+		}
+
+		$qt = qp_Setup::$questionTypes[$type];
+		$question = new $qt['className'](
 			$this,
 			qp_QuestionView::newFromBaseView( $this->view ),
 			++$this->mQuestionId
 		);
+		# set the question type and subtype corresponding to the header 'type' attribute
+		$question->mType = $qt['mType'];
+		if ( isset( $qt['mSubType'] ) ) {
+			$question->mSubType = $qt['mSubType'];
+		}
+
+		$question->mCommonQuestion = trim( $common_question );
+		$question->applyAttributes( $paramkeys );
+		return $question;
+	}
+
+	/**
+	 * Builds the question with fully parsed headers
+	 *
+	 * internally, the header is split into
+	 *   main header (part inside curly braces) and
+	 *   body header (categories and metacategories defitions)
+	 *
+	 * @param  $header : the text of question "main" header (common question and XML-like attrs)
+	 * @param  $body   : the text of question body
+	 *                   for tabular questions body begins with header line that defines
+	 *                   categories and spans, followed by proposal lines)
+	 * @return           question object with parsed headers
+	 */
+	function parseQuestionHeader( $header, $body ) {
 		# parse questions common question and XML attributes
-		$question->parseMainHeader( $header );
+		$question = $this->parseMainHeader( $header );
 		if ( $question->getState() != 'error' ) {
 			# load previous user choice, when it's available and DB header is compatible with parsed header
-			if ( $body === null || !method_exists( $question, $question->mType . 'ParseBody' ) ) {
+			if ( $body === null || !method_exists( $question, 'parseBody' ) ) {
 				$question->setState( 'error', wfMsgHtml( 'qp_error_question_not_implemented', qp_Setup::entities( $question->mType ) ) );
 			} else {
 				# parse the categories and spans (metacategories)
@@ -383,7 +435,7 @@ class qp_Poll extends qp_AbstractPoll {
 	/**
 	 * Populates the question with data and builds question->view
 	 */
-	function parseQuestionBody( qp_Question $question ) {
+	function parseQuestionBody( qp_AbstractQuestion $question ) {
 		if ( $question->getState() == 'error' ) {
 			# error occured during the previously performed header parsing, do not process further
 			$question->view->addHeaderError();
@@ -402,7 +454,7 @@ class qp_Poll extends qp_AbstractPoll {
 		# parse the question body
 		# will populate $question->view which can be modified accodring to quiz results
 		# warning! parameters are passed only by value, not the reference
-		$question-> { $question->mType . 'ParseBody' } ();
+		$question->parseBody();
 		if ( $this->mBeingCorrected ) {
 			if ( $question->getState() == '' ) {
 				# question is OK, store it into pollStore

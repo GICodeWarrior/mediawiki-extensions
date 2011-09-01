@@ -201,6 +201,22 @@ class qp_AbstractPoll {
 		return array( $titlePart, $pollIdPart, $titlePart . '#' . $pollIdPart );
 	}
 
+	/**
+	 * Parses attribute line of the question
+	 * @param    $attr_str  attribute string from poll's header
+	 * @modifies $paramkeys  array  key is attribute regexp, value is the value of attribute
+	 * @return   string  the value of question's type attribute
+	 */
+	function getQuestionAttributes( $attr_str, &$paramkeys ) {
+		$paramkeys = array( 't[yi]p[eo]' => null, 'layout' => null, 'textwidth' => null, 'showresults' => null );
+		foreach ( $paramkeys as $key => &$val ) {
+			preg_match( '`' . $key . '?="(.*?)"`u', $attr_str, $val );
+		}
+		$type = $paramkeys[ 't[yi]p[eo]' ];
+		$type = isset( $type[1] ) ? trim( $type[1] ) : '';
+		return $type;
+	}
+
 	// parses source showresults xml parameter value and returns the corresponding showResults array
 	// input: $str contains entries separated by ';'
 	//   entry 1 is a number of showresults type (always presented)

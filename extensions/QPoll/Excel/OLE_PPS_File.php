@@ -45,11 +45,11 @@ class OLE_PPS_File extends OLE_PPS
     * @param string $name The name of the file (in Unicode)
     * @see OLE::Asc2Ucs()
     */
-    function __construct( $name )
+    function __construct($name)
     {
         $this->_tmp_dir = System::tmpdir();
         parent::__construct(
-            null,
+            null, 
             $name,
             OLE_PPS_TYPE_FILE,
             null,
@@ -58,7 +58,7 @@ class OLE_PPS_File extends OLE_PPS
             null,
             null,
             '',
-            array() );
+            array());
     }
 
     /**
@@ -68,9 +68,9 @@ class OLE_PPS_File extends OLE_PPS
     * @param string $dir The dir to be used as temp dir
     * @return true if given dir is valid, false otherwise
     */
-    function setTempDir( $dir )
+    function setTempDir($dir)
     {
-        if ( is_dir( $dir ) ) {
+        if (is_dir($dir)) {
             $this->_tmp_dir = $dir;
             return true;
         }
@@ -85,29 +85,29 @@ class OLE_PPS_File extends OLE_PPS
     */
     function init()
     {
-        $this->_tmp_filename = tempnam( $this->_tmp_dir, "OLE_PPS_File" );
-        $fh = @fopen( $this->_tmp_filename, "w+b" );
-        if ( $fh == false ) {
-            return $this->raiseError( "Can't create temporary file" );
+        $this->_tmp_filename = tempnam($this->_tmp_dir, "OLE_PPS_File");
+        $fh = @fopen($this->_tmp_filename, "w+b");
+        if ($fh == false) {
+            return $this->raiseError("Can't create temporary file");
         }
         $this->_PPS_FILE = $fh;
-        if ( $this->_PPS_FILE ) {
-            fseek( $this->_PPS_FILE, 0 );
+        if ($this->_PPS_FILE) {
+            fseek($this->_PPS_FILE, 0);
         }
 
         return true;
     }
-
+    
     /**
     * Append data to PPS
     *
     * @access public
     * @param string $data The data to append
     */
-    function append( $data )
+    function append($data)
     {
-        if ( $this->_PPS_FILE ) {
-            fwrite( $this->_PPS_FILE, $data );
+        if ($this->_PPS_FILE) {
+            fwrite($this->_PPS_FILE, $data);
         } else {
             $this->_data .= $data;
         }
@@ -119,6 +119,6 @@ class OLE_PPS_File extends OLE_PPS
      */
     function getStream()
     {
-        $this->ole->getStream( $this );
+        $this->ole->getStream($this);
     }
 }

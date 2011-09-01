@@ -16,9 +16,12 @@ abstract class qp_AbstractQuestion {
 	var $mQuestionId;
 
 	var $mState = ''; // current state of question parsing (no error)
-	# default type and subtype of the question; should always be properly initialized in derived $this->parseMainHeader();
+	# default type of the question; stored in DB;
+	# should always be properly initialized in parent controller via $poll->parseMainHeader()
 	var $mType = 'unknown';
-	var $mSubType = ''; // some questions has a subtype, see derived $this->parseMainHeader()
+	# some questions has a subtype; currently is not stored in DB;
+	# should always be properly initialized in parent controller via $poll->parseMainHeader()
+	var $mSubType = '';
 	var $mCategories = Array();
 	var $mCategorySpans = Array();
 	var $mCommonQuestion = ''; // common question of this question
@@ -78,19 +81,16 @@ abstract class qp_AbstractQuestion {
 		return $this->mState;
 	}
 
-	# builds internal representation of question attributes (all attributes but type)
-	# @param   $attr_str - source text with question attributes
-	# @return  string : type of the question, empty when not defined
-	function parseAttributes( $attr_str ) {
-		$paramkeys = array( 't[yi]p[eo]' => null, 'layout' => null, 'textwidth' => null, 'showresults' => null );
-		foreach ( $paramkeys as $key => &$val ) {
-			preg_match( '`' . $key . '?="(.*?)"`u', $attr_str, $val );
-		}
-		$type = $paramkeys[ 't[yi]p[eo]' ];
-		$type = isset( $type[1] ) ? trim( $type[1] ) : '';
+	/**
+	 * Applies previousely parsed attributes from main header into question's view
+	 * (all attributes but type)
+	 *
+	 * @param   $attr_str - source text with question attributes
+	 * @return  string : type of the question, empty when not defined
+	 */
+	function applyAttributes( $paramkeys ) {
 		$this->view->setLayout( $paramkeys[ 'layout' ], $paramkeys[ 'textwidth' ] );
 		$this->view->setShowResults( $paramkeys[ 'showresults' ] );
-		return $type;
 	}
 
 	function getPercents( $proposalId, $catId ) {
