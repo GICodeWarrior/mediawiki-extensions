@@ -156,3 +156,56 @@ test( 'Containers', function() {
 	
 	// TODO: Events for appending, prepending, inserting and removing
 } );
+
+
+test( 'ContentSeries', function() {
+
+	var Stub = function( size ) {
+		this.size = size;
+	};
+
+	Stub.prototype.getLength = function() {
+		return this.size;
+	};
+
+	strictEqual(
+		( new Stub( 0 ) ).getLength(),
+		0,
+		'Stub.getLength() returns value that it was initialized with'
+	);
+	
+	var a = new Stub( 0 ),
+		b = new Stub( 1 ),
+		c = new Stub( 2 ),
+		d = new Stub( 3 ),
+		e = new Stub( 4 ),
+		contentSeries = new es.ContentSeries( [ a, b, c, d, e ] ),
+		tests = [
+			{ 'input' : -1, 'output' : null },
+			{ 'input' : 0, 'output' : a },
+			{ 'input' : 1, 'output' : b },
+			{ 'input' : 2, 'output' : b },
+			{ 'input' : 3, 'output' : c },
+			{ 'input' : 4, 'output' : c },
+			{ 'input' : 5, 'output' : c },
+			{ 'input' : 6, 'output' : d },
+			{ 'input' : 7, 'output' : d },
+			{ 'input' : 8, 'output' : d },
+			{ 'input' : 9, 'output' : d },
+			{ 'input' : 10, 'output' : e },
+			{ 'input' : 11, 'output' : e },
+			{ 'input' : 12, 'output' : e },
+			{ 'input' : 13, 'output' : e },
+			{ 'input' : 14, 'output' : e },
+			{ 'input' : 15, 'output' : null }	
+		];
+	
+	for ( var i = 0; i < tests.length; i++ ) {
+		strictEqual(
+			contentSeries.lookup( tests[i].input ),
+			tests[i].output,
+			'es.ContentSeries.lookup finds the right item or returns null when out of range'
+		);
+	}
+
+} );
