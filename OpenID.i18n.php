@@ -633,7 +633,7 @@ $messages['be-tarask'] = array(
 	'openidalreadyloggedin' => 'Вы ўжо ўвайшлі.',
 	'openidalreadyloggedintext' => "'''Вы ўжо ўвайшлі, $1!'''
 
-Вы можаце кіраваць (праглядаць, выдаляць, дадаваць) OpenID ва ўкладцы Вашых  [[Special:Preferences|наладаў]] OpenID.",
+Вы можаце кіраваць (праглядаць, выдаляць, дадаваць) OpenID ва ўкладцы Вашых  [[Special:Preferences#prefsection-openid|наладаў]] OpenID.",
 	'openidnousername' => 'Не пазначана імя ўдзельніка.',
 	'openidbadusername' => 'Пазначана няслушнае імя ўдзельніка.',
 	'openidautosubmit' => 'Гэта старонка ўтрымлівае форму, якая павінна быць аўтаматычна адпраўлена, калі ў Вас уключаны JavaScript.
@@ -3695,7 +3695,7 @@ $messages['mk'] = array(
 	'openidalreadyloggedintext' => "'''Веќе сте најавени, $1!'''
 
 Можете да раководите со (погледате, избришете, додавате повеќе) OpenID-ја во [[Special:Preferences#prefsection-openid|јазичето за OpenID]] во вашите нагодувања",
-	'openidnousername' => 'Нема назначено корисничко име.',
+	'openidnousername' => 'Немате наведено корисничко име.',
 	'openidbadusername' => 'Беше назначено грешно име.',
 	'openidautosubmit' => 'На оваа страница стои образец кој треба да се поднесе автоматски ако имате овозможено JavaScript.
 Ако ова не се случи, притиснете на копчето "Continue" (Продолжи).',
