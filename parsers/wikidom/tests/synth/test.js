@@ -192,7 +192,7 @@ test( 'ContentSeries lookup, rangeOf and getLengthOfItems', function() {
 		strictEqual(
 			( new es.ContentSeries( lengthOfItemsTests[i].input ) ).getLengthOfItems(),
 			lengthOfItemsTests[i].output,
-			'es.ContentSeries.lookup finds the right item or returns null when out of range'
+			'es.ContentSeries.getLengthOfItems returns correct value'
 		);
 	}
 
