@@ -34,11 +34,11 @@ es.DocumentController.prototype.prepareMoveBlock = function( index, index ) {
 	// generate transaction
 };
 
-es.DocumentController.prototype.prepareMergeBlocks = function( range ) {
+es.DocumentController.prototype.prepareSplitBlocks = function( offset ) {
 	// generate transaction
 };
 
-es.DocumentController.prototype.prepareSplitBlocks = function( offset ) {
+es.DocumentController.prototype.prepareMergeBlocks = function( range ) {
 	// generate transaction
 };
 
