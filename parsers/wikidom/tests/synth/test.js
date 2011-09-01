@@ -166,7 +166,7 @@ ContentStub.prototype.getLength = function() {
 	return this.size;
 };
 
-test( 'ContentSeries', function() {
+test( 'ContentSeries lookup and rangeOf', function() {
 	strictEqual(
 		( new ContentStub( 'a', 0 ) ).getLength(),
 		0,
@@ -177,32 +177,50 @@ test( 'ContentSeries', function() {
 		c = new ContentStub( 'c', 2 ),
 		d = new ContentStub( 'd', 3 ),
 		e = new ContentStub( 'e', 4 ),
-		contentSeries = new es.ContentSeries( [ a, b, c, d, e ] ),
-		tests = [
-			{ 'input' : -1, 'output' : null },
-			{ 'input' : 0, 'output' : a },
-			{ 'input' : 1, 'output' : b },
-			{ 'input' : 2, 'output' : b },
-			{ 'input' : 3, 'output' : c },
-			{ 'input' : 4, 'output' : c },
-			{ 'input' : 5, 'output' : c },
-			{ 'input' : 6, 'output' : d },
-			{ 'input' : 7, 'output' : d },
-			{ 'input' : 8, 'output' : d },
-			{ 'input' : 9, 'output' : d },
-			{ 'input' : 10, 'output' : e },
-			{ 'input' : 11, 'output' : e },
-			{ 'input' : 12, 'output' : e },
-			{ 'input' : 13, 'output' : e },
-			{ 'input' : 14, 'output' : e },
-			{ 'input' : 15, 'output' : null }	
+		contentSeries = new es.ContentSeries( [ a, b, c, d, e ] );
+
+	var lookupTests = [
+		{ 'input' : -1, 'output' : null },
+		{ 'input' : 0, 'output' : a },
+		{ 'input' : 1, 'output' : b },
+		{ 'input' : 2, 'output' : b },
+		{ 'input' : 3, 'output' : c },
+		{ 'input' : 4, 'output' : c },
+		{ 'input' : 5, 'output' : c },
+		{ 'input' : 6, 'output' : d },
+		{ 'input' : 7, 'output' : d },
+		{ 'input' : 8, 'output' : d },
+		{ 'input' : 9, 'output' : d },
+		{ 'input' : 10, 'output' : e },
+		{ 'input' : 11, 'output' : e },
+		{ 'input' : 12, 'output' : e },
+		{ 'input' : 13, 'output' : e },
+		{ 'input' : 14, 'output' : e },
+		{ 'input' : 15, 'output' : null }
 		];
 	
-	for ( var i = 0; i < tests.length; i++ ) {
+	for ( var i = 0; i < lookupTests.length; i++ ) {
 		strictEqual(
-			contentSeries.lookup( tests[i].input ),
-			tests[i].output,
+			contentSeries.lookup( lookupTests[i].input ),
+			lookupTests[i].output,
 			'es.ContentSeries.lookup finds the right item or returns null when out of range'
+		);
+	}
+	
+	var rangeOfTests = [
+		{ 'input' : a, 'output' : new es.Range( 0, 0 ) },
+		{ 'input' : b, 'output' : new es.Range( 1, 2 ) },
+		{ 'input' : c, 'output' : new es.Range( 3, 5 ) },
+		{ 'input' : d, 'output' : new es.Range( 6, 9 ) },
+		{ 'input' : e, 'output' : new es.Range( 10, 14 ) },
+		{ 'input' : null, 'output' : null }
+	];
+	
+	for ( var i = 0; i < rangeOfTests.length; i++ ) {
+		deepEqual(
+			contentSeries.rangeOf( rangeOfTests[i].input ),
+			rangeOfTests[i].output,
+			'es.ContentSeries.rangeOf returns the correct range or null if item is not found'
 		);
 	}
 

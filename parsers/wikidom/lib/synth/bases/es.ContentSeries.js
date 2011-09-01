@@ -27,7 +27,7 @@ es.ContentSeries.prototype.lookup = function( offset ) {
 	return null;
 };
 
-es.ContentSeries.prototype.offsetOf = function( item ) {
+es.ContentSeries.prototype.rangeOf = function( item ) {
 	if ( this.length ) {
 		var i = 0,
 			length = this.length,
@@ -36,7 +36,7 @@ es.ContentSeries.prototype.offsetOf = function( item ) {
 			if ( this[i] === item ) {
 				return new es.Range( left, left + this[i].getLength() );
 			}
-			left += this[i].getLength();
+			left += this[i].getLength() + 1;
 			i++;
 		}
 	}
