@@ -98,7 +98,7 @@ class qp_QuestionView extends qp_AbstractView {
 	}
 
 	function isCompatibleController( $ctrl ) {
-		return method_exists( $ctrl, 'questionParseBody' );
+		return method_exists( $ctrl, 'parseBody' );
 	}
 
 	function setLayout( $layout, $textwidth ) {
@@ -144,11 +144,11 @@ class qp_QuestionView extends qp_AbstractView {
 			$this->showResults = $this->pollShowResults;
 		}
 		# initialize cell template for the selected showresults
-		# this method call can be moved to {$this->mType}ParseBody in the future,
+		# this method call can be moved to $ctrl->parseBody() in the future,
 		# if needed to setup templates depending on question type
 		# right now, cell templates depend only on input type and showresults type
 		if ( $this->showResults['type'] != 0 ) {
-			$this-> { 'cellTemplate' . $this->showResults['type'] } ();
+			$this->{ 'cellTemplate' . $this->showResults['type'] }();
 		}
 	}
 
@@ -435,7 +435,7 @@ class qp_QuestionView extends qp_AbstractView {
 	}
 
 	function addShowResults( $inp, $proposalId, $catId ) {
-		return $this-> { 'addShowResults' . $this->showResults['type'] } ( $inp, $proposalId, $catId );
+		return $this->{ 'addShowResults' . $this->showResults['type'] }( $inp, $proposalId, $catId );
 	}
 
 	# cell templates for the selected showresults

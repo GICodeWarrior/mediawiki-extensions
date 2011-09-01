@@ -457,7 +457,8 @@ class PollResults extends qp_SpecialPage {
 			$xls_worksheet->setPaper( 9 );
 			$xls_rownum = 0;
 			$format_heading = &$xls_workbook->addformat( array( 'bold' => 1 ) );
-			$format_answer = &$xls_workbook->addformat( array( 'fgcolor' => 0x1A, 'border' => 1 ) );	$format_answer->setAlign( 'left' );
+			$format_answer = &$xls_workbook->addformat( array( 'fgcolor' => 0x1A, 'border' => 1 ) );
+			$format_answer->setAlign( 'left' );
 			$format_even = &$xls_workbook->addformat( array( 'fgcolor' => 0x2A, 'border' => 1 ) );
 			$format_even->setAlign( 'left' );
 			$format_odd = &$xls_workbook->addformat( array( 'fgcolor' => 0x23, 'border' => 1 ) );
@@ -837,7 +838,8 @@ class qp_UsersList extends qp_QueryPage {
 			array( 'GROUP BY' => 'qup.uid',
 						'ORDER BY' => $this->order_by,
 						'OFFSET' => intval( $offset ),
-						'LIMIT' => intval( $limit ) ) );
+						'LIMIT' => intval( $limit ) )
+		);
 		while ( $row = $db->fetchObject( $res ) ) {
 			$result[] = $row;
 		}
@@ -961,7 +963,8 @@ class qp_PollsList extends qp_QueryPage {
 			__METHOD__,
 			array( 'ORDER BY' => 'page_namespace, page_title, order_id',
 						'OFFSET' => intval( $offset ),
-						'LIMIT' => intval( $limit ) ) );
+						'LIMIT' => intval( $limit ) )
+		);
 		while ( $row = $db->fetchObject( $res ) ) {
 			$result[] = $row;
 		}

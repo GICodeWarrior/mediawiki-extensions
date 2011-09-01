@@ -25,77 +25,77 @@
 /**
 * @const SPREADSHEET_EXCEL_WRITER_ADD token identifier for character "+"
 */
-define( 'SPREADSHEET_EXCEL_WRITER_ADD', "+" );
+define('SPREADSHEET_EXCEL_WRITER_ADD', "+");
 
 /**
 * @const SPREADSHEET_EXCEL_WRITER_SUB token identifier for character "-"
 */
-define( 'SPREADSHEET_EXCEL_WRITER_SUB', "-" );
+define('SPREADSHEET_EXCEL_WRITER_SUB', "-");
 
 /**
 * @const SPREADSHEET_EXCEL_WRITER_MUL token identifier for character "*"
 */
-define( 'SPREADSHEET_EXCEL_WRITER_MUL', "*" );
+define('SPREADSHEET_EXCEL_WRITER_MUL', "*");
 
 /**
 * @const SPREADSHEET_EXCEL_WRITER_DIV token identifier for character "/"
 */
-define( 'SPREADSHEET_EXCEL_WRITER_DIV', "/" );
+define('SPREADSHEET_EXCEL_WRITER_DIV', "/");
 
 /**
 * @const SPREADSHEET_EXCEL_WRITER_OPEN token identifier for character "("
 */
-define( 'SPREADSHEET_EXCEL_WRITER_OPEN', "(" );
+define('SPREADSHEET_EXCEL_WRITER_OPEN', "(");
 
 /**
 * @const SPREADSHEET_EXCEL_WRITER_CLOSE token identifier for character ")"
 */
-define( 'SPREADSHEET_EXCEL_WRITER_CLOSE', ")" );
+define('SPREADSHEET_EXCEL_WRITER_CLOSE', ")");
 
 /**
 * @const SPREADSHEET_EXCEL_WRITER_COMA token identifier for character ","
 */
-define( 'SPREADSHEET_EXCEL_WRITER_COMA', "," );
+define('SPREADSHEET_EXCEL_WRITER_COMA', ",");
 
 /**
 * @const SPREADSHEET_EXCEL_WRITER_SEMICOLON token identifier for character ";"
 */
-define( 'SPREADSHEET_EXCEL_WRITER_SEMICOLON', ";" );
+define('SPREADSHEET_EXCEL_WRITER_SEMICOLON', ";");
 
 /**
 * @const SPREADSHEET_EXCEL_WRITER_GT token identifier for character ">"
 */
-define( 'SPREADSHEET_EXCEL_WRITER_GT', ">" );
+define('SPREADSHEET_EXCEL_WRITER_GT', ">");
 
 /**
 * @const SPREADSHEET_EXCEL_WRITER_LT token identifier for character "<"
 */
-define( 'SPREADSHEET_EXCEL_WRITER_LT', "<" );
+define('SPREADSHEET_EXCEL_WRITER_LT', "<");
 
 /**
 * @const SPREADSHEET_EXCEL_WRITER_LE token identifier for character "<="
 */
-define( 'SPREADSHEET_EXCEL_WRITER_LE', "<=" );
+define('SPREADSHEET_EXCEL_WRITER_LE', "<=");
 
 /**
 * @const SPREADSHEET_EXCEL_WRITER_GE token identifier for character ">="
 */
-define( 'SPREADSHEET_EXCEL_WRITER_GE', ">=" );
+define('SPREADSHEET_EXCEL_WRITER_GE', ">=");
 
 /**
 * @const SPREADSHEET_EXCEL_WRITER_EQ token identifier for character "="
 */
-define( 'SPREADSHEET_EXCEL_WRITER_EQ', "=" );
+define('SPREADSHEET_EXCEL_WRITER_EQ', "=");
 
 /**
 * @const SPREADSHEET_EXCEL_WRITER_NE token identifier for character "<>"
 */
-define( 'SPREADSHEET_EXCEL_WRITER_NE', "<>" );
+define('SPREADSHEET_EXCEL_WRITER_NE', "<>");
 
 /**
 * * @const SPREADSHEET_EXCEL_WRITER_CONCAT token identifier for character "&"
 */
-define( 'SPREADSHEET_EXCEL_WRITER_CONCAT', "&" );
+define('SPREADSHEET_EXCEL_WRITER_CONCAT', "&");
 
 require_once( qp_Setup::$ExtDir . '/Excel/PEAR.php' );
 
@@ -169,7 +169,7 @@ class Spreadsheet_Excel_Writer_Parser extends PEAR
     * @param integer $byte_order The byte order (Little endian or Big endian) of the architecture
                                  (optional). 1 => big endian, 0 (default) little endian.
     */
-    function __construct( $byte_order, $biff_version )
+    function __construct($byte_order, $biff_version)
     {
         $this->_current_char  = 0;
         $this->_BIFF_version  = $biff_version;
@@ -540,45 +540,45 @@ class Spreadsheet_Excel_Writer_Parser extends PEAR
     * @return mixed the converted token on success. PEAR_Error if the token
     *               is not recognized
     */
-    function _convert( $token )
+    function _convert($token)
     {
-        if ( preg_match( "/^\"[^\"]{0,255}\"$/", $token ) ) {
-            return $this->_convertString( $token );
+        if (preg_match("/^\"[^\"]{0,255}\"$/", $token)) {
+            return $this->_convertString($token);
 
-        } elseif ( is_numeric( $token ) ) {
-            return $this->_convertNumber( $token );
+        } elseif (is_numeric($token)) {
+            return $this->_convertNumber($token);
 
         // match references like A1 or $A$1
-        } elseif ( preg_match( '/^\$?([A-Ia-i]?[A-Za-z])\$?(\d+)$/', $token ) ) {
-            return $this->_convertRef2d( $token );
+        } elseif (preg_match('/^\$?([A-Ia-i]?[A-Za-z])\$?(\d+)$/',$token)) {
+            return $this->_convertRef2d($token);
 
         // match external references like Sheet1!A1 or Sheet1:Sheet2!A1
-        } elseif ( preg_match( "/^\w+(\:\w+)?\![A-Ia-i]?[A-Za-z](\d+)$/u", $token ) ) {
-            return $this->_convertRef3d( $token );
+        } elseif (preg_match("/^\w+(\:\w+)?\![A-Ia-i]?[A-Za-z](\d+)$/u",$token)) {
+            return $this->_convertRef3d($token);
 
         // match external references like 'Sheet1'!A1 or 'Sheet1:Sheet2'!A1
-        } elseif ( preg_match( "/^'[\w -]+(\:[\w -]+)?'\![A-Ia-i]?[A-Za-z](\d+)$/u", $token ) ) {
-            return $this->_convertRef3d( $token );
+        } elseif (preg_match("/^'[\w -]+(\:[\w -]+)?'\![A-Ia-i]?[A-Za-z](\d+)$/u",$token)) {
+            return $this->_convertRef3d($token);
 
         // match ranges like A1:B2
-        } elseif ( preg_match( "/^(\$)?[A-Ia-i]?[A-Za-z](\$)?(\d+)\:(\$)?[A-Ia-i]?[A-Za-z](\$)?(\d+)$/", $token ) ) {
-            return $this->_convertRange2d( $token );
+        } elseif (preg_match("/^(\$)?[A-Ia-i]?[A-Za-z](\$)?(\d+)\:(\$)?[A-Ia-i]?[A-Za-z](\$)?(\d+)$/",$token)) {
+            return $this->_convertRange2d($token);
 
         // match ranges like A1..B2
-        } elseif ( preg_match( "/^(\$)?[A-Ia-i]?[A-Za-z](\$)?(\d+)\.\.(\$)?[A-Ia-i]?[A-Za-z](\$)?(\d+)$/", $token ) ) {
-            return $this->_convertRange2d( $token );
+        } elseif (preg_match("/^(\$)?[A-Ia-i]?[A-Za-z](\$)?(\d+)\.\.(\$)?[A-Ia-i]?[A-Za-z](\$)?(\d+)$/",$token)) {
+            return $this->_convertRange2d($token);
 
         // match external ranges like Sheet1!A1 or Sheet1:Sheet2!A1:B2
-        } elseif ( preg_match( "/^\w+(\:\w+)?\!([A-Ia-i]?[A-Za-z])?(\d+)\:([A-Ia-i]?[A-Za-z])?(\d+)$/u", $token ) ) {
-            return $this->_convertRange3d( $token );
+        } elseif (preg_match("/^\w+(\:\w+)?\!([A-Ia-i]?[A-Za-z])?(\d+)\:([A-Ia-i]?[A-Za-z])?(\d+)$/u",$token)) {
+            return $this->_convertRange3d($token);
 
         // match external ranges like 'Sheet1'!A1 or 'Sheet1:Sheet2'!A1:B2
-        } elseif ( preg_match( "/^'[\w -]+(\:[\w -]+)?'\!([A-Ia-i]?[A-Za-z])?(\d+)\:([A-Ia-i]?[A-Za-z])?(\d+)$/u", $token ) ) {
-            return $this->_convertRange3d( $token );
+        } elseif (preg_match("/^'[\w -]+(\:[\w -]+)?'\!([A-Ia-i]?[A-Za-z])?(\d+)\:([A-Ia-i]?[A-Za-z])?(\d+)$/u",$token)) {
+            return $this->_convertRange3d($token);
 
         // operators (including parentheses)
-        } elseif ( isset( $this->ptg[$token] ) ) {
-            return pack( "C", $this->ptg[$token] );
+        } elseif (isset($this->ptg[$token])) {
+            return pack("C", $this->ptg[$token]);
 
         // commented so argument number can be processed correctly. See toReversePolish().
         /*elseif (preg_match("/[A-Z0-9\xc0-\xdc\.]+/",$token))
@@ -587,11 +587,11 @@ class Spreadsheet_Excel_Writer_Parser extends PEAR
         }*/
 
         // if it's an argument, ignore the token (the argument remains)
-        } elseif ( $token == 'arg' ) {
+        } elseif ($token == 'arg') {
             return '';
         }
         // TODO: use real error codes
-        return $this->raiseError( "Unknown token $token" );
+        return $this->raiseError("Unknown token $token");
     }
 
     /**
@@ -600,16 +600,16 @@ class Spreadsheet_Excel_Writer_Parser extends PEAR
     * @access private
     * @param mixed $num an integer or double for conversion to its ptg value
     */
-    function _convertNumber( $num )
+    function _convertNumber($num)
     {
         // Integer in the range 0..2**16-1
-        if ( ( preg_match( "/^\d+$/", $num ) ) and ( $num <= 65535 ) ) {
-            return pack( "Cv", $this->ptg['ptgInt'], $num );
+        if ((preg_match("/^\d+$/", $num)) and ($num <= 65535)) {
+            return pack("Cv", $this->ptg['ptgInt'], $num);
         } else { // A float
-            if ( $this->_byte_order ) { // if it's Big Endian
-                $num = strrev( $num );
+            if ($this->_byte_order) { // if it's Big Endian
+                $num = strrev($num);
             }
-            return pack( "Cd", $this->ptg['ptgNum'], $num );
+            return pack("Cd", $this->ptg['ptgNum'], $num);
         }
     }
 
@@ -621,19 +621,19 @@ class Spreadsheet_Excel_Writer_Parser extends PEAR
     * @return mixed the converted token on success. PEAR_Error if the string
     *               is longer than 255 characters.
     */
-    function _convertString( $string )
+    function _convertString($string)
     {
         // chop away beggining and ending quotes
-        $string = substr( $string, 1, strlen( $string ) - 2 );
-        if ( strlen( $string ) > 255 ) {
-            return $this->raiseError( "String is too long" );
+        $string = substr($string, 1, strlen($string) - 2);
+        if (strlen($string) > 255) {
+            return $this->raiseError("String is too long");
         }
 
-        if ( $this->_BIFF_version == 0x0500 ) {
-            return pack( "CC", $this->ptg['ptgStr'], strlen( $string ) ) . $string;
-        } elseif ( $this->_BIFF_version == 0x0600 ) {
+        if ($this->_BIFF_version == 0x0500) {
+            return pack("CC", $this->ptg['ptgStr'], strlen($string)).$string;
+        } elseif ($this->_BIFF_version == 0x0600) {
             $encoding = 0;   // TODO: Unicode support
-            return pack( "CCC", $this->ptg['ptgStr'], strlen( $string ), $encoding ) . $string;
+            return pack("CCC", $this->ptg['ptgStr'], strlen($string), $encoding).$string;
         }
     }
 
@@ -646,18 +646,18 @@ class Spreadsheet_Excel_Writer_Parser extends PEAR
     * @param integer $num_args The number of arguments the function receives.
     * @return string The packed ptg for the function
     */
-    function _convertFunction( $token, $num_args )
+    function _convertFunction($token, $num_args)
     {
         $args     = $this->_functions[$token][1];
         $volatile = $this->_functions[$token][3];
 
         // Fixed number of args eg. TIME($i,$j,$k).
-        if ( $args >= 0 ) {
-            return pack( "Cv", $this->ptg['ptgFuncV'], $this->_functions[$token][0] );
+        if ($args >= 0) {
+            return pack("Cv", $this->ptg['ptgFuncV'], $this->_functions[$token][0]);
         }
         // Variable number of args eg. SUM($i,$j,$k, ..).
-        if ( $args == -1 ) {
-            return pack( "CCv", $this->ptg['ptgFuncVarV'], $num_args, $this->_functions[$token][0] );
+        if ($args == -1) {
+            return pack("CCv", $this->ptg['ptgFuncVarV'], $num_args, $this->_functions[$token][0]);
         }
     }
 
@@ -667,45 +667,45 @@ class Spreadsheet_Excel_Writer_Parser extends PEAR
     * @access private
     * @param string $range An Excel range in the A1:A2 or A1..A2 format.
     */
-    function _convertRange2d( $range, $class = 0 )
+    function _convertRange2d($range, $class=0)
     {
 
 		  // TODO: possible class value 0,1,2 check Formula.pm
         // Split the range into 2 cell refs
-        if ( preg_match( "/^([A-Ia-i]?[A-Za-z])(\d+)\:([A-Ia-i]?[A-Za-z])(\d+)$/", $range ) ) {
-            list( $cell1, $cell2 ) = explode( ':', $range );
-        } elseif ( preg_match( "/^([A-Ia-i]?[A-Za-z])(\d+)\.\.([A-Ia-i]?[A-Za-z])(\d+)$/", $range ) ) {
-            list( $cell1, $cell2 ) = explode( '..', $range );
+        if (preg_match("/^([A-Ia-i]?[A-Za-z])(\d+)\:([A-Ia-i]?[A-Za-z])(\d+)$/", $range)) {
+            list($cell1, $cell2) = explode(':', $range);
+        } elseif (preg_match("/^([A-Ia-i]?[A-Za-z])(\d+)\.\.([A-Ia-i]?[A-Za-z])(\d+)$/", $range)) {
+            list($cell1, $cell2) = explode('..', $range);
 
         } else {
             // TODO: use real error codes
-            return $this->raiseError( "Unknown range separator", 0, PEAR_ERROR_DIE );
+            return $this->raiseError("Unknown range separator", 0, PEAR_ERROR_DIE);
         }
 
         // Convert the cell references
-        $cell_array1 = $this->_cellToPackedRowcol( $cell1 );
-        if ( PEAR::isError( $cell_array1 ) ) {
+        $cell_array1 = $this->_cellToPackedRowcol($cell1);
+        if (PEAR::isError($cell_array1)) {
             return $cell_array1;
         }
-        list( $row1, $col1 ) = $cell_array1;
-        $cell_array2 = $this->_cellToPackedRowcol( $cell2 );
-        if ( PEAR::isError( $cell_array2 ) ) {
+        list($row1, $col1) = $cell_array1;
+        $cell_array2 = $this->_cellToPackedRowcol($cell2);
+        if (PEAR::isError($cell_array2)) {
             return $cell_array2;
         }
-        list( $row2, $col2 ) = $cell_array2;
+        list($row2, $col2) = $cell_array2;
 
         // The ptg value depends on the class of the ptg.
-        if ( $class == 0 ) {
-            $ptgArea = pack( "C", $this->ptg['ptgArea'] );
-        } elseif ( $class == 1 ) {
-            $ptgArea = pack( "C", $this->ptg['ptgAreaV'] );
-        } elseif ( $class == 2 ) {
-            $ptgArea = pack( "C", $this->ptg['ptgAreaA'] );
+        if ($class == 0) {
+            $ptgArea = pack("C", $this->ptg['ptgArea']);
+        } elseif ($class == 1) {
+            $ptgArea = pack("C", $this->ptg['ptgAreaV']);
+        } elseif ($class == 2) {
+            $ptgArea = pack("C", $this->ptg['ptgAreaA']);
         } else {
             // TODO: use real error codes
-            return $this->raiseError( "Unknown class $class", 0, PEAR_ERROR_DIE );
+            return $this->raiseError("Unknown class $class", 0, PEAR_ERROR_DIE);
         }
-        return $ptgArea . $row1 . $row2 . $col1 . $col2;
+        return $ptgArea . $row1 . $row2 . $col1. $col2;
     }
 
     /**
@@ -716,61 +716,61 @@ class Spreadsheet_Excel_Writer_Parser extends PEAR
     * @param string $token An Excel range in the Sheet1!A1:A2 format.
     * @return mixed The packed ptgArea3d token on success, PEAR_Error on failure.
     */
-    function _convertRange3d( $token )
+    function _convertRange3d($token)
     {
         $class = 2; // as far as I know, this is magick.
 
         // Split the ref at the ! symbol
-        list( $ext_ref, $range ) = explode( '!', $token );
+        list($ext_ref, $range) = explode('!', $token);
 
         // Convert the external reference part (different for BIFF8)
-        if ( $this->_BIFF_version == 0x0500 ) {
-            $ext_ref = $this->_packExtRef( $ext_ref );
-            if ( PEAR::isError( $ext_ref ) ) {
+        if ($this->_BIFF_version == 0x0500) {
+            $ext_ref = $this->_packExtRef($ext_ref);
+            if (PEAR::isError($ext_ref)) {
                 return $ext_ref;
             }
-        } elseif ( $this->_BIFF_version == 0x0600 ) {
-             $ext_ref = $this->_getRefIndex( $ext_ref );
-             if ( PEAR::isError( $ext_ref ) ) {
+        } elseif ($this->_BIFF_version == 0x0600) {
+             $ext_ref = $this->_getRefIndex($ext_ref);
+             if (PEAR::isError($ext_ref)) {
                  return $ext_ref;
              }
         }
 
         // Split the range into 2 cell refs
-        list( $cell1, $cell2 ) = explode( ':', $range );
+        list($cell1, $cell2) = explode(':', $range);
 
         // Convert the cell references
-        if ( preg_match( "/^(\$)?[A-Ia-i]?[A-Za-z](\$)?(\d+)$/", $cell1 ) ) {
-            $cell_array1 = $this->_cellToPackedRowcol( $cell1 );
-            if ( PEAR::isError( $cell_array1 ) ) {
+        if (preg_match("/^(\$)?[A-Ia-i]?[A-Za-z](\$)?(\d+)$/", $cell1)) {
+            $cell_array1 = $this->_cellToPackedRowcol($cell1);
+            if (PEAR::isError($cell_array1)) {
                 return $cell_array1;
             }
-            list( $row1, $col1 ) = $cell_array1;
-            $cell_array2 = $this->_cellToPackedRowcol( $cell2 );
-            if ( PEAR::isError( $cell_array2 ) ) {
+            list($row1, $col1) = $cell_array1;
+            $cell_array2 = $this->_cellToPackedRowcol($cell2);
+            if (PEAR::isError($cell_array2)) {
                 return $cell_array2;
             }
-            list( $row2, $col2 ) = $cell_array2;
+            list($row2, $col2) = $cell_array2;
         } else { // It's a rows range (like 26:27)
-             $cells_array = $this->_rangeToPackedRange( $cell1 . ':' . $cell2 );
-             if ( PEAR::isError( $cells_array ) ) {
+             $cells_array = $this->_rangeToPackedRange($cell1.':'.$cell2);
+             if (PEAR::isError($cells_array)) {
                  return $cells_array;
              }
-             list( $row1, $col1, $row2, $col2 ) = $cells_array;
+             list($row1, $col1, $row2, $col2) = $cells_array;
         }
 
         // The ptg value depends on the class of the ptg.
-        if ( $class == 0 ) {
-            $ptgArea = pack( "C", $this->ptg['ptgArea3d'] );
-        } elseif ( $class == 1 ) {
-            $ptgArea = pack( "C", $this->ptg['ptgArea3dV'] );
-        } elseif ( $class == 2 ) {
-            $ptgArea = pack( "C", $this->ptg['ptgArea3dA'] );
+        if ($class == 0) {
+            $ptgArea = pack("C", $this->ptg['ptgArea3d']);
+        } elseif ($class == 1) {
+            $ptgArea = pack("C", $this->ptg['ptgArea3dV']);
+        } elseif ($class == 2) {
+            $ptgArea = pack("C", $this->ptg['ptgArea3dA']);
         } else {
-            return $this->raiseError( "Unknown class $class", 0, PEAR_ERROR_DIE );
+            return $this->raiseError("Unknown class $class", 0, PEAR_ERROR_DIE);
         }
 
-        return $ptgArea . $ext_ref . $row1 . $row2 . $col1 . $col2;
+        return $ptgArea . $ext_ref . $row1 . $row2 . $col1. $col2;
     }
 
     /**
@@ -780,29 +780,29 @@ class Spreadsheet_Excel_Writer_Parser extends PEAR
     * @param string $cell An Excel cell reference
     * @return string The cell in packed() format with the corresponding ptg
     */
-    function _convertRef2d( $cell )
+    function _convertRef2d($cell)
     {
         $class = 2; // as far as I know, this is magick.
 
         // Convert the cell reference
-        $cell_array = $this->_cellToPackedRowcol( $cell );
-        if ( PEAR::isError( $cell_array ) ) {
+        $cell_array = $this->_cellToPackedRowcol($cell);
+        if (PEAR::isError($cell_array)) {
             return $cell_array;
         }
-        list( $row, $col ) = $cell_array;
+        list($row, $col) = $cell_array;
 
         // The ptg value depends on the class of the ptg.
-        if ( $class == 0 ) {
-            $ptgRef = pack( "C", $this->ptg['ptgRef'] );
-        } elseif ( $class == 1 ) {
-            $ptgRef = pack( "C", $this->ptg['ptgRefV'] );
-        } elseif ( $class == 2 ) {
-            $ptgRef = pack( "C", $this->ptg['ptgRefA'] );
+        if ($class == 0) {
+            $ptgRef = pack("C", $this->ptg['ptgRef']);
+        } elseif ($class == 1) {
+            $ptgRef = pack("C", $this->ptg['ptgRefV']);
+        } elseif ($class == 2) {
+            $ptgRef = pack("C", $this->ptg['ptgRefA']);
         } else {
             // TODO: use real error codes
-            return $this->raiseError( "Unknown class $class" );
+            return $this->raiseError("Unknown class $class");
         }
-        return $ptgRef . $row . $col;
+        return $ptgRef.$row.$col;
     }
 
     /**
@@ -813,41 +813,41 @@ class Spreadsheet_Excel_Writer_Parser extends PEAR
     * @param string $cell An Excel cell reference
     * @return mixed The packed ptgRef3d token on success, PEAR_Error on failure.
     */
-    function _convertRef3d( $cell )
+    function _convertRef3d($cell)
     {
         $class = 2; // as far as I know, this is magick.
 
         // Split the ref at the ! symbol
-        list( $ext_ref, $cell ) = explode( '!', $cell );
+        list($ext_ref, $cell) = explode('!', $cell);
 
         // Convert the external reference part (different for BIFF8)
-        if ( $this->_BIFF_version == 0x0500 ) {
-            $ext_ref = $this->_packExtRef( $ext_ref );
-            if ( PEAR::isError( $ext_ref ) ) {
+        if ($this->_BIFF_version == 0x0500) {
+            $ext_ref = $this->_packExtRef($ext_ref);
+            if (PEAR::isError($ext_ref)) {
                 return $ext_ref;
             }
-        } elseif ( $this->_BIFF_version == 0x0600 ) {
-            $ext_ref = $this->_getRefIndex( $ext_ref );
-            if ( PEAR::isError( $ext_ref ) ) {
+        } elseif ($this->_BIFF_version == 0x0600) {
+            $ext_ref = $this->_getRefIndex($ext_ref);
+            if (PEAR::isError($ext_ref)) {
                 return $ext_ref;
             }
         }
 
         // Convert the cell reference part
-        list( $row, $col ) = $this->_cellToPackedRowcol( $cell );
+        list($row, $col) = $this->_cellToPackedRowcol($cell);
 
         // The ptg value depends on the class of the ptg.
-        if ( $class == 0 ) {
-            $ptgRef = pack( "C", $this->ptg['ptgRef3d'] );
-        } elseif ( $class == 1 ) {
-            $ptgRef = pack( "C", $this->ptg['ptgRef3dV'] );
-        } elseif ( $class == 2 ) {
-            $ptgRef = pack( "C", $this->ptg['ptgRef3dA'] );
+        if ($class == 0) {
+            $ptgRef = pack("C", $this->ptg['ptgRef3d']);
+        } elseif ($class == 1) {
+            $ptgRef = pack("C", $this->ptg['ptgRef3dV']);
+        } elseif ($class == 2) {
+            $ptgRef = pack("C", $this->ptg['ptgRef3dA']);
         } else {
-            return $this->raiseError( "Unknown class $class", 0, PEAR_ERROR_DIE );
+            return $this->raiseError("Unknown class $class", 0, PEAR_ERROR_DIE);
         }
 
-        return $ptgRef . $ext_ref . $row . $col;
+        return $ptgRef . $ext_ref. $row . $col;
     }
 
     /**
@@ -858,32 +858,32 @@ class Spreadsheet_Excel_Writer_Parser extends PEAR
     * @param string $ext_ref The name of the external reference
     * @return string The reference index in packed() format
     */
-    function _packExtRef( $ext_ref )
+    function _packExtRef($ext_ref)
     {
-        $ext_ref = preg_replace( "/^'/", '', $ext_ref ); // Remove leading  ' if any.
-        $ext_ref = preg_replace( "/'$/", '', $ext_ref ); // Remove trailing ' if any.
+        $ext_ref = preg_replace("/^'/", '', $ext_ref); // Remove leading  ' if any.
+        $ext_ref = preg_replace("/'$/", '', $ext_ref); // Remove trailing ' if any.
 
         // Check if there is a sheet range eg., Sheet1:Sheet2.
-        if ( preg_match( "/:/", $ext_ref ) ) {
-            list( $sheet_name1, $sheet_name2 ) = explode( ':', $ext_ref );
+        if (preg_match("/:/", $ext_ref)) {
+            list($sheet_name1, $sheet_name2) = explode(':', $ext_ref);
 
-            $sheet1 = $this->_getSheetIndex( $sheet_name1 );
-            if ( $sheet1 == -1 ) {
-                return $this->raiseError( "Unknown sheet name $sheet_name1 in formula" );
+            $sheet1 = $this->_getSheetIndex($sheet_name1);
+            if ($sheet1 == -1) {
+                return $this->raiseError("Unknown sheet name $sheet_name1 in formula");
             }
-            $sheet2 = $this->_getSheetIndex( $sheet_name2 );
-            if ( $sheet2 == -1 ) {
-                return $this->raiseError( "Unknown sheet name $sheet_name2 in formula" );
+            $sheet2 = $this->_getSheetIndex($sheet_name2);
+            if ($sheet2 == -1) {
+                return $this->raiseError("Unknown sheet name $sheet_name2 in formula");
             }
 
             // Reverse max and min sheet numbers if necessary
-            if ( $sheet1 > $sheet2 ) {
-                list( $sheet1, $sheet2 ) = array( $sheet2, $sheet1 );
+            if ($sheet1 > $sheet2) {
+                list($sheet1, $sheet2) = array($sheet2, $sheet1);
             }
         } else { // Single sheet name only.
-            $sheet1 = $this->_getSheetIndex( $ext_ref );
-            if ( $sheet1 == -1 ) {
-                return $this->raiseError( "Unknown sheet name $ext_ref in formula" );
+            $sheet1 = $this->_getSheetIndex($ext_ref);
+            if ($sheet1 == -1) {
+                return $this->raiseError("Unknown sheet name $ext_ref in formula");
             }
             $sheet2 = $sheet1;
         }
@@ -891,7 +891,7 @@ class Spreadsheet_Excel_Writer_Parser extends PEAR
         // References are stored relative to 0xFFFF.
         $offset = -1 - $sheet1;
 
-        return pack( 'vdvv', $offset, 0x00, $sheet1, $sheet2 );
+        return pack('vdvv', $offset, 0x00, $sheet1, $sheet2);
     }
 
     /**
@@ -904,54 +904,54 @@ class Spreadsheet_Excel_Writer_Parser extends PEAR
     * @return mixed The reference index in packed() format on success,
     *               PEAR_Error on failure
     */
-    function _getRefIndex( $ext_ref )
+    function _getRefIndex($ext_ref)
     {
-        $ext_ref = preg_replace( "/^'/", '', $ext_ref ); // Remove leading  ' if any.
-        $ext_ref = preg_replace( "/'$/", '', $ext_ref ); // Remove trailing ' if any.
+        $ext_ref = preg_replace("/^'/", '', $ext_ref); // Remove leading  ' if any.
+        $ext_ref = preg_replace("/'$/", '', $ext_ref); // Remove trailing ' if any.
 
         // Check if there is a sheet range eg., Sheet1:Sheet2.
-        if ( preg_match( "/:/", $ext_ref ) ) {
-            list( $sheet_name1, $sheet_name2 ) = explode( ':', $ext_ref );
+        if (preg_match("/:/", $ext_ref)) {
+            list($sheet_name1, $sheet_name2) = explode(':', $ext_ref);
 
-            $sheet1 = $this->_getSheetIndex( $sheet_name1 );
-            if ( $sheet1 == -1 ) {
-                return $this->raiseError( "Unknown sheet name $sheet_name1 in formula" );
+            $sheet1 = $this->_getSheetIndex($sheet_name1);
+            if ($sheet1 == -1) {
+                return $this->raiseError("Unknown sheet name $sheet_name1 in formula");
             }
-            $sheet2 = $this->_getSheetIndex( $sheet_name2 );
-            if ( $sheet2 == -1 ) {
-                return $this->raiseError( "Unknown sheet name $sheet_name2 in formula" );
+            $sheet2 = $this->_getSheetIndex($sheet_name2);
+            if ($sheet2 == -1) {
+                return $this->raiseError("Unknown sheet name $sheet_name2 in formula");
             }
 
             // Reverse max and min sheet numbers if necessary
-            if ( $sheet1 > $sheet2 ) {
-                list( $sheet1, $sheet2 ) = array( $sheet2, $sheet1 );
+            if ($sheet1 > $sheet2) {
+                list($sheet1, $sheet2) = array($sheet2, $sheet1);
             }
         } else { // Single sheet name only.
-            $sheet1 = $this->_getSheetIndex( $ext_ref );
-            if ( $sheet1 == -1 ) {
-                return $this->raiseError( "Unknown sheet name $ext_ref in formula" );
+            $sheet1 = $this->_getSheetIndex($ext_ref);
+            if ($sheet1 == -1) {
+                return $this->raiseError("Unknown sheet name $ext_ref in formula");
             }
             $sheet2 = $sheet1;
         }
 
         // assume all references belong to this document
         $supbook_index = 0x00;
-        $ref = pack( 'vvv', $supbook_index, $sheet1, $sheet2 );
-        $total_references = count( $this->_references );
+        $ref = pack('vvv', $supbook_index, $sheet1, $sheet2);
+        $total_references = count($this->_references);
         $index = -1;
-        for ( $i = 0; $i < $total_references; $i++ ) {
-            if ( $ref == $this->_references[$i] ) {
+        for ($i = 0; $i < $total_references; $i++) {
+            if ($ref == $this->_references[$i]) {
                 $index = $i;
                 break;
             }
         }
         // if REF was not found add it to references array
-        if ( $index == -1 ) {
+        if ($index == -1) {
             $this->_references[$total_references] = $ref;
             $index = $total_references;
         }
 
-        return pack( 'v', $index );
+        return pack('v', $index);
     }
 
     /**
@@ -962,9 +962,9 @@ class Spreadsheet_Excel_Writer_Parser extends PEAR
     * @access private
     * @return integer The sheet index, -1 if the sheet was not found
     */
-    function _getSheetIndex( $sheet_name )
+    function _getSheetIndex($sheet_name)
     {
-        if ( !isset( $this->_ext_sheets[$sheet_name] ) ) {
+        if (!isset($this->_ext_sheets[$sheet_name])) {
             return -1;
         } else {
             return $this->_ext_sheets[$sheet_name];
@@ -981,7 +981,7 @@ class Spreadsheet_Excel_Writer_Parser extends PEAR
     * @param string  $name  The name of the worksheet being added
     * @param integer $index The index of the worksheet being added
     */
-    function setExtSheet( $name, $index )
+    function setExtSheet($name, $index)
     {
         $this->_ext_sheets[$name] = $index;
     }
@@ -993,31 +993,31 @@ class Spreadsheet_Excel_Writer_Parser extends PEAR
     * @param string $cell The Excel cell reference to be packed
     * @return array Array containing the row and column in packed() format
     */
-    function _cellToPackedRowcol( $cell )
+    function _cellToPackedRowcol($cell)
     {
-        $cell = strtoupper( $cell );
-        list( $row, $col, $row_rel, $col_rel ) = $this->_cellToRowcol( $cell );
-        if ( $col >= 256 ) {
-            return $this->raiseError( "Column in: $cell greater than 255" );
+        $cell = strtoupper($cell);
+        list($row, $col, $row_rel, $col_rel) = $this->_cellToRowcol($cell);
+        if ($col >= 256) {
+            return $this->raiseError("Column in: $cell greater than 255");
         }
         // FIXME: change for BIFF8
-        if ( $row >= 16384 ) {
-            return $this->raiseError( "Row in: $cell greater than 16384 " );
+        if ($row >= 16384) {
+            return $this->raiseError("Row in: $cell greater than 16384 ");
         }
 
         // Set the high bits to indicate if row or col are relative.
-        if ( $this->_BIFF_version == 0x0500 ) {
+        if ($this->_BIFF_version == 0x0500) {
             $row    |= $col_rel << 14;
             $row    |= $row_rel << 15;
-            $col     = pack( 'C', $col );
-        } elseif ( $this->_BIFF_version == 0x0600 ) {
+            $col     = pack('C', $col);
+        } elseif ($this->_BIFF_version == 0x0600) {
             $col    |= $col_rel << 14;
             $col    |= $row_rel << 15;
-            $col     = pack( 'v', $col );
+            $col     = pack('v', $col);
         }
-        $row     = pack( 'v', $row );
+        $row     = pack('v', $row);
 
-        return array( $row, $col );
+        return array($row, $col);
     }
 
     /**
@@ -1028,13 +1028,13 @@ class Spreadsheet_Excel_Writer_Parser extends PEAR
     * @param string $range The Excel range to be packed
     * @return array Array containing (row1,col1,row2,col2) in packed() format
     */
-    function _rangeToPackedRange( $range )
+    function _rangeToPackedRange($range)
     {
-        preg_match( '/(\$)?(\d+)\:(\$)?(\d+)/', $range, $match );
+        preg_match('/(\$)?(\d+)\:(\$)?(\d+)/', $range, $match);
         // return absolute rows if there is a $ in the ref
-        $row1_rel = empty( $match[1] ) ? 1 : 0;
+        $row1_rel = empty($match[1]) ? 1 : 0;
         $row1     = $match[2];
-        $row2_rel = empty( $match[3] ) ? 1 : 0;
+        $row2_rel = empty($match[3]) ? 1 : 0;
         $row2     = $match[4];
         // Convert 1-index to zero-index
         $row1--;
@@ -1044,26 +1044,26 @@ class Spreadsheet_Excel_Writer_Parser extends PEAR
         $col2 = 16383; // FIXME: maximum possible value for Excel 5 (change this!!!)
 
         // FIXME: this changes for BIFF8
-        if ( ( $row1 >= 16384 ) or ( $row2 >= 16384 ) ) {
-            return $this->raiseError( "Row in: $range greater than 16384 " );
+        if (($row1 >= 16384) or ($row2 >= 16384)) {
+            return $this->raiseError("Row in: $range greater than 16384 ");
         }
 
         // Set the high bits to indicate if rows are relative.
-        if ( $this->_BIFF_version == 0x0500 ) {
+        if ($this->_BIFF_version == 0x0500) {
             $row1    |= $row1_rel << 14; // FIXME: probably a bug
             $row2    |= $row2_rel << 15;
-            $col1     = pack( 'C', $col1 );
-            $col2     = pack( 'C', $col2 );
-        } elseif ( $this->_BIFF_version == 0x0600 ) {
+            $col1     = pack('C', $col1);
+            $col2     = pack('C', $col2);
+        } elseif ($this->_BIFF_version == 0x0600) {
             $col1    |= $row1_rel << 15;
             $col2    |= $row2_rel << 15;
-            $col1     = pack( 'v', $col1 );
-            $col2     = pack( 'v', $col2 );
+            $col1     = pack('v', $col1);
+            $col2     = pack('v', $col2);
         }
-        $row1     = pack( 'v', $row1 );
-        $row2     = pack( 'v', $row2 );
+        $row1     = pack('v', $row1);
+        $row2     = pack('v', $row2);
 
-        return array( $row1, $col1, $row2, $col2 );
+        return array($row1, $col1, $row2, $col2);
     }
 
     /**
@@ -1075,21 +1075,21 @@ class Spreadsheet_Excel_Writer_Parser extends PEAR
     * @param string $cell The Excel cell reference in A1 format.
     * @return array
     */
-    function _cellToRowcol( $cell )
+    function _cellToRowcol($cell)
     {
-        preg_match( '/(\$)?([A-I]?[A-Z])(\$)?(\d+)/', $cell, $match );
+        preg_match('/(\$)?([A-I]?[A-Z])(\$)?(\d+)/',$cell,$match);
         // return absolute column if there is a $ in the ref
-        $col_rel = empty( $match[1] ) ? 1 : 0;
+        $col_rel = empty($match[1]) ? 1 : 0;
         $col_ref = $match[2];
-        $row_rel = empty( $match[3] ) ? 1 : 0;
+        $row_rel = empty($match[3]) ? 1 : 0;
         $row     = $match[4];
 
         // Convert base26 column string to a number.
-        $expn   = strlen( $col_ref ) - 1;
+        $expn   = strlen($col_ref) - 1;
         $col    = 0;
-        $col_ref_length = strlen( $col_ref );
-        for ( $i = 0; $i < $col_ref_length; $i++ ) {
-            $col += ( ord( $col_ref { $i } ) - ord( 'A' ) + 1 ) * pow( 26, $expn );
+        $col_ref_length = strlen($col_ref);
+        for ($i = 0; $i < $col_ref_length; $i++) {
+            $col += (ord($col_ref{$i}) - ord('A') + 1) * pow(26, $expn);
             $expn--;
         }
 
@@ -1097,7 +1097,7 @@ class Spreadsheet_Excel_Writer_Parser extends PEAR
         $row--;
         $col--;
 
-        return array( $row, $col, $row_rel, $col_rel );
+        return array($row, $col, $row_rel, $col_rel);
     }
 
     /**
@@ -1108,44 +1108,44 @@ class Spreadsheet_Excel_Writer_Parser extends PEAR
     function _advance()
     {
         $i = $this->_current_char;
-        $formula_length = strlen( $this->_formula );
+        $formula_length = strlen($this->_formula);
         // eat up white spaces
-        if ( $i < $formula_length ) {
-            while ( $this->_formula { $i } == " " ) {
+        if ($i < $formula_length) {
+            while ($this->_formula{$i} == " ") {
                 $i++;
             }
 
-            if ( $i < ( $formula_length - 1 ) ) {
-                $this->_lookahead = $this->_formula { $i + 1 } ;
+            if ($i < ($formula_length - 1)) {
+                $this->_lookahead = $this->_formula{$i+1};
             }
             $token = '';
         }
 
-        while ( $i < $formula_length ) {
-            $token .= $this->_formula { $i } ;
-            if ( $i < ( $formula_length - 1 ) ) {
-                $this->_lookahead = $this->_formula { $i + 1 } ;
+        while ($i < $formula_length) {
+            $token .= $this->_formula{$i};
+            if ($i < ($formula_length - 1)) {
+                $this->_lookahead = $this->_formula{$i+1};
             } else {
                 $this->_lookahead = '';
             }
 
-            if ( $this->_match( $token ) != '' ) {
-                // if ($i < strlen($this->_formula) - 1) {
+            if ($this->_match($token) != '') {
+                //if ($i < strlen($this->_formula) - 1) {
                 //    $this->_lookahead = $this->_formula{$i+1};
-                // }
+                //}
                 $this->_current_char = $i + 1;
                 $this->_current_token = $token;
                 return 1;
             }
 
-            if ( $i < ( $formula_length - 2 ) ) {
-                $this->_lookahead = $this->_formula { $i + 2 } ;
+            if ($i < ($formula_length - 2)) {
+                $this->_lookahead = $this->_formula{$i+2};
             } else { // if we run out of characters _lookahead becomes empty
                 $this->_lookahead = '';
             }
             $i++;
         }
-        // die("Lexical error ".$this->_current_char);
+        //die("Lexical error ".$this->_current_char);
     }
 
     /**
@@ -1155,9 +1155,9 @@ class Spreadsheet_Excel_Writer_Parser extends PEAR
     * @param mixed $token The token to check.
     * @return mixed       The checked token or false on failure
     */
-    function _match( $token )
+    function _match($token)
     {
-        switch( $token ) {
+        switch($token) {
             case SPREADSHEET_EXCEL_WRITER_ADD:
                 return $token;
                 break;
@@ -1183,14 +1183,14 @@ class Spreadsheet_Excel_Writer_Parser extends PEAR
                 return $token;
                 break;
             case SPREADSHEET_EXCEL_WRITER_GT:
-                if ( $this->_lookahead == '=' ) { // it's a GE token
+                if ($this->_lookahead == '=') { // it's a GE token
                     break;
                 }
                 return $token;
                 break;
             case SPREADSHEET_EXCEL_WRITER_LT:
                 // it's a LE or a NE token
-                if ( ( $this->_lookahead == '=' ) or ( $this->_lookahead == '>' ) ) {
+                if (($this->_lookahead == '=') or ($this->_lookahead == '>')) {
                     break;
                 }
                 return $token;
@@ -1212,65 +1212,65 @@ class Spreadsheet_Excel_Writer_Parser extends PEAR
                 break;
             default:
                 // if it's a reference
-                if ( preg_match( '/^\$?[A-Ia-i]?[A-Za-z]\$?[0-9]+$/', $token ) and
-                   !preg_match( "/[0-9]/", $this->_lookahead ) and
-                   ( $this->_lookahead != ':' ) and ( $this->_lookahead != '.' ) and
-                   ( $this->_lookahead != '!' ) )
+                if (preg_match('/^\$?[A-Ia-i]?[A-Za-z]\$?[0-9]+$/',$token) and
+                   !preg_match("/[0-9]/",$this->_lookahead) and 
+                   ($this->_lookahead != ':') and ($this->_lookahead != '.') and
+                   ($this->_lookahead != '!'))
                 {
                     return $token;
                 }
                 // If it's an external reference (Sheet1!A1 or Sheet1:Sheet2!A1)
-                elseif ( preg_match( "/^\w+(\:\w+)?\![A-Ia-i]?[A-Za-z][0-9]+$/u", $token ) and
-                       !preg_match( "/[0-9]/", $this->_lookahead ) and
-                       ( $this->_lookahead != ':' ) and ( $this->_lookahead != '.' ) )
+                elseif (preg_match("/^\w+(\:\w+)?\![A-Ia-i]?[A-Za-z][0-9]+$/u",$token) and
+                       !preg_match("/[0-9]/",$this->_lookahead) and
+                       ($this->_lookahead != ':') and ($this->_lookahead != '.'))
                 {
                     return $token;
                 }
                 // If it's an external reference ('Sheet1'!A1 or 'Sheet1:Sheet2'!A1)
-                elseif ( preg_match( "/^'[\w -]+(\:[\w -]+)?'\![A-Ia-i]?[A-Za-z][0-9]+$/u", $token ) and
-                       !preg_match( "/[0-9]/", $this->_lookahead ) and
-                       ( $this->_lookahead != ':' ) and ( $this->_lookahead != '.' ) )
+                elseif (preg_match("/^'[\w -]+(\:[\w -]+)?'\![A-Ia-i]?[A-Za-z][0-9]+$/u",$token) and
+                       !preg_match("/[0-9]/",$this->_lookahead) and
+                       ($this->_lookahead != ':') and ($this->_lookahead != '.'))
                 {
                     return $token;
                 }
                 // if it's a range (A1:A2)
-                elseif ( preg_match( "/^(\$)?[A-Ia-i]?[A-Za-z](\$)?[0-9]+:(\$)?[A-Ia-i]?[A-Za-z](\$)?[0-9]+$/", $token ) and
-                       !preg_match( "/[0-9]/", $this->_lookahead ) )
+                elseif (preg_match("/^(\$)?[A-Ia-i]?[A-Za-z](\$)?[0-9]+:(\$)?[A-Ia-i]?[A-Za-z](\$)?[0-9]+$/",$token) and 
+                       !preg_match("/[0-9]/",$this->_lookahead))
                 {
                     return $token;
                 }
                 // if it's a range (A1..A2)
-                elseif ( preg_match( "/^(\$)?[A-Ia-i]?[A-Za-z](\$)?[0-9]+\.\.(\$)?[A-Ia-i]?[A-Za-z](\$)?[0-9]+$/", $token ) and
-                       !preg_match( "/[0-9]/", $this->_lookahead ) )
+                elseif (preg_match("/^(\$)?[A-Ia-i]?[A-Za-z](\$)?[0-9]+\.\.(\$)?[A-Ia-i]?[A-Za-z](\$)?[0-9]+$/",$token) and 
+                       !preg_match("/[0-9]/",$this->_lookahead))
                 {
                     return $token;
                 }
                 // If it's an external range like Sheet1!A1 or Sheet1:Sheet2!A1:B2
-                elseif ( preg_match( "/^\w+(\:\w+)?\!([A-Ia-i]?[A-Za-z])?[0-9]+:([A-Ia-i]?[A-Za-z])?[0-9]+$/u", $token ) and
-                       !preg_match( "/[0-9]/", $this->_lookahead ) )
+                elseif (preg_match("/^\w+(\:\w+)?\!([A-Ia-i]?[A-Za-z])?[0-9]+:([A-Ia-i]?[A-Za-z])?[0-9]+$/u",$token) and
+                       !preg_match("/[0-9]/",$this->_lookahead))
                 {
                     return $token;
                 }
                 // If it's an external range like 'Sheet1'!A1 or 'Sheet1:Sheet2'!A1:B2
-                elseif ( preg_match( "/^'[\w -]+(\:[\w -]+)?'\!([A-Ia-i]?[A-Za-z])?[0-9]+:([A-Ia-i]?[A-Za-z])?[0-9]+$/u", $token ) and
-                       !preg_match( "/[0-9]/", $this->_lookahead ) )
+                elseif (preg_match("/^'[\w -]+(\:[\w -]+)?'\!([A-Ia-i]?[A-Za-z])?[0-9]+:([A-Ia-i]?[A-Za-z])?[0-9]+$/u",$token) and
+                       !preg_match("/[0-9]/",$this->_lookahead))
                 {
                     return $token;
                 }
                 // If it's a number (check that it's not a sheet name or range)
-                elseif ( is_numeric( $token ) and
-                        ( !is_numeric( $token . $this->_lookahead ) or ( $this->_lookahead == '' ) ) and
-                        ( $this->_lookahead != '!' ) and ( $this->_lookahead != ':' ) )
+                elseif (is_numeric($token) and 
+                        (!is_numeric($token.$this->_lookahead) or ($this->_lookahead == '')) and
+                        ($this->_lookahead != '!') and ($this->_lookahead != ':'))
                 {
                     return $token;
                 }
                 // If it's a string (of maximum 255 characters)
-                elseif ( preg_match( "/^\"[^\"]{0,255}\"$/", $token ) )
+                elseif (preg_match("/^\"[^\"]{0,255}\"$/",$token))
                 {
                     return $token;
                 }
                 // if it's a function call
-                elseif ( preg_match( "/^[A-Z0-9\xc0-\xdc\.]+$/i", $token ) and ( $this->_lookahead == "(" ) )
+                elseif (preg_match("/^[A-Z0-9\xc0-\xdc\.]+$/i",$token) and ($this->_lookahead == "("))
                 {
                     return $token;
                 }
@@ -1286,14 +1286,14 @@ class Spreadsheet_Excel_Writer_Parser extends PEAR
     *                        sign (=).
     * @return mixed true on success, PEAR_Error on failure
     */
-    function parse( $formula )
+    function parse($formula)
     {
         $this->_current_char = 0;
         $this->_formula      = $formula;
-        $this->_lookahead    = $formula { 1 } ;
+        $this->_lookahead    = $formula{1};
         $this->_advance();
         $this->_parse_tree   = $this->_condition();
-        if ( PEAR::isError( $this->_parse_tree ) ) {
+        if (PEAR::isError($this->_parse_tree)) {
             return $this->_parse_tree;
         }
         return true;
@@ -1309,58 +1309,58 @@ class Spreadsheet_Excel_Writer_Parser extends PEAR
     function _condition()
     {
         $result = $this->_expression();
-        if ( PEAR::isError( $result ) ) {
+        if (PEAR::isError($result)) {
             return $result;
         }
-        if ( $this->_current_token == SPREADSHEET_EXCEL_WRITER_LT ) {
+        if ($this->_current_token == SPREADSHEET_EXCEL_WRITER_LT) {
             $this->_advance();
             $result2 = $this->_expression();
-            if ( PEAR::isError( $result2 ) ) {
+            if (PEAR::isError($result2)) {
                 return $result2;
             }
-            $result = $this->_createTree( 'ptgLT', $result, $result2 );
-        } elseif ( $this->_current_token == SPREADSHEET_EXCEL_WRITER_GT ) {
+            $result = $this->_createTree('ptgLT', $result, $result2);
+        } elseif ($this->_current_token == SPREADSHEET_EXCEL_WRITER_GT) {
             $this->_advance();
             $result2 = $this->_expression();
-            if ( PEAR::isError( $result2 ) ) {
+            if (PEAR::isError($result2)) {
                 return $result2;
             }
-            $result = $this->_createTree( 'ptgGT', $result, $result2 );
-        } elseif ( $this->_current_token == SPREADSHEET_EXCEL_WRITER_LE ) {
+            $result = $this->_createTree('ptgGT', $result, $result2);
+        } elseif ($this->_current_token == SPREADSHEET_EXCEL_WRITER_LE) {
             $this->_advance();
             $result2 = $this->_expression();
-            if ( PEAR::isError( $result2 ) ) {
+            if (PEAR::isError($result2)) {
                 return $result2;
             }
-            $result = $this->_createTree( 'ptgLE', $result, $result2 );
-        } elseif ( $this->_current_token == SPREADSHEET_EXCEL_WRITER_GE ) {
+            $result = $this->_createTree('ptgLE', $result, $result2);
+        } elseif ($this->_current_token == SPREADSHEET_EXCEL_WRITER_GE) {
             $this->_advance();
             $result2 = $this->_expression();
-            if ( PEAR::isError( $result2 ) ) {
+            if (PEAR::isError($result2)) {
                 return $result2;
             }
-            $result = $this->_createTree( 'ptgGE', $result, $result2 );
-        } elseif ( $this->_current_token == SPREADSHEET_EXCEL_WRITER_EQ ) {
+            $result = $this->_createTree('ptgGE', $result, $result2);
+        } elseif ($this->_current_token == SPREADSHEET_EXCEL_WRITER_EQ) {
             $this->_advance();
             $result2 = $this->_expression();
-            if ( PEAR::isError( $result2 ) ) {
+            if (PEAR::isError($result2)) {
                 return $result2;
             }
-            $result = $this->_createTree( 'ptgEQ', $result, $result2 );
-        } elseif ( $this->_current_token == SPREADSHEET_EXCEL_WRITER_NE ) {
+            $result = $this->_createTree('ptgEQ', $result, $result2);
+        } elseif ($this->_current_token == SPREADSHEET_EXCEL_WRITER_NE) {
             $this->_advance();
             $result2 = $this->_expression();
-            if ( PEAR::isError( $result2 ) ) {
+            if (PEAR::isError($result2)) {
                 return $result2;
             }
-            $result = $this->_createTree( 'ptgNE', $result, $result2 );
-        } elseif ( $this->_current_token == SPREADSHEET_EXCEL_WRITER_CONCAT ) {
+            $result = $this->_createTree('ptgNE', $result, $result2);
+        } elseif ($this->_current_token == SPREADSHEET_EXCEL_WRITER_CONCAT) {
             $this->_advance();
             $result2 = $this->_expression();
-            if ( PEAR::isError( $result2 ) ) {
+            if (PEAR::isError($result2)) {
                 return $result2;
         }
-            $result = $this->_createTree( 'ptgConcat', $result, $result2 );
+            $result = $this->_createTree('ptgConcat', $result, $result2);
         }
         return $result;
     }
@@ -1377,38 +1377,38 @@ class Spreadsheet_Excel_Writer_Parser extends PEAR
     function _expression()
     {
         // If it's a string return a string node
-        if ( preg_match( "/^\"[^\"]{0,255}\"$/", $this->_current_token ) ) {
-            $result = $this->_createTree( $this->_current_token, '', '' );
+        if (preg_match("/^\"[^\"]{0,255}\"$/", $this->_current_token)) {
+            $result = $this->_createTree($this->_current_token, '', '');
             $this->_advance();
             return $result;
-        } elseif ( $this->_current_token == SPREADSHEET_EXCEL_WRITER_SUB ) {
+        } elseif ($this->_current_token == SPREADSHEET_EXCEL_WRITER_SUB) {
             // catch "-" Term
             $this->_advance();
             $result2 = $this->_expression();
-            $result = $this->_createTree( 'ptgUminus', $result2, '' );
+            $result = $this->_createTree('ptgUminus', $result2, '');
             return $result;
         }
         $result = $this->_term();
-        if ( PEAR::isError( $result ) ) {
+        if (PEAR::isError($result)) {
             return $result;
         }
-        while ( ( $this->_current_token == SPREADSHEET_EXCEL_WRITER_ADD ) or
-               ( $this->_current_token == SPREADSHEET_EXCEL_WRITER_SUB ) ) {
+        while (($this->_current_token == SPREADSHEET_EXCEL_WRITER_ADD) or
+               ($this->_current_token == SPREADSHEET_EXCEL_WRITER_SUB)) {
         /**/
-            if ( $this->_current_token == SPREADSHEET_EXCEL_WRITER_ADD ) {
+            if ($this->_current_token == SPREADSHEET_EXCEL_WRITER_ADD) {
                 $this->_advance();
                 $result2 = $this->_term();
-                if ( PEAR::isError( $result2 ) ) {
+                if (PEAR::isError($result2)) {
                     return $result2;
                 }
-                $result = $this->_createTree( 'ptgAdd', $result, $result2 );
+                $result = $this->_createTree('ptgAdd', $result, $result2);
             } else {
                 $this->_advance();
                 $result2 = $this->_term();
-                if ( PEAR::isError( $result2 ) ) {
+                if (PEAR::isError($result2)) {
                     return $result2;
                 }
-                $result = $this->_createTree( 'ptgSub', $result, $result2 );
+                $result = $this->_createTree('ptgSub', $result, $result2);
             }
         }
         return $result;
@@ -1424,7 +1424,7 @@ class Spreadsheet_Excel_Writer_Parser extends PEAR
     */
     function _parenthesizedExpression()
     {
-        $result = $this->_createTree( 'ptgParen', $this->_expression(), '' );
+        $result = $this->_createTree('ptgParen', $this->_expression(), '');
         return $result;
     }
 
@@ -1438,26 +1438,26 @@ class Spreadsheet_Excel_Writer_Parser extends PEAR
     function _term()
     {
         $result = $this->_fact();
-        if ( PEAR::isError( $result ) ) {
+        if (PEAR::isError($result)) {
             return $result;
         }
-        while ( ( $this->_current_token == SPREADSHEET_EXCEL_WRITER_MUL ) or
-               ( $this->_current_token == SPREADSHEET_EXCEL_WRITER_DIV ) ) {
+        while (($this->_current_token == SPREADSHEET_EXCEL_WRITER_MUL) or
+               ($this->_current_token == SPREADSHEET_EXCEL_WRITER_DIV)) {
         /**/
-            if ( $this->_current_token == SPREADSHEET_EXCEL_WRITER_MUL ) {
+            if ($this->_current_token == SPREADSHEET_EXCEL_WRITER_MUL) {
                 $this->_advance();
                 $result2 = $this->_fact();
-                if ( PEAR::isError( $result2 ) ) {
+                if (PEAR::isError($result2)) {
                     return $result2;
                 }
-                $result = $this->_createTree( 'ptgMul', $result, $result2 );
+                $result = $this->_createTree('ptgMul', $result, $result2);
             } else {
                 $this->_advance();
                 $result2 = $this->_fact();
-                if ( PEAR::isError( $result2 ) ) {
+                if (PEAR::isError($result2)) {
                     return $result2;
                 }
-                $result = $this->_createTree( 'ptgDiv', $result, $result2 );
+                $result = $this->_createTree('ptgDiv', $result, $result2);
             }
         }
         return $result;
@@ -1476,73 +1476,73 @@ class Spreadsheet_Excel_Writer_Parser extends PEAR
     */
     function _fact()
     {
-        if ( $this->_current_token == SPREADSHEET_EXCEL_WRITER_OPEN ) {
+        if ($this->_current_token == SPREADSHEET_EXCEL_WRITER_OPEN) {
             $this->_advance();         // eat the "("
             $result = $this->_parenthesizedExpression();
-            if ( $this->_current_token != SPREADSHEET_EXCEL_WRITER_CLOSE ) {
-                return $this->raiseError( "')' token expected." );
+            if ($this->_current_token != SPREADSHEET_EXCEL_WRITER_CLOSE) {
+                return $this->raiseError("')' token expected.");
             }
             $this->_advance();         // eat the ")"
             return $result;
         }
         // if it's a reference
-        if ( preg_match( '/^\$?[A-Ia-i]?[A-Za-z]\$?[0-9]+$/', $this->_current_token ) )
+        if (preg_match('/^\$?[A-Ia-i]?[A-Za-z]\$?[0-9]+$/',$this->_current_token))
         {
-            $result = $this->_createTree( $this->_current_token, '', '' );
+            $result = $this->_createTree($this->_current_token, '', '');
             $this->_advance();
             return $result;
         }
         // If it's an external reference (Sheet1!A1 or Sheet1:Sheet2!A1)
-        elseif ( preg_match( "/^\w+(\:\w+)?\![A-Ia-i]?[A-Za-z][0-9]+$/u", $this->_current_token ) )
+        elseif (preg_match("/^\w+(\:\w+)?\![A-Ia-i]?[A-Za-z][0-9]+$/u",$this->_current_token))
         {
-            $result = $this->_createTree( $this->_current_token, '', '' );
+            $result = $this->_createTree($this->_current_token, '', '');
             $this->_advance();
             return $result;
         }
         // If it's an external reference ('Sheet1'!A1 or 'Sheet1:Sheet2'!A1)
-        elseif ( preg_match( "/^'[\w -]+(\:[\w -]+)?'\![A-Ia-i]?[A-Za-z][0-9]+$/u", $this->_current_token ) )
+        elseif (preg_match("/^'[\w -]+(\:[\w -]+)?'\![A-Ia-i]?[A-Za-z][0-9]+$/u",$this->_current_token))
         {
-            $result = $this->_createTree( $this->_current_token, '', '' );
+            $result = $this->_createTree($this->_current_token, '', '');
             $this->_advance();
             return $result;
         }
         // if it's a range
-        elseif ( preg_match( "/^(\$)?[A-Ia-i]?[A-Za-z](\$)?[0-9]+:(\$)?[A-Ia-i]?[A-Za-z](\$)?[0-9]+$/", $this->_current_token ) or
-                preg_match( "/^(\$)?[A-Ia-i]?[A-Za-z](\$)?[0-9]+\.\.(\$)?[A-Ia-i]?[A-Za-z](\$)?[0-9]+$/", $this->_current_token ) )
+        elseif (preg_match("/^(\$)?[A-Ia-i]?[A-Za-z](\$)?[0-9]+:(\$)?[A-Ia-i]?[A-Za-z](\$)?[0-9]+$/",$this->_current_token) or 
+                preg_match("/^(\$)?[A-Ia-i]?[A-Za-z](\$)?[0-9]+\.\.(\$)?[A-Ia-i]?[A-Za-z](\$)?[0-9]+$/",$this->_current_token))
         {
             $result = $this->_current_token;
             $this->_advance();
             return $result;
         }
         // If it's an external range (Sheet1!A1 or Sheet1!A1:B2)
-        elseif ( preg_match( "/^\w+(\:\w+)?\!([A-Ia-i]?[A-Za-z])?[0-9]+:([A-Ia-i]?[A-Za-z])?[0-9]+$/u", $this->_current_token ) )
+        elseif (preg_match("/^\w+(\:\w+)?\!([A-Ia-i]?[A-Za-z])?[0-9]+:([A-Ia-i]?[A-Za-z])?[0-9]+$/u",$this->_current_token))
         {
             $result = $this->_current_token;
             $this->_advance();
             return $result;
         }
         // If it's an external range ('Sheet1'!A1 or 'Sheet1'!A1:B2)
-        elseif ( preg_match( "/^'[\w -]+(\:[\w -]+)?'\!([A-Ia-i]?[A-Za-z])?[0-9]+:([A-Ia-i]?[A-Za-z])?[0-9]+$/u", $this->_current_token ) )
+        elseif (preg_match("/^'[\w -]+(\:[\w -]+)?'\!([A-Ia-i]?[A-Za-z])?[0-9]+:([A-Ia-i]?[A-Za-z])?[0-9]+$/u",$this->_current_token))
         {
             $result = $this->_current_token;
             $this->_advance();
             return $result;
         }
-        elseif ( is_numeric( $this->_current_token ) )
+        elseif (is_numeric($this->_current_token))
         {
-            $result = $this->_createTree( $this->_current_token, '', '' );
+            $result = $this->_createTree($this->_current_token, '', '');
             $this->_advance();
             return $result;
         }
         // if it's a function call
-        elseif ( preg_match( "/^[A-Z0-9\xc0-\xdc\.]+$/i", $this->_current_token ) )
+        elseif (preg_match("/^[A-Z0-9\xc0-\xdc\.]+$/i",$this->_current_token))
         {
             $result = $this->_func();
             return $result;
         }
-        return $this->raiseError( "Syntax error: " . $this->_current_token .
-                                 ", lookahead: " . $this->_lookahead .
-                                 ", current char: " . $this->_current_char );
+        return $this->raiseError("Syntax error: ".$this->_current_token.
+                                 ", lookahead: ".$this->_lookahead.
+                                 ", current char: ".$this->_current_char);
     }
 
     /**
@@ -1555,45 +1555,45 @@ class Spreadsheet_Excel_Writer_Parser extends PEAR
     function _func()
     {
         $num_args = 0; // number of arguments received
-        $function = strtoupper( $this->_current_token );
+        $function = strtoupper($this->_current_token);
         $result   = ''; // initialize result
         $this->_advance();
         $this->_advance();         // eat the "("
-        while ( $this->_current_token != ')' ) {
+        while ($this->_current_token != ')') {
         /**/
-            if ( $num_args > 0 ) {
-                if ( $this->_current_token == SPREADSHEET_EXCEL_WRITER_COMA or
-                    $this->_current_token == SPREADSHEET_EXCEL_WRITER_SEMICOLON )
+            if ($num_args > 0) {
+                if ($this->_current_token == SPREADSHEET_EXCEL_WRITER_COMA or
+                    $this->_current_token == SPREADSHEET_EXCEL_WRITER_SEMICOLON)
                 {
                     $this->_advance();  // eat the "," or ";"
                 } else {
-                    return $this->raiseError( "Syntax error: comma expected in " .
-                                      "function $function, arg #{$num_args}" );
+                    return $this->raiseError("Syntax error: comma expected in ".
+                                      "function $function, arg #{$num_args}");
                 }
                 $result2 = $this->_condition();
-                if ( PEAR::isError( $result2 ) ) {
+                if (PEAR::isError($result2)) {
                     return $result2;
                 }
-                $result = $this->_createTree( 'arg', $result, $result2 );
+                $result = $this->_createTree('arg', $result, $result2);
             } else { // first argument
                 $result2 = $this->_condition();
-                if ( PEAR::isError( $result2 ) ) {
+                if (PEAR::isError($result2)) {
                     return $result2;
                 }
-                $result = $this->_createTree( 'arg', '', $result2 );
+                $result = $this->_createTree('arg', '', $result2);
             }
             $num_args++;
         }
-        if ( !isset( $this->_functions[$function] ) ) {
-            return $this->raiseError( "Function $function() doesn't exist" );
+        if (!isset($this->_functions[$function])) {
+            return $this->raiseError("Function $function() doesn't exist");
         }
         $args = $this->_functions[$function][1];
         // If fixed number of args eg. TIME($i,$j,$k). Check that the number of args is valid.
-        if ( ( $args >= 0 ) and ( $args != $num_args ) ) {
-            return $this->raiseError( "Incorrect number of arguments in function $function() " );
+        if (($args >= 0) and ($args != $num_args)) {
+            return $this->raiseError("Incorrect number of arguments in function $function() ");
         }
 
-        $result = $this->_createTree( $function, $result, $num_args );
+        $result = $this->_createTree($function, $result, $num_args);
         $this->_advance();         // eat the ")"
         return $result;
     }
@@ -1608,9 +1608,9 @@ class Spreadsheet_Excel_Writer_Parser extends PEAR
     * @param mixed $right The right array (sub-tree) or a final node.
     * @return array A tree
     */
-    function _createTree( $value, $left, $right )
+    function _createTree($value, $left, $right)
     {
-        return array( 'value' => $value, 'left' => $left, 'right' => $right );
+        return array('value' => $value, 'left' => $left, 'right' => $right);
     }
 
     /**
@@ -1640,59 +1640,59 @@ class Spreadsheet_Excel_Writer_Parser extends PEAR
     * @param array $tree The optional tree to convert.
     * @return string The tree in reverse polish notation
     */
-    function toReversePolish( $tree = array() )
+    function toReversePolish($tree = array())
     {
         $polish = ""; // the string we are going to return
-        if ( empty( $tree ) ) { // If it's the first call use _parse_tree
+        if (empty($tree)) { // If it's the first call use _parse_tree
             $tree = $this->_parse_tree;
         }
-        if ( is_array( $tree['left'] ) ) {
-            $converted_tree = $this->toReversePolish( $tree['left'] );
-            if ( PEAR::isError( $converted_tree ) ) {
+        if (is_array($tree['left'])) {
+            $converted_tree = $this->toReversePolish($tree['left']);
+            if (PEAR::isError($converted_tree)) {
                 return $converted_tree;
             }
             $polish .= $converted_tree;
-        } elseif ( $tree['left'] != '' ) { // It's a final node
-            $converted_tree = $this->_convert( $tree['left'] );
-            if ( PEAR::isError( $converted_tree ) ) {
+        } elseif ($tree['left'] != '') { // It's a final node
+            $converted_tree = $this->_convert($tree['left']);
+            if (PEAR::isError($converted_tree)) {
                 return $converted_tree;
             }
             $polish .= $converted_tree;
         }
-        if ( is_array( $tree['right'] ) ) {
-            $converted_tree = $this->toReversePolish( $tree['right'] );
-            if ( PEAR::isError( $converted_tree ) ) {
+        if (is_array($tree['right'])) {
+            $converted_tree = $this->toReversePolish($tree['right']);
+            if (PEAR::isError($converted_tree)) {
                 return $converted_tree;
             }
             $polish .= $converted_tree;
-        } elseif ( $tree['right'] != '' ) { // It's a final node
-            $converted_tree = $this->_convert( $tree['right'] );
-            if ( PEAR::isError( $converted_tree ) ) {
+        } elseif ($tree['right'] != '') { // It's a final node
+            $converted_tree = $this->_convert($tree['right']);
+            if (PEAR::isError($converted_tree)) {
                 return $converted_tree;
             }
             $polish .= $converted_tree;
         }
         // if it's a function convert it here (so we can set it's arguments)
-        if ( preg_match( "/^[A-Z0-9\xc0-\xdc\.]+$/", $tree['value'] ) and
-            !preg_match( '/^([A-Ia-i]?[A-Za-z])(\d+)$/', $tree['value'] ) and
-            !preg_match( "/^[A-Ia-i]?[A-Za-z](\d+)\.\.[A-Ia-i]?[A-Za-z](\d+)$/", $tree['value'] ) and
-            !is_numeric( $tree['value'] ) and
-            !isset( $this->ptg[$tree['value']] ) )
+        if (preg_match("/^[A-Z0-9\xc0-\xdc\.]+$/",$tree['value']) and
+            !preg_match('/^([A-Ia-i]?[A-Za-z])(\d+)$/',$tree['value']) and
+            !preg_match("/^[A-Ia-i]?[A-Za-z](\d+)\.\.[A-Ia-i]?[A-Za-z](\d+)$/",$tree['value']) and
+            !is_numeric($tree['value']) and
+            !isset($this->ptg[$tree['value']]))
         {
             // left subtree for a function is always an array.
-            if ( $tree['left'] != '' ) {
-                $left_tree = $this->toReversePolish( $tree['left'] );
+            if ($tree['left'] != '') {
+                $left_tree = $this->toReversePolish($tree['left']);
             } else {
                 $left_tree = '';
             }
-            if ( PEAR::isError( $left_tree ) ) {
+            if (PEAR::isError($left_tree)) {
                 return $left_tree;
             }
             // add it's left subtree and return.
-            return $left_tree . $this->_convertFunction( $tree['value'], $tree['right'] );
+            return $left_tree.$this->_convertFunction($tree['value'], $tree['right']);
         } else {
-            $converted_tree = $this->_convert( $tree['value'] );
-            if ( PEAR::isError( $converted_tree ) ) {
+            $converted_tree = $this->_convert($tree['value']);
+            if (PEAR::isError($converted_tree)) {
                 return $converted_tree;
             }
         }

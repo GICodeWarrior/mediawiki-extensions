@@ -135,6 +135,27 @@ class qp_Setup {
 	static $messagesLoaded = false; // check whether the extension's localized messages are loaded
 	static $article; // Article instance we got from hook parameter
 	static $user; // User instance we got from hook parameter
+
+	static $questionTypes = array(
+		'mixed' => array(
+			'className' => 'qp_MixedQuestion',
+			'mType' => 'mixedChoice'
+		),
+		'unique()' => array(
+			'className' => 'qp_TabularQuestion',
+			'mType' => 'singleChoice',
+			'mSubType' => 'unique'
+		),
+		'()' => array(
+			'className' => 'qp_TabularQuestion',
+			'mType' => 'singleChoice'
+		),
+		'[]' => array(
+			'className' => 'qp_TabularQuestion',
+			'mType' => 'multipleChoice'
+		)
+	);
+
 	# interpretation script namespaces with their canonical names
 	static $interpNamespaces = array(
 		NS_QP_INTERPRETATION => 'Interpretation',
@@ -252,7 +273,9 @@ class qp_Setup {
 			'ctrl/qp_pollstats.php' => 'qp_PollStats',
 			# questions
 			'ctrl/qp_abstractquestion.php' => 'qp_AbstractQuestion',
-			'ctrl/qp_question.php' => 'qp_Question',
+			'ctrl/qp_stubquestion.php' => 'qp_StubQuestion',
+			'ctrl/qp_tabularquestion.php' => 'qp_TabularQuestion',
+			'ctrl/qp_mixedquestion.php' => 'qp_MixedQuestion',
 			'ctrl/qp_questionstats.php' => 'qp_QuestionStats',
 
 			## views are derived from single generic class
@@ -436,7 +459,7 @@ class qp_Setup {
 		} elseif ( self::$global_showresults > 2 ) {
 			self::$global_showresults = 2;
 		}
-		if ( isset( $_COOKIE[$wgCookiePrefix . 'QPoll'] ) ) {
+		if ( isset( $_COOKIE["{$wgCookiePrefix}QPoll"] ) ) {
 			$request->response()->setCookie( 'QPoll', '', time() - 86400 ); // clear cookie
 			self::clearCache();
 		} elseif ( $request->getVal( 'pollId' ) !== null ) {

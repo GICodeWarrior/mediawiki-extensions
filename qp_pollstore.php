@@ -132,7 +132,7 @@ class qp_InterpResult {
 		if ( is_array( $init ) ) {
 			foreach ( $props as $prop ) {
 				if ( array_key_exists( $prop, $init ) ) {
-					$this-> { $prop } = $init[$prop];
+					$this->{ $prop } = $init[$prop];
 				}
 			}
 			return;
@@ -800,7 +800,7 @@ class qp_PollStore {
 		if ( $this->username === $username ) {
 			return;
 		}
-		$res = self::$db->select( 'qp_users', 'uid', 'name=' . self::$db->addQuotes( $username ), __METHOD__ );
+		$res = self::$db->select( 'qp_users', 'uid', array( 'name' => $username ), __METHOD__ );
 		$row = self::$db->fetchObject( $res );
 		if ( $row === false ) {
 			if ( $store_new_user_to_db ) {
@@ -902,14 +902,14 @@ class qp_PollStore {
 				$this->dependsOn != $row->dependance ||
 				$this->interpNS != $row->interpretation_namespace ||
 				$this->interpDBkey != $row->interpretation_title ||
-				( $rqcChanged = $this->randomQuestionCount != $row->random_question_count ) ) {
+				$this->randomQuestionCount != $row->random_question_count ) {
 			$res = self::$db->replace( 'qp_poll_desc',
 				array( 'poll', 'article_poll' ),
 				array( 'pid' => $this->pid, 'article_id' => $this->mArticleId, 'poll_id' => $this->mPollId, 'order_id' => $this->mOrderId, 'dependance' => $this->dependsOn, 'interpretation_namespace' => $this->interpNS, 'interpretation_title' => $this->interpDBkey, 'random_question_count' => $this->randomQuestionCount ),
 				__METHOD__ . ':poll attributes update'
 			);
 		}
-		if ( $rqcChanged &&
+		if ( $this->randomQuestionCount != $row->random_question_count &&
 				$this->randomQuestionCount == 0 &&
 				self::$purgeRandomQuestions ) {
 			# the poll questions are not randomized anymore
