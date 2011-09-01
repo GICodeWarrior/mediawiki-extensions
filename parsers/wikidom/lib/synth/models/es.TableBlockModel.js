@@ -28,7 +28,7 @@ es.TableBlockModel.newFromPlainObject = function( obj ) {
 		// Cells - if given, convert plain "item" objects to es.ListModelItem objects
 		!$.isArray( obj.rows ) ? [] : $.map( obj.rows, function( row ) {
 			return !$.isPlainObject( row ) ? null : es.TableBlockRowModel.newFromPlainObject( row )
-		} )
+		} ),
 		// Attributes - if given, make a deep copy of attributes
 		!$.isPlainObject( obj.attributes ) ? {} : $.extend( true, {}, obj.attributes )
 	);
@@ -60,7 +60,7 @@ es.TableBlockModel.prototype.getPlainObject = function() {
 		} );
 	}
 	if ( !$.isEmptyObject( this.attributes ) ) {
-		obj.attributes = $.extend( true, {}. this.attributes );
+		obj.attributes = $.extend( true, {}, this.attributes );
 	}
 	return obj;
 };

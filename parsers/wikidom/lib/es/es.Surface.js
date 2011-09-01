@@ -83,7 +83,7 @@ es.Surface = function( $container, doc ) {
 					},
 					'keyup.editSurface' : function( e ) {
 						return surface.onKeyUp( e );			
-					},
+					}
 				});
 			},
 			'blur': function( e ) {
@@ -121,12 +121,12 @@ es.Surface = function( $container, doc ) {
 }
 
 es.Surface.prototype.getLocationFromEvent = function( e ) {
-	var $target = $( e.target );
+	var $target = $( e.target ),
 		$block = $target.is( '.editSurface-block' )
 			? $target : $target.closest( '.editSurface-block' );
 	// Not a block or child of a block? Find the nearest block...
 	if( !$block.length ) {
-		$blocks = this.$.find( '> .editSurface-document .editSurface-block' );
+		var $blocks = this.$.find( '> .editSurface-document .editSurface-block' );
 		$block = $blocks.first();
 		$blocks.each( function() {
 			// Stop looking when mouse is above top

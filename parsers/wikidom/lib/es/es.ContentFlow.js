@@ -415,8 +415,8 @@ es.ContentFlow.prototype.render = function( offset ) {
  */
 es.ContentFlow.prototype.appendLine = function( range, wordOffset, fractional ) {
 	var rs = this.renderState,
-		lineCount = rs.lines.length;
-	$line = this.$.children( '[line-index=' + lineCount + ']' );
+		lineCount = rs.lines.length,
+		$line = this.$.children( '[line-index=' + lineCount + ']' );
 	if ( !$line.length ) {
 		$line = $( '<div class="editSurface-line" line-index="' + lineCount + '"></div>' );
 		this.$.append( $line );
@@ -468,6 +468,7 @@ es.ContentFlow.prototype.fitWords = function( range, ruler, width ) {
 		end = range.end,
 		charOffset = this.boundaries[offset],
 		middle,
+		charMiddle,
 		lineWidth,
 		cacheKey;
 	do {

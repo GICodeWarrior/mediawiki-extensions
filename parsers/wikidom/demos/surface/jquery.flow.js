@@ -61,15 +61,15 @@ function copy( from, to ) {
 }
 
 $.flow = {
-	'charCache': {},
+	'characterCache': {},
 	'wordCache': {},
 	'measureWord': function( text, ruler ) {
 		if ( typeof $.flow.wordCache[text] === 'undefined' ) {
 			// Cache miss
 			var word = { 'text': text, 'html': '', 'metrics': [] };
 			for ( var i = 0; i < text.length; i++ ) {
-				var char = text[i],
-					charHtml = char
+				var character = text[i],
+					characterHtml = character
 						.replace( '&', '&amp;' )
 						.replace( ' ', '&nbsp;' )
 						.replace( '<', '&lt;' )
@@ -78,15 +78,15 @@ $.flow = {
 						.replace( '"', '&quot;' )
 						.replace( '\n', '<span class="editSurface-whitespace">\\n</span>' )
 						.replace( '\t', '<span class="editSurface-whitespace">\\t</span>' );
-				word.html += charHtml;
-				if ( typeof $.flow.charCache[char] === 'undefined' ) {
+				word.html += characterHtml;
+				if ( typeof $.flow.characterCache[character] === 'undefined' ) {
 					// Cache miss
-					ruler.innerHTML = charHtml;
-					word.metrics.push( $.flow.charCache[char] = ruler.clientWidth );
+					ruler.innerHTML = characterHtml;
+					word.metrics.push( $.flow.characterCache[character] = ruler.clientWidth );
 					continue;
 				}
 				// Cache hit
-				word.metrics.push( $.flow.charCache[char] );
+				word.metrics.push( $.flow.characterCache[character] );
 			}
 			ruler.innerHTML = word.html;
 			word.width = ruler.clientWidth;
@@ -116,7 +116,7 @@ $.flow = {
 	'getLines': function( words, width ) {
 		// Lineify
 		var lineCount = 0,
-			charCount = 0,
+			characterCount = 0,
 			wordCount = 0,
 			lines = [],
 			line = {
@@ -130,7 +130,7 @@ $.flow = {
 		for ( var i = 0; i < words.length; i++ ) {
 			if ( line.width + words[i].width > width ) {
 				lines.push( line );
-				charCount = 0;
+				characterCount = 0;
 				wordCount = 0;
 				lineCount++;
 				line = {
@@ -144,8 +144,8 @@ $.flow = {
 			}
 			words[i].index = wordCount;
 			wordCount++;
-			words[i].offset = charCount;
-			charCount += words[i].text.length;
+			words[i].offset = characterCount;
+			characterCount += words[i].text.length;
 			line.words.push( words[i] );
 			line.text += words[i].text;
 			line.html += words[i].html;

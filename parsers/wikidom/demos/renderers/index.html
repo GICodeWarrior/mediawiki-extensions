@@ -47,7 +47,7 @@
 	</head>
 	<body>
 		<p>
-		This page use <a href="document.js">a JSON representation of wikitext</a> as input to two renderers: wikitext and HTML. The JSON source is appended at the end of the document for reference.</p>
+		This page use <a href="document.json">a JSON representation of wikitext</a> as input to two renderers: wikitext and HTML. The JSON source is appended at the end of the document for reference.</p>
 		<h2>HTML Rendering</h2>
 		<div id="html-rendering" class="render"></div>
 		<h2>HTML Source</h2>
@@ -60,6 +60,7 @@
 		<script src="../../lib/es/es.js"></script>
 		<script src="../../lib/es/es.EventEmitter.js"></script>
 		<script src="../../lib/es/es.Container.js"></script>
+		<script src="../../lib/es/es.DomContainer.js"></script>
 		<script src="../../lib/es/es.AnnotationSerializer.js"></script>
 		<script src="../../lib/es/es.Document.js"></script>
 		<script src="../../lib/es/es.Document.Context.js"></script>
@@ -69,7 +70,7 @@
 		<script src="../../lib/es/es.Document.JsonSerializer.js"></script>
 		<script>
 			$( document ).ready( function() {
-				$.getJSON( 'document.js', function( data ) {
+				$.getJSON( 'document.json', function( data ) {
 					var context = new es.Document.Context(),
 						htmlSerializer = new es.Document.HtmlSerializer( context ),
 						wikitextSerializer = new es.Document.WikitextSerializer( context ),

@@ -54,7 +54,7 @@ test( 'Horizontal rules', function() {
 		{
 			'subject': 'horizontal rule',
 			'dom': { 'blocks': [ {
-				'type': 'horizontal-rule',
+				'type': 'horizontal-rule'
 			} ] },
 			'html': '<hr />',
 			'wikitext': '----'

@@ -213,11 +213,11 @@ es.Content.prototype.hasFloatingObjects = function( range ) {
 	for ( var i = 0; i < this.data.length; i++ ) {
 		if ( this.data[i].length > 1 ) {
 			for ( var j = 1; j < this.data[i].length; j++ ) {
-				var float = es.Content.annotationRenderers[this.data[i][j].type].float;
-				if ( float && typeof float === 'function' ) {
-					float = float( this.data[i][j].data );
+				var isFloating = es.Content.annotationRenderers[this.data[i][j].type].float;
+				if ( isFloating && typeof isFloating === 'function' ) {
+					isFloating = isFloating( this.data[i][j].data );
 				}
-				if ( float ) {
+				if ( isFloating ) {
 					return true;
 				}
 			}
@@ -239,18 +239,18 @@ es.Content.prototype.getWordBoundaries = function( offset ) {
 	}
 	var start = offset,
 		end = offset,
-		char;
+		character;
 	while ( start > 0 ) {
 		start--;
-		char = ( typeof this.data[start] === 'string' ? this.data[start] : this.data[start][0] );
-		if ( char.match( /\B/ ) ) {
+		character = ( typeof this.data[start] === 'string' ? this.data[start] : this.data[start][0] );
+		if ( character.match( /\B/ ) ) {
 			start++;
 			break;
 		}
 	}
 	while ( end < this.data.length ) {
-		char = ( typeof this.data[end] === 'string' ? this.data[end] : this.data[end][0] );
-		if ( char.match( /\B/ ) ) {
+		character = ( typeof this.data[end] === 'string' ? this.data[end] : this.data[end][0] );
+		if ( character.match( /\B/ ) ) {
 			break;
 		}
 		end++;

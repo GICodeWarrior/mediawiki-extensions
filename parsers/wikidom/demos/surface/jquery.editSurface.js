@@ -1,6 +1,6 @@
 $.fn.editSurface = function( options ) {
 	var $this = $(this);
-	sel = {
+	var sel = {
 		'active': false
 	};
 	

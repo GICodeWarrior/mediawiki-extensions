@@ -45,7 +45,7 @@ es.ContentSeries.prototype.offsetOf = function( item ) {
 
 es.ContentSeries.prototype.size = function() {
 	var sum = 0;
-	for ( var i = 0, length = this.length; i++ ) {
+	for ( var i = 0, length = this.length; i < length; i++ ) {
 		sum += this[i].getLength();
 	}
 	return sum;

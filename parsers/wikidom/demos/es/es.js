@@ -1,6 +1,6 @@
 $(document).ready( function() {
 	var showData = false;
-	doc = es.Document.newFromWikiDomDocument( { 'blocks': [
+	var doc = es.Document.newFromWikiDomDocument( { 'blocks': [
 		{
 			"type": "paragraph",
 			"lines": [

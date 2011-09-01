@@ -30,7 +30,7 @@ es.DocumentModel.newFromPlainObject = function( obj ) {
 		// Blocks - if given, convert all plain "block" objects to es.WikiDom* objects
 		!$.isArray( obj.blocks ) ? [] : $.map( obj.blocks, function( block ) {
 			return es.BlockModel.newFromPlainObject( block );
-		},
+		} ),
 		// Attributes - if given, make a deep copy of attributes
 		!$.isPlainObject( obj.attributes ) ? {} : $.extend( true, {}, obj.attributes )
 	);
