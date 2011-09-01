@@ -4,7 +4,7 @@
 // @require	   https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js
 // @require        http://svn.wikimedia.org/svnroot/mediawiki/trunk/tools/viaf/jquery.cookie.js
 // @require        http://svn.wikimedia.org/svnroot/mediawiki/trunk/tools/viaf/jquery.ba-replacetext.js
-// @description    locate VIAF numbers in texts and urls on web pages. (c) T.Gries Version 0.204 201109010840
+// @description    locate VIAF numbers in texts and urls on web pages. (c) T.Gries Version 0.205 201109012100
 // @include        *
 // ==/UserScript==
 
@@ -45,7 +45,7 @@ var markUrlDetectedItemsCSS = { "borderBottom" : "1px orangered dotted" };
 var maxVIAFNumbers = 30;
 
 // Script update checker source: http://a32.me/2009/11/greasemonkey/
-var VERSION = "0.204";
+var VERSION = "0.205";
 var SCRIPT_NAME = "viaf"
 var SCRIPT_URL = "http://$$$yourhost$$$/"+SCRIPT_NAME+".user.js"
 
@@ -123,7 +123,7 @@ $("a").each(function(){
 	if ( typeof url != "undefined" && url.match( magicUrlRegExp ) ) {
 	        if ( markUrlDetectedItems ) $this.css( markUrlDetectedItemsCSS );
 	        var viaf = RegExp.$1.replace( /[\D]*/g, '' );
-		$this.after( $("<span class='viaf viaf-in-url' viaf='"+viaf+"'>&nbsp;"+viaf+"</span>") );
+		$this.parent().after( $("<span class='viaf viaf-in-url' viaf='"+viaf+"'>&nbsp;"+viaf+"</span>") );
 	}
 
 })
@@ -145,9 +145,6 @@ $(".viaf").each(function(){
 	newLink.unshift( $( "<span> </span><a href='http://toolserver.org/%7Eapper/pd/person/viaf/"+viaf+"'><span class='addedlink viaf' viaf='"+viaf+"'>TS</span></a><span> </span>" ) );
 	newLink.unshift( $( "<span> </span><a href='http://www.google.com/search?num=100&q=viaf+"+viaf+"'><span class='addedlink viaf' viaf='"+viaf+"'>G</span></a><span> </span>" ) );
 	// newLink.unshift( $( "<span> </span><label class='show-summary'><input type='checkbox' class='show-summary-checkbox' checked='checked'><span id='show-summary-text'></span></label><span> </span>" ) );
-
-	// add a space as the last character after the last added links
-        newLink.unshift( $("<span> </span>") );
 
     	for ( i in newLink ) {
         	$this.after( newLink[i] )
