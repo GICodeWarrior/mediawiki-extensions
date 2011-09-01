@@ -25,11 +25,12 @@ $messages['af'] = array(
 /** Arabic (العربية)
  * @author ;Hiba;1
  * @author AwamerT
+ * @author Meno25
  */
 $messages['ar'] = array(
-	'activestrategy' => 'استراتيجية نشطة',
+	'activestrategy' => 'إستراتيجية نشطة',
 	'active-strategy-desc' => 'يوضح عدد التعديلات على صفحات التخطيط الاستراتيجي',
-	'active-strategy-intro' => ' عدد من التعديلات لصفحات المهام في السابق',
+	'active-strategy-intro' => 'عدد التعديلات لصفحات قوة المهام في آخر {{PLURAL:$1|$1 يوم|$1 يوم}}.',
 	'nedits' => '$1 {{PLURAL:$1|تعديل|تعديلات}}',
 );
 
