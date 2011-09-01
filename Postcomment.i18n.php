@@ -16,8 +16,8 @@ $messages['en'] = array(
 	'postcomment_addcommentdiscussionpage' => 'Add your comment on this discussion page',
 	'postcomment_leavemessagefor'          => 'Leave a message for $1',
 	'postcomment_post'                     => 'Post',
-	'postcomment_on'                       => 'On',
-	'postcomment_said'                     => 'said',
+	'postcomment_on'                       => 'On $1',
+	'postcomment-userwrote'                 => '[[User:$1|$2]] wrote:',
 	'postcomment_invalidrequest'           => 'Invalid request.',
 	'postcomment_replyto'                  => 'Reply to $1',
 	'postcomment_nopostingtoadd'           => 'No posting to add.',
@@ -34,8 +34,11 @@ $messages['qqq'] = array(
 	'postcomment_addcommentdiscussionpage' => 'Message displayed before comment form. For example see http://www.wikihow.com/Discussion:Main-Page',
 	'postcomment_leavemessagefor' => 'Message displayed before comment form in user talks.',
 	'postcomment_post' => 'Name of button. For example see http://www.wikihow.com/Discussion:Main-Page',
-	'postcomment_on' => '"On" as in "On <date>". For example see http://www.wikihow.com/Discussion:Main-Page',
-	'postcomment_said' => '<Username> said. For example see http://www.wikihow.com/Discussion:Main-Page',
+	'postcomment_on' => 'For example see http://www.wikihow.com/Discussion:Main-Page. Parameters:
+* $1 is a timestamp.',
+	'postcomment-usersaid' => 'This message supports GENDER. Parameters:
+* $1 is a user name
+* $2 is a user real name.',
 	'postcomment_replyto' => '$1 is the user that has posted previous comment. For example see http://www.wikihow.com/Discussion:Main-Page',
 );
 
