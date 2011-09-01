@@ -1134,14 +1134,20 @@ $messages['lb'] = array(
 
 /** Lithuanian (Lietuvių)
  * @author Eitvys200
+ * @author Ignas693
  * @author Perkunas
  */
 $messages['lt'] = array(
 	'mwe-clipedit-crop' => 'Apkarpyti paveiklėlį',
 	'mwe-clipedit-apply_crop' => 'Taikyti apkarpyma paveikslėliui',
+	'mwe-clipedit-reset_crop' => 'Iš naujo nustatyti pasėlių',
 	'mwe-clipedit-insert_image_page' => 'Įterpti į puslapį',
+	'mwe-clipedit-insert_into_sequence' => 'Įterpti į seka',
 	'mwe-clipedit-preview_insert' => 'Peržiūrėti įterpimą',
 	'mwe-clipedit-cancel_image_insert' => 'Nutraukti įterpimą',
+	'mwe-clipedit-sc_attributes' => 'Klipas išsamiai redaguoti',
+	'mwe-clipedit-sc_inoutpoints' => 'Nustatyti į iš taškų',
+	'mwe-clipedit-sc_overlays' => 'Papildomi sluoksniai',
 	'mwe-clipedit-sc_audio' => 'Garso kontrolė',
 	'mwe-clipedit-sc_duration' => 'Trukmė',
 	'mwe-clipedit-template_properties' => 'Šablono savybės',
@@ -1149,10 +1155,14 @@ $messages['lt'] = array(
 	'mwe-clipedit-edit_properties' => 'Redaguoti nustatymus',
 	'mwe-clipedit-other_properties' => 'Kiti nustatymai',
 	'mwe-clipedit-resource_page' => 'Išteklių puslapis:',
+	'mwe-clipedit-set_in_out_points' => 'Nustatyti į iš taškų',
 	'mwe-clipedit-start_time' => 'Pradžios laikas',
 	'mwe-clipedit-end_time' => 'Pabaigos laikas',
+	'mwe-clipedit-preview_inout' => 'Peržiūrėti į iš taškų',
 	'mwe-clipedit-edit-tools' => 'Redagavimo įrankiai',
+	'mwe-clipedit-inline-description' => 'Antraštės',
 	'mwe-clipedit-edit-video-tools' => 'Redaguoti vaizdo įrankius:',
+	'mwe-clipedit-duration' => 'Trukmė',
 	'mwe-clipedit-layout' => 'Išdėstymas',
 	'mwe-clipedit-layout_right' => 'Vaizdas dešinėje',
 	'mwe-clipedit-layout_left' => 'Vaizdas kairėje',
