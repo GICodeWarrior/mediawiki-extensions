@@ -1,11 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-#include "scanner.h"
-#include "parser.h"
-#include "stack.h"
+#include "wsparse.h"
 
-#define BUFFERSIZE 1024
+#define BUFFERSIZE 4 * 1024 * 1024
 
 void printNodesRec( ws_parser_tree* tree, ws_parser_node_id id, int rec ) {
 	int i;
@@ -30,23 +29,47 @@ void printNodesRec( ws_parser_tree* tree, ws_parser_node_id id, int rec ) {
 }
 
 int main( int argc, char** argv ) {
-	long i, j;
+	long long i, count;
 	char* line = malloc( BUFFERSIZE );
 
-	fgets( line, BUFFERSIZE, stdin );
+	if( argc > 1 ) {
+		if( !strcmp( argv[1], "--help" ) ) {
+			printf( "Parses the script input at STDIN\n" );
+			printf( "Usage:\n" );
+			printf( "\twsparsertest [runs]\n" );
+			printf( "If number of runs is more than one, no parser tree is output.\n" );
+			return EXIT_SUCCESS;
+		}
+		if( !strcmp( argv[1], "--version" ) ) {
+			printf( "libwsparser %i.%i (%s)\n", WS_PARSER_VERSION_MAJOR, WS_PARSER_VERSION_MINOR, WS_PARSER_VERSION );
+			return EXIT_SUCCESS;
+		}
+		count = atoll( argv[1] );
+	} else {
+		count = 1;
+	}
 
-	//for( i = 0; i < 1000000; i++ ) {
+	FILE* file = stdin;
+
+	i = 0;
+	while( ( line[i] = fgetc( file ) ) != EOF && i < BUFFERSIZE )
+		i++;
+	line[i] = '\0';
+
+	for( i = 0; i < count; i++ ) {
 		ws_parser_output out;
 		ws_parser_tree* tree;
 		out = ws_parse( line );
 		if( out.errno ) {
-			printf( "Error: %i %i\n", out.errno, out.errarg );
+			printf( "Error, errno: %i, err arg: %i, err line: %i\n", out.errno, out.errarg, out.errline );
 			return EXIT_FAILURE;
 		}
 		tree = out.tree;
-		printNodesRec( tree, tree->root, 0 );
+
+		if( count < 2 )
+			printNodesRec( tree, tree->root, 0 );
 		ws_parser_tree_free( tree );
-	//}
+	}
 
 	free( line );
 

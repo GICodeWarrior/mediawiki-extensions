@@ -9,9 +9,6 @@
 #ifndef _WS_STACK_H
 #define _WS_STACK_H
 
-#define WS_STACK_SIZE_INIT 20
-#define WS_STACK_SIZE_STEP 2
-
 /**
  * The entry of the parser stack. Contains the state and the node bound to that state.
  */

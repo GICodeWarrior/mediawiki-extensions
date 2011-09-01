@@ -1,4 +1,6 @@
 #include <stdlib.h>
+#include <string.h>
+#include <memory.h>
 #include "parser.h"
 #include "stack.h"
 #include "scanner.h"
@@ -71,11 +73,14 @@ ws_parser_output ws_parse(char* code) {
 				DO_CLEANUP();
 				output.errno = WS_PARSER_SYNTAX_ERROR;
 				output.errarg = act.action;	// So we can give some meaningful error message
+				output.errline = token->lineno;
 				return output;
 			case WS_PARSER_SHIFT:
 				node.type = WS_PARSER_TERM;
 				node.value = token->type;
+				node.firstlink = WS_NODE_ID_INVALID;
 				nodeid = ws_parser_tree_add( tree, node, token->value );
+				tree->singleprods[nodeid] = WS_NODE_ID_INVALID;
 
 				if( nodeid == WS_NODE_ID_INVALID ) {
 					DO_CLEANUP();
@@ -105,27 +110,83 @@ ws_parser_output ws_parse(char* code) {
 
 				node.type = WS_PARSER_NONTERM;
 				node.value = nonterm;
-				nodeid = ws_parser_tree_add( tree, node, NULL );
+				node.firstlink = WS_NODE_ID_INVALID;
+				nodeid = WS_NODE_ID_INVALID;
+
+				// Tree optimization part
+				// Looks for patterns like A -> exprA -> exprB (where exprA has only exprB as a child)
+				// and replaces them with A -> exprB. We are currently at node A and exprA is somewhere in stack
+				for( i = 0; i < prodlen; i++ ) {
+					ws_parser_stack_entry* entry = stack->content + (stack->count - i - 1);
+					ws_parser_node *opt_parent, *opt_child;	// parent is exprA and child is exprB
+					ws_parser_node_id id_parent, id_child;
+					id_parent = entry->node;
+					opt_parent = tree->nodes + id_parent;
+					if( 
+						tree->singleprods[id_parent] != WS_NODE_ID_INVALID &&	// has single child; also implies it's a non-terminal
+						strstr( ws_parser_nonterminal_names[opt_parent->value], "expr" )	// is an "expr"
+					) {
+						// Maybe can be optimized. Let's look at the child
+						id_child = tree->singleprods[entry->node];
+						opt_child = tree->nodes + id_child;
+						if(
+							opt_child->type == WS_PARSER_NONTERM &&
+							strstr( ws_parser_nonterminal_names[opt_child->value], "expr" )
+						) {
+							if( nodeid == WS_NODE_ID_INVALID ) {
+								// Replace old node (exprA) with our current one (A)
+								tree->nodes[id_parent] = node;
+								nodeid = id_parent;
+								memset( tree->links + nodeid, UCHAR_MAX, sizeof( ws_parser_node_link ) );
+
+								// Replace exprA with exprB in stack (so it will be linked as a child)
+								entry->node = id_child;
+
+								// Reset singleprods record and go on
+								tree->singleprods[entry->node] = WS_NODE_ID_INVALID;
+							} else {
+								// Make exprA orphan to effectively remove it from the tree
+								memset( tree->links + entry->node, UCHAR_MAX, sizeof( ws_parser_node_link ) );
+
+								// Replace exprA with exprB in stack (so it will be linked as a child)
+								entry->node = tree->singleprods[entry->node];
+
+								// Reset singleprods record and go on
+								tree->singleprods[entry->node] = WS_NODE_ID_INVALID;
+							}
+						}
+					}
+				}
 
 				if( nodeid == WS_NODE_ID_INVALID ) {
-					DO_CLEANUP();
-					output.errno = WS_PARSER_MEMORY;
-					return output;
+					nodeid = ws_parser_tree_add( tree, node, NULL );
+
+					if( nodeid == WS_NODE_ID_INVALID ) {
+						DO_CLEANUP();
+						output.errno = WS_PARSER_MEMORY;
+						return output;
+					}
+				}
+
+				if( prodlen != 1 ) {
+					tree->singleprods[nodeid] = WS_NODE_ID_INVALID;
 				}
 
 				// Add prodlen nodes from the stack in the reverse order to the tree
 				for( i = 0; i < prodlen; i++ ) {
 					top = ws_parser_stack_top( stack );
 					ws_parser_tree_link( tree, nodeid, top.node, prodlen - i - 1 );
+
+					// If it is a single-child production, track for optimization purposes
+					if( prodlen == 1 ) {
+						tree->singleprods[nodeid] = top.node;
+					}
+
 					if( !ws_parser_stack_pop( stack ) ) {
 						DO_CLEANUP();
 						output.errno = WS_PARSER_INTERNAL_ERROR;
 						return output;
 					}
-				}
-
-				if( prodlen == 1 ) {
-					tree->singleprods[nodeid] = true;
 				}
 
 				top = ws_parser_stack_top( stack );

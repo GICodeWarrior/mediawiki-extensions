@@ -29,27 +29,12 @@ void ws_scanner_free(ws_scanner_state *state) {
 }
 
 ws_token *ws_scanner_current_token(ws_scanner_state *state) {
-	ws_token *token;
-	token = malloc( sizeof( ws_token ) );
-	if( !token )
-		return NULL;
-
-	memcpy( token, &(state->cur), sizeof( ws_token ) );
-
-	if( state->cur.value ) {
-		token->value = malloc( token->value_size );
-		if( !token->value )
-			return NULL;
-		memcpy( token->value, state->cur.value, token->value_size );
-	}
-
-	return token;
+	state->cur.lineno = state->lineno;
+	return &(state->cur);
 }
 
 void ws_scanner_free_token(ws_token* token) {
-	if( token->value )
-		free( token->value );
-	free( token );
+	/* no-op */
 }
 
 bool ws_scanner_handle_operator(ws_scanner_state *state);
@@ -71,10 +56,14 @@ bool ws_scanner_is_long_op(ws_scanner_state *state, int start_pos);
 	memcpy( CURRENT_VALUE, state->code + start_pos, end_pos - start_pos ); \
 	CURRENT_VALUE[end_pos - start_pos] = '\0';
 
+inline bool isidchar( char value ) {
+	return isalnum( value ) || value == '_';
+}
+
 bool ws_scanner_next(ws_scanner_state *state) {
 	int start_pos;
 
-	// If there was a previous token, it must have been copied by ws_scanner_current_token()
+	// If there was a previous token, it must have been copied by whoever needed it
 	// Free the memory used by the value of the previous token
 	if( state->cur.value ) {
 		free( state->cur.value );
@@ -179,7 +168,7 @@ bool ws_scanner_next(ws_scanner_state *state) {
 	}
 
 	// Handle operators
-	if( ispunct( CURRENT_CHAR ) ) {
+	if( ispunct( CURRENT_CHAR ) && CURRENT_CHAR != '_' ) {
 		start_pos = state->pos;
 		while( CURRENT_CHAR && ispunct( CURRENT_CHAR ) && ws_scanner_is_long_op( state, start_pos ) )
 			state->pos++;
@@ -215,9 +204,9 @@ bool ws_scanner_next(ws_scanner_state *state) {
 	}
 
 	// Handle IDs and keywords
-	if( isalpha( CURRENT_CHAR ) ) {
+	if( isidchar( CURRENT_CHAR ) ) {
 		start_pos = state->pos;
-		while( CURRENT_CHAR && isalnum( CURRENT_CHAR ) )
+		while( CURRENT_CHAR && isidchar( CURRENT_CHAR ) )
 			state->pos++;
 		SET_TOKEN_SUBSTR( start_pos, state->pos );
 		state->cur.type = WS_TOKEN_ID;

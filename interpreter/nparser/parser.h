@@ -59,6 +59,7 @@ typedef struct {
 	ws_parser_tree* tree;
 	int errno;
 	int errarg;
+	int errline;
 } ws_parser_output;
 
 /**
