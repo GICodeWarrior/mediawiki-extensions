@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include "stack.h"
+#include "config.h"
 
 ws_parser_stack* ws_parser_stack_init() {
 	ws_parser_stack* stack;

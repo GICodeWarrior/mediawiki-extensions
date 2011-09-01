@@ -1,6 +1,25 @@
 <?php
-
 /**
+ * Copyright (C) 2009-2011 by Victor Vasiliev
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ * 
  * An ugly tool to build SLR-tables.
  *
  * Reads a BNF-ish grammar (strings without <> are terminals) from
@@ -788,6 +807,9 @@ if( isset( $options['ctable'] ) ) {
 	// Build C files
 	file_put_contents( "{$base}/nparser/tokenids.h", $grammar->buildCTokenHeader() );
 	file_put_contents( "{$base}/nparser/scanner_names.c", $grammar->buildCTokenList() );
-	file_put_contents( "{$base}/nparser/lrtable.c", $grammar->buildCTable() );
 	file_put_contents( "{$base}/nparser/lrtable.h", $grammar->buildCTableHeader( $ts ) );
+
+	// LR table file will be automatically regenerated
+	if( file_exists( "{$base}/nparser/lrtable.c" ) )
+		unlink( "{$base}/nparser/lrtable.c" );
 }

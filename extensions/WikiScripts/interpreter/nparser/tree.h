@@ -14,9 +14,6 @@
 #include <stdbool.h>
 #include <limits.h>
 
-#define WS_TREE_SIZE_INIT 40
-#define WS_TREE_SIZE_STEP 10
-
 #define WS_NODE_ID_INVALID UINT_MAX
 
 typedef uint32_t ws_parser_node_id;
@@ -27,6 +24,9 @@ typedef struct {
 
 	/* ID of the (non-)terminal */
 	uint8_t value;
+
+	/* Number of the link to the first child */
+	uint32_t firstlink;
 } ws_parser_node;
 
 
@@ -58,8 +58,8 @@ typedef struct {
  * tree.
  */
 typedef struct {
-	int count;
-	int allocated;
+	uint32_t count;
+	uint32_t allocated;
 	ws_parser_node* nodes;
 
 	// When forming tree, number of allocated links = number of nodes.
@@ -73,15 +73,31 @@ typedef struct {
 	// Number of allocated and present symbols is mapped to the number of the nodes
 	char** symbols;
 
-	// Temporary array used to store a flag about certain node having single child
-	bool* singleprods;
+	// Temporary array. If a node has a single child, it is stored here for optimization
+	// purposes
+	ws_parser_node_id* singleprods;
 } ws_parser_tree;
+
+/**
+ * This is the header of the serialized tree. The serialized tree looks like this:
+ * * Header
+ * * Nodes
+ * * Links
+ * * Symbols in the following format:
+ * ** Length (uint32_t)
+ * ** Contents
+ */
+typedef struct {
+	char version[24];
+	uint32_t count;
+	ws_parser_node_id root;
+} ws_parser_tree_header;
 
 /**
  * Results of the children search by node.
  */
 typedef struct {
-	int count;
+	uint8_t count;
 	ws_parser_node_link* links;
 } ws_parser_tree_children;
 
@@ -115,9 +131,18 @@ void ws_parser_tree_set_root(ws_parser_tree* tree, ws_parser_node_id root);
 bool ws_parser_tree_finalize(ws_parser_tree* tree);
 
 /**
- *  Searches all the children of a given node and returns the result.
+ * Searches all the children of a given node and returns the result.
  */
 ws_parser_tree_children ws_parser_tree_search_children(ws_parser_tree* tree, ws_parser_node_id node);
+
+/**
+ * Returns a child by number.
+ */
+ws_parser_node* ws_parser_tree_get_child(ws_parser_tree* tree, ws_parser_tree_children children, uint8_t number);
+
+int ws_parser_tree_serialize_length(ws_parser_tree* tree);
+void ws_parser_tree_serialize(ws_parser_tree* tree, void* buffer);
+ws_parser_tree* ws_parser_tree_unserialize(void* buffer);
 
 /**
  * Free the resources allocated for the tree.
