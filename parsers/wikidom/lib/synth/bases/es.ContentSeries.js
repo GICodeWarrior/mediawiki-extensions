@@ -3,8 +3,8 @@
  * 
  * A content series is an array of items which have a getLength method. 
  */
-es.ContentSeries = function() {
-	var series = [];
+es.ContentSeries = function( items ) {
+	var series = items || [];
 	$.extend( series, this );
 	return series;
 };
@@ -74,6 +74,7 @@ es.ContentSeries.prototype.select = function( start, end ) {
 				}
 			} else if ( start >= left && start < right ) {
 				inside = true;
+				
 				items.push( this[i] );
 			}
 			left = right;
