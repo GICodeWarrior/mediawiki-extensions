@@ -944,12 +944,15 @@ $messages['pt-br'] = array(
 
 /** Russian (Русский)
  * @author Byulent
+ * @author Kaganer
  * @author MaxSem
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'livetranslate-desc' => 'Включает перевод текста страницы на лету с помощью службы переводов Google',
 	'right-managetms' => '[[Special:SpecialLiveTranslate|изменять]] список памяти переводов',
+	'group-tmxadmin' => 'Администраторы TMX',
+	'group-tmxadmin-member' => 'Администратор TMX',
 	'livetranslate-translate-to' => 'Перевести эту страницу на',
 	'livetranslate-button-translate' => 'Перевести',
 	'livetranslate-button-translating' => 'Выполняется перевод...',

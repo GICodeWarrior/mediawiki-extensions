@@ -3019,16 +3019,56 @@ $messages['li'] = array(
 
 /** Lithuanian (Lietuvių)
  * @author Eitvys200
+ * @author Ignas693
  * @author Perkunas
  */
 $messages['lt'] = array(
 	'fogg-wont-upload-to-server' => 'Pastaba: jūsų vaizdo failas bus koduojamas vietoje ir nebus siunčiamas į jokį serverį.',
 	'fogg-save_local_file' => 'Koduoti į failą',
+	'fogg-help-sticky' => 'Pagalba (spustelėkite į kotą)',
+	'fogg-cg-preset' => 'Išankstinis nustatymas:<strong>$1</strong>',
+	'fogg-cg-quality' => 'Pagrindinio kokybės ir rezoliuciją kontrolės',
+	'fogg-cg-meta' => 'Metaduomenys, iliustracijos',
+	'fogg-cg-range' => 'Kodavimo diapazonas',
+	'fogg-cg-advVideo' => 'Išplėstinė vaizdo kodavimo kontrolės',
+	'fogg-cg-advAudio' => 'Išplėstinė vaizdo kodavimo kontrolės',
+	'fogg-preset-custom' => 'Pasirinktiniai parametrai',
+	'fogg-webvideo-desc' => 'Ogg interneto vaizdo Theora, Vorbis (600 kbit/s ir 400px didžiausias plotis)',
+	'fogg-savebandwidth-desc' => 'Ogg interneto vaizdo Theora, Vorbis (600 kbit/s ir 400px didžiausias plotis)',
+	'fogg-highquality-desc' => 'Ogg aukštos kokybės Theora, Vorbis (1080px didžiausias plotis)',
+	'fogg-webvideo-webm-desc' => 'WebM interneto vaizdo VP8 (600 kbit/s ir 480px didžiausias plotis)',
+	'fogg-highquality-webm-desc' => 'WebM aukštos kokybės VP8 (1080px didžiausias plotis)',
 	'fogg-videoQuality-title' => 'Vaizdo kokybė',
+	'fogg-videoQuality-help' => 'Naudojami nustatyti <i>vaizdo kokybės</i> (nėra naudojamas, jei jūs bitrate pažangiosios valdikliuose žemiau) užkoduotą vaizdo.',
+	'fogg-starttime-title' => 'Pradėti antrojo',
+	'fogg-starttime-help' => 'Tik koduoti iš trukmė sekundėmis',
+	'fogg-endtime-title' => 'Baigti antra',
+	'fogg-endtime-help' => 'Tik koduoti iš trukmė sekundėmis',
 	'fogg-audioQuality-title' => 'Garso kokybė',
+	'fogg-audioQuality-help' => 'Naudojami nustatyti <i>vaizdo kokybės</i> (nėra naudojamas, jei jūs bitrate pažangiosios valdikliuose žemiau) užkoduotą vaizdo.',
+	'fogg-videoCodec-title' => 'Vaizdo kodekas',
+	'fogg-videoCodec-help' => 'Pasirinkite iliustraciją vaizdo kodekas. Daugiau apie <a target="\\"_new\\"" href="\\"http:\\/\\/en.wikipedia.org\\/wiki\\/Theora\\"">Theora kodeko<\\>. Daugiau apie į <a target="\\"_new\\"" href="\\"http:\\/\\/en.wikipedia.org\\/wiki\\/Webm\\"">VP8 kodeko<\\> </\\> </a> </\\> </a>',
+	'fogg-audioCodec-title' => 'Garso kodekas',
+	'fogg-audioCodec-help' => 'Naudojami nustatyti klipo garso kodekas. Šiuo metu tik Vorbis palaikomas. Daugiau apie <a target="_new" href="http://en.wikipedia.org/wiki/Vorbis">Vorbis kodeko</a>',
 	'fogg-width-title' => 'Vaizdo plotis',
 	'fogg-width-help' => 'Keisti į pateiktą plotį.',
 	'fogg-height-title' => 'Vaizdo aukštis',
+	'fogg-height-help' => 'Keisti dydį atsižvelgiant į aukštį.',
+	'fogg-videoBitrate-title' => 'Vaizdo bitrate',
+	'fogg-videoBitrate-help' => 'Vaizdo bitrate nustato kodavimo bitrate vaizdo (kb/s)',
+	'fogg-twopass-title' => 'Du praeiti, kodavimas',
+	'fogg-twopass-help' => 'Du perduoti kodavimo leidžia daugiau pastovios kokybės padaryti dvi pereina per vaizdo failas',
+	'fogg-framerate-title' => 'Kadrų dažnis',
+	'fogg-framerate-help' => 'Vaizdo kadrų dažnis.
+Daugiau apie <a target="_new" href="http://en.wikipedia.org/wiki/Frame_rate">kadrų dažnis</a>.',
+	'fogg-aspect-title' => 'Proporcijas',
+	'fogg-aspect-help' => 'Vaizdo formato santykis gali būti 4: 3 arba 16: 9.
+Daugiau apie <a target="_new" href="http://en.wikipedia.org/wiki/Aspect_ratio_<span class=" notranslate"="">% 28image % 29 "> proporcijos</a>.',
+	'fogg-keyframeInterval-title' => 'Pagrindinis rėmelis intervalas',
+	'fogg-keyframeInterval-help' => 'Keyframe intervalas rėmeliuose.
+Pastaba: Dauguma kodekus galioja pagrindinius narvų jei rėmelių skirtumas yra didesnis nei keyframe koduoti dydį.
+Daugiau apie <a href="http://en.wikipedia.org/wiki/I-frame">pagrindinius narvų</a>.',
+	'fogg-denoise-title' => 'Denoise filtras',
 	'fogg-novideo-title' => 'Be vaizdo',
 	'fogg-noaudio-title' => 'Be garso',
 	'fogg-title-title' => 'Pavadinimas',

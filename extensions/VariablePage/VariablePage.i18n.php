@@ -300,6 +300,13 @@ $messages['lb'] = array(
 	'variablepage-desc' => 'Erméiglecht eng ressourceschounend variabel Viruleedung vu Säiten',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Eitvys200
+ */
+$messages['lt'] = array(
+	'variablepage-navlink_text' => 'Aukoti',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
