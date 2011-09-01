@@ -53,7 +53,7 @@ es.ContentSeries.prototype.size = function() {
 
 es.ContentSeries.prototype.select = function( start, end ) {
 	// Support es.Range object as first argument
-	if ( typeof start.from !== undefined && typeof start.to !== undefined ) {
+	if ( typeof start.from === 'number' && typeof start.to === 'number') {
 		start.normalize();
 		end = start.end;
 		start = start.start;
@@ -61,21 +61,31 @@ es.ContentSeries.prototype.select = function( start, end ) {
 	var items = [];
 	if ( this.length ) {
 		var i = 0,
-			legnth = this.length,
+			length = this.length,
 			left = 0,
 			right,
 			inside = false;
 		while ( i < length ) {
-			right = left + this[i].getLength();
+			right = left + this[i].getLength() + 1;
 			if ( inside ) {
-				items.push( this[i] );
+				items.push( {
+					'item': this[i],
+					'from': 0,
+					'to': Math.min( right - left - 1, end - left )
+				} );
 				if ( end >= left && end < right ) {
 					break;
 				}
 			} else if ( start >= left && start < right ) {
 				inside = true;
-				
-				items.push( this[i] );
+				items.push( {
+					'item': this[i],
+					'from': Math.max( left, start ),
+					'to': Math.min( right - 1, end )
+				} );
+				if ( right >= end ) {
+					break;
+				}
 			}
 			left = right;
 			i++;
