@@ -773,6 +773,16 @@ $messages['li'] = array(
 	'fundraiserportal-tourmaline-close' => 'Verberg dit óngerdeil vanaaf noe',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Eitvys200
+ */
+$messages['lt'] = array(
+	'fundraiserportal-ruby-button' => 'Paaukoti dabar',
+	'fundraiserportal-rubytext-button' => 'Paaukoti dabar',
+	'fundraiserportal-sapphire-button' => 'Paaukoti dabar',
+	'fundraiserportal-tourmaline-button' => 'Paaukoti dabar',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -979,13 +989,16 @@ $messages['pt-br'] = array(
  * @author Stelistcristi
  */
 $messages['ro'] = array(
+	'fundraiserportal' => 'Portal strângere de fonduri',
 	'fundraiserportal-plain-button' => 'Sprijiniți Wikipedia!',
 	'fundraiserportal-ruby-button' => 'Donați acum',
 	'fundraiserportal-rubytext-button' => 'Donați acum',
 	'fundraiserportal-rubytext-message' => 'Fiecare donaţie ne ajută să păstrăm Wikipedia gratuită pentru toată lumea.',
+	'fundraiserportal-rubytext-close' => 'Ascunde aceasta de acum încolo',
 	'fundraiserportal-sapphire-button' => 'Donați acum',
 	'fundraiserportal-tourmaline-button' => 'Donați acum',
 	'fundraiserportal-tourmaline-message' => 'Fiecare donaţie ne ajută să pătrăm Wikipedia gratuită pentru toată lumea.',
+	'fundraiserportal-tourmaline-close' => 'Ascunde aceasta de acum încolo',
 );
 
 /** Tarandíne (Tarandíne)
