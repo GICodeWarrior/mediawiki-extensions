@@ -514,6 +514,18 @@ $messages['lo'] = array(
 	'categoryintersection-doit' => 'ສະແດງລາຍຊື່ໜ້າທີ່ຢູ່ໃນໝວດເຫຼົ່ານີ້',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Ignas693
+ */
+$messages['lt'] = array(
+	'categoryintersection' => 'Kategorijos sankirtos',
+	'categoryintersection-desc' => 'Tvirtina, lentelė su maišos verčių [[specialus: CategoryIntersection|category sankryžose]] per puslapį',
+	'categoryintersection-doit' => 'Visų šių kategorijų puslapių sąrašą',
+	'categoryintersection-maxcategories' => 'Didžiausios leistinos susikertančių kategorijų skaičius yra  $1 .',
+	'categoryintersection-mincategories' => 'Jums reikia įtraukti bent dviejų kategorijų.',
+	'categoryintersection-results' => 'Paieška grąžino  $1   {{PLURAL:$1| result|results}}.',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  * @author Brest
