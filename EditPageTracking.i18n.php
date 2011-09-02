@@ -23,6 +23,13 @@ $messages['qqq'] = array(
 	'editpagetracking-desc' => '{{desc}}',
 );
 
+/** Arabic (العربية)
+ * @author زكريا
+ */
+$messages['ar'] = array(
+	'editpagetracking-desc' => 'يسجل أول مرة برى فيها كل مستخدم صفحة التحرير',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Wizardist
  */
@@ -126,6 +133,13 @@ $messages['pl'] = array(
  */
 $messages['pt'] = array(
 	'editpagetracking-desc' => 'Regista a primeira vez que cada utilizador visita a página de edição',
+);
+
+/** Romanian (Română)
+ * @author Firilacroco
+ */
+$messages['ro'] = array(
+	'editpagetracking-desc' => 'Înregistrează prima dată când fiecare utilizator vizualizează pagina de modificare',
 );
 
 /** Russian (Русский)
