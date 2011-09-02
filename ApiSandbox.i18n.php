@@ -114,6 +114,14 @@ Kit da deuler ur sell war [http://www.mediawiki.org/wiki/API teulioù API] evit 
 	'apisb-query-meta' => 'Titouroù Meta',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'apisb-parameters' => 'Paràmetres',
+	'apisb-result' => 'Resultat',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  * @author Purodha
@@ -383,19 +391,31 @@ $messages['lb'] = array(
 
 /** Lithuanian (Lietuvių)
  * @author Eitvys200
+ * @author Ignas693
  */
 $messages['lt'] = array(
+	'apisb-desc' => 'Leidžia derinti [MediaWiki API http://www.mediawiki.org/wiki/API] skambučių iš naršyklės',
+	'apisandbox' => 'API smėlio dėžės',
 	'apisb-no-js' => '"" Klaida "": ši funkcija reikalauja JavaScript.',
+	'apisb-intro' => "Naudokite šį puslapį norėdami eksperimentuoti su '''MediaWiki API \"„.
+	Ieškokite [http://www.mediawiki.org/wiki/API API dokumentacijoje] Išsamesnės informacijos apie API naudojimo.",
 	'apisb-api-disabled' => 'API yra išjungtas šioje svetainėje.',
 	'apisb-parameters' => 'Parametrai',
 	'apisb-result' => 'Rezultatai',
 	'apisb-request-url' => 'Prašyti URL:',
+	'apisb-request-post' => 'POST duomenys:',
 	'apisb-select-action' => 'Pasirinkite veiksmą',
+	'apisb-select-query' => 'Ką užklausą?',
 	'apisb-select-value' => 'Pasirinkite vertę',
 	'apisb-loading' => 'Kraunasi ...',
+	'apisb-load-error' => 'Klaida įkeliant API aprašymas',
+	'apisb-request-error' => 'Klaida scenos API prašymą',
+	'apisb-namespaces-error' => 'Klaida pakrovimo vardų sritys',
+	'apisb-ns-main' => '(Pagrindinė)',
 	'apisb-submit' => 'Pateikti prašymą',
 	'apisb-query-prop' => 'Nusttymai',
 	'apisb-query-list' => 'Sąrašai',
+	'apisb-query-meta' => 'Meta informacija',
 );
 
 /** Macedonian (Македонски)
