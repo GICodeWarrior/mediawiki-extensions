@@ -428,6 +428,21 @@ $messages['lb'] = array(
 	'categorymultisort-sortkey-name-radical-traditional' => 'Radikal: Traditionell',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Ignas693
+ */
+$messages['lt'] = array(
+	'categorymultisortchinese-desc' => 'Leidžiant kategorijų turi būti peržiūrėtas pagal įvairių sortkeys, susijusios su Kinijos scenarijus',
+	'categorymultisort-sortkey-name-mandarin-pinyin' => 'Kinų: Pinyin',
+	'categorymultisort-sortkey-name-mandarin-bopomofo' => 'Kinų: Bopomofo',
+	'categorymultisort-sortkey-name-mandarin-wadegiles' => 'Kinų: Wade–Giles',
+	'categorymultisort-sortkey-name-mandarin-mps2' => 'Kinų: MPS II',
+	'categorymultisort-sortkey-name-mandarin-tongyong' => 'Kinų: Tongyong',
+	'categorymultisort-sortkey-name-cantonese-jyutping' => 'Kantonietiškai: Jyutping',
+	'categorymultisort-sortkey-name-stroke' => 'Uždrausti',
+	'categorymultisort-sortkey-name-stroke-simplified' => 'Eiga: supaprastinta',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
