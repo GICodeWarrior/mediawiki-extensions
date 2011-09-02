@@ -38,7 +38,7 @@ def main():
 	# w00t We're in!
 	try:
 		groupname = args[0]
-		PosixData = ds.search_s("ou=group," + base,ldap.SCOPE_SUBTREE,"(&(objectclass=posixGroup)(cn=" + groupname + "))")
+		PosixData = ds.search_s("ou=groups," + base,ldap.SCOPE_SUBTREE,"(&(objectclass=posixGroup)(cn=" + groupname + "))")
 		if not PosixData:
 			raise ldap.NO_SUCH_OBJECT()
 		dn = PosixData[0][0]

@@ -34,7 +34,7 @@ def main():
 	try:
 		groupname = args[0]
 
-		dn = 'cn=' + groupname + ',ou=group,' + base
+		dn = 'cn=' + groupname + ',ou=groups,' + base
 		cn = groupname
 		objectClasses = ['posixGroup', 'groupOfNames', 'top']
 		if options.gidNumber:
