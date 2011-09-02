@@ -264,6 +264,13 @@ $messages['lb'] = array(
 	'cassandra-desc' => 'Den Text vun der Versioun an enger [http://cassandra.apache.org/Apache Cassandra] Datebank späicheren',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Ignas693
+ */
+$messages['lt'] = array(
+	'cassandra-desc' => 'Saugoti peržiūrėti tekstą duomenų bazėje [Apache Cassandra http://cassandra.apache.org/]',
+);
+
 /** Latvian (Latviešu)
  * @author Xil
  */
