@@ -362,7 +362,7 @@ $messages['an'] = array(
  */
 $messages['ar'] = array(
 	'openid-desc' => 'سجل الدخول للويكي [http://openid.net/ بهوية مفتوحة]، وسجل الدخول لمواقع الوب الأخرى التي تعترف بالهوية المفتوحة بحساب مستخدم ويكي',
-	'openidlogin' => 'تسجيل الدخول بالهوية المفتوحة',
+	'openidlogin' => 'سجل الدخول / أنشئ حساب مع الهوية المفتوحة',
 	'openidserver' => 'خادم الهوية المفتوحة',
 	'openidxrds' => 'ملف ياديس',
 	'openidconvert' => 'محول الهوية المفتوحة',
@@ -392,7 +392,7 @@ $messages['ar'] = array(
 	'openidemail' => 'عنوان البريد الإلكتروني',
 	'openidlanguage' => 'اللغة',
 	'openidtimezone' => 'المنطقة الزمنية',
-	'openidchooselegend' => 'اختيار اسم المستخدم',
+	'openidchooselegend' => 'اختيار اسم المستخدم والحساب',
 	'openidchooseinstructions' => 'كل المستخدمين يحتاجون إلى لقب؛
 يمكنك أن تختار واحدا من الخيارات بالأسفل.',
 	'openidchoosenick' => 'اسمك المستعار ($1)',
@@ -601,7 +601,7 @@ $messages['be-tarask'] = array(
 Гэты і дадатковыя OpenID могуць наладжаныя ў [[Special:Preferences#prefsection-openid|OpenID tab]].<br />
 Неабавязковы пароль для рахунка можа быць даданы ў Вашым [[Special:Preferences#prefsection-personal|профілі]].",
 	'openidusernameprefix' => 'КарыстальнікOpenID',
-	'openidserverlogininstructions' => 'Увядзіце Ваш пароль ніжэй, каб увайсьці на $3 як {{GENDER:$2|удзельнік|удзельніца}} $2 (старонка {{GENDER:$2|ўдзельніка|удзельніцы}} $1).',
+	'openidserverlogininstructions' => '$3 падаў запыт, каб Вы ўвялі Ваш пароль для {{GENDER:$2|удзельніка|удзельніцы}} $1 (гэта Ваш URL-адрас OpenID).',
 	'openidtrustinstructions' => 'Пазначце, калі Вы жадаеце даць доступ да зьвестак для $1.',
 	'openidallowtrust' => 'Дазволіць $1 давераць гэтаму рахунку.',
 	'openidnopolicy' => 'Сайт ня мае правілаў адносна прыватнасьці.',
@@ -3604,6 +3604,18 @@ Dir kéint Iech ouni OpenID net aloggen.',
  */
 $messages['li'] = array(
 	'openidchoosepassword' => 'Wachwaord:',
+);
+
+/** Lingala (Lingála)
+ * @author Eruedin
+ */
+$messages['ln'] = array(
+	'openidemail' => 'Adɛlɛ́sɛ-ímɛ́lɛ:',
+	'openidlanguage' => 'Lokótá',
+	'openidchooseusername' => 'Nkómbó ya mosáleli:',
+	'openidchoosepassword' => 'Banda nayó:',
+	'openiddelete-button' => 'Kondima',
+	'openid-urls-delete' => 'Kolímwisa',
 );
 
 /** Lithuanian (Lietuvių)
