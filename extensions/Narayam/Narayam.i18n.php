@@ -15,7 +15,10 @@ $messages = array();
  */
 $messages['en'] = array(
 	'narayam-desc' => 'Allows to add custom input methods for input fields',
-	'narayam-toggle-ime' => 'To toggle IM ($1)', // FIXME: better message
+	'narayam-toggle-ime' => 'Enable ($1)',
+	'narayam-menu' => 'Input Method',
+	'narayam-menu-tooltip' => 'Control Narayam Input Method Editor (IME)',
+	'narayam-help' => 'Help',
 	'narayam-help-page' => 'Help:Typing',
 	'narayam-checkbox-tooltip' => 'To toggle input method on and off', // FIXME: better message
 	'narayam-disable-preference' => 'Disable Narayam Input Method Editor (IME)',
