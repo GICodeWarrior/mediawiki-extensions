@@ -64,6 +64,7 @@ $messages['an'] = array(
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
+ * @author زكريا
  */
 $messages['ar'] = array(
 	'contributiontracking-desc' => 'تتبع المساهمة لجامع تبرعات ويكيميديا',
@@ -72,7 +73,10 @@ $messages['ar'] = array(
 	'contrib-tracking-error-text' => 'نموذج تسليم غير صحيح',
 	'contrib-tracking-submitting' => 'تسليم إلى معالج الدفع...',
 	'contrib-tracking-continue' => 'إذا لم تحول تلقائيا، انقر على الزر لإكمال التبرع على باي بال.',
+	'contrib-tracking-redirect' => 'سوف تحول إلى بيبال (PayPal) لإتمام تبرعك.',
 	'contrib-tracking-button' => 'استمر',
+	'contrib-tracking-item-name-onetime' => 'التبرع مرة واحدة',
+	'contrib-tracking-item-name-recurring' => 'تبرع شهري متكرر',
 );
 
 /** Aramaic (ܐܪܡܝܐ)
@@ -362,6 +366,7 @@ $messages['eu'] = array(
 /** Persian (فارسی)
  * @author Huji
  * @author Komeil 4life
+ * @author Mjbmr
  */
 $messages['fa'] = array(
 	'contributiontracking-desc' => 'پی‌گیری کمک‌های انجام شده به جذب سرمایهٔ ویکی‌مدیا',
@@ -371,6 +376,8 @@ $messages['fa'] = array(
 	'contrib-tracking-submitting' => 'ارسال به پردازش کنندهٔ پرداخت...',
 	'contrib-tracking-continue' => 'اگر به طور خودکار به صفحهٔ مورد نظر هدایت نشدید، برای تکمیل کمک مالی خود در PayPal بر روی دکمه کلیک کنید.',
 	'contrib-tracking-button' => 'ادامه',
+	'contrib-tracking-item-name-onetime' => 'یک بار کمک مالی',
+	'contrib-tracking-item-name-recurring' => 'دورهٔ اهدای کمک مالی ماهانه',
 );
 
 /** Finnish (Suomi)
@@ -419,6 +426,7 @@ $messages['frp'] = array(
 	'contrib-tracking-continue' => 'Se vos éte pas redirigiê ôtomaticament, clicâd cél boton por complètar voutron don avouéc PayPal.',
 	'contrib-tracking-button' => 'Continuar',
 	'contrib-tracking-item-name-onetime' => 'Don solèt',
+	'contrib-tracking-item-name-recurring' => 'Don per mês rècurrent',
 );
 
 /** Friulian (Furlan)
@@ -731,6 +739,7 @@ $messages['li'] = array(
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Eitvys200
  * @author Matasg
  */
 $messages['lt'] = array(
@@ -738,7 +747,10 @@ $messages['lt'] = array(
 	'contrib-tracking-error-text' => 'Neteisingas formos pateikimas',
 	'contrib-tracking-submitting' => 'Pateikiama mokėjimo procesoriui...',
 	'contrib-tracking-continue' => 'Jei nebūsite automatiškai nukreiptas, paspauskite mygtuką, kad galėtumėte užbaigti savo aukojimą PayPal.',
+	'contrib-tracking-redirect' => 'Jus busite automatiškai nukreipti į PayPal kad užbaigtumėte parama.',
 	'contrib-tracking-button' => 'Tęsti',
+	'contrib-tracking-item-name-onetime' => 'Vienkartinės auka',
+	'contrib-tracking-item-name-recurring' => 'Kas mėnesinė auka',
 );
 
 /** Latvian (Latviešu)
@@ -991,11 +1003,16 @@ $messages['pt-br'] = array(
  * @author Stelistcristi
  */
 $messages['ro'] = array(
+	'contributiontracking-desc' => 'Urmărirea contribuțiilor pentru strângerea de fonduri Wikimedia',
 	'contributiontracking' => 'Urmărirea contribuțiilor',
 	'contrib-tracking-error' => 'Eroare',
 	'contrib-tracking-error-text' => 'Trimiterea formularului este invalidă',
 	'contrib-tracking-submitting' => 'Trimitere la procesorul de plată...',
+	'contrib-tracking-continue' => 'Dacă nu sunteți redirecționat automat, apăsați butonul pentru a finaliza donația pe PayPal.',
+	'contrib-tracking-redirect' => 'Veți fi redirecționat automat pe PayPal pentru a completa donația.',
 	'contrib-tracking-button' => 'Continuați',
+	'contrib-tracking-item-name-onetime' => 'Donație unică',
+	'contrib-tracking-item-name-recurring' => 'Donație lunară recurentă',
 );
 
 /** Tarandíne (Tarandíne)
