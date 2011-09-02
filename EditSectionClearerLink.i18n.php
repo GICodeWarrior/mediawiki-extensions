@@ -106,3 +106,10 @@ $messages['pt'] = array(
 	'editsectionclearerlink-desc' => 'Melhorar a usabilidade dos links de edição de secções, disponibilizando operações ao passar o ponteiro do rato sobre secções e links',
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'editsectionclearerlink-desc' => 'Улучшает юзабилити ссылок на правку разделов, добавляет меню действий при наведении курсора',
+);
+
