@@ -16,13 +16,11 @@
 ( function( $ ) {
 $.narayam = new ( function() {
 	/* Private members */
-
+	
 	// Reference to this object
 	var that = this;
 	// jQuery array holding all text inputs Narayam applies to
 	var $inputs = $( [] );
-	// Input method dropdown
-	var $select = $( [] );
 	// Whether Narayam is enabled
 	var enabled = false;
 	// Registered schemes
@@ -41,9 +39,9 @@ $.narayam = new ( function() {
 		shiftKey: false,
 		key: null
 	};
-
+	
 	/* Private functions */
-
+	
 	/**
 	 * Transliterate a string using the current scheme
 	 * @param str String to transliterate
@@ -68,7 +66,7 @@ $.narayam = new ( function() {
 		// No matches, return the input
 		return str;
 	}
-
+	
 	/**
 	 * Get the n characters in str that immediately precede pos
 	 * Example: lastNChars( "foobarbaz", 5, 2 ) == "ba"
@@ -87,7 +85,7 @@ $.narayam = new ( function() {
 			return str.substr( pos - n, n);
 		}
 	}
-
+	
 	/**
 	 * Find the point at which a and b diverge, i.e. the first position
 	 * at which they don't have matching characters.
@@ -104,7 +102,7 @@ $.narayam = new ( function() {
 		}
 		return -1;
 	}
-
+	
 	/**
 	 * Check whether a keypress event corresponds to the shortcut key
 	 * @param e Event object
@@ -116,7 +114,7 @@ $.narayam = new ( function() {
 			e.shiftKey == shortcutKey.shiftKey &&
 			String.fromCharCode( e.which ).toLowerCase() == shortcutKey.key.toLowerCase();
 	}
-
+	
 	/**
 	 * Get a description of the shortcut key, e.g. "Ctrl-M"
 	 * @return string
@@ -136,7 +134,7 @@ $.narayam = new ( function() {
 		text += shortcutKey.key.toUpperCase();
 		return text;
 	}
-
+	
 	/**
 	 * Change visual appearance of element (text input, textarea) according
 	 * current state of Narayam
@@ -150,7 +148,7 @@ $.narayam = new ( function() {
 			$element.removeClass( 'narayam-input' );
 		}
 	}
-
+	
 	/**
 	 * Keydown event handler. Handles shortcut key presses
 	 * @param e Event object
@@ -168,7 +166,7 @@ $.narayam = new ( function() {
 		}
 		return true;
 	}
-
+	
 	/**
 	 * Keypress event handler. This is where the real work happens
 	 * @param e Event object
@@ -177,19 +175,19 @@ $.narayam = new ( function() {
 		if ( !enabled ) {
 			return true;
 		}
-
+		
 		if ( e.which == 8 ) { // Backspace
 			// Blank the keybuffer
 			$( this ).data( 'narayamKeyBuffer', '' );
 			return true;
 		}
-
+		
 		// Leave non-ASCII stuff alone, as well as anything involving
 		// Alt (except for extended keymaps), Ctrl and Meta
 		if ( e.which < 32 || ( e.altKey && !currentScheme.extended_keyboard ) || e.ctrlKey || e.metaKey ) {
 			return true;
 		}
-
+		
 		var $this = $( this );
 		var c = String.fromCharCode( e.which );
 		// Get the current caret position. The user may have selected text to overwrite,
@@ -204,7 +202,7 @@ $.narayam = new ( function() {
 		var input = lastNChars( $this.val(), startPos, currentScheme.lookbackLength ) + c;
 		var keyBuffer = $this.data( 'narayamKeyBuffer' );
 		var replacement = transliterate( input, keyBuffer, e.altKey );
-
+		
 		// Update the key buffer
 		keyBuffer += c;
 		if ( keyBuffer.length > currentScheme.keyBufferLength ) {
@@ -212,7 +210,7 @@ $.narayam = new ( function() {
 			keyBuffer = keyBuffer.substring( keyBuffer.length - currentScheme.keyBufferLength );
 		}
 		$this.data( 'narayamKeyBuffer', keyBuffer );
-
+		
 		// textSelection() magic is expensive, so we avoid it as much as we can
 		if ( replacement == input ) {
 			return true;
@@ -222,7 +220,7 @@ $.narayam = new ( function() {
 		var divergingPos = firstDivergence( input, replacement );
 		input = input.substring( divergingPos );
 		replacement = replacement.substring( divergingPos );
-
+		
 		// Select and replace the text
 		$this.textSelection( 'setSelection', {
 			'start': startPos - input.length + 1,
@@ -233,11 +231,11 @@ $.narayam = new ( function() {
 			'replace': true,
 			'selectPeri': false
 		} );
-
+		
 		e.stopPropagation();
 		return false;
 	}
-
+	
 	/**
 	 * Focus event handler.
 	 * @param e Event object
@@ -246,7 +244,7 @@ $.narayam = new ( function() {
 		$( this ).data( 'narayamKeyBuffer', '' );
 		changeVisual( $( this ) );
 	}
-
+	
 	/**
 	 * Blur event handler.
 	 * @param e Event object
@@ -254,16 +252,8 @@ $.narayam = new ( function() {
 	function onblur( e ) {
 		$( this ).removeClass( 'narayam-input' );
 	}
-
-	/**
-	 * Change handler for the scheme dropdown. Updates the current scheme
-	 * based on the new selection in the dropdown.
-	 */
-	function updateSchemeFromSelect() {
-		var scheme = $( this ).val();
-		that.setScheme( scheme );
-	}
-
+	
+	
 	/* Public functions */
 
 	/**
@@ -291,7 +281,7 @@ $.narayam = new ( function() {
 				.bind( 'blur', onblur);
 		}
 	};
-
+	
 	/**
 	 * Enable Narayam
 	 */
@@ -299,10 +289,12 @@ $.narayam = new ( function() {
 		if ( !enabled && currentScheme !== null ) {
 			$.cookie( 'narayam-enabled', '1', { 'path': '/', 'expires': 30 } );
 			$( '#narayam-toggle' ).attr( 'checked', true );
+			$( 'li#pt-narayam').removeClass( 'narayam-inactive' );
+			$( 'li#pt-narayam').addClass( 'narayam-active' );
 			enabled = true;
 		}
 	};
-
+	
 	/**
 	 * Disable Narayam
 	 */
@@ -310,10 +302,12 @@ $.narayam = new ( function() {
 		if ( enabled ) {
 			$.cookie( 'narayam-enabled', '0', { 'path': '/', 'expires': 30 } );
 			$( '#narayam-toggle' ).attr( 'checked', false );
+			$( 'li#pt-narayam').removeClass( 'narayam-active' );
+			$( 'li#pt-narayam').addClass( 'narayam-inactive' );
 			enabled = false;
 		}
 	};
-
+	
 	/**
 	 * Toggle the enabled/disabled state
 	 */
@@ -324,7 +318,7 @@ $.narayam = new ( function() {
 			that.enable();
 		}
 	};
-
+	
 	/**
 	 * Add a transliteration scheme. Schemes whose name is not in
 	 * wgNarayamAvailableSchemes will be ignored.
@@ -373,7 +367,7 @@ $.narayam = new ( function() {
 			return false;
 		}
 	};
-
+	
 	/**
 	 * Change the current transliteration scheme
 	 * @param name String
@@ -382,80 +376,121 @@ $.narayam = new ( function() {
 		if ( name in schemes ) {
 			currentScheme = schemes[name];
 			$.cookie( 'narayam-scheme', name, { 'path': '/', 'expires': 30 } );
-			$select.val( name );
 		}
 	};
-
+	
 	/**
 	 * Set up Narayam. This adds the scheme dropdown, binds the handlers
 	 * and initializes the enabled/disabled state and selected scheme
 	 * from a cookie or wgNarayamEnableByDefault
 	 */
 	this.setup = function() {
-		// Build scheme dropdown
-		$select = $( '<select />' );
 		var haveSchemes = false;
-		for ( var scheme in schemes ) {
-			$( '<option />' )
-				.val( scheme )
-				.text( mw.msg( schemes[scheme].namemsg ) )
-				.appendTo( $select );
+		// Build schemes option list
+		var $ul = $( '<ul/>' );
+		for ( scheme in schemes ) {
+			$input = $( '<input type="radio" name="narayam-input-method" class="narayam-scheme" />' );
+			$input
+				.attr( 'id', 'narayam-' + scheme )
+				.val( scheme );
+			
+			$( '<li/>' )
+				.append( $input )
+				.append( mw.msg( schemes[scheme].namemsg ) )
+				.appendTo( $ul );
 			haveSchemes = true;
 		}
-		$select.change( updateSchemeFromSelect );
-
+		
 		if ( !haveSchemes ) {
 			// No schemes available, don't show the tool
 			return;
 		}
-
+		
+		// Event listener for scheme selection.
+		// There is a plan to add a feature that allow dynamic loading of schemes.
+		// So .live will be useful
+		$( '.narayam-scheme', $( '#narayam-menu-items > ul')[0] ).live( 'click', function(){
+			that.setScheme( $(this).val() );
+		} );
+		
 		// Build enable/disable checkbox and label
 		var $checkbox = $( '<input type="checkbox" id="narayam-toggle" />' );
 		$checkbox
 			.attr( 'title', mw.msg( 'narayam-checkbox-tooltip' ) )
 			.click( that.toggle );
-
-		var helppage = mw.msg( 'narayam-help-page' );
+			
 		var $label = $( '<label for="narayam-toggle" />' );
 		$label
 			.text( mw.msg( 'narayam-toggle-ime', shortcutText() ) )
+			.prepend( $checkbox )
 			.attr( 'title', mw.msg( 'narayam-checkbox-tooltip' ) );
+			
+		var helppage = mw.msg( 'narayam-help-page' );
 		if ( helppage ) {
-			// Link to the help page
-			$label.wrapInner( $( '<a />' ).attr( 'href', mw.util.wikiGetlink( helppage ) ) );
+			$ul.append( $( '<li class="narayam-help-link" />')
+				.append(
+					$( '<a/>' )
+						.text( mw.msg( 'narayam-help' ) )
+						.attr( 'href', mw.util.wikiGetlink( mw.msg( 'narayam-help-page' ) ))
+					)
+				);
 		}
-
-		var $checkboxAndLabel = $( '<span />' )
-			.addClass( 'narayam-toggle-wrapper' )
-			.append( $checkbox )
-			.append( $label );
-		var $spanWithEverything = $( '<span />' )
-			.addClass( 'narayam-wrapper' )
-			.append( $select )
-			.append( $checkboxAndLabel );
-
-		// Put the dropdown and the checkbox at the beginning of the
-		// search form. This seems to be the most reliable way across skins.
-		$( '#searchform' ).prepend( $spanWithEverything );
-
+		
+		$ul.prepend( $( '<li/>' ).append( $label ) );
+		
+		var $menuItems = $( '<div id="narayam-menu-items" class="menu-items" />' );
+		$menuItems
+			.append( $ul );
+			
+		var $menu = $( '<div id="narayam-menu" class="narayam-menu" />');
+		$menu
+			.append(
+				$( '<a href="#" />' )
+					.text( mw.msg( 'narayam-menu' ) )
+					.attr( 'title', mw.msg( 'narayam-menu-tooltip' ) )
+			)
+			.append( $menuItems );
+		
+		var $li = $( '<li id="pt-narayam" />');
+		$li
+			.append( $menu );
+			
+		// If rtl, add to the right of top personal links, else, to the left
+		if($('body').is( '.rtl' ) ){
+			$($('#p-personal ul')[0]).append( $li );
+		}
+		else{
+			$($('#p-personal ul')[0]).prepend( $li );
+		}
+		
+		// Build enable/disable checkbox and label
+		$checkbox = $( '<input type="checkbox" id="narayam-toggle" />' );
+		$checkbox
+			.attr( 'title', mw.msg( 'narayam-checkbox-tooltip' ) )
+			.click( that.toggle );
+		
 		// Restore state from cookies
 		var savedScheme = $.cookie( 'narayam-scheme' );
 		if ( savedScheme && savedScheme in schemes ) {
 			that.setScheme( savedScheme );
+			$( '#narayam-' + savedScheme ).attr( 'checked', 'checked' );
 		} else {
-			$select.change();
+			$('input.narayam-scheme')[0].attr( 'checked', 'checked' );
 		}
 		var enabledCookie = $.cookie( 'narayam-enabled' );
 		if ( enabledCookie == '1' || ( mw.config.get( 'wgNarayamEnabledByDefault' ) && enabledCookie !== '0' ) ) {
 			that.enable();
 		}
+		else {
+			$( 'li#pt-narayam').addClass( 'narayam-inactive' );
+		}
 		// Renew the narayam-enabled cookie. naraym-scheme is renewed by setScheme()
 		if ( enabledCookie ) {
 			$.cookie( 'narayam-enabled', enabledCookie, { 'path': '/', 'expires': 30 } );
 		}
-
+			
 	};
-
+	
 } )();
 
 } )( jQuery );

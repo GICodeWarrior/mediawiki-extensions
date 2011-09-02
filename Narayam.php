@@ -132,6 +132,9 @@ $wgResourceModules['ext.narayam.core'] = $narayamTpl + array(
 	),
 	'messages' => array(
 		'narayam-checkbox-tooltip',
+		'narayam-menu',
+		'narayam-menu-tooltip',
+		'narayam-help',
 		'narayam-help-page',
 		'narayam-toggle-ime',
 	),
