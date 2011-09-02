@@ -647,9 +647,12 @@ $messages['li'] = array(
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Eitvys200
  * @author Matasg
  */
 $messages['lt'] = array(
+	'communityvoice' => 'Bendruomenės Balsas',
+	'communityvoice-ratings' => 'Reitingai',
 	'communityvoice-ratings-scale-status-sending' => 'Siunčiama...',
 	'communityvoice-ratings-scale-status-error' => 'Klaida persiuntime!',
 	'communityvoice-ratings-scale-status-thanks' => 'Ačiū, kad balsavote!',
@@ -856,6 +859,8 @@ $messages['ro'] = array(
 	'communityvoice-ratings-scale-status-error' => 'Eroare la trimitere!',
 	'communityvoice-ratings-scale-status-thanks' => 'Mulțumim pentru vot!',
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|vot exprimat|voturi exprimate}})',
+	'communityvoice-ratings-error-no-category' => 'Atributul categoriei este absent în etichetă.',
+	'communityvoice-ratings-error-no-title' => 'Atributul titlului este absent în etichetă.',
 );
 
 /** Tarandíne (Tarandíne)
