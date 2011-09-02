@@ -2238,10 +2238,74 @@ $messages['lb'] = array(
 
 /** Lithuanian (Lietuvių)
  * @author Eitvys200
+ * @author Ignas693
  */
 $messages['lt'] = array(
+	'math_noblahtex' => 'Negali vykdyti blahtex, kuris turėtų būti$1',
+	'blahtext-desc' => 'Kaip išvesties &lt;math&gt; žymių',
+	'math_AmbiguousInfix' => 'Dviprasmiškas išdėstymą, " $1 ".
+Bandykite naudoti papildomą petnešų "..." disambiguate.',
+	'math_CannotChangeDirectory' => 'Negalite keisti darbinis katalogas',
 	'math_CannotCreateTexFile' => 'Neįmanoma sukurti tex failo',
+	'math_CannotRunDvipng' => 'Negalima paleisti dvipng',
+	'math_CannotRunLatex' => 'Negalima paleisti latekso',
+	'math_CannotWritePngDirectory' => 'Negalima rašyti į išvesties PNG katalogas',
 	'math_CannotWriteTexFile' => 'Negalima rašyti į tex failą',
+	'math_CasesRowTooBig' => 'Gali būti tik du įrašus kiekvienoje eilutėje "atvejais" blokas',
+	'math_DoubleSubscript' => 'Aptiko du apatiniai indeksai, prie pat bazės.
+Leidžiamas tik vienas.',
+	'math_DoubleSuperscript' => 'Aptiko du apatiniai indeksai, prie pat bazės.
+Leidžiamas tik vienas.',
+	'math_IllegalCharacter' => 'Neteisėta simbolių įvesties',
+	'math_IllegalCommandInMathMode' => 'Komandos " $1 " yra neteisėta matematikos režimu',
+	'math_IllegalCommandInMathModeWithHint' => 'Komandos " $1 " yra neteisėta matematikos režimu.
+Galbūt jūs ketinama naudoti " $2 " vietoj?',
+	'math_IllegalCommandInTextMode' => 'Komandos " $1 " yra neteisėta matematikos režimu',
+	'math_IllegalCommandInTextModeWithHint' => 'Komandos " $1 " yra neteisėta matematikos režimu.
+Galbūt jūs ketinama naudoti " $2 " vietoj?',
+	'math_IllegalDelimiter' => 'Neteisėta skyriklį po " $1 "',
+	'math_IllegalFinalBackslash' => 'Neteisėta atgal \\"pabaigoje sąnaudų',
+	'math_IllegalNestedFontEncodings' => 'Šrifto kodavimo komandos gali būti neįdėtasis',
+	'math_IllegalRedefinition' => 'Komandos " $1 " jau apibrėžtą; negalima apibrėžti',
+	'math_InvalidColour' => 'Spalva " $1 " yra neleistinas',
+	'math_InvalidUtf8Input' => 'Įvedimo eilutę nebuvo galioja UTF-8',
+	'math_LatexFontNotSpecified' => 'Nr latekso šriftas buvo nustatyta " $1 "',
+	'math_LatexPackageUnavailable' => 'Negali teikti PNG, nes latekso paketo " $1 " yra neprieinama',
+	'math_MismatchedBeginAndEnd' => 'Komandos " $1 "ir" $2 " nesutampa',
+	'math_MisplacedLimits' => 'Komandos " $1 " gali būti tik po matematikos operatorius.
+Naudokite "\\mathop".',
+	'math_MissingCommandAfterNewcommand' => 'Trūkstamų ar neteisėtą naujos komandos pavadinimas po "\\newcommand".
+Turi būti tiksliai vieną komandą apibrėžti;
+ turi prasidėti įžambus \\"ir tik abėcėlės simbolius.',
+	'math_MissingDelimiter' => 'Trūksta skyriklį po " $1 "',
+	'math_MissingOpenBraceAfter' => 'Trūksta riestinis skliaustas "{" po " $1 "',
+	'math_MissingOpenBraceAtEnd' => 'Trūksta riestinis skliaustas "{" pabaigoje įvedimo',
+	'math_MissingOpenBraceBefore' => 'Trūksta riestinis skliaustas "{" po " $1 "',
+	'math_MissingOrIllegalParameterCount' => 'Trūkstamų ar neteisėtą parametras skaičius apibrėžime " $1 ".
+Turi būti vieną skaitmenį nuo 1 iki 9 imtinai.',
+	'math_MissingOrIllegalParameterIndex' => 'Trūkstamų ar neteisėtą parametras indekso apibrėžime " $1 "',
+	'math_NonAsciiInMathMode' => 'Ne ASCII simbolių gali būti tik teksto režimu.
+Pabandykite, pridėdama problema simbolių "\\text {...}".',
+	'math_NotEnoughArguments' => 'Nėra pakankamai argumentų buvo tiekiamos už " $1 "',
+	'math_PngIncompatibleCharacter' => 'Neįmanoma teisingai generuoti PNG, kuriuose yra simbolį$1',
+	'math_ReservedCommand' => 'Komandos " $1 " yra skirtas tik vidaus naudojimui, blahtex',
+	'math_SubstackRowTooBig' => 'Gali būti tik du įrašus kiekvienoje eilutėje "atvejais" blokas',
+	'math_TooManyMathmlNodes' => 'Yra per daug mazgus kaip medyje',
+	'math_TooManyTokens' => 'Sąnaudos yra per ilgas',
+	'math_UnavailableSymbolFontCombination' => 'Simbolis " $1 "nėra šrifto" $2 "',
+	'math_UnexpectedNextCell' => 'Komandą "iš" gali būti rodomi tik viduje yra "\\begin... \\end" blokas',
+	'math_UnexpectedNextRow' => 'Komandą "iš" gali būti rodomi tik viduje yra "\\begin... \\end" blokas',
+	'math_UnmatchedBegin' => 'Susidūrė su "\\begin" Be atitikimo "\\end"',
+	'math_UnmatchedCloseBrace' => 'Aptiko Uždarantis riestinis skliaustas „} "Be atitikimo atidaryti Mieczować"{"',
+	'math_UnmatchedEnd' => 'Susidūrė su "\\begin" Be atitikimo "\\end"',
+	'math_UnmatchedLeft' => 'Susidūrė su "\\begin" Be atitikimo "\\end"',
+	'math_UnmatchedOpenBrace' => 'Aptiko Uždarantis riestinis skliaustas „} "Be atitikimo atidaryti Mieczować"{"',
+	'math_UnmatchedOpenBracket' => 'Aptiko Uždarantis riestinis skliaustas „} "Be atitikimo atidaryti Mieczować"{"',
+	'math_UnmatchedRight' => 'Susidūrė su "\\begin" Be atitikimo "\\end"',
+	'math_UnrecognisedCommand' => 'Nepripažintos komandos " $1 "',
+	'math_WrongFontEncoding' => 'Simbolis " $1 "gali būti nerodomi parinktyje šrifto kodavimas" $2 "',
+	'math_WrongFontEncodingWithHint' => 'Simbolis " $1 "gali būti nerodomi parinktyje šrifto kodavimas" $2 ".
+Pabandykite naudoti į " $3 {...}" komandą.',
 );
 
 /** Macedonian (Македонски)
