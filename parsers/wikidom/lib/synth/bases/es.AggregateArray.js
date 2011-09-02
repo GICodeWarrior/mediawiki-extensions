@@ -1,15 +1,15 @@
 /**
- * Creates an es.ContentSeries object.
+ * Creates an es.AggregateArray object.
  * 
  * A content series is an array of items which have a getLength method. 
  */
-es.ContentSeries = function( items ) {
+es.AggregateArray = function( items ) {
 	var series = items || [];
 	$.extend( series, this );
 	return series;
 };
 
-es.ContentSeries.prototype.lookup = function( offset ) {
+es.AggregateArray.prototype.lookup = function( offset ) {
 	if ( this.length ) {
 		var i = 0,
 			length = this.length,
@@ -27,7 +27,7 @@ es.ContentSeries.prototype.lookup = function( offset ) {
 	return null;
 };
 
-es.ContentSeries.prototype.rangeOf = function( item ) {
+es.AggregateArray.prototype.rangeOf = function( item ) {
 	if ( this.length ) {
 		var i = 0,
 			length = this.length,
@@ -43,7 +43,7 @@ es.ContentSeries.prototype.rangeOf = function( item ) {
 	return null;
 };
 
-es.ContentSeries.prototype.getLengthOfItems = function() {
+es.AggregateArray.prototype.getLengthOfItems = function() {
 	var sum = 0;
 	for ( var i = 0, length = this.length; i < length; i++ ) {
 		sum += this[i].getLength();
@@ -51,7 +51,7 @@ es.ContentSeries.prototype.getLengthOfItems = function() {
 	return Math.max( 0, sum + this.length - 1 );
 };
 
-es.ContentSeries.prototype.select = function( start, end ) {
+es.AggregateArray.prototype.select = function( start, end ) {
 	// Support es.Range object as first argument
 	if ( typeof start.from === 'number' && typeof start.to === 'number') {
 		start.normalize();

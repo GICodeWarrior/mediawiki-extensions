@@ -1,5 +1,5 @@
 /**
- * Generic Object container item.
+ * Creates an es.ModelContainerItem object.
  * 
  * @class
  * @constructor
@@ -7,7 +7,7 @@
  * @param containerName {String} Name of container type
  * @property [containerName] {Object} Reference to container, if attached
  */
-es.ContainerItem = function( containerName ) {
+es.ModelContainerItem = function( containerName ) {
 	es.EventEmitter.call( this );
 	if ( typeof containerName !== 'string' ) {
 		containerName = 'container';
@@ -18,7 +18,7 @@ es.ContainerItem = function( containerName ) {
 
 /* Methods */
 
-es.ContainerItem.prototype.parent = function() {
+es.ModelContainerItem.prototype.parent = function() {
 	return this[this._containerName];
 };
 
@@ -29,7 +29,7 @@ es.ContainerItem.prototype.parent = function() {
  * @param container {es.Container} Container to attach to
  * @emits "attach" with container argument
  */
-es.ContainerItem.prototype.attach = function( container ) {
+es.ModelContainerItem.prototype.attach = function( container ) {
 	this[this._containerName] = container;
 	this.emit( 'attach', container );
 };
@@ -40,7 +40,7 @@ es.ContainerItem.prototype.attach = function( container ) {
  * @method
  * @emits "detach" with container argument
  */
-es.ContainerItem.prototype.detach = function() {
+es.ModelContainerItem.prototype.detach = function() {
 	var container = this[this._containerName];
 	this[this._containerName] = null;
 	this.emit( 'detach', container );
@@ -53,7 +53,7 @@ es.ContainerItem.prototype.detach = function() {
  * @returns {Object} Previous item, or null if none exists
  * @throws Missing container error if getting the previous item item failed
  */
-es.ContainerItem.prototype.previous = function() {
+es.ModelContainerItem.prototype.previous = function() {
 	try {
 		return this[this._containerName].get( this[this._containerName].indexOf( this ) - 1 );
 	} catch ( e ) {
@@ -68,7 +68,7 @@ es.ContainerItem.prototype.previous = function() {
  * @returns {Object} Next item, or null if none exists
  * @throws Missing container error if getting the next item item failed
  */
-es.ContainerItem.prototype.next = function() {
+es.ModelContainerItem.prototype.next = function() {
 	try {
 		return this[this._containerName].get( this[this._containerName].indexOf( this ) + 1 );
 	} catch ( e ) {
@@ -83,7 +83,7 @@ es.ContainerItem.prototype.next = function() {
  * @returns {Boolean} If item is the first in it's container
  * @throws Missing container error if getting the index of this item failed
  */
-es.ContainerItem.prototype.isFirst = function() {
+es.ModelContainerItem.prototype.isFirst = function() {
 	try {
 		return this[this._containerName].indexOf( this ) === 0;
 	} catch ( e ) {
@@ -98,7 +98,7 @@ es.ContainerItem.prototype.isFirst = function() {
  * @returns {Boolean} If item is the last in it's container
  * @throws Missing container error if getting the index of this item failed
  */
-es.ContainerItem.prototype.isLast = function() {
+es.ModelContainerItem.prototype.isLast = function() {
 	try {
 		return this[this._containerName].indexOf( this )
 			=== this[this._containerName].getLength() - 1;
@@ -109,4 +109,4 @@ es.ContainerItem.prototype.isLast = function() {
 
 /* Inheritance */
 
-es.extend( es.ContainerItem, es.EventEmitter );
+es.extend( es.ModelContainerItem, es.EventEmitter );
