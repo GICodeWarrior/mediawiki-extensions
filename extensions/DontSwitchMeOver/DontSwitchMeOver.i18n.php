@@ -317,6 +317,13 @@ $messages['li'] = array(
 	'dontswitchmeover-pref' => "Pas mien oeterlik neet aan wen 't standaardoeterlik gewiezig weurt",
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Eitvys200
+ */
+$messages['lt'] = array(
+	'dontswitchmeover-pref' => 'Neleisti pakeisti mano išvaizdos jei numatytoji išvaizda pakeičiama',
+);
+
 /** Minangkabau (Baso Minangkabau)
  * @author VoteITP
  */

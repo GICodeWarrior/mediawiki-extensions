@@ -1177,8 +1177,10 @@ Méiglech sinn "plain", "normal" a "wiki".',
 
 /** Lithuanian (Lietuvių)
  * @author Eitvys200
+ * @author Ignas693
  */
 $messages['lt'] = array(
+	'article-comments-desc' => 'Įgalina komentarą skirsnius turinio puslapiuose',
 	'article-comments-title-string' => 'Kreipinys',
 	'article-comments-name-string' => 'Vardas',
 	'article-comments-name-field' => 'Vardas (privaloma):',
@@ -1188,10 +1190,26 @@ $messages['lt'] = array(
 	'article-comments-comment-field' => 'Komentaras:',
 	'article-comments-submit-button' => 'Siųsti',
 	'article-comments-leave-comment-link' => 'Palikite komentarą ...',
+	'article-comments-invalid-field' => 'Į  $1  pateikti <nowiki>[ $2 ]</nowiki> yra neleistinas.',
 	'article-comments-required-field' => '" $1 "laukas yra būtinas.',
+	'article-comments-submission-failed' => 'Komentarų pateikimo, nepavyko',
+	'article-comments-failure-reasons' => 'Deja, jūsų komentarų pateikimo nepavyko, po  {{PLURAL:$1| reason|reasons}}:',
+	'article-comments-no-comments' => 'Atsiprašome, puslapio "[[ $1 ]]" yra nepriimami pastabų šiuo metu.',
+	'article-comments-talk-page-starter' => '<noinclude>Komentarai į "[[ $1 ]]"
+<comments></comments>
+------KURIŲ __NOEDITSECTION__</noinclude>',
 	'article-comments-commenter-said' => '$1 sakė ...',
+	'article-comments-summary' => 'Komentaras pateikė  $1  - per ArticleComments pratęsimas',
+	'article-comments-submission-succeeded' => 'Komentarų pateikimo, pavyko',
+	'article-comments-submission-success' => 'Jūs sėkmingai pateikė komentaras apie "[[ $1 ]]"',
+	'article-comments-submission-view-all' => 'Galite peržiūrėti [[ $1 |all pastabos tame puslapyje]]',
+	'article-comments-user-is-blocked' => 'Jūsų vartotojo abonementas yra šiuo metu užblokuoti redaguoti "[[ $1 ]]".',
+	'article-comments-comment-bad-mode' => 'Neleistinas režimas, pateikti komentarą.
+Galimų yra "paprasto", "normalus" ir "wiki".',
 	'article-comments-comment-missing-name-parameter' => 'Trūksta pavadinimo',
 	'article-comments-comment-missing-date-parameter' => 'Trūksta komentaro datos',
+	'article-comments-no-spam' => 'Bent vieno iš pateiktų laukų buvo pažymėtas kaip šlamštas.',
+	'processcomment' => 'Proceso puslapio komentarą',
 );
 
 /** Latvian (Latviešu)

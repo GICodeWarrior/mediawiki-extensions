@@ -65,6 +65,13 @@ $messages['lb'] = array(
 	'automaticboardwelcome-desc' => "Schreift automatesch [[MediaWiki:User-board-welcome-message|e Begréissungs-Message]] op d'Benotzersäit vun neie Benotzer esoubal si hire Kont opgemaach hunn",
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Ignas693
+ */
+$messages['lt'] = array(
+	'automaticboardwelcome-desc' => 'Automatiškai pranešimų [[MediaWiki:User-valdybos-Sveiki atvykę-message|a Sveikinimas]] dėl naujų vartotojų vartotojo lentos po sąskaitos kūrimo',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

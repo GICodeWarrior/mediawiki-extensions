@@ -663,6 +663,7 @@ Se vos éte branchiê, vos pouede enlevar ceti avèrtissement dens la sèccion �
 	'vector-editwarning-preference' => 'M’avèrtir quand quito una pâge de changement sen sôvar los changements',
 	'vector-simplesearch-search' => 'Rechèrchiér',
 	'vector-simplesearch-containing' => 'que contint...',
+	'vector-noexperiments-preference' => 'M’èxcllure des èxpèriences de novèles fonccionalitâts',
 );
 
 /** Friulian (Furlan)

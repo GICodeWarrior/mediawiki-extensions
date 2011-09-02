@@ -1207,17 +1207,42 @@ Wiesselt Äre Borwseroder maacht en Update, wa méiglech.",
 
 /** Lithuanian (Lietuvių)
  * @author Eitvys200
+ * @author Ignas693
  */
 $messages['lt'] = array(
+	'categorybrowser' => 'Kategorijos naršyklės',
+	'categorybrowser-desc' => 'Numato [[specialus: CategoryBrowser|special puslapis]] filtruoti iš labiausiai apgyvendintos kategorijų ir pereiti juos naudojant AJAX sąsaja',
+	'cb_requires_javascript' => 'Kategorijos naršyklės plėtinys reikalauja JavaScript naršyklėje įgalinti.',
+	'cb_ie6_warning' => 'Sąlyga redaktorius neveikia Internet Explorer 6.0 arba ankstesnėse versijose.
+Tačiau naršymo iš anksto apibrėžtų sąlygų turėtų dirbti paprastai.
+Prašome pakeisti arba atnaujinti savo naršyklę, jei įmanoma.',
+	'cb_show_no_parents_only' => 'Rodyti tik kategorijos, kurios turi Nr tėvai',
+	'cb_cat_name_filter' => 'Ieškoti pagal pavadinimą kategorijos:',
+	'cb_cat_name_filter_clear' => 'Norėdami išvalyti kategorijos pavadinimas filtro, paspauskite',
+	'cb_cat_name_filter_ci' => 'Didžiąsias ir mažąsias raides',
+	'cb_copy_line_hint' => 'Naudoti [+] ir [> +] mygtukus kopijuoti ir įklijuoti operatoriai į pasirinktą išraiška',
+	'cb_has_subcategories' => '$1 {{PLURAL:$1|kategorija|kategorijos|kategorijų}}',
+	'cb_has_pages' => '$1 {{PLURAL:$1|kadras|kadrai|kadrų}}',
+	'cb_has_files' => '$1 {{PLURAL:$1|kadras|kadrai|kadrų}}',
+	'cb_has_parentcategories' => 'pagrindinės kategorijos (jei yra)',
 	'cb_previous_items_link' => 'Ankstesnis',
 	'cb_next_items_link' => 'Sekantis',
-	'cb_next_items_stats' => ' (iš $2 )',
+	'cb_next_items_stats' => '$1 (iš $2 )',
 	'cb_cat_subcats' => 'subkategorijos',
 	'cb_cat_pages' => 'puslapiai',
 	'cb_cat_files' => 'failai',
+	'cb_apply_button' => 'Taikyti',
+	'cb_all_op' => 'VISI',
+	'cb_or_op' => 'arba',
+	'cb_and_op' => 'ir',
 	'cb_edit_left_hint' => 'Perkelti į kairę, jei įmanoma',
 	'cb_edit_right_hint' => 'Perkelti į dešinę, jei įmanoma',
 	'cb_edit_remove_hint' => 'Ištrinti, jei įmanoma',
+	'cb_edit_copy_hint' => 'Kopijuoti operatorius į mainų sritį',
+	'cb_edit_append_hint' => 'Įterpti paskutinės padėties operatorius',
+	'cb_edit_clear_hint' => 'Išvalyti dabartinių sąvoka (pasirinkite Visi)',
+	'cb_edit_paste_hint' => 'Įklijuoti operatorius į dabartinę padėtį, jei įmanoma',
+	'cb_edit_paste_right_hint' => 'Įklijuoti operatorius į dabartinę padėtį, jei įmanoma',
 );
 
 /** Latgalian (Latgaļu)

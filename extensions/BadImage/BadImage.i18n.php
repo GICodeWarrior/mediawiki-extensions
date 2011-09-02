@@ -1634,11 +1634,14 @@ $messages['loz'] = array(
  * @author Eitvys200
  * @author Homo
  * @author Hugo.arg
+ * @author Ignas693
  */
 $messages['lt'] = array(
 	'badimages' => 'Blogas paveikslėlių sąrašas',
+	'badimage-desc' => 'Išplėsti bloga vaizdo MediaWiki pajėgumų sąrašą',
 	'badimages-add-btn' => 'Pridėti',
 	'badimages-added' => '$1 buvo pridėtas prie sąrašo.',
+	'badimages-count' => 'Ten  {{PLURAL:$1| is|are}} "" $1 ""  {{PLURAL:$1| image|images}} blogas vaizdų sąrašą.',
 	'badimages-name' => 'Pavadinimas:',
 	'badimages-not-added' => 'Vaizdas negali būti pridėtas.',
 	'badimages-not-removed' => 'Vaizdas negali būti pašalintas.',
@@ -1647,7 +1650,13 @@ $messages['lt'] = array(
 	'badimages-remove-btn' => 'Pašalinti',
 	'badimages-remove-confirm' => 'Patvirtinkite, jog norite pašalinti $1 iš sąrašo:',
 	'badimages-removed' => '$1 buvo pašalintas iš sąrašo.',
+	'badimages-subheading' => 'Einamosioms prekėms',
+	'badimages-unprivileged' => '(Jūs neturite pakankamai teisių keisti sąrašo)',
 	'badimages-log-name' => 'Blogų vaizdų sąrašas',
+	'badimages-log-header' => 'Tai yra pakeitimų žurnalą, [[{{MediaWiki:Badimages-puslapio}} |bad vaizdo sąrašas]].',
+	'badimages-log-add' => 'papildomas [[ $1 ]] blogas vaizdų sąrašą',
+	'badimages-log-remove' => 'papildomas [[ $1 ]] blogas vaizdų sąrašą',
+	'badimages-page' => '{{ns:help}}: blogai vaizdų sąrašą',
 	'right-badimages' => 'Atnaujinti blogų vaizdų sąrašą',
 );
 

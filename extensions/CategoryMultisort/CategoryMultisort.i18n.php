@@ -444,8 +444,13 @@ $messages['lb'] = array(
 
 /** Lithuanian (Lietuvių)
  * @author Eitvys200
+ * @author Ignas693
  */
 $messages['lt'] = array(
+	'categorymultisort-desc' => 'Leidžiant kategorijų turi būti peržiūrėtas pagal įvairių sortkeys',
+	'categorymultisort-defaultsortkey-name' => 'Standartinis',
+	'categorymultisort-go' => 'Eiti',
+	'categorymultisort-default-sortkey' => 'Numatytasis sortkey:',
 	'prefs-category' => 'Kategorija',
 );
 

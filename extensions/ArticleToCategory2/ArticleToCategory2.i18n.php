@@ -442,8 +442,10 @@ $messages['lb'] = array(
 
 /** Lithuanian (Lietuvių)
  * @author Eitvys200
+ * @author Ignas693
  */
 $messages['lt'] = array(
+	'articletocategory2-desc' => 'Kelia savo inputbox kiekvienos kategorijos puslapyje, leidžia sukurti naują puslapį tiesiogiai į tos kategorijos',
 	'articletocategory2-create-article-under-category-text' => 'Pridėti puslapį į šią kategoriją',
 	'articletocategory2-create-article-under-category-button' => 'Sukurti',
 	'articletocategory2-create-category-under-category-text' => 'Pridėti kategoriją į šią kategoriją',

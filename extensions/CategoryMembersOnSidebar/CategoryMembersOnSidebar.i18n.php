@@ -169,6 +169,13 @@ $messages['lb'] = array(
 	'categorymembersonsidebar-desc' => "Setzt d'Membere vun der Kategorie an d'Säiteläischt",
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Ignas693
+ */
+$messages['lt'] = array(
+	'categorymembersonsidebar-desc' => 'Prideda kategorijos narių parankinės',
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */

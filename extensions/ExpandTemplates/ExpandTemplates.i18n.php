@@ -1711,6 +1711,7 @@ $messages['qu'] = array(
 $messages['ro'] = array(
 	'expandtemplates' => 'Extindere formate',
 	'expandtemplates-desc' => '[[Special:ExpandTemplates|Extinde formatele, funcțiile parser și variabilele]] pentru a vedea extins textul wiki și pentru a previzualiza modul de redare a paginii',
+	'expand_templates_title' => 'Titlul pagini, pentru {{FULLPAGENAME}} etc.:',
 	'expand_templates_input' => 'Text sursă:',
 	'expand_templates_output' => 'Rezultat',
 	'expand_templates_xml_output' => 'Ieșire XML',

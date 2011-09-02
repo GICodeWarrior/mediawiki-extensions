@@ -953,6 +953,7 @@ $messages['ru'] = array(
 	'right-managetms' => '[[Special:SpecialLiveTranslate|изменять]] список памяти переводов',
 	'group-tmxadmin' => 'Администраторы TMX',
 	'group-tmxadmin-member' => 'Администратор TMX',
+	'grouppage-tmxadmin' => 'Project:TMX-админы',
 	'livetranslate-translate-to' => 'Перевести эту страницу на',
 	'livetranslate-button-translate' => 'Перевести',
 	'livetranslate-button-translating' => 'Выполняется перевод...',

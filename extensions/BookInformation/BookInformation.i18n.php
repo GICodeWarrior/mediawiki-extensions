@@ -1132,16 +1132,22 @@ $messages['li'] = array(
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Ignas693
  * @author Matasg
  */
 $messages['lt'] = array(
 	'bookinfo-header' => 'Knygos informacija',
+	'bookinformation-desc' => 'Išplečia [[specialus: Booksources|book šaltinių specialus puslapis]] informaciją iš tinklo tarnybos',
 	'bookinfo-result-title' => 'Pavadinimas:',
 	'bookinfo-result-author' => 'Autorius:',
 	'bookinfo-result-publisher' => 'Leidėjas:',
 	'bookinfo-result-year' => 'Metai:',
 	'bookinfo-error-invalidisbn' => 'Įvestas blogas ISBN',
+	'bookinfo-error-nosuchitem' => 'Prekės nėra arba rasti neįmanoma.',
+	'bookinfo-error-nodriver' => 'Negalima inicijuoti atitinkamą knygos informacija tvarkyklę.',
+	'bookinfo-error-noresponse' => 'Nr reagavimo arba prašymą, baigėsi.',
 	'bookinfo-purchase' => 'Pirkti šią knygą iš $1',
+	'bookinfo-provider' => 'Duomenų teikėjas:$1',
 );
 
 /** Latvian (Latviešu)

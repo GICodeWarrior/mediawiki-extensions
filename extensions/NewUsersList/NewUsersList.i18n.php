@@ -65,3 +65,10 @@ $messages['nl'] = array(
 	'newuserslist-desc' => 'Voegt de parsertag <tt>&lt;newusers&gt;</tt> toe om een lijst van nieuwe gebruikers met hun avatars weer te geven',
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'newuserslist-desc' => 'Добавляет тег <tt><newusers></tt> для получения списка новых участников и их аватаров',
+);
+

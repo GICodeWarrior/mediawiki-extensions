@@ -118,6 +118,16 @@ $messages['lb'] = array(
 	'categorize-advice' => 'Klickt op déi Etiquetten déi Dir mat dësem Artikel verbanne wëllt:',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Ignas693
+ */
+$messages['lt'] = array(
+	'categorize-desc' => 'Prideda įvesties langelį redaguoti ir įkelti puslapių, kuris leidžia vartotojams priskirti kategorijoms',
+	'categorize-title' => 'Žinių kvalifikacijos',
+	'categorize-footer' => 'Jei norite pridėti žymę, prašome susisiekti su [[specialus: ListUsers / sysop|administrator]].',
+	'categorize-advice' => 'Spustelėkite ant etikečių, kurį norite priskirti šį puslapį:',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

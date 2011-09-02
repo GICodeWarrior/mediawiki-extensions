@@ -777,9 +777,23 @@ $messages['li'] = array(
 
 /** Lithuanian (Lietuvių)
  * @author Eitvys200
+ * @author Ignas693
  */
 $messages['lt'] = array(
 	'call' => 'Skambinti',
+	'call-desc' => 'Kurti hipersaitą į šabloną (arba į įprastą wiki puslapį) parametras, einančios.
+Gali būti naudojamas ne naršyklės komandų eilutę arba per wiki teksto',
+	'call-text' => 'Call pratęsimo tikisi wiki puslapį ir neprivalomų parametrų puslapio kaip argumentas.<br><br>
+N!1 Pavyzdys: <tt>[[{{# specialius: skambučių}} /My šabloną, parm1 = reikšmė1]]</tt><br>
+2 Pavyzdys: <tt>[[{{# specialius: skambučių}} / kalbėti: mano diskusijų, parm1 = reikšmė1]]</tt><br>
+3 Pavyzdys: <tt>[[{{# specialius: skambučių}} /: mano puslapį, parm1 = Reikšmė1, parm2 = reikšmė2]]</tt><br>
+4 (Naršyklės URL) pavyzdys: <tt>http://mydomain/mywiki/index.php? {{# specialius: skambučių}}/: Mano puslapyje, parm1 = reikšmė1</tt><br><br>
+N!<i>Skambinti pratęsimo</i> skambinti pateiktą puslapį ir perduoti parametrus.<br>
+Jūs pamatysite vadinamas puslapio ir jos pavadinimas turinį, bet savo "tipas" bus, kad specialios puslapio, t. y. tokių puslapio redaguoti negalima.<br>Jūs matote turinys gali skirtis atsižvelgiant į perduodama parametrų vertės.<br><br>
+N!<i>Skambinti plėtinys</i> yra naudinga sukurti interaktyviąsias programas su MediaWiki.<br>
+Žr <a href="http://semeb.com/dpldemo/Template:Catlist">TGA GUI</a> .<br>
+Dėl problemų galite pabandyti <b>{{# specialius: skambučių}} / DebuG</b>',
+	'call-save' => 'Šis kvietimas produkcijos būtų įrašyti į puslapį, vadinamas " $1 ".',
 	'call-save-success' => 'Šis tekstas buvo įrašytas į puslapį <big> [[$1]] </big> .',
 	'call-save-failed' => 'Šis tekstas nebuvo įrašytas į puslapį <big>[[$1]]</big> nes puslapis jau egzistuoja.',
 );

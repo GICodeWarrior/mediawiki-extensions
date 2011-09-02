@@ -326,11 +326,14 @@ $messages['lb'] = array(
 
 /** Lithuanian (Lietuvių)
  * @author Eitvys200
+ * @author Ignas693
  */
 $messages['lt'] = array(
 	'bookmanager-desc' => 'Įrankiai knygoms',
 	'bm-booktools-section' => 'Knygų įrankiai',
+	'bm-randomchapter-link' => 'Atsitiktiniai skyrius',
 	'bm-printversion' => 'Versija spausdinimui',
+	'bm-printversion-desc' => 'Generuoja a [[specialus: PrintVersion|print]] a knygos versiją',
 	'bm-printversion-no-book' => 'Įveskite knygos pavadinimą, kad gautumėt versiją spausdinimui.',
 	'bm-printversion-inexistent-book' => 'Knyga nerasta. Įveskite esamos knygos pavadinimą kad gautumėte spausdinimo versiją.',
 );

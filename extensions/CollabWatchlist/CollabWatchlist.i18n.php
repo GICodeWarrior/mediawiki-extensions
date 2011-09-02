@@ -539,6 +539,7 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Farras
+ * @author Kenrick95
  */
 $messages['id'] = array(
 	'collabwatchlist' => 'Daftar pantauan kolaboratif',
@@ -554,6 +555,7 @@ $messages['id'] = array(
 	'collabwatchlistsall' => 'Semua daftar',
 	'collabwatchlistfiltertags' => 'Sembunyikan penanda',
 	'collabwatchlistedit-users-raw-submit' => 'Simpan',
+	'collabwatchlistedit-tags-raw-submit' => 'Simpan',
 );
 
 /** Kurdish (Latin) (Kurdî (Latin))

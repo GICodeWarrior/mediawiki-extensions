@@ -206,6 +206,13 @@ $messages['pt-br'] = array(
 	'customusersignup-desc' => 'Permite apresentar mensagens personalizadas durante o processo de criação de conta',
 );
 
+/** Romanian (Română)
+ * @author Firilacroco
+ */
+$messages['ro'] = array(
+	'customusersignup-desc' => 'Permite personalizarea mesajelor în timpul procesului de crearea a contului',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

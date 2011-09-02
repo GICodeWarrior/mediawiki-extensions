@@ -1706,6 +1706,7 @@ Sjtèl $wgPrefStatsTrackPrefs in óm prifferensies bie te hauwe.',
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Eitvys200
  * @author Garas
  * @author Matasg
  */
@@ -1716,6 +1717,13 @@ $messages['lt'] = array(
 	'prefstats-list-intro' => 'Šiuo metu yra sekami šie pasirinkimai.
 Pasirinkite vieną iš jų, norėdami pamatyti statistiką.',
 	'prefstats-xaxis' => 'Trukmė (valandomis)',
+	'prefstats-factors' => 'Peržiūrėti per: $1',
+	'prefstats-factor-hour' => 'valandą',
+	'prefstats-factor-sixhours' => 'šešias valandas',
+	'prefstats-factor-day' => 'dieną',
+	'prefstats-factor-week' => 'savaitę',
+	'prefstats-factor-twoweeks' => 'dvi savaites',
+	'prefstats-factor-fourweeks' => 'keturias savaites',
 );
 
 /** Latvian (Latviešu)

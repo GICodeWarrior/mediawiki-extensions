@@ -165,6 +165,15 @@ $messages['es'] = array(
 	'spl3_nosubpages' => '$1 no tiene subpáginas a listar.',
 );
 
+/** Persian (فارسی)
+ * @author Mjbmr
+ */
+$messages['fa'] = array(
+	'spl3-desc' => 'ایجاد خودکار فهرستی از صفحات از یک صفحه با استفاده از برچسب <code><nowiki><splist /></nowiki></code>',
+	'spl3_debug' => 'مقدار ناشناخته برای گزینهٔ $1.',
+	'spl3_nosubpages' => '$1 هیچ زیر صفحه‌ای برای فهرست ندارد.',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Silvonen

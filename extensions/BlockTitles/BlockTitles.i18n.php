@@ -506,8 +506,11 @@ $messages['li'] = array(
 
 /** Lithuanian (Lietuvių)
  * @author Eitvys200
+ * @author Ignas693
  */
 $messages['lt'] = array(
+	'block_title_error_page_title' => 'Užblokuotas pavadinimas',
+	'blocktitles-desc' => 'Yra pagrindinis būdas užkirsti kelią tam tikrų knygas iš įrašyti arba sukurti puslapių',
 	'block_title_error' => 'Atsiprašome, šio puslapio pavadinimo negalima išsaugoti.',
 );
 

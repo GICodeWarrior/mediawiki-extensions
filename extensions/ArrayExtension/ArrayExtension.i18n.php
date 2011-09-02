@@ -147,6 +147,13 @@ $messages['lb'] = array(
 	'arrayext-desc' => 'Späicheren a Benotze vun definéierten Tabellen',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Ignas693
+ */
+$messages['lt'] = array(
+	'arrayext-desc' => 'Saugoti ir apskaičiuoti pavadintas masyvai',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

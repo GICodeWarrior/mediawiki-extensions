@@ -34,9 +34,12 @@ $messages['af'] = array(
 
 /** Arabic (العربية)
  * @author OsamaK
+ * @author زكريا
  */
 $messages['ar'] = array(
+	'variablepage' => 'صفحة متغيرة',
 	'variablepage-navlink_text' => 'تبرّع',
+	'variablepage-desc' => 'تحويل لين إلى صفحة متغيرة',
 );
 
 /** Bashkir (Башҡортса)
@@ -183,6 +186,7 @@ $messages['fr'] = array(
 $messages['frp'] = array(
 	'variablepage' => 'PâgeVariâbla',
 	'variablepage-navlink_text' => 'Balyér',
+	'variablepage-desc' => 'Redirèccion legiére de vers una pâge variâbla',
 );
 
 /** Galician (Galego)

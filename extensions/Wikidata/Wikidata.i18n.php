@@ -8424,6 +8424,16 @@ $messages['li'] = array(
 	'ow_save' => 'Opslaon',
 );
 
+/** Lingala (Lingála)
+ * @author Eruedin
+ */
+$messages['ln'] = array(
+	'datasearch_language' => 'Lokótá:',
+	'ow_exporttsv_languages' => 'Nkótá:',
+	'ow_save' => 'Kobómbisa',
+	'ow_history' => 'Mokóló',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Matasg
  */
