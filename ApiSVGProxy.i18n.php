@@ -269,6 +269,13 @@ $messages['li'] = array(
 	'apisvgproxy-desc' => "Guf SVG-bestenj door vanaaf 'n (meugelijk elders bestaonde) bestandjsrepository nao 't lokaal domein",
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Ignas693
+ */
+$messages['lt'] = array(
+	'apisvgproxy-desc' => 'Proxy SVG failus iš (galbūt nuotolinio) failų saugykla į vietos domeno',
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */
