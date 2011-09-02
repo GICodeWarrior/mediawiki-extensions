@@ -668,6 +668,13 @@ $messages['lmo'] = array(
 	'abcdownload' => 'Descarga:',
 );
 
+/** Lingala (Lingála)
+ * @author Eruedin
+ */
+$messages['ln'] = array(
+	'abcdownload' => 'kokɔ́ngɔlɔ:',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Matasg
  */
