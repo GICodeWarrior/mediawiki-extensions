@@ -301,6 +301,7 @@ $messages['ee'] = array(
 /** Greek (Ελληνικά)
  * @author Konsnos
  * @author Omnipaedista
+ * @author ZaDiak
  */
 $messages['el'] = array(
 	'contributiontracking-desc' => 'Παρακολούθηση συνεισφορών για τον έρανο του Wikimedia',
@@ -310,6 +311,8 @@ $messages['el'] = array(
 	'contrib-tracking-submitting' => 'Υποβολή στον επεξεργαστή πληρωμών...',
 	'contrib-tracking-continue' => 'Εάν δεν προωθηθήκατε αυτόματα, πατήστε το κουμπί για να ολοκληρώσετε τη δωρεάν σας μέσω PayPal.',
 	'contrib-tracking-button' => 'Συνέχεια',
+	'contrib-tracking-item-name-onetime' => 'Εφάπαξ δωρεά',
+	'contrib-tracking-item-name-recurring' => 'Επαναλαμβανόμενη μηνιαία δωρεά',
 );
 
 /** Esperanto (Esperanto)
@@ -375,6 +378,7 @@ $messages['fa'] = array(
 	'contrib-tracking-error-text' => 'اطلاعات ارسالی فرم غیر مجاز است',
 	'contrib-tracking-submitting' => 'ارسال به پردازش کنندهٔ پرداخت...',
 	'contrib-tracking-continue' => 'اگر به طور خودکار به صفحهٔ مورد نظر هدایت نشدید، برای تکمیل کمک مالی خود در PayPal بر روی دکمه کلیک کنید.',
+	'contrib-tracking-redirect' => 'شما به طور خودکار برای تکمیل کمک مالی‌تان به پی‌پال هدایت خواهید شد.',
 	'contrib-tracking-button' => 'ادامه',
 	'contrib-tracking-item-name-onetime' => 'یک بار کمک مالی',
 	'contrib-tracking-item-name-recurring' => 'دورهٔ اهدای کمک مالی ماهانه',
@@ -1045,11 +1049,16 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'contributiontracking-desc' => 'Слїдованя фінанчных приспівків почас кампанї фонду Вікімедія',
 	'contributiontracking' => 'Слїдованя приспевків',
 	'contrib-tracking-error' => 'Хыба',
 	'contrib-tracking-error-text' => 'Одосланый формуларь не быв правилно выповненый',
 	'contrib-tracking-submitting' => 'Платба ся одосылать про спрацованя ...',
+	'contrib-tracking-continue' => 'Як не будете автоматічно напрамленый(а), кликните на клапку, жебы сьте міг(ла) докінчіти свій приспевок за помочі службы PayPal.',
+	'contrib-tracking-redirect' => 'Про докібчіня приспевку будете автоматічно напрамлены на PayPal.',
 	'contrib-tracking-button' => 'Продовжовати',
+	'contrib-tracking-item-name-onetime' => 'Єдноразове пожертвованя',
+	'contrib-tracking-item-name-recurring' => 'Періодічне штомісячне пожертвованя',
 );
 
 /** Sakha (Саха тыла)

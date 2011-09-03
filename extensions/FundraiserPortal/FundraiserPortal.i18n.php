@@ -990,6 +990,7 @@ $messages['pt-br'] = array(
  */
 $messages['ro'] = array(
 	'fundraiserportal' => 'Portal strângere de fonduri',
+	'fundraiserportal-desc' => 'Adaugă un portal „Donații” în partea de sus a barei laterale.',
 	'fundraiserportal-plain-button' => 'Sprijiniți Wikipedia!',
 	'fundraiserportal-ruby-button' => 'Donați acum',
 	'fundraiserportal-rubytext-button' => 'Donați acum',

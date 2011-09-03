@@ -20,10 +20,11 @@ $messages['qqq'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author Renessaince
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
-	'categorysortheaders-desc' => 'Дазваляе рабіць загалоўкі сьпісаў артыкулаў па альфабэце ў катэгорыях зь некалькіх сымбаляў з выкарыстаньнем сынтаксісу <nowiki>[[category:Foo|^Загаловак^Нябачная частка ключа сартыроўкі]]</nowiki>',
+	'categorysortheaders-desc' => 'Дазволіць рабіць загалоўкі сьпісаў артыкулаў па альфабэце ў катэгорыях зь некалькіх сымбаляў з выкарыстаньнем сынтаксісу <nowiki>[[category:Foo|^Загаловак^Нябачная частка ключа сартыроўкі]]</nowiki>',
 );
 
 /** German (Deutsch)

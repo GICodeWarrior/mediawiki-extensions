@@ -43,6 +43,20 @@ $messages['gl'] = array(
 	'newuserslist-desc' => 'Engade a etiqueta analítica <tt>&lt;newusers&gt;</tt> para recuperar a lista de novos usuarios e os seus avatares',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'newuserslist-desc' => 'Adde le etiquetta analysator <tt>&lt;newusers&gt;</tt> pro recuperar le lista de nove usatores e lor avatares',
+);
+
+/** Japanese (日本語)
+ * @author Schu
+ */
+$messages['ja'] = array(
+	'newuserslist-desc' => '新しい利用者とそのアバターのリストを取得するために <tt>&lt;newusers&gt;</tt> パーサ タグを追加します。',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

@@ -156,10 +156,12 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Schu
  * @author 青子守歌
  */
 $messages['ja'] = array(
 	'sidebardonatebox-desc' => 'サイドバーに、カスタムな寄付ボックスを追加する',
+	'DONATE' => '寄付',
 );
 
 /** Colognian (Ripoarisch)

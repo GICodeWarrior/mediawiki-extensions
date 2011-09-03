@@ -58,6 +58,20 @@ $messages['ia'] = array(
 	'automaticboardwelcome-desc' => 'Insere automaticamente un [[MediaWiki:User-board-welcome-message|message de benvenita]] in le tabuliero personal de nove usatores post le creation del conto',
 );
 
+/** Japanese (日本語)
+ * @author Schu
+ */
+$messages['ja'] = array(
+	'automaticboardwelcome-desc' => '新規利用者のアカウントが作成された後に、その利用者のユーザーボード上に [[MediaWiki:User-board-welcome-message|ウェルカムメッセ​​ージ]] を自動的に投稿します。',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'automaticboardwelcome-desc' => 'Seiht automattesch en [[MediaWiki:User-board-welcome-message|Bejröhßung]] op neue Metmaacher ier  Brädder.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

@@ -98,6 +98,16 @@ $messages['ia'] = array(
 	'categorize-advice' => 'Clicca super le etiquettas que tu vole attribuer a iste pagina:',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Kenrick95
+ */
+$messages['id'] = array(
+	'categorize-desc' => 'Tambahkan kotak input untuk menyunting dan mengunggah halaman yang memungkinkan pengguna menetapkan kategori',
+	'categorize-title' => 'Kualifikasi pengetahuan',
+	'categorize-footer' => 'Jika Anda ingin menambahkan label, silakan hubungi seorang [[Special:ListUsers/sysop|pengurus]].',
+	'categorize-advice' => 'Klik pada label yang Anda inginkan untuk menghubungkan ke halaman ini:',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
@@ -144,7 +154,7 @@ $messages['mk'] = array(
 $messages['ms'] = array(
 	'categorize-desc' => 'Menambahkan petak input untuk menyunting dan memuat naik laman yang membolehkan pengguna memperuntukkan kategori kepada laman',
 	'categorize-title' => 'Kelayakan pengetahuan',
-	'categorize-footer' => 'Jika anda ingin menambahkan label, sila hubungi kami seorang [[Special:ListUsers/sysop|pentadbir]].',
+	'categorize-footer' => 'Jika anda ingin menambahkan label, sila hubungi seorang [[Special:ListUsers/sysop|pentadbir]].',
 	'categorize-advice' => 'Klik pada label yang ingin anda atributkan kepada laman ini:',
 );
 

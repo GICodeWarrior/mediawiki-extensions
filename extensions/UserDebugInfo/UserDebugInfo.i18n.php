@@ -21,6 +21,20 @@ $messages['qqq'] = array(
 	'userdebuginfo-desc' => '{{desc}}',
 );
 
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author Renessaince
+ */
+$messages['be-tarask'] = array(
+	'userdebuginfo' => 'Адладачная інфармацыя пра карыстальнікаў',
+	'userdebuginfo-desc' => 'Паказвае некаторую карысную для адладкі інфармацыю пра цяперашняга карыстальніка',
+	'userdebuginfo-useragent' => 'Агент карыстальніка HTTP',
+	'userdebuginfo-remotehost' => 'Аддалены хост HTTP',
+	'userdebuginfo-remoteaddr' => 'Аддаленая адрэса HTTP',
+	'userdebuginfo-key' => 'Ключ',
+	'userdebuginfo-value' => 'Значэньне',
+	'userdebuginfo-language' => 'Мова',
+);
+
 /** Breton (Brezhoneg)
  * @author Y-M D
  */

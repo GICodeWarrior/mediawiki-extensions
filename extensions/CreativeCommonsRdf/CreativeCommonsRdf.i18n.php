@@ -79,6 +79,13 @@ $messages['ia'] = array(
 	'creativecommonsrdf-desc' => 'Metadatos RDF de Creative Commons',
 );
 
+/** Japanese (日本語)
+ * @author Schu
+ */
+$messages['ja'] = array(
+	'creativecommonsrdf-desc' => 'クリエイティブ・コモンズ RDF -メタデータ',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

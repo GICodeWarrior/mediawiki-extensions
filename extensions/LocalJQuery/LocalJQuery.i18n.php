@@ -68,6 +68,13 @@ $messages['it'] = array(
 	'localjquery-desc' => 'Carica jQuery da [[MediaWiki:JQuery.js]] (con ResourceLoader)',
 );
 
+/** Japanese (日本語)
+ * @author Schu
+ */
+$messages['ja'] = array(
+	'localjquery-desc' => '[[MediaWiki:JQuery.js]] から (リソースローダーにより) jQueryをロードします。',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

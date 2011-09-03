@@ -64,6 +64,7 @@ $messages['af'] = array(
  * @author Majid Al-Dharrab
  * @author Samer
  * @author Zanatos
+ * @author محمد الجداوي
  */
 $messages['ar'] = array(
 	'mwe-clipedit-crop' => 'اقتص الصورة',
@@ -77,7 +78,7 @@ $messages['ar'] = array(
 	'mwe-clipedit-sc_duration' => 'المدة',
 	'mwe-clipedit-template_properties' => 'خصائص القالب',
 	'mwe-clipedit-custom_title' => 'عنوان مُخصّص',
-	'mwe-clipedit-edit_properties' => 'عدل الخصائص',
+	'mwe-clipedit-edit_properties' => 'عدّل الخصائص',
 	'mwe-clipedit-other_properties' => 'خصائص أخرى',
 	'mwe-clipedit-resource_page' => 'الصفحة المصدر:',
 	'mwe-clipedit-start_time' => 'وقت البداية',

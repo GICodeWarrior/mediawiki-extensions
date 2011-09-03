@@ -1772,6 +1772,8 @@ $messages['ru'] = array(
  */
 $messages['rue'] = array(
 	'expandtemplates' => 'Розгортаня шаблон',
+	'expandtemplates-desc' => '[[Special:ExpandTemplates|Розбалює шаблоны, функції парсера і перемінны]], жебы указати розгорнутый вікітекст і нагляд сторінкы',
+	'expand_templates_intro' => 'Тота шпеціална сторінка перетворює текст, рекурзівно розгортаювші у ній вшыткы шаблоны як <code><nowiki>{{</nowiki>#if:…...}}</code> ці перемінны як <code><nowiki>{{</nowiki>CURRENTDAY}}</code> – тзн. практічно вшытко у двоїтых заперках. Ку тому ся хоснують прямо одповідаючі функціі парсера MediaWiki.',
 	'expand_templates_title' => 'Назва сторінкы про контекст про {{FULLPAGENAME}} ітд.:',
 	'expand_templates_input' => 'Вступный текст:',
 	'expand_templates_output' => 'Резултат',

@@ -94,6 +94,13 @@ $messages['cs'] = array(
 	'nedits' => '$1 {{PLURAL:$1|editace|editace|editací}}',
 );
 
+/** Danish (Dansk)
+ * @author Peter Alberti
+ */
+$messages['da'] = array(
+	'nedits' => '$1 {{PLURAL:$1|redigering|redigeringer}}',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  * @author The Evil IP address
@@ -123,6 +130,15 @@ $messages['dsb'] = array(
 	'active-strategy-desc' => 'Pokazujo licbu změnow na bokach strategiskego planowanja',
 	'active-strategy-intro' => 'Licba změnow na źěłowych kupkach za {{PLURAL:$1|zachadny $1 źeń|zachadnej $1 dnja|zachadne $1 dny|zachadnych $1 dnjow}}.',
 	'nedits' => '$1 {{PLURAL:$1|změna|změnje|změny|změnow}}',
+);
+
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'activestrategy' => 'Ενεργή στρατηγική',
+	'active-strategy-desc' => 'Δείχνει τον αριθμό των επεξεργασιών σε σελίδες στρατηγικού σχεδιασμού',
+	'nedits' => '$1 {{PLURAL:$1|επεξεργασία|επεξεργασίες}}',
 );
 
 /** Esperanto (Esperanto)

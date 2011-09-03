@@ -722,6 +722,7 @@ $messages['el'] = array(
 	'readerfeedback-tier-poor' => 'Φτωχός',
 	'tooltip-ca-ratinghist' => 'Βαθμολογίες αναγνωστών για αυτή τη σελίδα',
 	'specialpages-group-feedback' => 'Γνώμη θεατή',
+	'readerfeedback-tt-review' => 'Υποβολή αναθεώρησης',
 );
 
 /** Esperanto (Esperanto)

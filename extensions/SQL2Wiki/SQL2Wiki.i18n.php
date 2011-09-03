@@ -177,6 +177,25 @@ ha fallite con le message de error: "$2"!',
 	'sql2wiki-err-feature_not_supported' => 'SQLaWiki: Iste function non es supportate per le bases de datos del typo $1!',
 );
 
+/** Japanese (日本語)
+ * @author Schu
+ */
+$messages['ja'] = array(
+	'sql2wiki' => 'SQL2Wiki',
+	'sql2wiki-desc' => 'ページの内容に直接 SQL のデータを表示します',
+	'sql2wiki-special' => 'クリックで SQL2Wiki のコードを実行します',
+	'sql2wiki-cache_refresh' => '更新',
+	'sql2wiki-err-invalid_db_id' => 'SQL2Wiki: 欠落または無効なデータベース ID',
+	'sql2wiki-err-invalid_type' => 'SQL2Wiki: 欠落または無効なタイプ',
+	'sql2wiki-err-failed_to_connect' => 'SQL2Wiki: $1 への接続に失敗しました！',
+	'sql2wiki-err-failed_to_execute' => 'SQL2Wiki: ステートメントの実行に失敗しました: 
+
+"$1"
+
+エラー メッセージ: "$2"！',
+	'sql2wiki-err-feature_not_supported' => 'SQL2Wiki: 機能は $1の種類のデータベースではサポートされていません！',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
