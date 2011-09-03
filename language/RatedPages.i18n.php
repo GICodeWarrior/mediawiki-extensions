@@ -206,6 +206,7 @@ $messages['dsb'] = array(
  */
 $messages['el'] = array(
 	'ratedpages' => 'Σελίδες αξιολογημένες από τους αναγνώστες',
+	'ratedpages-none' => 'Δεν υπάρχουν σελίδες σε αυτήν τη λίστα',
 	'ratedpages-graphs' => 'δεδομένα βαθμολόγησης',
 	'ratedpages-count' => '$1 {{PLURAL:$1|επιθεώρηση|επιθεωρήσεις}}',
 );
