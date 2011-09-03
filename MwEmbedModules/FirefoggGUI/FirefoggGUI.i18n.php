@@ -168,6 +168,7 @@ $messages['an'] = array(
  * @author Moemin05
  * @author OsamaK
  * @author Samer
+ * @author محمد الجداوي
  */
 $messages['ar'] = array(
 	'fogg-wont-upload-to-server' => 'ملاحظة : سوف يتمّ ترميز ملف الفيديو محلّياً ون يتمّ تحميله على أي خادم.',
@@ -242,15 +243,15 @@ $messages['ar'] = array(
 	'fogg-select_file' => 'اختر ملفًا',
 	'fogg-select_new_file' => 'اختر ملفًا جديدًا',
 	'fogg-select_url' => 'اختر مسارًا',
-	'fogg-check_for_firefogg' => 'يتحقق من وجود Firefogg ...',
+	'fogg-check_for_firefogg' => 'يجرى التحقق من وجود Firefogg...',
 	'fogg-installed' => 'Firefogg منصّب.',
 	'fogg-not-installed' => 'Firefogg ليس منصب أو ليس مفعّل',
 	'fogg-for_improved_uploads' => 'لرفع مُحسّن:',
 	'fogg-please-install-install-linktext' => 'نصِّب Firefogg',
 	'fogg-please-install-about-linktext' => 'عن Firefogg',
-	'fogg-use_latest_firefox' => 'يرجى تنصيب $1 أولًا، <i>ثم زر هذه الصفحة ثانيةً لتنصيب إضافة <b>Firefogg</b>.</i>',
+	'fogg-use_latest_firefox' => 'يرجى تنصيب $1 أولاً، <i>ثم زر هذه الصفحة ثانيةً لتنصيب إضافة <b>Firefogg</b>.</i>',
 	'fogg-latest-firefox' => 'آخر إصدارات فَيَرفُكس',
-	'fogg-passthrough_mode' => 'الملف الذي اخترته هو ogg أصلًا أو أنه ليس ملف فيديو.',
+	'fogg-passthrough_mode' => 'الملف الذي اخترته هو ogg أصلاً أو أنه ليس ملف فيديو.',
 	'fogg-encoding-done' => 'تم الترميز',
 	'fogg-preview' => 'معاينة الفيديو',
 	'fogg-hidepreview' => 'أخفِ المعاينة',

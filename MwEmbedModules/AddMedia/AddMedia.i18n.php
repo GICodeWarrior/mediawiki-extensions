@@ -338,6 +338,7 @@ $messages['an'] = array(
  * @author Moemin05
  * @author OsamaK
  * @author Samer
+ * @author محمد الجداوي
  */
 $messages['ar'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 من $2',
@@ -361,15 +362,15 @@ $messages['ar'] = array(
 	'mwe-filestatus' => 'حالة حقوق النسخ',
 	'mwe-loading-add-media-wiz' => 'جاري تحميل معالج إضافة الوسائط',
 	'mwe-select_file' => 'اختر ملفًا',
-	'mwe-select_ownwork' => 'أنا أرفع عملًا أمتلكه تمامًا وأرخصه تحت:',
+	'mwe-select_ownwork' => 'أنا أرفع عملاً أمتلكه تمامًا وأرخصه تحت:',
 	'mwe-license_cc-by-sa' => 'مشاع مبدع - المشاركة بالمثل (3.0)',
 	'mwe-upload' => 'ارفع الملف',
 	'mwe-destfilename' => 'اسم ملف المقصد:',
 	'mwe-summary' => 'ملخص',
 	'mwe-date-of-work' => 'تاريخ العمل',
 	'mwe-error_not_loggedin' => 'لا يبدو أنك سجلت الدخول أو أنك لا تملك تصاريح الرفع.',
-	'mwe-error-not-loggedin-file' => 'لا يبدو أنك سجلت الدخول أو أن هناك خطأً في البرنامج. فضلًا $1 وحاول مرة أخرى.',
-	'mwe-link-login' => 'لُج',
+	'mwe-error-not-loggedin-file' => 'لا يبدو أنك سجّلت الدخول أو أن هناك خطأً في البرنامج. فضلاً $1 وحاول مرة أخرى.',
+	'mwe-link-login' => 'ادخل',
 	'mwe-watch-this-file' => 'شاهد هذا الملف',
 	'mwe-ignore-any-warnings' => 'تجاهل كل التحذيرات',
 	'mwe-i-would-like-to' => 'أريد أن',
@@ -430,7 +431,7 @@ $messages['ar'] = array(
 	'mwe-am-flickr-title' => 'فليكر دوت كوم',
 	'mwe-am-flickr-desc' => 'Flickr.com، موقع لتبادل الصور على الإنترنت',
 	'mwe-am-metavid-title' => 'ميتافيد دوت أورج',
-	'mwe-am-search-timeout' => 'لم يكتمل طلب البحث. قد يكون الخادوم معطلًا بسبب الضغط الكثيف. بإمكانك المحاولة مرة أخرى لاحقًا.',
+	'mwe-am-search-timeout' => 'لم يكتمل طلب البحث. قد يكون الخادم معطلاً بسبب الضغط الكثيف. بإمكانك المحاولة مرة أخرى لاحقًا.',
 	'mwe-upload-transcode-in-progress' => 'يجري الترميز والرفع (لا تغلق هذه النافذة)',
 	'mwe-upload-multi' => 'ارفع {{PLURAL:$1|الملف|الملف|الملفين|الملفات|الملفات|الملفات}}',
 );
