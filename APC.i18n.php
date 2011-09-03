@@ -369,6 +369,7 @@ $messages['an'] = array(
  * @author Meno25
  * @author OsamaK
  * @author ترجمان05
+ * @author محمد الجداوي
  */
 $messages['ar'] = array(
 	'apc' => 'معلومات إيه بي سي',
@@ -403,11 +404,11 @@ $messages['ar'] = array(
 	'viewapc-hitrate' => 'معدل الضرب',
 	'viewapc-missrate' => 'معدل الفقد',
 	'viewapc-insertrate' => 'معدل الإدخال',
-	'viewapc-cachefull' => 'عداد الكاش الكامل',
+	'viewapc-cachefull' => 'عدّاد الكاش الكامل',
 	'viewapc-rps' => '$1 طلب في الثانية',
 	'viewapc-info-runtime' => 'معلومات العمل',
 	'viewapc-info-memory' => 'رسومات حالة المضيف',
-	'viewapc-memory-usage-detailed' => 'استخدام الذاكرة<br />
+	'viewapc-memory-usage-detailed' => 'استخدام الذاكرة<br/>
 (الشرائح المتعددة تنم عن مبعثرات)',
 	'viewapc-memory-usage' => 'استعمال الذاكرة',
 	'viewapc-cache-efficiency' => 'ضربات ومفقودات',
