@@ -409,9 +409,7 @@ $messages['ar'] = array(
 	'openidconvertsuccesstext' => 'أنت حولت بنجاح هويتك المفتوحة إلى $1.',
 	'openidconvertyourstext' => 'هذه بالفعل هويتك المفتوحة.',
 	'openidconvertothertext' => 'هذه هي الهوية المفتوحة لشخص آخر.',
-	'openidalreadyloggedin' => "'''أنت مسجل الدخول بالفعل، $1!'''
-
-لو كنت تريد استخدام الهوية المفتوحة لتسجيل الدخول في المستقبل، يمكنك [[Special:OpenIDConvert|تحويل حسابك لاستخدام الهوية المفتوحة]].",
+	'openidalreadyloggedin' => 'أنت مسجل الدخول بالفعل.',
 	'openidnousername' => 'لا اسم مستخدم تم تحديده.',
 	'openidbadusername' => 'اسم المستخدم المحدد سيء.',
 	'openidautosubmit' => 'هذه الصفحة تحتوي على استمارة ينبغي أن يتم إرسالها تلقائيا لو أنك لديك الجافاسكريبت مفعلة.
@@ -3098,12 +3096,13 @@ Non saresti in grado di accedere senza un OpenID.',
  * @author Fievarsty
  * @author Fryed-peach
  * @author Hosiryuhosi
+ * @author Schu
  * @author Whym
  * @author 青子守歌
  */
 $messages['ja'] = array(
 	'openid-desc' => '[http://openid.net/ OpenID]によるウィキへのログインを可能にし、ウィキユーザーアカウントを他のOpenID対応サイトにログインすることを可能にする。',
-	'openidlogin' => 'OpenIDでログイン',
+	'openidlogin' => 'OpenIDでログイン / アカウントを作成',
 	'openidserver' => 'OpenID サーバー',
 	'openidxrds' => 'Yadis ファイル',
 	'openidconvert' => 'OpenID コンバーター',
@@ -3171,6 +3170,7 @@ $messages['ja'] = array(
 あなたは、OpenIDを使用せずにログインできません。',
 	'openiddelete-sucess' => 'この OpenID のあなたのアカウントからの除去に成功しました。',
 	'openiddelete-error' => 'あなたのアカウントからこの OpenID を除去している途中でエラーが発生しました。',
+	'openid-openids-were-not-merged' => 'ユーザーアカウントをマージする際の OpenID はマージされませんでした。',
 	'openid-prefstext' => '[http://openid.net/ OpenID] の設定',
 	'openid-pref-hide' => 'OpenID でログインしている場合に、あなたの OpenID をあなたの利用者ページで表示しない。',
 	'openid-pref-update-userinfo-on-login' => 'ログインするたびに、次の情報を OpenID のペルソナから更新する:',
@@ -3184,6 +3184,15 @@ $messages['ja'] = array(
 	'openid-provider-label-yahoo' => 'あなたの Yahoo アカウントを用いてログインする',
 	'openid-provider-label-aol' => 'あなたの AOL スクリーンネームを入力します',
 	'openid-provider-label-other-username' => 'あなたの $1 での利用者名を入力します',
+	'specialpages-group-openid' => 'OpenID のサービスページとステータス情報',
+	'right-openid-dashboard-access' => 'OpenID ダッシュボードへの標準アクセス',
+	'right-openid-dashboard-admin' => 'OpenID ダッシュボードへの管理者アクセス',
+	'openid-dashboard-title' => 'OpenID ダッシュボード',
+	'openid-dashboard-title-admin' => 'OpenID ダッシュボード (管理者)',
+	'openid-dashboard-introduction' => '現在の OpenID 拡張機能の設定 ([$1 ヘルプ])',
+	'openid-dashboard-number-openid-users' => 'OpenIDを持つ利用者の数',
+	'openid-dashboard-number-openids-in-database' => 'OpenID の数 (合計)',
+	'openid-dashboard-number-users-without-openid' => 'OpenID を持たない利用者の数',
 );
 
 /** Javanese (Basa Jawa)
