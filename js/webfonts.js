@@ -262,6 +262,15 @@
 			//if rtl, add to the right of top personal links. Else, to the left
 			var fn = $('body').hasClass( 'rtl' ) ? "append" : "prepend";
 			$('#p-personal ul:first')[fn]( $li );
+			//workaround for IE bug - activex components like input fields coming on top of everything.
+			//TODO: is there a better solution other than hiding it on hover?
+			if ( $.browser.msie ) { 
+				$("#webfonts-menu").hover(function(){
+					$("#searchform").css({ visibility: "hidden" });
+				},function(){
+					$("#searchform").css({ visibility: "visible" });
+				});
+			}
 		}
 	};
 
