@@ -499,6 +499,15 @@ $.narayam = new ( function() {
 		$checkbox
 			.attr( 'title', mw.msg( 'narayam-checkbox-tooltip' ) )
 			.click( that.toggle );
+		//workaround for IE bug - activex components like input fields coming on top of everything.
+		//TODO: is there a better solution other than hiding it on hover?
+		if ( $.browser.msie ) { 
+			$("#narayam-menu").hover(function(){
+				$("#searchform").css({ visibility: "hidden" });
+			},function(){
+				$("#searchform").css({ visibility: "visible" });
+			});
+		}	
 	}
 	
 } )();
