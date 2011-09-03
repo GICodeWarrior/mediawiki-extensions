@@ -151,6 +151,18 @@ Die [http://www.mediawiki.org/wiki/API Dokumentation zur API] enthält weitere H
 	'apisb-query-meta' => 'Metainformationen',
 );
 
+/** Esperanto (Esperanto)
+ * @author Lucas
+ */
+$messages['eo'] = array(
+	'apisb-result' => 'Rezulto',
+	'apisb-select-action' => 'Elekti agojn',
+	'apisb-select-value' => 'Elekti valoron',
+	'apisb-loading' => 'Ŝarĝante...',
+	'apisb-query-prop' => 'Ecoj',
+	'apisb-query-list' => 'Listoj',
+);
+
 /** Spanish (Español)
  * @author Fitoschido
  * @author Pvgreenzebra
