@@ -320,6 +320,66 @@ $messages['be-tarask'] = array(
 	'moodbar-user-user' => 'Зарэгістраваны ўдзельнік',
 );
 
+/** Danish (Dansk)
+ * @author Peter Alberti
+ */
+$messages['da'] = array(
+	'moodbar-desc' => 'Tillader udvalgte brugere at give feedback om deres redigeringsoplevelse',
+	'moodbar-trigger-feedback' => 'Feedback om redigering',
+	'moodbar-trigger-share' => 'Del din oplevelse',
+	'moodbar-trigger-editing' => 'Redigerer $1...',
+	'moodbar-close' => '(luk)',
+	'moodbar-intro-feedback' => 'At redigere $1 gjorde mig...',
+	'moodbar-intro-share' => 'Mine erfaringer med $1 gjorde mig...',
+	'moodbar-intro-editing' => 'At redigere $1 gjorde mig...',
+	'moodbar-type-happy-title' => 'Glad',
+	'moodbar-type-sad-title' => 'Trist',
+	'moodbar-type-confused-title' => 'Forvirret',
+	'tooltip-moodbar-what' => 'Lær mere om denne funktion',
+	'moodbar-what-label' => 'Hvad er dette?',
+	'moodbar-what-content' => 'Denne funktion er beregnet til at hjælpe fællesskabet med at forstå hvordan folk oplever det at redigere denne hjemmeside.
+For yderligere oplysninger, besøg venligst $1.',
+	'moodbar-what-link' => 'funktionsside',
+	'moodbar-privacy' => 'Ved at sende, accepterer du gennemsigtighed under disse $1.',
+	'moodbar-privacy-link' => 'vilkår',
+	'moodbar-disable-link' => 'Jeg er ikke interesseret. Slå denne funktion fra.',
+	'moodbar-form-title' => 'Fordi...',
+	'moodbar-form-note' => 'maksimalt 140 tegn',
+	'moodbar-form-note-dynamic' => '$1 tegn tilbage',
+	'moodbar-form-submit' => 'Del Feedback',
+	'moodbar-form-policy-text' => 'Ved at indsende, $1',
+	'moodbar-form-policy-label' => 'vores politik',
+	'moodbar-loading-title' => 'Deler...',
+	'moodbar-success-title' => 'Tak!',
+	'moodbar-error-title' => 'Ups!',
+	'moodbar-success-subtitle' => 'Ved at dele din redigeringsoplevelse hjælper du os med at forbedre $1.',
+	'moodbar-error-subtitle' => 'Noget gik galt! Prøv at dele din feedback igen senere.',
+	'right-moodbar-view' => 'Se og eksporter MoodBar feedback',
+	'moodbar-admin-title' => 'MoodBar feedback',
+	'moodbar-admin-intro' => 'På denne side kan du se feedback, som blev indsendt med MoodBar.',
+	'moodbar-admin-empty' => 'Ingen resultater',
+	'moodbar-header-id' => 'Feedback-ID',
+	'moodbar-header-timestamp' => 'Tidsstempel',
+	'moodbar-header-type' => 'Type',
+	'moodbar-header-page' => 'Side',
+	'moodbar-header-usertype' => 'Brugertype',
+	'moodbar-header-user' => 'Bruger',
+	'moodbar-header-editmode' => 'Redigeringstilstand',
+	'moodbar-header-bucket' => 'Testspand',
+	'moodbar-header-system' => 'Systemtype',
+	'moodbar-header-useragent' => 'Brugeragent',
+	'moodbar-header-comment' => 'Kommentarer',
+	'moodbar-header-user-editcount' => 'Brugerens antal redigeringer',
+	'moodbar-header-namespace' => 'Navnerum',
+	'moodbar-header-own-talk' => 'Egen diskussionsside',
+	'moodbar-type-happy' => 'Glad',
+	'moodbar-type-sad' => 'Trist',
+	'moodbar-type-confused' => 'Forvirret',
+	'moodbar-user-anonymized' => 'Anonymiseret',
+	'moodbar-user-ip' => 'IP-adresse',
+	'moodbar-user-user' => 'Registreret bruger',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  * @author Purodha
@@ -392,6 +452,74 @@ $messages['de-formal'] = array(
 	'moodbar-error-subtitle' => 'Etwas ist schief gelaufen. Bitte versuchen Sie es später noch einmal uns Ihre Rückmeldung mitzuteilen.',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'moodbar-trigger-feedback' => 'Ανατροφοδότηση σχετικά με την επεξεργασία',
+	'moodbar-trigger-editing' => 'Επεξεργασία $1...',
+	'moodbar-close' => '(κλείσιμο)',
+	'moodbar-type-happy-title' => 'Χαρούμενος',
+	'moodbar-type-sad-title' => 'Θλιμμένος',
+	'moodbar-type-confused-title' => 'Μπερδεμένος',
+	'tooltip-moodbar-what' => 'Μάθετε περισσότερα σχετικά με αυτό το χαρακτηριστικό',
+	'moodbar-what-label' => 'Τι είναι αυτό;',
+	'moodbar-what-link' => 'σελίδα χαρακτηριστικού',
+	'moodbar-privacy-link' => 'όροι',
+	'moodbar-form-title' => 'Επειδή...',
+	'moodbar-form-note' => '140 χαρακτήρες το μέγιστο',
+	'moodbar-form-note-dynamic' => '$1 χαρακτήρες απομένουν',
+	'moodbar-form-submit' => 'Κοινοποίηση Ανατροφοδότησης',
+	'moodbar-form-policy-text' => 'Με την υποβολή, $1',
+	'moodbar-form-policy-label' => 'η πολιτική μας',
+	'moodbar-loading-title' => 'Κοινοποίηση...',
+	'moodbar-success-title' => 'Ευχαριστούμε!',
+	'moodbar-error-title' => 'Ουπς!',
+	'moodbar-admin-empty' => 'Κανένα αποτέλεσμα',
+	'moodbar-header-id' => 'Ταυτότητα Ανατροφοδότησης',
+	'moodbar-header-timestamp' => 'Ημερομηνία',
+	'moodbar-header-type' => 'Τύπος',
+	'moodbar-header-page' => 'Σελίδα',
+	'moodbar-header-usertype' => 'Τύπος χρήστη',
+	'moodbar-header-user' => 'Χρήστης',
+	'moodbar-header-editmode' => 'Λειτουργία επεξεργασίας',
+	'moodbar-header-system' => 'Τύπος συστήματος',
+	'moodbar-header-comment' => 'Σχόλια',
+	'moodbar-header-user-editcount' => 'Αριθμός επεξεργασιών χρήστη',
+	'moodbar-header-namespace' => 'Περιοχή ονομάτων',
+	'moodbar-header-own-talk' => 'Ίδια σελίδα συζήτησης',
+	'moodbar-type-happy' => 'Χαρούμενος',
+	'moodbar-type-sad' => 'Θλιμμένος',
+	'moodbar-type-confused' => 'Μπερδεμένος',
+	'moodbar-user-anonymized' => 'Ανώνυμα',
+	'moodbar-user-ip' => 'Διεύθυνση IP',
+	'moodbar-user-user' => 'Εγγεγραμμένος χρήστης',
+);
+
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'moodbar-close' => '(fermi)',
+	'moodbar-type-happy-title' => 'Ĝoja',
+	'moodbar-type-sad-title' => 'Malĝoja',
+	'moodbar-type-confused-title' => 'Konfuzita',
+	'moodbar-form-title' => 'Ĉar...',
+	'moodbar-success-title' => 'Dankon!',
+	'moodbar-admin-empty' => 'Mankas rezultoj',
+	'moodbar-header-timestamp' => 'Tempindiko',
+	'moodbar-header-type' => 'Tipo',
+	'moodbar-header-page' => 'Paĝo',
+	'moodbar-header-user' => 'Uzanto',
+	'moodbar-header-editmode' => 'Redakta reĝimo',
+	'moodbar-header-comment' => 'Komentoj',
+	'moodbar-header-namespace' => 'Nomspaco',
+	'moodbar-type-happy' => 'Ĝoja',
+	'moodbar-type-sad' => 'Malĝoja',
+	'moodbar-type-confused' => 'Konfuzita',
+	'moodbar-user-ip' => 'IP-adreso',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Fitoschido
@@ -459,8 +587,12 @@ $messages['fa'] = array(
 	'moodbar-type-happy-title' => 'شاد',
 	'moodbar-type-sad-title' => 'غمگین',
 	'moodbar-type-confused-title' => 'گیج',
+	'tooltip-moodbar-what' => 'دربارهٔ این ویژگی بیشتر مطالعه کنید',
 	'moodbar-what-label' => 'این چیست؟',
+	'moodbar-what-link' => 'صفحهٔ برگزیده',
+	'moodbar-privacy' => 'با ثبت کردن، شما به شفافیت با این $1 موافقت می‌کنید.',
 	'moodbar-privacy-link' => 'شرایط',
+	'moodbar-disable-link' => 'من علاقه‌ای ندارم. لطفاً این ویژگی را غیرفعال کنید.',
 	'moodbar-form-title' => 'زیرا...',
 	'moodbar-form-note' => 'حداکثر ۱۴۰ نویسه',
 	'moodbar-form-note-dynamic' => '$1 نویسه باقی مانده',
@@ -470,7 +602,10 @@ $messages['fa'] = array(
 	'moodbar-loading-title' => 'در حال اشتراک گذاشتن...',
 	'moodbar-success-title' => 'سپاس!',
 	'moodbar-error-title' => 'اوه!',
+	'moodbar-error-subtitle' => 'چیزی اشتباه پیش رفت! لطفاً بعداً مجدد سعی به اشتراک گذاری بازخورد خود کنید.',
+	'right-moodbar-view' => 'مشاهده و خروجی گرفتن از بازخورد نوار خُلق',
 	'moodbar-admin-title' => 'بازخورد نوار خُلق',
+	'moodbar-admin-intro' => 'این صفحه به شما اجازه می دهد که بازخوردهایی که توسط نوار خُلق ثبت شده‌اند را مشاهده نمائید.',
 	'moodbar-admin-empty' => 'بدون نتیجه',
 	'moodbar-header-id' => 'شماره بازخورد',
 	'moodbar-header-timestamp' => 'برچسب زمان',
@@ -480,6 +615,7 @@ $messages['fa'] = array(
 	'moodbar-header-user' => 'کاربر',
 	'moodbar-header-editmode' => 'حالت ویرایش',
 	'moodbar-header-system' => 'نوع سامانه',
+	'moodbar-header-locale' => 'محلی',
 	'moodbar-header-useragent' => 'عامل کاربر',
 	'moodbar-header-comment' => 'نظرها',
 	'moodbar-header-user-editcount' => 'شمار ویرایش‌های کاربر',
@@ -1262,10 +1398,32 @@ Para mais informações, visite $1.',
 	'moodbar-user-user' => 'Utilizador registado',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author MetalBrasil
+ */
+$messages['pt-br'] = array(
+	'moodbar-desc' => 'Permite que usuários específicados enviem ao operador  do site uma indicação da sua experiência em edição',
+	'moodbar-trigger-feedback' => 'Comentários sobre edição',
+	'moodbar-trigger-share' => 'Partilhe sua experiência',
+	'moodbar-trigger-editing' => 'Editando $1...',
+	'moodbar-close' => '(fechar)',
+	'moodbar-intro-feedback' => 'Editar a $1 fez-me sentir...',
+	'moodbar-intro-share' => 'A minha experiência em $1 fez-me sentir...',
+	'moodbar-intro-editing' => 'Editar a $1 fez-me sentir...',
+	'moodbar-type-happy-title' => 'Feliz',
+	'moodbar-type-sad-title' => 'Triste',
+	'moodbar-type-confused-title' => 'Confuso',
+	'tooltip-moodbar-what' => 'Saiba mais sobre esta função',
+	'moodbar-what-label' => 'O que é isto?',
+	'moodbar-what-content' => 'Este recurso foi programado para ajudar a comunidade a entender a experiência das pessoas que editam o site. Para mais informações, por favor, visite $1.',
+	'moodbar-what-link' => 'Página do recurso',
+);
+
 /** Romanian (Română)
  * @author Firilacroco
  */
 $messages['ro'] = array(
+	'moodbar-desc' => 'Permite utilizatorilor specificați să își trimită părerea despre experiența lor din timpul editării',
 	'moodbar-trigger-feedback' => 'Părerea dumneavoastră despre modificare',
 	'moodbar-trigger-share' => 'Împărtășiți experiența dumneavoastră',
 	'moodbar-trigger-editing' => 'Modificare $1...',
@@ -1278,6 +1436,8 @@ $messages['ro'] = array(
 	'moodbar-type-confused-title' => 'Confuz',
 	'tooltip-moodbar-what' => 'Aflați mai multe despre această funcție',
 	'moodbar-what-label' => 'Ce este aceasta?',
+	'moodbar-what-content' => 'Această funcție este concepută să ajute comunitatea să înțeleagă experiențele oamenilor din timpul modificării site-ului.
+Pentru mai multe informații, vizitați $1.',
 	'moodbar-what-link' => 'pagina funcției',
 	'moodbar-privacy' => 'Prin trimitere, sunteți de acord cu acești $1.',
 	'moodbar-privacy-link' => 'termeni',
@@ -1293,6 +1453,9 @@ $messages['ro'] = array(
 	'moodbar-error-title' => 'Ups!',
 	'moodbar-success-subtitle' => 'Împărtășindu-ne experiența dumneavoastră ne ajutați să îmbunătățim $1.',
 	'moodbar-error-subtitle' => 'Ceva nu a mers bine! Încercați din nou mai târziu.',
+	'right-moodbar-view' => 'Vizualizați și exportați părerile trimise prin MoodBar',
+	'moodbar-admin-title' => 'Feedback MoodBar',
+	'moodbar-admin-intro' => 'Această pagină vă permite să vizualizați părerile trimise cu MoodBar.',
 	'moodbar-admin-empty' => 'Niciun rezultat',
 	'moodbar-header-id' => 'ID părere',
 	'moodbar-header-timestamp' => 'Data și ora',
@@ -1302,6 +1465,8 @@ $messages['ro'] = array(
 	'moodbar-header-user' => 'Utilizator',
 	'moodbar-header-editmode' => 'Modul de editare',
 	'moodbar-header-system' => 'Tipul de sistem',
+	'moodbar-header-locale' => 'Regional',
+	'moodbar-header-useragent' => 'Agent utilizator',
 	'moodbar-header-comment' => 'Comentarii',
 	'moodbar-header-user-editcount' => 'Număr contribuții utilizator',
 	'moodbar-header-namespace' => 'Spațiu de nume',
@@ -1373,6 +1538,50 @@ $messages['ru'] = array(
 	'moodbar-user-anonymized' => 'Аноним',
 	'moodbar-user-ip' => 'IP-адрес',
 	'moodbar-user-user' => 'Зарегистрированный участник',
+);
+
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'moodbar-desc' => 'Доволює становленым хоснователям придати одозву з їх скусеностей з едітованя',
+	'moodbar-trigger-feedback' => 'Одозва про едітованя',
+	'moodbar-trigger-share' => 'Здїляти вашы скусености',
+	'moodbar-trigger-editing' => 'Едітованя $1...',
+	'moodbar-close' => '(заперти)',
+	'moodbar-intro-feedback' => 'Едітованя  $1  ня зробило...',
+	'moodbar-intro-share' => 'Моя скусеность на $1 ня зробила...',
+	'moodbar-intro-editing' => 'Едітованя  $1  ня зробило...',
+	'moodbar-type-happy-title' => 'Щастливый',
+	'moodbar-type-sad-title' => 'Смутный',
+	'moodbar-type-confused-title' => 'Ошаленый',
+	'tooltip-moodbar-what' => 'Дізнайте ся веце про тоту функцію',
+	'moodbar-what-label' => 'Што є тото?',
+	'moodbar-what-content' => 'Тота функція є становлена про поміч комунітї порозуміти скусености людей, котры едітують сайт.
+Про веце інформацій навщівте $1.',
+	'moodbar-what-link' => 'наступну сторінку',
+	'moodbar-privacy' => 'Одосланём сьте згодны з публічностёв дат під $1.',
+	'moodbar-privacy-link' => 'условіях',
+	'moodbar-admin-empty' => 'Жадны резултаты',
+	'moodbar-header-id' => 'Ідентіфікатор одозвы',
+	'moodbar-header-timestamp' => 'Часова значка',
+	'moodbar-header-type' => 'Тіп',
+	'moodbar-header-page' => 'Сторінка',
+	'moodbar-header-usertype' => 'Тіп хоснователя',
+	'moodbar-header-user' => 'Хоснователь',
+	'moodbar-header-editmode' => 'Режім едітованя',
+	'moodbar-header-bucket' => 'Область перевіркы',
+	'moodbar-header-system' => 'Тіп сістемы',
+	'moodbar-header-locale' => 'Локалны',
+	'moodbar-header-useragent' => 'Кліентьскый проґрам',
+	'moodbar-header-comment' => 'Коментарї',
+	'moodbar-header-user-editcount' => 'Чісло едітовань хоснователя',
+	'moodbar-header-namespace' => 'Простор назв',
+	'moodbar-header-own-talk' => 'Властна сторінка діскузії',
+	'moodbar-type-happy' => 'Щастливый',
+	'moodbar-type-sad' => 'Смутный',
+	'moodbar-type-confused' => 'Ошаленый',
+	'moodbar-user-anonymized' => 'Анонім',
 );
 
 /** Slovenian (Slovenščina)
@@ -1526,6 +1735,8 @@ $messages['uk'] = array(
 	'moodbar-type-confused-title' => 'Сконфужений',
 	'tooltip-moodbar-what' => 'Дізнайтеся більше про цю функцію',
 	'moodbar-what-label' => 'Що це?',
+	'moodbar-what-link' => 'наступну сторінку',
+	'moodbar-privacy' => 'Відправляючи, ви погоджуєтесь з публічністю даних на $1.',
 	'moodbar-privacy-link' => 'умовах',
 	'moodbar-disable-link' => 'Я не зацікавлений. Будь ласка, вимкніть цю функцію.',
 	'moodbar-form-title' => 'Тому що...',
@@ -1537,6 +1748,7 @@ $messages['uk'] = array(
 	'moodbar-loading-title' => 'Спільне використання...',
 	'moodbar-success-title' => 'Дякуємо!',
 	'moodbar-error-title' => 'Йой!',
+	'moodbar-success-subtitle' => 'Ваш досвід допоможе нам покращити $1.',
 	'moodbar-error-subtitle' => 'Щось пішло не так! Будь ласка, спробуйте відправити відгук пізніше.',
 	'right-moodbar-view' => 'Перегляд і експорт відгуків MoodBar',
 	'moodbar-admin-title' => 'Відгуки MoodBar',
