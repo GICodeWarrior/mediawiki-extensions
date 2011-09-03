@@ -125,13 +125,14 @@ $messages['an'] = array(
  * @author Meno25
  * @author OsamaK
  * @author Ouda
+ * @author محمد الجداوي
  */
 $messages['ar'] = array(
 	'amazonplus-desc' => 'امتداد عالي القابلية للتخصيص لعرض معلومات أمازون',
 	'amazonplus-nores' => '! خطأ: لم يتم العثور على نتائج',
-	'amazonplus-noidres' => 'خطأ: تعذر إيجاد هوية منتج!',
-	'amazonplus-fgcerr' => 'خطأ: تعذر جلب بيانات من أمازون!',
-	'amazonplus-slserr' => 'خطأ: تعذر تحليل بيانات من أمازون!',
+	'amazonplus-noidres' => 'خطأ: تعذّر إيجاد هوية منتج!',
+	'amazonplus-fgcerr' => 'خطأ: تعذّر جلب بيانات من أمازون!',
+	'amazonplus-slserr' => 'خطأ: تعذّر تحليل بيانات من أمازون!',
 	'amazonplus-used' => 'مستعمل',
 	'amazonplus-german' => 'ألمانية',
 	'amazonplus-french' => 'فرنسية',
