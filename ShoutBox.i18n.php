@@ -83,6 +83,8 @@ $messages['mk'] = array(
 	'shoutbox-bad-id' => 'Зададовте лоша назнака (ID) „<tt>$1</tt>“',
 	'shoutbox-illegal-width' => 'Зададовте недопуштен параметар за ширина „$1“.',
 	'shoutbox-illegal-height' => 'Зададовте недопуштен параметар за висина „$1“.',
+	'shoutbox-url' => 'http://$1.shoutbox.us/?LANG=MK',
+	'shoutbox-url-with-css' => 'http://$1.shoutbox.us/?LANG=MK&extcss=$2',
 );
 
 /** Dutch (Nederlands)
