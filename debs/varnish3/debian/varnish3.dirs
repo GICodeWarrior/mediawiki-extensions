@@ -1,7 +1,0 @@
-etc/logrotate.d
-etc/varnish
-usr/bin
-usr/sbin
-usr/share/varnish
-var/lib/varnish
-var/log/varnish

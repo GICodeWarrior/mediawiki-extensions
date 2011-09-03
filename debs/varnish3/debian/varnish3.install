@@ -1,4 +1,0 @@
-etc/varnish/default.vcl
-usr/bin/*
-usr/sbin/*
-

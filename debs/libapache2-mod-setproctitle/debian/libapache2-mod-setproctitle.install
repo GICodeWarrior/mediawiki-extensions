@@ -1,2 +1,0 @@
-.libs/mod_setproctitle.so usr/lib/apache2/modules
-debian/setproctitle.load etc/apache2/mods-available

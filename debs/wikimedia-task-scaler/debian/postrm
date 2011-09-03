@@ -1,6 +1,0 @@
-#!/bin/bash
-if [ "$1" = remove ]; then
-	# Restart apache without -DSCALER
-	/etc/init.d/apache2 restart || true
-fi
-
