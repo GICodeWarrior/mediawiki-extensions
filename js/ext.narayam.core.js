@@ -385,6 +385,36 @@ $.narayam = new ( function() {
 	 * from a cookie or wgNarayamEnableByDefault
 	 */
 	this.setup = function() {
+		//build the menu.
+		that.buildMenu();
+	
+		// Restore state from cookies
+		var savedScheme = $.cookie( 'narayam-scheme' );
+		if ( savedScheme && savedScheme in schemes ) {
+			that.setScheme( savedScheme );
+			$( '#narayam-' + savedScheme ).attr( 'checked', 'checked' );
+		} else {
+			//if no saved input scheme, select the first.
+			$('input.narayam-scheme:first').attr( 'checked', 'checked' );
+		}
+		var enabledCookie = $.cookie( 'narayam-enabled' );
+		if ( enabledCookie == '1' || ( mw.config.get( 'wgNarayamEnabledByDefault' ) && enabledCookie !== '0' ) ) {
+			that.enable();
+		}
+		else {
+			$( 'li#pt-narayam').addClass( 'narayam-inactive' );
+		}
+		// Renew the narayam-enabled cookie. naraym-scheme is renewed by setScheme()
+		if ( enabledCookie ) {
+			$.cookie( 'narayam-enabled', enabledCookie, { 'path': '/', 'expires': 30 } );
+		}
+			
+	};
+	
+	/*
+	 * Construct the menu for Narayam
+	 */
+	this.buildMenu = function() {
 		var haveSchemes = false;
 		// Build schemes option list
 		var $ul = $( '<ul/>' );
@@ -458,35 +488,12 @@ $.narayam = new ( function() {
 		//if rtl, add to the right of top personal links. Else, to the left
 		var fn = $('body').hasClass( 'rtl' ) ? "append" : "prepend";
 		$('#p-personal ul:first')[fn]( $li );
-		
 		// Build enable/disable checkbox and label
 		$checkbox = $( '<input type="checkbox" id="narayam-toggle" />' );
 		$checkbox
 			.attr( 'title', mw.msg( 'narayam-checkbox-tooltip' ) )
 			.click( that.toggle );
-		
-		// Restore state from cookies
-		var savedScheme = $.cookie( 'narayam-scheme' );
-		if ( savedScheme && savedScheme in schemes ) {
-			that.setScheme( savedScheme );
-			$( '#narayam-' + savedScheme ).attr( 'checked', 'checked' );
-		} else {
-			//if no saved input scheme, select the first.
-			$('input.narayam-scheme:first').attr( 'checked', 'checked' );
-		}
-		var enabledCookie = $.cookie( 'narayam-enabled' );
-		if ( enabledCookie == '1' || ( mw.config.get( 'wgNarayamEnabledByDefault' ) && enabledCookie !== '0' ) ) {
-			that.enable();
-		}
-		else {
-			$( 'li#pt-narayam').addClass( 'narayam-inactive' );
-		}
-		// Renew the narayam-enabled cookie. naraym-scheme is renewed by setScheme()
-		if ( enabledCookie ) {
-			$.cookie( 'narayam-enabled', enabledCookie, { 'path': '/', 'expires': 30 } );
-		}
-			
-	};
+	}
 	
 } )();
 
