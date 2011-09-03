@@ -79,6 +79,13 @@ $messages['es'] = array(
 	'customusersignup-desc' => 'Permite mensajes personalizados durante el proceso de creación de cuentas',
 );
 
+/** Persian (فارسی)
+ * @author Mjbmr
+ */
+$messages['fa'] = array(
+	'customusersignup-desc' => 'اجازه به پیام‌های قابل سفارشی کردن را در طی روند ایجاد حساب کاربری می‌هد',
+);
+
 /** French (Français)
  * @author IAlex
  */
@@ -225,6 +232,13 @@ $messages['roa-tara'] = array(
  */
 $messages['ru'] = array(
 	'customusersignup-desc' => 'Включает настраиваемые сообщения в процессе создания учётной записи',
+);
+
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'customusersignup-desc' => 'Забезпечує присбособительны повідомлїня почас створїня конта',
 );
 
 /** Slovak (Slovenčina)
