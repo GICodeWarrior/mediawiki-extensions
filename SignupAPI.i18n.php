@@ -23,11 +23,23 @@ $messages['en'] = array(
 	'signupapi-invalidemailaddress' => 'E-mail address is invalid',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author Renessaince
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
-	'signupapi-desc' => 'Пазбаўляе Special:UserLogin элемэнтаў, датычных рэгістрацыі, і дадае API рэгістрацыі',
+	'signupapi-desc' => 'Пазбаўляе [[Special:UserLogin|старонку рэгістрацыі]] элемэнтаў, датычных рэгістрацыі, і дадае API для рэгістрацыі',
+	'signupapi-ok' => 'Добра',
+	'signupapi-noname' => 'Не пазначана імя ўдзельніка',
+	'signupapi-userexists' => 'Удзельнік існуе',
+	'signupapi-enterpassword' => 'Неабходна ўвесьці пароль',
+	'signupapi-passwordtooshort' => 'Надта кароткі пароль',
+	'signupapi-weak' => 'Слабы',
+	'signupapi-medium' => 'Сярэдні',
+	'signupapi-strong' => 'Складаны',
+	'signupapi-badretype' => 'Уведзеныя Вамі паролі не супадаюць',
+	'signupapi-passwordsmatch' => 'Паролі супадаюць',
+	'signupapi-invalidemailaddress' => 'Няслушная адрэса электроннай пошты',
 );
 
 /** German (Deutsch)
