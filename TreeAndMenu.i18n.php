@@ -21,6 +21,14 @@ $messages['qqq'] = array(
 	'treeandmenu-desc' => '{{desc}}',
 );
 
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author Renessaince
+ */
+$messages['be-tarask'] = array(
+	'treeandmenu-desc' => 'Дадае функцыі парсэру <code><nowiki>#tree</nowiki></code> і <code><nowiki>#menu</nowiki></code>, якія зьмяшчаюць маркіраваныя сьпісы, што могуць выводзіцца як раскрывальныя дрэвы або выпадаючыя мэню.
+Раскрывальныя дрэвы ўжываюць JavaScript [http://www.destroydrop.com/javascripts/tree dTree], а выпадаючыя мэню — [http://www.htmldog.com/articles/suckerfish/dropdowns/ Son of Suckerfish]',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
