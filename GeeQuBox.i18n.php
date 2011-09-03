@@ -122,6 +122,13 @@ $messages['ie'] = array(
 	'geequbox-desc' => 'Producte efectes lightbox usant li plugin jQuery lightbox',
 );
 
+/** Japanese (日本語)
+ * @author Schu
+ */
+$messages['ja'] = array(
+	'geequbox-desc' => 'jQueryの lightbox プラグインを使用して lightbox 効果を生成します。',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
