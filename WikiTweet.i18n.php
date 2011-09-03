@@ -96,6 +96,7 @@ $messages['ast'] = array(
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Renessaince
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
@@ -120,6 +121,25 @@ $messages['be-tarask'] = array(
 	'wikitweet-timeago' => '$1 таму',
 	'wikitweet-inthefuture' => 'У будучыні !!',
 	'wikitweet-fewsecondsago' => 'Колькі сэкунд таму',
+	'wikitweet-status' => 'Статус:',
+	'wikitweet-status0' => 'Гутаркі',
+	'wikitweet-status1' => 'Падзея',
+	'wikitweet-status2' => 'Папярэджаньне',
+	'wikitweet-status3' => 'Увага',
+	'wikitweet-resolve' => 'вырашаная',
+	'wikitweet-concerns' => 'Клапоціць вас',
+	'wikitweet-comment' => 'Камэнтар',
+	'wikitweet-subscribers' => 'Падпісаныя:',
+	'wikitweet-hourly' => 'Шточасова',
+	'wikitweet-perperson' => 'На асобу',
+	'wikitweet-inresponseto' => 'У адказ на:',
+	'wikitweet-from' => 'ад',
+	'wikitweet-in' => 'у',
+	'wikitweet-directlink' => 'Наўпроставая спасылка:',
+	'wikitweet-mailsent' => 'ліст адасланы',
+	'wikitweet-viaroom' => 'праз пакой',
+	'wikitweet-alertsolved' => 'адзін з вашых напамінаў быў разьвязаны ў',
+	'wikitweet-cannotparse' => 'Не магу разабраць',
 );
 
 /** Bulgarian (Български)
