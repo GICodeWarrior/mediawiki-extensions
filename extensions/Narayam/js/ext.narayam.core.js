@@ -455,13 +455,9 @@ $.narayam = new ( function() {
 		$li
 			.append( $menu );
 			
-		// If rtl, add to the right of top personal links, else, to the left
-		if($('body').is( '.rtl' ) ){
-			$($('#p-personal ul')[0]).append( $li );
-		}
-		else{
-			$($('#p-personal ul')[0]).prepend( $li );
-		}
+		//if rtl, add to the right of top personal links. Else, to the left
+		var fn = $('body').hasClass( 'rtl' ) ? "append" : "prepend";
+		$('#p-personal ul:first')[fn]( $li );
 		
 		// Build enable/disable checkbox and label
 		$checkbox = $( '<input type="checkbox" id="narayam-toggle" />' );
