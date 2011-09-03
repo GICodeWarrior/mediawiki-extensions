@@ -1,0 +1,34 @@
+$user[name],
+
+As promised on wikitech-l (http://hexm.de/5u), I'm sending email to
+all MediaWiki developers with any FIXME'd revisions.  I'll be sending
+a reminder at least twice a week from now on for any outstanding
+FIXMEs.
+
+Link to all your FIXMEs:
+http://mediawiki.org/wiki/Special:Code/MediaWiki/status/fixme?author=$author
+
+$commits
+
+Please address them as soon as possible.  When you think you've
+addressed one, change its status field from "fixme" to "new" and make
+sure your new revision shows up under "Follow-up revisions"
+
+To mark a revision as follow-up to a previously committed revision
+right at the time of committing, just put the previously committed
+revision's number, prefixed by 'r', into your commit summary.
+
+If you have any questions about this, then please feel free to email
+me.
+
+Thanks,
+
+Mark
+
+-- 
+Mark A. Hershberger
+Bugmeister
+Wikimedia Foundation
+mhershberger@wikimedia.org
+717.271.1084
+
