@@ -79,26 +79,42 @@ $messages['qqq'] = array(
  */
 $messages['af'] = array(
 	'narayam-desc' => 'Maak aangepaste invoermetodes vir invoervelde moontlik',
-	'narayam-toggle-ime' => 'IM aktiveer of deaktiveer ($1)',
+	'narayam-toggle-ime' => 'Aktiveer ($1)',
+	'narayam-menu' => 'Invoermetode',
+	'narayam-menu-tooltip' => 'Narayam invoermetode (IME)',
+	'narayam-help' => 'Hulp',
 	'narayam-help-page' => 'Help:Invoermetode',
 	'narayam-checkbox-tooltip' => 'Die invoermethode aktiveer of deaktiveer',
+	'narayam-disable-preference' => 'Deaktiveer Narayam invoermetode (IME)',
 	'narayam-eo' => 'Esperanto',
-	'narayam-ml' => 'Malayalam transliterasie',
+	'narayam-hi-inscript' => 'Hindi InScript',
+	'narayam-kn' => 'Kannada Transliterasie',
+	'narayam-kn-inscript' => 'Kannada InScript',
+	'narayam-ml' => 'Malayalam Transliterasie',
 	'narayam-ml-inscript' => 'Malayalam InScript',
-	'narayam-sa' => 'Sanskrit transliterasie',
+	'narayam-ne' => 'Nepalese Transliterasie',
+	'narayam-ne-inscript' => 'Nepalese InScript',
+	'narayam-or' => 'Oriya Transliterasie',
+	'narayam-or-inscript' => 'Oriya InScript',
+	'narayam-sa' => 'Sanskrit Transliterasie',
+	'narayam-sa-inscript' => 'Sanskrit InScript',
+	'narayam-si-singlish' => 'Singalese Singlish',
+	'narayam-si-wijesekara' => 'Singalese Wijesekara',
 	'narayam-ta99' => 'Tamil99',
-	'narayam-ta' => 'Tamil transliterasie',
-	'narayam-bn-avro' => 'Bengaals Avro',
-	'narayam-bn-inscript' => 'Bengaals InScript',
-	'narayam-bn-nkb' => 'Bengaals NKB',
+	'narayam-ta' => 'Tamil Transliterasie',
+	'narayam-te-inscript' => 'Teloegoe InScript',
+	'narayam-bn-avro' => 'Bengaalse Avro',
+	'narayam-bn-inscript' => 'Bengaalse InScript',
+	'narayam-bn-nkb' => 'Bengaalse NKB',
 );
 
 /** Arabic (العربية)
+ * @author Meno25
  * @author زكريا
  */
 $messages['ar'] = array(
 	'narayam-desc' => 'يتيح إضافة أساليب إدخال مخصصة لحقول الإدخال',
-	'narayam-toggle-ime' => 'لتبديل الدردشة ($1)',
+	'narayam-toggle-ime' => 'فعل ($1)',
 	'narayam-help-page' => 'Help:كتابة',
 	'narayam-checkbox-tooltip' => 'لتشغيل أو تعطيل أسلوب الإدخال',
 	'narayam-disable-preference' => 'تعطيل محرر أسلوب إدخال نارايام (Narayam IME)',
@@ -127,11 +143,15 @@ $messages['ar'] = array(
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Renessaince
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'narayam-desc' => 'Дазваляе дадаваць нестандартныя мэтады ўводу для палёў уводу.',
-	'narayam-toggle-ime' => 'Для пераключэньня мэтаду ўводу ($1)',
+	'narayam-toggle-ime' => 'Улучыць ($1)',
+	'narayam-menu' => 'Мэтад уводу',
+	'narayam-menu-tooltip' => 'Кантраляваць рэдактар мэтадаў уводу Narayam',
+	'narayam-help' => 'Дапамога',
 	'narayam-help-page' => 'Help:Увод',
 	'narayam-checkbox-tooltip' => 'Для пераключэньня мэтаду уводу «Ўключыць» і «Выключыць»',
 	'narayam-disable-preference' => 'Забараніць рэдактар мэтадаў уводу Narayam',
@@ -258,6 +278,14 @@ $messages['cs'] = array(
 	'narayam-disable-preference' => 'Vypnout editor (IME) Narayam',
 );
 
+/** Danish (Dansk)
+ * @author Peter Alberti
+ */
+$messages['da'] = array(
+	'narayam-toggle-ime' => 'Aktiver ($1)',
+	'narayam-help' => 'Hjælp',
+);
+
 /** German (Deutsch)
  * @author Brion
  * @author Kghbln
@@ -266,7 +294,10 @@ $messages['cs'] = array(
  */
 $messages['de'] = array(
 	'narayam-desc' => 'Ermöglicht benutzerdefinierte Eingabemethoden für Eingabefelder',
-	'narayam-toggle-ime' => 'Eingabemethode umschalten ($1)',
+	'narayam-toggle-ime' => 'Aktiviere ($1)',
+	'narayam-menu' => 'Eingabemethode',
+	'narayam-menu-tooltip' => 'Steuerung des Eingabemethodeneditors von Narayam (IME)',
+	'narayam-help' => 'Hilfe',
 	'narayam-help-page' => 'Help:Eingabe',
 	'narayam-checkbox-tooltip' => 'Eingabemethode ein- und ausschalten',
 	'narayam-disable-preference' => 'Narayam-Editor deaktivieren',
@@ -292,6 +323,14 @@ $messages['de'] = array(
 	'narayam-bn-nkb' => 'Bengalisch (NKB)',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'narayam-help-page' => 'Help:Πληκτρολόγηση',
+	'narayam-eo' => 'Εσπεράντο',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -309,9 +348,13 @@ $messages['eo'] = array(
  */
 $messages['fa'] = array(
 	'narayam-desc' => 'اجازهٔ افزودن روش‌های ورودی سفارشی برای زمینه‌های ورودی را می‌دهد',
+	'narayam-toggle-ime' => 'فعال سازی ($1)',
+	'narayam-menu' => 'روش ورودی',
+	'narayam-help' => 'راهنما',
 	'narayam-help-page' => 'Help:حروف‌چینی',
 	'narayam-eo' => 'اسپرانتو',
 	'narayam-hi-inscript' => 'اسکریپت هندی',
+	'narayam-kn-inscript' => 'اسکریپت کانادهای',
 	'narayam-ml-inscript' => 'اسکریپت مالایایی',
 	'narayam-ne-inscript' => 'اسکریپت نپالی',
 	'narayam-or-inscript' => 'اسکریپت اوریایی',
@@ -325,10 +368,14 @@ $messages['fa'] = array(
  * @author Gomoko
  * @author IAlex
  * @author Sherbrooke
+ * @author Wyz
  */
 $messages['fr'] = array(
 	'narayam-desc' => "Permet d'ajouter des méthodes de saisie personnalisés pour les champs de saisie",
-	'narayam-toggle-ime' => 'Pour basculer la méthode de saisie ($1)',
+	'narayam-toggle-ime' => 'Activer ($1)',
+	'narayam-menu' => 'Méthode d’entrée',
+	'narayam-menu-tooltip' => 'Contrôle de l’éditeur de méthode d’entrée (IME) Narayam',
+	'narayam-help' => 'Aide',
 	'narayam-help-page' => 'Help:Saisie au clavier',
 	'narayam-checkbox-tooltip' => "Pour activer et désactiver la méthode d'entrée",
 	'narayam-disable-preference' => "Désactiver la méthode d'entrée (IME) Narayam",
@@ -358,6 +405,8 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'narayam-toggle-ime' => 'Activar ($1)',
+	'narayam-help-page' => 'Help:Entrâ u cllaviér',
 	'narayam-eo' => 'Èsperanto',
 	'narayam-hi-inscript' => 'InScript hindi',
 	'narayam-kn' => 'Translitèracion canadâ',
@@ -509,7 +558,10 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'narayam-desc' => 'Permitte adder methodos personalisate de entrata pro campos de entrata.',
-	'narayam-toggle-ime' => 'Pro alternar MI ($1)',
+	'narayam-toggle-ime' => 'Activar ($1)',
+	'narayam-menu' => 'Methodo de entrata',
+	'narayam-menu-tooltip' => 'Controlar le methodo de entrata (IME) pro Narayam',
+	'narayam-help' => 'Adjuta',
 	'narayam-help-page' => 'Help:Dactylographia',
 	'narayam-checkbox-tooltip' => 'Activar e disactivar le methodo de entrata',
 	'narayam-disable-preference' => 'Disactivar le methodo de entrata pro Narayam',
@@ -654,6 +706,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'narayam-help' => 'Hëllef',
 	'narayam-help-page' => 'Help:Tippen',
 	'narayam-eo' => 'Esperanto',
 	'narayam-kn' => 'Kannada (Transliteratioun)',
@@ -685,7 +738,10 @@ $messages['mai'] = array(
  */
 $messages['mk'] = array(
 	'narayam-desc' => 'Овозможува додавање на прилагодени методи на внос во полиња.',
-	'narayam-toggle-ime' => 'За префрлање на вносен метод ($1)',
+	'narayam-toggle-ime' => 'Овозможи ($1)',
+	'narayam-menu' => 'Вносен метод',
+	'narayam-menu-tooltip' => 'Контрола со уредникот на вносни методи (IME) Narayam',
+	'narayam-help' => 'Помош',
 	'narayam-help-page' => 'Help:Внос',
 	'narayam-checkbox-tooltip' => 'За вкл/искл на метод на внос',
 	'narayam-disable-preference' => 'Оневозможи го уредникот на вносни методи (IME) Narayam',
@@ -719,7 +775,7 @@ $messages['mk'] = array(
  */
 $messages['ml'] = array(
 	'narayam-desc' => 'ഇൻപുട്ട് ഫീൽഡുകളിൽ ഇച്ഛാനുസരണമുള്ള ലിപികളിൽ എഴുതാനുള്ള സൗകര്യം കൂട്ടിച്ചേർക്കുന്നു',
-	'narayam-toggle-ime' => 'എഴുത്തുപകരണം ($1)',
+	'narayam-toggle-ime' => 'സജീവമാക്കുക ($1)',
 	'narayam-help-page' => 'Help:എഴുത്ത്',
 	'narayam-checkbox-tooltip' => 'എഴുത്തുപകരണം ഉപയോഗിക്കാനും ഒഴിവാക്കാനും ഇവിടെ ഞെക്കുക',
 	'narayam-disable-preference' => 'നാരായം എഴുത്തുപകരണം (IME) പ്രവർത്തനരഹിതമാക്കുക',
@@ -750,7 +806,10 @@ $messages['ml'] = array(
  */
 $messages['ms'] = array(
 	'narayam-desc' => 'Membolehkan penambahan kaedah input tersuai untuk ruangan input',
-	'narayam-toggle-ime' => 'Untuk menogel IM ($1)',
+	'narayam-toggle-ime' => 'Hidupkan ($1)',
+	'narayam-menu' => 'Kaedah Input',
+	'narayam-menu-tooltip' => 'Kawal Editor Kaedah Input (IME) Narayam',
+	'narayam-help' => 'Bantuan',
 	'narayam-help-page' => 'Help:Menaip',
 	'narayam-checkbox-tooltip' => 'Untuk memasang/menutup kaedah input',
 	'narayam-disable-preference' => 'Matikan Editor Kaedah Input (IME) Narayam',
@@ -783,7 +842,10 @@ $messages['ms'] = array(
  */
 $messages['nl'] = array(
 	'narayam-desc' => 'Maakt het mogelijk om aangepaste invoermethoden toe te voegen voor invoervelden',
-	'narayam-toggle-ime' => 'IM in- of uitschakelen ($1)',
+	'narayam-toggle-ime' => 'Inschakelen ($1)',
+	'narayam-menu' => 'Invoermethode',
+	'narayam-menu-tooltip' => 'Narayam invoermethode (IME)',
+	'narayam-help' => 'Hulp',
 	'narayam-help-page' => 'Help:Invoermethoden',
 	'narayam-checkbox-tooltip' => 'De invoermethode in- of uitschakelen',
 	'narayam-disable-preference' => 'Narayam invoermethode (IME) uitschakelen',
@@ -1092,7 +1154,10 @@ $messages['sk'] = array(
  */
 $messages['sl'] = array(
 	'narayam-desc' => 'Omogoča dodajanje načinov vnosa po meri za vnosna polja',
-	'narayam-toggle-ime' => 'Za preklop načina vnosa ($1)',
+	'narayam-toggle-ime' => 'Omogoči ($1)',
+	'narayam-menu' => 'Način vnosa',
+	'narayam-menu-tooltip' => 'Upravljaj urejevalnik načina vnosa (IME) Narayam',
+	'narayam-help' => 'Pomoč',
 	'narayam-help-page' => 'Help:Tipkanje',
 	'narayam-checkbox-tooltip' => 'Za vklop ali izklop načina vnosa',
 	'narayam-disable-preference' => 'Onemogoči urejevalnik načina vnosa (IME) Narayam',
@@ -1118,7 +1183,7 @@ $messages['sl'] = array(
 	'narayam-bn-nkb' => 'Bengalski NKB',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  */
 $messages['sr-ec'] = array(
@@ -1213,6 +1278,9 @@ $messages['tl'] = array(
  */
 $messages['uk'] = array(
 	'narayam-toggle-ime' => 'Для перемикання методу вводу ($1)',
+	'narayam-help' => 'Довідка',
+	'narayam-help-page' => 'Help:Набір тексту',
+	'narayam-checkbox-tooltip' => 'Для перемикання методів вводу',
 	'narayam-eo' => 'Есперанто',
 	'narayam-hi-inscript' => 'Гінді Inscript',
 	'narayam-kn' => 'Транслітерація каннада',
@@ -1221,6 +1289,7 @@ $messages['uk'] = array(
 	'narayam-ml-inscript' => 'Малайський Inscript',
 	'narayam-ne' => 'Транслітерація непальською',
 	'narayam-ne-inscript' => 'Непальський Inscript',
+	'narayam-or' => 'Транслітерація орія',
 	'narayam-or-inscript' => 'Орія Inscript',
 	'narayam-sa' => 'Транслітерація санскритом',
 	'narayam-sa-inscript' => 'Санскрит Inscript',
