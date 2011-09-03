@@ -4,7 +4,7 @@
 // @require	   https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js
 // @require        http://svn.wikimedia.org/svnroot/mediawiki/trunk/tools/viaf/jquery.cookie.js
 // @require        http://svn.wikimedia.org/svnroot/mediawiki/trunk/tools/viaf/jquery.ba-replacetext.js
-// @description    locate VIAF numbers in texts and urls on web pages. (c) T.Gries Version 0.205 201109012100
+// @description    locate VIAF numbers in texts and urls on web pages. (c) T.Gries Version 0.206 201109030200
 // @include        *
 // ==/UserScript==
 
@@ -32,6 +32,7 @@
  * 20110901     moved <span> inside <a> tag to fix the non-colouring problem
  *		in span class=plainlinks; added blank spans left and right
  *              of addedlinks for LTR/RTL pages
+ * 20110903     less blanks between added links
  ***/
 
 // wrapper see http://www.mediawiki.org/wiki/JQuery
@@ -45,7 +46,7 @@ var markUrlDetectedItemsCSS = { "borderBottom" : "1px orangered dotted" };
 var maxVIAFNumbers = 30;
 
 // Script update checker source: http://a32.me/2009/11/greasemonkey/
-var VERSION = "0.205";
+var VERSION = "0.206";
 var SCRIPT_NAME = "viaf"
 var SCRIPT_URL = "http://$$$yourhost$$$/"+SCRIPT_NAME+".user.js"
 
@@ -137,15 +138,16 @@ $(".viaf").each(function(){
 	var viaf = $this.attr( "viaf" );
 
     	var newLink = new Array();
-	newLink.unshift( $( "<span> </span><a href='http://viaf.org/viaf/"+viaf+"/'><span class='addedlink viaf' viaf='"+viaf+"'>VIAF</span></a><span> </span>" ) );
-    	newLink.unshift( $( "<span> </span><a href='http://www.librarything.de/commonknowledge/search.php?f=13&exact=1&q=VIAF%3A"+viaf+"'><span class='addedlink viaf' viaf='"+viaf+"'>LT de</span></a><span> </span>" ) );
-	newLink.unshift( $( "<span> </span><a href='http://www.librarything.com/commonknowledge/search.php?f=13&exact=1&q=VIAF%3A"+viaf+"'><span class='addedlink viaf' viaf='"+viaf+"'>en</span></a><span> </span>" ) );
-	newLink.unshift( $( "<span> </span><a href='http://ru.librarything.com/commonknowledge/search.php?f=13&exact=1&q=VIAF%3A"+viaf+"'><span class='addedlink viaf' viaf='"+viaf+"'>ru</span></a><span> </span>" ) );
-	newLink.unshift( $( "<span> </span><a href='http://yi.librarything.com/commonknowledge/search.php?f=13&exact=1&q=VIAF%3A"+viaf+"'><span class='addedlink viaf' viaf='"+viaf+"'>yi</span></a><span> </span>" ) );
-	newLink.unshift( $( "<span> </span><a href='http://toolserver.org/%7Eapper/pd/person/viaf/"+viaf+"'><span class='addedlink viaf' viaf='"+viaf+"'>TS</span></a><span> </span>" ) );
-	newLink.unshift( $( "<span> </span><a href='http://www.google.com/search?num=100&q=viaf+"+viaf+"'><span class='addedlink viaf' viaf='"+viaf+"'>G</span></a><span> </span>" ) );
-	// newLink.unshift( $( "<span> </span><label class='show-summary'><input type='checkbox' class='show-summary-checkbox' checked='checked'><span id='show-summary-text'></span></label><span> </span>" ) );
+	newLink.unshift( $( "<span> </span><a href='http://viaf.org/viaf/"+viaf+"/'><span class='addedlink viaf' viaf='"+viaf+"'>VIAF</span></a>" ) );
+    	newLink.unshift( $( "<span> </span><a href='http://www.librarything.de/commonknowledge/search.php?f=13&exact=1&q=VIAF%3A"+viaf+"'><span class='addedlink viaf' viaf='"+viaf+"'>LT de</span></a>" ) );
+	newLink.unshift( $( "<span> </span><a href='http://www.librarything.com/commonknowledge/search.php?f=13&exact=1&q=VIAF%3A"+viaf+"'><span class='addedlink viaf' viaf='"+viaf+"'>en</span></a>" ) );
+	newLink.unshift( $( "<span> </span><a href='http://ru.librarything.com/commonknowledge/search.php?f=13&exact=1&q=VIAF%3A"+viaf+"'><span class='addedlink viaf' viaf='"+viaf+"'>ru</span></a>" ) );
+	newLink.unshift( $( "<span> </span><a href='http://yi.librarything.com/commonknowledge/search.php?f=13&exact=1&q=VIAF%3A"+viaf+"'><span class='addedlink viaf' viaf='"+viaf+"'>yi</span></a>" ) );
+	newLink.unshift( $( "<span> </span><a href='http://toolserver.org/%7Eapper/pd/person/viaf/"+viaf+"'><span class='addedlink viaf' viaf='"+viaf+"'>TS</span></a>" ) );
+	newLink.unshift( $( "<span> </span><a href='http://www.google.com/search?num=100&q=viaf+"+viaf+"'><span class='addedlink viaf' viaf='"+viaf+"'>G</span></a>" ) );
+	// newLink.unshift( $( "<span> </span><label class='show-summary'><input type='checkbox' class='show-summary-checkbox' checked='checked'><span id='show-summary-text'></span></label>" ) );
 
+	newLink.unshift( $( "<span> </span>" ) );
     	for ( i in newLink ) {
         	$this.after( newLink[i] )
 	}
