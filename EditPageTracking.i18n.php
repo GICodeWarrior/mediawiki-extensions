@@ -44,6 +44,13 @@ $messages['de'] = array(
 	'editpagetracking-desc' => 'Ermöglicht das Nachvollziehen des erstens Besuchs einer Bearbeitungsseite durch einen Benutzer',
 );
 
+/** Persian (فارسی)
+ * @author Mjbmr
+ */
+$messages['fa'] = array(
+	'editpagetracking-desc' => 'ثبت اولین باری که هر کاربر صفحهٔ ویرایش را مشاهده می‌کند',
+);
+
 /** French (Français)
  * @author Tpt
  */
@@ -135,6 +142,13 @@ $messages['pt'] = array(
 	'editpagetracking-desc' => 'Regista a primeira vez que cada utilizador visita a página de edição',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author MetalBrasil
+ */
+$messages['pt-br'] = array(
+	'editpagetracking-desc' => 'Registra a primeira vez que cada usuário acessa a página de edição',
+);
+
 /** Romanian (Română)
  * @author Firilacroco
  */
@@ -147,6 +161,13 @@ $messages['ro'] = array(
  */
 $messages['ru'] = array(
 	'editpagetracking-desc' => 'Записывает для каждого участника когда он впервые открыл страницу редактирования',
+);
+
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'editpagetracking-desc' => 'Зазначіня од першого часу перегляды сторінкы едітовань каждого хоснователя',
 );
 
 /** Slovenian (Slovenščina)
