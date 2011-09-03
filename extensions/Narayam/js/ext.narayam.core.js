@@ -417,18 +417,24 @@ $.narayam = new ( function() {
 	this.buildMenu = function() {
 		var haveSchemes = false;
 		// Build schemes option list
-		var $ul = $( '<ul/>' );
+		var $narayamMenuItems = $( '<ul/>' );
 		for ( scheme in schemes ) {
 			$input = $( '<input type="radio" name="narayam-input-method" class="narayam-scheme" />' );
 			$input
 				.attr( 'id', 'narayam-' + scheme )
 				.val( scheme );
+				
+			$narayamMenuItemLabel=$( '<label />' )
+					.attr("for",'narayam-' + scheme)
+					.append( $input)
+					.append( mw.msg( schemes[scheme].namemsg ) );
 			
-			$( '<li/>' )
+			var $narayamMenuItem = $( '<li/>' )
 				.append( $input )
-				.append( mw.msg( schemes[scheme].namemsg ) )
-				.appendTo( $ul );
+				.append($narayamMenuItemLabel);
+				
 			haveSchemes = true;
+			$narayamMenuItems.append($narayamMenuItem);
 		}
 		
 		if ( !haveSchemes ) {
@@ -457,7 +463,7 @@ $.narayam = new ( function() {
 			
 		var helppage = mw.msg( 'narayam-help-page' );
 		if ( helppage ) {
-			$ul.append( $( '<li class="narayam-help-link" />')
+			$narayamMenuItems.append( $( '<li class="narayam-help-link" />')
 				.append(
 					$( '<a/>' )
 						.text( mw.msg( 'narayam-help' ) )
@@ -466,11 +472,11 @@ $.narayam = new ( function() {
 				);
 		}
 		
-		$ul.prepend( $( '<li/>' ).append( $label ) );
+		$narayamMenuItems.prepend( $( '<li/>' ).append( $label ) );
 		
-		var $menuItems = $( '<div id="narayam-menu-items" class="menu-items" />' );
-		$menuItems
-			.append( $ul );
+		var $menuItemsDiv = $( '<div id="narayam-menu-items" class="menu-items" />' );
+		$menuItemsDiv
+			.append( $narayamMenuItems );
 			
 		var $menu = $( '<div id="narayam-menu" class="narayam-menu" />');
 		$menu
@@ -479,7 +485,7 @@ $.narayam = new ( function() {
 					.text( mw.msg( 'narayam-menu' ) )
 					.attr( 'title', mw.msg( 'narayam-menu-tooltip' ) )
 			)
-			.append( $menuItems );
+			.append( $menuItemsDiv );
 		
 		var $li = $( '<li id="pt-narayam" />');
 		$li
