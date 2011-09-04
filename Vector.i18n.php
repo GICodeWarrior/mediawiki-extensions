@@ -943,7 +943,7 @@ $messages['ka'] = array(
 	'vector-simplesearch-containing' => 'შეიცავს...',
 );
 
-/** Kazakh (Cyrillic) (Қазақша (Cyrillic))
+/** Kazakh (Cyrillic script) (‪Қазақша (кирил)‬)
  * @author GaiJin
  * @author Kaztrans
  */
@@ -951,6 +951,7 @@ $messages['kk-cyrl'] = array(
 	'vector-editwarning-warning' => 'Басқа бетке өтсеңіз сіздің жазған соңғы өңдемелеріңіз жойылуы мүмкін. 
 Егер сiз жүйеде тiркелсеңiз, онда сiз баптауларыңыздағы «Өңдеу» бөлігіне кіріп, бұл ескертуді өшіре аласыз.',
 	'vector-simplesearch-search' => 'Іздеу',
+	'vector-noexperiments-preference' => 'Параметр эксперименттеріне қатыстырма',
 );
 
 /** Kalaallisut (Kalaallisut)
