@@ -346,14 +346,15 @@ $messages['nl'] = array(
 );
 
 /** Polish (Polski)
+ * @author Sp5uhe
  * @author Woytecr
  */
 $messages['pl'] = array(
-	'notificator-e-mail-address' => 'adres e-mail',
+	'notificator-e-mail-address' => 'adres e‐mail',
 	'notificator-return-to' => 'Wróć do',
 	'notificator-change-tag' => 'zmień',
-	'notificator-new-tag' => 'Nowy',
-	'notificator-subject' => 'Temat:',
+	'notificator-new-tag' => 'nowy',
+	'notificator-subject' => 'Temat',
 );
 
 /** Portuguese (Português)
