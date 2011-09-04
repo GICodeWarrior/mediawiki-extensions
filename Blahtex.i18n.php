@@ -976,6 +976,7 @@ Wopytaj pśikaz "$3{...}" wužywaś.',
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Glavkos
  * @author Konsnos
  * @author ZaDiak
  */
@@ -992,6 +993,8 @@ $messages['el'] = array(
 	'math_IllegalDelimiter' => 'Παράνομος delimiter ακολουθεί "$1"',
 	'math_InvalidColour' => 'Το χρώμα "$1" είναι άκυρο',
 	'math_MismatchedBeginAndEnd' => 'Οι εντολές "$1" και "$2" δεν ταιριάζουν',
+	'math_MisplacedLimits' => 'Η εντολή "$1" μπορεί να εμφανιστεί μόνο μετά από έναν μαθηματικό τελεστή.
+Σκεφθείτε τη χρήση του "\\mathop".',
 	'math_MissingDelimiter' => 'Αγνοούμενος delimiter μετά από "$1"',
 	'math_MissingOpenBraceAfter' => 'Αγνοείται ανοιχτό brace "{" μετά από "$1"',
 	'math_MissingOpenBraceAtEnd' => 'Αγνοούμενο ανοιχτό brace "{" στο τέλος της εισόδου',
