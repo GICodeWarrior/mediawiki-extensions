@@ -16,20 +16,26 @@ $messages['en'] = array(
 	'userdebuginfo-language' => 'Language',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author EugeneZelenko
+ */
 $messages['qqq'] = array(
 	'userdebuginfo-desc' => '{{desc}}',
+	'userdebuginfo-key' => '{{Identical|Key}}',
+	'userdebuginfo-value' => '{{Identical|Value}}',
+	'userdebuginfo-language' => '{{Identical|Language}}',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author EugeneZelenko
  * @author Renessaince
  */
 $messages['be-tarask'] = array(
-	'userdebuginfo' => 'Адладачная інфармацыя пра карыстальнікаў',
-	'userdebuginfo-desc' => 'Паказвае некаторую карысную для адладкі інфармацыю пра цяперашняга карыстальніка',
+	'userdebuginfo' => 'Наладачная інфармацыя пра карыстальнікаў',
+	'userdebuginfo-desc' => 'Паказвае некаторую карысную для наладкі інфармацыю пра цяперашняга карыстальніка',
 	'userdebuginfo-useragent' => 'Агент карыстальніка HTTP',
 	'userdebuginfo-remotehost' => 'Аддалены хост HTTP',
-	'userdebuginfo-remoteaddr' => 'Аддаленая адрэса HTTP',
+	'userdebuginfo-remoteaddr' => 'Аддалены адрас HTTP',
 	'userdebuginfo-key' => 'Ключ',
 	'userdebuginfo-value' => 'Значэньне',
 	'userdebuginfo-language' => 'Мова',
