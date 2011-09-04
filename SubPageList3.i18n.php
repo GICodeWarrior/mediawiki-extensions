@@ -176,9 +176,11 @@ $messages['fa'] = array(
 
 /** Finnish (Suomi)
  * @author Crt
+ * @author Olli
  * @author Silvonen
  */
 $messages['fi'] = array(
+	'spl3-desc' => 'Luo automaattisesti listan sivun alasivuista koodilla <code><nowiki><splist /></nowiki></code>',
 	'spl3_debug' => 'Tuntematon arvo valinnassa $1.',
 	'spl3_nosubpages' => 'Sivulla $1 ei ole alasivuja.',
 );
@@ -198,6 +200,7 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'spl3-desc' => 'Fât ôtomaticament una lista de sot-pâges d’una pâge qu’utilise la balisa <code><nowiki><splist /></nowiki></code>.',
 	'spl3_debug' => 'Valor por lo chouèx $1 encognua.',
 	'spl3_nosubpages' => '$1 at gins de sot-pâge a ènumèrar.',
 );
