@@ -471,6 +471,7 @@ $messages['cy'] = array(
  * @author ChrisiPK
  * @author DaSch
  * @author Imre
+ * @author Kghbln
  * @author Melancholie
  * @author Purodha
  * @author Revolus
@@ -485,7 +486,7 @@ $messages['de'] = array(
 	'imagetagging-canteditothermessage' => 'Du kannst diese Seite nicht bearbeiten, weil du entweder keine Berechtigung dazu hast oder weil die Seite aus einem anderen Grund gesperrt ist.',
 	'imagetagging-imghistory' => 'Versionen',
 	'imagetagging-images' => 'Bild',
-	'imagetagging-inthisimage' => 'In diesem Bild: $1',
+	'imagetagging-inthisimage' => 'Auf diesem Bild: $1',
 	'imagetagging-logentry' => 'Tag auf Seite [[$1]] wurde durch $2 entfernt',
 	'imagetagging-log-tagged' => 'Bild [[$1|$2]] wurde von $4 markiert und mit [[$3]] verlinkt',
 	'imagetagging-new' => '<sup><span style="color:red">Neu!</span></sup>',
