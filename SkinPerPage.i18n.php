@@ -105,6 +105,13 @@ $messages['cs'] = array(
 	'skinperpage-desc' => 'Přidává tag <code>&lt;skin&gt;</code> umožňující zvolit jiný motiv vzhledu pro jednotlivé stránky',
 );
 
+/** Danish (Dansk)
+ * @author Peter Alberti
+ */
+$messages['da'] = array(
+	'skinperpage-desc' => 'Tilføjer <code>&lt;skin&gt;</code>-tag til at bruge forskellige udseender per side',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
