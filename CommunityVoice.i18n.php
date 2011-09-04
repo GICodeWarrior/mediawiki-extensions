@@ -208,6 +208,13 @@ $messages['cs'] = array(
 	'communityvoice-ratings-error-no-title' => 'Ve značce pro hodnocení chybí nadpis.',
 );
 
+/** Danish (Dansk)
+ * @author Peter Alberti
+ */
+$messages['da'] = array(
+	'communityvoice-ratings' => 'Bedømmelser',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Umherirrender
