@@ -151,6 +151,24 @@ Die [http://www.mediawiki.org/wiki/API Dokumentation zur API] enthält weitere H
 	'apisb-query-meta' => 'Metainformationen',
 );
 
+/** Greek (Ελληνικά)
+ * @author Glavkos
+ */
+$messages['el'] = array(
+	'apisb-parameters' => 'Παράμετροι',
+	'apisb-result' => 'Αποτέλεσμα',
+	'apisb-request-url' => 'Αίτηση URL:',
+	'apisb-select-action' => 'Επιλέξτε ενέργεια',
+	'apisb-select-query' => 'Τι πρέπει να ρωτήσω;',
+	'apisb-select-value' => 'Επιλέξτε τιμή',
+	'apisb-loading' => 'Φόρτωση...',
+	'apisb-namespaces-error' => 'Σφάλμα φόρτωσης ονοματοχώρων',
+	'apisb-ns-main' => '(Κύρια)',
+	'apisb-query-prop' => 'Ιδιότητες',
+	'apisb-query-list' => 'Λίστες',
+	'apisb-query-meta' => 'Πληροφορίες Meta',
+);
+
 /** Esperanto (Esperanto)
  * @author Lucas
  */
@@ -562,7 +580,7 @@ $messages['or'] = array(
  * @author Woytecr
  */
 $messages['pl'] = array(
-	'apisb-no-js' => "'''Błąd''': ta funkcja wymaga JavaScript.",
+	'apisb-no-js' => "'''Błąd''' – ta funkcja wymaga JavaScript.",
 	'apisb-parameters' => 'Parametry',
 	'apisb-result' => 'Rezultat',
 	'apisb-request-url' => 'Żądanie URL:',
