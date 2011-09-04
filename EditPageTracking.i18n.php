@@ -51,11 +51,25 @@ $messages['fa'] = array(
 	'editpagetracking-desc' => 'ثبت اولین باری که هر کاربر صفحهٔ ویرایش را مشاهده می‌کند',
 );
 
+/** Finnish (Suomi)
+ * @author Olli
+ */
+$messages['fi'] = array(
+	'editpagetracking-desc' => 'Tallentaa kunkin käyttäjän ensimmäisen kerran, kun katselee muokkaussivua',
+);
+
 /** French (Français)
  * @author Tpt
  */
 $messages['fr'] = array(
 	'editpagetracking-desc' => "Enregistre la première fois que chaque utilisateur ouvre la page d'édition",
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'editpagetracking-desc' => 'Encârte lo premiér côp que châque utilisator ôvre la pâge d’èdicion.',
 );
 
 /** Galician (Galego)
@@ -77,6 +91,13 @@ $messages['he'] = array(
  */
 $messages['ia'] = array(
 	'editpagetracking-desc' => 'Registra le prime vice que cata usator visualisa le pagina de modification',
+);
+
+/** Japanese (日本語)
+ * @author Schu
+ */
+$messages['ja'] = array(
+	'editpagetracking-desc' => '各利用者が編集ページを表示する最初の時間を記録します。',
 );
 
 /** Colognian (Ripoarisch)
