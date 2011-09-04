@@ -12,7 +12,7 @@ $messages = array();
  * @author Nimish Gautam
  */
 $messages['en'] = array(
-	'inlinecategorizer-desc' => 'JavaScript module that enables changing, adding and removing categorylinks directly from a page.',
+	'inlinecategorizer-desc' => 'JavaScript module that enables changing, adding and removing categorylinks directly from a page',
 
 	// Ajax interface
 	'inlinecategorizer-add-category'             => 'Add category',
