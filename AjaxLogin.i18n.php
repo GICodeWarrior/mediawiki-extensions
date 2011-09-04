@@ -694,6 +694,7 @@ Attendi $1 {{PLURAL:$1|secondo|secondi}} prima di riprovare nuovamente.',
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author Schu
  * @author Tommy6
  * @author Vigorous action
  */
@@ -706,6 +707,7 @@ $messages['ja'] = array(
 	'ajaxlogin-create' => 'アカウント作成',
 	'al-nosuchuser' => '「$1」という名前の利用者はいません。利用者名では大文字・小文字が区別されます。綴りを確かめてください。',
 	'al-createblocked' => 'あなたのIPアドレスは、アカウント作成がブロックされています。',
+	'al-throttled' => '最近のパスワードの試行が多すぎます。再試行まで、$1 {{PLURAL:$1|秒|秒}}お待ちください。',
 );
 
 /** Khmer (ភាសាខ្មែរ)
