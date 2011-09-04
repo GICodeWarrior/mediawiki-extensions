@@ -1677,7 +1677,7 @@ Evit testennoù komzet eo an doare-mañ da zreistvouezhiañ',
 	'mv_edit' => 'Kemmañ',
 	'mv_history' => 'Istor',
 	'mv_edit_title' => 'Kemmañ an destenn',
-	'mv_remove' => 'tennañ',
+	'mv_remove' => 'lemel',
 	'mv_adjust' => 'Lakaat da glotañ',
 	'mv_adjust_submit' => 'Enrollañ ar glotadenn',
 	'mv_adjust_title' => 'Lakaat deroù ha dibenn ar pad da glotañ',
@@ -3585,7 +3585,7 @@ $messages['frp'] = array(
 	'mv_date_range' => 'forchèta de dâtes',
 	'mv_date_last_week' => 'La semana passâ',
 	'mv_category_results' => 'Rèsultats de la catègorie',
-	'mv_people_results' => 'Rèsultats de les gens',
+	'mv_people_results' => 'Rèsultats a les gens',
 	'mv_bill_results' => 'Rèsultats de les factures',
 	'mv_intrest_group_results' => 'Tropes d’entèrèts',
 	'mv_most_relevant' => 'Lo ples corrèspondent',
@@ -5657,10 +5657,12 @@ $messages['it'] = array(
  * @author Fievarsty
  * @author Fryed-peach
  * @author Hosiryuhosi
+ * @author Schu
  * @author 青子守歌
  */
 $messages['ja'] = array(
 	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software 動画のメタデータ編集およびメディア検索]',
+	'mvadmin' => 'MetavidWiki のための管理機能',
 	'metavid' => 'Metavid ページ',
 	'mv_missing_stream' => '欠落したストリーム: $1',
 	'specialpages-group-mv_group' => 'MetaVidWiki 特別ページ',
