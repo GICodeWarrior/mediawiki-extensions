@@ -151,8 +151,11 @@ $messages['de'] = array(
  */
 $messages['el'] = array(
 	'bookmanager-desc' => 'Εργαλεία για βιβλία',
+	'bm-booktools-section' => 'Εργαλεία του βιβλίου',
+	'bm-randomchapter-link' => 'Τυχαίο κεφάλαιο',
 	'bm-printversion' => 'Εκτυπώσιμη έκδοση',
 	'bm-printversion-no-book' => 'Παρακαλώ εισάγετε το όνομα ενός βιβλίου για να πάρετε την έντυπη έκδοση του.',
+	'bm-printversion-inexistent-book' => 'Το βιβλίο δεν βρέθηκε. Πληκτρολογήστε το όνομα του ενός υπάρχοντος βιβλίου για να αποκτήσετε την έκδοση εκτύπωσης.',
 );
 
 /** Esperanto (Esperanto)
@@ -402,8 +405,8 @@ $messages['no'] = array(
  * @author Woytecr
  */
 $messages['pl'] = array(
-	'bookmanager-desc' => 'Narzędzia książek',
-	'bm-booktools-section' => 'Narzędzia książki',
+	'bookmanager-desc' => 'Narzędzia związane z książkami',
+	'bm-booktools-section' => 'Narzędzia związane z książkami',
 	'bm-randomchapter-link' => 'Losowy rozdział',
 	'bm-printversion' => 'Wersja do druku',
 	'bm-printversion-desc' => 'Generuje [[Special:PrintVersion|wersję do druku]] książki',

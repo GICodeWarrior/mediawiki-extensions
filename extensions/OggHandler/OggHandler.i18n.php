@@ -1239,6 +1239,8 @@ Volyéd <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downl
 	'ogg-dismiss' => 'Cllôre',
 	'ogg-download' => 'Tèlèchargiér lo fichiér',
 	'ogg-desc-link' => 'A propôs de ceti fichiér',
+	'ogg-oggThumb-version' => 'OggHandler at fôta d’oggThumb, vèrsion $1 ou ben ples novèla.',
+	'ogg-oggThumb-failed' => 'oggThumb at pas reussi a fâre la figura.',
 );
 
 /** Friulian (Furlan)

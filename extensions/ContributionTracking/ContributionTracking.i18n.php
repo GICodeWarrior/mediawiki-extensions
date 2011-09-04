@@ -237,6 +237,15 @@ $messages['cs'] = array(
 	'contrib-tracking-item-name-recurring' => 'Pravidelný měsíční příspěvek',
 );
 
+/** Danish (Dansk)
+ * @author Peter Alberti
+ */
+$messages['da'] = array(
+	'contrib-tracking-error' => 'Fejl',
+	'contrib-tracking-button' => 'Fortsæt',
+	'contrib-tracking-item-name-onetime' => 'Engangsdonation',
+);
+
 /** German (Deutsch)
  * @author Imre
  * @author Kghbln
@@ -299,6 +308,7 @@ $messages['ee'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Glavkos
  * @author Konsnos
  * @author Omnipaedista
  * @author ZaDiak
@@ -310,6 +320,7 @@ $messages['el'] = array(
 	'contrib-tracking-error-text' => 'Υποβολή άκυρου τύπου',
 	'contrib-tracking-submitting' => 'Υποβολή στον επεξεργαστή πληρωμών...',
 	'contrib-tracking-continue' => 'Εάν δεν προωθηθήκατε αυτόματα, πατήστε το κουμπί για να ολοκληρώσετε τη δωρεάν σας μέσω PayPal.',
+	'contrib-tracking-redirect' => 'Θα μεταφερθείτε αυτόματα στην PayPal για να ολοκληρώσετε τη δωρεά σας.',
 	'contrib-tracking-button' => 'Συνέχεια',
 	'contrib-tracking-item-name-onetime' => 'Εφάπαξ δωρεά',
 	'contrib-tracking-item-name-recurring' => 'Επαναλαμβανόμενη μηνιαία δωρεά',
@@ -387,6 +398,7 @@ $messages['fa'] = array(
 /** Finnish (Suomi)
  * @author Crt
  * @author Nike
+ * @author Olli
  * @author Tarmo
  */
 $messages['fi'] = array(
@@ -396,7 +408,10 @@ $messages['fi'] = array(
 	'contrib-tracking-error-text' => 'Lähetetty lomake oli viallinen',
 	'contrib-tracking-submitting' => 'Lähetetään maksujen käsittelyyn...',
 	'contrib-tracking-continue' => 'Jos sinua ei ohjata eteenpäin automaattisesti, viimeistele lahjoituksesi PayPalissa napsauttamalla.',
+	'contrib-tracking-redirect' => 'Sinut ohjataan automaattisesti PayPaliin lahjoituksen lähettämiseksi.',
 	'contrib-tracking-button' => 'Jatka',
+	'contrib-tracking-item-name-onetime' => 'Kertaluonteinen lahjoitus',
+	'contrib-tracking-item-name-recurring' => 'Jatkuva kuukausilahjoitus',
 );
 
 /** French (Français)
@@ -428,6 +443,7 @@ $messages['frp'] = array(
 	'contrib-tracking-error-text' => 'Somission du formulèro envalida',
 	'contrib-tracking-submitting' => 'Èxpèdicion u sistèmo de trètament des payements...',
 	'contrib-tracking-continue' => 'Se vos éte pas redirigiê ôtomaticament, clicâd cél boton por complètar voutron don avouéc PayPal.',
+	'contrib-tracking-redirect' => 'Vos voléd étre redirigiê ôtomaticament vers PayPal por chavonar voutron don.',
 	'contrib-tracking-button' => 'Continuar',
 	'contrib-tracking-item-name-onetime' => 'Don solèt',
 	'contrib-tracking-item-name-recurring' => 'Don per mês rècurrent',
@@ -1004,6 +1020,7 @@ $messages['pt-br'] = array(
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Minisarm
  * @author Stelistcristi
  */
 $messages['ro'] = array(
@@ -1013,7 +1030,7 @@ $messages['ro'] = array(
 	'contrib-tracking-error-text' => 'Trimiterea formularului este invalidă',
 	'contrib-tracking-submitting' => 'Trimitere la procesorul de plată...',
 	'contrib-tracking-continue' => 'Dacă nu sunteți redirecționat automat, apăsați butonul pentru a finaliza donația pe PayPal.',
-	'contrib-tracking-redirect' => 'Veți fi redirecționat automat pe PayPal pentru a completa donația.',
+	'contrib-tracking-redirect' => 'Veți fi redirecționat automat către PayPal pentru a finaliza donația.',
 	'contrib-tracking-button' => 'Continuați',
 	'contrib-tracking-item-name-onetime' => 'Donație unică',
 	'contrib-tracking-item-name-recurring' => 'Donație lunară recurentă',
@@ -1116,12 +1133,18 @@ $messages['sl'] = array(
 	'contrib-tracking-item-name-recurring' => 'Ponavljajoči se mesečni prispevki',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Јованвб
  */
 $messages['sr-ec'] = array(
+	'contributiontracking' => 'Праћење доприноса',
 	'contrib-tracking-error' => 'Грешка',
+	'contrib-tracking-error-text' => 'Неисправно подношење обрасца',
+	'contrib-tracking-submitting' => 'Шаљем обрасцу за плаћање…',
 	'contrib-tracking-button' => 'Настави',
+	'contrib-tracking-item-name-onetime' => 'Једнократан прилог',
+	'contrib-tracking-item-name-recurring' => 'Месечни прилог',
 );
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)

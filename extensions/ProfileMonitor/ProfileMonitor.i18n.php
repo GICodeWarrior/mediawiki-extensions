@@ -952,10 +952,12 @@ $messages['sr-ec'] = array(
 	'profiling-data-average' => 'Време (средње)',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
+ * @author Rancher
+ */
 $messages['sr-el'] = array(
 	'profiling-process' => 'Obradi string:',
-	'profiling-ok' => 'OK',
+	'profiling-ok' => 'U redu',
 	'profiling-data-process' => 'Obradi',
 	'profiling-data-count' => 'Broj',
 	'profiling-data-time' => 'Vreme (ukupno)',

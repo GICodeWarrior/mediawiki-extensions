@@ -7407,7 +7407,7 @@ $messages['frp'] = array(
 	'configure-setting-wgMimeTypeFile' => 'Fichiér de dèfinicion de tipo MIME',
 	'configure-setting-wgMimeTypeBlacklist' => 'Tipos MIME dèfendus',
 	'configure-setting-wgForeignFileRepos' => 'Dèpôts de fichiérs a distance',
-	'configure-setting-wgUseSharedUploads' => 'Utilisar lo dèpôt de fichiérs partagiê',
+	'configure-setting-wgUseSharedUploads' => 'Utilisar lo dèpôt partagiê',
 	'configure-setting-wgDirectoryMode' => 'Fôrmes des novéls dossiérs',
 	'configure-setting-wgFavicon' => 'L’URL de l’icôna du seto',
 	'configure-setting-wgLogo' => 'L’URL du logô du seto',
@@ -11473,6 +11473,7 @@ $messages['it'] = array(
  * @author Marine-Blue
  * @author Naohiro19
  * @author Ohgi
+ * @author Schu
  * @author 青子守歌
  */
 $messages['ja'] = array(
@@ -12014,6 +12015,7 @@ $messages['ja'] = array(
 	'configure-setting-wgDiff' => 'GNU diff ユーティリティへのパス',
 	'configure-setting-wgDiff3' => 'GNU diff3 ユーティリティへのパス',
 	'configure-setting-wgFavicon' => 'サイトのファビコンのURL',
+	'configure-setting-wgFooterIcons' => 'ページのフッターに表示されるアイコン',
 	'configure-setting-wgLogo' => 'サイトのロゴのURL',
 	'configure-setting-wgMathDirectory' => 'LaTeX の数式画像を含むディレクトリのパス',
 	'configure-setting-wgMathPath' => 'LaTeX の数式画像を含むディレクトリの基底URL',
@@ -12038,6 +12040,7 @@ $messages['ja'] = array(
 	'configure-setting-wgUploadMissingFileUrl' => '存在しないファイルのアップロードリンクに使用される外部URL',
 	'configure-setting-wgUploadPath' => 'アップロードディレクトリのURL',
 	'configure-setting-wgVariantArticlePath' => '言語変種ページ用のパス',
+	'configure-setting-wgUploadStashScalerBaseUrl' => 'リモートオンデマンドのスケーリングを行う時の画像のサムネイルへのパス',
 	'configure-setting-wgAllowCategorizedRecentChanges' => '最近の更新に、あるカテゴリまたはそのサブ(サブサブサブ…)カテゴリに含まれるもののみを表示することができるようにする',
 	'configure-setting-wgPutIPinRC' => '"recentchanges" テーブルにIPアドレスを記録する',
 	'configure-setting-wgRCChangedSizeThreshold' => '文字数の変化がこの値よりも小さいものを最近の更新でハイライトする',
@@ -16417,10 +16420,10 @@ $messages['pl'] = array(
 	'configure-setting-wgMiserMode' => 'Wyłącz niektóre funkcje wymagające dużej wydajności',
 	'configure-setting-wgShowHostnames' => 'Prezentuj nazwę serwera poprzez API i komentarze w HTML',
 	'configure-setting-wgUseDumbLinkUpdate' => 'Używaj do aktualizacji linków <code>DELETE</code> i <code>INSERT</code> zamiast zastępowania',
-	'configure-setting-wgCookieExpiration' => 'Czas wygaśnięcia HTTP cookie',
+	'configure-setting-wgCookieExpiration' => 'Czas wygaśnięcia ciasteczek HTTP',
 	'configure-setting-wgCookiePrefix' => 'Własny przedrostek dla ciasteczek',
 	'configure-setting-wgCookieSecure' => 'Zabezpiecz ciasteczka',
-	'configure-setting-wgDisableCookieCheck' => 'Wyłącza sesje cookies',
+	'configure-setting-wgDisableCookieCheck' => 'Wyłącz ciasteczka sesji',
 	'configure-setting-wgSessionName' => 'Nazwa sesji',
 	'configure-setting-wgSquidMaxage' => 'Maksymalny dozwolony czas przechowywania dla serwera buforującego (Squid)',
 	'configure-setting-wgUseSquid' => 'Włącz serwer buforujący (squid)',

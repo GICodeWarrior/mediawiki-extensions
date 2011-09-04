@@ -125,6 +125,7 @@ U terugvoer is waardevol en help ons om ons webwerf te verbeter.''",
 	'readerfeedback-tier-poor' => 'Laag',
 	'tooltip-ca-ratinghist' => 'Lesers se graderings van hierdie bladsy',
 	'specialpages-group-feedback' => 'Mening van die leser',
+	'readerfeedback-tt-review' => 'Dien beoordeling in',
 );
 
 /** Aragonese (Aragonés)
@@ -535,6 +536,7 @@ $messages['cs'] = array(
 /** Danish (Dansk)
  * @author Byrial
  * @author Emilkris33
+ * @author Peter Alberti
  */
 $messages['da'] = array(
 	'readerfeedback-desc' => 'Sidebedømmelse giver mulighed for læserne til at gve tilbagemeldinger i form af bedømmelse inden for et antal kategprier',
@@ -554,10 +556,14 @@ $messages['da'] = array(
 	'readerfeedback-submit' => 'Indsend',
 	'readerfeedback-main' => 'Kun indholdssider kan bedømmes.',
 	'readerfeedback-success' => "'''Tak for at du bedømte denne side!''' ([$2 se resultater]) ([$3 kommentarer eller spørgsmål?])",
-	'readerfeedback-voted' => "'''Det ser ud til at du allerede har bedømt denne side.''' ([$3 Kommentarer eller spørgsmål?])",
+	'readerfeedback-voted' => "'''Det ser ud til, at du allerede har bedømt denne side.''' ([$2 se resultater]) ([$3 kommentarer eller spørgsmål?])",
 	'readerfeedback-submitting' => 'Indsender …',
 	'readerfeedback-finished' => 'Tak!',
 	'readerfeedback-tagfilter' => 'Bedømmelseskategori:',
+	'readerfeedback-tierfilter' => 'Bedømmelse:',
+	'readerfeedback-tier-high' => 'Høj',
+	'readerfeedback-tier-medium' => 'Middel',
+	'readerfeedback-tier-poor' => 'Dårlig',
 	'tooltip-ca-ratinghist' => 'Læserbedømmelser af denne side',
 	'specialpages-group-feedback' => 'Læserbedømmelse',
 );
@@ -1715,6 +1721,27 @@ $messages['lmo'] = array(
 	'readerfeedback-completeness' => 'Cumpleteza',
 	'readerfeedback-npov' => 'Neutralità',
 	'readerfeedback-presentation' => 'Presentazión',
+);
+
+/** Lithuanian (Lietuvių)
+ * @author Eitvys200
+ */
+$messages['lt'] = array(
+	'readerfeedback-level-none' => '(nežinau)',
+	'readerfeedback-level-0' => 'Prastas',
+	'readerfeedback-level-1' => 'Žemas',
+	'readerfeedback-level-2' => 'Geras',
+	'readerfeedback-level-3' => 'Aukštas',
+	'readerfeedback-level-4' => 'Puikus',
+	'readerfeedback-submit' => 'Siųsti',
+	'readerfeedback-submitting' => 'Siunčiama ...',
+	'readerfeedback-finished' => 'Ačiū!',
+	'readerfeedback-tagfilter' => 'Žymė:',
+	'readerfeedback-tierfilter' => 'Reitingas:',
+	'readerfeedback-tier-high' => 'Aukštas',
+	'readerfeedback-tier-medium' => 'Moderuoti',
+	'readerfeedback-tier-poor' => 'Prastas',
+	'readerfeedback-tt-review' => 'Siųsti apžvalgą',
 );
 
 /** Latvian (Latviešu)

@@ -94,6 +94,13 @@ $messages['ia'] = array(
 	'dublincorerdf-desc' => 'Metadatos RDF de Dublin Core',
 );
 
+/** Japanese (日本語)
+ * @author Schu
+ */
+$messages['ja'] = array(
+	'dublincorerdf-desc' => 'Dublin Core RDF-metadata',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */

@@ -146,6 +146,7 @@ $messages['an'] = array(
  * @author Meno25
  * @author OsamaK
  * @author Ouda
+ * @author محمد الجداوي
  */
 $messages['ar'] = array(
 	'recordadmin' => 'إدارة السجل',
@@ -157,7 +158,7 @@ $messages['ar'] = array(
 	'recordadmin-newrecord' => 'أختار نوع سجل أخر',
 	'recordadmin-submit' => 'أرسل',
 	'recordadmin-create' => 'ابحث عن أو أنشئ سجلات "$1"',
-	'recordadmin-alreadyexist' => '! للأسف، "$1" موجود فعلا',
+	'recordadmin-alreadyexist' => 'للأسف، "$1" موجود بالفعل!',
 	'recordadmin-createsuccess' => '$1 أنشئت',
 	'recordadmin-createerror' => 'حدث خطأ أثناء محاولة إنشاء $1!',
 	'recordadmin-badtitle' => '! عنوان سئ',
@@ -1276,6 +1277,7 @@ $messages['it'] = array(
  * @author Aotake
  * @author Fryed-peach
  * @author Hosiryuhosi
+ * @author Schu
  * @author Whym
  * @author Yanajin66
  * @author 青子守歌
@@ -1319,7 +1321,7 @@ $messages['ja'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => '"$1"なし',
-	'recordadmin-edit-info' => 'このページは、このタブ集合から入力できる、独自のフォームを持つテンプレートを含んでいます。<br />テンプレートのフォームの代替手段としては、通常のMediaWiki編集機能を使ってください。',
+	'recordadmin-edit-info' => 'このページは、このタブ集合から入力できる、独自のフォームを持つテンプレートを含んでいます。<br />代替手段としては、<a href="$1">テンプレートフォームを使用しないで、通常のMediaWiki編集機能を使ってください。</a>',
 	'recordadmin-properties' => 'プロパティー',
 );
 

@@ -1510,6 +1510,9 @@ $messages['li'] = array(
  * @author Eitvys200
  */
 $messages['lt'] = array(
+	'ct-event-name' => 'Renginio pavadinimas',
+	'ct-expert-header' => '"Ekspertų" paspaudimai',
+	'ct-beginner-header' => '"Naujoko" paspaudimai',
 	'ct-total-header' => 'Viso paspaudimų',
 	'ct-start-date' => 'Pradžios data (MMMM MM DD)',
 	'ct-end-date' => 'Pabaigos data (MMMM MM DD)',

@@ -805,12 +805,12 @@ $messages['sr-ec'] = array(
 	'mwe-test-plural' => 'Покренуо/ла сам {{PLURAL:$1|$1 тест|$1 тестова}}',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Rancher
  */
 $messages['sr-el'] = array(
 	'mwe-loading' => 'Učitavanje ...',
-	'mwe-ok' => 'OK',
+	'mwe-ok' => 'U redu',
 	'mwe-cancel' => 'Otkaži',
 	'mwe-test-plural' => 'Pokrenuo/la sam {{PLURAL:$1|$1 test|$1 testova}}',
 );

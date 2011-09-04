@@ -115,10 +115,11 @@ $messages['no'] = array(
 );
 
 /** Polish (Polski)
+ * @author Sp5uhe
  * @author Woytecr
  */
 $messages['pl'] = array(
-	'automaticboardwelcome-desc' => 'Automatycznie wysyła [[MediaWiki:User-board-welcome-message|wiadomość powitalną]] nowym użytkownikom na ich stronach dyskusji po ukończeniu rejestracji',
+	'automaticboardwelcome-desc' => 'Automatycznie wstawia [[MediaWiki:User-board-welcome-message|wiadomość powitalną]] nowym użytkownikom na ich stronach dyskusji po ukończeniu rejestracji',
 );
 
 /** Russian (Русский)

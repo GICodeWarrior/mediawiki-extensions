@@ -203,6 +203,7 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'activestrategy' => 'Stratègia activa',
+	'active-strategy-desc' => 'Montre lo nombro de changements aportâs a les pâges de planificacion stratègica.',
 	'active-strategy-intro' => 'Nombro de changements de les pâges a la tropa de travâly pendent {{PLURAL:$1|lo jorn passâ|los $1 jorns passâs}}.',
 	'nedits' => '$1 changement{{PLURAL:$1||s}}',
 );
@@ -365,6 +366,13 @@ $messages['li'] = array(
 	'active-strategy-desc' => "Göf 't taal bewerkinge aan paazjes veur strategisch plenne weer",
 	'active-strategy-intro' => "Aantal bewirkingen aan taskforcepagina's in de aafgeloupe {{PLURAL:$1|daag|$1 daag}}.",
 	'nedits' => '$1 {{PLURAL:$1|bewèrking|bewèrkinge}}',
+);
+
+/** Lithuanian (Lietuvių)
+ * @author Eitvys200
+ */
+$messages['lt'] = array(
+	'activestrategy' => 'Aktyvi strategija',
 );
 
 /** Macedonian (Македонски)

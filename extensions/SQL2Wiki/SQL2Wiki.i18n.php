@@ -45,6 +45,7 @@ met vermelding van fout: "$2".',
 $messages['be-tarask'] = array(
 	'sql2wiki' => 'SQL2Wiki',
 	'sql2wiki-desc' => 'Паказвае SQL-зьвесткі у зьмесьце старонак',
+	'sql2wiki-special' => 'Выканаць код SQL2Wiki па націску клявішы мышы',
 	'sql2wiki-cache_refresh' => 'Абнавіць',
 	'sql2wiki-err-invalid_db_id' => 'SQL2Wiki: адсутнічае ці няслушны ідэнтыфікатар базы зьвестак',
 	'sql2wiki-err-invalid_type' => 'SQL2Wiki: Адсутнічае ці няслушны тып',

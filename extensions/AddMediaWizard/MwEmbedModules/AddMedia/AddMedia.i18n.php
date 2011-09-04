@@ -2414,6 +2414,7 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Centerlink
  * @author Crt
  * @author Nike
  * @author Olli
@@ -2441,11 +2442,25 @@ $messages['fi'] = array(
 	'mwe-filesource' => 'Lähde:',
 	'mwe-filestatus' => 'Tekijänoikeudellinen tila:',
 	'mwe-loading-add-media-wiz' => 'Ladataan ohjattua medianlisäystoimintoa',
+	'mwe-imported_from' => '$1 tuotu kohteesta [$2 $3].
+Katso lisätietoja alkuperäiseltä [$4 resurssivulta].',
+	'mwe-import-description' => '$1, tuotu kohteesta $2',
 	'mwe-select_file' => 'Valitse tiedosto',
+	'mwe-select_ownwork' => 'Lataan täysin oman työni, ja lisensoin sen lisenssillä:',
+	'mwe-license_cc-by-sa' => 'Creative Commons Share Alike (3.0)',
 	'mwe-upload' => 'Tallenna tiedosto',
+	'mwe-destfilename' => 'Kohdetiedostonimi:',
 	'mwe-summary' => 'Yhteenveto',
+	'mwe-date-of-work' => 'Työn päivämäärä',
+	'mwe-error_not_loggedin' => 'Näyttää siltä, että et ole kirjautunut järjestelmään tai sinulla ei ole käyttöoikeuksia kopioida palvelimelle.',
+	'mwe-error-not-loggedin-file' => 'Näyttää siltä, että et ole kirjautunut järjestelmään tai ohjelmistossa oli virhe.
+Voit $1 tai yrittää uudelleen',
+	'mwe-link-login' => 'kirjaudu',
 	'mwe-watch-this-file' => 'Tarkkaile tätä tiedostoa',
 	'mwe-ignore-any-warnings' => 'Ohita kaikki varoitukset',
+	'mwe-i-would-like-to' => 'Haluaisin',
+	'mwe-upload-own-file' => 'Kopioida työni palvelimelle $1',
+	'mwe-upload-not-my-file' => 'Kopioidaan palvelimelle $1 mediatiedosto, joka ei ole oma työni',
 	'mwe-add_media_wizard' => 'Lisää media ohjatusti',
 	'mwe-media_search' => 'Mediahaku',
 	'mwe-am-results_desc' => 'Tulokset $1-$2',
@@ -3763,6 +3778,7 @@ Puoi riprovare più tardi',
  * @author Aotake
  * @author Fryed-peach
  * @author Ohgi
+ * @author Schu
  * @author 青子守歌
  */
 $messages['ja'] = array(
@@ -3838,6 +3854,7 @@ $messages['ja'] = array(
 	'mwe-results_from' => '$1の結果',
 	'mwe-missing_desc_see_source' => 'この素材には説明がありません。[$1 もともとの出所]を確認して解説を追加してください。',
 	'mwe-am-config_error' => 'メディア追加ウィザードの設定エラー: $1',
+	'mwe-your-recent-uploads' => 'あなたのアップロード',
 	'mwe-your-recent-uploads-to' => '$1へのあなたの最近のアップロード',
 	'mwe-no_recent_uploads' => '最近のアップロードはありません',
 	'mwe-not-logged-in-uploads' => 'ログインしていないようなので、アップロードされたものは表示されません。[$1 ログインして]、[$2 再度お試しください]。',
@@ -4237,6 +4254,7 @@ $messages['lb'] = array(
 	'mwe-imported_from' => "$1 huet vun [$2 $3] importéiert. Kuckt d'[$4 Originalquellsäit] fir méi Informatiounen.",
 	'mwe-import-description' => '$1, importéiert vu(n) $2',
 	'mwe-select_file' => 'Fichier eraussichen',
+	'mwe-license_cc-by-sa' => 'Creative Commons Share Alike (3.0)',
 	'mwe-upload' => 'Fichier eroplueden',
 	'mwe-destfilename' => 'Numm vum Zilfichier',
 	'mwe-summary' => 'Resumé',
@@ -4277,6 +4295,7 @@ Dir kënnt $1, duerno $2",
 	'mwe-cc_by_title' => 'Attributioun',
 	'mwe-cc_nc_title' => 'Net-kommerziell',
 	'mwe-cc_nd_title' => 'Keng verännert Wierker',
+	'mwe-cc_sa_title' => 'Share Alike',
 	'mwe-cc_pd_title' => 'Ëffentlechen Domaine',
 	'mwe-unknown_license' => 'Onbekannte Lizenz',
 	'mwe-results_from' => 'Resultater vu(n) $1',
@@ -6971,6 +6990,7 @@ Pinagagana ba ng wiki ang $1?</p>',
  * @author CnkALTDS
  * @author Emperyan
  * @author Joseph
+ * @author Szoszv
  * @author Vito Genovese
  */
 $messages['tr'] = array(
@@ -7043,6 +7063,7 @@ $1 yapabilir ve tekrar deneyebilirsiniz',
 	'mwe-missing_desc_see_source' => 'Bu varlığın tanımı eksik.
 Lütfen [$1 kaynağı] kontrol edin ve açıklamaya yardımcı olun.',
 	'mwe-am-config_error' => 'Ortam ekle sihirbazı yapılandırma hatası: $1',
+	'mwe-your-recent-uploads' => 'Senin yüklemelerin',
 	'mwe-upload-a-file' => 'Yeni bir dosya yükleyin.',
 	'mwe-upload-a-file-to' => '$1 yeni bir dosya yükleyin.',
 	'mwe-resource_page_desc' => 'Kaynak sayfası açıklaması:',

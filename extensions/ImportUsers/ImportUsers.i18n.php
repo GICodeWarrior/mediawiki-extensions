@@ -1064,25 +1064,29 @@ Saltato.',
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Hosiryuhosi
+ * @author Schu
  * @author 青子守歌
  */
 $messages['ja'] = array(
 	'importusers' => '利用者のインポート',
-	'importusers-desc' => 'CSVファイル (文字コード: UTF-8) から一括して[[Special:ImportUsers|利用者をインポート]]',
+	'importusers-desc' => 'CSVファイル ( UTF-8 エンコード ) から一括して[[Special:ImportUsers|利用者をインポート]]します。',
 	'importusers-uploadfile' => 'ファイルをアップロード',
-	'importusers-form-caption' => 'CSVファイルを入力してください (UTF-8)',
+	'importusers-form-caption' => 'CSVファイル ( UTF-8エンコード ) を入力してください :',
 	'importusers-form-file' => '利用者ファイル形式 (CSV):',
 	'importusers-form-replace-present' => '既存利用者を置き換える',
 	'importusers-form-button' => 'インポート',
 	'importusers-user-added' => "利用者 '''$1''' を追加しました。",
-	'importusers-user-present-update' => "利用者 '''$1''' が既に存在します。更新しました。",
-	'importusers-user-present-not-update' => "利用者 '''$1''' が既に存在します。更新しませんでした。",
-	'importusers-user-invalid-format' => '$1行目の利用者データは不正な形式であるか空です。飛ばしました。',
+	'importusers-user-present-update' => "利用者 '''$1''' が既に存在します。
+更新しました。",
+	'importusers-user-present-not-update' => "利用者 '''$1''' が既に存在します。
+更新しませんでした。",
+	'importusers-user-invalid-format' => '$1行目の利用者データは不正な形式であるか空です。
+スキップしました。',
 	'importusers-log' => '利用者インポート記録',
 	'importusers-log-summary' => '要約',
-	'importusers-log-summary-all' => 'すべて',
-	'importusers-log-summary-added' => '追加',
-	'importusers-log-summary-updated' => '更新',
+	'importusers-log-summary-all' => 'すべて : $1',
+	'importusers-log-summary-added' => '追加 : $1',
+	'importusers-log-summary-updated' => '更新 : $1',
 	'importusers-login-name' => 'ログイン名',
 	'importusers-password' => 'パスワード',
 	'importusers-email' => 'メールアドレス',

@@ -458,8 +458,10 @@ $messages['sl'] = array(
 
 /** Swedish (Svenska)
  * @author Cohan
+ * @author WikiPhoenix
  */
 $messages['sv'] = array(
+	'variablepage' => 'VariablePage',
 	'variablepage-navlink_text' => 'Donera',
 	'variablepage-desc' => 'Lättviktsomdirigering av variabelsida',
 );

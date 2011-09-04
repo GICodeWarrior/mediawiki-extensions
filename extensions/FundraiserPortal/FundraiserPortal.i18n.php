@@ -1041,11 +1041,16 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'fundraiserportal' => 'Fundraiser портал',
+	'fundraiserportal-desc' => 'Придасть верьх бочного панела  «Пожертвованя».',
 	'fundraiserportal-plain-button' => 'Підпорьте Вікіпедію!',
+	'fundraiserportal-ruby-button' => 'Зробити пожертву такой',
 	'fundraiserportal-rubytext-button' => 'Зробити пожертву зараз',
+	'fundraiserportal-rubytext-message' => 'Кажда пожертва помагать утримовати Вікіпедію вольно доступнов вшыткым.',
 	'fundraiserportal-rubytext-close' => 'Сховати тото одтеперь',
 	'fundraiserportal-sapphire-button' => 'Зробити пожертву зараз',
 	'fundraiserportal-tourmaline-button' => 'Зробити пожертву зараз',
+	'fundraiserportal-tourmaline-message' => 'Кажда пожертва помагать утримовати Вікіпедію вольно доступнов вшыткым.',
 	'fundraiserportal-tourmaline-close' => 'Сховати тото одтеперь',
 );
 

@@ -72,6 +72,13 @@ $messages['de'] = array(
 	'customusersignup-desc' => 'Ermöglicht die Ausgabe angepasster Benutzernachrichten im Verlauf der Benutzerkontenerstellung',
 );
 
+/** Greek (Ελληνικά)
+ * @author Glavkos
+ */
+$messages['el'] = array(
+	'customusersignup-desc' => 'Επιτρέπει την δυνατότητα προσαρμόσιμων μηνυμάτων κατά τη διαδικασία δημιουργίας λογαριασμού',
+);
+
 /** Spanish (Español)
  * @author Fitoschido
  */
@@ -86,11 +93,25 @@ $messages['fa'] = array(
 	'customusersignup-desc' => 'اجازه به پیام‌های قابل سفارشی کردن را در طی روند ایجاد حساب کاربری می‌هد',
 );
 
+/** Finnish (Suomi)
+ * @author Olli
+ */
+$messages['fi'] = array(
+	'customusersignup-desc' => 'Sallii mukautettujen viestien näyttämisen tilin luomisprosessin aikana',
+);
+
 /** French (Français)
  * @author IAlex
  */
 $messages['fr'] = array(
 	'customusersignup-desc' => 'Permet des messages variés au cours du processus de création de compte',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'customusersignup-desc' => 'Pèrmèt des mèssâjos variâs pendent la mètoda de crèacion de compto.',
 );
 
 /** Galician (Galego)
@@ -133,6 +154,13 @@ $messages['id'] = array(
  */
 $messages['it'] = array(
 	'customusersignup-desc' => "Permette i messaggi personalizzati durante il processo di creazione dell'account",
+);
+
+/** Japanese (日本語)
+ * @author Schu
+ */
+$messages['ja'] = array(
+	'customusersignup-desc' => 'アカウント作成プロセス中の、カスタマイズ可能なメッセージを可能にします。',
 );
 
 /** Colognian (Ripoarisch)

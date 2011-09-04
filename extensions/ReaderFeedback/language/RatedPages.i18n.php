@@ -519,6 +519,14 @@ $messages['li'] = array(
 	'ratedpages-count' => '$1 {{PLURAL:$1|waardering|waarderinge}}',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Eitvys200
+ */
+$messages['lt'] = array(
+	'ratedpages-none' => 'Šiame sąraše nėra puslapių.',
+	'ratedpages-count' => '$1 {{PLURAL:$1|apžvalga|apžvalgos}}',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -716,6 +724,8 @@ $messages['ru'] = array(
  */
 $messages['rue'] = array(
 	'ratedpages' => 'Сторінкы, оцінены хоснователями',
+	'ratedpages-leg' => 'Найти сторінкы зо значным чіслом оцїнок',
+	'ratedpages-list' => 'Тото є список сторінок ушореный подля чітательского оцїнїня.',
 	'ratedpages-none' => 'У тім списку не суть жадны сторінкы.',
 	'ratedpages-graphs' => 'дата рейтінґу',
 	'ratedpages-count' => '$1 {{PLURAL:$1|оцінка|оцінкы|оцінок}}',

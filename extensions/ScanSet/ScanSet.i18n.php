@@ -283,9 +283,13 @@ $messages['cs'] = array(
 
 /** Danish (Dansk)
  * @author Jon Harald Søby
+ * @author Peter Alberti
  */
 $messages['da'] = array(
+	'scanset_unrecognised_index_format' => 'Fejl: Ukendt indeksformat',
+	'scanset_missing_index_file' => 'Fejl: Indeksfilen $1 ikke fundet',
 	'scanset_next' => 'Næste &gt;',
+	'scanset_prev' => '&lt; Forrige',
 );
 
 /** German (Deutsch)
@@ -874,9 +878,12 @@ $messages['li'] = array(
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Eitvys200
  * @author Matasg
  */
 $messages['lt'] = array(
+	'scanset_unrecognised_index_format' => 'Klaida: Nežinomas indekso formatas',
+	'scanset_missing_index_file' => 'Klaida: Indekso failas $1 nerastas',
 	'scanset_next' => 'Toliau &gt;',
 	'scanset_prev' => '&lt; Ankstesnis',
 );

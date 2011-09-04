@@ -669,13 +669,14 @@ $messages['sl'] = array(
 	'eval_code' => 'Koda',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Charmed94
+ * @author Rancher
  */
 $messages['sr-ec'] = array(
 	'eval' => 'Евал',
 	'eval-desc' => 'Додаје [[Special:Eval|сучеље]] на <code>eval()</code> функцију',
-	'eval_submit' => 'Проценити',
+	'eval_submit' => 'Процени',
 	'eval_escape' => 'Излаз из одредишта',
 	'eval_out' => 'Одредиште',
 	'eval_code' => 'Кôд',
