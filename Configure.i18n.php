@@ -236,6 +236,7 @@ $messages['qqq'] = array(
 
 {{Identical|Authorised user}}',
 	'configure-desc-group' => '{{Identical|Group}}',
+	'configure-desc-key' => '{{Identical|Key}}',
 	'configure-desc-ns' => '{{Identical|Namespaces}}',
 	'configure-desc-val' => '{{Identical|Value}}',
 	'configure-edit-ext' => '{{Identical|Extensions}}',
@@ -7674,6 +7675,7 @@ $messages['myv'] = array(
  */
 $messages['mzn'] = array(
 	'configure-section-category' => 'رج‌ئون',
+	'configure-section-specialpages' => 'شا صفحه‌ئون',
 );
 
 /** Nahuatl (Nāhuatl)
