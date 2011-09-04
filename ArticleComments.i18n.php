@@ -535,6 +535,9 @@ $messages['el'] = array(
 	'article-comments-submission-failed' => 'H υποβολή Σχόλιου  απέτυχε',
 	'article-comments-failure-reasons' => 'Συγνώμη η υποβολή του σχόλιου σας απέτυχε για τους ακόλουθους λόγους {{PLURAL:$1|reason|reasons}}:',
 	'article-comments-no-comments' => 'Δυστυχώς η σελίδα "[[$1]]" δεν δέχεται σχόλια αυτή την ώρα',
+	'article-comments-talk-page-starter' => '<noinclude>Σχόλια για "[[$1]]"
+<comments></comments>
+-----__NOEDITSECTION__</noinclude>',
 	'article-comments-commenter-said' => '$1 είπε...',
 	'article-comments-summary' => 'Σχόλιο από $1 - μέσω του πρόσθετου ArticleComments',
 	'article-comments-submission-succeeded' => 'Υποβολή σχολίου ολοκληρώθηκε',
