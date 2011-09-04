@@ -65,4 +65,3 @@ $messages['qqq'] = array(
 	'inlinecategorizer-remove-category'          => 'Tooltip for link to remove a category from the page, displayed after each category at the foot of a page. Refers to the specific category. "Remove this category" is also correct.',
 	'inlinecategorizer-remove-category-summary'  => 'See {{msg-mw|inlinecategorizer-category-question}}. $1 is a category name.',
 );
-	
