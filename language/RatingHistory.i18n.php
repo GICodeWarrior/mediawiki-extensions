@@ -1531,6 +1531,19 @@ $messages['li'] = array(
 	'right-feedback' => 'Gebroek feedback veur paginawaardering',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Eitvys200
+ */
+$messages['lt'] = array(
+	'ratinghistory' => 'Puslapio vertinimų istoriją',
+	'ratinghistory-period' => 'Laikotarpis:',
+	'ratinghistory-month' => 'Praeitas mėnuo',
+	'ratinghistory-3months' => 'Praeiti 3 mėnesiai',
+	'ratinghistory-year' => 'pernai',
+	'ratinghistory-3years' => 'pastaruosius 3 metus',
+	'ratinghistory-table-votes' => 'Balsai',
+);
+
 /** Latvian (Latviešu)
  * @author Papuass
  */
@@ -2093,8 +2106,10 @@ $messages['ru'] = array(
  */
 $messages['rue'] = array(
 	'ratinghistory' => 'Історія оцінёваня сторінкы',
+	'ratinghistory-leg' => 'Часы про рейтінґ сторінкы про [[:$1|$1]]',
 	'ratinghistory-tab' => 'рейтінґ',
 	'ratinghistory-link' => 'Рейтінґ сторінкы',
+	'ratinghistory-thanks' => "''<span style=\"color:darkred;\">Дякуєме, же вы нашли минутку жебы перевірити тоту сторінку!</span>''",
 	'ratinghistory-period' => 'Період часу:',
 	'ratinghistory-month' => 'послїднїй місяць',
 	'ratinghistory-3months' => 'послїднї 3 місяцї',
@@ -2109,7 +2124,10 @@ $messages['rue'] = array(
 	'ratinghistory-svg' => 'Зобразити як SVG',
 	'ratinghistory-table-rating' => 'Рейтінґ',
 	'ratinghistory-table-votes' => 'Голосы',
+	'ratinghistory-none' => 'В сучасности не є про ґрафы к діспозіції достаток оцїнїня чітателїв.',
 	'ratinghistory-ratings' => "'''Леґенда:''' '''(1)''' — слаба; '''(2)''' — низка; '''(3)''' — середня; '''(4)''' — высока; '''(5)''' — выняткова;",
+	'ratinghistory-graph-scale' => "'''Чісло оцїнок/день''' <span style=\"color:red;\">''(червено)''</span> указаный в мірцї ''1:\$1''.",
+	'right-feedback' => 'Оцїнёваня сторінок средством формуларя',
 );
 
 /** Sakha (Саха тыла)
