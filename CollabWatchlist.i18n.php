@@ -241,6 +241,28 @@ $messages['de'] = array(
 	'tog-collabwatchlisthidelistusers' => 'Bearbeitungen von Benutzern der kollaborativen Beobachtungsliste ausblenden',
 );
 
+/** Greek (Ελληνικά)
+ * @author Glavkos
+ */
+$messages['el'] = array(
+	'collabwatchlisttagcomment' => 'Σχόλιο',
+	'collabwatchlistsettagbutton' => 'Ορίστε ετικέτα',
+	'collabwatchlisttools-view' => 'Εμφάνιση',
+);
+
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'collabwatchlisttagselect' => 'Etikedo',
+	'collabwatchlisttagcomment' => 'Komento',
+	'collabwatchlistedit-users-raw-submit' => 'Konservi',
+	'collabwatchlistedit-tags-raw-titles' => 'Etikedoj:',
+	'collabwatchlistedit-normal-title' => 'Redakti kategoriojn',
+	'collabwatchlistnew-submit' => 'Krei',
+	'collabwatchlistedit-normal-submit' => 'Konservi',
+);
+
 /** Spanish (Español)
  * @author Mor
  */
@@ -788,6 +810,7 @@ $messages['no'] = array(
 );
 
 /** Polish (Polski)
+ * @author Sp5uhe
  * @author Woytecr
  */
 $messages['pl'] = array(
@@ -806,7 +829,7 @@ $messages['pl'] = array(
 	'collabwatchlistdelete-submit' => 'Usuń',
 	'collabwatchlistnew-name' => 'Nazwa listy',
 	'collabwatchlistnew-submit' => 'Utwórz',
-	'collabwatchlistedit-raw-added' => '{{PLURAL:$1|1 strona lub kategoria została dodana|$1 stron lub kategorii zostało dodanych}}:',
+	'collabwatchlistedit-raw-added' => '{{PLURAL:$1|1 strona lub kategoria została dodana|$1 strony lub kategorie zostały dodane|$1 stron lub kategorii zostało dodanych}}:',
 	'collabwatchlistedit-normal-submit' => 'Zapisz',
 );
 
@@ -886,6 +909,13 @@ $messages['pt'] = array(
  */
 $messages['ru'] = array(
 	'collabwatchlistedit-normal-submit' => 'Сохранить',
+);
+
+/** Swedish (Svenska)
+ * @author WikiPhoenix
+ */
+$messages['sv'] = array(
+	'collabwatchlistdelete-submit' => 'Radera',
 );
 
 /** Telugu (తెలుగు)
