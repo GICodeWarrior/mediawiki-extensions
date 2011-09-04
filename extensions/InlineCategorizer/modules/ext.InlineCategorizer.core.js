@@ -1,13 +1,12 @@
 /**
- * mediaWiki.page.ajaxCategories
+ * The core of InlineCategorizer
  *
  * @author Michael Dale, 2009
  * @author Leo Koppelkamm, 2011
  * @author Timo Tijhof, 2011
- * @since 1.19
  *
  * Relies on: mw.config (wgFormattedNamespaces, wgNamespaceIds,
- * wgCaseSensitiveNamespaces, wgUserGroups), mw.util.wikiGetlink, mw.user.getId
+ * wgCaseSensitiveNamespaces, wgUserGroups), mw.util.wikiGetlink
  */
 ( function( $ ) {
 
@@ -189,10 +188,12 @@
 	}
 
 /**
+ * mw.InlineCategorizer
+ *
  * @constructor
- * @param
+ * @param options {Object}
  */
-mw.ajaxCategories = function( options ) {
+mw.InlineCategorizer = function( options ) {
 
 	this.options = options = $.extend( defaultOptions, options );
 
@@ -250,7 +251,7 @@ mw.ajaxCategories = function( options ) {
 			category = $link.text(),
 			$input = ajaxcat.makeSuggestionBox( category,
 				ajaxcat.handleEditLink,
-				ajaxcat.options.multiEdit ? mw.msg( 'ajax-confirm-ok' ) : mw.msg( 'ajax-confirm-save' )
+				ajaxcat.options.multiEdit ? mw.msg( 'inlinecategorizer-confirm-ok' ) : mw.msg( 'inlinecategorizer-confirm-save' )
 			);
 
 		$link.after( $input ).hide();
@@ -275,9 +276,9 @@ mw.ajaxCategories = function( options ) {
 				$( this )
 					.unbind( 'click' )
 					.click( ajaxcat.handleDeleteLink )
-					.attr( 'title', mw.msg( 'ajax-remove-category' ) );
+					.attr( 'title', mw.msg( 'inlinecategorizer-remove-category' ) );
 			})
-			.attr( 'title', mw.msg( 'ajax-cancel' ) );
+			.attr( 'title', mw.msg( 'inlinecategorizer-cancel' ) );
 	};
 
 	/**
@@ -397,15 +398,11 @@ mw.ajaxCategories = function( options ) {
 
 /* Public methods */
 
-mw.ajaxCategories.prototype = {
+mw.InlineCategorizer.prototype = {
 	/**
 	 * Create the UI
 	 */
 	setup: function() {
-		// Could be set by gadgets like HotCat etc.
-		if ( mw.config.get( 'disableAJAXCategories' ) ) {
-			return false;
-		}
 		// Only do it for articles.
 		if ( !mw.config.get( 'wgIsArticle' ) ) {
 			return;
@@ -414,15 +411,15 @@ mw.ajaxCategories.prototype = {
 			ajaxcat = this,
 			// Create [Add Category] link
 			$addLink = createButton( 'icon-add',
-				mw.msg( 'ajax-add-category' ),
+				mw.msg( 'inlinecategorizer-add-category' ),
 				'mw-ajax-addcategory',
-				mw.msg( 'ajax-add-category' )
+				mw.msg( 'inlinecategorizer-add-category' )
 			).click( function() {
 				$( this ).nextAll().toggle().filter( '.mw-addcategory-input' ).focus();
 			});
 
 		// Create add category prompt
-		this.addContainer = this.makeSuggestionBox( '', this.handleAddLink, mw.msg( 'ajax-add-category-submit' ) );
+		this.addContainer = this.makeSuggestionBox( '', this.handleAddLink, mw.msg( 'inlinecategorizer-add-category-submit' ) );
 		this.addContainer.children().hide();
 		this.addContainer.prepend( $addLink );
 
@@ -435,14 +432,14 @@ mw.ajaxCategories.prototype = {
 
 		// @todo Make more clickable
 		this.saveAllButton = createButton( 'icon-tick',
-			mw.msg( 'ajax-confirm-save-all' ),
+			mw.msg( 'inlinecategorizer-confirm-save-all' ),
 			'',
-			mw.msg( 'ajax-confirm-save-all' )
+			mw.msg( 'inlinecategorizer-confirm-save-all' )
 		);
 		this.cancelAllButton = createButton( 'icon-close',
-			mw.msg( 'ajax-cancel-all' ),
+			mw.msg( 'inlinecategorizer-cancel-all' ),
 			'',
-			mw.msg( 'ajax-cancel-all' )
+			mw.msg( 'inlinecategorizer-cancel-all' )
 		);
 		this.saveAllButton.click( this.handleStashedCategories ).hide();
 		this.cancelAllButton.click( function() {
@@ -528,7 +525,7 @@ mw.ajaxCategories.prototype = {
 	 * @param catTitle {mw.Title} Instance of mw.Title of the category to be added.
 	 * @param catSortkey {String} sort key (optional)
 	 * @param noAppend
-	 * @return {mw.ajaxCategories}
+	 * @return {mw.inlineCategorizer}
 	 */
 	handleCategoryAdd: function( $link, catTitle, catSortkey, noAppend ) {
 		var	ajaxcat = this,
@@ -538,7 +535,7 @@ mw.ajaxCategories.prototype = {
 			catFull = catTitle.toText();
 
 		if ( this.containsCat( catName ) ) {
-			this.showError( mw.msg( 'ajax-category-already-present', catName ) );
+			this.showError( mw.msg( 'inlinecategorizer-category-already-present', catName ) );
 			return this;
 		}
 
@@ -555,7 +552,7 @@ mw.ajaxCategories.prototype = {
 				newText = newText + "\n[[" + catFull + suffix + "]]\n";
 				return ajaxcat.runHooks( newText, 'afterAdd', catName );
 			},
-			dialogDescription: mw.message( 'ajax-add-category-summary', catName ).escaped(),
+			dialogDescription: mw.message( 'inlinecategorizer-add-category-summary', catName ).escaped(),
 			editSummary: '+[[' + catFull + ']]',
 			doneFn: function( unsaved ) {
 				if ( !noAppend ) {
@@ -621,7 +618,7 @@ mw.ajaxCategories.prototype = {
 
 				// Old cat wasn't found, likely to be transcluded
 				if ( !$.isArray( matches ) ) {
-					ajaxcat.showError( mw.msg( 'ajax-edit-category-error' ) );
+					ajaxcat.showError( mw.msg( 'inlinecategorizer-edit-category-error' ) );
 					return false;
 				}
 
@@ -638,7 +635,7 @@ mw.ajaxCategories.prototype = {
 
 				return ajaxcat.runHooks( newText, 'afterChange', oldCatName, catName );
 			},
-			dialogDescription: mw.message( 'ajax-edit-category-summary', oldCatName, catName ).escaped(),
+			dialogDescription: mw.message( 'inlinecategorizer-edit-category-summary', oldCatName, catName ).escaped(),
 			editSummary: editSummary,
 			doneFn: function( unsaved ) {
 				// Remove input box & button
@@ -699,12 +696,12 @@ mw.ajaxCategories.prototype = {
 	 * Append edit and remove buttons to a given category link
 	 *
 	 * @param DOMElement element Anchor element, to which the buttons should be appended.
-	 * @return {mw.ajaxCategories}
+	 * @return {mw.inlineCategorizer}
 	 */
 	createCatButtons: function( $element ) {
-		var	deleteButton = createButton( 'icon-close', mw.msg( 'ajax-remove-category' ) ),
-			editButton = createButton( 'icon-edit', mw.msg( 'ajax-edit-category' ) ),
-			saveButton = createButton( 'icon-tick', mw.msg( 'ajax-confirm-save' ) ).hide(),
+		var	deleteButton = createButton( 'icon-close', mw.msg( 'inlinecategorizer-remove-category' ) ),
+			editButton = createButton( 'icon-edit', mw.msg( 'inlinecategorizer-edit-category' ) ),
+			saveButton = createButton( 'icon-tick', mw.msg( 'inlinecategorizer-confirm-save' ) ).hide(),
 			ajaxcat = this;
 
 		deleteButton.click( this.handleDeleteLink );
@@ -727,7 +724,7 @@ mw.ajaxCategories.prototype = {
 	/**
 	 * Append spinner wheel to element.
 	 * @param $el {jQuery}
-	 * @return {mw.ajaxCategories}
+	 * @return {mw.inlineCategorizer}
 	 */
 	addProgressIndicator: function( $el ) {
 		$el.append( $( '<div>' ).addClass( 'mw-ajax-loader' ) );
@@ -737,7 +734,7 @@ mw.ajaxCategories.prototype = {
 	/**
 	 * Find and remove spinner wheel from inside element.
 	 * @param $el {jQuery}
-	 * @return {mw.ajaxCategories}
+	 * @return {mw.inlineCategorizer}
 	 */
 	removeProgressIndicator: function( $el ) {
 		$el.find( '.mw-ajax-loader' ).remove();
@@ -795,13 +792,13 @@ mw.ajaxCategories.prototype = {
 				newText = newText.replace( categoryRegex, '' );
 
 				if ( newText === oldText ) {
-					ajaxcat.showError( mw.msg( 'ajax-remove-category-error' ) );
+					ajaxcat.showError( mw.msg( 'inlinecategorizer-remove-category-error' ) );
 					return false;
 				}
 
 				return ajaxcat.runHooks( newText, 'afterDelete', category );
 			},
-			dialogDescription: mw.message( 'ajax-remove-category-summary', category ).escaped(),
+			dialogDescription: mw.message( 'inlinecategorizer-remove-category-summary', category ).escaped(),
 			editSummary: '-[[' + new mw.Title( category, catNsId ) + ']]',
 			doneFn: function( unsaved ) {
 				if ( unsaved ) {
@@ -876,12 +873,12 @@ mw.ajaxCategories.prototype = {
 			getTokenVars,
 			function( json ) {
 				if ( 'error' in json ) {
-					ajaxcat.showError( mw.msg( 'ajax-api-error', json.error.code, json.error.info ) );
+					ajaxcat.showError( mw.msg( 'inlinecategorizer-api-error', json.error.code, json.error.info ) );
 					return;
 				} else if ( json.query && json.query.pages ) {
 					var infos = json.query.pages;
 				} else {
-					ajaxcat.showError( mw.msg( 'ajax-api-unknown-error' ) );
+					ajaxcat.showError( mw.msg( 'inlinecategorizer-api-unknown-error' ) );
 					return;
 				}
 
@@ -921,13 +918,13 @@ mw.ajaxCategories.prototype = {
 						'json'
 					)
 					.error( function( xhr, text, error ) {
-						ajaxcat.showError( mw.msg( 'ajax-api-error', text, error ) );
+						ajaxcat.showError( mw.msg( 'inlinecategorizer-api-error', text, error ) );
 					});
 				} );
 			},
 			'json'
 		).error( function( xhr, text, error ) {
-			ajaxcat.showError( mw.msg( 'ajax-api-error', text, error ) );
+			ajaxcat.showError( mw.msg( 'inlinecategorizer-api-error', text, error ) );
 		} );
 	},
 
@@ -943,7 +940,7 @@ mw.ajaxCategories.prototype = {
 	 * - doneFn {Function} callback after everything is done
 	 * - $link {jQuery}
 	 * - action
-	 * @return {mw.ajaxCategories}
+	 * @return {mw.inlineCategorizer}
 	 */
 	doConfirmEdit: function( props ) {
 		var summaryHolder, reasonBox, dialog, submitFunction,
@@ -980,7 +977,7 @@ mw.ajaxCategories.prototype = {
 
 		// Summary of the action to be taken
 		summaryHolder = $( '<p>' )
-			.html( '<strong>' + mw.message( 'ajax-category-question' ).escaped() + '</strong><br/>' + props.dialogDescription );
+			.html( '<strong>' + mw.message( 'inlinecategorizer-category-question' ).escaped() + '</strong><br/>' + props.dialogDescription );
 
 		// Reason textbox.
 		reasonBox = $( '<input type="text" size="45"></input>' )
@@ -989,7 +986,7 @@ mw.ajaxCategories.prototype = {
 		// Produce a confirmation dialog
 		dialog = $( '<div>' )
 			.addClass( 'mw-ajax-confirm-dialog' )
-			.attr( 'title', mw.msg( 'ajax-confirm-title' ) )
+			.attr( 'title', mw.msg( 'inlinecategorizer-confirm-title' ) )
 			.append( summaryHolder )
 			.append( reasonBox );
 
@@ -1012,7 +1009,7 @@ mw.ajaxCategories.prototype = {
 			);
 		};
 
-		buttons[mw.msg( 'ajax-confirm-save' )] = submitFunction;
+		buttons[mw.msg( 'inlinecategorizer-confirm-save' )] = submitFunction;
 
 		dialog.dialog( dialogOptions ).keyup( function( e ) {
 			// Close on enter
@@ -1026,7 +1023,7 @@ mw.ajaxCategories.prototype = {
 
 	/**
 	 * @param index {Number|jQuery} Stash index or jQuery object of stash item.
-	 * @return {mw.ajaxCategories}
+	 * @return {mw.inlineCategorizer}
 	 */
 	removeStashItem: function( i ) {
 		if ( typeof i !== 'number' ) {
@@ -1052,7 +1049,7 @@ mw.ajaxCategories.prototype = {
 	 * Reset all data from the category links and the stash.
 	 *
 	 * @param del {Boolean} Delete any category links with .mw-removed-category
-	 * @return {mw.ajaxCategories}
+	 * @return {mw.inlineCategorizer}
 	 */
 	resetAll: function( del ) {
 		var	$links = this.options.$container.find( this.options.categoryLinkSelector ),
@@ -1107,7 +1104,7 @@ mw.ajaxCategories.prototype = {
 			dialogOptions = {
 				buttons: buttons,
 				AutoOpen: true,
-				title: mw.msg( 'ajax-error-title' )
+				title: mw.msg( 'inlinecategorizer-error-title' )
 			};
 
 		this.removeProgressIndicator( oldDialog );
@@ -1117,7 +1114,7 @@ mw.ajaxCategories.prototype = {
 
 		mw.util.$content.append( dialog );
 
-		buttons[mw.msg( 'ajax-confirm-ok' )] = function( e ) {
+		buttons[mw.msg( 'inlinecategorizer-confirm-ok' )] = function( e ) {
 			dialog.dialog( 'close' );
 		};
 
@@ -1143,7 +1140,7 @@ mw.ajaxCategories.prototype = {
 			for ( var i = 0; i < this.hooks[type].length; i++ ) {
 				oldtext = this.hooks[type][i]( oldtext, category, categoryNew );
 				if ( oldtext === false ) {
-					this.showError( mw.msg( 'ajax-category-hook-error', category ) );
+					this.showError( mw.msg( 'inlinecategorizer-category-hook-error', category ) );
 					return;
 				}
 			}
