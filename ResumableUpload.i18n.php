@@ -89,6 +89,13 @@ $messages['id'] = array(
 	'resumableupload-desc' => 'Dukungan pengunggahan berlanjut',
 );
 
+/** Japanese (日本語)
+ * @author Schu
+ */
+$messages['ja'] = array(
+	'resumableupload-desc' => '再開可能なアップロードを支援。',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
