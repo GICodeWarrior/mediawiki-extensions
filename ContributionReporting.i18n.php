@@ -1019,6 +1019,7 @@ $messages['cu'] = array(
 
 /** Danish (Dansk)
  * @author Byrial
+ * @author Peter Alberti
  */
 $messages['da'] = array(
 	'contributionreporting-desc' => 'Fortløbende rapportering om Wikimedias indsamling',
@@ -1054,8 +1055,16 @@ $messages['da'] = array(
 	'contribstats-value-under' => 'Under $1',
 	'contribstats-value-from' => 'Fra $1 - $2',
 	'contribstats-value-over' => 'Over $1',
-	'contribstats-day-totals' => 'I alt for i dag',
+	'contribstats-day-totals' => 'Samlet for dagen',
 	'contribstats-week' => 'Uge',
+	'contribstats-payment-type' => 'Betalingstype',
+	'contribstats-banner' => 'Banner',
+	'contribstats-clicks' => 'Klik',
+	'contribstats-donations' => 'Donationer',
+	'contribstats-template' => 'Skabelon',
+	'contribstats-donatepage' => 'Donationsside',
+	'contribstats-paypal-donations' => 'PayPal-donationer',
+	'contribstats-credit-card' => 'Kreditkort',
 	'fundraiserstatistics' => 'Indsamlingsstatistik',
 	'fundraiserstats-date' => 'Dato',
 	'fundraiserstats-day' => 'Dag $1 af $2',
@@ -1067,6 +1076,9 @@ $messages['da'] = array(
 	'fundraiserstats-tab-contributions' => 'Antal bidrag',
 	'fundraiserstats-tab-averages' => 'Gennemsnit (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimum (USD)',
+	'fundraiserstats-tab-ytd' => 'År til dato (USD)',
+	'fundraiserstats-time-zone' => 'Tidszone:',
+	'fundraiserstats-utc' => '(fra UTC)',
 );
 
 /** German (Deutsch)
@@ -1315,7 +1327,7 @@ $messages['el'] = array(
 	'contributionreporting-desc' => 'Live αναφορά περί του έρανου του Wikimedia',
 	'contributiontotal' => 'Συνολική συνεισφορά',
 	'contributionhistory' => 'Ιστορικό συνεισφορών',
-	'contrib-hist-header' => 'Σχόλια σε πραγματικό χρόνο από τους δωρητές από όλο τον κόσμο',
+	'contrib-hist-header' => 'Σχόλια δωρητών από όλο τον κόσμο',
 	'contrib-hist-name' => 'Όνομα',
 	'contrib-hist-date' => 'Ώρα και ημερομηνία',
 	'contrib-hist-amount' => 'Ποσόν',
@@ -1362,6 +1374,7 @@ $messages['el'] = array(
 	'contribstats-average' => 'Μέσος όρος',
 	'contribstats-paypal-donations' => 'Δωρεές PayPal',
 	'contribstats-credit-card' => 'Πιστωτική κάρτα',
+	'contribstats-fraud-note' => 'Υπάρχουν ορισμένες δόλιες δωρεές.',
 	'contribstats-unaudited' => 'Αυτά τα σύνολα είναι ανέλεγκτα',
 	'fundraiserstatistics' => 'Στατιστικά εράνου',
 	'fundraiserstats-date' => 'Ημερομηνία',
@@ -1786,6 +1799,7 @@ $messages['fa'] = array(
 	'fundraiserstats-tab-averages' => 'میانگین‌ها (دلار آمریکا)',
 	'fundraiserstats-tab-maximums' => 'بیشینه‌ها (دلار آمریکا)',
 	'fundraiserstats-tab-ytd' => 'سال به تاریخ (USD)',
+	'fundraiserstats-instructions' => 'برای مشاهدهٔ آمار برای هر روز، شناور بر روی مکان‌نما در روی نوار برای آن روز. هر سال با رنگی متفاوت در آن نمودار مشخص شده است.',
 	'fundraiserstats-customize' => 'سفارشی کردن',
 	'fundraiserstats-show-years' => 'نمایش سال‌های مقابل:',
 	'fundraiserstats-time-zone' => 'منطقهٔ زمانی:',
@@ -1868,6 +1882,11 @@ $messages['fi'] = array(
 	'fundraiserstats-tab-averages' => 'Keskiarvot (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimit (USD)',
 	'fundraiserstats-tab-ytd' => 'Yhteensä vuodessa (USD)',
+	'fundraiserstats-instructions' => 'Näyttääksesi päivän tilastot, siirrä osoitin palkin ylle ja etsi haluamasi päivä. Jokaisella vuodella on eri väri kaaviossa.',
+	'fundraiserstats-customize' => 'Mukauta',
+	'fundraiserstats-show-years' => 'Näytä seuraavat vuodet:',
+	'fundraiserstats-time-zone' => 'Aikavyöhyke:',
+	'fundraiserstats-utc' => '(UTC:lta)',
 );
 
 /** French (Français)
@@ -4475,6 +4494,7 @@ $messages['pt-br'] = array(
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Minisarm
  * @author Stelistcristi
  */
 $messages['ro'] = array(
@@ -4494,7 +4514,7 @@ $messages['ro'] = array(
 	'contribstats-monthly-totals' => '{{PLURAL:$1|Totalul pentru această lună|Totalul lunar pentru ultimele $1 luni|Totalul lunar pentru ultimele $1 de luni}}',
 	'contribstats-month-range-totals' => '{{PLURAL:$1|Totalul pentru $1 lună|Totalul lunar pentru $1 luni|Totalul lunar pentru $1 de luni}}',
 	'contribstats-currency-range-totals' => 'Totalul de valută (de la $1 la $2)',
-	'contribstats-contribution-range-breakdown' => 'Defalcare a contribuțiilor după valoare (de la $1 la $2)',
+	'contribstats-contribution-range-breakdown' => 'Defalcarea contribuțiilor după valoare (de la $1 la $2)',
 	'contribstats-currency-totals' => 'Totalul valutar pentru anul fiscal $1',
 	'contribstats-contribution-breakdown' => 'Defalcarea contribuțiilor după valoare pentru anul fiscal $1',
 	'contribstats-day' => 'Zi',
@@ -5022,7 +5042,8 @@ $messages['sl'] = array(
 	'fundraiserstats-utc' => '(od UTC)',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Јованвб
  * @author Михајло Анђелковић
  */
@@ -5057,6 +5078,8 @@ $messages['sr-ec'] = array(
 	'fundraiserstats-avg' => 'Просечно (USD)',
 	'fundraiserstats-max' => 'Максимум (USD)',
 	'fundraiserstats-tab-contributions' => 'Број доприноса',
+	'fundraiserstats-time-zone' => 'Временска зона:',
+	'fundraiserstats-utc' => '(према UTC-у)',
 );
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)
