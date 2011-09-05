@@ -152,6 +152,17 @@ $messages['arz'] = array(
 	'imstatus_yahoo_style' => 'أسلوب الزر، من $1 (أصغر) إلى $2 (أكبر)، $3 و $4 هما للبريد الصوتى.',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Vago
+ */
+$messages['az'] = array(
+	'imstatus_max' => 'maks',
+	'imstatus_min' => 'min',
+	'imstatus_or' => 'və ya',
+	'imstatus_your_name' => 'sizin $1 adınız',
+	'imstatus_icq_id' => 'sizin ICQ ID',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
