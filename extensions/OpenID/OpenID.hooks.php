@@ -244,7 +244,7 @@ class OpenIDHooks {
   			$dbw = wfGetDB( DB_MASTER );
 
 			$dbw->delete( 'user_openid', array( 'uoi_user' => $userID ) );
-			$wgOut->addHTML( "OpenID " . wfMsgHtml( 'usermerge-userdeleted', $username, $userID ) );
+			$wgOut->addHTML( "OpenID " . wfMsgExt( 'usermerge-userdeleted', array( 'escape' ), $username, $userID ) );
 
 			wfDebug( "OpenID: deleted OpenID user $username ($userID)\n" );
 
@@ -269,7 +269,7 @@ class OpenIDHooks {
 				$dbw = wfGetDB( DB_MASTER );
 
 				$dbw->update( 'user_openid', array( 'uoi_user' => $toUserID ), array( 'uoi_user' => $fromUserID ) );
-				$wgOut->addHTML( "OpenID " . wfMsgHtml( 'usermerge-updating', 'user_openid', $fromUsername, $toUsername ) . "<br />\n" );
+				$wgOut->addHTML( "OpenID " . wfMsgExt( 'usermerge-updating', array( 'escape' ), 'user_openid', $fromUsername, $toUsername ) . "<br />\n" );
 
 				wfDebug( "OpenID: transferred OpenID(s) of $fromUsername ($fromUserID) => $toUsername ($toUserID)\n" );
 
