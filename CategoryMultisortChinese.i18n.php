@@ -32,6 +32,14 @@ $messages['qqq'] = array(
 	'categorymultisortchinese-desc' => '{{desc}}',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Vago
+ */
+$messages['az'] = array(
+	'categorymultisort-sortkey-name-stroke' => 'Ştrixlərlə',
+	'categorymultisort-sortkey-name-radical' => 'Radikallarla',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
