@@ -170,13 +170,13 @@ public class PHPParser {
 		return langs;
 	}
 	
-	/** Get wgServer from InitialiseSettings */
+	/** Get wgCanonicalServer from InitialiseSettings */
 	public Hashtable<String,String> getServer(String text){
 		text = text.replaceAll("(#.*)",""); // strip comments
 		Hashtable<String,String> servers = new Hashtable<String,String>();
 		
 		int flags = Pattern.CASE_INSENSITIVE | Pattern.DOTALL;
-		Pattern wgserv = Pattern.compile("[\"']wgServer[\"']\\s*=>\\s*array\\s*\\((.*?)\\)",flags);
+		Pattern wgserv = Pattern.compile("[\"']wgCanonicalServer[\"']\\s*=>\\s*array\\s*\\((.*?)\\)",flags);
 		Pattern entry = Pattern.compile("[\"'](.*?)[\"']\\s*=>\\s*[\"'](.*?)[\"']",flags);
 		Matcher matcher = wgserv.matcher(text);
 		while(matcher.find()){
