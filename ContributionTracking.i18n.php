@@ -103,9 +103,11 @@ $messages['arz'] = array(
 
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
+ * @author Vago
  */
 $messages['az'] = array(
 	'contrib-tracking-error' => 'Xəta',
+	'contrib-tracking-button' => 'Davam et',
 );
 
 /** Bashkir (Башҡортса)
