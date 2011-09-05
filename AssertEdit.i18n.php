@@ -619,6 +619,7 @@ $messages['oc'] = array(
 $messages['or'] = array(
 	'assert_edit_title' => 'ସଜାଣି ହୋଇପାରିଲା ନାହିଁ',
 	'assertedit-desc' => 'ବଟମାନଙ୍କ ତିଆରି ବଦଳ ସଜାଣି ମିଶାଏ',
+	'assert_edit_message' => 'ଆଶାତୀତ ସଠିକ ଖବର ($1)ଟି ବିଫଳ ହେଲା ।',
 );
 
 /** Polish (Polski)
