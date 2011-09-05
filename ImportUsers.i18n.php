@@ -196,10 +196,14 @@ $messages['arz'] = array(
 
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
+ * @author Vago
  */
 $messages['az'] = array(
 	'importusers-form-button' => 'İdxal',
 	'importusers-log-summary' => 'Xülasə',
+	'importusers-log-summary-added' => 'Əlavə olundu: $1',
+	'importusers-log-summary-updated' => 'Yükləndi: $1',
+	'importusers-login-name' => 'Hesab adı',
 	'importusers-password' => 'parol',
 	'importusers-email' => 'e-məktub',
 	'importusers-realname' => 'həqiqi adınız',
