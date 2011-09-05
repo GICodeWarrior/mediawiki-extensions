@@ -101,9 +101,12 @@ $messages['arz'] = array(
 
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
+ * @author Vago
  */
 $messages['az'] = array(
+	'inspectcache-general' => 'Əsas keş',
 	'inspectcache-delete' => 'Sil',
+	'inspectcache-deleted' => 'Silinmiş keş',
 	'inspectcache-list' => 'Siyahı',
 );
 
