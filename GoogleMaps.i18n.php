@@ -516,9 +516,11 @@ $wgGoogleMapsMessages['arz'] = array(
  * @author Cekli829
  * @author PPerviz
  * @author PrinceValiant
+ * @author Vago
  */
 $wgGoogleMapsMessages['az'] = array(
 	'gm-balloon-title' => 'Başlıq:',
+	'gm-remove' => 'çıxar',
 	'gm-refresh-list' => 'Siyahını yenilə',
 	'gm-no-results' => 'Bağışlayın, nəticələr yoxdur',
 	'gm-searching' => 'axtarılır...',
@@ -526,7 +528,9 @@ $wgGoogleMapsMessages['az'] = array(
 	'gm-are-you-sure' => 'Əminsinizmi?',
 	'gm-width' => 'Genişlik',
 	'gm-height' => 'Hündürlük',
+	'gm-scale-control' => 'Şkala',
 	'gm-zoom-control' => 'Naviqasiya',
+	'gm-large' => 'Böyük',
 	'gm-medium' => 'Orta',
 	'gm-small' => 'Kiçik',
 	'gm-no-zoom-control' => 'Heç biri',
@@ -536,6 +540,9 @@ $wgGoogleMapsMessages['az'] = array(
 	'gm-meters' => 'metrlər',
 	'gm-miles' => 'millər',
 	'gm-save-path' => 'Qeyd et',
+	'gm-line-color' => 'Xəttin rəngi',
+	'gm-line-width' => 'Eni',
+	'gm-hide-map' => 'xəritəni gizlət',
 	'gm-back' => 'geri',
 	'gm-kml-loading' => 'yüklənir…',
 	'gm-earth' => 'Earth',
@@ -829,7 +836,7 @@ $wgGoogleMapsMessages['br'] = array(
 	'gm-clip-result' => 'Adicionar ao mapa',
 	'gm-no-results' => 'Desculpe, não há resultados',
 	'gm-searching' => 'procurando...',
-	'gm-map' => 'Mapa',
+	'gm-map' => 'Kartenn',
 	'gm-note' => 'Observação: não se esqueça de copiar o conteúdo que se quer salvar no artigo (abaixo) antes de pressionar as opções "Carregar mapa", "Salvar" ou "Pré-visualizar"!',
 	'gm-instructions' => 'Abaixo está a notação (padrão Wiki) para se criar o mapa acima no wiki',
 	'gm-are-you-sure' => 'Você tem certeza?',
@@ -840,7 +847,7 @@ $wgGoogleMapsMessages['br'] = array(
 	'gm-scale-control' => 'Escala',
 	'gm-overview-control' => 'Brassell',
 	'gm-selector-control' => 'Seletor de Mapa/Satélite',
-	'gm-zoom-control' => 'Navegação',
+	'gm-zoom-control' => 'Merdeiñ',
 	'gm-large' => 'Grande',
 	'gm-medium' => 'Médio',
 	'gm-small' => 'Pequeno',
