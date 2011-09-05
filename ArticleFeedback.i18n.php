@@ -238,8 +238,21 @@ $messages['af'] = array(
 	'articlefeedback-field-wellwritten-tooltip-2' => 'Moeilik om te verstaan',
 	'articlefeedback-field-wellwritten-tooltip-3' => 'Voldoende duidelikheid',
 	'articlefeedback-field-wellwritten-tooltip-4' => 'Heel duidelikheid',
+	'articlefeedback-field-wellwritten-tooltip-5' => 'Uitsonderlik duidelik',
 	'articlefeedback-pitch-reject' => 'Miskien later',
 	'articlefeedback-pitch-or' => 'of',
+	'articlefeedback-pitch-thanks' => 'Dankie! U beoordeling is gestoor.',
+	'articlefeedback-pitch-survey-accept' => 'Begin vraelys',
+	'articlefeedback-pitch-join-login' => 'Meld aan',
+	'articlefeedback-pitch-edit-accept' => 'Wysig hierdie bladsy',
+	'articlefeedback-survey-message-success' => 'Dankie dat u die opname ingevul het.',
+	'articlefeedback-survey-message-error' => "'n Fout het voorgekom.
+Probeer asseblief later weer.",
+	'articleFeedback-table-caption-dailyhighsandlows' => 'Vandag se hoogte- en laagtepunte',
+	'articleFeedback-table-caption-dailyhighs' => 'Bladsye met die hoogste graderings: $1',
+	'articleFeedback-table-caption-dailylows' => 'Bladsye met die laagste graderings: $1',
+	'articleFeedback-table-caption-weeklymostchanged' => 'Hierdie week se mees veranderde',
+	'articleFeedback-table-caption-recentlows' => 'Onlangse laagtepunte',
 	'articleFeedback-table-heading-page' => 'Bladsy',
 	'articleFeedback-table-heading-average' => 'Gemiddelde',
 );
@@ -388,11 +401,19 @@ $messages['arc'] = array(
 
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
+ * @author Vago
  * @author Wertuose
  */
 $messages['az'] = array(
+	'articlefeedback-survey-answer-whyrated-other' => 'Digər',
 	'articlefeedback-survey-question-useful-iffalse' => 'Niyə?',
 	'articlefeedback-survey-submit' => 'Təsdiq et',
+	'articlefeedback-report-panel-title' => 'Səhifənin qiyməti',
+	'articlefeedback-report-empty' => 'Qiymət yoxdur',
+	'articlefeedback-field-trustworthy-tooltip-4' => 'Yaxşı etibarlı mənbələr',
+	'articlefeedback-field-trustworthy-tooltip-5' => 'Əla etibarlı mənbələr',
+	'articlefeedback-field-complete-tooltip-1' => 'Məlumatın böyük hissəsi yoxdur',
+	'articlefeedback-pitch-join-login' => 'Daxil ol',
 	'articleFeedback-table-heading-page' => 'Səhifə',
 );
 
@@ -1511,6 +1532,10 @@ Bonvolu reprovi baldaŭ.',
 	'articleFeedback-table-heading-page' => 'Paĝo',
 	'articleFeedback-table-heading-average' => 'Averaĝo',
 	'articleFeedback-copy-above-highlow-tables' => 'Ĉi tiu estas eksperimenta eco. Bonvolu provizi komentojn en la [$1 diskuto-paĝo].',
+	'articlefeedback-dashboard-bottom' => "'''Notu''': Ni eksperimentos plu pri aliaj fojo enmeti artikolojn en kontrolskatoloj. Nune, la kontrolskatoloj inkluzivas la jenaj artikoloj:
+* Paĝoj kun la plej bonaj aŭ malbonaj rangoj: artikoloj ricevis almenaŭ 10 taksojn en la lastaj 24 horoj. Averaĝoj estas kalkulitaj laŭ la averaĝaj taskoj faritaj en la lastaj 24 horoj.
+* Lastaj malaltaĵoj: Artikoloj ricevantaj 70% aŭ pli malgrandajn (2 steloj aŭ malpli) taksojn en iu kategorio en la lasta 24 horoj. Nur artikoloj ricevantaj almenaŭ 10 taksojn en la lastaj 24 horoj estas inkluzivitaj.",
+	'articlefeedback-disable-preference' => 'Ne montri la funkcion pri artikoloj opinioj en paĝoj',
 	'articlefeedback-emailcapture-response-body' => 'Saluton!
 
 Dankon por esprimante intereson por helpi plibonigi je {{SITENAME}}.
@@ -1978,7 +2003,7 @@ $3
 $messages['fi'] = array(
 	'articlefeedback' => 'Artikkelin arvioinnin koostesivu',
 	'articlefeedback-desc' => 'Artikkelin arviointi (kokeiluversio)',
-	'articlefeedback-survey-question-origin' => 'Millä sivulla olit kun aloitit tämän kyselyn?',
+	'articlefeedback-survey-question-origin' => 'Millä sivulla olit, kun aloitit tämän kyselyn?',
 	'articlefeedback-survey-question-whyrated' => 'Kerro meille, miksi arvostelit tämän sivun tänään (lisää merkki kaikkiin, jotka pitävät paikkaansa):',
 	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'Haluan vaikuttaa sivun kokonaisarvosanaan',
 	'articlefeedback-survey-answer-whyrated-development' => 'Toivon, että arvosteluni vaikuttaisi positiivisesti sivun kehitykseen',
@@ -4896,7 +4921,7 @@ zespół {{GRAMMAR:D.lp|{{SITENAME}}}}.',
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'articlefeedback' => "Valutassion ëd j'artìcoj",
+	'articlefeedback' => "Cruscòt ëd valutassion ëd j'artìcoj",
 	'articlefeedback-desc' => "Version pilòta dla valutassion ëd j'artìcoj",
 	'articlefeedback-survey-question-origin' => "Ansima a che pàgina a l'era quand a l'ha ancaminà costa valutassion?",
 	'articlefeedback-survey-question-whyrated' => "Për piasì, ch'an fasa savèj përchè a l'ha valutà costa pàgina ancheuj (ch'a marca tut lòn ch'a-i intra):",
@@ -4912,9 +4937,12 @@ $messages['pms'] = array(
 	'articlefeedback-survey-submit' => 'Spediss',
 	'articlefeedback-survey-title' => "Për piasì, ch'a risponda a chèich chestion",
 	'articlefeedback-survey-thanks' => "Mersì d'avèj compilà ël questionari.",
+	'articlefeedback-survey-disclaimer' => 'Për giuté a amelioré sta funsionalità, ij sò sugeriment a peulo esse partagià anonimament con la comunità ëd Wikipedia.',
 	'articlefeedback-error' => "A l'é capitaje n'eror. Për piasì preuva pi tard.",
 	'articlefeedback-form-switch-label' => 'Valuté costa pàgina',
 	'articlefeedback-form-panel-title' => 'Valuté costa pàgina',
+	'articlefeedback-form-panel-explanation' => "Lòn ch'a l'é sossì?",
+	'articlefeedback-form-panel-explanation-link' => 'Project:ArticleFeedback',
 	'articlefeedback-form-panel-clear' => 'Gava sta valutassion',
 	'articlefeedback-form-panel-expertise' => 'Mi i conòsso pròpe bin cost argoment (opsional)',
 	'articlefeedback-form-panel-expertise-studies' => "Mi i l'heu un tìtol dë studi universitari pertinent",
@@ -4926,6 +4954,7 @@ $messages['pms'] = array(
 	'articlefeedback-form-panel-helpimprove-privacy' => "Régole d'arzervatëssa",
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Polìtica ëd confidensialità',
 	'articlefeedback-form-panel-submit' => 'Spedì le valutassion',
+	'articlefeedback-form-panel-pending' => "Toe valutassion a son pa anco' stàite mandà",
 	'articlefeedback-form-panel-success' => 'Salvà për da bin',
 	'articlefeedback-form-panel-expiry-title' => 'Toe valutassion a son scadùe',
 	'articlefeedback-form-panel-expiry-message' => "Për piasì, ch'a vàluta torna costa pagina e ch'a spedissa soa neuva valutassion.",
@@ -4936,12 +4965,32 @@ $messages['pms'] = array(
 	'articlefeedback-report-ratings' => '$1 valutassion',
 	'articlefeedback-field-trustworthy-label' => 'Fidà',
 	'articlefeedback-field-trustworthy-tip' => "A pensa che costa pàgina a l'abia a basta ëd citassion e che coste citassion a rivo da 'd sorgiss fidà?",
+	'articlefeedback-field-trustworthy-tooltip-1' => 'A manco ëd sorgiss sigure',
+	'articlefeedback-field-trustworthy-tooltip-2' => 'Pòche sorziss sigure',
+	'articlefeedback-field-trustworthy-tooltip-3' => 'Bastansa sorgiss sigure',
+	'articlefeedback-field-trustworthy-tooltip-4' => 'Bon-e sorziss sigure',
+	'articlefeedback-field-trustworthy-tooltip-5' => 'Sorgiss sigure motobin bon-e',
 	'articlefeedback-field-complete-label' => 'Completa',
 	'articlefeedback-field-complete-tip' => "A pensa che costa pàgina a coata ij tema essensiaj dl'argoment com a dovrìa?",
+	'articlefeedback-field-complete-tooltip-1' => "A manca la pi part dj'anformassion",
+	'articlefeedback-field-complete-tooltip-2' => 'A conten quàiche anformassion',
+	'articlefeedback-field-complete-tooltip-3' => "A conten d'anformassion ciav, ma con dij përtus",
+	'articlefeedback-field-complete-tooltip-4' => "A conten la pè part dj'anformassion ciav",
+	'articlefeedback-field-complete-tooltip-5' => 'Covertura completa',
 	'articlefeedback-field-objective-label' => 'Obietiv',
 	'articlefeedback-field-objective-tip' => 'A pensa che costa pàgina a smon na giusta rapresentassion ëd tute le prospetive dël problema?',
+	'articlefeedback-field-objective-tooltip-1' => 'Pesantement parsial',
+	'articlefeedback-field-objective-tooltip-2' => 'Moderatament parsial',
+	'articlefeedback-field-objective-tooltip-3' => 'Minimament parsial',
+	'articlefeedback-field-objective-tooltip-4' => 'Gnun-a parsialità evidenta',
+	'articlefeedback-field-objective-tooltip-5' => "Nen d'autut parsial",
 	'articlefeedback-field-wellwritten-label' => 'Scrivù bin',
 	'articlefeedback-field-wellwritten-tip' => 'A pensa che costa pàgina a sia bin organisà e bin ëscrivùa?',
+	'articlefeedback-field-wellwritten-tooltip-1' => 'Pa comprensìbil',
+	'articlefeedback-field-wellwritten-tooltip-2' => 'Malfé capì',
+	'articlefeedback-field-wellwritten-tooltip-3' => 'Ciarëssa adeguà',
+	'articlefeedback-field-wellwritten-tooltip-4' => 'Ciarëssa bon-a',
+	'articlefeedback-field-wellwritten-tooltip-5' => 'Ciarëssa ecessional',
 	'articlefeedback-pitch-reject' => 'Miraco pì tard',
 	'articlefeedback-pitch-or' => 'o',
 	'articlefeedback-pitch-thanks' => 'Mersì! Soe valutassion a son ëstàite salvà.',
@@ -4957,10 +5006,17 @@ $messages['pms'] = array(
 	'articlefeedback-survey-message-error' => "A l'é capitaje n'eror. 
 Për piasì preuva torna pi tard.",
 	'articleFeedback-table-caption-dailyhighsandlows' => "J'àut e ij bass d'ancheuj",
+	'articleFeedback-table-caption-dailyhighs' => 'Pàgine con le mej valutassion: $1',
+	'articleFeedback-table-caption-dailylows' => 'Pàgine con le pes valutassion: $1',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Ij pì modificà dë sta sman-a',
 	'articleFeedback-table-caption-recentlows' => 'Bass recent',
 	'articleFeedback-table-heading-page' => 'Pàgina',
 	'articleFeedback-table-heading-average' => 'Media',
+	'articleFeedback-copy-above-highlow-tables' => "Costa a l'é na funsionalità sperimental. Për piasì, ch'a fasa ij sò coment an sla [pàgina ëd discussion ëd $1]",
+	'articlefeedback-dashboard-bottom' => "'''Nòta''': Noi i continuëroma a sperimenté ëd manere diferente d'arpresenté j'artìcoj andrinta a coste tablò. Al present, ël tablò a conten costi artìcoj:
+* Pàgine con le mej/pes valutassion: artìcoj che a l'han arseivù almanch 10 valutassion ant j'ùltime 24 ore. Le medie a son calcolà an pijand la media ëd tute le valutassion spedìe ant j'ùltime 24 ore.
+* Pi bass recent: artìcoj ch'a l'han pijà lë 70% o valutassion pi basse (2 stèile o men) an tute le categorìe ant j'ùltime 24 ore. Mach j'artìcoj ch'a l'han arseivù almanch 10 valutassion ant j'ùltime 24 ore a son comprèis.",
+	'articlefeedback-disable-preference' => "Smon-e nen la tàula ëd valutassion ëd j'Artìcol an sle pàgine",
 	'articlefeedback-emailcapture-response-body' => "Cerea!
 
 Mersì për avèj signalà sò anteresse a giuté a amelioré {{SITENAME}}.
