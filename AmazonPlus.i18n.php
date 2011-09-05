@@ -191,6 +191,8 @@ $messages['arz'] = array(
  * @author Vago
  */
 $messages['az'] = array(
+	'amazonplus-nores' => 'Xəta: Nəticə yoxdur!',
+	'amazonplus-used' => 'İstifadə olunur',
 	'amazonplus-german' => 'Alman',
 	'amazonplus-french' => 'Fransız',
 	'amazonplus-japanese' => 'Yapon',
@@ -203,6 +205,7 @@ $messages['az'] = array(
 	'amazonplus-cp-gbp' => 'GBP',
 	'amazonplus-cp-eur' => 'EUR',
 	'amazonplus-cp-jpy' => 'JPY',
+	'amazonplus-more' => 'daha çox',
 );
 
 /** Bashkir (Башҡортса)
