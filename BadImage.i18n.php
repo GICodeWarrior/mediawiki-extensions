@@ -246,9 +246,14 @@ $messages['avk'] = array(
 
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
+ * @author Vago
  */
 $messages['az'] = array(
+	'badimages' => 'Yanlış şəkil siyahısı',
+	'badimages-add-btn' => 'Əlavə et',
 	'badimages-name' => 'Ad:',
+	'badimages-remove' => '(çıxar)',
+	'badimages-remove-btn' => 'Çıxar',
 );
 
 /** Bashkir (Башҡортса)
