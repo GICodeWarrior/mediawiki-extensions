@@ -178,10 +178,12 @@ $messages['avk'] = array(
 
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
+ * @author Vago
  */
 $messages['az'] = array(
 	'bookinfo-result-title' => 'Başlıq:',
 	'bookinfo-result-author' => 'Müəllif',
+	'bookinfo-result-publisher' => 'Naşir:',
 	'bookinfo-result-year' => 'İl:',
 );
 
