@@ -482,6 +482,15 @@ Tu pote etiam [[Special:Favoritelist/edit|usar le editor standard]].',
 	'favoritelisttools-raw' => 'Modificar lista de favorites in forma crude',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'prefs-favoritelist' => 'Leevßte Sigge',
+	'favoritelistanontext' => 'Do moß $1, domet de en Ding Leß met de leevßte Sigge erenluure kanns, oder jet dran ändere.',
+	'favoritenologin' => 'Nit enjelogg',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
