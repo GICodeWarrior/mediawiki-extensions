@@ -127,6 +127,13 @@ $messages['avk'] = array(
 	'querysuccessful' => 'Kucilanhara',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Vago
+ */
+$messages['az'] = array(
+	'sqlquery' => 'Sorğunun daxil edilməsi',
+);
+
 /** Bashkir (Башҡортса)
  * @author Comp1089
  */

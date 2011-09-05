@@ -47,6 +47,17 @@ $messages['qqq'] = array(
 	'apisb-query-list' => '{{Identical|List}}',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Vago
+ */
+$messages['az'] = array(
+	'apisb-result' => 'Nəticə',
+	'apisb-loading' => 'Yüklənir…',
+	'apisb-ns-main' => '(Əsas)',
+	'apisb-query-list' => 'Siyahılar',
+	'apisb-query-meta' => 'Meta məlumatları',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by

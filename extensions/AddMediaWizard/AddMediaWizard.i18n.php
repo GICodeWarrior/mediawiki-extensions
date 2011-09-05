@@ -558,6 +558,14 @@ $messages['sl'] = array(
 	'addmediawizard-loading' => 'Nalaganje čarovnika za dodajanje predstavnosti',
 );
 
+/** Albanian (Shqip)
+ * @author Marinari
+ */
+$messages['sq'] = array(
+	'addmediawizard-desc' => 'Shto media magjistarin, i zhvilluar në partneritet me Kaltura dhe Wikimedia Fondacionin',
+	'addmediawizard-loading' => 'Duke ngarkuar shtesën e media magjistarit',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Charmed94
  */

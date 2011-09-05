@@ -214,8 +214,10 @@ $messages['ast'] = array(
 
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
+ * @author Vago
  */
 $messages['az'] = array(
+	'ct-expert' => 'Ekspert',
 	'ct-and' => 'və',
 );
 

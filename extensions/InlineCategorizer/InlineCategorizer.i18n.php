@@ -308,6 +308,7 @@ $messages['be'] = array(
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
+	'inlinecategorizer-desc' => 'Модуль JavaScript, які дазваляе рабіць зьмены, даданьні і выдаленьні спасылак на катэгорыі непасрэдна са старонкі',
 	'inlinecategorizer-add-category' => 'Дадаць катэгорыю',
 	'inlinecategorizer-add-category-submit' => 'Дадаць',
 	'inlinecategorizer-add-category-summary' => 'Дададзеная катэгорыя «$1»',
@@ -572,6 +573,7 @@ Det skyldes oftest at kategorien er blevet tilføjet til siden i en skabelon.',
  * @author Umherirrender
  */
 $messages['de'] = array(
+	'inlinecategorizer-desc' => 'Ermöglicht das direkte Hinzufügen, Ändern und Entfernen von Kategorien auf einer Wikiseite',
 	'inlinecategorizer-add-category' => 'Kategorie hinzufügen',
 	'inlinecategorizer-add-category-submit' => 'Hinzufügen',
 	'inlinecategorizer-add-category-summary' => 'Kategorie „$1“ hinzufügen',
@@ -834,6 +836,7 @@ Yleensä näin käy, kun luokka on lisätty sivulle mallineen avulla.',
 );
 
 /** French (Français)
+ * @author Gomoko
  * @author Hashar
  * @author Houcinee1
  * @author Jens Liebenau
@@ -842,6 +845,7 @@ Yleensä näin käy, kun luokka on lisätty sivulle mallineen avulla.',
  * @author Seb35
  */
 $messages['fr'] = array(
+	'inlinecategorizer-desc' => 'Module JavaScript qui permet de modifier, ajouter et supprimer des liens de catégorie directement depuis une page',
 	'inlinecategorizer-add-category' => 'Ajouter une catégorie',
 	'inlinecategorizer-add-category-submit' => 'Ajouter',
 	'inlinecategorizer-add-category-summary' => 'Ajouter la catégorie « $1 »',
@@ -1144,6 +1148,7 @@ $messages['hy'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'inlinecategorizer-desc' => 'Modulo JavaScript que permitte cambiar, adder e remover ligamines a categorias directemente ab un pagina',
 	'inlinecategorizer-add-category' => 'Adder categoria',
 	'inlinecategorizer-add-category-submit' => 'Adder',
 	'inlinecategorizer-add-category-summary' => 'Adder categoria "$1"',
@@ -1571,6 +1576,7 @@ $messages['mg'] = array(
  * @author Brest
  */
 $messages['mk'] = array(
+	'inlinecategorizer-desc' => 'JavaScript-модул што овозможува менување, додавање и отстранување на категориски врски непосредно од страницата',
 	'inlinecategorizer-add-category' => 'Додај категорија',
 	'inlinecategorizer-add-category-submit' => 'Додај',
 	'inlinecategorizer-add-category-summary' => 'Додај категорија "$1"',
@@ -1753,6 +1759,7 @@ Dit gebeurt meestentieds as de kategorie via n mal op de pagina ezet is.',
  * @author Siebrand
  */
 $messages['nl'] = array(
+	'inlinecategorizer-desc' => 'JavaScriptmodule die het toevoegen, verwijderen en wijzigen van categorieverwijzingen direct vanuit de pagina mogelijk maakt',
 	'inlinecategorizer-add-category' => 'Categorie toevoegen',
 	'inlinecategorizer-add-category-submit' => 'Toevoegen',
 	'inlinecategorizer-add-category-summary' => 'categorie "$1" toevoegen',

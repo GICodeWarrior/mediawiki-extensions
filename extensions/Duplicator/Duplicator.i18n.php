@@ -167,9 +167,12 @@ $messages['arz'] = array(
 
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
+ * @author Vago
  */
 $messages['az'] = array(
+	'duplicator-options' => 'Nizamlamalar:',
 	'duplicator-source' => 'Mənbə:',
+	'duplicator-submit' => 'Surəti',
 );
 
 /** Bikol Central (Bikol Central)

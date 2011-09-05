@@ -407,14 +407,27 @@ $messages['arz'] = array(
 
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
+ * @author Vago
  */
 $messages['az'] = array(
 	'contrib-hist-name' => 'Ad',
+	'contrib-hist-date' => 'Vaxt və tarix',
+	'contrib-hist-anonymous' => 'Anonim',
 	'contribstats-day' => 'Gün',
 	'contribstats-month' => 'Ay',
+	'contribstats-value-from' => '$1-dən - $2',
+	'contribstats-value-over' => '$1-dən yuxarı',
+	'contribstats-day-totals' => 'Gün üzrə cəmi',
 	'contribstats-week' => 'Həftə',
 	'contribstats-template' => 'Şablon',
 	'fundraiserstats-date' => 'Tarix',
+	'fundraiserstats-contributions' => 'Yardımlar',
+	'fundraiserstats-total' => 'Cəmi (USD)',
+	'fundraiserstats-avg' => 'Orta hesabla (USD)',
+	'fundraiserstats-max' => 'Maksimum (USD)',
+	'fundraiserstats-tab-totals' => 'Yekun cəmi (USD)',
+	'fundraiserstats-tab-averages' => 'Orta hesablarla (USD)',
+	'fundraiserstats-utc' => '(UTC-dən)',
 );
 
 /** Bashkir (Башҡортса)

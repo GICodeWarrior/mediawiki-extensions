@@ -254,6 +254,14 @@ $messages['arz'] = array(
 	'right-changeauthor' => 'غير مؤلف مراجعة',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Vago
+ */
+$messages['az'] = array(
+	'changeauthor-pagenameform-go' => 'Keç',
+	'changeauthor-comment' => 'Şərh:',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  */

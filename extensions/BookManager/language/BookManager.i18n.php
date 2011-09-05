@@ -40,6 +40,13 @@ $messages['ar'] = array(
 	'bm-printversion' => 'نسخة الطباعة',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Vago
+ */
+$messages['az'] = array(
+	'bm-printversion' => 'Çap variantı',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  */

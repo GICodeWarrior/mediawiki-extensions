@@ -10082,9 +10082,12 @@ Contactatz l’administrator.',
 
 /** Oriya (ଓଡ଼ିଆ)
  * @author Jose77
+ * @author Psubhashish
  */
 $messages['or'] = array(
 	'ow_history' => 'ଇତିହାସ',
+	'ow_noedit' => 'ଆପଣଙ୍କୁ "$1" ଡାଟାସେଟର ପୃଷ୍ଠାସବୁରେ ସମ୍ପାଦନା ନିମନ୍ତେ ଅନୁମତି ମିଳିନାହିଁ ।
+ଦୟାକରି [[{{MediaWiki:Ow editing policy url}}|ଆମ୍ଭର ନୀତିସମୂହ]] ଦେଖନ୍ତୁ ।',
 );
 
 /** Ossetic (Ирон)

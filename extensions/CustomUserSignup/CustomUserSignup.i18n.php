@@ -290,6 +290,13 @@ $messages['tl'] = array(
 	'customusersignup-desc' => 'Nagpapahintulot ng mga mensaheng mapapasadya habang isinasagawa ang paglikha ng akawnt',
 );
 
+/** Ukrainian (Українська)
+ * @author Dim Grits
+ */
+$messages['uk'] = array(
+	'customusersignup-desc' => 'Дозволяє настроювані повідомлення в процесі створення облікового запису',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

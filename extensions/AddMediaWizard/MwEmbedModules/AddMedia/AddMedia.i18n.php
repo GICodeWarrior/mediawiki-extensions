@@ -666,6 +666,8 @@ $messages['az'] = array(
 	'mwe-uploaded-status' => 'Yüklənmiş',
 	'mwe-transcoded-status' => 'Kodu dəyişdirilib',
 	'mwe-uploaded-time-remaining' => 'Qalan vaxt: $1',
+	'mwe-am-box_layout' => 'Qutunun maketi',
+	'mwe-am-list_layout' => 'Siyahının maketi',
 	'mwe-am-results_desc' => '$1–$2 nəticələri',
 	'mwe-am-results_next' => 'sonrakı',
 	'mwe-am-results_prev' => 'əvvəlki',
@@ -682,6 +684,7 @@ $messages['az'] = array(
 	'mwe-ftype-png' => 'PNG şəkil faylı',
 	'mwe-ftype-oga' => 'Ogg audio faylı',
 	'mwe-ftype-ogg' => 'Ogg video faylı',
+	'mwe-ftype-unk' => 'Faylın formatı naməlumdur',
 	'mwe-am-this_wiki-title' => 'Bu viki',
 	'mwe-am-this_wiki-desc' => 'Lokal viki',
 );

@@ -44,6 +44,13 @@ $messages['de'] = array(
 	'editpagetracking-desc' => 'Ermöglicht das Nachvollziehen des erstens Besuchs einer Bearbeitungsseite durch einen Benutzer',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'editpagetracking-desc' => 'Registras la unuan fojon ke ĉiu uzanto vizitas la redakto-paĝon',
+);
+
 /** Persian (فارسی)
  * @author Mjbmr
  */
@@ -154,6 +161,13 @@ $messages['no'] = array(
  */
 $messages['pl'] = array(
 	'editpagetracking-desc' => 'Zapamiętuje dla każdego użytkownika kiedy po raz pierwszy otworzył on stronę edycji',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'editpagetracking-desc' => 'Memorisa la prima vira che minca utent a varda la pàgina ëd modìfica',
 );
 
 /** Portuguese (Português)

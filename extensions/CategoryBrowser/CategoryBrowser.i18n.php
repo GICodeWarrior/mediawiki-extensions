@@ -171,11 +171,15 @@ $messages['ast'] = array(
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
  * @author Sortilegus
+ * @author Vago
  */
 $messages['az'] = array(
 	'cb_previous_items_link' => 'Əvvəlki',
 	'cb_next_items_link' => 'Sonrakı',
+	'cb_cat_pages' => 'səhifələr',
 	'cb_cat_files' => 'fayllar',
+	'cb_apply_button' => 'Tətbit et',
+	'cb_all_op' => 'Hamısı',
 	'cb_or_op' => 'və ya',
 	'cb_and_op' => 'və',
 );

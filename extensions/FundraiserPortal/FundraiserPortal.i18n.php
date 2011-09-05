@@ -67,6 +67,16 @@ $messages['ar'] = array(
 	'fundraiserportal-tourmaline-close' => 'أخفِ هذا من الآن فصاعدًا',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Vago
+ */
+$messages['az'] = array(
+	'fundraiserportal-ruby-button' => 'İyanəni indi vermək',
+	'fundraiserportal-rubytext-button' => 'İyanəni indi vermək',
+	'fundraiserportal-sapphire-button' => 'İyanəni indi vermək',
+	'fundraiserportal-tourmaline-button' => 'İyanəni indi vermək',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by

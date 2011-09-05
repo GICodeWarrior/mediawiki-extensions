@@ -51,6 +51,13 @@ $messages['ar'] = array(
 	'emailusers-toomanyrecipientsselected' => 'تم تحديد عدد كبير من المستلمين ({{PLURAL:$1|الحد الأقصى $1أقصى $1}}).',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Vago
+ */
+$messages['az'] = array(
+	'emailusers' => 'İstifadəçinin e-məktubu',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by

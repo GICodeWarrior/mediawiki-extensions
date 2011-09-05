@@ -292,6 +292,15 @@ $messages['avk'] = array(
 	'math_InvalidColour' => '"$1" kseva tir meenafa',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Vago
+ */
+$messages['az'] = array(
+	'math_MissingOpenBraceAfter' => '«$1»-dən sonra «{» açılan mötərizəsi yoxdur',
+	'math_MissingOpenBraceBefore' => '«$1»-dən əvvəl «{» açılan mötərizəsi yoxdur',
+	'math_UnavailableSymbolFontCombination' => '«$2» şriftində «$1» simvolu yoxdur',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  */

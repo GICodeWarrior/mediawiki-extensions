@@ -287,12 +287,18 @@ $messages['az'] = array(
 	'fogg-endtime-title' => 'Bu saniyədə bitir',
 	'fogg-audioQuality-title' => 'Audio keyfiyyəti',
 	'fogg-width-title' => 'Videonun eni',
+	'fogg-noaudio-title' => 'Audio yoxdur',
 	'fogg-title-title' => 'Başlıq',
+	'fogg-artist-title' => 'Müəllifin adı',
+	'fogg-artist-help' => 'Bu klipin müəllifi',
 	'fogg-date-title' => 'Tarix',
+	'fogg-location-title' => 'Yerləşməsi',
 	'fogg-organization-title' => 'Təşkilat',
 	'fogg-license-title' => 'Lisenziya',
 	'fogg-contact-title' => 'Əlaqə',
 	'fogg-contact-help' => 'Əlaqə keçidi',
+	'fogg-preview' => 'Videonun sınaq göstərişi',
+	'fogg-hidepreview' => 'Sınaq göstərişini gizlət',
 );
 
 /** Bashkir (Башҡортса)

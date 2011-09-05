@@ -629,20 +629,33 @@ $messages['arz'] = array(
 
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
+ * @author Vago
  */
 $messages['az'] = array(
 	'viewapc-apc-version' => 'APC versiyası',
 	'viewapc-php-version' => 'PHP versiyası',
 	'viewapc-start-time' => 'Başlanğıc vaxt',
+	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|fayl|fayl}} ($2)',
 	'viewapc-memory-free' => 'Azad: $1 ($2)',
 	'viewapc-display-info' => 'Ad',
 	'viewapc-display-type' => 'Tipi',
+	'viewapc-display-mtime' => 'Dəyişdirilib',
+	'viewapc-display-creation_time' => 'Yaradılıb',
+	'viewapc-display-deletion_time' => 'Silinib',
+	'viewapc-display-no-delete' => 'Silinməyib',
 	'viewapc-display-mem_size' => 'Həcm',
 	'viewapc-ls-header-name' => 'Ad',
+	'viewapc-ls-header-hits' => 'Hitlər',
 	'viewapc-ls-header-size' => 'Həcm',
+	'viewapc-ls-header-modified' => 'Sonuncu düzəliş',
+	'viewapc-ls-header-created' => 'Yaradılıb',
+	'viewapc-ls-header-deleted' => 'Silinib',
 	'viewapc-ls-scope-active' => 'Aktiv',
+	'viewapc-ls-scope-deleted' => 'Silinib',
 	'viewapc-ls-sort-size' => 'Həcm',
 	'viewapc-ls-sort-name' => 'Ad',
+	'viewapc-ls-sort-created' => 'Yaradılıb',
+	'viewapc-ls-sort-deleted' => 'Silinib',
 	'viewapc-ls-limit-none' => 'Hamısı',
 );
 

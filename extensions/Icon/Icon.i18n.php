@@ -78,6 +78,14 @@ $messages['avk'] = array(
 	'icon-badwidth' => 'Lumaj',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Vago
+ */
+$messages['az'] = array(
+	'icon-badimage' => 'Yanlış şəkil',
+	'icon-badwidth' => 'Yanlış en',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by

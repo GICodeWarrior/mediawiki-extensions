@@ -651,15 +651,22 @@ $messages['ast'] = array(
 
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
+ * @author Vago
  * @author Wertuose
  */
 $messages['az'] = array(
+	'deletequeue-action-queued' => 'Silinmə',
 	'deletequeue-delnom-otherreason' => 'Digər səbəb',
+	'deletequeue-delnom-extra' => 'Ekstra məlumatlar',
+	'deletequeue-review-delete' => 'Bu səhifəni sil',
 	'deletequeue-review-reason' => 'Şərhlər:',
+	'deletequeue-review-newextra' => 'Ekstra məlumatlar',
 	'deletequeue-vote-reason' => 'Şərhlər:',
 	'deletequeue-vote-submit' => 'Təsdiq et',
 	'deletequeue-list-status' => 'Status:',
 	'deletequeue-list-search' => 'Axtar',
+	'deletequeue-list-header-page' => 'Səhifə',
+	'deletequeue-list-header-discusspage' => 'Müzakirə səhifəsi',
 	'deletequeue-case-page' => 'Səhifə:',
 	'deletequeue-case-reason' => 'Səbəb:',
 );
