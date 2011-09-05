@@ -76,8 +76,10 @@ $messages['arc'] = array(
 
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
+ * @author Vago
  */
 $messages['az'] = array(
+	'commentbox-savebutton' => 'Şərhi yadda saxla',
 	'commentbox-name' => 'Ad:',
 	'commentbox-first-comment-heading' => '== Şərhlər ==',
 );
