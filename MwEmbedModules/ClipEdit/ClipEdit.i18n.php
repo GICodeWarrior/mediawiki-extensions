@@ -108,6 +108,7 @@ $messages['az'] = array(
 	'mwe-clipedit-insert_image_page' => 'Səhifəyə əlavə et',
 	'mwe-clipedit-cancel_image_insert' => 'Əlavəni dayandır',
 	'mwe-clipedit-sc_audio' => 'Audionəzarət',
+	'mwe-clipedit-sc_duration' => 'Müddəti',
 	'mwe-clipedit-edit_properties' => 'Xüsusiyyətləri dəyişdir',
 	'mwe-clipedit-other_properties' => 'Digər xüsusiyyətlər',
 	'mwe-clipedit-start_time' => 'Başlanğıc vaxt',
