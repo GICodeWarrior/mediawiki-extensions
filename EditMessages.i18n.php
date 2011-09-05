@@ -148,8 +148,10 @@ $messages['as'] = array(
 
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
+ * @author Vago
  */
 $messages['az'] = array(
+	'editmessages' => 'Mesajlara daxil olmaq',
 	'editmsg-search' => 'Axtar',
 	'editmsg-new-search' => 'Yeni axtarış',
 );
