@@ -2544,11 +2544,24 @@ $messages['arz'] = array(
 
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
+ * @author Vago
  */
 $messages['az'] = array(
+	'configure-setting-wgActionPaths-key' => 'Fəaliyyət',
 	'configure-setting-wgExtraLanguageNames-value' => 'Ad',
+	'configure-setting-wgMaxArticleSize' => 'Səhifənin maksimum ölçüsü (kB)',
+	'configure-setting-wgNoFollowLinks' => 'Keçidlərə rel="nofollow" əlavə etmək',
 	'configure-setting-wgSpecialPageGroups-key' => 'Qrup',
+	'configure-setting-wgAutopromote-value' => 'Şərtlər',
 	'configure-setting-wgDebugLogGroups-value' => 'Fayl',
+	'configure-setting-wgGroupPermissions-value' => 'Təyin olunmuş qaydalar',
+	'configure-setting-wgAddGroups' => 'Əlavə oluna bilinən qruplar',
+	'configure-setting-wgAddGroups-value' => 'Əlavə oluna bilinən qruplar',
+	'configure-setting-wgRemoveGroups' => 'Silinə bilinən qruplar',
+	'configure-setting-wgRemoveGroups-value' => 'Silinə bilinən qruplar',
+	'configure-setting-wgValidSkinNames-key' => 'Daxili adı',
+	'configure-setting-wgExtraNamespaces-key' => 'ID adlar fəzası',
+	'configure-setting-wgExtraNamespaces-value' => 'Adlar fəzasının adı',
 );
 
 /** Bavarian (Boarisch)
@@ -6558,7 +6571,7 @@ $messages['fr'] = array(
 	'configure-setting-desc' => 'Description des paramètres de configuration de MediaWiki',
 	'configure-setting-wgSitename' => 'Nom du site',
 	'configure-setting-wgActionPaths' => "URL pour chaque action. Permet d'avoir des URL « jolies ».",
-	'configure-setting-wgActionPaths-key' => 'action',
+	'configure-setting-wgActionPaths-key' => 'Action',
 	'configure-setting-wgActionPaths-value' => "Modèle d'URL",
 	'configure-setting-wgAllDBsAreLocalhost' => 'Renvoie toutes les connections vers les bases de données vers le serveur local',
 	'configure-setting-wgDBAvgStatusPoll' => 'Temps moyen entre deux requêtes « SHOW STATUS » dans des conditions de forte charge',
@@ -6729,7 +6742,7 @@ $messages['fr'] = array(
 	'configure-setting-wgPasswordAttemptThrottle' => 'Régulation des tentatives de connexion',
 	'configure-setting-wgPasswordSalt' => 'Cryptage avancé des mots de passe',
 	'configure-setting-wgReadOnly' => 'Désactiver les modifications en affichant cette chaine comme raison',
-	'configure-setting-wgReadOnlyFile' => 'Fichier contenant la raison du vérouillage de la base de données',
+	'configure-setting-wgReadOnlyFile' => 'Fichier contenant la raison du verrouillage de la base de données',
 	'configure-setting-wgRestrictionTypes' => 'Actions qui peuvent être restreintes',
 	'configure-setting-wgSpamRegex' => 'Expression rationnelle pour filtrer le spam',
 	'configure-setting-wgSummarySpamRegex' => 'Expressions rationnelles pour filtrer les résumés des modifications',

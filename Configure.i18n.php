@@ -1009,29 +1009,45 @@ $messages['ast'] = array(
 
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
+ * @author Vago
  */
 $messages['az'] = array(
 	'configure-desc-group' => 'Qrup',
 	'configure-desc-key' => 'Açar',
+	'configure-desc-val' => 'Qiyməti',
 	'configure-edit-core' => 'MediyaViki',
 	'configure-form-reason' => 'Səbəb:',
 	'configure-js-remove' => 'Sil',
+	'configure-js-remove-row' => 'Bu yazını sil',
+	'configure-old-changes' => 'dəyişikliklər',
 	'configure-section-pages' => 'Səhifələr',
+	'configure-section-db' => 'Verilənlər bazası',
 	'configure-section-email' => 'E-məktub',
 	'configure-section-timezone' => 'Vaxt zonası',
 	'configure-section-css-js' => 'CSS və JavaScript',
+	'configure-section-stats' => 'Sayt statistikaları',
 	'configure-section-category' => 'Kateqoriyalar',
 	'configure-section-groups' => 'Qruplar',
+	'configure-section-block' => 'Bloklar',
+	'configure-section-cookie' => 'Kökələr',
 	'configure-section-test' => 'Testlər',
 	'configure-section-images' => 'Fayllar',
 	'configure-section-antivirus' => 'Antivirus',
 	'configure-section-users' => 'İstifadəçilər',
+	'configure-section-search' => 'Axtar',
+	'configure-section-mw-extensions' => 'MediaWiki genişlənmələri',
+	'configure-section-external-tools' => 'Xarici alətlər',
 	'configure-select-wiki-view-all' => 'Bütün vikilər',
 	'configure-throttle-action-edit' => 'Redaktə',
+	'configure-throttle-action-move' => 'Apar',
 	'configure-throttle-group' => 'Tipi',
 	'configure-throttle-limit' => 'Limit',
 	'configure-condition-operator' => 'Operator:',
+	'configure-condition-operator-or' => 'Or',
 	'configure-condition-operator-and' => 'Və',
+	'configure-condition-operator-xor' => 'Xor',
+	'configure-condition-operator-not' => 'Not',
+	'configure-condition-name-2' => 'Ən kiçik yaş',
 	'configure-condition-name-5' => 'İstifadəçilərin IP ünvanları',
 );
 
