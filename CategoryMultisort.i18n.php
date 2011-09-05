@@ -53,8 +53,10 @@ $messages['arc'] = array(
 
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
+ * @author Vago
  */
 $messages['az'] = array(
+	'categorymultisort-go' => 'Keç',
 	'prefs-category' => 'Kateqoriya',
 );
 
