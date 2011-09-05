@@ -97,6 +97,16 @@ $messages['qqq'] = array(
 	'collabwatchlistshowhidelistusers' => '$1 can be "Show" ({{msg-mw|show}}) or "Hide" ({{msg-mw|hide}}). (source: [[Thread:Support/About MediaWiki:Collabwatchlistshowhidelistusers/en|this thread]])',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Vago
+ */
+$messages['az'] = array(
+	'collabwatchlistedit-users-raw-submit' => 'Saxla',
+	'collabwatchlistedit-users-raw-titles' => 'İstifadəçilər:',
+	'collabwatchlistedit-tags-raw-submit' => 'Saxla',
+	'collabwatchlistnew-submit' => 'Yarat',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
