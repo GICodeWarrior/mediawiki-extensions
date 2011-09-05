@@ -145,8 +145,10 @@ $messages['arz'] = array(
 
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
+ * @author Vago
  */
 $messages['az'] = array(
+	'formtitlepattern' => 'Yeni $1 əlavə et',
 	'formsave' => 'Qeyd et',
 );
 
