@@ -126,11 +126,14 @@ $messages['arc'] = array(
 
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
+ * @author Vago
  * @author Wertuose
  */
 $messages['az'] = array(
+	'indexfunc-badtitle' => 'Yanlış başlıq: "$1"',
 	'index-search' => 'Axtar:',
 	'index-submit' => 'Təsdiq et',
+	'index-hide-detail' => 'Səhifələrin siyahısını gizlə',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
