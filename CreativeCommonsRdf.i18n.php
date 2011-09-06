@@ -128,6 +128,13 @@ $messages['pl'] = array(
 	'creativecommonsrdf-desc' => 'Metadane RDF CreativeCommons',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'creativecommonsrdf-desc' => 'RDF-metadata ëd CreativeCommons',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
