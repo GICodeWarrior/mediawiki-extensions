@@ -1058,6 +1058,13 @@ $messages['gd'] = array(
 Briog air aonan dhiubh gus a chuid staitistearachd fhaicinn.",
 	'prefstats-noprefs' => 'Chan eil thu a\' cumail sùil air staitistearachd sam bith.
 Deasaich $wgPrefStatsTrackPrefs gus sùil a chumail air roghainnean.',
+	'prefstats-counters' => '* Chuir $1 {{PLURAL:$1|chleachdaiche|chleachdaiche|chleachdaiche|chleachdaiche|cleachdaichean|cleachdaiche}} an roghainn seo an comas on a chaidh stadastaireachd na roghainnean a chur an gnìomh. 
+** Tha e beò aig $2 {{PLURAL:$2|chleachdaiche|chleachdaiche|chleachdaiche|chleachdaiche|cleachdaichean|cleachdaiche}} fhathast
+** Chuir $3 {{PLURAL:$3|chleachdaiche|chleachdaiche|chleachdaiche|chleachdaiche|cleachdaichean|cleachdaiche}} à comas e on uairsin',
+	'prefstats-counters-expensive' => '* Chuir $1 {{PLURAL:$1|chleachdaiche|chleachdaiche|chleachdaiche|chleachdaiche|cleachdaichean|cleachdaiche}} an roghainn seo an comas on a chaidh stadastaireachd na roghainnean a chur an gnìomh. 
+** Tha e beò aig $2 {{PLURAL:$2|chleachdaiche|chleachdaiche|chleachdaiche|chleachdaiche|cleachdaichean|cleachdaiche}} fhathast
+** Chuir $3 {{PLURAL:$3|chleachdaiche|chleachdaiche|chleachdaiche|chleachdaiche|cleachdaichean|cleachdaiche}} à comas e on uairsin
+* Tha an roghainn seo aig $4 {{PLURAL:$4|chleachdaiche|chleachdaiche|chleachdaiche|chleachdaiche|cleachdaichean|cleachdaiche}} uile gu lèir',
 	'prefstats-xaxis' => 'Faid (uairean a thìde)',
 	'prefstats-factors' => 'Seall gach: $1',
 	'prefstats-factor-hour' => 'uair a thìde',
