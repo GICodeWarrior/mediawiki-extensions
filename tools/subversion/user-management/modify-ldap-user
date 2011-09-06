@@ -21,6 +21,7 @@ def main():
 	parser.add_option("--gid", action="store", dest="gidNumber", help="Set the user's gid")
 	parser.add_option("--uid", action="store", dest="uidNumber", help="Set the user's uid")
 	parser.add_option("--cn", action="store", dest="cn", help="Set the user's CN")
+	parser.add_option("--mail", action="store", dest="mail", help="Set the user's email address")
 	parser.add_option("--firstname", action="store", dest="givenName", help="Set the user's first name")
 	parser.add_option("--lastname", action="store", dest="sn", help="Set the user's last name")
 	parser.add_option("--replacekeys", action="store", dest="replaceKeyLocation", help="Replaces all of the user's keys")
@@ -95,6 +96,8 @@ def main():
 				NewPosixData['givenName'] = options.givenName
 			if options.cn:
 				NewPosixData['cn'] = options.cn
+			if options.mail:
+				NewPosixData['mail'] = options.mail
 
 			if PosixData == NewPosixData:
 				sys.stderr.write("No changes to make; exiting.\n")
