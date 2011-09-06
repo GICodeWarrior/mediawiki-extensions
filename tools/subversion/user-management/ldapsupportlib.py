@@ -1,5 +1,7 @@
 #!/usr/bin/python
 import os, traceback, getpass, sys
+sys.path.append('/etc/ldap')
+import scriptconfig
 
 try:
 	import ldap

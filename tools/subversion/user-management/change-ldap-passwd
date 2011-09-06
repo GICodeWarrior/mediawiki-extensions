@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import sys, traceback, getpass, ldapsupportlib
+import sys, traceback, getpass, ldapsupportlib, string, random
 from optparse import OptionParser
 
 try:    
@@ -17,6 +17,7 @@ def main():
 	ldapSupportLib.addParserOptions(parser, "scriptuser")
 
 	parser.add_option("-m", "--directorymanager", action="store_true", dest="directorymanager", help="Use the Directory Manager's credentials, rather than your own")
+	parser.add_option("--random", action="store_true", dest="random", help="Choose a random password, and return it.")
 	(options, args) = parser.parse_args()
 
 	if len(args) != 1:
@@ -32,15 +33,23 @@ def main():
 	try:
 		username = args[0]
 		dn = 'uid=' + username + ',ou=people,' + base
-		while True:
-			newpass = getpass.getpass('New password: ')
-			repeat = getpass.getpass('Repeat new password: ')
-			if newpass != repeat:
-				print "Passwords do no match, please try again"
-			else:
-				break
+		if options.random:
+			chars = string.letters + string.digits + '!@#$%^&*()-=+_[]{};:.<>`~ '
+			newpass = ''
+			for i in range(15):
+				newpass = newpass + random.choice(chars)
+		else:
+			while True:
+				newpass = getpass.getpass('New password: ')
+				repeat = getpass.getpass('Repeat new password: ')
+				if newpass != repeat:
+					print "Passwords do no match, please try again"
+				else:
+					break
 		mod_attrs = [( ldap.MOD_REPLACE, 'userPassword', newpass )]
 		ds.modify_s(dn, mod_attrs)
+		if options.random:
+			print newpass
 	except ldap.UNWILLING_TO_PERFORM, msg:
 		sys.stderr.write("LDAP was unwilling to change the user's password. Error was: %s\n" % msg[0]["info"])
 		ds.unbind()
