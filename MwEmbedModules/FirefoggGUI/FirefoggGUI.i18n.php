@@ -1344,6 +1344,9 @@ Pli pri <a target="_new" href="http://en.wikipedio.org/wiki/Frame_rate">filmer-r
 	'fogg-aspect-help' => 'La video-proporcio povas esti 4:3 aŭ 16:9.
 Pli pri <a target="_new" href="http://en.wikipedia.org/wiki/Aspect_ratio_%28image%29">video-proporcioj</a>.',
 	'fogg-keyframeInterval-title' => 'Intervalo de ĉefa kadro',
+	'fogg-keyframeInterval-help' => 'La intervalo de la ĉefa kadro.
+Notu: Multaj kodekoj devigas ĉefajn kadrojn se la diferenco inter la kadroj estas pli ol la ĉifrita grandeco de la ĉefa kadro.
+Pli pri <a href="http://en.wikipedia.org/wiki/I-frame">ĉefaj kadroj</a> (anglalingve).',
 	'fogg-denoise-title' => 'Senbrua filtrilo',
 	'fogg-denoise-help' => 'Senbruigi videan enigon. Pli pri <a href="http://en.wikipedia.org/wiki/Video_denoising">senbruigado de video</a>.',
 	'fogg-novideo-title' => 'Sen video',
