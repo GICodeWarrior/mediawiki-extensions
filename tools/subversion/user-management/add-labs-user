@@ -20,7 +20,11 @@ def main():
 
 	# Set a random password for the user
 	passwdargs = ['/usr/local/bin/change-ldap-passwd', '--random', username]
-	passwd = subprocess.Popen(passwdargs, stdout=PIPE).communicate()[0]
+	passwd = subprocess.Popen(passwdargs, stdout=subprocess.PIPE).communicate()[0]
+
+	# Set the user's CN and email address
+	passwdargs = ['/usr/local/bin/modify-ldap-user', '--cn=' + options.wikiname, '--mail=' + options.mail, username]
+	ignore = subprocess.Popen(passwdargs, stdout=subprocess.PIPE).communicate()[0]
 
 	# Do an initial log in as the user, which will cause the wiki to create an account
 	# for the user.
