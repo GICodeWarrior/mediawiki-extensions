@@ -15,10 +15,13 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Siebrand
  * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'assertedit-desc' => '{{desc}}',
+	'assert_edit_message' => 'Error message. Parameter:
+* $1 is a given assertion.',
 );
 
 /** Afrikaans (Afrikaans)
