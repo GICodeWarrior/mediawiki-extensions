@@ -105,6 +105,13 @@ $messages['no'] = array(
 	'categorysortheaders-desc' => 'Tillatt å angi egendefinerte, initielle flertegns sorteringsoverskrifter for å liste sidene under i kategorier med bruk av syntaksen  <nowiki>[[Kategori:Foo|^Overskrift^Usynlig del av sorteringsnøkkel]]</nowiki>',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'categorysortheaders-desc' => "Përmëtt dë specifiché testà përsonalisà d'ordinament multi-caràter 'prim-caràter' për listé le pagine sota categorìe, an dovrand na sintass com <nowiki>[[category:Foo|^Testà^Part pa visibla dla ciav d'ordinament]]</nowiki>",
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

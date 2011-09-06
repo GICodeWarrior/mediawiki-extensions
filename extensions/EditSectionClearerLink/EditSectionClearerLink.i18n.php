@@ -99,6 +99,13 @@ $messages['nl'] = array(
 	'editsectionclearerlink-desc' => 'Verbeter de bruikbaarheid van de paragraafbewerkingverwijzing met "over verwijzing zweven"-handelingen',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'editsectionclearerlink-desc' => 'Mejora la dovrabilità dij colegament Dublin Core d modìfica dle session con assion dzora a session e colegament',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

@@ -51,6 +51,13 @@ $messages['eo'] = array(
 	'editpagetracking-desc' => 'Registras la unuan fojon ke ĉiu uzanto vizitas la redakto-paĝon',
 );
 
+/** Spanish (Español)
+ * @author MetalBrasil
+ */
+$messages['es'] = array(
+	'editpagetracking-desc' => 'Los registros de la primera vez que cada usuario ve la página de edición',
+);
+
 /** Persian (فارسی)
  * @author Mjbmr
  */
@@ -224,5 +231,12 @@ $messages['vi'] = array(
  */
 $messages['zh-hans'] = array(
 	'editpagetracking-desc' => '记录每个用户第一次查看编辑页面的时间',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Anakmalaysia
+ */
+$messages['zh-hant'] = array(
+	'editpagetracking-desc' => '記錄每個用戶第一次查看編輯頁面的時間',
 );
 

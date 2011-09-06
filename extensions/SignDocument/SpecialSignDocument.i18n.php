@@ -2965,7 +2965,7 @@ Liest dat ganzt Dokument duerch a wann Dir dozou Är Ënnerstëtzung gi wëllt d
 	'sign-viewfield-country' => 'Land',
 	'sign-viewfield-zip' => 'Postcode',
 	'sign-viewfield-ip' => 'IP-Adress',
-	'sign-viewfield-agent' => 'Benotzeragent',
+	'sign-viewfield-agent' => 'Browser',
 	'sign-viewfield-phone' => 'Telefonsnummer',
 	'sign-viewfield-email' => 'E-Mail',
 	'sign-viewfield-age' => 'Alter',

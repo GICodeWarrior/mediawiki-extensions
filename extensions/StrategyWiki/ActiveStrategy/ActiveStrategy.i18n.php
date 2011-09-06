@@ -19,6 +19,7 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'activestrategy' => 'Aktiewe strategie',
 	'nedits' => '$1 {{PLURAL:$1|wysiging|wysigings}}',
 );
 
@@ -658,12 +659,13 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Anakmalaysia
  * @author Horacewai2
  * @author Mark85296341
  */
 $messages['zh-hant'] = array(
-	'activestrategy' => '積極工作隊',
-	'active-strategy-desc' => '以數字顯示工作隊的編輯頁面',
+	'activestrategy' => '已啟動的戰略',
+	'active-strategy-desc' => '顯示戰略計劃頁面的編輯次數',
 	'active-strategy-intro' => '此頁面編輯數 (在過去 {{PLURAL:$1|$1 天|$1 天}})',
 	'nedits' => '$1 {{PLURAL:$1|編輯|次編輯}}',
 );

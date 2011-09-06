@@ -199,6 +199,7 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'oai-desc' => 'Balye una entèrface de dèpôt [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH].',
+	'oairepository' => 'Dèpôt OAI',
 );
 
 /** Galician (Galego)

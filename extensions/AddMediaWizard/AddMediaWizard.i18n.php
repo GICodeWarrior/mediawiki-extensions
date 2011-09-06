@@ -179,6 +179,14 @@ $messages['es'] = array(
 	'addmediawizard-loading' => 'Cargando el asistente para añadir elementos multimedia',
 );
 
+/** Estonian (Eesti)
+ * @author Oop
+ */
+$messages['et'] = array(
+	'addmediawizard-desc' => 'Lisa meediaviisard, mille töötasid koos välja Kaltura ja Wikimedia Foundation',
+	'addmediawizard-loading' => 'Laadin meedia lisamise viisardit',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */

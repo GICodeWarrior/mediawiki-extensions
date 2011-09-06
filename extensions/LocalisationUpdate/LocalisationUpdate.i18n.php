@@ -114,6 +114,13 @@ $messages['cy'] = array(
 	'localisationupdate-desc' => "Yn diweddaru'r cyfieithiadau o negeseuon mor aml â phosib",
 );
 
+/** Danish (Dansk)
+ * @author Peter Alberti
+ */
+$messages['da'] = array(
+	'localisationupdate-desc' => 'Holder de lokaliserede meddelelser så opdaterede som muligt',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  * @author Purodha

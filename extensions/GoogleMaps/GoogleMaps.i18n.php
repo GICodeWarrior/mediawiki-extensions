@@ -132,7 +132,8 @@ This is the text next to an input box which allows the map-maker to add a captio
 
 {{Identical|Height}}',
 	'gm-scale-control' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
-	'gm-overview-control' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
+	'gm-overview-control' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.
+{{Identical|Overview}}',
 	'gm-selector-control' => "Part of the Google Maps extension. Text next to a radio button (see [http://www.mediawiki.org/wiki/Extension:Google_Maps screenshot]), allows the map editor to add a 'selector' (possible synonyms: menu bar, control) at the top of the map, allowing a viewer to choose between map, satellite and hybrid images - see this [http://www.wikidus.de/Schl%C3%B6sser_im_Schneider_Wibbel example] of a map containing the 'map/satellite selector'.",
 	'gm-zoom-control' => '{{Identical|Navigation}}',
 	'gm-large' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.

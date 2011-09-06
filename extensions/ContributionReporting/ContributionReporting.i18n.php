@@ -199,6 +199,7 @@ $messages['af'] = array(
 	'fundraiserstats-tab-averages' => 'Gemiddeldes (in USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimums (in USD)',
 	'fundraiserstats-tab-ytd' => 'Jaar-tot-datum (USD)',
+	'fundraiserstats-customize' => 'Aanpas',
 	'fundraiserstats-time-zone' => 'Tydsone:',
 	'fundraiserstats-utc' => '(vanaf UTC)',
 );
@@ -4656,6 +4657,7 @@ $messages['roa-tara'] = array(
 	'fundraiserstats-tab-ytd' => 'Anne-a-date (USD)',
 	'fundraiserstats-customize' => 'Personalizze',
 	'fundraiserstats-show-years' => 'Fà vedè le anne ca seguene:',
+	'fundraiserstats-time-zone' => "Orarie d'a zone:",
 	'fundraiserstats-utc' => '(da UTC)',
 );
 
@@ -6083,11 +6085,13 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Anakmalaysia
  * @author Liangent
  * @author Mark85296341
  */
 $messages['zh-hant'] = array(
 	'contributionreporting-desc' => '維基媒體現場募捐活動報告',
+	'contributiontotal' => '貢獻匯總',
 	'contributionhistory' => '歷史貢獻',
 	'contrib-hist-header' => '捐助者來自世界各地的評論',
 	'contrib-hist-name' => '名稱',
@@ -6098,6 +6102,13 @@ $messages['zh-hant'] = array(
 	'contrib-hist-anonymous' => '匿名',
 	'contributionstatistics' => '貢獻統計',
 	'contribstats-desc' => '顯示對維基媒體基金會的貢獻的統計',
+	'contribstats-daily-totals' => '{{PLURAL:$1|今天的匯總|最近$1天的匯總}}',
+	'contribstats-monthly-totals' => '{{PLURAL:$1|本月的匯總|最近$1個月的匯總}}',
+	'contribstats-month-range-totals' => '{{PLURAL:$1|$1個月的匯總|$1個月的匯總}}',
+	'contribstats-currency-range-totals' => '貨幣總計（從$1至$2 ）',
+	'contribstats-contribution-range-breakdown' => '列出分項數字的值（從$1至$2）的貢獻',
+	'contribstats-currency-totals' => '$1的財政年度貨幣總計',
+	'contribstats-contribution-breakdown' => '值為$1的財政年度的貢獻的分項數字',
 	'contribstats-day' => '日',
 	'contribstats-month' => '月份',
 	'contribstats-currency' => '貨幣',
@@ -6117,12 +6128,14 @@ $messages['zh-hant'] = array(
 	'contribstats-week' => '周',
 	'contribstats-weekly-totals' => '{{PLURAL:$1|本周總額|包括最近$1周的周總額}}',
 	'contribstats-payment-type' => '支付類型',
+	'contribstats-banner' => '横幅',
 	'contribstats-payment-type-hits' => '點擊付款類型',
 	'contribstats-clicks' => '點擊數',
 	'contribstats-donations' => '捐贈',
 	'contribstats-conversion' => '轉換率（%）',
 	'contribstats-template' => '模板',
 	'contribstats-nodata' => '沒有提供數據',
+	'contribstats-landingpage' => '登錄頁面',
 	'contribstats-donatepage' => '捐款頁面',
 	'contribstats-average' => '平均',
 	'contribstats-imperfect-data' => '此數據是不完美的，而無需使用的會話跟蹤其限制跟蹤捐款者。',
@@ -6143,5 +6156,10 @@ $messages['zh-hant'] = array(
 	'fundraiserstats-tab-averages' => '平均（美元）',
 	'fundraiserstats-tab-maximums' => '最大（美元）',
 	'fundraiserstats-tab-ytd' => '年直到日期（美元）',
+	'fundraiserstats-instructions' => '要查看統計信息的任何一天，將光標懸停在欄，那一天。每年是以不同的顏色，在圖表上。',
+	'fundraiserstats-customize' => '自定義',
+	'fundraiserstats-show-years' => '顯示以下年：',
+	'fundraiserstats-time-zone' => '時區：',
+	'fundraiserstats-utc' => '（從 UTC）',
 );
 

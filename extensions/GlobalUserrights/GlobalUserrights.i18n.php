@@ -250,14 +250,15 @@ $messages['fa'] = array(
 
 /** Finnish (Suomi)
  * @author Crt
+ * @author Jack Phoenix
  */
 $messages['fi'] = array(
-	'globaluserrights' => 'Globaalien käyttöoikeuksienhallinta',
-	'gur-desc' => 'Helppo työkalu [[Special:GlobalUserRights|globaalikäyttöoikeuksien]] hallintaan.',
-	'gur-rightslog-name' => 'Globaalikäyttöoikeusloki',
-	'gur-rightslog-header' => 'Tämä on loki muutoksista käyttäjien globaaleihin käyttöoikeuksiin.',
-	'gur-rightslog-entry' => 'muutti käyttäjän $1 globaalioikeuksia ryhmistä $2 ryhmiin $3',
-	'right-userrights-global' => 'Hallita globaaleja käyttöoikeuksia',
+	'globaluserrights' => 'Järjestelmänlaajuisten käyttöoikeuksien hallinta',
+	'gur-desc' => 'Kätevä [[Special:GlobalUserRights|järjestelmänlaajuisten käyttöoikeuksien]] hallinta',
+	'gur-rightslog-name' => 'Järjestelmänlaajuinen käyttöoikeusloki',
+	'gur-rightslog-header' => 'Tämä on loki käyttäjien järjestelmänlaajuisten käyttöoikeuksien muutoksista.',
+	'gur-rightslog-entry' => 'muutti käyttäjän $1 järjestelmänlaajuisia oikeuksia ryhmistä $2 ryhmiin $3',
+	'right-userrights-global' => 'Hallita järjestelmänlaajuisia käyttöoikeuksia',
 );
 
 /** French (Français)

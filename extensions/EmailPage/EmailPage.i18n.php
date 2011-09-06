@@ -816,6 +816,7 @@ $messages['mk'] = array(
 
 /** Malayalam (മലയാളം)
  * @author Junaidpv
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
@@ -831,7 +832,7 @@ $messages['ml'] = array(
 	'ea-compose' => 'ഉള്ളടക്കം ചേര്‍ക്കുക',
 	'ea-show' => 'സ്വീകര്‍ത്താക്കളെ പ്രദര്‍ശിപ്പിക്കുക',
 	'ea-send' => 'അയക്കൂ!',
-	'ea-subject' => 'ഇമെയിലിനു ഒരു വിഷയം/ശീര്‍ഷകം ചേര്‍ക്കുക',
+	'ea-subject' => 'വിഷയം:',
 	'ea-message' => 'സന്ദേശം:',
 );
 

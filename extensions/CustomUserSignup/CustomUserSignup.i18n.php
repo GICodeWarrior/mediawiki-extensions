@@ -79,6 +79,13 @@ $messages['el'] = array(
 	'customusersignup-desc' => 'Επιτρέπει την δυνατότητα προσαρμόσιμων μηνυμάτων κατά τη διαδικασία δημιουργίας λογαριασμού',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'customusersignup-desc' => 'Ebligas por memfaritaj mesaĝoj dum la kreada procedo de kontoj',
+);
+
 /** Spanish (Español)
  * @author Fitoschido
  */
@@ -309,5 +316,12 @@ $messages['vi'] = array(
  */
 $messages['zh-hans'] = array(
 	'customusersignup-desc' => '允许在邮件帐户创建过程中自定义消息',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Anakmalaysia
+ */
+$messages['zh-hant'] = array(
+	'customusersignup-desc' => '允許在郵件帳戶創建過程中自定義消息',
 );
 

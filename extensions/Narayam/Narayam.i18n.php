@@ -875,6 +875,7 @@ $messages['mk'] = array(
 $messages['ml'] = array(
 	'narayam-desc' => 'ഇൻപുട്ട് ഫീൽഡുകളിൽ ഇച്ഛാനുസരണമുള്ള ലിപികളിൽ എഴുതാനുള്ള സൗകര്യം കൂട്ടിച്ചേർക്കുന്നു',
 	'narayam-toggle-ime' => 'സജീവമാക്കുക ($1)',
+	'narayam-help' => 'സഹായം',
 	'narayam-help-page' => 'Help:എഴുത്ത്',
 	'narayam-checkbox-tooltip' => 'എഴുത്തുപകരണം ഉപയോഗിക്കാനും ഒഴിവാക്കാനും ഇവിടെ ഞെക്കുക',
 	'narayam-disable-preference' => 'നാരായം എഴുത്തുപകരണം (IME) പ്രവർത്തനരഹിതമാക്കുക',
@@ -1162,6 +1163,8 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'narayam-toggle-ime' => 'Abbilite ($1)',
+	'narayam-help' => 'Ajute',
 	'narayam-help-page' => 'Help:Digitanne',
 	'narayam-eo' => 'Esperanto',
 	'narayam-hi-inscript' => 'Hindi InScript',
@@ -1169,6 +1172,8 @@ $messages['roa-tara'] = array(
 	'narayam-kn-inscript' => 'Kannada InScript',
 	'narayam-ml' => 'Translitterazzione Malayalam',
 	'narayam-ml-inscript' => 'Malayalam InScript',
+	'narayam-ne' => 'Translitterazzione Nepalese',
+	'narayam-ne-inscript' => 'InScript Nepalese',
 	'narayam-or' => 'Translitterazzione Oriya',
 	'narayam-or-inscript' => 'Oriya InScript',
 	'narayam-sa' => 'Translitterazzione Sanscrite',
@@ -1462,7 +1467,10 @@ $messages['uk'] = array(
  */
 $messages['vi'] = array(
 	'narayam-desc' => 'Cung cấp bộ gõ tùy biến cho các hộp văn bản',
-	'narayam-toggle-ime' => 'Bật/tắt bộ gõ ($1)',
+	'narayam-toggle-ime' => 'Bật bộ gõ ($1)',
+	'narayam-menu' => 'Bộ gõ',
+	'narayam-menu-tooltip' => 'Điều khiển bộ gõ Narayam',
+	'narayam-help' => 'Trợ giúp',
 	'narayam-help-page' => 'Help:Bộ gõ',
 	'narayam-checkbox-tooltip' => 'Bật/tắt bộ gõ',
 	'narayam-disable-preference' => 'Tắt bộ gõ Narayam',
@@ -1524,5 +1532,39 @@ $messages['zh-hans'] = array(
 	'narayam-bn-avro' => '孟加拉文阿夫罗',
 	'narayam-bn-inscript' => '孟加拉文 InScript',
 	'narayam-bn-nkb' => '孟加拉文 NKB',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Anakmalaysia
+ */
+$messages['zh-hant'] = array(
+	'narayam-desc' => '允許添加自定義輸入的方法的輸入字段',
+	'narayam-toggle-ime' => '啟用（ $1 ）',
+	'narayam-menu' => '輸入法',
+	'narayam-menu-tooltip' => '控制Narayam輸入法編輯器（IME）',
+	'narayam-help' => '幫助',
+	'narayam-help-page' => 'Help:打字',
+	'narayam-checkbox-tooltip' => '打開和關閉切換輸入法',
+	'narayam-disable-preference' => '停用Narayam輸入法編輯器（IME）',
+	'narayam-eo' => '世界語',
+	'narayam-hi-inscript' => '印地語 InScript',
+	'narayam-kn' => '卡納達語音譯',
+	'narayam-kn-inscript' => '卡納達語 InScript',
+	'narayam-ml' => '馬拉雅拉姆語音譯',
+	'narayam-ml-inscript' => '馬拉雅拉姆語 InScript',
+	'narayam-ne' => '尼泊爾語音譯',
+	'narayam-ne-inscript' => '尼泊爾語 InScript',
+	'narayam-or' => '奧里亞語音譯',
+	'narayam-or-inscript' => '奧里亞語 InScript',
+	'narayam-sa' => '梵語音譯',
+	'narayam-sa-inscript' => '梵語 InScript',
+	'narayam-si-singlish' => '僧伽羅語音譯',
+	'narayam-si-wijesekara' => '僧伽羅語 Wijesekara',
+	'narayam-ta99' => '坦米爾語 Tamil99',
+	'narayam-ta' => '坦米爾語音譯',
+	'narayam-te-inscript' => '泰盧固語 InScript',
+	'narayam-bn-avro' => '孟加拉語 Avro',
+	'narayam-bn-inscript' => '孟加拉語 InScript',
+	'narayam-bn-nkb' => '孟加拉語 NKB',
 );
 
