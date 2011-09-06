@@ -122,6 +122,13 @@ $messages['pl'] = array(
 	'automaticboardwelcome-desc' => 'Automatycznie wstawia [[MediaWiki:User-board-welcome-message|wiadomość powitalną]] nowym użytkownikom na ich stronach dyskusji po ukończeniu rejestracji',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'automaticboardwelcome-desc' => "A manda automaticament [[MediaWiki:User-board-welcome-message|un mëssagi ëd bin ëvnù]] a n'utent neuv d'apress la creassion d'un cont",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
