@@ -150,6 +150,13 @@ $messages['pl'] = array(
 	'dublincorerdf-desc' => 'Metadane RDF Dublin Core',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'dublincorerdf-desc' => 'RDF-metadata ëd Dublin Core',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
