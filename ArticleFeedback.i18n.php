@@ -243,6 +243,7 @@ $messages['af'] = array(
 	'articlefeedback-pitch-or' => 'of',
 	'articlefeedback-pitch-thanks' => 'Dankie! U beoordeling is gestoor.',
 	'articlefeedback-pitch-survey-accept' => 'Begin vraelys',
+	'articlefeedback-pitch-join-accept' => "Skep 'n gebruiker",
 	'articlefeedback-pitch-join-login' => 'Meld aan',
 	'articlefeedback-pitch-edit-accept' => 'Wysig hierdie bladsy',
 	'articlefeedback-survey-message-success' => 'Dankie dat u die opname ingevul het.',
@@ -2284,6 +2285,7 @@ $messages['frp'] = array(
 	'articlefeedback-form-panel-expertise-other' => 'La sôrsa de ma cognessence est pas listâ ique',
 	'articlefeedback-form-panel-helpimprove' => 'J’amerê édiér a mèlyorar Vouiquipèdia, mandâd-mè un mèssâjo (u chouèx)',
 	'articlefeedback-form-panel-helpimprove-note' => 'Nos vos manderens un mèssâjo de confirmacion. Nos partagierens pas voutra adrèce avouéc pèrsona. $1',
+	'articlefeedback-form-panel-helpimprove-email-placeholder' => 'mèssâjo@ègzemplo.org',
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Politica de confidencialitât',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Politica de confidencialitât',
 	'articlefeedback-form-panel-submit' => 'Mandar les èstimacions',
@@ -2346,7 +2348,33 @@ Volyéd tornar èprovar ples târd.',
 	'articleFeedback-table-heading-page' => 'Pâge',
 	'articleFeedback-table-heading-average' => 'Moyena',
 	'articleFeedback-copy-above-highlow-tables' => 'O est una fonccionalitât èxpèrimentâla. Volyéd balyér voutron avis sur la [$1 pâge de discussion].',
+	'articlefeedback-dashboard-bottom' => "'''Nota :''' nos volens continuar a èxpèrimentar difèrentes façons de reprèsentar los articllos dens celos tablôs de bôrd.  Ora, celos contegnont cetos articllos :
+* pâges qu’ont les quotes les ples hôtes / fêbles : sont los articllos qu’ont reçus u muens 10 èstimacions dens les 24 hores passâs.  Les moyenes sont avues en calculent la moyena de totes les èstimacions de les 24 hores passâs.
+* bâs novéls : sont los articllos qu’ont reçus 70 % ou ben una quota ples fêbla (2 ètêles ou ben muens) dens una catègorie quinta que seye dens les 24 hores passâs. Cen s’aplique ren qu’ux articllos qu’ont reçus u muens 10 èstimacions dens les 24 hores passâs.",
 	'articlefeedback-disable-preference' => 'Pas fâre vêre lo vouidgèt Èstimacion d’articllo sur les pâges',
+	'articlefeedback-emailcapture-response-body' => 'Bonjorn !
+
+Grant-marci d’avêr èxprimâ voutron entèrèt por édiér a mèlyorar {{SITENAME}}.
+
+Volyéd prendre un moment por confirmar voutra adrèce èlèctronica en cliquent sur lo lim ce-desot : 
+
+$1
+
+Vos pouede asse-ben visitar :
+
+$2
+
+et pués buchiér ceti code de confirmacion :
+
+$3
+
+Nos nos volens d’abôrd veriér vers vos avouéc la façon que vos pouede édiér a mèlyorar {{SITENAME}}.
+
+Se vos éd pas fêt cela demanda, volyéd ignorar ceti mèssâjo et pués nos vos manderens ren d’ôtro.
+
+Mèlyors vôs, et grant-marci,
+
+L’èquipa de {{SITENAME}}',
 );
 
 /** Friulian (Furlan)
@@ -5469,14 +5497,22 @@ $messages['roa-tara'] = array(
 	'articlefeedback-field-complete-label' => 'Comblete',
 	'articlefeedback-field-objective-label' => 'Obbiettive',
 	'articlefeedback-field-wellwritten-label' => 'Scritte bbuène',
+	'articlefeedback-field-wellwritten-tooltip-1' => 'Incombrensibbele',
+	'articlefeedback-field-wellwritten-tooltip-2' => 'Difficele da capìe',
+	'articlefeedback-field-wellwritten-tooltip-3' => 'Chiarezze adeguate',
+	'articlefeedback-field-wellwritten-tooltip-4' => 'Chiarezza bbone',
+	'articlefeedback-field-wellwritten-tooltip-5' => 'Eccezzionalmende chiare',
 	'articlefeedback-pitch-reject' => 'Forse cchiù tarde',
 	'articlefeedback-pitch-or' => 'o',
+	'articlefeedback-pitch-survey-message' => "Pe piacere pigghiate 'nu mumende pe combletà 'u sondagge curte.",
 	'articlefeedback-pitch-survey-accept' => "Accuminze 'u sondagge",
+	'articlefeedback-pitch-join-message' => "Vu è ccu ccreje 'nu cunde?",
 	'articlefeedback-pitch-join-accept' => "Ccreje 'nu cunde utende",
 	'articlefeedback-pitch-join-login' => 'Tràse',
 	'articlefeedback-pitch-edit-accept' => 'Cange sta pàgene',
 	'articlefeedback-survey-message-error' => "'N'errore s'a verificate.
 Pe piacere pruève arrete.",
+	'articleFeedback-table-caption-weeklymostchanged' => 'Le cangiaminde maggiore de sta sumàne',
 	'articleFeedback-table-heading-page' => 'Pàgene',
 	'articleFeedback-table-heading-average' => 'Medie',
 );
@@ -6883,12 +6919,14 @@ $3
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Anakmalaysia
  * @author Hydra
  * @author Mark85296341
  */
 $messages['zh-hant'] = array(
-	'articlefeedback' => '條目評級',
+	'articlefeedback' => '條目反饋公告板',
 	'articlefeedback-desc' => '條目評級',
+	'articlefeedback-survey-question-origin' => '哪一頁，你在你開始這項統計調查的時候？',
 	'articlefeedback-survey-question-whyrated' => '請讓我們知道你為什麼額定此頁今日（檢查所有適用）：',
 	'articlefeedback-survey-answer-whyrated-contribute-rating' => '我想有助於提升整體的額定頁',
 	'articlefeedback-survey-answer-whyrated-development' => '我希望我的評分將積極影響發展的頁面',
@@ -6902,16 +6940,27 @@ $messages['zh-hant'] = array(
 	'articlefeedback-survey-submit' => '提交',
 	'articlefeedback-survey-title' => '請回答幾個問題',
 	'articlefeedback-survey-thanks' => '感謝您填寫調查表。',
+	'articlefeedback-survey-disclaimer' => '若要幫助我們改善此功能，您可以將您的反饋意見匿名分享給維基百科社區。',
 	'articlefeedback-error' => '發生了錯誤。請稍後再試。',
 	'articlefeedback-form-switch-label' => '評價這個網頁',
 	'articlefeedback-form-panel-title' => '評價這個網頁',
+	'articlefeedback-form-panel-explanation' => '這是什麼？',
+	'articlefeedback-form-panel-explanation-link' => 'Project:條目反饋',
 	'articlefeedback-form-panel-clear' => '刪除本次評級',
-	'articlefeedback-form-panel-expertise' => '我有先驗知識對這個話題',
-	'articlefeedback-form-panel-expertise-studies' => '我在大學已經研究',
+	'articlefeedback-form-panel-expertise' => '我非常了解與本主題相關的知識（可選）',
+	'articlefeedback-form-panel-expertise-studies' => '我有與其有關學院/大學學位',
 	'articlefeedback-form-panel-expertise-profession' => '我的專業的一部分',
-	'articlefeedback-form-panel-expertise-hobby' => '這是關係到我的愛好或興趣',
+	'articlefeedback-form-panel-expertise-hobby' => '這是一個深刻的個人激情',
 	'articlefeedback-form-panel-expertise-other' => '我的知識的來源不在此列',
-	'articlefeedback-form-panel-submit' => '提交反饋',
+	'articlefeedback-form-panel-helpimprove' => '我想幫助改善維基百科，請給我發送一封電子郵件（可選）',
+	'articlefeedback-form-panel-helpimprove-note' => '我們將向您發送確認電子郵件。我們不會與任何人分享您的地址。$1',
+	'articlefeedback-form-panel-helpimprove-privacy' => '隱私權政策',
+	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:隱私權政策',
+	'articlefeedback-form-panel-submit' => '提交評分',
+	'articlefeedback-form-panel-pending' => '你的評分尚未提交',
+	'articlefeedback-form-panel-success' => '保存成功',
+	'articlefeedback-form-panel-expiry-title' => '你的評分已過期',
+	'articlefeedback-form-panel-expiry-message' => '請重新評估本頁並重新評分。',
 	'articlefeedback-report-switch-label' => '查看網頁評級',
 	'articlefeedback-report-panel-title' => '網頁評級',
 	'articlefeedback-report-panel-description' => '目前的平均收視率。',
@@ -6919,6 +6968,79 @@ $messages['zh-hant'] = array(
 	'articlefeedback-report-ratings' => '$1 評級',
 	'articlefeedback-field-trustworthy-label' => '可靠',
 	'articlefeedback-field-trustworthy-tip' => '你覺得這個頁面已經足夠引文和這些引文來自可靠來源？',
+	'articlefeedback-field-trustworthy-tooltip-1' => '缺乏可靠來源',
+	'articlefeedback-field-trustworthy-tooltip-2' => '很少可靠来源',
+	'articlefeedback-field-trustworthy-tooltip-3' => '充足可靠來源',
+	'articlefeedback-field-trustworthy-tooltip-4' => '優質可靠來源',
+	'articlefeedback-field-trustworthy-tooltip-5' => '完美可靠来源',
 	'articlefeedback-field-complete-label' => '完成',
+	'articlefeedback-field-complete-tip' => '您覺得此頁內容是否基本上全面涵蓋了該主題的領域？',
+	'articlefeedback-field-complete-tooltip-1' => '缺少絕大多數信息',
+	'articlefeedback-field-complete-tooltip-2' => '包含一些信息',
+	'articlefeedback-field-complete-tooltip-3' => '包含關鍵信息，但還有缺少',
+	'articlefeedback-field-complete-tooltip-4' => '包含大部分關鍵的信息',
+	'articlefeedback-field-complete-tooltip-5' => '全面覆盖',
+	'articlefeedback-field-objective-label' => '客觀性',
+	'articlefeedback-field-objective-tip' => '你覺得此頁所顯示的所有觀點對該問題表示是否公平？',
+	'articlefeedback-field-objective-tooltip-1' => '嚴重偏見',
+	'articlefeedback-field-objective-tooltip-2' => '有些偏見',
+	'articlefeedback-field-objective-tooltip-3' => '稍有偏見',
+	'articlefeedback-field-objective-tooltip-4' => '沒有明顯的偏見',
+	'articlefeedback-field-objective-tooltip-5' => '完全不帶偏見',
+	'articlefeedback-field-wellwritten-label' => '可讀性',
+	'articlefeedback-field-wellwritten-tip' => '你覺得此頁內容組織和撰寫是否完美？',
+	'articlefeedback-field-wellwritten-tooltip-1' => '不可理解',
+	'articlefeedback-field-wellwritten-tooltip-2' => '很難理解',
+	'articlefeedback-field-wellwritten-tooltip-3' => '足够清晰',
+	'articlefeedback-field-wellwritten-tooltip-4' => '清楚明确',
+	'articlefeedback-field-wellwritten-tooltip-5' => '非常清晰',
+	'articlefeedback-pitch-reject' => '以後再說',
+	'articlefeedback-pitch-or' => '或者',
+	'articlefeedback-pitch-thanks' => '謝謝！您的評分已保存。',
+	'articlefeedback-pitch-survey-message' => '請花一點時間來完成簡短的調查。',
+	'articlefeedback-pitch-survey-accept' => '開始調查',
+	'articlefeedback-pitch-join-message' => '你想要創建帳戶嗎？',
+	'articlefeedback-pitch-join-body' => '帳戶將幫助您跟踪您所做的編輯，參與討論，並成為社區的一部分。',
+	'articlefeedback-pitch-join-accept' => '創建帳戶',
+	'articlefeedback-pitch-join-login' => '登录',
+	'articlefeedback-pitch-edit-message' => '您知道您可以編輯此頁嗎？',
+	'articlefeedback-pitch-edit-accept' => '編輯此頁',
+	'articlefeedback-survey-message-success' => '謝謝您回答問卷。',
+	'articlefeedback-survey-message-error' => '出現錯誤！
+請稍後再試。',
+	'articleFeedback-table-caption-dailyhighsandlows' => '今天的新鮮事',
+	'articleFeedback-table-caption-dailyhighs' => '最高評級的頁面：$1',
+	'articleFeedback-table-caption-dailylows' => '最低評級的頁面：$1',
+	'articleFeedback-table-caption-weeklymostchanged' => '本週最多改變',
+	'articleFeedback-table-caption-recentlows' => '近期低點',
+	'articleFeedback-table-heading-page' => '頁面',
+	'articleFeedback-table-heading-average' => '平均',
+	'articleFeedback-copy-above-highlow-tables' => '這是一個試驗性的功能。請在[$1 討論頁]提供反饋意見。',
+	'articlefeedback-dashboard-bottom' => "'''注意'''：我們仍將嘗試用各種不同的方式在面板上組織條目。目前，此面板包括下列條目：
+* 最高或最低分的頁面：在過去24小時內至少得到10次評分的條目。平均值計算以過去24小時內提交的所有評分為準。
+* 近期低分：過去24小時內，在任何類別得到過70%或低分（2星或更低）的條目。只會展示在過去24小時內至少得到10次評分的條目。",
+	'articlefeedback-disable-preference' => '不在頁面顯示條目反饋部件',
+	'articlefeedback-emailcapture-response-body' => '您好！
+
+謝謝您表示願意幫助我們改善{{SITENAME}}。
+
+請花一點時間，點擊下面的鏈接來確認您的電子郵件：
+
+$1
+
+您還可以訪問：
+
+$2
+
+然後輸入下列確認碼：
+
+$3
+
+我們會在短期內聯繫您，並向您介紹幫助我們改善{{SITENAME}}的方式。
+
+如果這項請求並非由您發起，請忽略這封電子郵件，我們不會再向您發送任何郵件。
+
+祝好，致謝，
+{{SITENAME}}團隊',
 );
 
