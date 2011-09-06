@@ -256,7 +256,7 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'spl3-desc' => 'Crea automaticamente un lista del subpaginas de unpagina con le etiquetta <code><nowiki><splist /></nowiki></code>',
+	'spl3-desc' => 'Adde le etiquetta <code><nowiki><splist /></nowiki></code> que crea un lista del subpaginas de un pagina',
 	'spl3_debug' => 'Valor incognite pro le option $1.',
 	'spl3_nosubpages' => '$1 non ha subpaginas a listar.',
 );
@@ -594,11 +594,13 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Anakmalaysia
  * @author Liangent
  * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'spl3-desc' => '使用標籤<code><nowiki><splist /></nowiki></code>自動創建子頁面列表',
 	'spl3_debug' => '不明的選項 $1 的設定值',
 	'spl3_nosubpages' => '$1 沒有子頁面來顯示',
 );
