@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import sys, subprocess, ldapsupportlib
+import sys, subprocess, ldapsupportlib, scriptconfig, mwclient
 from optparse import OptionParser
 
 def main():
@@ -19,25 +19,18 @@ def main():
 	username = args[0]
 
 	# Set a random password for the user
-	passwdargs = ['/usr/local/bin/change-ldap-passwd', '--random', username]
+	passwdargs = ['/usr/local/sbin/change-ldap-passwd', '--random', username]
 	passwd = subprocess.Popen(passwdargs, stdout=subprocess.PIPE).communicate()[0]
 
 	# Set the user's CN and email address
-	passwdargs = ['/usr/local/bin/modify-ldap-user', '--cn=' + options.wikiname, '--mail=' + options.mail, username]
+	passwdargs = ['/usr/local/sbin/modify-ldap-user', '--cn=' + options.wikiname, '--mail=' + options.mail, username]
 	ignore = subprocess.Popen(passwdargs, stdout=subprocess.PIPE).communicate()[0]
 
 	# Do an initial log in as the user, which will cause the wiki to create an account
 	# for the user.
-	data = {'action': 'login',
-		'lgname': username,
-		'lgpassword': passwd,
-		'lgdomain': scriptconfig.domain
-		}
-	postdata = urllib.urlencode(data)
-	resp = urllib.urlopen(scriptconfig.controllerapiurl, data=postdata)
-	if resp.code != 200:
-		print resp.read()
-	resp.close()
+	url = urlparse.urlparse(scriptconfig.controllerapiurl)
+	site = mwclient.Site((url.scheme, url.hostname))
+	site.login(username, passwd, domain=scriptconfig.domain)
 
 if __name__ == "__main__":
 	main()
