@@ -28,22 +28,22 @@ es.ViewContainer = function( containerModel, typeName, tagName ) {
 		.data( typeName, this );
 	var container = this;
 	this.containerModel.on( 'prepend', function( itemModel ) {
-		var itemView = container.createItemView( itemModel );
+		var itemView = itemModel.createView();
 		container.views.unshift( itemView );
 		container.$.prepend( itemView.$ );
 		container.emit( 'prepend', itemView );
 		container.emit( 'update' );
 	} );
 	this.containerModel.on( 'append', function( itemModel ) {
-		var itemView = container.createItemView( itemModel );
+		var itemView = itemModel.createView();
 		container.views.push( itemView );
 		container.$.append( itemView.$ );
 		container.emit( 'append', itemView );
 		container.emit( 'update' );
 	} );
-	this.containerModel.on( 'insertBefore', function( item, before ) {
-		var itemView = container.createItemView( item ),
-			beforeView = container.lookupItemView( before );
+	this.containerModel.on( 'insertBefore', function( itemModel, beforeModel ) {
+		var itemView = itemModel.createView(),
+			beforeView = container.lookupItemView( beforebeforeModel );
 		if ( beforeView ) {
 			container.views.splice( container.views.indexOf( beforeView ), 0, itemView );
 			itemView.$.insertBefore( beforeView.$ );
@@ -55,7 +55,7 @@ es.ViewContainer = function( containerModel, typeName, tagName ) {
 		container.emit( 'update' );
 	} );
 	this.containerModel.on( 'insertAfter', function( itemModel, afterModel ) {
-		var itemView = container.createItemView( item ),
+		var itemView = itemModel.createView(),
 			afterView = container.lookupItemView( afterModel );
 		if ( afterView ) {
 			container.views.splice( container.views.indexOf( afterView ) + 1, 0, itemView );
@@ -77,7 +77,7 @@ es.ViewContainer = function( containerModel, typeName, tagName ) {
 	// Auto-add views for existing items
 	var itemModels = this.containerModel.all();
 	for ( var i = 0; i < itemModels.length; i++ ) {
-		this.views.push( this.createItemView( itemModels[i] ) );
+		this.views.push( itemModels[i].createView() );
 	}
 };
 
@@ -88,10 +88,6 @@ es.ViewContainer.prototype.lookupItemView = function( itemModel ) {
 		}
 	}
 	return null;
-};
-
-es.ViewContainer.prototype.createItemView = function( itemModel ) {
-	throw 'es.ViewContainer.createItemView not implemented in this subclass';
 };
 
 /* Inheritance */

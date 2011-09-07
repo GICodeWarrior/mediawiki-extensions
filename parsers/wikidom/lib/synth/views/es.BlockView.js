@@ -9,7 +9,7 @@
  * @param tagName {String} HTML tag name to use in rendering (optional, default: "div")
  */
 es.BlockView = function( typeName, tagName ) {
-	es.DomContainerItem.call( this, 'document', typeName || 'block', tagName || 'div' );
+	es.ViewContainerItem.call( this, 'document', typeName || 'block', tagName || 'div' );
 };
 
 /**
@@ -40,4 +40,4 @@ es.BlockView.getRenderedLineIndex = function( offset ) {
 	throw 'BlockView.getRenderedLineIndex not implemented in this subclass.';
 };
 
-es.extend( es.BlockView, es.DomContainerItem );
+es.extend( es.BlockView, es.ViewContainerItem );

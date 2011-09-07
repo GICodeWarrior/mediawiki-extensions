@@ -32,6 +32,10 @@ test( 'es.ModelContainer', function() {
 	container1.append( item3 );
 	equal( updates, 3, 'es.ModelContainer emits update events on append' );
 	strictEqual( item3.c, container1, 'es.ModelContainer.append attaches item to container' );
+
+	strictEqual( item1.a, container1, 'Item container is set upon adding' );
+	strictEqual( item2.b, container1, 'Item container is set upon adding' );
+	strictEqual( item3.c, container1, 'Item container is set upon adding' );
 	
 	// Accessing
 	
