@@ -150,6 +150,27 @@ $.narayam = new ( function() {
 	}
 	
 	/**
+	 * Replace text part from startPos to endPos with peri
+	 * It function is specifically for webkit browsers,
+	 * because of bug: https://bugs.webkit.org/show_bug.cgi?id=66630
+	 * TODO: remove when webkit bug is handled in jQuery.textSelection.js
+	 * 
+	 * @param $element jQuery object to wich replacement to be taked place
+	 * @param startPos Starting position of text range to be replaced
+	 * @param endPos Ending position of text range to be replaced
+	 * @param peri String to be substituted 
+	 */
+	function replaceString( $element, startPos, endPos, peri ) {
+		// Take entire text of the element
+		var text = $element.val();
+		var pre = text.substring( 0, startPos );
+		var post = text.substring( endPos, text.length );
+
+		// Then replace
+		$element.val( pre + peri + post );
+	}
+	
+	/**
 	 * Keydown event handler. Handles shortcut key presses
 	 * @param e Event object
 	 */
@@ -221,16 +242,35 @@ $.narayam = new ( function() {
 		input = input.substring( divergingPos );
 		replacement = replacement.substring( divergingPos );
 		
-		// Select and replace the text
-		$this.textSelection( 'setSelection', {
-			'start': startPos - input.length + 1,
-			'end': endPos
-		} );
-		$this.textSelection( 'encapsulateSelection', {
-			'peri': replacement,
-			'replace': true,
-			'selectPeri': false
-		} );
+		// TODO: use better browser detection as $.browser may be moved out
+		//      from jQuery core
+		if ( $.browser.webkit ) {
+			// Webkit browser have a bug:
+			// https://bugs.webkit.org/show_bug.cgi?id=66630
+			// TODO: remove when webkit bug is handled
+			// in jQuery.textSelection.js
+			
+			replaceString($this, startPos - input.length + 1, endPos, replacement);
+			// Calculate new position for caret to be set
+			var newCaretPosition = startPos - input.length + 1 + replacement.length
+			// Update caret postion
+			$this.textSelection( 'setSelection', {
+					'start': newCaretPosition,
+					'end': newCaretPosition
+			} );
+		}
+		else {
+			// Select and replace the text
+			$this.textSelection( 'setSelection', {
+					'start': startPos - input.length + 1,
+					'end': endPos
+			} );
+			$this.textSelection( 'encapsulateSelection', {
+					'peri': replacement,
+					'replace': true,
+					'selectPeri': false
+			} );
+		}
 		
 		e.stopPropagation();
 		return false;
