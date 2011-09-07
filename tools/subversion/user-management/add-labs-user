@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import sys, subprocess, ldapsupportlib, scriptconfig, mwclient
+import sys, subprocess, ldapsupportlib, scriptconfig, mwclient, urlparse
 from optparse import OptionParser
 
 def main():
@@ -21,10 +21,11 @@ def main():
 	# Set a random password for the user
 	passwdargs = ['/usr/local/sbin/change-ldap-passwd', '--random', username]
 	passwd = subprocess.Popen(passwdargs, stdout=subprocess.PIPE).communicate()[0]
+	passwd = passwd.strip()
 
 	# Set the user's CN and email address
-	passwdargs = ['/usr/local/sbin/modify-ldap-user', '--cn=' + options.wikiname, '--mail=' + options.mail, username]
-	ignore = subprocess.Popen(passwdargs, stdout=subprocess.PIPE).communicate()[0]
+	modifyuserargs = ['/usr/local/sbin/modify-ldap-user', '--cn=' + options.wikiname, '--mail=' + options.mail, username]
+	ignore = subprocess.Popen(modifyuserargs, stdout=subprocess.PIPE).communicate()[0]
 
 	# Do an initial log in as the user, which will cause the wiki to create an account
 	# for the user.
