@@ -54,10 +54,10 @@ $wgExtensionAliasesFiles['LogEntry'] = $dir . 'LogEntry.alias.php';
 
 // Register auto load for the special page class
 $wgAutoloadClasses['LogEntryHooks'] = $dir . 'LogEntry.hooks.php';
-$wgAutoloadClasses['LogEntry'] = $dir . 'LogEntry.page.php';
+$wgAutoloadClasses['SpecialLogEntry'] = $dir . 'LogEntry.page.php';
 
 // Register parser hook
 $wgHooks['ParserFirstCallInit'][] = 'LogEntryHooks::register';
 
 // Register the LogEntry special page
-$wgSpecialPages['LogEntry'] = 'LogEntry';
+$wgSpecialPages['LogEntry'] = 'SpecialLogEntry';

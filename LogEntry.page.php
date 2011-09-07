@@ -7,7 +7,7 @@
  */
 
 // LogEntry special page
-class LogEntry extends UnlistedSpecialPage {
+class SpecialLogEntry extends UnlistedSpecialPage {
 	
 	/* Functions */
 	
@@ -43,7 +43,7 @@ class LogEntry extends UnlistedSpecialPage {
 			if( $title && $title->userCan( 'edit', $page ) )
 			{
 				// Get article
-				$article = new Article( $title );
+				$article = new Article( $title, 0 );
 				
 				// Build new line
 				$newLine = '*';
@@ -130,6 +130,6 @@ class LogEntry extends UnlistedSpecialPage {
 			}
 		}
 		// Alert of invalid page
-		$wgOut->addHTML( wfMsgHtml( 'logentry-invalidpage' ) . ": {$page}" );
+		$wgOut->addWikiMsg( 'logentry-invalidpage', $page );
 	}
 }

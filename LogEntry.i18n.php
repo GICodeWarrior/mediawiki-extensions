@@ -16,7 +16,7 @@ $messages['en'] = array(
 	'logentry-parserhook-desc' => 'This tag extension provides a form for appending/prepending to log pages',
 	'logentry-specialpage-desc' => 'This tag extension provides processing for appending to log pages',
 	'logentry' => 'LogEntry',
-	'logentry-invalidpage' => 'Invalid page',
+	'logentry-invalidpage' => 'Invalid page: $1',
 	'logentry-invalidtoken' => 'Invalid token',
 );
 
