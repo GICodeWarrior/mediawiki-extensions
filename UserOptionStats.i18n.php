@@ -603,6 +603,7 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
@@ -610,7 +611,7 @@ $messages['pms'] = array(
 	'useroptionstats-desc' => "[[Special:UserOptionStats|Pàgina special]] për arporté an dzora a l'usagi dle opsoion utent MediaWiki",
 	'uos-warn' => "PHPlot a l'é pa anstalà!",
 	'uos-choose' => 'Sern un-a dle opsion utent sota: $1',
-	'uos-choose-hidden' => 'Sern un-a dle opsion utent stërmà sota: $1',
+	'uos-choose-hidden' => "Ch'a serna un-a dj'opsion d'utent ëstërmà sì-dapress: $1",
 	'uos-unknown' => '*Default',
 	'uos-other' => '*Àutr',
 	'uos-title' => "Distribussion ëd valor ëd l'opsion utent $1",
