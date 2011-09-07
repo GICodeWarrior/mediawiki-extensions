@@ -92,9 +92,9 @@ es.ViewContainer = function( containerModel, typeName, tagName ) {
 };
 
 es.ViewContainer.prototype.lookupItemView = function( itemModel ) {
-	for ( var i = 0; i < container.views.length; i++ ) {
+	for ( var i = 0; i < this.views.length; i++ ) {
 		if ( this.views[i].getModel() === itemModel ) {
-			return container.views[i];
+			return this.views[i];
 		}
 	}
 	return null;
