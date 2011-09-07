@@ -71,3 +71,10 @@ $messages['nl'] = array(
 	'namespacepaths-desc' => 'Maakt het mogelijk aangepaste artikelpaden toe te wijzen aan naamruimten in de wiki. Bijvoorbeeld: pagina\'s als "Help:A" kunnen het pad "/help/Pagina" krijgen in plaats van "/wiki/Help:Pagina".',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'namespacepaths-desc' => 'A përmëtt che ij përcors ëd le vos a sio mapà a jë spassi nominaj dle wiki. Për esempi: Mapé pagine com /help/Page nopà che /wiki/Help:Page.',
+);
+
