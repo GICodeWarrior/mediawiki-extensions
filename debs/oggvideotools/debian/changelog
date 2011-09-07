@@ -1,0 +1,47 @@
+oggvideotools (0.8a) lucid-wikimedia; urgency=low
+
+  * initial wikimedia package build
+
+ -- peter youngmeister <py@wikimedia.org>  Wed, 07 Sep 2011 10:12:16 -0700
+
+oggvideotools (0.8-1) unstable; urgency=low
+
+  * Initial Debian Release (Closes: #563446).
+  * debian/copyright
+    - Add John Ferlito as package maintainer.
+    - Add copyright details for libresample.
+    - Fix FSF address.
+  * debian/watch
+    - Move to version 3.
+    - Use debian sourceforge redirector.
+  * debian/compat
+    - Update to 7.
+    - Move to using dh instead of cdbs.
+  * debian/rules
+    - Move to dh 7.
+    - Add quilt support.
+  * debian/control
+    - Change maintainer to Debian Xiph.org Maintainers.
+    - Add ${misc:Depends}.
+    - Update standars version to 3.8.3.
+    - Depend on debhelper >= 7.0.50~
+    - Improve package description.
+    - Add quilt dependency.
+    - Remove cdbs dependency.
+    - Add -dbg package.
+  * debian/patches/manpages
+    - Fix hyphenation in man pages.
+
+ -- John Francesco Ferlito <johnf@inodes.org>  Sun, 03 Jan 2010 13:05:14 +1100
+
+oggvideotools (0.7b-ubuntu1) jaunty; urgency=low
+
+  * rebuilt with libtheora beta1 
+
+ -- jan gerber <j@v2v.cc>  Tue, 11 Aug 2009 00:27:20 +0200
+
+oggvideotools (0.7b) jaunty; urgency=low
+
+  * initial version
+
+ -- jan gerber <j@v2v.cc>  Fri, 10 August 2009 18:20:00 +0200

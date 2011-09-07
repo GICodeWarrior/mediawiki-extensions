@@ -1,0 +1,47 @@
+Source: oggvideotools
+Section: video
+Priority: optional
+Maintainer: Debian Xiph.org Maintainers <pkg-xiph-maint@lists.alioth.debian.org>
+Uploaders: John Francesco Ferlito <johnf@inodes.org>
+Build-Depends: debhelper (>= 7.0.50~), quilt, libogg-dev, libtheora-dev, libvorbis-dev, libsdl-dev, libgd2-xpm-dev
+Standards-Version: 3.8.3
+
+Package: oggvideotools
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: A toolbox for manipulating and creating Ogg video files
+ Contains the following command line tools:
+ .
+   * oggCat - concatenates two ogg video files
+   * oggCut - extracts parts of an ogg file
+   * oggDump
+   * oggJoin - multiplexes ogg streams 
+   * oggLength
+   * oggResize - resizes ogg files in multiple ways
+   * oggScroll
+   * oggSilence
+   * oggSlideshow - creates slideshows from pictures
+   * oggSplit - demultiplexes ogv files
+   * oggThumb - creates thumbnails from an ogg video file
+
+Package: oggvideotools-dbg
+Section: debug
+Priority: extra
+Architecture: any
+Depends: oggvideotools (= ${binary:Version}), ${misc:Depends}
+Description: A toolbox for manipulating and creating Ogg video files (debug symbols)
+ Contains the following command line tools:
+ .
+   * oggCat - concatenates two ogg video files
+   * oggCut - extracts parts of an ogg file
+   * oggDump
+   * oggJoin - multiplexes ogg streams 
+   * oggLength
+   * oggResize - resizes ogg files in multiple ways
+   * oggScroll
+   * oggSilence
+   * oggSlideshow - creates slideshows from pictures
+   * oggSplit - demultiplexes ogv files
+   * oggThumb - creates thumbnails from an ogg video file
+ .
+ This package contains debugging symbols.

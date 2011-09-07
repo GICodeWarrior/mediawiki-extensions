@@ -1,0 +1,15 @@
+# Remove bashisms
+# Upstream bug - https://sourceforge.net/tracker/?func=detail&aid=2925128&group_id=235863&atid=1097768
+--- a/scripts/mkThumbs
++++ b/scripts/mkThumbs
+@@ -17,7 +17,9 @@
+ length=`oggLength $1`
+ timestring="0"
+ div=$(($2*1000))
+-for((i=1; i<$2; i++)) do
++end=`expr $2 - 1`
++for i in `seq 1 $end`
++do
+   value=$(echo "scale=3; $i*$length/$div" | bc -q 2>/dev/null)
+   timestring="$timestring,$value"
+ done

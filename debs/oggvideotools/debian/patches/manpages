@@ -1,0 +1,254 @@
+# Fix some syntax issues in some man pages
+# Upstream Bug - https://sourceforge.net/tracker/?func=detail&aid=2925129&group_id=235863&atid=1097768
+--- a/docs/oggCut.1
++++ b/docs/oggCut.1
+@@ -15,8 +15,8 @@
+ 
+ The start and end time for the cut area must be given in milliseconds with the options \-s and \-e.  
+ 
+-As a video stream consists of I-frames (which are full pictures) and P-frames (which are delta pictures to the leading I-frame) the oggCut algorithm searches for the first I-frame. If a video file would start with a p-frame, the player is not able to interpret this picture, as the leading I-frame (on where it is based) is not available. 
+-oggCut starts the I-frame search at the start time given by the -s option. So expect a shorter video time than the calculated seconds for the new file.
++As a video stream consists of I\(hyframes (which are full pictures) and P\(hyframes (which are delta pictures to the leading I\(hyframe) the oggCut algorithm searches for the first I\(hyframe. If a video file would start with a p\(hyframe, the player is not able to interpret this picture, as the leading I\(hyframe (on where it is based) is not available. 
++oggCut starts the I\(hyframe search at the start time given by the \-s option. So expect a shorter video time than the calculated seconds for the new file.
+ 
+ oggCut does not do any reencoding, therefore the output quality is completely the same as from the input file.
+ 
+@@ -36,9 +36,9 @@
+ .I Example: \-l 10000
+ 
+ .IP \-e
+-Cut end position in ms. If \-l is also used, the end position is prefered. If the end position is set to -1, the end of the stream is assumed.
++Cut end position in ms. If \-l is also used, the end position is prefered. If the end position is set to \-1, the end of the stream is assumed.
+ 
+-Default: -1
++Default: \-1
+ 
+ .I Example: \-e 20000
+ 
+--- a/docs/oggResize.1
++++ b/docs/oggResize.1
+@@ -11,7 +11,7 @@
+ 
+ Additionally, since version 0.8 
+ .B oggResize 
+-can add any ogg comment and png-pictures with an alpha channel can be rendered into the 
++can add any ogg comment and png\(hypictures with an alpha channel can be rendered into the 
+ video at any time period before and after the resizing process.
+ 
+ .SH OPTIONS
+@@ -21,7 +21,7 @@
+ .B <width>x<height>
+ The default size is 480x320.
+ 
+-.I Example: -s 320x240
++.I Example: \-s 320x240
+ 
+ .IP \-d
+ 
+@@ -29,7 +29,7 @@
+ to be a upper threshold. So the file may be smaller than assumed. If not set, 
+ the datarate of the original stream is used.
+ 
+-.I Example: -d 1024000
++.I Example: \-d 1024000
+ 
+ .IP \-D
+ 
+@@ -44,14 +44,14 @@
+ pictures per second. If only one number is given, the denominator is set to
+ 1. If not set, the framerate of the original video is used.
+ 
+-.I Example: -f 25:2
++.I Example: \-f 25:2
+ 
+ .IP \-F
+ 
+ Sets the sample frequency (sample rate) of the audio data in Hertz. If the 
+ sample frequency does not match the one with the original file, resamling is invoked. 
+ 
+-.I Example: -F 32000
++.I Example: \-F 32000
+ 
+ .IP \-c
+ 
+@@ -60,7 +60,7 @@
+ concatenated with a semicolon. It is recommended to use apostrophes 
+ as the command line may use the semicolon as a seperator.
+ 
+-.I Example: -c 'AUTHOR=yorn;DATE=03.07.09'
++.I Example: \-c 'AUTHOR=yorn;DATE=03.07.09'
+ 
+ .IP \-C
+ 
+@@ -69,26 +69,26 @@
+ concatenated with a semicolon. It is recommended to use apostrophes 
+ as the command line may use the semicolon as a seperator.
+ 
+-.I Example: -C 'AUTHOR=yorn;DATE=03.07.09'
++.I Example: \-C 'AUTHOR=yorn;DATE=03.07.09'
+ 
+ .IP \-q
+ 
+ Specifies the quality for the resizing process. Values can be chosen between 1 (best
+ quality, with slight bluring) and 6 (worst quality). The default value is 2.
+ 
+-.I Example: -q1
++.I Example: \-q1
+ 
+ .IP \-p
+ 
+ This option is meant to help creating a preview of a film. The number
+ given with this option defines the number of frames, that are omitted. E.g.
+-if a film has 24 frames per second and -p24 is given, the newly created
++if a film has 24 frames per second and \-p24 is given, the newly created
+ video shows the video 24 times faster as only every 24th frame is used. 
+-This option can be combined with the option -f to control the framerate.
+-With both options nice video previews can be created. If -p is used, the 
++This option can be combined with the option \-f to control the framerate.
++With both options nice video previews can be created. If \-p is used, the 
+ audio stream is ignored.
+ 
+-.I Example: -p 24
++.I Example: \-p 24
+ 
+ .IP \-a
+ 
+@@ -103,7 +103,7 @@
+ 
+ default 
+ .B endTime
+-is -1, which is the end of the stream duration
++is \-1, which is the end of the stream duration
+ 
+ default 
+ .B s 
+@@ -116,17 +116,17 @@
+ If the appearance time overlap, the pictures are placed on one another, 
+ so the last picture is the uppest layer.
+ 
+-.I Example: -a etwas.png,2,7,s:etwasneues.png,5,10
++.I Example: \-a etwas.png,2,7,s:etwasneues.png,5,10
+ 
+ .IP \-A
+ 
+ Adds a picture to the video frame after it is resized.
+ 
+-The syntax follows the same expression as with option -a.
++The syntax follows the same expression as with option \-a.
+ 
+ .SH EXAMPLE
+ 
+-.I oggResize -s320x240 -d512000 orig.ogv new.ogv
++.I oggResize \-s320x240 \-d512000 orig.ogv new.ogv
+ 
+ Converts a the video 
+ .B orig.ogv 
+@@ -136,14 +136,14 @@
+ there was an audio stream within the orig.ogv file, it is copied into the new
+ file.
+ 
+-.I oggResize -D64000 -F16000 -N1 orig.ogv new.ogv
++.I oggResize \-D64000 \-F16000 \-N1 orig.ogv new.ogv
+ 
+ Converts only the audio stream of file 
+ .B orig.ogv 
+ to a sample rate of 16kHz, a datarate of 64 kBit/s and a mono channel. 
+ The video stream is copied as is.  
+ 
+-.I oggResize -s300x200 -D32000 -d1024000 -A etwas.png,2,7,s:etwasneues.png,5,10 orig.ogv new.ogv
++.I oggResize \-s300x200 \-D32000 \-d1024000 \-A etwas.png,2,7,s:etwasneues.png,5,10 orig.ogv new.ogv
+ 
+ Converts the audio and video stream and adds the alpha channel picture 
+ .B etwas.png 
+--- a/docs/oggSilence.1
++++ b/docs/oggSilence.1
+@@ -5,7 +5,7 @@
+ .B oggSilence [options] outfile.ogg
+ .SH DESCRIPTION
+ .B oggSilence
+-creates a vorbis file with a silence duration which length is specified by the -l
++creates a vorbis file with a silence duration which length is specified by the \-l
+ option.
+ .SH OPTIONS
+ .IP \-l
+--- a/docs/oggSlideshow.1
++++ b/docs/oggSlideshow.1
+@@ -5,37 +5,37 @@
+ .B oggSlideshow [options] picture1 [ picture2 [...] ] 
+ .SH DESCRIPTION
+ .B oggSlideshow 
+-creates a theora video from a number of pictures in JPEG- or PNG-format with different visual effects.
++creates a theora video from a number of pictures in JPEG\(hy or PNG\(hyformat with different visual effects.
+ .SH OPTIONS
+-.IP -s
++.IP \-s
+ 
+ Sets the size of the video frame. The size is given as 
+ .B <width>x<height>
+-. The default size is set to 480x320.
++The default size is set to 480x320.
+ 
+ .I Example: \-s 320x240
+ 
+-.IP -f
++.IP \-f
+ Sets the frame rate of the video. This is given by the pictures per second. The default frame rate is 24 pictures per second.
+ 
+-.I Example: -f 16
++.I Example: \-f 16
+ 
+-.IP -o
++.IP \-o
+ Sets the output file name of the created video. The default name is slideshow.ogv.
+ 
+-.I Example: -o myShow.ogv
++.I Example: \-o myShow.ogv
+ 
+-.IP -l
++.IP \-l
+ Sets the presentation time (length) of one picture. So if your have 10 pictures and specify a length of 10 seconds, then your overall video length is 1:40 (100 seconds).
+ 
+-.I Example: -l 10
++.I Example: \-l 10
+ 
+-.IP -d
++.IP \-d
+ Sets the datarate in byte per seconds for the video encoder. This more meant to be a upper threshold. So the file may be smaller than assumed. 
+ 
+-.I Example: -d 1024000
++.I Example: \-d 1024000
+ 
+-.IP -t
++.IP \-t
+ Sets the presentation type, as shown above. Actually types are:
+ 
+ .B kb: 
+@@ -50,14 +50,14 @@
+ .B bl: 
+  Bluring at changeover
+  
+-.I Example: -t p
++.I Example: \-t p
+ 
+-.IP -e
+-Enables the reframing. In case a picture does not match the aspect ratio of the video frame, it can be "reframed", which means black borders are inserted. This option is only usefull with the Ken Burns effect (option -t kb). The pictures are automaticaly "reframed" with the other two slideshow types to match the aspect ratio.
++.IP \-e
++Enables the reframing. In case a picture does not match the aspect ratio of the video frame, it can be "reframed", which means black borders are inserted. This option is only usefull with the Ken Burns effect (option \-t kb). The pictures are automaticaly "reframed" with the other two slideshow types to match the aspect ratio.
+ 
+-.I Example: -e
++.I Example: \-e
+ 
+-.IP -r
++.IP \-r
+ Enables the resampling to a certain value. This is really only for experts and may not be available with newer version of oggSlideshow.
+ 
+ To understand this option you need some more internal information: The picture is loaded by the gd lib. So the transformation from png or jpeg to a plain RGBA is done here. The second reason for using gd is the great resizing facilities as pictures are often much bigger than the video frame. OggSlideshow can handle pictures from 0.5 to 2 times of the video frame width and height best, as it uses a linear pixel interpolation. With the resizing feature of gd, oggSlideshow reads pictures with a size "near" to the video output size and can then operate with that picture. This produces a very good quality output, as you can see above.
+@@ -65,7 +65,7 @@
+ The value given with this option is the factor the picture is read in in respect of the video frame size. When the video frame size is 320x240 and the resample factor is 1.2 than the picture that is read is resized to 384x288. Specially for the ken burns effect this is important as the sliding is done on a picture bigger than the video frame size.
+ .SH EXAMPLE
+ 
+-.I oggSlideshow -l3 -tp -d1024000 -s480x320 -o demo-plain.ogv <picture1.jpg> <picture2.jpg> ...
++.I oggSlideshow \-l3 \-tp \-d1024000 \-s480x320 \-o demo\-plain.ogv <picture1.jpg> <picture2.jpg> ...
+ 
+ .SH AUTHOR
+ Joern Seger <yorn at gmx dot net>
