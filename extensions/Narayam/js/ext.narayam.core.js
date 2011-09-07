@@ -385,8 +385,12 @@ $.narayam = new ( function() {
 	 * from a cookie or wgNarayamEnableByDefault
 	 */
 	this.setup = function() {
-		//build the menu.
-		that.buildMenu();
+		// Build the menu
+		if ( !that.buildMenu() ){
+                    // /buildMenu() returned false
+                    // No need to proceed
+                    return;
+                }
 	
 		// Restore state from cookies
 		var savedScheme = $.cookie( 'narayam-scheme' );
@@ -439,7 +443,8 @@ $.narayam = new ( function() {
 		
 		if ( !haveSchemes ) {
 			// No schemes available, don't show the tool
-			return;
+                        // So return false
+			return false;
 		}
 		
 		// Event listener for scheme selection.
@@ -507,7 +512,10 @@ $.narayam = new ( function() {
 			},function(){
 				$("#searchform").css({ visibility: "visible" });
 			});
-		}	
+		}
+                
+                // Narayam controls setup complete, returns true
+                return true;
 	}
 	
 } )();
