@@ -75,7 +75,7 @@ es.ViewContainer = function( containerModel, typeName, tagName ) {
 		container.emit( 'update' );
 	} );
 	// Auto-add views for existing items
-	var itemModels = this.containerModel.items();
+	var itemModels = this.containerModel.all();
 	for ( var i = 0; i < itemModels.length; i++ ) {
 		this.views.push( this.createItemView( itemModels[i] ) );
 	}

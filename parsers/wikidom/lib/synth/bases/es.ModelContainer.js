@@ -40,7 +40,7 @@ es.ModelContainer.prototype.get = function( index ) {
  * @method
  * @returns {Array} List of all items.
  */
-es.ModelContainer.prototype.items = function() {
+es.ModelContainer.prototype.all = function() {
 	return this[this._listName];
 };
 

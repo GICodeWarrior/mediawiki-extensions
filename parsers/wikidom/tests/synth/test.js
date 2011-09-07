@@ -35,7 +35,7 @@ test( 'es.ModelContainer', function() {
 	
 	// Accessing
 	
-	deepEqual( container1.items(), [item1, item2, item3], 'es.ModelContainer.items returns all items' )
+	deepEqual( container1.all(), [item1, item2, item3], 'es.ModelContainer.items returns all items' )
 	
 	strictEqual( container1.get( 0 ), item1, 'es.ModelContainer.get returns correct item at index' );
 	strictEqual( container1.get( 1 ), item2, 'es.ModelContainer.get returns correct item at index' );
@@ -121,35 +121,35 @@ test( 'es.ModelContainer', function() {
 	// Inserting
 	
 	container1.append( item1 );
-	deepEqual( container1.items(), [item1], 'es.ModelContainer.append adds item to end' );
+	deepEqual( container1.all(), [item1], 'es.ModelContainer.append adds item to end' );
 	container1.prepend( item3 );
-	deepEqual( container1.items(), [item3, item1], 'es.ModelContainer.prepend adds item to begining' );
+	deepEqual( container1.all(), [item3, item1], 'es.ModelContainer.prepend adds item to begining' );
 	container1.insertBefore( item2, item1 );
 	deepEqual(
-		container1.items(),
+		container1.all(),
 		[item3, item2, item1],
 		'es.ModelContainer.insertBefore inserts item before another'
 	);
 	container1.insertBefore( item2, item3 );
 	deepEqual(
-		container1.items(),
+		container1.all(),
 		[item2, item3, item1],
 		'es.ModelContainer.insertBefore moves item before another'
 	);
 	
 	container2.prepend( item1 );
-	deepEqual( container2.items(), [item1], 'es.ModelContainer.prepend adds item to begining' );
+	deepEqual( container2.all(), [item1], 'es.ModelContainer.prepend adds item to begining' );
 	container2.append( item3 );
-	deepEqual( container2.items(), [item1, item3], 'es.ModelContainer.append adds item to end' );
+	deepEqual( container2.all(), [item1, item3], 'es.ModelContainer.append adds item to end' );
 	container2.insertAfter( item2, item1 );
 	deepEqual(
-		container2.items(),
+		container2.all(),
 		[item1, item2, item3],
 		'es.ModelContainer.insertAfter inserts item after another'
 	);
 	container2.insertAfter( item1, item2 );
 	deepEqual(
-		container2.items(),
+		container2.all(),
 		[item2, item1, item3],
 		'es.ModelContainer.insertAfter moves item after another'
 	);
