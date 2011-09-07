@@ -31,7 +31,7 @@ def main():
 	# for the user.
 	url = urlparse.urlparse(scriptconfig.controllerapiurl)
 	site = mwclient.Site((url.scheme, url.hostname))
-	site.login(username, passwd, domain=scriptconfig.domain)
+	site.login(options.wikiname, passwd, domain=scriptconfig.domain)
 
 if __name__ == "__main__":
 	main()
