@@ -157,7 +157,6 @@ test( 'es.ModelContainer', function() {
 	// TODO: Events for appending, prepending, inserting and removing
 } );
 
-
 test( 'es.ViewContainer', function() {
 	var modelContainer = new es.ModelContainer(),
 		modelItem1 = new es.ModelContainerItem(),

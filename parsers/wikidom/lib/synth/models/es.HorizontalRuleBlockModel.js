@@ -24,6 +24,13 @@ es.HorizontalRuleBlockModel.newFromPlainObject = function( obj ) {
 /* Methods */
 
 /**
+ * Creates a view for this model
+ */
+es.HorizontalRuleBlockModel.prototype.createView = function() {
+	return new es.HorizontalRuleBlockView( this );
+};
+
+/**
  * Gets the length of all content - always 0.
  * 
  * @method

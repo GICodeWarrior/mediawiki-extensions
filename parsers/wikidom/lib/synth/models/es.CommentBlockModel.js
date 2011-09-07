@@ -29,8 +29,8 @@ es.CommentBlockModel.newFromPlainObject = function( obj ) {
 /**
  * Creates a view for this model
  */
-es.BlockModel.prototype.createView = function() {
-	return new es.BlockView( this );
+es.CommentBlockModel.prototype.createView = function() {
+	return new es.CommentBlockView( this );
 };
 
 /**

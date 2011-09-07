@@ -30,6 +30,13 @@ es.HeadingBlockModel.newFromPlainObject = function( obj ) {
 /* Methods */
 
 /**
+ * Creates a view for this model
+ */
+es.HeadingBlockModel.prototype.createView = function() {
+	return new es.HeadingBlockView( this );
+};
+
+/**
  * Gets the length of all content.
  * 
  * @method

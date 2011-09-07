@@ -72,6 +72,13 @@ es.ListBlockModel.newFromPlainObject = function( obj ) {
 /* Methods */
 
 /**
+ * Creates a view for this model
+ */
+es.ListBlockModel.prototype.createView = function() {
+	return new es.ListBlockView( this );
+};
+
+/**
  * Gets the length of all content.
  * 
  * @method
