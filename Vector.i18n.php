@@ -533,7 +533,7 @@ $messages['eo'] = array(
 	'vector-collapsiblenav-more' => 'Pli lingvoj',
 	'vector-editwarning-warning' => 'Forlasante ĉi tiun paĝon kaŭzos al vi perdi iun ajn ŝanĝojn kiujn vi faris.
 Se vi ensalutas, vi povas malŝalti ĉi tiun averton en la sekcio "Grandeco de redakta tekstujo" de viaj preferoj.',
-	'vector-editwarning-preference' => 'Avertu min kiam mi forlasas redaktan paĝon kun nekonservitaj ŝanĝoj',
+	'vector-editwarning-preference' => 'Averti min kiam mi forlasas redaktan paĝon kun nekonservitaj ŝanĝoj',
 	'vector-simplesearch-search' => 'Serĉi',
 	'vector-simplesearch-containing' => 'enhavas...',
 	'vector-noexperiments-preference' => 'Ekskluzivu min de estontecaj testoj',
