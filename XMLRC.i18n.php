@@ -275,3 +275,10 @@ $messages['uk'] = array(
 	'xmlrc-desc' => 'Відправляє повідомлення про зміни як XML, через UPD, Jabber або інші засоби',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'xmlrc-desc' => 'Gửi thông báo về những thay đổi theo dạng XML hoặc qua UDP, Jabber, và những phương tiện khác',
+);
+
