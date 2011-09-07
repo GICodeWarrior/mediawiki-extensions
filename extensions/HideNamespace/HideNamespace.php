@@ -20,7 +20,6 @@ $dir = dirname( __FILE__ ) . DIRECTORY_SEPARATOR;
 $wgExtensionMessagesFiles['HideNamespace'] = $dir . 'HideNamespace.i18n.php';
 $wgExtensionMessagesFiles['HideNamespaceMagic'] = $dir . 'HideNamespace.i18n.magic.php';
 
-$wgExtensionFunctions[] = 'wfHideNamespaceSetup';
 $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'HideNamespace',
@@ -30,27 +29,22 @@ $wgExtensionCredits['other'][] = array(
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:HideNamespace',
 );
 
-function wfHideNamespaceSetup() {
-	global $wgHooks;
+$wgHidensNamespaces = array();
 
-	$extHidensObj = new ExtensionHideNamespace;
-
-	// Register hooks
-	$wgHooks['ParserFirstCallInit'][] = array( &$extHidensObj, 'registerParser' );
-	$wgHooks['ArticleViewHeader'][] = array( &$extHidensObj, 'onArticleViewHeader' );
-	$wgHooks['BeforePageDisplay'][] = array( &$extHidensObj, 'onBeforePageDisplay' );
-}
+$wgHooks['ParserFirstCallInit'][] = 'ExtensionHideNamespace::registerParser';
+$wgHooks['ArticleViewHeader'][] = 'ExtensionHideNamespace::onArticleViewHeader';
+$wgHooks['BeforePageDisplay'][] = 'ExtensionHideNamespace::onBeforePageDisplay';
 
 class ExtensionHideNamespace {
-	private $namespace, $namespaceText;
-	private $hide = null;
+	private static $namespaceText;
+	private static $hide = null;
 
 	/**
 	 * Register the parser functions
 	 */
-	public function registerParser( $parser ) {
-		$parser->setFunctionHook( 'hidens', array( &$this, 'hideNs' ) );
-		$parser->setFunctionHook( 'showns', array( &$this, 'showNs' ) );
+	public static function registerParser( $parser ) {
+		$parser->setFunctionHook( 'hidens', array( __CLASS__, 'hideNs' ) );
+		$parser->setFunctionHook( 'showns', array( __CLASS__, 'showNs' ) );
 
 		return true;
 	}
@@ -58,8 +52,8 @@ class ExtensionHideNamespace {
 	/**
 	 * Callback for our parser function {{#hidens:}}
 	 */
-	public function hideNs() {
-		$this->hide = true;
+	public static function hideNs() {
+		self::$hide = true;
 
 		return null;
 	}
@@ -67,8 +61,8 @@ class ExtensionHideNamespace {
 	/**
 	 * Callback for our parser function {{#showns:}}
 	 */
-	public function showNs() {
-		$this->hide = false;
+	public static function showNs() {
+		self::$hide = false;
 
 		return null;
 	}
@@ -79,14 +73,14 @@ class ExtensionHideNamespace {
 	 * Retrieves the namespace and localized namespace text and decides whether the
 	 * namespace should be hidden
 	 */
-	public function onArticleViewHeader( $article ) {
+	public static function onArticleViewHeader( $article ) {
 		global $wgHidensNamespaces, $wgContLang;
 
-		$this->namespace = $article->getTitle()->getNamespace();
-		$this->namespaceText = $wgContLang->getNsText( $this->namespace );
+		$namespace = $article->getTitle()->getNamespace();
+		self::$namespaceText = $wgContLang->getNsText( $namespace );
 
-		if( $this->namespace == NS_MAIN ) {
-			$this->hide = false;
+		if( $namespace == NS_MAIN ) {
+			self::$hide = false;
 		} else {
 			/**
 			* Hide namespace if either
@@ -94,26 +88,25 @@ class ExtensionHideNamespace {
 			* -  the current namespace is in $wgHidensNamespaces AND
 			*      {{#showns:}} wasn't called
 			*/
-			$visibilityForced = !is_null( $this->hide );
-			$hideByUser = $visibilityForced && $this->hide;
-			$hideBySetting = isset( $wgHidensNamespaces ) &&
-				in_array( $this->namespace, $wgHidensNamespaces );
+			$visibilityForced = !is_null( self::$hide );
+			$hideByUser = $visibilityForced && self::$hide;
+			$hideBySetting = in_array( $namespace, $wgHidensNamespaces );
 
-			$this->hide = $hideByUser || ( $hideBySetting && $this->hide !== false );
+			self::$hide = $hideByUser || ( $hideBySetting && self::$hide !== false );
 		}
 
 		return true;
 	}
 
 	/**
-	 * Callback for the OutputPageBeforeHTML hook
+	 * Callback for the BeforePageDisplay hook
 	 *
 	 * Removes the namespace from article header and page title
 	 */
-	public function onBeforePageDisplay( $out ) {
-		if( $this->hide ) {
+	public static function onBeforePageDisplay( $out ) {
+		if( self::$hide ) {
 			$out->setPageTitle( mb_substr( $out->getPageTitle(),
-				mb_strlen( $this->namespaceText ) + 1 ) );
+				mb_strlen( self::$namespaceText ) + 1 ) );
 		}
 
 		return true;
