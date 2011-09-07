@@ -29,8 +29,10 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Dead3y3
  * @author Sp5uhe
+ * @author Yekrats
  */
 $messages['qqq'] = array(
+	'communityvoice' => 'Name of the [http://www.mediawiki.org/wiki/Extension:CommunityVoice Community Voice extension]',
 	'communityvoice-desc' => 'Description for the [http://www.mediawiki.org/wiki/Extension:CommunityVoice Community Voice extension]',
 	'communityvoice-ratings-scale-stats' => 'Guessing:
 
