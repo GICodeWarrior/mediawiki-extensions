@@ -427,10 +427,10 @@ $.narayam = new ( function() {
 	this.setup = function() {
 		// Build the menu
 		if ( !that.buildMenu() ){
-                    // /buildMenu() returned false
-                    // No need to proceed
-                    return;
-                }
+			// /buildMenu() returned false
+			// No need to proceed
+			return;
+		}
 	
 		// Restore state from cookies
 		var savedScheme = $.cookie( 'narayam-scheme' );
@@ -439,18 +439,21 @@ $.narayam = new ( function() {
 			$( '#narayam-' + savedScheme ).attr( 'checked', 'checked' );
 		} else {
 			//if no saved input scheme, select the first.
-			$('input.narayam-scheme:first').attr( 'checked', 'checked' );
+			$( 'input.narayam-scheme:first' ).attr( 'checked', 'checked' );
 		}
 		var enabledCookie = $.cookie( 'narayam-enabled' );
 		if ( enabledCookie == '1' || ( mw.config.get( 'wgNarayamEnabledByDefault' ) && enabledCookie !== '0' ) ) {
 			that.enable();
 		}
 		else {
-			$( 'li#pt-narayam').addClass( 'narayam-inactive' );
+			$( 'li#pt-narayam' ).addClass( 'narayam-inactive' );
 		}
 		// Renew the narayam-enabled cookie. naraym-scheme is renewed by setScheme()
 		if ( enabledCookie ) {
-			$.cookie( 'narayam-enabled', enabledCookie, { 'path': '/', 'expires': 30 } );
+			$.cookie( 'narayam-enabled', enabledCookie, {
+				'path': '/',
+				'expires': 30
+			} );
 		}
 			
 	};
@@ -483,7 +486,7 @@ $.narayam = new ( function() {
 		
 		if ( !haveSchemes ) {
 			// No schemes available, don't show the tool
-                        // So return false
+			// So return false
 			return false;
 		}
 		
@@ -512,7 +515,10 @@ $.narayam = new ( function() {
 				.append(
 					$( '<a/>' )
 						.text( mw.msg( 'narayam-help' ) )
-						.attr( 'href', mw.util.wikiGetlink( mw.msg( 'narayam-help-page' ) ))
+						.attr( 
+							'href',
+							mw.util.wikiGetlink( mw.msg( 'narayam-help-page' ) )
+						)
 					)
 				);
 		}
@@ -532,30 +538,30 @@ $.narayam = new ( function() {
 			)
 			.append( $menuItemsDiv );
 		
-		var $li = $( '<li id="pt-narayam" />');
-		$li
-			.append( $menu );
+		var $li = $( '<li id="pt-narayam" />' );
+		$li.append( $menu );
 			
-		//if rtl, add to the right of top personal links. Else, to the left
-		var fn = $('body').hasClass( 'rtl' ) ? "append" : "prepend";
-		$('#p-personal ul:first')[fn]( $li );
+		// If rtl, add to the right of top personal links. Else, to the left
+		var fn = $( 'body' ).hasClass( 'rtl' ) ? "append" : "prepend";
+		$( '#p-personal ul:first' )[fn]( $li );
 		// Build enable/disable checkbox and label
 		$checkbox = $( '<input type="checkbox" id="narayam-toggle" />' );
 		$checkbox
 			.attr( 'title', mw.msg( 'narayam-checkbox-tooltip' ) )
 			.click( that.toggle );
-		//workaround for IE bug - activex components like input fields coming on top of everything.
-		//TODO: is there a better solution other than hiding it on hover?
+		// Workaround for IE bug - activex components like input fields
+		// coming on top of everything.
+		// TODO: is there a better solution other than hiding it on hover?
 		if ( $.browser.msie ) { 
-			$("#narayam-menu").hover(function(){
-				$("#searchform").css({ visibility: "hidden" });
+			$( "#narayam-menu" ).hover(function(){
+				$( "#searchform" ).css({ visibility: "hidden" });
 			},function(){
-				$("#searchform").css({ visibility: "visible" });
+				$( "#searchform" ).css({ visibility: "visible" });
 			});
 		}
-                
-                // Narayam controls setup complete, returns true
-                return true;
+		
+		// Narayam controls setup complete, returns true
+		return true;
 	}
 	
 } )();
