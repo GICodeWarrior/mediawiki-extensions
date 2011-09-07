@@ -25,7 +25,7 @@ es.TableBlockModel = function( rows, attributes ) {
  */
 es.TableBlockModel.newFromPlainObject = function( obj ) {
 	return new es.TableBlockModel(
-		// Cells - if given, convert plain "item" objects to es.ListModelItem objects
+		// Cells - if given, convert plain row objects to es.TableBlockRowModel objects
 		!$.isArray( obj.rows ) ? [] : $.map( obj.rows, function( row ) {
 			return !$.isPlainObject( row ) ? null : es.TableBlockRowModel.newFromPlainObject( row )
 		} ),
