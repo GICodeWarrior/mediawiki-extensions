@@ -172,7 +172,7 @@ test( 'es.ViewContainer', function() {
 	modelContainer.append( modelItem2 );
 	modelContainer.append( modelItem2 );
 	
-	equals( viewContainer.views, 3, 'es.ViewContainer' );
+	equals( viewContainer.views.length, 3, 'es.ViewContainer' );
 } );
 
 function ContentStub( name, size ) {
