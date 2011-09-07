@@ -27,7 +27,16 @@ es.ViewContainer = function( containerModel, typeName, tagName ) {
 		.addClass( 'editSurface-' + typeName )
 		.data( typeName, this );
 	var container = this;
+	function cleanupItemView( itemModel ) {
+		var itemView = container.lookupItemView( itemModel );
+		if ( itemView ) {
+			container.views.splice( container.views.indexOf( itemView ), 1 );
+			itemView.$.remove();
+		}
+		return itemView;
+	}
 	this.containerModel.on( 'prepend', function( itemModel ) {
+		cleanupItemView( itemModel );
 		var itemView = itemModel.createView();
 		container.views.unshift( itemView );
 		container.$.prepend( itemView.$ );
@@ -35,6 +44,7 @@ es.ViewContainer = function( containerModel, typeName, tagName ) {
 		container.emit( 'update' );
 	} );
 	this.containerModel.on( 'append', function( itemModel ) {
+		cleanupItemView( itemModel );
 		var itemView = itemModel.createView();
 		container.views.push( itemView );
 		container.$.append( itemView.$ );
@@ -42,8 +52,9 @@ es.ViewContainer = function( containerModel, typeName, tagName ) {
 		container.emit( 'update' );
 	} );
 	this.containerModel.on( 'insertBefore', function( itemModel, beforeModel ) {
+		cleanupItemView( itemModel );
 		var itemView = itemModel.createView(),
-			beforeView = container.lookupItemView( beforebeforeModel );
+			beforeView = container.lookupItemView( beforeModel );
 		if ( beforeView ) {
 			container.views.splice( container.views.indexOf( beforeView ), 0, itemView );
 			itemView.$.insertBefore( beforeView.$ );
@@ -55,6 +66,7 @@ es.ViewContainer = function( containerModel, typeName, tagName ) {
 		container.emit( 'update' );
 	} );
 	this.containerModel.on( 'insertAfter', function( itemModel, afterModel ) {
+		cleanupItemView( itemModel );
 		var itemView = itemModel.createView(),
 			afterView = container.lookupItemView( afterModel );
 		if ( afterView ) {
@@ -68,9 +80,7 @@ es.ViewContainer = function( containerModel, typeName, tagName ) {
 		container.emit( 'update' );
 	} );
 	this.containerModel.on( 'remove', function( itemModel ) {
-		var itemView = container.lookupItemView( itemModel );
-		container.views.splice( container.views.indexOf( itemView ), 1 );
-		itemView.$.detach();
+		var itemView = cleanupItemView( itemModel );
 		container.emit( 'remove', itemView );
 		container.emit( 'update' );
 	} );
