@@ -106,10 +106,11 @@ $messages['no'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'categorysortheaders-desc' => "Përmëtt dë specifiché testà përsonalisà d'ordinament multi-caràter 'prim-caràter' për listé le pagine sota categorìe, an dovrand na sintass com <nowiki>[[category:Foo|^Testà^Part pa visibla dla ciav d'ordinament]]</nowiki>",
+	'categorysortheaders-desc' => "A përmët dë spessifiché dj'antestassion përsonalisà d'ordinament multi-caràter 'prim-caràter' për listé le pàgine ant le categorìe, an dovrand na sintassi com <nowiki>[[category:Foo|^Antestassion^Part invisìbil dla ciav d'ordinament]]</nowiki>",
 );
 
 /** Portuguese (Português)
