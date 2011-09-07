@@ -6212,9 +6212,10 @@ Xin hãy liên lạc với [[Special:ListUsers/sysop|bảo quản viên]].',
 	'openidsuccess' => 'Đã thẩm tra thành công',
 	'openidsuccesstext' => "'''Đã xác minh và đăng nhập như $1'''.
 
-Địa chỉ OpenID của bạn là $2 .
+Địa chỉ OpenID của bạn là <code>&lt;$2></code>.
 
-Quản lý các OpenID này và vào tương lai, cũng như một mật khẩu tùy chọn, tại [[Special:Preferences|trang tùy chọn]].",
+Quản lý OpenID này và các OpenID sau trong [[Special:Preferences#prefsection-openid|thẻ OpenID]] của trang tùy chọn.<br />
+Có thể đặt một mật khẩu tùy chọn cho tài khoản trong [[Special:Preferences#prefsection-personal|thẻ Thông tin cá nhân]].",
 	'openidusernameprefix' => 'Thành viên OpenID',
 	'openidserverlogininstructions' => '$2, $3 yêu cầu bạn nhập mật khẩu cho trang cá nhân của bạn, $1, tức là địa chỉ OpenID của bạn.',
 	'openidtrustinstructions' => 'Hãy kiểm tra hộp này nếu bạn muốn cho $1 biết thông tin cá nhân của bạn.',
@@ -6247,7 +6248,7 @@ Quản lý các OpenID này và vào tương lai, cũng như một mật khẩu 
 	'openidalreadyloggedin' => 'Bạn đã đăng nhập rồi.',
 	'openidalreadyloggedintext' => "'''Bạn đã đăng nhập rồi, $1!'''
 
-Quản lý (xem, xóa, và thêm) các OpenID trong thẻ OpenID tại [[Special:Preferences|trang tùy chọn]].",
+Quản lý (xem, xóa, và thêm) các OpenID trong [[Special:Preferences#prefsection-openid|thẻ OpenID]] tại trang tùy chọn.",
 	'openidnousername' => 'Chưa chỉ định tên người dùng.',
 	'openidbadusername' => 'Tên người dùng không hợp lệ.',
 	'openidautosubmit' => 'Trang này có một mẫu sẽ tự động đăng lên nếu bạn kích hoạt JavaScript.
