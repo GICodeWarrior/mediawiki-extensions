@@ -1883,6 +1883,7 @@ Pro via malkonsento, la paĝo estis movita al la laborlisto $1.',
 /** Spanish (Español)
  * @author Antur
  * @author Crazymadlover
+ * @author Fitoschido
  * @author Imre
  * @author Mor
  * @author Remember the dot
@@ -2034,7 +2035,7 @@ Puedes [{{fullurl:{{FULLPAGENAME}}|action=delvote}} registrar tu propio apoyo, u
 	'deletequeue-case-title' => 'Detalles del caso de borrado',
 	'deletequeue-case-details' => 'Detalles básicos',
 	'deletequeue-case-page' => 'Página:',
-	'deletequeue-case-reason' => 'Razón:',
+	'deletequeue-case-reason' => 'Motivo:',
 	'deletequeue-case-expiry' => 'Expiración:',
 	'deletequeue-case-needs-review' => 'Este caso requiere [[$1|revisión]].',
 );

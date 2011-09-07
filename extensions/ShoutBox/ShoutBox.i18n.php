@@ -33,6 +33,13 @@ The language code "US" may be changed to your language code.',
 The language code "US" may be changed to your language code.',
 );
 
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'shoutbox-desc' => 'Дадае функцыю парсэра для ўбудаваньня Вашага ўласнага акна',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

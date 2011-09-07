@@ -100,10 +100,11 @@ $messages['nl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'editsectionclearerlink-desc' => 'Mejora la dovrabilità dij colegament Dublin Core d modìfica dle session con assion dzora a session e colegament',
+	'editsectionclearerlink-desc' => "A ameliora la dovrabilità dle liure ëd modìfica dle session con dj'assion ëd session e passagi ansima",
 );
 
 /** Portuguese (Português)

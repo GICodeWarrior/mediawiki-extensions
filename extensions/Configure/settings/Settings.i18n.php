@@ -629,6 +629,7 @@ $messages['en'] = array(
  * @author Siebrand
  * @author Umherirrender
  * @author Waldir
+ * @author Yekrats
  * @author Александр Сигачёв
  */
 $messages['qqq'] = array(
@@ -1076,7 +1077,9 @@ This setting is an array of new namespaces, but can also be used to change the n
 	'configure-setting-wgUseTeX' => '{{config-wg|UseTeX}}',
 	'configure-setting-wgTexvcBackgroundColor' => '{{config-wg|TexvcBackgroundColor}}',
 	'configure-setting-wgMathCheckFiles' => '{{config-wg|MathCheckFiles}}',
+	'configure-setting-wgAllowJavaUploads' => '{{config-wg|AllowJavaUploads}}',
 	'configure-setting-wgXMLMimeTypes' => '{{config-wg|XMLMimeTypes}}',
+	'configure-setting-wgXMLMimeTypes-key' => '{{config-wg|XMLMimeTypes-key}}',
 	'configure-setting-wgEnableTooltipsAndAccesskeys' => '{{config-wg|EnableTooltipsAndAccesskeys}}',
 	'configure-setting-wgHtml5' => '{{config-wg|Html5}}',
 	'configure-setting-wgHtml5Version' => '{{config-wg|Html5Version}}',

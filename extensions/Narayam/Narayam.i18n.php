@@ -50,17 +50,26 @@ $messages['en'] = array(
  * @author Raymond
  * @author Shijualex
  * @author Waldir
+ * @author Yekrats
  */
 $messages['qqq'] = array(
 	'narayam-desc' => '{{desc}}',
 	'narayam-toggle-ime' => 'Switch input method ($1)',
+	'narayam-menu' => 'Narayam allows to add custom input methods for input fields.
+See: http://www.mediawiki.org/wiki/Extension:Narayam',
+	'narayam-help' => 'See: http://www.mediawiki.org/wiki/Extension:Narayam
+{{Identical|Help}}',
 	'narayam-help-page' => '{{doc-important|Do not translate "Help:".}}',
 	'narayam-checkbox-tooltip' => 'Toggle the input method —that is, the interpretation of keystrokes— between "standard" and "interpreted by Narayam".',
+	'narayam-eo' => 'The language "Esperanto" in your local language. 
+This allows for Narayam to add custom input methods for input fields. Esperanto x-system transcription. For more information, see http://www.mediawiki.org/wiki/Extension:Narayam .',
 	'narayam-hi-inscript' => '[[w:InScript|InScript]] keyboard layout for the Standard Hindi language.',
 	'narayam-kn' => 'Transliteration scheme for the Kannada language.',
 	'narayam-kn-inscript' => '[[w:InScript|InScript]] keyboard layout for the Kannada language.',
 	'narayam-ml' => 'Transliteration scheme for the Malayalam language.',
 	'narayam-ml-inscript' => '[[w:InScript|InScript]] keyboard layout for the Malayalam language.',
+	'narayam-ne' => 'Transliteration scheme for the Nepali language.',
+	'narayam-ne-inscript' => '[[w:InScript|InScript]] keyboard layout for the [[w:Nepali language|Nepali language]].',
 	'narayam-or' => 'Transliteration scheme for the Oriya language.',
 	'narayam-or-inscript' => '[[w:InScript|InScript]] keyboard layout for the Oriya language.',
 	'narayam-sa' => 'Transliteration scheme for the Sanskrit language.',
@@ -69,6 +78,7 @@ $messages['qqq'] = array(
 	'narayam-si-wijesekara' => 'Wijesekara keyboard layout for the Sinhala language.',
 	'narayam-ta99' => 'Tamil 99 keyboard layout for the Tamil language.',
 	'narayam-ta' => 'Transliteration scheme for the Tamil language.',
+	'narayam-te-inscript' => '[[w:InScript|InScript]] keyboard layout for the [[w:Telugu language|Telugu language]].',
 	'narayam-bn-avro' => 'Avro keyboard layout for the Bengali language.',
 	'narayam-bn-inscript' => '[[w:InScript|InScript]] keyboard layout for the Bengali language.',
 	'narayam-bn-nkb' => 'National (Jatiyo) keyboard layout for the Bengali language.',
@@ -519,9 +529,9 @@ $messages['frp'] = array(
  */
 $messages['gl'] = array(
 	'narayam-desc' => 'Permite engadir métodos de entrada personalizados para os campos de entrada',
-	'narayam-toggle-ime' => 'Ativar ($1)',
-	'narayam-menu' => 'Método de entarda',
-	'narayam-menu-tooltip' => 'Controlar Narayam Input Mehod Editor (IME)',
+	'narayam-toggle-ime' => 'Activar ($1)',
+	'narayam-menu' => 'Método de entrada',
+	'narayam-menu-tooltip' => 'Controlar o editor de método de entrada do narayam',
 	'narayam-help' => 'Axuda',
 	'narayam-help-page' => 'Help:Escritura',
 	'narayam-checkbox-tooltip' => 'Para activar e desactivar o método de entrada',
@@ -1061,6 +1071,14 @@ $messages['pms'] = array(
 	'narayam-bn-nkb' => 'NKB Bengali',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'narayam-help' => 'لارښود',
+	'narayam-eo' => 'اېسپېرانتو',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  * @author MetalBrasil
@@ -1164,6 +1182,7 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'narayam-toggle-ime' => 'Abbilite ($1)',
+	'narayam-menu' => 'Metode de Input',
 	'narayam-help' => 'Ajute',
 	'narayam-help-page' => 'Help:Digitanne',
 	'narayam-eo' => 'Esperanto',

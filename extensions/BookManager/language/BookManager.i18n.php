@@ -27,10 +27,13 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Purodha
  * @author Siebrand
+ * @author Yekrats
  */
 $messages['qqq'] = array(
 	'bookmanager-desc' => '{{desc}}',
 	'bm-booktools-section' => 'Section header (h5) for sidebar menu. It contains tools for the current book.',
+	'bm-printversion-desc' => '{{desc}}
+See http://www.mediawiki.org/wiki/Extension:BookManager',
 );
 
 /** Arabic (العربية)
@@ -427,6 +430,8 @@ $messages['pl'] = array(
  */
 $messages['pms'] = array(
 	'bookmanager-desc' => 'Utiss për lìber',
+	'bm-booktools-section' => 'Utiss për lìber',
+	'bm-randomchapter-link' => 'Capìtol a cas',
 	'bm-printversion' => 'Version dë stampa',
 	'bm-printversion-desc' => "A génera na [[Special:PrintVersion|version dë stampa]] d'un lìber",
 	'bm-printversion-no-book' => "Për piasì, ch'a anserissa ël nòm d'un lìber për pijé soa version dë stampa.",

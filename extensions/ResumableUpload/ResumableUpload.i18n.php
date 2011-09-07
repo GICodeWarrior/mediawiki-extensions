@@ -131,6 +131,13 @@ $messages['nl'] = array(
 	'resumableupload-desc' => 'Ondersteuning voor het hervatten van uploads',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'resumableupload-desc' => 'Apògg resumìbil ëd cariagi',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

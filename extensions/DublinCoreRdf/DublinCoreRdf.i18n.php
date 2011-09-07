@@ -151,10 +151,11 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'dublincorerdf-desc' => 'RDF-metadata ëd Dublin Core',
+	'dublincorerdf-desc' => 'Metadàit RDF ëd Dublin Core',
 );
 
 /** Portuguese (Português)

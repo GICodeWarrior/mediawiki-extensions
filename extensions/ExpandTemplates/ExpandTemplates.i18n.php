@@ -33,13 +33,18 @@ It does this by calling the relevant parser stage from MediaWiki itself.',
  * @author Meno25
  * @author Mormegil
  * @author The Evil IP address
+ * @author Yekrats
  */
 $messages['qqq'] = array(
-	'expandtemplates-desc' => '{{desc}}',
-	'expand_templates_intro' => 'This is the explanation given in the heading of the [[Special:ExpandTemplates]] page; it describes its functionality to the users.',
+	'expandtemplates' => 'The name of the [[mw:Extension:ExpandTemplates|Expand Templates extension]].',
+	'expandtemplates-desc' => 'The description of the [[mw:Extension:ExpandTemplates|Expand Templates extension]].
+{{desc}}',
+	'expand_templates_intro' => 'This is the explanation given in the heading of the [[Special:ExpandTemplates]] page; it describes its functionality to the users.
+For more information, see [[mw:Extension:ExpandTemplates]]',
 	'expand_templates_input' => '{{Identical|Input text}}',
 	'expand_templates_output' => '{{Identical|Result}}',
 	'expand_templates_ok' => '{{Identical|OK}}',
+	'expand_templates_remove_comments' => 'Check box to tell [[mw:Extension:ExpandTemplates]] to not show comments in the expanded template.',
 	'expand_templates_remove_nowiki' => 'Option on [[Special:Expandtemplates]]',
 	'expand_templates_preview' => '{{Identical|Preview}}',
 );
@@ -63,6 +68,7 @@ Dit word gedoen deur die relevante funksies in die MediaWiki-ontleder te roep.',
 	'expand_templates_xml_output' => 'XML-afvoer',
 	'expand_templates_ok' => 'OK',
 	'expand_templates_remove_comments' => 'Verwyder kommentaar',
+	'expand_templates_remove_nowiki' => 'Onderdruk <nowiki> etikette in die resultaat',
 	'expand_templates_generate_xml' => 'Wys XML-ontledingsboom',
 	'expand_templates_preview' => 'Voorskou',
 );

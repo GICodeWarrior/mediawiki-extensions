@@ -760,25 +760,26 @@ Reen:
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Dferg
+ * @author Fitoschido
  * @author Imre
  * @author Locos epraix
  */
 $messages['es'] = array(
-	'crosswikiblock-desc' => 'Permite bloquear a usuarios en otras wikis usando una [[Special:Crosswikiblock|página especial]]',
-	'crosswikiblock' => 'Bloquear al usuario en otra wiki',
-	'crosswikiblock-header' => 'Esta página le permite bloquear a un usuario en otra wiki.
-Por favor, verifique si está autorizado a actuar en esa wiki y que sus acciones siguen las políticas.',
+	'crosswikiblock-desc' => 'Permite bloquear a usuarios en otros wikis usando una [[Special:Crosswikiblock|página especial]]',
+	'crosswikiblock' => 'Bloquear al usuario en otro wiki',
+	'crosswikiblock-header' => 'Esta página permite bloquear a un usuario en otro wiki.
+Por favor, comprueba si estás autorizado a actuar en ese wiki y que tus acciones siguen las políticas.',
 	'crosswikiblock-target' => 'Dirección IP o nombre de usuario y wiki de destino:',
 	'crosswikiblock-expiry' => 'Duración:',
 	'crosswikiblock-reason' => 'Motivo:',
-	'crosswikiblock-submit' => 'Bloquear al usuario',
-	'crosswikiblock-anononly' => 'Bloquear sólo usuarios anónimos',
+	'crosswikiblock-submit' => 'Bloquear a este usuario',
+	'crosswikiblock-anononly' => 'Bloquear solo usuarios anónimos',
 	'crosswikiblock-nocreate' => 'Prevenir la creación de cuenta de usuario',
 	'crosswikiblock-autoblock' => 'Bloquear automáticamente la dirección IP usada por este usuario, y cualquier IP posterior desde la cual intente editar',
 	'crosswikiblock-noemail' => 'Prevenir el envío de correo electrónico',
-	'crosswikiunblock' => 'Desbloquear usuario en otra wiki',
-	'crosswikiunblock-header' => 'Esta página permite desbloquear usuarios en otra wiki.
-Por favor verifique si estás permitido de actuar en este wiki y tus acciones cumplen todas las políticas.',
+	'crosswikiunblock' => 'Desbloquear al usuario en otro wiki',
+	'crosswikiunblock-header' => 'Esta página permite desbloquear a un usuario en otro wiki.
+Por favor, comprueba si estás autorizado a actuar en ese wiki y que tus acciones siguen las políticas.',
 	'crosswikiunblock-user' => 'Nombre de usuario, dirección IP o bloquear ID y wiki de destino:',
 	'crosswikiunblock-reason' => 'Motivo:',
 	'crosswikiunblock-submit' => 'Desbloquear este usuario',
@@ -787,23 +788,23 @@ Por favor verifique si estás permitido de actuar en este wiki y tus acciones cu
 Regresar a:
 * [[Special:CrosswikiBlock|Formulario de bloqueo]]
 * [[$2]]",
-	'crosswikiblock-nousername' => 'Ningún nombre de usuario fue dado',
+	'crosswikiblock-nousername' => 'No se proporcionó ningún nombre de usuario',
 	'crosswikiblock-local' => 'Bloqueos locales no están soportados a través de esta interface. Usar [[Special:BlockIP|{{int:blockip}}]]',
-	'crosswikiblock-dbnotfound' => 'Base de datos $1 no existe',
-	'crosswikiblock-noname' => '"$1" no es un nombre de usuario válido.',
-	'crosswikiblock-nouser' => 'Usuario "$3" no es encontrado.',
-	'crosswikiblock-noexpiry' => 'Expiración inválida: $1.',
-	'crosswikiblock-noreason' => 'Sin razón especificada.',
-	'crosswikiblock-notoken' => 'Ficha de edición inválida.',
-	'crosswikiblock-alreadyblocked' => 'Usuario "$3" ya está bloqueado.',
+	'crosswikiblock-dbnotfound' => 'La base de datos $1 no existe',
+	'crosswikiblock-noname' => '«$1» no es un nombre de usuario válido.',
+	'crosswikiblock-nouser' => 'No se encontró al usuario «$3».',
+	'crosswikiblock-noexpiry' => 'Caducidad no válida: $1.',
+	'crosswikiblock-noreason' => 'No se especificó ningún motivo.',
+	'crosswikiblock-notoken' => 'Token de edición no válido.',
+	'crosswikiblock-alreadyblocked' => 'El usuario «$3» ya está bloqueado.',
 	'crosswikiblock-noblock' => 'Este usuario no está bloqueado.',
-	'crosswikiblock-success' => "Usuario '''$3''' bloqueado existosamente.
+	'crosswikiblock-success' => "El usuario '''$3''' fue bloqueado correctamente.
 
-Retorne a:
+Volver a:
 * [[Special:CrosswikiBlock|Formulario de bloqueo]]
 * [[$4]]",
-	'crosswikiunblock-local' => 'Desbloqueos locales no están soportados a través de esta interface. Usar [[Special:IPBlockList|{{int:ipblocklist}}]]',
-	'right-crosswikiblock' => 'Bloquear o desbloquear usuarios en otras wikis',
+	'crosswikiunblock-local' => 'Los desbloqueos locales no están soportados a través de esta interfaz. Usa [[Special:IPBlockList|{{int:ipblocklist}}]]',
+	'right-crosswikiblock' => 'Bloquear o desbloquear usuarios en otros wikis',
 );
 
 /** Estonian (Eesti)

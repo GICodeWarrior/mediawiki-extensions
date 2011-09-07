@@ -469,6 +469,15 @@ Sur les wikis privés, appliquer le patch <code>linkd</code> tel qu'expliqué da
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'group-pusher' => 'Poussors',
+	'group-pusher-member' => 'Poussor',
+	'grouppage-pusher' => 'Project:Poussors',
+	'group-bulkpusher' => 'Poussors en massa',
+	'group-bulkpusher-member' => 'Poussor en massa',
+	'grouppage-bulkpusher' => 'Project:Poussors_en_massa',
+	'group-filepusher' => 'Poussors de fichiér',
+	'group-filepusher-member' => 'Poussor de fichiér',
+	'grouppage-filepusher' => 'Project:Poussors_de_fichiér',
 	'push-err-authentication' => 'Falyita de l’ôtenticacion a $1. $2',
 	'push-tab-text' => 'Poussar',
 	'push-button-text' => 'Poussar',
