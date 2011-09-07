@@ -74,6 +74,11 @@ es.ViewContainer = function( containerModel, typeName, tagName ) {
 		container.emit( 'remove', itemView );
 		container.emit( 'update' );
 	} );
+	// Auto-add views for existing items
+	var itemModels = this.containerModel.items();
+	for ( var i = 0; i < itemModels.length; i++ ) {
+		this.views.push( this.createItemView( itemModels[i] ) );
+	}
 };
 
 es.ViewContainer.prototype.lookupItemView = function( itemModel ) {
