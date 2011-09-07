@@ -2,7 +2,7 @@
 //lazy-load
 $.getBuckets = function (force){
 	if ( typeof $.userBuckets  == 'undefined' || force ){
-		$.userBuckets = $.parseJSON( $.cookie('userbuckets') );	
+		$.userBuckets = $.parseJSON( $.cookie('userbuckets') );
 	}
 	return $.userBuckets;
 };
@@ -26,21 +26,21 @@ $.setupActiveBuckets = function(){
 		if ( campaign.all ){
 			campaign.all();
 		}
-		
+
 		if ( campaign.preferences && !campaign.preferences.setBuckets ) {
 			continue;
 		}
-		
+
 		if ( !buckets || !buckets[campaign.name] || buckets[campaign.name][1] < campaign.version){
 			// Add up all rates
 			var bucketTotal = 0;
 			for ( var rate in campaign.rates ){
 				bucketTotal += campaign.rates[rate];
 			}
-			
+
 			// Give the user a random number in those rates
 			var currentUser = Math.floor( Math.random() * (bucketTotal+1) );
-			
+
 			// recurse through the rates until we get into the range the user falls in,
 			// assign them to that range
 			var prev_val = -1;
@@ -54,13 +54,13 @@ $.setupActiveBuckets = function(){
 				prev_val = next_val;
 			}
 		}
-		
+
 		// Execute the actual code in the campaign based on the bucket
 		if ( $.getBuckets() && $.getBuckets()[campaign.name] ) {
 
 			var campaignBucket = $.getBuckets()[campaign.name][0];
 			if ( campaignBucket != 'none' ) {
-						
+
 				// Function to execute
 				var func = campaign[campaignBucket];
 				if ( $.isFunction( func ) ) {
@@ -71,15 +71,14 @@ $.setupActiveBuckets = function(){
 				}
 			}
 		}
-		
+
 	}
-	
+
 };
 
 // No need to do any of this if there are no active campaigns
 if ( mw.activeCampaigns && !$.isEmptyObject(mw.activeCampaigns) ) {
 	$( $.setupActiveBuckets );
 }
-
 
 } )( jQuery );
