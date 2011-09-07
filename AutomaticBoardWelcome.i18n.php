@@ -123,10 +123,11 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'automaticboardwelcome-desc' => "A manda automaticament [[MediaWiki:User-board-welcome-message|un mëssagi ëd bin ëvnù]] a n'utent neuv d'apress la creassion d'un cont",
+	'automaticboardwelcome-desc' => "A manda automaticament [[MediaWiki:User-board-welcome-message|un mëssagi ëd bin ëvnù]] a n'utent neuv apress la creassion d'un cont",
 );
 
 /** Russian (Русский)
