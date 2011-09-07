@@ -29,7 +29,7 @@ abstract class ApiAnalyticsBase extends ApiBase {
 					'password' => $wgMetricsDBpassword,
 					'dbname' => $wgMetricsDBname,
 					'tablePrefix' => $wgMetricsDBprefix,
-					'flags' => ( $wgDebugDumpSql ? DBO_DEBUG : 0 ) | DBO_DEFAULT
+					'flags' => ( $wgDebugDumpSql ? DBO_DEBUG : 0 ) | DBO_DEFAULT,
 				)
 			);
 			//$this->mDb->query( "SET names utf8" );
