@@ -28,9 +28,11 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Fryed-peach
  * @author Purodha
+ * @author Yekrats
  */
 $messages['qqq'] = array(
 	'fundraiserportal-desc' => '{{desc}}',
+	'fundraiserportal-ruby-button' => '{{Identical|Donate Now}}',
 );
 
 /** Afrikaans (Afrikaans)
