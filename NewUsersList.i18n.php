@@ -79,6 +79,13 @@ $messages['nl'] = array(
 	'newuserslist-desc' => 'Voegt de parsertag <tt>&lt;newusers&gt;</tt> toe om een lijst van nieuwe gebruikers met hun avatars weer te geven',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'newuserslist-desc' => "A gionta la tichëtta ëd parser <tt>&lt;newusers&gt;</tt> për trové la lista dj'utent neuv e ij sò avatar",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
