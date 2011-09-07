@@ -52,3 +52,10 @@ $messages['nl'] = array(
 	'subpagesortkey-desc' => 'Wijzg de standaard zoeksleutel van een pagina gebaseerd op de naam van de subpagina in plaatst van de volledige naam',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'subpagesortkey-desc' => "Cangé la ciav d'ordinament predefinìa ëd na pagina an manera ch'a sia basà an sël sò nòm ëd sotpagina nopà che an sël nòm anter",
+);
+
