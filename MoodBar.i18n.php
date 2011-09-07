@@ -1540,6 +1540,23 @@ Për savèjne ëd pi, për piasì vìsita ël $1.",
 	'moodbar-user-user' => 'Utent registrà',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'moodbar-close' => '(تړل)',
+	'moodbar-type-happy-title' => 'خوښ',
+	'moodbar-type-sad-title' => 'خپه',
+	'moodbar-what-label' => 'دا څه دی؟',
+	'moodbar-form-title' => 'د دې پخاطر...',
+	'moodbar-success-title' => 'مننه!',
+	'moodbar-admin-empty' => 'بې پايلو',
+	'moodbar-header-page' => 'مخ',
+	'moodbar-header-user' => 'کارن',
+	'moodbar-type-happy' => 'خوښ',
+	'moodbar-type-sad' => 'خپه',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
@@ -1733,16 +1750,19 @@ $messages['roa-tara'] = array(
 	'moodbar-type-happy-title' => 'Felice',
 	'moodbar-type-sad-title' => 'Triste',
 	'moodbar-type-confused-title' => 'Confuse',
+	'moodbar-what-label' => 'Ce jè quiste?',
 	'moodbar-what-link' => 'pàgene de dettaglie',
 	'moodbar-privacy-link' => 'termine',
 	'moodbar-form-title' => 'Purcé...',
 	'moodbar-form-note' => '140 carattere massime',
 	'moodbar-form-note-dynamic' => '$1 carattere rumaste',
 	'moodbar-form-submit' => "Condivide 'u feedback",
+	'moodbar-form-policy-text' => 'Da confermà, $1',
 	'moodbar-form-policy-label' => 'le reghele nuèstre',
 	'moodbar-loading-title' => 'Stoche a condivide...',
 	'moodbar-success-title' => 'Grazie!',
 	'moodbar-error-title' => "Ohhhhh! C'è scritte!",
+	'moodbar-admin-title' => 'Feedback de MoodBar',
 	'moodbar-admin-empty' => 'Nisciune resultate',
 	'moodbar-header-id' => "ID d'u feedback",
 	'moodbar-header-timestamp' => 'Orarie de stambe',
@@ -1750,14 +1770,21 @@ $messages['roa-tara'] = array(
 	'moodbar-header-page' => 'Pàgene',
 	'moodbar-header-usertype' => "Tipe d'utende",
 	'moodbar-header-user' => 'Utende',
+	'moodbar-header-editmode' => 'Mode pu cangiamende',
+	'moodbar-header-bucket' => "Stoche a test 'u secchie",
+	'moodbar-header-system' => 'Tipe de sisteme',
 	'moodbar-header-locale' => 'Locale',
+	'moodbar-header-useragent' => 'Utende agente',
 	'moodbar-header-comment' => 'Commende',
+	'moodbar-header-user-editcount' => "Condatore de le cangiaminde de l'utende",
 	'moodbar-header-namespace' => 'Namespace',
+	'moodbar-header-own-talk' => "Pàgene de le 'ngazzaminde meje",
 	'moodbar-type-happy' => 'Felice',
 	'moodbar-type-sad' => 'Triste',
 	'moodbar-type-confused' => 'Confuse',
 	'moodbar-user-anonymized' => 'Anonimate',
 	'moodbar-user-ip' => 'Indirizze IP',
+	'moodbar-user-user' => 'Utende reggistrate',
 );
 
 /** Russian (Русский)
