@@ -946,6 +946,7 @@ $messages['gan-hant'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
+	'inlinecategorizer-desc' => 'Módulo JavaScript que permite cambiar, engadir e eliminar categorías directamente nunha páxina',
 	'inlinecategorizer-add-category' => 'Engadir unha categoría',
 	'inlinecategorizer-add-category-submit' => 'Engadir',
 	'inlinecategorizer-add-category-summary' => 'Engadir a categoría "$1"',
@@ -1429,6 +1430,7 @@ $messages['ku-latn'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'inlinecategorizer-desc' => "JavaScript deen et erlaabt fir Kategorien direkt op enger Säit z'änneren, derbäizesetzen oder erofzehuelen",
 	'inlinecategorizer-add-category' => 'Kategorie derbäisetzen',
 	'inlinecategorizer-add-category-submit' => 'Derbäisetzen',
 	'inlinecategorizer-add-category-summary' => 'Kategorie "$1" derbäisetzen',
@@ -2243,9 +2245,10 @@ To sa zvyčajne stane, keď bola kategória pridaná na stránku v pomocou šabl
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'inlinecategorizer-desc' => 'Modul JavaScript, ki omogoča spreminjanje, dodajanje in odstranjevanje povezav kategorij neposredno s strani',
 	'inlinecategorizer-add-category' => 'Dodaj kategorijo',
 	'inlinecategorizer-add-category-submit' => 'Dodaj',
-	'inlinecategorizer-add-category-summary' => 'dodati kategorijo »$1«',
+	'inlinecategorizer-add-category-summary' => 'Dodati kategorijo »$1«',
 	'inlinecategorizer-api-error' => 'API je vrnil napako: $1: $2',
 	'inlinecategorizer-api-unknown-error' => 'API je vrnil neznano napako.',
 	'inlinecategorizer-cancel' => 'Prekliči urejanja',
@@ -2260,12 +2263,12 @@ $messages['sl'] = array(
 	'inlinecategorizer-edit-category' => 'Uredi kategorijo',
 	'inlinecategorizer-edit-category-error' => 'Kategorije »$1« ni bilo mogoče urediti.
 To se po navadi zgodi, ko je kategorija dodana strani preko predloge.',
-	'inlinecategorizer-edit-category-summary' => 'spremeniti kategorijo »$1« v »$2«',
+	'inlinecategorizer-edit-category-summary' => 'Spremeniti kategorijo »$1« v »$2«',
 	'inlinecategorizer-error-title' => 'Napaka',
 	'inlinecategorizer-remove-category' => 'Odstrani kategorijo',
 	'inlinecategorizer-remove-category-error' => 'Kategorije »$1« ni bilo mogoče odstraniti.
 To se po navadi zgodi, ko je kategorija dodana strani v predlogi.',
-	'inlinecategorizer-remove-category-summary' => 'odstraniti kategorijo »$1«',
+	'inlinecategorizer-remove-category-summary' => 'Odstraniti kategorijo »$1«',
 );
 
 /** Lower Silesian (Schläsch)
