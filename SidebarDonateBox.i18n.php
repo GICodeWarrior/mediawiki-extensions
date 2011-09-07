@@ -223,6 +223,7 @@ $messages['pl'] = array(
  */
 $messages['pms'] = array(
 	'sidebardonatebox-desc' => 'A gionta na casela ëd donassion përsonalisà a la bara lateral',
+	'DONATE' => 'Doné',
 );
 
 /** Portuguese (Português)
