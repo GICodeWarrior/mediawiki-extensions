@@ -27,6 +27,13 @@ es.ParagraphBlockModel.newFromPlainObject = function( obj ) {
 /* Methods */
 
 /**
+ * Creates a view for this model
+ */
+es.ParagraphBlockModel.prototype.createView = function() {
+	return new es.ParagraphBlockView( this );
+};
+
+/**
  * Gets the length of all content.
  * 
  * @method

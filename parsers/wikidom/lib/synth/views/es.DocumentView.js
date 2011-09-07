@@ -1,7 +1,11 @@
-es.DocumentView = function( blockViews ) {
-	es.DomContainer.call( this, 'blocks' );
+es.DocumentView = function( documentModel ) {
+	es.ViewContainer.call( this, documentModel, 'blocks' );
+};
+
+es.DocumentView.prototype.createItemView = function( itemModel ) {
+	return itemModel.createView();
 };
 
 /* Inheritance */
 
-es.extend( es.DocumentView, es.DomContainer );
+es.extend( es.DocumentView, es.ViewContainer );

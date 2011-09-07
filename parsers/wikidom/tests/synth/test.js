@@ -157,6 +157,25 @@ test( 'es.ModelContainer', function() {
 	// TODO: Events for appending, prepending, inserting and removing
 } );
 
+
+test( 'es.ViewContainer', function() {
+	var modelContainer = new es.ModelContainer(),
+		modelItem1 = new es.ModelContainerItem(),
+		modelItem2 = new es.ModelContainerItem(),
+		modelItem3 = new es.ModelContainerItem();
+	var viewContainer = new es.ViewContainer( modelContainer );
+	viewContainer.createItemView = function( itemModel ) {
+		return new es.ViewContainerItem( itemModel );
+	};
+	
+	// 
+	modelContainer.append( modelItem1 );
+	modelContainer.append( modelItem2 );
+	modelContainer.append( modelItem2 );
+	
+	equals( viewContainer.views, 3, 'es.ViewContainer' );
+} );
+
 function ContentStub( name, size ) {
 	this.name = name;
 	this.size = size;

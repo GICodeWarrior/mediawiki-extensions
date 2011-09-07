@@ -37,6 +37,13 @@ es.TableBlockModel.newFromPlainObject = function( obj ) {
 /* Methods */
 
 /**
+ * Creates a view for this model
+ */
+es.TableBlockModel.prototype.createView = function() {
+	return new es.TableBlockView( this );
+};
+
+/**
  * Gets the length of all content.
  * 
  * @method

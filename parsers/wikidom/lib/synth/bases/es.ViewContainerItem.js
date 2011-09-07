@@ -11,6 +11,9 @@
 es.ViewContainerItem = function( model, typeName, tagName ) {
 	es.EventEmitter.call( this );
 	this.model = model;
+	if ( typeof typeName !== 'string' ) {
+		typeName = 'viewContainerItem';
+	}
 	if ( typeof tagName !== 'string' ) {
 		tagName = 'div';
 	}

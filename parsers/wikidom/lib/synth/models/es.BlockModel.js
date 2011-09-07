@@ -45,6 +45,13 @@ es.BlockModel.newFromPlainObject = function( obj ) {
 /* Methods */
 
 /**
+ * Creates a view for this model
+ */
+es.BlockModel.prototype.createView = function() {
+	return new es.BlockView( this );
+};
+
+/**
  * Checks for a trait.
  * 
  * Traits are boolean flags that indicate supported behavior

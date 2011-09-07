@@ -17,6 +17,9 @@ es.ViewContainer = function( containerModel, typeName, tagName ) {
 	es.EventEmitter.call( this );
 	this.containerModel = containerModel;
 	this.views = [];
+	if ( typeof typeName !== 'string' ) {
+		typeName = 'viewContainer';
+	}
 	if ( typeof tagName !== 'string' ) {
 		tagName = 'div';
 	}
@@ -25,14 +28,14 @@ es.ViewContainer = function( containerModel, typeName, tagName ) {
 		.data( typeName, this );
 	var container = this;
 	this.containerModel.on( 'prepend', function( itemModel ) {
-		var itemView = container.createItem( itemModel );
+		var itemView = container.createItemView( itemModel );
 		container.views.unshift( itemView );
 		container.$.prepend( itemView.$ );
 		container.emit( 'prepend', itemView );
 		container.emit( 'update' );
 	} );
 	this.containerModel.on( 'append', function( itemModel ) {
-		var itemView = container.createItem( itemModel );
+		var itemView = container.createItemView( itemModel );
 		container.views.push( itemView );
 		container.$.append( itemView.$ );
 		container.emit( 'append', itemView );
@@ -83,7 +86,7 @@ es.ViewContainer.prototype.lookupItemView = function( itemModel ) {
 };
 
 es.ViewContainer.prototype.createItemView = function( itemModel ) {
-	throw 'es.ViewContainer.createItem not implemented in this subclass';
+	throw 'es.ViewContainer.createItemView not implemented in this subclass';
 };
 
 /* Inheritance */

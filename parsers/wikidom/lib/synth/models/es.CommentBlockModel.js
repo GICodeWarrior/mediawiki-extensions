@@ -27,6 +27,13 @@ es.CommentBlockModel.newFromPlainObject = function( obj ) {
 /* Methods */
 
 /**
+ * Creates a view for this model
+ */
+es.BlockModel.prototype.createView = function() {
+	return new es.BlockView( this );
+};
+
+/**
  * Gets the length of all content.
  * 
  * @method

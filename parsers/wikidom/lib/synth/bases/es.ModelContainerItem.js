@@ -23,6 +23,13 @@ es.ModelContainerItem.prototype.parent = function() {
 };
 
 /**
+ * Creates a view for this model
+ */
+es.ModelContainerItem.prototype.createView = function() {
+	return new es.ViewContainerItem( this );
+};
+
+/**
  * Attaches item to a container.
  * 
  * @method
