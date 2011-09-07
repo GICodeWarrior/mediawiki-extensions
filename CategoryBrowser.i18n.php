@@ -91,8 +91,12 @@ Please change or upgrade your browser, if possible.',
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
  * @author QuestPC
+ * @author Yekrats
  */
 $messages['qqq'] = array(
+	'categorybrowser-desc' => '{{desc}}
+CategoryBrowser creates special page which implements AJAX-enabled category filter and browser for MediaWiki. 
+For more information, see http://www.mediawiki.org/wiki/Extension:CategoryBrowser',
 	'cb_cat_name_filter_ci' => 'Dialog string for case insensitive category name search.',
 	'cb_has_pages' => '{{Identical|Page}}',
 	'cb_has_files' => '{{Identical|File}}',
