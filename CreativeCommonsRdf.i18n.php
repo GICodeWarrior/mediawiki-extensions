@@ -129,10 +129,11 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'creativecommonsrdf-desc' => 'RDF-metadata ëd CreativeCommons',
+	'creativecommonsrdf-desc' => 'Metadàit RDF ëd CreativeCommons',
 );
 
 /** Portuguese (Português)
