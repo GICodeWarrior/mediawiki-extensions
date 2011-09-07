@@ -22,6 +22,14 @@ $messages['en'] = array(
 	'categorize-advice'      => 'Click on the labels you want to attribute to this page:'
 );
 
+/** Message documentation (Message documentation)
+ * @author Yekrats
+ */
+$messages['qqq'] = array(
+	'categorize-desc' => '{{desc}}
+For more information, see http://www.mediawiki.org/wiki/Extension:Categorize',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
