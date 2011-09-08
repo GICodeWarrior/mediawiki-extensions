@@ -30,6 +30,13 @@ $messages['ar'] = array(
 	'svgzoom-desc' => 'يضيف إمكانيات قص وتقريب لميدياويكي عند رؤية ملفات SVG',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'svgzoom-desc' => 'Amiesta a MediaWiki les capacidaes de desplazamientu y ampliación al ver ficheros SVG',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
