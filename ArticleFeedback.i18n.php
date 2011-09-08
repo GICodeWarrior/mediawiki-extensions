@@ -148,6 +148,7 @@ The {{SITENAME}} team',
  * @author Purodha
  * @author Raymond
  * @author Sam Reed
+ * @author Yekrats
  */
 $messages['qqq'] = array(
 	'articlefeedback' => 'The title of the feature. It is about reader feedback.
@@ -181,12 +182,17 @@ $1 is an integer, and the rating count.",
 	'articlefeedback-pitch-or' => '{{Identical|Or}}',
 	'articlefeedback-pitch-join-body' => 'Based on {{msg-mw|Articlefeedback-pitch-join-message}}.',
 	'articlefeedback-pitch-join-login' => '{{Identical|Log in}}',
-	'articleFeedback-table-heading-page' => '{{Identical|Page}}',
+	'articleFeedback-table-heading-page' => 'This is used in the [[mw:Extension:ArticleFeedback|Article Feedback extension]].
+{{Identical|Page}}',
 	'articleFeedback-table-heading-average' => '{{Identical|Average}}',
 	'articlefeedback-table-noratings' => '{{Optional}}
 
 Text to display in a table cell if there is no number to be shown',
 	'articleFeedback-copy-above-highlow-tables' => 'The variable $1 will contain a full URL to a discussion page where the dashboard can be discussed - since the dashboard is powered by a special page, we can not rely on the built-in MediaWiki talk page.',
+	'articlefeedback-emailcapture-response-body' => 'Body of an e-mail sent to a user wishing to participate in [[mw:Extension:ArticleFeedback|article feedback]] (see the extension documentation).
+* <code>$1</code> – URL of the confirmation link
+* <code>$2</code> – URL to type in the confirmation code manually.
+* <code>$3</code> – Confirmation code for the user to type in',
 );
 
 /** Afrikaans (Afrikaans)
@@ -2061,19 +2067,19 @@ $messages['fi'] = array(
 	'articlefeedback-field-complete-tooltip-4' => 'Sisältää suurimman osan avaintiedoista',
 	'articlefeedback-field-complete-tooltip-5' => 'Kattavat tiedot',
 	'articlefeedback-field-objective-label' => 'Puolueettomuus',
-	'articlefeedback-field-objective-tip' => 'Onko sinun mielestäsi tällä sivulla reilu näkökulma asioihin?',
-	'articlefeedback-field-objective-tooltip-1' => 'Paljon puolueellinen',
+	'articlefeedback-field-objective-tip' => 'Onko sinun mielestäsi tällä sivulla tasapuolinen näkökulma asioihin?',
+	'articlefeedback-field-objective-tooltip-1' => 'Hyvin puolueellinen',
 	'articlefeedback-field-objective-tooltip-2' => 'Jonkin verran puolueellinen',
 	'articlefeedback-field-objective-tooltip-3' => 'Vähän puolueellinen',
-	'articlefeedback-field-objective-tooltip-4' => 'Ei puolueellinen',
+	'articlefeedback-field-objective-tooltip-4' => 'Ei ilmeistä puolueellisuutta',
 	'articlefeedback-field-objective-tooltip-5' => 'Täysin puolueeton',
 	'articlefeedback-field-wellwritten-label' => 'Hyvin kirjoitettu',
-	'articlefeedback-field-wellwritten-tip' => 'Onko tämä sivu mielestäsi hyvin järjestelty ja kirjoitettu?',
+	'articlefeedback-field-wellwritten-tip' => 'Onko tämä sivu mielestäsi hyvin jäsennelty ja kirjoitettu?',
 	'articlefeedback-field-wellwritten-tooltip-1' => 'Käsittämätön',
 	'articlefeedback-field-wellwritten-tooltip-2' => 'Vaikea ymmärtää',
 	'articlefeedback-field-wellwritten-tooltip-3' => 'Riittävän selkeä',
-	'articlefeedback-field-wellwritten-tooltip-4' => 'Hyvä selkeys',
-	'articlefeedback-field-wellwritten-tooltip-5' => 'Poikkeuksellinen selkeys',
+	'articlefeedback-field-wellwritten-tooltip-4' => 'Hyvin selkeä',
+	'articlefeedback-field-wellwritten-tooltip-5' => 'Poikkeuksellisen selkeä',
 	'articlefeedback-pitch-reject' => 'Ehkä myöhemmin',
 	'articlefeedback-pitch-or' => 'tai',
 	'articlefeedback-pitch-thanks' => 'Kiitos! Arviosi on tallennettu.',
@@ -4022,6 +4028,7 @@ $messages['lv'] = array(
 	'articlefeedback-error' => 'Radusies kļūda. Lūdzu, mēģiniet vēlāk vēlreiz.',
 	'articlefeedback-form-switch-label' => 'Novērtējiet šo lapu',
 	'articlefeedback-form-panel-title' => 'Novērtējiet šo lapu',
+	'articlefeedback-form-panel-explanation' => 'Kas tas ir?',
 	'articlefeedback-form-panel-clear' => 'Noņemt šo vērtējumu',
 	'articlefeedback-form-panel-expertise' => 'Es esmu ļoti zinošs par šo tēmu (atzīmēt pēc izvēles)',
 	'articlefeedback-form-panel-expertise-studies' => 'Man ir attiecīgās jomas augstākās izglītības grāds',
@@ -4033,6 +4040,7 @@ $messages['lv'] = array(
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Privātuma politika',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Privātuma politika',
 	'articlefeedback-form-panel-submit' => 'Iesniegt vērtējumus',
+	'articlefeedback-form-panel-pending' => 'Jūsu vērtējumi vēl nav iesniegti',
 	'articlefeedback-form-panel-success' => 'Veiksmīgi saglabāts',
 	'articlefeedback-form-panel-expiry-title' => 'Jūsu vērtējuma derīguma termiņš ir beidzies',
 	'articlefeedback-form-panel-expiry-message' => 'Lūdzu, pārskatiet šo lapu un iesniedziet jaunus vērtējumus.',
@@ -4049,6 +4057,10 @@ $messages['lv'] = array(
 	'articlefeedback-field-objective-tip' => 'Vai Jums šķiet, ka šī lapa parāda pareizu satura attēlojumu no visiem šī jautājuma skatījumiem?',
 	'articlefeedback-field-wellwritten-label' => 'Informācijas izklāsts',
 	'articlefeedback-field-wellwritten-tip' => 'Vai Jums šķiet, ka šī lapa ir labi strukturēta un informatīva?',
+	'articlefeedback-field-wellwritten-tooltip-2' => 'Grūti saprast',
+	'articlefeedback-field-wellwritten-tooltip-3' => 'Atbilstoša skaidrība',
+	'articlefeedback-field-wellwritten-tooltip-4' => 'Laba skaidrība',
+	'articlefeedback-field-wellwritten-tooltip-5' => 'Izcila skaidrība',
 	'articlefeedback-pitch-reject' => 'Varbūt vēlāk',
 	'articlefeedback-pitch-or' => 'vai',
 	'articlefeedback-pitch-thanks' => 'Paldies! Jūsu vērtējumi ir saglabāti.',
@@ -4064,6 +4076,8 @@ $messages['lv'] = array(
 	'articlefeedback-survey-message-error' => 'Radusies kļūda.
 Lūdzu, mēģiniet vēlāk vēlreiz.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Šodienas kāpumi un kritumi',
+	'articleFeedback-table-caption-dailyhighs' => 'Lapas ar visaugstāko vērtējumu: $1',
+	'articleFeedback-table-caption-dailylows' => 'Lapas ar viszemāko vērtējumu: $1',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Šajā nedēļā visvairāk mainītie',
 	'articleFeedback-table-caption-recentlows' => 'Pēdējie kritumi',
 	'articleFeedback-table-heading-page' => 'Lapa',
@@ -4447,6 +4461,120 @@ Sekian, terima kasih,
 Pasukan {{SITENAME}}',
 );
 
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'articlefeedback-desc' => 'Rispons tal-artiklu',
+	'articlefeedback-survey-question-origin' => "F'liema paġna kont meta bdejt dan l-istħarriġ?",
+	'articlefeedback-survey-question-whyrated' => "Jekk jogħġbok għarrafna għaliex ivvalutajt din il-paġna illum (tista' tagħżel iktar minn waħda):",
+	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'Ridt nikkontribwixxi fil-valutazzjoni ġenerali tal-paġna',
+	'articlefeedback-survey-answer-whyrated-development' => "Nittama li l-valutazzjoni tiegħek taffettwa b'mod pożittiv l-iżvilupp tal-paġna",
+	'articlefeedback-survey-answer-whyrated-contribute-wiki' => 'Xtaqt nikkontribwixxi fuq {{SITENAME}}',
+	'articlefeedback-survey-answer-whyrated-sharing-opinion' => 'Nieħu gost naqsam l-opinjoni tiegħi',
+	'articlefeedback-survey-answer-whyrated-didntrate' => 'Ma tajtx valutazzjoni illum, imma ridt nagħti rispons fuq din il-funzjonalità',
+	'articlefeedback-survey-answer-whyrated-other' => 'Oħrajn',
+	'articlefeedback-survey-question-useful' => 'Inti temmen li l-valutazzjoni mogħtija hi utli u ċara?',
+	'articlefeedback-survey-question-useful-iffalse' => 'Għaliex?',
+	'articlefeedback-survey-question-comments' => 'Għandek xi kummenti oħra?',
+	'articlefeedback-survey-submit' => 'Ibgħat',
+	'articlefeedback-survey-title' => 'Jekk jogħġbok wieġeb xi ftit mistoqsijiet',
+	'articlefeedback-survey-thanks' => 'Grazzi talli komplejt dan l-istħarriġ.',
+	'articlefeedback-survey-disclaimer' => "Sabiex tgħin ittejjeb din il-funzjonalità, ir-rispons tiegħek jista' jiġi maqsum b'mod anonimu mal-komunità tal-Wikipedija.",
+	'articlefeedback-error' => 'Kien hemm żball. Jekk jogħġbok, ipprova iktar tard.',
+	'articlefeedback-form-switch-label' => 'Ivvaluta din il-paġna',
+	'articlefeedback-form-panel-title' => 'Ivvaluta din il-paġna',
+	'articlefeedback-form-panel-explanation' => "X'inhi din?",
+	'articlefeedback-form-panel-clear' => 'Neħħi din il-valutazzjoni',
+	'articlefeedback-form-panel-expertise' => 'Għandi għarfien tajjeb ħafna dwar dan is-suġġet (mhux obbligatorju)',
+	'articlefeedback-form-panel-expertise-studies' => 'Għandi grad minn kulleġġ/università dwar is-suġġett',
+	'articlefeedback-form-panel-expertise-profession' => 'Hija parti mix-xogħol tiegħi',
+	'articlefeedback-form-panel-expertise-hobby' => 'Hija passjoni profonda personali',
+	'articlefeedback-form-panel-expertise-other' => 'Is-sors tal-għarfien tiegħi mhux imniżżla hawnhekk',
+	'articlefeedback-form-panel-helpimprove' => 'Nixtieq ngħin lill-Wikipedija, ibgħatuli ittra-e (mhux obbligatorju)',
+	'articlefeedback-form-panel-helpimprove-note' => "Aħna nibgħatulek ittra-e ta' konferma. Mhux se nqassmu l-indirizz tiegħek ma' ħadd. $1",
+	'articlefeedback-form-panel-helpimprove-privacy' => 'Politika dwar il-privatezza',
+	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Politika dwar il-privatezza',
+	'articlefeedback-form-panel-submit' => 'Ibgħat il-voti',
+	'articlefeedback-form-panel-pending' => 'Il-valutazzjoni tiegħek għadhom ma ntbagħtux',
+	'articlefeedback-form-panel-success' => 'Salvati korrettament',
+	'articlefeedback-form-panel-expiry-title' => 'Il-voti tiegħek skadew',
+	'articlefeedback-form-panel-expiry-message' => "Erġa' agħti l-valutazzjoni tiegħek u ibgħat voti ġodda.",
+	'articlefeedback-report-switch-label' => 'Ara l-valutazzjoni tal-paġna',
+	'articlefeedback-report-panel-title' => 'Valutazzjoni tal-paġna',
+	'articlefeedback-report-panel-description' => 'Medja tal-valutazzjoni attwali.',
+	'articlefeedback-report-empty' => 'L-ebda vot',
+	'articlefeedback-report-ratings' => '$1 voti',
+	'articlefeedback-field-trustworthy-label' => 'Affidabbli',
+	'articlefeedback-field-trustworthy-tip' => 'Tħoss li din l-paġna għandha biżżejjed referenzi u li dawn ir-reerenzi ġejjin minn sorsi affidabbli?',
+	'articlefeedback-field-trustworthy-tooltip-1' => 'Nieqes minn sorsi affidabbli',
+	'articlefeedback-field-trustworthy-tooltip-2' => 'Ftit sorsi affidabbli',
+	'articlefeedback-field-trustworthy-tooltip-3' => 'Sorsi affidabbli adegwati',
+	'articlefeedback-field-trustworthy-tooltip-4' => 'Sorsi affidabbli tajbin',
+	'articlefeedback-field-trustworthy-tooltip-5' => 'Sorsi affidabbli eċċellenti',
+	'articlefeedback-field-complete-label' => 'Kompluta',
+	'articlefeedback-field-complete-tip' => 'Tħoss li din il-paġna tkopri l-oqsma essenzjali tas-suġġett?',
+	'articlefeedback-field-complete-tooltip-1' => 'Nieqsa ħafna mill-informazzjoni',
+	'articlefeedback-field-complete-tooltip-2' => 'Għandha ftit informazzjoni',
+	'articlefeedback-field-complete-tooltip-3' => "Għandha l-informazzjoni prinċipali, imma b'ċerti nuqqasijiet",
+	'articlefeedback-field-complete-tooltip-4' => 'Għandha l-parti prinċipali tal-informazzjoni importanti',
+	'articlefeedback-field-complete-tooltip-5' => 'Kopertura komprensiva',
+	'articlefeedback-field-objective-label' => 'Objettiva',
+	'articlefeedback-field-objective-tip' => 'Tħoss li din il-paġna turi rappreżentazzjoni ġusta tal-perspettivi kollha tal-punti di vista fuq is-suġġett?',
+	'articlefeedback-field-objective-tooltip-1' => 'Preġudikata ħafna',
+	'articlefeedback-field-objective-tooltip-2' => 'Preġudizzju moderat',
+	'articlefeedback-field-objective-tooltip-3' => 'Preġudizzju minimu',
+	'articlefeedback-field-objective-tooltip-4' => 'L-ebda preġudizzju ovvju',
+	'articlefeedback-field-objective-tooltip-5' => 'Kompletament imparzjali',
+	'articlefeedback-field-wellwritten-label' => 'Kitba tajba',
+	'articlefeedback-field-wellwritten-tip' => 'Tħoss li din il-paġna hi organizzata u miktuba tajjeb?',
+	'articlefeedback-field-wellwritten-tooltip-1' => 'Inkomprensibbli',
+	'articlefeedback-field-wellwritten-tooltip-2' => 'Diffiċli biex tifimha',
+	'articlefeedback-field-wellwritten-tooltip-3' => 'Ċara biżżejjed',
+	'articlefeedback-field-wellwritten-tooltip-4' => 'Ċara ħafna',
+	'articlefeedback-field-wellwritten-tooltip-5' => 'Ċarezza eċċezzjonali',
+	'articlefeedback-pitch-reject' => 'Forsi iktar tard',
+	'articlefeedback-pitch-or' => 'jew',
+	'articlefeedback-pitch-thanks' => 'Grazzi! Il-valutazzjoni tiegħek ġiet salvata.',
+	'articlefeedback-pitch-survey-message' => 'Jekk jogħġbok ħu mument sabiex tkompli dan l-istħarriġ qasir.',
+	'articlefeedback-pitch-survey-accept' => 'Ibda l-istħarriġ',
+	'articlefeedback-pitch-join-message' => 'Ridt toħloq kont?',
+	'articlefeedback-pitch-join-body' => "Kont iħallik iżomm traċċa tal-modifiki tiegħek, tipparteċipa f'diskussjonijiet u li tkun parti mill-komunità.",
+	'articlefeedback-pitch-join-accept' => 'Oħloq kont',
+	'articlefeedback-pitch-join-login' => 'Idħol',
+	'articlefeedback-pitch-edit-message' => "Kont taf li tista' timmodifika din il-paġna?",
+	'articlefeedback-pitch-edit-accept' => 'Immodifika din il-paġna',
+	'articlefeedback-survey-message-success' => 'Grazzi talli komplet dan l-istħarriġ.',
+	'articlefeedback-survey-message-error' => 'Kien hemm żball. Jekk jogħġbok, ipprova iktar tard.',
+	'articleFeedback-table-caption-dailyhighs' => 'Paġni bl-ogħla valutazzjoni: $1',
+	'articleFeedback-table-caption-dailylows' => 'Paġni bl-inqas valutazzjoni: $1',
+	'articleFeedback-table-caption-weeklymostchanged' => 'L-iktar li mbiddlu fil-ġimgħa',
+	'articleFeedback-table-heading-page' => 'Paġna',
+	'articleFeedback-table-heading-average' => 'Medja',
+	'articleFeedback-copy-above-highlow-tables' => "Din hija funzjoni sperimentali. Ħalli r-rispons tiegħek fil-[$1 paġna ta' diskussjoni].",
+	'articlefeedback-disable-preference' => "Turix il-''widget'' tal-valutazzjoni fuq il-paġni (Article Feedback)",
+	'articlefeedback-emailcapture-response-body' => "Grazzi talli wrejt interess li ttejjeb lil {{SITENAME}}.
+
+Ħu mument sabiex tiċċekkja l-indirizz elettroniku tiegħek billi tagħfas fuq il-ħoloqa t'hawn taħt:
+
+$1
+
+Tista' wkoll iżżur:
+
+$2
+
+U ddaħħal dan il-kodiċi ta' konferma:
+
+$3
+
+Aħna nkunu f'kuntatt miegħek ma ndumux fuq kif tista' tgħin ittejjeb lil {{SITENAME}}.
+
+Jekk m'għamiltx din ir-rikjesta, injora din il-posta u aħna mhux se nibgħatulek xejn iktar.
+
+Xewqat sbieħ u grazzi,
+It-tim ta' {{SITENAME}}",
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */
@@ -4470,8 +4598,12 @@ $messages['nah'] = array(
 /** Nepali (नेपाली)
  * @author Bhawani Gautam
  * @author Bhawani Gautam Rhk
+ * @author सरोज कुमार ढकाल
  */
 $messages['ne'] = array(
+	'articlefeedback-desc' => 'लेखकोबारेमा पृष्ठपोषण',
+	'articlefeedback-survey-answer-whyrated-contribute-wiki' => ' {{SITENAME}}मा योगदान गर्न मन लागेको थियो ।',
+	'articlefeedback-survey-answer-whyrated-sharing-opinion' => 'मलाई मेरो बिचार बाड्न मन पर्छ \\',
 	'articlefeedback-survey-question-useful-iffalse' => 'किन?',
 	'articlefeedback-survey-question-comments' => 'तपाईंसित अरु कुनै अतिरिक्त टिप्पणीहरु छन्?',
 	'articlefeedback-survey-submit' => 'बुझाउने',
@@ -5535,6 +5667,7 @@ $messages['roa-tara'] = array(
 	'articlefeedback-pitch-join-accept' => "Ccreje 'nu cunde utende",
 	'articlefeedback-pitch-join-login' => 'Tràse',
 	'articlefeedback-pitch-edit-accept' => 'Cange sta pàgene',
+	'articlefeedback-survey-message-success' => "Grazzie pè avè combilate 'u sondagge.",
 	'articlefeedback-survey-message-error' => "'N'errore s'a verificate.
 Pe piacere pruève arrete.",
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Le megghie e le pesce de osce',
