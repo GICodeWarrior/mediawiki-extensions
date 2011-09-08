@@ -1480,6 +1480,13 @@ $messages['nds-nl'] = array(
 	'group-patroller-member' => 'kontroleur',
 );
 
+/** Nepali (नेपाली)
+ * @author सरोज कुमार ढकाल
+ */
+$messages['ne'] = array(
+	'group-patroller' => 'गस्तीकर्ताहरु',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
