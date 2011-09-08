@@ -95,7 +95,7 @@ class FileAttach {
 		if( $attachto = $wgRequest->getText( 'attachto', '' ) ) {
 			self::$uploadForm = true;
 			$title = Title::newFromText( $attachto );
-			self::$attachto = new Article( $title );
+			self::$attachto = new Article( $title, 0 );
 			$wgHooks['SpecialUploadComplete'][] = 'FileAttach::onSpecialUploadComplete';
 		}
 		return true;
