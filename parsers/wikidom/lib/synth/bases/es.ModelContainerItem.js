@@ -26,7 +26,7 @@ es.ModelContainerItem.prototype.parent = function() {
  * Creates a view for this model
  */
 es.ModelContainerItem.prototype.createView = function() {
-	return new es.ViewContainerItem( this );
+	throw 'ModelContainerItem.createView not implemented in this subclass.';
 };
 
 /**

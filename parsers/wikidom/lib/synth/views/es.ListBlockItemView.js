@@ -2,7 +2,7 @@
  * Creates an es.ParagraphBlockView object.
  */
 es.ListBlockItemView = function( model ) {
-	es.BlockView.call( this, model, 'item' );
+	es.ViewContainerItem.call( this, model, 'listItem' );
 	this.contentView = new es.ContentView( this.$, this.model.content );
 };
 
@@ -34,4 +34,4 @@ es.ListBlockItemView.getRenderedLineIndex = function( offset ) {
 	return this.contentView.getLineIndex( position );
 };
 
-es.extend( es.ListBlockItemView, es.BlockView );
+es.extend( es.ListBlockItemView, es.ViewContainerItem );

@@ -17,13 +17,20 @@ es.ListBlockItemModel = function( content, styles ) {
 /* Methods */
 
 /**
+ * Creates a view for this model
+ */
+es.ListBlockItemModel.prototype.createView = function() {
+	return new es.ListBlockItemView( this );
+};
+
+/**
  * Gets the length of all content.
  * 
  * @method
  * @returns {Integer} Length of all content
  */
 es.ListBlockItemModel.prototype.getContentLength = function() {
-	return content.getLength();
+	return this.content.getLength();
 };
 
 /**
@@ -34,16 +41,6 @@ es.ListBlockItemModel.prototype.getContentLength = function() {
  */
 es.ListBlockItemModel.prototype.getPlainObject = function() {
 	return { 'content': this.content.getPlainObject(), 'styles': this.styles.slice( 0 ) };
-};
-
-/**
- * Gets a sum of cell content lengths.
- * 
- * @method
- * @returns {Integer}
- */
-es.ListBlockItemModel.prototype.getLength = function() {
-	return this.cells.getLength();
 };
 
 /* Inheritance */
