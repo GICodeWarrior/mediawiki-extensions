@@ -31,30 +31,36 @@ es.ViewContainer = function( containerModel, typeName, tagName ) {
 		var itemView = container.lookupItemView( itemModel );
 		if ( itemView ) {
 			container.views.splice( container.views.indexOf( itemView ), 1 );
-			itemView.$.remove();
+			itemView.$.detach();
 		}
 		return itemView;
 	}
 	this.containerModel.on( 'prepend', function( itemModel ) {
-		cleanupItemView( itemModel );
-		var itemView = itemModel.createView();
+		var itemView = cleanupItemView( itemModel );
+		if ( itemView === null ) {
+			itemView = itemModel.createView();
+		}
 		container.views.unshift( itemView );
 		container.$.prepend( itemView.$ );
 		container.emit( 'prepend', itemView );
 		container.emit( 'update' );
 	} );
 	this.containerModel.on( 'append', function( itemModel ) {
-		cleanupItemView( itemModel );
-		var itemView = itemModel.createView();
+		var itemView = cleanupItemView( itemModel );
+		if ( itemView === null ) {
+			itemView = itemModel.createView();
+		}
 		container.views.push( itemView );
 		container.$.append( itemView.$ );
 		container.emit( 'append', itemView );
 		container.emit( 'update' );
 	} );
 	this.containerModel.on( 'insertBefore', function( itemModel, beforeModel ) {
-		cleanupItemView( itemModel );
-		var itemView = itemModel.createView(),
-			beforeView = container.lookupItemView( beforeModel );
+		var beforeView = container.lookupItemView( beforeModel ),
+			itemView = cleanupItemView( itemModel );
+		if ( itemView === null ) {
+			itemView = itemModel.createView();
+		}
 		if ( beforeView ) {
 			container.views.splice( container.views.indexOf( beforeView ), 0, itemView );
 			itemView.$.insertBefore( beforeView.$ );
@@ -66,9 +72,11 @@ es.ViewContainer = function( containerModel, typeName, tagName ) {
 		container.emit( 'update' );
 	} );
 	this.containerModel.on( 'insertAfter', function( itemModel, afterModel ) {
-		cleanupItemView( itemModel );
-		var itemView = itemModel.createView(),
-			afterView = container.lookupItemView( afterModel );
+		var afterView = container.lookupItemView( afterModel ),
+			itemView = cleanupItemView( itemModel );
+		if ( itemView === null ) {
+			itemView = itemModel.createView();
+		}
 		if ( afterView ) {
 			container.views.splice( container.views.indexOf( afterView ) + 1, 0, itemView );
 			itemView.$.insertAfter( afterView.$ );

@@ -167,16 +167,25 @@ test( 'es.ViewContainer', function() {
 		modelItem2 = new es.ModelContainerItem(),
 		modelItem3 = new es.ModelContainerItem();
 	var viewContainer = new es.ViewContainer( modelContainer );
-	viewContainer.createItemView = function( itemModel ) {
-		return new es.ViewContainerItem( itemModel );
-	};
-	
+
 	// 
 	modelContainer.append( modelItem1 );
 	modelContainer.append( modelItem2 );
-	modelContainer.append( modelItem2 );
-	
+	modelContainer.append( modelItem3 );
+
 	equals( viewContainer.views.length, 3, 'es.ViewContainer' );
+
+	var viewContainerItem1 = viewContainer.views[0],
+		viewContainerItem2 = viewContainer.views[1],
+		viewContainerItem3 = viewContainer.views[2];
+
+	deepEqual(viewContainer.views, [viewContainerItem1, viewContainerItem2, viewContainerItem3]);
+	
+	modelContainer.insertBefore( modelItem3, modelItem1 );
+	
+	deepEqual(viewContainer.views, [viewContainerItem3, viewContainerItem1, viewContainerItem2]);
+	
+	
 } );
 
 function ContentStub( name, size ) {
