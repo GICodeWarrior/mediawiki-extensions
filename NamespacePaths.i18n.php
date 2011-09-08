@@ -72,9 +72,10 @@ $messages['nl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'namespacepaths-desc' => 'A përmëtt che ij përcors ëd le vos a sio mapà a jë spassi nominaj dle wiki. Për esempi: Mapé pagine com /help/Page nopà che /wiki/Help:Page.',
+	'namespacepaths-desc' => 'A përmët che ij përcors ëd le vos a sio butà an corëspondensa con jë spassi nominaj ëd la wiki. Për esempi: Fé corësponde dle pàgine com Agiut:A a/help/Pàgina nopà che /wiki/Agiut:Pàgina.',
 );
 
