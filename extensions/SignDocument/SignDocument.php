@@ -23,8 +23,6 @@ EOT;
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
-$wgExtensionFunctions[] = 'wfCreateSignatureLog';
-
 $wgExtensionCredits['specialpage'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'SignDocument',
@@ -52,20 +50,11 @@ $wgGroupPermissions['sigadmin']['sigadmin'] = true;
 $wgGroupPermissions['*']['createsigndocument'] = false;
 $wgGroupPermissions['sigadmin']['createsigndocument'] = true;
 
-/**
- * Create the Signature log.
- */
-function wfCreateSignatureLog() {
-	
-
-	# Add a new log type
-	global $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions;
-
-	$wgLogTypes[]                      = 'signature';
-	$wgLogNames['signature']           = 'signaturelogpage';
-	$wgLogHeaders['signature']         = 'signaturelogpagetext';
-	$wgLogActions['signature/sign']    = 'signaturelogentry';
-}
+# Add a new log type
+$wgLogTypes[]                      = 'signature';
+$wgLogNames['signature']           = 'signaturelogpage';
+$wgLogHeaders['signature']         = 'signaturelogpagetext';
+$wgLogActions['signature/sign']    = 'signaturelogentry';
 
 /**
  * Logs the addition of a signature to a document. If it's an anonymous user,
