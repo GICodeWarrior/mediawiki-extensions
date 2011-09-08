@@ -213,6 +213,7 @@ $messages['as'] = array(
  * @author Xuacu
  */
 $messages['ast'] = array(
+	'inlinecategorizer-desc' => 'Módulu JavaScript que permite camudar, amestar y desaniciar enllaces de categoríes direutamente dende una páxina',
 	'inlinecategorizer-add-category' => 'Amestar categoría',
 	'inlinecategorizer-add-category-submit' => 'Amestar',
 	'inlinecategorizer-add-category-summary' => 'Amestar la categoría "$1"',
