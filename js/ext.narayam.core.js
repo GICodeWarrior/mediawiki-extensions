@@ -82,7 +82,7 @@ $.narayam = new ( function() {
 		if ( pos <= n ) {
 			return str.substr( 0, pos );
 		} else {
-			return str.substr( pos - n, n);
+			return str.substr( pos - n, n );
 		}
 	}
 	
@@ -252,7 +252,7 @@ $.narayam = new ( function() {
 			
 			replaceString($this, startPos - input.length + 1, endPos, replacement);
 			// Calculate new position for caret to be set
-			var newCaretPosition = startPos - input.length + 1 + replacement.length
+			var newCaretPosition = startPos - input.length + 1 + replacement.length;
 			// Update caret postion
 			$this.textSelection( 'setSelection', {
 					'start': newCaretPosition,
@@ -307,10 +307,10 @@ $.narayam = new ( function() {
 			// We can use jQuery's .live() instead of .bind()
 			// So Narayam can work on elements added later to DOM too
 			$( inputs )
-				.live('keydown', onkeydown)
-				.live('keypress', onkeypress)
-				.live('focus', onfocus)
-				.live('blur', onblur);
+				.live( 'keydown', onkeydown )
+				.live( 'keypress', onkeypress )
+				.live( 'focus', onfocus )
+				.live( 'blur', onblur );
 		} else {
 			var $newInputs = $( inputs );
 			$inputs = $inputs.add( $newInputs );
@@ -465,23 +465,23 @@ $.narayam = new ( function() {
 		var haveSchemes = false;
 		// Build schemes option list
 		var $narayamMenuItems = $( '<ul/>' );
-		for ( scheme in schemes ) {
-			$input = $( '<input type="radio" name="narayam-input-method" class="narayam-scheme" />' );
+		for ( var scheme in schemes ) {
+			var $input = $( '<input type="radio" name="narayam-input-method" class="narayam-scheme" />' );
 			$input
 				.attr( 'id', 'narayam-' + scheme )
 				.val( scheme );
 				
-			$narayamMenuItemLabel=$( '<label />' )
-					.attr("for",'narayam-' + scheme)
-					.append( $input)
+			var $narayamMenuItemLabel = $( '<label />' )
+					.attr( 'for' ,'narayam-' + scheme )
+					.append( $input )
 					.append( mw.msg( schemes[scheme].namemsg ) );
 			
 			var $narayamMenuItem = $( '<li/>' )
 				.append( $input )
-				.append($narayamMenuItemLabel);
+				.append( $narayamMenuItemLabel );
 				
 			haveSchemes = true;
-			$narayamMenuItems.append($narayamMenuItem);
+			$narayamMenuItems.append( $narayamMenuItem );
 		}
 		
 		if ( !haveSchemes ) {
@@ -493,7 +493,7 @@ $.narayam = new ( function() {
 		// Event listener for scheme selection.
 		// There is a plan to add a feature that allow dynamic loading of schemes.
 		// So .live will be useful
-		$( '.narayam-scheme', $( '#narayam-menu-items > ul')[0] ).live( 'click', function(){
+		$( '.narayam-scheme', $( '#narayam-menu-items > ul')[0] ).live( 'click', function() {
 			that.setScheme( $(this).val() );
 		} );
 		
@@ -553,17 +553,16 @@ $.narayam = new ( function() {
 		// coming on top of everything.
 		// TODO: is there a better solution other than hiding it on hover?
 		if ( $.browser.msie ) { 
-			$( "#narayam-menu" ).hover(function(){
-				$( "#searchform" ).css({ visibility: "hidden" });
-			},function(){
-				$( "#searchform" ).css({ visibility: "visible" });
+			$( "#narayam-menu" ).hover( function() {
+				$( "#searchform" ).css( { visibility: "hidden" } );
+			}, function() {
+				$( "#searchform" ).css( { visibility: "visible" } );
 			});
 		}
 		
 		// Narayam controls setup complete, returns true
 		return true;
-	}
-	
+	};	
 } )();
 
 } )( jQuery );
