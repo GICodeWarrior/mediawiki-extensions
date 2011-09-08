@@ -544,11 +544,6 @@ $.narayam = new ( function() {
 		// If rtl, add to the right of top personal links. Else, to the left
 		var fn = $( 'body' ).hasClass( 'rtl' ) ? "append" : "prepend";
 		$( '#p-personal ul:first' )[fn]( $li );
-		// Build enable/disable checkbox and label
-		$checkbox = $( '<input type="checkbox" id="narayam-toggle" />' );
-		$checkbox
-			.attr( 'title', mw.msg( 'narayam-checkbox-tooltip' ) )
-			.click( that.toggle );
 		// Workaround for IE bug - activex components like input fields
 		// coming on top of everything.
 		// TODO: is there a better solution other than hiding it on hover?
