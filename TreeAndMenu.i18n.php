@@ -21,6 +21,14 @@ $messages['qqq'] = array(
 	'treeandmenu-desc' => '{{desc}}',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'treeandmenu-desc' => "Amiesta les funciones d'analís <code><nowiki>#tree</nowiki></code> y <code><nowiki>#menu</nowiki></code>, que contienen llistes con asteriscos qu'apaecerán como vistes d'árbol contraíbles o menús estenderexables.
+Les vistes d'árbol usen el menú d'árbol JavaScript [http://www.destroydrop.com/javascripts/tree dTree], y los menús estenderexables usen [http://www.htmldog.com/articles/suckerfish/dropdowns/ Son of Suckerfish]",
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Renessaince
  */
@@ -94,11 +102,12 @@ Hiervoor worden de componenten [http://www.destroydrop.com/javascripts/tree dTre
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'treeandmenu-desc' => "A gionta le funsion ëd parser <code><nowiki>#tree</nowiki></code> e <code><nowiki>#menu</nowiki></code> ch'a conten-o liste ëd boton da visualisé com erbo strenzibij o menù a tendin-a.
-J'erbo a dòvro ël menu d'erbo JavaScript [http://www.destroydrop.com/javascripts/tree dTree], e ij menu a tendin-a a dòvro [http://www.htmldog.com/articles/suckerfish/dropdowns/ Son of Suckerfish]",
+	'treeandmenu-desc' => "A gionta le funsion d'anàlisi <code><nowiki>#tree</nowiki></code> e <code><nowiki>#menu</nowiki></code> ch'a conten-o liste ëd boton da visualisé com erbo strenzìbij o liste a ridò.
+J'erbo a deuvro ël la lista për erbo JavaScript [http://www.destroydrop.com/javascripts/tree dTree], e le liste a ridò a deuvro [http://www.htmldog.com/articles/suckerfish/dropdowns/ Son of Suckerfish]",
 );
 
 /** Portuguese (Português)
