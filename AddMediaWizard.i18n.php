@@ -206,6 +206,7 @@ $messages['fa'] = array(
 
 /** Finnish (Suomi)
  * @author Centerlink
+ * @author Nike
  * @author Str4nd
  */
 $messages['fi'] = array(
@@ -235,6 +236,7 @@ $messages['frp'] = array(
  */
 $messages['gd'] = array(
 	'addmediawizard-desc' => "Draoidh cur ris nam meadhanan, 'ga leasachadh le Kaltura ann an com-pàirteachas le Fonndas Wikimedia",
+	'addmediawizard-loading' => "A' luchdadh draoidh cur ris nam meadhanan",
 );
 
 /** Galician (Galego)
