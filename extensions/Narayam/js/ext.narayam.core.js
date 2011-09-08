@@ -439,7 +439,10 @@ $.narayam = new ( function() {
 			$( '#narayam-' + savedScheme ).attr( 'checked', 'checked' );
 		} else {
 			//if no saved input scheme, select the first.
-			$( 'input.narayam-scheme:first' ).attr( 'checked', 'checked' );
+			var $firstScheme = $( 'input.narayam-scheme:first' );
+			that.setScheme( $firstScheme.val() );
+			$firstScheme.attr( 'checked', 'checked' );
+
 		}
 		var enabledCookie = $.cookie( 'narayam-enabled' );
 		if ( enabledCookie == '1' || ( mw.config.get( 'wgNarayamEnabledByDefault' ) && enabledCookie !== '0' ) ) {
