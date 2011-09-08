@@ -246,7 +246,7 @@ De huidige waardering van gebruikers wordt weergegeven als er al gewaardeerd is.
  */
 $messages['pms'] = array(
 	'ratings-desc' => 'A përmët a j\'utent ëd valuté "propietà" diferente dle pàgine',
-	'right-rate' => 'Vàluta na serta propietà ëd na pagina',
+	'right-rate' => 'Valuté na propietà ëd na pàgina',
 	'ratings-starsratings-desc' => "A smon un contròl ëd valutassion sempi an stèile an përmëttend a l'utent ëd valuté na serta propietà ëd na pàgina.
 Ël vot atual ëd l'utent a sarà visualisà inissialment quand ch'a l'ha già votà.",
 	'ratings-par-page' => "La pàgina ch'a l'é valutà.",
