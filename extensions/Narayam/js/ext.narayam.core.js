@@ -426,7 +426,7 @@ $.narayam = new ( function() {
 	 */
 	this.setup = function() {
 		// Build the menu
-		if ( !that.buildMenu() ){
+		if ( !that.buildMenu() ) {
 			// /buildMenu() returned false
 			// No need to proceed
 			return;
@@ -448,7 +448,7 @@ $.narayam = new ( function() {
 		else {
 			$( 'li#pt-narayam' ).addClass( 'narayam-inactive' );
 		}
-		// Renew the narayam-enabled cookie. naraym-scheme is renewed by setScheme()
+		// Renew the narayam-enabled cookie. narayam-scheme is renewed by setScheme()
 		if ( enabledCookie ) {
 			$.cookie( 'narayam-enabled', enabledCookie, {
 				'path': '/',
@@ -548,10 +548,10 @@ $.narayam = new ( function() {
 		// coming on top of everything.
 		// TODO: is there a better solution other than hiding it on hover?
 		if ( $.browser.msie ) { 
-			$( "#narayam-menu" ).hover( function() {
-				$( "#searchform" ).css( { visibility: "hidden" } );
+			$( '#narayam-menu' ).hover( function() {
+				$( '#searchform' ).css( 'visibility', 'hidden' );
 			}, function() {
-				$( "#searchform" ).css( { visibility: "visible" } );
+				$( '#searchform' ).css( 'visibility', 'visible' );
 			});
 		}
 		
