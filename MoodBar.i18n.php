@@ -1742,6 +1742,7 @@ Pentru mai multe informații, vizitați $1.',
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'moodbar-trigger-feedback' => 'Feedback sus a le cangiaminde',
 	'moodbar-trigger-share' => "Condivide l'esperienza toje",
 	'moodbar-trigger-editing' => 'Stoche a cange $1 ...',
 	'moodbar-close' => '(chiude)',
@@ -1762,7 +1763,9 @@ $messages['roa-tara'] = array(
 	'moodbar-loading-title' => 'Stoche a condivide...',
 	'moodbar-success-title' => 'Grazie!',
 	'moodbar-error-title' => "Ohhhhh! C'è scritte!",
+	'right-moodbar-view' => "Vide e esporte 'u feedbacl de MoodBar",
 	'moodbar-admin-title' => 'Feedback de MoodBar',
+	'moodbar-admin-intro' => "Sta pàgene te face vedè le feedback tune confermate cu 'a MoodBar.",
 	'moodbar-admin-empty' => 'Nisciune resultate',
 	'moodbar-header-id' => "ID d'u feedback",
 	'moodbar-header-timestamp' => 'Orarie de stambe',
