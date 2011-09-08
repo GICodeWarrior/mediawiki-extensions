@@ -79,6 +79,19 @@ $messages['gl'] = array(
 	'shoutbox-illegal-height' => 'A caixa de mensaxes curtas recibiu o parámetro de alto incorrecto "$1".',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'shoutbox-desc' => 'Adde un function analysator pro incorporar vostre proprie exclamatorio (shoutbox)',
+	'shoutbox-missing-params' => 'Manca un parametro requisite al exclamatorio.',
+	'shoutbox-bad-params' => 'Le exclamatorio recipeva un parametro incorrecte.',
+	'shoutbox-unparsable-param-string' => 'Le exclamatorio non poteva interpretar le texto de parametro "<tt>$1</tt>".',
+	'shoutbox-bad-id' => 'Le exclamatorio recipeva le ID incorrecte "<tt>$1</tt>".',
+	'shoutbox-illegal-width' => 'Le exclamatorio recipeva le parametro de latitude invalide "$1".',
+	'shoutbox-illegal-height' => 'Le exclamatorio recipeva le parametro de altitude invalide "$1".',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
