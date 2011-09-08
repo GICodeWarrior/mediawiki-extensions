@@ -125,14 +125,17 @@ div#narayam-menu a {
 }
 
 div#narayam-menu-items li.narayam-help-link a {
+	/* @embed */
 	background: url('../images/help.png') no-repeat scroll left center transparent;
 	padding-left: 15px;
 }
 
 li.narayam-active {
+	/* @embed */
 	background: url('../images/narayam-active.png') no-repeat scroll left top transparent;
 }
 
 li.narayam-inactive {
+	/* @embed */
 	background: url('../images/narayam-inactive.png') no-repeat scroll left top transparent;
 }
