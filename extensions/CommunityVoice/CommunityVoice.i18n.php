@@ -883,6 +883,8 @@ $messages['roa-tara'] = array(
 	'communityvoice-ratings-scale-status-sending' => 'Stoche a manne...',
 	'communityvoice-ratings-scale-status-error' => 'Errore de invie!',
 	'communityvoice-ratings-scale-status-thanks' => 'Grazie pu vote!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|vote|vote}} de genere)',
+	'communityvoice-ratings-error-no-category' => "Attribute de categorije mangande jndr'à 'u tag de vote.",
 	'communityvoice-ratings-error-no-title' => "Titele attribbuite mangande jndr'ô tag de rating.",
 );
 

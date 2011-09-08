@@ -138,6 +138,7 @@ $messages['cs'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Melancholie
  */
 $messages['de'] = array(
@@ -145,7 +146,7 @@ $messages['de'] = array(
 	'logentry-parserhook-desc' => 'Diese Tag-Erweiterung bietet ein Formular zur Anhängung/Voranstellung in Logbuchseiten',
 	'logentry-specialpage-desc' => 'Diese Tag-Erweiterung bietet die Aufbereitung für Anhängungen an Logbuchseiten',
 	'logentry' => 'Logbucheintrag',
-	'logentry-invalidpage' => 'Ungültige Seite',
+	'logentry-invalidpage' => 'Ungültige Seite: $1',
 	'logentry-invalidtoken' => 'Ungültiges Token',
 );
 
@@ -238,7 +239,7 @@ $messages['fr'] = array(
 $messages['frp'] = array(
 	'logentry-append' => 'Apondre',
 	'logentry' => 'Entrâ du jornal',
-	'logentry-invalidpage' => 'Pâge fôssa',
+	'logentry-invalidpage' => 'Pâge fôssa : $1',
 	'logentry-invalidtoken' => 'Prêsa fôssa',
 );
 
@@ -250,7 +251,7 @@ $messages['gl'] = array(
 	'logentry-parserhook-desc' => 'Esta extensión proporciona un formulario para anexar/prefixar ás páxinas de rexistros',
 	'logentry-specialpage-desc' => 'Esta extensión proporciona un proceso para anexar ás páxinas de rexistros',
 	'logentry' => 'Entrada do rexistro',
-	'logentry-invalidpage' => 'Páxina inválida',
+	'logentry-invalidpage' => 'Páxina inválida: $1',
 	'logentry-invalidtoken' => 'Ficha inválida',
 );
 
@@ -313,7 +314,7 @@ $messages['ia'] = array(
 	'logentry-parserhook-desc' => 'Iste extension adde un etiquetta que provide un formulario pro adjunger/anteponer texto a paginas de registro',
 	'logentry-specialpage-desc' => 'Iste extension adde un etiquetta que provide de processamento pro adjunger texto a paginas de registro',
 	'logentry' => 'Entrata in registro',
-	'logentry-invalidpage' => 'Pagina invalide',
+	'logentry-invalidpage' => 'Pagina invalide: $1',
 	'logentry-invalidtoken' => 'Indicio invalide',
 );
 
@@ -389,7 +390,7 @@ $messages['mk'] = array(
 	'logentry-parserhook-desc' => 'Оваа ознака-додаток дава образец за додавање на записи на почетокот или крајот на дневнички страници',
 	'logentry-specialpage-desc' => 'Оваа ознака-додаток овозможува обработка за придодавање на дневнички страници',
 	'logentry' => 'СтавкаВоДневникот',
-	'logentry-invalidpage' => 'Неправилна страница',
+	'logentry-invalidpage' => 'Неважечка страница: $1',
 	'logentry-invalidtoken' => 'Неправилен жетон',
 );
 
@@ -468,7 +469,7 @@ $messages['pms'] = array(
 	'logentry-parserhook-desc' => 'Sta estension-sì dël tag a da na forma për gionté a fin/inissi dle pàgine dij registr',
 	'logentry-specialpage-desc' => 'Sta estension-sì dël tag a da un process për gionté a le pàgine dij registr',
 	'logentry' => 'LogEntry',
-	'logentry-invalidpage' => 'Pàgina pa bon-a',
+	'logentry-invalidpage' => 'Pàgina pa bon-a: $1',
 	'logentry-invalidtoken' => 'Token pa bon',
 );
 
@@ -519,7 +520,7 @@ $messages['roa-tara'] = array(
 	'logentry-parserhook-desc' => "St'enstenzione d'u tag consente 'nu module pe appennere/mettere nnande a le pàggene de le archivije",
 	'logentry-specialpage-desc' => "St'enstenzione d'u tag consente 'u processe pe appennere a le pàggene de le archivije",
 	'logentry' => 'LogEntry',
-	'logentry-invalidpage' => 'Pàgene invalide',
+	'logentry-invalidpage' => 'Pàgene invalide: $1',
 	'logentry-invalidtoken' => 'Token invalide',
 );
 

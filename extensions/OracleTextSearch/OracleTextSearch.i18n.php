@@ -109,6 +109,15 @@ $messages['nl'] = array(
 	'oracletextsearch-desc' => 'Inhoud en metadata doorzoeken voor geüploade bestanden via Oracle Textindexering',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Borichèt
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'oracletextsearch' => 'OracleTextSearch',
+	'oracletextsearch-desc' => "Sërché dij contnù/metadat dj'archivi carià an dovrand l'indesassion Oracle Text",
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

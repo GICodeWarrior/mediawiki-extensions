@@ -134,7 +134,18 @@ $messages['he'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'signupapi-desc' => 'Remove le texto concernente le creation de contos de Special:UserLogin & adde un API pro le creation de contos',
+	'signupapi-desc' => 'Remove le texto concernente le creation de contos del [[Special:UserLogin|pagina pro aperir session]] e adde un API pro le creation de contos',
+	'signupapi-ok' => 'OK',
+	'signupapi-noname' => 'Nulle nomine de usator specificate.',
+	'signupapi-userexists' => 'Usator existe',
+	'signupapi-enterpassword' => 'Es necessari specificar un contrasigno',
+	'signupapi-passwordtooshort' => 'Contrasigno troppo curte.',
+	'signupapi-weak' => 'Debile',
+	'signupapi-medium' => 'Medie',
+	'signupapi-strong' => 'Forte',
+	'signupapi-badretype' => 'Le duo contrasignos que tu scribeva non es identic.',
+	'signupapi-passwordsmatch' => 'Le contrasignos es identic',
+	'signupapi-invalidemailaddress' => 'Le adresse de e-mail es invalide',
 );
 
 /** Macedonian (Македонски)

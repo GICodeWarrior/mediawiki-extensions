@@ -12328,6 +12328,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Alexsh
+ * @author Anakmalaysia
  * @author Frankou
  * @author Liangent
  * @author Mark85296341
@@ -12475,7 +12476,7 @@ $messages['zh-hant'] = array(
 	'configure-throttle-action-move' => '移動',
 	'configure-throttle-action-rollback' => '回退',
 	'configure-throttle-action-mailpassword' => '發送密碼提醒',
-	'configure-throttle-action-emailuser' => '發送郵件',
+	'configure-throttle-action-emailuser' => '傳送電郵',
 	'configure-throttle-group-anon' => '所有匿名用戶',
 	'configure-throttle-group-user' => '每用戶帳戶',
 	'configure-throttle-group-newbie' => '每新用戶帳戶',

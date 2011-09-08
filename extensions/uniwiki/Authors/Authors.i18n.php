@@ -70,6 +70,15 @@ $messages['arz'] = array(
 	'authors_anonymous' => 'مش معروف',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'authors-desc' => 'Amiesta una llista de collaboradores a les páxines',
+	'authors_authors' => 'Autores',
+	'authors_anonymous' => 'Anónimu',
+);
+
 /** Belarusian (Беларуская)
  * @author Тест
  */

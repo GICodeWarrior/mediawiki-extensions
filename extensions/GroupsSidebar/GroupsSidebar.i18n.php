@@ -18,6 +18,13 @@ $messages['ar'] = array(
 	'groupssidebar-desc' => 'هذا الامتداد يوفر لإداريي الموقع القدرة على تضمين عناصر الشريط الجانبي لمجموعات مستخدم محددة',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'groupssidebar-desc' => "Esta estensión permite que los alministradores del sitiu puedan amestar elementos de la barra llateral pa grupos específicos d'usuarios",
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */

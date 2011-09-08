@@ -418,6 +418,7 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'variablepage' => 'VariablePage',
 	'variablepage-navlink_text' => 'Done',
 );
 
@@ -527,10 +528,12 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Anakmalaysia
  * @author Mark85296341
  */
 $messages['zh-hant'] = array(
 	'variablepage' => 'VariablePage',
 	'variablepage-navlink_text' => '捐助',
+	'variablepage-desc' => '輕變頁面重定向',
 );
 

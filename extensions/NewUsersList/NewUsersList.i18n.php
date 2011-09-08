@@ -80,10 +80,11 @@ $messages['nl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'newuserslist-desc' => "A gionta la tichëtta ëd parser <tt>&lt;newusers&gt;</tt> për trové la lista dj'utent neuv e ij sò avatar",
+	'newuserslist-desc' => "A gionta la tichëtta ëd l'analisator <tt>&lt;newusers&gt;</tt> për trové la lista dj'utent neuv e ij sò avatar",
 );
 
 /** Russian (Русский)

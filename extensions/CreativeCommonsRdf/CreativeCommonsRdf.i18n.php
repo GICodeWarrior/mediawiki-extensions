@@ -150,6 +150,13 @@ $messages['pt-br'] = array(
 	'creativecommonsrdf-desc' => 'Metadados RDF do Creative Commons',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'creativecommonsrdf-desc' => 'CreativeCommons RDF-metadata',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

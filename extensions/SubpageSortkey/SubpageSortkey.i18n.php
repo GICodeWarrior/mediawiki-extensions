@@ -53,9 +53,10 @@ $messages['nl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'subpagesortkey-desc' => "Cangé la ciav d'ordinament predefinìa ëd na pagina an manera ch'a sia basà an sël sò nòm ëd sotpagina nopà che an sël nòm anter",
+	'subpagesortkey-desc' => "Cangé la ciav d'ordinament predefinìa ëd na pàgina an manera ch'a sia basà an sël sò nòm ëd sot-pàgina nopà che an sël nòm antregh",
 );
 

@@ -544,6 +544,7 @@ $messages['be-tarask'] = array(
 	'qp_results_short_interpretation' => 'Кароткая інтэрпрэтацыя: $1',
 	'qp_results_long_interpretation' => 'Доўгая інтэрпрэтацыя: $1',
 	'qp_poll_has_no_interpretation' => 'Шаблён, які выкарыстоўваецца для інтэрпрэтацыі вынікаў апытаньня, ня вызначаны ў загалоўку апытаньня.',
+	'qp_interpetation_wrong_answer' => 'Няслушны адказ',
 	'qp_export_to_xls' => 'Экспартаваць статыстыку ў фармат XLS',
 	'qp_voices_to_xls' => 'Экспартаваць галасы ў фармат XLS',
 	'qp_users_answered_questions' => 'На пытаньні {{PLURAL:$1|адказаў $1 удзельнік|адказалі $1 удзельнікі|адказалі $1 удзельнікаў}}',
@@ -581,6 +582,8 @@ $messages['be-tarask'] = array(
 	'qp_error_too_few_spans' => 'Кожная кляса катэгорыі патрабуе хаця б два варыянты адказу',
 	'qp_error_no_answer' => 'Няма адказу на пытаньне',
 	'qp_error_unique' => 'Пытаньне тыпу unique() мае больш адказаў чым гэта магчыма: немагчыма скончыць',
+	'qp_error_no_more_attempts' => 'Вы дасягнулі максымальнай колькасьці спробаў адказу на гэтае апытаньне.',
+	'qp_error_interpretation_no_return' => 'Скрыпт інтэрпрэтацыі не вярнуў вынік.',
 );
 
 /** Bengali (বাংলা)
@@ -1166,6 +1169,7 @@ $messages['gl'] = array(
 	'qp_result_error' => 'Erro de sintaxe',
 	'qp_vote_button' => 'Votar',
 	'qp_vote_again_button' => 'Cambiar o seu voto',
+	'qp_submit_attempts_left' => '$1 {{PLURAL:$1|intento restante|intentos restantes}}',
 	'qp_polls_list' => 'Lista de todas as enquisas',
 	'qp_users_list' => 'Lista de todos os usuarios',
 	'qp_browse_to_poll' => 'Navegar ata $1',
@@ -1184,6 +1188,11 @@ $messages['gl'] = array(
 	'qp_results_line_qupl' => 'Páxina "$1", enquisa "$2": $3',
 	'qp_results_line_qpl' => 'Páxina "$1", enquisa "$2": $3, $4, $5, $6',
 	'qp_header_line_qpul' => '$1 [ Páxina "$2", enquisa "$3" ]',
+	'qp_results_submit_attempts' => 'Intentos de envío: $1',
+	'qp_results_interpretation_header' => 'Interpretación da resposta',
+	'qp_results_short_interpretation' => 'Interpretación curta: $1',
+	'qp_results_long_interpretation' => 'Interpretación longa: $1',
+	'qp_poll_has_no_interpretation' => 'Esta enquisa non ten ningún modelo de interpretación definido na súa cabeceira.',
 	'qp_interpetation_wrong_answer' => 'Resposta incorrecta',
 	'qp_export_to_xls' => 'Exportar as estatísticas en formato XLS',
 	'qp_voices_to_xls' => 'Exportar as voces en formato XLS',

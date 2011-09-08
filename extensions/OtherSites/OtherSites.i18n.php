@@ -47,6 +47,14 @@ $messages['arz'] = array(
 	'othersites-desc' => 'ينقل وصلات الإنترويكى غير وصلات اللغة إلى مكانها الخاص',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'othersites' => 'Otros sitios',
+	'othersites-desc' => 'Pon los enllaces interwiki distintos de los enllaces de llingua nún cuadru propiu',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */

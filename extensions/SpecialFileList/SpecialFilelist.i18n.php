@@ -75,8 +75,14 @@ $messages['arz'] = array(
 	'filelist-image-desc' => 'وصف',
 );
 
-/** Asturian (Asturianu) */
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
 $messages['ast'] = array(
+	'filelist' => 'Llista de ficheros',
+	'filelist-desc' => '[[Special:Filelist|Páxina especial]] pa llistar los ficheros xubíos',
+	'filelist-show-list' => 'Amosar la llista',
+	'filelist-show-gallery' => 'Amosar galería',
 	'filelist-image-desc' => 'desc',
 );
 

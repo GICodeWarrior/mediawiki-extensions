@@ -132,10 +132,11 @@ $messages['nl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'resumableupload-desc' => 'Apògg resumìbil ëd cariagi',
+	'resumableupload-desc' => "Manteniment ëd cariament ch'a peul esse arpijà",
 );
 
 /** Portuguese (Português)
