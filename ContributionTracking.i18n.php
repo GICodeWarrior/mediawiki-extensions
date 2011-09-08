@@ -1048,6 +1048,7 @@ $messages['ro'] = array(
 $messages['roa-tara'] = array(
 	'contrib-tracking-error' => 'Errore',
 	'contrib-tracking-error-text' => 'Module de sottomissione invalide',
+	'contrib-tracking-submitting' => "Stoche a conferme 'u processe de pajamende...",
 	'contrib-tracking-button' => 'Condinue',
 	'contrib-tracking-item-name-onetime' => "Donazione de 'na vote",
 	'contrib-tracking-item-name-recurring' => "Ste arrive 'a donazzione mensile",
