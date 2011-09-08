@@ -531,22 +531,22 @@ $messages['gan-hant'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'editmessages-desc' => '[[Special:EditMessages|Edición beseada na web]] dun gran númeor de ficheiros Messages*.php',
-	'editmessages' => 'Editar mensaxes',
+	'editmessages-desc' => '[[Special:EditMessages|Edición baseada na web]] dun gran número de ficheiros Messages*.php',
+	'editmessages' => 'Editar as mensaxes',
 	'editmsg-target' => 'Obxectivo da mensaxe:',
 	'editmsg-search' => 'Procurar',
-	'editmsg-show-list' => 'Amosando os valores da mensaxe chamada "$1"',
-	'editmsg-get-patch' => 'Xerar parche',
+	'editmsg-show-list' => 'Mostrando os valores da mensaxe chamada "$1"',
+	'editmsg-get-patch' => 'Xerar un parche',
 	'editmsg-new-search' => 'Nova busca',
-	'editmsg-warning-parse1' => '* O nome da mensaxe regex non coincide: $1',
+	'editmsg-warning-parse1' => '* A expresión regular do nome da mensaxe non coincide: $1',
 	'editmsg-warning-parse2' => '* Agárdase un carácter de cita (") despois da frecha: $1',
 	'editmsg-warning-parse3' => '* Non se atopou a corda de valor final: $1',
-	'editmsg-warning-file' => '* Foron atopados erros de lectura de ficheiros {{PLURAL:$2|na seguinte lingua|nas seguintes linguas}}: $1',
+	'editmsg-warning-file' => '* Atopáronse erros de lectura de ficheiros {{PLURAL:$2|na seguinte lingua|nas seguintes linguas}}: $1',
 	'editmsg-warning-mismatch' => '* O texto orixinal non ten o valor agardado {{PLURAL:$2|na seguinte lingua|nas seguintes linguas}}: $1',
 	'editmsg-apply-patch' => 'Aplicar o parche',
 	'editmsg-no-patch' => 'Non pode executar o comando "parche"',
-	'editmsg-patch-failed' => 'O parche fallou co status de saída $1',
-	'editmsg-patch-success' => 'Parcheado exitoso.',
+	'editmsg-patch-failed' => 'O parche fallou co estado de saída $1',
+	'editmsg-patch-success' => 'Parche aplicado correctamente.',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
