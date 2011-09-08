@@ -38,6 +38,13 @@ $messages['arz'] = array(
 	'gotocategory-desc' => "يتحقق من مدخلات البحث فى نطاق Category: لوظيفة اذهب 'اقفز إلى الصفحة'",
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'gotocategory-desc' => 'Comprueba los términos de gueta nel espaciu de nomes «Categoría:» pa la función «saltar a páxina» de Dir',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
