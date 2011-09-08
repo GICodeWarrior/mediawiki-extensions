@@ -2,7 +2,7 @@
  * Creates an es.ParagraphBlockView object.
  */
 es.ListBlockView = function( model ) {
-	es.ViewContainer.call( this, model, 'items' );
+	es.ViewContainer.call( this, model, 'list' );
 	es.BlockView.call( this, model, 'list' );
 };
 

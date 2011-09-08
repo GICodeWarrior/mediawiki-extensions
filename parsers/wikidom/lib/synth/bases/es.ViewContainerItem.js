@@ -17,9 +17,11 @@ es.ViewContainerItem = function( model, typeName, tagName ) {
 	if ( typeof tagName !== 'string' ) {
 		tagName = 'div';
 	}
-	this.$ = $( '<' + tagName + '/>' )
-		.addClass( 'editSurface-' + typeName )
-		.data( typeName, this );
+	
+	if ( !this.$ ) {
+		this.$ = $( '<' + tagName + '/>' );
+	}
+	this.$.addClass( 'editSurface-' + typeName ).data( typeName, this );
 };
 
 es.ViewContainerItem.prototype.getModel = function() {

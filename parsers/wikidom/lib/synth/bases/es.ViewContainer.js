@@ -26,9 +26,10 @@ es.ViewContainer = function( containerModel, typeName, tagName ) {
 	if ( typeof tagName !== 'string' ) {
 		tagName = 'div';
 	}
-	this.$ = $( '<' + tagName + '/>' )
-		.addClass( 'editSurface-' + typeName )
-		.data( typeName, this );
+	if ( !this.$ ) {
+		this.$ = $( '<' + tagName + '/>' );
+	}
+	this.$.addClass( 'editSurface-' + typeName ).data( typeName, this );
 	var container = this;
 	function recycleItemView( itemModel, autoCreate ) {
 		var itemView = container.lookupItemView( itemModel );
