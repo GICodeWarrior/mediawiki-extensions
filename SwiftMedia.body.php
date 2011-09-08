@@ -135,7 +135,7 @@ class SwiftFile extends LocalFile {
 	/**
 	 * class-specific transform (from an original into a thumb).
 	 */
-	function maybeDoTransform( $thumbName, $thumbUrl, $params ) {
+	function maybeDoTransform( $thumbName, $thumbUrl, $params, $flags = 0 ) {
 		global $wgIgnoreImageErrors, $wgThumbnailEpoch, $wgTmpDirectory;
 
 		// get a temporary place to put the original.
