@@ -24,7 +24,7 @@ es.ContentModel = function( data, attributes ) {
  * @param text {String} Text to convert
  * @returns {es.ContentModel} Content object containing converted text
  */
-es.Content.newFromText = function( text ) {
+es.ContentModel.newFromText = function( text ) {
 	return new es.ContentModel( text.split('') );
 };
 
@@ -73,7 +73,7 @@ es.ContentModel.newFromPlainObject = function( obj ) {
 		attributes = !$.isPlainObject( obj.attributes ) ? {} : $.extend( true, {}, obj.attributes );
 		// Render annotations
 		if ( $.isArray( obj.annotations ) ) {
-			$.each( obj.annotations, function( src ) {
+			$.each( obj.annotations, function( i, src ) {
 				// Build simplified annotation object
 				var dst = { 'type': src.type };
 				if ( 'data' in src ) {
@@ -108,7 +108,7 @@ es.ContentModel.newFromPlainObject = function( obj ) {
  * @method
  * @returns {Integer} Length of content data
  */
-es.Content.prototype.getLength = function() {
+es.ContentModel.prototype.getLength = function() {
 	return this.data.length; 
 };
 
@@ -119,7 +119,7 @@ es.Content.prototype.getLength = function() {
  * @param name {String} Name of attribute to get value for
  * @returns {Mixed} Value of attribute, or undefined if attribute does not exist
  */
-es.Content.prototype.getAttribute = function( name ) {
+es.ContentModel.prototype.getAttribute = function( name ) {
 	return this.attributes[name];
 };
 
@@ -130,7 +130,7 @@ es.Content.prototype.getAttribute = function( name ) {
  * @param name {String} Name of attribute to set value for
  * @param value {Mixed} Value to set attribute to
  */
-es.Content.prototype.setAttribute = function( name, value ) {
+es.ContentModel.prototype.setAttribute = function( name, value ) {
 	this.attributes[name] = value;
 };
 
@@ -150,7 +150,7 @@ es.Content.prototype.setAttribute = function( name, value ) {
  * @param render {Boolean} If annotations should have any influence on output
  * @returns {String} Text within given range
  */
-es.Content.prototype.getText = function( range, render ) {
+es.ContentModel.prototype.getText = function( range, render ) {
 	if ( !range ) {
 		range = new es.Range( 0, this.data.length );
 	} else {
@@ -175,7 +175,7 @@ es.Content.prototype.getText = function( range, render ) {
  * @param range {es.Range} Range of content to get
  * @returns {es.ContentModel} Content object containing data within range
  */
-es.Content.prototype.getContent = function( range ) {
+es.ContentModel.prototype.getContent = function( range ) {
 	if ( !range ) {
 		range = new es.Range( 0, this.data.length );
 	}
@@ -190,7 +190,7 @@ es.Content.prototype.getContent = function( range ) {
  * @param range {es.Range} Range of data to get
  * @returns {Array} Array of plain text and/or annotated characters within range
  */
-es.Content.prototype.getData = function( range ) {
+es.ContentModel.prototype.getData = function( range ) {
 	if ( !range ) {
 		range = new es.Range( 0, this.data.length );
 	}
@@ -205,7 +205,7 @@ es.Content.prototype.getData = function( range ) {
  * @param range {es.Range} Range of content to check
  * @returns {Boolean} If there's any floating objects in range
  */
-es.Content.prototype.hasFloatingObjects = function( range ) {
+es.ContentModel.prototype.hasFloatingObjects = function( range ) {
 	if ( !range ) {
 		range = new es.Range( 0, this.data.length );
 	}
@@ -213,7 +213,7 @@ es.Content.prototype.hasFloatingObjects = function( range ) {
 	for ( var i = 0; i < this.data.length; i++ ) {
 		if ( this.data[i].length > 1 ) {
 			for ( var j = 1; j < this.data[i].length; j++ ) {
-				var isFloating = es.Content.annotationRenderers[this.data[i][j].type].float;
+				var isFloating = es.ContentModel.annotationRenderers[this.data[i][j].type].float;
 				if ( isFloating && typeof isFloating === 'function' ) {
 					isFloating = isFloating( this.data[i][j].data );
 				}
@@ -233,7 +233,7 @@ es.Content.prototype.hasFloatingObjects = function( range ) {
  * @param offset {Integer} Offset to find word nearest to
  * @returns {Object} Range object of boundaries
  */
-es.Content.prototype.getWordBoundaries = function( offset ) {
+es.ContentModel.prototype.getWordBoundaries = function( offset ) {
 	if ( offset < 0 || offset > this.data.length ) {
 		throw 'Out of bounds error. Offset expected to be >= 0 and <= to ' + this.data.length;
 	}
@@ -264,7 +264,7 @@ es.Content.prototype.getWordBoundaries = function( offset ) {
  * @method
  * @returns {Object}
  */
-es.Content.prototype.getPlainObject = function() {
+es.ContentModel.prototype.getPlainObject = function() {
 	var stack = [];
 	// Text and annotations
 	function start( offset, annotation ) {
@@ -350,7 +350,7 @@ es.Content.prototype.getPlainObject = function() {
  * @param strict {Boolean} Optionally compare annotation data as well as type
  * @returns {Array} List of indexes of covered characters within content data
  */
-es.Content.prototype.coverageOfAnnotation = function( range, annotation, strict ) {
+es.ContentModel.prototype.coverageOfAnnotation = function( range, annotation, strict ) {
 	var coverage = [];
 	var i, index;
 	for ( i = range.start; i < range.end; i++ ) {
@@ -383,7 +383,7 @@ es.Content.prototype.coverageOfAnnotation = function( range, annotation, strict 
  * @param strict {Boolean} Optionally compare annotation data as well as type
  * @returns {Integer} Index of first instance of annotation in content
  */
-es.Content.prototype.indexOfAnnotation = function( offset, annotation, strict ) {
+es.ContentModel.prototype.indexOfAnnotation = function( offset, annotation, strict ) {
 	var annotatedChar = this.data[offset];
 	var i;
 	if ( typeof annotatedChar !== 'string' ) {
@@ -413,7 +413,7 @@ es.Content.prototype.indexOfAnnotation = function( offset, annotation, strict ) 
  * @emits "insert" with offset and content data properties
  * @emits "change" with type:"insert" data property
  */
-es.Content.prototype.insert = function( offset, content, autoAnnotate ) {
+es.ContentModel.prototype.insert = function( offset, content, autoAnnotate ) {
 	if ( autoAnnotate ) {
 		// TODO: Prefer to not take annotations from a neighbor that's a space character
 		var neighbor = this.data[Math.max( offset - 1, 0 )];
@@ -444,7 +444,7 @@ es.Content.prototype.insert = function( offset, content, autoAnnotate ) {
  * @emits "remove" with range data property
  * @emits "change" with type:"remove" data property
  */
-es.Content.prototype.remove = function( range ) {
+es.ContentModel.prototype.remove = function( range ) {
 	range.normalize();
 	this.data.splice( range.start, range.getLength() );
 	this.emit( 'remove', {
@@ -460,7 +460,7 @@ es.Content.prototype.remove = function( range ) {
  * @emits "clear"
  * @emits "change" with type:"clear" data property
  */
-es.Content.prototype.clear = function() {
+es.ContentModel.prototype.clear = function() {
 	this.data = [];
 	this.emit( 'clear' );
 	this.emit( 'change', { 'type': 'clear' } );
@@ -482,7 +482,7 @@ es.Content.prototype.clear = function() {
  * @emits "annotate" with method, annotation and range data properties
  * @emits "change" with type:"annotate" data property
  */
-es.Content.prototype.annotate = function( method, annotation, range ) {
+es.ContentModel.prototype.annotate = function( method, annotation, range ) {
 	// Support calling without a range argument, using the full content range as default
 	if ( !range ) {
 		range = new es.Range( 0, this.data.length );

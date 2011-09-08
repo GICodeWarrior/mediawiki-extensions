@@ -16,6 +16,9 @@
 es.ViewContainer = function( containerModel, typeName, tagName ) {
 	es.EventEmitter.call( this );
 	this.containerModel = containerModel;
+	if ( !this.containerModel ) {
+		return;
+	}
 	this.views = [];
 	if ( typeof typeName !== 'string' ) {
 		typeName = 'viewContainer';
@@ -86,7 +89,9 @@ es.ViewContainer = function( containerModel, typeName, tagName ) {
 	// Auto-add views for existing items
 	var itemModels = this.containerModel.all();
 	for ( var i = 0; i < itemModels.length; i++ ) {
-		this.views.push( itemModels[i].createView() );
+		var itemView = itemModels[i].createView();
+		this.views.push( itemView );
+		this.$.append( itemView.$ );
 	}
 };
 

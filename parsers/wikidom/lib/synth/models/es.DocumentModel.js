@@ -9,9 +9,8 @@
  * @property attributes {Object}
  */
 es.DocumentModel = function( blocks, attributes ) {
-	es.EventEmitter.call( this );
-	es.Container.call( this, 'blocks' );
-	this.blocks = new es.ContentSeries( blocks || [] );
+	es.ModelContainer.call( this, 'blocks' );
+	this.blocks = new es.AggregateArray( blocks || [] );
 	this.attributes = attributes || {};
 };
 
@@ -61,5 +60,4 @@ es.DocumentModel.prototype.getContentLength = function() {
 	return this.blocks.getContentLength();
 };
 
-es.extend( es.DocumentModel, es.EventEmitter );
-es.extend( es.DocumentModel, es.Container );
+es.extend( es.DocumentModel, es.ModelContainer );

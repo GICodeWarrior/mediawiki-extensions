@@ -21,7 +21,7 @@ es.ParagraphBlockModel = function( content ) {
  * @param obj {Object}
  */
 es.ParagraphBlockModel.newFromPlainObject = function( obj ) {
-	return new es.ParagraphBlockModel( es.ContentModel.newFromPlainObject( obj ) );
+	return new es.ParagraphBlockModel( es.ContentModel.newFromPlainObject( obj.content ) );
 };
 
 /* Methods */
@@ -54,7 +54,7 @@ es.ParagraphBlockModel.prototype.getPlainObject = function() {
 };
 
 // Register constructor
-es.BlockModel.constructors['paragraph'] = es.ParagraphBlockModel;
+es.BlockModel.constructors['paragraph'] = es.ParagraphBlockModel.newFromPlainObject;
 
 /* Inheritance */
 

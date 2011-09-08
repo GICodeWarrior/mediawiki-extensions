@@ -3,13 +3,13 @@
  * 
  * @class
  * @constructor
- * @param doc {es.DocumentModel}
+ * @param documentModel {es.DocumentModel}
  * @param attributes {Object}
- * @property document {es.DocumentModel}
+ * @property documentModel {es.DocumentModel}
  * @property attributes {Object}
  */
-es.TableBlockCellModel = function( doc, attributes ) {
-	this.document = doc || null;
+es.TableBlockCellModel = function( documentModel, attributes ) {
+	this.documentModel = documentModel || null;
 	this.attributes = attributes || {};
 };
 
@@ -49,8 +49,8 @@ es.TableBlockRowModel.prototype.getContentLength = function() {
  */
 es.TableBlockRowModel.prototype.getPlainObject = function() {
 	var obj = {};
-	if ( this.document ) {
-		obj.document = this.document;
+	if ( this.documentModel ) {
+		obj.document = this.documentModel;
 	}
 	if ( !$.isEmptyObject( this.attributes ) ) {
 		obj.attributes = $.extend( true, {}, this.attributes );

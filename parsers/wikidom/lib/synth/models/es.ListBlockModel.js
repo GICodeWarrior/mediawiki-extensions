@@ -34,7 +34,7 @@ es.ListBlockModel.flattenPlainObject = function( obj, styles ) {
 	styles.push( obj.style || 'bullet' );
 	var items = [];
 	if ( $.isArray( obj.items ) ) {
-		$.each( obj.items, function( item ) {
+		$.each( obj.items, function( i, item ) {
 			if ( $.isPlainObject( item.content ) ) {
 				items.push(
 					new es.ListBlockItemModel(
@@ -44,7 +44,7 @@ es.ListBlockModel.flattenPlainObject = function( obj, styles ) {
 				);
 			}
 			if ( $.isArray( item.lists ) ) {
-				$.each( item.lists, function( list ) {
+				$.each( item.lists, function( i, list ) {
 					items = items.concat( es.ListBlockList.flattenList( list, styles ) );
 				} );
 			}

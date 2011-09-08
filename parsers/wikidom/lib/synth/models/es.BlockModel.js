@@ -10,7 +10,7 @@
  */
 es.BlockModel = function( traits ) {
 	es.EventEmitter.call( this );
-	es.ContainerItem.call( this, 'document' );
+	es.ModelContainerItem.call( this, 'document' );
 	this.traits = traits || [];
 };
 
@@ -37,7 +37,7 @@ es.BlockModel.constructors = {};
  */
 es.BlockModel.newFromPlainObject = function( obj ) {
 	if ( obj.type in es.BlockModel.constructors ) {
-		return new es.BlockModel.constructors[obj.type]( obj );
+		return es.BlockModel.constructors[obj.type]( obj );
 	}
 	return null;
 };
@@ -174,4 +174,4 @@ es.BlockModel.prototype.getPlainObject = function() {
 };
 
 es.extend( es.BlockModel, es.EventEmitter );
-es.extend( es.BlockModel, es.ContainerItem );
+es.extend( es.BlockModel, es.ModelContainerItem );
