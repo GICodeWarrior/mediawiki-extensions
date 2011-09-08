@@ -10,7 +10,7 @@ temp_html = "/tmp/wikipedia.html"
 rss_title = "Wikipedia watchlist"
 rss_link = "http://en.wikipedia.org"
 host = "http://ersch.wikimedia.org/"
-host = "http://www.ra-tes.org/phase3/"
+#host = "http://127.0.0.1/wiki/"
 
 def login(username, password):
     t.add_extra_header("User-Agent", "python-twill-russnelson@gmail.com")

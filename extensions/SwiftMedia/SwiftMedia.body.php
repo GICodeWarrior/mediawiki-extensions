@@ -133,66 +133,69 @@ class SwiftFile extends LocalFile {
 	/** getThumbnail inherited */
 
 	/**
-	 * Transform a media file
-	 *
-	 * @param $params Array: an associative array of handler-specific parameters.
-	 *                Typical keys are width, height and page.
-	 * @param $flags Integer: a bitfield, may contain self::RENDER_NOW to force rendering
-	 * @return MediaTransformOutput | false
+	 * class-specific transform (from an original into a thumb).
 	 */
-	function transform( $params, $flags = 0 ) {
-		global $wgUseSquid, $wgIgnoreImageErrors, $wgThumbnailEpoch, $wgServer;
-		global $wgTmpDirectory;
+	function maybeDoTransform( $thumbName, $thumbUrl, $params ) {
+		global $wgIgnoreImageErrors, $wgThumbnailEpoch, $wgTmpDirectory;
 
-		wfProfileIn( __METHOD__ );
-		do {
-			if ( !$this->canRender() ) {
-				// not a bitmap or renderable image, don't try.
-				$thumb = $this->iconThumb();
-				break;
+		// get a temporary place to put the original.
+		$thumbPath = tempnam( $wgTmpDirectory, 'transform_out_' );
+
+		if ( $this->repo && $this->repo->canTransformVia404() && !($flags & self::RENDER_NOW ) ) {
+			return $this->handler->getTransform( $this, $thumbPath, $thumbUrl, $params );
+		}
+
+		// see if the file exists, and if it exists, is not too old.
+		$conn = $this->repo->connect();
+		$container = $this->repo->get_container($conn,$this->repo->container . "%2Fthumb");
+		try {
+			$pic = $container->get_object($this->getRel() . "/" . $thumbName);
+		} catch (NoSuchObjectException $e) {
+			$pic = NULL;
+		}
+		if ( $pic ) {
+			$thumbTime = $pic->last_modified;
+			$tm = strptime($thumbTime, "%a, %d %b %Y %H:%M:%S GMT"); 
+			$thumbGMT = gmmktime($tm["tm_hour"], $tm["tm_min"], $tm["tm_sec"], $tm["tm_mon"]+1, $tm["tm_mday"], $tm["tm_year"] + 1900);
+			wfDebug( __METHOD__.": $thumbName is dated $thumbGMT\n" );
+			if ( gmdate( 'YmdHis', $thumbGMT ) >= $wgThumbnailEpoch ) {
+
+				return $this->handler->getTransform( $this, $thumbPath, $thumbUrl, $params );
 			}
+		}
+		$thumb = $this->handler->doTransform( $this, $thumbPath, $thumbUrl, $params );
 
-			// Get the descriptionUrl to embed it as comment into the thumbnail. Bug 19791.
-			$descriptionUrl =  $this->getDescriptionUrl();
-			if ( $descriptionUrl ) {
-				$params['descriptionUrl'] = $wgServer . $descriptionUrl;
+		// Ignore errors if requested
+		if ( !$thumb ) {
+			$thumb = null;
+		} elseif ( $thumb->isError() ) {
+			$this->lastError = $thumb->toText();
+			if ( $wgIgnoreImageErrors && !($flags & self::RENDER_NOW) ) {
+				$thumb = $this->handler->getTransform( $this, $thumbPath, $thumbUrl, $params );
 			}
+		}
 
-			// make the thumb name and URL out of the normalized parameters.
-			// we only use the thumbTemp for a temporary file.
-			$normalisedParams = $params;
-			$this->handler->normaliseParams( $this, $normalisedParams );
-			$thumbName = $this->thumbName( $normalisedParams );
-			$thumbUrl = $this->getThumbUrl( $thumbName );
-
-			// get a temporary place to put the original.
-			$thumbTemp = tempnam( $wgTmpDirectory, 'transform_out_' );
-
-			$thumb = $this->handler->doTransform( $this, $thumbTemp, $thumbUrl, $params );
-
+		// what if they didn't actually write out a thumbnail? Check the file size.
+		if ( $thumb && filesize($thumbPath)) {
 			// Store the thumbnail into Swift, but in the thumb version of the container.
-			wfDebug(  __METHOD__ . "Creating thumb " . $this->getRel() . "/" . $thumbName . "\n");
-			$conn = $this->repo->connect();
-			$container = $this->repo->get_container($conn,$this->repo->container . "%2Fthumb");
-			$this->repo->write_swift_object( $thumbTemp, $container, $this->getRel() . "/" . $thumbName);
+			wfDebug(  __METHOD__ . "Creating thumb " . $this->getRel() . "/" . $thumbName . "\n" );
+			$this->repo->write_swift_object( $thumbPath, $container, $this->getRel() . "/" . $thumbName );
 			// php-cloudfiles throws exceptions, so failure never gets here.
+		}
 
-			// Clean up temporary data.
-			unlink($thumbTemp);
+		// Clean up temporary data.
+		unlink( $thumbPath );
 
-		} while (false);
-
-		wfProfileOut( __METHOD__ );
-		return is_object( $thumb ) ? $thumb : false;
+		return $thumb;
 	}
 
+	/** transform inherited */
 
 	/**
-	 * Fix thumbnail files from 1.4 or before, with extreme prejudice
-	 * Upgrading directly from 1.4 to 1.8/SwiftMedia is not supported.
+	 * We have nothing to do here.
 	 */
 	function migrateThumbFile( $thumbName ) {
-		throw new MWException( __METHOD__.": not implemented" );
+		return;
 	}
 	/**
 	 * Get the public root directory of the repository.
@@ -208,44 +211,43 @@ class SwiftFile extends LocalFile {
 
 	/**
 	 * Get all thumbnail names previously generated for this file
+	 * @param $archiveName string: the article name for the archived file (if archived).
+	 * @return a list of files, the first entry of which is the directory name (if applicable).
 	 */
-	function getThumbnails() {
+	function getThumbnails($archiveName = false) {
 		$this->load();
 
-		$prefix = $this->getRel();
+		if ($archiveName) {
+			$prefix = $this->getArchiveRel($archiveName);
+		} else {
+			$prefix = $this->getRel();
+		}
 		$conn = $this->repo->connect();
 		$container = $this->repo->get_container($conn,$this->repo->container . "%2Fthumb");
 		$files = $container->list_objects(0, NULL, $prefix);
+		array_unshift($files, "unused"); # return an unused $dir.
 		return $files;
 	}
 
 	/**
 	 * Delete cached transformed files
+	 * @param $dir string If needed for this repo, the directory prefix.
+	 * @param $files array of strings listing the thumbs to be deleted.
 	 */
-	function purgeThumbnails() {
-		global $wgUseSquid, $wgExcludeFromThumbnailPurge;
-
-		// Delete thumbnails
-		$files = $this->getThumbnails();
-		$urls = array();
+	function purgeThumbList($dir, $files) {
+		global $wgExcludeFromThumbnailPurge;
 
 		$conn = $this->repo->connect();
 		$container = $this->repo->get_container($conn,$this->repo->container . "%2Fthumb");
 		foreach ( $files as $file ) {
-			// I have no idea how to implement this given that we don't have paths in Swift
 			// Only remove files not in the $wgExcludeFromThumbnailPurge configuration variable
-			// $ext = pathinfo( "$dir/$file", PATHINFO_EXTENSION );
-			//if ( in_array( $ext, $wgExcludeFromThumbnailPurge ) ) {
-			//	continue;
-			//}
+			$ext = pathinfo( "$file", PATHINFO_EXTENSION );
+			if ( in_array( $ext, $wgExcludeFromThumbnailPurge ) ) {
+				continue;
+			}
 
-			$urls[] = $this->getThumbUrl($file);
+			wfDebug(  __METHOD__ . " deleting " . $container->name . "/$file\n");
 			$this->repo->swift_delete($container, $file);
-		}
-
-		// Purge the squid
-		if ( $wgUseSquid ) {
-			SquidUpdate::purge( $urls );
 		}
 	}
 
@@ -759,7 +761,7 @@ class SwiftRepo extends LocalRepo {
 
 		$dbw = $this->getMasterDB();
 		$status = $this->newGood();
-		$storageKeys = array_unique($storageKeys);
+		$storageKeys = array_unique( $storageKeys );
 		foreach ( $storageKeys as $key ) {
 			$hashPath = $this->getDeletedHashPath( $key );
 			$rel = "$hashPath$key";
@@ -834,6 +836,7 @@ class SwiftRepo extends LocalRepo {
 		if ( $container === false) {
 			throw new MWException( __METHOD__.": invalid zone: $zone" );
 		}
+		wfDebug( __METHOD__.": Z$zone C$container R$rel\n" );
 		return array($container, rawurldecode( $rel ));
 	}
 

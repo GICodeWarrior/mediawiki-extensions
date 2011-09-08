@@ -9,7 +9,6 @@ import webob.exc
 import re
 from eventlet.green import urllib2
 import wmf.client
-import wmf.config
 import time
 
 # the auth system turns our login and key into an account / token pair.
@@ -73,37 +72,82 @@ class WMFRewrite(object):
 
     def __init__(self, app, conf):
         self.app = app
-        self.account = wmf.config.account
+        self.account = conf['account'].strip()
         self.authurl = conf['url'].strip()
         self.login = conf['login'].strip()
         self.key = conf['key'].strip()
+        self.thumbhost = conf['thumbhost'].strip()
+        self.user_agent  = conf['user_agent'].strip()
 
+    def handle404(self, reqorig, url, container, obj):
+        """ return a webob.Response which reads the request, but from the thumb host.
+        """
+        # go to the thumb media store for unknown files
+        reqorig.host = self.thumbhost
+        # upload doesn't like our User-agent, otherwise we could call it using urllib2.url()
+        opener = urllib2.build_opener()
+        opener.addheaders = [('User-agent', self.user_agent)]
+        # At least in theory, we shouldn't be handing out links to files that we don't have
+        # (or in the case of thumbs, can't generate). However, someone may have a formerly
+        # valid link to a file, so we should do them the favor of giving them a 404.
+        try:
+            upcopy = opener.open(reqorig.url)
+        except urllib2.HTTPError,status:
+            if status == 404:
+                resp = webob.exc.HTTPNotFound('Expected original file not found')
+                return resp
+            else:
+                resp = webob.exc.HTTPNotFound('Unexpected error %s' % `status`)
+                return resp
+
+        # get the Content-Type.
+        uinfo = upcopy.info()
+        c_t = uinfo.gettype()
+        last_modified = time.mktime(uinfo.getdate('Last-Modified'))
+        # Fetch from upload, write into the cluster, and return it
+        app_iter = Copy2(upcopy, self.app, url,
+            urllib2.quote(container), obj, self.authurl, self.login,
+            self.key, content_type=c_t, modified=last_modified)
+ 
+        resp = webob.Response(app_iter=app_iter, content_type=c_t)
+        resp.headers.add('Things', "%s %s %s %s %s %s %s %s" % (url, urllib2.quote(container), obj, self.authurl, self.login, self.key, c_t, last_modified))
+        resp.headers.add('Last-Modified', uinfo.getheader('Last-Modified'))
+        return resp
+ 
     def __call__(self, env, start_response):
       #try:
         req = webob.Request(env)
+        # PUT requests never need rewriting.
         if req.method == 'PUT':
             return self.app(env, start_response)
+
+        # if it already has AUTH, presume that it's good. #07
+        if req.path.startswith('/auth') or req.path.find('AUTH') >= 0:
+            return self.app(env, start_response)
+
+        # keep a copy of the original request so we can ask the scalers for it
         reqorig = req.copy()
+        # match these two URL forms, with the wikipedia, commons, and the rest
+        # going into groups.
         # http://upload.wikimedia.org/wikipedia/commons/a/aa/000_Finlanda_harta.PNG
         # http://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/000_Finlanda_harta.PNG/75px-000_Finlanda_harta.PNG
         match = re.match(r'/(.*?)/(.*?)/(.*)', req.path)
-        if req.path.startswith('/auth') or req.path.find('AUTH') >= 0:
-            # if it already has AUTH, presume that it's good. #07
-            return self.app(env, start_response)
-        elif match:
+        if match:
+            # Our target URL is as follows:
             # https://alsted.wikimedia.org:8080/v1/AUTH_6790933748e741268babd69804c6298b/wikipedia%252Fen/2/25/Machinesmith.png
-            container = match.group(2) #02
+
+            # quote slashes in the container name
+            container = "%s%%2F%s" % (match.group(1), match.group(2)) #02
             obj = match.group(3)
             # include the thumb in the container.
             if obj.startswith("thumb/"): #03
                 container += "%2Fthumb"
                 obj = obj[len("thumb/"):]
-            # quote slashes in the container name
-            container = "%s%%2F%s" % (match.group(1), container)
 
             if not obj:
-                # don't let them list the container (it's really FRICKING huge) #08
-                return webob.exc.HTTPForbidden('No container listing')(env, start_response)
+                # don't let them list the container (it's CRAZY huge) #08
+                resp = webob.exc.HTTPForbidden('No container listing')
+                return resp(env, start_response)
 
             # save a url with just the account name in it.
             req.path_info = "/v1/%s" % (self.account)
@@ -113,7 +157,8 @@ class WMFRewrite(object):
             req.path_info = "/v1/%s/%s/%s" % (self.account, container, urllib2.unquote(obj))
 
             controller = ObjectController()
-            # do_start_response just remembers what it got called with, because we may want to generate a different response.
+            # do_start_response just remembers what it got called with,
+            # because our 404 handler will generate a different response.
             app_iter = self.app(env, controller.do_start_response) #01
             status = int(controller.response_args[0].split()[0])
             headers = dict(controller.response_args[1])
@@ -126,40 +171,18 @@ class WMFRewrite(object):
                 return webob.Response(status=status, headers=headers ,
                         app_iter=app_iter)(env, start_response) #01a
             elif status == 404: #4
-                # go to the thumb media store for unknown files
-                reqorig.host = wmf.config.thumbhost
-                # upload doesn't like our User-agent, otherwise we could call it using urllib2.url()
-                opener = urllib2.build_opener()
-                opener.addheaders = [('User-agent', wmf.config.user_agent)]
-                # At least in theory, we shouldn't be handing out links to files that we don't have
-                # (or in the case of thumbs, can't generate). However, someone may have a formerly
-                # valid link to a file, so we should do them the favor of giving them a 404.
-                try:
-                    upcopy = opener.open(reqorig.url)
-                except urllib2.HTTPError,status:
-                    if status == 404:
-                        return webob.exc.HTTPNotFound('Expected original file not found')(env, start_response)
-                    else:
-                        return webob.exc.HTTPNotFound('Unexpected error %s' % `status`)(env, start_response)
-
-                # get the Content-Type.
-                uinfo = upcopy.info()
-                c_t = uinfo.gettype()
-                last_modified = time.mktime(uinfo.getdate('Last-Modified'))
-                # Fetch from upload, write into the cluster, and return it to them.
-                resp = webob.Response(app_iter=Copy2(upcopy, self.app, url,
-                    urllib2.quote(container), obj, self.authurl, self.login,
-                    self.key, content_type=c_t, modified=last_modified), content_type=c_t)
-                resp.headers.add('Things', "%s %s %s %s %s %s %s %s" % (url, urllib2.quote(container), obj, self.authurl, self.login, self.key, c_t, last_modified))
-                resp.headers.add('Last-Modified', uinfo.getheader('Last-Modified'))
+                resp = self.handle404(reqorig)
                 return resp(env, start_response)
             elif status == 401:
                 # if the Storage URL is invalid or has expired we'll get this error.
-                return webob.exc.HTTPUnauthorized('Token may have timed out')(env, start_response) #05
+                resp = webob.exc.HTTPUnauthorized('Token may have timed out') #05
+                return resp(env, start_response)
             else:
-                return webob.exc.HTTPNotImplemented('Unknown Status: %s' % (status))(env, start_response) #10
+                resp = webob.exc.HTTPNotImplemented('Unknown Status: %s' % (status)) #10
+                return resp(env, start_response)
         else:
-            return webob.exc.HTTPBadRequest('Regexp failed: "%s"' % (req.path))(env, start_response) #11
+            resp = webob.exc.HTTPBadRequest('Regexp failed: "%s"' % (req.path)) #11
+            return resp(env, start_response)
       #except:
         #return webob.exc.HTTPNotFound('Internal error')(env, start_response)
 
