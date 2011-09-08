@@ -37,6 +37,106 @@ $(document).ready( function() {
 		{
 			'type': 'paragraph',
 			'content': { 'text': 'The soft returns are usually placed after the ends of complete words, or after the punctuation that follows complete words. However, word wrap may also occur following a hyphen.\nWord wrap following hyphens is sometimes not desired, and can be avoided by using a so-called non-breaking hyphen instead of a regular hyphen. On the other hand, when using word processors, invisible hyphens, called soft hyphens, can also be inserted inside words so that word wrap can occur following the soft hyphens.\nSometimes, word wrap is not desirable between words. In such cases, word wrap can usually be avoided by using a hard space or non-breaking space between the words, instead of regular spaces.\nOccasionallyThereAreWordsThatAreSoLongTheyExceedTheWidthOfTheLineAndEndUpWrappingBetweenMultipleLines.\nText might have\ttabs\tin it too. Not all text will end in a line breaking character' }
+		},
+		{
+			'type': 'list',
+			'style': 'number',
+			'items': [
+				{
+					'content': { 'text': 'Operating Systems' },
+					'lists': [
+						{
+							'style': 'bullet',
+							'items': [
+								{
+									'content': { 'text': 'Linux' },
+									'lists': [
+										{
+											'style': 'bullet',
+											'items': [
+												{
+													'content': { 'text': 'Ubuntu' },
+													'lists': [
+														{
+															'style': 'bullet',
+															'items': [
+																{
+																	'content': {
+																		'text': 'Desktop: Intuitive office apps, safe and fast web browsing, and seamless integration.  Ubuntu brings the very best technologies straight to the desktop.',
+																		'annotations': [
+																			// "[citation needed 2]" should be super
+																			{
+																				'type': 'template',
+																				'data': {
+																					'html': '<sup><small><a href="#">[citation needed 2]</a></small></sup>'
+																				},
+																				'range': { 'start': 85, 'end': 86 }
+																			}
+																		]
+																	}
+																},
+																{ 'content': { 'text': 'Server: Secure, fast and powerful, Ubuntu Server is transforming IT environments worldwide. Realise the full potential of your infrastructure with a reliable, easy-to-integrate technology platform. Lorem ipsum.. Lorem ipsum.. Lorem ipsum.. Lorem ipsum.. Lorem ipsum.. Lorem ipsum.. Lorem ipsum.. Lorem ipsum.. Lorem ipsum.. Lorem ipsum.. ' } },
+																{ 'content': { 'text': 'Cloud: Ubuntu cloud computing puts you in control of your IT infrastructure. It helps you access computing power as and when you need it so you can meet user demand more effectively.' } }
+															]
+														}
+													]
+												},
+												{ 'content': { 'text': 'Fedora' } },
+												{ 'content': { 'text': 'Gentoo' } }
+											]
+										}
+									]
+								},
+								{ 'content': { 'text': 'Windows' } },
+								{ 'content': { 'text': 'Mac' } }
+							]
+						}
+					]
+				},
+				{
+					'content': {
+						'text': 'Second item',
+						'annotations': [
+							{
+								'type': 'italic',
+								'range': {
+									'start': 0,
+									'end': 6
+								}
+							}
+						]
+					}
+				},
+				{
+					'content': {
+						'text': 'Third item',
+						'annotations': [
+							{
+								'type': 'bold',
+								'range': {
+									'start': 0,
+									'end': 5
+								}
+							}
+						]
+					}
+				},
+				{
+					'content': {
+						'text': 'Fourth item',
+						'annotations': [
+							{
+								'type': 'ilink',
+								'range': {
+									'start': 7,
+									'end': 11
+								},
+								'data': { 'title': 'User:JohnDoe' }
+							}
+						]
+					}
+				}
+			]
 		}
 	] } );
 	var surface = new es.SurfaceView( $('#es-editor'), doc );

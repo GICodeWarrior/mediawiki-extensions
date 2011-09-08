@@ -8,7 +8,8 @@
  */
 es.ListBlockModel = function( items ) {
 	es.BlockModel.call( this, ['hasContent', 'isAnnotatable', 'isAggregate'] );
-	this.items = new es.ContentSeries( items || [] );
+	es.ModelContainer.call( this );
+	this.items = new es.AggregateArray( items || [] );
 };
 
 /* Static Methods */
@@ -45,7 +46,7 @@ es.ListBlockModel.flattenPlainObject = function( obj, styles ) {
 			}
 			if ( $.isArray( item.lists ) ) {
 				$.each( item.lists, function( i, list ) {
-					items = items.concat( es.ListBlockList.flattenList( list, styles ) );
+					items = items.concat( es.ListBlockModel.flattenPlainObject( list, styles ) );
 				} );
 			}
 		} );
@@ -106,8 +107,9 @@ es.ListBlockModel.prototype.getPlainObject = function() {
 };
 
 // Register constructor
-es.BlockModel.constructors['list'] = es.ListBlockModel;
+es.BlockModel.constructors['list'] = es.ListBlockModel.newFromPlainObject
 
 /* Inheritance */
 
 es.extend( es.ListBlockModel, es.BlockModel );
+es.extend( es.ListBlockModel, es.ModelContainer );

@@ -9,6 +9,7 @@
  * @property styles {Array}
  */
 es.ListBlockItemModel = function( content, styles ) {
+	es.ModelContainerItem.call( this, 'list' );
 	this.content = content || null;
 	this.styles = styles || ['bullet'];
 };
@@ -41,6 +42,10 @@ es.ListBlockItemModel.prototype.getPlainObject = function() {
  * @method
  * @returns {Integer}
  */
-es.TableBlockRowModel.prototype.getLength = function() {
+es.ListBlockItemModel.prototype.getLength = function() {
 	return this.cells.getLength();
 };
+
+/* Inheritance */
+
+es.extend( es.ListBlockItemModel, es.ModelContainerItem );
