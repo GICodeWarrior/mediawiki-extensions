@@ -46,8 +46,6 @@ $dir = dirname( __FILE__ ) . '/';
 // Autoload classes
 $wgAutoloadClasses['ClickTrackingHooks'] = $dir . 'ClickTracking.hooks.php';
 $wgAutoloadClasses['ApiClickTracking'] = $dir . 'ApiClickTracking.php';
-$wgAutoloadClasses['SpecialClickTracking'] = $dir . 'SpecialClickTracking.php';
-$wgAutoloadClasses['ApiSpecialClickTracking'] = $dir . 'ApiSpecialClickTracking.php';
 
 // Hooked functions
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'ClickTrackingHooks::loadExtensionSchemaUpdates';
@@ -61,18 +59,9 @@ $wgHooks['ArticleSaveComplete'][] = 'ClickTrackingHooks::articleSaveComplete';
 
 // API modules
 $wgAPIModules['clicktracking'] = 'ApiClickTracking';
-$wgAPIModules['specialclicktracking'] = 'ApiSpecialClickTracking';
-
-// New special page
-$wgSpecialPages['ClickTracking'] = 'SpecialClickTracking';
-
-// New user right, required to use Special:ClickTracking
-$wgAvailableRights[] = 'clicktrack';
-$wgGroupPermissions['sysop']['clicktrack'] = true;
 
 // i18n
 $wgExtensionMessagesFiles['ClickTracking'] = $dir . 'ClickTracking.i18n.php';
-$wgExtensionAliasesFiles['ClickTracking'] = $dir . 'ClickTracking.alias.php';
 
 // Resource modules
 $ctResourceTemplate = array(
@@ -86,11 +75,6 @@ $wgResourceModules['jquery.clickTracking'] = array(
 $wgResourceModules['ext.clickTracking'] = array(
 	'scripts' => 'ext.clickTracking.js',
 	'dependencies' => 'jquery.clickTracking',
-) + $ctResourceTemplate;
-$wgResourceModules['ext.clickTracking.special'] = array(
-	'scripts' => 'ext.clickTracking.special.js',
-	'styles' => 'ext.clickTracking.special.css',
-	'dependencies' => array( 'jquery.json', 'jquery.ui.datepicker', 'jquery.ui.dialog' ),
 ) + $ctResourceTemplate;
 $wgResourceModules['ext.UserBuckets'] = array(
 	'scripts' => 'ext.UserBuckets.js',

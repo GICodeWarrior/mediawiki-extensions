@@ -14,26 +14,6 @@ $messages = array();
 $messages['en'] = array(
 	'clicktracking' => 'Usability Initiative click tracking',
 	'clicktracking-desc' => 'Click tracking for tracking events that do not cause a page refresh',
-	'ct-title' => 'Aggregated user clicks',
-	'ct-event-name' => 'Event name',
-	'ct-expert-header' => '"Expert" clicks',
-	'ct-intermediate-header' => '"Intermediate" clicks',
-	'ct-beginner-header' => '"Beginner" clicks',
-	'ct-total-header' => 'Total clicks',
-	'ct-start-date' => 'Start Date (YYYYMMDD)', 
-	'ct-end-date' => 'End Date (YYYYMMDD)',
-	'ct-increment-by' =>'Number of days each data point represents', 
-	'ct-change-graph' =>'Change graph',
-	'ct-beginner' => 'Beginner',
-	'ct-intermediate' => 'Intermediate',
-	'ct-expert' => 'Expert',
-	'ct-date-range' => 'Date range',
-	'ct-editing' => 'Currently editing:',
-	'ct-anon-users' => 'Anonymous users',
-	'ct-user-contribs' => 'Total user contributions',
-	'ct-user-span' => 'User contributions in timespan',
-	'ct-and' => 'and',
-	'ct-update-table' => 'Update table',
 );
 
 /** Message documentation (Message documentation)
