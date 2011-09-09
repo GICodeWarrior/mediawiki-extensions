@@ -1,5 +1,6 @@
 viaf.user.js, a Greasemonkey script
 which detects VIAF numbers on web pages and creates related links
+and fetches names for the detected numbers from toolserver.
 
 Provisionally homepages and screenshots:
 
@@ -9,8 +10,8 @@ Provisionally homepages and screenshots:
 	http://de.wikipedia.org/wiki/Wikipedia:WikiConvention/ \
 	Programm/VIAF#Greasemonkey-Skript (de)
 
-Version: 0.204
-README last updated: 20110901
+Version: 0.306
+README last updated: 20110909
 
 What are VIAF numbers ?
 
@@ -41,10 +42,15 @@ which contain a VIAF and when matching a magic regular expression
 The VIAF number is then extracted from the url and also shown on the page
 in cyan colour with a black dotted underline as indication.
 
-A summary box (6) lists all distinct VIAF numbers to facilitate cut & paste of
+The script calls asynchronously the toolserver with all detected VIAF numbers
+and receives as response names which correspond to the numbers, i.e. the
+authors' names. Names are shown on magenta labels.
+
+A summary box lsts all distinct VIAF numbers to facilitate cut & paste of
 the extracted numbers; this can be disabled in the program code.
 
 The set of further server urls can be adapted in the program code.
+
 It relies on jQuery and two further javascripts, which are fetched automatically
 and has an integrated update checker (currently disabled) which looks for newer
 versions of it and prompts the user in such case.
@@ -54,11 +60,13 @@ It does not automatically install a newer version.
 == solved ==
 + check why it does not work inside <span class=plainlinks> </span> tags
   fixed in r95940 (0.204)
++ add a ajax request module to fetch author names for numbers from toolserver
+  and show them live on the current page; define a JSONP data format
+  (0.306)
 
 == To Do ==
-* check detection and algorithm of VIAF2...VIAF9 numbers
 * add a user-interface or mechanism to enable/disable the summary alert box
   without the need to change program code
 * revise and enable the update mechanism
-* add a ajax request module to fetch author names for numbers from toolserver
-  and show them live on the current page; define a JSONP data format
+* better positioning of added links - when the come from links they are
+  placed too far away.
