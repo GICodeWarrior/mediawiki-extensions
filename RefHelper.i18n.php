@@ -137,9 +137,14 @@ $messages['arc'] = array(
  * @author Cekli829
  */
 $messages['az'] = array(
+	'refhelper-label_authorsurname' => 'Soyad:',
+	'refhelper-title' => 'Başlıq:',
+	'refhelper-journal' => 'Jurnal:',
+	'refhelper-volume' => 'Cild:',
 	'refhelper-pages' => 'Səhifələr:',
 	'refhelper-year' => 'İl:',
 	'refhelper-category' => 'Kateqoriya $1:',
+	'refhelper-search' => 'Axtar',
 );
 
 /** Belarusian (Беларуская)
@@ -1153,6 +1158,13 @@ $messages['no'] = array(
 <h2>Forslag</h2>',
 	'refhelper-newarticle_nosuggestions' => 'Dessverre kunne jeg ikke foreslå noen referanser.
 Du kan [[Special:RefHelper|legge til referanser manuelt]] eller [[Special:RefSearch|søke etter siteringer å legge til]].',
+);
+
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Psubhashish
+ */
+$messages['or'] = array(
+	'refhelper-title' => 'ଶିରୋନାମା:',
 );
 
 /** Deitsch (Deitsch)
