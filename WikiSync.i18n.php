@@ -107,6 +107,13 @@ $messages['af'] = array(
 	'wikisync_js_revision' => 'Weergawe $1',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'wikisync_remote_login_button' => 'Daxil ol',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
