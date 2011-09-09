@@ -40,6 +40,13 @@ $messages['arc'] = array(
 	'nll-lastseparator' => '&#32;ܘ&#32;',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'nll-lastseparator' => '&#32;və&#32;',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Jim-by
  */
