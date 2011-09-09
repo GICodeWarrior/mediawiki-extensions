@@ -564,9 +564,10 @@ $messages['oc'] = array(
 
 /** Oriya (ଓଡ଼ିଆ)
  * @author Odisha1
+ * @author Psubhashish
  */
 $messages['or'] = array(
-	'categoryonupload-label' => 'ବିଭାଗ:',
+	'categoryonupload-label' => 'ଶ୍ରେଣୀ:',
 );
 
 /** Picard (Picard)
