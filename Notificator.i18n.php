@@ -81,6 +81,15 @@ $messages['af'] = array(
 	'notificator-notified-already' => '$1 is reeds in kennis gestel oor hierdie bladsy of veranderinge.',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'notificator-e-mail-address' => 'e-poçt ünvanı',
+	'notificator-new-tag' => 'yeni',
+	'notificator-subject' => 'Mövzu:',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Wizardist
