@@ -34,6 +34,13 @@ $messages['qqq'] = array(
 	'flagpage-desc' => '{{desc}}',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'flagpage-tab' => 'Bayraq',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by

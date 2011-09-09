@@ -108,6 +108,7 @@ $messages['arz'] = array(
  */
 $messages['az'] = array(
 	'showprocesslist-user' => 'İstifadəçi',
+	'showprocesslist-time' => 'Zaman',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)

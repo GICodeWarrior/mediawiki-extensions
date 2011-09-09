@@ -497,6 +497,8 @@ $messages['arz'] = array(
  * @author Cekli829
  */
 $messages['az'] = array(
+	'qp_vote_button' => 'Səs',
+	'qp_source_link' => 'Mənbə',
 	'qp_users_link' => 'İstifadəçilər',
 );
 
@@ -584,6 +586,10 @@ $messages['be-tarask'] = array(
 	'qp_error_unique' => 'Пытаньне тыпу unique() мае больш адказаў чым гэта магчыма: немагчыма скончыць',
 	'qp_error_no_more_attempts' => 'Вы дасягнулі максымальнай колькасьці спробаў адказу на гэтае апытаньне.',
 	'qp_error_interpretation_no_return' => 'Скрыпт інтэрпрэтацыі не вярнуў вынік.',
+	'qp_error_no_json_decode' => 'Інтэрпрэтацыя вынікаў апытаньня патрабуе PHP-функцыю json_decode().',
+	'qp_error_eval_missed_lang_attr' => 'XML-атрыбут «lang» патрабуецца для выбару слушнай мовы інтэрпрэтацыі.',
+	'qp_error_eval_mix_languages' => 'Асобны скрыпт інтэрпрэтацыі ня можа зьмешваць розныя мовы інтэрпрэтацыі: «$1», «$2».',
+	'qp_error_eval_unsupported_language' => 'Непадтрымліваемая мова інтэрпрэтацыі «$1».',
 );
 
 /** Bengali (বাংলা)
@@ -1232,6 +1238,20 @@ Para gardar unha enquisa, envíea sen responder a ningunha pregunta.',
 	'qp_error_too_few_spans' => 'Cada clase de categoría necesita definidas, polo menos, dúas respostas posibles',
 	'qp_error_no_answer' => 'Proposta sen resposta',
 	'qp_error_unique' => 'A pregunta de tipo unique() ten definidas máis propostas que respostas posibles: imposible de completar',
+	'qp_error_no_more_attempts' => 'Alcanzou o número máximo de intentos de envío para esta enquisa.',
+	'qp_error_interpretation_no_return' => 'A escritura de interpretación non devolveu resultados.',
+	'qp_error_no_json_decode' => 'A interpretación das respostas ás enquisas necesitan a función PHP json_decode().',
+	'qp_error_eval_missed_lang_attr' => 'Cómpre o atributo XML "lang" para elixir a lingua de interpretación axeitada.',
+	'qp_error_eval_mix_languages' => 'Unha mesma escritura de interpretación non pode mesturar diferentes linguas de interpretación: "$1", "$2".',
+	'qp_error_eval_unsupported_language' => 'A lingua de interpretación "$1" non está soportada.',
+	'qp_error_eval_illegal_token' => 'O pase PHP $1 co valor $2 non está permitido na liña $3.',
+	'qp_error_eval_illegal_superglobal' => 'O pase PHP $1 co valor superglobal $2 non está permitido na liña $3.',
+	'qp_error_eval_illegal_function_call' => 'O pase PHP $1 coa función $2 non está permitido na liña $3.',
+	'qp_error_eval_variable_variable_access' => 'O pase PHP $1 coa variable variable $2 non está permitido na liña $3.',
+	'qp_error_eval_illegal_variable_name' => 'O pase PHP $1 rexeitou o nome de variable $2 na liña $3.',
+	'qp_error_eval_variable_function_call' => 'O pase PHP $1 coa función variable $2 non está permitido na liña $3.',
+	'qp_error_eval_self_check' => 'A seguinte comprobación automática eval() fallou: $1. Ten unha versión de PHP non soportada, que non permite executar escrituras de avaliación de xeito seguro.',
+	'qp_error_eval_unable_to_lint' => 'Non se puido controlar (lint). Comprobe a configuración do seu sistema.',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)

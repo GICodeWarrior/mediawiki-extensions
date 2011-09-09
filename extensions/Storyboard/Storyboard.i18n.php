@@ -253,6 +253,13 @@ $messages['arc'] = array(
 	'storyboard-hideimage' => 'ܛܫܝ ܨܘܪܬܐ',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'storyboard-language' => 'Dil',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by

@@ -82,6 +82,13 @@ Comprueba la escritura.',
 	'al-throttled' => "Ficisti demasiaos intentos siguíos de contraseña. Tienes d'esperar $1 {{PLURAL:$1|segundu|segundos}} enantes de volver a probar.",
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Vago
+ */
+$messages['az'] = array(
+	'al-createblocked' => 'IP ünvanınızın bloklanması istifadəçi hesabı açmanıza əngəl törədir.',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  */

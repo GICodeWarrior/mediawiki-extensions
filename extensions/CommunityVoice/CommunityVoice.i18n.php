@@ -92,6 +92,7 @@ $messages['arz'] = array(
 $messages['az'] = array(
 	'communityvoice-ratings-scale-status-sending' => 'Göndərilir...',
 	'communityvoice-ratings-scale-status-error' => 'Göndərilmə xətası!',
+	'communityvoice-ratings-scale-status-thanks' => 'Səs verdiyiniz üçün təşəkkürlər!',
 );
 
 /** Bashkir (Башҡортса)
@@ -127,9 +128,12 @@ $messages['be-tarask'] = array(
 
 /** Bulgarian (Български)
  * @author DCLXVI
+ * @author Spiritia
  * @author Turin
  */
 $messages['bg'] = array(
+	'communityvoice' => 'Гласът на общността',
+	'communityvoice-desc' => 'Инструменти за общностно участие',
 	'communityvoice-ratings' => 'Рейтинги',
 	'communityvoice-ratings-scale-status-sending' => 'Изпращане...',
 	'communityvoice-ratings-scale-status-error' => 'Грешка при изпращането!',

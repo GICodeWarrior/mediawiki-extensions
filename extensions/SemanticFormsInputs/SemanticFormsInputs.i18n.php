@@ -70,6 +70,7 @@ $messages['arc'] = array(
  * @author Cekli829
  */
 $messages['az'] = array(
+	'semanticformsinputs-next' => 'Növbəti',
 	'semanticformsinputs-today' => 'Bu gün',
 );
 

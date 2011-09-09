@@ -48,9 +48,11 @@ $messages['qqq'] = array(
 );
 
 /** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
  * @author Vago
  */
 $messages['az'] = array(
+	'apisb-parameters' => 'Parametrlər',
 	'apisb-result' => 'Nəticə',
 	'apisb-loading' => 'Yüklənir…',
 	'apisb-ns-main' => '(Əsas)',
@@ -647,7 +649,9 @@ $messages['pt-br'] = array(
 $messages['roa-tara'] = array(
 	'apisb-parameters' => 'Parametre',
 	'apisb-result' => 'Resultate',
+	'apisb-select-action' => "Scacchie l'azione",
 	'apisb-select-value' => "Scacchie 'nu valore",
+	'apisb-loading' => 'Stoche a careche…',
 	'apisb-ns-main' => '(Prengepàle)',
 	'apisb-submit' => "Fà 'na richieste",
 	'apisb-query-prop' => 'probbietà',

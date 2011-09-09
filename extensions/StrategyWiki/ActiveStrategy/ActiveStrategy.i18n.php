@@ -513,6 +513,16 @@ $messages['ru'] = array(
 	'nedits' => '$1 {{PLURAL:$1|правка|правки|правок}}',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'activestrategy' => 'Актівна стратеґія',
+	'active-strategy-desc' => 'Зображує чісло едітовань сторінок планованя стратеґії',
+	'active-strategy-intro' => 'Чісло едітовань працовных ґруп за {{PLURAL:$1|остатнїй день|остатнї $1 днї|остатнїх $1 днїв}}.',
+	'nedits' => '$1 {{PLURAL:$1|едітованя|едітованя|едітовань}}',
+);
+
 /** Sakha (Саха тыла)
  * @author HalanTul
  */

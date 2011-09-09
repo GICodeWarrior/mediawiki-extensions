@@ -297,6 +297,9 @@ $messages['az'] = array(
 	'fogg-license-title' => 'Lisenziya',
 	'fogg-contact-title' => 'Əlaqə',
 	'fogg-contact-help' => 'Əlaqə keçidi',
+	'fogg-select_file' => 'Faylı seç',
+	'fogg-select_new_file' => 'Yeni fayl seç',
+	'fogg-select_url' => 'URL seç',
 	'fogg-preview' => 'Videonun sınaq göstərişi',
 	'fogg-hidepreview' => 'Sınaq göstərişini gizlət',
 );
@@ -3751,8 +3754,10 @@ $messages['oc'] = array(
 
 /** Oriya (ଓଡ଼ିଆ)
  * @author Odisha1
+ * @author Psubhashish
  */
 $messages['or'] = array(
+	'fogg-title-title' => 'ଶିରୋନାମା',
 	'fogg-license-title' => 'ଲାଇସେନ୍ସ',
 );
 

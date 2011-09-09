@@ -217,6 +217,13 @@ $messages['arz'] = array(
 	'masseditregex-tooltip-execute' => 'طبق هذه التغييرات على كل صفحة',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'masseditregex-matchtxt' => 'Axtarış üçün:',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by

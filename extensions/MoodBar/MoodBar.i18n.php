@@ -267,6 +267,22 @@ $messages['ar'] = array(
 	'moodbar-user-user' => 'مستخدم مسجل',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'moodbar-close' => '(bağlı)',
+	'moodbar-type-happy-title' => 'Xoşbəxt',
+	'moodbar-what-label' => 'Bu nədir?',
+	'moodbar-privacy-link' => 'terminlər',
+	'moodbar-success-title' => 'Təşəkkürlər!',
+	'moodbar-header-type' => 'Tipi',
+	'moodbar-header-page' => 'Səhifə',
+	'moodbar-header-user' => 'İstifadəçi',
+	'moodbar-header-comment' => 'Şərhlər',
+	'moodbar-type-happy' => 'Xoşbəxt',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
@@ -329,6 +345,28 @@ $messages['be-tarask'] = array(
 	'moodbar-user-user' => 'Зарэгістраваны ўдзельнік',
 );
 
+/** Bulgarian (Български)
+ * @author Spiritia
+ */
+$messages['bg'] = array(
+	'moodbar-what-label' => 'Какво е това?',
+	'moodbar-form-note' => 'Максимум 140 символа',
+	'moodbar-form-note-dynamic' => 'Остават $1 символа',
+	'moodbar-success-title' => 'Благодарим!',
+	'moodbar-error-title' => 'Опа!',
+	'moodbar-success-subtitle' => 'Като споделяте опита си като редактор ни помагате да подобрим $1.',
+	'moodbar-error-subtitle' => 'Нещо се обърка! Моля, опитайте отново да споделите вашето мнение по-късно.',
+	'moodbar-header-usertype' => 'Тип потребител',
+	'moodbar-header-user' => 'Потребител',
+	'moodbar-header-editmode' => 'Режим на редактиране',
+	'moodbar-header-comment' => 'Коментари',
+	'moodbar-header-user-editcount' => 'Брой потребителски приноси',
+	'moodbar-header-namespace' => 'Именно пространство',
+	'moodbar-header-own-talk' => 'Лична беседа',
+	'moodbar-user-ip' => 'IP-адрес',
+	'moodbar-user-user' => 'Регистриран потребител',
+);
+
 /** Danish (Dansk)
  * @author Peter Alberti
  */
@@ -376,6 +414,7 @@ For yderligere oplysninger, besøg venligst $1.',
 	'moodbar-header-editmode' => 'Redigeringstilstand',
 	'moodbar-header-bucket' => 'Testspand',
 	'moodbar-header-system' => 'Systemtype',
+	'moodbar-header-locale' => 'Sprogindstilling',
 	'moodbar-header-useragent' => 'Brugeragent',
 	'moodbar-header-comment' => 'Kommentarer',
 	'moodbar-header-user-editcount' => 'Brugerens antal redigeringer',
@@ -2051,6 +2090,7 @@ $messages['te'] = array(
  * @author Dim Grits
  */
 $messages['uk'] = array(
+	'moodbar-desc' => 'Дозволяє певним користувачам розміщувати відгуки про власний досвід редагування',
 	'moodbar-trigger-feedback' => 'Відгук про редагування',
 	'moodbar-trigger-share' => 'Поділіться власним досвідом',
 	'moodbar-trigger-editing' => 'Редагування $1...',

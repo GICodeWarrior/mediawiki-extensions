@@ -295,6 +295,17 @@ $messages['as'] = array(
 	'youtubeauthsub_category' => 'শ্ৰেণী',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'youtubeauthsub_title' => 'Başlıq',
+	'youtubeauthsub_keywords' => 'Açar sözlər',
+	'youtubeauthsub_category' => 'Kateqoriya',
+	'youtubeauthsub_submit' => 'Təsdiq et',
+	'youtubeauthsub_uploadbutton' => 'Yüklə',
+);
+
 /** Bashkir (Башҡортса)
  * @author Comp1089
  * @author Haqmar
@@ -2572,6 +2583,13 @@ Siatz pacient.',
 	'youtubeauthsub_jserror_nokeywords' => 'Mercés de picar un o mantun mot clau.',
 	'youtubeauthsub_jserror_notitle' => 'Mercés de picar un títol per la vidèo.',
 	'youtubeauthsub_jserror_nodesc' => 'Picatz una descripcion per la vidèo.',
+);
+
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Psubhashish
+ */
+$messages['or'] = array(
+	'youtubeauthsub_title' => 'ଶିରୋନାମା',
 );
 
 /** Ossetic (Ирон)

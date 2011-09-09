@@ -98,12 +98,16 @@ $messages['qqq'] = array(
 );
 
 /** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
  * @author Vago
  */
 $messages['az'] = array(
+	'collabwatchlisttagcomment' => 'Şərh',
+	'collabwatchlistsall' => 'Bütün siyahılar',
 	'collabwatchlistedit-users-raw-submit' => 'Saxla',
 	'collabwatchlistedit-users-raw-titles' => 'İstifadəçilər:',
 	'collabwatchlistedit-tags-raw-submit' => 'Saxla',
+	'collabwatchlistdelete-submit' => 'Sil',
 	'collabwatchlistnew-submit' => 'Yarat',
 );
 

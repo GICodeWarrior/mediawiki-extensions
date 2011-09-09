@@ -871,6 +871,31 @@ $messages['arz'] = array(
 	'wikilog-doc-import-comment' => 'استورد توثيق سجل الويكي',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'wikilog-pager-next' => 'növbəti',
+	'wikilog-pager-first' => 'birinci',
+	'wikilog-pager-last' => 'sonuncu',
+	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|müzakirə]])',
+	'wikilog-title-comments' => 'Şərhlər - $1',
+	'wikilog-form-category' => 'Kateqoriya:',
+	'wikilog-form-name' => 'Ad:',
+	'wikilog-form-author' => 'Müəllif:',
+	'wikilog-form-date' => 'Tarix:',
+	'wikilog-form-status' => 'Status:',
+	'wikilog-form-comment' => 'Şərh:',
+	'wikilog-show-all' => 'Bütün postlar',
+	'wikilog-submit' => 'Təsdiq et',
+	'wikilog-preview' => 'Sınaq göstərişi',
+	'wikilog-edit-lc' => 'redaktə',
+	'wikilog-reply-lc' => 'yenidən',
+	'wikilog-delete-lc' => 'sil',
+	'wikilog-page-lc' => 'səhifə',
+	'wikilog-history-lc' => 'tarix',
+);
+
 /** Belarusian (Беларуская)
  * @author Тест
  */
@@ -5294,6 +5319,13 @@ Lo comentari apareisserà pas qu'aprèp verificacion per un moderator.",
 	'wikilog-page-lc' => 'pagina',
 	'wikilog-history-lc' => 'istoric',
 	'wikilog-doc-import-comment' => 'Documentacion importada de wikilog',
+);
+
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Psubhashish
+ */
+$messages['or'] = array(
+	'wikilog-title' => 'ଶିରୋନାମା',
 );
 
 /** Deitsch (Deitsch)

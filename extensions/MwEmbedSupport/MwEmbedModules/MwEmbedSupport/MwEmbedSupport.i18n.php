@@ -92,6 +92,14 @@ $messages['arc'] = array(
 	'mwe-cancel' => 'ܒܛܘܠ',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'mwe-ok' => 'OK',
+	'mwe-cancel' => 'İmtina',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by

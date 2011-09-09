@@ -94,6 +94,14 @@ $messages['arz'] = array(
 	'searchbox-namespaces' => 'النطاقات:',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'searchbox-search' => 'Axtar',
+	'searchbox-namespaces' => 'Adlar fəzası:',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */

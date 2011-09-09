@@ -102,6 +102,13 @@ $messages['qqq'] = array(
 	'favoritelistedit-raw-titles' => '{{Identical|Title}}',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'favoritelistall2' => 'bütün',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by

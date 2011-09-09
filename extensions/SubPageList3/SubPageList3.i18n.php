@@ -459,6 +459,15 @@ $messages['ru'] = array(
 	'spl3_nosubpages' => '$1 не имеет подстраниц для включения в список.',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'spl3-desc' => 'Автоматічно створює список підсторінок сторінок за помочі значкы <tt>&lt;splist /&gt;</tt>',
+	'spl3_debug' => 'Незнама годнота вольбы $1.',
+	'spl3_nosubpages' => '$1 не мать жадны зобразительны підсторінкы.',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

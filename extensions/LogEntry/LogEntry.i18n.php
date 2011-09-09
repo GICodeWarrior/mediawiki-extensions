@@ -80,7 +80,7 @@ $messages['be-tarask'] = array(
 	'logentry-parserhook-desc' => 'Гэты тэг пашырэньня дадае форму для даданьня інфармацыі ў журналы падзеяў',
 	'logentry-specialpage-desc' => 'Гэты тэг пашырэньня дазваляе дадаваць інфармацыю ў журналы падзеяў',
 	'logentry' => 'Дадаць інфармацыю ў журналы падзеяў',
-	'logentry-invalidpage' => 'Няслушная старонка',
+	'logentry-invalidpage' => 'Няслушная старонка: $1',
 	'logentry-invalidtoken' => 'Няслушны сымбаль',
 );
 
@@ -379,7 +379,7 @@ $messages['ksh'] = array(
 $messages['lb'] = array(
 	'logentry-append' => 'Derbäisetzen',
 	'logentry' => 'Androung an e Logbuch',
-	'logentry-invalidpage' => 'Net valabel Säit',
+	'logentry-invalidpage' => 'Net valabel Säit: $1',
 );
 
 /** Macedonian (Македонски)
@@ -409,7 +409,7 @@ $messages['nl'] = array(
 	'logentry-parserhook-desc' => "Deze tagextensie biedt een formulier voor het toevoegen aan/voorvoegen in logboekpagina's",
 	'logentry-specialpage-desc' => "Deze tagextensie maakt het mogelijk om logboekpagina's toe te voegen",
 	'logentry' => 'Logboekregel',
-	'logentry-invalidpage' => 'Ongeldige pagina',
+	'logentry-invalidpage' => 'Ongeldige pagina: $1',
 	'logentry-invalidtoken' => 'Ongeldig token',
 );
 
@@ -507,9 +507,10 @@ $messages['pt-br'] = array(
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Minisarm
  */
 $messages['ro'] = array(
-	'logentry-invalidpage' => 'Pagină nevalidă',
+	'logentry-invalidpage' => 'Pagină nevalidă: $1',
 );
 
 /** Tarandíne (Tarandíne)

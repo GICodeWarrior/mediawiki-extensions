@@ -252,6 +252,7 @@ $messages['az'] = array(
 	'badimages' => 'Yanlış şəkil siyahısı',
 	'badimages-add-btn' => 'Əlavə et',
 	'badimages-name' => 'Ad:',
+	'badimages-reason' => 'Səbəb:',
 	'badimages-remove' => '(çıxar)',
 	'badimages-remove-btn' => 'Çıxar',
 );

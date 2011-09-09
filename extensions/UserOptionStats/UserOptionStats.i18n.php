@@ -196,12 +196,14 @@ $messages['cs'] = array(
 
 /** Danish (Dansk)
  * @author Byrial
+ * @author Peter Alberti
  */
 $messages['da'] = array(
 	'useroptionstats' => 'Statistik over brugerindstillinger',
 	'useroptionstats-desc' => '[[Special:UserOptionStats|Specialside]] til rapportering om brugen af brugerindstillinger i MediaWiki',
 	'uos-warn' => 'PHPlot er ikke installeret!',
 	'uos-choose' => 'Vælg en af følgende brugerindstillinger: $1',
+	'uos-choose-hidden' => 'Vælg en af følgende skjulte brugerindstillinger: $1',
 	'uos-unknown' => '*Standard',
 	'uos-other' => '*Andet',
 	'uos-title' => 'Fordeling af værdier for brugerindstilling $1',

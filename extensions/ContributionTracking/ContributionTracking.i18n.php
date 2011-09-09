@@ -159,6 +159,7 @@ $messages['bg'] = array(
 	'contrib-tracking-continue' => 'Ако не бъдете пренасочени автоматично, натиснете бутона, за да завършите дарението през PayPal.',
 	'contrib-tracking-button' => 'Продължаване',
 	'contrib-tracking-item-name-onetime' => 'Еднократно дарение',
+	'contrib-tracking-item-name-recurring' => 'Ежемесечно дарение',
 );
 
 /** Bengali (বাংলা)
@@ -933,9 +934,10 @@ $messages['oc'] = array(
 
 /** Oriya (ଓଡ଼ିଆ)
  * @author Odisha1
+ * @author Psubhashish
  */
 $messages['or'] = array(
-	'contrib-tracking-error' => 'ତ୍ରୁଟି',
+	'contrib-tracking-error' => 'ଭୁଲ',
 	'contrib-tracking-button' => 'ଚାଲୁରଖ',
 );
 

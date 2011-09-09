@@ -186,6 +186,13 @@ $messages['arz'] = array(
 	'right-feedback' => 'استخدام استمارة الآراء لتقييم صفحة',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'ratinghistory-table-votes' => 'Səslər',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  * @author Haqmar

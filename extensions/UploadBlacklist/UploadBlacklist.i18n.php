@@ -405,6 +405,13 @@ $messages['ru'] = array(
 	'uploadblacklist-desc' => 'Добавляет возможность использования чёрного списка загрузок',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'uploadblacklist-desc' => 'Придавать функціоналіти чорного списку про начітаня файлів',
+);
+
 /** Sakha (Саха тыла)
  * @author HalanTul
  */

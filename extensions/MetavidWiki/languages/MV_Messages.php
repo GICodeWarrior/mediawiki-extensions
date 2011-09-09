@@ -1125,8 +1125,19 @@ $messages['as'] = array(
  * @author Cekli829
  */
 $messages['az'] = array(
+	'mv_edit' => 'Redaktə',
+	'mv_history' => 'Tarixçə',
 	'mv_search_categories' => 'Kateqoriyalar',
+	'mv_search_category' => 'Kateqoriya',
 	'mv_search_and' => 'və',
+	'mv_category' => 'kateqoriya',
+	'mv_days' => '$1 {{PLURAL:$1|gün|gün}}',
+	'mv_hours' => '$1 {{PLURAL:$1|saat|saat}}',
+	'mv_hours_singular' => '1 saat',
+	'mv_minutes' => '$1 {{PLURAL:$1|dəqiqə|dəqiqə}}',
+	'mv_minutes_singular' => '1 dəqiqə',
+	'mv_seconds' => '$1 {{PLURAL:$1|saniyə|saniyə}}',
+	'mv_seconds_singular' => '1 saniyə',
 );
 
 /** Southern Balochi (بلوچی مکرانی)
@@ -8163,6 +8174,7 @@ Aqueste tipe de presentacion es pel tèxte qu'es parlat amb lo flux vidèo. De l
 $messages['or'] = array(
 	'mv_tool_search' => 'ଖୋଜିବେ',
 	'mv_history' => 'ଇତିହାସ',
+	'mv_advanced_edit' => 'ଉନ୍ନତ ସମ୍ପାଦନା',
 );
 
 /** Ossetic (Ирон)

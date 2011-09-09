@@ -2165,6 +2165,14 @@ Consultatz vòstres paramètres de blocatge dels popups.',
 	'ct_user_sample' => 'Nom de l’utilizaire',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Psubhashish
+ */
+$messages['or'] = array(
+	'ct_bold_sample' => 'ମୋଟା ଲେଖା',
+	'ct_bold_tip_ins' => 'ମୋଟା ଲେଖା ପୁରାଇବେ',
+);
+
 /** Ossetic (Ирон)
  * @author Amikeco
  */

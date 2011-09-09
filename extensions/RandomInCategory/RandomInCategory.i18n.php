@@ -99,6 +99,13 @@ $messages['arz'] = array(
 	'randomincategory-submit' => 'اذهب',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'randomincategory-label' => 'Kateqoriya:',
+);
+
 /** Belarusian (Беларуская)
  * @author Тест
  */

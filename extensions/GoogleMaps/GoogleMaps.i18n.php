@@ -4352,6 +4352,7 @@ $wgGoogleMapsMessages['oc'] = array(
  * @author Psubhashish
  */
 $wgGoogleMapsMessages['or'] = array(
+	'gm-balloon-title' => 'ଶିରୋନାମା:',
 	'gm-zoom-control' => 'ଦିଗବାରେଣି',
 	'gm-search' => 'ଖୋଜିବା',
 );

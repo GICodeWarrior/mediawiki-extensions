@@ -60,6 +60,13 @@ $messages['ar'] = array(
 	'sendmailtowiki-err-onlyplain' => 'بسبب إساءة الفهم المحتملة فالرسائل النصية النقية فقط مقبولة.',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'sendmailtowiki-inpin' => 'PIN:',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by

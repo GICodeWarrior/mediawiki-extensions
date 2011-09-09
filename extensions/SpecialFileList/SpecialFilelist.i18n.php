@@ -95,6 +95,13 @@ $messages['avk'] = array(
 	'filelist-show-gallery' => 'Nedira va ginsa',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'filelist-show-list' => 'Siyahını göstər',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */

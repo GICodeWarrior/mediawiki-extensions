@@ -219,7 +219,10 @@ $messages['az'] = array(
 	'createsigndoc-pagename' => 'Səhifə:',
 	'createsigndoc-email' => 'E-poçt ünvanı:',
 	'createsigndoc-address' => 'Ev ünvanı:',
+	'createsigndoc-extaddress' => 'Şəhər, dövlət, ölkə:',
+	'createsigndoc-phone' => 'Telefon nömrəsi:',
 	'createsigndoc-bday' => 'Doğum tarixi:',
+	'createsigndoc-hidden' => 'Gizlədilib',
 	'createsigndoc-error-generic' => 'Xəta: $1',
 );
 

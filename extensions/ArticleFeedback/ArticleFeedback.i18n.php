@@ -417,6 +417,7 @@ $messages['az'] = array(
 	'articlefeedback-survey-answer-whyrated-other' => 'Digər',
 	'articlefeedback-survey-question-useful-iffalse' => 'Niyə?',
 	'articlefeedback-survey-submit' => 'Təsdiq et',
+	'articlefeedback-form-panel-explanation' => 'Bu nədir?',
 	'articlefeedback-report-panel-title' => 'Səhifənin qiyməti',
 	'articlefeedback-report-empty' => 'Qiymət yoxdur',
 	'articlefeedback-field-trustworthy-tooltip-4' => 'Yaxşı etibarlı mənbələr',
@@ -649,10 +650,11 @@ $messages['bg'] = array(
 );
 
 /** Bengali (বাংলা)
+ * @author Bellayet
  * @author Wikitanvir
  */
 $messages['bn'] = array(
-	'articlefeedback' => 'নিবন্ধের ফিডব্যাক',
+	'articlefeedback' => 'নিবন্ধ প্রতিক্রিয়া ড্যাসবোর্ড',
 	'articlefeedback-desc' => 'নিবন্ধের ফিডব্যাক',
 	'articlefeedback-survey-question-origin' => 'জরিপটি শুরুর সময় আপনি কোন পাতায় অবস্থান করছিলেন?',
 	'articlefeedback-survey-question-whyrated' => 'অনুগ্রহপূর্বক আমাদের বলুন, কেনো আজ আপনি এই পাতাটিকে রেট করলেন (প্রযোজ্য সকল অপশন চেক করুন):',
@@ -671,6 +673,7 @@ $messages['bn'] = array(
 	'articlefeedback-error' => 'একটি ত্রুটি দেখা দিয়েছে। অনুগ্রহপূর্বক পরবর্তীতে আবার চেষ্টা করুন।',
 	'articlefeedback-form-switch-label' => 'এই পাতটি রেট করুন',
 	'articlefeedback-form-panel-title' => 'এই পাতটি রেট করুন',
+	'articlefeedback-form-panel-explanation' => 'এটি কী?',
 	'articlefeedback-form-panel-clear' => 'এই রেটিংটি অপসারণ করো',
 	'articlefeedback-form-panel-expertise' => 'আমি এই বিষয়টি সম্পর্কে উচ্চমানের জ্ঞান রাখি (ঐচ্ছিক)',
 	'articlefeedback-form-panel-expertise-studies' => 'আমার এই সম্পর্কিত কলেজ/বিশ্ববিদ্যালয়ের ডিগ্রি রয়েছে',
@@ -712,6 +715,8 @@ $messages['bn'] = array(
 	'articlefeedback-survey-message-success' => 'জরিপটিতে অংশ নেওয়ার জন্য আপনাকে ধন্যবাদ।',
 	'articlefeedback-survey-message-error' => 'একটি ত্রুটি দেখা দিয়েছে।
 অনুগ্রহপূর্বক পরবর্তীতে আবার চেষ্টা করুন।',
+	'articleFeedback-table-heading-page' => 'পাতা',
+	'articleFeedback-table-heading-average' => 'গড়',
 );
 
 /** Breton (Brezhoneg)

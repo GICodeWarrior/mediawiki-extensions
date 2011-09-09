@@ -551,7 +551,7 @@ $messages['no'] = array(
 $messages['or'] = array(
 	'categorymultisort-defaultsortkey-name' => 'ପୂର୍ବ ନିର୍ଦ୍ଧାରିତ',
 	'categorymultisort-go' => 'ଯିବା',
-	'prefs-category' => 'ବିଭାଗ',
+	'prefs-category' => 'ଶ୍ରେଣୀ',
 );
 
 /** Deitsch (Deitsch)
