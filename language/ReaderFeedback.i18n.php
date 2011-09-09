@@ -230,7 +230,9 @@ $messages['ast'] = array(
  * @author Wertuose
  */
 $messages['az'] = array(
+	'readerfeedback-level-3' => 'Yüksək',
 	'readerfeedback-submit' => 'Təsdiq et',
+	'readerfeedback-finished' => 'Təşəkkür!',
 );
 
 /** Bashkir (Башҡортса)
