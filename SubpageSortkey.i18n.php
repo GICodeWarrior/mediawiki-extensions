@@ -38,6 +38,13 @@ $messages['gl'] = array(
 	'subpagesortkey-desc' => 'Cambia a clave de ordenación por defecto dunha páxina para basearse no nome da súa subpáxina no canto do seu nome completo',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'subpagesortkey-desc' => 'Cambia le clave de ordination predefinite de un pagina, basante lo super le nomine de su subpagina in loco de su nomine complete',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
