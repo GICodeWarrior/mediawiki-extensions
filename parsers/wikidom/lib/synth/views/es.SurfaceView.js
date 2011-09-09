@@ -1,10 +1,10 @@
 /**
  * Creates an es.SurfaceView object.
  */
-es.SurfaceView = function( $container, documentModel ) {
+es.SurfaceView = function( $container, surfaceModel ) {
 	this.$ = $container.addClass( 'editSurface' );
-	this.documentModel = documentModel;
-	this.documentView = new es.DocumentView( this.documentModel );
+	this.model = surfaceModel;
+	this.documentView = new es.DocumentView( this.model.getDocument() );
 	this.$.append( this.documentView.$ );
 	this.width = null;
 	

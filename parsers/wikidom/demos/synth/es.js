@@ -139,5 +139,5 @@ $(document).ready( function() {
 			]
 		}
 	] } );
-	var surface = new es.SurfaceView( $('#es-editor'), doc );
+	var surface = new es.SurfaceView( $('#es-editor'), new es.SurfaceModel( doc ) );
 } );
