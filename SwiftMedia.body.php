@@ -126,20 +126,23 @@ class SwiftFile extends LocalFile {
 		}
 	}
 
-	/** getTransformScript inherited */
-	/** getUnscaledThumb inherited */
-	/** thumbName inherited */
-	/** createThumb inherited */
-	/** getThumbnail inherited */
-
 	/**
-	 * class-specific transform (from an original into a thumb).
+	 * Do the work of a transform (from an original into a thumb).
+	 * Contains filesystem-specific functions.
+	 *
+	 * @param $thumbName string: the name of the thumbnail file.
+	 * @param $thumbUrl string: the URL of the thumbnail file.
+	 * @param $params Array: an associative array of handler-specific parameters.
+	 *                Typical keys are width, height and page.
+	 * @param $flags Integer: a bitfield, may contain self::RENDER_NOW to force rendering
+	 *
+	 * @return MediaTransformOutput | false
 	 */
-	function maybeDoTransform( $thumbName, $thumbUrl, $params, $flags = 0 ) {
+	function maybeDoTransform( $thumbName, $thumbUrl, $params, $flags ) {
 		global $wgIgnoreImageErrors, $wgThumbnailEpoch, $wgTmpDirectory;
 
 		// get a temporary place to put the original.
-		$thumbPath = tempnam( $wgTmpDirectory, 'transform_out_' );
+		$thumbPath = tempnam( $wgTmpDirectory, 'transform_out_') . "." . pathinfo( $thumbName, PATHINFO_EXTENSION );
 
 		if ( $this->repo && $this->repo->canTransformVia404() && !($flags & self::RENDER_NOW ) ) {
 			return $this->handler->getTransform( $this, $thumbPath, $thumbUrl, $params );
@@ -176,15 +179,17 @@ class SwiftFile extends LocalFile {
 		}
 
 		// what if they didn't actually write out a thumbnail? Check the file size.
-		if ( $thumb && filesize($thumbPath)) {
+		if ( $thumb && file_exists( $thumbPath ) && filesize( $thumbPath ) ) {
 			// Store the thumbnail into Swift, but in the thumb version of the container.
 			wfDebug(  __METHOD__ . "Creating thumb " . $this->getRel() . "/" . $thumbName . "\n" );
 			$this->repo->write_swift_object( $thumbPath, $container, $this->getRel() . "/" . $thumbName );
 			// php-cloudfiles throws exceptions, so failure never gets here.
 		}
 
-		// Clean up temporary data.
-		unlink( $thumbPath );
+		// Clean up temporary data, if it exists.
+		if ( file_exists( $thumbPath ) ) {
+			@unlink( $thumbPath );
+		}
 
 		return $thumb;
 	}
@@ -878,7 +883,7 @@ class SwiftRepo extends LocalRepo {
 	function getLocalCopy($container, $rel) {
 
 		// get a temporary place to put the original.
-		$tempPath = tempnam( wfTempDir(), 'swift_in_' );
+		$tempPath = tempnam( wfTempDir(), 'swift_in_' ) . "." . pathinfo( $rel, PATHINFO_EXTENSION );
 
 		/* Fetch the image out of Swift */
 		$conn = $this->connect();
