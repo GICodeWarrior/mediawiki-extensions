@@ -166,6 +166,7 @@ $messages['ast'] = array(
  * @author Cekli829
  */
 $messages['az'] = array(
+	'player-file' => 'Fayl adı',
 	'player-goto-page' => 'Səhifə',
 	'player-goto-file' => 'fayl',
 );
