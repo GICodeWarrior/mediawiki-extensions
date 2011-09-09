@@ -35,8 +35,7 @@ $messages['en'] = array(
 See the original [$4 resource page] for more information.',
 	'mwe-import-description' => '$1, imported from $2',
 	'mwe-select_file' => 'Select file',
-	'mwe-select_ownwork' => 'I am uploading entirely my own work, and licensing it under:',
-	'mwe-license_cc-by-sa' => 'Creative Commons Share Alike (3.0)',
+	'mwe-license_cc-by-sa' => 'Creative Commons Share Alike (3.0)', // @todo FIXME: In the code 'mwe-upwiz-license-cc-by-sa-3.0' and 'mwe-upwiz-license-cc-by-3.0' appear to be used.
 	'mwe-upload' => 'Upload file',
 	'mwe-destfilename' => 'Destination filename:',
 	'mwe-summary' => 'Summary',
@@ -44,18 +43,6 @@ See the original [$4 resource page] for more information.',
 	'mwe-error_not_loggedin' => 'You do not appear to be logged in or do not have upload privileges.',
 	'mwe-error-not-loggedin-file' => 'You do not appear to be logged in or there was an error in the software.
 You can $1 and try again',
-	'mwe-link-login' => 'login',
-	'mwe-watch-this-file' => 'Watch this file',
-	'mwe-ignore-any-warnings' => 'Ignore any warnings',
-	'mwe-i-would-like-to' => 'I would like to',
-	'mwe-upload-own-file' => 'Upload my own work to $1',
-	'mwe-upload-not-my-file' => 'Upload media that is not my own work to $1',
-	'mwe-upload-once-done' => 'Please $1.
-Once you have completed your upload, $2',
-	'mwe-upload-in-new-win-link' => 'upload in the new window or tab',
-	'mwe-upload-refresh' => 'refresh your upload list',
-	'mwe-ie-inline-upload' => 'Inline uploading is currently disabled for Internet Explorer.
-You can $1, then $2',
 	'mwe-upload-in-progress' => 'Upload in progress (do not close this window)',
 	'mwe-uploaded-status' => 'Uploaded',
 	'mwe-transcoded-status' => 'Transcoded',
