@@ -555,6 +555,10 @@ $messages['ast'] = array(
  * @author Cekli829
  */
 $messages['az'] = array(
+	'openidnickname' => 'Ləqəb',
+	'openidemail' => 'E-poçt ünvanı',
+	'openidlanguage' => 'Dil',
+	'openidtimezone' => 'Vaxt zonası',
 	'openidchooseusername' => 'İstifadəçi adı:',
 	'openidchoosepassword' => 'Parol:',
 	'openiddelete-button' => 'Təsdiq et',
