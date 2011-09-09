@@ -3,9 +3,12 @@ path="/"
 user="More Bots"
 password="..."
 logname="Server admin log"
+identica_username="wikimediatech"
+identica_password="..."
 
 import mwclient
 import datetime
+import statusnet
 import re
 
 months=["January","February","March","April","May","June","July","August","September","October","November","December"]
@@ -38,3 +41,9 @@ def log(message,author):
 	else:
 		lines.insert(position,logline)
 	page.save('\n'.join(lines),"%s (%s)"%(message,author))
+
+	## IDENTICA :D
+	snapi = statusnet.StatusNet( { 'user': identica_username, 'passwd': identica_password, 'api': 'https://identi.ca/api' } )
+	snupdate = "%s: %s" % (author, message)
+	snupdate = snupdate[:140] # Trim message
+	snapi.update(snupdate)
