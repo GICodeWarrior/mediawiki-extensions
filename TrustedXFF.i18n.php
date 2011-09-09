@@ -402,6 +402,13 @@ $messages['ru'] = array(
 	'trustedxff-desc' => 'Обработка списка доверенных прокси-адресов ([http://meta.wikimedia.org/wiki/XFF_project Проект XFF])',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'trustedxff-desc' => 'Обробка списку достовірных адрес проксі ([http://meta.wikimedia.org/wiki/XFF_project Проєкт XFF])',
+);
+
 /** Sakha (Саха тыла)
  * @author HalanTul
  */
