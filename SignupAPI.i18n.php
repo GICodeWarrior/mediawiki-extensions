@@ -23,6 +23,14 @@ $messages['en'] = array(
 	'signupapi-invalidemailaddress' => 'E-mail address is invalid',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'signupapi-ok' => 'OK',
+	'signupapi-medium' => 'Orta',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Renessaince
  * @author Wizardist
