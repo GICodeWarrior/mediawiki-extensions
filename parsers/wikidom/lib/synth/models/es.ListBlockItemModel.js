@@ -12,6 +12,9 @@ es.ListBlockItemModel = function( content, styles ) {
 	es.ModelContainerItem.call( this, 'list' );
 	this.content = content || null;
 	this.styles = styles || ['bullet'];
+	this.on( 'update', function() {
+		console.log("u111p");
+	} );
 };
 
 /* Methods */
@@ -21,6 +24,18 @@ es.ListBlockItemModel = function( content, styles ) {
  */
 es.ListBlockItemModel.prototype.createView = function() {
 	return new es.ListBlockItemView( this );
+};
+
+es.ListBlockItemModel.prototype.getLevel = function() {
+	return this.styles.length - 1;
+};
+
+es.ListBlockItemModel.prototype.getStyle = function() {
+	if ( typeof level === 'undefined') {
+		return this.styles[this.styles.length - 1];
+	} else {
+		return this.styles[level];
+	}
 };
 
 /**
