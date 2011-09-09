@@ -115,6 +115,7 @@ $messages['az'] = array(
 	'mwe-clipedit-end_time' => 'Bitmə vaxtı',
 	'mwe-clipedit-edit-tools' => 'Alətlərin redaktəsi',
 	'mwe-clipedit-inline-description' => 'Başlıq',
+	'mwe-clipedit-duration' => 'Müddəti:',
 	'mwe-clipedit-layout' => 'Maket',
 );
 
