@@ -81,6 +81,7 @@ $messages['arc'] = array(
 $messages['az'] = array(
 	'commentbox-savebutton' => 'Şərhi yadda saxla',
 	'commentbox-name' => 'Ad:',
+	'commentbox-log' => 'Yeni şərhlər',
 	'commentbox-first-comment-heading' => '== Şərhlər ==',
 );
 
