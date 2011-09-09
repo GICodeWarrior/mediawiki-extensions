@@ -115,6 +115,15 @@ $messages['arz'] = array(
 	'nss-db-error' => 'خطأ قراءة من قاعدة بيانات التحقق.',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'am-username' => 'istifadəçi adı',
+	'am-email' => 'e-məktub',
+	'am-active' => 'aktiv',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
