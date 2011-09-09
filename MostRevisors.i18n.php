@@ -86,6 +86,13 @@ $messages['arc'] = array(
 	'mostrevisors-submit' => 'ܙܠ',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'mostrevisors-namespace' => 'Adlar fəzası:',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
