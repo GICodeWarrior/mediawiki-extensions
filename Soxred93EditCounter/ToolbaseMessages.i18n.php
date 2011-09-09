@@ -156,6 +156,18 @@ $messages['ar'] = array(
 	'toolbase-form-wiki' => 'ويكي',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'toolbase-replag-years' => 'illər',
+	'toolbase-replag-months' => 'aylar',
+	'toolbase-replag-weeks' => 'həftələr',
+	'toolbase-replag-days' => 'günlər',
+	'toolbase-replag-minutes' => 'dəqiqələr',
+	'toolbase-replag-seconds' => 'saniyələr',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
