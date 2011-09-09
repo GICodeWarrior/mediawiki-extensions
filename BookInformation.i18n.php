@@ -1385,6 +1385,13 @@ $messages['oc'] = array(
 	'bookinfo-provider' => 'Fornidor de donadas : $1',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Psubhashish
+ */
+$messages['or'] = array(
+	'bookinfo-result-title' => 'ଶିରୋନାମା:',
+);
+
 /** Ossetic (Ирон)
  * @author Amikeco
  */
