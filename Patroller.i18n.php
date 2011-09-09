@@ -204,6 +204,7 @@ $messages['arz'] = array(
  * @author Vugar 1981
  */
 $messages['az'] = array(
+	'patrol-revert-reason' => 'Səbəb:',
 	'group-patroller' => 'Patrullar',
 	'group-patroller-member' => 'patrul',
 );
