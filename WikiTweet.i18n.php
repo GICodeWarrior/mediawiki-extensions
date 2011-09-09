@@ -93,6 +93,14 @@ $messages['ast'] = array(
 	'wikitweet-fewsecondsago' => 'hai unos segundos',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'wikitweet-status' => 'Status:',
+	'wikitweet-status0' => 'Müzakirə',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
@@ -310,10 +318,27 @@ $messages['frp'] = array(
 	'wikitweet-back-timeline' => 'Retôrn u flux',
 	'wikitweet-tweets-from-room' => 'Tweets de la sâla',
 	'wikitweet-timeago' => 'cen fât $1',
+	'wikitweet-inthefuture' => 'Dens l’avegnir !!',
+	'wikitweet-fewsecondsago' => 'Cen fât doux-três secondes',
+	'wikitweet-status' => 'Statut :',
+	'wikitweet-status0' => 'Discussion',
+	'wikitweet-status1' => 'Èvènement',
 	'wikitweet-status2' => 'Avèrtissement',
+	'wikitweet-status3' => 'Alèrta',
 	'wikitweet-resolve' => 'solucionar',
+	'wikitweet-concerns' => 'Vos regârde',
 	'wikitweet-comment' => 'Comentèro',
+	'wikitweet-subscribers' => 'Abonâs :',
+	'wikitweet-hourly' => 'A châ hora',
+	'wikitweet-perperson' => 'Per pèrsona',
+	'wikitweet-inresponseto' => 'En rèponsa a :',
+	'wikitweet-from' => 'de',
+	'wikitweet-in' => 'dens',
+	'wikitweet-directlink' => 'Lim drêt :',
 	'wikitweet-mailsent' => 'mèssâjo mandâ',
+	'wikitweet-viaroom' => 'a travèrs de sâla',
+	'wikitweet-alertsolved' => 'yona de voutres alèrtes at étâ solucionâ dens la sâla',
+	'wikitweet-cannotparse' => 'Empossiblo de parsar',
 );
 
 /** Galician (Galego)
