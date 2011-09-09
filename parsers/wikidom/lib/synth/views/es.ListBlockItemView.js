@@ -4,6 +4,8 @@
 es.ListBlockItemView = function( model ) {
 	es.ViewContainerItem.call( this, model, 'listItem' );
 	this.contentView = new es.ContentView( this.$, this.model.content );
+	this.$.addClass( 'editSurface-listItem-' + this.model.styles[this.model.styles.length - 1] )
+		.addClass( 'editSurface-listItem-level' + ( this.model.styles.length - 1 ) );
 };
 
 /**
