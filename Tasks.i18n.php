@@ -348,6 +348,7 @@ $messages['az'] = array(
 	'tasks_form_comment' => 'Şərh',
 	'tasks_delete' => 'Sil',
 	'tasks_table_header_page' => 'Səhifə',
+	'tasks_search_form_title' => 'Axtar',
 	'tasks_search_status' => 'Status',
 );
 
