@@ -178,6 +178,13 @@ $messages['arz'] = array(
 	'action-povwatch_user' => 'ضيف الصفحه دى لـ ليستة المراقبه بتاعة يوزر تانى',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'povwatch_title' => 'Başlıq:',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
@@ -1844,6 +1851,13 @@ $messages['oc'] = array(
 	'right-povwatch_user' => 'Apond de paginas a la lista de seguiment dels autres utilizaires',
 	'action-povwatch_admin' => "administrar los dreches d'utilizaire per PovWatch",
 	'action-povwatch_user' => "apondre aquesta pagina a la lista de seguiment d'autres utilizaires",
+);
+
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Psubhashish
+ */
+$messages['or'] = array(
+	'povwatch_title' => 'ଶିରୋନାମା:',
 );
 
 /** Ossetic (Ирон)
