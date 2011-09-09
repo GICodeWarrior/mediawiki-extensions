@@ -257,6 +257,14 @@ $messages['arz'] = array(
  */
 $messages['az'] = array(
 	'recordadmin-submit' => 'Təsdiq et',
+	'recordadmin-buttonsearch' => 'Axtar',
+	'recordadmin-buttoncreate' => 'Yarat',
+	'recordadmin-buttonreset' => 'Qur',
+	'recordadmin-searchresult' => 'Axtarış nəticələri',
+	'recordadmin-buttonsave' => 'Qeyd et',
+	'recordadmin-viewlink' => 'görünüş',
+	'recordadmin-editlink' => 'redaktə',
+	'recordadmin-actions' => 'Redaktə',
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 );
