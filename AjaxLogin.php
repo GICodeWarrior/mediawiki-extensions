@@ -4,7 +4,7 @@
  *
  * @file
  * @ingroup Extensions
- * @version 2.2.0
+ * @version 2.2.1
  * @author Inez Korczyński <korczynski(at)gmail(dot)com>
  * @author Jack Phoenix <jack@countervandalism.net>
  * @author Ryan Schmidt <skizzerz@shoutwiki.com>
@@ -19,7 +19,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'AjaxLogin',
-	'version' => '2.2.0',
+	'version' => '2.2.1',
 	'author' => array( 'Inez Korczyński', 'Jack Phoenix', 'Ryan Schmidt' ),
 	'url' => 'http://www.mediawiki.org/wiki/Extension:AjaxLogin',
 	'descriptionmsg' => 'ajaxlogin-desc',
