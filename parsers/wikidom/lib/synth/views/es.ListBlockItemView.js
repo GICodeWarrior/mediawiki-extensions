@@ -3,9 +3,14 @@
  */
 es.ListBlockItemView = function( model ) {
 	es.ViewContainerItem.call( this, model, 'listItem' );
-	this.contentView = new es.ContentView( this.$, this.model.content );
-	this.$.addClass( 'editSurface-listItem-' + this.model.styles[this.model.styles.length - 1] )
+	this.$icon = $( '<div class="editSurface-listItem-icon"></div>' );
+	this.$content = $( '<div class="editSurface-listItem-content"></div>' );
+	this.$
+		.append( this.$icon )
+		.append( this.$content )
+		.addClass( 'editSurface-listItem-' + this.model.styles[this.model.styles.length - 1] )
 		.addClass( 'editSurface-listItem-level' + ( this.model.styles.length - 1 ) );
+	this.contentView = new es.ContentView( this.$content, this.model.content );
 };
 
 /**
@@ -13,6 +18,10 @@ es.ListBlockItemView = function( model ) {
  */
 es.ListBlockItemView.prototype.renderContent = function() {
 	this.contentView.render();
+};
+
+es.ListBlockItemView.prototype.setNumber = function( number ) {
+	this.$icon.text( number + '.' );
 };
 
 /**
