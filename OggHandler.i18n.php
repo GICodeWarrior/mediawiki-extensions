@@ -2659,7 +2659,7 @@ $messages['or'] = array(
 	'ogg-pause' => 'ବିରତି',
 	'ogg-stop' => 'ବିରାମ',
 	'ogg-more' => 'ଅଧିକ...',
-	'ogg-dismiss' => 'ବନ୍ଦ କରନ୍ତୁ',
+	'ogg-dismiss' => 'ବନ୍ଦ କରିବେ',
 );
 
 /** Ossetic (Ирон)
