@@ -1,0 +1,11 @@
+Hijack cmake install prefix for packaging
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -147,6 +147,7 @@
+ SET(CPACK_RESOURCE_FILE_README "${CMAKE_SOURCE_DIR}/cpackInfo/ReadMe.rtf")
+ SET(CPACK_RESOURCE_FILE_WELCOME "${CMAKE_SOURCE_DIR}/cpackInfo/Welcome.rtf")
+ SET(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_SOURCE_DIR}/cpackInfo/COPYING.rtf")
++SET(CMAKE_INSTALL_PREFIX "${CMAKE_SOURCE_DIR}/debian/oggvideotools/usr")
+ SET(CPACK_PACKAGE_VERSION_MAJOR "0")
+ SET(CPACK_PACKAGE_VERSION_MINOR "8")
+ SET(CPACK_PACKAGE_VERSION_PATCH "a")

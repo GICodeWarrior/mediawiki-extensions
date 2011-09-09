@@ -1,8 +1,10 @@
-oggvideotools (0.8a) lucid-wikimedia; urgency=low
+oggvideotools (0.8a-1) lucid-wikimedia; urgency=low
 
-  * initial wikimedia package build
+  * Initial packaging of CMake build based oggtools
+    - all new debian/* 
+  * Minor bugfixes and enhancements
 
- -- peter youngmeister <py@wikimedia.org>  Wed, 07 Sep 2011 10:12:16 -0700
+ -- Asher Feldman <afeldman@wikimedia.org>  Fri, 09 Sep 2011 14:06:00 -0700
 
 oggvideotools (0.8-1) unstable; urgency=low
 
