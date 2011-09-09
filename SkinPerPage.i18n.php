@@ -432,6 +432,13 @@ $messages['ru'] = array(
 	'skinperpage-desc' => 'Добавляет тег <code>&lt;skin&gt;</code> для указания оформления страницы',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'skinperpage-desc' => 'Придасть таґ <code>&lt;skin&gt;</code> доволюючій зволити іншый мотів взгляду про єднотливы сторінкы',
+);
+
 /** Sakha (Саха тыла)
  * @author HalanTul
  */
