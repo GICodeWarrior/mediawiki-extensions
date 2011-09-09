@@ -150,6 +150,32 @@ $messages['ar'] = array(
 	'narayam-bn-nkb' => 'بنغالي إن كي بي (Bengali NKB)',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'narayam-help' => 'Kömək',
+	'narayam-hi-inscript' => 'Hindi InScript',
+	'narayam-kn' => 'Kannada Transliteration',
+	'narayam-kn-inscript' => 'Kannada InScript',
+	'narayam-ml' => 'Malayalam Transliteration',
+	'narayam-ml-inscript' => 'Malayalam InScript',
+	'narayam-ne' => 'Nepali Transliteration',
+	'narayam-ne-inscript' => 'Nepali InScript',
+	'narayam-or' => 'Oriya Transliteration',
+	'narayam-or-inscript' => 'Oriya InScript',
+	'narayam-sa' => 'Sanskrit Transliteration',
+	'narayam-sa-inscript' => 'Sanskrit InScript',
+	'narayam-si-singlish' => 'Sinhala Singlish',
+	'narayam-si-wijesekara' => 'Sinhala Wijesekara',
+	'narayam-ta99' => 'Tamil99',
+	'narayam-ta' => 'Tamil Transliteration',
+	'narayam-te-inscript' => 'Telugu InScript',
+	'narayam-bn-avro' => 'Bengali Avro',
+	'narayam-bn-inscript' => 'Bengali InScript',
+	'narayam-bn-nkb' => 'Bengali NKB',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
@@ -200,6 +226,9 @@ $messages['bg'] = array(
  */
 $messages['bn'] = array(
 	'narayam-desc' => 'ইনপুট ক্ষেত্রের জন্য কাস্টম ইনপুট পদ্ধতির যোগ অনুমোদন করে',
+	'narayam-toggle-ime' => 'সক্রিয় ($1)',
+	'narayam-menu' => 'ইনপুট প্রক্রিয়া',
+	'narayam-help' => 'সাহায্য',
 	'narayam-help-page' => 'Help:টাইপিং',
 	'narayam-disable-preference' => 'Narayam ইনপুট মেথড এডিটর (IME) নিষ্ক্রিয়',
 	'narayam-eo' => 'এসপারেন্টো',
@@ -208,6 +237,8 @@ $messages['bn'] = array(
 	'narayam-kn-inscript' => 'কন্নড় ইন্সক্রিপ্ট',
 	'narayam-ml' => 'মালায়লম প্রতিবর্ণীকরণ',
 	'narayam-ml-inscript' => 'মালয়লাম ইন্সক্রিপ্ট',
+	'narayam-ne' => 'নেপালী প্রতিবর্ণীকরণ',
+	'narayam-ne-inscript' => 'নেপালী ইন্সক্রিপ্ট',
 	'narayam-or' => 'ওড়িয়া প্রতিবর্ণীকরণ',
 	'narayam-or-inscript' => 'ওড়িয়া ইন্সক্রিপ্ট',
 	'narayam-sa' => 'সংস্কৃত প্রতিবর্ণীকরণ',
@@ -998,8 +1029,12 @@ $messages['no'] = array(
  * @author Psubhashish
  */
 $messages['or'] = array(
-	'narayam-or' => 'Odia Transliteration',
-	'narayam-or-inscript' => 'Odia InScript',
+	'narayam-toggle-ime' => '($1) ସଚଳ କରାଇବେ',
+	'narayam-menu' => 'ଇନପୁଟ ପ୍ରଣାଳୀ',
+	'narayam-help' => 'ସହଯୋଗ',
+	'narayam-help-page' => 'Help:ଟାଇପ କରିବା',
+	'narayam-or' => 'ଓଡ଼ିଆ ଟ୍ରାନ୍ସଲିଟରେସନ',
+	'narayam-or-inscript' => 'ଓଡ଼ିଆ ଇନସ୍କ୍ରିପ୍ଟ',
 );
 
 /** Polish (Polski)
@@ -1458,11 +1493,12 @@ $messages['tl'] = array(
  * @author Dim Grits
  */
 $messages['uk'] = array(
-	'narayam-toggle-ime' => 'Для перемикання методу вводу ($1)',
+	'narayam-toggle-ime' => 'Активувати ($1)',
 	'narayam-menu' => 'Метод введення',
 	'narayam-help' => 'Довідка',
 	'narayam-help-page' => 'Help:Набір тексту',
 	'narayam-checkbox-tooltip' => 'Для перемикання методів вводу',
+	'narayam-disable-preference' => 'Вимкнути редактор методу введення нараям (IME)',
 	'narayam-eo' => 'Есперанто',
 	'narayam-hi-inscript' => 'Гінді Inscript',
 	'narayam-kn' => 'Транслітерація каннада',
@@ -1476,6 +1512,7 @@ $messages['uk'] = array(
 	'narayam-sa' => 'Транслітерація санскритом',
 	'narayam-sa-inscript' => 'Санскрит Inscript',
 	'narayam-si-singlish' => 'Сингальський Сінгліш',
+	'narayam-si-wijesekara' => 'Сингальська Віджесекера',
 	'narayam-ta99' => 'Таміл99',
 	'narayam-ta' => 'Тамільська транслітерація',
 	'narayam-te-inscript' => 'Телугу Inscript',
