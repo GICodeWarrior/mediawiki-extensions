@@ -12,9 +12,6 @@ es.ListBlockItemModel = function( content, styles ) {
 	es.ModelContainerItem.call( this, 'list' );
 	this.content = content || null;
 	this.styles = styles || ['bullet'];
-	this.on( 'update', function() {
-		console.log("u111p");
-	} );
 };
 
 /* Methods */
