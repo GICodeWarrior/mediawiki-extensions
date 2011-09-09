@@ -99,6 +99,7 @@ es.ViewContainer = function( containerModel, typeName, tagName ) {
 	var itemModels = this.containerModel.all();
 	for ( var i = 0; i < itemModels.length; i++ ) {
 		var itemView = itemModels[i].createView();
+		itemView.on( 'update', container.relayUpdate );
 		this.views.push( itemView );
 		this.$.append( itemView.$ );
 	}
