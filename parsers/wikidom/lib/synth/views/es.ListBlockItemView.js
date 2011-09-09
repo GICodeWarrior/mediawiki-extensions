@@ -11,6 +11,10 @@ es.ListBlockItemView = function( model ) {
 		.addClass( 'editSurface-listItem-' + this.model.styles[this.model.styles.length - 1] )
 		.addClass( 'editSurface-listItem-level' + ( this.model.styles.length - 1 ) );
 	this.contentView = new es.ContentView( this.$content, this.model.content );
+	var view = this;
+	this.contentView.on( 'update', function() {
+		view.emit( 'update' );
+	} );
 };
 
 /**
