@@ -433,7 +433,7 @@ es.ContentModel.prototype.insert = function( offset, content, autoAnnotate ) {
 		'offset': offset,
 		'content': content
 	} );
-	this.emit( 'change', { 'type': 'insert' } );
+	this.emit( 'update', { 'type': 'insert' } );
 };
 
 /**
@@ -450,7 +450,7 @@ es.ContentModel.prototype.remove = function( range ) {
 	this.emit( 'remove', {
 		'range': range
 	} );
-	this.emit( 'change', { 'type': 'remove' } );
+	this.emit( 'update', { 'type': 'remove' } );
 };
 
 /**
@@ -463,7 +463,7 @@ es.ContentModel.prototype.remove = function( range ) {
 es.ContentModel.prototype.clear = function() {
 	this.data = [];
 	this.emit( 'clear' );
-	this.emit( 'change', { 'type': 'clear' } );
+	this.emit( 'update', { 'type': 'clear' } );
 };
 
 /**
@@ -568,7 +568,7 @@ es.ContentModel.prototype.annotate = function( method, annotation, range ) {
 		'annotation': annotation,
 		'range': range
 	} );
-	this.emit( 'change', { 'type': 'annotate' } );
+	this.emit( 'update', { 'type': 'annotate' } );
 };
 
 es.extend( es.ContentModel, es.EventEmitter );

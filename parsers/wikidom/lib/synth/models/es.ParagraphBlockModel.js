@@ -8,7 +8,11 @@
  */
 es.ParagraphBlockModel = function( content ) {
 	es.BlockModel.call( this, ['hasContent', 'isAnnotatable'] );
-	this.content = content || null;
+	this.content = content || new es.ContentModel();
+	var model = this;
+	this.content.on( 'change', function() {
+		model.emit( 'update' );
+	} );
 };
 
 /* Static Methods */

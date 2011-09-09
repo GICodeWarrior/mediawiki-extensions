@@ -4,6 +4,10 @@
 es.ParagraphBlockView = function( model ) {
 	es.BlockView.call( this, model, 'paragraph' );
 	this.contentView = new es.ContentView( this.$, this.model.content );
+	var view = this;
+	this.contentView.on( 'update', function() {
+		view.emit('update');
+	} );
 };
 
 /**

@@ -447,7 +447,7 @@ es.ContentView.prototype.renderIteration = function( limit ) {
 			.nextAll()
 			.remove();
 		rs.timeout = undefined;
-		this.emit( 'render' );
+		this.emit( 'update' );
 	} else {
 		rs.ruler.innerHTML = '';
 		var that = this;
@@ -494,7 +494,7 @@ es.ContentView.prototype.render = function( offset ) {
 			'wordOffset': 0,
 			'fractional': false
 		}];
-		this.emit( 'render' );
+		this.emit( 'update' );
 		return;
 	}
 	/*

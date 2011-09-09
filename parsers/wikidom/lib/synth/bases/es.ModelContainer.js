@@ -114,16 +114,12 @@ es.ModelContainer.prototype.append = function( item ) {
 	var parent = item.parent();
 	if ( parent === this ) {
 		this[this._listName].splice( this.indexOf( item ), 1 );
-		this[this._listName].push( item );
-	} else {
-		if ( parent ) {
-			parent.remove( item );
-		}
-		this[this._listName].push( item );
-		var container = this;
-		item.on( 'update', this.relayUpdate );
-		item.attach( this );
+	} else if ( parent ) {
+		parent.remove( item );
 	}
+	this[this._listName].push( item );
+	item.on( 'update', this.relayUpdate );
+	item.attach( this );
 	this.emit( 'append', item );
 	this.emit( 'update' );
 };
@@ -141,16 +137,12 @@ es.ModelContainer.prototype.prepend = function( item ) {
 	var parent = item.parent();
 	if ( parent === this ) {
 		this[this._listName].splice( this.indexOf( item ), 1 );
-		this[this._listName].unshift( item );
-	} else {
-		if ( parent ) {
-			parent.remove( item );
-		}
-		this[this._listName].unshift( item );
-		var container = this;
-		item.on( 'update', this.relayUpdate );
-		item.attach( this );
+	} else if ( parent ) {
+		parent.remove( item );
 	}
+	this[this._listName].unshift( item );
+	item.on( 'update', this.relayUpdate );
+	item.attach( this );
 	this.emit( 'prepend', item );
 	this.emit( 'update' );
 };
@@ -169,24 +161,16 @@ es.ModelContainer.prototype.insertBefore = function( item, before ) {
 	var parent = item.parent();
 	if ( parent === this ) {
 		this[this._listName].splice( this.indexOf( item ), 1 );
-		if ( before ) {
-			this[this._listName].splice( this[this._listName].indexOf( before ), 0, item );
-		} else {
-			this[this._listName].unshift( item );
-		}
-	} else {
-		if ( parent ) {
-			parent.remove( item );
-		}
-		if ( before ) {
-			this[this._listName].splice( this[this._listName].indexOf( before ), 0, item );
-		} else {
-			this[this._listName].unshift( item );
-		}
-		var container = this;
-		item.on( 'update', this.relayUpdate );
-		item.attach( this );
+	} else if ( parent ) {
+		parent.remove( item );
 	}
+	if ( before ) {
+		this[this._listName].splice( this[this._listName].indexOf( before ), 0, item );
+	} else {
+		this[this._listName].unshift( item );
+	}
+	item.on( 'update', this.relayUpdate );
+	item.attach( this );
 	this.emit( 'insertBefore', item, before );
 	this.emit( 'update' );
 };
@@ -205,24 +189,16 @@ es.ModelContainer.prototype.insertAfter = function( item, after ) {
 	var parent = item.parent();
 	if ( parent === this ) {
 		this[this._listName].splice( this.indexOf( item ), 1 );
-		if ( after ) {
-			this[this._listName].splice( this[this._listName].indexOf( after ) + 1, 0, item );
-		} else {
-			this[this._listName].push( item );
-		}
-	} else {
-		if ( parent ) {
-			parent.remove( item );
-		}
-		if ( after ) {
-			this[this._listName].splice( this[this._listName].indexOf( after ) + 1, 0, item );
-		} else {
-			this[this._listName].push( item );
-		}
-		var container = this;
-		item.on( 'update', this.relayUpdate );
-		item.attach( this );
+	} else if ( parent ) {
+		parent.remove( item );
 	}
+	if ( after ) {
+		this[this._listName].splice( this[this._listName].indexOf( after ) + 1, 0, item );
+	} else {
+		this[this._listName].push( item );
+	}
+	item.on( 'update', this.relayUpdate );
+	item.attach( this );
 	this.emit( 'insertAfter', item, after );
 	this.emit( 'update' );
 };

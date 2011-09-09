@@ -9,7 +9,11 @@
 es.ListBlockModel = function( items ) {
 	es.BlockModel.call( this, ['hasContent', 'isAnnotatable', 'isAggregate'] );
 	es.ModelContainer.call( this );
-	this.items = new es.AggregateArray( items || [] );
+	if ( $.isArray( items ) ) {
+		for ( var i = 0; i < items.length; i++ ) {
+			this.append( items[i] );
+		}
+	}
 };
 
 /* Static Methods */

@@ -31,6 +31,9 @@ es.ViewContainer = function( containerModel, typeName, tagName ) {
 	}
 	this.$.addClass( 'editSurface-' + typeName ).data( typeName, this );
 	var container = this;
+	this.relayUpdate = function() {
+		container.emit( 'update' );
+	};
 	function recycleItemView( itemModel, autoCreate ) {
 		var itemView = container.lookupItemView( itemModel );
 		if ( itemView ) {
@@ -44,6 +47,7 @@ es.ViewContainer = function( containerModel, typeName, tagName ) {
 	}
 	this.containerModel.on( 'prepend', function( itemModel ) {
 		var itemView = recycleItemView( itemModel, true );
+		itemView.on( 'update', container.relayUpdate );
 		container.views.unshift( itemView );
 		container.$.prepend( itemView.$ );
 		container.emit( 'prepend', itemView );
@@ -51,6 +55,7 @@ es.ViewContainer = function( containerModel, typeName, tagName ) {
 	} );
 	this.containerModel.on( 'append', function( itemModel ) {
 		var itemView = recycleItemView( itemModel, true );
+		itemView.on( 'update', container.relayUpdate );
 		container.views.push( itemView );
 		container.$.append( itemView.$ );
 		container.emit( 'append', itemView );
@@ -59,6 +64,7 @@ es.ViewContainer = function( containerModel, typeName, tagName ) {
 	this.containerModel.on( 'insertBefore', function( itemModel, beforeModel ) {
 		var beforeView = container.lookupItemView( beforeModel ),
 			itemView = recycleItemView( itemModel, true );
+		itemView.on( 'update', container.relayUpdate );
 		if ( beforeView ) {
 			container.views.splice( container.views.indexOf( beforeView ), 0, itemView );
 			itemView.$.insertBefore( beforeView.$ );
@@ -72,6 +78,7 @@ es.ViewContainer = function( containerModel, typeName, tagName ) {
 	this.containerModel.on( 'insertAfter', function( itemModel, afterModel ) {
 		var afterView = container.lookupItemView( afterModel ),
 			itemView = recycleItemView( itemModel, true );
+		itemView.on( 'update', container.relayUpdate );
 		if ( afterView ) {
 			container.views.splice( container.views.indexOf( afterView ) + 1, 0, itemView );
 			itemView.$.insertAfter( afterView.$ );
@@ -84,6 +91,7 @@ es.ViewContainer = function( containerModel, typeName, tagName ) {
 	} );
 	this.containerModel.on( 'remove', function( itemModel ) {
 		var itemView = recycleItemView( itemModel );
+		itemView.removeListener( 'update', container.relayUpdate );
 		container.emit( 'remove', itemView );
 		container.emit( 'update' );
 	} );
