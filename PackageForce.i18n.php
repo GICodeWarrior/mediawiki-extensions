@@ -74,6 +74,13 @@ $messages['arc'] = array(
 	'pf-header-approve' => 'ܩܘܒܠܐ',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'pf-header-page_title' => 'Başlıq',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
@@ -653,6 +660,13 @@ $messages['no'] = array(
 	'pf-header-type' => 'Sidetype',
 	'pf-header-page_title' => 'Tittel',
 	'pf-header-approve' => 'Godkjenn',
+);
+
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Psubhashish
+ */
+$messages['or'] = array(
+	'pf-header-page_title' => 'ଶିରୋନାମା',
 );
 
 /** Deitsch (Deitsch)
