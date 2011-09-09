@@ -56,6 +56,14 @@ $messages['arc'] = array(
 	'articletocategory2-create-category-under-category-button' => 'ܒܪܝ',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'articletocategory2-create-article-under-category-button' => 'Yarat',
+	'articletocategory2-create-category-under-category-button' => 'Yarat',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  */
