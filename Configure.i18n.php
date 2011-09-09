@@ -1031,6 +1031,7 @@ $messages['az'] = array(
 	'configure-section-block' => 'Bloklar',
 	'configure-section-cookie' => 'Kökələr',
 	'configure-section-test' => 'Testlər',
+	'configure-section-upload' => 'Yüklə',
 	'configure-section-images' => 'Fayllar',
 	'configure-section-antivirus' => 'Antivirus',
 	'configure-section-users' => 'İstifadəçilər',
@@ -2292,6 +2293,7 @@ $messages['cy'] = array(
  * @author Byrial
  * @author Hylle
  * @author Nghtwlkr
+ * @author Peter Alberti
  */
 $messages['da'] = array(
 	'configure' => 'Konfigurér wikien',
@@ -2368,9 +2370,11 @@ Du bedes oprette den og og køre configure.sql eller rette navnet.',
 	'configure-section-profiling' => 'Profilering',
 	'configure-section-site' => 'Tilpasning af sitet',
 	'configure-section-css-js' => 'CSS og Javascript',
+	'configure-section-resourceloader' => 'Ressourceindlæser',
 	'configure-section-namespaces' => 'Navnerum',
 	'configure-section-stats' => 'Site-statistik',
 	'configure-section-skin' => 'Temaer',
+	'configure-section-vector' => 'Vectorudseende',
 	'configure-section-category' => 'Kategorier',
 	'configure-section-cache' => 'Cache',
 	'configure-section-pcache' => 'Parser cache',
