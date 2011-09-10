@@ -26,30 +26,18 @@ class SelectCategory {
 		# check if we should do anything or sleep
 		if ( self::checkConditions( $isUpload, $pageObj ) ) {
 			# Register CSS file for our select box
-			global $wgOut, $wgScriptPath, $wgUser, $wgTitle;
+			global $wgOut, $wgUser, $wgExtensionAssetsPath;
 			global $wgSelectCategoryMaxLevel;
 
-			$wgOut->addLink(
-				array(
-					'rel'  => 'stylesheet',
-					'type' => 'text/css',
-					'href' => $wgScriptPath.'/extensions/SelectCategory/SelectCategory.css'
-				)
-			);
-			$wgOut->addLink(
-				array(
-					'rel'  => 'stylesheet',
-					'type' => 'text/css',
-					'href' => $wgScriptPath.'/extensions/SelectCategory/jquery.treeview.css'
-				)
-			);
-			$wgOut->addScript( '<script src="'.$wgScriptPath.'/extensions/SelectCategory/jquery.treeview.js" type="text/javascript"></script>' );
-			$wgOut->addScript( '<script src="'.$wgScriptPath.'/extensions/SelectCategory/SelectCategory.js" type="text/javascript"></script>' );
+			$wgOut->addExtensionStyle( "{$wgExtensionAssetsPath}/SelectCategory/SelectCategory.css" );
+			$wgOut->addExtensionStyle( "{$wgExtensionAssetsPath}/SelectCategory/jquery.treeview.css" );
+			$wgOut->addScriptFile( "{$wgExtensionAssetsPath}/SelectCategory/jquery.treeview.js" );
+			$wgOut->addScriptFile( "{$wgExtensionAssetsPath}/SelectCategory/SelectCategory.js" );
 
 			$skin = $wgUser->getSkin();
 
 			# Get all categories from wiki
-			$allCats = self::getAllCategories();
+			$allCats = self::getAllCategories( $isUpload ? NS_SPECIAL : $pageObj->mTitle->getNamespace() );
 			# Load system messages
 		
 			# Get the right member variables, depending on if we're on an upload form or not
@@ -115,7 +103,7 @@ class SelectCategory {
 				}
 				# Clean names for text output
 				$catName = str_replace( '_', ' ', $category );
-				$title = $wgTitle->newFromText( $category, NS_CATEGORY );
+				$title = Title::newFromText( $category, NS_CATEGORY );
 				# Output the actual checkboxes, indented
 				$pageObj->$place .= '<li' . $open . '><input type="checkbox" name="SelectCategoryList[]" value="'.$category.'" class="checkbox" '.$checked.' />'.$skin->link( $title, $catName )."\n";
 				# set id for next level
@@ -138,7 +126,6 @@ class SelectCategory {
 	## Entry point for the hook and main function for saving the page
 	public static function saveHook( $isUpload, $pageObj ) {
 		global $wgContLang;
-		global $wgTitle;
 
 		# check if we should do anything or sleep
 		if ( self::checkConditions( $isUpload, $pageObj ) ) {
@@ -148,7 +135,7 @@ class SelectCategory {
 
 			# default sort key is page name with stripped namespace name,
 			# otherwise sorting is ugly.
-			if( $wgTitle->getNamespace() == NS_MAIN ) {
+			if( !$isUpload && $pageObj->mTitle->getNamespace() == NS_MAIN ) {
 				$default_sortkey = "";
 			} else {
 				$default_sortkey = "|{{PAGENAME}}";
@@ -181,12 +168,10 @@ class SelectCategory {
 	##   'Name' => (int) Depth,
 	##   ...
 	## )
-	public static function getAllCategories() {
-		global $wgTitle;
+	public static function getAllCategories( $namespace ) {
 		global $wgSelectCategoryRoot;
 
 		# Get current namespace (save duplicate call of method)
-		$namespace = $wgTitle->getNamespace();
 		if( $namespace >= 0 && array_key_exists( $namespace, $wgSelectCategoryRoot ) && $wgSelectCategoryRoot[$namespace] ) {
 			# Include root and step into the recursion
 			$allCats = array_merge( array( $wgSelectCategoryRoot[$namespace] => 0 ),
@@ -307,7 +292,6 @@ ORDER BY tmpSelectCatPage.page_title ASC;';
 	public static function checkConditions ($isUpload, $pageObj ) {
 		global $wgSelectCategoryNamespaces;
 		global $wgSelectCategoryEnableSubpages;
-		global $wgTitle;
 
 
 		# Run only if we are in an upload, an activated namespace or if page is
@@ -318,7 +302,7 @@ ORDER BY tmpSelectCatPage.page_title ASC;';
 			return true;
 		}
 
-		$ns = $wgTitle->getNamespace();
+		$ns = $pageObj->mTitle->getNamespace();
 		if( array_key_exists( $ns, $wgSelectCategoryNamespaces ) ) {
 			$enabledForNamespace = $wgSelectCategoryNamespaces[$ns];
 		} else {
@@ -326,7 +310,7 @@ ORDER BY tmpSelectCatPage.page_title ASC;';
 		}
 
 		# Check if page is subpage once to save method calls below
-		$isSubpage = $wgTitle->isSubpage();
+		$isSubpage = $pageObj->mTitle->isSubpage();
 
 		if ($enabledForNamespace
 			&& (!$isSubpage
