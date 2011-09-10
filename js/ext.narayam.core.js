@@ -477,7 +477,7 @@ $.narayam = new ( function() {
 			var $narayamMenuItemLabel = $( '<label />' )
 					.attr( 'for' ,'narayam-' + scheme )
 					.append( $input )
-					.append( mw.msg( schemes[scheme].namemsg ) );
+					.append( mw.html.escape( mw.msg( schemes[scheme].namemsg ) ) );
 			
 			var $narayamMenuItem = $( '<li/>' )
 				.append( $input )
