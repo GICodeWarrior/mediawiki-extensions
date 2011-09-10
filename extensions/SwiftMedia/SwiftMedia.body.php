@@ -188,7 +188,9 @@ class SwiftFile extends LocalFile {
 
 		// Clean up temporary data, if it exists.
 		if ( file_exists( $thumbPath ) ) {
-			@unlink( $thumbPath );
+			wfSuppressWarnings();
+			unlink( $thumbPath );
+			wfRestoreWarnings();
 		}
 
 		return $thumb;
