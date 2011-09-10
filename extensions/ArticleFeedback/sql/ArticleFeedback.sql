@@ -14,6 +14,8 @@ INSERT INTO /*_*/article_feedback_ratings (aar_rating) VALUES ('articlefeedback-
 
 -- Store article feedbacks (user rating per revision)
 CREATE TABLE IF NOT EXISTS /*_*/article_feedback (
+  -- Row ID (primary key)
+  aa_id integer unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
   -- Foreign key to page.page_id
   aa_page_id integer unsigned NOT NULL,
   -- User Id (0 if anon)
@@ -31,11 +33,10 @@ CREATE TABLE IF NOT EXISTS /*_*/article_feedback (
   -- Value of the rating (0 is "unrated", else 1-5)
   aa_rating_value int unsigned NOT NULL,
   -- Which rating widget the user was given. Default of 0 is the "old" design
-  aa_design_bucket int unsigned NOT NULL DEFAULT 0,
-  -- 1 vote per user per revision
-  PRIMARY KEY (aa_revision, aa_user_text, aa_rating_id, aa_user_anon_token)
+  aa_design_bucket int unsigned NOT NULL DEFAULT 0
 ) /*$wgDBTableOptions*/;
-CREATE INDEX /*i*/aa_user_page_revision ON /*_*/article_feedback (aa_user_id, aa_page_id, aa_revision);
+CREATE INDEX /*i*/aa_page_user_token_id ON /*_*/article_feedback (aa_page_id, aa_user_text, aa_user_anon_token, aa_id);
+CREATE INDEX /*i*/aa_revision ON /*_*/article_feedback (aa_revision);
 -- Create an index on the article_feedback.aa_timestamp field
 CREATE INDEX /*i*/article_feedback_timestamp ON /*_*/article_feedback (aa_timestamp);
 

@@ -230,6 +230,15 @@ class ArticleFeedbackHooks {
 				$dir . '/sql/AddArticleFeedbackTimestampIndex.sql',
 				true
 			) );
+			
+			// This change recreates the PK on a new field. Check for that new field's existence
+			$updater->addExtensionUpdate( array(
+				'addField',
+				'article_feedback',
+				'aa_id',
+				$dir . '/sql/RecreatePK.sql',
+				true
+			) );
 		}
 		return true;
 	}
