@@ -187,14 +187,13 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 			array(
 				'aa_page_id' => $params['pageid'],
 				'aa_rating_id' => $wgArticleFeedbackRatings,
-				'aa_user_id' => $wgUser->getId(),
 				'aa_user_text' => $wgUser->getName(),
 				'aa_user_anon_token' => $this->getAnonToken( $params ),
 			),
 			__METHOD__,
 			array(
 				'LIMIT' => count( $wgArticleFeedbackRatings ),
-				'ORDER BY' => 'aa_revision DESC',
+				'ORDER BY' => 'aa_id DESC',
 			),
 			array(
 				'article_feedback_ratings' => array( 'LEFT JOIN', array( 'aar_id=aa_rating_id' ) )
