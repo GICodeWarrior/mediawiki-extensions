@@ -451,12 +451,14 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author Schu
  */
 $messages['ja'] = array(
 	'useroptionstats' => '利用者オプション統計',
-	'useroptionstats-desc' => 'MediaWiki の利用者オプションの設定状況をリポートする[[Special:UserOptionStats|特別ページ]]',
+	'useroptionstats-desc' => 'MediaWiki の利用者オプションの設定状況をレポートする[[Special:UserOptionStats|特別ページ]]',
 	'uos-warn' => 'PHPlot がインストールされていません。',
 	'uos-choose' => '次の利用者オプションのうち1つを選んでください: $1',
+	'uos-choose-hidden' => '次の非表示の利用者オプションのいずれかを選択します：$1',
 	'uos-unknown' => '*デフォルト',
 	'uos-other' => '*その他',
 	'uos-title' => '利用者オプション $1 の設定値の分布',
