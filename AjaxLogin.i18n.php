@@ -491,6 +491,11 @@ Cen vos farat quitar ceta pâge et pués vos porriâd pèrdre voutros changement
 	'ajaxLogin2' => 'Éte-vos de sûr ?
 Vos porriâd pèrdre voutros changements sur ceta pâge se vos la quitâd ora.',
 	'ajaxlogin-create' => 'Fâre un compto',
+	'al-nosuchuser' => 'Ègziste gins d’utilisator apelâ « $1 ».
+Los noms d’utilisator sont sensiblos a la câssa.
+Controlâd l’ortografia.',
+	'al-createblocked' => 'Voutra adrèce IP est dèfendua de fâre un compto.',
+	'al-throttled' => 'Dês pou, vos éd fêt trop de tentatives de mots de pâssa. Volyéd pacientar $1 second{{PLURAL:$1|a|es}} devant que tornar èprovar.',
 );
 
 /** Irish (Gaeilge)
