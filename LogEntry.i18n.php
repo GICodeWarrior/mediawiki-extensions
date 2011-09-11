@@ -221,6 +221,7 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Hashar
  * @author IAlex
  * @author McDutchie
  */
@@ -229,7 +230,7 @@ $messages['fr'] = array(
 	'logentry-parserhook-desc' => 'Cette extension ajoute une balise fournissant un formulaire pour ajouter / préfixer du texte aux pages de journaux',
 	'logentry-specialpage-desc' => 'Cette extension de balise ajoute un processus pour ajouter aux pages de journaux',
 	'logentry' => 'Journal des entrées',
-	'logentry-invalidpage' => 'Page incorrecte',
+	'logentry-invalidpage' => 'Page incorrecte : $1',
 	'logentry-invalidtoken' => 'Prise incorrecte',
 );
 
@@ -344,13 +345,14 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author Schu
  */
 $messages['ja'] = array(
 	'logentry-append' => '追加',
-	'logentry-parserhook-desc' => 'このタグ拡張機能はログページの先頭または末尾に項目を追加するフォームを提供します',
-	'logentry-specialpage-desc' => 'このタグ拡張機能はログページに項目を追加する処理を提供します',
+	'logentry-parserhook-desc' => 'このタグ拡張機能はログページの先頭または末尾に項目を追加するフォームを提供します。',
+	'logentry-specialpage-desc' => 'このタグ拡張機能はログページに項目を追加する処理を提供します。',
 	'logentry' => 'ログ項目',
-	'logentry-invalidpage' => '無効なページ',
+	'logentry-invalidpage' => '無効なページ： $1',
 	'logentry-invalidtoken' => '無効な字句',
 );
 
@@ -457,7 +459,7 @@ $messages['pl'] = array(
 	'logentry-parserhook-desc' => 'Rozszerzenie dodaje znacznik wstawiający formularz umożliwiający dopisanie treści na początek lub koniec strony logu',
 	'logentry-specialpage-desc' => 'Rozszerzenie realizuje dodanie wpisu do strony logu',
 	'logentry' => 'WpisDoLogu',
-	'logentry-invalidpage' => 'Nieprawidłowa strona',
+	'logentry-invalidpage' => 'Nieprawidłowa strona $1',
 	'logentry-invalidtoken' => 'Nieprawidłowy token',
 );
 
