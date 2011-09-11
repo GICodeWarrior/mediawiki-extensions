@@ -566,8 +566,8 @@ $messages['da'] = array(
  * @author Umherirrender
  */
 $messages['de'] = array(
-	'specialuserstats' => 'Nutzungs-Statistik',
-	'usagestatistics' => 'Nutzungs-Statistik',
+	'specialuserstats' => 'Nutzungsstatistiken',
+	'usagestatistics' => 'Nutzungsstatistiken',
 	'usagestatistics-desc' => 'Zeigt individuelle Benutzer- und allgemeine Wiki-Nutzungsstatistiken an',
 	'usagestatisticsfor' => '<h2>Nutzungs-Statistik für [[User:$1|$1]]</h2>',
 	'usagestatisticsforallusers' => '<h2>Nutzungs-Statistik für alle Benutzer</h2>',
