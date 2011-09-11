@@ -1783,6 +1783,14 @@ $messages['mt'] = array(
 $messages['myv'] = array(
 	'storyboard-hide' => 'Кекшемс',
 	'storyboard-option-hidden' => 'кекшезь',
+	'storyboard-authorname' => 'Теицянь лемезэ',
+	'storyboard-authorlocation' => 'Косо теицясь ашти',
+	'storyboard-authoroccupation' => 'Теицясь мезесэ важоди',
+	'storyboard-authoremail' => 'Теицянть е-сёрмапаргозо',
+	'storyboard-thestory' => 'Ёвтнемась',
+	'storyboard-language' => 'Кель',
+	'storyboard-yourname' => 'Тонть леметь (эряви)',
+	'storyboard-location' => 'Косо аштят',
 );
 
 /** Dutch (Nederlands)
