@@ -57,6 +57,72 @@ versions of it and prompts the user in such case.
 
 It does not automatically install a newer version.
 
+JSON data layout for data exchange with Toolserver
+==================================================
+
+Example 1
+sent to server:
+[{"viaf":["40254510"]}]
+
+received from server:
+[{"viaf":["40254510"],"names":[{"lang":"de,en,fr","name":"Herbert Matar\u00e9"}]}]
+
+
+Example 2
+sent to server:
+[{"viaf":["30429608"]}]
+
+received from server:
+[{"viaf":["30429608"],"names":[{"lang":"de,en","name":"Jan Josef Liefers"}]}]
+
+Example 3
+sent to server:
+[{"viaf":["2878675"]},{"viaf":["122255788"]}]
+
+received from server:
+[
+{"viaf":["2878675"],
+"names":[
+{"lang":"de,cs,en,es,fr,hu,id,it,pl,pt,ro","name":"Constantin Noica"},
+{"lang":"ar","name":"\u0643\u0648\u0646\u0633\u062a\u0627\u0646\u062a\u064a\u0646 \u0646\u0648\u064a\u0643\u0627"}
+]},
+{"viaf":["122255788"],"names":[]}
+]
+
+Example 4
+sent to server:
+[{"viaf":["2878675"]},{"viaf":["15571981"]}]
+
+received from server:
+[
+{"viaf":["2878675"],
+"names":[
+{"lang":"de,cs,en,es,fr,hu,id,it,pl,pt,ro","name":"Constantin Noica"},
+{"lang":"ar","name":"\u0643\u0648\u0646\u0633\u062a\u0627\u0646\u062a\u064a\u0646 \u0646\u0648\u064a\u0643\u0627"}
+]},
+{"viaf":["15571981"],
+"names":[
+{"lang":"de,lb","name":"Jitzchak Schamir"},
+{"lang":"ar","name":"\u0625\u0633\u062d\u0627\u0642 \u0634\u0627\u0645\u064a\u0631"},
+{"lang":"be,uk","name":"\u0406\u0446\u0445\u0430\u043a \u0428\u0430\u043c\u0456\u0440"},
+{"lang":"be-x-old","name":"\u0406\u0446\u043a\u0430\u0445 \u0428\u0430\u043c\u0456\u0440"},
+{"lang":"bg","name":"\u0418\u0446\u0445\u0430\u043a \u0428\u0430\u043c\u0438\u0440"},
+{"lang":"ca,es","name":"Isaac Shamir"},
+{"lang":"cs","name":"Jicchak \u0160amir"},
+{"lang":"da,en,fr,id,it,ms,nl,nn,no,pt,sv","name":"Yitzhak Shamir"},
+{"lang":"eo","name":"Jic\u0125ak \u015camir"},
+{"lang":"et","name":"Yits'\u1e96ak Shamir"},
+{"lang":"fi","name":"Jitzhak Shamir"},
+{"lang":"he,yi","name":"\u05d9\u05e6\u05d7\u05e7 \u05e9\u05de\u05d9\u05e8"},
+{"lang":"ja","name":"\u30a4\u30c4\u30cf\u30af\u30fb\u30b7\u30e3\u30df\u30eb"},
+{"lang":"ko","name":"\uc774\uce20\ud558\ud06c \uc0e4\ubbf8\ub974"},
+{"lang":"pl","name":"Icchak Szamir"},{"lang":"ro","name":"I\u021bhak \u0218amir"},
+{"lang":"ru","name":"\u0428\u0430\u043c\u0438\u0440, \u0418\u0446\u0445\u0430\u043a"},
+{"lang":"sr","name":"\u0408\u0438\u0446\u0430\u043a \u0428\u0430\u043c\u0438\u0440"},
+{"lang":"tr","name":"\u0130zak \u015eamir"}
+]}
+]
+
 == solved ==
 + check why it does not work inside <span class=plainlinks> </span> tags
   fixed in r95940 (0.204)
