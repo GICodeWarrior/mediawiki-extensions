@@ -1191,7 +1191,7 @@ $messages['frp'] = array(
 	'youtubeauthsub_description' => 'Dèscripcion',
 	'youtubeauthsub_password' => 'Mot de pâssa dessus YouTube',
 	'youtubeauthsub_username' => 'Nom d’utilisator dessus YouTube',
-	'youtubeauthsub_keywords' => 'Mots cllâfs',
+	'youtubeauthsub_keywords' => 'Mots-cllâfs',
 	'youtubeauthsub_category' => 'Catègorie',
 	'youtubeauthsub_submit' => 'Sometre',
 	'youtubeauthsub_clickhere' => 'Clicâd ique por vos branchiér dessus YouTube',
@@ -1213,7 +1213,7 @@ Por apondre voutra vidèô dens una pâge du vouiqui, entrebetâd ceti code dens
 	'youtubeauthsub_uploading' => 'Voutra vidèô est aprés étre tèlèchargiê.
 Volyéd pacientar.',
 	'youtubeauthsub_viewpage' => 'Ôtrament, vos pouede [[$1|vêre voutra vidèô]].',
-	'youtubeauthsub_jserror_nokeywords' => 'Volyéd buchiér yon ou ben un mouél de mots cllâfs.',
+	'youtubeauthsub_jserror_nokeywords' => 'Volyéd buchiér yon ou ben un mouél de mots-cllâfs.',
 	'youtubeauthsub_jserror_notitle' => 'Volyéd buchiér un titro por la vidèô.',
 	'youtubeauthsub_jserror_nodesc' => 'Volyéd buchiér una dèscripcion por la vidèô.',
 );
