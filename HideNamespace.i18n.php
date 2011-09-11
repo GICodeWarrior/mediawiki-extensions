@@ -24,6 +24,13 @@ $messages['qqq'] = array(
 	'hidens-desc' => '{{desc}}',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'hidens-desc' => "Anubre l'espaciu de nomes na testera y nel títulu cuando una páxina ta nel espaciu de nomes conseñáu o cuando se llama a la función d'analís <code><nowiki>{{#hidens:}}</nowiki>",
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
