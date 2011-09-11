@@ -150,6 +150,13 @@ $messages['fr'] = array(
 	'apisvgproxy-desc' => 'Procure des fichiers SVG depuis un dépôt de fichiers (éventuellement à distance) dans le domaine local',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'apisvgproxy-desc' => 'Procure des fichiérs SVG dês un dèpôt de fichiérs (a l’ocasion a distance) dens lo domêno local.',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
