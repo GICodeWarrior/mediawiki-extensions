@@ -3793,6 +3793,7 @@ $messages['myv'] = array(
 	'contribstats-contributions' => 'Путовксонзо',
 	'contribstats-week' => 'Тарго',
 	'contribstats-template' => 'Лопа парцун',
+	'contribstats-donatepage' => 'Лезксйармаконь лопа',
 	'fundraiserstats-date' => 'Ковчизэ',
 	'fundraiserstats-total' => 'Весемезэ (USD)-со',
 );
