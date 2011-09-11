@@ -266,7 +266,11 @@ Reportez-vous sur [http://www.mediawiki.org/wiki/API la documentation de l’API
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'apisb-desc' => 'Pèrmèt d’èliminar les cofieries des apèls de l’[http://www.mediawiki.org/wiki/API API de MediaWiki] dês lo navigator.',
 	'apisandbox' => 'Bouèta de sabla API',
+	'apisb-no-js' => "'''Èrror :''' cela fonccionalitât at fôta de JavaScript.",
+	'apisb-intro' => "Utilisâd ceta pâge por èxpèrimentar avouéc '''MediaWiki API'''.
+Reportâd-vos sur [http://www.mediawiki.org/wiki/API la documentacion de l’API] por més de dètalys sur l’usâjo de l’API.",
 	'apisb-api-disabled' => 'API est dèsactivâ sur ceti seto.',
 	'apisb-parameters' => 'Paramètres',
 	'apisb-result' => 'Rèsultat',
@@ -685,6 +689,26 @@ $messages['ru'] = array(
 	'apisb-query-prop' => 'Свойства',
 	'apisb-query-list' => 'Списки',
 	'apisb-query-meta' => 'Мета-информация',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'apisandbox' => 'API pieskovisko',
+	'apisb-parameters' => 'Parametre',
+	'apisb-result' => 'Výsledok',
+	'apisb-request-url' => 'URL požiadavky:',
+	'apisb-request-post' => 'Údaje POST:',
+	'apisb-select-action' => 'Vyberte operáciu',
+	'apisb-select-query' => 'Požiadavku na čo?',
+	'apisb-select-value' => 'Vyberte hodnotu',
+	'apisb-loading' => 'Načítava sa...',
+	'apisb-ns-main' => '(Hlavné)',
+	'apisb-submit' => 'Podať žiadosť',
+	'apisb-query-prop' => 'Vlastnosti',
+	'apisb-query-list' => 'Zoznamy',
+	'apisb-query-meta' => 'Metainformácie',
 );
 
 /** Slovenian (Slovenščina)
