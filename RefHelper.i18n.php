@@ -1452,10 +1452,20 @@ $messages['sr-el'] = array(
 
 /** Swedish (Svenska)
  * @author Dafer45
+ * @author Diupwijk
  * @author Per
  */
 $messages['sv'] = array(
+	'refhelper' => 'Referenshjälpare',
+	'refsearch' => 'Referenssökning',
+	'refhelper-desc' => 'Hjälper till med att skapa sidor för referenser',
+	'refhelper-refsearch' => 'Referenssökning',
+	'refhelper-refcreate_legend' => 'Skapa en ny referens',
+	'refhelper-refsearch_legend' => 'Sök i PubMed efter referenser',
+	'refhelper-refcreate_another' => 'Skapa en referens till',
+	'refhelper-refcreate_success' => 'Sidan [[$1]] fanns inte och har skapats.',
 	'refhelper-refcreate_failure' => 'Sidan [[$1]] finns redan!',
+	'refhelper-label_workspace' => 'Arbetsyta (kopiera- och klistra in-område)',
 	'refhelper-label_authorforename' => 'Författaren $1s förnamn:',
 	'refhelper-label_authorsurname' => 'Efternamn:',
 	'refhelper-title' => 'Titel:',
@@ -1463,11 +1473,13 @@ $messages['sv'] = array(
 	'refhelper-volume' => 'Volym:',
 	'refhelper-pages' => 'Sidor:',
 	'refhelper-year' => 'År:',
+	'refhelper-refname' => 'Referensnamn',
 	'refhelper-category' => 'Kategori $1:',
 	'refhelper-create' => 'Skapa',
 	'refhelper-search' => 'Sök',
 	'refhelper-toolbox_link_create' => 'Skapa referens',
 	'refhelper-toolbox_link_search' => 'Skapa referens från sökning',
+	'refhelper-newarticle_nocitation' => 'Det finns för närvarande ingen citering med det här namnet.',
 );
 
 /** Telugu (తెలుగు)
