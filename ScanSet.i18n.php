@@ -1244,6 +1244,8 @@ $messages['rue'] = array(
 	'scanset_no_files' => 'Error: В  данім адресарю ся не находять жадны файлы.',
 	'scanset_no_volumes' => 'Error: Не были найджены жадны адресарї про світок (дісковый)',
 	'scanset_missing_index_file' => 'Error: Індексовый файл  $1 ся не нашов',
+	'scanset_index_file_error' => 'Error: Хыба у форматї індексового файлу на рядку $1',
+	'scanset_invalid_volume' => 'Error: направилна волъюм',
 	'scanset_next' => 'Наступна &gt;',
 	'scanset_prev' => '&lt; Попередня',
 );
