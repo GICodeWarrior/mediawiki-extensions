@@ -506,6 +506,13 @@ $messages['ru'] = array(
 	'poem-desc' => 'Добавляет тег <code>&lt;poem&gt;</code> для форматирования стихов',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'poem-desc' => 'Додасть значку <code>&lt;poem&gt;</code> про форматованя віршів',
+);
+
 /** Sakha (Саха тыла)
  * @author HalanTul
  */
