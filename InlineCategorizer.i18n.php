@@ -1274,8 +1274,10 @@ Ciò si verifica in genere quando la categoria è stata aggiunta alla pagina in 
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Ohgi
+ * @author Schu
  */
 $messages['ja'] = array(
+	'inlinecategorizer-desc' => 'ページから直接カテゴリーリンクを追加・削除・変更する事を可能にする JavaScript モジュール。',
 	'inlinecategorizer-add-category' => 'カテゴリー追加',
 	'inlinecategorizer-add-category-submit' => '追加',
 	'inlinecategorizer-add-category-summary' => 'カテゴリー「$1」を追加',
@@ -1283,17 +1285,19 @@ $messages['ja'] = array(
 	'inlinecategorizer-api-unknown-error' => 'APIが不明なエラーを返しました。',
 	'inlinecategorizer-cancel' => '編集をキャンセル',
 	'inlinecategorizer-cancel-all' => 'すべての変更を保存',
-	'inlinecategorizer-category-already-present' => 'このページにはすでにカテゴリ「$1」がついています',
+	'inlinecategorizer-category-already-present' => 'このページにはすでにカテゴリー「$1」がついています',
+	'inlinecategorizer-category-hook-error' => 'ローカル関数の変更は保存できません。',
+	'inlinecategorizer-category-question' => 'なぜ、次のような変更が必要ですか：',
 	'inlinecategorizer-confirm-ok' => 'OK',
 	'inlinecategorizer-confirm-save' => '保存',
 	'inlinecategorizer-confirm-save-all' => 'すべての変更を保存',
 	'inlinecategorizer-confirm-title' => '操作確認',
-	'inlinecategorizer-edit-category' => 'カテゴリを編集',
+	'inlinecategorizer-edit-category' => 'カテゴリーを編集',
 	'inlinecategorizer-edit-category-error' => 'カテゴリー「$1」を編集することができませんでした。
 このエラーは、主にカテゴリーがテンプレートによってページにつけられている場合に発生します。',
 	'inlinecategorizer-edit-category-summary' => 'カテゴリを「$1」から「$2」に変更',
 	'inlinecategorizer-error-title' => 'エラー',
-	'inlinecategorizer-remove-category' => 'カテゴリを除去',
+	'inlinecategorizer-remove-category' => 'カテゴリーを除去',
 	'inlinecategorizer-remove-category-error' => 'カテゴリー「$1」を除去することができませんでした。
 このエラーは、主にカテゴリーがテンプレートによってページにつけられている場合に発生します。',
 	'inlinecategorizer-remove-category-summary' => 'カテゴリー「$1」を除去',
