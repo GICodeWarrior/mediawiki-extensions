@@ -1173,6 +1173,7 @@ $messages['pdc'] = array(
 
 /** Polish (Polski)
  * @author Sp5uhe
+ * @author Woytecr
  */
 $messages['pl'] = array(
 	'toolbase-header-title' => 'Narzędzia X! (BETA)',
@@ -1196,6 +1197,9 @@ $messages['pl'] = array(
 	'toolbase-userid-submit' => 'Pobierz identyfikator użytkownika',
 	'toolbase-userid-title' => 'Znajdź identyfikator użytkownika',
 	'toolbase-userid-result' => 'Identyfikator użytkownika dla <b>$1</b> na <a href="$3"><b>$3</b></a> to <b>$2</b>.',
+	'toolbase-autoedits-submit' => 'Oblicz',
+	'toolbase-autoedits-totalall' => 'Łącznie wszystkich edycji',
+	'toolbase-autoedits-pct' => 'Procent edycji automatycznych',
 	'toolbase-main-title' => 'Witaj!',
 	'toolbase-main-content' => 'Witamy w zestawie narzędzi X! Pakiet narzędzi jest nadal konwertowany do pracy w ramach <href="$1">Symfony</a>. Proces ten jest czasochłonny, ale narzędzia powinny działać już teraz.
 
