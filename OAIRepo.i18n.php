@@ -449,6 +449,13 @@ $messages['ru'] = array(
 	'oairepository' => 'Хранилище OAI',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'oai-desc' => 'Додасть інтерфейс ку [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] усховищу',
+);
+
 /** Sakha (Саха тыла)
  * @author HalanTul
  */
@@ -522,9 +529,11 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author Ahonc
+ * @author Dim Grits
  */
 $messages['uk'] = array(
 	'oai-desc' => 'Надає інтерфейс [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
+	'oairepository' => 'OAI Сховище',
 );
 
 /** Vèneto (Vèneto)
