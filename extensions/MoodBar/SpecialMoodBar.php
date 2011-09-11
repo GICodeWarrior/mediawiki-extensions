@@ -22,6 +22,10 @@ class SpecialMoodBar extends SpecialPage {
 		parent::__construct( 'MoodBar', 'moodbar-view' );
 	}
 
+	function getDescription() {
+		return wfMessage( 'moodbar-admin-title' )->plain();
+	}
+
 	function execute($par) {
 		global $wgUser, $wgOut;
 
