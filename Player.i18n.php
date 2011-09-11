@@ -1340,7 +1340,18 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'player' => 'Predvajalnik',
+	'player-title' => 'Predvajalnik',
+	'player-playertitle' => 'Predvajalnik: $1',
+	'player-file' => 'Ime datoteke',
+	'player-play' => 'Predvajaj',
+	'player-not-allowed' => 'nedovoljena oblika',
+	'player-not-found' => 'datoteke ni mogoče najti',
+	'player-invalid-title' => 'neveljaven naslov',
+	'player-clicktoplay' => 'Predvajaj $1',
+	'player-goto-player' => 'predvajalnik',
 	'player-goto-page' => 'Stran',
+	'player-goto-file' => 'datoteka',
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
