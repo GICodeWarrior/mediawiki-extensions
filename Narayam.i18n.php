@@ -749,31 +749,38 @@ $messages['id'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Schu
  * @author Whym
  */
 $messages['ja'] = array(
-	'narayam-desc' => '入力欄にカスタム入力メソッドを追加できるようにする',
-	'narayam-toggle-ime' => '入力メソッドを切り替える ($1)',
-	'narayam-help-page' => 'Help:タイピング',
+	'narayam-desc' => '入力フィールドにカスタム入力メソッドを追加できるようにします。',
+	'narayam-toggle-ime' => '入力メソッドを切り替え ($1)',
+	'narayam-menu' => '入力メソッド',
+	'narayam-menu-tooltip' => 'Narayam 入力メソッドエディタ ( IME ) を管理',
+	'narayam-help' => 'ヘルプ',
+	'narayam-help-page' => 'Help：タイピング',
 	'narayam-checkbox-tooltip' => '入力メソッドの入・切を反転させる',
-	'narayam-disable-preference' => 'Narayam入力メソッドエディタ (IME) を無効にする',
+	'narayam-disable-preference' => 'Narayam入力メソッドエディタ (IME) を無効化',
 	'narayam-eo' => 'エスペラント',
-	'narayam-hi-inscript' => 'ヒンディー語InScript',
+	'narayam-hi-inscript' => 'ヒンディー語 InScript',
 	'narayam-kn' => 'カンナダ語翻字',
-	'narayam-kn-inscript' => 'カンナダ語InScript',
+	'narayam-kn-inscript' => 'カンナダ語 InScript',
 	'narayam-ml' => 'マラヤラム語翻字',
-	'narayam-ml-inscript' => 'マラヤラム語InScript',
+	'narayam-ml-inscript' => 'マラヤラム語 InScript',
+	'narayam-ne' => 'ネパール語翻字',
+	'narayam-ne-inscript' => 'ネパール語 InScript',
 	'narayam-or' => 'オリヤ語翻字',
-	'narayam-or-inscript' => 'オリヤ語InScript',
+	'narayam-or-inscript' => 'オリヤ語 InScript',
 	'narayam-sa' => 'サンスクリット語翻字',
-	'narayam-sa-inscript' => 'サンスクリット語InScript',
+	'narayam-sa-inscript' => 'サンスクリット語 InScript',
 	'narayam-si-singlish' => 'シンハラ語シングリッシュ',
-	'narayam-si-wijesekara' => 'シンハラ語Wijesekara',
+	'narayam-si-wijesekara' => 'シンハラ語 Wijesekara',
 	'narayam-ta99' => 'Tamil99',
 	'narayam-ta' => 'タミル語翻字',
-	'narayam-bn-avro' => 'ベンガル語Avro',
-	'narayam-bn-inscript' => 'ベンガル語InScript',
-	'narayam-bn-nkb' => 'ベンガル語NKB',
+	'narayam-te-inscript' => 'テルグ語 InScript',
+	'narayam-bn-avro' => 'ベンガル語 Avro',
+	'narayam-bn-inscript' => 'ベンガル語 InScript',
+	'narayam-bn-nkb' => 'ベンガル語 NKB',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -1246,13 +1253,17 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Dim Grits
  * @author MaxSem
  * @author McDutchie
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'narayam-desc' => 'Позволяет добавлять пользовательские методы ввода для полей ввода',
-	'narayam-toggle-ime' => 'Для переключения метода ввода ($1)',
+	'narayam-toggle-ime' => 'Включить ($1)',
+	'narayam-menu' => 'Метод ввода',
+	'narayam-menu-tooltip' => 'Управление редактором метода ввода нараям (IME)',
+	'narayam-help' => 'Справка',
 	'narayam-help-page' => 'Help:Ввод',
 	'narayam-checkbox-tooltip' => 'Для включения и выключения метода ввода',
 	'narayam-disable-preference' => 'Отключить редактор метода ввода (IME) нараям',
@@ -1285,8 +1296,11 @@ $messages['rue'] = array(
 	'narayam-desc' => 'Доволює придавати ку вступным полям властны методы вступу',
 	'narayam-toggle-ime' => 'Поболити ($1)',
 	'narayam-menu' => 'Вступна метода',
+	'narayam-menu-tooltip' => 'Керовати едітор (IME) Narayam',
 	'narayam-help' => 'Поміч',
 	'narayam-help-page' => 'Help:Писаня тексту',
+	'narayam-checkbox-tooltip' => 'Про перекапчаня методів вводу',
+	'narayam-disable-preference' => 'Выпнути едітор (IME) Narayam',
 	'narayam-eo' => 'Есперанто',
 	'narayam-hi-inscript' => 'Гінді Inscript',
 	'narayam-kn' => 'Транслітерація каннада',
@@ -1300,6 +1314,7 @@ $messages['rue'] = array(
 	'narayam-sa' => 'Транслітерація санскрітом',
 	'narayam-sa-inscript' => 'Санскріт Inscript',
 	'narayam-si-singlish' => 'Сінгальскый Сінґліш',
+	'narayam-si-wijesekara' => 'Сінґальська Віджесекера',
 	'narayam-ta99' => 'Таміл99',
 	'narayam-ta' => 'Тамільска транслітерація',
 	'narayam-te-inscript' => 'Телуґу Inscript',
@@ -1493,8 +1508,10 @@ $messages['tl'] = array(
  * @author Dim Grits
  */
 $messages['uk'] = array(
+	'narayam-desc' => 'Дозволяє додавати користувацькі методи вводу для полів введення',
 	'narayam-toggle-ime' => 'Активувати ($1)',
 	'narayam-menu' => 'Метод введення',
+	'narayam-menu-tooltip' => 'Управління редактором методу введення нараям (IME)',
 	'narayam-help' => 'Довідка',
 	'narayam-help-page' => 'Help:Набір тексту',
 	'narayam-checkbox-tooltip' => 'Для перемикання методів вводу',
