@@ -338,6 +338,13 @@ $messages['ms'] = array(
 	'variablepage-desc' => 'Penghalaan laman pembolehubah yang ringan',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'variablepage-navlink_text' => 'Лезксйармаконь максома',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -437,6 +444,7 @@ $messages['ru'] = array(
 $messages['rue'] = array(
 	'variablepage' => 'ЗміннаСторінка',
 	'variablepage-navlink_text' => 'Пожертвовати',
+	'variablepage-desc' => 'Проста перемінлива сторінка напрямлїня',
 );
 
 /** Slovak (Slovenčina)

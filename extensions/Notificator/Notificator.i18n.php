@@ -392,6 +392,27 @@ $messages['pt'] = array(
 	'notificator-notified-already' => '$1 já foi notificado acerca desta página ou da alteração desta página.',
 );
 
+/** Swedish (Svenska)
+ * @author WikiPhoenix
+ */
+$messages['sv'] = array(
+	'notificator-e-mail-address' => 'e-postadress',
+	'notificator-notify' => 'Meddela',
+	'notificator-notify-address-or-name' => 'Meddela $1',
+	'notificator-return-to' => 'Tillbaka till',
+	'notificator-e-mail-address-invalid' => 'Den angivna e-postadressen är ogiltig.',
+	'notificator-notification-not-sent' => 'Meddelandet skickades inte.',
+	'notificator-change-tag' => 'ändra',
+	'notificator-new-tag' => 'ny',
+	'notificator-notification-text-changes' => '$1 vill meddela dig om följande ändringar på $2:',
+	'notificator-notification-text-new' => '$1 vill meddela dig om $2.',
+	'notificator-following-e-mail-sent-to' => 'Följande e-post har skickats till $1:',
+	'notificator-subject' => 'Ämne:',
+	'notificator-error-sending-e-mail' => 'Det uppstod ett fel när e-postmeddelandet skulle skickas till $1.',
+	'notificator-error-parameter-missing' => 'Fel: Parameter saknas.',
+	'notificator-notified-already' => '$1 har meddelats om den här sidan eller sidändringar innan.',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

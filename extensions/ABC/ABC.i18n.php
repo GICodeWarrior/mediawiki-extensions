@@ -784,6 +784,8 @@ $messages['my'] = array(
 $messages['myv'] = array(
 	'abc-desc' => 'Полады <code>&lt;abc&gt;</code> тег ABC музыканть форматировамонь туртов',
 	'abcdownload' => 'Таргамс:',
+	'abcpdf' => 'PDF',
+	'abcmidi' => 'MIDI',
 );
 
 /** Mazanderani (مازِرونی)

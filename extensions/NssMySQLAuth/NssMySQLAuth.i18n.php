@@ -1041,6 +1041,13 @@ $messages['sk'] = array(
 	'nss-db-error' => 'Chyba pri čítaní z overovacej databázy',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'am-username' => 'uporabniško ime',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић

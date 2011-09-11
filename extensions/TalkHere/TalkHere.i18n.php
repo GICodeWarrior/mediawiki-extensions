@@ -751,6 +751,14 @@ $messages['my'] = array(
 	'talkhere-collapse' => 'editor အားဝှက်ရန်',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'talkhere-talkpage' => 'кортнема лопа',
+	'talkhere-addcomment' => 'поладомс мельть-арсемат',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

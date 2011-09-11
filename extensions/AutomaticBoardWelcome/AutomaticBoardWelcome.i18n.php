@@ -137,3 +137,17 @@ $messages['ru'] = array(
 	'automaticboardwelcome-desc' => 'Автоматически оставляет [[MediaWiki:User-board-welcome-message|приветственное сообщение]] на досках новых участников после создания учётных записей.',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'automaticboardwelcome-desc' => 'Otomatis kirimkeun [[MediaWiki:User-board-welcome-message|pangbagéa]] kana papan kontributor sanggeus asupnya akun anyar',
+);
+
+/** Swedish (Svenska)
+ * @author WikiPhoenix
+ */
+$messages['sv'] = array(
+	'automaticboardwelcome-desc' => 'Skickar automatiskt [[MediaWiki:User-board-welcome-message|ett välkomstmeddelande]] på nya användares användaranslagstavlor efter konto har skapats',
+);
+

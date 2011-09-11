@@ -6325,6 +6325,7 @@ Môžete [{{fullurl:{{FULLPAGENAME}}|action=delvote}} pridať] svoju vlastnú po
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'deletequeue-list-status' => 'Stanje:',
 	'deletequeue-list-header-page' => 'Stran',
 	'deletequeue-case-page' => 'Stran:',
 	'deletequeue-case-reason' => 'Razlog:',

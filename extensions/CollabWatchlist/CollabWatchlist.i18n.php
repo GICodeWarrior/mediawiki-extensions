@@ -86,6 +86,7 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'collabwatchlisttagcomment' => '{{Identical|Comment}}',
+	'collabwatchlisttools-view' => '{{Identical|Display}}',
 	'collabwatchlisttools-delete' => '{{Identical|Delete}}',
 	'collabwatchlistedit-users-raw-submit' => '{{Identical|Save}}',
 	'collabwatchlistedit-raw-titles' => '{{Identical|Categories}}',
@@ -833,17 +834,22 @@ $messages['pl'] = array(
 	'collabwatchlisttools-view' => 'Wyświetl',
 	'collabwatchlisttools-edit' => 'Edytuj kategorie',
 	'collabwatchlisttools-delete' => 'Usuń',
+	'collabwatchlistsall' => 'Wszystkie listy',
 	'collabwatchlistedit-users-raw-submit' => 'Zapisz',
 	'collabwatchlistedit-raw-titles' => 'Kategorie:',
+	'collabwatchlistedit-tags-raw-titles' => 'Znaczniki:',
 	'collabwatchlistedit-users-raw-titles' => 'Użytkownicy:',
 	'collabwatchlistedit-normal-title' => 'Edytuj kategorie',
 	'collabwatchlistedit-tags-raw-submit' => 'Zapisz',
+	'collabwatchlistedit-tags-raw-added' => '{{PLURAL:$1|1 znacznik został dodany|$1 znaczniki zostały dodane|$1 znaczników zostało dodanych}}:',
 	'collabwatchlistedit-users-raw-added' => 'Dodano {{PLURAL:$1|1 użytkownika|$1 użytkowników}}:',
+	'collabwatchlistedit-tags-raw-removed' => '{{PLURAL:$1|1 znacznik został usunięty|$1 znaczniki zostały usunięte|$1 znaczników zostało usuniętych}}:',
 	'collabwatchlistedit-users-raw-removed' => 'Usunięto {{PLURAL:$1|1 użytkownika|$1 użytkowników}}:',
 	'collabwatchlistdelete-submit' => 'Usuń',
 	'collabwatchlistnew-name' => 'Nazwa listy',
 	'collabwatchlistnew-submit' => 'Utwórz',
 	'collabwatchlistedit-raw-added' => '{{PLURAL:$1|1 strona lub kategoria została dodana|$1 strony lub kategorie zostały dodane|$1 stron lub kategorii zostało dodanych}}:',
+	'collabwatchlistedit-raw-removed' => '{{PLURAL:$1|1 strona lub kategoria została usunięta|$1 strony lub kategorie zostały usunięte|$1 stron lub kategorii zostało usuniętych}}:',
 	'collabwatchlistedit-normal-submit' => 'Zapisz',
 );
 

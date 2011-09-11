@@ -1121,6 +1121,14 @@ $messages['sk'] = array(
 	'onlinestatus-pref-offlineonlogout' => 'Zmeniť môj stav na offline počas odhlasovania',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'onlinestatus-tab' => 'Stanje',
+	'onlinestatus-toggles-desc' => 'Vaše stanje:',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */

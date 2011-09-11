@@ -505,6 +505,13 @@ $messages['ms'] = array(
 	'prefs-category' => 'Kategori',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'prefs-category' => 'Кужо',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Teòtlalili
  */

@@ -104,6 +104,20 @@ $messages['gl'] = array(
 	'userdebuginfo-language' => 'Lingua',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'userdebuginfo' => 'Information de usator pro cercar errores',
+	'userdebuginfo-desc' => 'Monstra certe information super le usator actual, potentialmente utile pro le elimination de faltas',
+	'userdebuginfo-useragent' => 'Agente usator HTTP',
+	'userdebuginfo-remotehost' => 'Host remote HTTP',
+	'userdebuginfo-remoteaddr' => 'Adresse remote HTTP',
+	'userdebuginfo-key' => 'Clave',
+	'userdebuginfo-value' => 'Valor',
+	'userdebuginfo-language' => 'Lingua',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

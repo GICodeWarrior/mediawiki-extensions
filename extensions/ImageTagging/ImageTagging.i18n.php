@@ -1976,6 +1976,7 @@ $messages['sl'] = array(
 	'imagetagging-article' => 'Stran:',
 	'imagetagging-imghistory' => 'Zgodovina',
 	'imagetagging-images' => 'slike',
+	'imagetagging-tagcancel-button' => 'Prekliči',
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)

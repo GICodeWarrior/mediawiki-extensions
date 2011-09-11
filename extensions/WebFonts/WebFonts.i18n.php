@@ -192,9 +192,14 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author Schu
  */
 $messages['ja'] = array(
-	'webfonts-reset' => '再設定',
+	'webfonts' => 'Web フォント',
+	'webfonts-desc' => 'ページにフォントを埋め込みます。',
+	'webfonts-load' => 'フォントを選択',
+	'webfonts-reset' => 'リセット',
+	'webfonts-disable-preference' => 'フォントの埋め込み ( WebFonts ) を無効化',
 );
 
 /** Khmer (ភាសាខ្មែរ)

@@ -34,6 +34,7 @@ Your friendly %s notification system",
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Purodha
@@ -44,6 +45,7 @@ $messages['qqq'] = array(
 	'tasklist-parser-desc' => '{{desc}}',
 	'tasklist-special-desc' => '{{desc}}',
 	'tasklistincorrectuser' => '{{Identical|Incorrect username}}',
+	'tasklistprojdisp' => '{{Identical|Display}}',
 	'tasklistbyname' => '{{Identical|Todo list for}}',
 	'tasklistemailbody' => "* 1st %s is the URL of the page a task is created for
 * 2nd %s is the URL of the user's task list page

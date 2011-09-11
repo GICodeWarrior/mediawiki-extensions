@@ -558,6 +558,7 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'addmediawizard-desc' => 'Sprievodca pridaním multimédií, vyvinutý v partnerstve s Kaltura a Wikimedia Foundation',
+	'addmediawizard-loading' => 'Načítava sa sprievodca pridaním multimédií',
 );
 
 /** Slovenian (Slovenščina)
@@ -601,6 +602,7 @@ $messages['stq'] = array(
  */
 $messages['su'] = array(
 	'addmediawizard-desc' => 'Sulap nambahkeun média, dikembangkeun réréongan ku Kaltura jeung Yayasan Wikimédia',
+	'addmediawizard-loading' => 'Ngamuat sulap nambah média',
 );
 
 /** Swedish (Svenska)

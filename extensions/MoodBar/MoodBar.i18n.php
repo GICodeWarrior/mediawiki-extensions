@@ -121,6 +121,7 @@ See also:
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
+ * @author Lloffiwr
  * @author Purodha
  * @author Raymond
  * @author SPQRobin
@@ -150,7 +151,9 @@ See also:
 	'moodbar-what-content' => '$1 is the message {{msg-mw|moodbar-what-link}} which links to the page [[mw:MoodBar|MoodBar]] on MediaWiki.org.',
 	'moodbar-what-link' => 'This is the link embedded as parameter $1 in {{msg-mw|moodbar-what-content}}.',
 	'moodbar-privacy' => 'Parameters:
-*$1 - a link having the anchor text {{msg-mw|moodbar-privacy-link}}',
+*$1 - a link having the anchor text {{msg-mw|moodbar-privacy-link}}
+
+The link is to the privacy policy of the wiki.',
 	'moodbar-privacy-link' => 'This is the anchor text being used in the link replacing $1 in the message {{msg-mw|moodbar-privacy}}',
 	'moodbar-header-timestamp' => '{{Identical|Timestamp}}',
 	'moodbar-header-type' => '{{Identical|Type}}',
@@ -350,6 +353,8 @@ $messages['be-tarask'] = array(
  */
 $messages['bg'] = array(
 	'moodbar-what-label' => 'Какво е това?',
+	'moodbar-what-content' => 'Тази функционалност е предназначена да помогне на общността да проучи опита на хората, които редактират този сайт.
+За повече информация посетете $1.',
 	'moodbar-form-note' => 'Максимум 140 символа',
 	'moodbar-form-note-dynamic' => 'Остават $1 символа',
 	'moodbar-success-title' => 'Благодарим!',
@@ -2103,6 +2108,8 @@ $messages['uk'] = array(
 	'moodbar-type-confused-title' => 'Сконфужений',
 	'tooltip-moodbar-what' => 'Дізнайтеся більше про цю функцію',
 	'moodbar-what-label' => 'Що це?',
+	'moodbar-what-content' => 'Ця функція призначена задля усвідомлення співтовариством досвіду людей, що редагують на сайті.
+Для отримання додаткової інформації, будь ласка, відвідайте $1.',
 	'moodbar-what-link' => 'наступну сторінку',
 	'moodbar-privacy' => 'Відправляючи, ви погоджуєтесь з публічністю даних на $1.',
 	'moodbar-privacy-link' => 'умовах',

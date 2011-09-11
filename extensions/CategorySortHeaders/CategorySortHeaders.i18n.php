@@ -19,6 +19,13 @@ $messages['qqq'] = array(
 	'categorysortheaders-desc' => '{{desc}}',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'categorysortheaders-desc' => "Permite conseñar testeres d'ordenación personalizaes, con un «primer caráuter» múltiple, pa llistar les páxines baxo categoríes, usando una sintaxis como <nowiki>[[category:Foo|^Testera^Parte invisible de la clave d'ordenación]]</nowiki>",
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Renessaince
  * @author Wizardist

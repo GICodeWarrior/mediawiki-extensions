@@ -1485,6 +1485,7 @@ $messages['rue'] = array(
 	'vector-editwarning-preference' => 'Упозорнити ня, кідь буду опущати сторінку без уложіня змін',
 	'vector-simplesearch-search' => 'Глядати',
 	'vector-simplesearch-containing' => 'обсягуючій...',
+	'vector-noexperiments-preference' => 'Не брати участь на експеріментах з новыма функціями',
 );
 
 /** Sakha (Саха тыла)

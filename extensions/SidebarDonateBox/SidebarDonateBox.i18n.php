@@ -195,6 +195,13 @@ $messages['ms'] = array(
 	'DONATE' => 'Derma',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'DONATE' => 'Лезксйармаконь максома',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

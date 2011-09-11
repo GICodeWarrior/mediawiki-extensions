@@ -833,3 +833,41 @@ $messages['ru'] = array(
 	'favoritelist' => 'Мое избранное',
 );
 
+/** Swedish (Svenska)
+ * @author Diupwijk
+ * @author WikiPhoenix
+ */
+$messages['sv'] = array(
+	'favorites-desc' => 'Skapar en favoritlista',
+	'prefs-favoritelist' => 'Favoriter',
+	'prefs-advancedfavoritelist' => 'Avancerade alternativ',
+	'favoritelist' => 'Mina favoriter',
+	'myfavoritelist' => 'Mina favoriter',
+	'favoritelistfor' => "(för '''$1''')",
+	'nofavoritelist' => 'Du har inga sidor i dina favoriter.',
+	'favoritelistanontext' => 'Du måste $1 för att se eller redigera dina favoriter.',
+	'favoritenologin' => 'Inte inloggad',
+	'favoritenologintext' => 'Du måste vara [[Special:UserLogin|inloggad]] för att kunna ändra dina favoriter.',
+	'addedfavorite' => 'Lades till i favoriter',
+	'addedfavoritetext' => 'Sidan "[[:$1]]" har lagts till dina [[Special:Favoritelist|favoriter]].',
+	'removedfavorite' => 'Togs bort från favoriter',
+	'removedfavoritetext' => 'Sidan "[[:$1]]" har tagits bort från [[Special:Favoritelist|dina favoriter]].',
+	'favorite' => 'Favorit',
+	'tooltip-ca-favorite' => 'Lägg till denna sida till dina favoriter',
+	'tooltip-ca-unfavorite' => 'Ta bort denna sida från dina favoriter',
+	'tooltip-favorite' => 'Lägg till denna sida till dina favoriter',
+	'favoritelistall2' => 'alla',
+	'favoritelistedit-numitems' => 'Dina favoriter innehåller {{PLURAL:$1|1 sida|$1 sidor}}.',
+	'favoritelistedit-noitems' => 'Dina favoriter innehåller inga sidor.',
+	'favoritelistedit-normal-title' => 'Redigera favoriter',
+	'favoritelistedit-normal-legend' => 'Ta bort sidor från favoriter',
+	'favoritelistedit-normal-submit' => 'Ta bort sidor',
+	'favoritelistedit-normal-done' => '{{PLURAL:$1|1 sida|$1 sidor}} togs bort från dina favoriter:',
+	'favoritelistedit-raw-titles' => 'Sidor:',
+	'favoritelistedit-raw-submit' => 'Uppdatera favoriter',
+	'favoritelistedit-raw-added' => '{{PLURAL:$1|1 sida|$1 sidor}} lades till:',
+	'favoritelistedit-raw-removed' => '{{PLURAL:$1|1 sida|$1 sidor}} togs bort:',
+	'favoritelisttools-view' => 'Visa favoriter',
+	'favoritelisttools-edit' => 'Visa och redigera favoriter',
+);
+

@@ -391,6 +391,13 @@ $messages['ru'] = array(
 	'opensearchxml-desc' => 'Интерфейс предоставления текстовых выдержек [http://www.opensearch.org OpenSearch] XML',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'opensearchxml-desc' => 'Інтерфейс [http://www.opensearch.org OpenSearch] XML додаваючій приклады тексту',
+);
+
 /** Sakha (Саха тыла)
  * @author HalanTul
  */

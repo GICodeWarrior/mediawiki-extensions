@@ -1405,8 +1405,12 @@ Sila tukar atau naik taraf pelayar anda jika boleh.',
  */
 $messages['myv'] = array(
 	'cb_previous_items_link' => 'Удалов',
+	'cb_previous_items_stats' => ' ($1 - $2)',
 	'cb_next_items_link' => 'Седе тов',
+	'cb_cat_pages' => 'лопат',
+	'cb_cat_files' => 'файлат',
 	'cb_all_op' => 'Весе',
+	'cb_or_op' => 'эли',
 	'cb_and_op' => 'ды',
 	'cb_edit_left_hint' => 'Керш пелев шаштови, шаштык',
 	'cb_edit_right_hint' => 'Вить пелев шаштови, шаштык',

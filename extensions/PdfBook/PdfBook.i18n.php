@@ -369,6 +369,15 @@ $messages['sk'] = array(
 	'pdfbook-desc' => 'Zostavá knihu z stránok v kategórii a exportuje ju vo formáte PDF',
 );
 
+/** Swedish (Svenska)
+ * @author Diupwijk
+ */
+$messages['sv'] = array(
+	'pdfbook-action' => 'Skriv ut som PDF',
+	'pdfbook-log' => '$1 exporterad som PDF-bok',
+	'pdfbook-desc' => 'Sätter samman en bok från sidorna i en kategori och exporterar dem som PDF',
+);
+
 /** Swahili (Kiswahili)
  * @author Lloffiwr
  */

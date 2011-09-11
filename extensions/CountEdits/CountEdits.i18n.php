@@ -1429,6 +1429,13 @@ $messages['sk'] = array(
 	'countedits-nocontribs' => 'Táto wiki neobsahuje zatiaľ žiadne príspevky.',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'countedits-username' => 'Uporabniško ime:',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Sasa Stefanovic

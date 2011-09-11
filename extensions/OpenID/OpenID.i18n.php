@@ -1216,7 +1216,7 @@ Ein fakultatives Benutzerkontopasswort kann hingegen unter dem Reiter [[Special:
 	'openidnopolicy' => 'Die Seite hat keine Datenschutzrichtlinie angegeben.',
 	'openidpolicy' => 'Prüfe die <a target="_new" href="$1">Datenschutzrichtlinie</a> für weitere Informationen.',
 	'openidoptional' => 'Optional',
-	'openidrequired' => 'Pflicht',
+	'openidrequired' => 'Erforderlich',
 	'openidnickname' => 'Benutzername',
 	'openidfullname' => 'Bürgerlicher Name',
 	'openidemail' => 'E-Mail-Adresse',
@@ -4435,9 +4435,10 @@ Skonsultuj to z [[Special:ListUsers/sysop|administratorem]].',
 	'openidsuccess' => 'Weryfikacja udana',
 	'openidsuccesstext' => "'''Zweryfikowano i zalogowano użytkownika $1'''.
 
-Twój OpenID to $2 .
+Twój OpenID to $2.
 
-Tym i innymi OpenID oraz ewentualnym hasłem konta, możesz zarządzać w swoich [[Special:Preferences|preferencjach]].",
+Tym i innymi dodatkowymi OpenID możesz zarządzać w [[Special:Preferences#prefsection-openid|zakładce OpenID]] w swoich preferencjach.<br />
+Opcjonalne hasło do konta możesz dodać w swoim [[Special:Preferences#prefsection-personal|profilu użytkownika]].",
 	'openidusernameprefix' => 'UżytkownikOpenID',
 	'openidserverlogininstructions' => '$3 zażądało abyś podał hasło użytkownika $2 strona $1 (to jest Twój OpenID adres URL).',
 	'openidtrustinstructions' => 'Sprawdź, czy chcesz wymieniać informacje z $1.',
@@ -4461,7 +4462,7 @@ Możesz wybrać spośród propozycji podanych poniżej.',
 	'openidchoosemanual' => 'Nazwa użytkownika wybrana przez Ciebie',
 	'openidchooseexisting' => 'Istniejące konto na tej wiki',
 	'openidchooseusername' => 'Nazwa użytkownika',
-	'openidchoosepassword' => 'hasło',
+	'openidchoosepassword' => 'Hasło',
 	'openidconvertinstructions' => 'Formularz umożliwia przystosowanie konta użytkownika do korzystania z adresu URL OpenID lub dodanie następnych adresów URL OpenID.',
 	'openidconvertoraddmoreids' => 'Konwertuj do OpenID lub dodaj kolejny adres URL OpenID',
 	'openidconvertsuccess' => 'Przełączone na korzystanie z OpenID',
@@ -4469,6 +4470,9 @@ Możesz wybrać spośród propozycji podanych poniżej.',
 	'openidconvertyourstext' => 'Już masz swój OpenID.',
 	'openidconvertothertext' => 'To jest OpenID należące do kogoś innego.',
 	'openidalreadyloggedin' => 'Jesteś już zalogowany.',
+	'openidalreadyloggedintext' => "'''Już jesteś zalogowany jako $1!'''
+
+Możesz zarządzać (przeglądać, usuwać, dodawać dalsze) OpenID w [[Special:Preferences#prefsection-openid|zakładce OpenID]] w swoich preferencjach.",
 	'openidnousername' => 'Nie wybrano żadnej nazwy użytkownika.',
 	'openidbadusername' => 'Wybrano nieprawidłową nazwę użytkownika.',
 	'openidautosubmit' => 'Strona zawiera formularz, który powinien zostać automatycznie przesłany jeśli masz włączoną obsługę JavaScript.
@@ -4479,6 +4483,9 @@ Jeśli tak się nie stało spróbuj wcisnąć klawisz „Continue” (Kontynuuj)
 OpenID pozwala na zalogowanie się do wielu różnych witryn sieci Web, bez użycia osobnego hasła dla każdej z nich. 
 (Zobacz [http://pl.wikipedia.org/wiki/OpenID artykuł o OpenID w Wikipedii] jeśli chcesz uzyskać więcej informacji.)
 Jest wielu [http://openid.net/get/ operatorów usługi OpenID] – możliwe, że posiadasz już konto OpenID u innego usługodawcy.',
+	'openidlogininstructions-openidloginonly' => "Do {{GRAMMAR:D.lp|{{SITENAME}}}} możesz się zalogować ''wyłącznie'' przy pomocy OpenID.",
+	'openidlogininstructions-passwordloginallowed' => 'Jeśli masz już konto w {{GRAMMAR:Ms.lp|{{SITENAME}}}} możesz [[Special:UserLogin|zalogować się]] przy pomocy swojej nazwy i hasła tak jak dotychczas.
+Jeśli chcesz korzystać w przyszłości z OpenID, możesz [[Special:OpenIDConvert|przekształcić swoje konto na  OpenID]] po tym jak się zwyczajne zalogujesz.',
 	'openidupdateuserinfo' => 'Uaktualnij moje dane',
 	'openiddelete' => 'Usuń OpenID',
 	'openiddelete-text' => 'Klikając na przycisk „{{int:openiddelete-button}}” usuniesz OpenID $1 ze swojego konta.
@@ -4490,6 +4497,7 @@ Nie będziesz mógł zalogować się bez OpenID.',
 Nie będziesz mógł się zalogować bez OpenID.',
 	'openiddelete-sucess' => 'OpenID został pomyślnie usunięty z Twojego konta.',
 	'openiddelete-error' => 'Wystąpił błąd podczas usuwania powiązania Twojego konta z OpenID.',
+	'openid-openids-were-not-merged' => 'OpenID nie zostały połączone w trakcie scalania kont użytkownika.',
 	'openid-prefstext' => 'Preferencje [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'Ukryj mój adres URL OpenID na stronie użytkownika, jeśli zaloguję się za pomocą OpenID.',
 	'openid-pref-update-userinfo-on-login' => 'Aktualizuj następujące informacje o mnie z OpenID przy każdym logowaniu',
@@ -4503,6 +4511,15 @@ Nie będziesz mógł się zalogować bez OpenID.',
 	'openid-provider-label-yahoo' => 'Zaloguj się korzystając z konta Yahoo',
 	'openid-provider-label-aol' => 'Wprowadź nazwę wyświetlaną AOL',
 	'openid-provider-label-other-username' => 'Wprowadź swoją nazwę użytkownika $1',
+	'specialpages-group-openid' => 'OpenID – strony diagnostyczne i statusu',
+	'right-openid-dashboard-access' => 'Standardowy dostęp do zarządzania OpenID',
+	'right-openid-dashboard-admin' => 'Administracyjny dostęp do zarządzania OpenID',
+	'openid-dashboard-title' => 'Zarządzanie OpenID',
+	'openid-dashboard-title-admin' => 'Zarządzanie OpenID (administrator)',
+	'openid-dashboard-introduction' => 'Bieżące ustawienia rozszerzenia OpenID ([$1 pomoc])',
+	'openid-dashboard-number-openid-users' => 'Liczba użytkowników z OpenID',
+	'openid-dashboard-number-openids-in-database' => 'Wszystkich OpenID',
+	'openid-dashboard-number-users-without-openid' => 'Liczba użytkowników bez OpenID',
 );
 
 /** Piedmontese (Piemontèis)
