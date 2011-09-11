@@ -392,15 +392,18 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Schu
  * @author Yanajin66
  * @author 青子守歌
  */
 $messages['ja'] = array(
-	'articletocategory2-desc' => '各カテゴリのページに、新しいページを直接そのカテゴリへ追加して作成することのできる入力ボックスを追加する',
-	'articletocategory2-create-article-under-category-text' => 'このカテゴリにページを追加',
+	'articletocategory2-desc' => '各カテゴリーのページに、新しいページを直接そのカテゴリーへ追加して作成することのできる入力ボックスを追加します。',
+	'articletocategory2-create-article-under-category-text' => 'このカテゴリーにページを追加',
 	'articletocategory2-create-article-under-category-button' => '作成',
-	'articletocategory2-create-category-under-category-text' => 'このカテゴリにカテゴリを追加',
+	'articletocategory2-create-category-under-category-text' => 'このカテゴリーにカテゴリーを追加',
 	'articletocategory2-create-category-under-category-button' => '作成',
+	'right-ArticleToCategory2' => 'カテゴリーにページを追加',
+	'right-ArticleToCategory2AddCat' => 'カテゴリーにカテゴリーを追加',
 );
 
 /** Khmer (ភាសាខ្មែរ)
