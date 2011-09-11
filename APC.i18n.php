@@ -2456,6 +2456,8 @@ $messages['frp'] = array(
 	'apc' => 'Enformacions APC',
 	'apc-desc' => '[[Special:APC|Visualisacion et administracion du cache APC]] avouéc MediaWiki.',
 	'right-apc' => 'Utilisar totes les fonccionalitâts de [[Special:APC|APC]]',
+	'viewapc-apc-not-available' => 'Niona enformacion sur lo cache est disponibla.
+APC semble pas fonccionar.',
 	'viewapc-clear-confirm' => 'Voléd-vos purgiér lo cache ?',
 	'viewapc-clear-user-cache' => 'Purgiér lo cache utilisator',
 	'viewapc-clear-code-cache' => 'Purgiér lo cache des codes opèracions',
@@ -2548,6 +2550,10 @@ $messages['frp'] = array(
 	'viewapc-delete-failed' => 'L’entrâ <nowiki>$1</nowiki> du cache at pas possu étre suprimâ.',
 	'viewapc-version-info' => 'Enformacions de vèrsion',
 	'viewapc-version-changelog' => 'Jornal des changements',
+	'viewapc-version-failed' => 'Empossiblo de retrovar les enformacions de vèrsion.',
+	'viewapc-version-ok' => 'Vos utilisâd la dèrriére vèrsion d’APC ($1)',
+	'viewapc-version-old' => 'Vos utilisâd una vielye vèrsion d’APC ($1).
+Una novèla vèrsion $2 est disponibla dessus http://pecl.php.net/package/APC/$2',
 	'viewapc-filecache-cleared' => "'''''Cache des fichiérs purgiê.'''''",
 	'viewapc-usercache-cleared' => "'''''Cache de l’aplicacion purgiê.'''''",
 );
