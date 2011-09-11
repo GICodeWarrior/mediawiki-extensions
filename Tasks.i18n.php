@@ -2563,6 +2563,20 @@ $messages['mwl'] = array(
 	'tasks_table_header_page' => 'Páigina',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'tasks_delete' => 'Нардамс',
+	'tasks_no_task_delete_title' => 'А мереви',
+	'tasks_here' => 'вана',
+	'tasks_table_header_page' => 'Лопа',
+	'tasks_search_form_title' => 'Вешнемс',
+	'tasks_ascending' => 'Весемеде таштось васенцекс',
+	'tasks_status_open' => 'Панжадо',
+	'tasks_status_closed' => 'Пекстазь',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */
@@ -3519,6 +3533,7 @@ $messages['sk'] = array(
  */
 $messages['sl'] = array(
 	'tasks_table_header_page' => 'Stran',
+	'tasks_search_status' => 'Stanje',
 );
 
 /** Somali (Soomaaliga)
