@@ -414,6 +414,20 @@ $messages['ru'] = array(
 * [[{{MediaWiki:Mainpage}}|The Main page]]',
 );
 
+/** Swedish (Svenska)
+ * @author WikiPhoenix
+ */
+$messages['sv'] = array(
+	'special404-desc' => 'Ger en destination för "404 Hittades inte"-fel',
+	'error404' => '404 Hittades inte',
+	'special404-body' => 'Adressen du begärde hittades inte.
+
+Menade du {{fullurl:$1}}?
+
+Kanske du vill titta på:
+* [[{{MediaWiki:Mainpage}}|Huvudsidan]]',
+);
+
 /** Swahili (Kiswahili)
  * @author Lloffiwr
  */
@@ -480,5 +494,12 @@ Có phải bạn muốn xem “{{fullurl:$1}}”?
 
 Xem thêm:
 * [[{{MediaWiki:Mainpage}}|Trang đầu]]',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Waihorace
+ */
+$messages['zh-hant'] = array(
+	'error404' => '404 找不到頁面',
 );
 
