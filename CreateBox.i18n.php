@@ -85,6 +85,19 @@ $messages['arz'] = array(
 <createbox>break=no</createbox>",
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'createbox-desc' => "Caxa d'entrada especializada pa la creación de páxines",
+	'createbox-create' => 'Crear',
+	'createbox-exists' => "Sentímoslo, \"'''{{FULLPAGENAME}}'''\" yá esiste.
+
+Nun puedes crear esta páxina, pero puedes [{{fullurl:{{FULLPAGENAME}}|action=edit}} editala], [{{fullurl:{{FULLPAGENAME}}}} lleela], o elixir crear una páxina diferente usando la caxa d'abaxo.
+
+<createbox>break=no</createbox>",
+);
+
 /** Bavarian (Boarisch)
  * @author Mucalexx
  */
