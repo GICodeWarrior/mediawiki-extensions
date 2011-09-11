@@ -2346,6 +2346,10 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'readerfeedback-desc' => 'Перевірка сторінок доволює чітателям реаґовати формов оцїнок в катеґоріях',
+	'readerfeedback' => 'Што собі думате о тій сторінцї?',
+	'readerfeedback-text' => "''Найдьте собі просиме час на оцїнїня той сторінкы. Вашы назоры суть про нас дорогы і поможуть на вылїпшыти тот веб.''",
+	'readerfeedback-reliability' => 'Достовірность',
 	'readerfeedback-completeness' => 'Повнота',
 	'readerfeedback-npov' => 'Невтралсность',
 	'readerfeedback-presentation' => 'Поданя матеріалу',
@@ -2357,6 +2361,10 @@ $messages['rue'] = array(
 	'readerfeedback-level-3' => 'Высоке',
 	'readerfeedback-level-4' => 'Ексцелентный',
 	'readerfeedback-submit' => 'Одослати',
+	'readerfeedback-main' => 'Оцїнёвати годен лем сторінкы з обсягом.',
+	'readerfeedback-success' => "'''Дякуєме за оцїнку той сторінкы!''' ([$2 резултаты]) ([$3 Є коментарї ці вопросы?]).",
+	'readerfeedback-voted' => "'''Очівісно сьте уж тоту сторінку {{GENDER:|оцїнёвав|оцїнёвала|оцїнёвали}}.''' ([$2 Указати резултаты.]) ([$3 Мате коментарь або вопрос?])",
+	'readerfeedback-error' => "'''При оцїнёваню той сторінкы дішло ку хыбі.''' ([$2 Указати выслїдкы.]) ([$3 Мате коментарь або вопрос?])",
 	'readerfeedback-submitting' => 'Одосылать ся...',
 	'readerfeedback-finished' => 'Дякуєме!',
 	'readerfeedback-tagfilter' => 'Значка:',
@@ -2364,6 +2372,7 @@ $messages['rue'] = array(
 	'readerfeedback-tier-high' => 'Высоке',
 	'readerfeedback-tier-medium' => 'Середнє',
 	'readerfeedback-tier-poor' => 'Низке',
+	'tooltip-ca-ratinghist' => 'Оцїнка той сторінкы чітателями',
 	'specialpages-group-feedback' => 'Назоры чітателїв',
 	'readerfeedback-tt-review' => 'Одослати оцінку',
 );
