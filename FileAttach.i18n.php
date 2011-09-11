@@ -165,6 +165,17 @@ $messages['id'] = array(
 	'fileattach-editcomment' => 'Berkas [[File:$1|$1]] dilampirkan',
 );
 
+/** Japanese (日本語)
+ * @author Schu
+ */
+$messages['ja'] = array(
+	'fileattach-desc' => '現在のページにファイルをアップロードすることを可能にします。',
+	'fileattach-attachments' => '添付ファイル',
+	'fileattach-attachfile' => 'ファイルを添付',
+	'fileattach-uploadheading' => '$1 にファイルを添付',
+	'fileattach-editcomment' => 'ファイルは、[[File:$1|$1]] に添付済',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
