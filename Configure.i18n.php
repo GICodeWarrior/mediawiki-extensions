@@ -280,6 +280,7 @@ In addition, you may want to append "<code>&uselang=</code>" with your language 
 	'configure-section-html' => '{{optional}}',
 	'configure-section-ajax' => '{{optional}}',
 	'configure-section-namespaces' => '{{Identical|Namespaces}}',
+	'configure-section-skin' => '{{Identical|Skin}}',
 	'configure-section-category' => '{{Identical|Categories}}',
 	'configure-section-memcached' => '{{optional}}',
 	'configure-section-interwiki' => '{{optional}}',
