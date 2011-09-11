@@ -1394,10 +1394,11 @@ $messages['oc'] = array(
 
 /** Oriya (ଓଡ଼ିଆ)
  * @author Odisha1
+ * @author Psubhashish
  */
 $messages['or'] = array(
 	'mwe-clipedit-sc_duration' => 'ଅବଧି',
-	'mwe-clipedit-inline-description' => 'ଶୀର୍ଷକ',
+	'mwe-clipedit-inline-description' => 'ଶିରୋନାମା',
 	'mwe-clipedit-duration' => 'ଅବଧି:',
 	'mwe-clipedit-layout' => 'ବିନ୍ୟାସ',
 );

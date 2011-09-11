@@ -1803,6 +1803,7 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'fogg-wont-upload-to-server' => 'Nota : voutron fichiér vidèô serat encodâ localament et pas tèlèchargiê sur un sèrvor.',
 	'fogg-save_local_file' => 'Encodar dens un fichiér',
 	'fogg-help-sticky' => 'Éde (clicar por côlar)',
 	'fogg-cg-preset' => 'Prèdèfeni : <strong>$1</strong>',
@@ -1812,22 +1813,44 @@ $messages['frp'] = array(
 	'fogg-cg-advVideo' => 'Contrôlos avanciês de l’encodâjo vidèô',
 	'fogg-cg-advAudio' => 'Contrôlos avanciês de l’encodâjo ôdiô',
 	'fogg-preset-custom' => 'Paramètres pèrsonalisâs',
+	'fogg-webvideo-desc' => 'Vidèô vouèbe Ogg Theora, Vorbis (600 kbit/s et 400px de largior la ples granta)',
+	'fogg-savebandwidth-desc' => 'Ogg a benda passenta fêbla Theora, Vorbis (164 kbit/s et 200px de largior la ples granta)',
+	'fogg-highquality-desc' => 'Ogg a hôta qualitât Theora, Vorbis (1080px de largior la ples granta)',
+	'fogg-webvideo-webm-desc' => 'Vidèô vouèbe WebM VP8 (600 kbit/s et 480px de largior la ples granta)',
+	'fogg-highquality-webm-desc' => 'WebM a hôta qualitât VP8 (1080px de largior la ples granta)',
 	'fogg-videoQuality-title' => 'Qualitât vidèô',
+	'fogg-videoQuality-help' => 'Utilisâ por dèfenir la <i>qualitât visuâla</i> de la vidèô encodâ (pas utilisâ se vos dèfenésséd lo dèbit binèro dens los contrôlos avanciês ce-desot).',
 	'fogg-starttime-title' => 'Seconda de comencement',
+	'fogg-starttime-help' => 'Encodar ren que dês un temps en secondes',
 	'fogg-endtime-title' => 'Seconda de fin',
+	'fogg-endtime-help' => 'Encodar ren que vers un temps en secondes',
 	'fogg-audioQuality-title' => 'Qualitât ôdiô',
+	'fogg-audioQuality-help' => 'Utilisâ por dèfenir la <i>qualitât acustica</i> de l’ôdiô encodâ (pas utilisâ se vos dèfenésséd lo dèbit binèro dens los contrôlos avanciês ce-desot).',
 	'fogg-videoCodec-title' => 'Codèc vidèô',
+	'fogg-videoCodec-help' => 'Chouèsésséd lo codèc du clipe vidèô. Més d’enformacions sur lo <a target=\\"_new\\" href=\\"http:\\/\\/fr.wikipedia.org\\/wiki\\/Theora\\">codèc Theora<\\/a>. Més d’enformacions sur lo <a target=\\"_new\\" href=\\"http:\\/\\/fr.wikipedia.org\\/wiki\\/WebM\\">codèc VP8<\\/a>',
 	'fogg-audioCodec-title' => 'Codèc ôdiô',
+	'fogg-audioCodec-help' => 'Utilisâ por dèfenir lo codèc du clipe ôdiô. Ora, solament Vorbis est disponiblo. Més d’enformacions sur lo <a target="_new" href="http://fr.wikipedia.org/wiki/Vorbis">codèc Vorbis</a>',
 	'fogg-width-title' => 'Largior de la vidèô',
 	'fogg-width-help' => 'Tornar dimensionar a la largior balyê.',
 	'fogg-height-title' => 'Hôtior de la vidèô',
 	'fogg-height-help' => 'Tornar dimensionar a l’hôtior balyê.',
 	'fogg-videoBitrate-title' => 'Dèbit binèro de la vidèô',
+	'fogg-videoBitrate-help' => 'Lo dèbit binèro de la vidèô dèfenét lo dèbit de l’encodâjo por la vidèô en (kb/s)',
 	'fogg-twopass-title' => 'Encodâjo a doves pâsses',
+	'fogg-twopass-help' => 'L’encodâjo a doves pâsses pèrmèt una qualitât ples constanta en fassent doux parcors du fichiér vidèô',
 	'fogg-framerate-title' => 'Frèquence d’émâges',
+	'fogg-framerate-help' => 'La frèquence d’émâges per seconda de la vidèô.
+Més d’enformacions sur la <a target="_new" href="http://fr.wikipedia.org/wiki/Images_par_seconde">frèquence d’émâges</a>.',
 	'fogg-aspect-title' => 'Rapôrt largior / hôtior',
+	'fogg-aspect-help' => 'Lo rapôrt largior / hôtior de la vidèô pôt étre una fraccion 4:3 ou ben 16:9.
+Més d’enformacions sur los <a target="_new" href="http://fr.wikipedia.org/wiki/Format_d%27image">rapôrts largior / hôtior</a>.',
 	'fogg-keyframeInterval-title' => 'Entèrvalo de les émâges-cllâfs',
+	'fogg-keyframeInterval-help' => 'L’entèrvalo de les émâges-cllâfs dens les émâges.
+Nota : la plepârt des codècs empôsont les émâges-cllâfs se la difèrence entre les émâges est ples granta que la talye d’encodâjo de l’émâge-cllâf.
+Més d’enformacions sur les <a href="http://en.wikipedia.org/wiki/Intra-frame">émâges-cllâfs</a>.',
 	'fogg-denoise-title' => 'Filtro anti-trafic',
+	'fogg-denoise-help' => 'Dètraficâjo de la vidèô en entrâ.
+Més d’enformacions sur lo <a href="http://en.wikipedia.org/wiki/Video_denoising">dètraficâjo</a>.',
 	'fogg-novideo-title' => 'Gins de vidèô',
 	'fogg-novideo-help' => 'dèsactivar la vidèô dens la sortia',
 	'fogg-audioBitrate-title' => 'Dèbit binèro ôdiô',
@@ -1851,6 +1874,7 @@ $messages['frp'] = array(
 	'fogg-license-help' => 'La licence du clipe (prèfèrâblament una URL Creative Commons).',
 	'fogg-contact-title' => 'Contacte',
 	'fogg-contact-help' => 'Lim du contacte',
+	'fogg-missing-webm-support' => 'Volyéd utilisar un navigator [$1 compatiblo avouéc WebM] por prèvisualisar los rèsultats de les vidèôs WebM',
 	'fogg-gui-title' => 'Fâre una vidèô vouèbe',
 	'fogg-transcoding' => 'Encodâjo d’una vidèô',
 	'fogg-select_file' => 'Chouèsésséd un fichiér',
@@ -1870,6 +1894,8 @@ $messages['frp'] = array(
 	'fogg-badtoken' => 'Lo jeton est pas valido',
 	'fogg-preview' => 'Prèvisualisar la vidèô',
 	'fogg-hidepreview' => 'Cachiér la prèvisualisacion',
+	'fogg-warning-firebug' => '<b>Firebug</b> pôt provocar des conflits avouéc <i>Firefogg</i>.
+Volyéd dèsactivar <b>Firebug</b> por cela pâge.',
 );
 
 /** Galician (Galego)
@@ -4554,11 +4580,16 @@ Prosím, vypnite pre túto stránku <b>Firebug</b>.',
  */
 $messages['sl'] = array(
 	'fogg-save_local_file' => 'Zakodiraj v datoteko',
+	'fogg-cg-quality' => 'Osnovni nadzor kakovosti in ločljivosti',
 	'fogg-cg-meta' => 'Metapodatki posnetka',
+	'fogg-cg-advVideo' => 'Napredni nadzor kodiranja videa',
+	'fogg-cg-advAudio' => 'Napredni nadzor kodiranja zvoka',
 	'fogg-preset-custom' => 'Nastavitve po meri',
 	'fogg-videoQuality-title' => 'Kakovost videa',
 	'fogg-starttime-title' => 'Sekunde začetka',
+	'fogg-starttime-help' => 'Kodiraj samo od časa v sekundah',
 	'fogg-endtime-title' => 'Sekunde konca',
+	'fogg-endtime-help' => 'Kodiraj samo do časa v sekundah',
 	'fogg-audioQuality-title' => 'Kakovost zvoka',
 	'fogg-videoCodec-title' => 'Videokodek',
 	'fogg-audioCodec-title' => 'Kodek zvoka',
@@ -4579,13 +4610,17 @@ $messages['sl'] = array(
 	'fogg-artist-title' => 'Ime ustvarjalca',
 	'fogg-artist-help' => 'Avtor tega posnetka',
 	'fogg-date-title' => 'Datum',
+	'fogg-date-help' => 'Datum nastanka ali objave posnetka',
 	'fogg-location-title' => 'Kraj',
+	'fogg-location-help' => 'Lokacija posnetka',
 	'fogg-organization-title' => 'Organizacija',
+	'fogg-organization-help' => 'Ime organizacije (studia)',
 	'fogg-copyright-title' => 'Avtorske pravice',
 	'fogg-copyright-help' => 'Avtorske pravice posnetka',
 	'fogg-license-title' => 'Dovoljenje',
 	'fogg-contact-title' => 'Kontakt',
 	'fogg-contact-help' => 'Kontaktna povezava',
+	'fogg-missing-webm-support' => 'Prosimo, da za predogled rezultatov videov WebM uporabite brskalnik, [$1 združljiv z WebM].',
 	'fogg-gui-title' => 'Ustvari spletni video',
 	'fogg-transcoding' => 'Kodiranje videa',
 	'fogg-select_file' => 'Izberite datoteko',
@@ -4598,11 +4633,16 @@ $messages['sl'] = array(
 	'fogg-please-install' => '$1. Več $2',
 	'fogg-please-install-install-linktext' => 'Namestite Firefogg',
 	'fogg-please-install-about-linktext' => 'o Firefogg',
+	'fogg-use_latest_firefox' => 'Prosimo, da najprej namestite $1.
+<i>Nato ponovno obiščite to stran za namestitev razširitve <b>Firefogg</b>.</i>',
 	'fogg-latest-firefox' => 'najnovejši Firefox',
+	'fogg-passthrough_mode' => 'Vaša izbrana datoteka je že ogg ali pa ni videodatoteka',
 	'fogg-encoding-done' => 'Kodiranje je končano',
 	'fogg-badtoken' => 'Žeton ni veljaven',
 	'fogg-preview' => 'Predogled videa',
 	'fogg-hidepreview' => 'Skrij predogled',
+	'fogg-warning-firebug' => '<b>Firebug</b> lahko povzroči spore s <i>Firefogg</i>.
+Prosimo, onemogočite <b>Firebug</b> za to strani.',
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
