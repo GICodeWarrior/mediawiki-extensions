@@ -2976,6 +2976,7 @@ Pe piacere <a href=\"http://www.mediawiki.org/wiki/Extension:OggHandler/Client_d
 /** Russian (Русский)
  * @author AVRS
  * @author Ahonc
+ * @author Dim Grits
  * @author Kv75
  * @author MaxSem
  * @author Александр Сигачёв
@@ -2999,6 +3000,15 @@ $messages['ru'] = array(
 	'ogg-no-xiphqt' => 'Отсутствует компонент XiphQT для QuickTime. QuickTime не может воспроизвести файл Ogg без этого компонента. Пожалуйста, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">скачайте XiphQT</a> или выберите другой проигрыватель.',
 	'ogg-player-videoElement' => 'Встроенная поддержка браузером',
 	'ogg-player-oggPlugin' => 'Ogg модуль',
+	'ogg-player-cortado' => 'Cortado (Java)',
+	'ogg-player-vlc-mozilla' => 'VLC',
+	'ogg-player-vlc-activex' => 'VLC (ActiveX)',
+	'ogg-player-quicktime-mozilla' => 'QuickTime',
+	'ogg-player-quicktime-activex' => 'QuickTime (ActiveX)',
+	'ogg-player-totem' => 'Totem',
+	'ogg-player-kmplayer' => 'KMPlayer',
+	'ogg-player-kaffeine' => 'Kaffeine',
+	'ogg-player-mplayerplug-in' => 'mplayerplug-in',
 	'ogg-player-thumbnail' => 'Только неподвижное изображение',
 	'ogg-player-soundthumb' => 'Нет проигрывателя',
 	'ogg-player-selected' => '(выбран)',
@@ -3713,6 +3723,7 @@ $messages['tt-cyrl'] = array(
  * @author AVRS
  * @author Ahonc
  * @author Arturyatsko
+ * @author Dim Grits
  * @author NickK
  * @author Prima klasy4na
  * @author Тест
@@ -3738,6 +3749,15 @@ QuickTime не може відтворювати ogg-файли без цьог�
 Будь ласка, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">завантажте XiphQT</a> або оберіть інший програвач.',
 	'ogg-player-videoElement' => 'Рідна підтримка веб-оглядача',
 	'ogg-player-oggPlugin' => 'Плаґін для браузера',
+	'ogg-player-cortado' => 'Cortado (Java)',
+	'ogg-player-vlc-mozilla' => 'VLC',
+	'ogg-player-vlc-activex' => 'VLC (ActiveX)',
+	'ogg-player-quicktime-mozilla' => 'QuickTime',
+	'ogg-player-quicktime-activex' => 'QuickTime (ActiveX)',
+	'ogg-player-totem' => 'Totem',
+	'ogg-player-kmplayer' => 'KMPlayer',
+	'ogg-player-kaffeine' => 'Kaffeine',
+	'ogg-player-mplayerplug-in' => 'mplayerplug-in',
 	'ogg-player-thumbnail' => 'Тільки нерухоме зображення',
 	'ogg-player-soundthumb' => 'Нема програвача',
 	'ogg-player-selected' => '(обраний)',
