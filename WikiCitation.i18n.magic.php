@@ -132,7 +132,6 @@ $magicWords['en'] = array(
 		'wc_pamphlet'                 => array( 0, 'pamphlet' ),
 		'wc_conference_paper'         => array( 0, 'conference-paper' ),
 		'wc_thesis'                   => array( 0, 'thesis' ),
-			'wc_dissertation'         => array( 0, 'PhD-dissertation' ),
 		'wc_report'                   => array( 0, 'report' ),
 		'wc_poem'                     => array( 0, 'poem' ),
 		'wc_song'                     => array( 0, 'song' ),
