@@ -219,6 +219,13 @@ $messages['sl'] = array(
 	'editpagetracking-desc' => 'Zabeleži, ko vsak uporabnik prvič obišče urejevalno stran',
 );
 
+/** Ukrainian (Українська)
+ * @author Dim Grits
+ */
+$messages['uk'] = array(
+	'editpagetracking-desc' => 'Записує для кожного користувача коли він уперше відкрив сторінку редагування',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */
