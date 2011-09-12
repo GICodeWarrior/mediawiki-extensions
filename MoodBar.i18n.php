@@ -1054,7 +1054,7 @@ $messages['ia'] = array(
 	'moodbar-what-content' => 'Iste function es concipite pro adjutar le communitate a comprender le experientia del personas qui modifica le sito.
 Pro ulterior information, per favor visita le $1.',
 	'moodbar-what-link' => 'pagina de function',
-	'moodbar-privacy' => 'Per submitter, tu te declara de accordo que tu contribution sia public in concordantia con iste $1.',
+	'moodbar-privacy' => 'Per submitter, tu accepta que tu contribution essera usate publicamente sub iste $1.',
 	'moodbar-privacy-link' => 'conditiones',
 	'moodbar-disable-link' => 'Isto non me interessa. Per favor disactiva iste function.',
 	'moodbar-form-title' => 'Perque...',
