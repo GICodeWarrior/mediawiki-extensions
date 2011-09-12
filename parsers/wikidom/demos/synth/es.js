@@ -39,6 +39,59 @@ $(document).ready( function() {
 			'content': { 'text': 'The soft returns are usually placed after the ends of complete words, or after the punctuation that follows complete words. However, word wrap may also occur following a hyphen.\nWord wrap following hyphens is sometimes not desired, and can be avoided by using a so-called non-breaking hyphen instead of a regular hyphen. On the other hand, when using word processors, invisible hyphens, called soft hyphens, can also be inserted inside words so that word wrap can occur following the soft hyphens.\nSometimes, word wrap is not desirable between words. In such cases, word wrap can usually be avoided by using a hard space or non-breaking space between the words, instead of regular spaces.\nOccasionallyThereAreWordsThatAreSoLongTheyExceedTheWidthOfTheLineAndEndUpWrappingBetweenMultipleLines.\nText might have\ttabs\tin it too. Not all text will end in a line breaking character' }
 		},
 		{
+			'type': 'table',
+			'rows': [
+				{
+					'cells': [
+						{
+							'document': {
+								'blocks': [
+									{
+										'type': 'paragraph',
+										'content': { 'text': 'test 1' }
+									}
+								]
+							}
+						},
+						{
+							'document': {
+								'blocks': [
+									{
+										'type': 'paragraph',
+										'content': { 'text': 'test 2' }
+									}
+								]
+							}
+						}
+					]
+				},
+				{
+					'cells': [
+						{
+							'document': {
+								'blocks': [
+									{
+										'type': 'paragraph',
+										'content': { 'text': 'test 3' }
+									}
+								]
+							}
+						},
+						{
+							'document': {
+								'blocks': [
+									{
+										'type': 'paragraph',
+										'content': { 'text': 'test 4' }
+									}
+								]
+							}
+						}
+					]					
+				}
+			]
+		},
+		{
 			'type': 'list',
 			'style': 'number',
 			'items': [
