@@ -629,6 +629,7 @@ $messages['vep'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
  * @author Vinhtantran
  */
 $messages['vi'] = array(
@@ -636,7 +637,7 @@ $messages['vi'] = array(
 	'logentry-parserhook-desc' => 'Bộ mở rộng thẻ này cung cấp một mẫu đơn để nối/cắt các trang nhật trình',
 	'logentry-specialpage-desc' => 'Bộ mở rộng thẻ này cung cấp cách xử lý nối các trang nhật trình',
 	'logentry' => 'Mục nhật trình',
-	'logentry-invalidpage' => 'Trang không hợp lệ',
+	'logentry-invalidpage' => 'Trang không hợp lệ: $1',
 	'logentry-invalidtoken' => 'Khóa không hợp lệ',
 );
 
