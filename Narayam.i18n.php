@@ -1445,9 +1445,13 @@ $messages['sv'] = array(
  * @author Sodabottle
  */
 $messages['ta'] = array(
-	'narayam-toggle-ime' => 'தமிழில் எழுத',
-	'narayam-help-page' => 'விக்கிப்பீடியா:தமிழ்த் தட்டச்சு',
+	'narayam-toggle-ime' => 'தமிழ்',
+	'narayam-menu' => 'தமிழில் எழுத',
+	'narayam-menu-tooltip' => 'இக்கருவியைப் பயன்படுத்தி தமிழில் எழுதலாம்; குறுக்கு விசை :CTRL+M',
+	'narayam-help' => 'உதவி',
+	'narayam-help-page' => 'உதவி:தமிழ்த் தட்டச்சு',
 	'narayam-checkbox-tooltip' => 'இக்கருவியைப் பயன்படுத்தி தமிழில் எழுதலாம்.',
+	'narayam-disable-preference' => 'நரையம் தட்டச்சுக் கருவியை நீக்கு',
 	'narayam-ta99' => 'தமிழ்99',
 	'narayam-ta' => 'எழுத்துப்பெயர்ப்பு',
 );
