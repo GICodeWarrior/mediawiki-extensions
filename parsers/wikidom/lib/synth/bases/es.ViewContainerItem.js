@@ -28,6 +28,18 @@ es.ViewContainerItem.prototype.getModel = function() {
 	return this.model;
 };
 
+/**
+ * Gets the index of this item within it's container.
+ * 
+ * This method simply delegates to the model.
+ * 
+ * @method
+ * @returns {Integer} Index of item in it's container
+ */
+es.ViewContainerItem.prototype.getIndex = function() {
+	return this.model.getIndex();
+};
+
 /* Inheritance */
 
 es.extend( es.ViewContainerItem, es.EventEmitter );

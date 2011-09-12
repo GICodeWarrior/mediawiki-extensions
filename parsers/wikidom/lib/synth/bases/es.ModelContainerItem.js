@@ -54,6 +54,26 @@ es.ModelContainerItem.prototype.detach = function() {
 };
 
 /**
+ * Gets the index of this item within it's container.
+ * 
+ * @method
+ * @returns {Integer} Index of item in it's container
+ * @throws Unknown item error if this item is not in it's container
+ * @throws Missing container error if this container can't be accessed.
+ */
+es.ModelContainerItem.prototype.getIndex = function() {
+	try {
+		var index = this[this._containerName].indexOf( this );
+		if ( index === -1 ) {
+			throw 'Unknown item error. Can not get index of item that is not in a container. ' + e;
+		}
+		return index;
+	} catch ( e ) {
+		throw 'Missing container error. Can not get index of item in missing container. ' + e;
+	}
+};
+
+/**
  * Gets the previous item in container.
  * 
  * @method
