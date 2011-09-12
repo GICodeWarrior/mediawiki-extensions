@@ -41,4 +41,11 @@ es.BlockView.getRenderedLineIndex = function( offset ) {
 	throw 'BlockView.getRenderedLineIndex not implemented in this subclass.';
 };
 
+/**
+ * Gets rendered line index of offset within content.
+ */
+es.BlockView.getRenderedLineRange = function( offset ) {
+	throw 'BlockView.getRenderedLineRange not implemented in this subclass.';
+};
+
 es.extend( es.BlockView, es.ViewContainerItem );
