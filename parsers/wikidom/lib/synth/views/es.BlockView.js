@@ -42,7 +42,7 @@ es.BlockView.getRenderedLineIndex = function( offset ) {
 };
 
 /**
- * Gets rendered line index of offset within content.
+ * Gets range of content in a rendered line which an offset is within.
  */
 es.BlockView.getRenderedLineRange = function( offset ) {
 	throw 'BlockView.getRenderedLineRange not implemented in this subclass.';
