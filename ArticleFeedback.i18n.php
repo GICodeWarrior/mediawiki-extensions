@@ -617,6 +617,7 @@ $3
 
 /** Bulgarian (Български)
  * @author DCLXVI
+ * @author Spiritia
  * @author Turin
  */
 $messages['bg'] = array(
@@ -630,6 +631,7 @@ $messages['bg'] = array(
 	'articlefeedback-survey-submit' => 'Изпращане',
 	'articlefeedback-survey-title' => 'Моля, отговорете на няколко въпроса',
 	'articlefeedback-survey-thanks' => 'Благодарим ви, че попълнихте въпросника!',
+	'articlefeedback-survey-disclaimer' => 'С цел подобряване на инструмента, мнението ви може да бъде анонимно споделено пред уикипедианската общност.',
 	'articlefeedback-form-switch-label' => 'Оценяване на страницата',
 	'articlefeedback-form-panel-title' => 'Оценяване на страницата',
 	'articlefeedback-form-panel-explanation' => 'Какво е това?',
@@ -642,6 +644,7 @@ $messages['bg'] = array(
 	'articlefeedback-pitch-join-accept' => 'Създаване на сметка',
 	'articlefeedback-pitch-join-login' => 'Влизане',
 	'articlefeedback-pitch-edit-accept' => 'Редактиране на тази страница',
+	'articlefeedback-survey-message-success' => 'Благодарим ви, че попълнихте въпросника!',
 	'articleFeedback-table-caption-dailyhighs' => 'Страници с най-високи оценки: $1',
 	'articleFeedback-table-caption-dailylows' => 'Страници с най-ниски оценки: $1',
 	'articleFeedback-table-heading-page' => 'Страница',
@@ -5649,6 +5652,7 @@ $messages['roa-tara'] = array(
 	'articlefeedback-form-panel-explanation' => 'Ce jè quiste?',
 	'articlefeedback-form-panel-explanation-link' => "Project:FeedbackD'aVôsce",
 	'articlefeedback-form-panel-clear' => 'Live stu pundegge',
+	'articlefeedback-form-panel-expertise-studies' => "Tènghe 'nu grade de scole/università 'mbortande",
 	'articlefeedback-form-panel-expertise-profession' => "Jè parte d'a professiona meje",
 	'articlefeedback-form-panel-expertise-hobby' => "Queste jè 'na passiona profonda meje",
 	'articlefeedback-form-panel-helpimprove-privacy' => "Regole p'a privacy",
