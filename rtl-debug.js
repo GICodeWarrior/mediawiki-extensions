@@ -1,10 +1,12 @@
-(function($) {
-	$('*').each( function() {
-		var style = window.getComputedStyle( this, null );
-		if ( style.getPropertyValue( 'direction' ) == 'rtl' ) {
-			$(this).addClass( 'mw-rtldebug-rtl' );
-		} else {
-			$(this).addClass( 'mw-rtldebug-ltr' );
-		}
-	} );
-})(jQuery);
+( function( $ ) {
+
+	// Select all elements in the body (we don't need stuff in <head>)
+	$( document.body )
+		.find( '*' )
+		.andSelf() // include body as well
+		.each( function() {
+			var $el = $( this );
+			$el.addClass( $el.css( 'direction' ) === 'rtl' ? 'mw-rtldebug-rtl' : 'mw-rtldebug-ltr' );
+		} );
+
+} )( jQuery );
