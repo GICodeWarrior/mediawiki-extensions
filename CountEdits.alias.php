@@ -188,9 +188,14 @@ $specialPageAliases['sk'] = array(
 	'CountEdits' => array( 'PočítaniePríspevkov' ),
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬) */
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬) */
 $specialPageAliases['sr-ec'] = array(
 	'CountEdits' => array( 'Број_измена' ),
+);
+
+/** Swedish (Svenska) */
+$specialPageAliases['sv'] = array(
+	'CountEdits' => array( 'Räkna_redigeringar' ),
 );
 
 /** Swahili (Kiswahili) */
@@ -221,6 +226,11 @@ $specialPageAliases['vi'] = array(
 /** Simplified Chinese (‪中文(简体)‬) */
 $specialPageAliases['zh-hans'] = array(
 	'CountEdits' => array( '计数编辑' ),
+);
+
+/** Traditional Chinese (‪中文(繁體)‬) */
+$specialPageAliases['zh-hant'] = array(
+	'CountEdits' => array( '編輯計算' ),
 );
 
 /**
