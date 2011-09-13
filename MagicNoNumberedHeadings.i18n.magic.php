@@ -1,4 +1,10 @@
 <?php
+/**
+ * Internationalisation file for MagicNoNumberedHeadings extension.
+ *
+ * @file
+ * @ingroup Extensions
+ */
 
 $magicWords = array();
 
@@ -24,7 +30,7 @@ $magicWords['ce'] = array(
 
 /** German (Deutsch) */
 $magicWords['de'] = array(
-	'MAG_NONUMBEREDHEADINGS' => array( 0, '__KEINEÜERSCHRIFTENNUMMERIERUNG__', '__NONUMBEREDHEADINGS__' ),
+	'MAG_NONUMBEREDHEADINGS' => array( 0, '__KEINEÜERSCHRIFTENNUMMERIERUNG__' ),
 );
 
 /** Spanish (Español) */
@@ -54,12 +60,17 @@ $magicWords['mr'] = array(
 
 /** Nedersaksisch (Nedersaksisch) */
 $magicWords['nds-nl'] = array(
-	'MAG_NONUMBEREDHEADINGS' => array( 0, '__GIENENUMMERDEKOPJES__', '__GEENGENUMMERDEKOPPEN__', '__NONUMBEREDHEADINGS__' ),
+	'MAG_NONUMBEREDHEADINGS' => array( 0, '__GIENENUMMERDENKOPJES__', '__GEENGENUMMERDEKOPPEN__' ),
 );
 
 /** Dutch (Nederlands) */
 $magicWords['nl'] = array(
 	'MAG_NONUMBEREDHEADINGS' => array( 0, '__GEENGENUMMERDEKOPPEN__' ),
+);
+
+/** Polish (Polski) */
+$magicWords['pl'] = array(
+	'MAG_NONUMBEREDHEADINGS' => array( 0, '__NIENUMERUJNAGŁÓWKÓW__' ),
 );
 
 /** Russian (Русский) */
