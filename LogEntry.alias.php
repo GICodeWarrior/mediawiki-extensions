@@ -113,6 +113,11 @@ $specialPageAliases['mt'] = array(
 	'LogEntry' => array( 'DaħlaReġistru' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$specialPageAliases['nds-nl'] = array(
+	'LogEntry' => array( 'Logboekregel' ),
+);
+
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'LogEntry' => array( 'Logboekregel' ),
