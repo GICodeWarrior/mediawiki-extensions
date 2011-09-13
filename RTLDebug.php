@@ -23,6 +23,7 @@
 
 $wgResourceModules['ext.rtlDebug'] = array(
 	'scripts' => 'rtl-debug.js',
+	'styles' => 'rtl-debug.css',
 	'localBasePath' => dirname( __FILE__ )
 );
 
