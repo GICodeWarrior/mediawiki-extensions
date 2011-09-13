@@ -25,7 +25,7 @@ $specialPageAliases['arz'] = array(
 
 /** Bulgarian (Български) */
 $specialPageAliases['bg'] = array(
-	'ExpandTemplates' => array( 'Разгръщане на шаблони' ),
+	'ExpandTemplates' => array( 'Разгръщане_на_шаблони' ),
 );
 
 /** Breton (Brezhoneg) */
