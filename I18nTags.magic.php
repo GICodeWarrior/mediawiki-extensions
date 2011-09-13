@@ -50,6 +50,11 @@ $magicWords['cs'] = array(
 	'languagename' => array( 0, 'názevjazyka', 'languagename' ),
 );
 
+/** German (Deutsch) */
+$magicWords['de'] = array(
+	'languagename' => array( 0, 'sprachenname' ),
+);
+
 /** Esperanto (Esperanto) */
 $magicWords['eo'] = array(
 	'languagename' => array( 0, 'lingvonomo' ),
@@ -90,7 +95,7 @@ $magicWords['ksh'] = array(
 	'languagename' => array( 0, 'ShproocheName', 'languagename' ),
 );
 
-/** ‪Kurdî (latînî)‬ (‪Kurdî (latînî)‬) */
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬) */
 $magicWords['ku-latn'] = array(
 	'languagename' => array( 0, 'navê_ziman' ),
 );
@@ -127,7 +132,12 @@ $magicWords['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $magicWords['no'] = array(
-	'languagename' => array( 0, 'språknavn', 'languagename' ),
+	'languagename' => array( 0, 'språknavn' ),
+);
+
+/** Polish (Polski) */
+$magicWords['pl'] = array(
+	'languagename' => array( 0, 'nazwajęzyka' ),
 );
 
 /** Pashto (پښتو) */
@@ -150,7 +160,7 @@ $magicWords['sq'] = array(
 	'languagename' => array( 0, 'emriigjuhës' ),
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬) */
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬) */
 $magicWords['sr-ec'] = array(
 	'languagename' => array( 0, 'имејезика', 'име_језика' ),
 );
