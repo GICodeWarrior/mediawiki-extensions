@@ -28,7 +28,7 @@ $specialPageAliases['bs'] = array(
 
 /** Persian (فارسی) */
 $specialPageAliases['fa'] = array(
-	'PovWatch' => array( 'پیگیری_نقطه‌نظر' ),
+	'PovWatch' => array( 'پیگیری_دیدگاه' ),
 );
 
 /** Swiss German (Alemannisch) */
@@ -61,9 +61,14 @@ $specialPageAliases['ja'] = array(
 	'PovWatch' => array( '編集合戦の監視' ),
 );
 
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'PovWatch' => array( 'НадзорНаГТ' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
-	'PovWatch' => array( 'Staandpuntsvolglieste' ),
+	'PovWatch' => array( 'Staandpuntvolglieste' ),
 );
 
 /** Dutch (Nederlands) */
