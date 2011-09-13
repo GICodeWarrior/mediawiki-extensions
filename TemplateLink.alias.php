@@ -45,7 +45,7 @@ $specialPageAliases['fa'] = array(
 
 /** Franco-Provençal (Arpetan) */
 $specialPageAliases['frp'] = array(
-	'TemplateLink' => array( 'Lim de vers un modèlo', 'LimDeVersUnModèlo' ),
+	'TemplateLink' => array( 'Lim_de_vers_un_modèlo', 'LimDeVersUnModèlo' ),
 );
 
 /** Swiss German (Alemannisch) */
@@ -158,7 +158,7 @@ $specialPageAliases['tr'] = array(
 	'TemplateLink' => array( 'ŞablonBağlantısı' ),
 );
 
-/** Татарча (Татарча) */
+/** Tatar (Cyrillic script) (Татарча) */
 $specialPageAliases['tt-cyrl'] = array(
 	'TemplateLink' => array( 'Сылтама_үрнәкләре' ),
 );
