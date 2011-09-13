@@ -158,6 +158,11 @@ $specialPageAliases['mr'] = array(
 	'Watchers' => array( 'प्रेक्षक' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$specialPageAliases['nds-nl'] = array(
+	'Watchers' => array( 'Volgers' ),
+);
+
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'Watchers' => array( 'Volgers' ),
