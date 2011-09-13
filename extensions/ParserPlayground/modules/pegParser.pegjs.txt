@@ -174,6 +174,17 @@ template_param
   };
 }
 
+tplarg = "{{{" name:link_target params:("|" p:template_param { return p })* "}}}" {
+    var obj = {
+      type: 'tplarg',
+      name: name
+    };
+    if (params && params.length) {
+      obj.params = params;
+    }
+    return obj;
+}
+
 template_param_name
   = h:( !"}}" x:([^=|]) { return x } )* { return h.join(''); }
 

@@ -9,8 +9,8 @@
  * to point at the MW page name containing the parser peg definition; default
  * is 'MediaWiki:Gadget-ParserPlayground-PegParser.pegjs'.
  */
-function PegParser(options) {
-	this.options = options;
+function PegParser(env) {
+	this.env = env || {};
 }
 
 PegParser.src = false;
@@ -34,8 +34,58 @@ PegParser.prototype.parseToTree = function(text, callback) {
  * @param {function(tree, error)} callback
  */
 PegParser.prototype.expandTree = function(tree, callback) {
-	// no-op!
-	callback(tree, null);
+	var self = this;
+	var subParseArray = function(listOfTrees) {
+		var content = [];
+		$.each(listOfTrees, function(i, subtree) {
+			self.expandTree(subtree, function(substr, err) {
+				content.push(tree);
+			});
+		});
+		return content;
+	};
+	var src;
+	if (typeof tree === "string") {
+		callback(tree);
+		return;
+	}
+	if (tree.type == 'template') {
+		// expand a template node!
+		
+		// Resolve a possibly relative link
+		var templateName = this.env.resolveTitle( tree.target, 'Template' );
+		this.env.fetchTemplate( tree.target, tree.params || {}, function( templateSrc, error ) {
+			// @fixme should pre-parse/cache these too?
+			self.parseToTree( templateSrc, function( templateTree, error ) {
+				if ( error ) {
+					callback({
+						type: 'placeholder',
+						orig: tree,
+						content: [
+							{
+								// @fixme broken link?
+								type: 'link',
+								target: templateName
+							}
+						]
+					});
+				} else {
+					callback({
+						type: 'placeholder',
+						orig: tree,
+						content: self.env.expandTemplateArgs( templateTree, tree.params )
+					});
+				}
+			})
+		} );
+		// Wait for async...
+		return;
+	}
+	var out = $.extend( tree ); // @fixme prefer a deep copy?
+	if (tree.content) {
+		out.content = subParseArray(tree.content);
+	}
+	callback(out);
 };
 
 PegParser.prototype.initSource = function(callback) {
