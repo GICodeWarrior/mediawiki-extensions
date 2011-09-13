@@ -2,6 +2,8 @@
 
 global $wgOMIP, $wgAutoloadClasses;
 
+$wgAutoloadClasses['WOMProcessor'] = $wgOMIP . '/includes/WOM_Processor.php';
+
 // POM Type
 $wgAutoloadClasses['WikiObjectModelFactory']    =  $wgOMIP . '/includes/models/WOMFactory.php';
 $wgAutoloadClasses['WikiObjectModel']           =  $wgOMIP . '/includes/models/WikiObjectModel.php';
