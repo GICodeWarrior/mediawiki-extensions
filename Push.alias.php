@@ -35,6 +35,11 @@ $specialPageAliases['mk'] = array(
 	'Push' => array( 'Префрли' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$specialPageAliases['nds-nl'] = array(
+	'Push' => array( 'Deursturen' ),
+);
+
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'Push' => array( 'Doorsturen' ),
