@@ -42,7 +42,7 @@ $magicWords['mk'] = array(
 
 /** Nedersaksisch (Nedersaksisch) */
 $magicWords['nds-nl'] = array(
-	'MAG_NOTOCNUM' => array( 0, '__GIENINHOUDSOPGAVENUMMERING__', '__GEENINHOUDSOPGAVENUMMERING__', '__NOTOCNUM__' ),
+	'MAG_NOTOCNUM' => array( 0, '__GIENINHOUDSOPGAVENUMMERING__', '__GEENINHOUDSOPGAVENUMMERING__' ),
 );
 
 /** Dutch (Nederlands) */
@@ -50,7 +50,7 @@ $magicWords['nl'] = array(
 	'MAG_NOTOCNUM' => array( 0, '__GEENINHOUDNUM__', '__GEENINHOUDSOPGAVENUMMERING__' ),
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬) */
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬) */
 $magicWords['sr-ec'] = array(
 	'MAG_NOTOCNUM' => array( 0, '__БЕЗНАБРАЈАЊА__', 'БЕЗ_НАБРАЈАЊА' ),
 );
