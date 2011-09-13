@@ -103,6 +103,12 @@ $magicWords['mr'] = array(
 	'mediadimensions' => array( 0, 'दृक्श्राव्यमोजमाप', 'मिडियाडायमेंशन्स', 'mediadimensions' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$magicWords['nds-nl'] = array(
+	'mediaheight' => array( 0, 'mediaheugte' ),
+	'mediadimensions' => array( 0, 'media-aofmetingen' ),
+);
+
 /** Dutch (Nederlands) */
 $magicWords['nl'] = array(
 	'mediasize' => array( 0, 'mediagrootte' ),
