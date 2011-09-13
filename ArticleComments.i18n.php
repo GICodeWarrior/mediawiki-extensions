@@ -743,10 +743,13 @@ $messages['frp'] = array(
 	'article-comments-invalid-field' => 'Lo $1 balyê <nowiki>[$2]</nowiki> est envalido.',
 	'article-comments-required-field' => 'Lo champ « $1 » est oblegatouèro.',
 	'article-comments-submission-failed' => 'L’èxpèdicion du comentèro at pas reussia',
+	'article-comments-failure-reasons' => 'Dèsolâ, l’èxpèdicion de voutron comentèro at pas reussia por {{PLURAL:$1|ceta rêson|cetes rêsons}} :',
+	'article-comments-no-comments' => 'Dèsolâ, la pâge « [[$1]] » accèpte pas los comentèros por lo moment.',
 	'article-comments-talk-page-starter' => '<noinclude>Comentèros sur « [[$1]] »
 <comments />
 ----- __NOEDITSECTION__</noinclude>',
 	'article-comments-commenter-said' => '$1 at dét ...',
+	'article-comments-summary' => 'Comentèros aportâs per $1 — avouéc l’èxtension ArticleComments',
 	'article-comments-submission-succeeded' => 'L’èxpèdicion du comentèro at reussia',
 	'article-comments-submission-success' => 'Vos éd mandâ avouéc reusséta un comentèro sur « [[$1]] »',
 	'article-comments-submission-view-all' => 'Vos pouede vêre tôs los comentèros sur cela pâge [[$1|ique]]',
