@@ -26,6 +26,11 @@ $magicWords['arc'] = array(
 	'record' => array( 0, 'ܣܓܠ' ),
 );
 
+/** Esperanto (Esperanto) */
+$magicWords['eo'] = array(
+	'record' => array( 0, 'rikordo' ),
+);
+
 /** Japanese (日本語) */
 $magicWords['ja'] = array(
 	'record' => array( 0, '記録' ),
@@ -36,12 +41,17 @@ $magicWords['mk'] = array(
 	'record' => array( 0, 'запис' ),
 );
 
+/** Polish (Polski) */
+$magicWords['pl'] = array(
+	'record' => array( 0, 'wpis' ),
+);
+
 /** Russian (Русский) */
 $magicWords['ru'] = array(
 	'record' => array( 0, 'запись' ),
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬) */
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬) */
 $magicWords['sr-ec'] = array(
 	'record' => array( 0, 'белешка' ),
 );
