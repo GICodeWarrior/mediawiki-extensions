@@ -143,7 +143,7 @@ $specialPageAliases['myv'] = array(
 
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
-	'Form' => array( 'Formelier' ),
+	'Form' => array( 'Formulier' ),
 );
 
 /** Dutch (Nederlands) */
@@ -186,7 +186,7 @@ $specialPageAliases['sq'] = array(
 	'Form' => array( 'Formë' ),
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬) */
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬) */
 $specialPageAliases['sr-ec'] = array(
 	'Form' => array( 'Образац' ),
 );
@@ -211,7 +211,7 @@ $specialPageAliases['tl'] = array(
 	'Form' => array( 'Pormularyo' ),
 );
 
-/** Татарча (Татарча) */
+/** Tatar (Cyrillic script) (Татарча) */
 $specialPageAliases['tt-cyrl'] = array(
 	'Form' => array( 'Форма' ),
 );
@@ -223,6 +223,11 @@ $specialPageAliases['vi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬) */
 $specialPageAliases['zh-hans'] = array(
+	'Form' => array( '表单' ),
+);
+
+/** Traditional Chinese (‪中文(繁體)‬) */
+$specialPageAliases['zh-hant'] = array(
 	'Form' => array( '表格' ),
 );
 
