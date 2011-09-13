@@ -23,6 +23,7 @@ $specialPageAliases['ar'] = array(
 	'OpenIDConvert' => array( 'تحويل_الهوية_المفتوحة' ),
 	'OpenIDServer' => array( 'خادم_الهوية_المفتوحة' ),
 	'OpenIDXRDS' => array( 'إكسردس_الهوية_المفتوحة' ),
+	'OpenIDDashboard' => array( 'سبورة_الهوية_المفتوحة' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
@@ -94,12 +95,22 @@ $specialPageAliases['mk'] = array(
 	'OpenIDLogin' => array( 'НајаваСоOpenID' ),
 	'OpenIDConvert' => array( 'ПретворањеНаOpenID' ),
 	'OpenIDServer' => array( 'ОпслужувачНаOpenID' ),
+	'OpenIDDashboard' => array( 'КонтролнаТаблаНаOpenID' ),
 );
 
 /** Malayalam (മലയാളം) */
 $specialPageAliases['ml'] = array(
 	'OpenIDLogin' => array( 'ഓപ്പൺഐ.ഡി.പ്രവേശനം' ),
 	'OpenIDServer' => array( 'ഓപ്പൺഐ.ഡി.സെർവർ' ),
+);
+
+/** Nedersaksisch (Nedersaksisch) */
+$specialPageAliases['nds-nl'] = array(
+	'OpenIDLogin' => array( 'Open_ID_anmelden' ),
+	'OpenIDConvert' => array( 'Open_ID_ummezetten' ),
+	'OpenIDServer' => array( 'Open_ID-server' ),
+	'OpenIDXRDS' => array( 'Open_ID-XRDS' ),
+	'OpenIDDashboard' => array( 'Open_ID-schakelbord' ),
 );
 
 /** Dutch (Nederlands) */
@@ -163,9 +174,9 @@ $specialPageAliases['vi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬) */
 $specialPageAliases['zh-hans'] = array(
-	'OpenIDLogin' => array( '用_OpenID_登录' ),
-	'OpenIDConvert' => array( '转换_OpenID' ),
-	'OpenIDServer' => array( 'OpenID_服务器' ),
+	'OpenIDLogin' => array( 'OpenID登录' ),
+	'OpenIDConvert' => array( '转换OpenID' ),
+	'OpenIDServer' => array( 'OpenID服务器' ),
 );
 
 /**
