@@ -193,6 +193,11 @@ $specialPageAliases['zh-hans'] = array(
 	'ChemicalSources' => array( '化学源' ),
 );
 
+/** Traditional Chinese (‪中文(繁體)‬) */
+$specialPageAliases['zh-hant'] = array(
+	'ChemicalSources' => array( '化學源' ),
+);
+
 /**
  * For backwards compatibility with MediaWiki 1.15 and earlier.
  */
