@@ -160,7 +160,12 @@ $specialPageAliases['vec'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬) */
 $specialPageAliases['zh-hans'] = array(
-	'ContributionTracking' => array( '跟踪贡献' ),
+	'ContributionTracking' => array( '贡献追踪' ),
+);
+
+/** Traditional Chinese (‪中文(繁體)‬) */
+$specialPageAliases['zh-hant'] = array(
+	'ContributionTracking' => array( '跟蹤貢獻' ),
 );
 
 /**
