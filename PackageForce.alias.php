@@ -26,6 +26,17 @@ $specialPageAliases['ja'] = array(
 	'PackageForceAdmin' => array( 'パッケージ強化の管理' ),
 );
 
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'PackageForceAdmin' => array( 'PackageForceАдмин' ),
+);
+
+/** Nedersaksisch (Nedersaksisch) */
+$specialPageAliases['nds-nl'] = array(
+	'PackageForce' => array( 'Pakket_forseren' ),
+	'PackageForceAdmin' => array( 'Pakketforseerbeheer' ),
+);
+
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'PackageForceAdmin' => array( 'PackageForceBeheer' ),
