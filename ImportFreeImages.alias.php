@@ -135,7 +135,7 @@ $specialPageAliases['mr'] = array(
 
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
-	'ImportFreeImages' => array( 'Vrieje_ofbeeldingen_invoeren' ),
+	'ImportFreeImages' => array( 'Vrieje_aofbeeldingen_invoeren' ),
 );
 
 /** Dutch (Nederlands) */
@@ -195,7 +195,7 @@ $specialPageAliases['tr'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬) */
 $specialPageAliases['zh-hans'] = array(
-	'ImportFreeImages' => array( '进口开放形象' ),
+	'ImportFreeImages' => array( '导入自由图像' ),
 );
 
 /**
