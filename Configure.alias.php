@@ -382,13 +382,15 @@ $specialPageAliases['vi'] = array(
 /** Simplified Chinese (‪中文(简体)‬) */
 $specialPageAliases['zh-hans'] = array(
 	'Configure' => array( '配置' ),
-	'Extensions' => array( '扩展' ),
+	'Extensions' => array( '扩展组件' ),
 	'ViewConfig' => array( '查看配置' ),
 );
 
 /** Traditional Chinese (‪中文(繁體)‬) */
 $specialPageAliases['zh-hant'] = array(
+	'Configure' => array( '設定' ),
 	'Extensions' => array( '擴展' ),
+	'ViewConfig' => array( '查看設定' ),
 );
 
 /**
