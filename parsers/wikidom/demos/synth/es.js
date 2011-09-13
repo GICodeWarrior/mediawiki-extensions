@@ -40,25 +40,28 @@ $(document).ready( function() {
 		},
 		{
 			'type': 'table',
+			'attributes': { 'style': 'width: 600px; border: solid 1px;' },
 			'rows': [
 				{
 					'cells': [
 						{
+							'attributes': { 'style': 'border: solid 1px;' },
 							'document': {
 								'blocks': [
 									{
 										'type': 'paragraph',
-										'content': { 'text': 'test 1' }
+										'content': { 'text': 'row 1 & cell 1' }
 									}
 								]
 							}
 						},
 						{
+							'attributes': { 'style': 'border: solid 1px;' },
 							'document': {
 								'blocks': [
 									{
 										'type': 'paragraph',
-										'content': { 'text': 'test 2' }
+										'content': { 'text': 'row 1 & cell 2' }
 									}
 								]
 							}
@@ -68,26 +71,89 @@ $(document).ready( function() {
 				{
 					'cells': [
 						{
+							'attributes': { 'style': 'border: solid 1px;' },
 							'document': {
 								'blocks': [
 									{
 										'type': 'paragraph',
-										'content': { 'text': 'test 3' }
+										'content': { 'text': 'row 2 & cell 1' }
 									}
 								]
 							}
 						},
 						{
+							'attributes': { 'style': 'border: solid 1px;' },
 							'document': {
 								'blocks': [
 									{
 										'type': 'paragraph',
-										'content': { 'text': 'test 4' }
-									}
+										'content': { 'text': 'row 2 & cell 2' }
+									},
+									{
+										'type': 'list',
+										'style': 'number',
+										'items': [
+											{
+												'content': { 'text': 'First item' },
+												'lists': [
+													{
+														'style': 'bullet',
+														'items': [
+															{ 'content': { 'text': 'First subitem' } },
+															{ 'content': { 'text': 'Second subitem' } }
+														]
+													}
+												]
+											},
+											{
+												'content': {
+													'text': 'Second item',
+													'annotations': [
+														{
+															'type': 'italic',
+															'range': {
+																'start': 0,
+																'end': 6
+															}
+														}
+													]
+												}
+											},
+											{
+												'content': {
+													'text': 'Third item',
+													'annotations': [
+														{
+															'type': 'bold',
+															'range': {
+																'start': 0,
+																'end': 5
+															}
+														}
+													]
+												}
+											},
+											{
+												'content': {
+													'text': 'Fourth item',
+													'annotations': [
+														{
+															'type': 'ilink',
+															'range': {
+																'start': 7,
+																'end': 11
+															},
+															'data': { 'title': 'User:JohnDoe' }
+														}
+													]
+												}
+											}
+										]
+									}									
 								]
 							}
 						}
-					]					
+					]
 				}
 			]
 		},
