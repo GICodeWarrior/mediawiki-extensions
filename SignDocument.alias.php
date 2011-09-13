@@ -132,8 +132,8 @@ $specialPageAliases['mr'] = array(
 
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
-	'SignDocument' => array( 'Dokement_ondertekenen' ),
-	'CreateSignDocument' => array( 'Dokement_ondertekenen_anmaken' ),
+	'SignDocument' => array( 'Dokument_ondertekenen' ),
+	'CreateSignDocument' => array( 'Dokument_ondertekenen_anmaken' ),
 );
 
 /** Dutch (Nederlands) */
