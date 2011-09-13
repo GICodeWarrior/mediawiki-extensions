@@ -53,6 +53,11 @@ $specialPageAliases['el'] = array(
 	'Call' => array( 'Κλήση' ),
 );
 
+/** Esperanto (Esperanto) */
+$specialPageAliases['eo'] = array(
+	'Call' => array( 'Voki' ),
+);
+
 /** Persian (فارسی) */
 $specialPageAliases['fa'] = array(
 	'Call' => array( 'خواندن' ),
@@ -143,6 +148,11 @@ $specialPageAliases['lb'] = array(
 	'Call' => array( 'Opruff' ),
 );
 
+/** Malagasy (Malagasy) */
+$specialPageAliases['mg'] = array(
+	'Call' => array( 'Antsoina' ),
+);
+
 /** Macedonian (Македонски) */
 $specialPageAliases['mk'] = array(
 	'Call' => array( 'Повик' ),
@@ -160,7 +170,7 @@ $specialPageAliases['mr'] = array(
 
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
-	'Call' => array( 'Anroepen' ),
+	'Call' => array( 'Anreupen' ),
 );
 
 /** Dutch (Nederlands) */
