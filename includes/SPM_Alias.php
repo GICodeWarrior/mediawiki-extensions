@@ -17,6 +17,11 @@ $specialPageAliases['ar'] = array(
 	'SemanticProjectManagement' => array( 'التحكم_بالمشروع_الدلالي' ),
 );
 
+/** German (Deutsch) */
+$specialPageAliases['de'] = array(
+	'SemanticProjectManagement' => array( 'Semantisches_Projektmanagement' ),
+);
+
 /** Haitian (Kreyòl ayisyen) */
 $specialPageAliases['ht'] = array(
 	'SemanticProjectManagement' => array( 'JesyonPwojèSemantik' ),
@@ -25,6 +30,11 @@ $specialPageAliases['ht'] = array(
 /** Macedonian (Македонски) */
 $specialPageAliases['mk'] = array(
 	'SemanticProjectManagement' => array( 'РаководењеСоСемантичкиПроект' ),
+);
+
+/** Nedersaksisch (Nedersaksisch) */
+$specialPageAliases['nds-nl'] = array(
+	'SemanticProjectManagement' => array( 'Semanties_projektbeheer' ),
 );
 
 /** Dutch (Nederlands) */
