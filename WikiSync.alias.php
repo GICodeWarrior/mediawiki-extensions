@@ -38,6 +38,11 @@ $specialPageAliases['ml'] = array(
 	'WikiSync' => array( 'വിക്കിഏകീകരണം' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$specialPageAliases['nds-nl'] = array(
+	'WikiSync' => array( 'Wikisynchronisasie' ),
+);
+
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'WikiSync' => array( 'Wikisynchronisatie' ),
