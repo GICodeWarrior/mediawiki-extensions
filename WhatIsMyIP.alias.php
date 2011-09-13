@@ -80,7 +80,7 @@ $specialPageAliases['fr'] = array(
 
 /** Franco-Provençal (Arpetan) */
 $specialPageAliases['frp'] = array(
-	'WhatIsMyIP' => array( 'Quinta est mon adrèce IP', 'QuintaEstMonAdrèceIP' ),
+	'WhatIsMyIP' => array( 'Quinta_est_mon_adrèce_IP', 'QuintaEstMonAdrèceIP' ),
 );
 
 /** Galician (Galego) */
@@ -246,6 +246,11 @@ $specialPageAliases['tr'] = array(
 /** Vèneto (Vèneto) */
 $specialPageAliases['vec'] = array(
 	'WhatIsMyIP' => array( 'ElMeIP' ),
+);
+
+/** Traditional Chinese (‪中文(繁體)‬) */
+$specialPageAliases['zh-hant'] = array(
+	'WhatIsMyIP' => array( '我的IP' ),
 );
 
 /**
