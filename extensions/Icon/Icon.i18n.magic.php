@@ -42,7 +42,7 @@ $magicWords['ce'] = array(
 
 /** Esperanto (Esperanto) */
 $magicWords['eo'] = array(
-	'icon' => array( 0, 'bildsimbolo' ),
+	'icon' => array( 0, 'piktogramo' ),
 );
 
 /** Spanish (Español) */
@@ -58,6 +58,11 @@ $magicWords['et'] = array(
 /** French (Français) */
 $magicWords['fr'] = array(
 	'icon' => array( 0, 'icône' ),
+);
+
+/** Indonesian (Bahasa Indonesia) */
+$magicWords['id'] = array(
+	'icon' => array( 0, 'ikon' ),
 );
 
 /** Italian (Italiano) */
@@ -80,6 +85,11 @@ $magicWords['mr'] = array(
 	'icon' => array( 0, 'प्रतीक', 'चिन्ह', 'icon' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$magicWords['nds-nl'] = array(
+	'icon' => array( 0, 'ikoon' ),
+);
+
 /** Dutch (Nederlands) */
 $magicWords['nl'] = array(
 	'icon' => array( 0, 'icoon' ),
@@ -87,7 +97,7 @@ $magicWords['nl'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $magicWords['no'] = array(
-	'icon' => array( 0, 'ikon', 'icon' ),
+	'icon' => array( 0, 'ikon' ),
 );
 
 /** Polish (Polski) */
@@ -105,7 +115,7 @@ $magicWords['sq'] = array(
 	'icon' => array( 0, 'ikona' ),
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬) */
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬) */
 $magicWords['sr-ec'] = array(
 	'icon' => array( 0, 'иконица', 'икона' ),
 );
@@ -127,5 +137,5 @@ $magicWords['uk'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬) */
 $magicWords['zh-hans'] = array(
-	'icon' => array( 0, '图示' ),
+	'icon' => array( 0, '图标' ),
 );

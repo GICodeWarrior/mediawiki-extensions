@@ -40,12 +40,17 @@ $magicWords['mk'] = array(
 	'plot' => array( 0, 'исцртај' ),
 );
 
+/** Dutch (Nederlands) */
+$magicWords['nl'] = array(
+	'plot' => array( 0, 'plotten' ),
+);
+
 /** Russian (Русский) */
 $magicWords['ru'] = array(
 	'plot' => array( 0, 'рисовать' ),
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬) */
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬) */
 $magicWords['sr-ec'] = array(
 	'plot' => array( 0, 'нацрт' ),
 );

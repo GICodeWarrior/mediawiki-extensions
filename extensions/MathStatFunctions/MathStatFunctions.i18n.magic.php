@@ -113,7 +113,9 @@ $magicWords['ce'] = array(
 /** Esperanto (Esperanto) */
 $magicWords['eo'] = array(
 	'const' => array( 0, 'kost' ),
+	'mean' => array( 0, 'meznombro' ),
 	'exp' => array( 0, 'e', 'eksp' ),
+	'log' => array( 0, 'log' ),
 	'ln' => array( 0, 'nl', 'nlog' ),
 	'tan' => array( 0, 'tg' ),
 	'atan' => array( 0, 'arktan', 'arktg' ),
@@ -127,6 +129,7 @@ $magicWords['eo'] = array(
 	'acosh' => array( 0, 'harkkos' ),
 	'sec' => array( 0, 'sek' ),
 	'asec' => array( 0, 'arksek' ),
+	'sin' => array( 0, 'sin' ),
 	'asin' => array( 0, 'arksin' ),
 	'sinh' => array( 0, 'hsin' ),
 	'asinh' => array( 0, 'harksin' ),
@@ -240,6 +243,11 @@ $magicWords['ml'] = array(
 	'cot' => array( 0, 'കോട്ട്' ),
 	'cos' => array( 0, 'കോസ്' ),
 	'sin' => array( 0, 'സൈൻ' ),
+);
+
+/** Nedersaksisch (Nedersaksisch) */
+$magicWords['nds-nl'] = array(
+	'const' => array( 0, 'konst' ),
 );
 
 /** Dutch (Nederlands) */

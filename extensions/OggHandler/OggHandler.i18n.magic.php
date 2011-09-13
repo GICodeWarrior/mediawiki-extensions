@@ -81,9 +81,9 @@ $magicWords['mr'] = array(
 
 /** Nedersaksisch (Nedersaksisch) */
 $magicWords['nds-nl'] = array(
-	'ogg_noplayer' => array( 0, 'gienspeuler', 'geenspeler', 'noplayer' ),
-	'ogg_noicon' => array( 0, 'gienicoon', 'geenicoon', 'noicon' ),
-	'ogg_thumbtime' => array( 0, 'miniatuurtied=$1', 'miniatuurtijd=$1', 'thumbtime=$1' ),
+	'ogg_noplayer' => array( 0, 'gienspeuler', 'geenspeler' ),
+	'ogg_noicon' => array( 0, 'gienicoon', 'geenicoon' ),
+	'ogg_thumbtime' => array( 0, 'tiedaofbeeldingsoverzichte=$1', 'miniatuurtijd=$1' ),
 );
 
 /** Dutch (Nederlands) */
@@ -91,6 +91,11 @@ $magicWords['nl'] = array(
 	'ogg_noplayer' => array( 0, 'geenspeler' ),
 	'ogg_noicon' => array( 0, 'geenicoon' ),
 	'ogg_thumbtime' => array( 0, 'miniatuurtijd=$1' ),
+);
+
+/** Polish (Polski) */
+$magicWords['pl'] = array(
+	'ogg_noicon' => array( 0, 'bezikony' ),
 );
 
 /** Portuguese (Português) */
@@ -106,7 +111,7 @@ $magicWords['ru'] = array(
 	'ogg_thumbtime' => array( 0, 'время_миниатюры=$1' ),
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬) */
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬) */
 $magicWords['sr-ec'] = array(
 	'ogg_noicon' => array( 0, 'безиконице', 'безиконе', 'без_иконице', 'без_иконе' ),
 );

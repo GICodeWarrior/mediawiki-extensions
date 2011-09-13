@@ -77,12 +77,17 @@ $magicWords['myv'] = array(
 
 /** Nedersaksisch (Nedersaksisch) */
 $magicWords['nds-nl'] = array(
-	'todo' => array( 0, 'tedoon', 'tedoen', 'todo' ),
+	'todo' => array( 0, 'tedoon', 'tedoen' ),
 );
 
 /** Dutch (Nederlands) */
 $magicWords['nl'] = array(
 	'todo' => array( 0, 'tedoen' ),
+);
+
+/** Polish (Polski) */
+$magicWords['pl'] = array(
+	'todo' => array( 0, 'do_zrobienia' ),
 );
 
 /** Swedish (Svenska) */

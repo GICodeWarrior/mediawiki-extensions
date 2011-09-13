@@ -97,7 +97,7 @@ $magicWords['ru'] = array(
 	'tr_decompose' => array( '__РАЗОБРАТЬ__' ),
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬) */
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬) */
 $magicWords['sr-ec'] = array(
 	'transliterate' => array( 'пресловљавање' ),
 	'tr_prefix' => array( 'Пресловљавач:' ),

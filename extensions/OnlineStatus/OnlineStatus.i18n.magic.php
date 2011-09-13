@@ -68,9 +68,9 @@ $magicWords['mr'] = array(
 
 /** Nedersaksisch (Nedersaksisch) */
 $magicWords['nds-nl'] = array(
-	'onlinestatus_word' => array( '1', 'ONLINESTAOTUS', 'ONLINESTATUS' ),
-	'onlinestatus_word_raw' => array( '1', 'ROEWEONLINESTAOTUS', 'RUWEONLINESTATUS', 'RAWONLINESTATUS' ),
-	'anyuseronlinestatus' => array( 0, 'allegebrukersonlinestaotus', 'allegebruikersonlinestatus', 'anyuseronlinestatus' ),
+	'onlinestatus_word' => array( 'ONLINESTAOTUS' ),
+	'onlinestatus_word_raw' => array( 'ROEWEONLINESTAOTUS', 'RUWEONLINESTATUS' ),
+	'anyuseronlinestatus' => array( 0, 'allegebrukersonlinestaotus', 'allegebruikersonlinestatus' ),
 );
 
 /** Dutch (Nederlands) */
@@ -82,6 +82,11 @@ $magicWords['nl'] = array(
 /** Oriya (ଓଡ଼ିଆ) */
 $magicWords['or'] = array(
 	'onlinestatus_word' => array( 'ଅନଲାଇନଅବସ୍ଥା' ),
+);
+
+/** Polish (Polski) */
+$magicWords['pl'] = array(
+	'onlinestatus_word' => array( 'STATUSONLINE' ),
 );
 
 /** Russian (Русский) */

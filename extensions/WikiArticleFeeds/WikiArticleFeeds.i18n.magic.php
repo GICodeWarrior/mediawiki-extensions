@@ -37,7 +37,7 @@ $magicWords['mr'] = array(
 
 /** Nedersaksisch (Nedersaksisch) */
 $magicWords['nds-nl'] = array(
-	'itemtags' => array( 0, 'onderwarpetiket', 'itemlabels', 'itemtags' ),
+	'itemtags' => array( 0, 'onderwarpetiket', 'itemlabels' ),
 );
 
 /** Dutch (Nederlands) */
@@ -45,7 +45,7 @@ $magicWords['nl'] = array(
 	'itemtags' => array( 0, 'itemlabels' ),
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬) */
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬) */
 $magicWords['sr-ec'] = array(
 	'itemtags' => array( 0, 'ознакеставке', 'ознаке_ставке' ),
 );

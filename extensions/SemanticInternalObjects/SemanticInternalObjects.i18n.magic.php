@@ -20,6 +20,11 @@ $magicWords['arz'] = array(
 	'set_internal' => array( 0, 'ضبط_داخلي', 'set_internal' ),
 );
 
+/** German (Deutsch) */
+$magicWords['de'] = array(
+	'set_internal' => array( 0, 'setze_intern' ),
+);
+
 /** Japanese (日本語) */
 $magicWords['ja'] = array(
 	'set_internal' => array( 0, '内部設定' ),
