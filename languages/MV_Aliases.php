@@ -125,6 +125,15 @@ $specialPageAliases['lb'] = array(
 /** Macedonian (Македонски) */
 $specialPageAliases['mk'] = array(
 	'MediaSearch' => array( 'ПребарувањеНаПодатотеки' ),
+	'Mv_Add_Stream' => array( 'Mv_Додај_Канал' ),
+	'MVAdmin' => array( 'MVАдмин' ),
+	'MvExportAsk' => array( 'MvИзвозБарање' ),
+	'MvExportSearch' => array( 'MvИзвозПребарување' ),
+	'MvExportSequence' => array( 'MvИзвозНиза' ),
+	'MvExportStream' => array( 'MvИзвозКанал' ),
+	'Mv_List_Streams' => array( 'Mv_Список_Канали' ),
+	'MV_SpecialSearch' => array( 'MV_СпецијалноПребарување' ),
+	'MvVideoFeed' => array( 'MvВидеоКанал' ),
 );
 
 /** Malayalam (മലയാളം) */
@@ -149,6 +158,20 @@ $specialPageAliases['mr'] = array(
 /** Maltese (Malti) */
 $specialPageAliases['mt'] = array(
 	'MediaSearch' => array( 'FittexMedja' ),
+);
+
+/** Nedersaksisch (Nedersaksisch) */
+$specialPageAliases['nds-nl'] = array(
+	'MediaSearch' => array( 'Media_zeuken' ),
+	'Mv_Add_Stream' => array( 'MV-streum_derbie_doon' ),
+	'MVAdmin' => array( 'MV-beheer' ),
+	'MvExportAsk' => array( 'MV-vraag_uutvoeren' ),
+	'MvExportSearch' => array( 'MV-zeukopdrachte_uutvoeren' ),
+	'MvExportSequence' => array( 'MV-sequentie_uutvoeren' ),
+	'MvExportStream' => array( 'MV-streum_uutvoeren' ),
+	'Mv_List_Streams' => array( 'MV-streum_bekieken' ),
+	'MV_SpecialSearch' => array( 'MV_zeuken_spesiaal' ),
+	'MvVideoFeed' => array( 'MV-videovoer' ),
 );
 
 /** Dutch (Nederlands) */
@@ -244,6 +267,11 @@ $specialPageAliases['tr'] = array(
 /** Simplified Chinese (‪中文(简体)‬) */
 $specialPageAliases['zh-hans'] = array(
 	'MediaSearch' => array( '媒体文件搜索' ),
+);
+
+/** Traditional Chinese (‪中文(繁體)‬) */
+$specialPageAliases['zh-hant'] = array(
+	'MediaSearch' => array( '媒體文件搜索' ),
 );
 
 /**
