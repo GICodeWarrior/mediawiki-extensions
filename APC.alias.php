@@ -33,6 +33,16 @@ $specialPageAliases['fa'] = array(
 	'APC' => array( 'ای‌پی‌سی' ),
 );
 
+/** Galician (Galego) */
+$specialPageAliases['gl'] = array(
+	'APC' => array( 'APC' ),
+);
+
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'APC' => array( 'АПК' ),
+);
+
 /** Sanskrit (संस्कृत) */
 $specialPageAliases['sa'] = array(
 	'APC' => array( 'एपीसिपश्यति' ),
