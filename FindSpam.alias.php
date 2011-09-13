@@ -208,6 +208,11 @@ $specialPageAliases['sq'] = array(
 	'FindSpam' => array( 'GjejGabime' ),
 );
 
+/** Swedish (Svenska) */
+$specialPageAliases['sv'] = array(
+	'FindSpam' => array( 'Hitta_spam' ),
+);
+
 /** Swahili (Kiswahili) */
 $specialPageAliases['sw'] = array(
 	'FindSpam' => array( 'TafutaUharabu' ),
@@ -221,6 +226,11 @@ $specialPageAliases['tl'] = array(
 /** Turkish (Türkçe) */
 $specialPageAliases['tr'] = array(
 	'FindSpam' => array( 'ReklamBul' ),
+);
+
+/** Traditional Chinese (‪中文(繁體)‬) */
+$specialPageAliases['zh-hant'] = array(
+	'FindSpam' => array( '破壞尋找' ),
 );
 
 /**
