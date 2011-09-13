@@ -42,7 +42,7 @@ $magicWords['mr'] = array(
 
 /** Nedersaksisch (Nedersaksisch) */
 $magicWords['nds-nl'] = array(
-	'sgallery' => array( 0, 'suutstalling', 'sgalerij', 'sgallery' ),
+	'sgallery' => array( 0, 'suutstallige', 'sgalerij' ),
 );
 
 /** Dutch (Nederlands) */
@@ -50,7 +50,7 @@ $magicWords['nl'] = array(
 	'sgallery' => array( 0, 'sgalerij' ),
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬) */
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬) */
 $magicWords['sr-ec'] = array(
 	'sgallery' => array( 0, 'сгалерија' ),
 );
