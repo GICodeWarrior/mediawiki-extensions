@@ -17,6 +17,11 @@ $specialPageAliases['ar'] = array(
 	'VariablePage' => array( 'صفحة_متغيرة' ),
 );
 
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'VariablePage' => array( 'صفحه_متغیر' ),
+);
+
 /** Haitian (Kreyòl ayisyen) */
 $specialPageAliases['ht'] = array(
 	'VariablePage' => array( 'PajVariab' ),
@@ -35,6 +40,11 @@ $specialPageAliases['mk'] = array(
 /** Malayalam (മലയാളം) */
 $specialPageAliases['ml'] = array(
 	'VariablePage' => array( 'ചരതാൾ' ),
+);
+
+/** Nedersaksisch (Nedersaksisch) */
+$specialPageAliases['nds-nl'] = array(
+	'VariablePage' => array( 'Variabele_pagina' ),
 );
 
 /** Dutch (Nederlands) */
