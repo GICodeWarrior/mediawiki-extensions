@@ -1,4 +1,10 @@
 <?php
+/**
+ * Internationalisation file for Autoincrement extension.
+ *
+ * @file
+ * @ingroup Extensions
+ */
 
 $magicWords = array();
 
@@ -54,7 +60,7 @@ $magicWords['mr'] = array(
 
 /** Nedersaksisch (Nedersaksisch) */
 $magicWords['nds-nl'] = array(
-	'autoincrement' => array( 0, 'AUTEMATISCHOPHOGEN', 'AUTOMATISCHOPHOGEN', 'AUTOINCREMENT' ),
+	'autoincrement' => array( 0, 'AUTEMATIESOPHOGEN', 'AUTOMATISCHOPHOGEN' ),
 );
 
 /** Dutch (Nederlands) */
@@ -67,7 +73,7 @@ $magicWords['ru'] = array(
 	'autoincrement' => array( 0, 'АВТОИНКРЕМЕНТ' ),
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬) */
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬) */
 $magicWords['sr-ec'] = array(
 	'autoincrement' => array( 0, 'САМОУВЕЋАЊЕ' ),
 );
