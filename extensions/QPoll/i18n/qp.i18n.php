@@ -590,6 +590,11 @@ $messages['be-tarask'] = array(
 	'qp_error_eval_missed_lang_attr' => 'XML-атрыбут «lang» патрабуецца для выбару слушнай мовы інтэрпрэтацыі.',
 	'qp_error_eval_mix_languages' => 'Асобны скрыпт інтэрпрэтацыі ня можа зьмешваць розныя мовы інтэрпрэтацыі: «$1», «$2».',
 	'qp_error_eval_unsupported_language' => 'Непадтрымліваемая мова інтэрпрэтацыі «$1».',
+	'qp_error_eval_illegal_token' => 'Ключ PHP $1 са значэньнем $2 не дазволены ў радку $3.',
+	'qp_error_eval_illegal_superglobal' => 'Ключ PHP $1 з супэрглябальным значэньнем $2 не дазволены ў радку $3.',
+	'qp_error_eval_illegal_function_call' => 'Ключ PHP $1 з функцыяй $2 не дазволены ў радку $3.',
+	'qp_error_eval_variable_variable_access' => 'Ключ PHP $1 са зьменнай $2 не дазволены ў радку $3.',
+	'qp_error_eval_illegal_variable_name' => 'Ключ PHP $1 мае недазволеную назву зьменнай $2 у радку $3.',
 );
 
 /** Bengali (বাংলা)

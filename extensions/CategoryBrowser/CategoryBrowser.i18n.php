@@ -2169,7 +2169,22 @@ $messages['vep'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'categorybrowser' => 'קאַטעגאָריע בלעטערער',
+	'cb_requires_javascript' => 'דער קאטעגאריע בלעטערער דארף JavaScript צו ווערן אקטיווירט אין דעם בלעטערער.',
+	'cb_cat_name_filter' => 'זוכן א קאַטעגאָריע לויטן נאָמען:',
 	'cb_next_items_link' => 'נעקסט',
+	'cb_next_items_stats' => '(פֿון $1 )',
+	'cb_cat_subcats' => 'אונטערקאַטעגאָריעס',
+	'cb_cat_pages' => 'בלעטער',
+	'cb_cat_files' => 'טעקעס',
+	'cb_apply_button' => 'אָנווענדן',
+	'cb_all_op' => 'אַלע',
+	'cb_or_op' => 'אָדער',
+	'cb_and_op' => 'און',
+	'cb_edit_left_hint' => 'באַוועגן לינקס, ווען מעגלעך',
+	'cb_edit_right_hint' => 'באַוועגן רעכטס, ווען מעגלעך',
+	'cb_edit_remove_hint' => 'אויסמעקן, ווען מעגלעך',
+	'cb_edit_append_hint' => 'ארײַנלייגן אָפּעראַטאָר אין דער לעצטע פאזיציע',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

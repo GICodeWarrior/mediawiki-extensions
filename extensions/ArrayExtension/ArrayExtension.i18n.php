@@ -84,6 +84,13 @@ $messages['fr'] = array(
 	'arrayext-desc' => 'Enregistrer et traiter les tableaux nommés',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'arrayext-desc' => 'Encartar et trètar los tablôs apelâs',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

@@ -964,6 +964,13 @@ Xem thêm [[Special:MostRevisors|'''trang có số người chỉnh sửa nhiề
 	'cooperationstatistics-legendmore' => 'biên tập viên trở lên.',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|בלאַט|בלעטער}}',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Hydra
  * @author PhiLiP
