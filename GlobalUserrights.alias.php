@@ -145,7 +145,7 @@ $specialPageAliases['mr'] = array(
 
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
-	'GlobalUserrights' => array( 'Globle_gebrukersrechen' ),
+	'GlobalUserrights' => array( 'Globle_gebrukersrechten' ),
 );
 
 /** Dutch (Nederlands) */
@@ -203,9 +203,19 @@ $specialPageAliases['tr'] = array(
 	'GlobalUserrights' => array( 'KüreselKullanıcıHakları' ),
 );
 
+/** Tatar (Cyrillic script) (Татарча) */
+$specialPageAliases['tt-cyrl'] = array(
+	'GlobalUserrights' => array( 'Кулланучыларның_глобаль_хокуклары' ),
+);
+
+/** Cantonese (粵語) */
+$specialPageAliases['yue'] = array(
+	'GlobalUserrights' => array( '全域用戶權' ),
+);
+
 /** Simplified Chinese (‪中文(简体)‬) */
 $specialPageAliases['zh-hans'] = array(
-	'GlobalUserrights' => array( '全球用户权利' ),
+	'GlobalUserrights' => array( '全域用户权限' ),
 );
 
 /** Traditional Chinese (‪中文(繁體)‬) */
