@@ -47,7 +47,8 @@ es.BlockModel.newFromPlainObject = function( obj ) {
  * Creates a view for this model
  */
 es.BlockModel.prototype.createView = function() {
-	return new es.BlockView( this );
+	throw 'BlockModel.createView not implemented in this subclass.';
+	//return new es.BlockView( this );
 };
 
 /**

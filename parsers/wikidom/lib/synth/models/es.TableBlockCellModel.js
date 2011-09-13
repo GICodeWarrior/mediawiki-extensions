@@ -9,6 +9,7 @@
  * @property attributes {Object}
  */
 es.TableBlockCellModel = function( documentModel, attributes ) {
+	es.ModelContainerItem.call( this, 'row' );
 	this.documentModel = documentModel || null;
 	this.attributes = attributes || {};
 };
@@ -21,9 +22,9 @@ es.TableBlockCellModel = function( documentModel, attributes ) {
  * @param obj {Object}
  */
 es.TableBlockCellModel.newFromPlainObject = function( obj ) {
-	return new es.TableBlockRowModel(
+	return new es.TableBlockCellModel(
 		// Cells - if given, convert plain document object to es.DocumentModel objects
-		!$.isArray( obj.document ) ? null : es.DocumentModel.newFromPlainObject( obj.document ),
+		!$.isPlainObject( obj.document ) ? null : es.DocumentModel.newFromPlainObject( obj.document ),
 		// Attributes - if given, make a deep copy of attributes
 		!$.isPlainObject( obj.attributes ) ? {} : $.extend( true, {}, obj.attributes )
 	);
@@ -32,12 +33,19 @@ es.TableBlockCellModel.newFromPlainObject = function( obj ) {
 /* Methods */
 
 /**
+ * Creates a view for this model
+ */
+es.TableBlockCellModel.prototype.createView = function() {
+	return new es.TableBlockCellView( this );
+};
+
+/**
  * Gets the length of all content.
  * 
  * @method
  * @returns {Integer} Length of all content
  */
-es.TableBlockRowModel.prototype.getContentLength = function() {
+es.TableBlockCellModel.prototype.getContentLength = function() {
 	return this.cells.getContentLength();
 };
 
@@ -47,7 +55,8 @@ es.TableBlockRowModel.prototype.getContentLength = function() {
  * @method
  * @returns obj {Object}
  */
-es.TableBlockRowModel.prototype.getPlainObject = function() {
+es.TableBlockCellModel.prototype.getPlainObject = function() {
+	/*
 	var obj = {};
 	if ( this.documentModel ) {
 		obj.document = this.documentModel;
@@ -56,4 +65,9 @@ es.TableBlockRowModel.prototype.getPlainObject = function() {
 		obj.attributes = $.extend( true, {}, this.attributes );
 	}
 	return obj;
+	*/
 };
+
+/* Inheritance */
+
+es.extend( es.TableBlockCellModel, es.ModelContainerItem );

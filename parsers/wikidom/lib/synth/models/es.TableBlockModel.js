@@ -10,7 +10,14 @@
  */
 es.TableBlockModel = function( rows, attributes ) {
 	es.BlockModel.call( this, ['isDocumentContainer', 'isAggregate'] );
-	this.rows = new es.ContentSeries( rows || [] );
+	es.ModelContainer.call( this );
+
+	if ( $.isArray( rows ) ) {
+		for ( var i = 0; i < rows.length; i++ ) {
+			this.append( rows[i] );
+		}
+	}
+
 	this.attributes = attributes || {};
 };
 
@@ -60,6 +67,7 @@ es.TableBlockModel.prototype.getContentLength = function() {
  * @returns obj {Object}
  */
 es.TableBlockModel.prototype.getPlainObject = function() {
+	/*
 	var obj = { 'type': 'table' };
 	if ( this.rows.length ) {
 		obj.rows = $.map( this.rows, function( row ) {
@@ -70,11 +78,13 @@ es.TableBlockModel.prototype.getPlainObject = function() {
 		obj.attributes = $.extend( true, {}, this.attributes );
 	}
 	return obj;
+	*/
 };
 
 // Register constructor
-es.BlockModel.constructors['table'] = es.TableBlockModel;
+es.BlockModel.constructors['table'] = es.TableBlockModel.newFromPlainObject;
 
 /* Inheritance */
 
 es.extend( es.TableBlockModel, es.BlockModel );
+es.extend( es.TableBlockModel, es.ModelContainer );

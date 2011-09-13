@@ -9,7 +9,15 @@
  * @property attributes {Object}
  */
 es.TableBlockRowModel = function( cells, attributes ) {
-	this.cells = new es.ContentSeries( cells || [] );
+	es.ModelContainerItem.call( this, 'table' );
+	es.ModelContainer.call( this );
+	
+	if ( $.isArray( cells ) ) {
+		for ( var i = 0; i < cells.length; i++ ) {
+			this.append( cells[i] );
+		}
+	}
+
 	this.attributes = attributes || {};
 };
 
@@ -35,6 +43,13 @@ es.TableBlockRowModel.newFromPlainObject = function( obj ) {
 /* Methods */
 
 /**
+ * Creates a view for this model
+ */
+es.TableBlockRowModel.prototype.createView = function() {
+	return new es.TableBlockRowView( this );
+};
+
+/**
  * Gets the length of all content.
  * 
  * @method
@@ -51,6 +66,7 @@ es.TableBlockRowModel.prototype.getContentLength = function() {
  * @returns obj {Object}
  */
 es.TableBlockRowModel.prototype.getPlainObject = function() {
+	/*
 	var obj = {};
 	if ( this.cells.length ) {
 		obj.cells = $.map( this.cells, function( cell ) {
@@ -61,4 +77,10 @@ es.TableBlockRowModel.prototype.getPlainObject = function() {
 		obj.attributes = $.extend( true, {}, this.attributes );
 	}
 	return obj;
+	*/
 };
+
+/* Inheritance */
+
+es.extend( es.TableBlockRowModel, es.ModelContainerItem );
+es.extend( es.TableBlockRowModel, es.ModelContainer );
