@@ -113,7 +113,7 @@ $specialPageAliases['mr'] = array(
 
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
-	'ShowProcesslist' => array( 'Preceslieste_weergeven' ),
+	'ShowProcesslist' => array( 'Proceslieste_weergeven' ),
 );
 
 /** Dutch (Nederlands) */
