@@ -183,7 +183,7 @@ $specialPageAliases['tr'] = array(
 	'Player' => array( 'Oyuncu' ),
 );
 
-/** Татарча (Татарча) */
+/** Tatar (Cyrillic script) (Татарча) */
 $specialPageAliases['tt-cyrl'] = array(
 	'Player' => array( 'Плейер' ),
 );

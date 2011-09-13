@@ -153,7 +153,7 @@ $specialPageAliases['sl'] = array(
 	'Index' => array( 'Kazalo' ),
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬) */
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬) */
 $specialPageAliases['sr-ec'] = array(
 	'Index' => array( 'Индекс', 'Попис' ),
 );
@@ -165,7 +165,7 @@ $specialPageAliases['tr'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬) */
 $specialPageAliases['zh-hans'] = array(
-	'Index' => array( '指数' ),
+	'Index' => array( '索引' ),
 );
 
 /**

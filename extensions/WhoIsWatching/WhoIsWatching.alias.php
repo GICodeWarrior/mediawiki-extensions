@@ -63,7 +63,7 @@ $specialPageAliases['fr'] = array(
 
 /** Franco-Provençal (Arpetan) */
 $specialPageAliases['frp'] = array(
-	'WhoIsWatching' => array( 'Qui at en survelyence', 'QuiAtEnSurvelyence' ),
+	'WhoIsWatching' => array( 'Qui_at_en_survelyence', 'QuiAtEnSurvelyence' ),
 );
 
 /** Galician (Galego) */
@@ -158,7 +158,7 @@ $specialPageAliases['mr'] = array(
 
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
-	'WhoIsWatching' => array( 'Wee_volg' ),
+	'WhoIsWatching' => array( 'Wee_volgt' ),
 );
 
 /** Dutch (Nederlands) */

@@ -260,7 +260,7 @@ $specialPageAliases['tr'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬) */
 $specialPageAliases['zh-hans'] = array(
-	'ImportUsers' => array( '进口用户' ),
+	'ImportUsers' => array( '导入用户' ),
 );
 
 /** Traditional Chinese (‪中文(繁體)‬) */

@@ -30,7 +30,7 @@ $specialPageAliases['as'] = array(
 
 /** Bulgarian (Български) */
 $specialPageAliases['bg'] = array(
-	'CategoryIntersection' => array( 'Сечение на категории' ),
+	'CategoryIntersection' => array( 'Сечение_на_категории' ),
 );
 
 /** Breton (Brezhoneg) */
@@ -190,7 +190,7 @@ $specialPageAliases['mr'] = array(
 
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
-	'CategoryIntersection' => array( 'Kattegeriedeursnee' ),
+	'CategoryIntersection' => array( 'Kategoriedeursnee' ),
 );
 
 /** Dutch (Nederlands) */
@@ -238,7 +238,7 @@ $specialPageAliases['sa'] = array(
 	'CategoryIntersection' => array( 'वर्गविभाजन' ),
 );
 
-/** Tachelhit (Tašlḥiyt) */
+/** Tachelhit (Tašlḥiyt/ⵜⴰⵛⵍⵃⵉⵜ) */
 $specialPageAliases['shi'] = array(
 	'CategoryIntersection' => array( 'taqatoɛ n\'omgrd' ),
 );

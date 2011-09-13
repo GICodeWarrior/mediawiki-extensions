@@ -68,9 +68,19 @@ $specialPageAliases['lb'] = array(
 	'CategoryBrowser' => array( 'Browser_vu_Kategorien' ),
 );
 
+/** Malagasy (Malagasy) */
+$specialPageAliases['mg'] = array(
+	'CategoryBrowser' => array( 'Mpitety_sokajy' ),
+);
+
 /** Macedonian (Македонски) */
 $specialPageAliases['mk'] = array(
 	'CategoryBrowser' => array( 'ПрелистувачНаКатегории' ),
+);
+
+/** Nedersaksisch (Nedersaksisch) */
+$specialPageAliases['nds-nl'] = array(
+	'CategoryBrowser' => array( 'Kategorieën_deurblaojen' ),
 );
 
 /** Dutch (Nederlands) */
@@ -96,6 +106,11 @@ $specialPageAliases['vi'] = array(
 /** Simplified Chinese (‪中文(简体)‬) */
 $specialPageAliases['zh-hans'] = array(
 	'CategoryBrowser' => array( '分类浏览器' ),
+);
+
+/** Traditional Chinese (‪中文(繁體)‬) */
+$specialPageAliases['zh-hant'] = array(
+	'CategoryBrowser' => array( '分類瀏覽器' ),
 );
 
 /**

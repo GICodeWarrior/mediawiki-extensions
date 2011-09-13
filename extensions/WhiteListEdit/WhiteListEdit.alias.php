@@ -79,8 +79,8 @@ $specialPageAliases['fr'] = array(
 
 /** Franco-Provençal (Arpetan) */
 $specialPageAliases['frp'] = array(
-	'WhiteList' => array( 'Lista blanche', 'ListaBlanche' ),
-	'WhiteListEdit' => array( 'Changiér la lista blanche', 'ChangiérLaListaBlanche' ),
+	'WhiteList' => array( 'Lista_blanche', 'ListaBlanche' ),
+	'WhiteListEdit' => array( 'Changiér_la_lista_blanche', 'ChangiérLaListaBlanche' ),
 );
 
 /** Galician (Galego) */

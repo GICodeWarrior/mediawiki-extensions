@@ -35,6 +35,11 @@ $specialPageAliases['az'] = array(
 	'CreatePage' => array( 'SəhifəYarat' ),
 );
 
+/** Bulgarian (Български) */
+$specialPageAliases['bg'] = array(
+	'CreatePage' => array( 'Създаване_на_страница' ),
+);
+
 /** Breton (Brezhoneg) */
 $specialPageAliases['br'] = array(
 	'CreatePage' => array( 'KrouiñPajenn' ),
@@ -77,7 +82,7 @@ $specialPageAliases['fr'] = array(
 
 /** Franco-Provençal (Arpetan) */
 $specialPageAliases['frp'] = array(
-	'CreatePage' => array( 'Fâre una pâge', 'FâreUnaPâge' ),
+	'CreatePage' => array( 'Fâre_una_pâge', 'FâreUnaPâge' ),
 );
 
 /** Gagauz (Gagauz) */
@@ -215,6 +220,11 @@ $specialPageAliases['no'] = array(
 	'CreatePage' => array( 'Opprett_side' ),
 );
 
+/** Polish (Polski) */
+$specialPageAliases['pl'] = array(
+	'CreatePage' => array( 'UtwórzStronę' ),
+);
+
 /** Pashto (پښتو) */
 $specialPageAliases['ps'] = array(
 	'CreatePage' => array( 'مخ جوړول', 'CreatPage' ),
@@ -235,7 +245,7 @@ $specialPageAliases['sk'] = array(
 	'CreatePage' => array( 'VytvoriťStránku' ),
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬) */
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬) */
 $specialPageAliases['sr-ec'] = array(
 	'CreatePage' => array( 'Направи_страницу' ),
 );
@@ -275,7 +285,7 @@ $specialPageAliases['tr'] = array(
 	'CreatePage' => array( 'SayfaOluştur' ),
 );
 
-/** Татарча (Татарча) */
+/** Tatar (Cyrillic script) (Татарча) */
 $specialPageAliases['tt-cyrl'] = array(
 	'CreatePage' => array( 'Битне_үзгәртү' ),
 );

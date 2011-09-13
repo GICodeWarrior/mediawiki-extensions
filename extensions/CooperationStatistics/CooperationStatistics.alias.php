@@ -103,7 +103,7 @@ $specialPageAliases['mr'] = array(
 
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
-	'CooperationStatistics' => array( 'Samenwarkingsstaotestieken' ),
+	'CooperationStatistics' => array( 'Samenwarkingsstaotistieken' ),
 );
 
 /** Dutch (Nederlands) */
@@ -139,6 +139,11 @@ $specialPageAliases['tr'] = array(
 /** Simplified Chinese (‪中文(简体)‬) */
 $specialPageAliases['zh-hans'] = array(
 	'CooperationStatistics' => array( '合作统计' ),
+);
+
+/** Traditional Chinese (‪中文(繁體)‬) */
+$specialPageAliases['zh-hant'] = array(
+	'CooperationStatistics' => array( '合作統計' ),
 );
 
 /**

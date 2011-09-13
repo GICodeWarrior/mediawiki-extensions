@@ -105,7 +105,7 @@ $specialPageAliases['mr'] = array(
 
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
-	'ImageTagging' => array( 'Ofbeeldingen_annoteren' ),
+	'ImageTagging' => array( 'Aofbeeldingen_annoteren' ),
 );
 
 /** Dutch (Nederlands) */

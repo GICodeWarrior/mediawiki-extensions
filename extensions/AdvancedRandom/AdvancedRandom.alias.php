@@ -25,12 +25,17 @@ $specialPageAliases['arz'] = array(
 
 /** Bulgarian (Български) */
 $specialPageAliases['bg'] = array(
-	'AdvancedRandom' => array( 'Случайна страница плюс' ),
+	'AdvancedRandom' => array( 'Случайна_страница_плюс' ),
 );
 
 /** Bosnian (Bosanski) */
 $specialPageAliases['bs'] = array(
 	'AdvancedRandom' => array( 'NaprednoSlucajno' ),
+);
+
+/** Esperanto (Esperanto) */
+$specialPageAliases['eo'] = array(
+	'AdvancedRandom' => array( 'Spertula_hazardo' ),
 );
 
 /** Spanish (Español) */
@@ -120,7 +125,7 @@ $specialPageAliases['mr'] = array(
 
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
-	'AdvancedRandom' => array( 'Uut-ebreid_willekeurig' ),
+	'AdvancedRandom' => array( 'Uutebreid_willekeurig' ),
 );
 
 /** Dutch (Nederlands) */

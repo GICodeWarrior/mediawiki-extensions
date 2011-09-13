@@ -34,6 +34,11 @@ $specialPageAliases['dsb'] = array(
 	'UserOptionStats' => array( 'Statistika wužywarskich opcijow' ),
 );
 
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'UserOptionStats' => array( 'آمار_تنظیمات_کاربر' ),
+);
+
 /** Haitian (Kreyòl ayisyen) */
 $specialPageAliases['ht'] = array(
 	'UserOptionStats' => array( 'EstatistikOpsyonItilizatè' ),
@@ -41,7 +46,7 @@ $specialPageAliases['ht'] = array(
 
 /** Interlingua (Interlingua) */
 $specialPageAliases['ia'] = array(
-	'UserOptionStats' => array( 'Statsticas de optiones de usator' ),
+	'UserOptionStats' => array( 'Statsticas_de_optiones_de_usator' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */
@@ -81,7 +86,7 @@ $specialPageAliases['mr'] = array(
 
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
-	'UserOptionStats' => array( 'Gebrukersinstellingenstaotestieken' ),
+	'UserOptionStats' => array( 'Gebrukersinstellingenstaotistieken' ),
 );
 
 /** Dutch (Nederlands) */

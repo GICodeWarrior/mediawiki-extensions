@@ -25,7 +25,7 @@ $specialPageAliases['arz'] = array(
 
 /** Bulgarian (Български) */
 $specialPageAliases['bg'] = array(
-	'PrefStats' => array( 'Статистики за настройките' ),
+	'PrefStats' => array( 'Статистики_за_настройките' ),
 );
 
 /** Estonian (Eesti) */
@@ -90,7 +90,7 @@ $specialPageAliases['ms'] = array(
 
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
-	'PrefStats' => array( 'Veurkeurenstaotestieken' ),
+	'PrefStats' => array( 'Veurkeurenstaotistieken' ),
 );
 
 /** Dutch (Nederlands) */
@@ -126,6 +126,11 @@ $specialPageAliases['vi'] = array(
 /** Yiddish (ייִדיש) */
 $specialPageAliases['yi'] = array(
 	'PrefStats' => array( 'פרעפערענצן_סטאטיסטיק' ),
+);
+
+/** Cantonese (粵語) */
+$specialPageAliases['yue'] = array(
+	'PrefStats' => array( '設定統計' ),
 );
 
 /**

@@ -63,7 +63,7 @@ $specialPageAliases['fr'] = array(
 
 /** Franco-Provençal (Arpetan) */
 $specialPageAliases['frp'] = array(
-	'SpecialUserStats' => array( 'Statistiques utilisator', 'StatistiquesUtilisator' ),
+	'SpecialUserStats' => array( 'Statistiques_utilisator', 'StatistiquesUtilisator' ),
 );
 
 /** Gagauz (Gagauz) */
@@ -103,7 +103,7 @@ $specialPageAliases['hu'] = array(
 
 /** Interlingua (Interlingua) */
 $specialPageAliases['ia'] = array(
-	'SpecialUserStats' => array( 'Statisticas de usatores', 'Statisticas special de usatores' ),
+	'SpecialUserStats' => array( 'Statisticas_de_usatores', 'Statisticas_special_de_usatores' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */
@@ -191,7 +191,7 @@ $specialPageAliases['sk'] = array(
 	'SpecialUserStats' => array( 'ŠtatistikyPoužívateľov' ),
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬) */
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬) */
 $specialPageAliases['sr-ec'] = array(
 	'SpecialUserStats' => array( 'Статистика_корисника' ),
 );

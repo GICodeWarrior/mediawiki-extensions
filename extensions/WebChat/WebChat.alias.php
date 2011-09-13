@@ -128,7 +128,7 @@ $specialPageAliases['tr'] = array(
 	'WebChat' => array( 'WebSohbet' ),
 );
 
-/** Татарча (Татарча) */
+/** Tatar (Cyrillic script) (Татарча) */
 $specialPageAliases['tt-cyrl'] = array(
 	'WebChat' => array( 'Веб-чат' ),
 );
@@ -136,6 +136,11 @@ $specialPageAliases['tt-cyrl'] = array(
 /** Simplified Chinese (‪中文(简体)‬) */
 $specialPageAliases['zh-hans'] = array(
 	'WebChat' => array( '网上聊天' ),
+);
+
+/** Traditional Chinese (‪中文(繁體)‬) */
+$specialPageAliases['zh-hant'] = array(
+	'WebChat' => array( '網上聊天' ),
 );
 
 /**

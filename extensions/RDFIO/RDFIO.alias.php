@@ -22,6 +22,27 @@ $specialPageAliases['ar'] = array(
 	'RDFImport' => array( 'استيراد_آر_دي_إف' ),
 );
 
+/** German (Deutsch) */
+$specialPageAliases['de'] = array(
+	'SPARQLEndpoint' => array( 'SPARQL-Endpoint' ),
+	'SpecialARC2Admin' => array( 'ARC2-Administration' ),
+	'RDFImport' => array( 'RDF_importieren' ),
+);
+
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'SPARQLEndpoint' => array( 'SPARQLЗавршеток' ),
+	'SpecialARC2Admin' => array( 'ARC2Админ' ),
+	'RDFImport' => array( 'RDFУвоз' ),
+);
+
+/** Nedersaksisch (Nedersaksisch) */
+$specialPageAliases['nds-nl'] = array(
+	'SPARQLEndpoint' => array( 'SPARQL-eindpunt' ),
+	'SpecialARC2Admin' => array( 'ARC2-beheer' ),
+	'RDFImport' => array( 'RDF_invoeren' ),
+);
+
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'SPARQLEndpoint' => array( 'SPARQLEindpunt' ),

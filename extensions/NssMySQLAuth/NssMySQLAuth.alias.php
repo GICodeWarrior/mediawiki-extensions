@@ -185,6 +185,11 @@ $specialPageAliases['sq'] = array(
 	'AccountManager' => array( 'MenaxhuesLlogarie' ),
 );
 
+/** Swedish (Svenska) */
+$specialPageAliases['sv'] = array(
+	'AccountManager' => array( 'Kontohanterare' ),
+);
+
 /** Swahili (Kiswahili) */
 $specialPageAliases['sw'] = array(
 	'AccountManager' => array( 'AkauntiKuu' ),
@@ -202,7 +207,12 @@ $specialPageAliases['tr'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬) */
 $specialPageAliases['zh-hans'] = array(
-	'AccountManager' => array( '客户经理' ),
+	'AccountManager' => array( '账户管理' ),
+);
+
+/** Traditional Chinese (‪中文(繁體)‬) */
+$specialPageAliases['zh-hant'] = array(
+	'AccountManager' => array( '帳戶負責人' ),
 );
 
 /**

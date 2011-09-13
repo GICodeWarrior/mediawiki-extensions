@@ -42,6 +42,11 @@ $specialPageAliases['ml'] = array(
 	'FlagPage' => array( 'പതാകാതാൾ' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$specialPageAliases['nds-nl'] = array(
+	'FlagPage' => array( 'Pagina_markeren' ),
+);
+
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'FlagPage' => array( 'PaginaMarkeren' ),
@@ -50,6 +55,11 @@ $specialPageAliases['nl'] = array(
 /** Turkish (Türkçe) */
 $specialPageAliases['tr'] = array(
 	'FlagPage' => array( 'Sayfaİşaretle', 'SayfayıBayrakla' ),
+);
+
+/** Traditional Chinese (‪中文(繁體)‬) */
+$specialPageAliases['zh-hant'] = array(
+	'FlagPage' => array( '檢舉此頁' ),
 );
 
 /**

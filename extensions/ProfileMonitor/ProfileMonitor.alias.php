@@ -58,6 +58,11 @@ $specialPageAliases['mk'] = array(
 	'ProfileMonitor' => array( 'НадзорНаПрофили' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$specialPageAliases['nds-nl'] = array(
+	'ProfileMonitor' => array( 'Profielkiekscharm' ),
+);
+
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'ProfileMonitor' => array( 'ProfilingMonitor' ),

@@ -198,6 +198,11 @@ $specialPageAliases['mwl'] = array(
 	'Vote' => array( 'Botar' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$specialPageAliases['nds-nl'] = array(
+	'Vote' => array( 'Stemmen' ),
+);
+
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'Vote' => array( 'Stemmen' ),
@@ -211,6 +216,11 @@ $specialPageAliases['no'] = array(
 /** Occitan (Occitan) */
 $specialPageAliases['oc'] = array(
 	'Vote' => array( 'Votar' ),
+);
+
+/** Polish (Polski) */
+$specialPageAliases['pl'] = array(
+	'Vote' => array( 'Zagłosuj' ),
 );
 
 /** Pashto (پښتو) */
@@ -248,7 +258,7 @@ $specialPageAliases['sq'] = array(
 	'Vote' => array( 'Voto' ),
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬) */
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬) */
 $specialPageAliases['sr-ec'] = array(
 	'Vote' => array( 'Гласај' ),
 );

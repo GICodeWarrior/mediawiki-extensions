@@ -186,6 +186,11 @@ $specialPageAliases['zh-hans'] = array(
 	'InspectCache' => array( '检查缓存' ),
 );
 
+/** Traditional Chinese (‪中文(繁體)‬) */
+$specialPageAliases['zh-hant'] = array(
+	'InspectCache' => array( '檢查快取' ),
+);
+
 /**
  * For backwards compatibility with MediaWiki 1.15 and earlier.
  */

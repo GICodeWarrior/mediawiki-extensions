@@ -47,6 +47,12 @@ $specialPageAliases['dsb'] = array(
 	'TaskListByProject' => array( 'Lisćina nadawkow na projekt' ),
 );
 
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'TaskList' => array( 'فهرست_کارها' ),
+	'TaskListByProject' => array( 'فهرست_کارهای_هر_پروژه' ),
+);
+
 /** Finnish (Suomi) */
 $specialPageAliases['fi'] = array(
 	'TaskList' => array( 'Tehtävälista' ),
@@ -61,8 +67,8 @@ $specialPageAliases['fr'] = array(
 
 /** Franco-Provençal (Arpetan) */
 $specialPageAliases['frp'] = array(
-	'TaskList' => array( 'Lista de travâlys', 'ListaDeTravâlys' ),
-	'TaskListByProject' => array( 'Lista de travâlys per projèt', 'ListaDeTravâlysPerProjèt' ),
+	'TaskList' => array( 'Lista_de_travâlys', 'ListaDeTravâlys' ),
+	'TaskListByProject' => array( 'Lista_de_travâlys_per_projèt', 'ListaDeTravâlysPerProjèt' ),
 );
 
 /** Swiss German (Alemannisch) */
@@ -149,8 +155,8 @@ $specialPageAliases['mr'] = array(
 
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
-	'TaskList' => array( 'Takenlieste' ),
-	'TaskListByProject' => array( 'Takenlieste_per_prejek' ),
+	'TaskList' => array( 'Takelieste' ),
+	'TaskListByProject' => array( 'Takelieste_per_projekt' ),
 );
 
 /** Dutch (Nederlands) */

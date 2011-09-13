@@ -160,7 +160,12 @@ $specialPageAliases['tr'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬) */
 $specialPageAliases['zh-hans'] = array(
-	'CommunityVoice' => array( '社会声音' ),
+	'CommunityVoice' => array( '社区声音' ),
+);
+
+/** Traditional Chinese (‪中文(繁體)‬) */
+$specialPageAliases['zh-hant'] = array(
+	'CommunityVoice' => array( '社群聲音' ),
 );
 
 /**

@@ -29,7 +29,7 @@ $specialPageAliases['fr'] = array(
 
 /** Franco-Provençal (Arpetan) */
 $specialPageAliases['frp'] = array(
-	'RecordAdmin' => array( 'Administrar l\'encartâjo', 'AdministrarLEncartâjo' ),
+	'RecordAdmin' => array( 'Administrar_l\'encartâjo', 'AdministrarLEncartâjo' ),
 );
 
 /** Swiss German (Alemannisch) */
@@ -55,6 +55,16 @@ $specialPageAliases['id'] = array(
 /** Japanese (日本語) */
 $specialPageAliases['ja'] = array(
 	'RecordAdmin' => array( '記録管理' ),
+);
+
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'RecordAdmin' => array( 'АдминНаЗаписи' ),
+);
+
+/** Nedersaksisch (Nedersaksisch) */
+$specialPageAliases['nds-nl'] = array(
+	'RecordAdmin' => array( 'Gegevensbeheer' ),
 );
 
 /** Dutch (Nederlands) */

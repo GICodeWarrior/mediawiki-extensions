@@ -30,7 +30,7 @@ $specialPageAliases['arz'] = array(
 
 /** Bulgarian (Български) */
 $specialPageAliases['bg'] = array(
-	'NewsChannel' => array( 'Новинарски канал' ),
+	'NewsChannel' => array( 'Новинарски_канал' ),
 );
 
 /** Breton (Brezhoneg) */
@@ -140,7 +140,7 @@ $specialPageAliases['ml'] = array(
 
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
-	'NewsChannel' => array( 'Niej_kenaal' ),
+	'NewsChannel' => array( 'Niej_kanaal' ),
 );
 
 /** Dutch (Nederlands) */
@@ -211,6 +211,11 @@ $specialPageAliases['tr'] = array(
 /** Simplified Chinese (‪中文(简体)‬) */
 $specialPageAliases['zh-hans'] = array(
 	'NewsChannel' => array( '新闻频道' ),
+);
+
+/** Traditional Chinese (‪中文(繁體)‬) */
+$specialPageAliases['zh-hant'] = array(
+	'NewsChannel' => array( '新聞頻道' ),
 );
 
 /**

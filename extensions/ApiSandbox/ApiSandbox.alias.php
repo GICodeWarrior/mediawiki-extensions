@@ -18,6 +18,21 @@ $specialPageAliases['ar'] = array(
 	'ApiSandbox' => array( 'ساحة_تجربة_إيه_بي_آي' ),
 );
 
+/** Esperanto (Esperanto) */
+$specialPageAliases['eo'] = array(
+	'ApiSandbox' => array( 'Provejo_de_API' ),
+);
+
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'ApiSandbox' => array( 'ApiПесочник' ),
+);
+
+/** Nedersaksisch (Nedersaksisch) */
+$specialPageAliases['nds-nl'] = array(
+	'ApiSandbox' => array( 'API-zaandbak' ),
+);
+
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'ApiSandbox' => array( 'APIZandbak' ),

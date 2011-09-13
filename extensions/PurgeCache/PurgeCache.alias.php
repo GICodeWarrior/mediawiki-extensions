@@ -50,7 +50,7 @@ $specialPageAliases['fr'] = array(
 
 /** Franco-Provençal (Arpetan) */
 $specialPageAliases['frp'] = array(
-	'PurgeCache' => array( 'Purgiér lo cache', 'PurgiérLoCache' ),
+	'PurgeCache' => array( 'Purgiér_lo_cache', 'PurgiérLoCache' ),
 );
 
 /** Galician (Galego) */
@@ -156,6 +156,11 @@ $specialPageAliases['sa'] = array(
 /** Slovak (Slovenčina) */
 $specialPageAliases['sk'] = array(
 	'PurgeCache' => array( 'VyčistiťCache' ),
+);
+
+/** Swedish (Svenska) */
+$specialPageAliases['sv'] = array(
+	'PurgeCache' => array( 'Rensa_cache' ),
 );
 
 /** Thai (ไทย) */

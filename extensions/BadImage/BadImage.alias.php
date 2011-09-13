@@ -170,7 +170,7 @@ $specialPageAliases['mt'] = array(
 
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
-	'Badimages' => array( 'Zwarte_lieste_van_ofbeeldingen' ),
+	'Badimages' => array( 'Zwarte_lieste_van_bestaanden' ),
 );
 
 /** Dutch (Nederlands) */
@@ -218,6 +218,11 @@ $specialPageAliases['sk'] = array(
 	'Badimages' => array( 'ZléObrázky' ),
 );
 
+/** Swedish (Svenska) */
+$specialPageAliases['sv'] = array(
+	'Badimages' => array( 'Dåliga_bilder' ),
+);
+
 /** Thai (ไทย) */
 $specialPageAliases['th'] = array(
 	'Badimages' => array( 'ภาพเสีย' ),
@@ -235,7 +240,7 @@ $specialPageAliases['tr'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬) */
 $specialPageAliases['zh-hans'] = array(
-	'Badimages' => array( '坏图像' ),
+	'Badimages' => array( '糟糕图像' ),
 );
 
 /** Traditional Chinese (‪中文(繁體)‬) */

@@ -108,6 +108,11 @@ $specialPageAliases['myv'] = array(
 	'ExternalPages' => array( 'УшоньЛопат' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$specialPageAliases['nds-nl'] = array(
+	'ExternalPages' => array( 'Uutgaonde_pagina\'s' ),
+);
+
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'ExternalPages' => array( 'ExternePaginas', 'ExternePagina\'s' ),
@@ -136,6 +141,11 @@ $specialPageAliases['tr'] = array(
 /** Vèneto (Vèneto) */
 $specialPageAliases['vec'] = array(
 	'ExternalPages' => array( 'PagineEsterne' ),
+);
+
+/** Traditional Chinese (‪中文(繁體)‬) */
+$specialPageAliases['zh-hant'] = array(
+	'ExternalPages' => array( '外部頁面' ),
 );
 
 /**

@@ -75,7 +75,7 @@ $specialPageAliases['gsw'] = array(
 
 /** Hebrew (עברית) */
 $specialPageAliases['he'] = array(
-	'CrossNamespaceLinks' => array( 'קישורים מדפי תוכן למרחבי שם אחרים' ),
+	'CrossNamespaceLinks' => array( 'קישורים_מדפי_תוכן_למרחבי_שם_אחרים' ),
 );
 
 /** Croatian (Hrvatski) */
@@ -225,7 +225,7 @@ $specialPageAliases['tr'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬) */
 $specialPageAliases['zh-hans'] = array(
-	'CrossNamespaceLinks' => array( '跨名字空间链接' ),
+	'CrossNamespaceLinks' => array( '跨名称空间链接' ),
 );
 
 /** Traditional Chinese (‪中文(繁體)‬) */

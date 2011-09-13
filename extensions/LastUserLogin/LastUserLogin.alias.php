@@ -83,6 +83,11 @@ $specialPageAliases['ml'] = array(
 	'LastUserLogin' => array( 'അവസാന‌‌ഉപയോക്തൃപ്രവേശം' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$specialPageAliases['nds-nl'] = array(
+	'LastUserLogin' => array( 'Leste_gebrukersanmelding' ),
+);
+
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'LastUserLogin' => array( 'LaasteGebruikeraanmelding' ),
@@ -100,7 +105,12 @@ $specialPageAliases['tr'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬) */
 $specialPageAliases['zh-hans'] = array(
-	'LastUserLogin' => array( '最后用户登录' ),
+	'LastUserLogin' => array( '最后登录' ),
+);
+
+/** Traditional Chinese (‪中文(繁體)‬) */
+$specialPageAliases['zh-hant'] = array(
+	'LastUserLogin' => array( '最後用戶登入' ),
 );
 
 /**

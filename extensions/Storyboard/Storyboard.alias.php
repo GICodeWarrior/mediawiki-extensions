@@ -33,6 +33,7 @@ $specialPageAliases['br'] = array(
 $specialPageAliases['fa'] = array(
 	'StoryReview' => array( 'بازبینی_داستان' ),
 	'Story' => array( 'داستان' ),
+	'StorySubmission' => array( 'ارسال__داستان' ),
 );
 
 /** Finnish (Suomi) */
@@ -76,6 +77,13 @@ $specialPageAliases['ml'] = array(
 	'StorySubmission' => array( 'കഥസമർപ്പിക്കൽ' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$specialPageAliases['nds-nl'] = array(
+	'StoryReview' => array( 'Verhaalkontrole' ),
+	'Story' => array( 'Verhaal' ),
+	'StorySubmission' => array( 'Verhaal_opsturen' ),
+);
+
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'StoryReview' => array( 'Verhaalcontrole' ),
@@ -91,6 +99,13 @@ $specialPageAliases['no'] = array(
 /** Simplified Chinese (‪中文(简体)‬) */
 $specialPageAliases['zh-hans'] = array(
 	'Story' => array( '故事' ),
+);
+
+/** Traditional Chinese (‪中文(繁體)‬) */
+$specialPageAliases['zh-hant'] = array(
+	'StoryReview' => array( '故事評論' ),
+	'Story' => array( '故事' ),
+	'StorySubmission' => array( '上傳故事' ),
 );
 
 /**

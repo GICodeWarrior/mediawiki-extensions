@@ -45,6 +45,11 @@ $specialPageAliases['ml'] = array(
 	'RefHelper' => array( 'അവലംബസഹായി' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$specialPageAliases['nds-nl'] = array(
+	'RefHelper' => array( 'Refhulpe' ),
+);
+
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'RefHelper' => array( 'RefHulp' ),

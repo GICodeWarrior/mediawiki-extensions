@@ -210,7 +210,7 @@ $specialPageAliases['mt'] = array(
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'ContributionHistory' => array( 'Donasiegeschiedenisse' ),
-	'ContributionStatistics' => array( 'Donasiestaotestieken' ),
+	'ContributionStatistics' => array( 'Donasiestaotistieken' ),
 	'ContributionTotal' => array( 'Donasietotaal' ),
 );
 
@@ -291,6 +291,12 @@ $specialPageAliases['sq'] = array(
 	'ContributionTotal' => array( 'GjithsejKontributi' ),
 );
 
+/** Swedish (Svenska) */
+$specialPageAliases['sv'] = array(
+	'ContributionHistory' => array( 'Bidragshistorik' ),
+	'ContributionStatistics' => array( 'Bidragsstatistik' ),
+);
+
 /** Swahili (Kiswahili) */
 $specialPageAliases['sw'] = array(
 	'ContributionHistory' => array( 'HistoriayaWachangiaji' ),
@@ -335,8 +341,15 @@ $specialPageAliases['vi'] = array(
 /** Simplified Chinese (‪中文(简体)‬) */
 $specialPageAliases['zh-hans'] = array(
 	'ContributionHistory' => array( '贡献历史' ),
-	'ContributionStatistics' => array( '贡献统计数字' ),
-	'ContributionTotal' => array( '总的贡献' ),
+	'ContributionStatistics' => array( '贡献统计' ),
+	'ContributionTotal' => array( '贡献总计' ),
+);
+
+/** Traditional Chinese (‪中文(繁體)‬) */
+$specialPageAliases['zh-hant'] = array(
+	'ContributionHistory' => array( '貢獻歷史' ),
+	'ContributionStatistics' => array( '貢獻統計' ),
+	'ContributionTotal' => array( '貢獻總計' ),
 );
 
 /**

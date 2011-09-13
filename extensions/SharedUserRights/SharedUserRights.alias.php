@@ -102,7 +102,7 @@ $specialPageAliases['mt'] = array(
 
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
-	'SharedUserRights' => array( 'Edeelde_gebrukersrechen' ),
+	'SharedUserRights' => array( 'Edeelden_gebrukersrechten' ),
 );
 
 /** Dutch (Nederlands) */
@@ -120,7 +120,7 @@ $specialPageAliases['sk'] = array(
 	'SharedUserRights' => array( 'ZdieľanéPoužívateľskéPráva' ),
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬) */
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬) */
 $specialPageAliases['sr-ec'] = array(
 	'SharedUserRights' => array( 'Дељена_корисничка_права' ),
 );

@@ -58,6 +58,11 @@ $specialPageAliases['ml'] = array(
 	'MassBlank' => array( 'കൂട്ടശൂന്യമാക്കൽ' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$specialPageAliases['nds-nl'] = array(
+	'MassBlank' => array( 'Massaal_leegmaken' ),
+);
+
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'MassBlank' => array( 'MassaalLeegmaken' ),

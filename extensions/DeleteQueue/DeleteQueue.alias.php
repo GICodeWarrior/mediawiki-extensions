@@ -125,7 +125,7 @@ $specialPageAliases['myv'] = array(
 
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
-	'DeleteQueue' => array( 'Vortdowachrie' ),
+	'DeleteQueue' => array( 'Vortdowachtrie' ),
 );
 
 /** Dutch (Nederlands) */
@@ -176,6 +176,11 @@ $specialPageAliases['tr'] = array(
 /** Simplified Chinese (‪中文(简体)‬) */
 $specialPageAliases['zh-hans'] = array(
 	'DeleteQueue' => array( '删除队列' ),
+);
+
+/** Traditional Chinese (‪中文(繁體)‬) */
+$specialPageAliases['zh-hant'] = array(
+	'DeleteQueue' => array( '刪除隊列' ),
 );
 
 /**

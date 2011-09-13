@@ -28,7 +28,7 @@ $specialPageAliases['fa'] = array(
 
 /** Franco-Provençal (Arpetan) */
 $specialPageAliases['frp'] = array(
-	'StalePages' => array( 'Pâges dèpassâs', 'PâgesDèpassâs' ),
+	'StalePages' => array( 'Pâges_dèpassâs', 'PâgesDèpassâs' ),
 );
 
 /** Swiss German (Alemannisch) */
@@ -73,7 +73,7 @@ $specialPageAliases['mr'] = array(
 
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
-	'StalePages' => array( 'Verouwerde_pagina\'s' ),
+	'StalePages' => array( 'Verouwerden_pagina\'s' ),
 );
 
 /** Dutch (Nederlands) */

@@ -120,7 +120,7 @@ $specialPageAliases['mr'] = array(
 
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
-	'Asksql' => array( 'SQL-zeukopdrach' ),
+	'Asksql' => array( 'SQL-zeukopdrachte' ),
 );
 
 /** Dutch (Nederlands) */

@@ -23,7 +23,7 @@ $specialPageAliases['arz'] = array(
 
 /** Bulgarian (Български) */
 $specialPageAliases['bg'] = array(
-	'RandomInCategory' => array( 'Случайна страница в категория' ),
+	'RandomInCategory' => array( 'Случайна_страница_в_категория' ),
 );
 
 /** Bosnian (Bosanski) */
@@ -58,7 +58,7 @@ $specialPageAliases['fr'] = array(
 
 /** Franco-Provençal (Arpetan) */
 $specialPageAliases['frp'] = array(
-	'RandomInCategory' => array( 'Pâge a l\'hasârd dens una catègorie', 'PâgeALHasârdDensUnaCatègorie' ),
+	'RandomInCategory' => array( 'Pâge_a_l\'hasârd_dens_una_catègorie', 'PâgeALHasârdDensUnaCatègorie' ),
 );
 
 /** Swiss German (Alemannisch) */
@@ -118,7 +118,7 @@ $specialPageAliases['ml'] = array(
 
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
-	'RandomInCategory' => array( 'Willekeurig_in_kattegerie' ),
+	'RandomInCategory' => array( 'Willekeurig_in_kategorie' ),
 );
 
 /** Dutch (Nederlands) */

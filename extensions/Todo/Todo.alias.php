@@ -27,6 +27,11 @@ $specialPageAliases['fr'] = array(
 	'Todo' => array( 'ÀFaire', 'À_faire' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$specialPageAliases['frp'] = array(
+	'Todo' => array( 'A_fâre', 'AFâre' ),
+);
+
 /** Haitian (Kreyòl ayisyen) */
 $specialPageAliases['ht'] = array(
 	'Todo' => array( 'PouFè' ),
@@ -42,9 +47,19 @@ $specialPageAliases['ml'] = array(
 	'Todo' => array( 'ചെയ്യേണ്ടവ' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$specialPageAliases['nds-nl'] = array(
+	'Todo' => array( 'Te_doon' ),
+);
+
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'Todo' => array( 'TeDoen' ),
+);
+
+/** Polish (Polski) */
+$specialPageAliases['pl'] = array(
+	'Todo' => array( 'Do_zrobienia' ),
 );
 
 /**
