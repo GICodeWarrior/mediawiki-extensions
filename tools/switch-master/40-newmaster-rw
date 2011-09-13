@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 . config
 
 ssh root@$newmaster 'sed -i~ '\''s/^\s*read-only/#read-only/'\'' /etc/my.cnf'

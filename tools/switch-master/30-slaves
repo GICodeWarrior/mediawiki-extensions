@@ -1,9 +1,9 @@
-#!/bin/sh
+#!/bin/bash
 
 . config
 
 # Turn off slave on new master, to avoid replication loop
-echo "slave stop;" | mysql -h $newmaster
+echo "slave stop; change master to master_host=''" | mysql -h $newmaster
 
 # Change slaves to use new master
 sql="
