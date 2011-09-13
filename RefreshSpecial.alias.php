@@ -80,7 +80,7 @@ $specialPageAliases['mk'] = array(
 
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
-	'RefreshSpecial' => array( 'Speciaal_verniejen' ),
+	'RefreshSpecial' => array( 'Spesiaal_verniejen' ),
 );
 
 /** Dutch (Nederlands) */
