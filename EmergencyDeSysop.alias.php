@@ -128,7 +128,7 @@ $specialPageAliases['mr'] = array(
 
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
-	'EmergencyDeSysop' => array( 'Noodgreep_beheerdersrechen_ontnemen' ),
+	'EmergencyDeSysop' => array( 'Noodgreep_beheerdersrechten_ontnemen' ),
 );
 
 /** Dutch (Nederlands) */
