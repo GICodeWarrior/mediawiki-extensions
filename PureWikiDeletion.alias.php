@@ -34,6 +34,20 @@ $specialPageAliases['ia'] = array(
 	'PopulateBlankedPagesTable' => array( 'Plenar_tabella_de_paginas_vacuate' ),
 );
 
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'PureWikiDeletion' => array( 'ЧистоВикиБришење' ),
+	'RandomExcludeBlank' => array( 'СлучаноИзземањеПразно' ),
+	'PopulateBlankedPagesTable' => array( 'ПополниТабелаНаИспразнетиСтраници' ),
+);
+
+/** Nedersaksisch (Nedersaksisch) */
+$specialPageAliases['nds-nl'] = array(
+	'PureWikiDeletion' => array( 'Pure_wiki_vortdoon' ),
+	'RandomExcludeBlank' => array( 'Willekeurig_zonder_leeg' ),
+	'PopulateBlankedPagesTable' => array( 'Tabel_lege_pagina\'s_vullen' ),
+);
+
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'PureWikiDeletion' => array( 'PureWikiverwijdering' ),
