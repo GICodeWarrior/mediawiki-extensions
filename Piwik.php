@@ -51,6 +51,8 @@ function efAddPiwik( $title ) {
 				} else {
 					$wgPiwikFinalActionName = $wgPiwikActionName;
 				}
+				// Stop xss since page title's can have " and stuff in them.
+				$wgPiwikFinalActionName = Xml::encodeJsVar( $wgPiwikFinalActionName );
 				$funcOutput = <<<PIWIK
 <!-- Piwik -->
 <script type="text/javascript">
@@ -63,7 +65,7 @@ document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/ja
 /* <![CDATA[ */
 try {
 var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", {$wgPiwikIDSite});
-piwikTracker.setDocumentTitle("{$wgPiwikFinalActionName}");
+piwikTracker.setDocumentTitle({$wgPiwikFinalActionName});
 piwikTracker.setIgnoreClasses("image");
 {$wgPiwikCustomJS}
 piwikTracker.trackPageView();
