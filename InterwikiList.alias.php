@@ -25,7 +25,7 @@ $specialPageAliases['arz'] = array(
 
 /** Bulgarian (Български) */
 $specialPageAliases['bg'] = array(
-	'InterwikiList' => array( 'Списък на междууикита' ),
+	'InterwikiList' => array( 'Списък_на_междууикита' ),
 );
 
 /** Breton (Brezhoneg) */
@@ -246,6 +246,11 @@ $specialPageAliases['tl'] = array(
 /** Turkish (Türkçe) */
 $specialPageAliases['tr'] = array(
 	'InterwikiList' => array( 'İntervikiListesi' ),
+);
+
+/** Tatar (Cyrillic script) (Татарча) */
+$specialPageAliases['tt-cyrl'] = array(
+	'InterwikiList' => array( 'Интервики_исемлеге' ),
 );
 
 /** Vietnamese (Tiếng Việt) */
