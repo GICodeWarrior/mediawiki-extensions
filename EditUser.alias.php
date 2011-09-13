@@ -218,7 +218,7 @@ $specialPageAliases['sk'] = array(
 	'EditUser' => array( 'ÚpravaPoužívateľa' ),
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬) */
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬) */
 $specialPageAliases['sr-ec'] = array(
 	'EditUser' => array( 'Уреди_корисника' ),
 );
@@ -248,7 +248,7 @@ $specialPageAliases['tr'] = array(
 	'EditUser' => array( 'KullanıcıDüzenle' ),
 );
 
-/** Татарча (Татарча) */
+/** Tatar (Cyrillic script) (Татарча) */
 $specialPageAliases['tt-cyrl'] = array(
 	'EditUser' => array( 'Кулланучыны_үзгәртү' ),
 );
