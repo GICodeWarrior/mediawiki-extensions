@@ -125,7 +125,7 @@ $specialPageAliases['ml'] = array(
 
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
-	'MultipleUpload' => array( 'Meerdere_bestanen_toevoegen' ),
+	'MultipleUpload' => array( 'Meerdere_bestaanden_opsturen' ),
 );
 
 /** Dutch (Nederlands) */
@@ -181,6 +181,11 @@ $specialPageAliases['tl'] = array(
 /** Turkish (Türkçe) */
 $specialPageAliases['tr'] = array(
 	'MultipleUpload' => array( 'ÇokluYükleme' ),
+);
+
+/** Cantonese (粵語) */
+$specialPageAliases['yue'] = array(
+	'MultipleUpload' => array( '上傳多個檔案' ),
 );
 
 /** Traditional Chinese (‪中文(繁體)‬) */
