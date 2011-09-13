@@ -28,9 +28,14 @@ $specialPageAliases['fr'] = array(
 	'E-mailPage' => array( 'EnvoyerPage', 'Envoyer Page' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$specialPageAliases['frp'] = array(
+	'E-mailPage' => array( 'Mandar_una_pâge', 'MandarUnaPâge' ),
+);
+
 /** Galician (Galego) */
 $specialPageAliases['gl'] = array(
-	'E-mailPage' => array( 'Enviar páxinas por correo electrónico' ),
+	'E-mailPage' => array( 'Enviar_páxinas_por_correo_electrónico' ),
 );
 
 /** Hebrew (עברית) */
@@ -45,12 +50,22 @@ $specialPageAliases['ht'] = array(
 
 /** Hungarian (Magyar) */
 $specialPageAliases['hu'] = array(
-	'E-mailPage' => array( 'Szócikk elküldése e-mailben' ),
+	'E-mailPage' => array( 'Szócikk_elküldése_e-mailben' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */
 $specialPageAliases['lb'] = array(
 	'E-mailPage' => array( 'E-Mail-Säiten' ),
+);
+
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'E-mailPage' => array( 'СтраницаЗаЕ-пошта' ),
+);
+
+/** Nedersaksisch (Nedersaksisch) */
+$specialPageAliases['nds-nl'] = array(
+	'E-mailPage' => array( 'Pagina_per_netpost_sturen' ),
 );
 
 /** Dutch (Nederlands) */
@@ -66,6 +81,16 @@ $specialPageAliases['no'] = array(
 /** Pashto (پښتو) */
 $specialPageAliases['ps'] = array(
 	'E-mailPage' => array( 'د برېښليک مخونه' ),
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$specialPageAliases['zh-hans'] = array(
+	'E-mailPage' => array( '电邮页面' ),
+);
+
+/** Traditional Chinese (‪中文(繁體)‬) */
+$specialPageAliases['zh-hant'] = array(
+	'E-mailPage' => array( '電郵頁面' ),
 );
 
 /**
