@@ -30,7 +30,7 @@ $specialPageAliases['arz'] = array(
 
 /** Bulgarian (Български) */
 $specialPageAliases['bg'] = array(
-	'ReaderFeedback' => array( 'Читателски отзиви' ),
+	'ReaderFeedback' => array( 'Читателски_отзиви' ),
 );
 
 /** Bosnian (Bosanski) */
@@ -41,6 +41,7 @@ $specialPageAliases['bs'] = array(
 
 /** German (Deutsch) */
 $specialPageAliases['de'] = array(
+	'RatedPages' => array( 'Bewertete_Seiten' ),
 	'RatingHistory' => array( 'Bewertungsgeschichte' ),
 	'ReaderFeedback' => array( 'Bewertung' ),
 );
@@ -53,6 +54,7 @@ $specialPageAliases['dsb'] = array(
 
 /** Persian (فارسی) */
 $specialPageAliases['fa'] = array(
+	'RatedPages' => array( 'صفحه‌های_درجه‌بندی‌شده' ),
 	'RatingHistory' => array( 'تاریخچه_درجه‌بندی' ),
 	'ReaderFeedback' => array( 'بازخورد_خواننده' ),
 );
@@ -64,7 +66,7 @@ $specialPageAliases['fi'] = array(
 
 /** Franco-Provençal (Arpetan) */
 $specialPageAliases['frp'] = array(
-	'RatingHistory' => array( 'Historico de l\'èstimacion de la pâge', 'HistoricoDeLÈstimacionDeLaPâge' ),
+	'RatingHistory' => array( 'Historico_de_l\'èstimacion_de_la_pâge', 'HistoricoDeLÈstimacionDeLaPâge' ),
 	'ReaderFeedback' => array( 'Èstimacion' ),
 );
 
@@ -134,6 +136,7 @@ $specialPageAliases['ko'] = array(
 
 /** Luxembourgish (Lëtzebuergesch) */
 $specialPageAliases['lb'] = array(
+	'RatedPages' => array( 'Bewäerte_Säiten' ),
 	'RatingHistory' => array( 'Bewäertung_vun_de_Versiounen' ),
 	'ReaderFeedback' => array( 'Bewäertung_vun_de_Lieser' ),
 );
@@ -153,8 +156,9 @@ $specialPageAliases['ml'] = array(
 
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
-	'RatingHistory' => array( 'Werderingsgeschiedenisse' ),
-	'ReaderFeedback' => array( 'Lezerreactie' ),
+	'RatedPages' => array( 'Ewardeerden_pagina\'s' ),
+	'RatingHistory' => array( 'Warderingsgeschiedenisse' ),
+	'ReaderFeedback' => array( 'Lezerreaksie' ),
 );
 
 /** Dutch (Nederlands) */
