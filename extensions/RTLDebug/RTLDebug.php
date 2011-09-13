@@ -24,17 +24,16 @@
 $wgResourceModules['ext.rtlDebug'] = array(
 	'scripts' => 'rtl-debug.js',
 	'styles' => 'rtl-debug.css',
-	'localBasePath' => dirname( __FILE__ )
+	'remoteExtPath' => 'RTLDebug',
+	'localBasePath' => dirname( __FILE__ ),
 );
 
 $wgHooks['BeforePageDisplay'][] = 'wfRtlDebug_BeforePageDisplay';
 $wgExtraLanguageNames['en-rtl'] = 'English (RTL)';
 
 function wfRtlDebug_BeforePageDisplay( &$out, &$skin ) {
-	global $wgLang;
-
 	$out->addModules( 'ext.rtlDebug' );
-	if ( $wgLang->getCode() == 'en-rtl' ) {
+	if ( $out->getLang()->getCode() == 'en-rtl' ) {
 		$out->addInlineStyle( '* { unicode-bidi: bidi-override; }' );
 	}
 	return true;
