@@ -7,3 +7,4 @@ $messages['en'] = array(
 	'wom_editor' => 'Object Model',
 	'wom-desc' => 'Easy Page Object Model for wiki user',
 );
+
