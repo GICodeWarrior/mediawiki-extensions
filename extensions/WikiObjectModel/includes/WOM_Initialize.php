@@ -10,7 +10,7 @@ define( 'WOM_VERSION', '1.0' );
 
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
-	'name' => 'Wiki&#160;ObjectModel&#160;Extension',
+	'name' => 'Wiki ObjectModel Extension',
 	'version' => WOM_VERSION,
 	'author' => "Ning Hu, Justin Zhang, [http://smwforum.ontoprise.com/smwforum/index.php/Jesse_Wang Jesse Wang], sponsored by [http://projecthalo.com Project Halo], [http://www.vulcan.com Vulcan Inc.]",
 	'url' => 'http://wiking.vulcan.com/dev',
