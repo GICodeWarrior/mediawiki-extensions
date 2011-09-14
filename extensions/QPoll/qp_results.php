@@ -360,55 +360,10 @@ class PollResults extends qp_SpecialPage {
 		foreach ( $pollStore->Questions as &$qdata ) {
 			if ( $pollStore->isUsedQuestion( $qdata->question_id ) ) {
 				$output .= "<br />\n<b>" . $qdata->question_id . ".</b> " . qp_Setup::entities( $qdata->CommonQuestion ) . "<br />\n";
-				$output .= $this->displayUserQuestionVote( $qdata );
+				$qview = 
+				$output .= $qdata->displayUserQuestionVote();
 			}
 		}
-		return $output;
-	}
-
-	private function categoryentities( $cat ) {
-		$cat['name'] = qp_Setup::entities( $cat['name'] );
-		return $cat;
-	}
-
-	private function displayUserQuestionVote( &$qdata ) {
-		$output = "<div class=\"qpoll\">\n" . "<table class=\"pollresults\">\n";
-		$output .= qp_Renderer::displayRow( array_map( array( $this, 'categoryentities' ), $qdata->CategorySpans ), array( 'class' => 'spans' ), 'th', array( 'count' => 'colspan', 'name' => 0 ) );
-		$output .= qp_Renderer::displayRow( array_map( array( $this, 'categoryentities' ), $qdata->Categories ), '', 'th', array( 'name' => 0 ) );
-		# multiple choice polls doesn't use real spans, instead, every column is like "span"
-		$spansUsed = count( $qdata->CategorySpans ) > 0 || $qdata->type == "multipleChoice";
-		foreach ( $qdata->ProposalText as $propkey => &$proposal_text ) {
-			$row = Array();
-			foreach ( $qdata->Categories as $catkey => &$cat_name ) {
-				$cell = Array( 0 => "" );
-				if ( array_key_exists( $propkey, $qdata->ProposalCategoryId ) &&
-							( $id_key = array_search( $catkey, $qdata->ProposalCategoryId[ $propkey ] ) ) !== false ) {
-					$text_answer = $qdata->ProposalCategoryText[ $propkey ][ $id_key ];
-					if ( $text_answer != '' ) {
-						if ( strlen( $text_answer ) > 20 ) {
-							$cell[ 0 ] = array( '__tag' => 'div', 'style' => 'width:10em; height:5em; overflow:auto', 0 => qp_Setup::entities( $text_answer ) );
-						} else {
-							$cell[ 0 ] = qp_Setup::entities( $text_answer );
-						}
-					} else {
-						$cell[ 0 ] = '+';
-					}
-				}
-				if ( $spansUsed ) {
-					if ( $qdata->type == "multipleChoice" ) {
-						$cell[ "class" ] = ( ( $catkey & 1 ) === 0 ) ? "spaneven" : "spanodd";
-					} else {
-						$cell[ "class" ] = ( ( $qdata->Categories[ $catkey ][ "spanId" ] & 1 ) === 0 ) ? "spaneven" : "spanodd";
-					}
-				} else {
-					$cell[ "class" ] = "stats";
-				}
-				$row[] = $cell;
-			}
-			$row[] = array( 0 => qp_Setup::entities( $proposal_text ), "style" => "text-align:left;" );
-			$output .= qp_Renderer::displayRow( $row );
-		}
-		$output .= "</table>\n" . "</div>\n";
 		return $output;
 	}
 
@@ -426,9 +381,8 @@ class PollResults extends qp_SpecialPage {
 				$output .= wfMsg( 'qp_browse_to_poll', $poll_link ) . "<br />\n";
 				$output .= $this->qpLink( $this->getTitle(), wfMsg( 'qp_export_to_xls' ), array( "style" => "font-weight:bold;" ), array( 'action' => 'stats_xls', 'id' => $pid ) ) . "<br />\n";
 				$output .= $this->qpLink( $this->getTitle(), wfMsg( 'qp_voices_to_xls' ), array( "style" => "font-weight:bold;" ), array( 'action' => 'voices_xls', 'id' => $pid ) ) . "<br />\n";
-				foreach ( $pollStore->Questions as $qkey => &$qdata ) {
-					$output .= "<br />\n<b>" . $qkey . ".</b> " . qp_Setup::entities( $qdata->CommonQuestion ) . "<br />\n";
-					$output .= $this->displayQuestionStats( $pid, $qdata );
+				foreach ( $pollStore->Questions as &$qdata ) {
+					$output .= $qdata->displayQuestionStats( $this, $pid );
 				}
 			}
 		}
@@ -647,52 +601,6 @@ class PollResults extends qp_SpecialPage {
 		} catch ( Exception $e ) {
 			die( "Error while exporting poll statistics to Excel table\n" );
 		}
-	}
-
-	private function displayQuestionStats( $pid, &$qdata ) {
-		$current_title = $this->getTitle();
-		$output = "<div class=\"qpoll\">\n" . "<table class=\"pollresults\">\n";
-		$output .= qp_Renderer::displayRow( array_map( array( $this, 'categoryentities' ), $qdata->CategorySpans ), array( 'class' => 'spans' ), 'th', array( 'count' => 'colspan', 'name' => 0 ) );
-		$output .= qp_Renderer::displayRow( array_map( array( $this, 'categoryentities' ), $qdata->Categories ), '', 'th', array( 'name' => 0 ) );
-		# multiple choice polls doesn't use real spans, instead, every column is like "span"
-		$spansUsed = count( $qdata->CategorySpans ) > 0 || $qdata->type == "multipleChoice";
-		foreach ( $qdata->ProposalText as $propkey => &$proposal_text ) {
-			if ( isset( $qdata->Votes[ $propkey ] ) ) {
-				if ( $qdata->Percents === null ) {
-					$row = $qdata->Votes[ $propkey ];
-				} else {
-					$row = $qdata->Percents[ $propkey ];
-					foreach ( $row as $catkey => &$cell ) {
-						# Replace spaces with en spaces
-						$formatted_cell = str_replace( " ", "&#8194;", sprintf( '%3d%%', intval( round( 100 * $cell ) ) ) );
-						# only percents !=0 are displayed as link
-						if ( $cell == 0.0 && $qdata->question_id !== null ) {
-							$cell = array( 0 => $formatted_cell, "style" => "color:gray" );
-						} else {
-							$cell = array( 0 => $this->qpLink( $current_title, $formatted_cell,
-								array( "title" => wfMsgExt( 'qp_votes_count', array( 'parsemag' ), $qdata->Votes[ $propkey ][ $catkey ] ) ),
-								array( "action" => "qpcusers", "id" => $pid, "qid" => $qdata->question_id, "pid" => $propkey, "cid" => $catkey ) ) );
-						}
-						if ( $spansUsed ) {
-							if ( $qdata->type == "multipleChoice" ) {
-								$cell[ "class" ] = ( ( $catkey & 1 ) === 0 ) ? "spaneven" : "spanodd";
-							} else {
-								$cell[ "class" ] = ( ( $qdata->Categories[ $catkey ][ "spanId" ] & 1 ) === 0 ) ? "spaneven" : "spanodd";
-							}
-						} else {
-							$cell[ "class" ] = "stats";
-						}
-					}
-				}
-			} else {
-				# this proposal has no statistics (no votes)
-				$row = array_fill( 0, count( $qdata->Categories ), '' );
-			}
-			$row[] = array( 0 => qp_Setup::entities( $proposal_text ), "style" => "text-align:left;" );
-			$output .= qp_Renderer::displayRow( $row );
-		}
-		$output .= "</table>\n" . "</div>\n";
-		return $output;
 	}
 
 	static function getUsersLink() {
@@ -1023,7 +931,7 @@ class qp_PollUsersList extends qp_QueryPage {
 			$head[] = PollResults::getUsersLink();
 			$head[] = array( '__tag' => 'div', 'class' => 'head', 0 => $spec );
 			$head[] = ' (' . $goto_link . ')';
-			$link = qp_Renderer::renderHTMLobject( $head );
+			$link = qp_Renderer::renderTagArray( $head );
 		}
 		return $link;
 	}
@@ -1139,7 +1047,7 @@ class qp_UserCellList extends qp_QueryPage {
 							qp_Setup::entities( $proptext ),
 							qp_Setup::entities( $cat_name ) ) . '<br />';
 						$head[] = array( '__tag' => 'div', 'class' => 'head', 'style' => 'padding-left:2em;', 0 => $qpa );
-						$link = qp_Renderer::renderHTMLobject( $head );
+						$link = qp_Renderer::renderTagArray( $head );
 					}
 				}
 			}

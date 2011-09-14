@@ -41,15 +41,13 @@ abstract class qp_AbstractQuestion {
 	 * @public
 	 * @param  $poll            an instance of question's parent controller
 	 * @param  $view            an instance of question view "linked" to this question
-	 * @param  $questionId      the identifier of the question used to gernerate input names
+	 * @param  $questionId      the identifier of the question used to generate input names
 	 */
 	function __construct( qp_AbstractPoll $poll, qp_AbstractView $view, $questionId ) {
 		global $wgRequest;
 		$this->mRequest = &$wgRequest;
 		# the question collection is not sparce by default
 		$this->mQuestionId = $this->usedId = $questionId;
-		$this->mProposalPattern = '`^[^\|\!].*`u';
-		$this->mCategoryPattern 	= '`^\|(\n|[^\|].*\n)`u';
 		$view->setController( $this );
 		$this->view = $view;
 		$this->poll = $poll;
@@ -67,7 +65,7 @@ abstract class qp_AbstractQuestion {
 			$this->mState = $pState;
 		}
 		if ( $error_message !== null ) {
-			# store header error message that cannot be output now, but will be displayed at later stage
+			# store header error message that cannot be output now, but will be displayed at rendering stage
 			$this->view->headerErrorMessage = $error_message;
 		}
 	}

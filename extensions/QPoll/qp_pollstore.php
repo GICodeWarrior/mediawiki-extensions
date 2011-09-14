@@ -4,110 +4,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( "This file is part of the QPoll extension. It is not a valid entry point.\n" );
 }
 
-/* poll's single question data object RAM storage
- * ( instances usually have short name qdata or quesdata )
- */
-class qp_QuestionData {
-
-	// DB index (with current scheme is non-unique)
-	var $question_id = null;
-	// common properties
-	var $type;
-	var $CommonQuestion;
-	var $Categories;
-	var $CategorySpans;
-	var $ProposalText;
-	var $ProposalCategoryId;
-	var $ProposalCategoryText;
-	var $alreadyVoted = false; // whether the selected user already voted this question ?
-	// statistics storage
-	var $Votes = null;
-	var $Percents = null;
-
-	function __construct( $argv ) {
-		if ( array_key_exists( 'from', $argv ) ) {
-			switch ( $argv[ 'from' ] ) {
-				case 'postdata' :
-						$this->type = $argv[ 'type' ];
-						$this->CommonQuestion = $argv[ 'common_question' ];
-						$this->Categories = $argv[ 'categories' ];
-						$this->CategorySpans = $argv[ 'category_spans' ];
-						$this->ProposalText = $argv[ 'proposal_text' ];
-						$this->ProposalCategoryId = $argv[ 'proposal_category_id' ];
-						$this->ProposalCategoryText = $argv[ 'proposal_category_text' ];
-					break;
-				case 'qid' :
-						$this->question_id = $argv[ 'qid' ];
-						$this->type = $argv[ 'type' ];
-						$this->CommonQuestion = $argv[ 'common_question' ];
-						$this->Categories = Array();
-						$this->CategorySpans = Array();
-						$this->ProposalText = Array();
-						$this->ProposalCategoryId = Array();
-						$this->ProposalCategoryText = Array();
-					break;
-			}
-		}
-	}
-
-	// integrate spans into categories
-	function packSpans() {
-		if ( count( $this->CategorySpans ) > 0 ) {
-			foreach ( $this->Categories as &$Cat ) {
-				if ( array_key_exists( 'spanId', $Cat ) ) {
-					$Cat['name'] = $this->CategorySpans[ $Cat['spanId'] ]['name'] . "\n" . $Cat['name'];
-					unset( $Cat['spanId'] );
-				}
-			}
-			unset( $this->CategorySpans );
-			$this->CategorySpans = Array();
-		}
-	}
-
-	// restore spans from categories
-	function restoreSpans() {
-		if ( count( $this->CategorySpans ) == 0 ) {
-			$prevSpanName = '';
-			$spanId = -1;
-			foreach ( $this->Categories as &$Cat ) {
-				$a = explode( "\n", $Cat['name'] );
-				if ( count( $a ) > 1 ) {
-					if ( $prevSpanName != $a[0] ) {
-						$spanId++;
-						$prevSpanName = $a[0];
-						$this->CategorySpans[ $spanId ]['count'] = 0;
-					}
-					$Cat['name'] = $a[1];
-					$Cat['spanId'] = $spanId;
-					$this->CategorySpans[ $spanId ]['name'] = $a[0];
-					$this->CategorySpans[ $spanId ]['count']++;
-				} else {
-					$prevSpanName = '';
-				}
-			}
-		}
-	}
-
-	// check whether the previousely stored poll header is compatible with the one defined on the page
-	// used to reject previous vote in case the header is incompatble
-	function isCompatible( &$question ) {
-		if ( $question->mType != $this->type ) {
-			return false;
-		}
-		if ( count( $question->mCategorySpans ) != count( $this->CategorySpans ) ) {
-			return false;
-		}
-		foreach ( $question->mCategorySpans as $spanidx => &$span ) {
-			if ( !isset( $this->CategorySpans[ $spanidx ] ) ||
-					$span[ "count" ] != $this->CategorySpans[ $spanidx ][ "count" ] ) {
-				return false;
-			}
-		}
-		return true;
-	}
-
-} /* end of qp_QuestionData class */
-
 /**
  * An interpretation result of user answer to the quiz
  */
@@ -356,6 +252,23 @@ class qp_PollStore {
 		}
 	}
 
+	/**
+	 * qdata instantiator
+	 * Please use it instead of qdata constructors
+	 */
+	static function newQuestionData( $argv ) {
+		switch ( $argv['type'] ) {
+		case 'textQuestion' :
+			return new qp_TextQuestionData( $argv );
+		case 'singleChoice' :
+		case 'multipleChoice' :
+		case 'mixedChoice' :
+			return new qp_QuestionData( $argv );
+		default :
+			throw new MWException( 'Unknown type of question ' . qp_Setup::specialchars( $argv['type'] ) . ' in ' . __METHOD__ );
+		}
+	}
+
 	function getPollId() {
 		return $this->mPollId;
 	}
@@ -427,7 +340,7 @@ class qp_PollStore {
 						$row->type = $typeFromVer0_5[$row->type];
 					}
 					# create a qp_QuestionData object from DB fields
-					$this->Questions[ $question_id ] = new qp_QuestionData( array(
+					$this->Questions[ $question_id ] = self::newQuestionData( array(
 						'from' => 'qid',
 						'qid' => $question_id,
 						'type' => $row->type,

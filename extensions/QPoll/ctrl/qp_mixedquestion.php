@@ -5,7 +5,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 /**
- * A base class for parsing, checking ans visualisation of _mixed_ tabular questions in
+ * A base class for parsing, checking and visualisation of _mixed_ tabular questions in
  * declaration/voting mode (UI input/output)
  */
 class qp_MixedQuestion extends qp_TabularQuestion {
@@ -15,7 +15,6 @@ class qp_MixedQuestion extends qp_TabularQuestion {
 	 * also may be altered during the poll generation
 	 */
 	function parseBody() {
-		# Parameters used in some special cases.
 		$this->mProposalPattern = '`^';
 		foreach ( $this->mCategories as $catDesc ) {
 			$this->mProposalPattern .= '(\[\]|\(\)|<>)';

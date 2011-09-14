@@ -90,9 +90,9 @@ class qp_PollStatsView extends qp_AbstractView {
 		}
 		if ( $this->perRow > 1 ) {
 			$question_table = array( '__tag' => 'table', 0 => array( '__tag' => 'tbody', 0 => &$write_row, '__end' => "\n" ), '__end' => "\n" );
-			return qp_Renderer::renderHTMLobject( $question_table );
+			return qp_Renderer::renderTagArray( $question_table );
 		} else {
-			return qp_Renderer::renderHTMLobject( $write_row );
+			return qp_Renderer::renderTagArray( $write_row );
 		}
 	}
 
@@ -103,7 +103,7 @@ class qp_PollStatsView extends qp_AbstractView {
 	function renderPoll() {
 		# Generates the output.
 		$qpoll_div = array( '__tag' => 'div', 'class' => 'qpoll', 0 => $this->renderQuestionViews() );
-		return qp_Renderer::renderHTMLobject( $qpoll_div );
+		return qp_Renderer::renderTagArray( $qpoll_div );
 	}
 
 } /* end of qp_PollStatsView class */

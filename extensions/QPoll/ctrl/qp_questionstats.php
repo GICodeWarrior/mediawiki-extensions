@@ -4,7 +4,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( "This file is part of the QPoll extension. It is not a valid entry point.\n" );
 }
 
-/* parsing, checking ans visualisation of Question in statistical display mode (UI input/output)
+/**
+ * Parsing, checking and visualisation of Question in statistical display mode (UI output)
  */
 class qp_QuestionStats extends qp_AbstractQuestion {
 
@@ -14,7 +15,7 @@ class qp_QuestionStats extends qp_AbstractQuestion {
 	 * @param  $poll         an instance of question's parent controller
 	 * @param  $view         an instance of question view "linked" to this question
 	 * @param  $type         type of question (taken from DB)
-	 * @param  $questionId   the identifier of the question used to gernerate input names
+	 * @param  $questionId   the identifier of the question used to generate input names
 	 */
 	function __construct( qp_PollStats $poll, qp_QuestionStatsView $view, $type, $questionId ) {
 		parent::__construct( $poll, $view, $questionId );
