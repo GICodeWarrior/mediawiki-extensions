@@ -478,6 +478,16 @@ $messages['lt'] = array(
 	'wikitweet-timeago' => 'prieš $1',
 	'wikitweet-inthefuture' => 'Ateityje!',
 	'wikitweet-fewsecondsago' => 'Prieš keletą sekundžių',
+	'wikitweet-status' => 'Būsena:',
+	'wikitweet-status1' => 'Įvykis',
+	'wikitweet-status2' => 'Įspėjimas',
+	'wikitweet-resolve' => 'išspręsti',
+	'wikitweet-comment' => 'Komentaras',
+	'wikitweet-perperson' => 'Vienam asmeniui',
+	'wikitweet-from' => 'nuo',
+	'wikitweet-in' => 'į',
+	'wikitweet-directlink' => 'Tiesioginė nuoroda:',
+	'wikitweet-mailsent' => 'laiškas išsiųstas',
 );
 
 /** Macedonian (Македонски)
