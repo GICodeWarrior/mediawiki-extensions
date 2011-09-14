@@ -215,11 +215,11 @@ es.ContentView.prototype.drawSelection = function( range ) {
 		this.$rangeEnd.hide();
 	} else {
 		// Multiple line selection
-		var blockWidth = this.$.width();
+		var contentWidth = this.$.width();
 		this.$rangeStart.css( {
 			'top': fromPosition.top,
 			'left': fromPosition.left,
-			'width': blockWidth - fromPosition.left,
+			'width': contentWidth - fromPosition.left,
 			'height': fromPosition.bottom - fromPosition.top
 		} ).show();
 		this.$rangeEnd.css( {
@@ -232,7 +232,7 @@ es.ContentView.prototype.drawSelection = function( range ) {
 			this.$rangeFill.css( {
 				'top': fromPosition.bottom,
 				'left': 0,
-				'width': blockWidth,
+				'width': contentWidth,
 				'height': toPosition.top - fromPosition.bottom
 			} ).show();
 		} else {
