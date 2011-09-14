@@ -2170,7 +2170,7 @@ Consultatz vòstres paramètres de blocatge dels popups.',
  */
 $messages['or'] = array(
 	'ct_bold_sample' => 'ମୋଟା ଲେଖା',
-	'ct_bold_tip_ins' => 'ମୋଟା ଲେଖା ପୁରାଇବେ',
+	'ct_bold_tip_ins' => 'ମୋଟା ଲେଖାଟିଏ ଭରିବେ',
 );
 
 /** Ossetic (Ирон)
