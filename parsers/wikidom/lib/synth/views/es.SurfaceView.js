@@ -74,3 +74,40 @@ es.SurfaceView.prototype.hideCursor = function() {
 	}
 	this.$cursor.hide();
 };
+
+es.SurfaceView.prototype.getLocationFromEvent = function( e ) {
+	var $target = $( e.target ),
+		$block = $target.is( '.editSurface-block' )
+			? $target : $target.closest( '.editSurface-block' );
+	// Not a block or child of a block? Find the nearest block...
+	if ( !$block.length ) {
+		var $blocks = this.$.find( '> .editSurface-document .editSurface-block' );
+		$block = $blocks.first();
+		$blocks.each( function() {
+			// Stop looking when mouse is above top
+			if ( e.pageY <= $(this).offset().top ) {
+				return false;
+			}
+			$block = $(this);
+		} );
+	}
+	var block = $block.data( 'block' ),
+		blockPosition = $block.offset();
+	return new es.Location(
+		block,
+		block.getOffset(
+			new es.Position(
+				e.pageX - blockPosition.left,
+				e.pageY - blockPosition.top
+			)
+		)
+	);
+};
+
+es.SurfaceView.prototype.getLocationFromOffset = function( offset ) {
+	
+};
+
+es.SurfaceView.prototype.getLocationFromPosition = function( position ) {
+	
+};
