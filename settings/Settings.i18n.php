@@ -12984,6 +12984,7 @@ $messages['lb'] = array(
 	'configure-setting-wgNonincludableNamespaces' => 'Nummraim déi net kënnen dragesat ginn',
 	'configure-setting-wgSitemapNamespaces' => "Nummraim déi an d'Sitemap dragesat ginn",
 	'configure-setting-wgCategoryMagicGallery' => 'Eng Minitaturgallerie op Kategoriesäite weisen',
+	'configure-setting-wgCategoryPagingLimit' => 'Maximal Zuel vun Objeten, déi op enger Kategorie-Säit gewise ginn',
 	'configure-setting-wgUseCategoryBrowser' => 'Navigatioun vun de Kategorien aschalten',
 	'configure-setting-wgCheckCopyrightUpload' => 'Copyright-Informatiounen beim Eroplueden nokucken',
 	'configure-setting-wgCopyrightIcon' => 'HTML fir de Copyright-Icon',
