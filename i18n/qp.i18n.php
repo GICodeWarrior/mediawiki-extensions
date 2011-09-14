@@ -596,6 +596,9 @@ $messages['be-tarask'] = array(
 	'qp_error_eval_illegal_function_call' => 'Ключ PHP $1 з функцыяй $2 не дазволены ў радку $3.',
 	'qp_error_eval_variable_variable_access' => 'Ключ PHP $1 са зьменнай $2 не дазволены ў радку $3.',
 	'qp_error_eval_illegal_variable_name' => 'Ключ PHP $1 мае недазволеную назву зьменнай $2 у радку $3.',
+	'qp_error_eval_variable_function_call' => 'Ключ PHP $1 са зьменнай функцыяй $2 не дазволены ў радку $3.',
+	'qp_error_eval_self_check' => 'Наступная самаправерка eval() вярнула памылку: $1. Вы маеце непадтрымліваемую вэрсію PHP, якая не дазваляе запускаць скрыпт eval бясьпечна.',
+	'qp_error_eval_unable_to_lint' => 'Немагчыма праверыць слушнасьць праграмы. Праверце налады Вашай сыстэмы.',
 );
 
 /** Bengali (বাংলা)
@@ -729,7 +732,7 @@ $messages['cs'] = array(
  */
 $messages['de'] = array(
 	'pollresults' => 'Abstimmungsergebnisse auf dieser Seite',
-	'qp_desc' => 'Ermöglicht Abstimmungen',
+	'qp_desc' => 'Ermöglicht die Erstellung von Umfragen',
 	'qp_desc-sp' => '[[Special:PollResults|Spezialseite]] zum Anzeigen von Abstimmungsergebnissen',
 	'qp_result_NA' => 'Nicht beantwortet',
 	'qp_result_error' => 'Syntaxfehler',
@@ -791,9 +794,10 @@ Um die Abstimmung zu speichern, übermittle sie während du nicht auf eine Antra
 	'qp_error_vote_dependance_poll' => 'Bitte erst für $1 abstimmen.',
 	'qp_error_too_many_spans' => 'Zu viele Kategoriegruppen für die Gesamtzahl der Unterkategorien definiert',
 	'qp_error_unanswered_span' => 'Unbeantwortete Unterrubrik',
-	'qp_error_non_unique_choice' => 'Diese Frage benötigt eindeutige Antragsbeantwortung',
+	'qp_error_non_unique_choice' => 'Diese Frage erfordert einen einzelnen Antwortvorschlag.',
 	'qp_error_category_name_empty' => 'Kategoriename ist leer',
 	'qp_error_proposal_text_empty' => 'Vorschlagstext ist leer',
+	'qp_error_too_long_proposal_text' => 'Der Vorschlagstext ist zu lang, um in der Datenbank gespeichert werden zu können',
 	'qp_error_too_few_categories' => 'Es müssen mindestens zwei Kategorien festgelegt werden',
 	'qp_error_too_few_spans' => 'Jede Kategoriengruppe muss mindestens zwei Unterrubriken enthalten',
 	'qp_error_no_answer' => 'Unbeantworteter Vorschlag',
@@ -1614,6 +1618,7 @@ Pro salveguardar un sondage, submitte lo sin responder a alcun question de propo
 	'qp_error_non_unique_choice' => 'Iste question require un responsa de proposition unic',
 	'qp_error_category_name_empty' => 'Le nomine del categoria es vacue',
 	'qp_error_proposal_text_empty' => 'Le texto del proposition es vacue',
+	'qp_error_too_long_proposal_text' => 'Le texto del proposition es troppo longe pro poter esser immagazinate in le base de datos',
 	'qp_error_too_few_categories' => 'Al minus duo categorias debe esser definite',
 	'qp_error_too_few_spans' => 'Cata classe de categoria require le definition de al minus duo responsas possibile',
 	'qp_error_no_answer' => 'Proposition sin responsa',
@@ -1990,6 +1995,7 @@ id-бројот може да содржи само букви, бројки и 
 	'qp_error_non_unique_choice' => 'Ова прашање бара одговор кој не е даден претходно',
 	'qp_error_category_name_empty' => 'Името на категоријата е празно',
 	'qp_error_proposal_text_empty' => 'Текстот за предлог е празен',
+	'qp_error_too_long_proposal_text' => 'Текстот на предлогот е предолг за да може да се складира во базата',
 	'qp_error_too_few_categories' => 'Мора да определите барем две категории',
 	'qp_error_too_few_spans' => 'Секоја класа на категории бара да определите барем два можни одговора',
 	'qp_error_no_answer' => 'Неодговорен предлог',
@@ -2093,6 +2099,7 @@ Sla een peiling op door deze op te slaan zonder dat enig voorstel is beantwoord.
 	'qp_error_non_unique_choice' => 'Voor deze vraag is een uniek voorstelantwoord nodig',
 	'qp_error_category_name_empty' => 'Er is geen categorienaam opgegeven',
 	'qp_error_proposal_text_empty' => 'Er is geen voorsteltekst opgegeven',
+	'qp_error_too_long_proposal_text' => 'Het tekstvoorstel is te lang om opgeslagen te kunnen worden in de database.',
 	'qp_error_too_few_categories' => 'Er moeten tenminste twee categorieën gedefinieerd worden.',
 	'qp_error_too_few_spans' => 'Voor iedere categorieklasse dienen tenminste twee mogelijk antwoorden gedefinieerd te zijn',
 	'qp_error_no_answer' => 'Onbeantwoord voorstel',
