@@ -637,6 +637,10 @@ $messages['oc'] = array(
  * @author Psubhashish
  */
 $messages['or'] = array(
+	'categoryintersection' => 'ଶ୍ରେଣିବିଭାଗ',
+	'categoryintersection-doit' => 'ଏହି ଶ୍ରେଣୀର ସବୁ ପୃଷ୍ଠାର ତାଲିକା ତିଆରିବେ',
+	'categoryintersection-maxcategories' => 'ସବୁଠାରୁ ଅଧିକ ଅନୁମୋଦିତ ଅନ୍ତଚ୍ଛେଦୀ ଶ୍ରେଣୀ ସଂଖ୍ୟା $1 ।',
+	'categoryintersection-mincategories' => 'ଆପଣଙ୍କୁ ଅତି କମରେ ଦୁଇଟି ଶ୍ରେଣି ଏବାକୁ ପଡ଼ିବ ।',
 	'categoryintersection-results' => 'ଆପଣଙ୍କ ଖୋଜା $1 {{PLURAL:$1|result|ଫଳ}} ଫେରାଇଲା ।',
 );
 

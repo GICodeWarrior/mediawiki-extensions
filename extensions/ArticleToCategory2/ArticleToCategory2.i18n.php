@@ -280,6 +280,7 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'articletocategory2-desc' => 'Apond una bouèta d’entrâ sur châque pâge de catègorie que pèrmèt la crèacion d’una pâge novèla tot drêt dens cela catègorie',
 	'articletocategory2-create-article-under-category-text' => 'Apondre una pâge a cela catègorie',
 	'articletocategory2-create-article-under-category-button' => 'Fâre',
 	'articletocategory2-create-category-under-category-text' => 'Apondre una catègorie a cela catègorie',

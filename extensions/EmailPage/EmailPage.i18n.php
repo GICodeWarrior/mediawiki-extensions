@@ -1240,6 +1240,22 @@ $messages['tl'] = array(
 	'ea-allusers' => 'Lahat ng mga tagagamit',
 );
 
+/** Turkish (Türkçe)
+ * @author Emperyan
+ */
+$messages['tr'] = array(
+	'e-mailpage' => 'E-posta sayfası',
+	'ea-error' => "'''[[$1]] gönderme hatası:''' ''$2''",
+	'ea-show' => 'Alıcı listesini görüntüle',
+	'ea-from' => 'Gönderen:',
+	'ea-to' => 'Alıcı:',
+	'ea-send' => 'Gönder',
+	'ea-subject' => 'Konu:',
+	'ea-message' => 'İleti:',
+	'ea-style' => 'Biçim:',
+	'ea-allusers' => 'Tüm kullanıcılar',
+);
+
 /** Ukrainian (Українська)
  * @author Тест
  */

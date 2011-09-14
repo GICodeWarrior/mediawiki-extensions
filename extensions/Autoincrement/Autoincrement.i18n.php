@@ -155,6 +155,13 @@ $messages['fr'] = array(
 	'autoincrement-desc' => "Une variable <nowiki>{{AUTOINCREMENT}}</nowiki> s'incrémentant à chaque appel",
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'autoincrement-desc' => 'Una variâbla <nowiki>{{AUTOINCREMENT}}</nowiki> que s’encrèmente a châque apèl.',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

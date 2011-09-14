@@ -519,6 +519,13 @@ $messages['oc'] = array(
 	'right-userrights-global' => "Gerir los dreches d'utilizaires globals",
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Psubhashish
+ */
+$messages['or'] = array(
+	'gur-rightslog-entry' => '$1 ପାଇଁ ଗୋଠ ବିଶ୍ଵ ସଭ୍ୟ ପଦର ଅବସ୍ଥା $2 ରୁ $3କୁ ବଦଳାଇଦିଆଗଲା',
+);
+
 /** Polish (Polski)
  * @author Leinad
  */

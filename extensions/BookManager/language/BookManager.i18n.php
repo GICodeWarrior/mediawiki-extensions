@@ -236,6 +236,8 @@ $messages['frp'] = array(
 	'bm-randomchapter-link' => 'Chapitro a l’hasârd',
 	'bm-printversion' => 'Vèrsion emprimâbla',
 	'bm-printversion-desc' => 'Fât una [[Special:PrintVersion|vèrsion emprimâbla]] d’un lévro.',
+	'bm-printversion-no-book' => 'Volyéd buchiér lo nom d’un lévro por avêr sa vèrsion emprimâ.',
+	'bm-printversion-inexistent-book' => 'Lévro entrovâblo. Volyéd buchiér lo nom d’un lévro ègzistent por avêr sa vèrsion emprimâ.',
 );
 
 /** Galician (Galego)

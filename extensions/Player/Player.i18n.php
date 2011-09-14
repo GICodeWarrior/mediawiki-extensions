@@ -1341,6 +1341,7 @@ $messages['sk'] = array(
  */
 $messages['sl'] = array(
 	'player' => 'Predvajalnik',
+	'player-desc' => 'Vdelano predvajanje večpredstavnosti z uporabo pogostih vtičnikov brskalnikov in [[Special:Player|posebna stran]]',
 	'player-title' => 'Predvajalnik',
 	'player-playertitle' => 'Predvajalnik: $1',
 	'player-file' => 'Ime datoteke',
