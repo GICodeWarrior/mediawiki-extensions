@@ -44,6 +44,13 @@ $messages['fr'] = array(
 	'automaticboardwelcome-desc' => "Afficher automatiquement [[MediaWiki:User-board-welcome-message|un message d'accueil]] sur les pages utilisateur des nouveaux utilisateurs après leur création",
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'automaticboardwelcome-desc' => 'Mandar ôtomaticament un [[MediaWiki:User-board-welcome-message|mèssâjo de benvegnua]] sur les pâges utilisator ux novéls utilisators aprés lor crèacion',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
