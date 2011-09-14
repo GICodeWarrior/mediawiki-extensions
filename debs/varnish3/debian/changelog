@@ -1,3 +1,9 @@
+varnish3 (3.0.0-1wmf6) lucid; urgency=low
+
+  * make %l log servername instead of always being "-"
+
+ -- Asher Feldman <afledman@wikimedia.org>  Wed, 14 Sep 2011 14:22:22 +7000
+
 varnish3 (3.0.0-1wmf5) lucid; urgency=low
 
   * fix udp/mcast logging

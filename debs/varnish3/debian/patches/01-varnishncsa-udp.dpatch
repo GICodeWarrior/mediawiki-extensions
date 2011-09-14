@@ -2,13 +2,13 @@
 ## 01-varnishncsa-udp.dpatch by  <root@ragweed.knams.wikimedia.org>
 ##
 ## All lines beginning with `## DP:' are a description of the patch.
-## DP: multicast udp logging w/seq numbering
+## DP: add server name to log output, format more like wmf squidlog
 
 @DPATCH@
 
 --- varnish3-3.0.0~/bin/varnishncsa/varnishncsa.c	2011-08-09 23:55:17.000000000 +0000
-+++ varnish3-3.0.0/bin/varnishncsa/varnishncsa.c	2011-08-29 23:07:19.000000000 +0000
-@@ -79,6 +79,13 @@
++++ varnish3-3.0.0/bin/varnishncsa/varnishncsa.c	2011-09-14 21:52:17.000000000 +0000
+@@ -79,6 +79,12 @@
  #include "varnishapi.h"
  #include "base64.h"
  
@@ -18,11 +18,19 @@
 +#include <netdb.h> 
 +
 +static long int sequence_number = 0;
-+
  static volatile sig_atomic_t reopen;
  
  static struct logline {
-@@ -533,6 +540,8 @@
+@@ -111,6 +117,8 @@
+ 
+ static const char *format;
+ 
++struct hostent* h;
++
+ static int
+ isprefix(const char *str, const char *prefix, const char *end,
+     const char **next)
+@@ -533,6 +541,8 @@
  	/* We have a complete data set - log a line */
  
  	fo = priv;
@@ -31,7 +39,16 @@
  
  	for (p = format; *p != '\0'; p++) {
  
-@@ -566,6 +575,10 @@
+@@ -559,13 +569,18 @@
+ 			else
+ 				fprintf(fo, "%s", lp->df_h ? lp->df_h : "-");
+ 			break;
++
+ 		case 'l':
+-			fprintf(fo, "-");
++			fprintf(fo, "%s", h->h_name);
+ 			break;
+ 
  		case 'm':
  			fprintf(fo, "%s", lp->df_m);
  			break;
@@ -42,7 +59,7 @@
  
  		case 'q':
  			fprintf(fo, "%s", lp->df_q ? lp->df_q : "");
-@@ -594,7 +607,7 @@
+@@ -594,7 +609,7 @@
  
  		case 't':
  			/* %t */
@@ -51,7 +68,7 @@
  			fprintf(fo, "%s", tbuf);
  			break;
  
-@@ -695,12 +708,59 @@
+@@ -695,12 +710,59 @@
  open_log(const char *ofn, int append)
  {
  	FILE *of;
@@ -81,9 +98,7 @@
 +        }
 +
 +	bzero((char *) &serv_addr, sizeof(serv_addr));
- 
--	if ((of = fopen(ofn, append ? "a" : "w")) == NULL) {
--		perror(ofn);
++
 +	serv_addr.sin_family = AF_INET;
 +	serv_addr.sin_port = htons(portno);
 +	bcopy((char *)server->h_addr, (char *)&serv_addr.sin_addr.s_addr, 
@@ -100,21 +115,23 @@
 +
 +	if (connect(sockfd,(struct sockaddr *) &serv_addr,sizeof(serv_addr)) < 0) {
 +		perror("socket");
++		exit(1);
++	}
++
++	FILE *sf = fdopen(sockfd, "w");
+ 
+-	if ((of = fopen(ofn, append ? "a" : "w")) == NULL) {
+-		perror(ofn);
++	if (sf == NULL) {
  		exit(1);
  	}
 -	return (of);
-+
-+	FILE *sf = fdopen(sockfd, "w");
-+
-+	if (sf == NULL) {
-+		exit(1);
-+	}
 +
 +        return (sf);
  }
  
  /*--------------------------------------------------------------------*/
-@@ -711,7 +771,7 @@
+@@ -711,7 +773,7 @@
  
  	fprintf(stderr,
  	    "usage: varnishncsa %s [-aDV] [-n varnish_name] "
@@ -123,21 +140,34 @@
  	exit(1);
  }
  
-@@ -724,7 +784,7 @@
+@@ -723,8 +785,9 @@
+ 	const char *P_arg = NULL;
  	const char *w_arg = NULL;
  	struct vpf_fh *pfh = NULL;
++	char hostname[1024];
  	FILE *of;
 -	format = "%h %l %u %t \"%r\" %s %b \"%{Referer}i\" \"%{User-agent}i\"";
-+	format = "%h %n %l %u %t \"%r\" %s %b \"%{Referer}i\" \"%{User-agent}i\"";
++	format = "%l %n %t %{Varnish:time_firstbyte}x %h %{Varnish:handling}x/%s %b %m http://%{Host}i%U%q - - %{Referer}i %{X-Forwarded-For}i %{User-agent}i";
  
  	vd = VSM_New();
  	VSL_Setup(vd);
-@@ -739,7 +799,7 @@
+@@ -739,7 +802,7 @@
  				fprintf(stderr, "-f and -F can not be combined\n");
  				exit(1);
  			}
 -			format = "%{X-Forwarded-For}i %l %u %t \"%r\" %s %b \"%{Referer}i\" \"%{User-agent}i\"";
-+			format = "%{X-Forwarded-For}i %n %l %u %t \"%r\" %s %b \"%{Referer}i\" \"%{User-agent}i\"";
++			format = "%l %n %t %{Varnish:time_firstbyte}x %{X-Forwarded-For} %{Varnish:handling}x/%s %b %m http://%{Host}i%U%q - - %{Referer}i %{X-Forwarded-For}i %{User-agent}i";
  			format_flag = 1;
  			break;
  		case 'F':
+@@ -786,6 +849,10 @@
+ 		}
+ 	}
+ 
++	hostname[1023] = '\0';
++	gethostname(hostname, 1023);
++	h = gethostbyname(hostname);
++
+ 	VSL_Arg(vd, 'c', optarg);
+ 
+ 	if (VSL_Open(vd, 1))
