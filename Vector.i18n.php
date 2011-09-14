@@ -1299,10 +1299,14 @@ Se sètz connectat amb vòstre compte, podètz levar aqueste avertiment dins la 
 
 /** Oriya (ଓଡ଼ିଆ)
  * @author Odisha1
+ * @author Psubhashish
  */
 $messages['or'] = array(
+	'vector-collapsiblenav-preference' => 'ଭେକ୍ଟର ବହିରାବରଣରେ କଡ଼ରେ ଥିବା ପଟିକାର ଚିଜ ସବୁକୁ ଦେଖାଇବା-ଲୁଚାଇବା ସଚଳ କରିବେ',
+	'vector-editwarning-preference' => 'ଯେତେବେଳେ ମୁଁ ଗୋଟିଏ ସାଇତାଯାଇନଥିବା ପୃଷ୍ଠାକୁ ବନ୍ଦ କରିଦିଏ ମୋତେ ଚେତାବନୀ ଦେବେ',
 	'vector-simplesearch-search' => 'ଖୋଜିବା',
 	'vector-simplesearch-containing' => 'ଧାରଣ ହେଉଛି...',
+	'vector-noexperiments-preference' => 'ସୁବିଧାର ପରଖରୁ ମୋତେ ବାହାର କରିବେ',
 );
 
 /** Deitsch (Deitsch)
