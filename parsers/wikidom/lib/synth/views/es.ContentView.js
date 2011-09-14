@@ -44,6 +44,11 @@ es.ContentView = function( $container, model ) {
 	this.model.on( 'clear', render );
 	this.model.on( 'annotate', render );
 	this.scanBoundaries();
+	
+	this.$ranges = $( '<div class="editSurface-ranges"></div>' ).prependTo( this.$ );
+	this.$rangeStart = $( '<div class="editSurface-range"></div>' ).appendTo( this.$ranges );
+	this.$rangeFill = $( '<div class="editSurface-range"></div>' ).appendTo( this.$ranges );
+	this.$rangeEnd = $( '<div class="editSurface-range"></div>' ).appendTo( this.$ranges );
 };
 
 /* Static Members */
@@ -188,6 +193,52 @@ es.ContentView.renderAnnotation = function( bias, annotation, stack ) {
 		}
 	}
 	return out;
+};
+
+es.ContentView.prototype.drawSelection = function( range ) {
+	range.normalize();
+
+	var fromLineIndex = this.getLineIndex( range.start ),
+		toLineIndex = this.getLineIndex( range.end ),
+		fromPosition = this.getPosition( range.start ),
+		toPosition = this.getPosition( range.end );
+	
+	if ( fromLineIndex === toLineIndex ) {
+		// Single line selection
+		this.$rangeStart.css( {
+			'top': fromPosition.top,
+			'left': fromPosition.left,
+			'width': toPosition.left - fromPosition.left,
+			'height': fromPosition.bottom - fromPosition.top
+		} ).show();
+		this.$rangeFill.hide();
+		this.$rangeEnd.hide();
+	} else {
+		// Multiple line selection
+		var blockWidth = this.$.width();
+		this.$rangeStart.css( {
+			'top': fromPosition.top,
+			'left': fromPosition.left,
+			'width': blockWidth - fromPosition.left,
+			'height': fromPosition.bottom - fromPosition.top
+		} ).show();
+		this.$rangeEnd.css( {
+			'top': toPosition.top,
+			'left': 0,
+			'width': toPosition.left,
+			'height': toPosition.bottom - toPosition.top
+		} ).show();
+		if ( fromLineIndex + 1 < toLineIndex ) {
+			this.$rangeFill.css( {
+				'top': fromPosition.bottom,
+				'left': 0,
+				'width': blockWidth,
+				'height': toPosition.top - fromPosition.bottom
+			} ).show();
+		} else {
+			this.$rangeFill.hide();
+		}
+	}
 };
 
 es.ContentView.prototype.getLineIndex = function( offset ) {
