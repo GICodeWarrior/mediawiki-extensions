@@ -138,21 +138,30 @@ class qp_Setup {
 
 	static $questionTypes = array(
 		'mixed' => array(
-			'className' => 'qp_MixedQuestion',
+			'ctrl' => 'qp_MixedQuestion',
+			'view' => 'qp_TabularQuestionView',
 			'mType' => 'mixedChoice'
 		),
 		'unique()' => array(
-			'className' => 'qp_TabularQuestion',
+			'ctrl' => 'qp_TabularQuestion',
+			'view' => 'qp_TabularQuestionView',
 			'mType' => 'singleChoice',
 			'mSubType' => 'unique'
 		),
 		'()' => array(
-			'className' => 'qp_TabularQuestion',
+			'ctrl' => 'qp_TabularQuestion',
+			'view' => 'qp_TabularQuestionView',
 			'mType' => 'singleChoice'
 		),
 		'[]' => array(
-			'className' => 'qp_TabularQuestion',
+			'ctrl' => 'qp_TabularQuestion',
+			'view' => 'qp_TabularQuestionView',
 			'mType' => 'multipleChoice'
+		),
+		'text' => array(
+			'ctrl' => 'qp_TextQuestion',
+			'view' => 'qp_TextQuestionView',
+			'mType' => 'textQuestion'
 		)
 	);
 
@@ -276,6 +285,7 @@ class qp_Setup {
 			'ctrl/qp_stubquestion.php' => 'qp_StubQuestion',
 			'ctrl/qp_tabularquestion.php' => 'qp_TabularQuestion',
 			'ctrl/qp_mixedquestion.php' => 'qp_MixedQuestion',
+			'ctrl/qp_textquestion.php' => 'qp_TextQuestion',
 			'ctrl/qp_questionstats.php' => 'qp_QuestionStats',
 
 			## views are derived from single generic class
@@ -283,14 +293,21 @@ class qp_Setup {
 			# generic
 			'view/qp_abstractview.php' => 'qp_AbstractView',
 			# questions
-			'view/qp_questionview.php' => 'qp_QuestionView',
+			'view/qp_stubquestionview.php' => 'qp_StubQuestionView',
+			'view/qp_tabularquestionview.php' => 'qp_TabularQuestionView',
+			'view/qp_textquestionview.php' => 'qp_TextQuestionViewTokens',
+			'view/qp_textquestionview.php' => 'qp_TextQuestionView',
 			'view/qp_questionstatsview.php' => 'qp_QuestionStatsView',
 			# polls
 			'view/qp_pollview.php' => 'qp_PollView',
 			'view/qp_pollstatsview.php' => 'qp_PollStatsView',
 
-			# storage
-			'qp_pollstore.php' => array( 'qp_QuestionData', 'qp_InterpResult', 'qp_PollStore' ),
+			# poll storage
+			'qp_pollstore.php' => array( 'qp_InterpResult', 'qp_PollStore' ),
+
+			# question storage and page result question views
+			# (combined question storage & view)
+			'qp_questiondata.php' => array( 'qp_QuestionData', 'qp_TextQuestionData' ),
 
 			# results page
 			'qp_results.php' => array( 'qp_SpecialPage', 'qp_QueryPage', 'PollResults' ),
@@ -565,7 +582,7 @@ class qp_Setup {
 		$out[0][] = array( '__tag' => 'div', 'class' => 'script_view', qp_Setup::specialchars( $input ) . "\n" );
 		$markercount = count( self::$markerList );
 		$marker = "!qpoll-script-view{$markercount}-qpoll!";
-		self::$markerList[$markercount] = qp_Renderer::renderHTMLobject( $out );
+		self::$markerList[$markercount] = qp_Renderer::renderTagArray( $out );
 		return $marker;
 	}
 
@@ -601,10 +618,26 @@ class qp_Setup {
 
 /* renders output data */
 class qp_Renderer {
-	# the stucture of $tag is like this:
-	# array( "__tag"=>"td", "class"=>"myclass", 0=>"text before li", 1=>array( "__tag"=>"li", 0=>"text inside li" ), 2=>"text after li" )
-	# both tagged and tagless lists are supported
-	static function renderHTMLobject( &$tag ) {
+
+	static function tagError( $msg, &$tag ) {
+		ob_start();
+		var_dump( $tag );
+		$tagdump = ob_get_contents();
+		ob_end_clean();
+		return "<u>invalid argument: " . qp_Setup::specialchars( $msg ) . "</u> <pre>{$tagdump}</pre>";
+	}
+
+	/**
+	 * Renders nested tag array into string
+	 * @param   $tag  multidimensional array of xml/html tags
+	 * @return  string  representation of xml/html
+	 *
+	 * the stucture of $tag is like this:
+	 * array( "__tag"=>"td", "class"=>"myclass", 0=>"text before li", 1=>array( "__tag"=>"li", 0=>"text inside li" ), 2=>"text after li" )
+	 *
+	 * both tagged and tagless lists are supported
+	 */
+	static function renderTagArray( &$tag ) {
 		$tag_open = "";
 		$tag_close = "";
 		$tag_val = null;
@@ -612,20 +645,23 @@ class qp_Renderer {
 			ksort( $tag );
 			if ( array_key_exists( '__tag', $tag ) ) {
 				# list inside of tag
-				$tag_open .= "<" . $tag[ '__tag' ];
+				$tag_open .= "<" . $tag['__tag'];
 				foreach ( $tag as $attr_key => &$attr_val ) {
 					if ( is_int( $attr_key ) ) {
 						if ( $tag_val === null )
 							$tag_val = "";
 						if ( is_array( $attr_val ) ) {
 							# recursive tags
-							$tag_val .= self::renderHTMLobject( $attr_val );
+							$tag_val .= self::renderTagArray( $attr_val );
 						} else {
 							# text
 							$tag_val .= $attr_val;
 						}
 					} else {
 						# string keys are for tag attributes
+						if ( is_array( $attr_val ) || is_object( $attr_val ) || is_null( $attr_val ) ) {
+							return self::tagError( "tagged list attribute key '{$attr_key}' should have scalar value", $tag );
+						}
 						if ( substr( $attr_key, 0, 2 ) != "__" ) {
 							# include only non-reserved attributes
 							$tag_open .= " $attr_key=\"" . $attr_val . "\"";
@@ -648,17 +684,13 @@ class qp_Renderer {
 					if ( is_int( $attr_key ) ) {
 						if ( is_array( $attr_val ) ) {
 							# recursive tags
-							$tag_val .= self::renderHTMLobject( $attr_val );
+							$tag_val .= self::renderTagArray( $attr_val );
 						} else {
 							# text
 							$tag_val .= $attr_val;
 						}
 					} else {
-						ob_start();
-						var_dump( $tag );
-						$tagdump = ob_get_contents();
-						ob_end_clean();
-						$tag_val = "invalid argument: tagless list cannot have tag attribute values in key=$attr_key, $tagdump";
+						$tag_val = self::tagError( "tagless list cannot have tag attribute values in key=$attr_key", $tag );
 					}
 				}
 			}
@@ -670,7 +702,7 @@ class qp_Renderer {
 	}
 
 	/**
-	 * add one or more of CSS class names to tag class attribute
+	 * add one or more CSS class name to tag class attribute
 	 */
 	static function addClass( &$tag, $className ) {
 		if ( !isset( $tag['class'] ) ) {
@@ -682,9 +714,15 @@ class qp_Renderer {
 		}
 	}
 
-	# creates one "htmlobject" row of the table
-	# elements of $row can be either a string/number value of cell or an array( "count"=>colspannum, "attribute"=>value, 0=>html_inside_tag )
-	# attribute maps can be like this: ("name"=>0, "count"=>colspan" )
+	/**
+	 * Creates one tagarray row of the table
+	 * @param  $row  a string/number value of cell or
+	 *               an array( "count"=>colspannum, "attribute"=>value, 0=>html_inside_tag )
+	 * @param  $rowattrs  array key val of new xml attributes to add to every destination cell
+	 * @param  $attribute maps  array with mapping of source cell xml attributes to
+	 * destination cell xml attributes ("name"=>0, "count"=>colspan" )
+	 * @return array of destination cells
+	 */
 	static function newRow( $row, $rowattrs = "", $celltag = "td", $attribute_maps = null ) {
 		$result = "";
 		if ( count( $row ) > 0 ) {
@@ -692,8 +730,8 @@ class qp_Renderer {
 				if ( !is_array( $cell ) ) {
 					$cell = array( 0 => $cell );
 				}
-				$cell[ '__tag' ] = $celltag;
-				$cell[ '__end' ] = "\n";
+				$cell['__tag'] = $celltag;
+				$cell['__end'] = "\n";
 				if ( is_array( $attribute_maps ) ) {
 					# converts ("count"=>3) to ("colspan"=>3) in table headers - don't use frequently
 					foreach ( $attribute_maps as $key => $val ) {
@@ -714,12 +752,18 @@ class qp_Renderer {
 		return $result;
 	}
 
-	# add row to the table
+	/**
+	 * Add row to the table
+	 * todo: document
+	 */
 	static function addRow( &$table, $row, $rowattrs = "", $celltag = "td", $attribute_maps = null ) {
 		$table[] = self::newRow( $row, $rowattrs, $celltag, $attribute_maps );
 	}
 
-	# add column to the table
+	/**
+	 * Add column to the table
+	 * todo: document
+	 */
 	static function addColumn( &$table, $column, $rowattrs = "", $celltag = "td", $attribute_maps = null ) {
 		if ( count( $column ) > 0 ) {
 			$row = 0;
@@ -760,11 +804,13 @@ class qp_Renderer {
 	static function displayRow( $row, $rowattrs = "", $celltag = "td", $attribute_maps = null ) {
 		# temporary var $tagsrow used to avoid warning in E_STRICT mode
 		$tagsrow = self::newRow( $row, $rowattrs, $celltag, $attribute_maps );
-		return self::renderHTMLobject( $tagsrow );
+		return self::renderTagArray( $tagsrow );
 	}
 
-	// use newRow() or addColumn() to add resulting row/column to the table
-	// if you want to use the resulting row with renderHTMLobject(), don't forget to apply attrs=array('__tag'=>'td')
+	/**
+	 * use newRow() or addColumn() to add resulting row/column to the table
+	 * if you want to use the resulting row with renderTagArray(), don't forget to apply attrs=array('__tag'=>'td')
+	 */
 	static function applyAttrsToRow( &$row, $attrs ) {
 		if ( is_array( $attrs ) && count( $attrs > 0 ) ) {
 			foreach ( $row as &$cell ) {

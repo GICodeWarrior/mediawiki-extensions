@@ -19,6 +19,17 @@ class qp_StubQuestion extends qp_AbstractQuestion {
 	var $mPrevProposalCategoryId = Array(); // user true/false answers to the question's proposal from DB
 	var $mPrevProposalCategoryText = Array(); // user text answers to the question's proposal from DB
 
+	/**
+	 * Constructor
+	 * @public
+	 * @param  $poll            an instance of question's parent controller
+	 * @param  $view            an instance of question view "linked" to this question
+	 * @param  $questionId      the identifier of the question used to generate input names
+	 */
+	function __construct( qp_AbstractPoll $poll, qp_AbstractView $view, $questionId ) {
+		parent::__construct( $poll, $view, $questionId );
+	}
+
 	# load some question fields from qp_QuestionData given
 	# (usually qp_QuestionData is an array property of qp_PollStore instance)
 	# @param   $qdata - an instance of qp_QuestionData
@@ -80,7 +91,7 @@ class qp_StubQuestion extends qp_AbstractQuestion {
 	# @param   the object of type qp_PollStore
 	function store( qp_PollStore &$pollStore ) {
 		if ( $pollStore->pid !== null ) {
-			$pollStore->Questions[ $this->mQuestionId ] = new qp_QuestionData( array(
+			$pollStore->Questions[ $this->mQuestionId ] = qp_PollStore::newQuestionData( array(
 				'from' => 'postdata',
 				'type' => $this->mType,
 				'common_question' => $this->mCommonQuestion,

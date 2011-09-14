@@ -6,5 +6,7 @@
 .qpoll table.pollresults td.stats {background-color: Azure;}
 .qpoll table.pollresults td.spaneven {background-color: Aquamarine;}
 .qpoll table.pollresults td.spanodd {background-color: Moccasin;}
+.qpoll .cat_part { background-color: Lightyellow; border: 1px solid gray; padding: 0 0.5em 0 0.5em; }
+.qpoll .cat_unknown { color: white; background-color: IndianRed; border: 1px solid gray; padding: 0 0.5em 0 0.5em; }
 .qpoll .interp_answer { border: 1px solid gray; padding: 0; margin: 0; color: black; background-color: lightgray; font-weight:bold; line-height:2em; }
 .qpoll .interp_answer_body { border: none; border-top: 1px solid gray; padding: 0.5em; margin-top: 0; color: black; background-color: Azure; font-weight: normal; line-height:normal; }

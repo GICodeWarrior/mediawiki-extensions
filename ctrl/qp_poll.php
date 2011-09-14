@@ -380,7 +380,7 @@ class qp_Poll extends qp_AbstractPoll {
 		if ( $error_msg !== '' ) {
 			$question = new qp_StubQuestion(
 				$this,
-				qp_QuestionView::newFromBaseView( $this->view ),
+				qp_StubQuestionView::newFromBaseView( $this->view ),
 				++$this->mQuestionId
 			);
 			$question->setState( 'error', $error_msg );
@@ -388,9 +388,9 @@ class qp_Poll extends qp_AbstractPoll {
 		}
 
 		$qt = qp_Setup::$questionTypes[$type];
-		$question = new $qt['className'](
+		$question = new $qt['ctrl'](
 			$this,
-			qp_QuestionView::newFromBaseView( $this->view ),
+			call_user_func( array( $qt['view'], 'newFromBaseView' ), $this->view ),
 			++$this->mQuestionId
 		);
 		# set the question type and subtype corresponding to the header 'type' attribute
@@ -435,7 +435,7 @@ class qp_Poll extends qp_AbstractPoll {
 	/**
 	 * Populates the question with data and builds question->view
 	 */
-	function parseQuestionBody( qp_AbstractQuestion $question ) {
+	function parseQuestionBody( qp_StubQuestion $question ) {
 		if ( $question->getState() == 'error' ) {
 			# error occured during the previously performed header parsing, do not process further
 			$question->view->addHeaderError();

@@ -88,9 +88,9 @@ class qp_PollView extends qp_AbstractView {
 		}
 		if ( $this->perRow > 1 ) {
 			$question_table = array( '__tag' => 'table', 0 => array( '__tag' => 'tbody', 0 => &$write_row, '__end' => "\n" ), '__end' => "\n" );
-			return qp_Renderer::renderHTMLobject( $question_table );
+			return qp_Renderer::renderTagArray( $question_table );
 		} else {
-			return qp_Renderer::renderHTMLobject( $write_row );
+			return qp_Renderer::renderTagArray( $write_row );
 		}
 	}
 
@@ -112,7 +112,7 @@ class qp_PollView extends qp_AbstractView {
 			$qpoll_div[] = array( '__tag' => 'div', 'class' => 'interp_answer', qp_Setup::specialchars( $longAnswer ) );
 		}
 		# create voting form and fill it with messages and inputs
-		$qpoll_form = array( '__tag' => 'form', 'method' => 'post', 'action' => $this->ctrl->getPollTitleFragment(), '__end' => "\n" );
+		$qpoll_form = array( '__tag' => 'form', 'method' => 'post', 'action' => $this->ctrl->getPollTitleFragment(), 'autocomplete' => 'off', '__end' => "\n" );
 		$qpoll_div[] = &$qpoll_form;
 		# Determine the content of the settings table.
 		$settings = Array();
@@ -163,7 +163,7 @@ class qp_PollView extends qp_AbstractView {
 		}
 
 		$qpoll_form[] = &$p;
-		return qp_Renderer::renderHTMLobject( $qpoll_div );
+		return qp_Renderer::renderTagArray( $qpoll_div );
 	}
 
 } /* end of qp_PollView class */

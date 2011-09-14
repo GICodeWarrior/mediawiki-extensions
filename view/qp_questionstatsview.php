@@ -42,10 +42,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * allows to modify these for quizes results at the later stage (see qp_poll.php)
  * todo: transfer view logic completely from controllers
  */
-class qp_QuestionStatsView extends qp_QuestionView {
+class qp_QuestionStatsView extends qp_TabularQuestionView {
 
 	static function newFromBaseView( $view ) {
-		return new qp_QuestionStatsView( $view->parser, $view->ppframe, $view->showResults );
+		return new self( $view->parser, $view->ppframe, $view->showResults );
 	}
 
 	function isCompatibleController( $ctrl ) {
@@ -96,7 +96,7 @@ class qp_QuestionStatsView extends qp_QuestionView {
 			$this->cellTemplateParam['percents'] = $percents . '%';
 			# template has to be rendered immediately, because $this->cellTemplateParam[] are used as pointers and thus,
 			# will always be overwritten
-			return QP_Renderer::renderHTMLobject( $this->cellTemplate );
+			return QP_Renderer::renderTagArray( $this->cellTemplate );
 		} else {
 			return '';
 		}
@@ -141,7 +141,7 @@ class qp_QuestionStatsView extends qp_QuestionView {
 			$this->cellTemplateParam['percents'] = $percents . '%';
 			$this->cellTemplateParam['bar1style'] = 'width:' . $percents . 'px;' . $this->cellTemplate[ 'bar1showres' ];
 			$this->cellTemplateParam['bar2style'] = 'width:' . ( 100 - $percents ) . 'px;' . $this->cellTemplate[ 'bar2showres' ];
-			return qp_Renderer::renderHTMLobject( $this->cellTemplate['bar'] );
+			return qp_Renderer::renderTagArray( $this->cellTemplate['bar'] );
 		} else {
 			return '';
 		}

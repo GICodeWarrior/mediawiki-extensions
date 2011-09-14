@@ -34,14 +34,15 @@
 
 (function() {
 	function uniqueRadioButtonColumn() {
-// uq1c2p2
+		// example of input id: 'uq1c2p2'
 		var propId, inp;
 		var id = new String( this.getAttribute('id') );
-// IE split is really buggy, so we have to search for p letter instead, was:
-//  var params = id.split('/(uq\d{1,}?c\d{1,}?p)(\d{1,}?)/g');
-//  if ( params !== null && params[1] !== null && params[2] != null ) {
-//    var currPropId = parseInt( params[2] );
-//    var basepart = params[1];
+		// IE split is really buggy, so we have to search for p letter instead, was:
+		// var params = id.split('/(uq\d{1,}?c\d{1,}?p)(\d{1,}?)/g');
+		// if ( params !== null && params[1] !== null && params[2] != null ) {
+		//   var currPropId = parseInt( params[2] );
+		//   var basepart = params[1];
+		//   ...
 		var p = id.indexOf( 'p' ) + 1;
 		var currPropId = parseInt( id.substring( p ) );
 		var basepart = id.substring( 0, p );
@@ -55,7 +56,7 @@
 	}
 
 	function clickMixedRow() {
-// mx1p2c2
+		// example of input id: 'mx1p2c2'
 		var catId, inp;
 		var id = new String( this.getAttribute('id') );
 		var c = id.indexOf( 'c' ) + 1;
@@ -79,33 +80,54 @@
 			}
 		}
 	}
+
+	function clickPrefilledText() {
+		if ( this.className === 'cat_prefilled' ) {
+			this.select();
+			this.className = 'cat_part';
+		}
+	}
+
 	/**
 	 * Prepare the Poll for "javascriptable" browsers
 	 */
 	function preparePoll() {
-		var bodyContentDiv = document.getElementById('bodyContent').getElementsByTagName('div');
+		var bodyContentDiv = document.getElementById( 'bodyContent' ).getElementsByTagName( 'div' );
 		var inputFuncId;
-		for(var i=0; i<bodyContentDiv.length; ++i) {
-			if(bodyContentDiv[i].className == 'qpoll') {
-				var input = bodyContentDiv[i].getElementsByTagName('input');
-				for(var j=0; j<input.length; ++j) {
+		for ( var i=0; i<bodyContentDiv.length; ++i ) {
+			if ( bodyContentDiv[i].className == 'qpoll' ) {
+				var input = bodyContentDiv[i].getElementsByTagName( 'input' );
+				for ( var j=0; j<input.length; ++j ) {
 					if ( input[j].id ) {
+						// only unique or mixed questions currently have id
 						inputFuncId = new String( input[j].id ).slice( 0, 2 );
 						switch ( inputFuncId ) {
-							case "uq":
-								if ( input[j].type == "radio" ) {
-									// unset the column of radiobuttons in case of unique proposal
-									addEvent( input[j], "click", uniqueRadioButtonColumn );
-								}
+						case "uq":
+							if ( input[j].type == "radio" ) {
+								// unset the column of radiobuttons in case of unique proposal
+								addEvent( input[j], "click", uniqueRadioButtonColumn );
+							}
 							break;
-							case "mx":
-								// unset the row of checkboxes in case of "mixed" question type
- 								addEvent( input[j], "click", clickMixedRow );
+						case "mx":
+							// unset the row of checkboxes in case of "mixed" question type
+							addEvent( input[j], "click", clickMixedRow );
 							break;
 						}
 					} else {
-						// Add the possibility of unchecking radio buttons
-						addEvent(input[j],"dblclick", function() { this.checked = false; });
+						// check non-unique, non-mixed tabular questions and
+						// text questions
+						switch ( input[j].getAttribute( 'type' ) ) {
+						case 'radio' :
+							// Add the possibility of unchecking radio buttons
+							addEvent( input[j], "dblclick", function() { this.checked = false; } );
+							break;
+						case 'text' :
+							if ( input[j].className === 'cat_prefilled' ) {
+								// Add the handler to clear prefilled text
+								addEvent( input[j], "click", clickPrefilledText );
+							}
+							break;
+						}
 					}
 				}
 			}

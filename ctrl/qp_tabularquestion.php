@@ -5,19 +5,29 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 /**
- * A base class for parsing, checking ans visualisation of tabular/mixed questions in
+ * A base class for parsing, checking and visualisation of tabular questions in
  * declaration/voting mode (UI input/output)
  */
 class qp_TabularQuestion extends qp_StubQuestion {
 
-	# build categories and spans internal & visual representations according to
-	# definition of categories and spans (AKA metacategories) in the question body
-	# @param   $input - the text of question body
-	#
-	# internally, the header is split into
-	#   main header (part inside curly braces) and
-	#   body header (categories and metacategories defitions)
-	#
+	/**
+	 * Constructor
+	 * @public
+	 * @param  $poll            an instance of question's parent controller
+	 * @param  $view            an instance of question view "linked" to this question
+	 * @param  $questionId      the identifier of the question used to generate input names
+	 */
+	function __construct( qp_AbstractPoll $poll, qp_AbstractView $view, $questionId ) {
+		parent::__construct( $poll, $view, $questionId );
+		$this->mProposalPattern = '`^[^\|\!].*`u';
+		$this->mCategoryPattern 	= '`^\|(\n|[^\|].*\n)`u';
+	}
+
+	/**
+	 * Builds internal & visual representations of categories and spans according to their
+	 * text definition in the question body
+	 * @param   $input - the text of question body
+	 */
 	function parseBodyHeader( $input ) {
 		$this->raws = preg_split( '`\n`su', $input, -1, PREG_SPLIT_NO_EMPTY );
 		$categorySpans = false;
@@ -119,7 +129,7 @@ class qp_TabularQuestion extends qp_StubQuestion {
 	 * @param  $input			the raw source of category spans
 	 */
 	# warning: parseCategorySpans() should be called after parseCategories()
-	# todo: split view logic into qp_QuestionView class
+	# todo: split view logic into the associated view class
 	function parseCategorySpans( $input ) {
 		$row = array();
 		if ( $this->mType != 'singleChoice' ) {
@@ -257,7 +267,6 @@ class qp_TabularQuestion extends qp_StubQuestion {
 	 * also may be altered during the poll generation
 	 */
 	function questionParseBody( $inputType ) {
-		# Parameters used in some special cases.
 		$proposalId = -1;
 		foreach ( $this->raws as $raw ) {
 			if ( !preg_match( $this->mProposalPattern, $raw, $matches ) ) {

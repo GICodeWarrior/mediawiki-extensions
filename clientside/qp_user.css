@@ -9,7 +9,8 @@
 .qpoll table.object .spans { color:gray; }
 .qpoll table.object .categories { color:#444455; }
 .qpoll table.object .proposal { }
-.qpoll .proposalerror { color:red; font-weight:600; }
+.qpoll span.proposalerror { color:red; font-weight:600; }
+.qpoll tr.proposalerror { background-color: Snow; }
 .qpoll .settings td { padding: 0.1em 0.4em 0.1em 0.4em }
 .qpoll table.settings { background-color:transparent; }
 /* Part for the basic types's inputs. */
@@ -34,8 +35,9 @@
 .qpoll a.input span { outline:#7F9DB9 solid 1px; border:1px solid #7F9DB9; } /* *border is for IE6/7 star is removed due to ff console error */
 .qpoll .interp_error { border: 2px solid gray; padding: 0.5em; color: white; background-color: red; }
 .qpoll .interp_answer { border: 2px solid gray; padding: 0.5em; color: black; background-color: lightblue; }
-
-.qpoll .cell_errror { background-color: #D700D7; }
+.qpoll .cat_prefilled { color: blue; }
+.qpoll .cat_noanswer { background-color: LightYellow; }
+.qpoll .cell_error { background-color: #D700D7; }
 
 /* script view */
 .qpoll .line_numbers { font-family: monospace, "Courier New"; white-space:pre; color:green; background-color: lightgray; float:left; border-left: 1px solid darkgray; border-top: 1px solid darkgray; border-bottom: 1px solid darkgray; padding: 0.5em; }

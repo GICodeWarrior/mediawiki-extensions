@@ -43,10 +43,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * todo: transfer view logic completely from controllers
  */
 
-class qp_QuestionView extends qp_AbstractView {
+class qp_TabularQuestionView extends qp_StubQuestionView {
 
-	# error message which occured during the question header parsing that will be output later at rendering stage
-	var $headerErrorMessage = 'Unknown error';
 	# display layout
 	var $proposalsFirst = false;
 	var $transposed = false;
@@ -69,10 +67,6 @@ class qp_QuestionView extends qp_AbstractView {
 	var $spanState;
 	# end of proposalView
 
-	var $hview = array();
-	# proposal views (indexed, sortable rows)
-	var $pview = array();
-
 	/**
 	 * @param $parser
 	 * @param $frame
@@ -94,11 +88,7 @@ class qp_QuestionView extends qp_AbstractView {
 	}
 
 	static function newFromBaseView( $baseView ) {
-		return new qp_QuestionView( $baseView->parser, $baseView->ppframe, $baseView->showResults );
-	}
-
-	function isCompatibleController( $ctrl ) {
-		return method_exists( $ctrl, 'parseBody' );
+		return new self( $baseView->parser, $baseView->ppframe, $baseView->showResults );
 	}
 
 	function setLayout( $layout, $textwidth ) {
@@ -193,32 +183,6 @@ class qp_QuestionView extends qp_AbstractView {
 	}
 
 	/**
-	 * @param $tagarray  array / string tags to add to the question's header
-	 */
-	function addHeader( $tagarray ) {
-		# todo: replace all the occurencies of 'htmlobject' to 'tagarray'
-		$this->hview[] = $tagarray;
-	}
-
-	function addHeaderError() {
-		$this->hview[] = array( '__tag' => 'div', 'class' => 'proposalerror', $this->headerErrorMessage );
-	}
-
-	/**
-	 * Adds table header row to question's view
-	 * @param $row             tagarray representation of row
-	 * @param $className       CSS class name of row
-	 * @param $attribute_maps  translation of source attributes into html attributes (see qp_Renderer class)
-	 */
-	function addHeaderRow( $row, $className, $attribute_maps = null ) {
-		$this->hview[] = (object) array(
-			'row' => $row,
-			'className' => $className,
-			'attribute_maps' => $attribute_maps
-		);
-	}
-
-	/**
 	 * Adds category spans row to question's view
 	 */
 	function addSpanRow( $row ) {
@@ -259,28 +223,6 @@ class qp_QuestionView extends qp_AbstractView {
 			'row' => $row,
 			'className' => $this->rawClass
 		);
-	}
-
-	/**
-	 * Outputs question body parser error/warning message; also set new controller state
-	 * @param    $msg - text of message
-	 * @param    $state - set new question controller state
-	 *               note that the 'error' state cannot be changed and '' state cannot be set
-	 * @param    $rawClass - string set rawClass value or false (do not set)
-	 */
-	function bodyErrorMessage( $msg, $state, $rawClass = 'proposalerror' ) {
-		$prev_state = $this->ctrl->getState();
-		# do not clear previous errors (do not call setState() when $state == '')
-		if ( $state != '' ) {
-			$this->ctrl->setState( $state, $msg );
-		}
-		# return the message only for the first error occured
-		# (this one has to be short, because title attribute is being used)
-		if ( is_string( $rawClass ) ) {
-			$this->rawClass = $rawClass;
-		}
-		# show only the first error, when the state is not clean (not '')
-		return ( $prev_state == '' ) ? '<span class="proposalerror" title="' . qp_Setup::specialchars( $msg ) . '">???</span> ' : '';
 	}
 
 	/**
@@ -340,25 +282,9 @@ class qp_QuestionView extends qp_AbstractView {
 	}
 
 	/**
-	 * Render script-generated proposal errors, when available (quiz mode)
-	 * Note: not being called in stats mode
-	 */
-	function renderInterpErrors() {
-		if ( ( $propErrors = $this->ctrl->getProposalsErrors() ) === false ) {
-			return;
-		}
-		foreach ( $this->pview as $prop_id => &$propview ) {
-			if ( isset( $propErrors[$prop_id] ) ) {
-				$msg = is_string( $propErrors[$prop_id] ) ? $propErrors[$prop_id] : wfMsg( 'qp_interpetation_wrong_answer' );
-				$propview->text = $this->bodyErrorMessage( $msg, '', false ) . $propview->text;
-			}
-		}
-	}
-
-	/**
 	 * Renders question table with header and proposal views
 	 */
-	private function renderTable() {
+	function renderTable() {
 		$questionTable = array();
 		# add header views to $questionTable
 		foreach ( $this->hview as $header ) {
@@ -398,33 +324,6 @@ class qp_QuestionView extends qp_AbstractView {
 			}
 		}
 		return $questionTable;
-	}
-
-	/**
-	 * todo: unfortunately, rendering the question also conditionally modifies state of poll controller
-	 * @modifies parent controller
-	 */
-	function renderQuestion() {
-		$output_table = array( '__tag' => 'table', '__end' => "\n", 'class' => 'object' );
-		# Determine the side border color the question.
-		if ( $this->ctrl->getState() != '' ) {
-			if ( isset( $output_table['class'] ) ) {
-				$output_table['class'] .= ' error_mark';
-			} else {
-				$output_table['class'] = 'error_mark';
-			}
-			# set poll controller state according to question controller state
-			$this->ctrl->applyStateToParent();
-		}
-		$output_table[] = array( '__tag' => 'tbody', '__end' => "\n", 0 => $this->renderTable() );
-		$tags = array( '__tag' => 'div', '__end' => "\n", 'class' => 'question',
-			0 => array( '__tag' => 'div', '__end' => "\n", 'class' => 'header',
-				0 => array( '__tag' => 'span', 'class' => 'questionId', 0 => $this->ctrl->usedId )
-			),
-			1 => array( '__tag' => 'div', 0 => $this->rtp( $this->ctrl->mCommonQuestion ) )
-		);
-		$tags[] = &$output_table;
-		return qp_Renderer::renderHTMLobject( $tags );
 	}
 
 	/*** cell templates ***/
@@ -468,7 +367,7 @@ class qp_QuestionView extends qp_AbstractView {
 			$this->cellTemplateParam['percents'] = $percents . '%';
 			# template has to be rendered immediately, because $this->cellTemplateParam[] are used as pointers and thus,
 			# will always be overwritten
-			return QP_Renderer::renderHTMLobject( $this->cellTemplate );
+			return QP_Renderer::renderTagArray( $this->cellTemplate );
 		} else {
 			return $inp;
 		}
@@ -534,9 +433,9 @@ class qp_QuestionView extends qp_AbstractView {
 			$this->cellTemplateParam['bar1style'] = 'width:' . $percents . 'px;' . $this->cellTemplate[ 'bar1showres' ];
 			$this->cellTemplateParam['bar2style'] = 'width:' . ( 100 - $percents ) . 'px;' . $this->cellTemplate[ 'bar2showres' ];
 			if ( $inp['type'] == 'text' ) {
-				return qp_Renderer::renderHTMLobject( $this->cellTemplate['textinput'] );
+				return qp_Renderer::renderTagArray( $this->cellTemplate['textinput'] );
 			} else {
-				return qp_Renderer::renderHTMLobject( $this->cellTemplate['bar'] );
+				return qp_Renderer::renderTagArray( $this->cellTemplate['bar'] );
 			}
 		} else {
 			return $inp;
@@ -544,4 +443,4 @@ class qp_QuestionView extends qp_AbstractView {
 	}
 	/*** end of cell templates ***/
 
-} /* end of qp_QuestionView class */
+} /* end of qp_TabularQuestionView class */
