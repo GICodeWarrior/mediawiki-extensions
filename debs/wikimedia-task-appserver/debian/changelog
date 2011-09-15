@@ -1,3 +1,11 @@
+wikimedia-task-appserver (2.3-2) lucid-wikimedia; urgency=medium
+
+  * Removed damaging quotes around for loop array (only worked when there was one item)
+  * Avoid use of old-fashioned backticks for command output capturing
+  * Renamed $IP var to $mwIP
+
+ -- Aaron Schulz <aschulz@wikimedia.org>  Thu, 15 Sep 2011 00:10:13 +0000
+
 wikimedia-task-appserver (2.3-1) lucid-wikimedia; urgency=low
 
   * Updated deploy scripts for Heterogeneous Deployment
