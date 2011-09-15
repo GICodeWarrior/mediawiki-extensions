@@ -1,0 +1,12 @@
+#!/usr/bin/make -f
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/rules/patchsys-quilt.mk
+include /usr/share/cdbs/1/class/makefile.mk
+
+# In order to regenerate 'debian/control' :
+#   DEB_AUTO_UPDATE_DEBIAN_CONTROL=yes fakeroot debian/rules clean
+# Then check manually if everything's ok
+
+DEB_MAKE_INSTALL_TARGET := install INSTALL_TARGET=$(CURDIR)/debian/tmp/
+

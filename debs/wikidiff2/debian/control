@@ -1,0 +1,19 @@
+Source: wikidiff2
+Section: web
+Priority: optional
+Maintainer: Ubuntu MOTU Developers <ubuntu-motu@lists.ubuntu.com>
+XSBC-Original-Maintainer: Mediawiki Maintenance Team <pkg-mediawiki-devel@lists.alioth.debian.org>
+Uploaders: Romain Beauxis <toots@rastageeks.org>
+Build-Depends: cdbs (>= 0.4.53), debhelper (>= 7.0.1), quilt, patchutils (>= 0.2.25), php5-dev, swig
+Homepage: http://www.mediawiki.org/wiki/Extension:Wikidiff2
+Standards-Version: 3.8.3
+
+Package: php-wikidiff2
+Architecture: any
+Depends: php5 | php5-cli, ${misc:Depends}, ${shlibs:Depends} 
+Description: external diff engine for mediawiki
+ Wikidiff2 is PHP 5 module providing external diff 
+ engine for MediaWiki. It performs word-level 
+ (space-delimited) diffs on general text, and 
+ character-level diffs on text composed of characters 
+ from the Japanese and Thai alphabets and the unified han.

@@ -1,0 +1,13 @@
+Index: wikidiff2-0.0.1+svn55737/Makefile
+===================================================================
+--- wikidiff2-0.0.1+svn55737.orig/Makefile	2009-09-01 18:20:09.000000000 -0500
++++ wikidiff2-0.0.1+svn55737/Makefile	2009-09-01 18:20:15.000000000 -0500
+@@ -50,7 +50,7 @@
+ test.php : $(PRODUCT)_wrap.cpp
+ 
+ $(PRODUCT)_wrap.cpp : $(PRODUCT).i
+-	swig -php4 -c++ $(PRODUCT).i
++	swig -php5 -c++ $(PRODUCT).i
+ 
+ install : $(OUTPUT)
+ 	install -d "$(INSTALL_TARGET)$(PHP_EXT_DIR)"

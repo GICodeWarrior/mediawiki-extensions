@@ -1,0 +1,23 @@
+wikidiff2 (0.0.1+svn55737-1ubuntu1) lucid; urgency=low
+
+  * Rebuild against PHP 5.3. 
+
+ -- Chuck Short <zulcss@ubuntu.com>  Tue, 02 Mar 2010 13:00:25 -0500
+
+wikidiff2 (0.0.1+svn55737-1) unstable; urgency=low
+
+  * New upstream release.
+  * Fixed FTBFS.
+  Closes: #543113 
+  * Bumped standards-version to 3.8.3
+  * Bumped compat to 7
+
+ -- Romain Beauxis <toots@rastageeks.org>  Tue, 01 Sep 2009 18:14:30 -0500
+
+wikidiff2 (0.0.1+svn48764-1) unstable; urgency=low
+
+  * Initial packaging.
+  Closes: #479057
+
+ -- Romain Beauxis <toots@rastageeks.org>  Tue, 24 Mar 2009 23:25:07 +0100
+
