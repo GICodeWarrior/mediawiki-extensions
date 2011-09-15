@@ -197,12 +197,16 @@ class qp_StubQuestionView extends qp_AbstractView {
 			$this->ctrl->applyStateToParent();
 		}
 		$output_table[] = array( '__tag' => 'tbody', '__end' => "\n", 0 => $this->renderTable() );
-		$tags = array( '__tag' => 'div', '__end' => "\n", 'class' => 'question',
-			0 => array( '__tag' => 'div', '__end' => "\n", 'class' => 'header',
-				0 => array( '__tag' => 'span', 'class' => 'questionId', 0 => $this->ctrl->usedId )
-			),
-			1 => array( '__tag' => 'div', 0 => $this->rtp( $this->ctrl->mCommonQuestion ) )
-		);
+		$tags = array();
+		if ( $this->ctrl->poll->questions->usedCount() > 1 ) {
+			# display question number only if there are more than one question in poll
+			$tags[] = array(
+				'__tag' => 'div', '__end' => "\n", 'class' => 'header',
+					array( '__tag' => 'span', 'class' => 'questionId', 0 => $this->ctrl->usedId )
+			);
+		}
+		$tags[] = array( '__tag' => 'div', 0 => $this->rtp( $this->ctrl->mCommonQuestion ) );
+		$tags = array( '__tag' => 'div', '__end' => "\n", 'class' => 'question', $tags );
 		$tags[] = &$output_table;
 		return qp_Renderer::renderTagArray( $tags );
 	}

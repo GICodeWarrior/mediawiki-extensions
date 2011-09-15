@@ -444,7 +444,7 @@ class PollResults extends qp_SpecialPage {
 				}
 				$xls_worksheet->writerow( $xls_rownum++, 0, $row );
 /*
-				foreach( $qdata->Percents as $pkey=>&$percent ) {
+				foreach ( $qdata->Percents as $pkey=>&$percent ) {
 					$xls_worksheet->writerow( $xls_rownum + $pkey, 0, $percent );
 				}
 */
@@ -559,7 +559,7 @@ class PollResults extends qp_SpecialPage {
 				}
 				$xls_worksheet->writerow( $xls_rownum++, 0, $row );
 /*
-				foreach( $qdata->Percents as $pkey=>&$percent ) {
+				foreach ( $qdata->Percents as $pkey=>&$percent ) {
 					$xls_worksheet->writerow( $xls_rownum + $pkey, 0, $percent );
 				}
 */

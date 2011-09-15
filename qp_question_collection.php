@@ -37,12 +37,26 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( "This file is part of the QPoll extension. It is not a valid entry point.\n" );
 }
 
+/**
+ * Contains the iterable collection of questions with possible randomization
+ * (optional selection of some random questions from the whole set)
+ */
 class qp_QuestionCollection {
+
+	/**
+	 * Note:
+	 * We assume that $questions and $usedQuestions do not have sparce keys
+	 * I was using internal indexes but each() was buggy and evil even in PHP 5.3.x
+	 */
 
 	# array of question objects associated with current poll
 	private $questions = array();
+	# current questions key, starting from 1
+	private $qKey;
 	# array of $this->questions[] indexes for question iterator (used by randomizer)
 	private $usedQuestions = false;
+	# current usedQuestions key, starting from 0
+	private $usedKey;
 
 	/**
 	 * From http://php.net/manual/en/function.mt-rand.php
@@ -105,10 +119,11 @@ class qp_QuestionCollection {
 		}
 		sort( $randomQuestions, SORT_NUMERIC );
 		$this->usedQuestions = array();
-		# questions count from 1
+		# questions keys start from 1
 		$usedId = 1;
 		foreach ( $this->questions as $qidx => &$question ) {
 			if ( in_array( $qidx, $randomQuestions, true ) ) {
+				# usedQuestions keys start from 0
 				$this->usedQuestions[] = $qidx;
 				$question->usedId = $usedId++;
 			} else {
@@ -146,9 +161,9 @@ class qp_QuestionCollection {
 	 * Reset question iterator
 	 */
 	function reset() {
-		reset( $this->questions );
+		$this->qKey = 1;
 		if ( is_array( $this->usedQuestions ) ) {
-			reset( $this->usedQuestions );
+			$this->usedKey = 0;
 		}
 	}
 
@@ -159,16 +174,16 @@ class qp_QuestionCollection {
 	 */
 	function iterate() {
 		if ( is_array( $this->usedQuestions ) ) {
-			while ( !is_null( key( $this->usedQuestions ) ) ) {
-				list( $key, $qidx ) = each( $this->usedQuestions );
+			while ( array_key_exists( $this->usedKey, $this->usedQuestions ) ) {
+				$qidx = $this->usedQuestions[$this->usedKey++];
 				if ( isset( $this->questions[$qidx] ) ) {
 					return $this->questions[$qidx];
 				}
 			}
 			return false;
 		}
-		if ( !is_null( key( $this->questions ) ) ) {
-			list( $key, $question ) = each( $this->questions );
+		if ( array_key_exists( $this->qKey, $this->questions ) ) {
+			$question = $this->questions[$this->qKey++];
 			return $question;
 		}
 		return false;
