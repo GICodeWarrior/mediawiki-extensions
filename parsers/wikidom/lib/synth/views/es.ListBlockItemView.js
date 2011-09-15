@@ -68,7 +68,11 @@ es.ListBlockItemView.prototype.drawSelection = function( range ) {
  * @returns {String} HTML data
  */
 es.ListBlockItemView.prototype.getHtml = function( options ) {
-	return es.Html.makeTag( 'li', {}, this.contentView.getHtml() );
+	return es.Html.makeTag(
+		'div',
+		{ 'class': this.$.attr( 'class' ) },
+		this.contentView.getHtml()
+	);
 };
 
 /* Inheritance */

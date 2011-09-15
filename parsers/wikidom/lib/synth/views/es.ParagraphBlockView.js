@@ -59,7 +59,7 @@ es.ParagraphBlockView.prototype.drawSelection = function( range ) {
 es.ParagraphBlockView.prototype.getHtml = function( options ) {
 	var html = this.contentView.getHtml();
 	if ( !options.singular ) {
-		html = es.Html.makeTag( 'p', {}, html );
+		html = es.Html.makeTag( 'div', { 'class': this.$.attr( 'class' ) }, html );
 	}
 	return html;
 };

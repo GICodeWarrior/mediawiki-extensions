@@ -38,9 +38,13 @@ es.DocumentView.prototype.getLength = function( ) {
  */
 es.DocumentView.prototype.getHtml = function() {
 	var views = this.views;
-	return $.map( this.views, function( view, i ) {
-		return view.getHtml( { 'singular': i === 0 && views.length == 1 } );
-	} ).join( '' );
+	return es.Html.makeTag(
+		'div',
+		{ 'class': this.$.attr( 'class' ) },
+		$.map( this.views, function( view, i ) {
+			return view.getHtml( { 'singular': i === 0 && views.length == 1 } );
+		} ).join( '' )
+	);
 };
 
 /* Inheritance */

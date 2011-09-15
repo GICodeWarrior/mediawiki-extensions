@@ -80,7 +80,13 @@ es.ListBlockView.prototype.drawSelection = function( range ) {
  * @returns {String} HTML data
  */
 es.ListBlockView.prototype.getHtml = function( options ) {
-	// TODO: Build tree of list items based on their style stacks and make an HTML list tree
+	return es.Html.makeTag(
+		'div',
+		{ 'class': this.$.attr( 'class' ) },
+		$.map( this.views, function( view ) {
+			return view.getHtml();
+		} ).join( '' )
+	);
 };
 
 /* Inheritance */
