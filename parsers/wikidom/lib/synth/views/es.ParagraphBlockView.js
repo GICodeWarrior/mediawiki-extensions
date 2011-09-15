@@ -1,5 +1,8 @@
 /**
  * Creates an es.ParagraphBlockView object.
+ * 
+ * @class
+ * @constructor
  */
 es.ParagraphBlockView = function( model ) {
 	es.BlockView.call( this, model, 'paragraph' );
@@ -44,6 +47,21 @@ es.ParagraphBlockView.prototype.getLength = function() {
 
 es.ParagraphBlockView.prototype.drawSelection = function( range ) {
 	this.contentView.drawSelection( range );
+};
+
+/**
+ * Gets HTML rendering of block.
+ * 
+ * @method
+ * @param options {Object} List of options, see es.DocumentView.getHtml for details
+ * @returns {String} HTML data
+ */
+es.ParagraphBlockView.prototype.getHtml = function( options ) {
+	var html = this.contentView.getHtml();
+	if ( !options.singular ) {
+		html = es.Html.makeTag( 'p', {}, html );
+	}
+	return html;
 };
 
 /* Inheritance */

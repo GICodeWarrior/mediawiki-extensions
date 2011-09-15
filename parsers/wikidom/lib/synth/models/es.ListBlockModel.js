@@ -110,26 +110,6 @@ es.ListBlockModel.prototype.getPlainObject = function() {
 	return obj;
 };
 
-/**
- * Gets HTML serialization of block.
- * 
- * @method
- * @returns {String} HTML data
- */
-es.ListBlockModel.prototype.getHtml = function() {
-	
-};
-
-/**
- * Gets Wikitext serialization of block.
- * 
- * @method
- * @returns {String} Wikitext data
- */
-es.ListBlockModel.prototype.getWikitext = function() {
-	
-};
-
 // Register constructor
 es.BlockModel.constructors['list'] = es.ListBlockModel.newFromPlainObject
 

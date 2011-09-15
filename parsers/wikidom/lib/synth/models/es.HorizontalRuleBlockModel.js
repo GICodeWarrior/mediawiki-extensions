@@ -50,26 +50,6 @@ es.HorizontalRuleBlockModel.prototype.getPlainObject = function() {
 	return { 'type': 'horizontal-rule' };
 };
 
-/**
- * Gets HTML serialization of block.
- * 
- * @method
- * @returns {String} HTML data
- */
-es.CommentBlockModel.prototype.getHtml = function() {
-	return es.AnnotationSerializer.buildXmlTag( 'hr', {}, false );
-};
-
-/**
- * Gets Wikitext serialization of block.
- * 
- * @method
- * @returns {String} Wikitext data
- */
-es.CommentBlockModel.prototype.getWikitext = function() {
-	return '----';
-};
-
 // Register constructor
 es.BlockModel.constructors['horizontal-rule'] = es.HorizontalRuleBlockModel;
 

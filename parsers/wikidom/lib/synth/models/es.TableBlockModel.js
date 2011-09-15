@@ -81,26 +81,6 @@ es.TableBlockModel.prototype.getPlainObject = function() {
 	*/
 };
 
-/**
- * Gets HTML serialization of block.
- * 
- * @method
- * @returns {String} HTML data
- */
-es.TableBlockModel.prototype.getHtml = function() {
-	
-};
-
-/**
- * Gets Wikitext serialization of block.
- * 
- * @method
- * @returns {String} Wikitext data
- */
-es.TableBlockModel.prototype.getWikitext = function() {
-	
-};
-
 // Register constructor
 es.BlockModel.constructors['table'] = es.TableBlockModel.newFromPlainObject;
 

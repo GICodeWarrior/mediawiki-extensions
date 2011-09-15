@@ -68,26 +68,6 @@ es.TableBlockCellModel.prototype.getPlainObject = function() {
 	*/
 };
 
-/**
- * Gets HTML serialization of cell.
- * 
- * @method
- * @returns {String} HTML data
- */
-es.TableBlockCellModel.prototype.getHtml = function() {
-	
-};
-
-/**
- * Gets Wikitext serialization of cell.
- * 
- * @method
- * @returns {String} Wikitext data
- */
-es.TableBlockCellModel.prototype.getWikitext = function() {
-	
-};
-
 /* Inheritance */
 
 es.extend( es.TableBlockCellModel, es.ModelContainerItem );

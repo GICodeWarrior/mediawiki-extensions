@@ -1,5 +1,8 @@
 /**
- * Creates an es.ParagraphBlockView object.
+ * Creates an es.ListBlockView object.
+ * 
+ * @class
+ * @constructor
  */
 es.ListBlockView = function( model ) {
 	es.ViewContainer.call( this, model, 'list' );
@@ -67,6 +70,17 @@ es.ListBlockView.prototype.drawSelection = function( range ) {
 			new es.Range( selectedViews[i].from, selectedViews[i].to )
 		);
 	}
+};
+
+/**
+ * Gets HTML rendering of block.
+ * 
+ * @method
+ * @param options {Object} List of options, see es.DocumentView.getHtml for details
+ * @returns {String} HTML data
+ */
+es.ListBlockView.prototype.getHtml = function( options ) {
+	// TODO: Build tree of list items based on their style stacks and make an HTML list tree
 };
 
 /* Inheritance */

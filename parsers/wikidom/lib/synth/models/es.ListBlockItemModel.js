@@ -55,26 +55,6 @@ es.ListBlockItemModel.prototype.getPlainObject = function() {
 	return { 'content': this.content.getPlainObject(), 'styles': this.styles.slice( 0 ) };
 };
 
-/**
- * Gets HTML serialization of item.
- * 
- * @method
- * @returns {String} HTML data
- */
-es.ListBlockItemModel.prototype.getHtml = function() {
-	
-};
-
-/**
- * Gets Wikitext serialization of item.
- * 
- * @method
- * @returns {String} Wikitext data
- */
-es.ListBlockItemModel.prototype.getWikitext = function() {
-	
-};
-
 /* Inheritance */
 
 es.extend( es.ListBlockItemModel, es.ModelContainerItem );

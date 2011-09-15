@@ -1,5 +1,8 @@
 /**
- * Creates an es.ParagraphBlockView object.
+ * Creates an es.ListBlockItemView object.
+ * 
+ * @class
+ * @constructor
  */
 es.ListBlockItemView = function( model ) {
 	es.ViewContainerItem.call( this, model, 'listItem' );
@@ -55,6 +58,17 @@ es.ListBlockItemView.prototype.getLength = function() {
 
 es.ListBlockItemView.prototype.drawSelection = function( range ) {
 	this.contentView.drawSelection( range );
+};
+
+/**
+ * Gets HTML rendering of item.
+ * 
+ * @method
+ * @param options {Object} List of options, see es.DocumentView.getHtml for details
+ * @returns {String} HTML data
+ */
+es.ListBlockItemView.prototype.getHtml = function( options ) {
+	return es.Html.makeTag( 'li', {}, this.contentView.getHtml() );
 };
 
 /* Inheritance */

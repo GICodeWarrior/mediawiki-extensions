@@ -1,5 +1,8 @@
 /**
- * Creates an es.ParagraphBlockView object.
+ * Creates an es.TableBlockView object.
+ * 
+ * @class
+ * @constructor
  */
 es.TableBlockView = function( model ) {
 	es.ViewContainer.call( this, model, 'table', 'table' );
@@ -32,6 +35,19 @@ es.TableBlockView.prototype.drawSelection = function( range ) {
 			new es.Range( selectedViews[i].from, selectedViews[i].to )
 		);
 	}
+};
+
+/**
+ * Gets HTML rendering of block.
+ * 
+ * @method
+ * @param options {Object} List of options, see es.DocumentView.getHtml for details
+ * @returns {String} HTML data
+ */
+es.TableBlockView.prototype.getHtml = function( options ) {
+	return es.Html.makeTag( 'table', this.model.attributes, $.map( this.views, function( view ) {
+		return view.getHtml();
+	} ).join( '' ) );
 };
 
 /* Inheritance */

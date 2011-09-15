@@ -11,59 +11,6 @@ es.AnnotationSerializer = function() {
 
 /* Static Methods */
 
-es.AnnotationSerializer.repeatString = function( pattern, count ) {
-	if ( count < 1 ) {
-		return '';
-	}
-	var result = '';
-	while ( count > 0 ) {
-		if ( count & 1 ) { result += pattern; }
-		count >>= 1;
-		pattern += pattern;
-	}
-	return result;
-};
-
-es.AnnotationSerializer.escapeXmlText = function( text ) {
-	return text
-		.replace( /&/g, '&amp;' )
-		.replace( /</g, '&lt;' )
-		.replace( />/g, '&gt;' )
-		.replace( /"/g, '&quot;' )
-		.replace( /'/g, '&#039;' );
-};
-
-es.AnnotationSerializer.buildXmlAttributes = function( attributes, prespace ) {
-	var attr = [];
-	var name;
-	if ( attributes ) {
-		for ( name in attributes ) {
-			attr.push( name + '="' + attributes[name] + '"' );
-		}
-	}
-	return ( prespace && attr.length ? ' ' : '' ) + attr.join( ' ' );
-};
-
-es.AnnotationSerializer.buildXmlOpeningTag = function( tag, attributes ) {
-	return '<' + tag + es.Document.Serializer.buildXmlAttributes( attributes, true ) + '>';
-};
-
-es.AnnotationSerializer.buildXmlClosingTag = function( tag ) {
-	return '</' + tag + '>';
-};
-
-es.AnnotationSerializer.buildXmlTag = function( tag, attributes, value, escape ) {
-	if ( value === false ) {
-		return '<' + tag + es.Document.Serializer.buildXmlAttributes( attributes, true ) + ' />';
-	} else {
-		if ( escape ) {
-			value = wiki.util.xml.esc( value );
-		}
-		return '<' + tag + es.Document.Serializer.buildXmlAttributes( attributes, true ) + '>'
-			+ value + '</' + tag + '>';
-	}
-};
-
 /**
  * Adds a set of annotations to be inserted around a range of text.
  * 

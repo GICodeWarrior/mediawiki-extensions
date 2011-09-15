@@ -1,3 +1,9 @@
+/**
+ * Creates an es.DocumentView object.
+ * 
+ * @class
+ * @constructor
+ */
 es.DocumentView = function( documentModel ) {
 	es.ViewContainer.call( this, documentModel, 'document' );
 };
@@ -22,6 +28,19 @@ es.DocumentView.prototype.drawSelection = function( range ) {
 
 es.DocumentView.prototype.getLength = function( ) {
 	return this.views.getLengthOfItems();
+};
+
+/**
+ * Gets HTML rendering of document.
+ * 
+ * @method
+ * @returns {String} HTML data
+ */
+es.DocumentView.prototype.getHtml = function() {
+	var views = this.views;
+	return $.map( this.views, function( view, i ) {
+		return view.getHtml( { 'singular': i === 0 && views.length == 1 } );
+	} ).join( '' );
 };
 
 /* Inheritance */

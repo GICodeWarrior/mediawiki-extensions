@@ -56,27 +56,6 @@ es.HeadingBlockModel.prototype.getPlainObject = function() {
 	return { 'type': 'heading', 'content': this.content.getPlainObject(), 'level': this.level };
 };
 
-/**
- * Gets HTML serialization of block.
- * 
- * @method
- * @returns {String} HTML data
- */
-es.HeadingBlockModel.prototype.getHtml = function() {
-	return es.AnnotationSerializer.buildXmlTag( 'h' + this.level, {}, this.content.getHtml() );
-};
-
-/**
- * Gets Wikitext serialization of block.
- * 
- * @method
- * @returns {String} Wikitext data
- */
-es.HeadingBlockModel.prototype.getWikitext = function() {
-	var symbols = es.AnnotationSerializer.repeatString( '=', this.level );
-	return symbols + this.content.getHtml() + symbols;
-};
-
 // Register constructor
 es.BlockModel.constructors['heading'] = es.HeadingBlockModel;
 

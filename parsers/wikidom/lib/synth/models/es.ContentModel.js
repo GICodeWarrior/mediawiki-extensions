@@ -335,26 +335,6 @@ es.ContentModel.prototype.getPlainObject = function() {
 };
 
 /**
- * Gets HTML serialization of content.
- * 
- * @method
- * @returns {String} HTML data
- */
-es.ContentModel.prototype.getHtml = function() {
-	//
-};
-
-/**
- * Gets Wikitext serialization of content.
- * 
- * @method
- * @returns {String} Wikitext data
- */
-es.ContentModel.prototype.getWikitext = function() {
-	
-};
-
-/**
  * Gets a list of indexes of annotated characters which have a given annotation applied to them.
  * 
  * Comparison is done first by type, and optionally also by data values (strict), not by reference

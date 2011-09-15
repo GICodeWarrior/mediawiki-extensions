@@ -125,7 +125,6 @@ es.ContentView.htmlCharacters = {
 	'>': '&gt;',
 	'\'': '&#039;',
 	'"': '&quot;',
-	' ': '&nbsp;',
 	'\n': '<span class="editSurface-whitespace">&#182;</span>',
 	'\t': '<span class="editSurface-whitespace">&#8702;</span>'
 };
@@ -194,6 +193,8 @@ es.ContentView.renderAnnotation = function( bias, annotation, stack ) {
 	}
 	return out;
 };
+
+/* Methods */
 
 es.ContentView.prototype.drawSelection = function( range ) {
 	range.normalize();
@@ -305,9 +306,9 @@ es.ContentView.prototype.getOffset = function( position ) {
 	var $ruler = $( '<div class="editSurface-ruler"></div>' ).appendTo( this.$ ),
 		ruler = $ruler[0],
 		fit = this.fitCharacters( line.range, ruler, position.left );
-	ruler.innerHTML = this.serialize( new es.Range( line.range.start, fit.end ) );
+	ruler.innerHTML = this.getHtml( new es.Range( line.range.start, fit.end ) );
 	var left = ruler.clientWidth;
-	ruler.innerHTML = this.serialize( new es.Range( line.range.start, fit.end + 1 ) );
+	ruler.innerHTML = this.getHtml( new es.Range( line.range.start, fit.end + 1 ) );
 	var right = ruler.clientWidth;
 	var center = Math.round( left + ( ( right - left ) / 2 ) );
 	$ruler.remove();
@@ -388,7 +389,7 @@ es.ContentView.prototype.getPosition = function( offset ) {
 	if ( line.range.start < offset ) {
 		var $ruler = $( '<div class="editSurface-ruler"></div>' ).appendTo( this.$ ),
 			ruler = $ruler[0];
-		ruler.innerHTML = this.serialize( new es.Range( line.range.start, offset ) );
+		ruler.innerHTML = this.getHtml( new es.Range( line.range.start, offset ) );
 		position.left = ruler.clientWidth;
 		$ruler.remove();
 	}
@@ -604,7 +605,7 @@ es.ContentView.prototype.appendLine = function( range, wordOffset, fractional ) 
 		$line = $( '<div class="editSurface-line" line-index="' + lineCount + '"></div>' );
 		this.$.append( $line );
 	}
-	$line[0].innerHTML = this.serialize( range );
+	$line[0].innerHTML = this.getHtml( range );
 	// Collect line information
 	rs.lines.push({
 		'text': this.model.getText( range ),
@@ -661,7 +662,7 @@ es.ContentView.prototype.fitWords = function( range, ruler, width ) {
 		// Measure and cache width of substring
 		cacheKey = charOffset + ':' + charMiddle;
 		// Prepare the line for measurement using pre-escaped HTML
-		ruler.innerHTML = this.serialize( new es.Range( charOffset, charMiddle ) );
+		ruler.innerHTML = this.getHtml( new es.Range( charOffset, charMiddle ) );
 		// Test for over/under using width of the rendered line
 		this.widthCache[cacheKey] = lineWidth = ruler.clientWidth;
 		// Test for over/under using width of the rendered line
@@ -682,7 +683,7 @@ es.ContentView.prototype.fitWords = function( range, ruler, width ) {
 	if ( end === middle - 1 ) {
 		// A final measurement is required
 		var charStart = this.boundaries[start];
-		ruler.innerHTML = this.serialize( new es.Range( charOffset, charStart ) );
+		ruler.innerHTML = this.getHtml( new es.Range( charOffset, charStart ) );
 		lineWidth = this.widthCache[charOffset + ':' + charStart] = ruler.clientWidth;
 	}
 	return { 'end': start, 'width': lineWidth };
@@ -716,7 +717,7 @@ es.ContentView.prototype.fitCharacters = function( range, ruler, width ) {
 			lineWidth = this.widthCache[cacheKey];
 		} else {
 			// Fill the line with a portion of the text, escaped as HTML
-			ruler.innerHTML = this.serialize( new es.Range( offset, middle ) );
+			ruler.innerHTML = this.getHtml( new es.Range( offset, middle ) );
 			// Test for over/under using width of the rendered line
 			this.widthCache[cacheKey] = lineWidth = ruler.clientWidth;
 		}
@@ -741,7 +742,7 @@ es.ContentView.prototype.fitCharacters = function( range, ruler, width ) {
 			lineWidth = this.widthCache[cacheKey];
 		} else {
 			// A final measurement is required
-			ruler.innerHTML = this.serialize( new es.Range( offset, start ) );
+			ruler.innerHTML = this.getHtml( new es.Range( offset, start ) );
 			lineWidth = this.widthCache[cacheKey] = ruler.clientWidth;
 		}
 	}
@@ -749,14 +750,13 @@ es.ContentView.prototype.fitCharacters = function( range, ruler, width ) {
 };
 
 /**
- * Gets an HTML serialization of a range of data within content model.
+ * Gets an HTML rendering of a range of data within content model.
  * 
  * @method
- * @param start {Integer} Beginning of range
- * @param end {Integer} End of range
+ * @param range {es.Range} Range of content to render
  * @param {String} Rendered HTML of data within content model
  */
-es.ContentView.prototype.serialize = function( range ) {
+es.ContentView.prototype.getHtml = function( range, options ) {
 	var data = this.model.getData( range ),
 		render = es.ContentView.renderAnnotation,
 		htmlChars = es.ContentView.htmlCharacters;

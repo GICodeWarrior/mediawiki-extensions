@@ -1,5 +1,8 @@
 /**
  * Creates an es.SurfaceView object.
+ * 
+ * @class
+ * @constructor
  */
 es.SurfaceView = function( $container, surfaceModel ) {
 	this.$ = $container.addClass( 'editSurface' );

@@ -70,30 +70,6 @@ es.ParagraphBlockModel.prototype.getPlainObject = function() {
 	return { 'type': 'paragraph', 'content': this.content.getPlainObject() };
 };
 
-/**
- * Gets HTML serialization of block.
- * 
- * @method
- * @returns {String} HTML data
- */
-es.ParagraphBlockModel.prototype.getHtml = function( index ) {
-	var html = this.content.getWikitext();;
-	if ( index === 0 ) {
-		html = es.AnnotationSerializer.buildXmlTag( 'p', {}, html );
-	}
-	return html;
-};
-
-/**
- * Gets Wikitext serialization of block.
- * 
- * @method
- * @returns {String} Wikitext data
- */
-es.ParagraphBlockModel.prototype.getWikitext = function() {
-	return this.content.getWikitext();
-};
-
 // Register constructor
 es.BlockModel.constructors['paragraph'] = es.ParagraphBlockModel.newFromPlainObject;
 

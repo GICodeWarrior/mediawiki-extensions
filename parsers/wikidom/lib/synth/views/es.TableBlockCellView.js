@@ -1,5 +1,8 @@
 /**
- * Creates an es.ParagraphBlockView object.
+ * Creates an es.TableBlockCellView object.
+ * 
+ * @class
+ * @constructor
  */
 es.TableBlockCellView = function( model ) {
 	es.ViewContainerItem.call( this, model, 'cell', 'td' );
@@ -27,6 +30,17 @@ es.TableBlockCellView.prototype.getLength = function() {
 
 es.TableBlockCellView.prototype.drawSelection = function( range ) {
 	this.documentView.drawSelection( range );
+};
+
+/**
+ * Gets HTML rendering of cell.
+ * 
+ * @method
+ * @param options {Object} List of options, see es.DocumentView.getHtml for details
+ * @returns {String} HTML data
+ */
+es.TableBlockCellView.prototype.getHtml = function( options ) {
+	return es.Html.makeTag( 'td', this.model.attributes, this.documentView.getHtml() );
 };
 
 /* Inheritance */

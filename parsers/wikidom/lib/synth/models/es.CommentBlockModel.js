@@ -63,24 +63,6 @@ es.CommentBlockModel.prototype.getPlainObject = function() {
 	return { 'type': 'comment', 'text': this.text };
 };
 
-/**
- * Gets HTML serialization of block.
- * 
- * @method
- * @returns {String} HTML data
- */
-es.CommentBlockModel.prototype.getHtml = function() {
-	return '<!--' + comment.text + '-->';
-};
-
-/**
- * Gets Wikitext serialization of block.
- * 
- * @method
- * @returns {String} Wikitext data
- */
-es.CommentBlockModel.prototype.getWikitext = es.CommentBlockModel.prototype.getHtml;
-
 // Register constructor
 es.BlockModel.constructors['comment'] = es.CommentBlockModel;
 
