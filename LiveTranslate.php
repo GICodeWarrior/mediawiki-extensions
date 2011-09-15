@@ -24,7 +24,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define( 'LiveTranslate_VERSION', '1.2.1' );
+define( 'LiveTranslate_VERSION', '1.2.2' );
 
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
@@ -92,16 +92,16 @@ $egLTJSMessages = array(
 if ( defined( 'MW_SUPPORTS_RESOURCE_MODULES' ) ) {
 	$moduleTemplate = array(
 		'localBasePath' => dirname( __FILE__ ),
-		'remoteBasePath' => $egLiveTranslateScriptPath,
+		'remoteExtPath' => 'LiveTranslate',
 		'group' => 'ext.livetranslate'
 	);
 	
 	$wgResourceModules['ext.livetranslate'] = $moduleTemplate + array(
 		'scripts' => array(
-			'includes/ext.livetranslate.js',
-			'includes/ext.lt.tm.js',
 			'includes/jquery.replaceText.js',
-			'includes/jquery.liveTranslate.js'
+			'includes/ext.livetranslate.js',
+			'includes/jquery.liveTranslate.js',
+			'includes/ext.lt.tm.js',
 		),
 		'dependencies' => array( 'jquery'/*, 'jquery.ui.button'*/ ),
 		'messages' => $egLTJSMessages

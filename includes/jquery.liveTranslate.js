@@ -8,6 +8,18 @@
 
 ( function ( $, lt ) { $.fn.liveTranslate = function( options ) {
 	
+	/**
+	 * Regex text escaping function.
+	 * Borrowed from http://simonwillison.net/2006/Jan/20/escape/
+	 */
+	RegExp.escape = function( text ) {
+		if ( !arguments.callee.sRE ) {
+			var specials = [  '/', '.', '*', '+', '?', '|', '(', ')', '[', ']', '{', '}', '\\' ];
+		    arguments.callee.sRE = new RegExp( '(\\' + specials.join('|\\') + ')', 'g' );
+		}
+		return text.replace(arguments.callee.sRE, '\\$1');
+	}
+	
 	var _this = this;
 	
 	/**
@@ -241,4 +253,4 @@
 	
 	return this;
 	
-}; } )( jQuery, window.liveTranslate );
+}; } )( window.jQuery, window.liveTranslate );
