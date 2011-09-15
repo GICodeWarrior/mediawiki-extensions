@@ -7,7 +7,7 @@
 @DPATCH@
 
 --- varnish3-3.0.0~/bin/varnishncsa/varnishncsa.c	2011-08-09 23:55:17.000000000 +0000
-+++ varnish3-3.0.0/bin/varnishncsa/varnishncsa.c	2011-09-14 21:52:17.000000000 +0000
++++ varnish3-3.0.0/bin/varnishncsa/varnishncsa.c	2011-09-15 19:52:25.000000000 +0000
 @@ -79,6 +79,12 @@
  #include "varnishapi.h"
  #include "base64.h"
@@ -25,7 +25,7 @@
  
  static const char *format;
  
-+struct hostent* h;
++static char localhost[255];
 +
  static int
  isprefix(const char *str, const char *prefix, const char *end,
@@ -46,7 +46,7 @@
 +
  		case 'l':
 -			fprintf(fo, "-");
-+			fprintf(fo, "%s", h->h_name);
++			fprintf(fo, "%s", localhost);
  			break;
  
  		case 'm':
@@ -140,18 +140,19 @@
  	exit(1);
  }
  
-@@ -723,8 +785,9 @@
+@@ -723,8 +785,10 @@
  	const char *P_arg = NULL;
  	const char *w_arg = NULL;
  	struct vpf_fh *pfh = NULL;
 +	char hostname[1024];
++	struct hostent *lh;
  	FILE *of;
 -	format = "%h %l %u %t \"%r\" %s %b \"%{Referer}i\" \"%{User-agent}i\"";
 +	format = "%l %n %t %{Varnish:time_firstbyte}x %h %{Varnish:handling}x/%s %b %m http://%{Host}i%U%q - - %{Referer}i %{X-Forwarded-For}i %{User-agent}i";
  
  	vd = VSM_New();
  	VSL_Setup(vd);
-@@ -739,7 +802,7 @@
+@@ -739,7 +803,7 @@
  				fprintf(stderr, "-f and -F can not be combined\n");
  				exit(1);
  			}
@@ -160,13 +161,14 @@
  			format_flag = 1;
  			break;
  		case 'F':
-@@ -786,6 +849,10 @@
+@@ -786,6 +850,11 @@
  		}
  	}
  
 +	hostname[1023] = '\0';
 +	gethostname(hostname, 1023);
-+	h = gethostbyname(hostname);
++	lh = gethostbyname(hostname);
++	strcpy(localhost, lh->h_name);
 +
  	VSL_Arg(vd, 'c', optarg);
  
