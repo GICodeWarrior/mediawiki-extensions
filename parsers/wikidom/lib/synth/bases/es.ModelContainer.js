@@ -15,7 +15,7 @@ es.ModelContainer = function( listName ) {
 		listName = 'items';
 	}
 	this._listName = listName;
-	this[this._listName] = [];
+	this[this._listName] = new es.AggregateArray();
 	var container = this;
 	this.relayUpdate = function() {
 		container.emit( 'update' );

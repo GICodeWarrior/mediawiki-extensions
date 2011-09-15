@@ -19,7 +19,7 @@ es.ViewContainer = function( containerModel, typeName, tagName ) {
 	if ( !this.containerModel ) {
 		return;
 	}
-	this.views = [];
+	this.views = new es.AggregateArray();
 	if ( typeof typeName !== 'string' ) {
 		typeName = 'viewContainer';
 	}

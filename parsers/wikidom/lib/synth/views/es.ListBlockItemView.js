@@ -49,4 +49,12 @@ es.ListBlockItemView.getRenderedLineIndex = function( offset ) {
 	return this.contentView.getLineIndex( position );
 };
 
+es.ListBlockItemView.prototype.getLength = function() {
+	return this.model.getLength();
+};
+
+es.ListBlockItemView.prototype.drawSelection = function( range ) {
+	this.contentView.drawSelection( range );
+};
+
 es.extend( es.ListBlockItemView, es.ViewContainerItem );

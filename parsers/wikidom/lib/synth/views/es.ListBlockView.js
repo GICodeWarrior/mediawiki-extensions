@@ -56,5 +56,18 @@ es.ListBlockView.getRenderedLineIndex = function( offset ) {
 	//return this.contentView.getLineIndex( position );
 };
 
+es.ListBlockView.prototype.getLength = function() {
+	return this.model.items.getLengthOfItems();
+};
+
+es.ListBlockView.prototype.drawSelection = function( range ) {
+	var selectedViews = this.views.select( range );
+	for ( var i = 0; i < selectedViews.length; i++ ) {
+		selectedViews[i].item.drawSelection(
+			new es.Range( selectedViews[i].from, selectedViews[i].to )
+		);
+	}
+};
+
 es.extend( es.ListBlockView, es.ViewContainer );
 es.extend( es.ListBlockView, es.BlockView );

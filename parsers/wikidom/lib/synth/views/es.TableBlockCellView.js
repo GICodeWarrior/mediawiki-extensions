@@ -18,8 +18,16 @@ es.TableBlockCellView = function( model ) {
  * Render content.
  */
 es.TableBlockCellView.prototype.renderContent = function() {
-	//debugger;
 	this.documentView.renderContent();
 };
+
+es.TableBlockCellView.prototype.getLength = function() {
+	return this.documentView.getLength();
+};
+
+es.TableBlockCellView.prototype.drawSelection = function( range ) {
+	this.documentView.drawSelection( range );
+};
+
 
 es.extend( es.TableBlockCellView, es.ViewContainerItem );

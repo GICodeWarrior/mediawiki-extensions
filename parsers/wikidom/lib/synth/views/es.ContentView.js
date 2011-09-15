@@ -202,7 +202,7 @@ es.ContentView.prototype.drawSelection = function( range ) {
 		toLineIndex = this.getLineIndex( range.end ),
 		fromPosition = this.getPosition( range.start ),
 		toPosition = this.getPosition( range.end );
-	
+
 	if ( fromLineIndex === toLineIndex ) {
 		// Single line selection
 		this.$rangeStart.css( {

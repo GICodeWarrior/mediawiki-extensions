@@ -73,6 +73,7 @@ es.AggregateArray.prototype.select = function( start, end ) {
 				// Append items until we reach the end
 				from = 0;
 				to = Math.min( right - left - 1, end - left );
+
 				if ( from !== to ) {
 					items.push( { 'item': this[i], 'from': from, 'to': to } );
 				}
@@ -83,7 +84,8 @@ es.AggregateArray.prototype.select = function( start, end ) {
 				inside = true;
 				// Append first item
 				from = start - left;
-				to = Math.min( right - 1, end - left );
+				//to = Math.min( right - 1, end - left );
+				to = Math.min( right - left - 1, end - left );
 				if ( from !== to ) {
 					items.push( { 'item': this[i], 'from': from, 'to': to } );
 				}

@@ -38,4 +38,12 @@ es.ParagraphBlockView.getRenderedLineIndex = function( offset ) {
 	return this.contentView.getLineIndex( position );
 };
 
+es.ParagraphBlockView.prototype.getLength = function() {
+	return this.model.getContentLength();
+};
+
+es.ParagraphBlockView.prototype.drawSelection = function( range ) {
+	this.contentView.drawSelection( range );
+};
+
 es.extend( es.ParagraphBlockView, es.BlockView );

@@ -21,5 +21,18 @@ es.TableBlockRowView.prototype.renderContent = function() {
 	}
 };
 
+es.TableBlockRowView.prototype.getLength = function() {
+	return this.views.getLengthOfItems();
+};
+
+es.TableBlockRowView.prototype.drawSelection = function( range ) {
+	var selectedViews = this.views.select( range );
+	for ( var i = 0; i < selectedViews.length; i++ ) {
+		selectedViews[i].item.drawSelection(
+			new es.Range( selectedViews[i].from, selectedViews[i].to )
+		);
+	}
+};
+
 es.extend( es.TableBlockRowView, es.ViewContainer );
 es.extend( es.TableBlockRowView, es.ViewContainerItem );

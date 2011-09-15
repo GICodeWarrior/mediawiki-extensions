@@ -41,7 +41,7 @@ es.ListBlockItemModel.prototype.getStyle = function() {
  * @method
  * @returns {Integer} Length of all content
  */
-es.ListBlockItemModel.prototype.getContentLength = function() {
+es.ListBlockItemModel.prototype.getLength = function() {
 	return this.content.getLength();
 };
 
