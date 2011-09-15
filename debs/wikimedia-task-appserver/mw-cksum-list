@@ -1,0 +1,26 @@
+#!/bin/bash
+# Get a sorted file/md5 list for a MediaWiki installation.
+# Expects a directory as the only argument.
+
+# Path to scan for files
+if [ -z "$1" ]; then
+	echo "mw-cksum-list: no directory specified"
+	exit 1
+fi
+
+# Use maxdepth = 1 if checking the files in common-local.
+# Used for 'common-files' parameter in mw-cksum.
+if [ $(basename $1) == 'common-files' ]; then
+	codePath=$(dirname $1)
+	maxDepth="-maxdepth 1"
+	filterParams="-name *.dat"
+else
+	codePath="$1"
+	maxDepth=""
+	filterParams="( -name *.php -o -name *.cdb ) ! -name *.i18n.php ! -name *.alias.php"
+fi
+
+# Format through AWK to have the path first to improve diffs.
+nice -19 find -P $codePath $maxDepth -type f $filterParams \
+	-exec stat --printf="%n %a %G %U " {} \; -exec cksum {} \; \
+	| awk '{print $1, $2, $3, $4, $5}' | sort;

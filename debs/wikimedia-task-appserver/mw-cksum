@@ -1,0 +1,42 @@
+#!/bin/bash
+# Gets the hashes for all MW versions, wmf-config and common-other.
+# Each key for a MW version is of the format: php-<version>:<sha1>.
+# Hashes for wmf-config and common-other are of the format <keyName>:<sha1>.
+# If specified, gets the SHA1 for just one keyName (e.g. MW version)
+BINDIR="/usr/bin"
+COMMON="/usr/local/apache/common-local"
+
+# Filter the key list to one value
+keyName=$1
+
+# If a MW version is given, give sha1 for a single directory
+if [ -n "$keyName" ]; then
+	# common-files hash determined differently
+	if [ "$keyName" != "common-files" ]; then
+		if [ ! -d "$COMMON/$keyName" ]; then
+			echo "mw-cksum: $COMMON/$keyName is not a directory."
+			exit 1
+		fi
+	fi
+	mwCodeDirs=("$keyName")
+# Otherwise, get SHA1 for each active MW version and wmf-config/multiversion
+else
+	mwCodeDirs=("wmf-config" "multiversion" "common-files")
+	mwVersionNums=$($BINDIR/mwversionsinuse)
+	if [ -z "$mwVersionNums" ]; then
+		echo "Unable to read wikiversions.dat or it is empty"
+		exit 1
+	fi
+	for mwVerNum in ${mwVersionNums[@]}; do
+		mwCodeDirs+=("php-$mwVerNum")
+	done
+fi
+
+sha1Keys=()
+# Get SHA1 hash for each MW code path
+for codeDir in ${mwCodeDirs[@]}; do
+	sha1Hash=$($BINDIR/mw-cksum-list "$COMMON/$codeDir" | sha1sum)
+	sha1Keys+=("$codeDir:${sha1Hash%% *}")
+done
+
+echo ${sha1Keys[@]}
