@@ -31,8 +31,13 @@ class SkinOffline extends SkinTemplate {
 		foreach ( $badMessages as $msg ) {
 			$badUrls[] = self::makeInternalOrExternalUrl( wfMsgForContent( $msg ) );
 		}
-
 		foreach ( $sections as $heading => $section ) {
+			if (!is_array($section)) {
+				// A raw HTML chunk, such as provided by Collection ext.
+				// Just ignore these so they don't explode.
+				unset( $sections[$heading] );
+				continue;
+			}
 			foreach ( $section as $index => $link ) {
 				if ( in_array( $link['href'], $badUrls ) ) {
 					unset( $sections[$heading][$index] );
