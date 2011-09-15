@@ -805,4 +805,6 @@ es.ContentView.prototype.serialize = function( range ) {
 	return out;
 };
 
+/* Inheritance */
+
 es.extend( es.ContentView, es.EventEmitter );

@@ -51,6 +51,30 @@ es.DocumentModel.prototype.getPlainObject = function() {
 };
 
 /**
+ * Gets HTML serialization of document.
+ * 
+ * @method
+ * @returns {String} HTML data
+ */
+es.DocumentModel.prototype.getHtml = function() {
+	return $.map( this.blocks, function( i, block ) {
+		return block.getHtml( { 'index': i } );
+	} ).join( '\n' );
+};
+
+/**
+ * Gets Wikitext serialization of document.
+ * 
+ * @method
+ * @returns {String} Wikitext data
+ */
+es.DocumentModel.prototype.getWikitext = function() {
+	return $.map( this.blocks, function( i, block ) {
+		return block.getWikitext( { 'index': i } );
+	} ).join( '\n' );
+};
+
+/**
  * Gets the size of the of the contents of all blocks.
  * 
  * @method

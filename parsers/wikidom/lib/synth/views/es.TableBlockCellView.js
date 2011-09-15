@@ -29,5 +29,6 @@ es.TableBlockCellView.prototype.drawSelection = function( range ) {
 	this.documentView.drawSelection( range );
 };
 
+/* Inheritance */
 
 es.extend( es.TableBlockCellView, es.ViewContainerItem );

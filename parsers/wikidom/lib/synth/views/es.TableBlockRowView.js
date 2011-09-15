@@ -34,5 +34,7 @@ es.TableBlockRowView.prototype.drawSelection = function( range ) {
 	}
 };
 
+/* Inheritance */
+
 es.extend( es.TableBlockRowView, es.ViewContainer );
 es.extend( es.TableBlockRowView, es.ViewContainerItem );

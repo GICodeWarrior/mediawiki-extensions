@@ -46,4 +46,6 @@ es.ParagraphBlockView.prototype.drawSelection = function( range ) {
 	this.contentView.drawSelection( range );
 };
 
+/* Inheritance */
+
 es.extend( es.ParagraphBlockView, es.BlockView );

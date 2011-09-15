@@ -48,4 +48,6 @@ es.BlockView.getRenderedLineRange = function( offset ) {
 	throw 'BlockView.getRenderedLineRange not implemented in this subclass.';
 };
 
+/* Inheritance */
+
 es.extend( es.BlockView, es.ViewContainerItem );

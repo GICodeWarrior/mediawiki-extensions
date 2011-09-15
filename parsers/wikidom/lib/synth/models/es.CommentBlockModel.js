@@ -44,6 +44,16 @@ es.CommentBlockModel.prototype.getContentLength = function() {
 };
 
 /**
+ * Gets text content.
+ * 
+ * @method
+ * @returns {String} Plain text content
+ */
+es.CommentBlockModel.prototype.getText = function() {
+	return this.text;
+};
+
+/**
  * Gets a plain comment block object.
  * 
  * @method
@@ -52,6 +62,24 @@ es.CommentBlockModel.prototype.getContentLength = function() {
 es.CommentBlockModel.prototype.getPlainObject = function() {
 	return { 'type': 'comment', 'text': this.text };
 };
+
+/**
+ * Gets HTML serialization of block.
+ * 
+ * @method
+ * @returns {String} HTML data
+ */
+es.CommentBlockModel.prototype.getHtml = function() {
+	return '<!--' + comment.text + '-->';
+};
+
+/**
+ * Gets Wikitext serialization of block.
+ * 
+ * @method
+ * @returns {String} Wikitext data
+ */
+es.CommentBlockModel.prototype.getWikitext = es.CommentBlockModel.prototype.getHtml;
 
 // Register constructor
 es.BlockModel.constructors['comment'] = es.CommentBlockModel;

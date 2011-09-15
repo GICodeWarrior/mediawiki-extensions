@@ -108,6 +108,8 @@ es.SurfaceView.prototype.getLocationFromOffset = function( offset ) {
 	
 };
 
+/* Inheritance */
+
 es.SurfaceView.prototype.getLocationFromPosition = function( position ) {
 	
 };

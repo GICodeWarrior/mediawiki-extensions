@@ -69,5 +69,7 @@ es.ListBlockView.prototype.drawSelection = function( range ) {
 	}
 };
 
+/* Inheritance */
+
 es.extend( es.ListBlockView, es.ViewContainer );
 es.extend( es.ListBlockView, es.BlockView );

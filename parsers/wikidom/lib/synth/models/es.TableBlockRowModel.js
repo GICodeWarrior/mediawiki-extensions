@@ -80,6 +80,26 @@ es.TableBlockRowModel.prototype.getPlainObject = function() {
 	*/
 };
 
+/**
+ * Gets HTML serialization of row.
+ * 
+ * @method
+ * @returns {String} HTML data
+ */
+es.TableBlockRowModel.prototype.getHtml = function() {
+	
+};
+
+/**
+ * Gets Wikitext serialization of row.
+ * 
+ * @method
+ * @returns {String} Wikitext data
+ */
+es.TableBlockRowModel.prototype.getWikitext = function() {
+	
+};
+
 /* Inheritance */
 
 es.extend( es.TableBlockRowModel, es.ModelContainerItem );
