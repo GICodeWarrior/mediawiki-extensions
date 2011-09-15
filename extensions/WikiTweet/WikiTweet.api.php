@@ -436,8 +436,7 @@ class ApiQueryWikiTweet extends ApiQueryBase {
 					$text .= "
 						<li class='tweet_li_child bstatus0' id='{$idchild}' user='{$tweetuserchild}' style='
 							line-height: $child_line_height;
-							padding: $child_paddingli;
-							background-color:$child_background_color;'>
+							padding: $child_paddingli;'>
 							<span class='span-a' style='height:$child_span_avatar_width;width:$child_span_avatar_width;'>
 								<a href='$wgScriptPath/index.php/User:$tweetuserchild'>
 								<img src= '$avatarchild' width=$child_avatar_size height=$child_avatar_size alt='$tweetuserchild' border=0/>
@@ -445,7 +444,6 @@ class ApiQueryWikiTweet extends ApiQueryBase {
 							</span>
 							<span class='span-b' style = '
 											min-height: ".$child_avatar_size."px;
-											width:$child_width ;
 											line-height: $child_line_height;
 											font-size:$child_font_size;
 											'>
