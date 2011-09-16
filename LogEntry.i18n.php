@@ -215,7 +215,7 @@ $messages['eu'] = array(
 $messages['fi'] = array(
 	'logentry-append' => 'Lisää',
 	'logentry-parserhook-desc' => 'Tämä merkintälaajennus tarjoaa lomakkeen, jonka avulla voidaan lisätä tekstiä lokisivujen alkuun tai loppuun.',
-	'logentry-invalidpage' => 'Virheellinen sivu',
+	'logentry-invalidpage' => 'Virheellinen sivu: $1',
 	'logentry-invalidtoken' => 'Virheellinen lipuke',
 );
 
@@ -575,13 +575,14 @@ $messages['sr-el'] = array(
  * @author Fluff
  * @author Najami
  * @author Sertion
+ * @author WikiPhoenix
  */
 $messages['sv'] = array(
 	'logentry-append' => 'Lägg till efter',
 	'logentry-parserhook-desc' => 'Detta märkestillägget ger ett formulär för att lägga till element före/efter andra element på loggsidor',
 	'logentry-specialpage-desc' => 'Det här tillägget gör det möjligt att lägga till saker på loggsidor',
 	'logentry' => 'Loggelement',
-	'logentry-invalidpage' => 'Ogiltig sida',
+	'logentry-invalidpage' => 'Ogiltig sida: $1',
 	'logentry-invalidtoken' => 'Ogiltig typ',
 );
 
