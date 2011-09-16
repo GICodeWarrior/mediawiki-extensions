@@ -15,6 +15,13 @@ $messages['en'] = array(
 	'namespacepaths-desc' => 'Allows custom article paths to be mapped to namespaces of the wiki. Eg: Mapping pages like Help:A to /help/Page instead of /wiki/Help:Page.',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'namespacepaths-desc' => 'Permite casar caminos d\'artículu personalizaos con espacios de nomes de la wiki. P. ex.: casar páxines como "Ayuda:A" con "/ayuda/Páxina" y non con "/wiki/Ayuda:Páxina".',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
