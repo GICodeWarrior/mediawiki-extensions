@@ -179,10 +179,11 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author YaronSh
  */
 $messages['he'] = array(
-	'metakeywords-desc' => 'מתן האפשרות להגדרת תגיות <code>&lt;meta "keywords"&gt;</code> ו־<code>&lt;meta "description"&gt;</code> לכל מרחב שם בנפרד',
+	'metakeywords-desc' => 'מתן האפשרות להגדרת התגים <code dir="ltr">&lt;meta "keywords"&gt;</code> ו־<code dir="ltr">&lt;meta "description"&gt;</code> לכל מרחב שם בנפרד',
 );
 
 /** Hiligaynon (Ilonggo)
