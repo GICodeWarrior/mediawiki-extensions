@@ -653,7 +653,7 @@ class DumpHTML {
 			$wgHooks['GetFullURL'][] =& $this;
 			$wgHooks['SiteNoticeBefore'][] =& $this;
 			$wgHooks['SiteNoticeAfter'][] =& $this;
-			$this->oldArticlePath = $wgServer . $wgArticlePath;
+			$this->oldArticlePath = wfExpandURL( $wgServer . $wgArticlePath, PROTO_CANONICAL );
 			$this->oldLogo = $wgLogo;
 			$this->oldRepoGroup = RepoGroup::singleton();
 			$this->oldCopyrightIcon = $wgCopyrightIcon;
