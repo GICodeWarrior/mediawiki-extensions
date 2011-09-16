@@ -1816,7 +1816,7 @@ $messages['eu'] = array(
  */
 $messages['fi'] = array(
 	'openid-desc' => 'Kirjaudu wikiin [http://openid.net/ OpenID:llä] ja muille OpenID-tuetuille sivustoille wiki-käyttäjätilillä.',
-	'openidlogin' => 'Kirjaudu OpenID:llä',
+	'openidlogin' => 'Kirjaudu sisään tai luo tunnus OpenID:llä',
 	'openidserver' => 'OpenID-palvelin',
 	'openidxrds' => 'Yadis-tiedosto',
 	'openidconvert' => 'OpenID-muunnin',
