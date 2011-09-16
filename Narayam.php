@@ -44,6 +44,12 @@ $wgNarayamShortcutKey = array(
 // Array mapping language codes and scheme names to module names
 // Custom schemes can be added here
 $wgNarayamSchemes = array(
+	'as' => array(
+		'as' => 'ext.narayam.rules.as',
+		'as-avro' => 'ext.narayam.rules.as-avro',
+		'as-bornona' => 'ext.narayam.rules.as-bornona',
+		'as-inscript' => 'ext.narayam.rules.as-inscript',
+	),
 	'bn' => array(
 		'bn-avro' => 'ext.narayam.rules.bn-avro',
 		'bn-inscript' => 'ext.narayam.rules.bn-inscript',
@@ -139,6 +145,26 @@ $wgResourceModules['ext.narayam.core'] = $narayamTpl + array(
 		'narayam-toggle-ime',
 	),
 	'dependencies' => array( 'mediawiki.util', 'jquery.textSelection' ),
+);
+$wgResourceModules['ext.narayam.rules.as'] = $narayamTpl + array(
+	'scripts' => 'js/ext.narayam.rules.as.js',
+	'messages' => array( 'narayam-as' ),
+	'dependencies' => 'ext.narayam.core',
+);
+$wgResourceModules['ext.narayam.rules.as-avro'] = $narayamTpl + array(
+	'scripts' => 'js/ext.narayam.rules.as-avro.js',
+	'messages' => array( 'narayam-as-avro' ),
+	'dependencies' => 'ext.narayam.core',
+);
+$wgResourceModules['ext.narayam.rules.as-bornona'] = $narayamTpl + array(
+	'scripts' => 'js/ext.narayam.rules.as-bornona.js',
+	'messages' => array( 'narayam-as-bornona' ),
+	'dependencies' => 'ext.narayam.core',
+);
+$wgResourceModules['ext.narayam.rules.as-inscript'] = $narayamTpl + array(
+	'scripts' => 'js/ext.narayam.rules.as-inscript.js',
+	'messages' => array( 'narayam-as-inscript' ),
+	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.bn-avro'] = $narayamTpl + array(
 	'scripts' => 'js/ext.narayam.rules.bn-avro.js',
