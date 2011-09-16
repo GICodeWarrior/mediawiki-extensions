@@ -303,6 +303,13 @@ $messages['ce'] = array(
 	'ea-message' => 'Хаам:',
 );
 
+/** Corsican (Corsu) */
+$messages['co'] = array(
+	'ea-to' => 'À:',
+	'ea-subject' => 'Sughjettu:',
+	'ea-message' => 'Messaghju:',
+);
+
 /** German (Deutsch)
  * @author Church of emacs
  * @author Kghbln
