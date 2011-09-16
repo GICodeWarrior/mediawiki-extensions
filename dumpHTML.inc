@@ -789,6 +789,8 @@ class DumpHTML {
 		$linkCache->clear();
 
 		$context = new RequestContext();
+		$context->setRequest( new DumpFauxRequest( $title->getLocalUrl(),
+				                                   array( 'title' => $title->getPrefixedDbKey() ) ) );
 		$context->setTitle( $title );
 		$context->setUser( $wgUser );
 
@@ -1424,4 +1426,22 @@ function wfDumpStartTagHandler( $parser, $name, $attribs ) {
 /** XML parser callback */
 function wfDumpEndTagHandler( $parser, $name ) {}
 
+/**
+ * Workaround for bug 30921; extends FauxRequest to return a fake current URL.
+ * Needed by SkinTemplate::buildContentNavigationUrls for Special: pages.
+ */
+class DumpFauxRequest extends FauxRequest {
+	public function __construct( $url, $data, $wasPosted = false, $session = null ) {
+		parent::__construct( $data, $wasPosted, $session );
+		$this->url = $url;
+	}
+
+	/**
+	 * Returns a stub '#' link, suitable for in-page linking to self.
+	 * @return string URL
+	 */
+	public function getRequestURL() {
+		return $this->url;
+	}
+}
 # vim: syn=php
