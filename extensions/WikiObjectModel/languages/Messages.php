@@ -17,6 +17,15 @@ $messages['de'] = array(
 	'wom-desc' => 'Ermöglicht ein einfaches Objektmodell für Seiten',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'objecteditor' => 'Editor de obxectos',
+	'wom_editor' => 'Modelo de obxectos',
+	'wom-desc' => 'Modelo de obxectos de páxina sinxelo para os usuarios do wiki',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

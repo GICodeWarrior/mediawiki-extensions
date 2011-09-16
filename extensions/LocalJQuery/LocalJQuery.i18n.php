@@ -12,6 +12,13 @@ $messages['en'] = array(
 	'localjquery-desc' => 'Load jQuery from [[MediaWiki:JQuery.js]] (with ResourceLoader)',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'localjquery-desc' => 'Carga el jQuery dende [[MediaWiki:JQuery.js]] (con ResourceLoader)',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Wizardist
  */

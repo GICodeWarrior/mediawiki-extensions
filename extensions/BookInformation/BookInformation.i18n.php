@@ -338,6 +338,11 @@ $messages['ce'] = array(
 	'bookinfo-result-year' => 'Шо:',
 );
 
+/** Corsican (Corsu) */
+$messages['co'] = array(
+	'bookinfo-result-author' => 'Autore:',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  */

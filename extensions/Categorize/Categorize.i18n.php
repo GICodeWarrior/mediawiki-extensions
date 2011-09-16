@@ -30,6 +30,16 @@ $messages['qqq'] = array(
 For more information, see http://www.mediawiki.org/wiki/Extension:Categorize',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'categorize-desc' => "Amiesta un cuadru d'entrada pa editar y xubir páxines que permite a los usuarios conseñar categoríes",
+	'categorize-title' => 'Calificación del conocimientu',
+	'categorize-footer' => 'Si quies amestar una etiqueta, por favor comunícalo a un [[Special:ListUsers/sysop|alministrador]].',
+	'categorize-advice' => 'Calca nes etiquetes que quieras atribuir a esta páxina:',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by

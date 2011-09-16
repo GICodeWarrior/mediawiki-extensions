@@ -728,6 +728,11 @@ $messages['ckb'] = array(
 	'group-manager-member' => 'جێبەجێکەر',
 );
 
+/** Corsican (Corsu) */
+$messages['co'] = array(
+	'whitelistnever' => 'mai',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

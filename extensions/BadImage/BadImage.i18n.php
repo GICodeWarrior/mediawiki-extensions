@@ -503,6 +503,11 @@ $messages['ckb'] = array(
 	'badimages-reason' => 'هۆکار:',
 );
 
+/** Corsican (Corsu) */
+$messages['co'] = array(
+	'badimages-name' => 'Nome:',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský
@@ -2913,6 +2918,11 @@ $messages['vo'] = array(
 	'badimages-log-add' => '[[$1]] peläükon lisede magodas badik',
 	'badimages-log-remove' => '[[$1]] pemoükon se lised magodas badik',
 	'badimages-page' => '{{ns:help}}:Lised magodas badik',
+);
+
+/** Walloon (Walon) */
+$messages['wa'] = array(
+	'badimages-reason' => 'Råjhon:',
 );
 
 /** Wu (吴语) */

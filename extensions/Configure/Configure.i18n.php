@@ -4160,7 +4160,7 @@ Por favor, faga que se poida escribir nel mediante PHP para usar esta extensión
 	'configure-js-add' => 'Engadir unha nova entrada',
 	'configure-js-group-exists' => 'Erro: o grupo xa existe.',
 	'configure-js-prompt-group' => 'Insira o nome do novo grupo:',
-	'configure-js-remove' => 'Eliminar',
+	'configure-js-remove' => 'Borrar',
 	'configure-js-remove-row' => 'Eliminar esta entrada',
 	'configure-js-get-image-url' => 'Converter o nome do ficheiro nun enderezo URL',
 	'configure-js-image-error' => 'Ocorreu un erro ao obter o enderezo URL. Por favor, comprobe que o ficheiro existe.',

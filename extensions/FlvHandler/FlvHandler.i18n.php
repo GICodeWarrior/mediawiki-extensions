@@ -31,6 +31,14 @@ $messages['ar'] = array(
 	'flv-long-desc' => 'فلاش فيديو، $1 × $2 بكسل، حجم الملف: $3',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'flvhandler_desc' => "Permite amestar ficheros de videu Flash (.flv) que s'amestarán como ficheros estándar (p. ex., <nowiki>[[</nowiki>{{ns:file}}:Película.flv<nowiki>]]</nowiki>)",
+	'flv-long-desc' => 'Videu en Flash, $1 × $2 píxels, tamañu del ficheru: $3',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by

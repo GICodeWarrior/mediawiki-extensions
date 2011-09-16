@@ -694,7 +694,7 @@ D ID, wu Du bruuchsch, sin d Zahlen un Buechstabe zwische „$2“ un „$3“.'
  * @author YaronSh
  */
 $messages['he'] = array(
-	'imstatus-desc' => 'הוספת תגיות מגוונות עבור המצבים המקוונים של רשתות המסרים המידיים (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo)',
+	'imstatus-desc' => 'הוספת תגים עבור המצבים המקוונים של מגוון רשתות המסרים המידיים (AIM&rlm;, Google Talk&rlm;, ICQ&rlm;, MSN/Live Messenger&rlm;, Skype&rlm;, Xfire&rlm;, Yahoo)',
 	'imstatus_syntax' => 'תחביר',
 	'imstatus_default' => 'ברירת מחדל',
 	'imstatus_example' => 'דוגמה',

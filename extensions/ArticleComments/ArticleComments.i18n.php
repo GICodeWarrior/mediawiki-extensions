@@ -393,6 +393,11 @@ Els disponibles són "plain", "normal" i "wiki".',
 	'processcomment' => "Processa el comentari a l'article",
 );
 
+/** Corsican (Corsu) */
+$messages['co'] = array(
+	'article-comments-name-string' => 'Nome',
+);
+
 /** Czech (Česky)
  * @author Achiles
  * @author Jkjk

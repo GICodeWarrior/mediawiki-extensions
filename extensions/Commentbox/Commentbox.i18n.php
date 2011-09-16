@@ -199,6 +199,11 @@ $messages['ca'] = array(
 	'commentbox-error-empty-comment' => 'No estan permesos els comentaris buits!',
 );
 
+/** Corsican (Corsu) */
+$messages['co'] = array(
+	'commentbox-name' => 'Nome:',
+);
+
 /** Czech (Česky) */
 $messages['cs'] = array(
 	'commentbox-name' => 'Jméno:',

@@ -2123,6 +2123,13 @@ Clicatz sus una d'entre elas per veire las estatisticas a son prepaus.",
 	'prefstats-legend-in' => 'Vòl participar',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Odisha1
+ */
+$messages['or'] = array(
+	'prefstats-factor-hour' => 'ଘଣ୍ଟା',
+);
+
 /** Deitsch (Deitsch)
  * @author Xqt
  */
