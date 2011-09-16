@@ -29,6 +29,14 @@ $messages['af'] = array(
 	'logofunctions-filenotexist' => 'Fout: [[File:$1]] bestaan nie',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'logofunctions-desc' => "Amestar una función d'analís pal logo de la wiki",
+	'logofunctions-filenotexist' => 'Error: el [[File:$1|ficheru "$1"]] nun esiste',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Wizardist
