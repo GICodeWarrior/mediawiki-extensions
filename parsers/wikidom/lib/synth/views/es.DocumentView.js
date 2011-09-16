@@ -12,13 +12,13 @@ es.DocumentView = function( documentModel ) {
  * Render content.
  */
 es.DocumentView.prototype.renderContent = function() {
-	for ( var i = 0; i < this.views.length; i++ ) {
-		this.views[i].renderContent();
+	for ( var i = 0; i < this.items.length; i++ ) {
+		this.items[i].renderContent();
 	}
 };
 
 es.DocumentView.prototype.drawSelection = function( range ) {
-	var selectedViews = this.views.select( range );
+	var selectedViews = this.items.select( range );
 	for ( var i = 0; i < selectedViews.length; i++ ) {
 		selectedViews[i].item.drawSelection(
 			new es.Range( selectedViews[i].from, selectedViews[i].to )
@@ -27,7 +27,7 @@ es.DocumentView.prototype.drawSelection = function( range ) {
 };
 
 es.DocumentView.prototype.getLength = function( ) {
-	return this.views.getLengthOfItems();
+	return this.items.getLengthOfItems();
 };
 
 /**
@@ -37,11 +37,11 @@ es.DocumentView.prototype.getLength = function( ) {
  * @returns {String} HTML data
  */
 es.DocumentView.prototype.getHtml = function() {
-	var views = this.views;
+	var views = this.items;
 	return es.Html.makeTag(
 		'div',
 		{ 'class': this.$.attr( 'class' ) },
-		$.map( this.views, function( view, i ) {
+		$.map( this.items, function( view, i ) {
 			return view.getHtml( { 'singular': i === 0 && views.length == 1 } );
 		} ).join( '' )
 	);

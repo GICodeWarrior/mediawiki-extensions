@@ -3,18 +3,18 @@
  * 
  * @class
  * @constructor
- * @param cells {Array}
+ * @param items {Array}
  * @param attributes {Object}
- * @property cells {Array}
+ * @property items {Array}
  * @property attributes {Object}
  */
-es.TableBlockRowModel = function( cells, attributes ) {
-	es.ModelContainerItem.call( this, 'table' );
+es.TableBlockRowModel = function( items, attributes ) {
+	es.ModelContainerItem.call( this );
 	es.ModelContainer.call( this );
 	
-	if ( $.isArray( cells ) ) {
-		for ( var i = 0; i < cells.length; i++ ) {
-			this.append( cells[i] );
+	if ( $.isArray( items ) ) {
+		for ( var i = 0; i < items.length; i++ ) {
+			this.append( items[i] );
 		}
 	}
 
@@ -56,7 +56,7 @@ es.TableBlockRowModel.prototype.createView = function() {
  * @returns {Integer} Length of all content
  */
 es.TableBlockRowModel.prototype.getContentLength = function() {
-	return this.cells.getContentLength();
+	return this.items.getContentLength();
 };
 
 /**
@@ -68,9 +68,9 @@ es.TableBlockRowModel.prototype.getContentLength = function() {
 es.TableBlockRowModel.prototype.getPlainObject = function() {
 	/*
 	var obj = {};
-	if ( this.cells.length ) {
-		obj.cells = $.map( this.cells, function( cell ) {
-			return cell.getPlainObject();
+	if ( this.items.length ) {
+		obj.cells = $.map( this.items, function( item ) {
+			return item.getPlainObject();
 		} );
 	}
 	if ( !$.isEmptyObject( this.attributes ) ) {

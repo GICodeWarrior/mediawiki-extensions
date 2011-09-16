@@ -6,16 +6,11 @@
  * @class
  * @constructor
  * @extends {es.EventEmitter}
- * @param listName {String} Property name for list of items
- * @property [listName] {Array} list of items
+ * @property items {Array} list of items
  */
-es.ModelContainer = function( listName ) {
+es.ModelContainer = function() {
 	es.EventEmitter.call( this );
-	if ( typeof listName !== 'string' ) {
-		listName = 'items';
-	}
-	this._listName = listName;
-	this[this._listName] = new es.AggregateArray();
+	this.items = new es.AggregateArray();
 	var container = this;
 	this.relayUpdate = function() {
 		container.emit( 'update' );
@@ -31,7 +26,7 @@ es.ModelContainer = function( listName ) {
  * @returns {Object} Child object at index
  */
 es.ModelContainer.prototype.get = function( index ) {
-	return this[this._listName][index] || null;
+	return this.items[index] || null;
 };
 
 /**
@@ -41,7 +36,7 @@ es.ModelContainer.prototype.get = function( index ) {
  * @returns {Array} List of all items.
  */
 es.ModelContainer.prototype.all = function() {
-	return this[this._listName];
+	return this.items;
 };
 
 /**
@@ -51,7 +46,7 @@ es.ModelContainer.prototype.all = function() {
  * @returns {Integer} Number of items in container
  */
 es.ModelContainer.prototype.getLength = function() {
-	return this[this._listName].length
+	return this.items.length
 };
 
 /**
@@ -61,7 +56,7 @@ es.ModelContainer.prototype.getLength = function() {
  * @returns {Integer} Index of item, -1 if item is not in container
  */
 es.ModelContainer.prototype.indexOf = function( item ) {
-	return this[this._listName].indexOf( item );
+	return this.items.indexOf( item );
 };
 
 /**
@@ -71,7 +66,7 @@ es.ModelContainer.prototype.indexOf = function( item ) {
  * @returns {Object} First item
  */
 es.ModelContainer.prototype.first = function() {
-	return this[this._listName].length ? this[this._listName][0] : null;
+	return this.items.length ? this.items[0] : null;
 };
 
 /**
@@ -81,8 +76,8 @@ es.ModelContainer.prototype.first = function() {
  * @returns {Object} Last item
  */
 es.ModelContainer.prototype.last = function() {
-	return this[this._listName].length
-		? this[this._listName][this[this._listName].length - 1] : null;
+	return this.items.length
+		? this.items[this.items.length - 1] : null;
 };
 
 /**
@@ -94,8 +89,8 @@ es.ModelContainer.prototype.last = function() {
  * @param callback {Function} Function to call on each item which takes item and index arguments
  */
 es.ModelContainer.prototype.each = function( callback ) {
-	for ( var i = 0; i < this[this._listName].length; i++ ) {
-		if ( callback( this[this._listName][i], i ) === false ) {
+	for ( var i = 0; i < this.items.length; i++ ) {
+		if ( callback( this.items[i], i ) === false ) {
 			break;
 		}
 	}
@@ -113,11 +108,11 @@ es.ModelContainer.prototype.each = function( callback ) {
 es.ModelContainer.prototype.append = function( item ) {
 	var parent = item.parent();
 	if ( parent === this ) {
-		this[this._listName].splice( this.indexOf( item ), 1 );
+		this.items.splice( this.indexOf( item ), 1 );
 	} else if ( parent ) {
 		parent.remove( item );
 	}
-	this[this._listName].push( item );
+	this.items.push( item );
 	item.on( 'update', this.relayUpdate );
 	item.attach( this );
 	this.emit( 'append', item );
@@ -136,11 +131,11 @@ es.ModelContainer.prototype.append = function( item ) {
 es.ModelContainer.prototype.prepend = function( item ) {
 	var parent = item.parent();
 	if ( parent === this ) {
-		this[this._listName].splice( this.indexOf( item ), 1 );
+		this.items.splice( this.indexOf( item ), 1 );
 	} else if ( parent ) {
 		parent.remove( item );
 	}
-	this[this._listName].unshift( item );
+	this.items.unshift( item );
 	item.on( 'update', this.relayUpdate );
 	item.attach( this );
 	this.emit( 'prepend', item );
@@ -160,14 +155,14 @@ es.ModelContainer.prototype.prepend = function( item ) {
 es.ModelContainer.prototype.insertBefore = function( item, before ) {
 	var parent = item.parent();
 	if ( parent === this ) {
-		this[this._listName].splice( this.indexOf( item ), 1 );
+		this.items.splice( this.indexOf( item ), 1 );
 	} else if ( parent ) {
 		parent.remove( item );
 	}
 	if ( before ) {
-		this[this._listName].splice( this[this._listName].indexOf( before ), 0, item );
+		this.items.splice( this.items.indexOf( before ), 0, item );
 	} else {
-		this[this._listName].unshift( item );
+		this.items.unshift( item );
 	}
 	item.on( 'update', this.relayUpdate );
 	item.attach( this );
@@ -188,14 +183,14 @@ es.ModelContainer.prototype.insertBefore = function( item, before ) {
 es.ModelContainer.prototype.insertAfter = function( item, after ) {
 	var parent = item.parent();
 	if ( parent === this ) {
-		this[this._listName].splice( this.indexOf( item ), 1 );
+		this.items.splice( this.indexOf( item ), 1 );
 	} else if ( parent ) {
 		parent.remove( item );
 	}
 	if ( after ) {
-		this[this._listName].splice( this[this._listName].indexOf( after ) + 1, 0, item );
+		this.items.splice( this.items.indexOf( after ) + 1, 0, item );
 	} else {
-		this[this._listName].push( item );
+		this.items.push( item );
 	}
 	item.on( 'update', this.relayUpdate );
 	item.attach( this );
@@ -214,7 +209,7 @@ es.ModelContainer.prototype.insertAfter = function( item, after ) {
  */
 es.ModelContainer.prototype.remove = function( item ) {
 	item.removeListener( 'update', this.relayUpdate );
-	this[this._listName].splice( this.indexOf( item ), 1 );
+	this.items.splice( this.indexOf( item ), 1 );
 	item.detach();
 	this.emit( 'remove', item );
 	this.emit( 'update' );

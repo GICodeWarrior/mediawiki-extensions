@@ -9,7 +9,7 @@
  * @property styles {Array}
  */
 es.ListBlockItemModel = function( content, styles ) {
-	es.ModelContainerItem.call( this, 'list' );
+	es.ModelContainerItem.call( this );
 	this.content = content || null;
 	this.styles = styles || ['bullet'];
 };

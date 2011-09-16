@@ -3,14 +3,14 @@
  * 
  * @class
  * @constructor
- * @param blocks {Array}
+ * @param items {Array}
  * @param attributes {Object}
- * @property blocks {Array}
+ * @property items {Array}
  * @property attributes {Object}
  */
 es.DocumentModel = function( blocks, attributes ) {
-	es.ModelContainer.call( this, 'blocks' );
-	this.blocks = new es.AggregateArray( blocks || [] );
+	es.ModelContainer.call( this );
+	this.items = new es.AggregateArray( blocks || [] );
 	this.attributes = attributes || {};
 };
 
@@ -39,10 +39,10 @@ es.DocumentModel.newFromPlainObject = function( obj ) {
 
 es.DocumentModel.prototype.getPlainObject = function() {
 	var obj = {};
-	if ( this.blocks.length ) {
+	if ( this.items.length ) {
 		obj.blocks = [];
-		for ( var i = 0; i < this.blocks.length; i++ ) {
-			obj.blocks.push( this.blocks[i].getPlainObject() );
+		for ( var i = 0; i < this.items.length; i++ ) {
+			obj.blocks.push( this.items[i].getPlainObject() );
 		}
 	}
 	if ( !$.isEmptyObject( this.attributes ) ) {
@@ -57,7 +57,7 @@ es.DocumentModel.prototype.getPlainObject = function() {
  * @returns {Integer}
  */
 es.DocumentModel.prototype.getContentLength = function() {
-	return this.blocks.getContentLength();
+	return this.items.getContentLength();
 };
 
 es.extend( es.DocumentModel, es.ModelContainer );

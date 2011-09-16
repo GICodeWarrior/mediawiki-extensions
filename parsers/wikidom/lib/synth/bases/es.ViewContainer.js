@@ -7,19 +7,19 @@
  * @class
  * @constructor
  * @extends {es.EventEmitter}
- * @param containerModel {es.ModelContainer} Property name for list of items
+ * @param model {es.ModelContainer} Model to follow
  * @param typeName {String} Name to use in CSS classes and HTML element data
  * @param tagName {String} HTML element name to use (optional, default: "div")
  * @property $ {jQuery} Container element
- * @property views {Array} List of views, correlating to models in the model container
+ * @property items {Array} List of views, correlating to models in the model container
  */
-es.ViewContainer = function( containerModel, typeName, tagName ) {
+es.ViewContainer = function( model, typeName, tagName ) {
 	es.EventEmitter.call( this );
-	this.containerModel = containerModel;
-	if ( !this.containerModel ) {
+	this.model = model;
+	if ( !this.model ) {
 		return;
 	}
-	this.views = new es.AggregateArray();
+	this.items = new es.AggregateArray();
 	if ( typeof typeName !== 'string' ) {
 		typeName = 'viewContainer';
 	}
@@ -45,7 +45,7 @@ es.ViewContainer = function( containerModel, typeName, tagName ) {
 		}
 		return itemView;
 	}
-	this.containerModel.on( 'prepend', function( itemModel ) {
+	this.model.on( 'prepend', function( itemModel ) {
 		var itemView = recycleItemView( itemModel, true );
 		itemView.on( 'update', container.relayUpdate );
 		container.views.unshift( itemView );
@@ -53,7 +53,7 @@ es.ViewContainer = function( containerModel, typeName, tagName ) {
 		container.emit( 'prepend', itemView );
 		container.emit( 'update' );
 	} );
-	this.containerModel.on( 'append', function( itemModel ) {
+	this.model.on( 'append', function( itemModel ) {
 		var itemView = recycleItemView( itemModel, true );
 		itemView.on( 'update', container.relayUpdate );
 		container.views.push( itemView );
@@ -61,7 +61,7 @@ es.ViewContainer = function( containerModel, typeName, tagName ) {
 		container.emit( 'append', itemView );
 		container.emit( 'update' );
 	} );
-	this.containerModel.on( 'insertBefore', function( itemModel, beforeModel ) {
+	this.model.on( 'insertBefore', function( itemModel, beforeModel ) {
 		var beforeView = container.lookupItemView( beforeModel ),
 			itemView = recycleItemView( itemModel, true );
 		itemView.on( 'update', container.relayUpdate );
@@ -75,7 +75,7 @@ es.ViewContainer = function( containerModel, typeName, tagName ) {
 		container.emit( 'insertBefore', itemView, beforeView );
 		container.emit( 'update' );
 	} );
-	this.containerModel.on( 'insertAfter', function( itemModel, afterModel ) {
+	this.model.on( 'insertAfter', function( itemModel, afterModel ) {
 		var afterView = container.lookupItemView( afterModel ),
 			itemView = recycleItemView( itemModel, true );
 		itemView.on( 'update', container.relayUpdate );
@@ -89,26 +89,26 @@ es.ViewContainer = function( containerModel, typeName, tagName ) {
 		container.emit( 'insertAfter', itemView, afterView );
 		container.emit( 'update' );
 	} );
-	this.containerModel.on( 'remove', function( itemModel ) {
+	this.model.on( 'remove', function( itemModel ) {
 		var itemView = recycleItemView( itemModel );
 		itemView.removeListener( 'update', container.relayUpdate );
 		container.emit( 'remove', itemView );
 		container.emit( 'update' );
 	} );
 	// Auto-add views for existing items
-	var itemModels = this.containerModel.all();
+	var itemModels = this.model.all();
 	for ( var i = 0; i < itemModels.length; i++ ) {
 		var itemView = itemModels[i].createView();
 		itemView.on( 'update', container.relayUpdate );
-		this.views.push( itemView );
+		this.items.push( itemView );
 		this.$.append( itemView.$ );
 	}
 };
 
 es.ViewContainer.prototype.lookupItemView = function( itemModel ) {
-	for ( var i = 0; i < this.views.length; i++ ) {
-		if ( this.views[i].getModel() === itemModel ) {
-			return this.views[i];
+	for ( var i = 0; i < this.items.length; i++ ) {
+		if ( this.items[i].getModel() === itemModel ) {
+			return this.items[i];
 		}
 	}
 	return null;

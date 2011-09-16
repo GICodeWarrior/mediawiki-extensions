@@ -19,17 +19,17 @@ es.TableBlockRowView = function( model ) {
  * Render content.
  */
 es.TableBlockRowView.prototype.renderContent = function() {
-	for ( var i = 0; i < this.views.length; i++ ) {
-		this.views[i].renderContent();
+	for ( var i = 0; i < this.items.length; i++ ) {
+		this.items[i].renderContent();
 	}
 };
 
 es.TableBlockRowView.prototype.getLength = function() {
-	return this.views.getLengthOfItems();
+	return this.items.getLengthOfItems();
 };
 
 es.TableBlockRowView.prototype.drawSelection = function( range ) {
-	var selectedViews = this.views.select( range );
+	var selectedViews = this.items.select( range );
 	for ( var i = 0; i < selectedViews.length; i++ ) {
 		selectedViews[i].item.drawSelection(
 			new es.Range( selectedViews[i].from, selectedViews[i].to )
@@ -45,7 +45,7 @@ es.TableBlockRowView.prototype.drawSelection = function( range ) {
  * @returns {String} HTML data
  */
 es.TableBlockRowView.prototype.getHtml = function( options ) {
-	return es.Html.makeTag( 'tr', this.model.attributes, $.map( this.views, function( view ) {
+	return es.Html.makeTag( 'tr', this.model.attributes, $.map( this.items, function( view ) {
 		return view.getHtml();
 	} ).join( '' ) );
 };

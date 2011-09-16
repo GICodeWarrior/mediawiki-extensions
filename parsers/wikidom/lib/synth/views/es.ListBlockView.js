@@ -17,8 +17,8 @@ es.ListBlockView = function( model ) {
  * Render content.
  */
 es.ListBlockView.prototype.renderContent = function() {
-	for ( var i = 0; i < this.views.length; i++ ) {
-		this.views[i].renderContent();
+	for ( var i = 0; i < this.items.length; i++ ) {
+		this.items[i].renderContent();
 	}
 };
 
@@ -26,14 +26,14 @@ es.ListBlockView.prototype.enumerate = function() {
 	var itemLevel,
 		levels = [];
 
-	for ( var i = 0; i < this.views.length; i++ ) {
-		itemLevel = this.views[i].model.getLevel();
+	for ( var i = 0; i < this.items.length; i++ ) {
+		itemLevel = this.items[i].model.getLevel();
 		levels = levels.slice(0, itemLevel + 1);
-		if ( this.views[i].model.getStyle() === 'number' ) {
+		if ( this.items[i].model.getStyle() === 'number' ) {
 			if ( !levels[itemLevel] ) {
 				levels[itemLevel] = 0;
 			}
-			this.views[i].setNumber( ++levels[itemLevel] );
+			this.items[i].setNumber( ++levels[itemLevel] );
 		}
 	}
 };
@@ -64,7 +64,7 @@ es.ListBlockView.prototype.getLength = function() {
 };
 
 es.ListBlockView.prototype.drawSelection = function( range ) {
-	var selectedViews = this.views.select( range );
+	var selectedViews = this.items.select( range );
 	for ( var i = 0; i < selectedViews.length; i++ ) {
 		selectedViews[i].item.drawSelection(
 			new es.Range( selectedViews[i].from, selectedViews[i].to )
@@ -83,7 +83,7 @@ es.ListBlockView.prototype.getHtml = function( options ) {
 	return es.Html.makeTag(
 		'div',
 		{ 'class': this.$.attr( 'class' ) },
-		$.map( this.views, function( view ) {
+		$.map( this.items, function( view ) {
 			return view.getHtml();
 		} ).join( '' )
 	);

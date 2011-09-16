@@ -4,22 +4,17 @@
  * @class
  * @constructor
  * @extends {es.EventEmitter}
- * @param containerName {String} Name of container type
- * @property [containerName] {Object} Reference to container, if attached
+ * @property container {Object} Reference to container, if attached
  */
-es.ModelContainerItem = function( containerName ) {
+es.ModelContainerItem = function() {
 	es.EventEmitter.call( this );
-	if ( typeof containerName !== 'string' ) {
-		containerName = 'container';
-	}
-	this._containerName = containerName;
-	this[this._containerName] = null;
+	this.container = null;
 };
 
 /* Methods */
 
 es.ModelContainerItem.prototype.parent = function() {
-	return this[this._containerName];
+	return this.container;
 };
 
 /**
@@ -37,7 +32,7 @@ es.ModelContainerItem.prototype.createView = function() {
  * @emits "attach" with container argument
  */
 es.ModelContainerItem.prototype.attach = function( container ) {
-	this[this._containerName] = container;
+	this.container = container;
 	this.emit( 'attach', container );
 };
 
@@ -48,8 +43,8 @@ es.ModelContainerItem.prototype.attach = function( container ) {
  * @emits "detach" with container argument
  */
 es.ModelContainerItem.prototype.detach = function() {
-	var container = this[this._containerName];
-	this[this._containerName] = null;
+	var container = this.container;
+	this.container = null;
 	this.emit( 'detach', container );
 };
 
@@ -63,7 +58,7 @@ es.ModelContainerItem.prototype.detach = function() {
  */
 es.ModelContainerItem.prototype.getIndex = function() {
 	try {
-		var index = this[this._containerName].indexOf( this );
+		var index = this.container.indexOf( this );
 		if ( index === -1 ) {
 			throw 'Unknown item error. Can not get index of item that is not in a container. ' + e;
 		}
@@ -82,7 +77,7 @@ es.ModelContainerItem.prototype.getIndex = function() {
  */
 es.ModelContainerItem.prototype.previous = function() {
 	try {
-		return this[this._containerName].get( this[this._containerName].indexOf( this ) - 1 );
+		return this.container.get( this.container.indexOf( this ) - 1 );
 	} catch ( e ) {
 		throw 'Missing container error. Can not get previous item in missing container. ' + e;
 	}
@@ -97,7 +92,7 @@ es.ModelContainerItem.prototype.previous = function() {
  */
 es.ModelContainerItem.prototype.next = function() {
 	try {
-		return this[this._containerName].get( this[this._containerName].indexOf( this ) + 1 );
+		return this.container.get( this.container.indexOf( this ) + 1 );
 	} catch ( e ) {
 		throw 'Missing container error. Can not get next item in missing container. ' + e;
 	}
@@ -112,7 +107,7 @@ es.ModelContainerItem.prototype.next = function() {
  */
 es.ModelContainerItem.prototype.isFirst = function() {
 	try {
-		return this[this._containerName].indexOf( this ) === 0;
+		return this.container.indexOf( this ) === 0;
 	} catch ( e ) {
 		throw 'Missing container error. Can not get index of item in missing container. ' + e;
 	}
@@ -127,8 +122,7 @@ es.ModelContainerItem.prototype.isFirst = function() {
  */
 es.ModelContainerItem.prototype.isLast = function() {
 	try {
-		return this[this._containerName].indexOf( this )
-			=== this[this._containerName].getLength() - 1;
+		return this.container.indexOf( this ) === this.container.getLength() - 1;
 	} catch ( e ) {
 		throw 'Missing container error. Can not get index of item in missing container. ' + e;
 	}

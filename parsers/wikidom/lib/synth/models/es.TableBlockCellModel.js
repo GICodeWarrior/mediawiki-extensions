@@ -9,7 +9,7 @@
  * @property attributes {Object}
  */
 es.TableBlockCellModel = function( documentModel, attributes ) {
-	es.ModelContainerItem.call( this, 'row' );
+	es.ModelContainerItem.call( this );
 	this.documentModel = documentModel || null;
 	this.attributes = attributes || {};
 };
