@@ -1,3 +1,9 @@
+wikidiff2 (0.0.1wm1) lucid-wikipedia; urgency=low
+
+  * initial wikimedia build
+
+ -- peter youngmeister <py@wikimedia.org>  Thu, 15 Sep 2011 17:25:46 -0700
+
 wikidiff2 (0.0.1+svn55737-1ubuntu1) lucid; urgency=low
 
   * Rebuild against PHP 5.3. 
