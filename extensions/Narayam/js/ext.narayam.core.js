@@ -281,7 +281,11 @@ $.narayam = new ( function() {
 	 * @param e Event object
 	 */
 	function onfocus( e ) {
-		$( this ).data( 'narayamKeyBuffer', '' );
+		if (!$( this ).data( 'narayamKeyBuffer' )) {
+			// First-time focus on the input field
+			// So, initialise a key buffer for it
+			$( this ).data( 'narayamKeyBuffer', '' );
+		}
 		changeVisual( $( this ) );
 	}
 	
