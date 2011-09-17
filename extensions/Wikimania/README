@@ -1,0 +1,5 @@
+This extension is designed for managing the annual Wikimania conference.
+
+Install like a normal extension, run update.php to create tables.
+
+Configure $wgWikimaniaConf (see docs in Wikimania.php)
