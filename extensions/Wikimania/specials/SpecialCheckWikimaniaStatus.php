@@ -9,6 +9,6 @@ class SpecialCheckWikimaniaStatus extends SpecialPage {
 
 	public function execute( $par = '' ) {
 		$this->setHeaders();
-		$this->getOutput->addHTML( '<p>Todo</p>' );
+		$this->getOutput()->addHTML( '<p>Todo</p>' );
 	}
 }
