@@ -1151,13 +1151,13 @@ class SMWNotifyUpdate {
 			if ( $property->getWikiValue() != '' ) {
 				foreach ( $propvalues as $propvalue ) {
 					if ( $propvalue->getWikiValue() != '' ) {
-						$result[SMWNotifyProcessor::toInfoId( 2, 0, $sStore->lookupSmwId( SMW_NS_PROPERTY, $property->getWikiValue() ) )][] = array( 'name' => $property, 'value' => $propvalue );
+						$result[SMWNotifyProcessor::toInfoId( 2, 0, $sStore->lookupSmwId( SMW_NS_PROPERTY, $property->getDBkey() ) )][] = array( 'name' => $property, 'value' => $propvalue );
 					}
 				}
 			} else {
 				foreach ( $propvalues as $propvalue ) {
 					if ( ( $propvalue instanceof SMWWikiPageValue ) && ( $propvalue->getNamespace() == NS_CATEGORY ) ) {
-						$result[SMWNotifyProcessor::toInfoId( 0, 0, $sStore->lookupSmwId( NS_CATEGORY, $propvalue->getWikiValue() ) )][] = array( 'name' => $propvalue, 'value' => null );
+						$result[SMWNotifyProcessor::toInfoId( 0, 0, $sStore->lookupSmwId( NS_CATEGORY, $propvalue->getDBkey() ) )][] = array( 'name' => $propvalue, 'value' => null );
 					}
 				}
 			}
@@ -1578,6 +1578,9 @@ class SMWNotifyUpdate {
 				$res = smwfGetStore()->getQueryResult( $query );
 				$printer = SMWQueryProcessor::getResultPrinter( $format, SMWQueryProcessor::INLINE_QUERY, $res );
 				$result = $printer->getResult( $res, $params, SMW_OUTPUT_HTML );
+				// FIXME: hardcode switch to full url
+				global $wgScriptPath, $wgServer;
+				$result = str_replace ( $wgScriptPath, $wgServer . $wgScriptPath, $result );
 				$html_msg .= $result . '<br/>';
 				$html_showall[$notify_id] = array ( 'name' => $notifications[$notify_id]['name'], 'html' => $result );
 
