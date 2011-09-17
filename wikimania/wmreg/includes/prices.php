@@ -78,12 +78,9 @@ function calculate_cost( $register_data )
 	$attendee_type = 'regular_attendee';
 	$period = 'very_early_bird';
 	$currency = 'USD';
-	$attendance_cost = 0;
-	$accommodation_cost = 0;
 	$vat_cost = 0;
 	$n_main_days = 0;
 	$people_in_room = 0;
-	$hotel = '';
 
 	if ( in_array( '3', $register_data['join_date'] ) )
 		$n_main_days++;

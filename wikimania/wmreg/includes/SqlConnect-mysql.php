@@ -58,7 +58,7 @@ Class SqlConnect
 	{
 		return mysql_fetch_assoc( $query_result );
 	}
-	function fetchRow()
+	function fetchRow( $query_result )
 	{
 		return mysql_fetch_row( $query_result );
 	}

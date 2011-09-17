@@ -1492,13 +1492,13 @@ function coupon_activation()
 		$night_selected = $register_data['night1'] + $register_data['night2'] + $register_data['night3'] +  $register_data['night4'];
 
 		if ( $register_data['hotelname'] == 'metropol' )
-										   { $register_data['cost_total'] += $accommodation_cost_metropol * $night_selected; }
-										  elseif ( $register_data['hotelname'] == 'delta' )
-										   { $register_data['cost_total'] += $accommodation_cost_delta * $night_selected; }
-										   elseif ( $register_data['hotelname'] == 'dorms' )
-										   { $register_data['cost_total'] += $accommodation_cost_dorms * $night_selected; }
-										   else
-										   { $register_data['cost_total'] += 0; }
+		{ $register_data['cost_total'] += $accommodation_cost_metropol * $night_selected; }
+		elseif ( $register_data['hotelname'] == 'delta' )
+		{ $register_data['cost_total'] += $accommodation_cost_delta * $night_selected; }
+		elseif ( $register_data['hotelname'] == 'dorms' )
+		{ $register_data['cost_total'] += $accommodation_cost_dorms * $night_selected; }
+		else
+		{ $register_data['cost_total'] += 0; }
 
 	}
 	elseif ( $MY_REQUEST['coupon_id'] == $coupon_volunteer )
@@ -1509,13 +1509,13 @@ function coupon_activation()
 		$night_selected = $register_data['night1'] + $register_data['night2'] + $register_data['night3'] +  $register_data['night4'];
 
 		if ( $register_data['hotelname'] == 'metropol' )
-										   { $register_data['cost_total'] += $accommodation_cost_metropol * $night_selected; }
-										  elseif ( $register_data['hotelname'] == 'delta' )
-										   { $register_data['cost_total'] += $accommodation_cost_delta * $night_selected; }
-										   elseif ( $register_data['hotelname'] == 'dorms' )
-										   { $register_data['cost_total'] += $accommodation_cost_dorms * $night_selected; }
-										   else
-										   { $register_data['cost_total'] += 0; }
+		{ $register_data['cost_total'] += $accommodation_cost_metropol * $night_selected; }
+		elseif ( $register_data['hotelname'] == 'delta' )
+		{ $register_data['cost_total'] += $accommodation_cost_delta * $night_selected; }
+		elseif ( $register_data['hotelname'] == 'dorms' )
+		{ $register_data['cost_total'] += $accommodation_cost_dorms * $night_selected; }
+		else
+		{ $register_data['cost_total'] += 0; }
 	}
 	else
 	{
