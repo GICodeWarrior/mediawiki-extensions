@@ -45,16 +45,14 @@ define( "RECAPTCHA_VERIFY_SERVER", "www.google.com" );
  * @return string - encoded request
  */
 function _recaptcha_qsencode ( $data ) {
-		$req = "";
-		foreach ( $data as $key => $value )
-				$req .= $key . '=' . urlencode( stripslashes( $value ) ) . '&';
+	$req = "";
+	foreach ( $data as $key => $value )
+			$req .= $key . '=' . urlencode( stripslashes( $value ) ) . '&';
 
-		// Cut the last '&'
-		$req = substr( $req, 0, strlen( $req ) -1 );
-		return $req;
+	// Cut the last '&'
+	$req = substr( $req, 0, strlen( $req ) -1 );
+	return $req;
 }
-
-
 
 /**
  * Submits an HTTP POST to a reCAPTCHA server
@@ -66,32 +64,30 @@ function _recaptcha_qsencode ( $data ) {
  */
 function _recaptcha_http_post( $host, $path, $data, $port = 80 ) {
 
-		$req = _recaptcha_qsencode ( $data );
+	$req = _recaptcha_qsencode ( $data );
 
-		$http_request  = "POST $path HTTP/1.0\r\n";
-		$http_request .= "Host: $host\r\n";
-		$http_request .= "Content-Type: application/x-www-form-urlencoded;\r\n";
-		$http_request .= "Content-Length: " . strlen( $req ) . "\r\n";
-		$http_request .= "User-Agent: reCAPTCHA/PHP\r\n";
-		$http_request .= "\r\n";
-		$http_request .= $req;
+	$http_request  = "POST $path HTTP/1.0\r\n";
+	$http_request .= "Host: $host\r\n";
+	$http_request .= "Content-Type: application/x-www-form-urlencoded;\r\n";
+	$http_request .= "Content-Length: " . strlen( $req ) . "\r\n";
+	$http_request .= "User-Agent: reCAPTCHA/PHP\r\n";
+	$http_request .= "\r\n";
+	$http_request .= $req;
 
-		$response = '';
-		if ( false == ( $fs = @fsockopen( $host, $port, $errno, $errstr, 40 ) ) ) {
-				die ( 'Could not open socket' );
-		}
+	$response = '';
+	if ( false == ( $fs = @fsockopen( $host, $port, $errno, $errstr, 40 ) ) ) {
+			die ( 'Could not open socket' );
+	}
 
-		fwrite( $fs, $http_request );
+	fwrite( $fs, $http_request );
 
-		while ( !feof( $fs ) )
-				$response .= fgets( $fs, 1160 ); // One TCP-IP packet
-		fclose( $fs );
-		$response = explode( "\r\n\r\n", $response, 2 );
+	while ( !feof( $fs ) )
+			$response .= fgets( $fs, 1160 ); // One TCP-IP packet
+	fclose( $fs );
+	$response = explode( "\r\n\r\n", $response, 2 );
 
-		return $response;
+	return $response;
 }
-
-
 
 /**
  * Gets the challenge HTML (javascript and non-javascript version).
@@ -132,8 +128,8 @@ function recaptcha_get_html ( $pubkey, $error = null, $use_ssl = false )
  * A ReCaptchaResponse is returned from recaptcha_check_answer()
  */
 class ReCaptchaResponse {
-		var $is_valid;
-		var $error;
+	var $is_valid;
+	var $error;
 }
 
 /**

@@ -835,7 +835,7 @@ function paypal_failed()
 function administration()
 {
 	global $_SESSION, $sql, $register_data, $MY_REQUEST, $table_data, $error_array,
-	$error_message, $lang_countries, $lang_register_form;
+	$error_message, $lang_countries, $lang_register_form, $myself_url;
 
 	/* check for login. If not, show login form */
 	if ( !$_SESSION['logged_in'] )
@@ -1344,7 +1344,7 @@ function login()
 
 function process_login()
 {
-	global $_POST, $sql, $error_message, $register_data;
+	global $_POST, $sql, $error_message, $register_data, $myself_url;
 
 	$error_message = '';
 
@@ -1388,6 +1388,7 @@ function logout()
 	unset( $_SESSION['user_id'] );
 	unset( $_SESSION['user_password'] );
 
+	global $myself_url;
 	header( 'Location:' . $myself_url . 'index.php' );
 
 }
