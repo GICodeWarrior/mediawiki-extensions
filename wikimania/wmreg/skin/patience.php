@@ -1,7 +1,7 @@
 <?php
 /* Prevent hacking */
-if(!defined('TC_STARTED'))
-{ die('Hacking Attempt'); }
+if ( !defined( 'TC_STARTED' ) )
+{ die( 'Hacking Attempt' ); }
 ?>
 
 <script type="text/javascript">
@@ -74,9 +74,9 @@ window.onload=GetCount;//call when everything has loaded
 	border='0' /></a>
 <br>
 <br>
-<?php 
-echo 'Wikimania 2011 Registration will open on '.gmdate('Y-m-d H:i',
-$open_time). ' (UTC). ';
-echo '<br> <p id="countbox" align="center"></p> ';?>
+<?php
+echo 'Wikimania 2011 Registration will open on ' . gmdate( 'Y-m-d H:i',
+$open_time ) . ' (UTC). ';
+echo '<br> <p id="countbox" align="center"></p> '; ?>
 </p>
 

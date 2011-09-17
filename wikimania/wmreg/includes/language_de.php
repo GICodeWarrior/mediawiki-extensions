@@ -12,24 +12,24 @@ $lang_register_form = array(
 '<p><strong>Persönliche Identitätsdaten</strong></p>',
 'surname' => 'Nachname',
 'given_name' => 'Vorname',
-'sex' => 'Geschlecht', 
+'sex' => 'Geschlecht',
 'sex1' => 'männlich',
 'sex2' => 'weiblich',
 'sex3' => 'keine Angabe',
-'passport' => 'Reisepass-Nummer', 
+'passport' => 'Reisepass-Nummer',
 'passport_valid' => 'Gültigkeit des Reisepasses (TT/MM/JJJJ)<br><small>Ihr Reisepass muss noch mindestens sechs Monate gültig sein.</small>',
 'passport_issued' => 'Ausstellungsort',
-'country' => 'Land des aktuellen Wohnorts', 
+'country' => 'Land des aktuellen Wohnorts',
 'birthday' => 'Geburtsdatum (TT/MM/JJJJ)',
-'year1' => '', 
-'year' => '', 
-'month' => '', 
-'months' => array(NULL, 'Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'),
-'day' => '', 
+'year1' => '',
+'year' => '',
+'month' => '',
+'months' => array( NULL, 'Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember' ),
+'day' => '',
 'title2' =>
 '        <p><strong>Sprachkenntnisse</strong></p>',
-'langn' => 'Muttersprache', 
-'lang' => 'Weitere Sprachen', 
+'langn' => 'Muttersprache',
+'lang' => 'Weitere Sprachen',
 'select_lang' => 'bitte Sprache auswählen',
 'select_level' => 'bitte Fähgkeit angeben',
 
@@ -46,13 +46,13 @@ $lang_register_form = array(
 'lang2_level' => 'Sprachkenntnis für Sprache 2',
 'lang3_level' => 'Sprachkenntnis für Sprache 3',
 
-'title3' => 
+'title3' =>
 '<p><strong>Wikimedia-Projekt und E-Mail-Adresse</strong></p>
 <p>Ihre E-Mail-Adresse wird ausschliesslich für die Registrierung sowie dringende Benachrichtigungen zur Wikimania 2011 verwendet.
 </p>
-', 
-'wiki_id' => 'Wikimedia-Benutzername', 
-'email' => 'E-Mail-Adresse', 
+',
+'wiki_id' => 'Wikimedia-Benutzername',
+'email' => 'E-Mail-Adresse',
 
 'legend2' => 'Teilnahme',
 'title4' =>
@@ -70,16 +70,16 @@ $lang_register_form = array(
 'showname1' => 'Name',
 'showname2' => 'Wikimedia-Benutzername',
 'showname3' => 'Weitere Informationen:',
-'size' => 'T-Shirt-Grösse', 
+'size' => 'T-Shirt-Grösse',
 'food' => 'Ernährungseinschränkungen<br><small>Alle Mahlzeiten während der Konferenz werden kosher zubereitet.</small>',
 'food0' => 'keine',
 'food1' => 'Vegetarier',
 'food2' => 'Halal',
 'food_other' => 'Andere:',
- 
-'title_visa' => 
+
+'title_visa' =>
 '<p><strong>Visum</strong></p>
-<p>Wenn Ihr Reisepass von <a href=http://wikimania2011.wikimedia.org/wiki/Visas#Visa_required>einem Land ausgestellt wurde, für das ein Visum zur Einreise nach Israel benötigt wird</a>, füllen Sie bitte die folgenden Angaben aus, damit das Organisationsteam Ihre Daten an das israelische Aussenministerium weitergeben kann.', 
+<p>Wenn Ihr Reisepass von <a href=http://wikimania2011.wikimedia.org/wiki/Visas#Visa_required>einem Land ausgestellt wurde, für das ein Visum zur Einreise nach Israel benötigt wird</a>, füllen Sie bitte die folgenden Angaben aus, damit das Organisationsteam Ihre Daten an das israelische Aussenministerium weitergeben kann.',
 'need_visa_assistance' => 'Ja, ich benötige ein Visum zur Einreise nach Israel',
 'visa_assistance' => 'Visum-Antrag',
 'visa_assistance_description' => 'Spezielle Anforderungen im Bezug auf den Visums-Antrag (auf <strong>Englisch</strong>)',
@@ -103,7 +103,7 @@ Bitte informieren Sie sich auf der <a href=http://wikimania2011.wikimedia.org/wi
 'hotel5stars' => 'Fünf-Sterne Hotels',
 'hotelboutique' => 'Boutique-Hotels',
 
-'accommodation' => 'Nächte in denen Übernachtung benötigt wird', 
+'accommodation' => 'Nächte in denen Übernachtung benötigt wird',
 'night1' => 'Montag, 1. August 2011',
 'night2' => 'Diensta, 2. August 2011',
 'night3' => 'Mittwoch, 3. August 2011',
@@ -112,7 +112,7 @@ Bitte informieren Sie sich auf der <a href=http://wikimania2011.wikimedia.org/wi
 'night6' => 'Samstag, 6. August 2011',
 'night7' => 'Sonntag, 7. August 2011',
 'night8' => 'Montag, 8. August 2011',
-'room' => 'Gewünschtes Zimmer',  
+'room' => 'Gewünschtes Zimmer',
 'room1' => 'Einzelbelegung',
 'room2' => 'Doppelbelegung mit einem zufällig gewählten Teilnehmer gleichen Geschlechts',
 'room3' => 'Doppelbelegung mit einem bestimmten Partner (bitte vollen Namen angeben):',
@@ -148,8 +148,8 @@ Bitte informieren Sie sich auf der <a href=http://wikimania2011.wikimedia.org/wi
 'color' => 'T-Shirt-Farbe',
 'white' => 'weiss',
 'black' => 'schwarz',
-'nationality' => 'Reisepass ausgestellt durch', 
-'countryofbirth' => 'Geburtsland', 
+'nationality' => 'Reisepass ausgestellt durch',
+'countryofbirth' => 'Geburtsland',
 'homeaddress' => 'Heimatadresse',
 'picktour' => 'Gewünschte Tour',
 'tour0' => 'kein bestimmter Wunsch',
@@ -157,7 +157,7 @@ Bitte informieren Sie sich auf der <a href=http://wikimania2011.wikimedia.org/wi
 'tour2' => 'Jerusalem',
 'tour3' => 'Akkon (Acco)',
 'tour4' => 'die Hängenden Gärten der Bahai',
-'tour5' => 'Drusen-Dörfer', 
+'tour5' => 'Drusen-Dörfer',
 'main_date' => 'Haupt-Konferenztag',
 'captcha' => 'CAPTCHA-Information'
 );
@@ -165,7 +165,7 @@ Bitte informieren Sie sich auf der <a href=http://wikimania2011.wikimedia.org/wi
 
 $lang_messages = array(
 'successful' => 'Registrierung abgeschlossen',
-'successful_description' => 
+'successful_description' =>
 '<p>Vielen Dank für Ihre Teilnahme an Wikimania 2011! Ihre Registrierun wurde übermittelt. Bitte beachten Sie, dass Sie die Zahlung vornehmen müssen, bevor die Registrierung bestätigt werden kann.
 
 Ihre <strong>Registrierungsnummer</strong> wird unten angezeigt. Bitte notieren Sie sich diese Nummer, da Sie sie benötigen um Ihren Registrierungsstatus abzufragen und zukünftig Ihre Identität zu prüfen.

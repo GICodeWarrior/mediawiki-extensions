@@ -11,26 +11,26 @@ $lang_register_form = array(
 'title1' => '<p><strong>Dati anagrafici</strong></p>',
 'surname' => 'Cognome',
 'given_name' => 'Nome',
-'sex' => 'Sesso', 
+'sex' => 'Sesso',
 'sex1' => 'Maschio',
 'sex2' => 'Femmina',
-'sex3' => 'Non dichiarato', 
-'passport' => 'Passaporto numero', 
+'sex3' => 'Non dichiarato',
+'passport' => 'Passaporto numero',
 'passport_valid' => 'Passaporto valido fino a (gg/mmm/aaaa)<br><small>Il tuo passaporto deve essere valido per 6 mesi.</small>',
 'passport_issued' => 'Luogo di rilascio del passaporto',
-'country' => 'Stato di residenza', 
+'country' => 'Stato di residenza',
 'birthday' => 'Data di nascita (gg/mmm/aaaa)',
 'organization' => 'Organizzazione',
-'year1' => '', 
-'year' => '', 
-'month' => '', 
-'months' => array(NULL, 'Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'),
-'day' => '', 
+'year1' => '',
+'year' => '',
+'month' => '',
+'months' => array( NULL, 'Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre' ),
+'day' => '',
 
 'title2' =>
 '        <p><strong>Lingue conosciute</strong></p>',
-'langn' => 'Lingua madre', 
-'lang' => 'Livello di conoscenza', 
+'langn' => 'Lingua madre',
+'lang' => 'Livello di conoscenza',
 'select_lang' => 'Seleziona la lingua',
 'select_level' => 'Seleziona il livello di conoscenza',
 
@@ -47,12 +47,12 @@ $lang_register_form = array(
 'lang2_level' => 'Livello di conoscenza della lingua 2',
 'lang3_level' => 'Livello di conoscenza della lingua 3',
 
-'title3' => 
+'title3' =>
 '<p><strong>Progetto Wikimedia e indirizzo e-mail</strong></p>
 <p>Le informazioni relative alla tua e-mail saranno usate unicamente per la registrazione e per comunicazioni urgenti relative a Wikimania 2011.</p>
-', 
-'wiki_id' => 'Nome utente del progetto Wikimedia principale', 
-'email' => 'La tua e-mail', 
+',
+'wiki_id' => 'Nome utente del progetto Wikimedia principale',
+'email' => 'La tua e-mail',
 
 
 'legend2' => 'Partecipazione',
@@ -71,16 +71,16 @@ $lang_register_form = array(
 'showname1' => 'Nome',
 'showname2' => 'Nome utente',
 'showname3' => 'Altre informazioni:',
-'size' => 'Taglia della maglietta', 
+'size' => 'Taglia della maglietta',
 'food' => 'Preferenze o problemi alimentari',
 'food0' => 'Nessuna',
 'food1' => 'Vegetariano',
 'food2' => 'Halal',
 'food_other' => 'Altro:',
 
-'title_visa' => 
+'title_visa' =>
 '<p><strong>Assistenza per il visto</strong></p>
-<p>Se il tuo passaporto è rilasciato da <a href=http://wikimania2011.wikimedia.org/wiki/Visas#Visa_required>uno Stato per cui è richiesto un visto d\'ingresso in Israele</a>, compila questa sezione perché l\'organizzazione possa trasmettere i tuoi dati al Ministero degli esteri israeliano.', 
+<p>Se il tuo passaporto è rilasciato da <a href=http://wikimania2011.wikimedia.org/wiki/Visas#Visa_required>uno Stato per cui è richiesto un visto d\'ingresso in Israele</a>, compila questa sezione perché l\'organizzazione possa trasmettere i tuoi dati al Ministero degli esteri israeliano.',
 'need_visa_assistance' => 'Sì, mi serve un visto d\'ingresso per Israele',
 'visa_assistance' => 'Assistenza per il visto',
 'visa_assistance_description' => 'Qualsiasi richiesta particolare di assistenza per il visto (in <strong>inglese</strong>)',
@@ -104,7 +104,7 @@ $lang_register_form = array(
 'hotel5stars' => 'Alberghi a cinque stelle',
 'hotelboutique' => 'Alberghi eleganti',
 
-'accommodation' => 'Notti per cui è necessario l\'alloggio', 
+'accommodation' => 'Notti per cui è necessario l\'alloggio',
 'night1' => 'Lunedì 1º agosto 2011',
 'night2' => 'Martedì 2 agosto 2011',
 'night3' => 'Mercoledì 3 agosto 2011',
@@ -113,7 +113,7 @@ $lang_register_form = array(
 'night6' => 'Sabato 6 agosto 2011',
 'night7' => 'Domenica 7 agosto 2011',
 'night8' => 'Lunedì 8 agosto 2011',
-'room' => 'Stanza preferita',  
+'room' => 'Stanza preferita',
 'room1' => 'Singola',
 'room2' => 'Matrimoniale/doppia con compagno/a di stanza dello stesso sesso scelto/a a caso dall\'organizzazione',
 'room3' => 'Matrimoniale/doppia con compagno/a di stanza specificato/a (inserire nome completo):',
@@ -151,8 +151,8 @@ $lang_register_form = array(
 'color' => 'Colore della maglietta',
 'white' => 'Bianca',
 'black' => 'Nera',
-'nationality' => 'Passaporto rilasciato da', 
-'countryofbirth' => 'Stato di nascita', 
+'nationality' => 'Passaporto rilasciato da',
+'countryofbirth' => 'Stato di nascita',
 'homeaddress' => 'Indirizzo di residenza',
 'picktour' => 'Destinazione turistica preferita',
 'tour0' => 'Nessuna',
@@ -167,7 +167,7 @@ $lang_register_form = array(
 
 $lang_messages = array(
 'successful' => 'Registrazione completata',
-'successful_description' => 
+'successful_description' =>
 '<p>Grazie per la tua partecipazione a Wikimania 2011! La tua registrazione è stata inviata. Per favore, nota che hai bisogno di completare il processo di pagamento affinché la registrazione possa essere confermata.
 
 Il tuo <strong>numero di registrazione</strong> sarà mostrato in basso. Prendi nota del numero dato, che sarà usato per controllare lo stato della tua registrazione e per confermare la tua identità in futuro.

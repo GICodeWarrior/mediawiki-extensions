@@ -14,28 +14,28 @@ $lang_register_form = array(
 ',
 'egy' => 'Sei cittadino della Repubblica Araba d\'Egitto?',
 'egy1' => 'Sì, lo sono. (Per favore, immetti il tuo numero di identificazione nazionale e il tuo nome nei campi seguenti.',
-'egy0' => 'No, non lo sono. (Per favore, immetti il tuo numero di passaporto e il tuo nome nei campi seguenti.)', 
+'egy0' => 'No, non lo sono. (Per favore, immetti il tuo numero di passaporto e il tuo nome nei campi seguenti.)',
 'surname' => 'Cognome',
 'given_name' => 'Nome',
-'sex' => 'Sesso', 
+'sex' => 'Sesso',
 'sex1' => 'Maschio',
 'sex2' => 'Femmina',
 'sex3' => 'Non dichiarato',
-'id' => 'ID / Numero di passaporto', 
-'country' => 'Paese / Regione', 
-'city' => 'Stato / Città', 
+'id' => 'ID / Numero di passaporto',
+'country' => 'Paese / Regione',
+'city' => 'Stato / Città',
 'birthday' => 'Data di nascita (gg/mm/aaaa)',
 'organization' => 'Organizzazione',
-'year1' => '', 
-'year' => '', 
-'month' => '', 
-'months' => array(NULL, 'Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'),
-'day' => '', 
+'year1' => '',
+'year' => '',
+'month' => '',
+'months' => array( NULL, 'Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre' ),
+'day' => '',
 
 'title2' =>
 '        <p><strong>Lingue conosciute</strong></p>',
-'langn' => 'Lingua madre', 
-'lang' => 'Livello di conoscenza', 
+'langn' => 'Lingua madre',
+'lang' => 'Livello di conoscenza',
 'select_lang' => 'Seleziona la lingua',
 'select_level' => 'Seleziona il livello di conoscenza',
 
@@ -52,26 +52,26 @@ $lang_register_form = array(
 'lang2_level' => 'Livello di conoscenza della Lingua 2',
 'lang3_level' => 'Livello di conoscenza della Lingua 3',
 
-'title3' => 
+'title3' =>
 '        <p><strong>Progetto Wikimedia e account e-mail</strong></p>
          <ul class="form_notice">
            <li>Le informazioni relative alla tua e-mail saranno usate unicamente per la registrazione e per comunicazioni urgenti relative a Wikimania 2008.</li>
          </ul>
-', 
-'wiki_id' => 'Account del progetto Wikimedia principale', 
-'email' => 'La tua e-mail', 
+',
+'wiki_id' => 'Account del progetto Wikimedia principale',
+'email' => 'La tua e-mail',
 
 
 'legend2' => 'Partecipazione',
 'title4' =>
 '        <p><strong>Partecipazione, badge e varie</strong></p>
-         <p>Per una migliore organizzazione relativa ad alloggio, conferenze e altri servizi, indicaci le tue preferenze compilando i campi seguenti.</p> 
+         <p>Per una migliore organizzazione relativa ad alloggio, conferenze e altri servizi, indicaci le tue preferenze compilando i campi seguenti.</p>
 ',
 'join_date' => 'Date di partecipazione',
 'join1' => '17 luglio',
 'join2' => '18 luglio',
 'join3' => '19 luglio',
-'topic' => 'Tema preferito', 
+'topic' => 'Tema preferito',
 'topic1' => 'Comunità Wikimedia',
 'topic2' => 'Conoscenza libera',
 'topic3' => 'Infrastrutture tecniche',
@@ -82,7 +82,7 @@ $lang_register_form = array(
 'showname2' => 'Account Wikimedia',
 'showname3' => 'Organizazione',
 'showname4' => 'Altro',
-'size' => 'Taglia della maglietta', 
+'size' => 'Taglia della maglietta',
 'food' => 'Preferenze o problemi alimentari',
 'food0' => '-',
 'food1' => 'Non mangi carne',
@@ -91,10 +91,10 @@ $lang_register_form = array(
 'food4' => 'Kosher',
 'food5' => 'Altro',
 'food_other' => 'Specifica preferenze o problemi alimentari',
-'allegric' => 'Allergie', 
-'transportation_assistance' => 'Assistenza relativa ai biglietti per l\'aereo', 
+'allegric' => 'Allergie',
+'transportation_assistance' => 'Assistenza relativa ai biglietti per l\'aereo',
 'need_transportation_assistance' => 'Sì, necessito di assistenza per la prenotazione del volo',
-'visa_assistance' => 'Assistenza per il visto', 
+'visa_assistance' => 'Assistenza per il visto',
 'need_visa_assistance' => 'Sì, necessito di assistenza per il visto',
 'visa_assistance_description' => ' Per favore, illustra come lo staff può aiutarti con questioni relative al visto. (in <strong>arabo</strong> o <strong>inglese</strong>)',
 
@@ -104,17 +104,17 @@ $lang_register_form = array(
     Per favore, prima di registrarti, controlla i dettagli sul <a href=http://wikimania2008.wikimedia.org/wiki/Accommodation>sito ufficiale di Wikimania</a> per informazioni precise sulla posizione e le caratteristiche degli alloggi.</p>
 ',
 'accommodation_hotel' => 'Alloggio scelto',
-'hotels_metropol'=> 'Hotel Metropol (60$ a notte)',
-'hotels_delta'=> 'Hotel Delta (30$ a notte)',
+'hotels_metropol' => 'Hotel Metropol (60$ a notte)',
+'hotels_delta' => 'Hotel Delta (30$ a notte)',
 'hotels_dorms' => 'Dormitori del College Saint Marc (10$ a notte)',
 
-'accommodation' => 'Giorni di alloggio', 
+'accommodation' => 'Giorni di alloggio',
 'night1' => '16 luglio',
 'night2' => '17 luglio',
 'night3' => '18 luglio',
 'night4' => '19 luglio',
 'night5' => '20 luglio',
-'room' => 'Tipologia di stanza scelta',  
+'room' => 'Tipologia di stanza scelta',
 'room2' => 'Doppia',
 'room4' => 'Quattro persone',
 'room6' => 'Indifferente',
@@ -124,12 +124,12 @@ $lang_register_form = array(
          <p>Puoi addebitare sul tuo conto PayPal o pagare tramite la tua carta di credito via PayPal da <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_display-approved-signup-countries-outside" title="PayPal Worldwide">103 paesi / regioni</a> (Egitto escluso) o con rimessa e pagamento diretto sul conto bancario intestato al team di organizzazione ad Alexandria. Nota: se sei egiziano, l\'opzione PayPal verrà scartata.</p>
 ',
 
-'pay_method' => 'Tipo di pagamento', 
+'pay_method' => 'Tipo di pagamento',
 'atm' => 'Conto bancario',
 'receipt' => 'Ricevuta',
-'need_receipt' => 'Sì, necessito di ricevuta cartacea.',  
-'receipt_title' => 'Titolo', 
-'receipt_address' => 'Indirizzo di spedizione', 
+'need_receipt' => 'Sì, necessito di ricevuta cartacea.',
+'receipt_title' => 'Titolo',
+'receipt_address' => 'Indirizzo di spedizione',
 
 'submit_notice' =>
 '<li><strong>Dopo l\'invio del modulo, hai ancora una possibilità di verificare i dati della tua registrazione.</strong></li>',
@@ -166,7 +166,7 @@ $lang_register_form = array(
 
 $lang_messages = array(
 'successful' => 'Registrazione completata',
-'successful_description' => 
+'successful_description' =>
 '<p>Grazie per la tua partecipazione a Wikimania 2008! La tua registrazione è stata inviata. Per favore, nota che hai bisogno di completare il processo di pagamento affinché la registrazione possa essere confermata.
 
 Il tuo <strong>numero di registrazione</strong> sarà mostrato in basso. Prendi nota del numero dato che sarà usato per controllare lo stato della tua registrazione e per confermare la tua identità in futuro.

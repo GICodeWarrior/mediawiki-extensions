@@ -17,25 +17,25 @@ $lang_register_form = array(
 'egy0' => '否(请在以下栏位填上你的护照号码和姓名。)',
 'surname' => '姓氏',
 'given_name' => '名',
-'sex' => '性别', 
+'sex' => '性别',
 'sex1' => '男',
 'sex2' => '女',
 'sex3' => '不愿申明',
-'id' => '身份证明文件 / 护照号码', 
-'country' => '国家 / 地区', 
-'city' => '州/ 省 / 城市', 
+'id' => '身份证明文件 / 护照号码',
+'country' => '国家 / 地区',
+'city' => '州/ 省 / 城市',
 'birthday' => '出生日期(dd/mm/yyyy)',
 'organization' => '所属组织',
-'year1' => '', 
-'year' => '', 
-'month' => '', 
-'months' => array(NULL, '一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'),
-'day' => '', 
+'year1' => '',
+'year' => '',
+'month' => '',
+'months' => array( NULL, '一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月' ),
+'day' => '',
 
 'title2' =>
 '        <p><strong>语言</strong></p>',
-'langn' => '母语', 
-'lang' => '熟练程度', 
+'langn' => '母语',
+'lang' => '熟练程度',
 'select_lang' => '选择语言',
 'select_level' => '选择熟练程度',
 
@@ -52,14 +52,14 @@ $lang_register_form = array(
 'lang2_level' => '第二语言的熟练程度',
 'lang3_level' => '第三语言的熟练程度',
 
-'title3' => 
+'title3' =>
 '        <p><strong>参与的维基计划和电邮帐戶</strong></p>
          <ul class="form_notice">
            <li>年会筹备小组将只会在注册相关程序和紧急通知时使用你的电邮地址资讯。</li>
          </ul>
-', 
-'wiki_id' => '意欲使用的维基计划帐戶名称。', 
-'email' => '电邮地址', 
+',
+'wiki_id' => '意欲使用的维基计划帐戶名称。',
+'email' => '电邮地址',
 
 
 'legend2' => '参与情况',
@@ -71,7 +71,7 @@ $lang_register_form = array(
 'join1' => '7月17日',
 'join2' => '7月18日',
 'join3' => '7月19日',
-'topic' => '感兴趣的议程类型', 
+'topic' => '感兴趣的议程类型',
 'topic1' => '维基媒体社群',
 'topic2' => '自由资讯',
 'topic3' => '技术架构',
@@ -82,7 +82,7 @@ $lang_register_form = array(
 'showname2' => '维基媒体计划中的帐戶名',
 'showname3' => '所属组织',
 'showname4' => '其他',
-'size' => 'T恤的尺寸', 
+'size' => 'T恤的尺寸',
 'food' => '饮食习惯',
 'food0' => '-',
 'food1' => '不吃牛肉',
@@ -91,10 +91,10 @@ $lang_register_form = array(
 'food4' => '犹太饮食',
 'food5' => '其他',
 'food_other' => '请注明特别的饮食习惯',
-'allegric' => '任何食物敏感', 
+'allegric' => '任何食物敏感',
 'transportation_assistance' => '机票协助',
 'need_transportation_assistance' => '我需要筹备小组为我预定机票。',
-'visa_assistance' => '签证协助', 
+'visa_assistance' => '签证协助',
 'need_visa_assistance' => '我需要签证协助',
 'visa_assistance_description' => '请说明筹备小组可以提供什么协助(请使用<strong>阿拉伯语</strong>或<strong>英语</strong>填写)',
 
@@ -104,17 +104,17 @@ $lang_register_form = array(
     请查阅<a href=http://wikimania2008.wikimedia.org/wiki/Accommodation>该页面上的资讯</a>，取得住宿地点的实际位置和其附属设施的资料，以便报名时申明你的决定。</p>
 ',
 'accommodation_hotel' => '希望入住酒店',
-'hotels_metropol'=> '大都会酒店(Metropole Hotel，每晚60美元)',
-'hotels_delta'=> '三角洲酒店 (Delta Hotel，每晚30美元)',
+'hotels_metropol' => '大都会酒店(Metropole Hotel，每晚60美元)',
+'hotels_delta' => '三角洲酒店 (Delta Hotel，每晚30美元)',
 'hotels_dorms' => '圣马可书院宿舍 (每晚10美元)',
 
-'accommodation' => '入住日期', 
+'accommodation' => '入住日期',
 'night1' => '7月16日',
 'night2' => '7月17日',
 'night3' => '7月18日',
 'night4' => '7月19日',
 'night5' => '7月20日',
-'room' => '偏好的房间类别',  
+'room' => '偏好的房间类别',
 'room2' => '二人房',
 'room4' => '四人房',
 'room6' => '没有所谓',
@@ -124,12 +124,12 @@ $lang_register_form = array(
          <p>若你居住在<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_display-approved-signup-countries-outside" title="PayPal Worldwide">这里所列出的103个国家/地区</a> (埃及除外)，你可以通过PayPal，以借帐或信用卡付款。你也可以选择汇款或将款项直接存入亚力山卓筹备小组的银行户口。请注意：来自埃及的申请人将不能使用PayPal付款。</p>
 ',
 
-'pay_method' => '付款方法', 
+'pay_method' => '付款方法',
 'atm' => '银行户口付款',
 'receipt' => '收据',
-'need_receipt' => '我需要收据。',  
-'receipt_title' => '称谓', 
-'receipt_address' => '邮寄地址', 
+'need_receipt' => '我需要收据。',
+'receipt_title' => '称谓',
+'receipt_address' => '邮寄地址',
 
 'submit_notice' =>
 '<li><strong>递交了这份表格後，你需要再一次确认你的申请。</strong></li>',
@@ -167,10 +167,10 @@ $lang_register_form = array(
 
 $lang_messages = array(
 'successful' => '完成报名',
-'successful_description' => 
-'<p>多谢阁下报名参加2008国际维基媒体年会！你的报名表格己经成功递交。请注意你必须完成缴费步骤，才能确认参与资格。 
+'successful_description' =>
+'<p>多谢阁下报名参加2008国际维基媒体年会！你的报名表格己经成功递交。请注意你必须完成缴费步骤，才能确认参与资格。
 
-你的<strong>注册编号</strong>已显示在下面。请记下有关编号，以便日後查询报名受理状况及确认身份。 
+你的<strong>注册编号</strong>已显示在下面。请记下有关编号，以便日後查询报名受理状况及确认身份。
 ',
 'cost' => '报名费用',
 'wikimania_cost' => '会议：',

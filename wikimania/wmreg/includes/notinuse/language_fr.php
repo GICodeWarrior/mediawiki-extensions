@@ -4,36 +4,36 @@ $lang_register_form = array(
 'registration_title' => 'Enregistrement Wikimania 2008!',
 'select' => 'S’il vous plaît sélectionnez',
 'query' => 'Demander votre formulaire d\'enregistrement',
-'query_title' => 'Vous pouvez demander votre formulaire 
+'query_title' => 'Vous pouvez demander votre formulaire
 
 d\'enregistrement à Wikimania 2008 ici.',
-'correction' => 'Vos informations n\'ont pas été envoyées à 
+'correction' => 'Vos informations n\'ont pas été envoyées à
 
 cause d\'erreurs dans le formulaire.',
 
 'legend1' => 'Informations personnelles',
 'title1' =>
-'        <p><strong>Données d\'identification 
+'        <p><strong>Données d\'identification
 
 personnelle</strong></p>
-	 <p>S’il vous plaît remplir vos données personnelles 
+	 <p>S’il vous plaît remplir vos données personnelles
 
 dans le formulaire correctement.</p>
 ',
-'egy' => 'Etes-vous un citoyen de la République arabe 
+'egy' => 'Etes-vous un citoyen de la République arabe
 
 d\'Egypte?',
-'egy1' => 'Oui. (S’il vous plaît taper votre numéro national 
+'egy1' => 'Oui. (S’il vous plaît taper votre numéro national
 
-d\'identification et votre nom dans les domaines 
-
-suivants).',
-'egy0' => 'No. (S’il vous plaît taper votre numéro de 
-
-passeport et votre nom sur le passeport dans les domaines 
+d\'identification et votre nom dans les domaines
 
 suivants).',
-'local_language_name' => 'Nom arabe / Nom sur le passeport (S’il 
+'egy0' => 'No. (S’il vous plaît taper votre numéro de
+
+passeport et votre nom sur le passeport dans les domaines
+
+suivants).',
+'local_language_name' => 'Nom arabe / Nom sur le passeport (S’il
 
 vous plaît taper en forme romanisée).',
 'surname' => 'Nom',
@@ -50,15 +50,15 @@ vous plaît taper en forme romanisée).',
 'year1' => '',
 'year' => '',
 'month' => '',
-'months' => array(NULL, 'janvier', 'février', 'mars', 
+'months' => array( NULL, 'janvier', 'février', 'mars',
 
-'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 
+'avril', 'mai', 'juin', 'juillet', 'août', 'septembre',
 
-'octobre', 'novembre', 'décembre'),
+'octobre', 'novembre', 'décembre' ),
 'day' => '',
 
 'title2' =>
-'        <p><strong>Connaissances 
+'        <p><strong>Connaissances
 
 linguistiques</strong></p>',
 'langn' => 'Langue maternelle',
@@ -80,13 +80,13 @@ linguistiques</strong></p>',
 'lang3_level' => 'Niveau d\'apprentissage de la langue 3',
 
 'title3' =>
-'        <p><strong>Projets Wikimedia et courrier 
+'        <p><strong>Projets Wikimedia et courrier
 
 électronique(s)</strong></p>
 	 <ul class="form_notice">
-           <li>Ces informations seront utilisées pour 
+           <li>Ces informations seront utilisées pour
 
-enregistrement et notifications urgentes sur Wikimania 2008 
+enregistrement et notifications urgentes sur Wikimania 2008
 
 seulement.</li>
          </ul>
@@ -97,14 +97,14 @@ seulement.</li>
 
 'legend2' => 'Participation aux conférences',
 'title4' =>
-'        <p><strong>Participation, informations sur le 
+'        <p><strong>Participation, informations sur le
 
 badge, et divers</strong></p>
-         <p>Pour mieux organiser le logement, les pistes de 
+         <p>Pour mieux organiser le logement, les pistes de
 
-conférences et les services connexes, s\'il vous plaît 
+conférences et les services connexes, s\'il vous plaît
 
-laissez-nous savoir vos préférences dans les domaines 
+laissez-nous savoir vos préférences dans les domaines
 
 suivants.</p>
 ',
@@ -133,39 +133,39 @@ suivants.</p>
 'food5' => 'Autres',
 'food_other' => 'Indication des restrictions alimentaires',
 'allegric' => 'Réactions allergiques',
-'transportation_assistance' => 'Assistance avec les billets d\'avions', 
+'transportation_assistance' => 'Assistance avec les billets d\'avions',
 'need_transportation_assistance' => 'Oui, j’ai besoin de votre aide avec mes réservations de vols.',
 'visa_assistance' => 'Aide à l\'obtention du visa',
-'need_visa_assistance' => 'Oui, j\'ai besoin d\'aide pour 
+'need_visa_assistance' => 'Oui, j\'ai besoin d\'aide pour
 
 obtenir mon visa.',
-'visa_assistance_description' => 'Précisez comment nous 
+'visa_assistance_description' => 'Précisez comment nous
 
-pouvons vous aider à obtenir votre visa.(en 
+pouvons vous aider à obtenir votre visa.(en
 
 <strong>arabe</strong> et <strong>anglais</strong>)',
 
 'title5' =>
 '         <p><strong>Logement</strong></p>
-         <p>Vous avez deux options disponibles pour le 
+         <p>Vous avez deux options disponibles pour le
 
-logement: vous pouvez logé dans un hôtel du centre-ville à 
+logement: vous pouvez logé dans un hôtel du centre-ville à
 
-chambre double, ou vous pouvez rester dans les logements du 
+chambre double, ou vous pouvez rester dans les logements du
 
-Collège Saint-Marc. S\'il vous plaît vérifier les détails 
+Collège Saint-Marc. S\'il vous plaît vérifier les détails
 
-sur <a 
+sur <a
 
 href=http://wikimania2008.wikimedia.org/wiki/Accommodation>l
 
-e site officiel de Wikimania</a> pour les localisations 
+e site officiel de Wikimania</a> pour les localisations
 
 précises et les spécifications avant de vous inscrire.</p>',
 'accommodation_hotel' => 'Logement préféré ',
-'hotels_metropol'=> 'Hôtel Metropol ($60 par nuit)',
-'hotels_delta'=> 'Hôtel Delta ($30 par nuit)',
-'hotels_dorms' => 'Chambres du Collège Saint Marc ($10 par 
+'hotels_metropol' => 'Hôtel Metropol ($60 par nuit)',
+'hotels_delta' => 'Hôtel Delta ($30 par nuit)',
+'hotels_dorms' => 'Chambres du Collège Saint Marc ($10 par
 
 nuit)',
 
@@ -182,17 +182,17 @@ nuit)',
 
 'title6' =>
 '         <p><strong>Paiement</strong></p>
-         <p>Vous pouvez payer avec PayPal ou carte de crédit 
+         <p>Vous pouvez payer avec PayPal ou carte de crédit
 
 (via PayPal) en <a href="https://www.paypal.com/cgi-
 
-bin/webscr?cmd=_display-approved-signup-countries-outside" 
+bin/webscr?cmd=_display-approved-signup-countries-outside"
 
-title="PayPal Worldwide">103 Pays et régions </a> (Egypte 
+title="PayPal Worldwide">103 Pays et régions </a> (Egypte
 
-non-inclus) ou par virement automatique au compte de banque 
+non-inclus) ou par virement automatique au compte de banque
 
-de l\'équipe organisatrice en Alexandrie. Note: l\'option 
+de l\'équipe organisatrice en Alexandrie. Note: l\'option
 
 PayPal sera écartée si vous êtes égyptien</p>
 ',
@@ -205,41 +205,41 @@ PayPal sera écartée si vous êtes égyptien</p>
 'receipt_address' => 'Adresse d\'envoi',
 
 'submit_notice' =>
-'<li><strong>Après avoir soumis le formulaire, vous avez 
+'<li><strong>Après avoir soumis le formulaire, vous avez
 
-toujours une chance de confirmer votre 
+toujours une chance de confirmer votre
 
 enregistrement.</strong></li>',
 'submit' => 'Valider le formulaire',
 'reset' => 'Recommencer',
 
 'confirm' => 'Vérification',
-'confirm_description' => 'Avant de valider le formulaire, 
+'confirm_description' => 'Avant de valider le formulaire,
 
 vérifiez les données saisies :',
 
 'paypal' => 'Paiement par PayPal',
 'paypal_description' =>
-'<p>S’il vous plaît, utiliser le bouton "Buy Now" ci-dessous 
+'<p>S’il vous plaît, utiliser le bouton "Buy Now" ci-dessous
 
 pour payer avec PayPal</p> ',
 'paypal_failed' => 'Annuler le paiement par PayPal ',
-'paypal_failed_description' => '<p>Vous pouvez réessayer en 
+'paypal_failed_description' => '<p>Vous pouvez réessayer en
 
-remplissant à nouveau le formulaire ci-dessous, ou utiliser 
+remplissant à nouveau le formulaire ci-dessous, ou utiliser
 
 un autre mode de paiement expliqué plus bas.</p>',
 'paypal_successful' => 'Paiement par PayPal réussi',
-'paypal_successful_description' => '<p>Merci ! Nous vous 
+'paypal_successful_description' => '<p>Merci ! Nous vous
 
-tiendrons informé du résultat après avoir reçu le paiement 
+tiendrons informé du résultat après avoir reçu le paiement
 
 et relu vos informations de réservation.</p>',
 'atm' => 'Paiement par virement bancaire',
 'atm_description' => '
-<p>S’il vous plaît utiliser les coordonnées bancaires 
+<p>S’il vous plaît utiliser les coordonnées bancaires
 
-suivantes en Egypte pour le transfert de vos registeration 
+suivantes en Egypte pour le transfert de vos registeration
 
 frais et / ou un logement:</p>
 <ul class="atm-account">
@@ -249,25 +249,25 @@ frais et / ou un logement:</p>
 <li>SWIFT BIC code: CIBEEGCX041</li>
 <li>Numéro de compte Wikimania (USD): 41-8930006-6</li>
 </ul>
-<p>En raison de la restriction de PayPal en<b>Egypte</b>, 
+<p>En raison de la restriction de PayPal en<b>Egypte</b>,
 
-vous pouvez payer à la banque, s’il vous plaît utiliser les 
+vous pouvez payer à la banque, s’il vous plaît utiliser les
 
-coordonnées bancaires ci-dessus, à la suite de l\'EGP numéro 
+coordonnées bancaires ci-dessus, à la suite de l\'EGP numéro
 
 de compte:</p>
 <ul class="atm-account">
 <li>Numéro de compte Wikimania (EGP): 41-8900019-5</li>
 </ul>
-<p>Et envoyez votre reçu de virement avec votre nom et votre 
+<p>Et envoyez votre reçu de virement avec votre nom et votre
 
-numéro de réservation à wm08registration@wikimedia.org, nous 
+numéro de réservation à wm08registration@wikimedia.org, nous
 
-vous répondrons sous trois jours ouvrables. Vous pouvez 
+vous répondrons sous trois jours ouvrables. Vous pouvez
 
-également <a href="index.php?action=query" title="query the 
+également <a href="index.php?action=query" title="query the
 
-registration status">demander le statut de votre réservation 
+registration status">demander le statut de votre réservation
 
 en ligne</a>.</p>
 '
@@ -276,19 +276,19 @@ en ligne</a>.</p>
 $lang_messages = array(
 'successful' => 'Enregistrement complète',
 'successful_description' =>
-'<p>Merci de vous joindre à Wikimania 2008! Votre formulaire 
+'<p>Merci de vous joindre à Wikimania 2008! Votre formulaire
 
-d\'enregistrement a été soumise. S’il vous plaît prendre 
+d\'enregistrement a été soumise. S’il vous plaît prendre
 
-note que vous devez remplir le paiement de sorte que le 
+note que vous devez remplir le paiement de sorte que le
 
 processus d\'inscription peut être confirmée.
 
-Votre <strong>numéro d\'enregistrement</strong> Sera affiché 
+Votre <strong>numéro d\'enregistrement</strong> Sera affiché
 
 ci-dessous. S’il vous plaît prendre note du numéro de celle
 
--ci est utilisée pour interroger le statut d\'enregistrement 
+-ci est utilisée pour interroger le statut d\'enregistrement
 
 et de confirmer votre identité à l\'avenir.
 ',
@@ -302,27 +302,27 @@ et de confirmer votre identité à l\'avenir.
 );
 
 $lang_errors = array(
-'repeat' => 'Quelqu\'un s\'est enregistré avec le même nom 
+'repeat' => 'Quelqu\'un s\'est enregistré avec le même nom
 
-et le même numéro d\'identification/passeport. Il est 
+et le même numéro d\'identification/passeport. Il est
 
-possible que vous ayez validé le formulaire deux fois ou que 
+possible que vous ayez validé le formulaire deux fois ou que
 
 vous ayez rafraîchi la page de réservation.',
 'not_input' => '$1 est vide.',
 'not_input_completely' => '$1 est incomplet.',
 'not_select' => '$1 n\'est pas vérifié.',
 'not_select_whether' => '$1 n\'a pas été précisé.',
-'too_long' => '$1 est trop long, la longueur maximale est 
+'too_long' => '$1 est trop long, la longueur maximale est
 
 $2.',
 'incorect' => '$1 est incorrect.',
 'wrong' => '$1 est faux.',
-'visa_assistance_incomplete' => 'Aide à l\'obtention d\'un 
+'visa_assistance_incomplete' => 'Aide à l\'obtention d\'un
 
 visa est vide.',
 'wrong_query' => 'Mauvais nom ou numéro d\'enregistrement.',
-'paypal_unavailable' => 'Le pays ou la région que vous avez 
+'paypal_unavailable' => 'Le pays ou la région que vous avez
 
 choisi(e) ne permet pas le paiement par PayPal.'
 );
@@ -330,22 +330,22 @@ choisi(e) ne permet pas le paiement par PayPal.'
 $lang_query = array(
 'unique_code' => 'Numéro d\'enregistrement',
 'submit' => 'Demander',
-'your_status' => 'Bonjour, $1, voici le statut de votre 
+'your_status' => 'Bonjour, $1, voici le statut de votre
 
 réservation:',
-'received_money' => 'Frais d\'enregistrement (reçus / 
+'received_money' => 'Frais d\'enregistrement (reçus /
 
 attendus):',
 'lack' => 'Non reçu',
 'enough' => 'Déjà payé',
 'too_much' => 'Trop d\'argent versé',
-'accepted' => 'Votre réservation est 
+'accepted' => 'Votre réservation est
 
 <strong>confirmée</strong>.',
-'rejected' => 'Votre réservation est 
+'rejected' => 'Votre réservation est
 
 <strong>rejetée</strong>.',
-'not_yet' => 'Votre réservation est <strong>non 
+'not_yet' => 'Votre réservation est <strong>non
 
 confirmée</strong>.'
 
@@ -553,7 +553,7 @@ $lang_countries = array(
       'sb' => 'Solomon Islands',
       'so' => 'Somalia',
       'za' => 'South Africa',
-      'gs' => 'South Georgia and the South Sandwich 
+      'gs' => 'South Georgia and the South Sandwich
 
 Islands',
       'es' => 'Spain',

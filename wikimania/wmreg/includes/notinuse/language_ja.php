@@ -17,25 +17,25 @@ $lang_register_form = array(
 'egy0' => 'いいえ、ちがいます（あなたのパスポート番号とパスポートに記載された名前をローマ字で以下に記入してください）',
 'surname' => '姓（日本人の方はローマ字でお願いします）',
 'given_name' => '名（日本人の方はローマ字でお願いします）',
-'sex' => '性別', 
+'sex' => '性別',
 'sex1' => '男',
 'sex2' => '女',
 'sex3' => '記入を拒否します',
-'id' => '身分証番号 / パスポート番号', 
-'country' => '国 / 地域', 
-'city' => '市町村', 
+'id' => '身分証番号 / パスポート番号',
+'country' => '国 / 地域',
+'city' => '市町村',
 'birthday' => '生年月日（日（2桁）、月、年（4桁））',
 'organization' => '所属',
-'year1' => '', 
-'year' => '年（西暦）', 
-'month' => '月', 
-'months' => array(NULL, '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'),
-'day' => '日（2桁）', 
+'year1' => '',
+'year' => '年（西暦）',
+'month' => '月',
+'months' => array( NULL, '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12' ),
+'day' => '日（2桁）',
 
 'title2' =>
 '        <p><strong>言語</strong></p>',
-'langn' => '母語', 
-'lang' => '習熟度', 
+'langn' => '母語',
+'lang' => '習熟度',
 'select_lang' => '言語を選んでください。',
 'select_level' => '当該言語の習熟度',
 
@@ -52,14 +52,14 @@ $lang_register_form = array(
 'lang2_level' => '言語2の習熟度',
 'lang3_level' => '言語3の習熟度',
 
-'title3' => 
+'title3' =>
 '        <p><strong>ウィキメディア・プロジェクトのアカウントと電子メールアドレス</strong></p>
          <ul class="form_notice">
            <li>メールアドレスはウィキマニア2008における参加受付および緊急連絡の際にのみ使われます。</li>
          </ul>
-', 
-'wiki_id' => 'ウィキメディア・プロジェクトのアカウント（ひとつ選択）', 
-'email' => '電子メールアドレス', 
+',
+'wiki_id' => 'ウィキメディア・プロジェクトのアカウント（ひとつ選択）',
+'email' => '電子メールアドレス',
 
 
 'legend2' => '参加登録',
@@ -71,7 +71,7 @@ $lang_register_form = array(
 'join1' => '7月17日',
 'join2' => '7月18日',
 'join3' => '7月19日',
-'topic' => '興味のあるセッション', 
+'topic' => '興味のあるセッション',
 'topic1' => 'ウィキメディア・コミュニティ',
 'topic2' => '自由なコンテンツ',
 'topic3' => '技術基盤',
@@ -82,7 +82,7 @@ $lang_register_form = array(
 'showname2' => 'ウィキメディア・アカウント名',
 'showname3' => '所属',
 'showname4' => 'その他',
-'size' => 'Tシャツのサイズ', 
+'size' => 'Tシャツのサイズ',
 'food' => '飲食習慣',
 'food0' => '-',
 'food1' => '牛肉は食べません',
@@ -91,10 +91,10 @@ $lang_register_form = array(
 'food4' => 'ユダヤ式',
 'food5' => 'その他',
 'food_other' => '詳細',
-'allegric' => 'アレルギー反応を起こす食べ物', 
+'allegric' => 'アレルギー反応を起こす食べ物',
 'transportation_assistance' => '航空券予約支援',
 'need_transportation_assistance' => 'はい、航空券予約に支援が必要です。',
-'visa_assistance' => 'ビザ取得の支援', 
+'visa_assistance' => 'ビザ取得の支援',
 'need_visa_assistance' => 'はい、ビザ取得に支援が必要です',
 'visa_assistance_description' => '運営チームがビザの件にどのように対応したらよいか、ご記入ください（<strong>アラビア語</strong>または<strong>英語</strong>でお願いします）',
 
@@ -104,17 +104,17 @@ $lang_register_form = array(
 ご登録の前に、<a href=http://wikimania2008.wikimedia.org/wiki/Accommodation>ウィキマニア公式ウェブサイト</a>で宿泊先の所在、宿泊環境をよくお確かめください。</p>
 ',
 'accommodation_hotel' => '希望する宿泊先',
-'hotels_metropol'=> 'メトロポール・ホテル (Metropol Hotel)（1泊60ドル）',
-'hotels_delta'=> 'デルタ・ホテル (Delta Hotel)（1泊30ドル）',
+'hotels_metropol' => 'メトロポール・ホテル (Metropol Hotel)（1泊60ドル）',
+'hotels_delta' => 'デルタ・ホテル (Delta Hotel)（1泊30ドル）',
 'hotels_dorms' => 'サン・マルク宿舎 (Saint Marc Dorms)（1泊10ドル）',
 
-'accommodation' => '宿泊日程', 
+'accommodation' => '宿泊日程',
 'night1' => '7月16日',
 'night2' => '7月17日',
 'night3' => '7月18日',
 'night4' => '7月19日',
 'night5' => '7月20日',
-'room' => '希望するタイプ',  
+'room' => '希望するタイプ',
 'room2' => 'ツイン',
 'room4' => '4人部屋',
 'room6' => '指定なし',
@@ -124,12 +124,12 @@ $lang_register_form = array(
          <p>（エジプトは含まれない）<a href="http://www.paypal.com/cgi-bin/webscr?cmd=_display-approved-signup-countries-outside" title="PayPal Worldwide">103の国・地域から</a>PayPal経由でお支払い可能です。もしくはアレクサンドリア運営チーム所有の銀行口座への振込によってもお支払いいただけます。注意: エジプト人の方はPayPalでお支払いいただけません。</p>
 ',
 
-'pay_method' => '支払い種別', 
+'pay_method' => '支払い種別',
 'atm' => '銀行口座への送金',
 'receipt' => '領収書',
-'need_receipt' => 'はい、領収書が必要です。',  
-'receipt_title' => '宛名', 
-'receipt_address' => '住所', 
+'need_receipt' => 'はい、領収書が必要です。',
+'receipt_title' => '宛名',
+'receipt_address' => '住所',
 
 'submit_notice' =>
 '<li><strong>フォーム送信後に送信内容を確認できます。</strong></li>',
@@ -166,7 +166,7 @@ $lang_register_form = array(
 
 $lang_messages = array(
 'successful' => '登録完了',
-'successful_description' => 
+'successful_description' =>
 '<p>ウィキマニア2008へのご参加ありがとうございます！　ご登録を受け付けました。登録を確定するためには送金処理を済ませる必要がありますので、ご注意ください。
 
 あなたの<strong>受付番号 (registration number)<strong>は以下に記載されています。番号をお控えの上、受付状況の確認や会議の際のご自身の情報の確認などにお使いください。

@@ -17,25 +17,25 @@ $lang_register_form = array(
 'egy0' => 'Ne, nejsem. (Do následujících polí uveďte číslo cestovního pasu a jméno)',
 'surname' => 'Příjmení',
 'given_name' => 'Jméno',
-'sex' => 'Pohlaví', 
+'sex' => 'Pohlaví',
 'sex1' => 'Muž',
 'sex2' => 'Žena',
 'sex3' => 'Nechci uvést',
-'id' => 'ID / Číslo pasu', 
-'country' => 'Země / Region', 
-'city' => 'Stát / Město', 
+'id' => 'ID / Číslo pasu',
+'country' => 'Země / Region',
+'city' => 'Stát / Město',
 'birthday' => 'Datum narození (dd/mmm/yyyy)',
 'organization' => 'Organizace',
-'year1' => '', 
-'year' => '', 
-'month' => '', 
-'months' => array(NULL, 'ledna', 'února', 'března', 'dubna', 'května', 'června', 'července', 'srpna', 'září', 'října', 'listopadu', 'prosince'),
-'day' => '', 
+'year1' => '',
+'year' => '',
+'month' => '',
+'months' => array( NULL, 'ledna', 'února', 'března', 'dubna', 'května', 'června', 'července', 'srpna', 'září', 'října', 'listopadu', 'prosince' ),
+'day' => '',
 
 'title2' =>
 '        <p><strong>Jazykové schopnosti</strong></p>',
-'langn' => 'Mateřský jazyk', 
-'lang' => 'Úroveň znalosti', 
+'langn' => 'Mateřský jazyk',
+'lang' => 'Úroveň znalosti',
 'select_lang' => 'Vyberte jazyk',
 'select_level' => 'Vyberte úroveň znalosti',
 
@@ -52,14 +52,14 @@ $lang_register_form = array(
 'lang2_level' => 'Úroveň znalosti jazyka 2',
 'lang3_level' => 'Úroveň znalosti jazyka 3',
 
-'title3' => 
+'title3' =>
 '        <p><strong>Projekt Wikimedia a e-mail účtu</strong></p>
          <ul class="form_notice">
            <li>Informace o elektronické adrese budou použity pouze pro účely registrace a v případě neodkladných oznámení o Wikimanii 2008.</li>
          </ul>
-', 
-'wiki_id' => 'Přihlašovací jméno zvoleného účtu na projektu Wikimedia', 
-'email' => 'Váš e-mail', 
+',
+'wiki_id' => 'Přihlašovací jméno zvoleného účtu na projektu Wikimedia',
+'email' => 'Váš e-mail',
 
 
 'legend2' => 'Účast',
@@ -71,7 +71,7 @@ $lang_register_form = array(
 'join1' => '17. červenec',
 'join2' => '18. červenec',
 'join3' => '19. červenec',
-'topic' => 'Zájmová témata', 
+'topic' => 'Zájmová témata',
 'topic1' => 'Komunity Wikimedia',
 'topic2' => 'Svobodná tvorba',
 'topic3' => 'Technická infrastruktura',
@@ -82,7 +82,7 @@ $lang_register_form = array(
 'showname2' => 'Účet Wikimedia',
 'showname3' => 'Organizace',
 'showname4' => 'Ostatní',
-'size' => 'Velikost trička', 
+'size' => 'Velikost trička',
 'food' => 'Stravovací požadavky',
 'food0' => '-',
 'food1' => 'Žádné hovězí',
@@ -91,10 +91,10 @@ $lang_register_form = array(
 'food4' => 'Košer',
 'food5' => 'Jiné',
 'food_other' => 'Jiné stravovací požadavky',
-'allegric' => 'Žádné alergie', 
+'allegric' => 'Žádné alergie',
 'transportation_assistance' => 'Pomoc s rezervací letu',
 'need_transportation_assistance' => 'Ano, potřebuji pomoci s rezervací letu',
-'visa_assistance' => 'Pomoc při získání víza', 
+'visa_assistance' => 'Pomoc při získání víza',
 'need_visa_assistance' => 'Ano, potřebuji pomoc s vízem',
 'visa_assistance_description' => 'Uveďte, jak Vám může organizační tým pomoci se získáním víza. (v <strong>arabštině</strong> nebo <strong>angličtině</strong>)',
 
@@ -104,17 +104,17 @@ $lang_register_form = array(
     Před vyplněním formuláře si prostudujte detaily jednotlivých variant na <a href=http://wikimania2008.wikimedia.org/wiki/Accommodation>oficiální stránce Wikimanie</a>.</p>
 ',
 'accommodation_hotel' => 'Preferovaný hotel',
-'hotels_metropol'=> 'Hotel Metropol ($60 za noc)',
-'hotels_delta'=> 'Hotel Delta ($30 za noc)',
+'hotels_metropol' => 'Hotel Metropol ($60 za noc)',
+'hotels_delta' => 'Hotel Delta ($30 za noc)',
 'hotels_dorms' => 'Koleje Saint-Marc ($10 za noc)',
 
-'accommodation' => 'Dny ubytování', 
+'accommodation' => 'Dny ubytování',
 'night1' => '16. červenec',
 'night2' => '17. červenec',
 'night3' => '18. červenec',
 'night4' => '19. červenec',
 'night5' => '20. červenec',
-'room' => 'Preferovaný pokoj',  
+'room' => 'Preferovaný pokoj',
 'room2' => '2-lůžkový',
 'room4' => '4-lůžkový',
 'room6' => 'Libovolný',
@@ -124,12 +124,12 @@ $lang_register_form = array(
          <p>Můžete využít svůj PayPal účet nebo kreditní kartu prostřednictvím PayPal účtu <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_display-approved-signup-countries-outside" title="PayPal Worldwide">ve 103 státech / regionech</a> (Egypt není obsažen) nebo bankovním převodem na účet organizačního týmu v Alexandrii. Pozor: Platbu prostřednictvím Paypal účtu nemohou využít egyptští občané.</p>
 ',
 
-'pay_method' => 'Způsob platby', 
+'pay_method' => 'Způsob platby',
 'atm' => 'Bankovní převod',
 'receipt' => 'Potvrzení',
-'need_receipt' => 'Ano, potřebuji písemné potvrzení.',  
-'receipt_title' => 'Platební titul', 
-'receipt_address' => 'Poštovní adresa', 
+'need_receipt' => 'Ano, potřebuji písemné potvrzení.',
+'receipt_title' => 'Platební titul',
+'receipt_address' => 'Poštovní adresa',
 
 'submit_notice' =>
 '<li><strong>Po odeslání formuláře je možno ověřit stav registrace.</strong></li>',
@@ -166,7 +166,7 @@ $lang_register_form = array(
 
 $lang_messages = array(
 'successful' => 'Registrace dokončena',
-'successful_description' => 
+'successful_description' =>
 '<p>Děkujeme Vám za účast na Wikimanii 2008! Vaše registrace byla odeslána. Po obdržení Vaší platby bude registrace potvrzena.
 
 <strong>Číslo Vaší registrace</strong> bude uvedeno níže. Toto číslo si poznamenejte, bude používáno ke kontrole stavu registrace a později k potvrzení Vaší identity.

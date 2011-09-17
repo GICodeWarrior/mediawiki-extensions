@@ -1,8 +1,8 @@
 <?php
 
 /* Prevent hacking */
-if(!defined('TC_STARTED')) 
-{ die('Hacking Attempt'); }
+if ( !defined( 'TC_STARTED' ) )
+{ die( 'Hacking Attempt' ); }
 
 ?>
 <div id="footer">

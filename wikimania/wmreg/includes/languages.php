@@ -3,17 +3,17 @@
 /**
  * A list of Wikimedia Projects
  */
-$WikimediaProjects = array( 'wikipedia', 'wiktionary', 'wikiquote', 'wikibooks', 'wikisource', 'wikinews', 'wikiversity', 'wikimedia', 'hamakor' /*WMIL partner organization*/);
+$WikimediaProjects = array( 'wikipedia', 'wiktionary', 'wikiquote', 'wikibooks', 'wikisource', 'wikinews', 'wikiversity', 'wikimedia', 'hamakor' /*WMIL partner organization*/ );
 
 /**
  * URLs of some wikis are (blah).wikimedia.org, this is a list of them.
  */
-$WikimediaOrgs = array('commons', 'incubator', 'mediawiki', 'meta', 'species');
+$WikimediaOrgs = array( 'commons', 'incubator', 'mediawiki', 'meta', 'species' );
 
 /**
  * A list of available language files
  */
-$available_languages = array('en' => 'English', 'he' => 'עברית',  'ar' => 'العربية', 'de' => 'Deutsch', 'es' => 'Español', 'fr' => 'Français', 'it' => 'Italiano',);
+$available_languages = array( 'en' => 'English', 'he' => 'עברית',  'ar' => 'العربية', 'de' => 'Deutsch', 'es' => 'Español', 'fr' => 'Français', 'it' => 'Italiano', );
 
 /**
  * A list of Wikimedia website languages

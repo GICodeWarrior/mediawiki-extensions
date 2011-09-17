@@ -17,25 +17,25 @@ $lang_register_form = array(
 'egy0' => '그렇지않습니다. (다음 양식에 여권에 나와 있는 당신의 이름과 여권 번호를 기재해 주세요.)',
 'surname' => '성',
 'given_name' => '이름',
-'sex' => '성별', 
+'sex' => '성별',
 'sex1' => '남성',
 'sex2' => '여성',
 'sex3' => '응답 거부',
-'id' => 'ID / 여권 번호', 
-'country' => '국가 / 지역', 
-'city' => '주 / 도시', 
+'id' => 'ID / 여권 번호',
+'country' => '국가 / 지역',
+'city' => '주 / 도시',
 'birthday' => '생년월일(dd/mmm/yyyy)',
 'organization' => '기관',
-'year1' => '', 
-'year' => '', 
-'month' => '', 
-'months' => array(NULL, '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'),
-'day' => '', 
+'year1' => '',
+'year' => '',
+'month' => '',
+'months' => array( NULL, '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월' ),
+'day' => '',
 
 'title2' =>
 '        <p><strong>언어 구사 능력</strong></p>',
-'langn' => '모국어', 
-'lang' => '언어 능력 수준', 
+'langn' => '모국어',
+'lang' => '언어 능력 수준',
 'select_lang' => '언어를 선택해 주세요',
 'select_level' => '언어 구사 능력을 선택해 주세요',
 
@@ -52,14 +52,14 @@ $lang_register_form = array(
 'lang2_level' => '언어 2의 구사 능력',
 'lang3_level' => '온어 3의 구사 능력',
 
-'title3' => 
+'title3' =>
 '        <p><strong>위키미디어 프로젝트와 이메일 계정</strong></p>
          <ul class="form_notice">
            <li>당신의 이메일 정보는 위키매니아 2008의 등록과 긴급 확인 용도로만 사용될 것입니다.</li>
          </ul>
-', 
-'wiki_id' => '선호하는 위키미디어 프로젝트 계정 이름', 
-'email' => '당신의  이메일', 
+',
+'wiki_id' => '선호하는 위키미디어 프로젝트 계정 이름',
+'email' => '당신의  이메일',
 
 
 'legend2' => '참가',
@@ -71,7 +71,7 @@ $lang_register_form = array(
 'join1' => '7월 17일',
 'join2' => '7월 18일',
 'join3' => '7월 19일',
-'topic' => '선호하는 세션 분야', 
+'topic' => '선호하는 세션 분야',
 'topic1' => '위키미디어 커뮤니티',
 'topic2' => '자유 콘텐츠',
 'topic3' => '기술 기반',
@@ -82,7 +82,7 @@ $lang_register_form = array(
 'showname2' => '위키미디어 계정',
 'showname3' => '기관',
 'showname4' => '기타',
-'size' => 'T-셔츠 사이즈', 
+'size' => 'T-셔츠 사이즈',
 'food' => '규정식',
 'food0' => '-',
 'food1' => '소고기 불가',
@@ -91,10 +91,10 @@ $lang_register_form = array(
 'food4' => '코샤르',
 'food5' => '기타',
 'food_other' => '특별한 규정식',
-'allegric' => '엘러지 있음', 
+'allegric' => '엘러지 있음',
 'transportation_assistance' => '항공권 지원 요청',
 'need_transportation_assistance' => '예, 제 항공권 예약에 지원이 필요합니다.',
-'visa_assistance' => '비자 요청', 
+'visa_assistance' => '비자 요청',
 'need_visa_assistance' => '예, 비자 발급이 필요합니다',
 'visa_assistance_description' => ' 비자 발급을 위해 어떤 기관이 어떻게 도와주어야 하는 기재해 주세요. (<strong>아랍어</strong> 또는 <strong>영어</strong>로)',
 
@@ -104,17 +104,17 @@ $lang_register_form = array(
     등록하시기 전에, 정확한 위치와 선택가능한 사양을 <a href=http://wikimania2008.wikimedia.org/wiki/Accommodation>위키매니아 공식 사이트</a>에서 상세 내용을 확인하세요.></p>
 ',
 'accommodation_hotel' => '선호하는 호텔',
-'hotels_metropol'=> '메트로폴 호텔(1박에 $60)',
-'hotels_delta'=> '델타 호텔(1박에 $30)',
+'hotels_metropol' => '메트로폴 호텔(1박에 $60)',
+'hotels_delta' => '델타 호텔(1박에 $30)',
 'hotels_dorms' => '성 마르크 기숙사(1박에 $10)',
 
-'accommodation' => '체류 일자', 
+'accommodation' => '체류 일자',
 'night1' => '7월 16일',
 'night2' => '7월 17일',
 'night3' => '7월 18일',
 'night4' => '7월 19일',
 'night5' => '7월 20일',
-'room' => '공동 숙박 가능 여부',  
+'room' => '공동 숙박 가능 여부',
 'room2' => '2인실',
 'room4' => '4인실',
 'room6' => '상관 없음',
@@ -124,12 +124,12 @@ $lang_register_form = array(
          <p>당신은 당신의 Paypal 계좌에서 출금하거나 <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_display-approved-signup-countries-outside" title="PayPal Worldwide">103개 국가/지역</a>(이집트는 포함되지 않음)에서 PayPal을 통해 당신의 신용카드를 사용하거나 또는 알렉산드리아에 있는 조직위 소유의 은행 계좌에 송금과 직접 지불을 통해 지불할 수도 있습니다. 주의: 당신이 이집트인이면 PayPal 옵션은 사용 불가합니다.</p>
 ',
 
-'pay_method' => '지불 수단', 
+'pay_method' => '지불 수단',
 'atm' => '은행 계좌 지불',
 'receipt' => '영수증',
-'need_receipt' => '예, 종이로 된 영수증이 필요합니다.',  
-'receipt_title' => '제목', 
-'receipt_address' => '메일 주소', 
+'need_receipt' => '예, 종이로 된 영수증이 필요합니다.',
+'receipt_title' => '제목',
+'receipt_address' => '메일 주소',
 
 'submit_notice' =>
 '<li><strong>양식을 제출하고서, 당신은 아직 당신의 등록을 확인할 기회가 한 번 있습니다.</strong></li>',
@@ -166,8 +166,8 @@ $lang_register_form = array(
 
 $lang_messages = array(
 'successful' => '등록 완료',
-'successful_description' => 
-'<p>위키매니아 2008에 함께 하여 주셔서 감사합니다! 당신의 등록 양식은 제출되었습니다. 등록을 확인하려면 납부 과정을 완료할 필요가 있음을 유의하세요. 
+'successful_description' =>
+'<p>위키매니아 2008에 함께 하여 주셔서 감사합니다! 당신의 등록 양식은 제출되었습니다. 등록을 확인하려면 납부 과정을 완료할 필요가 있음을 유의하세요.
 당신의 <strong>등록 번호</strong>는 아래 표시됩니다. 나중에 당신의 신원을 확인하거나 등록 현황을 조회하기 위하여 필요하오니 등록 번호를 적어 두세요',
 'cost' => '등록비',
 'wikimania_cost' => '회의: ',

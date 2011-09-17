@@ -17,25 +17,25 @@ $lang_register_form = array(
 'egy0' => 'Nie. (W poniższych polach podaj numer paszportu i nazwisko)',
 'surname' => 'Nazwisko',
 'given_name' => 'Imię',
-'sex' => 'Płeć', 
+'sex' => 'Płeć',
 'sex1' => 'Mężczyzna',
 'sex2' => 'Kobieta',
 'sex3' => 'Odmawiam podania',
-'id' => 'Numer paszportu', 
-'country' => 'Kraj / Region', 
-'city' => 'Stan / miasto', 
+'id' => 'Numer paszportu',
+'country' => 'Kraj / Region',
+'city' => 'Stan / miasto',
 'birthday' => 'Data urodzenie (dd/mmm/rrrr)',
 'organization' => 'Organizacja',
-'year1' => '', 
-'year' => '', 
-'month' => '', 
-'months' => array(NULL, 'Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień'),
-'day' => '', 
+'year1' => '',
+'year' => '',
+'month' => '',
+'months' => array( NULL, 'Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień' ),
+'day' => '',
 
 'title2' =>
 '        <p><strong>Znajomość języków</strong></p>',
-'langn' => 'Język ojczysty', 
-'lang' => 'Poziom znajomości języka', 
+'langn' => 'Język ojczysty',
+'lang' => 'Poziom znajomości języka',
 'select_lang' => 'Wybierz język',
 'select_level' => 'Wybierz poziom znajomości języka',
 
@@ -52,14 +52,14 @@ $lang_register_form = array(
 'lang2_level' => 'Poziom znajomości języka 2',
 'lang3_level' => 'Poziom znajomości języka 3',
 
-'title3' => 
+'title3' =>
 '        <p><strong>Projekty Wikimedia i konto/konta e-mail</strong></p>
          <ul class="form_notice">
            <li>Informacja o twoim koncie będzie wykorzystana wyłącznie do celów rejestracji i pilnych powiadomień o Wikimanii 2008.</li>
          </ul>
-', 
-'wiki_id' => 'Nazwa głównego projektu Wikimedia', 
-'email' => 'Twój e-mail', 
+',
+'wiki_id' => 'Nazwa głównego projektu Wikimedia',
+'email' => 'Twój e-mail',
 
 
 'legend2' => 'Uczestnictwo',
@@ -71,7 +71,7 @@ $lang_register_form = array(
 'join1' => '17 lipca',
 'join2' => '18 lipca',
 'join3' => '19 lipca',
-'topic' => 'Preferowany zestaw sesji', 
+'topic' => 'Preferowany zestaw sesji',
 'topic1' => 'Społeczności Wikimedia',
 'topic2' => 'Wolne treści',
 'topic3' => 'Infrastruktura techniczna',
@@ -82,7 +82,7 @@ $lang_register_form = array(
 'showname2' => 'Konto Wikimedia',
 'showname3' => 'Organizacja',
 'showname4' => 'Inne',
-'size' => 'Rozmiar T-shirtu', 
+'size' => 'Rozmiar T-shirtu',
 'food' => 'Ograniczenia diety',
 'food0' => '-',
 'food1' => 'Bez wołowiny',
@@ -91,10 +91,10 @@ $lang_register_form = array(
 'food4' => 'Koszerna',
 'food5' => 'Inna',
 'food_other' => 'Określone ograniczenia dietetyczne',
-'allegric' => 'Alergie', 
+'allegric' => 'Alergie',
 'transportation_assistance' => 'Pomoc w zorganizowaniu biletów lotniczych',
 'need_transportation_assistance' => 'Tak, potrzebuję pomocy w dziedzinie rezerwacji lotniczej',
-'visa_assistance' => 'Pomoc w uzyskaniu wizy', 
+'visa_assistance' => 'Pomoc w uzyskaniu wizy',
 'need_visa_assistance' => 'Tak, potrzebuję pomocy',
 'visa_assistance_description' => 'Proszę podać jak organizatorzy mogą pomóc w uzyskaniu wizy. (po <strong>arabsku</strong> lub <strong>angielsku</strong>)',
 
@@ -104,17 +104,17 @@ $lang_register_form = array(
     Sprawdź szczegóły lokalizacji na <a href=http://wikimania2008.wikimedia.org/wiki/Accommodation>oficjalnej stronie Wikimanii</a> przed zarejestrowniem.</p>
 ',
 'accommodation_hotel' => 'Preferowany hotel.',
-'hotels_metropol'=> 'Hotel Metropol ($60 za noc)',
-'hotels_delta'=> 'Hotel Delta ($30 za noc)',
+'hotels_metropol' => 'Hotel Metropol ($60 za noc)',
+'hotels_delta' => 'Hotel Delta ($30 za noc)',
 'hotels_dorms' => 'Akademiki Saint Marc($10 za noc)',
 
-'accommodation' => 'Noclegi', 
+'accommodation' => 'Noclegi',
 'night1' => '16 lipca',
 'night2' => '17 lipca',
 'night3' => '18 lipca',
 'night4' => '19 lipca',
 'night5' => '20 lipca',
-'room' => 'Preferowany pokój',  
+'room' => 'Preferowany pokój',
 'room2' => '2-osobowy',
 'room4' => '4-osobowy',
 'room6' => 'Bez znaczenia',
@@ -124,12 +124,12 @@ $lang_register_form = array(
          <p>Możesz skorzystać ze swojego konta PayPal lub zapłacić kartą kredytową poprzez PayPal w <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_display-approved-signup-countries-outside" title="PayPal Worldwide">103 krajach / regionach</a> (Egipt jest z tej usługi wyłączony) lub przelewem na konto bankowe organizatorów w Aleksandrii. Uwaga: płatność przez PayPal jest niedostępna jeśli jesteś Egipcjaninem.</p>
 ',
 
-'pay_method' => 'Rodzaj płatności', 
+'pay_method' => 'Rodzaj płatności',
 'atm' => 'Przelew z konta bankowego',
 'receipt' => 'Rachunek',
-'need_receipt' => 'Tak, poproszę o rachunek',  
-'receipt_title' => 'Tytuł', 
-'receipt_address' => 'Adres do korespondencji', 
+'need_receipt' => 'Tak, poproszę o rachunek',
+'receipt_title' => 'Tytuł',
+'receipt_address' => 'Adres do korespondencji',
 
 'submit_notice' =>
 '<li><strong>Po wysłaniu formularza nadal dostępna jest możliwość weryfikacji zgłoszenia.</strong></li>',
@@ -166,7 +166,7 @@ $lang_register_form = array(
 
 $lang_messages = array(
 'successful' => 'Rejestracja zakończona',
-'successful_description' => 
+'successful_description' =>
 '<p>Dziękujemy za zgłoszenie udziału w konferencji Wikimania 2008! Twój formularz rejestracyjny został wysłany. Aby rejestracja została potwierdzona musisz dokonać płatności.
 
 Poniżej znajduje się Twój <strong>numer rejestracji</strong>. Zanotuj go, gdyż jest on używany do sprawdzania stanu rejestracji i potwierdzenia Twojej tożsamości.

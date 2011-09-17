@@ -12,24 +12,24 @@ $lang_register_form = array(
 '<p><strong>Données sur l\'identité du participant</strong></p>',
 'surname' => 'Nom',
 'given_name' => 'Prénom',
-'sex' => 'Sexe', 
+'sex' => 'Sexe',
 'sex1' => 'masculin',
 'sex2' => 'féminin',
 'sex3' => 'non communiqué',
-'passport' => 'Numéro de passeport', 
+'passport' => 'Numéro de passeport',
 'passport_valid' => 'Passeport valide jusqu\'au (JJ/MM/AAAA)<br><small>Vôtre passeport doit impérativement être encore valide six mois après la date d\'entrée sur le territoire.</small>',
 'passport_issued' => 'Passeport délivré à',
-'country' => 'Pays de résidence', 
+'country' => 'Pays de résidence',
 'birthday' => 'Date de naissance (JJ/MM/AAAA)',
-'year1' => '', 
-'year' => '', 
-'month' => '', 
-'months' => array(NULL, 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'),
-'day' => '', 
+'year1' => '',
+'year' => '',
+'month' => '',
+'months' => array( NULL, 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre' ),
+'day' => '',
 'title2' =>
 '        <p><strong>Compétences linguistiques</strong></p>',
-'langn' => 'Langue maternelle', 
-'lang' => 'Autres langues', 
+'langn' => 'Langue maternelle',
+'lang' => 'Autres langues',
 'select_lang' => 'Choisir une langue',
 'select_level' => 'Choisir un niveau',
 
@@ -46,13 +46,13 @@ $lang_register_form = array(
 'lang2_level' => 'Compétences linguistiques pour la langue 2',
 'lang3_level' => 'Compétences linguistiques pour la langue 3',
 
-'title3' => 
+'title3' =>
 '<p><strong>Projet Wikimédia et adresse de courriel</strong></p>
 <p>Vôtre adresse de courriel sera utilisée uniquement dans le cadre de Wikimania 2011.
 </p>
-', 
-'wiki_id' => 'Nom d\'utilisateur sur les projets Wikimédia', 
-'email' => 'Adresse de courriel', 
+',
+'wiki_id' => 'Nom d\'utilisateur sur les projets Wikimédia',
+'email' => 'Adresse de courriel',
 
 'legend2' => 'Participation',
 'title4' =>
@@ -70,16 +70,16 @@ $lang_register_form = array(
 'showname1' => 'Nom',
 'showname2' => 'Nom d\'utilisateur sur les projets Wikimédia',
 'showname3' => 'Informations supplémentaires :',
-'size' => 'Taille du T-Shirt', 
+'size' => 'Taille du T-Shirt',
 'food' => 'Pratique alimentaire particulière<br><small>Tous les repas durant la conférence seront casher.</small>',
 'food0' => 'aucune',
 'food1' => 'végétarien',
 'food2' => 'halal',
 'food_other' => 'autre :',
- 
-'title_visa' => 
+
+'title_visa' =>
 '<p><strong>Visa</strong></p>
-<p>Si vôtre passeport a été émis d\'un <a href=http://wikimania2011.wikimedia.org/wiki/Visas#Visa_required>pays pour lequel il est exigé un visa de la part d\'Israël</a>, renseignez le formulaire suivant afin que l\'organisation soit en mesure de communiquer ces informations au ministère israélien des Affaires étrangères.', 
+<p>Si vôtre passeport a été émis d\'un <a href=http://wikimania2011.wikimedia.org/wiki/Visas#Visa_required>pays pour lequel il est exigé un visa de la part d\'Israël</a>, renseignez le formulaire suivant afin que l\'organisation soit en mesure de communiquer ces informations au ministère israélien des Affaires étrangères.',
 'need_visa_assistance' => 'Oui, ma venue en Israël nécessite un visa.',
 'visa_assistance' => 'Nécessité d\'un visa',
 'visa_assistance_description' => 'Requête particulière relative à la demande de visa (en <strong>anglais</strong>)',
@@ -103,7 +103,7 @@ Informez-vous sur <a href=http://wikimania2011.wikimedia.org/wiki/Accommodation>
 'hotel5stars' => 'Hotels *****',
 'hotelboutique' => 'Boutique-Hotels',
 
-'accommodation' => 'Nuitées où un hébergement est nécessaire', 
+'accommodation' => 'Nuitées où un hébergement est nécessaire',
 'night1' => 'Lundi, 1. août 2011',
 'night2' => 'Mardi, 2 août 2011',
 'night3' => 'Mercredi, 3 août 2011',
@@ -112,7 +112,7 @@ Informez-vous sur <a href=http://wikimania2011.wikimedia.org/wiki/Accommodation>
 'night6' => 'Samedi, 6 août 2011',
 'night7' => 'Dimanche, 7 août 2011',
 'night8' => 'Lundi, 8 août 2011',
-'room' => 'Type de chambre souhaitée',  
+'room' => 'Type de chambre souhaitée',
 'room1' => 'Individuelle',
 'room2' => 'Double avec un autre participant du même sexe choisi au hasard.',
 'room3' => 'Double avec un autre participant en particulier (prière de donner le nom et prénom complet) :',
@@ -148,8 +148,8 @@ Informez-vous sur <a href=http://wikimania2011.wikimedia.org/wiki/Accommodation>
 'color' => 'Couleur du T-Shirt',
 'white' => 'blanc',
 'black' => 'noir',
-'nationality' => 'Pays d\'émission du passeport', 
-'countryofbirth' => 'Pays de naissance', 
+'nationality' => 'Pays d\'émission du passeport',
+'countryofbirth' => 'Pays de naissance',
 'homeaddress' => 'Adresse de résidence',
 'picktour' => 'Souhait de visite',
 'tour0' => 'pas de souhait particulier',
@@ -157,7 +157,7 @@ Informez-vous sur <a href=http://wikimania2011.wikimedia.org/wiki/Accommodation>
 'tour2' => 'Jérusalem',
 'tour3' => 'Acre',
 'tour4' => 'Terrasses Baha\'i sur le Mont Carmel',
-'tour5' => 'Villages druses', 
+'tour5' => 'Villages druses',
 'main_date' => 'Journée principale de la conférence',
 'captcha' => 'Information du CAPTCHA'
 );
@@ -165,7 +165,7 @@ Informez-vous sur <a href=http://wikimania2011.wikimedia.org/wiki/Accommodation>
 
 $lang_messages = array(
 'successful' => 'Inscription terminée',
-'successful_description' => 
+'successful_description' =>
 '<p>Merci beaucoup pour vôtre participation à Wikimania 2011! Vôtre inscription a été transmise. Prenez en considération qu\'il vous faudra effecuté le paiement afin de que vôtre inscription puisse être confirmée.
 
 Vôtre <strong>numéro d\'inscription</strong> va être indiqué ci-dessous. Prenez en considération qu\'il vous faudra obligatoirement ce numéro pour interroger le système sur le statut de vôtre inscription.

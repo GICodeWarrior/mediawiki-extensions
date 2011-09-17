@@ -1,17 +1,17 @@
 <?php
 
 /* Prevent hacking */
-if(!defined('TC_STARTED')) 
-{ die('Hacking Attempt'); }
+if ( !defined( 'TC_STARTED' ) )
+{ die( 'Hacking Attempt' ); }
 
 global $register_data, $lang_messages;
 
 /* Fix XSS */
-$register_data = array_map('htmlspecialchars', $register_data);
+$register_data = array_map( 'htmlspecialchars', $register_data );
 
 ?>
 <?php
-if ($userLanguage == 'ar' || $userLanguage == 'fa' || $userLanguage == 'he')
+if ( $userLanguage == 'ar' || $userLanguage == 'fa' || $userLanguage == 'he' )
 {
 echo '<div dir="rtl">';
 }

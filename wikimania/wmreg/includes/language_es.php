@@ -12,24 +12,24 @@ $lang_register_form = array(
 '<p><strong>Datos de información personal</strong></p>',
 'surname' => 'Apellido',
 'given_name' => 'Nombre',
-'sex' => 'Género', 
+'sex' => 'Género',
 'sex1' => 'Masculino',
 'sex2' => 'Femenino',
 'sex3' => 'No declara',
-'passport' => 'Número de pasaporte / Número de identificación', 
+'passport' => 'Número de pasaporte / Número de identificación',
 'passport_valid' => 'Pasaporte válido hasta (dd/mmm/yyyy)<br><small>Tu pasaporte debe ser válido por 6 meses.</small>',
 'passport_issued' => 'Lugar en donde el pasaporte fue emitido',
-'country' => 'País de residencia', 
+'country' => 'País de residencia',
 'birthday' => 'Fecha de nacimiento (dd/mmm/yyyy)',
-'year1' => '', 
-'year' => '', 
-'month' => '', 
-'months' => array(NULL, 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'),
-'day' => '', 
+'year1' => '',
+'year' => '',
+'month' => '',
+'months' => array( NULL, 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre' ),
+'day' => '',
 'title2' =>
 '        <p><strong>Habilidades lingüísticas</strong></p>',
-'langn' => 'Idioma nativo', 
-'lang' => 'Idiomas adicionales', 
+'langn' => 'Idioma nativo',
+'lang' => 'Idiomas adicionales',
 'select_lang' => 'Selecciona el idioma',
 'select_level' => 'Selecciona el nivel de dominio',
 
@@ -46,13 +46,13 @@ $lang_register_form = array(
 'lang2_level' => 'Nivel del Idioma 2',
 'lang3_level' => 'Nivel del Idioma 3',
 
-'title3' => 
+'title3' =>
 '<p><strong>Proyecto de Wikimedia y dirección/es de correo electrónico</strong></p>
 <p>Tu correo electrónico sólo será utilizado para la inscripción y para notificaciones urgentes sobre Wikimanía 2011.
 </p>
-', 
-'wiki_id' => 'Nombre de la cuenta de tu proyecto Wikimedia preferido', 
-'email' => 'Tu correo electrónico', 
+',
+'wiki_id' => 'Nombre de la cuenta de tu proyecto Wikimedia preferido',
+'email' => 'Tu correo electrónico',
 
 'legend2' => 'Participación',
 'title4' =>
@@ -70,16 +70,16 @@ $lang_register_form = array(
 'showname1' => 'Nombre',
 'showname2' => 'Cuenta Wikimedia',
 'showname3' => 'Información adicional:',
-'size' => 'Talla de camiseta', 
+'size' => 'Talla de camiseta',
 'food' => 'Restricciones de dieta<br><small>Todos los alimentos que se servirán durante la conferencia serán kosher.</small>',
 'food0' => 'No',
 'food1' => 'Vegetariano',
 'food2' => 'Halal',
 'food_other' => 'Otro:',
- 
-'title_visa' => 
+
+'title_visa' =>
 '<p><strong>Asistencia para visa</strong></p>
-<p>Si tu pasaporte es emitido por <a href=http://wikimania2011.wikimedia.org/wiki/Visas#Visa_required>un país para el que se requiere un visado de entrada a Israel</a>, por favor llena esta sección para que los organizadores pueden pasar sus datos al Ministerio israelí de Asuntos Exteriores.', 
+<p>Si tu pasaporte es emitido por <a href=http://wikimania2011.wikimedia.org/wiki/Visas#Visa_required>un país para el que se requiere un visado de entrada a Israel</a>, por favor llena esta sección para que los organizadores pueden pasar sus datos al Ministerio israelí de Asuntos Exteriores.',
 'need_visa_assistance' => 'Sí, necesito un visado de entrada a Israel',
 'visa_assistance' => 'Ayuda para obtener la visa',
 'visa_assistance_description' => 'Por favor indícanos cómo puede ayudarte el equipo organizador a obtener la visa. (en <strong>Inglés</strong>)',
@@ -103,7 +103,7 @@ Por favor visita el <a href=http://wikimania2011.wikimedia.org/wiki/Accommodatio
 'hotel5stars' => 'Hotel de cinco estrellas',
 'hotelboutique' => 'Hotel boutique',
 
-'accommodation' => 'Noches de alojamiento que necesitas', 
+'accommodation' => 'Noches de alojamiento que necesitas',
 'night1' => 'Lunes 1 de agosto, 2011',
 'night2' => 'Martes 2 de agosto, 2011',
 'night3' => 'Miércoles 3 de agosto, 2011',
@@ -112,7 +112,7 @@ Por favor visita el <a href=http://wikimania2011.wikimedia.org/wiki/Accommodatio
 'night6' => 'Sábado 5 de agosto, 2011',
 'night7' => 'Domingo 7 de agosto, 2011',
 'night8' => 'Lunes 8 de agosto, 2011',
-'room' => 'Habitación preferida',  
+'room' => 'Habitación preferida',
 'room1' => 'Ocupación individual',
 'room2' => 'Ocupación doble con pareja del mismo género seleccionada al azar por los organizadores',
 'room3' => 'Ocupación doble con un compañero (a) en específico (por favor escriba nombre completo)',
@@ -148,8 +148,8 @@ Por favor visita el <a href=http://wikimania2011.wikimedia.org/wiki/Accommodatio
 'color' => 'Color de camiseta',
 'white' => 'Blanca',
 'black' => 'negra',
-'nationality' => 'Pasaporte emitido por', 
-'countryofbirth' => 'País de nacimiento', 
+'nationality' => 'Pasaporte emitido por',
+'countryofbirth' => 'País de nacimiento',
 'homeaddress' => 'Dirección',
 'picktour' => 'Destino de tour preferido',
 'tour0' => 'No tengo una preferencia',
@@ -165,7 +165,7 @@ Por favor visita el <a href=http://wikimania2011.wikimedia.org/wiki/Accommodatio
 
 $lang_messages = array(
 'successful' => 'Registro completo',
-'successful_description' => 
+'successful_description' =>
 '<p>¡Gracias por sumarte a Wikimanía 2011! Tu formulario de inscripción fue aceptado. Por favor, ten en cuenta que necesitas completar el proceso de pago para que la inscripción pueda ser confirmada.
 
 Tu <strong>número de registro</strong> será mostrado debajo. Por favor, anota este número ya que será utilizado para consultar el estado de tu inscripción y para confirmar tu identidad en el futuro.

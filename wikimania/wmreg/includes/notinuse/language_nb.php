@@ -17,25 +17,25 @@ $lang_register_form = array(
 'egy0' => 'Nei, det er jeg ikke. (Vennligst skriv inn ditt passnummer og navnet i passet i følgende felt)',
 'surname' => 'Etternavn',
 'given_name' => 'Fornavn',
-'sex' => 'Kjønn', 
+'sex' => 'Kjønn',
 'sex1' => 'Mann',
 'sex2' => 'Kvinne',
 'sex3' => 'Vil ikke oppgi',
-'id' => 'ID / Passnummer', 
-'country' => 'Land / Region', 
-'city' => 'Stat / By', 
+'id' => 'ID / Passnummer',
+'country' => 'Land / Region',
+'city' => 'Stat / By',
 'birthday' => 'Fødselsdato (dd/mm/åååå)',
 'organization' => 'Organisasjon',
-'year1' => '', 
-'year' => '', 
-'month' => '', 
-'months' => array(NULL, 'januar', 'februar', 'mars', 'april', 'mai', 'juni', 'juli', 'august', 'september', 'oktober', 'november', 'desember'),
-'day' => '', 
+'year1' => '',
+'year' => '',
+'month' => '',
+'months' => array( NULL, 'januar', 'februar', 'mars', 'april', 'mai', 'juni', 'juli', 'august', 'september', 'oktober', 'november', 'desember' ),
+'day' => '',
 
 'title2' =>
 '        <p><strong>Lingvistisk ferdighet</strong></p>',
-'langn' => 'Morsmål', 
-'lang' => 'Ferdighetsnivå', 
+'langn' => 'Morsmål',
+'lang' => 'Ferdighetsnivå',
 'select_lang' => 'Velg språket',
 'select_level' => 'Velg ferdighetsnivå',
 
@@ -52,14 +52,14 @@ $lang_register_form = array(
 'lang2_level' => 'Ferdighetsnivå for språk 2',
 'lang3_level' => 'Ferdighetsnivå for språk 3',
 
-'title3' => 
+'title3' =>
 '        <p><strong>Wikimedia-prosjekt og e-postkontoer</strong></p>
          <ul class="form_notice">
            <li>Din e-postadresse blir brukt til registrering og viktige meldinger rundt Wikimania 2008.</li>
          </ul>
-', 
-'wiki_id' => 'Ønsket Wikimedia-prosjekt-kontonavn', 
-'email' => 'Din e-postadresse', 
+',
+'wiki_id' => 'Ønsket Wikimedia-prosjekt-kontonavn',
+'email' => 'Din e-postadresse',
 
 
 'legend2' => 'Deltagelse',
@@ -71,7 +71,7 @@ $lang_register_form = array(
 'join1' => '17. juli',
 'join2' => '18. juli',
 'join3' => '19. juli',
-'topic' => 'Ønsket temalinje', 
+'topic' => 'Ønsket temalinje',
 'topic1' => 'Wikimedia-prosjekter',
 'topic2' => 'Fritt innhold',
 'topic3' => 'Teknisk infrastruktur',
@@ -82,7 +82,7 @@ $lang_register_form = array(
 'showname2' => 'Wikimedia-konto',
 'showname3' => 'Organisasjon',
 'showname4' => 'Annet',
-'size' => 'T-skjortestørrelse', 
+'size' => 'T-skjortestørrelse',
 'food' => 'Kostholdsrestriksjoner',
 'food0' => '-',
 'food1' => 'Ikke biff',
@@ -91,10 +91,10 @@ $lang_register_form = array(
 'food4' => 'Kosher',
 'food5' => 'Annet',
 'food_other' => 'Spesifiserte kostholdsrestriksjoner',
-'allegric' => 'Eventuelle allergier', 
+'allegric' => 'Eventuelle allergier',
 'transportation_assistance' => 'Flybillettassistanse',
 'need_transportation_assistance' => 'Ja, jeg trenger deres assistanse for å bestille flybillett',
-'visa_assistance' => 'Visumsassistanse', 
+'visa_assistance' => 'Visumsassistanse',
 'need_visa_assistance' => 'Ja, jeg trenger visumsassistanse',
 'visa_assistance_description' => ' Vennligst spesifiser hvordan organisasjonslaget kan hjelpe deg med visumproblemer. (på <strong>arabisk</strong> eller <strong>engelsk</strong>)',
 
@@ -104,17 +104,17 @@ $lang_register_form = array(
     Vennligst se detaljer på <a href=http://wikimania2008.wikimedia.org/wiki/Accommodation>Wikimanias offisielle nettside</a> for presis plassering og spesifikasjoner for hvert valg før du registrerer.</p>
 ',
 'accommodation_hotel' => 'Ønsket hotell.',
-'hotels_metropol'=> 'Metropol Hotel ($60 per natt)',
-'hotels_delta'=> 'Delta Hotel ($30 per natt)',
+'hotels_metropol' => 'Metropol Hotel ($60 per natt)',
+'hotels_delta' => 'Delta Hotel ($30 per natt)',
 'hotels_dorms' => 'Saint Marc Dorms ($10 per natt)',
 
-'accommodation' => 'Dag(er) du skal være', 
+'accommodation' => 'Dag(er) du skal være',
 'night1' => '16. juli',
 'night2' => '17. juli',
 'night3' => '18. juli',
 'night4' => '19. juli',
 'night5' => '20. juli',
-'room' => 'Ønsket rom',  
+'room' => 'Ønsket rom',
 'room2' => 'dobbelt-',
 'room4' => 'firemanns-',
 'room6' => 'Bryr meg ikke',
@@ -124,12 +124,12 @@ $lang_register_form = array(
          <p>Du kan belaste din PayPal-konto eller betale med kredittkort via PayPal 1 <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_display-approved-signup-countries-outside" title="PayPal Worldwide">103 land / regioner</a> (Egypt er ikke inkludert) eller via remisse og direkte betaling til bankkontoen til organisasjonslaget i Alexandria. Merk: PayPal-muligheten frafaller hvis du er egyptisk</p>
 ',
 
-'pay_method' => 'Betalingsmåte', 
+'pay_method' => 'Betalingsmåte',
 'atm' => 'Bankkontobetaling',
 'receipt' => 'Kvittering',
-'need_receipt' => 'Ja, jeg trenger papirkvittering.',  
-'receipt_title' => 'Tittel', 
-'receipt_address' => 'Postadresse', 
+'need_receipt' => 'Ja, jeg trenger papirkvittering.',
+'receipt_title' => 'Tittel',
+'receipt_address' => 'Postadresse',
 
 'submit_notice' =>
 '<li><strong>Du har fortsatt mulighet til å verifisere registreringen din etter at du har levert blanketten.</strong></li>',
@@ -166,7 +166,7 @@ $lang_register_form = array(
 
 $lang_messages = array(
 'successful' => 'Registrering ferdig',
-'successful_description' => 
+'successful_description' =>
 '<p>Takk for at du deltar på Wikimania 2008! Registreringsblanketten din har blitt sendt. Vennligst merk deg at du må fullføre betalingsprossessen for at registreringen kan bekreftes.
 
 <strong>Registreringsnummeret</strong> ditt vil vises nedenfor. Vennligst noter nummeret, for det vil bli brukt ved spørsmål angående registreringsstatus og for å bekrefte din indentitet fremover.
