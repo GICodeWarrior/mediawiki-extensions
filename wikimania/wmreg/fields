@@ -1,0 +1,53 @@
+$register_data keys
+
+unique_code
+given_name
+surname
+sex  m/f/d
+country
+langn
+lang1
+lang1-level
+lang2
+lang2-level
+lang3
+lang3-level
+wiki_id
+wiki_language
+wiki_project
+email
+join_date[]
+tours
+showname[]
+custom_showname
+size XXS, XS...
+color W, B // removed
+food
+food_other
+visa_assistance
+	nationality
+	passport
+	passport_day
+	passport_month
+	passport_year
+	passport_issued
+	day
+	month
+	year
+	countryofbirth
+	homeaddress
+	visa_assistance_description
+nights[]
+room
+room_partner
+room_requests
+hotels
+receipt --> delete
+receipt_address --> delete
+discount_code
+paypal // removed
+cost_paid
+status
+
+
+tag printed?

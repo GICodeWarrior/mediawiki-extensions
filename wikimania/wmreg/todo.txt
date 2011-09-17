@@ -1,0 +1,9 @@
+	administrator interface editing ability
+	notes field?
+V	check captcha and mail lag
+V	regular mail instead of smtp
+	query your status
+V	new messages regarding visa application
+V	link to hotel prices
+V	update language list
+V	remove color field

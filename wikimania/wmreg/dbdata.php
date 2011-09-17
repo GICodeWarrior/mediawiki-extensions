@@ -1,0 +1,32 @@
+<?php
+
+/* Prevent hacking */
+if(!defined('TC_STARTED')) 
+{ die('Hacking Attempt'); }
+
+$DB_HOST = '127.0.0.1';
+
+$DB_ID = 'username';
+
+$DB_NAME = 'wikidb';
+
+$DB_PASS = 'foobar';
+
+/**
+ * The URL of the system
+ */
+$myself_url = 'https://secure.wikidc.org/wm/reg/';
+//$myself_url = 'http://wmreg11.eu5.org/wmreg/';
+
+$recaptcha_publickey = "";
+$recaptcha_privatekey = "";
+
+$open_time = gmmktime(0, 0, 0, /*january*/ 1, /*1st*/ 1, 2011);
+$close_time = gmmktime(0, 0, 0, /*august*/ 8, /*1st*/ 1, 2012);
+$mock = true;
+
+$coupon_vip = 'foo';
+$coupon_median = 'bar';
+$coupon_volunteer = 'baz';
+
+?>
