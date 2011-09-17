@@ -160,6 +160,16 @@ class ArticleFeedbackHooks {
 				) );
 			}
 
+			if ( !$db->indexExists( 'article_feedback', 'aa_page_id', __METHOD__ ) ) { 
+				$updater->addExtensionUpdate( array(
+					'addIndex',
+					'article_feedback',
+					'aa_page_id',
+					$dir . '/sql/AddArticleFeedbackPageIndex.sql',
+					true
+				) );
+			}
+
 			$updater->addExtensionUpdate( array(
 				'addField',
 				'article_feedback',
