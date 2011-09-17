@@ -32,7 +32,11 @@ while True:
 		t = time.time()
 	nextTime += 10
 
-	fullProfile = SocketProfile(config.host,config.port).extract()
+	try: 
+		fullProfile = SocketProfile(config.host,config.port).extract()
+	except:
+		continue
+
 	if not ( profId in fullProfile ):
 		continue
 	profile = fullProfile[profId]['-']
