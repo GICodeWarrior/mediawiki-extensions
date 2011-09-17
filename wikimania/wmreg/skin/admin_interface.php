@@ -238,7 +238,7 @@ switch( $MY_REQUEST['mode'] )
 			<th>7/8</th>
 			<th>Tour</th>
 		    <th>Size</th>
-            <th>Food</th>';
+		<th>Food</th>';
 			break;
 		case 'accommodation':
 			echo '<th>1/8</th>
@@ -249,7 +249,7 @@ switch( $MY_REQUEST['mode'] )
 		    <th>6/8</th>
 		    <th>7/8</th>
 		    <th>8/8</th>
-            <th>Hotel</th>
+		<th>Hotel</th>
 		    <th>Type</th>
 		    <th>Partner</th>
 		    <th>Room #</th>

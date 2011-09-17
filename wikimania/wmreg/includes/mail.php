@@ -6,7 +6,7 @@ function mail_msg( $to, $subject, $body )
 	// this is partly over-ridden by Gmail SMTP
 	$from = "Wikimania 2011 Registration <wikimania-registration@wikimedia.org>";
 	$headers = array ( 'From' => $from,
-	  	'To' => $to,
+		'To' => $to,
 		'Subject' => $subject,
 		'MIME-Version' => '1.0',
 		'Content-type' => 'text/html; charset=utf-8',

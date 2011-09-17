@@ -117,8 +117,8 @@ $parameters2 .= '&mode=' . urlencode( $MY_REQUEST['mode'] );
 	</script>
 	<div id="mask">&nbsp;</div>
 	<div id="content_part">
-        <h1>管理介面</h1>
-        <p id="special_pages">登入為<strong> <?php echo $_SESSION['user_id']?></strong> |  <a href="<?php echo $myself_url . 'index.php?action=logout'?>" title="登出並離開管理介面">登出</a></p>
+	  <h1>管理介面</h1>
+	  <p id="special_pages">登入為<strong> <?php echo $_SESSION['user_id']?></strong> |  <a href="<?php echo $myself_url . 'index.php?action=logout'?>" title="登出並離開管理介面">登出</a></p>
 	<?php if ( !empty( $error_message ) )
 	{
 		echo '<div id="correction">' . "\n" . $error_message . "\n" . '</div>' . "\n";
@@ -439,9 +439,9 @@ $data = array_map( 'htmlspecialchars', $data );
 	<p>
 	參加日期：
 	<?php if ( $MY_REQUEST['j'] )
-	{ echo '          <input type="checkbox" value="1" name="j1" id="j1" checked="checked" />'; }
+	{ echo '	    <input type="checkbox" value="1" name="j1" id="j1" checked="checked" />'; }
 	else
-	{ echo '          <input type="checkbox" value="1" name="j1" id="j1" />'; }
+	{ echo '	    <input type="checkbox" value="1" name="j1" id="j1" />'; }
 	echo '<label for="j1">' . $lang_register_form['join1'] . '</label>' . "\n";
 
 	// echo $lang_register_form['join2']; ?>
@@ -452,9 +452,9 @@ $data = array_map( 'htmlspecialchars', $data );
 for ( $i = 3; $i <= 5; $i++ )
 {
 	if ( $MY_REQUEST['j' . $i] )
-	{ echo '          <input type="checkbox" value="1" name="j' . $i . '" id="j' . $i . '" checked="checked" />'; }
+	{ echo '	    <input type="checkbox" value="1" name="j' . $i . '" id="j' . $i . '" checked="checked" />'; }
 	else
-	{ echo '          <input type="checkbox" value="1" name="j' . $i . '" id="j' . $i . '" />'; }
+	{ echo '	    <input type="checkbox" value="1" name="j' . $i . '" id="j' . $i . '" />'; }
 	echo '<label for="j' . $i . '">' . $lang_register_form['join' . $i] . '</label>';
 
 	echo "\n";
@@ -469,9 +469,9 @@ for ( $i = 3; $i <= 5; $i++ )
 for ( $i = 1; $i <= 6; $i++ )
 {
 	if ( $MY_REQUEST['n' . $i] )
-	{ echo '          <input type="checkbox" value="1" name="n' . $i . '" id="n' . $i . '" checked="checked" />'; }
+	{ echo '	    <input type="checkbox" value="1" name="n' . $i . '" id="n' . $i . '" checked="checked" />'; }
 	else
-	{ echo '          <input type="checkbox" value="1" name="n' . $i . '" id="n' . $i . '" />'; }
+	{ echo '	    <input type="checkbox" value="1" name="n' . $i . '" id="n' . $i . '" />'; }
 	echo '<label for="n' . $i . '">' . $lang_register_form['night' . $i] . '</label>';
 
 	echo "\n";

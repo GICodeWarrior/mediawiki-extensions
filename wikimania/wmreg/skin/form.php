@@ -2,21 +2,21 @@
 function disable(idarray){
 	for (x in idarray)
 	{
-      document.getElementById(idarray[x]).disabled = true;
+	document.getElementById(idarray[x]).disabled = true;
 	}
 }
 
 function enable(idarray){
 	for (x in idarray)
 	{
-      document.getElementById(idarray[x]).disabled = false;
+	document.getElementById(idarray[x]).disabled = false;
 	}
 }
 
 function flip(idarray) {
 	for (x in idarray)
 	{
-      document.getElementById(idarray[x]).disabled = !document.getElementById(idarray[x]).disabled;
+	document.getElementById(idarray[x]).disabled = !document.getElementById(idarray[x]).disabled;
 	}
 }
 

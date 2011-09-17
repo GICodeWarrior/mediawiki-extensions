@@ -16,7 +16,7 @@ Class UserSession
 
 	function UserSession()
 	{
-         $this->handle = '';
+		 $this->handle = '';
 	}
 
 	function Start( $custom_session_id = '' )
@@ -33,7 +33,7 @@ Class UserSession
 
 		/* Cookie Session ID as 2nd order */
 		if ( !$custom_session_id )
-                { $custom_session_id = $_COOKIE[TC_COOKIE_SESSION_NAME]; }
+				{ $custom_session_id = $_COOKIE[TC_COOKIE_SESSION_NAME]; }
 
 		/* First, check for vaild Session ID */
 		if ( preg_match( '/[^0-9A-Z]/i', $custom_session_id ) ) return false;
@@ -89,7 +89,7 @@ Class UserSession
 
 		if ( isset( $_COOKIE[TC_COOKIE_SESSION_NAME] ) )
 		{
-   			setcookie( TC_COOKIE_SESSION_NAME, '', time() -42000, '/' );
+			setcookie( TC_COOKIE_SESSION_NAME, '', time() -42000, '/' );
 		}
 
 		session_destroy();

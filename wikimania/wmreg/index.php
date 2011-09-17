@@ -48,9 +48,9 @@ if ( @ini_get( 'register_globals' ) )
 
 	foreach ( $unset_vars as $key )
 	{
- 		if ( !in_array( $key, $chk_unset )  && isset( $$key ) )
-      		{ unset( $$key ); }
-  	}
+		if ( !in_array( $key, $chk_unset )  && isset( $$key ) )
+			{ unset( $$key ); }
+	}
 	unset( $unset_vars );
 	unset( $chk_unset );
 }
@@ -288,14 +288,14 @@ function check_register_data( $check_captcha )
 	if ( $check_captcha )
 	{
 		require_once( 'recaptchalib.php' );
-	  	$resp = recaptcha_check_answer ( $recaptcha_privatekey,
-	                                $_SERVER["REMOTE_ADDR"],
-	                                $_POST["recaptcha_challenge_field"],
-	                                $_POST["recaptcha_response_field"] );
+		$resp = recaptcha_check_answer ( $recaptcha_privatekey,
+									$_SERVER["REMOTE_ADDR"],
+									$_POST["recaptcha_challenge_field"],
+									$_POST["recaptcha_response_field"] );
 
-	  	if ( !$resp->is_valid ) {
-	  		$error_array[] = create_error( 'wrong', 'captcha' );
-	  	}
+		if ( !$resp->is_valid ) {
+			$error_array[] = create_error( 'wrong', 'captcha' );
+		}
 	}
 
 	/* Record UTC / GMT Date */
@@ -955,13 +955,13 @@ function administration()
 					else
 						{  $error_array[] = $data['given_name'] . ' ' . $data['surname'] . '(' . $no . ') is not confirmed due to databse error.'; }
 				}
-	 			else if ( $MY_REQUEST['status'] == 2 )
-	 			{
+				else if ( $MY_REQUEST['status'] == 2 )
+				{
 					if ( $sql->updateData( 'registration', array( 'status' => $MY_REQUEST['status'] ), '`unique_code`=\'' . $no . '\'' ) )
 						{  $error_array[] = $data['given_name'] . ' ' . $data['surname'] . '(' . $no . ') has been rejected successfully.'; }
 					else
 						{  $error_array[] = $data['given_name'] . ' ' . $data['surname'] . '(' . $no . ') is not rejected due to database error.'; }
-	 			}
+				}
 
 				if ( $MY_REQUEST['status'] == 1 )
 				{
@@ -1125,14 +1125,14 @@ function administration()
 				' AND `unique_code`=\'' . $sql->EscapeString( $data['unique_code'] ) . '\'' );
 				if ( !$sql_data = $sql->fetchAssoc( $result ) )
 				{
-					$error_array[] = 'Find #' . $data['no'] . '                           Text file may be corrupted, please re-confirm                           ';
+					$error_array[] = 'Find #' . $data['no'] . '				   Text file may be corrupted, please re-confirm				   ';
 					continue;
 				}
 				if ( $data['room_num1'] + $data['room_num2'] + $data['room_num3'] +
 				$data['room_num4'] + $data['room_num5'] == 0 )
 				{ echo 'Skip No.' . $data['no'] . ' '; continue; }
 
-				echo '<p>Preparing to write No.' . $data['no'] . 'Accommodation info                           ' . $data['room_num1'] . '/' . $data['room_num2'] . '/' . $data['room_num3'] . '/' . $data['room_num4'] . '/' . $data['room_num5'] . '...';
+				echo '<p>Preparing to write No.' . $data['no'] . 'Accommodation info				   ' . $data['room_num1'] . '/' . $data['room_num2'] . '/' . $data['room_num3'] . '/' . $data['room_num4'] . '/' . $data['room_num5'] . '...';
 
 				/* Write Data */
 				if ( !$sql->updateData( 'registration', array(
@@ -1184,84 +1184,84 @@ function administration()
 	switch ( $MY_REQUEST['mode'] )
 	{
 		case NULL:
-		    /* How many countries? */
-		    $result = $sql->selectData( 'registration', array( 'country' ), '', NULL, array( 'count' => 1, 'distinct' => 1 ) );
-		    $data = $sql->fetchArray( $result );
-		    $register_data['total_countries'] = $data[0];
-		    mysql_free_result( $result );
+			/* How many countries? */
+			$result = $sql->selectData( 'registration', array( 'country' ), '', NULL, array( 'count' => 1, 'distinct' => 1 ) );
+			$data = $sql->fetchArray( $result );
+			$register_data['total_countries'] = $data[0];
+			mysql_free_result( $result );
 
-		    /* How about sex? */
-		    $result = $sql->selectData( 'registration', NULL, '`sex` = \'m\'', NULL, array( 'count' => 1 ) );
-		    $data = $sql->fetchArray( $result );
-		    $register_data['total_male'] = $data[0];
-		    mysql_free_result( $result );
+			/* How about sex? */
+			$result = $sql->selectData( 'registration', NULL, '`sex` = \'m\'', NULL, array( 'count' => 1 ) );
+			$data = $sql->fetchArray( $result );
+			$register_data['total_male'] = $data[0];
+			mysql_free_result( $result );
 
-		    $result = $sql->selectData( 'registration', NULL, '`sex` = \'f\'', NULL, array( 'count' => 1 ) );
-		    $data = $sql->fetchArray( $result );
-		    $register_data['total_female'] = $data[0];
-		    mysql_free_result( $result );
+			$result = $sql->selectData( 'registration', NULL, '`sex` = \'f\'', NULL, array( 'count' => 1 ) );
+			$data = $sql->fetchArray( $result );
+			$register_data['total_female'] = $data[0];
+			mysql_free_result( $result );
 
-		  	$result = $sql->selectData( 'registration', NULL, '`sex` = \'d\'', NULL, array( 'count' => 1 ) );
-		    $data = $sql->fetchArray( $result );
-		    $register_data['total_sex_other'] = $data[0];
-		    mysql_free_result( $result );
+			$result = $sql->selectData( 'registration', NULL, '`sex` = \'d\'', NULL, array( 'count' => 1 ) );
+			$data = $sql->fetchArray( $result );
+			$register_data['total_sex_other'] = $data[0];
+			mysql_free_result( $result );
 
-		    $result = $sql->selectData( 'registration', NULL, '`wiki_id` != \'\'', NULL, array( 'count' => 1 ) );
-		    $data = $sql->fetchArray( $result );
-		    $register_data['total_wikimedians'] = $data['COUNT(*)'];
-		    mysql_free_result( $result );
+			$result = $sql->selectData( 'registration', NULL, '`wiki_id` != \'\'', NULL, array( 'count' => 1 ) );
+			$data = $sql->fetchArray( $result );
+			$register_data['total_wikimedians'] = $data['COUNT(*)'];
+			mysql_free_result( $result );
 
 		case 'topic':
 
-		    /* How many people join for 1 day, for 2 days etc. */
-		    for ( $i = 1; $i <= 6; $i++ ) {
-		    	$result = $sql->Query( 'SELECT COUNT(*) FROM `registration` WHERE BIT_COUNT(`join_date`) = ' . $i );
-		        $data = $sql->fetchArray( $result );
+			/* How many people join for 1 day, for 2 days etc. */
+			for ( $i = 1; $i <= 6; $i++ ) {
+				$result = $sql->Query( 'SELECT COUNT(*) FROM `registration` WHERE BIT_COUNT(`join_date`) = ' . $i );
+				$data = $sql->fetchArray( $result );
 				$register_data['total_' . $i . 'days'] = $data[0];
 				unset( $data );
-		    	mysql_free_result( $result );
-		    }
+				mysql_free_result( $result );
+			}
 
-		    /* People per day */
-		    for ( $i = 1; $i <= 6; $i++ )
-		    {
-			    $result = $sql->Query( 'SELECT COUNT(*) FROM `registration` WHERE `join_date` LIKE \'%' . $i . '%\'' );
-			    $data = $sql->fetchArray( $result );
-			    $register_data['total_day' . $i] = $data[0];
-			    mysql_free_result( $result );
-		    }
+			/* People per day */
+			for ( $i = 1; $i <= 6; $i++ )
+			{
+				$result = $sql->Query( 'SELECT COUNT(*) FROM `registration` WHERE `join_date` LIKE \'%' . $i . '%\'' );
+				$data = $sql->fetchArray( $result );
+				$register_data['total_day' . $i] = $data[0];
+				mysql_free_result( $result );
+			}
 
 		case 'accommodation':
-		    /* How many people stay 0 night, 1 night etc. */
-		    for ( $i = 0; $i <= 8; $i++ ) {
-		    	$result = $sql->Query( 'SELECT COUNT(*) FROM `registration` WHERE BIT_COUNT(`nights`) = ' . $i );
-		        $data = $sql->fetchArray( $result );
+			/* How many people stay 0 night, 1 night etc. */
+			for ( $i = 0; $i <= 8; $i++ ) {
+				$result = $sql->Query( 'SELECT COUNT(*) FROM `registration` WHERE BIT_COUNT(`nights`) = ' . $i );
+				$data = $sql->fetchArray( $result );
 				$register_data['total_' . $i . 'nights'] = $data[0];
 				unset( $data );
-		    	mysql_free_result( $result );
-		    }
+				mysql_free_result( $result );
+			}
 
 			for ( $i = 1; $i <= 9; $i++ ) {
-		    	$result = $sql->Query( 'SELECT COUNT(*) FROM `registration` WHERE `hotels` = \'' . $i . '\'' );
-		        $data = $sql->fetchArray( $result );
+				$result = $sql->Query( 'SELECT COUNT(*) FROM `registration` WHERE `hotels` = \'' . $i . '\'' );
+				$data = $sql->fetchArray( $result );
 				$register_data['total_hotel' . $i] = $data[0];
 				unset( $data );
-		    	mysql_free_result( $result );
-		    }
+				mysql_free_result( $result );
+			}
 
-		    for ( $i = 1; $i <= 9; $i++ ) {
+			for ( $i = 1; $i <= 9; $i++ ) {
 				$result = $sql->Query( 'SELECT COUNT(DISTINCT(`room_number`)) FROM `registration` WHERE `hotels` = \'' . $i . '\' AND `room_number` is not NULL AND `room_number` != \'\'' );
 				$data = $sql->fetchArray( $result );
 				$register_data['rooms_hotel' . $i] = $data[0];
 				mysql_free_result( $result );
-		    }
+			}
 
 		case 'visa':
-		    $result = $sql->selectData( 'registration', NULL, '`visa_assistance` = \'1\'' , NULL, array( 'count' => 1 ) );
-		    $data = $sql->fetchArray( $result );
-		    $register_data['total_assist'] = $data[0];
-		    unset( $data );
-		    mysql_free_result( $result );
+			$result = $sql->selectData( 'registration', NULL, '`visa_assistance` = \'1\'' , NULL, array( 'count' => 1 ) );
+			$data = $sql->fetchArray( $result );
+			$register_data['total_assist'] = $data[0];
+			unset( $data );
+			mysql_free_result( $result );
 
 	}
 	/* page process */
@@ -1289,9 +1289,9 @@ function administration()
 		{
 			case 'name':
 			$query =  '`surname` LIKE \'%' . $keyword_temp . '%\' ' .
-			          'OR `given_name` LIKE \'%' . $keyword_temp . '%\' ' .
+					  'OR `given_name` LIKE \'%' . $keyword_temp . '%\' ' .
 					  'OR `wiki_id` LIKE \'%' . $keyword_temp . '%\' ' .
-			 	 	  'OR `custom_showname` LIKE \'%' . $keyword_temp . '%\' ';
+					  'OR `custom_showname` LIKE \'%' . $keyword_temp . '%\' ';
 			break;
 
 			case 'email':
@@ -1491,13 +1491,13 @@ function coupon_activation()
 		$night_selected = $register_data['night1'] + $register_data['night2'] + $register_data['night3'] +  $register_data['night4'];
 
 		if ( $register_data['hotelname'] == 'metropol' )
-                                           { $register_data['cost_total'] += $accommodation_cost_metropol * $night_selected; }
-                                          elseif ( $register_data['hotelname'] == 'delta' )
-                                           { $register_data['cost_total'] += $accommodation_cost_delta * $night_selected; }
-                                           elseif ( $register_data['hotelname'] == 'dorms' )
-                                           { $register_data['cost_total'] += $accommodation_cost_dorms * $night_selected; }
-                                           else
-                                           { $register_data['cost_total'] += 0; }
+										   { $register_data['cost_total'] += $accommodation_cost_metropol * $night_selected; }
+										  elseif ( $register_data['hotelname'] == 'delta' )
+										   { $register_data['cost_total'] += $accommodation_cost_delta * $night_selected; }
+										   elseif ( $register_data['hotelname'] == 'dorms' )
+										   { $register_data['cost_total'] += $accommodation_cost_dorms * $night_selected; }
+										   else
+										   { $register_data['cost_total'] += 0; }
 
 	}
 	elseif ( $MY_REQUEST['coupon_id'] == $coupon_volunteer )
@@ -1508,13 +1508,13 @@ function coupon_activation()
 		$night_selected = $register_data['night1'] + $register_data['night2'] + $register_data['night3'] +  $register_data['night4'];
 
 		if ( $register_data['hotelname'] == 'metropol' )
-                                           { $register_data['cost_total'] += $accommodation_cost_metropol * $night_selected; }
-                                          elseif ( $register_data['hotelname'] == 'delta' )
-                                           { $register_data['cost_total'] += $accommodation_cost_delta * $night_selected; }
-                                           elseif ( $register_data['hotelname'] == 'dorms' )
-                                           { $register_data['cost_total'] += $accommodation_cost_dorms * $night_selected; }
-                                           else
-                                           { $register_data['cost_total'] += 0; }
+										   { $register_data['cost_total'] += $accommodation_cost_metropol * $night_selected; }
+										  elseif ( $register_data['hotelname'] == 'delta' )
+										   { $register_data['cost_total'] += $accommodation_cost_delta * $night_selected; }
+										   elseif ( $register_data['hotelname'] == 'dorms' )
+										   { $register_data['cost_total'] += $accommodation_cost_dorms * $night_selected; }
+										   else
+										   { $register_data['cost_total'] += 0; }
 	}
 	else
 	{

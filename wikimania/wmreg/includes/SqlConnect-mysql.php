@@ -63,7 +63,7 @@ Class SqlConnect
 		return mysql_fetch_row( $query_result );
 	}
 	/*
-	Function      : EscapeString
+	Function	: EscapeString
 	Description   : Escape String to Prevent SQL injection
 	Arguments     : None
 	Return values : true if success,false if failed
@@ -93,7 +93,7 @@ Class SqlConnect
 		// if(!$this->handle) return false;
 
 		/*MySQL Query  */
-	        // $this->query('SHOW TABLE FROM `'. $this->database_name .'` LIKE\''. preg_replace('\_','\\\_',$this->EscapeString($table_name) .'\'');
+			// $this->query('SHOW TABLE FROM `'. $this->database_name .'` LIKE\''. preg_replace('\_','\\\_',$this->EscapeString($table_name) .'\'');
 	// }
 
 
@@ -103,7 +103,7 @@ Class SqlConnect
 		/* No Connect, No Action */
 		if ( !$this->handle ) return false;
 
-                /* Must be an array */
+				/* Must be an array */
 		if ( !is_array( $data_array ) ) return false;
 
 		/* No special table name */
@@ -129,7 +129,7 @@ Class SqlConnect
 		if ( !$this->handle )
 		{ return false; }
 
-                /* Must be an array */
+				/* Must be an array */
 		if ( !is_array( $data_array ) )
 		{ return false; }
 
@@ -261,8 +261,8 @@ Class SqlConnect
 		$order_parameters = ' ORDER BY `' . implode( '`, `', $order_array ) . '`';
 		if ( $other_array['asc'] )
 		{ $order_parameters .= ' ASC'; }
-                else
-                { $order_parameters .= 'DESC'; }
+				else
+				{ $order_parameters .= 'DESC'; }
 		}
 
 		/* page set */
