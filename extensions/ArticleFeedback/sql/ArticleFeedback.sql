@@ -39,6 +39,7 @@ CREATE INDEX /*i*/aa_page_user_token_id ON /*_*/article_feedback (aa_page_id, aa
 CREATE INDEX /*i*/aa_revision ON /*_*/article_feedback (aa_revision);
 -- Create an index on the article_feedback.aa_timestamp field
 CREATE INDEX /*i*/article_feedback_timestamp ON /*_*/article_feedback (aa_timestamp);
+CREATE INDEX /*i*/aa_page_id ON /*_*/article_feedback (aa_page_id, aa_timestamp);
 
 -- Aggregate rating table for a page
 CREATE TABLE IF NOT EXISTS /*_*/article_feedback_pages (
