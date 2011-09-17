@@ -15,8 +15,7 @@ $DB_PASS = 'foobar';
 /**
  * The URL of the system
  */
-$myself_url = 'https://secure.wikidc.org/wm/reg/';
-// $myself_url = 'http://wmreg11.eu5.org/wmreg/';
+$myself_url = 'https://example.com/reg/';
 
 $recaptcha_publickey = "";
 $recaptcha_privatekey = "";
