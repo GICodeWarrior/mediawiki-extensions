@@ -286,4 +286,3 @@ Class SqlConnect
 		return $this->Query( $queryString );
 	}
 }
-?>

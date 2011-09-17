@@ -393,4 +393,4 @@ $WikimediaLanguages = array(
 	'zh-yue' => '粵語',					# Cantonese -- (see bug 8217)
 	'zu' => 'isiZulu'		# Zulu
 );
-?>
+

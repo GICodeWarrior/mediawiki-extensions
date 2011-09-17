@@ -452,4 +452,3 @@ $lang_countries = array(
       'zw' => 'زيمبابوي'
 );
 
-?>

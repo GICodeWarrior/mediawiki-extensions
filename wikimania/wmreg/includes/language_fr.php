@@ -451,4 +451,3 @@ $lang_countries = array(
       'zw' => 'Zimbabwe'
 );
 
-?>

@@ -96,4 +96,3 @@ Class UserSession
 	}
 
 }
-?>

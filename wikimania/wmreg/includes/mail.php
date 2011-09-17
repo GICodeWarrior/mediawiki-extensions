@@ -23,4 +23,3 @@ function mail_msg( $to, $subject, $body )
 		return true;
 	}
 }
-?>

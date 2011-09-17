@@ -451,5 +451,3 @@ $lang_query = array(
       'zm' => 'Zambia',
       'zw' => 'Zimbabwe'
 );
-
-?>

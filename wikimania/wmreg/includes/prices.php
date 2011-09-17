@@ -211,5 +211,3 @@ function calculate_cost( $register_data )
 				'cost_total' => $cost_total, 'currency' => $currency );
 
 }
-
-?>

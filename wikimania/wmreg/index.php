@@ -1535,4 +1535,3 @@ function coupon_activation()
 	include 'skin/query_result.php';
 	include 'skin/html_footer.php';
 }
-?>

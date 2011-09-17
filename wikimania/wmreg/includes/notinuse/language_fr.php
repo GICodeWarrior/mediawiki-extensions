@@ -597,5 +597,3 @@ Islands',
       'zm' => 'Zambia',
       'zw' => 'Zimbabwe'
 );
-
-?>
