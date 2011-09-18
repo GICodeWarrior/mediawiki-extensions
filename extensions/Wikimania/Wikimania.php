@@ -35,7 +35,7 @@ $wgAutoloadClasses['SpecialRegisterForWikimania'] = "$d/specials/SpecialRegister
 /**
  * i18n
  */
-$wgExtensionMessageFiles['wikimania'] = "$d/lang/Wikimania.i18n.php";
+$wgExtensionMessagesFiles['wikimania'] = "$d/lang/Wikimania.i18n.php";
 $wgExtensionAliasesFiles['wikimania'] = "$d/lang/Wikimania.alias.php";
 
 /**
@@ -100,11 +100,11 @@ $wgWikimaniaConf = array(
 		),
 	),
 	'mainDays' => array(
-		
+
 	),
 	'postDays' => array(
 		'unconf1' => array(
-			
+
 		),
 	),
 );
