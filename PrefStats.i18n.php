@@ -2125,9 +2125,20 @@ Clicatz sus una d'entre elas per veire las estatisticas a son prepaus.",
 
 /** Oriya (ଓଡ଼ିଆ)
  * @author Odisha1
+ * @author Psubhashish
  */
 $messages['or'] = array(
+	'prefstats-xaxis' => 'ସମୟସୀମା (ଘଣ୍ଟା)',
+	'prefstats-factors' => '$1 ପ୍ରତି ଦେଖଣା',
 	'prefstats-factor-hour' => 'ଘଣ୍ଟା',
+	'prefstats-factor-sixhours' => 'ଛଅ ଘଣ୍ଟା',
+	'prefstats-factor-day' => 'ଦିନ',
+	'prefstats-factor-week' => 'ସପ୍ତାହ',
+	'prefstats-factor-twoweeks' => 'ଦୁଇ ସପ୍ତାହ',
+	'prefstats-factor-fourweeks' => 'ଚାରି ସପ୍ତାହ',
+	'prefstats-factor-default' => 'ଆପେଆପେ ଥିବା ସ୍କେଲକୁ ଫେରୁଅଛି',
+	'prefstats-legend-out' => 'ବାହାରି ପଡ଼ିଲେ',
+	'prefstats-legend-in' => 'ବାଛିନେଲେ',
 );
 
 /** Deitsch (Deitsch)
