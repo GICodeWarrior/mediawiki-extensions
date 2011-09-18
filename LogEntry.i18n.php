@@ -485,13 +485,14 @@ $messages['ps'] = array(
 /** Portuguese (Português)
  * @author Hamilton Abreu
  * @author Malafaya
+ * @author SandroHc
  */
 $messages['pt'] = array(
 	'logentry-append' => 'Acrescentar',
 	'logentry-parserhook-desc' => 'Esta extensão de elementos HTML fornece um formulário para acrescentar dados no topo ou fundo das páginas dos registos',
 	'logentry-specialpage-desc' => 'Esta extensão de elementos HTML fornece um processo para acrescentar dados no fundo das páginas dos registos',
 	'logentry' => 'Entrada de Registo',
-	'logentry-invalidpage' => 'Página inválida',
+	'logentry-invalidpage' => 'Página inválida: $1',
 	'logentry-invalidtoken' => 'Token inválido',
 );
 
