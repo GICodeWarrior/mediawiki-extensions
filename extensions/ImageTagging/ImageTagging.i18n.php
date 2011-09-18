@@ -1973,10 +1973,24 @@ Počkajte prosím, kým sa dokončí prebiehajúca operácia.',
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'taggedimages' => 'Označene slike',
+	'imagetagging-addimagetag' => 'Označi sliko',
 	'imagetagging-article' => 'Stran:',
+	'imagetagging-articletotag' => 'Stran za označitev',
 	'imagetagging-imghistory' => 'Zgodovina',
 	'imagetagging-images' => 'slike',
+	'imagetagging-inthisimage' => 'Na tej sliki: $1',
+	'imagetagging-new' => '<sup><span style="color:red">Novo!</span></sup>',
+	'imagetagging-removetag' => 'odstrani oznako',
+	'imagetagging-tag-button' => 'Oznaka',
 	'imagetagging-tagcancel-button' => 'Prekliči',
+	'imagetagging-addingtag' => 'Dodajanje oznake ...',
+	'imagetagging-removingtag' => 'Odstranjevanje oznake ...',
+	'imagetagging-addtagsuccess' => 'Oznaka je dodana.',
+	'imagetagging-removetagsuccess' => 'Oznaka je odstranjena.',
+	'imagetagging-oneuniquetagmessage' => 'Ta slika že ima oznako s tem imenom.',
+	'imagetagging-imagetag-seemoreimages' => 'Oglejte si več slik »$1« ($2)',
+	'imagetagging-taggedimages-title' => 'Slike »$1«',
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)

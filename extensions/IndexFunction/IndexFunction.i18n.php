@@ -695,7 +695,7 @@ Si tu crea iste pagina, remove iste titulo del <nowiki>{{#index:}}</nowiki> in l
 	'indexfunc-movewarn' => 'Attention: Iste titulo es un titulo de indice pro le sequente {{PLURAL:$3|pagina|paginas}}:
 $2
 Per favor remove "$1" del <nowiki>{{#index:}}</nowiki> in le {{PLURAL:$3|pagina|paginas}} ci supra.',
-	'index' => 'Indice',
+	'index' => 'Recerca con indice',
 	'index-legend' => 'Cercar in le indice',
 	'index-search' => 'Cerca:',
 	'index-submit' => 'Submitter',

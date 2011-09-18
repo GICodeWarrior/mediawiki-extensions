@@ -1302,7 +1302,12 @@ Se sètz connectat amb vòstre compte, podètz levar aqueste avertiment dins la 
  * @author Psubhashish
  */
 $messages['or'] = array(
+	'vector' => 'ଭେକ୍ଟର ପାଇଁ ଇଉଜର ଇଣ୍ଟରଫେସ ଉନ୍ନତିକରଣ',
+	'vector-desc' => 'ଭେକ୍ଟର ଆବରଣରେ ଇଉଜର ଇଣ୍ଟରଫେସ ଉପାଦାନସମୂହକୁ ଉନ୍ନତ କରିବେ ।',
 	'vector-collapsiblenav-preference' => 'ଭେକ୍ଟର ବହିରାବରଣରେ କଡ଼ରେ ଥିବା ପଟିକାର ଚିଜ ସବୁକୁ ଦେଖାଇବା-ଲୁଚାଇବା ସଚଳ କରିବେ',
+	'vector-collapsiblenav-more' => 'ଅଧିକ ଭାଷା',
+	'vector-editwarning-warning' => 'ଏହି ପୃଷ୍ଠାକୁ ଛାଡ଼ି ଚାଲିଗଲେ ହୁଏ ତ ଆପଣ କରିଥିବା କିଛି ସମ୍ପାଦନା ହରାଇ ପାରନ୍ତି ।
+ଯଦି ଆପଣ ଲଗ ଇନ କରିଥାନ୍ତି ତେବେ ଆପଣଙ୍କ ପସନ୍ଦର "ସମ୍ପାଦନା" ଭାଗରେ ଏହି ଚେତାବନୀଟିକୁ ଅଚଳ କରିପାରିବେ ।',
 	'vector-editwarning-preference' => 'ଯେତେବେଳେ ମୁଁ ଗୋଟିଏ ସାଇତାଯାଇନଥିବା ପୃଷ୍ଠାକୁ ବନ୍ଦ କରିଦିଏ ମୋତେ ଚେତାବନୀ ଦେବେ',
 	'vector-simplesearch-search' => 'ଖୋଜିବା',
 	'vector-simplesearch-containing' => 'ଧାରଣ ହେଉଛି...',

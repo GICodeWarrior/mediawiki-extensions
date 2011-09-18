@@ -6575,6 +6575,8 @@ $messages['sl'] = array(
 	'wikilog-edit-hint' => 'Uredi članek wikiloga: $1',
 	'wikilog-edit-fieldset-legend' => 'Možnosti wikiloga:',
 	'wikilog-edit-signpub' => 'Podpiši in objavi ta članek',
+	'wikilog-edit-signpub-tooltip' => 'Ob shranitvi povzroči podpis in objavo tega članka na njegovem wikilogu.
+Počistite to polje, da obdržite članek kot osnutek.',
 	'wikilog-comment-permalink' => '$1 ob $2',
 	'wikilog-comment-note-item' => 'objavljeno na $1',
 	'wikilog-comment-note-edited' => 'nazadnje urejeno dne $1 ob $2',
@@ -6607,6 +6609,8 @@ $messages['sl'] = array(
 	'wikilog-invalid-file' => 'Neveljavna datoteka: $1',
 	'wikilog-file-not-found' => 'Neobstoječa datoteka: $1.',
 	'wikilog-not-an-image' => 'Datoteka ni slika: $1.',
+	'wikilog-out-of-context' => 'Opozorilo: oznake Wikilog uporabljate izven konteksta.
+Uporabljene naj bodo samo v člankih v imenskem prostoru Wikilog.',
 	'wikilog-too-many-authors' => 'Opozorilo: V tej objavi wikilog je navedenih preveč avtorjev.',
 	'wikilog-too-many-tags' => 'Opozorilo: V tej objavi wikilog je navedenih preveč oznak.',
 	'wikilog-comment-is-empty' => 'Objavljena pripomba je prazna.',

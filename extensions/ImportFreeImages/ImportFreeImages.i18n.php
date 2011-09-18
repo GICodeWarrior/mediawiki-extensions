@@ -1272,9 +1272,23 @@ $messages['sk'] = array(
 	'importfreeimages_next' => 'Ďalších $1',
 );
 
-/** Slovenian (Slovenščina) */
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
 $messages['sl'] = array(
+	'importfreeimages' => 'Uvoz prostih slik',
+	'importfreeimages-desc' => 'Nudi način za [[Special:ImportFreeImages|uvažanje ustrezno licenciranih fotografij]] s [http://www.flickr.com flickr]',
+	'importfreeimages_description' => 'Stran vam omogoča iskanje ustrezno licenciranih fotografij na flickr in njihov uvoz na vaš wiki.',
+	'importfreeimages_nophotosfound' => "Za vaš iskalni pogoj '$1' ni bila najdena nobena fotografija; prosimo, poskusite znova.",
 	'importfreeimages_owner' => 'Avtor',
+	'importfreeimages_importthis' => 'uvozi to',
+	'importfreeimages_next' => 'Naslednjih $1',
+	'importfreeimages_size_square' => 'Kvadrat',
+	'importfreeimages_size_thumbnail' => 'Sličica',
+	'importfreeimages_size_small' => 'Majhno',
+	'importfreeimages_size_medium' => 'Srednje',
+	'importfreeimages_size_large' => 'Veliko',
+	'importfreeimages_size_original' => 'Izvirno',
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)

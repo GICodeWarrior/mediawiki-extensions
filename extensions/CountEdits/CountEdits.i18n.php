@@ -1433,7 +1433,17 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'countedits' => 'Števec urejanj',
+	'countedits-desc' => '[[Special:CountEdits|Posebna stran]], ki prešteje uporabnikova urejanja in nudi seznam desetih najsodelavcev',
+	'countedits-warning' => "'''Opozorilo:''' Ne sodite knjige po platnici.
+Ne sodite sodelavcev po njihovem številu urejanj.",
 	'countedits-username' => 'Uporabniško ime:',
+	'countedits-ok' => 'V redu',
+	'countedits-nosuchuser' => 'Ni uporabnika z imenom $1.',
+	'countedits-resultheader' => 'Rezultati za $1',
+	'countedits-resulttext' => '$1 je naredil $2 {{PLURAL:$2|urejanje|urejanji|urejanja|urejanj}}',
+	'countedits-mostactive' => 'Najdejavnejši sodelavci',
+	'countedits-nocontribs' => 'Na tem wikiju ni bilo nobenih prispevkov.',
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)

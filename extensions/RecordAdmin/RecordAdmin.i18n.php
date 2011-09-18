@@ -2125,7 +2125,26 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'recordadmin-select' => 'Izberi',
+	'recordadmin-submit' => 'Potrdi',
+	'recordadmin-alreadyexist' => 'Oprostite, »$1« že obstaja!',
+	'recordadmin-badtitle' => 'Nepravilen naslov!',
+	'recordadmin-invert' => 'Obrni izbor',
+	'recordadmin-buttonsearch' => 'Išči',
+	'recordadmin-buttoncreate' => 'Ustvari',
+	'recordadmin-buttonreset' => 'Ponastavi',
 	'recordadmin-buttonsave' => 'Shrani',
+	'recordadmin-createlink' => 'ustvari eno',
+	'recordadmin-viewlink' => 'poglej',
+	'recordadmin-editlink' => 'uredi',
+	'recordadmin-created' => 'Ustvarjeno',
+	'recordadmin-modified' => 'Spremenjeno',
+	'recordadmin-actions' => 'Uredi',
+	'recordadmin-needscontent' => 'Dodaj vsebino ...',
+	'recordadmin-export-csv' => 'CSV',
+	'recordadmin-export-pdf' => 'PDF',
+	'recordadmin-notset' => 'Brez »$1«',
+	'recordadmin-properties' => 'Lastnosti',
 );
 
 /** Somali (Soomaaliga)

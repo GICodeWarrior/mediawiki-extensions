@@ -208,11 +208,12 @@ $messages['pl'] = array(
 
 /** Portuguese (Português)
  * @author Hamilton Abreu
+ * @author SandroHc
  */
 $messages['pt'] = array(
 	'categorize-desc' => 'Acrescenta uma caixa de entrada para editar e fazer upload da página, o que permite que os utilizadores atribuam categorias à página',
 	'categorize-title' => 'Estruturação de conhecimento',
-	'categorize-footer' => 'Se quiser adicionar uma categoria, contacte-nos em...',
+	'categorize-footer' => 'Se quiser adicionar uma categoria, contacte um [[Special:ListUsers/sysop|administrador]].',
 	'categorize-advice' => 'Clique as categorias que pretende atribuir a esta página:',
 );
 

@@ -160,8 +160,7 @@ $messages['br'] = array(
 	'inspectcache-parser' => 'Krubuilh ar parser',
 	'inspectcache-message' => "Krubuilh ar c'hemennadennoù",
 	'inspectcache-get' => 'Tapout',
-	'inspectcache-delete' => '
-Diverkañ',
+	'inspectcache-delete' => 'Diverkañ',
 	'inspectcache-deleted' => 'Krubuilh diverket',
 	'inspectcache-list' => 'Roll',
 	'right-inspectcache' => 'Diskouez ha dilemel ar monedoù krubuilh',

@@ -575,6 +575,10 @@ $messages['gl'] = array(
 	'narayam-help-page' => 'Help:Escritura',
 	'narayam-checkbox-tooltip' => 'Para activar e desactivar o método de entrada',
 	'narayam-disable-preference' => 'Desactivar o editor de método de entrada do narayam',
+	'narayam-as' => 'Transliteración para asamés',
+	'narayam-as-avro' => 'Avro para asamés',
+	'narayam-as-bornona' => 'Bornona para asamés',
+	'narayam-as-inscript' => 'InScript para asamés',
 	'narayam-eo' => 'Esperanto',
 	'narayam-hi-inscript' => 'InScript para hindi',
 	'narayam-kn' => 'Transliteración para kannada',
@@ -904,6 +908,10 @@ $messages['mk'] = array(
 	'narayam-help-page' => 'Help:Внос',
 	'narayam-checkbox-tooltip' => 'За вкл/искл на метод на внос',
 	'narayam-disable-preference' => 'Оневозможи го уредникот на вносни методи (IME) Narayam',
+	'narayam-as' => 'Транслитерација на асамски',
+	'narayam-as-avro' => 'Асамски - Avro',
+	'narayam-as-bornona' => 'Асамски - Bornona',
+	'narayam-as-inscript' => 'Асамски - InScript',
 	'narayam-eo' => 'Есперанто',
 	'narayam-hi-inscript' => 'Хинди - InScript',
 	'narayam-kn' => 'Транслитерација на Канада',
@@ -1074,6 +1082,9 @@ $messages['pl'] = array(
 	'narayam-help-page' => 'Help:Wprowadzanie znaków',
 	'narayam-checkbox-tooltip' => 'Włączanie i wyłączanie metody wprowadzania',
 	'narayam-disable-preference' => 'Wyłącz w edytorze nietypowe metody wprowadzania znaków',
+	'narayam-as-avro' => 'Assamski avro',
+	'narayam-as-bornona' => 'Assamski bornona',
+	'narayam-as-inscript' => 'Assamski InScript',
 	'narayam-eo' => 'Esperanto',
 	'narayam-hi-inscript' => 'Hindi InScript',
 	'narayam-kn' => 'Transliteracja kannary',
@@ -1142,11 +1153,12 @@ $messages['ps'] = array(
 /** Portuguese (Português)
  * @author Hamilton Abreu
  * @author MetalBrasil
+ * @author SandroHc
  * @author Waldir
  */
 $messages['pt'] = array(
 	'narayam-desc' => 'Permite a adição de métodos de entrada personalizados para os campos de entrada',
-	'narayam-toggle-ime' => 'Alternar o método de entrada ($1)',
+	'narayam-toggle-ime' => 'Activar ($1)',
 	'narayam-menu' => 'Método de entrada',
 	'narayam-menu-tooltip' => 'Controlar o Narayam Input Method Editor (IME)',
 	'narayam-help' => 'Ajuda',

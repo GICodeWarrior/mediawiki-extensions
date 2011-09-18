@@ -202,9 +202,14 @@ $messages['nl'] = array(
 
 /** Portuguese (Português)
  * @author Hamilton Abreu
+ * @author SandroHc
  */
 $messages['pt'] = array(
-	'signupapi-desc' => 'Remove de "Especial:Criar uma conta ou entrar" os elementos relacionados com o processo de autenticação e acrescenta uma API de autenticação',
+	'signupapi-desc' => 'Remove da [[Special:UserLogin|página de login]] os elementos relacionados com o processo de autenticação e acrescenta uma API de autenticação',
+	'signupapi-ok' => 'OK',
+	'signupapi-weak' => 'Fraca',
+	'signupapi-medium' => 'Média',
+	'signupapi-strong' => 'Forte',
 );
 
 /** Russian (Русский)

@@ -4651,6 +4651,7 @@ $messages['ps'] = array(
  * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
+ * @author SandroHc
  * @author Waldir
  */
 $messages['pt'] = array(
@@ -4673,9 +4674,9 @@ Por favor, consulte um [[Special:ListUsers/sysop|administrador]].',
 	'openidsuccess' => 'Verificação com sucesso',
 	'openidsuccesstext' => "'''Verificado e autenticado como $1'''.
 
-O seu OpenID é $2 .
+O seu OpenID é $2.
 
-Este OpenID e outros, e uma palavra-chave opcional, podem ser geridos nas suas [[Special:Preferences|preferências]].",
+Este OpenID pode ser gerido no separador do [[Special:Preferences#prefsection-openid|OpenID]] das tuas preferências.<br />Uma senha da conta opcional pode ser adicionada no teu [[Special:Preferences#prefsection-personal|Perfil do utilizador]].",
 	'openidusernameprefix' => 'UtilizadorOpenID',
 	'openidserverlogininstructions' => '$3 pede que introduza a palavra-chave do seu utilizador $2 página $1 (a URL do seu OpenID)',
 	'openidtrustinstructions' => 'Verifique se pretender partilhar dados com $1.',
@@ -4709,7 +4710,7 @@ pode escolher uma das opções abaixo.',
 	'openidalreadyloggedin' => 'Já está autenticado.',
 	'openidalreadyloggedintext' => "'''Já está autenticado, $1!'''
 
-Pode gerir (ver, eliminar, etc.) OpenIDs no separador OpenID das suas [[Special:Preferences|preferências]].",
+Pode gerir (ver, eliminar, etc.) OpenIDs no separador [[Special:Preferences#prefsection-openid|OpenID]] das suas preferências.",
 	'openidnousername' => 'Nenhum nome de utilizador especificado.',
 	'openidbadusername' => 'Nome de utilizador especificado inválido.',
 	'openidautosubmit' => 'Esta página inclui um formulário que deverá ser automaticamente submetido se tiver JavaScript activado.
