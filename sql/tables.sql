@@ -19,13 +19,6 @@ CREATE TABLE /*_*/registration (
 	reg_lname varchar(255) not null,
 	reg_sex varchar(1) not null,
 	reg_country varchar(4) not null,
-	reg_langn varchar(4) not null,
-	reg_lang1 varchar(4),
-	reg_lang1_level enum('1','2','3','4'),
-	reg_lang2 varchar(4),
-	reg_lang2_level enum('1','2','3','4'),
-	reg_lang2 varchar(4),
-	reg_lang2_level enum('1','2','3','4'),
 	reg_wiki_id varchar(255) not null,
 	reg_wiki_language varchar(12) not null,
 	reg_wiki_project varchar(12) not null,
@@ -72,4 +65,13 @@ CREATE TABLE /*_*/registration_hotels (
 	rh_occupancy int(1) not null,
 	rh_partner varchar(255),
 	rh_notes blob
-) /**$wgDBTableOptions*/;	
+) /**$wgDBTableOptions*/;
+
+-- Table to handle languages a registrant can communicat in
+CREATE TABLE /*_*/registration_languages (
+	rl_reg_id unsigned int not null,
+	rl_lang varchar(4),
+	rl_level enum('1','2','3','4'),
+
+	PRIMARY KEY(rl_reg_id, rl_lang)
+)/**$wgDBTableOptions*/;
