@@ -1033,6 +1033,7 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Gomoko
+ * @author Hashar
  * @author IAlex
  * @author Jean-Frédéric
  * @author McDutchie
@@ -1107,6 +1108,7 @@ Pour enregistrer un sondage, soumettez-le en ne répondant à aucune question de
 	'qp_error_non_unique_choice' => 'Cette question nécessite une réponse de proposition unique',
 	'qp_error_category_name_empty' => 'Le nom de la catégorie est vide',
 	'qp_error_proposal_text_empty' => 'Le texte de la proposition est vide',
+	'qp_error_too_long_proposal_text' => 'Le texte de la proposition est trop long pour être enregistré dans la base de données',
 	'qp_error_too_few_categories' => 'Au moins deux catégories doivent être définies',
 	'qp_error_too_few_spans' => 'Toute classe de catégorie nécessite au moins deux réponses possibles définies',
 	'qp_error_no_answer' => 'Proposition sans réponse',
