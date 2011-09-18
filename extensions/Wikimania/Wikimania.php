@@ -1,12 +1,11 @@
 <?php
-/* 
+/*
  * Extension for managing the Wikimania conferences
  */
 
 if( !defined( 'MEDIAWIKI' ) ) {
 	die( "Don't do that." );
 }
-
 
 // Extension credits
 $wgExtensionCredits['specialpages'][] = array(
@@ -15,6 +14,7 @@ $wgExtensionCredits['specialpages'][] = array(
 	'author'         => array( 'Chad Horohoe' ),
 	'descriptionmsg' => 'wikimania-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Wikimania',
+	'version'        => 0.1,
 );
 
 $d = dirname( __FILE__ );
@@ -62,5 +62,5 @@ $wgGroupPermissions['sysop']['wikimania-admin'] = true;
  * Configuration array for Wikimania
  */
 $wgWikimaniaConf = array(
-	
+
 );
