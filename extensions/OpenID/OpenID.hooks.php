@@ -139,8 +139,17 @@ class OpenIDHooks {
 		$rows = '';
 		foreach ( $urls as $url ) {
 			$rows .= Xml::tags( 'tr', array(),
-				Xml::tags( 'td', array(), Xml::element( 'a', array( 'href' => $url ), $url ) ) .
-				Xml::tags( 'td', array(), $sk->link( $delTitle, wfMsgHtml( 'openid-urls-delete' ), array(), array( 'url' => $url ) ) )
+				Xml::tags( 'td',
+					array(),
+					Xml::element( 'a', array( 'href' => $url ), $url )
+				) .
+				Xml::tags( 'td',
+					array(),
+					$sk->link( $delTitle, wfMsgHtml( 'openid-urls-delete' ),
+						array(),
+						array( 'url' => $url ) 
+					) 
+				)
 			) . "\n";
 		}
 		$info = Xml::tags( 'table', array( 'class' => 'wikitable' ),
@@ -293,6 +302,7 @@ class OpenIDHooks {
 			if ( $wgDBtype == 'mysql' ) {
 				$wgExtNewTables[] = array( 'user_openid', "$base/openid_table.sql" );
 				$wgUpdates['mysql'][] = array( array( __CLASS__, 'makeUoiUserNotUnique' ) );
+				$wgUpdates['mysql'][] = array( array( __CLASS__, 'addUoiUserRegistration' ) );
 			} elseif ( $wgDBtype == 'postgres' ) {
 				$wgExtNewTables[] = array( 'user_openid', "$base/openid_table.pg.sql" );
 				# This doesn't work since MediaWiki doesn't use $wgUpdates when
@@ -305,6 +315,7 @@ class OpenIDHooks {
 			$updater->addExtensionUpdate( array( 'addTable', 'user_openid', $dbPatch, true ) );
 			if ( $updater->getDB()->getType() == 'mysql' ) {
 				$updater->addExtensionUpdate( array( array( __CLASS__, 'makeUoiUserNotUnique' ) ) );
+				$updater->addExtensionUpdate( array( array( __CLASS__, 'addUoiUserRegistration' ) ) );
 			}
 		}
 
@@ -322,11 +333,28 @@ class OpenIDHooks {
 
 		$info = $db->fieldInfo( 'user_openid', 'uoi_user' );
 		if ( !$info->isMultipleKey() ) {
-			echo( "Making uoi_user filed not unique..." );
+			echo( "Making uoi_user field not unique..." );
 			$db->sourceFile( dirname( __FILE__ ) . '/patches/patch-uoi_user-not-unique.sql' );
 			echo( " done.\n" );
 		} else {
 			echo( "...uoi_user field is already not unique.\n" );
+		}
+	}
+	public static function addUoiUserRegistration( $updater = null ) {
+		if ( $updater === null ) {
+			$db = wfGetDB( DB_MASTER );
+		} else {
+			$db = $updater->getDB();
+		}
+		if ( !$db->tableExists( 'user_openid' ) )
+			return;
+
+		if ( !$db->fieldExists( 'user_openid', 'uoi_user_registration' ) ) {
+			echo( "Adding uoi_user_registration field..." );
+			$db->sourceFile( dirname( __FILE__ ) . '/patches/patch-uoi_user_registration-not-present.sql' );
+			echo( " done.\n" );
+		} else {
+			echo( "...uoi_user_registration field present.\n" );
 		}
 	}
 

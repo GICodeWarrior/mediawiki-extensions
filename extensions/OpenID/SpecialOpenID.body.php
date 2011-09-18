@@ -334,7 +334,7 @@ class SpecialOpenID extends SpecialPage {
 			$dbr = wfGetDB( DB_SLAVE );
 			$res = $dbr->select(
 				array( 'user_openid' ),
-				array( 'uoi_openid' ),
+				array( 'uoi_openid', 'uoi_user_registration' ),
 				array( 'uoi_user' => $user->getId() ),
 				__METHOD__
 			);
@@ -371,7 +371,8 @@ class SpecialOpenID extends SpecialPage {
 			'user_openid',
 			array(
 				'uoi_user' => $user->getId(),
-				'uoi_openid' => $url
+				'uoi_openid' => $url,
+				'uoi_user_registration' => wfTimestamp( TS_MW )
 			),
 			__METHOD__
 		);

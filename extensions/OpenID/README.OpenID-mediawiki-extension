@@ -1,5 +1,5 @@
 MediaWiki OpenID extension README.OpenID-mediawiki-extension file
-version 0.934-beta 20110829
+version 0.937-beta 20110019
 
 Homepage and manual http://www.mediawiki.org/wiki/Extension:OpenID
 
@@ -462,7 +462,6 @@ Product: MediaWiki extensions, Component: OpenID in bugzilla via
 == TODO ==
 
 * Code review http://preview.tinyurl.com/openid-codereview
-
 * Move TODO file and things below into Bugzilla
 
 The TODO file in this distribution has stuff I think needs to be
@@ -477,6 +476,7 @@ The big changes for the future:
   into that account now
 
 == CHANGES ==
+* 0.937 added uoi_user_registration timestamp field (bug30623)
 * 0.934 fixes
   bug 29543 After logging in with OpenID, user page link in the personal toolbar
   pt portlet) still has the User:IP link (needs refresh to link to
