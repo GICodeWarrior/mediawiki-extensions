@@ -22,7 +22,12 @@ $d = dirname( __FILE__ );
 /**
  * Classes
  */
-$wgAutoloadClasses['WikimaniaHooks'] = "$d/backend/WikimaniaHooks.php";
+$wgAutoloadClasses['Payment'] = "$d/backend/Payment.php";
+$wgAutoloadClasses['PaymentGoogleCheckout'] = "$d/backend/PaymentGoogleCheckout.php";
+$wgAutoloadClasses['PaymentPaypal'] = "$d/backend/PaymentPaypal.php";
+$wgAutoloadClasses['Wikimania'] = "$d/backend/Wikimania.php";
+$wgAutoloadClasses['WikimaniaRegistration'] = "$d/backend/WikimaniaRegistration.php";
+$wgAutoloadClasses['WikimaniaSchema'] = "$d/backend/WikimaniaSchema.php";
 $wgAutoloadClasses['SpecialAdministerWikimania'] = "$d/specials/SpecialAdministerWikimania.php";
 $wgAutoloadClasses['SpecialCheckWikimaniaStatus'] = "$d/specials/SpecialCheckWikimaniaStatus.php";
 $wgAutoloadClasses['SpecialRegisterForWikimania'] = "$d/specials/SpecialRegisterForWikimania.php";
@@ -30,8 +35,8 @@ $wgAutoloadClasses['SpecialRegisterForWikimania'] = "$d/specials/SpecialRegister
 /**
  * i18n
  */
-$wgExtensionMessageFiles['wikimania'] = "$d/Wikimania.i18n.php";
-$wgExtensionAliasesFiles['wikimania'] = "$d/Wikimania.alias.php";
+$wgExtensionMessageFiles['wikimania'] = "$d/lang/Wikimania.i18n.php";
+$wgExtensionAliasesFiles['wikimania'] = "$d/lang/Wikimania.alias.php";
 
 /**
  * Special pages
@@ -39,14 +44,14 @@ $wgExtensionAliasesFiles['wikimania'] = "$d/Wikimania.alias.php";
 $wgSpecialPages['AdministerWikimania'] = 'SpecialAdministerWikimania';
 $wgSpecialPages['CheckWikimaniaStatus'] = 'SpecialCheckWikimaniaStatus';
 $wgSpecialPages['RegisterForWikimania'] = 'SpecialRegisterForWikimania';
-$wgSpecialPageGroups['wikimania'] = array(
-	'AdministerWikimania', 'CheckWikimaniaStatus', 'RegisterForWikimania'
-);
+$wgSpecialPageGroups['AdministerWikimania'] = 'wikimania';
+$wgSpecialPageGroups['CheckWikimaniaStatus'] = 'wikimania';
+$wgSpecialPageGroups['RegisterForWikimania'] = 'wikimania';
 
 /**
  * Hooks
  */
-$wgHooks['LoadExtensionSchemaUpdates'][] = 'WikimaniaHooks::loadExtensionSchemaUpdates';
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'WikimaniaSchema::hook';
 
 /**
  * Rights
@@ -59,8 +64,47 @@ $wgGroupPermissions['user']['wikimania-checkstatus'] = true;
 $wgGroupPermissions['sysop']['wikimania-admin'] = true;
 
 /**
- * Configuration array for Wikimania
+ * Configuration array for Wikimania. It is a complex array, with many sub-options.
+ * Dates, unless otherwise specified, should be in MediaWiki timestamp format,
+ * that is: YYYYMMDDHHMMSS
+ *
+ *  year                => The year of the conference, 2011, 2012, etc.
+ *  openDate            => Date to begin accepting registrations
+ *  closeDate           => Date to end accepting registrations
+ *  baseCurrency        => All prices are in this currency
+ *  country             => Country hosting this year's Wikimania
+ *  paymentClass        => Which payment handler to use for checkout. Right now
+ *                         takes one of PaymentGoogleCheckout|PaymentPaypal
+ *  (pre|main|post)Days => Arrays configuring the days available for registration
+ *                         for the conference, including pre-events (eg: Developer
+ *                         Days) and post-event days (unconference or tours). They
+ *                         should each be given a unique key, a date, price and url
+ *                         to describe the event.
  */
 $wgWikimaniaConf = array(
-
+	'year' => 2012,
+	'openDate'  => '',
+	'closeDate' => '',
+	'baseCurrency' => 'USD',
+	'country' => 'us',
+	'paymentClass' => 'PaymentGoogleCheckout',
+	'preDays' => array(
+		'devday1' => array(
+			'date' => '',
+			'price' => '',
+			'url' => '',
+		),
+		'devday2' => array(
+			'date' => '',
+			'price' => '',
+		),
+	),
+	'mainDays' => array(
+		
+	),
+	'postDays' => array(
+		'unconf1' => array(
+			
+		),
+	),
 );
