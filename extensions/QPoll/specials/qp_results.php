@@ -37,30 +37,13 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( "This file is part of the QPoll extension. It is not a valid entry point.\n" );
 }
 
-class qp_SpecialPage extends SpecialPage {
-
-	static $linker = null;
-
-	public function __construct( $name = '', $restriction = '', $listed = true, $function = false, $file = 'default', $includable = false ) {
-		if ( self::$linker == null ) {
-			self::$linker = new Linker();
-		}
-		parent::__construct( $name, $restriction, $listed, $function, $file, $includable );
-	}
-
-	function qpLink( $target, $text = null, $customAttribs = array(), $query = array(), $options = array() ) {
-		return self::$linker->link( $target, $text, $customAttribs, $query, $options );
-	}
-
-}
-
 class PollResults extends qp_SpecialPage {
 
 	public function __construct() {
 		parent::__construct( 'PollResults', 'read' );
 		# for MW 1.15 (still being used by many customers)
 		# please do not remove until 2012
-		if ( self::mediaWikiVersionCompare( '1.16' ) ) {
+		if ( qp_Setup::mediaWikiVersionCompare( '1.16' ) ) {
 			wfLoadExtensionMessages( 'QPoll' );
 		}
 	}
@@ -117,12 +100,6 @@ class PollResults extends qp_SpecialPage {
 		$wgOut->addHTML( '<div class="qpoll">' );
 		$output = "";
 		$this->setHeaders();
-		if ( ( $result = $this->checkTables() ) !== true ) {
-			# tables check failed
-			$wgOut->addHTML( $result );
-			return;
-		}
-		# normal processing
 		$cmd = $wgRequest->getVal( 'action' );
 		if ( $cmd === null ) {
 			list( $limit, $offset ) = wfCheckLimits();
@@ -202,113 +179,6 @@ class PollResults extends qp_SpecialPage {
 			}
 		}
 		$wgOut->addHTML( $output . '</div>' );
-	}
-
-	/**
-	 * check for existence of multiple tables in the selected database
-	 */
-	private function tablesExists( $tableset ) {
-		$db = & wfGetDB( DB_SLAVE );
-		$tablesFound = 0;
-		foreach ( $tableset as &$table ) {
-			if ( $db->tableExists( $table ) ) {
-				$tablesFound++;
-			}
-		}
-		return $tablesFound;
-	}
-
-	/**
-	 * check for the existence of multiple fields in the selected database table
-	 * @param $table table name
-	 * @param $fields field names
-	 */
-	private function fieldsExists( $table, $fields ) {
-		$db = & wfGetDB( DB_SLAVE );
-		if ( !is_array( $fields ) ) {
-			$fields = array( $fields );
-		}
-		foreach ( $fields as $field ) {
-			if ( !$db->fieldExists( $table, $field ) ) {
-				return false;
-			}
-		}
-		return true;
-	}
-
-	/**
-	 * check whether the extension tables exist in DB
-	 * @return   true if tables are found, string with error message otherwise
-	 */
-	private function checkTables() {
-		$db = & wfGetDB( DB_SLAVE );
-		$sql_tables = array(
-			'qpoll_0.7.0.src' => array(
-				'qp_poll_desc',
-				'qp_question_desc',
-				'qp_question_categories',
-				'qp_question_proposals',
-				'qp_question_answers',
-				'qp_users_polls',
-				'qp_users'
-			),
-			'qpoll_random_questions.src' => array(
-				'qp_random_questions'
-			)
-		);
-		$addFields = array(
-			'qpoll_interpretation.src' => array(
-				'qp_poll_desc' => array( 'interpretation_namespace', 'interpretation_title' ),
-				'qp_users_polls' => array( 'attempts', 'short_interpretation', 'long_interpretation' )
-			)
-		);
-		/* check whether the tables were initialized */
-		$result = true;
-		$tablesInit = array();
-		foreach ( $sql_tables as $sourceFile => &$tableset ) {
-			$tablesFound = $this->tablesExists( $tableset );
-			if ( $tablesFound  == 0 ) {
-				$tablesInit = array_merge( $tablesInit, $tableset );
-				# no tables were found, initialize the DB completely with minimal version
-				if ( ( $r = $db->sourceFile( qp_Setup::$ExtDir . "/tables/{$sourceFile}" ) ) !== true ) {
-					return $r;
-				}
-			} elseif ( $tablesFound != count( $tableset ) ) {
-				# some tables are missing, serious DB error
-				return "Some of the extension database tables are missing.<br />Please restore from backup or drop the remaining extension tables, then reload this page.";
-			}
-		}
-		/* start of SQL updates */
-		$scriptsToRun = $tablesUpgrade = array();
-		foreach ( $addFields as $script => &$table_list ) {
-			foreach ( $table_list as $table => &$fields_list ) {
-				if ( !$this->fieldsExists( $table, $fields_list ) ) {
-					$scriptsToRun[$script] = true;
-					if ( array_search( $table, $tablesUpgrade ) === false ) {
-						array_push( $tablesUpgrade, $table );
-					}
-				}
-			}
-		}
-		foreach ( $scriptsToRun as $script => $val ) {
-			if ( ( $r = $db->sourceFile( qp_Setup::$ExtDir . "/archives/{$script}" ) ) !== true ) {
-				return $r;
-			}
-		}
-		/* end of SQL updates */
-		if ( count( $tablesInit ) > 0 ) {
-			$result = 'The following table(s) were initialized: ' . implode( ', ', $tablesInit ) . '<br />';
-		}
-		if ( count( $scriptsToRun ) > 0 ) {
-			if ( !is_string( $result ) ) {
-				$result = '';
-			}
-			$result = 'The following table(s) were upgraded:' . implode( ', ', $tablesUpgrade ) . '<br />';
-		}
-		if ( is_string( $result ) ) {
-			$result .= 'Please <a href="#" onclick="window.location.reload()">reload</a> this page to view future page edits.';
-		}
-		return $result;
 	}
 
 	private function showAnswerHeader( qp_PollStore $pollStore ) {
@@ -612,109 +482,6 @@ class PollResults extends qp_SpecialPage {
 	}
 
 }
-
-/**
- * We do not extend QueryPage anymore because it is purposely made incompatible in 1.18+
- * thus, it is much safer to implement a larger subset of pager itself
- */
-abstract class qp_QueryPage extends qp_SpecialPage {
-
-	var $listoutput = false;
-
-	public function __construct() {
-		parent::__construct( $this->queryPageName() );
-	}
-
-	function doQuery( $offset, $limit, $shownavigation = true ) {
-		global $wgOut, $wgContLang;
-
-		$res = $this->getIntervalResults( $offset, $limit );
-		$num = count( $res );
-
-		if ( $shownavigation ) {
-			$wgOut->addHTML( $this->getPageHeader() );
-
-			// if list is empty, display a warning
-			if ( $num == 0 ) {
-				$wgOut->addHTML( '<p>' . wfMsgHTML( 'specialpage-empty' ) . '</p>' );
-				return;
-			}
-
-			$top = wfShowingResults( $offset, $num );
-			$wgOut->addHTML( "<p>{$top}\n" );
-
-			// often disable 'next' link when we reach the end
-			$atend = $num < $limit;
-
-			$sl = wfViewPrevNext( $offset, $limit ,
-				$wgContLang->specialPage( $this->queryPageName() ),
-				wfArrayToCGI( $this->linkParameters() ), $atend );
-			$wgOut->addHTML( "<br />{$sl}</p>\n" );
-		}
-		if ( $num > 0 ) {
-			$s = array();
-			if ( ! $this->listoutput )
-				$s[] = $this->openList( $offset );
-
-			foreach ( $res as $r ) {
-				$format = $this->formatResult( $r );
-				if ( $format ) {
-					$s[] = $this->listoutput ? $format : "<li>{$format}</li>\n";
-				}
-			}
-
-			if ( ! $this->listoutput )
-				$s[] = $this->closeList();
-			$str = $this->listoutput ? $wgContLang->listToText( $s ) : implode( '', $s );
-			$wgOut->addHTML( $str );
-		}
-		if ( $shownavigation ) {
-			$wgOut->addHTML( "<p>{$sl}</p>\n" );
-		}
-		return $num;
-	}
-
-	/**
-	 * A mutator for $this->listoutput;
-	 *
-	 * @param $bool Boolean
-	 */
-	function setListoutput( $bool ) {
-		$this->listoutput = $bool;
-	}
-
-	function openList( $offset ) {
-		return "\n<ol start='" . ( $offset + 1 ) . "' class='special'>\n";
-	}
-
-	function closeList() {
-		return "</ol>\n";
-	}
-
-	/**
-	 * If using extra form wheely-dealies, return a set of parameters here
-	 * as an associative array. They will be encoded and added to the paging
-	 * links (prev/next/lengths).
-	 *
-	 * @return Array
-	 */
-	function linkParameters() {
-		return array();
-	}
-
-	function queryPageName() {
-		return "PollResults";
-	}
-
-	function isExpensive() {
-		return false; // disables caching
-	}
-
-	function isSyndicated() {
-		return false;
-	}
-
-} /* end of qp_QueryPage class */
 
 /* list of all users */
 class qp_UsersList extends qp_QueryPage {

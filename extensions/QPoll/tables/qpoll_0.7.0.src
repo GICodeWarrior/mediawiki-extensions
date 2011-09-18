@@ -6,7 +6,7 @@ CREATE TABLE /*$wgDBprefix*/qp_poll_desc (
   `dependance` mediumtext NOT NULL,
   PRIMARY KEY poll (pid),
   UNIQUE INDEX article_poll (article_id,poll_id(128))
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) /*$wgDBTableOptions*/;
 
 CREATE TABLE /*$wgDBprefix*/qp_question_desc (
   `pid` int unsigned NOT NULL,
@@ -15,7 +15,7 @@ CREATE TABLE /*$wgDBprefix*/qp_question_desc (
   `common_question` mediumtext NOT NULL,
   PRIMARY KEY question (pid,question_id),
   INDEX poll (pid)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) /*$wgDBTableOptions*/;
 
 CREATE TABLE /*$wgDBprefix*/qp_question_categories (
   `pid` int unsigned NOT NULL,
@@ -24,7 +24,7 @@ CREATE TABLE /*$wgDBprefix*/qp_question_categories (
   `cat_name` tinytext NOT NULL,
   PRIMARY KEY category (pid,question_id,cat_id),
   INDEX poll (pid)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) /*$wgDBTableOptions*/;
 
 CREATE TABLE /*$wgDBprefix*/qp_question_proposals (
   `pid` int unsigned NOT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE /*$wgDBprefix*/qp_question_proposals (
   `proposal_text` tinytext NOT NULL,
   PRIMARY KEY proposal (pid,question_id,proposal_id),
   INDEX poll (pid)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) /*$wgDBTableOptions*/;
 
 CREATE TABLE /*$wgDBprefix*/qp_question_answers (
   `uid` int unsigned NOT NULL,
@@ -45,13 +45,13 @@ CREATE TABLE /*$wgDBprefix*/qp_question_answers (
   PRIMARY KEY answer (uid,pid,question_id,proposal_id,cat_id),
   INDEX user_vote (uid,pid),
   INDEX poll_question (pid,question_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) /*$wgDBTableOptions*/;
 
 CREATE TABLE /*$wgDBprefix*/qp_users_polls (
   `uid` int unsigned NOT NULL,
   `pid` int unsigned NOT NULL,
   PRIMARY KEY user_poll (uid,pid)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) /*$wgDBTableOptions*/;
 
 CREATE TABLE /*$wgDBprefix*/qp_users (
   `uid` int unsigned NOT NULL auto_increment,
@@ -59,4 +59,4 @@ CREATE TABLE /*$wgDBprefix*/qp_users (
   PRIMARY KEY unique_name (uid,name(64)),
   INDEX user_id (uid),
   INDEX username (name(64))
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) /*$wgDBTableOptions*/;

@@ -5,4 +5,4 @@ CREATE TABLE /*$wgDBprefix*/qp_random_questions (
   PRIMARY KEY user_poll_question (uid,pid,question_id),
   INDEX user_seed (uid,pid),
   INDEX poll (pid)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) /*$wgDBTableOptions*/;
