@@ -37,6 +37,13 @@ $messages['be-tarask'] = array(
 	'editpagetracking-desc' => 'Захоўвае першае наведваньне старонкі рэдагаваньня ўдзельнікам',
 );
 
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'editpagetracking-desc' => 'Zaznamenává u každého uživatele okamžik první návštěvy editační stránky',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
