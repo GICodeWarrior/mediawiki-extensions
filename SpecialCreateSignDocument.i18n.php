@@ -1829,7 +1829,25 @@ Túto operáciu nie je možné druhýkrát vrátiť.',
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'createsigndocument' => 'Omogoča podpisovanje dokumentov',
 	'createsigndoc-pagename' => 'Stran:',
+	'createsigndoc-allowedgroup' => 'Dovoljena skupina:',
+	'createsigndoc-email' => 'E-poštni naslov:',
+	'createsigndoc-address' => 'Domači naslov:',
+	'createsigndoc-extaddress' => 'Mesto, država:',
+	'createsigndoc-phone' => 'Telefonska številka:',
+	'createsigndoc-bday' => 'Datum rojstva:',
+	'createsigndoc-minage' => 'Najnižja starost:',
+	'createsigndoc-introtext' => 'Uvod:',
+	'createsigndoc-hidden' => 'Skrito',
+	'createsigndoc-optional' => 'Izbirno',
+	'createsigndoc-create' => 'Ustvari',
+	'createsigndoc-error-generic' => 'Napaka: $1',
+	'createsigndoc-error-pagenoexist' => 'Napaka: Stran [[$1]] ne obstaja.',
+	'createsigndoc-success' => 'Podpisovanje dokumentov je uspešno omogočeno na [[$1]].
+Lahko ga [{{fullurl:{{#Special:SignDocument}}|doc=$2}} preizkusite].',
+	'createsigndoc-error-alreadycreated' => 'Podpisovanje dokumentov »$1« že obstaja.
+Tega ne morete storiti dvakrat.',
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
