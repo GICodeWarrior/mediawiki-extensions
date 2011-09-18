@@ -50,7 +50,7 @@ CREATE TABLE /*_*/registration (
 CREATE UNIQUE INDEX /*i*/reg_code ON /*_*/registrations (reg_code);
 
 -- Table to handle date(s) people register for
-CREATE TABLE registration_dates (
+CREATE TABLE /*_*/registration_dates (
 	rd_id unsigned int not null primary key auto_increment,
 	rd_reg_id unsigned int not null,
 	rd_date varbinary(16) not null
