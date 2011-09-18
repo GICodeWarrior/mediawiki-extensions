@@ -896,7 +896,21 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'framedvideo_errors' => 'Prišlo je do več napak!',
+	'framedvideo_error' => 'Prišlo je do napake!',
+	'framedvideo_error_unknown_type' => 'Neznan id storitve videoposnetkov (»$1«): preverite parameter »type«.',
+	'framedvideo_error_no_id_given' => 'Manjka parameter »id«.',
+	'framedvideo_error_height_required' => 'Vrsta videoposnetka »$1« zahteva parameter »height«.',
+	'framedvideo_error_height_required_not_only_width' => 'Vrsta videoposnetka »$1« zahteva parameter »height«, ne samo parameter »width«.',
+	'framedvideo_error_width_too_big' => 'Dana vrednost parametra »width« je prevelika.',
+	'framedvideo_error_height_too_big' => 'Dana vrednost parametra »height« je prevelika.',
+	'framedvideo_error_no_integer' => 'Dana vrednost »$1« ni pozitivno število.',
+	'framedvideo_error_limit' => 'Najvišja dovoljena vrednost je $1.',
+	'framedvideo_error_full_size_not_allowed' => 'Vrednost »full« parametra »size« ni dovoljena za storitev videoposnetkov z id-jem »$1«.',
 	'framedvideo_helppage' => 'Help:Video',
+	'framedvideo_error_see_help' => '[[{{MediaWiki:Framedvideo_helppage}}|Več o skladnji]].',
+	'framedvideo_error_height_and_width_required' => 'Vrsta videoposnetka »$1« zahteva parametre »height« in »width2« ali »width«.',
+	'framedvideo-desc' => 'Omogoča vdelovanje videoposnetkov z različnih spletnih strani z uporabo etikete <code>&lt;video&gt;</code>',
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
