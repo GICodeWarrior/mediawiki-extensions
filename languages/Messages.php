@@ -8,6 +8,15 @@ $messages['en'] = array(
 	'wom-desc' => 'Easy Page Object Model for wiki user',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'objecteditor' => 'Objek-redigeerder',
+	'wom_editor' => 'Objek-model',
+	'wom-desc' => 'Maklike bladsyobjek-model',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -35,6 +44,15 @@ $messages['ia'] = array(
 	'wom-desc' => 'Modello facile de objectos de pagina pro usatores de wikis',
 );
 
+/** Japanese (日本語)
+ * @author Schu
+ */
+$messages['ja'] = array(
+	'objecteditor' => 'オブジェクトエディタ',
+	'wom_editor' => 'オブジェクトモデル',
+	'wom-desc' => 'ウィキ利用者のための簡単​​なページオブジェクトモデル',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -51,5 +69,14 @@ $messages['nl'] = array(
 	'objecteditor' => 'Objecttekstverwerker',
 	'wom_editor' => 'Objectmodel',
 	'wom-desc' => 'Gemakkelijk paginaobjectmodel',
+);
+
+/** Portuguese (Português)
+ * @author SandroHc
+ */
+$messages['pt'] = array(
+	'objecteditor' => 'Editor de Objectos',
+	'wom_editor' => 'Modelo de Objectos',
+	'wom-desc' => 'Modelo de Objectos "Easy Page" para os utilizadores da wiki',
 );
 
