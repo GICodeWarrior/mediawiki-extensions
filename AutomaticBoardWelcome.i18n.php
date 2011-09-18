@@ -137,6 +137,13 @@ $messages['pms'] = array(
 	'automaticboardwelcome-desc' => "A manda automaticament [[MediaWiki:User-board-welcome-message|un mëssagi ëd bin ëvnù]] a n'utent neuv apress la creassion d'un cont",
 );
 
+/** Portuguese (Português)
+ * @author SandroHc
+ */
+$messages['pt'] = array(
+	'automaticboardwelcome-desc' => 'Coloca automáticamente [[MediaWiki:User-board-welcome-message|uma mensagem de boas vindas]] na página de discussão dos novos utilizadores depois da criação da conta',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
