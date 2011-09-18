@@ -1,8 +1,7 @@
 <?php
-/* 
+/**
  * Class referring to a specific registration
  */
-
 class WikimaniaRegistration {
 
 	private static function fieldList() {
