@@ -1100,7 +1100,7 @@ Pro ulterior information, per favor visita le $1.',
  */
 $messages['ksh'] = array(
 	'moodbar-close' => '(zohmaache)',
-	'moodbar-privacy' => 'Wä heh jät enjitt, moß met dä $1 enverschtande sen, söns moß mer et sennlohße.',
+	'moodbar-privacy' => 'Wä heh jät enjitt, moß met dä $1 enverschtande sen, söns moß mer et blieve lohße.',
 	'moodbar-privacy-link' => 'Begengonge',
 	'moodbar-success-title' => 'Mer bedanke uns.',
 );
