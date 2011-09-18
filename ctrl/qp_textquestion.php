@@ -86,9 +86,12 @@ class qp_TextQuestionOptions {
 	function closeCategory() {
 		$this->isCatDef = false;
 		# prepare new category input choice (text questions have no category names)
-		$this->input_options = array_unique( $this->input_options, SORT_STRING );
-		# make sure elements keys are consequitive starting from 0
-		sort( $this->input_options, SORT_STRING );
+		$unique_options = array_unique( $this->input_options, SORT_STRING );
+		$this->input_options = array();
+		foreach ( $unique_options as $option ) {
+			# make sure unique elements keys are consequitive starting from 0
+			$this->input_options[] = $option;
+		}
 	}
 
 } /* end of qp_TextQuestionOptions class */
@@ -102,8 +105,6 @@ class qp_TextQuestionOptions {
  */
 class qp_TextQuestion extends qp_StubQuestion {
 
-	# not longer than qp_question_proposals.proposal_text (currently, tinytext)
-	const MAX_PROPOSAL_LENGTH = 255;
 	const PROP_CAT_PATTERN = '`(<<|>>|{{|}}|\[\[|\]\]|\|)`u';
 
 	# $viewtokens is an instance of qp_TextQuestionViewTokens
@@ -241,7 +242,7 @@ class qp_TextQuestion extends qp_StubQuestion {
 				# todo: this is the explanary line, it is not real proposal
 				$this->viewtokens->prependErrorToken( wfMsg( 'qp_error_too_few_categories' ), 'error' );
 			}
-			if ( strlen( $proposal_text = serialize( $this->dbtokens ) ) > self::MAX_PROPOSAL_LENGTH ) {
+			if ( strlen( $proposal_text = serialize( $this->dbtokens ) ) > qp_Setup::$proposal_max_length ) {
 				# too long proposal field to store into the DB
 				# this is very important check for text questions because
 				# category definitions are stored within the proposal text

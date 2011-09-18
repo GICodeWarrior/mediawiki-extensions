@@ -51,7 +51,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'name' => 'QPoll',
 	'version' => '0.8.0a',
-	'author' => 'QuestPC',
+	'author' => 'Dmitriy Sintsov',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:QPoll',
 	'descriptionmsg' => 'qp_desc',
 );
@@ -59,7 +59,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'name' => 'QPoll results page',
 	'version' => '0.8.0a',
-	'author' => 'QuestPC',
+	'author' => 'Dmitriy Sintsov',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:QPoll',
 	'descriptionmsg' => 'qp_desc-sp',
 );
@@ -134,6 +134,7 @@ class qp_Setup {
 	static $ScriptPath; // apache virtual path
 	static $messagesLoaded = false; // check whether the extension's localized messages are loaded
 	static $article; // Article instance we got from hook parameter
+	static $title; // Title instance we got from hook parameter
 	static $user; // User instance we got from hook parameter
 
 	static $questionTypes = array(
@@ -187,6 +188,14 @@ class qp_Setup {
 	public static $cache_control = false;
 	# number of submit attempts allowed (0 or less for infinite number)
 	public static $max_submit_attempts = 0;
+	# maximal length of question proposal row
+	# tuned for MySQL ROW_FORMAT=REDUNDANT, ROW_FORMAT=COMPACT
+	# feel free to increase the value for ROW_FORMAT=DYNAMIC, ROW_FORMAT=COMPRESSED
+	# however make sure that the whole row will fit into DB page,
+	# otherwise the performance may decrease
+	# it is important only for question type="text", where
+	# proposal text contains serialized array of proposal parts and category fields
+	public static $proposal_max_length = 768;
 	/* end of default configuration settings */
 
 	static function entities( $s ) {
@@ -195,34 +204,6 @@ class qp_Setup {
 
 	static function specialchars( $s ) {
 		return htmlspecialchars( $s, ENT_COMPAT, 'UTF-8' );
-	}
-
-	static function coreRequirements() {
-		$required_classes_and_methods = array(
-			array( 'Article' => 'doPurge' ),
-			array( 'Linker' => 'link' ),
-			array( 'OutputPage' => 'isPrintable' ),
-			array( 'Parser' => 'getTitle' ),
-			array( 'Parser' => 'setHook' ),
-			array( 'Parser' => 'recursiveTagParse' ),
-			array( 'ParserCache' => 'getKey' ),
-			array( 'ParserCache' => 'singleton' ),
-			array( 'Title' => 'getArticleID' ),
-			array( 'Title' => 'getPrefixedText' ),
-			array( 'Title' => 'makeTitle' ),
-			array( 'Title' => 'makeTitleSafe' ),
-			array( 'Title' => 'newFromID' )
-		);
-		foreach ( $required_classes_and_methods as &$check ) {
-			list( $object, $method ) = each( $check );
-			if ( !method_exists( $object, $method ) ) {
-				die( "QPoll extension requires " . $object . "::" . $method . " method to be available.<br />\n" .
-					"Your version of MediaWiki is incompatible with this extension.\n" );
-			}
-		}
-		if ( !defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
-			die( "QPoll extension requires ParserFirstCallInit hook.\nPlease upgrade your MediaWiki installation first.\n" );
-		}
 	}
 
 	/**
@@ -253,8 +234,7 @@ class qp_Setup {
 		global $wgGroupPermissions;
 		global $wgDebugLogGroups;
 
-		# core check and local / remote path
-		self::coreRequirements();
+		# local / remote path
 		self::$ExtDir = str_replace( "\\", "/", dirname( __FILE__ ) );
 		$dirs = explode( '/', self::$ExtDir );
 		$top_dir = array_pop( $dirs );
@@ -271,6 +251,9 @@ class qp_Setup {
 		# extension setup, hooks handling and content transformation
 		self::autoLoad( array(
 			'qp_user.php' => array( 'qp_Setup', 'qp_Renderer', 'qp_FunctionsHook' ),
+
+			## DB schema updater
+			'maintenance/qp_schemaupdater.php' => 'qp_SchemaUpdater',
 
 			## collection of the questions
 			'qp_question_collection.php' => 'qp_QuestionCollection',
@@ -309,8 +292,10 @@ class qp_Setup {
 			# (combined question storage & view)
 			'qp_questiondata.php' => array( 'qp_QuestionData', 'qp_TextQuestionData' ),
 
-			# results page
-			'qp_results.php' => array( 'qp_SpecialPage', 'qp_QueryPage', 'PollResults' ),
+			# special pages
+			'specials/qp_special.php' => array( 'qp_SpecialPage', 'qp_QueryPage' ),
+			'specials/qp_results.php' => 'PollResults',
+			'specials/qp_webinstall.php' => array( 'qp_WebInstall' ),
 
 			# interpretation of answers
 			'qp_interpret.php' => 'qp_Interpret',
@@ -319,6 +304,7 @@ class qp_Setup {
 
 		# TODO: Use the new technique for i18n of special page aliases
 		$wgSpecialPages['PollResults'] = 'PollResults';
+		$wgSpecialPages['QPollWebInstall'] = 'qp_WebInstall';
 		# TODO: Use the new technique for i18n of magic words
 		# instantiating fake instance for PHP < 5.2.3, which does not support 'Class::method' type of callbacks
 		$wgHooks['LanguageGetMagic'][] =
@@ -326,8 +312,8 @@ class qp_Setup {
 		$wgHooks['ParserFirstCallInit'][] =
 		$wgHooks['LoadAllMessages'][] =
 		$wgHooks['ParserAfterTidy'][] =
-		$wgHooks['CanonicalNamespaces'][] =
-		new qp_Setup;
+		$wgHooks['CanonicalNamespaces'][] = new qp_Setup;
+		$wgHooks['LoadExtensionSchemaUpdates'][] = new qp_SchemaUpdater;
 
 		if ( self::mediaWikiVersionCompare( '1.17' ) ) {
 			# define namespaces for the interpretation scripts and their talk pages
@@ -442,7 +428,11 @@ class qp_Setup {
 			$parserCache = ParserCache::singleton();
 			$key = $parserCache->getKey( self::$article, self::$user );
 			$parserMemc->delete( $key );
-			self::$article->doPurge();
+			if ( method_exists( 'Article', 'doPurge' ) ) {
+				self::$article->doPurge();
+			} else {
+				WikiPage::factory( self::$title )->doPurge();
+			}
 		}
 	}
 
@@ -452,7 +442,11 @@ class qp_Setup {
 		global $qp_AnonForwardedFor; // deprecated since v0.6.5
 		global $wgUser;
 		self::$article = $article;
-		# borrowed from Title::getUserPermissionsErrors() MW v1.16
+		self::$title = $title;
+		# in MW v1.15 / v1.16 user object was stub;
+		# in MW v1.19 it seems to be real object.
+		# Unstub for the versions where it is stubbed.
+		# Borrowed from Title::getUserPermissionsErrors() MW v1.16
 		if ( !StubObject::isRealObject( $user ) ) {
 			// Since StubObject is always used on globals, we can unstub $wgUser here and set $user = $wgUser
 			global $wgUser;

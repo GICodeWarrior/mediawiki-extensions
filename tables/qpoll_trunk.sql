@@ -1,6 +1,8 @@
-/* WARNING: do not use directly in case your wiki DB setup uses table prefixes
- * use Special:PollResults page instead
- * this file is primarily for debugging
+/**
+ * WARNING: This file will drop existing data in QPoll tables, if there's any!
+ * Do not use directly in case your wiki DB setup uses table prefixes.
+ * Use Special:PollResults page instead.
+ * This file is primarily for debugging.
  */
 
 DROP TABLE IF EXISTS `qp_poll_desc`;
@@ -43,7 +45,7 @@ CREATE TABLE `qp_question_proposals` (
   `pid` int unsigned NOT NULL,
   `question_id` int unsigned NOT NULL,
   `proposal_id` int unsigned NOT NULL,
-  `proposal_text` tinytext NOT NULL,
+  `proposal_text` text NOT NULL,
   PRIMARY KEY proposal (pid,question_id,proposal_id),
   INDEX poll (pid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
