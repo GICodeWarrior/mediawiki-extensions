@@ -65,7 +65,6 @@ $wgFFmpegLocation = '/usr/bin/ffmpeg';
  */
 $wgOggThumbLocation = false;
 
-
 /**
  * Filename or URL path to the Cortado Java player applet.
  *
