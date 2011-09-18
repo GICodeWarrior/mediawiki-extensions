@@ -1,8 +1,7 @@
 <?php
-/* 
+/**
  * Schema generation and such
  */
-
 class WikimaniaSchema {
 	/**
 	 * Hook for LoadExtensionSchemaUpdates

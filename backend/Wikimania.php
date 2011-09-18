@@ -1,5 +1,5 @@
 <?php
-/* 
+/**
  * Manager class for this year's Wikimania
  */
 class Wikimania {
@@ -44,7 +44,7 @@ class Wikimania {
 	 * @var String
 	 */
 	private $country;
-	
+
 
 	/**
 	 * Do a bit of delayed setup, based on this year's config
