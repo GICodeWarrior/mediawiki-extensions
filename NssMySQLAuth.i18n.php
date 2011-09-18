@@ -1046,6 +1046,16 @@ $messages['sk'] = array(
  */
 $messages['sl'] = array(
 	'am-username' => 'uporabniško ime',
+	'am-email' => 'e-pošta',
+	'am-active' => 'dejavno',
+	'am-updated' => 'Vaše spremembe so bile uspešno shranjene',
+	'nss-rights' => 'pravice',
+	'nss-save-changes' => 'Shrani spremembe',
+	'nss-create-account-header' => 'Ustvari nov račun',
+	'nss-create-account' => 'Ustvari račun',
+	'nss-no-mail' => 'Ne pošlji e-pošte',
+	'nss-welcome-mail' => 'Račun z uporabniškim imenom $1 in geslom $2 je bil ustvarjen za vas.',
+	'nss-welcome-mail-subject' => 'Ustvarjanje računa',
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
