@@ -1,5 +1,5 @@
-es.BlockController = function() {
-	// manage interactions
+es.BlockController = function( blockView ) {
+	es.ControllerItem.call( this, blockView );
 };
 
 es.BlockController.prototype.commit = function( transaction ) {
@@ -21,3 +21,7 @@ es.BlockController.prototype.prepareRemoveContent = function( range ) {
 es.BlockController.prototype.prepareAnnotateContent = function( range, annotation ) {
 	// generate transaction
 };
+
+/* Inheritance */
+
+es.extend( es.BlockController, es.ControllerItem );

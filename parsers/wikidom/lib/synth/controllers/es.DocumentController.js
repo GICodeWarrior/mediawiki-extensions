@@ -1,5 +1,5 @@
-es.DocumentController = function() {
-	// manage interactions
+es.DocumentController = function( documentView ) {
+	es.ControllerList.call( this, documentView );
 };
 
 es.DocumentController.prototype.commit = function( transaction ) {
@@ -21,3 +21,7 @@ es.DocumentController.prototype.prepareRemoveContent = function( range ) {
 es.DocumentController.prototype.prepareAnnotateContent = function( range, annotation ) {
 	// generate transaction
 };
+
+/* Inheritance */
+
+es.extend( es.DocumentController, es.ControllerList );
