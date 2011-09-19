@@ -3750,6 +3750,13 @@ Legissètz lo document al complet, e se desiratz significar vòstre sosten, empl
 	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] a autentificat [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Psubhashish
+ */
+$messages['or'] = array(
+	'sign-viewfield-timestamp' => 'ସମୟଚିହ୍ନ',
+);
+
 /** Ossetic (Ирон)
  * @author Amikeco
  */
