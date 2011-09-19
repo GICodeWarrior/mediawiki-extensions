@@ -5,8 +5,8 @@
  * @constructor
  */
 es.TableBlockRowView = function( model ) {
-	es.ViewContainer.call( this, model, 'row', 'tr' )
-	es.ViewContainerItem.call( this, model, 'tr' );
+	es.ViewList.call( this, model, 'row', 'tr' )
+	es.ViewListItem.call( this, model, 'tr' );
 	
 	var classes = this.$.attr('class');
 	for ( var name in this.model.attributes ) {
@@ -52,5 +52,5 @@ es.TableBlockRowView.prototype.getHtml = function( options ) {
 
 /* Inheritance */
 
-es.extend( es.TableBlockRowView, es.ViewContainer );
-es.extend( es.TableBlockRowView, es.ViewContainerItem );
+es.extend( es.TableBlockRowView, es.ViewList );
+es.extend( es.TableBlockRowView, es.ViewListItem );

@@ -10,7 +10,7 @@
  */
 es.TableBlockModel = function( rows, attributes ) {
 	es.BlockModel.call( this, ['isDocumentContainer', 'isAggregate'] );
-	es.ModelContainer.call( this );
+	es.ModelList.call( this );
 
 	if ( $.isArray( rows ) ) {
 		for ( var i = 0; i < rows.length; i++ ) {
@@ -87,4 +87,4 @@ es.BlockModel.constructors['table'] = es.TableBlockModel.newFromPlainObject;
 /* Inheritance */
 
 es.extend( es.TableBlockModel, es.BlockModel );
-es.extend( es.TableBlockModel, es.ModelContainer );
+es.extend( es.TableBlockModel, es.ModelList );

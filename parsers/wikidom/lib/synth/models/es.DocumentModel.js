@@ -9,7 +9,7 @@
  * @property attributes {Object}
  */
 es.DocumentModel = function( blocks, attributes ) {
-	es.ModelContainer.call( this );
+	es.ModelList.call( this );
 	this.items = new es.AggregateArray( blocks || [] );
 	this.attributes = attributes || {};
 };
@@ -60,4 +60,4 @@ es.DocumentModel.prototype.getContentLength = function() {
 	return this.items.getContentLength();
 };
 
-es.extend( es.DocumentModel, es.ModelContainer );
+es.extend( es.DocumentModel, es.ModelList );

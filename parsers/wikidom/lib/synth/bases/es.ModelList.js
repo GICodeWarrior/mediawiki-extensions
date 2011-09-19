@@ -1,14 +1,14 @@
 /**
- * Creates an es.ModelContainer object.
+ * Creates an es.ModelList object.
  * 
- * Child objects must extend es.ModelContainerItem.
+ * Child objects must extend es.ModelListItem.
  * 
  * @class
  * @constructor
  * @extends {es.EventEmitter}
  * @property items {Array} list of items
  */
-es.ModelContainer = function() {
+es.ModelList = function() {
 	es.EventEmitter.call( this );
 	this.items = new es.AggregateArray();
 	var container = this;
@@ -25,7 +25,7 @@ es.ModelContainer = function() {
  * @method
  * @returns {Object} Child object at index
  */
-es.ModelContainer.prototype.get = function( index ) {
+es.ModelList.prototype.get = function( index ) {
 	return this.items[index] || null;
 };
 
@@ -35,7 +35,7 @@ es.ModelContainer.prototype.get = function( index ) {
  * @method
  * @returns {Array} List of all items.
  */
-es.ModelContainer.prototype.all = function() {
+es.ModelList.prototype.all = function() {
 	return this.items;
 };
 
@@ -45,7 +45,7 @@ es.ModelContainer.prototype.all = function() {
  * @method
  * @returns {Integer} Number of items in container
  */
-es.ModelContainer.prototype.getLength = function() {
+es.ModelList.prototype.getLength = function() {
 	return this.items.length
 };
 
@@ -55,7 +55,7 @@ es.ModelContainer.prototype.getLength = function() {
  * @method
  * @returns {Integer} Index of item, -1 if item is not in container
  */
-es.ModelContainer.prototype.indexOf = function( item ) {
+es.ModelList.prototype.indexOf = function( item ) {
 	return this.items.indexOf( item );
 };
 
@@ -65,7 +65,7 @@ es.ModelContainer.prototype.indexOf = function( item ) {
  * @method
  * @returns {Object} First item
  */
-es.ModelContainer.prototype.first = function() {
+es.ModelList.prototype.first = function() {
 	return this.items.length ? this.items[0] : null;
 };
 
@@ -75,7 +75,7 @@ es.ModelContainer.prototype.first = function() {
  * @method
  * @returns {Object} Last item
  */
-es.ModelContainer.prototype.last = function() {
+es.ModelList.prototype.last = function() {
 	return this.items.length
 		? this.items[this.items.length - 1] : null;
 };
@@ -88,7 +88,7 @@ es.ModelContainer.prototype.last = function() {
  * @method
  * @param callback {Function} Function to call on each item which takes item and index arguments
  */
-es.ModelContainer.prototype.each = function( callback ) {
+es.ModelList.prototype.each = function( callback ) {
 	for ( var i = 0; i < this.items.length; i++ ) {
 		if ( callback( this.items[i], i ) === false ) {
 			break;
@@ -105,7 +105,7 @@ es.ModelContainer.prototype.each = function( callback ) {
  * @param item {Object} Item to append
  * @emits "update"
  */
-es.ModelContainer.prototype.append = function( item ) {
+es.ModelList.prototype.append = function( item ) {
 	var parent = item.parent();
 	if ( parent === this ) {
 		this.items.splice( this.indexOf( item ), 1 );
@@ -128,7 +128,7 @@ es.ModelContainer.prototype.append = function( item ) {
  * @param item {Object} Item to prepend
  * @emits "update"
  */
-es.ModelContainer.prototype.prepend = function( item ) {
+es.ModelList.prototype.prepend = function( item ) {
 	var parent = item.parent();
 	if ( parent === this ) {
 		this.items.splice( this.indexOf( item ), 1 );
@@ -152,7 +152,7 @@ es.ModelContainer.prototype.prepend = function( item ) {
  * @param before {Object} Item to insert before, if null then item will be inserted at the end
  * @emits "update"
  */
-es.ModelContainer.prototype.insertBefore = function( item, before ) {
+es.ModelList.prototype.insertBefore = function( item, before ) {
 	var parent = item.parent();
 	if ( parent === this ) {
 		this.items.splice( this.indexOf( item ), 1 );
@@ -180,7 +180,7 @@ es.ModelContainer.prototype.insertBefore = function( item, before ) {
  * @param after {Object} Item to insert after, if null item will be inserted at the end
  * @emits "update"
  */
-es.ModelContainer.prototype.insertAfter = function( item, after ) {
+es.ModelList.prototype.insertAfter = function( item, after ) {
 	var parent = item.parent();
 	if ( parent === this ) {
 		this.items.splice( this.indexOf( item ), 1 );
@@ -207,7 +207,7 @@ es.ModelContainer.prototype.insertAfter = function( item, after ) {
  * @param item {Object} Item to remove
  * @emits "update"
  */
-es.ModelContainer.prototype.remove = function( item ) {
+es.ModelList.prototype.remove = function( item ) {
 	item.removeListener( 'update', this.relayUpdate );
 	this.items.splice( this.indexOf( item ), 1 );
 	item.detach();
@@ -217,4 +217,4 @@ es.ModelContainer.prototype.remove = function( item ) {
 
 /* Inheritance */
 
-es.extend( es.ModelContainer, es.EventEmitter );
+es.extend( es.ModelList, es.EventEmitter );

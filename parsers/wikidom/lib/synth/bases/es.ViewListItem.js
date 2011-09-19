@@ -8,11 +8,11 @@
  * @param tagName {String} HTML element name to use (optional, default: "div")
  * @property $ {jQuery} Container element
  */
-es.ViewContainerItem = function( model, typeName, tagName ) {
+es.ViewListItem = function( model, typeName, tagName ) {
 	es.EventEmitter.call( this );
 	this.model = model;
 	if ( typeof typeName !== 'string' ) {
-		typeName = 'viewContainerItem';
+		typeName = 'viewListItem';
 	}
 	if ( typeof tagName !== 'string' ) {
 		tagName = 'div';
@@ -24,7 +24,7 @@ es.ViewContainerItem = function( model, typeName, tagName ) {
 	this.$.addClass( 'editSurface-' + typeName ).data( typeName, this );
 };
 
-es.ViewContainerItem.prototype.getModel = function() {
+es.ViewListItem.prototype.getModel = function() {
 	return this.model;
 };
 
@@ -36,10 +36,10 @@ es.ViewContainerItem.prototype.getModel = function() {
  * @method
  * @returns {Integer} Index of item in it's container
  */
-es.ViewContainerItem.prototype.getIndex = function() {
+es.ViewListItem.prototype.getIndex = function() {
 	return this.model.getIndex();
 };
 
 /* Inheritance */
 
-es.extend( es.ViewContainerItem, es.EventEmitter );
+es.extend( es.ViewListItem, es.EventEmitter );

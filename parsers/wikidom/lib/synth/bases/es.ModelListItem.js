@@ -1,27 +1,27 @@
 /**
- * Creates an es.ModelContainerItem object.
+ * Creates an es.ModelListItem object.
  * 
  * @class
  * @constructor
  * @extends {es.EventEmitter}
  * @property container {Object} Reference to container, if attached
  */
-es.ModelContainerItem = function() {
+es.ModelListItem = function() {
 	es.EventEmitter.call( this );
 	this.container = null;
 };
 
 /* Methods */
 
-es.ModelContainerItem.prototype.parent = function() {
+es.ModelListItem.prototype.parent = function() {
 	return this.container;
 };
 
 /**
  * Creates a view for this model
  */
-es.ModelContainerItem.prototype.createView = function() {
-	throw 'ModelContainerItem.createView not implemented in this subclass.';
+es.ModelListItem.prototype.createView = function() {
+	throw 'ModelListItem.createView not implemented in this subclass.';
 };
 
 /**
@@ -31,7 +31,7 @@ es.ModelContainerItem.prototype.createView = function() {
  * @param container {es.Container} Container to attach to
  * @emits "attach" with container argument
  */
-es.ModelContainerItem.prototype.attach = function( container ) {
+es.ModelListItem.prototype.attach = function( container ) {
 	this.container = container;
 	this.emit( 'attach', container );
 };
@@ -42,7 +42,7 @@ es.ModelContainerItem.prototype.attach = function( container ) {
  * @method
  * @emits "detach" with container argument
  */
-es.ModelContainerItem.prototype.detach = function() {
+es.ModelListItem.prototype.detach = function() {
 	var container = this.container;
 	this.container = null;
 	this.emit( 'detach', container );
@@ -56,7 +56,7 @@ es.ModelContainerItem.prototype.detach = function() {
  * @throws Unknown item error if this item is not in it's container
  * @throws Missing container error if this container can't be accessed.
  */
-es.ModelContainerItem.prototype.getIndex = function() {
+es.ModelListItem.prototype.getIndex = function() {
 	try {
 		var index = this.container.indexOf( this );
 		if ( index === -1 ) {
@@ -75,7 +75,7 @@ es.ModelContainerItem.prototype.getIndex = function() {
  * @returns {Object} Previous item, or null if none exists
  * @throws Missing container error if getting the previous item item failed
  */
-es.ModelContainerItem.prototype.previous = function() {
+es.ModelListItem.prototype.previous = function() {
 	try {
 		return this.container.get( this.container.indexOf( this ) - 1 );
 	} catch ( e ) {
@@ -90,7 +90,7 @@ es.ModelContainerItem.prototype.previous = function() {
  * @returns {Object} Next item, or null if none exists
  * @throws Missing container error if getting the next item item failed
  */
-es.ModelContainerItem.prototype.next = function() {
+es.ModelListItem.prototype.next = function() {
 	try {
 		return this.container.get( this.container.indexOf( this ) + 1 );
 	} catch ( e ) {
@@ -105,7 +105,7 @@ es.ModelContainerItem.prototype.next = function() {
  * @returns {Boolean} If item is the first in it's container
  * @throws Missing container error if getting the index of this item failed
  */
-es.ModelContainerItem.prototype.isFirst = function() {
+es.ModelListItem.prototype.isFirst = function() {
 	try {
 		return this.container.indexOf( this ) === 0;
 	} catch ( e ) {
@@ -120,7 +120,7 @@ es.ModelContainerItem.prototype.isFirst = function() {
  * @returns {Boolean} If item is the last in it's container
  * @throws Missing container error if getting the index of this item failed
  */
-es.ModelContainerItem.prototype.isLast = function() {
+es.ModelListItem.prototype.isLast = function() {
 	try {
 		return this.container.indexOf( this ) === this.container.getLength() - 1;
 	} catch ( e ) {
@@ -130,4 +130,4 @@ es.ModelContainerItem.prototype.isLast = function() {
 
 /* Inheritance */
 
-es.extend( es.ModelContainerItem, es.EventEmitter );
+es.extend( es.ModelListItem, es.EventEmitter );

@@ -8,7 +8,7 @@
  */
 es.ListBlockModel = function( items ) {
 	es.BlockModel.call( this, ['hasContent', 'isAnnotatable', 'isAggregate'] );
-	es.ModelContainer.call( this );
+	es.ModelList.call( this );
 	if ( $.isArray( items ) ) {
 		for ( var i = 0; i < items.length; i++ ) {
 			this.append( items[i] );
@@ -116,4 +116,4 @@ es.BlockModel.constructors['list'] = es.ListBlockModel.newFromPlainObject
 /* Inheritance */
 
 es.extend( es.ListBlockModel, es.BlockModel );
-es.extend( es.ListBlockModel, es.ModelContainer );
+es.extend( es.ListBlockModel, es.ModelList );

@@ -2,14 +2,14 @@
  * Creates an es.BlockModel object.
  * 
  * @class
- * @extends {es.ModelContainerItem}
+ * @extends {es.ModelListItem}
  * @abstract
  * @constructor
  * @param traits {Array} List of trait names
  * @property traits {Array} List of trait names
  */
 es.BlockModel = function( traits ) {
-	es.ModelContainerItem.call( this, 'document' );
+	es.ModelListItem.call( this, 'document' );
 	this.traits = traits || [];
 };
 
@@ -173,4 +173,4 @@ es.BlockModel.prototype.getPlainObject = function() {
 	throw 'BlockModel.getPlainObject not implemented in this subclass.';
 };
 
-es.extend( es.BlockModel, es.ModelContainerItem );
+es.extend( es.BlockModel, es.ModelListItem );

@@ -5,7 +5,7 @@
  * @constructor
  */
 es.DocumentView = function( documentModel ) {
-	es.ViewContainer.call( this, documentModel, 'document' );
+	es.ViewList.call( this, documentModel, 'document' );
 };
 
 /**
@@ -49,4 +49,4 @@ es.DocumentView.prototype.getHtml = function() {
 
 /* Inheritance */
 
-es.extend( es.DocumentView, es.ViewContainer );
+es.extend( es.DocumentView, es.ViewList );

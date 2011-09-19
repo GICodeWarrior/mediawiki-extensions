@@ -1,5 +1,5 @@
 /**
- * Creates an es.ViewContainer object.
+ * Creates an es.ViewList object.
  * 
  * View containers follow the operations performed on a model container and keep a list of views,
  * each correlating to a model in the model container.
@@ -7,13 +7,13 @@
  * @class
  * @constructor
  * @extends {es.EventEmitter}
- * @param model {es.ModelContainer} Model to follow
+ * @param model {es.ModelList} Model to follow
  * @param typeName {String} Name to use in CSS classes and HTML element data
  * @param tagName {String} HTML element name to use (optional, default: "div")
  * @property $ {jQuery} Container element
  * @property items {Array} List of views, correlating to models in the model container
  */
-es.ViewContainer = function( model, typeName, tagName ) {
+es.ViewList = function( model, typeName, tagName ) {
 	es.EventEmitter.call( this );
 	this.model = model;
 	if ( !this.model ) {
@@ -21,7 +21,7 @@ es.ViewContainer = function( model, typeName, tagName ) {
 	}
 	this.items = new es.AggregateArray();
 	if ( typeof typeName !== 'string' ) {
-		typeName = 'viewContainer';
+		typeName = 'viewList';
 	}
 	if ( typeof tagName !== 'string' ) {
 		tagName = 'div';
@@ -105,7 +105,7 @@ es.ViewContainer = function( model, typeName, tagName ) {
 	}
 };
 
-es.ViewContainer.prototype.lookupItemView = function( itemModel ) {
+es.ViewList.prototype.lookupItemView = function( itemModel ) {
 	for ( var i = 0; i < this.items.length; i++ ) {
 		if ( this.items[i].getModel() === itemModel ) {
 			return this.items[i];
@@ -116,4 +116,4 @@ es.ViewContainer.prototype.lookupItemView = function( itemModel ) {
 
 /* Inheritance */
 
-es.extend( es.ViewContainer, es.EventEmitter );
+es.extend( es.ViewList, es.EventEmitter );

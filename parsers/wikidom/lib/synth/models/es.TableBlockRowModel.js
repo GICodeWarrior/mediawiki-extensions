@@ -9,8 +9,8 @@
  * @property attributes {Object}
  */
 es.TableBlockRowModel = function( items, attributes ) {
-	es.ModelContainerItem.call( this );
-	es.ModelContainer.call( this );
+	es.ModelListItem.call( this );
+	es.ModelList.call( this );
 	
 	if ( $.isArray( items ) ) {
 		for ( var i = 0; i < items.length; i++ ) {
@@ -82,5 +82,5 @@ es.TableBlockRowModel.prototype.getPlainObject = function() {
 
 /* Inheritance */
 
-es.extend( es.TableBlockRowModel, es.ModelContainerItem );
-es.extend( es.TableBlockRowModel, es.ModelContainer );
+es.extend( es.TableBlockRowModel, es.ModelListItem );
+es.extend( es.TableBlockRowModel, es.ModelList );

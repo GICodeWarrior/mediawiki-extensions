@@ -9,7 +9,7 @@
  * @property attributes {Object}
  */
 es.TableBlockCellModel = function( documentModel, attributes ) {
-	es.ModelContainerItem.call( this );
+	es.ModelListItem.call( this );
 	this.documentModel = documentModel || null;
 	this.attributes = attributes || {};
 };
@@ -70,4 +70,4 @@ es.TableBlockCellModel.prototype.getPlainObject = function() {
 
 /* Inheritance */
 
-es.extend( es.TableBlockCellModel, es.ModelContainerItem );
+es.extend( es.TableBlockCellModel, es.ModelListItem );

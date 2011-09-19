@@ -5,7 +5,7 @@
  * @constructor
  */
 es.ListBlockView = function( model ) {
-	es.ViewContainer.call( this, model, 'list' );
+	es.ViewList.call( this, model, 'list' );
 	es.BlockView.call( this, model, 'list' );
 	var view = this;
 	this.on( 'update', function() {
@@ -91,5 +91,5 @@ es.ListBlockView.prototype.getHtml = function( options ) {
 
 /* Inheritance */
 
-es.extend( es.ListBlockView, es.ViewContainer );
+es.extend( es.ListBlockView, es.ViewList );
 es.extend( es.ListBlockView, es.BlockView );

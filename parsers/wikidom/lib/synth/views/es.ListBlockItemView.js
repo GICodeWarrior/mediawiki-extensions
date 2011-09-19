@@ -5,7 +5,7 @@
  * @constructor
  */
 es.ListBlockItemView = function( model ) {
-	es.ViewContainerItem.call( this, model, 'listItem' );
+	es.ViewListItem.call( this, model, 'listItem' );
 	this.$icon = $( '<div class="editSurface-listItem-icon"></div>' );
 	this.$content = $( '<div class="editSurface-listItem-content"></div>' );
 	this.$
@@ -77,4 +77,4 @@ es.ListBlockItemView.prototype.getHtml = function( options ) {
 
 /* Inheritance */
 
-es.extend( es.ListBlockItemView, es.ViewContainerItem );
+es.extend( es.ListBlockItemView, es.ViewListItem );

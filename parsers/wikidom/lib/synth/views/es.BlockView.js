@@ -9,7 +9,7 @@
  * @param tagName {String} HTML tag name to use in rendering (optional, default: "div")
  */
 es.BlockView = function( blockModel, typeName, tagName ) {
-	es.ViewContainerItem.call( this, blockModel, typeName || 'block', tagName || 'div' );
+	es.ViewListItem.call( this, blockModel, typeName || 'block', tagName || 'div' );
 	this.$.addClass( 'editSurface-block' );
 };
 
@@ -50,4 +50,4 @@ es.BlockView.getRenderedLineRange = function( offset ) {
 
 /* Inheritance */
 
-es.extend( es.BlockView, es.ViewContainerItem );
+es.extend( es.BlockView, es.ViewListItem );

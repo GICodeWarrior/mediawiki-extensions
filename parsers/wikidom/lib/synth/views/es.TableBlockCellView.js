@@ -5,7 +5,7 @@
  * @constructor
  */
 es.TableBlockCellView = function( model ) {
-	es.ViewContainerItem.call( this, model, 'cell', 'td' );
+	es.ViewListItem.call( this, model, 'cell', 'td' );
 	
 	this.documentView = new es.DocumentView( this.model.documentModel );
 	this.$.append( this.documentView.$ );
@@ -45,4 +45,4 @@ es.TableBlockCellView.prototype.getHtml = function( options ) {
 
 /* Inheritance */
 
-es.extend( es.TableBlockCellView, es.ViewContainerItem );
+es.extend( es.TableBlockCellView, es.ViewListItem );
