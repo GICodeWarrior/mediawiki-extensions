@@ -632,6 +632,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Giro720
  * @author Hamilton Abreu
  * @author SandroHc
  */
@@ -656,21 +657,24 @@ $messages['pt'] = array(
 	'wikitweet-tweets-from-room' => 'Tweets da sala',
 	'wikitweet-timeago' => 'hà $1',
 	'wikitweet-inthefuture' => 'No futuro !!',
-	'wikitweet-fewsecondsago' => 'Hà poucos segundos',
+	'wikitweet-fewsecondsago' => 'Há poucos segundos',
 	'wikitweet-status' => 'Estado:',
 	'wikitweet-status0' => 'Discussão',
 	'wikitweet-status1' => 'Evento',
 	'wikitweet-status2' => 'Aviso',
 	'wikitweet-status3' => 'Alerta',
 	'wikitweet-resolve' => 'resolver',
+	'wikitweet-concerns' => 'Refere-se a você',
 	'wikitweet-comment' => 'Comentário',
 	'wikitweet-subscribers' => 'Subscritores:',
+	'wikitweet-hourly' => 'De hora em hora',
 	'wikitweet-perperson' => 'Por pessoa',
 	'wikitweet-inresponseto' => 'Em resposta a:',
 	'wikitweet-from' => 'de',
 	'wikitweet-in' => 'em',
 	'wikitweet-directlink' => 'Link directo:',
 	'wikitweet-mailsent' => 'mensagem enviada',
+	'wikitweet-viaroom' => 'do quarto',
 	'wikitweet-alertsolved' => 'um dos teus alerta foi resolvido em',
 	'wikitweet-cannotparse' => 'Não é possível analisar',
 );

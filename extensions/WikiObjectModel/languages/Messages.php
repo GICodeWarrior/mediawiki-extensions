@@ -21,7 +21,7 @@ $messages['af'] = array(
  * @author Kghbln
  */
 $messages['de'] = array(
-	'objecteditor' => 'Objekt-Editor',
+	'objecteditor' => 'Objekteditor',
 	'wom_editor' => 'Objektmodell',
 	'wom-desc' => 'Ermöglicht ein einfaches Objektmodell für Seiten',
 );

@@ -153,7 +153,9 @@ See also:
 	'moodbar-privacy' => 'Parameters:
 *$1 - a link having the anchor text {{msg-mw|moodbar-privacy-link}}
 
-The link is to the privacy policy of the wiki.',
+The link is to the privacy policy of the wiki.
+
+See [[Thread:Support/About MediaWiki:Moodbar-privacy/en (2)/reply (4)|discussion]].',
 	'moodbar-privacy-link' => 'This is the anchor text being used in the link replacing $1 in the message {{msg-mw|moodbar-privacy}}',
 	'moodbar-header-timestamp' => '{{Identical|Timestamp}}',
 	'moodbar-header-type' => '{{Identical|Type}}',
@@ -1459,6 +1461,13 @@ $messages['no'] = array(
 	'moodbar-user-anonymized' => 'Anonymisert',
 	'moodbar-user-ip' => 'IP-adresse',
 	'moodbar-user-user' => 'Registrert bruker',
+);
+
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Psubhashish
+ */
+$messages['or'] = array(
+	'moodbar-header-timestamp' => 'ସମୟଚିହ୍ନ',
 );
 
 /** Polish (Polski)

@@ -2655,11 +2655,32 @@ $messages['oc'] = array(
  * @author Psubhashish
  */
 $messages['or'] = array(
+	'ogg-short-audio' => 'Ogg $1 ଶବ୍ଦ ଫାଇଲ, $2',
+	'ogg-short-video' => 'Ogg $1 ଭିଡ଼ିଓ ଫାଇଲ, $2',
+	'ogg-short-general' => 'Ogg $1 ମିଡ଼ିଆ ଫାଇଲ, $2',
+	'ogg-long-audio' => 'Ogg $1 ଶବ୍ଦ ଫାଇଲ, ଲମ୍ବ $2, $3',
+	'ogg-long-video' => 'Ogg $1 ଭିଡ଼ିଓ, ଲମ୍ବ $2, $4×$5 ପିକ୍ସେଲ, $3',
+	'ogg-long-general' => 'Ogg ମିଡ଼ିଆ ଫାଇଲ, ଲମ୍ବ $2, $3',
+	'ogg-long-error' => 'ଅଚଳ ogg ଫାଇଲ: $1',
 	'ogg-play' => 'ଚଲାଇବା',
 	'ogg-pause' => 'ବିରତି',
 	'ogg-stop' => 'ବିରାମ',
+	'ogg-play-video' => 'ଭିଡ଼ିଓ ଚଳାଇବେ',
+	'ogg-play-sound' => 'ଶବ୍ଦ ଚଳାଇବେ',
+	'ogg-no-player' => 'କ୍ଷମା କରିବେ, ଆପଣଙ୍କ କମ୍ପୁଟରରେ କୌଣସି ଭିଡ଼ିଓ ଚାଳନ ସଫ୍ଟୱେର ଇନଷ୍ଟଲ ହୋଇଥିବା ଜଣାଯାଉନାହିଁ ।
+ଦୟାକରି <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ଏକ ପ୍ଲେଅର ଡାଉନଲୋଡ଼ କରିନିଅନ୍ତୁ</a> ।',
+	'ogg-player-videoElement' => 'ଆଞ୍ଚଳିକ ବ୍ରାଉଜର ସହଯୋଗ',
+	'ogg-player-oggPlugin' => 'ବ୍ରାଉଜର ପ୍ଲଗଇନ',
+	'ogg-player-thumbnail' => 'ଏବେଯାଏଁ କେବଳ ଛବି',
+	'ogg-player-soundthumb' => 'ଚାଳନଯନ୍ତ୍ର ନାହିଁ',
+	'ogg-player-selected' => '(ବଛା)',
+	'ogg-use-player' => 'ଚାଳନ ଯନ୍ତ୍ର ବ୍ୟବହାର କରିବେ:',
 	'ogg-more' => 'ଅଧିକ...',
 	'ogg-dismiss' => 'ବନ୍ଦ କରିବେ',
+	'ogg-download' => 'ଫାଇଲ ଡାଉନଲୋଡ଼',
+	'ogg-desc-link' => 'ଏହି ଫାଇଲ ବାବଦରେ',
+	'ogg-oggThumb-version' => 'OggHandler ନିମନ୍ତେ oggThumb ର $1 ତମ ବା ତାହା ପରର ସଂସ୍କରଣ ଲୋଡ଼ା',
+	'ogg-oggThumb-failed' => 'oggThumb ସାନଦେଖଣା ତିଆରିବାରେ ବିଫଳ ହେଲା ।',
 );
 
 /** Ossetic (Ирон)

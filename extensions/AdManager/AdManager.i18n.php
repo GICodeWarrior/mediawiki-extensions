@@ -37,6 +37,18 @@ $messages['en'] = array(
 	'right-admanager' => '[[Special:AdManager|Manage advertising configuration]]',
 );
 
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'admanager' => 'Кіраўнік рэклямы',
+	'admanagerzones' => 'Зоны кіраўніка рэклямы',
+	'admanager-desc' => 'Дадае [[Special:AdManager|спэцыяльную старонку]], якая дазваляе адміністратарам прызначаць зону для старонак ці катэгорыяў',
+	'admanager_docu' => 'Для даданьня ці выдаленьня зоны рэклямы на старонцы ці ўсёй катэгорыі, трэба дадаць ці выдаліць назву ўнізе.',
+	'admanagerzones_docu' => 'Увядзіце нумар кожнай зоны рэклямы ў асобным радку.',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  * @author Y-M D
@@ -85,6 +97,61 @@ $messages['de'] = array(
 	'right-admanager' => '[[Special:AdManager|Anzeigen konfigurieren]]',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'admanager' => 'Administrator de recllâmes',
+	'admanagerzones' => 'Zones de l’administrator de recllâmes',
+	'admanager_invalidtargetpage' => 'Niona pâge avouéc lo titro « $1 » at étâ trovâ.',
+	'admanager_invalidtargetcategory' => 'Niona catègorie avouéc lo titro « $1 » at étâ trovâ.',
+	'admanager_labelPage' => 'Titros de pâges',
+	'admanager_labelCategory' => 'Noms de catègories',
+	'admanager_submit' => 'Sometre',
+	'admanager_noads' => 'Fâre vêre gins de recllâma',
+	'admanager_Page' => 'Pâges',
+	'admanager_Category' => 'Catègories',
+	'admanager_added' => 'Voutros changements ont étâ encartâs',
+	'admanager_noadsset' => '$1 at étâ dèfeni por fâre vêre gins de recllâma',
+	'admanager_addedzone' => 'Zona apondua',
+	'admanager_zonenum' => 'Numerô de zona : $1',
+	'admanager_zonenotnumber' => 'Èrror ! $1 est pas un nombro.',
+	'admanager_return' => 'Retôrn a l’[[Special:AdManager|administrator de recllâmes]]',
+	'admanager_gotoads' => '[[Special:AdManager|Changiér lo placement de recllâma]]',
+	'admanager_gotozones' => '[[Special:AdManagerZones|Changiér les zones de recllâmes]]',
+	'right-admanager' => '[[Special:AdManager|Administrar la configuracion de la recllâma]]',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'admanager' => 'Xestor de anuncios',
+	'admanagerzones' => 'Xestor das zonas de anuncios',
+	'admanager-desc' => 'Proporciona unha [[Special:AdManager|páxina especial]] que permite aos administradores definir a zona das páxinas ou categorías',
+	'admanager_docu' => 'Para engadir ou eliminar a zona de anuncios dunha páxina ou categoría enteira, engada ou elimine o seu título a continuación.',
+	'admanagerzones_docu' => 'Escriba cada número de zona de anuncios na súa propia liña.',
+	'admanager_invalidtargetpage' => 'Non se atopou ningunha páxina co título "$1".',
+	'admanager_invalidtargetcategory' => 'Non se atopou ningunha categoría co título "$1".',
+	'admanager_notable' => 'Erro! Non se atopou a táboa da base de datos necesaria para continuar! Execute update.php primeiro.',
+	'admanager_noAdManagerZones' => 'Erro! Ten que engadir algunhas zonas de anuncios. Insíraas no [[Special:AdManagerZones|Xestor das zonas de anuncios]].',
+	'admanager_labelPage' => 'Títulos da páxinas',
+	'admanager_labelCategory' => 'Nomes da categorías',
+	'admanager_submit' => 'Enviar',
+	'admanager_noads' => 'Non mostrar os anuncios',
+	'admanager_Page' => 'Páxinas',
+	'admanager_Category' => 'Categorías',
+	'admanager_added' => 'Gardáronse os seus cambios',
+	'admanager_noadsset' => '$1 definiuse para non mostrar os anuncios',
+	'admanager_addedzone' => 'Zona engadida',
+	'admanager_zonenum' => 'Zona nº: $1',
+	'admanager_zonenotnumber' => 'Erro! "$1" non é un número.',
+	'admanager_return' => 'Volver ao [[Special:AdManager|Xestor de anuncios]]',
+	'admanager_gotoads' => '[[Special:AdManager|Editar a posición do anuncio]]',
+	'admanager_gotozones' => '[[Special:AdManagerZones|Editar as zonas dos anuncios]]',
+	'right-admanager' => '[[Special:AdManager|Xestionar a configuración dos anuncios]]',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -122,11 +189,13 @@ $messages['lb'] = array(
 	'admanager_invalidtargetpage' => 'Keng Säit mam Titel "$1" fonnt.',
 	'admanager_invalidtargetcategory' => 'Keng Kategorie mam Titel "$1" fonnt.',
 	'admanager_labelPage' => 'Säitennimm',
+	'admanager_labelCategory' => 'Nimm vun de Kategorien:',
 	'admanager_noads' => 'Keng Reklamme weisen',
 	'admanager_Page' => 'Säiten',
 	'admanager_Category' => 'Kategorien',
 	'admanager_added' => 'Är Ännerunge goufe gespäichert',
 	'admanager_noadsset' => '$1 gouf esou agestallt datt keng Reklamme gewise ginn',
+	'admanager_zonenum' => 'Zone #: $1',
 	'admanager_zonenotnumber' => 'Feeler! $1 ass keng Zuel.',
 );
 
@@ -183,17 +252,18 @@ $messages['mk'] = array(
 
 /** Dutch (Nederlands)
  * @author SPQRobin
+ * @author Siebrand
  */
 $messages['nl'] = array(
 	'admanager' => 'Advertentiebeheer',
 	'admanagerzones' => 'Zones voor advertentiebeheer',
-	'admanager-desc' => "Voegt een [[Special:AdManager|speciale pagina]] toe die beheerders toelaat om de zone voor pagina's of categorieën in te stellen",
-	'admanager_docu' => 'U kunt een advertentiezone van een pagina of volledige categorie toevoegen of verwijderen door de titel ervan toe te voegen of te verwijderen.',
-	'admanagerzones_docu' => 'Voer elke advertentiezone op zijn eigen regel in.',
-	'admanager_invalidtargetpage' => 'Geen pagina gevonden met de titel "$1".',
-	'admanager_invalidtargetcategory' => 'Geen categorie gevonden met de titel "$1".',
-	'admanager_notable' => 'Fout: een vereiste databasetabel werd niet gevonden. Voer eerst update.php uit.',
-	'admanager_noAdManagerZones' => 'Fout: u moet advertentiezones toevoegen. Voer ze in op [[Special:AdManagerZones|deze speciale pagina]].',
+	'admanager-desc' => "Voegt een [[Special:AdManager|speciale pagina]] toe die beheerders in staat stelt om de zone voor pagina's of categorieën in te stellen",
+	'admanager_docu' => 'U kunt een advertentiezone van een pagina of volledige categorie toevoegen of verwijderen door de naam ervan toe te voegen of te verwijderen.',
+	'admanagerzones_docu' => 'Voer elke advertentiezone op een eigen regel in.',
+	'admanager_invalidtargetpage' => 'Geen pagina gevonden met de naam "$1".',
+	'admanager_invalidtargetcategory' => 'Geen categorie gevonden met de naam "$1".',
+	'admanager_notable' => 'Fout: een vereiste databasetabel is niet gevonden. Voer eerst update.php uit.',
+	'admanager_noAdManagerZones' => 'Fout: u moet advertentiezones toevoegen. Voer ze in op de [[Special:AdManagerZones|speciale pagina]].',
 	'admanager_labelPage' => 'Paginanamen',
 	'admanager_labelCategory' => 'Categorienamen',
 	'admanager_submit' => 'Opslaan',
@@ -203,12 +273,12 @@ $messages['nl'] = array(
 	'admanager_added' => 'Uw wijzigingen zijn opgeslagen',
 	'admanager_noadsset' => '$1 is ingesteld om geen advertenties weer te geven',
 	'admanager_addedzone' => 'Zone toegevoegd',
-	'admanager_zonenum' => 'Zone #: $1',
+	'admanager_zonenum' => 'Zonenummer: $1',
 	'admanager_zonenotnumber' => 'Fout: $1 is geen getal.',
-	'admanager_return' => 'Terugkeren naar het [[Special:AdManager|advertentiebeheer]]',
+	'admanager_return' => 'Terug naar [[Special:AdManager|advertentiebeheer]]',
 	'admanager_gotoads' => '[[Special:AdManager|Advertentieplaatsing bewerken]]',
 	'admanager_gotozones' => '[[Special:AdManagerZones|Advertentiezones bewerken]]',
-	'right-admanager' => '[[Special:AdManager|Adverteerconfiguratie beheren]]',
+	'right-admanager' => '[[Special:AdManager|Advertentie-instellingen beheren]]',
 );
 
 /** Portuguese (Português)
