@@ -15,7 +15,7 @@ class SpecialExtensionManagement extends SpecialPage {
 	static $viewvcUrls = array(
 		'svn+ssh://svn.wikimedia.org/svnroot/mediawiki' => 'http://svn.wikimedia.org/viewvc/mediawiki',
 		'http://svn.wikimedia.org/svnroot/mediawiki' => 'http://svn.wikimedia.org/viewvc/mediawiki',
-		# Doesn't work at the time of writing but maybe some day: 
+		# Doesn't work at the time of writing but maybe some day:
 		'https://svn.wikimedia.org/viewvc/mediawiki' => 'http://svn.wikimedia.org/viewvc/mediawiki',
 	);
 
@@ -43,9 +43,7 @@ class SpecialExtensionManagement extends SpecialPage {
 
 
 	function displayExtensions() {
-		global $wgOut, $wgExtensionCredits;
-
-		$extensionAmount = 0;
+		global $wgExtensionCredits;
 
 		$extensionTypes = array(
 			'specialpage' => wfMsg( 'version-specialpages' ),
@@ -125,8 +123,8 @@ class SpecialExtensionManagement extends SpecialPage {
 		}
 		# Version
 		if ( isset( $extension['version'] ) ) {
-			$versionText = '<span class="mw-version-ext-version"><em>' . 
-				wfMsg( 'version-version', $extension['version'] ) . 
+			$versionText = '<span class="mw-version-ext-version"><em>' .
+				wfMsg( 'version-version', $extension['version'] ) .
 				'</em></span> | ';
 		} else {
 			$versionText = '';
@@ -203,7 +201,7 @@ class SpecialExtensionManagement extends SpecialPage {
 		} else {
 			if( is_object( $list[0] ) )
 				$class = get_class( $list[0] );
-			else 
+			else
 				$class = $list[0];
 			return "($class, {$list[1]})";
 		}
