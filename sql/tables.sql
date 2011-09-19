@@ -67,7 +67,7 @@ CREATE TABLE /*_*/registration_hotels (
 	rh_notes blob
 ) /**$wgDBTableOptions*/;
 
--- Table to handle languages a registrant can communicat in
+-- Table to handle languages a registrant can communicate in
 CREATE TABLE /*_*/registration_languages (
 	rl_reg_id unsigned int not null,
 	rl_lang varchar(4),
