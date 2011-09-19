@@ -127,7 +127,7 @@ class MakeWmfBranch {
 		}
 
 		# Do intermediate commit
-		$this->runWriteCmd( 'svn', 'ci', '-q', '-m', "Creating new WMF branch" );
+		$this->runWriteCmd( 'svn', 'ci', '-q', '-m', "Creating new WMF {$this->newVersion} branch" );
 
 		# Fix $wgVersion
 		$this->fixVersion( "$destRel/includes/DefaultSettings.php" );
@@ -143,8 +143,8 @@ class MakeWmfBranch {
 		}
 
 		# Do the final commit
-		$this->runWriteCmd( 'svn', 'ci', '-q', '-m', 
-			'Applied local patches for new WMF branch' );
+		$this->runWriteCmd( 'svn', 'ci', '-q', '-m',
+			"Applied local patches for new WMF {$this->newVersion} branch" );
 	}
 
 	function fixVersion( $fileName ) {
