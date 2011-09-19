@@ -17,7 +17,7 @@ if [ $(basename $1) == 'common-files' ]; then
 else
 	codePath="$1"
 	maxDepth=""
-	filterParams="( -name *.php -o -name *.cdb ) ! -name *.i18n.php ! -name *.alias.php"
+	filterParams="( -name *.php -o -name *.cdb ) ! -wholename */languages/messages/* ! -name *.i18n.php ! -name *.alias.php"
 fi
 
 # Format through AWK to have the path first to improve diffs.
