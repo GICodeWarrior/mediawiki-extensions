@@ -242,35 +242,14 @@ $.narayam = new ( function() {
 		input = input.substring( divergingPos );
 		replacement = replacement.substring( divergingPos );
 		
-		// TODO: use better browser detection as $.browser may be moved out
-		//      from jQuery core
-		if ( $.browser.webkit ) {
-			// Webkit browser have a bug:
-			// https://bugs.webkit.org/show_bug.cgi?id=66630
-			// TODO: remove when webkit bug is handled
-			// in jQuery.textSelection.js
-			
-			replaceString($this, startPos - input.length + 1, endPos, replacement);
-			// Calculate new position for caret to be set
-			var newCaretPosition = startPos - input.length + 1 + replacement.length;
-			// Update caret postion
-			$this.textSelection( 'setSelection', {
-					'start': newCaretPosition,
-					'end': newCaretPosition
+		$this.textSelection( 'encapsulateSelection', {
+				'peri': replacement,
+				'replace': true,
+				'selectPeri': false,
+				'selectionStart': startPos - input.length + 1,
+				'selectionEnd': endPos
+
 			} );
-		}
-		else {
-			// Select and replace the text
-			$this.textSelection( 'setSelection', {
-					'start': startPos - input.length + 1,
-					'end': endPos
-			} );
-			$this.textSelection( 'encapsulateSelection', {
-					'peri': replacement,
-					'replace': true,
-					'selectPeri': false
-			} );
-		}
 		
 		e.stopPropagation();
 		return false;
