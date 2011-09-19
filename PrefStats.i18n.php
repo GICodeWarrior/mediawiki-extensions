@@ -2128,6 +2128,11 @@ Clicatz sus una d'entre elas per veire las estatisticas a son prepaus.",
  * @author Psubhashish
  */
 $messages['or'] = array(
+	'prefstats' => 'ପସନ୍ଦ ପରିସଂଖ୍ୟାନ',
+	'prefstats-desc' => ' କେତେଜଣ ସଭ୍ୟ ନିର୍ଦ୍ଦିଷ୍ଟ ପସନ୍ଦ ସଚଳ କରିଅଛନ୍ତି ତାହାର ପରିସଂଖ୍ୟାନ ଦେଖିବେ',
+	'prefstats-title' => 'ପସନ୍ଦ ପରିସଂଖ୍ୟାନ',
+	'prefstats-list-intro' => 'ଅଧୁନା, ତଳଲିଖିତ ପସନ୍ଦସବୁ ନିରେଖି ଦେଖାଯାଉଅଛି ।
+ପରିସଙ୍ଖ୍ୟାନ ଦେଖିବା ନିମନ୍ତେ କ୍ଲିକ କରନ୍ତୁ ।',
 	'prefstats-xaxis' => 'ସମୟସୀମା (ଘଣ୍ଟା)',
 	'prefstats-factors' => '$1 ପ୍ରତି ଦେଖଣା',
 	'prefstats-factor-hour' => 'ଘଣ୍ଟା',
