@@ -201,15 +201,19 @@ $messages['nl'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Giro720
  * @author Hamilton Abreu
  * @author SandroHc
  */
 $messages['pt'] = array(
 	'signupapi-desc' => 'Remove da [[Special:UserLogin|página de login]] os elementos relacionados com o processo de autenticação e acrescenta uma API de autenticação',
 	'signupapi-ok' => 'OK',
+	'signupapi-noname' => 'Nenhum nome de utilizador especificado',
+	'signupapi-userexists' => 'Esse utilizador já existe',
 	'signupapi-weak' => 'Fraca',
 	'signupapi-medium' => 'Média',
 	'signupapi-strong' => 'Forte',
+	'signupapi-invalidemailaddress' => 'Endereço de correio electrónico inválido',
 );
 
 /** Russian (Русский)
