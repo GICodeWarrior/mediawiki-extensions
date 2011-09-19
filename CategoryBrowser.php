@@ -56,7 +56,7 @@ $wgExtensionMessagesFiles['CategoryBrowser'] = $dir . '/CategoryBrowser.i18n.php
 $wgExtensionAliasesFiles['CategoryBrowser'] = $dir . '/CategoryBrowser.alias.php';
 $wgSpecialPages['CategoryBrowser'] = 'CategoryBrowserPage';
 $wgSpecialPageGroups['CategoryBrowser'] = 'pages';
-		
+
 CB_Setup::init();
 
 class CB_Setup {
@@ -95,11 +95,7 @@ class CB_Setup {
 	 */
 	static function init() {
 		global $wgScriptPath;
-		global $wgExtensionMessagesFiles;
 		global $wgAutoloadClasses;
-		global $wgExtensionCredits;
-		global $wgSpecialPages;
-		global $wgSpecialPageGroups;
 		global $wgAjaxExportList;
 
 		self::$ExtDir = str_replace( "\\", "/", dirname( __FILE__ ) );
