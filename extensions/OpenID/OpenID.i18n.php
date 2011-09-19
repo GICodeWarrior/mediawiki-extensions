@@ -122,6 +122,8 @@ You would not able to log in without an OpenID.',
 	'openid-urls-desc' => 'OpenIDs associated with your account:',
 	'openid-urls-url' => 'URL',
 	'openid-urls-action' => 'Action',
+	'openid-urls-registration' => 'Registration time',
+	'openid-urls-registration-date-time'  => '$1', # only translate this message to other languages if you have to change it
 	'openid-urls-delete' => 'Delete',
 	'openid-add-url' => 'Add a new OpenID',
 

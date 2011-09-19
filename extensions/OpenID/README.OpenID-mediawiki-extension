@@ -1,5 +1,5 @@
 MediaWiki OpenID extension README.OpenID-mediawiki-extension file
-version 0.937-beta 20110019
+version 0.938-beta 20110920
 
 Homepage and manual http://www.mediawiki.org/wiki/Extension:OpenID
 
@@ -476,6 +476,7 @@ The big changes for the future:
   into that account now
 
 == CHANGES ==
+* 0.938 list uoi_user_registration timestamp if present in openid-preference tab
 * 0.937 added uoi_user_registration timestamp field (bug30623)
 * 0.934 fixes
   bug 29543 After logging in with OpenID, user page link in the personal toolbar

@@ -133,27 +133,54 @@ class OpenIDHooks {
 	}
 
 	private static function getInfoTable( $user ) {
-		$urls = SpecialOpenID::getUserUrl( $user );
+		global $wgLang;
+		$openid_urls_registration = SpecialOpenID::getUserUrl( $user );
 		$delTitle = SpecialPage::getTitleFor( 'OpenIDConvert', 'Delete' );
 		$sk = $user->getSkin();
 		$rows = '';
-		foreach ( $urls as $url ) {
+		foreach ( $openid_urls_registration as $url_reg ) {
+		
+			if ( !empty( $url_reg->uoi_user_registration ) ) { $registrationTime = wfMsgExt(
+				'openid-urls-registration-date-time', 
+				'parsemag',
+				$wgLang->timeanddate( $url_reg->uoi_user_registration, true ),
+				$wgLang->date( $url_reg->uoi_user_registration, true ),
+				$wgLang->time( $url_reg->uoi_user_registration, true ) 
+				);
+			} else {
+				$registrationTime = '';
+			}
+
 			$rows .= Xml::tags( 'tr', array(),
 				Xml::tags( 'td',
 					array(),
-					Xml::element( 'a', array( 'href' => $url ), $url )
+					Xml::element( 'a', array( 'href' => $url_reg->uoi_openid ), $url_reg->uoi_openid )
+				) .
+				Xml::tags( 'td',
+					array(),
+					$registrationTime
 				) .
 				Xml::tags( 'td',
 					array(),
 					$sk->link( $delTitle, wfMsgHtml( 'openid-urls-delete' ),
 						array(),
-						array( 'url' => $url ) 
+						array( 'url' => $url_reg->uoi_openid ) 
 					) 
 				)
 			) . "\n";
 		}
 		$info = Xml::tags( 'table', array( 'class' => 'wikitable' ),
-			Xml::tags( 'tr', array(), Xml::element( 'th', array(), wfMsg( 'openid-urls-url' ) ) . Xml::element( 'th', array(), wfMsg( 'openid-urls-action' ) ) ) . "\n" .
+			Xml::tags( 'tr', array(),
+				Xml::element( 'th',
+					array(), 
+					wfMsg( 'openid-urls-url' ) ) .
+				Xml::element( 'th',
+					array(), 
+					wfMsg( 'openid-urls-registration' ) ) .
+				Xml::element( 'th', 
+					array(), 
+					wfMsg( 'openid-urls-action' ) )
+				) . "\n" .
 			$rows
 		);
 		$info .= $sk->link( SpecialPage::getTitleFor( 'OpenIDConvert' ), wfMsgHtml( 'openid-add-url' ) );

@@ -327,8 +327,9 @@ class SpecialOpenID extends SpecialPage {
 	}
 
 	# Find the user with the given openid, if any
+	# return openid url and registration timestamp
 	public static function getUserUrl( $user ) {
-		$openid_urls = array();
+		$openid_urls_registration = array();
 
 		if ( $user instanceof User && $user->getId() != 0 ) {
 			$dbr = wfGetDB( DB_SLAVE );
@@ -340,11 +341,11 @@ class SpecialOpenID extends SpecialPage {
 			);
 
 			foreach ( $res as $row ) {
-				$openid_urls[] = $row->uoi_openid;
+				$openid_urls_registration[] = $row;
 			}
 			$res->free();
 		}
-		return $openid_urls;
+		return $openid_urls_registration;
 	}
 
 	public static function getUserFromUrl( $openid ) {
