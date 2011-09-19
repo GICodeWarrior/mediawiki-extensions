@@ -258,6 +258,8 @@ $(document).ready( function() {
 			]
 		}
 	] } );
+	var surfaceView = new es.SurfaceView( $( '#es-editor' ), new es.SurfaceModel( doc ) );
+	var surfaceController = new es.SurfaceController( surfaceView );
 	// Use the global space for debugging purposes
-	window.surface = new es.SurfaceView( $('#es-editor'), new es.SurfaceModel( doc ) );
+	window.surfaceView = surfaceView;
 } );
