@@ -229,7 +229,12 @@
 				eot: "gez/AbyssinicaSIL-R.eot",
 				ttf: "gez/AbyssinicaSIL-R.ttf",
 				woff: "gez/AbyssinicaSIL-R.woff"
-			}
+			},
+			"Iranian Sans": {
+				eot: "fa/IranianSans.eot",
+				ttf: "fa/IranianSans.ttf",
+				woff: "fa/IranianSans.woff"
+			}	    
 		},
 
 		languages: {
@@ -252,7 +257,8 @@
 			      "KhmerOSfreehand", "KhmerOSfasthand" ],
 			saz: [ "Pagul" ],
 			am: [ "AbyssinicaSIL" ],
-			ti: [ "AbyssinicaSIL" ]
+			ti: [ "AbyssinicaSIL" ],
+			fa: [ "Iranian Sans" ]
 		}
 	};
 })(jQuery);
