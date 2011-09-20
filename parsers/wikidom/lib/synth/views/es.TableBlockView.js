@@ -7,9 +7,7 @@
 es.TableBlockView = function( model ) {
 	es.ViewList.call( this, model, $( '<table>' ) );
 	es.BlockView.call( this, model, this.$ );
-	for ( var name in this.model.attributes ) {
-		this.$.attr( name, this.model.attributes[name] );
-	}
+	this.$.attr( this.model.attributes );
 	this.$.addClass( 'editSurface-tableBlock' );
 };
 

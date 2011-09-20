@@ -6,13 +6,8 @@
  */
 es.TableBlockRowView = function( model ) {
 	es.ViewList.call( this, model, $( '<tr>' ) );
-	es.ViewListItem.call( this, model, this.$ );	
-	
-	var classes = this.$.attr('class');
-	for ( var name in this.model.attributes ) {
-		this.$.attr( name, this.model.attributes[name] );
-	}
-	this.$.addClass(classes);
+	es.ViewListItem.call( this, model, this.$ );
+	this.$.attr( this.model.attributes );
 };
 
 /**
