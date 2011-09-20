@@ -28,10 +28,26 @@ abstract class GenericMetricBase extends ApiAnalyticsBase {
 	}
 
 	protected function getQueryInfo() {
+		$params = $this->extractRequestParams();
+
+		if ( $params['selectcountries'] || $params['selectproject'] ) {
+			$items = array();
+			if ( $params['selectproject'] ) {
+				$items[] = $params['selectproject'];
+			}
+			if ( $params['selectcountries'] ) {
+				$items[] = $params['selectcountries'];
+			}
+			$string = explode( ',', $items );
+			$options = array( 'GROUP BY' => $string, 'ORDER BY' => $string );
+		} else {
+			// Fallback to date
+			$options = array( 'GROUP BY' => 'date', 'ORDER BY' => 'date' );
+		}
 		return array(
 			'table' => array( $this->tableName ),
 			'conds' => array(),
-			'options' => array( 'GROUP BY' => 'date', 'ORDER BY' => 'date' ),
+			'options' => $options,
 			'join_conds' => array(),
 		);
 	}
