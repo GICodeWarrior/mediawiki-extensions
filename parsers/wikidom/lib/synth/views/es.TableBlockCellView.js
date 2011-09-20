@@ -6,15 +6,9 @@
  */
 es.TableBlockCellView = function( model ) {
 	es.ViewListItem.call( this, model, $( '<td>' ) );
-	
 	this.documentView = new es.DocumentView( this.model.documentModel );
 	this.$.append( this.documentView.$ );
-
-	var classes = this.$.attr('class');
-	for ( var name in this.model.attributes ) {
-		this.$.attr( name, this.model.attributes[name] );
-	}
-	this.$.addClass(classes);
+	this.$.attr( this.model.attributes );
 };
 
 /**
