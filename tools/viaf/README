@@ -134,5 +134,5 @@ received from server:
 * add a user-interface or mechanism to enable/disable the summary alert box
   without the need to change program code
 * revise and enable the update mechanism
-* better positioning of added links - when the come from links they are
+* better positioning of added links - when they come from links they are
   placed too far away.

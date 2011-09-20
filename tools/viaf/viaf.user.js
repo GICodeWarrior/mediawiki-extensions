@@ -1,14 +1,14 @@
 // ==UserScript==
 // @name           viaf
 // @namespace      viaf
-// @require	   https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js
+// @require	   https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js
 // @require        http://svn.wikimedia.org/svnroot/mediawiki/trunk/tools/viaf/jquery.cookie.js
 // @require        http://svn.wikimedia.org/svnroot/mediawiki/trunk/tools/viaf/jquery.ba-replacetext.js
-// @description    locate VIAF numbers in texts and urls on web pages, fetch corresponding names from toolserver. (c)T.Gries Version 0.306 201109091200
+// @description    locate VIAF numbers in texts and urls on web pages, fetch corresponding names from toolserver. (c)T.Gries Version 0.307 201109200845
 // @include        *
 // ==/UserScript==
 
-var VERSION = "0.306";
+var VERSION = "0.307";
 /***
  * Copyright (c) 2011 T. Gries
  *
@@ -48,6 +48,8 @@ var VERSION = "0.306";
  *		"Error 414: Request-URI too large" for long queries
  *		when many VIAF are found on a page
  *		debug parameter bitwise
+ * 20110920	removed parent() and add the new links close after the place
+ *		where the VIAF was found; jQuery 1.6.4
  *
  ***/
 
