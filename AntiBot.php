@@ -89,7 +89,7 @@ class AntiBot {
 
 	static function log( $pluginName ) {
 		global $wgRequest;
-		$ip = wfGetIP();
+		$ip = $wgRequest->getIP();
 		$action = $wgRequest->getVal( 'action', '<no action>' );
 		$title = $wgRequest->getVal( 'title', '<no title>' );
 		$text = $wgRequest->getVal( 'wpTextbox1' );
