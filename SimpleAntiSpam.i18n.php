@@ -597,6 +597,16 @@ Inscrigatz '''PAS RES''' dedins !",
 	'simpleantispam-desc' => 'Apond al formulari la verificacion d’un bòt tarabastejaire',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Psubhashish
+ */
+$messages['or'] = array(
+	'simpleantispam' => 'ଆପଣଙ୍କ ସମ୍ପାଦନ ସ୍ପାମ-ବିରୋଧି ତନ୍ତ୍ରକୁ ସଚଳ କରିଦେଲା',
+	'simpleantispam-label' => "ସ୍ପାମ-ବିରୋଧି ପରଖ ।
+ଏହାକୁ ଭରନ୍ତୁ '''ନାହିଁ''' !",
+	'simpleantispam-desc' => 'ଏକ ସରଳ ସ୍ପାମ/ଆପେଆପେ ଚାଳିତ ସଭ୍ୟ ଦେଇ ଫର୍ମ ପରଖିବେ',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */
