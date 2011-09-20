@@ -323,7 +323,7 @@ $("a").each(function(){
 	if ( typeof url != "undefined" && url.match( magicUrlRegExp ) ) {
 	        if ( markUrlDetectedItems ) $this.css( markUrlDetectedItemsCSS );
 	        var viaf = RegExp.$1.replace( /[\D]*/g, '' );
-		$this.parent().after( $("<span class='viaf viaf-in-url' viaf='"+viaf+"'>&nbsp;"+viaf+"</span>") );
+		$this.after( $("<span class='viaf viaf-in-url' viaf='"+viaf+"'>&nbsp;"+viaf+"</span>") );
 	}
 
 })
