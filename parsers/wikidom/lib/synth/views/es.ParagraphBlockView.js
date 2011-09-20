@@ -5,7 +5,10 @@
  * @constructor
  */
 es.ParagraphBlockView = function( model ) {
-	es.BlockView.call( this, model, 'paragraph' );
+	es.BlockView.call( this, model );
+	
+	this.$.addClass( 'editSurface-paragraphBlock' );
+	
 	this.contentView = new es.ContentView( this.$, this.model.content );
 	var view = this;
 	this.contentView.on( 'update', function() {

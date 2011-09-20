@@ -25,7 +25,9 @@
 	-webkit-user-select: none;
 }
 
-.editSurface-block {
+.editSurface-tableBlock,
+.editSurface-listBlock,
+.editSurface-paragraphBlock {
 	margin: 1em;
 	margin-top: 0;
 	position: relative;

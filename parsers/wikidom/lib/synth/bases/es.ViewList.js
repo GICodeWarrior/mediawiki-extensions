@@ -1,8 +1,10 @@
 /**
  * Creates an es.ViewList object.
  * 
- * View containers follow the operations performed on a model container and keep a list of views,
- * each correlating to a model in the model container.
+ * View lists follow the operations performed on a model lists and keep a list of views,
+ * each correlating to a model in the model list.
+ *
+ * This will override this.$ (important in case of multiple inheritance).
  * 
  * @class
  * @constructor
@@ -13,31 +15,25 @@
  * @property $ {jQuery} Container element
  * @property items {Array} List of views, correlating to models in the model container
  */
-es.ViewList = function( model, typeName, tagName ) {
+es.ViewList = function( model, $element ) {
 	es.EventEmitter.call( this );
 	this.model = model;
 	if ( !this.model ) {
 		return;
 	}
+	this.$ = $element || $( '<div/>' );
 	this.items = new es.AggregateArray();
-	if ( typeof typeName !== 'string' ) {
-		typeName = 'viewList';
-	}
-	if ( typeof tagName !== 'string' ) {
-		tagName = 'div';
-	}
-	if ( !this.$ ) {
-		this.$ = $( '<' + tagName + '/>' );
-	}
-	this.$.addClass( 'editSurface-' + typeName ).data( typeName, this );
-	var container = this;
+	
+	var list = this;
+	
 	this.relayUpdate = function() {
-		container.emit( 'update' );
+		list.emit( 'update' );
 	};
-	function recycleItemView( itemModel, autoCreate ) {
-		var itemView = container.lookupItemView( itemModel );
+	
+	this.recycleItemView = function( itemModel, autoCreate ) {
+		var itemView = list.lookupItemView( itemModel );
 		if ( itemView ) {
-			container.views.splice( container.views.indexOf( itemView ), 1 );
+			list.items.splice( list.items.indexOf( itemView ), 1 );
 			itemView.$.detach();
 		}
 		if ( autoCreate && itemView === null ) {
@@ -45,61 +41,63 @@ es.ViewList = function( model, typeName, tagName ) {
 		}
 		return itemView;
 	}
+	
 	this.model.on( 'prepend', function( itemModel ) {
-		var itemView = recycleItemView( itemModel, true );
-		itemView.on( 'update', container.relayUpdate );
-		container.views.unshift( itemView );
-		container.$.prepend( itemView.$ );
-		container.emit( 'prepend', itemView );
-		container.emit( 'update' );
+		var itemView = list.recycleItemView( itemModel, true );
+		itemView.on( 'update', list.relayUpdate );
+		list.items.unshift( itemView );
+		list.$.prepend( itemView.$ );
+		list.emit( 'prepend', itemView );
+		list.emit( 'update' );
 	} );
 	this.model.on( 'append', function( itemModel ) {
-		var itemView = recycleItemView( itemModel, true );
-		itemView.on( 'update', container.relayUpdate );
-		container.views.push( itemView );
-		container.$.append( itemView.$ );
-		container.emit( 'append', itemView );
-		container.emit( 'update' );
+		var itemView = list.recycleItemView( itemModel, true );
+		itemView.on( 'update', list.relayUpdate );
+		list.items.push( itemView );
+		list.$.append( itemView.$ );
+		list.emit( 'append', itemView );
+		list.emit( 'update' );
 	} );
 	this.model.on( 'insertBefore', function( itemModel, beforeModel ) {
-		var beforeView = container.lookupItemView( beforeModel ),
-			itemView = recycleItemView( itemModel, true );
-		itemView.on( 'update', container.relayUpdate );
+		var beforeView = list.lookupItemView( beforeModel ),
+			itemView = list.recycleItemView( itemModel, true );
+		itemView.on( 'update', list.relayUpdate );
 		if ( beforeView ) {
-			container.views.splice( container.views.indexOf( beforeView ), 0, itemView );
+			list.items.splice( list.items.indexOf( beforeView ), 0, itemView );
 			itemView.$.insertBefore( beforeView.$ );
 		} else {
-			container.views.unshift( itemView );
-			container.$.prepend( itemView.$ );
+			list.items.unshift( itemView );
+			list.$.prepend( itemView.$ );
 		}
-		container.emit( 'insertBefore', itemView, beforeView );
-		container.emit( 'update' );
+		list.emit( 'insertBefore', itemView, beforeView );
+		list.emit( 'update' );
 	} );
 	this.model.on( 'insertAfter', function( itemModel, afterModel ) {
-		var afterView = container.lookupItemView( afterModel ),
-			itemView = recycleItemView( itemModel, true );
-		itemView.on( 'update', container.relayUpdate );
+		var afterView = list.lookupItemView( afterModel ),
+			itemView = list.recycleItemView( itemModel, true );
+		itemView.on( 'update', list.relayUpdate );
 		if ( afterView ) {
-			container.views.splice( container.views.indexOf( afterView ) + 1, 0, itemView );
+			list.items.splice( list.items.indexOf( afterView ) + 1, 0, itemView );
 			itemView.$.insertAfter( afterView.$ );
 		} else {
-			container.views.push( itemView );
-			container.$.append( itemView.$ );
+			list.items.push( itemView );
+			list.$.append( itemView.$ );
 		}
-		container.emit( 'insertAfter', itemView, afterView );
-		container.emit( 'update' );
+		list.emit( 'insertAfter', itemView, afterView );
+		list.emit( 'update' );
 	} );
 	this.model.on( 'remove', function( itemModel ) {
-		var itemView = recycleItemView( itemModel );
-		itemView.removeListener( 'update', container.relayUpdate );
-		container.emit( 'remove', itemView );
-		container.emit( 'update' );
+		var itemView = list.recycleItemView( itemModel );
+		itemView.removeListener( 'update', list.relayUpdate );
+		list.emit( 'remove', itemView );
+		list.emit( 'update' );
 	} );
-	// Auto-add views for existing items
+	
+	// Auto-add items for existing items
 	var itemModels = this.model.all();
 	for ( var i = 0; i < itemModels.length; i++ ) {
 		var itemView = itemModels[i].createView();
-		itemView.on( 'update', container.relayUpdate );
+		itemView.on( 'update', this.relayUpdate );
 		this.items.push( itemView );
 		this.$.append( itemView.$ );
 	}
@@ -115,5 +113,4 @@ es.ViewList.prototype.lookupItemView = function( itemModel ) {
 };
 
 /* Inheritance */
-
 es.extend( es.ViewList, es.EventEmitter );

@@ -5,14 +5,12 @@
  * @constructor
  */
 es.TableBlockView = function( model ) {
-	es.ViewList.call( this, model, 'table', 'table' );
-	es.BlockView.call( this, model, 'table', 'table' );
-	
-	var classes = this.$.attr('class');
+	es.ViewList.call( this, model, $( '<table>' ) );
+	es.BlockView.call( this, model, this.$ );
 	for ( var name in this.model.attributes ) {
 		this.$.attr( name, this.model.attributes[name] );
 	}
-	this.$.addClass(classes);
+	this.$.addClass( 'editSurface-tableBlock' );
 };
 
 /**

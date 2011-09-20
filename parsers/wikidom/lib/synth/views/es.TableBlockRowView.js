@@ -5,8 +5,8 @@
  * @constructor
  */
 es.TableBlockRowView = function( model ) {
-	es.ViewList.call( this, model, 'row', 'tr' )
-	es.ViewListItem.call( this, model, 'tr' );
+	es.ViewList.call( this, model, $( '<tr>' ) );
+	es.ViewListItem.call( this, model, this.$ );	
 	
 	var classes = this.$.attr('class');
 	for ( var name in this.model.attributes ) {

@@ -5,7 +5,8 @@
  * @constructor
  */
 es.ListBlockItemView = function( model ) {
-	es.ViewListItem.call( this, model, 'listItem' );
+	es.ViewListItem.call( this, model );
+	this.$.addClass( 'editSurface-listItem' );
 	this.$icon = $( '<div class="editSurface-listItem-icon"></div>' );
 	this.$content = $( '<div class="editSurface-listItem-content"></div>' );
 	this.$

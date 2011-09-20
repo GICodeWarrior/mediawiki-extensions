@@ -5,7 +5,8 @@
  * @constructor
  */
 es.DocumentView = function( documentModel ) {
-	es.ViewList.call( this, documentModel, 'document' );
+	es.ViewList.call( this, documentModel );
+	this.$.addClass( 'editSurface-document' )
 };
 
 /**

@@ -5,7 +5,7 @@
  * @constructor
  */
 es.TableBlockCellView = function( model ) {
-	es.ViewListItem.call( this, model, 'cell', 'td' );
+	es.ViewListItem.call( this, model, $( '<td>' ) );
 	
 	this.documentView = new es.DocumentView( this.model.documentModel );
 	this.$.append( this.documentView.$ );

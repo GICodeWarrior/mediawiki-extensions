@@ -8,9 +8,8 @@
  * @param typeName {String} Name of block type (optional, default: "block")
  * @param tagName {String} HTML tag name to use in rendering (optional, default: "div")
  */
-es.BlockView = function( blockModel, typeName, tagName ) {
-	es.ViewListItem.call( this, blockModel, typeName || 'block', tagName || 'div' );
-	this.$.addClass( 'editSurface-block' );
+es.BlockView = function( blockModel, $element ) {
+	es.ViewListItem.call( this, blockModel, $element );
 };
 
 /**

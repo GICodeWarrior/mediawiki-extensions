@@ -1,27 +1,17 @@
 /**
  * Generic synchronized Object/Element container item.
+ * This will override this.$ (important in case of multiple inheritance).
  * 
  * @class
  * @constructor
  * @extends {es.EventEmitter}
- * @param typeName {String} Name to use in CSS classes and HTML element data
- * @param tagName {String} HTML element name to use (optional, default: "div")
+ * @param $element {jQuery} jQuery object to use
  * @property $ {jQuery} Container element
  */
-es.ViewListItem = function( model, typeName, tagName ) {
+es.ViewListItem = function( model, $element ) {
 	es.EventEmitter.call( this );
 	this.model = model;
-	if ( typeof typeName !== 'string' ) {
-		typeName = 'viewListItem';
-	}
-	if ( typeof tagName !== 'string' ) {
-		tagName = 'div';
-	}
-	
-	if ( !this.$ ) {
-		this.$ = $( '<' + tagName + '/>' );
-	}
-	this.$.addClass( 'editSurface-' + typeName ).data( typeName, this );
+	this.$ = $element || $( '<div/>' );
 };
 
 es.ViewListItem.prototype.getModel = function() {
@@ -29,7 +19,7 @@ es.ViewListItem.prototype.getModel = function() {
 };
 
 /**
- * Gets the index of this item within it's container.
+ * Gets the index of this item within it's list.
  * 
  * This method simply delegates to the model.
  * 

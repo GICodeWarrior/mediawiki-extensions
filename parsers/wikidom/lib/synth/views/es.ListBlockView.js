@@ -5,8 +5,9 @@
  * @constructor
  */
 es.ListBlockView = function( model ) {
-	es.ViewList.call( this, model, 'list' );
-	es.BlockView.call( this, model, 'list' );
+	es.ViewList.call( this, model );
+	es.BlockView.call( this, model, this.$ );
+	this.$.addClass( 'editSurface-listBlock' );
 	var view = this;
 	this.on( 'update', function() {
 		view.enumerate();
