@@ -23,6 +23,14 @@ $messages['en'] = array(
 	'signupapi-invalidemailaddress' => 'E-mail address is invalid',
 );
 
+/** Message documentation (Message documentation)
+ * @author EugeneZelenko
+ */
+$messages['qqq'] = array(
+	'signupapi-ok' => '{{Identical|OK}}',
+	'signupapi-medium' => '{{Identical|Medium}}',
+);
+
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
  */
@@ -32,13 +40,14 @@ $messages['az'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author EugeneZelenko
  * @author Renessaince
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
-	'signupapi-desc' => 'Пазбаўляе [[Special:UserLogin|старонку рэгістрацыі]] элемэнтаў, датычных рэгістрацыі, і дадае API для рэгістрацыі',
+	'signupapi-desc' => 'Пазбаўляе [[Special:UserLogin|старонку ўваходу]] элемэнтаў, датычных стварэньня рахунку, і дадае API стварэньня рахунку',
 	'signupapi-ok' => 'Добра',
-	'signupapi-noname' => 'Не пазначана імя ўдзельніка',
+	'signupapi-noname' => 'Імя ўдзельніка не пазначанае',
 	'signupapi-userexists' => 'Удзельнік існуе',
 	'signupapi-enterpassword' => 'Неабходна ўвесьці пароль',
 	'signupapi-passwordtooshort' => 'Надта кароткі пароль',
@@ -47,7 +56,7 @@ $messages['be-tarask'] = array(
 	'signupapi-strong' => 'Складаны',
 	'signupapi-badretype' => 'Уведзеныя Вамі паролі не супадаюць',
 	'signupapi-passwordsmatch' => 'Паролі супадаюць',
-	'signupapi-invalidemailaddress' => 'Няслушная адрэса электроннай пошты',
+	'signupapi-invalidemailaddress' => 'Няслушны адрас электроннай пошты',
 );
 
 /** German (Deutsch)
