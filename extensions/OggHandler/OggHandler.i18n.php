@@ -2655,11 +2655,13 @@ $messages['oc'] = array(
  * @author Psubhashish
  */
 $messages['or'] = array(
+	'ogg-desc' => 'ଜାଭାସ୍କ୍ରିପ୍ଟ ପ୍ଲେଅର ସହିତ Ogg Theora ଓ Vorbis ଫାଇଲ ନିମନ୍ତେ ପରିଚାଳନାକାରୀ',
 	'ogg-short-audio' => 'Ogg $1 ଶବ୍ଦ ଫାଇଲ, $2',
 	'ogg-short-video' => 'Ogg $1 ଭିଡ଼ିଓ ଫାଇଲ, $2',
 	'ogg-short-general' => 'Ogg $1 ମିଡ଼ିଆ ଫାଇଲ, $2',
 	'ogg-long-audio' => 'Ogg $1 ଶବ୍ଦ ଫାଇଲ, ଲମ୍ବ $2, $3',
 	'ogg-long-video' => 'Ogg $1 ଭିଡ଼ିଓ, ଲମ୍ବ $2, $4×$5 ପିକ୍ସେଲ, $3',
+	'ogg-long-multiplexed' => 'Ogg ମଲଟିପ୍ଲେକ୍ସ audio/video ଫାଇଲ, $1, ଲମ୍ବ $2, $4×$5 ପିକ୍ସେଲ, ମୋଟ $3',
 	'ogg-long-general' => 'Ogg ମିଡ଼ିଆ ଫାଇଲ, ଲମ୍ବ $2, $3',
 	'ogg-long-error' => 'ଅଚଳ ogg ଫାଇଲ: $1',
 	'ogg-play' => 'ଚଲାଇବା',
