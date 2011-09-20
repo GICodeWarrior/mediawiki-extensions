@@ -53,7 +53,7 @@ abstract class GenericMetricBase extends ApiAnalyticsBase {
 	}
 
 	protected function getQueryFields() {
-		return array( 'date', 'language_code', 'project_code', 'country_code', 'value' );
+		return array( 'date', 'language_code', 'project_code', 'country_code', 'SUM(value)' );
 	}
 
 	public function getDescription() {
