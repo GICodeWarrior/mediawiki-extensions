@@ -1,0 +1,62 @@
+<html>
+	<head>
+		<title>Page Template</title>
+		<link rel="stylesheet" href="page.css" />
+	</head>
+	<body>
+		<div id="content">
+			<!-- FBD Code -->
+			<div id="fbd-filters">
+				<form>
+					<h3 id="fbd-filters-title">Filters</h3>
+					<fieldset id="fbd-filters-types">
+						<legend class="fbd-filters-label">Type:</legend>
+						<ul>
+							<li>
+								<input type="checkbox" id="fbd-filters-type-praise">
+								<label for="fbd-filters-type-praise" id="fbd-filters-type-praise-label">Praise</label>
+							</li>
+							<li>
+								<input type="checkbox" id="fbd-filters-type-confusion">
+								<label for="fbd-filters-type-confusion" id="fbd-filters-type-confusion-label">Confusion</label>
+							</li>
+							<li>
+								<input type="checkbox" id="fbd-filters-type-issues">
+								<label for="fbd-filters-type-issues" id="fbd-filters-type-issues-label">Issues</label>
+							</li>
+						</ul>
+					</fieldset>
+					<label for="fbd-filters-keyword" class="fbd-filters-label">Keyword</label>
+					<input type="text" id="fbd-filters-keyword" class="fbd-filters-input" />
+					<label for="fbd-filters-username" class="fbd-filters-label">Username</label>
+					<input type="text" id="fbd-filters-username" class="fbd-filters-input" />
+					<button type="submit" id="fbd-filters-set">Set filters</button>
+				</form>
+				<a href="#" id="fbd-about">What is this feature?</a>
+			</div>
+			<ul id="fbd-list">
+				<!-- Repeat for each item -->
+				<li class="fbd-item">
+					<div class="fbd-item-emoticon fbd-item-emoticon-happy">
+						<span class="fbd-item-emoticon-label">Happy</span>
+					</div>
+					<div class="fbd-item-time">2 minutes ago</div>
+					<h3 class="fbd-item-userName">
+						<a href="#">Kaldari</a>
+						<sup class="fbd-item-userLinks">
+							<a href="#">talk</a> - <a href="#">contribs</a> - <a href="#">wikilove</a>
+						</sup>
+					</h3>
+					<div class="fbd-item-message">Lorem ipsum dolor sit amet, consectetur adipisicing edivt, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+					<div class="fbd-item-permalink">(<a href="#">link to this</a>)</div>
+					<div style="clear:both"></div>
+				</li>
+				<!-- /Repeat for each item -->
+			</ul>
+			<div id="fbd-list-more">
+				<a href="#">More</a>
+			</div>
+			<!-- /FBD Code -->
+		</div>
+	</body>
+</html>
