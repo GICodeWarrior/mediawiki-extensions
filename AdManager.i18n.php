@@ -43,10 +43,15 @@ $messages['en'] = array(
  */
 $messages['be-tarask'] = array(
 	'admanager' => 'Кіраўнік рэклямы',
-	'admanagerzones' => 'Зоны кіраўніка рэклямы',
+	'admanagerzones' => 'Кіраваньне зонамі рэклямы',
 	'admanager-desc' => 'Дадае [[Special:AdManager|спэцыяльную старонку]], якая дазваляе адміністратарам прызначаць зону для старонак ці катэгорыяў',
 	'admanager_docu' => 'Для даданьня ці выдаленьня зоны рэклямы на старонцы ці ўсёй катэгорыі, трэба дадаць ці выдаліць назву ўнізе.',
 	'admanagerzones_docu' => 'Увядзіце нумар кожнай зоны рэклямы ў асобным радку.',
+	'admanager_invalidtargetpage' => 'Старонка з назвай «$1» ня знойдзеная.',
+	'admanager_invalidtargetcategory' => 'Катэгорыя з назвай «$1» ня знойдзеная.',
+	'admanager_notable' => 'Памылка! Неабходная табліца базы зьвестак ня знойдзеная! Спачатку запусьціце update.php.',
+	'admanager_noAdManagerZones' => 'Памылка! Вам неабходна дадаць зоны рэклямы. Увядзіце іх у [[Special:AdManagerZones|Кіраваньні зонамі рэклямы]].',
+	'admanager_labelPage' => 'Назвы старонак',
 );
 
 /** Breton (Brezhoneg)
@@ -95,6 +100,16 @@ $messages['de'] = array(
 	'admanager_gotoads' => '[[Special:AdManager|Anzeigen bearbeiten]]',
 	'admanager_gotozones' => '[[Special:AdManagerZones|Anzeigenbereiche bearbeiten]]',
 	'right-admanager' => '[[Special:AdManager|Anzeigen konfigurieren]]',
+);
+
+/** French (Français)
+ * @author Hashar
+ */
+$messages['fr'] = array(
+	'admanager_invalidtargetpage' => 'Aucune page trouvé avec le titre « $1 ».',
+	'admanager_Category' => 'Catégories',
+	'admanager_added' => 'Vos modifications ont été enregistrées',
+	'admanager_zonenotnumber' => "Erreur ! « $1 » n'est pas un nombre.",
 );
 
 /** Franco-Provençal (Arpetan)
@@ -186,6 +201,8 @@ $messages['ia'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'admanager' => 'Gestioun vun de Reklammen',
+	'admanagerzones' => 'Gestioun vun den Zone vun de Reklammen',
 	'admanager_invalidtargetpage' => 'Keng Säit mam Titel "$1" fonnt.',
 	'admanager_invalidtargetcategory' => 'Keng Kategorie mam Titel "$1" fonnt.',
 	'admanager_labelPage' => 'Säitennimm',
