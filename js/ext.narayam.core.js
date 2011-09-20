@@ -53,13 +53,19 @@ $.narayam = new ( function() {
 		var rules = currentScheme.extended_keyboard && useExtended ?
 			currentScheme.rules_x : currentScheme.rules;
 		for ( var i = 0;  i < rules.length; i++ ) {
-			var keyBufferMatch = true;
-			if ( rules[i][1].length > 0 && rules[i][1].length <= keyBuffer.length ) {
-				// Try to match rules[i][1] at the end of the key buffer
-				keyBufferMatch = new RegExp( rules[i][1] + '$' ).test( keyBuffer );
-			}
 			var regex = new RegExp( rules[i][0] + '$' );
-			if ( keyBufferMatch && regex.test( str ) ) {
+			if ( regex.test( str )	// Input string match
+				&& 
+				(
+					rules[i][1].length == 0 // Keybuffer match not required
+					||
+					(	// Keybuffer match specified, so it should be met
+						rules[i][1].length > 0 
+						&& rules[i][1].length <= keyBuffer.length 
+						&& new RegExp( rules[i][1] + '$' ).test( keyBuffer )
+					)
+				)
+			) {
 				return str.replace( regex, rules[i][2] );
 			}
 		}
