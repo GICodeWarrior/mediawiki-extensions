@@ -142,8 +142,8 @@ class qp_TextQuestionView extends qp_StubQuestionView {
 
 	function setLayout( $layout, $textwidth ) {
 		/* todo: implement vertical layout */
-		if ( count( $textwidth ) > 0 ) {
-			$textwidth = intval( $textwidth[1] );
+		if ( $textwidth !== null ) {
+			$textwidth = intval( $textwidth );
 			if ( $textwidth > 0 ) {
 				$this->textInputStyle = 'width:' . $textwidth . 'em;';
 			}
@@ -168,7 +168,10 @@ class qp_TextQuestionView extends qp_StubQuestionView {
 		foreach ( $viewtokens as $elem ) {
 			if ( is_object( $elem ) ) {
 				if ( isset( $elem->options ) ) {
-					$className = $elem->unanswered ? 'cat_noanswer' : 'cat_part';
+					$className = 'cat_part';
+					if ( $this->ctrl->mSubType === 'requireAllCategories' && $elem->unanswered ) {
+						$className = 'cat_noanswer';
+					}
 					# create view for the input options part
 					if ( count( $elem->options ) === 1 ) {
 						# one option produces html text input

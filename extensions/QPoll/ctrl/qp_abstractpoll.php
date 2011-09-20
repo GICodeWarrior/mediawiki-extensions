@@ -67,11 +67,24 @@ class qp_AbstractPoll {
 
 	# current state of poll parsing (no error)
 	var $mState = '';
-	# // true, when the poll is posted (answered)
+	# true, when the poll is posted (answered)
 	var $mBeingCorrected = false;
 
-	// qp_pollStore instance that will be used to transfer poll data from/to DB
+	# qp_pollStore instance that will be used to transfer poll data from/to DB
 	var $pollStore = null;
+
+	/**
+	 * default values of 'propwidth', 'textwidth' and 'layout' attributes
+	 * will be applied to child questions that do not have these attributes defined
+	 *
+	 * 'showresults' currently is handled separately, because it has "multivalue"
+	 * and can be partially merged from poll to question
+	 */
+	var $defaultQuestionAttributes = array(
+		'propwidth' => null,
+		'layout' => null,
+		'textwidth' => null
+	);
 
 	/**
 	 * Constructor
@@ -102,7 +115,12 @@ class qp_AbstractPoll {
 			}
 			$this->view->showResults = self::parseShowResults( $argv['showresults'] );
 		}
-
+		# get default question attributes, if any
+		foreach ( $this->defaultQuestionAttributes as $attr => &$val ) {
+			if ( array_key_exists( $attr, $argv ) ) {
+				$val = $argv[$attr];
+			}
+		}
 		# every poll on the page should have unique poll id, to minimize the risk of collisions
 		# it is required to be set manually via id="value" parameter
 		# ( used only in "declaration" mode )
@@ -203,18 +221,23 @@ class qp_AbstractPoll {
 
 	/**
 	 * Parses attribute line of the question
-	 * @param    $attr_str  attribute string from poll's header
+	 * @param    $attr_str  attribute string from questions header
 	 * @modifies $paramkeys  array  key is attribute regexp, value is the value of attribute
 	 * @return   string  the value of question's type attribute
 	 */
 	function getQuestionAttributes( $attr_str, &$paramkeys ) {
-		$paramkeys = array( 't[yi]p[eo]' => null, 'layout' => null, 'textwidth' => null, 'showresults' => null );
+		$paramkeys = array( 't[yi]p[eo]' => null, 'layout' => null, 'textwidth' => null, 'propwidth' => null, 'showresults' => null );
 		foreach ( $paramkeys as $key => &$val ) {
 			preg_match( '`' . $key . '?="(.*?)"`u', $attr_str, $val );
+			$val = ( count( $val ) > 1 ) ? $val[1] : null;
 		}
-		$type = $paramkeys[ 't[yi]p[eo]' ];
-		$type = isset( $type[1] ) ? trim( $type[1] ) : '';
-		return $type;
+		# apply default question attributes, if any
+		foreach ( $this->defaultQuestionAttributes as $attr => $val ) {
+			if ( is_null( $paramkeys[$attr] ) ) {
+				$paramkeys[$attr] = $val;
+			}
+		}
+		return isset( $paramkeys[ 't[yi]p[eo]' ] ) ? trim( $paramkeys[ 't[yi]p[eo]' ] ) : '';
 	}
 
 	// parses source showresults xml parameter value and returns the corresponding showResults array

@@ -89,6 +89,7 @@ abstract class qp_AbstractQuestion {
 	function applyAttributes( $paramkeys ) {
 		$this->view->setLayout( $paramkeys[ 'layout' ], $paramkeys[ 'textwidth' ] );
 		$this->view->setShowResults( $paramkeys[ 'showresults' ] );
+		$this->view->setPropWidth( $paramkeys[ 'propwidth' ] );
 	}
 
 	function getPercents( $proposalId, $catId ) {

@@ -867,8 +867,8 @@ class qp_PollStore {
 	private function setProposals() {
 		$insert = Array();
 		foreach ( $this->Questions as $qkey => &$ques ) {
-			foreach ( $ques->ProposalText as $propkey => &$ptext ) {
-				$insert[] = array( 'pid' => $this->pid, 'question_id' => $qkey, 'proposal_id' => $propkey, 'proposal_text' => $ptext );
+			foreach ( $ques->ProposalText as $propkey => $ptext ) {
+				$insert[] = array( 'pid' => $this->pid, 'question_id' => $qkey, 'proposal_id' => $propkey, 'proposal_text' => qp_Setup::limitProposalLength( $ptext ) );
 			}
 		}
 		if ( count( $insert ) > 0 ) {

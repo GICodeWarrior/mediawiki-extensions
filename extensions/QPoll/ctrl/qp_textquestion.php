@@ -65,7 +65,7 @@ class qp_TextQuestionOptions {
 	 * @param  $token  string current value of token between pipe separators
 	 * Also, _optionally_ overrides textwidth property
 	 */
-	function setLastOption( $token ) {
+	function addToLastOption( $token ) {
 		# first entry of category options might be definition of
 		# the current category input textwidth instead
 		$matches = array();
@@ -76,7 +76,7 @@ class qp_TextQuestionOptions {
 			$this->textwidth = intval( $matches[1] );
 		} else {
 			# add new input option
-			$this->iopt_last .= trim( $token );
+			$this->iopt_last .= $token;
 		}
 	}
 
@@ -86,7 +86,7 @@ class qp_TextQuestionOptions {
 	function closeCategory() {
 		$this->isCatDef = false;
 		# prepare new category input choice (text questions have no category names)
-		$unique_options = array_unique( $this->input_options, SORT_STRING );
+		$unique_options = array_unique( array_map( 'trim', $this->input_options ), SORT_STRING );
 		$this->input_options = array();
 		foreach ( $unique_options as $option ) {
 			# make sure unique elements keys are consequitive starting from 0
@@ -189,8 +189,12 @@ class qp_TextQuestion extends qp_StubQuestion {
 				switch ( $token ) {
 				case '|' :
 					if ( $opt->isCatDef ) {
-						$opt->addEmptyOption();
-						$isContinue = true;
+						if ( count( $brace_stack ) == 1 && $brace_stack[0] === '>>' ) {
+							# pipe char starts new option only at top brace level,
+							# with angled braces
+							$opt->addEmptyOption();
+							$isContinue = true;
+						}
 					}
 					break;
 				case '[[' :
@@ -230,7 +234,7 @@ class qp_TextQuestion extends qp_StubQuestion {
 					continue;
 				}
 				if ( $opt->isCatDef ) {
-					$opt->setLastOption( $token );
+					$opt->addToLastOption( $token );
 				} else {
 					# add new proposal part
 					$this->dbtokens[] = strval( $token );
@@ -249,16 +253,24 @@ class qp_TextQuestion extends qp_StubQuestion {
 				$this->viewtokens->prependErrorToken( wfMsg( 'qp_error_too_long_proposal_text' ), 'error' );
 			}
 			$this->mProposalText[$proposalId] = $proposal_text;
-			# If the proposal was submitted but has _any_ unanswered category
-			if ( $this->poll->mBeingCorrected &&
-					( !array_key_exists( $proposalId, $this->mProposalCategoryId ) ||
-						count( $this->mProposalCategoryId[$proposalId] ) !== $catId )
-				) {
-				# todo: apply 'error' style to the whole row
-				$prev_state = $this->getState();
-				$this->viewtokens->prependErrorToken( wfMsg( 'qp_error_no_answer' ), 'NA' );
-				if ( $prev_state == '' ) {
-					# todo: if there was no previous errors, hightlight the whole row
+			if ( $this->poll->mBeingCorrected ) {
+				# check for unanswered categories
+				try {
+					if ( !array_key_exists( $proposalId, $this->mProposalCategoryId ) ) {
+						# the whole line is unanswered
+						throw new Exception( 'qp_error' );
+					}
+					# how many categories has to be answered,
+					# all defined in row or at least one?
+					$countRequired = ($this->mSubType === 'requireAllCategories') ? $catId : 1;
+					if ( count( $this->mProposalCategoryId[$proposalId] ) < $countRequired ) {
+						throw new Exception( 'qp_error' );
+					}
+				} catch ( Exception $e ) {
+					if ( $e->getMessage() == 'qp_error' ) {
+						$prev_state = $this->getState();
+						$this->viewtokens->prependErrorToken( wfMsg( 'qp_error_no_answer' ), 'NA' );
+					}
 				}
 			}
 			$this->view->addProposal( $proposalId, $this->viewtokens->tokenslist );
