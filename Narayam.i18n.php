@@ -644,6 +644,10 @@ $messages['he'] = array(
 	'narayam-help-page' => 'Help:הקלדה',
 	'narayam-checkbox-tooltip' => 'הפעלה וכיבוי של שיטת קלט',
 	'narayam-disable-preference' => 'לבטל את שיטת הקלט של נאראיאם',
+	'narayam-as' => 'אסאמית תעתיק',
+	'narayam-as-avro' => 'אסאמית Avro',
+	'narayam-as-bornona' => 'אסאמית Bornona',
+	'narayam-as-inscript' => 'אסאמית InScript',
 	'narayam-eo' => 'אספרנטו',
 	'narayam-hi-inscript' => 'הינדי InScript',
 	'narayam-kn' => 'קאנדה תעתיק',
@@ -766,6 +770,15 @@ $messages['id'] = array(
 	'narayam-bn-avro' => 'Avro Bengali',
 	'narayam-bn-inscript' => 'InScript Bengali',
 	'narayam-bn-nkb' => 'NKB Bengali',
+);
+
+/** Italian (Italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'narayam-desc' => 'Permette di aggiungere metodi di input personalizzati per i campi di input',
+	'narayam-toggle-ime' => 'Abilita ($1)',
+	'narayam-help' => 'Aiuto',
 );
 
 /** Japanese (日本語)
