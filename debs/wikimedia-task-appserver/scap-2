@@ -20,7 +20,7 @@ if [ -z "$mwVersionNums" ]; then
 fi
 
 for mwVerNum in ${mwVersionNums[@]}; do
-	echo "MediaWiki $mwVerNum: Compiling texvc..."
+	echo -n "MediaWiki $mwVerNum: Compiling texvc..."
 	builddir=`mktemp -dt texvc-build.XXXXXXXXXX`
 	if [ -z "$builddir" ]; then
 		echo "Unable to create temporary directory"
