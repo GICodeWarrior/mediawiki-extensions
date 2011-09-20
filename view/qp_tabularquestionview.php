@@ -92,9 +92,9 @@ class qp_TabularQuestionView extends qp_StubQuestionView {
 	}
 
 	function setLayout( $layout, $textwidth ) {
-		if ( count( $layout ) > 0 ) {
-			$this->transposed = strpos( $layout[1], 'transpose' ) !== false;
-			$this->proposalsFirst = strpos( $layout[1], 'proposals' ) !== false;
+		if ( $layout !== null ) {
+			$this->transposed = strpos( $layout, 'transpose' ) !== false;
+			$this->proposalsFirst = strpos( $layout, 'proposals' ) !== false;
 		}
 		# setup question layout parameters
 		if ( $this->transposed ) {
@@ -110,8 +110,8 @@ class qp_TabularQuestionView extends qp_StubQuestionView {
 			$this->proposalTextStyle = 'vertical-align:middle; ';
 			$this->proposalTextStyle .= ( $this->proposalsFirst ) ? 'padding-right: 10px;' : 'padding-left: 10px;';
 		}
-		if ( count( $textwidth ) > 0 ) {
-			$textwidth = intval( $textwidth[1] );
+		if ( $textwidth !== null ) {
+			$textwidth = intval( $textwidth );
 			if ( $textwidth > 0 ) {
 				$this->textInputStyle = 'width:' . $textwidth . 'em;';
 			}
@@ -120,9 +120,9 @@ class qp_TabularQuestionView extends qp_StubQuestionView {
 
 	function setShowResults( $showresults ) {
 		# setup question's showresults when global showresults != 0
-		if ( qp_Setup::$global_showresults != 0 && count( $showresults ) > 0 ) {
+		if ( qp_Setup::$global_showresults != 0 && $showresults !== null ) {
 			# use the value from the question
-			$this->showResults = qp_AbstractPoll::parseShowResults( $showresults[1] );
+			$this->showResults = qp_AbstractPoll::parseShowResults( $showresults );
 			# apply undefined attributes from the poll's showresults definition
 			foreach ( $this->pollShowResults as $attr => $val ) {
 				if ( $attr != 'type' && !isset( $this->showResults[$attr] ) ) {
@@ -139,6 +139,24 @@ class qp_TabularQuestionView extends qp_StubQuestionView {
 		# right now, cell templates depend only on input type and showresults type
 		if ( $this->showResults['type'] != 0 ) {
 			$this->{ 'cellTemplate' . $this->showResults['type'] }();
+		}
+	}
+
+	/**
+	 * Checks, whether the supplied CSS length value is valid
+	 * @return  boolean  true for valid value, false otherwise
+	 */
+	function isCSSLengthValid( $width ) {
+		preg_match( '`^\s*(\d+)(px|em|en|%|)\s*$`', $width, $matches );
+		return count( $matches > 1 ) && $matches[1] > 0;
+	}
+
+	function setPropWidth( $attr ) {
+		if ( $attr !== null && $this->isCSSLengthValid( $attr ) ) {
+			$this->propWidth = trim( $attr );
+		}
+		if ( $this->propWidth !== '' ) {
+			$this->proposalTextStyle .= " width:{$this->propWidth};";
 		}
 	}
 

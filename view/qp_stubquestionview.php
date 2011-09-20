@@ -58,6 +58,8 @@ class qp_StubQuestionView extends qp_AbstractView {
 	# proposal views (indexed, sortable rows)
 	var $pview = array();
 
+	var $propWidth = '';
+
 	/**
 	 * @param $parser
 	 * @param $frame
@@ -87,6 +89,10 @@ class qp_StubQuestionView extends qp_AbstractView {
 	}
 
 	function setShowResults( $showresults ) {
+		/* does nothing */
+	}
+
+	function setPropWidth( $propwidth ) {
 		/* does nothing */
 	}
 
@@ -186,6 +192,9 @@ class qp_StubQuestionView extends qp_AbstractView {
 	 */
 	function renderQuestion() {
 		$output_table = array( '__tag' => 'table', '__end' => "\n", 'class' => 'object' );
+		if ( $this->propWidth !== '' ) {
+			$output_table['style'] = 'width:100%;';
+		}
 		# Determine the side border color the question.
 		if ( $this->ctrl->getState() != '' ) {
 			if ( isset( $output_table['class'] ) ) {
@@ -206,7 +215,7 @@ class qp_StubQuestionView extends qp_AbstractView {
 			);
 		}
 		$tags[] = array( '__tag' => 'div', 0 => $this->rtp( $this->ctrl->mCommonQuestion ) );
-		$tags = array( '__tag' => 'div', '__end' => "\n", 'class' => 'question', $tags );
+		$tags = array( '__tag' => 'div', '__end' => "\n", 'class' => 'question question_mod4_' . ( $this->ctrl->usedId % 4 ), $tags );
 		$tags[] = &$output_table;
 		return qp_Renderer::renderTagArray( $tags );
 	}

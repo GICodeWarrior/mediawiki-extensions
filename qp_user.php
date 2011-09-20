@@ -138,10 +138,15 @@ class qp_Setup {
 	static $user; // User instance we got from hook parameter
 
 	static $questionTypes = array(
-		'mixed' => array(
-			'ctrl' => 'qp_MixedQuestion',
+		'[]' => array(
+			'ctrl' => 'qp_TabularQuestion',
 			'view' => 'qp_TabularQuestionView',
-			'mType' => 'mixedChoice'
+			'mType' => 'multipleChoice'
+		),
+		'()' => array(
+			'ctrl' => 'qp_TabularQuestion',
+			'view' => 'qp_TabularQuestionView',
+			'mType' => 'singleChoice'
 		),
 		'unique()' => array(
 			'ctrl' => 'qp_TabularQuestion',
@@ -149,17 +154,18 @@ class qp_Setup {
 			'mType' => 'singleChoice',
 			'mSubType' => 'unique'
 		),
-		'()' => array(
-			'ctrl' => 'qp_TabularQuestion',
+		'mixed' => array(
+			'ctrl' => 'qp_MixedQuestion',
 			'view' => 'qp_TabularQuestionView',
-			'mType' => 'singleChoice'
-		),
-		'[]' => array(
-			'ctrl' => 'qp_TabularQuestion',
-			'view' => 'qp_TabularQuestionView',
-			'mType' => 'multipleChoice'
+			'mType' => 'mixedChoice'
 		),
 		'text' => array(
+			'ctrl' => 'qp_TextQuestion',
+			'view' => 'qp_TextQuestionView',
+			'mType' => 'textQuestion',
+			'mSubType' => 'requireAllCategories'
+		),
+		'text!' => array(
 			'ctrl' => 'qp_TextQuestion',
 			'view' => 'qp_TextQuestionView',
 			'mType' => 'textQuestion'
@@ -204,6 +210,33 @@ class qp_Setup {
 
 	static function specialchars( $s ) {
 		return htmlspecialchars( $s, ENT_COMPAT, 'UTF-8' );
+	}
+
+	/**
+	 * Limit the maximum length of proposal line with respect to UTF-8 character bounds
+	 *
+	 * Question type=text proposal lengths are additionally checked in the question controller
+	 * because these are stored in serialized format.
+	 * Questions of another types have their proposal texts optionally cut down, because
+	 * the whole text of proposal is not important.
+	 *
+	 * @param  $ptext  string  proposal text
+	 * @return  string  proposal text either cut down or unaltered
+	 */
+	private function limitProposalLength( $ptext ) {
+		if ( strlen( $ptext ) <= self::$proposal_max_length ) {
+			return $ptext;
+		}
+		for ( $curr_len = self::$proposal_max_length;/* noop */;$curr_len-- ) {
+			$pcut = substr( $ptext, 0, $curr_len );
+			if ( mb_substr( $ptext, 0, mb_strlen( $pcut, 'UTF-8' ), 'UTF-8' ) === $pcut ) {
+				# valid UTF-8 cut
+				break;
+			}
+			# will decrease the $curr_len until valid cut is achieved;
+			# should not be more than 5 iterations, very often 1..3
+		}
+		return $pcut;
 	}
 
 	/**

@@ -107,6 +107,9 @@ class qp_TabularQuestion extends qp_StubQuestion {
 		# analyze previousely built "raw" categories array
 		# Less than two categories is a syntax error.
 		if ( $this->mType != 'mixedChoice' && count( $categories ) < 2 ) {
+			if ( !isset( $categories[0] ) ) {
+				$categories[0] = '';
+			}
 			$categories[0] .= $this->view->bodyErrorMessage( wfMsg( 'qp_error_too_few_categories' ), 'error' );
 		}
 		foreach ( $categories as $catkey => $category ) {
