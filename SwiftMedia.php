@@ -9,6 +9,9 @@ $wgExtensionCredits['other'][] = array(
 );
 
 $wgAutoloadClasses['SwiftFile'] =
+	$wgAutoloadClasses['SwiftForeignDBFile'] =
+	$wgAutoloadClasses['SwiftForeignDBRepo'] =
+	$wgAutoloadClasses['SwiftForeignDBviaLBRepo'] =
 	$wgAutoloadClasses['SwiftRepo'] = dirname(__FILE__) . '/SwiftMedia.body.php';
 $wgAutoloadClasses['CF_Authentication'] =
 	$wgAutoloadClasses['CF_Connection'] =
