@@ -209,6 +209,13 @@ $messages['nl'] = array(
 	'signupapi-invalidemailaddress' => 'E-mailadres is ongeldig',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Psubhashish
+ */
+$messages['or'] = array(
+	'signupapi-ok' => 'ଠିକ ଅଛି',
+);
+
 /** Portuguese (Português)
  * @author Giro720
  * @author Hamilton Abreu
