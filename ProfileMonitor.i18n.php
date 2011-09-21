@@ -783,6 +783,13 @@ $messages['oc'] = array(
 	'profiling-no-data' => 'Cap de donada correspondenta pas trobada',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Psubhashish
+ */
+$messages['or'] = array(
+	'profiling-ok' => 'ଠିକ ଅଛି',
+);
+
 /** Ossetic (Ирон)
  * @author Amikeco
  */
