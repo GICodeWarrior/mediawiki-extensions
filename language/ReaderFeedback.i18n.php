@@ -2496,7 +2496,7 @@ $messages['sl'] = array(
 	'readerfeedback-tt-review' => 'Pošlji pregled',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Millosh
  * @author Rancher
  * @author Sasa Stefanovic
@@ -2519,7 +2519,7 @@ $messages['sr-ec'] = array(
 	'readerfeedback-submit' => 'пошаљи',
 	'readerfeedback-main' => 'Само стране садржаја могу бити оцењиване.',
 	'readerfeedback-submitting' => 'Слање …',
-	'readerfeedback-finished' => 'Хвала Вам!',
+	'readerfeedback-finished' => 'Хвала!',
 	'readerfeedback-tagfilter' => 'Ознака:',
 	'tooltip-ca-ratinghist' => 'Оцене стране од стране читалаца.',
 );
