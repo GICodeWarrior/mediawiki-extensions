@@ -9,16 +9,24 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class qp_InterpResult {
 	# short answer. it is supposed to be sortable and accountable in statistics
+	# by default, it is private (displayed only in Special:Pollresults page)
 	# blank value means short answer is unavailable
 	var $short = '';
 	# long answer. it is supposed to be understandable by amateur users
+	# by default, it is public (displayed everywhere)
 	# blank value means long answer is unavailable
 	var $long = '';
+	# serialized answer. one dimensional array with numeric keys and scalar values.
+	# it is exported to XLS voices and can be analyzed by external tools.
+	var $serialized = '';
 	# error message. non-blank value indicates interpretation script error
 	# either due to incorrect script code, or a script-generated one
 	var $error = '';
-	# 2d array of errors generated for [question][proposal], false if no errors
-	var $qpErrors = false;
+	# interpretation result
+	# 2d array of errors generated for [question][proposal]
+	# 3d array of errors generated for [question][proposal][category]
+	# false if no errors
+	var $qpcErrors = false;
 
 	/**
 	 * @param $init - optional array of properties to be initialized
@@ -46,29 +54,43 @@ class qp_InterpResult {
 	/**
 	 * set question / proposal error message (for quizes)
 	 *
+	 * @param $msg   string error message for [question][proposal] pair;
+	 *               non-string for default message
 	 * @param $qidx  int index of poll's question
 	 * @param $pidx  int index of question's proposal
-	 * @param $msg   string error message for [question][proposal] pair
+	 * @param $cidx  int index of proposal's category (optional)
 	 */
-	function setQPerror( $qidx, $pidx, $msg ) {
-		if ( !is_array( $this->qpErrors ) ) {
-			$this->qpErrors = array();
+	function setQPCerror( $msg, $qidx, $pidx, $cidx = null ) {
+		if ( !is_array( $this->qpcErrors ) ) {
+			$this->qpcErrors = array();
 		}
-		if ( !isset( $this->qpErrors[$qidx] ) ) {
-			$this->qpErrors[$qidx] = array();
+		if ( !array_key_exists( $qidx, $this->qpcErrors ) ) {
+			$this->qpcErrors[$qidx] = array();
 		}
-		$this->qpErrors[$qidx][$pidx] = $msg;
+		if ( $cidx === null ) {
+			# proposal interpretation error message
+			$this->qpcErrors[$qidx][$pidx] = $msg;
+			return;
+		}
+		# proposal's category interpretation error message
+		if ( !array_key_exists( $pidx, $this->qpcErrors[$qidx] ) ||
+				!is_array( $this->qpcErrors[$qidx][$pidx] ) ) {
+			# remove previous proposal interpretation error message because
+			# now we have more precise category interpretation error message
+			$this->qpcErrors[$qidx][$pidx] = array();
+		}
+		$this->qpcErrors[$qidx][$pidx][$cidx] = $msg;
 	}
 
 	function setDefaultErrorMessage() {
-		if ( is_array( $this->qpErrors ) && $this->error == '' ) {
+		if ( is_array( $this->qpcErrors ) && $this->error == '' ) {
 			$this->error = wfMsg( 'qp_interpetation_wrong_answer' );
 		}
 		return $this;
 	}
 
 	function isError() {
-		return $this->error != '' || is_array( $this->qpErrors );
+		return $this->error != '' || is_array( $this->qpcErrors );
 	}
 
 } /* end of qp_InterpResult class */
@@ -865,10 +887,11 @@ class qp_PollStore {
 	}
 
 	private function setProposals() {
+		global $wgContLang;
 		$insert = Array();
 		foreach ( $this->Questions as $qkey => &$ques ) {
 			foreach ( $ques->ProposalText as $propkey => $ptext ) {
-				$insert[] = array( 'pid' => $this->pid, 'question_id' => $qkey, 'proposal_id' => $propkey, 'proposal_text' => qp_Setup::limitProposalLength( $ptext ) );
+				$insert[] = array( 'pid' => $this->pid, 'question_id' => $qkey, 'proposal_id' => $propkey, 'proposal_text' => $wgContLang->truncate( $ptext, qp_Setup::$proposal_max_length , '' ) );
 			}
 		}
 		if ( count( $insert ) > 0 ) {

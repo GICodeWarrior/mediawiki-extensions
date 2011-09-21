@@ -17,7 +17,7 @@ class qp_TabularQuestion extends qp_StubQuestion {
 	 * @param  $view            an instance of question view "linked" to this question
 	 * @param  $questionId      the identifier of the question used to generate input names
 	 */
-	function __construct( qp_AbstractPoll $poll, qp_AbstractView $view, $questionId ) {
+	function __construct( qp_AbstractPoll $poll, qp_StubQuestionView $view, $questionId ) {
 		parent::__construct( $poll, $view, $questionId );
 		$this->mProposalPattern = '`^[^\|\!].*`u';
 		$this->mCategoryPattern 	= '`^\|(\n|[^\|].*\n)`u';

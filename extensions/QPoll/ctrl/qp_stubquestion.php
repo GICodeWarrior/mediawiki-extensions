@@ -26,7 +26,7 @@ class qp_StubQuestion extends qp_AbstractQuestion {
 	 * @param  $view            an instance of question view "linked" to this question
 	 * @param  $questionId      the identifier of the question used to generate input names
 	 */
-	function __construct( qp_AbstractPoll $poll, qp_AbstractView $view, $questionId ) {
+	function __construct( qp_AbstractPoll $poll, qp_StubQuestionView $view, $questionId ) {
 		parent::__construct( $poll, $view, $questionId );
 	}
 
@@ -113,16 +113,17 @@ class qp_StubQuestion extends qp_AbstractQuestion {
 	}
 
 	/**
-	 * @return  associative array of script-generated error messages for current question proposals
+	 * @return  associative array of script-generated interpretation error
+	 *          messages for current question proposals (and optionally categories)
 	 *          false, when there are no script-generated error messages
 	 */
-	function getProposalsErrors() {
+	function getInterpErrors() {
 		$interpResult = &$this->poll->pollStore->interpResult;
-		if ( !is_array( $interpResult->qpErrors ) ||
-				!isset( $interpResult->qpErrors[$this->mQuestionId] ) ) {
+		if ( !is_array( $interpResult->qpcErrors ) ||
+				!isset( $interpResult->qpcErrors[$this->mQuestionId] ) ) {
 			return false;
 		}
-		return $interpResult->qpErrors[$this->mQuestionId];
+		return $interpResult->qpcErrors[$this->mQuestionId];
 	}
 
 	/**

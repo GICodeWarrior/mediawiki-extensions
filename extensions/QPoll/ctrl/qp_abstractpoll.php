@@ -91,18 +91,19 @@ class qp_AbstractPoll {
 	 *
 	 * @public
 	 */
-	function __construct( $argv, qp_AbstractView $view ) {
+	function __construct( $argv, qp_AbstractPollView $view ) {
 		global $wgRequest, $wgLanguageCode;
 		$this->mRequest = &$wgRequest;
 		$this->mResponse = $wgRequest->response();
 		# Determine which messages will be used, according to the language.
 		qp_Setup::onLoadAllMessages();
+		$view->setController( $this );
 		# *** get visual style poll attributes ***
 		$perRow = intval( array_key_exists( 'perrow', $argv ) ? $argv['perrow'] : 1 );
 		if ( $perRow < 1 ) {
 			$perRow = 1;
 		}
-		$view->setController( $this, $perRow );
+		$view->setPerRow( $perRow );
 		$this->view = $view;
 		# reset the unique index number of the question in the current poll (used to instantiate the questions)
 		$this->mQuestionId = 0; // ( correspons to 'question_id' DB field )

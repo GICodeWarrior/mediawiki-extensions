@@ -136,31 +136,18 @@ class qp_StubQuestionView extends qp_AbstractView {
 		if ( $state != '' ) {
 			$this->ctrl->setState( $state, $msg );
 		}
-		# return the message only for the first error occured
-		# (this one has to be short, because title attribute is being used)
 		if ( is_string( $rawClass ) ) {
 			$this->rawClass = $rawClass;
 		}
-		# show only the first error, when the state is not clean (not '')
+		# will show only the first error, when the state is not clean (not '')
 		return ( $prev_state == '' ) ? '<span class="proposalerror" title="' . qp_Setup::specialchars( $msg ) . '">???</span> ' : '';
 	}
 
 	/**
-	 * Render script-generated proposal errors, when available (quiz mode)
-	 * Note: not being called in stats mode
-	 * todo: implement separate category error hints in addition to the
-	 * whole proposal row error hints (especially useful for text questions)
+	 * Render script-generated interpretation errors, when available (quiz mode)
 	 */
 	function renderInterpErrors() {
-		if ( ( $propErrors = $this->ctrl->getProposalsErrors() ) === false ) {
-			return;
-		}
-		foreach ( $this->pview as $prop_id => &$propview ) {
-			if ( isset( $propErrors[$prop_id] ) ) {
-				$msg = is_string( $propErrors[$prop_id] ) ? $propErrors[$prop_id] : wfMsg( 'qp_interpetation_wrong_answer' );
-				$propview->text = $this->bodyErrorMessage( $msg, '', false ) . $propview->text;
-			}
-		}
+		/* noop */
 	}
 
 	/**

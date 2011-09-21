@@ -388,7 +388,7 @@ class qp_Eval {
 	 * @return                  array script result to check, or
 	 *                          qp_InterpResult $interpResult (in case of error)
 	 */
-	function interpretAnswer( $interpretScript, $injectVars, qp_InterpResult $interpResult ) {
+	static function interpretAnswer( $interpretScript, $injectVars, qp_InterpResult $interpResult ) {
 		# template page evaluation
 		if ( ( $check = self::selfCheck() ) !== true ) {
 			# self-check error

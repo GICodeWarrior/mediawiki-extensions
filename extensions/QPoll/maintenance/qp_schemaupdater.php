@@ -34,6 +34,7 @@ class qp_SchemaUpdater {
 		array( 'Title' => 'newFromID' ),
 		array( 'WebResponse' => 'setCookie' ),
 		array( 'Language' => 'lc' ),
+		array( 'Language' => 'truncate' ),
 		array( 'User' => 'isAnon' )
 	);
 
