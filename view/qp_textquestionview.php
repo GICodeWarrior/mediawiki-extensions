@@ -39,30 +39,24 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 /**
  * Manipulates the list of text question view tokens
- * for one row (combined proposal/categories definition)
+ * for one row (combined proposal/categories definition).
+ * One proposal line.
  */
 class qp_TextQuestionViewTokens {
 
-	# an instance of current question's view
-	var $view;
-
-	# $tokenslist will contain parsed tokens for question view;
-	# $tokenslist elements of string type contain proposal parts;
-	# $tokenslist elements of stdClass :
-	#   property 'options' indicates current category options list
-	#   property 'error' indicates error message
-	var $tokenslist = array();
-
-	function __construct( qp_TextQuestionView $view ) {
-		$this->view = $view;
-	}
+	# $this->tklist will contain parsed tokens for question view;
+	#   elements of string type contain proposal parts;
+	#   elements of stdClass :
+	#     property 'options' indicates current category options list
+	#     property 'error' indicates error message
+	var $tklist = array();
 
 	function reset() {
-		$this->tokenslist = array();
+		$this->tklist = array();
 	}
 
 	function addProposalPart( $prop ) {
-		$this->tokenslist[] = $prop;
+		$this->tklist[] = $prop;
 	}
 
 	/**
@@ -97,21 +91,56 @@ class qp_TextQuestionViewTokens {
 		if ( !is_null( $opt->textwidth ) ) {
 			$catdef->textwidth = $opt->textwidth;
 		}
-		$this->tokenslist[] = $catdef;
+		$this->tklist[] = $catdef;
 	}
 
 	/**
 	 * Adds new non-empty error message to the list of parsed tokens (viewtokens)
-	 * @param  $errmsg  string  error message
+	 * @param  $errmsg  string  html error message
 	 */
-	function prependErrorToken( $errmsg, $state ) {
+	function prependErrorToken( $errmsg ) {
 		# note: error message can be added in the middle of the list,
 		# for any category, if desired
-		# todo: separate category interpretation errors
-		if ( ( $html_msg = $this->view->bodyErrorMessage( $errmsg, $state ) ) !== '' ) {
+		if ( $errmsg !== '' ) {
 			# usually only the first error message is returned
-			array_unshift( $this->tokenslist, (object) array( 'error'=> $html_msg ) );
+			array_unshift( $this->tklist, (object) array( 'error'=> $errmsg ) );
 		}
+	}
+
+	/**
+	 * Applies interpretation script category error messages
+	 * to the current proposal line.
+	 * @param   $prop_desc  array
+	 *          keys are category numbers (indexes)
+	 *          values are interpretation script-generated error messages
+	 * @param   $view  an instance of current question view
+	 * @return  boolean true when at least one category was found in the list
+	 *          false otherwise
+	 */
+	function applyInterpErrors( $prop_desc, qp_TextQuestionView $view ) {
+		$foundCats = false;
+		$cat_id = -1;
+		foreach ( $this->tklist as &$token ) {
+			if ( is_object( $token ) && property_exists( $token, 'options' ) ) {
+				# found a category definition
+				$cat_id++;
+				if ( isset( $prop_desc[$cat_id] ) ) {
+					$foundCats = true;
+					# whether to use custom or standard error message
+					if ( !is_string( $cat_desc = $prop_desc[$cat_id] ) ) {
+						$cat_desc = wfMsg( 'qp_interpetation_wrong_answer' );
+					}
+					# mark the input to highlight it during the rendering
+					if ( ( $msg = $view->bodyErrorMessage( $cat_desc, '', false ) ) !=='' ) {
+						# we call with question state = '', so the returned $msg never should be empty
+						# unless there was a syntax error, however during the interpretation stage there
+						# should be no syntax errors, so we can assume that $msg is never equal to ''
+						$token->interpError = $msg;
+					}
+				}
+			}
+		}
+		return $foundCats;
 	}
 
 } /* end of qp_TextQuestionViewTokens */
@@ -153,11 +182,45 @@ class qp_TextQuestionView extends qp_StubQuestionView {
 	/**
 	 * Add the list of parsed viewtokens matching current proposal / categories row
 	 */
-	function addProposal( $proposalId, $viewtokens ) {
+	function addProposal( $proposalId, qp_TextQuestionViewTokens $viewtokens ) {
 		$this->pview[$proposalId] = array(
 			'tokens' => $viewtokens,
 			'className' => $this->rawClass
 		);
+	}
+
+	/**
+	 * Render script-generated interpretation errors, when available (quiz mode)
+	 */
+	function renderInterpErrors() {
+		if ( ( $interpErrors = $this->ctrl->getInterpErrors() ) === false ) {
+			# there is no interpretation error
+			return;
+		}
+		foreach ( $interpErrors as $prop_id => $prop_desc ) {
+			if ( isset( $this->pview[$prop_id] ) ) {
+				# the whole proposal line has errors
+				$propview = &$this->pview[$prop_id];
+				if ( !is_array( $prop_desc ) ) {
+					if ( !is_string( $prop_desc ) ) {
+						$prop_desc = wfMsg( 'qp_interpetation_wrong_answer' );
+					}
+					$propview['tokens']->prependErrorToken( $this->bodyErrorMessage( $prop_desc, '', false ) );
+					$propview['className'] = 'proposalerror';
+					continue;
+				}
+				# specified category of proposal has errors;
+				# scan the category views row to highlight erroneous categories
+				$foundCats = $propview['tokens']->applyInterpErrors( $prop_desc, $this );
+				if ( !$foundCats ) {
+					# there are category errors specified in interpretation result;
+					# however none of them are found in proposal's view
+					# generate error for the whole proposal
+					$propview['tokens']->prependErrorToken( $this->bodyErrorMessage( wfMsg( 'qp_interpetation_wrong_answer' ), '', false ) );
+					$propview['className'] = 'proposalerror';
+				}
+			}
+		}
 	}
 
 	/**
@@ -171,6 +234,15 @@ class qp_TextQuestionView extends qp_StubQuestionView {
 					$className = 'cat_part';
 					if ( $this->ctrl->mSubType === 'requireAllCategories' && $elem->unanswered ) {
 						$className = 'cat_noanswer';
+					}
+					if ( isset( $elem->interpError ) ) {
+						$className = 'cat_noanswer';
+						# create view for proposal/category error message
+						$row[] = array(
+							'__tag' => 'span',
+							'class' => 'proposalerror',
+							$elem->interpError
+						);
 					}
 					# create view for the input options part
 					if ( count( $elem->options ) === 1 ) {
@@ -266,7 +338,7 @@ class qp_TextQuestionView extends qp_StubQuestionView {
 			qp_Renderer::addRow( $questionTable, $row, $rowattrs, 'th', $attribute_maps );
 		}
 		foreach ( $this->pview as &$viewtokens ) {
-			$prop = $this->renderParsedProposal( $viewtokens['tokens'] );
+			$prop = $this->renderParsedProposal( $viewtokens['tokens']->tklist );
 			$rowattrs = array( 'class' => $viewtokens['className'] );
 			qp_Renderer::addRow( $questionTable, $prop, $rowattrs );
 		}

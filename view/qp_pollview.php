@@ -42,15 +42,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( "This file is part of the QPoll extension. It is not a valid entry point.\n" );
 }
 
-class qp_PollView extends qp_AbstractView {
-
-	var $perRow;
-	var $currCol;
-
-	function setController( $ctrl, $perRow ) {
-		parent::setController( $ctrl );
-		$this->perRow = $this->currCol = $perRow;
-	}
+class qp_PollView extends qp_AbstractPollView {
 
 	function isCompatibleController( $ctrl ) {
 		return method_exists( $ctrl, 'parsePoll' );
@@ -117,7 +109,7 @@ class qp_PollView extends qp_AbstractView {
 		# Determine the content of the settings table.
 		$settings = Array();
 		if ( $this->ctrl->mState != '' ) {
-			$settings[0][] = array( '__tag' => 'td', 'class' => 'margin cell_error' );
+			$settings[0][] = array( '__tag' => 'td', 'class' => 'margin object_error' );
 			$settings[0][] = array( '__tag' => 'td', 0 => wfMsgHtml( 'qp_result_' . $this->ctrl->mState ) );
 		}
 		# Build the settings table.

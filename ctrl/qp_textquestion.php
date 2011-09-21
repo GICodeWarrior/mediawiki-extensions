@@ -175,11 +175,11 @@ class qp_TextQuestion extends qp_StubQuestion {
 		$proposalId = 0;
 		# Currently, we use just a single instance (no nested categories)
 		$opt = new qp_TextQuestionOptions();
-		$this->viewtokens = new qp_TextQuestionViewTokens( $this->view );
 		foreach ( $this->raws as $raw ) {
 			$this->view->initProposalView();
 			$opt->reset();
-			$this->viewtokens->reset();
+			$this->viewtokens = new qp_TextQuestionViewTokens();
+			# $this->viewtokens->reset();
 			$this->dbtokens = $brace_stack = array();
 			$catId = 0;
 			$last_brace = '';
@@ -244,13 +244,13 @@ class qp_TextQuestion extends qp_StubQuestion {
 			# check if there is at least one category defined
 			if ( $catId === 0 ) {
 				# todo: this is the explanary line, it is not real proposal
-				$this->viewtokens->prependErrorToken( wfMsg( 'qp_error_too_few_categories' ), 'error' );
+				$this->viewtokens->prependErrorToken( $this->view->bodyErrorMessage( wfMsg( 'qp_error_too_few_categories' ), 'error' ) );
 			}
 			if ( strlen( $proposal_text = serialize( $this->dbtokens ) ) > qp_Setup::$proposal_max_length ) {
 				# too long proposal field to store into the DB
 				# this is very important check for text questions because
 				# category definitions are stored within the proposal text
-				$this->viewtokens->prependErrorToken( wfMsg( 'qp_error_too_long_proposal_text' ), 'error' );
+				$this->viewtokens->prependErrorToken( $this->view->bodyErrorMessage( wfMsg( 'qp_error_too_long_proposal_text' ), 'error' ) );
 			}
 			$this->mProposalText[$proposalId] = $proposal_text;
 			if ( $this->poll->mBeingCorrected ) {
@@ -269,11 +269,11 @@ class qp_TextQuestion extends qp_StubQuestion {
 				} catch ( Exception $e ) {
 					if ( $e->getMessage() == 'qp_error' ) {
 						$prev_state = $this->getState();
-						$this->viewtokens->prependErrorToken( wfMsg( 'qp_error_no_answer' ), 'NA' );
+						$this->viewtokens->prependErrorToken( $this->view->bodyErrorMessage( wfMsg( 'qp_error_no_answer' ), 'NA' ) );
 					}
 				}
 			}
-			$this->view->addProposal( $proposalId, $this->viewtokens->tokenslist );
+			$this->view->addProposal( $proposalId, $this->viewtokens );
 			$proposalId++;
 		}
 	}

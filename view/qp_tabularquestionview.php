@@ -244,6 +244,52 @@ class qp_TabularQuestionView extends qp_StubQuestionView {
 	}
 
 	/**
+	 * Render script-generated interpretation errors, when available (quiz mode)
+	 */
+	function renderInterpErrors() {
+		if ( ( $interpErrors = $this->ctrl->getInterpErrors() ) === false ) {
+			# there is no interpretation error
+			return;
+		}
+		foreach ( $interpErrors as $prop_id => $prop_desc ) {
+			if ( isset( $this->pview[$prop_id] ) ) {
+				# the whole proposal line has errors
+				$propview = &$this->pview[$prop_id];
+				if ( !is_array( $prop_desc ) ) {
+					if ( !is_string( $prop_desc ) ) {
+						$prop_desc = wfMsg( 'qp_interpetation_wrong_answer' );
+					}
+					$propview->text = $this->bodyErrorMessage( $prop_desc, '', false ) . $propview->text;
+					continue;
+				}
+				# specified category of proposal has errors;
+				$foundCats = false;
+				# scan the category views row to highlight erroneous categories
+				foreach ( $propview->row as $cat_id => &$cat_tag ) {
+					# only integer keys are the category views
+					if ( is_int( $cat_id ) && isset( $prop_desc[$cat_id] ) ) {
+						# found a category which has script-generated error
+						$foundCats = true;
+						# whether to use custom or standard error message
+						if ( !is_string( $cat_desc = $prop_desc[$cat_id] ) ) {
+							$cat_desc = wfMsg( 'qp_interpetation_wrong_answer' );
+						}
+						# highlight the input
+						qp_Renderer::addClass( $cat_tag, 'cat_error' );
+						array_unshift( $cat_tag, $this->bodyErrorMessage( $cat_desc, '', false ) . '<br />' );
+					}
+					if ( !$foundCats ) {
+						# there are category errors specified in interpretation result;
+						# however none of them are found in proposal's view
+						# generate error for the whole proposal
+						$propview->text = $this->bodyErrorMessage( wfMsg( 'qp_interpetation_wrong_answer' ), '', false ) . $propview->text;
+					}
+				}
+			}
+		}
+	}
+
+	/**
 	 * Draws borders via css in the question table according to
 	 *   controller's category spans (metacategories)
 	 * todo: this function takes too much arguments;

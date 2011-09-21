@@ -202,6 +202,12 @@ class qp_Setup {
 	# it is important only for question type="text", where
 	# proposal text contains serialized array of proposal parts and category fields
 	public static $proposal_max_length = 768;
+	# whether to show short, long, serialized interpretation results to end user
+	public static $show_interpretation = array(
+		'short' => false,
+		'long' => true,
+		'serialized' => false
+	);
 	/* end of default configuration settings */
 
 	static function entities( $s ) {
@@ -210,33 +216,6 @@ class qp_Setup {
 
 	static function specialchars( $s ) {
 		return htmlspecialchars( $s, ENT_COMPAT, 'UTF-8' );
-	}
-
-	/**
-	 * Limit the maximum length of proposal line with respect to UTF-8 character bounds
-	 *
-	 * Question type=text proposal lengths are additionally checked in the question controller
-	 * because these are stored in serialized format.
-	 * Questions of another types have their proposal texts optionally cut down, because
-	 * the whole text of proposal is not important.
-	 *
-	 * @param  $ptext  string  proposal text
-	 * @return  string  proposal text either cut down or unaltered
-	 */
-	private function limitProposalLength( $ptext ) {
-		if ( strlen( $ptext ) <= self::$proposal_max_length ) {
-			return $ptext;
-		}
-		for ( $curr_len = self::$proposal_max_length;/* noop */;$curr_len-- ) {
-			$pcut = substr( $ptext, 0, $curr_len );
-			if ( mb_substr( $ptext, 0, mb_strlen( $pcut, 'UTF-8' ), 'UTF-8' ) === $pcut ) {
-				# valid UTF-8 cut
-				break;
-			}
-			# will decrease the $curr_len until valid cut is achieved;
-			# should not be more than 5 iterations, very often 1..3
-		}
-		return $pcut;
 	}
 
 	/**
@@ -308,6 +287,7 @@ class qp_Setup {
 			## isCompatibleController() method is used to check linked controllers (bugcheck)
 			# generic
 			'view/qp_abstractview.php' => 'qp_AbstractView',
+			'view/qp_abstractpollview.php' => 'qp_AbstractPollView',
 			# questions
 			'view/qp_stubquestionview.php' => 'qp_StubQuestionView',
 			'view/qp_tabularquestionview.php' => 'qp_TabularQuestionView',

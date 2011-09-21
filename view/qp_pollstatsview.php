@@ -42,15 +42,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( "This file is part of the QPoll extension. It is not a valid entry point.\n" );
 }
 
-class qp_PollStatsView extends qp_AbstractView {
-
-	var $perRow;
-	var $currCol;
-
-	function setController( $ctrl, $perRow ) {
-		parent::setController( $ctrl );
-		$this->perRow = $this->currCol = $perRow;
-	}
+class qp_PollStatsView extends qp_AbstractPollView {
 
 	function isCompatibleController( $ctrl ) {
 		return method_exists( $ctrl, 'parseStats' );
