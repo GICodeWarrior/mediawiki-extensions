@@ -3,20 +3,20 @@
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'IndexFunction',
-	'author' =>'Alex Zaddach', 
-	'url' => 'http://www.mediawiki.org/wiki/Extension:IndexFunction',  
+	'author' => 'Alex Zaddach',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:IndexFunction',
 	'descriptionmsg' => 'indexfunc-desc',
 );
 
-$dir = dirname(__FILE__) . '/';
+$dir = dirname( __FILE__ ) . '/';
 
-# Register function 
+# Register function
 $wgHooks['ParserFirstCallInit'][] = 'efIndexSetup';
 $wgHooks['LanguageGetMagic'][] = 'IndexFunctionHooks::addIndexFunction';
 # Add to database
-$wgHooks['OutputPageParserOutput'][] = 'IndexFunctionHooks::doIndexes'; 
+$wgHooks['OutputPageParserOutput'][] = 'IndexFunctionHooks::doIndexes';
 # Make links to indexes blue
-$wgHooks['LinkEnd'][] = 'IndexFunctionHooks::blueLinkIndexes'; 
+$wgHooks['LinkEnd'][] = 'IndexFunctionHooks::blueLinkIndexes';
 # Make links to indexes redirect
 $wgHooks['InitializeArticleMaybeRedirect'][] = 'IndexFunctionHooks::doRedirect';
 # Make "go" searches for indexes redirect
@@ -53,9 +53,10 @@ $wgAutoloadClasses['SpecialIndexPager'] = $dir . 'SpecialIndex.php';
  * Can be 1 of 2 options:
  * 'extract' (default) - Show an extract from the start of the article
  * 'categories' - Show a comma-separated list of categories the article is in
-*/
+ */
 $wgSpecialIndexContext = 'extract';
 
+// @todo FIXME: put these methods in a separate class and file.
 function efIndexSetup( &$parser ) {
 	$parser->setFunctionHook( 'index-func', array( 'IndexFunctionHooks', 'indexRender' ) );
 	return true;
@@ -69,9 +70,12 @@ function efIndexUpdateSchema( $updater = null ) {
 		$updater->addExtensionUpdate( array( 'addTable', 'indexes',
 			dirname( __FILE__ ) . '/indexes.sql', true ) );
 	}
+
 	return true;
 }
+
 function efParserTestTables( &$tables ) {
 	$tables[] = 'indexes';
+
 	return true;
 }
