@@ -60,7 +60,9 @@ class SwiftFile extends LocalFile {
 	 * Note: $unused param is only here to avoid an E_STRICT
 	 */
 	static function newFromTitle( $title, $repo, $unused = null ) {
-		if ( empty($title) ) { return null; }
+		if ( empty($title) ) {
+			return null;
+		}
 		return new self( $title, $repo );
 	}
 
@@ -82,7 +84,7 @@ class SwiftFile extends LocalFile {
 	 */
 	function __construct( $title, $repo ) {
 		if ( !is_object( $title ) ) {
-			throw new MWException( __CLASS__ . " constructor given bogus title." );
+			throw new MWException( __CLASS__ . ' constructor given bogus title.' );
 		}
 
 		parent::__construct( $title, $repo );
@@ -97,19 +99,19 @@ class SwiftFile extends LocalFile {
 	/** getViewURL inherited */
 	/** isVisible inherited */
 
-	function getPath() {
+	public function getPath() {
 		$this->tempPath = $this->repo->getLocalCopy($this->repo->container, $this->getRel());
 		return $this->tempPath;
 	}
 
 	/** Get the path of the archive directory, or a particular file if $suffix is specified */
-	function getArchivePath( $suffix = false ) {
+	public function getArchivePath( $suffix = false ) {
 		$this->tempPath = $this->repo->getLocalCopy($this->repo->getZoneContainer('public'), $this->getArchiveRel( $suffix ));
 		return $this->tempPath;
 	}
 
 	/** Get the path of the thumbnail directory, or a particular file if $suffix is specified */
-	function getThumbPath( $suffix = false ) {
+	public function getThumbPath( $suffix = false ) {
 		$path = $this->getRel();
 		if ( $suffix !== false ) {
 			$path .= '/' . $suffix;
@@ -138,11 +140,11 @@ class SwiftFile extends LocalFile {
 	 *
 	 * @return MediaTransformOutput | false
 	 */
-	function maybeDoTransform( $thumbName, $thumbUrl, $params, $flags ) {
+	private function maybeDoTransform( $thumbName, $thumbUrl, $params, $flags ) {
 		global $wgIgnoreImageErrors, $wgThumbnailEpoch, $wgTmpDirectory;
 
 		// get a temporary place to put the original.
-		$thumbPath = tempnam( $wgTmpDirectory, 'transform_out_') . "." . pathinfo( $thumbName, PATHINFO_EXTENSION );
+		$thumbPath = tempnam( $wgTmpDirectory, 'transform_out_') . '.' . pathinfo( $thumbName, PATHINFO_EXTENSION );
 
 		if ( $this->repo && $this->repo->canTransformVia404() && !($flags & self::RENDER_NOW ) ) {
 			return $this->handler->getTransform( $this, $thumbPath, $thumbUrl, $params );
@@ -150,16 +152,16 @@ class SwiftFile extends LocalFile {
 
 		// see if the file exists, and if it exists, is not too old.
 		$conn = $this->repo->connect();
-		$container = $this->repo->get_container($conn,$this->repo->container . "%2Fthumb");
+		$container = $this->repo->get_container($conn,$this->repo->container . '%2Fthumb');
 		try {
-			$pic = $container->get_object($this->getRel() . "/" . $thumbName);
+			$pic = $container->get_object($this->getRel() . "/$thumbName");
 		} catch (NoSuchObjectException $e) {
 			$pic = NULL;
 		}
 		if ( $pic ) {
 			$thumbTime = $pic->last_modified;
-			$tm = strptime($thumbTime, "%a, %d %b %Y %H:%M:%S GMT"); 
-			$thumbGMT = gmmktime($tm["tm_hour"], $tm["tm_min"], $tm["tm_sec"], $tm["tm_mon"]+1, $tm["tm_mday"], $tm["tm_year"] + 1900);
+			$tm = strptime($thumbTime, '%a, %d %b %Y %H:%M:%S GMT'); 
+			$thumbGMT = gmmktime($tm['tm_hour'], $tm['tm_min'], $tm['tm_sec'], $tm['tm_mon']+1, $tm['tm_mday'], $tm['tm_year'] + 1900);
 			wfDebug( __METHOD__.": $thumbName is dated $thumbGMT\n" );
 			if ( gmdate( 'YmdHis', $thumbGMT ) >= $wgThumbnailEpoch ) {
 
@@ -181,8 +183,8 @@ class SwiftFile extends LocalFile {
 		// what if they didn't actually write out a thumbnail? Check the file size.
 		if ( $thumb && file_exists( $thumbPath ) && filesize( $thumbPath ) ) {
 			// Store the thumbnail into Swift, but in the thumb version of the container.
-			wfDebug(  __METHOD__ . "Creating thumb " . $this->getRel() . "/" . $thumbName . "\n" );
-			$this->repo->write_swift_object( $thumbPath, $container, $this->getRel() . "/" . $thumbName );
+			wfDebug(  __METHOD__ . 'Creating thumb ' . $this->getRel() . "/$thumbName\n" );
+			$this->repo->write_swift_object( $thumbPath, $container, $this->getRel() . "/$thumbName" );
 			// php-cloudfiles throws exceptions, so failure never gets here.
 		}
 
@@ -201,14 +203,14 @@ class SwiftFile extends LocalFile {
 	/**
 	 * We have nothing to do here.
 	 */
-	function migrateThumbFile( $thumbName ) {
+	protected function migrateThumbFile( $thumbName ) {
 		return;
 	}
 	/**
 	 * Get the public root directory of the repository.
 	 */
-	function getRootDirectory() {
-		throw new MWException( __METHOD__.": not implemented" );
+	protected function getRootDirectory() {
+		throw new MWException( __METHOD__.': not implemented' );
 	}
 
 
@@ -230,9 +232,9 @@ class SwiftFile extends LocalFile {
 			$prefix = $this->getRel();
 		}
 		$conn = $this->repo->connect();
-		$container = $this->repo->get_container($conn,$this->repo->container . "%2Fthumb");
+		$container = $this->repo->get_container($conn,$this->repo->container . '%2Fthumb');
 		$files = $container->list_objects(0, NULL, $prefix);
-		array_unshift($files, "unused"); # return an unused $dir.
+		array_unshift($files, 'unused'); # return an unused $dir.
 		return $files;
 	}
 
@@ -245,15 +247,15 @@ class SwiftFile extends LocalFile {
 		global $wgExcludeFromThumbnailPurge;
 
 		$conn = $this->repo->connect();
-		$container = $this->repo->get_container($conn,$this->repo->container . "%2Fthumb");
+		$container = $this->repo->get_container($conn,$this->repo->container . '%2Fthumb');
 		foreach ( $files as $file ) {
 			// Only remove files not in the $wgExcludeFromThumbnailPurge configuration variable
-			$ext = pathinfo( "$file", PATHINFO_EXTENSION );
+			$ext = pathinfo( $file, PATHINFO_EXTENSION );
 			if ( in_array( $ext, $wgExcludeFromThumbnailPurge ) ) {
 				continue;
 			}
 
-			wfDebug(  __METHOD__ . " deleting " . $container->name . "/$file\n");
+			wfDebug(  __METHOD__ . ' deleting ' . $container->name . "/$file\n");
 			$this->repo->swift_delete($container, $file);
 		}
 	}
@@ -314,12 +316,12 @@ class SwiftRepo extends LocalRepo {
 	 *
 	 * @return CF_Connection
 	 */
-	function connect() {
+	protected function connect() {
 		$auth = new CF_Authentication($this->swiftuser, $this->swiftkey, NULL, $this->authurl);
 		try {
 			$auth->authenticate();
 		} catch (AuthenticationException $e) {
-			throw new MWException( "We can't authenticate ourselves." );
+			throw new MWException( 'We can't authenticate ourselves.' );
 		} catch (InvalidResponseException $e) {
 			throw new MWException( __METHOD__ . "unexpected response '$e'" );
 		}
@@ -332,7 +334,7 @@ class SwiftRepo extends LocalRepo {
 	 *
 	 * @return CF_Container
 	 */
-	function get_container($conn, $cont) {
+	protected function get_container($conn, $cont) {
 		try {
 			return $conn->get_container($cont);
 		} catch (NoSuchContainerException $e) {
@@ -349,14 +351,14 @@ class SwiftRepo extends LocalRepo {
 	 *
 	 * @return CF_Container
 	 */
-	function write_swift_object( $srcPath, $dstc, $dstRel) {
+	protected function write_swift_object( $srcPath, $dstc, $dstRel) {
 		try {
 			$obj = $dstc->create_object($dstRel);
 			$obj->load_from_filename( $srcPath, True);
 		} catch (SyntaxException $e) {
-			throw new MWException( "missing required parameters" );
+			throw new MWException( 'missing required parameters' );
 		} catch (BadContentTypeException $e) {
-			throw new MWException( "No Content-Type was/could be set" );
+			throw new MWException( 'No Content-Type was/could be set' );
 		} catch (InvalidResponseException $e) {
 			throw new MWException( __METHOD__ . "unexpected response '$e'" );
 		} catch (IOException $e) {
@@ -370,7 +372,7 @@ class SwiftRepo extends LocalRepo {
 	 * an Internal Error on them.
 	 *
 	 */
-	function swift_delete( $container, $rel ) {
+	protected function swift_delete( $container, $rel ) {
 		try {
 			$container->delete_object($rel);
 		} catch (SyntaxException $e) {
@@ -488,7 +490,7 @@ class SwiftRepo extends LocalRepo {
 	 */
 
 	function append( $srcPath, $toAppendPath, $flags = 0 ){
-		throw new MWException( __METHOD__.": Not yet implemented." );
+		throw new MWException( __METHOD__.': Not yet implemented.' );
 		// I think we need to count the number of files whose names
 		// start with $toAppendPath, then add that count (with leading zeroes) to
 		// the end of $toAppendPath and write the chunk there.
@@ -513,7 +515,7 @@ class SwiftRepo extends LocalRepo {
 	 */
 	function appendFinish( $toAppendPath ){
 		$conn = $this->connect();
-		$container = $this->repo->get_container( $conn, $this->repo->container . "%2Ftemp" );
+		$container = $this->repo->get_container( $conn, $this->repo->container . '%2Ftemp' );
 		$parts = $container->list_objects( 0, NULL, $srcPath ); // FIXME: $srcPath is undefined
 		// list_objects() returns a sorted list.
 
@@ -544,7 +546,7 @@ class SwiftRepo extends LocalRepo {
 	 * @return FileRepoStatus
 	 */
 	function deleteBatch( $sourceDestPairs ) {
-		wfDebug(  __METHOD__ . " deleting " . var_export($sourceDestPairs, true) . "\n");
+		wfDebug(  __METHOD__ . ' deleting ' . var_export($sourceDestPairs, true) . '\n');
 
 		/**
 		 * Move the files
@@ -602,7 +604,9 @@ class SwiftRepo extends LocalRepo {
 
 	// FIXME: do we really need to reject empty titles?
 	function newFile( $title, $time = false ) {
-		if ( empty($title) ) { return null; }
+		if ( empty($title) ) {
+			return null;
+		}
 		return parent::newFile( $title, $time );
 	}
 
@@ -613,13 +617,13 @@ class SwiftRepo extends LocalRepo {
 	 * @param $dstContainer CF_Container
 	 * @param $dstRel String: relative path to the destination.
 	 */
-	function swiftcopy($srcContainer, $srcRel, $dstContainer, $dstRel ) {
+	protected function swiftcopy($srcContainer, $srcRel, $dstContainer, $dstRel ) {
 		// The destination must exist already.
 		$obj = $dstContainer->create_object($dstRel);
-		$obj->content_type = "text/plain";
+		$obj->content_type = 'text/plain';
 
 		try {
-			$obj->write(".");
+			$obj->write('.');
 		} catch (SyntaxException $e ) {
 			throw new MWException( "Write failed: $e" );
 		} catch (BadContentTypeException $e ) {
@@ -633,15 +637,15 @@ class SwiftRepo extends LocalRepo {
 		try {
 			$obj = $dstContainer->get_object($dstRel);
 		} catch (NoSuchObjectException $e) {
-			throw new MWException( "The object we just created does not exist: " . $dstContainer->name . "/$dstRel: $e" );
+			throw new MWException( 'The object we just created does not exist: ' . $dstContainer->name . "/$dstRel: $e" );
 		}
 
-		wfDebug( __METHOD__ . " copying to " . $dstContainer->name . "/" . $dstRel . " from " . $srcContainer->name . "/" . $srcRel . "\n");
+		wfDebug( __METHOD__ . ' copying to ' . $dstContainer->name . "/$dstRel from " . $srcContainer->name . "/$srcRel\n");
 
 		try {
-			$obj->copy($srcContainer->name . "/" . $srcRel);
+			$obj->copy($srcContainer->name . "/$srcRel");
 		} catch (SyntaxException $e ) {
-			throw new MWException( "Source file does not exist: " . $srcContainer->name . "/$srcRel: $e" );
+			throw new MWException( 'Source file does not exist: ' . $srcContainer->name . "/$srcRel: $e" );
 		} catch (MisMatchedChecksumException $e ) {
 			throw new MWException( "Checksums do not match: $e" );
 		} catch (InvalidResponseException $e ) {
@@ -802,22 +806,22 @@ class SwiftRepo extends LocalRepo {
 	 * Makes no sense in our context -- don't let anybody call it.
 	 */
 	function getZonePath( $zone ) {
-		throw new MWException( __METHOD__.": not implemented" );
+		throw new MWException( __METHOD__.': not implemented' );
 	}
 
 	/**
 	 * Get the Swift container corresponding to one of the three basic zones
 	 */
-	function getZoneContainer( $zone ) {
+	protected function getZoneContainer( $zone ) {
 		switch ( $zone ) {
 			case 'public':
 				return $this->container;
 			case 'temp':
-				return $this->container . "%2Ftemp";
+				return $this->container . '%2Ftemp';
 			case 'deleted':
-				return $this->container . "%2Fdeleted";
+				return $this->container . '%2Fdeleted';
 			case 'thumb':
-				return $this->container . "%2Fthumb";
+				return $this->container . '%2Fthumb';
 			default:
 				return false;
 		}
@@ -826,9 +830,9 @@ class SwiftRepo extends LocalRepo {
 	/**
 	 * Get a local path corresponding to a virtual URL
 	 */
-	function getContainerRel( $url ) {
+	protected function getContainerRel( $url ) {
 		if ( substr( $url, 0, 9 ) != 'mwrepo://' ) {
-			throw new MWException( __METHOD__.": unknown protocol" );
+			throw new MWException( __METHOD__.': unknown protocol' );
 		}
 
 		$bits = explode( '/', substr( $url, 9 ), 3 );
@@ -837,13 +841,12 @@ class SwiftRepo extends LocalRepo {
 		}
 		list( $repo, $zone, $rel ) = $bits;
 		if ( $repo !== $this->name ) {
-			throw new MWException( __METHOD__.": fetching from a foreign repo is not supported" );
+			throw new MWException( __METHOD__.': fetching from a foreign repo is not supported' );
 		}
 		$container = $this->getZoneContainer( $zone );
 		if ( $container === false) {
 			throw new MWException( __METHOD__.": invalid zone: $zone" );
 		}
-		wfDebug( __METHOD__.": Z$zone C$container R$rel\n" );
 		return array($container, rawurldecode( $rel ));
 	}
 
@@ -882,10 +885,10 @@ class SwiftRepo extends LocalRepo {
 	 * SwiftFile->tempPath so it will be deleted when the object goes out of
 	 * scope.
 	 */
-	function getLocalCopy($container, $rel) {
+	protected function getLocalCopy($container, $rel) {
 
 		// get a temporary place to put the original.
-		$tempPath = tempnam( wfTempDir(), 'swift_in_' ) . "." . pathinfo( $rel, PATHINFO_EXTENSION );
+		$tempPath = tempnam( wfTempDir(), 'swift_in_' ) . '.' . pathinfo( $rel, PATHINFO_EXTENSION );
 
 		/* Fetch the image out of Swift */
 		$conn = $this->connect();
@@ -897,7 +900,7 @@ class SwiftRepo extends LocalRepo {
 			throw new MWException( "Unable to open original file at $container/$rel");
 		}
 
-		wfDebug(  __METHOD__ . " writing to " . $tempPath . "\n");
+		wfDebug(  __METHOD__ . " writing to $tempPath\n");
 		try {
 			$obj->save_to_filename( $tempPath);
 		} catch (IOException $e) {
@@ -910,11 +913,11 @@ class SwiftRepo extends LocalRepo {
 	}
 
 
-		/**
+	/**
 	 * Get properties of a file with a given virtual URL
 	 * The virtual URL must refer to this repo
 	 */
-		function getFileProps( $virtualUrl ) {
+	function getFileProps( $virtualUrl ) {
 		$path = $this->resolveVirtualUrl( $virtualUrl );
 		$ret = File::getPropsFromPath( $path );
 		unlink( $path );
@@ -1116,7 +1119,7 @@ class OldSwiftFile extends SwiftFile {
 
 		# Don't destroy file info of missing files
 		if ( !$this->fileExists ) {
-			wfDebug( __METHOD__.": file does not exist, aborting\n" );
+			wfDebug( __METHOD__.': file does not exist, aborting\n' );
 			wfProfileOut( __METHOD__ );
 			return;
 		}
@@ -1124,7 +1127,7 @@ class OldSwiftFile extends SwiftFile {
 		$dbw = $this->repo->getMasterDB();
 		list( $major, $minor ) = self::splitMime( $this->mime );
 
-		wfDebug(__METHOD__.': upgrading '.$this->archive_name." to the current schema\n");
+		wfDebug(__METHOD__.': upgrading '.$this->archive_name.' to the current schema\n');
 		$dbw->update( 'oldimage',
 			array(
 				'oi_width' => $this->width,
@@ -1172,5 +1175,207 @@ class OldSwiftFile extends SwiftFile {
 	function userCan( $field ) {
 		$this->load();
 		return Revision::userCanBitfield( $this->deleted, $field );
+	}
+}
+
+/**
+ * Foreign file with an accessible MediaWiki database
+ *
+ * @file
+ * @ingroup FileRepo
+ */
+
+/**
+ * Foreign file with an accessible MediaWiki database
+ *
+ * @ingroup FileRepo
+ */
+class SwiftForeignDBFile extends SwiftFile {
+	static function newFromTitle( $title, $repo, $unused = null ) {
+		return new self( $title, $repo );
+	}
+
+	/**
+	 * Create a ForeignDBFile from a title
+	 * Do not call this except from inside a repo class.
+	 */
+	static function newFromRow( $row, $repo ) {
+		$title = Title::makeTitle( NS_FILE, $row->img_name );
+		$file = new self( $title, $repo );
+		$file->loadFromRow( $row );
+		return $file;
+	}
+
+	function publish( $srcPath, $flags = 0 ) {
+		$this->readOnlyError();
+	}
+
+	function recordUpload( $oldver, $desc, $license = '', $copyStatus = '', $source = '',
+		$watch = false, $timestamp = false ) {
+		$this->readOnlyError();
+	}
+	function restore( $versions = array(), $unsuppress = false ) {
+		$this->readOnlyError();
+	}
+	function delete( $reason, $suppress = false ) {
+		$this->readOnlyError();
+	}
+	function move( $target ) {
+		$this->readOnlyError();
+	}
+	
+	function getDescriptionUrl() {
+		// Restore remote behaviour
+		return File::getDescriptionUrl();
+	}
+
+	function getDescriptionText() {
+		// Restore remote behaviour
+		return File::getDescriptionText();
+	}
+}
+
+/**
+ * A foreign repository with an accessible MediaWiki database
+ *
+ * @file
+ * @ingroup FileRepo
+ */
+
+/**
+ * A foreign repository with an accessible MediaWiki database
+ *
+ * @ingroup FileRepo
+ */
+class SwiftForeignDBRepo extends SwiftRepo {
+	# Settings
+	var $dbType, $dbServer, $dbUser, $dbPassword, $dbName, $dbFlags,
+		$tablePrefix, $hasSharedCache;
+
+	# Other stuff
+	var $dbConn;
+	var $fileFactory = array( 'SwiftForeignDBFile', 'newFromTitle' );
+	var $fileFromRowFactory = array( 'SwiftForeignDBFile', 'newFromRow' );
+
+	function __construct( $info ) {
+		parent::__construct( $info );
+		$this->dbType = $info['dbType'];
+		$this->dbServer = $info['dbServer'];
+		$this->dbUser = $info['dbUser'];
+		$this->dbPassword = $info['dbPassword'];
+		$this->dbName = $info['dbName'];
+		$this->dbFlags = $info['dbFlags'];
+		$this->tablePrefix = $info['tablePrefix'];
+		$this->hasSharedCache = $info['hasSharedCache'];
+	}
+
+	function getMasterDB() {
+		if ( !isset( $this->dbConn ) ) {
+			$this->dbConn = DatabaseBase::newFromType( $this->dbType,
+				array(
+					'server' => $this->dbServer,
+					'user'   => $this->dbUser,
+					'password' => $this->dbPassword,
+					'dbname' => $this->dbName,
+					'flags' => $this->dbFlags,
+					'tableprefix' => $this->tablePrefix
+				)
+			);
+		}
+		return $this->dbConn;
+	}
+
+	function getSlaveDB() {
+		return $this->getMasterDB();
+	}
+
+	function hasSharedCache() {
+		return $this->hasSharedCache;
+	}
+
+	/**
+	 * Get a key on the primary cache for this repository.
+	 * Returns false if the repository's cache is not accessible at this site. 
+	 * The parameters are the parts of the key, as for wfMemcKey().
+	 */
+	function getSharedCacheKey( /*...*/ ) {
+		if ( $this->hasSharedCache() ) {
+			$args = func_get_args();
+			array_unshift( $args, $this->dbName, $this->tablePrefix );
+			return call_user_func_array( 'wfForeignMemcKey', $args );
+		} else {
+			return false;
+		}
+	}
+
+	function store( $srcPath, $dstZone, $dstRel, $flags = 0 ) {
+		throw new MWException( get_class($this) . ': write operations are not supported' );
+	}
+	function publish( $srcPath, $dstRel, $archiveRel, $flags = 0 ) {
+		throw new MWException( get_class($this) . ': write operations are not supported' );
+	}
+	function deleteBatch( $sourceDestPairs ) {
+		throw new MWException( get_class($this) . ': write operations are not supported' );
+	}
+}
+
+/**
+ * A foreign repository with a MediaWiki database accessible via the configured LBFactory
+ *
+ * @file
+ * @ingroup FileRepo
+ */
+
+/**
+ * A foreign repository with a MediaWiki database accessible via the configured LBFactory
+ *
+ * @ingroup FileRepo
+ */
+class SwiftForeignDBViaLBRepo extends LocalRepo {
+	var $wiki, $dbName, $tablePrefix;
+	var $fileFactory = array( 'SwiftForeignDBFile', 'newFromTitle' );
+	var $fileFromRowFactory = array( 'SwiftForeignDBFile', 'newFromRow' );
+
+	function __construct( $info ) {
+		parent::__construct( $info );
+		$this->wiki = $info['wiki'];
+		list( $this->dbName, $this->tablePrefix ) = wfSplitWikiID( $this->wiki );
+		$this->hasSharedCache = $info['hasSharedCache'];
+	}
+
+	function getMasterDB() {
+		return wfGetDB( DB_MASTER, array(), $this->wiki );
+	}
+
+	function getSlaveDB() {
+		return wfGetDB( DB_SLAVE, array(), $this->wiki );
+	}
+	function hasSharedCache() {
+		return $this->hasSharedCache;
+	}
+
+	/**
+	 * Get a key on the primary cache for this repository.
+	 * Returns false if the repository's cache is not accessible at this site. 
+	 * The parameters are the parts of the key, as for wfMemcKey().
+	 */
+	function getSharedCacheKey( /*...*/ ) {
+		if ( $this->hasSharedCache() ) {
+			$args = func_get_args();
+			array_unshift( $args, $this->wiki );
+			return implode( ':', $args );
+		} else {
+			return false;
+		}
+	}
+
+	function store( $srcPath, $dstZone, $dstRel, $flags = 0 ) {
+		throw new MWException( get_class($this) . ': write operations are not supported' );
+	}
+	function publish( $srcPath, $dstRel, $archiveRel, $flags = 0 ) {
+		throw new MWException( get_class($this) . ': write operations are not supported' );
+	}
+	function deleteBatch( $fileMap ) {
+		throw new MWException( get_class($this) . ': write operations are not supported' );
 	}
 }
