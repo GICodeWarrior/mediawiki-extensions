@@ -1564,6 +1564,13 @@ $messages['oc'] = array(
 	'right-todosubmit' => 'Restrénher los dreches de las listas personalas de causas de far',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Psubhashish
+ */
+$messages['or'] = array(
+	'todo-list-cancel' => 'ନାକଚ',
+);
+
 /** Ossetic (Ирон)
  * @author Amikeco
  */

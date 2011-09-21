@@ -675,6 +675,13 @@ $messages['oc'] = array(
 	'mwe-cancel' => 'Anullar',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Psubhashish
+ */
+$messages['or'] = array(
+	'mwe-ok' => 'ଠିକ ଅଛି',
+);
+
 /** Deitsch (Deitsch)
  * @author Xqt
  */

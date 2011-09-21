@@ -1176,6 +1176,13 @@ Apondètz-ne en utilizant las aisinas dins la barra de menut.',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Psubhashish
+ */
+$messages['or'] = array(
+	'gep-categories' => 'ଶ୍ରେଣୀସମୂହ',
+);
+
 /** Ossetic (Ирон)
  * @author Amikeco
  */

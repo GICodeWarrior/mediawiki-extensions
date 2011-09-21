@@ -793,6 +793,13 @@ $messages['oc'] = array(
 	'right-findspam' => 'Recercar de spam aponduts recentament',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Psubhashish
+ */
+$messages['or'] = array(
+	'findspam-ok' => 'ଠିକ ଅଛି',
+);
+
 /** Ossetic (Ирон)
  * @author Amikeco
  */

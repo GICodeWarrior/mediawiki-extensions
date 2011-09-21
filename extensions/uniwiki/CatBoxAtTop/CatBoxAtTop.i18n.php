@@ -445,6 +445,13 @@ $messages['oc'] = array(
 	'catboxattop-categories' => 'Categorias',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Psubhashish
+ */
+$messages['or'] = array(
+	'catboxattop-categories' => 'ଶ୍ରେଣୀସମୂହ',
+);
+
 /** Ossetic (Ирон)
  * @author Amikeco
  */

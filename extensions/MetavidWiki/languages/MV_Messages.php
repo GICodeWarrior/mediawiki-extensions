@@ -8175,6 +8175,7 @@ $messages['or'] = array(
 	'mv_tool_search' => 'ଖୋଜିବେ',
 	'mv_history' => 'ଇତିହାସ',
 	'mv_advanced_edit' => 'ଉନ୍ନତ ସମ୍ପାଦନା',
+	'mv_search_categories' => 'ଶ୍ରେଣୀସମୂହ',
 );
 
 /** Ossetic (Ирон)

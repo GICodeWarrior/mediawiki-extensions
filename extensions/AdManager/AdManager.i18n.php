@@ -37,6 +37,15 @@ $messages['en'] = array(
 	'right-admanager' => '[[Special:AdManager|Manage advertising configuration]]',
 );
 
+/** Message documentation (Message documentation)
+ * @author EugeneZelenko
+ */
+$messages['qqq'] = array(
+	'admanager_submit' => '{{Identical|Submit}}',
+	'admanager_Page' => '{{Identical|Pages}}',
+	'admanager_Category' => '{{Identical|Categories}}',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
@@ -52,6 +61,11 @@ $messages['be-tarask'] = array(
 	'admanager_notable' => 'Памылка! Неабходная табліца базы зьвестак ня знойдзеная! Спачатку запусьціце update.php.',
 	'admanager_noAdManagerZones' => 'Памылка! Вам неабходна дадаць зоны рэклямы. Увядзіце іх у [[Special:AdManagerZones|Кіраваньні зонамі рэклямы]].',
 	'admanager_labelPage' => 'Назвы старонак',
+	'admanager_labelCategory' => 'Назвы катэгорыяў',
+	'admanager_submit' => 'Захаваць',
+	'admanager_noads' => 'Не паказваць рэкляму',
+	'admanager_Page' => 'Старонкі',
+	'admanager_Category' => 'Катэгорыі',
 );
 
 /** Breton (Brezhoneg)

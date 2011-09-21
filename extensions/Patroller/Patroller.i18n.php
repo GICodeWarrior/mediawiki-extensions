@@ -1613,6 +1613,14 @@ $messages['oc'] = array(
 	'right-patroller' => 'Paginas de patrolha',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Psubhashish
+ */
+$messages['or'] = array(
+	'group-patroller' => 'ପହରାଦାର',
+	'group-patroller-member' => 'ପହରାଦାର',
+);
+
 /** Ossetic (Ирон)
  * @author Amikeco
  */
@@ -1684,6 +1692,14 @@ $messages['pms'] = array(
 	'group-patroller-member' => 'ëd patoja',
 	'grouppage-patroller' => '{{ns:project}}:patoja',
 	'right-patroller' => 'Verìrica le pàgine',
+);
+
+/** Western Punjabi (پنجابی)
+ * @author Khalid Mahmood
+ */
+$messages['pnb'] = array(
+	'group-patroller' => 'گشت کرن والے',
+	'group-patroller-member' => 'گشت کرن والے',
 );
 
 /** Pashto (پښتو)

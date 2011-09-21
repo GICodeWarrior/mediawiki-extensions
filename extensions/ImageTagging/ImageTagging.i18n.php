@@ -1290,6 +1290,28 @@ Donn drop wade, bes dä Vörjang fädesch es, dä jraad em Jang es.',
 (dobeijedonn un fott jenumme) aan Belder.',
 );
 
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
+ * @author Gomada
+ */
+$messages['ku-latn'] = array(
+	'taggedimages' => 'Wêneyên nîşankirî',
+	'imagetagging-addimagetag' => 'Vî wêneyî nîşan bike',
+	'imagetagging-article' => 'Rûpel:',
+	'imagetagging-articletotag' => 'Rûpela nîşankirinê',
+	'imagetagging-imghistory' => 'Dîrok',
+	'imagetagging-images' => 'wêne',
+	'imagetagging-inthisimage' => 'Di vî wêneyî de: $1',
+	'imagetagging-new' => '<sup><span style="color:red">Nû!</span></sup>',
+	'imagetagging-removetag' => 'Nîşankirinê rake',
+	'imagetagging-done-button' => 'Nîşankirin çêbû',
+	'imagetagging-tag-button' => 'Nîşankirin',
+	'imagetagging-tagcancel-button' => 'Betal bike',
+	'imagetagging-addingtag' => 'Nîşankirin pêk tê...',
+	'imagetagging-removingtag' => 'Nîşankirin tê rakirin...',
+	'imagetagging-addtagsuccess' => 'Nîşankirin pêkhat.',
+	'imagetagging-removetagsuccess' => 'Nîşankirin hate rakirin.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Les Meloures
  * @author Robby

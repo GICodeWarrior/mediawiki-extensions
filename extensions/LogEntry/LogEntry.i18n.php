@@ -396,6 +396,18 @@ $messages['mk'] = array(
 	'logentry-invalidtoken' => 'Неправилен жетон',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'logentry-append' => 'Lampiran',
+	'logentry-parserhook-desc' => 'Sambungan tag ini menyediakan borang lampiran pada laman log',
+	'logentry-specialpage-desc' => 'Sambungan tag ini menyediakan pemprosesan untuk lampiran pada laman log',
+	'logentry' => 'LogEntry',
+	'logentry-invalidpage' => 'Laman tidak sah: $1',
+	'logentry-invalidtoken' => 'Token tidak sah',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

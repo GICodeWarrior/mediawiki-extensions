@@ -10088,6 +10088,7 @@ $messages['or'] = array(
 	'ow_history' => 'ଇତିହାସ',
 	'ow_noedit' => 'ଆପଣଙ୍କୁ "$1" ଡାଟାସେଟର ପୃଷ୍ଠାସବୁରେ ସମ୍ପାଦନା ନିମନ୍ତେ ଅନୁମତି ମିଳିନାହିଁ ।
 ଦୟାକରି [[{{MediaWiki:Ow editing policy url}}|ଆମ୍ଭର ନୀତିସମୂହ]] ଦେଖନ୍ତୁ ।',
+	'ow_dm_OK' => 'ଠିକ ଅଛି',
 );
 
 /** Ossetic (Ирон)
@@ -12496,7 +12497,7 @@ $messages['sq'] = array(
 	'ow_Collection' => 'Koleksioni',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Millosh
  * @author Rancher
  * @author Sasa Stefanovic
@@ -12588,7 +12589,7 @@ $messages['sr-ec'] = array(
 	'ow_ClassMembership' => 'Класа чланство',
 	'ow_Collection' => 'Збирка',
 	'ow_Collection_colon' => 'Збирка:',
-	'ow_CollectionMember' => 'Члан колекције',
+	'ow_CollectionMember' => 'Члан збирке',
 	'ow_CollectionMembership' => 'Збирка чланство',
 	'ow_Definition' => 'Значење',
 	'ow_DefinedMeaningAttributes' => 'Коментар',
@@ -12629,9 +12630,9 @@ $messages['sr-ec'] = array(
 	'ow_TranslatedText' => 'Преведен текст',
 	'ow_TranslatedTextAttributeValue' => 'Текст',
 	'ow_TranslatedTextAttributeValues' => 'Текстови за превођење',
-	'ow_Link' => 'Спољашња веза',
+	'ow_Link' => 'Веза',
 	'ow_LinkAttribute' => 'Особина',
-	'ow_LinkAttributeValues' => 'Линкови',
+	'ow_LinkAttributeValues' => 'Везе',
 	'ow_User' => 'Корисник',
 	'ow_Property' => 'Особина',
 	'ow_Value' => 'Вредност',

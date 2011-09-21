@@ -824,6 +824,13 @@ $messages['no'] = array(
 	'collabwatchlisttools-rawTags' => 'Rå redigeringstagger',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Psubhashish
+ */
+$messages['or'] = array(
+	'collabwatchlistedit-raw-titles' => 'ଶ୍ରେଣୀସମୂହ:',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  * @author Woytecr

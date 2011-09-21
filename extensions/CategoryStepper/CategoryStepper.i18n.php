@@ -552,6 +552,13 @@ $messages['oc'] = array(
 	'categorystepper-start' => '(Començament de categoria)',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Psubhashish
+ */
+$messages['or'] = array(
+	'categorystepper-desc' => 'ଏକ ଶ୍ରେଣୀ ଷ୍ଟେପର ଘର ଦେଖାଇଥାଏ',
+);
+
 /** Deitsch (Deitsch)
  * @author Xqt
  */
