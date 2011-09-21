@@ -196,6 +196,12 @@ es.ContentView.renderAnnotation = function( bias, annotation, stack ) {
 
 /* Methods */
 
+/**
+ * Draws selection around a given range of content.
+ * 
+ * @method
+ * @param range {es.Range} Range to draw selection around
+ */
 es.ContentView.prototype.drawSelection = function( range ) {
 	range.normalize();
 
@@ -242,6 +248,13 @@ es.ContentView.prototype.drawSelection = function( range ) {
 	}
 };
 
+/**
+ * Gets the index of the rendered line a given offset is within.
+ * 
+ * @method
+ * @param offset {Integer} Offset to get line for
+ * @returns {Integer} Index of rendered lin offset is within
+ */
 es.ContentView.prototype.getLineIndex = function( offset ) {
 	for ( var i = 0; i < this.lines.length; i++ ) {
 		if ( this.lines[i].range.containsOffset( offset ) ) {
@@ -256,10 +269,11 @@ es.ContentView.prototype.getLineIndex = function( offset ) {
  * 
  * Position is assumed to be local to the container the text is being flowed in.
  * 
+ * @method
  * @param position {Object} Position to find offset for
  * @param position.left {Integer} Horizontal position in pixels
  * @param position.top {Integer} Vertical position in pixels
- * @return {Integer} Offset within content model nearest the given coordinates
+ * @returns {Integer} Offset within content model nearest the given coordinates
  */
 es.ContentView.prototype.getOffset = function( position ) {
 	// Empty content model shortcut
@@ -325,11 +339,12 @@ es.ContentView.prototype.getOffset = function( position ) {
 /**
  * Gets position coordinates of a given offset.
  * 
- * Offsets are boundaries between plain or annotated characters within content model. Results are given in
- * left, top and bottom positions, which could be used to draw a cursor, highlighting, etc.
+ * Offsets are boundaries between plain or annotated characters within content model. Results are
+ * given in left, top and bottom positions, which could be used to draw a cursor, highlighting, etc.
  * 
+ * @method
  * @param offset {Integer} Offset within content model
- * @return {Object} Object containing left, top and bottom properties, each positions in pixels as
+ * @returns {Object} Object containing left, top and bottom properties, each positions in pixels as
  * well as a line index
  */
 es.ContentView.prototype.getPosition = function( offset ) {
@@ -398,6 +413,8 @@ es.ContentView.prototype.getPosition = function( offset ) {
 
 /**
  * Updates the word boundary cache, which is used for word fitting.
+ * 
+ * @method
  */
 es.ContentView.prototype.scanBoundaries = function() {
 	/*
@@ -439,6 +456,9 @@ es.ContentView.prototype.scanBoundaries = function() {
  * In cases where a single word is too long to fit on a line, the word will be "virtually" wrapped,
  * causing them to be fragmented. Word fragments are rendered on their own lines, except for their
  * remainder, which is combined with whatever proceeding words can fit on the same line.
+ * 
+ * @method
+ * @param limit {Integer} Maximum number of iterations to render before yeilding
  */
 es.ContentView.prototype.renderIteration = function( limit ) {
 	var rs = this.renderState,
@@ -520,6 +540,7 @@ es.ContentView.prototype.renderIteration = function( limit ) {
  * allowing rendering to be interrupted and restarted if changes to content model are happening before
  * rendering of all lines is complete.
  * 
+ * @method
  * @param offset {Integer} Offset to re-render from, if possible (not yet implemented)
  */
 es.ContentView.prototype.render = function( offset ) {
@@ -591,6 +612,7 @@ es.ContentView.prototype.render = function( offset ) {
 /**
  * Adds a line containing a given range of text to the end of the DOM and the "lines" array.
  * 
+ * @method
  * @param range {es.Range} Range of data within content model to append
  * @param start {Integer} Beginning of text range for line
  * @param end {Integer} Ending of text range for line
@@ -641,10 +663,11 @@ es.ContentView.prototype.appendLine = function( range, wordOffset, fractional ) 
  * starting with [offset .. limit], which usually results in reducing the end position in all but
  * the last line, and in most cases more than 3 times, before changing directions.
  * 
+ * @method
  * @param range {es.Range} Range of data within content model to try to fit
  * @param ruler {HTMLElement} Element to take measurements with
  * @param width {Integer} Maximum width to allow the line to extend to
- * @return {Integer} Last index within "words" that contains a word that fits
+ * @returns {Integer} Last index within "words" that contains a word that fits
  */
 es.ContentView.prototype.fitWords = function( range, ruler, width ) {
 	var offset = range.start,
@@ -696,10 +719,11 @@ es.ContentView.prototype.fitWords = function( range, ruler, width ) {
  * used to detect when the first character was too long to fit on a line. In such cases the result
  * will contain the index of the first character and it's width.
  * 
+ * @method
  * @param range {es.Range} Range of data within content model to try to fit
  * @param ruler {HTMLElement} Element to take measurements with
  * @param width {Integer} Maximum width to allow the line to extend to
- * @return {Integer} Last index within "text" that contains a character that fits
+ * @returns {Integer} Last index within "text" that contains a character that fits
  */
 es.ContentView.prototype.fitCharacters = function( range, ruler, width ) {
 	var offset = range.start,

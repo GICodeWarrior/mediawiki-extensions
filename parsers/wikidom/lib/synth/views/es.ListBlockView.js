@@ -2,6 +2,8 @@
  * Creates an es.ListBlockView object.
  * 
  * @class
+ * @extends {es.ViewList}
+ * @extends {es.BlockView}
  * @constructor
  */
 es.ListBlockView = function( model ) {
@@ -14,8 +16,12 @@ es.ListBlockView = function( model ) {
 	} );
 };
 
+/* Methods */
+
 /**
  * Render content.
+ * 
+ * @method
  */
 es.ListBlockView.prototype.renderContent = function() {
 	for ( var i = 0; i < this.items.length; i++ ) {
@@ -23,47 +29,34 @@ es.ListBlockView.prototype.renderContent = function() {
 	}
 };
 
-es.ListBlockView.prototype.enumerate = function() {
-	var itemLevel,
-		levels = [];
-
-	for ( var i = 0; i < this.items.length; i++ ) {
-		itemLevel = this.items[i].model.getLevel();
-		levels = levels.slice(0, itemLevel + 1);
-		if ( this.items[i].model.getStyle() === 'number' ) {
-			if ( !levels[itemLevel] ) {
-				levels[itemLevel] = 0;
-			}
-			this.items[i].setNumber( ++levels[itemLevel] );
-		}
-	}
-};
-
 /**
  * Gets offset within content of position.
+ * 
+ * @method
+ * @param position {es.Position} Position to get offset for
+ * @returns {Integer} Offset nearest to position
  */
-es.ListBlockView.getContentOffset = function( position ) {
-	//return this.contentView.getOffset( position );
+es.ListBlockView.prototype.getContentOffset = function( position ) {
+	// TODO
 };
 
 /**
  * Gets rendered position of offset within content.
+ * 
+ * @method
+ * @param offset {Integer} Offset to get position for
+ * @returns {es.Position} Position of offset
  */
-es.ListBlockView.getRenderedPosition = function( offset ) {
-	//return this.contentView.getPosition( position );
+es.ListBlockView.prototype.getRenderedPosition = function( offset ) {
+	// TODO
 };
 
 /**
- * Gets rendered line index of offset within content.
+ * Draw selection around a given range.
+ * 
+ * @method
+ * @param range {es.Range} Range of content to draw selection around
  */
-es.ListBlockView.getRenderedLineIndex = function( offset ) {
-	//return this.contentView.getLineIndex( position );
-};
-
-es.ListBlockView.prototype.getLength = function() {
-	return this.model.items.getLengthOfItems();
-};
-
 es.ListBlockView.prototype.drawSelection = function( range ) {
 	var selectedViews = this.items.select( range );
 	for ( var i = 0; i < selectedViews.length; i++ ) {
@@ -71,6 +64,16 @@ es.ListBlockView.prototype.drawSelection = function( range ) {
 			new es.Range( selectedViews[i].from, selectedViews[i].to )
 		);
 	}
+};
+
+/**
+ * Gets length of contents.
+ * 
+ * @method
+ * @returns {Integer} Length of content, including any virtual spaces within the block
+ */
+es.ListBlockView.prototype.getLength = function() {
+	return this.model.items.getLengthOfItems();
 };
 
 /**
@@ -88,6 +91,27 @@ es.ListBlockView.prototype.getHtml = function( options ) {
 			return view.getHtml();
 		} ).join( '' )
 	);
+};
+
+/**
+ * Set the number labels of all ordered list items.
+ * 
+ * @method
+ */
+es.ListBlockView.prototype.enumerate = function() {
+	var itemLevel,
+		levels = [];
+
+	for ( var i = 0; i < this.items.length; i++ ) {
+		itemLevel = this.items[i].model.getLevel();
+		levels = levels.slice(0, itemLevel + 1);
+		if ( this.items[i].model.getStyle() === 'number' ) {
+			if ( !levels[itemLevel] ) {
+				levels[itemLevel] = 0;
+			}
+			this.items[i].setNumber( ++levels[itemLevel] );
+		}
+	}
 };
 
 /* Inheritance */

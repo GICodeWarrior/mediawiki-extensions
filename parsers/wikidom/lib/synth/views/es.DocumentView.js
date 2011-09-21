@@ -2,6 +2,7 @@
  * Creates an es.DocumentView object.
  * 
  * @class
+ * @extends {es.ViewList}
  * @constructor
  */
 es.DocumentView = function( documentModel ) {
@@ -9,8 +10,12 @@ es.DocumentView = function( documentModel ) {
 	this.$.addClass( 'editSurface-document' )
 };
 
+/* Methods */
+
 /**
  * Render content.
+ * 
+ * @method
  */
 es.DocumentView.prototype.renderContent = function() {
 	for ( var i = 0; i < this.items.length; i++ ) {
@@ -18,6 +23,34 @@ es.DocumentView.prototype.renderContent = function() {
 	}
 };
 
+/**
+ * Gets offset within content of position.
+ * 
+ * @method
+ * @param position {es.Position} Position to get offset for
+ * @returns {Integer} Offset nearest to position
+ */
+es.DocumentView.prototype.getContentOffset = function( position ) {
+	// TODO
+};
+
+/**
+ * Gets rendered position of offset within content.
+ * 
+ * @method
+ * @param offset {Integer} Offset to get position for
+ * @returns {es.Position} Position of offset
+ */
+es.DocumentView.prototype.getRenderedPosition = function( offset ) {
+	// TODO
+};
+
+/**
+ * Draw selection around a given range.
+ * 
+ * @method
+ * @param range {es.Range} Range of content to draw selection around
+ */
 es.DocumentView.prototype.drawSelection = function( range ) {
 	var selectedViews = this.items.select( range );
 	for ( var i = 0; i < selectedViews.length; i++ ) {
@@ -27,7 +60,13 @@ es.DocumentView.prototype.drawSelection = function( range ) {
 	}
 };
 
-es.DocumentView.prototype.getLength = function( ) {
+/**
+ * Gets length of contents.
+ * 
+ * @method
+ * @returns {Integer} Length of content, including virtual spaces between blocks
+ */
+es.DocumentView.prototype.getLength = function() {
 	return this.items.getLengthOfItems();
 };
 

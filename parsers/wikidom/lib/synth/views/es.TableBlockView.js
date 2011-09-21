@@ -2,6 +2,8 @@
  * Creates an es.TableBlockView object.
  * 
  * @class
+ * @extends {es.ViewList}
+ * @extends {es.BlockView}
  * @constructor
  */
 es.TableBlockView = function( model ) {
@@ -11,8 +13,12 @@ es.TableBlockView = function( model ) {
 	this.$.addClass( 'editSurface-tableBlock' );
 };
 
+/* Methods */
+
 /**
  * Render content.
+ * 
+ * @method
  */
 es.TableBlockView.prototype.renderContent = function() {
 	for ( var i = 0; i < this.items.length; i++ ) {
@@ -20,10 +26,34 @@ es.TableBlockView.prototype.renderContent = function() {
 	}
 };
 
-es.TableBlockView.prototype.getLength = function() {
-	return this.items.getLengthOfItems();
+/**
+ * Gets offset within content of position.
+ * 
+ * @method
+ * @param position {es.Position} Position to get offset for
+ * @returns {Integer} Offset nearest to position
+ */
+es.TableBlockView.prototype.getContentOffset = function( position ) {
+	// TODO
 };
 
+/**
+ * Gets rendered position of offset within content.
+ * 
+ * @method
+ * @param offset {Integer} Offset to get position for
+ * @returns {es.Position} Position of offset
+ */
+es.TableBlockView.prototype.getRenderedPosition = function( offset ) {
+	// TODO
+};
+
+/**
+ * Draw selection around a given range.
+ * 
+ * @method
+ * @param range {es.Range} Range of content to draw selection around
+ */
 es.TableBlockView.prototype.drawSelection = function( range ) {
 	var selectedViews = this.items.select( range );
 	for ( var i = 0; i < selectedViews.length; i++ ) {
@@ -31,6 +61,16 @@ es.TableBlockView.prototype.drawSelection = function( range ) {
 			new es.Range( selectedViews[i].from, selectedViews[i].to )
 		);
 	}
+};
+
+/**
+ * Gets length of contents.
+ * 
+ * @method
+ * @returns {Integer} Length of content, including any virtual spaces within the block
+ */
+es.TableBlockView.prototype.getLength = function() {
+	return this.items.getLengthOfItems();
 };
 
 /**
@@ -44,7 +84,7 @@ es.TableBlockView.prototype.getHtml = function( options ) {
 	return es.Html.makeTag( 'table', this.model.attributes, $.map( this.items, function( view ) {
 		return view.getHtml();
 	} ).join( '' ) );
-};
+}
 
 /* Inheritance */
 

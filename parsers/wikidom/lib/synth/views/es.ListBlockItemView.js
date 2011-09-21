@@ -2,6 +2,7 @@
  * Creates an es.ListBlockItemView object.
  * 
  * @class
+ * @extends {es.ViewListItem}
  * @constructor
  */
 es.ListBlockItemView = function( model ) {
@@ -21,48 +22,62 @@ es.ListBlockItemView = function( model ) {
 	} );
 };
 
+/* Methods */
+
+
 /**
  * Render content.
+ * 
+ * @method
  */
 es.ListBlockItemView.prototype.renderContent = function() {
 	this.contentView.render();
 };
 
-es.ListBlockItemView.prototype.setNumber = function( number ) {
-	this.$icon.text( number + '.' );
-};
-
 /**
  * Gets offset within content of position.
+ * 
+ * @method
+ * @param position {es.Position} Position to get offset for
+ * @returns {Integer} Offset nearest to position
  */
-es.ListBlockItemView.getContentOffset = function( position ) {
+es.ListBlockItemView.prototype.getContentOffset = function( position ) {
 	return this.contentView.getOffset( position );
 };
 
 /**
  * Gets rendered position of offset within content.
+ * 
+ * @method
+ * @param offset {Integer} Offset to get position for
+ * @returns {es.Position} Position of offset
  */
-es.ListBlockItemView.getRenderedPosition = function( offset ) {
+es.ListBlockItemView.prototype.getRenderedPosition = function( offset ) {
 	return this.contentView.getPosition( position );
 };
 
 /**
- * Gets rendered line index of offset within content.
+ * Draw selection around a given range.
+ * 
+ * @method
+ * @param range {es.Range} Range of content to draw selection around
  */
-es.ListBlockItemView.getRenderedLineIndex = function( offset ) {
-	return this.contentView.getLineIndex( position );
-};
-
-es.ListBlockItemView.prototype.getLength = function() {
-	return this.model.getLength();
-};
-
 es.ListBlockItemView.prototype.drawSelection = function( range ) {
 	this.contentView.drawSelection( range );
 };
 
 /**
- * Gets HTML rendering of item.
+ * Gets length of contents.
+ * 
+ * @method
+ * @returns {Integer} Length of content, including any virtual spaces within the block
+ */
+es.ListBlockItemView.prototype.getLength = function() {
+	return this.model.getLength();
+};
+
+/**
+ * Gets HTML rendering of block.
  * 
  * @method
  * @param options {Object} List of options, see es.DocumentView.getHtml for details
@@ -74,6 +89,15 @@ es.ListBlockItemView.prototype.getHtml = function( options ) {
 		{ 'class': this.$.attr( 'class' ) },
 		this.contentView.getHtml()
 	);
+}
+
+/**
+ * Sets the number label of the item, used for unordered lists
+ * 
+ * @method
+ */
+es.ListBlockItemView.prototype.setNumber = function( number ) {
+	this.$icon.text( number + '.' );
 };
 
 /* Inheritance */

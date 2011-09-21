@@ -2,6 +2,7 @@
  * Creates an es.ParagraphBlockView object.
  * 
  * @class
+ * @extends {es.BlockView}
  * @constructor
  */
 es.ParagraphBlockView = function( model ) {
@@ -16,8 +17,12 @@ es.ParagraphBlockView = function( model ) {
 	} );
 };
 
+/* Methods */
+
 /**
  * Render content.
+ * 
+ * @method
  */
 es.ParagraphBlockView.prototype.renderContent = function() {
 	this.contentView.render();
@@ -25,31 +30,44 @@ es.ParagraphBlockView.prototype.renderContent = function() {
 
 /**
  * Gets offset within content of position.
+ * 
+ * @method
+ * @param position {es.Position} Position to get offset for
+ * @returns {Integer} Offset nearest to position
  */
-es.ParagraphBlockView.getContentOffset = function( position ) {
+es.ParagraphBlockView.prototype.getContentOffset = function( position ) {
 	return this.contentView.getOffset( position );
 };
 
 /**
  * Gets rendered position of offset within content.
+ * 
+ * @method
+ * @param offset {Integer} Offset to get position for
+ * @returns {es.Position} Position of offset
  */
-es.ParagraphBlockView.getRenderedPosition = function( offset ) {
+es.ParagraphBlockView.prototype.getRenderedPosition = function( offset ) {
 	return this.contentView.getPosition( position );
 };
 
 /**
- * Gets rendered line index of offset within content.
+ * Draw selection around a given range.
+ * 
+ * @method
+ * @param range {es.Range} Range of content to draw selection around
  */
-es.ParagraphBlockView.getRenderedLineIndex = function( offset ) {
-	return this.contentView.getLineIndex( position );
-};
-
-es.ParagraphBlockView.prototype.getLength = function() {
-	return this.model.getContentLength();
-};
-
 es.ParagraphBlockView.prototype.drawSelection = function( range ) {
 	this.contentView.drawSelection( range );
+};
+
+/**
+ * Gets length of contents.
+ * 
+ * @method
+ * @returns {Integer} Length of content, including any virtual spaces within the block
+ */
+es.ParagraphBlockView.prototype.getLength = function() {
+	return this.model.getContentLength();
 };
 
 /**

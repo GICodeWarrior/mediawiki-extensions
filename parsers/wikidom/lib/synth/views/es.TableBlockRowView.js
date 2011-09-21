@@ -2,6 +2,8 @@
  * Creates an es.TableBlockRowView object.
  * 
  * @class
+ * @extends {es.ViewList}
+ * @extends {es.ViewListItem}
  * @constructor
  */
 es.TableBlockRowView = function( model ) {
@@ -10,8 +12,12 @@ es.TableBlockRowView = function( model ) {
 	this.$.attr( this.model.attributes );
 };
 
+/* Methods */
+
 /**
  * Render content.
+ * 
+ * @method
  */
 es.TableBlockRowView.prototype.renderContent = function() {
 	for ( var i = 0; i < this.items.length; i++ ) {
@@ -19,10 +25,34 @@ es.TableBlockRowView.prototype.renderContent = function() {
 	}
 };
 
-es.TableBlockRowView.prototype.getLength = function() {
-	return this.items.getLengthOfItems();
+/**
+ * Gets offset within content of position.
+ * 
+ * @method
+ * @param position {es.Position} Position to get offset for
+ * @returns {Integer} Offset nearest to position
+ */
+es.TableBlockRowView.prototype.getContentOffset = function( position ) {
+	// TODO
 };
 
+/**
+ * Gets rendered position of offset within content.
+ * 
+ * @method
+ * @param offset {Integer} Offset to get position for
+ * @returns {es.Position} Position of offset
+ */
+es.TableBlockRowView.prototype.getRenderedPosition = function( offset ) {
+	// TODO
+};
+
+/**
+ * Draw selection around a given range.
+ * 
+ * @method
+ * @param range {es.Range} Range of content to draw selection around
+ */
 es.TableBlockRowView.prototype.drawSelection = function( range ) {
 	var selectedViews = this.items.select( range );
 	for ( var i = 0; i < selectedViews.length; i++ ) {
@@ -33,7 +63,17 @@ es.TableBlockRowView.prototype.drawSelection = function( range ) {
 };
 
 /**
- * Gets HTML rendering of row.
+ * Gets length of contents.
+ * 
+ * @method
+ * @returns {Integer} Length of content, including any virtual spaces within the block
+ */
+es.TableBlockRowView.prototype.getLength = function() {
+	return this.items.getLengthOfItems();
+};
+
+/**
+ * Gets HTML rendering of block.
  * 
  * @method
  * @param options {Object} List of options, see es.DocumentView.getHtml for details
@@ -43,7 +83,7 @@ es.TableBlockRowView.prototype.getHtml = function( options ) {
 	return es.Html.makeTag( 'tr', this.model.attributes, $.map( this.items, function( view ) {
 		return view.getHtml();
 	} ).join( '' ) );
-};
+}
 
 /* Inheritance */
 
