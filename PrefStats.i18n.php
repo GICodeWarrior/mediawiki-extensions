@@ -2233,7 +2233,13 @@ Configura $wgPrefStatsTrackPrefs për trassé l epreferense.',
  * @author Khalid Mahmood
  */
 $messages['pnb'] = array(
+	'prefstats' => 'پسند دے سعاب کتاب',
+	'prefstats-desc' => 'سعاب کتاب ویکھو جے کنے ورتن والیاں نے اپنے پسند دے سعاب کتاب نوں چلایا۔',
 	'prefstats-title' => 'پسند دے سعاب کتاب',
+	'prefstats-list-intro' => 'ایس ویلے تھلے دتیاں گیاں پسند دیاں چیزاں دا سعاب رکھیا جاریا اے۔
+اے سعاب کتاب ویکھن لئی کلک کرو',
+	'prefstats-noprefs' => 'کوئی پسندی سعاب کتاب اس ویلے نئیں ویکھیا جاریا۔
+پسندی سعاب کتاب ویکھن لئی $wgPrefStatsTrackPrefs نوں ویکھو',
 	'prefstats-xaxis' => 'ویلہ (کینٹیاں چ)',
 	'prefstats-factor-hour' => 'کینٹہ',
 	'prefstats-factor-sixhours' => 'چھے کینٹے',
