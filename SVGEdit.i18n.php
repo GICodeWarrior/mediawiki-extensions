@@ -428,6 +428,13 @@ $messages['no'] = array(
 	'svgedit-toolbar-insert' => 'SVG-tegning',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Psubhashish
+ */
+$messages['or'] = array(
+	'svgedit-editor-close' => 'ନାକଚ',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */
