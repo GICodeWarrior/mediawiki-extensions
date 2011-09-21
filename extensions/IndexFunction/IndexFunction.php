@@ -1,4 +1,5 @@
 <?php
+if ( !defined( 'MEDIAWIKI' ) ) die();
 
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
