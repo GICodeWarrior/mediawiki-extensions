@@ -58,7 +58,7 @@ class OpenIDHooks {
 		if ( $nt && $nt->getNamespace() == NS_USER && strpos( $nt->getText(), '/' ) === false ) {
 			$user = User::newFromName( $nt->getText() );
 			if ( $user && $user->getID() != 0 ) {
-				$openid = SpecialOpenID::getUserUrl( $user );
+				$openid = SpecialOpenID::getUserOpenIDInformation( $user );
 				if ( count( $openid ) && strlen( $openid[0] ) != 0 ) {
 					global $wgOpenIDShowUrlOnUserPage;
 
@@ -134,7 +134,7 @@ class OpenIDHooks {
 
 	private static function getInfoTable( $user ) {
 		global $wgLang;
-		$openid_urls_registration = SpecialOpenID::getUserUrl( $user );
+		$openid_urls_registration = SpecialOpenID::getUserOpenIDInformation( $user );
 		$delTitle = SpecialPage::getTitleFor( 'OpenIDConvert', 'Delete' );
 		$sk = $user->getSkin();
 		$rows = '';

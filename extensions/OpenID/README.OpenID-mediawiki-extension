@@ -1,5 +1,5 @@
 MediaWiki OpenID extension README.OpenID-mediawiki-extension file
-version 0.938-beta 20110920
+version 0.939-beta 20110922
 
 Homepage and manual http://www.mediawiki.org/wiki/Extension:OpenID
 
@@ -421,15 +421,6 @@ $wgOpenIDAllowManualUsername = true;
 $wgOpenIDProposeUsernameFromSREG = false;
 $wgOpenIDAllowAutomaticUsername = false;
 
-
-== Skins ==
-
-If you are customizing a skin, and you want to show the OpenID
-identity for a user (say, on their user page), use the function
-OpenIDGetUserUrl($user). It takes a User object (not a name or an id!)
-and returns the user's OpenID identity if it exists, or null if it
-doesn't.
-
 == Translation ==
 
 The user interface strings for this extension are configurable and all start
@@ -476,6 +467,7 @@ The big changes for the future:
   into that account now
 
 == CHANGES ==
+* 0.939 function name changes
 * 0.938 list uoi_user_registration timestamp if present in openid-preference tab
 * 0.937 added uoi_user_registration timestamp field (bug30623)
 * 0.934 fixes

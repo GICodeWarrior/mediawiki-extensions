@@ -326,9 +326,9 @@ class SpecialOpenID extends SpecialPage {
 		$wgRequest->response()->setcookie( 'OpenID', $openid, time() +  $wgOpenIDCookieExpiration );
 	}
 
-	# Find the user with the given openid, if any
-	# return openid url and registration timestamp
-	public static function getUserUrl( $user ) {
+	# Find the user with the given openid
+	# return the registered OpenID urls and registration timestamps (if available)
+	public static function getUserOpenIDInformation( $user ) {
 		$openid_urls_registration = array();
 
 		if ( $user instanceof User && $user->getId() != 0 ) {
