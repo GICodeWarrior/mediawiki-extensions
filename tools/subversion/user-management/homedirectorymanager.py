@@ -81,6 +81,9 @@ class HomeDirectoryManager:
 				# uidNumber and gidNumber come back from LDAP as strings, we need ints here.
 				uidNumber = int(user[1]['uidNumber'][0])
 				gidNumber = int(user[1]['gidNumber'][0])
+				# Not all users have an sshkey, if not continue
+				if 'sshPublicKey' not in user[1]:
+					continue
 				sshPublicKey = user[1]['sshPublicKey']
 
 				AllUsers[uid] = {}
