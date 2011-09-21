@@ -2789,6 +2789,14 @@ $messages['pms'] = array(
  * @author Khalid Mahmood
  */
 $messages['pnb'] = array(
+	'ogg-short-audio' => 'اوگ $1 واز فائل, $2',
+	'ogg-short-video' => 'اوگ $1 وڈیو فائل, $2',
+	'ogg-short-general' => 'اوگ $1 میڈیا فائل, $2',
+	'ogg-long-audio' => 'اوگ $1 واز فائل, لمبآی $، $32',
+	'ogg-long-video' => 'اوگ $1 وڈیو فائل، لمبائی $2، $4×$5 ykvgS, $3',
+	'ogg-long-multiplexed' => 'اوگ ملٹیپلیکسڈ آڈیو/وڈیو فائل، $1، لمبآئی $2، $4×$5 پکسلز, $3 اورآل',
+	'ogg-long-general' => 'اوگ میڈیا فائل، لمبائی $2، $3',
+	'ogg-long-error' => 'ناں منی جان والی اوگ فائل: $1',
 	'ogg-play' => 'چلاؤ',
 	'ogg-pause' => 'وقفہ',
 	'ogg-stop' => 'رکو',
@@ -2804,6 +2812,8 @@ $messages['pnb'] = array(
 	'ogg-dismiss' => 'بند کرو',
 	'ogg-download' => 'فائل ڈاؤنلوڈ کرو',
 	'ogg-desc-link' => 'ایس مورت بارے',
+	'ogg-oggThumb-version' => 'اوگہینڈلر لئی اوگتھمب ورین $1 یا مگر آن والا۔',
+	'ogg-oggThumb-failed' => 'اوگتھمب تھمبنیل بنان چ ماڑا',
 );
 
 /** Pashto (پښتو)
