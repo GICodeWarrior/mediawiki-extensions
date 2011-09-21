@@ -13,12 +13,12 @@ appendCSS('.mw-index-hidden {'+
 	'}'+
 	'#use-js-note {'+
 	'	display: block !important;'+
-	'}'	
+	'}'
 );
 
 /*
  * Switch details between hidden/shown
-*/ 
+ */
 function toggleVisibility(idNumber) {
 	var openarrow = document.getElementById("mw-index-open-"+idNumber);
 	var closearrow = document.getElementById("mw-index-close-"+idNumber);
