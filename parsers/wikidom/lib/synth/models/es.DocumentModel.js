@@ -37,6 +37,26 @@ es.DocumentModel.newFromPlainObject = function( obj ) {
 
 /* Methods */
 
+es.DocumentModel.prototype.commit = function( transaction ) {
+	// commit transaction
+};
+
+es.DocumentModel.prototype.rollback = function( transaction ) {
+	// rollback transaction
+};
+
+es.DocumentModel.prototype.prepareInsertContent = function( offset, content ) {
+	// generate transaction
+};
+
+es.DocumentModel.prototype.prepareRemoveContent = function( range ) {
+	// generate transaction
+};
+
+es.DocumentModel.prototype.prepareAnnotateContent = function( range, annotation ) {
+	// generate transaction
+};
+
 es.DocumentModel.prototype.getPlainObject = function() {
 	var obj = {};
 	if ( this.items.length ) {

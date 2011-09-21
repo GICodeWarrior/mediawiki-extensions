@@ -163,6 +163,26 @@ es.BlockModel.getSectionBoundaries = function( offset ) {
 	throw 'BlockModel.getSectionBoundaries not implemented in this subclass.';
 };
 
+es.BlockModel.prototype.commit = function( transaction ) {
+	// commit transaction
+};
+
+es.BlockModel.prototype.rollback = function( transaction ) {
+	// rollback transaction
+};
+
+es.BlockModel.prototype.prepareInsertContent = function( offset, content ) {
+	// generate transaction
+};
+
+es.BlockModel.prototype.prepareRemoveContent = function( range ) {
+	// generate transaction
+};
+
+es.BlockModel.prototype.prepareAnnotateContent = function( range, annotation ) {
+	// generate transaction
+};
+
 /**
  * Gets a plain object representation of block, for serialization.
  * 

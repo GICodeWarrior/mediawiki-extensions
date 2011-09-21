@@ -258,6 +258,26 @@ es.ContentModel.prototype.getWordBoundaries = function( offset ) {
 	return new es.Range( start, end );
 };
 
+es.ContentModel.prototype.commit = function( transaction ) {
+	// commit transaction
+};
+
+es.ContentModel.prototype.rollback = function( transaction ) {
+	// rollback transaction
+};
+
+es.ContentModel.prototype.prepareInsertContent = function( offset, content ) {
+	// generate transaction
+};
+
+es.ContentModel.prototype.prepareRemoveContent = function( range ) {
+	// generate transaction
+};
+
+es.ContentModel.prototype.prepareAnnotateContent = function( range, annotation ) {
+	// generate transaction
+};
+
 /**
  * Get a plain content object.
  * 
