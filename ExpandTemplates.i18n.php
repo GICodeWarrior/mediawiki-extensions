@@ -1568,6 +1568,13 @@ $messages['oc'] = array(
 	'expand_templates_preview' => 'Previsualizacion',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Psubhashish
+ */
+$messages['or'] = array(
+	'expand_templates_ok' => 'ଠିକ ଅଛି',
+);
+
 /** Ossetic (Ирон)
  * @author Amikeco
  */
