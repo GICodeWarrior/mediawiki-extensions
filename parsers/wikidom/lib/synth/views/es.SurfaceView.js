@@ -43,7 +43,7 @@ es.SurfaceView = function( $container, surfaceModel ) {
 	// Resize
 	var surfaceView = this;
 	$(window).resize( function() {
-		var width = surface.$.width();
+		var width = surfaceView.$.width();
 		if ( surfaceView.width !== width ) {
 			surfaceView.width = width;
 			surfaceView.documentView.renderContent();
@@ -51,7 +51,7 @@ es.SurfaceView = function( $container, surfaceModel ) {
 	} );
 	
 	// MouseDown on surface
-	this.view.$.bind( {
+	this.$.bind( {
 		'mousedown' : function(e) {
 			return surfaceView.onMouseDown( e );
 		}
@@ -60,7 +60,7 @@ es.SurfaceView = function( $container, surfaceModel ) {
 	// Hidden input
 	var $document = $(document);
 	this.$input = $( '<input class="editSurface-input" />' )
-		.prependTo( this.view.$ )
+		.prependTo( this.$ )
 		.bind( {
 			'focus' : function() {
 				$(document).bind({
