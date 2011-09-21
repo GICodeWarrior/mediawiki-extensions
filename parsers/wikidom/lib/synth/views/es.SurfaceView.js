@@ -4,11 +4,15 @@
  * @class
  * @constructor
  */
-es.SurfaceView = function( $container, surfaceModel ) {
+es.SurfaceView = function( $container, model ) {
 	this.$ = $container.addClass( 'editSurface' );
-	this.model = surfaceModel;
+	this.model = model;
+	
+	// Initialize document view
 	this.documentView = new es.DocumentView( this.model.getDocument() );
 	this.$.append( this.documentView.$ );
+	
+	// Interaction state
 	this.width = null;
 	this.mouse = {
 		'selecting': false,
@@ -30,25 +34,13 @@ es.SurfaceView = function( $container, surfaceModel ) {
 		}
 	};
 	
-	// Selection
-	this.$ranges = $( '<div class="editSurface-ranges"></div>' ).prependTo( this.$ );
-	this.$rangeStart = $( '<div class="editSurface-range"></div>' ).appendTo( this.$ranges );
-	this.$rangeFill = $( '<div class="editSurface-range"></div>' ).appendTo( this.$ranges );
-	this.$rangeEnd = $( '<div class="editSurface-range"></div>' ).appendTo( this.$ranges );
-	
 	// Cursor
 	this.blinkInterval = null;
 	this.$cursor = $( '<div class="editSurface-cursor"></div>' ).appendTo( this.$ );
 	
-	// Resize
-	var surfaceView = this;
-	$(window).resize( function() {
-		var width = surfaceView.$.width();
-		if ( surfaceView.width !== width ) {
-			surfaceView.width = width;
-			surfaceView.documentView.renderContent();
-		}
-	} );
+	// References for use in closures
+	var surfaceView = this,
+		$document = $(document);
 	
 	// MouseDown on surface
 	this.$.bind( {
@@ -58,12 +50,11 @@ es.SurfaceView = function( $container, surfaceModel ) {
 	} );
 	
 	// Hidden input
-	var $document = $(document);
 	this.$input = $( '<input class="editSurface-input" />' )
 		.prependTo( this.$ )
 		.bind( {
 			'focus' : function() {
-				$(document).bind({
+				$document.bind({
 					'mousemove.editSurface' : function(e) {
 						return surfaceView.onMouseMove( e );
 					},
@@ -93,9 +84,14 @@ es.SurfaceView = function( $container, surfaceModel ) {
 			}
 		} );
 	
+	// Re-render when resizing horizontally
 	$(window).resize( function() {
-		surfaceView.view.hideCursor();
-		surfaceView.view.renderContent();
+		surfaceView.hideCursor();
+		var width = surfaceView.$.width();
+		if ( surfaceView.width !== width ) {
+			surfaceView.width = width;
+			surfaceView.documentView.renderContent();
+		}
 	} );
 	
 	// First render
