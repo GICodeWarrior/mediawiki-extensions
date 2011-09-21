@@ -161,7 +161,7 @@ class SpecialOpenIDConvert extends SpecialOpenID {
 		$wgOut->setPageTitle( wfMsg( 'openiddelete' ) );
 
 		# Check if the user is removing it's last OpenID url
-		$urls = self::getUserUrl( $wgUser );
+		$urls = self::getUserOpenIDInformation( $wgUser );
 		if ( count( $urls ) == 1 ) {
 			if ( $wgUser->mPassword == '' ) {
 				$wgOut->showErrorPage( 'openiderror', 'openiddeleteerrornopassword' );
