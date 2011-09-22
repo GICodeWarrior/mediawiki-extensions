@@ -195,6 +195,7 @@ $messages['be-tarask'] = array(
 	'narayam-help-page' => 'Help:Увод',
 	'narayam-checkbox-tooltip' => 'Для пераключэньня мэтаду уводу «Ўключыць» і «Выключыць»',
 	'narayam-disable-preference' => 'Забараніць рэдактар мэтадаў уводу Narayam',
+	'narayam-as' => 'Асамская трансьлітарацыя',
 	'narayam-eo' => 'Эспэранта',
 	'narayam-hi-inscript' => 'Гіндзі InScript',
 	'narayam-kn' => 'Канацкая трансьлітарацыя',
