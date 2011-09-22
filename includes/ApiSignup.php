@@ -27,10 +27,10 @@ class ApiSignup extends ApiBase {
 			'wpRetype' => $params['retype'],
 			'wpEmail'  => $params['email'],
 			'wpDomain' => $params['domain'],
-                        'wpReason' => $params['realname'],
-                        'wpSourceAction' => $params['source_action'],
-                        'wpSourceNS' => $params['source_ns'],
-                        'wpSourceArticle' => $params['source_article'],
+						'wpReason' => $params['realname'],
+						'wpSourceAction' => $params['source_action'],
+						'wpSourceNS' => $params['source_ns'],
+						'wpSourceArticle' => $params['source_article'],
 			'wpRemember' => ''
 		) );
 
@@ -143,7 +143,7 @@ class ApiSignup extends ApiBase {
 		}
 
 		$this->getResult()->addValue( null, 'signup', $result );
-        }
+		}
 
 	public function mustBePosted() {
 		return true;
@@ -160,10 +160,10 @@ class ApiSignup extends ApiBase {
 			'retype' => null,
 			'email' => null,
 			'domain' => null,
-                        'realname' => null,
-                        'source_action' => null,
-                        'source_ns' => null,
-                        'source_article' => null,
+			'realname' => null,
+			'source_action' => null,
+			'source_ns' => null,
+			'source_article' => null,
 		);
 	}
 
@@ -174,10 +174,10 @@ class ApiSignup extends ApiBase {
 			'retype' => 'Re-typed Password',
 			'email' => 'Email ID(optional)',
 			'domain' => 'Domain (optional)',
-                        'realname' => 'Real Name(optional)',
-                        'source_action' => 'Source Action',
-                        'source_ns' => 'Source Namespace ID',
-                        'source_article' => 'Source Article ID',
+			'realname' => 'Real Name(optional)',
+			'source_action' => 'Source Action',
+			'source_ns' => 'Source Namespace ID',
+			'source_article' => 'Source Article ID',
 		);
 	}
 
@@ -198,7 +198,7 @@ class ApiSignup extends ApiBase {
 			array( 'code' => 'WrongPassword', 'info' => 'Incorrect password entered. Please try again.' ),
 			array( 'code' => 'ReadOnlyPage', 'info' => 'Accounts cannot be created with read-only permissions' ),
 			array( 'code' => 'NoCookies', 'info' => 'The user account was not created, as we could not confirm its source.
-                                                                 Ensure you have cookies enabled, reload this page and try again.' ),
+																 Ensure you have cookies enabled, reload this page and try again.' ),
 			array( 'code' => 'NeedToken', 'info' => 'You need to resubmit your signup with the specified token' ),
 			array( 'code' => 'WrongToken', 'info' => 'You specified an invalid token' ),
 			array( 'code' => 'InsufficientPermission', 'info' => 'You do not have sufficient permissions to create account' ),

@@ -19,51 +19,48 @@ class ApiValidateSignup extends ApiBase {
 	public function execute() {
 		$params = $this->extractRequestParams();
 
-                $result = array();
+		$result = array();
 
-                switch ( $params['field'] ) {
-                    case "username":
-                        $mUser = User::newFromName( $params['inputVal'], 'creatable' );
-                        if ( !is_object( $mUser ) ) {
-                                $result['result'] = wfMsg( 'signupapi-noname' );
-                                $result['icon'] = 'MW-Icon-AlertMark.png';
-                        }
+		switch ( $params['field'] ) {
+			case "username":
+				$mUser = User::newFromName( $params['inputVal'], 'creatable' );
+				if ( !is_object( $mUser ) ) {
+						$result['result'] = wfMsg( 'signupapi-noname' );
+						$result['icon'] = 'MW-Icon-AlertMark.png';
+				}
 
-                        if ( 0 != $mUser->idForName() ) {
-                                $result['result'] = wfMsg( 'signupapi-userexists' );
-                                $result['icon'] = "MW-Icon-NoMark.png";
-                        }
+				if ( 0 != $mUser->idForName() ) {
+						$result['result'] = wfMsg( 'signupapi-userexists' );
+						$result['icon'] = "MW-Icon-NoMark.png";
+				} else {
+						$result['result'] = wfMsg( 'signupapi-ok' );
+						$result['icon'] = "MW-Icon-CheckMark.png";
+				}
+				break;
 
-                        else {
-                                $result['result'] = wfMsg( 'signupapi-ok' );
-                                $result['icon'] = "MW-Icon-CheckMark.png";
-                        }
-                        break;
+			case "email" :
+				if ( $valid = User::isValidEmailAddr( $params['inputVal'] ) ) {
+					 $result['result']= wfMsg( 'signupapi-ok' );
+					 $result['icon'] = "MW-Icon-CheckMark.png";
+				} else {
+					$result['result']= wfMsg( 'signupapi-invalidemailaddress' );
+					$result['icon'] = "MW-Icon-NoMark.png";
+				}
+				break;
 
-                     case "email" :
-                         if ( $valid = User::isValidEmailAddr( $params['inputVal'] ) ) {
-                             $result['result']= wfMsg( 'signupapi-ok' );
-                             $result['icon'] = "MW-Icon-CheckMark.png";
-                         }
-                         else {
-                             $result['result']= wfMsg( 'signupapi-invalidemailaddress' );
-                             $result['icon'] = "MW-Icon-NoMark.png";
-                         }
-                         break;
+			case "passwordlength" :
+				global $wgMinimalPasswordLength;
+				$result['result'] = $wgMinimalPasswordLength;
+				break;
 
-                      case "passwordlength" :
-                          global $wgMinimalPasswordLength;
-                          $result['result'] = $wgMinimalPasswordLength;
-                          break;
+			default :
+				ApiBase::dieDebug( __METHOD__, "Unhandled case value: {$params['field']}" );
+		}
 
-                    default :
-                        ApiBase::dieDebug( __METHOD__, "Unhandled case value: {$params['field']}" );
-                }
+		$this->getResult()->addValue( null, 'signup', $result );
+	}
 
-                $this->getResult()->addValue( null, 'signup', $result );
-        }
-
-        public function mustBePosted() {
+	public function mustBePosted() {
 		return false;
 	}
 
@@ -73,7 +70,7 @@ class ApiValidateSignup extends ApiBase {
 
 	public function getAllowedParams() {
 		return array(
-                        'field' => null,
+						'field' => null,
 			'inputVal' => null,
 			'password' => null,
 			'retype' => null,
@@ -100,8 +97,7 @@ class ApiValidateSignup extends ApiBase {
 		return array_merge( parent::getPossibleErrors(), array(
 			array( 'code' => 'WrongPassword', 'info' => 'Incorrect password entered. Please try again.' ),
 			array( 'code' => 'ReadOnlyPage', 'info' => 'Accounts cannot be created with read-only permissions' ),
-			array( 'code' => 'NoCookies', 'info' => 'The user account was not created, as we could not confirm its source.
-                                                                 Ensure you have cookies enabled, reload this page and try again.' ),
+			array( 'code' => 'NoCookies', 'info' => 'The user account was not created, as we could not confirm its source. Ensure you have cookies enabled, reload this page and try again.' ),
 			array( 'code' => 'NeedToken', 'info' => 'You need to resubmit your signup with the specified token' ),
 			array( 'code' => 'WrongToken', 'info' => 'You specified an invalid token' ),
 			array( 'code' => 'InsufficientPermission', 'info' => 'You do not have sufficient permissions to create account' ),
@@ -125,7 +121,7 @@ class ApiValidateSignup extends ApiBase {
 		);
 	}
 
-        public function getVersion() {
+		public function getVersion() {
 		return __CLASS__ . ': $Id: validateSignup.php 91472 2011-07-05 18:43:51Z akshay $';
 	}
 
