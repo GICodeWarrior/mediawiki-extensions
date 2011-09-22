@@ -1550,10 +1550,11 @@ Endre eller oppgrader nettleseren din, om mulig.',
 
 /** Oriya (ଓଡ଼ିଆ)
  * @author Odisha1
+ * @author Psubhashish
  */
 $messages['or'] = array(
 	'cb_previous_items_link' => 'ପୂର୍ବବର୍ତ୍ତୀ',
-	'cb_next_items_link' => 'ପରବର୍ତ୍ତୀ',
+	'cb_next_items_link' => 'ପର',
 	'cb_cat_files' => 'ଫାଇଲ',
 );
 
