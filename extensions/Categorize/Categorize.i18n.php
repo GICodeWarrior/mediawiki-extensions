@@ -219,10 +219,12 @@ $messages['pt'] = array(
 
 /** Swedish (Svenska)
  * @author Ainali
+ * @author WikiPhoenix
  */
 $messages['sv'] = array(
 	'categorize-desc' => 'Lägger till inmatningsruta för att redigera och ladda upp sida som tillåter användare att tilldela kategorier till sidan',
 	'categorize-title' => 'Kunskapskvalificering',
+	'categorize-footer' => 'Om du vill lägga till en etikett, kontakta en [[Special:ListUsers/sysop|administratör]].',
 );
 
 /** Ukrainian (Українська)

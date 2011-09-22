@@ -453,6 +453,10 @@ $messages['lb'] = array(
 	'wikitweet-timeago' => 'viru(n) $1',
 	'wikitweet-inthefuture' => 'An Zukunft!',
 	'wikitweet-fewsecondsago' => 'Virun e puer Sekonnen',
+	'wikitweet-status0' => 'Diskussioun',
+	'wikitweet-status2' => 'Warnung',
+	'wikitweet-comment' => 'Bemierkung',
+	'wikitweet-directlink' => 'Direkte Link:',
 );
 
 /** Lithuanian (Lietuvių)

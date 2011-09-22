@@ -2671,6 +2671,9 @@ $messages['or'] = array(
 	'ogg-play-sound' => 'ଶବ୍ଦ ଚଳାଇବେ',
 	'ogg-no-player' => 'କ୍ଷମା କରିବେ, ଆପଣଙ୍କ କମ୍ପୁଟରରେ କୌଣସି ଭିଡ଼ିଓ ଚାଳନ ସଫ୍ଟୱେର ଇନଷ୍ଟଲ ହୋଇଥିବା ଜଣାଯାଉନାହିଁ ।
 ଦୟାକରି <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ଏକ ପ୍ଲେଅର ଡାଉନଲୋଡ଼ କରିନିଅନ୍ତୁ</a> ।',
+	'ogg-no-xiphqt' => 'ଆପଣଙ୍କ ପାଖରେ QuickTime ପାଇଁ XiphQT କମ୍ପୋନେଣ୍ଟ ନଥିବା ଭଳି ଲାଗୁଛି ।
+ଏହି କମ୍ପୋନେଣ୍ଟ ବିନା QuickTime Ogg ଫାଇଲ ଚଳାଇପାରିବ ନାହିଁ । 
+ଦୟାକରି <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">XiphQT ଡାଉନଲୋଡ଼ କରନ୍ତୁ</a> ଅବା ଆଉ ଏକ ପ୍ଲେଅର ବାଛନ୍ତୁ ।',
 	'ogg-player-videoElement' => 'ଆଞ୍ଚଳିକ ବ୍ରାଉଜର ସହଯୋଗ',
 	'ogg-player-oggPlugin' => 'ବ୍ରାଉଜର ପ୍ଲଗଇନ',
 	'ogg-player-thumbnail' => 'ଏବେଯାଏଁ କେବଳ ଛବି',

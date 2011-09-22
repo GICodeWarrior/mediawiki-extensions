@@ -328,6 +328,7 @@ In addition, you may want to append "<code>&uselang=</code>" with your language 
 	'configure-throttle-action-move' => '{{Identical|Move}}',
 	'configure-throttle-action-rollback' => '{{Identical|Rollback}}',
 	'configure-throttle-group' => '{{Identical|Type}}',
+	'configure-throttle-limit' => '{{Identical|Limit}}',
 	'configure-condition-operator-or' => '{{Identical|Or}}',
 	'configure-condition-operator-and' => '{{Identical|And}}',
 	'configure-condition-operator-xor' => 'Means "one or the other but not both"',
@@ -8517,6 +8518,7 @@ Rendètz-lo modificable per PHP per qu'aquesta extension foncione.",
 );
 
 /** Oriya (ଓଡ଼ିଆ)
+ * @author Ansumang
  * @author Jose77
  * @author Odisha1
  * @author Psubhashish
@@ -8549,7 +8551,7 @@ $messages['or'] = array(
 	'configure-js-add' => 'ନୂଆ ନିବେଶଟିଏ ଯୋଡ଼ିବେ',
 	'configure-js-group-exists' => 'ଭୁଲ: ଏହି ଗୋଠଟି ଆଗରୁ ରହିଅଛି ।',
 	'configure-js-remove' => 'ଲିଭେଇବେ',
-	'configure-old-changes' => 'ବଦଳାସବୁ',
+	'configure-old-changes' => 'ବଦଳସବୁ',
 	'configure-section-pages' => 'ପୃଷ୍ଠା',
 	'configure-section-email' => 'ଇ-ମେଲ',
 	'configure-section-namespaces' => 'ନେମସ୍ପେସ',

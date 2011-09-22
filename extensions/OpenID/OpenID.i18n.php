@@ -153,6 +153,7 @@ You would not able to log in without an OpenID.',
  * @author Hamilton Abreu
  * @author IAlex
  * @author Jon Harald Søby
+ * @author Nike
  * @author Purodha
  * @author Raymond
  * @author Siebrand
@@ -196,8 +197,8 @@ OpenID preferences tab title',
 	'openid-pref-hide' => 'OpenID preference label (Hide your OpenID URL on your user page, if you log in with OpenID)',
 	'openid-pref-update-userinfo-on-login' => 'OpenID preference label for updating fron OpenID persona upon login',
 	'openid-urls-action' => '{{Identical|Action}}',
-	'openid-urls-registration' => '{{Identical|prefs-registration}}',
-	'openid-urls-registration-date-time' => '{{Identical|prefs-registration-date-time}}',
+	'openid-urls-registration' => 'Used in the same way as {{msg-mw|prefs-registration}}',
+	'openid-urls-registration-date-time' => 'Used in the same way as {{msg-mw|prefs-registration-date-time}}.',
 	'openid-urls-delete' => '{{Identical|Delete}}',
 	'specialpages-group-openid' => 'Display group name for OpenID-extension related special pages for Special:SpecialPages',
 	'right-openid-dashboard-access' => 'the standard access right for the OpenID dashboard, which is a restricted special page',
