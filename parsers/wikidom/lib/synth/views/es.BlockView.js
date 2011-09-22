@@ -10,6 +10,8 @@
  */
 es.BlockView = function( blockModel, $element ) {
 	es.ViewListItem.call( this, blockModel, $element );
+	this.$.addClass( 'editSurface-block' );
+	this.$.data( 'block', this );
 };
 
 /**

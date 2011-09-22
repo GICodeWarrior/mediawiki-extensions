@@ -8,9 +8,14 @@
  * @property documentModel {es.DocumentModel}
  * @property attributes {Object}
  */
-es.TableBlockCellModel = function( documentModel, attributes ) {
+es.TableBlockCellModel = function( blocks, attributes ) {
 	es.ModelListItem.call( this );
-	this.documentModel = documentModel || null;
+	es.ModelList.call( this );
+	if ( $.isArray( blocks ) ) {
+		for ( var i = 0; i < blocks.length; i++ ) {
+			this.append( blocks[i] );
+		}
+	}
 	this.attributes = attributes || {};
 };
 
@@ -23,10 +28,12 @@ es.TableBlockCellModel = function( documentModel, attributes ) {
  */
 es.TableBlockCellModel.newFromPlainObject = function( obj ) {
 	return new es.TableBlockCellModel(
-		// Cells - if given, convert plain document object to es.DocumentModel objects
-		!$.isPlainObject( obj.document ) ? null : es.DocumentModel.newFromPlainObject( obj.document ),
+		// Blocks - if given, convert all plain "block" objects to es.WikiDom* objects
+		!$.isArray( obj.blocks ) ? [] : $.map( obj.blocks, function( block ) {
+			return es.BlockModel.newFromPlainObject( block );
+		} ),
 		// Attributes - if given, make a deep copy of attributes
-		!$.isPlainObject( obj.attributes ) ? {} : $.extend( true, {}, obj.attributes )
+		!$.isPlainObject( obj.attributes ) ? {} : $.extend( true, {}, obj.attributes )		
 	);
 };
 
@@ -103,3 +110,4 @@ es.TableBlockCellModel.prototype.annotateContent = function( range, annotation )
 /* Inheritance */
 
 es.extend( es.TableBlockCellModel, es.ModelListItem );
+es.extend( es.TableBlockCellModel, es.ModelList );

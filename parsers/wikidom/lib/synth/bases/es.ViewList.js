@@ -44,6 +44,7 @@ es.ViewList = function( model, $element ) {
 	
 	this.model.on( 'prepend', function( itemModel ) {
 		var itemView = list.recycleItemView( itemModel, true );
+		itemView.list = list;
 		itemView.on( 'update', list.relayUpdate );
 		list.items.unshift( itemView );
 		list.$.prepend( itemView.$ );
@@ -52,6 +53,7 @@ es.ViewList = function( model, $element ) {
 	} );
 	this.model.on( 'append', function( itemModel ) {
 		var itemView = list.recycleItemView( itemModel, true );
+		itemView.list = list;
 		itemView.on( 'update', list.relayUpdate );
 		list.items.push( itemView );
 		list.$.append( itemView.$ );
@@ -61,6 +63,7 @@ es.ViewList = function( model, $element ) {
 	this.model.on( 'insertBefore', function( itemModel, beforeModel ) {
 		var beforeView = list.lookupItemView( beforeModel ),
 			itemView = list.recycleItemView( itemModel, true );
+		itemView.list = list;
 		itemView.on( 'update', list.relayUpdate );
 		if ( beforeView ) {
 			list.items.splice( list.items.indexOf( beforeView ), 0, itemView );
@@ -75,6 +78,7 @@ es.ViewList = function( model, $element ) {
 	this.model.on( 'insertAfter', function( itemModel, afterModel ) {
 		var afterView = list.lookupItemView( afterModel ),
 			itemView = list.recycleItemView( itemModel, true );
+		itemView.list = list;
 		itemView.on( 'update', list.relayUpdate );
 		if ( afterView ) {
 			list.items.splice( list.items.indexOf( afterView ) + 1, 0, itemView );
@@ -88,6 +92,7 @@ es.ViewList = function( model, $element ) {
 	} );
 	this.model.on( 'remove', function( itemModel ) {
 		var itemView = list.recycleItemView( itemModel );
+		itemView.list = null;
 		itemView.removeListener( 'update', list.relayUpdate );
 		list.emit( 'remove', itemView );
 		list.emit( 'update' );
@@ -97,6 +102,7 @@ es.ViewList = function( model, $element ) {
 	var itemModels = this.model.all();
 	for ( var i = 0; i < itemModels.length; i++ ) {
 		var itemView = itemModels[i].createView();
+		itemView.list = list;
 		itemView.on( 'update', this.relayUpdate );
 		this.items.push( itemView );
 		this.$.append( itemView.$ );

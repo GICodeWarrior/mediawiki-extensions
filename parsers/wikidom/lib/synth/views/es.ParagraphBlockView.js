@@ -7,9 +7,7 @@
  */
 es.ParagraphBlockView = function( model ) {
 	es.BlockView.call( this, model );
-	
 	this.$.addClass( 'editSurface-paragraphBlock' );
-	
 	this.contentView = new es.ContentView( this.$, this.model.content );
 	var view = this;
 	this.contentView.on( 'update', function() {
@@ -18,6 +16,13 @@ es.ParagraphBlockView = function( model ) {
 };
 
 /* Methods */
+
+es.ParagraphBlockView.prototype.getOffsetFromPosition = function( position ) {
+	var blockPosition = this.$.offset();
+	position.left -= blockPosition.left;
+	position.top -= blockPosition.top;
+	return this.contentView.getOffset( position );
+};
 
 /**
  * Render content.

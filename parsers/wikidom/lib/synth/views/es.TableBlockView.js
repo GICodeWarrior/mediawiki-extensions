@@ -15,6 +15,21 @@ es.TableBlockView = function( model ) {
 
 /* Methods */
 
+es.TableBlockView.prototype.getOffsetFromPosition = function( position ) {
+	var rowOffset;
+	var itemHeight;
+
+	for ( var i = 0; i < this.items.length; i++ ) {
+		rowOffset = this.items[i].$.offset();
+		if ( position.top >= rowOffset.top ) {
+			itemHeight = this.items[i].$.height();
+			if ( position.top < rowOffset.top + itemHeight ) {
+				return this.items[i].getOffsetFromPosition( position );
+			}
+		}
+	}
+};
+
 /**
  * Render content.
  * 

@@ -12,6 +12,22 @@ es.DocumentView = function( documentModel ) {
 
 /* Methods */
 
+es.DocumentView.prototype.getOffsetFromPosition = function( position ) {
+	if ( this.items.length === 0 ) {
+		return 0;
+	}
+	
+	var blockView = this.items[0];
+	for ( var i = 0; i < this.items.length; i++ ) {
+		if ( this.items[i].$.offset().top >= position.top ) {
+			break;
+		}
+		blockView = this.items[i];
+	}
+
+	return blockView.getOffsetFromPosition( position );
+};
+
 /**
  * Render content.
  * 

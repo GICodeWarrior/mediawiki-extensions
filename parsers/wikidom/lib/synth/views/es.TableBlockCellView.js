@@ -6,13 +6,28 @@
  * @constructor
  */
 es.TableBlockCellView = function( model ) {
-	es.ViewListItem.call( this, model, $( '<td>' ) );
-	this.documentView = new es.DocumentView( this.model.documentModel );
-	this.$.append( this.documentView.$ );
+	es.ViewList.call( this, model, $( '<td>' ) );
+	es.ViewListItem.call( this, model, this.$ );
 	this.$.attr( this.model.attributes );
 };
 
 /* Methods */
+
+es.TableBlockCellView.prototype.getOffsetFromPosition = function( position ) {
+	var blockOffset;
+	var itemHeight;
+	
+	for ( var i = 0; i < this.items.length; i++ ) {
+		blockOffset = this.items[i].$.offset();
+		if ( position.top >= blockOffset.top ) {
+			itemHeight = this.items[i].$.height();
+			if ( position.top < blockOffset.top + itemHeight ) {
+				return this.items[i].getOffsetFromPosition( position );
+			}
+		}
+	}
+};
+
 
 /**
  * Render content.
@@ -20,7 +35,9 @@ es.TableBlockCellView = function( model ) {
  * @method
  */
 es.TableBlockCellView.prototype.renderContent = function() {
-	this.documentView.renderContent();
+	for ( var i = 0; i < this.items.length; i++ ) {
+		this.items[i].renderContent();
+	}
 };
 
 /**
@@ -79,3 +96,4 @@ es.TableBlockCellView.prototype.getHtml = function( options ) {
 /* Inheritance */
 
 es.extend( es.TableBlockCellView, es.ViewListItem );
+es.extend( es.TableBlockCellView, es.ViewList );

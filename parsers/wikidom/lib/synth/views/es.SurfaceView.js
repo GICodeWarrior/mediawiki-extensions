@@ -235,7 +235,9 @@ es.SurfaceView.prototype.onKeyUp = function( e ) {
 };
 
 es.SurfaceView.prototype.onMouseDown = function( e ) {
-	// TODO: Respond to mouse down event, moving cursor and possibly beginning selection painting
+	var position = es.Position.newFromEventPagePosition( e );
+	var offset = this.documentView.getOffsetFromPosition( position );
+	console.log( offset );
 	return false;
 };
 
