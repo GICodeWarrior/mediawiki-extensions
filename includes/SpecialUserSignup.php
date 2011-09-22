@@ -53,7 +53,7 @@ class SpecialUserSignup extends SpecialPage {
 	var $mAction, $mCreateaccount, $mCreateaccountMail;
 	var $mRemember, $mEmail, $mDomain, $mLanguage;
 	var $mSkipCookieCheck, $mReturnToQuery, $mToken, $mStickHTTPS;
-	var $mType, $mReason, $mRealName;
+	var $mType, $mReason, $mRealName, $mUsername;
 	var $abortError = '';
 	var $tempUser, $mConfirmationMailStatus, $mRunCookieRedirect, $mRunCreationConfirmation;
 	var $mSourceAction, $mSourceNS, $msourceArticle;
@@ -198,9 +198,11 @@ class SpecialUserSignup extends SpecialPage {
 
 	/**
 	 * @private
+	 *
+	 * @param $tempUser User
 	 */
-	function addNewAccount($tempUser) {
-		global $wgUser, $wgEmailAuthentication, $wgOut;
+	function addNewAccount( $tempUser ) {
+		global $wgUser, $wgEmailAuthentication;
 
 		# If we showed up language selection links, and one was in use, be
 		# smart (and sensible) and save that language as the user's preference
@@ -243,9 +245,9 @@ class SpecialUserSignup extends SpecialPage {
 	 * @private
 	 */
 	function addNewAccountInternal() {
-		global $wgUser, $wgOut;
+		global $wgUser;
 		global $wgMemc, $wgAccountCreationThrottle;
-		global $wgAuth, $wgMinimalPasswordLength;
+		global $wgAuth;
 		global $wgEmailConfirmToEdit;
 
 		// If the user passes an invalid domain, something is fishy
@@ -266,7 +268,6 @@ class SpecialUserSignup extends SpecialPage {
 		}
 
 		if ( wfReadOnly() ) {
-
 			return self::READ_ONLY_PAGE;
 		}
 
@@ -646,7 +647,6 @@ class SpecialUserSignup extends SpecialPage {
 			return;
 		}
 
-
 		if ( $this->mUsername == '' ) {
 			if ( $wgUser->isLoggedIn() ) {
 				$this->mUsername = $wgUser->getName();
@@ -752,18 +752,12 @@ class SpecialUserSignup extends SpecialPage {
 	/**
 	 * @private
 	 *
-	 * @param $tempUserser User
+	 * @param $tempUser User
 	 *
 	 * @return Boolean
 	 */
-	function showCreateOrLoginLink( &$tempUserser ) {
-		if( $this->mType == 'signup' ) {
-			return true;
-		} elseif( $tempUserser->isAllowed( 'createaccount' ) ) {
-			return true;
-		} else {
-			return false;
-		}
+	function showCreateOrLoginLink( $tempUser ) {
+		return $this->mType == 'signup' || $tempUser->isAllowed( 'createaccount' );
 	}
 
 	/**

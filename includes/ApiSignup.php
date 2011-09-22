@@ -39,13 +39,13 @@ class ApiSignup extends ApiBase {
 			wfSetupSession();
 		}
 
-		$signupForm = new SignupForm( $req );
+		$signupForm = new SpecialUserSignup( $req );
 
 		global $wgCookiePrefix, $wgUser;
 
 		$signupRes = $signupForm->addNewAccountInternal();
 		switch( $signupRes ) {
-			case SignupForm::SUCCESS:
+			case SpecialUserSignup::SUCCESS:
 				//$signupForm->initUser($signupForm->mUser);
 
 				wfRunHooks( 'AddNewAccount', array( $wgUser, false ) );
@@ -66,75 +66,75 @@ class ApiSignup extends ApiBase {
 				$result['sessionid'] = session_id();
 				break;
 
-			case SignupForm::INVALID_DOMAIN:
+			case SpecialUserSignup::INVALID_DOMAIN:
 				$result['result'] = 'WrongPassword';
 				$result['domain']= $signupForm->mDomain;
 				break;
 
-			case SignupForm::READ_ONLY_PAGE:
+			case SpecialUserSignup::READ_ONLY_PAGE:
 				$result['result'] = 'ReadOnlyPage';
 				break;
 
-			case SignupForm::NO_COOKIES:
+			case SpecialUserSignup::NO_COOKIES:
 				$result['result'] = 'NoCookies';
 				break;
 
-			case SignupForm::NEED_TOKEN:
+			case SpecialUserSignup::NEED_TOKEN:
 				$result['result'] = 'NeedToken';
 				$result['token'] = $signupForm->getCreateaccountToken();
 				$result['cookieprefix'] = $wgCookiePrefix;
 				$result['sessionid'] = session_id();
 				break;
 
-			case SignupForm::WRONG_TOKEN:
+			case SpecialUserSignup::WRONG_TOKEN:
 				$result['result'] = 'WrongToken';
 				break;
 
-			case SignupForm::INSUFFICIENT_PERMISSION:
+			case SpecialUserSignup::INSUFFICIENT_PERMISSION:
 				$result['result'] = 'InsufficientPermission';
 				break;
 
-			case SignupForm::CREATE_BLOCKED:
+			case SpecialUserSignup::CREATE_BLOCKED:
 				$result['result'] = 'CreateBlocked';
 				break;
 
-			case SignupForm::IP_BLOCKED:
+			case SpecialUserSignup::IP_BLOCKED:
 				$result['result'] = 'IPBlocked';
 				break;
 
-			case SignupForm::NO_NAME:
+			case SpecialUserSignup::NO_NAME:
 				$result['result'] = 'NoName';
 				break;
 
-			case SignupForm::USER_EXISTS:
+			case SpecialUserSignup::USER_EXISTS:
 				$result['result'] = 'UserExists';
 				break;
 
-			case SignupForm::WRONG_RETYPE:
+			case SpecialUserSignup::WRONG_RETYPE:
 				$result['result'] = 'WrongRetype';
 				break;
 
-			case SignupForm::INVALID_PASS:
+			case SpecialUserSignup::INVALID_PASS:
 				$result['result'] = 'InvalidPass';
 				break;
 
-			case SignupForm::NO_EMAIL:
+			case SpecialUserSignup::NO_EMAIL:
 				$result['result'] = 'NoEmail';
 				break;
 
-			case SignupForm::INVALID_EMAIL:
+			case SpecialUserSignup::INVALID_EMAIL:
 				$result['result'] = 'InvalidEmail';
 				break;
 
-			case SignupForm::BLOCKED_BY_HOOK:
+			case SpecialUserSignup::BLOCKED_BY_HOOK:
 				$result['result'] = 'BlockedByHook';
 				break;
 
-			case SignupForm::EXTR_DB_ERROR:
+			case SpecialUserSignup::EXTR_DB_ERROR:
 				$result['result'] = 'ExternalDBError';
 				break;
 
-			case SignupForm::THROTLLED:
+			case SpecialUserSignup::THROTLLED:
 				$result['result'] = 'Throttled';
 				break;
 
