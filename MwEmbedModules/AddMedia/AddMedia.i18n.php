@@ -5376,13 +5376,14 @@ $messages['oc'] = array(
 /** Oriya (ଓଡ଼ିଆ)
  * @author Ansumang
  * @author Odisha1
+ * @author Psubhashish
  */
 $messages['or'] = array(
 	'mwe-upload-unknown-size' => 'ଅଜଣା ଆକାର',
 	'mwe-thumbnail-more' => 'ବିସ୍ତାର',
 	'mwe-filesource' => 'ଉତ୍ସ:',
 	'mwe-filestatus' => 'କପିରାଇଟ ସ୍ଥିତି:',
-	'mwe-am-results_next' => 'ପରବର୍ତ୍ତୀ',
+	'mwe-am-results_next' => 'ପର',
 	'mwe-am-results_prev' => 'ପୂର୍ବବର୍ତ୍ତୀ',
 	'mwe-am-layout' => 'ବିନ୍ୟାସ:',
 	'mwe-link' => 'ଲିଙ୍କ',
