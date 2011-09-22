@@ -25,21 +25,22 @@ class ApiValidateSignup extends ApiBase {
 			case "username":
 				$mUser = User::newFromName( $params['inputVal'], 'creatable' );
 				if ( !is_object( $mUser ) ) {
-						$result['result'] = wfMsg( 'signupapi-noname' );
-						$result['icon'] = 'MW-Icon-AlertMark.png';
+					$result['result'] = wfMsg( 'signupapi-noname' );
+					$result['icon'] = 'MW-Icon-AlertMark.png';
 				}
 
 				if ( 0 != $mUser->idForName() ) {
-						$result['result'] = wfMsg( 'signupapi-userexists' );
-						$result['icon'] = "MW-Icon-NoMark.png";
+					$result['result'] = wfMsg( 'signupapi-userexists' );
+					$result['icon'] = "MW-Icon-NoMark.png";
 				} else {
-						$result['result'] = wfMsg( 'signupapi-ok' );
-						$result['icon'] = "MW-Icon-CheckMark.png";
+					$result['result'] = wfMsg( 'signupapi-ok' );
+					$result['icon'] = "MW-Icon-CheckMark.png";
 				}
 				break;
 
 			case "email" :
-				if ( $valid = User::isValidEmailAddr( $params['inputVal'] ) ) {
+				$valid = User::isValidEmailAddr( $params['inputVal'] );
+				if ( $valid ) {
 					 $result['result']= wfMsg( 'signupapi-ok' );
 					 $result['icon'] = "MW-Icon-CheckMark.png";
 				} else {
@@ -70,7 +71,7 @@ class ApiValidateSignup extends ApiBase {
 
 	public function getAllowedParams() {
 		return array(
-						'field' => null,
+			'field' => null,
 			'inputVal' => null,
 			'password' => null,
 			'retype' => null,

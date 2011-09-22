@@ -27,10 +27,10 @@ class ApiSignup extends ApiBase {
 			'wpRetype' => $params['retype'],
 			'wpEmail'  => $params['email'],
 			'wpDomain' => $params['domain'],
-						'wpReason' => $params['realname'],
-						'wpSourceAction' => $params['source_action'],
-						'wpSourceNS' => $params['source_ns'],
-						'wpSourceArticle' => $params['source_article'],
+			'wpReason' => $params['realname'],
+			'wpSourceAction' => $params['source_action'],
+			'wpSourceNS' => $params['source_ns'],
+			'wpSourceArticle' => $params['source_article'],
 			'wpRemember' => ''
 		) );
 

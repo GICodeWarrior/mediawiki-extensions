@@ -79,7 +79,6 @@ class SignupAPIHooks {
 				'href' => SkinTemplate::makeSpecialUrl( 'UserSignup', "$returnto&type=signup&wpSourceAction=$sourceAction&wpSourceNS=$sourceNS&wpSourceArticle=$sourceArticle" ),
 				'active' => $title->isSpecial( 'Userlogin' ) && $is_signup
 			);
-
 			if ( substr( $wgServer, 0, 5 ) === 'http:' && $wgSecureLogin ) {
 				$title = SpecialPage::getTitleFor( 'UserSignup' );
 				$https_url = preg_replace( '/^http:/', 'https:', $title->getFullURL( "type=signup" ) );

@@ -243,6 +243,8 @@ class SpecialUserSignup extends SpecialPage {
 
 	/**
 	 * @private
+	 *
+	 * @return User|int If int, it is a returned constant
 	 */
 	function addNewAccountInternal() {
 		global $wgUser;
@@ -905,6 +907,10 @@ class SpecialUserSignup extends SpecialPage {
 		}
 	}
 
+	/**
+	 * @param $tempUser User
+	 * @return bool
+	 */
 	private function addToSourceTracking( $tempUser ) {
 		$sourcetracking_data = array(
 			'userid' => $tempUser->getId(),
