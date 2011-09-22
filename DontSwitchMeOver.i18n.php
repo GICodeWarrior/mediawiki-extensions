@@ -380,6 +380,14 @@ $messages['no'] = array(
 	'dontswitchmeover-pref' => 'Ikke bytt utseende mitt når standardutseende endres',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Psubhashish
+ */
+$messages['or'] = array(
+	'dontswitchmeover-desc' => 'ଯଦି ଆପେଆପେ ସଚଳ ଥିବା ଆବରଣ ବଦଳାଯାଏ ତେବେ ସଭ୍ୟମାନେ ସେମାନଙ୍କ ଆବରଣକୁ ବଦଳାଇବାକୁ ଚାହିଁବାର ପସନ୍ଦ ।',
+	'dontswitchmeover-pref' => 'ଆପେଆପେ ଆବରଣ ବଦଳିଲେ ମୋ ଆବରଣକୁ ବଦଳାଇବାକୁ ଅନୁମୋଦନ କରନ୍ତୁ ନାହିଁ',
+);
+
 /** Polish (Polski)
  * @author Leinad
  */
