@@ -349,6 +349,7 @@ This is visible when a SynTrans is annotated, or while editing a page.
 	'ow_TextAttribute' => '{{Identical|Property}}',
 	'ow_TranslatedTextAttribute' => '{{Identical|Property}}',
 	'ow_TranslatedTextAttributeValue' => '{{Identical|Text}}',
+	'ow_Label' => '{{Identical|Label}}',
 	'ow_Link' => '{{Identical|Link}}',
 	'ow_LinkAttribute' => '{{Identical|Property}}',
 	'ow_LinkAttributeValues' => '{{Identical|Links}}',
