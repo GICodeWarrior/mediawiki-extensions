@@ -50,7 +50,6 @@ class TopNetworks extends SpecialPage {
 		$where = array();
 		if ( $sport ) {
 			$where['team_sport_id'] = $sport;
-			//$sport_where = "WHERE sport_team.team_sport_id={$sport}";
 		}
 
 		// Set the page title
@@ -71,16 +70,6 @@ class TopNetworks extends SpecialPage {
 		$dbr = wfGetDB( DB_MASTER );
 
 		// Teams
-		/*
-		$sql = "SELECT COUNT(sport_favorite.sf_team_id) AS network_user_count,
-				sport_favorite.sf_team_id, sport_team.team_name,
-				sport_team.team_sport_id
-			FROM sport_favorite
-			INNER JOIN sport_team ON sport_favorite.sf_team_id=sport_team.team_id {$sport_where}
-			GROUP BY sport_team.team_id
-			ORDER BY network_user_count {$order} LIMIT 0,50";
-		$res = $dbr->query( $sql, __METHOD__ );
-		*/
 		$res = $dbr->select(
 			array( 'sport_favorite', 'sport_team' ),
 			array(
@@ -100,14 +89,6 @@ class TopNetworks extends SpecialPage {
 		);
 
 		// Sports
-		/*
-		$sql_sport = "SELECT COUNT(sf_sport_id) AS sport_count, sf_sport_id, sport_name
-			FROM sport_favorite
-			INNER JOIN sport ON sf_sport_id = sport_id
-			GROUP BY sf_sport_id
-			ORDER BY sport_count {$order} LIMIT 0,50";
-		$res_sport = $dbr->query( $sql_sport, __METHOD__ );
-		*/
 		$res_sport = $dbr->select(
 			array( 'sport_favorite', 'sport' ),
 			array(
@@ -125,14 +106,6 @@ class TopNetworks extends SpecialPage {
 		);
 
 		// Navigation
-		/*
-		$sql_sport_nav = "SELECT sport_id, sport_name, team_sport_id
-			FROM sport
-			INNER JOIN sport_team ON sport_id = team_sport_id
-			GROUP BY sport_name
-			ORDER BY sport_id";
-		$res_sport_nav = $dbr->query( $sql_sport_nav, __METHOD__ );
-		*/
 		$res_sport_nav = $dbr->select(
 			array( 'sport', 'sport_team' ),
 			array( 'sport_id', 'sport_name', 'team_sport_id' ),

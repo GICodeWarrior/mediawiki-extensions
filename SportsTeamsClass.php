@@ -387,7 +387,6 @@ class SportsTeams {
 			}
 			$options['OFFSET'] = intval( $limitvalue );
 			$options['LIMIT'] = intval( $limit );
-			//$limit_sql = " LIMIT {$limitvalue},{$limit} ";
 		}
 
 		if( !$team_id ) {
@@ -496,14 +495,8 @@ class SportsTeams {
 		} else {
 			$count = 0;
 		}
-		/*
-		$sql = "SELECT COUNT(*) AS the_count FROM {$dbr->tableName( 'sport_favorite' )} WHERE {$where_sql} AND sf_user_id IN
-			(SELECT r_user_id_relation FROM {$dbr->tableName( 'user_relationship' )} WHERE r_user_id = {$user_id} AND r_type = 1)";
-		$res = $dbr->query( $sql, __METHOD__ );
-		$row = $dbr->fetchObject( $res );
-		*/
 
-		return $count;//$row->the_count;
+		return $count;
 	}
 
 	static function getSimilarUserCount( $user_id ) {
@@ -536,15 +529,7 @@ class SportsTeams {
 			$count = 0;
 		}
 
-		/*
-		$sql = "SELECT COUNT(*) AS the_count FROM {$dbr->tableName( 'sport_favorite' )} WHERE sf_team_id IN
-			(SELECT sf_team_id FROM {$dbr->tableName( 'sport_favorite' )} WHERE sf_user_id ={$user_id})
-			AND sf_team_id <> 0 AND sf_user_id <> {$user_id}";
-		$res = $dbr->query( $sql, __METHOD__ );
-		$row = $dbr->fetchObject( $res );
-		*/
-
-		return $count;//$row->the_count;
+		return $count;
 	}
 
 	/**
@@ -572,11 +557,6 @@ class SportsTeams {
 			$where,
 			__METHOD__
 		);
-		/*
-		$sql = "SELECT sf_id FROM {$dbr->tableName( 'sport_favorite' )} WHERE sf_user_id={$user_id} AND {$where_sql}";
-		$res = $dbr->query( $sql, __METHOD__ );
-		$row = $dbr->fetchObject( $res );
-		*/
 
 		if( !$row ) {
 			return false;
