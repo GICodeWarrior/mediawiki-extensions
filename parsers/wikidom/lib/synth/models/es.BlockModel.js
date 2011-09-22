@@ -164,23 +164,35 @@ es.BlockModel.getSectionBoundaries = function( offset ) {
 };
 
 es.BlockModel.prototype.commit = function( transaction ) {
-	// commit transaction
+	// TODO
 };
 
 es.BlockModel.prototype.rollback = function( transaction ) {
-	// rollback transaction
+	// TODO
 };
 
 es.BlockModel.prototype.prepareInsertContent = function( offset, content ) {
-	// generate transaction
+	// TODO
 };
 
 es.BlockModel.prototype.prepareRemoveContent = function( range ) {
-	// generate transaction
+	// TODO
 };
 
 es.BlockModel.prototype.prepareAnnotateContent = function( range, annotation ) {
-	// generate transaction
+	// TODO
+};
+
+es.BlockModel.prototype.insertContent = function( offset, content ) {
+	// TODO
+};
+
+es.BlockModel.prototype.removeContent = function( range ) {
+	// TODO
+};
+
+es.BlockModel.prototype.annotateContent = function( range, annotation ) {
+	// TODO
 };
 
 /**

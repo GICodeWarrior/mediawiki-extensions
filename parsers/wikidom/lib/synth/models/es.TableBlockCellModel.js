@@ -68,6 +68,38 @@ es.TableBlockCellModel.prototype.getPlainObject = function() {
 	*/
 };
 
+es.TableBlockCellModel.prototype.commit = function( transaction ) {
+	// TODO
+};
+
+es.TableBlockCellModel.prototype.rollback = function( transaction ) {
+	// TODO
+};
+
+es.TableBlockCellModel.prototype.prepareInsertContent = function( offset, content ) {
+	// TODO
+};
+
+es.TableBlockCellModel.prototype.prepareRemoveContent = function( range ) {
+	// TODO
+};
+
+es.TableBlockCellModel.prototype.prepareAnnotateContent = function( range, annotation ) {
+	// TODO
+};
+
+es.TableBlockCellModel.prototype.insertContent = function( offset, content ) {
+	// TODO
+};
+
+es.TableBlockCellModel.prototype.removeContent = function( range ) {
+	// TODO
+};
+
+es.TableBlockCellModel.prototype.annotateContent = function( range, annotation ) {
+	// TODO
+};
+
 /* Inheritance */
 
 es.extend( es.TableBlockCellModel, es.ModelListItem );

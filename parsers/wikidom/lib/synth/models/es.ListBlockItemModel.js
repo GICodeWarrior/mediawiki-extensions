@@ -55,6 +55,38 @@ es.ListBlockItemModel.prototype.getPlainObject = function() {
 	return { 'content': this.content.getPlainObject(), 'styles': this.styles.slice( 0 ) };
 };
 
+es.ListBlockItemModel.prototype.commit = function( transaction ) {
+	// TODO
+};
+
+es.ListBlockItemModel.prototype.rollback = function( transaction ) {
+	// TODO
+};
+
+es.ListBlockItemModel.prototype.prepareInsertContent = function( offset, content ) {
+	// TODO
+};
+
+es.ListBlockItemModel.prototype.prepareRemoveContent = function( range ) {
+	// TODO
+};
+
+es.ListBlockItemModel.prototype.prepareAnnotateContent = function( range, annotation ) {
+	// TODO
+};
+
+es.ListBlockItemModel.prototype.insertContent = function( offset, content ) {
+	// TODO
+};
+
+es.ListBlockItemModel.prototype.removeContent = function( range ) {
+	// TODO
+};
+
+es.ListBlockItemModel.prototype.annotateContent = function( range, annotation ) {
+	// TODO
+};
+
 /* Inheritance */
 
 es.extend( es.ListBlockItemModel, es.ModelListItem );

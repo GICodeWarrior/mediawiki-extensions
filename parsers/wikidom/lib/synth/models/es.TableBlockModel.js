@@ -81,6 +81,38 @@ es.TableBlockModel.prototype.getPlainObject = function() {
 	*/
 };
 
+es.TableBlockModel.prototype.commit = function( transaction ) {
+	// TODO
+};
+
+es.TableBlockModel.prototype.rollback = function( transaction ) {
+	// TODO
+};
+
+es.TableBlockModel.prototype.prepareInsertContent = function( offset, content ) {
+	// TODO
+};
+
+es.TableBlockModel.prototype.prepareRemoveContent = function( range ) {
+	// TODO
+};
+
+es.TableBlockModel.prototype.prepareAnnotateContent = function( range, annotation ) {
+	// TODO
+};
+
+es.TableBlockModel.prototype.insertContent = function( offset, content ) {
+	// TODO
+};
+
+es.TableBlockModel.prototype.removeContent = function( range ) {
+	// TODO
+};
+
+es.TableBlockModel.prototype.annotateContent = function( range, annotation ) {
+	// TODO
+};
+
 // Register constructor
 es.BlockModel.constructors['table'] = es.TableBlockModel.newFromPlainObject;
 

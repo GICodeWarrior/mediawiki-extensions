@@ -38,23 +38,35 @@ es.DocumentModel.newFromPlainObject = function( obj ) {
 /* Methods */
 
 es.DocumentModel.prototype.commit = function( transaction ) {
-	// commit transaction
+	// TODO
 };
 
 es.DocumentModel.prototype.rollback = function( transaction ) {
-	// rollback transaction
+	// TODO
 };
 
 es.DocumentModel.prototype.prepareInsertContent = function( offset, content ) {
-	// generate transaction
+	// TODO
 };
 
 es.DocumentModel.prototype.prepareRemoveContent = function( range ) {
-	// generate transaction
+	// TODO
 };
 
 es.DocumentModel.prototype.prepareAnnotateContent = function( range, annotation ) {
-	// generate transaction
+	// TODO
+};
+
+es.DocumentModel.prototype.insertContent = function( offset, content ) {
+	// TODO
+};
+
+es.DocumentModel.prototype.removeContent = function( range ) {
+	// TODO
+};
+
+es.DocumentModel.prototype.annotateContent = function( range, annotation ) {
+	// TODO
 };
 
 es.DocumentModel.prototype.getPlainObject = function() {

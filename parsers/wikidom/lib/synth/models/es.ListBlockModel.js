@@ -110,6 +110,38 @@ es.ListBlockModel.prototype.getPlainObject = function() {
 	return obj;
 };
 
+es.ListBlockModel.prototype.commit = function( transaction ) {
+	// TODO
+};
+
+es.ListBlockModel.prototype.rollback = function( transaction ) {
+	// TODO
+};
+
+es.ListBlockModel.prototype.prepareInsertContent = function( offset, content ) {
+	// TODO
+};
+
+es.ListBlockModel.prototype.prepareRemoveContent = function( range ) {
+	// TODO
+};
+
+es.ListBlockModel.prototype.prepareAnnotateContent = function( range, annotation ) {
+	// TODO
+};
+
+es.ListBlockModel.prototype.insertContent = function( offset, content ) {
+	// TODO
+};
+
+es.ListBlockModel.prototype.removeContent = function( range ) {
+	// TODO
+};
+
+es.ListBlockModel.prototype.annotateContent = function( range, annotation ) {
+	// TODO
+};
+
 // Register constructor
 es.BlockModel.constructors['list'] = es.ListBlockModel.newFromPlainObject
 

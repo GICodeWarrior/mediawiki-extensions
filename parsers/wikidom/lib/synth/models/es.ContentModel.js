@@ -134,7 +134,6 @@ es.ContentModel.prototype.setAttribute = function( name, value ) {
 	this.attributes[name] = value;
 };
 
-
 /**
  * Gets plain text version of the content within a specific range.
  * 
@@ -256,26 +255,6 @@ es.ContentModel.prototype.getWordBoundaries = function( offset ) {
 		end++;
 	}
 	return new es.Range( start, end );
-};
-
-es.ContentModel.prototype.commit = function( transaction ) {
-	// commit transaction
-};
-
-es.ContentModel.prototype.rollback = function( transaction ) {
-	// rollback transaction
-};
-
-es.ContentModel.prototype.prepareInsertContent = function( offset, content ) {
-	// generate transaction
-};
-
-es.ContentModel.prototype.prepareRemoveContent = function( range ) {
-	// generate transaction
-};
-
-es.ContentModel.prototype.prepareAnnotateContent = function( range, annotation ) {
-	// generate transaction
 };
 
 /**
@@ -422,6 +401,26 @@ es.ContentModel.prototype.indexOfAnnotation = function( offset, annotation, stri
 	return -1;
 };
 
+es.ContentModel.prototype.commit = function( transaction ) {
+	// TODO
+};
+
+es.ContentModel.prototype.rollback = function( transaction ) {
+	// TODO
+};
+
+es.ContentModel.prototype.prepareInsertContent = function( offset, content ) {
+	// TODO
+};
+
+es.ContentModel.prototype.prepareRemoveContent = function( range ) {
+	// TODO
+};
+
+es.ContentModel.prototype.prepareAnnotateContent = function( range, annotation ) {
+	// TODO
+};
+
 /**
  * Inserts content data at a specific position.
  * 
@@ -433,7 +432,7 @@ es.ContentModel.prototype.indexOfAnnotation = function( offset, annotation, stri
  * @emits "insert" with offset and content data properties
  * @emits "change" with type:"insert" data property
  */
-es.ContentModel.prototype.insert = function( offset, content, autoAnnotate ) {
+es.ContentModel.prototype.insertContent = function( offset, content, autoAnnotate ) {
 	if ( autoAnnotate ) {
 		// TODO: Prefer to not take annotations from a neighbor that's a space character
 		var neighbor = this.data[Math.max( offset - 1, 0 )];
@@ -464,7 +463,7 @@ es.ContentModel.prototype.insert = function( offset, content, autoAnnotate ) {
  * @emits "remove" with range data property
  * @emits "change" with type:"remove" data property
  */
-es.ContentModel.prototype.remove = function( range ) {
+es.ContentModel.prototype.removeContent = function( range ) {
 	range.normalize();
 	this.data.splice( range.start, range.getLength() );
 	this.emit( 'remove', {
@@ -502,7 +501,7 @@ es.ContentModel.prototype.clear = function() {
  * @emits "annotate" with method, annotation and range data properties
  * @emits "change" with type:"annotate" data property
  */
-es.ContentModel.prototype.annotate = function( method, annotation, range ) {
+es.ContentModel.prototype.annotateContent = function( method, annotation, range ) {
 	// Support calling without a range argument, using the full content range as default
 	if ( !range ) {
 		range = new es.Range( 0, this.data.length );
@@ -590,5 +589,7 @@ es.ContentModel.prototype.annotate = function( method, annotation, range ) {
 	} );
 	this.emit( 'update', { 'type': 'annotate' } );
 };
+
+/* Inheritance */
 
 es.extend( es.ContentModel, es.EventEmitter );

@@ -56,6 +56,38 @@ es.HeadingBlockModel.prototype.getPlainObject = function() {
 	return { 'type': 'heading', 'content': this.content.getPlainObject(), 'level': this.level };
 };
 
+es.HeadingBlockModel.prototype.commit = function( transaction ) {
+	// TODO
+};
+
+es.HeadingBlockModel.prototype.rollback = function( transaction ) {
+	// TODO
+};
+
+es.HeadingBlockModel.prototype.prepareInsertContent = function( offset, content ) {
+	// TODO
+};
+
+es.HeadingBlockModel.prototype.prepareRemoveContent = function( range ) {
+	// TODO
+};
+
+es.HeadingBlockModel.prototype.prepareAnnotateContent = function( range, annotation ) {
+	// TODO
+};
+
+es.HeadingBlockModel.prototype.insertContent = function( offset, content ) {
+	// TODO
+};
+
+es.HeadingBlockModel.prototype.removeContent = function( range ) {
+	// TODO
+};
+
+es.HeadingBlockModel.prototype.annotateContent = function( range, annotation ) {
+	// TODO
+};
+
 // Register constructor
 es.BlockModel.constructors['heading'] = es.HeadingBlockModel;
 

@@ -70,6 +70,38 @@ es.ParagraphBlockModel.prototype.getPlainObject = function() {
 	return { 'type': 'paragraph', 'content': this.content.getPlainObject() };
 };
 
+es.ParagraphBlockModel.prototype.commit = function( transaction ) {
+	// TODO
+};
+
+es.ParagraphBlockModel.prototype.rollback = function( transaction ) {
+	// TODO
+};
+
+es.ParagraphBlockModel.prototype.prepareInsertContent = function( offset, content ) {
+	// TODO
+};
+
+es.ParagraphBlockModel.prototype.prepareRemoveContent = function( range ) {
+	// TODO
+};
+
+es.ParagraphBlockModel.prototype.prepareAnnotateContent = function( range, annotation ) {
+	// TODO
+};
+
+es.ParagraphBlockModel.prototype.insertContent = function( offset, content ) {
+	// TODO
+};
+
+es.ParagraphBlockModel.prototype.removeContent = function( range ) {
+	// TODO
+};
+
+es.ParagraphBlockModel.prototype.annotateContent = function( range, annotation ) {
+	// TODO
+};
+
 // Register constructor
 es.BlockModel.constructors['paragraph'] = es.ParagraphBlockModel.newFromPlainObject;
 
