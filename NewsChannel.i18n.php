@@ -35,6 +35,7 @@ $messages['en'] = array(
 $messages['qqq'] = array(
 	'newschannel-desc' => '{{desc}}',
 	'newschannel_format' => '{{Identical|Format}}',
+	'newschannel_limit' => '{{Identical|Limit}}',
 );
 
 /** Afrikaans (Afrikaans)
