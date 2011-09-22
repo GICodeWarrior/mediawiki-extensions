@@ -8,33 +8,26 @@
 
 import sys
 import pyinotify
-import ircbot
-import irclib
 import threading
-
 from optparse import OptionParser
+sys.path.append('/usr/ircecho/lib')
+from ircbot import SingleServerIRCBot
 
 class EchoReader(threading.Thread):
-	def __init__(self, bot, chans, infile=''):
+	def __init__(self, infile=''):
 		threading.Thread.__init__(self)
-		self.bot = bot
-		self.chans = chans
 		self.infile = infile
 
 	def run(self):
 		if self.infile:
 			print "Using infile"
-			wm = pyinotify.WatchManager()
-			mask = pyinotify.IN_MODIFY
-			f = open(self.infile)
+			self.f = open(self.infile)
 			# Seek to the end of the file
-			f.seek(0,2)
-			handler = EventHandler()
-			handler.infile = f
-			handler.bot = self.bot
-			handler.chans = self.chans
-			notifier = pyinotify.Notifier(wm, handler)
-			wdd = wm.add_watch(self.infile, mask)
+			self.f.seek(0,2)
+			wm = pyinotify.WatchManager()
+			notifier = pyinotify.Notifier(wm)
+			mask = pyinotify.IN_MODIFY | pyinotify.IN_CREATE
+			wdd = wm.watch_transient_file(self.infile, mask, EventHandler)
 			notifier.loop()
 		else:
 			while True:
@@ -48,10 +41,10 @@ class EchoReader(threading.Thread):
 				except Exception:
 					pass
 
-class EchoBot(ircbot.SingleServerIRCBot):
+class EchoBot(SingleServerIRCBot):
 	def __init__(self, chans, nickname, server):
 		print "*** Connecting to IRC server %s..." % server
-		ircbot.SingleServerIRCBot.__init__(self, [(server, 6667)], nickname, "IRC echo bot")
+		SingleServerIRCBot.__init__(self, [(server, 6667)], nickname, "IRC echo bot")
 		self.chans = chans
 
 	def on_nicknameinuse(self, c, e):
@@ -59,13 +52,21 @@ class EchoBot(ircbot.SingleServerIRCBot):
 
 	def on_welcome(self, c, e):
 		print "*** Connected"
-		for chan in self.chans:
+		for chan in [self.chans]:
 			c.join(chan)
 
 class EventHandler(pyinotify.ProcessEvent):
 	def process_IN_MODIFY(self, event):
-		s = self.infile.read()
-		self.bot.connection.privmsg(self.chans, s)
+		s = reader.f.read()
+		bot.connection.privmsg(bot.chans, s)
+
+	def process_IN_CREATE(self, event):
+		try:
+			print "Reopening file"
+			reader.f = open(reader.infile)
+		except IOError:
+			print "Failed to reopen file"
+			pass
 
 parser = OptionParser(conflict_handler="resolve")
 parser.set_usage("ircecho [--infile=<filename>] <channel> <nickname> <server>")
@@ -74,7 +75,9 @@ parser.add_option("--infile", dest="infile", help="Read input from the specific 
 chans = args[0]
 nickname = args[1]
 server = args[2]
-bot = EchoBot([chans], nickname, server)
-sthr = EchoReader(bot, chans, options.infile)
-sthr.start()
+global bot
+bot = EchoBot(chans, nickname, server)
+global reader
+reader = EchoReader(options.infile)
+reader.start()
 bot.start()
