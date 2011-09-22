@@ -396,12 +396,13 @@ $messages['cs'] = array(
  * @author Imre
  * @author LWChris
  * @author Pill
+ * @author SVG
  * @author Tbleher
  */
 $messages['de'] = array(
 	'masseditregex' => 'Massenbearbeitung mithilfe von regulärem Ausdruck',
 	'masseditregex-desc' => 'Reguläre Ausdrücke benutzen, um [[Special:MassEditRegex|viele Seiten auf einmal zu bearbeiten]]',
-	'masseditregextext' => 'Gib einen oder mehrere reguläre Ausdrücke (eine pro Zeile) für die Suche an, und einen oder mehrere Ausdrücke um einen jeweiligen Treffer zu ersetzen. Der erste Such-Ausdruck wird bei Übereinstimmung durch den ersten Ersatz-Ausdruck ersetzt, und so weiter. Siehe [ http://php.net/manual/de/function.preg-replace.php der PHP-Funktion preg_replace ()] für Details.',
+	'masseditregextext' => 'Gib einen oder mehrere reguläre Ausdrücke (eine pro Zeile) für die Suche an, und einen oder mehrere Ausdrücke um einen jeweiligen Treffer zu ersetzen. Der erste Such-Ausdruck wird bei Übereinstimmung durch den ersten Ersatz-Ausdruck ersetzt, und so weiter. Siehe [http://php.net/manual/de/function.preg-replace.php die Dokumentation der PHP-Funktion preg_replace ()] für Details.',
 	'masseditregex-pagelisttxt' => 'Zu bearbeitende Seiten (kein Namensraum-Prefix benutzen):',
 	'masseditregex-matchtxt' => 'Suchen nach:',
 	'masseditregex-replacetxt' => 'Ersetzen durch:',
