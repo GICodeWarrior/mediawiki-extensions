@@ -65,7 +65,7 @@ if( $url['host'] == 'secure.wikimedia.org' ) {
 	$project = $tmp[0];
 	$language = $tmp[1];
 	$base = 'secure.wikimedia.org/wikipedia/incubator/wiki/';
-	$page = implode( array_slice( $tmp, 2 ) );
+	$page = implode( array_slice( $tmp, 3 ) );
 	
 } else {
 	
