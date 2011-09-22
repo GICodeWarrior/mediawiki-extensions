@@ -183,6 +183,20 @@
 					});
 				}
 			});
+			
+			//if there are tags with lang attribute, 
+			$('body').find('*[lang]').each(function(index) {
+				//check the availability of font.
+				if(languages[this.lang]){
+					//add a font-family style if it does not have any
+					if( !this.style.fontFamily) {
+						//use the default font, ie the first one.
+						fontFamilies.push(languages[this.lang][0]);
+						$(this).css('font-family', languages[this.lang][0]);
+					}
+				}
+			});
+			
 			//get unique list
 			fontFamilies = $.unique(fontFamilies);
 			//load css for each of the item in fontfamily list
