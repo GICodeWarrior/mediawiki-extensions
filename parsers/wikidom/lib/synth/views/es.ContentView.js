@@ -126,7 +126,8 @@ es.ContentView.htmlCharacters = {
 	'\'': '&#039;',
 	'"': '&quot;',
 	'\n': '<span class="editSurface-whitespace">&#182;</span>',
-	'\t': '<span class="editSurface-whitespace">&#8702;</span>'
+	'\t': '<span class="editSurface-whitespace">&#8702;</span>',
+	' ': '&nbsp;'
 };
 
 /* Static Methods */

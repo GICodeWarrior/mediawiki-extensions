@@ -34,6 +34,9 @@ es.SurfaceView = function( $container, model ) {
 		}
 	};
 	
+	this.selecting = false;
+	this.from = this.to = 0;
+	
 	// Cursor
 	this.blinkInterval = null;
 	this.$cursor = $( '<div class="editSurface-cursor"></div>' ).appendTo( this.$ );
@@ -237,15 +240,30 @@ es.SurfaceView.prototype.onKeyUp = function( e ) {
 es.SurfaceView.prototype.onMouseDown = function( e ) {
 	var position = es.Position.newFromEventPagePosition( e );
 	var offset = this.documentView.getOffsetFromPosition( position );
-	console.log( offset );
+	this.from = offset;
+	this.selecting = true;
+
+	console.log(offset);
+
+	if ( !this.$input.is(':focus') ) {
+		this.$input.focus().select();
+	}
+
 	return false;
 };
 
 es.SurfaceView.prototype.onMouseMove = function( e ) {
+	if (this.selecting ) {
+		var position = es.Position.newFromEventPagePosition( e );
+		var offset = this.documentView.getOffsetFromPosition( position );
+		this.to = offset;
+		this.documentView.drawSelection( new es.Range( this.from, this.to ) );
+	}
 	// TODO: Respond to mouse move event, updating selection while painting
 };
 
 es.SurfaceView.prototype.onMouseUp = function( e ) {
+	this.selecting = false;
 	// TODO: Respond to mouse up event, possibly ending selection painting
 };
 

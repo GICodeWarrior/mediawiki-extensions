@@ -21,6 +21,7 @@ es.ListBlockView = function( model ) {
 es.ListBlockView.prototype.getOffsetFromPosition = function( position ) {
 	var contentOffset;
 	var itemHeight;
+	var offset = 0;
 	for ( var i = 0; i < this.items.length; i++ ) {
 		contentOffset = this.items[i].$content.offset();
 		if ( position.top >= contentOffset.top ) {
@@ -28,9 +29,10 @@ es.ListBlockView.prototype.getOffsetFromPosition = function( position ) {
 			if ( position.top < contentOffset.top + itemHeight ) {
 				position.left -= contentOffset.left;
 				position.top -= contentOffset.top;
-				return this.items[i].contentView.getOffset( position );
+				return offset + this.items[i].contentView.getOffset( position );
 			}
 		}
+		offset += this.items[i].getLength() + 1;
 	}
 	
 	while(!documentView.list) {

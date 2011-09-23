@@ -16,18 +16,29 @@ es.TableBlockCellView = function( model ) {
 es.TableBlockCellView.prototype.getOffsetFromPosition = function( position ) {
 	var blockOffset;
 	var itemHeight;
+	var offset = 0;
 	
 	for ( var i = 0; i < this.items.length; i++ ) {
 		blockOffset = this.items[i].$.offset();
 		if ( position.top >= blockOffset.top ) {
 			itemHeight = this.items[i].$.height();
 			if ( position.top < blockOffset.top + itemHeight ) {
-				return this.items[i].getOffsetFromPosition( position );
+				return offset + this.items[i].getOffsetFromPosition( position );
 			}
 		}
+		offset += this.items[i].getLength() + 1;
 	}
 };
 
+/**
+ * Gets length of contents.
+ * 
+ * @method
+ * @returns {Integer} Length of content, including any virtual spaces within the block
+ */
+es.TableBlockCellView.prototype.getLength = function() {
+	return this.items.getLengthOfItems();
+};
 
 /**
  * Render content.
@@ -69,18 +80,15 @@ es.TableBlockCellView.prototype.getRenderedPosition = function( offset ) {
  * @param range {es.Range} Range of content to draw selection around
  */
 es.TableBlockCellView.prototype.drawSelection = function( range ) {
-	this.documentView.drawSelection( range );
+	var selectedViews = this.items.select( range );
+	for ( var i = 0; i < selectedViews.length; i++ ) {
+		selectedViews[i].item.drawSelection(
+			new es.Range( selectedViews[i].from, selectedViews[i].to )
+		);
+	}
 };
 
-/**
- * Gets length of contents.
- * 
- * @method
- * @returns {Integer} Length of content, including any virtual spaces within the block
- */
-es.TableBlockCellView.prototype.getLength = function() {
-	return this.documentView.getLength();
-};
+
 
 /**
  * Gets HTML rendering of block.

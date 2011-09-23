@@ -83,6 +83,56 @@ $(document).ready( function() {
 									'content': { 'text': 'row 2 & cell 2' }
 								},
 								{
+									'type': 'table',
+									'attributes': { 'style': 'width: 150px; border: solid 1px;' },
+									'rows': [
+										{
+											'cells': [
+												{
+													'attributes': { 'style': 'border: solid 1px;' },
+													'blocks': [
+														{
+															'type': 'paragraph',
+															'content': { 'text': '#1 #1 #1' }
+														}
+													]
+												},
+												{
+													'attributes': { 'style': 'border: solid 1px;' },
+													'blocks': [
+														{
+															'type': 'paragraph',
+															'content': { 'text': '#2 #2 #2' }
+														}
+													]
+												}
+											]
+										},
+										{
+											'cells': [
+												{
+													'attributes': { 'style': 'border: solid 1px;' },
+													'blocks': [
+														{
+															'type': 'paragraph',
+															'content': { 'text': '#3 #3 #3' }
+														}
+													]
+												},
+												{
+													'attributes': { 'style': 'border: solid 1px;' },
+													'blocks': [
+														{
+															'type': 'paragraph',
+															'content': { 'text': '#4 #4 #4' }
+														}								
+													]
+												}
+											]
+										}
+									]
+								},
+								{
 									'type': 'list',
 									'style': 'number',
 									'items': [

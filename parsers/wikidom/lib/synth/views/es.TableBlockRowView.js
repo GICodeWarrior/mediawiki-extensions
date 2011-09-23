@@ -17,15 +17,17 @@ es.TableBlockRowView = function( model ) {
 es.TableBlockRowView.prototype.getOffsetFromPosition = function( position ) {
 	var cellOffset;
 	var itemWidth;
+	var offset = 0;
 	
 	for ( var i = 0; i < this.items.length; i++ ) {
 		cellOffset = this.items[i].$.offset();
 		if ( position.left >= cellOffset.left ) {
 			itemWidth = this.items[i].$.width();
 			if ( position.left < cellOffset.left + itemWidth ) {
-				return this.items[i].getOffsetFromPosition( position );
+				return offset + this.items[i].getOffsetFromPosition( position );
 			}
 		}
+		offset += this.items[i].getLength() + 1;
 	}
 };
 
