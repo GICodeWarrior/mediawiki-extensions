@@ -74,6 +74,10 @@ class MoodBarHooks {
 		$updater->addExtensionUpdate( array( 'addField', 'moodbar_feedback',
 			'mbf_user_editcount', dirname(__FILE__).'/sql/mbf_user_editcount.sql', true )
 		);
+		
+		$updater->addExtensionUpdate( array( 'addIndex', 'moodbar_feedback',
+			'mbf_timestamp', dirname( __FILE__ ) . '/sql/mbf_timestamp.sql', true )
+		);
 
 		return true;
 	}
