@@ -27,22 +27,16 @@ es.TableBlockView.prototype.getOffsetFromPosition = function( position ) {
 		return 0;
 	}
 	
-	var rowOffset,
-		itemHeight,
-		offset = 0;
+	var rowView = this.items[0];
 
 	for ( var i = 0; i < this.items.length; i++ ) {
-		rowOffset = this.items[i].$.offset();
-		if ( position.top >= rowOffset.top ) {
-			itemHeight = this.items[i].$.height();
-			if ( position.top < rowOffset.top + itemHeight ) {
-				return offset + this.items[i].getOffsetFromPosition( position );
-			}
+		if ( this.items[i].$.offset().top >= position.top ) {
+			break;
 		}
-		offset += this.items[i].getLength() + 1;
+		rowView = this.items[i];
 	}
 	
-	throw 'Position coordinates are outside of the view.';
+	return rowView.list.items.offsetOf( rowView ) + rowView.getOffsetFromPosition( position );
 };
 
 /**

@@ -238,12 +238,11 @@ es.SurfaceView.prototype.onKeyUp = function( e ) {
 };
 
 es.SurfaceView.prototype.onMouseDown = function( e ) {
-	var position = es.Position.newFromEventPagePosition( e );
-	var offset = this.documentView.getOffsetFromPosition( position );
-	this.from = offset;
-	this.selecting = true;
+	var mousePosition = es.Position.newFromEventPagePosition( e );
+	var contentOffset = this.documentView.getOffsetFromPosition( mousePosition );
 
-	console.log(offset);
+	this.from = contentOffset;
+	this.selecting = true;
 
 	if ( !this.$input.is(':focus') ) {
 		this.$input.focus().select();
@@ -254,10 +253,10 @@ es.SurfaceView.prototype.onMouseDown = function( e ) {
 
 es.SurfaceView.prototype.onMouseMove = function( e ) {
 	if (this.selecting ) {
-		var position = es.Position.newFromEventPagePosition( e );
-		position.subtract( es.Position.newFromElementPagePosition( this.documentView.$ ) );
-		var offset = this.documentView.getOffsetFromPosition( position );
-		this.to = offset;
+		var mousePosition = es.Position.newFromEventPagePosition( e );
+		var contentOffset = this.documentView.getOffsetFromPosition( mousePosition );
+
+		this.to = contentOffset;		
 		this.documentView.drawSelection( new es.Range( this.from, this.to ) );
 	}
 	// TODO: Respond to mouse move event, updating selection while painting

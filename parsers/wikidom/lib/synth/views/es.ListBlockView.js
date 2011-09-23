@@ -30,24 +30,16 @@ es.ListBlockView.prototype.getOffsetFromPosition = function( position ) {
 		return 0;
 	}
 	
-	var contentOffset,
-		itemHeight,
-		offset = 0;
+	var listItemView = this.items[0];
 
 	for ( var i = 0; i < this.items.length; i++ ) {
-		contentOffset = this.items[i].$content.offset();
-		if ( position.top >= contentOffset.top ) {
-			itemHeight = this.items[i].$.height();
-			if ( position.top < contentOffset.top + itemHeight ) {
-				position.left -= contentOffset.left;
-				position.top -= contentOffset.top;
-				return offset + this.items[i].getContentOffset( position );
-			}
+		if ( this.items[i].$.offset().top >= position.top ) {
+			break;
 		}
-		offset += this.items[i].getLength() + 1;
+		listItemView = this.items[i];
 	}
 	
-	throw 'Position coordinates are outside of the view.';
+	return listItemView.list.items.offsetOf( listItemView ) + listItemView.getContentOffset( position );
 };
 
 /**

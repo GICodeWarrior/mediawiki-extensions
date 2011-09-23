@@ -281,6 +281,11 @@ es.ContentView.prototype.getOffset = function( position ) {
 	if ( this.model.getLength() === 0 ) {
 		return 0;
 	}
+
+	// Localize position
+	position.subtract( es.Position.newFromElementPagePosition( this.$ ) );
+
+	//
 	/*
 	 * Line finding
 	 * 

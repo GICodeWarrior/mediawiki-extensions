@@ -22,22 +22,20 @@ es.TableBlockRowView = function( model ) {
  * @returns {Integer} Offset nearest to position
  */
 es.TableBlockRowView.prototype.getOffsetFromPosition = function( position ) {
-	var cellOffset,
-		itemWidth,
-		offset = 0;
-
-	for ( var i = 0; i < this.items.length; i++ ) {
-		cellOffset = this.items[i].$.offset();
-		if ( position.left >= cellOffset.left ) {
-			itemWidth = this.items[i].$.width();
-			if ( position.left < cellOffset.left + itemWidth ) {
-				return offset + this.items[i].getOffsetFromPosition( position );
-			}
-		}
-		offset += this.items[i].getLength() + 1;
+	if ( this.items.length === 0 ) {
+		return 0;
 	}
 	
-	throw 'Position coordinates are outside of the view.';
+	var cellView = this.items[0];
+
+	for ( var i = 0; i < this.items.length; i++ ) {
+		if ( this.items[i].$.offset().left >= position.left ) {
+			break;
+		}
+		cellView = this.items[i];
+	}
+	
+	return cellView.list.items.offsetOf( cellView ) + cellView.getOffsetFromPosition( position );
 };
 
 /**

@@ -27,6 +27,19 @@ es.AggregateArray.prototype.lookup = function( offset ) {
 	return null;
 };
 
+es.AggregateArray.prototype.offsetOf = function( item ) {
+	if ( this.length ) {
+		var offset = 0;
+		for( var i = 0; i < this.length; i++ ) {
+			if ( this[i] === item ) {
+				return offset;
+			}
+			offset += this[i].getLength() + 1;
+		}
+	}
+	return null;
+};
+
 es.AggregateArray.prototype.rangeOf = function( item ) {
 	if ( this.length ) {
 		var i = 0,

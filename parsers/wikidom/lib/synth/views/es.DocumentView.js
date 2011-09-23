@@ -16,23 +16,17 @@ es.DocumentView.prototype.getOffsetFromPosition = function( position ) {
 	if ( this.items.length === 0 ) {
 		return 0;
 	}
-
-	var blockView = this.items[0],
-		blockLength = 0,
-		offset = 0;
 	
+	var blockView = this.items[0];
+
 	for ( var i = 0; i < this.items.length; i++ ) {
 		if ( this.items[i].$.offset().top >= position.top ) {
 			break;
 		}
 		blockView = this.items[i];
-		blockLength = blockView.getLength();
-		offset += blockLength + 1;
 	}
-
-	offset -= blockLength + 1;
-
-	return offset + blockView.getOffsetFromPosition( position );
+	
+	return blockView.list.items.offsetOf( blockView ) + blockView.getOffsetFromPosition( position );
 };
 
 /**

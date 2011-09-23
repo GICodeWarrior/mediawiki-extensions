@@ -21,22 +21,20 @@ es.TableBlockCellView = function( model ) {
  * @returns {Integer} Offset nearest to position
  */
 es.TableBlockCellView.prototype.getOffsetFromPosition = function( position ) {
-	var blockOffset,
-		itemHeight,
-		offset = 0;
-	
-	for ( var i = 0; i < this.items.length; i++ ) {
-		blockOffset = this.items[i].$.offset();
-		if ( position.top >= blockOffset.top ) {
-			itemHeight = this.items[i].$.height();
-			if ( position.top < blockOffset.top + itemHeight ) {
-				return offset + this.items[i].getOffsetFromPosition( position );
-			}
-		}
-		offset += this.items[i].getLength() + 1;
+	if ( this.items.length === 0 ) {
+		return 0;
 	}
 	
-	throw 'Position coordinates are outside of the view.';
+	var blockView = this.items[0];
+
+	for ( var i = 0; i < this.items.length; i++ ) {
+		if ( this.items[i].$.offset().top >= position.top ) {
+			break;
+		}
+		blockView = this.items[i];
+	}
+	
+	return blockView.list.items.offsetOf( blockView ) + blockView.getOffsetFromPosition( position );
 };
 
 /**

@@ -25,9 +25,6 @@ es.ParagraphBlockView = function( model ) {
  * @returns {Integer} Offset nearest to position
  */
 es.ParagraphBlockView.prototype.getOffsetFromPosition = function( position ) {
-	var blockPosition = this.$.offset();
-	position.left -= blockPosition.left;
-	position.top -= blockPosition.top;
 	return this.contentView.getOffset( position );
 };
 
