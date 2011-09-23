@@ -26,7 +26,7 @@ class ApiQueryMoodBarComments extends ApiQueryBase {
 			}
 		}
 		if ( $params['user'] !== null ) {
-			$user = User::newFromName( $params['user'] );
+			$user = User::newFromName( $params['user'] ); // returns false for IPs
 			if ( !$user || $user->isAnon() ) {
 				$this->addWhereFld( 'mbf_user_id', 0 );
 				$this->addWhereFld( 'mbf_user_ip', $params['user'] );
