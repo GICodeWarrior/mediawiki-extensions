@@ -110,7 +110,7 @@ $messages['fa'] = array(
 	'webfonts' => 'وب‌قلم',
 	'webfonts-desc' => 'جاسازی قلم‌ها در صفحه‌ها',
 	'webfonts-load' => 'انتخاب قلم',
-	'webfonts-reset' => 'از نو',
+	'webfonts-reset' => 'بازنشانی',
 	'webfonts-disable-preference' => 'غیرفعال‌کردن جاسازی قلم (وب‌قلم)',
 );
 
@@ -245,7 +245,7 @@ $messages['ml'] = array(
 	'webfonts-desc' => 'മീഡിയവിക്കി താളുകളില്‍ ഫോണ്ടുകള്‍ എംബെഡ് ചെയ്യുക',
 	'webfonts-load' => 'ഫോണ്ടുകള്‍',
 	'webfonts-reset' => 'പഴയപടിയാക്കുക',
-	'webfonts-disable-preference' => 'ഫോണ്ട് എംബഡ് ചെയ്യാതിരിക്കുക (വെബ്ഫോണ്ട്)',
+	'webfonts-disable-preference' => 'ഫോണ്ട് എംബെഡ് ചെയ്യൽ (വെബ്ഫോണ്ട്സ്) പ്രവർത്തനരഹിതമാക്കുക',
 );
 
 /** Marathi (मराठी)
