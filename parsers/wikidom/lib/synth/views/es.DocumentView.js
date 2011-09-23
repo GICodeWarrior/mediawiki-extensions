@@ -69,6 +69,7 @@ es.DocumentView.prototype.getRenderedPosition = function( offset ) {
  * @param range {es.Range} Range of content to draw selection around
  */
 es.DocumentView.prototype.drawSelection = function( range ) {
+	$('.editSurface-range').hide();
 	var selectedViews = this.items.select( range );
 	for ( var i = 0; i < selectedViews.length; i++ ) {
 		selectedViews[i].item.drawSelection(
