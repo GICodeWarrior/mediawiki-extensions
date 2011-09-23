@@ -2015,7 +2015,7 @@ $messages['sl'] = array(
 	'imagetagging-taggedimages-title' => 'Slike »$1«',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
@@ -2023,7 +2023,7 @@ $messages['sl'] = array(
 $messages['sr-ec'] = array(
 	'taggedimages' => 'Таговане слике',
 	'imagetagging-desc' => 'Омогућава кориснику да изабере регионе једне слике и придружи им чланке',
-	'imagetagging-addimagetag' => 'Тагуј ову слику',
+	'imagetagging-addimagetag' => 'Означи слику',
 	'imagetagging-article' => 'Страна:',
 	'imagetagging-articletotag' => 'Чланак за таговање',
 	'imagetagging-canteditothermessage' => 'Не можете да мењате ову страну, због тога што немате потребна права приступа за то или због закључавања стране из других разлога.',

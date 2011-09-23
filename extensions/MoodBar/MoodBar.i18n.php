@@ -1294,6 +1294,7 @@ $messages['ml'] = array(
 	'moodbar-header-usertype' => 'ഉപയോക്തൃതരം',
 	'moodbar-header-user' => 'ഉപയോക്താവ്',
 	'moodbar-header-editmode' => 'തിരുത്തൽ രൂപം',
+	'moodbar-header-bucket' => 'പരീക്ഷണ തൊട്ടി',
 	'moodbar-header-system' => 'സിസ്റ്റം തരം',
 	'moodbar-header-comment' => 'അഭിപ്രായങ്ങൾ',
 	'moodbar-header-user-editcount' => 'ഉപയോക്തൃ തിരുത്തലുകളുടെ എണ്ണം',

@@ -3292,7 +3292,7 @@ Ju lutemi <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_dow
 	'ogg-oggThumb-failed' => 'oggThumb dështoi të krijojë parapamjen.',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author AVRS
  * @author Millosh
  * @author Rancher
@@ -3312,7 +3312,7 @@ $messages['sr-ec'] = array(
 	'ogg-long-error' => '(Лош ogg фајл: $1.)',
 	'ogg-play' => 'Пусти',
 	'ogg-pause' => 'Пауза',
-	'ogg-stop' => 'Стоп',
+	'ogg-stop' => 'Заустави',
 	'ogg-play-video' => 'Пусти видео',
 	'ogg-play-sound' => 'Пусти звук',
 	'ogg-player-videoElement' => 'Уграђена подршка у браузер',

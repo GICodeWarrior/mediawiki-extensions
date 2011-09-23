@@ -263,10 +263,11 @@ $messages['eu'] = array(
 
 /** Persian (فارسی)
  * @author Huji
+ * @author ZxxZxxZ
  */
 $messages['fa'] = array(
 	'assert_edit_title' => 'تأیید ناموفق',
-	'assertedit-desc' => 'امکان تأیید ویرایش‌ها را برای استفاده ربات‌ها اضافه می‌کند',
+	'assertedit-desc' => 'امکان تأیید ویرایش‌ها را برای استفادهٔ ربات‌ها اضافه می‌کند',
 	'assert_edit_message' => 'تأیید مورد نظر ($1) ناموفق بود.',
 );
 

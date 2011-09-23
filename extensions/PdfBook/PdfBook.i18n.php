@@ -135,6 +135,15 @@ $messages['eu'] = array(
 	'pdfbook-desc' => 'Kategoria bateko orriak hartu eta PDF liburu gisa esportatzen ditu',
 );
 
+/** Persian (فارسی)
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'pdfbook-action' => 'چاپ به صورت پی‌دی‌اف',
+	'pdfbook-log' => '$1 برون‌ریزی شده به صورت یک کتاب پی‌دی‌اف',
+	'pdfbook-desc' => 'از صحفه‌های یک رده کتابی می‌سازد و به صورت یک کتاب پی‌دی‌اف برون‌ریزی می‌کند',
+);
+
 /** French (Français)
  * @author Jean-Frédéric
  */
