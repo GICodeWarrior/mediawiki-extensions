@@ -51,6 +51,22 @@ es.AggregateArray.prototype.getLengthOfItems = function() {
 	return Math.max( 0, sum + this.length - 1 );
 };
 
+es.AggregateArray.prototype.getCoverage = function( start, end ) {
+	var result = { 'on': [], 'off': [] },
+		sum = 0,
+		len;
+	for ( var i = 0, length = this.length; i < length; i++ ) {
+		len = this[i].getLength();
+		if ( sum >= start && sum + len < end ) {
+			result.on.push( this[i] );
+		} else {
+			result.off.push( this[i] );
+		}
+		sum += len
+	}
+	return result;
+};
+
 es.AggregateArray.prototype.select = function( start, end ) {
 	// Support es.Range object as first argument
 	if ( typeof start.from === 'number' && typeof start.to === 'number') {
