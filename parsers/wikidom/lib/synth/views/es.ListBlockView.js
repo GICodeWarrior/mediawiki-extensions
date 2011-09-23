@@ -18,10 +18,22 @@ es.ListBlockView = function( model ) {
 
 /* Methods */
 
+/**
+ * Gets the offset of a position.
+ * 
+ * @method
+ * @param position {es.Position} Position to translate
+ * @returns {Integer} Offset nearest to position
+ */
 es.ListBlockView.prototype.getOffsetFromPosition = function( position ) {
-	var contentOffset;
-	var itemHeight;
-	var offset = 0;
+	if ( this.items.length === 0 ) {
+		return 0;
+	}
+	
+	var contentOffset,
+		itemHeight,
+		offset = 0;
+
 	for ( var i = 0; i < this.items.length; i++ ) {
 		contentOffset = this.items[i].$content.offset();
 		if ( position.top >= contentOffset.top ) {
@@ -29,14 +41,27 @@ es.ListBlockView.prototype.getOffsetFromPosition = function( position ) {
 			if ( position.top < contentOffset.top + itemHeight ) {
 				position.left -= contentOffset.left;
 				position.top -= contentOffset.top;
-				return offset + this.items[i].contentView.getOffset( position );
+				return offset + this.items[i].getContentOffset( position );
 			}
 		}
 		offset += this.items[i].getLength() + 1;
 	}
 	
-	while(!documentView.list) {
-		
+	throw 'Position coordinates are outside of the view.';
+};
+
+/**
+ * Draw selection around a given range.
+ * 
+ * @method
+ * @param range {es.Range} Range of content to draw selection around
+ */
+es.ListBlockView.prototype.drawSelection = function( range ) {
+	var selectedItems = this.items.select( range );
+	for ( var i = 0; i < selectedItems.length; i++ ) {
+		selectedItems[i].item.drawSelection(
+			new es.Range( selectedItems[i].from, selectedItems[i].to )
+		);
 	}
 };
 
@@ -71,21 +96,6 @@ es.ListBlockView.prototype.getContentOffset = function( position ) {
  */
 es.ListBlockView.prototype.getRenderedPosition = function( offset ) {
 	// TODO
-};
-
-/**
- * Draw selection around a given range.
- * 
- * @method
- * @param range {es.Range} Range of content to draw selection around
- */
-es.ListBlockView.prototype.drawSelection = function( range ) {
-	var selectedViews = this.items.select( range );
-	for ( var i = 0; i < selectedViews.length; i++ ) {
-		selectedViews[i].item.drawSelection(
-			new es.Range( selectedViews[i].from, selectedViews[i].to )
-		);
-	}
 };
 
 /**

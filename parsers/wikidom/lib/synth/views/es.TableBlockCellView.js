@@ -13,10 +13,17 @@ es.TableBlockCellView = function( model ) {
 
 /* Methods */
 
+/**
+ * Gets the offset of a position.
+ * 
+ * @method
+ * @param position {es.Position} Position to translate
+ * @returns {Integer} Offset nearest to position
+ */
 es.TableBlockCellView.prototype.getOffsetFromPosition = function( position ) {
-	var blockOffset;
-	var itemHeight;
-	var offset = 0;
+	var blockOffset,
+		itemHeight,
+		offset = 0;
 	
 	for ( var i = 0; i < this.items.length; i++ ) {
 		blockOffset = this.items[i].$.offset();
@@ -28,6 +35,8 @@ es.TableBlockCellView.prototype.getOffsetFromPosition = function( position ) {
 		}
 		offset += this.items[i].getLength() + 1;
 	}
+	
+	throw 'Position coordinates are outside of the view.';
 };
 
 /**

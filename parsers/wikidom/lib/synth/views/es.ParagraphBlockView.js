@@ -17,6 +17,13 @@ es.ParagraphBlockView = function( model ) {
 
 /* Methods */
 
+/**
+ * Gets the offset of a position.
+ * 
+ * @method
+ * @param position {es.Position} Position to translate
+ * @returns {Integer} Offset nearest to position
+ */
 es.ParagraphBlockView.prototype.getOffsetFromPosition = function( position ) {
 	var blockPosition = this.$.offset();
 	position.left -= blockPosition.left;
