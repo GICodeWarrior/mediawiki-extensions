@@ -86,7 +86,7 @@ HTML;
 	public function buildList( $rows ) {
 		global $wgLang;
 		$now = wfTimestamp( TS_UNIX );
-		$html = '<ul id="fbd-list">';
+		$list = '';
 		foreach ( $rows as $row ) {
 			$type = $row->mbf_type;
 			$typeMsg = wfMessage( "moodbar-type-$type" )->escaped();
@@ -100,7 +100,7 @@ HTML;
 			$permalinkURL = $this->getTitle( $row->mbf_id )->getLinkURL();
 			$permalinkText = wfMessage( 'moodbar-feedback-permalink' )->escaped();
 			
-			$html .= <<<HTML
+			$list .= <<<HTML
 			<li class="fbd-item">
 				<div class="fbd-item-emoticon fbd-item-emoticon-$type">
 					<span class="fbd-item-emoticon-label">$typeMsg</span>
@@ -118,11 +118,14 @@ HTML;
 			</li>
 HTML;
 		}
-		
-		$moreURL = '#'; //TODO
-		$moreText = wfMessage( 'moodbar-feedback-more' )->escaped();
-		$html .= '</ul><div id="fbd-list-more"><a href="#">More</a></div>';
-		return $html;
+		if ( $list === '' ) {
+			return '<div id="fbd-list">' . wfMessage( 'moodbar-feedback-noresults' )->escaped() . '</div>';
+		} else {
+			// Only show paging stuff if the result is not empty
+			$moreURL = '#'; //TODO
+			$moreText = wfMessage( 'moodbar-feedback-more' )->escaped();
+			return "<ul id=\"fbd-list\">$list</ul>" . '<div id="fbd-list-more"><a href="#">More</a></div>';
+		}
 	}
 	
 	public function doQuery( $filters ) {

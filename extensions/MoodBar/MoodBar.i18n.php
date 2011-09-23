@@ -83,6 +83,7 @@ For more information, please visit the $1.',
 	'moodbar-feedback-filters-button' => 'Set filters',
 	'moodbar-feedback-whatis' => 'What is this feature?',
 	'moodbar-feedback-permalink' => 'link to here',
+	'moodbar-feedback-noresults' => 'There are no comments that match your filters.',
 	// Mood types
 	'moodbar-type-happy' => 'Happy',
 	'moodbar-type-sad' => 'Sad',
