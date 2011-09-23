@@ -33,7 +33,7 @@ class SpecialMoodBarFeedback extends SpecialPage {
 	}
 	
 	public function buildForm() {
-		global $wgRequest;
+		global $wgRequest, $wgMoodBarConfig;
 		$filtersMsg = wfMessage( 'moodbar-feedback-filters' )->escaped();
 		$typeMsg = wfMessage( 'moodbar-feedback-filters-type' )->escaped();
 		$praiseMsg = wfMessage( 'moodbar-feedback-filters-type-happy' )->escaped();
@@ -42,6 +42,7 @@ class SpecialMoodBarFeedback extends SpecialPage {
 		$usernameMsg = wfMessage( 'moodbar-feedback-filters-username' )->escaped();
 		$setFiltersMsg = wfMessage( 'moodbar-feedback-filters-button' )->escaped();
 		$whatIsMsg = wfMessage( 'moodbar-feedback-whatis' )->escaped();
+		$whatIsURL = htmlspecialchars( $wgMoodBarConfig['infoUrl'] );
 		
 		$types = $wgRequest->getArray( 'type' );
 		$happyCheckbox = Xml::check( 'type[]', in_array( 'happy', $types ),
@@ -78,7 +79,7 @@ class SpecialMoodBarFeedback extends SpecialPage {
 				$usernameTextbox
 				<button type="submit" id="fbd-filters-set">$setFiltersMsg</button>
 			</form>
-			<a href="#" id="fbd-about">$whatIsMsg</a>
+			<a href="$whatIsURL" id="fbd-about">$whatIsMsg</a>
 		</div>
 HTML;
 	}
@@ -97,7 +98,7 @@ HTML;
 			$username = htmlspecialchars( $row->user_name === null ? $row->mbf_user_ip : $row->user_name );
 			$links = Linker::userToolLinks( $row->mbf_user_id, $username );
 			$comment = htmlspecialchars( $row->mbf_comment );
-			$permalinkURL = $this->getTitle( $row->mbf_id )->getLinkURL();
+			$permalinkURL = htmlspecialchars( $this->getTitle( $row->mbf_id )->getLinkURL() );
 			$permalinkText = wfMessage( 'moodbar-feedback-permalink' )->escaped();
 			
 			$list .= <<<HTML
