@@ -9,7 +9,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define( 'RDFIO_VERSION', '0.5.0' );
+define( 'RDFIO_VERSION', '0.5.1 alpha' );
 
 global $wgExtensionCredits;
 
@@ -65,9 +65,13 @@ include_once( "$IP/extensions/SMWWriter/SMWWriter.php" );
  *    RDFIO Components    *
  **************************/
 
-require_once( "classes/Utils.php" );
-require_once( "classes/RDFStore.php" );
-require_once( "classes/SMWBatchWriter.php" );
-require_once( "classes/PageHandler.php" );
-require_once( "specials/SpecialRDFImport.php" );
-require_once( "specials/SpecialSPARQLEndpoint.php" );
+$rdfioDir = dirname( __FILE__ );
+
+include_once '/specials/SpecialRDFImport.php';
+include_once '/specials/SpecialSPARQLEndpoint.php';
+
+$wgAutoloadClasses['RDFIOUtils'] = $rdfioDir . '/classes/Utils.php';
+$wgAutoloadClasses['RDFIOStore'] = $rdfioDir . '/classes/RDFStore.php';
+$wgAutoloadClasses['RDFIOSMWBatchWriter'] = $rdfioDir . '/classes/SMWBatchWriter.php';
+$wgAutoloadClasses['RDFIOPageHandler'] = $rdfioDir . '/classes/PageHandler.php';
+ 
