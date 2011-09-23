@@ -10,11 +10,27 @@ class SpecialMoodBarFeedback extends SpecialPage {
 	}
 
 	public function execute( $par ) {
-		global $wgOut;
+		global $wgOut, $wgRequest;
+		
+		// Determine filters from the query string
+		$filters = array();
+		$type = $wgRequest->getArray( 'type' );
+		if ( $type ) {
+			$filters['type'] = $type;
+		}
+		$username = strval( $wgRequest->getVal( 'username' ) );
+		if ( $username !== '' ) {
+			$user = User::newFromName( $username );
+			if ( $user ) {
+				$filters['user'] = $user;
+			}
+		}
+		// Do the query
+		$res = $this->doQuery( $filters );
 
+		// Output HTML
 		$wgOut->setPageTitle( wfMsg( 'moodbar-feedback-title' ) );
 		$wgOut->addHTML( $this->buildForm() );
-		$res = $this->doQuery();
 		$wgOut->addHTML( $this->buildList( $res ) );
 		$wgOut->addModuleStyles( 'ext.moodBar.dashboard.styles' );
 	}
@@ -37,21 +53,21 @@ class SpecialMoodBarFeedback extends SpecialPage {
 					<legend class="fbd-filters-label">$typeMsg</legend>
 					<ul>
 						<li>
-							<input type="checkbox" id="fbd-filters-type-praise">
+							<input type="checkbox" id="fbd-filters-type-praise" name="type[]" value="happy">
 							<label for="fbd-filters-type-praise" id="fbd-filters-type-praise-label">$praiseMsg</label>
 						</li>
 						<li>
-							<input type="checkbox" id="fbd-filters-type-confusion">
+							<input type="checkbox" id="fbd-filters-type-confusion" name="type[]" value="confused">
 							<label for="fbd-filters-type-confusion" id="fbd-filters-type-confusion-label">$confusionMsg</label>
 						</li>
 						<li>
-							<input type="checkbox" id="fbd-filters-type-issues">
+							<input type="checkbox" id="fbd-filters-type-issues" name="type[]" value="sad">
 							<label for="fbd-filters-type-issues" id="fbd-filters-type-issues-label">$issuesMsg</label>
 						</li>
 					</ul>
 				</fieldset>
 				<label for="fbd-filters-username" class="fbd-filters-label">$usernameMsg</label>
-				<input type="text" id="fbd-filters-username" class="fbd-filters-input" />
+				<input type="text" id="fbd-filters-username" class="fbd-filters-input" name="username" />
 				<button type="submit" id="fbd-filters-set">$setFiltersMsg</button>
 			</form>
 			<a href="#" id="fbd-about">$whatIsMsg</a>
@@ -101,14 +117,28 @@ HTML;
 		return $html;
 	}
 	
-	public function doQuery() {
+	public function doQuery( $filters ) {
+		$conds = array();
+		if ( isset( $filters['type'] ) ) {
+			$conds['mbf_type'] = $filters['type'];
+		}
+		if ( isset( $filters['user'] ) ) {
+			if ( $filters['user']->isAnon() ) {
+				$conds['mbf_user_id'] = 0;
+				$conds['mbf_user_ip'] = $filters['user']->getName();
+			} else {
+				$conds['mbf_user_id'] = $filters['user']->getID();
+				$conds[] = 'mbf_user_ip IS NULL';
+			}
+		}
+		
 		$dbr = wfGetDB( DB_SLAVE );
 		return $dbr->select( array( 'moodbar_feedback', 'user' ), array(
 				'user_name', 'mbf_id', 'mbf_type',
 				'mbf_timestamp', 'mbf_user_id', 'mbf_user_ip', 'mbf_comment'
-			), array(
-				'1=1', //TODO
-			), __METHOD__,
+			),
+			$conds,
+			__METHOD__,
 			array( 'LIMIT' => 20 /*TODO*/, 'ORDER BY' => 'mbf_timestamp DESC' ),
 			array( 'user' => array( 'LEFT JOIN', 'user_id=mbf_user_id' ) )
 		);
