@@ -12,7 +12,7 @@
  */
 es.Range = function( from, to ) {
 	this.from = from || 0;
-	this.to = to || from;
+	this.to = typeof to === 'undefined' ? this.from : to;
 	this.normalize();
 };
 
