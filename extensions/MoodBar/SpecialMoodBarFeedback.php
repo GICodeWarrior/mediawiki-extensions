@@ -20,10 +20,7 @@ class SpecialMoodBarFeedback extends SpecialPage {
 		}
 		$username = strval( $wgRequest->getVal( 'username' ) );
 		if ( $username !== '' ) {
-			$user = User::newFromName( $username );
-			if ( $user ) {
-				$filters['user'] = $user;
-			}
+			$filters['username'] = $username;
 		}
 		// Do the query
 		$res = $this->doQuery( $filters );
@@ -133,12 +130,13 @@ HTML;
 		if ( isset( $filters['type'] ) ) {
 			$conds['mbf_type'] = $filters['type'];
 		}
-		if ( isset( $filters['user'] ) ) {
-			if ( $filters['user']->isAnon() ) {
+		if ( isset( $filters['username'] ) ) {
+			$user = User::newFromName( $filters['username'] ); // Returns false for IPs
+			if ( !$user || $user->isAnon() ) {
 				$conds['mbf_user_id'] = 0;
-				$conds['mbf_user_ip'] = $filters['user']->getName();
+				$conds['mbf_user_ip'] = $filters['username'];
 			} else {
-				$conds['mbf_user_id'] = $filters['user']->getID();
+				$conds['mbf_user_id'] = $user->getID();
 				$conds[] = 'mbf_user_ip IS NULL';
 			}
 		}
