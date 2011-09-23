@@ -255,6 +255,7 @@ es.SurfaceView.prototype.onMouseDown = function( e ) {
 es.SurfaceView.prototype.onMouseMove = function( e ) {
 	if (this.selecting ) {
 		var position = es.Position.newFromEventPagePosition( e );
+		position.subtract( es.Position.newFromElementPagePosition( this.documentView.$ ) );
 		var offset = this.documentView.getOffsetFromPosition( position );
 		this.to = offset;
 		this.documentView.drawSelection( new es.Range( this.from, this.to ) );
