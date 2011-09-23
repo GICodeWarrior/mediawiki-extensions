@@ -59,6 +59,30 @@ es.Position.newFromEventLayerPosition = function( event ) {
 /* Methods */
 
 /**
+ * Adds the values of a given position to this one.
+ * 
+ * @method
+ * @param position {es.Position} Position to add values from
+ */
+es.Position.prototype.add = function( position ) {
+	this.top += position.top;
+	this.bottom += position.bottom;
+	this.left += position.left;
+};
+
+/**
+ * Subtracts the values of a given position to this one.
+ * 
+ * @method
+ * @param position {es.Position} Position to subtract values from
+ */
+es.Position.prototype.subtract = function( position ) {
+	this.top -= position.top;
+	this.bottom -= position.bottom;
+	this.left -= position.left;
+};
+
+/**
  * Checks if this position is the same as another one.
  * 
  * @method
