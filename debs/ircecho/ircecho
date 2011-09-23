@@ -9,26 +9,79 @@
 import sys
 import pyinotify
 import threading
+import random
+import string
+import re
 from optparse import OptionParser
 sys.path.append('/usr/ircecho/lib')
 from ircbot import SingleServerIRCBot
 
+class EchoNotifier(threading.Thread):
+	def __init__(self, notifier):
+		threading.Thread.__init__(self)
+		self.notifier = notifier
+
+	def run(self):
+		self.notifier.loop()
+
 class EchoReader(threading.Thread):
-	def __init__(self, infile=''):
+	def __init__(self, infile='', associatedchannel=''):
 		threading.Thread.__init__(self)
 		self.infile = infile
+		self.associatedchannel = associatedchannel
+		self.uniques = {';': "UNIQ_" + self.get_unique_string() + "_QINU",
+				':': "UNIQ_" + self.get_unique_string() + "_QINU",
+				',': "UNIQ_" + self.get_unique_string() + "_QINU"}
+
+	def get_unique_string(self):
+		unique = ''
+		for i in range(15):
+			unique = unique + random.choice(string.letters)
+		return unique
+
+	def escape(self, string):
+		escaped_string = re.sub('\\\;', self.uniques[';'], string)
+		escaped_string = re.sub('\\\:', self.uniques[':'], escaped_string)
+		escaped_string = re.sub('\\\,', self.uniques[','], escaped_string)
+		return escaped_string
+
+	def unescape(self, string):
+		unescaped_string = re.sub(self.uniques[';'], ';', string)
+		unescaped_string = re.sub(self.uniques[':'], ':', unescaped_string)
+		unescaped_string = re.sub(self.uniques[','], ',', unescaped_string)
+		return unescaped_string
 
 	def run(self):
 		if self.infile:
 			print "Using infile"
-			self.f = open(self.infile)
-			# Seek to the end of the file
-			self.f.seek(0,2)
-			wm = pyinotify.WatchManager()
-			notifier = pyinotify.Notifier(wm)
-			mask = pyinotify.IN_MODIFY | pyinotify.IN_CREATE
-			wdd = wm.watch_transient_file(self.infile, mask, EventHandler)
-			notifier.loop()
+			self.notifiers = []
+			self.associations = {}
+			self.files = {}
+			infiles = self.escape(self.infile)
+			for filechan in infiles.split(';'):
+				temparr = filechan.split(':')
+				filename = self.unescape(temparr[0])
+				try:
+					print "Opening: " + filename
+					f = open(filename)
+					f.seek(0,2)
+					self.files[filename] = f
+				except IOError:
+					print "Failed to open file: " + filename
+					self.files[filename] = None
+					pass
+				wm = pyinotify.WatchManager()
+				mask = pyinotify.IN_MODIFY | pyinotify.IN_CREATE
+				wm.watch_transient_file(filename, mask, EventHandler)
+				notifier = EchoNotifier(pyinotify.Notifier(wm))
+				self.notifiers.append(notifier)
+				# Does this file have channel associations?
+				if len(temparr) > 1:
+					chans = self.unescape(temparr[1])
+					self.associations[filename] = chans
+			for notifier in self.notifiers:
+				print "Starting notifier loop"
+				notifier.start()
 		else:
 			while True:
 				try:
@@ -40,6 +93,17 @@ class EchoReader(threading.Thread):
 					break;
 				except Exception:
 					pass
+	def readfile(self, filename):
+		if self.files[filename]:
+			return self.files[filename].read()
+		else:
+			return
+
+	def getchannels(self, filename):
+		if filename in self.associations:
+			return self.associations[filename]
+		else:
+			return bot.chans
 
 class EchoBot(SingleServerIRCBot):
 	def __init__(self, chans, nickname, server):
@@ -57,15 +121,17 @@ class EchoBot(SingleServerIRCBot):
 
 class EventHandler(pyinotify.ProcessEvent):
 	def process_IN_MODIFY(self, event):
-		s = reader.f.read()
-		bot.connection.privmsg(bot.chans, s)
+		s = reader.readfile(event.pathname)
+		if s:
+			chans = reader.getchannels(event.pathname)
+			bot.connection.privmsg(chans, s)
 
 	def process_IN_CREATE(self, event):
 		try:
-			print "Reopening file"
-			reader.f = open(reader.infile)
+			print "Reopening file: " + event.pathname
+			reader.files[event.pathname] = open(event.pathname)
 		except IOError:
-			print "Failed to reopen file"
+			print "Failed to reopen file: " + event.pathname
 			pass
 
 parser = OptionParser(conflict_handler="resolve")
