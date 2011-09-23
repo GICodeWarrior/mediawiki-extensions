@@ -21,6 +21,32 @@ es.Position = function( left, top, bottom ) {
 /* Static Methods */
 
 /**
+ * Creates position object from the offset of an element.
+ * 
+ * @static
+ * @method
+ * @param $element {jQuery} Element to get offset from
+ * @returns {es.Position} Position with element data applied
+ */
+es.Position.newFromElementOffset = function( $element ) {
+	var offset = $element.offset();
+	return new es.Position( offset.left, offset.top );
+};
+
+/**
+ * Creates position object from the position of an element.
+ * 
+ * @static
+ * @method
+ * @param $element {jQuery} Element to get position from
+ * @returns {es.Position} Position with element data applied
+ */
+es.Position.newFromElementPosition = function( $element ) {
+	var position = $element.position();
+	return new es.Position( position.left, position.top );
+};
+
+/**
  * Creates position object from the screen position data in an Event object.
  * 
  * @static
