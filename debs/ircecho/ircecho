@@ -13,7 +13,6 @@ import random
 import string
 import re
 from optparse import OptionParser
-sys.path.append('/usr/ircecho/lib')
 from ircbot import SingleServerIRCBot
 
 class EchoNotifier(threading.Thread):
