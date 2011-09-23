@@ -36,6 +36,7 @@ class SpecialMoodBarFeedback extends SpecialPage {
 	}
 	
 	public function buildForm() {
+		global $wgRequest;
 		$filtersMsg = wfMessage( 'moodbar-feedback-filters' )->escaped();
 		$typeMsg = wfMessage( 'moodbar-feedback-filters-type' )->escaped();
 		$praiseMsg = wfMessage( 'moodbar-feedback-filters-type-happy' )->escaped();
@@ -45,6 +46,16 @@ class SpecialMoodBarFeedback extends SpecialPage {
 		$setFiltersMsg = wfMessage( 'moodbar-feedback-filters-button' )->escaped();
 		$whatIsMsg = wfMessage( 'moodbar-feedback-whatis' )->escaped();
 		
+		$types = $wgRequest->getArray( 'type' );
+		$happyCheckbox = Xml::check( 'type[]', in_array( 'happy', $types ),
+			array( 'id' => 'fbd-filters-type-praise', 'value' => 'happy' ) );
+		$confusedCheckbox = Xml::check( 'type[]', in_array( 'confused', $types ),
+			array( 'id' => 'fbd-filters-type-confusion', 'value' => 'confused' ) );
+		$sadCheckbox = Xml::check( 'type[]', in_array( 'sad', $types ),
+			array( 'id' => 'fbd-filters-type-issues', 'value' => 'sad' ) );
+		$usernameTextbox = Html::input( 'username', $wgRequest->getText( 'username' ), 'text',
+			array( 'id' => 'fbd-filters-username', 'class' => 'fbd-filters-input' ) );
+		
 		return <<<HTML
 		<div id="fbd-filters">
 			<form>
@@ -53,21 +64,21 @@ class SpecialMoodBarFeedback extends SpecialPage {
 					<legend class="fbd-filters-label">$typeMsg</legend>
 					<ul>
 						<li>
-							<input type="checkbox" id="fbd-filters-type-praise" name="type[]" value="happy">
+							$happyCheckbox
 							<label for="fbd-filters-type-praise" id="fbd-filters-type-praise-label">$praiseMsg</label>
 						</li>
 						<li>
-							<input type="checkbox" id="fbd-filters-type-confusion" name="type[]" value="confused">
+							$confusedCheckbox
 							<label for="fbd-filters-type-confusion" id="fbd-filters-type-confusion-label">$confusionMsg</label>
 						</li>
 						<li>
-							<input type="checkbox" id="fbd-filters-type-issues" name="type[]" value="sad">
+							$sadCheckbox
 							<label for="fbd-filters-type-issues" id="fbd-filters-type-issues-label">$issuesMsg</label>
 						</li>
 					</ul>
 				</fieldset>
 				<label for="fbd-filters-username" class="fbd-filters-label">$usernameMsg</label>
-				<input type="text" id="fbd-filters-username" class="fbd-filters-input" name="username" />
+				$usernameTextbox
 				<button type="submit" id="fbd-filters-set">$setFiltersMsg</button>
 			</form>
 			<a href="#" id="fbd-about">$whatIsMsg</a>
