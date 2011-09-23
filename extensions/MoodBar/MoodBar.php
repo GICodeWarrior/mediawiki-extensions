@@ -30,9 +30,11 @@ $wgHooks['ResourceLoaderGetConfigVars'][] = 'MoodBarHooks::resourceLoaderGetConf
 $wgHooks['MakeGlobalVariablesScript'][] = 'MoodBarHooks::makeGlobalVariablesScript';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'MoodBarHooks::onLoadExtensionSchemaUpdates';
 
-// Special page
+// Special pages
 $wgAutoloadClasses['SpecialMoodBar'] = dirname(__FILE__).'/SpecialMoodBar.php';
 $wgSpecialPages['MoodBar'] = 'SpecialMoodBar';
+$wgAutoloadClasses['SpecialMoodBarFeedback'] = dirname( __FILE__ ) . '/SpecialMoodBarFeedback.php';
+$wgSpecialPages['MoodBarFeedback'] = 'SpecialMoodBarFeedback';
 
 // User rights
 $wgAvailableRights[] = 'moodbar-view';
@@ -113,6 +115,9 @@ $wgResourceModules['ext.moodBar.core'] = $mbResourceTemplate + array(
 	'position' => 'bottom',
 );
 
+$wgResourceModules['ext.moodBar.dashboard.styles'] = $mbResourceTemplate + array(
+	'styles' => 'ext.moodBar.dashboard/page.css',
+);
 
 $wgResourceModules['jquery.moodBar'] = $mbResourceTemplate + array(
 	'scripts' => 'jquery.moodBar/jquery.moodBar.js',
