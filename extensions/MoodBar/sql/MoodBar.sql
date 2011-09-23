@@ -23,8 +23,12 @@ CREATE TABLE /*_*/moodbar_feedback (
 	mbf_locale varchar(32) binary null, -- The locale of the user's browser
 	mbf_editing tinyint unsigned not null, -- Whether or not the user was editing
 	mbf_bucket varchar(128) binary null -- Bucket, for A/B testing
-) /*$wgDBtableOptions*/;
+) /*$wgDBTableOptions*/;
 
 -- A little overboard with the indexes perhaps, but we want to be able to dice this data a lot!
 CREATE INDEX /*i*/type_timestamp ON /*_*/moodbar_feedback (mbf_type,mbf_timestamp);
 CREATE INDEX /*i*/title_type ON /*_*/moodbar_feedback (mbf_namespace,mbf_title,mbf_type,mbf_timestamp);
+-- CREATE INDEX /*i*/mbf_namespace_title_timestamp ON /*_*/moodbar_feedback (mbf_namespace, mbf_title, mbf_timestamp); --maybe in the future if we actually do per-page filtering
+CREATE INDEX /*i*/mbf_userid_ip_timestamp ON /*_*/moodbar_feedback (mbf_user_id, mbf_user_ip, mbf_timestamp);
+CREATE INDEX /*i*/mbf_type_userid_ip_timestamp ON /*_*/moodbar_feedback (mbf_type, mbf_user_id, mbf_user_ip, mbf_timestamp);
+CREATE INDEX /*i*/mbf_timestamp ON /*_*/moodbar_feedback (mbf_timestamp);

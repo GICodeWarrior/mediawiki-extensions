@@ -20,6 +20,8 @@ $wgAutoloadClasses['MoodBarFormatter'] = dirname(__FILE__).'/Formatter.php';
 // API
 $wgAutoloadClasses['ApiMoodBar'] = dirname(__FILE__).'/ApiMoodBar.php';
 $wgAPIModules['moodbar'] = 'ApiMoodBar';
+$wgAutoloadClasses['ApiQueryMoodBarComments'] = dirname( __FILE__ ). '/ApiQueryMoodBarComments.php';
+$wgAPIListModules['moodbarcomments'] = 'ApiQueryMoodBarComments';
 
 // Hooks
 $wgAutoloadClasses['MoodBarHooks'] = dirname(__FILE__).'/MoodBar.hooks.php';
