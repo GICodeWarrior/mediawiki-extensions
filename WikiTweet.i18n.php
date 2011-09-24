@@ -161,6 +161,7 @@ $messages['bg'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'wikitweet-desc' => 'Krouiñ ul lanvad mod Twitter e diabarzh MediaWiki',
@@ -184,6 +185,14 @@ $messages['br'] = array(
 	'wikitweet-timeago' => '$1 zo',
 	'wikitweet-inthefuture' => 'En dazont !!',
 	'wikitweet-fewsecondsago' => 'Un nebeud eilennoù zo',
+	'wikitweet-status' => 'Statud :',
+	'wikitweet-status1' => 'Darvoud',
+	'wikitweet-status2' => 'Diwallit',
+	'wikitweet-resolve' => 'diskoulmañ',
+	'wikitweet-comment' => 'Evezhiadenn',
+	'wikitweet-perperson' => 'Dre zen',
+	'wikitweet-from' => 'eus',
+	'wikitweet-in' => 'e-barzh',
 );
 
 /** German (Deutsch)
