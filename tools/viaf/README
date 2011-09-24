@@ -1,6 +1,6 @@
 viaf.user.js, a Greasemonkey script
-which detects VIAF numbers on web pages and creates related links
-and fetches names for the detected numbers from toolserver.
+which detects VIAF, PND or GND numbers on web pages and creates related links.
+It also fetches names for the detected numbers from the toolserver.
 
 Provisionally homepages and screenshots:
 
