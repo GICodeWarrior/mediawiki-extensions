@@ -41,6 +41,7 @@ $wgAvailableRights[] = 'moodbar-view';
 
 // Internationalisation
 $wgExtensionMessagesFiles['MoodBar'] = dirname(__FILE__).'/MoodBar.i18n.php';
+$wgExtensionMessagesFiles['MoodBarAliases'] = dirname( __FILE__ ) . '/MoodBar.alias.php';
 
 // Resources
 $mbResourceTemplate = array(
