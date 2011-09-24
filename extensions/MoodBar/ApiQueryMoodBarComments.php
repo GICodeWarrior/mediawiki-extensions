@@ -13,17 +13,8 @@ class ApiQueryMoodBarComments extends ApiQueryBase {
 		$this->addJoinConds( array( 'user' => array( 'LEFT JOIN', 'user_id=mbf_user_id' ) ) );
 		$this->addFields( array( 'user_name', 'mbf_id', 'mbf_type', 'mbf_timestamp', 'mbf_user_id', 'mbf_user_ip',
 			'mbf_comment' ) );
-			
-		$sortDesc = $params['dir'] == 'older';
-		$dir = $sortDesc ? ' DESC' : '';
-		$orderFields = array();
-		$useTypeFromContinue = false;
 		if ( count( $params['type'] ) ) {
 			$this->addWhereFld( 'mbf_type', $params['type'] );
-			if ( count( $params['type'] ) > 1 ) {
-				$orderFields[] = 'mbf_type' . $dir;
-				$useTypeFromContinue = true;
-			}
 		}
 		if ( $params['user'] !== null ) {
 			$user = User::newFromName( $params['user'] ); // returns false for IPs
@@ -37,11 +28,11 @@ class ApiQueryMoodBarComments extends ApiQueryBase {
 		}
 		
 		if ( $params['continue'] !== null ) {
-			$this->applyContinue( $params['continue'], $sortDesc, $useTypeFromContinue );
+			$this->applyContinue( $params['continue'], $params['dir'] == 'older' );
 		}
 		
-		$orderFields[] = 'mbf_timestamp' . $dir;
-		$this->addOption( 'ORDER BY', $orderFields );
+		// Add ORDER BY mbf_timestamp {ASC|DESC}
+		$this->addWhereRange( 'mbf_timestamp', $params['dir'], null, null );
 		$this->addOption( 'LIMIT', $params['limit'] + 1 );
 		
 		$res = $this->select( __METHOD__ );
@@ -66,35 +57,25 @@ class ApiQueryMoodBarComments extends ApiQueryBase {
 	
 	protected function getContinue( $row ) {
 		$ts = wfTimestamp( TS_MW, $row->mbf_timestamp );
-		return "$ts|{$row->mbf_type}|{$row->mbf_id}";
+		return "$ts|{$row->mbf_id}";
 	}
 	
-	protected function applyContinue( $continue, $sortDesc, $useType ) {
-		$vals = explode( '|', $continue, 4 );
-		if ( count( $vals ) !== 3 ) {
+	protected function applyContinue( $continue, $sortDesc ) {
+		$vals = explode( '|', $continue, 3 );
+		if ( count( $vals ) !== 2 ) {
 			// TODO this should be a standard message in ApiBase
 			$this->dieUsage( 'Invalid continue param. You should pass the original value returned by the previous query', 'badcontinue' );
 		}
 		
 		$db = $this->getDB();
 		$ts = $db->addQuotes( $db->timestamp( $vals[0] ) );
-		$type = $db->addQuotes( $vals[1] );
-		$id = intval( $vals[2] );
+		$id = intval( $vals[1] );
 		$op = $sortDesc ? '<' : '>';
 		// TODO there should be a standard way to do this in DatabaseBase or ApiQueryBase something
-		if ( $useType ) {
-			$this->addWhere( "mbf_type $op $type OR " .
-				"(mbf_type = $type AND " .
-				"(mbf_timestamp $op $ts OR " .
-				"(mbf_timestamp = $ts AND " .
-				"mbf_id $op= $id)))"
-			);
-		} else {
-			$this->addWhere( "mbf_timestamp $op $ts OR " .
-				"(mbf_timestamp = $ts AND " .
-				"mbf_id $op= $id)"
-			);
-		}
+		$this->addWhere( "mbf_timestamp $op $ts OR " .
+			"(mbf_timestamp = $ts AND " .
+			"mbf_id $op= $id)"
+		);
 	}
 	
 	protected function extractRowInfo( $row ) {
