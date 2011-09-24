@@ -132,6 +132,9 @@ See also:
 	'moodbar-loading-subtitle' => 'Subtitle of Loading-screen. $1 is the SITENAME',
 	'moodbar-success-subtitle' => 'Subtitle of screen when feedback was successfullyully submitted. $1 is the SITENAME',
 	'moodbar-error-subtitle' => 'Subtitle of screen when an error occurred. $1 is the SITENAME',
+	'moodbar-feedback-more' => 'Text of the link that the user can click to see more results. Only visible if JavaScript is enabled.',
+	'moodbar-feedback-newer' => 'Text of the link that the user can click to go back to more recent results. Only visible if JavaScript is not enabled.',
+	'moodbar-feedback-older' => 'Text of the link that the user can click to see less recent results. Only visible if JavaScript is not enabled.',
 );
 
 /** Message documentation (Message documentation)
