@@ -76,7 +76,9 @@ class MoodBarHooks {
 		);
 		
 		$db = $updater->getDB();
-		if ( $db->indexExists( 'moodbar_feedback', 'type_timestamp', __METHOD__ ) ) {
+		if ( $db->tableExists( 'moodbar_feedback' ) && 
+				$db->indexExists( 'moodbar_feedback', 'type_timestamp', __METHOD__ ) )
+		{
 			$updater->addExtensionUpdate( array( 'addIndex', 'moodbar_feedback',
 				'mbf_type_timestamp_id', dirname( __FILE__ ) . '/sql/AddIDToIndexes.sql', true )
 			);
