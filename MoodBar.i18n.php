@@ -100,6 +100,10 @@ For more information, please visit the $1.',
 /** Message documentation (Message documentation)
  * @author Krinkle
  * @author SPQRobin
+ * @author EugeneZelenko
+ * @author Lloffiwr
+ * @author Purodha
+ * @author Raymond
  */
 
 $messages['qqq'] = array(
@@ -135,16 +139,6 @@ See also:
 	'moodbar-feedback-more' => 'Text of the link that the user can click to see more results. Only visible if JavaScript is enabled.',
 	'moodbar-feedback-newer' => 'Text of the link that the user can click to go back to more recent results. Only visible if JavaScript is not enabled.',
 	'moodbar-feedback-older' => 'Text of the link that the user can click to see less recent results. Only visible if JavaScript is not enabled.',
-);
-
-/** Message documentation (Message documentation)
- * @author EugeneZelenko
- * @author Lloffiwr
- * @author Purodha
- * @author Raymond
- * @author SPQRobin
- */
-$messages['qqq'] = array(
 	'moodbar-desc' => '{{desc}}
 This is a feature in development. See [[mw:MoodBar 0.1/Design]] for background information.',
 	'moodbar-trigger-feedback' => 'Link text of the MoodBar overlay trigger. $1 is the SITENAME.',
