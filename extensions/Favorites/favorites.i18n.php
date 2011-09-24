@@ -167,6 +167,14 @@ $messages['be-tarask'] = array(
 	'favoritelisttools-raw' => 'Рэдагаваць нефарматаваны сьпіс улюблёных',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'favoritelistall2' => 'pep tra',
+	'favoritelistedit-raw-titles' => 'Titloù :',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

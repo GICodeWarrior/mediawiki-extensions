@@ -27,11 +27,12 @@ $messages['ast'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author EugeneZelenko
  * @author Renessaince
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
-	'categorysortheaders-desc' => 'Дазволіць рабіць загалоўкі сьпісаў артыкулаў па альфабэце ў катэгорыях зь некалькіх сымбаляў з выкарыстаньнем сынтаксісу <nowiki>[[category:Foo|^Загаловак^Нябачная частка ключа сартыроўкі]]</nowiki>',
+	'categorysortheaders-desc' => 'Дазваляе пазначаць нестандартныя загалоўкі зь некалькіх сымбаляў для сартаваньня старонак у катэгорыях з выкарыстаньнем сынтаксісу <nowiki>[[category:Прыклад|^Загаловак^Нябачная частка ключа сартаваньня]]</nowiki>',
 );
 
 /** German (Deutsch)

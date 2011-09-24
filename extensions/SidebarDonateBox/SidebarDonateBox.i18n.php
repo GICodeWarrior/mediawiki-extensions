@@ -45,6 +45,7 @@ $messages['be-tarask'] = array(
  */
 $messages['br'] = array(
 	'sidebardonatebox-desc' => 'Ouzhpennañ ur voest evit ar roadennoù personelaet er barenn kostez',
+	'DONATE' => 'Ober un donezon',
 );
 
 /** Bosnian (Bosanski)
@@ -215,6 +216,13 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'sidebardonatebox-desc' => 'Legger til en egendefinert donasjonsboks til sidepanelet',
+);
+
+/** Occitan (Occitan)
+ * @author Boulaur
+ */
+$messages['oc'] = array(
+	'DONATE' => 'Far un don',
 );
 
 /** Polish (Polski)

@@ -184,6 +184,21 @@ $messages['be-tarask'] = array(
 	'tog-collabwatchlisthidelistusers' => 'Схаваць рэдагаваньні ўдзельнікаў агульнага сьпісу назіраньня',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'collabwatchlisttools-delete' => 'Dilemel',
+	'collabwatchlistsall' => 'An holl rolloù',
+	'collabwatchlistedit-users-raw-submit' => 'Enrollañ',
+	'collabwatchlistedit-raw-titles' => 'Rummadoù :',
+	'collabwatchlistedit-tags-raw-titles' => 'Balizennoù :',
+	'collabwatchlistedit-users-raw-titles' => 'Implijerien :',
+	'collabwatchlistedit-normal-title' => 'Kemmañ ar rummadoù',
+	'collabwatchlistnew-submit' => 'Krouiñ',
+	'collabwatchlistedit-normal-submit' => 'Enrollañ',
+);
+
 /** German (Deutsch)
  * @author Florian Hackenberger
  * @author Kghbln
@@ -192,7 +207,7 @@ $messages['de'] = array(
 	'collabwatchlist' => 'Kollaborative Beobachtungsliste',
 	'collabwatchlist-desc' => 'Ermöglicht auf Kategorien basierende kollaborative Beobachtungslisten',
 	'specialcollabwatchlist' => 'Kollaborative Beobachtungsliste',
-	'collabwatchlist-details' => '{{PLURAL:$1|Eine Kategorie/ Seite befindet sich|$1 Kategorien/ Seiten befinden sich}} auf dieser kollaborativen Beobachtungsliste.',
+	'collabwatchlist-details' => '{{PLURAL:$1|Eine Kategorie/Seite befindet sich|$1 Kategorien/Seiten befinden sich}} auf dieser kollaborativen Beobachtungsliste.',
 	'collabwatchlisttagselect' => 'Stichwort',
 	'collabwatchlisttagcomment' => 'Kommentar',
 	'collabwatchlistsettagbutton' => 'Stichwort setzen',
@@ -249,8 +264,8 @@ $messages['de'] = array(
 	'collabwatchlistnew-name' => 'Name der Liste',
 	'collabwatchlistnew-submit' => 'Erstellen',
 	'collabwatchlistedit-raw-done' => 'Die kollaborative Beobachtungsliste wurde gespeichert.',
-	'collabwatchlistedit-raw-added' => '{{PLURAL:$1|Eine Kategorie/ Seite wurde|$1 Kategorien/ Seiten wurden}} hinzugefügt:',
-	'collabwatchlistedit-raw-removed' => '{{PLURAL:$1|Eine Kategorie/ Seite wurde|$1 Kategorien/ Seiten wurden}} entfernt:',
+	'collabwatchlistedit-raw-added' => '{{PLURAL:$1|Eine Kategorie/Seite wurde|$1 Kategorien/Seiten wurden}} hinzugefügt:',
+	'collabwatchlistedit-raw-removed' => '{{PLURAL:$1|Eine Kategorie/Seite wurde|$1 Kategorien/Seiten wurden}} entfernt:',
 	'collabwatchlistedit-normal-submit' => 'Speichern',
 	'collabwatchlistshowhidelistusers' => 'Listenbenutzer $1',
 	'tog-collabwatchlisthidelistusers' => 'Bearbeitungen von Benutzern der kollaborativen Beobachtungsliste ausblenden',

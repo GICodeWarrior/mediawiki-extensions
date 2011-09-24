@@ -617,6 +617,7 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author BroOk
  * @author Paucabot
  * @author Solde
  */
@@ -636,6 +637,7 @@ $messages['ca'] = array(
 	'tasks_no_task_delete_title' => 'No permès',
 	'tasks_action_delete' => 'Una tasca ha estat eliminada.',
 	'tasks_task_was_deleted' => "S'ha eliminat satisfactòriament la tasca.",
+	'tasks_created_by' => 'Creat per $1',
 	'tasks_here' => 'aquí',
 	'tasks_plain_text_only' => '(text pla, només 256 caràcters)',
 	'tasks_help_page' => 'Tasques',

@@ -62,6 +62,7 @@ $messages['be-tarask'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'sql2wiki' => 'SQL2Wiki',
 	'sql2wiki-cache_refresh' => 'Freskaat',
 );
 

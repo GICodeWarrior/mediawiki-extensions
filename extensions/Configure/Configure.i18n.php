@@ -8328,6 +8328,7 @@ Opprett den eller endre den for å bruke denne utvidelsen.',
 );
 
 /** Occitan (Occitan)
+ * @author Boulaur
  * @author Cedric31
  */
 $messages['oc'] = array(
@@ -8424,6 +8425,7 @@ Rendètz-lo modificable per PHP per qu'aquesta extension foncione.",
 	'configure-section-squid' => 'Servidors squids',
 	'configure-section-cookie' => 'Cookies',
 	'configure-section-performance' => 'Performància',
+	'configure-section-test' => 'Tèsts',
 	'configure-section-upload' => 'Telecargaments',
 	'configure-section-sharedupload' => 'Telecargaments partejats',
 	'configure-section-mime' => 'Tipes MIME',

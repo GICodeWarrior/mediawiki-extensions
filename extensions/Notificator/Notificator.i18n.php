@@ -121,6 +121,7 @@ $messages['be-tarask'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'notificator-e-mail-address' => "chomlec'h postel",
 	'notificator-change-tag' => 'kemmañ',
 	'notificator-new-tag' => 'nevez',
 	'notificator-subject' => 'Danvez :',
@@ -136,7 +137,7 @@ $messages['de'] = array(
 	'notificator-e-mail-address' => 'E-Mail-Adresse',
 	'notificator-notify' => 'Benachrichtigen',
 	'notificator-notify-address-or-name' => '$1 benachrichtigen',
-	'notificator-revs-not-from-same-title' => 'Die Versionskennungen gehören nicht zum selben Titel/ zur selben Seite',
+	'notificator-revs-not-from-same-title' => 'Die Versionskennungen gehören nicht zum selben Titel / zur selben Seite',
 	'notificator-return-to' => 'Zurück zu',
 	'notificator-special-page-accessed-directly' => 'Auf diese Spezialseite kann nicht direkt zugegriffen werden. Sie kann nur über eine von der Softwareerweiterung „Notificator“ bereitgestellt Schaltfläche genutzt werden.',
 	'notificator-e-mail-address-invalid' => 'Die angegebene E-Mail-Adresse ist ungültig.',

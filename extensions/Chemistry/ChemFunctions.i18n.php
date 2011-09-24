@@ -977,11 +977,13 @@ $messages['no'] = array(
 );
 
 /** Occitan (Occitan)
+ * @author Boulaur
  * @author Cedric31
  */
 $messages['oc'] = array(
 	'chemicalsources' => 'Fonts per la quimia',
 	'chemicalsource-desc' => 'Apond la balisa <nowiki><chemform></nowiki>, per las formulas quimicas',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Pagina especiala]] per las formulas quimicas',
 	'chemFunctions_ListPage' => 'Fonts per la quimia',
 	'chemFunctions_DataList' => 'Seguís una lista de ligams cap a de sites que pòdon aportar d\'entresenhas a prepaus de las substàncias quimicas que recercatz. * [http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI Compausat $MIXCASNameFormula], NIST * [http://ptcl.chem.ox.ac.uk/MSDS/ MSDS], Universitat d\'Oxford',
 	'chemFunctions_CAS' => 'Numèro CAS',
