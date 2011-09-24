@@ -12,15 +12,20 @@ class SpecialMoodBarFeedback extends SpecialPage {
 	public function execute( $par ) {
 		global $wgOut, $wgRequest;
 		
-		// Determine filters from the query string
-		$filters = array();
-		$type = $wgRequest->getArray( 'type' );
-		if ( $type ) {
-			$filters['type'] = $type;
-		}
-		$username = strval( $wgRequest->getVal( 'username' ) );
-		if ( $username !== '' ) {
-			$filters['username'] = $username;
+		$id = intval( $par );
+		if ( $id > 0 ) {
+			$filters = array( 'id' => $id );
+		} else {
+			// Determine filters from the query string
+			$filters = array();
+			$type = $wgRequest->getArray( 'type' );
+			if ( $type ) {
+				$filters['type'] = $type;
+			}
+			$username = strval( $wgRequest->getVal( 'username' ) );
+			if ( $username !== '' ) {
+				$filters['username'] = $username;
+			}
 		}
 		// Do the query
 		$res = $this->doQuery( $filters );
@@ -143,6 +148,9 @@ HTML;
 				$conds['mbf_user_id'] = $user->getID();
 				$conds[] = 'mbf_user_ip IS NULL';
 			}
+		}
+		if ( isset( $filters['id'] ) ) {
+			$conds['mbf_id'] = $filters['id'];
 		}
 		
 		$dbr = wfGetDB( DB_SLAVE );
