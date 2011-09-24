@@ -181,6 +181,72 @@ See [[Thread:Support/About MediaWiki:Moodbar-privacy/en (2)/reply (4)|discussion
 	'moodbar-user-ip' => '{{Identical|IP Address}}',
 );
 
+/** Message documentation (Message documentation)
+ * @author EugeneZelenko
+ * @author Lloffiwr
+ * @author Purodha
+ * @author Raymond
+ * @author SPQRobin
+ */
+$messages['qqq'] = array(
+	'moodbar-desc' => '{{desc}}
+This is a feature in development. See [[mw:MoodBar 0.1/Design]] for background information.',
+	'moodbar-trigger-feedback' => 'Link text of the MoodBar overlay trigger. $1 is the SITENAME.',
+	'moodbar-trigger-editing' => "Link text of the MoodBar overlay trigger. \$1 is the SITENAME. The implied sentence is ''\"Using [Sitename] made me happy/sad/...\"''. See [[mw:MoodBar 0.1/Design]] for background development information.",
+	'moodbar-close' => 'Link text of the close-button. Make sure to include parentheses.
+
+See also:
+* {{msg|parentheses}}
+{{Identical|Close}}',
+	'moodbar-intro-feedback' => 'Intro title of the MoodBar overlay trigger. $1 is the SITENAME.',
+	'moodbar-intro-editing' => '[[File:MoodBar-Step-1.png|right|200px]]
+Intro title of the MoodBar overlay trigger. $1 is the SITENAME.',
+	'moodbar-type-happy-title' => 'No gender support ([[bugzilla:30071|bug 30071]])',
+	'moodbar-type-sad-title' => 'No gender support ([[bugzilla:30071|bug 30071]])',
+	'moodbar-type-confused-title' => 'No gender support ([[bugzilla:30071|bug 30071]])',
+	'tooltip-moodbar-what' => 'Tooltip displayed when hovering the What-link.
+
+See also:
+* {{msg|moodbar-what-label}}',
+	'moodbar-what-label' => 'Link text for the page where more info abut MoodBar can be found.
+{{Identical|What is this}}',
+	'moodbar-what-content' => '$1 is the message {{msg-mw|moodbar-what-link}} which links to the page [[mw:MoodBar|MoodBar]] on MediaWiki.org.',
+	'moodbar-what-link' => 'This is the link embedded as parameter $1 in {{msg-mw|moodbar-what-content}}.',
+	'moodbar-privacy' => 'Parameters:
+*$1 - a link having the anchor text {{msg-mw|moodbar-privacy-link}}
+
+The link is to the privacy policy of the wiki.
+
+See [[Thread:Support/About MediaWiki:Moodbar-privacy/en (2)/reply (4)|discussion]].',
+	'moodbar-privacy-link' => 'This is the anchor text being used in the link replacing $1 in the message {{msg-mw|moodbar-privacy}}',
+	'moodbar-form-policy-text' => 'Text displayed below the input area.
+
+See also:
+* {{msg|moodbar-form-policy-label}}',
+	'moodbar-form-policy-label' => 'Label text for the link to the privacy policy,.
+
+See also:
+* {{msg|moodbar-form-policy-text}}',
+	'moodbar-loading-title' => 'Title of the screen when the widget is loading.',
+	'moodbar-success-title' => 'Title of the screen after the feedback was successfully submitted.',
+	'moodbar-error-title' => 'Title of the screen when after an error occurred and submission aborted.',
+	'moodbar-success-subtitle' => 'Subtitle of screen when feedback was successfullyully submitted. $1 is the SITENAME',
+	'moodbar-error-subtitle' => 'Subtitle of screen when an error occurred. $1 is the SITENAME',
+	'moodbar-header-timestamp' => '{{Identical|Timestamp}}',
+	'moodbar-header-type' => '{{Identical|Type}}',
+	'moodbar-header-page' => '{{Identical|Page}}',
+	'moodbar-header-user' => '{{Identical|User}}',
+	'moodbar-header-comment' => '{{Identical|Comment}}',
+	'moodbar-header-namespace' => '{{Identical|Namespace}}',
+	'moodbar-feedback-more' => 'Text of the link that the user can click to see more results. Only visible if JavaScript is enabled.',
+	'moodbar-feedback-newer' => 'Text of the link that the user can click to go back to more recent results. Only visible if JavaScript is not enabled.',
+	'moodbar-feedback-older' => 'Text of the link that the user can click to see less recent results. Only visible if JavaScript is not enabled.',
+	'moodbar-type-happy' => 'No gender support ([[bugzilla:30071|bug 30071]])',
+	'moodbar-type-sad' => 'No gender support ([[bugzilla:30071|bug 30071]])',
+	'moodbar-type-confused' => 'No gender support ([[bugzilla:30071|bug 30071]])',
+	'moodbar-user-ip' => '{{Identical|IP Address}}',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -386,6 +452,37 @@ $messages['bg'] = array(
 	'moodbar-user-user' => 'Регистриран потребител',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'moodbar-trigger-editing' => "Oc'h aozañ $1...",
+	'moodbar-close' => '(serriñ)',
+	'moodbar-type-happy-title' => 'Laouen',
+	'moodbar-what-label' => 'Petra eo se ?',
+	'moodbar-form-title' => 'Peogwir...',
+	'moodbar-form-note' => "140 arouezenn d'ar muiañ",
+	'moodbar-form-note-dynamic' => '$1 a chom',
+	'moodbar-success-title' => 'Trugarez !',
+	'moodbar-error-title' => 'Chaous !',
+	'moodbar-admin-empty' => "Disoc'h ebet",
+	'moodbar-header-timestamp' => 'Deiziad hag eur',
+	'moodbar-header-type' => 'Seurt',
+	'moodbar-header-page' => 'Pajenn',
+	'moodbar-header-usertype' => 'Seurt implijer',
+	'moodbar-header-user' => 'Implijer',
+	'moodbar-header-locale' => "Lec'hel",
+	'moodbar-header-comment' => 'Evezhiadennoù',
+	'moodbar-header-namespace' => 'Esaouenn anv',
+	'moodbar-feedback-filters' => 'Siloù',
+	'moodbar-feedback-filters-type' => 'Seurt :',
+	'moodbar-feedback-filters-type-sad' => 'Drein',
+	'moodbar-feedback-filters-username' => 'Anv implijer',
+	'moodbar-type-happy' => 'Laouen',
+	'moodbar-user-ip' => "Chomlec'h IP",
+	'moodbar-user-user' => 'Implijer enrollet',
+);
+
 /** Danish (Dansk)
  * @author Peter Alberti
  */
@@ -449,6 +546,7 @@ For yderligere oplysninger, besøg venligst $1.',
 
 /** German (Deutsch)
  * @author Kghbln
+ * @author Metalhead64
  * @author Purodha
  */
 $messages['de'] = array(
@@ -501,6 +599,20 @@ Weitere Informationen hierzu sind an der folgenden Stelle zu finden: $1.',
 	'moodbar-header-user-editcount' => 'Bearbeitungszähler',
 	'moodbar-header-namespace' => 'Namensraum',
 	'moodbar-header-own-talk' => 'Eigene Diskussionsseite',
+	'moodbar-feedback-title' => 'Rückmeldungen',
+	'moodbar-feedback-filters' => 'Filter',
+	'moodbar-feedback-filters-type' => 'Typ:',
+	'moodbar-feedback-filters-type-happy' => 'Lob',
+	'moodbar-feedback-filters-type-confused' => 'Verwirrung',
+	'moodbar-feedback-filters-type-sad' => 'Beanstandungen',
+	'moodbar-feedback-filters-username' => 'Benutzername',
+	'moodbar-feedback-filters-button' => 'Filter setzen',
+	'moodbar-feedback-whatis' => 'Über dieses Feature',
+	'moodbar-feedback-permalink' => 'Nach hier verlinken',
+	'moodbar-feedback-noresults' => 'Es gibt keine treffenden Kommentare.',
+	'moodbar-feedback-more' => 'Weitere',
+	'moodbar-feedback-newer' => 'Aktuellere',
+	'moodbar-feedback-older' => 'Ältere',
 	'moodbar-type-happy' => 'glücklich',
 	'moodbar-type-sad' => 'traurig',
 	'moodbar-type-confused' => 'verwirrt',
@@ -802,6 +914,7 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author ChrisPtDe
  * @author Crochet.david
  * @author Gomoko
  * @author Hashar
@@ -857,6 +970,8 @@ Pour plus d'information, consultez la $1.",
 	'moodbar-header-user-editcount' => "Compteur d'édition",
 	'moodbar-header-namespace' => 'Espace de noms',
 	'moodbar-header-own-talk' => 'Page de discussion personnelle',
+	'moodbar-feedback-newer' => 'Plus récent',
+	'moodbar-feedback-older' => 'Plus ancien',
 	'moodbar-type-happy' => 'Heureux',
 	'moodbar-type-sad' => 'Triste',
 	'moodbar-type-confused' => 'Confus',
@@ -918,6 +1033,12 @@ Por més d’enformacions, volyéd visitar la $1.',
 	'moodbar-header-user-editcount' => 'Comptor de changements a l’utilisator',
 	'moodbar-header-namespace' => 'Èspâço de noms',
 	'moodbar-header-own-talk' => 'Pâge de discussion a sè',
+	'moodbar-feedback-filters' => 'Filtros',
+	'moodbar-feedback-filters-type' => 'Tipo :',
+	'moodbar-feedback-filters-username' => 'Nom d’utilisator',
+	'moodbar-feedback-more' => 'Més',
+	'moodbar-feedback-newer' => 'Ples novél',
+	'moodbar-feedback-older' => 'Ples viely',
 	'moodbar-type-happy' => 'Herox',
 	'moodbar-type-sad' => 'Tristo',
 	'moodbar-type-confused' => 'Confondu',
@@ -979,6 +1100,20 @@ Para obter máis información, bótelle unha ollada á $1 .',
 	'moodbar-header-user-editcount' => 'Número de edición do usuario',
 	'moodbar-header-namespace' => 'Espazo de nomes',
 	'moodbar-header-own-talk' => 'Páxina de conversa propia',
+	'moodbar-feedback-title' => 'Comentarios sobre o taboleiro',
+	'moodbar-feedback-filters' => 'Filtros',
+	'moodbar-feedback-filters-type' => 'Tipo:',
+	'moodbar-feedback-filters-type-happy' => 'Loanza',
+	'moodbar-feedback-filters-type-confused' => 'Confusión',
+	'moodbar-feedback-filters-type-sad' => 'Problemas',
+	'moodbar-feedback-filters-username' => 'Nome de usuario',
+	'moodbar-feedback-filters-button' => 'Definir os filtros',
+	'moodbar-feedback-whatis' => 'Que é isto?',
+	'moodbar-feedback-permalink' => 'ligazón cara aquí',
+	'moodbar-feedback-noresults' => 'Non hai ningún comentario que coincida cos seus filtros.',
+	'moodbar-feedback-more' => 'Máis',
+	'moodbar-feedback-newer' => 'Máis novos',
+	'moodbar-feedback-older' => 'Máis vellos',
 	'moodbar-type-happy' => 'Contento',
 	'moodbar-type-sad' => 'Triste',
 	'moodbar-type-confused' => 'Confuso',
@@ -1163,6 +1298,7 @@ Fir méi Informatiounen, gitt w.e.g. op d'$1.",
 	'moodbar-header-user-editcount' => 'Compteur vun den Ännerunge pro Benotzer',
 	'moodbar-header-namespace' => 'Nummraum',
 	'moodbar-header-own-talk' => 'Eegen Diskussiounssäit',
+	'moodbar-feedback-filters' => 'Filteren',
 	'moodbar-type-happy' => 'Glécklech',
 	'moodbar-type-sad' => 'Traureg',
 	'moodbar-type-confused' => 'Duercherneen',
@@ -1373,6 +1509,20 @@ Untuk maklumat lanjut, sila layari $1.',
 	'moodbar-header-user-editcount' => 'Kiraan suntingan pengguna',
 	'moodbar-header-namespace' => 'Ruang nama',
 	'moodbar-header-own-talk' => 'Laman perbincangan sendiri',
+	'moodbar-feedback-title' => 'Papan pemuka maklum balas',
+	'moodbar-feedback-filters' => 'Penapis',
+	'moodbar-feedback-filters-type' => 'Jenis:',
+	'moodbar-feedback-filters-type-happy' => 'Memuji',
+	'moodbar-feedback-filters-type-confused' => 'Keliru',
+	'moodbar-feedback-filters-type-sad' => 'Isu',
+	'moodbar-feedback-filters-username' => 'Nama pengguna',
+	'moodbar-feedback-filters-button' => 'Tetapkan penapis',
+	'moodbar-feedback-whatis' => 'Ciri ini apa?',
+	'moodbar-feedback-permalink' => 'pautkan ke sini',
+	'moodbar-feedback-noresults' => 'Tiada komen yang sepadan dengan tapisan anda.',
+	'moodbar-feedback-more' => 'Lagi',
+	'moodbar-feedback-newer' => 'Lebih baru',
+	'moodbar-feedback-older' => 'Lebih lama',
 	'moodbar-type-happy' => 'Gembira',
 	'moodbar-type-sad' => 'Sedih',
 	'moodbar-type-confused' => 'Keliru',
@@ -1435,6 +1585,9 @@ Ga naar de $1 voor mee informatie.',
 	'moodbar-header-user-editcount' => 'Aantal bewerkingen van de gebruiker',
 	'moodbar-header-namespace' => 'Naamruimte',
 	'moodbar-header-own-talk' => 'Eigen overlegpagina',
+	'moodbar-feedback-filters-type' => 'Type:',
+	'moodbar-feedback-filters-type-confused' => 'Verwarring',
+	'moodbar-feedback-filters-username' => 'Gebruikersnaam',
 	'moodbar-type-happy' => 'Blij',
 	'moodbar-type-sad' => 'Triest',
 	'moodbar-type-confused' => 'Verward',
