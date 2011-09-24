@@ -94,40 +94,44 @@ class SpecialMoodBarFeedback extends SpecialPage {
 HTML;
 	}
 	
+	public static function formatListItem( $row ) {
+		global $wgLang;
+		$type = $row->mbf_type;
+		$typeMsg = wfMessage( "moodbar-type-$type" )->escaped();
+		$time = $wgLang->formatTimePeriod( wfTimestamp( TS_UNIX ) - wfTimestamp( TS_UNIX, $row->mbf_timestamp ),
+			array( 'avoid' => 'avoidminutes', 'noabbrevs' => true )
+		);
+		$timeMsg = wfMessage( 'ago' )->params( $time )->escaped();
+		$username = htmlspecialchars( $row->user_name === null ? $row->mbf_user_ip : $row->user_name );
+		$links = Linker::userToolLinks( $row->mbf_user_id, $username );
+		$comment = htmlspecialchars( $row->mbf_comment );
+		$permalinkURL = htmlspecialchars( SpecialPage::getTitleFor( 'MoodBarFeedback', $row->mbf_id )->getLinkURL() );
+		$permalinkText = wfMessage( 'moodbar-feedback-permalink' )->escaped();
+		
+		return <<<HTML
+		<li class="fbd-item">
+			<div class="fbd-item-emoticon fbd-item-emoticon-$type">
+				<span class="fbd-item-emoticon-label">$typeMsg</span>
+			</div>
+			<div class="fbd-item-time">$timeMsg</div>
+			<h3 class="fbd-item-userName">
+				<a href="#">$username</a>
+				<sup class="fbd-item-userLinks">
+					$links
+				</sup>
+			</h3>
+			<div class="fbd-item-message">$comment</div>
+			<div class="fbd-item-permalink">(<a href="$permalinkURL">$permalinkText</a>)</div>
+			<div style="clear:both"></div>
+		</li>
+HTML;
+	}
+	
 	public function buildList( $res ) {
-		global $wgLang, $wgRequest;
-		$now = wfTimestamp( TS_UNIX );
+		global $wgRequest;
 		$list = '';
 		foreach ( $res['rows'] as $row ) {
-			$type = $row->mbf_type;
-			$typeMsg = wfMessage( "moodbar-type-$type" )->escaped();
-			$time = $wgLang->formatTimePeriod( $now - wfTimestamp( TS_UNIX, $row->mbf_timestamp ),
-				array( 'avoid' => 'avoidminutes', 'noabbrevs' => true )
-			);
-			$timeMsg = wfMessage( 'ago' )->params( $time )->escaped();
-			$username = htmlspecialchars( $row->user_name === null ? $row->mbf_user_ip : $row->user_name );
-			$links = Linker::userToolLinks( $row->mbf_user_id, $username );
-			$comment = htmlspecialchars( $row->mbf_comment );
-			$permalinkURL = htmlspecialchars( $this->getTitle( $row->mbf_id )->getLinkURL() );
-			$permalinkText = wfMessage( 'moodbar-feedback-permalink' )->escaped();
-			
-			$list .= <<<HTML
-			<li class="fbd-item">
-				<div class="fbd-item-emoticon fbd-item-emoticon-$type">
-					<span class="fbd-item-emoticon-label">$typeMsg</span>
-				</div>
-				<div class="fbd-item-time">$timeMsg</div>
-				<h3 class="fbd-item-userName">
-					<a href="#">$username</a>
-					<sup class="fbd-item-userLinks">
-						$links
-					</sup>
-				</h3>
-				<div class="fbd-item-message">$comment</div>
-				<div class="fbd-item-permalink">(<a href="$permalinkURL">$permalinkText</a>)</div>
-				<div style="clear:both"></div>
-			</li>
-HTML;
+			$list .= self::formatListItem( $row );
 		}
 		
 		if ( $list === '' ) {
