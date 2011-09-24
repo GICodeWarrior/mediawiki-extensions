@@ -117,7 +117,7 @@ $wgResourceModules['ext.moodBar.core'] = $mbResourceTemplate + array(
 );
 
 $wgResourceModules['ext.moodBar.dashboard.styles'] = $mbResourceTemplate + array(
-	'styles' => 'ext.moodBar.dashboard/page.css',
+	'styles' => 'ext.moodBar.dashboard/ext.moodBar.dashboard.css',
 );
 
 $wgResourceModules['jquery.moodBar'] = $mbResourceTemplate + array(
