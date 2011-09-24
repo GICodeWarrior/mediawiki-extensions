@@ -39,6 +39,7 @@ class SpecialMoodBarFeedback extends SpecialPage {
 		$wgOut->addHTML( $this->buildForm() );
 		$wgOut->addHTML( $this->buildList( $res ) );
 		$wgOut->addModuleStyles( 'ext.moodBar.dashboard.styles' );
+		$wgOut->addModules( 'ext.moodBar.dashboard' );
 	}
 	
 	public function buildForm() {
@@ -107,9 +108,10 @@ HTML;
 		$comment = htmlspecialchars( $row->mbf_comment );
 		$permalinkURL = htmlspecialchars( SpecialPage::getTitleFor( 'MoodBarFeedback', $row->mbf_id )->getLinkURL() );
 		$permalinkText = wfMessage( 'moodbar-feedback-permalink' )->escaped();
+		$continueData = wfTimestamp( TS_MW, $row->mbf_timestamp ) . '|' . intval( $row->mbf_id );
 		
 		return <<<HTML
-		<li class="fbd-item">
+		<li class="fbd-item" data-mbccontinue="$continueData">
 			<div class="fbd-item-emoticon fbd-item-emoticon-$type">
 				<span class="fbd-item-emoticon-label">$typeMsg</span>
 			</div>
