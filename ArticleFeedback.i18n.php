@@ -1211,7 +1211,7 @@ $messages['de'] = array(
 	'articlefeedback-form-panel-explanation-link' => 'Project:Artikeleinschätzung',
 	'articlefeedback-form-panel-clear' => 'Einschätzung entfernen',
 	'articlefeedback-form-panel-expertise' => 'Ich habe umfangreiche Kenntnisse zu diesem Thema (optional)',
-	'articlefeedback-form-panel-expertise-studies' => 'Ich habe einen entsprechenden Abschluss/ Hochschulabschluss',
+	'articlefeedback-form-panel-expertise-studies' => 'Ich habe einen entsprechenden Abschluss/Hochschulabschluss',
 	'articlefeedback-form-panel-expertise-profession' => 'Es ist ein Teil meines Berufes',
 	'articlefeedback-form-panel-expertise-hobby' => 'Ich habe ein sehr starkes persönliches Interesse an diesem Thema',
 	'articlefeedback-form-panel-expertise-other' => 'Die Grund für meine Kenntnisse ist hier nicht aufgeführt',
@@ -1280,7 +1280,7 @@ Bitte später erneut versuchen.',
 	'articleFeedback-table-heading-average' => 'Durchschnitt',
 	'articleFeedback-copy-above-highlow-tables' => 'Dies ist ein experimenteller Funktionsbestandteil. Bitte hierzu auf der [$1 Diskussionsseite] eine Rückmeldung geben.',
 	'articlefeedback-dashboard-bottom' => "'''Hinweis:''' Wir werden weiterhin unterschiedliche Möglichkeiten ausprobieren Artikel auf diesen Arbeits- und Übersichtseiten anzuzeigen. Momentan werden hier die folgenden Artikel angezeigt:
-* Seiten mit den höchsten/ niedrigsten Bewertungen: Artikel die mindestens zehn Bewertungen während der vergangenen 24 Stunden erhalten haben. Die Durchschnittswerte sind dabei der Mittelwert aller Bewertungen während der vergangenen 24 Stunden.
+* Seiten mit den höchsten/niedrigsten Bewertungen: Artikel die mindestens zehn Bewertungen während der vergangenen 24 Stunden erhalten haben. Die Durchschnittswerte sind dabei der Mittelwert aller Bewertungen während der vergangenen 24 Stunden.
 * Aktuelle schlechte Bewertungen: Artikel die während der vergangenen 24 Stunden 70 % oder schlechtere Bewertungen (zwei Sterne oder weniger) in jeder der Kategorien erhalten haben. Lediglich Artikel mit wenigstens zehn Bewertungen während der vergangenen 24 Stunden werden dabei einbezogen.",
 	'articlefeedback-disable-preference' => 'Das Widget zum Einschätzen von Seiten nicht anzeigen',
 	'articlefeedback-emailcapture-response-body' => 'Hallo!
