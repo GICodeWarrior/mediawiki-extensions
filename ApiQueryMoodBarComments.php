@@ -31,8 +31,9 @@ class ApiQueryMoodBarComments extends ApiQueryBase {
 			$this->applyContinue( $params['continue'], $params['dir'] == 'older' );
 		}
 		
-		// Add ORDER BY mbf_timestamp {ASC|DESC}
+		// Add ORDER BY mbf_timestamp {ASC|DESC}, mbf_id {ASC|DESC}
 		$this->addWhereRange( 'mbf_timestamp', $params['dir'], null, null );
+		$this->addWhereRange( 'mbf_id', $params['dir'], null, null );
 		$this->addOption( 'LIMIT', $params['limit'] + 1 );
 		
 		$res = $this->select( __METHOD__ );
