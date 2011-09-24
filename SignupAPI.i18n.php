@@ -59,6 +59,17 @@ $messages['be-tarask'] = array(
 	'signupapi-invalidemailaddress' => 'Няслушны адрас электроннай пошты',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'signupapi-ok' => 'Mat eo',
+	'signupapi-noname' => "N'eus bet diferet anv implijer ebet.",
+	'signupapi-weak' => 'Gwan',
+	'signupapi-medium' => 'Etre',
+	'signupapi-strong' => 'Kreñv',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
