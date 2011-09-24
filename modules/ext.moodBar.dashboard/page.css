@@ -87,20 +87,80 @@
 	list-style: none;
 }
 
-#fbd-list-more {
+.client-nojs #fbd-list-more {
+	display: none;
+}
+
+.client-js #fbd-list-newer-older {
+	display: none;
+}
+
+#fbd-list-more, #fbd-list-newer-older {
 	margin: 1em 0 0 13em;
 	padding: 0.5em;
 	background-color: #e8f2f8;
+}
+
+#fbd-list-more a, #fbd-list-newer a, #fbd-list-older a,
+#fbd-list-newer .fbd-page-disabled, #fbd-list-older .fbd-page-disabled {
+	font-size: 1.4em;
+	background-repeat: no-repeat;
+}
+
+#fbd-list-more {
 	text-align: center;
 }
 
 #fbd-list-more a {
-	font-size: 1.4em;
-	padding-left: 20px;
 	/* @embed */
 	background-image: url(images/page-more.png);
 	background-position: left center;
-	background-repeat: no-repeat;
+	padding-left: 20px;
+}
+
+#fbd-list-newer {
+	float: left;
+}
+
+#fbd-list-newer a, #fbd-list-newer .fbd-page-disabled {
+	background-position: left center;
+	padding-left: 20px;
+}
+
+/* The images here are named -ltr instead of -left and -rtl instead of -right
+ * because ResourceLoader flips -ltr and -rtl in URLs, but not -left and -right
+ */
+#fbd-list-newer a {
+	/* @embed */
+	background-image: url(images/page-active-ltr.png);
+}
+
+#fbd-list-newer .fbd-page-disabled {
+	/* @embed */
+	background-image: url(images/page-disabled-ltr.png);
+}
+
+#fbd-list-older {
+	float: right;
+}
+
+#fbd-list-older a, #fbd-list-older .fbd-page-disabled {
+	background-position: right center;
+	padding-right: 20px;
+}
+
+#fbd-list-older a {
+	/* @embed */
+	background-image: url(images/page-active-rtl.png);
+}
+
+#fbd-list-older .fbd-page-disabled {
+	/* @embed */
+	background-image: url(images/page-disabled-rtl.png);
+}
+
+.fbd-page-disabled {
+	color: #c6c6c6;
 }
 
 .fbd-item {

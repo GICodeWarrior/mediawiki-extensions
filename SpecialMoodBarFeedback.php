@@ -102,6 +102,7 @@ HTML;
 		global $wgLang, $wgRequest;
 		$now = wfTimestamp( TS_UNIX );
 		$list = '';
+		$firstRow = false; // TODO support the "Newer" link with this
 		foreach ( $rows as $row ) {
 			$type = $row->mbf_type;
 			$typeMsg = wfMessage( "moodbar-type-$type" )->escaped();
@@ -139,11 +140,33 @@ HTML;
 			// Only show paging stuff if the result is not empty and there are more results
 			$html = "<ul id=\"fbd-list\">$list</ul>";
 			if ( $lastRow ) {
-				$offset = wfTimestamp( TS_MW, $lastRow->mbf_timestamp ) . '|' . intval( $lastRow->mbf_id );
-				$moreURL = htmlspecialchars( $this->getTitle()->getLinkURL( $this->getQuery( $offset ) ) );
 				$moreText = wfMessage( 'moodbar-feedback-more' )->escaped();
-				$html .= "<div id=\"fbd-list-more\"><a href=\"$moreURL\">More</a></div>";
+				$html .= '<div id="fbd-list-more"><a href="#">' . $moreText . '</a></div>';
 			}
+			
+			$olderURL = $newerURL = false;
+			if ( $lastRow ) {
+				$offset = wfTimestamp( TS_MW, $lastRow->mbf_timestamp ) . '|' . intval( $lastRow->mbf_id );
+				$olderURL = htmlspecialchars( $this->getTitle()->getLinkURL( $this->getQuery( $offset ) ) );
+			}
+			if ( $firstRow ) {
+				$newerURL = htmlspecialchars( '#' ); // TODO
+			}
+			$olderText = wfMessage( 'moodbar-feedback-older' )->escaped();
+			$newerText = wfMessage( 'moodbar-feedback-newer' )->escaped();
+			$html .= '<div id="fbd-list-newer-older"><div id="fbd-list-newer">';
+			if ( $newerURL ) {
+				$html .= "<a href=\"$newerURL\">$newerText</a>";
+			} else {
+				$html .= "<span class=\"fbd-page-disabled\">$newerText</span>";
+			}
+			$html .= '</div><div id="fbd-list-older">';
+			if ( $olderURL ) {
+				$html .= "<a href=\"$olderURL\">$olderText</a>";
+			} else {
+				$html .= "<span class=\"fbd-page-disabled\">$olderText</span>";
+			}
+			$html .= '</div><div style="clear: both;"></div></div>';
 			return $html;
 		}
 	}
