@@ -887,6 +887,7 @@ $messages['no'] = array(
 );
 
 /** Occitan (Occitan)
+ * @author Boulaur
  * @author Cedric31
  */
 $messages['oc'] = array(
@@ -906,6 +907,7 @@ $messages['oc'] = array(
 	'security-type-category' => 'categoria',
 	'security-type-namespace' => 'espaci de nom',
 	'security-restricttogroup' => 'Accès al contengut reservat als membres de « $1 »',
+	'restriction-read' => 'Legir',
 );
 
 /** Deitsch (Deitsch)
