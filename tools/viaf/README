@@ -10,7 +10,7 @@ Provisionally homepages and screenshots:
 	http://de.wikipedia.org/wiki/Wikipedia:WikiConvention/ \
 	Programm/VIAF#Greasemonkey-Skript (de)
 
-Version: 0.309
+Version: 0.400
 README last updated: 20110924
 
 What are VIAF numbers ?
@@ -123,8 +123,42 @@ received from server:
 ]}
 ]
 
+Example 5
+request and response shows mixed viaf and pnd number for one person
+sent to server
+http://toolserver.org/~apper/pd/x.php?format=json&data=name&for=[{"viaf":["100272799"]},{"pnd":["118588664"]}]
+
+received from server:
+[
+{"viaf":["100272799"],
+"names":[
+{"lang":"de","name":"Peter Noll"}]},
+{"pnd":["118588664"],
+"names":[
+{"lang":"de","name":"Peter Noll"}
+]}
+]
+
+the same response in array notation:
+'0' ...
+   'viaf' ...
+      '0' => "100272799"
+   'names' ...
+      '0' ...
+         'lang' => "de"
+         'name' => "Peter Noll"
+'1' ...
+   'pnd' ...
+      '0' => "118588664"
+   'names' ...
+      '0' ...
+         'lang' => "de"
+         'name' => "Peter Noll"
+
 == solved ==
 + searching now also PND and GND number
++ Toolserver API changed, it returns names for VIAF, PND, GND numbers
+  if they are available
 + add a ajax request module to fetch author names for numbers from toolserver
   and show them live on the current page; define a JSONP data format
   (0.306)
@@ -132,7 +166,6 @@ received from server:
   fixed in r95940 (0.204)
 
 == To Do ==
-* adding Toolserver software and requests to also fetch names for PND/GMD number
 * add a user-interface or mechanism to enable/disable the summary alert box
   without the need to change program code
 * revise and enable the update mechanism

@@ -4,11 +4,11 @@
 // @require	   https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js
 // @require        http://svn.wikimedia.org/svnroot/mediawiki/trunk/tools/viaf/jquery.cookie.js
 // @require        http://svn.wikimedia.org/svnroot/mediawiki/trunk/tools/viaf/jquery.ba-replacetext.js
-// @description    locate VIAF numbers in texts and urls on web pages, fetch corresponding names from toolserver. (c)T.Gries Version 0.309 201109241230
+// @description    locate VIAF numbers in texts and urls on web pages, fetch corresponding names from toolserver. (c)T.Gries Version 0.400 201109242100
 // @include        *
 // ==/UserScript==
 
-var VERSION = "0.309";
+var VERSION = "0.400";
 /***
  * Copyright (c) 2011 T. Gries
  *
@@ -50,7 +50,9 @@ var VERSION = "0.309";
  *		debug parameter bitwise
  * 20110920	removed parent() and add the new links close after the place
  *		where the VIAF was found; jQuery 1.6.4
- * 20110923     beginning to detect and link PND numbers as well
+ * 20110924     detecting and linking PND and GND numbers as well
+ *              Toolserver API adapted: names now returned for VIAF, PND, GND
+ *              numbers; detected GND numbers are treated as PND
  *
  ***/
 
@@ -89,38 +91,35 @@ function updateCheck2() {
 }
 
 function updateCheck(verbose) {
+	try {
+		GM_xmlhttpRequest({
+			method: 'GET',
+			url: SCRIPT_URL + "?rnd="+Math.random(),
+        		onload: function(result) {
+            			if (result.status != 200) throw "status="+result.status;
 
-   try {
-      GM_xmlhttpRequest({
-         method: 'GET',
-         url: SCRIPT_URL + "?rnd="+Math.random(),
-         onload: function(result) {
-            if (result.status != 200) throw "status="+result.status;
+            			var tmp = /VERSION[\s=]+"(.*?)"/.exec(result.responseText);
+	            		if (tmp == null) throw "parse error";
 
-            var tmp = /VERSION[\s=]+"(.*?)"/.exec(result.responseText);
-            if (tmp == null) throw "parse error";
+        	    		if (VERSION < tmp[1]) {
+               				if ( ($.cookie("updatecheck", {path:'/'} ) == null) || ( $("#updateinfo").length == 0) ) if (window.confirm("A newer version of the Greasemonkey script "+SCRIPT_NAME+" is available. You currently have version "+VERSION+".\n\nDo you want to update to version "+tmp[1]+" from "+SCRIPT_URL+" now ?\n\nPress Ctrl+F5 after the installation has finished to clear your browser chache.")) location.href = SCRIPT_URL;
 
-            if (VERSION < tmp[1]) {
-               if ( ($.cookie("updatecheck", {path:'/'} ) == null) || ( $("#updateinfo").length == 0) ) if (window.confirm("A newer version of the Greasemonkey script "+SCRIPT_NAME+" is available. You currently have version "+VERSION+".\n\nDo you want to update to version "+tmp[1]+" from "+SCRIPT_URL+" now ?\n\nPress Ctrl+F5 after the installation has finished to clear your browser chache.")) location.href = SCRIPT_URL;
+	       				$("#updateinfo")
+	       					.css("background","yellow")
+						.text(" New version of Greasemonkey script "+SCRIPT_NAME+" available.")
+						.attr("title","Click here to update to "+SCRIPT_NAME+" version "+tmp[1]+". Your current version is "+VERSION)
+						.mouseover( function(){ $(this).css("cursor","pointer") } )
+						.click( function() { $(this).fadeOut(2000); location.href=SCRIPT_URL } );
+				} else {
+					if (verbose) alert("There is no newer version of the Greasemonkey script "+SCRIPT_NAME+" available. Feel lucky, because you already have the latest version "+VERSION+".") ;
+	            		}
 
-	       $("#updateinfo")
-	       		.css("background","yellow")
-			.text(" New version of Greasemonkey script "+SCRIPT_NAME+" available.")
-			.attr("title","Click here to update to "+SCRIPT_NAME+" version "+tmp[1]+". Your current version is "+VERSION)
-			.mouseover( function(){ $(this).css("cursor","pointer") } )
-			.click( function() { $(this).fadeOut(2000); location.href=SCRIPT_URL } );
-
-            } else {
-               if (verbose) alert("There is no newer version of the Greasemonkey script "+SCRIPT_NAME+" available. Feel lucky, because you already have the latest version "+VERSION+".") ;
-            }
-
-         $.cookie("updatecheck", "1", {expires:1, path:'/'} );
-
-         }
-      });
-   } catch (error) {
-      alert('Error updating: '+error);
-   }
+				$.cookie("updatecheck", "1", {expires:1, path:'/'} );
+	         	}
+      		});
+	} catch (error) {
+		alert('Error updating: '+error);
+	}
 }
 
 // utility functions
@@ -147,6 +146,8 @@ function numSort( a, b ) { return a-b }
  *
  **/
 function dump( arr, depth ) {
+	var cr = "\n";
+	// var cr = "<br/>";
 	var dumped_text = "";
 	if( !depth ) depth = 0;
 
@@ -162,10 +163,10 @@ function dump( arr, depth ) {
 			var value = arr[item];
 
 			if ( typeof( value ) == 'object' ) { //If it is an array,
-				dumped_text += depth_padding + "'" + item + "' ...\n";
+				dumped_text += depth_padding + "'" + item + "' ..."+cr;
 				dumped_text += dump( value, depth+1 );
 			} else {
-				dumped_text += depth_padding + "'" + item + "' => \"" + value + "\"\n";
+				dumped_text += depth_padding + "'" + item + "' => \"" + value + "\""+cr;
 			}
 		}
 	} else { //Strings/Chars/Numbers etc.
@@ -213,9 +214,37 @@ function numberToNames( numberType, items ) {
 	var items_str = JSON.stringify( items );
 	if ( debug & 1 ) output = "sent to server:\n"+items_str;
 
-	// get names via Greasemonkey_xmlhttpRequest across domain borders
-	// example using "GET"
-	// http://toolserver.org/~apper/pd/x.php?format=json&data=name&for=[{"viaf":["15571981"]},{"viaf":["79410188"]},{"viaf":["2878675"]},{"viaf":["122255788"]}]
+	/***
+	 *      get names via Greasemonkey_xmlhttpRequest across domain borders
+	 *
+	 *      example usages using "GET" requests
+	 *
+	 *      example 1 request shows several viaf numbers for the same persons
+	 *      http://toolserver.org/~apper/pd/x.php?format=json&data=name&for=[{"viaf":["15571981"]},{"viaf":["79410188"]},{"viaf":["2878675"]},{"viaf":["122255788"]}]
+	 *
+	 *      example 2 request and response shows mixed viaf and pnd number for one person
+	 *      http://toolserver.org/~apper/pd/x.php?format=json&data=name&for=[{"viaf":["100272799"]},{"pnd":["118588664"]}]
+	 *
+	 *      example 2 JSON response:
+	 *      [{"viaf":["100272799"],"names":[{"lang":"de","name":"Peter Noll"}]},{"pnd":["118588664"],"names":[{"lang":"de","name":"Peter Noll"}]}]
+	 *
+	 *      example 2 response in array notation as produced by the enclosed dump() function:
+	 *      '0' ...
+	 *         'viaf' ...
+	 *            '0' => "100272799"
+	 *         'names' ...
+	 *            '0' ...
+	 *               'lang' => "de"
+	 *               'name' => "Peter Noll"
+	 *      '1' ...
+	 *         'pnd' ...
+	 *            '0' => "118588664"
+	 *         'names' ...
+	 *            '0' ...
+	 *               'lang' => "de"
+	 *               'name' => "Peter Noll"
+	 *
+	 ***/
 
 	// http://wiki.greasespot.net/GM_xmlhttpRequest#POST_request
        	GM_xmlhttpRequest({
@@ -242,41 +271,57 @@ function numberToNames( numberType, items ) {
 function cb_updateFromServer( data ){
 	if ( debug & 2 ) output += "\n\nreceived from server:\n"+ data;
 	var data_js = JSON.parse( data );
-	if ( debug & 4 ) alert( dump( data_js ) );
+	if ( debug & 4 ) output += dump( data_js );
 
-	var names = '';
+	var names,numType,number;
 
-	// for all returned viaf numbers do
-	for ( viaf_i in data_js ) {
+	// for all returned viaf and pnd numbers do
+	for ( record_nr in data_js ) {
 	
-		// get the first viaf number per record,
+		// get the first viaf or pnd number per record,
 		// as this was the one which was found on the web page.
 		//
-		// All occurences are already marked as class "viaf-<viafnr>"
+		// All occurences in the web page are already
+		// marked as class "viaf-<viafnr>" or "pnd-<pndnr>"
 		// when coming back here.
 		//
-		// Remark: the server response may contain further numbers for
-		// persons having more than one viaf number.
-		
-	        var viaf = data_js[viaf_i]['viaf'][0];
-	        
-		if ( data_js[viaf_i]['names'].length > 0 ) {
+		// The server may return more numbers for a person than were
+		// sent, because there are authors which have more than
+		// one viaf or pnd number in the database (i.e. doublures).
 
-			// for all available names for that viaf do
-			for ( name_i in data_js[viaf_i]['names'] ) {
-		        	names += data_js[viaf_i]['names'][name_i]['name']+" ";
+		switch ( true ) {
+	        case ( typeof data_js[record_nr]['viaf'] != "undefined" ):
+			numType = "viaf";
+			number = data_js[record_nr]['viaf'][0];
+			break;
+		case ( typeof data_js[record_nr]['pnd'] != "undefined" ):
+			numType = "pnd";
+			number = data_js[record_nr]['pnd'][0];
+			break;
+		default:
+			numType = "";
+			number = -1;
+		}
+
+		names = "";
+		if ( data_js[record_nr]['names'].length > 0 ) {
+
+			// for all available names for that number do
+			for ( name_j in data_js[record_nr]['names'] ) {
+		        	names += data_js[record_nr]['names'][name_j]['name']+" ";
 			}
-		
-			// replace the class "viaf-<viafnr>"
-			// with all names string or with the first name only
-			var nameString = ( showAllNames ) ? names : data_js[viaf_i]['names'][0]['name'];
 
-			$(".viaf-" + viaf )
+			// replace the class "viaf-<viafnr>" or "pnd-<pndnr>"
+			// with all names string or with the first name only
+			var nameString = ( showAllNames ) ? names : data_js[record_nr]['names'][0]['name'];
+
+			$("."+numType+"-" + number )
 				.text( " " + nameString + " " )
 				.css( markNamesFromServer )
 				.after( nbsp )
 				.before( nbsp );
  		}
+
 	}
 
 	if ( ( debug & 8 ) && ( names.length > 0 ) ) {
@@ -288,7 +333,6 @@ function cb_updateFromServer( data ){
 
 }
 
-
 function doAnyOtherBusiness( numberType, number ) {
 	// add the element only if it does not exist in list
 	if ( numberType == "viaf" ) {
@@ -299,8 +343,7 @@ function doAnyOtherBusiness( numberType, number ) {
 	} else {
 		if ( pnd.indexOf( number ) == -1 ) {
 			pnd.push( number );
-// FIXME
-			// out_js.push( { "pnd" : [number] } );
+			out_js.push( { "pnd" : [number] } );
 		}
 	}
 }
@@ -315,15 +358,14 @@ function doAnyOtherBusiness( numberType, number ) {
 // but don't look in an active textareas like mediawiki input textarea
 
 $("body *:not(textarea)")
-	.replaceText( /(viaf[1-9]?)(:|\/|%2B|%3A|%2F|\s|ID:|=|%3D)+\s*([0-9]+)/gi, "<span class='viaf viaf-in-text' viaf='$3'>$1$2$3</span>" )
-//	.replaceText( /([pg]nd[1-9]?)(:|\/|%2B|%3A|%2F|\s|ID:|=|%3D)+\s*([0-9]+x?)/gi, "<span class='pnd pnd-in-text' viaf='$3'>$1$2$3</span>" );
-	.replaceText( /([pg]nd[1-9]?)(:|\/|%2B|%3A|%2F|\s|ID:|=|%3D)+\s*([0-9]+x?)/gi, function( s0, s1, s2, s3 ){
+	.replaceText( /(viaf[1-9]?)\s*(:|\/|%2B|%3A|%2F|\s|ID:|=|%3D)+\s*([0-9]+)/gi, "<span class='viaf viaf-in-text' viaf='$3'>$1$2$3</span>" )
+	.replaceText( /([pg]nd[1-9]?)\s*(:|\/|%2B|%3A|%2F|\s|ID:|=|%3D)+\s*([0-9]+x?)/gi, function( s0, s1, s2, s3 ){
 		s3 = s3.toUpperCase();
 		return "<span class='pnd pnd-in-text' pnd='" + s3 + "'>" + s1 + s2 + s3 + "</span>"
 	});
 
 // PASS 2
-// try to retrieve viaf numbers in urls
+// try to retrieve viaf or pnd or gnd numbers from urls
 
 $("a").each(function(){
 	var $this = $(this);
@@ -331,12 +373,20 @@ $("a").each(function(){
 	if ( $this.find(".pnd").length != 0 ) return; // in PASS 2, skip all entries which have this attribute from PASS 1
 	var url = $this.attr("href");
 
+	/* VIAF */
 	var magicUrlRegExp = new RegExp( /(http:\/\/viaf.org\/(viaf\/)?(\d+)|http:\/\/www.librarything.de\/commonknowledge\/search.php?f=13&exact=1&q=VIAF%3A(\d)+)/gi );
-
 	if ( typeof url != "undefined" && url.match( magicUrlRegExp ) ) {
 	        if ( markUrlDetectedItems ) $this.css( markUrlDetectedItemsCSS );
 	        var viaf = RegExp.$1.replace( /[\D]*/g, '' );
 		$this.after( $("<span class='viaf viaf-in-url' viaf='"+viaf+"'>&nbsp;"+viaf+"</span>") );
+	}
+
+	/* PND, GND */
+	var magicUrlRegExp = new RegExp( /(http:\/\/d-nb.info\/([gp]nd\/)?(\d+))/gi );
+	if ( typeof url != "undefined" && url.match( magicUrlRegExp ) ) {
+	        if ( markUrlDetectedItems ) $this.css( markUrlDetectedItemsCSS );
+	        var pnd = RegExp.$1.replace( /[\D]*/g, '' );
+		$this.after( $("<span class='pnd pnd-in-url' pnd='"+pnd+"'>&nbsp;"+pnd+"</span>") );
 	}
 
 })
@@ -418,6 +468,11 @@ numberToNames( "viaf", out_js );
 // numberToNames( "pnd", out_js );
 
 // show a summary of the collected numbers
+
+/***
+ *
+ * FIXME
+ *
 if ( out.length > 0 ) {
 
 	out.sort( numSort );
@@ -436,5 +491,5 @@ if ( out.length > 0 ) {
 
 		
 }
-
+***/
 }) ( jQuery );
