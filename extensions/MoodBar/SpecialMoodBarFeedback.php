@@ -11,37 +11,14 @@ class SpecialMoodBarFeedback extends SpecialPage {
 
 	public function execute( $par ) {
 		global $wgOut, $wgRequest;
-		
-		$limit = 20;
-		$offset = false;
-		$id = intval( $par );
-		if ( $id > 0 ) {
-			$filters = array( 'id' => $id );
-		} else {
-			// Determine filters and offset from the query string
-			$filters = array();
-			$type = $wgRequest->getArray( 'type' );
-			if ( $type ) {
-				$filters['type'] = $type;
-			}
-			$username = strval( $wgRequest->getVal( 'username' ) );
-			if ( $username !== '' ) {
-				$filters['username'] = $username;
-			}
-			$offset = $wgRequest->getVal( 'offset', $offset );
-		}
-		// Do the query
-		$backwards = $wgRequest->getVal( 'dir' ) === 'prev';
-		$res = $this->doQuery( $filters, $limit, $offset, $backwards );
-		
-		// Output HTML
+		$formatter = MoodBarFeedbackFormatter::newFromRequest( $wgRequest, $par );
 		$wgOut->setPageTitle( wfMsg( 'moodbar-feedback-title' ) );
 		$wgOut->addHTML( $this->buildForm() );
-		$wgOut->addHTML( $this->buildList( $res ) );
+		$wgOut->addHTML( $formatter->getHTML() );
 		$wgOut->addModuleStyles( 'ext.moodBar.dashboard.styles' );
 	}
 	
-	public function buildForm() {
+	protected function buildForm() {
 		global $wgRequest, $wgMoodBarConfig;
 		$filtersMsg = wfMessage( 'moodbar-feedback-filters' )->escaped();
 		$typeMsg = wfMessage( 'moodbar-feedback-filters-type' )->escaped();
@@ -93,9 +70,106 @@ class SpecialMoodBarFeedback extends SpecialPage {
 		</div>
 HTML;
 	}
+}
+
+class MoodBarFeedbackFormatter {
+	protected $types, $username, $id, $backwards, $offset, $limit;
 	
-	public function buildList( $res ) {
-		global $wgLang, $wgRequest;
+	public function __construct( $types, $username, $id, $backwards, $offset ) {
+		$this->types = (array)$types;
+		$this->username = strval( $username ) !== '' ? strval( $username ) : null;
+		$this->id = intval( $id );
+		$this->backwards = (bool)$backwards;
+		$this->offset = $offset;
+		$this->limit = 20; // Hardcoded for now
+	}
+	
+	public static function newFromRequest( WebRequest $request, $par = null ) {
+		return new self(
+			$request->getArray( 'type', array() ),
+			$request->getVal( 'username', null ),
+			intval( $par ),
+			$request->getVal( 'dir' ) == 'prev',
+			$request->getVal( 'offset', null )
+		);
+	}
+	
+	public function getHTML() {
+		return $this->buildList( $this->doQuery() );
+	}
+	
+	protected function getTitle( $par = null ) {
+		return SpecialPage::getTitleFor( 'MoodBarFeedback', $par );
+	}
+	
+	protected function doQuery() {
+		$dbr = wfGetDB( DB_SLAVE );
+		$conds = array();
+		if ( $this->types ) {
+			$conds['mbf_type'] = $this->types;
+		}
+		if ( $this->username !== null ) {
+			$user = User::newFromName( $this->username ); // Returns false for IPs
+			if ( !$user || $user->isAnon() ) {
+				$conds['mbf_user_id'] = 0;
+				$conds['mbf_user_ip'] = $this->username;
+			} else {
+				$conds['mbf_user_id'] = $user->getID();
+				$conds[] = 'mbf_user_ip IS NULL';
+			}
+		}
+		if ( $this->id > 0 ) {
+			$conds['mbf_id'] = $this->id;
+		}
+		if ( $this->offset !== null ) {
+			$arr = explode( '|', $this->offset, 2 );
+			$ts = $dbr->addQuotes( $dbr->timestamp( $arr[0] ) );
+			$id = isset( $arr[1] ) ? intval( $arr[1] ) : 0;
+			$op = $this->backwards ? '>' : '<';
+			$conds[] = "mbf_timestamp $op $ts OR (mbf_timestamp = $ts AND mbf_id $op= $id)";
+		}
+		
+		$desc = $this->backwards ? '' : ' DESC';
+		$res = $dbr->select( array( 'moodbar_feedback', 'user' ), array(
+				'user_name', 'mbf_id', 'mbf_type',
+				'mbf_timestamp', 'mbf_user_id', 'mbf_user_ip', 'mbf_comment'
+			),
+			$conds,
+			__METHOD__,
+			array( 'LIMIT' => $this->limit + 2, 'ORDER BY' => "mbf_timestamp$desc, mbf_id$desc" ),
+			array( 'user' => array( 'LEFT JOIN', 'user_id=mbf_user_id' ) )
+		);
+		$rows = iterator_to_array( $res, /*$use_keys=*/false );
+		
+		// Figure out whether there are newer and older rows
+		$olderRow = $newerRow = null;
+		$count = count( $rows );
+		if ( $this->offset && $count > 0 ) {
+			// If there is an offset, drop the first row
+			if ( $count > 1 ) {
+				array_shift( $rows );
+				$count--;
+			}
+			// We now know there is a previous row
+			$newerRow = $rows[0];
+		}
+		if ( $count > $this->limit ) {
+			// If there are rows past the limit, drop them
+			array_splice( $rows, $this->limit );
+			// We now know there is a next row
+			$olderRow = $rows[$this->limit - 1];
+		}
+		
+		// If we got everything backwards, reverse it
+		if ( $this->backwards ) {
+			$rows = array_reverse( $rows );
+			list( $olderRow, $newerRow ) = array( $newerRow, $olderRow );
+		}
+		return array( 'rows' => $rows, 'olderRow' =>  $olderRow, 'newerRow' => $newerRow );
+	}
+	
+	protected function buildList( $res ) {
+		global $wgLang;
 		$now = wfTimestamp( TS_UNIX );
 		$list = '';
 		foreach ( $res['rows'] as $row ) {
@@ -170,79 +244,14 @@ HTML;
 		}
 	}
 	
-	public function doQuery( $filters, $limit, $offset, $backwards ) {
-		$dbr = wfGetDB( DB_SLAVE );
-		$conds = array();
-		if ( isset( $filters['type'] ) ) {
-			$conds['mbf_type'] = $filters['type'];
-		}
-		if ( isset( $filters['username'] ) ) {
-			$user = User::newFromName( $filters['username'] ); // Returns false for IPs
-			if ( !$user || $user->isAnon() ) {
-				$conds['mbf_user_id'] = 0;
-				$conds['mbf_user_ip'] = $filters['username'];
-			} else {
-				$conds['mbf_user_id'] = $user->getID();
-				$conds[] = 'mbf_user_ip IS NULL';
-			}
-		}
-		if ( isset( $filters['id'] ) ) {
-			$conds['mbf_id'] = $filters['id'];
-		}
-		if ( $offset !== false ) {
-			$arr = explode( '|', $offset, 2 );
-			$ts = $dbr->addQuotes( $dbr->timestamp( $arr[0] ) );
-			$id = isset( $arr[1] ) ? intval( $arr[1] ) : 0;
-			$op = $backwards ? '>' : '<';
-			$conds[] = "mbf_timestamp $op $ts OR (mbf_timestamp = $ts AND mbf_id $op= $id)";
-		}
-		
-		$desc = $backwards ? '' : ' DESC';
-		$res = $dbr->select( array( 'moodbar_feedback', 'user' ), array(
-				'user_name', 'mbf_id', 'mbf_type',
-				'mbf_timestamp', 'mbf_user_id', 'mbf_user_ip', 'mbf_comment'
-			),
-			$conds,
-			__METHOD__,
-			array( 'LIMIT' => $limit + 2, 'ORDER BY' => "mbf_timestamp$desc, mbf_id$desc" ),
-			array( 'user' => array( 'LEFT JOIN', 'user_id=mbf_user_id' ) )
-		);
-		$rows = iterator_to_array( $res, /*$use_keys=*/false );
-		
-		// Figure out whether there are newer and older rows
-		$olderRow = $newerRow = null;
-		$count = count( $rows );
-		if ( $offset && $count > 0 ) {
-			// If there is an offset, drop the first row
-			if ( $count > 1 ) {
-				array_shift( $rows );
-				$count--;
-			}
-			// We now know there is a previous row
-			$newerRow = $rows[0];
-		}
-		if ( $count > $limit ) {
-			// If there are rows past the limit, drop them
-			array_splice( $rows, $limit );
-			// We now know there is a next row
-			$olderRow = $rows[$limit - 1];
-		}
-		
-		// If we got everything backwards, reverse it
-		if ( $backwards ) {
-			$rows = array_reverse( $rows );
-			list( $olderRow, $newerRow ) = array( $newerRow, $olderRow );
-		}
-		return array( 'rows' => $rows, 'olderRow' =>  $olderRow, 'newerRow' => $newerRow );
-	}
-	
 	protected function getQuery( $offset, $backwards ) {
-		global $wgRequest;
 		$query = array(
-			'type' => $wgRequest->getArray( 'type', array() ),
-			'username' => $wgRequest->getVal( 'username' ),
+			'type' => $this->types,
 			'offset' => $offset,
 		);
+		if ( $this->username !== null ) {
+			$query['username'] = $this->username;
+		}
 		if ( $backwards ) {
 			$query['dir'] = 'prev';
 		}

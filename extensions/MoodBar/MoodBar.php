@@ -34,6 +34,7 @@ $wgHooks['LoadExtensionSchemaUpdates'][] = 'MoodBarHooks::onLoadExtensionSchemaU
 $wgAutoloadClasses['SpecialMoodBar'] = dirname(__FILE__).'/SpecialMoodBar.php';
 $wgSpecialPages['MoodBar'] = 'SpecialMoodBar';
 $wgAutoloadClasses['SpecialMoodBarFeedback'] = dirname( __FILE__ ) . '/SpecialMoodBarFeedback.php';
+$wgAutoloadClasses['MoodBarFeedbackFormatter'] = dirname( __FILE__ ) . '/SpecialMoodBarFeedback.php';
 $wgSpecialPages['MoodBarFeedback'] = 'SpecialMoodBarFeedback';
 
 // User rights
