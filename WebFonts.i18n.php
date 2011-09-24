@@ -51,11 +51,13 @@ $messages['bn'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'webfonts' => 'Fontoù Kenrouedad',
 	'webfonts-desc' => "Ensoc'hañ a ra ar fontoù er pajennoù",
 	'webfonts-load' => 'Diuzañ ar font',
+	'webfonts-reset' => 'Adderaouekaat',
 	'webfonts-disable-preference' => "Diweredekaat an ensoc'hañ fontoù (Fontoù Kenrouedad)",
 );
 
