@@ -49,7 +49,7 @@ class SpecialMoodBarFeedback extends SpecialPage {
 		$whatIsMsg = wfMessage( 'moodbar-feedback-whatis' )->escaped();
 		$whatIsURL = htmlspecialchars( $wgMoodBarConfig['infoUrl'] );
 		
-		$types = $wgRequest->getArray( 'type' );
+		$types = $wgRequest->getArray( 'type', array() );
 		$happyCheckbox = Xml::check( 'type[]', in_array( 'happy', $types ),
 			array( 'id' => 'fbd-filters-type-praise', 'value' => 'happy' ) );
 		$confusedCheckbox = Xml::check( 'type[]', in_array( 'confused', $types ),
