@@ -1359,6 +1359,12 @@ S'it ses logà, it peule disabilité st'avis-sì ant la session \"Quàder ëd mo
  * @author Khalid Mahmood
  */
 $messages['pnb'] = array(
+	'vector' => 'یو آئی بہتریاں ویکٹر لئی',
+	'vector-desc' => 'ورتن والے دے وکھالے',
+	'vector-collapsiblenav-preference' => 'ویکٹر سکن چ سائیڈ بار چ چیزاں دا ڈگنا ہون دیو۔',
+	'vector-collapsiblenav-more' => 'ہور بولیاں',
+	'vector-editwarning-warning' => 'اے صفے توں جان تے ہو سکدا اوہ ساریاں تبدیلیاں مک جان جیہڑیاں تساں بناياں نیں۔
+اگر تسیں لاکان او، تسیں ایڈیٹنگ سیکشن چ  اپنی پسنداں چ ایس خبرداری نوں پعلے ناں۔',
 	'vector-editwarning-preference' => 'جدوں میں کوئی صفحہ تبدیلی کر کے بچاۓ بغیر چھڈن لگاں تے منوں دس دیو',
 	'vector-simplesearch-search' => 'کھوج',
 	'vector-simplesearch-containing' => 'بند کر ریا اے۔۔۔',
