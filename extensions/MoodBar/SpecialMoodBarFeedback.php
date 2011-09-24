@@ -102,7 +102,7 @@ HTML;
 			$type = $row->mbf_type;
 			$typeMsg = wfMessage( "moodbar-type-$type" )->escaped();
 			$time = $wgLang->formatTimePeriod( $now - wfTimestamp( TS_UNIX, $row->mbf_timestamp ),
-				'avoidminutes', 'noabbrevs'
+				array( 'avoid' => 'avoidminutes', 'noabbrevs' => true )
 			);
 			$timeMsg = wfMessage( 'ago' )->params( $time )->escaped();
 			$username = htmlspecialchars( $row->user_name === null ? $row->mbf_user_ip : $row->user_name );
