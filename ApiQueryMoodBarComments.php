@@ -6,7 +6,9 @@ class ApiQueryMoodBarComments extends ApiQueryBase {
 	}
 	
 	public function execute() {
+		global $wgLang;
 		$params = $this->extractRequestParams();
+		$prop = array_flip( $params['prop'] );
 		
 		// Build the query
 		$this->addTables( array( 'moodbar_feedback', 'user' ) );
@@ -46,7 +48,7 @@ class ApiQueryMoodBarComments extends ApiQueryBase {
 				break;
 			}
 			
-			$vals = $this->extractRowInfo( $row );
+			$vals = $this->extractRowInfo( $row, $prop );
 			$fit = $result->addValue( array( 'query', $this->getModuleName() ), null, $vals );
 			if ( !$fit ) {
 				$this->setContinueEnumParameter( 'continue', $this->getContinue( $row ) );
@@ -79,15 +81,21 @@ class ApiQueryMoodBarComments extends ApiQueryBase {
 		);
 	}
 	
-	protected function extractRowInfo( $row ) {
-		$r = array(
-			'id' => intval( $row->mbf_id ),
-			'type' => $row->mbf_type,
-			'timestamp' => wfTimestamp( TS_ISO_8601, $row->mbf_timestamp ),
-			'userid' => intval( $row->mbf_user_id ),
-			'username' => $row->mbf_user_ip === null ? $row->user_name : $row->mbf_user_ip,
-		);
-		ApiResult::setContent( $r, $row->mbf_comment );
+	protected function extractRowInfo( $row, $prop ) {
+		$r = array();
+		if ( isset( $prop['metadata'] ) ) {
+			$r += array(
+				'id' => intval( $row->mbf_id ),
+				'type' => $row->mbf_type,
+				'timestamp' => wfTimestamp( TS_ISO_8601, $row->mbf_timestamp ),
+				'userid' => intval( $row->mbf_user_id ),
+				'username' => $row->mbf_user_ip === null ? $row->user_name : $row->mbf_user_ip,
+			);
+			ApiResult::setContent( $r, $row->mbf_comment );
+		}
+		if ( isset( $prop['formatted'] ) ) {
+			$r['formatted'] = SpecialMoodBarFeedback::formatListItem( $row );
+		}
 		return $r;
 	}
 
@@ -116,6 +124,11 @@ class ApiQueryMoodBarComments extends ApiQueryBase {
 			'user' => array(
 				ApiBase::PARAM_TYPE => 'user',
 			),
+			'prop' => array(
+				ApiBase::PARAM_TYPE => array( 'metadata', 'formatted' ),
+				ApiBase::PARAM_DFLT => 'metadata',
+				ApiBase::PARAM_ISMULTI => true,
+			),
 		);
 	}
 
@@ -128,7 +141,11 @@ class ApiQueryMoodBarComments extends ApiQueryBase {
 			'limit' => 'How many comments to return',
 			'continue' => 'When more results are available, use this to continue',
 			'type' => 'Only return comments of the given type(s). If not set or empty, return all comments',
-			'user' =>' Only return comments submitted by the given user',
+			'user' => 'Only return comments submitted by the given user',
+			'prop' => array( 'Which properties to get:',
+				'  metadata  - Comment ID, type, timestamp, user',
+				'  formatted - HTML that would be displayed for this comment on Special:MoodBarFeedback',
+			),
 		);
 	}
 
