@@ -180,7 +180,7 @@ HTML;
 			),
 			$conds,
 			__METHOD__,
-			array( 'LIMIT' => $limit, 'ORDER BY' => 'mbf_timestamp DESC' ),
+			array( 'LIMIT' => $limit, 'ORDER BY' => 'mbf_timestamp DESC, mbf_id DESC' ),
 			array( 'user' => array( 'LEFT JOIN', 'user_id=mbf_user_id' ) )
 		);
 	}
