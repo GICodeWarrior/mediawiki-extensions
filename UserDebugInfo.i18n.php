@@ -122,6 +122,8 @@ $messages['ia'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'userdebuginfo' => 'Benotzerinformatioune fir Feeler ze fannen',
+	'userdebuginfo-key' => 'Schlëssel',
 	'userdebuginfo-value' => 'Wäert',
 	'userdebuginfo-language' => 'Sprooch',
 );
