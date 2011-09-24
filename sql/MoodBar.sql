@@ -26,9 +26,9 @@ CREATE TABLE /*_*/moodbar_feedback (
 ) /*$wgDBTableOptions*/;
 
 -- A little overboard with the indexes perhaps, but we want to be able to dice this data a lot!
-CREATE INDEX /*i*/type_timestamp ON /*_*/moodbar_feedback (mbf_type,mbf_timestamp);
-CREATE INDEX /*i*/title_type ON /*_*/moodbar_feedback (mbf_namespace,mbf_title,mbf_type,mbf_timestamp);
--- CREATE INDEX /*i*/mbf_namespace_title_timestamp ON /*_*/moodbar_feedback (mbf_namespace, mbf_title, mbf_timestamp); --maybe in the future if we actually do per-page filtering
-CREATE INDEX /*i*/mbf_userid_ip_timestamp ON /*_*/moodbar_feedback (mbf_user_id, mbf_user_ip, mbf_timestamp);
-CREATE INDEX /*i*/mbf_type_userid_ip_timestamp ON /*_*/moodbar_feedback (mbf_type, mbf_user_id, mbf_user_ip, mbf_timestamp);
-CREATE INDEX /*i*/mbf_timestamp ON /*_*/moodbar_feedback (mbf_timestamp);
+CREATE INDEX /*i*/mbf_type_timestamp_id ON /*_*/moodbar_feedback (mbf_type,mbf_timestamp, mbf_id);
+CREATE INDEX /*i*/mbf_title_type_id ON /*_*/moodbar_feedback (mbf_namespace,mbf_title,mbf_type,mbf_timestamp, mbf_id);
+-- CREATE INDEX /*i*/mbf_namespace_title_timestamp ON /*_*/moodbar_feedback (mbf_namespace, mbf_title, mbf_timestamp, mbf_id); --maybe in the future if we actually do per-page filtering
+CREATE INDEX /*i*/mbf_userid_ip_timestamp_id ON /*_*/moodbar_feedback (mbf_user_id, mbf_user_ip, mbf_timestamp, mbf_id);
+CREATE INDEX /*i*/mbf_type_userid_ip_timestamp_id ON /*_*/moodbar_feedback (mbf_type, mbf_user_id, mbf_user_ip, mbf_timestamp, mbf_id);
+CREATE INDEX /*i*/mbf_timestamp_id ON /*_*/moodbar_feedback (mbf_timestamp, mbf_id);
