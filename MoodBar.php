@@ -116,6 +116,11 @@ $wgResourceModules['ext.moodBar.core'] = $mbResourceTemplate + array(
 	'position' => 'bottom',
 );
 
+$wgResourceModules['ext.moodBar.dashboard'] = $mbResourceTemplate + array(
+	'scripts' => 'ext.moodBar.dashboard/ext.moodBar.dashboard.js',
+	'dependencies' => array( 'mediawiki.util' ),
+);
+
 $wgResourceModules['ext.moodBar.dashboard.styles'] = $mbResourceTemplate + array(
 	'styles' => 'ext.moodBar.dashboard/ext.moodBar.dashboard.css',
 );
