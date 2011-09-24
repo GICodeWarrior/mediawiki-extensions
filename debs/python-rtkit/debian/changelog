@@ -1,0 +1,5 @@
+python-rtkit (0.0.1-1wm1~lucid1) lucid-wikimedia; urgency=low
+
+  * Initial creation of package
+
+ -- Ryan Lane <rlane@wikimedia.org>  Wed, 24 Sep 2010 18:58:34 +0000

@@ -1,0 +1,16 @@
+Source: python-rtkit
+Section: python
+Priority: optional
+XS-Python-Version: all
+Maintainer: Andrea De Marco <24erre@gmail.com>
+Uploaders: Ryan Lane <rlane@wikimedia.org>
+Build-Depends: debhelper (>= 6)
+Build-Depends-Indep: python, python-support, python-setuptools
+Standards-Version: 3.8.3
+Homepage: https://github.com/z4r/python-rtkit
+
+Package: python-rtkit
+Architecture: all
+Depends: ${misc:Depends}, ${python:Depends}
+Description: Python Api for Request Tracker's REST interface
+ Best Practical RT (Request Tracker) data access python module for REST interface.

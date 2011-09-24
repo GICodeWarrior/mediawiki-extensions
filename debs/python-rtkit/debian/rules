@@ -1,0 +1,39 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+PREFIX := debian/python-rtkit
+PACKAGE_DIR := /usr/share/python-support/python-rtkit
+
+build:
+
+clean:
+	dh_testdir
+	dh_testroot
+	
+	dh_clean *.pyc 
+    
+install: build
+	dh_testdir
+	dh_testroot
+	
+	python ./setup.py install --no-compile --root=$(PREFIX)
+
+# Build architecture-independent files here.
+binary-indep: build install
+	dh_testdir
+	dh_testroot
+	dh_installdocs
+	dh_compress
+	dh_fixperms
+	dh_pysupport
+	dh_installdeb
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary: binary-indep
+binary-arch:
+.PHONY: build clean binary-indep binary install
