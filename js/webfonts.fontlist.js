@@ -234,7 +234,7 @@
 				eot: "fa/IranianSans.eot",
 				ttf: "fa/IranianSans.ttf",
 				woff: "fa/IranianSans.woff"
-			}	    
+			}
 		},
 
 		languages: {
@@ -249,6 +249,7 @@
 			hi: [ "Samyak Devanagari", "Lohit Hindi" ],
 			mr: [ "Samyak Devanagari", "Lohit Hindi" ],
 			ks: [ "Samyak Devanagari", "Lohit Hindi" ],
+			sa: [ "Lohit Hindi", "Samyak Devanagari"],
 			he: [ "Miriam CLM", "Taamey Frank CLM" ],
 			kn: [ "Kedage", "Lohit Kannada" ],
 			my: [ "Masterpiece Uni Sans", "Padauk-Regular", "Myanmar3", "Yunghkio" ],
