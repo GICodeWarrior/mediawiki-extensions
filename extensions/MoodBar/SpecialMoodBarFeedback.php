@@ -31,17 +31,13 @@ class SpecialMoodBarFeedback extends SpecialPage {
 			$offset = $wgRequest->getVal( 'offset', $offset );
 		}
 		// Do the query
-		$res = $this->doQuery( $filters, $limit + 1, $offset );
-		$rows = iterator_to_array( $res );
-		$lastRow = null;
-		if ( count( $rows ) == $limit + 1 ) {
-			$lastRow = array_pop( $rows );
-		}
-
+		$backwards = $wgRequest->getVal( 'dir' ) === 'prev';
+		$res = $this->doQuery( $filters, $limit, $offset, $backwards );
+		
 		// Output HTML
 		$wgOut->setPageTitle( wfMsg( 'moodbar-feedback-title' ) );
 		$wgOut->addHTML( $this->buildForm() );
-		$wgOut->addHTML( $this->buildList( $rows, $lastRow ) );
+		$wgOut->addHTML( $this->buildList( $res ) );
 		$wgOut->addModuleStyles( 'ext.moodBar.dashboard.styles' );
 	}
 	
@@ -98,12 +94,11 @@ class SpecialMoodBarFeedback extends SpecialPage {
 HTML;
 	}
 	
-	public function buildList( $rows, $lastRow ) {
+	public function buildList( $res ) {
 		global $wgLang, $wgRequest;
 		$now = wfTimestamp( TS_UNIX );
 		$list = '';
-		$firstRow = false; // TODO support the "Newer" link with this
-		foreach ( $rows as $row ) {
+		foreach ( $res['rows'] as $row ) {
 			$type = $row->mbf_type;
 			$typeMsg = wfMessage( "moodbar-type-$type" )->escaped();
 			$time = $wgLang->formatTimePeriod( $now - wfTimestamp( TS_UNIX, $row->mbf_timestamp ),
@@ -134,23 +129,28 @@ HTML;
 			</li>
 HTML;
 		}
+		
 		if ( $list === '' ) {
 			return '<div id="fbd-list">' . wfMessage( 'moodbar-feedback-noresults' )->escaped() . '</div>';
 		} else {
 			// Only show paging stuff if the result is not empty and there are more results
+			$olderRow = $res['olderRow'];
+			$newerRow = $res['newerRow'];
 			$html = "<ul id=\"fbd-list\">$list</ul>";
-			if ( $lastRow ) {
+			if ( $olderRow ) {
 				$moreText = wfMessage( 'moodbar-feedback-more' )->escaped();
 				$html .= '<div id="fbd-list-more"><a href="#">' . $moreText . '</a></div>';
 			}
 			
 			$olderURL = $newerURL = false;
-			if ( $lastRow ) {
-				$offset = wfTimestamp( TS_MW, $lastRow->mbf_timestamp ) . '|' . intval( $lastRow->mbf_id );
-				$olderURL = htmlspecialchars( $this->getTitle()->getLinkURL( $this->getQuery( $offset ) ) );
+			if ( $olderRow ) {
+				$olderOffset = wfTimestamp( TS_MW, $olderRow->mbf_timestamp ) . '|' . intval( $olderRow->mbf_id );
+				$olderURL = htmlspecialchars( $this->getTitle()->getLinkURL( $this->getQuery( $olderOffset, false ) ) );
 			}
-			if ( $firstRow ) {
-				$newerURL = htmlspecialchars( '#' ); // TODO
+			if ( $newerRow ) {
+				// TODO: Figure out when there are no newer rows
+				$newerOffset = wfTimestamp( TS_MW, $newerRow->mbf_timestamp ) . '|' . intval( $newerRow->mbf_id );
+				$newerURL = htmlspecialchars( $this->getTitle()->getLinkURL( $this->getQuery( $newerOffset, true ) ) );
 			}
 			$olderText = wfMessage( 'moodbar-feedback-older' )->escaped();
 			$newerText = wfMessage( 'moodbar-feedback-newer' )->escaped();
@@ -171,7 +171,7 @@ HTML;
 		}
 	}
 	
-	public function doQuery( $filters, $limit, $offset ) {
+	public function doQuery( $filters, $limit, $offset, $backwards ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		$conds = array();
 		if ( isset( $filters['type'] ) ) {
@@ -194,26 +194,59 @@ HTML;
 			$arr = explode( '|', $offset, 2 );
 			$ts = $dbr->addQuotes( $dbr->timestamp( $arr[0] ) );
 			$id = isset( $arr[1] ) ? intval( $arr[1] ) : 0;
-			$conds[] = "mbf_timestamp < $ts OR (mbf_timestamp = $ts AND mbf_id <= $id)";
+			$op = $backwards ? '>' : '<';
+			$conds[] = "mbf_timestamp $op $ts OR (mbf_timestamp = $ts AND mbf_id $op= $id)";
 		}
 		
-		return $dbr->select( array( 'moodbar_feedback', 'user' ), array(
+		$desc = $backwards ? '' : ' DESC';
+		$res = $dbr->select( array( 'moodbar_feedback', 'user' ), array(
 				'user_name', 'mbf_id', 'mbf_type',
 				'mbf_timestamp', 'mbf_user_id', 'mbf_user_ip', 'mbf_comment'
 			),
 			$conds,
 			__METHOD__,
-			array( 'LIMIT' => $limit, 'ORDER BY' => 'mbf_timestamp DESC, mbf_id DESC' ),
+			array( 'LIMIT' => $limit + 2, 'ORDER BY' => "mbf_timestamp$desc, mbf_id$desc" ),
 			array( 'user' => array( 'LEFT JOIN', 'user_id=mbf_user_id' ) )
 		);
+		$rows = iterator_to_array( $res, /*$use_keys=*/false );
+		
+		// Figure out whether there are newer and older rows
+		$olderRow = $newerRow = null;
+		$count = count( $rows );
+		if ( $offset && $count > 0 ) {
+			// If there is an offset, drop the first row
+			if ( $count > 1 ) {
+				array_shift( $rows );
+				$count--;
+			}
+			// We now know there is a previous row
+			$newerRow = $rows[0];
+		}
+		if ( $count > $limit ) {
+			// If there are rows past the limit, drop them
+			array_splice( $rows, $limit );
+			// We now know there is a next row
+			$olderRow = $rows[$limit - 1];
+		}
+		
+		// If we got everything backwards, reverse it
+		if ( $backwards ) {
+			$rows = array_reverse( $rows );
+			list( $olderRow, $newerRow ) = array( $newerRow, $olderRow );
+		}
+		return array( 'rows' => $rows, 'olderRow' =>  $olderRow, 'newerRow' => $newerRow );
 	}
 	
-	protected function getQuery( $offset ) {
+	protected function getQuery( $offset, $backwards ) {
 		global $wgRequest;
-		return array(
+		$query = array(
 			'type' => $wgRequest->getArray( 'type', array() ),
 			'username' => $wgRequest->getVal( 'username' ),
 			'offset' => $offset,
 		);
+		if ( $backwards ) {
+			$query['dir'] = 'prev';
+		}
+		return $query;
 	}
 }
