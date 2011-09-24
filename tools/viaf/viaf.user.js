@@ -4,11 +4,11 @@
 // @require	   https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js
 // @require        http://svn.wikimedia.org/svnroot/mediawiki/trunk/tools/viaf/jquery.cookie.js
 // @require        http://svn.wikimedia.org/svnroot/mediawiki/trunk/tools/viaf/jquery.ba-replacetext.js
-// @description    locate VIAF numbers in texts and urls on web pages, fetch corresponding names from toolserver. (c)T.Gries Version 0.307 201109200845
+// @description    locate VIAF numbers in texts and urls on web pages, fetch corresponding names from toolserver. (c)T.Gries Version 0.309 201109241230
 // @include        *
 // ==/UserScript==
 
-var VERSION = "0.307";
+var VERSION = "0.309";
 /***
  * Copyright (c) 2011 T. Gries
  *
@@ -50,6 +50,7 @@ var VERSION = "0.307";
  *		debug parameter bitwise
  * 20110920	removed parent() and add the new links close after the place
  *		where the VIAF was found; jQuery 1.6.4
+ * 20110923     beginning to detect and link PND numbers as well
  *
  ***/
 
@@ -176,7 +177,8 @@ function dump( arr, depth ) {
 	return dumped_text;
 }
 
-var out = Array();
+var viaf = Array();
+var pnd = Array();
 var out_js = Array();
 var output = '';
 var nbsp = "<span>&nbsp</span>";
@@ -189,7 +191,7 @@ var nbsp = "<span>&nbsp</span>";
 // for base64 online encoder http://www.motobit.com/util/base64-decoder-encoder.asp
 // for inline images http://www.elf.org/essay/inline-image.html
 
-function VIAFtoNames( items ) {
+function numberToNames( numberType, items ) {
 
 	if ( items.length == 0 ) return;
 
@@ -239,7 +241,6 @@ function VIAFtoNames( items ) {
 // callback function
 function cb_updateFromServer( data ){
 	if ( debug & 2 ) output += "\n\nreceived from server:\n"+ data;
-
 	var data_js = JSON.parse( data );
 	if ( debug & 4 ) alert( dump( data_js ) );
 
@@ -275,9 +276,7 @@ function cb_updateFromServer( data ){
 				.css( markNamesFromServer )
 				.after( nbsp )
 				.before( nbsp );
-
  		}
-
 	}
 
 	if ( ( debug & 8 ) && ( names.length > 0 ) ) {
@@ -290,11 +289,19 @@ function cb_updateFromServer( data ){
 }
 
 
-function doAnyOtherBusiness( viaf ) {
+function doAnyOtherBusiness( numberType, number ) {
 	// add the element only if it does not exist in list
-	if ( out.indexOf(viaf) == -1 ) {
-		out.push( viaf );
-		out_js.push( { "viaf" : [ viaf ] } );
+	if ( numberType == "viaf" ) {
+		if ( viaf.indexOf( number ) == -1 ) {
+			viaf.push( number );
+			out_js.push( { "viaf" : [number] } );
+		}
+	} else {
+		if ( pnd.indexOf( number ) == -1 ) {
+			pnd.push( number );
+// FIXME
+			// out_js.push( { "pnd" : [number] } );
+		}
 	}
 }
 
@@ -308,7 +315,12 @@ function doAnyOtherBusiness( viaf ) {
 // but don't look in an active textareas like mediawiki input textarea
 
 $("body *:not(textarea)")
-	.replaceText( /(viaf[1-9]?)(:|\/|%2B|%3A|%2F|\s|ID:|=|%3D)+\s*([0-9]+)/gi, "<span class='viaf viaf-in-text' viaf='$3'>$1$2$3</span>" );
+	.replaceText( /(viaf[1-9]?)(:|\/|%2B|%3A|%2F|\s|ID:|=|%3D)+\s*([0-9]+)/gi, "<span class='viaf viaf-in-text' viaf='$3'>$1$2$3</span>" )
+//	.replaceText( /([pg]nd[1-9]?)(:|\/|%2B|%3A|%2F|\s|ID:|=|%3D)+\s*([0-9]+x?)/gi, "<span class='pnd pnd-in-text' viaf='$3'>$1$2$3</span>" );
+	.replaceText( /([pg]nd[1-9]?)(:|\/|%2B|%3A|%2F|\s|ID:|=|%3D)+\s*([0-9]+x?)/gi, function( s0, s1, s2, s3 ){
+		s3 = s3.toUpperCase();
+		return "<span class='pnd pnd-in-text' pnd='" + s3 + "'>" + s1 + s2 + s3 + "</span>"
+	});
 
 // PASS 2
 // try to retrieve viaf numbers in urls
@@ -316,6 +328,7 @@ $("body *:not(textarea)")
 $("a").each(function(){
 	var $this = $(this);
 	if ( $this.find(".viaf").length != 0 ) return; // in PASS 2, skip all entries which have this attribute from PASS 1
+	if ( $this.find(".pnd").length != 0 ) return; // in PASS 2, skip all entries which have this attribute from PASS 1
 	var url = $this.attr("href");
 
 	var magicUrlRegExp = new RegExp( /(http:\/\/viaf.org\/(viaf\/)?(\d+)|http:\/\/www.librarything.de\/commonknowledge\/search.php?f=13&exact=1&q=VIAF%3A(\d)+)/gi );
@@ -334,8 +347,8 @@ $("a").each(function(){
 
 $(".viaf").each(function(){
 	var $this = $(this);
+
 	var viaf = $this.attr( "viaf" );
-	
     	var newLink = new Array();
 	newLink.unshift( $( "<span> </span><a href='http://viaf.org/viaf/"+viaf+"/'><span class='addedlink viaf' viaf='"+viaf+"'>VIAF</span></a>" ) );
     	newLink.unshift( $( "<span> </span><a href='http://www.librarything.de/commonknowledge/search.php?f=13&exact=1&q=VIAF%3A"+viaf+"'><span class='addedlink viaf' viaf='"+viaf+"'>LT de</span></a>" ) );
@@ -352,7 +365,30 @@ $(".viaf").each(function(){
     	for ( i in newLink ) {
         	$this.after( newLink[i] )
 	}
-    	doAnyOtherBusiness( viaf );
+
+    	doAnyOtherBusiness( "viaf", viaf );
+})
+
+$(".pnd").each(function(){
+	var $this = $(this);
+
+	var pnd = $this.attr( "pnd" );
+    	var newLink = new Array();
+
+	newLink.unshift( $( "<span> </span><a href='http://d-nb.info/gnd/"+pnd+"/'><span class='addedlink pnd' pnd='"+pnd+"'>DNB</span></a>" ) );
+	newLink.unshift( $( "<span> </span><a href='http://opac.bib-bvb.de/InfoGuideClient.fasttestsis/start.do?Query=100%3D%22"+pnd+"%22'><span class='addedlink pnd' pnd='"+pnd+"'>BVB</span></a>" ) );
+	newLink.unshift( $( "<span> </span><a href='http://mi.librarything.com/commonknowledge/search.php?f=13&exact=1&q=VIAF%3APND%3A"+pnd+"'><span class='addedlink pnd' pnd='"+pnd+"'>LT mi</span></a>" ) );
+	newLink.unshift( $( "<span> </span><a href='http://toolserver.org/~apper/pd/person/pnd/"+pnd+"'><span class='addedlink pnd' pnd='"+pnd+"'>TS</span></a>" ) );
+	// newLink.unshift( $( "<span> </span><label class='show-summary'><input type='checkbox' class='show-summary-checkbox' checked='checked'><span id='show-summary-text'></span></label>" ) );
+
+	// add a placeholder and a class for this specific pnd for the name texts
+	// which come per xhr callback handler cb_updateFromServer
+	newLink.unshift( $( "<span class='pnd-"+pnd+"'></span>" ) );
+    	for ( i in newLink ) {
+        	$this.after( newLink[i] )
+	}
+
+    	doAnyOtherBusiness( "pnd", pnd );
 })
 
 
@@ -369,14 +405,17 @@ $( ".show-summary-checkbox" )
 
 // style all detected numbers
 $( ".viaf" ).css( { "background":"cyan", "color":"black" } );
+$( ".pnd" ).css( { "background":"cyan", "color":"black" } );
 
 // style all detected numbers in urls
 $( ".viaf-in-url" ).css( "border-bottom", "1px dotted black" );
+$( ".pnd-in-url" ).css( "border-bottom", "1px dotted black" );
 
 // style all added links
 $( ".addedlink" ).css( { "background":"yellow" , "color":"black" } );
 
-VIAFtoNames( out_js );
+numberToNames( "viaf", out_js );
+// numberToNames( "pnd", out_js );
 
 // show a summary of the collected numbers
 if ( out.length > 0 ) {

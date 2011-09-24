@@ -10,8 +10,8 @@ Provisionally homepages and screenshots:
 	http://de.wikipedia.org/wiki/Wikipedia:WikiConvention/ \
 	Programm/VIAF#Greasemonkey-Skript (de)
 
-Version: 0.306
-README last updated: 20110909
+Version: 0.309
+README last updated: 20110924
 
 What are VIAF numbers ?
 
@@ -124,13 +124,15 @@ received from server:
 ]
 
 == solved ==
-+ check why it does not work inside <span class=plainlinks> </span> tags
-  fixed in r95940 (0.204)
++ searching now also PND and GND number
 + add a ajax request module to fetch author names for numbers from toolserver
   and show them live on the current page; define a JSONP data format
   (0.306)
++ check why it does not work inside <span class=plainlinks> </span> tags
+  fixed in r95940 (0.204)
 
 == To Do ==
+* adding Toolserver software and requests to also fetch names for PND/GMD number
 * add a user-interface or mechanism to enable/disable the summary alert box
   without the need to change program code
 * revise and enable the update mechanism
