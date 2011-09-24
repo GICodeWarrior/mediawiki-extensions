@@ -263,10 +263,12 @@ $messages['bn'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'narayam-desc' => 'Aotren a ra ouzhpennañ hentennoù bizskrivañ personelaet evit ar maeziennoù bizskrivañ',
-	'narayam-toggle-ime' => 'Evit eilpennañ an hentenn enmont ($1)',
+	'narayam-toggle-ime' => 'Gweredekaat ($1)',
+	'narayam-help' => 'Skoazell',
 	'narayam-help-page' => 'Help:Bizskrivañ',
 	'narayam-checkbox-tooltip' => 'Evit eilpennañ an hentenn enmont war enaou pe get',
 	'narayam-disable-preference' => 'Diweredekaat an embanner hentenn enmont evit an narayam',
