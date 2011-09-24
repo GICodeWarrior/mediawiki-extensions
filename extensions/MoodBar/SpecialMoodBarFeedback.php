@@ -12,11 +12,13 @@ class SpecialMoodBarFeedback extends SpecialPage {
 	public function execute( $par ) {
 		global $wgOut, $wgRequest;
 		
+		$limit = 20;
+		$offset = false;
 		$id = intval( $par );
 		if ( $id > 0 ) {
 			$filters = array( 'id' => $id );
 		} else {
-			// Determine filters from the query string
+			// Determine filters and offset from the query string
 			$filters = array();
 			$type = $wgRequest->getArray( 'type' );
 			if ( $type ) {
@@ -26,14 +28,20 @@ class SpecialMoodBarFeedback extends SpecialPage {
 			if ( $username !== '' ) {
 				$filters['username'] = $username;
 			}
+			$offset = $wgRequest->getVal( 'offset', $offset );
 		}
 		// Do the query
-		$res = $this->doQuery( $filters );
+		$res = $this->doQuery( $filters, $limit + 1, $offset );
+		$rows = iterator_to_array( $res );
+		$lastRow = null;
+		if ( count( $rows ) == $limit + 1 ) {
+			$lastRow = array_pop( $rows );
+		}
 
 		// Output HTML
 		$wgOut->setPageTitle( wfMsg( 'moodbar-feedback-title' ) );
 		$wgOut->addHTML( $this->buildForm() );
-		$wgOut->addHTML( $this->buildList( $res ) );
+		$wgOut->addHTML( $this->buildList( $rows, $lastRow ) );
 		$wgOut->addModuleStyles( 'ext.moodBar.dashboard.styles' );
 	}
 	
@@ -48,6 +56,7 @@ class SpecialMoodBarFeedback extends SpecialPage {
 		$setFiltersMsg = wfMessage( 'moodbar-feedback-filters-button' )->escaped();
 		$whatIsMsg = wfMessage( 'moodbar-feedback-whatis' )->escaped();
 		$whatIsURL = htmlspecialchars( $wgMoodBarConfig['infoUrl'] );
+		$actionURL = htmlspecialchars( $this->getTitle()->getLinkURL() );
 		
 		$types = $wgRequest->getArray( 'type', array() );
 		$happyCheckbox = Xml::check( 'type[]', in_array( 'happy', $types ),
@@ -61,7 +70,7 @@ class SpecialMoodBarFeedback extends SpecialPage {
 		
 		return <<<HTML
 		<div id="fbd-filters">
-			<form>
+			<form action="$actionURL">
 				<h3 id="fbd-filters-title">$filtersMsg</h3>
 				<fieldset id="fbd-filters-types">
 					<legend class="fbd-filters-label">$typeMsg</legend>
@@ -89,8 +98,8 @@ class SpecialMoodBarFeedback extends SpecialPage {
 HTML;
 	}
 	
-	public function buildList( $rows ) {
-		global $wgLang;
+	public function buildList( $rows, $lastRow ) {
+		global $wgLang, $wgRequest;
 		$now = wfTimestamp( TS_UNIX );
 		$list = '';
 		foreach ( $rows as $row ) {
@@ -127,14 +136,20 @@ HTML;
 		if ( $list === '' ) {
 			return '<div id="fbd-list">' . wfMessage( 'moodbar-feedback-noresults' )->escaped() . '</div>';
 		} else {
-			// Only show paging stuff if the result is not empty
-			$moreURL = '#'; //TODO
-			$moreText = wfMessage( 'moodbar-feedback-more' )->escaped();
-			return "<ul id=\"fbd-list\">$list</ul>" . '<div id="fbd-list-more"><a href="#">More</a></div>';
+			// Only show paging stuff if the result is not empty and there are more results
+			$html = "<ul id=\"fbd-list\">$list</ul>";
+			if ( $lastRow ) {
+				$offset = wfTimestamp( TS_MW, $lastRow->mbf_timestamp ) . '|' . intval( $lastRow->mbf_id );
+				$moreURL = htmlspecialchars( $this->getTitle()->getLinkURL( $this->getQuery( $offset ) ) );
+				$moreText = wfMessage( 'moodbar-feedback-more' )->escaped();
+				$html .= "<div id=\"fbd-list-more\"><a href=\"$moreURL\">More</a></div>";
+			}
+			return $html;
 		}
 	}
 	
-	public function doQuery( $filters ) {
+	public function doQuery( $filters, $limit, $offset ) {
+		$dbr = wfGetDB( DB_SLAVE );
 		$conds = array();
 		if ( isset( $filters['type'] ) ) {
 			$conds['mbf_type'] = $filters['type'];
@@ -152,16 +167,30 @@ HTML;
 		if ( isset( $filters['id'] ) ) {
 			$conds['mbf_id'] = $filters['id'];
 		}
+		if ( $offset !== false ) {
+			$arr = explode( '|', $offset, 2 );
+			$ts = $dbr->addQuotes( $dbr->timestamp( $arr[0] ) );
+			$id = isset( $arr[1] ) ? intval( $arr[1] ) : 0;
+			$conds[] = "mbf_timestamp < $ts OR (mbf_timestamp = $ts AND mbf_id <= $id)";
+		}
 		
-		$dbr = wfGetDB( DB_SLAVE );
 		return $dbr->select( array( 'moodbar_feedback', 'user' ), array(
 				'user_name', 'mbf_id', 'mbf_type',
 				'mbf_timestamp', 'mbf_user_id', 'mbf_user_ip', 'mbf_comment'
 			),
 			$conds,
 			__METHOD__,
-			array( 'LIMIT' => 20 /*TODO*/, 'ORDER BY' => 'mbf_timestamp DESC' ),
+			array( 'LIMIT' => $limit, 'ORDER BY' => 'mbf_timestamp DESC' ),
 			array( 'user' => array( 'LEFT JOIN', 'user_id=mbf_user_id' ) )
+		);
+	}
+	
+	protected function getQuery( $offset ) {
+		global $wgRequest;
+		return array(
+			'type' => $wgRequest->getArray( 'type', array() ),
+			'username' => $wgRequest->getVal( 'username' ),
+			'offset' => $offset,
 		);
 	}
 }
