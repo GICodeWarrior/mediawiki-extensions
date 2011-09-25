@@ -53,6 +53,10 @@ class RDFIOStore {
         $rs = $store->query( $q );
         if ( !$store->getErrors() ) {
             $rows = $rs['result']['rows'];
+            // @todo FIXME: Handle this case more nicely
+            if (count($rows) == 0) {
+	            die( "No rows returned" );
+            }
             $row = $rows[0];
             $origuri = $row['origuri'];
         } else {

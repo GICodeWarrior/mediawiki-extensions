@@ -60,12 +60,12 @@ class RDFIOSMWBatchWriter {
 
         // Previously in Equiv URI Class
 
-        if ( $rdfiogUsePseudoNamespacesForProperties != '' ) { // TODO: Change to check options from import screen
+        if ( isset($rdfiogUsePseudoNamespacesForProperties) ) { // TODO: Change to check options from import screen
             // use parameter set in LocalSettings.php
             $this->m_usenspintitles_properties = $rdfiogUsePseudoNamespacesForProperties;
         }
 
-        if ( $rdfiogUsePseudoNamespacesForEntities != '' ) {
+        if ( isset($rdfiogUsePseudoNamespacesForEntities) ) {
             // use parameter set in LocalSettings.php
             $this->m_usenspintitles_entities = $rdfiogUsePseudoNamespacesForEntities;
         }
