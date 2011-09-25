@@ -159,6 +159,7 @@ You would not able to log in without an OpenID.',
  * @author Siebrand
  * @author The Evil IP address
  * @author Thomas Gries
+ * @author Umherirrender
  * @author Wikinaut
  */
 $messages['qqq'] = array(
@@ -201,8 +202,10 @@ OpenID preferences tab title',
 	'openid-urls-registration-date-time' => 'Used in the same way as {{msg-mw|prefs-registration-date-time}}.',
 	'openid-urls-delete' => '{{Identical|Delete}}',
 	'specialpages-group-openid' => 'Display group name for OpenID-extension related special pages for Special:SpecialPages',
-	'right-openid-dashboard-access' => 'the standard access right for the OpenID dashboard, which is a restricted special page',
-	'right-openid-dashboard-admin' => 'the special adminstrator access right for the OpenID dashboard, which is a restricted special page',
+	'right-openid-dashboard-access' => '{{doc-right|openid-dashboard-access}}
+the standard access right for the OpenID dashboard, which is a restricted special page',
+	'right-openid-dashboard-admin' => '{{doc-right|openid-dashboard-admin}}
+the special adminstrator access right for the OpenID dashboard, which is a restricted special page',
 	'openid-dashboard-title' => 'Display name and page title for the OpenID dashboard (non-admin) on Special:SpecialPages',
 	'openid-dashboard-title-admin' => 'Display name and page title for the administrator OpenID dashboard on Special:SpecialPages',
 	'openid-dashboard-introduction' => 'Intro text for the special OpenID dashboard page: the user gets status information about the current OpenID settings of this wiki.
