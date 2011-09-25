@@ -57,40 +57,20 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
  * @author Purodha
+ * @author Xuacu
  */
 $messages['qqq'] = array(
 	'wikitweet-desc' => '{{desc}}',
 	'wikitweet-subscribe' => '{{Identical|Subscribe}}',
 	'wikitweet-unsubscribe' => '{{Identical|Unsubscribe}}',
- 	'wikitweet-delete' => '{{Identical|Delete}}',
+	'wikitweet-delete' => '{{Identical|Delete}}',
 	'wikitweet-private' => '{{Identical|Private}}',
 	'wikitweet-anonymous' => '{{Identical|Anonymous}}',
-);
-/** Asturian (Asturianu)
-- * @author Xuacu
-- */
-$messages['ast'] = array(
-	'wikitweet-desc' => "Crear un fluxu como'l de Twitter, en MediaWiki",
-	'wikitweet-pleaselogin' => 'Por favor, anicia sesión pa twitear.',
-	'wikitweet-moretweets' => 'Más tweets...',
-	'wikitweet-infoajax' => "Usa la teunoloxía AJAX y s'anueva automáticamente cada 5 segundos ensin tener que recargar la páxina.",
-	'wikitweet-submit' => 'Tweet',
-	'wikitweet-submitandmail' => 'Tweet y corréu electrónicu',
-	'wikitweet-intheroom' => 'Tas na sala',
-	'wikitweet-subscribe' => 'suscribir',
-	'wikitweet-subscribed' => 'suscritu',
-	'wikitweet-unsubscribe' => 'desuscribir',
-	'wikitweet-delete' => 'desaniciar',
-	'wikitweet-inform' => 'pol informador',
-	'wikitweet-private' => 'priváu',
-	'wikitweet-answer' => 'respuesta a',
-	'wikitweet-anonymous' => 'anónimu',
-	'wikitweet-tweets-tagged' => 'Tweets etiquetaos',
-	'wikitweet-back-timeline' => 'Tornar a la llinia temporal',
-	'wikitweet-tweets-from-room' => 'Tweets de la sala',
-	'wikitweet-timeago' => 'hai $1',
-	'wikitweet-inthefuture' => '¡Nel futuru!',
-	'wikitweet-fewsecondsago' => 'hai unos segundos',
+	'wikitweet-status' => '{{Identical|Status}}',
+	'wikitweet-status0' => '{{Identical|Talk}}',
+	'wikitweet-status2' => '{{Identical|Warning}}',
+	'wikitweet-comment' => '{{Identical|Comment}}',
+	'wikitweet-from' => '{{Identical|From}}',
 );
 
 /** Azerbaijani (Azərbaycanca)
@@ -134,8 +114,8 @@ $messages['be-tarask'] = array(
 	'wikitweet-status1' => 'Падзея',
 	'wikitweet-status2' => 'Папярэджаньне',
 	'wikitweet-status3' => 'Увага',
-	'wikitweet-resolve' => 'вырашаная',
-	'wikitweet-concerns' => 'Клапоціць вас',
+	'wikitweet-resolve' => 'вырашыць',
+	'wikitweet-concerns' => 'Клапоціць Вас',
 	'wikitweet-comment' => 'Камэнтар',
 	'wikitweet-subscribers' => 'Падпісаныя:',
 	'wikitweet-hourly' => 'Шточасова',
@@ -143,11 +123,11 @@ $messages['be-tarask'] = array(
 	'wikitweet-inresponseto' => 'У адказ на:',
 	'wikitweet-from' => 'ад',
 	'wikitweet-in' => 'у',
-	'wikitweet-directlink' => 'Наўпроставая спасылка:',
+	'wikitweet-directlink' => 'Прамая спасылка:',
 	'wikitweet-mailsent' => 'ліст адасланы',
 	'wikitweet-viaroom' => 'праз пакой',
-	'wikitweet-alertsolved' => 'адзін з вашых напамінаў быў разьвязаны ў',
-	'wikitweet-cannotparse' => 'Не магу разабраць',
+	'wikitweet-alertsolved' => 'адна з Вашых увагаў была вырашаная ў',
+	'wikitweet-cannotparse' => 'Немагчыма разабраць',
 );
 
 /** Bulgarian (Български)
@@ -747,7 +727,7 @@ $messages['vi'] = array(
 	'wikitweet-answer' => 'trả lời cho',
 	'wikitweet-anonymous' => 'vô danh',
 	'wikitweet-back-timeline' => 'Trở về thời biểu',
-	'wikitweet-timeago' => 'Cách đây $1',
+	'wikitweet-timeago' => 'cách đây $1',
 	'wikitweet-inthefuture' => 'Trong tương lai!',
 	'wikitweet-fewsecondsago' => 'Vừa mới xong',
 	'wikitweet-status' => 'Trạng thái:',

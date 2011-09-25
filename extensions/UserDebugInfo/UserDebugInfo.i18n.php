@@ -123,6 +123,7 @@ $messages['ia'] = array(
  */
 $messages['lb'] = array(
 	'userdebuginfo' => 'Benotzerinformatioune fir Feeler ze fannen',
+	'userdebuginfo-desc' => 'Weist méiglecherweis nëtzlech Informatiounen, déi bäi der Sich no Feeler iwwer den aktuelle Benotzer hëllef kënnen',
 	'userdebuginfo-key' => 'Schlëssel',
 	'userdebuginfo-value' => 'Wäert',
 	'userdebuginfo-language' => 'Sprooch',

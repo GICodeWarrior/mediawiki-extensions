@@ -10337,7 +10337,7 @@ $messages['so'] = array(
 	'configure-section-search' => 'Raadi',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Sasa Stefanovic
  * @author Жељко Тодоровић
@@ -10468,7 +10468,7 @@ $messages['sr-ec'] = array(
 	'configure-throttle-action-edit' => 'Уреди',
 	'configure-throttle-action-move' => 'Премести',
 	'configure-throttle-action-rollback' => 'Врати',
-	'configure-throttle-action-emailuser' => 'Пошаљу мејл',
+	'configure-throttle-action-emailuser' => 'Пошаљи е-поруку',
 	'configure-throttle-group-anon' => 'Сви анонимни корисници',
 	'configure-throttle-group-user' => 'По корисничком налогу',
 	'configure-throttle-group-newbie' => 'По новом корисничком налогу',
@@ -11982,7 +11982,7 @@ Xin hãy khởi tạo hoặc thay đổi nó để dùng được phần mở r�
 	'configure-throttle-action-rollback' => 'Lùi tất cả',
 	'configure-throttle-action-emailuser' => 'Gửi thư',
 	'configure-throttle-group' => 'Loại',
-	'configure-throttle-limit' => 'Hạn chế',
+	'configure-throttle-limit' => 'Giới hạn',
 	'configure-throttle-none' => 'Vô hạn',
 	'configure-condition-operator-or' => 'Hoặc',
 	'configure-condition-operator-and' => 'Và',

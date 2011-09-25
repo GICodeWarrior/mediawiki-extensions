@@ -39,11 +39,13 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'admanager_submit' => '{{Identical|Submit}}',
 	'admanager_Page' => '{{Identical|Pages}}',
 	'admanager_Category' => '{{Identical|Categories}}',
+	'right-admanager' => '{{doc-right|admanager}}',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
@@ -221,6 +223,7 @@ $messages['lb'] = array(
 	'admanager_invalidtargetcategory' => 'Keng Kategorie mam Titel "$1" fonnt.',
 	'admanager_labelPage' => 'Säitennimm',
 	'admanager_labelCategory' => 'Nimm vun de Kategorien:',
+	'admanager_submit' => 'Späicheren',
 	'admanager_noads' => 'Keng Reklamme weisen',
 	'admanager_Page' => 'Säiten',
 	'admanager_Category' => 'Kategorien',

@@ -37,9 +37,11 @@ The current vote of the user will be displayed initially when he already voted.'
 
 /** Message documentation (Message documentation)
  * @author Jeroen De Dauw
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'ratings-desc' => '{{desc}}',
+	'right-rate' => '{{doc-right|rate}}',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)

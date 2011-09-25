@@ -1534,6 +1534,12 @@ $messages['li'] = array(
 	'ratinghistory-table-rating' => 'Waardering',
 	'ratinghistory-table-votes' => 'Stömme',
 	'ratinghistory-none' => "Neet zat feedback veur 'n grafiek te make.",
+	'ratinghistory-ratings' => "'''Legenda:''' '''(1)''' - Wórd; '''(2)''' - Lieëg; '''(3)''' - Good; '''(4)''' - Hoeag; '''(5)''' - Perfèk;",
+	'ratinghistory-legend' => "'t '''Aantal dagelikse beoordeilinge''' <span style=\"color:red;\">''(rood)''</span>, de '''dagelikse gemiddelde waardering''' <span style=\"color:blue;\">''(blauw)''</span> en
+de '''gemiddelde waardering van de aangegaeve periode''' <span style=\"color:green;\">''(groen)''</span> steit hieonger in 'ne grafiek op datum.
+De '''gemiddelde waardering van de aangegaeve periode''' is 't gemiddelde van alle dagelikse gemiddelde waarderinge ''binne'' dit tiedvak veur ederen daag.
+
+'''(1)''' - Wórd; '''(2)''' - Lieëg; '''(3)''' - Good; '''(4)''' - Hoeag; '''(5)''' - Perfèk;",
 	'ratinghistory-graph-scale' => "'''Beoerdeilingen per daag''' <span style=\"color:red;\">''(roed)''</span> waere waergegaeve op de sjaol ''1:\$1''.",
 	'right-feedback' => 'Gebroek feedback veur paginawaardering',
 );

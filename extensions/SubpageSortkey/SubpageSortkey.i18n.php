@@ -45,6 +45,13 @@ $messages['ia'] = array(
 	'subpagesortkey-desc' => 'Cambia le clave de ordination predefinite de un pagina, basante lo super le nomine de su subpagina in loco de su nomine complete',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'subpagesortkey-desc' => 'De Standard-Sortéierschlëssel vun enger Säit änneren esou datt en ob den Numm vun der Ënnersäit baséiert aplaz ob de ganzen Numm',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

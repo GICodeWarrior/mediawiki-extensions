@@ -339,6 +339,13 @@ $messages['lb'] = array(
 	'didyoumean-desc' => 'Setzt Linken op Säite mat "ähnlechen" Titelen derbäi',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'didyoumean-desc' => 'Veug verwiezinge toe nao pagina\'s mit "gelieke" name',
+);
+
 /** Latvian (Latviešu)
  * @author Xil
  */

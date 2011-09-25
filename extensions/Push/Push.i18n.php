@@ -1004,6 +1004,7 @@ $messages['lb'] = array(
 	'push-tab-no-used-templates' => '(Op dëser Säit gi keng Schabloune benotzt.)',
 	'push-tab-inc-files' => 'Agebonne Fichieren abannen',
 	'push-tab-embedded-files' => 'Agebonne Fichieren:',
+	'push-tab-no-embedded-files' => '(An dëser Säit si keng Fichieren agebonn.)',
 	'push-tab-files-override' => 'Dës Fichiere gëtt et schonn: $1',
 	'push-tab-template-override' => 'Dës Schabloune gëtt et schonn: $1',
 	'special-push' => 'Säite pushen',

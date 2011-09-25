@@ -22,10 +22,13 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'articletocategory2-create-article-under-category-button' => '{{Identical|Create}}',
 	'articletocategory2-create-category-under-category-button' => '{{Identical|Create}}',
+	'right-ArticleToCategory2' => '{{doc-right|ArticleToCategory2}}',
+	'right-ArticleToCategory2AddCat' => '{{doc-right|ArticleToCategory2AddCat}}',
 );
 
 /** Afrikaans (Afrikaans)

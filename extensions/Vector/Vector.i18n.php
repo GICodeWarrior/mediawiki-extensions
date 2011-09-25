@@ -1086,6 +1086,7 @@ Es se bös aangemeld, kins se dees waorsjoewing oetzètten in 't bewerkingstabbl
 	'vector-editwarning-preference' => "Waorssjoew mich es ich 'n bewerkdje pagina die nag neet is opgeslage wil verlaote",
 	'vector-simplesearch-search' => 'Zeuke',
 	'vector-simplesearch-containing' => 'bevat...',
+	'vector-noexperiments-preference' => "Laot mich in 't vervolg neet mier mitdoon aan experimente",
 );
 
 /** Lithuanian (Lietuvių)
