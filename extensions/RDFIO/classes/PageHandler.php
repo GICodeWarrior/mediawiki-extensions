@@ -46,9 +46,11 @@ class RDFIOPageHandler {
         $properties = $this->m_properties;
         foreach ( $properties as $cur_prop ) {
             $propertystring = $cur_prop['p'];
-            $property = SMWPropertyValue::makeUserProperty( $propertystring );
+            // TODO: Remove old code:
+            // $property = SMWPropertyValue::makeUserProperty( $propertystring );
+            $property_di = SMWDIProperty::newFromUserLabel($propertystring);
             $valuestring = RDFIOUtils::sanitizeSMWValue( $cur_prop['v'] );
-            $value    = SMWDataValueFactory::newPropertyObjectValue( $property, $valuestring );
+            $value    = SMWDataValueFactory::newPropertyObjectValue( $property_di, $valuestring );
 
             $propertyErrorText = $property->getErrorText();
             $propertyHasError = ( $propertyErrorText != '' );
@@ -161,16 +163,25 @@ class RDFIOPageHandler {
      */
     private function initSMWWriter( $delete = false ) {
         // Create add and remove objects, to use in SMWWriter calls
-        $page = SMWWikiPageValue::makePage( $this->m_wikititle, $this->m_ns );
+		
+        // TODO: Should rather use (but not possible with current SMWWriter API?):
+    	// $page_di = SMWDIWikiPage::newFromTitle( Title::makeTitle($this->m_ns, $this->m_wikititle) );
+    	$page = SMWWikiPageValue::makePage( $this->m_wikititle, $this->m_ns );
+    	$page_di = $page->getDataItem(); 
+    	$page_data = new SMWSemanticData( $page_di ); 
+    	
+    	$dummypage = SMWWikiPageValue::makePage( false, $this->m_ns );
+    	$dummypage_di = $dummypage->getDataItem();
+        $dummypag_data = new SMWSemanticData( $dummypage_di ); 
+    	
+        
         $this->m_smwwriter = new SMWWriter( $page->getTitle() );
         if ( $delete ) {
-            // We are not adding anything, so create a "page" with "false" title
-            $this->m_smwwriter_add    = new SMWSemanticData( SMWWikiPageValue::makePage( false, $this->m_ns ) );
-            $this->m_smwwriter_remove = new SMWSemanticData( $page );
+            $this->m_smwwriter_add    = $page_data;
+            $this->m_smwwriter_remove = $dummypag_data;
         } else {
-            $this->m_smwwriter_add    = new SMWSemanticData( $page );
-            // We are not removing anything, so create a "page" with "false" title
-            $this->m_smwwriter_remove = new SMWSemanticData( SMWWikiPageValue::makePage( false, $this->m_ns ) );
+            $this->m_smwwriter_add    = $dummypag_data;
+            $this->m_smwwriter_remove = $page_data;
         }
     }
 

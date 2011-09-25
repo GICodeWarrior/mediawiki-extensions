@@ -29,6 +29,7 @@ class RDFImport extends SpecialPage {
 
 		$this->setHeaders();
 		$this->handleRequestData();
+		$showscreensonly = false;
 
 		if ( $this->m_action == 'Import' ) {
 			if ( !$wgUser->matchEditToken( $this->m_edittoken ) ) {
