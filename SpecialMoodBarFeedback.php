@@ -171,7 +171,7 @@ HTML;
 			} else {
 				$html .= "<span class=\"fbd-page-disabled\">$olderText</span>";
 			}
-			$html .= '</div><div style="clear: both;"></div></div>';
+			$html .= '</div></div><div style="clear: both;"></div>';
 			return $html;
 		}
 	}
