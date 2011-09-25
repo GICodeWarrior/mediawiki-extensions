@@ -61,9 +61,11 @@ $messages['en'] = array(
  * @author Kghbln
  * @author Purodha
  * @author Raymond
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'livetranslate-desc' => '{{desc}}',
+	'right-managetms' => '{{doc-right|managetms}}',
 	'group-tmxadmin' => 'TMX = Translation Memory eXchange',
 	'group-tmxadmin-member' => 'TMX = Translation Memory eXchange',
 	'grouppage-tmxadmin' => 'TMX = Translation Memory eXchange',
