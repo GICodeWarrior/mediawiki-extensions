@@ -4,11 +4,11 @@
 // @require	   https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js
 // @require        http://svn.wikimedia.org/svnroot/mediawiki/trunk/tools/viaf/jquery.cookie.js
 // @require        http://svn.wikimedia.org/svnroot/mediawiki/trunk/tools/viaf/jquery.ba-replacetext.js
-// @description    locate VIAF numbers in texts and urls on web pages, fetch corresponding names from toolserver. (c)T.Gries Version 0.400 201109242100
+// @description    locate VIAF numbers in texts and urls on web pages, fetch corresponding names from toolserver. (c)T.Gries Version 0.401 201109251000
 // @include        *
 // ==/UserScript==
 
-var VERSION = "0.400";
+var VERSION = "0.401";
 /***
  * Copyright (c) 2011 T. Gries
  *
@@ -53,6 +53,7 @@ var VERSION = "0.400";
  * 20110924     detecting and linking PND and GND numbers as well
  *              Toolserver API adapted: names now returned for VIAF, PND, GND
  *              numbers; detected GND numbers are treated as PND
+ * 20110925     summary shows VIAF, and PDN/GND numbers in a single alert box
  *
  ***/
 
@@ -72,15 +73,19 @@ var debug = 0;
  *
  ***/
 
+// whether a summary box is shown at the end
+// which shows all distinct VIAF, PND/GND numbers of the current web page
+// TODO user interface to enable/disable this box per cookie or other method
 var showSummaryBox = false;
+
 var showAllNames = false;
 
 var markUrlDetectedItems = true; // if detected items in Urls will be marked
 var markUrlDetectedItemsCSS = { "borderBottom" : "1px orangered dotted" };
 var markNamesFromServer  = { "background":"magenta", "color":"white", "font-weight":"bold" };
 
-// maximum of VIAF numbers which are shown in the summary box
-var maxVIAFNumbers = 30;
+// cumulative maximum of VIAF, PND, or GND numbers which are shown in the summary box
+var maxNumbers = 30;
 
 // Script update checker source: http://a32.me/2009/11/greasemonkey/
 var SCRIPT_NAME = "viaf"
@@ -192,7 +197,7 @@ var nbsp = "<span>&nbsp</span>";
 // for base64 online encoder http://www.motobit.com/util/base64-decoder-encoder.asp
 // for inline images http://www.elf.org/essay/inline-image.html
 
-function numberToNames( numberType, items ) {
+function numberToNames( items ) {
 
 	if ( items.length == 0 ) return;
 
@@ -223,26 +228,26 @@ function numberToNames( numberType, items ) {
 	 *      http://toolserver.org/~apper/pd/x.php?format=json&data=name&for=[{"viaf":["15571981"]},{"viaf":["79410188"]},{"viaf":["2878675"]},{"viaf":["122255788"]}]
 	 *
 	 *      example 2 request and response shows mixed viaf and pnd number for one person
-	 *      http://toolserver.org/~apper/pd/x.php?format=json&data=name&for=[{"viaf":["100272799"]},{"pnd":["118588664"]}]
+	 *      http://toolserver.org/~apper/pd/x.php?format=json&data=name&for=[{"viaf":["30359946"]},{"pnd":["120155567"]}]
 	 *
 	 *      example 2 JSON response:
-	 *      [{"viaf":["100272799"],"names":[{"lang":"de","name":"Peter Noll"}]},{"pnd":["118588664"],"names":[{"lang":"de","name":"Peter Noll"}]}]
+	 *      [{"viaf":["30359946"],"names":[{"lang":"de","name":"Sabine Ludwig"}]},{"pnd":["120155567"],"names":[{"lang":"de","name":"Sabine Ludwig"}]}]
 	 *
 	 *      example 2 response in array notation as produced by the enclosed dump() function:
 	 *      '0' ...
 	 *         'viaf' ...
-	 *            '0' => "100272799"
+	 *            '0' => "30359946"
 	 *         'names' ...
 	 *            '0' ...
 	 *               'lang' => "de"
-	 *               'name' => "Peter Noll"
+	 *               'name' => "Sabine Ludwig"
 	 *      '1' ...
 	 *         'pnd' ...
-	 *            '0' => "118588664"
+	 *            '0' => "120155567"
 	 *         'names' ...
 	 *            '0' ...
 	 *               'lang' => "de"
-	 *               'name' => "Peter Noll"
+	 *               'name' => "Sabine Ludwig"
 	 *
 	 ***/
 
@@ -464,32 +469,45 @@ $( ".pnd-in-url" ).css( "border-bottom", "1px dotted black" );
 // style all added links
 $( ".addedlink" ).css( { "background":"yellow" , "color":"black" } );
 
-numberToNames( "viaf", out_js );
-// numberToNames( "pnd", out_js );
+numberToNames( out_js );
 
 // show a summary of the collected numbers
+if ( viaf.length > 0 ) {
 
-/***
- *
- * FIXME
- *
-if ( out.length > 0 ) {
-
-	out.sort( numSort );
+	viaf.sort( numSort );
 	var x = "";
-	for ( var i=0; i < Math.min( out.length, maxVIAFNumbers ) ; i++ ) {
-		x += out[i]+"\n";
+	for ( var i=0; i < Math.min( viaf.length, maxNumbers ) ; i++ ) {
+		x += viaf[i]+"\n";
 	}
 
-	if ( out.length > maxVIAFNumbers ) x += "...\n("+maxVIAFNumbers+" of "+out.length+" distinct numbers are shown.)";
-	var pluralS = ( out.length > 1 ) ? "s" : "";
+	if ( viaf.length > maxNumbers ) x += "...\n("+maxNumbers+" of "+viaf.length+" distinct numbers are shown.)";
+	var pluralS = ( viaf.length > 1 ) ? "s" : "";
+        var viafSummary = "The present page contains "+viaf.length+" distinct VIAF number"+pluralS+" in text or links.\nModify the script if you want to remove the alert box permanently.\n\n"+x ;
+
+	// comment the following line if you don't want to see the summary (alert) box
+	// if ( showSummaryBox ) {
+	//	alert( viafSummary );
+	// }
+
+}
+// show a summary of the collected numbers
+if ( pnd.length > 0 ) {
+
+	pnd.sort( numSort );
+	var x = "";
+	for ( var i=0; i < Math.min( pnd.length, maxNumbers ) ; i++ ) {
+		x += pnd[i]+"\n";
+	}
+
+	if ( pnd.length > maxNumbers ) x += "...\n("+maxNumbers+" of "+pnd.length+" distinct numbers are shown.)";
+	var pluralS = ( pnd.length > 1 ) ? "s" : "";
+	var pndSummary = "The present page contains "+pnd.length+" distinct PND number"+pluralS+" in text or links.\n\n"+x;
 
 	// comment the following line if you don't want to see the summary (alert) box
 	if ( showSummaryBox ) {
-		alert( "The present page contains "+out.length+" distinct VIAF number"+pluralS+" in text or links.\nModify the script if you want to remove the alert box permanently.\n\n"+x );
+		alert( viafSummary + "\n" + pndSummary );
 	}
 
-		
 }
-***/
+
 }) ( jQuery );
