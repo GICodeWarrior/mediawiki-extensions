@@ -25,6 +25,13 @@ $messages['en'] = array(
     'emailusers-toomanyrecipientsselected' => 'Too many recipients are selected ({{PLURAL:$1|maximum $1|maximum $1}}).',
 );
 
+/** Message documentation (Message documentation)
+ * @author Umherirrender
+ */
+$messages['qqq'] = array(
+	'right-sendbatchemail' => '{{doc-right|sendbatchemail}}',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
