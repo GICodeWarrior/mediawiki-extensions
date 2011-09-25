@@ -1,10 +1,48 @@
 jQuery( function( $ ) {
+	function getSelectedTypes() {
+		var types = [];
+		$( '#fbd-filters-type-praise, #fbd-filters-type-confusion, #fbd-filters-type-issues' ).each( function() {
+			if ( $(this).prop( 'checked' ) ) {
+				types.push( $(this).val() );
+			}
+		} );
+		return types;
+	}
+	
+	function setCookies() {
+		$.cookie( 'moodbar-feedback-types', getSelectedTypes().join( '|' ), { 'path': '/', 'expires': 7 } );
+		$.cookie( 'moodbar-feedback-username', $( '#fbd-filters-username' ).val(), { 'path': '/', 'expires': 7 } );
+	}
+	
+	function loadFromCookies() {
+		var	cookieTypes = $.cookie( 'moodbar-feedback-types' );
+			$username = $( '#fbd-filters-username' );
+		if ( $username.val() == '' ) {
+			var cookieUsername = $.cookie( 'moodbar-feedback-username' );
+			if ( cookieUsername != '' ) {
+				$username.val( cookieUsername );
+			}
+		}
+		
+		if ( cookieTypes ) {
+			cookieTypes = '|' + cookieTypes;
+			$( '#fbd-filters-type-praise, #fbd-filters-type-confusion, #fbd-filters-type-issues' ).each( function() {
+				if ( !$(this).prop( 'checked' ) && cookieTypes.indexOf( '|' + $(this).val() ) != -1 ) {
+					$(this).prop( 'checked', true );
+				}
+			} );
+		}
+	}
+	
+	$( '#fbd-filters-set' ).click( setCookies );
+	loadFromCookies();
+	
 	$( '#fbd-list-more').children( 'a' ).click( function( e ) {
 		e.preventDefault();
 		
 		var	limit = 20,
 			username = $( '#fbd-filters-username' ).val(),
-			types = [],
+			types = getSelectedTypes(),
 			reqData;
 		
 		// Hide the "More" link and put in a spinner
@@ -22,11 +60,6 @@ jQuery( function( $ ) {
 			'mbclimit': limit + 2, // we drop the first and last result
 			'mbccontinue': $( '#fbd-list').find( 'li:last' ).data( 'mbccontinue' )
 		};
-		$( '#fbd-filters-type-praise, #fbd-filters-type-confusion, #fbd-filters-type-issues' ).each( function() {
-			if ( $(this).prop( 'checked' ) ) {
-				types.push( $(this).val() );
-			}
-		} );
 		if ( types.length ) {
 			reqData['mbctype'] = types.join( '|' );
 		}
