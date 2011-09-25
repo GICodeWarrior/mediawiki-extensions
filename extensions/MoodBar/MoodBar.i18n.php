@@ -85,6 +85,7 @@ For more information, please visit the $1.',
 	'moodbar-feedback-permalink' => 'link to here',
 	'moodbar-feedback-noresults' => 'There are no comments that match your filters.',
 	'moodbar-feedback-more' => 'More',
+	'moodbar-feedback-nomore' => 'There are no more results to show',
 	'moodbar-feedback-newer' => 'Newer',
 	'moodbar-feedback-older' => 'Older',
 	// Mood types
