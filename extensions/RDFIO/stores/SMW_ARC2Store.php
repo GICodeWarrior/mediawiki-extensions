@@ -54,7 +54,7 @@ class SMWARC2Store extends SMWSQLStore2 {
      */
     function updateData( SMWSemanticData $data ) {
         $export = SMWExporter::makeExportData( $data );
-        $subject_uri = SMWExporter::expandURI( $export->getSubject()->getName() );
+        $subject_uri = SMWExporter::expandURI( $export->getSubject()->getUri() );
 
         // remove subject from triple store
         $this->removeDataForURI( $subject_uri );
@@ -74,19 +74,20 @@ class SMWARC2Store extends SMWSQLStore2 {
             $pre_str = "";
 
             if ( $object instanceof SMWExpLiteral ) {
-                $obj_str = "\"" . $object->getName() . "\"" . ( ( $object->getDatatype() == "" ) ? "" : "^^<" . $object->getDatatype() . ">" );
+            	// @todo FIXME: Add escaping for results of getLexicalForm()?
+                $obj_str = "\"" . $object->getLexicalForm() . "\"" . ( ( $object->getDatatype() == "" ) ? "" : "^^<" . $object->getDatatype() . ">" );
             } elseif ( $object instanceof SMWExpResource ) {
-                $obj_str = "<" . SMWExporter::expandURI( $object->getName() ) . ">";
+                $obj_str = "<" . SMWExporter::expandURI( $object->getUri() ) . ">";
             } else {
                 $obj_str = "\"\"";
             }
 
             if ( $subject instanceof SMWExpResource ) {
-                $sub_str = "<" . SMWExporter::expandURI( $subject->getName() ) . ">";
+                $sub_str = "<" . SMWExporter::expandURI( $subject->getUri() ) . ">";
             }
 
             if ( $predicate instanceof SMWExpResource ) {
-                $pre_str = "<" . SMWExporter::expandURI( $predicate->getName() ) . ">";
+                $pre_str = "<" . SMWExporter::expandURI( $predicate->getUri() ) . ">";
             }
 
             $sparqlUpdateText .= $sub_str . " " . $pre_str . " " . $obj_str . " .\n";
@@ -224,7 +225,7 @@ class SMWARC2Store extends SMWSQLStore2 {
             $dv = SMWDataValueFactory::newTypeIDValue( '_wpg' );
             $dv->setTitle( $title );
             $exp = $dv->getExportData();
-            $uri = $exp->getSubject()->getName();
+            $uri = $exp->getSubject()->getUri();
         } else {
             // There could be other types as well that we do NOT handle here
         }
