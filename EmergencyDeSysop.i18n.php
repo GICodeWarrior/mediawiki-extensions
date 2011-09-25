@@ -35,12 +35,13 @@ $messages['en'] = array(
  * @author Purodha
  * @author SPQRobin
  * @author The Evil IP address
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'emergencydesysop-desc' => '{{desc}}',
 	'emergencydesysop-submit' => '{{Identical|Submit}}',
 	'emergencydesysop-nogroups' => '{{Identical|None}}',
-	'right-emergencydesysop' => 'This is a user right description, as shown on [[Special:ListGroupRights]], e.g.',
+	'right-emergencydesysop' => '{{doc-right|emergencydesysop}}',
 );
 
 /** Afrikaans (Afrikaans)
