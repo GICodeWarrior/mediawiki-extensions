@@ -303,6 +303,13 @@ $messages['lb'] = array(
 	'tooltip-desc' => 'Setzt den <code>&lt;tooltip&gt;</code> an den <code>{{#tooltip:}}</code> Tag derbäi',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'tooltip-desc' => 'Veug de tags <nowiki><tooltip></nowiki> en <nowiki>{{#tooltip:}}</nowiki> toe',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  * @author Brest
