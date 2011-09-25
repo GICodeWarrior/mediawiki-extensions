@@ -129,6 +129,7 @@ $messages['br'] = array(
 
 /** German (Deutsch)
  * @author Kghbln
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'notificator' => 'Notificator',
@@ -137,7 +138,7 @@ $messages['de'] = array(
 	'notificator-e-mail-address' => 'E-Mail-Adresse',
 	'notificator-notify' => 'Benachrichtigen',
 	'notificator-notify-address-or-name' => '$1 benachrichtigen',
-	'notificator-revs-not-from-same-title' => 'Die Versionskennungen gehören nicht zum selben Titel / zur selben Seite',
+	'notificator-revs-not-from-same-title' => 'Die Versionsids gehören nicht zum selben Titel/zur selben Seite',
 	'notificator-return-to' => 'Zurück zu',
 	'notificator-special-page-accessed-directly' => 'Auf diese Spezialseite kann nicht direkt zugegriffen werden. Sie kann nur über eine von der Softwareerweiterung „Notificator“ bereitgestellt Schaltfläche genutzt werden.',
 	'notificator-e-mail-address-invalid' => 'Die angegebene E-Mail-Adresse ist ungültig.',
