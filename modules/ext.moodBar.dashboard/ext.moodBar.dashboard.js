@@ -1,20 +1,27 @@
 jQuery( function( $ ) {
-	$( '#fbd-list-more a' ).click( function( e ) {
+	$( '#fbd-list-more').children( 'a' ).click( function( e ) {
 		e.preventDefault();
-		
-		// TODO spinner
 		
 		var	limit = 20,
 			username = $( '#fbd-filters-username' ).val(),
 			types = [],
-			reqData = {
-				'action': 'query',
-				'list': 'moodbarcomments',
-				'format': 'json',
-				'mbcprop': 'formatted',
-				'mbclimit': limit + 2, // we drop the first and last result
-				'mbccontinue': $( '#fbd-list li:last' ).data( 'mbccontinue' )
-			};
+			reqData;
+		
+		// Hide the "More" link and put in a spinner
+		$( '#fbd-list-more' )
+			.addClass( 'mw-ajax-loader' )
+			.children( 'a' )
+			.css( 'visibility', 'hidden' ); // using .hide() messes up the layout
+		
+		// Build the API request
+		reqData = {
+			'action': 'query',
+			'list': 'moodbarcomments',
+			'format': 'json',
+			'mbcprop': 'formatted',
+			'mbclimit': limit + 2, // we drop the first and last result
+			'mbccontinue': $( '#fbd-list').find( 'li:last' ).data( 'mbccontinue' )
+		};
 		$( '#fbd-filters-type-praise, #fbd-filters-type-confusion, #fbd-filters-type-issues' ).each( function() {
 			if ( $(this).prop( 'checked' ) ) {
 				types.push( $(this).val() );
@@ -27,7 +34,6 @@ jQuery( function( $ ) {
 			reqData['mbcuser'] = username;
 		}
 		
-		// TODO save jqXhr and protect against duplicate clicks causing concurrent requests
 		$.ajax( mw.util.wikiScript( 'api' ), {
 			'data': reqData,
 			'success': function( data ) {
@@ -56,7 +62,14 @@ jQuery( function( $ ) {
 					$ul.append( comments[i].formatted );
 				}
 				
-				// TODO act on !moreResults
+				// Remove the spinner and restore the "More" link
+				$( '#fbd-list-more' )
+					.removeClass( 'mw-ajax-loader' )
+					.children( 'a' )
+					.css( 'visibility', 'visible' );
+				if ( !moreResults ) {
+					$( '#fbd-list-more' ).text( mw.msg( 'moodbar-feedback-nomore' ) );
+				}
 			},
 			'error': function( jqXHR, textStatus, errorThrown ) {
 				// TODO
