@@ -37,8 +37,14 @@ jQuery( function( $ ) {
 		$.ajax( mw.util.wikiScript( 'api' ), {
 			'data': reqData,
 			'success': function( data ) {
+				// Remove the spinner and restore the "More" link
+				$( '#fbd-list-more' )
+					.removeClass( 'mw-ajax-loader' )
+					.children( 'a' )
+					.css( 'visibility', 'visible' );
+				
 				if ( !data || !data.query || !data.query.moodbarcomments ) {
-					// TODO error
+					$( '#fbd-list-more' ).text( mw.msg( 'moodbar-feedback-ajaxerror'  ) );
 					return;
 				}
 				
@@ -62,17 +68,14 @@ jQuery( function( $ ) {
 					$ul.append( comments[i].formatted );
 				}
 				
-				// Remove the spinner and restore the "More" link
-				$( '#fbd-list-more' )
-					.removeClass( 'mw-ajax-loader' )
-					.children( 'a' )
-					.css( 'visibility', 'visible' );
 				if ( !moreResults ) {
 					$( '#fbd-list-more' ).text( mw.msg( 'moodbar-feedback-nomore' ) );
 				}
 			},
 			'error': function( jqXHR, textStatus, errorThrown ) {
-				// TODO
+				$( '#fbd-list-more' )
+					.removeClass( 'mw-ajax-loader' )
+					.text( mw.msg( 'moodbar-feedback-ajaxerror'  ) );
 			},
 			'dataType': 'json'
 		} );
