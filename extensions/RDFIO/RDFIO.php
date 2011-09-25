@@ -67,8 +67,8 @@ include_once( "$IP/extensions/SMWWriter/SMWWriter.php" );
 
 $rdfioDir = dirname( __FILE__ );
 
-include_once '/specials/SpecialRDFImport.php';
-include_once '/specials/SpecialSPARQLEndpoint.php';
+include_once $rdfioDir . '/specials/SpecialRDFImport.php';
+include_once $rdfioDir . '/specials/SpecialSPARQLEndpoint.php';
 
 $wgAutoloadClasses['RDFIOUtils'] = $rdfioDir . '/classes/Utils.php';
 $wgAutoloadClasses['RDFIOStore'] = $rdfioDir . '/classes/RDFStore.php';
