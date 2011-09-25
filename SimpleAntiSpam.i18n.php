@@ -632,6 +632,9 @@ Vemp '''PA''' sòn-sì!",
  */
 $messages['pnb'] = array(
 	'simpleantispam' => 'تھواڈی تبدیلی نیں سپام روک پربندھ چلادتا اے',
+	'simpleantispam-label' => 'سپام روک پھاٹک
+ایدے تے ناں لکھو۔',
+	'simpleantispam-desc' => 'اک سادہ سپام/بوٹ روک رلاؤ۔',
 );
 
 /** Portuguese (Português)
