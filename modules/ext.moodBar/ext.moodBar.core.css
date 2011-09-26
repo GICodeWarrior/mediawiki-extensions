@@ -40,17 +40,23 @@
 }
 
 .mw-moodBar-types {
-	overflow: hidden; /* clear */
-	margin: 0 30px;
+	margin: 0 auto;
+	width: auto;
+	display: inline-block;
+/*	display: inline;*/
 }
 
 .mw-moodBar-type {
-	float: left;
 	min-width: 42px;
 	margin: 15px;
 	padding: 42px 0 5px 0;
 	/* @embed */
 	background: transparent url(images/type-unknown.png) center top no-repeat;
+	display: inline-block;
+	/*display: inline;*/
+}
+
+.mw-moodBar-types-container {
 	text-align: center;
 }
 
