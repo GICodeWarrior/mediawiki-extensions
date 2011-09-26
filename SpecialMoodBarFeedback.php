@@ -34,7 +34,9 @@ class SpecialMoodBarFeedback extends SpecialPage {
 				$filters['username'] = $username;
 			}
 			$offset = $wgRequest->getVal( 'offset', $offset );
-			$filterType = 'filtered';
+			if ( count( $filters ) ) {
+				$filterType = 'filtered';
+			}
 		}
 		// Do the query
 		$backwards = $wgRequest->getVal( 'dir' ) === 'prev';
