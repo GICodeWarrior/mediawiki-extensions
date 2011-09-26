@@ -137,11 +137,22 @@ class qp_Interpret {
 		if ( $interpResult->isError() ) {
 			return $interpResult->setDefaultErrorMessage();
 		}
-		if ( !isset( $result['short'] ) || !isset( $result['long'] ) ) {
+		$interpCount = 0;
+		foreach ( qp_Setup::$show_interpretation as $interpType => $show ) {
+			if ( isset( $result[$interpType] ) ) {
+				$interpCount++;
+			}
+		}
+		if ( $interpCount == 0 ) {
 			return $interpResult->setError( wfMsg( 'qp_error_interpretation_no_return' ) );
 		}
-		$interpResult->short = (string) $result['short'];
-		$interpResult->long = (string) $result['long'];
+		$interpResult->structured = serialize( isset( $result['structured'] ) ? $result['structured'] : null );
+		if ( strlen( $interpResult->structured ) > qp_Setup::$structured_interpretation_max_length ) {
+			unset( $interpResult->structured );
+			return $interpResult->setError( wfMsg( 'qp_error_structured_interpretation_is_too_long' ) );
+		}
+		$interpResult->short = isset( $result['short'] ) ? strval( $result['short'] ) : '';
+		$interpResult->long = isset( $result['long'] ) ? strval( $result['long'] ) : '';
 		return $interpResult;
 	}
 
