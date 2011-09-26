@@ -177,7 +177,7 @@ HTML;
 				// We still need to output it because the JS may need it later
 				$attribs['style'] = 'display: none;';
 			}
-			$html .= Html::rawElement( 'div', $attribs, '<a href="#">' . $moreText . '</a></div>' );
+			$html .= Html::rawElement( 'div', $attribs, '<a href="#">' . $moreText . '</a>' );
 			
 			// Paging links for no-JS clients
 			$olderURL = $newerURL = false;
