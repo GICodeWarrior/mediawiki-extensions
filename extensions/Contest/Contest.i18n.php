@@ -25,6 +25,11 @@ $messages['en'] = array(
 	'right-contestparticipant' => 'Participate in contests',
 	'right-contestjudge' => 'Judge contest submissions',
 
+	// Contest statuses
+	'contest-status-draft' => 'Draft (disabled)',
+	'contest-status-active' => 'Active (enabled)',
+	'contest-status-finished' => 'Finished (disabled)',
+
 	// Special page names
 	'special-contest' => 'Contest',
 	'special-contests' => 'Contests',
@@ -37,6 +42,12 @@ $messages['en'] = array(
 	'contest-special-namedoc' => 'The name of the contest is the identifier used in URLs. ie "name" in Special:Contest/name',
 	'contest-special-newname' => 'Contest name',
 	'contest-special-add' => 'Add contest',
+
+	// Special:EditContest
+	'editcontest-text' => 'You are editing a contest.',
+	'editcontest-legend' => 'Contest',
+	'contest-edit-name' => 'Contest name',
+	'contest-edit-status' => 'Contest status',
 );
 
 /** Message documentation (Message documentation)

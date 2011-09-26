@@ -95,7 +95,7 @@ class SpecialContests extends SpecialContestPage {
 			'submit'
 		) );
 		
-		$out->addHTML( Html::hidden( 'wpEditToken', $this->getUser()->editToken() ) );
+		$out->addHTML( Html::hidden( 'newEditToken', $this->getUser()->editToken() ) );
 		
 		$out->addHTML( '</fieldset></form>' );
 	}
