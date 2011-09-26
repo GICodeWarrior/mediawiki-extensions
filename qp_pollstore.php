@@ -16,9 +16,10 @@ class qp_InterpResult {
 	# by default, it is public (displayed everywhere)
 	# blank value means long answer is unavailable
 	var $long = '';
-	# serialized answer. one dimensional array with numeric keys and scalar values.
+	# structured answer. scalar value or an associative array.
+	# objects are not allowed.
 	# it is exported to XLS voices and can be analyzed by external tools.
-	var $serialized = '';
+	var $structured = null;
 	# error message. non-blank value indicates interpretation script error
 	# either due to incorrect script code, or a script-generated one
 	var $error = '';

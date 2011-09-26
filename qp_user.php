@@ -202,11 +202,13 @@ class qp_Setup {
 	# it is important only for question type="text", where
 	# proposal text contains serialized array of proposal parts and category fields
 	public static $proposal_max_length = 768;
-	# whether to show short, long, serialized interpretation results to end user
+	# not larger than DB field size, otherwise serialization will be invalid
+	public static $structured_interpretation_max_length = 65535;
+	# whether to show short, long, structured interpretation results to end user
 	public static $show_interpretation = array(
 		'short' => false,
 		'long' => true,
-		'serialized' => false
+		'structured' => false
 	);
 	/* end of default configuration settings */
 

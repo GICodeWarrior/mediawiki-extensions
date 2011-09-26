@@ -123,6 +123,7 @@ To save a poll, submit it while not answering to any proposal questions.',
 	'qp_error_unique' => 'Question of type unique() has more proposals than possible answers defined: Impossible to complete.',
 	'qp_error_no_more_attempts' => 'You have reached maximal number of submitting attempts for this poll.',
 	'qp_error_interpretation_no_return' => 'Interpretation script returned no result.',
+	'qp_error_structured_interpretation_is_too_long' => 'Structured interpretation is too long to be stored in database. Please correct your interpretation script.',
 	'qp_error_no_json_decode' => 'Interpretation of poll answers requires json_decode() PHP function.',
 	'qp_error_eval_missed_lang_attr' => 'XML attribute "lang" is required to choose proper interpretation language.',
 	'qp_error_eval_mix_languages' => 'Single interpretation script cannot mix different interpretation languages: "$1", "$2".',
@@ -2634,6 +2635,7 @@ $messages['ru'] = array(
 	'qp_error_unique' => 'Опрос, имеющий тип unique(), не должен иметь больше ответов чем вопросов',
 	'qp_error_no_more_attempts' => 'Исчерпано количество попыток ответа на данный опрос',
 	'qp_error_interpretation_no_return' => 'Скрипт интерпретации не вернул результат',
+	'qp_error_structured_interpretation_is_too_long' => 'Структурированная интерпретация слишком длинна для хранения в базе данных. Пожалуйста скорректируйте Ваш скрипт интерпретации.',
 );
 
 /** Rusyn (Русиньскый)

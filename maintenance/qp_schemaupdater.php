@@ -103,8 +103,8 @@ class qp_SchemaUpdater {
 			'qp_poll_desc' => array( 'interpretation_namespace', 'interpretation_title' ),
 			'qp_users_polls' => array( 'attempts', 'short_interpretation', 'long_interpretation' )
 		),
-		'qpoll_serialized_interpretation.src' => array(
-			'qp_users_polls' => array( 'serialized_interpretation' )
+		'qpoll_structured_interpretation.src' => array(
+			'qp_users_polls' => array( 'structured_interpretation' )
 		)
 	);
 
