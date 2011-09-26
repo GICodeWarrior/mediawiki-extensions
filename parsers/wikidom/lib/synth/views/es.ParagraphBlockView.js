@@ -69,6 +69,10 @@ es.ParagraphBlockView.prototype.drawSelection = function( range ) {
 	this.contentView.drawSelection( range );
 };
 
+es.ParagraphBlockView.prototype.clearSelection = function( range ) {
+	this.contentView.clearSelection();
+};
+
 /**
  * Gets length of contents.
  * 

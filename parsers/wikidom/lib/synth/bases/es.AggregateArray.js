@@ -64,67 +64,58 @@ es.AggregateArray.prototype.getLengthOfItems = function() {
 	return Math.max( 0, sum + this.length - 1 );
 };
 
-es.AggregateArray.prototype.getCoverage = function( start, end ) {
-	var result = { 'on': [], 'off': [] },
-		sum = 0,
-		len;
-	for ( var i = 0, length = this.length; i < length; i++ ) {
-		len = this[i].getLength();
-		if ( sum >= start && sum + len < end ) {
-			result.on.push( this[i] );
-		} else {
-			result.off.push( this[i] );
-		}
-		sum += len
-	}
-	return result;
-};
+es.AggregateArray.prototype.select = function( start, end, off ) {
+	var	result = { 'on': [], 'off': [] },
+		left = 0,
+		right,
+		items = [],
+		off = off || false;
 
-es.AggregateArray.prototype.select = function( start, end ) {
-	// Support es.Range object as first argument
 	if ( typeof start.from === 'number' && typeof start.to === 'number') {
 		start.normalize();
 		end = start.end;
 		start = start.start;
 	}
-	var items = [];
-	if ( this.length ) {
-		var i = 0,
-			length = this.length,
-			left = 0,
-			right,
-			inside = false,
-			from,
-			to;
-		while ( i < length ) {
-			right = left + this[i].getLength() + 1;
-			if ( inside ) {
-				// Append items until we reach the end
-				from = 0;
-				to = Math.min( right - left - 1, end - left );
 
-				if ( from !== to ) {
-					items.push( { 'item': this[i], 'from': from, 'to': to } );
-				}
-				if ( end >= left && end < right ) {
+	for ( var i = 0, length = this.length; i < length; i++ ) {
+		right = left + this[i].getLength() + 1;
+		if ( start >= left && start < right ) {
+			if ( end < right ) {
+				result.on.push( {
+					'item': this[i],
+					'from': start - left,
+					'to': end - left
+				} );
+				if ( off === false ) {
 					break;
 				}
-			} else if ( start >= left && start < right ) {
-				inside = true;
-				// Append first item
-				from = start - left;
-				//to = Math.min( right - 1, end - left );
-				to = Math.min( right - left - 1, end - left );
-				if ( from !== to ) {
-					items.push( { 'item': this[i], 'from': from, 'to': to } );
-				}
-				if ( right >= end ) {
-					break;
-				}
+			} else {
+				result.on.push( {
+					'item': this[i],
+					'from': start - left,
+					'to': right - left - 1
+				} );	
 			}
-			left = right;
-			i++;
+		} else if ( end >= left && end < right ) {
+			result.on.push( {
+				'item': this[i],
+				'from': 0,
+				'to': end - left
+			} );
+			if ( off === false ) {
+				break;
+			}
+		} else if ( left >= start && right <= end ) {
+			result.on.push( {
+				'item': this[i],
+				'from': 0,
+				'to': right - left - 1
+			} );
+		} else if( off === true ) {
+			result.off.push( this[i] );
 		}
+		left = right;
 	}
-	return items;
+
+	return result;
 };

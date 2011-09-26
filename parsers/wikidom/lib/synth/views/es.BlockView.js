@@ -15,6 +15,20 @@ es.BlockView = function( blockModel, $element ) {
 };
 
 /**
+ * Draw selection around a given range.
+ * 
+ * @method
+ * @param range {es.Range} Range of content to draw selection around
+ */
+es.BlockView.prototype.drawSelection = function( range ) {
+	throw 'BlockView.drawSelection not implemented in this subclass.';
+};
+
+es.BlockView.prototype.clearSelection = function() {
+	throw 'BlockView.clearSelection not implemented in this subclass.';
+};
+
+/**
  * Render content.
  * 
  * @method

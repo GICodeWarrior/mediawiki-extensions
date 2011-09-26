@@ -66,6 +66,10 @@ es.ListBlockItemView.prototype.drawSelection = function( range ) {
 	this.contentView.drawSelection( range );
 };
 
+es.ListBlockItemView.prototype.clearSelection = function() {
+	this.contentView.clearSelection();
+};
+
 /**
  * Gets length of contents.
  * 

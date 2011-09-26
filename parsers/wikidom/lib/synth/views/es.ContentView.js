@@ -249,6 +249,12 @@ es.ContentView.prototype.drawSelection = function( range ) {
 	}
 };
 
+es.ContentView.prototype.clearSelection = function() {
+	this.$rangeStart.hide();
+	this.$rangeFill.hide();
+	this.$rangeEnd.hide();
+};
+
 /**
  * Gets the index of the rendered line a given offset is within.
  * 

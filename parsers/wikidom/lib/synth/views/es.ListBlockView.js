@@ -49,11 +49,19 @@ es.ListBlockView.prototype.getOffsetFromPosition = function( position ) {
  * @param range {es.Range} Range of content to draw selection around
  */
 es.ListBlockView.prototype.drawSelection = function( range ) {
-	var selectedItems = this.items.select( range );
-	for ( var i = 0; i < selectedItems.length; i++ ) {
-		selectedItems[i].item.drawSelection(
-			new es.Range( selectedItems[i].from, selectedItems[i].to )
-		);
+	var views = this.items.select( range, null, true );
+
+	for ( var i = 0; i < views.on.length; i++ ) {
+		views.on[i].item.drawSelection( new es.Range( views.on[i].from, views.on[i].to ) );
+	}
+	for ( var i = 0; i < views.off.length; i++ ) {
+		views.off[i].clearSelection();
+	}
+};
+
+es.ListBlockView.prototype.clearSelection = function( range ) {
+	for ( var i = 0; i < this.items.length; i++ ) {
+		this.items[i].clearSelection();
 	}
 };
 

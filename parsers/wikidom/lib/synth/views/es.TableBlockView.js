@@ -79,11 +79,19 @@ es.TableBlockView.prototype.getRenderedPosition = function( offset ) {
  * @param range {es.Range} Range of content to draw selection around
  */
 es.TableBlockView.prototype.drawSelection = function( range ) {
-	var selectedViews = this.items.select( range );
-	for ( var i = 0; i < selectedViews.length; i++ ) {
-		selectedViews[i].item.drawSelection(
-			new es.Range( selectedViews[i].from, selectedViews[i].to )
-		);
+	var views = this.items.select( range, null, true );
+
+	for ( var i = 0; i < views.on.length; i++ ) {
+		views.on[i].item.drawSelection( new es.Range( views.on[i].from, views.on[i].to ) );
+	}
+	for ( var i = 0; i < views.off.length; i++ ) {
+		views.off[i].clearSelection();
+	}
+};
+
+es.TableBlockView.prototype.clearSelection = function( range ) {
+	for ( var i = 0; i < this.items.length; i++ ) {
+		this.items[i].clearSelection();
 	}
 };
 
