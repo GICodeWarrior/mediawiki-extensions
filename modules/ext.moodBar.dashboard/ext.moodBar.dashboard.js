@@ -3,6 +3,19 @@
  */
 jQuery( function( $ ) {
 	/**
+	 * Saved form state
+	 */
+	var formState = { types: [], username: '' };
+	
+	/**
+	 * Save the current form state to formState
+	 */
+	function saveFormState() {
+		formState.types = getSelectedTypes();
+		formState.username = $( '#fbd-filters-username' ).val();
+	}
+	
+	/**
 	 * Figure out which comment type filters have been selected.
 	 * @return array of comment types
 	 */
@@ -17,11 +30,12 @@ jQuery( function( $ ) {
 	}
 	
 	/**
-	 * Set the moodbar-feedback-types and moodbar-feedback-username cookies based on the form state.
+	 * Set the moodbar-feedback-types and moodbar-feedback-username cookies based on formState.
+	 * This function uses the form state saved in formState, so you may want to call saveFormState() first.
 	 */
 	function setCookies() {
-		$.cookie( 'moodbar-feedback-types', getSelectedTypes().join( '|' ), { 'path': '/', 'expires': 7 } );
-		$.cookie( 'moodbar-feedback-username', $( '#fbd-filters-username' ).val(), { 'path': '/', 'expires': 7 } );
+		$.cookie( 'moodbar-feedback-types', formState.types.join( '|' ), { 'path': '/', 'expires': 7 } );
+		$.cookie( 'moodbar-feedback-username', formState.username, { 'path': '/', 'expires': 7 } );
 	}
 	
 	/**
@@ -77,12 +91,13 @@ jQuery( function( $ ) {
 	 * Load a set of 20 comments into the list. In 'filter' mode, the list is
 	 * blanked before the new comments are loaded. In 'more' mode, the comments are
 	 * loaded at the end of the existing set.
+	 * 
+	 * This function uses the form state saved in formState, so you may want to call saveFormState() first.
+	 * 
 	 * @param mode string Either 'filter' or 'more'
 	 */
 	function loadComments( mode ) {
 		var	limit = 20,
-			username = $( '#fbd-filters-username' ).val(),
-			types = getSelectedTypes(),
 			reqData;
 		
 		if ( mode == 'filter' ) {
@@ -111,11 +126,11 @@ jQuery( function( $ ) {
 		if ( mode == 'more' ) {
 			reqData['mbccontinue'] = $( '#fbd-list').find( 'li:last' ).data( 'mbccontinue' );
 		}
-		if ( types.length ) {
-			reqData['mbctype'] = types.join( '|' );
+		if ( formState.types.length ) {
+			reqData['mbctype'] = formState.types.join( '|' );
 		}
-		if ( username.length ) {
-			reqData['mbcuser'] = username;
+		if ( formState.username.length ) {
+			reqData['mbcuser'] = formState.username;
 		}
 		
 		$.ajax( mw.util.wikiScript( 'api' ), {
@@ -175,22 +190,30 @@ jQuery( function( $ ) {
 		} );
 	}
 	
+	// On-load stuff
+	
 	$( '#fbd-filters' ).children( 'form' ).submit( function( e ) {
 		e.preventDefault();
+		saveFormState();
 		setCookies();
 		loadComments( 'filter' );
 	} );
 	
 	$( '#fbd-list-more' ).children( 'a' ).click( function( e ) {
 		e.preventDefault();
+		// We don't call saveFormState() here because we want to use the state of the form
+		// at the time it was last filtered. Otherwise, you would see strange behavior if
+		// you changed the form state then clicked More.
 		loadComments( 'more' );
 	} );
 	
+	saveFormState();
 	var filterType = $( '#fbd-filters' ).children( 'form' ).data( 'filtertype' );
 	// If filtering already happened on the PHP side, don't load the form state from cookies
 	if ( filterType != 'filtered' ) {
 		// Don't do an AJAX filter if we're on an ID view, or if the form is still blank after loadFromCookies()
 		if ( loadFromCookies() && filterType != 'id' ) {
+			saveFormState();
 			loadComments( 'filter' );
 		}
 	}
