@@ -77,6 +77,33 @@ $wgAPIModules['deletecontest'] 					= 'ApiDeleteContest';
 $wgHooks['LoadExtensionSchemaUpdates'][] 		= 'SurveyHooks::onSchemaUpdate';
 $wgHooks['UnitTestsList'][] 					= 'SurveyHooks::registerUnitTests';
 
+// Rights
+
+$wgAvailableRights[] = 'contestadmin';
+$wgAvailableRights[] = 'contestparticipant';
+$wgAvailableRights[] = 'contestjudge';
+
+# Users that can manage the contests.
+$wgGroupPermissions['*'            ]['contestadmin'] = false;
+$wgGroupPermissions['user'         ]['contestadmin'] = false;
+$wgGroupPermissions['autoconfirmed']['contestadmin'] = false;
+$wgGroupPermissions['bot'          ]['contestadmin'] = false;
+$wgGroupPermissions['sysop'        ]['contestadmin'] = true;
+
+# Users that can be contest participants.
+$wgGroupPermissions['*'            ]['contestparticipant'] = false;
+$wgGroupPermissions['user'         ]['contestparticipant'] = true;
+$wgGroupPermissions['autoconfirmed']['contestparticipant'] = true;
+$wgGroupPermissions['bot'          ]['contestparticipant'] = false;
+$wgGroupPermissions['sysop'        ]['contestparticipant'] = true;
+
+# Users that can vote and comment on submissions.
+$wgGroupPermissions['*'            ]['contestjudge'] = false;
+$wgGroupPermissions['user'         ]['contestjudge'] = false;
+$wgGroupPermissions['autoconfirmed']['contestjudge'] = false;
+$wgGroupPermissions['bot'          ]['contestjudge'] = false;
+$wgGroupPermissions['sysop'        ]['contestjudge'] = true;
+
 // Resource loader modules
 $moduleTemplate = array(
 	'localBasePath' => dirname( __FILE__ ) . '/resources',
