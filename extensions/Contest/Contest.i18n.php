@@ -19,6 +19,17 @@ $messages = array();
  */
 $messages['en'] = array(
 	'contest-desc' => '',
+
+	// Rights
+	'right-contestadmin' => 'Manage contests',
+	'right-contestparticipant' => 'Participate in contests',
+	'right-contestjudge' => 'Judge contest submissions',
+
+	// Special page names
+	'special-contest' => 'Contest',
+	'special-contests' => 'Contests',
+	'special-contestsignup' => 'Contest signup',
+	'special-contestsubmission' => 'Contest submission',
 );
 
 /** Message documentation (Message documentation)
