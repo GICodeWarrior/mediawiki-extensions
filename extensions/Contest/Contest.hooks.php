@@ -31,6 +31,8 @@ final class ContestHooks {
 //			dirname( __FILE__ ) . '/Survey.sql',
 //			true
 //		) );
+
+		return true;
 	}
 	
 	/**
