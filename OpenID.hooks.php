@@ -59,7 +59,7 @@ class OpenIDHooks {
 			$user = User::newFromName( $nt->getText() );
 			if ( $user && $user->getID() != 0 ) {
 				$openid = SpecialOpenID::getUserOpenIDInformation( $user );
-				if ( count( $openid ) && strlen( $openid[0] ) != 0 ) {
+				if ( count( $openid ) && strlen( $openid[0]->uoi_openid ) != 0 ) {
 					global $wgOpenIDShowUrlOnUserPage;
 
 					if ( $wgOpenIDShowUrlOnUserPage == 'always' ||
@@ -67,8 +67,8 @@ class OpenIDHooks {
 					{
 						global $wgOpenIDLoginLogoUrl;
 
-						$url = SpecialOpenID::OpenIDToUrl( $openid[0] );
-						$disp = htmlspecialchars( $openid[0] );
+						$url = SpecialOpenID::OpenIDToUrl( $openid[0]->uoi_openid );
+						$disp = htmlspecialchars( $openid[0]->uoi_openid );
 						$wgOut->setSubtitle( "<span class='subpages'>" .
 											"<img src='$wgOpenIDLoginLogoUrl' alt='OpenID' />" .
 											"<a href='$url'>$disp</a>" .
@@ -77,7 +77,7 @@ class OpenIDHooks {
 				}
 
 				# Add OpenID data if its allowed
-				if ( !$wgOpenIDClientOnly && !( count( $openid ) && ( strlen( $openid[0] ) != 0 ) && !$wgOpenIDAllowServingOpenIDUserAccounts ) ) {
+				if ( !$wgOpenIDClientOnly && !( count( $openid ) && ( strlen( $openid[0]->uoi_openid ) != 0 ) && !$wgOpenIDAllowServingOpenIDUserAccounts ) ) {
 					$st = SpecialPage::getTitleFor( 'OpenIDServer' );
 					$wgOut->addLink( array( 'rel' => 'openid.server',
 											'href' => $st->getFullURL() ) );
