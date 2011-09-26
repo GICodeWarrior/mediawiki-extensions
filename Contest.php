@@ -74,8 +74,8 @@ $wgSpecialPageGroups['ContestSubmission'] 		= 'other';
 $wgAPIModules['deletecontest'] 					= 'ApiDeleteContest';
 
 // Hooks
-$wgHooks['LoadExtensionSchemaUpdates'][] 		= 'SurveyHooks::onSchemaUpdate';
-$wgHooks['UnitTestsList'][] 					= 'SurveyHooks::registerUnitTests';
+$wgHooks['LoadExtensionSchemaUpdates'][] 		= 'ContestHooks::onSchemaUpdate';
+$wgHooks['UnitTestsList'][] 					= 'ContestHooks::registerUnitTests';
 
 // Rights
 
