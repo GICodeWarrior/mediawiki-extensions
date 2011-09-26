@@ -78,7 +78,7 @@ class qp_AbstractPoll {
 	 * will be applied to child questions that do not have these attributes defined
 	 *
 	 * 'showresults' currently is handled separately, because it has "multivalue"
-	 * and can be partially merged from poll to question
+	 * that can be partially merged from poll to question (similar to CSS)
 	 */
 	var $defaultQuestionAttributes = array(
 		'propwidth' => null,
@@ -228,13 +228,14 @@ class qp_AbstractPoll {
 	 */
 	function getQuestionAttributes( $attr_str, &$paramkeys ) {
 		$paramkeys = array( 't[yi]p[eo]' => null, 'layout' => null, 'textwidth' => null, 'propwidth' => null, 'showresults' => null );
-		foreach ( $paramkeys as $key => &$val ) {
-			preg_match( '`' . $key . '?="(.*?)"`u', $attr_str, $val );
-			$val = ( count( $val ) > 1 ) ? $val[1] : null;
+		$match = array();
+		foreach ( $paramkeys as $key => $val ) {
+			preg_match( '`' . $key . '\s?=\s?"(.*?)"`u', $attr_str, $match );
+			$paramkeys[$key] = ( count( $match ) > 1 ) ? $match[1] : null;
 		}
-		# apply default question attributes, if any
+		# apply default questions attributes from poll definition, if there is any
 		foreach ( $this->defaultQuestionAttributes as $attr => $val ) {
-			if ( is_null( $paramkeys[$attr] ) ) {
+			if ( $paramkeys[$attr] === null ) {
 				$paramkeys[$attr] = $val;
 			}
 		}

@@ -10,4 +10,4 @@ ALTER TABLE /*$wgDBprefix*/qp_poll_desc
 ALTER TABLE /*$wgDBprefix*/qp_users_polls
   ADD COLUMN attempts int NOT NULL default 1,
   ADD COLUMN short_interpretation tinytext NOT NULL default '',
-  ADD COLUMN long_interpretation mediumtext NOT NULL default '';
+  ADD COLUMN long_interpretation text NOT NULL default '';

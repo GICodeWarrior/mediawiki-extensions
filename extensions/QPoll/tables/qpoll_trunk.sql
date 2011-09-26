@@ -1,7 +1,8 @@
 /**
- * WARNING: This file will drop existing data in QPoll tables, if there's any!
+ * WARNING: Importing this file will drop existing data in QPoll tables,
+ * if there's any!
  * Do not use directly in case your wiki DB setup uses table prefixes.
- * Use Special:PollResults page instead.
+ * Use Special:QPollWebInstall page instead.
  * This file is primarily for debugging.
  */
 
@@ -11,7 +12,7 @@ CREATE TABLE `qp_poll_desc` (
   `article_id` int unsigned NOT NULL,
   `poll_id` tinytext NOT NULL,
   `order_id` int unsigned NOT NULL,
-  `dependance` mediumtext NOT NULL,
+  `dependance` text NOT NULL,
   interpretation_namespace int NOT NULL,
   interpretation_title varchar(255) binary NOT NULL,
   random_question_count int NOT NULL default 0,
@@ -24,7 +25,7 @@ CREATE TABLE `qp_question_desc` (
   `pid` int unsigned NOT NULL,
   `question_id` int unsigned NOT NULL,
   `type` tinytext NOT NULL,
-  `common_question` mediumtext NOT NULL,
+  `common_question` text NOT NULL,
   PRIMARY KEY question (pid,question_id),
   INDEX poll (pid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -57,7 +58,7 @@ CREATE TABLE `qp_question_answers` (
   `question_id` int unsigned NOT NULL,
   `proposal_id` int unsigned NOT NULL,
   `cat_id` int unsigned NOT NULL,
-  `text_answer` mediumtext,
+  `text_answer` text,
   PRIMARY KEY answer (uid,pid,question_id,proposal_id,cat_id),
   INDEX user_vote (uid,pid),
   INDEX poll_question (pid,question_id)
@@ -69,7 +70,8 @@ CREATE TABLE `qp_users_polls` (
   `pid` int unsigned NOT NULL,
   `attempts` int NOT NULL default 1,
   `short_interpretation` tinytext NOT NULL default '',
-  `long_interpretation` mediumtext NOT NULL default '',
+  `long_interpretation` text NOT NULL default '',
+  `serialized_interpretation` text NOT NULL default '',
   PRIMARY KEY user_poll (uid,pid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

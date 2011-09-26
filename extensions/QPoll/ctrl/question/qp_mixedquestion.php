@@ -21,32 +21,32 @@ class qp_MixedQuestion extends qp_TabularQuestion {
 		}
 		$this->mProposalPattern .= '(.*)`u';
 		$proposalId = -1;
+		qp_TabularQuestionProposalView::applyViewState( $this->view );
 		foreach ( $this->raws as $raw ) {
-			# empty proposal text and row
-			$text = null;
-			$row = Array();
+			# new proposal view
+			$pview = new qp_TabularQuestionProposalView( $proposalId + 1, $this );
 			if ( preg_match( $this->mProposalPattern, $raw, $matches ) ) {
-				$text = array_pop( $matches ); // current proposal text
+				$pview->text = array_pop( $matches ); // current proposal text
 				array_shift( $matches ); // remove "at whole" match
 				$last_matches = $matches;
 			} else {
 				if ( $proposalId >= 0 ) {
 					# shortened syntax: use the pattern from the last row where it's been defined
-					$text = $raw;
+					$pview->text = $raw;
 					$matches = $last_matches;
 				}
 			}
-			if ( $text === null ) {
+			if ( $pview->text === null ) {
 				continue;
 			}
 			$proposalId++;
-			$this->view->initProposalView();
-			$this->mProposalText[ $proposalId ] = trim( $text );
+			$this->mProposalText[ $proposalId ] = trim( $pview->text );
 			# Determine a type ID, according to the questionType and the number of signes.
 			foreach ( $this->mCategories as $catId => $catDesc ) {
 				$typeId  = $matches[ $catId ];
-				$row[ $catId ] = Array();
-				$inp = Array( '__tag' => 'input' );
+				# start new input field tag (category)
+				$pview->addNewCategory( $catId );
+				$inp = array( '__tag' => 'input' );
 				# Determine the input's name and value.
 				switch ( $typeId ) {
 					case '<>':
@@ -78,7 +78,7 @@ class qp_MixedQuestion extends qp_TabularQuestion {
 							$input_checked = true;
 						}
 					} else {
-						$inp[ 'checked' ] = 'checked';
+						$inp['checked'] = 'checked';
 						$input_checked = true;
 					}
 				}
@@ -87,7 +87,7 @@ class qp_MixedQuestion extends qp_TabularQuestion {
 					if ( $inputType == 'text' ) {
 						$text_answer = $prev_text_answer;
 					} else {
-						$inp[ 'checked' ] = 'checked';
+						$inp['checked'] = 'checked';
 					}
 				}
 				if ( $input_checked === true ) {
@@ -95,43 +95,39 @@ class qp_MixedQuestion extends qp_TabularQuestion {
 					$this->mProposalCategoryId[ $proposalId ][] = $catId;
 					$this->mProposalCategoryText[ $proposalId ][] = $text_answer;
 				}
-				$row[ $catId ][ 'class' ] = 'sign';
+				# always borderless (mixed questions do not have spans)
+				$pview->setCategorySpan();
 				# unique (question,proposal,category) "coordinate" for javascript
-				$inp[ 'id' ] = 'mx' . $this->mQuestionId . 'p' . $proposalId . 'c' . $catId;
-				$inp[ 'class' ] = 'check';
-				$inp[ 'type' ] = $inputType;
-				$inp[ 'name' ] = $name;
+				$inp['id'] = 'mx' . $this->mQuestionId . 'p' . $proposalId . 'c' . $catId;
+				$inp['class'] = 'check';
+				$inp['type'] = $inputType;
+				$inp['name'] = $name;
 				if ( $inputType == 'text' ) {
-					$inp[ 'value' ] = qp_Setup::specialchars( $text_answer );
+					$inp['value'] = qp_Setup::specialchars( $text_answer );
 					if ( $this->view->textInputStyle != '' ) {
-						$inp[ 'style' ] = $this->view->textInputStyle;
+						$inp['style'] = $this->view->textInputStyle;
 					}
 				} else {
-					$inp[ 'value' ] = $value;
+					$inp['value'] = $value;
 				}
-				if ( $this->view->showResults['type'] != 0 ) {
-					# there ars some stat in row (not necessarily all cells, because size of question table changes dynamically)
-					$row[ $catId ][ 0 ] = $this->view->addShowResults( $inp, $proposalId, $catId );
-				} else {
-					$row[ $catId ][ 0 ] = $inp;
-				}
+				$pview->setCat( $inp );
 			}
 			try {
 				# if there is only one category defined and it is not a textfield,
 				# the question has a syntax error
 				if ( count( $matches ) < 2 && $matches[0] != '<>' ) {
-					$text = $this->view->bodyErrorMessage( wfMsg( 'qp_error_too_few_categories' ), 'error' );
+					$pview->setErrorMessage( wfMsg( 'qp_error_too_few_categories' ), 'error' );
 					throw new Exception( 'qp_error' );
 				}
 				# If the proposal text is empty, the question has a syntax error.
-				if ( trim( $text ) == '' ) {
-					$text = $this->view->bodyErrorMessage( wfMsg( 'qp_error_proposal_text_empty' ), 'error' );
+				if ( trim( $pview->text ) == '' ) {
+					$pview->setErrorMessage( wfMsg( 'qp_error_proposal_text_empty' ), 'error' );
 					throw new Exception( 'qp_error' );
 				}
 				# If the proposal was submitted but unanswered
 				if ( $this->poll->mBeingCorrected && !array_key_exists( $proposalId, $this->mProposalCategoryId ) ) {
 					$prev_state = $this->getState();
-					$text = $this->view->bodyErrorMessage( wfMsg( 'qp_error_no_answer' ), 'NA' ) . $text;
+					$pview->prependErrorMessage( wfMsg( 'qp_error_no_answer' ), 'NA' );
 					# if there was no previous errors, hightlight the whole row
 					if ( $prev_state == '' ) {
 						throw new Exception( 'qp_error' );
@@ -139,14 +135,12 @@ class qp_MixedQuestion extends qp_TabularQuestion {
 				}
 			} catch ( Exception $e ) {
 				if ( $e->getMessage() == 'qp_error' ) {
-					foreach ( $row as &$cell ) {
-						QP_Renderer::addClass( $cell, 'error' );
-					}
+					$pview->addCellsClass( 'error' );
 				} else {
 					throw new MWException( $e->getMessage() );
 				}
 			}
-			$this->view->addProposal( $proposalId, $text, $row );
+			$this->view->addProposal( $proposalId, $pview );
 		}
 	}
 

@@ -58,7 +58,7 @@ class PollResults extends qp_SpecialPage {
 	 * @param $user User: the user to check
 	 * @return Boolean: does the user have permission to view the page?
 	 */
-	public function userCanExecute( $user ) {
+	public function userCanExecute( User $user ) {
 		# this fn is used to decide whether to show the page link at Special:Specialpages
 		foreach ( self::$accessPermissions as $permission ) {
 			if ( !$user->isAllowed( $permission ) ) {

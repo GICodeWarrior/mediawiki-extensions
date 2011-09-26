@@ -58,8 +58,8 @@ class qp_PollStatsView extends qp_AbstractPollView {
 		# render the body
 		$this->ctrl->questions->reset();
 		while ( is_object( $question = $this->ctrl->questions->iterate() ) ) {
-			# render the question statistics only when showResuls isn't 0 (suppress stats)
-			if ( $question->view->showResults['type'] != 0 ) {
+			# render the question statistics only when showResuls is available (suppress stats)
+			if ( $question->view->hasShowResults() ) {
 				if ( $this->perRow > 1 ) {
 					$write_col[] = array( '__tag' => 'td', 'valign' => 'top', 0 => $question->view->renderQuestion(), '__end' => "\n" );
 					if ( $this->currCol == 1 ) {

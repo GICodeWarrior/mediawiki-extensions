@@ -1,0 +1,3 @@
+-- fields to store the interpretation results
+ALTER TABLE /*$wgDBprefix*/qp_users_polls
+  ADD COLUMN serialized_interpretation text NOT NULL default '';

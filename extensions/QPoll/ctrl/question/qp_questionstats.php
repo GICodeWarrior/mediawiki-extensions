@@ -82,29 +82,25 @@ class qp_QuestionStats extends qp_AbstractQuestion {
 			$this->view->addSpanRow( $spansRow );
 		}
 		$this->view->addCategoryRow( $catRow );
+		qp_QuestionStatsProposalView::applyViewState( $this->view );
 		foreach ( $this->mProposalText as $proposalId => $text ) {
-			$row = Array();
-			$this->view->initProposalView();
+			$pview = new qp_QuestionStatsProposalView( $proposalId, $this );
+			$pview->text = $text;
 			foreach ( $this->mCategories as $catId => $catDesc ) {
-				$row[ $catId ] = Array();
-				$spanState->className = 'sign';
+				$pview->addNewCategory( $catId );
+				$pview->resetSpanState();
 				switch ( $this->mType ) {
 				case 'singleChoice' :
 					# category spans have sense only with single choice proposals
 					# dummy input name / value for renderSpan()
 					$name = $value = '';
-					$this->view->renderSpan( $row, $name, $value, $catId, $catDesc, $text );
+					$pview->renderSpan( $name, $value, $catDesc );
 					break;
 				}
-				QP_Renderer::addClass( $row[ $catId ], $spanState->className );
-				if ( $this->view->showResults['type'] != 0 ) {
-					# there ars some stat in row (not necessarily all cells, because size of question table changes dynamically)
-					$row[ $catId ][ 0 ] = $this->view->addShowResults( $proposalId, $catId );
-				} else {
-					$row[ $catId ][ 0 ] = '';
-				}
+				$pview->setCategorySpan();
+				$pview->setCat( '' );
 			}
-			$this->view->addProposal( $proposalId, $text, $row );
+			$this->view->addProposal( $proposalId, $pview );
 		}
 	}
 
