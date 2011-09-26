@@ -75,7 +75,7 @@ class SpecialContests extends SpecialContestPage {
 			'form',
 			array(
 				'method' => 'post',
-				'action' => $this->getTitle()->getLocalURL(), // TODO: direct to edit page
+				'action' => SpecialPage::getTitleFor( 'EditContest' )->getLocalURL(),
 			)
 		) );
 		

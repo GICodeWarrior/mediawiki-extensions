@@ -34,6 +34,31 @@ class SpecialEditContest extends SpecialContestPage {
 			return;
 		}
 		
+		if ( $this->getRequest()->wasPosted() && $this->getUser()->matchEditToken( $this->getRequest()->getVal( 'wpEditToken' ) ) ) {
+			$data = array( 'name' => $this->getRequest()->getVal( 'newcontest' ) );
+			
+			$contest = Contest::s()->selectRow( null, $data );
+			
+			if ( $contest === false ) {
+				$contest = new Contest( $data );
+			}
+			else {
+				// TODO: warn not new
+			}
+		}
+		else {
+			$contest = Contest::s()->selectRow( array( 'name' => $subPage ) );
+		}
+		
+		if ( $contest === false ) {
+			$this->getOutput()->redirect( SpecialPage::getTitleFor( 'Contests' )->getLocalURL() );
+		}
+		else {
+			$this->displayForm( $contest );
+		}
+	}
+	
+	protected function displayForm( Contest $contest ) {
 		
 	}
 	
