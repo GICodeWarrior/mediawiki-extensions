@@ -124,7 +124,8 @@ HTML;
 		);
 		$timeMsg = wfMessage( 'ago' )->params( $time )->escaped();
 		$username = htmlspecialchars( $row->user_name === null ? $row->mbf_user_ip : $row->user_name );
-		$links = Linker::userToolLinks( $row->mbf_user_id, $username );
+		//$links = Linker::userToolLinks( $row->mbf_user_id, $username );
+		$links = $GLOBALS['wgUser']->getSkin()->userToolLinks( $row->mbf_user_id, $username ); // 1.17wmf1 compat
 		$comment = htmlspecialchars( $row->mbf_comment );
 		$permalinkURL = htmlspecialchars( SpecialPage::getTitleFor( 'MoodBarFeedback', $row->mbf_id )->getLinkURL() );
 		$permalinkText = wfMessage( 'moodbar-feedback-permalink' )->escaped();

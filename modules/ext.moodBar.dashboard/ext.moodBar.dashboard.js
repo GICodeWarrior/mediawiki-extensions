@@ -133,7 +133,8 @@ jQuery( function( $ ) {
 			reqData['mbcuser'] = formState.username;
 		}
 		
-		$.ajax( mw.util.wikiScript( 'api' ), {
+		$.ajax( {
+			'url': mw.util.wikiScript( 'api' ),
 			'data': reqData,
 			'success': function( data ) {
 				// Remove the spinner and restore the "More" link
