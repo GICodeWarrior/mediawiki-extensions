@@ -1109,7 +1109,7 @@ $messages['kk-arab'] = array(
 	'expand_templates_preview' => 'قاراپ شىعۋ',
 );
 
-/** Kazakh (Cyrillic) (Қазақша (Cyrillic)) */
+/** Kazakh (Cyrillic script) (‪Қазақша (кирил)‬) */
 $messages['kk-cyrl'] = array(
 	'expandtemplates' => 'Үлгілерді ұлғайту',
 	'expand_templates_intro' => 'Осы құрал арнайы беті әлдебір мәтінді алады да,
@@ -1127,7 +1127,7 @@ $messages['kk-cyrl'] = array(
 	'expand_templates_preview' => 'Қарап шығу',
 );
 
-/** Kazakh (Latin) (Қазақша (Latin)) */
+/** Kazakh (Latin script) (‪Qazaqşa (latın)‬) */
 $messages['kk-latn'] = array(
 	'expandtemplates' => 'Ülgilerdi ulğaýtw',
 	'expand_templates_intro' => 'Osı qural arnaýı beti äldebir mätindi aladı da,
@@ -1911,7 +1911,7 @@ $messages['sq'] = array(
 	'expand_templates_remove_comments' => 'Hiq komentet',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Millosh
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
@@ -1934,7 +1934,7 @@ $messages['sr-ec'] = array(
 	'expand_templates_preview' => 'Приказ',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Liangent
  * @author Michaello
  */
@@ -2054,7 +2054,7 @@ $messages['tet'] = array(
 	'expand_templates_ok' => 'OK',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -2074,7 +2074,7 @@ $messages['tg-cyrl'] = array(
 	'expand_templates_preview' => 'Пешнамоиш',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
@@ -2277,7 +2277,7 @@ $messages['vi'] = array(
 	'expandtemplates' => 'Bung bản mẫu',
 	'expandtemplates-desc' => '[[Special:ExpandTemplates|Mở rộng các bản mẫu, hàm cú pháp, và biến]] thành mã wiki cuối cùng và hiển thị trang dùng mã này',
 	'expand_templates_intro' => 'Trang đặc biệt này sẽ nhận vào một đoạn văn bản và bung tất cả các bản mẫu trong nó ra một cách đệ quy cho đến hết. Nó cũng bung cả những hàm cú pháp như <nowiki>{{</nowiki>#if:…}}, và những biến số như <nowiki>{{</nowiki>CURRENTDAY}}&nbsp;– thực ra cũng là các dữ liệu bình thường đặt trong ngoặc móc. Nó thực hiện điều này bằng cách gọi tầng dịch cú pháp từ chính MediaWiki.',
-	'expand_templates_title' => 'Tên của trang văn cảnh (để phân tích {{TÊNTRANGĐỦ}} v.v.):',
+	'expand_templates_title' => 'Tên của trang văn cảnh (để phân tích {{FULLPAGENAME}} v.v.):',
 	'expand_templates_input' => 'Mã nguồn để bung:',
 	'expand_templates_output' => 'Kết quả',
 	'expand_templates_xml_output' => 'Xuất XML',
