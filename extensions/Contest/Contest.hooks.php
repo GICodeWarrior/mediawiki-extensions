@@ -25,12 +25,33 @@ final class ContestHooks {
 	public static function onSchemaUpdate( /* DatabaseUpdater */ $updater = null ) {
 		global $wgDBtype;
 		
-//		$updater->addExtensionUpdate( array(
-//			'addTable',
-//			'surveys',
-//			dirname( __FILE__ ) . '/Survey.sql',
-//			true
-//		) );
+		$updater->addExtensionUpdate( array(
+			'addTable',
+			'contests',
+			dirname( __FILE__ ) . '/Contest.sql',
+			true
+		) );
+		
+		$updater->addExtensionUpdate( array(
+			'addTable',
+			'contest_contestants',
+			dirname( __FILE__ ) . '/Contest.sql',
+			true
+		) );
+		
+		$updater->addExtensionUpdate( array(
+			'addTable',
+			'contest_votes',
+			dirname( __FILE__ ) . '/Contest.sql',
+			true
+		) );
+		
+		$updater->addExtensionUpdate( array(
+			'addTable',
+			'contest_comments',
+			dirname( __FILE__ ) . '/Contest.sql',
+			true
+		) );
 
 		return true;
 	}

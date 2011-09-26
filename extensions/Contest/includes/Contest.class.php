@@ -14,6 +14,26 @@
 class Contest extends ContestDBObject {
 	
 	/**
+	 * Method to get an instance so methods that ought to be static,
+	 * but can't be due to PHP 5.2 not having LSB, can be called on
+	 * it. This also allows easy identifying of code that needs to
+	 * be changed once PHP 5.3 becomes an acceptable requirement. 
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return ContestDBObject
+	 */
+	public static function s() {
+		static $instance = false;
+		
+		if ( $instance === false ) {
+			$instance = new self( array() );
+		}
+		
+		return $instance;
+	}
+	
+	/**
 	 * @see parent::getFieldTypes
 	 * 
 	 * @since 0.1
@@ -58,7 +78,7 @@ class Contest extends ContestDBObject {
 	 * 
 	 * @return array
 	 */
-	public static function getDefaults() {
+	public function getDefaults() {
 		return array(
 			'name' => '',
 			'enabled' => false,

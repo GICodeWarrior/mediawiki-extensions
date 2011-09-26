@@ -55,20 +55,24 @@ $wgAutoloadClasses['Contest'] 					= dirname( __FILE__ ) . '/includes/Contest.cl
 $wgAutoloadClasses['ContestDBObject'] 			= dirname( __FILE__ ) . '/includes/ContestDBObject.php';
 
 $wgAutoloadClasses['SpecialContest'] 			= dirname( __FILE__ ) . '/specials/SpecialContest.php';
+$wgAutoloadClasses['SpecialContestPage'] 		= dirname( __FILE__ ) . '/specials/SpecialContestPage.php';
 $wgAutoloadClasses['SpecialContests'] 			= dirname( __FILE__ ) . '/specials/SpecialContests.php';
 $wgAutoloadClasses['SpecialContestSignup'] 		= dirname( __FILE__ ) . '/specials/SpecialContestSignup.php';
 $wgAutoloadClasses['SpecialContestSubmission'] 	= dirname( __FILE__ ) . '/specials/SpecialContestSubmission.php';
+$wgAutoloadClasses['SpecialEditContest'] 		= dirname( __FILE__ ) . '/specials/SpecialEditContest.php';
 
 // Special pages
 $wgSpecialPages['Contest'] 						= 'SpecialContest';
 $wgSpecialPages['Contests'] 					= 'SpecialContests';
 $wgSpecialPages['ContestSignup'] 				= 'SpecialContestSignup';
 $wgSpecialPages['ContestSubmission'] 			= 'SpecialContestSubmission';
+$wgSpecialPages['EditContest'] 					= 'SpecialEditContest';
 
 $wgSpecialPageGroups['Contest'] 				= 'other';
 $wgSpecialPageGroups['Contests'] 				= 'other';
 $wgSpecialPageGroups['ContestSignup'] 			= 'other';
 $wgSpecialPageGroups['ContestSubmission'] 		= 'other';
+$wgSpecialPageGroups['EditContest'] 			= 'other';
 
 // API
 $wgAPIModules['deletecontest'] 					= 'ApiDeleteContest';
