@@ -10,8 +10,12 @@
  */
 es.HeadingBlockModel = function( content, level ) {
 	es.BlockModel.call( this, ['hasContent', 'isAnnotatable'] );
-	this.content = content || null;
+	this.content = content || new es.ContentModel();
 	this.level = level || 0;
+	var model = this;
+	this.content.on( 'change', function() {
+		model.emit( 'update' );
+	} );
 };
 
 /* Static Methods */
@@ -24,7 +28,7 @@ es.HeadingBlockModel = function( content, level ) {
  * @param obj {Object}
  */
 es.HeadingBlockModel.newFromPlainObject = function( obj ) {
-	return new es.HeadingBlockModel( obj.content, obj.level );
+	return new es.HeadingBlockModel( es.ContentModel.newFromPlainObject( obj.content ), obj.level );
 };
 
 /* Methods */
@@ -89,7 +93,7 @@ es.HeadingBlockModel.prototype.annotateContent = function( range, annotation ) {
 };
 
 // Register constructor
-es.BlockModel.constructors['heading'] = es.HeadingBlockModel;
+es.BlockModel.constructors['heading'] = es.HeadingBlockModel.newFromPlainObject;
 
 /* Inheritance */
 

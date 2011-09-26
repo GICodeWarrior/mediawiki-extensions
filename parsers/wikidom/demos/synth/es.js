@@ -1,6 +1,22 @@
 $(document).ready( function() {
 	var doc = es.DocumentModel.newFromPlainObject( { 'blocks': [
 		{
+			'type': 'heading',
+			'level': 2,
+			'content': {
+				'text': 'This is a heading',
+				'annotations': [
+					{
+						'type': 'italic',
+						'range': {
+							'start': 10,
+							'end': 17
+						}
+					}
+				]
+			}
+		},
+		{
 			'type': 'paragraph',
 			'content': {
 				'text': 'In text display, line wrap is the feature of continuing on a new line when a line is full, such that each line fits in the viewable window, allowing text to be read from top to bottom without any horizontal scrolling.\nWord wrap is the additional feature of most text editors, word processors, and web browsers, of breaking lines between and not within words, except when a single word is longer than a line.',
