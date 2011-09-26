@@ -14,9 +14,11 @@ class SpecialMoodBarFeedback extends SpecialPage {
 		
 		$limit = 20;
 		$offset = false;
+		$filterType = '';
 		$id = intval( $par );
 		if ( $id > 0 ) {
 			$filters = array( 'id' => $id );
+			$filterType = 'id';
 		} else {
 			// Determine filters and offset from the query string
 			$filters = array();
@@ -29,6 +31,7 @@ class SpecialMoodBarFeedback extends SpecialPage {
 				$filters['username'] = $username;
 			}
 			$offset = $wgRequest->getVal( 'offset', $offset );
+			$filterType = 'filtered';
 		}
 		// Do the query
 		$backwards = $wgRequest->getVal( 'dir' ) === 'prev';
@@ -36,13 +39,13 @@ class SpecialMoodBarFeedback extends SpecialPage {
 		
 		// Output HTML
 		$wgOut->setPageTitle( wfMsg( 'moodbar-feedback-title' ) );
-		$wgOut->addHTML( $this->buildForm() );
+		$wgOut->addHTML( $this->buildForm( $filterType ) );
 		$wgOut->addHTML( $this->buildList( $res ) );
 		$wgOut->addModuleStyles( 'ext.moodBar.dashboard.styles' );
 		$wgOut->addModules( 'ext.moodBar.dashboard' );
 	}
 	
-	public function buildForm() {
+	public function buildForm( $filterType ) {
 		global $wgRequest, $wgMoodBarConfig;
 		$filtersMsg = wfMessage( 'moodbar-feedback-filters' )->escaped();
 		$typeMsg = wfMessage( 'moodbar-feedback-filters-type' )->escaped();
@@ -64,10 +67,11 @@ class SpecialMoodBarFeedback extends SpecialPage {
 			array( 'id' => 'fbd-filters-type-issues', 'value' => 'sad' ) );
 		$usernameTextbox = Html::input( 'username', $wgRequest->getText( 'username' ), 'text',
 			array( 'id' => 'fbd-filters-username', 'class' => 'fbd-filters-input' ) );
+		$filterType = htmlspecialchars( $filterType );
 		
 		return <<<HTML
 		<div id="fbd-filters">
-			<form action="$actionURL">
+			<form action="$actionURL" data-filtertype="$filterType">
 				<h3 id="fbd-filters-title">$filtersMsg</h3>
 				<fieldset id="fbd-filters-types">
 					<legend class="fbd-filters-label">$typeMsg</legend>
@@ -143,10 +147,13 @@ HTML;
 			$olderRow = $res['olderRow'];
 			$newerRow = $res['newerRow'];
 			$html = "<ul id=\"fbd-list\">$list</ul>";
-			if ( $olderRow ) {
-				$moreText = wfMessage( 'moodbar-feedback-more' )->escaped();
-				$html .= '<div id="fbd-list-more"><a href="#">' . $moreText . '</a></div>';
+			
+			$moreText = wfMessage( 'moodbar-feedback-more' )->escaped();
+			$attribs = array( 'id' => 'fbd-list-more' );
+			if ( !$olderRow ) {
+				$attribs['style'] = 'display: none;';
 			}
+			$html .= Html::rawElement( 'div', $attribs, '<a href="#">' . $moreText . '</a></div>' );
 			
 			$olderURL = $newerURL = false;
 			if ( $olderRow ) {
