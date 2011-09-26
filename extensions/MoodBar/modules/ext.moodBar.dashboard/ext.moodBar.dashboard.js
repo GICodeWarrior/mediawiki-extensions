@@ -1,4 +1,11 @@
+/**
+ * AJAX code for Special:MoodBarFeedback
+ */
 jQuery( function( $ ) {
+	/**
+	 * Figure out which comment type filters have been selected.
+	 * @return array of comment types
+	 */
 	function getSelectedTypes() {
 		var types = [];
 		$( '#fbd-filters-type-praise, #fbd-filters-type-confusion, #fbd-filters-type-issues' ).each( function() {
@@ -9,11 +16,19 @@ jQuery( function( $ ) {
 		return types;
 	}
 	
+	/**
+	 * Set the moodbar-feedback-types and moodbar-feedback-username cookies based on the form state.
+	 */
 	function setCookies() {
 		$.cookie( 'moodbar-feedback-types', getSelectedTypes().join( '|' ), { 'path': '/', 'expires': 7 } );
 		$.cookie( 'moodbar-feedback-username', $( '#fbd-filters-username' ).val(), { 'path': '/', 'expires': 7 } );
 	}
 	
+	/**
+	 * Load the form state from the moodbar-feedback-types and moodbar-feedback-username cookies.
+	 * This assumes the form is currently blank.
+	 * @return bool True if the form is no longer blank (i.e. at least one value was changed), false otherwise
+	 */
 	function loadFromCookies() {
 		var	cookieTypes = $.cookie( 'moodbar-feedback-types' );
 			$username = $( '#fbd-filters-username' ),
@@ -27,6 +42,9 @@ jQuery( function( $ ) {
 		}
 		
 		if ( cookieTypes ) {
+			// Because calling .indexOf() on an array doesn't work in all browsers,
+			// we'll use cookieTypes.indexOf( '|valueWereLookingFor' ) . In order for
+			// that to work, we need to prepend a pipe first.
 			cookieTypes = '|' + cookieTypes;
 			$( '#fbd-filters-type-praise, #fbd-filters-type-confusion, #fbd-filters-type-issues' ).each( function() {
 				if ( !$(this).prop( 'checked' ) && cookieTypes.indexOf( '|' + $(this).val() ) != -1 ) {
@@ -38,6 +56,12 @@ jQuery( function( $ ) {
 		return changed;
 	}
 	
+	/**
+	 * Show a message in the box that normally contains the More link.
+	 * This will hide the more link, remove any existing <span>s,
+	 * and add a <span> with the supplied text.
+	 * @param text string Message text
+	 */
 	function showMessage( text ) {
 		$( '#fbd-list-more' )
 			.children( 'a' )
@@ -49,6 +73,12 @@ jQuery( function( $ ) {
 			.append( $( '<span>' ).text( text ) );
 	}
 	
+	/**
+	 * Load a set of 20 comments into the list. In 'filter' mode, the list is
+	 * blanked before the new comments are loaded. In 'more' mode, the comments are
+	 * loaded at the end of the existing set.
+	 * @param mode string Either 'filter' or 'more'
+	 */
 	function loadComments( mode ) {
 		var	limit = 20,
 			username = $( '#fbd-filters-username' ).val(),
@@ -70,6 +100,7 @@ jQuery( function( $ ) {
 			.remove(); // Remove any message added by showMessage()
 		
 		// Build the API request
+		// FIXME: in 'more' mode, changing the filters then clicking More will use the wrong criteria
 		reqData = {
 			'action': 'query',
 			'list': 'moodbarcomments',
@@ -156,7 +187,9 @@ jQuery( function( $ ) {
 	} );
 	
 	var filterType = $( '#fbd-filters' ).children( 'form' ).data( 'filtertype' );
+	// If filtering already happened on the PHP side, don't load the form state from cookies
 	if ( filterType != 'filtered' ) {
+		// Don't do an AJAX filter if we're on an ID view, or if the form is still blank after loadFromCookies()
 		if ( loadFromCookies() && filterType != 'id' ) {
 			loadComments( 'filter' );
 		}

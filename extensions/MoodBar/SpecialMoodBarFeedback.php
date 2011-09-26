@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Special:MoodBarFeedback. Special page for viewing moodbar comments.
+ */
 class SpecialMoodBarFeedback extends SpecialPage {
 	public function __construct() {
 		parent::__construct( 'MoodBarFeedback' );
@@ -17,6 +19,7 @@ class SpecialMoodBarFeedback extends SpecialPage {
 		$filterType = '';
 		$id = intval( $par );
 		if ( $id > 0 ) {
+			// Special:MoodBarFeedback/123 is an ID/permalink view
 			$filters = array( 'id' => $id );
 			$filterType = 'id';
 		} else {
@@ -45,6 +48,12 @@ class SpecialMoodBarFeedback extends SpecialPage {
 		$wgOut->addModules( 'ext.moodBar.dashboard' );
 	}
 	
+	/**
+	 * Build the filter form. The state of each form element is preserved
+	 * using data in $wgRequest.
+	 * @param $filterType string Value to pass in the <form>'s data-filtertype attribute
+	 * @return string HTML
+	 */
 	public function buildForm( $filterType ) {
 		global $wgRequest, $wgMoodBarConfig;
 		$filtersMsg = wfMessage( 'moodbar-feedback-filters' )->escaped();
@@ -99,6 +108,11 @@ class SpecialMoodBarFeedback extends SpecialPage {
 HTML;
 	}
 	
+	/**
+	 * Format a single list item from a database row.
+	 * @param $row Database row object
+	 * @return string HTML
+	 */
 	public static function formatListItem( $row ) {
 		global $wgLang;
 		$type = $row->mbf_type;
@@ -133,6 +147,11 @@ HTML;
 HTML;
 	}
 	
+	/**
+	 * Build a comment list from a query result
+	 * @param $res array Return value of doQuery()
+	 * @return string HTML
+	 */
 	public function buildList( $res ) {
 		global $wgRequest;
 		$list = '';
@@ -143,18 +162,22 @@ HTML;
 		if ( $list === '' ) {
 			return '<div id="fbd-list">' . wfMessage( 'moodbar-feedback-noresults' )->escaped() . '</div>';
 		} else {
-			// Only show paging stuff if the result is not empty and there are more results
+			// FIXME: We also need to show the More link (hidden) if there were no results
 			$olderRow = $res['olderRow'];
 			$newerRow = $res['newerRow'];
 			$html = "<ul id=\"fbd-list\">$list</ul>";
 			
+			// Output the "More" link
 			$moreText = wfMessage( 'moodbar-feedback-more' )->escaped();
 			$attribs = array( 'id' => 'fbd-list-more' );
 			if ( !$olderRow ) {
+				// There are no more rows. Hide the More link
+				// We still need to output it because the JS may need it later
 				$attribs['style'] = 'display: none;';
 			}
 			$html .= Html::rawElement( 'div', $attribs, '<a href="#">' . $moreText . '</a></div>' );
 			
+			// Paging links for no-JS clients
 			$olderURL = $newerURL = false;
 			if ( $olderRow ) {
 				$olderOffset = wfTimestamp( TS_MW, $olderRow->mbf_timestamp ) . '|' . intval( $olderRow->mbf_id );
@@ -183,8 +206,30 @@ HTML;
 		}
 	}
 	
+	/**
+	 * Get a set of comments from the database.
+	 * 
+	 * The way paging is handled by this function is a bit weird. $offset is taken from
+	 * the last row that was displayed, as opposed to the first row that was not displayed.
+	 * This means that if $offset is set, the first row in the result (the one matching $offset)
+	 * is dropped, as well as the last row. The dropped rows are only used to detect the presence
+	 * or absence of more rows in each direction, the offset values for paging are taken from the
+	 * first and last row that are actually shown.
+	 * 
+	 * $retval['olderRow'] is the row whose offset should be used to display older rows, or null if
+	 * there are no older rows. This means that, if there are older rows, $retval['olderRow'] is set
+	 * to the oldest row in $retval['rows']. $retval['newerRows'] is set similarly.
+	 * 
+	 * @param $filters array Array of filters to apply. Recognized keys are 'type' (array), 'username' (string) and 'id' (int)
+	 * @param $limit int Number of comments to fetch
+	 * @param $offset string Query offset. Timestamp and ID of the last shown result, formatted as 'timestamp|id'
+	 * @param $backwards bool If true, page in ascending order rather than descending order, i.e. get $limit rows after $offset rather than before $offset. The result will still be sorted in descending order
+	 * @return array( 'rows' => array( row, row, ... ), 'olderRow' => row|null, 'newerRow' => row|null )
+	 */
 	public function doQuery( $filters, $limit, $offset, $backwards ) {
 		$dbr = wfGetDB( DB_SLAVE );
+		
+		// Set $conds based on $filters
 		$conds = array();
 		if ( isset( $filters['type'] ) ) {
 			$conds['mbf_type'] = $filters['type'];
@@ -202,6 +247,8 @@ HTML;
 		if ( isset( $filters['id'] ) ) {
 			$conds['mbf_id'] = $filters['id'];
 		}
+		
+		// Process $offset
 		if ( $offset !== false ) {
 			$arr = explode( '|', $offset, 2 );
 			$ts = $dbr->addQuotes( $dbr->timestamp( $arr[0] ) );
@@ -210,6 +257,7 @@ HTML;
 			$conds[] = "mbf_timestamp $op $ts OR (mbf_timestamp = $ts AND mbf_id $op= $id)";
 		}
 		
+		// Do the actual query
 		$desc = $backwards ? '' : ' DESC';
 		$res = $dbr->select( array( 'moodbar_feedback', 'user' ), array(
 				'user_name', 'mbf_id', 'mbf_type',
@@ -241,7 +289,7 @@ HTML;
 			$olderRow = $rows[$limit - 1];
 		}
 		
-		// If we got everything backwards, reverse it
+		// If we got things backwards, reverse them
 		if ( $backwards ) {
 			$rows = array_reverse( $rows );
 			list( $olderRow, $newerRow ) = array( $newerRow, $olderRow );
@@ -249,6 +297,12 @@ HTML;
 		return array( 'rows' => $rows, 'olderRow' =>  $olderRow, 'newerRow' => $newerRow );
 	}
 	
+	/**
+	 * Get a query string array for a given offset, using filter parameters obtained from $wgRequest.
+	 * @param $offset string Value for &offset=
+	 * @param $backwards bool If true, set &dir=prev
+	 * @return array
+	 */
 	protected function getQuery( $offset, $backwards ) {
 		global $wgRequest;
 		$query = array(
