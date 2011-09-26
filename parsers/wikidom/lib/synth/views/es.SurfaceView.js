@@ -85,7 +85,7 @@ es.SurfaceView = function( $container, model ) {
 			'paste': function( e ) {
 				return surfaceView.onPaste( e );			
 			}
-		} );
+		} ).focus();
 	
 	// Re-render when resizing horizontally
 	$(window).resize( function() {
