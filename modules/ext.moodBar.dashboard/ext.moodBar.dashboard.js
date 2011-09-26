@@ -16,11 +16,13 @@ jQuery( function( $ ) {
 	
 	function loadFromCookies() {
 		var	cookieTypes = $.cookie( 'moodbar-feedback-types' );
-			$username = $( '#fbd-filters-username' );
+			$username = $( '#fbd-filters-username' ),
+			changed = false;
 		if ( $username.val() == '' ) {
 			var cookieUsername = $.cookie( 'moodbar-feedback-username' );
 			if ( cookieUsername != '' ) {
 				$username.val( cookieUsername );
+				changed = true;
 			}
 		}
 		
@@ -29,27 +31,43 @@ jQuery( function( $ ) {
 			$( '#fbd-filters-type-praise, #fbd-filters-type-confusion, #fbd-filters-type-issues' ).each( function() {
 				if ( !$(this).prop( 'checked' ) && cookieTypes.indexOf( '|' + $(this).val() ) != -1 ) {
 					$(this).prop( 'checked', true );
+					changed = true;
 				}
 			} );
 		}
+		return changed;
 	}
 	
-	$( '#fbd-filters-set' ).click( setCookies );
-	loadFromCookies();
+	function showMessage( text ) {
+		$( '#fbd-list-more' )
+			.children( 'a' )
+			.hide()
+			.end()
+			.children( 'span' )
+			.remove() // Remove any previous messages
+			.end()
+			.append( $( '<span>' ).text( text ) );
+	}
 	
-	$( '#fbd-list-more').children( 'a' ).click( function( e ) {
-		e.preventDefault();
-		
+	function loadComments( mode ) {
 		var	limit = 20,
 			username = $( '#fbd-filters-username' ).val(),
 			types = getSelectedTypes(),
 			reqData;
 		
+		if ( mode == 'filter' ) {
+			$( '#fbd-list' ).empty();
+		}
 		// Hide the "More" link and put in a spinner
 		$( '#fbd-list-more' )
+			.show() // may have been output with display: none;
 			.addClass( 'mw-ajax-loader' )
 			.children( 'a' )
-			.css( 'visibility', 'hidden' ); // using .hide() messes up the layout
+			.css( 'visibility', 'hidden' ) // using .hide() cuts off the spinner
+			.show() // showMessage() may have called .hide()
+			.end()
+			.children( 'span' )
+			.remove(); // Remove any message added by showMessage()
 		
 		// Build the API request
 		reqData = {
@@ -57,9 +75,11 @@ jQuery( function( $ ) {
 			'list': 'moodbarcomments',
 			'format': 'json',
 			'mbcprop': 'formatted',
-			'mbclimit': limit + 2, // we drop the first and last result
-			'mbccontinue': $( '#fbd-list').find( 'li:last' ).data( 'mbccontinue' )
+			'mbclimit': limit + 2 // we drop the first and last result
 		};
+		if ( mode == 'more' ) {
+			reqData['mbccontinue'] = $( '#fbd-list').find( 'li:last' ).data( 'mbccontinue' );
+		}
 		if ( types.length ) {
 			reqData['mbctype'] = types.join( '|' );
 		}
@@ -74,10 +94,10 @@ jQuery( function( $ ) {
 				$( '#fbd-list-more' )
 					.removeClass( 'mw-ajax-loader' )
 					.children( 'a' )
-					.css( 'visibility', 'visible' );
+					.css( 'visibility', 'visible' ); // Undo visibility: hidden;
 				
 				if ( !data || !data.query || !data.query.moodbarcomments ) {
-					$( '#fbd-list-more' ).text( mw.msg( 'moodbar-feedback-ajaxerror'  ) );
+					showMessage( mw.msg( 'moodbar-feedback-ajaxerror' ) );
 					return;
 				}
 				
@@ -86,11 +106,18 @@ jQuery( function( $ ) {
 					$ul = $( '#fbd-list' ),
 					moreResults = false,
 					i;
-				if ( len > 0 ) {
-					// Drop the first element because it duplicates the last shown one
-					comments.shift();
-					len--;
+				if ( len == 0 ) {
+					if ( mode == 'more' ) {
+						showMessage( mw.msg( 'moodbar-feedback-nomore' ) );
+					} else {
+						showMessage( mw.msg( 'moodbar-feedback-noresults' ) );
+					}
+					return;
 				}
+				
+				// Drop the first element because it duplicates the last shown one
+				comments.shift();
+				len--;
 				if ( len > limit ) {
 					// Drop any elements past the limit. We do know there are more results now
 					len = limit;
@@ -102,15 +129,36 @@ jQuery( function( $ ) {
 				}
 				
 				if ( !moreResults ) {
-					$( '#fbd-list-more' ).text( mw.msg( 'moodbar-feedback-nomore' ) );
+					if ( mode == 'more' ) {
+						showMessage( mw.msg( 'moodbar-feedback-nomore' ) );
+					} else {
+						$( '#fbd-list-more' ).hide();
+					}
 				}
 			},
 			'error': function( jqXHR, textStatus, errorThrown ) {
-				$( '#fbd-list-more' )
-					.removeClass( 'mw-ajax-loader' )
-					.text( mw.msg( 'moodbar-feedback-ajaxerror'  ) );
+				$( '#fbd-list-more' ).removeClass( 'mw-ajax-loader' );
+				showMessage( mw.msg( 'moodbar-feedback-ajaxerror'  ) );
 			},
 			'dataType': 'json'
 		} );
+	}
+	
+	$( '#fbd-filters' ).children( 'form' ).submit( function( e ) {
+		e.preventDefault();
+		setCookies();
+		loadComments( 'filter' );
 	} );
+	
+	$( '#fbd-list-more' ).children( 'a' ).click( function( e ) {
+		e.preventDefault();
+		loadComments( 'more' );
+	} );
+	
+	var filterType = $( '#fbd-filters' ).children( 'form' ).data( 'filtertype' );
+	if ( filterType != 'filtered' ) {
+		if ( loadFromCookies() && filterType != 'id' ) {
+			loadComments( 'filter' );
+		}
+	}
 } );
