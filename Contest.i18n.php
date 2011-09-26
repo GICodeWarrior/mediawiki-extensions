@@ -30,6 +30,7 @@ $messages['en'] = array(
 	'special-contests' => 'Contests',
 	'special-contestsignup' => 'Contest signup',
 	'special-contestsubmission' => 'Contest submission',
+	'special-editcontest' => 'Edit contest',
 
 	// Special:Contests
 	'contest-special-addnew' => 'Add a new contest',

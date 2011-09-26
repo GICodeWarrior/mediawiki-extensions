@@ -34,7 +34,7 @@ class SpecialContest extends SpecialContestPage {
 			return;
 		}
 		
-		
+
 	}
 	
 }

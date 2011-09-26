@@ -538,7 +538,7 @@ abstract class ContestDBObject {
 	 * 
 	 * @return self|false
 	 */
-	public static function selectRow( $fields = null, array $conditions = array(), array $options = array() ) {
+	public function selectRow( $fields = null, array $conditions = array(), array $options = array() ) {
 		$options['LIMIT'] = 1;
 		
 		$objects = $this->select( $fields, $conditions, $options );
