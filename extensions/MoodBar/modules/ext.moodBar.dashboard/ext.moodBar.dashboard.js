@@ -49,7 +49,7 @@ jQuery( function( $ ) {
 			changed = false;
 		if ( $username.val() == '' ) {
 			var cookieUsername = $.cookie( 'moodbar-feedback-username' );
-			if ( cookieUsername != '' ) {
+			if ( cookieUsername != '' && cookieUsername !== null ) {
 				$username.val( cookieUsername );
 				changed = true;
 			}
