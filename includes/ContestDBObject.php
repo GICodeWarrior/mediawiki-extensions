@@ -25,26 +25,6 @@ abstract class ContestDBObject {
 	protected $fields = array( 'id' => null );
 	
 	/**
-	 * Method to get an instance so methods that ought to be static,
-	 * but can't be due to PHP 5.2 not having LSB, can be called on
-	 * it. This also allows easy identifying of code that needs to
-	 * be changed once PHP 5.3 becomes an acceptable requirement. 
-	 * 
-	 * @since 0.1
-	 * 
-	 * @return ContestDBObject
-	 */
-	public static function s() {
-		static $instance = false;
-		
-		if ( $instance === false ) {
-			$instance = new self();
-		}
-		
-		return $instance;
-	}
-	
-	/**
 	 * Constructor.
 	 * 
 	 * @since 0.1
@@ -201,7 +181,7 @@ abstract class ContestDBObject {
 	}
 	
 	/**
-	 * Serializes the survey to an associative array which
+	 * Serializes the object to an associative array which
 	 * can then easily be converted into JSON or similar.
 	 * 
 	 * @since 0.1
@@ -378,57 +358,6 @@ abstract class ContestDBObject {
 	}
 	
 	/**
-	 * Gets the value of a field.
-	 * 
-	 * @since 0.1
-	 * 
-	 * @param string $name
-	 * 
-	 * @throws MWException
-	 * @return mixed
-	 */
-	public function getField( $name ) {
-		if ( $this->hasField( $name ) ) {
-			return $this->fields[$name];
-		} else {
-			throw new MWException( 'Attempted to get not-set field ' . $name );
-		}
-	}
-	
-	/**
-	 * Remove a field.
-	 * 
-	 * @since 0.1
-	 * 
-	 * @param string $name
-	 */
-	public function removeField( $name ) {
-		unset( $this->fields[$name] );
-	}
-	
-	/**
-	 * Returns the objects database id.
-	 * 
-	 * @since 0.1
-	 * 
-	 * @return integer|null
-	 */
-	public function getId() {
-		return $this->getField( 'id' );
-	}
-
-	/**
-	 * Sets the objects database id.
-	 * 
-	 * @since 0.1
-	 * 
-	 * @param integere|null $id
-	 */
-	public function setId( $id ) {
-		return $this->setField( 'id', $id );
-	}
-	
-	/**
 	 * Returns an array with the fields and their types this object contains.
 	 * This corresponds directly to the fields in the database, without prefix.
 	 * 
@@ -537,7 +466,7 @@ abstract class ContestDBObject {
 	 * 
 	 * @param object $result
 	 * 
-	 * @return SurveyDBClass
+	 * @return ContestDBObject
 	 */
 	public function newFromDBResult( $result ) {
 		$result = (array)$result;
@@ -559,7 +488,7 @@ abstract class ContestDBObject {
 	 * @param array $data
 	 * @param boolean $loadDefaults
 	 * 
-	 * @return SurveyDBClass
+	 * @return ContestDBObject
 	 */	
 	public function newFromArray( array $data, $loadDefaults = false ) {
 		return new self( $data, $loadDefaults );
