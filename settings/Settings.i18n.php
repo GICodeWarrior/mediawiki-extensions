@@ -19876,7 +19876,7 @@ $messages['sl'] = array(
 	'configure-setting-wgAjaxSearch' => 'Omogoči uporabo Ajax za samodejne predloge za iskanje',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Charmed94
  * @author Rancher
  * @author Жељко Тодоровић
@@ -19935,7 +19935,7 @@ $messages['sr-ec'] = array(
 	'configure-setting-wgMaxPPExpandDepth' => 'Лимит дубине стека за развијање шаблона у препроцесору',
 	'configure-setting-wgMaxPPNodeCount' => 'Максимални број чворова које ће препроцесор обрадити',
 	'configure-setting-wgMaxTemplateDepth' => 'Ограничење дубине шаблона за препроцесор',
-	'configure-setting-wgParserConf' => 'Конфигурација парсера',
+	'configure-setting-wgParserConf' => 'Поставка рашчлањивача',
 	'configure-setting-wgParserCacheExpireTime' => 'Време истека кеша парсера',
 	'configure-setting-wgRestrictDisplayTitle' => 'Захтевај коришћење <nowiki>{{DISPLAYTITLE}}</nowiki> зарад нормализације са истим називом стране',
 	'configure-setting-wgAmericanDates' => "Захтевај формат датума 'Мај 12' уместо '12 Мај' у енглеском језику",
