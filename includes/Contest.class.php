@@ -13,6 +13,10 @@
  */
 class Contest extends ContestDBObject {
 	
+	const STATUS_DRAFT = 0;
+	const STATUS_ACTIVE = 1;
+	const STATUS_FINISHED = 2;
+	
 	/**
 	 * Method to get an instance so methods that ought to be static,
 	 * but can't be due to PHP 5.2 not having LSB, can be called on
@@ -66,7 +70,7 @@ class Contest extends ContestDBObject {
 		return array(
 			'id' => 'id',
 			'name' => 'str',
-			'enabled' => 'bool',
+			'status' => 'int',
 			'submission_count' => 'int'
 		);
 	}
@@ -81,9 +85,33 @@ class Contest extends ContestDBObject {
 	public function getDefaults() {
 		return array(
 			'name' => '',
-			'enabled' => false,
+			'status' => self::STATUS_DRAFT,
 			'submission_count' => 0,
 		);
+	}
+	
+	public static function getStatusMessage( $status ) {
+		static $map = false;
+		
+		if ( $map === false ) {
+			$map = array_flip( self::getStatusMessages() );
+		}
+		
+		return $map[$status];
+	}
+	
+	public static function getStatusMessages() {
+		static $map = false;
+		
+		if ( $map === false ) {
+			$map = array(
+				wfMsg( 'contest-status-draft' ) => self::STATUS_DRAFT,
+				wfMsg( 'contest-status-active' ) => self::STATUS_ACTIVE,
+				wfMsg(  'contest-status-finished' ) => self::STATUS_FINISHED,
+			);
+		}
+		
+		return $map;
 	}
 	
 }

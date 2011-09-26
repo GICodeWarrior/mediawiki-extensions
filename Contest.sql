@@ -6,7 +6,7 @@
 CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/contests (
   contest_id                   SMALLINT unsigned   NOT NULL auto_increment PRIMARY KEY,
   contest_name                 VARCHAR(255)        NOT NULL, -- String indentifier for the contest
-  contest_enabled              TINYINT             NOT NULL default '0', -- If the contest can be taken by users
+  contest_status               TINYINT unsigned    NOT NULL default '0', -- Status of the contest
   contest_submission_count     SMALLINT unsigned   NOT NULL -- 
 ) /*$wgDBTableOptions*/;
 
