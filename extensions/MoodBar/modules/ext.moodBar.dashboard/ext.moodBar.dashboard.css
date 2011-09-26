@@ -101,7 +101,8 @@
 	background-color: #e8f2f8;
 }
 
-#fbd-list-more a, #fbd-list-newer a, #fbd-list-older a,
+#fbd-list-more a, #fbd-list-more span,
+#fbd-list-newer a, #fbd-list-older a,
 #fbd-list-newer .fbd-page-disabled, #fbd-list-older .fbd-page-disabled {
 	font-size: 1.4em;
 	background-repeat: no-repeat;
@@ -125,6 +126,11 @@
 #fbd-list-newer a, #fbd-list-newer .fbd-page-disabled {
 	background-position: left center;
 	padding-left: 20px;
+}
+
+#fbd-list-more.mw-ajax-loader {
+	/* Undo the repositioning done in shared.css. Padding is set to 0.5em above. */
+	position: static;
 }
 
 /* The images here are named -ltr instead of -left and -rtl instead of -right
