@@ -30,6 +30,12 @@ $messages['en'] = array(
 	'special-contests' => 'Contests',
 	'special-contestsignup' => 'Contest signup',
 	'special-contestsubmission' => 'Contest submission',
+
+	// Special:Contests
+	'contest-special-addnew' => 'Add a new contest',
+	'contest-special-namedoc' => 'The name of the contest is the identifier used in URLs. ie "name" in Special:Contest/name',
+	'contest-special-newname' => 'Contest name',
+	'contest-special-add' => 'Add contest',
 );
 
 /** Message documentation (Message documentation)
