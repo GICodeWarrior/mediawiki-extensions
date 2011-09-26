@@ -161,9 +161,11 @@ jQuery( function( $ ) {
 					return;
 				}
 				
-				// Drop the first element because it duplicates the last shown one
-				comments.shift();
-				len--;
+				if ( mode == 'more' ) {
+					// Drop the first element because it duplicates the last shown one
+					comments.shift();
+					len--;
+				}
 				if ( len > limit ) {
 					// Drop any elements past the limit. We do know there are more results now
 					len = limit;
