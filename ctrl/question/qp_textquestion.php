@@ -107,10 +107,10 @@ class qp_TextQuestion extends qp_StubQuestion {
 
 	const PROP_CAT_PATTERN = '`(<<|>>|{{|}}|\[\[|\]\]|\|)`u';
 
-	# $viewtokens is an instance of qp_TextQuestionViewTokens
+	# $propview is an instance of qp_TextQuestionProposalView
 	#             which contains parsed tokens for combined
 	#             proposal/category view
-	var $viewtokens;
+	var $propview;
 	# $dbtokens will contain parsed tokens for combined
 	#           proposal/category storage
 	# $dbtokens elements do not include error messages;
@@ -129,7 +129,7 @@ class qp_TextQuestion extends qp_StubQuestion {
 
 	/**
 	 * Load text answer to the selected (proposal,category) pair, when available
-	 * Also, stores text answer into the parsed tokens list (viewtokens)
+	 * Also, stores text answer into the parsed tokens list (propview)
 	 */
 	function loadProposalCategory( qp_TextQuestionOptions $opt, $proposalId, $catId ) {
 		$name = "q{$this->mQuestionId}p{$proposalId}s{$catId}";
@@ -159,7 +159,7 @@ class qp_TextQuestion extends qp_StubQuestion {
 		}
 		# finally, add new category input options for the view
 		$opt->closeCategory();
-		$this->viewtokens->addCatDef( $opt, $name, $text_answer, $this->poll->mBeingCorrected && !$user_answered );
+		$this->propview->addCatDef( $opt, $name, $text_answer, $this->poll->mBeingCorrected && !$user_answered );
 	}
 
 	/**
@@ -175,11 +175,10 @@ class qp_TextQuestion extends qp_StubQuestion {
 		$proposalId = 0;
 		# Currently, we use just a single instance (no nested categories)
 		$opt = new qp_TextQuestionOptions();
+		qp_TextQuestionProposalView::applyViewState( $this->view );
 		foreach ( $this->raws as $raw ) {
-			$this->view->initProposalView();
 			$opt->reset();
-			$this->viewtokens = new qp_TextQuestionViewTokens();
-			# $this->viewtokens->reset();
+			$this->propview = new qp_TextQuestionProposalView( $proposalId, $this );
 			$this->dbtokens = $brace_stack = array();
 			$catId = 0;
 			$last_brace = '';
@@ -238,19 +237,19 @@ class qp_TextQuestion extends qp_StubQuestion {
 				} else {
 					# add new proposal part
 					$this->dbtokens[] = strval( $token );
-					$this->viewtokens->addProposalPart( $token );
+					$this->propview->addProposalPart( $token );
 				}
 			}
 			# check if there is at least one category defined
 			if ( $catId === 0 ) {
 				# todo: this is the explanary line, it is not real proposal
-				$this->viewtokens->prependErrorToken( $this->view->bodyErrorMessage( wfMsg( 'qp_error_too_few_categories' ), 'error' ) );
+				$this->propview->prependErrorToken( wfMsg( 'qp_error_too_few_categories' ), 'error' );
 			}
 			if ( strlen( $proposal_text = serialize( $this->dbtokens ) ) > qp_Setup::$proposal_max_length ) {
 				# too long proposal field to store into the DB
 				# this is very important check for text questions because
 				# category definitions are stored within the proposal text
-				$this->viewtokens->prependErrorToken( $this->view->bodyErrorMessage( wfMsg( 'qp_error_too_long_proposal_text' ), 'error' ) );
+				$this->propview->prependErrorToken( wfMsg( 'qp_error_too_long_proposal_text' ), 'error' );
 			}
 			$this->mProposalText[$proposalId] = $proposal_text;
 			if ( $this->poll->mBeingCorrected ) {
@@ -269,11 +268,11 @@ class qp_TextQuestion extends qp_StubQuestion {
 				} catch ( Exception $e ) {
 					if ( $e->getMessage() == 'qp_error' ) {
 						$prev_state = $this->getState();
-						$this->viewtokens->prependErrorToken( $this->view->bodyErrorMessage( wfMsg( 'qp_error_no_answer' ), 'NA' ) );
+						$this->propview->prependErrorToken( wfMsg( 'qp_error_no_answer' ), 'NA' );
 					}
 				}
 			}
-			$this->view->addProposal( $proposalId, $this->viewtokens );
+			$this->view->addProposal( $proposalId, $this->propview );
 			$proposalId++;
 		}
 	}

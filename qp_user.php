@@ -262,7 +262,9 @@ class qp_Setup {
 
 		# extension setup, hooks handling and content transformation
 		self::autoLoad( array(
-			'qp_user.php' => array( 'qp_Setup', 'qp_Renderer', 'qp_FunctionsHook' ),
+			'qp_user.php' => 'qp_Setup',
+			'includes/qp_functionshook.php' => 'qp_FunctionsHook',
+			'includes/qp_renderer.php' => 'qp_Renderer',
 
 			## DB schema updater
 			'maintenance/qp_schemaupdater.php' => 'qp_SchemaUpdater',
@@ -272,31 +274,36 @@ class qp_Setup {
 
 			## controllers (polls and questions derived from separate abstract classes)
 			# polls
-			'ctrl/qp_abstractpoll.php' => 'qp_AbstractPoll',
-			'ctrl/qp_poll.php' => 'qp_Poll',
-			'ctrl/qp_pollstats.php' => 'qp_PollStats',
+			'ctrl/poll/qp_abstractpoll.php' => 'qp_AbstractPoll',
+			'ctrl/poll/qp_poll.php' => 'qp_Poll',
+			'ctrl/poll/qp_pollstats.php' => 'qp_PollStats',
 			# questions
-			'ctrl/qp_abstractquestion.php' => 'qp_AbstractQuestion',
-			'ctrl/qp_stubquestion.php' => 'qp_StubQuestion',
-			'ctrl/qp_tabularquestion.php' => 'qp_TabularQuestion',
-			'ctrl/qp_mixedquestion.php' => 'qp_MixedQuestion',
-			'ctrl/qp_textquestion.php' => 'qp_TextQuestion',
-			'ctrl/qp_questionstats.php' => 'qp_QuestionStats',
+			'ctrl/question/qp_abstractquestion.php' => 'qp_AbstractQuestion',
+			'ctrl/question/qp_stubquestion.php' => 'qp_StubQuestion',
+			'ctrl/question/qp_tabularquestion.php' => 'qp_TabularQuestion',
+			'ctrl/question/qp_mixedquestion.php' => 'qp_MixedQuestion',
+			'ctrl/question/qp_textquestion.php' => array( 'qp_TextQuestionOptions', 'qp_TextQuestion' ),
+			'ctrl/question/qp_questionstats.php' => 'qp_QuestionStats',
 
-			## views are derived from single generic class
-			## isCompatibleController() method is used to check linked controllers (bugcheck)
-			# generic
+			# generic view
 			'view/qp_abstractview.php' => 'qp_AbstractView',
-			'view/qp_abstractpollview.php' => 'qp_AbstractPollView',
-			# questions
-			'view/qp_stubquestionview.php' => 'qp_StubQuestionView',
-			'view/qp_tabularquestionview.php' => 'qp_TabularQuestionView',
-			'view/qp_textquestionview.php' => 'qp_TextQuestionViewTokens',
-			'view/qp_textquestionview.php' => 'qp_TextQuestionView',
-			'view/qp_questionstatsview.php' => 'qp_QuestionStatsView',
+			## poll and question views are derived from single generic class
+			## isCompatibleController() method is used to check linked controllers (bugcheck)
 			# polls
-			'view/qp_pollview.php' => 'qp_PollView',
-			'view/qp_pollstatsview.php' => 'qp_PollStatsView',
+			'view/poll/qp_abstractpollview.php' => 'qp_AbstractPollView',
+			'view/poll/qp_pollview.php' => 'qp_PollView',
+			'view/poll/qp_pollstatsview.php' => 'qp_PollStatsView',
+			# questions
+			'view/question/qp_stubquestionview.php' => 'qp_StubQuestionView',
+			'view/question/qp_tabularquestionview.php' => 'qp_TabularQuestionView',
+			'view/question/qp_textquestionview.php' => 'qp_TextQuestionView',
+			'view/question/qp_questionstatsview.php' => 'qp_QuestionStatsView',
+			## proposal views are derived from it's own separate abstract class
+			# proposals
+			'view/proposal/qp_stubquestionproposalview.php' => 'qp_StubQuestionProposalView',
+			'view/proposal/qp_tabularquestionproposalview.php' => 'qp_TabularQuestionProposalView',
+			'view/proposal/qp_questionstatsproposalview.php' => 'qp_QuestionStatsProposalView',
+			'view/proposal/qp_textquestionproposalview.php' => 'qp_TextQuestionProposalView',
 
 			# poll storage
 			'qp_pollstore.php' => array( 'qp_InterpResult', 'qp_PollStore' ),
@@ -622,318 +629,3 @@ class qp_Setup {
 	}
 
 } /* end of qp_Setup class */
-
-/* renders output data */
-class qp_Renderer {
-
-	static function tagError( $msg, &$tag ) {
-		ob_start();
-		var_dump( $tag );
-		$tagdump = ob_get_contents();
-		ob_end_clean();
-		return "<u>invalid argument: " . qp_Setup::specialchars( $msg ) . "</u> <pre>{$tagdump}</pre>";
-	}
-
-	/**
-	 * Renders nested tag array into string
-	 * @param   $tag  multidimensional array of xml/html tags
-	 * @return  string  representation of xml/html
-	 *
-	 * the stucture of $tag is like this:
-	 * array( "__tag"=>"td", "class"=>"myclass", 0=>"text before li", 1=>array( "__tag"=>"li", 0=>"text inside li" ), 2=>"text after li" )
-	 *
-	 * both tagged and tagless lists are supported
-	 */
-	static function renderTagArray( &$tag ) {
-		$tag_open = "";
-		$tag_close = "";
-		$tag_val = null;
-		if ( is_array( $tag ) ) {
-			ksort( $tag );
-			if ( array_key_exists( '__tag', $tag ) ) {
-				# list inside of tag
-				$tag_open .= "<" . $tag['__tag'];
-				foreach ( $tag as $attr_key => &$attr_val ) {
-					if ( is_int( $attr_key ) ) {
-						if ( $tag_val === null )
-							$tag_val = "";
-						if ( is_array( $attr_val ) ) {
-							# recursive tags
-							$tag_val .= self::renderTagArray( $attr_val );
-						} else {
-							# text
-							$tag_val .= $attr_val;
-						}
-					} else {
-						# string keys are for tag attributes
-						if ( is_array( $attr_val ) || is_object( $attr_val ) || is_null( $attr_val ) ) {
-							return self::tagError( "tagged list attribute key '{$attr_key}' should have scalar value", $tag );
-						}
-						if ( substr( $attr_key, 0, 2 ) != "__" ) {
-							# include only non-reserved attributes
-							$tag_open .= " $attr_key=\"" . $attr_val . "\"";
-						}
-					}
-				}
-				if ( $tag_val !== null ) {
-					$tag_open .= ">";
-					$tag_close .= "</" . $tag[ '__tag' ] . ">";
-				} else {
-					$tag_open .= " />";
-				}
-				if ( array_key_exists( '__end', $tag ) ) {
-					$tag_close .= $tag[ '__end' ];
-				}
-			} else {
-				# tagless list
-				$tag_val = "";
-				foreach ( $tag as $attr_key => &$attr_val ) {
-					if ( is_int( $attr_key ) ) {
-						if ( is_array( $attr_val ) ) {
-							# recursive tags
-							$tag_val .= self::renderTagArray( $attr_val );
-						} else {
-							# text
-							$tag_val .= $attr_val;
-						}
-					} else {
-						$tag_val = self::tagError( "tagless list cannot have tag attribute values in key=$attr_key", $tag );
-					}
-				}
-			}
-		} else {
-			# just a text
-			$tag_val = $tag;
-		}
-		return $tag_open . $tag_val . $tag_close;
-	}
-
-	/**
-	 * add one or more CSS class name to tag class attribute
-	 */
-	static function addClass( &$tag, $className ) {
-		if ( !isset( $tag['class'] ) ) {
-			$tag['class'] = $className;
-			return;
-		}
-		if ( array_search( $className, explode( ' ', $tag['class'] ) ) === false ) {
-			$tag['class'] .= " $className";
-		}
-	}
-
-	/**
-	 * Creates one tagarray row of the table
-	 * @param  $row  a string/number value of cell or
-	 *               an array( "count"=>colspannum, "attribute"=>value, 0=>html_inside_tag )
-	 * @param  $rowattrs  array key val of new xml attributes to add to every destination cell
-	 * @param  $attribute maps  array with mapping of source cell xml attributes to
-	 * destination cell xml attributes ("name"=>0, "count"=>colspan" )
-	 * @return array of destination cells
-	 */
-	static function newRow( $row, $rowattrs = "", $celltag = "td", $attribute_maps = null ) {
-		$result = "";
-		if ( count( $row ) > 0 ) {
-			foreach ( $row as &$cell ) {
-				if ( !is_array( $cell ) ) {
-					$cell = array( 0 => $cell );
-				}
-				$cell['__tag'] = $celltag;
-				$cell['__end'] = "\n";
-				if ( is_array( $attribute_maps ) ) {
-					# converts ("count"=>3) to ("colspan"=>3) in table headers - don't use frequently
-					foreach ( $attribute_maps as $key => $val ) {
-						if ( array_key_exists( $key, $cell ) ) {
-							$cell[ $val ] = $cell[ $key ];
-							unset( $cell[ $key ] );
-						}
-					}
-				}
-			}
-			$result = array( '__tag' => 'tr', 0 => $row, '__end' => "\n" );
-			if ( is_array( $rowattrs ) ) {
-				$result = array_merge( $rowattrs, $result );
-			} elseif ( $rowattrs !== "" )  {
-				$result[0][] = __METHOD__ . ':invalid rowattrs supplied';
-			}
-		}
-		return $result;
-	}
-
-	/**
-	 * Add row to the table
-	 * todo: document
-	 */
-	static function addRow( &$table, $row, $rowattrs = "", $celltag = "td", $attribute_maps = null ) {
-		$table[] = self::newRow( $row, $rowattrs, $celltag, $attribute_maps );
-	}
-
-	/**
-	 * Add column to the table
-	 * todo: document
-	 */
-	static function addColumn( &$table, $column, $rowattrs = "", $celltag = "td", $attribute_maps = null ) {
-		if ( count( $column ) > 0 ) {
-			$row = 0;
-			foreach ( $column as &$cell ) {
-				if ( !is_array( $cell ) ) {
-					$cell = array( 0 => $cell );
-				}
-				$cell[ '__tag' ] = $celltag;
-				$cell[ '__end' ] = "\n";
-				if ( is_array( $attribute_maps ) ) {
-					# converts ("count"=>3) to ("rowspan"=>3) in table headers - don't use frequently
-					foreach ( $attribute_maps as $key => $val ) {
-						if ( array_key_exists( $key, $cell ) ) {
-							$cell[ $val ] = $cell[ $key ];
-							unset( $cell[ $key ] );
-						}
-					}
-				}
-				if ( is_array( $rowattrs ) ) {
-					$cell = array_merge( $rowattrs, $cell );
-				} elseif ( $rowattrs !== "" ) {
-					$cell[ 0 ] = __METHOD__ . ':invalid rowattrs supplied';
-				}
-				if ( !array_key_exists( $row, $table ) ) {
-					$table[ $row ] = array( '__tag' => 'tr', '__end' => "\n" );
-				}
-				$table[ $row ][] = $cell;
-				if ( array_key_exists( 'rowspan', $cell ) ) {
-					$row += intval( $cell[ 'rowspan' ] );
-				} else {
-					$row++;
-				}
-			}
-			$result = array( '__tag' => 'tr', 0 => $column, '__end' => "\n" );
-		}
-	}
-
-	static function displayRow( $row, $rowattrs = "", $celltag = "td", $attribute_maps = null ) {
-		# temporary var $tagsrow used to avoid warning in E_STRICT mode
-		$tagsrow = self::newRow( $row, $rowattrs, $celltag, $attribute_maps );
-		return self::renderTagArray( $tagsrow );
-	}
-
-	/**
-	 * use newRow() or addColumn() to add resulting row/column to the table
-	 * if you want to use the resulting row with renderTagArray(), don't forget to apply attrs=array('__tag'=>'td')
-	 */
-	static function applyAttrsToRow( &$row, $attrs ) {
-		if ( is_array( $attrs ) && count( $attrs > 0 ) ) {
-			foreach ( $row as &$cell ) {
-				if ( !is_array( $cell ) ) {
-					$cell = array_merge( $attrs, array( $cell ) );
-				} else {
-					foreach ( $attrs as $attr_key => $attr_val ) {
-						if ( !array_key_exists( $attr_key, $cell ) ) {
-							$cell[ $attr_key ] = $attr_val;
-						}
-					}
-				}
-			}
-		}
-	}
-} /* end of qp_Renderer class */
-
-class qp_FunctionsHook {
-
-	var $frame;
-	var $args;
-
-	var $pollAddr;
-	var $pollStore;
-	var $question_id = '';
-	var $proposal_id = '';
-	var $defaultProposalText;
-
-	var $error_message = 'no_such_poll';
-
-	function qpuserchoice( &$parser, $frame, $args ) {
-		qp_Setup::onLoadAllMessages();
-		$this->frame = &$frame;
-		$this->args = &$args;
-		if ( isset( $args[ 0 ] ) ) {
-			# args[0] is a poll address
-			$this->pollAddr = trim( $this->frame->expand( $this->args[ 0 ] ) );
-			$this->pollStore = qp_PollStore::newFromAddr( $this->pollAddr );
-			if ( $this->pollStore instanceof qp_PollStore && $this->pollStore->pid !== null ) {
-				$this->error_message = 'missing_question_id';
-				if ( isset( $args[ 1 ] ) ) {
-					# args[1] is question_id
-					$qdata = $this->getQuestionData( trim( $frame->expand( $args[ 1 ] ) ) );
-					if ( $qdata instanceof qp_QuestionData ) {
-						$this->error_message = 'missing_proposal_id';
-						if ( isset( $args[ 2 ] ) ) {
-							# get poll's proposal choice
-							$this->proposal_id = trim( $frame->expand( $args[ 2 ] ) );
-							$this->error_message = 'invalid_proposal_id';
-							if ( is_numeric( $this->proposal_id ) && $this->proposal_id >= 0 ) {
-								$this->defaultProposalText = isset( $args[ 3 ] ) ? trim( $frame->expand( $args[ 3 ] ) ) : '';
-								$this->proposal_id = intval( $this->proposal_id );
-								$this->error_message = 'missing_proposal_id';
-								if ( array_key_exists( $this->proposal_id, $qdata->ProposalText ) ) {
-									return $this->qpuserchoiceValidResult( $qdata );
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-		return '<strong class="error">qpuserchoice: ' . wfMsgHTML( 'qp_func_' . $this->error_message, qp_Setup::specialchars( $this->pollAddr ), qp_Setup::specialchars( $this->question_id ), qp_Setup::specialchars( $this->proposal_id ) ) . '</strong>';
-	}
-
-	function getQuestionData( $qid ) {
-		$this->question_id = $qid;
-		$this->error_message = 'invalid_question_id';
-		if ( is_numeric( $this->question_id ) ) {
-			$this->question_id = intval( $this->question_id );
-			$this->pollStore->loadQuestions();
-			$this->pollStore->setLastUser( qp_Setup::getCurrUserName(), false );
-			$this->pollStore->loadUserVote();
-			$this->error_message = 'missing_question_id';
-			if ( array_key_exists( $this->question_id, $this->pollStore->Questions ) ) {
-				return $this->pollStore->Questions[ $this->question_id ];
-			}
-		}
-		return false;
-	}
-
-	function qpuserchoiceValidResult( $qdata ) {
-		$result = '';
-		if ( array_key_exists( $this->proposal_id, $qdata->ProposalCategoryId ) ) {
-			foreach ( $qdata->ProposalCategoryId[ $this->proposal_id ] as $id_key => $cat_id ) {
-				if ( $result != '' ) {
-					$result .= '~';
-				}
-				if ( $this->defaultProposalText == '$' ) {
-					$result .= $cat_id;
-				} else {
-					$text_answer = $qdata->ProposalCategoryText[ $this->proposal_id ][ $id_key ];
-					if ( $text_answer != '' ) {
-						$result .= $text_answer;
-					} else {
-						$cat_name = isset( $this->args[ $cat_id + 4 ] ) ? trim( $this->frame->expand( $this->args[ $cat_id + 4 ] ) ) : '';
-						if ( $cat_name != '' ) {
-							$result .= $cat_name;
-						} else {
-							if ( $this->defaultProposalText != '' ) {
-								$result .= $this->defaultProposalText;
-							} else {
-								$result .= $qdata->Categories[$cat_id]['name'];
-								if ( isset( $qdata->Categories[$cat_id]['spanId'] ) ) {
-									$spanId = $qdata->Categories[$cat_id]['spanId'];
-									$result .= '(' . $qdata->CategorySpans[$spanId]['name'] . ')';
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-		# do not need to wrap the result into qp_Setup::entities()
-		# because the result is a wikitext (will be escaped by parser)
-		return $result;
-	}
-
-} /* end of qp_FunctionsHook class */

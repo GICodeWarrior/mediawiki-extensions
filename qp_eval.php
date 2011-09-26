@@ -327,23 +327,23 @@ class qp_Eval {
 				list( $token_id, $content, $line ) = $token;
 				# check against generic list of disallowed tokens
 				if ( !in_array( $token_id, self::$allowedTokens, true ) ) {
-					return wfMsg( 'qp_error_eval_illegal_token', token_name( $token_id ), QP_Setup::specialchars( $content ), $line );
+					return wfMsg( 'qp_error_eval_illegal_token', token_name( $token_id ), qp_Setup::specialchars( $content ), $line );
 				}
 				if ( $token_id == T_VARIABLE ) {
 					$prev_content = is_array( $prev_token ) ? $prev_token[1] : $prev_token;
 					preg_match( '`(\$)$`', $prev_content, $matches );
 					# disallow variable variables
 					if ( count( $matches ) > 1 && $matches[1] == '$' ) {
-						return wfMsg( 'qp_error_eval_variable_variable_access', token_name( $token_id ), QP_Setup::specialchars( $content ), $line );
+						return wfMsg( 'qp_error_eval_variable_variable_access', token_name( $token_id ), qp_Setup::specialchars( $content ), $line );
 					}
 					# disallow superglobals
 					if ( in_array( $content, self::$superGlobals ) ) {
-						return wfMsg( 'qp_error_eval_illegal_superglobal', token_name( $token_id ), QP_Setup::specialchars( $content ), $line );
+						return wfMsg( 'qp_error_eval_illegal_superglobal', token_name( $token_id ), qp_Setup::specialchars( $content ), $line );
 					}
 					# restrict variable names
 					preg_match( '`^(\$)([A-Za-z0-9_]*)$`', $content, $matches );
 					if ( count( $matches ) != 3 ) {
-						return wfMsg( 'qp_error_eval_illegal_variable_name', token_name( $token_id ), QP_Setup::specialchars( $content ), $line );
+						return wfMsg( 'qp_error_eval_illegal_variable_name', token_name( $token_id ), qp_Setup::specialchars( $content ), $line );
 					}
 					# correct variable names into pseudonamespace 'qpv_'
 					$content = "\$" . self::$pseudoNamespace . $matches[2];
@@ -359,11 +359,11 @@ class qp_Eval {
 					list( $token_id, $content, $line ) = $prev_token;
 					# disallow variable function calls
 					if ( $token_id === T_VARIABLE ) {
-						return wfMsg( 'qp_error_eval_variable_function_call', token_name( $token_id ), QP_Setup::specialchars( $content ), $line );
+						return wfMsg( 'qp_error_eval_variable_function_call', token_name( $token_id ), qp_Setup::specialchars( $content ), $line );
 					}
 					# disallow non-allowed function calls based on the list
 					if ( $token_id === T_STRING && array_search( $content, self::$allowedCalls, true ) === false ) {
-						return wfMsg( 'qp_error_eval_illegal_function_call', token_name( $token_id ), QP_Setup::specialchars( $content ), $line );
+						return wfMsg( 'qp_error_eval_illegal_function_call', token_name( $token_id ), qp_Setup::specialchars( $content ), $line );
 					}
 				}
 				$prev_token = $token;

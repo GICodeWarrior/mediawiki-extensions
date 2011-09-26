@@ -102,12 +102,20 @@ class qp_SchemaUpdater {
 		'qpoll_interpretation.src' => array(
 			'qp_poll_desc' => array( 'interpretation_namespace', 'interpretation_title' ),
 			'qp_users_polls' => array( 'attempts', 'short_interpretation', 'long_interpretation' )
+		),
+		'qpoll_serialized_interpretation.src' => array(
+			'qp_users_polls' => array( 'serialized_interpretation' )
 		)
 	);
 
 	# Table/field names are currently unused, they are only for informational purpose.
 	static $modifyFields = array(
-		'qpoll_proposal_text_length.src' => array( 'qp_question_proposals' => array( 'proposal_text' ) )
+		'qpoll_proposal_text_length.src' => array( 'qp_question_proposals' => array( 'proposal_text' ) ),
+		'qpoll_mediumtext_to_text.src' => array(
+			'qp_poll_desc' => array( 'dependance' ),
+			'qp_question_desc' => array( 'common_question' ),
+			'qp_question_answers' => array( 'text_answer' ),
+		)
 	);
 
 	/**

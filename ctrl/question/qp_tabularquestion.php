@@ -271,21 +271,21 @@ class qp_TabularQuestion extends qp_StubQuestion {
 	 */
 	function questionParseBody( $inputType ) {
 		$proposalId = -1;
+		qp_TabularQuestionProposalView::applyViewState( $this->view );
 		foreach ( $this->raws as $raw ) {
 			if ( !preg_match( $this->mProposalPattern, $raw, $matches ) ) {
 				continue;
 			}
-			# empty proposal text and row
-			$text = null;
-			$row = Array();
+			# new proposal view
+			$pview = new qp_TabularQuestionProposalView( $proposalId + 1, $this );
 			$proposalId++;
-			$this->view->initProposalView();
-			$text = array_pop( $matches );
-			$this->mProposalText[ $proposalId ] = trim( $text );
+			$pview->text = array_pop( $matches );
+			$this->mProposalText[ $proposalId ] = trim( $pview->text );
 			foreach ( $this->mCategories as $catId => $catDesc ) {
-				$row[ $catId ] = Array();
-				$inp = Array( '__tag' => 'input' );
-				$this->view->spanState->className = 'sign';
+				# start new input field tag (category)
+				$pview->addNewCategory( $catId );
+				$inp = array( '__tag' => 'input' );
+				$pview->resetSpanState();
 				# Determine the input's name and value.
 				switch( $this->mType ) {
 				case 'multipleChoice':
@@ -296,7 +296,7 @@ class qp_TabularQuestion extends qp_StubQuestion {
 					$name = 'q' . $this->mQuestionId . 'p' . $proposalId;
 					$value = 's' . $catId;
 					# category spans have sense only with single choice proposals
-					$this->view->renderSpan( $row, $name, $value, $catId, $catDesc, $text );
+					$pview->renderSpan( $name, $value, $catDesc );
 					break;
 				}
 				# Determine if the input had to be checked.
@@ -309,12 +309,12 @@ class qp_TabularQuestion extends qp_StubQuestion {
 				if ( array_key_exists( 'checked', $inp ) ) {
 					if ( $this->mSubType == 'unique' ) {
 						if ( $this->poll->mBeingCorrected && !$this->isUniqueProposalCategoryId( $proposalId, $catId ) ) {
-							$text = $this->view->bodyErrorMessage( wfMsg( 'qp_error_non_unique_choice' ), 'NA' ) . $text;
+							$pview->prependErrorMessage( wfMsg( 'qp_error_non_unique_choice' ), 'NA' );
 							unset( $inp[ 'checked' ] );
-							QP_Renderer::addClass( $row[ $catId ], 'error' );
+							qp_Renderer::addClass( $row[ $catId ], 'error' );
 						}
 					} else {
-						$this->view->spanState->wasChecked = true;
+						$pview->spanWasChecked( true );
 					}
 				}
 				if ( array_key_exists( 'checked', $inp ) ) {
@@ -322,51 +322,40 @@ class qp_TabularQuestion extends qp_StubQuestion {
 					$this->mProposalCategoryId[ $proposalId ][] = $catId;
 					$this->mProposalCategoryText[ $proposalId ][] = '';
 				}
-				QP_Renderer::addClass( $row[ $catId ], $this->view->spanState->className );
+				$pview->setCategorySpan();
 				if ( $this->mSubType == 'unique' ) {
 					# unique (question,category,proposal) "coordinate" for javascript
-					$inp[ 'id' ] = 'uq' . $this->mQuestionId . 'c' . $catId . 'p' . $proposalId;
+					$inp['id'] = 'uq' . $this->mQuestionId . 'c' . $catId . 'p' . $proposalId;
 					# If type='unique()' question has more proposals than categories, such question is impossible to complete
 					if ( count( $this->mProposalText ) > count( $this->mCategories ) ) {
 						# if there was no previous errors, hightlight the whole row
 						if ( $this->getState() == '' ) {
-							foreach ( $row as &$cell ) {
-								QP_Renderer::addClass( $cell, 'error' );
-							}
+							$pview->addCellsClass( 'error' );
 						}
-						$text = $this->view->bodyErrorMessage( wfMsg( 'qp_error_unique' ), 'error' ) . $text;
+						$pview->prependErrorMessage( wfMsg( 'qp_error_unique' ), 'error' );
 					}
 				}
-				$inp[ 'class' ] = 'check';
-				$inp[ 'type' ] = $inputType;
-				$inp[ 'name' ] = $name;
-				$inp[ 'value' ] = $value;
-				if ( $this->view->showResults['type'] != 0 ) {
-					# there ars some stat in row (not necessarily all cells, because size of question table changes dynamically)
-					$row[ $catId ][ 0 ] = $this->view->addShowResults( $inp, $proposalId, $catId );
-				} else {
-					$row[ $catId ][ 0 ] = $inp;
-				}
+				$inp['class'] = 'check';
+				$inp['type'] = $inputType;
+				$inp['name'] = $name;
+				$inp['value'] = $value;
+				$pview->setCat( $inp );
 			}
 			# If the proposal text is empty, the question has a syntax error.
-			if ( trim( $text ) == '' ) {
-				$text = $this->view->bodyErrorMessage( wfMsg( 'qp_error_proposal_text_empty' ), 'error' );
-				foreach ( $row as &$cell ) {
-					QP_Renderer::addClass( $cell, 'error' );
-				}
+			if ( $pview->text !== null && trim( $pview->text ) == '' ) {
+				$pview->setErrorMessage( wfMsg( 'qp_error_proposal_text_empty' ), 'error' );
+				$pview->addCellsClass( 'error' );
 			}
 			# If the proposal was submitted but unanswered
 			if ( $this->poll->mBeingCorrected && !array_key_exists( $proposalId, $this->mProposalCategoryId ) ) {
 				# if there was no previous errors, hightlight the whole row
 				if ( $this->getState() == '' ) {
-					foreach ( $row as &$cell ) {
-						QP_Renderer::addClass( $cell, 'error' );
-					}
+					$pview->addCellsClass( 'error' );
 				}
-				$text = $this->view->bodyErrorMessage( wfMsg( 'qp_error_no_answer' ), 'NA' ) . $text;
+				$pview->prependErrorMessage( wfMsg( 'qp_error_no_answer' ), 'NA' );
 			}
-			if ( $text !== null ) {
-				$this->view->addProposal( $proposalId, $text, $row );
+			if ( $pview->text !== null ) {
+				$this->view->addProposal( $proposalId, $pview );
 			}
 		}
 	}

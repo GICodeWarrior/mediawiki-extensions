@@ -48,15 +48,12 @@ class qp_StubQuestionView extends qp_AbstractView {
 	# error message which occured during the question header parsing that will be output later at rendering stage
 	var $headerErrorMessage = 'Unknown error';
 
-	# begin of proposalView
-	# these vars (and perhaps some more) should be part of separate proposalView,
-	# todo: in the future create separate proposal view with $row and $text ?
-	var $rawClass;
-	# end of proposalView
-
-	var $hview = array();
-	# proposal views (indexed, sortable rows)
-	var $pview = array();
+	# header views (list of tagarrays)
+	# tagarray is a primitive view without it's own methods
+	var $hviews = array();
+	# array of proposal views (indexed, sortable rows)
+	# these are the object instances, not simple tagarrays
+	var $pviews = array();
 
 	var $propWidth = '';
 
@@ -66,14 +63,6 @@ class qp_StubQuestionView extends qp_AbstractView {
 	 */
 	function __construct( &$parser, &$frame ) {
 		parent::__construct( $parser, $frame );
-	}
-
-	/**
-	 * Called for every proposal of the question
-	 * todo: actually should be a member of separate small proposal view class
-	 */
-	function initProposalView() {
-		$this->rawClass = 'proposal';
 	}
 
 	static function newFromBaseView( $baseView ) {
@@ -100,11 +89,11 @@ class qp_StubQuestionView extends qp_AbstractView {
 	 * @param $tagarray  array / string row to add to the question's header
 	 */
 	function addHeader( $tagarray ) {
-		$this->hview[] = $tagarray;
+		$this->hviews[] = $tagarray;
 	}
 
 	function addHeaderError() {
-		$this->hview[] = array(
+		$this->hviews[] = array(
 			array( '__tag' => 'td', 'class' => 'proposalerror', $this->headerErrorMessage )
 		);
 	}
@@ -116,31 +105,11 @@ class qp_StubQuestionView extends qp_AbstractView {
 	 * @param $attribute_maps  translation of source attributes into html attributes (see qp_Renderer class)
 	 */
 	function addHeaderRow( $row, $className, $attribute_maps = null ) {
-		$this->hview[] = (object) array(
+		$this->hviews[] = (object) array(
 			'row' => $row,
 			'className' => $className,
 			'attribute_maps' => $attribute_maps
 		);
-	}
-
-	/**
-	 * Outputs question body parser error/warning message; also set new controller state
-	 * @param    $msg - text of message
-	 * @param    $state - set new question controller state
-	 *               note that the 'error' state cannot be changed and '' state cannot be set
-	 * @param    $rawClass - string set rawClass value or false (do not set)
-	 */
-	function bodyErrorMessage( $msg, $state, $rawClass = 'proposalerror' ) {
-		$prev_state = $this->ctrl->getState();
-		# do not clear previous errors (do not call setState() when $state == '')
-		if ( $state != '' ) {
-			$this->ctrl->setState( $state, $msg );
-		}
-		if ( is_string( $rawClass ) ) {
-			$this->rawClass = $rawClass;
-		}
-		# will show only the first error, when the state is not clean (not '')
-		return ( $prev_state == '' ) ? '<span class="proposalerror" title="' . qp_Setup::specialchars( $msg ) . '">???</span> ' : '';
 	}
 
 	/**
@@ -156,7 +125,7 @@ class qp_StubQuestionView extends qp_AbstractView {
 	function renderTable() {
 		$questionTable = array();
 		# add header views to $questionTable
-		foreach ( $this->hview as $header ) {
+		foreach ( $this->hviews as $header ) {
 			$rowattrs = '';
 			$attribute_maps = null;
 			if ( is_object( $header ) ) {
@@ -207,12 +176,12 @@ class qp_StubQuestionView extends qp_AbstractView {
 		return qp_Renderer::renderTagArray( $tags );
 	}
 
-	/*** cell templates ***/
-
+	/**
+	 * @return  boolean  true when the question's proposals views support showresults attribute;
+	 *                   false otherwise
+	 */
 	function hasShowResults() {
 		return false;
 	}
-
-	/*** end of cell templates ***/
 
 } /* end of qp_StubQuestionView class */
