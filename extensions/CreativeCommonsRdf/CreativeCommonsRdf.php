@@ -11,6 +11,7 @@ $wgExtensionCredits['other'][] = array(
 $wgHooks['MediaWikiPerformAction'][] = 'efCreativeCommonsRdfPreformAction';
 $wgHooks['BeforePageDisplay'][] = 'efCreativeCommonsRdfBeforePageDisplay';
 
+$dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['CreativeCommonsRdf'] = $dir . 'CreativeCommonsRdf_body.php';
 
 function efCreativeCommonsRdfPreformAction( $output, $article, $title, $user, $request, $mediaWiki ) {
