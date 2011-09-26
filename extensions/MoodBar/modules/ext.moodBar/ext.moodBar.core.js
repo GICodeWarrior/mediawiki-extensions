@@ -17,7 +17,9 @@
 				</div></div>',
 			userinput: '\
 					<div class="mw-moodBar-overlayTitle"><html:msg key="INTROTITLE" /></div>\
-					<div class="mw-moodBar-types"></div>\
+					<div class="mw-moodBar-types-container">\
+						<div class="mw-moodBar-types"></div>\
+					</div>\
 					<div class="mw-moodBar-form">\
 						<div class="mw-moodBar-formTitle">\
 							<span class="mw-moodBar-formNote"><html:msg key="moodbar-form-note" /></span>\
@@ -37,7 +39,7 @@
 						<div class="mw-moodBar-overlayWhatContent"></div>\
 					</span>',
 			type: '\
-				<div class="mw-moodBar-type mw-moodBar-type-$1" rel="$1">\
+				<span class="mw-moodBar-type mw-moodBar-type-$1" rel="$1">\
 					<span class="mw-moodBar-typeTitle"><html:msg key="moodbar-type-$1-title" /></span>\
 				</div>',
 			loading: '\
@@ -227,13 +229,26 @@
 					.end();
 			mb.swapContent( mb.tpl.userinput );
 
-			mb.ui.overlay
-				// Inject overlay
-				.appendTo( 'body' )
-				// Fix the width after the icons and titles are localized and inserted
-				.width( function( i, width ) {
-					return width + 10;
-				} );
+			mb.ui.overlay.appendTo( 'body' );
+			mb.ui.overlay.show();
+			
+			// Get the width of the types element, and add 100px
+			// 52px in known margins, 58px seems to be a necessary
+			// fudge factor, plus 30px so the close button doesn't collide
+			// with the rounded corners
+			var newWidth = mb.ui.overlay
+					.find('.mw-moodBar-types')
+					.width() + 140;
+			var titleWidth = mb.ui.overlay
+					.find('.mw-moodBar-overlayTitle')
+					.width() + 100;
+			
+			if ( newWidth < titleWidth ) {
+				newWidth = titleWidth;
+			}
+			
+ 			mb.ui.overlay.width(newWidth);
+			mb.ui.overlay.hide();
 
 			// Bind triger
 			mb.ui.trigger.click( mb.event.trigger );
