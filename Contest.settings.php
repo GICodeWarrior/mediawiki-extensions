@@ -28,7 +28,7 @@ class ContestSettings {
 	 */
 	protected static function getDefaultSettings() {
 		return array(
-			
+			'votevalues' => range( 0, 5 )
 		);
 	}
 

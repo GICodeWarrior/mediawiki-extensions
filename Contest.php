@@ -41,12 +41,40 @@ $wgExtensionCredits['other'][] = array(
 	'descriptionmsg' => 'contest-desc'
 );
 
+// i18n
 $wgExtensionMessagesFiles['Contest'] 			= dirname( __FILE__ ) . '/Contest.i18n.php';
 $wgExtensionMessagesFiles['ContestAlias']		= dirname( __FILE__ ) . '/Contest.alias.php';
 
+// Autoloading
 $wgAutoloadClasses['ContestHooks'] 				= dirname( __FILE__ ) . '/Contest.hooks.php';
 $wgAutoloadClasses['ContestSettings'] 			= dirname( __FILE__ ) . '/Contest.settings.php';
 
+$wgAutoloadClasses['ApiDeleteContest'] 			= dirname( __FILE__ ) . '/api/ApiDeleteContest.php';
+
+$wgAutoloadClasses['SpecialContest'] 			= dirname( __FILE__ ) . '/specials/SpecialContest.php';
+$wgAutoloadClasses['SpecialContests'] 			= dirname( __FILE__ ) . '/specials/SpecialContests.php';
+$wgAutoloadClasses['SpecialContestSignup'] 		= dirname( __FILE__ ) . '/specials/SpecialContestSignup.php';
+$wgAutoloadClasses['SpecialContestSubmission'] 	= dirname( __FILE__ ) . '/specials/SpecialContestSubmission.php';
+
+// Special pages
+$wgSpecialPages['Contest'] 						= 'SpecialContest';
+$wgSpecialPages['Contests'] 					= 'SpecialContests';
+$wgSpecialPages['ContestSignup'] 				= 'SpecialContestSignup';
+$wgSpecialPages['ContestSubmission'] 			= 'SpecialContestSubmission';
+
+$wgSpecialPageGroups['Contest'] 				= 'other';
+$wgSpecialPageGroups['Contests'] 				= 'other';
+$wgSpecialPageGroups['ContestSignup'] 			= 'other';
+$wgSpecialPageGroups['ContestSubmission'] 		= 'other';
+
+// API
+$wgAPIModules['deletecontest'] 					= 'ApiDeleteContest';
+
+// Hooks
+$wgHooks['LoadExtensionSchemaUpdates'][] 		= 'SurveyHooks::onSchemaUpdate';
+$wgHooks['UnitTestsList'][] 					= 'SurveyHooks::registerUnitTests';
+
+// Resource loader modules
 $moduleTemplate = array(
 	'localBasePath' => dirname( __FILE__ ) . '/resources',
 	'remoteExtPath' => 'Contest/resources'
