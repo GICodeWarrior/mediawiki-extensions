@@ -934,9 +934,12 @@ $messages['ms'] = array(
 	'importfreeimages_owner' => 'Pemilik',
 	'importfreeimages_importthis' => 'import ini',
 	'importfreeimages_next' => '$1 berikutnya',
+	'importfreeimages_size_square' => 'Petak',
+	'importfreeimages_size_thumbnail' => 'Thumbnail',
 	'importfreeimages_size_small' => 'Kecil',
 	'importfreeimages_size_medium' => 'Sederhana',
 	'importfreeimages_size_large' => 'Besar',
+	'importfreeimages_size_original' => 'Asal',
 );
 
 /** Maltese (Malti)
