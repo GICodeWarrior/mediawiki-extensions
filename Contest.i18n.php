@@ -18,7 +18,7 @@ $messages = array();
  * @author Jeroen De Dauw
  */
 $messages['en'] = array(
-	'contest-desc' => '',
+	'contest-desc' => 'Contest extension that allows users to participate in admin defined contest challanges. Via a judging interface, judges can discuss and vote on submissions.',
 
 	// Rights
 	'right-contestadmin' => 'Manage contests',
@@ -35,6 +35,7 @@ $messages['en'] = array(
 	'special-contests' => 'Contests',
 	'special-contestsignup' => 'Contest signup',
 	'special-contestsubmission' => 'Contest submission',
+	'special-contestwelcome' => 'Contest',
 	'special-editcontest' => 'Edit contest',
 
 	// Special:Contests

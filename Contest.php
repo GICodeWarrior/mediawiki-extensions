@@ -59,6 +59,7 @@ $wgAutoloadClasses['SpecialContestPage'] 		= dirname( __FILE__ ) . '/specials/Sp
 $wgAutoloadClasses['SpecialContests'] 			= dirname( __FILE__ ) . '/specials/SpecialContests.php';
 $wgAutoloadClasses['SpecialContestSignup'] 		= dirname( __FILE__ ) . '/specials/SpecialContestSignup.php';
 $wgAutoloadClasses['SpecialContestSubmission'] 	= dirname( __FILE__ ) . '/specials/SpecialContestSubmission.php';
+$wgAutoloadClasses['SpecialContestWelcome'] 	= dirname( __FILE__ ) . '/specials/SpecialContestWelcome.php';
 $wgAutoloadClasses['SpecialEditContest'] 		= dirname( __FILE__ ) . '/specials/SpecialEditContest.php';
 
 // Special pages
@@ -66,12 +67,14 @@ $wgSpecialPages['Contest'] 						= 'SpecialContest';
 $wgSpecialPages['Contests'] 					= 'SpecialContests';
 $wgSpecialPages['ContestSignup'] 				= 'SpecialContestSignup';
 $wgSpecialPages['ContestSubmission'] 			= 'SpecialContestSubmission';
+$wgSpecialPages['ContestWelcome'] 				= 'SpecialContestWelcome';
 $wgSpecialPages['EditContest'] 					= 'SpecialEditContest';
 
 $wgSpecialPageGroups['Contest'] 				= 'other';
 $wgSpecialPageGroups['Contests'] 				= 'other';
 $wgSpecialPageGroups['ContestSignup'] 			= 'other';
 $wgSpecialPageGroups['ContestSubmission'] 		= 'other';
+$wgSpecialPageGroups['ContestWelcome'] 			= 'other';
 $wgSpecialPageGroups['EditContest'] 			= 'other';
 
 // API

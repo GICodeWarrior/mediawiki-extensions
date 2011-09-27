@@ -1,17 +1,17 @@
 <?php
 
 /**
- * Contest signup interface for participants.
+ * Contest landing page for participants.
  * 
  * @since 0.1
  * 
- * @file SpecialContestSignup.php
+ * @file SpecialContestWelcome.php
  * @ingroup Contest
  * 
  * @licence GNU GPL v3 or later
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class SpecialContestSignup extends SpecialContestPage {
+class SpecialContestWelcome extends SpecialContestPage {
 	
 	/**
 	 * Constructor.
@@ -19,7 +19,16 @@ class SpecialContestSignup extends SpecialContestPage {
 	 * @since 0.1
 	 */
 	public function __construct() {
-		parent::__construct( 'ContestSignup', 'contestparticipant' );
+		parent::__construct( 'ContestWelcome' );
+	}
+	
+	/**
+	 * @see SpecialPage::getDescription
+	 * 
+	 * @since 0.1
+	 */
+	public function getDescription() {
+		return wfMsg( 'special-' . strtolower( $this->getName() ) );
 	}
 	
 	/**
