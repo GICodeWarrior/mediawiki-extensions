@@ -201,6 +201,8 @@ class SpecialContests extends SpecialContestPage {
 		
 		$out->addHTML( '</tbody>' );
 		$out->addHTML( '</table>' );
+		
+		$out->addModules( 'contest.special.contests' );
 	}	
 	
 }

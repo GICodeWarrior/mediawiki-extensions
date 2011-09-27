@@ -114,10 +114,14 @@ $moduleTemplate = array(
 	'remoteExtPath' => 'Contest/resources'
 );
 
-$wgResourceModules[''] = $moduleTemplate + array(
+$wgResourceModules['contest.special.contests'] = $moduleTemplate + array(
 	'scripts' => array(
-		''
+		'contest.special.contests.js'
 	),
+	'messages' => array(
+		'contest-special-confirm-delete',
+		'contest-special-delete-failed',
+	)
 );
 
 unset( $moduleTemplate );

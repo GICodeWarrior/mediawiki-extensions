@@ -50,6 +50,9 @@ $messages['en'] = array(
 	'contest-special-edit' => 'Edit',
 	'contest-special-delete' => 'Delete',
 
+	'contest-special-confirm-delete' => 'Are you sure you want to delete this contest?',
+	'contest-special-delete-failed' => 'Failed to delete the contest.',
+
 	// Special:EditContest
 	'editcontest-text' => 'You are editing a contest.',
 	'editcontest-legend' => 'Contest',
