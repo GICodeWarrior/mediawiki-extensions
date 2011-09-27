@@ -46,6 +46,8 @@ class SpecialContact extends SpecialPage {
 			$form['location']  = $wgRequest->getVal('location');
 			$form['story']	   = $wgRequest->getVal('story');
 			$form['followup']  = $wgRequest->getVal('followup');
+			$form['username']  = $wgRequest->getVal('username');
+			$form['country']   = $wgRequest->getVal('country');
 
 			$text = '';
 			foreach( $form as $key => $value) {
