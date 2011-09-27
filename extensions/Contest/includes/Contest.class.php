@@ -38,6 +38,20 @@ class Contest extends ContestDBObject {
 	}
 	
 	/**
+	 * Get a new instance of the class from an array. 
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param array $data
+	 * @param boolean $loadDefaults
+	 * 
+	 * @return ContestDBObject
+	 */	
+	public function newFromArray( array $data, $loadDefaults = false ) {
+		return new self( $data, $loadDefaults );
+	}
+	
+	/**
 	 * @see parent::getFieldTypes
 	 * 
 	 * @since 0.1
