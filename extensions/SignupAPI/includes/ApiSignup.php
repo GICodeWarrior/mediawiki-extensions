@@ -197,8 +197,8 @@ class ApiSignup extends ApiBase {
 		return array_merge( parent::getPossibleErrors(), array(
 			array( 'code' => 'WrongPassword', 'info' => 'Incorrect password entered. Please try again.' ),
 			array( 'code' => 'ReadOnlyPage', 'info' => 'Accounts cannot be created with read-only permissions' ),
-			array( 'code' => 'NoCookies', 'info' => 'The user account was not created, as we could not confirm its source.
-																 Ensure you have cookies enabled, reload this page and try again.' ),
+			array( 'code' => 'NoCookies', 'info' => 'The user account was not created, as we could not confirm its source. ' .
+				'Ensure you have cookies enabled, reload this page and try again.' ),
 			array( 'code' => 'NeedToken', 'info' => 'You need to resubmit your signup with the specified token' ),
 			array( 'code' => 'WrongToken', 'info' => 'You specified an invalid token' ),
 			array( 'code' => 'InsufficientPermission', 'info' => 'You do not have sufficient permissions to create account' ),
