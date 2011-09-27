@@ -33,6 +33,41 @@
 	margin-top: 0;
 	position: relative;
 	min-height: 1.5em;
+	font-size: 1em;
+}
+
+h1.editSurface-headingBlock, h2.editSurface-headingBlock {
+	border-bottom: 1px solid #AAA;
+}
+
+h1.editSurface-headingBlock > * {
+	font-size:188%;
+	font-weight: normal;
+}
+
+h2.editSurface-headingBlock > * {
+	font-size:150%;
+	font-weight: normal;
+}
+
+h3.editSurface-headingBlock > * {
+	font-size:132%;
+	font-weight: bold;
+}
+
+h4.editSurface-headingBlock > * {
+	font-size:116%;
+	font-weight: bold;
+}
+
+h5.editSurface-headingBlock > * {
+	font-size:100%;
+	font-weight: bold;
+}
+
+h6.editSurface-headingBlock > * {
+	font-size:80%;
+	font-weight: bold;
 }
 
 .editSurface-listItem {

@@ -2,9 +2,9 @@ $(document).ready( function() {
 	var doc = es.DocumentModel.newFromPlainObject( { 'blocks': [
 		{
 			'type': 'heading',
-			'level': 2,
+			'level': 1,
 			'content': {
-				'text': 'This is a heading',
+				'text': 'This is a heading (level 1)',
 				'annotations': [
 					{
 						'type': 'italic',
@@ -14,6 +14,92 @@ $(document).ready( function() {
 						}
 					}
 				]
+				
+			}
+		},
+		{
+			'type': 'heading',
+			'level': 2,
+			'content': {
+				'text': 'This is a heading (level 2)',
+				'annotations': [
+					{
+						'type': 'italic',
+						'range': {
+							'start': 10,
+							'end': 17
+						}
+					}
+				]
+				
+			}
+		},
+		{
+			'type': 'heading',
+			'level': 3,
+			'content': {
+				'text': 'This is a heading (level 3)',
+				'annotations': [
+					{
+						'type': 'italic',
+						'range': {
+							'start': 10,
+							'end': 17
+						}
+					}
+				]
+				
+			}
+		},
+		{
+			'type': 'heading',
+			'level': 4,
+			'content': {
+				'text': 'This is a heading (level 4)',
+				'annotations': [
+					{
+						'type': 'italic',
+						'range': {
+							'start': 10,
+							'end': 17
+						}
+					}
+				]
+				
+			}
+		},
+		{
+			'type': 'heading',
+			'level': 5,
+			'content': {
+				'text': 'This is a heading (level 5)',
+				'annotations': [
+					{
+						'type': 'italic',
+						'range': {
+							'start': 10,
+							'end': 17
+						}
+					}
+				]
+				
+			}
+		},
+		{
+			'type': 'heading',
+			'level': 6,
+			'content': {
+				'text': 'This is a heading (level 6)',
+				'annotations': [
+					{
+						'type': 'italic',
+						'range': {
+							'start': 10,
+							'end': 17
+						}
+					}
+				]
+				
 			}
 		},
 		{
