@@ -58,7 +58,6 @@ class FetchGoogleSpreadsheet extends MetricsMaintenance {
 
 		$worksheets = array();
 		while ( $reader->name === 'entry' ) {
-
 			$node = new SimpleXMLElement( $reader->readOuterXML() );
 
 			// Worksheet based feed
@@ -93,9 +92,13 @@ class FetchGoogleSpreadsheet extends MetricsMaintenance {
 
 			$this->output( 'Spreadsheet tab title: ' . $xml->title . "\n" );
 			$this->output( "\n" );
-
+			var_dump( $xml->title );
+			if ( $xml->title != 'Deployments' ) {
+				continue;
+			}
+			//continue;
 			$sheetData = array();
-			// foreach "tab"
+			// foreach "tab"/worksheet
 			foreach( $xml->entry as $entry ) {
 				$namespaces = $entry->getNameSpaces( true );
 				$gsx = $entry->children( $namespaces['gsx'] );
@@ -108,11 +111,27 @@ class FetchGoogleSpreadsheet extends MetricsMaintenance {
 				}
 			}
 			$this->output( "\n" );
-			var_dump( $sheetData );
+			$this->getDeploymentFigures( $sheetData );
+			// var_dump( $sheetData );
 			$this->output( "\n" );
 		}
 
 		$this->output( "Finished!\n" );
+	}
+
+	/**
+	 * @param $data array
+	 */
+	function getDeploymentFigures( $data ) {
+		$count = count( $data["name"] );
+
+		for( $i = 0; $i < ( $count - 1 ); $i++ ) {
+			$data['date'][] = ''; // TODO: The date needs to come from... somewhere?
+		}
+
+		$db = $this->getDb();
+
+		$db->update( 'offline', $data, __METHOD__, array( 'IGNORE' ) );
 	}
 
 	/**
