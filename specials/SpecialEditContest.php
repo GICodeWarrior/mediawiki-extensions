@@ -51,7 +51,7 @@ class SpecialEditContest extends FormSpecialPage {
 	 * 
 	 * @since 0.1
 	 * 
-	 * @param string $arg
+	 * @param string $subPage
 	 */
 	public function execute( $subPage ) {
 		$this->setParameter( $subPage );
@@ -69,11 +69,19 @@ class SpecialEditContest extends FormSpecialPage {
 			}
 		}
 		else {
-			$this->showContent();
+			$this->showContent( $subPage );
 		}
 	}
 	
-	protected function showContent() {
+	/**
+	 * Attempt to get the contest to be edited or create the one to be added.
+	 * If this works, show the form, if not, redirect to special:contests.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param string $subPage
+	 */
+	protected function showContent( $subPage ) {
 		if ( $this->getRequest()->wasPosted() && $this->getUser()->matchEditToken( $this->getRequest()->getVal( 'newEditToken' ) ) ) {
 			$data = array( 'name' => $this->getRequest()->getVal( 'newcontest' ) );
 			

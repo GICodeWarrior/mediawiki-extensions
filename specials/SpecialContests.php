@@ -142,11 +142,11 @@ class SpecialContests extends SpecialContestPage {
 					array(
 						'href' => SpecialPage::getTitleFor( 'Contest', $contest->getField( 'name' ) )->getLocalURL()
 					),
-					wfMsg( 'contest-special-name' )
+					$contest->getField( 'name' )
 				);
 			}
 			else {
-				$name = wfMsgHtml( 'contest-special-name' );
+				$contest->getField( 'name' );
 			}
 			
 			$fields[] = Html::rawElement(
