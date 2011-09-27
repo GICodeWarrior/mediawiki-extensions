@@ -3,7 +3,10 @@
 . config
 
 ssh root@$master 'sed -i~ '\''s/#\s*read-only/read-only/'\'' /etc/my.cnf'
-echo "set global read_only=1; flush tables;" | mysql -h $master
+echo "set global read_only=1;" | mysql -h $master
+echo "killing queries running over 10 seconds" 
+mysql -h $master -e "show processlist"  | awk '{ if (($6 > 9) && ($2 ~ "^wiki")) { print "kill " $1 ";" } }' | mysql -h $master
+echo "set sql_log_bin=0; flush tables;" | mysql -h $master
 echo '\sselect @@read_only' | mysql -h $master
 echo
 

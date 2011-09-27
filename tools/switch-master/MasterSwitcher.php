@@ -74,6 +74,7 @@ class MasterSwitcher {
 		// Stop slave on the new master and reset it so it can't start again
 		$this->log( 'Configuring the new master' );
 		$newMasterDB = $this->getConnection( $newMaster );
+		$this->killOldQueries( $newMasterDB );
 		$newMasterDB->query( 'STOP SLAVE' );
 		$newMasterDB->query( 'CHANGE MASTER TO master_host=\'\'' );
 		$newMasterDB->query( 'RESET SLAVE'  );
@@ -116,6 +117,7 @@ class MasterSwitcher {
 				$this->log( "Cannot change master on $slave: connection error" );
 				continue;
 			}
+			$this->killOldQueries( $conn );
 			$this->doQueryLogErrors( $conn, $slave, 'SLAVE STOP' );
 			$this->doQueryLogErrors( $conn, $slave, $changeMasterSql );
 			$this->doQueryLogErrors( $conn, $slave, 'SLAVE START' );
@@ -330,10 +332,7 @@ class MasterSwitcher {
 		return true;
 	}
 
-	function prepareOldMaster( $hostName, $conn ) {
-		// Set the old master to read-only
-		$conn->query( 'SET GLOBAL read_only=1' );
-		
+	function killOldQueries ( $conn ) { 
 		// Kill long-running queries
 		$res = $conn->query( 'SHOW PROCESSLIST' );
 		$killQueries = array();
@@ -349,10 +348,18 @@ class MasterSwitcher {
 				$conn->query( $query );
 			} catch ( DBQueryError $e ) {}
 		}
+	}
+
+	function prepareOldMaster( $hostName, $conn ) {
+		// Set the old master to read-only
+		$conn->query( 'SET GLOBAL read_only=1' );
+		
+		// Kill Long Running Queries 
+		$this->killOldQueries( $conn );
 
 		// Flush tables
 		// This ensures that pending transactions are committed
-		$conn->query( 'FLUSH TABLES' );
+		$conn->query( 'SET SQL_LOG_BIN=0; FLUSH TABLES' );
 
 		// Sanity check
 		$res = $conn->query( 'SELECT @@read_only as read_only' );

@@ -2,6 +2,8 @@
 
 . config
 
+# kill long running wiki queries on new master
+mysql -h $newmaster -e "show processlist"  | awk '{ if (($6 > 9) && ($2 ~ "^wiki")) { print "kill " $1 ";" } }' | mysql -h $newmaster
 # Turn off slave on new master, to avoid replication loop
 echo "slave stop; change master to master_host=''" | mysql -h $newmaster
 
@@ -18,6 +20,7 @@ echo "$sql"
 for slave in $slaves $master
 do
     echo $slave
+    mysql -h $slave -e "show processlist"  | awk '{ if (($6 > 9) && ($2 ~ "^wiki")) { print "kill " $1 ";" } }' | mysql -h $slave
     echo "$sql" | mysql -f -h $slave
 done
 
