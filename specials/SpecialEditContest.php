@@ -184,7 +184,7 @@ class SpecialEditContest extends FormSpecialPage {
 		$sessionField = 'contestid-' . $fields['name'];
 		
 		if ( is_null( $fields['id'] ) && !is_null( $this->getRequest()->getSessionData( $sessionField ) ) ) {
-			$contest->setId( $this->getRequest()->getSessionData( $sessionField ) );
+			$fields['id'] = $this->getRequest()->getSessionData( $sessionField );
 		}
 		
 		$contest = new Contest( $fields, true );

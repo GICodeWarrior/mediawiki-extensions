@@ -14,6 +14,7 @@ CREATE TABLE IF NOT EXISTS /*_*/contests (
 CREATE TABLE IF NOT EXISTS /*_*/contest_contestants (
   contestant_id                INT unsigned        NOT NULL auto_increment PRIMARY KEY, -- Contestant id (unique id per user per contest)
   contestant_contest_id        SMALLINT unsigned   NOT NULL, -- Foreign key on contests.contest_id
+  contestant_challange_id      INT unsigned        NOT NULL, -- Foreign key on contest_challanges.challange_id
   contestant_user_id           INT(10) unsigned    NOT NULL, -- Foreign key on user.user_id
   
   -- These fields will be copied from the user table on contest lock
@@ -23,7 +24,17 @@ CREATE TABLE IF NOT EXISTS /*_*/contest_contestants (
   
   -- Extra contestant info
   contestant_country           VARCHAR(255)        NOT NULL, -- Country of the contestant
+  contestant_volunteer         TINYINT unsigned    NOT NULL, -- If the user is interested in voluneer oportunities
+  contestant_wmf               TINYINT unsigned    NOT NULL, -- If the user is interested in a WMF job
+  
   contestant_submission        INT(10) unsigned    NOT NULL -- TODO: file shizzle
+) /*$wgDBTableOptions*/;
+
+-- Challanges
+CREATE TABLE IF NOT EXISTS /*_*/contest_challanges (
+  challange_id                INT unsigned        NOT NULL auto_increment PRIMARY KEY, -- Challange id
+  challange_contest_id        INT unsigned        NOT NULL,
+  challange_text              TEXT                NOT NULL
 ) /*$wgDBTableOptions*/;
 
 -- Judge votes

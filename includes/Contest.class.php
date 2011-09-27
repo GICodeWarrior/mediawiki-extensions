@@ -85,7 +85,7 @@ class Contest extends ContestDBObject {
 			'id' => 'id',
 			'name' => 'str',
 			'status' => 'int',
-			'submission_count' => 'int'
+			'submission_count' => 'int',
 		);
 	}
 	
