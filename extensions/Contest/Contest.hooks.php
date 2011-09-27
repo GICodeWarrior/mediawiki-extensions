@@ -41,6 +41,13 @@ final class ContestHooks {
 		
 		$updater->addExtensionUpdate( array(
 			'addTable',
+			'contest_challanges',
+			dirname( __FILE__ ) . '/Contest.sql',
+			true
+		) );
+		
+		$updater->addExtensionUpdate( array(
+			'addTable',
 			'contest_votes',
 			dirname( __FILE__ ) . '/Contest.sql',
 			true
