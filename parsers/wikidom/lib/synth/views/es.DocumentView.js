@@ -12,6 +12,25 @@ es.DocumentView = function( documentModel ) {
 
 /* Methods */
 
+es.DocumentView.prototype.getOffsetFromEvent = function( e ) {
+	var	$target = $( e.target ),
+		$block = $target.is( '.editSurface-block' )
+			? $target : $target.closest( '.editSurface-block' ),
+		position = es.Position.newFromEventPagePosition( e );
+
+	if( $block.length ) {
+		var	block = $block.data( 'block' ),
+			offset = block.getOffsetFromPosition( position );
+		while ( typeof block.list !== 'undefined' ) {
+			offset += block.list.items.offsetOf( block );
+			block = block.list;
+		}
+		return offset;
+	} else {
+		return this.getOffsetFromPosition( position );
+	}
+};
+
 es.DocumentView.prototype.getOffsetFromPosition = function( position ) {
 	if ( this.items.length === 0 ) {
 		return 0;

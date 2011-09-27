@@ -238,8 +238,7 @@ es.SurfaceView.prototype.onKeyUp = function( e ) {
 };
 
 es.SurfaceView.prototype.onMouseDown = function( e ) {
-	var mousePosition = es.Position.newFromEventPagePosition( e );
-	var contentOffset = this.documentView.getOffsetFromPosition( mousePosition );
+	var contentOffset = this.documentView.getOffsetFromEvent( e );
 
 	this.from = contentOffset;
 	this.selecting = true;
@@ -253,8 +252,7 @@ es.SurfaceView.prototype.onMouseDown = function( e ) {
 
 es.SurfaceView.prototype.onMouseMove = function( e ) {
 	if (this.selecting ) {
-		var mousePosition = es.Position.newFromEventPagePosition( e );
-		var contentOffset = this.documentView.getOffsetFromPosition( mousePosition );
+		var contentOffset = this.documentView.getOffsetFromEvent( e );
 
 		this.to = contentOffset;		
 		this.documentView.drawSelection( new es.Range( this.from, this.to ) );
