@@ -42,6 +42,13 @@ $messages['en'] = array(
 	'contest-special-namedoc' => 'The name of the contest is the identifier used in URLs. ie "name" in Special:Contest/name',
 	'contest-special-newname' => 'Contest name',
 	'contest-special-add' => 'Add contest',
+	'contest-special-existing' => 'Existing contests',
+	
+	'contest-special-name' => 'Name',
+	'contest-special-status' => 'Status',
+	'contest-special-submissioncount' => 'Submission count',
+	'contest-special-edit' => 'Edit',
+	'contest-special-delete' => 'Delete',
 
 	// Special:EditContest
 	'editcontest-text' => 'You are editing a contest.',
@@ -54,5 +61,12 @@ $messages['en'] = array(
  * @author Jeroen De Dauw
  */
 $messages['qqq'] = array(
-	
+	'contest-special-name' => 'table header',
+	'contest-special-status' => 'table header',
+	'contest-special-submissioncount' => 'table header',
+	'contest-special-edit' => 'table header',
+	'contest-special-delete' => 'table header',
+
+	'contest-edit-name' => 'form field label',
+	'contest-edit-status' => 'form field label',
 );
