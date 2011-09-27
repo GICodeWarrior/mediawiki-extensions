@@ -479,20 +479,6 @@ abstract class ContestDBObject {
 		
 		return $this->newFromArray( $data );
 	}
-	
-	/**
-	 * Get a new instance of the class from an array. 
-	 * 
-	 * @since 0.1
-	 * 
-	 * @param array $data
-	 * @param boolean $loadDefaults
-	 * 
-	 * @return ContestDBObject
-	 */	
-	public function newFromArray( array $data, $loadDefaults = false ) {
-		return new self( $data, $loadDefaults );
-	}
 
 	/**
 	 * Selects the the specified fields of the records matching the provided

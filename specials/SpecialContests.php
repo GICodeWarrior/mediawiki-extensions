@@ -54,7 +54,7 @@ class SpecialContests extends SpecialContestPage {
 	 * @since 0.1
 	 */
 	protected function displayContests() {
-		$contests = Contest::s()->select( array( 'id', 'name', 'enabled', 'submission_count' ) );
+		$contests = Contest::s()->select( array( 'id', 'name', 'status', 'submission_count' ) );
 		
 		if ( count( $contests ) > 0 ) {
 			$this->displayContestsTable( $contests );
@@ -157,14 +157,14 @@ class SpecialContests extends SpecialContestPage {
 			
 			$fields[] = Html::element(
 				'td',
-				array(),
-				wfMsg( 'contest-special-' . ( $contest->getField( 'enabled' ) ? 'enabled' : 'disabled' ) )
+				array( 'data-sort-value' => $contest->getField( 'status' ) ),
+				Contest::getStatusMessage( $contest->getField( 'status' ) )
 			);
 			
 			$fields[] = Html::element(
 				'td',
 				array(),
-				$this->getLang()->formatNum( $contest->getField( 'submissioncount' ) )
+				$this->getLang()->formatNum( $contest->getField( 'submission_count' ) )
 			);
 			
 			if ( $user->isAllowed( 'contestadmin' ) ) {
@@ -195,6 +195,8 @@ class SpecialContests extends SpecialContestPage {
 					)
 				);
 			}
+			
+			$out->addHTML( '<tr>' . implode( '', $fields ) . '</tr>' );
 		}
 		
 		$out->addHTML( '</tbody>' );

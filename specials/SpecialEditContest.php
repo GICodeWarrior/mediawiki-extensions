@@ -61,6 +61,19 @@ class SpecialEditContest extends FormSpecialPage {
 		// This will throw exceptions if there's a problem
 		$this->userCanExecute( $this->getUser() );
 		
+		if ( $this->getRequest()->wasPosted() && $this->getUser()->matchEditToken( $this->getRequest()->getVal( 'wpEditToken' ) ) ) {
+			$form = $this->getForm();
+			
+			if ( $form->show() ) {
+				$this->onSuccess();
+			}
+		}
+		else {
+			$this->showContent();
+		}
+	}
+	
+	protected function showContent() {
 		if ( $this->getRequest()->wasPosted() && $this->getUser()->matchEditToken( $this->getRequest()->getVal( 'newEditToken' ) ) ) {
 			$data = array( 'name' => $this->getRequest()->getVal( 'newcontest' ) );
 			
@@ -119,20 +132,21 @@ class SpecialEditContest extends FormSpecialPage {
 	protected function getFormFields() {
 		$contest = $this->contest;
 		
-		if ( $contest === false ) {
-			return array();
-		}
-		
 		$fields = array();
 
-		$fields['id'] = array ( 'type' => 'hidden', 'default' => $contest->getId() );
-		$fields['name'] = array ( 'type' => 'text', 'default' => $contest->getField( 'name' ), 'label-message' => 'contest-edit-name' );
+		$fields['id'] = array ( 'type' => 'hidden' );
+		$fields['name'] = array ( 'type' => 'text', 'label-message' => 'contest-edit-name' );
 		$fields['status'] = array (
 			'type' => 'radio',
-			'default' => $contest->getField( 'status' ),
 			'label-message' => 'contest-edit-status',
 			'options' => Contest::getStatusMessages()
 		);
+		
+		if ( $contest !== false ) {
+			foreach ( $fields as $name => $data ) {
+				$fields[$name]['default'] = $contest->getField( $name );
+			}
+		}
 		
 		// TODO
 		
@@ -158,7 +172,7 @@ class SpecialEditContest extends FormSpecialPage {
 		foreach ( $data as $name => $value ) {
 			$matches = array();
 			
-			if ( preg_match( '/contest-(\.+)/', $name, $matches ) ) {
+			if ( preg_match( '/contest-(.+)/', $name, $matches ) ) {
 				$fields[$matches[1]] = $value;
 			}
 		}
@@ -169,11 +183,11 @@ class SpecialEditContest extends FormSpecialPage {
 		
 		$sessionField = 'contestid-' . $fields['name'];
 		
-		if ( is_null( $fields['id'] ) && !is_null( $wgRequest->getSessionData( $sessionField ) ) ) {
-			$contest->setId( $wgRequest->getSessionData( $sessionField ) );
+		if ( is_null( $fields['id'] ) && !is_null( $this->getRequest()->getSessionData( $sessionField ) ) ) {
+			$contest->setId( $this->getRequest()->getSessionData( $sessionField ) );
 		}
 		
-		$contest = new Contest( $fields );
+		$contest = new Contest( $fields, true );
 
 		$success = $contest->writeToDB();
 
