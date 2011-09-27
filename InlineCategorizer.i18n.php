@@ -1658,6 +1658,7 @@ $messages['mr'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'inlinecategorizer-desc' => 'Modul JavaScript yang membolehkan pengubahan, penambahan dan penyingkiran pautan kategori secara terus dari laman',
 	'inlinecategorizer-add-category' => 'Tambahkan kategori',
 	'inlinecategorizer-add-category-submit' => 'Tambahkan',
 	'inlinecategorizer-add-category-summary' => 'Tambahkan kategori "$1"',
