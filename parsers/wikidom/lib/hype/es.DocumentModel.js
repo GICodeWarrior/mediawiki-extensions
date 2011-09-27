@@ -1,9 +1,71 @@
 /**
+ * Creates an es.DocumentModel object.
+ * 
+ * es.DocumentModel objects extend the native Array object, so it's contents are directly accessible
+ * through the typical methods.
+ * 
  * @class
  * @constructor
+ * @param {Array} data Model data to initialize with, such as data from es.DocumentModel.getData()
  */
-es.DocumentModel = function() {
-	this.data = [];
+es.DocumentModel = function( data ) {
+	var data = $.isArray( data ) ? data : [];
+	return $.extend( data, this );
+};
+
+/* Static Methods */
+
+es.DocumentModel.isContent = function( content ) {
+	return typeof content === 'string' || $.isArray( content );
+};
+
+es.DocumentModel.isElement = function( content ) {
+	return content.type !== undefined;
+};
+
+/* Methods */
+
+es.DocumentModel.prototype.findElement = function( node, root, callback ) {
+	for ( var i = 0; i < this.data.length; i++ ) {
+		if ( es.DocumentModel.isElement( this.data[i] ) ) {
+			if ( content.node === node ) {
+				return callback( i );
+			}
+			// If we are looking for a root node, we can skip over the contents of this one
+			if ( root ) {
+				i += node.getContentLength() + 2;
+			}
+		}
+	}
+	return null;
+};
+
+/**
+ * Gets the element object of a node.
+ * 
+ * @method
+ * @param {es.DocumentModelNode} node Reference to node object to get element object for
+ * @param {Boolean} root Whether to only scan root nodes
+ * @returns {Object|null} Element object
+ */
+es.DocumentModel.prototype.getElement = function( node, root ) {
+	return this.findNode( node, root, function( index ) {
+		return this.data[index];
+	} );
+};
+
+/**
+ * Gets the content data of a node.
+ * 
+ * @method
+ * @param {es.DocumentModelNode} node Reference to node object to get content data for
+ * @param {Boolean} root Whether to only scan root nodes
+ * @returns {Array|null} List of content and elements inside node or null if node is not found
+ */
+es.DocumentModel.prototype.getContent = function( node, root ) {
+	return this.findNode( node, root, function( index ) {
+		return this.data.slice( index + 1, index + node.getContentLength() );
+	} );
 };
 
 /*
@@ -39,7 +101,7 @@ es.DocumentModel.prototype.prepareRemoveBlock = function( offset ) {
 */
 
 // Low-level operations
-
+/*
 es.DocumentModel.newFromPlainObject = function( obj ) {
 	
 };
@@ -85,6 +147,7 @@ es.DocumentModel.prototype.annotateElement = function( offset, annotations ) {
 		}
 	}
 };
+*/
 
 /*
  * Example of content data
@@ -96,7 +159,7 @@ es.DocumentModel.prototype.annotateElement = function( offset, annotations ) {
  */
 var data = [
  	//  0 - Beginning of paragraph
- 	{ 'type': 'paragraph' },
+ 	{ 'type': 'paragraph', 'node': {} },
 	//  1 - Plain content
 	'a',
 	//  2 - Annotated content
@@ -104,53 +167,53 @@ var data = [
 	//  3 - Annotated content
 	['c', { 'type': 'italic' }],
 	//  4 - End of paragraph
-	{ 'type': '/paragraph' }
+	{ 'type': '/paragraph', 'node': {} }
  	//  5 - Beginning of table
-	{ 'type': 'table' },
+	{ 'type': 'table', 'node': {} },
  	//  6 - Beginning of row
-	{ 'type': 'row' },
+	{ 'type': 'row', 'node': {} },
  	//  7 - Beginning of cell
-	{ 'type': 'cell' },
+	{ 'type': 'cell', 'node': {} },
  	//  8 - Beginning of paragraph
-	{ 'type': 'paragraph' },
+	{ 'type': 'paragraph', 'node': {} },
 	//  9 - Plain content
 	'a',
  	// 10 - End of paragraph
-	{ 'type': '/paragraph' },
+	{ 'type': '/paragraph', 'node': {} },
  	// 11 - Beginning of list
-	{ 'type': 'list' },
+	{ 'type': 'list', 'node': {} },
  	// 12 - Beginning of bullet list item
-	{ 'type': 'item', 'styles': ['bullet'] },
+	{ 'type': 'item', 'styles': ['bullet'], 'node': {} },
 	// 13 - Plain content
 	'a',
  	// 14 - End of item
-	{ 'type': '/item' },
+	{ 'type': '/item', 'node': {} },
  	// 15 - Beginning of nested bullet list item
-	{ 'type': 'item', 'styles': ['bullet', 'bullet'] },
+	{ 'type': 'item', 'styles': ['bullet', 'bullet'], 'node': {} },
 	// 16 - Plain content
 	'b',
  	// 17 - End of item
-	{ 'type': '/item' },
+	{ 'type': '/item', 'node': {} },
  	// 18 - Beginning of numbered list item
-	{ 'type': 'item', 'styles': ['number'] },
+	{ 'type': 'item', 'styles': ['number'], 'node': {} },
 	// 19 - Plain content
 	'c',
  	// 20 - End of item
-	{ 'type': '/item' },
+	{ 'type': '/item', 'node': {} },
  	// 21 - End of list
-	{ 'type': '/list' },
+	{ 'type': '/list', 'node': {} },
 	// 22 - End of cell
-	{ 'type': '/cell' }
+	{ 'type': '/cell', 'node': {} }
 	// 23 - End of row
-	{ 'type': '/row' }
+	{ 'type': '/row', 'node': {} }
 	// 24 - End of table
-	{ 'type': '/table' }
+	{ 'type': '/table', 'node': {} }
  	// 25 - Beginning of paragraph
-	{ 'type': 'paragraph' },
+	{ 'type': 'paragraph', 'node': {} },
 	// 26 - Plain content
 	'a'
  	// 27 - End of paragraph
-	{ 'type': '/paragraph' },
+	{ 'type': '/paragraph', 'node': {} },
 ];
 
 /*
