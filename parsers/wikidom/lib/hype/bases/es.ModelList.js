@@ -12,16 +12,16 @@
  * @extends {es.EventEmitter}
  */
 es.ModelList = function( items ) {
-	var items = new AggregateArray( items );
-	es.EventEmitter.call( items );
+	es.EventEmitter.call( this );
+	var list = new es.AggregateArray( list );
 	
 	// Reusable function for passing update events upstream
-	items.emitUpdate = function() {
-		items.emit( 'update' );
+	this.emitUpdate = function() {
+		list.emit( 'update' );
 	};
 	
 	// Extend native array with method and properties of this
-	return $.extend( items, this );
+	return $.extend( list, this );
 };
 
 /* Methods */
@@ -57,7 +57,7 @@ es.ModelList.prototype.getLastItem = function() {
  */
 es.ModelList.prototype.push = function( item ) {
 	item.attach( this );
-	item.on( 'update', this.relayUpdate );
+	item.on( 'update', this.emitUpdate );
 	Array.prototype.push.call( this, item );
 	this.emit( 'push', item );
 	this.emit( 'update' );
@@ -75,7 +75,7 @@ es.ModelList.prototype.push = function( item ) {
  */
 es.ModelList.prototype.unshift = function( item ) {
 	item.attach( this );
-	item.on( 'update', this.relayUpdate );
+	item.on( 'update', this.emitUpdate );
 	Array.prototype.unshift.call( this, item );
 	this.emit( 'unshift', item );
 	this.emit( 'update' );
@@ -94,7 +94,7 @@ es.ModelList.prototype.pop = function() {
 	if ( this.length ) {
 		var item = this[this.length - 1];
 		item.detach();
-		item.removeListener( 'update', this.relayUpdate );
+		item.removeListener( 'update', this.emitUpdate );
 		Array.prototype.pop.call( this, item );
 		this.emit( 'pop' );
 		this.emit( 'update' );
@@ -114,7 +114,7 @@ es.ModelList.prototype.shift = function() {
 	if ( this.length ) {
 		var item = this[0];
 		item.detach();
-		item.removeListener( 'update', this.relayUpdate );
+		item.removeListener( 'update', this.emitUpdate );
 		Array.prototype.shift.call( this, item );
 		this.emit( 'shift' );
 		this.emit( 'update' );
@@ -143,9 +143,9 @@ es.ModelList.prototype.splice = function( index, howmany ) {
 	var removed = Array.prototype.splice.apply( this, args );
 	for ( var i = 0; i < removed.length; i++ ) {
 		removed[i].detach();
-		removed[i].removeListener( 'update', this.relayUpdate );
+		removed[i].removeListener( 'update', this.emitUpdate );
 	}
-	this.emit.apply( ['splice'].concat( args ) );
+	this.emit.apply( this, ['splice'].concat( args ) );
 	this.emit( 'update' );
 	return removed;
 };

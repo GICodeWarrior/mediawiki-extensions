@@ -74,14 +74,14 @@ es.EventEmitter.prototype.addListeners = function( listeners ) {
  * Add multiple listeners, each mapped to a method on a target object.
  * 
  * @method
- * @param target {Object} Object to call methods on when events occur
- * @param map {Object} List of event/method name pairs
+ * @param context {Object} Object to call methods on when events occur
+ * @param methods {Object} List of event/method name pairs
  * @returns {es.EventEmitter} This object
  */
-es.EventEmitter.prototype.addListenerMethods = function( target, map ) {
-	for ( var event in map ) {
+es.EventEmitter.prototype.addListenerMethods = function( context, methods ) {
+	for ( var event in methods ) {
 		this.addListener( event, function() {
-			target[map[event]].apply( target, Array.prototype.slice( arguments, 1 ) ) );
+			context[methods[event]].apply( context, Array.prototype.slice( arguments, 1 ) );
 		} );
 	}
 	return this;

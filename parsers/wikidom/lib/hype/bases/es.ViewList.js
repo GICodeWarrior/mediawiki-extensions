@@ -15,25 +15,30 @@
  * @property {jQuery} $ Container element
  */
 es.ViewList = function( model, $element ) {
+	es.EventEmitter.call( this );
 	var list = new es.AggregateArray();
-	es.EventEmitter.call( list );
 	
 	// Extending this class will initialize it without any arguments, exiting early if no model
 	// was given will prevent clogging up subclass prototypes with array methods
 	if ( !model ) {
-		return list;
+		return this;
 	}
 	
-	list.model = model;
-	list.$ = $element || $( '<div/>' );
+	this.model = model;
+	this.$ = $element || $( '<div/>' );
 	
 	// Reusable function for passing update events upstream
 	this.emitUpdate = function() {
 		list.emit( 'update' );
 	};
 	
+	// Append existing model items
+	for ( var i = 0; i < model.length; i++ ) {
+		this.onPush( model[i] );
+	}
+	
 	// Observe and mimic changes on model
-	model.addListenerMethods( list, {
+	this.addListenerMethods( list, {
 		'push': 'onPush',
 		'unshift': 'onUnshift',
 		'pop': 'onPop',
@@ -42,11 +47,6 @@ es.ViewList = function( model, $element ) {
 		'sort': 'onSort',
 		'reverse': 'onReverse'
 	} );
-	
-	// Append existing model items
-	for ( var i = 0; i < model.length; i++ ) {
-		this.onPush( model[i] );
-	}
 	
 	// Extend native array with method and properties of this
 	return $.extend( list, this );
