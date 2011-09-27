@@ -94,7 +94,7 @@ class ApiQueryMoodBarComments extends ApiQueryBase {
 			ApiResult::setContent( $r, $row->mbf_comment );
 		}
 		if ( isset( $prop['formatted'] ) ) {
-			$r['formatted'] = SpecialMoodBarFeedback::formatListItem( $row );
+			$r['formatted'] = SpecialFeedbackDashboard::formatListItem( $row );
 		}
 		return $r;
 	}

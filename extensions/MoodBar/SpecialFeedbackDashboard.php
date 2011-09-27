@@ -1,10 +1,10 @@
 <?php
 /**
- * Special:MoodBarFeedback. Special page for viewing moodbar comments.
+ * Special:FeedbackDashboard. Special page for viewing moodbar comments.
  */
-class SpecialMoodBarFeedback extends SpecialPage {
+class SpecialFeedbackDashboard extends SpecialPage {
 	public function __construct() {
-		parent::__construct( 'MoodBarFeedback' );
+		parent::__construct( 'FeedbackDashboard' );
 	}
 	
 	public function getDescription() {
@@ -19,7 +19,7 @@ class SpecialMoodBarFeedback extends SpecialPage {
 		$filterType = '';
 		$id = intval( $par );
 		if ( $id > 0 ) {
-			// Special:MoodBarFeedback/123 is an ID/permalink view
+			// Special:FeedbackDashboard/123 is an ID/permalink view
 			$filters = array( 'id' => $id );
 			$filterType = 'id';
 		} else {
@@ -127,7 +127,7 @@ HTML;
 		//$links = Linker::userToolLinks( $row->mbf_user_id, $username );
 		$links = $GLOBALS['wgUser']->getSkin()->userToolLinks( $row->mbf_user_id, $username ); // 1.17wmf1 compat
 		$comment = htmlspecialchars( $row->mbf_comment );
-		$permalinkURL = htmlspecialchars( SpecialPage::getTitleFor( 'MoodBarFeedback', $row->mbf_id )->getLinkURL() );
+		$permalinkURL = htmlspecialchars( SpecialPage::getTitleFor( 'FeedbackDashboard', $row->mbf_id )->getLinkURL() );
 		$permalinkText = wfMessage( 'moodbar-feedback-permalink' )->escaped();
 		$continueData = wfTimestamp( TS_MW, $row->mbf_timestamp ) . '|' . intval( $row->mbf_id );
 		
