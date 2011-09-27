@@ -25,4 +25,20 @@ test( 'es.ModelList and es.ModelItem', function() {
 	modelList.splice( 1, 0, modelItem3 );
 	equal( updates, 3, 'es.modelList emits update events on splice' );
 	equal( modelList[1], modelItem3, 'es.modelList inserts item on splice' );
+	
+	modelList.pop();
+	equal( updates, 4, 'es.modelList emits update events on pop' );
+	deepEqual(
+		modelList.slice( 0 ),
+		[modelItem2, modelItem3],
+		'es.modelList removes last item on pop'
+	);
+	
+	modelList.shift();
+	equal( updates, 5, 'es.modelList emits update events on shift' );
+	deepEqual(
+		modelList.slice( 0 ),
+		[modelItem3],
+		'es.modelList removes first item on shift'
+	);
 } );
