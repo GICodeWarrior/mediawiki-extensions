@@ -276,12 +276,7 @@ abstract class ContestDBObject {
 	 * @return boolean Success indicator
 	 */
 	public function removeFromDB() {
-		$dbw = wfGetDB( DB_MASTER );
-		
-		$sucecss = $dbw->delete(
-			$this->getDBTable(),
-			array( $this->getFieldPrefix() . 'id' => $this->getId() )
-		);
+		$sucecss = $this->delete( array( 'id' => $this->getId() ) );
 		
 		if ( $sucecss ) {
 			$this->setField( 'id', null );
@@ -480,6 +475,22 @@ abstract class ContestDBObject {
 		return $this->newFromArray( $data );
 	}
 
+	/**
+	 * Removes the object from the database.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param array $conditions
+	 * 
+	 * @return boolean Success indicator
+	 */
+	public function delete( array $conditions ) {
+		return wfGetDB( DB_MASTER )->delete(
+			$this->getDBTable(),
+			$this->getPrefixedValues( $conditions )
+		);
+	}
+	
 	/**
 	 * Selects the the specified fields of the records matching the provided
 	 * conditions. Field names get prefixed.
