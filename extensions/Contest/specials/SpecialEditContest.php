@@ -91,7 +91,7 @@ class SpecialEditContest extends FormSpecialPage {
 				$contest = new Contest( $data, true );
 			}
 			else {
-				// TODO: warn not new
+				$this->showWarning( 'contest-edit-exists-already' );
 			}
 		}
 		else {
@@ -211,6 +211,19 @@ class SpecialEditContest extends FormSpecialPage {
 	
 	public function onSuccess() {
 		$this->getOutput()->redirect( SpecialPage::getTitleFor( 'Contests' )->getLocalURL() );
+	}
+
+	/**
+	 * Show a message in a warning box.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param string $message
+	 */
+	protected function showWarning( $message ) {
+		$this->getOutput()->addHTML(
+			'<p class="visualClear warningbox">' . wfMsgExt( $message, 'parseinline' ) . '</p>'
+		);
 	}
 	
 }

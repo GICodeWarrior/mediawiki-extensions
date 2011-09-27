@@ -104,6 +104,13 @@ class Contest extends ContestDBObject {
 		);
 	}
 	
+	/**
+	 * Gets the message for the provided status.
+	 * 
+	 * @param Contest::STATUS_ $status
+	 * 
+	 * @return string
+	 */
 	public static function getStatusMessage( $status ) {
 		static $map = false;
 		
@@ -114,6 +121,13 @@ class Contest extends ContestDBObject {
 		return $map[$status];
 	}
 	
+	/**
+	 * Returns a list of status messages and their corresponding constants.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return array
+	 */
 	public static function getStatusMessages() {
 		static $map = false;
 		
@@ -126,6 +140,19 @@ class Contest extends ContestDBObject {
 		}
 		
 		return $map;
+	}
+	
+	/**
+	 * Gets the challanges that are part of this contest.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return array of ContestChallange
+	 */
+	public function getChallanges() {
+		// TODO
+		
+		return array();
 	}
 	
 }

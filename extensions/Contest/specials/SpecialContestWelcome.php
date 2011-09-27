@@ -43,6 +43,43 @@ class SpecialContestWelcome extends SpecialContestPage {
 			return;
 		}
 		
+		$out = $this->getOutput();
+		
+		$out->setPageTitle( $this->getDescription() );
+		
+		$contest = Contest::s()->selectRow( null, array( 'name' => $subPage ) );
+		
+		if ( $contest === false ) {
+			$this->showError( 'contest-welcome-unknown' );
+			$out->addHTML( '<br /><br /><br /><br />' );
+			$out->returnToMain();
+		}
+		else {
+			$this->showIntro( $contest );
+			$this->showChallanges( $contest->getChallanges() );
+			$this->showOpportunities();
+			$this->showRules();
+			$this->showSignupLinks( $contest );
+		}
+	}
+	
+	protected function showIntro( Contest $contest ) {
+		
+	}
+	
+	protected function showChallanges( array /* of ContestChallange */ $challanges ) {
+		
+	}
+	
+	protected function showOpportunities() {
+		
+	}
+	
+	protected function showRules() {
+		
+	}
+	
+	protected function showSignupLinks( Contest $contest ) {
 		
 	}
 	

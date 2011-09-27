@@ -59,6 +59,10 @@ $messages['en'] = array(
 	'editcontest-legend' => 'Contest',
 	'contest-edit-name' => 'Contest name',
 	'contest-edit-status' => 'Contest status',
+	'contest-edit-exists-already' => 'Note: you are editing an already existing contest, not creating a new one.',
+
+	// Special:ContestWelcome
+	'contest-welcome-unknown' => 'There is no contest with the provided name.',
 );
 
 /** Message documentation (Message documentation)
