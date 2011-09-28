@@ -1,21 +1,18 @@
 <?php
 
 /**
- * 
+ * Contest challange object.
+ * Each contest (can) has a list of associated challanges.  
  * 
  * @since 0.1
  * 
- * @file Contest.class.php
+ * @file ContestChallange.php
  * @ingroup Contest
  * 
  * @licence GNU GPL v3 or later
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class Contest extends ContestDBObject {
-	
-	const STATUS_DRAFT = 0;
-	const STATUS_ACTIVE = 1;
-	const STATUS_FINISHED = 2;
+class ContestChallange extends ContestDBObject {
 	
 	/**
 	 * Method to get an instance so methods that ought to be static,
@@ -38,7 +35,7 @@ class Contest extends ContestDBObject {
 	}
 	
 	/**
-	 * Get a new instance of the class from an array. 
+	 * Get a new instance of the class from an array.
 	 * This method ought to be in the basic class and
 	 * return a new static(), but this requires LSB/PHP>=5.3.
 	 * 
@@ -61,7 +58,7 @@ class Contest extends ContestDBObject {
 	 * @return string
 	 */
 	public function getDBTable() {
-		return 'contests';
+		return 'contest_challanges';
 	}
 
 	/**
@@ -72,7 +69,7 @@ class Contest extends ContestDBObject {
 	 * @return string
 	 */
 	protected function getFieldPrefix() {
-		return 'contest_';
+		return 'challange_';
 	}
 	
 	/**
@@ -85,9 +82,8 @@ class Contest extends ContestDBObject {
 	protected function getFieldTypes() {
 		return array(
 			'id' => 'id',
-			'name' => 'str',
-			'status' => 'int',
-			'submission_count' => 'int',
+			'contest_id' => 'id',
+			'text' => 'str',
 		);
 	}
 	
@@ -100,61 +96,7 @@ class Contest extends ContestDBObject {
 	 */
 	public function getDefaults() {
 		return array(
-			'name' => '',
-			'status' => self::STATUS_DRAFT,
-			'submission_count' => 0,
-		);
-	}
-	
-	/**
-	 * Gets the message for the provided status.
-	 * 
-	 * @param Contest::STATUS_ $status
-	 * 
-	 * @return string
-	 */
-	public static function getStatusMessage( $status ) {
-		static $map = false;
-		
-		if ( $map === false ) {
-			$map = array_flip( self::getStatusMessages() );
-		}
-		
-		return $map[$status];
-	}
-	
-	/**
-	 * Returns a list of status messages and their corresponding constants.
-	 * 
-	 * @since 0.1
-	 * 
-	 * @return array
-	 */
-	public static function getStatusMessages() {
-		static $map = false;
-		
-		if ( $map === false ) {
-			$map = array(
-				wfMsg( 'contest-status-draft' ) => self::STATUS_DRAFT,
-				wfMsg( 'contest-status-active' ) => self::STATUS_ACTIVE,
-				wfMsg(  'contest-status-finished' ) => self::STATUS_FINISHED,
-			);
-		}
-		
-		return $map;
-	}
-	
-	/**
-	 * Gets the challanges that are part of this contest.
-	 * 
-	 * @since 0.1
-	 * 
-	 * @return array of ContestChallange
-	 */
-	public function getChallanges() {
-		return ContestChallange::s()->select(
-			null,
-			array( 'contest_id' => $this->getId() )
+			'text' => '',
 		);
 	}
 	
