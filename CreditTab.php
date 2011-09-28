@@ -25,14 +25,19 @@ $dir = dirname( __FILE__ ) . '/';
 // Internationalization
 $wgExtensionMessagesFiles['CreditTab'] = $dir . 'CreditTab.i18n.php';
 
-$wgHooks['ParserBeforeTidy'][] = 'addAuthorHeadLink';
+$wgHooks['BeforePageDisplay'][] = 'addAuthorHeadLink';
 $wgHooks['SkinTemplateNavigation'][] = 'displayTab';
 
-function addAuthorHeadLink ( &$parser, &$text ) {
-	global $wgTitle;
-	$parser->mOutput->addHeadItem('<link rel="author" type="text/html" title="' . wfMsg('credits-tab') . '" href="' . $wgTitle->getLocalURL( 'action=credits' ) . '" />');
+function addAuthorHeadLink ( &$out, &$sk ) {
+	$out->addLink( array(
+	  'rel' => 'author',
+	  'type' => 'text/html',
+	  'title' => wfMsg('credits-tab'),
+	  'href' => $out->getTitle()->getLocalURL( 'action=credits' ),
+	) );
 	return true;
 }
+	
 function displayTab( $obj, &$links ) {
 		// the old '$content_actions' array is thankfully just a
 		// sub-array of this one
