@@ -158,4 +158,18 @@ class Contest extends ContestDBObject {
 		);
 	}
 	
+	/**
+	 * Gets the contestants for this contest.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return array of ContestContestant
+	 */
+	public function getContestants() {
+		return ContestContestant::s()->select(
+			null,
+			array( 'contest_id' => $this->getId() )
+		);
+	}
+	
 }
