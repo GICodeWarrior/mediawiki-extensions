@@ -84,6 +84,7 @@ class ContestChallange extends ContestDBObject {
 			'id' => 'id',
 			'contest_id' => 'id',
 			'text' => 'str',
+			'title' => 'str',
 		);
 	}
 	
@@ -97,6 +98,7 @@ class ContestChallange extends ContestDBObject {
 	public function getDefaults() {
 		return array(
 			'text' => '',
+			'title' => '',
 		);
 	}
 	

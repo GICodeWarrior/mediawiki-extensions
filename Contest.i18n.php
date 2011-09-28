@@ -38,7 +38,7 @@ $messages['en'] = array(
 	'special-contestwelcome' => 'Contest',
 	'special-editcontest' => 'Edit contest',
 
-	// Navigatio links
+	// Navigation links
 	'contest-nav-contests' => 'Contests list',
 	'contest-nav-editcontest' => 'Edit contest',
 	'contest-nav-contest' => 'Summary and participants',
@@ -67,6 +67,14 @@ $messages['en'] = array(
 	'contest-edit-name' => 'Contest name',
 	'contest-edit-status' => 'Contest status',
 	'contest-edit-exists-already' => 'Note: you are editing an already existing contest, not creating a new one.',
+
+	'contest-edit-challanges' => 'Contest challanges',
+	'contest-edit-delete' => 'Delete challange',
+	'contest-edit-add-first' => 'Add a challange',
+	'contest-edit-add-another' => 'Add another challange',
+	'contest-edit-confirm-delete' => 'Are you sure you want to delete this challange?',
+	'contest-edit-challange-title' => 'Challange title',
+	'contest-edit-challange-text' => 'Challange text',
 
 	// Special:ContestWelcome
 	'contest-welcome-unknown' => 'There is no contest with the provided name.',
