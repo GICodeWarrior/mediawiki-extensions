@@ -29,15 +29,18 @@ def fillsubsts():
 	#   <var>:<domainname>
 	# For instance:
 	#   $langlist_wikimedia:wikimedia-lb.wikimedia.org.
-	domainmap = open(domainmaplist)
 	domainlist = {}
-	for map in domainmap:
+	domainmap = open(domainmaplist)
+	for map in domainmap.readlines():
+		if map[0] == "#":
+			continue
+		map = map.strip()
 		var, value = map.split(':')
 		domainlist[var] = value
 
 	# All substs[var] in this loop contain a list of CNAMES to the geodns record for
 	# all language subdomains
-	for var, value in domainlist.itervalues():
+	for var, value in domainlist.iteritems():
 		list = open(langlist).read()
 		list = list.replace('$cnamedomain', value)
 		substs[var] = list
