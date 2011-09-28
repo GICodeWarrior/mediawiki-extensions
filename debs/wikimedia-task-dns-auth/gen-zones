@@ -31,12 +31,19 @@ def fillsubsts():
 	#   $langlist_wikimedia:wikimedia-lb.wikimedia.org.
 	domainlist = {}
 	domainmap = open(domainmaplist)
+	lineno=0
 	for map in domainmap.readlines():
-		if map[0] == "#":
-			continue
+		lineno = lineno + 1
 		map = map.strip()
-		var, value = map.split(':')
-		domainlist[var] = value
+		# skip blank lines and comments
+		if not map or map.startswith("#"):
+			continue
+		try:
+			var, value = map.split(':')
+		except ValueError, e:
+			print "Syntax error in %s at line %s: %s.  Quitting." % (domainmaplist, lineno, e)
+			exit(1)
+		domainlist[var.split()] = value.split()
 
 	# All substs[var] in this loop contain a list of CNAMES to the geodns record for
 	# all language subdomains
