@@ -44,7 +44,7 @@ jQuery( function( $ ) {
 	 * @return bool True if the form is no longer blank (i.e. at least one value was changed), false otherwise
 	 */
 	function loadFromCookies() {
-		var	cookieTypes = $.cookie( 'moodbar-feedback-types' );
+		var	cookieTypes = $.cookie( 'moodbar-feedback-types' ),
 			$username = $( '#fbd-filters-username' ),
 			changed = false;
 		if ( $username.val() == '' ) {
