@@ -161,7 +161,7 @@ es.ModelList.prototype.splice = function( index, howmany ) {
 es.ModelList.prototype.sort = function( sortfunc ) {
 	this.emit( 'sort' );
 	this.emit( 'update' );
-	Array.prototype.reverse.call( this );
+	Array.prototype.sort.call( this );
 };
 
 /**

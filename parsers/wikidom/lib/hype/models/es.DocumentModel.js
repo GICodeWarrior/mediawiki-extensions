@@ -25,11 +25,11 @@ es.DocumentModel.isElement = function( content ) {
 
 /* Methods */
 
-es.DocumentModel.prototype.findElement = function( node, root, callback ) {
+es.DocumentModel.prototype.findElement = function( node, root ) {
 	for ( var i = 0; i < this.data.length; i++ ) {
 		if ( es.DocumentModel.isElement( this.data[i] ) ) {
 			if ( content.node === node ) {
-				return callback( i );
+				return i;
 			}
 			// If we are looking for a root node, we can skip over the contents of this one
 			if ( root ) {
@@ -49,9 +49,11 @@ es.DocumentModel.prototype.findElement = function( node, root, callback ) {
  * @returns {Object|null} Element object
  */
 es.DocumentModel.prototype.getElement = function( node, root ) {
-	return this.findNode( node, root, function( index ) {
+	var index = this.findNode( node, root );
+	if ( index !== null ) {
 		return this.data[index];
-	} );
+	}
+	return null;
 };
 
 /**
@@ -63,9 +65,11 @@ es.DocumentModel.prototype.getElement = function( node, root ) {
  * @returns {Array|null} List of content and elements inside node or null if node is not found
  */
 es.DocumentModel.prototype.getContent = function( node, root ) {
-	return this.findNode( node, root, function( index ) {
+	var index = this.findNode( node, root );
+	if ( index !== null ) {
 		return this.data.slice( index + 1, index + node.getContentLength() );
-	} );
+	}
+	return null;
 };
 
 /**
