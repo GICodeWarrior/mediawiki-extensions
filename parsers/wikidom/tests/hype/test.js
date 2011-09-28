@@ -26,19 +26,22 @@ test( 'es.ModelNode', function() {
 	equal( updates, 3, 'es.ModelNode emits update events on splice' );
 	equal( modelNode1[1], modelNode4, 'es.ModelNode inserts Node on splice' );
 	
+	modelNode1.reverse();
+	equal( updates, 4, 'es.ModelNode emits update events on reverse' );
+	
 	modelNode1.pop();
-	equal( updates, 4, 'es.ModelNode emits update events on pop' );
+	equal( updates, 5, 'es.ModelNode emits update events on pop' );
 	deepEqual(
 		modelNode1.slice( 0 ),
-		[modelNode3, modelNode4],
+		[modelNode3, modelNode2],
 		'es.ModelNode removes last Node on pop'
 	);
 	
 	modelNode1.shift();
-	equal( updates, 5, 'es.ModelNode emits update events on shift' );
+	equal( updates, 6, 'es.ModelNode emits update events on shift' );
 	deepEqual(
 		modelNode1.slice( 0 ),
-		[modelNode4],
+		[modelNode2],
 		'es.ModelNode removes first Node on shift'
 	);
 } );
