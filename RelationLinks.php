@@ -16,9 +16,14 @@ $wgExtensionCredits['other'][] = array(
     'name' => 'RelationLinks',
     'author' => '[http://www.dasch-tour.de DaSch]',
     'description' => 'Adds link rel to header, that can used for navigation and for SEO',
+	'descriptionmsg' => 'relationlinks-desc',
 	'version'       =>  '0.2.1',
     'url' => 'http://www.mediawiki.org/wiki/Extension:RelationLinks',
 );
+$dir = dirname( __FILE__ ) . '/';
+
+// Internationalization
+$wgExtensionMessagesFiles['RelationLinks'] = $dir . 'RelationLinks.i18n.php';
 
 $wgHooks['ParserBeforeTidy'][] = 'addRelationLinks';
 
