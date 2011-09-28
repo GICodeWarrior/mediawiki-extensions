@@ -1,8 +1,10 @@
 $(document).ready( function() {
-	var doc = es.DocumentModel.newFromPlainObject( { 'blocks': [
+	var doc = es.DocumentModel.newFromPlainObject( {
+		'type': 'document',
+		'children': [
 		{
 			'type': 'heading',
-			'level': 1,
+			'attributes': { 'level': 1 },
 			'content': {
 				'text': 'This is a heading (level 1)',
 				'annotations': [
@@ -19,7 +21,7 @@ $(document).ready( function() {
 		},
 		{
 			'type': 'heading',
-			'level': 2,
+			'attributes': { 'level': 2 },
 			'content': {
 				'text': 'This is a heading (level 2)',
 				'annotations': [
@@ -36,7 +38,7 @@ $(document).ready( function() {
 		},
 		{
 			'type': 'heading',
-			'level': 3,
+			'attributes': { 'level': 3 },
 			'content': {
 				'text': 'This is a heading (level 3)',
 				'annotations': [
@@ -53,7 +55,7 @@ $(document).ready( function() {
 		},
 		{
 			'type': 'heading',
-			'level': 4,
+			'attributes': { 'level': 4 },
 			'content': {
 				'text': 'This is a heading (level 4)',
 				'annotations': [
@@ -70,7 +72,7 @@ $(document).ready( function() {
 		},
 		{
 			'type': 'heading',
-			'level': 5,
+			'attributes': { 'level': 5 },
 			'content': {
 				'text': 'This is a heading (level 5)',
 				'annotations': [
@@ -87,7 +89,7 @@ $(document).ready( function() {
 		},
 		{
 			'type': 'heading',
-			'level': 6,
+			'attributes': { 'level': 6 },
 			'content': {
 				'text': 'This is a heading (level 6)',
 				'annotations': [
@@ -142,13 +144,15 @@ $(document).ready( function() {
 		},
 		{
 			'type': 'table',
-			'attributes': { 'style': 'width: 600px; border: solid 1px;' },
-			'rows': [
+			'attributes': { 'html/style': 'width: 600px; border: solid 1px;' },
+			'children': [
 				{
-					'cells': [
+					'type': 'tableRow',
+					'children': [
 						{
-							'attributes': { 'style': 'border: solid 1px;' },
-							'blocks': [
+							'type': 'tableCell',
+							'attributes': { 'html/style': 'border: solid 1px;' },
+							'children': [
 								{
 									'type': 'paragraph',
 									'content': { 'text': 'row 1 & cell 1' }
@@ -156,8 +160,9 @@ $(document).ready( function() {
 							]
 						},
 						{
-							'attributes': { 'style': 'border: solid 1px;' },
-							'blocks': [
+							'type': 'tableCell',
+							'attributes': { 'html/style': 'border: solid 1px;' },
+							'children': [
 								{
 									'type': 'paragraph',
 									'content': { 'text': 'row 1 & cell 2' }
@@ -167,10 +172,12 @@ $(document).ready( function() {
 					]
 				},
 				{
-					'cells': [
+					'type': 'tableRow',
+					'children': [
 						{
-							'attributes': { 'style': 'border: solid 1px;' },
-							'blocks': [
+							'type': 'tableCell',
+							'attributes': { 'html/style': 'border: solid 1px;' },
+							'children': [
 								{
 									'type': 'paragraph',
 									'content': { 'text': 'row 2 & cell 1' }
@@ -178,21 +185,24 @@ $(document).ready( function() {
 							]
 						},
 						{
-							'attributes': { 'style': 'border: solid 1px;' },
-							'blocks': [
+							'type': 'tableCell',
+							'attributes': { 'html/style': 'border: solid 1px;' },
+							'children': [
 								{
 									'type': 'paragraph',
 									'content': { 'text': 'row 2 & cell 2' }
 								},
 								{
 									'type': 'table',
-									'attributes': { 'style': 'width: 150px; border: solid 1px;' },
-									'rows': [
+									'attributes': { 'html/style': 'width: 150px; border: solid 1px;' },
+									'children': [
 										{
-											'cells': [
+											'type': 'tableRow',
+											'children': [
 												{
-													'attributes': { 'style': 'border: solid 1px;' },
-													'blocks': [
+													'type': 'tableCell',
+													'attributes': { 'html/style': 'border: solid 1px;' },
+													'children': [
 														{
 															'type': 'paragraph',
 															'content': { 'text': '#1 #1 #1' }
@@ -200,8 +210,9 @@ $(document).ready( function() {
 													]
 												},
 												{
-													'attributes': { 'style': 'border: solid 1px;' },
-													'blocks': [
+													'type': 'tableCell',
+													'attributes': { 'html/style': 'border: solid 1px;' },
+													'children': [
 														{
 															'type': 'paragraph',
 															'content': { 'text': '#2 #2 #2' }
@@ -211,10 +222,12 @@ $(document).ready( function() {
 											]
 										},
 										{
-											'cells': [
+											'type': 'tableRow',
+											'children': [
 												{
-													'attributes': { 'style': 'border: solid 1px;' },
-													'blocks': [
+													'type': 'tableCell',
+													'attributes': { 'html/style': 'border: solid 1px;' },
+													'children': [
 														{
 															'type': 'paragraph',
 															'content': { 'text': '#3 #3 #3' }
@@ -222,8 +235,9 @@ $(document).ready( function() {
 													]
 												},
 												{
-													'attributes': { 'style': 'border: solid 1px;' },
-													'blocks': [
+													'type': 'tableCell',
+													'attributes': { 'html/style': 'border: solid 1px;' },
+													'children': [
 														{
 															'type': 'paragraph',
 															'content': { 'text': '#4 #4 #4' }
@@ -236,11 +250,12 @@ $(document).ready( function() {
 								},
 								{
 									'type': 'list',
-									'style': 'number',
-									'items': [
+									'attributes': { 'style': 'number' },
+									'children': [
 										{
+											'type': 'listItem',
 											'content': { 'text': 'First item' },
-											'lists': [
+											'children': [ // FIXME?!?
 												{
 													'style': 'bullet',
 													'items': [
@@ -251,6 +266,7 @@ $(document).ready( function() {
 											]
 										},
 										{
+											'type': 'listItem',
 											'content': {
 												'text': 'Second item',
 												'annotations': [
@@ -265,6 +281,7 @@ $(document).ready( function() {
 											}
 										},
 										{
+											'type': 'listItem',
 											'content': {
 												'text': 'Third item',
 												'annotations': [
@@ -279,6 +296,7 @@ $(document).ready( function() {
 											}
 										},
 										{
+											'type': 'listItem',
 											'content': {
 												'text': 'Fourth item',
 												'annotations': [
@@ -294,7 +312,7 @@ $(document).ready( function() {
 											}
 										}
 									]
-								}									
+								}
 							]
 						}
 					]
@@ -303,27 +321,31 @@ $(document).ready( function() {
 		},
 		{
 			'type': 'list',
-			'style': 'number',
-			'items': [
+			'attributes': { 'style': 'number' },
+			'children': [
 				{
+					'type': 'listItem'.
 					'content': { 'text': 'Operating Systems' },
-					'lists': [
+					'children': [ // FIXME?!?
 						{
-							'style': 'bullet',
-							'items': [
+							'attributes': { 'style': 'bullet' },
+							'children': [
 								{
+									'type': 'listItem',
 									'content': { 'text': 'Linux' },
-									'lists': [
+									'children': [ // FIXME?!?
 										{
-											'style': 'bullet',
-											'items': [
+											'attributes': { 'style': 'bullet' },
+											'children': [
 												{
+													'type': 'listItem',
 													'content': { 'text': 'Ubuntu' },
-													'lists': [
+													'children': [ //FIXME?!?
 														{
-															'style': 'bullet',
-															'items': [
+															'attributes': { 'style': 'bullet' },
+															'children': [
 																{
+																	'type': 'listItem',
 																	'content': {
 																		'text': 'Desktop: Intuitive office apps, safe and fast web browsing, and seamless integration.  Ubuntu brings the very best technologies straight to the desktop.',
 																		'annotations': [
@@ -338,25 +360,26 @@ $(document).ready( function() {
 																		]
 																	}
 																},
-																{ 'content': { 'text': 'Server: Secure, fast and powerful, Ubuntu Server is transforming IT environments worldwide. Realise the full potential of your infrastructure with a reliable, easy-to-integrate technology platform. Lorem ipsum.. Lorem ipsum.. Lorem ipsum.. Lorem ipsum.. Lorem ipsum.. Lorem ipsum.. Lorem ipsum.. Lorem ipsum.. Lorem ipsum.. Lorem ipsum.. ' } },
-																{ 'content': { 'text': 'Cloud: Ubuntu cloud computing puts you in control of your IT infrastructure. It helps you access computing power as and when you need it so you can meet user demand more effectively.' } }
+																{ 'type': 'listItem', 'content': { 'text': 'Server: Secure, fast and powerful, Ubuntu Server is transforming IT environments worldwide. Realise the full potential of your infrastructure with a reliable, easy-to-integrate technology platform. Lorem ipsum.. Lorem ipsum.. Lorem ipsum.. Lorem ipsum.. Lorem ipsum.. Lorem ipsum.. Lorem ipsum.. Lorem ipsum.. Lorem ipsum.. Lorem ipsum.. ' } },
+																{ 'type': 'listItem', 'content': { 'text': 'Cloud: Ubuntu cloud computing puts you in control of your IT infrastructure. It helps you access computing power as and when you need it so you can meet user demand more effectively.' } }
 															]
 														}
 													]
 												},
-												{ 'content': { 'text': 'Fedora' } },
-												{ 'content': { 'text': 'Gentoo' } }
+												{ 'type': 'listItem', 'content': { 'text': 'Fedora' } },
+												{ 'type': 'listItem', 'content': { 'text': 'Gentoo' } }
 											]
 										}
 									]
 								},
-								{ 'content': { 'text': 'Windows' } },
-								{ 'content': { 'text': 'Mac' } }
+								{ 'type': 'listItem', 'content': { 'text': 'Windows' } },
+								{ 'type': 'listItem', 'content': { 'text': 'Mac' } }
 							]
 						}
 					]
 				},
 				{
+					'type': 'listItem',
 					'content': {
 						'text': 'Second item',
 						'annotations': [
@@ -371,6 +394,7 @@ $(document).ready( function() {
 					}
 				},
 				{
+					'type': 'listItem',
 					'content': {
 						'text': 'Third item',
 						'annotations': [
@@ -385,6 +409,7 @@ $(document).ready( function() {
 					}
 				},
 				{
+					'type': 'listItem',
 					'content': {
 						'text': 'Fourth item',
 						'annotations': [
