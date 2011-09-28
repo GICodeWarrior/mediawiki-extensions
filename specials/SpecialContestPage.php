@@ -81,4 +81,15 @@ abstract class SpecialContestPage extends SpecialPage {
 		);
 	}
 	
+	/**
+	 * Display navigation links.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param array $links
+	 */
+	protected function displayNavigation( array $links ) {
+		$this->getOutput()->addHTML( Html::rawElement( 'p', array(), $this->getLang()->pipeList( $links ) ) );
+	}
+	
 }

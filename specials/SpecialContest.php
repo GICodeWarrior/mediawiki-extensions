@@ -48,12 +48,64 @@ class SpecialContest extends SpecialContestPage {
 		}
 	}
 	
+	/**
+	 * Display the general contest info.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param Contest $contest
+	 */
 	protected function showGeneralInfo( Contest $contest ) {
-		// TODO
+		$out = $this->getOutput();
+		
+		$out->addHTML( Html::openElement( 'table', array( 'class' => 'wikitable contest-summary' ) ) );
+		
+		foreach ( $this->getSummaryData( $contest ) as $stat => $value ) {
+			$out->addHTML( '<tr>' );
+			
+			$out->addHTML( Html::element(
+				'th',
+				array( 'class' => 'contest-summary-name' ),
+				wfMsg( 'contest-contest-' . $stat )
+			) );
+			
+			$out->addHTML( Html::element(
+				'td',
+				array( 'class' => 'contest-summary-value' ),
+				$value
+			) );
+			
+			$out->addHTML( '</tr>' );
+		}
+		
+		$out->addHTML( Html::closeElement( 'table' ) );
+	}
+	
+	/**
+	 * Gets the summary data.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param Contest $contest
+	 * 
+	 * @return array
+	 */
+	protected function getSummaryData( Contest $contest ) {
+		$stats = array();
+		
+		$stats['name'] = $contest->getField( 'name' );
+		$stats['status'] = Contest::getStatusMessage( $contest->getField( 'status' ) );
+		$stats['submissioncount'] = $this->getLang()->formatNum( $contest->getField( 'submission_count' ) );
+		
+		return $stats;
 	}
 	
 	// TODO: list scores and comment counts as well
 	protected function showContestants( Contest $contest ) {
+		$out = $this->getOutput();
+		
+		$out->addHTML( Html::element( 'h3', array(), wfMsg( 'contest-contest-contestants' ) ) );
+		
 		$conds = array(
 			'contestant_contest_id' => $contest->getId()
 		);
@@ -61,14 +113,14 @@ class SpecialContest extends SpecialContestPage {
 		$pager = new ContestantPager( $this, $conds );
 		
 		if ( $pager->getNumRows() ) {
-			$this->getOutput()->addHTML(
+			$out->addHTML(
 				$pager->getNavigationBar() .
 				$pager->getBody().
 				$pager->getNavigationBar()
 			);
 		}
 		else {
-			$this->getOutput()->addWikiMsg( 'contest-contest-no-results' );
+			$out->addWikiMsg( 'contest-contest-no-results' );
 		}
 	}
 	
