@@ -6,6 +6,7 @@
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
  */
 
+// TODO: put all stuff in HTMLForm form so the submission stuff doesn't fail
 
 (function( $, mw ) {
 	
@@ -99,6 +100,8 @@
 		} );
 		
 		$( '.contest-new-challange' ).html( $addNew );
+		
+		$( '#bodyContent' ).find( '[type="submit"]' ).button();
 	
 	} );
 	
