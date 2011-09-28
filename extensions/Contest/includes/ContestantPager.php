@@ -41,6 +41,12 @@ class ContestantPager extends TablePager {
 	}
 
 	public function formatValue( $name, $value ) {
+		switch ( $name ) {
+			case 'contestant_volunteer': case 'contestant_wmf':
+				$value = wfMsg( 'contest-contestant-' . ( $value === '1' ? 'yes' : 'no' ) );
+				break;
+		}
+		
 		return $value;
 	}
 
@@ -82,7 +88,7 @@ class ContestantPager extends TablePager {
 	}
 
 	function getTitle() {
-		return $this->page->getTitle();
+		return $this->page->getFullTitle();
 	}
 	
 }
