@@ -66,20 +66,20 @@ if __name__ == '__main__':
 
 	for file in os.listdir(templatedir):
 		filepath = os.path.join(templatedir, file)
-                zonefilepath = os.path.join(zonedir, file) 
+		zonefilepath = os.path.join(zonedir, file) 
 
 		# Only process regular files and symlinks
 		if not os.path.isfile(filepath): continue
 
-                # Check file modification time
-                try:
-                    if (os.path.getmtime(filepath) <= os.path.getmtime(zonefilepath)
-                            and os.path.getmtime(langlist) <= os.path.getmtime(zonefilepath)):
-                        continue
-                except OSError:
-                    pass
+		# Check file modification time
+		try:
+			if (os.path.getmtime(filepath) <= os.path.getmtime(zonefilepath)
+				and os.path.getmtime(langlist) <= os.path.getmtime(zonefilepath)):
+			continue
+		except OSError:
+			pass
 
-                print 'Processing zone', file
+		print 'Processing zone', file
 
 		# Read the entire file in a string
 		template = open(filepath).read()
@@ -88,6 +88,6 @@ if __name__ == '__main__':
 		substs['$zonename'] = file
 		for var, value in substs.iteritems():
 			template = template.replace(var, value)
-		
+
 		# Write zonefile
 		open(zonefilepath, 'w').write(header + template)
