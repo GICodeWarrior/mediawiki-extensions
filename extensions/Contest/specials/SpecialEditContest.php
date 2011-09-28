@@ -66,14 +66,23 @@ class SpecialEditContest extends FormSpecialPage {
 		);
 		
 		if ( $this->getRequest()->wasPosted() && $this->getUser()->matchEditToken( $this->getRequest()->getVal( 'wpEditToken' ) ) ) {
-			$form = $this->getForm();
-			
-			if ( $form->show() ) {
-				$this->onSuccess();
-			}
+			$this->showForm();
 		}
 		else {
 			$this->showContent( $subPage );
+		}
+	}
+	
+	/**
+	 * Show the form.
+	 * 
+	 * @since 0.1
+	 */
+	protected function showForm() {
+		$form = $this->getForm();
+		
+		if ( $form->show() ) {
+			$this->onSuccess();
 		}
 	}
 	
@@ -107,12 +116,47 @@ class SpecialEditContest extends FormSpecialPage {
 		}
 		else {
 			$this->contest = $contest;
-			$form = $this->getForm();
-			
-			if ( $form->show() ) {
-				$this->onSuccess();
-			}
+			$this->showForm();
+			$this->showChallanges( $contest );
 		}
+	}
+	
+	/**
+	 * Output the challanges HTML.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param Contest $contest
+	 */
+	protected function showChallanges( Contest $contest ) {
+		$out = $this->getOutput();
+		
+		$out->addHTML( '<fieldset class="contest-challanges">' );
+		
+		$out->addHTML( Html::element( 'legend', array(), wfMsg( 'contest-edit-challanges' ) ) );
+		
+		foreach ( $contest->getChallanges() as /* ContestChallange */ $challange ) {
+			$out->addHTML( Html::element(
+				'div',
+				array(
+					'class' => 'contest-challange',
+					'data-challange-id' => $challange->getId(),
+					'data-challange-text' => $challange->getField( 'text' ),
+					'data-challange-title' => $challange->getField( 'title' ),
+				)
+			) );
+		}
+		
+		$out->addHTML( Html::element(
+			'div',
+			array(
+				'class' => 'contest-new-challange',
+			)
+		) );
+		
+		$out->addHTML( '</fieldset>' );
+		
+		$out->addModules( 'contest.special.contest' );
 	}
 	
 	/**

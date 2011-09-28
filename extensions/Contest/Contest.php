@@ -131,6 +131,23 @@ $wgResourceModules['contest.special.contests'] = $moduleTemplate + array(
 	)
 );
 
+$wgResourceModules['contest.special.contest'] = $moduleTemplate + array(
+	'scripts' => array(
+		'contest.special.contest.js'
+	),
+	'messages' => array(
+		'contest-edit-delete',
+		'contest-edit-add-first',
+		'contest-edit-add-another',
+		'contest-edit-confirm-delete',
+		'contest-edit-challange-title',
+		'contest-edit-challange-text',
+	),
+	'dependencies' => array(
+		'jquery.ui.button'
+	)
+);
+
 unset( $moduleTemplate );
 
 $egContestSettings = array();

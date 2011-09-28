@@ -34,7 +34,8 @@ CREATE TABLE IF NOT EXISTS /*_*/contest_contestants (
 CREATE TABLE IF NOT EXISTS /*_*/contest_challanges (
   challange_id                INT unsigned        NOT NULL auto_increment PRIMARY KEY, -- Challange id
   challange_contest_id        INT unsigned        NOT NULL,
-  challange_text              TEXT                NOT NULL
+  challange_text              TEXT                NOT NULL,
+  challange_title             VARCHAR(255)        NOT NULL
 ) /*$wgDBTableOptions*/;
 
 -- Judge votes
