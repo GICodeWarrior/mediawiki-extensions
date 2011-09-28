@@ -28,7 +28,6 @@ $wgExtensionMessagesFiles['RelationLinks'] = $dir . 'RelationLinks.i18n.php';
 $wgHooks['BeforePageDisplay'][] = 'addRelationLinks';
 
 function addRelationLinks( &$out, &$sk ) {
-	global $wgArticlePath;
 	$rlMainpage = Title::newFromText(wfMsg('Mainpage'));
 	$out->addLink( array(
 	  'rel' => 'start',
