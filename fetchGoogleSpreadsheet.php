@@ -92,7 +92,7 @@ class FetchGoogleSpreadsheet extends MetricsMaintenance {
 
 			$this->output( 'Spreadsheet tab title: ' . $xml->title . "\n" );
 			$this->output( "\n" );
-			var_dump( $xml->title );
+
 			if ( $xml->title != 'Deployments' ) {
 				continue;
 			}
@@ -123,15 +123,9 @@ class FetchGoogleSpreadsheet extends MetricsMaintenance {
 	 * @param $data array
 	 */
 	function getDeploymentFigures( $data ) {
-		$count = count( $data["name"] );
-
-		for( $i = 0; $i < ( $count - 1 ); $i++ ) {
-			$data['date'][] = ''; // TODO: The date needs to come from... somewhere?
-		}
-
 		$db = $this->getDb();
 
-		$db->update( 'offline', $data, __METHOD__, array( 'IGNORE' ) );
+		$db->insert( 'offline', $data, __METHOD__, array( 'IGNORE' ) );
 	}
 
 	/**
