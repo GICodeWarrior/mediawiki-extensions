@@ -154,6 +154,15 @@ class SpecialEditContest extends FormSpecialPage {
 			)
 		) );
 		
+		$out->addHTML( Html::element(
+			'input',
+			array(
+				'type' => 'submit',
+				'id' => 'contest-save',
+				'value' => wfMsg( 'contest-edit-submit' )
+			)
+		) );
+		
 		$out->addHTML( '</fieldset>' );
 		
 		$out->addModules( 'contest.special.contest' );
