@@ -124,10 +124,12 @@ class SpecialContests extends SpecialContestPage {
 			Html::element( 'th', array(), wfMsg( 'contest-special-submissioncount' ) )
 		);
 		
-		if ( $user->isAllowed( 'contestadmin' ) ) {
-			$headers[] = Html::element( 'th', array( 'class' => 'unsortable' ), wfMsg( 'contest-special-edit' ) );
-			$headers[] = Html::element( 'th', array( 'class' => 'unsortable' ), wfMsg( 'contest-special-delete' ) );
-		}
+		$headers[] = Html::element( 'th', array( 'class' => 'unsortable' ) );
+		
+//		if ( $user->isAllowed( 'contestadmin' ) ) {
+//			$headers[] = Html::element( 'th', array( 'class' => 'unsortable' ), wfMsg( 'contest-special-edit' ) );
+//			$headers[] = Html::element( 'th', array( 'class' => 'unsortable' ), wfMsg( 'contest-special-delete' ) );
+//		}
 		
 		$out->addHTML( '<thead><tr>' . implode( '', $headers ) . '</tr></thead>' );
 		
@@ -167,34 +169,62 @@ class SpecialContests extends SpecialContestPage {
 				$this->getLang()->formatNum( $contest->getField( 'submission_count' ) )
 			);
 			
-			if ( $user->isAllowed( 'contestadmin' ) ) {
-				$fields[] = Html::rawElement(
-					'td',
-					array(),
-					Html::element(
-						'a',
-						array(
-							'href' => SpecialPage::getTitleFor( 'EditContest', $contest->getField( 'name' ) )->getLocalURL()
-						),
-						wfMsg( 'contest-special-edit' )
-					)
-				);
-				
-				$fields[] = Html::rawElement(
-					'td',
-					array(),
-					Html::element(
-						'a',
-						array(
-							'href' => '#',
-							'class' => 'contest-delete',
-							'data-contest-id' => $contest->getId(),
-							'data-contest-token' => $this->getUser()->editToken( 'deletecontest' . $contest->getId() )
-						),
-						wfMsg( 'contest-special-delete' )
-					)
+			$links = array();
+			
+			if ( $user->isAllowed( 'contestjudge' ) ) {
+				$links[] = Html::element(
+					'a',
+					array(
+						'href' => SpecialPage::getTitleFor( 'Contest', $contest->getField( 'name' ) )->getLocalURL()
+					),
+					wfMsg( 'contest-nav-contest' )
 				);
 			}
+			
+			if ( $user->isAllowed( 'contestadmin' ) ) {
+				$links[] = Html::element(
+					'a',
+					array(
+						'href' => SpecialPage::getTitleFor( 'EditContest', $contest->getField( 'name' ) )->getLocalURL()
+					),
+					wfMsg( 'contest-special-edit' )
+				);
+				
+				$links[] = Html::element(
+					'a',
+					array(
+						'href' => '#',
+						'class' => 'contest-delete',
+						'data-contest-id' => $contest->getId(),
+						'data-contest-token' => $this->getUser()->editToken( 'deletecontest' . $contest->getId() )
+					),
+					wfMsg( 'contest-special-delete' )
+				);
+			}
+			
+			$links[] = Html::element(
+				'a',
+				array(
+					'href' => SpecialPage::getTitleFor( 'ContestWelcome', $contest->getField( 'name' ) )->getLocalURL()
+				),
+				wfMsg( 'contest-nav-contestwelcome' )
+			);
+			
+			if ( $user->isAllowed( 'contestparticipant' ) ) {
+				$links[] = Html::element(
+					'a',
+					array(
+						'href' => SpecialPage::getTitleFor( 'ContestSignup', $contest->getField( 'name' ) )->getLocalURL()
+					),
+					wfMsg( 'contest-nav-contestsignup' )
+				);
+			}
+			
+			$fields[] = Html::rawElement(
+				'td',
+				array(),
+				$this->getLang()->pipeList( $links )
+			);
 			
 			$out->addHTML( '<tr>' . implode( '', $fields ) . '</tr>' );
 		}

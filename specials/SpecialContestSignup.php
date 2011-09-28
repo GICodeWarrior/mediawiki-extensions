@@ -34,7 +34,21 @@ class SpecialContestSignup extends SpecialContestPage {
 			return;
 		}
 		
+		$out = $this->getOutput();
 		
+		$contest = Contest::s()->selectRow( null, array( 'name' => $subPage ) );
+		
+		if ( $contest === false ) {
+			$this->showError( 'contest-signup-unknown' );
+			$out->addHTML( '<br /><br /><br /><br />' );
+			$out->returnToMain();
+		}
+		else {
+			// TODO: we might want to have a title field here
+			$out->setPageTitle( $contest->getField( 'name' ) );
+			
+			
+		}
 	}
 	
 }

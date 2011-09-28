@@ -71,6 +71,9 @@ $messages['en'] = array(
 	// Special:ContestWelcome
 	'contest-welcome-unknown' => 'There is no contest with the provided name.',
 
+	// Special:ContestSignup
+	'contest-signup-unknown' => 'There is no contest with the provided name.',
+
 	// Special:Contest
 	'contest-contest-title' => 'Contest: $1',
 	'contest-contest-no-results' => 'There are no contestants to list.',
