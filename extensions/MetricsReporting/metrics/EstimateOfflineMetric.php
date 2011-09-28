@@ -10,14 +10,14 @@ class EstimateOfflineMetric extends ApiAnalyticsBase {
 		return array(
 			'table' => 'offline',
 			'conds' => array(),
-			'options' => array(),
+			'options' => array( 'GROUP BY' => 'date' ),
 			'join_conds' => array(),
 		);
 	}
 
 	protected function getQueryFields() {
 		return array(
-			'date', 'readers',
+			'date', 'SUM(readers)',
 		);
 	}
 
