@@ -43,6 +43,7 @@ class SpecialContest extends SpecialContestPage {
 		}
 		else {
 			$out->setPageTitle( wfMsgExt( 'contest-contest-title', 'parseinline', $contest->getField( 'name' ) ) );
+			$this->displayNavigation();
 			$this->showGeneralInfo( $contest );
 			$this->showContestants( $contest );
 		}

@@ -14,6 +14,8 @@
  */
 abstract class SpecialContestPage extends SpecialPage {
 	
+	protected $subPage;
+	
 	/**
 	 * @see SpecialPage::getDescription
 	 * 
@@ -43,6 +45,8 @@ abstract class SpecialContestPage extends SpecialPage {
 	 * @param string $arg
 	 */
 	public function execute( $subPage ) {
+		$this->subPage = $subPage;
+		
 		$this->setHeaders();
 		$this->outputHeader();
 		
@@ -82,13 +86,72 @@ abstract class SpecialContestPage extends SpecialPage {
 	}
 	
 	/**
+	 * Get an array of navigation links.
+	 * 
+	 * @param boolean $excludeSelf
+	 * @param string|null $contestName
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return array
+	 */
+	protected function getNavigationLinks( $excludeSelf = true, $contestName = null ) {
+		if ( is_null( $contestName ) ) {
+			$contestName = $this->subPage;
+		}
+		
+		$pages = array();
+		
+		$pages['contest-nav-contests'] = array( 'Contests' );
+		
+		if ( $this->getUser()->isAllowed( 'contestjudge' ) ) {
+			$pages['contest-nav-contest'] = array( 'Contest', $contestName );
+		}
+		
+		if ( $this->getUser()->isAllowed( 'contestadmin' ) ) {
+			$pages['contest-nav-editcontest'] = array( 'EditContest', $contestName );
+		}
+		
+		$pages['contest-nav-contestwelcome'] = array( 'ContestWelcome', $contestName );
+		
+		if ( $this->getUser()->isAllowed( 'contestparticipant' ) ) {
+			$pages['contest-nav-contestsignup'] = array( 'ContestSignup', $contestName );
+		}
+		
+		$links = array();
+		
+		// Yeah, array map would be nice... if only we could use anon functions :/
+		foreach ( $pages as $message => $page ) {
+			$page = (array)$page;
+			
+			if ( $excludeSelf && $page[0] == $this->getName() ) {
+				continue;
+			}
+			
+			$subPage = count( $page ) > 1 ? $page[1] : false;
+			
+			$links[] = Html::element(
+				'a',
+				array( 'href' => SpecialPage::getTitleFor( $page[0], $subPage )->getLocalURL() ),
+				wfMsgExt( $message, 'parseinline', $subPage )
+			);
+		}
+		
+		return $links;
+	}
+	
+	/**
 	 * Display navigation links.
 	 * 
 	 * @since 0.1
 	 * 
 	 * @param array $links
 	 */
-	protected function displayNavigation( array $links ) {
+	protected function displayNavigation( array $links = null ) {
+		if ( is_null( $links ) ) {
+			$links = $this->getNavigationLinks();
+		}
+		
 		$this->getOutput()->addHTML( Html::rawElement( 'p', array(), $this->getLang()->pipeList( $links ) ) );
 	}
 	
