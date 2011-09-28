@@ -7,6 +7,9 @@
  * @property {Integer} contentLength Length of contents
  */
 es.DocumentModelNode = function( contentLength ) {
+	// Inheritance
+	es.ModelNode.call( this );
+	
 	// Properties
 	this.contentLength = contentLength || 0;
 };
@@ -20,3 +23,7 @@ es.DocumentModelNode.getContentLength = function() {
 es.DocumentModelNode.getElementLength = function() {
 	return this.contentLength + 2;
 };
+
+/* Inheritance */
+
+es.extend( es.DocumentModelNode, es.ModelNode );
