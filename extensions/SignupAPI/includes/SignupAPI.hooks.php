@@ -8,13 +8,23 @@
 
 class SignupAPIHooks {
 
-	static function onSourceTracking() {
-		global $wgExtNewTables;
+	/**
+	 * @param $updater DatabaseUpdater
+	 * @return bool
+	 */
+	static function onSourceTracking( $updater = null ) {
+		if ( $updater !== null ) {
+			$base = dirname( dirname( __FILE__ ) );
+			$updater->addExtensionUpdate( array( 'addTable', 'sourcetracking',
+				"$base/sourcetracking.sql", true ) );
+		} else {
+			global $wgExtNewTables;
 
-		$wgExtNewTables[] = array(
-			'sourcetracking',
-			dirname( __FILE__ ) . '/sourcetracking.sql'
-		);
+			$wgExtNewTables[] = array(
+				'sourcetracking',
+				'sourcetracking.sql'
+			);
+		}
 		return true;
 	}
 
