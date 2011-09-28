@@ -136,11 +136,11 @@ class SpecialContests extends SpecialContestPage {
 		foreach ( $contests as $contest ) {
 			$fields = array();
 			
-			if ( $user->isAllowed( 'contestjudge' ) ) {
+			if ( $user->isAllowed( 'contestparticipant' ) ) {
 				$name = Html::element(
 					'a',
 					array(
-						'href' => SpecialPage::getTitleFor( 'Contest', $contest->getField( 'name' ) )->getLocalURL()
+						'href' => SpecialPage::getTitleFor( 'ContestWelcome', $contest->getField( 'name' ) )->getLocalURL()
 					),
 					$contest->getField( 'name' )
 				);

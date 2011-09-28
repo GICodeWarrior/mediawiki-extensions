@@ -37,4 +37,12 @@ class SpecialContest extends SpecialContestPage {
 
 	}
 	
+	protected function showGeneralInfo( Contest $contest ) {
+		
+	}
+	
+	protected function showParticipants( Contest $contest ) {
+		
+	}
+	
 }
