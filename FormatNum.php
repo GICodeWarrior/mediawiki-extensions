@@ -4,21 +4,21 @@
 */
 // Check environment
 if ( !defined( 'MEDIAWIKI' ) ) {
-	echo( "This is an extension to the MediaWiki package and cannot be run standalone.\n" );
-	die( -1 );
+        echo( "This is an extension to the MediaWiki package and cannot be run standalone.\n" );
+        die( -1 );
 }
 
 /* Configuration */
 
 // Credits
 $wgExtensionCredits['parserhook'][] = array (
-	'path'=> __FILE__ ,
-	'name'=>'FormatNum',
-	'url'=>'http://www.mediawiki.org/wiki/Extension:FormatNum',
-	'description'=>'Passes formatnum to php number_format',
-	'descriptionmsg' => 'formatnum-desc',
-	'author'=>'[http://www.dasch-tour.de DaSch]',
-	'version'=>'0.1.1',
+        'path'=> __FILE__ ,
+        'name'=>'FormatNum',
+        'url'=>'http://www.mediawiki.org/wiki/Extension:FormatNum',
+        'description'=>'Passes formatnum to php number_format',
+        'descriptionmsg' => 'formatnum-desc',
+        'author'=>'[http://www.dasch-tour.de DaSch]',
+        'version'=>'0.2.0',
 );
 $dir = dirname( __FILE__ ) . '/';
 
@@ -31,9 +31,9 @@ $wgHooks['ParserFirstCallInit'][] = 'efFormatNumParserFunction_Setup';
 $wgHooks['LanguageGetMagic'][]    = 'efFormatNumParserFunction_Magic';
  
 function efFormatNumParserFunction_Setup( $parser ) {
-	# Set a function hook associating the "example" magic word with our function
-	$parser->setFunctionHook( 'formatnum', 'efFormatNumParserFunction_Render' );
-	return true;
+        # Set a function hook associating the "example" magic word with our function
+        $parser->setFunctionHook( 'formatnum', 'efFormatNumParserFunction_Render' );
+        return true;
 }
  
 function efFormatNumParserFunction_Magic( &$magicWords, $langCode ) {
@@ -49,9 +49,17 @@ function efFormatNumParserFunction_Render( $parser, $param1 = 0, $param2 = 0, $p
         # The parser function itself
         # The input parameters are wikitext with templates expanded
         # The output should be wikitext too
-        if ($param4 == '_') {
-        	$param4 = ' ';
+        if ($param4 == '_' ){
+            $param4 = ' ';
         }
 		$output = number_format($param1, $param2, $param3, $param4);
+        switch ($param4) {
+            case 't':
+                $output = str_replace ( 't' , '&thinsp;' , $output);
+                break;
+            case 'n':
+                $output = str_replace ( 'n' , '&nbsp;' , $output);
+                break;
+        }
         return $output;
 }
