@@ -68,40 +68,60 @@ es.DocumentModel.prototype.getContent = function( node, root ) {
 	} );
 };
 
-/*
-// High-level operations
+/**
+ * 
+ * @method
+ * @param {Integer} offset
+ * @param {Array} data
+ * @returns {es.Transaction}
+ */
+es.DocumentModel.prototype.prepareInsert = function( offset, data ) {
+	//
+};
 
-es.DocumentModel.prototype.prepareInsertContent = function( offset, content ) {
-	// retain ^ .. offset
-	// insert content
-	// retain offset .. $
+/**
+ * 
+ * @method
+ * @param {es.Range} range
+ * @returns {es.Transaction}
+ */
+es.DocumentModel.prototype.prepareRemove = function( range ) {
+	//
 };
-es.DocumentModel.prototype.prepareRemoveContent = function( range ) {
-	// retain ^ .. range.start
-	// retain range.end .. $
-};
-es.DocumentModel.prototype.prepareAnnotateContent = function( range, annotations ) {
-	// retain ^ .. range.start
-	// start annotations
-	// retain range.start .. range.end
-	// end annotations
-	// retain range.end .. $
-};
-es.DocumentModel.prototype.prepareInsertBlock = function( offset, type, attributes, content ) {
-	// retain ^ .. offset
-	// insert elementStart (type, attributes)
-	// insert content
-	// insert elementEnd (type, attributes)
-	// retain offset .. $
-};
-es.DocumentModel.prototype.prepareRemoveBlock = function( offset ) {
-	// retain ^ .. offset
-	// retain findMatchingElementEnd( offset ) .. $
-};
-*/
 
-// Low-level operations
+/**
+ * 
+ * @returns {es.Transaction}
+ */
+es.DocumentModel.prototype.prepareAnnotateContent = function( range, method, annotation ) {
+	//
+};
+
+/**
+ * 
+ * @returns {es.Transaction}
+ */
+es.DocumentModel.prototype.prepareAnnotateElement = function( index, method, annotation ) {
+	//
+};
+
+/**
+ * 
+ */
+es.DocumentModel.prototype.commit = function( transaction ) {
+	//
+};
+
+/**
+ * 
+ */
+es.DocumentModel.prototype.rollback = function( transaction ) {
+	//
+};
+
 /*
+ * SCRATCH CODE
+ * 
 es.DocumentModel.newFromPlainObject = function( obj ) {
 	
 };
