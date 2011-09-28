@@ -45,8 +45,6 @@ class SpecialContestWelcome extends SpecialContestPage {
 		
 		$out = $this->getOutput();
 		
-		$out->setPageTitle( $this->getDescription() );
-		
 		$contest = Contest::s()->selectRow( null, array( 'name' => $subPage ) );
 		
 		if ( $contest === false ) {
@@ -55,6 +53,9 @@ class SpecialContestWelcome extends SpecialContestPage {
 			$out->returnToMain();
 		}
 		else {
+			// TODO: we might want to have a title field here
+			$out->setPageTitle( $contest->getField( 'name' ) );
+			
 			$this->showIntro( $contest );
 			$this->showChallanges( $contest->getChallanges() );
 			$this->showOpportunities();

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Contestant pager, for on Special:Contestants
+ * Contestant pager, for on Special:Contest
  * 
  * @since 0.1
  * 
