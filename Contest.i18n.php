@@ -38,6 +38,13 @@ $messages['en'] = array(
 	'special-contestwelcome' => 'Contest',
 	'special-editcontest' => 'Edit contest',
 
+	// Navigatio links
+	'contest-nav-contests' => 'Contests list',
+	'contest-nav-editcontest' => 'Edit contest',
+	'contest-nav-contest' => 'Summary and participants',
+	'contest-nav-contestwelcome' => 'Landing page',
+	'contest-nav-contestsignup' => 'Signup page',
+
 	// Special:Contests
 	'contest-special-addnew' => 'Add a new contest',
 	'contest-special-namedoc' => 'The name of the contest is the identifier used in URLs. ie "name" in Special:Contest/name',
