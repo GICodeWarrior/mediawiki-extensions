@@ -88,43 +88,39 @@ abstract class SpecialContestPage extends SpecialPage {
 	/**
 	 * Get an array of navigation links.
 	 * 
-	 * @param boolean $excludeSelf
-	 * @param string|null $contestName
+	 * @param string $contestName
+	 * @param User $user
+	 * @param string|false $exclude
 	 * 
 	 * @since 0.1
 	 * 
 	 * @return array
 	 */
-	protected function getNavigationLinks( $excludeSelf = true, $contestName = null ) {
-		if ( is_null( $contestName ) ) {
-			$contestName = $this->subPage;
-		}
-		
+	protected static function getNavigationLinks( $contestName, $user, $exclude = false ) {
 		$pages = array();
 		
 		$pages['contest-nav-contests'] = array( 'Contests' );
 		
-		if ( $this->getUser()->isAllowed( 'contestjudge' ) ) {
+		if ( $user->isAllowed( 'contestjudge' ) ) {
 			$pages['contest-nav-contest'] = array( 'Contest', $contestName );
 		}
 		
-		if ( $this->getUser()->isAllowed( 'contestadmin' ) ) {
+		if ( $user->isAllowed( 'contestadmin' ) ) {
 			$pages['contest-nav-editcontest'] = array( 'EditContest', $contestName );
 		}
 		
 		$pages['contest-nav-contestwelcome'] = array( 'ContestWelcome', $contestName );
 		
-		if ( $this->getUser()->isAllowed( 'contestparticipant' ) ) {
+		if ( $user->isAllowed( 'contestparticipant' ) ) {
 			$pages['contest-nav-contestsignup'] = array( 'ContestSignup', $contestName );
 		}
 		
 		$links = array();
 		
-		// Yeah, array map would be nice... if only we could use anon functions :/
 		foreach ( $pages as $message => $page ) {
 			$page = (array)$page;
 			
-			if ( $excludeSelf && $page[0] == $this->getName() ) {
+			if ( $exclude !== false && $page[0] == $exclude ) {
 				continue;
 			}
 			
@@ -140,19 +136,18 @@ abstract class SpecialContestPage extends SpecialPage {
 		return $links;
 	}
 	
+	public static function getNavigation( $contestName, $user, $lang, $exclude = false ) {
+		$links = self::getNavigationLinks( $contestName, $user, $exclude );
+		return Html::rawElement( 'p', array(), $lang->pipeList( $links ) );
+	}
+	
 	/**
 	 * Display navigation links.
 	 * 
 	 * @since 0.1
-	 * 
-	 * @param array $links
 	 */
-	protected function displayNavigation( array $links = null ) {
-		if ( is_null( $links ) ) {
-			$links = $this->getNavigationLinks();
-		}
-		
-		$this->getOutput()->addHTML( Html::rawElement( 'p', array(), $this->getLang()->pipeList( $links ) ) );
+	protected function displayNavigation() {
+		$this->getOutput()->addHTML( self::getNavigation( $this->subPage, $this->getUser(), $this->getLang(), $this->getName() ) );
 	}
 	
 }

@@ -61,6 +61,10 @@ class SpecialEditContest extends FormSpecialPage {
 		// This will throw exceptions if there's a problem
 		$this->userCanExecute( $this->getUser() );
 		
+		$this->getOutput()->addHTML(
+			SpecialContestPage::getNavigation( $subPage, $this->getUser(), $this->getLang(), $this->getName() )
+		);
+		
 		if ( $this->getRequest()->wasPosted() && $this->getUser()->matchEditToken( $this->getRequest()->getVal( 'wpEditToken' ) ) ) {
 			$form = $this->getForm();
 			
