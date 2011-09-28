@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 
+ * Class representing a single contest.
  * 
  * @since 0.1
  * 

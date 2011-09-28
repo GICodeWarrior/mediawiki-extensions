@@ -51,5 +51,5 @@ CREATE TABLE IF NOT EXISTS /*_*/contest_comments (
   comment_contestant_id        INT unsigned        NOT NULL, -- Foreign key on contest_contestants.contestant_id
   comment_user_id              INT(10) unsigned    NOT NULL, -- Judge user id
   comment_text                 TEXT                NOT NULL, -- The comment text
-  comment_time                 CHAR(14) binary     NOT NULL default '' -- The time at which the comment was made
+  comment_time                 varbinary(14)       NOT NULL default '' -- The time at which the comment was made
 ) /*$wgDBTableOptions*/;

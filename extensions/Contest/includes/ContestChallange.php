@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Contest challange object.
+ * Class representing a single contest challange object.
  * Each contest (can) has a list of associated challanges.  
  * 
  * @since 0.1
