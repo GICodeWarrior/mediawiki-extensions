@@ -9,8 +9,7 @@
  * @param {Array} data Model data to initialize with, such as data from es.DocumentModel.getData()
  */
 es.DocumentModel = function( data ) {
-	var data = $.isArray( data ) ? data : [];
-	return $.extend( data, this );
+	this.data = $.isArray( data ) ? data : [];
 };
 
 /* Static Methods */
@@ -126,10 +125,6 @@ es.DocumentModel.prototype.rollback = function( transaction ) {
 /*
  * SCRATCH CODE
  * 
-es.DocumentModel.newFromPlainObject = function( obj ) {
-	
-};
-
 es.DocumentModel.prototype.toPlainObject = function() {
 	
 };
@@ -172,6 +167,36 @@ es.DocumentModel.prototype.annotateElement = function( offset, annotations ) {
 	}
 };
 */
+
+es.DocumentModel.newFromPlainObject = function( obj ) {
+	/*
+	 * Flatten a node and its children into a data array, recursively.
+	 * 
+	 * @param obj {Object} A plain node object //TODO where do we document this whole structure?
+	 * @return {Array} Array to append the flattened version of obj to
+	 */
+	function flattenNode( obj ) {
+		var i, data = [];
+		// Open element
+		// TODO do we need to copy the attributes object or can we use a reference?
+		data.push( { 'type': obj.type, 'attributes': obj.attributes, 'node': null } );
+		if ( obj.content !== undefined ) {
+			// Add content
+			data = data.concat( es.ContentModel.newFromPlainObject( obj.content ).data );
+		} else {
+			// Add children. Only do this if there is no content property
+			for ( i = 0; i < obj.children.length; i++ ) {
+				//TODO figure out if all this concatting is inefficent. I think it is
+				data = data.concat( flattenNode( obj.children[i] ) );
+			}
+		}
+		// Close element // TODO do we need attributes here or not?
+		data.push( { 'type': '/' + obj.type, 'node': null } );
+		return data;
+	}
+	
+	return new es.DocumentModel( flattenNode( obj ) );
+};
 
 /*
  * Example of content data
