@@ -6,6 +6,7 @@ var MWParserEnvironment = function(opts) {
 		domCache: {}
 	};
 	$.extend(options, opts);
+	this.debug = false;
 	this.tagHooks = options.tagHooks;
 	this.parserFunctions = options.parserFunctions;
 	this.pageCache = options.pageCache;
@@ -49,7 +50,7 @@ $.extend(MWParserEnvironment.prototype, {
 	 */
 	resolveTitle: function( name, namespace ) {
 		// hack!
-		if (name.indexOf(':') == 0 && typeof namespace ) {
+		if (name.indexOf(':') == -1 && typeof namespace ) {
 			// hack hack hack
 			name = namespace + ':' + name;
 		}
@@ -74,9 +75,11 @@ $.extend(MWParserEnvironment.prototype, {
 		// @fixme normalize name?
 		if (title in this.pageCache) {
 			// @fixme should this be forced to run on next event?
-			callback( this.pageCache[title] );
+			callback( this.pageCache[title], title );
 		} else {
 			// whee fun hack!
+			console.log(title);
+			console.log(this.pageCache);
 			$.ajax({
 				url: wgScriptPath + '/api' + wgScriptExtension,
 				data: {
@@ -113,6 +116,7 @@ $.extend(MWParserEnvironment.prototype, {
 		var self = this;
 		if (title in this.domCache) {
 			callback(this.domCache[title], null);
+			return;
 		}
 		this.fetchTemplateAndTitle( title, function( text, title, err ) {
 			if (err) {
@@ -130,7 +134,8 @@ $.extend(MWParserEnvironment.prototype, {
 	braceSubstitution: function( templateNode, frame, callback ) {
 		// stuff in Parser.braceSubstitution
 		// expand/flatten the 'title' piece (to get the template reference)
-		frame.flatten(templateNode.name, function(templateName, err) {
+		var self = this;
+		frame.flatten(self.resolveTitle(templateNode.name, 'Template'), function(templateName, err) {
 			if (err) {
 				callback(null, err);
 				return;
@@ -152,9 +157,9 @@ $.extend(MWParserEnvironment.prototype, {
 			// recursion depth check
 			// fetch from DB or interwiki
 			// infinte loop check
-			this.getTemplateDom(templateName, function(dom, err) {
+			self.getTemplateDom(templateName, function(dom, err) {
 				// Expand in-place!
-				var templateFrame = frame.newChild(templateName.params || []);
+				var templateFrame = frame.newChild(templateNode.params || {});
 				templateFrame.expand(dom, 0, function(expandedTemplateNode) {
 					out.contents = expandedTemplateNode.contents;
 					callback(out);
@@ -173,6 +178,7 @@ $.extend(MWParserEnvironment.prototype, {
 			}
 
 			var arg = frame.getArgument(argName);
+			console.log(argName, arg, frame);
 			if (arg === false && 'params' in argNode && argNode.params.length) {
 				// No match in frame, use the supplied default
 				arg = argNode.params[0].val;
@@ -212,6 +218,10 @@ PPFrame.RECOVER_ORIG = PPFrame.NO_ARGS
 $.extend(PPFrame.prototype, {
 	newChild: function(args, title) {
 		//
+		var child = new PPFrame(this.env);
+		child.args = args || {};
+		child.title = title;
+		return child;
 	},
 
 	/**
@@ -238,18 +248,38 @@ $.extend(PPFrame.prototype, {
 			out.contents = [];
 			return out;
 		}
+
 		// stub node to write into
 		var rootOut = cloneNode(root);
 
 		var self = this,
+			env = self.env,
 			expansionDepth = 0,
-			outStack = [{contents: []}, rootOut],
+			outStack = [{contents: []}, cloneNode(root)],
 			iteratorStack = [false, root],
 			indexStack = [0, 0],
 			contextNode = false,
 			newIterator = false,
-			continuing = false;
+			continuing = false,
+			iters = 0,
+			maxIters = 10; // for debugging
 
+		if (env.debug) {
+			var $chunk = $('<div style="border: solid 1px blue">').append('<hr>');
+			$chunk.append('<h3>Original</h3>');
+			$chunk.nodeTree(root);
+			$chunk.appendTo('body');
+			var debug = function(label, node) {
+				$('<h3></h3>').text(label).appendTo($chunk);
+				if (typeof node == "string" || typeof node == "number") {
+					$('<p>').text(node).appendTo($chunk);
+				} else if (node) {
+					$chunk.nodeTree(node);
+				}
+			};
+		} else {
+			var debug = function() {};
+		}
 		var iteration = function() {
 			// This while loop is a tail call recursion optimization simulator :)
 			while (iteratorStack.length > 1) {
@@ -258,57 +288,79 @@ $.extend(PPFrame.prototype, {
 					out = outStack[level],
 					index = indexStack[level]; // ????
 
+				if (env.debug) {
+					$chunk.append('<hr>');
+					iters++;
+					var $h = $('<h3>').text('iter ' + iters).attr('id', 'iter' + iters);
+					if (iters > 1) {
+						$h.append(' ');
+						$('<a>').attr('href', '#iter' + (iters - 1)).text('prev').appendTo($h);
+					}
+					$h.append(' ');
+					$('<a>').attr('href', '#iter' + (iters + 1)).text('next').appendTo($h);
+					$chunk.append($h);
+
+					if (iters > maxIters) {
+						debug('aborted');
+						return;
+					}
+					$chunk.append('<h3>level ' + level + '</h3>');
+				}
+				debug('index', index);
 				if (continuing) {
 					// If we're re-entering from an asynchronous data fetch,
 					// skip over this part, we've done it before.
 					continuing = false;
 				} else {
-					if ($.isArray(iteratorNode)) {
-						if (index >= iteratorNode.length) {
-							// All done with this iterator.
-							iteratorStack[level] = false;
-							contextNode = false;
-						} else {
-							contextNode = iteratorNode[index];
-							indexStack[level]++;
-						}
-					} else {
-						// Copy to contextNode and then delete from iterator stack,
-						// because this is not an iterator but we do have to execute it once
-						contextNode = iteratorStack[level];
+					newIterator = false;
+					if (index >= iteratorNode.contents.length) {
+						// All done with this iterator.
 						iteratorStack[level] = false;
-					}
-				}
-
-				if (contextNode === false) {
-					// nothing to do
-				} else if (typeof contextNode === 'string') {
-					out.contents.push(contextNode);
-				} else if (contextNode.type === 'template') {
-					// Double-brace expansion
-					continuing = true;
-					self.env.braceSubstitution(contextNode, self, function(replacementNode, err) {
-						out.contents.push(replacementNode);
-						// ... and continue on the next node!
-						iteration();
-					});
-					return; // pause for async work...
-				} else if (contextNode.type == 'tplarg') {
-					// Triple-brace expansion
-					continuing = true;
-					self.env.argSubstitution(contextNode, self, function(replacementNode, err) {
-						out.contents.push(replacementNode);
-						// ... and continue on the next node!
-						iteration();
-					});
-					return; // pause for async work...
-				} else {
-					if ('content' in contextNode && contextNode.content.length) {
-						// Generic recursive expansion
-						newIterator = contextNode;
+						contextNode = false;
 					} else {
-						// No children; push as-is.
+						// Increment for the next round...
+						contextNode = iteratorNode.contents[index];
+						indexStack[level]++;
+						index++;
+					}
+					debug('contextNode', contextNode);
+					debug('indexStack (next)', indexStack);
+					debug('outStack', outStack);
+
+					if (contextNode === false) {
+						// nothing to do
+					} else if (typeof contextNode === 'string') {
 						out.contents.push(contextNode);
+					} else if (contextNode.type === 'template') {
+						// Double-brace expansion
+						continuing = true;
+						self.env.braceSubstitution(contextNode, self, function(replacementNode, err) {
+							//out.contents.push(replacementNode);
+							newIterator = replacementNode;
+							// ... and continue on the next node!
+							iteration();
+						});
+						return; // pause for async work...
+					} else if (contextNode.type == 'tplarg') {
+						// Triple-brace expansion
+						continuing = true;
+						self.env.argSubstitution(contextNode, self, function(replacementNode, err) {
+							//out.contents.push(replacementNode);
+							newIterator = replacementNode;
+							// ... and continue on the next node!
+							iteration();
+						});
+						return; // pause for async work...
+					} else {
+						if ('contents' in contextNode && contextNode.contents.length) {
+							// Generic recursive expansion
+							newIterator = contextNode;
+							debug('diving into child');
+						} else {
+							// No children; push as-is.
+							out.contents.push(contextNode);
+							debug('no children');
+						}
 					}
 				}
 
@@ -316,9 +368,14 @@ $.extend(PPFrame.prototype, {
 					outStack.push(cloneNode(newIterator));
 					iteratorStack.push(newIterator);
 					indexStack.push(0);
+					debug('iterator stack push!');
+					debug('outStack', outStack);
+					debug('iteratorStack', iteratorStack);
+					debug('indexStack', indexStack);
 				} else if ( iteratorStack[level] === false) {
 					// Return accumulated value to parent
 					// With tail recursion
+					debug('returning output up the stack');
 					while (iteratorStack[level] === false && level > 0) {
 						outStack[level - 1].contents.push(out);
 						outStack.pop();
@@ -327,12 +384,26 @@ $.extend(PPFrame.prototype, {
 						level--;
 					}
 				}
+				debug('end of iteration');
+
+				// hack!
+				if (iteratorStack.length > 1) {
+					// Run us after running the event loop
+					setTimeout(iteration, 0);
+					return;
+				}
 			}
 			// We've reached the end of the loop!
 			--expansionDepth;
-			callback(outStack.pop(), null);
+			var finalOut = outStack.pop().contents[0];
+			debug('done', finalOut);
+			callback(finalOut, null);
 		};
 		iteration();
+	},
+
+	flatten: function(root, callback) {
+		new MWTreeSerializer(this).treeToSource(root, callback);
 	},
 
 	implodeWithFlags: function(sep, flags) {
@@ -368,7 +439,11 @@ $.extend(PPFrame.prototype, {
 	},
 
 	getArgument: function( name ) {
-
+		if (name in this.args) {
+			return this.args[name];
+		} else {
+			return false;
+		}
 	},
 
 	loopCheck: function(title) {
