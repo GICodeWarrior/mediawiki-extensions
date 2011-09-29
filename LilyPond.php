@@ -67,14 +67,15 @@ $wgLilypondTrim = true;
 $wgLilypondBorderX = 0;
 $wgLilypondBorderY = 0;
 
+$wgHooks['ParserFirstCallInit'][] = 'wfLilyPondExtension';
 
-$wgExtensionFunctions[] = "wfLilyPondExtension";
-
-function wfLilyPondExtension() {
-	global $wgParser;
-	$wgParser->setHook( "lilypond", "renderLilyPondFragment" );
-	$wgParser->setHook( "lilymidi", "renderLilyPondMidiFragment" );
-	$wgParser->setHook( "lilybook", "renderLilyPond" );
+/**
+ * @param $parser Parser
+ */
+function wfLilyPondExtension( $parser ) {
+	$parser->setHook( "lilypond", "renderLilyPondFragment" );
+	$parser->setHook( "lilymidi", "renderLilyPondMidiFragment" );
+	$parser->setHook( "lilybook", "renderLilyPond" );
 }
 
 function renderLilyPondMidiFragment( $lilypond_code ) {
@@ -99,12 +100,9 @@ function renderLilyPondFragment( $lilypond_code, $midi = false ) {
 
 function renderLilyPond( $lilypond_code, $short_code = false ) {
 	global $wgMathPath, $wgMathDirectory, $wgTmpDirectory, $wgLilypond, $wgLilypondPreMidi,
-		$wgLilypondPostMidii, $wgLilypondTrim, $wgLilypondBorderX, $wgLilypondBorderY;
+		$wgLilypondPostMidi, $wgLilypondTrim, $wgLilypondBorderX, $wgLilypondBorderY;
 
 	$mf   = wfMsg( "math_failure" );
-	$munk = wfMsg( "math_unknown_error" );
-
-	$fname = "renderMusic";
 
 	$md5 = md5( $lilypond_code );
 
@@ -116,6 +114,7 @@ function renderLilyPond( $lilypond_code, $short_code = false ) {
 		$post = "";
 	}
 
+    $link = '';
 	# if short_code is supplied, this is a fragment
 	if ( $short_code ) {
 		$link = "<img src=\"" . $wgMathPath . "/" . $md5 . ".png\" alt=\""
@@ -125,8 +124,7 @@ function renderLilyPond( $lilypond_code, $short_code = false ) {
 			return $pre . $link . $post;
 		}
 	} else {
-		if (  file_exists( "$wgMathDirectory/$md5-1.png" ) ) {
-			$link = "";
+		if ( file_exists( "$wgMathDirectory/$md5-1.png" ) ) {
 			for ( $i = 1; file_exists( $wgMathDirectory . "/" .
 					$md5 . "-" . $i . ".png" );
 				$i++ ) {
@@ -174,7 +172,7 @@ function renderLilyPond( $lilypond_code, $short_code = false ) {
 	wfDebug( "Lilypond: $cmd\n" );
 	$oldcwd = getcwd();
 	chdir( $wgTmpDirectory );
-	$contents = exec( $cmd, $output, $ret );
+	exec( $cmd, $output, $ret );
 	chdir( $oldcwd );
 
 	if ( $ret != 0 ) {
@@ -201,14 +199,16 @@ function renderLilyPond( $lilypond_code, $short_code = false ) {
 	$last_page = 0;
 
 	while ( false !== ( $file = readdir( $files ) ) ) {
-		if ( substr( $file, 0, 32 ) != $md5 )
+		if ( substr( $file, 0, 32 ) != $md5 ) {
 			continue;
+		}
 
 		$file_absolute = $wgTmpDirectory . "/" . $file;
 		if ( !$short_code && preg_match( '/-page(\d+)\.png$/',
 				$file, $matches ) ) {
-			if ( $matches[1] > $last_page )
+			if ( $matches[1] > $last_page ) {
 				$last_page = $matches[1];
+			}
 			rename( $file_absolute, $wgMathDirectory . "/" .
 				$md5 . "-" . $matches[1] . ".png" );
 			continue;
@@ -227,8 +227,9 @@ function renderLilyPond( $lilypond_code, $short_code = false ) {
 			continue;
 		}
 
-		if ( !is_file( $file_absolute ) )
+		if ( !is_file( $file_absolute ) ) {
 			continue;
+		}
 		unlink( $file_absolute );
 	}
 	closedir( $files );
@@ -247,12 +248,12 @@ function renderLilyPond( $lilypond_code, $short_code = false ) {
 	if ( $wgLilypondTrim ) {
 		$imgFile = $wgMathDirectory . "/" . $md5 . ".png";
 		trimImage( $imgFile, $imgFile, 0xFFFFFF );
-	} ;
+	}
 
 	if ( $wgLilypondBorderX > 0 || $wgLilypondBorderY > 0 ) {
 		$imgFile = $wgMathDirectory . "/" . $md5 . ".png";
 		frameImage( $imgFile, $imgFile, 0xFFFFFF, $wgLilypondBorderX, $wgLilypondBorderY );
-	} ;
+	}
 
 	return $pre . $link . $post;
 }
