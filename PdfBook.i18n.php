@@ -137,11 +137,12 @@ $messages['eu'] = array(
 
 /** Persian (فارسی)
  * @author Huji
+ * @author محک
  */
 $messages['fa'] = array(
 	'pdfbook-action' => 'چاپ به صورت پی‌دی‌اف',
 	'pdfbook-log' => '$1 برون‌ریزی شده به صورت یک کتاب پی‌دی‌اف',
-	'pdfbook-desc' => 'از صحفه‌های یک رده کتابی می‌سازد و به صورت یک کتاب پی‌دی‌اف برون‌ریزی می‌کند',
+	'pdfbook-desc' => 'از صفحه‌های یک رده کتابی می‌سازد و به صورت یک کتاب پی‌دی‌اف برون‌ریزی می‌کند',
 );
 
 /** French (Français)
@@ -303,6 +304,15 @@ $messages['ms'] = array(
 	'pdfbook-action' => 'Cetak dalam bentuk PDF',
 	'pdfbook-log' => '$1 dieksport dalam bentuk buku PDF',
 	'pdfbook-desc' => 'Mengarang buku daripada laman-laman dalam satu kategori lalu mengeksportnya dalam bentuk buku PDF',
+);
+
+/** Mazanderani (مازِرونی)
+ * @author محک
+ */
+$messages['mzn'] = array(
+	'pdfbook-action' => 'چاپ به شکل پی‌دی‌اف',
+	'pdfbook-log' => '$1 برون‌ریزی بیی به صورت اتا کتاب پی‌دی‌اف',
+	'pdfbook-desc' => 'از صفحه‌ئون اتا رج کتاب ساجنه و به صورت اتا کتاب پی‌دی‌اف برون‌ریزی کانده',
 );
 
 /** Dutch (Nederlands)
