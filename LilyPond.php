@@ -60,26 +60,13 @@ $wgExtensionCredits['parserhooks'][] = array(
 	'descriptionmsg' => 'lilypond-desc',
 );
 
-if ( !isset( $wgLilypond ) )
-	$wgLilypond = "/usr/local/bin/lilypond";
+$wgLilypond = "/usr/local/bin/lilypond";
+$wgLilypondPreMidi = "";
+$wgLilypondPostMidi = "";
+$wgLilypondTrim = true;
+$wgLilypondBorderX = 0;
+$wgLilypondBorderY = 0;
 
-if ( !isset( $wgLilypondPreMidi ) )
-	$wgLilypondPreMidi = "";
-
-if ( !isset( $wgLilypondPostMidi ) )
-	$wgLilypondPostMidi = "";
-
-if ( !isset( $wgLilypondTrim ) ) {
-	$wgLilypondTrim = true;
-}
-
-if ( !isset( $wgLilypondBorderX ) ) {
-	$wgLilypondBorderX = 0;
-}
-
-if ( !isset( $wgLilypondBorderY ) ) {
-	$wgLilypondBorderY = 0;
-}
 
 $wgExtensionFunctions[] = "wfLilyPondExtension";
 
