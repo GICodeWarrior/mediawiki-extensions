@@ -159,7 +159,7 @@ class SpecialEditContest extends FormSpecialPage {
 		$fields['name'] = array (
 			'type' => 'text',
 			'label-message' => 'contest-edit-name',
-			'id' => 'contest-name-field'
+			'id' => 'contest-name-field',
 		);
 		
 		$fields['status'] = array (

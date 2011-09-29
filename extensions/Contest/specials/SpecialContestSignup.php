@@ -37,7 +37,7 @@ class SpecialContestSignup extends SpecialContestPage {
 		}
 		
 		if ( $this->getRequest()->wasPosted() && $this->getUser()->matchEditToken( $this->getRequest()->getVal( 'wpEditToken' ) ) ) {
-			$this->handleSubmission();
+			$this->showSignupForm( Contest::s()->selectRow( null, array( 'id' => $this->getRequest()->getInt( 'wpcontest-id' ) ) ) );
 		}
 		else {
 			$this->showPage( $subPage );
@@ -48,11 +48,25 @@ class SpecialContestSignup extends SpecialContestPage {
 	 * Handle form submission.
 	 * 
 	 * @since 0.1
+	 * 
+	 * @return true|array
 	 */
-	protected function handleSubmission() {
-		$request = $this->getRequest();
+	public static function handleSubmission( array $data ) {
+		$user = $GLOBALS['wgUser']; //$this->getUser();
 		
+		$user->setEmail( $data['contestant-email'] );
+		$user->setRealName( $data['contestant-realname'] );
 		
+		$contestant = new ContestContestant( array(
+			'contest_id' => $data['contest-id'],
+			'user_id' => $user->getId(),
+			'challange_id' => $data['contestant-challangeid'],
+		
+			'volunteer' => $data['contestant-volunteer'],
+			'wmf' => $data['contestant-wmf'],
+		) );
+		
+		return $contestant->writeToDB();
 	}
 	
 	/**
@@ -89,11 +103,27 @@ class SpecialContestSignup extends SpecialContestPage {
 	 * @param Contest $contest
 	 */
 	protected function showSignupForm( Contest $contest ) {
-		$out = $this->getOutput();
 		$form = new HTMLForm( $this->getFormFields( $contest ), $this->getContext() );
 		
+		$form->setSubmitCallback( array( __CLASS__, 'handleSubmission' ) );
 		$form->setSubmitText( wfMsg( 'contest-signup-submit' ) );
-		$form->show();
+		
+		if( $form->show() ){
+			$this->showSucess( $contest );
+		}
+	}
+	
+	/**
+	 * Display a success message and helpfull links for further contest participation. 
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param Contest $contest
+	 */
+	protected function showSucess( Contest $contest ) {
+		$out = $this->getOutput();
+		
+		// TODO
 	}
 	
 	/**
@@ -108,49 +138,88 @@ class SpecialContestSignup extends SpecialContestPage {
 		
 		$user = $this->getUser();
 		
-		$fields[] = array(
+		$fields['contest-id'] = array(
 			'type' => 'hidden',
 			'default' => $contest->getId(),
-			'name' => 'contest-id',
 			'id' => 'contest-id',
 		);
 		
-		$fields[] = array(
+		$fields['contestant-realname'] = array(
 			'type' => 'text',
 			'default' => $user->getRealName(),
 			'label-message' => 'contest-signup-realname',
-			'name' => 'contestant-realname',
+			'required' => true,
+			'validation-callback' => array( __CLASS__, 'validateNameField' )
 		);
 		
-		$fields[] = array(
+		$fields['contestant-email'] = array(
 			'type' => 'text',
 			'default' => $user->getEmail(),
 			'label-message' => 'contest-signup-email',
-			'name' => 'contestant-email',
+			'required' => true,
 		);
 		
-		$fields[] = array(
+		$fields['contestant-challangeid'] = array(
+			'type' => 'radio',
+			'label-message' => 'contest-signup-challange',
+			'options' => $this->getChallangesList( $contest ),
+			'required' => true,
+		);
+		
+		$fields['contestant-volunteer'] = array(
 			'type' => 'check',
 			'default' => '0',
 			'label-message' => 'contest-signup-volunteer',
-			'name' => 'contestant-volunteer',
 		);
 		
-		$fields[] = array(
+		$fields['contestant-wmf'] = array(
 			'type' => 'check',
 			'default' => '0',
 			'label-message' => 'contest-signup-wmf',
-			'name' => 'contestant-wmf',
 		);
 		
-		$fields[] = array(
+		$fields['contestant-readrules'] = array(
 			'type' => 'check',
 			'default' => '0',
 			'label-message' => array( 'contest-signup-readrules', $contest->getField( 'rules_page' ) ),
-			'name' => 'contestant-readrules',
 		);
 		
 		return $fields;
+	}
+	
+	/**
+	 * Gets a list of contests that can be fed directly to the options field of
+	 * an HTMLForm radio input.
+	 * challange title => challange id
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param Contest $contest
+	 * 
+	 * @return array
+	 */
+	protected function getChallangesList( Contest $contest ) {
+		$list = array();
+		
+		foreach ( $contest->getChallanges() as /* ContestChallange */ $challange ) {
+			$list[$challange->getField( 'title' )] = $challange->getId();
+		}
+		
+		return $list;
+	}
+	
+	/**
+	 * HTMLForm field validation-callback for Target field.
+	 * 
+	 * @since 1.18
+	 * 
+	 * @param $value String
+	 * @param $alldata Array
+	 * 
+	 * @return true|string
+	 */
+	public static function validateNameField( $value, $alldata = null ) {
+		return strlen( $value ) > 1;
 	}
 	
 }
