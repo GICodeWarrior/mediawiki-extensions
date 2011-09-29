@@ -226,53 +226,11 @@ class LilyPond {
 		$width = imagesx( $srcImage );
 		$height = imagesy( $srcImage );
 
-		$xmin = 0;
-		$found = false;
-		for ( $x = 0; $x < $width && !$found; $x++ ) {
-			for ( $y = 0; $y < $height && !$found; $y++ ) {
-				$rgb = imagecolorat( $srcImage, $x, $y );
-				if ( $rgb != $bgColour ) {
-					$xmin = $x;
-					$found = true;
-				}
-			}
-		}
+		$xmin = self::findMin( $width, $height, $srcImage, $bgColour );
+		$xmax = self::findMax( $width, $height, $xmin, $srcImage, $bgColour );
 
-		$xmax = $xmin;
-		$found = false;
-		for ( $x = $width -1; $x > $xmin && !$found; $x-- ) {
-			for ( $y = 0; $y < $height && !$found; $y++ ) {
-				$rgb = imagecolorat( $srcImage, $x, $y );
-				if ( $rgb != $bgColour ) {
-					$xmax = $x;
-					$found = true;
-				}
-			}
-		}
-
-		$ymin = 0;
-		$found = false;
-		for ( $y = 0; $y < $height && !$found; $y++ ) {
-			for ( $x = 0; $x < $width && !$found; $x++ ) {
-				$rgb = imagecolorat( $srcImage, $x, $y );
-				if ( $rgb != $bgColour ) {
-					$ymin = $y;
-					$found = true;
-				}
-			}
-		}
-
-		$ymax = $ymin;
-		$found = false;
-		for ( $y = $height -1; $y > $ymin && !$found; $y-- ) {
-			for ( $x = 0; $x < $width && !$found; $x++ ) {
-				$rgb = imagecolorat( $srcImage, $x, $y );
-				if ( $rgb != $bgColour ) {
-					$ymax = $y;
-					$found = true;
-				}
-			}
-		}
+		$ymin = self::findMin( $height, $width, $srcImage, $bgColour );
+		$ymax = self::findMax( $height, $width, $ymin, $srcImage, $bgColour );
 
 		$newWidth  = $xmax - $xmin + 1;
 		$newHeight = $ymax - $ymin + 1;
@@ -280,6 +238,45 @@ class LilyPond {
 		$dstImage = imagecreatetruecolor( $newWidth, $newHeight );
 		imagecopy( $dstImage, $srcImage, 0, 0, $xmin, $ymin, $newWidth, $newHeight );
 		imagepng( $dstImage, $dest );
+	}
+
+	/**
+	 * @param $outer int
+	 * @param $inner int
+	 * @param $srcImage
+	 * @param $bgColour
+	 * @return int
+	 */
+	static function findMin( $outer, $inner, $srcImage, $bgColour ) {
+		for ( $x = 0; $x < $outer; $x++ ) {
+			for ( $y = 0; $y < $inner; $y++ ) {
+				$rgb = imagecolorat( $srcImage, $x, $y );
+				if ( $rgb != $bgColour ) {
+					return $x;
+				}
+			}
+		}
+		return 0;
+	}
+
+	/**
+	 * @param $outer int
+	 * @param $inner int
+	 * @param $min int
+	 * @param $srcImage
+	 * @param $bgColour
+	 * @return int
+	 */
+	static function findMax( $outer, $inner, $min, $srcImage, $bgColour ) {
+		for ( $x = $outer - 1; $x > $min; $x-- ) {
+			for ( $y = 0; $y < $inner; $y++ ) {
+				$rgb = imagecolorat( $srcImage, $x, $y );
+				if ( $rgb != $bgColour ) {
+					return $x;
+				}
+			}
+		}
+		return 0;
 	}
 
 	/**
