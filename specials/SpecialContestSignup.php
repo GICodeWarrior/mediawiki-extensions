@@ -44,10 +44,24 @@ class SpecialContestSignup extends SpecialContestPage {
 		}
 	}
 	
+	/**
+	 * Handle form submission.
+	 * 
+	 * @since 0.1
+	 */
 	protected function handleSubmission() {
+		$request = $this->getRequest();
+		
 		
 	}
 	
+	/**
+	 * Show the page.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param string $contestName
+	 */
 	protected function showPage( $contestName ) {
 		$out = $this->getOutput();
 		
