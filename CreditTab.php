@@ -12,14 +12,14 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 // Credits
 $wgExtensionCredits['other'][] = array(
-    'path' => __FILE__,
-    'name' => 'CreditTab',
-    'author' => '[http://www.dasch-tour.de DaSch]',
-    'description' => 'Adds a link to Credits',
-	'version'       =>  '1.2.1',
-    'descriptionmsg' => 'credits-desc',
-    'url' => 'http://www.mediawiki.org/wiki/Extension:CreditTab',
+	'path' => __FILE__,
+	'name' => 'CreditTab',
+	'author' => '[http://www.dasch-tour.de DaSch]',
+	'version' =>  '1.2.1',
+	'descriptionmsg' => 'credits-desc',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:CreditTab',
 );
+
 $dir = dirname( __FILE__ ) . '/';
 
 // Internationalization
