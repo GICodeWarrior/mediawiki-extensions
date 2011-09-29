@@ -13,12 +13,12 @@
  */
 $messages = array();
 
-$messages['qqq'] = array(
-	'relationlinks-desc'  => 'Description for Special:Version',
-);
-
 $messages['en'] = array(
 	'relationlinks-desc'  => 'Adds link rel to header, that can used for navigation and for SEO',
+);
+
+$messages['qqq'] = array(
+	'relationlinks-desc'  => 'Description for Special:Version',
 );
 
 $messages['de'] = array(
