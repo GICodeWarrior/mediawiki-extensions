@@ -100,6 +100,7 @@ $wgGroupPermissions['user'         ]['contestadmin'] = false;
 $wgGroupPermissions['autoconfirmed']['contestadmin'] = false;
 $wgGroupPermissions['bot'          ]['contestadmin'] = false;
 $wgGroupPermissions['sysop'        ]['contestadmin'] = true;
+$wgGroupPermissions['contestadmin' ]['contestadmin'] = true;
 
 # Users that can be contest participants.
 $wgGroupPermissions['*'            ]['contestparticipant'] = false;
@@ -107,6 +108,7 @@ $wgGroupPermissions['user'         ]['contestparticipant'] = true;
 $wgGroupPermissions['autoconfirmed']['contestparticipant'] = true;
 $wgGroupPermissions['bot'          ]['contestparticipant'] = false;
 $wgGroupPermissions['sysop'        ]['contestparticipant'] = true;
+$wgGroupPermissions['contestparticipant']['contestparticipant'] = true;
 
 # Users that can vote and comment on submissions.
 $wgGroupPermissions['*'            ]['contestjudge'] = false;
@@ -114,6 +116,8 @@ $wgGroupPermissions['user'         ]['contestjudge'] = false;
 $wgGroupPermissions['autoconfirmed']['contestjudge'] = false;
 $wgGroupPermissions['bot'          ]['contestjudge'] = false;
 $wgGroupPermissions['sysop'        ]['contestjudge'] = true;
+$wgGroupPermissions['contestjudge' ]['contestjudge'] = true;
+
 
 // Resource loader modules
 $moduleTemplate = array(
