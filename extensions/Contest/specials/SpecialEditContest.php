@@ -168,6 +168,11 @@ class SpecialEditContest extends FormSpecialPage {
 			'options' => Contest::getStatusMessages()
 		);
 		
+		$fields['rules_page'] = array (
+			'type' => 'text',
+			'label-message' => 'contest-edit-rulespage',
+		);
+		
 		if ( $contest !== false ) {
 			foreach ( $fields as $name => $data ) {
 				$fields[$name]['default'] = $contest->getField( $name );

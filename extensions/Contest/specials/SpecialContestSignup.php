@@ -36,9 +36,22 @@ class SpecialContestSignup extends SpecialContestPage {
 			return;
 		}
 		
+		if ( $this->getRequest()->wasPosted() && $this->getUser()->matchEditToken( $this->getRequest()->getVal( 'wpEditToken' ) ) ) {
+			$this->handleSubmission();
+		}
+		else {
+			$this->showPage( $subPage );
+		}
+	}
+	
+	protected function handleSubmission() {
+		
+	}
+	
+	protected function showPage( $contestName ) {
 		$out = $this->getOutput();
 		
-		$contest = Contest::s()->selectRow( null, array( 'name' => $subPage ) );
+		$contest = Contest::s()->selectRow( null, array( 'name' => $contestName ) );
 		
 		if ( $contest === false ) {
 			$this->showError( 'contest-signup-unknown' );
@@ -48,6 +61,7 @@ class SpecialContestSignup extends SpecialContestPage {
 		else {
 			// TODO: we might want to have a title field here
 			$out->setPageTitle( $contest->getField( 'name' ) );
+			$out->addWikiMsg( 'contest-signup-header', $contest->getField( 'name' ) );
 			
 			$this->showSignupForm( $contest );
 		}
@@ -62,8 +76,67 @@ class SpecialContestSignup extends SpecialContestPage {
 	 */
 	protected function showSignupForm( Contest $contest ) {
 		$out = $this->getOutput();
+		$form = new HTMLForm( $this->getFormFields( $contest ), $this->getContext() );
 		
+		$form->setSubmitText( wfMsg( 'contest-signup-submit' ) );
+		$form->show();
+	}
+	
+	/**
+	 * Gets the field definitions for the form.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param Contest $contest
+	 */
+	protected function getFormFields( Contest $contest ) {
+		$fields = array();
 		
+		$user = $this->getUser();
+		
+		$fields[] = array(
+			'type' => 'hidden',
+			'default' => $contest->getId(),
+			'name' => 'contest-id',
+			'id' => 'contest-id',
+		);
+		
+		$fields[] = array(
+			'type' => 'text',
+			'default' => $user->getRealName(),
+			'label-message' => 'contest-signup-realname',
+			'name' => 'contestant-realname',
+		);
+		
+		$fields[] = array(
+			'type' => 'text',
+			'default' => $user->getEmail(),
+			'label-message' => 'contest-signup-email',
+			'name' => 'contestant-email',
+		);
+		
+		$fields[] = array(
+			'type' => 'check',
+			'default' => '0',
+			'label-message' => 'contest-signup-volunteer',
+			'name' => 'contestant-volunteer',
+		);
+		
+		$fields[] = array(
+			'type' => 'check',
+			'default' => '0',
+			'label-message' => 'contest-signup-wmf',
+			'name' => 'contestant-wmf',
+		);
+		
+		$fields[] = array(
+			'type' => 'check',
+			'default' => '0',
+			'label-message' => array( 'contest-signup-readrules', $contest->getField( 'rules_page' ) ),
+			'name' => 'contestant-readrules',
+		);
+		
+		return $fields;
 	}
 	
 }

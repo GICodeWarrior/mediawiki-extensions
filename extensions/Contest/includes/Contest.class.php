@@ -91,6 +91,7 @@ class Contest extends ContestDBObject {
 			'name' => 'str',
 			'status' => 'int',
 			'submission_count' => 'int',
+			'rules_page' => 'str',
 		);
 	}
 	
@@ -106,6 +107,7 @@ class Contest extends ContestDBObject {
 			'name' => '',
 			'status' => self::STATUS_DRAFT,
 			'submission_count' => 0,
+			'rules_page' => '',
 		);
 	}
 	
