@@ -79,6 +79,7 @@ $messages['en'] = array(
 	'editcontest-legend' => 'Contest',
 	'contest-edit-name' => 'Contest name',
 	'contest-edit-status' => 'Contest status',
+	'contest-edit-rulespage' => 'Rules page',
 	'contest-edit-exists-already' => 'Note: you are editing an already existing contest, not creating a new one.',
 	'contest-edit-submit' => 'Submit',
 
@@ -95,6 +96,13 @@ $messages['en'] = array(
 
 	// Special:ContestSignup
 	'contest-signup-unknown' => 'There is no contest with the provided name.',
+	'contest-signup-submit' => 'Signup',
+	'contest-signup-header' => 'Please fill out the form to complete your registration for $1.',
+	'contest-signup-email' => 'Your email address',
+	'contest-signup-realname' => 'Your real name',
+	'contest-signup-volunteer' => 'I am interested in volunteer opportunities',
+	'contest-signup-wmf' => 'I am interested in working for the Wikimedia Foundation',
+	'contest-signup-readrules' => 'I confirm that I have read, and agree to, [[$1|the contest rules]]',
 
 	// Special:Contest
 	'contest-contest-title' => 'Contest: $1',
