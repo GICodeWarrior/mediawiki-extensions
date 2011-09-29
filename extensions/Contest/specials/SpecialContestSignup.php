@@ -47,8 +47,21 @@ class SpecialContestSignup extends SpecialContestPage {
 			// TODO: we might want to have a title field here
 			$out->setPageTitle( $contest->getField( 'name' ) );
 			
-			
+			$this->showSignupForm( $contest );
 		}
+	}
+	
+	/**
+	 * Display the signup form for this contest.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param Contest $contest
+	 */
+	protected function showSignupForm( Contest $contest ) {
+		$out = $this->getOutput();
+		
+		
 	}
 	
 }
