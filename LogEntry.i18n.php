@@ -663,12 +663,13 @@ $messages['vo'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Bencmq
  * @author Hydra
  */
 $messages['zh-hans'] = array(
 	'logentry-append' => '追加',
 	'logentry' => '日志条目',
-	'logentry-invalidpage' => '无效的页',
+	'logentry-invalidpage' => '无效页面：$1',
 	'logentry-invalidtoken' => '无效的标记',
 );
 
