@@ -386,6 +386,16 @@ $messages['ms'] = array(
 	'bm-printversion-inexistent-book' => 'Buku tidak dijumpai. Sila isikan nama buku yang wujud untuk mendapatkan versi cetakannya.',
 );
 
+/** Mazanderani (مازِرونی)
+ * @author محک
+ */
+$messages['mzn'] = array(
+	'bm-printversion' => 'نسخه قابل چاپ',
+	'bm-printversion-desc' => 'بساتن اتا [[Special:PrintVersion|نسخهٔ قابل چاپ]] اتا کتاب جا',
+	'bm-printversion-no-book' => 'لطفاً ایسم کتابی که خانّی به شکل قابل چاپ بَییرین ره بنویسین.',
+	'bm-printversion-inexistent-book' => 'کتاب پیدا نیّه. لطفاً ایسم اتا کتاب که اینجه دره ره بنویسین تا ونه نسخهٔ قابل چاپ ره بَیرین.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
