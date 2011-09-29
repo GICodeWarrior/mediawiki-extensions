@@ -76,7 +76,7 @@ if __name__ == '__main__':
 		try:
 			if (os.path.getmtime(filepath) <= os.path.getmtime(zonefilepath)
 				and os.path.getmtime(langlist) <= os.path.getmtime(zonefilepath)):
-			continue
+				continue
 		except OSError:
 			pass
 
