@@ -809,12 +809,12 @@ $messages['sk'] = array(
 	'mwe-error_load_lib' => 'Error: JavaScript $1 nebolo možné získať alebo neobsahuje definíciu $2',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'mwe-loading' => 'Учитавање ...',
+	'mwe-loading' => 'Учитавам…',
 	'mwe-ok' => 'У реду',
 	'mwe-cancel' => 'Откажи',
 	'mwe-test-plural' => 'Покренуо/ла сам {{PLURAL:$1|$1 тест|$1 тестова}}',
