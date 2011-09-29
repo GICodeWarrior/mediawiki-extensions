@@ -103,6 +103,7 @@ $messages['en'] = array(
 	'contest-signup-volunteer' => 'I am interested in volunteer opportunities',
 	'contest-signup-wmf' => 'I am interested in working for the Wikimedia Foundation',
 	'contest-signup-readrules' => 'I confirm that I have read, and agree to, [[$1|the contest rules]]',
+	'contest-signup-challange' => 'What challange do you want to take on?',
 
 	// Special:Contest
 	'contest-contest-title' => 'Contest: $1',
