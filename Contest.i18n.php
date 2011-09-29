@@ -25,9 +25,18 @@ $messages['en'] = array(
 	'right-contestparticipant' => 'Participate in contests',
 	'right-contestjudge' => 'Judge contest submissions',
 
+	// Groups
 	'group-contestadmin' => 'Contest admins',
+	'group-contestadmin-member' => 'Contest admin',
+	'grouppage-contestadmin' => 'Project:Contest_admins',
+
 	'group-contestparticipant' => 'Contest participants',
+	'group-contestparticipant-member' => 'Contest participant',
+	'grouppage-contestparticipant' => 'Project:Contest_participants',
+
 	'group-contestjudge' => 'Contest judges',
+	'group-contestjudge-member' => 'Contest judge',
+	'grouppage-contestjudge' => 'Project:Contest_judges',
 
 	// Contest statuses
 	'contest-status-draft' => 'Draft (disabled)',
