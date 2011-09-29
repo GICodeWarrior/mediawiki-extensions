@@ -30,6 +30,8 @@ class SpecialContestSubmission extends SpecialContestPage {
 	 * @param string $arg
 	 */
 	public function execute( $subPage ) {
+		$subPage = str_replace( '_', ' ', $subPage );
+		
 		if ( !parent::execute( $subPage ) ) {
 			return;
 		}

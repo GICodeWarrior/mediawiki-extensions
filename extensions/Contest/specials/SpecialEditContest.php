@@ -54,6 +54,8 @@ class SpecialEditContest extends FormSpecialPage {
 	 * @param string $subPage
 	 */
 	public function execute( $subPage ) {
+		$subPage = str_replace( '_', ' ', $subPage );
+		
 		$this->setParameter( $subPage );
 		$this->setHeaders();
 		$this->outputHeader();
