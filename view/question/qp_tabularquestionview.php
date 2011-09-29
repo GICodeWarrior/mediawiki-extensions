@@ -226,7 +226,16 @@ class qp_TabularQuestionView extends qp_StubQuestionView {
 			# there is no interpretation error
 			return;
 		}
-		foreach ( $interpErrors as $prop_id => $prop_desc ) {
+		foreach ( $interpErrors as $prop_key => $prop_desc ) {
+			if ( is_string( $prop_key ) ) {
+				if ( ( $prop_id = $this->ctrl->getProposalIdByName( $prop_key ) ) === false ) {
+					continue;
+				}
+			} elseif ( is_int( $prop_key ) ) {
+				$prop_id = $prop_key;
+			} else {
+				continue;
+			}
 			if ( isset( $this->pviews[$prop_id] ) ) {
 				# the whole proposal line has errors
 				$propview = &$this->pviews[$prop_id];

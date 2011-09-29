@@ -271,6 +271,7 @@ class qp_TabularQuestion extends qp_StubQuestion {
 	 */
 	function questionParseBody( $inputType ) {
 		$proposalId = -1;
+		# set static view state for the future qp_TabularQuestionProposalView instances
 		qp_TabularQuestionProposalView::applyViewState( $this->view );
 		foreach ( $this->raws as $raw ) {
 			if ( !preg_match( $this->mProposalPattern, $raw, $matches ) ) {
@@ -280,7 +281,11 @@ class qp_TabularQuestion extends qp_StubQuestion {
 			$pview = new qp_TabularQuestionProposalView( $proposalId + 1, $this );
 			$proposalId++;
 			$pview->text = array_pop( $matches );
-			$this->mProposalText[ $proposalId ] = trim( $pview->text );
+			# set proposal name (if any)
+			if ( ( $prop_name = qp_QuestionData::splitRawProposal( $pview->text ) ) !== '' ) {
+				$this->mProposalNames[$proposalId] = $prop_name;
+			}
+			$this->mProposalText[$proposalId] = trim( $pview->text );
 			foreach ( $this->mCategories as $catId => $catDesc ) {
 				# start new input field tag (category)
 				$pview->addNewCategory( $catId );

@@ -8,6 +8,7 @@ class qp_StubQuestionProposalView {
 
 	# proposal's id
 	var $proposalId;
+
 	# an instance of question's controller
 	var $ctrl;
 	var $rowClass = 'proposal';

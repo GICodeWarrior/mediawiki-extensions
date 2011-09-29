@@ -1,11 +1,12 @@
 .qpoll .head {font-weight:bold; color:gray;}
-.qpoll table.pollresults {border-collapse: collapse;}
-.qpoll table.pollresults th {border: 1px gray solid; background-color:lightgray; padding: 3px;}
-.qpoll table.pollresults tr.spans { color:Navy; }
-.qpoll table.pollresults td {border: 1px gray solid; text-align: center; padding: 3px;}
-.qpoll table.pollresults td.stats {background-color: Azure;}
-.qpoll table.pollresults td.spaneven {background-color: Aquamarine;}
-.qpoll table.pollresults td.spanodd {background-color: Moccasin;}
+.qpoll table.qdata {border-collapse: collapse;}
+.qpoll table.qdata th {border: 1px gray solid; background-color:lightgray; padding: 3px;}
+.qpoll table.qdata tr.spans { color:Navy; }
+.qpoll table.qdata td {border: 1px gray solid; text-align: center; padding: 3px;}
+.qpoll table.qdata td.stats {background-color: Azure;}
+.qpoll table.qdata td.spaneven {background-color: Aquamarine;}
+.qpoll table.qdata td.spanodd {background-color: Moccasin;}
+.qpoll table.qdata tr.qdatatext td { text-align: left; }
 .qpoll .cat_part { background-color: Lightyellow; border: 1px solid gray; padding: 0 0.5em 0 0.5em; }
 .qpoll .cat_unknown { color: white; background-color: IndianRed; border: 1px solid gray; padding: 0 0.5em 0 0.5em; }
 .qpoll .interp_answer { border: 1px solid gray; padding: 0; margin: 0; color: black; background-color: lightgray; font-weight:bold; line-height:2em; }

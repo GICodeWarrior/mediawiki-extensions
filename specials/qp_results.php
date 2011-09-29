@@ -58,7 +58,7 @@ class PollResults extends qp_SpecialPage {
 	 * @param $user User: the user to check
 	 * @return Boolean: does the user have permission to view the page?
 	 */
-	public function userCanExecute( User $user ) {
+	public function userCanExecute( $user ) {
 		# this fn is used to decide whether to show the page link at Special:Specialpages
 		foreach ( self::$accessPermissions as $permission ) {
 			if ( !$user->isAllowed( $permission ) ) {
@@ -230,8 +230,9 @@ class PollResults extends qp_SpecialPage {
 		foreach ( $pollStore->Questions as &$qdata ) {
 			if ( $pollStore->isUsedQuestion( $qdata->question_id ) ) {
 				$output .= "<br />\n<b>" . $qdata->question_id . ".</b> " . qp_Setup::entities( $qdata->CommonQuestion ) . "<br />\n";
-				$qview = 
-				$output .= $qdata->displayUserQuestionVote();
+				$qview = $qdata->createView();
+				$output .= $qview->displayUserQuestionVote();
+				unset( $qview );
 			}
 		}
 		return $output;
@@ -252,7 +253,9 @@ class PollResults extends qp_SpecialPage {
 				$output .= $this->qpLink( $this->getTitle(), wfMsg( 'qp_export_to_xls' ), array( "style" => "font-weight:bold;" ), array( 'action' => 'stats_xls', 'id' => $pid ) ) . "<br />\n";
 				$output .= $this->qpLink( $this->getTitle(), wfMsg( 'qp_voices_to_xls' ), array( "style" => "font-weight:bold;" ), array( 'action' => 'voices_xls', 'id' => $pid ) ) . "<br />\n";
 				foreach ( $pollStore->Questions as &$qdata ) {
-					$output .= $qdata->displayQuestionStats( $this, $pid );
+					$qview = $qdata->createView();
+					$output .= $qview->displayQuestionStats( $this, $pid );
+					unset( $qview );
 				}
 			}
 		}
@@ -481,9 +484,11 @@ class PollResults extends qp_SpecialPage {
 		return "<div>" . self::$PollsLink . "</div>\n";
 	}
 
-}
+} /* end of PollResults class */
 
-/* list of all users */
+/**
+ * List all users
+ */
 class qp_UsersList extends qp_QueryPage {
 	var $cmd;
 	var $order_by;
@@ -545,9 +550,11 @@ class qp_UsersList extends qp_QueryPage {
 		return PollResults::getPollsLink() . '<div class="head">' . wfMsg( 'qp_users_list' ) . '<div>' . $this->different_order_by_link . '</div></div>';
 	}
 
-}
+} /* end of qp_UsersList class */
 
-/* list of polls in which selected user (did not|participated) */
+/**
+ * List of polls in which selected user has (not) participated
+ */
 class qp_UserPollsList extends qp_QueryPage {
 	var $uid;
 	var $inverse;
@@ -623,9 +630,11 @@ class qp_UserPollsList extends qp_QueryPage {
 		return $params;
 	}
 
-}
+} /* end of qp_UserPollsList class */
 
-/* list of all polls */
+/**
+ * List all polls
+ */
 class qp_PollsList extends qp_QueryPage {
 
 	function getIntervalResults( $offset, $limit ) {
@@ -648,7 +657,7 @@ class qp_PollsList extends qp_QueryPage {
 
 	function formatResult( $result ) {
 		global $wgLang, $wgContLang;
-		$poll_title = Title::makeTitle( $result->ns, $result->title, qp_AbstractPoll::getPollTitleFragment( $result->poll_id, '' ) );
+		$poll_title = Title::makeTitle( $result->ns, $result->title, qp_AbstractPoll::s_getPollTitleFragment( $result->poll_id, '' ) );
 		$pagename = qp_Setup::specialchars( $wgContLang->convert( $poll_title->getPrefixedText() ) );
 		$pollname = qp_Setup::specialchars( $result->poll_id );
 		$goto_link = $this->qpLink( $poll_title, wfMsg( 'qp_source_link' ) );
@@ -663,9 +672,11 @@ class qp_PollsList extends qp_QueryPage {
 		return PollResults::getUsersLink() . '<div class="head">' . wfMsg( 'qp_polls_list' ) . '</div>';
 	}
 
-}
+} /* end of qp_PollsList class */
 
-/* list of users, (not|participated) in particular poll, defined by pid */
+/**
+ * List of users, (not) participated in particular poll, defined by pid
+ */
 class qp_PollUsersList extends qp_QueryPage {
 
 	var $pid;
@@ -689,7 +700,7 @@ class qp_PollUsersList extends qp_QueryPage {
 			'page_id=article_id and pid=' . $db->addQuotes( $this->pid ),
 			__METHOD__ );
 		if ( $row = $db->fetchObject( $res ) ) {
-			$poll_title = Title::makeTitle( intval( $row->ns ), $row->title, qp_AbstractPoll::getPollTitleFragment( $row->poll_id, '' ) );
+			$poll_title = Title::makeTitle( intval( $row->ns ), $row->title, qp_AbstractPoll::s_getPollTitleFragment( $row->poll_id, '' ) );
 			$pagename = qp_Setup::specialchars( $wgContLang->convert( $poll_title->getPrefixedText() ) );
 			$pollname = qp_Setup::specialchars( $row->poll_id );
 			$goto_link = $this->qpLink( $poll_title, wfMsg( 'qp_source_link' ) );
@@ -743,9 +754,11 @@ class qp_PollUsersList extends qp_QueryPage {
 		return $params;
 	}
 
-}
+} /* end of qp_PollUsersList class */
 
-/* list of users who voted for particular choice of particular proposal of particular question */
+/**
+ * List of users who voted for particular choice of particular proposal of particular question
+ */
 class qp_UserCellList extends qp_QueryPage {
 	var $cmd;
 	var $pid = null;
@@ -782,7 +795,7 @@ class qp_UserCellList extends qp_QueryPage {
 			$pollStore = new qp_PollStore( array( 'from' => 'pid', 'pid' => $this->pid ) );
 			if ( $pollStore->pid !== null ) {
 				$pollStore->loadQuestions();
-				$poll_title = Title::makeTitle( intval( $this->ns ), $this->title, qp_AbstractPoll::getPollTitleFragment( $this->poll_id, '' ) );
+				$poll_title = Title::makeTitle( intval( $this->ns ), $this->title, qp_AbstractPoll::s_getPollTitleFragment( $this->poll_id, '' ) );
 				$pagename = qp_Setup::specialchars( $wgContLang->convert( $poll_title->getPrefixedText() ) );
 				$pollname = qp_Setup::specialchars( $this->poll_id );
 				$goto_link = $this->qpLink( $poll_title, wfMsg( 'qp_source_link' ) );
@@ -865,31 +878,4 @@ class qp_UserCellList extends qp_QueryPage {
 		return $params;
 	}
 
-}
-
-class qp_Excel {
-
-	static function prepareExcelString( $s ) {
-		if ( preg_match( '`^=.?`', $s ) ) {
-			return "'" . $s;
-		}
-		return $s;
-	}
-
-	static function writeFormattedTable( $worksheet, $rownum, $colnum, &$table, $format = null ) {
-		foreach ( $table as $rnum => &$row ) {
-			foreach ( $row as $cnum => &$cell ) {
-				if ( is_array( $cell ) ) {
-					if ( array_key_exists( "format", $cell ) ) {
-						$worksheet->write( $rownum + $rnum, $colnum + $cnum, $cell[ 0 ], $cell[ "format" ] );
-					} else {
-						$worksheet->write( $rownum + $rnum, $colnum + $cnum, $cell[ 0 ], $format );
-					}
-				} else {
-					$worksheet->write( $rownum + $rnum, $colnum + $cnum, $cell, $format );
-				}
-			}
-		}
-	}
-
-}
+} /* end of qp_UserCellList class */

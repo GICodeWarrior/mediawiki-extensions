@@ -175,10 +175,13 @@ class qp_TextQuestion extends qp_StubQuestion {
 		$proposalId = 0;
 		# Currently, we use just a single instance (no nested categories)
 		$opt = new qp_TextQuestionOptions();
+		# set static view state for the future qp_TextQuestionProposalView instances
 		qp_TextQuestionProposalView::applyViewState( $this->view );
 		foreach ( $this->raws as $raw ) {
 			$opt->reset();
 			$this->propview = new qp_TextQuestionProposalView( $proposalId, $this );
+			# set proposal name (if any)
+			$prop_name = qp_QuestionData::splitRawProposal( $raw );
 			$this->dbtokens = $brace_stack = array();
 			$catId = 0;
 			$last_brace = '';
@@ -245,13 +248,18 @@ class qp_TextQuestion extends qp_StubQuestion {
 				# todo: this is the explanary line, it is not real proposal
 				$this->propview->prependErrorToken( wfMsg( 'qp_error_too_few_categories' ), 'error' );
 			}
-			if ( strlen( $proposal_text = serialize( $this->dbtokens ) ) > qp_Setup::$proposal_max_length ) {
+			$proposal_text = serialize( $this->dbtokens );
+			# build the whole raw DB proposal_text value to check it's maximal length
+			if ( strlen( qp_QuestionData::getProposalNamePrefix( $prop_name ) . $proposal_text ) > qp_Setup::$proposal_max_length ) {
 				# too long proposal field to store into the DB
 				# this is very important check for text questions because
 				# category definitions are stored within the proposal text
 				$this->propview->prependErrorToken( wfMsg( 'qp_error_too_long_proposal_text' ), 'error' );
 			}
 			$this->mProposalText[$proposalId] = $proposal_text;
+			if ( $prop_name !== '' ) {
+				$this->mProposalNames[$proposalId] = $prop_name;
+			}
 			if ( $this->poll->mBeingCorrected ) {
 				# check for unanswered categories
 				try {

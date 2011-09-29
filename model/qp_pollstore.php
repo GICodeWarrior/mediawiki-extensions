@@ -5,98 +5,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 /**
- * An interpretation result of user answer to the quiz
- */
-class qp_InterpResult {
-	# short answer. it is supposed to be sortable and accountable in statistics
-	# by default, it is private (displayed only in Special:Pollresults page)
-	# blank value means short answer is unavailable
-	var $short = '';
-	# long answer. it is supposed to be understandable by amateur users
-	# by default, it is public (displayed everywhere)
-	# blank value means long answer is unavailable
-	var $long = '';
-	# structured answer. scalar value or an associative array.
-	# objects are not allowed.
-	# it is exported to XLS voices and can be analyzed by external tools.
-	var $structured = null;
-	# error message. non-blank value indicates interpretation script error
-	# either due to incorrect script code, or a script-generated one
-	var $error = '';
-	# interpretation result
-	# 2d array of errors generated for [question][proposal]
-	# 3d array of errors generated for [question][proposal][category]
-	# false if no errors
-	var $qpcErrors = false;
-
-	/**
-	 * @param $init - optional array of properties to be initialized
-	 */
-	function __construct( $init = null ) {
-		$props = array( 'short', 'long', 'error' );
-		if ( is_array( $init ) ) {
-			foreach ( $props as $prop ) {
-				if ( array_key_exists( $prop, $init ) ) {
-					$this->{ $prop } = $init[$prop];
-				}
-			}
-			return;
-		}
-	}
-
-	/**
-	 * "global" error message
-	 */
-	function setError( $msg ) {
-		$this->error = $msg;
-		return $this;
-	}
-
-	/**
-	 * set question / proposal error message (for quizes)
-	 *
-	 * @param $msg   string error message for [question][proposal] pair;
-	 *               non-string for default message
-	 * @param $qidx  int index of poll's question
-	 * @param $pidx  int index of question's proposal
-	 * @param $cidx  int index of proposal's category (optional)
-	 */
-	function setQPCerror( $msg, $qidx, $pidx, $cidx = null ) {
-		if ( !is_array( $this->qpcErrors ) ) {
-			$this->qpcErrors = array();
-		}
-		if ( !array_key_exists( $qidx, $this->qpcErrors ) ) {
-			$this->qpcErrors[$qidx] = array();
-		}
-		if ( $cidx === null ) {
-			# proposal interpretation error message
-			$this->qpcErrors[$qidx][$pidx] = $msg;
-			return;
-		}
-		# proposal's category interpretation error message
-		if ( !array_key_exists( $pidx, $this->qpcErrors[$qidx] ) ||
-				!is_array( $this->qpcErrors[$qidx][$pidx] ) ) {
-			# remove previous proposal interpretation error message because
-			# now we have more precise category interpretation error message
-			$this->qpcErrors[$qidx][$pidx] = array();
-		}
-		$this->qpcErrors[$qidx][$pidx][$cidx] = $msg;
-	}
-
-	function setDefaultErrorMessage() {
-		if ( is_array( $this->qpcErrors ) && $this->error == '' ) {
-			$this->error = wfMsg( 'qp_interpetation_wrong_answer' );
-		}
-		return $this;
-	}
-
-	function isError() {
-		return $this->error != '' || is_array( $this->qpcErrors );
-	}
-
-} /* end of qp_InterpResult class */
-
-/**
  * poll storage and retrieval using DB
  * one poll may contain several questions
  */
@@ -276,7 +184,7 @@ class qp_PollStore {
 	}
 
 	/**
-	 * qdata instantiator
+	 * qdata instantiator (factory)
 	 * Please use it instead of qdata constructors
 	 */
 	static function newQuestionData( $argv ) {
@@ -616,12 +524,17 @@ class qp_PollStore {
 			array( 'question_id', 'proposal_id', 'proposal_text' ),
 			array( 'pid' => $this->pid ),
 				__METHOD__ );
+		# load proposal text from DB
 		while ( $row = self::$db->fetchObject( $res ) ) {
 			$question_id = intval( $row->question_id );
 			$proposal_id = intval( $row->proposal_id );
 			if ( $this->questionExists( $question_id ) ) {
 				$qdata = &$this->Questions[ $question_id ];
-				$qdata->ProposalText[ $proposal_id ] = $row->proposal_text;
+				$prop_text = $row->proposal_text;
+				if ( ( $prop_name = qp_QuestionData::splitRawProposal( $prop_text ) ) !== '' ) {
+					$qdata->ProposalNames[$proposal_id] = $prop_name;
+				} 
+				$qdata->ProposalText[$proposal_id] = $prop_text;
 			}
 		}
 	}
@@ -754,7 +667,7 @@ class qp_PollStore {
 			$this->username = $username;
 		}
 		$res = self::$db->select( 'qp_users_polls',
-			array( 'attempts', 'short_interpretation', 'long_interpretation' ),
+			array( 'attempts', 'short_interpretation', 'long_interpretation', 'structured_interpretation' ),
 			array( 'pid' => $this->pid, 'uid' => $this->last_uid ),
 			__METHOD__ . ':load short & long answer interpretation' );
 		if ( self::$db->numRows( $res ) != 0 ) {
@@ -763,6 +676,7 @@ class qp_PollStore {
 			$this->interpResult = new qp_InterpResult();
 			$this->interpResult->short = $row->short_interpretation;
 			$this->interpResult->long = $row->long_interpretation;
+			$this->interpResult->structured = $row->structured_interpretation;
 		}
 		$this->randomQuestions = false;
 		if ( $this->randomQuestionCount != 0 ) {
@@ -892,6 +806,9 @@ class qp_PollStore {
 		$insert = Array();
 		foreach ( $this->Questions as $qkey => &$ques ) {
 			foreach ( $ques->ProposalText as $propkey => $ptext ) {
+				if ( isset( $ques->ProposalNames[$propkey] ) ) {
+					$ptext = qp_QuestionData::getProposalNamePrefix( $ques->ProposalNames[$propkey] ) . $ptext;
+				}
 				$insert[] = array( 'pid' => $this->pid, 'question_id' => $qkey, 'proposal_id' => $propkey, 'proposal_text' => $wgContLang->truncate( $ptext, qp_Setup::$proposal_max_length , '' ) );
 			}
 		}
@@ -922,6 +839,9 @@ class qp_PollStore {
 		$poll_answer = array();
 
 		foreach ( $this->Questions as &$qdata ) {
+			if ( !$this->isUsedQuestion( $qdata->question_id ) ) {
+				continue;
+			}
 			$questions = array();
 			foreach ( $qdata->ProposalText as $propkey => &$proposal_text ) {
 				$proposals = array();
@@ -932,11 +852,13 @@ class qp_PollStore {
 						$proposals[$catkey] = $qdata->ProposalCategoryText[ $propkey ][ $id_key ];
 					}
 				}
-				$questions[$propkey] = $proposals;
+				if ( isset( $qdata->ProposalNames[$propkey] ) ) {
+					$questions[$qdata->ProposalNames[$propkey]] = $proposals;
+				} else {
+					$questions[$propkey] = $proposals;
+				}
 			}
-			if ( $this->isUsedQuestion( $qdata->question_id ) ) {
-				$poll_answer[$qdata->question_id] = $questions;
-			}
+			$poll_answer[$qdata->question_id] = $questions;
 		}
 
 		# interpret the poll answer to get interpretation answer
@@ -965,13 +887,13 @@ class qp_PollStore {
 				array( 'answer' ),
 				$insert,
 				__METHOD__ );
-			$this->interpretVote();
 			# update interpretation result and number of syntax-valid resubmit attempts
 			$qp_users_polls = self::$db->tableName( 'qp_users_polls' );
 			$short = self::$db->addQuotes( $this->interpResult->short );
 			$long = self::$db->addQuotes( $this->interpResult->long );
+			$structured = self::$db->addQuotes( $this->interpResult->structured );
 			$this->attempts++;
-			$stmt = "INSERT INTO {$qp_users_polls} (uid,pid,short_interpretation,long_interpretation)\n VALUES ( " . intval( $this->last_uid ) . ", " . intval( $this->pid ) . ", {$short}, {$long} )\n ON DUPLICATE KEY UPDATE attempts = " . intval( $this->attempts ) . ", short_interpretation = {$short} , long_interpretation = {$long}";
+			$stmt = "INSERT INTO {$qp_users_polls} (uid,pid,short_interpretation,long_interpretation,structured_interpretation)\n VALUES ( " . intval( $this->last_uid ) . ", " . intval( $this->pid ) . ", {$short}, {$long}, {$structured} )\n ON DUPLICATE KEY UPDATE attempts = " . intval( $this->attempts ) . ", short_interpretation = {$short} , long_interpretation = {$long}, structured_interpretation = {$structured}";
 			self::$db->query( $stmt, __METHOD__ );
 		}
 	}
@@ -986,7 +908,10 @@ class qp_PollStore {
 			$this->setQuestionDesc();
 			$this->setCategories();
 			$this->setProposals();
-			$this->setAnswers();
+			$this->interpretVote();
+			if ( $this->interpResult->hasToBeStored() ) {
+				$this->setAnswers();
+			}
 			self::$db->commit();
 			$this->voteDone = true;
 		}

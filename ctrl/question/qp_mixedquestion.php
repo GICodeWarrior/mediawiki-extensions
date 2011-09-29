@@ -21,6 +21,7 @@ class qp_MixedQuestion extends qp_TabularQuestion {
 		}
 		$this->mProposalPattern .= '(.*)`u';
 		$proposalId = -1;
+		# set static view state for the future qp_TabularQuestionProposalView instances
 		qp_TabularQuestionProposalView::applyViewState( $this->view );
 		foreach ( $this->raws as $raw ) {
 			# new proposal view
@@ -40,7 +41,11 @@ class qp_MixedQuestion extends qp_TabularQuestion {
 				continue;
 			}
 			$proposalId++;
-			$this->mProposalText[ $proposalId ] = trim( $pview->text );
+			# set proposal name (if any)
+			if ( ( $prop_name = qp_QuestionData::splitRawProposal( $pview->text ) ) !== '' ) {
+				$this->mProposalNames[$proposalId] = $prop_name;
+			}
+			$this->mProposalText[$proposalId] = trim( $pview->text );
 			# Determine a type ID, according to the questionType and the number of signes.
 			foreach ( $this->mCategories as $catId => $catDesc ) {
 				$typeId  = $matches[ $catId ];

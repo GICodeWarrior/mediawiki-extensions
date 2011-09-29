@@ -89,7 +89,7 @@ function qp_debug( /* $args */ ) {
 	if ( count( $args ) < 1 ) {
 		return;
 	}
-	$message = $args[0];
+	$message = strval( $args[0] );
 	$debug = true;
 	if ( count( $args ) > 2 ) {
 		$debug = $args[2];
@@ -113,6 +113,26 @@ function qp_debug( /* $args */ ) {
 function qp_lc( $text ) {
 	global $wgContLang;
 	return $wgContLang->lc( $text );
+}
+
+/**
+ * Returns either scalar or associative array with structured interpretation
+ * of the specified poll for the current user
+ *
+ * @return  scalar/array when success; null when there is no structured interpretation
+ */
+function qp_getStructuredInterpretation( $poll_address ) {
+	$pollStore = qp_PollStore::newFromAddr( $poll_address );
+	if ( !( $pollStore instanceof qp_PollStore ) || $pollStore->pid === null ) {
+		return null;
+	}
+	$username = qp_Setup::getCurrUserName();
+	$pollStore->loadQuestions();
+	$pollStore->setLastUser( $username, false );
+	if ( $pollStore->interpResult->structured === '' ) {
+		return null;
+	}
+	return unserialize( $pollStore->interpResult->structured );
 }
 
 /**
@@ -206,9 +226,9 @@ class qp_Setup {
 	public static $structured_interpretation_max_length = 65535;
 	# whether to show short, long, structured interpretation results to end user
 	public static $show_interpretation = array(
-		'short' => false,
+		'short' => true,
 		'long' => true,
-		'structured' => false
+		'structured' => true
 	);
 	/* end of default configuration settings */
 
@@ -267,12 +287,10 @@ class qp_Setup {
 			'qp_user.php' => 'qp_Setup',
 			'includes/qp_functionshook.php' => 'qp_FunctionsHook',
 			'includes/qp_renderer.php' => 'qp_Renderer',
+			'includes/qp_excel.php' => 'qp_Excel',
 
 			## DB schema updater
 			'maintenance/qp_schemaupdater.php' => 'qp_SchemaUpdater',
-
-			## collection of the questions
-			'qp_question_collection.php' => 'qp_QuestionCollection',
 
 			## controllers (polls and questions derived from separate abstract classes)
 			# polls
@@ -286,6 +304,8 @@ class qp_Setup {
 			'ctrl/question/qp_mixedquestion.php' => 'qp_MixedQuestion',
 			'ctrl/question/qp_textquestion.php' => array( 'qp_TextQuestionOptions', 'qp_TextQuestion' ),
 			'ctrl/question/qp_questionstats.php' => 'qp_QuestionStats',
+			# interpretation results
+			'ctrl/qp_interpresult.php' => 'qp_InterpResult',
 
 			# generic view
 			'view/qp_abstractview.php' => 'qp_AbstractView',
@@ -300,19 +320,25 @@ class qp_Setup {
 			'view/question/qp_tabularquestionview.php' => 'qp_TabularQuestionView',
 			'view/question/qp_textquestionview.php' => 'qp_TextQuestionView',
 			'view/question/qp_questionstatsview.php' => 'qp_QuestionStatsView',
-			## proposal views are derived from it's own separate abstract class
+			## proposal views are derived from their own base abstract class
 			# proposals
 			'view/proposal/qp_stubquestionproposalview.php' => 'qp_StubQuestionProposalView',
 			'view/proposal/qp_tabularquestionproposalview.php' => 'qp_TabularQuestionProposalView',
 			'view/proposal/qp_questionstatsproposalview.php' => 'qp_QuestionStatsProposalView',
 			'view/proposal/qp_textquestionproposalview.php' => 'qp_TextQuestionProposalView',
+			## question data views are used to display question results in Special:PollResults page
+			'view/results/qp_questiondataresults.php' => 'qp_QuestionDataResults',
+			'view/results/qp_textquestiondataresults.php' => 'qp_TextQuestionDataResults',
+			# interpretation results
+			'view/qp_interpresultview.php' => 'qp_InterpResultView',
 
-			# poll storage
-			'qp_pollstore.php' => array( 'qp_InterpResult', 'qp_PollStore' ),
-
-			# question storage and page result question views
-			# (combined question storage & view)
-			'qp_questiondata.php' => array( 'qp_QuestionData', 'qp_TextQuestionData' ),
+			## models/storage
+			# poll
+			'model/qp_pollstore.php' => 'qp_PollStore',
+			# question storage; qp_TextQuestionData is very small, thus kept in the same file;
+			'model/qp_questiondata.php' => array( 'qp_QuestionData', 'qp_TextQuestionData' ),
+			# collection of the questions
+			'model/qp_question_collection.php' => 'qp_QuestionCollection',
 
 			# special pages
 			'specials/qp_special.php' => array( 'qp_SpecialPage', 'qp_QueryPage' ),
@@ -320,8 +346,8 @@ class qp_Setup {
 			'specials/qp_webinstall.php' => array( 'qp_WebInstall' ),
 
 			# interpretation of answers
-			'qp_interpret.php' => 'qp_Interpret',
-			'qp_eval.php' => 'qp_Eval'
+			'interpretation/qp_interpret.php' => 'qp_Interpret',
+			'interpretation/qp_eval.php' => 'qp_Eval'
 		) );
 
 		# TODO: Use the new technique for i18n of special page aliases

@@ -47,9 +47,12 @@ class qp_PollStats extends qp_AbstractPoll {
 		$this->pollAddr = trim( $argv['address'] );
 	}
 
-	# prepare qp_PollStore object
-	# @return    true on success ($this->pollStore has been created successfully), error string on failure
-	function getPollStore() {
+	/**
+	 * Set poll headers; checks poll headers for errors
+	 * @return  string  error message to display;
+	 *          boolean  true when no errors
+	 */
+	function setHeaders() {
 		if ( $this->mPollId !== null ) {
 			$this->mState = "error";
 			return self::fatalError( 'qp_error_id_in_stats_mode' );
@@ -58,6 +61,15 @@ class qp_PollStats extends qp_AbstractPoll {
 			$this->mState = "error";
 			return self::fatalError( 'qp_error_dependance_in_stats_mode' );
 		}
+		return true;
+	}
+
+	/**
+	 * Prepares qp_PollStore object
+	 * @return  boolean  true on success ($this->pollStore has been created successfully)
+	 *          string  error message on failure
+	 */
+	function getPollStore() {
 		$this->pollStore = qp_PollStore::newFromAddr( $this->pollAddr );
 		if ( !( $this->pollStore instanceof qp_PollStore ) || $this->pollStore->pid === null ) {
 			return self::fatalError( 'qp_error_no_such_poll', $this->pollAddr );
