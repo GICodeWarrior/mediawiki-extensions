@@ -128,7 +128,7 @@ function renderLilyPond( $lilypond_code, $short_code = false ) {
 		$post = "";
 	}
 
-    $link = '';
+	$link = '';
 	# if short_code is supplied, this is a fragment
 	if ( $short_code ) {
 		$link = "<img src=\"" . $wgMathPath . "/" . $md5 . ".png\" alt=\""
