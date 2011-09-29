@@ -39,6 +39,7 @@ class LilyPond {
 		global $wgMathPath, $wgMathDirectory, $wgTmpDirectory, $wgLilypond, $wgLilypondPreMidi,
 			$wgLilypondPostMidi, $wgLilypondTrim, $wgLilypondBorderX, $wgLilypondBorderY;
 
+		wfProfileIn( __METHOD__ );
 		$mf = wfMsg( "math_failure" );
 
 		$md5 = md5( $lilypond_code );
@@ -80,11 +81,15 @@ class LilyPond {
 			$res = mkdir( $wgMathDirectory );
 			wfRestoreWarnings();
 			if ( !$res ) {
+				wfDebug( 'Unable to create directory ' . $wgMathDirectory );
+				wfProfileOut( __METHOD__ );
 				return "<b>$mf (" . wfMsg( "math_bad_output" ) .
 					$wgMathDirectory . ")</b>";
 			}
 		} elseif ( !is_dir( $wgMathDirectory ) ||
 			!is_writable( $wgMathDirectory ) ) {
+			wfDebug( 'Unable to write to directory ' . $wgMathDirectory );
+			wfProfileOut( __METHOD__ );
 			return "<b>$mf (" . wfMsg( "math_bad_output" ) . ")</b>";
 		}
 		if ( !file_exists( $wgTmpDirectory ) ) {
@@ -92,17 +97,23 @@ class LilyPond {
 			$res = mkdir( $wgTmpDirectory );
 			wfRestoreWarnings();
 			if ( !$res ) {
+				wfDebug( 'Unable to create temporary directory ' . $wgTmpDirectory );
+				wfProfileOut( __METHOD__ );
 				return "<b>$mf (" . wfMsg( "math_bad_tmpdir" )
 					. ")</b>";
 			}
 		} elseif ( !is_dir( $wgTmpDirectory ) ||
 			!is_writable( $wgTmpDirectory ) ) {
+			wfDebug( 'Unable to write to temporary directory ' . $wgTmpDirectory );
+			wfProfileOut( __METHOD__ );
 			return "<b>$mf (" . wfMsg( "math_bad_tmpdir" ) . ")</b>";
 		}
 
 		$lyFile = $md5 . ".ly";
 		$out = fopen( $wgTmpDirectory . "/" . $lyFile, "w" );
 		if ( $out === false ) {
+			wfDebug( 'Unable to write to temporary directory ' . $wgTmpDirectory . "/" . $lyFile );
+			wfProfileOut( __METHOD__ );
 			return "<b>$mf (" . wfMsg( "math_bad_tmpdir" ) . ")</b>";
 		}
 		fwrite( $out, $lilypond_code );
@@ -119,6 +130,7 @@ class LilyPond {
 		chdir( $oldcwd );
 
 		if ( $ret != 0 ) {
+			wfProfileOut( __METHOD__ );
 			return "<br><b>LilyPond error:</b><br><i>"
 				. str_replace( array( $md5, " " ),
 					array( "<b>your code</b>", "&nbsp;" ),
@@ -130,6 +142,8 @@ class LilyPond {
 			$outputFile = $wgTmpDirectory . "/" . $md5 . ".png";
 
 			if ( !file_exists( $outputFile ) ) {
+				wfDebug( 'Output file doesn\'t exist ' . $outputFile );
+				wfProfileOut( __METHOD__ );
 				return "<b>$mf (" . wfMsg( "math_image_error" )
 					. ")</b>";
 			}
@@ -198,6 +212,7 @@ class LilyPond {
 			self::frameImage( $imgFile, $imgFile, 0xFFFFFF, $wgLilypondBorderX, $wgLilypondBorderY );
 		}
 
+		wfProfileOut( __METHOD__ );
 		return $pre . $link . $post;
 	}
 
