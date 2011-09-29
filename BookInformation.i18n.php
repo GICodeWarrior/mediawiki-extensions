@@ -1282,6 +1282,24 @@ $messages['myv'] = array(
 	'bookinfo-error-invalidisbn' => 'А истямо ISBN максыть',
 );
 
+/** Mazanderani (مازِرونی)
+ * @author محک
+ */
+$messages['mzn'] = array(
+	'bookinfo-header' => 'اطلاعات کتاب',
+	'bookinformation-desc' => '[[Special:Booksources]] ره با استفاده از اطلاعات اتا سرویس اینترنتی گت کانده',
+	'bookinfo-result-title' => 'ایسم:',
+	'bookinfo-result-author' => 'نویسنده:',
+	'bookinfo-result-publisher' => 'ناشر:',
+	'bookinfo-result-year' => 'سال انتشار:',
+	'bookinfo-error-invalidisbn' => 'شابک غیرموجاز وارد بیی‌ئه.',
+	'bookinfo-error-nosuchitem' => 'این مورد دنی‌یه یا پیدا نیّه.',
+	'bookinfo-error-nodriver' => 'راه‌انداز مناسب اطلاعات کتاب قابل به کاربییتن نی‌یه.',
+	'bookinfo-error-noresponse' => 'جوابی دنی‌بی‌یه یا مهلت درخاست تموم بَیبی‌یه.',
+	'bookinfo-purchase' => 'بخرین‌ین این کتاب $1 جه',
+	'bookinfo-provider' => 'مهیاکنندهٔ اطلاعات: $1',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */
