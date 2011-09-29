@@ -72,16 +72,25 @@ $wgHooks['ParserFirstCallInit'][] = 'wfLilyPondExtension';
 /**
  * @param $parser Parser
  */
-function wfLilyPondExtension( $parser ) {
+function wfLilyPondExtension( &$parser ) {
 	$parser->setHook( "lilypond", "renderLilyPondFragment" );
 	$parser->setHook( "lilymidi", "renderLilyPondMidiFragment" );
 	$parser->setHook( "lilybook", "renderLilyPond" );
 }
 
+/**
+ * @param $lilypond_code string
+ * @return string
+ */
 function renderLilyPondMidiFragment( $lilypond_code ) {
 	return renderLilyPondFragment( $lilypond_code, true );
 }
 
+/**
+ * @param $lilypond_code string
+ * @param $midi bool
+ * @return string
+ */
 function renderLilyPondFragment( $lilypond_code, $midi = false ) {
 	return renderLilyPond( "\\header {\n"
 		. "\ttagline = ##f\n"
@@ -98,11 +107,16 @@ function renderLilyPondFragment( $lilypond_code, $midi = false ) {
 		. "}\n", $lilypond_code );
 }
 
+/**
+ * @param $lilypond_code
+ * @param $short_code bool
+ * @return string
+ */
 function renderLilyPond( $lilypond_code, $short_code = false ) {
 	global $wgMathPath, $wgMathDirectory, $wgTmpDirectory, $wgLilypond, $wgLilypondPreMidi,
 		$wgLilypondPostMidi, $wgLilypondTrim, $wgLilypondBorderX, $wgLilypondBorderY;
 
-	$mf   = wfMsg( "math_failure" );
+	$mf = wfMsg( "math_failure" );
 
 	$md5 = md5( $lilypond_code );
 
@@ -139,7 +153,10 @@ function renderLilyPond( $lilypond_code, $short_code = false ) {
 
 	# Ensure that the temp and output dirs are available before continuing.
 	if ( !file_exists( $wgMathDirectory ) ) {
-		if ( !@mkdir( $wgMathDirectory ) ) {
+		wfSuppressWarnings();
+		$res = mkdir( $wgMathDirectory );
+		wfRestoreWarnings();
+		if ( !$res ) {
 			return "<b>$mf (" . wfMsg( "math_bad_output" ) .
 				$wgMathDirectory . ")</b>";
 		}
@@ -148,7 +165,10 @@ function renderLilyPond( $lilypond_code, $short_code = false ) {
 		return "<b>$mf (" . wfMsg( "math_bad_output" ) . ")</b>";
 	}
 	if ( !file_exists( $wgTmpDirectory ) ) {
-		if ( !@mkdir( $wgTmpDirectory ) ) {
+			wfSuppressWarnings();
+			$res = mkdir( $wgTmpDirectory );
+			wfRestoreWarnings();
+		if ( !$res ) {
 			return "<b>$mf (" . wfMsg( "math_bad_tmpdir" )
 				. ")</b>";
 		}
@@ -258,6 +278,11 @@ function renderLilyPond( $lilypond_code, $short_code = false ) {
 	return $pre . $link . $post;
 }
 
+/**
+ * @param $source
+ * @param $dest
+ * @param $bgColour
+ */
 function trimImage( $source, $dest, $bgColour ) {
 	$srcImage = imagecreatefrompng( $source );
 	$width = imagesx( $srcImage );
@@ -319,6 +344,13 @@ function trimImage( $source, $dest, $bgColour ) {
 	imagepng( $dstImage, $dest );
 }
 
+/**
+ * @param $source
+ * @param $dest
+ * @param $bgColour
+ * @param $borderWidth
+ * @param $borderHeight
+ */
 function frameImage( $source, $dest, $bgColour, $borderWidth, $borderHeight ) {
 	$srcImage = imagecreatefrompng( $source );
 	$width = imagesx( $srcImage );
