@@ -10,6 +10,17 @@
 
 (function( $, mw ) {
 	
+	function addChallangeToRemove( id ) {
+		if ( !isNaN( id ) ) {
+			var currentVal = $( '#delete-challanges' ).val();
+			
+			var currentIds = currentVal !== ''  ? currentVal.split( '|' ) : [];
+			currentIds.push( id );
+			
+			$( '#delete-challanges' ).val( currentIds.join( '|' ) );
+		}
+	}
+	
 	$.fn.mwChallange = function( options ) {
 		
 		var _this = this;
@@ -21,7 +32,10 @@
 		this.deleteButton = null;
 		
 		this.remove = function() {
-			$this.slideUp( 'fast', function() { $this.remove(); } );
+			addChallangeToRemove( $this.attr( 'data-challange-id' ) );
+			
+			$tr = $this.closest( 'tr' );
+			$tr.slideUp( 'fast', function() { $tr.remove(); } );
 		};
 		
 		this.init = function() {
@@ -58,6 +72,7 @@
 				.click( function() {
 					if ( confirm( mw.msg( 'contest-edit-confirm-delete' ) ) ) {
 						_this.remove();
+						return false;
 					}
 				} );
 			
@@ -70,39 +85,65 @@
 		
 	};
 	
+	var newNr = 0;
+	var $table = null;
+	
 	function getNewChallangeMessage() {
-		return mw.msg( 'contest-edit-add-' + ( $( '.contest-challange' ).size() === 0 ? 'first' : 'another' ) );
+		return mw.msg( 'contest-edit-add-' + ( $( '.contest-challange-input' ).size() === 0 ? 'first' : 'another' ) );
 	}
 	
-	var newNr = 0;
-	
-	function addChallange() {
+	function addChallange( challange ) {
 		$challange = $( '<div />' ).attr( {
-			'class': 'contest-challange',
-			'data-challange-id': 'new-' + newNr++,
-			'data-challange-title': '',
-			'data-challange-text': ''
+			'class': 'contest-challange-input',
+			'data-challange-id': challange.id,
+			'data-challange-title': challange.title,
+			'data-challange-text': challange.text
 		} );
 		
-		$( '.contest-new-challange' ).before( $challange );
+		$tr = $( '<tr />' );
+		
+		$tr.append( $( '<td />' ) );
+		
+		$tr.append( $( '<td />' ).html( $challange ).append( '<hr />' ) );
+		
+		$( '.add-new-challange' ).before( $tr );
 		
 		$challange.mwChallange();
 	}
 	
 	$( document ).ready( function() {
 
-		$( '.contest-challange' ).mwChallange();
+		$table = $( '#contest-name-field' ).closest( 'tbody' );
+		
+		$( '#bodyContent' ).find( '[type="submit"]' ).button();
+		
+		$table.append( '<tr><td colspan="2"><hr /></td></tr>' );
 		
 		$addNew = $( '<button />' ).button( { 'label': getNewChallangeMessage() } ).click( function() {
-			addChallange();
+			addChallange( {
+				'id': 'new-' + newNr++ ,
+				'title': '',
+				'text': ''
+			} );
+			
 			$( this ).button( { 'label': getNewChallangeMessage() } );
+			
 			return false;
 		} );
 		
-		$( '.contest-new-challange' ).html( $addNew );
+		$table.append( $( '<tr />' ).attr( 'class', 'add-new-challange' ).html( $( '<td />' ) ).append( $( '<td />' ).html( $addNew ) ) );
 		
-		$( '#bodyContent' ).find( '[type="submit"]' ).button();
-	
+		$table.append( '<tr><td colspan="2"><hr /></td></tr>' );
+		
+		$( '.contest-challange' ).each( function( index, domElement ) {
+			$this = $( domElement );
+			addChallange( {
+				'id': $this.attr( 'data-challange-id' ),
+				'title': $this.attr( 'data-challange-title' ),
+				'text': $this.attr( 'data-challange-text' )
+			} );
+		} );
+		
 	} );
 	
 })( window.jQuery, window.mediaWiki );
