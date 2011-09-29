@@ -17,6 +17,9 @@ class Contest extends ContestDBObject {
 	const STATUS_ACTIVE = 1;
 	const STATUS_FINISHED = 2;
 	
+	protected $challanges = null;
+	protected $contestants = null;
+	
 	/**
 	 * Method to get an instance so methods that ought to be static,
 	 * but can't be due to PHP 5.2 not having LSB, can be called on
@@ -144,6 +147,13 @@ class Contest extends ContestDBObject {
 		return $map;
 	}
 	
+	public function loadChallanges() {
+		$this->challanges = ContestChallange::s()->select(
+			null,
+			array( 'contest_id' => $this->getId() )
+		);
+	}
+	
 	/**
 	 * Gets the challanges that are part of this contest.
 	 * 
@@ -151,8 +161,16 @@ class Contest extends ContestDBObject {
 	 * 
 	 * @return array of ContestChallange
 	 */
-	public function getChallanges() {
-		return ContestChallange::s()->select(
+	public function getChallanges( $forceLoad = false ) {
+		if ( is_null( $this->challanges ) || $forceLoad ) {
+			$this->loadChallanges();
+		}
+		
+		return $this->challanges;
+	}
+	
+	public function loadContestants() {
+		$this->contestants = ContestContestant::s()->select(
 			null,
 			array( 'contest_id' => $this->getId() )
 		);
@@ -165,11 +183,80 @@ class Contest extends ContestDBObject {
 	 * 
 	 * @return array of ContestContestant
 	 */
-	public function getContestants() {
-		return ContestContestant::s()->select(
-			null,
-			array( 'contest_id' => $this->getId() )
-		);
+	public function getContestants( $forceLoad = false ) {
+		if ( is_null( $this->contestants ) || $forceLoad ) {
+			$this->loadContestants();
+		}
+		
+		return $this->contestants;
+	}
+	
+	public function setContestants( array /* of ContestContestant */ $contestants ) {
+		$this->contestants = $contestants;
+	}
+	
+	public function setChallanges( array /* of ContestChallange */ $challanges ) {
+		$this->challanges = $challanges;
+	}
+	
+	public function writeAllToDB() {
+		$success = parent::writeToDB();
+		
+		if ( $success ) {
+			$success = $this->writeChallangesToDB();
+		}
+		
+		if ( $success ) {
+			$success = $this->writeContestantsToDB();
+		}
+		
+		return $success;
+	}
+	
+	public function writeChallangesToDB() {
+		if ( is_null( $this->challanges ) || count( $this->challanges ) == 0 ) {
+			return true;
+		}
+		
+		$dbw = wfGetDB( DB_MASTER );
+		$success = true;
+		
+		$dbw->begin();
+		
+		foreach ( $this->challanges as /* ContestChallange */ $challange ) {
+			$challange->setField( 'contest_id', $this->getId() );
+			$success &= $challange->writeToDB();
+		}
+		
+		$dbw->commit();
+		
+		return $success;
+	}
+	
+	public function writeContestantsToDB() {
+		if ( is_null( $this->contestants ) || count( $this->contestants ) == 0 ) {
+			return true;
+		}
+		
+		$dbw = wfGetDB( DB_MASTER );
+		$success = true;
+		$nr = 0;
+		
+		$dbw->begin();
+		
+		foreach ( $this->contestants as /* ContestContestant */ $contestant ) {
+			$contestant->setField( 'contest_id', $this->getId() );
+			$success &= $contestant->writeToDB();
+			
+			if ( ++$nr % 500 == 0 ) {
+				$dbw->commit();
+				$dbw->begin();
+			}
+		}
+		
+		$dbw->commit();
+		
+		return $success;
 	}
 	
 }

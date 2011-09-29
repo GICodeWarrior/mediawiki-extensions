@@ -117,55 +117,8 @@ class SpecialEditContest extends FormSpecialPage {
 		else {
 			$this->contest = $contest;
 			$this->showForm();
-			$this->showChallanges( $contest );
+			$this->getOutput()->addModules( 'contest.special.contest' );
 		}
-	}
-	
-	/**
-	 * Output the challanges HTML.
-	 * 
-	 * @since 0.1
-	 * 
-	 * @param Contest $contest
-	 */
-	protected function showChallanges( Contest $contest ) {
-		$out = $this->getOutput();
-		
-		$out->addHTML( '<fieldset class="contest-challanges">' );
-		
-		$out->addHTML( Html::element( 'legend', array(), wfMsg( 'contest-edit-challanges' ) ) );
-		
-		foreach ( $contest->getChallanges() as /* ContestChallange */ $challange ) {
-			$out->addHTML( Html::element(
-				'div',
-				array(
-					'class' => 'contest-challange',
-					'data-challange-id' => $challange->getId(),
-					'data-challange-text' => $challange->getField( 'text' ),
-					'data-challange-title' => $challange->getField( 'title' ),
-				)
-			) );
-		}
-		
-		$out->addHTML( Html::element(
-			'div',
-			array(
-				'class' => 'contest-new-challange',
-			)
-		) );
-		
-		$out->addHTML( Html::element(
-			'input',
-			array(
-				'type' => 'submit',
-				'id' => 'contest-save',
-				'value' => wfMsg( 'contest-edit-submit' )
-			)
-		) );
-		
-		$out->addHTML( '</fieldset>' );
-		
-		$out->addModules( 'contest.special.contest' );
 	}
 	
 	/**
@@ -200,7 +153,13 @@ class SpecialEditContest extends FormSpecialPage {
 		$fields = array();
 
 		$fields['id'] = array ( 'type' => 'hidden' );
-		$fields['name'] = array ( 'type' => 'text', 'label-message' => 'contest-edit-name' );
+		
+		$fields['name'] = array (
+			'type' => 'text',
+			'label-message' => 'contest-edit-name',
+			'id' => 'contest-name-field'
+		);
+		
 		$fields['status'] = array (
 			'type' => 'radio',
 			'label-message' => 'contest-edit-status',
@@ -213,13 +172,22 @@ class SpecialEditContest extends FormSpecialPage {
 			}
 		}
 		
-		// TODO
-		
 		$mappedFields = array();
 		
 		foreach ( $fields as $name => $field ) {
 			$mappedFields['contest-' . $name] = $field;
 		}
+		
+		if ( $contest !== false ) {
+			foreach ( $contest->getChallanges() as /* ContestChallange */ $challange ) {
+				$mappedFields[] = array(
+					'class' => 'ContestChallangeField',
+					'options' => $challange->toArray()
+				);
+			}
+		}
+		
+		$mappedFields['delete-challanges'] = array ( 'type' => 'hidden', 'id' => 'delete-challanges' );
 		
 		return $mappedFields;
 	}
@@ -254,7 +222,10 @@ class SpecialEditContest extends FormSpecialPage {
 		
 		$contest = new Contest( $fields, true );
 
-		$success = $contest->writeToDB();
+		$contest->setChallanges( $this->getSubmittedChallanges() );
+		$success = $contest->writeAllToDB();
+		
+		$success = $this->removeDeletedChallanges( $data['delete-challanges'] ) && $success;
 
 		$this->getRequest()->setSessionData( $sessionField, $contest->getId() );
 		
@@ -264,6 +235,56 @@ class SpecialEditContest extends FormSpecialPage {
 		else {
 			return array(); // TODO
 		}
+	}
+	
+	protected function removeDeletedChallanges( $idString ) {
+		if ( $idString == '' ) {
+			return true;
+		}
+		
+		return ContestChallange::s()->delete( array( 'id' => explode( '|', $idString ) ) ); 
+	}
+	
+	protected function getSubmittedChallanges() {
+		$challanges = array();
+		
+		foreach ( $this->getrequest()->getValues() as $name => $value ) {
+			$matches = array();
+			
+			if ( preg_match( '/contest-challange-(\d+)/', $name, $matches ) ) {
+				$challanges[] = $this->getSubmittedChallange( $matches[1] );
+			} elseif ( preg_match( '/contest-challange-new-(\d+)/', $name, $matches ) ) {
+				$challanges[] = $this->getSubmittedChallange( $matches[1], true );
+			}
+		}
+		
+		return $challanges;
+	}
+	
+	/**
+	 * Create and return a contest challange object from the submitted data. 
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param integer|null $challangeId
+	 * 
+	 * @return ContestChallange
+	 */
+	protected function getSubmittedChallange( $challangeId, $isNewChallange = false ) {
+		if ( $isNewChallange ) {
+			$challangeDbId = null;
+			$challangeId = "new-$challangeId";
+		} else {
+			$challangeDbId = $challangeId;
+		}
+		
+		$request = $this->getRequest();
+		
+		return new ContestChallange( array(
+			'id' => $challangeDbId,
+			'text' => $request->getText( "challange-text-$challangeId" ),
+			'title' => $request->getText( "contest-challange-$challangeId" ),
+		) );
 	}
 	
 	public function onSuccess() {
@@ -280,6 +301,25 @@ class SpecialEditContest extends FormSpecialPage {
 	protected function showWarning( $message ) {
 		$this->getOutput()->addHTML(
 			'<p class="visualClear warningbox">' . wfMsgExt( $message, 'parseinline' ) . '</p>'
+		);
+	}
+	
+}
+
+class ContestChallangeField extends HTMLFormField {
+	
+	public function getInputHTML( $value ) {
+		$attribs = array(
+			'class' => 'contest-challange'
+		);
+		
+		foreach ( $this->mParams['options'] as $name => $value ) {
+			$attribs['data-challange-' . $name] = $value;
+		}
+		
+		return Html::element(
+			'div',
+			$attribs
 		);
 	}
 	
