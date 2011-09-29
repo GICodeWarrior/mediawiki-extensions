@@ -706,14 +706,14 @@ $messages['so'] = array(
 	'prefs-category' => 'Qeybta',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'categorymultisort-desc' => 'Омогућава преглед категорија са различитим кључевима сортирања',
 	'categorymultisort-defaultsortkey-name' => 'Подразумевано',
-	'categorymultisort-sortkey' => 'Кључ сортирања:',
+	'categorymultisort-sortkey' => 'Подређен кључ:',
 	'categorymultisort-go' => 'Пређи',
 	'categorymultisort-default-sortkey' => 'Подразумевани кључ сортирања:',
 	'prefs-category' => 'Категорија',

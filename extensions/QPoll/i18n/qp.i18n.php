@@ -735,6 +735,7 @@ $messages['cs'] = array(
  */
 $messages['de'] = array(
 	'pollresults' => 'Abstimmungsergebnisse auf dieser Seite',
+	'qpollwebinstall' => 'Installation/Aktualisierung von QPoll',
 	'qp_desc' => 'Ermöglicht die Erstellung von Umfragen',
 	'qp_desc-sp' => '[[Special:PollResults|Spezialseite]] zum Anzeigen von Abstimmungsergebnissen',
 	'qp_result_NA' => 'Nicht beantwortet',
@@ -1185,6 +1186,7 @@ $messages['frp'] = array(
  */
 $messages['gl'] = array(
 	'pollresults' => 'Resultados das enquisas desta páxina',
+	'qpollwebinstall' => 'Instalación / actualización da extensión QPoll',
 	'qp_desc' => 'Permite a creación de enquisas',
 	'qp_desc-sp' => '[[Special:PollResults|Páxina especial]] para ollar os resultados das enquisas',
 	'qp_result_NA' => 'Sen resposta',
@@ -1939,6 +1941,7 @@ $messages['mg'] = array(
  */
 $messages['mk'] = array(
 	'pollresults' => 'Резултати од анкетите на ова мрежно место',
+	'qpollwebinstall' => 'Инсталација / поднова на додатокот QPoll',
 	'qp_desc' => 'Овозможува создавање на анкети',
 	'qp_desc-sp' => '[[Special:PollResults|Специјална страница]] за преглед на резултати од анкетите',
 	'qp_result_NA' => 'Без одговор',

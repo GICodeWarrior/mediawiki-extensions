@@ -2154,7 +2154,7 @@ $messages['so'] = array(
 	'recordadmin-buttonsearch' => 'Raadi',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -2174,7 +2174,7 @@ $messages['sr-ec'] = array(
 	'recordadmin-created' => 'Направљено',
 	'recordadmin-modified' => 'Измењено',
 	'recordadmin-actions' => 'Уреди',
-	'recordadmin-needscontent' => 'Додај садржај...',
+	'recordadmin-needscontent' => 'Додај садржај…',
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 );
