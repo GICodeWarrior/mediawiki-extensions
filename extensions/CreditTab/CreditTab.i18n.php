@@ -13,15 +13,16 @@
  */
 $messages = array();
 
-$messages['qqq'] = array(
-	'credits-desc'  => 'Description for Special:Version',
-	'credits-tab'  => 'Label of the Tab that is shown by this Extension',
+$messages['en'] = array(
+	'credits-desc' => 'Adds a link to credits',
+	'credits-tab' => 'Credits',
 );
 
-$messages['en'] = array(
-	'credits-desc'  => 'Adds a link to Credits',
-	'credits-tab'  => 'Credits',
+$messages['qqq'] = array(
+	'credits-desc'  => 'Description for Special:Version',
+	'credits-tab'  => 'Label of the tab that is shown by this extension',
 );
+
 
 $messages['de'] = array(
 	'credits-desc'  => 'Fügt Link zu Autoren hinzu',
