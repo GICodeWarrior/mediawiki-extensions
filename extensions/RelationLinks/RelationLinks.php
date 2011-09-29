@@ -12,14 +12,14 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 // Credits
 $wgExtensionCredits['other'][] = array(
-    'path' => __FILE__,
-    'name' => 'RelationLinks',
-    'author' => '[http://www.dasch-tour.de DaSch]',
-    'description' => 'Adds link rel to header, that can used for navigation and for SEO',
+	'path' => __FILE__,
+	'name' => 'RelationLinks',
+	'author' => '[http://www.dasch-tour.de DaSch]',
 	'descriptionmsg' => 'relationlinks-desc',
 	'version' =>  '0.3.0',
-    'url' => 'http://www.mediawiki.org/wiki/Extension:RelationLinks',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:RelationLinks',
 );
+
 $dir = dirname( __FILE__ ) . '/';
 
 // Internationalization
