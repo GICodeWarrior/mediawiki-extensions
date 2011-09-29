@@ -4,6 +4,7 @@
 # Written on 2005/06/19 by Mark Bergsma <mark@nedworks.org>
 
 import os
+import sys
 
 templatedir = '/etc/powerdns/templates'
 zonedir = '/etc/powerdns/zones'
@@ -42,8 +43,8 @@ def fillsubsts():
 			var, value = map.split(':')
 		except ValueError, e:
 			print "Syntax error in %s at line %s: %s.  Quitting." % (domainmaplist, lineno, e)
-			exit(1)
-		domainlist[var.split()] = value.split()
+			sys.exit(1)
+		domainlist[var.strip()] = value.strip()
 
 	# All substs[var] in this loop contain a list of CNAMES to the geodns record for
 	# all language subdomains
