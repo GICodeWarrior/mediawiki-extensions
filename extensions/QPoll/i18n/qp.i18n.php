@@ -46,6 +46,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'pollresults' => 'Results of the polls on this site',
+	'qpollwebinstall' => 'Installation / update of QPoll extension',
 	'qp_parentheses' => '($1)',
 	'qp_full_category_name' => '$1($2)',
 	'qp_desc' => 'Allows creation of polls',

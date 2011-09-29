@@ -114,9 +114,14 @@ class qp_Eval {
 		# math
 		'round', 'ceil', 'floor',
 		# arrays
-		'is_array', 'array_search', 'count', 'array_intersect', 'array_diff',
+		'is_array', 'array_key_exists', 'array_search', 'count', 'array_intersect', 'array_diff',
+		'sort', 'asort', 'rsort', 'arsort',
+		# types check and conversion
+		'is_numeric', 'ctype_digit', 'intval', 'strval', 'floatval',
 		# strings
 		'trim', 'preg_match', 'preg_match_all', 'preg_split', 'qp_lc',
+		# importing of structured interpretation from another polls
+		'qp_getStructuredInterpretation',
 		# debug
 		'qp_debug'
 	);

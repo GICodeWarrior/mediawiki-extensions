@@ -40,7 +40,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 /**
  * A poll stub controller which cannot process and render itself
  * to process and render itself, real Poll should extend this class to implement it's own:
- *	$this->getPollStore()
+ * $this->setHeaders()
+ * $this->getPollStore()
  * $this->parseInput()
  * $this->view->renderPoll()
  */
@@ -106,7 +107,7 @@ class qp_AbstractPoll {
 		$view->setPerRow( $perRow );
 		$this->view = $view;
 		# reset the unique index number of the question in the current poll (used to instantiate the questions)
-		$this->mQuestionId = 0; // ( correspons to 'question_id' DB field )
+		$this->mQuestionId = 0; // ( corresponds to 'question_id' DB field )
 		$this->username = qp_Setup::getCurrUserName();
 		# setup poll view showresults
 		if ( array_key_exists( 'showresults', $argv ) && qp_Setup::$global_showresults != 0 ) {
@@ -134,8 +135,12 @@ class qp_AbstractPoll {
 	 * @param  $input				Text between <qpoll> and </qpoll> tags, in QPoll syntax.
 	 */
 	function parsePoll( $input ) {
-		if ( ( $result = $this->getPollStore() ) !== true ) {
+		if ( ( $result = $this->setHeaders() ) !== true ) {
 			# error message box (invalid poll attributes)
+			return $result;
+		}
+		if ( ( $result = $this->getPollStore() ) !== true ) {
+			# error message box (cannot load from store)
 			return $result;
 		}
 		if ( $this->parseInput( $input ) === true ) {

@@ -22,10 +22,11 @@ abstract class qp_AbstractQuestion {
 	# some questions has a subtype; currently is not stored in DB;
 	# should always be properly initialized in parent controller via $poll->parseMainHeader()
 	var $mSubType = '';
-	var $mCategories = Array();
-	var $mCategorySpans = Array();
+	var $mCategories = array();
+	var $mCategorySpans = array();
 	var $mCommonQuestion = ''; // common question of this question
-	var $mProposalText = Array(); // an array of question proposals
+	var $mProposalNames = array(); // an array of question proposals names (optional, used in interpretation scripts)
+	var $mProposalText = array(); // an array of question proposals
 	var $alreadyVoted = false; // whether the selected user has already voted this question ?
 
 	# statistics
@@ -90,6 +91,10 @@ abstract class qp_AbstractQuestion {
 		$this->view->setLayout( $paramkeys[ 'layout' ], $paramkeys[ 'textwidth' ] );
 		$this->view->setShowResults( $paramkeys[ 'showresults' ] );
 		$this->view->setPropWidth( $paramkeys[ 'propwidth' ] );
+	}
+
+	function getProposalIdByName( $proposalName ) {
+		return array_search( $proposalName, $this->mProposalNames, true );
 	}
 
 	function getPercents( $proposalId, $catId ) {

@@ -98,6 +98,7 @@ class qp_StubQuestion extends qp_AbstractQuestion {
 				'categories' => $this->mCategories,
 				'category_spans' => $this->mCategorySpans,
 				'proposal_text' => $this->mProposalText,
+				'proposal_names' => $this->mProposalNames,
 				'proposal_category_id' => $this->mProposalCategoryId,
 				'proposal_category_text' => $this->mProposalCategoryText ) );
 		}

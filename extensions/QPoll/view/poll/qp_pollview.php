@@ -92,17 +92,17 @@ class qp_PollView extends qp_AbstractPollView {
 	 */
 	function renderPoll() {
 		global $wgOut, $wgRequest;
+		$pollStore = $this->ctrl->pollStore;
 		# Generates the output.
 		$qpoll_div = array( '__tag' => 'div', 'class' => 'qpoll' );
 		$qpoll_div[] = array( '__tag' => 'a', 'name' => $this->ctrl->getPollTitleFragment( null, '' ), 0 => '' );
 		# output script-generated error, when available
-		if ( ( $scriptError = $this->ctrl->pollStore->interpResult->error ) != '' ) {
-			$qpoll_div[] = array( '__tag' => 'div', 'class' => 'interp_error', qp_Setup::specialchars( $scriptError ) );
-		}
-		# output long result, when available
-		if ( ( $longAnswer = $this->ctrl->pollStore->interpResult->long ) != '' ) {
-			$qpoll_div[] = array( '__tag' => 'div', 'class' => 'interp_answer', qp_Setup::specialchars( $longAnswer ) );
-		}
+		# render short/long/structured result, when permitted and available
+		$interpResultView = qp_InterpResultView::newFromBaseView( $this );
+		$interpResultView->setController( $pollStore->interpResult );
+		$interpResultView->showInterpResults( $qpoll_div );
+		# unused anymore
+		unset( $interpResultView );
 		# create voting form and fill it with messages and inputs
 		$qpoll_form = array( '__tag' => 'form', 'method' => 'post', 'action' => $this->ctrl->getPollTitleFragment(), 'autocomplete' => 'off', '__end' => "\n" );
 		$qpoll_div[] = &$qpoll_form;
@@ -124,15 +124,15 @@ class qp_PollView extends qp_AbstractPollView {
 		$qpoll_form[] = array( '__tag' => 'div', 'class' => 'pollQuestions', 0 => $this->renderQuestionViews() );
 		$submitBtn = array( '__tag' => 'input', 'type' => 'submit' );
 		$submitMsg = 'qp_vote_button';
-		if ( $this->ctrl->pollStore->isAlreadyVoted() ) {
+		if ( $pollStore->isAlreadyVoted() ) {
 			$submitMsg = 'qp_vote_again_button';
 		}
 		if ( $this->ctrl->mBeingCorrected ) {
-			if ( $this->ctrl->pollStore->getState() == "complete" ) {
+			if ( $pollStore->getState() == "complete" ) {
 				$submitMsg = 'qp_vote_again_button';
 			}
 		} else {
-			if ( $this->ctrl->pollStore->getState() == "error" ) {
+			if ( $pollStore->getState() == "error" ) {
 				$submitBtn[ 'disabled' ] = 'disabled';
 			}
 		}

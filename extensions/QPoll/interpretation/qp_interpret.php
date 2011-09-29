@@ -109,29 +109,35 @@ class qp_Interpret {
 		if ( !is_array( $result ) ) {
 			return $interpResult->setError( wfMsg( 'qp_error_interpretation_no_return' ) );
 		}
-		# initialize $interpResult->qpcErrors[] member array
-		foreach ( $result as $qidx => $question ) {
-			if ( is_int( $qidx ) && is_array( $question ) ) {
-				foreach ( $question as $pidx => $prop_error ) {
-					if ( is_int( $pidx ) ) {
-						if ( is_array( $prop_error ) ) {
-							# separate error messages list for proposal categories
-							foreach ( $prop_error as $cidx => $cat_error ) {
-								if ( is_int( $cidx ) ) {
-									$interpResult->setQPCerror( $cat_error, $qidx, $pidx, $cidx );
+		if ( isset( $result['options'] ) && $result['options'] === 'noerrorstorage' ) {
+			$interpResult->storeErroneous = false;
+		}
+		if ( isset( $result['error'] ) && is_array( $result['error'] ) ) {
+			# initialize $interpResult->qpcErrors[] member array
+			foreach ( $result['error'] as $qidx => $question ) {
+				if ( is_int( $qidx ) && is_array( $question ) ) {
+					foreach ( $question as $pidx => $prop_error ) {
+						# integer indicates proposal id; string - proposal name
+						if ( is_int( $pidx ) || is_string( $pidx ) ) {
+							if ( is_array( $prop_error ) ) {
+								# separate error messages list for proposal categories
+								foreach ( $prop_error as $cidx => $cat_error ) {
+									if ( is_int( $cidx ) ) {
+										$interpResult->setQPCerror( $cat_error, $qidx, $pidx, $cidx );
+									}
 								}
+							} else {
+								# error message for the whole proposal line
+								$interpResult->setQPCerror( $prop_error, $qidx, $pidx );
 							}
-						} else {
-							# error message for the whole proposal line
-							$interpResult->setQPCerror( $prop_error, $qidx, $pidx );
 						}
 					}
 				}
 			}
 		}
-		if ( isset( $result['error'] ) && trim( $result['error'] ) != '' ) {
-			# script-generated error for the whole answer
-			return $interpResult->setError( (string) $result['error'] );
+		if ( isset( $result['errmsg'] ) && trim( strval( $result['errmsg'] ) ) != '' ) {
+			# script-generated error message for the whole answer
+			return $interpResult->setError( (string) $result['errmsg'] );
 		}
 		# if there were question/proposal errors, return them;
 		if ( $interpResult->isError() ) {
@@ -146,7 +152,7 @@ class qp_Interpret {
 		if ( $interpCount == 0 ) {
 			return $interpResult->setError( wfMsg( 'qp_error_interpretation_no_return' ) );
 		}
-		$interpResult->structured = serialize( isset( $result['structured'] ) ? $result['structured'] : null );
+		$interpResult->structured = isset( $result['structured'] ) ? serialize( $result['structured'] ) : '';
 		if ( strlen( $interpResult->structured ) > qp_Setup::$structured_interpretation_max_length ) {
 			unset( $interpResult->structured );
 			return $interpResult->setError( wfMsg( 'qp_error_structured_interpretation_is_too_long' ) );

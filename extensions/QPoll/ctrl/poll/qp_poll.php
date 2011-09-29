@@ -59,6 +59,9 @@ class qp_Poll extends qp_AbstractPoll {
 		# dependance attr
 		if ( array_key_exists( 'dependance', $argv ) ) {
 			$this->dependsOn = trim( $argv['dependance'] );
+			if ( $this->dependsOn === 'dependance' ) {
+				$this->dependsOn = '';
+			}
 		}
 		# interpretation attr
 		if ( array_key_exists( 'interpretation', $argv ) ) {
@@ -97,10 +100,12 @@ class qp_Poll extends qp_AbstractPoll {
 		$this->mBeingCorrected = ( $this->mRequest->getVal( 'pollId' ) == $this->mPollId );
 	}
 
-	# prepare qp_PollStore object
-	# @return    true on success ($this->pollStore has been created successfully), error string on failure
-	function getPollStore() {
-		# check the headers for errors
+	/**
+	 * Set poll headers; checks poll headers for errors
+	 * @return  string  error message to display;
+	 *          boolean  true when no errors
+	 */
+	function setHeaders() {
 		if ( $this->mPollId == null ) {
 			$this->mState = "error";
 			return self::fatalError( 'qp_error_no_poll_id' );
@@ -120,12 +125,17 @@ class qp_Poll extends qp_AbstractPoll {
 		}
 		if ( $this->dependsOn != '' ) {
 			$depsOnAddr = self::getPrefixedPollAddress( $this->dependsOn );
-			if ( is_array( $depsOnAddr ) ) {
-				$this->dependsOn = $depsOnAddr[2];
-			} else {
+			if ( !is_array( $depsOnAddr ) ) {
 				return self::fatalError( 'qp_error_invalid_dependance_value', $this->mPollId, $this->dependsOn );
 			}
+			$this->dependsOn = $depsOnAddr[2];
 		}
+		return true;
+	}
+
+	# prepare qp_PollStore object
+	# @return    true on success ($this->pollStore has been created successfully), error string on failure
+	function getPollStore() {
 		$newPollStore = array(
 				'poll_id' => $this->mPollId,
 				'order_id' => $this->mOrderId,
@@ -240,66 +250,65 @@ class qp_Poll extends qp_AbstractPoll {
 	# @return    true when dependance is fulfilled, error message otherwise
 	private function checkDependance( $dependsOn, $nonVotedDepLink = false ) {
 		# check the headers for dependance to other polls
-		if ( $dependsOn !== '' ) {
-			$depPollStore = qp_PollStore::newFromAddr( $dependsOn );
-			if ( $depPollStore instanceof qp_PollStore ) {
-				# process recursive dependance
-				$depTitle = $depPollStore->getTitle();
-				$depPollId = $depPollStore->mPollId;
-				$depLink = $this->view->link( $depTitle, $depTitle->getPrefixedText() . ' (' . $depPollStore->mPollId . ')' );
-				if ( $depPollStore->pid === null ) {
-					return self::fatalError( 'qp_error_missed_dependance_poll', $this->mPollId, $depLink, $depPollId );
-				}
-				if ( !$depPollStore->loadQuestions() ) {
-					return self::fatalError( 'qp_error_vote_dependance_poll', $depLink );
-				}
-				$depPollStore->setLastUser( $this->username, false );
-				if ( $depPollStore->loadUserAlreadyVoted() ) {
-					# user already voted in current the poll in chain
-					if ( $depPollStore->dependsOn === '' ) {
-						if ( $nonVotedDepLink === false ) {
-							# there was no non-voted deplinks in the chain at some previous level of recursion
-							return true;
-						} else {
-							# there is an non-voted deplink in the chain at some previous level of recursion
-							return self::fatalError( 'qp_error_vote_dependance_poll', $nonVotedDepLink );
-						}
+		if ( $dependsOn === '' ) {
+			return true;
+		}
+		$depPollStore = qp_PollStore::newFromAddr( $dependsOn );
+		if ( $depPollStore instanceof qp_PollStore ) {
+			# process recursive dependance
+			$depTitle = $depPollStore->getTitle();
+			$depPollId = $depPollStore->mPollId;
+			$depLink = $this->view->link( $depTitle, $depTitle->getPrefixedText() . ' (' . $depPollStore->mPollId . ')' );
+			if ( $depPollStore->pid === null ) {
+				return self::fatalError( 'qp_error_missed_dependance_poll', $this->mPollId, $depLink, $depPollId );
+			}
+			if ( !$depPollStore->loadQuestions() ) {
+				return self::fatalError( 'qp_error_vote_dependance_poll', $depLink );
+			}
+			$depPollStore->setLastUser( $this->username, false );
+			if ( $depPollStore->loadUserAlreadyVoted() ) {
+				# user already voted in current the poll in chain
+				if ( $depPollStore->dependsOn === '' ) {
+					if ( $nonVotedDepLink === false ) {
+						# there was no non-voted deplinks in the chain at some previous level of recursion
+						return true;
 					} else {
-						return $this->checkDependance( $depPollStore->dependsOn, $nonVotedDepLink );
+						# there is an non-voted deplink in the chain at some previous level of recursion
+						return self::fatalError( 'qp_error_vote_dependance_poll', $nonVotedDepLink );
 					}
 				} else {
-					# user hasn't voted in current the poll in chain
-					if ( $depPollStore->dependsOn === '' ) {
-						# current element of chain is not voted and furthermore, doesn't depend on any other polls
-						return self::fatalError( 'qp_error_vote_dependance_poll', $depLink );
-					} else {
-						# current element of chain is not voted, BUT it has it's own dependance
-						# so we will check for the most deeply nested poll which hasn't voted, yet
-						return $this->checkDependance( $depPollStore->dependsOn, $depLink );
-					}
+					return $this->checkDependance( $depPollStore->dependsOn, $nonVotedDepLink );
 				}
 			} else {
-				# process poll address errors
-				switch ( $depPollStore ) {
-				case qp_Setup::ERROR_INVALID_ADDRESS :
-					return self::fatalError( 'qp_error_invalid_dependance_value', $this->mPollId, $dependsOn );
-				case qp_Setup::ERROR_MISSED_TITLE :
-					$depSplit = self::getPrefixedPollAddress( $dependsOn );
-					if ( is_array( $depSplit ) ) {
-						list( $depTitleStr, $depPollId ) = $depSplit;
-						$depTitle = Title::newFromURL( $depTitleStr );
-						$depTitleStr = $depTitle->getPrefixedText();
-						$depLink = $this->view->link( $depTitle, $depTitleStr );
-						return self::fatalError( 'qp_error_missed_dependance_title', $this->mPollId, $depLink, $depPollId );
-					} else {
-						return self::fatalError( 'qp_error_invalid_dependance_value', $this->mPollId, $dependsOn );
-					}
-				default :
-					throw new MWException( __METHOD__ . ' invalid dependance poll store found' );
+				# user hasn't voted in current the poll in chain
+				if ( $depPollStore->dependsOn === '' ) {
+					# current element of chain is not voted and furthermore, doesn't depend on any other polls
+					return self::fatalError( 'qp_error_vote_dependance_poll', $depLink );
+				} else {
+					# current element of chain is not voted, BUT it has it's own dependance
+					# so we will check for the most deeply nested poll which hasn't voted, yet
+					return $this->checkDependance( $depPollStore->dependsOn, $depLink );
 				}
 			}
 		} else {
-			return true;
+			# process poll address errors
+			switch ( $depPollStore ) {
+			case qp_Setup::ERROR_INVALID_ADDRESS :
+				return self::fatalError( 'qp_error_invalid_dependance_value', $this->mPollId, $dependsOn );
+			case qp_Setup::ERROR_MISSED_TITLE :
+				$depSplit = self::getPrefixedPollAddress( $dependsOn );
+				if ( is_array( $depSplit ) ) {
+					list( $depTitleStr, $depPollId ) = $depSplit;
+					$depTitle = Title::newFromURL( $depTitleStr );
+					$depTitleStr = $depTitle->getPrefixedText();
+					$depLink = $this->view->link( $depTitle, $depTitleStr );
+					return self::fatalError( 'qp_error_missed_dependance_title', $this->mPollId, $depLink, $depPollId );
+				} else {
+					return self::fatalError( 'qp_error_invalid_dependance_value', $this->mPollId, $dependsOn );
+				}
+			default :
+				throw new MWException( __METHOD__ . ' invalid dependance poll store found' );
+			}
 		}
 	}
 
