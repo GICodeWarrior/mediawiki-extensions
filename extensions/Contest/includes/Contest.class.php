@@ -149,6 +149,12 @@ class Contest extends ContestDBObject {
 		return $map;
 	}
 	
+	/**
+	 * Load the challanges from the database.
+	 * Any set challanges will be lost.
+	 * 
+	 * @since 0.1
+	 */
 	public function loadChallanges() {
 		$this->challanges = ContestChallange::s()->select(
 			null,
@@ -171,6 +177,12 @@ class Contest extends ContestDBObject {
 		return $this->challanges;
 	}
 	
+	/**
+	 * Load the contestants from the database.
+	 * Any set contestants will be lost.
+	 * 
+	 * @since 0.1
+	 */
 	public function loadContestants() {
 		$this->contestants = ContestContestant::s()->select(
 			null,
@@ -193,14 +205,35 @@ class Contest extends ContestDBObject {
 		return $this->contestants;
 	}
 	
+	/**
+	 * Set the contestants for this contest.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param array $contestants
+	 */
 	public function setContestants( array /* of ContestContestant */ $contestants ) {
 		$this->contestants = $contestants;
 	}
 	
+	/**
+	 * Set the challanges for this contest.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param array $challanges
+	 */
 	public function setChallanges( array /* of ContestChallange */ $challanges ) {
 		$this->challanges = $challanges;
 	}
 	
+	/**
+	 * Write the contest and all set challanges and participants to the database.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return boolean Success indicator
+	 */
 	public function writeAllToDB() {
 		$success = parent::writeToDB();
 		
@@ -215,6 +248,13 @@ class Contest extends ContestDBObject {
 		return $success;
 	}
 	
+	/**
+	 * Write the challanges to the database.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return boolean Success indicator
+	 */
 	public function writeChallangesToDB() {
 		if ( is_null( $this->challanges ) || count( $this->challanges ) == 0 ) {
 			return true;
@@ -235,6 +275,13 @@ class Contest extends ContestDBObject {
 		return $success;
 	}
 	
+	/**
+	 * Write the contestants to the database.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return boolean Success indicator
+	 */
 	public function writeContestantsToDB() {
 		if ( is_null( $this->contestants ) || count( $this->contestants ) == 0 ) {
 			return true;
