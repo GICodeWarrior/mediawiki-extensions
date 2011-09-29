@@ -13,6 +13,14 @@ es.BlockView = function( blockModel, $element ) {
 	this.$.addClass( 'editSurface-block' );
 	this.$.data( 'block', this );
 };
+/**
+ * Render content.
+ * 
+ * @method
+ */
+es.BlockView.prototype.renderContent = function() {
+	throw 'BlockView.renderContent not implemented in this subclass.';
+};
 
 /**
  * Draw selection around a given range.
@@ -24,28 +32,23 @@ es.BlockView.prototype.drawSelection = function( range ) {
 	throw 'BlockView.drawSelection not implemented in this subclass.';
 };
 
+/**
+ * Clear selection
+ * 
+ * @method
+ */
 es.BlockView.prototype.clearSelection = function() {
 	throw 'BlockView.clearSelection not implemented in this subclass.';
 };
 
 /**
- * Render content.
+ * Gets length of contents.
  * 
  * @method
+ * @returns {Integer} Length of content, including any virtual spaces within the block
  */
-es.BlockView.prototype.renderContent = function() {
-	throw 'BlockView.renderContent not implemented in this subclass.';
-};
-
-/**
- * Gets offset within content of position.
- * 
- * @method
- * @param position {es.Position} Position to get offset for
- * @returns {Integer} Offset nearest to position
- */
-es.BlockView.prototype.getContentOffset = function( position ) {
-	throw 'BlockView.getContentOffset not implemented in this subclass.';
+es.BlockView.prototype.getLength = function() {
+	throw 'BlockView.getLength not implemented in this subclass.';
 };
 
 /**
@@ -57,26 +60,6 @@ es.BlockView.prototype.getContentOffset = function( position ) {
  */
 es.BlockView.prototype.getRenderedPosition = function( offset ) {
 	throw 'BlockView.getRenderedPosition not implemented in this subclass.';
-};
-
-/**
- * Draw selection around a given range.
- * 
- * @method
- * @param range {es.Range} Range of content to draw selection around
- */
-es.BlockView.prototype.drawSelection = function( range ) {
-	throw 'BlockView.drawSelection not implemented in this subclass.';
-};
-
-/**
- * Gets length of contents.
- * 
- * @method
- * @returns {Integer} Length of content, including any virtual spaces within the block
- */
-es.BlockView.prototype.getLength = function() {
-	throw 'BlockView.getLength not implemented in this subclass.';
 };
 
 /**

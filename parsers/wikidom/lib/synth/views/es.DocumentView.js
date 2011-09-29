@@ -12,42 +12,6 @@ es.DocumentView = function( documentModel ) {
 
 /* Methods */
 
-es.DocumentView.prototype.getOffsetFromEvent = function( e ) {
-	var	$target = $( e.target ),
-		$block = $target.is( '.editSurface-block' )
-			? $target : $target.closest( '.editSurface-block' ),
-		position = es.Position.newFromEventPagePosition( e );
-
-	if( $block.length ) {
-		var	block = $block.data( 'block' ),
-			offset = block.getOffsetFromPosition( position );
-		while ( typeof block.list !== 'undefined' ) {
-			offset += block.list.items.offsetOf( block );
-			block = block.list;
-		}
-		return offset;
-	} else {
-		return this.getOffsetFromPosition( position );
-	}
-};
-
-es.DocumentView.prototype.getOffsetFromPosition = function( position ) {
-	if ( this.items.length === 0 ) {
-		return 0;
-	}
-	
-	var blockView = this.items[0];
-
-	for ( var i = 0; i < this.items.length; i++ ) {
-		if ( this.items[i].$.offset().top >= position.top ) {
-			break;
-		}
-		blockView = this.items[i];
-	}
-	
-	return blockView.list.items.offsetOf( blockView ) + blockView.getOffsetFromPosition( position );
-};
-
 /**
  * Render content.
  * 
@@ -57,28 +21,6 @@ es.DocumentView.prototype.renderContent = function() {
 	for ( var i = 0; i < this.items.length; i++ ) {
 		this.items[i].renderContent();
 	}
-};
-
-/**
- * Gets offset within content of position.
- * 
- * @method
- * @param position {es.Position} Position to get offset for
- * @returns {Integer} Offset nearest to position
- */
-es.DocumentView.prototype.getContentOffset = function( position ) {
-	// TODO
-};
-
-/**
- * Gets rendered position of offset within content.
- * 
- * @method
- * @param offset {Integer} Offset to get position for
- * @returns {es.Position} Position of offset
- */
-es.DocumentView.prototype.getRenderedPosition = function( offset ) {
-	// TODO
 };
 
 /**
@@ -105,6 +47,67 @@ es.DocumentView.prototype.drawSelection = function( range ) {
  */
 es.DocumentView.prototype.getLength = function() {
 	return this.items.getLengthOfItems();
+};
+
+/**
+ * Get the document offset of a position created from passed DOM event
+ * 
+ * @method
+ * @param e {Event} Event to create es.Position from
+ * @returns {Integer} Document offset
+ */
+es.DocumentView.prototype.getOffsetFromEvent = function( e ) {
+	var	$target = $( e.target ),
+		$block = $target.is( '.editSurface-block' )
+			? $target : $target.closest( '.editSurface-block' ),
+		position = es.Position.newFromEventPagePosition( e );
+
+	if( $block.length ) {
+		var	block = $block.data( 'block' ),
+			offset = block.getOffsetFromPosition( position );
+		while ( typeof block.list !== 'undefined' ) {
+			offset += block.list.items.offsetOf( block );
+			block = block.list;
+		}
+		return offset;
+	} else {
+		return this.getOffsetFromPosition( position );
+	}
+};
+
+/**
+ * Get the document offset of a position
+ * 
+ * @method
+ * @param position {es.Position} Position to translate
+ * @returns {Integer} Document offset
+ */
+es.DocumentView.prototype.getOffsetFromPosition = function( position ) {
+	if ( this.items.length === 0 ) {
+		return 0;
+	}
+	
+	var blockView = this.items[0];
+
+	for ( var i = 0; i < this.items.length; i++ ) {
+		if ( this.items[i].$.offset().top >= position.top ) {
+			break;
+		}
+		blockView = this.items[i];
+	}
+	
+	return blockView.list.items.offsetOf( blockView ) + blockView.getOffsetFromPosition( position );
+};
+
+/**
+ * Gets rendered position of offset within content.
+ * 
+ * @method
+ * @param offset {Integer} Offset to get position for
+ * @returns {es.Position} Position of offset
+ */
+es.DocumentView.prototype.getRenderedPosition = function( offset ) {
+	// TODO
 };
 
 /**

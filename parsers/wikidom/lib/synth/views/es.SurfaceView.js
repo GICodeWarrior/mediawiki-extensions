@@ -11,7 +11,7 @@ es.SurfaceView = function( $container, model ) {
 	// Initialize document view
 	this.documentView = new es.DocumentView( this.model.getDocument() );
 	this.$.append( this.documentView.$ );
-	
+
 	// Interaction state
 	this.width = null;
 	this.mouse = {
@@ -109,6 +109,9 @@ es.SurfaceView = function( $container, model ) {
  * @param offset {Position} Offset to be added to position
  */
 es.SurfaceView.prototype.showCursor = function( position, offset ) {
+	
+	// TODO: test/reimplement
+	
 	if ( position ) {
 		if ( $.isPlainObject( offset ) ) {
 			position.left += offset.left;
@@ -139,43 +142,13 @@ es.SurfaceView.prototype.showCursor = function( position, offset ) {
  * @method
  */
 es.SurfaceView.prototype.hideCursor = function() {
+
+	// TODO: test/reimplement
+	
 	if( this.blinkInterval ) {
 		clearInterval( this.blinkInterval );
 	}
 	this.$cursor.hide();
-};
-
-es.SurfaceView.prototype.getLocationFromEvent = function( e ) {
-	var $target = $( e.target ),
-		$block = $target.is( '.editSurface-block' )
-			? $target : $target.closest( '.editSurface-block' );
-	// Not a block or child of a block? Find the nearest block...
-	if ( !$block.length ) {
-		var $blocks = this.$.find( '> .editSurface-document .editSurface-block' );
-		$block = $blocks.first();
-		$blocks.each( function() {
-			// Stop looking when mouse is above top
-			if ( e.pageY <= $(this).offset().top ) {
-				return false;
-			}
-			$block = $(this);
-		} );
-	}
-	var block = $block.data( 'block' ),
-		blockPosition = $block.offset();
-	return new es.Location(
-		block,
-		block.getOffset(
-			new es.Position(
-				e.pageX - blockPosition.left,
-				e.pageY - blockPosition.top
-			)
-		)
-	);
-};
-
-es.SurfaceView.prototype.getLocationFromOffset = function( offset ) {
-	
 };
 
 es.SurfaceView.prototype.onKeyDown = function( e ) {
@@ -291,10 +264,4 @@ es.SurfaceView.prototype.getInputContent = function() {
 
 es.SurfaceView.prototype.setInputContent = function( content ) {
 	// TODO: Set the value of this.$input
-};
-
-/* Inheritance */
-
-es.SurfaceView.prototype.getLocationFromPosition = function( position ) {
-	
 };
