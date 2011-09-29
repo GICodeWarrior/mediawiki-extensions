@@ -186,7 +186,7 @@ class RecordAdmin {
 		# Loop through all records of this type adding only those that match the regex fields
 		$records = array();
 		foreach( self::getRecordsByType( $type ) as $t ) {
-			if( empty( $wpTitle ) || preg_match( "|$wpTitle|i", $t->getPrefixedText() ) ) {
+			if( empty( $wpTitle ) || preg_match( "#$wpTitle#i", $t->getPrefixedText() ) ) {
 				$a = new Article( $t );
 				$text = $a->getContent();
 				$match = true;
