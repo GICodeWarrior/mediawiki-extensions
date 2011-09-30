@@ -172,6 +172,7 @@ class SpecialContestSignup extends SpecialContestPage {
 			'default' => $user->getEmail(),
 			'label-message' => 'contest-signup-email',
 			'required' => true,
+			'validation-callback' => array( __CLASS__, 'validateEmailField' )
 		);
 		
 		$fields['contestant-challangeid'] = array(
@@ -224,9 +225,9 @@ class SpecialContestSignup extends SpecialContestPage {
 	}
 	
 	/**
-	 * HTMLForm field validation-callback for Target field.
+	 * HTMLForm field validation-callback for name field.
 	 * 
-	 * @since 1.18
+	 * @since 0.1
 	 * 
 	 * @param $value String
 	 * @param $alldata Array
@@ -235,6 +236,20 @@ class SpecialContestSignup extends SpecialContestPage {
 	 */
 	public static function validateNameField( $value, $alldata = null ) {
 		return strlen( $value ) > 1;
+	}
+	
+	/**
+	 * HTMLForm field validation-callback for email field.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param $value String
+	 * @param $alldata Array
+	 * 
+	 * @return true|string
+	 */
+	public static function validateEmailField( $value, $alldata = null ) {
+		return Sanitizer::validateEmail( $value );
 	}
 	
 }
