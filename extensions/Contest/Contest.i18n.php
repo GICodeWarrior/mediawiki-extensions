@@ -27,15 +27,15 @@ $messages['en'] = array(
 
 	// Groups
 	'group-contestadmin' => 'Contest admins',
-	'group-contestadmin-member' => 'Contest admin',
+	'group-contestadmin-member' => 'contest admin',
 	'grouppage-contestadmin' => 'Project:Contest_admins',
 
 	'group-contestparticipant' => 'Contest participants',
-	'group-contestparticipant-member' => 'Contest participant',
+	'group-contestparticipant-member' => 'contest participant',
 	'grouppage-contestparticipant' => 'Project:Contest_participants',
 
 	'group-contestjudge' => 'Contest judges',
-	'group-contestjudge-member' => 'Contest judge',
+	'group-contestjudge-member' => 'contest judge',
 	'grouppage-contestjudge' => 'Project:Contest_judges',
 
 	// Contest statuses
