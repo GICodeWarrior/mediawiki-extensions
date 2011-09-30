@@ -1,4 +1,4 @@
-module( 'Base classes' );
+module( 'Bases' );
 
 test( 'es.ModelNode', 17, function() {
 	// Example data (integers) is used for simplicity of testing

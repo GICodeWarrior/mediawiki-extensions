@@ -51,7 +51,72 @@ es.DocumentModel.isElement = function( offset ) {
  * @returns {es.DocumentModel} Document model created from obj
  */
 es.DocumentModel.newFromPlainObject = function( obj ) {
-	return new es.DocumentModel( es.DocumentModel.flattenPlainObjectNode( obj ) );
+	return new es.DocumentModel( es.DocumentModel.flattenPlainObjectElementNode( obj ) );
+};
+
+
+/**
+ * Creates an es.ContentModel object from a plain content object.
+ * 
+ * A plain content object contains plain text and a series of annotations to be applied to ranges of
+ * the text.
+ * 
+ * @example
+ * {
+ *     'text': '1234',
+ *     'annotations': [
+ *         // Makes "23" bold
+ *         {
+ *             'type': 'bold',
+ *             'range': {
+ *                 'start': 1,
+ *                 'end': 3
+ *             }
+ *         }
+ *     ]
+ * }
+ * 
+ * @static
+ * @method
+ * @param {Object} obj Plain content object, containing a "text" property and optionally
+ * an "annotations" property, the latter of which being an array of annotation objects including
+ * range information
+ * @returns {Array}
+ */
+es.DocumentModel.flattenPlainObjectContentNode = function( obj ) {
+	if ( !$.isPlainObject( obj ) ) {
+		// Use empty content
+		return [];
+	} else {
+		// Convert string to array of characters
+		var data = obj.text.split('');
+		// Render annotations
+		if ( $.isArray( obj.annotations ) ) {
+			$.each( obj.annotations, function( i, src ) {
+				// Build simplified annotation object
+				var dst = { 'type': src.type };
+				if ( 'data' in src ) {
+					dst.data = es.copyObject( src.data );
+				}
+				// Apply annotation to range
+				if ( src.start < 0 ) {
+					// TODO: This is invalid data! Throw error?
+					src.start = 0;
+				}
+				if ( src.end > data.length ) {
+					// TODO: This is invalid data! Throw error?
+					src.end = data.length;
+				}
+				for ( var i = src.start; i < src.end; i++ ) {
+					// Auto-convert to array
+					typeof data[i] === 'string' && ( data[i] = [data[i]] );
+					// Append 
+					data[i].push( dst );
+				}
+			} );
+		}
+		return data;
+	}
 };
 
 /**
@@ -64,22 +129,27 @@ es.DocumentModel.newFromPlainObject = function( obj ) {
  * @param {Object} obj Plain node object to flatten
  * @returns {Array} Flattened version of obj
  */
-es.DocumentModel.flattenPlainObjectNode = function( obj ) {
-	var i, data = [];
+es.DocumentModel.flattenPlainObjectElementNode = function( obj ) {
+	var i,
+		data = [],
+		element = { 'type': obj.type };
+	if ( $.isPlainObject( obj.attributes ) ) {
+		element.attributes = es.copyObject( obj.attributes );
+	}
 	// Open element
-	data.push( { 'type': obj.type, 'attributes': es.copyObject( obj.attributes ), 'node': null } );
-	if ( obj.content !== undefined ) {
+	data.push( element );
+	if ( $.isPlainObject( obj.content ) ) {
 		// Add content
-		data = data.concat( es.ContentModel.newFromPlainObject( obj.content ).data );
-	} else {
+		data = data.concat( es.DocumentModel.flattenPlainObjectContentNode( obj.content ) );
+	} else if ( $.isArray( obj.children ) ) {
 		// Add children - only do this if there is no content property
 		for ( i = 0; i < obj.children.length; i++ ) {
 			// TODO: Figure out if all this concatenating is inefficient. I think it is
-			data = data.concat( flattenNode( obj.children[i] ) );
+			data = data.concat( es.DocumentModel.flattenPlainObjectElementNode( obj.children[i] ) );
 		}
 	}
 	// Close element - TODO: Do we need attributes here or not?
-	data.push( { 'type': '/' + obj.type, 'node': null } );
+	data.push( { 'type': '/' + obj.type } );
 	return data;
 };
 

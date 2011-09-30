@@ -1,3 +1,5 @@
+module( 'Models' );
+
 /*
  * Sample plain object (WikiDom).
  * 
@@ -60,7 +62,7 @@ var obj = {
 						    				'type': 'listItem',
 							    			'attributes': {
 							    				'styles': ['bullet']
-							    			}
+							    			},
 							    			'content': {
 							    				'text': 'a'
 							    			}
@@ -69,7 +71,7 @@ var obj = {
 						    				'type': 'listItem',
 							    			'attributes': {
 							    				'styles': ['bullet', 'bullet']
-							    			}
+							    			},
 							    			'content': {
 							    				'text': 'b'
 							    			}
@@ -78,11 +80,11 @@ var obj = {
 						    				'type': 'listItem',
 							    			'attributes': {
 							    				'styles': ['number']
-							    			}
+							    			},
 							    			'content': {
 							    				'text': 'c'
 							    			}
-						    			},
+						    			}
 					    			]
 					    		}
 					      	]
@@ -96,7 +98,7 @@ var obj = {
 			'content': {
 				'text': 'a'
 			}
-		},
+		}
 	]
 };
 
@@ -118,7 +120,9 @@ var obj = {
  */
 var data = [
  	//  0 - Beginning of paragraph
- 	{ 'type': 'paragraph', 'node': {} },
+ 	{ 'type': 'document' },
+ 	//  0 - Beginning of paragraph
+ 	{ 'type': 'paragraph' },
 	//  1 - Plain content
 	'a',
 	//  2 - Annotated content
@@ -126,51 +130,59 @@ var data = [
 	//  3 - Annotated content
 	['c', { 'type': 'italic' }],
 	//  4 - End of paragraph
-	{ 'type': '/paragraph', 'node': {} }
+	{ 'type': '/paragraph' },
  	//  5 - Beginning of table
-	{ 'type': 'table', 'node': {} },
+	{ 'type': 'table' },
  	//  6 - Beginning of row
-	{ 'type': 'row', 'node': {} },
+	{ 'type': 'row' },
  	//  7 - Beginning of cell
-	{ 'type': 'cell', 'node': {} },
+	{ 'type': 'cell' },
  	//  8 - Beginning of paragraph
-	{ 'type': 'paragraph', 'node': {} },
+	{ 'type': 'paragraph' },
 	//  9 - Plain content
 	'a',
  	// 10 - End of paragraph
-	{ 'type': '/paragraph', 'node': {} },
+	{ 'type': '/paragraph' },
  	// 11 - Beginning of list
-	{ 'type': 'list', 'node': {} },
+	{ 'type': 'list' },
  	// 12 - Beginning of bullet list item
-	{ 'type': 'listItem', 'attributes': { 'styles': ['bullet'] }, 'node': {} },
+	{ 'type': 'listItem', 'attributes': { 'styles': ['bullet'] } },
 	// 13 - Plain content
 	'a',
  	// 14 - End of item
-	{ 'type': '/listItem', 'node': {} },
+	{ 'type': '/listItem' },
  	// 15 - Beginning of nested bullet list item
-	{ 'type': 'listItem', 'attributes': { 'styles': ['bullet', 'bullet'] }, 'node': {} },
+	{ 'type': 'listItem', 'attributes': { 'styles': ['bullet', 'bullet'] } },
 	// 16 - Plain content
 	'b',
  	// 17 - End of item
-	{ 'type': '/listItem', 'node': {} },
+	{ 'type': '/listItem' },
  	// 18 - Beginning of numbered list item
-	{ 'type': 'listItem', 'attributes': { 'styles': ['number'] }, 'node': {} },
+	{ 'type': 'listItem', 'attributes': { 'styles': ['number'] } },
 	// 19 - Plain content
 	'c',
  	// 20 - End of item
-	{ 'type': '/listItem', 'node': {} },
+	{ 'type': '/listItem' },
  	// 21 - End of list
-	{ 'type': '/list', 'node': {} },
+	{ 'type': '/list' },
 	// 22 - End of cell
-	{ 'type': '/cell', 'node': {} }
+	{ 'type': '/cell' },
 	// 23 - End of row
-	{ 'type': '/row', 'node': {} }
+	{ 'type': '/row' },
 	// 24 - End of table
-	{ 'type': '/table', 'node': {} }
+	{ 'type': '/table' },
  	// 25 - Beginning of paragraph
-	{ 'type': 'paragraph', 'node': {} },
+	{ 'type': 'paragraph' },
 	// 26 - Plain content
-	'a'
+	'a',
  	// 27 - End of paragraph
-	{ 'type': '/paragraph', 'node': {} },
+	{ 'type': '/paragraph' },
+ 	// 27 - End of paragraph
+	{ 'type': '/document' }
 ];
+
+test( 'es.ModelNode', function() {
+	var documentModel = es.DocumentModel.newFromPlainObject( obj );
+	
+	deepEqual( documentModel.getData(), data, 'Flattening plain objects results in correct data' );
+} );
