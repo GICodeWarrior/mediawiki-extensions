@@ -34,7 +34,6 @@
 	
 	$('.push-button').click(function() {
 		this.disabled = true;
-		this.innerHTML = mw.msg( 'push-button-pushing' );
 		
 		var errorDiv = $( '#targeterrors' + $(this).attr( 'targetid' ) );
 		errorDiv.fadeOut( 'fast' );			
@@ -47,7 +46,7 @@
 			pages = [$('#pageName').attr('value')];
 		}
 		
-		initiatePush(
+		setButtonToImgPush(
 			this,
 			pages,
 			$(this).attr( 'pushtarget' ),
@@ -256,6 +255,8 @@
 	}
 	
 	function initiatePush( sender, pages, targetUrl, targetName ) {
+		sender.innerHTML = mw.msg( 'push-button-pushing' );
+		
 		$.getJSON(
 			wgScriptPath + '/api.php',
 			{
@@ -273,7 +274,7 @@
 				}
 				else {
 					if ( $('#checkIncFiles').length != 0 && $('#checkIncFiles').attr('checked') ) {
-						setButtonToImgPush( sender, targetUrl, targetName );
+						handlePushingCompletion( sender, targetUrl, targetName );
 					}
 					else {
 						sender.innerHTML = mw.msg( 'push-button-completed' );
@@ -284,7 +285,7 @@
 		); 	
 	}
 	
-	function handleFilePushingCompletion( sender, targetUrl, targetName ) {
+	function handlePushingCompletion( sender, targetUrl, targetName ) {
 		sender.innerHTML = mw.msg( 'push-button-completed' );
 		
 		setTimeout( function() {
@@ -292,16 +293,16 @@
 		}, 1000 );	
 	}
 	
-	function setButtonToImgPush( button, targetUrl, targetName ) {
+	function setButtonToImgPush( button, pages, targetUrl, targetName ) {
 		button.innerHTML = mw.msg( 'push-button-pushing-files' );
 		
 		var images = window.wgPushPageFiles.concat( window.wgPushTemplateFiles );
 		var currentFile = images.pop();
 		
-		initiateImagePush( button, targetUrl, targetName, images, currentFile, handleFilePushingCompletion );
+		initiateImagePush( button, pages, targetUrl, targetName, images, currentFile );
 	}
 	
-	function initiateImagePush( sender, targetUrl, targetName, images, fileName, callback ) {
+	function initiateImagePush( sender, pages, targetUrl, targetName, images, fileName ) {
 		$.getJSON(
 			wgScriptPath + '/api.php',
 			{
@@ -338,10 +339,10 @@
 				if ( !fail ) {
 					if ( images.length > 0 ) {
 						var currentFile = images.pop();
-						initiateImagePush( sender, targetUrl, targetName, images, currentFile, callback );
+						initiateImagePush( sender, pages, targetUrl, targetName, images, currentFile );
 					}
 					else {
-						callback( sender, targetUrl, targetName );
+						initiatePush( sender, pages, targetUrl, targetName );
 					}
 				}
 			}
