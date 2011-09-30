@@ -15,7 +15,7 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'CreditTab',
 	'author' => '[http://www.dasch-tour.de DaSch]',
-	'version' =>  '1.2.1',
+	'version' =>  '1.2.2',
 	'descriptionmsg' => 'credits-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:CreditTab',
 );
@@ -78,6 +78,7 @@ function showCredits( $obj, &$content_actions ) {
         $credit_tab = array(
             'class' => $class_name,
             'text' => wfMsg('credits-tab'),
+            'title' => wfMsg('credits-tab-title'),
             'href' => $title->getLocalURL( 'action=credits' ),
         );    
 		// find the location of the 'edit' tab, and add
