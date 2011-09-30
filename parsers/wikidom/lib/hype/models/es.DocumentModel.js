@@ -74,16 +74,6 @@ es.DocumentModel.flattenPlainObjectNode = function( obj ) {
 /* Methods */
 
 /**
- * Gets the length of all document content.
- * 
- * @method
- * @returns {Integer} Length of document content
- */
-es.DocumentModel.getContentLength = function() {
-	return this.data.length;
-};
-
-/**
  * Gets copy of the document data.
  * 
  * @method
@@ -122,7 +112,7 @@ es.DocumentModel.prototype.offsetOf = function( node, deep, from ) {
 			return offset;
 		}
 		if ( deep && node.length ) {
-			var length = this.findElement( node, deep, node );
+			var length = this.offsetOf( node, deep, node );
 			if ( length !== null ) {
 				return offset + length;
 			}
