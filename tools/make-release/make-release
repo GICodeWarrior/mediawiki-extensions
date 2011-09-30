@@ -205,7 +205,11 @@ def makeRelease(version, branch, dir, prevVersion = None, prevBranch = None):
 
 	# Export the target
 	export(branch, package)
-	exportExtension(branch, 'ParserFunctions', package)
+
+	# Export extensions for inclusion
+	extensions = ['ParserFunctions']
+	for ext in extensions:
+		exportExtension(branch, ext, package)
 
 	# Generate the .tar.gz file
 	outFile = open(dir + '/' + package + '.tar.gz', 'w')
