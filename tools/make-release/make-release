@@ -154,6 +154,17 @@ def export(branch, dir):
 		sys.exit(1)
 	print "Done"
 
+def exportExtension(branch, extension, dir):
+	print "Exporting extension %s into %s branch..." % (extension, branch)
+	proc = subprocess.Popen(['svn', 'export', '-q', '--force',
+		'svn+ssh://svn.wikimedia.org/svnroot/mediawiki/' + branch + '/extensions/' + extension,
+		dir + "/" extensions + "/" + extension
+	])
+	if proc.wait() != 0:
+		print "svn export failed, exiting"
+		sys.exit(1)
+	print "Done"
+
 def makePatch(patchFileName, dir1, dir2, type):
 	patchFile = open(patchFileName, 'w')
 	args = ['diff', '-Nru']
