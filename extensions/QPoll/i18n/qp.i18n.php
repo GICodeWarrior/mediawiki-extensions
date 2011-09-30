@@ -150,6 +150,7 @@ To save a poll, submit it while not answering to any proposal questions.',
  */
 $messages['qqq'] = array(
 	'pollresults' => 'Special page name in [[Special:SpecialPages]]',
+	'qpollwebinstall' => 'Special page name in [[Special:SpecialPages]]',
 	'qp_desc' => '{{desc}} Important notice: Categories can be grouped into category groups, which are internally referred as "spans". Such grouped categories become "subcategories". While the extension evolved, these groups were consequentially called as "spans", "metacategories", "category groups". Please read the on-line documentation carefully before translating.',
 	'qp_result_error' => '{{Identical|Syntax error}}',
 	'qp_vote_button' => '{{Identical|Vote}}',
@@ -191,7 +192,7 @@ $messages['qqq'] = array(
 * $1 is a language code,
 * $2 is a language code.',
 	'qp_error_eval_unsupported_language' => 'Parameters:
-* $1 is a language code.',
+* $1 is a language code (usually is a value of qpinterpret tag lang attribute).',
 	'qp_error_eval_illegal_token' => 'Parameters:
 * $1 is a PHP token
 * $2 is a PHP token value
@@ -221,6 +222,8 @@ Parameters:
 	'qp_error_eval_self_check' => 'Parameters:
 * $1 is self check that has failed.',
 	'qp_error_eval_unable_to_lint' => '"Lint" is the term that is now applied generically to tools that flag suspicious usage in software written in any computer language [[w:en:Lint_%28software%29]].',
+	'qp_error_interpretation_no_return' => 'Interpretation script missed an return statement.',
+	'qp_error_structured_interpretation_is_too_long' => 'Structured interpretation is serialized string containing scalar value or an associative array stored into database table field. It\'s purpose is to have measurable, easily processable interpretation result for the particular poll which then can be processed by external tools (via XLS export) or, to be read and processed by next poll interpretation script (data import and in the future maybe an export as well). When the serialized string is too long, it should never be stored, otherwise it will be truncated by DBMS so it cannot be properly unserialized later.',
 );
 
 /** Afrikaans (Afrikaans)
