@@ -73,7 +73,31 @@ es.compareObjects = function( a, b, asymmetrical ) {
 };
 
 /**
- * Gets a recursive copy of an object's string, number and plain-object property.
+ * Gets a deep copy of an array's string, number, array and plain-object contents.
+ * 
+ * @static
+ * @method
+ * @param source {Array} Array to copy
+ * @returns {Array} Copy of source array
+ */
+es.copyArray = function( source ) {
+	var destination = [];
+	for ( var i = 0; i < source.length; i++ ) {
+		sourceValue = source[i];
+		sourceType = typeof sourceValue;
+		if ( sourceType === 'string' || sourceType === 'number' ) {
+			destination.push( sourceValue );
+		} else if ( $.isPlainObject( sourceValue ) ) {
+			destination.push( es.copyObject( sourceValue ) );
+		} else if ( $.isArray( sourceValue ) ) {
+			destination.push( es.copyArray( sourceValue ) );
+		}
+	}
+	return destination;
+};
+
+/**
+ * Gets a deep copy of an object's string, number, array and plain-object properties.
  * 
  * @static
  * @method
@@ -82,14 +106,15 @@ es.compareObjects = function( a, b, asymmetrical ) {
  */
 es.copyObject = function( source ) {
 	var destination = {};
-	var key;
-	for ( key in source ) {
+	for ( var key in source ) {
 		sourceValue = source[key];
 		sourceType = typeof sourceValue;
 		if ( sourceType === 'string' || sourceType === 'number' ) {
 			destination[key] = sourceValue;
 		} else if ( $.isPlainObject( sourceValue ) ) {
 			destination[key] = es.copyObject( sourceValue );
+		} else if ( $.isArray( sourceValue ) ) {
+			destination[key] = es.copyArray( sourceValue );
 		}
 	}
 	return destination;

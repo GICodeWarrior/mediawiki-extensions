@@ -14,43 +14,123 @@ es.DocumentModel = function( data ) {
 
 /* Static Methods */
 
-es.DocumentModel.isContent = function( content ) {
-	return typeof content === 'string' || $.isArray( content );
+/**
+ * Checks if a data at a given offset is content.
+ * 
+ * @static
+ * @method
+ * @param {Integer} offset Offset in data to check
+ * @returns {Boolean} If data at offset is content
+ */
+es.DocumentModel.isContent = function( offset ) {
+	return typeof this.data[offset] === 'string' || $.isArray( this.data[offset] );
 };
 
-es.DocumentModel.isElement = function( content ) {
-	return content.type !== undefined;
+/**
+ * Checks if a data at a given offset is an element.
+ * 
+ * @static
+ * @method
+ * @param {Integer} offset Offset in data to check
+ * @returns {Boolean} If data at offset is an element
+ */
+es.DocumentModel.isElement = function( offset ) {
+	// TODO: Is there a safer way to check if it's a plain object without sacrificing speed?
+	return this.data[offset].type !== undefined;
+};
+
+/**
+ * Flatten a plain node object into a data array, recursively.
+ * 
+ * TODO: where do we document this whole structure - aka "WikiDom"?
+ * 
+ * @static
+ * @method
+ * @param {Object} obj Plain node object to flatten
+ * @returns {Array} Flattened version of obj
+ */
+es.DocumentModel.flattenPlainObjectNode = function( obj ) {
+	var i, data = [];
+	// Open element
+	data.push( { 'type': obj.type, 'attributes': es.copyObject( obj.attributes ), 'node': null } );
+	if ( obj.content !== undefined ) {
+		// Add content
+		data = data.concat( es.ContentModel.newFromPlainObject( obj.content ).data );
+	} else {
+		// Add children - only do this if there is no content property
+		for ( i = 0; i < obj.children.length; i++ ) {
+			// TODO: Figure out if all this concatenating is inefficient. I think it is
+			data = data.concat( flattenNode( obj.children[i] ) );
+		}
+	}
+	// Close element - TODO: Do we need attributes here or not?
+	data.push( { 'type': '/' + obj.type, 'node': null } );
+	return data;
 };
 
 /* Methods */
 
-es.DocumentModel.prototype.findElement = function( node, root ) {
-	for ( var i = 0; i < this.data.length; i++ ) {
-		if ( es.DocumentModel.isElement( this.data[i] ) ) {
-			if ( content.node === node ) {
-				return i;
-			}
-			// If we are looking for a root node, we can skip over the contents of this one
-			if ( root ) {
-				i += node.getContentLength() + 2;
+/**
+ * Gets copy of the document data.
+ * 
+ * @method
+ * @param {es.Range} [range] Range of data to get, all data will be given by default
+ * @param {Boolean} [deep=false] Whether to return a deep copy (WARNING! This may be very slow)
+ * @returns {Array} Copy of document data
+ */
+es.DocumentModel.prototype.getData = function( range, deep ) {
+	var start = 0,
+		end = undefined;
+	if ( range !== undefined ) {
+		range.normalize();
+		start = Math.max( 0, Math.min( this.data.length, range.start ) );
+		end = Math.max( 0, Math.min( this.data.length, range.end ) );
+	}
+	var data = this.data.slice( start, end );
+	return deep ? es.copyArray( data ) : data;
+};
+
+/**
+ * Gets the content offset of a node.
+ * 
+ * @method
+ * @param {es.DocumentModelNode} node Node to get offset of
+ * @param {Boolean} deep Whether to scan recursively
+ * @param {es.DocumentModelNode} [from=this] Node to look within
+ * @returns {Integer|false} Offset of node or null of node was not found
+ */
+es.DocumentModel.prototype.offsetOf = function( node, deep, from ) {
+	if ( from === undefined ) {
+		from = this;
+	}
+	var offset = 0;
+	for ( var i = 0; i < this.length; i++ ) {
+		if ( node === this[i] ) {
+			return offset;
+		}
+		if ( deep && node.length ) {
+			var length = this.findElement( node, deep, node );
+			if ( length !== null ) {
+				return offset + length;
 			}
 		}
+		offset += node.getContentLength() + 2;
 	}
-	return null;
+	return false;
 };
 
 /**
  * Gets the element object of a node.
  * 
  * @method
- * @param {es.DocumentModelNode} node Reference to node object to get element object for
- * @param {Boolean} root Whether to only scan root nodes
+ * @param {es.DocumentModelNode} node Node to get element object for
+ * @param {Boolean} deep Whether to scan recursively
  * @returns {Object|null} Element object
  */
-es.DocumentModel.prototype.getElement = function( node, root ) {
-	var index = this.findNode( node, root );
-	if ( index !== null ) {
-		return this.data[index];
+es.DocumentModel.prototype.getElement = function( node, deep ) {
+	var offset = this.offsetOf( node, deep );
+	if ( offset !== false ) {
+		return this.data[offset];
 	}
 	return null;
 };
@@ -59,14 +139,14 @@ es.DocumentModel.prototype.getElement = function( node, root ) {
  * Gets the content data of a node.
  * 
  * @method
- * @param {es.DocumentModelNode} node Reference to node object to get content data for
- * @param {Boolean} root Whether to only scan root nodes
+ * @param {es.DocumentModelNode} node Node to get content data for
+ * @param {Boolean} deep Whether to scan recursively
  * @returns {Array|null} List of content and elements inside node or null if node is not found
  */
-es.DocumentModel.prototype.getContent = function( node, root ) {
-	var index = this.findNode( node, root );
-	if ( index !== null ) {
-		return this.data.slice( index + 1, index + node.getContentLength() );
+es.DocumentModel.prototype.getContent = function( node, deep ) {
+	var offset = this.offsetOf( node, deep );
+	if ( offset !== false ) {
+		return this.data.slice( offset + 1, offset + node.getContentLength() );
 	}
 	return null;
 };
@@ -169,33 +249,7 @@ es.DocumentModel.prototype.annotateElement = function( offset, annotations ) {
 */
 
 es.DocumentModel.newFromPlainObject = function( obj ) {
-	/*
-	 * Flatten a node and its children into a data array, recursively.
-	 * 
-	 * @param obj {Object} A plain node object //TODO where do we document this whole structure?
-	 * @return {Array} Array to append the flattened version of obj to
-	 */
-	function flattenNode( obj ) {
-		var i, data = [];
-		// Open element
-		// TODO do we need to copy the attributes object or can we use a reference?
-		data.push( { 'type': obj.type, 'attributes': obj.attributes, 'node': null } );
-		if ( obj.content !== undefined ) {
-			// Add content
-			data = data.concat( es.ContentModel.newFromPlainObject( obj.content ).data );
-		} else {
-			// Add children. Only do this if there is no content property
-			for ( i = 0; i < obj.children.length; i++ ) {
-				//TODO figure out if all this concatting is inefficent. I think it is
-				data = data.concat( flattenNode( obj.children[i] ) );
-			}
-		}
-		// Close element // TODO do we need attributes here or not?
-		data.push( { 'type': '/' + obj.type, 'node': null } );
-		return data;
-	}
-	
-	return new es.DocumentModel( flattenNode( obj ) );
+	return new es.DocumentModel( es.DocumentModel.flattenPlainObjectNode( obj ) );
 };
 
 /*
