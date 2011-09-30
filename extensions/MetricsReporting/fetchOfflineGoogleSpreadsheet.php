@@ -2,15 +2,14 @@
 
 require( "MetricsMaintenance.php" );
 
-class FetchGoogleSpreadsheet extends MetricsMaintenance {
+class FetchOfflineGoogleSpreadsheet extends MetricsMaintenance {
 	public function __construct() {
 		parent::__construct();
 		$this->mDescription = "Grabs and does stuff with a Google Documents Spreadsheet";
-		$this->addArg( 'spreadsheet', 'URL or something to document' );
 	}
 
 	public function execute() {
-		$url = $this->getArg( 0 );
+		$url = 'https://spreadsheets.google.com/feeds/worksheets/0Au8PHt8_RuNedDJZU0V0NDNJT3JIWlVyVzd3WmFZb1E/private/full';
 
 		// Headers
 		$http = MWHttpRequest::factory( 'https://www.google.com/accounts/ClientLogin',
@@ -27,7 +26,7 @@ class FetchGoogleSpreadsheet extends MetricsMaintenance {
 		);
 		$http->setHeader( 'User-Agent', self::getUserAgent() );
 
-		$res = $http->execute();
+		$http->execute();
 		if ( $http->getStatus() == 403 ) {
 			$this->error( '403', true );
 		}
@@ -93,10 +92,10 @@ class FetchGoogleSpreadsheet extends MetricsMaintenance {
 			$this->output( 'Spreadsheet tab title: ' . $xml->title . "\n" );
 			$this->output( "\n" );
 
-			if ( $xml->title != 'Deployments' ) {
+			if ( $xml->title != 'For Report Card' ) {
 				continue;
 			}
-			//continue;
+
 			$sheetData = array();
 			// foreach "tab"/worksheet
 			foreach( $xml->entry as $entry ) {
@@ -148,7 +147,7 @@ class FetchGoogleSpreadsheet extends MetricsMaintenance {
 	 * @param $cookies CookieJar
 	 * @return MWHttpRequest
 	 */
-	function buildAuthedRequest( $url, $token, $cookies = null ) {
+	function buildAuthedRequest( $url, $token = null, $cookies = null ) {
 		$http = MWHttpRequest::factory( $url, array(
 				'method' => 'GET',
 			)
@@ -158,7 +157,9 @@ class FetchGoogleSpreadsheet extends MetricsMaintenance {
 			$http->setCookieJar( $cookies );
 		}
 		$http->setHeader( 'GData-Version', '3.0' );
-		$http->setHeader( 'Authorization', "GoogleLogin auth=\"{$token}\"" );
+		if ( $token  !== null ) {
+			$http->setHeader( 'Authorization', "GoogleLogin auth=\"{$token}\"" );
+		}
 		return $http;
 	}
 
@@ -170,5 +171,5 @@ class FetchGoogleSpreadsheet extends MetricsMaintenance {
 	}
 }
 
-$maintClass = "FetchGoogleSpreadsheet";
+$maintClass = "FetchOfflineGoogleSpreadsheet";
 require_once( DO_MAINTENANCE );
