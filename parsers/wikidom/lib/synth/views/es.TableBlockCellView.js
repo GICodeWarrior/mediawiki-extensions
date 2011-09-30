@@ -14,40 +14,6 @@ es.TableBlockCellView = function( model ) {
 /* Methods */
 
 /**
- * Gets the offset of a position.
- * 
- * @method
- * @param position {es.Position} Position to translate
- * @returns {Integer} Offset nearest to position
- */
-es.TableBlockCellView.prototype.getOffsetFromPosition = function( position ) {
-	if ( this.items.length === 0 ) {
-		return 0;
-	}
-	
-	var blockView = this.items[0];
-
-	for ( var i = 0; i < this.items.length; i++ ) {
-		if ( this.items[i].$.offset().top >= position.top ) {
-			break;
-		}
-		blockView = this.items[i];
-	}
-	
-	return blockView.list.items.offsetOf( blockView ) + blockView.getOffsetFromPosition( position );
-};
-
-/**
- * Gets length of contents.
- * 
- * @method
- * @returns {Integer} Length of content, including any virtual spaces within the block
- */
-es.TableBlockCellView.prototype.getLength = function() {
-	return this.items.getLengthOfItems();
-};
-
-/**
  * Render content.
  * 
  * @method
@@ -56,28 +22,6 @@ es.TableBlockCellView.prototype.renderContent = function() {
 	for ( var i = 0; i < this.items.length; i++ ) {
 		this.items[i].renderContent();
 	}
-};
-
-/**
- * Gets offset within content of position.
- * 
- * @method
- * @param position {es.Position} Position to get offset for
- * @returns {Integer} Offset nearest to position
- */
-es.TableBlockCellView.prototype.getContentOffset = function( position ) {
-	// TODO
-};
-
-/**
- * Gets rendered position of offset within content.
- * 
- * @method
- * @param offset {Integer} Offset to get position for
- * @returns {es.Position} Position of offset
- */
-es.TableBlockCellView.prototype.getRenderedPosition = function( offset ) {
-	// TODO
 };
 
 /**
@@ -104,6 +48,51 @@ es.TableBlockCellView.prototype.clearSelection = function( range ) {
 };
 
 /**
+ * Gets length of contents.
+ * 
+ * @method
+ * @returns {Integer} Length of content, including any virtual spaces within the block
+ */
+es.TableBlockCellView.prototype.getLength = function() {
+	return this.items.getLengthOfItems();
+};
+
+/**
+ * Gets the offset of a position.
+ * 
+ * @method
+ * @param position {es.Position} Position to translate
+ * @returns {Integer} Offset nearest to position
+ */
+es.TableBlockCellView.prototype.getOffsetFromPosition = function( position ) {
+	if ( this.items.length === 0 ) {
+		return 0;
+	}
+	
+	var blockView = this.items[0];
+
+	for ( var i = 0; i < this.items.length; i++ ) {
+		if ( this.items[i].$.offset().top >= position.top ) {
+			break;
+		}
+		blockView = this.items[i];
+	}
+	
+	return blockView.list.items.offsetOf( blockView ) + blockView.getOffsetFromPosition( position );
+};
+
+/**
+ * Gets rendered position of offset within content.
+ * 
+ * @method
+ * @param offset {Integer} Offset to get position for
+ * @returns {es.Position} Position of offset
+ */
+es.TableBlockCellView.prototype.getRenderedPosition = function( offset ) {
+	// TODO
+};
+
+/**
  * Gets HTML rendering of block.
  * 
  * @method
@@ -112,7 +101,7 @@ es.TableBlockCellView.prototype.clearSelection = function( range ) {
  */
 es.TableBlockCellView.prototype.getHtml = function( options ) {
 	return es.Html.makeTag( 'td', this.model.attributes, this.documentView.getHtml() );
-}
+};
 
 /* Inheritance */
 

@@ -18,45 +18,12 @@ es.ParagraphBlockView = function( model ) {
 /* Methods */
 
 /**
- * Gets the offset of a position.
- * 
- * @method
- * @param position {es.Position} Position to translate
- * @returns {Integer} Offset nearest to position
- */
-es.ParagraphBlockView.prototype.getOffsetFromPosition = function( position ) {
-	return this.contentView.getOffset( position );
-};
-
-/**
  * Render content.
  * 
  * @method
  */
 es.ParagraphBlockView.prototype.renderContent = function() {
 	this.contentView.render();
-};
-
-/**
- * Gets offset within content of position.
- * 
- * @method
- * @param position {es.Position} Position to get offset for
- * @returns {Integer} Offset nearest to position
- */
-es.ParagraphBlockView.prototype.getContentOffset = function( position ) {
-	return this.contentView.getOffset( position );
-};
-
-/**
- * Gets rendered position of offset within content.
- * 
- * @method
- * @param offset {Integer} Offset to get position for
- * @returns {es.Position} Position of offset
- */
-es.ParagraphBlockView.prototype.getRenderedPosition = function( offset ) {
-	return this.contentView.getPosition( position );
 };
 
 /**
@@ -81,6 +48,28 @@ es.ParagraphBlockView.prototype.clearSelection = function( range ) {
  */
 es.ParagraphBlockView.prototype.getLength = function() {
 	return this.model.getContentLength();
+};
+
+/**
+ * Gets the offset of a position.
+ * 
+ * @method
+ * @param position {es.Position} Position to translate
+ * @returns {Integer} Offset nearest to position
+ */
+es.ParagraphBlockView.prototype.getOffsetFromPosition = function( position ) {
+	return this.contentView.getOffset( position );
+};
+
+/**
+ * Gets rendered position of offset within content.
+ * 
+ * @method
+ * @param offset {Integer} Offset to get position for
+ * @returns {es.Position} Position of offset
+ */
+es.ParagraphBlockView.prototype.getRenderedPosition = function( offset ) {
+	return this.contentView.getPosition( position );
 };
 
 /**

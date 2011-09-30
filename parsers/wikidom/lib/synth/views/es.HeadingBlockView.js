@@ -8,16 +8,18 @@ es.HeadingBlockView = function( model ) {
 	} );
 };
 
+/* Methods */
+
+es.HeadingBlockView.prototype.renderContent = function() {
+	this.contentView.render();
+};
+
 es.HeadingBlockView.prototype.drawSelection = function( range ) {
 	this.contentView.drawSelection( range );
 };
 
 es.HeadingBlockView.prototype.clearSelection = function( range ) {
 	this.contentView.clearSelection();
-};
-
-es.HeadingBlockView.prototype.renderContent = function() {
-	this.contentView.render();
 };
 
 es.HeadingBlockView.prototype.getLength = function() {
@@ -27,5 +29,7 @@ es.HeadingBlockView.prototype.getLength = function() {
 es.HeadingBlockView.prototype.getOffsetFromPosition = function( position ) {
 	return this.contentView.getOffset( position );
 };
+
+/* Inheritance */
 
 es.extend( es.HeadingBlockView, es.BlockView );

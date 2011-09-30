@@ -19,27 +19,14 @@ es.ListBlockView = function( model ) {
 /* Methods */
 
 /**
- * Gets the offset of a position.
+ * Render content.
  * 
  * @method
- * @param position {es.Position} Position to translate
- * @returns {Integer} Offset nearest to position
  */
-es.ListBlockView.prototype.getOffsetFromPosition = function( position ) {
-	if ( this.items.length === 0 ) {
-		return 0;
-	}
-	
-	var listItemView = this.items[0];
-
+es.ListBlockView.prototype.renderContent = function() {
 	for ( var i = 0; i < this.items.length; i++ ) {
-		if ( this.items[i].$.offset().top >= position.top ) {
-			break;
-		}
-		listItemView = this.items[i];
+		this.items[i].renderContent();
 	}
-	
-	return listItemView.list.items.offsetOf( listItemView ) + listItemView.getContentOffset( position );
 };
 
 /**
@@ -66,25 +53,37 @@ es.ListBlockView.prototype.clearSelection = function( range ) {
 };
 
 /**
- * Render content.
+ * Gets length of contents.
  * 
  * @method
+ * @returns {Integer} Length of content, including any virtual spaces within the block
  */
-es.ListBlockView.prototype.renderContent = function() {
-	for ( var i = 0; i < this.items.length; i++ ) {
-		this.items[i].renderContent();
-	}
+es.ListBlockView.prototype.getLength = function() {
+	return this.model.items.getLengthOfItems();
 };
 
 /**
- * Gets offset within content of position.
+ * Gets the offset of a position.
  * 
  * @method
- * @param position {es.Position} Position to get offset for
+ * @param position {es.Position} Position to translate
  * @returns {Integer} Offset nearest to position
  */
-es.ListBlockView.prototype.getContentOffset = function( position ) {
-	// TODO
+es.ListBlockView.prototype.getOffsetFromPosition = function( position ) {
+	if ( this.items.length === 0 ) {
+		return 0;
+	}
+	
+	var listItemView = this.items[0];
+
+	for ( var i = 0; i < this.items.length; i++ ) {
+		if ( this.items[i].$.offset().top >= position.top ) {
+			break;
+		}
+		listItemView = this.items[i];
+	}
+	
+	return listItemView.list.items.offsetOf( listItemView ) + listItemView.getOffsetFromPosition( position );
 };
 
 /**
@@ -96,16 +95,6 @@ es.ListBlockView.prototype.getContentOffset = function( position ) {
  */
 es.ListBlockView.prototype.getRenderedPosition = function( offset ) {
 	// TODO
-};
-
-/**
- * Gets length of contents.
- * 
- * @method
- * @returns {Integer} Length of content, including any virtual spaces within the block
- */
-es.ListBlockView.prototype.getLength = function() {
-	return this.model.items.getLengthOfItems();
 };
 
 /**

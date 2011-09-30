@@ -24,7 +24,6 @@ es.ListBlockItemView = function( model ) {
 
 /* Methods */
 
-
 /**
  * Render content.
  * 
@@ -32,28 +31,6 @@ es.ListBlockItemView = function( model ) {
  */
 es.ListBlockItemView.prototype.renderContent = function() {
 	this.contentView.render();
-};
-
-/**
- * Gets offset within content of position.
- * 
- * @method
- * @param position {es.Position} Position to get offset for
- * @returns {Integer} Offset nearest to position
- */
-es.ListBlockItemView.prototype.getContentOffset = function( position ) {
-	return this.contentView.getOffset( position );
-};
-
-/**
- * Gets rendered position of offset within content.
- * 
- * @method
- * @param offset {Integer} Offset to get position for
- * @returns {es.Position} Position of offset
- */
-es.ListBlockItemView.prototype.getRenderedPosition = function( offset ) {
-	return this.contentView.getPosition( position );
 };
 
 /**
@@ -81,6 +58,28 @@ es.ListBlockItemView.prototype.getLength = function() {
 };
 
 /**
+ * Gets offset within content of position.
+ * 
+ * @method
+ * @param position {es.Position} Position to get offset for
+ * @returns {Integer} Offset nearest to position
+ */
+es.ListBlockItemView.prototype.getOffsetFromPosition = function( position ) {
+	return this.contentView.getOffset( position );
+};
+
+/**
+ * Gets rendered position of offset within content.
+ * 
+ * @method
+ * @param offset {Integer} Offset to get position for
+ * @returns {es.Position} Position of offset
+ */
+es.ListBlockItemView.prototype.getRenderedPosition = function( offset ) {
+	return this.contentView.getPosition( position );
+};
+
+/**
  * Gets HTML rendering of block.
  * 
  * @method
@@ -93,7 +92,7 @@ es.ListBlockItemView.prototype.getHtml = function( options ) {
 		{ 'class': this.$.attr( 'class' ) },
 		this.contentView.getHtml()
 	);
-}
+};
 
 /**
  * Sets the number label of the item, used for unordered lists
