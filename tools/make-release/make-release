@@ -12,7 +12,7 @@ Example:
   ./make-release 1.13.0
 
 If the previous version is not given, it will be derived from the next version,
-and you will be prompted to confirm that the version number is correct. To 
+and you will be prompted to confirm that the version number is correct. To
 always answer "yes", use the --yes option.
 
 Use --no-previous to disable the diff to previous entirely.
@@ -25,7 +25,7 @@ def main():
 	except getopt.GetoptError, err:
 		print str(err)
 		dieUsage()
-	
+
 	snapshot = False
 	yes = False
 	noPrevious = False
@@ -42,7 +42,7 @@ def main():
 	# Snapshot release?
 	if snapshot:
 		makeRelease(
-				version = 'snapshot-' + time.strftime('%Y%m%d', time.gmtime()), 
+				version = 'snapshot-' + time.strftime('%Y%m%d', time.gmtime()),
 				branch = 'trunk',
 				dir = 'snapshots')
 		return
@@ -55,7 +55,7 @@ def main():
 	if decomposed == None:
 		print 'Invalid version number "%s"' % (args[0])
 		sys.exit(1)
-	
+
 	if len(args) >= 2:
 		# Given the previous version on the command line
 		makeRelease(
@@ -82,7 +82,7 @@ def main():
 		if not ask("Was %s the previous release?" % (decomposed['prevVersion'])):
 			print 'Please specify the correct previous release on the command line'
 			sys.exit(1)
-		
+
 		makeRelease(
 			version = args[0],
 			prevVersion = decomposed['prevVersion'],
@@ -114,7 +114,7 @@ def decomposeVersion(version):
 			ret['prevVersion'] = ret['major'] + '.' + newMinor
 			ret['prevBranch'] = 'tags/REL' + m.group(1) + '_' + m.group(2) + '_' + newMinor
 		return ret
-	
+
 	m = re.compile('(\d+)\.(\d+)\.(\d+)([A-Za-z]+)(\d+)$').match(version)
 	if m == None:
 		return None
@@ -164,11 +164,11 @@ def makePatch(patchFileName, dir1, dir2, type):
 	else:
 		print "Generating normal patch file..."
 		args.extend(['-x', 'messages', '-x', '*.png', '-x', '*.jpg', '-x', '*.xcf'])
-	
+
 	args.extend([dir1, dir2])
 	print ' '.join(args)
 	diffProc = subprocess.Popen(args, stdout = subprocess.PIPE)
-	gzipProc = subprocess.Popen(['gzip', '-9'], 
+	gzipProc = subprocess.Popen(['gzip', '-9'],
 		stdin = diffProc.stdout, stdout = patchFile)
 
 	diffStatus = diffProc.wait()
@@ -189,12 +189,12 @@ def makeRelease(version, branch, dir, prevVersion = None, prevBranch = None):
 
 	if not os.path.exists(dir):
 		os.mkdir(dir)
-	
+
 	package = 'mediawiki-' + version
 
 	# Export the target
 	export(branch, package)
-	
+
 	# Generate the .tar.gz file
 	outFile = open(dir + '/' + package + '.tar.gz', 'w')
 	tarProc = subprocess.Popen(['tar', '-c',
@@ -203,7 +203,7 @@ def makeRelease(version, branch, dir, prevVersion = None, prevBranch = None):
 		'--exclude', 'mediawiki-largesquare.xcf',
 		package ],
 		stdout = subprocess.PIPE)
-	gzipProc = subprocess.Popen(['gzip', '-9'], 
+	gzipProc = subprocess.Popen(['gzip', '-9'],
 		stdin = tarProc.stdout, stdout = outFile)
 
 	if tarProc.wait() != 0 or gzipProc.wait() != 0:
@@ -224,7 +224,7 @@ def makeRelease(version, branch, dir, prevVersion = None, prevBranch = None):
 			if (makePatch(dir + '/' +  i18nPatch, prevDir, package, 'i18n')):
 				outFiles.append(i18nPatch)
 				haveI18n = True
-	
+
 	# Sign
 	uploadFiles = []
 	for fileName in outFiles:
@@ -234,7 +234,7 @@ def makeRelease(version, branch, dir, prevVersion = None, prevBranch = None):
 			sys.exit(1)
 		uploadFiles.append(dir + '/' + fileName)
 		uploadFiles.append(dir + '/' + fileName + '.sig')
-	
+
 	# Generate upload tarball
 	args = ['tar', 'cf', '../uploads/upload-' + version + '.tar']
 	args.extend(uploadFiles)
@@ -242,7 +242,7 @@ def makeRelease(version, branch, dir, prevVersion = None, prevBranch = None):
 	if proc.wait() != 0:
 		print "Failed to generate upload.tar, exiting"
 		sys.exit(1)
-	
+
 	# Write email template
 	print
 	print "Full release notes:"
@@ -250,11 +250,11 @@ def makeRelease(version, branch, dir, prevVersion = None, prevBranch = None):
 	print
 	print
 	print '**********************************************************************'
-	
+
 	print 'Download:'
 	print 'http://download.wikimedia.org/mediawiki/' + dir + '/' + package + '.tar.gz'
 	print
-	
+
 	if prevVersion != None:
 		if haveI18n:
 			print "Patch to previous version (" + prevVersion + "), without interface text:"
@@ -264,7 +264,7 @@ def makeRelease(version, branch, dir, prevVersion = None, prevBranch = None):
 		else:
 			print "Patch to previous version (" + prevVersion + "):"
 			print 'http://download.wikimedia.org/mediawiki/' + dir + '/' + package + '.patch.gz'
-		print 
+		print
 
 	print 'GPG signatures:'
 	for fileName in outFiles:
