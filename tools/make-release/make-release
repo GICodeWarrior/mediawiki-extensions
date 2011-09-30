@@ -158,7 +158,7 @@ def exportExtension(branch, extension, dir):
 	print "Exporting extension %s into %s branch..." % (extension, branch)
 	proc = subprocess.Popen(['svn', 'export', '-q', '--force',
 		'svn+ssh://svn.wikimedia.org/svnroot/mediawiki/' + branch + '/extensions/' + extension,
-		dir + "/" extensions + "/" + extension
+		dir + "/extensions/" + extension
 	])
 	if proc.wait() != 0:
 		print "svn export failed, exiting"
