@@ -43,6 +43,18 @@ es.DocumentModel.isElement = function( offset ) {
 };
 
 /**
+ * Creates a document model from a plain object.
+ * 
+ * @static
+ * @method
+ * @param {Object} obj Object to create new document model from
+ * @returns {es.DocumentModel} Document model created from obj
+ */
+es.DocumentModel.newFromPlainObject = function( obj ) {
+	return new es.DocumentModel( es.DocumentModel.flattenPlainObjectNode( obj ) );
+};
+
+/**
  * Flatten a plain node object into a data array, recursively.
  * 
  * TODO: where do we document this whole structure - aka "WikiDom"?
@@ -98,7 +110,7 @@ es.DocumentModel.prototype.getData = function( range, deep ) {
  * 
  * @method
  * @param {es.DocumentModelNode} node Node to get offset of
- * @param {Boolean} deep Whether to scan recursively
+ * @param {Boolean} [deep=false] Whether to scan recursively
  * @param {es.DocumentModelNode} [from=this] Node to look within
  * @returns {Integer|false} Offset of node or null of node was not found
  */
@@ -127,7 +139,7 @@ es.DocumentModel.prototype.offsetOf = function( node, deep, from ) {
  * 
  * @method
  * @param {es.DocumentModelNode} node Node to get element object for
- * @param {Boolean} deep Whether to scan recursively
+ * @param {Boolean} [deep=false] Whether to scan recursively
  * @returns {Object|null} Element object
  */
 es.DocumentModel.prototype.getElement = function( node, deep ) {
@@ -143,7 +155,7 @@ es.DocumentModel.prototype.getElement = function( node, deep ) {
  * 
  * @method
  * @param {es.DocumentModelNode} node Node to get content data for
- * @param {Boolean} deep Whether to scan recursively
+ * @param {Boolean} [deep=false] Whether to scan recursively
  * @returns {Array|null} List of content and elements inside node or null if node is not found
  */
 es.DocumentModel.prototype.getContent = function( node, deep ) {
@@ -161,7 +173,7 @@ es.DocumentModel.prototype.getContent = function( node, deep ) {
  * @param {Array} data
  * @returns {es.Transaction}
  */
-es.DocumentModel.prototype.prepareInsert = function( offset, data ) {
+es.DocumentModel.prototype.prepareInsertion = function( offset, data ) {
 	//
 };
 
@@ -171,7 +183,7 @@ es.DocumentModel.prototype.prepareInsert = function( offset, data ) {
  * @param {es.Range} range
  * @returns {es.Transaction}
  */
-es.DocumentModel.prototype.prepareRemove = function( range ) {
+es.DocumentModel.prototype.prepareRemoval = function( range ) {
 	//
 };
 
@@ -179,7 +191,7 @@ es.DocumentModel.prototype.prepareRemove = function( range ) {
  * 
  * @returns {es.Transaction}
  */
-es.DocumentModel.prototype.prepareAnnotateContent = function( range, method, annotation ) {
+es.DocumentModel.prototype.prepareContentAnnotation = function( range, method, annotation ) {
 	//
 };
 
@@ -187,7 +199,7 @@ es.DocumentModel.prototype.prepareAnnotateContent = function( range, method, ann
  * 
  * @returns {es.Transaction}
  */
-es.DocumentModel.prototype.prepareAnnotateElement = function( index, method, annotation ) {
+es.DocumentModel.prototype.prepareElementAttributeChange = function( index, method, annotation ) {
 	//
 };
 
@@ -208,189 +220,3 @@ es.DocumentModel.prototype.rollback = function( transaction ) {
 /* Inheritance */
 
 es.extend( es.DocumentModel, es.DocumentModelNode );
-
-/*
- * SCRATCH CODE
- * 
-es.DocumentModel.prototype.toPlainObject = function() {
-	
-};
-
-es.DocumentModel.prototype.insertContent = function( offset, content ) {
-	this.data = this.data.slice( 0, offset ).concat( content ).concat( this.data.slice( offset ) );
-};
-
-es.DocumentModel.prototype.removeContent = function( range ) {
-	this.data.splice( range.start, range.end - range.start );
-};
-
-es.DocumentModel.prototype.annotateContent = function( range, annotations ) {
-	for ( var i = 0; i < annotations.length; i++ ) {
-		var annotation = annotations[i];
-		if ( annotation.action = 'add' ) {
-			// this.data[i][?]
-		} else if ( annotation.action = 'remove' ) {
-			// this.data[i][?]
-		}
-	}
-};
-
-es.DocumentModel.prototype.insertElement = function( offset, element ) {
-	this.data.splice( offset, 0, element );
-};
-
-es.DocumentModel.prototype.removeElement = function( offset ) {
-	this.data.splice( offset, 1 );
-};
-
-es.DocumentModel.prototype.annotateElement = function( offset, annotations ) {
-	for ( var i = 0; i < annotations.length; i++ ) {
-		var annotation = annotations[i];
-		if ( annotation.action = 'add' ) {
-			// this.data[i].annotations[?]
-		} else if ( annotation.action = 'remove' ) {
-			// this.data[i].annotations[?]
-		}
-	}
-};
-*/
-
-es.DocumentModel.newFromPlainObject = function( obj ) {
-	return new es.DocumentModel( es.DocumentModel.flattenPlainObjectNode( obj ) );
-};
-
-/*
- * Example of content data
- * 
- * Content data is an array made up of 3 kinds of values:
- * 		String: Plain text character
- * 		Array: Annotated character
- * 		Object: Opening or closing structural element
- */
-var data = [
- 	//  0 - Beginning of paragraph
- 	{ 'type': 'paragraph', 'node': {} },
-	//  1 - Plain content
-	'a',
-	//  2 - Annotated content
-	['b', { 'type': 'bold' }],
-	//  3 - Annotated content
-	['c', { 'type': 'italic' }],
-	//  4 - End of paragraph
-	{ 'type': '/paragraph', 'node': {} }
- 	//  5 - Beginning of table
-	{ 'type': 'table', 'node': {} },
- 	//  6 - Beginning of row
-	{ 'type': 'row', 'node': {} },
- 	//  7 - Beginning of cell
-	{ 'type': 'cell', 'node': {} },
- 	//  8 - Beginning of paragraph
-	{ 'type': 'paragraph', 'node': {} },
-	//  9 - Plain content
-	'a',
- 	// 10 - End of paragraph
-	{ 'type': '/paragraph', 'node': {} },
- 	// 11 - Beginning of list
-	{ 'type': 'list', 'node': {} },
- 	// 12 - Beginning of bullet list item
-	{ 'type': 'item', 'styles': ['bullet'], 'node': {} },
-	// 13 - Plain content
-	'a',
- 	// 14 - End of item
-	{ 'type': '/item', 'node': {} },
- 	// 15 - Beginning of nested bullet list item
-	{ 'type': 'item', 'styles': ['bullet', 'bullet'], 'node': {} },
-	// 16 - Plain content
-	'b',
- 	// 17 - End of item
-	{ 'type': '/item', 'node': {} },
- 	// 18 - Beginning of numbered list item
-	{ 'type': 'item', 'styles': ['number'], 'node': {} },
-	// 19 - Plain content
-	'c',
- 	// 20 - End of item
-	{ 'type': '/item', 'node': {} },
- 	// 21 - End of list
-	{ 'type': '/list', 'node': {} },
-	// 22 - End of cell
-	{ 'type': '/cell', 'node': {} }
-	// 23 - End of row
-	{ 'type': '/row', 'node': {} }
-	// 24 - End of table
-	{ 'type': '/table', 'node': {} }
- 	// 25 - Beginning of paragraph
-	{ 'type': 'paragraph', 'node': {} },
-	// 26 - Plain content
-	'a'
- 	// 27 - End of paragraph
-	{ 'type': '/paragraph', 'node': {} },
-];
-
-/*
- * Example of content tree
- * 
- * Content trees are kept in sync with content data, providing a mapping between a structured user
- * interface and a flat content model. They are made up of nodes which have some common properties:
- * 		type: Symbolic name of a block or sub-block component
- * 		length: Number of elements in content data between the element start and end
- * 		items: Information about the content between the element start and end
- */
-var tree = [
-	{
-		'type': 'paragraph',
-		'length': 5,
-		//'content': ['a', ['b', { 'type': 'bold' }], ['c', { 'type': 'italic' }]],
-	},
-	{
-		'type': 'table',
-		'length': 19,
-		'items': [
-			{
-				'type': 'row',
-				'length': 17,
-				'items': [
-					{
-						'type': 'cell',
-						'length': 15,
-						'items': {
-							{
-								'type': 'paragraph',
-								'length': 3
-								//'content': ['a']
-							},
-							{
-								'type': 'list',
-								'length': 12,
-								'items': [
-									{
-										'type': 'item',
-										'styles': ['bullet'],
-										'length': 3,
-										//'content': ['a']
-									},
-									{
-										'type': 'item',
-										'styles': ['bullet', 'bullet'],
-										'length': 3,
-										//'content': ['b']
-									},
-									{
-										'type': 'item',
-										'styles': ['number'],
-										'length': 3,
-										//'content': ['c']
-									}
-								]
-							}
-						}
-					}
-				]
-			}
-		]
-	},
-	{
-		'type': 'paragraph',
-		'length': 3,
-		//'content': ['a']
-	}
-];
