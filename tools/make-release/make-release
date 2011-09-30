@@ -16,8 +16,6 @@ and you will be prompted to confirm that the version number is correct. To
 always answer "yes", use the --yes option.
 
 Use --no-previous to disable the diff to previous entirely.
-
-BTW, SVN commit works for me even though Sam is having trouble.
 """
 	sys.exit(1)
 
