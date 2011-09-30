@@ -9,6 +9,9 @@
  * @param {Array} data Model data to initialize with, such as data from es.DocumentModel.getData()
  */
 es.DocumentModel = function( data ) {
+	// Inheritance
+	es.DocumentModelNode.call( this, length );
+	
 	this.data = $.isArray( data ) ? data : [];
 };
 
@@ -69,6 +72,16 @@ es.DocumentModel.flattenPlainObjectNode = function( obj ) {
 };
 
 /* Methods */
+
+/**
+ * Gets the length of all document content.
+ * 
+ * @method
+ * @returns {Integer} Length of document content
+ */
+es.DocumentModel.getContentLength = function() {
+	return this.data.length;
+};
 
 /**
  * Gets copy of the document data.
@@ -201,6 +214,10 @@ es.DocumentModel.prototype.commit = function( transaction ) {
 es.DocumentModel.prototype.rollback = function( transaction ) {
 	//
 };
+
+/* Inheritance */
+
+es.extend( es.DocumentModel, es.DocumentModelNode );
 
 /*
  * SCRATCH CODE

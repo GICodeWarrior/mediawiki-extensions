@@ -6,7 +6,7 @@
  */
 es.ParagraphModel = function( length ) {
 	// Inheritance
-	es.DocumentModelNode.call( length );
+	es.DocumentModelNode.call( this, length );
 };
 
 /* Inheritance */
