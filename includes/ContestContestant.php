@@ -14,6 +14,8 @@
  */
 class ContestContestant extends ContestDBObject {
 	
+	protected $contest = null;
+	
 	/**
 	 * Method to get an instance so methods that ought to be static,
 	 * but can't be due to PHP 5.2 not having LSB, can be called on
@@ -88,7 +90,7 @@ class ContestContestant extends ContestDBObject {
 		
 			'full_name' => 'str',
 			'user_name' => 'str',
-			'email_name' => 'str',
+			'email' => 'str',
 		
 			'country' => 'str',
 			'volunteer' => 'bool',
@@ -109,12 +111,38 @@ class ContestContestant extends ContestDBObject {
 		return array(
 			'full_name' => '',
 			'user_name' => '',
-			'email_name' => '',
+			'email' => '',
 		
 			'country' => '',
 			'volunteer' => false,
 			'wmf' => false
 		);
 	}
+	
+	/**
+	 * Gets the contest for this participant.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return Contest
+	 */
+	public function getContest() {
+		if ( is_null( $this->contest ) ) {
+			$this->contest = Contest::s()->selectRow( null, array( 'id' => $this->getField( 'contest_id' ) ) );
+		}
+		
+		return $this->contest;
+	}
+	
+	/**
+	 * Sets the contest for this participant.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param Contest $contest
+	 */
+	public function setContest( Contest $contest ) {
+		$this->contest = $contest;
+	} 
 	
 }

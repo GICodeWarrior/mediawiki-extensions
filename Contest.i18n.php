@@ -105,6 +105,11 @@ $messages['en'] = array(
 	'contest-signup-readrules' => 'I confirm that I have read, and agree to, [[$1|the contest rules]]',
 	'contest-signup-challange' => 'What challange do you want to take on?',
 
+	// Special:ContestSubmission
+	'contest-submission-submit' => 'Submit',
+	'contest-submission-unknown' => 'There is no contest with the provided name.',
+	'contest-submission-header' => 'On this page you can modify your submission untill the deadline.',
+
 	// Special:Contest
 	'contest-contest-title' => 'Contest: $1',
 	'contest-contest-no-results' => 'There are no contestants to list.',
