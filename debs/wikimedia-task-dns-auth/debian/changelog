@@ -1,4 +1,4 @@
-wikimedia-task-dns-auth (0.16) hardy; urgency=low
+wikimedia-task-dns-auth (0.16) hardy-wikimedia; urgency=low
 
   * Support for multiple langlists
 
