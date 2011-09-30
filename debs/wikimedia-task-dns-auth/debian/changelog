@@ -1,3 +1,9 @@
+wikimedia-task-dns-auth (0.16) hardy; urgency=low
+
+  * Support for multiple langlists
+
+ -- Ryan Lane <rlane@wikimedia.org>  Fri, 30 Sep 2011 14:51:32 +0000
+
 wikimedia-task-dns-auth (0.15) hardy; urgency=low
 
   * svn integration in authdns-update
