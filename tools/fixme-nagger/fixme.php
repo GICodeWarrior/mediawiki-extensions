@@ -121,6 +121,10 @@ class NagFixme extends Maintenance {
 	}
 
 	public function sendMail($author, $revs) {
+		global $conf;
+		if( !isset( $conf['subject'] ) ) {
+			exit("No email subject given in .ini file. Not sending any email.\n");
+		}
 		$user = $this->getUserinfo($author);
 
 		$commits = " Rev #: Commit message\n";
@@ -137,7 +141,7 @@ class NagFixme extends Maintenance {
 				echo "Would email $user[email] from " . $this->fromAddy. "\n";
 				echo $msg;
 			} else {
-				mail( $user['email'], "Please fix your FIXMEs", $msg, false, "-f " . $this->fromAddy );
+				mail( $user['email'], $conf['subject'], $msg, false, "-f " . $this->fromAddy );
 			}
 		}
 	}
