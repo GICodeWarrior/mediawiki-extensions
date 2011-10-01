@@ -104,12 +104,13 @@ $messages['en'] = array(
 	'contest-signup-wmf' => 'I am interested in working for the Wikimedia Foundation',
 	'contest-signup-readrules' => 'I confirm that I have read, and agree to, [[$1|the contest rules]]',
 	'contest-signup-challange' => 'What challange do you want to take on?',
+	'contest-signup-finished' => 'This contest has ended.',
 
 	// Special:ContestSubmission
 	'contest-submission-submit' => 'Submit',
 	'contest-submission-unknown' => 'There is no contest with the provided name.',
 	'contest-submission-header' => 'On this page you can modify your submission untill the deadline.',
-	'contest-signup-finished' => 'This contest has ended.',
+	'contest-submission-finished' => 'This contest has ended.',
 
 	// Special:Contest
 	'contest-contest-title' => 'Contest: $1',
