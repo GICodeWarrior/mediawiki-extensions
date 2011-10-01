@@ -91,7 +91,7 @@ class SpecialContestSubmission extends SpecialContestPage {
 		);
 		
 		if ( $contestant === false ) {
-			$out->redirect( SpecialPage::getTitleFor( 'ContestSignup', $contestName )->getLocalURL() );
+			$out->redirect( SpecialPage::getTitleFor( 'ContestSignup', $contest->getField( 'name' ) )->getLocalURL() );
 		}
 		else {
 			$contestant->setContest( $contest );
