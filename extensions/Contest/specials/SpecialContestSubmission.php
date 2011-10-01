@@ -63,23 +63,39 @@ class SpecialContestSubmission extends SpecialContestPage {
 			$out->returnToMain();
 		}
 		else {
-			// Check if the user is already a contestant in this contest.
-			// If he is, reirect to submission page, else show signup form.
-			$contestant = ContestContestant::s()->selectRow(
-				'id',
-				array(
-					'contest_id' => $contest->getId(),
-					'user_id' => $this->getUser()->getId()
-				)
-			);
-			
-			if ( $contestant === false ) {
-				$out->redirect( SpecialPage::getTitleFor( 'ContestSignup', $contestName )->getLocalURL() );
+			switch ( $contest->getField( 'status' ) ) {
+				case Contest::STATUS_ACTIVE:
+					$this->handleEnabledPage( $contest );	
+					break;
+				case Contest::STATUS_DRAFT:
+					// TODO	
+					break;
+				case Contest::STATUS_FINISHED:
+					$this->showWarning( 'contest-submission-finished' );
+					$out->addHTML( '<br /><br /><br /><br />' );
+					$out->returnToMain();	
+					break;
 			}
-			else {
-				$contestant->setContest( $contest );
-				$this->showPage( $contestant );
-			}
+		}
+	}
+	
+	protected function handleEnabledPage( Contest $contest ) {
+		// Check if the user is already a contestant in this contest.
+		// If he is, reirect to submission page, else show signup form.
+		$contestant = ContestContestant::s()->selectRow(
+			'id',
+			array(
+				'contest_id' => $contest->getId(),
+				'user_id' => $this->getUser()->getId()
+			)
+		);
+		
+		if ( $contestant === false ) {
+			$out->redirect( SpecialPage::getTitleFor( 'ContestSignup', $contestName )->getLocalURL() );
+		}
+		else {
+			$contestant->setContest( $contest );
+			$this->showPage( $contestant );
 		}
 	}
 	
