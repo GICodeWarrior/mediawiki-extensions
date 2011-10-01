@@ -110,11 +110,13 @@ es.DocumentModel.flattenPlainObjectContentNode = function( obj ) {
 				}
 				// Apply annotation to range
 				if ( src.start < 0 ) {
-					// TODO: This is invalid data! Throw error?
+					// TODO: The start can not be lower than 0! Throw error?
+					// Clamp start value
 					src.start = 0;
 				}
 				if ( src.end > data.length ) {
-					// TODO: This is invalid data! Throw error?
+					// TODO: The end can not be higher than the length! Throw error?
+					// Clamp end value
 					src.end = data.length;
 				}
 				for ( var i = src.start; i < src.end; i++ ) {
