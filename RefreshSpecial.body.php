@@ -120,7 +120,7 @@ class RefreshSpecialForm {
 				$checked = 'checked="checked"';
 				$wgOut->addHTML("\t\t\t\t\t<li>
 						<input type=\"checkbox\" name=\"wpSpecial[]\" value=\"$special\" $checked />
-						<b>$special</b>
+						<b>"  . wfMsg($special) . "</b>
 					</li>\n");
 			}
 		}
