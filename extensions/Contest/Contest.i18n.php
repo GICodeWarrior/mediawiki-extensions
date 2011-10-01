@@ -109,6 +109,7 @@ $messages['en'] = array(
 	'contest-submission-submit' => 'Submit',
 	'contest-submission-unknown' => 'There is no contest with the provided name.',
 	'contest-submission-header' => 'On this page you can modify your submission untill the deadline.',
+	'contest-signup-finished' => 'This contest has ended.',
 
 	// Special:Contest
 	'contest-contest-title' => 'Contest: $1',
