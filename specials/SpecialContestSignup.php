@@ -124,7 +124,7 @@ class SpecialContestSignup extends SpecialContestPage {
 			$this->showSignupForm( $contest );
 		}
 		else {
-			$out->redirect( SpecialPage::getTitleFor( 'ContestSubmission', $contestName )->getLocalURL() );
+			$out->redirect( SpecialPage::getTitleFor( 'ContestSubmission', $contest->getField( 'name' ) )->getLocalURL() );
 		}		
 	}
 	

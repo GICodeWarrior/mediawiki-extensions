@@ -137,7 +137,10 @@ class SpecialEditContest extends FormSpecialPage {
 		$form->addButton(
 			'cancelEdit',
 			wfMsg( 'cancel' ),
-			'cancelEdit'
+			'cancelEdit',
+			array(
+				'onclick' => 'window.location="' . SpecialPage::getTitleFor( 'Contests' )->getFullURL() . '";return false;'
+			)
 		);
 		
 //		$form->addButton(
