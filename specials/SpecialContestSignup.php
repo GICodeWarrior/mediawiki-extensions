@@ -56,6 +56,7 @@ class SpecialContestSignup extends SpecialContestPage {
 		
 		$user->setEmail( $data['contestant-email'] );
 		$user->setRealName( $data['contestant-realname'] );
+		$user->saveSettings();
 		
 		$contestant = new ContestContestant( array(
 			'contest_id' => $data['contest-id'],
@@ -103,6 +104,13 @@ class SpecialContestSignup extends SpecialContestPage {
 		}
 	}
 	
+	/**
+	 * Handle page request when the contest is enabled.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param Contest $contest
+	 */
 	protected function showEnabledPage( Contest $contest ) {
 		$out = $this->getOutput();
 		
@@ -191,6 +199,13 @@ class SpecialContestSignup extends SpecialContestPage {
 			'label-message' => 'contest-signup-email',
 			'required' => true,
 			'validation-callback' => array( __CLASS__, 'validateEmailField' )
+		);
+		
+		$fields['contestant-country'] = array(
+			'type' => 'select',
+			'label-message' => 'contest-signup-country',
+			'required' => true,
+			'options' => ContestContestant::getCountriesForInput()
 		);
 		
 		$fields['contestant-challangeid'] = array(
