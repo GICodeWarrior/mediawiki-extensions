@@ -151,10 +151,16 @@ class ContestContestant extends ContestDBObject {
 	 * 
 	 * @since 0.1
 	 * 
+	 * @param booolean $addEmptyItem
+	 * 
 	 * @return array
 	 */
-	public static function getCountriesForInput() {
+	public static function getCountriesForInput( $addEmptyItem = false ) {
 		$countries = array();
+		
+		if ( $addEmptyItem ) {
+			$countries[''] = '';
+		}
 		
 		foreach ( self::getCountries() as $code => $name ) {
 			$countries["$code - $name"] = $code;

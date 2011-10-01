@@ -63,6 +63,8 @@ class SpecialContestSignup extends SpecialContestPage {
 			'user_id' => $user->getId(),
 			'challange_id' => $data['contestant-challangeid'],
 		
+			'country' => $data['contestant-country'],
+		
 			'volunteer' => $data['contestant-volunteer'],
 			'wmf' => $data['contestant-wmf'],
 		) );
@@ -205,7 +207,8 @@ class SpecialContestSignup extends SpecialContestPage {
 			'type' => 'select',
 			'label-message' => 'contest-signup-country',
 			'required' => true,
-			'options' => ContestContestant::getCountriesForInput()
+			'options' => ContestContestant::getCountriesForInput( true ),
+			'validation-callback' => array( __CLASS__, 'validateCountryField' )
 		);
 		
 		$fields['contestant-challangeid'] = array(
@@ -285,4 +288,17 @@ class SpecialContestSignup extends SpecialContestPage {
 		return Sanitizer::validateEmail( $value );
 	}
 	
+	/**
+	 * HTMLForm field validation-callback for country field.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param $value String
+	 * @param $alldata Array
+	 * 
+	 * @return true|string
+	 */
+	public static function validateCountryField( $value, $alldata = null ) {
+		return $value !== '';
+	}
 }

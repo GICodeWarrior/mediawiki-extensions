@@ -90,7 +90,7 @@ class SpecialContestSubmission extends SpecialContestPage {
 		// Check if the user is already a contestant in this contest.
 		// If he is, reirect to submission page, else show signup form.
 		$contestant = ContestContestant::s()->selectRow(
-			'id',
+			null,
 			array(
 				'contest_id' => $contest->getId(),
 				'user_id' => $this->getUser()->getId()
@@ -145,6 +145,8 @@ class SpecialContestSubmission extends SpecialContestPage {
 		$contestant = new ContestContestant( array(
 			'id' => $data['contestant-id'],
 		
+			'country' => $data['contestant-country'],
+		
 			'volunteer' => $data['contestant-volunteer'],
 			'wmf' => $data['contestant-wmf'],
 		) );
@@ -188,6 +190,7 @@ class SpecialContestSubmission extends SpecialContestPage {
 		
 		$fields['contestant-country'] = array(
 			'type' => 'select',
+			'default' => $contestant->getField( 'country' ),
 			'label-message' => 'contest-signup-country',
 			'required' => true,
 			'options' => ContestContestant::getCountriesForInput()
@@ -195,13 +198,13 @@ class SpecialContestSubmission extends SpecialContestPage {
 		
 		$fields['contestant-volunteer'] = array(
 			'type' => 'check',
-			'default' => '0',
+			'default' => $contestant->getField( 'volunteer' ),
 			'label-message' => 'contest-signup-volunteer',
 		);
 		
 		$fields['contestant-wmf'] = array(
 			'type' => 'check',
-			'default' => '0',
+			'default' => $contestant->getField( 'wmf' ),
 			'label-message' => 'contest-signup-wmf',
 		);
 		
