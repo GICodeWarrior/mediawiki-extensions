@@ -94,7 +94,7 @@ $messages['en'] = array(
 	// Special:ContestWelcome
 	'contest-welcome-unknown' => 'There is no contest with the provided name.',
 
-	// Special:ContestSignup
+	// Special:ContestSignup & Special:ContestSubmission
 	'contest-signup-unknown' => 'There is no contest with the provided name.',
 	'contest-signup-submit' => 'Signup',
 	'contest-signup-header' => 'Please fill out the form to complete your registration for $1.',
@@ -105,11 +105,12 @@ $messages['en'] = array(
 	'contest-signup-readrules' => 'I confirm that I have read, and agree to, [[$1|the contest rules]]',
 	'contest-signup-challange' => 'What challange do you want to take on?',
 	'contest-signup-finished' => 'This contest has ended.',
+	'contest-signup-country' => 'Your country',
 
 	// Special:ContestSubmission
 	'contest-submission-submit' => 'Submit',
 	'contest-submission-unknown' => 'There is no contest with the provided name.',
-	'contest-submission-header' => 'On this page you can modify your submission untill the deadline.',
+	'contest-submission-header' => 'On this page you can modify your submission until the deadline.',
 	'contest-submission-finished' => 'This contest has ended.',
 
 	// Special:Contest

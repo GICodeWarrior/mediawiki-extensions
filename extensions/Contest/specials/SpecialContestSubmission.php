@@ -46,7 +46,7 @@ class SpecialContestSubmission extends SpecialContestPage {
 	}
 	
 	/**
-	 * 
+	 * Handle view requests for the page.
 	 * 
 	 * @since 0.1
 	 * 
@@ -79,6 +79,13 @@ class SpecialContestSubmission extends SpecialContestPage {
 		}
 	}
 	
+	/**
+	 * Handle page request when the contest is enabled.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param Contest $contest
+	 */
 	protected function handleEnabledPage( Contest $contest ) {
 		// Check if the user is already a contestant in this contest.
 		// If he is, reirect to submission page, else show signup form.
@@ -99,6 +106,13 @@ class SpecialContestSubmission extends SpecialContestPage {
 		}
 	}
 	
+	/**
+	 * Show the page content.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param ContestContestant $contestant
+	 */
 	protected function showPage( ContestContestant $contestant ) {
 		$this->getOutput()->setPageTitle( $contestant->getContest()->getField( 'name' ) );
 		$this->getOutput()->addWikiMsg( 'contest-submission-header', $contestant->getContest()->getField( 'name' ) );
@@ -126,6 +140,7 @@ class SpecialContestSubmission extends SpecialContestPage {
 		
 		$user->setEmail( $data['contestant-email'] );
 		$user->setRealName( $data['contestant-realname'] );
+		$user->saveSettings();
 		
 		$contestant = new ContestContestant( array(
 			'id' => $data['contestant-id'],
@@ -169,6 +184,13 @@ class SpecialContestSubmission extends SpecialContestPage {
 			'label-message' => 'contest-signup-email',
 			'required' => true,
 			'validation-callback' => array( __CLASS__, 'validateEmailField' )
+		);
+		
+		$fields['contestant-country'] = array(
+			'type' => 'select',
+			'label-message' => 'contest-signup-country',
+			'required' => true,
+			'options' => ContestContestant::getCountriesForInput()
 		);
 		
 		$fields['contestant-volunteer'] = array(

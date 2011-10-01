@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS /*_*/contest_contestants (
   contestant_email             TINYBLOB            NOT NULL, -- Email of the contestant
   
   -- Extra contestant info
-  contestant_country           VARCHAR(255)        NOT NULL, -- Country of the contestant
+  contestant_country           VARCHAR(255)        NOT NULL, -- Country code of the contestant
   contestant_volunteer         TINYINT unsigned    NOT NULL, -- If the user is interested in voluneer oportunities
   contestant_wmf               TINYINT unsigned    NOT NULL, -- If the user is interested in a WMF job
   
