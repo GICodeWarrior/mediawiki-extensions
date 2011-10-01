@@ -7,12 +7,15 @@
  * @class
  * @constructor
  * @param {Array} data Model data to initialize with, such as data from es.DocumentModel.getData()
+ * @param {Object} attributes Document attributes
  */
-es.DocumentModel = function( data ) {
+es.DocumentModel = function( data, attributes ) {
 	// Inheritance
 	es.DocumentModelNode.call( this, length );
 	
+	// Properties
 	this.data = $.isArray( data ) ? data : [];
+	this.attributes = $.isPlainObject( attributes ) ? attributes : {};
 };
 
 /* Static Methods */
@@ -51,9 +54,16 @@ es.DocumentModel.isElement = function( offset ) {
  * @returns {es.DocumentModel} Document model created from obj
  */
 es.DocumentModel.newFromPlainObject = function( obj ) {
-	return new es.DocumentModel( es.DocumentModel.flattenPlainObjectElementNode( obj ) );
+	if ( obj.type === 'document' ) {
+		var data = [],
+			attributes = $.isPlainObject( obj.attributes ) ? es.copyObject( obj.attributes ) : {};
+		for ( var i = 0; i < obj.children.length; i++ ) {
+			data = data.concat( es.DocumentModel.flattenPlainObjectElementNode( obj.children[i] ) );
+		}
+		return new es.DocumentModel( data, attributes );
+	}
+	throw 'Invalid object error. Object is not a valid document object.';
 };
-
 
 /**
  * Creates an es.ContentModel object from a plain content object.

@@ -120,8 +120,6 @@ var obj = {
  */
 var data = [
  	//  0 - Beginning of paragraph
- 	{ 'type': 'document' },
- 	//  0 - Beginning of paragraph
  	{ 'type': 'paragraph' },
 	//  1 - Plain content
 	'a',
@@ -176,9 +174,7 @@ var data = [
 	// 26 - Plain content
 	'a',
  	// 27 - End of paragraph
-	{ 'type': '/paragraph' },
- 	// 27 - End of paragraph
-	{ 'type': '/document' }
+	{ 'type': '/paragraph' }
 ];
 
 test( 'es.ModelNode', function() {
