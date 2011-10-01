@@ -87,27 +87,45 @@ class SpecialContestSignup extends SpecialContestPage {
 			$out->returnToMain();
 		}
 		else {
-			// Check if the user is already a contestant in this contest.
-			// If he is, reirect to submission page, else show signup form.
-			$contestant = ContestContestant::s()->selectRow(
-				'id',
-				array(
-					'contest_id' => $contest->getId(),
-					'user_id' => $this->getUser()->getId()
-				)
-			);
-			
-			if ( $contestant === false ) {
-				// TODO: we might want to have a title field here
-				$out->setPageTitle( $contest->getField( 'name' ) );
-				$out->addWikiMsg( 'contest-signup-header', $contest->getField( 'name' ) );
-				
-				$this->showSignupForm( $contest );
-			}
-			else {
-				$out->redirect( SpecialPage::getTitleFor( 'ContestSubmission', $contestName )->getLocalURL() );
+			switch ( $contest->getField( 'status' ) ) {
+				case Contest::STATUS_ACTIVE:
+					$this->showEnabledPage( $contest );	
+					break;
+				case Contest::STATUS_DRAFT:
+					// TODO	
+					break;
+				case Contest::STATUS_FINISHED:
+					$this->showWarning( 'contest-signup-finished' );
+					$out->addHTML( '<br /><br /><br /><br />' );
+					$out->returnToMain();	
+					break;
 			}
 		}
+	}
+	
+	protected function showEnabledPage( Contest $contest ) {
+		$out = $this->getOutput();
+		
+		// Check if the user is already a contestant in this contest.
+		// If he is, reirect to submission page, else show signup form.
+		$contestant = ContestContestant::s()->selectRow(
+			'id',
+			array(
+				'contest_id' => $contest->getId(),
+				'user_id' => $this->getUser()->getId()
+			)
+		);
+		
+		if ( $contestant === false ) {
+			// TODO: we might want to have a title field here
+			$out->setPageTitle( $contest->getField( 'name' ) );
+			$out->addWikiMsg( 'contest-signup-header', $contest->getField( 'name' ) );
+			
+			$this->showSignupForm( $contest );
+		}
+		else {
+			$out->redirect( SpecialPage::getTitleFor( 'ContestSubmission', $contestName )->getLocalURL() );
+		}		
 	}
 	
 	/**
