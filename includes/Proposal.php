@@ -8,17 +8,17 @@
 * @author Andreas Fay, University of Heidelberg
 * @version 1.0
 */
- include_once("exceptions/InvalidAttributeException.php");
- 
- class Proposal {
- 	
- 	/**
+include_once("exceptions/InvalidAttributeException.php");
+
+class Proposal {
+	
+	/**
 	* Attribute name for search
-	*
+		*
 	* @var string 
 	*/
 	private $_attribute;
-
+	
 	/**
 	* Constructor
 	*
@@ -30,33 +30,35 @@
 		$this->_attribute = $attribute;
 	}
 	
- 	/**
-	 * Gets the available proposals computed with wildcard %
-	 *
-	 * @return array Array of attributes
-	 */
+	/**
+	* Gets the available proposals computed with wildcard %
+	*
+	* @return array Array of attributes
+	*/
 	public function getProposalWithWildcard() {
 		$dbr =& wfGetDB( DB_SLAVE );
 		
 		$attribute = $this->getAttribute();
 		
 		// Search with wildcard '%'
-		if (!($res = mysql_query("SELECT smw_id, smw_title
-							FROM ".$dbr->tableName("smw_ids")."
-							WHERE smw_namespace = 102
-							AND LENGTH(smw_iw) = 0
-							AND smw_title LIKE '%".mysql_real_escape_string($attribute)."%'"))) {
-			
-			throw new SQLException();
-		}
+		$res = $dbr->query("SELECT smw_id, smw_title
+					FROM ".$dbr->tableName("smw_ids")."
+					WHERE smw_namespace = 102
+					AND LENGTH(smw_iw) = 0
+					AND smw_title LIKE '%".mysql_real_escape_string($attribute)."%'");
 		
 		$attributes = array();
 		
-		while ($row = mysql_fetch_assoc($res)) {
+		while ($row = $res->fetchRow()) {
 			$attributes[] = $row['smw_title'];		
 		}
 		
-		mysql_free_result($res);
+		// Category
+		if (strpos(wfMsg("categoryname"), $attribute) !== false) {
+			$attributes[] = sprintf("%s", wfMsg("categoryname"));
+		}
+		
+		$res->free();
 		return $attributes;
 	}
 	
@@ -73,41 +75,45 @@
 		$endAttribut = substr ($attribute,strlen($attribute)-2,strlen($attribute));
 		
 		// Search with regexp for related attributes with the same beginning 
-		if (!($res = mysql_query("SELECT smw_id, smw_title
-							FROM ".$dbr->tableName("smw_ids")."
-							WHERE smw_namespace = 102
-							AND LENGTH(smw_iw) = 0
-							AND smw_title REGEXP '^".$beginAttribut."'"))) {
-			
-			throw new SQLException();
-		}
+		$res = $dbr->query("SELECT smw_id, smw_title
+					FROM ".$dbr->tableName("smw_ids")."
+					WHERE smw_namespace = 102
+					AND LENGTH(smw_iw) = 0
+					AND smw_title REGEXP '^".$beginAttribut."'");
 		
 		$attributes_1 = array();
 		
-		while ($row = mysql_fetch_assoc($res)) {
+		while ($row = $res->fetchRow()) {
 			$attributes_1[] = $row['smw_title'];		
 		}
 		
-		// Search with regexp for related attributes with the same ending 
-		if (!($res = mysql_query("SELECT smw_id, smw_title
-							FROM ".$dbr->tableName("smw_ids")."
-							WHERE smw_namespace = 102
-							AND LENGTH(smw_iw) = 0
-							AND smw_title REGEXP '".$endAttribut."$'"))) {
-			
-			throw new SQLException();
+		// Category
+		if (strpos(wfMsg("categoryname"), $attribute) === 0) {
+			$attributes_1[] = sprintf("%s", wfMsg("categoryname"));
 		}
+		
+		// Search with regexp for related attributes with the same ending 
+		$res = $dbr->query("SELECT smw_id, smw_title
+					FROM ".$dbr->tableName("smw_ids")."
+					WHERE smw_namespace = 102
+					AND LENGTH(smw_iw) = 0
+					AND smw_title REGEXP '".$endAttribut."$'");
 		
 		$attributes_2 = array();
 		
-		while ($row = mysql_fetch_assoc($res)) {
+		while ($row = $res->fetchRow()) {
 			$attributes_2[] = $row['smw_title'];		
+		}
+		
+		// Category
+		if (strpos(wfMsg("categoryname"), $attribute) === strlen(wfMsg("categoryname")) - strlen($attribute)) {
+			$attributes_2[] = sprintf("%s", wfMsg("categoryname"));
 		}
 		
 		// Merge both arrays for one return
 		$attributes = array_merge($attributes_1, $attributes_2);
 		
-		mysql_free_result($res);
+		$res->free();
 		return $attributes;
 	}
 	
@@ -129,25 +135,27 @@
 		$endAttribut = substr ($attribute,strlen($attribute)-2,strlen($attribute));
 		
 		// Search for related attributes and attributes with the same beginning or ending 
-		if (!($res = mysql_query("SELECT DISTINCT smw_title
-							FROM ".$dbr->tableName("smw_ids")."
-							WHERE smw_namespace = 102
-							AND LENGTH(smw_iw) = 0
-							AND ((smw_title REGEXP '^".$beginAttribut."')
-							OR (smw_title REGEXP '".$endAttribut."$')
-							OR (smw_title LIKE '%".mysql_real_escape_string($attribute)."%'))
-							ORDER BY smw_title asc"))) {
-			
-			throw new SQLException();
-		}
+		$res = $dbr->query("SELECT DISTINCT smw_title
+					FROM ".$dbr->tableName("smw_ids")."
+					WHERE smw_namespace = 102
+					AND LENGTH(smw_iw) = 0
+					AND ((smw_title REGEXP '^".$beginAttribut."')
+					OR (smw_title REGEXP '".$endAttribut."$')
+					OR (smw_title LIKE '%".mysql_real_escape_string($attribute)."%'))
+					ORDER BY smw_title asc");
 		
 		$attributes = array();
 		
-		while ($row = mysql_fetch_assoc($res)) {
+		while ($row = $res->fetchRow()) {
 			$attributes[] = $row['smw_title'];		
 		}
 		
-		mysql_free_result($res);
+		// Category
+		if (strpos(wfMsg("categoryname"), $beginAttribut) === 0 || strpos(wfMsg("categoryname"), $endAttribut) === strlen(wfMsg("categoryname")) - strlen($endAttribut) || strpos(wfMsg("categoryname"), $attribute) !== false) {
+			$attributes[] = sprintf("%s", wfMsg("categoryname"));
+		}
+		
+		$res->free();
 		return $attributes;
 	}
 	
@@ -161,4 +169,3 @@
 	}
 }
 
-?>

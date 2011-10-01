@@ -110,5 +110,3 @@ class FrequentPatternRule {
 		$this->_confidence = $confidence;
 	}
 }
-
-?>

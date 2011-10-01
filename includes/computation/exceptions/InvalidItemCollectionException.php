@@ -20,5 +20,3 @@ class InvalidItemCollectionException extends Exception {
 		parent::__construct("Item collection must not be empty.");
 	}
 }
-
-?>

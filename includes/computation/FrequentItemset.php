@@ -66,5 +66,3 @@ class FrequentItemset {
 		$this->_support = $support;
 	}
 }
-
-?>

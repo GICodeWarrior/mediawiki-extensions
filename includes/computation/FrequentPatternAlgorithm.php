@@ -140,5 +140,3 @@ abstract class FrequentPatternAlgorithm {
 		return $rules;
 	}
 }
-
-?>
