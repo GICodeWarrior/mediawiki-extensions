@@ -63,10 +63,6 @@ class SpecialEditContest extends FormSpecialPage {
 		// This will throw exceptions if there's a problem
 		$this->userCanExecute( $this->getUser() );
 		
-		$this->getOutput()->addHTML(
-			SpecialContestPage::getNavigation( $subPage, $this->getUser(), $this->getLang(), $this->getName() )
-		);
-		
 		if ( $this->getRequest()->wasPosted() && $this->getUser()->matchEditToken( $this->getRequest()->getVal( 'wpEditToken' ) ) ) {
 			$this->showForm();
 		}
@@ -97,7 +93,9 @@ class SpecialEditContest extends FormSpecialPage {
 	 * @param string $subPage
 	 */
 	protected function showContent( $subPage ) {
-		if ( $this->getRequest()->wasPosted() && $this->getUser()->matchEditToken( $this->getRequest()->getVal( 'newEditToken' ) ) ) {
+		$isNew = $this->getRequest()->wasPosted() && $this->getUser()->matchEditToken( $this->getRequest()->getVal( 'newEditToken' ) );
+		
+		if ( $isNew ) {
 			$data = array( 'name' => $this->getRequest()->getVal( 'newcontest' ) );
 			
 			$contest = Contest::s()->selectRow( null, $data );
@@ -117,6 +115,12 @@ class SpecialEditContest extends FormSpecialPage {
 			$this->getOutput()->redirect( SpecialPage::getTitleFor( 'Contests' )->getLocalURL() );
 		}
 		else {
+			if ( !$isNew ) {
+				$this->getOutput()->addHTML(
+					SpecialContestPage::getNavigation( $contest->getField( 'name' ), $this->getUser(), $this->getLang(), $this->getName() )
+				);
+			}
+			
 			$this->contest = $contest;
 			$this->showForm();
 			$this->getOutput()->addModules( 'contest.special.contest' );
