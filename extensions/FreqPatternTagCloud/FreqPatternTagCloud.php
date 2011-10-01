@@ -39,12 +39,6 @@ $wgExtensionCredits['specialpage'][] = array(
 		'version' => '1.0'
 		);
 
-// Register hook to create new database to store frequent pattern information
-$wgHooks['LoadExtensionSchemaUpdates'][] = 'fptc_updateSchema';
-
-// Register hook to initialize frequent pattern database
-$wgHooks['LoadExtensionSchemaUpdates'][] = 'fptc_initializeRules';
-
 // Register hook to prepare header files
 $wgHooks['BeforePageDisplay'][] = 'fptc_initializeHeaders';
 
@@ -63,19 +57,6 @@ $wgAjaxExportList[] = 'FreqPatternTagCloud::getSearchSuggestions';
 $wgAjaxExportList[] = 'FreqPatternTagCloud::getSuggestions';
 
 include_once(FPTC_PATH_INCLUDES."FrequentPattern.php");
-
-
-/**
- * Initializes frequent pattern rules
- *
- * @return bool Success
- */
-function fptc_initializeRules() {
-	FrequentPattern::deleteAllRules();
-	FrequentPattern::computeAllRules();
-	
-	return true;
-}
 
 
 /**
@@ -135,36 +116,3 @@ function fptc_initializeHeaders() {
 	
 	return true;
 }
-
-
-/**
- * Creates database schema
- *
- * @return bool Success
- */
-function fptc_updateSchema() {
-	$dbr =& wfGetDB( DB_SLAVE );
-	
-	if (!(mysql_query("CREATE TABLE IF NOT EXISTS `".$dbr->tableName("fptc_associationrules")."` (
-						`rule_id` int(11) NOT NULL auto_increment,
-						`p_id` int(8) NOT NULL COMMENT 'Attribute',
-						`rule_support` float(5,3) NOT NULL,
-						`rule_confidence` float(5,3) NOT NULL,
-						PRIMARY KEY  (`rule_id`)
-						);
-						ALTER TABLE `fptc_associationrules` ADD INDEX ( `p_id` );"))) {
-		throw new SQLException();
-	}
-	if (!(mysql_query("CREATE TABLE IF NOT EXISTS `".$dbr->tableName("fptc_items")."` (
-						`o_id` INT( 8 ) NOT NULL ,
-						`rule_id` INT NOT NULL ,
-						`item_order` TINYINT( 1 ) NOT NULL ,
-						PRIMARY KEY ( `o_id` , `rule_id` )
-						);"))) {
-		throw new SQLException();
-	}
-	
-	return true;
-}
-
-?>

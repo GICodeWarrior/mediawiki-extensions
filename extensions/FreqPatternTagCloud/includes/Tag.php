@@ -77,5 +77,3 @@ class Tag {
 		return $this->_value;
 	}
 }
-
-?>

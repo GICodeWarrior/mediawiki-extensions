@@ -18,14 +18,14 @@ abstract class FrequentPattern {
 	 * 
 	 * @var float
 	 */
-	public static $min_confidence = 0.3;
+	public static $min_confidence = 0.1;
 	
 	/**
 	 * Minimum support
 	 * 
 	 * @var float
 	 */
-	public static $min_support = 0.2;
+	public static $min_support = 0.05;
 	
 	
 	/**
@@ -37,17 +37,15 @@ abstract class FrequentPattern {
 	public static function computeAllRules() {
 		$dbr =& wfGetDB( DB_SLAVE );
 		
-		if (!($res = mysql_query("SELECT smw_id
-							FROM ".$dbr->tableName("smw_ids")."
-							WHERE smw_namespace = 102
-							AND LENGTH(smw_iw) = 0"))) {
-			throw new SQLException();
-		}
-		while ($row = mysql_fetch_assoc($res)) {
+		$res = $dbr->query("(SELECT smw_id
+					FROM ".$dbr->tableName("smw_ids")."
+					WHERE smw_namespace = 102
+					AND LENGTH(smw_iw) = 0) UNION (SELECT 0)");
+		while ($row = $res->fetchRow()) {
 			self::computeRules($row['smw_id']);
 		}
 		
-		mysql_free_result($res);
+		$res->free();
 	}
 	
 	/**
@@ -69,56 +67,65 @@ abstract class FrequentPattern {
 		}
 		
 		$dbr =& wfGetDB( DB_SLAVE );
+		$dbw =& wfGetDB( DB_MASTER );
 		
 		// Compile items = all possible o_ids
-		if (!($res = mysql_query("SELECT GROUP_CONCAT(DISTINCT o_id)
-							FROM ".$dbr->tableName("smw_rels2")."
-							WHERE p_id = ".mysql_real_escape_string($attributeId)."
-							GROUP BY p_id"))) {
-			throw new SQLException();
+		if (!$attributeId) {
+			$res = $dbr->query("SELECT GROUP_CONCAT(smw_id)
+						FROM ".$dbr->tableName("smw_ids")."
+						WHERE smw_namespace = 14
+						AND LENGTH(smw_iw) = 0
+						GROUP BY smw_namespace");
+		} else {
+			$res = $dbr->query("SELECT GROUP_CONCAT(DISTINCT o_id)
+						FROM ".$dbr->tableName("smw_rels2")."
+						WHERE p_id = ".mysql_real_escape_string($attributeId)."
+						GROUP BY p_id");
 		}
-		$row = mysql_fetch_row($res);
+		$row = $res->fetchRow();
 		$items = explode(",", $row[0]);
-		mysql_free_result($res);
+		$res->free();
 		
 		// Compile transactions = all corelated o_ids (by s_id)
-		if (!($res = mysql_query("SELECT GROUP_CONCAT(o_id)
-							FROM ".$dbr->tableName("smw_rels2")."
-							WHERE p_id = ".mysql_real_escape_string($attributeId)."
-							GROUP BY s_id"))) {
-			throw new SQLException();
+		if (!$attributeId) {
+			$res = $dbr->query("SELECT GROUP_CONCAT(smw_id)
+						FROM ".$dbr->tableName("smw_ids")." ids, ".$dbr->tableName("categorylinks")." catlinks
+						WHERE ids.smw_title = catlinks.cl_to
+						AND ids.smw_namespace = 14
+						GROUP BY catlinks.cl_from");
+		} else {
+			$res = $dbr->query("SELECT GROUP_CONCAT(o_id)
+						FROM ".$dbr->tableName("smw_rels2")."
+						WHERE p_id = ".mysql_real_escape_string($attributeId)."
+						GROUP BY s_id");
 		}
 		$transactions = array();
-		while ($row = mysql_fetch_row($res)) {
+		while ($row = $res->fetchRow()) {
 			$transactions[] = explode(",", $row[0]);
 		}
-		mysql_free_result($res);
+		$res->free();
 		
 		// Run algorithm
 		$algorithm = new FrequentPatternApriori();
 		$rules = $algorithm->computeRules($items, $transactions, self::$min_support, self::$min_confidence);
 		foreach ($rules as $rule) {
 			// Push rules to db
-			if (!mysql_query("INSERT INTO ".$dbr->tableName("fptc_associationrules")." (p_id, rule_support, rule_confidence)
-								VALUES (".mysql_real_escape_string($attributeId).", ".mysql_real_escape_string($rule->getSupport()).", ".mysql_real_escape_string($rule->getConfidence()).")")) {
-				throw new SQLException();
-			}
-			$ruleId = mysql_insert_id();
+			$dbw->query("INSERT INTO ".$dbw->tableName("fptc_associationrules")." (p_id, rule_support, rule_confidence)
+						VALUES (".mysql_real_escape_string($attributeId).", ".mysql_real_escape_string($rule->getSupport()).", ".mysql_real_escape_string($rule->getConfidence()).")");
+			$ruleId = $dbw->insertId();
 			
 			foreach ($rule->getAssumption() as $item) {
-				if (!mysql_query("INSERT INTO ".$dbr->tableName("fptc_items")." (o_id, rule_id, item_order)
-								VALUES (".mysql_real_escape_string($item).", ".mysql_real_escape_string($ruleId).", 0)")) {
-					throw new SQLException();
-				}
+				$dbw->query("INSERT INTO ".$dbw->tableName("fptc_items")." (o_id, rule_id, item_order)
+							VALUES (".mysql_real_escape_string($item).", ".mysql_real_escape_string($ruleId).", 0)");
 			}
 			
 			foreach ($rule->getConclusion() as $item) {
-				if (!mysql_query("INSERT INTO ".$dbr->tableName("fptc_items")." (o_id, rule_id, item_order)
-								VALUES (".mysql_real_escape_string($item).", ".mysql_real_escape_string($ruleId).", 1)")) {
-					throw new SQLException();
-				}
+				$dbw->query("INSERT INTO ".$dbw->tableName("fptc_items")." (o_id, rule_id, item_order)
+							VALUES (".mysql_real_escape_string($item).", ".mysql_real_escape_string($ruleId).", 1)");
 			}
 		}
+		
+		$dbw->commit();
 	}
 	
 	/**
@@ -128,11 +135,10 @@ abstract class FrequentPattern {
 	 * @throws SQLException  
 	 */
 	public static function deleteAllRules() {
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbw =& wfGetDB( DB_MASTER );
 		
-		if (!mysql_query("DELETE FROM ".$dbr->tableName("fptc_associationrules"))) {
-			throw new SQLException();
-		}
+		$dbw->query("DELETE FROM ".$dbw->tableName("fptc_associationrules"));
+		$dbw->query("DELETE FROM ".$dbw->tableName("fptc_items"));
 	}
 	
 	/**
@@ -147,60 +153,64 @@ abstract class FrequentPattern {
 		$dbr =& wfGetDB( DB_SLAVE );
 		
 		// Get id of attribute
-		if (!($res = mysql_query("SELECT smw_id
-							FROM ".$dbr->tableName("smw_ids")."
-							WHERE smw_title = '".mysql_real_escape_string($attribute)."'
-							AND smw_namespace = 102
-							AND LENGTH(smw_iw) = 0"))) {
-			throw new SQLException();
+		if (wfMsg("categoryname") == $attribute) {
+			$res = $dbr->query("SELECT 0");
+		} else {
+			$res = $dbr->query("SELECT smw_id
+						FROM ".$dbr->tableName("smw_ids")."
+						WHERE smw_title = '".mysql_real_escape_string($attribute)."'
+						AND smw_namespace = 102
+						AND LENGTH(smw_iw) = 0");
 		}
-		$row = mysql_fetch_row($res);
+		$row = $res->fetchRow();
 		$attributeId = $row[0];
-		mysql_free_result($res);
+		$res->free();
 		
 		// Get id of assumption
-		if (!($res = mysql_query("SELECT smw_id
-							FROM ".$dbr->tableName("smw_ids")."
-							WHERE smw_title = '".mysql_real_escape_string($assumption)."'
-							AND smw_namespace = 0
-							AND LENGTH(smw_iw) = 0"))) {
-			throw new SQLException();
-		}
-		$row = mysql_fetch_row($res);
+		if (wfMsg("categoryname") == $attribute) {
+			$res = $dbr->query("SELECT smw_id
+						FROM ".$dbr->tableName("smw_ids")."
+						WHERE smw_title = '".mysql_real_escape_string($assumption)."'
+						AND smw_namespace = 14
+						AND LENGTH(smw_iw) = 0");
+		} else {
+			$res = $dbr->query("SELECT smw_id
+						FROM ".$dbr->tableName("smw_ids")."
+						WHERE smw_title = '".mysql_real_escape_string($assumption)."'
+						AND smw_namespace = 0
+						AND LENGTH(smw_iw) = 0");
+		}	
+		$row = $res->fetchRow();
 		$assumptionId = $row[0];
-		mysql_free_result($res);
+		$res->free();
 		
 		// Get rules (only those where assumption is single item)
-		if (!($res = mysql_query("SELECT rules.rule_id, rule_support, rule_confidence
-							FROM ".$dbr->tableName("fptc_associationrules")." rules, ".$dbr->tableName("fptc_items")." items
-							WHERE rules.rule_id = items.rule_id
-							AND item_order = 0
-							AND o_id = ".mysql_real_escape_string($assumptionId)."
-							AND NOT EXISTS( SELECT 1 FROM ".$dbr->tableName("fptc_items")." WHERE rule_id = rules.rule_id AND item_order = 0 AND o_id != items.o_id )
-							ORDER BY rule_support DESC, rule_confidence DESC"))) {
-			throw new SQLException();
-		}
+		$res = $dbr->query("SELECT rules.rule_id, rule_support, rule_confidence
+					FROM ".$dbr->tableName("fptc_associationrules")." rules, ".$dbr->tableName("fptc_items")." items
+					WHERE rules.rule_id = items.rule_id
+					AND item_order = 0
+					AND o_id = ".mysql_real_escape_string($assumptionId)."
+					AND NOT EXISTS( SELECT 1 FROM ".$dbr->tableName("fptc_items")." WHERE rule_id = rules.rule_id AND item_order = 0 AND o_id != items.o_id )
+					ORDER BY rule_support DESC, rule_confidence DESC");
 		$conclusions = array();
-		while ($row = mysql_fetch_assoc($res)) {
+		while ($row = $res->fetchRow()) {
 			// Get conclusions
-			if (!($resItems = mysql_query("SELECT smw_title
-								FROM ".$dbr->tableName("smw_ids")." ids, ".$dbr->tableName("fptc_items")." items
-								WHERE ids.smw_id = items.o_id
-								AND item_order = 1
-								AND rule_id = ".mysql_real_escape_string($row['rule_id'])))) {
-				throw new SQLException();
-			}
+			$resItems = $dbr->query("SELECT smw_title
+						FROM ".$dbr->tableName("smw_ids")." ids, ".$dbr->tableName("fptc_items")." items
+						WHERE ids.smw_id = items.o_id
+						AND item_order = 1
+						AND rule_id = ".mysql_real_escape_string($row['rule_id']));
 			
 			// Only consider rules with single conclusion
-			if (mysql_num_rows($resItems) > 1) {
+			if ($resItems->numRows() > 1) {
 				continue;
 			}
-			$rowItem = mysql_fetch_assoc($resItems);
+			$rowItem = $resItems->fetchRow();
 			$conclusions[] = $rowItem['smw_title'];
-
-			mysql_free_result($resItems);
+			
+			$resItems->free();
 		}
-		mysql_free_result($res);
+		$res->free();
 		
 		return $conclusions;
 	}
@@ -217,22 +227,18 @@ abstract class FrequentPattern {
 		$dbr =& wfGetDB( DB_SLAVE );
 		
 		// Get rules
-		if (!($res = mysql_query("SELECT smw_title, rule_id, rule_support, rule_confidence
-							FROM ".$dbr->tableName("smw_ids")." ids, ".$dbr->tableName("fptc_associationrules")." rules
-							WHERE ids.smw_id = rules.p_id"))) {
-			throw new SQLException();
-		}
-		while ($row = mysql_fetch_assoc($res)) {
+		$res = $dbr->query("SELECT smw_title, rule_id, rule_support, rule_confidence
+					FROM ".$dbr->tableName("smw_ids")." ids, ".$dbr->tableName("fptc_associationrules")." rules
+					WHERE ids.smw_id = rules.p_id");
+		while ($row = $res->fetchRow()) {
 			// Get items
-			if (!($resItems = mysql_query("SELECT smw_title, item_order
-								FROM ".$dbr->tableName("smw_ids")." ids, ".$dbr->tableName("fptc_items")." items
-								WHERE ids.smw_id = items.o_id
-								AND rule_id = ".mysql_real_escape_string($row['rule_id'])))) {
-				throw new SQLException();
-			}
+			$resItems = $dbr->query("SELECT smw_title, item_order
+						FROM ".$dbr->tableName("smw_ids")." ids, ".$dbr->tableName("fptc_items")." items
+						WHERE ids.smw_id = items.o_id
+						AND rule_id = ".mysql_real_escape_string($row['rule_id']));
 			$assumption = array();
 			$conclusion = array();
-			while ($rowItem = mysql_fetch_assoc($resItems)) {
+			while ($rowItem = $resItems->fetchRow()) {
 				if ($rowItem['item_order'] == '0') {
 					$assumption[] = $rowItem['smw_title'];
 				} else {
@@ -243,8 +249,6 @@ abstract class FrequentPattern {
 			// Display rule
 			$wgOut->addWikiText(sprintf("%s: '%s' =&gt; '%s' (Sup: %0.2f, Conf: %0.2f)\n", $row['smw_title'], implode(",", $assumption), implode(",", $conclusion), $row['rule_support'], $row['rule_confidence']));
 		}
-		mysql_free_result($res);
+		$res->free();
 	}
 }
-
-?>

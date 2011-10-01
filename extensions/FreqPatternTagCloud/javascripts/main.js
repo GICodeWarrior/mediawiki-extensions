@@ -47,7 +47,7 @@ $().ready(function() {
         if (action == "browse") {
             window.location = el.attr("href");
         } else if (action == "browse_similar_tag") {
-            window.location = el.attr("href").replace(new RegExp(el.text()), menu.attr("title"));
+            window.location = el.attr("href").replace(new RegExp(encodeURI(el.text())), menu.attr("title"));
         }
     });
     

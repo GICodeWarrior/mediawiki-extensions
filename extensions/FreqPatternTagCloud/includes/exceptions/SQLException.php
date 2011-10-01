@@ -14,5 +14,3 @@ class SQLException extends Exception {
 		parent::__construct(mysql_error());
 	}
 }
-
-?>

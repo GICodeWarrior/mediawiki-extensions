@@ -21,5 +21,3 @@ class InvalidAttributeException extends Exception {
 		parent::__construct(sprintf("Attribute '%s' not found", $attribute ? $attribute : "<empty>"));
 	}
 }
-
-?>
