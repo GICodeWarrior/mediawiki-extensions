@@ -90,14 +90,26 @@ class SpecialContestWelcome extends SpecialContestPage {
 		$out = $this->getOutput();
 		
 		foreach ( $contest->getChallanges() as /* ContestChallange */ $challange ) {
-			$out->addHTML( Html::rawElement(
-				'fieldset',
+			$out->addHTML( '<fieldset>' );
+			
+			$out->addHTML( Html::element( 'legend', array(), $challange->getField( 'title' ) ) );
+			
+			$out->addHTML( '<div class="contest-challange">' );
+			
+			$out->addHTML( Html::element( 
+				'button',
 				array(
-					'data-contest-target' => $this->getSignupLink( $challange->getId() )
+					'class' => 'contest-signup challange-signup',
+					'data-contest-target' => $this->getSignupLink( $contest->getField( 'name' ), $challange->getId() )
 				),
-				Html::element( 'legend', array(), $challange->getField( 'title' ) )
-					. htmlspecialchars( $challange->getField( 'text' ) )
+				wfMsg( 'contest-welcome-signup' )
 			) );
+			
+			$out->addHTML( Html::element( 'p', array(), $challange->getField( 'text' ) ) );
+			
+			$out->addHTML( '</div>' );
+			
+			$out->addHTML( '</fieldset>' );
 		}
 	}
 	
@@ -158,6 +170,10 @@ class SpecialContestWelcome extends SpecialContestPage {
 	 * @return string
 	 */
 	protected function getSignupLink( $contestName, $challangeId = false ) {
+		if ( $challangeId !== false ) {
+			$contestName .= '/' . $challangeId;
+		}
+		
 		$signupitle = SpecialPage::getTitleFor( 'ContestSignup', $contestName );
 		
 		if ( $this->getUser()->isLoggedIn() ) {

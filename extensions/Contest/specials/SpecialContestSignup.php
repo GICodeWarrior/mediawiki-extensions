@@ -77,10 +77,14 @@ class SpecialContestSignup extends SpecialContestPage {
 	 * 
 	 * @since 0.1
 	 * 
-	 * @param string $contestName
+	 * @param string $subPage
 	 */
-	protected function showPage( $contestName ) {
+	protected function showPage( $subPage ) {
 		$out = $this->getOutput();
+		
+		$subPage = explode( '/', $subPage );
+		$contestName = $subPage[0];
+		$challangeId = count( $subPage ) > 1 ? $subPage[1] : false;
 		
 		$contest = Contest::s()->selectRow( null, array( 'name' => $contestName ) );
 		
@@ -92,7 +96,7 @@ class SpecialContestSignup extends SpecialContestPage {
 		else {
 			switch ( $contest->getField( 'status' ) ) {
 				case Contest::STATUS_ACTIVE:
-					$this->showEnabledPage( $contest );	
+					$this->showEnabledPage( $contest, $challangeId );	
 					break;
 				case Contest::STATUS_DRAFT:
 					// TODO	
@@ -112,8 +116,9 @@ class SpecialContestSignup extends SpecialContestPage {
 	 * @since 0.1
 	 * 
 	 * @param Contest $contest
+	 * @param integer|false $challangeId
 	 */
-	protected function showEnabledPage( Contest $contest ) {
+	protected function showEnabledPage( Contest $contest, $challangeId ) {
 		$out = $this->getOutput();
 		
 		// Check if the user is already a contestant in this contest.
@@ -131,7 +136,7 @@ class SpecialContestSignup extends SpecialContestPage {
 			$out->setPageTitle( $contest->getField( 'name' ) );
 			$out->addWikiMsg( 'contest-signup-header', $contest->getField( 'name' ) );
 			
-			$this->showSignupForm( $contest );
+			$this->showSignupForm( $contest, $challangeId );
 		}
 		else {
 			$out->redirect( SpecialPage::getTitleFor( 'ContestSubmission', $contest->getField( 'name' ) )->getLocalURL() );
@@ -144,9 +149,10 @@ class SpecialContestSignup extends SpecialContestPage {
 	 * @since 0.1
 	 * 
 	 * @param Contest $contest
+	 * @param integer|false $challangeId
 	 */
-	protected function showSignupForm( Contest $contest ) {
-		$form = new HTMLForm( $this->getFormFields( $contest ), $this->getContext() );
+	protected function showSignupForm( Contest $contest, $challangeId = false ) {
+		$form = new HTMLForm( $this->getFormFields( $contest, $challangeId ), $this->getContext() );
 		
 		$form->setSubmitCallback( array( __CLASS__, 'handleSubmission' ) );
 		$form->setSubmitText( wfMsg( 'contest-signup-submit' ) );
@@ -175,8 +181,9 @@ class SpecialContestSignup extends SpecialContestPage {
 	 * @since 0.1
 	 * 
 	 * @param Contest $contest
+	 * @param integer|false $challangeId
 	 */
-	protected function getFormFields( Contest $contest ) {
+	protected function getFormFields( Contest $contest, $challangeId ) {
 		$fields = array();
 		
 		$user = $this->getUser();
@@ -217,6 +224,10 @@ class SpecialContestSignup extends SpecialContestPage {
 			'options' => $this->getChallangesList( $contest ),
 			'required' => true,
 		);
+		
+		if ( $challangeId !== false ) {
+			$fields['contestant-challangeid']['default'] = $challangeId;
+		}
 		
 		$fields['contestant-volunteer'] = array(
 			'type' => 'check',

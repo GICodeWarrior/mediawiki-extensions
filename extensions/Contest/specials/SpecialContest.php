@@ -103,7 +103,15 @@ class SpecialContest extends SpecialContestPage {
 		return $stats;
 	}
 	
-	// TODO: list scores and comment counts as well
+	/**
+	 * Show a paged list of the contestants foe this contest.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param Contest $contest
+	 * 
+	 * TODO: list scores and comment counts as well
+	 */
 	protected function showContestants( Contest $contest ) {
 		$out = $this->getOutput();
 		
