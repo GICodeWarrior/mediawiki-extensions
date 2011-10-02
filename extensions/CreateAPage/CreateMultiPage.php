@@ -157,10 +157,10 @@ class CreateMultiPage {
 		// multiple toolbars...
 		$toolbar = "<div id='toolbar" . $toolbar_id . "' style='display: none'>\n";
 		$toolbar .= "<script type='$wgJsMimeType'>\n/*<![CDATA[*/\n";
-		$toolbar .= "YAHOO.Createpage.multiEditTextboxes[YAHOO.Createpage.multiEditTextboxes.length] = $toolbar_id;\n";
-		$toolbar .= "YAHOO.Createpage.multiEditButtons[$toolbar_id] = [];\n";
-		$toolbar .= "YAHOO.Createpage.multiEditCustomButtons[$toolbar_id] = [];\n";
-		$toolbar .= "YAHOO.util.Event.addListener('wpTextboxes' + $toolbar_id, 'focus', YAHOO.Createpage.showThisBox, {'toolbarId' : $toolbar_id }); \n";
+		$toolbar .= "CreateAPage.multiEditTextboxes[CreateAPage.multiEditTextboxes.length] = $toolbar_id;\n";
+		$toolbar .= "CreateAPage.multiEditButtons[$toolbar_id] = [];\n";
+		$toolbar .= "CreateAPage.multiEditCustomButtons[$toolbar_id] = [];\n";
+		$toolbar .= "jQuery( document ).ready( function() { jQuery( '#wpTextboxes' + $toolbar_id ).focus( function( e ) { CreateAPage.showThisBox( e, {'toolbarId' : $toolbar_id } ); } ); } ); \n";
 		$toolbar .= "/*]]>*/\n</script>";
 
 		$toolbar .= "\n</div>";

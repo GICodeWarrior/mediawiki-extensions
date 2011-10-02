@@ -165,7 +165,7 @@ class CreatePageImageUploadForm extends UploadForm {
 			array( 'img_name' => $img_name ),
 			__METHOD__
 		);
-		if ( 0 == $dbr->numRows( $resource ) ) {
+		if ( $dbr->numRows( $resource ) == 0 ) {
 			$dbr->freeResult( $resource );
 			return false;
 		}
@@ -376,11 +376,20 @@ class CreatePageImageUploadForm extends UploadForm {
 		 * Try actually saving the thing...
 		 * It will show an error form on failure.
 		 */
-		$pageText = self::getInitialPageText( $this->mComment, $this->mLicense,
-						$this->mCopyrightStatus, $this->mCopyrightSource );
+		$pageText = self::getInitialPageText(
+			$this->mComment,
+			$this->mLicense,
+			$this->mCopyrightStatus,
+			$this->mCopyrightSource
+		);
 
-		$status = $this->mLocalFile->upload( $this->mTempPath, $this->mComment, $pageText,
-					File::DELETE_SOURCE, $this->mFileProps );
+		$status = $this->mLocalFile->upload(
+			$this->mTempPath,
+			$this->mComment,
+			$pageText,
+			File::DELETE_SOURCE,
+			$this->mFileProps
+		);
 
 		if ( !$status->isGood() ) {
 			$this->showError( $status->getWikiText() );

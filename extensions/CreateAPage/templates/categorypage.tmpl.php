@@ -17,7 +17,7 @@ $xnum = 0;
 foreach ( $cloud->tags as $xname => $xtag ) {
 ?>
 	<span id="tag<?php echo $xnum ?>" style="font-size:<?php echo $xtag['size'] ?>pt">
-		<a href="#" id="cloud<?php echo $xnum ?>" onclick="cloudAdd(escape('<?php echo $xname ?>'), <?php echo $xnum ?>); return false;"><?php echo $xname ?></a>
+		<a href="#" id="cloud<?php echo $xnum ?>" onclick="CreateAPageCategoryTagCloud.add(escape('<?php echo $xname ?>'), <?php echo $xnum ?>); return false;"><?php echo $xname ?></a>
 	</span>
 <?php
 $xnum++;
@@ -26,13 +26,13 @@ $xnum++;
 </div>
 <?php } // if ( $cloud->tags ) ?>
 <textarea accesskey="," name="wpCategoryTextarea" id="wpCategoryTextarea" rows="3" cols="<?php echo $cols ?>"<?php echo $ew ?>><?php echo $text_category ?></textarea>
-<input type="button" name="wpCategoryButton" id="wpCategoryButton" class="button color1" value="<?php echo wfMsg( 'createpage-addcategory' ) ?>" onclick="cloudInputAdd(); return false ;" />
+<input type="button" name="wpCategoryButton" id="wpCategoryButton" class="button color1" value="<?php echo wfMsg( 'createpage-addcategory' ) ?>" />
 <input type="text" name="wpCategoryInput" id="wpCategoryInput" value="" />
 </div>
 <script type="text/javascript">
 /*<![CDATA[*/
-var div = document.getElementById('createpage_cloud_div');
-document.getElementById('createpage_cloud_div').style.display = 'block';
+var div = document.getElementById( 'createpage_cloud_div' );
+div.style.display = 'block';
 /*]]>*/
 </script>
 <noscript>

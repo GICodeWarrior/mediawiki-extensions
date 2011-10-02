@@ -15,8 +15,8 @@ abstract class CreatePageEditor {
 		$this->mTemplate = $template;
 	}
 
-	abstract public function GenerateForm();
-	abstract public function GlueArticle();
+	abstract public function generateForm();
+	abstract public function glueArticle();
 }
 
 // wraps up special multi editor class
@@ -30,7 +30,7 @@ class CreatePageMultiEditor extends CreatePageEditor {
 		$this->mPreviewed = $previewed;
 	}
 
-	function GenerateForm( $content = false ) {
+	function generateForm( $content = false ) {
 		global $wgOut, $wgUser, $wgRequest;
 
 		$optional_sections = array();
@@ -130,7 +130,7 @@ class CreatePageMultiEditor extends CreatePageEditor {
 	}
 
 	// take given categories and glue them together
-	function GlueCategories( $checkboxes_array, $categories ) {
+	function glueCategories( $checkboxes_array, $categories ) {
 		global $wgContLang;
 
 		$text = '';
@@ -152,7 +152,7 @@ class CreatePageMultiEditor extends CreatePageEditor {
 	}
 
 	// get the infobox' text and substitute all known values...
-	function GlueInfobox( $infoboxes_array, $infobox_text ) {
+	function glueInfobox( $infoboxes_array, $infobox_text ) {
 		$inf_pars = preg_split( "/\|/", $infobox_text, -1 );
 
 		// correct for additional |'s the users may have put in here...
@@ -201,7 +201,7 @@ class CreatePageMultiEditor extends CreatePageEditor {
 		return $text;
 	}
 
-	function GlueArticle( $preview = false, $render_option = true ) {
+	function glueArticle( $preview = false, $render_option = true ) {
 		global $wgRequest, $wgOut;
 
 		$text = '';
@@ -298,7 +298,7 @@ class CreatePageMultiEditor extends CreatePageEditor {
 					$file_ext = explode( '.', $uploadform->mSrcName );
 					$file_ext = $file_ext[1];
 				} else {
-					$file_ext = '' ;
+					$file_ext = '';
 				}
 				$uploadform->mParameterExt = $file_ext;
 				$uploadform->mDesiredDestName = $wgRequest->getText( 'Createtitle' );
@@ -345,11 +345,11 @@ class CreatePageMultiEditor extends CreatePageEditor {
 		}
 
 		if ( isset( $_POST['wpInfoboxValue'] ) ) {
-			$text = $this->GlueInfobox( $infoboxes, $_POST['wpInfoboxValue'] ) . $text;
+			$text = $this->glueInfobox( $infoboxes, $_POST['wpInfoboxValue'] ) . $text;
 		}
 
 		if ( isset( $_POST['wpCategoryTextarea'] ) ) {
-			$text .= $this->GlueCategories( $categories, $_POST['wpCategoryTextarea'] );
+			$text .= $this->glueCategories( $categories, $_POST['wpCategoryTextarea'] );
 		}
 
 		return $text;
@@ -367,11 +367,18 @@ class CreatePageMultiEditor extends CreatePageEditor {
 
 }
 
-// a small class to overcome some MediaWiki shortages :)
-// MediaWiki always shows a newly created article, which in this case
-// disrupts the form and generally doesn't suit us, and uploading a new
-// image creates a new article
-class PocketSilentArticle extends Article {
+/**
+ * A small class to overcome some MediaWiki shortages :)
+ * MediaWiki always shows a newly created article, which in this case disrupts
+ * the form and generally doesn't suit us, and uploading a new image creates a
+ * new article.
+ *
+ * @todo FIXME: in May 2011 iAlex wrote on CodeReview that insertNewArticle()
+ * no longer exists
+ * @see http://www.mediawiki.org/wiki/Special:Code/MediaWiki/84472
+ * @see http://www.mediawiki.org/wiki/Special:Code/MediaWiki/87884#c16799
+ */
+class PocketSilentArticle extends Article/*WikiPage*/ {
 	// don't SHOW article upon creation, because it's IRRITATING
 	function insertNewArticle( $text, $summary, $isminor, $watchthis, $suppressRC = false, $comment = false, $bot = false ) {
 		$flags = EDIT_NEW | EDIT_DEFER_UPDATES | EDIT_AUTOSUMMARY |

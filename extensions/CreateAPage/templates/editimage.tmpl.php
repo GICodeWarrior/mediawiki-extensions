@@ -2,7 +2,9 @@
 <!-- JavaScript part -->
 <script type="text/javascript">
 /*<![CDATA[*/
-YAHOO.util.Event.addListener( "createpage_upload_file<?php echo $image_num ?>", "change", YAHOO.CreatepageInfobox.Upload, {"num" : <?php echo $image_num ?> } );
+jQuery( '#createpage_upload_file<?php echo $image_num ?>' ).change( function( e ) {
+	CreateAPageInfobox.upload( e, { 'num': <?php echo $image_num ?> } );
+});
 /*]]>*/
 </script>
 	<div class="createpage_input_file createpage_input_file_no_path">

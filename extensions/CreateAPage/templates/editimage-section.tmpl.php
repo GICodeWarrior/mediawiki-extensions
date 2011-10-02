@@ -2,7 +2,9 @@
 <!-- JavaScript part -->
 <script type="text/javascript">
 /*<![CDATA[*/
-YAHOO.util.Event.addListener( "createpage_upload_file_section<?php echo $imagenum ?>", "change", YWC.Upload, {"num" : <?php echo $imagenum ?> } );
+jQuery( '#createpage_upload_file_section<?php echo $imagenum ?>' ).change( function( e ) {
+	CreateAPage.upload( e, { 'num': <?php echo $imagenum ?> } );
+});
 /*]]>*/
 </script>
 <div id="createpage_upload_div_section<?php echo $imagenum ?>">

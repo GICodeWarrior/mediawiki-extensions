@@ -1,6 +1,9 @@
 <?php
-
-// this class takes care for the createplate loader form
+/**
+ * This class takes care for the createplate loader form
+ *
+ * @file
+ */
 class CreatePageCreateplateForm {
 	var $mCreateplatesLocation;
 	var $mTitle, $mNamespace, $mCreateplate;
@@ -60,7 +63,11 @@ class CreatePageCreateplateForm {
 		$action = $titleObj->escapeLocalURL( 'action=submit' );
 
 		if ( $wgRequest->getCheck( 'wpPreview' ) ) {
-			$wgOut->addHTML( '<div class="previewnote"><p>' . wfMsg( 'previewnote' ) . '</p></div>' );
+			$wgOut->addHTML(
+				'<div class="previewnote"><p>' .
+				wfMsg( 'previewnote' ) .
+				'</p></div>'
+			);
 		} else {
 			$wgOut->addHTML( wfMsg( 'createpage-title-additional' ) );
 		}
@@ -81,19 +88,16 @@ class CreatePageCreateplateForm {
 				$wgOut->addWikiMsg( 'anoneditwarning' );
 			}
 		}
-		global $wgScriptPath;
 
-		if ( defined( 'MW_SUPPORTS_RESOURCE_MODULES' ) ) {
-			$wgOut->addModuleStyles( 'ext.createAPage' );
-		} else {
-			$wgOut->addExtensionStyle( $wgScriptPath . '/extensions/CreateAPage/CreatePage.css' );
-		}
+		// Add CSS & JS
+		$wgOut->addModuleStyles( 'ext.createAPage' );
+		$wgOut->addModuleScripts( 'ext.createAPage' );
 		/*if( $wgUser->getOption( 'disablelinksuggest' ) != true ) {
 			$wgOut->addHTML( '<div id="wpTextbox1_container" class="yui-ac-container"></div> ');
 			$wgOut->addScriptFile( $wgScriptPath . '/extensions/LinkSuggest/LinkSuggest.js' );
 		}*/
 
-		$alternateLink = '<a href="#" onclick="CreatePageNormalEdit(); return false;">' .
+		$alternateLink = '<a href="#" onclick="CreateAPage.goToNormalEditMode(); return false;">' .
 			wfMsg( 'createpage-here' ) . '</a>';
 		$wgOut->addHTML(
 			'<div id="createpage_subtitle" style="display:none">' .
@@ -104,9 +108,6 @@ class CreatePageCreateplateForm {
 		if ( $wgRequest->getCheck( 'wpPreview' ) ) {
 			$this->showPreview( $content_prev, $wgRequest->getVal( 'Createtitle' ) );
 		}
-
-		$tmpl = new EasyTemplate( dirname( __FILE__ ) . '/templates/' );
-		$wgOut->addHTML( $tmpl->render( 'title-check' ) );
 
 		$html = "
 <form name=\"createpageform\" enctype=\"multipart/form-data\" method=\"post\" action=\"{$action}\" id=\"createpageform\">
@@ -129,16 +130,15 @@ class CreatePageCreateplateForm {
 			call_user_func_array( $formCallback, array( &$wgOut ) );
 		}
 
-		$wgOut->addHTML( $tmpl->render( 'toggles' ) );
 		$parsedTemplates = $this->getCreateplates();
-		$show_field = '';
+		$showField = '';
 		if ( !$parsedTemplates ) {
-			$show_field = ' style="display: none";';
+			$showField = ' style="display: none";';
 		}
 
 		if ( !$wgRequest->getCheck( 'wpPreview' ) ) {
 			$wgOut->addHTML(
-				'<fieldset id="cp-chooser-fieldset"' . $show_field . '>
+				'<fieldset id="cp-chooser-fieldset"' . $showField . '>
 				<legend>' . wfMsg( 'createpage-choose-createplate' ) .
 				'<span style="font-size: small; font-weight: normal; margin-left: 5px">[<a id="cp-chooser-toggle" title="toggle" href="#">'
 				. wfMsg( 'createpage-hide' ) . '</a>]</span>
@@ -211,7 +211,12 @@ class CreatePageCreateplateForm {
 		}
 	}
 
-	// produce a list of radio buttons from the given createplate array
+	/**
+	 * Produce a list of radio buttons from the given createplate array and
+	 * output the generated HTML.
+	 *
+	 * @param $createplates Array: array of createplates
+	 */
 	function produceRadioList( $createplates ) {
 		global $wgOut, $wgRequest, $wgServer, $wgScript;
 
@@ -233,10 +238,10 @@ class CreatePageCreateplateForm {
 			$parserOptions = ParserOptions::newFromUser( $wgUser );
 			$parserOptions->setEditSection( false );
 			$rtitle = Title::newFromText( $this->mTitle );
-			$parsed_info = $wgParser->parse(
+			$parsedInfo = $wgParser->parse(
 				wfMsg( 'createpage-about-info' ), $rtitle, $parserOptions
 			);
-			$aboutinfo = str_replace( '</p>', '', $parsed_info->mText );
+			$aboutinfo = str_replace( '</p>', '', $parsedInfo->mText );
 			$aboutinfo .= wfMsg(
 				'createpage-advanced-text',
 				'<a href="' . $wgServer . $wgScript . '" id="wpAdvancedEdit">' .
@@ -268,7 +273,7 @@ class CreatePageCreateplateForm {
 	 *                exists and we're not in AJAX mode
 	 */
 	function checkArticleExists( $given, $ajax = false ) {
-		global $wgOut, $wgUser;
+		global $wgOut;
 
 		if ( $ajax ) {
 			$wgOut->setArticleBodyOnly( true );
@@ -280,14 +285,12 @@ class CreatePageCreateplateForm {
 
 		$title = Title::newFromText( $given );
 		if ( is_object( $title ) ) {
-			$page = $title->getText();
-			$page = str_replace( ' ', '_', $page );
 			$dbr = wfGetDB( DB_SLAVE );
 			$exists = $dbr->selectField(
 				'page',
 				'page_title',
 				array(
-					'page_title' => $page,
+					'page_title' => $title->getDBkey(),
 					'page_namespace' => $title->getNamespace()
 				),
 				__METHOD__
@@ -296,11 +299,10 @@ class CreatePageCreateplateForm {
 				if ( $ajax ) {
 					$wgOut->addHTML( 'pagetitleexists' );
 				} else {
-					$sk = $wgUser->getSkin();
 					// Mimick the way AJAX version displays things and use the
 					// same two messages. 2 are needed for full i18n support.
 					return wfMsg( 'createpage-article-exists' ) . ' ' .
-						$sk->makeKnownLinkObj( $title, '', 'action=edit' ) .
+						Linker::linkKnown( $title, '', array(), array( 'action' => 'edit' ) ) .
 						wfMsg( 'createpage-article-exists2' );
 				}
 			}
@@ -337,7 +339,7 @@ class CreatePageCreateplateForm {
 				$mainform = new CreatePageCreateplateForm();
 				$mainform->showForm( $valid );
 				$editor = new CreatePageMultiEditor( $this->mCreateplate );
-				$editor->GenerateForm( $editor->GlueArticle() );
+				$editor->generateForm( $editor->glueArticle() );
 				return false;
 			}
 
@@ -348,7 +350,7 @@ class CreatePageCreateplateForm {
 				$editpage = new EditPage( $rarticle );
 				$editpage->mTitle = $rtitle;
 				$editpage->mArticle = $rarticle;
-				$editpage->textbox1 = CreateMultiPage::unescapeBlankMarker( $editor->GlueArticle() );
+				$editpage->textbox1 = CreateMultiPage::unescapeBlankMarker( $editor->glueArticle() );
 
 				$editpage->minoredit = $wgRequest->getCheck( 'wpMinoredit' );
 				$editpage->watchthis = $wgRequest->getCheck( 'wpWatchthis' );
@@ -361,14 +363,14 @@ class CreatePageCreateplateForm {
 			} elseif( $wgRequest->getCheck( 'wpPreview' ) ) {
 				$mainform = new CreatePageCreatePlateForm();
 				$editor = new CreatePageMultiEditor( $this->mCreateplate, true );
-				$content = $editor->GlueArticle( true, false );
-				$content_static = $editor->GlueArticle( true );
+				$content = $editor->glueArticle( true, false );
+				$content_static = $editor->glueArticle( true );
 				$mainform->showForm( '', $content_static );
-				$editor->GenerateForm( $content );
+				$editor->generateForm( $content );
 				return false;
 			} elseif( $wgRequest->getCheck( 'wpAdvancedEdit' ) ) {
 				$editor = new CreatePageMultiEditor( $this->mCreateplate );
-				$content = CreateMultiPage::unescapeBlankMarker( $editor->GlueArticle() );
+				$content = CreateMultiPage::unescapeBlankMarker( $editor->glueArticle() );
 				wfCreatePageUnescapeKnownMarkupTags( $content );
 				$_SESSION['article_content'] = $content;
 				$wgOut->redirect(
@@ -380,8 +382,8 @@ class CreatePageCreateplateForm {
 				$mainform = new CreatePageCreatePlateForm();
 				$mainform->showForm( '' );
 				$editor = new CreatePageMultiEditor( $this->mCreateplate );
-				$content = $editor->GlueArticle();
-				$editor->GenerateForm( $content );
+				$content = $editor->glueArticle();
+				$editor->generateForm( $content );
 			} elseif( $wgRequest->getCheck( 'wpCancel' ) ) {
 				if ( $wgRequest->getVal( 'Createtitle' ) != '' ) {
 					$wgOut->redirect( $wgServer . $wgScript . '?title=' . $wgRequest->getVal( 'Createtitle' ) );
@@ -432,6 +434,6 @@ class CreatePageCreateplateForm {
 		if ( $isInitial ) {
 			$editor->mInitial = true;
 		}
-		$editor->GenerateForm();
+		$editor->generateForm();
 	}
 }
