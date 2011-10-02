@@ -120,8 +120,10 @@ class SpecialContestSubmission extends SpecialContestPage {
 		$form->setSubmitText( wfMsg( 'contest-submission-submit' ) );
 		
 		if( $form->show() ){
-			// TODO: we might want to have a title field here
 			$this->getOutput()->redirect( $this->getTitle( $contestant->getContest()->getField( 'name' ) )->getLocalURL() );
+		}
+		else {
+			$this->getOutput()->addModules( 'contest.special.submission' );
 		}
 	}
 	

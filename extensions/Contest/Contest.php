@@ -159,7 +159,23 @@ $wgResourceModules['contest.special.welcome'] = $moduleTemplate + array(
 	'styles' => array(
 		'contest.special.welcome.css',
 	),
-	'messages' => array(
+	'dependencies' => array(
+		'jquery.ui.button'
+	)
+);
+
+$wgResourceModules['contest.special.signup'] = $moduleTemplate + array(
+	'scripts' => array(
+		'contest.special.signup.js',
+	),
+	'dependencies' => array(
+		'jquery.ui.button'
+	)
+);
+
+$wgResourceModules['contest.special.submission'] = $moduleTemplate + array(
+	'scripts' => array(
+		'contest.special.submission.js',
 	),
 	'dependencies' => array(
 		'jquery.ui.button'

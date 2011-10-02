@@ -162,6 +162,9 @@ class SpecialContestSignup extends SpecialContestPage {
 		if( $form->show() ){
 			$this->showSucess( $contest );
 		}
+		else {
+			$this->getOutput()->addModules( 'contest.special.signup' );
+		}
 	}
 	
 	/**
