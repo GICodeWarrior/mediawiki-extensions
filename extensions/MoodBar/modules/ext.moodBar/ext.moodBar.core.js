@@ -16,7 +16,7 @@
 					<div class="mw-moodBar-overlayContent"></div>\
 				</div></div>',
 			userinput: '\
-					<div class="mw-moodBar-overlayTitle"><html:msg key="INTROTITLE" /></div>\
+					<div class="mw-moodBar-overlayTitle"><span><html:msg key="INTROTITLE" /></span></div>\
 					<div class="mw-moodBar-types-container">\
 						<div class="mw-moodBar-types"></div>\
 					</div>\
@@ -41,7 +41,7 @@
 			type: '\
 				<span class="mw-moodBar-type mw-moodBar-type-$1" rel="$1">\
 					<span class="mw-moodBar-typeTitle"><html:msg key="moodbar-type-$1-title" /></span>\
-				</div>',
+				</span>',
 			loading: '\
 				<div class="mw-moodBar-state mw-moodBar-state-loading">\
 					<div class="mw-moodBar-state-title"><html:msg key="moodbar-loading-title" /></div>\
@@ -240,7 +240,7 @@
 					.find('.mw-moodBar-types')
 					.width() + 140;
 			var titleWidth = mb.ui.overlay
-					.find('.mw-moodBar-overlayTitle')
+					.find('.mw-moodBar-overlayTitle span')
 					.width() + 100;
 			
 			if ( newWidth < titleWidth ) {
