@@ -79,6 +79,8 @@ $messages['en'] = array(
 	'editcontest-legend' => 'Contest',
 	'contest-edit-name' => 'Contest name',
 	'contest-edit-status' => 'Contest status',
+	'contest-edit-intro' => 'Introduction page',
+	'contest-edit-oppertunities' => 'Oppertunities page',
 	'contest-edit-rulespage' => 'Rules page',
 	'contest-edit-exists-already' => 'Note: you are editing an already existing contest, not creating a new one.',
 	'contest-edit-submit' => 'Submit',
@@ -93,6 +95,8 @@ $messages['en'] = array(
 
 	// Special:ContestWelcome
 	'contest-welcome-unknown' => 'There is no contest with the provided name.',
+	'contest-welcome-rules' => 'In order to participate, you must agree to [[$1|the contest rules]].',
+	'contest-welcome-signup' => 'Signup now',
 
 	// Special:ContestSignup & Special:ContestSubmission
 	'contest-signup-unknown' => 'There is no contest with the provided name.',

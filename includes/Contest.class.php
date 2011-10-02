@@ -92,6 +92,8 @@ class Contest extends ContestDBObject {
 			'status' => 'int',
 			'submission_count' => 'int',
 			'rules_page' => 'str',
+			'oppertunities' => 'str',
+			'intro' => 'str',
 		);
 	}
 	
@@ -107,7 +109,9 @@ class Contest extends ContestDBObject {
 			'name' => '',
 			'status' => self::STATUS_DRAFT,
 			'submission_count' => 0,
-			'rules_page' => '',
+			'rules_page' => 'MediaWiki:',
+			'oppertunities' => 'MediaWiki:',
+			'intro' => 'MediaWiki:',
 		);
 	}
 	

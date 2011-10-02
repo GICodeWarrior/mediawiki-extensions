@@ -175,6 +175,16 @@ class SpecialEditContest extends FormSpecialPage {
 			'options' => Contest::getStatusMessages()
 		);
 		
+		$fields['intro'] = array (
+			'type' => 'text',
+			'label-message' => 'contest-edit-intro',
+		);
+		
+		$fields['oppertunities'] = array (
+			'type' => 'text',
+			'label-message' => 'contest-edit-oppertunities',
+		);
+		
 		$fields['rules_page'] = array (
 			'type' => 'text',
 			'label-message' => 'contest-edit-rulespage',

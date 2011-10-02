@@ -59,31 +59,80 @@ class SpecialContestWelcome extends SpecialContestPage {
 			$out->setPageTitle( $contest->getField( 'name' ) );
 			
 			$this->showIntro( $contest );
-			$this->showChallanges( $contest->getChallanges() );
-			$this->showOpportunities();
-			$this->showRules();
+			$this->showChallanges( $contest );
+			$this->showOpportunities( $contest );
+			$this->showRules( $contest );
 			$this->showSignupLinks( $contest );
+			
+			$out->addModules( '' );
 		}
 	}
 	
 	protected function showIntro( Contest $contest ) {
-		
+		$this->getOutput()->addWikiText( $this->getArticleContent( $contest->getField( 'intro' ) ) );
 	}
 	
-	protected function showChallanges( array /* of ContestChallange */ $challanges ) {
+	protected function showChallanges( Contest $contest ) {
+		$out = $this->getOutput();
 		
+		foreach ( $contest->getChallanges() as /* ContestChallange */ $challange ) {
+			$out->addHTML( Html::rawElement(
+				'fieldset',
+				array(
+					'data-contest-target' => $this->getSignupLink( $challange->getId() )
+				),
+				Html::element( 'legend', array(), $challange->getField( 'title' ) )
+					. htmlspecialchars( $challange->getField( 'text' ) )
+			) );
+		}
 	}
 	
-	protected function showOpportunities() {
-		
+	protected function showOpportunities( Contest $contest ) {
+		$this->getOutput()->addWikiText( $this->getArticleContent( $contest->getField( 'oppertunities' ) ) );
 	}
 	
-	protected function showRules() {
-		
+	protected function showRules( Contest $contest ) {
+		// TODO: we might want to have a pop-up with the content here, instead of a link to the page.
+		$this->getOutput()->addWikiMsgArray( 'contest-welcome-rules', $contest->getField( 'rules_page' ) ); 
 	}
 	
 	protected function showSignupLinks( Contest $contest ) {
+		$out = $this->getOutput();
 		
+		$out->addHTML( Html::element(
+			'button',
+			array(
+				'id' => 'contest-signup',
+				'class' => 'contest-signup',
+				'data-contest-target' => $this->getSignupLink( $contest->getField( 'name' ) )
+			),
+			wfMsg( 'contest-welcome-signup' )
+		) );
+	}
+	
+	protected function getSignupLink( $contestName, $challangeId = false ) {
+		$signupitle = SpecialPage::getTitleFor( 'ContestSignup', $contestName );
+		
+		if ( $this->getUser()->isLoggedIn() ) {
+			return $signupitle->getLocalURL();
+		}
+		else {
+			return SpecialPage::getTitleFor( 'UserLogin' )->getLocalURL( array(
+				//'type' => 'signup',
+				'returnto' => $signupitle->getFullText()
+			) );
+		}
+	}
+
+	protected function getArticleContent( $pageName ) {
+		$title = Title::newFromText( $pageName );
+		
+		if ( is_null( $title ) ) {
+			return '';
+		}
+		
+		$article = new Article( $title, 0 );
+		return $article->getContent();
 	}
 	
 }
