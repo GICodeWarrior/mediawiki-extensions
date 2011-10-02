@@ -225,6 +225,7 @@ class SpecialContestSignup extends SpecialContestPage {
 			'label-message' => 'contest-signup-challange',
 			'options' => $this->getChallangesList( $contest ),
 			'required' => true,
+			'validation-callback' => array( __CLASS__, 'validateChallangeField' )
 		);
 		
 		if ( $challangeId !== false ) {
@@ -247,6 +248,7 @@ class SpecialContestSignup extends SpecialContestPage {
 			'type' => 'check',
 			'default' => '0',
 			'label-message' => array( 'contest-signup-readrules', $contest->getField( 'rules_page' ) ),
+			'validation-callback' => array( __CLASS__, 'validateRulesField' )
 		);
 		
 		return $fields;
@@ -284,7 +286,11 @@ class SpecialContestSignup extends SpecialContestPage {
 	 * @return true|string
 	 */
 	public static function validateNameField( $value, $alldata = null ) {
-		return strlen( $value ) > 1;
+		if ( strlen( $value ) < 2 ) {
+			return wfMsg( 'contest-signup-invalid-name' );
+		}
+		
+		return true;
 	}
 	
 	/**
@@ -298,7 +304,11 @@ class SpecialContestSignup extends SpecialContestPage {
 	 * @return true|string
 	 */
 	public static function validateEmailField( $value, $alldata = null ) {
-		return Sanitizer::validateEmail( $value );
+		if ( !Sanitizer::validateEmail( $value ) ) {
+			return wfMsg( 'contest-signup-invalid-email' );
+		}
+		
+		return true;
 	}
 	
 	/**
@@ -312,6 +322,47 @@ class SpecialContestSignup extends SpecialContestPage {
 	 * @return true|string
 	 */
 	public static function validateCountryField( $value, $alldata = null ) {
-		return $value !== '';
+		if ( $value === '' ) {
+			return wfMsg( 'contest-signup-require-country' );
+		}
+		
+		return true;
 	}
+	
+	/**
+	 * HTMLForm field validation-callback for rules field.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param $value String
+	 * @param $alldata Array
+	 * 
+	 * @return true|string
+	 */
+	public static function validateRulesField( $value, $alldata = null ) {
+		if ( !$value ) {
+			return wfMsg( 'contest-signup-require-rules' );
+		}
+		
+		return true;
+	}
+	
+	/**
+	 * HTMLForm field validation-callback for challange field.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param $value String
+	 * @param $alldata Array
+	 * 
+	 * @return true|string
+	 */
+	public static function validateChallangeField( $value, $alldata = null ) {
+		if ( is_null( $value ) ) {
+			return wfMsg( 'contest-signup-require-challange' );
+		}
+		
+		return true;
+	}
+	
 }

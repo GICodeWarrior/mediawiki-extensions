@@ -95,7 +95,7 @@ class SpecialContestSubmission extends SpecialContestPage {
 		);
 		
 		if ( $contestant === false ) {
-			$out->redirect( SpecialPage::getTitleFor( 'ContestSignup', $contest->getField( 'name' ) )->getLocalURL() );
+			$this->getOutput()->redirect( SpecialPage::getTitleFor( 'ContestSignup', $contest->getField( 'name' ) )->getLocalURL() );
 		}
 		else {
 			$contestant->setContest( $contest );
@@ -219,7 +219,11 @@ class SpecialContestSubmission extends SpecialContestPage {
 	 * @return true|string
 	 */
 	public static function validateNameField( $value, $alldata = null ) {
-		return strlen( $value ) > 1;
+		if ( strlen( $value ) < 2 ) {
+			return wfMsg( 'contest-signup-invalid-name' );
+		}
+		
+		return true;
 	}
 	
 	/**
@@ -233,7 +237,11 @@ class SpecialContestSubmission extends SpecialContestPage {
 	 * @return true|string
 	 */
 	public static function validateEmailField( $value, $alldata = null ) {
-		return Sanitizer::validateEmail( $value );
+		if ( !Sanitizer::validateEmail( $value ) ) {
+			return wfMsg( 'contest-signup-invalid-email' );
+		}
+		
+		return true;
 	}
 	
 }
