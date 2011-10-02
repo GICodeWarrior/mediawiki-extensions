@@ -109,6 +109,7 @@ $messages['en'] = array(
 	'contest-signup-readrules' => 'I confirm that I have read, and agree to, [[$1|the contest rules]]',
 	'contest-signup-challange' => 'What challenge do you want to take on?',
 	'contest-signup-finished' => 'This contest has ended.',
+	'contest-signup-draft' => 'This contest has not started yet. Please be patient.',
 	'contest-signup-country' => 'Your country',
 
 	// Special:ContestSubmission

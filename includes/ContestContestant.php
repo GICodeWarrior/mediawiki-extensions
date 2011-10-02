@@ -124,14 +124,22 @@ class ContestContestant extends ContestDBObject {
 	 * 
 	 * @since 0.1
 	 * 
+	 * @param array|null $fields The fields to load, null for all fields.
+	 * 
 	 * @return Contest
 	 */
-	public function getContest() {
-		if ( is_null( $this->contest ) ) {
-			$this->contest = Contest::s()->selectRow( null, array( 'id' => $this->getField( 'contest_id' ) ) );
+	public function getContest( array $fields = null ) {
+		if ( !is_null( $this->contest ) ) {
+			return $this->contest;
 		}
 		
-		return $this->contest;
+		$contest = Contest::s()->selectRow( $fields, array( 'id' => $this->getField( 'contest_id' ) ) );
+		
+		if ( is_null( $this->contest ) && is_null( $fields ) ) {
+			$this->contest = $contest;
+		}
+		
+		return $contest;
 	}
 	
 	/**
@@ -420,5 +428,18 @@ class ContestContestant extends ContestDBObject {
 		);
 	}
 	
+	/**
+	 * (non-PHPdoc)
+	 * @see ContestDBObject::insertIntoDB()
+	 */
+	protected function insertIntoDB() {
+		$success = parent::insertIntoDB();
+		
+		if ( $success ) {
+			$this->getContest( array( 'id' ) )->addToSubmissionCount( 1 );
+		}
+		
+		return $success;
+	}
 	
 }
