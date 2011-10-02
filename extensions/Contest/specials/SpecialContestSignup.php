@@ -99,7 +99,9 @@ class SpecialContestSignup extends SpecialContestPage {
 					$this->showEnabledPage( $contest, $challangeId );	
 					break;
 				case Contest::STATUS_DRAFT:
-					// TODO	
+					$this->showWarning( 'contest-signup-draft' );
+					$out->addHTML( '<br /><br /><br /><br />' );
+					$out->returnToMain();	
 					break;
 				case Contest::STATUS_FINISHED:
 					$this->showWarning( 'contest-signup-finished' );

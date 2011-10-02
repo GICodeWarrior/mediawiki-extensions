@@ -312,4 +312,38 @@ class Contest extends ContestDBObject {
 		return $success;
 	}
 	
+	/**
+	 * Add an amount (can be negative) to the total submissions for this contest.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param integer $amount
+	 * 
+	 * @return boolean Success indicator
+	 */
+	public function addToSubmissionCount( $amount ) {
+		if ( $amount == 0 ) {
+			return true;
+		}
+		
+		$absoluteAmount = abs( $amount );
+		$isNegative = $amount < 0;
+		
+		$dbw = wfGetDB( DB_MASTER );
+		
+		$countField = $this->getPrefixedField( 'submission_count' );
+		
+		$success = $dbw->update(
+			$this->getDBTable(),
+			array( "$countField=$countField" . ( $isNegative ? '-' : '+' ) . $absoluteAmount ),
+			array( $this->getPrefixedField( 'id' ) => $this->getId() )
+		);
+		
+		if ( $success && $this->hasField( 'submission_count' ) ) {
+			$this->setField( 'submission_count', $this->getField( 'submission_count' ) + $amount );
+		}
+		
+		return $success;
+	}
+	
 }
