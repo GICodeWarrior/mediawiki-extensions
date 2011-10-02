@@ -112,6 +112,12 @@ $messages['en'] = array(
 	'contest-signup-draft' => 'This contest has not started yet. Please be patient.',
 	'contest-signup-country' => 'Your country',
 
+	'contest-signup-require-rules' => 'You need to agree to the contest rules.',
+	'contest-signup-require-country' => 'You need to provide your country of residence.',
+	'contest-signup-invalid-email' => 'The email address you provided is not valid.',
+	'contest-signup-invalid-name' => 'The name you provided is to short.',
+	'contest-signup-require-challange' => 'You must select a challange.',
+
 	// Special:ContestSubmission
 	'contest-submission-submit' => 'Submit',
 	'contest-submission-unknown' => 'There is no contest with the provided name.',
