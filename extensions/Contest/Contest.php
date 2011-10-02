@@ -152,6 +152,17 @@ $wgResourceModules['contest.special.contest'] = $moduleTemplate + array(
 	)
 );
 
+$wgResourceModules['contest.special.welcome'] = $moduleTemplate + array(
+	'scripts' => array(
+		'contest.special.welcome.js'
+	),
+	'messages' => array(
+	),
+	'dependencies' => array(
+		'jquery.ui.button'
+	)
+);
+
 unset( $moduleTemplate );
 
 $egContestSettings = array();

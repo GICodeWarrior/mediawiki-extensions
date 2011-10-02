@@ -64,14 +64,28 @@ class SpecialContestWelcome extends SpecialContestPage {
 			$this->showRules( $contest );
 			$this->showSignupLinks( $contest );
 			
-			$out->addModules( '' );
+			$out->addModules( 'contest.special.welcome' );
 		}
 	}
 	
+	/**
+	 * Show the intro text for this contest.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param Contest $contest
+	 */
 	protected function showIntro( Contest $contest ) {
 		$this->getOutput()->addWikiText( $this->getArticleContent( $contest->getField( 'intro' ) ) );
 	}
 	
+	/**
+	 * Show a list of the challanges part of this contest.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param Contest $contest
+	 */
 	protected function showChallanges( Contest $contest ) {
 		$out = $this->getOutput();
 		
@@ -87,15 +101,36 @@ class SpecialContestWelcome extends SpecialContestPage {
 		}
 	}
 	
+	/**
+	 * Show the oppertunities for this contest.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param Contest $contest
+	 */
 	protected function showOpportunities( Contest $contest ) {
 		$this->getOutput()->addWikiText( $this->getArticleContent( $contest->getField( 'oppertunities' ) ) );
 	}
 	
+	/**
+	 * Show the rules for this contest.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param Contest $contest
+	 */
 	protected function showRules( Contest $contest ) {
 		// TODO: we might want to have a pop-up with the content here, instead of a link to the page.
 		$this->getOutput()->addWikiMsgArray( 'contest-welcome-rules', $contest->getField( 'rules_page' ) ); 
 	}
 	
+	/**
+	 * Show the signup links for this contest.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param Contest $contest
+	 */
 	protected function showSignupLinks( Contest $contest ) {
 		$out = $this->getOutput();
 		
@@ -110,6 +145,18 @@ class SpecialContestWelcome extends SpecialContestPage {
 		) );
 	}
 	
+	/**
+	 * Gets the URL for the signup links.
+	 * When the user has to login, this will be to the login page,
+	 * with a retunrto to the signup page.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param string $contestName
+	 * @param integer|false $challangeId
+	 * 
+	 * @return string
+	 */
 	protected function getSignupLink( $contestName, $challangeId = false ) {
 		$signupitle = SpecialPage::getTitleFor( 'ContestSignup', $contestName );
 		
@@ -124,6 +171,16 @@ class SpecialContestWelcome extends SpecialContestPage {
 		}
 	}
 
+	/**
+	 * Gets the content of the article with the provided page name,
+	 * or an empty string when there is no such article.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param string $pageName
+	 * 
+	 * @return string
+	 */
 	protected function getArticleContent( $pageName ) {
 		$title = Title::newFromText( $pageName );
 		

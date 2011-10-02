@@ -10,10 +10,10 @@
 	
 	$( document ).ready( function() {
 
-		$( '#contest-signup' ).click( function() {
-			
+		$( '.contest-signup' ).button().click( function() {
+			window.location = $( this ).attr( 'data-contest-target' );
 		} );
-	
+		
 	} );
 
 })( window.jQuery, window.mediaWiki );
