@@ -154,7 +154,10 @@ $wgResourceModules['contest.special.contest'] = $moduleTemplate + array(
 
 $wgResourceModules['contest.special.welcome'] = $moduleTemplate + array(
 	'scripts' => array(
-		'contest.special.welcome.js'
+		'contest.special.welcome.js',
+	),
+	'styles' => array(
+		'contest.special.welcome.css',
 	),
 	'messages' => array(
 	),
