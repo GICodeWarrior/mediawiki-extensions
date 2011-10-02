@@ -37,7 +37,12 @@ foreach ( $inf_pars as $inf_par ) {
 
 <script type="text/javascript">
 /*<![CDATA[*/
-YAHOO.util.Event.onContentReady('<?php echo "wpInfoboxPar" . $inf_par_num ?>', YAHOO.Createpage.ClearInput, {num: <?php echo $inf_par_num ?>});
+var ourInfoboxElement = jQuery( '#wpInfoboxPar<?php echo $inf_par_num ?>' );
+if ( ourInfoboxElement.length > 0 ) {
+	jQuery( document ).ready( function( e ) {
+		CreateAPage.clearInput( e, {num: <?php echo $inf_par_num ?>} );
+	});
+}
 /*]]>*/
 </script>
 <?php

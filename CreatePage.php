@@ -5,7 +5,7 @@
  *
  * @file
  * @ingroup Extensions
- * @version 3.80 (r15554)
+ * @version 3.90 (r15554)
  * @author Bartek Łapiński <bartek@wikia-inc.com>
  * @author Jack Phoenix <jack@countervandalism.net>
  * @copyright Copyright © 2007-2008 Wikia Inc.
@@ -21,8 +21,11 @@ if( !defined( 'MEDIAWIKI' ) ) {
 // Extension credits that will show up on Special:Version
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'CreateAPage',
-	'author' => array( 'Bartek Łapiński', 'Łukasz Garczewski', 'Przemek Piotrowski', 'Jack Phoenix' ),
-	'version' => '3.80',
+	'author' => array(
+		'Bartek Łapiński', 'Łukasz Garczewski', 'Przemek Piotrowski',
+		'Jack Phoenix'
+	),
+	'version' => '3.90',
 	'description' => '[[Special:CreatePage|Easy to use interface]] for creating new articles',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:CreateAPage',
 );
@@ -47,6 +50,19 @@ require_once $dir . 'SpecialCreatePage_ajax.php';
 // ResourceLoader support for MediaWiki 1.17+
 $wgResourceModules['ext.createAPage'] = array(
 	'styles' => 'CreatePage.css',
+	'scripts' => 'js/CreateAPage.js',
+	'messages' => array(
+		'createpage-insert-image', 'createpage-upload-aborted',
+		'createpage-img-uploaded', 'createpage-login-required',
+		'createpage-login-href', 'createpage-login-required2',
+		'createpage-give-title', 'createpage-img-uploaded',
+		'createpage-article-exists', 'createpage-article-exists2',
+		'createpage-title-invalid', 'createpage-please-wait',
+		'createpage-show', 'createpage-hide',
+		'createpage-must-specify-title', 'createpage-unsaved-changes',
+		'createpage-unsaved-changes-details'
+	),
+	'dependencies' => array( 'jquery.ui', 'jquery.ui.dialog' ),
 	'localBasePath' => dirname( __FILE__ ),
 	'remoteExtPath' => 'CreateAPage',
 	'position' => 'top' // available since r85616
@@ -59,12 +75,14 @@ $wgCreatePageCoverRedLinks = false;
 
 // Hooked functions
 $wgHooks['EditPage::showEditForm:initial'][] = 'wfCreatePagePreloadContent';
-$wgHooks['Image::RecordUpload:article'][] = 'wfCreatePageShowNoImagePage';
+// I'm not sure if this and the related, custom Article class are even needed
+// nowadays, so I'm disabling it for the time being.
+//$wgHooks['Image::RecordUpload:article'][] = 'wfCreatePageShowNoImagePage';
 $wgHooks['CustomEditor'][] = 'wfCreatePageRedLinks';
 $wgHooks['ConfirmEdit::onConfirmEdit'][] = 'wfCreatePageConfirmEdit'; // ConfirmEdit CAPTCHA
 
 if ( $wgCreatePageCoverRedLinks ) {
-	$wgHooks['UserToggles'][] = 'wfCreatePageToggle';
+	$wgHooks['GetPreferences'][] = 'wfCreatePageToggle';
 }
 
 // handle ConfirmEdit CAPTCHA, only for CreatePage, which will be treated a bit differently (edits in special page)
@@ -93,7 +111,7 @@ function wfCreatePageConfirmEdit( &$captcha, &$editPage, $newtext, $section, $me
 			$mainform = new CreatePageCreatePlateForm();
 			$mainform->showForm( '', false, array( &$captcha, 'editCallback' ) );
 			$editor = new CreatePageMultiEditor( $_SESSION['article_createplate'] );
-			$editor->GenerateForm( $newtext );
+			$editor->generateForm( $newtext );
 
 			$result = false;
 			return false;
@@ -130,15 +148,17 @@ function wfCreatePageRedLinks( $article, $user ) {
 	if (
 		( $user->getOption( 'createpage-redlinks', 1 ) == 0 ) ||
 		!in_array( $namespace, $wgContentNamespaces )
-	) {
+	)
+	{
 		return true;
 	}
 
 	// nomulti should always bypass that (this is for AdvancedEdit mode)
 	if (
 		$article->getTitle()->exists() ||
-		( 'nomulti' == $wgRequest->getVal( 'editmode' ) )
-	) {
+		( $wgRequest->getVal( 'editmode' ) == 'nomulti' )
+	)
+	{
 		return true;
 	} else {
 		if ( $wgRequest->getCheck( 'wpPreview' ) ) {

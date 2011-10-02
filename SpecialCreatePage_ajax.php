@@ -34,16 +34,16 @@ function axMultiEditParse() {
 	$title = Title::newFromText( "Createplate-{$template}", NS_MEDIAWIKI );
 
 	// transfer optional sections data
-	$optional_sections = array();
+	$optionalSections = array();
 	foreach( $_POST as $key => $value ) {
 		if( strpos( $key, 'wpOptionalInput' ) !== false ) {
-			$optional_sections = str_replace( 'wpOptionalInput', '', $key );
+			$optionalSections = str_replace( 'wpOptionalInput', '', $key );
 		}
 	}
 
 	if ( $title->exists() ) {
 		$rev = Revision::newFromTitle( $title );
-		$me = CreateMultiPage::multiEditParse( 10, 10, '?', $rev->getText(), $optional_sections );
+		$me = CreateMultiPage::multiEditParse( 10, 10, '?', $rev->getText(), $optionalSections );
 	} else {
 		$me = CreateMultiPage::multiEditParse( 10, 10, '?', '<!---blanktemplate--->' );
 	}
@@ -131,7 +131,7 @@ function axCreatepageAdvancedSwitch() {
 
 	$mCreateplate = $wgRequest->getVal( 'createplates' );
 	$editor = new CreatePageMultiEditor( $mCreateplate );
-	$content = CreateMultiPage::unescapeBlankMarker( $editor->GlueArticle() );
+	$content = CreateMultiPage::unescapeBlankMarker( $editor->glueArticle() );
 	wfCreatePageUnescapeKnownMarkupTags( $content );
 	$_SESSION['article_content'] = $content;
 

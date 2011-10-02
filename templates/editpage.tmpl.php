@@ -28,7 +28,11 @@ foreach ( $boxes as $id => $box ) {
 			$visible = '';
 			while( $i < count( $boxes ) - 1 ) {
 				$i++;
-				if ( ( $boxes[$i]['type'] == 'title' ) || ( $boxes[$i]['type'] == 'optional_textarea' ) ) {
+				if (
+					( $boxes[$i]['type'] == 'title' ) ||
+					( $boxes[$i]['type'] == 'optional_textarea' )
+				)
+				{
 					$title_found = true;
 					if ( $boxes[$i]['type'] == 'optional_textarea' ) {
 						$optionalSections[] = array( $sections, $box['value'] );
@@ -107,8 +111,6 @@ if( !empty( $optionalSections ) ) {
 	</div>
 <?php
 }
-
-
 ?>
 
 

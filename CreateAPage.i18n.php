@@ -57,6 +57,9 @@ $messages['en'] = array(
 	'createpage-advanced-edit' => 'advanced editor',
 	'createpage-optionals-text' => 'Add optional sections:',
 	'createpage-save' => 'Save',
+	'createpage-must-specify-title' => 'Please specify a title first!',
+	'createpage-unsaved-changes' => 'Unsaved changes',
+	'createpage-unsaved-changes-details' => 'You have unsaved changes. Clicking OK will result in abandoning them.',
 	'tog-createpage-redlinks' => 'Use <a href="http://www.shoutwiki.com/wiki/Help:CreatePage">CreatePage</a> when following broken links',
 	'createpage-template-infobox-format' => '/\{\{[^\{\}]*Infobox.*\}\}/is', # regex used to find out whether our template is an infobox or not
 );
@@ -308,6 +311,9 @@ $messages['fi'] = array(
 	'createpage-advanced-edit' => 'kehittynyttä editoria',
 	'createpage-optionals-text' => 'Lisää vapaaehtoisia osioita:',
 	'createpage-save' => 'Tallenna',
+	'createpage-must-specify-title' => 'Anna otsikko ensiksi!',
+	'createpage-unsaved-changes' => 'Tallentamattomat muutokset',
+	'createpage-unsaved-changes-details' => 'Sinulla on tallentamattomia muutoksia. Painamalla OK-painiketta hylkäät ne.',
 	'tog-createpage-redlinks' => 'Käytä <a href="http://fi.shoutwiki.com/wiki/Ohje:CreatePage">CreatePagea</a> rikkinäisiä linkkejä seuratessa',
 	'createpage-template-infobox-format' => '/\{\{[^\{\}]*tietolaatikko.*\}\}/is',
 );
