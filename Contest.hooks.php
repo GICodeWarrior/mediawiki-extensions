@@ -59,6 +59,22 @@ final class ContestHooks {
 			dirname( __FILE__ ) . '/Contest.sql',
 			true
 		) );
+		
+		$updater->addExtensionUpdate( array(
+			'addIndex',
+			'contests',
+			'contest_name',
+			dirname( __FILE__ ) . '/sql/IndexContestName.sql',
+			true
+		) );
+		
+		$updater->addExtensionUpdate( array(
+			'addIndex',
+			'contest_contestants',
+			'contestant_user_contest',
+			dirname( __FILE__ ) . '/sql/IndexContestantUserContest.sql',
+			true
+		) );
 
 		return true;
 	}

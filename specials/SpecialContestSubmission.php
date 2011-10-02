@@ -68,7 +68,7 @@ class SpecialContestSubmission extends SpecialContestPage {
 					$this->handleEnabledPage( $contest );	
 					break;
 				case Contest::STATUS_DRAFT:
-					// TODO	
+					// TODO
 					break;
 				case Contest::STATUS_FINISHED:
 					$this->showWarning( 'contest-submission-finished' );

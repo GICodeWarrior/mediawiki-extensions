@@ -17,8 +17,8 @@ CREATE TABLE IF NOT EXISTS /*_*/contests (
 CREATE TABLE IF NOT EXISTS /*_*/contest_contestants (
   contestant_id                INT unsigned        NOT NULL auto_increment PRIMARY KEY, -- Contestant id (unique id per user per contest)
   contestant_contest_id        SMALLINT unsigned   NOT NULL, -- Foreign key on contests.contest_id
-  contestant_challange_id      INT unsigned        NOT NULL, -- Foreign key on contest_challanges.challange_id
   contestant_user_id           INT(10) unsigned    NOT NULL, -- Foreign key on user.user_id
+  contestant_challange_id      INT unsigned        NOT NULL, -- Foreign key on contest_challanges.challange_id
   
   -- These fields will be copied from the user table on contest lock
   contestant_full_name         VARCHAR(255)        NOT NULL, -- Full name of the contestant
