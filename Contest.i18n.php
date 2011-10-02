@@ -18,7 +18,7 @@ $messages = array();
  * @author Jeroen De Dauw
  */
 $messages['en'] = array(
-	'contest-desc' => 'Contest extension that allows users to participate in admin defined contest challanges. Via a judging interface, judges can discuss and vote on submissions.',
+	'contest-desc' => 'Contest extension that allows users to participate in admin defined contest challenges. Via a judging interface, judges can discuss and vote on submissions.',
 
 	// Rights
 	'right-contestadmin' => 'Manage contests',
@@ -83,13 +83,13 @@ $messages['en'] = array(
 	'contest-edit-exists-already' => 'Note: you are editing an already existing contest, not creating a new one.',
 	'contest-edit-submit' => 'Submit',
 
-	'contest-edit-challanges' => 'Contest challanges',
-	'contest-edit-delete' => 'Delete challange',
-	'contest-edit-add-first' => 'Add a challange',
-	'contest-edit-add-another' => 'Add another challange',
-	'contest-edit-confirm-delete' => 'Are you sure you want to delete this challange?',
-	'contest-edit-challange-title' => 'Challange title',
-	'contest-edit-challange-text' => 'Challange text',
+	'contest-edit-challanges' => 'Contest challenges',
+	'contest-edit-delete' => 'Delete challenge',
+	'contest-edit-add-first' => 'Add a challenge',
+	'contest-edit-add-another' => 'Add another challenge',
+	'contest-edit-confirm-delete' => 'Are you sure you want to delete this challenge?',
+	'contest-edit-challange-title' => 'Challenge title',
+	'contest-edit-challange-text' => 'Challenge text',
 
 	// Special:ContestWelcome
 	'contest-welcome-unknown' => 'There is no contest with the provided name.',
@@ -103,7 +103,7 @@ $messages['en'] = array(
 	'contest-signup-volunteer' => 'I am interested in volunteer opportunities',
 	'contest-signup-wmf' => 'I am interested in working for the Wikimedia Foundation',
 	'contest-signup-readrules' => 'I confirm that I have read, and agree to, [[$1|the contest rules]]',
-	'contest-signup-challange' => 'What challange do you want to take on?',
+	'contest-signup-challange' => 'What challenge do you want to take on?',
 	'contest-signup-finished' => 'This contest has ended.',
 	'contest-signup-country' => 'Your country',
 
