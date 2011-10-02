@@ -7,8 +7,10 @@ CREATE TABLE IF NOT EXISTS /*_*/contests (
   contest_id                   SMALLINT unsigned   NOT NULL auto_increment PRIMARY KEY,
   contest_name                 VARCHAR(255)        NOT NULL, -- String indentifier for the contest
   contest_status               TINYINT unsigned    NOT NULL default '0', -- Status of the contest
-  contest_submission_count     SMALLINT unsigned   NOT NULL, -- 
-  contest_rules_page           VARCHAR(255)        NOT NULL
+  contest_submission_count     SMALLINT unsigned   NOT NULL, -- Amount of submissions made to the contest
+  contest_rules_page           VARCHAR(255)        NOT NULL, -- Name of the page with rules
+  contest_oppertunities        VARCHAR(255)        NOT NULL, -- Name of the page with oppertunities
+  contest_intro                VARCHAR(255)        NOT NULL -- Name of the page with the intro text
 ) /*$wgDBTableOptions*/;
 
 -- Contestants
@@ -28,7 +30,7 @@ CREATE TABLE IF NOT EXISTS /*_*/contest_contestants (
   contestant_volunteer         TINYINT unsigned    NOT NULL, -- If the user is interested in voluneer oportunities
   contestant_wmf               TINYINT unsigned    NOT NULL, -- If the user is interested in a WMF job
   
-  contestant_submission        INT(10) unsigned    NOT NULL -- TODO: file shizzle
+  contestant_submission        TINYBLOB            NOT NULL -- URL to the users submission
 ) /*$wgDBTableOptions*/;
 
 -- Challanges
