@@ -6289,7 +6289,7 @@ Hvala in najlepše želje,
 ekipa {{GRAMMAR:rodilnik|{{SITENAME}}}}',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
@@ -6376,7 +6376,7 @@ $1
 
 $2
 
-Након тога, унесите следећи потврдни кôд:
+Након тога, унесите следећи потврдни код:
 
 $3
 
