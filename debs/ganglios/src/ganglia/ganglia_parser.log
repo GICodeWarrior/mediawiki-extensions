@@ -1,0 +1,6 @@
+2011-10-03 23:01:28,936 CRITICAL Starting ganglia_parser
+2011-10-03 23:01:28,962 CRITICAL Failed to rename /tmp/tmp8TIOms to ./ganglia/xmlcache/spence.xml
+2011-10-03 23:01:28,973 CRITICAL Finished ganglia_parser
+2011-10-03 23:02:42,089 CRITICAL Starting ganglia_parser
+2011-10-03 23:02:42,106 CRITICAL Failed to rename /tmp/tmpTSpsNG to ./ganglia/xmlcache/spence.xml
+2011-10-03 23:02:42,107 CRITICAL Finished ganglia_parser
