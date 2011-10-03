@@ -847,14 +847,14 @@ $messages['sq'] = array(
 	'searchbox-namespaces' => 'Hapësira:',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'searchbox-desc' => 'Омогућава укључивање образаца претраге',
 	'searchbox-search' => 'Претрага',
-	'searchbox-go' => 'Пређи',
+	'searchbox-go' => 'Иди',
 	'searchbox-namespaces' => 'Именски простори:',
 );
 
