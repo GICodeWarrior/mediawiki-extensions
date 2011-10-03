@@ -96,7 +96,11 @@ class ContestContestant extends ContestDBObject {
 			'volunteer' => 'bool',
 			'wmf' => 'bool',
 		
-			'submission' => 'wtf', // TODO
+			'submission' => 'str',
+		
+			'rating' => 'int',
+			'rating_count' => 'int',
+			'comments' => 'int',
 		);
 	}
 	
@@ -115,7 +119,13 @@ class ContestContestant extends ContestDBObject {
 		
 			'country' => '',
 			'volunteer' => false,
-			'wmf' => false
+			'wmf' => false,
+		
+			'submission' => '',
+		
+			'rating' => 0,
+			'rating_count' => 0,
+			'comments' => 0,
 		);
 	}
 	

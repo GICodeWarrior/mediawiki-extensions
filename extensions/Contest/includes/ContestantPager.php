@@ -32,6 +32,8 @@ class ContestantPager extends TablePager {
 				'contestant_id' => 'contest-contestant-id',
 				'contestant_volunteer' => 'contest-contestant-volunteer',
 				'contestant_wmf' => 'contest-contestant-wmf',
+				'contestant_comment_count' => 'contest-contestant-commentcount',
+				'contestant_overall_rating' => 'contest-contestant-overallrating',
 			);
 			
 			$headers = array_map( 'wfMsg', $headers );
@@ -40,6 +42,27 @@ class ContestantPager extends TablePager {
 		return $headers;
 	}
 
+	function formatRow( $row ) {
+		$this->mCurrentRow = $row;  	# In case formatValue etc need to know
+		$s = Xml::openElement( 'tr', $this->getRowAttrs($row) );
+		
+		foreach ( $this->getFieldNames() as $field => $name ) {
+			$value = isset( $row->$field ) ? $row->$field : null;
+			$formatted = strval( $this->formatValue( $field, $value ) );
+			
+			if ( $formatted == '' ) {
+				$formatted = '&#160;';
+			}
+			$s .= Xml::tags( 'td', $this->getCellAttrs( $field, $value ), $formatted );
+		}
+		
+		
+		
+		$s .= "</tr>\n";
+		
+		return $s;
+	}
+	
 	public function formatValue( $name, $value ) {
 		switch ( $name ) {
 			case 'contestant_volunteer': case 'contestant_wmf':
