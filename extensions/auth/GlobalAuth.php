@@ -115,7 +115,6 @@ class GlobalAuth {
 	 */
 	function updateUser( &$user ) {
 		$s =& $this->data;
-		$user->decodeOptions( $s->user_options );
 		$user->mEmail = $s->user_email;
 		$user->mEmailAuthenticated = wfTimestampOrNull( TS_MW, $s->user_email_authenticated );
 		$user->mRealName = $s->user_real_name;
