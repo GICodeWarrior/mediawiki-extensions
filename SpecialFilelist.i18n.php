@@ -352,7 +352,7 @@ $messages['gl'] = array(
 	'filelist' => 'Lista de arquivos',
 	'filelist-desc' => '[[Special:Filelist|Páxina especial]] para listar ficheiros cargados',
 	'filelist-show-list' => 'Amosar a lista',
-	'filelist-show-gallery' => 'Amosar galería',
+	'filelist-show-gallery' => 'Mostrar a galería',
 	'filelist-image-desc' => 'desc',
 );
 
