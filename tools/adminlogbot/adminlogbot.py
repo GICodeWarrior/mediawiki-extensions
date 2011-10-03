@@ -10,8 +10,8 @@ nickpassword="password"
 network="irc.freenode.net"
 port=6667
 
-authormap = { "TimStarling": "Tim", "_mary_kate_": "river", "yksinaisyyteni": "river", "flyingparchment": "river", "RobH": "RobH", "werdnum": "Andrew", "werdna": "Andrew", "werdnus": "Andrew", "aZaFred" : "Fred"  }
-titlemap = { "Andrew": "junior", "RoanKattouw": "Mr. Obvious", "RobH": "RobH", "notpeter": "and now dispaching a T1000 to your position to terminate you.", "domas": "o lord of the trolls, my master, my love. I can't live with out you; oh please log to me some more!" }
+authormap = { "TimStarling": "Tim", "_mary_kate_": "river", "yksinaisyyteni": "river", "flyingparchment": "river", "RobH": "RobH", "werdnum": "Andrew", "werdna": "Andrew", "werdnus": "Andrew", "aZaFred" : "Fred", "^demon" : "Chad"  }
+titlemap = { "Andrew": "junior", "RoanKattouw": "Mr. Obvious", "RobH": "RobH", "notpeter": "and now dispaching a T1000 to your position to terminate you.", "domas": "o lord of the trolls, my master, my love. I can't live with out you; oh please log to me some more!", "^demon" : "you sysadmin wannabe." }
 
 def on_connect(con, event):
 	con.privmsg(nickserv,"identify "+nickpassword)
