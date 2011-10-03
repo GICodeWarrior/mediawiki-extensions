@@ -40,7 +40,7 @@ class Search {
 	 */
 	private function attributeAvailable($attribute) {
 		// Category
-		if (wfMsg("categoryname") == $attribute) {
+		if (wfMsg("fptc-categoryname") == $attribute) {
 			return true;
 		}
 		

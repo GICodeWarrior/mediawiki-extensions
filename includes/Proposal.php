@@ -54,8 +54,8 @@ class Proposal {
 		}
 		
 		// Category
-		if (strpos(wfMsg("categoryname"), $attribute) !== false) {
-			$attributes[] = sprintf("%s", wfMsg("categoryname"));
+		if (strpos(wfMsg("fptc-categoryname"), $attribute) !== false) {
+			$attributes[] = sprintf("%s", wfMsg("fptc-categoryname"));
 		}
 		
 		$res->free();
@@ -88,8 +88,8 @@ class Proposal {
 		}
 		
 		// Category
-		if (strpos(wfMsg("categoryname"), $attribute) === 0) {
-			$attributes_1[] = sprintf("%s", wfMsg("categoryname"));
+		if (strpos(wfMsg("fptc-categoryname"), $attribute) === 0) {
+			$attributes_1[] = sprintf("%s", wfMsg("fptc-categoryname"));
 		}
 		
 		// Search with regexp for related attributes with the same ending 
@@ -106,8 +106,8 @@ class Proposal {
 		}
 		
 		// Category
-		if (strpos(wfMsg("categoryname"), $attribute) === strlen(wfMsg("categoryname")) - strlen($attribute)) {
-			$attributes_2[] = sprintf("%s", wfMsg("categoryname"));
+		if (strpos(wfMsg("fptc-categoryname"), $attribute) === strlen(wfMsg("fptc-categoryname")) - strlen($attribute)) {
+			$attributes_2[] = sprintf("%s", wfMsg("fptc-categoryname"));
 		}
 		
 		// Merge both arrays for one return
@@ -151,8 +151,8 @@ class Proposal {
 		}
 		
 		// Category
-		if (strpos(wfMsg("categoryname"), $beginAttribut) === 0 || strpos(wfMsg("categoryname"), $endAttribut) === strlen(wfMsg("categoryname")) - strlen($endAttribut) || strpos(wfMsg("categoryname"), $attribute) !== false) {
-			$attributes[] = sprintf("%s", wfMsg("categoryname"));
+		if (strpos(wfMsg("fptc-categoryname"), $beginAttribut) === 0 || strpos(wfMsg("fptc-categoryname"), $endAttribut) === strlen(wfMsg("fptc-categoryname")) - strlen($endAttribut) || strpos(wfMsg("fptc-categoryname"), $attribute) !== false) {
+			$attributes[] = sprintf("%s", wfMsg("fptc-categoryname"));
 		}
 		
 		$res->free();

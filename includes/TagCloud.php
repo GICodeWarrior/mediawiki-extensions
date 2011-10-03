@@ -53,7 +53,7 @@ class TagCloud {
 	 */
 	private function checkAttribute($attribute) {
 		// Category
-		if (wfMsg("categoryname") == $attribute) {
+		if (wfMsg("fptc-categoryname") == $attribute) {
 			return true;
 		}
 		

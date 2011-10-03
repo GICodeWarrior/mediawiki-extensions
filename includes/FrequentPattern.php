@@ -153,7 +153,7 @@ abstract class FrequentPattern {
 		$dbr =& wfGetDB( DB_SLAVE );
 		
 		// Get id of attribute
-		if (wfMsg("categoryname") == $attribute) {
+		if (wfMsg("fptc-categoryname") == $attribute) {
 			$res = $dbr->query("SELECT 0");
 		} else {
 			$res = $dbr->query("SELECT smw_id
@@ -167,7 +167,7 @@ abstract class FrequentPattern {
 		$res->free();
 		
 		// Get id of assumption
-		if (wfMsg("categoryname") == $attribute) {
+		if (wfMsg("fptc-categoryname") == $attribute) {
 			$res = $dbr->query("SELECT smw_id
 						FROM ".$dbr->tableName("smw_ids")."
 						WHERE smw_title = '".mysql_real_escape_string($assumption)."'
