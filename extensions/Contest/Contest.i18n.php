@@ -141,6 +141,7 @@ $messages['en'] = array(
 	'contest-contestant-yes' => 'Yes',
 	'contest-contestant-commentcount' => 'Comments',
 	'contest-contestant-overallrating' => 'Rating',
+	'contest-contestant-rating' => '$1 ($2 {{PLURAL:$2|vote|votes}})'
 );
 
 /** Message documentation (Message documentation)

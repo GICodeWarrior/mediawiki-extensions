@@ -30,7 +30,8 @@ class ApiDeleteContest extends ApiBase {
 		$everythingOk = true;
 		
 		foreach ( $params['ids'] as $id ) {
-			$everythingOk = Contest::s()->delete( array( 'id' => $id ) ) && $everythingOk;
+			$contest = new Contest( array( 'id' => $id ) );
+			$everythingOk = $contest->removeAllFromDB() && $everythingOk;
 		}
 		
 		$this->getResult()->addValue(
