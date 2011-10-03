@@ -202,12 +202,28 @@ es.DocumentModel.prototype.rebuildChildNodes = function() {
 	for ( var i = 0, length = this.data.length; i < length; i++ ) {
 		if ( this.data[i].type !== undefined ) {
 			// It's an element
-			if ( this.data[i].type in es.DocumentModel.nodeModels ) {
-				var node = new es.DocumentModel.nodeModels[this.data[i].type]();
-				//this.push(  );
+			var type = this.data[i].type,
+				open = type[0] !== '/';
+			if ( !open ) {
+				type = type.substr( 1 );
+			}
+			if ( !( type in es.DocumentModel.nodeModels ) ) {
+				throw 'Unsuported element error. No class registered for element type: ' + type;
+			}
+			if ( open ) {
+				var newNode = new es.DocumentModel.nodeModels[this.data[i].type]();
+				currentNode.push( newNode );
+				currentNode = newNode;
+			} else {
+				currentNode = currentNode.getParent();
 			}
 		} else {
-			// It's content - there are no child elements
+			// It's content
+			var start = i;
+			while ( this.data[i].type === undefined && i < length ) {
+				i++;
+			}
+			currentNode.setContentLength( i - start );
 		}
 	}
 };
