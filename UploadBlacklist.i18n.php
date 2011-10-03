@@ -110,6 +110,13 @@ $messages['cy'] = array(
 	'uploadblacklist-desc' => 'Yn ychwanegu nodwedd uwchlwytho rhestr ddu',
 );
 
+/** Danish (Dansk)
+ * @author Peter Alberti
+ */
+$messages['da'] = array(
+	'uploadblacklist-desc' => 'Tilføjer funktionalitet til at sortliste visse oplægninger',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'uploadblacklist-desc' => 'Fügt eine schwarze Liste für die Hochladen-Funktion hinzu',
