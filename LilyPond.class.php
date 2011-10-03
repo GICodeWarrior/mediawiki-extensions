@@ -296,4 +296,4 @@ class LilyPond {
 		imagecopy( $dstImage, $srcImage, $borderWidth, $borderHeight, 0, 0, $width, $height );
 		imagepng( $dstImage, $dest );
 	}
-  }
+}
