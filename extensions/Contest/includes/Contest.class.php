@@ -382,6 +382,8 @@ class Contest extends ContestDBObject {
 			&& $this->hasField( $name ) && $this->getField( $name ) != self::STATUS_FINISHED ) {
 			$this->wasSetToFinished = true;
 		}
+		
+		parent::setField( $name, $value );
 	}
 	
 	/**
