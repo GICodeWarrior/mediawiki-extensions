@@ -867,13 +867,13 @@ $messages['sk'] = array(
 	'mostrevisors-viewcontributors' => 'Zobraziť hlavných prispievateľov',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'mostrevisors-namespace' => 'Именски простор:',
-	'mostrevisors-submit' => 'Пређи',
+	'mostrevisors-submit' => 'Иди',
 );
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬) */
