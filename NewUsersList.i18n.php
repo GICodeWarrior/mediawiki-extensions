@@ -57,6 +57,13 @@ $messages['ja'] = array(
 	'newuserslist-desc' => '新しい利用者とそのアバターのリストを取得するために <tt>&lt;newusers&gt;</tt> パーサ タグを追加します。',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'newuserslist-desc' => 'Deiht ene <code lang="en">&lt;newusers&gt;</code> befähl en et Wiki, ön en Leß met neue Metmaacher un dänne ier  Avatare ze krijje.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
