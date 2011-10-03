@@ -2190,6 +2190,7 @@ $messages['yi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Hydra
+ * @author Xiaomingyan
  * @author 阿pp
  */
 $messages['zh-hans'] = array(
@@ -2205,7 +2206,7 @@ $messages['zh-hans'] = array(
 	'cb_cat_name_filter_ci' => '区分大小写',
 	'cb_copy_line_hint' => '使用[+]和[>+] 按钮，复制并粘贴运算符到选定的表达式中。',
 	'cb_has_subcategories' => '$1个 {{PLURAL:$1|subcategory|subcategories}}',
-	'cb_has_pages' => '$1个 {{PLURAL:$1|page|pages}}',
+	'cb_has_pages' => '$1个页面',
 	'cb_has_files' => '$1个 {{PLURAL:$1|file|files}}',
 	'cb_has_parentcategories' => '上级类别(如果存在)',
 	'cb_previous_items_link' => '上一页',
