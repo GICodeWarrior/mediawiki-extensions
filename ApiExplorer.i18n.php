@@ -26,3 +26,11 @@ $messages['qqq'] = array(
 	'apiexplorer-intro' => 'The intro at the top of the page to acquiant new users with what the page does.',
 );
 
+/** German (Deutsch)
+ * @author Kghbln
+ */
+$messages['de'] = array(
+	'apiexplorer' => 'API-Explorer',
+	'apiexplorer-desc' => 'Ergänzt eine Spezialseite, mit der das interaktive Nutzen der Dokumentation zur API der MediaWiki-Installation möglich ist',
+);
+
