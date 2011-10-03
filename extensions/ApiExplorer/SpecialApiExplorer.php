@@ -18,8 +18,7 @@ $wgExtensionFunctions[] = 'wfSpecialApiExplorer';
 $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'name' => 'API Explorer',
-	//'url' => 'http://www.mediawiki.org/wiki/Extension:ApiExplorer', // TODO: Put into MediaWiki Extensions repo
-	'description' => 'Extension for interactively viewing live API documentation', // TODO: Update this if we have forms for each function.
+	'url' => 'http://www.mediawiki.org/wiki/Extension:ApiExplorer',
 	'descriptionmsg' => 'apiexplorer-desc',
 	'author' => '[http://seancolombo.com Sean Colombo]'
 );
