@@ -23,14 +23,25 @@ $messages['en'] = array(
 $messages['qqq'] = array(
 	'credits-desc' => 'Description for Special:Version',
 	'credits-tab' => 'Label of the tab that is shown by this extension',
-    'credits-tab-title' => 'Title of the link that is shown when hovering (Tool-Tip)'
+	'credits-tab-title' => 'Title of the link that is shown when hovering (Tool-Tip)',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author Kghbln
+ */
 $messages['de'] = array(
-	'credits-desc' => 'Fügt Link zu Autoren hinzu',
+	'credits-desc' => 'Ergänzt einen Reiter zur Anzeige der Autoren einer Seite',
 	'credits-tab' => 'Autoren',
-    'credits-tab-title' =>  'Autoren dieser Seite',
+	'credits-tab-title' => 'Autoren dieser Seite',
+);
+
+/** French (Français)
+ * @author Gomoko
+ */
+$messages['fr'] = array(
+	'credits-desc' => 'Ajoute un lien aux remerciements',
+	'credits-tab' => 'Remerciements',
+	'credits-tab-title' => 'Remerciements pour cette page',
 );
 
 /** Galician (Galego)
@@ -39,6 +50,24 @@ $messages['de'] = array(
 $messages['gl'] = array(
 	'credits-desc' => 'Engade unha ligazón aos créditos',
 	'credits-tab' => 'Créditos',
+	'credits-tab-title' => 'Créditos desta páxina',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'credits-desc' => 'Insere un ligamine al creditos',
+	'credits-tab' => 'Creditos',
+	'credits-tab-title' => 'Creditos pro iste pagina',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'credits-desc' => 'Donn Lenks op Danksaarunge derbei.',
+	'credits-tab' => 'Danksarunge',
 );
 
 /** Macedonian (Македонски)
@@ -47,5 +76,6 @@ $messages['gl'] = array(
 $messages['mk'] = array(
 	'credits-desc' => 'Додава врска во „Заслуги“',
 	'credits-tab' => 'Заслуги',
+	'credits-tab-title' => 'Заслуги за страницава',
 );
 
