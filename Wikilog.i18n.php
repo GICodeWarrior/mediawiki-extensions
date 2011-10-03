@@ -5671,6 +5671,7 @@ $messages['ps'] = array(
 	'wikilog-comment-delete' => 'دا تبصره ړنګول',
 	'wikilog-comment-history' => 'د تبصرې پېښليک کتل',
 	'wikilog-title-comments' => 'تبصرې - $1',
+	'wikilog-form-wikilog' => 'ويکي يادښتونه:',
 	'wikilog-form-category' => 'وېشنيزه:',
 	'wikilog-form-name' => 'نوم:',
 	'wikilog-form-author' => 'ليکوال:',
