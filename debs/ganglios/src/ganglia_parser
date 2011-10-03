@@ -102,39 +102,20 @@ def unionMetrics( curMetrics, hostFilePath ):
 
 def listXMLSources():
     """ returns a list of hosts to fetch ganglia stats from (the gmond
-    collector nodes).  In a small network, this will likely be a single host.
-    You could simply hardcode the list if there is no coherent naming scheme.
-    In our network, the hosts are named 'nannybot1', 'nannybot2', etc.  This
-    function polls nannybots of increasing number until it finds 3 that don't
-    respond and considers itself done."""
-    i = 0
-    missed = 0
+    collector nodes).  Pulls this list from the gmetad.conf.  This will only
+    work when the ganglia_parser script is run on the same host as the ganglia
+    web UI and aggregator host."""
     nannybots = []
     logger.info("Retrieving list of nannybots...")
-    while True:
-        try:
-            nannybot_addr = socket.gethostbyname('nannybot%d.lindenlab.com' % i)
-            s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            s.settimeout(15.0)
-            s.connect((nannybot_addr, 8649))
-            s.close()
-            nannybots.append('nannybot%d.lindenlab.com' % i)
-            logger.info('Checking nannybot%d.lindenlab.com: [OK]' % i)
-            missed = 0
-        except (socket.gaierror):
-            logger.info('Checking nannybot%d.lindenlab.com: [FAILED]' % i)
-            missed += 1
-            if missed > 3:
-                break
-        except (socket.error, socket.timeout), e:
-            logger.warning('Checking nannybot%d.lindenlab.com: [FAILED] with error %s' % (i, e))
-            # a connection error (rather than non-existent) should not count towards 
-            # the three missing that mark the end of the nannybots.
-        except Exception, e:
-            logger.critical('Caught unexpected exception while checking nannybot%d: %s' % (i, e))
-            logger.critical('EXITING...')
-            raise e
-        i += 1
+    # so long as ganglios is running on the same host as the ganglia web ui, it
+    # can use ganglia's gmetad.conf to get the list of sources.
+    gmetadconf = open('/etc/ganglia/gmetad.conf')
+    datasourcere = re.compile('^data_source "(?P<name>[^"]*)" (?P<hostlist>.*)')
+    for line in gmetadconf.readlines():
+        match = datasourcere.match(line)
+        if match:
+            for host in match.group(2).split():
+                nannybots.append(host)
 
     return nannybots
 
