@@ -829,10 +829,10 @@ Por favor, sexa coidadoso ao teclear o título: incluso os títulos non existent
 	'povwatch_no_subscribers' => 'Non hai subscritores.',
 	'povwatch_unsubscribe_intro' => 'Está subscrito a PovWatch.
 Faga clic no botón de embaixo para cancelar a subscrición.',
-	'povwatch_unsubscribe' => 'Darse de baixa',
+	'povwatch_unsubscribe' => 'Cancelar a subscrición',
 	'povwatch_subscribe_intro' => 'Non está subscrito a PovWatch.
 Faga clic no botón de embaixo para subscribirse.',
-	'povwatch_subscribe' => 'Subscribir',
+	'povwatch_subscribe' => 'Subscribirse',
 	'povwatch_added' => 'engadido',
 	'right-povwatch_admin' => 'Administrar os dereitos de usuario para engadir páxinas ás listas de vixilancia doutros usuarios',
 	'right-povwatch_user' => 'Engadir páxinas á lista de vixilancia doutros usuarios',
