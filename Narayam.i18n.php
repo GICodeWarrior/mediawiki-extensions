@@ -855,17 +855,26 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'narayam-desc' => 'Määt et müjjelesch, för beshtemmpte Shprooche för beshtemmpte Felder beim Einjävve de Taste neu met eije Aate ze Tippe ze belääje.',
-	'narayam-toggle-ime' => 'Taste-Einjabe ömschallde ($1)',
+	'narayam-desc' => 'Määt et müjjelesch, för beshtemmpte Shprooche un Schreffte för beshtemmpte Felder beim Einjävve de Taste met eije Aate ze Tippe ze belääje.',
+	'narayam-toggle-ime' => 'Besönder Taste-Einjabe aanschallde ($1)',
+	'narayam-menu' => 'Taste-Einjabe',
+	'narayam-menu-tooltip' => 'Enjaabe övver <i lang="en">Narayam</i>',
+	'narayam-help' => 'Hölp',
 	'narayam-help-page' => 'Help:Tippe',
 	'narayam-checkbox-tooltip' => 'Et Tippe zwesche jewöhnlesch un besönders ömschallde',
 	'narayam-disable-preference' => 'Donn de Enjaabe övver <i lang="en">Narayam</i> ußschallde.',
+	'narayam-as' => 'Aßamesesch met Äsazboochshtaave',
+	'narayam-as-avro' => 'Aßamesesch Avro',
+	'narayam-as-bornona' => 'Aßamesesch Bornona',
+	'narayam-as-inscript' => 'Aßamesesch <i lang="en">InScript</i>',
 	'narayam-eo' => 'Esperanto',
 	'narayam-hi-inscript' => 'Hindi <i lang="en">InScript</i>',
 	'narayam-kn' => 'Kannada met Äsazboochshtaave',
 	'narayam-kn-inscript' => 'Kannada <i lang="en">InScript</i>',
 	'narayam-ml' => 'Malayalam met Äsazboochshtaave',
 	'narayam-ml-inscript' => 'Malayalam <i lang="en">InScript</i>',
+	'narayam-ne' => 'Nepaleesesch met Äsazboochshtaave',
+	'narayam-ne-inscript' => 'Nepaleesesch <i lang="en">InScript</i>',
 	'narayam-or' => 'Oriya met Äsazboochshtaave',
 	'narayam-or-inscript' => 'Oriya <i lang="en">InScript</i>',
 	'narayam-sa' => 'Sanskrit met Äsazboochshtaave',
@@ -1512,13 +1521,14 @@ $messages['sv'] = array(
 
 /** Tamil (தமிழ்)
  * @author Sodabottle
+ * @author Surya Prakash.S.A.
  */
 $messages['ta'] = array(
-	'narayam-toggle-ime' => 'தமிழ்',
+	'narayam-toggle-ime' => 'செயலாக்குக ($1)',
 	'narayam-menu' => 'தமிழில் எழுத',
 	'narayam-menu-tooltip' => 'இக்கருவியைப் பயன்படுத்தி தமிழில் எழுதலாம்; குறுக்கு விசை :CTRL+M',
 	'narayam-help' => 'உதவி',
-	'narayam-help-page' => 'உதவி:தமிழ்த் தட்டச்சு',
+	'narayam-help-page' => 'Help:தமிழ்த் தட்டச்சு',
 	'narayam-checkbox-tooltip' => 'இக்கருவியைப் பயன்படுத்தி தமிழில் எழுதலாம்.',
 	'narayam-disable-preference' => 'நரையம் தட்டச்சுக் கருவியை நீக்கு',
 	'narayam-ta99' => 'தமிழ்99',
