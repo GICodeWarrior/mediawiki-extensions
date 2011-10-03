@@ -13,11 +13,12 @@ es.DocumentModel = function( data, attributes ) {
 	// Inheritance
 	es.DocumentModelNode.call( this, length );
 	
-	this.rebuildChildNodes();
-	
 	// Properties
 	this.data = $.isArray( data ) ? data : [];
 	this.attributes = $.isPlainObject( attributes ) ? attributes : {};
+	
+	// Initialization
+	this.rebuildChildNodes();
 };
 
 /* Static Members */
