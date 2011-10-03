@@ -35,6 +35,8 @@ $wgExtensionCredits['specialpage'][] = array(
 // Register hook to prepare header files
 $wgHooks['BeforePageDisplay'][] = 'fptc_initializeHeaders';
 
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'fptc_applySchemaChanges';
+
 // Register files
 $wgAutoloadClasses['FreqPatternTagCloud'] = FPTC_PATH_HOME . 'FreqPatternTagCloud.body.php';
 $wgExtensionMessagesFiles['FreqPatternTagCloud'] = FPTC_PATH_HOME . 'FreqPatternTagCloud.i18n.php';
@@ -82,5 +84,26 @@ function fptc_initializeHeaders() {
 	$wgOut->addScriptFile( $wgScriptPath . '/extensions/FreqPatternTagCloud/javascripts/jquery.contextMenu.js' );
 	$wgOut->addScriptFile( $wgScriptPath . '/extensions/FreqPatternTagCloud/javascripts/main.js' );
 
+	return true;
+}
+
+
+/**
+ * Applies the schema changes when the user runs maintenance/update.php.
+ *
+ * @param $updater Object: instance of DatabaseUpdater
+ * @return Boolean: true
+ */
+function fptc_applySchemaChanges( $updater = null ) {
+	$dir = dirname( __FILE__ );
+	$file = "$dir/freqpatterntagcloud.sql";
+	if ( $updater === null ) {
+		global $wgExtNewTables;
+		$wgExtNewTables[] = array( 'fptc_associationrules', $file );
+		$wgExtNewTables[] = array( 'fptc_items', $file );
+	} else {
+		$updater->addExtensionUpdate( array( 'addTable', 'fptc_associationrules', $file, true ) );
+		$updater->addExtensionUpdate( array( 'addTable', 'fptc_items', $file, true ) );
+	}
 	return true;
 }
