@@ -281,6 +281,14 @@ $messages['pms'] = array(
 	'fileattach-editcomment' => 'Archivi [[File:$1|$1]] alegà',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'fileattach-attachfile' => 'دوتنه ملول',
+	'fileattach-uploadheading' => '$1 سره دوتنه ملول',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

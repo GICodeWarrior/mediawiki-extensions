@@ -340,7 +340,7 @@ $messages['frp'] = array(
  */
 $messages['gl'] = array(
 	'interwikilist' => 'Lista de interwiki',
-	'interwikilist-desc' => 'Engade unha [[Special:Interwikilist|páxina especial]] para ver as ligazóns interwiki dispoñibles',
+	'interwikilist-desc' => 'Engade unha [[Special:Interwikilist|páxina especial]] para ver as ligazóns interwikis dispoñibles',
 	'interwikilist-linkname' => 'Ligazón interwiki',
 	'interwikilist-target' => 'Enderezo URL obxectivo',
 	'interwikilist-filter' => 'Filtrar a lista',

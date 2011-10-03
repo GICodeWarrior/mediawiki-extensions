@@ -1897,8 +1897,7 @@ $messages['zh-hans'] = array(
 	'vector-desc' => '改进Vector皮肤中的用户界面元素。',
 	'vector-collapsiblenav-preference' => '在Vector皮肤的导航菜单中折叠项目',
 	'vector-collapsiblenav-more' => '更多语言',
-	'vector-editwarning-warning' => '离开这个页面可能会令您失去之前的所有更改。
-若您已经登入，您可在您参数设置的“{{int:prefs-editing}}”节中关闭此警告。',
+	'vector-editwarning-warning' => '离开这个页面可能会令您失去之前的所有更改。若您已经登入，您可在您参数设置的“编辑”一栏中关闭此警告。',
 	'vector-editwarning-preference' => '如在更改未保存时离开页面，则发出警告',
 	'vector-simplesearch-search' => '搜索',
 	'vector-simplesearch-containing' => '含有...',

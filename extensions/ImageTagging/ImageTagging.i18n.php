@@ -828,7 +828,7 @@ Por favor, agarde a que a acción actual remate.',
 	'imagetagging-oneuniquetagmessage' => 'Esta imaxe xa ten unha etiqueta con ese nome.',
 	'imagetagging-imagetag-seemoreimages' => 'Ver máis imaxes de "$1" ($2)',
 	'imagetagging-taggedimages-title' => 'Imaxes de "$1"',
-	'imagetagging-taggedimages-displaying' => 'Amosando da $1 á $2, dun total de $3 imaxes de "$4"',
+	'imagetagging-taggedimages-displaying' => 'Mostrando da $1 á $2, dun total de $3 imaxes de "$4"',
 	'tag-logpagename' => 'Rexistro de etiquetas',
 	'tag-logpagetext' => 'Este é un rexitro de todas as incorporacións e eliminacións de etiquetas de imaxe.',
 );

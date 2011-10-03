@@ -1393,6 +1393,7 @@ $messages['krc'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'inlinecategorizer-desc' => 'E javaSkrepp Projramm, wad-et müjjelesch määt, Lenks op Saachjroppe tiräk ob_ener Sigg enzejävve udder fott ze nämme.',
 	'inlinecategorizer-add-category' => 'Saachjropp dobei donn',
 	'inlinecategorizer-add-category-submit' => 'Lohß jonn!',
 	'inlinecategorizer-add-category-summary' => 'Donn de Saachjropp „$1“ derbei.',

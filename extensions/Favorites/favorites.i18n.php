@@ -778,6 +778,15 @@ Możesz również [[Special:Favoritelist/edit|użyć standardowego edytora]].',
 	'favoritelisttools-raw' => 'Edycja tekstowa listy ulubionych',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'favoritelistall2' => 'ټول',
+	'favoritelistedit-normal-title' => 'خواپورې سمول',
+	'favoritelistedit-raw-titles' => 'سرليکونه:',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

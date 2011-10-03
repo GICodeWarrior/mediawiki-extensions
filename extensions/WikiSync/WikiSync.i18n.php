@@ -1416,6 +1416,7 @@ an partend da la revision $3?',
  */
 $messages['ps'] = array(
 	'wikisync_remote_login_button' => 'ننوتل',
+	'wikisync_api_result_Blocked' => 'پر کارن بنديز لګېدلی',
 );
 
 /** Portuguese (Português)
@@ -1676,6 +1677,6 @@ $messages['uk'] = array(
  */
 $messages['zh-hans'] = array(
 	'wikisync_remote_login_button' => '登入',
-	'wikisync_js_revision' => '修订版本$1',
+	'wikisync_js_revision' => '版本$1',
 );
 

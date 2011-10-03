@@ -941,7 +941,7 @@ $messages['so'] = array(
 	'randomincategory-label' => 'Qeybta:',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
@@ -952,7 +952,7 @@ $messages['sr-ec'] = array(
 	'randomincategory-toolbox' => 'Случајна страница',
 	'randomincategory-nocategory' => 'Категорија $1 не постоји или је празна',
 	'randomincategory-label' => 'Категорија:',
-	'randomincategory-submit' => 'Пређи',
+	'randomincategory-submit' => 'Иди',
 );
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)

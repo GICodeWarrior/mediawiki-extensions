@@ -2241,6 +2241,7 @@ $messages['pnb'] = array(
 	'prefstats-noprefs' => 'کوئی پسندی سعاب کتاب اس ویلے نئیں ویکھیا جاریا۔
 پسندی سعاب کتاب ویکھن لئی $wgPrefStatsTrackPrefs نوں ویکھو',
 	'prefstats-xaxis' => 'ویلہ (کینٹیاں چ)',
+	'prefstats-factors' => 'وکھالہ : $1',
 	'prefstats-factor-hour' => 'کینٹہ',
 	'prefstats-factor-sixhours' => 'چھے کینٹے',
 	'prefstats-factor-day' => 'دیاڑھ',

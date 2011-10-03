@@ -2667,8 +2667,8 @@ Pode rexistrar o seu propio apoio ou obxección na páxina da eliminación: [{{f
 	'deletequeue-showvotes-restrict-none' => 'Amosar todos os apoios e obxeccións',
 	'deletequeue-showvotes-vote-endorse' => "'''Apoiou''' a eliminación o $2 ás $1",
 	'deletequeue-showvotes-vote-object' => "'''Obxectou''' na eliminación o $2 ás $1",
-	'deletequeue-showvotes-showingonly-endorse' => 'Amosando só os apoios',
-	'deletequeue-showvotes-showingonly-object' => 'Amosando só as obxeccións',
+	'deletequeue-showvotes-showingonly-endorse' => 'Mostrando só os apoios',
+	'deletequeue-showvotes-showingonly-object' => 'Mostrando só as obxeccións',
 	'deletequeue-showvotes-none' => 'Non hai apoios ou obxeccións na eliminación desta páxina.',
 	'deletequeue-showvotes-none-endorse' => 'Non hai apoios na eliminación desta páxina.',
 	'deletequeue-showvotes-none-object' => 'Non hai obxeccións na eliminación desta páxina.',
@@ -6343,7 +6343,7 @@ $messages['so'] = array(
 	'deletequeue-case-expiry' => 'Waxoo dhacaa:',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
@@ -6421,7 +6421,7 @@ $messages['sr-ec'] = array(
 	'deletequeue-showvotes-none-object' => 'Нема противљења брисању ове стране.',
 	'deletequeue' => 'Ред за брисање',
 	'deletequeue-list-text' => 'Ова страна приказује све стране, које су у систему за брисање.',
-	'deletequeue-list-search-legend' => 'Потражи стране',
+	'deletequeue-list-search-legend' => 'Претрага страница',
 	'deletequeue-list-queue' => 'Ред:',
 	'deletequeue-list-status' => 'Статус:',
 	'deletequeue-list-expired' => 'Прикажи само номиновања, која треба затворити.',
@@ -7346,6 +7346,7 @@ $messages['yi'] = array(
  * @author Hydra
  * @author PhiLiP
  * @author Wmr89502270
+ * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
 	'deletequeue-action-queued' => '删除',
@@ -7422,6 +7423,7 @@ $messages['zh-hans'] = array(
 	'deletequeue-list-header-page' => '页面',
 	'deletequeue-list-header-queue' => '队列',
 	'deletequeue-list-header-expiry' => '期限',
+	'deletequeue-case-page' => '页面：',
 	'deletequeue-case-reason' => '原因：',
 );
 

@@ -6449,7 +6449,7 @@ Novejša različica $2 je na voljo na http://pecl.php.net/package/APC/$2',
 	'viewapc-usercache-cleared' => "'''''Predpomnilnik aplikacij je počiščen.'''''",
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -6523,7 +6523,7 @@ $messages['sr-ec'] = array(
 	'viewapc-display-too-big' => "''Садржај је превелик да би био приказан.''",
 	'viewapc-ls-options-legend' => 'Опције',
 	'viewapc-ls-options' => 'Обим: $1 Сврставање: $2$3$4 Претрага: $5 $6',
-	'viewapc-ls-submit' => 'Пређи!',
+	'viewapc-ls-submit' => 'Иди!',
 	'viewapc-ls-header-name' => 'Име',
 	'viewapc-ls-header-hits' => 'Погоци',
 	'viewapc-ls-header-size' => 'Величина',

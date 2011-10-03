@@ -2771,7 +2771,7 @@ $messages['sl'] = array(
 	'ct_user_sample' => 'Uporabniško ime',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
@@ -2796,7 +2796,7 @@ $messages['sr-ec'] = array(
 	'ct_image_tip' => 'Убаци слику',
 	'ct_image_caption' => 'Додај слику',
 	'ct_attachment_tip' => 'Убаци прикачени фајл',
-	'ct_attachment_caption' => 'Прикачи фајл',
+	'ct_attachment_caption' => 'Додај прилог',
 	'ct_math_sample' => 'Убаците формулу LaTeX овде',
 	'ct_math_tip_ins' => 'Убаци математичку формулу',
 	'ct_math_tip_wrap' => 'Учини овај текст математичком формулом (LaTeX)',
@@ -2810,7 +2810,7 @@ $messages['sr-ec'] = array(
 	'ct_select' => 'Изабери $1 за слање:',
 	'ct_caption' => 'Додај наслов (необавезно):',
 	'ct_link' => 'Додај назив линка (необавезно):',
-	'ct_submit' => 'Пређи!',
+	'ct_submit' => 'Иди!',
 	'ct_close' => 'Затвори прозор',
 	'ct_success' => 'Слање датотеке је извршено!',
 	'ct_user_user' => 'Корисник',

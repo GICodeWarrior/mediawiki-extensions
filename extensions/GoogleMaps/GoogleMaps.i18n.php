@@ -2303,7 +2303,7 @@ Probe coa última versión do <a href="http://www.microsoft.com/ie">Internet Exp
 	'gm-editing-path' => 'Faga clic no mapa para engadir máis puntos ao camiño.',
 	'gm-save-path' => 'Gardar',
 	'gm-edit-path' => 'engadir puntos',
-	'gm-show-path' => 'amosar puntos',
+	'gm-show-path' => 'mostrar os puntos',
 	'gm-color-path' => 'trocar a cor',
 	'gm-color-fill' => 'cambiar a cor do recheo',
 	'gm-add-fill' => 'recheo na área',
@@ -5453,7 +5453,7 @@ $wgGoogleMapsMessages['sq'] = array(
 	'gm-mars' => 'Marsi',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
@@ -5465,7 +5465,7 @@ $wgGoogleMapsMessages['sr-ec'] = array(
 	'gm-no-editor' => 'Нажалост, ваш прегледач не подржава интерактивне мапе. Пробајте последње издање <a href="http://www.microsoft.com/ie">Интернет Експлорера</a> или <a href="http://www.mozilla.org/products/firefox">Фајерфокса</a>.',
 	'gm-balloon-title' => 'Наслов:',
 	'gm-balloon-link-article' => 'Веза ка овој страници (необавезно):',
-	'gm-make-marker' => 'Наслов (вики кôд):',
+	'gm-make-marker' => 'Опис (дозвољено је вики означавање):',
 	'gm-remove' => 'уклони',
 	'gm-caption' => 'Натпис',
 	'gm-tab-title' => 'Наслов језичка',

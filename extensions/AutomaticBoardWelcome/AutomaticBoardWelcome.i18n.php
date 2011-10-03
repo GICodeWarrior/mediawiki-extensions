@@ -76,7 +76,7 @@ $messages['ja'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'automaticboardwelcome-desc' => 'Seiht automattesch en [[MediaWiki:User-board-welcome-message|Bejröhßung]] op neue Metmaacher ier  Brädder.',
+	'automaticboardwelcome-desc' => 'Deiht automattesch en [[MediaWiki:User-board-welcome-message|Bejröhßung]] op neue Metmaacher ier schwazze Brädder.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -1328,6 +1328,7 @@ $messages['pt-br'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
@@ -1338,7 +1339,7 @@ $messages['ro'] = array(
 	'countedits-ok' => 'OK',
 	'countedits-nosuchuser' => 'Nu există nici un utilizator cu numele $1.',
 	'countedits-resultheader' => 'Rezultate pentru $1',
-	'countedits-resulttext' => '$1 a efectuat $2 {{PLURAL:$2|modificare|modificări}}',
+	'countedits-resulttext' => '$1 a efectuat $2 {{PLURAL:$2|modificare|modificări|de modificări}}',
 	'countedits-mostactive' => 'Contribuitorii cei mai activi',
 	'countedits-nocontribs' => 'Nu există contribuitori la acest wiki.',
 );
