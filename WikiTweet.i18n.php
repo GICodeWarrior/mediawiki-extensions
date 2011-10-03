@@ -341,9 +341,9 @@ $messages['gl'] = array(
 	'wikitweet-submit' => 'Chiar',
 	'wikitweet-submitandmail' => 'Chiar e enviar por correo electrónico',
 	'wikitweet-intheroom' => 'Está na sala',
-	'wikitweet-subscribe' => 'seguir',
-	'wikitweet-subscribed' => 'seguindo',
-	'wikitweet-unsubscribe' => 'deixar de seguir',
+	'wikitweet-subscribe' => 'subscribir',
+	'wikitweet-subscribed' => 'subscrito',
+	'wikitweet-unsubscribe' => 'cancelar a subscrición',
 	'wikitweet-delete' => 'borrar',
 	'wikitweet-inform' => 'polo informador',
 	'wikitweet-private' => 'privado',
@@ -621,7 +621,10 @@ $messages['pl'] = array(
  */
 $messages['ps'] = array(
 	'wikitweet-delete' => 'ړنګول',
+	'wikitweet-answer' => 'ځوابول',
 	'wikitweet-anonymous' => 'ورکنومی',
+	'wikitweet-status' => 'دريځ:',
+	'wikitweet-comment' => 'تبصره',
 );
 
 /** Portuguese (Português)
