@@ -16,6 +16,9 @@ install:
 	install -d ${DESTDIR}/usr/share/pyshared/ganglios
 	install -m 0644 ${MODULES} ${DESTDIR}/usr/share/pyshared/ganglios
 	
+	install -d ${DESTDIR}/var/lib/ganglia/xmlcache
+	install -d ${DESTDIR}/var/log/ganglia
+
 clean:
 
 deb:
