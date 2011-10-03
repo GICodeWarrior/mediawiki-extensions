@@ -64,6 +64,13 @@ $messages['ia'] = array(
 	'namespacepaths-desc' => 'Permitte personalisar le camminos de articulos e facer los corresponder a spatios de nomines del wiki. P.ex.: paginas como Adjuta:A pote haber le cammino /adjuta/Pagina in loco de /wiki/Adjuta:Pagina.',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'namespacepaths-desc' => 'Määd_et müjjelesch, beshtemmpte Paade för Atikelle op Namensreum em Wiki ömzelänke. För e Beishpell <code lang="en">Hölp:A</code> op <code lang="en">/hölp/Sigg</code> shtadd_op <code lang="en">/wiki/Hölp:Sigg</code>.',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
