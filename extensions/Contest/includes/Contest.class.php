@@ -13,12 +13,37 @@
  */
 class Contest extends ContestDBObject {
 	
+	// Constants representing the states a contest can have.
 	const STATUS_DRAFT = 0;
 	const STATUS_ACTIVE = 1;
 	const STATUS_FINISHED = 2;
 	
+	/**
+	 * List of challanges for this contest.
+	 * @see loadChallanges, setChallanges and writeChallangesToDB
+	 * 
+	 * @since 0.1
+	 * @var array of ContestChallange
+	 */
 	protected $challanges = null;
+	
+	/**
+	 * List of contestants for this contest.
+	 * @see loadContestants, setContestants and writeContestantsToDB
+	 * 
+	 * @since 0.1
+	 * @var array of ContestContestant
+	 */
 	protected $contestants = null;
+	
+	/**
+	 * Indicates if the contest was set from non-finished to finished.
+	 * This is used to take further action on save of the object.
+	 * 
+	 * @since 0.1
+	 * @var boolean
+	 */
+	protected $wasSetToFinished = false;
 	
 	/**
 	 * Method to get an instance so methods that ought to be static,
@@ -240,6 +265,21 @@ class Contest extends ContestDBObject {
 	}
 	
 	/**
+	 * (non-PHPdoc)
+	 * @see ContestDBObject::writeToDB()
+	 */
+	public function writeToDB() {
+		$success = parent::writeToDB();
+		
+		if ( $success && $this->wasSetToFinished ) {
+			$this->doFinishActions();
+			$this->wasSetToFinished = false;
+		}
+		
+		return $success;
+	}
+	
+	/**
 	 * Write the contest and all set challanges and participants to the database.
 	 * 
 	 * @since 0.1
@@ -247,8 +287,8 @@ class Contest extends ContestDBObject {
 	 * @return boolean Success indicator
 	 */
 	public function writeAllToDB() {
-		$success = parent::writeToDB();
-		
+		$success = self::writeToDB();
+	
 		if ( $success ) {
 			$success = $this->writeChallangesToDB();
 		}
@@ -352,6 +392,26 @@ class Contest extends ContestDBObject {
 		}
 		
 		return $success;
+	}
+	
+	/**
+	 * (non-PHPdoc)
+	 * @see ContestDBObject::setField()
+	 */
+	public function setField( $name, $value ) {
+		if ( $name == 'status' && $value == self::STATUS_FINISHED
+			&& $this->hasField( $name ) && $this->getField( $name ) != self::STATUS_FINISHED ) {
+			$this->wasSetToFinished = true;
+		}
+	}
+	
+	/**
+	 * Do all actions that need to be done on contest finish.
+	 * 
+	 * @since 0.1
+	 */
+	public function doFinishActions() {
+		// TODO
 	}
 	
 }
