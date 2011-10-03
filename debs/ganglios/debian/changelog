@@ -2,7 +2,7 @@ ganglios (1.1) stable; urgency=low
 
   * changed listXMLSources to read the list from /etc/ganglia/gmetad.conf
 
- -- Ben Hartshorne <bhartshorne@wikimedia.org> Mon, 3 Oct 2011 16:35:00 -0700
+ -- Ben Hartshorne <bhartshorne@wikimedia.org>  Mon, 3 Oct 2011 16:35:00 -0700
 
 ganglios (1.0-1) stable; urgency=low
 
