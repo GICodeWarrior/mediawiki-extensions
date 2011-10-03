@@ -387,6 +387,18 @@ class Contest extends ContestDBObject {
 	}
 	
 	/**
+	 * Remove the contest and all it's linked data from the database.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return boolean Success indicator
+	 */
+	public function removeAllFromDB() {
+		// TODO
+		return parent::removeFromDB();
+	}	
+	
+	/**
 	 * Do all actions that need to be done on contest finish.
 	 * 
 	 * @since 0.1

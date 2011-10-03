@@ -32,8 +32,8 @@ class ContestantPager extends TablePager {
 				'contestant_id' => 'contest-contestant-id',
 				'contestant_volunteer' => 'contest-contestant-volunteer',
 				'contestant_wmf' => 'contest-contestant-wmf',
-				'contestant_comment_count' => 'contest-contestant-commentcount',
-				'contestant_overall_rating' => 'contest-contestant-overallrating',
+				'contestant_comments' => 'contest-contestant-commentcount',
+				'contestant_rating' => 'contest-contestant-overallrating',
 			);
 			
 			$headers = array_map( 'wfMsg', $headers );
@@ -68,6 +68,17 @@ class ContestantPager extends TablePager {
 			case 'contestant_volunteer': case 'contestant_wmf':
 				$value = wfMsg( 'contest-contestant-' . ( $value === '1' ? 'yes' : 'no' ) );
 				break;
+			case 'contestant_comments':
+				$value = $this->getLang()->formatNum( $value );
+				break;
+			case 'contestant_rating':
+				$value = wfMsgExt(
+					'contest-contestant-rating',
+					'parsemag',
+					$this->getLang()->formatNum( $value ),
+					$this->getLang()->formatNum( $this->mCurrentRow->contestant_rating_count )
+				);
+				break;
 		}
 		
 		return $value;
@@ -80,6 +91,9 @@ class ContestantPager extends TablePager {
 				'contestant_id',
 				'contestant_volunteer',
 				'contestant_wmf',
+				'contestant_comments',
+				'contestant_rating',
+				'contestant_rating_count',
 			),
 			'conds' => $this->conds,
 		);
@@ -105,7 +119,9 @@ class ContestantPager extends TablePager {
 			array(
 				'contestant_id',
 				'contestant_volunteer',
-				'contestant_wmf'
+				'contestant_wmf',
+				'contestant_comments',
+				'contestant_rating',
 			)
 		);
 	}
