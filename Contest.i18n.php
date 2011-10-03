@@ -134,10 +134,12 @@ $messages['en'] = array(
 
 	// Contestant pager
 	'contest-contestant-id' => 'ID',
-	'contest-contestant-volunteer' => 'Interested in volunteering oportunities',
-	'contest-contestant-wmf' => 'Interested in job oportunities',
+	'contest-contestant-volunteer' => 'Volunteer',
+	'contest-contestant-wmf' => 'WMF',
 	'contest-contestant-no' => 'No',
 	'contest-contestant-yes' => 'Yes',
+	'contest-contestant-commentcount' => 'Comments',
+	'contest-contestant-overallrating' => 'Rating',
 );
 
 /** Message documentation (Message documentation)

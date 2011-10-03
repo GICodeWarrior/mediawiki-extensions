@@ -90,10 +90,14 @@ class Contest extends ContestDBObject {
 			'id' => 'id',
 			'name' => 'str',
 			'status' => 'int',
-			'submission_count' => 'int',
+			'end' => 'int',
+		
 			'rules_page' => 'str',
 			'oppertunities' => 'str',
 			'intro' => 'str',
+			'help' => 'str',
+		
+			'submission_count' => 'int',
 		);
 	}
 	
@@ -108,10 +112,14 @@ class Contest extends ContestDBObject {
 		return array(
 			'name' => '',
 			'status' => self::STATUS_DRAFT,
-			'submission_count' => 0,
+			'end' => '',
+			
 			'rules_page' => 'MediaWiki:',
 			'oppertunities' => 'MediaWiki:',
 			'intro' => 'MediaWiki:',
+			'help' => '',
+		
+			'submission_count' => 0,
 		);
 	}
 	
