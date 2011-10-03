@@ -6500,7 +6500,7 @@ $messages['so'] = array(
 	'mwe-return-search-results' => 'Ku noqo natiijooyinka ka soo baxay raadinta',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
@@ -6508,7 +6508,7 @@ $messages['so'] = array(
 $messages['sr-ec'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 од $2',
 	'mwe-upload-unknown-size' => 'Непозната величина',
-	'mwe-cancel-confim' => 'Да ли сте сигурни да желите да поништите?',
+	'mwe-cancel-confim' => 'Желите ли да откажете?',
 	'mwe-successfulupload' => 'Слање успешно',
 	'mwe-uploaderror' => 'Грешка при слању',
 	'mwe-uploadwarning' => 'Упозорење при слању',
@@ -6523,9 +6523,6 @@ $messages['sr-ec'] = array(
 	'mwe-destfilename' => 'Назив:',
 	'mwe-summary' => 'Сажетак',
 	'mwe-date-of-work' => 'Датум рада',
-	'mwe-link-login' => 'пријавите се',
-	'mwe-watch-this-file' => 'Надгледај ову датотеку',
-	'mwe-ignore-any-warnings' => 'Занемари сва упозорења',
 	'mwe-upload-in-progress' => 'Слање у току (не затварајте овај прозор)',
 	'mwe-uploaded-status' => 'Отпремљено',
 	'mwe-uploaded-time-remaining' => 'Преостало време: $1',
