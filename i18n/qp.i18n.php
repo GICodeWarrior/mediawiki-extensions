@@ -187,6 +187,8 @@ $messages['qqq'] = array(
 * $3 is the poll ID of the poll, which this erroneous poll depends on.',
 	'qp_error_too_many_spans' => 'There cannot be more category groups defined than the total count of subcategories.',
 	'qp_error_too_few_spans' => 'Every category group should include at least two subcategories',
+	'qp_error_interpretation_no_return' => 'Interpretation script missed an return statement.',
+	'qp_error_structured_interpretation_is_too_long' => "Structured interpretation is serialized string containing scalar value or an associative array stored into database table field. It's purpose is to have measurable, easily processable interpretation result for the particular poll which then can be processed by external tools (via XLS export) or, to be read and processed by next poll interpretation script (data import and in the future maybe an export as well). When the serialized string is too long, it should never be stored, otherwise it will be truncated by DBMS so it cannot be properly unserialized later.",
 	'qp_error_eval_missed_lang_attr' => '{{doc-important|Do not translate "lang" as it is the name of an XML attribute that is not localised.}}',
 	'qp_error_eval_mix_languages' => 'Parameters:
 * $1 is a language code,
@@ -222,8 +224,6 @@ Parameters:
 	'qp_error_eval_self_check' => 'Parameters:
 * $1 is self check that has failed.',
 	'qp_error_eval_unable_to_lint' => '"Lint" is the term that is now applied generically to tools that flag suspicious usage in software written in any computer language [[w:en:Lint_%28software%29]].',
-	'qp_error_interpretation_no_return' => 'Interpretation script missed an return statement.',
-	'qp_error_structured_interpretation_is_too_long' => 'Structured interpretation is serialized string containing scalar value or an associative array stored into database table field. It\'s purpose is to have measurable, easily processable interpretation result for the particular poll which then can be processed by external tools (via XLS export) or, to be read and processed by next poll interpretation script (data import and in the future maybe an export as well). When the serialized string is too long, it should never be stored, otherwise it will be truncated by DBMS so it cannot be properly unserialized later.',
 );
 
 /** Afrikaans (Afrikaans)
@@ -1050,6 +1050,7 @@ $messages['fi'] = array(
  */
 $messages['fr'] = array(
 	'pollresults' => 'Résultats des sondages sur ce site',
+	'qpollwebinstall' => "Installation / mise à jour de l'extension QPoll",
 	'qp_desc' => 'Permet la création de sondages',
 	'qp_desc-sp' => '[[Special:PollResults|Page spéciale]] pour consulter les résultats des sondages',
 	'qp_result_NA' => 'Pas de réponse',
@@ -1122,6 +1123,7 @@ Pour enregistrer un sondage, soumettez-le en ne répondant à aucune question de
 	'qp_error_unique' => 'La question de type unique() a plus de propositions qu’il n’y a de réponses possibles définies : impossible de compléter',
 	'qp_error_no_more_attempts' => 'Vous avez atteint le nombre maximal de tentatives de soumission pour ce sondage.',
 	'qp_error_interpretation_no_return' => "Le script d'interprétation n'a renvoyé aucun résultat.",
+	'qp_error_structured_interpretation_is_too_long' => "L'interprétation structurée est trop longue pour être stockée dans la base de données. Merci de corriger votre script d'interprétation.",
 	'qp_error_no_json_decode' => "L'interprétation des réponses au sondage nécessite la fonction PHP json_decode().",
 	'qp_error_eval_missed_lang_attr' => 'L\'attribut XML "lang" est obligatoire pour choisir la bonne langue d\'interprétation.',
 	'qp_error_eval_mix_languages' => 'Un même script d\'interprétation ne peut pas mélanger différentes langues d\'interprétation: "$1", $2".',
@@ -1566,6 +1568,7 @@ A szavazás elmentéséhez küldd el azt anélkül, hogy válaszolnál bármelyi
  */
 $messages['ia'] = array(
 	'pollresults' => 'Resultatos del sondages in iste sito',
+	'qpollwebinstall' => 'Installation / actualisation del extension QPoll',
 	'qp_desc' => 'Permitte le creation de sondages',
 	'qp_desc-sp' => '[[Special:PollResults|Pagina special]] pro vider le resultatos del sondages',
 	'qp_result_NA' => 'Sin responsa',
@@ -1929,6 +1932,8 @@ $messages['lb'] = array(
 	'qp_error_too_few_spans' => 'All Kategoriegrupp muss mindestens aus zwou Ënnerkategorie bestoen',
 	'qp_error_no_answer' => 'Propos ouni Äntwert',
 	'qp_error_eval_unsupported_language' => 'Net ënnerstëtzte Interpretatiouns-Sprooch "$1"',
+	'qp_error_eval_illegal_token' => 'PHP-Token $1 mam Wäert $2 ass an der Linn $3 net erlaabt.',
+	'qp_error_eval_illegal_variable_name' => 'PHP-Token $1 huet den net erlaabten Numm $2 als Variabel an der Linn $3.',
 );
 
 /** Malagasy (Malagasy)
