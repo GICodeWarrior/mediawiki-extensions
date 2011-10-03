@@ -327,6 +327,9 @@ abstract class ContestDBObject {
 				case 'int':
 					$value = (int)$value;
 					break;
+				case 'float':
+					$value = (float)$value;
+					break;
 				case 'bool':
 					if ( is_string( $value ) ) {
 						$value = $value !== '0';
@@ -362,6 +365,7 @@ abstract class ContestDBObject {
 	 * * id
 	 * * str
 	 * * int
+	 * * float
 	 * * bool
 	 * * array
 	 * 
@@ -489,6 +493,45 @@ abstract class ContestDBObject {
 			$this->getDBTable(),
 			$this->getPrefixedValues( $conditions )
 		);
+	}
+	
+	/**
+	 * Add an amount (can be negative) to the specified field (needs to be numeric).
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param string $field
+	 * @param integer $amount
+	 * 
+	 * @return boolean Success indicator
+	 */
+	public function addToField( $field, $amount ) {
+		if ( $amount == 0 ) {
+			return true;
+		}
+		
+		if ( !$this->hasIdField() ) {
+			return false;
+		}
+		
+		$absoluteAmount = abs( $amount );
+		$isNegative = $amount < 0;
+		
+		$dbw = wfGetDB( DB_MASTER );
+		
+		$fullField = $this->getPrefixedField( $field );
+		
+		$success = $dbw->update(
+			$this->getDBTable(),
+			array( "$fullField=$fullField" . ( $isNegative ? '-' : '+' ) . $absoluteAmount ),
+			array( $this->getPrefixedField( 'id' ) => $this->getId() )
+		);
+		
+		if ( $success && $this->hasField( $field ) ) {
+			$this->setField( $field, $this->getField( $field ) + $amount );
+		}
+		
+		return $success;
 	}
 	
 	/**
