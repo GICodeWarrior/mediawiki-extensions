@@ -12948,6 +12948,7 @@ $messages['lb'] = array(
 	'configure-setting-wgGroupsAddToSelf-value' => 'Gruppe bäi déi een sech selwer derbäisetze kann',
 	'configure-setting-wgGroupsRemoveFromSelf' => 'Gruppen, aus dene Benotzer sech selwer eraushuele kënnen',
 	'configure-setting-wgGroupsRemoveFromSelf-value' => 'Gruppen, aus denen ee sech selwer eraushuele kann',
+	'configure-setting-wgRateLimitsExcludedGroups' => "Gruppen déi net de 'rate limits' ënnerleien",
 	'configure-setting-wgOverrideSiteFeed' => 'Feed-Astellungen iwwerschreiwen',
 	'configure-setting-wgAdvancedSearchHighlighting' => "D'Markéieren an de Sichresultater aktivéieren",
 	'configure-setting-wgEnableMWSuggest' => "'Sichvirschléi während dem Antippen an d'Sichkëscht weisen' aktivéieren",
@@ -16217,6 +16218,7 @@ $messages['pdc'] = array(
 /** Polish (Polski)
  * @author Anoon6
  * @author Derbeth
+ * @author Grzechooo
  * @author Leinad
  * @author Shadown
  * @author Sp5uhe
@@ -16444,6 +16446,7 @@ $messages['pl'] = array(
 	'configure-setting-wgSessionName' => 'Nazwa sesji',
 	'configure-setting-wgSquidMaxage' => 'Maksymalny dozwolony czas przechowywania dla serwera buforującego (Squid)',
 	'configure-setting-wgUseSquid' => 'Włącz serwer buforujący (squid)',
+	'configure-setting-wgAllowSlowParserFunctions' => 'Zezwalaj na powolne funkcje analizatora składni',
 	'configure-setting-wgDisableInternalSearch' => 'Wyłącz wewnętrzną wyszukiwarkę',
 	'configure-setting-wgExtensionAssetsPath' => 'Adres URL katalogu z rozszerzeniami',
 	'configure-setting-wgSQLMode' => 'Tryb SQL',
@@ -16459,6 +16462,7 @@ $messages['pl'] = array(
 	'configure-setting-wgGroupsAddToSelf' => 'Grupy, do których można dodać samego siebie',
 	'configure-setting-wgGroupsRemoveFromSelf' => 'Grupy, z których można usunąć samego siebie',
 	'configure-setting-wgRateLimits' => 'Ograniczenia prędkości',
+	'configure-setting-wgDisableCounters' => 'Wyłącz liczniki wyświetleń stron',
 	'configure-setting-wgDefaultSkin' => 'Nazwa domyślnej skórki',
 	'configure-setting-wgSkipSkin' => 'Niedozwolona nazwa skórki',
 	'configure-setting-wgSkipSkins' => 'Niedozwolone nazwy dla skórek',
@@ -16467,9 +16471,12 @@ $messages['pl'] = array(
 	'configure-setting-wgValidSkinNames-value' => 'Nazwa wyświetlana',
 	'configure-setting-wgExtraNamespaces-key' => 'ID przestrzeni nazw',
 	'configure-setting-wgExtraNamespaces-value' => 'Nazwa przestrzeni nazw',
+	'configure-setting-wgNamespaceAliases' => 'Przekierowania przestrzeni nazw',
 	'configure-setting-wgNamespaceAliases-key' => 'Nazwa aliasu',
 	'configure-setting-wgNamespaceProtection' => 'Zabezpieczenia przestrzeni nazw',
+	'configure-setting-wgNamespacesWithSubpages' => 'Przestrzenie nazw z podstronami',
 	'configure-setting-wgSitemapNamespaces' => 'Przestrzenie nazw do umieszczenia na mapie witryny',
+	'configure-setting-wgUseCategoryBrowser' => 'Włącz przeglądarkę kategorii',
 	'configure-setting-wgRightsIcon' => 'Ikona praw autorskich',
 	'configure-setting-wgDBmysql5' => 'Używaj kodowania UTF‐8',
 	'configure-setting-wgDBprefix' => 'Przedrostek nazwy tabel',
@@ -19955,7 +19962,7 @@ $messages['sr-ec'] = array(
 	'configure-setting-wgDefaultLanguageVariant' => 'Подразумевана језичка варијанта',
 	'configure-setting-wgDefaultRobotPolicy' => 'Подразумевана политика робота',
 	'configure-setting-wgExemptFromUserRobotsControl' => 'Именски простори у којима није дозвољена употреба <nowiki>__INDEX__</nowiki> и <nowiki>__NOINDEX__</nowiki>',
-	'configure-setting-wgExtraLanguageNames-key' => 'Кôд језика',
+	'configure-setting-wgExtraLanguageNames-key' => 'Језични код',
 	'configure-setting-wgExtraLanguageNames-value' => 'Име',
 	'configure-setting-wgExtraRandompageSQL' => 'Филтер за [[Special:Random]] (унутар WHERE)',
 	'configure-setting-wgExtraSubtitle' => 'Поднаслов (појављује се испод сваког наслова стране)',
