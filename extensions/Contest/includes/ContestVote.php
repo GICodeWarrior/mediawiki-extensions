@@ -109,9 +109,9 @@ class ContestVote extends ContestDBObject {
 		$success = parent::writeToDB();
 		
 		if ( $success ) {
-			return ContestContestant::s()
-				->select( null, array( 'id' => $this->getField( 'contestant_id' ) ) )
-				->updateVotes();
+			$contestant = new ContestContestant( array( 'id' => $this->getField( 'contestant_id' ) ) );
+			$contestant->updateVotes();
+			$contestant->writeToDB();
 		}
 		
 		return $success;
