@@ -82,6 +82,13 @@ $messages['ja'] = array(
 	'localjquery-desc' => '[[MediaWiki:JQuery.js]] から (リソースローダーにより) jQueryをロードします。',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'localjquery-desc' => 'Donn JQuery fun [[MediaWiki:JQuery.js]] mem  Ressource Loader laade.',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
