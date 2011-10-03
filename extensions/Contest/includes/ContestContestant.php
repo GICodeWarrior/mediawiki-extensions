@@ -98,7 +98,7 @@ class ContestContestant extends ContestDBObject {
 		
 			'submission' => 'str',
 		
-			'rating' => 'int',
+			'rating' => 'float',
 			'rating_count' => 'int',
 			'comments' => 'int',
 		);
@@ -450,6 +450,49 @@ class ContestContestant extends ContestDBObject {
 		}
 		
 		return $success;
+	}
+	
+	/**
+	 * Update the vote count and avarage vote fields.
+	 * This does not write the changes to the database,
+	 * if this is required, call writeToDB.
+	 * 
+	 * @since 0.1
+	 */
+	public function updateVotes() {
+		$votes = $this->getVotes();
+		
+		$amount = count( $votes );
+		$total = 0;
+		
+		foreach ( $votes as /* ContestVote */ $vote ) {
+			$total += $vote->getField( 'value' );
+		}
+		
+		$this->setField( 'rating_count', $amount );
+		$this->setField( 'rating', $amount > 0 ? $total / $amount : 0 );
+	}
+	
+	/**
+	 * Get the votes for this contestant.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return array of ContestVote
+	 */
+	public function getVotes() {
+		return ContestVote::s()->select( null, array( 'contestant_id' => $this->getId() ) );
+	}
+	
+	/**
+	 * Get the comments for this contestant.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return array of ContestComment
+	 */
+	public function getComments() {
+		return ContestComment::s()->select( null, array( 'contestant_id' => $this->getId() ) );
 	}
 	
 }

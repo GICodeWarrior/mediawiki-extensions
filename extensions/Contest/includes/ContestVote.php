@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Class representing a single contest comment.
- * Comments can be made by judges on (submissions of) contestants.   
+ * Class representing a single contest vote.
+ * Votes can be made by judges on (submissions of) contestants.   
  * 
  * @since 0.1
  * 
@@ -12,7 +12,7 @@
  * @licence GNU GPL v3 or later
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class ContestComment extends ContestDBObject {
+class ContestVote extends ContestDBObject {
 	
 	/**
 	 * Method to get an instance so methods that ought to be static,
@@ -58,7 +58,7 @@ class ContestComment extends ContestDBObject {
 	 * @return string
 	 */
 	public function getDBTable() {
-		return 'contest_comments';
+		return 'contest_votes';
 	}
 
 	/**
@@ -69,7 +69,7 @@ class ContestComment extends ContestDBObject {
 	 * @return string
 	 */
 	protected function getFieldPrefix() {
-		return 'comment_';
+		return 'vote_';
 	}
 	
 	/**
@@ -85,8 +85,7 @@ class ContestComment extends ContestDBObject {
 			'contestant_id' => 'id',
 			'user_id' => 'id',
 		
-			'text' => 'str',
-			'time' => 'int',
+			'value' => 'int',
 		);
 	}
 	
@@ -99,22 +98,20 @@ class ContestComment extends ContestDBObject {
 	 */
 	public function getDefaults() {
 		return array(
-			'text' => '',
-			'time' => 0,
 		);
 	}
 	
 	/**
 	 * (non-PHPdoc)
-	 * @see ContestDBObject::insertIntoDB()
+	 * @see ContestDBObject::writeToDB()
 	 */
-	protected function insertIntoDB() {
-		$success = parent::insertIntoDB();
+	public function writeToDB() {
+		$success = parent::writeToDB();
 		
 		if ( $success ) {
-			ContestContestant::s()
-				->select( 'id', array( 'id' => $this->getField( 'contestant_id' ) ) )
-				->addToField( 'comments', 1 );
+			return ContestContestant::s()
+				->select( null, array( 'id' => $this->getField( 'contestant_id' ) ) )
+				->updateVotes();
 		}
 		
 		return $success;
