@@ -126,7 +126,7 @@ class SpecialContest extends SpecialContestPage {
 		if ( $pager->getNumRows() ) {
 			$out->addHTML(
 				$pager->getNavigationBar() .
-				$pager->getBody().
+				$pager->getBody() .
 				$pager->getNavigationBar()
 			);
 		}
