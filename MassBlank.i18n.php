@@ -678,12 +678,12 @@ Vnesite uporabniško ime ali IP, da pridobite seznam strani za izpraznitev.',
 	'right-massblank' => 'Množično praznjenje strani',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'massblank-submit-user' => 'Пређи',
+	'massblank-submit-user' => 'Иди',
 	'massblank-blankcomment' => 'Разлог:',
 );
 
