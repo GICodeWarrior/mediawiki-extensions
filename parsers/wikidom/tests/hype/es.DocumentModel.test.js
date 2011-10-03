@@ -44,10 +44,10 @@ var obj = {
 			'type': 'table',
 			'children': [
 				{
-					'type': 'row',
+					'type': 'tableRow',
 					'children': [
 						{
-							'type': 'cell',
+							'type': 'tableCell',
 							'children': [
 					      		{
 					    			'type': 'paragraph',
@@ -132,9 +132,9 @@ var data = [
  	//  5 - Beginning of table
 	{ 'type': 'table' },
  	//  6 - Beginning of row
-	{ 'type': 'row' },
+	{ 'type': 'tableRow' },
  	//  7 - Beginning of cell
-	{ 'type': 'cell' },
+	{ 'type': 'tableCell' },
  	//  8 - Beginning of paragraph
 	{ 'type': 'paragraph' },
 	//  9 - Plain content
@@ -164,9 +164,9 @@ var data = [
  	// 21 - End of list
 	{ 'type': '/list' },
 	// 22 - End of cell
-	{ 'type': '/cell' },
+	{ 'type': '/tableCell' },
 	// 23 - End of row
-	{ 'type': '/row' },
+	{ 'type': '/tableRow' },
 	// 24 - End of table
 	{ 'type': '/table' },
  	// 25 - Beginning of paragraph
@@ -177,7 +177,7 @@ var data = [
 	{ 'type': '/paragraph' }
 ];
 
-test( 'es.ModelNode', function() {
+test( 'es.DocumentModel', function() {
 	var documentModel = es.DocumentModel.newFromPlainObject( obj );
 	
 	deepEqual( documentModel.getData(), data, 'Flattening plain objects results in correct data' );

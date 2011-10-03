@@ -18,6 +18,13 @@ es.DocumentModel = function( data, attributes ) {
 	this.attributes = $.isPlainObject( attributes ) ? attributes : {};
 };
 
+/* Static Members */
+
+/**
+ * Mapping of symbolic names and node model constructors.
+ */
+es.DocumentModel.nodeModels = {};
+
 /* Static Methods */
 
 /**
