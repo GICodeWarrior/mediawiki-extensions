@@ -975,12 +975,13 @@ $messages['yi'] = array(
  * @author Hydra
  * @author PhiLiP
  * @author Wilsonmess
+ * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
 	'cooperationstatistics' => '合作统计',
 	'cooperationstatistics-desc' => '显示[[Special:CooperationStatistics|主名字空间的合作统计信息]]。',
 	'cooperationstatistics-tablearticle' => '页面数',
 	'cooperationstatistics-tablevalue' => '编辑者数',
-	'cooperationstatistics-articles' => '$1 页面',
+	'cooperationstatistics-articles' => '$1个页面',
 );
 
