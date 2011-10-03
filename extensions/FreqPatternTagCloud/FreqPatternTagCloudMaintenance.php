@@ -35,7 +35,7 @@ class FreqPatternTagCloudMaintenance extends SpecialPage {
 		
 		if (!$wgUser->isAllowed("protect")) {
 			// No admin
-			$wgOut->addWikiText(wfMsg("insufficientRightsForMaintenance"));
+			$wgOut->addWikiText(wfMsg("fptc-insufficient-rights-for-maintenance"));
 		} else {
 			// Check if this call is the first
 			try {
@@ -52,7 +52,7 @@ class FreqPatternTagCloudMaintenance extends SpecialPage {
 			FrequentPattern::computeAllRules();
 			
 			// Notify user
-			$wgOut->addWikiText(wfMsg("refreshedFrequentPatterns"));
+			$wgOut->addWikiText(wfMsg("fptc-refreshed-frequent-patterns"));
 		}
 	}
 	

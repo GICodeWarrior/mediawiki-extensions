@@ -56,7 +56,6 @@ class FreqPatternTagCloud extends SpecialPage {
 		global $wgFreqPatternTagCloudMaxFontSize, $wgFreqPatternTagCloudMinFontSize, $wgRequest, $wgOut, $searchAttribut, $wgScriptPath;
 		
 		include_once("includes/FrequentPattern.php");
-		
 		/*
 		FrequentPattern::deleteAllRules();
 		FrequentPattern::computeAllRules();
@@ -103,8 +102,8 @@ class FreqPatternTagCloud extends SpecialPage {
 		}
 		
 		// Category
-		if (strpos(wfMsg("categoryname"), $currentAttributeValue) !== false) {
-			$attributes[] = sprintf('"%s"', wfMsg("categoryname"));
+		if (strpos(wfMsg("fptc-categoryname"), $currentAttributeValue) !== false) {
+			$attributes[] = sprintf('"%s"', wfMsg("fptc-categoryname"));
 		}
 		
 		$res->free();
@@ -133,7 +132,7 @@ class FreqPatternTagCloud extends SpecialPage {
 							AND vals.smw_title LIKE '%".mysql_real_escape_string($currentSearchValue)."%'
 							ORDER BY vals.smw_title
 							LIMIT 20) UNION (
-							SELECT smw_title AS val, '".wfMsg("categoryname")."' AS att
+							SELECT smw_title AS val, '".wfMsg("fptc-categoryname")."' AS att
 							FROM ".$dbr->tableName("smw_ids")."
 							WHERE smw_title LIKE '%".mysql_real_escape_string($currentSearchValue)."%'
 							AND smw_namespace = 14
@@ -150,7 +149,7 @@ class FreqPatternTagCloud extends SpecialPage {
 				continue;
 			} else {
 				foreach ($conclusions as $conclusion) {
-					$suggestions[] = sprintf('{ "label": "%s", "category": "'.addcslashes(wfMsg("searchSuggestionValue"), '"').'" }', addcslashes($conclusion, '"'), addcslashes($row['val'], '"'));
+					$suggestions[] = sprintf('{ "label": "%s", "category": "'.addcslashes(wfMsg("fptc-search-suggestion-value"), '"').'" }', addcslashes($conclusion, '"'), addcslashes($row['val'], '"'));
 				}
 			}
 		}
@@ -196,11 +195,11 @@ class FreqPatternTagCloud extends SpecialPage {
 		// Add input field
 		if ($wgUser->isAllowed("protect")) {
 			$refreshData = sprintf('<div id="fptc_refresh">%s</div>', 
-					$wgOut->parseInline(sprintf('[[:%s:%s|%s]]', self::SPECIALPAGE_PREFIX, self::MAINTENANCE_SPECIALPAGE, wfMsg("refreshFrequentPatterns"))));
+					$wgOut->parseInline(sprintf('[[:%s:%s|%s]]', self::SPECIALPAGE_PREFIX, self::MAINTENANCE_SPECIALPAGE, wfMsg("fptc-refresh-frequent-patterns"))));
 		} else {
 			$refreshData = "";
 		}
-		$wgOut->addHTML($refreshData.wfMsg("formAttributeName").': <input type="text" name="fptc_attributeName" id="fptc_attributeName" value="'.$defaultAttribute.'"><input type="submit" value="'.wfMsg("formSubmitButton").'" onClick="fptc_relocate();">
+		$wgOut->addHTML($refreshData.wfMsg("fptc-form-attribute-name").': <input type="text" name="fptc_attributeName" id="fptc_attributeName" value="'.$defaultAttribute.'"><input type="submit" value="'.wfMsg("fptc-form-submit-button").'" onClick="fptc_relocate();">
 					');
 		
 		$wgOut->addHTML("<br><br>");
@@ -221,10 +220,10 @@ class FreqPatternTagCloud extends SpecialPage {
 			// Context menu
 			$wgOut->addHTML('<ul id="fptc_contextMenu" class="contextMenu">
 						<li class="browse">
-						<a href="#browse">'.wfMsg("contextMenu_Browse").'</a>
+						<a href="#browse">'.wfMsg("fptc-context-menu-browse").'</a>
 						</li>
 						<li class="suggestions separator">
-						'.wfMsg("contextMenu_SimilarTags").':
+						'.wfMsg("fptc-context-menu-similar-tags").':
 						</li>
 						</ul>');
 			
@@ -237,7 +236,7 @@ class FreqPatternTagCloud extends SpecialPage {
 		} catch (InvalidAttributeException $e) {
 			if ($attribute) {	
 				// Attribute not found -> show error
-				$wgOut->addHTML('<span style="color:red; font-weight:bold;">'.wfMsg("invalidAttribute").'</span>');
+				$wgOut->addHTML('<span style="color:red; font-weight:bold;">'.wfMsg("fptc-invalid-attribute").'</span>');
 			}
 		}
 	}
@@ -254,7 +253,7 @@ class FreqPatternTagCloud extends SpecialPage {
 		
 		$wgOut->addHTML(sprintf('<div class="fptc_tag" style="font-size:%dpx;">%s</div>', 
 					$this->fontSizeMin + ($this->fontSizeMax - $this->fontSizeMin) * $tag->getRate(),
-					$attribute == wfMsg("categoryname") 
+					$attribute == wfMsg("fptc-categoryname") 
 						? $wgOut->parseInline(sprintf("[[:%s:%s|%s]]", self::CATEGORY_PAGE, $tag->getValue(), $tag->getValue())) 
 						: $wgOut->parseInline(sprintf("[[:%s:%s/%s/%s|%s]]", self::SPECIALPAGE_PREFIX, self::ATTRIBUTE_VALUE_INDEX_SPECIALPAGE, $attribute, $tag->getValue(), $tag->getValue()))));
 	}
@@ -279,7 +278,8 @@ class FreqPatternTagCloud extends SpecialPage {
 					try {
 						// Only if suggestions found
 						if ($proposal->getProposal()) {
-							$wgOut->addHTML(wfMsg("suggestion"));
+							$wgOut->addHTML(wfMsg("fptc-suggestion"));
+							$wgOut->addHTML(" ");
 						}
 						$w=1;
 						foreach ($proposal->getProposal() as $possibleAttribute) {
@@ -292,7 +292,7 @@ class FreqPatternTagCloud extends SpecialPage {
 						}
 						
 					} catch (InvalidAttributeException $e) {
-						$wgOut->addHTML(wfMsg("noSuggestion"));
+						$wgOut->addHTML(wfMsg("fptc-no-suggestion"));
 					}
 					if ($proposal->getProposal()) {
 						$wgOut->addHTML("<br><br>");
