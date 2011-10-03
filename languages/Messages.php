@@ -26,6 +26,15 @@ $messages['de'] = array(
 	'wom-desc' => 'Ermöglicht ein einfaches Objektmodell für Seiten',
 );
 
+/** French (Français)
+ * @author Gomoko
+ */
+$messages['fr'] = array(
+	'objecteditor' => "Éditeur d'objet",
+	'wom_editor' => "Modèle d'objet",
+	'wom-desc' => "Modèle d'objet de page simple pour l'utilisateur wiki",
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
