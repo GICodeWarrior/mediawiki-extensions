@@ -13,6 +13,8 @@ es.DocumentModel = function( data, attributes ) {
 	// Inheritance
 	es.DocumentModelNode.call( this, length );
 	
+	this.rebuildChildNodes();
+	
 	// Properties
 	this.data = $.isArray( data ) ? data : [];
 	this.attributes = $.isPlainObject( attributes ) ? attributes : {};
@@ -26,31 +28,6 @@ es.DocumentModel = function( data, attributes ) {
 es.DocumentModel.nodeModels = {};
 
 /* Static Methods */
-
-/**
- * Checks if a data at a given offset is content.
- * 
- * @static
- * @method
- * @param {Integer} offset Offset in data to check
- * @returns {Boolean} If data at offset is content
- */
-es.DocumentModel.isContent = function( offset ) {
-	return typeof this.data[offset] === 'string' || $.isArray( this.data[offset] );
-};
-
-/**
- * Checks if a data at a given offset is an element.
- * 
- * @static
- * @method
- * @param {Integer} offset Offset in data to check
- * @returns {Boolean} If data at offset is an element
- */
-es.DocumentModel.isElement = function( offset ) {
-	// TODO: Is there a safer way to check if it's a plain object without sacrificing speed?
-	return this.data[offset].type !== undefined;
-};
 
 /**
  * Creates a document model from a plain object.
@@ -173,6 +150,56 @@ es.DocumentModel.flattenPlainObjectElementNode = function( obj ) {
 };
 
 /* Methods */
+
+/**
+ * Checks if a data at a given offset is content.
+ * 
+ * @static
+ * @method
+ * @param {Integer} offset Offset in data to check
+ * @returns {Boolean} If data at offset is content
+ */
+es.DocumentModel.prototype.isContent = function( offset ) {
+	return typeof this.data[offset] === 'string' || $.isArray( this.data[offset] );
+};
+
+/**
+ * Checks if a data at a given offset is an element.
+ * 
+ * @static
+ * @method
+ * @param {Integer} offset Offset in data to check
+ * @returns {Boolean} If data at offset is an element
+ */
+es.DocumentModel.prototype.isElement = function( offset ) {
+	// TODO: Is there a safer way to check if it's a plain object without sacrificing speed?
+	return this.data[offset].type !== undefined;
+};
+
+/**
+ * Creates a document view for this model.
+ * 
+ * @returns {es.DocumentView}
+ */
+es.DocumentModel.prototype.createView = function() {
+	// return new es.DocumentView( this );
+};
+
+/**
+ * Regenerates child nodes from content data.
+ */
+es.DocumentModel.prototype.rebuildChildNodes = function() {
+	// Remove child nodes
+	this.splice( 0, this.length );
+	// Build a tree of models, which is a space partitioning data structure
+	for ( var i = 0; i < this.data.length; i++ ) {
+		if ( this.data[i].type !== undefined ) {
+			// It's an element
+		} else {
+			// It's content
+		}
+	}
+};
 
 /**
  * Gets copy of the document data.

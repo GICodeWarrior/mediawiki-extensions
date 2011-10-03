@@ -9,6 +9,15 @@ es.ListModel = function( length ) {
 	es.DocumentModelNode.call( this, length );
 };
 
+/**
+ * Creates a list view for this model.
+ * 
+ * @returns {es.ListView}
+ */
+es.ListModel.prototype.createView = function() {
+	// return new es.ListView( this );
+};
+
 /* Registration */
 
 es.DocumentModel.nodeModels.list = es.listModel;
