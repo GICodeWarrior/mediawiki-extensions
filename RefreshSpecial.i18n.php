@@ -1277,7 +1277,7 @@ Upozornenie: na väčších wiki môže obnovenie chvíľu trvať.',
 	'right-refreshspecial' => 'Obnoviť špeciálne stránky',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
@@ -1292,8 +1292,8 @@ $messages['sr-ec'] = array(
 	'refreshspecial-link-back' => 'Врати се на специјалну страну',
 	'refreshspecial-none-selected' => 'Можда нисте означили ни једну специјалну страну. Враћање на подразумеван избор.',
 	'refreshspecial-db-error' => 'Није успело: Грешка у бази података',
-	'refreshspecial-no-page' => 'Нема такве специјалне стране',
-	'refreshspecial-reconnected' => 'Реконектован.',
+	'refreshspecial-no-page' => 'Нема такве посебне странице',
+	'refreshspecial-reconnected' => 'Преповезано.',
 	'refreshspecial-reconnecting' => 'Конекција није успела, реконекција за 10 секунди...',
 	'refreshspecial-page-result' => '{{PLURAL:$1|добијен је|добијена су|добијено је}} $1 {{PLURAL:$1|ред|реда|редова}} у',
 );
