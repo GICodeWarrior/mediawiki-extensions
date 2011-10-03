@@ -81,7 +81,11 @@ es.EventEmitter.prototype.addListeners = function( listeners ) {
 es.EventEmitter.prototype.addListenerMethods = function( context, methods ) {
 	for ( var event in methods ) {
 		this.addListener( event, function() {
-			context[methods[event]].apply( context, Array.prototype.slice( arguments, 1 ) );
+			if ( methods[event] in context ) {
+				context[methods[event]].apply( context, Array.prototype.slice( arguments, 1 ) );
+			} else {
+				throw 'Listener method error. Context has no such method: ' + methods[event];
+			}
 		} );
 	}
 	return this;

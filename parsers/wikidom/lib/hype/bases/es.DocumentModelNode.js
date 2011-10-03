@@ -10,14 +10,54 @@
  * @property {Integer} contentLength Length of content
  */
 es.DocumentModelNode = function( contentLength ) {
-	// Inheritance
-	es.ModelNode.call( this );
+	// Extension
+	var node = $.extend( new es.ModelNode(), this );
 	
 	// Properties
-	this.contentLength = contentLength || 0;
+	node.contentLength = contentLength || 0;
+	
+	// Observe add and remove operations to keep lengths up to date
+	node.addListenerMethods( node, {
+		'beforePush': 'onBeforePush',
+		'beforeUnshift': 'onBeforeUnshift',
+		'beforePop': 'onBeforePop',
+		'beforeShift': 'onBeforeShift',
+		'beforeSplice': 'onBeforeSplice'
+	} );
+	
+	return node;
 };
 
 /* Methods */
+
+es.DocumentModelNode.prototype.onBeforePush = function( childModel ) {
+	this.adjustContentLength( childModel.getElementLength() );
+};
+
+es.DocumentModelNode.prototype.onBeforeUnshift = function( childModel ) {
+	this.adjustContentLength( childModel.getElementLength() );
+};
+
+es.DocumentModelNode.prototype.onBeforePop = function() {
+	this.adjustContentLength( -this[this.length - 1].getElementLength() );
+};
+
+es.DocumentModelNode.prototype.onBeforeShift = function() {
+	this.adjustContentLength( -this[0].getElementLength() );
+};
+
+es.DocumentModelNode.prototype.onBeforeSplice = function( index, howmany ) {
+	var diff = 0,
+		removed = this.slice( index, index + howmany ),
+		added = Array.prototype.slice.call( arguments, 2 );
+	for ( var i = 0; i < removed.length; i++ ) {
+		diff -= removed[i].getElementLength();
+	}
+	for ( var i = 0; i < added.length; i++ ) {
+		diff += added[i].getElementLength();
+	}
+	this.adjustContentLength( diff );
+};
 
 /**
  * Sets the content length.
@@ -26,7 +66,7 @@ es.DocumentModelNode = function( contentLength ) {
  * @param {Integer} contentLength Length of content
  * @throws Invalid content length error if contentLength is less than 0
  */
-es.DocumentModelNode.setContentLength = function( contentLength ) {
+es.DocumentModelNode.prototype.setContentLength = function( contentLength ) {
 	if ( contentLength < 0 ) {
 		throw 'Invalid content length error. Content length can not be less than 0.';
 	}
@@ -44,7 +84,7 @@ es.DocumentModelNode.setContentLength = function( contentLength ) {
  * @param {Integer} adjustment Amount to adjust content length by
  * @throws Invalid adjustment error if resulting length is less than 0
  */
-es.DocumentModelNode.adjustContentLength = function( adjustment ) {
+es.DocumentModelNode.prototype.adjustContentLength = function( adjustment ) {
 	this.contentLength += adjustment;
 	// Make sure the adjustment was sane
 	if ( this.contentLength < 0 ) {
@@ -61,13 +101,23 @@ es.DocumentModelNode.adjustContentLength = function( adjustment ) {
 /**
  * Gets the content length.
  * 
+ * If the content length has not been set or evaluated yet, this will cause it to be evaluated.
+ * 
  * @method
  * @returns {Integer} Length of content
  */
-es.DocumentModelNode.getContentLength = function() {
+es.DocumentModelNode.prototype.getContentLength = function() {
 	return this.contentLength;
 };
 
-/* Inheritance */
-
-es.extend( es.DocumentModelNode, es.ModelNode );
+/**
+ * Gets the element length.
+ * 
+ * If the content length has not been set or evaluated yet, this will cause it to be evaluated.
+ * 
+ * @method
+ * @returns {Integer} Length of element
+ */
+es.DocumentModelNode.prototype.getElementLength = function() {
+	return this.contentLength + 2;
+};

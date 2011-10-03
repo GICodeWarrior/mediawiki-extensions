@@ -5,13 +5,16 @@
  * @constructor
  */
 es.ParagraphModel = function( length ) {
-	// Inheritance
-	es.DocumentModelNode.call( this, length );
+	// Extension
+	return $.extend( new es.DocumentModelNode( length ), this );
 };
+
+/* Methods */
 
 /**
  * Creates a paragraph view for this model.
  * 
+ * @method
  * @returns {es.ParagraphView}
  */
 es.ParagraphModel.prototype.createView = function() {
@@ -21,7 +24,3 @@ es.ParagraphModel.prototype.createView = function() {
 /* Registration */
 
 es.DocumentModel.nodeModels.paragraph = es.ParagraphModel;
-
-/* Inheritance */
-
-es.extend( es.ParagraphModel, es.DocumentModelNode );

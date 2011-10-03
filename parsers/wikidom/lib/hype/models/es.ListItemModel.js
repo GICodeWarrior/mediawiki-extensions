@@ -5,13 +5,16 @@
  * @constructor
  */
 es.ListItemModel = function( length ) {
-	// Inheritance
-	es.DocumentModelNode.call( this, length );
+	// Extension
+	return $.extend( new es.DocumentModelNode( length ), this );
 };
+
+/* Methods */
 
 /**
  * Creates a list item view for this model.
  * 
+ * @method
  * @returns {es.ListItemView}
  */
 es.ListItemModel.prototype.createView = function() {
@@ -21,7 +24,3 @@ es.ListItemModel.prototype.createView = function() {
 /* Registration */
 
 es.DocumentModel.nodeModels.listItem = es.ListItemModel;
-
-/* Inheritance */
-
-es.extend( es.ListItemModel, es.DocumentModelNode );

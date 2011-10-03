@@ -5,13 +5,16 @@
  * @constructor
  */
 es.TableModel = function( length ) {
-	// Inheritance
-	es.DocumentModelNode.call( this, length );
+	// Extension
+	return $.extend( new es.DocumentModelNode( length ), this );
 };
+
+/* Methods */
 
 /**
  * Creates a table view for this model.
  * 
+ * @method
  * @returns {es.TableView}
  */
 es.TableModel.prototype.createView = function() {
@@ -21,7 +24,3 @@ es.TableModel.prototype.createView = function() {
 /* Registration */
 
 es.DocumentModel.nodeModels.table = es.TableModel;
-
-/* Inheritance */
-
-es.extend( es.TableModel, es.DocumentModelNode );

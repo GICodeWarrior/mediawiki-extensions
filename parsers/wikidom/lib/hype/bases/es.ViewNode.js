@@ -19,94 +19,102 @@
 es.ViewNode = function( model, $element ) {
 	// Inheritance
 	es.EventEmitter.call( this );
-	var node = [];
-	
+
 	// Extending this class will initialize it without any arguments, exiting early if no model
 	// was given will prevent clogging up subclass prototypes with array methods
 	if ( !model ) {
 		return this;
 	}
 	
-	this.model = model;
-	this.$ = $element || $( '<div/>' );
+	// Extension
+	var node = $.extend( [], this )
+	
+	// Properties
+	node.model = model;
+	node.$ = $element || $( '<div/>' );
 	
 	// Reusable function for passing update events upstream
-	this.emitUpdate = function() {
+	node.emitUpdate = function() {
 		node.emit( 'update' );
 	};
 	
 	// Append existing model children
 	for ( var i = 0; i < model.length; i++ ) {
-		this.onPush( model[i] );
+		node.onPush( model[i] );
 	}
 	
 	// Observe and mimic changes on model
-	this.addListenerMethods( node, {
-		'push': 'onPush',
-		'unshift': 'onUnshift',
-		'pop': 'onPop',
-		'shift': 'onShift',
-		'splice': 'onSplice',
-		'sort': 'onSort',
-		'reverse': 'onReverse'
+	node.addListenerMethods( node, {
+		'afterPush': 'onAfterPush',
+		'afterUnshift': 'onAfterUnshift',
+		'afterPop': 'onAfterPop',
+		'afterShift': 'onAfterShift',
+		'afterSplice': 'onAfterSplice',
+		'afterSort': 'onAfterSort',
+		'afterReverse': 'onAfterReverse'
 	} );
 	
-	// Extend native array with method and properties of this
-	return $.extend( node, this );
+	return node;
 };
 
-es.ViewNode.onPush = function( childModel ) {
+es.ViewNode.onAfterPush = function( childModel ) {
 	var childView = childModel.createView();
+	this.emit( 'beforePush', childView );
 	childView.attach( this );
 	childView.on( 'update', this.emitUpdate );
 	this.push( childView );
 	this.$.append( childView.$ );
-	this.emit( 'push', childView );
+	this.emit( 'afterPush', childView );
 	this.emit( 'update' );
 };
 
-es.ViewNode.onUnshift = function( childModel ) {
+es.ViewNode.onAfterUnshift = function( childModel ) {
 	var childView = childModel.createView();
+	this.emit( 'beforeUnshift', childView );
 	childView.attach( this );
 	childView.on( 'update', this.emitUpdate );
 	this.unshift( childView );
 	this.$.prepend( childView.$ );
-	this.emit( 'unshift', childView );
+	this.emit( 'afterUnshift', childView );
 	this.emit( 'update' );
 };
 
-es.ViewNode.onPop = function() {
+es.ViewNode.onAfterPop = function() {
+	this.emit( 'beforePop' );
 	var childView = this.pop();
 	childView.detach();
 	childView.removeEventListener( 'update', this.emitUpdate );
 	childView.$.detach();
-	this.emit( 'pop' );
+	this.emit( 'afterPop' );
 	this.emit( 'update' );
 };
 
-es.ViewNode.onShift = function() {
+es.ViewNode.onAfterShift = function() {
+	this.emit( 'beforeShift' );
 	var childView = this.shift();
 	childView.detach();
 	childView.removeEventListener( 'update', this.emitUpdate );
 	childView.$.detach();
-	this.emit( 'shift' );
+	this.emit( 'afterShift' );
 	this.emit( 'update' );
 };
 
-es.ViewNode.onSplice = function( index, howmany ) {
-	var args = Array.prototype.slice( arguments, 0 ),
-		added = args.slice( 2 ),
-		removed = this.splice.apply( this, args );
-	this.$.children().slice( index, index + howmany ).detach();
-	var $added = $.map( added, function( childView ) {
-		return childView.$;
-	} );
-	this.$.children().get( index ).after( $added );
-	this.emit.apply( ['splice'].concat( args ) );
+es.ViewNode.onAfterSplice = function( index, howmany ) {
+	var args = Array.prototype.slice( arguments, 0 );
+	this.emit.apply( ['beforeSplice'].concat( args ) );
+	this.$.children()
+		// Removals
+		.slice( index, index + howmany ).detach()
+		// Insertions
+		.get( index ).after( $.map( args.slice( 2 ), function( childView ) {
+			return childView.$;
+		} ) );
+	this.emit.apply( ['afterSplice'].concat( args ) );
 	this.emit( 'update' );
 };
 
-es.ViewNode.onSort = function() {
+es.ViewNode.onAfterSort = function() {
+	this.emit( 'beforeSort' );
 	for ( var i = 0; i < this.model.length; i++ ) {
 		for ( var j = 0; j < this.length; j++ ) {
 			if ( this[j].getModel() === this.model[i] ) {
@@ -117,19 +125,19 @@ es.ViewNode.onSort = function() {
 			}
 		}
 	}
-	this.emit( 'sort' );
+	this.emit( 'afterSort' );
 	this.emit( 'update' );
 };
 
-es.ViewNode.onReverse = function() {
+es.ViewNode.onAfterReverse = function() {
+	this.emit( 'beforeReverse' );
 	this.reverse();
 	this.$.children().each( function() {
 		$(this).prependTo( $(this).parent() );
 	} );
-	this.emit( 'reverse' );
+	this.emit( 'afterReverse' );
 	this.emit( 'update' );
 };
-
 
 /**
  * Gets a reference to the model this node observes.

@@ -14,15 +14,16 @@
 es.ModelNode = function( children ) {
 	// Inheritance
 	es.EventEmitter.call( this );
-	var node = $.isArray( children ) ? children : [];
+	
+	// Extension
+	var node = $.extend( $.isArray( children ) ? children : [], this )
 	
 	// Reusable function for passing update events upstream
-	this.emitUpdate = function() {
+	node.emitUpdate = function() {
 		node.emit( 'update' );
 	};
 	
-	// Extend native array with method and properties of this
-	return $.extend( node, this );
+	return node;
 };
 
 /* Methods */
@@ -33,14 +34,16 @@ es.ModelNode = function( children ) {
  * @method
  * @param {es.ModelItem} childModel Item to add
  * @returns {Integer} New number of children
- * @emits push (childModel)
+ * @emits beforePush (childModel)
+ * @emits afterPush (childModel)
  * @emits update
  */
 es.ModelNode.prototype.push = function( childModel ) {
+	this.emit( 'beforePush', childModel );
 	childModel.attach( this );
 	childModel.on( 'update', this.emitUpdate );
 	Array.prototype.push.call( this, childModel );
-	this.emit( 'push', childModel );
+	this.emit( 'afterPush', childModel );
 	this.emit( 'update' );
 	return this.length;
 };
@@ -51,14 +54,16 @@ es.ModelNode.prototype.push = function( childModel ) {
  * @method
  * @param {es.ModelItem} childModel Item to add
  * @returns {Integer} New number of children
- * @emits unshift (childModel)
+ * @emits beforeUnshift (childModel)
+ * @emits afterUnshift (childModel)
  * @emits update
  */
 es.ModelNode.prototype.unshift = function( childModel ) {
+	this.emit( 'beforeUnshift', childModel );
 	childModel.attach( this );
 	childModel.on( 'update', this.emitUpdate );
 	Array.prototype.unshift.call( this, childModel );
-	this.emit( 'unshift', childModel );
+	this.emit( 'afterUnshift', childModel );
 	this.emit( 'update' );
 	return this.length;
 };
@@ -68,16 +73,18 @@ es.ModelNode.prototype.unshift = function( childModel ) {
  * 
  * @method
  * @returns {Integer} Removed childModel
- * @emits pop
+ * @emits beforePop
+ * @emits afterPop
  * @emits update
  */
 es.ModelNode.prototype.pop = function() {
 	if ( this.length ) {
+		this.emit( 'beforePop' );
 		var childModel = this[this.length - 1];
 		childModel.detach();
 		childModel.removeListener( 'update', this.emitUpdate );
 		Array.prototype.pop.call( this, childModel );
-		this.emit( 'pop' );
+		this.emit( 'afterPop' );
 		this.emit( 'update' );
 		return childModel;
 	}
@@ -88,16 +95,18 @@ es.ModelNode.prototype.pop = function() {
  * 
  * @method
  * @returns {Integer} Removed childModel
- * @emits shift
+ * @emits beforeShift
+ * @emits afterShift
  * @emits update
  */
 es.ModelNode.prototype.shift = function() {
 	if ( this.length ) {
+		this.emit( 'beforeShift' );
 		var childModel = this[0];
 		childModel.detach();
 		childModel.removeListener( 'update', this.emitUpdate );
 		Array.prototype.shift.call( this, childModel );
-		this.emit( 'shift' );
+		this.emit( 'afterShift' );
 		this.emit( 'update' );
 		return childModel;
 	}
@@ -111,11 +120,13 @@ es.ModelNode.prototype.shift = function() {
  * @param {Integer} howmany Number of nodes to remove
  * @param {es.ModelItem} [...] Variadic list of nodes to insert
  * @returns {es.ModelItem[]} Removed nodes
- * @emits splice (index, howmany, [...])
+ * @emits beforeSplice (index, howmany, [...])
+ * @emits afterSplice (index, howmany, [...])
  * @emits update
  */
 es.ModelNode.prototype.splice = function( index, howmany ) {
 	var args = Array.prototype.slice.call( arguments, 0 );
+	this.emit.apply( this, ['beforeSplice'].concat( args ) );
 	if ( args.length >= 3 ) {
 		for ( var i = 2; i < args.length; i++ ) {
 			args[i].attach( this );
@@ -126,7 +137,7 @@ es.ModelNode.prototype.splice = function( index, howmany ) {
 		removed[i].detach();
 		removed[i].removeListener( 'update', this.emitUpdate );
 	}
-	this.emit.apply( this, ['splice'].concat( args ) );
+	this.emit.apply( this, ['afterSplice'].concat( args ) );
 	this.emit( 'update' );
 	return removed;
 };
@@ -136,26 +147,30 @@ es.ModelNode.prototype.splice = function( index, howmany ) {
  * 
  * @method
  * @param {Function} sortfunc Function to use when sorting
- * @emits sort
+ * @emits beforeSort (sortfunc)
+ * @emits afterSort (sortfunc)
  * @emits update
  */
 es.ModelNode.prototype.sort = function( sortfunc ) {
-	this.emit( 'sort' );
-	this.emit( 'update' );
+	this.emit( 'beforeSort', sortfunc );
 	Array.prototype.sort.call( this );
+	this.emit( 'afterSort', sortfunc );
+	this.emit( 'update' );
 };
 
 /**
  * Reverses the order of this node's children.
  * 
  * @method
- * @emits reverse
+ * @emits beforeReverse
+ * @emits afterReverse
  * @emits update
  */
 es.ModelNode.prototype.reverse = function() {
-	this.emit( 'reverse' );
-	this.emit( 'update' );
+	this.emit( 'beforeReverse' );
 	Array.prototype.reverse.call( this );
+	this.emit( 'afterReverse' );
+	this.emit( 'update' );
 };
 
 /**
@@ -176,8 +191,9 @@ es.ModelNode.prototype.getParent = function() {
  * @emits attach (parent)
  */
 es.ModelNode.prototype.attach = function( parent ) {
+	this.emit( 'beforeAttach', parent );
 	this.parent = parent;
-	this.emit( 'attach', parent );
+	this.emit( 'afterAttach', parent );
 };
 
 /**
@@ -187,9 +203,10 @@ es.ModelNode.prototype.attach = function( parent ) {
  * @emits detach (parent)
  */
 es.ModelNode.prototype.detach = function() {
+	this.emit( 'beforeDetach' );
 	var parent = this.parent;
 	this.parent = null;
-	this.emit( 'detach', parent );
+	this.emit( 'afterDetach' );
 };
 
 /**

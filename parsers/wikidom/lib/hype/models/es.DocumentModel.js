@@ -11,14 +11,16 @@
  */
 es.DocumentModel = function( data, attributes ) {
 	// Inheritance
-	es.DocumentModelNode.call( this, length );
+	var node = $.extend( new es.DocumentModelNode( length ), this );
 	
 	// Properties
-	this.data = $.isArray( data ) ? data : [];
-	this.attributes = $.isPlainObject( attributes ) ? attributes : {};
+	node.data = $.isArray( data ) ? data : [];
+	node.attributes = $.isPlainObject( attributes ) ? attributes : {};
 	
 	// Initialization
-	this.rebuildChildNodes();
+	node.rebuildChildNodes();
+	
+	return node;
 };
 
 /* Static Members */
@@ -180,6 +182,7 @@ es.DocumentModel.prototype.isElement = function( offset ) {
 /**
  * Creates a document view for this model.
  * 
+ * @method
  * @returns {es.DocumentView}
  */
 es.DocumentModel.prototype.createView = function() {
@@ -188,16 +191,23 @@ es.DocumentModel.prototype.createView = function() {
 
 /**
  * Regenerates child nodes from content data.
+ * 
+ * @method
  */
 es.DocumentModel.prototype.rebuildChildNodes = function() {
 	// Remove child nodes
 	this.splice( 0, this.length );
 	// Build a tree of models, which is a space partitioning data structure
-	for ( var i = 0; i < this.data.length; i++ ) {
+	var currentNode = this;
+	for ( var i = 0, length = this.data.length; i < length; i++ ) {
 		if ( this.data[i].type !== undefined ) {
 			// It's an element
+			if ( this.data[i].type in es.DocumentModel.nodeModels ) {
+				var node = new es.DocumentModel.nodeModels[this.data[i].type]();
+				//this.push(  );
+			}
 		} else {
-			// It's content
+			// It's content - there are no child elements
 		}
 	}
 };
@@ -306,6 +316,7 @@ es.DocumentModel.prototype.prepareRemoval = function( range ) {
 
 /**
  * 
+ * @method
  * @returns {es.Transaction}
  */
 es.DocumentModel.prototype.prepareContentAnnotation = function( range, method, annotation ) {
@@ -314,6 +325,7 @@ es.DocumentModel.prototype.prepareContentAnnotation = function( range, method, a
 
 /**
  * 
+ * @method
  * @returns {es.Transaction}
  */
 es.DocumentModel.prototype.prepareElementAttributeChange = function( index, method, annotation ) {
@@ -322,6 +334,8 @@ es.DocumentModel.prototype.prepareElementAttributeChange = function( index, meth
 
 /**
  * 
+ * @method
+ * @param {es.Transaction}
  */
 es.DocumentModel.prototype.commit = function( transaction ) {
 	//
@@ -329,6 +343,8 @@ es.DocumentModel.prototype.commit = function( transaction ) {
 
 /**
  * 
+ * @method
+ * @param {es.Transaction}
  */
 es.DocumentModel.prototype.rollback = function( transaction ) {
 	//

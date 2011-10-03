@@ -13,11 +13,11 @@ test( 'es.ModelNode', 17, function() {
 		updates++;
 	} );
 	var attaches = 0;
-	modelNode2.on( 'attach', function() {
+	modelNode2.on( 'afterAttach', function() {
 		attaches++;
 	} );
 	var detaches = 0;
-	modelNode2.on( 'detach', function() {
+	modelNode2.on( 'afterDetach', function() {
 		detaches++;
 	} );
 	
@@ -27,7 +27,7 @@ test( 'es.ModelNode', 17, function() {
 	equal( modelNode1[0], modelNode2, 'es.ModelNode appends node on push' );
 	
 	/** @covers es.ModelNode.attach */
-	equal( attaches, 1, 'es.ModelNode emits attach events when added to another node' );
+	equal( attaches, 1, 'es.ModelNode emits afterAttach events when added to another node' );
 	
 	/** @covers es.ModelNode.unshift */
 	modelNode1.unshift( modelNode3 );
@@ -73,7 +73,7 @@ test( 'es.ModelNode', 17, function() {
 	);
 	
 	/** @covers es.ModelNode.detach */
-	equal( detaches, 1, 'es.ModelNode emits detach events when removed from another node' );
+	equal( detaches, 1, 'es.ModelNode emits afterDetach events when removed from another node' );
 	
 	/** @covers es.ModelNode.getParent */
 	strictEqual( modelNode3.getParent(), modelNode1, 'Child nodes have correct parent reference' );
