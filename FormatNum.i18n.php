@@ -17,11 +17,13 @@ $messages['en'] = array(
 	'formatnum-desc'  => 'Passes formatnum to php number_format',
 );
 
+/** Message documentation (Message documentation) */
 $messages['qqq'] = array(
-	'formatnum-desc'  => 'Description for Special:Version',
+	'formatnum-desc' => 'Description for Special:Version',
 );
 
+/** German (Deutsch) */
 $messages['de'] = array(
-	'formatnum-desc'  => 'Ermöglicht das Formatieren von Zahlen mit php number_format',
+	'formatnum-desc' => 'Ermöglicht das Formatieren von Zahlen mit php number_format',
 );
 
