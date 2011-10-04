@@ -107,6 +107,7 @@ $messages['en'] = array(
 	'contest-signup-realname' => 'Your real name',
 	'contest-signup-volunteer' => 'I am interested in volunteer opportunities',
 	'contest-signup-wmf' => 'I am interested in working for the Wikimedia Foundation',
+	'contest-signup-cv' => 'Link to your CV',
 	'contest-signup-readrules' => 'I confirm that I have read, and agree to, [[$1|the contest rules]]',
 	'contest-signup-challenge' => 'What challenge do you want to take on?',
 	'contest-signup-finished' => 'This contest has ended.',
@@ -118,6 +119,7 @@ $messages['en'] = array(
 	'contest-signup-invalid-email' => 'The email address you provided is not valid.',
 	'contest-signup-invalid-name' => 'The name you provided is to short.',
 	'contest-signup-require-challenge' => 'You must select a challenge.',
+	'contest-signup-invalid-cv' => 'You entered an invalid URL.',
 
 	// Special:ContestSubmission
 	'contest-submission-submit' => 'Submit',

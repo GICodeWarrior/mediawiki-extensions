@@ -148,6 +148,7 @@ class SpecialContestSubmission extends SpecialContestPage {
 		
 			'volunteer' => $data['contestant-volunteer'],
 			'wmf' => $data['contestant-wmf'],
+			'cv' => $data['contestant-cv'],
 		) );
 		
 		return $contestant->writeToDB();
@@ -207,6 +208,15 @@ class SpecialContestSubmission extends SpecialContestPage {
 			'label-message' => 'contest-signup-wmf',
 		);
 		
+		$hasWMF = $contestant->hasField( 'wmf' );
+		
+		$fields['contestant-cv'] = array(
+			'type' => $hasWMF && $contestant->getField( 'wmf' ) ? 'text' : 'hidden',
+			'default' => $hasWMF ? $contestant->getField( 'cv' ) : '',
+			'label-message' => 'contest-signup-cv',
+			'validation-callback' => array( __CLASS__, 'validateCVField' )
+		);
+		
 		return $fields;
 	}
 	
@@ -241,6 +251,24 @@ class SpecialContestSubmission extends SpecialContestPage {
 	public static function validateEmailField( $value, $alldata = null ) {
 		if ( !Sanitizer::validateEmail( $value ) ) {
 			return wfMsg( 'contest-signup-invalid-email' );
+		}
+		
+		return true;
+	}
+	
+	/**
+	 * HTMLForm field validation-callback for cv field.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param $value String
+	 * @param $alldata Array
+	 * 
+	 * @return true|string
+	 */
+	public static function validateCVField( $value, $alldata = null ) {
+		if ( trim( $value ) !== '' && filter_var( $value, FILTER_VALIDATE_URL ) === false ) {
+			return wfMsg( 'contest-signup-invalid-cv' );
 		}
 		
 		return true;
