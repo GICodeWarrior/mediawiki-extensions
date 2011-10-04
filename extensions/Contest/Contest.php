@@ -53,7 +53,7 @@ $wgAutoloadClasses['ApiDeleteContest'] 			= dirname( __FILE__ ) . '/api/ApiDelet
 
 $wgAutoloadClasses['Contest'] 					= dirname( __FILE__ ) . '/includes/Contest.class.php';
 $wgAutoloadClasses['ContestantPager'] 			= dirname( __FILE__ ) . '/includes/ContestantPager.php';
-$wgAutoloadClasses['ContestChallange'] 			= dirname( __FILE__ ) . '/includes/ContestChallange.php';
+$wgAutoloadClasses['ContestChallenge'] 			= dirname( __FILE__ ) . '/includes/ContestChallenge.php';
 $wgAutoloadClasses['ContestComment'] 			= dirname( __FILE__ ) . '/includes/ContestComment.php';
 $wgAutoloadClasses['ContestContestant'] 		= dirname( __FILE__ ) . '/includes/ContestContestant.php';
 $wgAutoloadClasses['ContestDBObject'] 			= dirname( __FILE__ ) . '/includes/ContestDBObject.php';
@@ -145,8 +145,8 @@ $wgResourceModules['contest.special.contest'] = $moduleTemplate + array(
 		'contest-edit-add-first',
 		'contest-edit-add-another',
 		'contest-edit-confirm-delete',
-		'contest-edit-challange-title',
-		'contest-edit-challange-text',
+		'contest-edit-challenge-title',
+		'contest-edit-challenge-text',
 	),
 	'dependencies' => array(
 		'jquery.ui.button'

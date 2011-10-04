@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS /*_*/contests (
   contest_end                  varbinary(14)       NOT NULL default '', -- End time of the contest
   
   contest_rules_page           VARCHAR(255)        NOT NULL, -- Name of the page with rules
-  contest_oppertunities        VARCHAR(255)        NOT NULL, -- Name of the page with oppertunities
+  contest_opportunities        VARCHAR(255)        NOT NULL, -- Name of the page with opportunities
   contest_intro                VARCHAR(255)        NOT NULL, -- Name of the page with the intro text
   contest_help                 VARCHAR(255)        NOT NULL, -- Name of the page with contest help
   
@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS /*_*/contest_contestants (
   contestant_id                INT unsigned        NOT NULL auto_increment PRIMARY KEY, -- Contestant id (unique id per user per contest)
   contestant_contest_id        SMALLINT unsigned   NOT NULL, -- Foreign key on contests.contest_id
   contestant_user_id           INT(10) unsigned    NOT NULL, -- Foreign key on user.user_id
-  contestant_challange_id      INT unsigned        NOT NULL, -- Foreign key on contest_challanges.challange_id
+  contestant_challenge_id      INT unsigned        NOT NULL, -- Foreign key on contest_challenges.challenge_id
   
   -- These fields will be copied from the user table on contest lock
   contestant_full_name         VARCHAR(255)        NOT NULL, -- Full name of the contestant
@@ -41,13 +41,13 @@ CREATE TABLE IF NOT EXISTS /*_*/contest_contestants (
   contestant_comments          SMALLINT unsigned   NOT NULL -- The amount of comments
 ) /*$wgDBTableOptions*/;
 
--- Challanges
-CREATE TABLE IF NOT EXISTS /*_*/contest_challanges (
-  challange_id                INT unsigned        NOT NULL auto_increment PRIMARY KEY, -- Challange id
-  challange_contest_id        INT unsigned        NOT NULL,
+-- Challenges
+CREATE TABLE IF NOT EXISTS /*_*/contest_challenges (
+  challenge_id                INT unsigned        NOT NULL auto_increment PRIMARY KEY, -- Challenge id
+  challenge_contest_id        INT unsigned        NOT NULL,
   
-  challange_text              TEXT                NOT NULL,
-  challange_title             VARCHAR(255)        NOT NULL
+  challenge_text              TEXT                NOT NULL,
+  challenge_title             VARCHAR(255)        NOT NULL
 ) /*$wgDBTableOptions*/;
 
 -- Judge votes

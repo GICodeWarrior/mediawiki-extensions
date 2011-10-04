@@ -1,18 +1,18 @@
 <?php
 
 /**
- * Class representing a single contest challange object.
- * Each contest (can) has a list of associated challanges.  
+ * Class representing a single contest challenge object.
+ * Each contest (can) has a list of associated challenges.  
  * 
  * @since 0.1
  * 
- * @file ContestChallange.php
+ * @file ContestChallenge.php
  * @ingroup Contest
  * 
  * @licence GNU GPL v3 or later
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class ContestChallange extends ContestDBObject {
+class ContestChallenge extends ContestDBObject {
 	
 	/**
 	 * Method to get an instance so methods that ought to be static,
@@ -58,7 +58,7 @@ class ContestChallange extends ContestDBObject {
 	 * @return string
 	 */
 	public function getDBTable() {
-		return 'contest_challanges';
+		return 'contest_challenges';
 	}
 
 	/**
@@ -69,7 +69,7 @@ class ContestChallange extends ContestDBObject {
 	 * @return string
 	 */
 	protected function getFieldPrefix() {
-		return 'challange_';
+		return 'challenge_';
 	}
 	
 	/**

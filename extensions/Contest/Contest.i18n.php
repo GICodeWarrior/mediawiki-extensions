@@ -80,19 +80,19 @@ $messages['en'] = array(
 	'contest-edit-name' => 'Contest name',
 	'contest-edit-status' => 'Contest status',
 	'contest-edit-intro' => 'Introduction page',
-	'contest-edit-oppertunities' => 'Oppertunities page',
+	'contest-edit-opportunities' => 'Opportunities page',
 	'contest-edit-rulespage' => 'Rules page',
 	'contest-edit-help' => 'Help page',
 	'contest-edit-exists-already' => 'Note: you are editing an already existing contest, not creating a new one.',
 	'contest-edit-submit' => 'Submit',
 
-	'contest-edit-challanges' => 'Contest challenges',
+	'contest-edit-challenges' => 'Contest challenges',
 	'contest-edit-delete' => 'Delete challenge',
 	'contest-edit-add-first' => 'Add a challenge',
 	'contest-edit-add-another' => 'Add another challenge',
 	'contest-edit-confirm-delete' => 'Are you sure you want to delete this challenge?',
-	'contest-edit-challange-title' => 'Challenge title',
-	'contest-edit-challange-text' => 'Challenge text',
+	'contest-edit-challenge-title' => 'Challenge title',
+	'contest-edit-challenge-text' => 'Challenge text',
 
 	// Special:ContestWelcome
 	'contest-welcome-unknown' => 'There is no contest with the provided name.',
@@ -108,7 +108,7 @@ $messages['en'] = array(
 	'contest-signup-volunteer' => 'I am interested in volunteer opportunities',
 	'contest-signup-wmf' => 'I am interested in working for the Wikimedia Foundation',
 	'contest-signup-readrules' => 'I confirm that I have read, and agree to, [[$1|the contest rules]]',
-	'contest-signup-challange' => 'What challenge do you want to take on?',
+	'contest-signup-challenge' => 'What challenge do you want to take on?',
 	'contest-signup-finished' => 'This contest has ended.',
 	'contest-signup-draft' => 'This contest has not started yet. Please be patient.',
 	'contest-signup-country' => 'Your country',
@@ -117,7 +117,7 @@ $messages['en'] = array(
 	'contest-signup-require-country' => 'You need to provide your country of residence.',
 	'contest-signup-invalid-email' => 'The email address you provided is not valid.',
 	'contest-signup-invalid-name' => 'The name you provided is to short.',
-	'contest-signup-require-challange' => 'You must select a challange.',
+	'contest-signup-require-challenge' => 'You must select a challenge.',
 
 	// Special:ContestSubmission
 	'contest-submission-submit' => 'Submit',
