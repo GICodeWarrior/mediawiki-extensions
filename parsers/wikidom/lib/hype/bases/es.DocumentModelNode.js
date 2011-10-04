@@ -130,3 +130,23 @@ es.DocumentModelNode.prototype.getContentLength = function() {
 es.DocumentModelNode.prototype.getElementLength = function() {
 	return this.contentLength + 2;
 };
+
+/**
+ * Gets the content length.
+ * 
+ * FIXME: This method makes assumptions that a node with a data property is a DocumentModel, which
+ * may be an issue if sub-classes of DocumentModelNode other than DocumentModel have a data property
+ * as well. A safer way of determining this would be helpful in preventing future bugs.
+ * 
+ * @method
+ * @param {es.Range} range Range of content to get
+ * @returns {Integer} Length of content
+ */
+es.DocumentModelNode.prototype.getContent = function( range ) {
+	// Find root
+	var root = this.data ? this : ( this.root.data ? this.root : null );
+	if ( root ) {
+		return root.getContent( this, range );
+	}
+	return [];
+};

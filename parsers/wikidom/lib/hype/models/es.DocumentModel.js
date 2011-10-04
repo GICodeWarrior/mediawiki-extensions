@@ -20,6 +20,13 @@ es.DocumentModel = function( data, attributes ) {
 	// Initialization
 	node.rebuildChildNodes();
 	
+	// Sparse array of offsets and nodes located at those offsets
+	node.offsetCache = [];
+	node.on( 'update', function() {
+		// Clear offset cache when content is changed
+		node.offsetCache = [];
+	} );
+	
 	return node;
 };
 
@@ -252,6 +259,10 @@ es.DocumentModel.prototype.getData = function( range, deep ) {
 /**
  * Gets the content offset of a node.
  * 
+ * This method uses a cache (this.offsetCache) to make repeated lookups for the same node quicker,
+ * but this cache is cleared when the document is updated, so be careful to consolidate update
+ * events if possible when depending on this method to be fast.
+ * 
  * @method
  * @param {es.DocumentModelNode} node Node to get offset of
  * @param {Boolean} [deep=false] Whether to scan recursively
@@ -262,20 +273,27 @@ es.DocumentModel.prototype.offsetOf = function( node, deep, from ) {
 	if ( from === undefined ) {
 		from = this;
 	}
+	var cachedOffset = this.offsetCache.indexOf( node );
+	if ( cachedOffset !== -1 ) {
+		return cachedOffset;
+	}
 	var offset = 0;
-	for ( var i = 0; i < this.length; i++ ) {
-		if ( node === this[i] ) {
+	for ( var i = 0; i < from.length; i++ ) {
+		if ( node === from[i] ) {
+			this.offsetCache[offset] = node;
 			return offset;
 		}
-		if ( deep && node.length ) {
-			var length = this.offsetOf( node, deep, node );
-			if ( length !== null ) {
-				return offset + length;
+		if ( deep && from[i].length ) {
+			var length = this.offsetOf( node, true, from[i] );
+			if ( length !== -1 ) {
+				offset += length;
+				this.offsetCache[offset] = node;
+				return offset;
 			}
 		}
-		offset += node.getContentLength() + 2;
+		offset += from[i].getElementLength();
 	}
-	return false;
+	return -1;
 };
 
 /**
@@ -302,10 +320,18 @@ es.DocumentModel.prototype.getElement = function( node, deep ) {
  * @param {Boolean} [deep=false] Whether to scan recursively
  * @returns {Array|null} List of content and elements inside node or null if node is not found
  */
-es.DocumentModel.prototype.getContent = function( node, deep ) {
-	var offset = this.offsetOf( node, deep );
-	if ( offset !== false ) {
-		return this.data.slice( offset + 1, offset + node.getContentLength() );
+es.DocumentModel.prototype.getContent = function( node, range ) {
+	if ( range ) {
+		range.normalize();
+	} else {
+		range = {
+			'start': 0,
+			'end': this.contentLength
+		};
+	}
+	var offset = this.offsetOf( node, true );
+	if ( offset !== -1 ) {
+		return this.data.slice( offset + 1, offset + node.getContentLength() + 1 );
 	}
 	return null;
 };

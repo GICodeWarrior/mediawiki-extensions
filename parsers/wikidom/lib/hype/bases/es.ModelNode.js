@@ -32,7 +32,7 @@ es.ModelNode = function( children ) {
 	
 	// Properties
 	node.parent = undefined;
-	node.root = this;
+	node.root = node;
 	
 	return node;
 };
@@ -198,7 +198,7 @@ es.ModelNode.prototype.getParent = function() {
  * Gets the root node in the tree this node is currently attached to.
  * 
  * @method
- * @returns {es.DocumentModelNode} Root node
+ * @returns {es.ModelNode} Root node
  */
 es.ModelNode.prototype.getRoot = function() {
 	return this.root;

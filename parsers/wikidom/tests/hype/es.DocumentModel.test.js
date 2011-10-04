@@ -204,4 +204,5 @@ test( 'es.DocumentModel', function() {
 	
 	deepEqual( documentModel.getData(), data, 'Flattening plain objects results in correct data' );
 	deepEqual( documentModel.slice( 0 ), tree, 'Nodes contain correct lengths' );
+	equal( documentModel[2].getContent(), ['a'], 'Content can be extracted from document' );
 } );
