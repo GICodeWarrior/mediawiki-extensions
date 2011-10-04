@@ -119,13 +119,34 @@ $messages['de'] = array(
 );
 
 /** French (Français)
+ * @author Gomoko
  * @author Hashar
  */
 $messages['fr'] = array(
+	'admanager' => 'Gestionnaire de publicité',
+	'admanagerzones' => 'Zones de gestionnaire de publicité',
+	'admanager-desc' => 'Fournit une [[Special:AdManager|page spéciale]] qui permet aux sysops de fixer la zone pour les pages ou les catégories',
+	'admanager_docu' => "Pour ajouter ou supprimer la zone de publicité d'une page ou d'une catégorie complète, ajoutez ou supprimez son titre ci-dessous.",
+	'admanagerzones_docu' => 'Entrez chaque numéro de zone de publicité sur sa propre ligne.',
 	'admanager_invalidtargetpage' => 'Aucune page trouvé avec le titre « $1 ».',
+	'admanager_invalidtargetcategory' => 'Pas de catégorie trouvée avec le titre "$1".',
+	'admanager_notable' => "Erreur! Une table de base de données requise n'a pas été trouvée! Lancez d'abord update.php.",
+	'admanager_noAdManagerZones' => 'Erreur! Vous devez ajouter des zones de publicité. Entrez-les dans les [[Special:AdManagerZones|zones de gestionnaire de publicité]].',
+	'admanager_labelPage' => 'Titres de page',
+	'admanager_labelCategory' => 'Noms de catégorie',
+	'admanager_submit' => 'Soumettre',
+	'admanager_noads' => 'Ne pas afficher de publicité',
+	'admanager_Page' => 'Pages',
 	'admanager_Category' => 'Catégories',
 	'admanager_added' => 'Vos modifications ont été enregistrées',
+	'admanager_noadsset' => "$1 a été paramétré pour n'afficher aucune publicité",
+	'admanager_addedzone' => 'Zone ajoutée',
+	'admanager_zonenum' => 'Zone #: $1',
 	'admanager_zonenotnumber' => "Erreur ! « $1 » n'est pas un nombre.",
+	'admanager_return' => 'Revenir à [[Special:AdManager|Gestionnaire de publicité]]',
+	'admanager_gotoads' => "[[Special:AdManager|Modifier l'emplacement d'une publicité]]",
+	'admanager_gotozones' => '[[Special:AdManagerZones|Modifier les zones de publicité]]',
+	'right-admanager' => '[[Special:AdManager|Gérer la configuration des publicités]]',
 );
 
 /** Franco-Provençal (Arpetan)
