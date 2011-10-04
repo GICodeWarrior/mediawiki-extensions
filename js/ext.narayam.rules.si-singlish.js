@@ -8,7 +8,8 @@
 
 // Normal rules
 var rules = [
-['ඬ්හ්a', '', 'ඳ'],	// nndha
+//['ඬ්හ්a', '', 'ඳ'],	// nndha
+['ඬ්h', '', 'ඳ්'], // nndh
 ['න්න්d', '', 'ඬ්'], 	// nnd
 ['න්න්g', '', 'ඟ්'],	// nng
 ['ශ්‍රිi', '', 'ශ්‍රී'],	// shrii
@@ -29,6 +30,8 @@ var rules = [
 ['([\\u0D9A-\\u0DC6])ොe', '', '$1ෝ'],    // <consonant>oe
 ['([\\u0D9A-\\u0DC6])u', '', '$1ෞ'],    // <consonant>au
 ['([\\u0D9A-\\u0DC6])්I', '', '$1ෛ'],    // <consonant>I
+
+['([\\u0D9A-\\u0DC6]්)r', '', '$1\u200Dර්'],    // <consonant>r
 
 ['ළුu', '', 'ළුු'], // Luu
 
