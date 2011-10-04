@@ -24,7 +24,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define( 'Push_VERSION', '1.1.2' );
+define( 'Push_VERSION', '1.1.3' );
 
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,

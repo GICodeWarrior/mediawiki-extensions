@@ -273,13 +273,7 @@
 					handleError( sender, targetUrl, { info: mw.msg( 'push-err-captacha', targetName ) } );
 				}
 				else {
-					if ( $('#checkIncFiles').length != 0 && $('#checkIncFiles').attr('checked') ) {
-						handlePushingCompletion( sender, targetUrl, targetName );
-					}
-					else {
-						sender.innerHTML = mw.msg( 'push-button-completed' );
-						setTimeout( function() {reEnableButton( sender, targetUrl, targetName );}, 1000 );
-					}
+					handlePushingCompletion( sender, targetUrl, targetName );
 				}
 			}
 		); 	
@@ -294,12 +288,16 @@
 	}
 	
 	function setButtonToImgPush( button, pages, targetUrl, targetName ) {
-		button.innerHTML = mw.msg( 'push-button-pushing-files' );
-		
 		var images = window.wgPushPageFiles.concat( window.wgPushTemplateFiles );
 		var currentFile = images.pop();
 		
-		initiateImagePush( button, pages, targetUrl, targetName, images, currentFile );
+		if ( images.length > 0 && $('#checkIncFiles').length != 0 && $('#checkIncFiles').attr('checked') ) {
+			button.innerHTML = mw.msg( 'push-button-pushing-files' );
+			initiateImagePush( button, pages, targetUrl, targetName, images, currentFile );
+		}
+		else {
+			initiatePush( button, pages, targetUrl, targetName );
+		}
 	}
 	
 	function initiateImagePush( sender, pages, targetUrl, targetName, images, fileName ) {
