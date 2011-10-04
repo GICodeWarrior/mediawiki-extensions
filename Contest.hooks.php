@@ -41,7 +41,7 @@ final class ContestHooks {
 		
 		$updater->addExtensionUpdate( array(
 			'addTable',
-			'contest_challanges',
+			'contest_challenges',
 			dirname( __FILE__ ) . '/Contest.sql',
 			true
 		) );

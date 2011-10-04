@@ -180,9 +180,9 @@ class SpecialEditContest extends FormSpecialPage {
 			'label-message' => 'contest-edit-intro',
 		);
 		
-		$fields['oppertunities'] = array (
+		$fields['opportunities'] = array (
 			'type' => 'text',
-			'label-message' => 'contest-edit-oppertunities',
+			'label-message' => 'contest-edit-opportunities',
 		);
 		
 		$fields['rules_page'] = array (
@@ -208,15 +208,15 @@ class SpecialEditContest extends FormSpecialPage {
 		}
 		
 		if ( $contest !== false ) {
-			foreach ( $contest->getChallanges() as /* ContestChallange */ $challange ) {
+			foreach ( $contest->getChallenges() as /* ContestChallenge */ $challenge ) {
 				$mappedFields[] = array(
-					'class' => 'ContestChallangeField',
-					'options' => $challange->toArray()
+					'class' => 'ContestChallengeField',
+					'options' => $challenge->toArray()
 				);
 			}
 		}
 		
-		$mappedFields['delete-challanges'] = array ( 'type' => 'hidden', 'id' => 'delete-challanges' );
+		$mappedFields['delete-challenges'] = array ( 'type' => 'hidden', 'id' => 'delete-challenges' );
 		
 		return $mappedFields;
 	}
@@ -251,10 +251,10 @@ class SpecialEditContest extends FormSpecialPage {
 		
 		$contest = new Contest( $fields, true );
 
-		$contest->setChallanges( $this->getSubmittedChallanges() );
+		$contest->setChallenges( $this->getSubmittedChallenges() );
 		$success = $contest->writeAllToDB();
 		
-		$success = $this->removeDeletedChallanges( $data['delete-challanges'] ) && $success;
+		$success = $this->removeDeletedChallenges( $data['delete-challenges'] ) && $success;
 
 		$this->getRequest()->setSessionData( $sessionField, $contest->getId() );
 		
@@ -266,53 +266,53 @@ class SpecialEditContest extends FormSpecialPage {
 		}
 	}
 	
-	protected function removeDeletedChallanges( $idString ) {
+	protected function removeDeletedChallenges( $idString ) {
 		if ( $idString == '' ) {
 			return true;
 		}
 		
-		return ContestChallange::s()->delete( array( 'id' => explode( '|', $idString ) ) ); 
+		return ContestChallenge::s()->delete( array( 'id' => explode( '|', $idString ) ) ); 
 	}
 	
-	protected function getSubmittedChallanges() {
-		$challanges = array();
+	protected function getSubmittedChallenges() {
+		$challenges = array();
 		
 		foreach ( $this->getrequest()->getValues() as $name => $value ) {
 			$matches = array();
 			
-			if ( preg_match( '/contest-challange-(\d+)/', $name, $matches ) ) {
-				$challanges[] = $this->getSubmittedChallange( $matches[1] );
-			} elseif ( preg_match( '/contest-challange-new-(\d+)/', $name, $matches ) ) {
-				$challanges[] = $this->getSubmittedChallange( $matches[1], true );
+			if ( preg_match( '/contest-challenge-(\d+)/', $name, $matches ) ) {
+				$challenges[] = $this->getSubmittedChallenge( $matches[1] );
+			} elseif ( preg_match( '/contest-challenge-new-(\d+)/', $name, $matches ) ) {
+				$challenges[] = $this->getSubmittedChallenge( $matches[1], true );
 			}
 		}
 		
-		return $challanges;
+		return $challenges;
 	}
 	
 	/**
-	 * Create and return a contest challange object from the submitted data. 
+	 * Create and return a contest challenge object from the submitted data. 
 	 * 
 	 * @since 0.1
 	 * 
-	 * @param integer|null $challangeId
+	 * @param integer|null $challengeId
 	 * 
-	 * @return ContestChallange
+	 * @return ContestChallenge
 	 */
-	protected function getSubmittedChallange( $challangeId, $isNewChallange = false ) {
-		if ( $isNewChallange ) {
-			$challangeDbId = null;
-			$challangeId = "new-$challangeId";
+	protected function getSubmittedChallenge( $challengeId, $isNewChallenge = false ) {
+		if ( $isNewChallenge ) {
+			$challengeDbId = null;
+			$challengeId = "new-$challengeId";
 		} else {
-			$challangeDbId = $challangeId;
+			$challengeDbId = $challengeId;
 		}
 		
 		$request = $this->getRequest();
 		
-		return new ContestChallange( array(
-			'id' => $challangeDbId,
-			'text' => $request->getText( "challange-text-$challangeId" ),
-			'title' => $request->getText( "contest-challange-$challangeId" ),
+		return new ContestChallenge( array(
+			'id' => $challengeDbId,
+			'text' => $request->getText( "challenge-text-$challengeId" ),
+			'title' => $request->getText( "contest-challenge-$challengeId" ),
 		) );
 	}
 	
@@ -335,15 +335,15 @@ class SpecialEditContest extends FormSpecialPage {
 	
 }
 
-class ContestChallangeField extends HTMLFormField {
+class ContestChallengeField extends HTMLFormField {
 	
 	public function getInputHTML( $value ) {
 		$attribs = array(
-			'class' => 'contest-challange'
+			'class' => 'contest-challenge'
 		);
 		
 		foreach ( $this->mParams['options'] as $name => $value ) {
-			$attribs['data-challange-' . $name] = $value;
+			$attribs['data-challenge-' . $name] = $value;
 		}
 		
 		return Html::element(

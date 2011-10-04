@@ -10,18 +10,18 @@
 
 (function( $, mw ) {
 	
-	function addChallangeToRemove( id ) {
+	function addChallengeToRemove( id ) {
 		if ( !isNaN( id ) ) {
-			var currentVal = $( '#delete-challanges' ).val();
+			var currentVal = $( '#delete-challenges' ).val();
 			
 			var currentIds = currentVal !== ''  ? currentVal.split( '|' ) : [];
 			currentIds.push( id );
 			
-			$( '#delete-challanges' ).val( currentIds.join( '|' ) );
+			$( '#delete-challenges' ).val( currentIds.join( '|' ) );
 		}
 	}
 	
-	$.fn.mwChallange = function( options ) {
+	$.fn.mwChallenge = function( options ) {
 		
 		var _this = this;
 		var $this = $( this );
@@ -32,7 +32,7 @@
 		this.deleteButton = null;
 		
 		this.remove = function() {
-			addChallangeToRemove( $this.attr( 'data-challange-id' ) );
+			addChallengeToRemove( $this.attr( 'data-challenge-id' ) );
 			
 			$tr = $this.closest( 'tr' );
 			$tr.slideUp( 'fast', function() { $tr.remove(); } );
@@ -43,27 +43,27 @@
 			
 			this.titleInput = $( '<input />' ).attr( {
 				'type': 'text',
-				'name': 'contest-challange-' + $this.attr( 'data-challange-id' ),
+				'name': 'contest-challenge-' + $this.attr( 'data-challenge-id' ),
 				'size': 45
-			} ).val( $this.attr( 'data-challange-title' ) );
+			} ).val( $this.attr( 'data-challenge-title' ) );
 			
 			$this.append( 
 				$( '<div />' ).html(
 					$( '<label />' )
-						.text( mw.msg( 'contest-edit-challange-title' ) )
-						.attr( 'for', 'contest-challange-' + $this.attr( 'data-challange-id' ) )
+						.text( mw.msg( 'contest-edit-challenge-title' ) )
+						.attr( 'for', 'contest-challenge-' + $this.attr( 'data-challenge-id' ) )
 				).append( '&#160;' ).append( this.titleInput )
 			);
 			
 			this.textInput = $( '<textarea />' ).attr( {
-				'name': 'challange-text-' + $this.attr( 'data-challange-id' )
-			} ).val( $this.attr( 'data-challange-text' ) );
+				'name': 'challenge-text-' + $this.attr( 'data-challenge-id' )
+			} ).val( $this.attr( 'data-challenge-text' ) );
 			
 			$this.append( 
 				$( '<div />' ).html(
 					$( '<label />' )
-						.text( mw.msg( 'contest-edit-challange-text' ) )
-						.attr( 'for', 'challange-text-' + $this.attr( 'data-challange-id' ) )
+						.text( mw.msg( 'contest-edit-challenge-text' ) )
+						.attr( 'for', 'challenge-text-' + $this.attr( 'data-challenge-id' ) )
 				).append( '<br />' ).append( this.textInput )
 			);
 			
@@ -88,27 +88,27 @@
 	var newNr = 0;
 	var $table = null;
 	
-	function getNewChallangeMessage() {
-		return mw.msg( 'contest-edit-add-' + ( $( '.contest-challange-input' ).size() === 0 ? 'first' : 'another' ) );
+	function getNewChallengeMessage() {
+		return mw.msg( 'contest-edit-add-' + ( $( '.contest-challenge-input' ).size() === 0 ? 'first' : 'another' ) );
 	}
 	
-	function addChallange( challange ) {
-		$challange = $( '<div />' ).attr( {
-			'class': 'contest-challange-input',
-			'data-challange-id': challange.id,
-			'data-challange-title': challange.title,
-			'data-challange-text': challange.text
+	function addChallenge( challenge ) {
+		$challenge = $( '<div />' ).attr( {
+			'class': 'contest-challenge-input',
+			'data-challenge-id': challenge.id,
+			'data-challenge-title': challenge.title,
+			'data-challenge-text': challenge.text
 		} );
 		
 		$tr = $( '<tr />' );
 		
 		$tr.append( $( '<td />' ) );
 		
-		$tr.append( $( '<td />' ).html( $challange ).append( '<hr />' ) );
+		$tr.append( $( '<td />' ).html( $challenge ).append( '<hr />' ) );
 		
-		$( '.add-new-challange' ).before( $tr );
+		$( '.add-new-challenge' ).before( $tr );
 		
-		$challange.mwChallange();
+		$challenge.mwChallenge();
 	}
 	
 	$( document ).ready( function() {
@@ -119,28 +119,28 @@
 		
 		$table.append( '<tr><td colspan="2"><hr /></td></tr>' );
 		
-		$addNew = $( '<button />' ).button( { 'label': getNewChallangeMessage() } ).click( function() {
-			addChallange( {
+		$addNew = $( '<button />' ).button( { 'label': getNewChallengeMessage() } ).click( function() {
+			addChallenge( {
 				'id': 'new-' + newNr++ ,
 				'title': '',
 				'text': ''
 			} );
 			
-			$( this ).button( { 'label': getNewChallangeMessage() } );
+			$( this ).button( { 'label': getNewChallengeMessage() } );
 			
 			return false;
 		} );
 		
-		$table.append( $( '<tr />' ).attr( 'class', 'add-new-challange' ).html( $( '<td />' ) ).append( $( '<td />' ).html( $addNew ) ) );
+		$table.append( $( '<tr />' ).attr( 'class', 'add-new-challenge' ).html( $( '<td />' ) ).append( $( '<td />' ).html( $addNew ) ) );
 		
 		$table.append( '<tr><td colspan="2"><hr /></td></tr>' );
 		
-		$( '.contest-challange' ).each( function( index, domElement ) {
+		$( '.contest-challenge' ).each( function( index, domElement ) {
 			$this = $( domElement );
-			addChallange( {
-				'id': $this.attr( 'data-challange-id' ),
-				'title': $this.attr( 'data-challange-title' ),
-				'text': $this.attr( 'data-challange-text' )
+			addChallenge( {
+				'id': $this.attr( 'data-challenge-id' ),
+				'title': $this.attr( 'data-challenge-title' ),
+				'text': $this.attr( 'data-challenge-text' )
 			} );
 		} );
 		

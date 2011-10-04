@@ -85,7 +85,7 @@ class ContestContestant extends ContestDBObject {
 		return array(
 			'id' => 'id',
 			'contest_id' => 'id',
-			'challange_id' => 'id',
+			'challenge_id' => 'id',
 			'user_id' => 'id',
 		
 			'full_name' => 'str',

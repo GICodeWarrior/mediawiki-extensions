@@ -6,11 +6,11 @@
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
  */
 
-button.challange-signup {
+button.challenge-signup {
 	position: absolute;
 	right: 5px;
 }
 
-div.contest-challange {
+div.contest-challenge {
 	position: relative;
 }

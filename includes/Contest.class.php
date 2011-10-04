@@ -19,13 +19,13 @@ class Contest extends ContestDBObject {
 	const STATUS_FINISHED = 2;
 	
 	/**
-	 * List of challanges for this contest.
-	 * @see loadChallanges, setChallanges and writeChallangesToDB
+	 * List of challenges for this contest.
+	 * @see loadChallenges, setChallenges and writeChallengesToDB
 	 * 
 	 * @since 0.1
-	 * @var array of ContestChallange
+	 * @var array of ContestChallenge
 	 */
-	protected $challanges = null;
+	protected $challenges = null;
 	
 	/**
 	 * List of contestants for this contest.
@@ -118,7 +118,7 @@ class Contest extends ContestDBObject {
 			'end' => 'int',
 		
 			'rules_page' => 'str',
-			'oppertunities' => 'str',
+			'opportunities' => 'str',
 			'intro' => 'str',
 			'help' => 'str',
 		
@@ -140,7 +140,7 @@ class Contest extends ContestDBObject {
 			'end' => '',
 			
 			'rules_page' => 'MediaWiki:',
-			'oppertunities' => 'MediaWiki:',
+			'opportunities' => 'MediaWiki:',
 			'intro' => 'MediaWiki:',
 			'help' => '',
 		
@@ -187,31 +187,31 @@ class Contest extends ContestDBObject {
 	}
 	
 	/**
-	 * Load the challanges from the database.
-	 * Any set challanges will be lost.
+	 * Load the challenges from the database.
+	 * Any set challenges will be lost.
 	 * 
 	 * @since 0.1
 	 */
-	public function loadChallanges() {
-		$this->challanges = ContestChallange::s()->select(
+	public function loadChallenges() {
+		$this->challenges = ContestChallenge::s()->select(
 			null,
 			array( 'contest_id' => $this->getId() )
 		);
 	}
 	
 	/**
-	 * Gets the challanges that are part of this contest.
+	 * Gets the challenges that are part of this contest.
 	 * 
 	 * @since 0.1
 	 * 
-	 * @return array of ContestChallange
+	 * @return array of ContestChallenge
 	 */
-	public function getChallanges( $forceLoad = false ) {
-		if ( is_null( $this->challanges ) || $forceLoad ) {
-			$this->loadChallanges();
+	public function getChallenges( $forceLoad = false ) {
+		if ( is_null( $this->challenges ) || $forceLoad ) {
+			$this->loadChallenges();
 		}
 		
-		return $this->challanges;
+		return $this->challenges;
 	}
 	
 	/**
@@ -254,14 +254,14 @@ class Contest extends ContestDBObject {
 	}
 	
 	/**
-	 * Set the challanges for this contest.
+	 * Set the challenges for this contest.
 	 * 
 	 * @since 0.1
 	 * 
-	 * @param array $challanges
+	 * @param array $challenges
 	 */
-	public function setChallanges( array /* of ContestChallange */ $challanges ) {
-		$this->challanges = $challanges;
+	public function setChallenges( array /* of ContestChallenge */ $challenges ) {
+		$this->challenges = $challenges;
 	}
 	
 	/**
@@ -280,7 +280,7 @@ class Contest extends ContestDBObject {
 	}
 	
 	/**
-	 * Write the contest and all set challanges and participants to the database.
+	 * Write the contest and all set challenges and participants to the database.
 	 * 
 	 * @since 0.1
 	 * 
@@ -290,7 +290,7 @@ class Contest extends ContestDBObject {
 		$success = self::writeToDB();
 	
 		if ( $success ) {
-			$success = $this->writeChallangesToDB();
+			$success = $this->writeChallengesToDB();
 		}
 		
 		if ( $success ) {
@@ -301,14 +301,14 @@ class Contest extends ContestDBObject {
 	}
 	
 	/**
-	 * Write the challanges to the database.
+	 * Write the challenges to the database.
 	 * 
 	 * @since 0.1
 	 * 
 	 * @return boolean Success indicator
 	 */
-	public function writeChallangesToDB() {
-		if ( is_null( $this->challanges ) || count( $this->challanges ) == 0 ) {
+	public function writeChallengesToDB() {
+		if ( is_null( $this->challenges ) || count( $this->challenges ) == 0 ) {
 			return true;
 		}
 		
@@ -317,9 +317,9 @@ class Contest extends ContestDBObject {
 		
 		$dbw->begin();
 		
-		foreach ( $this->challanges as /* ContestChallange */ $challange ) {
-			$challange->setField( 'contest_id', $this->getId() );
-			$success &= $challange->writeToDB();
+		foreach ( $this->challenges as /* ContestChallenge */ $challenge ) {
+			$challenge->setField( 'contest_id', $this->getId() );
+			$success &= $challenge->writeToDB();
 		}
 		
 		$dbw->commit();
