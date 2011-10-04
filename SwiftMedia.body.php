@@ -140,7 +140,7 @@ class SwiftFile extends LocalFile {
 	 *
 	 * @return MediaTransformOutput | false
 	 */
-	private function maybeDoTransform( $thumbName, $thumbUrl, $params, $flags ) {
+	function maybeDoTransform( $thumbName, $thumbUrl, $params, $flags ) {
 		global $wgIgnoreImageErrors, $wgThumbnailEpoch, $wgTmpDirectory;
 
 		// get a temporary place to put the original.
@@ -203,7 +203,7 @@ class SwiftFile extends LocalFile {
 	/**
 	 * We have nothing to do here.
 	 */
-	protected function migrateThumbFile( $thumbName ) {
+	function migrateThumbFile( $thumbName ) {
 		return;
 	}
 	/**
@@ -316,14 +316,14 @@ class SwiftRepo extends LocalRepo {
 	 *
 	 * @return CF_Connection
 	 */
-	protected function connect() {
+	function connect() {
 		$auth = new CF_Authentication($this->swiftuser, $this->swiftkey, NULL, $this->authurl);
 		try {
 			$auth->authenticate();
 		} catch (AuthenticationException $e) {
-			throw new MWException( 'We can't authenticate ourselves.' );
-		} catch (InvalidResponseException $e) {
-			throw new MWException( __METHOD__ . "unexpected response '$e'" );
+			throw new MWException( "We can't authenticate ourselves." );
+		#} catch (InvalidResponseException $e) {
+		#	throw new MWException( __METHOD__ . "unexpected response '$e'" );
 		}
 		return new CF_Connection($auth);
 	}
@@ -334,13 +334,13 @@ class SwiftRepo extends LocalRepo {
 	 *
 	 * @return CF_Container
 	 */
-	protected function get_container($conn, $cont) {
+	function get_container($conn, $cont) {
 		try {
 			return $conn->get_container($cont);
 		} catch (NoSuchContainerException $e) {
 			throw new MWException( "A container we thought existed, doesn't." );
-		} catch (InvalidResponseException $e) {
-			throw new MWException( __METHOD__ . "unexpected response '$e'" );
+		#} catch (InvalidResponseException $e) {
+		#	throw new MWException( __METHOD__ . "unexpected response '$e'" );
 		}
 	}
 
@@ -351,7 +351,7 @@ class SwiftRepo extends LocalRepo {
 	 *
 	 * @return CF_Container
 	 */
-	protected function write_swift_object( $srcPath, $dstc, $dstRel) {
+	function write_swift_object( $srcPath, $dstc, $dstRel) {
 		try {
 			$obj = $dstc->create_object($dstRel);
 			$obj->load_from_filename( $srcPath, True);
@@ -359,8 +359,8 @@ class SwiftRepo extends LocalRepo {
 			throw new MWException( 'missing required parameters' );
 		} catch (BadContentTypeException $e) {
 			throw new MWException( 'No Content-Type was/could be set' );
-		} catch (InvalidResponseException $e) {
-			throw new MWException( __METHOD__ . "unexpected response '$e'" );
+		#} catch (InvalidResponseException $e) {
+		#	throw new MWException( __METHOD__ . "unexpected response '$e'" );
 		} catch (IOException $e) {
 			throw new MWException( "error opening file '$e'" );
 		}
@@ -372,15 +372,15 @@ class SwiftRepo extends LocalRepo {
 	 * an Internal Error on them.
 	 *
 	 */
-	protected function swift_delete( $container, $rel ) {
+	function swift_delete( $container, $rel ) {
 		try {
 			$container->delete_object($rel);
 		} catch (SyntaxException $e) {
 			throw new MWException( "Swift object name not well-formed: '$e'" );
 		} catch (NoSuchObjectException $e) {
 			throw new MWException( "Swift object we are trying to delete does not exist: '$e'" );
-		} catch (InvalidResponseException $e) {
-			throw new MWException( "unexpected response '$e'" );
+		#} catch (InvalidResponseException $e) {
+		#	throw new MWException( "unexpected response '$e'" );
 		}
 	}
 
@@ -458,16 +458,9 @@ class SwiftRepo extends LocalRepo {
 					unlink ( $srcPath );
 				}
 			}
-
-			if ( !( $flags & self::SKIP_VALIDATION ) ) {
-				// FIXME: Swift will return the MD5 of the data written.
-				if (0) { // ( $hashDest === false || $hashSource !== $hashDest )
-					wfDebug( __METHOD__ . ': File copy validation failed: ' .
-						"$srcPath ($hashSource) to $dstPath ($hashDest)\n" );
-
-					$status->error( 'filecopyerror', $srcPath, $dstPath );
-					$good = false;
-				}
+			if (0) {
+				$status->error( 'filecopyerror', $srcPath, $dstPath );
+				$good = false;
 			}
 			if ( $good ) {
 				$status->successCount++;
@@ -630,8 +623,8 @@ class SwiftRepo extends LocalRepo {
 			throw new MWException( "Missing Content-Type: $e" );
 		} catch (MisMatchedChecksumException $e ) {
 			throw new MWException( __METHOD__ . "should not happen: '$e'" );
-		} catch (InvalidResponseException $e ) {
-			throw new MWException( __METHOD__ . "unexpected response '$e'" );
+		#} catch (InvalidResponseException $e ) {
+		#	throw new MWException( __METHOD__ . "unexpected response '$e'" );
 		}
 
 		try {
@@ -648,8 +641,8 @@ class SwiftRepo extends LocalRepo {
 			throw new MWException( 'Source file does not exist: ' . $srcContainer->name . "/$srcRel: $e" );
 		} catch (MisMatchedChecksumException $e ) {
 			throw new MWException( "Checksums do not match: $e" );
-		} catch (InvalidResponseException $e ) {
-			throw new MWException( __METHOD__ . "unexpected response '$e'" );
+		#} catch (InvalidResponseException $e ) {
+		#	throw new MWException( __METHOD__ . "unexpected response '$e'" );
 		}
 	}
 
@@ -678,8 +671,16 @@ class SwiftRepo extends LocalRepo {
 			return $status;
 		}
 
-		$conn = $this->connect();
-		$container = $this->get_container($conn,$this->container);
+		try {
+			$conn = $this->connect();
+			$container = $this->get_container($conn,$this->container);
+		} catch (InvalidResponseException $e) {
+			$status->fatal("Unexpected Swift response: '$e'");
+		}
+
+		if ( !$status->ok ) {
+			return $status;
+		}
 
 		foreach ( $triplets as $i => $triplet ) {
 			list( $srcPath, $dstRel, $archiveRel ) = $triplet;
@@ -687,9 +688,14 @@ class SwiftRepo extends LocalRepo {
 			// Archive destination file if it exists
 			try {
 				$pic = $container->get_object($dstRel);
+			} catch (InvalidResponseException $e) {
+				$status->error("Unexpected Swift response: '$e'");
+				$status->failCount++;
+				continue;
 			} catch (NoSuchObjectException $e) {
 				$pic = NULL;
 			}
+
 			if( $pic ) {
 				$this->swiftcopy($container, $dstRel, $container, $archiveRel );
 				wfDebug(__METHOD__.": moved file $dstRel to $archiveRel\n");
@@ -698,25 +704,29 @@ class SwiftRepo extends LocalRepo {
 				$status->value[$i] = 'new';
 			}
 
-			// Where are we copying this from?
-			if (self::isVirtualUrl( $srcPath )) {
-				$src = $this->getContainerRel( $srcPath );
-				list ($srcContainer, $srcRel) = $src;
-				$srcc = $this->get_container($conn, $srcContainer);
-
-				$this->swiftcopy($srcc, $srcRel, $container, $dstRel);
-				if ( $flags & self::DELETE_SOURCE ) {
-					$this->swift_delete( $srcc, $srcRel );
-				}
-			} else {
-				$this->write_swift_object( $srcPath, $container, $dstRel);
-				// php-cloudfiles throws exceptions, so failure never gets here.
-				if ( $flags & self::DELETE_SOURCE ) {
-					unlink ( $srcPath );
-				}
-			}
-
 			$good = true;
+			try {
+				// Where are we copying this from?
+				if (self::isVirtualUrl( $srcPath )) {
+					$src = $this->getContainerRel( $srcPath );
+					list ($srcContainer, $srcRel) = $src;
+					$srcc = $this->get_container($conn, $srcContainer);
+
+					$this->swiftcopy($srcc, $srcRel, $container, $dstRel);
+					if ( $flags & self::DELETE_SOURCE ) {
+						$this->swift_delete( $srcc, $srcRel );
+					}
+				} else {
+					$this->write_swift_object( $srcPath, $container, $dstRel);
+					// php-cloudfiles throws exceptions, so failure never gets here.
+					if ( $flags & self::DELETE_SOURCE ) {
+						unlink ( $srcPath );
+					}
+				}
+			} catch (InvalidResponseException $e) {
+				$status->error("Unexpected Swift response: '$e'");
+				$good = false;
+			}
 
 			if ( $good ) {
 				$status->successCount++;
@@ -884,8 +894,9 @@ class SwiftRepo extends LocalRepo {
 	 * copy of the file MUST delete the produced file, or else store it in
 	 * SwiftFile->tempPath so it will be deleted when the object goes out of
 	 * scope.
+	 * FIXME: how do we return a fatal error from Swift?
 	 */
-	protected function getLocalCopy($container, $rel) {
+	function getLocalCopy($container, $rel) {
 
 		// get a temporary place to put the original.
 		$tempPath = tempnam( wfTempDir(), 'swift_in_' ) . '.' . pathinfo( $rel, PATHINFO_EXTENSION );
@@ -1270,15 +1281,16 @@ class SwiftForeignDBRepo extends SwiftRepo {
 	}
 
 	function getMasterDB() {
+		wfDebug( __METHOD__.": {$this->dbServer}\n" );
 		if ( !isset( $this->dbConn ) ) {
-			$this->dbConn = DatabaseBase::newFromType( $this->dbType,
+			$this->dbConn = DatabaseBase::factory( $this->dbType,
 				array(
-					'server' => $this->dbServer,
+					'host' => $this->dbServer,
 					'user'   => $this->dbUser,
 					'password' => $this->dbPassword,
 					'dbname' => $this->dbName,
 					'flags' => $this->dbFlags,
-					'tableprefix' => $this->tablePrefix
+					'tablePrefix' => $this->tablePrefix
 				)
 			);
 		}
@@ -1331,7 +1343,7 @@ class SwiftForeignDBRepo extends SwiftRepo {
  *
  * @ingroup FileRepo
  */
-class SwiftForeignDBViaLBRepo extends LocalRepo {
+class SwiftForeignDBViaLBRepo extends SwiftRepo{
 	var $wiki, $dbName, $tablePrefix;
 	var $fileFactory = array( 'SwiftForeignDBFile', 'newFromTitle' );
 	var $fileFromRowFactory = array( 'SwiftForeignDBFile', 'newFromRow' );
