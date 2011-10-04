@@ -20,13 +20,6 @@ es.DocumentModel = function( data, attributes ) {
 	// Initialization
 	node.rebuildChildNodes();
 	
-	// Sparse array of offsets and nodes located at those offsets
-	node.offsetCache = [];
-	node.on( 'update', function() {
-		// Clear offset cache when content is changed
-		node.offsetCache = [];
-	} );
-	
 	return node;
 };
 
@@ -259,9 +252,8 @@ es.DocumentModel.prototype.getData = function( range, deep ) {
 /**
  * Gets the content offset of a node.
  * 
- * This method uses a cache (this.offsetCache) to make repeated lookups for the same node quicker,
- * but this cache is cleared when the document is updated, so be careful to consolidate update
- * events if possible when depending on this method to be fast.
+ * This method is pretty expensive. If you need to get different slices of the same content, get
+ * the content first, then slice it up locally.
  * 
  * @method
  * @param {es.DocumentModelNode} node Node to get offset of
@@ -273,22 +265,15 @@ es.DocumentModel.prototype.offsetOf = function( node, deep, from ) {
 	if ( from === undefined ) {
 		from = this;
 	}
-	var cachedOffset = this.offsetCache.indexOf( node );
-	if ( cachedOffset !== -1 ) {
-		return cachedOffset;
-	}
 	var offset = 0;
 	for ( var i = 0; i < from.length; i++ ) {
 		if ( node === from[i] ) {
-			this.offsetCache[offset] = node;
 			return offset;
 		}
 		if ( deep && from[i].length ) {
 			var length = this.offsetOf( node, true, from[i] );
 			if ( length !== -1 ) {
-				offset += length;
-				this.offsetCache[offset] = node;
-				return offset;
+				return offset + length;
 			}
 		}
 		offset += from[i].getElementLength();
