@@ -30,6 +30,12 @@ es.DocumentModelNode = function( contents ) {
 		node.contentLength = contents;
 	} else {
 		node.contentLength = 0;
+		// If contents was an array, some items were added, which we need to account for
+		if ( this.length ) {
+			for ( var i = 0; i < this.length; i++ ) {
+				node.contentLength += this[i].getElementLength();
+			}
+		}
 	}
 	
 	return node;
@@ -123,14 +129,4 @@ es.DocumentModelNode.prototype.getContentLength = function() {
  */
 es.DocumentModelNode.prototype.getElementLength = function() {
 	return this.contentLength + 2;
-};
-
-/**
- * Checks if this node has child nodes.
- * 
- * @method
- * @returns {Boolean} Whether the node has any children
- */
-es.DocumentModelNode.prototype.hasChildren = function() {
-	return !!this.length;
 };

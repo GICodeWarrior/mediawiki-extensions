@@ -200,7 +200,7 @@ es.ModelNode.prototype.getParent = function() {
  * @method
  * @returns {es.DocumentModelNode} Root node
  */
-es.DocumentModelNode.prototype.getRoot = function() {
+es.ModelNode.prototype.getRoot = function() {
 	return this.root;
 };
 
