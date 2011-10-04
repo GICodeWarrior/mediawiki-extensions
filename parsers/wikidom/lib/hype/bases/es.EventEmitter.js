@@ -71,22 +71,35 @@ es.EventEmitter.prototype.addListeners = function( listeners ) {
 };
 
 /**
+ * Add a listener, mapped to a method on a target object.
+ * 
+ * @method
+ * @param target {Object} Object to call methods on when events occur
+ * @param event {String} Name of event to trigger on
+ * @param method {String} Name of method to call
+ * @returns {es.EventEmitter} This object
+ */
+es.EventEmitter.prototype.addListenerMethod = function( target, event, method ) {
+	return this.addListener( event, function() {
+		if ( typeof target[method] === 'function' ) {
+			target[method].apply( target, Array.prototype.slice.call( arguments, 0 ) );
+		} else {
+			throw 'Listener method error. Target has no such method: ' + method;
+		}
+	} );
+};
+
+/**
  * Add multiple listeners, each mapped to a method on a target object.
  * 
  * @method
- * @param context {Object} Object to call methods on when events occur
+ * @param target {Object} Object to call methods on when events occur
  * @param methods {Object} List of event/method name pairs
  * @returns {es.EventEmitter} This object
  */
-es.EventEmitter.prototype.addListenerMethods = function( context, methods ) {
+es.EventEmitter.prototype.addListenerMethods = function( target, methods ) {
 	for ( var event in methods ) {
-		this.addListener( event, function() {
-			if ( methods[event] in context ) {
-				context[methods[event]].apply( context, Array.prototype.slice( arguments, 1 ) );
-			} else {
-				throw 'Listener method error. Context has no such method: ' + methods[event];
-			}
-		} );
+		this.addListenerMethod( target, event, methods[event] );
 	}
 	return this;
 };
@@ -110,7 +123,7 @@ es.EventEmitter.prototype.once = function( type, listener ) {
 	var eventEmitter = this;
 	return this.addListener( type, function listenerWrapper() {
 		eventEmitter.removeListener( type, listenerWrapper );
-		listener.apply( eventEmitter, arguments );
+		listener.apply( eventEmitter, Array.prototype.slice.call( arguments, 0 ) );
 	} );
 };
 

@@ -201,28 +201,36 @@ es.DocumentModel.prototype.rebuildChildNodes = function() {
 	var currentNode = this;
 	for ( var i = 0, length = this.data.length; i < length; i++ ) {
 		if ( this.data[i].type !== undefined ) {
-			// It's an element
+			// It's an element, figure out it's type
 			var type = this.data[i].type,
 				open = type[0] !== '/';
+			// Trim the "/" off the beginning of closing tag types
 			if ( !open ) {
 				type = type.substr( 1 );
 			}
-			if ( !( type in es.DocumentModel.nodeModels ) ) {
-				throw 'Unsuported element error. No class registered for element type: ' + type;
-			}
 			if ( open ) {
+				// Validate the element type
+				if ( !( type in es.DocumentModel.nodeModels ) ) {
+					throw 'Unsuported element error. No class registered for element type: ' + type;
+				}
+				// Create a model node for the element
 				var newNode = new es.DocumentModel.nodeModels[this.data[i].type]();
+				// Add the new model node as a child
 				currentNode.push( newNode );
+				// Descend into the new model node
 				currentNode = newNode;
 			} else {
+				// Return to the parent node
 				currentNode = currentNode.getParent();
 			}
 		} else {
-			// It's content
+			// It's content, let's start tracking the length
 			var start = i;
+			// Move forward to the next object, tracking the length as we go
 			while ( this.data[i].type === undefined && i < length ) {
 				i++;
 			}
+			// Now we know how long the current node is
 			currentNode.setContentLength( i - start );
 			i--;
 		}
@@ -254,6 +262,8 @@ es.DocumentModel.prototype.getData = function( range, deep ) {
  * 
  * This method is pretty expensive. If you need to get different slices of the same content, get
  * the content first, then slice it up locally.
+ * 
+ * TODO: Rewrite this method to not use recursion, because the function call overhead is expensive
  * 
  * @method
  * @param {es.DocumentModelNode} node Node to get offset of
@@ -315,6 +325,7 @@ es.DocumentModel.prototype.getContent = function( node, range ) {
 		};
 	}
 	var offset = this.offsetOf( node, true );
+	console.log( offset );
 	if ( offset !== -1 ) {
 		return this.data.slice( offset + 1, offset + node.getContentLength() + 1 );
 	}

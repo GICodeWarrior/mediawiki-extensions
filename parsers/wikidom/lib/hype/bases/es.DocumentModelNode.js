@@ -11,7 +11,7 @@
  */
 es.DocumentModelNode = function( contents ) {
 	// Extension
-	var node = $.extend( new es.ModelNode( $.isArray( contents ) ? contents : [] ), this );
+	var node = $.extend( new es.ModelNode(), this );
 	
 	// Observe add and remove operations to keep lengths up to date
 	node.addListenerMethods( node, {
@@ -23,18 +23,15 @@ es.DocumentModelNode = function( contents ) {
 	} );
 	
 	// Properties
+	node.contentLength = 0;
 	if ( typeof contents === 'number' ) {
 		if ( contents < 0 ) {
 			throw 'Invalid content length error. Content length can not be less than 0.';
 		}
 		node.contentLength = contents;
-	} else {
-		node.contentLength = 0;
-		// If contents was an array, some items were added, which we need to account for
-		if ( node.length ) {
-			for ( var i = 0; i < node.length; i++ ) {
-				node.contentLength += node[i].getElementLength();
-			}
+	} else if ( $.isArray( contents ) ) {
+		for ( var i = 0; i < contents.length; i++ ) {
+			node.push( contents[i] );
 		}
 	}
 	
