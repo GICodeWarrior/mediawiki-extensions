@@ -405,6 +405,14 @@ $messages['pms'] = array(
 	'dontswitchmeover-pref' => "Përmët pa a mia pel d'esse cangià cand la pel dë stàndard a cangia",
 );
 
+/** Western Punjabi (پنجابی)
+ * @author Khalid Mahmood
+ */
+$messages['pnb'] = array(
+	'dontswitchmeover-desc' => 'ورتن والیاں لئي چنوتی جے او دسن جے اپنی سکن سیٹنگ بچانا چاندے نیں جدوں ڈیفالٹ سکن بدلی جاوے۔',
+	'dontswitchmeover-pref' => 'میری سکن نوں ناں بدلن دیو جدوں ڈیفالٹ سکن بدلی جاوے۔',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
