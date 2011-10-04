@@ -79,3 +79,12 @@ $messages['mk'] = array(
 	'credits-tab-title' => 'Заслуги за страницава',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'credits-desc' => 'Voegt een verwijzing toe aan naamsvermeldingen',
+	'credits-tab' => 'Vermeldingen',
+	'credits-tab-title' => 'Vermeldingen voor deze pagina',
+);
+
