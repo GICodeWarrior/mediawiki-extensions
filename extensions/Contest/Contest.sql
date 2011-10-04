@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS /*_*/contest_contestants (
   contestant_country           VARCHAR(255)        NOT NULL, -- Country code of the contestant
   contestant_volunteer         TINYINT unsigned    NOT NULL, -- If the user is interested in voluneer oportunities
   contestant_wmf               TINYINT unsigned    NOT NULL, -- If the user is interested in a WMF job
+  contestant_cv                TINYBLOB            NOT NULL, -- URL to the users CV
   
   contestant_submission        TINYBLOB            NOT NULL, -- URL to the users submission
   
