@@ -259,7 +259,7 @@ es.DocumentModel.prototype.getData = function( range, deep ) {
  * @param {es.DocumentModelNode} node Node to get offset of
  * @param {Boolean} [deep=false] Whether to scan recursively
  * @param {es.DocumentModelNode} [from=this] Node to look within
- * @returns {Integer|false} Offset of node or null of node was not found
+ * @returns {Integer} Offset of node or -1 of node was not found
  */
 es.DocumentModel.prototype.offsetOf = function( node, deep, from ) {
 	if ( from === undefined ) {
