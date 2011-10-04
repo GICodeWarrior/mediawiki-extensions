@@ -3,9 +3,9 @@ module( 'Bases' );
 test( 'es.ModelNode', 17, function() {
 	// Example data (integers) is used for simplicity of testing
 	var modelNode1 = new es.ModelNode(),
-		modelNode2 = new es.ModelNode( [1] ),
-		modelNode3 = new es.ModelNode( [1, 2]),
-		modelNode4 = new es.ModelNode( [1, 2, 3] );
+		modelNode2 = new es.ModelNode(),
+		modelNode3 = new es.ModelNode( [new es.ModelNode()] ),
+		modelNode4 = new es.ModelNode( [new es.ModelNode(), new es.ModelNode()] );
 	
 	// Event triggering is detected using a callback that increments a counter
 	var updates = 0;
@@ -25,7 +25,7 @@ test( 'es.ModelNode', 17, function() {
 	modelNode1.push( modelNode2 );
 	equal( updates, 1, 'es.ModelNode emits update events on push' );
 	equal( modelNode1[0], modelNode2, 'es.ModelNode appends node on push' );
-	
+
 	/** @covers es.ModelNode.attach */
 	equal( attaches, 1, 'es.ModelNode emits afterAttach events when added to another node' );
 	

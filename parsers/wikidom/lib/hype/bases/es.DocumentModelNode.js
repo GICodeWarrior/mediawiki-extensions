@@ -6,15 +6,12 @@
  * 
  * @class
  * @constructor
- * @param {Integer} contentLength Length of content
+ * @param {Integer|Array} contents Either Length of content or array of child nodes to append
  * @property {Integer} contentLength Length of content
  */
-es.DocumentModelNode = function( contentLength ) {
+es.DocumentModelNode = function( contents ) {
 	// Extension
-	var node = $.extend( new es.ModelNode(), this );
-	
-	// Properties
-	node.contentLength = contentLength || 0;
+	var node = $.extend( new es.ModelNode( $.isArray( contents ) ? contents : [] ), this );
 	
 	// Observe add and remove operations to keep lengths up to date
 	node.addListenerMethods( node, {
@@ -24,6 +21,16 @@ es.DocumentModelNode = function( contentLength ) {
 		'beforeShift': 'onBeforeShift',
 		'beforeSplice': 'onBeforeSplice'
 	} );
+	
+	// Properties
+	if ( typeof contents === 'number' ) {
+		if ( contents < 0 ) {
+			throw 'Invalid content length error. Content length can not be less than 0.';
+		}
+		node.contentLength = contents;
+	} else {
+		node.contentLength = 0;
+	}
 	
 	return node;
 };

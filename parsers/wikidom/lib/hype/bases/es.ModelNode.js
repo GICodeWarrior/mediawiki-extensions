@@ -16,12 +16,19 @@ es.ModelNode = function( children ) {
 	es.EventEmitter.call( this );
 	
 	// Extension
-	var node = $.extend( $.isArray( children ) ? children : [], this )
+	var node = $.extend( [], this )
 	
 	// Reusable function for passing update events upstream
 	node.emitUpdate = function() {
 		node.emit( 'update' );
 	};
+	
+	// Children
+	if ( $.isArray( children ) ) {
+		for ( var i = 0; i < children.length; i++ ) {
+			node.push( children[i] );
+		}
+	}
 	
 	return node;
 };
@@ -83,7 +90,7 @@ es.ModelNode.prototype.pop = function() {
 		var childModel = this[this.length - 1];
 		childModel.detach();
 		childModel.removeListener( 'update', this.emitUpdate );
-		Array.prototype.pop.call( this, childModel );
+		Array.prototype.pop.call( this );
 		this.emit( 'afterPop' );
 		this.emit( 'update' );
 		return childModel;
@@ -105,7 +112,7 @@ es.ModelNode.prototype.shift = function() {
 		var childModel = this[0];
 		childModel.detach();
 		childModel.removeListener( 'update', this.emitUpdate );
-		Array.prototype.shift.call( this, childModel );
+		Array.prototype.shift.call( this );
 		this.emit( 'afterShift' );
 		this.emit( 'update' );
 		return childModel;
@@ -205,7 +212,7 @@ es.ModelNode.prototype.attach = function( parent ) {
 es.ModelNode.prototype.detach = function() {
 	this.emit( 'beforeDetach' );
 	var parent = this.parent;
-	this.parent = null;
+	this.parent = undefined;
 	this.emit( 'afterDetach' );
 };
 
