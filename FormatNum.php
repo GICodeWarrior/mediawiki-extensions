@@ -15,7 +15,6 @@ $wgExtensionCredits['parserhook'][] = array (
         'path'=> __FILE__ ,
         'name'=>'FormatNum',
         'url'=>'http://www.mediawiki.org/wiki/Extension:FormatNum',
-        'description'=>'Passes formatnum to php number_format',
         'descriptionmsg' => 'formatnum-desc',
         'author'=>'[http://www.dasch-tour.de DaSch]',
         'version'=>'0.2.0',
