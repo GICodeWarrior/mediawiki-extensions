@@ -224,6 +224,7 @@ es.DocumentModel.prototype.rebuildChildNodes = function() {
 				i++;
 			}
 			currentNode.setContentLength( i - start );
+			i--;
 		}
 	}
 };

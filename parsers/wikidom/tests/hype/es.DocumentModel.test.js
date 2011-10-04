@@ -177,8 +177,31 @@ var data = [
 	{ 'type': '/paragraph' }
 ];
 
+/**
+ * Sample content data index.
+ * 
+ * This is a node tree that describes each partition within the document's content data.
+ */
+var tree = [
+	new es.ParagraphModel( 3 ),
+	new es.TableModel( [
+		new es.TableRowModel( [
+			new es.TableCellModel( [
+				new es.ParagraphModel( 1 ),
+				new es.ListModel( [
+					new es.ListItemModel( 1 ),
+					new es.ListItemModel( 1 ),
+					new es.ListItemModel( 1 )
+				] )
+			] )
+		] )
+	] ),
+	new es.ParagraphModel( 1 )
+];
+
 test( 'es.DocumentModel', function() {
 	var documentModel = es.DocumentModel.newFromPlainObject( obj );
 	
 	deepEqual( documentModel.getData(), data, 'Flattening plain objects results in correct data' );
+	deepEqual( documentModel.slice( 0 ), tree, 'Nodes contain correct lengths' );
 } );
