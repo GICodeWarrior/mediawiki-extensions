@@ -31,9 +31,9 @@ es.DocumentModelNode = function( contents ) {
 	} else {
 		node.contentLength = 0;
 		// If contents was an array, some items were added, which we need to account for
-		if ( this.length ) {
-			for ( var i = 0; i < this.length; i++ ) {
-				node.contentLength += this[i].getElementLength();
+		if ( node.length ) {
+			for ( var i = 0; i < node.length; i++ ) {
+				node.contentLength += node[i].getElementLength();
 			}
 		}
 	}
