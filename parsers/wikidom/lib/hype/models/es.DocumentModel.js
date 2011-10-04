@@ -271,9 +271,9 @@ es.DocumentModel.prototype.offsetOf = function( node, deep, from ) {
 			return offset;
 		}
 		if ( deep && from[i].length ) {
-			var length = this.offsetOf( node, true, from[i] );
-			if ( length !== -1 ) {
-				return offset + length;
+			var childOffset = this.offsetOf( node, true, from[i] );
+			if ( childOffset !== -1 ) {
+				return offset + childOffset;
 			}
 		}
 		offset += from[i].getElementLength();
