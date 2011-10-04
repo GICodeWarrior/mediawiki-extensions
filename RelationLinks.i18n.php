@@ -64,3 +64,10 @@ $messages['mk'] = array(
 	'relationlinks-desc' => 'Додајте релација за врска во заглавието што ќе служи за нагигација и за SEO',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'relationlinks-desc' => 'Voegt "link rel" toe aan de header, wat gebruikt kan worden voor navigatie en SEO',
+);
+
