@@ -19,9 +19,7 @@ es.DocumentModelNode = function( contents ) {
 		'beforeUnshift': 'onBeforeUnshift',
 		'beforePop': 'onBeforePop',
 		'beforeShift': 'onBeforeShift',
-		'beforeSplice': 'onBeforeSplice',
-		'beforeAttach': 'onBeforeAttach',
-		'beforeDetach': 'onBeforeDetach'
+		'beforeSplice': 'onBeforeSplice'
 	} );
 	
 	// Properties
