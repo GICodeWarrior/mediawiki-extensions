@@ -39,7 +39,7 @@ class ApiMirrorEditPage extends ApiEditPage {
 	public function execute() {
 		global $wgUser;
 		$params = $this->extractRequestParams();
-                
+
 		if ( is_null( $params['user'] ) ) {
 			$this->dieUsageMsg( array( 'missingparam', 'user' ) );
 		}
@@ -327,11 +327,11 @@ class ApiMirrorEditPage extends ApiEditPage {
 
 			case EditPage::AS_END:
 				// This usually means some kind of race condition
-				// or DB weirdness occurred. 
+				// or DB weirdness occurred.
 				if ( is_array( $result ) && count( $result ) > 0 ) {
-					$this->dieUsageMsg( array( 'unknownerror', $result[0][0] ) );					
+					$this->dieUsageMsg( array( 'unknownerror', $result[0][0] ) );
 				}
-				
+
 				// Unknown error, but no specific error message
 				// Fall through
 			default:
@@ -340,25 +340,25 @@ class ApiMirrorEditPage extends ApiEditPage {
 		$this->getResult()->addValue( null, $this->getModuleName(), $r );
 	}
 
-	protected function getDescription() {
+	public function getDescription() {
 		return 'Create and edit pages using any username.';
 	}
-	
+
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
 			array( 'missingparam', 'user' ),
 		) );
 	}
 
-	protected function getAllowedParams() {
+	public function getAllowedParams() {
 		return array_merge( array( 'user' => null ), parent::getAllowedParams() );
 	}
 
-	protected function getParamDescription() {
+	public function getParamDescription() {
 		return array_merge( array( 'user' => 'Username' ), parent::getParamDescription() );
 	}
 
-	protected function getExamples() {
+	public function getExamples() {
 		return array(
 			'Edit a page (anonymous user):',
 			'    api.php?action=edit&title=Test&summary=test%20summary&text=article%20content&basetimestamp=20070824123454&token=%2B\\',
