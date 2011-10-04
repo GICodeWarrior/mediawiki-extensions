@@ -394,8 +394,27 @@ class Contest extends ContestDBObject {
 	 * @return boolean Success indicator
 	 */
 	public function removeAllFromDB() {
-		// TODO
-		return parent::removeFromDB();
+		$condition = array( 'contest_id' => $this->getId() );
+		
+		$success = ContestChallenge::s()->delete( $condition );
+		
+		if ( $success ) {
+			$contestantIds = array();
+			
+			foreach ( ContestContestant::s()->select( 'id', $condition ) as /* ContestContestant */ $contestant ) {
+				$contestantIds[] = $contestant->getId();
+			}
+			
+			$success = ContestComment::s()->delete( array( 'contestant_id' => $contestantIds ) ) && $success;
+			$success = ContestVote::s()->delete( array( 'contestant_id' => $contestantIds ) ) && $success;
+			$success = ContestContestant::s()->delete( $condition ) && $success;
+		}
+		
+		if ( $success ) {
+			$success = parent::removeFromDB();
+		}
+		
+		return $success;
 	}	
 	
 	/**

@@ -95,6 +95,7 @@ class ContestContestant extends ContestDBObject {
 			'country' => 'str',
 			'volunteer' => 'bool',
 			'wmf' => 'bool',
+			'cv' => 'str',
 		
 			'submission' => 'str',
 		
@@ -120,6 +121,7 @@ class ContestContestant extends ContestDBObject {
 			'country' => '',
 			'volunteer' => false,
 			'wmf' => false,
+			'cv' => false,
 		
 			'submission' => '',
 		
