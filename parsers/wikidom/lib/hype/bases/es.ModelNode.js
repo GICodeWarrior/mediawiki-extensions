@@ -30,6 +30,10 @@ es.ModelNode = function( children ) {
 		}
 	}
 	
+	// Properties
+	node.parent = undefined;
+	node.root = this;
+	
 	return node;
 };
 
@@ -191,6 +195,16 @@ es.ModelNode.prototype.getParent = function() {
 };
 
 /**
+ * Gets the root node in the tree this node is currently attached to.
+ * 
+ * @method
+ * @returns {es.DocumentModelNode} Root node
+ */
+es.DocumentModelNode.prototype.getRoot = function() {
+	return this.root;
+};
+
+/**
  * Attaches this node to another as a child.
  * 
  * @method
@@ -200,6 +214,7 @@ es.ModelNode.prototype.getParent = function() {
 es.ModelNode.prototype.attach = function( parent ) {
 	this.emit( 'beforeAttach', parent );
 	this.parent = parent;
+	this.root = parent.getRoot();
 	this.emit( 'afterAttach', parent );
 };
 
@@ -207,12 +222,12 @@ es.ModelNode.prototype.attach = function( parent ) {
  * Detaches this node from it's parent.
  * 
  * @method
- * @emits detach (parent)
+ * @emits detach
  */
 es.ModelNode.prototype.detach = function() {
 	this.emit( 'beforeDetach' );
-	var parent = this.parent;
 	this.parent = undefined;
+	this.root = this;
 	this.emit( 'afterDetach' );
 };
 

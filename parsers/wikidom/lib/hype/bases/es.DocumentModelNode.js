@@ -19,7 +19,9 @@ es.DocumentModelNode = function( contents ) {
 		'beforeUnshift': 'onBeforeUnshift',
 		'beforePop': 'onBeforePop',
 		'beforeShift': 'onBeforeShift',
-		'beforeSplice': 'onBeforeSplice'
+		'beforeSplice': 'onBeforeSplice',
+		'beforeAttach': 'onBeforeAttach',
+		'beforeDetach': 'onBeforeDetach'
 	} );
 	
 	// Properties
@@ -108,8 +110,6 @@ es.DocumentModelNode.prototype.adjustContentLength = function( adjustment ) {
 /**
  * Gets the content length.
  * 
- * If the content length has not been set or evaluated yet, this will cause it to be evaluated.
- * 
  * @method
  * @returns {Integer} Length of content
  */
@@ -120,11 +120,19 @@ es.DocumentModelNode.prototype.getContentLength = function() {
 /**
  * Gets the element length.
  * 
- * If the content length has not been set or evaluated yet, this will cause it to be evaluated.
- * 
  * @method
  * @returns {Integer} Length of element
  */
 es.DocumentModelNode.prototype.getElementLength = function() {
 	return this.contentLength + 2;
+};
+
+/**
+ * Checks if this node has child nodes.
+ * 
+ * @method
+ * @returns {Boolean} Whether the node has any children
+ */
+es.DocumentModelNode.prototype.hasChildren = function() {
+	return !!this.length;
 };
