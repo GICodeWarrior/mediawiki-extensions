@@ -2054,6 +2054,7 @@ $messages['ms'] = array(
  */
 $messages['nl'] = array(
 	'pollresults' => 'Resultaten van de stemmingen op deze site',
+	'qpollwebinstall' => 'Uitbreiding QPoll installeren of bijwerken',
 	'qp_desc' => 'Maakt het aanmaken van peilingen mogelijk',
 	'qp_desc-sp' => '[[Special:PollResults|Speciale pagina]] voor het bekijken van de resultaten van peilingen',
 	'qp_result_NA' => 'Niet beantwoord',
@@ -2127,6 +2128,7 @@ Sla een peiling op door deze op te slaan zonder dat enig voorstel is beantwoord.
 	'qp_error_unique' => 'Voor de vraag van het type unique() zijn meer voorstellen dan mogelijke antwoorden gedefinieerd. Dat is niet recht te breien.',
 	'qp_error_no_more_attempts' => 'U hebt bereikt maximale aantal pogingen voor meedoen in deze peiling bereikt.',
 	'qp_error_interpretation_no_return' => 'Het uitlegscript had geen resultaat.',
+	'qp_error_structured_interpretation_is_too_long' => 'De gestructureerde interpretatie is te lang om op te slaan in de database. Corrigeer uw interpretatiescript.',
 	'qp_error_no_json_decode' => 'Voor de interpretatie van peilingresultaten  is de PHP-functie json_decode() nodig.',
 	'qp_error_eval_missed_lang_attr' => 'Het XML-attribuut "lang" is verplicht om een correct interpretatietaal te kiezen.',
 	'qp_error_eval_mix_languages' => 'Bij enkelvoudige schriftinterpretatie kunnen geen twee verschillende interpretatietalen gebruikt worden: "$1" en "$2".',
