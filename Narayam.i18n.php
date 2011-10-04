@@ -1422,6 +1422,38 @@ $messages['sah'] = array(
 	'narayam-bn-nkb' => 'Бэнгээл NKB',
 );
 
+/** Sinhala (සිංහල)
+ * @author බිඟුවා
+ */
+$messages['si'] = array(
+	'narayam-toggle-ime' => 'සක්‍රිය කරන්න ($1)',
+	'narayam-menu' => 'දායකත්ව ක්‍රමය',
+	'narayam-menu-tooltip' => 'Narayam Input Method (IME) සංස්කාරකය පාලනය කරන්න',
+	'narayam-help' => 'උදව්',
+	'narayam-help-page' => 'Help:මුද්‍රණය කරමින්',
+	'narayam-checkbox-tooltip' => 'දායකත්ව ක්‍රමය සක්‍රිය, අක්‍රිය කිරීමට',
+	'narayam-disable-preference' => 'Narayam Input Method (IME) සංස්කාරකය අක්‍රිය කරන්න',
+	'narayam-hi-inscript' => 'හින්දි අන්තර්ලේඛනය',
+	'narayam-kn' => 'කන්නද අක්ෂර පරිවර්තනය',
+	'narayam-kn-inscript' => 'කන්නද අන්තර්ලේඛනය',
+	'narayam-ml' => 'මලයාලම් අක්ෂර පරිවර්තනය',
+	'narayam-ml-inscript' => 'මලයාලම් අන්තර්ලේඛනය',
+	'narayam-ne' => 'නෙපාලි අක්ෂර පරිවර්තනය',
+	'narayam-ne-inscript' => 'නේපාලි අන්තර්ලේඛනය',
+	'narayam-or' => 'ඔරිය අක්ෂර පරිවර්තනය',
+	'narayam-or-inscript' => 'ඔරිය අන්තර්ලේඛනය',
+	'narayam-sa' => 'සංස්කෘත අක්ෂර පරිවර්තනය',
+	'narayam-sa-inscript' => 'සංස්කෘත  අන්තර්ලේඛනය',
+	'narayam-si-singlish' => 'සිංහල සින්ග්ලිෂ්',
+	'narayam-si-wijesekara' => 'සිංහල විජේසේකර',
+	'narayam-ta99' => 'දෙමළ99',
+	'narayam-ta' => 'දෙමළ අක්ෂර පරිවර්තනය',
+	'narayam-te-inscript' => 'තෙළිඟු අන්තර්ලේඛනය',
+	'narayam-bn-avro' => 'බෙන්ගාලි අවුරෝ',
+	'narayam-bn-inscript' => 'බෙන්ගාලි අන්තර්ලේඛනය',
+	'narayam-bn-nkb' => 'බෙන්ගාලි NKB',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -1661,6 +1693,7 @@ $messages['vi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Anakmalaysia
+ * @author Bencmq
  * @author Hydra
  * @author PhiLiP
  * @author Xiaomingyan
@@ -1675,6 +1708,8 @@ $messages['zh-hans'] = array(
 	'narayam-help-page' => 'Help:打字',
 	'narayam-checkbox-tooltip' => '要打开和关闭切换输入的法',
 	'narayam-disable-preference' => '停用Narayam输入法编辑器（IME）',
+	'narayam-as' => '阿萨姆音译',
+	'narayam-as-avro' => '阿萨姆Avro',
 	'narayam-eo' => '世界语',
 	'narayam-hi-inscript' => '印地语 InScript',
 	'narayam-kn' => '卡纳达语音译',
