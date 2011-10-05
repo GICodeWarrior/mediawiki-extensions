@@ -85,6 +85,14 @@ $messages['ja'] = array(
 	'spark-missing-query' => '「data-spark-query」パラメーターを用いてクエリを指定する必要があります。',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'spark-desc' => 'Deiht dä Befähl <code lang="en"><nowiki><spark /></nowiki></code> en et Wiki, dä et müjjelesh määt, <i lang="en">[http://km.aifb.kit.edu/sites/spark/ Spark] mash-ups</i> enzebenge. De <i lang="en">Spark</i>-Projramm-Sammlong wood vum <i lang="en">Denny Vrandecic</i> un vum <i lang="en">Andreas Harth</i> jemaat.',
+	'spark-missing-query' => 'Mer moß och en Frooch övver dä Parrameeter <code lang="en">data-spark-query</code> aanjävve.',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
