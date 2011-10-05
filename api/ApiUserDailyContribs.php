@@ -14,6 +14,10 @@ class ApiUserDailyContribs extends ApiBase {
 			$this->dieUsage( 'Invalid username', 'bad_user' );
 		}
 
+		global $wgAuth;
+		if ( !$wgAuth->userExists( $userName ) ) {
+			$this->dieUsage( 'Specified user does not exist', 'bad_user' );
+		}
 		$now = time();
 		$result->addValue( $this->getModuleName() ,
 			'id', $user->getId() );
@@ -53,7 +57,8 @@ class ApiUserDailyContribs extends ApiBase {
 
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
-			array( 'code' => 'bad_user', 'info' => 'Invalid username' )
+			array( 'code' => 'bad_user', 'info' => 'Invalid username' ),
+			array( 'code' => 'bad_user', 'info' => 'Specified user does not exist' ),
 		) );
 	}
 
