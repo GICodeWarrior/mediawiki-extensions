@@ -180,6 +180,7 @@ Suara pengguna saat ini akan ditampilkan ketika ia sudah memilih.',
  */
 $messages['ksh'] = array(
 	'ratings-desc' => 'Määd et müjjelesch, dat Metmaacher för ongerscheidlijje Eijeschaffte vun de Sigge Note jävve künne.',
+	'right-rate' => 'Note jävve för beshtemmpte ijeschaffte vun Sigge.',
 	'ratings-starsratings-desc' => 'Zeisch Note eijfach met Shtäänsche aan un määd_et müjjelesch, dat ene Metmaacher för beshtemmpte Eijescahfte vun an Sigg Note verdeile kann. Wann hä ald ein verdeilt hät, kritt ene Mtmaacher aam Aanfang singe aktoälle Note_Shtand för di Sigg aanjezeisch.',
 	'ratings-par-page' => 'De Sigg, woh en Note för jejovve weed.',
 	'ratings-par-tag' => 'De Eijeschaff, för wat aan dä Sigg en Note jejovve weed.',
