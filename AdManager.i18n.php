@@ -68,6 +68,8 @@ $messages['be-tarask'] = array(
 	'admanager_noads' => 'Не паказваць рэкляму',
 	'admanager_Page' => 'Старонкі',
 	'admanager_Category' => 'Катэгорыі',
+	'admanager_added' => 'Вашыя зьмены былі захаваныя',
+	'admanager_noadsset' => '$1 быў устаноўлены так, каб не паказваць рэкляму',
 );
 
 /** Breton (Brezhoneg)
@@ -242,6 +244,7 @@ $messages['lb'] = array(
 	'admanagerzones' => 'Gestioun vun den Zone vun de Reklammen',
 	'admanager_invalidtargetpage' => 'Keng Säit mam Titel "$1" fonnt.',
 	'admanager_invalidtargetcategory' => 'Keng Kategorie mam Titel "$1" fonnt.',
+	'admanager_notable' => "Feeler: Déi erfuerdert Datebanktabell gouf net fonnt! Start d'éischt update.php.",
 	'admanager_labelPage' => 'Säitennimm',
 	'admanager_labelCategory' => 'Nimm vun de Kategorien:',
 	'admanager_submit' => 'Späicheren',
@@ -252,6 +255,7 @@ $messages['lb'] = array(
 	'admanager_noadsset' => '$1 gouf esou agestallt datt keng Reklamme gewise ginn',
 	'admanager_zonenum' => 'Zone #: $1',
 	'admanager_zonenotnumber' => 'Feeler! $1 ass keng Zuel.',
+	'admanager_return' => "Zréck op d'[[Special:AdManager|Gestioun vun de Reklammen]]",
 );
 
 /** Lithuanian (Lietuvių)
