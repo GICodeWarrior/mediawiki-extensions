@@ -23,7 +23,8 @@ class ApiQueryContests extends ApiContestQuery {
 	}
 
 	/**
-	 * Retrieve the special words from the database.
+	 * Handle the API request.
+	 * Checks for access rights and then let's the parent method do the actual work.
 	 */
 	public function execute() {
 		global $wgUser;
