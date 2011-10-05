@@ -22,6 +22,8 @@ class ContestantPager extends TablePager {
 		$this->mDefaultDirection = true;
 		
 		parent::__construct();
+		
+		$this->getOutput()->addModules( 'contest.contestant.pager' );
 	}
 
 	public function getFieldNames() {
@@ -55,12 +57,20 @@ class ContestantPager extends TablePager {
 			}
 			$s .= Xml::tags( 'td', $this->getCellAttrs( $field, $value ), $formatted );
 		}
-		
-		
-		
 		$s .= "</tr>\n";
 		
 		return $s;
+	}
+	
+	function getRowAttrs( $row ) {
+		return array_merge(
+			parent::getRowAttrs( $row ),
+			array( 'data-contestant-target' => SpecialPage::getTitleFor( 'Contestant', $row->contestant_id )->getLocalURL() )
+		);
+	}
+	
+	function getRowClass( $row ) {
+		return 'contestant-row';
 	}
 	
 	public function formatValue( $name, $value ) {

@@ -186,6 +186,15 @@ $wgResourceModules['contest.special.submission'] = $moduleTemplate + array(
 	)
 );
 
+$wgResourceModules['contest.contestant.pager'] = $moduleTemplate + array(
+	'scripts' => array(
+		'contest.contestant.pager.js',
+	),
+	'styles' => array(
+		'contest.contestant.pager.css',
+	),
+);
+
 unset( $moduleTemplate );
 
 $egContestSettings = array();
