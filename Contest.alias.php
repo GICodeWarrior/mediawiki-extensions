@@ -17,6 +17,7 @@ $specialPageAliases = array();
 /** English (English) */
 $specialPageAliases['en'] = array(
 	'Contest' => array( 'Contest' ),
+	'Contestant' => array( 'Contestant' ),
 	'Contests' => array( 'Contests' ),
 	'ContestSignup' => array( 'ContestSignup' ),
 	'ContestSubmission' => array( 'ContestSubmission' ),
