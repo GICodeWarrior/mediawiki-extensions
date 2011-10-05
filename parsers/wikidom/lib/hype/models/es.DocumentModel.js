@@ -17,8 +17,45 @@ es.DocumentModel = function( data, attributes ) {
 	node.data = $.isArray( data ) ? data : [];
 	node.attributes = $.isPlainObject( attributes ) ? attributes : {};
 	
-	// Initialization
-	node.rebuildChildNodes();
+	// Build a tree of models, which is a space partitioning data structure
+	var currentNode = node;
+	for ( var i = 0, length = node.data.length; i < length; i++ ) {
+		if ( node.data[i].type !== undefined ) {
+			// It's an element, figure out it's type
+			var type = node.data[i].type,
+				open = type[0] !== '/';
+			// Trim the "/" off the beginning of closing tag types
+			if ( !open ) {
+				type = type.substr( 1 );
+			}
+			if ( open ) {
+				// Validate the element type
+				if ( !( type in es.DocumentModel.nodeModels ) ) {
+					throw 'Unsuported element error. No class registered for element type: ' + type;
+				}
+				// Create a model node for the element
+				var newNode = new es.DocumentModel.nodeModels[node.data[i].type]();
+				// Add the new model node as a child
+				currentNode.push( newNode );
+				// Descend into the new model node
+				currentNode = newNode;
+			} else {
+				// Return to the parent node
+				currentNode = currentNode.getParent();
+			}
+		} else {
+			// It's content, let's start tracking the length
+			var start = i;
+			// Move forward to the next object, tracking the length as we go
+			while ( node.data[i].type === undefined && i < length ) {
+				i++;
+			}
+			// Now we know how long the current node is
+			currentNode.setContentLength( i - start );
+			// The while loop left us 1 element to far
+			i--;
+		}
+	}
 	
 	return node;
 };
@@ -187,54 +224,6 @@ es.DocumentModel.prototype.isElement = function( offset ) {
  */
 es.DocumentModel.prototype.createView = function() {
 	// return new es.DocumentView( this );
-};
-
-/**
- * Regenerates child nodes from content data.
- * 
- * @method
- */
-es.DocumentModel.prototype.rebuildChildNodes = function() {
-	// Remove child nodes
-	this.splice( 0, this.length );
-	// Build a tree of models, which is a space partitioning data structure
-	var currentNode = this;
-	for ( var i = 0, length = this.data.length; i < length; i++ ) {
-		if ( this.data[i].type !== undefined ) {
-			// It's an element, figure out it's type
-			var type = this.data[i].type,
-				open = type[0] !== '/';
-			// Trim the "/" off the beginning of closing tag types
-			if ( !open ) {
-				type = type.substr( 1 );
-			}
-			if ( open ) {
-				// Validate the element type
-				if ( !( type in es.DocumentModel.nodeModels ) ) {
-					throw 'Unsuported element error. No class registered for element type: ' + type;
-				}
-				// Create a model node for the element
-				var newNode = new es.DocumentModel.nodeModels[this.data[i].type]();
-				// Add the new model node as a child
-				currentNode.push( newNode );
-				// Descend into the new model node
-				currentNode = newNode;
-			} else {
-				// Return to the parent node
-				currentNode = currentNode.getParent();
-			}
-		} else {
-			// It's content, let's start tracking the length
-			var start = i;
-			// Move forward to the next object, tracking the length as we go
-			while ( this.data[i].type === undefined && i < length ) {
-				i++;
-			}
-			// Now we know how long the current node is
-			currentNode.setContentLength( i - start );
-			i--;
-		}
-	}
 };
 
 /**
