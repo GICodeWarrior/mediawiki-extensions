@@ -67,6 +67,168 @@ es.DocumentModel = function( data, attributes ) {
  */
 es.DocumentModel.nodeModels = {};
 
+/**
+ * Mapping of operation types to pure functions.
+ * 
+ * Each function is called in the context of a state, and takes an operation object as a parameter.
+ */
+es.DocumentModel.operations = ( function() {
+	function retain( op ) {
+		annotate.call( this, this.cursor + op.length );
+		this.cursor += op.length;
+	};
+	
+	function insert( op ) {
+		// Splice content into document in 1024 element chunks, as to not overflow max allowed
+		// arguments, which apply is limited by
+		var index = 0;
+		while ( index < op.data.length ) {
+			this.data.splice.apply(
+				this.data, [this.cursor, 0].concat( op.data.slice( index, index + 1024 ) )
+			);
+			index += 1024;
+		}
+		annotate.call( this, this.cursor + op.data.length );
+		this.cursor += op.data.length;
+	};
+	
+	function remove( op ) {
+		this.data.splice( this.cursor, op.data.length );
+	};
+	
+	function indexOfAnnotation( character, annotation ) {
+		if ( $.isArray( character ) ) {
+			// Find the index of a comparable annotation (checking for same value, not reference)
+			var index;
+			for ( var i = 0; i < target.length; i++ ) {
+				if ( es.compareObjects( target[i], op.annotation ) ) {
+					return index;
+				}
+			}
+		}
+		return -1;
+	}
+	
+	function attribute( op, invert ) {
+		var element = this.data[this.cursor];
+		if ( element.type === undefined ) {
+			throw 'Invalid element error. Can not set attributes on non-element data.';
+		}
+		if ( op.method === 'set' || ( op.method === 'clear' && invert ) ) {
+			// Automatically initialize attributes object
+			if ( !element.attributes ) {
+				element.attributes = {};
+			}
+			element.attributes[op.name] = op.value;
+		} else if ( op.method === 'clear' || ( op.method === 'set' && invert ) ) {
+			if ( element.attributes ) {
+				delete element.attributes[op.name];
+			}
+			// Automatically clean up attributes object
+			var empty = true;
+			for ( key in element.attributes ) {
+				empty = false;
+				break;
+			}
+			if ( empty ) {
+				delete element.attributes;
+			}
+		} else {
+			throw 'Invalid method error. Can not operate attributes this way: ' + method;
+		}
+	};
+	
+	function annotate( to ) {
+		// Handle annotations
+		if ( this.set.length ) {
+			for ( var i = 0, length = this.set.length; i < length; i++ ) {
+				var annotation = this.set[i];
+				for ( var j = this.cursor; j < to; j++ ) {
+					if ( $.isArray( this.data[j] ) ) {
+						this.data[j].push( annotation );
+					} else {
+						this.data[j] = [this.data[j], annotation];
+					}
+				}
+			}
+		}
+		if ( this.clear.length ) {
+			for ( var i = 0, length = this.clear.length; i < length; i++ ) {
+				var annotation = this.clear[i];
+				for ( var j = this.cursor; j < to; j++ ) {
+					var index = indexOfAnnotation( this.data[j], annotation );
+					if ( index !== -1 ) {
+						this.data[j].splice( index, 1 );
+					}
+				}
+			}
+		}
+	}
+	
+	function mark( op, invert ) {
+		var target;
+		if ( op.method === 'set' || ( op.method === 'clear' && invert ) ) {
+			target = this.set;
+		} else if ( op.method === 'clear' || ( op.method === 'set' && invert ) ) {
+			target = this.clear;
+		} else {
+			throw 'Invalid method error. Can not operate attributes this way: ' + method;
+		}
+		if ( op.bias === 'start' ) {
+			target.push( op.annotation );
+		} else if ( op.bias === 'end' ) {
+			// Find the index of a comparable annotation (checking for same value, not reference)
+			var index;
+			for ( var i = 0; i < target.length; i++ ) {
+				if ( es.compareObjects( target[i], op.annotation ) ) {
+					index = i;
+					break;
+				}
+			}
+			if ( index === undefined ) {
+				throw 'Annotation stack error. Annotation is missing.';
+			}
+			target.splice( index, 1 );
+		}
+	};
+	
+	return {
+		// Retain
+		'retain': {
+			'commit': retain,
+			'rollback': retain
+		},
+		// Insert
+		'insert': {
+			'commit': insert,
+			'rollback': remove
+		},
+		// Remove
+		'remove': {
+			'commit': remove,
+			'rollback': insert
+		},
+		// Change element attributes
+		'attribute': {
+			'commit': function( op ) {
+				attribute( op, false );
+			},
+			'rollback': function( op ) {
+				attribute( op, true );
+			}
+		},
+		// Change content annotations
+		'annotate': {
+			'commit': function( op ) {
+				mark( op, false );
+			},
+			'rollback': function( op ) {
+				mark( op, true );
+			}
+		}
+	};
+} )();
+
 /* Static Methods */
 
 /**
@@ -367,7 +529,20 @@ es.DocumentModel.prototype.prepareElementAttributeChange = function( index, meth
  * @param {es.Transaction}
  */
 es.DocumentModel.prototype.commit = function( transaction ) {
-	//
+	var state = {
+		'data': this.data,
+		'cursor': 0,
+		'set': [],
+		'clear': []
+	};
+	for ( var i = 0, length = this.operations.length; i < length; i++ ) {
+		var op = this.operations[i];
+		if ( op.type in this.operations ) {
+			this.operations[op.type].commit.call( state, op );
+		} else {
+			throw 'Invalid operation error. Operation type is not supported: ' + op.type;
+		}
+	}
 };
 
 /**
@@ -377,7 +552,20 @@ es.DocumentModel.prototype.commit = function( transaction ) {
  * @param {es.Transaction}
  */
 es.DocumentModel.prototype.rollback = function( transaction ) {
-	//
+	var state = {
+		'data': this.data,
+		'cursor': 0,
+		'set': [],
+		'clear': []
+	};
+	for ( var i = 0, length = this.operations.length; i < length; i++ ) {
+		var op = this.operations[i];
+		if ( op.type in this.operations ) {
+			this.operations[op.type].rollback.call( state, op );
+		} else {
+			throw 'Invalid operation error. Operation type is not supported: ' + op.type;
+		}
+	}
 };
 
 /* Inheritance */
