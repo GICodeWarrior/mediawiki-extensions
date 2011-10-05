@@ -128,7 +128,7 @@ abstract class SpecialContestPage extends SpecialPage {
 			
 			$links[] = Html::element(
 				'a',
-				array( 'href' => SpecialPage::getTitleFor( 'ContestSubmission', $subPage )->getLocalURL() ),
+				array( 'href' => SpecialPage::getTitleFor( $page[0], $subPage )->getLocalURL() ),
 				wfMsgExt( $message, 'parseinline', $subPage )
 			);
 		}
