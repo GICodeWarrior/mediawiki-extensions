@@ -33,6 +33,9 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 
 	private $mSeen;
 
+	/**
+	 * @return ApiFormatBase
+	 */
 	public function getCustomPrinter() {
 		$format = $this->validateFormat();
 		$printer = $this->getMain()->createPrinterByName( $format );
@@ -42,6 +45,9 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 		return $printer;
 	}
 
+	/**
+	 * @return string
+	 */
 	protected function validateFormat() {
 		// We can't use $this->getMan()->getParameter('format') as this
 		// seems to override our specified limits and defaults, picking
@@ -56,13 +62,16 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 		}
 	}
 
+	/**
+	 * @return bool
+	 */
 	protected function inXmlMode() {
 		$format = $this->validateFormat();
-		return ( $format == 'xml' || $format == 'xmlfm' );
+		return ($format == 'xml' || $format == 'xmlfm');
 	}
 
 	public function execute() {
-		if ( !$this->inXmlMode() ) {
+		if (!$this->inXmlMode()) {
 			// Pass back to the JSON defaults
 			parent::execute();
 			return;
@@ -74,7 +83,7 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 		$namespaces = $params['namespace'];
 
 		// Open search results may be stored for a very long time
-		$this->getMain()->setCacheMaxAge(1200);
+		$this->getMain()->setCacheMaxAge( 1200 );
 
 		$srchres = PrefixSearch::titleSearch( $search, $limit, $namespaces );
 
@@ -108,6 +117,10 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 		);
 	}
 
+	/**
+	 * @param $name string
+	 * @return array|bool
+	 */
 	protected function formatItem( $name ) {
 		$title = Title::newFromText( $name );
 		if( $title ) {
@@ -137,6 +150,11 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 		return $item;
 	}
 
+	/**
+	 * @param $title Title
+	 *
+	 * @return
+	 */
 	protected function _checkRedirect( $title ) {
 		$art = new Article( $title );
 		$target = $art->getRedirectTarget();
@@ -164,7 +182,6 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 	 * Strip markup to show plaintext
 	 * @param string $text
 	 * @return string
-	 * @access private
 	 */
 	function _stripMarkup( $text ) {
 		$text = substr( $text, 0, 4096 ); // don't bother with long text...
@@ -194,6 +211,10 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 		return trim( $text );
 	}
 
+	/**
+	 * @param $matches array
+	 * @return string
+	 */
 	function _stripLink( $matches ) {
 		$target = trim( $matches[1] );
 		if( isset( $matches[2] ) ) {
@@ -210,9 +231,8 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 			} else {
 				return $text;
 			}
-		} else {
-			return $matches[0];
 		}
+		return $matches[0];
 	}
 
 	/**
@@ -246,6 +266,8 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 	/**
 	 * Grab the first thing that looks like an image link from the body text.
 	 * This will exclude any templates, including infoboxes...
+	 * @param $text string
+	 * @return string|bool
 	 */
 	function _extractBadge( $text ) {
 		global $wgContLang;
@@ -258,6 +280,10 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 		}
 	}
 
+	/**
+	 * @param $arg string
+	 * @return bool|String
+	 */
 	function _validateBadge( $arg ) {
 		// Some templates want an entire [[Image:Foo.jpg|250px]]
 		if( substr( $arg, 0, 2 ) == '[[' ) {
@@ -272,7 +298,11 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 		return false;
 	}
 
-	protected function getExtract( $title, $chars=50 ) {
+	/**
+	 * @param $title Title
+	 * @return array|string
+	 */
+	protected function getExtract( $title ) {
 		$rev = Revision::newFromTitle( $title );
 		if( $rev ) {
 			$text = substr( $rev->getText(), 0, 16384 );
@@ -347,8 +377,8 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 	}
 
 	/**
-	 * @param  $title Title
-	 * @param  $fromText
+	 * @param $title Title
+	 * @param $fromText
 	 * @return File
 	 */
 	protected function getBadge( $title, $fromText ) {
@@ -366,6 +396,7 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 				}
 			}
 		}
+		return false;
 	}
 
 	/**
