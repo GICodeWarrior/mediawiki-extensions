@@ -1905,6 +1905,7 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Bencmq
  * @author Gaoxuewei
  * @author Liangent
  * @author Mark85296341
@@ -1915,8 +1916,7 @@ $messages['zh-hant'] = array(
 	'vector-desc' => '改進 Vector 外觀中的使用者介面元素。',
 	'vector-collapsiblenav-preference' => '在 Vector 外觀的導覽選單中摺疊項目',
 	'vector-collapsiblenav-more' => '更多語言',
-	'vector-editwarning-warning' => '離開這個頁面可能會令您失去之前的所有更改。
-若您已經登入，您可在您偏好設定的「編輯」節中關閉此警告。',
+	'vector-editwarning-warning' => '離開這個頁面可能會令您失去之前的所有更改。若您已經登入，您可在您偏好設定的「編輯」節中關閉此警告。',
 	'vector-editwarning-preference' => '當我在更改未儲存時離開頁面時警告我',
 	'vector-simplesearch-search' => '搜尋',
 	'vector-simplesearch-containing' => '包含...',
