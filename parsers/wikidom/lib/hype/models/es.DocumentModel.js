@@ -267,11 +267,10 @@ es.DocumentModel.prototype.getData = function( range, deep ) {
  * 
  * @method
  * @param {es.DocumentModelNode} node Node to get offset of
- * @param {Boolean} [deep=false] Whether to scan recursively
  * @param {es.DocumentModelNode} [from=this] Node to look within
  * @returns {Integer} Offset of node or -1 of node was not found
  */
-es.DocumentModel.prototype.offsetOf = function( node, deep, from ) {
+es.DocumentModel.prototype.offsetOf = function( node, from ) {
 	if ( from === undefined ) {
 		from = this;
 	}
@@ -280,8 +279,8 @@ es.DocumentModel.prototype.offsetOf = function( node, deep, from ) {
 		if ( node === from[i] ) {
 			return offset;
 		}
-		if ( deep && from[i].length ) {
-			var childOffset = this.offsetOf( node, true, from[i] );
+		if ( from[i].length ) {
+			var childOffset = this.offsetOf( node, from[i] );
 			if ( childOffset !== -1 ) {
 				return offset + childOffset;
 			}
@@ -296,11 +295,10 @@ es.DocumentModel.prototype.offsetOf = function( node, deep, from ) {
  * 
  * @method
  * @param {es.DocumentModelNode} node Node to get element object for
- * @param {Boolean} [deep=false] Whether to scan recursively
  * @returns {Object|null} Element object
  */
-es.DocumentModel.prototype.getElement = function( node, deep ) {
-	var offset = this.offsetOf( node, deep );
+es.DocumentModel.prototype.getElement = function( node ) {
+	var offset = this.offsetOf( node );
 	if ( offset !== false ) {
 		return this.data[offset];
 	}
@@ -312,7 +310,6 @@ es.DocumentModel.prototype.getElement = function( node, deep ) {
  * 
  * @method
  * @param {es.DocumentModelNode} node Node to get content data for
- * @param {Boolean} [deep=false] Whether to scan recursively
  * @returns {Array|null} List of content and elements inside node or null if node is not found
  */
 es.DocumentModel.prototype.getContent = function( node, range ) {
@@ -324,8 +321,7 @@ es.DocumentModel.prototype.getContent = function( node, range ) {
 			'end': this.contentLength
 		};
 	}
-	var offset = this.offsetOf( node, true );
-	console.log( offset );
+	var offset = this.offsetOf( node );
 	if ( offset !== -1 ) {
 		return this.data.slice( offset + 1, offset + node.getContentLength() + 1 );
 	}
