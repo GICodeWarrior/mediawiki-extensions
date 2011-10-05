@@ -78,6 +78,14 @@ $messages['ia'] = array(
 Le vistas arborescente usa le menu JavaScript arborescente [http://www.destroydrop.com/javascripts/tree dTree], e le menus disrolante usa [http://www.htmldog.com/articles/suckerfish/dropdowns/ Son of Suckerfish]',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'treeandmenu-desc' => 'Deiht de Paaserfunkßjuhne <code lang="en">#tree</code> un <code lang="en">#menu</code> en et Wiki, woh mer Leste met Punkte als op- un zohklappbaa Bäum udder als Ußwahlleste zom erongerträcke aanzeije lohße kann.
+De Bäum bruche et <i lang="en">[http://www.destroydrop.com/javascripts/tree dTree]</i>-JavaSkrepp, un de Ußwahlleste zom erongerträcke bruche dä <i lang="en">[http://www.htmldog.com/articles/suckerfish/dropdowns/ Son of Suckerfish]</i>.',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
