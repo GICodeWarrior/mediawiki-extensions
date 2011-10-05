@@ -46,6 +46,26 @@ $messages['fr'] = array(
 	'apiexplorer-loading' => 'Chargement des fonctions...',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'apiexplorer' => 'Explorador API',
+	'apiexplorer-desc' => 'Páxina para explorar de xeito interactivo a documentación da versión actual do API de MediaWiki que emprega esta instalación.',
+	'apiexplorer-intro' => 'Esta páxina mostra a documentación para o API do wiki actual. Prema nunha das funcións para ollar máis información sobre os parámetros que se poden usar ​​en cada chamada. Se o que quere é unha documentación xeral do API de MediaWiki, bótelle unha ollada a $1',
+	'apiexplorer-loading' => 'Cargando as funcións...',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'apiexplorer' => 'Explorator API',
+	'apiexplorer-desc' => 'Pagina pro explorar interactivemente le documentation del version del API de MediaWiki que es active in iste installation.',
+	'apiexplorer-intro' => 'Iste pagina monstra documentation pro le API del wiki actual. Clicca sur un function hic infra pro vider plus information super le parametros que pote esser usate in cata appello. Pro le documentation general del API de MediaWiki, vide $1',
+	'apiexplorer-loading' => 'Carga functiones...',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
