@@ -60,6 +60,7 @@ $wgAutoloadClasses['ContestDBObject'] 			= dirname( __FILE__ ) . '/includes/Cont
 $wgAutoloadClasses['ContestVote'] 				= dirname( __FILE__ ) . '/includes/ContestVote.php';
 
 $wgAutoloadClasses['SpecialContest'] 			= dirname( __FILE__ ) . '/specials/SpecialContest.php';
+$wgAutoloadClasses['SpecialContestant'] 		= dirname( __FILE__ ) . '/specials/SpecialContestant.php';
 $wgAutoloadClasses['SpecialContestPage'] 		= dirname( __FILE__ ) . '/specials/SpecialContestPage.php';
 $wgAutoloadClasses['SpecialContests'] 			= dirname( __FILE__ ) . '/specials/SpecialContests.php';
 $wgAutoloadClasses['SpecialContestSignup'] 		= dirname( __FILE__ ) . '/specials/SpecialContestSignup.php';
@@ -69,6 +70,7 @@ $wgAutoloadClasses['SpecialEditContest'] 		= dirname( __FILE__ ) . '/specials/Sp
 
 // Special pages
 $wgSpecialPages['Contest'] 						= 'SpecialContest';
+$wgSpecialPages['Contestant'] 					= 'SpecialContestant';
 $wgSpecialPages['Contests'] 					= 'SpecialContests';
 $wgSpecialPages['ContestSignup'] 				= 'SpecialContestSignup';
 $wgSpecialPages['ContestSubmission'] 			= 'SpecialContestSubmission';
@@ -76,6 +78,7 @@ $wgSpecialPages['ContestWelcome'] 				= 'SpecialContestWelcome';
 $wgSpecialPages['EditContest'] 					= 'SpecialEditContest';
 
 $wgSpecialPageGroups['Contest'] 				= 'other';
+$wgSpecialPageGroups['Contestant'] 				= 'other';
 $wgSpecialPageGroups['Contests'] 				= 'other';
 $wgSpecialPageGroups['ContestSignup'] 			= 'other';
 $wgSpecialPageGroups['ContestSubmission'] 		= 'other';

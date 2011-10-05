@@ -143,7 +143,19 @@ $messages['en'] = array(
 	'contest-contestant-yes' => 'Yes',
 	'contest-contestant-commentcount' => 'Comments',
 	'contest-contestant-overallrating' => 'Rating',
-	'contest-contestant-rating' => '$1 ($2 {{PLURAL:$2|vote|votes}})'
+	'contest-contestant-rating' => '$1 ($2 {{PLURAL:$2|vote|votes}})',
+	
+	// Special:Contestant
+	'contest-contestant-title' => 'Contestant $1 ($2)',
+	'contest-contestant-header-id' => 'Contestant ID',
+	'contest-contestant-header-contest' => 'Contest name',
+	'contest-contestant-header-submission' => 'Submission link',
+	'contest-contestant-header-country' => 'Contestant country',
+	'contest-contestant-header-wmf' => 'Interested in WMF job',
+	'contest-contestant-header-volunteer' => 'Interested in volunteer opportunities',
+	'contest-contestant-header-rating' => 'Rating',
+	'contest-contestant-header-comments' => 'Amount of comments',
+	'contest-contestant-submission-url' => 'Submission',
 );
 
 /** Message documentation (Message documentation)

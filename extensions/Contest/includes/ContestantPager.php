@@ -65,6 +65,15 @@ class ContestantPager extends TablePager {
 	
 	public function formatValue( $name, $value ) {
 		switch ( $name ) {
+			case 'contestant_id':
+				$value = Html::element(
+					'a',
+					array(
+						'href' => SpecialPage::getTitleFor( 'Contestant', $value )->getLocalURL()
+					),
+					$value
+				);
+				break;
 			case 'contestant_volunteer': case 'contestant_wmf':
 				$value = wfMsg( 'contest-contestant-' . ( $value === '1' ? 'yes' : 'no' ) );
 				break;
