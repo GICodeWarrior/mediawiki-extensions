@@ -39,6 +39,10 @@ $wgHooks['OpenSearchUrls'][] = 'efOpenSearchXmlUrls';
 
 $wgOpenSearchAdvertiseXml = true;
 
+/**
+ * @param $urls array
+ * @return bool
+ */
 function efOpenSearchXmlUrls( &$urls ) {
 	global $wgEnableAPI, $wgOpenSearchAdvertiseXml;
 	if( $wgEnableAPI && $wgOpenSearchAdvertiseXml ) {
@@ -51,6 +55,9 @@ function efOpenSearchXmlUrls( &$urls ) {
 	return true;
 }
 
+/**
+ * @return string
+ */
 function efOpenSearchXmlTemplate() {
 	global $wgCanonicalServer, $wgScriptPath;
 	$ns = implode( '|', SearchEngine::defaultNamespaces() );
