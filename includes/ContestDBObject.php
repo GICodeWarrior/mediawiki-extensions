@@ -666,4 +666,65 @@ abstract class ContestDBObject {
 		return array_keys( $this->getFieldTypes() );
 	}
 	
+	/**
+	 * Returns an array with the fields and their descriptions.
+	 * 
+	 * field name => field description
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return array
+	 */
+	public function getFieldDescriptions() {
+		return array();
+	}
+
+	/**
+	 * Get API parameters for the fields supported by this object.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param boolean $requireParams
+	 * @param boolean $setDefaults
+	 * 
+	 * @return array
+	 */
+	public function getAPIParams( $requireParams = false, $setDefaults = false ) {
+		$typeMap = array(
+			'id' => 'integer',
+			'int' => 'integer',
+			'float' => 'NULL',
+			'str' => 'string',
+			'bool' => 'integer',
+			'array' => 'string'
+		);
+		
+		$params = array();
+		$defaults = $this->getDefaults();
+		
+		foreach ( $this->getFieldTypes() as $field => $type ) {
+			if ( $field == 'id' ) {
+				continue;
+			}
+			
+			$hasDefault = array_key_exists( $field, $defaults );
+			
+			$params[$field] = array(
+				ApiBase::PARAM_TYPE => $typeMap[$type],
+				ApiBase::PARAM_REQUIRED => $requireParams && !$hasDefault
+			);
+			
+			if ( $type == 'array' ) {
+				$params[$field][ApiBase::PARAM_ISMULTI] = true;
+			}
+			
+			if ( $setDefaults && $hasDefault ) {
+				$default = is_array( $defaults[$field] ) ? implode( '|', $defaults[$field] ) : $defaults[$field];
+				$params[$field][ApiBase::PARAM_DFLT] = $default;
+			}
+		}
+		
+		return $params;
+	}
+	
 }
