@@ -50,6 +50,13 @@ $messages['ia'] = array(
 	'relationlinks-desc' => 'Adde un etiquetta "link rel" al capite, que pote esser usate pro navigation e pro optimisation al motores de recerca',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'relationlinks-desc' => 'Deiht ene Lenk udder Lenks en der HTML-Siggekopp vun Sigge em Wiki, di för der Minsch zom eröm sprenge un för de Söhkmaschine joot sin künne.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

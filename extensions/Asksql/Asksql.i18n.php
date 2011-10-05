@@ -505,9 +505,9 @@ Cen pôt sovent surchargiér lo sèrvor. A côsa de cen, utilisâd cela fonccion
 $messages['gl'] = array(
 	'asksql' => 'Consulta SQL',
 	'asksql-desc' => 'Facer consultas SQL a través dunha [[Special:Asksql|páxina especial]]',
-	'asksqltext' => 'Use o formulario de embaixo para facer unha consulta directa á base de datos.
-Use só as comiñas ("deste xeito") para delimitar cadeas literais.
-Isto con frecuencia pode engadir unha carga considerábel ao servidor, así que, por favor, use esta función moderadamente.',
+	'asksqltext' => "Use o formulario que hai a continuación para facer unha consulta directa á base de datos.
+Use as comiñas sinxelas ('deste xeito') para delimitar cadeas literais.
+Isto con frecuencia pode engadir unha carga considerábel ao servidor, así que, por favor, use esta función moderadamente.",
 	'sqlislogged' => 'Por favor dese conta de que todas as consultas son rexistradas.',
 	'sqlquery' => 'Introducir consulta',
 	'querybtn' => 'Enviar a consulta',

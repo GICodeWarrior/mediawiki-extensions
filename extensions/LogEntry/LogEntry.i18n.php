@@ -371,7 +371,7 @@ $messages['ksh'] = array(
 	'logentry-parserhook-desc' => 'Brengk ene Zosatz en et Wiki för e Fommulaa för för un henger Logboochsigge jet aanzehange.',
 	'logentry-specialpage-desc' => 'Brengk ene Zosatz en et Wiki för aan Logboochsigge jet aanzehange.',
 	'logentry' => 'Enndraach em Logbooch',
-	'logentry-invalidpage' => 'Onjöltijje Sigg',
+	'logentry-invalidpage' => '„$1“ es en onjöltejje Sigg.',
 	'logentry-invalidtoken' => 'Onjölisch Markzeiche',
 );
 

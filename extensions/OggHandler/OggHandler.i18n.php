@@ -2792,6 +2792,7 @@ $messages['pms'] = array(
  * @author Khalid Mahmood
  */
 $messages['pnb'] = array(
+	'ogg-desc' => 'اوگ تھیورا تے ووربس فائل لئی ہینڈلر، جاواسکرپٹ پلیر نال',
 	'ogg-short-audio' => 'اوگ $1 واز فائل, $2',
 	'ogg-short-video' => 'اوگ $1 وڈیو فائل, $2',
 	'ogg-short-general' => 'اوگ $1 میڈیا فائل, $2',

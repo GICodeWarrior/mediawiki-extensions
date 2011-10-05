@@ -170,6 +170,7 @@ $messages['ja'] = array(
  */
 $messages['ksh'] = array(
 	'sidebardonatebox-desc' => 'Määt e eije Käßje met enem Shpende_Oproof aan de Sigg.',
+	'DONATE' => 'Klengelbüggel',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -68,6 +68,7 @@ $messages['ia'] = array(
 $messages['ksh'] = array(
 	'credits-desc' => 'Donn Lenks op Danksaarunge derbei.',
 	'credits-tab' => 'Danksarunge',
+	'credits-tab-title' => 'Danksaarunge för heh di Sigg',
 );
 
 /** Macedonian (Македонски)

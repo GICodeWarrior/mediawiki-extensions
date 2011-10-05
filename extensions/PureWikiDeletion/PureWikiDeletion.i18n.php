@@ -553,6 +553,7 @@ $messages['ja'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'purewikideletion' => 'Sigge läddesh maache',
 	'randomexcludeblank' => 'Zohfälleje Sigg, ävver nit läddesch',
 	'populateblankedpagestable' => 'De Daatebangktabäll met de läddije Sigge fölle',
 	'purewikideletion-desc' => 'Sorresch nävve ander Saache doför, dat op leddisch jemaate Sigge bloß ruude Lengks jonn.',
