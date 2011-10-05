@@ -76,7 +76,7 @@ es.DocumentModel.operations = ( function() {
 	function retain( op ) {
 		annotate.call( this, this.cursor + op.length );
 		this.cursor += op.length;
-	};
+	}
 	
 	function insert( op ) {
 		// Splice content into document in 1024 element chunks, as to not overflow max allowed
@@ -90,18 +90,18 @@ es.DocumentModel.operations = ( function() {
 		}
 		annotate.call( this, this.cursor + op.data.length );
 		this.cursor += op.data.length;
-	};
+	}
 	
 	function remove( op ) {
 		this.data.splice( this.cursor, op.data.length );
-	};
+	}
 	
 	function indexOfAnnotation( character, annotation ) {
 		if ( $.isArray( character ) ) {
 			// Find the index of a comparable annotation (checking for same value, not reference)
 			var index;
-			for ( var i = 0; i < target.length; i++ ) {
-				if ( es.compareObjects( target[i], op.annotation ) ) {
+			for ( var i = 0; i < character.length; i++ ) {
+				if ( character[i].hash === op.annotation.hash ) {
 					return index;
 				}
 			}
@@ -136,7 +136,7 @@ es.DocumentModel.operations = ( function() {
 		} else {
 			throw 'Invalid method error. Can not operate attributes this way: ' + method;
 		}
-	};
+	}
 	
 	function annotate( to ) {
 		// Handle annotations
@@ -150,6 +150,8 @@ es.DocumentModel.operations = ( function() {
 						this.data[j] = [this.data[j], annotation];
 					}
 				}
+				// Rebuild annotation hash
+				annotation.hash = es.DocumentModel.getAnnotationHash( annotation );
 			}
 		}
 		if ( this.clear.length ) {
@@ -161,6 +163,8 @@ es.DocumentModel.operations = ( function() {
 						this.data[j].splice( index, 1 );
 					}
 				}
+				// Rebuild annotation hash
+				annotation.hash = es.DocumentModel.getAnnotationHash( annotation );
 			}
 		}
 	}
@@ -177,15 +181,8 @@ es.DocumentModel.operations = ( function() {
 		if ( op.bias === 'start' ) {
 			target.push( op.annotation );
 		} else if ( op.bias === 'end' ) {
-			// Find the index of a comparable annotation (checking for same value, not reference)
-			var index;
-			for ( var i = 0; i < target.length; i++ ) {
-				if ( es.compareObjects( target[i], op.annotation ) ) {
-					index = i;
-					break;
-				}
-			}
-			if ( index === undefined ) {
+			var index = indexOfAnnotation( target[i], op.annotation );
+			if ( index === -1 ) {
 				throw 'Annotation stack error. Annotation is missing.';
 			}
 			target.splice( index, 1 );
@@ -252,6 +249,29 @@ es.DocumentModel.newFromPlainObject = function( obj ) {
 };
 
 /**
+ * Generates a hash of an annotation object based on it's name and data.
+ * 
+ * TODO: Add support for deep hashing of array and object properties of annotation data.
+ * 
+ * @static
+ * @method
+ * @param {Object} annotation Annotation object to generate hash for
+ * @returns {String} Hash of annotation
+ */
+es.DocumentModel.getAnnotationHash = function( annotation ) {
+	var hash = '#' + annotation.type;
+	if ( annotation.data ) {
+		var keys = [];
+		for ( var key in annotation.data ) {
+			keys.push( key + ':' + annotation.data );
+		}
+		keys.sort();
+		hash += '|' + keys.join( '|' );
+	}
+	return hash;
+};
+
+/**
  * Creates an es.ContentModel object from a plain content object.
  * 
  * A plain content object contains plain text and a series of annotations to be applied to ranges of
@@ -288,12 +308,15 @@ es.DocumentModel.flattenPlainObjectContentNode = function( obj ) {
 		var data = obj.text.split('');
 		// Render annotations
 		if ( $.isArray( obj.annotations ) ) {
-			$.each( obj.annotations, function( i, src ) {
+			for ( var i = 0, length = obj.annotations.length; i < length; i++ ) {
+				var src = obj.annotations[i];
 				// Build simplified annotation object
 				var dst = { 'type': src.type };
 				if ( 'data' in src ) {
 					dst.data = es.copyObject( src.data );
 				}
+				// Add a hash to the annotation for faster comparison
+				dst.hash = es.DocumentModel.getAnnotationHash( dst );
 				// Apply annotation to range
 				if ( src.start < 0 ) {
 					// TODO: The start can not be lower than 0! Throw error?
@@ -305,13 +328,13 @@ es.DocumentModel.flattenPlainObjectContentNode = function( obj ) {
 					// Clamp end value
 					src.end = data.length;
 				}
-				for ( var i = src.start; i < src.end; i++ ) {
+				for ( var j = src.start; j < src.end; j++ ) {
 					// Auto-convert to array
-					typeof data[i] === 'string' && ( data[i] = [data[i]] );
+					typeof data[j] === 'string' && ( data[j] = [data[j]] );
 					// Append 
-					data[i].push( dst );
+					data[j].push( dst );
 				}
-			} );
+			}
 		}
 		return data;
 	}
@@ -488,7 +511,31 @@ es.DocumentModel.prototype.getContent = function( node, range ) {
  * @returns {es.Transaction}
  */
 es.DocumentModel.prototype.prepareInsertion = function( offset, data ) {
-	//
+	/*
+	 * There are 2 basic types of locations the insertion point can be:
+	 *     Structural locations
+	 *         |<p>a</p><p>b</p> - Beginning of the document
+	 *         <p>a</p>|<p>b</p> - Between elements (like in a document or list)
+	 *         <p>a</p><p>b</p>| - End of the document
+	 *     Content locations
+	 *         <p>|a</p><p>b</p> - Inside an element (like in a paragraph or listItem)
+	 * 
+	 * if ( Incoming data contains structural elements ) {
+	 *     if ( Insertion point is a structural location ) {
+	 *         if ( Incoming data is not a complete structural element ) {
+	 *             Incoming data must be balanced
+	 *         }
+	 *     } else {
+	 *         Closing and opening elements for insertion point must be added to incoming data
+	 *     }
+	 * } else {
+	 *     if ( Insertion point is a structural location ) {
+	 *         Incoming data must be balanced
+	 *     } else {
+	 *         Content being inserted into content is OK, do nothing
+	 *     }
+	 * }
+	 */
 };
 
 /**

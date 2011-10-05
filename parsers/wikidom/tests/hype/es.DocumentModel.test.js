@@ -111,6 +111,7 @@ var obj = {
  *     
  *     {Array} Annotated character
  *         {String} Character
+ *         {String} Hash
  *         {Object}... List of annotation object references
  *     
  *     {Object} Opening or closing structural element
@@ -124,9 +125,9 @@ var data = [
 	//  1 - Plain content
 	'a',
 	//  2 - Annotated content
-	['b', { 'type': 'bold' }],
+	['b', { 'type': 'bold', 'hash': '#bold' }],
 	//  3 - Annotated content
-	['c', { 'type': 'italic' }],
+	['c', { 'type': 'italic', 'hash': '#italic' }],
 	//  4 - End of paragraph
 	{ 'type': '/paragraph' },
  	//  5 - Beginning of table
