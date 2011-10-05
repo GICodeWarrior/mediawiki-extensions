@@ -50,6 +50,7 @@ $wgAutoloadClasses['ContestHooks'] 				= dirname( __FILE__ ) . '/Contest.hooks.p
 $wgAutoloadClasses['ContestSettings'] 			= dirname( __FILE__ ) . '/Contest.settings.php';
 
 $wgAutoloadClasses['ApiDeleteContest'] 			= dirname( __FILE__ ) . '/api/ApiDeleteContest.php';
+$wgAutoloadClasses['ApiQueryContests'] 			= dirname( __FILE__ ) . '/api/ApiQueryContests.php';
 
 $wgAutoloadClasses['Contest'] 					= dirname( __FILE__ ) . '/includes/Contest.class.php';
 $wgAutoloadClasses['ContestantPager'] 			= dirname( __FILE__ ) . '/includes/ContestantPager.php';
@@ -87,6 +88,7 @@ $wgSpecialPageGroups['EditContest'] 			= 'other';
 
 // API
 $wgAPIModules['deletecontest'] 					= 'ApiDeleteContest';
+$wgAPIListModules['contests'] 					= 'ApiQueryContests';
 
 // Hooks
 $wgHooks['LoadExtensionSchemaUpdates'][] 		= 'ContestHooks::onSchemaUpdate';
