@@ -45,6 +45,13 @@ $messages['ia'] = array(
 	'subpagesortkey-desc' => 'Cambia le clave de ordination predefinite de un pagina, basante lo super le nomine de su subpagina in loco de su nomine complete',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'subpagesortkey-desc' => 'Määt dat schtandattmääßesh de Ongersigge noh iere Ongersigge-Naame un nit nohm kumplätte Name zotteert wääde.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
