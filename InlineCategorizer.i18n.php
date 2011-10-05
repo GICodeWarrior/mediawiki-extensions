@@ -2069,6 +2069,7 @@ Quai capita normalmain sche la categoria è vegnida integrada en in model.",
  * @author Stelistcristi
  */
 $messages['ro'] = array(
+	'inlinecategorizer-desc' => 'Modul JavaScript care permite modificarea, adăugarea sau înlăturarea legăturilor către categorii direct dintr-o pagină',
 	'inlinecategorizer-add-category' => 'Adaugă categorie',
 	'inlinecategorizer-add-category-submit' => 'Adaugă',
 	'inlinecategorizer-add-category-summary' => 'Adăugarea categoriei „$1”',
