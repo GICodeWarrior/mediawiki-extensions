@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS /*_*/fptc_associationrules (
 	`rule_confidence` float(5,3) NOT NULL
 )/*$wgDBTableOptions*/;
 
-CREATE INDEX /*i*/p_id ON fptc_associationrules (p_id);
+CREATE INDEX /*i*/p_id ON /*_*/fptc_associationrules (p_id);
 
 CREATE TABLE IF NOT EXISTS /*_*/fptc_items (
 	`o_id` INT(8) NOT NULL,
