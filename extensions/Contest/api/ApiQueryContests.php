@@ -123,7 +123,7 @@ class ApiQueryContests extends ApiQueryBase {
 	 * @see includes/api/ApiBase#getDescription()
 	 */
 	public function getDescription() {
-		return 'API module for obatining survey answers';
+		return 'API module for querying contests';
 	}
 	
 	/**
@@ -141,7 +141,8 @@ class ApiQueryContests extends ApiQueryBase {
 	 */
 	protected function getExamples() {
 		return array (
-			'api.php?action=query&list=contests&',
+			'api.php?action=query&list=contests&props=id|name',
+			'api.php?action=query&list=contests&costatus=1',
 		);
 	}
 
