@@ -16,6 +16,9 @@ var rules = [
 ['ශ්‍රi', '', 'ශ්‍රි'],	// shri
 ['ශ්r', '', 'ශ්‍ර'],	// shr
 
+['([\\u0D9A-\\u0DC6])්\\u200Dර්u', '', '$1ෘ'],    // <consonant>ru
+['([\\u0D9A-\\u0DC6])ෘu', '', '$1ෲ'],    // <consonant>ruu
+
 ['([\\u0D9A-\\u0DC6])්a', '', '$1'],    // <consonant>a
 ['([\\u0D9A-\\u0DC6])a', '', '$1ා'],    // <consonant>aa
 ['([\\u0D9A-\\u0DC6])්A', '', '$1ැ'],    // <consonant>A
