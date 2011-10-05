@@ -58,13 +58,14 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 
 	protected function inXmlMode() {
 		$format = $this->validateFormat();
-		return ($format == 'xml' || $format == 'xmlfm');
+		return ( $format == 'xml' || $format == 'xmlfm' );
 	}
 
 	public function execute() {
-		if (!$this->inXmlMode()) {
+		if ( !$this->inXmlMode() ) {
 			// Pass back to the JSON defaults
-			return parent::execute();
+			parent::execute();
+			return;
 		}
 
 		$params = $this->extractRequestParams();
@@ -86,7 +87,6 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 		$result->setIndexedTagName( $items, 'Item' );
 		$result->addValue( null, 'Section', $items );
 	}
-
 
 	public function getAllowedParams() {
 		$params = parent::getAllowedParams();
