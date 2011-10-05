@@ -318,6 +318,7 @@ es.DocumentModel.prototype.getContent = function( node, range ) {
 };
 
 /**
+ * Generates a transaction which inserts data at a given offset.
  * 
  * @method
  * @param {Integer} offset
@@ -329,6 +330,7 @@ es.DocumentModel.prototype.prepareInsertion = function( offset, data ) {
 };
 
 /**
+ * Generates a transaction which removes data from a given range.
  * 
  * @method
  * @param {es.Range} range
@@ -339,6 +341,7 @@ es.DocumentModel.prototype.prepareRemoval = function( range ) {
 };
 
 /**
+ * Generates a transaction which annotates content within a given range.
  * 
  * @method
  * @returns {es.Transaction}
@@ -348,6 +351,7 @@ es.DocumentModel.prototype.prepareContentAnnotation = function( range, method, a
 };
 
 /**
+ * Generates a transaction which changes attributes on an element at a given index.
  * 
  * @method
  * @returns {es.Transaction}
@@ -357,6 +361,7 @@ es.DocumentModel.prototype.prepareElementAttributeChange = function( index, meth
 };
 
 /**
+ * Applies a transaction to the content data.
  * 
  * @method
  * @param {es.Transaction}
@@ -366,6 +371,7 @@ es.DocumentModel.prototype.commit = function( transaction ) {
 };
 
 /**
+ * Reverses a transaction's effects on the content data.
  * 
  * @method
  * @param {es.Transaction}
