@@ -480,6 +480,7 @@ $messages['ksh'] = array(
 	'useroptionstats-desc' => 'En [[Special:UserOptionStats|Söndersigg]] för Bereeschte övver der Jebruch vun MediaWiki sing Ußwahle en de Metmaacher ier Enshtellunge.',
 	'uos-warn' => '<i lang="en">PHPlot</i> es nit enshtalleet!',
 	'uos-choose' => 'Söhk ein uß fun hee dä müjjelesche Ußwahle för de Metmaacher: $1',
+	'uos-choose-hidden' => 'Söhk ein uß fun hee dä müjjelesche vershtoche Ußwahle för de Metmaacher: $1',
 	'uos-unknown' => '*Shtandadt',
 	'uos-other' => '*Ander',
 	'uos-title' => 'De Verdeijlung vun de Entshellunge vun de Metmaacher ier Ußwahl „$1“',
