@@ -1,12 +1,12 @@
 <?php
 /**
  * User Daily Contributions extension
- * 
+ *
  * This extension adds a step to saving an article that incriments a counter for a user's activity in a given day.
- * 
+ *
  * @file
  * @ingroup Extensions
- * 
+ *
  * @author Nimish Gautam <ngautam@wikimedia.org>
  * @author Trevor Parscal <tparscal@wikimedia.org>
  * @license GPL v2 or later
@@ -35,11 +35,12 @@ $wgAPIModules['userdailycontribs'] = 'ApiUserDailyContribs';
  * Get the number of revisions a user has made since a given time
  *
  * @param $time beginning timestamp
+ * @param $user User
  * @return number of revsions this user has made
  */
 function getUserEditCountSince( $time = null, User $user = null ) {
 	global $wgUser;
-	
+
 	// Fallback on current user
 	if ( is_null( $user ) ) {
 		$user = $wgUser;

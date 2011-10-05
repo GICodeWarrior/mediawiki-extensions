@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class ApiUserDailyContribs extends ApiBase {
 
@@ -8,17 +8,18 @@ class ApiUserDailyContribs extends ApiBase {
 
 		$userName = $params['user'];
 		$days = $params['daysago'];
-		$user = User::newFromName($userName);
+		$user = User::newFromName( $userName );
+
 		if ( !$user ) {
-			$this->dieUsage( 'Specified user does not exist', 'bad_user' );
+			$this->dieUsage( 'Invalid username', 'bad_user' );
 		}
-		
+
 		$now = time();
 		$result->addValue( $this->getModuleName() ,
 			'id', $user->getId() );
 		// returns date of registration in YYYYMMDDHHMMSS format
 		$result->addValue( $this->getModuleName() ,
-			'registration', $user->getRegistration() ? '0' : $user->getRegistration() );
+			'registration', !$user->getRegistration() ? '0' : $user->getRegistration() );
 		// returns number of edits since daysago param
 		$result->addValue( $this->getModuleName() ,
 			'timeFrameEdits', getUserEditCountSince( $now - ($days * 60 *60 *24), $user ) );
@@ -30,13 +31,12 @@ class ApiUserDailyContribs extends ApiBase {
 	public function getAllowedParams() {
 		return array(
 			'user' => array(
-				ApiBase::PARAM_TYPE => 'user',		
-		),
+				ApiBase::PARAM_TYPE => 'user',
+			),
 			'daysago' => array(
 				ApiBase::PARAM_TYPE => 'integer',
 				ApiBase::PARAM_MIN => 0,
-		),
-		
+			),
 		);
 	}
 
@@ -51,6 +51,12 @@ class ApiUserDailyContribs extends ApiBase {
 		return 'Get the total number of user edits, time of registration, and edits in a given timeframe';
 	}
 
+	public function getPossibleErrors() {
+		return array_merge( parent::getPossibleErrors(), array(
+			array( 'code' => 'bad_user', 'info' => 'Invalid username' )
+		) );
+	}
+
 	protected function getExamples() {
 		return 'api.php?action=userdailycontribs&user=WikiSysop&daysago=5';
 	}
@@ -58,5 +64,5 @@ class ApiUserDailyContribs extends ApiBase {
 	public function getVersion() {
 		return __CLASS__ . ': $Id$';
 	}
-	
+
 }
