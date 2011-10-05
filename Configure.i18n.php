@@ -7697,6 +7697,7 @@ $messages['myv'] = array(
  * @author محک
  */
 $messages['mzn'] = array(
+	'configure-edit-core' => 'مدیاویکی',
 	'configure-section-category' => 'رج‌ئون',
 	'configure-section-specialpages' => 'شا صفحه‌ئون',
 );
