@@ -1,25 +1,25 @@
 <?php
 
 /**
- * API module to get a list of contests.
+ * API module to get a list of contestants.
  *
  * @since 0.1
  *
- * @file ApiQueryContests.php
+ * @file ApiQueryContestants.php
  * @ingroup Contest
  * @ingroup API
  *
  * @licence GNU GPL v3+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class ApiQueryContests extends ApiContestQuery {
+class ApiQueryContestants extends ApiContestQuery {
 	
 	protected function getClassName() {
-		return 'Contest';
+		return 'ContestContestant';
 	}
 	
 	public function __construct( $main, $action ) {
-		parent::__construct( $main, $action, 'co' );
+		parent::__construct( $main, $action, 'ct' );
 	}
 
 	/**
@@ -41,7 +41,7 @@ class ApiQueryContests extends ApiContestQuery {
 	 * @see includes/api/ApiBase#getDescription()
 	 */
 	public function getDescription() {
-		return 'API module for querying contests';
+		return 'API module for querying contestants';
 	}
 	
 	/**
@@ -50,8 +50,8 @@ class ApiQueryContests extends ApiContestQuery {
 	 */
 	protected function getExamples() {
 		return array (
-			'api.php?action=query&list=contests&coprops=id|name',
-			'api.php?action=query&list=contests&costatus=1',
+			'api.php?action=query&list=contestants&ctprops=id|user_id|contest_id|rating',
+			'api.php?action=query&list=contestants&ctprops=id|rating&ctcontestid=42',
 		);
 	}
 
