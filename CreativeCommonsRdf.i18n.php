@@ -46,9 +46,10 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Kghbln
+ * @author Purodha
  */
 $messages['de'] = array(
-	'creativecommonsrdf-desc' => 'Stellt RDF-Metadaten zu Creative Commons bereit',
+	'creativecommonsrdf-desc' => 'Stellt RDF-Metadaten im  Creative-Commons-Stil bereit',
 );
 
 /** French (Français)
@@ -84,6 +85,13 @@ $messages['ia'] = array(
  */
 $messages['ja'] = array(
 	'creativecommonsrdf-desc' => 'クリエイティブ・コモンズ RDF -メタデータ',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'creativecommonsrdf-desc' => 'Määd et müjjelesch, dat et Wiki Mettadaate em  <i lang="en" title="Ressouce Description Framework">RDF</i>-Fommaat vun de <i lang="en">CreativeCommons</i> ußjitt.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
