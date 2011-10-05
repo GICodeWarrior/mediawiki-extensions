@@ -15,15 +15,36 @@
  */
 abstract class ApiContestQuery extends ApiQueryBase {
 	
+	/**
+	 * Returns the class name of the ContestDBClass deriving class to be used 
+	 * to query for results.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return string
+	 */
 	protected abstract function getClassName();
 	
+	/**
+	 * Returns an instance of the ContestDBClass deriving class.
+	 * Once PHP 5.3 becomes an accaptable requirement, we
+	 * can get rid of this silly hack and simply return the class
+	 * name (since all methods we need ought to be static in PHP >= 5.3).  
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return ContestDBClass
+	 */
 	protected function getClass() {
 		$className = $this->getClassName();
 		return $className::s();
 	}
 
 	/**
-	 * Retrieve the special words from the database.
+	 * Get the parameters, find out what the conditions for the query are,
+	 * run it, and add the results.
+	 * 
+	 * @since 0.1
 	 */
 	public function execute() {
 		$params = $this->getParams();
@@ -31,6 +52,14 @@ abstract class ApiContestQuery extends ApiQueryBase {
 		$this->addResults( $params, $results );
 	}
 	
+	/**
+	 * Get the request paramaters, handle the * value for the props param
+	 * and remove all params set to null (ie those that are not actually provided).
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return array
+	 */
 	protected function getParams() {
 		// Get the requests parameters.
 		$params = $this->extractRequestParams();
@@ -45,6 +74,17 @@ abstract class ApiContestQuery extends ApiQueryBase {
 		return array_filter( $params, create_function( '$p', 'return isset( $p );' ) );
 	}
 	
+	/**
+	 * Get the conditions for the query. These will be provided as
+	 * regular parameters, together with limit, props, continue,
+	 * and possibly others which we need to get rid off.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param array $params
+	 * 
+	 * @return array
+	 */
 	protected function getConditions( array $params ) {
 		$conditions = array();
 		
@@ -57,6 +97,16 @@ abstract class ApiContestQuery extends ApiQueryBase {
 		return $conditions;
 	}
 	
+	/**
+	 * Get the actual results.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param array $params
+	 * @param array $conditions
+	 * 
+	 * @return array of ContestDBClass
+	 */
 	protected function getResults( array $params, array $conditions ) {
 		return $this->getClass()->select(
 			$params['props'],
@@ -68,7 +118,15 @@ abstract class ApiContestQuery extends ApiQueryBase {
 		);
 	}
 	
-	protected function addResults( array $params, array $results ) {
+	/**
+	 * Serialize the results and add them to the result object.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param array $params
+	 * @param array $results
+	 */
+	protected function addResults( array $params, array /* of ContestDBClass */ $results ) {
 		$serializedResults = array();
 		$count = 0;
 		
