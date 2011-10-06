@@ -1101,7 +1101,7 @@ var CreateAPage = {
 
 		for ( var i = 0; i < wgCreateAPageElementsForJavaScript.length; i++ ) {
 			jQuery( '#' + wgCreateAPageElementsForJavaScript[i] ).click( function( e ) {
-				CreateAPage.switchTemplate( e, wgCreateAPageElementsForJavaScript[i] );
+				CreateAPage.switchTemplate( e, wgCreateAPageElementsForJavaScript[i], this );
 			});
 		}
 
@@ -1119,10 +1119,12 @@ var CreateAPage = {
 	 *
 	 * @param e Event
 	 * @param elementId String: name of the createplate template (i.e.
-	 * cp-template-Name)
+	 * cp-template-Name) -- actually doesn't seem to work, which is why we pass
+	 * fullElement into this function and use it to get the ID instead
+	 * @param fullElement
 	 */
-	switchTemplate: function( e, elementId ) {
-		CreateAPage.myId = elementId;
+	switchTemplate: function( e, elementId, fullElement ) {
+		CreateAPage.myId = fullElement.id;
 		e.preventDefault();
 
 		document.getElementById( 'cp-multiedit' ).innerHTML =
@@ -1137,7 +1139,7 @@ var CreateAPage = {
 			data: {
 				action: 'ajax',
 				rs: 'axMultiEditParse',
-				template: elementId.replace( 'cp-template-', '' )
+				template: fullElement.id.replace( 'cp-template-', '' )
 			},
 			success: function( data, textStatus, jqXHR ) {
 				document.getElementById( 'cp-multiedit' ).innerHTML = '';
@@ -1150,24 +1152,15 @@ var CreateAPage = {
 					document.getElementById( 'cp-multiedit' ).innerHTML = res;
 				}
 
-				// @todo FIXME: need to add some code to remove the
-				// 'templateFrameSelected' class from other templates except
-				// the currently selected one
-				//
-				// I tried this above the addClass( 'templateFrameSelected' )
-				// stuff, but it didn't work (when you would select the 2nd
-				// template, the class would be given to the 3rd template
-				// instead...lol wut):
-				//
-				// jQuery( '.templateFrameSelected' ).each( function( index ) {
-				//	jQuery( this ).removeClass( 'templateFrameSelected' );
-				// });
 				var elements = wgCreateAPageElementsForJavaScript;
 				for ( var i in elements ) {
 					jQuery( '#' + elements[i] ).addClass( 'templateFrame' );
+					if ( jQuery( '#' + elements[i] ).hasClass( 'templateFrameSelected' ) ) {
+						jQuery( '#' + elements[i] ).removeClass( 'templateFrameSelected' );
+					}
 				}
 
-				// ...and make the recently selected createplate active!
+				// Make the recently selected createplate active!
 				jQuery( '#' + CreateAPage.myId ).addClass( 'templateFrameSelected' );
 
 				var infoboxToggle = jQuery( '#cp-infobox-toggle' );
