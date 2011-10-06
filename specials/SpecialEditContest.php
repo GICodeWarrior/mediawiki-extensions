@@ -313,6 +313,7 @@ class SpecialEditContest extends FormSpecialPage {
 			'id' => $challengeDbId,
 			'text' => $request->getText( "challenge-text-$challengeId" ),
 			'title' => $request->getText( "contest-challenge-$challengeId" ),
+			'oneline' => $request->getText( "challenge-oneline-$challengeId" ),
 		) );
 	}
 	
