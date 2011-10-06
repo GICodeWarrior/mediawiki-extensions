@@ -105,11 +105,16 @@ class SpecialContestant extends SpecialContestPage {
 		$stats['id'] = htmlspecialchars( $contestant->getField( 'id' ) );
 		$stats['contest'] = htmlspecialchars( $contestant->getContest()->getField( 'name' ) );
 		
-		$stats['submission'] = '<b>' . Html::element(
-			'a',
-			array( 'href' => $contestant->getField( 'submission' ) ),
-			wfMsg( 'contest-contestant-submission-url' )
-		) . '</b>';
+		if ( $contestant->getField( 'submission' ) === '' ) {
+			$stats['submission'] = wfMsg( 'contest-contestant-notsubmitted' );
+		}
+		else {
+			$stats['submission'] = '<b>' . Html::element(
+				'a',
+				array( 'href' => $contestant->getField( 'submission' ) ),
+				wfMsg( 'contest-contestant-submission-url' )
+			) . '</b>';
+		}
 		
 		$countries = ContestContestant::getCountries();
 		$stats['country'] = htmlspecialchars( $countries[$contestant->getField( 'country' )] );

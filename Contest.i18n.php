@@ -156,6 +156,7 @@ $messages['en'] = array(
 	'contest-contestant-header-rating' => 'Rating',
 	'contest-contestant-header-comments' => 'Amount of comments',
 	'contest-contestant-submission-url' => 'Submission',
+	'contest-contestant-notsubmitted' => 'Not submitted yet',
 );
 
 /** Message documentation (Message documentation)
