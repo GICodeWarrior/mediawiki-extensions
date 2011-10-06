@@ -48,7 +48,8 @@ CREATE TABLE IF NOT EXISTS /*_*/contest_challenges (
   challenge_contest_id        INT unsigned        NOT NULL,
   
   challenge_text              TEXT                NOT NULL,
-  challenge_title             VARCHAR(255)        NOT NULL
+  challenge_title             VARCHAR(255)        NOT NULL,
+  challenge_oneline           TEXT                NOT NULL
 ) /*$wgDBTableOptions*/;
 
 -- Judge votes
