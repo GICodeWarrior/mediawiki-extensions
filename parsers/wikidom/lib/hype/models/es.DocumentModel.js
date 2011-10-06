@@ -496,7 +496,7 @@ es.DocumentModel.prototype.getNodeFromOffset = function( offset ) {
  * @param {es.DocumentModelNode} node Node to get element object for
  * @returns {Object|null} Element object
  */
-es.DocumentModel.prototype.getElement = function( node ) {
+es.DocumentModel.prototype.getElementFromNode = function( node ) {
 	var offset = this.getOffsetFromNode( node );
 	if ( offset !== false ) {
 		return this.data[offset];
@@ -511,7 +511,7 @@ es.DocumentModel.prototype.getElement = function( node ) {
  * @param {es.DocumentModelNode} node Node to get content data for
  * @returns {Array|null} List of content and elements inside node or null if node is not found
  */
-es.DocumentModel.prototype.getContent = function( node, range ) {
+es.DocumentModel.prototype.getContentFromNode = function( node, range ) {
 	if ( range ) {
 		range.normalize();
 	}

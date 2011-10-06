@@ -181,7 +181,8 @@ var data = [
 /**
  * Sample content data index.
  * 
- * This is a node tree that describes each partition within the document's content data.
+ * This is a node tree that describes each partition within the document's content data. This is
+ * what is automatically built by the es.DocumentModel constructor.
  */
 var tree = [
 	new es.ParagraphModel( data[0], 3 ),

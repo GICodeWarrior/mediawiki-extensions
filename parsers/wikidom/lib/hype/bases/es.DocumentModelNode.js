@@ -154,7 +154,7 @@ es.DocumentModelNode.prototype.getContent = function( range ) {
 	// Find root
 	var root = this.data ? this : ( this.root.data ? this.root : null );
 	if ( root ) {
-		return root.getContent( this, range );
+		return root.getContentFromNode( this, range );
 	}
 	return [];
 };
