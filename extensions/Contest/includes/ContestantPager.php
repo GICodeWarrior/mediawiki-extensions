@@ -25,6 +25,30 @@ class ContestantPager extends TablePager {
 		
 		$this->getOutput()->addModules( 'contest.contestant.pager' );
 	}
+	
+	/**
+	 * Get the OutputPage being used for this instance.
+	 * IndexPager extends ContextSource as of 1.19. 
+	 *
+	 * @since 0.1
+	 *
+	 * @return OutputPage
+	 */
+	public function getOutput() {
+		return version_compare( $GLOBALS['wgVersion'], '1.19', '>=' ) ? parent::getOutput() : $GLOBALS['wgOut'];
+	}
+	
+	/**
+	 * Get the Language being used for this instance.
+	 * IndexPager extends ContextSource as of 1.19. 
+	 *
+	 * @since 0.1
+	 *
+	 * @return Language
+	 */
+	public function getLang() {
+		return version_compare( $GLOBALS['wgVersion'], '1.19', '>=' ) ? parent::getLang() : $GLOBALS['wgLang'];
+	}
 
 	public function getFieldNames() {
 		static $headers = null;
