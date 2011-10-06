@@ -580,7 +580,11 @@ es.DocumentModel.prototype.prepareInsertion = function( offset, data ) {
 es.DocumentModel.prototype.prepareRemoval = function( range ) {
 	/*
 	 * if ( The range spans structural elements ) {
-	 *     //
+	 *     if ( The range partially overlaps structural elements ) {
+	 *         Add insertions to replace removed openings and closing to overlapped elements
+	 *     } else {
+	 *         Removing entire structural elements is OK, do nothing
+	 *     }
 	 * } else {
 	 *     Removing only content is OK, do nothing
 	 * }
@@ -620,12 +624,12 @@ es.DocumentModel.prototype.commit = function( transaction ) {
 		'set': [],
 		'clear': []
 	};
-	for ( var i = 0, length = this.operations.length; i < length; i++ ) {
-		var op = this.operations[i];
-		if ( op.type in this.operations ) {
-			this.operations[op.type].commit.call( state, op );
+	for ( var i = 0, length = transaction.length; i < length; i++ ) {
+		var operation = transaction[i];
+		if ( operation.type in this.operations ) {
+			this.operations[operation.type].commit.call( state, operation );
 		} else {
-			throw 'Invalid operation error. Operation type is not supported: ' + op.type;
+			throw 'Invalid operation error. Operation type is not supported: ' + operation.type;
 		}
 	}
 };
@@ -643,12 +647,12 @@ es.DocumentModel.prototype.rollback = function( transaction ) {
 		'set': [],
 		'clear': []
 	};
-	for ( var i = 0, length = this.operations.length; i < length; i++ ) {
-		var op = this.operations[i];
-		if ( op.type in this.operations ) {
-			this.operations[op.type].rollback.call( state, op );
+	for ( var i = 0, length = transaction.length; i < length; i++ ) {
+		var operation = transaction[i];
+		if ( operation.type in this.operations ) {
+			this.operations[operation.type].rollback.call( state, operation );
 		} else {
-			throw 'Invalid operation error. Operation type is not supported: ' + op.type;
+			throw 'Invalid operation error. Operation type is not supported: ' + operation.type;
 		}
 	}
 };
