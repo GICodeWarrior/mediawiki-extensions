@@ -19,7 +19,7 @@ class SpecialContestSignup extends SpecialContestPage {
 	 * @since 0.1
 	 */
 	public function __construct() {
-		parent::__construct( 'ContestSignup', 'contestparticipant' );
+		parent::__construct( 'ContestSignup' );
 	}
 	
 	/**
