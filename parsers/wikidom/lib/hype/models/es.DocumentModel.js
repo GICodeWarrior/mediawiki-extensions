@@ -57,9 +57,6 @@ es.DocumentModel = function( data, attributes ) {
 			i--;
 		}
 	}
-	
-	console.dir( node );
-	
 	return node;
 };
 
@@ -620,6 +617,7 @@ es.DocumentModel.prototype.prepareElementAttributeChange = function( index, meth
 es.DocumentModel.prototype.commit = function( transaction ) {
 	var state = {
 		'data': this.data,
+		'tree': this,
 		'cursor': 0,
 		'set': [],
 		'clear': []
@@ -643,6 +641,7 @@ es.DocumentModel.prototype.commit = function( transaction ) {
 es.DocumentModel.prototype.rollback = function( transaction ) {
 	var state = {
 		'data': this.data,
+		'tree': this,
 		'cursor': 0,
 		'set': [],
 		'clear': []
