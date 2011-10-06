@@ -40,3 +40,11 @@ in web pages, and the <code><nowiki><spark></nowiki></code> tag in MediaWiki.
 * Visualization of data obtained via SPARQL queries.
 * Support for all Spark visualizations.
 * Use of the native Spark syntax, which can be copied from native spark divs to the spark tag and back.
+
+==== Adding of additionally required JavaScript files ====
+* Some visualizations of Spark require additional JavaScript files.
+* Those can be defined in modules, see Spark.settings.php - Example configuration modules
+
+==== Support for MW versions without Resource Loader ====
+* Here, the native Spark syntax cannot be used, completely. 
+* E.g, instead of data-spark-endpoint, one needs to have only endpoint.

@@ -77,22 +77,6 @@ $messages['ia'] = array(
 	'spark-missing-query' => 'Es necessari specificar un consulta usante le parametro "data-spark-query".',
 );
 
-/** Japanese (日本語)
- * @author Schu
- */
-$messages['ja'] = array(
-	'spark-desc' => '[http://km.aifb.kit.edu/sites/spark/ Spark] マッシュアップを埋め込む事を可能にする <code><nowiki><spark /></nowiki></code> タグを追加します。Spark ライブラリは、Denny Vrandecic と Andreas Harth によって作成されました。',
-	'spark-missing-query' => '「data-spark-query」パラメーターを用いてクエリを指定する必要があります。',
-);
-
-/** Colognian (Ripoarisch)
- * @author Purodha
- */
-$messages['ksh'] = array(
-	'spark-desc' => 'Deiht dä Befähl <code lang="en"><nowiki><spark /></nowiki></code> en et Wiki, dä et müjjelesh määt, <i lang="en">[http://km.aifb.kit.edu/sites/spark/ Spark] mash-ups</i> enzebenge. De <i lang="en">Spark</i>-Projramm-Sammlong wood vum <i lang="en">Denny Vrandecic</i> un vum <i lang="en">Andreas Harth</i> jemaat.',
-	'spark-missing-query' => 'Mer moß och en Frooch övver dä Parrameeter <code lang="en">data-spark-query</code> aanjävve.',
-);
-
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
