@@ -11,7 +11,7 @@
  */
 es.DocumentModel = function( data, attributes ) {
 	// Inheritance
-	var node = $.extend( new es.DocumentModelNode( length ), this );
+	var node = $.extend( new es.DocumentModelNode( null, length ), this );
 	
 	// Properties
 	node.data = $.isArray( data ) ? data : [];
@@ -20,9 +20,10 @@ es.DocumentModel = function( data, attributes ) {
 	// Build a tree of models, which is a space partitioning data structure
 	var currentNode = node;
 	for ( var i = 0, length = node.data.length; i < length; i++ ) {
-		if ( node.data[i].type !== undefined ) {
+		if ( data[i].type !== undefined ) {
 			// It's an element, figure out it's type
-			var type = node.data[i].type,
+			var element = node.data[i],
+				type = element.type,
 				open = type[0] !== '/';
 			// Trim the "/" off the beginning of closing tag types
 			if ( !open ) {
@@ -34,7 +35,7 @@ es.DocumentModel = function( data, attributes ) {
 					throw 'Unsuported element error. No class registered for element type: ' + type;
 				}
 				// Create a model node for the element
-				var newNode = new es.DocumentModel.nodeModels[node.data[i].type]();
+				var newNode = new es.DocumentModel.nodeModels[element.type]( element );
 				// Add the new model node as a child
 				currentNode.push( newNode );
 				// Descend into the new model node
@@ -47,7 +48,7 @@ es.DocumentModel = function( data, attributes ) {
 			// It's content, let's start tracking the length
 			var start = i;
 			// Move forward to the next object, tracking the length as we go
-			while ( node.data[i].type === undefined && i < length ) {
+			while ( data[i].type === undefined && i < length ) {
 				i++;
 			}
 			// Now we know how long the current node is
@@ -56,6 +57,8 @@ es.DocumentModel = function( data, attributes ) {
 			i--;
 		}
 	}
+	
+	console.dir( node );
 	
 	return node;
 };
@@ -174,7 +177,7 @@ es.DocumentModel.operations = ( function() {
 			}
 			target.splice( index, 1 );
 		}
-	};
+	}
 	
 	return {
 		// Retain

@@ -4,9 +4,9 @@
  * @class
  * @constructor
  */
-es.ListModel = function( length ) {
+es.ListModel = function( element, length ) {
 	// Extension
-	return $.extend( new es.DocumentModelNode( length ), this );
+	return $.extend( new es.DocumentModelNode( element, length ), this );
 };
 
 /* Methods */

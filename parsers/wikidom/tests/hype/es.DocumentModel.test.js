@@ -184,20 +184,20 @@ var data = [
  * This is a node tree that describes each partition within the document's content data.
  */
 var tree = [
-	new es.ParagraphModel( 3 ),
-	new es.TableModel( [
-		new es.TableRowModel( [
-			new es.TableCellModel( [
-				new es.ParagraphModel( 1 ),
-				new es.ListModel( [
-					new es.ListItemModel( 1 ),
-					new es.ListItemModel( 1 ),
-					new es.ListItemModel( 1 )
+	new es.ParagraphModel( data[0], 3 ),
+	new es.TableModel( data[5], [
+		new es.TableRowModel( data[6], [
+			new es.TableCellModel( data[7], [
+				new es.ParagraphModel( data[8], 1 ),
+				new es.ListModel( data[11], [
+					new es.ListItemModel( data[12], 1 ),
+					new es.ListItemModel( data[15], 1 ),
+					new es.ListItemModel( data[18], 1 )
 				] )
 			] )
 		] )
 	] ),
-	new es.ParagraphModel( 1 )
+	new es.ParagraphModel( data[25], 1 )
 ];
 
 test( 'es.DocumentModel', function() {

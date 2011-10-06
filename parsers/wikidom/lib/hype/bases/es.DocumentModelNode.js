@@ -9,7 +9,7 @@
  * @param {Integer|Array} contents Either Length of content or array of child nodes to append
  * @property {Integer} contentLength Length of content
  */
-es.DocumentModelNode = function( contents ) {
+es.DocumentModelNode = function( element, contents ) {
 	// Extension
 	var node = $.extend( new es.ModelNode(), this );
 	
@@ -23,6 +23,7 @@ es.DocumentModelNode = function( contents ) {
 	} );
 	
 	// Properties
+	node.element = element || null;
 	node.contentLength = 0;
 	if ( typeof contents === 'number' ) {
 		if ( contents < 0 ) {
@@ -126,6 +127,16 @@ es.DocumentModelNode.prototype.getContentLength = function() {
  */
 es.DocumentModelNode.prototype.getElementLength = function() {
 	return this.contentLength + 2;
+};
+
+/**
+ * Gets the element object.
+ * 
+ * @method
+ * @returns {Object} Element object in linear data model
+ */
+es.DocumentModelNode.prototype.getElement = function() {
+	return this.element;
 };
 
 /**
