@@ -512,16 +512,25 @@ es.DocumentModel.prototype.getElementFromNode = function( node ) {
  * @returns {Array|null} List of content and elements inside node or null if node is not found
  */
 es.DocumentModel.prototype.getContentFromNode = function( node, range ) {
+	var length = node.getContentLength();
 	if ( range ) {
 		range.normalize();
+		if ( range.start < 0 ) {
+			throw 'Invalid range error. Range can not start before node start: ' + range.start;
+		}
+		if ( range.end > length ) {
+			throw 'Invalid range error. Range can not end after node end: ' + range.end;
+		}
+	} else {
+		range = {
+			'start': 0,
+			'end': length
+		}
 	}
 	var offset = this.getOffsetFromNode( node );
 	if ( offset !== -1 ) {
 		offset++;
-		var length = node.getContentLength(),
-			right = range ? Math.min( range.end, length ) : length,
-			left = range ? range.start : 0;
-		return this.data.slice( offset + left, offset + right );
+		return this.data.slice( offset + range.start, offset + range.end );
 	}
 	return null;
 };

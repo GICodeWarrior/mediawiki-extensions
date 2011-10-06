@@ -201,7 +201,7 @@ var tree = [
 	new es.ParagraphModel( data[25], 1 )
 ];
 
-test( 'es.DocumentModel', function() {
+test( 'es.DocumentModel', 8, function() {
 	var documentModel = es.DocumentModel.newFromPlainObject( obj );
 	
 	deepEqual( documentModel.getData(), data, 'Flattening plain objects results in correct data' );
@@ -212,7 +212,7 @@ test( 'es.DocumentModel', function() {
 			['b', { 'type': 'bold', 'hash': '#bold' }],
 			['c', { 'type': 'italic', 'hash': '#italic' }]
 		],
-		'Content can be extracted from nodes using relative ranges'
+		'When getting content for a node, ranges can trim left'
 	);
 	deepEqual(
 		documentModel[0].getContent( new es.Range( 0, 2 ) ),
@@ -220,7 +220,30 @@ test( 'es.DocumentModel', function() {
 			'a',
 			['b', { 'type': 'bold', 'hash': '#bold' }],
 		],
-		'Content can be extracted from nodes using relative ranges'
+		'When getting content for a node, ranges can trim right'
 	);
+	deepEqual(
+		documentModel[0].getContent( new es.Range( 1, 2 ) ),
+		[
+			['b', { 'type': 'bold', 'hash': '#bold' }],
+		],
+		'When getting content for a node, ranges can trim left and right'
+	);
+	try {
+		documentModel[0].getContent( new es.Range( -1, 3 ) );
+	} catch ( err ) {
+		ok(
+			true,
+			'Exceptions are thrown when getting node content within a range starting before 0'
+		);
+	}
+	try {
+		documentModel[0].getContent( new es.Range( 0, 4 ) );
+	} catch ( err ) {
+		ok(
+			true,
+			'Exceptions are thrown when getting node content within a range ending after length'
+		);
+	}
 	deepEqual( documentModel[2].getContent(), ['a'], 'Content can be extracted from nodes' );
 } );
