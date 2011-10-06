@@ -1053,7 +1053,7 @@ $messages['sl'] = array(
  * @author Maax
  */
 $messages['so'] = array(
-	'abcdownload' => 'Download:',
+	'abcdownload' => 'Soo deji:',
 );
 
 /** Albanian (Shqip)

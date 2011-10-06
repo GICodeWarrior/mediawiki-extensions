@@ -1782,13 +1782,14 @@ $messages['or'] = array(
 );
 
 /** Polish (Polski)
+ * @author Leinad
  * @author Masti
  * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'moodbar-desc' => 'Pozwala określonym użytkownikom na wyrażenie opinii o posiadanym doświadczeniu w edytowaniu',
 	'moodbar-trigger-feedback' => 'Opinia na temat edytowania',
-	'moodbar-trigger-share' => 'Podziel się swoim doświadczeniem',
+	'moodbar-trigger-share' => 'Podziel się swoimi wrażeniami',
 	'moodbar-trigger-editing' => 'Edytowanie {{GRAMMAR:D.lp|$1}}...',
 	'moodbar-close' => '(zamknij)',
 	'moodbar-intro-feedback' => 'Edytowanie {{GRAMMAR:D.lp|$1}} przyniosło mi...',
@@ -1799,9 +1800,9 @@ $messages['pl'] = array(
 	'moodbar-type-confused-title' => 'mieszane uczucia',
 	'tooltip-moodbar-what' => 'Więcej informacji na temat tej funkcji',
 	'moodbar-what-label' => 'O co tu chodzi?',
-	'moodbar-what-content' => 'Ten dodatek pomaga społeczności zrozumieć doświadczenia osób edytujących projekt.
+	'moodbar-what-content' => 'To narzędzie pomaga społeczności zrozumieć doświadczenia osób edytujących projekt.
 Więcej informacji uzyskasz na $1.',
-	'moodbar-what-link' => 'tej stronie',
+	'moodbar-what-link' => 'stronie opisu tego narzędzia',
 	'moodbar-privacy' => 'Przesyłając, wyrażasz zgodę na udostępnienie na następujących $1.',
 	'moodbar-privacy-link' => 'warunkach',
 	'moodbar-disable-link' => 'Nie jestem zainteresowany. Proszę wyłączyć tę funkcję.',
@@ -1835,6 +1836,21 @@ Więcej informacji uzyskasz na $1.',
 	'moodbar-header-user-editcount' => 'Licznik edycji użytkownika',
 	'moodbar-header-namespace' => 'Przestrzeń nazw',
 	'moodbar-header-own-talk' => 'Własna strona dyskusji',
+	'moodbar-feedback-title' => 'Tablica otrzymanych opinii',
+	'moodbar-feedback-filters' => 'Filtrowanie',
+	'moodbar-feedback-filters-type' => 'Rodzaj:',
+	'moodbar-feedback-filters-type-happy' => 'Pochwały',
+	'moodbar-feedback-filters-type-confused' => 'Zastrzeżenia',
+	'moodbar-feedback-filters-type-sad' => 'Problemy',
+	'moodbar-feedback-filters-username' => 'Nazwa użytkownika',
+	'moodbar-feedback-filters-button' => 'Filtruj',
+	'moodbar-feedback-whatis' => 'Jak działa to narzędzie?',
+	'moodbar-feedback-permalink' => 'link do tej opinii',
+	'moodbar-feedback-noresults' => 'Brak opinii pasujących do podanego filtru.',
+	'moodbar-feedback-more' => 'Więcej',
+	'moodbar-feedback-nomore' => 'Nie ma więcej opinii do pokazania.',
+	'moodbar-feedback-newer' => 'Nowsze',
+	'moodbar-feedback-older' => 'Starsze',
 	'moodbar-feedback-ajaxerror' => 'Wystąpił błąd przy pobieraniu kolejnych wyników.',
 	'moodbar-type-happy' => 'Szczęśliwy',
 	'moodbar-type-sad' => 'Smutny',

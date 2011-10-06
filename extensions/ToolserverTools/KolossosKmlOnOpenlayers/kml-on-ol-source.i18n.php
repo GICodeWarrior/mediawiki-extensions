@@ -471,6 +471,13 @@ $messages['ms'] = array(
 	'ts-kml-on-ol-all' => 'Semua',
 );
 
+/** Mazanderani (مازِرونی)
+ * @author محک
+ */
+$messages['mzn'] = array(
+	'ts-kml-on-ol-help' => 'راهنما',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
