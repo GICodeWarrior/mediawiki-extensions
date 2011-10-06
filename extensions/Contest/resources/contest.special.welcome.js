@@ -10,9 +10,10 @@
 	
 	$( document ).ready( function() {
 
-		$( '.contest-signup' ).button().click( function() {
-			window.location = $( this ).attr( 'data-contest-target' );
-		} );
+		$( '#contest-challanges' ).contestChallanges(
+			mw.config.get( 'ContestChallanges' ),
+			mw.config.get( 'ContestConfig' )
+		);
 		
 	} );
 

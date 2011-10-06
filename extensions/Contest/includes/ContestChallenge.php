@@ -85,6 +85,7 @@ class ContestChallenge extends ContestDBObject {
 			'contest_id' => 'id',
 			'text' => 'str',
 			'title' => 'str',
+			'oneline' => 'str',
 		);
 	}
 	
@@ -99,6 +100,7 @@ class ContestChallenge extends ContestDBObject {
 		return array(
 			'text' => '',
 			'title' => '',
+			'oneline' => '',
 		);
 	}
 	

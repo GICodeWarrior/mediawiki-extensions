@@ -62,7 +62,6 @@ class SpecialContestWelcome extends SpecialContestPage {
 			$this->showChallenges( $contest );
 			$this->showOpportunities( $contest );
 			$this->showRules( $contest );
-			$this->showSignupLinks( $contest );
 			
 			$out->addModules( 'contest.special.welcome' );
 		}
@@ -87,30 +86,39 @@ class SpecialContestWelcome extends SpecialContestPage {
 	 * @param Contest $contest
 	 */
 	protected function showChallenges( Contest $contest ) {
-		$out = $this->getOutput();
+		$this->showNoJSFallback( $contest );
+
+		$this->getOutput()->addHTML( '<div id="contest-challanges"></div>' );
+		
+		$this->addContestJS( $contest );
+	}
+	
+	protected function addContestJS( Contest $contest ) {
+		$challanges = array();
 		
 		foreach ( $contest->getChallenges() as /* ContestChallenge */ $challenge ) {
-			$out->addHTML( '<fieldset>' );
-			
-			$out->addHTML( Html::element( 'legend', array(), $challenge->getField( 'title' ) ) );
-			
-			$out->addHTML( '<div class="contest-challenge">' );
-			
-			$out->addHTML( Html::element( 
-				'button',
-				array(
-					'class' => 'contest-signup challenge-signup',
-					'data-contest-target' => $this->getSignupLink( $contest->getField( 'name' ), $challenge->getId() )
-				),
-				wfMsg( 'contest-welcome-signup' )
-			) );
-			
-			$out->addHTML( Html::element( 'p', array(), $challenge->getField( 'text' ) ) );
-			
-			$out->addHTML( '</div>' );
-			
-			$out->addHTML( '</fieldset>' );
+			$data = $challenge->toArray();
+			$data['target'] = $this->getSignupLink( $contest->getField( 'name' ), $challenge->getId() );
+			$challanges[] = $data;
 		}
+		
+		$this->getOutput()->addScript( 
+			Skin::makeVariablesScript( 
+				array(
+					'ContestChallanges' => $challanges,
+					'ContestConfig' => array()
+				)
+			)
+		);
+	}
+	
+	protected function showNoJSFallback( Contest $contest ) {
+		$out = $this->getOutput();
+		
+		$out->addHTML( '<noscript>' );
+		$out->addHTML( '<p class="errorbox">' . htmlspecialchars( wfMsg( 'contest-welcome-js-off' ) ) . '</p>' );
+		// TODO?
+		$out->addHTML( '</noscript>' );
 	}
 	
 	/**
@@ -137,27 +145,6 @@ class SpecialContestWelcome extends SpecialContestPage {
 	}
 	
 	/**
-	 * Show the signup links for this contest.
-	 * 
-	 * @since 0.1
-	 * 
-	 * @param Contest $contest
-	 */
-	protected function showSignupLinks( Contest $contest ) {
-		$out = $this->getOutput();
-		
-		$out->addHTML( Html::element(
-			'button',
-			array(
-				'id' => 'contest-signup',
-				'class' => 'contest-signup',
-				'data-contest-target' => $this->getSignupLink( $contest->getField( 'name' ) )
-			),
-			wfMsg( 'contest-welcome-signup' )
-		) );
-	}
-	
-	/**
 	 * Gets the URL for the signup links.
 	 * When the user has to login, this will be to the login page,
 	 * with a retunrto to the signup page.
@@ -176,15 +163,15 @@ class SpecialContestWelcome extends SpecialContestPage {
 		
 		$signupitle = SpecialPage::getTitleFor( 'ContestSignup', $contestName );
 		
-		if ( $this->getUser()->isLoggedIn() ) {
+//		if ( $this->getUser()->isLoggedIn() ) {
 			return $signupitle->getLocalURL();
-		}
-		else {
-			return SpecialPage::getTitleFor( 'UserLogin' )->getLocalURL( array(
-				//'type' => 'signup',
-				'returnto' => $signupitle->getFullText()
-			) );
-		}
+//		}
+//		else {
+//			return SpecialPage::getTitleFor( 'Userlogin' )->getLocalURL( array(
+//				//'type' => 'signup',
+//				'returnto' => $signupitle->getFullText()
+//			) );
+//		}
 	}
 
 	/**
@@ -203,7 +190,7 @@ class SpecialContestWelcome extends SpecialContestPage {
 		if ( is_null( $title ) ) {
 			return '';
 		}
-		
+		 
 		$article = new Article( $title, 0 );
 		return $article->getContent();
 	}

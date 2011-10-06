@@ -166,12 +166,16 @@ $wgResourceModules['contest.special.contest'] = $moduleTemplate + array(
 $wgResourceModules['contest.special.welcome'] = $moduleTemplate + array(
 	'scripts' => array(
 		'contest.special.welcome.js',
+		'jquery.contestChallanges.js'
 	),
 	'styles' => array(
 		'contest.special.welcome.css',
 	),
 	'dependencies' => array(
 		'jquery.ui.button'
+	),
+	'messages' => array(
+		'contest-welcome-select-header'
 	)
 );
 
