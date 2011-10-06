@@ -45,11 +45,11 @@ CREATE TABLE IF NOT EXISTS /*_*/contest_contestants (
 -- Challenges
 CREATE TABLE IF NOT EXISTS /*_*/contest_challenges (
   challenge_id                INT unsigned        NOT NULL auto_increment PRIMARY KEY, -- Challenge id
-  challenge_contest_id        INT unsigned        NOT NULL,
+  challenge_contest_id        INT unsigned        NOT NULL, -- Foreign key on contests.contest_id
   
-  challenge_text              TEXT                NOT NULL,
-  challenge_title             VARCHAR(255)        NOT NULL,
-  challenge_oneline           TEXT                NOT NULL
+  challenge_text              TEXT                NOT NULL, -- Full challange description
+  challenge_title             VARCHAR(255)        NOT NULL, -- Title of the challange
+  challenge_oneline           TEXT                NOT NULL -- One line description of the challange
 ) /*$wgDBTableOptions*/;
 
 -- Judge votes
