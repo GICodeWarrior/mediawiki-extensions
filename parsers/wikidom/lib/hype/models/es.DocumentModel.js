@@ -96,19 +96,6 @@ es.DocumentModel.operations = ( function() {
 		this.data.splice( this.cursor, op.data.length );
 	}
 	
-	function indexOfAnnotation( character, annotation ) {
-		if ( $.isArray( character ) ) {
-			// Find the index of a comparable annotation (checking for same value, not reference)
-			var index;
-			for ( var i = 0; i < character.length; i++ ) {
-				if ( character[i].hash === op.annotation.hash ) {
-					return index;
-				}
-			}
-		}
-		return -1;
-	}
-	
 	function attribute( op, invert ) {
 		var element = this.data[this.cursor];
 		if ( element.type === undefined ) {
@@ -158,7 +145,7 @@ es.DocumentModel.operations = ( function() {
 			for ( var i = 0, length = this.clear.length; i < length; i++ ) {
 				var annotation = this.clear[i];
 				for ( var j = this.cursor; j < to; j++ ) {
-					var index = indexOfAnnotation( this.data[j], annotation );
+					var index = es.DocumentModel.getIndexOfAnnotation( this.data[j], annotation );
 					if ( index !== -1 ) {
 						this.data[j].splice( index, 1 );
 					}
@@ -181,7 +168,7 @@ es.DocumentModel.operations = ( function() {
 		if ( op.bias === 'start' ) {
 			target.push( op.annotation );
 		} else if ( op.bias === 'end' ) {
-			var index = indexOfAnnotation( target[i], op.annotation );
+			var index = es.DocumentModel.getIndexOfAnnotation( target[i], op.annotation );
 			if ( index === -1 ) {
 				throw 'Annotation stack error. Annotation is missing.';
 			}
@@ -269,6 +256,19 @@ es.DocumentModel.getAnnotationHash = function( annotation ) {
 		hash += '|' + keys.join( '|' );
 	}
 	return hash;
+};
+
+es.DocumentModel.getIndexOfAnnotation = function( character, annotation ) {
+	if ( $.isArray( character ) ) {
+		// Find the index of a comparable annotation (checking for same value, not reference)
+		var index;
+		for ( var i = 0; i < character.length; i++ ) {
+			if ( character[i].hash === op.annotation.hash ) {
+				return index;
+			}
+		}
+	}
+	return -1;
 };
 
 /**
