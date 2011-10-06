@@ -70,6 +70,10 @@ $messages['be-tarask'] = array(
 	'admanager_Category' => 'Катэгорыі',
 	'admanager_added' => 'Вашыя зьмены былі захаваныя',
 	'admanager_noadsset' => '$1 быў устаноўлены так, каб не паказваць рэкляму',
+	'admanager_addedzone' => 'Дададзеная зона',
+	'admanager_zonenum' => 'Зона № $1',
+	'admanager_zonenotnumber' => 'Памылка: $1 не зьяўляецца лікам.',
+	'admanager_return' => 'Вярнуцца ў [[Special:AdManager|кіраваньне рэклямай]]',
 );
 
 /** Breton (Brezhoneg)
