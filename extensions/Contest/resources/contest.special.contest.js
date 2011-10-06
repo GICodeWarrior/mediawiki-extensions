@@ -55,6 +55,20 @@
 				).append( '&#160;' ).append( this.titleInput )
 			);
 			
+			this.onelineInput = $( '<input />' ).attr( {
+				'type': 'text',
+				'name': 'challenge-oneline-' + $this.attr( 'data-challenge-id' ),
+				'size': 45
+			} ).val( $this.attr( 'data-challenge-oneline' ) );
+			
+			$this.append( 
+				$( '<div />' ).html(
+					$( '<label />' )
+						.text( mw.msg( 'contest-edit-challenge-oneline' ) )
+						.attr( 'for', 'contest-oneline-' + $this.attr( 'data-challenge-id' ) )
+				).append( '&#160;' ).append( this.onelineInput )
+			);
+			
 			this.textInput = $( '<textarea />' ).attr( {
 				'name': 'challenge-text-' + $this.attr( 'data-challenge-id' )
 			} ).val( $this.attr( 'data-challenge-text' ) );
@@ -97,7 +111,8 @@
 			'class': 'contest-challenge-input',
 			'data-challenge-id': challenge.id,
 			'data-challenge-title': challenge.title,
-			'data-challenge-text': challenge.text
+			'data-challenge-text': challenge.text,
+			'data-challenge-oneline': challenge.oneline
 		} );
 		
 		$tr = $( '<tr />' );
@@ -140,7 +155,8 @@
 			addChallenge( {
 				'id': $this.attr( 'data-challenge-id' ),
 				'title': $this.attr( 'data-challenge-title' ),
-				'text': $this.attr( 'data-challenge-text' )
+				'text': $this.attr( 'data-challenge-text' ),
+				'oneline': $this.attr( 'data-challenge-oneline' ),
 			} );
 		} );
 		

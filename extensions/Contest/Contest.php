@@ -157,6 +157,7 @@ $wgResourceModules['contest.special.contest'] = $moduleTemplate + array(
 		'contest-edit-confirm-delete',
 		'contest-edit-challenge-title',
 		'contest-edit-challenge-text',
+		'contest-edit-challenge-oneline',
 	),
 	'dependencies' => array(
 		'jquery.ui.button'

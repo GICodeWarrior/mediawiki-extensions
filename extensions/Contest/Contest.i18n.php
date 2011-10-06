@@ -93,6 +93,7 @@ $messages['en'] = array(
 	'contest-edit-confirm-delete' => 'Are you sure you want to delete this challenge?',
 	'contest-edit-challenge-title' => 'Challenge title',
 	'contest-edit-challenge-text' => 'Challenge text',
+	'contest-edit-challenge-oneline' => 'Short description',
 
 	// Special:ContestWelcome
 	'contest-welcome-unknown' => 'There is no contest with the provided name.',
