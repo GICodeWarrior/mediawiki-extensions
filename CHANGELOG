@@ -7,3 +7,4 @@ Extension page on mediawiki.org: http://www.mediawiki.org/wiki/Extension:Spark
 * Added support for older versions of MW that do not have a resource loader
 * Spark sometimes needs additional JavaScript. IT can be given in LocalSettings.php using the variable $wgResourceModules
 
+
