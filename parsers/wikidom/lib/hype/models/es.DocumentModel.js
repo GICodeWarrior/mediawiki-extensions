@@ -264,10 +264,9 @@ es.DocumentModel.getAnnotationHash = function( annotation ) {
 es.DocumentModel.getIndexOfAnnotation = function( character, annotation ) {
 	if ( $.isArray( character ) ) {
 		// Find the index of a comparable annotation (checking for same value, not reference)
-		var index;
-		for ( var i = 0; i < character.length; i++ ) {
-			if ( character[i].hash === op.annotation.hash ) {
-				return index;
+		for ( var i = 1; i < character.length; i++ ) {
+			if ( character[i].hash === annotation.hash ) {
+				return i;
 			}
 		}
 	}
