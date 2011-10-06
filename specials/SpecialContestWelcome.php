@@ -54,8 +54,35 @@ class SpecialContestWelcome extends SpecialContestPage {
 			$out->addHTML( '<br /><br /><br /><br />' );
 			$out->returnToMain();
 		}
+		else if ( $contest->getField( 'status' ) !== Contest::STATUS_ACTIVE ) {
+			// TODO: show message 
+		}
 		else {
-			// TODO: we might want to have a title field here
+			$this->showEnabledPage( $contest );
+		}
+	}
+	
+	protected function showEnabledPage( Contest $contest ) {
+		$out = $this->getOutput();
+		
+		$alreadySignedup = $this->getUser()->isLoggedIn();
+		
+		if ( $alreadySignedup ) {
+			// Check if the user is already a contestant in this contest.
+			// If he is, reirect to submission page, else show signup form.
+			$alreadySignedup = ContestContestant::s()->selectRow(
+				'id',
+				array(
+					'contest_id' => $contest->getId(),
+					'user_id' => $this->getUser()->getId()
+				)
+			) !== false;
+		}
+		
+		if ( $alreadySignedup ) {
+			$out->redirect( SpecialPage::getTitleFor( 'ContestSubmission', $contest->getField( 'name' ) )->getLocalURL() );
+		}
+		else {
 			$out->setPageTitle( $contest->getField( 'name' ) );
 			
 			$this->showIntro( $contest );

@@ -17,8 +17,8 @@
 	this.challangesList = null;
 	
 	this.showChallange = function( challange ) {
-		// TODO
-		console.log( challange );
+		// TODO: show challange pop-up with text and participate button
+		window.location = challange.target;
 	};
 	
 	this.addChallange = function( challange ) {
