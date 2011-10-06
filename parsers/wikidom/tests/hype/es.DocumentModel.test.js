@@ -205,5 +205,21 @@ test( 'es.DocumentModel', function() {
 	
 	deepEqual( documentModel.getData(), data, 'Flattening plain objects results in correct data' );
 	deepEqual( documentModel.slice( 0 ), tree, 'Nodes contain correct lengths' );
-	deepEqual( documentModel[2].getContent(), ['a'], 'Content can be extracted from document' );
+	deepEqual(
+		documentModel[0].getContent( new es.Range( 1, 3 ) ),
+		[
+			['b', { 'type': 'bold', 'hash': '#bold' }],
+			['c', { 'type': 'italic', 'hash': '#italic' }]
+		],
+		'Content can be extracted from nodes using relative ranges'
+	);
+	deepEqual(
+		documentModel[0].getContent( new es.Range( 0, 2 ) ),
+		[
+			'a',
+			['b', { 'type': 'bold', 'hash': '#bold' }],
+		],
+		'Content can be extracted from nodes using relative ranges'
+	);
+	deepEqual( documentModel[2].getContent(), ['a'], 'Content can be extracted from nodes' );
 } );

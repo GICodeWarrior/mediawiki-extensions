@@ -16,6 +16,19 @@ es.Range = function( from, to ) {
 	this.normalize();
 };
 
+
+/**
+ * Creates a new es.Range object that's a translated version of another.
+ * 
+ * @method
+ * @param {es.Range} range Range to base new range on
+ * @param {Integer} distance Distance to move range by
+ * @returns {es.Range} New translated range
+ */
+es.Range.newFromTranslatedRange = function( range, distance ) {
+	return new es.Range( range.from + distance, range.to + distance );
+};
+
 /* Methods */
 
 /**

@@ -514,15 +514,14 @@ es.DocumentModel.prototype.getElement = function( node ) {
 es.DocumentModel.prototype.getContent = function( node, range ) {
 	if ( range ) {
 		range.normalize();
-	} else {
-		range = {
-			'start': 0,
-			'end': this.contentLength
-		};
 	}
 	var offset = this.getOffsetFromNode( node );
 	if ( offset !== -1 ) {
-		return this.data.slice( offset + 1, offset + node.getContentLength() + 1 );
+		offset++;
+		var length = node.getContentLength(),
+			right = range ? Math.min( range.end, length ) : length,
+			left = range ? range.start : 0;
+		return this.data.slice( offset + left, offset + right );
 	}
 	return null;
 };
