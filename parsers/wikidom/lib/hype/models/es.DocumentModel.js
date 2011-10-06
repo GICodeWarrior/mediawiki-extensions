@@ -441,27 +441,49 @@ es.DocumentModel.prototype.getData = function( range, deep ) {
  * 
  * @method
  * @param {es.DocumentModelNode} node Node to get offset of
- * @param {es.DocumentModelNode} [from=this] Node to look within
  * @returns {Integer} Offset of node or -1 of node was not found
  */
-es.DocumentModel.prototype.offsetOf = function( node, from ) {
-	if ( from === undefined ) {
-		from = this;
-	}
+es.DocumentModel.prototype.getOffsetFromNode = function( node ) {
 	var offset = 0;
-	for ( var i = 0; i < from.length; i++ ) {
-		if ( node === from[i] ) {
+	for ( var i = 0; i < this.length; i++ ) {
+		if ( node === this[i] ) {
 			return offset;
 		}
-		if ( from[i].length ) {
-			var childOffset = this.offsetOf( node, from[i] );
+		if ( this[i].length ) {
+			var childOffset = es.DocumentModel.prototype.getOffsetFromNode.call( this[i], node );
 			if ( childOffset !== -1 ) {
 				return offset + childOffset;
 			}
 		}
-		offset += from[i].getElementLength();
+		offset += this[i].getElementLength();
 	}
 	return -1;
+};
+
+/**
+ * Gets the node at a given offset.
+ * 
+ * This method is pretty expensive. If you need to get different slices of the same content, get
+ * the content first, then slice it up locally.
+ * 
+ * TODO: Rewrite this method to not use recursion, because the function call overhead is expensive
+ * 
+ * @method
+ * @param {Integer} offset Offset to find node at
+ * @returns {es.DocumentModelNode} Node at offset
+ */
+es.DocumentModel.prototype.getNodeFromOffset = function( offset ) {
+	var nodeOffset = 0,
+		nodeLength;
+	for ( var i = 0, length = this.length; i < length; i++ ) {
+		nodeLength = this[i].getElementLength();
+		if ( offset >= nodeOffset && offset < nodeOffset + nodeLength ) {
+			return this[i].length
+				? es.DocumentModel.prototype.getNode.call( this[i], offset - nodeOffset ) : this[i];
+		}
+		nodeOffset += nodeLength;
+	}
+	return this;
 };
 
 /**
@@ -472,7 +494,7 @@ es.DocumentModel.prototype.offsetOf = function( node, from ) {
  * @returns {Object|null} Element object
  */
 es.DocumentModel.prototype.getElement = function( node ) {
-	var offset = this.offsetOf( node );
+	var offset = this.getOffsetFromNode( node );
 	if ( offset !== false ) {
 		return this.data[offset];
 	}
@@ -495,7 +517,7 @@ es.DocumentModel.prototype.getContent = function( node, range ) {
 			'end': this.contentLength
 		};
 	}
-	var offset = this.offsetOf( node );
+	var offset = this.getOffsetFromNode( node );
 	if ( offset !== -1 ) {
 		return this.data.slice( offset + 1, offset + node.getContentLength() + 1 );
 	}
@@ -546,7 +568,13 @@ es.DocumentModel.prototype.prepareInsertion = function( offset, data ) {
  * @returns {es.Transaction}
  */
 es.DocumentModel.prototype.prepareRemoval = function( range ) {
-	//
+	/*
+	 * if ( The range spans structural elements ) {
+	 *     //
+	 * } else {
+	 *     Removing only content is OK, do nothing
+	 * }
+	 */
 };
 
 /**

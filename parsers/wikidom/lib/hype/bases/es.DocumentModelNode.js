@@ -122,7 +122,7 @@ es.DocumentModelNode.prototype.getContentLength = function() {
  * Gets the element length.
  * 
  * @method
- * @returns {Integer} Length of element
+ * @returns {Integer} Length of content
  */
 es.DocumentModelNode.prototype.getElementLength = function() {
 	return this.contentLength + 2;
