@@ -264,6 +264,9 @@ es.DocumentModel.getAnnotationHash = function( annotation ) {
 };
 
 es.DocumentModel.getIndexOfAnnotation = function( character, annotation ) {
+	if ( annotation === undefined || annotation.type === undefined ) {
+		throw 'Invalid annotation error. Can not find non-annotation data in character.'
+	}
 	if ( $.isArray( character ) ) {
 		// Find the index of a comparable annotation (checking for same value, not reference)
 		for ( var i = 1; i < character.length; i++ ) {
@@ -608,7 +611,9 @@ es.DocumentModel.prototype.prepareRemoval = function( range ) {
 es.DocumentModel.prototype.prepareContentAnnotation = function( range, method, annotation ) {
 	var tx = new es.Transaction();
 	range.normalize();
-	
+	if ( annotation.hash === undefined ) {
+		annotation.hash = es.DocumentModel.getAnnotationHash( annotation );
+	}
 	var i = range.start,
 		span = i,
 		on = this.data[i].type !== undefined;
@@ -621,10 +626,13 @@ es.DocumentModel.prototype.prepareContentAnnotation = function( range, method, a
 				on = false;
 			}
 		} else {
-			var covered = es.DocumentModel.getIndexOfAnnotation( this.data[i] ) !== -1;
+			var covered = es.DocumentModel.getIndexOfAnnotation( this.data[i], annotation ) !== -1;
 			if ( covered && method === 'set' || !covered && method === 'clear' ) {
 				// Don't set/clear annotations on content that's already set/cleared
 				if ( on ) {
+					if ( span ) {
+						tx.pushRetain( span );
+					}
 					tx.pushStopAnnotating( method, annotation );
 					span = 0;
 					on = false;
@@ -642,6 +650,13 @@ es.DocumentModel.prototype.prepareContentAnnotation = function( range, method, a
 			}
 		}
 		span++;
+		i++;
+	}
+	if ( on ) {
+		if ( span ) {
+			tx.pushRetain( span );
+		}
+		tx.pushStopAnnotating( method, annotation );
 	}
 	if ( range.end < this.data.length ) {
 		tx.pushRetain( this.data.length - range.end );

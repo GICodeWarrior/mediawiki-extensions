@@ -201,7 +201,7 @@ var tree = [
 	new es.ParagraphModel( data[25], 1 )
 ];
 
-test( 'es.DocumentModel', 15, function() {
+test( 'es.DocumentModel', 16, function() {
 	var documentModel = es.DocumentModel.newFromPlainObject( obj );
 	
 	deepEqual( documentModel.getData(), data, 'Flattening plain objects results in correct data' );
@@ -302,6 +302,42 @@ test( 'es.DocumentModel', 15, function() {
 			'prepareElementAttributeChange throws an exception when offset is a closing element'
 		);
 	}
+	
+	deepEqual(
+		documentModel.prepareContentAnnotation( new es.Range( 1, 4 ), 'set', { 'type': 'bold' } ),
+		[
+			{ 'type': 'retain', 'length': 1 },
+			{
+				'type': 'annotate',
+				'method': 'set',
+				'bias': 'start',
+				'annotation': { 'type': 'bold', 'hash': '#bold' }
+			},
+			{ 'type': 'retain', 'length': 1 },
+			{
+				'type': 'annotate',
+				'method': 'set',
+				'bias': 'stop',
+				'annotation': { 'type': 'bold', 'hash': '#bold' }
+			},
+			{ 'type': 'retain', 'length': 1 },
+			{
+				'type': 'annotate',
+				'method': 'set',
+				'bias': 'start',
+				'annotation': { 'type': 'bold', 'hash': '#bold' }
+			},
+			{ 'type': 'retain', 'length': 1 },
+			{
+				'type': 'annotate',
+				'method': 'set',
+				'bias': 'stop',
+				'annotation': { 'type': 'bold', 'hash': '#bold' }
+			},
+			{ 'type': 'retain', 'length': 24 }
+		],
+		'prepareContentAnnotation skips over content that is already set or cleared'
+	);
 	
 } );
 
