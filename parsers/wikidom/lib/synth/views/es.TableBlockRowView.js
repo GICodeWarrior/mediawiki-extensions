@@ -90,7 +90,11 @@ es.TableBlockRowView.prototype.getOffsetFromPosition = function( position ) {
  * @returns {es.Position} Position of offset
  */
 es.TableBlockRowView.prototype.getRenderedPosition = function( offset ) {
-	// TODO
+	var item = this.items.lookup( offset );
+	if ( item !== null ) {
+		return item.getRenderedPosition( offset - this.items.offsetOf( item ) );
+	}
+	return null;
 };
 
 /**

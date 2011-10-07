@@ -69,7 +69,12 @@ es.ParagraphBlockView.prototype.getOffsetFromPosition = function( position ) {
  * @returns {es.Position} Position of offset
  */
 es.ParagraphBlockView.prototype.getRenderedPosition = function( offset ) {
-	return this.contentView.getPosition( position );
+	var	position = this.contentView.getPosition( offset ),
+		offset = this.$.offset();
+	position.top += offset.top;
+	position.left += offset.left;
+	position.bottom += offset.top;
+	return position;
 };
 
 /**

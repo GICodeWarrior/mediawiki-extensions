@@ -40,7 +40,6 @@ es.HeadingBlockView.prototype.getOffsetFromPosition = function( position ) {
 es.HeadingBlockView.prototype.getRenderedPosition = function( offset ) { 
 	var	position = this.contentView.getPosition( offset ),                 
 		offset = this.$.offset();                                          
-                                                                           
 	position.top += offset.top;                                            
 	position.left += offset.left;                                          
 	position.bottom += offset.top;                                         
