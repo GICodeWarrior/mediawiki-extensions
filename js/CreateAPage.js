@@ -60,9 +60,9 @@ var CreateAPageCategoryTagCloud = {
 		var category_text = document.getElementById( 'wpCategoryTextarea' );
 
 		if ( category_text.value === '' ) {
-			category_text.value += unescape( category );
+			category_text.value += decodeURIComponent( category );
 		} else {
-			category_text.value += '|' + unescape( category );
+			category_text.value += '|' + decodeURIComponent( category );
 		}
 
 		var this_button = document.getElementById( 'cloud' + num );
@@ -95,9 +95,9 @@ var CreateAPageCategoryTagCloud = {
 		var category = category_input.value;
 		if ( category_input.value !== '' ) {
 			if ( category_text.value === '' ) {
-				category_text.value += unescape( category );
+				category_text.value += decodeURIComponent( category );
 			} else {
-				category_text.value += '|' + unescape( category );
+				category_text.value += '|' + decodeURIComponent( category );
 			}
 			category_input.value = '';
 			var c_found = false;
@@ -140,10 +140,10 @@ var CreateAPageCategoryTagCloud = {
 
 	remove: function( category, num ) { // previously cloudRemove
 		var category_text = document.getElementById( 'wpCategoryTextarea' );
-		var this_pos = category_text.value.indexOf( unescape( category ) );
+		var this_pos = category_text.value.indexOf( decodeURIComponent( category ) );
 		if ( this_pos !== -1 ) {
 			category_text.value = category_text.value.substr( 0, this_pos - 1 ) +
-				category_text.value.substr( this_pos + unescape( category ).length );
+				category_text.value.substr( this_pos + decodeURIComponent( category ).length );
 		}
 		var this_button = document.getElementById( 'cloud' + num );
 		this_button.onclick = function() {
@@ -618,7 +618,7 @@ var CreateAPage = {
 
 	onclickCategoryFn: function( cat, id ) {
 		return function() {
-			CreateAPageCategoryTagCloud.remove( escape( cat ), id );
+			CreateAPageCategoryTagCloud.remove( encodeURIComponent( cat ), id );
 			return false;
 		};
 	},
