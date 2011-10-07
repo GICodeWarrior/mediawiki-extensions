@@ -3014,6 +3014,7 @@ Pe piacere <a href=\"http://www.mediawiki.org/wiki/Extension:OggHandler/Client_d
  * @author AVRS
  * @author Ahonc
  * @author Dim Grits
+ * @author Kaganer
  * @author Kv75
  * @author MaxSem
  * @author Александр Сигачёв
@@ -3024,8 +3025,8 @@ $messages['ru'] = array(
 	'ogg-short-video' => 'Видео-файл Ogg $1, $2',
 	'ogg-short-general' => 'Медиа-файл Ogg $1, $2',
 	'ogg-long-audio' => '(звуковой файл Ogg $1, длительность $2, $3)',
-	'ogg-long-video' => 'видео-файл Ogg $1, длительность $2, $4×$5 пикселов, $3',
-	'ogg-long-multiplexed' => 'мультиплексный аудио/видео-файл Ogg, $1, длительность $2, $4×$5 пикселов, $3 всего',
+	'ogg-long-video' => 'видео-файл Ogg $1, длительность $2, $4×$5 {{PLURAL:$5|пиксель|пикселя|пикселей}}, $3',
+	'ogg-long-multiplexed' => 'мультиплексный аудио/видео-файл Ogg, $1, длительность $2, $4×$5 {{PLURAL:$5|пиксель|пикселя|пикселей}}, $3 всего',
 	'ogg-long-general' => '(медиа-файл Ogg, длительность $2, $3)',
 	'ogg-long-error' => '(неправильный ogg-файл: $1)',
 	'ogg-play' => 'Воспроизвести',

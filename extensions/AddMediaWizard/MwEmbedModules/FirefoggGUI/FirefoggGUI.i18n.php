@@ -4348,6 +4348,7 @@ Cchiù \'mbormazziune sus <a href="http://en.wikipedia.org/wiki/Video_denoising"
 
 /** Russian (Русский)
  * @author Ferrer
+ * @author Kaganer
  * @author Lockal
  * @author MaxSem
  * @author Александр Сигачёв
@@ -4363,9 +4364,9 @@ $messages['ru'] = array(
 	'fogg-cg-advVideo' => 'Расширенное управление кодированием видео',
 	'fogg-cg-advAudio' => 'Расширенное управление кодированием звука',
 	'fogg-preset-custom' => 'Пользовательские настройки',
-	'fogg-webvideo-desc' => 'Веб-видео Theora, Vorbis 400 кбит/с, максимальная ширина 400 пикс.',
-	'fogg-savebandwidth-desc' => 'Theora для низкоскоростных каналов, Vorbis 164 кбит/с, максимальная ширина 200 пикс.',
-	'fogg-highquality-desc' => 'Theora высокого качества, Vorbis, максимальная ширина 1080 пикс.',
+	'fogg-webvideo-desc' => 'Веб-видео Theora, Vorbis (400 кбит/с, максимальная ширина 400 пикс.)',
+	'fogg-savebandwidth-desc' => 'Theora для низкоскоростных каналов, Vorbis (164 кбит/с, максимальная ширина 200 пикс.)',
+	'fogg-highquality-desc' => 'Theora высокого качества, Vorbis (максимальная ширина 1080 пикс.)',
 	'fogg-webvideo-webm-desc' => 'WebM Web video VP8 (600 кбит\\/с, макс. ширина 480 пикс.)',
 	'fogg-highquality-webm-desc' => 'WebM High quality VP8 (максимальная ширина 1080 пикс.)',
 	'fogg-videoQuality-title' => 'Качество видео',

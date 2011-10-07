@@ -153,8 +153,10 @@ Si aniciasti sesión, puedes desactivar esti avisu na seición "Edición" de les
 
 /** Azerbaijani (Azərbaycanca)
  * @author PPerviz
+ * @author Vugar 1981
  */
 $messages['az'] = array(
+	'vector-collapsiblenav-more' => 'Çoxlu dillər',
 	'vector-simplesearch-search' => 'Axtar',
 );
 

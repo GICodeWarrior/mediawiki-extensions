@@ -26,13 +26,21 @@ $messages['qqq'] = array(
 	'apiexplorer-intro' => 'The intro at the top of the page to acquiant new users with what the page does.',
 );
 
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'apiexplorer' => 'API-аглядальнік',
+	'apiexplorer-desc' => 'Старонка інтэрактыўнага агляду дакумэнтацыі цяперашняй вэрсіі MediaWiki API, якая працуе разам з гэтым усталяваньнем.',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
 $messages['de'] = array(
 	'apiexplorer' => 'API-Explorer',
-	'apiexplorer-desc' => 'Ergänzt eine Spezialseite, mit der das interaktive Nutzen der Dokumentation zur API der MediaWiki-Installation möglich ist',
-	'apiexplorer-intro' => 'Diese Seite zeigt die Dokumention zur API dieses Wikis. Bitte unten auf eine der Funktionen klicken, um mehr Informationen zu den mit jedem Aufruf verfügbaren Parametern zu erhalten. Eine allgemeine Dokumentation zur API von MediaWiki ist auf der folgenden Webseite vorhanden: $1',
+	'apiexplorer-desc' => 'Ergänzt eine Spezialseite, mit der das interaktive Nutzen der Dokumentation zur API möglich ist',
+	'apiexplorer-intro' => 'Diese Seite zeigt die Dokumention zur API dieses Wikis. Bitte unten auf eine der Funktionen klicken, um mehr Informationen zu den mit jedem Aufruf verfügbaren Parametern zu erhalten. Siehe hierzu auch die [http://www.mediawiki.org/wiki/API:Main_page allgemeine Dokumentation zur API von MediaWiki].',
 	'apiexplorer-loading' => 'Funktionen werden geladen …',
 );
 
@@ -61,8 +69,8 @@ $messages['gl'] = array(
  */
 $messages['ia'] = array(
 	'apiexplorer' => 'Explorator API',
-	'apiexplorer-desc' => 'Pagina pro explorar interactivemente le documentation del version del API de MediaWiki que es active in iste installation.',
-	'apiexplorer-intro' => 'Iste pagina monstra documentation pro le API del wiki actual. Clicca sur un function hic infra pro vider plus information super le parametros que pote esser usate in cata appello. Pro le documentation general del API de MediaWiki, vide $1',
+	'apiexplorer-desc' => 'Pagina pro explorar interactivemente le documentation del API de MediaWiki',
+	'apiexplorer-intro' => 'Iste pagina monstra documentation pro le API del wiki actual. Clicca sur un function hic infra pro vider plus information super le parametros que pote esser usate in cata appello. Vide tamben [http://www.mediawiki.org/wiki/API:Main_page le documentation general del API de MediaWiki].',
 	'apiexplorer-loading' => 'Carga functiones...',
 );
 
