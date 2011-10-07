@@ -75,6 +75,78 @@ final class ContestHooks {
 			dirname( __FILE__ ) . '/sql/IndexContestantUserContest.sql',
 			true
 		) );
+		
+		$updater->addExtensionUpdate( array(
+			'addIndex',
+			'contest_challenges',
+			'challenge_contest_id',
+			dirname( __FILE__ ) . '/sql/IndexChallengeContestId.sql',
+			true
+		) );
+		
+		$updater->addExtensionUpdate( array(
+			'addIndex',
+			'contest_challenges',
+			'challenge_title',
+			dirname( __FILE__ ) . '/sql/IndexChallengeTitle.sql',
+			true
+		) );
+		
+		$updater->addExtensionUpdate( array(
+			'addIndex',
+			'contest_comments',
+			'comment_time',
+			dirname( __FILE__ ) . '/sql/IndexCommentTime.sql',
+			true
+		) );	
+		
+		$updater->addExtensionUpdate( array(
+			'addIndex',
+			'contest_contestants',
+			'contestant_interests',
+			dirname( __FILE__ ) . '/sql/IndexContestantInterests.sql',
+			true
+		) );	
+		
+		$updater->addExtensionUpdate( array(
+			'addIndex',
+			'contest_contestants',
+			'contestant_rating',
+			dirname( __FILE__ ) . '/sql/IndexContestantRating.sql',
+			true
+		) );	
+		
+		$updater->addExtensionUpdate( array(
+			'addIndex',
+			'contests',
+			'contest_status',
+			dirname( __FILE__ ) . '/sql/IndexContestStatus.sql',
+			true
+		) );	
+		
+		$updater->addExtensionUpdate( array(
+			'addIndex',
+			'contest_votes',
+			'vote_contestant_id',
+			dirname( __FILE__ ) . '/sql/IndexVoteContestantId.sql',
+			true
+		) );	
+		
+		$updater->addExtensionUpdate( array(
+			'addIndex',
+			'contest_votes',
+			'vote_contestant_user',
+			dirname( __FILE__ ) . '/sql/IndexVoteContestantUser.sql',
+			true
+		) );
+		
+		$updater->addExtensionUpdate( array(
+			'addIndex',
+			'contest_votes',
+			'vote_user_id',
+			dirname( __FILE__ ) . '/sql/IndexVoteUserId.sql',
+			true
+		) );
 
 		return true;
 	}
