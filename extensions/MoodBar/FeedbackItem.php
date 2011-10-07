@@ -18,6 +18,7 @@ class MBFeedbackItem {
 			'timestamp',
 			'user', // User object who submitted the feedback
 			'anonymize',
+			'hidden-state',
 
 			// Statistics
 			'useragent',
@@ -41,13 +42,14 @@ class MBFeedbackItem {
 		// Non-nullable boolean fields
 		$this->setProperty('anonymize', false);
 		$this->setProperty('editmode', false);
+		$this->setProperty('hidden-state', 0 );
 	}
 
 	/**
 	 * Factory function to create a new MBFeedbackItem
 	 * @param $info Associative array of values
 	 * Valid keys: type, user, comment, page, flags, timestamp,
-	 *             useragent, system, locale, bucket, anonymize
+	 *             useragent, system, locale, bucket, anonymize, hidden-state
 	 * @return MBFeedbackItem object.
 	 */
 	public static function create( $info ) {
@@ -90,27 +92,38 @@ class MBFeedbackItem {
 	 * @see MBFeedbackItem::load
 	 */
 	protected function initialiseFromRow( $row ) {
-		$properties = array(
-			'id' => $row->mbf_id,
-			'type' => $row->mbf_type,
-			'comment' => $row->mbf_comment,
-			'timestamp' => $row->mbf_timestamp,
-			'anonymize' => $row->mbf_anonymous,
-			'useragent' => $row->mbf_user_agent,
-			'system' => $row->mbf_system_type,
-			'locale' => $row->mbf_locale,
-			'bucket' => $row->mbf_bucket,
-			'editmode' => $row->mbf_editing,
-			'user-editcount' => $row->mbf_user_editcount,
+		static $propMappings = array(
+			'id' => 'mbf_id',
+			'type' => 'mbf_type',
+			'comment' => 'mbf_comment',
+			'timestamp' => 'mbf_timestamp',
+			'anonymize' => 'mbf_anonymous',
+			'useragent' => 'mbf_user_agent',
+			'system' => 'mbf_system_type',
+			'locale' => 'mbf_locale',
+			'bucket' => 'mbf_bucket',
+			'editmode' => 'mbf_editing',
+			'user-editcount' => 'mbf_user_editcount',
+			'hidden-state' => 'mbf_hidden_state',
 		);
+		
+		$properties = array();
+		
+		foreach( $propMappings as $property => $field ) {
+			if ( isset( $row->$field ) ) {
+				$properties[$property] = $row->$field;
+			}
+		}
 
-		$properties['page'] = Title::makeTitleSafe( $row->mbf_namespace, $row->mbf_title );
+		if ( isset( $row->mbf_namespace ) && isset( $row->mbf_title ) ) {
+			$properties['page'] = Title::makeTitleSafe( $row->mbf_namespace, $row->mbf_title );
+		}
 
 		if ( !empty($row->user_id) ) {
 			$properties['user'] = User::newFromRow( $row );
 		} elseif ( $row->mbf_user_id > 0 ) {
 			$properties['user'] = User::newFromId( $row->mbf_user_id );
-		} else {
+		} elseif ( $row->mbf_user_ip ) {
 			$properties['user'] = User::newFromName( $row->mbf_user_ip );
 		}
 
@@ -213,7 +226,6 @@ class MBFeedbackItem {
 		$dbw = wfGetDB( DB_MASTER );
 
 		$row = array(
-			'mbf_id' => $dbw->nextSequenceValue( 'moodbar_feedback_mbf_id' ),
 			'mbf_type' => $this->getProperty('type'),
 			'mbf_comment' => $this->getProperty('comment'),
 			'mbf_timestamp' => $dbw->timestamp($this->getProperty('timestamp')),
@@ -224,6 +236,7 @@ class MBFeedbackItem {
 			'mbf_bucket' => $this->getProperty('bucket'),
 			'mbf_editing' => $this->getProperty('editmode'),
 			'mbf_user_editcount' => $this->getProperty('user-editcount'),
+			'mbf_hidden_state' => $this->getProperty('hidden-state'),
 		);
 
 		$user = $this->getProperty('user');
@@ -240,7 +253,12 @@ class MBFeedbackItem {
 			$row['mbf_title'] = $page->getDBkey();
 		}
 
-		$dbw->insert( 'moodbar_feedback', $row, __METHOD__ );
+		if ( $this->getProperty('id') ) {
+			$dbw->replace( 'moodbar_feedback', array('mbf_id'), $row, __METHOD__ );
+		} else {
+			$row['mbf_id'] = $dbw->nextSequenceValue( 'moodbar_feedback_mbf_id' );
+			$dbw->insert( 'moodbar_feedback', $row, __METHOD__ );
+		}
 
 		$this->setProperty( 'id', $dbw->insertId() );
 

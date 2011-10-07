@@ -14,7 +14,7 @@ class ApiQueryMoodBarComments extends ApiQueryBase {
 		$this->addTables( array( 'moodbar_feedback', 'user' ) );
 		$this->addJoinConds( array( 'user' => array( 'LEFT JOIN', 'user_id=mbf_user_id' ) ) );
 		$this->addFields( array( 'user_name', 'mbf_id', 'mbf_type', 'mbf_timestamp', 'mbf_user_id', 'mbf_user_ip',
-			'mbf_comment' ) );
+			'mbf_comment', 'mbf_hidden_state' ) );
 		if ( count( $params['type'] ) ) {
 			$this->addWhereFld( 'mbf_type', $params['type'] );
 		}
@@ -82,7 +82,13 @@ class ApiQueryMoodBarComments extends ApiQueryBase {
 	}
 	
 	protected function extractRowInfo( $row, $prop ) {
+		global $wgUser;
+		
 		$r = array();
+		
+		$showHidden = isset($prop['hidden']) && $wgUser->isAllowed('moodbar-admin');
+		$isHidden = $row->mbf_hidden_state > 0;
+		
 		if ( isset( $prop['metadata'] ) ) {
 			$r += array(
 				'id' => intval( $row->mbf_id ),
@@ -94,8 +100,27 @@ class ApiQueryMoodBarComments extends ApiQueryBase {
 			ApiResult::setContent( $r, $row->mbf_comment );
 		}
 		if ( isset( $prop['formatted'] ) ) {
-			$r['formatted'] = SpecialFeedbackDashboard::formatListItem( $row );
+			$params = array();
+			
+			if ( $wgUser->isAllowed( 'moodbar-admin' ) ) {
+				$params[] = 'admin';
+			}
+			
+			if ( $isHidden && $showHidden ) {
+				$params[] = 'show-anyway';
+			}
+			
+			$r['formatted'] = SpecialFeedbackDashboard::formatListItem( $row, $params );
 		}
+		
+		if ( $isHidden && !$showHidden ) {
+			unset($r['userid']);
+			unset($r['username']);
+			unset($r['type']);
+			ApiResult::setContent( $r, '' );
+			$r['hidden'] = true;
+		}
+		
 		return $r;
 	}
 
@@ -125,7 +150,7 @@ class ApiQueryMoodBarComments extends ApiQueryBase {
 				ApiBase::PARAM_TYPE => 'user',
 			),
 			'prop' => array(
-				ApiBase::PARAM_TYPE => array( 'metadata', 'formatted' ),
+				ApiBase::PARAM_TYPE => array( 'metadata', 'formatted', 'hidden' ),
 				ApiBase::PARAM_DFLT => 'metadata',
 				ApiBase::PARAM_ISMULTI => true,
 			),
@@ -145,6 +170,7 @@ class ApiQueryMoodBarComments extends ApiQueryBase {
 			'prop' => array( 'Which properties to get:',
 				'  metadata  - Comment ID, type, timestamp, user',
 				'  formatted - HTML that would be displayed for this comment on Special:MoodBarFeedback',
+				'  hidden    - Format the full HTML even if comments are hidden',
 			),
 		);
 	}
@@ -154,6 +180,6 @@ class ApiQueryMoodBarComments extends ApiQueryBase {
 	}
 	
 	public function getCacheMode( $params ) {
-		return 'public';
+		return isset($params['prop']['hidden']) ? 'private' : 'public';
 	}
 }

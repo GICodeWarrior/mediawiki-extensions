@@ -90,6 +90,9 @@ class MoodBarHooks {
 		$updater->addExtensionUpdate( array( 'addIndex', 'moodbar_feedback',
 			'mbf_timestamp_id', dirname( __FILE__ ) . '/sql/mbf_timestamp_id.sql', true )
 		);
+		
+		$updater->addExtensionUpdate( array( 'addField', 'moodbar_feedback',
+			'mbf_hidden_state', dirname(__FILE__).'/sql/mbf_hidden_state.sql', true ) );
 
 		return true;
 	}

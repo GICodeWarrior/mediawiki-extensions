@@ -223,7 +223,17 @@
 	margin-top: 0.25em;
 }
 
-.fbd-item-permalink {
+.fbd-item-permalink,
+.fbd-item-show {
 	float: right;
 	font-size: 0.8em;
+}
+
+.fbd-item-restore {
+	font-size: 0.8em;
+	color: silver;
+}
+
+.fbd-hidden {
+	color: silver;
 }
