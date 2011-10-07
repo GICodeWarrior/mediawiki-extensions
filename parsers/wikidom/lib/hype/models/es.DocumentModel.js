@@ -600,17 +600,56 @@ es.DocumentModel.prototype.prepareRemoval = function( range ) {
  * @returns {es.Transaction}
  */
 es.DocumentModel.prototype.prepareContentAnnotation = function( range, method, annotation ) {
-	//
+	var tx = new es.Transaction();
+	range.normalize();
+	
+	var i = range.start,
+		span = i,
+		annotating = this.data[i].type !== undefined;
+	while ( i < range.end ) {
+		if ( this.data[i].type !== undefined ) {
+			// Structural
+			if ( annotating ) {
+				tx.pushStopAnnotating( method, annotation );
+				span = 0;
+				annotating = false;
+			}
+		} else {
+			// Content
+			if ( !annotating ) {
+				if ( span ) {
+					tx.pushRetain( span );
+				}
+				tx.pushStartAnnotating( method, annotation );
+				span = 0;
+				annotating = true;
+			}
+		}
+		span++;
+	}
+	if ( range.end < this.data.length ) {
+		tx.pushRetain( this.data.length - range.end );
+	}
+	return tx;
 };
 
 /**
- * Generates a transaction which changes attributes on an element at a given index.
+ * Generates a transaction which changes attributes on an element at a given offset.
  * 
  * @method
  * @returns {es.Transaction}
  */
-es.DocumentModel.prototype.prepareElementAttributeChange = function( index, method, annotation ) {
-	//
+es.DocumentModel.prototype.prepareElementAttributeChange = function( offset, method, key, value ) {
+	var tx = new es.Transaction();
+	if ( offset ) {
+		tx.pushRetain( offset );
+	}
+	if ( this.data[offset].type !== undefined ) {
+		tx.pushChangeElementAttribute( method, key, value );
+	}
+	if ( offset < this.data.length ) {
+		tx.pushRetain( this.data.length - offset );
+	}
 };
 
 /**

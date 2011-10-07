@@ -32,55 +32,28 @@ es.Transaction.prototype.pushRemove( data ) {
 	} );
 };
 
-es.Transaction.prototype.pushSetElementAttribute( key, value ) {
+es.Transaction.prototype.pushChangeElementAttribute( method, key, value ) {
 	this.push( {
 		'type': 'attribute',
-		'method': 'set',
+		'method': method,
 		'key': key,
 		'value': value
 	} );
 };
 
-es.Transaction.prototype.pushClearElementAttribute( key, value ) {
-	this.push( {
-		'type': 'attribute',
-		'method': 'clear',
-		'key': key,
-		'value': value
-	} );
-};
-
-es.Transaction.prototype.pushStartSettingAnnotation( annotation ) {
+es.Transaction.prototype.pushStartAnnotating( method, annotation ) {
 	this.push( {
 		'type': 'annotate',
-		'method': 'set',
+		'method': method,
 		'bias': 'start',
 		'annotation': annotation
 	} );
 };
 
-es.Transaction.prototype.pushStopSettingAnnotation( annotation ) {
+es.Transaction.prototype.pushStopAnnotating( method, annotation ) {
 	this.push( {
 		'type': 'annotate',
-		'method': 'set',
-		'bias': 'stop',
-		'annotation': annotation
-	} );
-};
-
-es.Transaction.prototype.pushStartClearingAnnotation( annotation ) {
-	this.push( {
-		'type': 'annotate',
-		'method': 'clear',
-		'bias': 'start',
-		'annotation': annotation
-	} );
-};
-
-es.Transaction.prototype.pushStopClearingAnnotation( annotation ) {
-	this.push( {
-		'type': 'annotate',
-		'method': 'clear',
+		'method': method,
 		'bias': 'stop',
 		'annotation': annotation
 	} );
