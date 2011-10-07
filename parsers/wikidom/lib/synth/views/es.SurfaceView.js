@@ -166,16 +166,14 @@ es.SurfaceView.prototype.onMouseDown = function( e ) {
 		position = this.documentView.getRenderedPosition( contentOffset );
 
 	if ( e.button === 0 ) {
+		this.mouse.selecting = true;
+		this.showCursor( position );
 		if ( this.keyboard.keys.shift ) {
 			this.selection.to = contentOffset;
 		} else {
 			this.selection.from = this.selection.to = contentOffset;
 		}
-
-		this.showCursor( position );
-		this.mouse.selecting = true;
-
-		this.documentView.drawSelection( new es.Range( this.selection.from, this.selection.to ) );
+		this.drawSelection();
 	}
 
 	if ( !this.$input.is(':focus') ) {
@@ -272,8 +270,8 @@ es.SurfaceView.prototype.hideCursor = function( position ) {
 };
 
 es.SurfaceView.prototype.drawSelection = function() {
+	this.documentView.drawSelection( new es.Range( this.selection.from, this.selection.to ) );
 	if ( this.selection.from !== this.selection.to ) {
-		this.documentView.drawSelection( new es.Range( this.selection.from, this.selection.to ) );
 		return true;
 	} else {
 		return false;
