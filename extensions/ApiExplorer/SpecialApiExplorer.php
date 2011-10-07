@@ -25,7 +25,9 @@ $wgExtensionCredits['specialpage'][] = array(
 
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['ApiExplorer'] = $dir . 'ApiExplorer.i18n.php';
+// @todo FIXME: Special pages need an aliases file for i18n of special page names.
 
+// @todo FIXME: Should be in a class and be added from $wgSpecialPages.
 function wfSpecialApiExplorer () {
 	global $IP;
 	require_once "$IP/includes/SpecialPage.php";
@@ -47,8 +49,6 @@ function wfSpecialApiExplorer () {
 		function execute( $par = null ) {
 			global $wgOut, $wgExtensionsPath, $wgCityId, $wgStyleVersion;
 			wfProfileIn( __METHOD__ );
-
-			wfLoadExtensionMessages( "AutoCreateWiki" ); // TODO: This isn't needed anymore, even in Wikia code (which is 2 versions back at the moment), is it?
 
 			// TODO: Make this work for ResourceLoader (Wikia isn't using RL yet at the time of this writing).
 			// Wikia has the cachebuster in the wgExtensionPath (we rewrite that in varnish because many proxies won't cache things that have "?" in the URL), but other MediaWikis need the style-version in the querystring.
@@ -77,7 +77,7 @@ function wfSpecialApiExplorer () {
 					}
 				</style>
 				<div id='apEx_intro'>
-					<?= wfMsg('apiexplorer-intro', "<a href='http://www.mediawiki.org/wiki/API:Main_page'>http://www.mediawiki.org/wiki/API:Main_page</a>") ?>
+					<?= wfMsg('apiexplorer-intro') ?>
 				</div>
 				<div id='apEx_loading'><?= wfMsg('apiexplorer-loading') ?></div>
 				<div id='apEx'>
