@@ -38,6 +38,9 @@ $wgSpecialPages['FeedbackDashboard'] = 'SpecialFeedbackDashboard';
 
 // User rights
 $wgAvailableRights[] = 'moodbar-view';
+$wgAvailableRights[] = 'moodbar-admin';
+
+$wgGroupPermissions['sysop']['moodbar-admin'] = true;
 
 // Internationalisation
 $wgExtensionMessagesFiles['MoodBar'] = dirname(__FILE__).'/MoodBar.i18n.php';

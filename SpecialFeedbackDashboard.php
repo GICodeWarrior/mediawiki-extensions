@@ -3,6 +3,8 @@
  * Special:FeedbackDashboard. Special page for viewing moodbar comments.
  */
 class SpecialFeedbackDashboard extends SpecialPage {
+	protected $showHidden = false;
+	
 	public function __construct() {
 		parent::__construct( 'FeedbackDashboard' );
 	}
@@ -22,6 +24,9 @@ class SpecialFeedbackDashboard extends SpecialPage {
 			// Special:FeedbackDashboard/123 is an ID/permalink view
 			$filters = array( 'id' => $id );
 			$filterType = 'id';
+			if ( $wgRequest->getCheck( 'show-feedback' ) ) {
+				$this->showHidden = true;
+			}
 		} else {
 			// Determine filters and offset from the query string
 			$filters = array();
@@ -113,42 +118,161 @@ HTML;
 	/**
 	 * Format a single list item from a database row.
 	 * @param $row Database row object
+	 * @param $params An array of flags. Valid flags:
+	 * * admin (user can show/hide feedback items)
+	 * * show-anyway (user has asked to see this hidden item)
 	 * @return string HTML
 	 */
-	public static function formatListItem( $row ) {
+	public static function formatListItem( $row, $params = array() ) {
 		global $wgLang;
-		$type = $row->mbf_type;
+		
+		$feedbackItem = MBFeedbackItem::load( $row );
+		
+		$classes = array('fbd-item');
+		$toolLinks = array();
+		
+		// Type
+		$type = $feedbackItem->getProperty('type');
 		$typeMsg = wfMessage( "moodbar-type-$type" )->escaped();
-		$time = $wgLang->formatTimePeriod( wfTimestamp( TS_UNIX ) - wfTimestamp( TS_UNIX, $row->mbf_timestamp ),
+		
+		// Timestamp
+		$now = wfTimestamp( TS_UNIX );
+		$timestamp = wfTimestamp( TS_UNIX, $feedbackItem->getProperty('timestamp') );
+		$time = $wgLang->formatTimePeriod( $now - $timestamp,
 			array( 'avoid' => 'avoidminutes', 'noabbrevs' => true )
 		);
 		$timeMsg = wfMessage( 'ago' )->params( $time )->escaped();
-		$username = htmlspecialchars( $row->user_name === null ? $row->mbf_user_ip : $row->user_name );
-		//$links = Linker::userToolLinks( $row->mbf_user_id, $username );
-		$links = $GLOBALS['wgUser']->getSkin()->userToolLinks( $row->mbf_user_id, $username ); // 1.17wmf1 compat
-		$comment = htmlspecialchars( $row->mbf_comment );
-		$permalinkURL = htmlspecialchars( SpecialPage::getTitleFor( 'FeedbackDashboard', $row->mbf_id )->getLinkURL() );
-		$permalinkText = wfMessage( 'moodbar-feedback-permalink' )->escaped();
-		$continueData = wfTimestamp( TS_MW, $row->mbf_timestamp ) . '|' . intval( $row->mbf_id );
+		
+		// Comment
+		$comment = htmlspecialchars( $feedbackItem->getProperty('comment') );
+		
+		// User information
+		$userInfo = self::buildUserInfo( $feedbackItem );
+
+		// Tool links
+		$toolLinks[] = self::getPermalink( $feedbackItem );
+		
+		// Continuation data
+		$id = $feedbackItem->getProperty('id');
+		$continueData = wfTimestamp( TS_MW, $timestamp ) . '|' . intval( $id );
+
+		// Now handle hiding, showing, etc		
+		if ( $feedbackItem->getProperty('hidden-state') > 0 ) {
+			$toolLinks = array();
+			if ( !in_array('show-anyway', $params) ) {
+				$userInfo = wfMessage('moodbar-user-hidden')->escaped();
+				$comment = wfMessage('moodbar-comment-hidden')->escaped();
+				$type = 'hidden';
+				$typeMsg = '';
+				$classes[] = 'fbd-hidden';
+			}
+			
+			if ( in_array('admin', $params) ) {
+				if ( in_array('show-anyway', $params) ) {
+					$toolLinks[] = self::getHiddenFooter($feedbackItem, 'shown');
+				} else {
+					$toolLinks[] = self::getHiddenFooter($feedbackItem, 'hidden');
+				}
+			}
+		} elseif ( in_array('admin', $params) ) {
+			$toolLinks[] = self::getHideLink( $feedbackItem );
+		}
+		
+		$classes = Sanitizer::encodeAttribute( implode(' ', $classes) );
+		$toolLinks = implode("\n", $toolLinks );
 		
 		return <<<HTML
-		<li class="fbd-item" data-mbccontinue="$continueData">
+		<li class="$classes" data-mbccontinue="$continueData">
 			<div class="fbd-item-emoticon fbd-item-emoticon-$type">
 				<span class="fbd-item-emoticon-label">$typeMsg</span>
 			</div>
 			<div class="fbd-item-time">$timeMsg</div>
+$userInfo
+			<div class="fbd-item-message">$comment</div>
+$toolLinks
+			<div style="clear:both"></div>
+		</li>
+HTML;
+	}
+	
+	/**
+	 * Build the "user information" part of an item on the feedback dashboard.
+	 * @param $feedbackItem MBFeedbackItem representing the feedback to show
+	 * @return string HTML
+	 */
+	protected static function buildUserInfo( $feedbackItem ) {
+		$user = $feedbackItem->getProperty('user');
+		$username = htmlspecialchars( $user->getName() );
+		
+		//$links = Linker::userToolLinks( $user->getId(), $username );
+		// 1.17wmf1 compat
+		$links = $GLOBALS['wgUser']->getSkin()
+				->userToolLinks( $user->getId(), $username );
+		
+		return <<<HTML
 			<h3 class="fbd-item-userName">
 				<a href="#">$username</a>
 				<sup class="fbd-item-userLinks">
 					$links
 				</sup>
 			</h3>
-			<div class="fbd-item-message">$comment</div>
-			<div class="fbd-item-permalink">(<a href="$permalinkURL">$permalinkText</a>)</div>
-			<div style="clear:both"></div>
-		</li>
 HTML;
 	}
+	
+	/**
+	 * Gets a permanent link to a given feedback item
+	 * @param $feedbackItem MBFeedbackItem to get a link for
+	 * @return string HTML
+	 */
+	protected static function getPermalink( $feedbackItem ) {
+		$id = $feedbackItem->getProperty('id');
+		$permalinkTitle = SpecialPage::getTitleFor( 'FeedbackDashboard', $id );
+		$permalinkText = wfMessage( 'moodbar-feedback-permalink' )->escaped();
+		$permalink = $GLOBALS['wgUser']->getSkin()->link( $permalinkTitle, $permalinkText );
+		return Xml::tags( 'div', array( 'class' => 'fbd-item-permalink' ), "($permalink)" );
+	}
+	
+	/** 
+	 * Gets the footer for a hidden comment
+	 * @param $feedbackItem The feedback item in question.
+	 * @param $mode The mode to show in. Either 'shown' or 'hidden'
+	 * @return string HTML
+	 */
+	protected static function getHiddenFooter( $feedbackItem, $mode ) {
+		$id = $feedbackItem->getProperty('id');
+		$permalinkTitle = SpecialPage::getTitleFor( 'FeedbackDashboard', $id );
+		if ( $mode === 'shown' ) {
+			$linkText = wfMessage( 'moodbar-feedback-restore' )->escaped();
+			$query = array('restore-feedback' => '1');
+			$link = $GLOBALS['wgUser']->getSkin()
+					->link( $permalinkTitle, $linkText, array(), $query );
+			$link = Xml::tags( 'span', array( 'class' => 'fbd-item-restore' ), "($link)" );
+			
+			$footer = wfMessage('moodbar-hidden-footer')->rawParams($link)->escaped();
+			return Xml::tags( 'div', array( 'class' => 'error' ), $footer );
+		} elseif ( $mode === 'hidden' ) {
+			$linkText = wfMessage('moodbar-feedback-show')->escaped();
+			$query = array('show-feedback' => '1');
+			$link = $GLOBALS['wgUser']->getSkin()
+					->link( $permalinkTitle, $linkText, array(), $query );
+			return Xml::tags( 'div', array( 'class' => 'fbd-item-show' ), "($link)" );
+		}
+	}
+	
+	/**
+	 * Gets a link to hide the current feedback item from view
+	 * @param $feedbackItem The feedback item to show a hide link for
+	 * @return string HTML
+	 */
+	protected static function getHideLink( $feedbackItem ) {
+		$id = $feedbackItem->getProperty('id');
+		$permalinkTitle = SpecialPage::getTitleFor( 'FeedbackDashboard', $id );
+		$permalinkText = wfMessage( 'moodbar-feedback-hide' )->escaped();
+		$permalink = $GLOBALS['wgUser']->getSkin()
+				->link( $permalinkTitle, $permalinkText, array(), array('hide-feedback' => '1') );
+		return Xml::tags( 'div', array( 'class' => 'fbd-item-permalink' ), "($permalink)" );
+	}
+	
 	
 	/**
 	 * Build a comment list from a query result
@@ -156,10 +280,20 @@ HTML;
 	 * @return string HTML
 	 */
 	public function buildList( $res ) {
-		global $wgRequest;
+		global $wgRequest, $wgUser;
 		$list = '';
+		
+		$params = array();
+		if ( $wgUser->isAllowed('moodbar-admin') ) {
+			$params[] = 'admin';
+			
+			if ( $this->showHidden ) {
+				$params[] = 'show-anyway';
+			}
+		}
+		
 		foreach ( $res['rows'] as $row ) {
-			$list .= self::formatListItem( $row );
+			$list .= self::formatListItem( $row, $params );
 		}
 		
 		if ( $list === '' ) {
@@ -264,7 +398,8 @@ HTML;
 		$desc = $backwards ? '' : ' DESC';
 		$res = $dbr->select( array( 'moodbar_feedback', 'user' ), array(
 				'user_name', 'mbf_id', 'mbf_type',
-				'mbf_timestamp', 'mbf_user_id', 'mbf_user_ip', 'mbf_comment'
+				'mbf_timestamp', 'mbf_user_id', 'mbf_user_ip', 'mbf_comment',
+				'mbf_anonymous', 'mbf_hidden_state',
 			),
 			$conds,
 			__METHOD__,

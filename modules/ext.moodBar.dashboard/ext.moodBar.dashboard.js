@@ -193,7 +193,34 @@ jQuery( function( $ ) {
 		} );
 	}
 	
+	/**
+	 * Show a hidden comment
+	 */
+	function showHiddenComment(e) {
+		var $item = $(this).closest('.fbd-item');
+		var cont = $item.attr('data-mbccontinue');
+		
+		var request = {
+			'action' : 'query',
+			'list' : 'moodbarcomments',
+			'format' : 'json',
+			'mbcprop' : 'formatted|hidden',
+			'mbclimit' : 1,
+			'mbccontinue' : cont
+		};
+		
+		$.post( mw.util.wikiScript('api'), request,
+			function( data ) {
+				var $content = $j(data.query.moodbarcomments[0].formatted);
+				$item.replaceWith($content);
+			}, 'json' );
+		
+		e.preventDefault();
+	}
+	
 	// On-load stuff
+	
+	$('.fbd-item-show a').live( 'click', showHiddenComment );
 	
 	$( '#fbd-filters' ).children( 'form' ).submit( function( e ) {
 		e.preventDefault();

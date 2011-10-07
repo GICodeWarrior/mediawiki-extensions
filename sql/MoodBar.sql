@@ -16,6 +16,9 @@ CREATE TABLE /*_*/moodbar_feedback (
 	mbf_comment varchar(255) binary,
 	
 	-- Options and context
+	-- Whether or not the feedback item is hidden
+	-- 0 = No; 255 = Yes (other values reserved for partial hiding)
+	mbf_hidden_state tinyint unsigned not null default 0,
 	mbf_anonymous tinyint unsigned not null default 0, -- Anonymity
 	mbf_timestamp varchar(14) binary not null, -- When feedback was received
 	mbf_system_type varchar(64) binary null, -- Operating System
