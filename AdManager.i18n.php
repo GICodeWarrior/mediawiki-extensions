@@ -74,6 +74,9 @@ $messages['be-tarask'] = array(
 	'admanager_zonenum' => 'Зона № $1',
 	'admanager_zonenotnumber' => 'Памылка: $1 не зьяўляецца лікам.',
 	'admanager_return' => 'Вярнуцца ў [[Special:AdManager|кіраваньне рэклямай]]',
+	'admanager_gotoads' => '[[Special:AdManager|Рэдагаваць разьмяшчэньне рэклямы]]',
+	'admanager_gotozones' => '[[Special:AdManagerZones|Рэдагаваць зоны рэклямы]]',
+	'right-admanager' => '[[Special:AdManager|кіраваньне наладамі рэклямы]]',
 );
 
 /** Breton (Brezhoneg)
