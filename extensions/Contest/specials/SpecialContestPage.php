@@ -14,7 +14,7 @@
  */
 abstract class SpecialContestPage extends SpecialPage {
 	
-	protected $subPage;
+	public $subPage;
 	
 	/**
 	 * @see SpecialPage::getDescription

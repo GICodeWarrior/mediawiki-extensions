@@ -32,6 +32,11 @@ class SpecialContest extends SpecialContestPage {
 	public function execute( $subPage ) {
 		$subPage = str_replace( '_', ' ', $subPage );
 		
+		$subPage = explode( '/', $subPage, 2 );
+		$challengeTitle = count( $subPage ) > 1 ? $subPage[1] : false;
+		
+		$subPage = $subPage[0];
+		
 		if ( !parent::execute( $subPage ) ) {
 			return;
 		}
@@ -47,7 +52,7 @@ class SpecialContest extends SpecialContestPage {
 			$out->setPageTitle( wfMsgExt( 'contest-contest-title', 'parseinline', $contest->getField( 'name' ) ) );
 			$this->displayNavigation();
 			$this->showGeneralInfo( $contest );
-			$this->showContestants( $contest );
+			$this->showContestants( $contest, $challengeTitle );
 		}
 	}
 	
@@ -109,10 +114,9 @@ class SpecialContest extends SpecialContestPage {
 	 * @since 0.1
 	 * 
 	 * @param Contest $contest
-	 * 
-	 * TODO: list scores and comment counts as well
+	 * @param string|false $challengeTitle
 	 */
-	protected function showContestants( Contest $contest ) {
+	protected function showContestants( Contest $contest, $challengeTitle ) {
 		$out = $this->getOutput();
 		
 		$out->addHTML( Html::element( 'h3', array(), wfMsg( 'contest-contest-contestants' ) ) );
@@ -120,6 +124,14 @@ class SpecialContest extends SpecialContestPage {
 		$conds = array(
 			'contestant_contest_id' => $contest->getId()
 		);
+		
+		if ( $challengeTitle !== false ) {
+			$challenge = ContestChallenge::s()->selectRow( 'id', array( 'title' => $challengeTitle ) );
+			
+			if ( $challenge !== false ) {
+				$conds['contestant_challenge_id'] = $challenge->getField( 'id' );
+			}
+		}
 		
 		$pager = new ContestantPager( $this, $conds );
 		
