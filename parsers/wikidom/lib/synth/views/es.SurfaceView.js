@@ -34,8 +34,10 @@ es.SurfaceView = function( $container, model ) {
 		}
 	};
 	
+	/*
 	this.selecting = false;
 	this.from = this.to = 0;
+	*/
 	
 	// Cursor
 	this.blinkInterval = null;
@@ -211,25 +213,38 @@ es.SurfaceView.prototype.onKeyUp = function( e ) {
 };
 
 es.SurfaceView.prototype.onMouseDown = function( e ) {
-	var contentOffset = this.documentView.getOffsetFromEvent( e );
+	var	contentOffset = this.documentView.getOffsetFromEvent( e ),
+		position = this.documentView.getRenderedPosition( contentOffset );
 
+	if ( position !== null ) {
+		this.$cursor.css( {
+			'left': position.left,
+			'top': position.top,
+			'height': position.bottom - position.top
+		} ).show();
+	}
+
+	/*
 	this.from = contentOffset;
 	this.selecting = true;
 
 	if ( !this.$input.is(':focus') ) {
 		this.$input.focus().select();
 	}
+	*/
 
 	return false;
 };
 
 es.SurfaceView.prototype.onMouseMove = function( e ) {
+	/*
 	if (this.selecting ) {
 		var contentOffset = this.documentView.getOffsetFromEvent( e );
 
 		this.to = contentOffset;		
 		this.documentView.drawSelection( new es.Range( this.from, this.to ) );
 	}
+	*/
 	// TODO: Respond to mouse move event, updating selection while painting
 };
 
