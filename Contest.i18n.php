@@ -101,7 +101,7 @@ $messages['en'] = array(
 	'contest-welcome-signup' => 'Signup now',
 	'contest-welcome-js-off' => 'Contest uses JavaScript for an improved interface. Your browser either does not support JavaScript or has JavaScript turned off.',
 
-	'contest-welcome-select-header' => 'Select your challange:',
+	'contest-welcome-select-header' => 'Select your challenge:',
 
 	// Special:ContestSignup & Special:ContestSubmission
 	'contest-signup-unknown' => 'There is no contest with the provided name.',
@@ -141,6 +141,7 @@ $messages['en'] = array(
 
 	// Contestant pager
 	'contest-contestant-id' => 'ID',
+	'contest-contestant-challenge-name' => 'Challenge name',
 	'contest-contestant-volunteer' => 'Volunteer',
 	'contest-contestant-wmf' => 'WMF',
 	'contest-contestant-no' => 'No',

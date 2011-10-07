@@ -14,17 +14,51 @@
 class ContestantPager extends TablePager {
 	
 	protected $conds;
+	
+	/**
+	 * @var SpecialContestPage
+	 */
 	protected $page;
+	
+	protected $challengeTitles = array();
 
 	public function __construct( $page, $conds ) {
 		$this->page = $page;
 		$this->conds = $conds;
 		$this->mDefaultDirection = true;
 		
+		$this->queryChallengeTitles( $conds );
+		
+		// when MW 1.19 becomes min, we want to pass an IContextSource $context here. 
 		parent::__construct();
 		
 		$this->getOutput()->addModules( 'contest.contestant.pager' );
 	}
+	
+	protected function queryChallengeTitles( $allConds ) {
+		$conds = array();
+		
+		if ( array_key_exists( 'contestant_contest_id', $allConds ) ) {
+			$conds['contest_id'] = $allConds['contestant_contest_id'];
+		}
+		
+		if ( array_key_exists( 'contestant_challenge_id', $allConds ) ) {
+			$conds['id'] = $allConds['contestant_challenge_id'];
+		}
+		
+		foreach ( ContestChallenge::s()->select( array( 'id', 'title' ), $conds ) as /* ContestChallenge */ $challenge ) {
+			$this->challengeTitles[$challenge->getId()] = $challenge->getField( 'title' );
+		}
+	}
+	
+	protected function getChallengeTitle( $challengeId ) {
+		if ( array_key_exists( $challengeId, $this->challengeTitles ) ) {
+			return $this->challengeTitles[$challengeId];
+		}
+		else {
+			throw new MWException( 'Attempt to get non-set challenge title' );
+		}
+	} 
 	
 	/**
 	 * Get the OutputPage being used for this instance.
@@ -56,6 +90,7 @@ class ContestantPager extends TablePager {
 		if ( is_null( $headers ) ) {
 			$headers = array(
 				'contestant_id' => 'contest-contestant-id',
+				'contestant_challenge_id' => 'contest-contestant-challenge-name',
 				'contestant_volunteer' => 'contest-contestant-volunteer',
 				'contestant_wmf' => 'contest-contestant-wmf',
 				'contestant_comments' => 'contest-contestant-commentcount',
@@ -108,6 +143,19 @@ class ContestantPager extends TablePager {
 					$value
 				);
 				break;
+			case 'contestant_challenge_id':
+				$value = Html::element(
+					'a',
+					array(
+						'href' =>
+							SpecialPage::getTitleFor(
+								'Contest',
+								$this->page->subPage . '/' . $this->getChallengeTitle( $value )
+							)->getLocalURL()
+					),
+					$this->getChallengeTitle( $value )
+				);
+				break;
 			case 'contestant_volunteer': case 'contestant_wmf':
 				$value = wfMsg( 'contest-contestant-' . ( $value === '1' ? 'yes' : 'no' ) );
 				break;
@@ -132,6 +180,7 @@ class ContestantPager extends TablePager {
 			'tables' => array( 'contest_contestants' ),
 			'fields' => array(
 				'contestant_id',
+				'contestant_challenge_id',
 				'contestant_volunteer',
 				'contestant_wmf',
 				'contestant_comments',
@@ -161,6 +210,7 @@ class ContestantPager extends TablePager {
 			$name,
 			array(
 				'contestant_id',
+				'contestant_challenge_id',
 				'contestant_volunteer',
 				'contestant_wmf',
 				'contestant_comments',
