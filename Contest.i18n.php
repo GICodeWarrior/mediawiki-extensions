@@ -154,6 +154,7 @@ $messages['en'] = array(
 	'contest-contestant-title' => 'Contestant $1 ($2)',
 	'contest-contestant-header-id' => 'Contestant ID',
 	'contest-contestant-header-contest' => 'Contest name',
+	'contest-contestant-header-challenge' => 'Challenge name',
 	'contest-contestant-header-submission' => 'Submission link',
 	'contest-contestant-header-country' => 'Contestant country',
 	'contest-contestant-header-wmf' => 'Interested in WMF job',
