@@ -15,22 +15,28 @@ abstract class EmbedVideo {
 	public static function setup( $parser ) {
 		# Setup parser hooks. ev is the primary hook, evp is supported for
 		# legacy purposes
-		$parser->setFunctionHook( 'ev', 'EmbedVideo::parserFunction_ev' );
-		$parser->setFunctionHook( 'evp', 'EmbedVideo::parserFunction_evp' );
+		global $wgVersion;
+		$prefix = version_compare($wgVersion, '1.7', '<') ? '#' : '';
+		EmbedVideo::addMagicWord($prefix, "ev", "EmbedVideo::parserFunction_ev");
+		EmbedVideo::addMagicWord($prefix, "evp", "EmbedVideo::parserFunction_evp");
 
 		return true;
 	}
 
+	private static function addMagicWord($prefix, $word, $function) {
+		global $wgParser;
+		$wgParser->setFunctionHook($prefix . $word, $function);
+	}
+
 	/**
-	 ** Adds magic words for parser functions.
+	 * Adds magic words for parser functions.
 	 * @param Array $magicWords
 	 * @param $langCode
 	 * @return Boolean Always true
 	 */
-	public static function parserFunctionMagic( &$magicWords, $langCode = 'en' ) {
-		$magicWords['evp'] = array( 0, 'evp' );
-		$magicWords['ev']  = array( 0, 'ev' );
-
+	public static function parserFunctionMagic(&$magicWords, $langCode='en') {
+		$magicWords['evp'] = array(0, 'evp');
+		$magicWords['ev']  = array(0, 'ev');
 		return true;
 	}
 
@@ -43,8 +49,9 @@ abstract class EmbedVideo {
 	 * @param String $width Width of video (optional)
 	 * @return String Encoded representation of input params (to be processed later)
 	 */
-	public static function parserFunction_evp( $parser, $service = null, $id = null, $desc = null, $align = null, $width = null ) {
-		return EmbedVideo::parserFunction_ev( $parser, $service, $id, $width, $align, $desc );
+	public static function parserFunction_evp($parser, $service = null, $id = null, $desc = null,
+		$align = null, $width = null) {
+		return EmbedVideo::parserFunction_ev($parser, $service, $id, $width, $align, $desc);
 	}
 
 	/**
@@ -57,14 +64,15 @@ abstract class EmbedVideo {
 	 * @param String $align alignment of the video (optional, unused)
 	 * @return String Encoded representation of input params (to be processed later)
 	 */
-	public static function parserFunction_ev( $parser, $service = null, $id = null, $width = null, $align = null, $desc = null ) {
+	public static function parserFunction_ev($parser, $service = null, $id = null, $width = null,
+		$align = null, $desc = null) {
 		global $wgScriptPath;
 
 		# Initialize things once
-		if ( !EmbedVideo::$initialized ) {
+		if (!EmbedVideo::$initialized) {
 			EmbedVideo::VerifyWidthMinAndMax();
 			# Add system messages
-			
+			wfLoadExtensionMessages('embedvideo');
 			$parser->disableCache();
 			EmbedVideo::$initialized = true;
 		}
@@ -74,8 +82,9 @@ abstract class EmbedVideo {
 			return EmbedVideo::errMissingParams( $service, $id );
 		}
 
-		$service = trim( $service );
-		$id = trim( $id );
+		$service = trim($service);
+		$id = trim($id);
+		$desc = $parser->recursiveTagParse($desc);
 
 		$entry = EmbedVideo::getServiceEntry( $service );
 		if ( !$entry ) {
@@ -98,8 +107,7 @@ abstract class EmbedVideo {
 		}
 
 		# if the service has it's own custom extern declaration, use that instead
-		$clause = $entry['extern'];
-		if ( isset( $clause ) ) {
+		if ( array_key_exists ( 'extern', $entry ) && ( $clause = $entry['extern'] ) != null ) {
 			$clause = wfMsgReplaceArgs( $clause, array( $wgScriptPath, $id, $width, $height ) );
 			if ( $hasalign ) {
 				$clause = EmbedVideo::generateAlignExternClause( $clause, $align, $desc, $width, $height );
@@ -157,7 +165,7 @@ abstract class EmbedVideo {
 			" wmode=\"transparent\" width=\"{$width}\" height=\"{$height}\"></embed>" .
 			"</object>" .
 			"<div class=\"thumbcaption\">" .
-		$desc .
+			$desc .
 			"</div></div></div>";
 
 		return $clause;
@@ -178,8 +186,7 @@ abstract class EmbedVideo {
 	# the width is suitable, false otherwise.
 	private static function sanitizeWidth( $entry, &$width ) {
 		global $wgEmbedVideoMinWidth, $wgEmbedVideoMaxWidth;
-
-		if ( $width === null ) {
+		if ($width === null || $width == '*' || $width == '') {
 			if ( isset( $entry['default_width'] ) ) {
 				$width = $entry['default_width'];
 			} else {
