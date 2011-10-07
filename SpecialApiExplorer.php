@@ -12,7 +12,7 @@
  * handle all functions.
  */
 
-if (!defined('MEDIAWIKI')) die();
+if ( !defined( 'MEDIAWIKI' ) ) die();
 
 $wgExtensionFunctions[] = 'wfSpecialApiExplorer';
 $wgExtensionCredits['specialpage'][] = array(
@@ -23,7 +23,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'author' => '[http://seancolombo.com Sean Colombo]'
 );
 
-$dir = dirname(__FILE__) . '/';
+$dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['ApiExplorer'] = $dir . 'ApiExplorer.i18n.php';
 
 function wfSpecialApiExplorer () {
@@ -52,7 +52,7 @@ function wfSpecialApiExplorer () {
 
 			// TODO: Make this work for ResourceLoader (Wikia isn't using RL yet at the time of this writing).
 			// Wikia has the cachebuster in the wgExtensionPath (we rewrite that in varnish because many proxies won't cache things that have "?" in the URL), but other MediaWikis need the style-version in the querystring.
-			$cbSuffix = ( isset($wgCityId) ? "?{$wgStyleVersion}" : "" );
+			$cbSuffix = ( isset( $wgCityId ) ? "?{$wgStyleVersion}" : "" );
 			$wgOut->addScript( "<script type=\"text/javascript\" src=\"{$wgExtensionsPath}/wikia/JavascriptAPI/Mediawiki.js{$cbSuffix}\"></script>" );
 			$wgOut->addScript( "<script type=\"text/javascript\" src=\"{$wgExtensionsPath}/ApiExplorer/apiExplorer.js{$cbSuffix}\"></script>" );
 			$wgOut->addScript( "<link rel=\"stylesheet\" type=\"text/css\" href=\"{$wgExtensionsPath}/ApiExplorer/apiExplorer.css{$cbSuffix}\" />" );
@@ -60,7 +60,7 @@ function wfSpecialApiExplorer () {
 			ob_start();
 				$buttonHeight = 15;
 				$collapseSrc = "$wgExtensionsPath/ApiExplorer/collapse.png$cbSuffix";
-				$expandSrc = "$wgExtensionsPath/ApiExplorer/collapse.png$cbSuffix"; 
+				$expandSrc = "$wgExtensionsPath/ApiExplorer/collapse.png$cbSuffix";
 				?><style>
 					.collapsible h2 span, .collapsible h3 span{
 						width:<?= $buttonHeight ?>px;
@@ -82,8 +82,8 @@ function wfSpecialApiExplorer () {
 				<div id='apEx_loading'><?= wfMsg('apiexplorer-loading') ?></div>
 				<div id='apEx'>
 					<?php
-					$params = array("modules", "querymodules", "formatmodules");
-					foreach($params as $param){
+					$params = array( "modules", "querymodules", "formatmodules" );
+					foreach ( $params as $param ) {
 						?><div class='<?= $param ?> collapsible collapsed paramName' data-param-name='<?= $param ?>'>
 							<h2 class='name'><span class='toggleIcon'></span></h2>
 							<div class='paramContent'>
