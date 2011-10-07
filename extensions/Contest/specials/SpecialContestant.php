@@ -105,6 +105,9 @@ class SpecialContestant extends SpecialContestPage {
 		$stats['id'] = htmlspecialchars( $contestant->getField( 'id' ) );
 		$stats['contest'] = htmlspecialchars( $contestant->getContest()->getField( 'name' ) );
 		
+		$challengeTitles = ContestChallenge::getTitlesForIds( $contestant->getField( 'challenge_id' ) ); 
+		$stats['challenge'] = htmlspecialchars( $challengeTitles[$contestant->getField( 'challenge_id' )] );
+		
 		if ( $contestant->getField( 'submission' ) === '' ) {
 			$stats['submission'] = wfMsg( 'contest-contestant-notsubmitted' );
 		}

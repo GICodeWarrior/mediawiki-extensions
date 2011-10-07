@@ -104,4 +104,23 @@ class ContestChallenge extends ContestDBObject {
 		);
 	}
 	
+	/**
+	 * Returns an array with challenge IDs (keys) and their associated titles (values)
+	 * for the provided list of IDs. 
+	 * 
+	 * @param array|integer $ids
+	 * 
+	 * @return array( id => title )
+	 */
+	public static function getTitlesForIds( $ids ) {
+		$challenges = self::s()->select( array( 'id', 'title' ), array( 'id' => $ids ) );
+		$results = array();
+		
+		foreach ( $challenges as /* ContestChallenge */ $challenge ) {
+			$results[$challenge->getId()] = $challenge->getField( 'title' );
+		}
+		
+		return $results;
+	}
+	
 }
