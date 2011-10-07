@@ -1,0 +1,1 @@
+CREATE INDEX /*i*/vote_user_id ON /*_*/contest_votes (vote_user_id);

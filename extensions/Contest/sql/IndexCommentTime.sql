@@ -1,0 +1,1 @@
+CREATE INDEX /*i*/comment_time ON /*_*/contest_comments (comment_contestant_id, comment_time);

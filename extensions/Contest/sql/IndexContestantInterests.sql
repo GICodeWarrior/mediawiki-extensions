@@ -1,0 +1,1 @@
+CREATE INDEX /*i*/contestant_interests ON /*_*/contest_contestants (contestant_challenge_id, contestant_wmf, contestant_volunteer);
