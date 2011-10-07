@@ -146,9 +146,9 @@ $wgResourceModules['contest.special.contests'] = $moduleTemplate + array(
 	)
 );
 
-$wgResourceModules['contest.special.contest'] = $moduleTemplate + array(
+$wgResourceModules['contest.special.editcontest'] = $moduleTemplate + array(
 	'scripts' => array(
-		'contest.special.contest.js'
+		'contest.special.editcontest.js'
 	),
 	'messages' => array(
 		'contest-edit-delete',
