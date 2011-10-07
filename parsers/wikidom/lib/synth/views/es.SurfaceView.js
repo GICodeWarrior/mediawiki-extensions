@@ -33,19 +33,18 @@ es.SurfaceView = function( $container, model ) {
 			'alt': false
 		}
 	};
-	
-	/*
-	this.selecting = false;
-	this.from = this.to = 0;
-	*/
-	
+	this.selection = {
+		'from': 0,
+		'to': 0
+	};
+
 	// Cursor
 	this.blinkInterval = null;
 	this.$cursor = $( '<div class="editSurface-cursor"></div>' ).appendTo( this.$ );
 	
 	// References for use in closures
 	var surfaceView = this,
-		$document = $(document);
+		$document = $( document );
 	
 	// MouseDown on surface
 	this.$.bind( {
@@ -75,7 +74,7 @@ es.SurfaceView = function( $container, model ) {
 				});
 			},
 			'blur': function( e ) {
-				$document.unbind('.editSurface');
+				$document.unbind( '.editSurface' );
 				surfaceView.hideCursor();
 			},
 			'cut': function( e ) {
@@ -101,56 +100,6 @@ es.SurfaceView = function( $container, model ) {
 	
 	// First render
 	this.documentView.renderContent();
-};
-
-/**
- * Shows the cursor in a new position.
- * 
- * @method
- * @param position {Position} Position to show the cursor at
- * @param offset {Position} Offset to be added to position
- */
-es.SurfaceView.prototype.showCursor = function( position, offset ) {
-	
-	// TODO: test/reimplement
-	
-	if ( position ) {
-		if ( $.isPlainObject( offset ) ) {
-			position.left += offset.left;
-			position.top += offset.top;
-			position.bottom += offset.top;
-		}
-		this.$cursor.css( {
-			'left': position.left,
-			'top': position.top,
-			'height': position.bottom - position.top
-		} ).show();
-	} else {
-		this.$cursor.show();
-	}
-	
-	if ( this.blinkInterval ) {
-		clearInterval( this.blinkInterval );
-	}
-	var $cursor = this.$cursor;
-	this.blinkInterval = setInterval( function() {
-		$cursor.$.css( 'display' ) === 'block' ? $cursor.$.hide() : $cursor.$.show();
-	}, 500 );
-};
-
-/**
- * Hides the cursor.
- * 
- * @method
- */
-es.SurfaceView.prototype.hideCursor = function() {
-
-	// TODO: test/reimplement
-	
-	if( this.blinkInterval ) {
-		clearInterval( this.blinkInterval );
-	}
-	this.$cursor.hide();
 };
 
 es.SurfaceView.prototype.onKeyDown = function( e ) {
@@ -216,37 +165,43 @@ es.SurfaceView.prototype.onMouseDown = function( e ) {
 	var	contentOffset = this.documentView.getOffsetFromEvent( e ),
 		position = this.documentView.getRenderedPosition( contentOffset );
 
-	if ( position !== null ) {
-		this.showCursor( position );
-	}
+	if ( e.button === 0 ) {
+		if ( this.keyboard.keys.shift ) {
+			this.selection.to = contentOffset;
+		} else {
+			this.selection.from = this.selection.to = contentOffset;
+		}
 
-	/*
-	this.from = contentOffset;
-	this.selecting = true;
+		this.showCursor( position );
+		this.mouse.selecting = true;
+
+		this.documentView.drawSelection( new es.Range( this.selection.from, this.selection.to ) );
+	}
 
 	if ( !this.$input.is(':focus') ) {
 		this.$input.focus().select();
 	}
-	*/
 
 	return false;
 };
 
 es.SurfaceView.prototype.onMouseMove = function( e ) {
-	/*
-	if (this.selecting ) {
-		var contentOffset = this.documentView.getOffsetFromEvent( e );
-
-		this.to = contentOffset;		
-		this.documentView.drawSelection( new es.Range( this.from, this.to ) );
+	if ( e.button === 0 && this.mouse.selecting ) {
+		this.hideCursor();
+		this.selection.to = this.documentView.getOffsetFromEvent( e );
+		if ( !this.drawSelection() ) {
+			this.showCursor();
+		}
 	}
-	*/
-	// TODO: Respond to mouse move event, updating selection while painting
 };
 
 es.SurfaceView.prototype.onMouseUp = function( e ) {
-	this.selecting = false;
-	// TODO: Respond to mouse up event, possibly ending selection painting
+	if ( e.button === 0 && this.selection.to ) {
+		if ( this.drawSelection() ) {
+			this.hideCursor();
+		}
+	}
+	this.mouse.selecting = false;
 };
 
 es.SurfaceView.prototype.onCut = function( e ) {
@@ -277,6 +232,13 @@ es.SurfaceView.prototype.setInputContent = function( content ) {
 	// TODO: Set the value of this.$input
 };
 
+/**
+ * Shows the cursor in a new position.
+ * 
+ * @method
+ * @param position {Position} Position to show the cursor at
+ * @param offset {Position} Offset to be added to position
+ */
 es.SurfaceView.prototype.showCursor = function( position ) {
 	if ( position ) {
 		this.$cursor.css( {
@@ -297,9 +259,23 @@ es.SurfaceView.prototype.showCursor = function( position ) {
 	}, 500, this );
 };
 
+/**
+ * Hides the cursor.
+ * 
+ * @method
+ */
 es.SurfaceView.prototype.hideCursor = function( position ) {
 	if( this.blinkInterval ) {
 		clearInterval( this.blinkInterval );
 	}
 	this.$cursor.hide();
+};
+
+es.SurfaceView.prototype.drawSelection = function() {
+	if ( this.selection.from !== this.selection.to ) {
+		this.documentView.drawSelection( new es.Range( this.selection.from, this.selection.to ) );
+		return true;
+	} else {
+		return false;
+	}
 };
