@@ -545,6 +545,7 @@ es.DocumentModel.prototype.getContentFromNode = function( node, range ) {
  * @returns {es.Transaction}
  */
 es.DocumentModel.prototype.prepareInsertion = function( offset, data ) {
+	var tx = new es.Transaction();
 	/*
 	 * There are 2 basic types of locations the insertion point can be:
 	 *     Structural locations
@@ -570,6 +571,7 @@ es.DocumentModel.prototype.prepareInsertion = function( offset, data ) {
 	 *     }
 	 * }
 	 */
+	return tx;
 };
 
 /**
@@ -580,6 +582,7 @@ es.DocumentModel.prototype.prepareInsertion = function( offset, data ) {
  * @returns {es.Transaction}
  */
 es.DocumentModel.prototype.prepareRemoval = function( range ) {
+	var tx = new es.Transaction();
 	/*
 	 * if ( The range spans structural elements ) {
 	 *     if ( The range partially overlaps structural elements ) {
@@ -591,6 +594,7 @@ es.DocumentModel.prototype.prepareRemoval = function( range ) {
 	 *     Removing only content is OK, do nothing
 	 * }
 	 */
+	return tx;
 };
 
 /**
@@ -644,12 +648,17 @@ es.DocumentModel.prototype.prepareElementAttributeChange = function( offset, met
 	if ( offset ) {
 		tx.pushRetain( offset );
 	}
-	if ( this.data[offset].type !== undefined ) {
-		tx.pushChangeElementAttribute( method, key, value );
+	if ( this.data[offset].type === undefined ) {
+		throw 'Invalid element offset error. Can not set attributes to non-element data.'
 	}
+	if ( this.data[offset].type[0] === '/' ) {
+		throw 'Invalid element offset error. Can not set attributes on closing element.'
+	}
+	tx.pushChangeElementAttribute( method, key, value );
 	if ( offset < this.data.length ) {
 		tx.pushRetain( this.data.length - offset );
 	}
+	return tx;
 };
 
 /**

@@ -1,6 +1,6 @@
 module( 'Bases' );
 
-test( 'es.ModelNode', 17, function() {
+test( 'es.ModelNode',20, function() {
 	// Example data (integers) is used for simplicity of testing
 	var modelNode1 = new es.ModelNode(),
 		modelNode2 = new es.ModelNode(),
@@ -16,52 +16,73 @@ test( 'es.ModelNode', 17, function() {
 	modelNode2.on( 'afterAttach', function() {
 		attaches++;
 	} );
+	modelNode3.on( 'afterAttach', function() {
+		attaches++;
+	} );
+	modelNode4.on( 'afterAttach', function() {
+		attaches++;
+	} );
 	var detaches = 0;
 	modelNode2.on( 'afterDetach', function() {
+		detaches++;
+	} );
+	modelNode3.on( 'afterDetach', function() {
+		detaches++;
+	} );
+	modelNode4.on( 'afterDetach', function() {
 		detaches++;
 	} );
 	
 	/** @covers es.ModelNode.push */
 	modelNode1.push( modelNode2 );
-	equal( updates, 1, 'es.ModelNode emits update events on push' );
-	equal( modelNode1[0], modelNode2, 'es.ModelNode appends node on push' );
+	equal( updates, 1, 'push emits update events' );
+	equal( modelNode1[0], modelNode2, 'push appends a node' );
 
 	/** @covers es.ModelNode.attach */
-	equal( attaches, 1, 'es.ModelNode emits afterAttach events when added to another node' );
+	equal( attaches, 1, 'push attaches added node' );
 	
 	/** @covers es.ModelNode.unshift */
 	modelNode1.unshift( modelNode3 );
-	equal( updates, 2, 'es.ModelNode emits update events on unshift' );
-	equal( modelNode1[0], modelNode3, 'es.ModelNode prepends node on unshift' );
+	equal( updates, 2, 'unshift emits update events' );
+	equal( modelNode1[0], modelNode3, 'unshift prepends a node' );
+	
+	/** @covers es.ModelNode.attach */
+	equal( attaches, 2, 'unshift attaches added node' );
 	
 	/** @covers es.ModelNode.splice */
 	modelNode1.splice( 1, 0, modelNode4 );
-	equal( updates, 3, 'es.ModelNode emits update events on splice' );
-	equal( modelNode1[1], modelNode4, 'es.ModelNode inserts node on splice' );
+	equal( updates, 3, 'splice emits update events' );
+	equal( modelNode1[1], modelNode4, 'splice inserts nodes' );
+	
+	/** @covers es.ModelNode.attach */
+	equal( attaches, 3, 'splice attaches added nodes' );
 	
 	/** @covers es.ModelNode.reverse */
 	modelNode1.reverse();
-	equal( updates, 4, 'es.ModelNode emits update events on reverse' );
+	equal( updates, 4, 'reverse emits update events' );
 	
 	/** @covers es.ModelNode.sort */
 	modelNode1.sort( function( a, b ) {
 		return a.length < b.length ? -1 : 1;
 	} );
-	equal( updates, 5, 'es.ModelNode emits update events on sort' );
+	equal( updates, 5, 'sort emits update events' );
 	deepEqual(
 		modelNode1.slice( 0 ),
 		[modelNode2, modelNode3, modelNode4],
-		'es.ModelNode properly orders nodes on sort'
+		'sort reorderes nodes correctly'
 	);
 	
 	/** @covers es.ModelNode.pop */
 	modelNode1.pop();
-	equal( updates, 6, 'es.ModelNode emits update events on pop' );
+	equal( updates, 6, 'pop emits update events' );
 	deepEqual(
 		modelNode1.slice( 0 ),
 		[modelNode2, modelNode3],
-		'es.ModelNode removes last node on pop'
+		'pop removes the last child node'
 	);
+	
+	/** @covers es.ModelNode.detach */
+	equal( detaches, 1, 'pop detaches a node' );
 	
 	/** @covers es.ModelNode.shift */
 	modelNode1.shift();
@@ -73,14 +94,14 @@ test( 'es.ModelNode', 17, function() {
 	);
 	
 	/** @covers es.ModelNode.detach */
-	equal( detaches, 1, 'es.ModelNode emits afterDetach events when removed from another node' );
+	equal( detaches, 2, 'shift detaches a node' );
 	
 	/** @covers es.ModelNode.getParent */
-	strictEqual( modelNode3.getParent(), modelNode1, 'Child nodes have correct parent reference' );
+	strictEqual( modelNode3.getParent(), modelNode1, 'getParent returns the correct reference' );
 	
 	try {
 		var view = modelNode3.createView();
 	} catch ( err ){
-		ok( true, 'Calling createView on a plain ModelNode throws an exception' );
+		ok( true, 'createView throws an exception when not overridden' );
 	}
 } );

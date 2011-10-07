@@ -201,12 +201,12 @@ var tree = [
 	new es.ParagraphModel( data[25], 1 )
 ];
 
-test( 'es.DocumentModel', 11, function() {
+test( 'es.DocumentModel', 15, function() {
 	var documentModel = es.DocumentModel.newFromPlainObject( obj );
 	
 	deepEqual( documentModel.getData(), data, 'Flattening plain objects results in correct data' );
 	
-	deepEqual( documentModel.slice( 0 ), tree, 'Nodes contain correct lengths' );
+	deepEqual( documentModel.slice( 0 ), tree, 'Nodes in the model tree contain correct lengths' );
 	
 	deepEqual(
 		documentModel[0].getContent( new es.Range( 1, 3 ) ),
@@ -214,42 +214,31 @@ test( 'es.DocumentModel', 11, function() {
 			['b', { 'type': 'bold', 'hash': '#bold' }],
 			['c', { 'type': 'italic', 'hash': '#italic' }]
 		],
-		'When getting content for a node, ranges can trim left'
+		'getContent can return an ending portion of the content'
 	);
 	
 	deepEqual(
 		documentModel[0].getContent( new es.Range( 0, 2 ) ),
-		[
-			'a',
-			['b', { 'type': 'bold', 'hash': '#bold' }],
-		],
-		'When getting content for a node, ranges can trim right'
+		['a', ['b', { 'type': 'bold', 'hash': '#bold' }]],
+		'getContent can return a beginning portion of the content'
 	);
 	
 	deepEqual(
 		documentModel[0].getContent( new es.Range( 1, 2 ) ),
-		[
-			['b', { 'type': 'bold', 'hash': '#bold' }],
-		],
-		'When getting content for a node, ranges can trim left and right'
+		[['b', { 'type': 'bold', 'hash': '#bold' }]],
+		'getContent can return a middle portion of the content'
 	);
 	
 	try {
 		documentModel[0].getContent( new es.Range( -1, 3 ) );
 	} catch ( err ) {
-		ok(
-			true,
-			'Exceptions are thrown when getting node content within a range starting before 0'
-		);
+		ok( true, 'getContent throws exceptions when given a range with start < 0' );
 	}
 	
 	try {
 		documentModel[0].getContent( new es.Range( 0, 4 ) );
 	} catch ( err ) {
-		ok(
-			true,
-			'Exceptions are thrown when getting node content within a range ending after length'
-		);
+		ok( true, 'getContent throws exceptions when given a range with end > length' );
 	}
 	
 	deepEqual( documentModel[2].getContent(), ['a'], 'Content can be extracted from nodes' );
@@ -276,4 +265,43 @@ test( 'es.DocumentModel', 11, function() {
 		-1,
 		'getIndexOfAnnotation returns -1 if the annotation was not found'
 	);
+	
+	deepEqual(
+		documentModel.prepareElementAttributeChange( 0, 'set', 'test', 1234 ),
+		[
+			{ 'type': 'attribute', 'method': 'set', 'key': 'test', 'value': 1234  },
+			{ 'type': 'retain', 'length': 28 }
+		],
+		'prepareElementAttributeChange retains data after attribute change for first element'
+	);
+	
+	deepEqual(
+		documentModel.prepareElementAttributeChange( 5, 'set', 'test', 1234 ),
+		[
+			{ 'type': 'retain', 'length': 5 },
+			{ 'type': 'attribute', 'method': 'set', 'key': 'test', 'value': 1234 },
+			{ 'type': 'retain', 'length': 23 }
+		],
+		'prepareElementAttributeChange retains data before and after attribute change'
+	);
+	
+	try {
+		documentModel.prepareElementAttributeChange( 1, 'set', 'test', 1234 )
+	} catch ( err ) {
+		ok(
+			true,
+			'prepareElementAttributeChange throws an exception when offset is not an element'
+		);
+	}
+	
+	try {
+		documentModel.prepareElementAttributeChange( 4, 'set', 'test', 1234 )
+	} catch ( err ) {
+		ok(
+			true,
+			'prepareElementAttributeChange throws an exception when offset is a closing element'
+		);
+	}
+	
 } );
+
