@@ -547,6 +547,7 @@ es.DocumentModel.prototype.getContentFromNode = function( node, range ) {
 es.DocumentModel.prototype.prepareInsertion = function( offset, data ) {
 	var tx = new es.Transaction();
 	/*
+	 * // Structural changes
 	 * There are 2 basic types of locations the insertion point can be:
 	 *     Structural locations
 	 *         |<p>a</p><p>b</p> - Beginning of the document
@@ -584,6 +585,7 @@ es.DocumentModel.prototype.prepareInsertion = function( offset, data ) {
 es.DocumentModel.prototype.prepareRemoval = function( range ) {
 	var tx = new es.Transaction();
 	/*
+	 * // Structural changes
 	 * if ( The range spans structural elements ) {
 	 *     if ( The range partially overlaps structural elements ) {
 	 *         Add insertions to replace removed openings and closing to overlapped elements
@@ -609,24 +611,34 @@ es.DocumentModel.prototype.prepareContentAnnotation = function( range, method, a
 	
 	var i = range.start,
 		span = i,
-		annotating = this.data[i].type !== undefined;
+		on = this.data[i].type !== undefined;
 	while ( i < range.end ) {
 		if ( this.data[i].type !== undefined ) {
-			// Structural
-			if ( annotating ) {
+			// Don't annotate structural elements
+			if ( on ) {
 				tx.pushStopAnnotating( method, annotation );
 				span = 0;
-				annotating = false;
+				on = false;
 			}
 		} else {
-			// Content
-			if ( !annotating ) {
-				if ( span ) {
-					tx.pushRetain( span );
+			var covered = es.DocumentModel.getIndexOfAnnotation( this.data[i] ) !== -1;
+			if ( covered && method === 'set' || !covered && method === 'clear' ) {
+				// Don't set/clear annotations on content that's already set/cleared
+				if ( on ) {
+					tx.pushStopAnnotating( method, annotation );
+					span = 0;
+					on = false;
 				}
-				tx.pushStartAnnotating( method, annotation );
-				span = 0;
-				annotating = true;
+			} else {
+				// Content
+				if ( !on ) {
+					if ( span ) {
+						tx.pushRetain( span );
+					}
+					tx.pushStartAnnotating( method, annotation );
+					span = 0;
+					on = true;
+				}
 			}
 		}
 		span++;
