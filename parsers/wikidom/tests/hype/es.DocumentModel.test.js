@@ -259,9 +259,21 @@ test( 'es.DocumentModel', 11, function() {
 		nothing = { 'type': 'nothing', 'hash': '#nothing' },
 		character = ['a', bold, italic];
 	
-	equal( es.DocumentModel.getIndexOfAnnotation( character, bold ), 1 );
+	equal(
+		es.DocumentModel.getIndexOfAnnotation( character, bold ),
+		1,
+		'getIndexOfAnnotation get the correct index'
+	);
 	
-	equal( es.DocumentModel.getIndexOfAnnotation( character, italic ), 2 );
+	equal(
+		es.DocumentModel.getIndexOfAnnotation( character, italic ),
+		2,
+		'getIndexOfAnnotation get the correct index'
+	);
 	
-	equal( es.DocumentModel.getIndexOfAnnotation( character, nothing ), -1 );
+	equal(
+		es.DocumentModel.getIndexOfAnnotation( character, nothing ),
+		-1,
+		'getIndexOfAnnotation returns -1 if the annotation was not found'
+	);
 } );
