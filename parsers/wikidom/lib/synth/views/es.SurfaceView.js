@@ -217,11 +217,7 @@ es.SurfaceView.prototype.onMouseDown = function( e ) {
 		position = this.documentView.getRenderedPosition( contentOffset );
 
 	if ( position !== null ) {
-		this.$cursor.css( {
-			'left': position.left,
-			'top': position.top,
-			'height': position.bottom - position.top
-		} ).show();
+		this.showCursor( position );
 	}
 
 	/*
@@ -279,4 +275,31 @@ es.SurfaceView.prototype.getInputContent = function() {
 
 es.SurfaceView.prototype.setInputContent = function( content ) {
 	// TODO: Set the value of this.$input
+};
+
+es.SurfaceView.prototype.showCursor = function( position ) {
+	if ( position ) {
+		this.$cursor.css( {
+			'left': position.left,
+			'top': position.top,
+			'height': position.bottom - position.top
+		} ).show();
+	} else {
+		this.$cursor.show();
+	}
+
+	if ( this.blinkInterval ) {
+		clearInterval( this.blinkInterval );
+	}
+	this.blinkInterval = setInterval( function( surface ) {
+		surface.$cursor.css( 'display' ) == 'block'
+			? surface.$cursor.hide() : surface.$cursor.show();
+	}, 500, this );
+};
+
+es.SurfaceView.prototype.hideCursor = function( position ) {
+	if( this.blinkInterval ) {
+		clearInterval( this.blinkInterval );
+	}
+	this.$cursor.hide();
 };
