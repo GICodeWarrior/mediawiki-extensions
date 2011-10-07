@@ -125,6 +125,8 @@ $messages['en'] = array(
 	'contest-signup-require-challenge' => 'You must select a challenge.',
 	'contest-signup-invalid-cv' => 'You entered an invalid URL.',
 
+	'contest-submission-invalid-url' => 'This URL does not match one of the allowed formats.',
+
 	// Special:ContestSubmission
 	'contest-submission-submit' => 'Submit',
 	'contest-submission-unknown' => 'There is no contest with the provided name.',

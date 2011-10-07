@@ -273,5 +273,31 @@ class SpecialContestSubmission extends SpecialContestPage {
 		
 		return true;
 	}
+
+	/**
+	 * HTMLForm field validation-callback for the submissiom field.
+	 * Warning: regexes used! o_O
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param $value String
+	 * @param $alldata Array
+	 * 
+	 * @return true|string
+	 */
+	public function validateSubmissionField( $value, $alldata = null  ) {
+		$allowedPatterns = array(
+			// GitHub URLs such as https://github.com/JeroenDeDauw/smwcon/tree/f9b26ec4ba1101b1f5d4ef76b7ae6ad3dabfb53b
+			'@^https://github\.com/[a-zA-Z0-9-]+/[a-zA-Z0-9_-]+/tree/[a-zA-Z0-9]{40}$@i'
+		);
+		
+		foreach ( $allowedPatterns as $pattern ) {
+			if ( preg_match( $pattern, $value ) ) {
+				return true;
+			}
+		}
+		
+		return wfMsg( 'contest-submission-invalid-url' );
+	}
 	
 }
