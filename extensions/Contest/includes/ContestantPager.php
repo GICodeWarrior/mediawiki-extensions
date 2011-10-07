@@ -13,16 +13,32 @@
  */
 class ContestantPager extends TablePager {
 	
+	/**
+	 * Query conditions, full field names (ie inc prefix).
+	 * @var array
+	 */
 	protected $conds;
 	
 	/**
+	 * Special page on which the pager is displayed.
 	 * @var SpecialContestPage
 	 */
 	protected $page;
 	
+	/**
+	 * Cache for challenge titles.
+	 * challenge id => challenge title
+	 * @var array
+	 */
 	protected $challengeTitles = array();
 
-	public function __construct( $page, $conds ) {
+	/**
+	 * Constructor.
+	 * 
+	 * @param SpecialContestPage $page
+	 * @param array $conds
+	 */
+	public function __construct( SpecialContestPage $page, array $conds ) {
 		$this->page = $page;
 		$this->conds = $conds;
 		$this->mDefaultDirection = true;
@@ -35,7 +51,16 @@ class ContestantPager extends TablePager {
 		$this->getOutput()->addModules( 'contest.contestant.pager' );
 	}
 	
-	protected function queryChallengeTitles( $allConds ) {
+	/**
+	 * Query all challenge names we might need,
+	 * based on the queries conditions, and set them
+	 * to the challengeTitles field.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param array $allConds
+	 */
+	protected function queryChallengeTitles( array $allConds ) {
 		$conds = array();
 		
 		if ( array_key_exists( 'contestant_contest_id', $allConds ) ) {
@@ -51,6 +76,14 @@ class ContestantPager extends TablePager {
 		}
 	}
 	
+	/**
+	 * Gets the title of a challenge given it's id.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param integer $challengeId
+	 * @throws MWException
+	 */
 	protected function getChallengeTitle( $challengeId ) {
 		if ( array_key_exists( $challengeId, $this->challengeTitles ) ) {
 			return $this->challengeTitles[$challengeId];
