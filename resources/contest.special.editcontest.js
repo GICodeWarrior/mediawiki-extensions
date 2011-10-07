@@ -6,8 +6,6 @@
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
  */
 
-// TODO: put all stuff in HTMLForm form so the submission stuff doesn't fail
-
 (function( $, mw ) {
 	
 	function addChallengeToRemove( id ) {
@@ -58,14 +56,15 @@
 			this.onelineInput = $( '<input />' ).attr( {
 				'type': 'text',
 				'name': 'challenge-oneline-' + $this.attr( 'data-challenge-id' ),
-				'size': 45
+				'size': 45,
+				'style': 'margin-top: 3px'
 			} ).val( $this.attr( 'data-challenge-oneline' ) );
 			
 			$this.append( 
 				$( '<div />' ).html(
 					$( '<label />' )
 						.text( mw.msg( 'contest-edit-challenge-oneline' ) )
-						.attr( 'for', 'contest-oneline-' + $this.attr( 'data-challenge-id' ) )
+						.attr( { 'for': 'contest-oneline-' + $this.attr( 'data-challenge-id' ) } )
 				).append( '&#160;' ).append( this.onelineInput )
 			);
 			

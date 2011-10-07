@@ -123,7 +123,7 @@ class SpecialEditContest extends FormSpecialPage {
 			
 			$this->contest = $contest;
 			$this->showForm();
-			$this->getOutput()->addModules( 'contest.special.contest' );
+			$this->getOutput()->addModules( 'contest.special.editcontest' );
 		}
 	}
 	
