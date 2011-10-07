@@ -31,7 +31,7 @@ hdlr = logging.FileHandler('%s/ganglia_parser.log' % logDir)
 formatter = logging.Formatter('%(asctime)s %(levelname)-8s %(message)s')
 hdlr.setFormatter(formatter)
 logger.addHandler(hdlr) 
-logger.setLevel(logging.WARNING)
+logger.setLevel(logging.DEBUG)
 
 def unionMetrics( curMetrics, hostFilePath ):
     '''When a single host is present in more than one gmond collector node
@@ -110,13 +110,16 @@ def listXMLSources():
     # so long as ganglios is running on the same host as the ganglia web ui, it
     # can use ganglia's gmetad.conf to get the list of sources.
     gmetadconf = open('/etc/ganglia/gmetad.conf')
-    datasourcere = re.compile('^data_source "(?P<name>[^"]*)" (?P<hostlist>.*)')
+    # datasource is the string 'data_source' followed by a quoted string name followed by
+    #  an optional polling interval followed by a list of hostnames
+    datasourcere = re.compile('^data_source "(?P<name>[^"]*)" (?P<pollint>\d+ )?(?P<hostlist>.*)')
     for line in gmetadconf.readlines():
         match = datasourcere.match(line)
         if match:
-            for host in match.group(2).split():
+            for host in match.group('hostlist').split():
                 nannybots.append(host)
 
+    logger.info("nannybot list: %s" % nannybots)
     return nannybots
 
 def storeXMLData(srcHosts, dataDir):

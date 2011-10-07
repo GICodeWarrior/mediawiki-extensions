@@ -101,12 +101,12 @@ def main ():
     def build_metrics_include( host, metric, value):
         ''' callback from ganglios.parse_ganglia '''
         if host in incl_excl_hosts:
-            hostmetrics[ incl_excl_hosts[host] ] = int(value)
+            hostmetrics[ incl_excl_hosts[host] ] = float(value)
 
     def build_metrics_exclude( host, metric, value):
         ''' callback from ganglios.parse_ganglia '''
         if not host in incl_excl_hosts:
-            hostmetrics[ host ] = int(value)
+            hostmetrics[ host ] = float(value)
 
     status = 0 # OK
     if( inexcl_flag == 'include' ):

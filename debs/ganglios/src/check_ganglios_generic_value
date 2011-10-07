@@ -36,7 +36,14 @@ so passing 'gt 10' means CRIT if the host's value greater than 10
     # actually, any valid function supplied by the 'operator' module that return a
     # boolean will probably work, but the above functions are what I expect to use
 
-    parser = OptionParser()
+    description = """check_ganglios_generic_value -H hostname -m metric -w val -c val -o op
+    
+    Checks the value of a metric against the warning and crit values
+    passed in using the operator supplied.  An example call that checks that
+    the load_one metric for foo.example.com.  It will trigger WARN if load_one
+    is greater than 2 and CRIT when greater than 4:
+    ./check_ganglios_generic_value -H foo.example.com -m load_one -w 2 -c 4 -o gt"""
+    parser = OptionParser(usage=description)
 
     parser.add_option('-H', dest='hostname', help='hostname')
     parser.add_option('-m', dest='metric', help='metric to check')

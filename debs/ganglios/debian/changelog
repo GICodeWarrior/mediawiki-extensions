@@ -1,8 +1,14 @@
-ganglios (1.1) stable; urgency=low
+ganglios (1.2) stable; urgency=low
 
-  * changed listXMLSources to read the list from /etc/ganglia/gmetad.conf
+  * changed ganglia_parser to use gmetad.conf instead of nannybot#
+  * updated ganglios.py to use the native xml etree instead of (deprecated)
+    ElementTree
+  * fixed broken memory and disk checks
+  * added additional help text to the generic check
+  * configured the ganglios package to install the cronjob (activating the
+    parser)
 
- -- Ben Hartshorne <bhartshorne@wikimedia.org>  Mon, 3 Oct 2011 16:35:00 -0700
+ -- Ben Hartshorne <bhartshorne@wikimedia.org>  Fri, 7 Oct 2011 12:02:34 -0700
 
 ganglios (1.0-1) stable; urgency=low
 

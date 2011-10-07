@@ -64,7 +64,7 @@ def main():
         sys.stdout.write(output)
         ganglios.done(2)
 
-    if( options.free ):
+    if( options.avail ):
         # testing against free memory
         mem = mem_shared + mem_free + mem_cached + mem_buffers
         metric = 'mem_avail'
@@ -76,16 +76,15 @@ def main():
         op = 'gt'
 
 
-    if getattr(operator, op)(cur_val, crit_value):
-    if mem_used > crit_value:
+    if getattr(operator, op)(mem, crit_value):
         status = 2
-        output = "CRITICAL: %s is %s (op %s)" % (metric, cur_val, op, crit_value)
-    elif mem_used > warn_value:
+        output = "CRITICAL: %s is %s (%s %s)" % (metric, mem, op, crit_value)
+    elif getattr(operator, op)(mem, warn_value):
         status = 1
-        output = "WARN: %s is %s (op %s)" % (metric, cur_val, op, warn_value)
+        output = "WARN: %s is %s (%s %s)" % (metric, mem, op, warn_value)
     else:
         status = 0
-        output = "OK: %s is %s" % (metric, cur_val)
+        output = "OK: %s is %s" % (metric, mem)
 
     sys.stdout.write(output)
     ganglios.done(status)

@@ -29,7 +29,7 @@ import stat
 import glob
 import socket
 
-import elementtree.ElementTree as ET
+import xml.etree.ElementTree as ET
 import xml.parsers.expat as expat
 
 __revision__ = '0'
@@ -52,6 +52,8 @@ def parse_ganglia (metrics, thunk):
     status = 0 # ok
     bad = []
 
+    # go_bad collects xml cache files that are old, broken or otherwise
+    # unparseable and stops us from parsing them again in the future
     def go_bad (xml_file, bad):
         """ change status to bad, and output the stale nannybot """
         bad_host = xml_file.replace ('.xml', '')
@@ -75,15 +77,19 @@ def parse_ganglia (metrics, thunk):
             f_hndl = open (filename)
             try:
                 tree = ET.parse (f_hndl)
-                ganglia_xml = tree.getroot()
-                for cluster in ganglia_xml.getchildren ():
-                    for host in cluster.getchildren ():
-                        for metric in host.getchildren ():
-                            # found a metric we care about.
-                            if metric.get ('NAME') in metrics:
-                                thunk (host.get ('NAME'),
-                                       metric.get ('NAME'),
-                                       metric.get ('VAL'))
+                root = tree.getroot()
+                clusters = list(root)
+                for cluster in clusters:
+                    for host in cluster.findall('HOST'):
+                        for metric in host.findall('METRIC'):
+                            if metric.attrib['NAME'] in metrics:
+                                try:
+                                    thunk( host.attrib['NAME'],
+                                        metric.attrib['NAME'],
+                                        metric.attrib['VAL'])
+                                except Exception, e:
+                                    print "thunk threw an exception: %s" % e
+                                    raise
             except expat.ExpatError:
                 go_bad (xml_file, bad)
                 status = 2
@@ -122,6 +128,9 @@ def get_metric_for_host(hostname, metricname):
     filelist = glob.glob(os.path.join(_hostdir, "*.%s" % hostname))
     if len(filelist) == 0:
         filelist = glob.glob(os.path.join(_hostdir, "%s" % hostname))
+    # if there's still no match, complain host not found.
+    if len(filelist) == 0:
+        raise Exception("Host not found: %s." % hostname)
 ###
 ###  for the VPNs, it's a valid state that there exist >1 files for each vpn 
 ###  (a tunnel address and a private interface).  What's the right action to take
@@ -142,11 +151,10 @@ def get_metric_for_host(hostname, metricname):
     f_hndl = open(filename)
     try:
         tree = ET.parse (f_hndl)
-        host = tree.getroot()
-        for metric in host.getchildren ():
+        for metric in tree.findall('METRIC'):
             # found a metric we care about.
-            if metric.get ('NAME') == metricname:
-                return metric.get('VAL')
+            if metric.attrib['NAME'] == metricname:
+                return metric.attrib['VAL']
     except expat.ExpatError:
         sys.stdout.write("XML parse error")
         done(2)

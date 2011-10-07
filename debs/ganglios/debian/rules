@@ -72,7 +72,7 @@ binary-arch: install
 #	dh_installmime
 	dh_pysupport
 #	dh_installinit
-#	dh_installcron
+	dh_installcron
 #	dh_installinfo
 	dh_installman
 	dh_link
