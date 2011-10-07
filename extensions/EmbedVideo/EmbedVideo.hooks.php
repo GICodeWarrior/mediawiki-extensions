@@ -130,21 +130,27 @@ abstract class EmbedVideo {
 
 	# Return the HTML necessary to embed the video normally.
 	private static function generateNormalClause( $url, $width, $height ) {
-		$clause = "<object width=\"{$width}\" height=\"{$height}\">" .
-			"<param name=\"movie\" value=\"{$url}\"></param>" .
-			"<param name=\"wmode\" value=\"transparent\"></param>" .
-			"<embed src=\"{$url}\" type=\"application/x-shockwave-flash\"" .
-			" wmode=\"transparent\" width=\"{$width}\" height=\"{$height}\">" .
-			"</embed></object>";
-
-		return $clause;
+		return Hmtl::rawElement(
+			'object',
+			array( 'width' => $width, 'height' => $height ),
+			Html::element( 'param', array( 'name' => 'movie', 'value' => $url ) )
+				. Html::element( 'param', array( 'name' => 'wmode', 'value' => 'transparent' ) )
+				. Html::element( 'embed', array(
+					'type' => 'application/x-shockwave-flash',
+					'wmode' => 'transparent',
+					'width' => $width,
+					'height' => $height,
+					'src' => $url,
+				))
+		);
 	}
 
 	# The HTML necessary to embed the video with a custom embedding clause,
 	# specified align and description text
 	private static function generateAlignExternClause( $clause, $align, $desc, $width, $height ) {
-		$clause = "<div class=\"thumb t{$align}\">" .
-			"<div class=\"thumbinner\" style=\"width: {$width}px;\">" .
+		$clause =
+			Html::openElement( 'div', array( 'class' => "thumb t{$align}" ) ) .
+			Html::openElement( 'div', array( 'class' => 'thumbinner', 'width' => "{$width}px" ) ) .
 			$clause .
 			"<div class=\"thumbcaption\">" .
 			$desc .
@@ -156,19 +162,24 @@ abstract class EmbedVideo {
 	# Generate the HTML necessary to embed the video with the given alignment
 	# and text description
 	private static function generateAlignClause( $url, $width, $height, $align, $desc ) {
-		$clause = "<div class=\"thumb t{$align}\">" .
-			"<div class=\"thumbinner\" style=\"width: {$width}px;\">" .
-			"<object width=\"{$width}\" height=\"{$height}\">" .
-			"<param name=\"movie\" value=\"{$url}\"></param>" .
-			"<param name=\"wmode\" value=\"transparent\"></param>" .
-			"<embed src=\"{$url}\" type=\"application/x-shockwave-flash\"" .
-			" wmode=\"transparent\" width=\"{$width}\" height=\"{$height}\"></embed>" .
-			"</object>" .
-			"<div class=\"thumbcaption\">" .
-			$desc .
-			"</div></div></div>";
-
-		return $clause;
+		return
+			Html::openElement( 'div', array( 'class' => "thumb t{$align}" ) ) .
+			Html::openElement( 'div', array( 'class' => 'thumbinner', 'width' => "{$width}px" ) ) .
+			Hmtl::rawElement(
+			'object',
+			array( 'width' => $width, 'height' => $height ),
+			Html::element( 'param', array( 'name' => 'movie', 'value' => $url ) )
+				. Html::element( 'param', array( 'name' => 'wmode', 'value' => 'transparent' ) )
+				. Html::element( 'embed', array(
+					'type' => 'application/x-shockwave-flash',
+					'wmode' => 'transparent',
+					'width' => $width,
+					'height' => $height,
+					'src' => $url,
+				))
+			) .
+			Html::rawElement( 'div', array(), $desc ) .
+			Html::closeElement( 'div' ) . Html::closeElement( 'div' );
 	}
 
 	# Get the entry for the specified service, by name
