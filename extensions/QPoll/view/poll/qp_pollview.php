@@ -99,8 +99,7 @@ class qp_PollView extends qp_AbstractPollView {
 		# output script-generated error, when available
 		# render short/long/structured result, when permitted and available
 		$interpResultView = qp_InterpResultView::newFromBaseView( $this );
-		$interpResultView->setController( $pollStore->interpResult );
-		$interpResultView->showInterpResults( $qpoll_div );
+		$interpResultView->showInterpResults( $qpoll_div, $pollStore->interpResult );
 		# unused anymore
 		unset( $interpResultView );
 		# create voting form and fill it with messages and inputs

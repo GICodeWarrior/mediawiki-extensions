@@ -4,47 +4,105 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 /**
- * View interpretation results of polls
+ * View interpretation results of polls; Used both in "ordinary" pages and
+ * in special pages;
+ * This cannot extend qp_AbstractView because there is currently no PPFrame
+ * in extension's special pages;
  */
-class qp_InterpResultView extends qp_AbstractView {
+class qp_InterpResultView {
 
-	static function newFromBaseView( $baseView ) {
-		return new self( $baseView->parser, $baseView->ppframe );
+	# pview is null in Special:Pollresults;
+	# valid view instance with PPFrame in "ordinary" pages
+	var $pview = null;
+	# a copy of qp_Setup::$show_interpretation or modified version
+	var $showInterpretation;
+
+	/**
+	 * Creates new view without "parent" view associated - no PPFrame;
+	 * @param  $displayAll  boolean  true - display all results (for Special:Pollresults)
+	 *                               false - display only allowed results (for end-user)
+	 */
+	function __construct( $displayAll = false ) {
+		## setup 'showInterpretation' property
+		# set pre-defined value
+		$this->showInterpretation = qp_Setup::$show_interpretation;
+		# make sure all required keys are available
+		foreach ( array( 'short', 'long', 'structured' ) as $val ) {
+			if ( !isset( $this->showInterpretation[$val] ) ) {
+				$this->showInterpretation[$val] = false;
+			}
+		}
+		if ( $displayAll ) {
+			# enable displaying all the kinds of intepretations
+			foreach ( $this->showInterpretation as &$val ) {
+				$val = true;
+			}
+		}
 	}
 
-	function isCompatibleController( $ctrl ) {
-		return $ctrl instanceof qp_InterpResult;
+	/**
+	 * Instantiate with parent view (with PPFrame);
+	 * Used for end-user display (long interpretation as wikitext)
+	 */
+	static function newFromBaseView( qp_AbstractView $pview ) {
+		$self = new self( false );
+		$self->pview = $pview;
+		return $self;
 	}
 
 	/**
 	 * Add interpretation results to tagarray of poll view
 	 */
-	function showInterpResults( &$tagarray ) {
-		$ctrl = $this->ctrl;
+	function showInterpResults( &$tagarray, qp_InterpResult $ctrl, $showDescriptions = false ) {
+		if ( $ctrl->isEmpty() ) {
+			return;
+		}
+		$interp = array();
+		if ( $showDescriptions ) {
+				$interp[] = array( '__tag' => 'div', wfMsg( 'qp_results_interpretation_header' ) );
+		}
+		# currently, error is not stored in DB, only the vote and long / short interpretations
+		# todo: is it worth to store it?
 		if ( ( $scriptError = $ctrl->error ) != '' ) {
-			$tagarray[] = array( '__tag' => 'div', 'class' => 'interp_error', qp_Setup::specialchars( $scriptError ) );
+			$interp[] = array( '__tag' => 'div', 'class' => 'interp_error', qp_Setup::specialchars( $scriptError ) );
 		}
 		# output long result, when permitted and available
-		if ( qp_Setup::$show_interpretation['long'] &&
+		if ( $this->showInterpretation['long'] &&
 				( $answer = $ctrl->long ) !== '' ) {
-			$tagarray[] = array( '__tag' => 'div', 'class' => 'interp_answer', qp_Setup::specialchars( $answer ) );
+			if ( $showDescriptions ) {
+				$interp[] = array( '__tag' => 'div', 'class' => 'interp_header', wfMsg( 'qp_results_long_interpretation' ) );
+			}
+			$interp[] = array( '__tag' => 'div', 'class' => 'interp_answer_body', is_null( $this->pview ) ? nl2br( qp_Setup::specialchars( $answer ) ) : $this->pview->rtp( $answer ) );
 		}
 		# output short result, when permitted and available
-		if ( qp_Setup::$show_interpretation['short'] &&
+		if ( $this->showInterpretation['short'] &&
 				( $answer = $ctrl->short ) !== '' ) {
-			$tagarray[] = array( '__tag' => 'div', 'class' => 'interp_answer', qp_Setup::specialchars( $answer ) );
+			if ( $showDescriptions ) {
+				$interp[] = array( '__tag' => 'div', 'class' => 'interp_header', wfMsg( 'qp_results_short_interpretation' ) );
+			}
+			$interp[] = array( '__tag' => 'div', 'class' => 'interp_answer_body', nl2br( qp_Setup::specialchars( $answer ) ) );
 		}
-		if ( qp_Setup::$show_interpretation['structured'] &&
+		if ( $this->showInterpretation['structured'] &&
 				( $answer = $ctrl->structured ) !== '' ) {
-			$tagarray[] = array( '__tag' => 'div', 'class' => 'interp_answer', $this->renderStructuredAnswer() );
+			if ( $showDescriptions ) {
+				$interp[] = array( '__tag' => 'div', 'class' => 'interp_header', wfMsg( 'qp_results_structured_interpretation' ) );
+			}
+			$strucTable = $ctrl->getStructuredAnswerTable();
+			$rows = array();
+			foreach ( $strucTable as &$line ) {
+				if ( isset( $line['keys'] ) ) {
+					# current node is associative array
+					qp_Renderer::addRow( $rows, $line['keys'], '', 'th' );
+					qp_Renderer::addRow( $rows, $line['vals'] );
+				} else {
+					# current node is scalar value
+					qp_Renderer::addRow( $rows, array( $line['vals'] ) );
+				}
+			}
+			$interp[] = array( '__tag' => 'table', 'class' => 'structured_answer', $rows );
+			unset( $strucTable );
 		}
-	}
-
-	/**
-	 * todo: how can this be related to structured answer in XLS data export?
-	 */
-	function renderStructuredAnswer() {
-		return 'todo: implement';
+		$tagarray[] = array( '__tag' => 'div', 'class' => 'interp_answer', $interp );
 	}
 
 } /* end of qp_InterpResultView class */

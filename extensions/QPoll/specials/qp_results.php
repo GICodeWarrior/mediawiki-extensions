@@ -121,15 +121,11 @@ class PollResults extends qp_SpecialPage {
 					}
 					break;
 				case 'stats_xls':
-						if ( $pid !== null ) {
-							$pid = intval( $pid );
-							$this->statsToXLS( $pid );
-						}
-					break;
 				case 'voices_xls':
+				case 'interpretation_xls':
 						if ( $pid !== null ) {
 							$pid = intval( $pid );
-							$this->voicesToXLS( $pid );
+							$this->writeXLS( $cmd, $pid );
 						}
 					break;
 				case 'uvote':
@@ -181,25 +177,21 @@ class PollResults extends qp_SpecialPage {
 		$wgOut->addHTML( $output . '</div>' );
 	}
 
-	private function showAnswerHeader( qp_PollStore $pollStore ) {
-		$out = '<div style="font-weight:bold;">' . wfMsg( 'qp_results_submit_attempts', intval( $pollStore->attempts ) ) . '</div>';
+	private function getAnswerHeader( qp_PollStore $pollStore ) {
+		$tags = array(
+			array( '__tag' => 'div', 'style' => 'font-weight:bold;', wfMsg( 'qp_results_submit_attempts', intval( $pollStore->attempts ) ) )
+		);
 		$interpTitle = $pollStore->getInterpTitle();
 		if ( $interpTitle === null ) {
-			$out .= wfMsg( 'qp_poll_has_no_interpretation' );
-			return $out;
+			$tags[] = wfMsg( 'qp_poll_has_no_interpretation' );
+			return $tags;
 		}
-		/*
-		# currently, error is not stored in DB, only the vote and long / short interpretations
-		# todo: is it worth to store it?
-		if ( $pollStore->interpResult->error != '' ) {
-			return '<strong class="error">' . qp_Setup::specialchars( $pollStore->interpResult->error ) . '</strong>';
-		}
-		*/
-		$out .= '<div class="interp_answer">' . wfMsg( 'qp_results_interpretation_header' ) .
-				'<div class="interp_answer_body">' . nl2br( wfMsg( 'qp_results_short_interpretation', qp_Setup::specialChars( $pollStore->interpResult->short ) ) ) . '</div>' .
-				'<div class="interp_answer_body">' . nl2br( wfMsg( 'qp_results_long_interpretation', qp_Setup::specialChars( $pollStore->interpResult->long ) ) ) . '</div>' .
-				'</div>';
-		return $out;
+		# 'parentheses' key is unavailable in MediaWiki 1.15.x
+		$interp_link = $this->qpLink( $interpTitle, $interpTitle->getPrefixedText() );
+		$tags[] = wfMsg( 'qp_browse_to_interpretation', $interp_link );
+		$interpResultView = new qp_InterpResultView( true );
+		$interpResultView->showInterpResults( $tags, $pollStore->interpResult, true );
+		return $tags;
 	}
 
 	private function showUserVote( $pid, $uid ) {
@@ -226,13 +218,14 @@ class PollResults extends qp_SpecialPage {
 		$poll_link = $this->qpLink( $poll_title, $poll_title->getPrefixedText() . wfMsg( 'word-separator' ) . wfMsg( 'qp_parentheses', $pollStore->mPollId ) );
 		$output = wfMsg( 'qp_browse_to_user', $user_link ) . "<br />\n";
 		$output .= wfMsg( 'qp_browse_to_poll', $poll_link ) . "<br />\n";
-		$output .= $this->showAnswerHeader( $pollStore );
+		$headerTags = $this->getAnswerHeader( $pollStore );
+		$output .= qp_Renderer::renderTagArray( $headerTags );
+		unset( $headerTags );
 		foreach ( $pollStore->Questions as &$qdata ) {
 			if ( $pollStore->isUsedQuestion( $qdata->question_id ) ) {
 				$output .= "<br />\n<b>" . $qdata->question_id . ".</b> " . qp_Setup::entities( $qdata->CommonQuestion ) . "<br />\n";
-				$qview = $qdata->createView();
+				$qview = $qdata->getView();
 				$output .= $qview->displayUserQuestionVote();
-				unset( $qview );
 			}
 		}
 		return $output;
@@ -252,17 +245,17 @@ class PollResults extends qp_SpecialPage {
 				$output .= wfMsg( 'qp_browse_to_poll', $poll_link ) . "<br />\n";
 				$output .= $this->qpLink( $this->getTitle(), wfMsg( 'qp_export_to_xls' ), array( "style" => "font-weight:bold;" ), array( 'action' => 'stats_xls', 'id' => $pid ) ) . "<br />\n";
 				$output .= $this->qpLink( $this->getTitle(), wfMsg( 'qp_voices_to_xls' ), array( "style" => "font-weight:bold;" ), array( 'action' => 'voices_xls', 'id' => $pid ) ) . "<br />\n";
+				$output .= $this->qpLink( $this->getTitle(), wfMsg( 'qp_interpretation_results_to_xls' ), array( "style" => "font-weight:bold;" ), array( 'action' => 'interpretation_xls', 'id' => $pid ) ) . "<br />\n";
 				foreach ( $pollStore->Questions as &$qdata ) {
-					$qview = $qdata->createView();
+					$qview = $qdata->getView();
 					$output .= $qview->displayQuestionStats( $this, $pid );
-					unset( $qview );
 				}
 			}
 		}
 		return $output;
 	}
 
-	private function voicesToXLS( $pid ) {
+	private function writeXLS( $cmd, $pid ) {
 		if ( $pid === null ) {
 			return;
 		}
@@ -273,196 +266,39 @@ class PollResults extends qp_SpecialPage {
 		# use default IIS / Apache execution time limit which is much larger than default PHP limit
 		set_time_limit( 300 );
 		$poll_id = $pollStore->getPollId();
-		$pollStore->loadQuestions();
 		try {
 			require_once( qp_Setup::$ExtDir . '/Excel/Excel_Writer.php' );
 			$xls_fname = tempnam( "", ".xls" );
 			$xls_workbook = new Spreadsheet_Excel_Writer_Workbook( $xls_fname );
 			$xls_workbook->setVersion( 8 );
-			$xls_worksheet = &$xls_workbook->addworksheet();
-			$xls_worksheet->setInputEncoding( "utf-8" );
-			$xls_worksheet->setPaper( 9 );
-			$xls_rownum = 0;
-			$format_heading = &$xls_workbook->addformat( array( 'bold' => 1 ) );
-			$format_answer = &$xls_workbook->addformat( array( 'fgcolor' => 0x1A, 'border' => 1 ) );
-			$format_answer->setAlign( 'left' );
-			$format_even = &$xls_workbook->addformat( array( 'fgcolor' => 0x2A, 'border' => 1 ) );
-			$format_even->setAlign( 'left' );
-			$format_odd = &$xls_workbook->addformat( array( 'fgcolor' => 0x23, 'border' => 1 ) );
-			$format_odd->setAlign( 'left' );
-			$first_question = true;
-			foreach ( $pollStore->Questions as $qkey => &$qdata ) {
-				if ( $first_question ) {
-					$totalUsersAnsweredQuestion = $pollStore->totalUsersAnsweredQuestion( $qdata );
-					$xls_worksheet->write( $xls_rownum, 0, $totalUsersAnsweredQuestion, $format_heading );
-					$xls_worksheet->write( $xls_rownum++, 1, wfMsgExt( 'qp_users_answered_questions', array( 'parsemag' ), $totalUsersAnsweredQuestion ), $format_heading );
-					$xls_rownum++;
-					$first_question = false;
-				}
-				$xls_worksheet->write( $xls_rownum, 0, $qdata->question_id, $format_heading );
-				$xls_worksheet->write( $xls_rownum++, 1, qp_Excel::prepareExcelString( $qdata->CommonQuestion ), $format_heading );
-				if ( count( $qdata->CategorySpans ) > 0 ) {
-					$row = array();
-					foreach ( $qdata->CategorySpans as &$span ) {
-						$row[] = qp_Excel::prepareExcelString( $span[ "name" ] );
-						for ( $i = 1; $i < $span[ "count" ]; $i++ ) {
-							$row[] = "";
-						}
-					}
-					$xls_worksheet->writerow( $xls_rownum++, 0, $row );
-				}
-				$row = array();
-				foreach ( $qdata->Categories as &$categ ) {
-					$row[] = qp_Excel::prepareExcelString( $categ[ "name" ] );
-				}
-				$xls_worksheet->writerow( $xls_rownum++, 0, $row );
-/*
-				foreach ( $qdata->Percents as $pkey=>&$percent ) {
-					$xls_worksheet->writerow( $xls_rownum + $pkey, 0, $percent );
-				}
-*/
-				$voters = array();
-				$offset = 0;
-				$spansUsed = count( $qdata->CategorySpans ) > 0 || $qdata->type == "multipleChoice";
-				# iterate through the voters of the current poll (there might be many)
-				while ( ( $limit = count( $voters = $pollStore->pollVotersPager( $offset ) ) ) > 0 ) {
-					$uvoices = $pollStore->questionVoicesRange( $qdata->question_id, array_keys( $voters ) );
-					# get each of proposal votes for current uid
-					foreach ( $uvoices as $uid => &$pvoices ) {
-						# output square table of proposal / category answers for each uid in uvoices array
-						$voicesTable = array();
-						foreach ( $qdata->ProposalText as $propkey => &$proposal_text ) {
-							$row = array_fill( 0, count( $qdata->Categories ), '' );
-							if ( isset( $pvoices[$propkey] ) ) {
-								foreach ( $pvoices[$propkey] as $catkey => $text_answer ) {
-									$row[$catkey] = qp_Excel::prepareExcelString( $text_answer );
-								}
-								if ( $spansUsed ) {
-									foreach ( $row as $catkey => &$cell ) {
-										$cell = array( 0 => $cell );
-										if ( $qdata->type == "multipleChoice" ) {
-											$cell[ "format" ] = ( ( $catkey & 1 ) === 0 ) ? $format_even : $format_odd;
-										} else {
-											$cell[ "format" ] = ( ( $qdata->Categories[ $catkey ][ "spanId" ] & 1 ) === 0 ) ? $format_even : $format_odd;
-										}
-									}
-								}
-							}
-							$voicesTable[] = $row;
-						}
-						qp_Excel::writeFormattedTable( $xls_worksheet, $xls_rownum, 0, $voicesTable, $format_answer );
-						$row = array();
-						foreach ( $qdata->ProposalText as $ptext ) {
-							$row[] = qp_Excel::prepareExcelString( $ptext );
-						}
-						$xls_worksheet->writecol( $xls_rownum, count( $qdata->Categories ), $row );
-						$xls_rownum += count( $qdata->ProposalText ) + 1;
-					}
-					$offset += $limit;
-				}
-			}
-			$xls_workbook->close();
-			header( 'Content-Type: application/x-msexcel; name="' . $poll_id . '.xls"' );
-			header( 'Content-Disposition: inline; filename="' . $poll_id . '.xls"' );
-			$fxls = @fopen( $xls_fname, "rb" );
-			@fpassthru( $fxls );
-			@unlink( $xls_fname );
-			exit();
-		} catch ( Exception $e ) {
-			die( "Error while exporting poll statistics to Excel table\n" );
-		}
-	}
-
-	private function statsToXLS( $pid ) {
-		if ( $pid === null ) {
-			return;
-		}
-		$pollStore = new qp_PollStore( array( 'from' => 'pid', 'pid' => $pid ) );
-		if ( $pollStore->pid === null ) {
-			return;
-		}
-		$poll_id = $pollStore->getPollId();
-		$pollStore->loadQuestions();
-		$pollStore->loadTotals();
-		$pollStore->calculateStatistics();
-		try {
-			require_once( qp_Setup::$ExtDir . '/Excel/Excel_Writer.php' );
-			$xls_fname = tempnam( "", ".xls" );
-			$xls_workbook = new Spreadsheet_Excel_Writer_Workbook( $xls_fname );
-			$xls_workbook->setVersion( 8 );
-			$xls_worksheet = &$xls_workbook->addworksheet();
-			$xls_worksheet->setInputEncoding( "utf-8" );
-			$xls_worksheet->setPaper( 9 );
-			$xls_rownum = 0;
-			$percent_num_format = '[Blue]0.0%;[Red]-0.0%;[Black]0%';
-			$format_heading = &$xls_workbook->addformat( array( 'bold' => 1 ) );
-			$format_percent = &$xls_workbook->addformat( array( 'fgcolor' => 0x1A, 'border' => 1 ) );
-			$format_percent->setAlign( 'left' );
-			$format_percent->setNumFormat( $percent_num_format );
-			$format_even = &$xls_workbook->addformat( array( 'fgcolor' => 0x2A, 'border' => 1 ) );
-			$format_even->setAlign( 'left' );
-			$format_even->setNumFormat( $percent_num_format );
-			$format_odd = &$xls_workbook->addformat( array( 'fgcolor' => 0x23, 'border' => 1 ) );
-			$format_odd->setAlign( 'left' );
-			$format_odd->setNumFormat( $percent_num_format );
-			$first_question = true;
-			foreach ( $pollStore->Questions as $qkey => &$qdata ) {
-				if ( $first_question ) {
-					$totalUsersAnsweredQuestion = $pollStore->totalUsersAnsweredQuestion( $qdata );
-					$xls_worksheet->write( $xls_rownum, 0, $totalUsersAnsweredQuestion, $format_heading );
-					$xls_worksheet->write( $xls_rownum++, 1, wfMsgExt( 'qp_users_answered_questions', array( 'parsemag' ), $totalUsersAnsweredQuestion ), $format_heading );
-					$xls_rownum++;
-					$first_question = false;
-				}
-				$xls_worksheet->write( $xls_rownum, 0, $qdata->question_id, $format_heading );
-				$xls_worksheet->write( $xls_rownum++, 1, qp_Excel::prepareExcelString( $qdata->CommonQuestion ), $format_heading );
-				if ( count( $qdata->CategorySpans ) > 0 ) {
-					$row = array();
-					foreach ( $qdata->CategorySpans as &$span ) {
-						$row[] = qp_Excel::prepareExcelString( $span[ "name" ] );
-						for ( $i = 1; $i < $span[ "count" ]; $i++ ) {
-							$row[] = "";
-						}
-					}
-					$xls_worksheet->writerow( $xls_rownum++, 0, $row );
-				}
-				$row = array();
-				foreach ( $qdata->Categories as &$categ ) {
-					$row[] = qp_Excel::prepareExcelString( $categ[ "name" ] );
-				}
-				$xls_worksheet->writerow( $xls_rownum++, 0, $row );
-/*
-				foreach ( $qdata->Percents as $pkey=>&$percent ) {
-					$xls_worksheet->writerow( $xls_rownum + $pkey, 0, $percent );
-				}
-*/
-				$percentsTable = array();
-				$spansUsed = count( $qdata->CategorySpans ) > 0 || $qdata->type == "multipleChoice";
-				foreach ( $qdata->ProposalText as $propkey => &$proposal_text ) {
-					if ( isset( $qdata->Percents[ $propkey ] ) ) {
-						$row = $qdata->Percents[ $propkey ];
-						foreach ( $row as $catkey => &$cell ) {
-							$cell = array( 0 => $cell );
-							if ( $spansUsed ) {
-								if ( $qdata->type == "multipleChoice" ) {
-									$cell[ "format" ] = ( ( $catkey & 1 ) === 0 ) ? $format_even : $format_odd;
-								} else {
-									$cell[ "format" ] = ( ( $qdata->Categories[ $catkey ][ "spanId" ] & 1 ) === 0 ) ? $format_even : $format_odd;
-								}
-							}
-						}
-					} else {
-						$row = array_fill( 0, count( $qdata->Categories ), '' );
-					}
-					$percentsTable[] = $row;
-				}
-				qp_Excel::writeFormattedTable( $xls_worksheet, $xls_rownum, 0, $percentsTable, $format_percent );
-				$row = array();
-				foreach ( $qdata->ProposalText as $ptext ) {
-					$row[] = qp_Excel::prepareExcelString( $ptext );
-				}
-				$xls_worksheet->writecol( $xls_rownum, count( $qdata->Categories ), $row );
-				$xls_rownum += count( $qdata->ProposalText ) + 1;
+			$qp_xls = qp_Excel::newFromWorksheet( $xls_workbook->addworksheet() );
+			# setup common formats
+			$format = array(
+				'heading' => $xls_workbook->addformat( array( 'bold' => 1 ) ),
+				'answer' => $xls_workbook->addformat( array( 'fgcolor' => 0x1A, 'border' => 1 ) ),
+				'even' => $xls_workbook->addformat( array( 'fgcolor' => 0x2A, 'border' => 1 ) ),
+				'odd' => $xls_workbook->addformat( array( 'fgcolor' => 0x23, 'border' => 1 ) )
+			);
+			$format['answer']->setAlign( 'left' );
+			$format['even']->setAlign( 'left' );
+			$format['odd']->setAlign( 'left' );
+			switch ( $cmd ) {
+			case 'voices_xls' :
+				$qp_xls->voicesToXLS( $format, $pollStore );
+				break;
+			case 'stats_xls' :
+				# statistics export uses additional formats
+				$percent_num_format = '[Blue]0.0%;[Red]-0.0%;[Black]0%';
+				$format['percent'] = $xls_workbook->addformat( array( 'fgcolor' => 0x1A, 'border' => 1 ) );
+				$format['percent']->setAlign( 'left' );
+				$format['percent']->setNumFormat( $percent_num_format );
+				$format['even']->setNumFormat( $percent_num_format );
+				$format['odd']->setNumFormat( $percent_num_format );
+				$qp_xls->statsToXLS( $format, $pollStore );
+				break;
+			case 'interpretation_xls' :
+				$qp_xls->interpretationToXLS( $format, $pollStore );
+				break;
 			}
 			$xls_workbook->close();
 			header( 'Content-Type: application/x-msexcel; name="' . $poll_id . '.xls"' );

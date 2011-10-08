@@ -95,6 +95,9 @@ class qp_PollStore {
 						$title = $wgParser->getTitle();
 					}
 					$this->mArticleId = $title->getArticleID();
+					if ( !isset( $argv['poll_id'] ) ) {
+						throw new MWException( 'Parameter "from" = poll_get / poll_post requires parameter "poll_id" in ' . __METHOD__ );
+					}
 					$this->mPollId = $argv[ 'poll_id' ];
 					if ( array_key_exists( 'order_id', $argv ) ) {
 						$this->mOrderId = $argv[ 'order_id' ];
@@ -125,8 +128,10 @@ class qp_PollStore {
 							$this->setPid();
 						} else {
 							$this->loadPid();
-							if ( is_null( $this->pid ) ) {
+							if ( is_null( $this->pid ) &&
+									$this->pollDescIsValid() ) {
 								# try to create poll description (DB state was incomplete)
+								# todo: check, whether this is really required for random questions
 								$this->setPid();
 							}
 						}
@@ -153,6 +158,8 @@ class qp_PollStore {
 						$this->randomQuestionCount = $row->random_question_count;
 					}
 					break;
+				default :
+					throw new MWException( 'Unknown value of "from" parameter: ' . $argv[ 'from' ] . ' in ' . __METHOD__ );
 			}
 		}
 	}
@@ -202,6 +209,26 @@ class qp_PollStore {
 
 	function getPollId() {
 		return $this->mPollId;
+	}
+
+	/**
+	 * @return  boolean  true when the current instance has all of the
+	 * properties matched to 'qp_poll_desc' fields initialized with values
+	 * taken from $argv[] argument of constructor;
+	 *
+	 * when this function returns false, $this->setPid() cannot be called;
+	 */
+	private function pollDescIsValid() {
+		# non-checked fields:
+		# 'pid' is key (result of insert);
+		# 'article_id' is always created by constructor
+		# 'poll_id' is a mandatory parameter of constructor
+		return
+			!is_null( $this->mOrderId ) &&
+			!is_null( $this->dependsOn ) &&
+			!is_null( $this->interpNS ) &&
+			!is_null ( $this->interpDBkey ) &&
+			!is_null ( $this->randomQuestionCount );
 	}
 
 	# returns Title object, to get a URI path, use Title::getFullText()/getPrefixedText() on it
@@ -286,7 +313,9 @@ class qp_PollStore {
 
 	/**
 	 * iterates through the list of users who voted the current poll
-	 * @return mixed false on failure, array of (uid=>username) on success (might be empty)
+	 * @return mixed false on failure, array of
+	 * ( uid=> ('username'=>username, 'interpretation'=>instanceof qp_InterpResult) ) on success;
+	 * warning: resulting array might be empty;
 	 */
 	function pollVotersPager( $offset = 0, $limit = 20 ) {
 		if ( $this->pid === null ) {
@@ -294,7 +323,7 @@ class qp_PollStore {
 		}
 		$qp_users_polls = self::$db->tableName( 'qp_users_polls' );
 		$qp_users = self::$db->tableName( 'qp_users' );
-		$query = "SELECT qup.uid AS uid, name AS username " .
+		$query = "SELECT qup.uid AS uid, name AS username, short_interpretation, long_interpretation, structured_interpretation " .
 				"FROM $qp_users_polls qup " .
 				"INNER JOIN $qp_users qu ON qup.uid = qu.uid " .
 				"WHERE pid = " . intval( $this->pid ) . " " .
@@ -302,7 +331,14 @@ class qp_PollStore {
 		$res = self::$db->query( $query, __METHOD__ );
 		$result = array();
 		while ( $row = self::$db->fetchObject( $res ) ) {
-			$result[intval( $row->uid )] = $row->username;
+			$interpResult = new qp_InterpResult();
+			$interpResult->short = $row->short_interpretation;
+			$interpResult->long = $row->long_interpretation;
+			$interpResult->structured = $row->structured_interpretation;
+			$result[intval( $row->uid )] = array(
+				'username' => $row->username,
+				'interpretation' => $interpResult
+			);
 		}
 		return $result;
 	}

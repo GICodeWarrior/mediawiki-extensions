@@ -7,7 +7,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 /**
  * Render question data in Special:Pollresults
  *
- * *** Usually instantiated via $qdata->createView() ***
+ * *** Usually a singleton instantiated via $qdata->getView() ***
  *
  */
 class qp_QuestionDataResults {
@@ -15,6 +15,10 @@ class qp_QuestionDataResults {
 	var $ctrl;
 
 	function __construct( qp_QuestionData $ctrl ) {
+		$this->setController( $ctrl );
+	}
+
+	function setController( qp_QuestionData $ctrl ) {
 		$this->ctrl = $ctrl;
 	}
 
