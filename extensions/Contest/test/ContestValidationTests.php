@@ -12,7 +12,7 @@
 class ContestValidationTests extends MediaWikiTestCase {
 
 	/**
-	 * Tests 
+	 * Tests @see SpecialContestSubmission::validateSubmissionField
 	 */
 	public function testURLValidation() {
 		$tests = array(
@@ -23,6 +23,7 @@ class ContestValidationTests extends MediaWikiTestCase {
 			'https://github.com/JeroenDeDauw/smwcon/tree/f9b26ec4ba1101b1f5d4ef76b7ae6ad3dabfb53' => false,
 			'https://github.com/JeroenDeDauw/smwcon/tree/f9b26ec4ba1101b1f5d4ef76b7ae6ad3dabfb53ba' => false,
 			'https://github.com/JeroenDeDauw/smwc*/tree/f9b26ec4ba1101b1f5d4ef76b7ae6ad3dabfb53b' => false,
+			'in ur unit test, being quite silly' => false,
 		);
 		
 		foreach ( $tests as $test => $isValdid ) {
@@ -32,6 +33,17 @@ class ContestValidationTests extends MediaWikiTestCase {
 			else {
 				$this->assertFalse( SpecialContestSubmission::validateSubmissionField( $test ) === true );
 			}
+		}
+	}
+
+	/**
+	 * Tests @see ContestDBObject::select and @see ContestDBObject::count
+	 */
+	public function testObjectSelectCount() {
+		$classes = array( 'Contest', 'ContestChallenge' );
+		
+		foreach ( $classes as $class ) {
+			$this->assertEquals( count( $class::s()->select() ), $class::s()->count() );
 		}
 	}
 
