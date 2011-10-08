@@ -7,7 +7,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 /**
  * Render question data in Special:Pollresults
  *
- * *** Usually instantiated via $qdata->createView() ***
+ * *** Usually a singleton instantiated via $qdata->getView() ***
  *
  */
 class qp_TextQuestionDataResults extends qp_QuestionDataResults {

@@ -8,6 +8,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * An interpretation result of user answer to the quiz
  */
 class qp_InterpResult {
+
+	private static $props = array( 'short', 'long', 'structured', 'error' );
+
 	# short answer. it is supposed to be sortable and accountable in statistics
 	# by default, it is private (displayed only in Special:Pollresults page)
 	# blank value means short answer is unavailable
@@ -43,15 +46,23 @@ class qp_InterpResult {
 	 * @param $init - optional array of properties to be initialized
 	 */
 	function __construct( $init = null ) {
-		$props = array( 'short', 'long', 'error' );
 		if ( is_array( $init ) ) {
-			foreach ( $props as $prop ) {
+			foreach ( self::$props as $prop ) {
 				if ( array_key_exists( $prop, $init ) ) {
 					$this->{ $prop } = $init[$prop];
 				}
 			}
 			return;
 		}
+	}
+
+	function isEmpty() {
+		foreach ( self::$props as $prop ) {
+			if ( $this->{ $prop } !== '' ) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	/**
@@ -106,6 +117,56 @@ class qp_InterpResult {
 
 	function hasToBeStored() {
 		return !$this->isError() || $this->storeErroneous;
+	}
+
+	/**
+	 * Builds tabular representation of the current structured answer
+	 * @return  array  containing nodes for every level of of structured answer,
+	 *                 line per line;
+	 *
+	 * "line" is an array( 'keys'=>(,,),'vals'=>(,,) ) when
+	 * current recursive node is an associative array;
+	 * "line is an array( 'vals'=>value) when current recursive node
+	 * is a scalar value.
+	 *
+	 */
+	function getStructuredAnswerTable() {
+		$strucTable = array();
+		$structured = unserialize( $this->structured );
+		$this->buildStructuredTable( $strucTable, $structured );
+		return $strucTable;
+	}
+
+	/**
+	 * Build a projection of associative array tree to 2nd dimensional array
+	 * @modifies  $strucTable  array  destination 2nd dimensional array
+	 *            (see description in $this->getStructuredAnswerTable);
+	 * @param     $structured  array  current node of associative array tree
+	 * @param     $level_header  string  current "folder-like" prefix of
+	 *            structured answer nested key (levels are separated with " / ")
+	 */
+	function buildStructuredTable( &$strucTable, &$structured, $level_header = '' ) {
+		$keys = array();
+		$vals = array();
+		if ( is_array( $structured ) ) {
+			foreach ( $structured as $key => &$val ) {
+				# display only non-numeric keys as "folders"
+				$level_key = is_int( $key ) ? '' : strval( $key );
+				# do not display '/' separator for root "folders"
+				$new_level_header = ( $level_header === '' ) ? $level_key : "{$level_header} / {$level_key}";
+				if ( is_array( $val ) ) {
+					$this->buildStructuredTable( $strucTable, $val, $new_level_header );
+				} else {
+					$keys[] = $new_level_header;
+					$vals[] = $val;
+				}
+			}
+			# associative keys and their vals
+			$strucTable[] = array( 'keys' => $keys, 'vals' => $vals );
+		} else {
+			# scalar value has no keys
+			$strucTable[] = array( 'vals' => strval( $structured ) );
+		}
 	}
 
 } /* end of qp_InterpResult class */

@@ -197,6 +197,7 @@ class qp_Setup {
 		NS_QP_INTERPRETATION => 'Interpretation',
 		NS_QP_INTERPRETATION_TALK => 'Interpretation_talk'
 	);
+
 	# stores interpretation script line numbers separately for
 	# every script language (currently only php eval is implemented)
 	# key is value of <qpinterpret> xml tag 'lang' attribute, value is source line counter

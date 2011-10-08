@@ -14,6 +14,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class qp_QuestionData {
 
+	# associated view instance (singleton)
+	static protected $view;
+
 	// DB index (with current scheme is non-unique)
 	var $question_id = null;
 	// common properties
@@ -38,6 +41,7 @@ class qp_QuestionData {
 	 *               another entries of $argv define property names and their values
 	 */
 	function __construct( $argv ) {
+		self::$view = new stdClass;
 		if ( array_key_exists( 'from', $argv ) ) {
 			switch ( $argv[ 'from' ] ) {
 				case 'postdata' :
@@ -66,10 +70,15 @@ class qp_QuestionData {
 	}
 
 	/**
-	 * Create appropriate view for Special:Pollresults
+	 * Get appropriate view for Special:Pollresults
 	 */
-	function createView() {
-		return new qp_QuestionDataResults( $this );
+	function getView() {
+		if ( get_class( self::$view ) !== 'qp_QuestionDataResults' ) {
+			self::$view = new qp_QuestionDataResults( $this );
+		} else {
+			self::$view->setController( $this );
+		}
+		return self::$view;
 	}
 
 	/**
@@ -177,8 +186,16 @@ class qp_TextQuestionData extends qp_QuestionData {
 	/**
 	 * Questions of type="text" require a different view logic in Special:Pollresults page
 	 */
-	function createView() {
-		return new qp_TextQuestionDataResults( $this );
+	/**
+	 * Get appropriate view for Special:Pollresults
+	 */
+	function getView() {
+		if ( get_class( self::$view ) !== 'qp_TextQuestionDataResults' ) {
+			self::$view =  new qp_TextQuestionDataResults( $this );
+		} else {
+			self::$view->setController( $this );
+		}
+		return self::$view;
 	}
 
 } /* end of qp_TextQuestionData class */

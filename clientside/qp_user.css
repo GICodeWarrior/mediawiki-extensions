@@ -34,11 +34,14 @@
 /* Part for the inputfields */
 .qpoll a.input, .qpoll a.input:hover, .qpoll a.input:active, .qpoll a.input:visited { text-decoration:none; color:black; outline: 0 }
 .qpoll a.input span { outline:#7F9DB9 solid 1px; border:1px solid #7F9DB9; } /* *border is for IE6/7 star is removed due to ff console error */
-.qpoll .interp_error { border: 2px solid gray; padding: 0.5em; color: white; background-color: red; }
-.qpoll .interp_answer { border: 2px solid gray; padding: 0.5em; color: black; background-color: lightblue; }
 .qpoll .cat_prefilled { color: blue; }
 .qpoll .cat_noanswer { background-color: LightYellow; }
 .qpoll .cat_error { background-color: LightYellow; border: 1px solid gray; }
+.qpoll .interp_error { border: 2px solid gray; padding: 0.5em; color: white; background-color: red; margin: 0.3em 0 0.3em 0; }
+.qpoll .interp_answer { border: 2px solid gray; padding: 0.5em; color: black; background-color: lightblue; margin: 0.3em 0 0.3em 0; }
+.qpoll table.structured_answer { border-collapse: collapse; margin: 0.3em 0 0.3em 0; }
+.qpoll table.structured_answer th { text-align:left; border-top:1px solid gray; border-left:1px solid gray; border-right:1px solid gray; background-color: Moccasin; padding: 0 0.2em 0 0.2em; }
+.qpoll table.structured_answer td { border-bottom:1px solid gray; border-left:1px solid gray; border-right:1px solid gray; background-color: Azure; padding: 0 0.2em 0 0.2em; }
 
 /* script view */
 .qpoll .line_numbers { font-family: monospace, "Courier New"; white-space:pre; color:green; background-color: lightgray; float:left; border-left: 1px solid darkgray; border-top: 1px solid darkgray; border-bottom: 1px solid darkgray; padding: 0.5em; }
