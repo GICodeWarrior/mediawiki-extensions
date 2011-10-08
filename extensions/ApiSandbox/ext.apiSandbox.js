@@ -251,7 +251,7 @@ jQuery( function( $ ) {
 	function select( values, attributes, selected ) {
 		attributes['class'] = 'api-sandbox-input';
 		if ( isset( attributes.multiple ) ) {
-			attributes['size'] = values.length.toString();
+			attributes['size'] = Math.min( values.length, 10 );
 		}
 		var s = '';
 		if ( typeof selected != 'array' ) {
