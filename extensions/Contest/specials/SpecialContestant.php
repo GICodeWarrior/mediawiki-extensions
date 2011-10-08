@@ -53,6 +53,8 @@ class SpecialContestant extends SpecialContestPage {
 			$this->displayNavigation();
 			
 			$this->showGeneralInfo( $contestant );
+			$this->showRating();
+			$this->showComments();
 		}
 	}
 	
@@ -138,5 +140,28 @@ class SpecialContestant extends SpecialContestPage {
 	}
 	
 	// TODO: show rating and commenting controls
+	
+	/**
+	 * Display the current rating the judge gave if any and a control to
+	 * (re)-rate.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param ContestContestant $contestant
+	 */
+	protected function showRating( ContestContestant $contestant ) {
+		
+	}
+
+	/**
+	 * Show the comments and a control to add additional ones.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param ContestContestant $contestant
+	 */
+	protected function showComments( ContestContestant $contestant ) {
+		
+	}
 	
 }

@@ -285,7 +285,7 @@ class SpecialContestSubmission extends SpecialContestPage {
 	 * 
 	 * @return true|string
 	 */
-	public function validateSubmissionField( $value, $alldata = null  ) {
+	public static function validateSubmissionField( $value, $alldata = null  ) {
 		$allowedPatterns = array(
 			// GitHub URLs such as https://github.com/JeroenDeDauw/smwcon/tree/f9b26ec4ba1101b1f5d4ef76b7ae6ad3dabfb53b
 			'@^https://github\.com/[a-zA-Z0-9-]+/[a-zA-Z0-9_-]+/tree/[a-zA-Z0-9]{40}$@i'
