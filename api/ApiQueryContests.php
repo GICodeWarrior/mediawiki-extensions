@@ -14,8 +14,16 @@
  */
 class ApiQueryContests extends ApiContestQuery {
 	
-	protected function getClassName() {
-		return 'Contest';
+	/**
+	 * (non-PHPdoc)
+	 * @see ApiContestQuery::getClassInfo()
+	 */
+	protected function getClassInfo() {
+		return array(
+			'class' => 'Contest',
+			'item' => 'contest',
+			'set' => 'contests',
+		);
 	}
 	
 	public function __construct( $main, $action ) {
