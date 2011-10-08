@@ -16,14 +16,16 @@
 abstract class ApiContestQuery extends ApiQueryBase {
 	
 	/**
-	 * Returns the class name of the ContestDBClass deriving class to be used 
-	 * to query for results.
+	 * Returns the class specific info. 
+	 * * class: name of the ContestDBClass deriving class (ie Contest)
+	 * * item: item name (ie contest)
+	 * * set: item set name (ie contests)
 	 * 
 	 * @since 0.1
 	 * 
-	 * @return string
+	 * @return array of string
 	 */
-	protected abstract function getClassName();
+	protected abstract function getClassInfo();
 	
 	/**
 	 * Returns an instance of the ContestDBClass deriving class.
@@ -36,7 +38,8 @@ abstract class ApiContestQuery extends ApiQueryBase {
 	 * @return ContestDBClass
 	 */
 	protected function getClass() {
-		$className = $this->getClassName();
+		$className = $this->getClassInfo();
+		$className = $className['class'];
 		return $className::s();
 	}
 
@@ -141,11 +144,20 @@ abstract class ApiContestQuery extends ApiQueryBase {
 			$serializedResults[] = $result->toArray();
 		}
 
-		$this->getResult()->setIndexedTagName( $serializedResults, 'contest' );
-		
+		$this->addIndexedTagNames( $serializedResults );
+		$this->addSerializedResults( $serializedResults );
+	}
+	
+	protected function addIndexedTagNames( array $serializedResults ) {
+		$classInfo = $this->getClassInfo();
+		$this->getResult()->setIndexedTagName( $serializedResults, $classInfo['item'] );
+	}
+	
+	protected function addSerializedResults( array $serializedResults ) {
+		$classInfo = $this->getClassInfo();
 		$this->getResult()->addValue(
 			null,
-			'contests',
+			$classInfo['set'],
 			$serializedResults
 		);
 	}

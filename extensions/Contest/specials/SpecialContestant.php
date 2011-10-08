@@ -53,8 +53,8 @@ class SpecialContestant extends SpecialContestPage {
 			$this->displayNavigation();
 			
 			$this->showGeneralInfo( $contestant );
-			$this->showRating();
-			$this->showComments();
+			$this->showRating( $contestant );
+			$this->showComments( $contestant );
 		}
 	}
 	

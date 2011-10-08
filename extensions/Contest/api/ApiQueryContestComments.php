@@ -1,18 +1,18 @@
 <?php
 
 /**
- * API module to get a list of contest challenges.
+ * API module to get a list of commets.
  *
  * @since 0.1
  *
- * @file ApiQueryChallenges.php
+ * @file ApiQueryContestComments.php
  * @ingroup Contest
  * @ingroup API
  *
  * @licence GNU GPL v3+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class ApiQueryChallenges extends ApiContestQuery {
+class ApiQueryContestComments extends ApiContestQuery {
 	
 	/**
 	 * (non-PHPdoc)
@@ -20,14 +20,14 @@ class ApiQueryChallenges extends ApiContestQuery {
 	 */
 	protected function getClassInfo() {
 		return array(
-			'class' => 'ContestChallenge',
-			'item' => 'challenge',
-			'set' => 'challenges',
+			'class' => 'ContestComment',
+			'item' => 'comment',
+			'set' => 'comments',
 		);
 	}
 	
 	public function __construct( $main, $action ) {
-		parent::__construct( $main, $action, 'ch' );
+		parent::__construct( $main, $action, 'coco' );
 	}
 
 	/**
@@ -37,7 +37,7 @@ class ApiQueryChallenges extends ApiContestQuery {
 	public function execute() {
 		global $wgUser;
 		
-		if ( !$wgUser->isAllowed( 'contestadmin' ) || $wgUser->isBlocked() ) {
+		if ( !$wgUser->isAllowed( 'contestjudge' ) || $wgUser->isBlocked() ) {
 			$this->dieUsageMsg( array( 'badaccess-groups' ) );
 		}
 
@@ -49,7 +49,7 @@ class ApiQueryChallenges extends ApiContestQuery {
 	 * @see includes/api/ApiBase#getDescription()
 	 */
 	public function getDescription() {
-		return 'API module for querying contest challanges';
+		return 'API module for querying contest comments';
 	}
 	
 	/**
@@ -58,8 +58,8 @@ class ApiQueryChallenges extends ApiContestQuery {
 	 */
 	protected function getExamples() {
 		return array (
-			'api.php?action=query&list=challenges&chprops=title|text',
-			'api.php?action=query&list=challenges&chcontestid=42&chprops=id|contest_id|title',
+			'api.php?action=query&list=contestcomments&cocoprops=id|user_id|contestant_id|text',
+			'api.php?action=query&list=contestcomments&cocoprops=id|text&cocouser_id=42',
 		);
 	}
 

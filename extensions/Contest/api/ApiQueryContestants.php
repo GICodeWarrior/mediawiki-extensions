@@ -14,8 +14,16 @@
  */
 class ApiQueryContestants extends ApiContestQuery {
 	
-	protected function getClassName() {
-		return 'ContestContestant';
+	/**
+	 * (non-PHPdoc)
+	 * @see ApiContestQuery::getClassInfo()
+	 */
+	protected function getClassInfo() {
+		return array(
+			'class' => 'ContestContestant',
+			'item' => 'contestant',
+			'set' => 'contestants',
+		);
 	}
 	
 	public function __construct( $main, $action ) {
@@ -51,7 +59,7 @@ class ApiQueryContestants extends ApiContestQuery {
 	protected function getExamples() {
 		return array (
 			'api.php?action=query&list=contestants&ctprops=id|user_id|contest_id|rating',
-			'api.php?action=query&list=contestants&ctprops=id|rating&ctcontestid=42',
+			'api.php?action=query&list=contestants&ctprops=id|rating&ctcontest_id=42',
 		);
 	}
 
