@@ -62,7 +62,9 @@ class NarayamHooks {
 		
 		$mandatorySchemes = array ();
 		foreach ($wgNarayamAlwaysLoadForLanguages as $languageCode) {
-			$mandatorySchemes += $wgNarayamSchemes[$languageCode];
+			if ( isset( $wgNarayamSchemes[$languageCode] ) ) {
+				$mandatorySchemes += $wgNarayamSchemes[$languageCode];
+			}
 		}
 
 		$userlangCode = $wgLang->getCode();
