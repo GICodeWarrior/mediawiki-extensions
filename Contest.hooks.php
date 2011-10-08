@@ -163,7 +163,7 @@ final class ContestHooks {
 	public static function registerUnitTests( array &$files ) {
 		$testDir = dirname( __FILE__ ) . '/test/';
 		
-		//$files[] = $testDir . 'SurveyQuestionTest.php';
+		$files[] = $testDir . 'ContestValidationTests.php';
 		
 		return true;
 	}
