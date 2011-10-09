@@ -375,11 +375,12 @@ $messages['sq'] = array(
 	'randomimage-desc' => 'Mundëson hapje të rastësishme të mediave duke përdorur <code>&lt;randomimage /&gt;</code>',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'randomimage-desc' => 'Приказује случајно изабрану слику помоћу тага <code>&lt;randomimage /&gt;</code>',
+	'randomimage-desc' => 'Приказује случајног бирача датотека користећи <code>&lt;randomimage /&gt;</code>',
 );
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)
