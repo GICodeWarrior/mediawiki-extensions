@@ -146,8 +146,12 @@ abstract class SpecialContestPage extends SpecialPage {
 	 * 
 	 * @since 0.1
 	 */
-	protected function displayNavigation() {
-		$this->getOutput()->addHTML( self::getNavigation( $this->subPage, $this->getUser(), $this->getLang(), $this->getName() ) );
+	protected function displayNavigation( $subPage = null ) {
+		if ( is_null( $subPage ) ) {
+			$subPage = $this->subPage;
+		}
+		
+		$this->getOutput()->addHTML( self::getNavigation( $subPage, $this->getUser(), $this->getLang(), $this->getName() ) );
 	}
 	
 }

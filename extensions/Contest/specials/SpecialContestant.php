@@ -34,28 +34,78 @@ class SpecialContestant extends SpecialContestPage {
 			return;
 		}
 		
-		$out = $this->getOutput();
-		
 		$contestant = ContestContestant::s()->selectRow( null, array( 'id' => (int)$subPage ) );
 		
 		if ( $contestant === false ) {
-			$out->redirect( SpecialPage::getTitleFor( 'Contests' )->getLocalURL() );
+			$this->getOutput()->redirect( SpecialPage::getTitleFor( 'Contests' )->getLocalURL() );
 		}
 		else {
-			$out->setPageTitle( wfMsgExt(
-				'contest-contestant-title',
-				'parseinline',
-				$contestant->getField( 'id' ),
-				$contestant->getContest()->getField( 'name' )
+			if ( $this->getRequest()->wasPosted()
+				&& $this->getUser()->matchEditToken( $this->getRequest()->getVal( 'wpEditToken' ) ) ) {
+				$this->handleSubmission( $contestant );
+			}
+			
+			$this->showPage( $contestant );
+		}
+	}
+	
+	/**
+	 * Handle a submission by inserting/updating the vote
+	 * and (optionally) adding the comment.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param ContestContestant $contestant
+	 * 
+	 * @return boolean Success indicator
+	 */
+	protected function handleSubmission( ContestContestant $contestant ) {
+		$success = true;
+		
+		if ( trim( $this->getRequest()->getText( 'new-comment-text' ) ) !== '' ) {
+			$comment = new ContestComment( array(
+				'user_id' => $this->getUser()->getId(),
+				'contestant_id' => $contestant->getId(),
+			
+				'text' => $this->getRequest()->getText( 'new-comment-text' ),
+				'time' => wfTimestampNow()
 			) );
 			
-			$this->subPage = str_replace( ' ', '_', $contestant->getContest()->getField( 'name' ) );
-			$this->displayNavigation();
+			$success = $comment->writeToDB();
 			
-			$this->showGeneralInfo( $contestant );
-			$this->showRating( $contestant );
-			$this->showComments( $contestant );
+			if ( $success ) {
+				ContestContestant::s()->addToField( 'comments', 1 );
+			}		
 		}
+		
+		if ( $success ) {
+			// TODO: rating shizzle
+		}
+		
+		return $success;
+	}
+	
+	protected function showPage( ContestContestant $contestant ) {
+		$out = $this->getOutput();
+		
+		$out->setPageTitle( wfMsgExt(
+			'contest-contestant-title',
+			'parseinline',
+			$contestant->getField( 'id' ),
+			$contestant->getContest()->getField( 'name' )
+		) );
+		
+		$this->displayNavigation( str_replace( ' ', '_', $contestant->getContest()->getField( 'name' ) ) );
+		
+		$this->showGeneralInfo( $contestant );
+		
+		$out->addHTML( '<form method="post" action="' . htmlspecialchars( $this->getTitle( $this->subPage )->getLocalURL() ) . '">' );
+		$out->addHTML( Html::hidden( 'wpEditToken', $this->getUser()->editToken() ) );
+		
+		$this->showRating( $contestant );
+		$this->showComments( $contestant );
+		
+		$out->addHTML( '</form>' );
 	}
 	
 	/**
@@ -139,8 +189,6 @@ class SpecialContestant extends SpecialContestPage {
 		return $stats;
 	}
 	
-	// TODO: show rating and commenting controls
-	
 	/**
 	 * Display the current rating the judge gave if any and a control to
 	 * (re)-rate.
@@ -161,7 +209,62 @@ class SpecialContestant extends SpecialContestPage {
 	 * @param ContestContestant $contestant
 	 */
 	protected function showComments( ContestContestant $contestant ) {
+		$out = $this->getOutput();
 		
+		$out->addHTML( Html::element( 'h2', array(), wfMsg( 'contest-contestant-comments' ) ) );
+		
+		$out->addHTML( '<div class="contestant-comments">' );
+		
+		foreach ( $contestant->getComments() as /* ContestComment */ $comment ) {
+			$out->addHTML( $this->getCommentHTML( $comment ) );
+		}
+		
+		$out->addHTML( '</div>' );
+		
+		$out->addHTML(
+			'<div class="contestant-new-comment">
+				<textarea cols="40" rows="10" name="new-comment-text"></textarea>
+			</div>'
+		);
+		
+		$out->addHTML( Html::input( 'submitChanges', wfMsg( 'contest-contestant-submit' ), 'submit' ) );
+	}
+	
+	/**
+	 * Get the HTML for a single comment.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param ContestComment $comment
+	 * 
+	 * @return string
+	 */
+	protected function getCommentHTML( ContestComment $comment ) {
+		$user = User::newFromId( $comment->getField( 'user_id' ) );
+		
+		$html = Html::rawElement(
+			'div',
+			array( 'class' => 'contestant-comment-meta' ),
+			wfMsgHtml(
+				'contest-contestant-comment-by',
+				Linker::userLink( $comment->getField( 'user_id' ), $user->getName() ) .
+					Linker::userToolLinks( $comment->getField( 'user_id' ), $user->getName() )
+			) . '&#160;&#160;&#160;' .$this->getLang()->timeanddate( $comment->getField( 'time' ), true )
+		);
+		
+		$html .= Html::rawElement(
+			'div',
+			array( 'class' => 'contestant-comment-text' ),
+			$this->getOutput()->parse( $comment->getField( 'text' ) )
+		);
+		
+		return Html::rawElement(
+			'div',
+			array(
+				'class' => 'contestant-comment',
+			),
+			$html
+		);
 	}
 	
 }
