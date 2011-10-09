@@ -78,8 +78,19 @@ class SpecialContestant extends SpecialContestPage {
 			}		
 		}
 		
-		if ( $success ) {
-			// TODO: rating shizzle
+		if ( $success && !is_null( $this->getRequest()->getVal( 'contestant-rating' ) ) ) {
+			$attribs = array(
+				'value' => $this->getRequest()->getInt( 'contestant-rating' ),
+				'contestant_id' => $contestant->getId(),
+				'user_id' => $this->getUser()->getId()
+			);
+			
+			if ( !is_null( $this->getRequest()->getVal( 'contestant-vote-id' ) ) ) {
+				$attribs['id'] = $this->getRequest()->getInt( 'contestant-vote-id' );
+			}
+			
+			$vote = new ContestVote( $attribs );
+			$success = $vote->writeToDB() && $success;
 		}
 		
 		return $success;
@@ -204,6 +215,50 @@ class SpecialContestant extends SpecialContestPage {
 		
 		$out->addHTML( Html::element( 'h2', array(), wfMsg( 'contest-contestant-rate' ) ) );
 		
+		$vote = ContestVote::s()->selectRow(
+			array( 'value', 'id' ),
+			array( 'user_id' => $this->getUser()->getId(), 'contestant_id' => $contestant->getId() )
+		);
+		
+		if ( $vote === false ) {
+			$message = wfMsg( 'contest-contestant-not-voted' );
+		}
+		else {
+			$message = wfMsgExt(
+				'contest-contestant-voted',
+				'parsemag', 
+				$this->getLang()->formatNum( $vote->getField( 'value' ) )
+			);
+			
+			$out->addHTML( Html::hidden( 'contestant-vote-id', $vote->getId() ) );
+		} 
+		
+		$out->addHTML( Html::element( 'p', array(), $message ) );
+		
+		foreach ( ContestSettings::get( 'votevalues' ) as $value ) {
+			$attribs = array(
+				'type' => 'radio',
+				'value' => $value,
+				'name' => 'contestant-rating',
+				'id' => 'contestant-rating-' . $value
+			);
+			
+			if ( $vote !== false && $value == $vote->getField( 'value' ) ) {
+				$attribs['checked'] = 'checked';
+			}
+			
+			$out->addHTML(
+				Html::element(
+					'input',
+					$attribs
+				) .
+				Html::element(
+					'label',
+					array( 'for' => 'contestant-rating-' . $value ),
+					$this->getLang()->formatNum( $value )
+				)
+			);
+		}
 		
 	}
 
