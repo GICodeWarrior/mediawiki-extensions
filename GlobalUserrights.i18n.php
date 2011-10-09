@@ -24,6 +24,7 @@ $messages['en'] = array(
  * @author Darth Kule
  * @author Fryed-peach
  * @author Purodha
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'gur-desc' => '{{desc}}
@@ -34,7 +35,7 @@ See also {{msg-mw|Gblrights-desc}}',
 	'gur-rightslog-entry' => 'Identical to {{msg-mw|Gblrights-rights-entry}}.
 
 Similar to {{msg-mw|Rightslogentry}}.',
-	'right-userrights-global' => '{{doc-right}}
+	'right-userrights-global' => '{{doc-right|userrights-global}}
 
 See also {{msg-mw|Right-userrights-shared}}',
 );
