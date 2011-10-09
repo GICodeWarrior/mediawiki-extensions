@@ -187,10 +187,11 @@ abstract class ContestDBObject {
 	 * @since 0.1
 	 * 
 	 * @param null|array $props
+	 * @param boolean $incNullId
 	 * 
 	 * @return array
 	 */
-	public function toArray( $fields = null ) {
+	public function toArray( $fields = null, $incNullId = false ) {
 		$data = array();
 		$setFields = array();
 		
@@ -205,7 +206,9 @@ abstract class ContestDBObject {
 		}
 		
 		foreach ( $setFields as $field ) {
-			$data[$field] = $this->getField( $field );
+			if ( $incNullId || $field != 'id' || $this->hasIdField() ) {
+				$data[$field] = $this->getField( $field );
+			}
 		}
 		
 		return $data;
