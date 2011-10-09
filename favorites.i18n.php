@@ -177,6 +177,7 @@ $messages['br'] = array(
 
 /** German (Deutsch)
  * @author Kghbln
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'favorites-desc' => 'Ermöglicht das Erstellen von Favoritenlisten',
@@ -207,7 +208,7 @@ $messages['de'] = array(
 	'tooltip-ca-unfavorite' => 'Entferne diese Seite von deiner Favoritenliste',
 	'tooltip-favorite' => 'Füge diese Seite zu deiner Favoritenliste hinzu',
 	'favoritelistall2' => 'alle',
-	'favoritelistedit-numitems' => 'Deine Favoritenliste enthält {{PLURAL:$1|einen Eintrag |$1 Einträge}}.',
+	'favoritelistedit-numitems' => 'Deine Favoritenliste enthält {{PLURAL:$1|einen Eintrag|$1 Einträge}}.',
 	'favoritelistedit-noitems' => 'Deine Favoritenliste enthält keine Einträge.',
 	'favoritelistedit-normal-title' => 'Favoritenliste bearbeiten',
 	'favoritelistedit-normal-legend' => 'Einträge aus der Favoritenliste entfernen',
@@ -234,6 +235,7 @@ Du kannst auch die [[Special:Favoritelist/edit|Standardseite]] zum Bearbeiten be
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Kghbln
+ * @author Umherirrender
  */
 $messages['de-formal'] = array(
 	'nofavoritelist' => 'Es befinden sich keine Einträge auf Ihrer Favoritenliste.',
@@ -245,7 +247,7 @@ $messages['de-formal'] = array(
 	'tooltip-ca-favorite' => 'Fügen Sie diese Seite zu Ihrer Favoritenliste hinzu',
 	'tooltip-ca-unfavorite' => 'Entfernen Sie diese Seite von Ihrer Favoritenliste',
 	'tooltip-favorite' => 'Fügen Sie diese Seite zu Ihrer Favoritenliste hinzu',
-	'favoritelistedit-numitems' => 'Ihre Favoritenliste enthält {{PLURAL:$1|einen Eintrag|$1 Einträge}}. Die Diskussionsseiten wurden dabei nicht mitgezählt.',
+	'favoritelistedit-numitems' => 'Ihre Favoritenliste enthält {{PLURAL:$1|einen Eintrag|$1 Einträge}}.',
 	'favoritelistedit-noitems' => 'Ihre Favoritenliste enthält keine Einträge.',
 	'favoritelistedit-normal-explain' => 'Dies sind die Einträge Ihrer Favoritenliste.
 Um Einträge zu entfernen, markieren Sie die Kästchen neben den Einträgen und klicken Sie am Ende der Seite auf „{{int:Favoritelistedit-normal-submit}}“.
