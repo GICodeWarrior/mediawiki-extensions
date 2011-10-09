@@ -946,7 +946,7 @@ $messages['sk'] = array(
 	'profiling-no-data' => 'Neboli nájdené vyhovujúce údaje.',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -955,8 +955,8 @@ $messages['sr-ec'] = array(
 	'profiling-ok' => 'У реду',
 	'profiling-data-process' => 'Обради',
 	'profiling-data-count' => 'Број',
-	'profiling-data-time' => 'Време (укупно)',
-	'profiling-data-average' => 'Време (средње)',
+	'profiling-data-time' => 'Време (све)',
+	'profiling-data-average' => 'Време (просечно)',
 );
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
