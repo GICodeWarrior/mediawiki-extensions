@@ -1066,13 +1066,18 @@ $messages['sq'] = array(
 	'abcdownload' => 'Shkarko:',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'abc-desc' => 'Додаје <code>&lt;abc&gt;</code> ознаку за обликовање ABC музике',
 	'abcdownload' => 'Преузимање:',
+	'abcabc' => 'ABC',
+	'abcpdf' => 'PDF',
+	'abcps' => 'Постскрипт',
+	'abcmidi' => 'MIDI',
+	'abcvorbis' => 'Ogg Vorbis',
 );
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)
