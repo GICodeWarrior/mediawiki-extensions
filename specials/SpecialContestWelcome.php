@@ -23,15 +23,6 @@ class SpecialContestWelcome extends SpecialContestPage {
 	}
 	
 	/**
-	 * @see SpecialPage::getDescription
-	 * 
-	 * @since 0.1
-	 */
-	public function getDescription() {
-		return wfMsg( 'special-' . strtolower( $this->getName() ) );
-	}
-	
-	/**
 	 * Main method.
 	 * 
 	 * @since 0.1
