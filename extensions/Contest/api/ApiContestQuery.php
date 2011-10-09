@@ -2,7 +2,7 @@
 
 /**
  * Base class for API query modules that return results using a
- * ContestDBClass deriving class.
+ * ContestDBObject deriving class.
  *
  * @since 0.1
  *
@@ -17,7 +17,7 @@ abstract class ApiContestQuery extends ApiQueryBase {
 	
 	/**
 	 * Returns the class specific info. 
-	 * * class: name of the ContestDBClass deriving class (ie Contest)
+	 * * class: name of the ContestDBObject deriving class (ie Contest)
 	 * * item: item name (ie contest)
 	 * * set: item set name (ie contests)
 	 * 
@@ -28,7 +28,7 @@ abstract class ApiContestQuery extends ApiQueryBase {
 	protected abstract function getClassInfo();
 	
 	/**
-	 * Returns an instance of the ContestDBClass deriving class.
+	 * Returns an instance of the ContestDBObject deriving class.
 	 * Once PHP 5.3 becomes an accaptable requirement, we
 	 * can get rid of this silly hack and simply return the class
 	 * name (since all methods we need ought to be static in PHP >= 5.3).  
@@ -129,7 +129,7 @@ abstract class ApiContestQuery extends ApiQueryBase {
 	 * @param array $params
 	 * @param array $results
 	 */
-	protected function addResults( array $params, array /* of ContestDBClass */ $results ) {
+	protected function addResults( array $params, array /* of ContestDBObject */ $results ) {
 		$serializedResults = array();
 		$count = 0;
 		
@@ -141,20 +141,35 @@ abstract class ApiContestQuery extends ApiQueryBase {
 				break;
 			}
 			
-			$serializedResults[] = $result->toArray();
+			$serializedResults[] = $result->toArray( $params['props'] );
 		}
-
-		$this->addIndexedTagNames( $serializedResults );
-		$this->addSerializedResults( $serializedResults );
+		
+		$this->setIndexedTagNames( $serializedResults );
+		$this->addSerializedResults( $serializedResults );	
 	}
 	
-	protected function addIndexedTagNames( array $serializedResults ) {
+	/**
+	 * Set the tag names for formats such as XML.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param array $serializedResults
+	 */
+	protected function setIndexedTagNames( array &$serializedResults ) {
 		$classInfo = $this->getClassInfo();
 		$this->getResult()->setIndexedTagName( $serializedResults, $classInfo['item'] );
 	}
 	
+	/**
+	 * Add the serialized results to the result object.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param array $serializedResults
+	 */
 	protected function addSerializedResults( array $serializedResults ) {
 		$classInfo = $this->getClassInfo();
+		
 		$this->getResult()->addValue(
 			null,
 			$classInfo['set'],
