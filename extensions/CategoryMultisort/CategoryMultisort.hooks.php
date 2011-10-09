@@ -378,7 +378,10 @@ class CategoryMultisortHooks {
 			
 				$from = $wgRequest->getVal( 'from' );
 				$until = $wgRequest->getVal( 'until' );
-				$viewer = new CategoryMultisortViewer( $title, $skn, $from, $until );
+				$viewer = new CategoryMultisortViewer(
+					$title, $categoryArticle->getContext(), $skn,
+					$from, $until
+				);
 				$wgOut->addHTML( $viewer->getHTML() );
 				
 				return false;
