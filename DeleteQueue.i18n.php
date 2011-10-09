@@ -212,6 +212,7 @@ You can [{{fullurl:{{FULLPAGENAME}}|action=delvote}} register your own endorseme
  * @author Purodha
  * @author Siebrand
  * @author The Evil IP address
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'deletequeue-desc' => '{{desc}}',
@@ -226,13 +227,13 @@ $messages['qqq'] = array(
 * $3 is a queue name to which page $1 was added',
 	'deletequeue-log-dequeue' => '* $1 is a page name
 * $2 is a queue name',
-	'right-speedy-nominate' => '{{doc-right}}',
-	'right-speedy-review' => '{{doc-right}}',
-	'right-prod-nominate' => '{{doc-right}}',
-	'right-prod-review' => '{{doc-right}}',
-	'right-deletediscuss-nominate' => '{{doc-right}}',
-	'right-deletediscuss-review' => '{{doc-right}}',
-	'right-deletequeue-vote' => '{{doc-right}}',
+	'right-speedy-nominate' => '{{doc-right|speedy-nominate}}',
+	'right-speedy-review' => '{{doc-right|speedy-review}}',
+	'right-prod-nominate' => '{{doc-right|prod-nominate}}',
+	'right-prod-review' => '{{doc-right|prod-review}}',
+	'right-deletediscuss-nominate' => '{{doc-right|deletediscuss-nominate}}',
+	'right-deletediscuss-review' => '{{doc-right|deletediscuss-review}}',
+	'right-deletequeue-vote' => '{{doc-right|deletequeue-vote}}',
 	'deletequeue-page-speedy' => '$1 is the reason that the proposer entered.',
 	'deletequeue-page-prod' => '* $1 is the reason that the proposer entered
 * $2 is a date/time,
@@ -6356,6 +6357,8 @@ $messages['sr-ec'] = array(
 ** Није за пројекат',
 	'deletequeue-nom-alreadyqueued' => 'Ова страница се већ налази у реду за брисање.',
 	'deletequeue-speedy-title' => 'Означи "$1" за брзо брисање',
+	'deletequeue-speedy-reasons' => '-',
+	'deletequeue-prod-reasons' => '-',
 	'deletequeue-delnom-reason' => 'Разлог за предлог:',
 	'deletequeue-delnom-otherreason' => 'Други разлог',
 	'deletequeue-delnom-extra' => 'Додатне информације:',
