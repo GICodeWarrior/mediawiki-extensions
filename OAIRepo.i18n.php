@@ -477,11 +477,13 @@ $messages['sl'] = array(
 	'oai-desc' => 'Zagotavlja vmesnik hrambe [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Millosh
+ * @author Rancher
  */
 $messages['sr-ec'] = array(
 	'oai-desc' => 'Даје складиште интерфејса [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH].',
+	'oairepository' => 'Складиште OAI',
 );
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)
