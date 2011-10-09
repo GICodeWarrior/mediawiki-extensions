@@ -267,6 +267,14 @@ $messages['ru'] = array(
 	'wikibhasha-desc' => 'Приложение для создания многоязычных произведений на основе материалов английской Википедии',
 );
 
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
+ */
+$messages['sr-ec'] = array(
+	'wikibhasha' => 'WikiBhasha',
+	'wikiBhashaLink' => 'WikiBhasha (бета)',
+);
+
 /** Telugu (తెలుగు)
  * @author రహ్మానుద్దీన్
  */
