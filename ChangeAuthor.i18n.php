@@ -68,6 +68,7 @@ If this error keeps showing up, the database is probably broken.',
  * @author Purodha
  * @author Siebrand
  * @author The Evil IP address
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'changeauthor' => 'Name of the special page on [[Special:SpecialPages]]',
@@ -94,7 +95,7 @@ $messages['qqq'] = array(
 	'changeauthor-success' => 'Displayed after a successful change.',
 	'changeauthor-logentry' => 'The log message for author changes. $1 is the page title, $2 includes {{msg-mw|changeauthor-rev}} in the site language, $3 the old author and $4 the new one',
 	'changeauthor-logpagename' => 'Displayed on top of Special:Log/changeauth and in the list of available logs.',
-	'right-changeauthor' => '{{doc-right}}',
+	'right-changeauthor' => '{{doc-right|changeauthor}}',
 );
 
 /** Niuean (ko e vagahau Niuē)
@@ -2127,7 +2128,7 @@ Prosimo, ponovite svojo zahtevo.
 	'right-changeauthor' => 'Spreminjanje avtorjev redakcij',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Sasa Stefanovic
  * @author Жељко Тодоровић
@@ -2150,6 +2151,7 @@ $messages['sr-ec'] = array(
 	'changeauthor-success' => 'Баш захтев је био успешно обрађен.',
 	'changeauthor-logentry' => 'Промењен аутор $2 на $1, са $3 на $4',
 	'changeauthor-logpagename' => 'Историја промене аутора',
+	'changeauthor-rev' => 'изм. $1',
 	'right-changeauthor' => 'Промени аутора ревизије',
 );
 
