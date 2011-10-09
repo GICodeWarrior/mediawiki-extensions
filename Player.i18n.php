@@ -1355,24 +1355,24 @@ $messages['sl'] = array(
 	'player-goto-file' => 'datoteka',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Sasa Stefanovic
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'player' => 'Плејер',
+	'player' => 'Извођач',
 	'player-desc' => 'Уграђени плејер за мултимедијалне фајлове, који користи устаљене плагинове за браузере, и [[Special:Player|специјалну страну]]',
-	'player-title' => 'Плејер',
-	'player-playertitle' => 'Плејер: $1',
+	'player-title' => 'Извођач',
+	'player-playertitle' => 'Извођач: $1',
 	'player-file' => 'Назив датотеке',
 	'player-play' => 'Пусти',
 	'player-not-allowed' => 'недозвољен формат',
 	'player-not-found' => 'датотека није пронађена',
 	'player-invalid-title' => 'неисправан наслов',
 	'player-clicktoplay' => 'Пусти $1',
-	'player-goto-player' => 'плејер',
+	'player-goto-player' => 'извођач',
 	'player-goto-page' => 'Страница',
 	'player-goto-file' => 'датотека',
 );
