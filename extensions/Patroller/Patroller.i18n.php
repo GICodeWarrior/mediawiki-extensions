@@ -47,6 +47,7 @@ $messages['en'] = array(
  * @author Jon Harald Søby
  * @author Purodha
  * @author The Evil IP address
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'patrol-desc' => '{{desc}}',
@@ -56,7 +57,10 @@ $messages['qqq'] = array(
 	'patrol-reverting' => '{{Identical|Revert}}',
 	'patrol-reverted-ok' => '{{Identical|Revert}}',
 	'patrol-reverted-failed' => '{{Identical|Revert}}',
-	'right-patroller' => '{{doc-right}}',
+	'group-patroller' => '{{doc-group|patroller}}',
+	'group-patroller-member' => '{{doc-group|patroller|member}}',
+	'grouppage-patroller' => '{{doc-group|patroller|page}}',
+	'right-patroller' => '{{doc-right|patroller}}',
 );
 
 /** Niuean (ko e vagahau Niuē)
@@ -1939,27 +1943,28 @@ $messages['sq'] = array(
 	'group-patroller-member' => 'inspektorues',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'patrol' => 'Потролирање измена',
+	'patrol' => 'Патролирај измене',
 	'patrol-revert' => 'Врати',
 	'patrol-revert-reason' => 'Разлог:',
 	'patrol-skip' => 'Прескочи',
 	'patrol-reverting' => 'Враћање: $1',
-	'patrol-nonefound' => 'Нема измена које би се могле патролирати',
-	'patrol-endorsed-ok' => 'Измена је обележена као патролисана.',
-	'patrol-endorsed-failed' => 'Измена није могла бити обележена као патролирана.',
+	'patrol-nonefound' => 'Нема одговарајућих измена за патролирање.',
+	'patrol-endorsed-ok' => 'Измена је означена као прегледана.',
+	'patrol-endorsed-failed' => 'Не могу да означим измену као прегледану.',
 	'patrol-reverted-ok' => 'Измена је враћена.',
-	'patrol-reverted-failed' => 'Измена није могла бити враћена.',
-	'patrol-skipped-ok' => 'Игнорисање измене.',
-	'patrol-reasons' => '* Обичан вандализам
+	'patrol-reverted-failed' => 'Не могу да вратим измену.',
+	'patrol-skipped-ok' => 'Занемарујем измену.',
+	'patrol-reasons' => '* Прост вандализам
 * Тест почетника
-* Види страну за разговор',
-	'patrol-another' => 'Покажи неку другу измену, ако је доступна.',
-	'patrol-resume' => 'Кликните овде да се вратите.',
+* Види страницу за разговор',
+	'patrol-another' => 'Прикажи другу измену, ако постоји.',
+	'patrol-resume' => 'Кликните овде за наставак.',
 	'group-patroller' => 'Патролери',
 	'group-patroller-member' => 'патролер',
 	'grouppage-patroller' => '{{ns:project}}:Патролер',

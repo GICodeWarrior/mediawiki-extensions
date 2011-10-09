@@ -3546,7 +3546,7 @@ $messages['so'] = array(
 	'tasks_search_form_title' => 'Raadi',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -3585,6 +3585,7 @@ $messages['sr-ec'] = array(
 	'tasks_task_is_assigned' => '(додељено)',
 	'tasks_plain_text_only' => '(чист текст, само 256 карактера)',
 	'tasks_help_page' => 'Задаци',
+	'tasks_help_page_link' => '?',
 	'tasks_more_like_it' => 'више',
 	'tasks_event_on_creation' => 'провери',
 	'tasks_event_on_creation_anon' => 'провери',

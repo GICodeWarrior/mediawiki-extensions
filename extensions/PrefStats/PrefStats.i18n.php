@@ -2673,19 +2673,19 @@ Konfiguroni $wgPrefStatsTrackPrefs për të ndjekur preferencat.',
 	'prefstats-legend-in' => 'Vendosur brenda',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'prefstats-xaxis' => 'Трајање (сати)',
+	'prefstats-xaxis' => 'Трајање (у сатима)',
 	'prefstats-factor-hour' => 'сат',
 	'prefstats-factor-sixhours' => 'шест сати',
 	'prefstats-factor-day' => 'дан',
 	'prefstats-factor-week' => 'недеља',
 	'prefstats-factor-twoweeks' => 'две недеље',
-	'prefstats-factor-fourweeks' => '4 недеље',
+	'prefstats-factor-fourweeks' => 'четири недеље',
 	'prefstats-factor-default' => 'врати се на подразумевану скалу',
 );
 

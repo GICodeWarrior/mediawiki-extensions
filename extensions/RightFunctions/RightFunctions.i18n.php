@@ -456,6 +456,16 @@ $messages['sk'] = array(
 	'rightfunctions-ns' => '(zo zamknutia menného priestoru)',
 );
 
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
+ */
+$messages['sr-ec'] = array(
+	'rightfunctions-rest1' => '$1 $2',
+	'rightfunctions-rest2' => '$1 $2$5 $3 $4',
+	'rightfunctions-rest3' => '$1 $2$7 $3 $4$7 $5 $6',
+	'rightfunctions-sep' => ',',
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
  * @author M.M.S.

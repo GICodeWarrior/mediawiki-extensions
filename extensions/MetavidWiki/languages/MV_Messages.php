@@ -9794,13 +9794,20 @@ $messages['so'] = array(
 	'mv_category' => 'qeybta',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Sasa Stefanovic
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'ao_file_64Kb_MPEG4' => 'Archive.org – MPEG-4 64 kbit/s',
+	'ao_file_256Kb_MPEG4' => 'Archive.org – MPEG-4 256 kbit/s',
+	'ao_file_512Kb_MPEG4' => 'Archive.org – MPEG-4 512 kbit/s',
+	'ao_file_MPEG1' => 'Archive.org – MPEG-1',
+	'ao_file_MPEG2' => 'Archive.org – изворни MPEG-2',
+	'ao_file_flash_flv' => 'Archive.org – Флеш видео',
+	'ao_file_Ogg_Video' => 'Archive.org – Ogg видео',
 	'mv_error_stream_missing' => '<span class="error">Грешка: Не постоји видео-фајл придружен овом стриму.</span><br />
 Молимо Вас да пријавите ово [[{{MediaWiki:Grouppage-sysop}}|администратору сајта]].',
 	'mv_stream_added' => 'Додали сте стрим $1',

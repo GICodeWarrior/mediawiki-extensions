@@ -692,12 +692,14 @@ $messages['so'] = array(
 	'categoryonupload-label' => 'Qeybta:',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'categoryonupload-desc' => 'Тражи од корисника да изабере категорију када шаље фајл',
 	'categoryonupload-label' => 'Категорија:',
+	'categoryonupload-none' => '-',
 );
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)

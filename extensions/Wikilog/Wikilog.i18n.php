@@ -6655,7 +6655,7 @@ $messages['so'] = array(
 	'wikilog-form-category' => 'Qeybta:',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
@@ -6688,7 +6688,10 @@ $messages['sr-ec'] = array(
 	'wikilog-summary-footer-single' => 'Послао/-ла $7 ка $8 у $9 ($15), $10.',
 	'wikilog-summary-uncategorized' => 'Некатегорисано',
 	'wikilog-summary-categories' => 'Заведено под $2',
+	'wikilog-entry-footer' => '— $7 • $9, $8 • $10',
+	'wikilog-simple-signature' => '$1 ($2)',
 	'wikilog-edit-signpub' => 'Потпиши и објави овај чланак',
+	'wikilog-comment-footer' => '— $2 • $5 $6',
 	'wikilog-comment-permalink' => '$1 у $2',
 	'wikilog-comment-note-item' => 'послато на $1',
 	'wikilog-comment-note-edited' => 'последње измењен на $1 у $2',
@@ -6700,9 +6703,11 @@ $messages['sr-ec'] = array(
 	'wikilog-comment-delete' => 'Обриши овај коментар',
 	'wikilog-comment-history' => 'Види историју коментара',
 	'wikilog-comment-approve' => 'Одобри овај коментар (моментална акција)',
+	'wikilog-feed-title' => '{{SITENAME}} – $1 [$2]',
 	'wikilog-feed-description' => 'Прочитај најскорије уносе у овом фиду.',
 	'wikilog-comment-feed-title1' => 'Коментар од $2 (#$1)',
 	'wikilog-comment-feed-title2' => 'Коментар од $2 за $3 (#$1)',
+	'wikilog-title-item-full' => '$1 – $2',
 	'wikilog-title-comments' => 'Коментари - $1',
 	'wikilog-invalid-param' => 'Неисправан параметар: $1.',
 	'wikilog-invalid-author' => 'Непостојећи аутор: $1.',

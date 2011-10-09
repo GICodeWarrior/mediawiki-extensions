@@ -815,6 +815,10 @@ $messages['sk'] = array(
  */
 $messages['sr-ec'] = array(
 	'mwe-loading' => 'Учитавам…',
+	'mwe-size-gigabytes' => '$1 GB',
+	'mwe-size-megabytes' => '$1 MB',
+	'mwe-size-kilobytes' => '$1 K',
+	'mwe-size-bytes' => '$1 B',
 	'mwe-ok' => 'У реду',
 	'mwe-cancel' => 'Откажи',
 	'mwe-test-plural' => 'Покренуо/ла сам {{PLURAL:$1|$1 тест|$1 тестова}}',

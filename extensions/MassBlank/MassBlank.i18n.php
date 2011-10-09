@@ -30,12 +30,13 @@ Input the username or IP address to get a list of pages to blank.',
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
  * @author The Evil IP address
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'massblank-desc' => '{{desc}}',
 	'massblank-submit-user' => '{{Identical|Go}}',
 	'massblank-blankcomment' => '{{Identical|Reason}}',
-	'right-massblank' => '{{doc-right}}',
+	'right-massblank' => '{{doc-right|massblank}}',
 );
 
 /** Afrikaans (Afrikaans)

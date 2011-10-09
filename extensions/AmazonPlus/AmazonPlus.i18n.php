@@ -1547,7 +1547,7 @@ $messages['sl'] = array(
 	'amazonplus-less' => 'manj',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -1563,8 +1563,15 @@ $messages['sr-ec'] = array(
 	'amazonplus-japanese' => 'Јапански',
 	'amazonplus-amazon' => 'Цена на Амазону',
 	'amazonplus-new' => 'ново',
+	'amazonplus-status' => '($1)',
 	'amazonplus-none' => 'Нема више расположивих примерака овог производа.',
+	'amazonplus-currency' => '$3$1 $2$4',
 	'amazonplus-cp-none' => 'Ништа',
+	'amazonplus-cp-usd' => 'USD',
+	'amazonplus-cp-cad' => 'CAD',
+	'amazonplus-cp-gbp' => 'GBP',
+	'amazonplus-cp-eur' => 'EUR',
+	'amazonplus-cp-jpy' => 'JPY',
 	'amazonplus-more' => 'више',
 	'amazonplus-less' => 'мање',
 );

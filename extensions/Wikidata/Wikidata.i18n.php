@@ -12604,6 +12604,7 @@ $messages['sr-ec'] = array(
 	'ow_IdenticalMeaning' => 'Истоветно значење',
 	'ow_IncomingRelations' => 'Долазеће релације',
 	'ow_GotoSource' => 'Иди на извор',
+	'ow_ID' => 'Назнака',
 	'ow_Language' => 'Језик',
 	'ow_LevelAnnotation' => 'Коментар',
 	'ow_Multiple_meanings' => 'Дефиниције за "$1"',
@@ -12635,6 +12636,7 @@ $messages['sr-ec'] = array(
 	'ow_Link' => 'Веза',
 	'ow_LinkAttribute' => 'Особина',
 	'ow_LinkAttributeValues' => 'Везе',
+	'ow_URL' => 'Адреса',
 	'ow_User' => 'Корисник',
 	'ow_Property' => 'Особина',
 	'ow_Value' => 'Вредност',
@@ -12672,6 +12674,7 @@ $messages['sr-ec'] = array(
 	'ow_nstab_definedmeaning' => 'дефинисано значење',
 	'ow_nstab_edit_copy' => 'измена копије',
 	'ow_shown_datasets' => 'Приказани низови података',
+	'prefs-omegawiki' => 'Омегавики',
 );
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)

@@ -913,11 +913,12 @@ $messages['sl'] = array(
 	'framedvideo-desc' => 'Omogoča vdelovanje videoposnetkov z različnih spletnih strani z uporabo etikete <code>&lt;video&gt;</code>',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'framedvideo_position' => 'десно',
 	'framedvideo_errors' => 'Дошло је до неколико грешака!',
 	'framedvideo_error' => 'Дошло је до грешке.',
 	'framedvideo_error_height_required' => 'Видео типу "$1" је потребан параметар "height".',

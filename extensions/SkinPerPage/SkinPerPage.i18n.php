@@ -467,12 +467,13 @@ $messages['sq'] = array(
 	'skinperpage-desc' => 'Vendosë kodin <code>&lt;skin&gt;</code> për të përdorur pamje të ndryshme për çdo faqe',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Millosh
+ * @author Rancher
  * @author Жељко Тодоровић
  */
 $messages['sr-ec'] = array(
-	'skinperpage-desc' => 'Додаје ознаку <code>&lt;skin&gt;</code> за коришћење различитих кожа на различитим страницама',
+	'skinperpage-desc' => 'Додаје ознаку <code>&lt;skin&gt;</code> за коришћење различитих тема на страницама',
 );
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)

@@ -609,6 +609,14 @@ $messages['sl'] = array(
 	'ts-kml-on-ol-map-by' => 'Zemljevid od',
 );
 
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
+ */
+$messages['sr-ec'] = array(
+	'ts-kml-on-ol-openstreetmap' => 'Опенстритмап',
+	'ts-kml-on-ol-wikipedia' => 'Википедија',
+);
+
 /** Swedish (Svenska)
  * @author Ainali
  */

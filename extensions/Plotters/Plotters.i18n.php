@@ -831,14 +831,15 @@ Tento prehľad poskytuje jednoduchý prístup k stránkam systémových správ, 
 	'plotters-errors' => '<b>{{PLURAL:$1|Chyba|Chyby}} plotrov:</b>',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'plotters' => 'Плотери',
 	'plotters-title' => 'Плотери',
-	'plotters-uses' => 'Коришћење',
-	'plotters-no-data' => 'Нису достављени никакви подаци.',
+	'plotters-uses' => 'Употребе',
+	'plotters-no-data' => 'Нема наведених података.',
 );
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬) */

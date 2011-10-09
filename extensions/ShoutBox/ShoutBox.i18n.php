@@ -120,3 +120,11 @@ $messages['nl'] = array(
 	'shoutbox-illegal-height' => 'ShoutBox heeft een ongeldige hoogteparameter "$1" ontvangen.',
 );
 
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
+ */
+$messages['sr-ec'] = array(
+	'shoutbox-url' => 'http://$1.shoutbox.us/?LANG=SR',
+	'shoutbox-url-with-css' => 'http://$1.shoutbox.us/?LANG=SR&extcss=$2',
+);
+

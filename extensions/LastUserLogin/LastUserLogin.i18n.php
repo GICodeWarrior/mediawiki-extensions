@@ -33,7 +33,7 @@ $messages['qqq'] = array(
 	'lastuserlogin-desc' => '{{desc}}',
 	'lastuserlogin_username' => '{{Identical|Real name}}',
 	'lastuserlogin_daysago' => 'This message is used as a column header in a table.',
-	'right-lastlogin' => '{{doc-right}}',
+	'right-lastlogin' => '{{doc-right|lastlogin}}',
 );
 
 /** Afrikaans (Afrikaans)

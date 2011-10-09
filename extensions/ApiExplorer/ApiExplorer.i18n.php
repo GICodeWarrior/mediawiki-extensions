@@ -59,8 +59,8 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'apiexplorer' => 'Explorador API',
-	'apiexplorer-desc' => 'Páxina para explorar de xeito interactivo a documentación da versión actual do API de MediaWiki que emprega esta instalación.',
-	'apiexplorer-intro' => 'Esta páxina mostra a documentación para o API do wiki actual. Prema nunha das funcións para ollar máis información sobre os parámetros que se poden usar ​​en cada chamada. Se o que quere é unha documentación xeral do API de MediaWiki, bótelle unha ollada a $1',
+	'apiexplorer-desc' => 'Páxina para explorar de xeito interactivo a documentación do API de MediaWiki',
+	'apiexplorer-intro' => 'Esta páxina mostra a documentación para o API do wiki actual. Prema nunha das funcións para ollar máis información sobre os parámetros que se poden usar ​​en cada chamada. Bótelle unha ollada tamén [http://www.mediawiki.org/wiki/API:Main_page á documentación xeral do API de MediaWiki]',
 	'apiexplorer-loading' => 'Cargando as funcións...',
 );
 
@@ -79,8 +79,8 @@ $messages['ia'] = array(
  */
 $messages['mk'] = array(
 	'apiexplorer' => 'API-истражувач',
-	'apiexplorer-desc' => 'Страница за интерактивно истражување на документацијата на тековната активна верзија на API-прилогот на МедијаВики што работи на оваа инсталација.',
-	'apiexplorer-intro' => 'Оваа страница пркажува документација за API-прилогот на тековното вики. Стиснете на функција подолу за да добиете повеќе информации за тоа кои параметри можат да се употребат во секој повик. Општа документација за API-прилогот на МедијаВики ќе најдете на $1',
+	'apiexplorer-desc' => 'Страница за интерактивно истражување на документацијата на API на МедијаВики.',
+	'apiexplorer-intro' => 'Оваа страница прикажува документација за API на тековното вики. Стиснете на функција подолу за да добиете повеќе информации за тоа кои параметри можат да се употребат во секој повик. Погледајте ја и [http://www.mediawiki.org/wiki/API:Main_page?uselang=mk општата документација за API на МедијаВики].',
 	'apiexplorer-loading' => 'Вчитувам функции...',
 );
 

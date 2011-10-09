@@ -501,6 +501,15 @@ $messages['ru'] = array(
 	'semanticformsinputs-firstdayofweek' => '1',
 );
 
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
+ */
+$messages['sr-ec'] = array(
+	'semanticformsinputs-dateformatlong' => 'd MM yy',
+	'semanticformsinputs-dateformatshort' => 'dd/mm/yy',
+	'semanticformsinputs-firstdayofweek' => '1',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

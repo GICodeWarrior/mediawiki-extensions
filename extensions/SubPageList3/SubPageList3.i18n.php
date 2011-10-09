@@ -486,13 +486,13 @@ $messages['sl'] = array(
 	'spl3_nosubpages' => '$1 nima podstrani za navesti.',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'spl3-desc' => 'Аутоматски прави списак подстрана неке стране преко тага <code><nowiki><splist /></nowiki></code>',
-	'spl3_debug' => 'Непозната вредност за опцију $1.',
+	'spl3_debug' => 'Непозната вредност за могућност $1.',
 	'spl3_nosubpages' => '$1 нема подстраница.',
 );
 

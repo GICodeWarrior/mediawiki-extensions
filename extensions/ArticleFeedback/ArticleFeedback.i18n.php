@@ -6322,6 +6322,7 @@ $messages['sr-ec'] = array(
 	'articlefeedback-form-panel-expertise-other' => 'Извор мог знања о теми није наведен овде',
 	'articlefeedback-form-panel-helpimprove' => 'Волео/ла бих да помажем унапређење Википедије, пошаљи ми једну електронску поруку (необавезно)',
 	'articlefeedback-form-panel-helpimprove-note' => 'Послаћемо вам поруку за потврду е-адресе. Не делимо е-адресе ни с ким. $1',
+	'articlefeedback-form-panel-helpimprove-email-placeholder' => 'eposta@primer.org',
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Политика приватности',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Политика приватности',
 	'articlefeedback-form-panel-submit' => 'Пошаљи оцене',
@@ -6363,6 +6364,7 @@ $messages['sr-ec'] = array(
 	'articleFeedback-table-caption-recentlows' => 'Скорашње ниске оцене',
 	'articleFeedback-table-heading-page' => 'Страница',
 	'articleFeedback-table-heading-average' => 'Просек',
+	'articlefeedback-table-noratings' => '-',
 	'articleFeedback-copy-above-highlow-tables' => 'Ово је експериментални додатак. Молимо вас да пошаљете повратну информацију на [$1 страници за разговор].',
 	'articlefeedback-emailcapture-response-body' => 'Здраво!
 

@@ -512,6 +512,7 @@ To se obvykle stává v případě, že byla stránka do kategorie přidána pro
  * @author Lloffiwr
  */
 $messages['cy'] = array(
+	'inlinecategorizer-desc' => "Modiwl JavaScript sy'n galluogi newid, ychwanegu a dileu cysylltiadau at gategorïau yn uniongyrchol o ryw dudalen",
 	'inlinecategorizer-add-category' => 'Ychwanegu categori',
 	'inlinecategorizer-add-category-submit' => 'Ychwanegu',
 	'inlinecategorizer-add-category-summary' => 'Ychwanegu\'r categori "$1"',

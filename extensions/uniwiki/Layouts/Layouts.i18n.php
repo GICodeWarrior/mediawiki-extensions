@@ -866,7 +866,8 @@ $messages['sl'] = array(
 	'layouts_tagline' => "Ta stran je bila ustvarjena s postavitvijo '''$1'''.",
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -874,6 +875,7 @@ $messages['sr-ec'] = array(
 	'layouts_continue' => 'Настави',
 	'layouts_choosecategory' => 'Изабери категорију за $1:',
 	'layouts_unknown' => 'Непознато',
+	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
 );
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)

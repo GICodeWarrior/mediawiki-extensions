@@ -395,11 +395,17 @@ $messages['sq'] = array(
 	'metakeywords-desc' => 'Lejon konfigurimin e kodeve <code>&lt;meta "keywords"&gt;</code> dhe <code>&lt;meta "description"&gt;</code> për çdo hapësirë',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'metakeywords-desc' => 'Омогућује конфигурацију <code>&lt;meta "keywords"&gt;</code> и <code>&lt;meta "description"&gt;</code> тагова по именском простору',
+	'metakeywords' => ' # Додајте редове на ову страницу у облику „именски простор|кључне речи,одвојене,запетом“
+ # Показатељи (all) и (main) означавају подразумевано за све именске просторе и нулте именске просторе.',
+	'metadescription' => ' # Додајте редове на ову страницу у облику „именски простор|описна ознака за постављање“
+ # Показатељи (all) и (main) означавају подразумевано за све именске просторе и нулте именске просторе.
+ # Сви случаји $1 ће бити замењени с насловом текуће странице.',
 );
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)

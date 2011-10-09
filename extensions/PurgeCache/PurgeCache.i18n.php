@@ -614,14 +614,15 @@ $messages['sk'] = array(
 	'right-purgecache' => 'Vyčistiť tabuľku OBJECTCACHE',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Sasa Stefanovic
  */
 $messages['sr-ec'] = array(
-	'purgecache' => 'Освежи кеш',
-	'purgecache-warning' => 'Ово ће освежити кеш',
-	'purgecache-purged' => 'Кеш је освежен.',
-	'purgecache-button' => 'Освежи',
+	'purgecache' => 'Очисти међумеморију',
+	'purgecache-warning' => 'Ово ће очистити међумеморију табела.',
+	'purgecache-purged' => 'Међумеморија је очишћена.',
+	'purgecache-button' => 'Очисти',
 );
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)

@@ -5381,7 +5381,7 @@ $messages['sli'] = array(
 	'openidemail' => 'E-Mail-Atresse:',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
@@ -5428,10 +5428,13 @@ $messages['sr-ec'] = array(
 	'openidloginlabel' => 'OpenID URL',
 	'openidupdateuserinfo' => 'Актуализуј моје личне податке:',
 	'openiddelete-button' => 'Потврди',
+	'prefs-openid' => 'OpenID',
 	'openid-prefstext' => '[http://openid.net/ OpenID] подешавања',
 	'openid-pref-hide' => 'Сакријте свој OpenID URL са корисничке стране, ако се са њим логујете.',
 	'openid-pref-update-userinfo-on-login' => 'Актуализуј следеће информације OpenID идентитета сваки пут кад се улогујем:',
+	'openid-urls-url' => 'Адреса',
 	'openid-urls-action' => 'Радња',
+	'openid-urls-registration-date-time' => '$1',
 	'openid-urls-delete' => 'Обриши',
 );
 

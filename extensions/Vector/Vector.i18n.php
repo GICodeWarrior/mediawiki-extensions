@@ -1134,6 +1134,7 @@ $messages['min'] = array(
 
 /** Macedonian (Македонски)
  * @author Bjankuloski06
+ * @author Brest
  */
 $messages['mk'] = array(
 	'vector' => 'Подобрувања на посредникот за изгледот „Векторски“',
@@ -1145,7 +1146,7 @@ $messages['mk'] = array(
 	'vector-editwarning-preference' => 'Предупреди ме кога сакам да напуштам страница за уредување без да ги имам зачувано промените',
 	'vector-simplesearch-search' => 'Пребарување',
 	'vector-simplesearch-containing' => 'содржи...',
-	'vector-noexperiments-preference' => 'Изземиме од експерименти so функции',
+	'vector-noexperiments-preference' => 'Изземиме од експерименти сo функции',
 );
 
 /** Malayalam (മലയാളം)
@@ -1607,7 +1608,7 @@ Nëse keni hyrë brenda, ju mund ta hiqni këtë paralajmërim në seksionin "Re
 	'vector-simplesearch-containing' => 'përmban ...',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Helios13
  * @author Rancher
  * @author Жељко Тодоровић
@@ -1616,7 +1617,7 @@ $messages['sr-ec'] = array(
 	'vector' => 'Побољшања корисничког интерфејса за вектор',
 	'vector-desc' => 'Побољшава корисничке елементе сучеља за пресвлаку Вектор.',
 	'vector-collapsiblenav-preference' => 'Скупљање ставки навигационог менија у Vector пресвлаци',
-	'vector-collapsiblenav-more' => 'Још језика:',
+	'vector-collapsiblenav-more' => 'Више језика:',
 	'vector-editwarning-warning' => 'Ако напустите ову страницу, изгубићете све измене које сте направили.
 Ако сте пријављени, можете онемогућити ово упозорење у својим подешавањима, у одељку „Уређивање“.',
 	'vector-editwarning-preference' => 'Упозори ме када напустим страницу која није сачувана',

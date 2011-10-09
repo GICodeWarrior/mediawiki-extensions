@@ -66,9 +66,12 @@ $messages['en'] = array(
 $messages['qqq'] = array(
 	'livetranslate-desc' => '{{desc}}',
 	'right-managetms' => '{{doc-right|managetms}}',
-	'group-tmxadmin' => 'TMX = Translation Memory eXchange',
-	'group-tmxadmin-member' => 'TMX = Translation Memory eXchange',
-	'grouppage-tmxadmin' => 'TMX = Translation Memory eXchange',
+	'group-tmxadmin' => '{{doc-group|tmxadmin}}
+TMX = Translation Memory eXchange',
+	'group-tmxadmin-member' => '{{doc-group|tmxadmin|member}}
+TMX = Translation Memory eXchange',
+	'grouppage-tmxadmin' => '{{doc-group|tmxadmin|page}}
+TMX = Translation Memory eXchange',
 	'livetranslate-translate-to' => 'There is an [https://secure.wikimedia.org/wikipedia/mediawiki/wiki/File:Lte-article.png example screenshot of use].
 Look at the right side in the line below the ruler under the "Main Page" header.',
 	'livetranslate-button-translate' => 'There is an [https://secure.wikimedia.org/wikipedia/mediawiki/wiki/File:Lte-article.png example screenshot of use].

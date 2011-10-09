@@ -326,11 +326,11 @@ $messages['sl'] = array(
 	'templateinfo-header' => 'Opredelitev XML predloge je:',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  */
 $messages['sr-ec'] = array(
-	'templateinfo-desc' => 'Подршка шаблонима који дефинишу структуру података преко XML означавања',
+	'templateinfo-desc' => 'Подржава шаблоне који одређују њихову структуру података преко XML означавања',
 	'templateinfo-header' => 'XML дефиниција овог шаблона:',
 );
 

@@ -604,12 +604,13 @@ $messages['sk'] = array(
 	'right-viewpiwik' => 'Zobraziť [[Special:Piwik|štatistiku Piwik]]',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'piwik-desc' => 'Убацује Piwik скрипту у МедијаВики стране зарад праћења и додаје [[Special:Piwik|статистике]]',
+	'piwik' => 'Пивик',
 	'piwik-lastvisits' => 'Последње посете',
 	'piwik-countries' => 'Земље',
 	'piwik-browsers' => 'Прегледачи',

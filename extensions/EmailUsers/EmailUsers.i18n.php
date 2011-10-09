@@ -130,6 +130,10 @@ $messages['cy'] = array(
 	'emailusers-desc' => 'Yn galluogi defnyddwyr i anfon e-byst at nifer o dderbynwyr ar unwaith',
 	'right-sendbatchemail' => 'Anfon e-bost at nifer o dderbynwyr ar unwaith',
 	'emailusers' => 'Anfon e-bost at mwy nag un ddefnyddiwr',
+	'emailusers-target-reverse' => 'Anfon at bob defnyddiwr heblaw y rhai a ddewiswyd',
+	'emailusers-norecipient' => 'Nid oes unrhyw un i gael y gallwch anfon e-bost ato.',
+	'emailusers-norecipientselected' => 'Does dim derbynnydd wedi ei ddewis.',
+	'emailusers-toomanyrecipientsselected' => 'Dewiswyd gormod o dderbynwyr ({{PLURAL:$1|uchafswm $1}}).',
 );
 
 /** German (Deutsch)
@@ -453,6 +457,8 @@ $messages['sv'] = array(
  */
 $messages['sw'] = array(
 	'emailusers' => 'Kutuma barua pepe kwa watumiaji wengi',
+	'emailusers-norecipient' => 'Hakuna mtu unaoweza kutuma barua pepe kwake.',
+	'emailusers-norecipientselected' => 'Mpokeaji hajachaguliwa.',
 );
 
 /** Tamil (தமிழ்)

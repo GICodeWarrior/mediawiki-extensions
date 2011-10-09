@@ -53,6 +53,7 @@ Click the button below to subscribe.',
  * @author Meno25
  * @author Purodha
  * @author The Evil IP address
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'povwatch_desc' => '{{desc}}',
@@ -61,10 +62,10 @@ $messages['qqq'] = array(
 	'povwatch_unsubscribe' => '{{Identical|Unsubscribe}}',
 	'povwatch_subscribe' => '{{Identical|Subscribe}}',
 	'povwatch_added' => '{{Identical|Added}}',
-	'right-povwatch_admin' => '{{doc-right}}',
+	'right-povwatch_admin' => '{{doc-right|povwatch admin}}',
 	'right-povwatch_user' => '{{doc-right|povwatch user}}',
-	'action-povwatch_admin' => '{{doc-action}}',
-	'action-povwatch_user' => '{{doc-action}}',
+	'action-povwatch_admin' => '{{doc-action|povwatch admin}}',
+	'action-povwatch_user' => '{{doc-action|povwatch user}}',
 );
 
 /** Afrikaans (Afrikaans)

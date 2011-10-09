@@ -4509,7 +4509,7 @@ $1',
 	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] podpísal [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
@@ -4578,6 +4578,7 @@ $1',
 	'sig-anonymous' => "''Анонимно''",
 	'sig-private' => "''Приватно''",
 	'sign-sigdetails' => 'Детаљи о потпису',
+	'sign-emailto' => '<a href="mailto:$1">$1</a>',
 	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
 -->[[User:$1|$1]] ([[User talk:$1|разговор]] • <!--
 -->[[Special:Contributions/$1|прилози]] • <!--

@@ -138,10 +138,11 @@ Newer version $2 is available at http://pecl.php.net/package/APC/$2',
  * @author Purodha
  * @author Sp5uhe
  * @author The Evil IP address
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'apc-desc' => '{{desc}}',
-	'right-apc' => '{{doc-right}}',
+	'right-apc' => '{{doc-right|apc}}',
 	'viewapc-mode-stats' => 'Link. See screenshot. 
 [[File:ViewAPC-System-cache-entries.png|thumb]]',
 	'viewapc-mode-system-cache' => 'Link. See screenshot. 
@@ -6531,7 +6532,7 @@ $messages['sr-ec'] = array(
 	'viewapc-ls-header-modified' => 'Последња измена',
 	'viewapc-ls-header-created' => 'Направљено',
 	'viewapc-ls-header-deleted' => 'Обрисано',
-	'viewapc-ls-header-timeout' => 'Време истека',
+	'viewapc-ls-header-timeout' => 'Истекло',
 	'viewapc-ls-delete' => '[Избриши сад]',
 	'viewapc-ls-scope-active' => 'Активно',
 	'viewapc-ls-scope-deleted' => 'Обрисано',
@@ -6543,7 +6544,7 @@ $messages['sr-ec'] = array(
 	'viewapc-ls-sort-modified' => 'Последња измена',
 	'viewapc-ls-sort-created' => 'Направљено',
 	'viewapc-ls-sort-deleted' => 'Обрисано',
-	'viewapc-ls-sort-timeout' => 'Време истека',
+	'viewapc-ls-sort-timeout' => 'Истекло',
 	'viewapc-ls-limit-none' => 'Све',
 	'viewapc-ls-more' => "''Постоји $1 више {{PLURAL:$1|унос|уноса}}''",
 	'viewapc-ls-nodata' => "''Нема поклапања података''",

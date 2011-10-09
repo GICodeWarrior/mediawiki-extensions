@@ -2266,8 +2266,9 @@ $messages['sq'] = array(
 	'ratinghistory-table-votes' => 'Votat',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Millosh
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -2280,7 +2281,7 @@ $messages['sr-ec'] = array(
 	'ratinghistory-year' => 'последња година',
 	'ratinghistory-3years' => 'последње три године',
 	'ratinghistory-ave' => 'Средње: $1',
-	'ratinghistory-purge' => 'очисти кеш',
+	'ratinghistory-purge' => 'очисти међумеморију',
 	'ratinghistory-svg' => 'Види као SVG',
 	'ratinghistory-table-votes' => 'Гласови',
 	'ratinghistory-none' => 'Још увек нема довољно мишљења читалаца да би се формирали графикони.',

@@ -55,6 +55,7 @@ $messages['en'] = array(
  * @author Shijualex
  * @author Waldir
  * @author Yekrats
+ * @author බිඟුවා
  */
 $messages['qqq'] = array(
 	'narayam-desc' => '{{desc}}',
@@ -63,7 +64,8 @@ $messages['qqq'] = array(
 See: http://www.mediawiki.org/wiki/Extension:Narayam',
 	'narayam-help' => 'See: http://www.mediawiki.org/wiki/Extension:Narayam
 {{Identical|Help}}',
-	'narayam-help-page' => '{{doc-important|Do not translate "Help:".}}',
+	'narayam-help-page' => '{{doc-important|Do not translate "Help:".}}
+this is a help page connected narayam. it describes how to use this tool',
 	'narayam-checkbox-tooltip' => 'Toggle the input method —that is, the interpretation of keystrokes— between "standard" and "interpreted by Narayam".',
 	'narayam-eo' => 'The language "Esperanto" in your local language. 
 This allows for Narayam to add custom input methods for input fields. Esperanto x-system transcription. For more information, see http://www.mediawiki.org/wiki/Extension:Narayam .',
@@ -1434,7 +1436,7 @@ $messages['si'] = array(
 	'narayam-menu' => 'දායකත්ව ක්‍රමය',
 	'narayam-menu-tooltip' => 'Narayam Input Method (IME) සංස්කාරකය පාලනය කරන්න',
 	'narayam-help' => 'උදව්',
-	'narayam-help-page' => 'Help:මුද්‍රණය කරමින්',
+	'narayam-help-page' => 'Help:මූලිකාදර්ශය',
 	'narayam-checkbox-tooltip' => 'දායකත්ව ක්‍රමය සක්‍රිය, අක්‍රිය කිරීමට',
 	'narayam-disable-preference' => 'Narayam Input Method (IME) සංස්කාරකය අක්‍රිය කරන්න',
 	'narayam-hi-inscript' => 'හින්දි අන්තර්ලේඛනය',

@@ -42,6 +42,7 @@ Skipped.',
  * @author Kaustubh
  * @author Purodha
  * @author The Evil IP address
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'importusers-desc' => '{{desc}}',
@@ -56,7 +57,7 @@ $messages['qqq'] = array(
 	'importusers-password' => '{{Identical|Password}}',
 	'importusers-email' => '{{Identical|E-mail}}',
 	'importusers-realname' => '{{Identical|Real name}}',
-	'right-import_users' => '{{doc-right}}',
+	'right-import_users' => '{{doc-right|import users}}',
 );
 
 /** Faeag Rotuma (Faeag Rotuma)

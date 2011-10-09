@@ -1935,6 +1935,13 @@ Prosimo, spremenite ali posodobite svoj brskalnik, če je le mogoče.',
 	'cb_edit_paste_right_hint' => 'Prilepi operator na naslednji položaj, če je mogoče',
 );
 
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
+ */
+$messages['sr-ec'] = array(
+	'cb_previous_items_stats' => ' ($1 - $2)',
+);
+
 /** Swedish (Svenska)
  * @author Ainali
  * @author Tobulos1

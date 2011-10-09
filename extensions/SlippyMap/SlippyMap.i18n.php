@@ -1336,6 +1336,14 @@ $messages['sl'] = array(
 	'slippymap_clicktoactivate' => 'Kliknite za aktiviranje zemljevida',
 );
 
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
+ */
+$messages['sr-ec'] = array(
+	'slippymap_extname' => 'SlippyMap',
+	'slippymap_tagname' => 'slippymap',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  * @author M.M.S.

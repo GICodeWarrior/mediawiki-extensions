@@ -1487,7 +1487,8 @@ $messages['so'] = array(
 	'gep-addcategorybutton' => 'Ku dar',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
@@ -1511,6 +1512,7 @@ $messages['sr-ec'] = array(
 	'gep-nosectioninstructions' => 'Овај чланак нема одељака.
 Додајте их помоћу алата у мени-бару.',
 	'gep-nocategories' => 'Молимо вас да изаберете макар једну категорију пре снимања',
+	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)

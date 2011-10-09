@@ -43,6 +43,7 @@ When you have chosen all pages that you want to refresh, click on the "Refresh s
  * @author Purodha
  * @author Siebrand
  * @author The Evil IP address
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'refreshspecial' => '{{Identical|Refresh special pages}}
@@ -67,7 +68,7 @@ Text displayed in the subtitle below the actual page title once the user has pre
 	'refreshspecial-reconnecting' => 'Displayed if the connection to the database was lost for some reason.',
 	'refreshspecial-page-result' => 'Displayed on Special:RefreshSpecial after the user has pressed the "Refresh selected" button and results were gotten from the DB.',
 	'refreshspecial-total-display' => 'Displayed on Special:RefreshSpecial after the user has pressed the "Refresh selected" button if the refreshing was done successfully. $1 is the amount of special pages refreshed, $2 is the amount of database rows touched, $3 is the time how long it took to refresh all the selected special pages and $4 is the complete time of the script run.',
-	'right-refreshspecial' => '{{doc-right}}',
+	'right-refreshspecial' => '{{doc-right|refreshspecial}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -1283,18 +1284,18 @@ Upozornenie: na väčších wiki môže obnovenie chvíľu trvať.',
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'refreshspecial-button' => 'Освежи назначено',
-	'refreshspecial-fail' => 'Треба да назначите макар једну специјалну страну за освежавање.',
-	'refreshspecial-refreshing' => 'Освежавање специјалних страна',
-	'refreshspecial-choice' => 'освежавање специјалних страна',
-	'refreshspecial-js-disabled' => '(<i>Не можете да назначите све стране када је JavaScript онемогућен</i>)',
-	'refreshspecial-select-all-pages' => 'Одабери све странице',
-	'refreshspecial-link-back' => 'Врати се на специјалну страну',
-	'refreshspecial-none-selected' => 'Можда нисте означили ни једну специјалну страну. Враћање на подразумеван избор.',
-	'refreshspecial-db-error' => 'Није успело: Грешка у бази података',
+	'refreshspecial-button' => 'Освежи изабрано',
+	'refreshspecial-fail' => 'Изаберите барем једну посебну страницу за освежавање.',
+	'refreshspecial-refreshing' => 'освежавам посебне странице',
+	'refreshspecial-choice' => 'освежавам посебне странице',
+	'refreshspecial-js-disabled' => '(<i>Не можете изабрати све странице када је онемогућен јаваскрипт</i>)',
+	'refreshspecial-select-all-pages' => 'Изабери све странице',
+	'refreshspecial-link-back' => 'Назад на посебну страницу',
+	'refreshspecial-none-selected' => 'Нисте изабрали ниједну посебну страницу. Враћам на подразумевани избор.',
+	'refreshspecial-db-error' => 'Неуспешно: грешка у бази података',
 	'refreshspecial-no-page' => 'Нема такве посебне странице',
 	'refreshspecial-reconnected' => 'Преповезано.',
-	'refreshspecial-reconnecting' => 'Конекција није успела, реконекција за 10 секунди...',
+	'refreshspecial-reconnecting' => 'Не могу да се повежем. Преповезивање за десет секунди…',
 	'refreshspecial-page-result' => '{{PLURAL:$1|добијен је|добијена су|добијено је}} $1 {{PLURAL:$1|ред|реда|редова}} у',
 );
 

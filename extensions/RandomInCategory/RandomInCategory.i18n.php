@@ -947,8 +947,8 @@ $messages['so'] = array(
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'randomincategory' => 'Случајна страница из категорије',
-	'randomincategory-desc' => '[[Special:Randomincategory|Посебна страница]] за преузимање случајне странице из категорије',
+	'randomincategory' => 'Случајна страница у категорији',
+	'randomincategory-desc' => '[[Special:Randomincategory|Посебна страница]] за преузимање случајне странице у категорији',
 	'randomincategory-toolbox' => 'Случајна страница',
 	'randomincategory-nocategory' => 'Категорија $1 не постоји или је празна',
 	'randomincategory-label' => 'Категорија:',
