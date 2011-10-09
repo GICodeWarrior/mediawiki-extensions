@@ -205,11 +205,6 @@ class MBFeedbackItem {
 	 * @return The MBFeedbackItem's new ID.
 	 */
 	public function save() {
-
-		if ( $this->getProperty('id') ) {
-			throw new MWException( "This ".__CLASS__." is already in the database." );
-		}
-
 		// Add edit count if necessary
 		if ( $this->getProperty('user-editcount') === null &&
 			$this->getProperty('user') )
@@ -254,13 +249,13 @@ class MBFeedbackItem {
 		}
 
 		if ( $this->getProperty('id') ) {
+			$row['mbf_id'] = $this->getProperty('id');
 			$dbw->replace( 'moodbar_feedback', array('mbf_id'), $row, __METHOD__ );
 		} else {
 			$row['mbf_id'] = $dbw->nextSequenceValue( 'moodbar_feedback_mbf_id' );
 			$dbw->insert( 'moodbar_feedback', $row, __METHOD__ );
+			$this->setProperty( 'id', $dbw->insertId() );
 		}
-
-		$this->setProperty( 'id', $dbw->insertId() );
 
 		return $this->getProperty('id');
 	}

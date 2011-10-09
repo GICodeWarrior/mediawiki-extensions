@@ -96,6 +96,12 @@ For more information, please visit the $1.',
 	'moodbar-feedback-hide' => 'hide feedback',
 	'moodbar-hidden-footer' => 'Hidden Feedback $1',
 	'moodbar-feedback-restore' => 'restore hidden feedback',
+	'moodbar-action-item' => 'Feedback item:',
+	'moodbar-hide-header' => 'Hide this item from view',
+	'moodbar-hide-intro' => '',
+	'moodbar-restore-header' => "Restore this item's visibility",
+	'moodbar-restore-intro' => '',
+	'moodbar-invalid-item' => 'The system was unable to find the correct feedback item.',
 	// Mood types
 	'moodbar-type-happy' => 'Happy',
 	'moodbar-type-sad' => 'Sad',
@@ -104,6 +110,13 @@ For more information, please visit the $1.',
 	'moodbar-user-anonymized' => 'Anonymized',
 	'moodbar-user-ip' => 'IP Address',
 	'moodbar-user-user' => 'Registered user',
+	// Log types
+	'moodbar-log-name' => 'Feedback log',
+	'moodbar-log-header' => 'This is the log of actions taken on feedback items listed
+on the [[Special:FeedbackDashboard|feedback dashboard]].',
+
+	'moodbar-log-hide' => 'hid [[$1]]',
+	'moodbar-log-restore' => 'restored the visibility for [[$1]]',
 );
  
 /** Message documentation (Message documentation)
