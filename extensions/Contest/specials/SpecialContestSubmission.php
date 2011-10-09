@@ -116,7 +116,7 @@ class SpecialContestSubmission extends SpecialContestPage {
 		
 		$form = new HTMLForm( $this->getFormFields( $contestant ), $this->getContext() );
 		
-		$form->setSubmitCallback( array( __CLASS__, 'handleSubmission' ) );
+		$form->setSubmitCallback( array( $this, 'handleSubmission' ) );
 		$form->setSubmitText( wfMsg( 'contest-submission-submit' ) );
 		
 		if( $form->show() ){
@@ -134,8 +134,8 @@ class SpecialContestSubmission extends SpecialContestPage {
 	 * 
 	 * @return true|array
 	 */
-	public static function handleSubmission( array $data ) {
-		$user = $GLOBALS['wgUser']; //$this->getUser();
+	public function handleSubmission( array $data ) {
+		$user = $this->getUser();
 		
 		$user->setEmail( $data['contestant-email'] );
 		$user->setRealName( $data['contestant-realname'] );
@@ -149,6 +149,8 @@ class SpecialContestSubmission extends SpecialContestPage {
 			'volunteer' => $data['contestant-volunteer'],
 			'wmf' => $data['contestant-wmf'],
 			'cv' => $data['contestant-cv'],
+		
+			'submission' => $data['contestant-submission'],
 		) );
 		
 		return $contestant->writeToDB();
@@ -217,6 +219,16 @@ class SpecialContestSubmission extends SpecialContestPage {
 			'validation-callback' => array( __CLASS__, 'validateCVField' )
 		);
 		
+		// TODO: this needs UI work to explain to the user what they can enter here,
+		// and possibly some pop-up thing where they can just enter their
+		// user and project, after which we just find the latest rev and store that url.
+		$fields['contestant-submission'] = array(
+			'type' => 'text',
+			'default' => $contestant->getField( 'submission' ),
+			'label-message' => 'contest-submission-submission',
+			'validation-callback' => array( __CLASS__, 'validateSubmissionField' )
+		);
+		
 		return $fields;
 	}
 	
@@ -277,6 +289,8 @@ class SpecialContestSubmission extends SpecialContestPage {
 	/**
 	 * HTMLForm field validation-callback for the submissiom field.
 	 * Warning: regexes used! o_O
+	 * 
+	 * TODO: add support for other services such as Gitorious?
 	 * 
 	 * @since 0.1
 	 * 

@@ -124,7 +124,8 @@ $messages['en'] = array(
 	'contest-signup-invalid-name' => 'The name you provided is to short.',
 	'contest-signup-require-challenge' => 'You must select a challenge.',
 	'contest-signup-invalid-cv' => 'You entered an invalid URL.',
-
+	
+	'contest-submission-submission' => 'Url to your submission',
 	'contest-submission-invalid-url' => 'This URL does not match one of the allowed formats.',
 
 	// Special:ContestSubmission
