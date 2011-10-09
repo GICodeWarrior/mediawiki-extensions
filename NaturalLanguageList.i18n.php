@@ -389,6 +389,13 @@ $messages['ru'] = array(
 	'nll-lastseparator' => '&#32;и&#32;',
 );
 
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
+ */
+$messages['sr-ec'] = array(
+	'nll-separator' => ',&#32;',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Kandar
  */
