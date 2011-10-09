@@ -13394,7 +13394,7 @@ $messages['mk'] = array(
 	'configure-setting-wgMaximumMovedPages' => 'Максимален број на страници за преместување наеднаш при преместување на потстраници заедно со страницата',
 	'configure-setting-wgMemoryLimit' => 'Минимално количество на памтење што му „треба“ на МедијаВики',
 	'configure-setting-wgMiserMode' => 'Оневозможи можности што успоруваат',
-	'configure-setting-wgShowHostnames' => 'Откривај ги имињата на домаќините (хостовите) преку API и HTML коментари',
+	'configure-setting-wgShowHostnames' => 'Откривај ги имињата на домаќините преку API и HTML коментари',
 	'configure-setting-wgUseDumbLinkUpdate' => 'Изврши <code>DELETE</code>/<code>INSERT</code> за подновувања на врски наместо пораст',
 	'configure-setting-wgCacheVaryCookies' => 'Список на колачиња кои го варираат кешот',
 	'configure-setting-wgCookieDomain' => 'Експлицитен домен за најавни колачиња',
@@ -13761,7 +13761,7 @@ $messages['mk'] = array(
 	'configure-setting-wgProfileOnly' => 'Не внесувај информации во дневничката податотека што не се однесуваат на профилирањето',
 	'configure-setting-wgProfilePerHost' => 'Запишувај го серверсиот домаќин на програмот во табелата за профилирање',
 	'configure-setting-wgProfileToDatabase' => 'Заведувај суми од профилирањето во табелата за профилирање во базата на податоци',
-	'configure-setting-wgUDPProfilerHost' => 'Домаќин (хост) за UDP профилатор',
+	'configure-setting-wgUDPProfilerHost' => 'Домаќин за UDP профилатор',
 	'configure-setting-wgUDPProfilerPort' => 'Порта за UDP профилатор',
 );
 
@@ -19890,6 +19890,7 @@ $messages['sl'] = array(
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'configure-setting-desc' => 'Описи поставки за подешавање Медијавикија',
 	'configure-setting-wgSitename' => 'Име сајта',
 	'configure-setting-wgActionPaths-key' => 'Радња',
 	'configure-setting-wgActionPaths-value' => 'URL шаблон',
