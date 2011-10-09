@@ -789,13 +789,14 @@ $messages['sq'] = array(
 	'assert_edit_message' => 'Mbrojtja e caktuar ($1) dështoi.',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Millosh
+ * @author Rancher
  */
 $messages['sr-ec'] = array(
-	'assert_edit_title' => 'Потврда није успела.',
-	'assertedit-desc' => 'Додаје потврде измена код коришћења ботова.',
-	'assert_edit_message' => 'Одређена тврдња ($1) није успела.',
+	'assert_edit_title' => 'Тврдња није успела',
+	'assertedit-desc' => 'Додаје тврдње за уређивање за коришћење од стране ботова',
+	'assert_edit_message' => 'Наведена тврдња ($1) није успела.',
 );
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)
