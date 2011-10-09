@@ -108,13 +108,11 @@ For more information, please visit the $1.',
 	'moodbar-type-confused' => 'Confused',
 	// User types
 	'moodbar-user-anonymized' => 'Anonymized',
-	'moodbar-user-ip' => 'IP Address',
+	'moodbar-user-ip' => 'IP address',
 	'moodbar-user-user' => 'Registered user',
 	// Log types
 	'moodbar-log-name' => 'Feedback log',
-	'moodbar-log-header' => 'This is the log of actions taken on feedback items listed
-on the [[Special:FeedbackDashboard|feedback dashboard]].',
-
+	'moodbar-log-header' => 'This is the log of actions taken on feedback items listed on the [[Special:FeedbackDashboard|feedback dashboard]].',
 	'moodbar-log-hide' => 'hid [[$1]]',
 	'moodbar-log-restore' => 'restored the visibility for [[$1]]',
 );
