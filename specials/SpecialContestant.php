@@ -106,6 +106,8 @@ class SpecialContestant extends SpecialContestPage {
 		$this->showComments( $contestant );
 		
 		$out->addHTML( '</form>' );
+		
+		$out->addModules( 'contest.special.contestant' );
 	}
 	
 	/**
@@ -198,6 +200,10 @@ class SpecialContestant extends SpecialContestPage {
 	 * @param ContestContestant $contestant
 	 */
 	protected function showRating( ContestContestant $contestant ) {
+		$out = $this->getOutput();
+		
+		$out->addHTML( Html::element( 'h2', array(), wfMsg( 'contest-contestant-rate' ) ) );
+		
 		
 	}
 
@@ -249,12 +255,12 @@ class SpecialContestant extends SpecialContestPage {
 				'contest-contestant-comment-by',
 				Linker::userLink( $comment->getField( 'user_id' ), $user->getName() ) .
 					Linker::userToolLinks( $comment->getField( 'user_id' ), $user->getName() )
-			) . '&#160;&#160;&#160;' .$this->getLang()->timeanddate( $comment->getField( 'time' ), true )
+			) . '&#160;&#160;&#160;' . $this->getLang()->timeanddate( $comment->getField( 'time' ), true )
 		);
 		
 		$html .= Html::rawElement(
 			'div',
-			array( 'class' => 'contestant-comment-text' ),
+			array( 'class' => 'contestant-comment-text mw-content-' . $this->getLang()->getDir() . '' ),
 			$this->getOutput()->parse( $comment->getField( 'text' ) )
 		);
 		
