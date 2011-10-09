@@ -29,7 +29,9 @@ $messages['qqq'] = array(
 This extension extends various API classes to allow revisions to be added with arbitrary user names (and, in a later version, timestamps). This aids in mirroring of another wiki's content.",
 	'mirrortools-desc' => '{{desc}}',
 	'right-mirroredit' => '{{doc-right|mirroredit}}',
-	'grouppage-MirrorTools' => 'Do not translate the <code>{{ns:project}}:</code> part.',
+	'group-MirrorTools' => '{{doc-group|MirrorTools}}',
+	'group-MirrorTools-member' => '{{doc-group|MirrorTools|member}}',
+	'grouppage-MirrorTools' => '{{doc-group|MirrorTools|page}}',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
