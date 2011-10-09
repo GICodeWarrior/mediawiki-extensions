@@ -6,9 +6,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 class CategoryMultisortViewer extends CategoryViewer {
 
-	function __construct( $title, $skn, $from = '', $until = '' ) {
+	function __construct( $title, IContextSource $context, $skn, $from = '', $until = '' ) {
 		global $wgCategoryMultisortSortkeySettings;
-		parent::__construct( $title, $from, $until );
+		parent::__construct( $title, $context, $from, $until );
 		$this->sortkeyName = $skn;
 		$this->sortkeySettings = $wgCategoryMultisortSortkeySettings[$skn];
 	}
