@@ -1422,19 +1422,20 @@ $messages['so'] = array(
 	'refhelper-search' => 'Raadi',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'refhelper-label_authorsurname' => 'Презиме:',
 	'refhelper-title' => 'Наслов:',
-	'refhelper-journal' => 'Журнал:',
-	'refhelper-pages' => 'Стране:',
+	'refhelper-journal' => 'Часопис:',
+	'refhelper-pages' => 'Странице:',
 	'refhelper-year' => 'Година:',
 	'refhelper-category' => 'Категорија $1:',
 	'refhelper-create' => 'Направи',
 	'refhelper-search' => 'Претражи',
-	'refhelper-toolbox_link_create' => 'Направи референцу',
+	'refhelper-toolbox_link_create' => 'Направи навод',
 );
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬) */
