@@ -1350,6 +1350,14 @@ Prepričajte se, da ste pravilno vnesli URL.
 	'toolbase-error-toomanyedits' => '$1 ima $2 urejanj. To orodje ima zgornjo mejo $3 urejanj.',
 );
 
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
+ */
+$messages['sr-ec'] = array(
+	'toolbase-header-twitter' => 'Твитер',
+	'toolbase-navigation-api' => 'АПИ',
+);
+
 /** Swedish (Svenska)
  * @author Ainali
  * @author WikiPhoenix
