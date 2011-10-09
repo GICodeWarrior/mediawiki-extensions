@@ -167,7 +167,8 @@ $messages['en'] = array(
 	'contest-contestant-notsubmitted' => 'Not submitted yet',
 	'contest-contestant-comments' => 'Comments',
 	'contest-contestant-submit' => 'Save changes',
-	'contest-contestant-comment-by' => 'Comment by $1'
+	'contest-contestant-comment-by' => 'Comment by $1',
+	'contest-contestant-rate' => 'Rate this contestant',
 );
 
 /** Message documentation (Message documentation)

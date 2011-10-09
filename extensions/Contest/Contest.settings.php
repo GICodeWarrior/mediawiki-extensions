@@ -2,7 +2,7 @@
 
 /**
  * File defining the settings for the Contest extension.
- * More info can be found at http://www.mediawiki.org/wiki/Extension:Contest#Settings
+ * More info can be found at https://www.mediawiki.org/wiki/Extension:Contest#Settings
  *
  * NOTICE:
  * Changing one of these settings can be done by assigning to $egContestSettings,

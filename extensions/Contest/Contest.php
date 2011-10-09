@@ -3,8 +3,8 @@
 /**
  * Initialization file for the Contest extension.
  *
- * Documentation:	 		http://www.mediawiki.org/wiki/Extension:Contest
- * Support					http://www.mediawiki.org/wiki/Extension_talk:Contest
+ * Documentation:	 		https://www.mediawiki.org/wiki/Extension:Contest
+ * Support					https://www.mediawiki.org/wiki/Extension_talk:Contest
  * Source code:			    http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/Contest
  *
  * @file Contest.php
@@ -206,6 +206,12 @@ $wgResourceModules['contest.contestant.pager'] = $moduleTemplate + array(
 	),
 	'styles' => array(
 		'contest.contestant.pager.css',
+	),
+);
+
+$wgResourceModules['contest.special.contestant'] = $moduleTemplate + array(
+	'styles' => array(
+		'contest.special.contestant.css',
 	),
 );
 
