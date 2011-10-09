@@ -171,6 +171,7 @@ $messages['en'] = array(
 	'contest-contestant-rate' => 'Rate this contestant',
 	'contest-contestant-not-voted' => 'You have not voted on this participant yet.',
 	'contest-contestant-voted' => 'Your current vote is $1.',
+	'contest-contestant-permalink' => 'Permalink',
 );
 
 /** Message documentation (Message documentation)
