@@ -303,9 +303,19 @@ class SpecialContestant extends SpecialContestPage {
 	protected function getCommentHTML( ContestComment $comment ) {
 		$user = User::newFromId( $comment->getField( 'user_id' ) );
 		
+		$htmlId = 'c' . $comment->getId();
+		
 		$html = Html::rawElement(
 			'div',
 			array( 'class' => 'contestant-comment-meta' ),
+			Html::element(
+				'a',
+				array(
+					'href' => $this->getTitle( $this->subPage )->getLocalURL() . "#$htmlId",
+					'title' => wfMsg( 'contest-contestant-permalink' )
+				),
+				'#'
+			) .
 			wfMsgHtml(
 				'contest-contestant-comment-by',
 				Linker::userLink( $comment->getField( 'user_id' ), $user->getName() ) .
@@ -323,6 +333,7 @@ class SpecialContestant extends SpecialContestPage {
 			'div',
 			array(
 				'class' => 'contestant-comment',
+				'id' => $htmlId
 			),
 			$html
 		);
