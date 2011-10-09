@@ -532,6 +532,14 @@ To vám umožní používať svoju používateľskú stránku tiež ako OpenID.'
 	'linkopenid-prefstext-v2url' => 'URL servera OpenID verzie 2:',
 );
 
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
+ */
+$messages['sr-ec'] = array(
+	'linkopenid-prefs' => 'OpenID',
+	'linkopenid-prefstext-xrdsurl' => 'XRDS-URL:',
+);
+
 /** Swedish (Svenska)
  * @author Najami
  */
