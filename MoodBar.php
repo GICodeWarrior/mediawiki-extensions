@@ -36,6 +36,20 @@ $wgSpecialPages['MoodBar'] = 'SpecialMoodBar';
 $wgAutoloadClasses['SpecialFeedbackDashboard'] = dirname( __FILE__ ) . '/SpecialFeedbackDashboard.php';
 $wgSpecialPages['FeedbackDashboard'] = 'SpecialFeedbackDashboard';
 
+$dashboardFormsPath = dirname(__FILE__) . '/DashboardForms.php';
+$wgAutoloadClasses['MBDashboardForm'] = $dashboardFormsPath;
+$wgAutoloadClasses['MBActionForm'] = $dashboardFormsPath;
+$wgAutoloadClasses['MBHideForm'] = $dashboardFormsPath;
+$wgAutoloadClasses['MBRestoreForm'] = $dashboardFormsPath;
+
+$wgLogTypes[] = 'moodbar';
+$wgLogNames['moodbar'] = 'moodbar-log-name';
+$wgLogHeaders['moodbar'] = 'moodbar-log-header';
+$wgLogActions += array(
+	'moodbar/hide' => 'moodbar-log-hide',
+	'moodbar/restore' => 'moodbar-log-restore',
+);
+
 // User rights
 $wgAvailableRights[] = 'moodbar-view';
 $wgAvailableRights[] = 'moodbar-admin';

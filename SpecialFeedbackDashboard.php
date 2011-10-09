@@ -4,6 +4,7 @@
  */
 class SpecialFeedbackDashboard extends SpecialPage {
 	protected $showHidden = false;
+	protected $action = false;
 	
 	public function __construct() {
 		parent::__construct( 'FeedbackDashboard' );
@@ -26,6 +27,12 @@ class SpecialFeedbackDashboard extends SpecialPage {
 			$filterType = 'id';
 			if ( $wgRequest->getCheck( 'show-feedback' ) ) {
 				$this->showHidden = true;
+			}
+			
+			if ( $wgRequest->getCheck( 'restore-feedback' ) ) {
+				$this->action = 'restore';
+			} elseif ( $wgRequest->getCheck( 'hide-feedback' ) ) {
+				$this->action = 'hide';
 			}
 		} else {
 			// Determine filters and offset from the query string
@@ -254,7 +261,7 @@ HTML;
 			$linkText = wfMessage('moodbar-feedback-show')->escaped();
 			$query = array('show-feedback' => '1');
 			$link = $GLOBALS['wgUser']->getSkin()
-					->link( $permalinkTitle, $linkText, array(), $query );
+					->link( $permalinkTitle, $linkText );
 			return Xml::tags( 'div', array( 'class' => 'fbd-item-show' ), "($link)" );
 		}
 	}
@@ -303,6 +310,26 @@ HTML;
 			$olderRow = $res['olderRow'];
 			$newerRow = $res['newerRow'];
 			$html = "<ul id=\"fbd-list\">$list</ul>";
+			
+			// Only set for showing an individual row.
+			$form = null;
+			if ( $this->action == 'restore' ) {
+				$form = new MBRestoreForm( $row->mbf_id );
+			} elseif ( $this->action == 'hide' ) {
+				$form = new MBHideForm( $row->mbf_id );
+			}
+			
+			if ( $form ) {
+				$result = $form->show();
+				if ( $result === true ) {
+					global $wgOut;
+					$title = SpecialPage::getTitleFor( 'FeedbackDashboard',
+						$row->mbf_id );
+					$wgOut->redirect( $title->getFullURL() );
+				} else {
+					$html .= "\n$result\n";
+				}
+			}
 			
 			// Output the "More" link
 			$moreText = wfMessage( 'moodbar-feedback-more' )->escaped();
