@@ -1707,17 +1707,18 @@ $messages['sk'] = array(
 	'wah-api-error' => 'Nastala chyba týkajúca sa API. Skúste to prosím znova neskôr.',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'wah-short-audio' => '$1 звучни фајл, $2',
-	'wah-short-video' => '$1 видео-фајл, $2',
-	'wah-short-general' => '$1 медија-фајл, $2',
+	'wah-short-video' => '$1 видео датотека, $2',
+	'wah-short-general' => '$1 медијска датотека, $2',
 	'wah-long-audio' => '$1 звучни фајл, трајање $2, $3',
-	'wah-long-video' => '$1 видео-фајл, трајање $2, $4×$5 пиксела, $3',
-	'wah-long-multiplexed' => 'мултиплексовани аудио/видео фајл, $1, трајање $2, $4×$5 пиксела, $3 укупно',
-	'wah-long-general' => 'медија-фајл, трајање $2, $3',
+	'wah-long-video' => '$1 видео датотека, трајање $2, $4 × $5 пиксела, $3',
+	'wah-long-multiplexed' => 'мултиплексирана аудио/видео датотека, $1, трајање $2, $4 × $5 пиксела, $3',
+	'wah-long-general' => 'медијска датотека, трајање $2, $3',
 	'wah-long-error' => 'ffmpeg није могао да прочита овај фајл: $1',
 	'wah-transcode-working' => 'Овај видео се тренутно обрађује. Покушајте опет касније',
 	'wah-javascript-off' => 'Морате омогућити JavaScript, да бисте учествовали у Wiki@Home',
