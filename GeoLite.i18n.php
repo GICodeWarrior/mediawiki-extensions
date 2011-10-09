@@ -393,11 +393,13 @@ $messages['sl'] = array(
 	'geolite-desc' => 'Lahkotna preusmeritev GeoIp',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'geolite-desc' => 'Редирекције за Lightweight GeoIp',
+	'geolite' => 'GeoLite',
 );
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)
