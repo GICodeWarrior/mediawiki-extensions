@@ -21,10 +21,11 @@ $messages['en'] = array(
  * @author Meno25
  * @author Purodha
  * @author The Evil IP address
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'forcepreview-desc' => '{{desc}}',
-	'right-forcepreviewexempt' => '{{doc-right}}',
+	'right-forcepreviewexempt' => '{{doc-right|forcepreviewexempt}}',
 );
 
 /** Afrikaans (Afrikaans)
