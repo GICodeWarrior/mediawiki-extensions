@@ -103,6 +103,7 @@ This page is only applicable to restricted users",
  * @author Jon Harald Søby
  * @author Purodha
  * @author Siebrand
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'whitelistedit-desc' => '{{desc}}',
@@ -131,10 +132,10 @@ Used as a column header for a table',
 	'right-restricttowhitelist' => '{{Doc-right|restricttowhitelist}}',
 	'action-editwhitelist' => '{{Doc-action|editwhitelist}}',
 	'action-restricttowhitelist' => '{{Doc-action|restricttowhitelist}}',
-	'group-restricted' => 'Name of the group',
-	'group-restricted-member' => 'Name of a member of the group',
-	'group-manager' => 'Name of the group',
-	'group-manager-member' => 'Name of a member of the group',
+	'group-restricted' => '{{doc-group|restricted}}',
+	'group-restricted-member' => '{{doc-group|restricted|member}}',
+	'group-manager' => '{{doc-group|manager}}',
+	'group-manager-member' => '{{doc-group|manager|member}}',
 );
 
 /** Faeag Rotuma (Faeag Rotuma)
