@@ -51,8 +51,11 @@ abstract class ApiContestQuery extends ApiQueryBase {
 	 */
 	public function execute() {
 		$params = $this->getParams();
-		$results = $this->getResults( $params, $this->getConditions( $params ) );
-		$this->addResults( $params, $results );
+		
+		if ( count( $params['props'] ) > 0 ) {
+			$results = $this->getResults( $params, $this->getConditions( $params ) );
+			$this->addResults( $params, $results );		
+		}
 	}
 	
 	/**
