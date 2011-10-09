@@ -165,6 +165,9 @@ $messages['en'] = array(
 	'contest-contestant-header-comments' => 'Amount of comments',
 	'contest-contestant-submission-url' => 'Submission',
 	'contest-contestant-notsubmitted' => 'Not submitted yet',
+	'contest-contestant-comments' => 'Comments',
+	'contest-contestant-submit' => 'Save changes',
+	'contest-contestant-comment-by' => 'Comment by $1'
 );
 
 /** Message documentation (Message documentation)
