@@ -173,6 +173,9 @@ $messages['en'] = array(
 	'contest-contestant-not-voted' => 'You have not voted on this participant yet.',
 	'contest-contestant-voted' => 'Your current vote is $1.',
 	'contest-contestant-permalink' => 'Permalink',
+
+	// Emails
+	'contest-email-signup-title' => 'Thanks for joining the challenge!',
 );
 
 /** Message documentation (Message documentation)

@@ -121,6 +121,8 @@ class Contest extends ContestDBObject {
 			'opportunities' => 'str',
 			'intro' => 'str',
 			'help' => 'str',
+			'signup_email' => 'str',
+			'reminder_email' => 'str',
 		
 			'submission_count' => 'int',
 		);
@@ -143,6 +145,8 @@ class Contest extends ContestDBObject {
 			'opportunities' => 'MediaWiki:',
 			'intro' => 'MediaWiki:',
 			'help' => '',
+			'signup_email' => 'MediaWiki:',
+			'reminder_email' => 'MediaWiki:',
 		
 			'submission_count' => 0,
 		);

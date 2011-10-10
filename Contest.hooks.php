@@ -147,6 +147,14 @@ final class ContestHooks {
 			dirname( __FILE__ ) . '/sql/IndexVoteUserId.sql',
 			true
 		) );
+		
+		$updater->addExtensionUpdate( array(
+			'addField',
+			'contests',
+			'contest_signup_email',
+			dirname( __FILE__ ) . '/sql/AddContestEmailFields.sql',
+			true
+		) );
 
 		return true;
 	}

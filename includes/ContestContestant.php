@@ -477,10 +477,10 @@ class ContestContestant extends ContestDBObject {
 	 * @return Status
 	 */
 	public function sendSignupEmail() {
-		global $wgPasswordSender, $wgPasswordSenderName;
+		global $wgPasswordSender, $wgPasswordSenderName, $wgParser;
 		
-		$title = 'Thanks for joining the challenge!';
-		$emailText = $this->getArticleContent( 'Email' );
+		$title = wfMsg( 'contest-email-signup-title' );
+		$emailText = $wgParser->parse( $this->getArticleContent( $this->getContest()->getField( 'signup_email' ) ) );
 		$user = $this->getUser();
 		$sender = $wgPasswordSender;
 		$senderName = $wgPasswordSenderName;
