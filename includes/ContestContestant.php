@@ -17,6 +17,14 @@ class ContestContestant extends ContestDBObject {
 	protected $contest = null;
 	
 	/**
+	 * Cached user object, created from the user_id field.
+	 * 
+	 * @since 0.1
+	 * @var USer
+	 */
+	protected $user = null;
+	
+	/**
 	 * Method to get an instance so methods that ought to be static,
 	 * but can't be due to PHP 5.2 not having LSB, can be called on
 	 * it. This also allows easy identifying of code that needs to
@@ -529,6 +537,22 @@ class ContestContestant extends ContestDBObject {
 		
 		$this->setField( 'rating_count', $amount );
 		$this->setField( 'rating', $amount > 0 ? $total / $amount : 0 );
+	}
+	
+	/**
+	 * Returns the user object for this contestant, created
+	 * from the user_id field and cached in $this->user.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return User
+	 */
+	public function getUser() {
+		if ( is_null( $this->user ) ) {
+			$this->user = User::newFromId( $this->getField( 'user_id' ) );
+		}
+		
+		return $this->user;
 	}
 	
 	/**
