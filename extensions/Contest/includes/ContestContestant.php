@@ -480,7 +480,7 @@ class ContestContestant extends ContestDBObject {
 		global $wgPasswordSender, $wgPasswordSenderName;
 		
 		$title = wfMsg( 'contest-email-signup-title' );
-		$emailText = $this->getParsedArticleContent( $this->getContest()->getField( 'signup_email' ) );
+		$emailText = ContestUtils::getParsedArticleContent( $this->getContest()->getField( 'signup_email' ) );
 		$user = $this->getUser();
 		$sender = $wgPasswordSender;
 		$senderName = $wgPasswordSenderName;
@@ -495,33 +495,6 @@ class ContestContestant extends ContestDBObject {
     		null,
     		'text/html; charset=ISO-8859-1'
     	);
-	}
-	
-	/**
-	 * Gets the content of the article with the provided page name,
-	 * or an empty string when there is no such article.
-	 * 
-	 * @since 0.1
-	 * 
-	 * @param string $pageName
-	 * 
-	 * @return string
-	 */
-	protected function getParsedArticleContent( $pageName ) {
-		$title = Title::newFromText( $pageName );
-		
-		if ( is_null( $title ) ) {
-			return '';
-		}
-		
-		$article = new Article( $title, 0 );
-		
-		global $wgParser;
-		return $wgParser->parse(
-			$article->fetchContent(),
-			$article->getTitle(),
-			$article->getParserOptions()
-		)->getText(); // TODO: have full urls instead of relative ones
 	}
 	
 	/**

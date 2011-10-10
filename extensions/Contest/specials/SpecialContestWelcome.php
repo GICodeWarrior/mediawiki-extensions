@@ -93,7 +93,7 @@ class SpecialContestWelcome extends SpecialContestPage {
 	 * @param Contest $contest
 	 */
 	protected function showIntro( Contest $contest ) {
-		$this->getOutput()->addWikiText( $this->getArticleContent( $contest->getField( 'intro' ) ) );
+		$this->getOutput()->addWikiText( ContestUtils::getArticleContent( $contest->getField( 'intro' ) ) );
 	}
 	
 	/**
@@ -147,7 +147,7 @@ class SpecialContestWelcome extends SpecialContestPage {
 	 * @param Contest $contest
 	 */
 	protected function showOpportunities( Contest $contest ) {
-		$this->getOutput()->addWikiText( $this->getArticleContent( $contest->getField( 'opportunities' ) ) );
+		$this->getOutput()->addWikiText( ContestUtils::getArticleContent( $contest->getField( 'opportunities' ) ) );
 	}
 	
 	/**
@@ -192,25 +192,4 @@ class SpecialContestWelcome extends SpecialContestPage {
 //		}
 	}
 
-	/**
-	 * Gets the content of the article with the provided page name,
-	 * or an empty string when there is no such article.
-	 * 
-	 * @since 0.1
-	 * 
-	 * @param string $pageName
-	 * 
-	 * @return string
-	 */
-	protected function getArticleContent( $pageName ) {
-		$title = Title::newFromText( $pageName );
-		
-		if ( is_null( $title ) ) {
-			return '';
-		}
-		 
-		$article = new Article( $title, 0 );
-		return $article->getContent();
-	}
-	
 }
