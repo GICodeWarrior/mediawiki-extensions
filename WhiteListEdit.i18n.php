@@ -876,9 +876,9 @@ Diese Seite gilt nur für berechtigte Benutzer.",
 	'action-editwhitelist' => 'modifiziere die Positivliste für existierende Benutzer',
 	'action-restricttowhitelist' => 'bearbeite und betrachte nur Seiten die in der Positivliste enthalten sind',
 	'group-restricted' => 'Eingeschränkte Benutzer',
-	'group-restricted-member' => 'Eingeschränkter Benutzer',
+	'group-restricted-member' => '{{GENDER:$1|Eingeschränkter Benutzer|Eingeschränkte Benutzerin}}',
 	'group-manager' => 'Verwalter',
-	'group-manager-member' => 'Verwalter',
+	'group-manager-member' => '{{GENDER:$1|Verwalter|Verwalterin}}',
 );
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
@@ -1429,9 +1429,9 @@ Esta páxina só é aplicable aos usuarios limitados",
 	'action-editwhitelist' => 'modificar a lista branca dos usuarios existentes',
 	'action-restricttowhitelist' => 'editar e ver só as páxinas da lista branca',
 	'group-restricted' => 'Usuarios restrinxidos',
-	'group-restricted-member' => 'Usuario restrinxido',
+	'group-restricted-member' => '{{GENDER:$1|usuario restrinxido|usuaria restrinxida}}',
 	'group-manager' => 'Xestores',
-	'group-manager-member' => 'Xestor',
+	'group-manager-member' => '{{GENDER:$1|xestor|xestora}}',
 );
 
 /** Gothic (Gothic)
@@ -3352,7 +3352,7 @@ Táto stránka sa týka iba obmedzneých používateľov.",
 	'group-manager-member' => 'Správca',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Sasa Stefanovic
  * @author Жељко Тодоровић
@@ -3388,7 +3388,7 @@ $2',
 	'group-manager-member' => 'Управљач',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  * @author Rancher
  */
