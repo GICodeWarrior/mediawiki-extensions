@@ -47,6 +47,9 @@ $wgNarayamAlwaysLoadForLanguages = array();
 // Array mapping language codes and scheme names to module names
 // Custom schemes can be added here
 $wgNarayamSchemes = array(
+	'am' => array(
+		'am' => 'ext.narayam.rules.am',
+	),
 	'as' => array(
 		'as' => 'ext.narayam.rules.as',
 		'as-avro' => 'ext.narayam.rules.as-avro',
@@ -148,6 +151,11 @@ $wgResourceModules['ext.narayam.core'] = $narayamTpl + array(
 		'narayam-toggle-ime',
 	),
 	'dependencies' => array( 'mediawiki.util', 'jquery.textSelection' ),
+);
+$wgResourceModules['ext.narayam.rules.am'] = $narayamTpl + array(
+	'scripts' => 'js/ext.narayam.rules.am.js',
+	'messages' => array( 'narayam-am' ),
+	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.as'] = $narayamTpl + array(
 	'scripts' => 'js/ext.narayam.rules.as.js',
