@@ -11,3 +11,19 @@ Contest is a MediaWiki extension.
 
 * 
 
+== Credits to other projects ==
+
+* jQuery
+This extension uses code from the jQuery library.
+jQuery is dual licensed under the MIT [0] and GPL [1] licenses.
+
+* jQuery UI
+This extension uses code from the jQuery UI library.
+jQuery is dual licensed under the MIT [0] and GPL [1] licenses.
+
+* jQuery datetimepicker
+This extension includes the jQuery timepicker addon by Trent Richardson.
+The datetimepicker addon is dual licensed under the MIT [0] and GPL [1] licenses.
+
+[0] http://www.opensource.org/licenses/mit-license.php
+[1] http://www.opensource.org/licenses/gpl-license.php
