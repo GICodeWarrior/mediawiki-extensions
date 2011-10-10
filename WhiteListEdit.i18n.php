@@ -92,9 +92,9 @@ This page is only applicable to restricted users",
 
 	# User groups and members
 	'group-restricted' => 'Restricted users',
-	'group-restricted-member' => 'Restricted user',
+	'group-restricted-member' => '{{GENDER:$1|restricted user}}',
 	'group-manager' => 'Managers',
-	'group-manager-member' => 'Manager',
+	'group-manager-member' => '{{GENDER:$1|manager}}',
 );
 
 /** Message documentation (Message documentation)
