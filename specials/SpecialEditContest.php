@@ -205,9 +205,22 @@ class SpecialEditContest extends FormSpecialPage {
 			'label-message' => 'contest-edit-reminder',
 		);
 		
+		$fields['end'] = array (
+			'type' => 'text',
+			'label-message' => 'contest-edit-end',
+			'id' => 'contest-edit-end',
+			'size' => 15
+		);
+		
 		if ( $contest !== false ) {
 			foreach ( $fields as $name => $data ) {
-				$fields[$name]['default'] = $contest->getField( $name );
+				$default = $contest->getField( $name );
+				
+				if ( $name == 'end' ) {
+					$default = wfTimestamp( TS_DB, $default );
+				}
+				
+				$fields[$name]['default'] = $default;
 			}
 		}
 		
@@ -247,6 +260,10 @@ class SpecialEditContest extends FormSpecialPage {
 			$matches = array();
 			
 			if ( preg_match( '/contest-(.+)/', $name, $matches ) ) {
+				if ( $matches[1] == 'end' ) {
+					$value = wfTimestamp( TS_MW, strtotime( $value ) );
+				}
+				
 				$fields[$matches[1]] = $value;
 			}
 		}

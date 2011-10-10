@@ -151,7 +151,11 @@ $wgResourceModules['contest.special.contests'] = $moduleTemplate + array(
 
 $wgResourceModules['contest.special.editcontest'] = $moduleTemplate + array(
 	'scripts' => array(
-		'contest.special.editcontest.js'
+		'jquery-ui-timepicker-addon.js',
+		'contest.special.editcontest.js',
+	),
+	'styles' => array(
+		'jquery-ui-timepicker-addon.css',
 	),
 	'messages' => array(
 		'contest-edit-delete',
@@ -163,7 +167,9 @@ $wgResourceModules['contest.special.editcontest'] = $moduleTemplate + array(
 		'contest-edit-challenge-oneline',
 	),
 	'dependencies' => array(
-		'jquery.ui.button'
+		'jquery.ui.button',
+		'jquery.ui.slider',
+		'jquery.ui.datepicker'
 	)
 );
 

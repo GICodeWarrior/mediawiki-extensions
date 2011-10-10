@@ -159,6 +159,11 @@
 			} );
 		} );
 		
+		$( '#contest-edit-end' ).datetimepicker( {
+			minDate: new Date(),
+			dateFormat: 'yy-mm-dd'
+		} );
+		
 	} );
 	
 })( window.jQuery, window.mediaWiki );
