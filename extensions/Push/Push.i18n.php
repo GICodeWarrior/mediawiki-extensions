@@ -22,15 +22,15 @@ $messages['en'] = array(
 	'right-pushadmin' => 'Authorization to modify push targets and push settings.',
 
 	'group-pusher' => 'Pushers',
-	'group-pusher-member' => 'pusher',
+	'group-pusher-member' => '{{GENDER:$1|pusher}}',
 	'grouppage-pusher' => 'Project:Pushers',
 
 	'group-bulkpusher' => 'Bulk pushers',
-	'group-bulkpusher-member' => 'bulk pusher',
+	'group-bulkpusher-member' => '{{GENDER:$1|bulk pusher}}',
 	'grouppage-bulkpusher' => 'Project:Bulk_pushers',
 
 	'group-filepusher' => 'File pushers',
-	'group-filepusher-member' => 'file pusher',
+	'group-filepusher-member' => '{{GENDER:$1|file pusher}}',
 	'grouppage-filepusher' => 'Project:File_pushers',
 
 	'push-err-captacha' => 'Could not push to $1 due to captcha.',
