@@ -115,7 +115,7 @@ class Contest extends ContestDBObject {
 			'id' => 'id',
 			'name' => 'str',
 			'status' => 'int',
-			'end' => 'int',
+			'end' => 'str', // TS_MW
 		
 			'rules_page' => 'str',
 			'opportunities' => 'str',
