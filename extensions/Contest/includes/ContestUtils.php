@@ -82,7 +82,7 @@ class ContestUtils {
 			"'[" . $url . "'.str_replace(' ', '_', '\\2').' \\3]'",
 			$wikiText
 		);
-		//"'\\1'.strtoupper('\\2').'\\3'"
+		
 		$wikiText = preg_replace(
 			'/\[\[((?!(Category|Image|File|[^\s]{2,5}:))[^\]]*)\]\]/e',
 			"'[" . $url . "'.str_replace(' ', '_', '\\1').' \\1]'",
