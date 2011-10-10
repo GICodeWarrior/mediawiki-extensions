@@ -445,13 +445,69 @@ class ContestContestant extends ContestDBObject {
 	 * @see ContestDBObject::insertIntoDB()
 	 */
 	protected function insertIntoDB() {
+		wfRunHooks( 'ContestBeforeContestantInsert', array( &$this ) );
+		
 		$success = parent::insertIntoDB();
 		
 		if ( $success ) {
 			$this->getContest( array( 'id' ) )->addToSubmissionCount( 1 );
+			$this->sendSignupEmail();
+			
+			wfRunHooks( 'ContestAfterContestantInsert', array( &$this ) );
 		}
 		
 		return $success;
+	}
+	
+	/**
+	 * Send the ignup email.
+	 * TODO: use actual config
+	 * TODO: test code on machine that is properly configured for email sending
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return Status
+	 */
+	public function sendSignupEmail() {
+		global $wgPasswordSender, $wgPasswordSenderName;
+		
+		$title = 'Thanks for joining the challenge!';
+		$emailText = $this->getArticleContent( 'Email' );
+		$user = $this->getUser();
+		$sender = $wgPasswordSender;
+		$senderName = $wgPasswordSenderName;
+		
+		wfRunHooks( 'ContestBeforeSignupEmail', array( &$this, &$title, &$emailText, &$user, &$sender, &$senderName ) );
+		
+		return UserMailer::send( 
+    		new MailAddress( $user ),
+    		new MailAddress( $sender, $senderName ),
+    		$title,
+    		$emailText,
+    		null,
+    		'text/html; charset=ISO-8859-1'
+    	);
+	}
+	
+	/**
+	 * Gets the content of the article with the provided page name,
+	 * or an empty string when there is no such article.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param string $pageName
+	 * 
+	 * @return string
+	 */
+	protected function getArticleContent( $pageName ) {
+		$title = Title::newFromText( $pageName );
+		
+		if ( is_null( $title ) ) {
+			return '';
+		}
+		 
+		$article = new Article( $title, 0 );
+		return $article->getContent();
 	}
 	
 	/**
