@@ -36,10 +36,10 @@ es.ListBlockModel.flattenPlainObject = function( obj, styles ) {
 	if ( !$.isArray( styles ) ) {
 		styles = [];
 	}
-	styles.push( obj.style || 'bullet' );
+	styles.push( obj.attributes.style || 'bullet' );
 	var items = [];
-	if ( $.isArray( obj.items ) ) {
-		$.each( obj.items, function( i, item ) {
+	if ( $.isArray( obj.children ) ) {
+		$.each( obj.children, function( i, item ) {
 			if ( $.isPlainObject( item.content ) ) {
 				items.push(
 					new es.ListBlockItemModel(
@@ -48,8 +48,8 @@ es.ListBlockModel.flattenPlainObject = function( obj, styles ) {
 					)
 				);
 			}
-			if ( $.isArray( item.lists ) ) {
-				$.each( item.lists, function( i, list ) {
+			if ( $.isArray( item.children ) ) {
+				$.each( item.children, function( i, list ) {
 					items = items.concat( es.ListBlockModel.flattenPlainObject( list, styles ) );
 				} );
 			}
@@ -70,7 +70,7 @@ es.ListBlockModel.newFromPlainObject = function( obj ) {
 	return new es.ListBlockModel(
 		// Items - if given, convert plain "list" object from a tree structure to a flat array of
 		// es.ListBlockItemModel objects
-		!$.isArray( obj.items ) ? [] : es.ListBlockModel.flattenPlainObject( obj )
+		!$.isArray( obj.children ) ? [] : es.ListBlockModel.flattenPlainObject( obj )
 	);
 };
 

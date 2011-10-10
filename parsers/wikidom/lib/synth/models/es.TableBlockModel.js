@@ -33,7 +33,7 @@ es.TableBlockModel = function( rows, attributes ) {
 es.TableBlockModel.newFromPlainObject = function( obj ) {
 	return new es.TableBlockModel(
 		// Cells - if given, convert plain row objects to es.TableBlockRowModel objects
-		!$.isArray( obj.rows ) ? [] : $.map( obj.rows, function( row ) {
+		!$.isArray( obj.children ) ? [] : $.map( obj.children, function( row ) {
 			return !$.isPlainObject( row ) ? null : es.TableBlockRowModel.newFromPlainObject( row )
 		} ),
 		// Attributes - if given, make a deep copy of attributes

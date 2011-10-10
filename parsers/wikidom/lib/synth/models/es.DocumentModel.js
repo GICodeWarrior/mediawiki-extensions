@@ -26,12 +26,10 @@ es.DocumentModel = function( blocks, attributes ) {
 es.DocumentModel.newFromPlainObject = function( obj ) {
 	var types = es.BlockModel.constructors;
 	return new es.DocumentModel(
-		// Blocks - if given, convert all plain "block" objects to es.WikiDom* objects
-		!$.isArray( obj.blocks ) ? [] : $.map( obj.blocks, function( block ) {
-			return es.BlockModel.newFromPlainObject( block );
-		} ),
-		// Attributes - if given, make a deep copy of attributes
-		!$.isPlainObject( obj.attributes ) ? {} : $.extend( true, {}, obj.attributes )
+		// children - if given, convert all plain "child" objects to es.WikiDom* objects
+		!$.isArray( obj.children ) ? [] : $.map( obj.children, function( child ) {
+			return es.BlockModel.newFromPlainObject( child );
+		} )
 	);
 };
 

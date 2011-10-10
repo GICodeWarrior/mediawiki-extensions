@@ -9,7 +9,7 @@
 es.TableBlockRowView = function( model ) {
 	es.ViewList.call( this, model, $( '<tr>' ) );
 	es.ViewListItem.call( this, model, this.$ );
-	this.$.attr( this.model.attributes );
+	this.$.attr( 'style', this.model.attributes['html/style'] );
 };
 
 /* Methods */

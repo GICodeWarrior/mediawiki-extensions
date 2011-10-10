@@ -8,7 +8,7 @@
 es.TableBlockCellView = function( model ) {
 	es.ViewList.call( this, model, $( '<td>' ) );
 	es.ViewListItem.call( this, model, this.$ );
-	this.$.attr( this.model.attributes );
+	this.$.attr( 'style', this.model.attributes['html/style'] );
 };
 
 /* Methods */

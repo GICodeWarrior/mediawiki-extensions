@@ -1,5 +1,5 @@
 es.HeadingBlockView = function( model ) {
-	es.BlockView.call( this, model, $('<h' + model.level +'/>') );
+	es.BlockView.call( this, model, $('<h' + model.attributes.level +'/>') );
 	this.$.addClass( 'editSurface-headingBlock' );
 	this.contentView = new es.ContentView( this.$, this.model.content );
 	var view = this;

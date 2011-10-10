@@ -8,10 +8,10 @@
  * @property content {es.ContentModel}
  * @property level {Integer}
  */
-es.HeadingBlockModel = function( content, level ) {
+es.HeadingBlockModel = function( content, attributes ) {
 	es.BlockModel.call( this, ['hasContent', 'isAnnotatable'] );
 	this.content = content || new es.ContentModel();
-	this.level = level || 0;
+	this.attributes = attributes || {};
 	var model = this;
 	this.content.on( 'change', function() {
 		model.emit( 'update' );
@@ -28,7 +28,7 @@ es.HeadingBlockModel = function( content, level ) {
  * @param obj {Object}
  */
 es.HeadingBlockModel.newFromPlainObject = function( obj ) {
-	return new es.HeadingBlockModel( es.ContentModel.newFromPlainObject( obj.content ), obj.level );
+	return new es.HeadingBlockModel( es.ContentModel.newFromPlainObject( obj.content ), obj.attributes );
 };
 
 /* Methods */
@@ -57,7 +57,7 @@ es.HeadingBlockModel.prototype.getContentLength = function() {
  * @returns obj {Object}
  */
 es.HeadingBlockModel.prototype.getPlainObject = function() {
-	return { 'type': 'heading', 'content': this.content.getPlainObject(), 'level': this.level };
+	return { 'type': 'heading', 'content': this.content.getPlainObject(), 'attributes': this.attributes };
 };
 
 es.HeadingBlockModel.prototype.commit = function( transaction ) {
