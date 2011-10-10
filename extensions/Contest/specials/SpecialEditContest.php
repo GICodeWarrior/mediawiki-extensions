@@ -195,6 +195,16 @@ class SpecialEditContest extends FormSpecialPage {
 			'label-message' => 'contest-edit-help',
 		);
 		
+		$fields['signup_email'] = array (
+			'type' => 'text',
+			'label-message' => 'contest-edit-signup',
+		);
+		
+		$fields['reminder_email'] = array (
+			'type' => 'text',
+			'label-message' => 'contest-edit-reminder',
+		);
+		
 		if ( $contest !== false ) {
 			foreach ( $fields as $name => $data ) {
 				$fields[$name]['default'] = $contest->getField( $name );
@@ -225,7 +235,9 @@ class SpecialEditContest extends FormSpecialPage {
 	 * Process the form.  At this point we know that the user passes all the criteria in
 	 * userCanExecute(), and if the data array contains 'Username', etc, then Username
 	 * resets are allowed.
-	 * @param $data array
+	 * 
+	 * @param array $data
+	 * 
 	 * @return Bool|Array
 	 */
 	public function onSubmit( array $data ) {

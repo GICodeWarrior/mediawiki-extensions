@@ -83,6 +83,8 @@ $messages['en'] = array(
 	'contest-edit-opportunities' => 'Opportunities page',
 	'contest-edit-rulespage' => 'Rules page',
 	'contest-edit-help' => 'Help page',
+	'contest-edit-signup' => 'Signup email page',
+	'contest-edit-reminder' => 'Reminder email page',
 	'contest-edit-exists-already' => 'Note: you are editing an already existing contest, not creating a new one.',
 	'contest-edit-submit' => 'Submit',
 

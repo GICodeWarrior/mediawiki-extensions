@@ -3,5 +3,5 @@ ALTER TABLE /*_*/contests
 	ADD COLUMN contest_reminder_email VARCHAR(255) NOT NULL;
 	
 UPDATE /*_*/contests SET 
-	contest_signup_email = '',
-	contest_reminder_email = '';
+	contest_signup_email = 'MediaWiki:',
+	contest_reminder_email = 'MediaWiki:';
