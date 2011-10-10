@@ -472,6 +472,22 @@ $messages['mr'] = array(
   #</pre><!-- leave this line alone -->',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'editsubpages-desc' => 'Membolehkan penyelia untuk membuka kunci laluan dan semua sublaman dalam laman itu untuk penyuntingan secara rahsia melalui [[MediaWiki:Unlockedpages]]',
+	'unlockedpages' => ' #<!-- jangan usik baris ini --><pre>
+# Letakkan laman-laman yang ingin dibuka kunci di bawah dengan menggunakan
+# * Nama laman
+# Laman yang dibuka kunci mesti bermula dengan bulet untuk dikira,
+# yang selebihnya dianggap sebagai komen
+# Nama laman itu boleh berbentuk [[pautan]] dan peka besar kecil huruf
+# Selain itu, laman perbincangannya akan dibuka kunci secara automatik beserta laman itu
+# Lihat http://www.mediawiki.org/wiki/Extension:EditSubpages untuk maklumat lanjut
+ #</pre><!-- jangan usik baris ini -->',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
