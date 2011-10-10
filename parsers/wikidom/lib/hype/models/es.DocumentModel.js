@@ -91,14 +91,10 @@ es.DocumentModel.operations = ( function() {
 		}
 		annotate.call( this, this.cursor + op.data.length );
 		this.cursor += op.data.length;
-		
-		// TODO: Synchronize op.tree - insert elements and adjust lengths
 	}
 	
 	function remove( op ) {
 		this.data.splice( this.cursor, op.data.length );
-
-		// TODO: Synchronize op.tree - remove elements and adjust lengths
 	}
 	
 	function attribute( op, invert ) {
@@ -710,6 +706,7 @@ es.DocumentModel.prototype.commit = function( transaction ) {
 			throw 'Invalid operation error. Operation type is not supported: ' + operation.type;
 		}
 	}
+	// TODO: Synchronize op.tree - insert elements and adjust lengths
 };
 
 /**
@@ -734,6 +731,7 @@ es.DocumentModel.prototype.rollback = function( transaction ) {
 			throw 'Invalid operation error. Operation type is not supported: ' + operation.type;
 		}
 	}
+	// TODO: Synchronize op.tree - insert elements and adjust lengths
 };
 
 /* Inheritance */
