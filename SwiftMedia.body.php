@@ -29,28 +29,28 @@ class SwiftFile extends LocalFile {
 	 */
 	var
 		$conn;             # our connection to the Swift proxy.
-		#$fileExists,       # does the file file exist on disk? (loadFromXxx)
-		#$historyLine,      # Number of line to return by nextHistoryLine() (constructor)
-		#$historyRes,       # result of the query for the file's history (nextHistoryLine)
-		#$width,            # \
-		#$height,           #  |
-		#$bits,             #   --- returned by getimagesize (loadFromXxx)
-		#$attr,             # /
-		#$media_type,       # MEDIATYPE_xxx (bitmap, drawing, audio...)
-		#$mime,             # MIME type, determined by MimeMagic::guessMimeType
-		#$major_mime,       # Major mime type
-		#$minor_mime,       # Minor mime type
-		#$size,             # Size in bytes (loadFromXxx)
-		#$metadata,         # Handler-specific metadata
-		#$timestamp,        # Upload timestamp
-		#$sha1,             # SHA-1 base 36 content hash
-		#$user, $user_text, # User, who uploaded the file
-		#$description,      # Description of current revision of the file
-		#$dataLoaded,       # Whether or not all this has been loaded from the database (loadFromXxx)
-		#$upgraded,         # Whether the row was upgraded on load
-		#$locked,           # True if the image row is locked
-		#$missing,          # True if file is not present in file system. Not to be cached in memcached
-		#$deleted;          # Bitfield akin to rev_deleted
+		# $fileExists,       # does the file file exist on disk? (loadFromXxx)
+		# $historyLine,      # Number of line to return by nextHistoryLine() (constructor)
+		# $historyRes,       # result of the query for the file's history (nextHistoryLine)
+		# $width,            # \
+		# $height,           #  |
+		# $bits,             #   --- returned by getimagesize (loadFromXxx)
+		# $attr,             # /
+		# $media_type,       # MEDIATYPE_xxx (bitmap, drawing, audio...)
+		# $mime,             # MIME type, determined by MimeMagic::guessMimeType
+		# $major_mime,       # Major mime type
+		# $minor_mime,       # Minor mime type
+		# $size,             # Size in bytes (loadFromXxx)
+		# $metadata,         # Handler-specific metadata
+		# $timestamp,        # Upload timestamp
+		# $sha1,             # SHA-1 base 36 content hash
+		# $user, $user_text, # User, who uploaded the file
+		# $description,      # Description of current revision of the file
+		# $dataLoaded,       # Whether or not all this has been loaded from the database (loadFromXxx)
+		# $upgraded,         # Whether the row was upgraded on load
+		# $locked,           # True if the image row is locked
+		# $missing,          # True if file is not present in file system. Not to be cached in memcached
+		# $deleted;          # Bitfield akin to rev_deleted
 	/**#@-*/
 
 	/**
@@ -67,7 +67,7 @@ class SwiftFile extends LocalFile {
 	 * @return SwiftFile
 	 */
 	static function newFromTitle( $title, $repo, $unused = null ) {
-		if ( empty($title) ) {
+		if ( empty( $title ) ) {
 			return null;
 		}
 		return new self( $title, $repo );
@@ -107,13 +107,13 @@ class SwiftFile extends LocalFile {
 	/** isVisible inherited */
 
 	public function getPath() {
-		$this->tempPath = $this->repo->getLocalCopy($this->repo->container, $this->getRel());
+		$this->tempPath = $this->repo->getLocalCopy( $this->repo->container, $this->getRel() );
 		return $this->tempPath;
 	}
 
 	/** Get the path of the archive directory, or a particular file if $suffix is specified */
 	public function getArchivePath( $suffix = false ) {
-		$this->tempPath = $this->repo->getLocalCopy($this->repo->getZoneContainer('public'), $this->getArchiveRel( $suffix ));
+		$this->tempPath = $this->repo->getLocalCopy( $this->repo->getZoneContainer( 'public' ), $this->getArchiveRel( $suffix ) );
 		return $this->tempPath;
 	}
 
@@ -123,12 +123,12 @@ class SwiftFile extends LocalFile {
 		if ( $suffix !== false ) {
 			$path .= '/' . $suffix;
 		}
-		$this->tempPath = $this->repo->getLocalCopy($this->repo->getZoneContainer('thumb'), $path);
+		$this->tempPath = $this->repo->getLocalCopy( $this->repo->getZoneContainer( 'thumb' ), $path );
 		return $this->tempPath;
 	}
 
 	function __destruct() {
-		if ($this->tempPath) {
+		if ( $this->tempPath ) {
 			// Clean up temporary data.
 			unlink( $this->tempPath );
 			$this->tempPath = null;
@@ -151,25 +151,25 @@ class SwiftFile extends LocalFile {
 		global $wgIgnoreImageErrors, $wgThumbnailEpoch, $wgTmpDirectory;
 
 		// get a temporary place to put the original.
-		$thumbPath = tempnam( $wgTmpDirectory, 'transform_out_') . '.' . pathinfo( $thumbName, PATHINFO_EXTENSION );
+		$thumbPath = tempnam( $wgTmpDirectory, 'transform_out_' ) . '.' . pathinfo( $thumbName, PATHINFO_EXTENSION );
 
-		if ( $this->repo && $this->repo->canTransformVia404() && !($flags & self::RENDER_NOW ) ) {
+		if ( $this->repo && $this->repo->canTransformVia404() && !( $flags & self::RENDER_NOW ) ) {
 			return $this->handler->getTransform( $this, $thumbPath, $thumbUrl, $params );
 		}
 
 		// see if the file exists, and if it exists, is not too old.
 		$conn = $this->repo->connect();
-		$container = $this->repo->get_container($conn,$this->repo->container . '%2Fthumb');
+		$container = $this->repo->get_container( $conn, $this->repo->container . '%2Fthumb' );
 		try {
-			$pic = $container->get_object($this->getRel() . "/$thumbName");
-		} catch (NoSuchObjectException $e) {
+			$pic = $container->get_object( $this->getRel() . "/$thumbName" );
+		} catch ( NoSuchObjectException $e ) {
 			$pic = NULL;
 		}
 		if ( $pic ) {
 			$thumbTime = $pic->last_modified;
-			$tm = strptime($thumbTime, '%a, %d %b %Y %H:%M:%S GMT'); 
-			$thumbGMT = gmmktime($tm['tm_hour'], $tm['tm_min'], $tm['tm_sec'], $tm['tm_mon']+1, $tm['tm_mday'], $tm['tm_year'] + 1900);
-			wfDebug( __METHOD__.": $thumbName is dated $thumbGMT\n" );
+			$tm = strptime( $thumbTime, '%a, %d %b %Y %H:%M:%S GMT' );
+			$thumbGMT = gmmktime( $tm['tm_hour'], $tm['tm_min'], $tm['tm_sec'], $tm['tm_mon'] + 1, $tm['tm_mday'], $tm['tm_year'] + 1900 );
+			wfDebug( __METHOD__ . ": $thumbName is dated $thumbGMT\n" );
 			if ( gmdate( 'YmdHis', $thumbGMT ) >= $wgThumbnailEpoch ) {
 
 				return $this->handler->getTransform( $this, $thumbPath, $thumbUrl, $params );
@@ -182,7 +182,7 @@ class SwiftFile extends LocalFile {
 			$thumb = null;
 		} elseif ( $thumb->isError() ) {
 			$this->lastError = $thumb->toText();
-			if ( $wgIgnoreImageErrors && !($flags & self::RENDER_NOW) ) {
+			if ( $wgIgnoreImageErrors && !( $flags & self::RENDER_NOW ) ) {
 				$thumb = $this->handler->getTransform( $this, $thumbPath, $thumbUrl, $params );
 			}
 		}
@@ -217,7 +217,7 @@ class SwiftFile extends LocalFile {
 	 * Get the public root directory of the repository.
 	 */
 	protected function getRootDirectory() {
-		throw new MWException( __METHOD__.': not implemented' );
+		throw new MWException( __METHOD__ . ': not implemented' );
 	}
 
 	/** getHandler inherited */
@@ -229,18 +229,18 @@ class SwiftFile extends LocalFile {
 	 * @param $archiveName string: the article name for the archived file (if archived).
 	 * @return a list of files, the first entry of which is the directory name (if applicable).
 	 */
-	function getThumbnails($archiveName = false) {
+	function getThumbnails( $archiveName = false ) {
 		$this->load();
 
-		if ($archiveName) {
-			$prefix = $this->getArchiveRel($archiveName);
+		if ( $archiveName ) {
+			$prefix = $this->getArchiveRel( $archiveName );
 		} else {
 			$prefix = $this->getRel();
 		}
 		$conn = $this->repo->connect();
-		$container = $this->repo->get_container($conn,$this->repo->container . '%2Fthumb');
-		$files = $container->list_objects(0, NULL, $prefix);
-		array_unshift($files, 'unused'); # return an unused $dir.
+		$container = $this->repo->get_container( $conn, $this->repo->container . '%2Fthumb' );
+		$files = $container->list_objects( 0, NULL, $prefix );
+		array_unshift( $files, 'unused' ); # return an unused $dir.
 		return $files;
 	}
 
@@ -249,11 +249,11 @@ class SwiftFile extends LocalFile {
 	 * @param $dir string If needed for this repo, the directory prefix.
 	 * @param $files array of strings listing the thumbs to be deleted.
 	 */
-	function purgeThumbList($dir, $files) {
+	function purgeThumbList( $dir, $files ) {
 		global $wgExcludeFromThumbnailPurge;
 
 		$conn = $this->repo->connect();
-		$container = $this->repo->get_container($conn,$this->repo->container . '%2Fthumb');
+		$container = $this->repo->get_container( $conn, $this->repo->container . '%2Fthumb' );
 		foreach ( $files as $file ) {
 			// Only remove files not in the $wgExcludeFromThumbnailPurge configuration variable
 			$ext = pathinfo( $file, PATHINFO_EXTENSION );
@@ -261,8 +261,8 @@ class SwiftFile extends LocalFile {
 				continue;
 			}
 
-			wfDebug(  __METHOD__ . ' deleting ' . $container->name . "/$file\n");
-			$this->repo->swift_delete($container, $file);
+			wfDebug(  __METHOD__ . ' deleting ' . $container->name . "/$file\n" );
+			$this->repo->swift_delete( $container, $file );
 		}
 	}
 
@@ -311,10 +311,10 @@ class SwiftRepo extends LocalRepo {
 		$this->deletedDir = false;
 
 		// Required settings
-		$this->swiftuser= $info['user'];
-		$this->swiftkey= $info['key'];
-		$this->authurl= $info['authurl'];
-		$this->container= $info['container'];
+		$this->swiftuser = $info['user'];
+		$this->swiftkey = $info['key'];
+		$this->authurl = $info['authurl'];
+		$this->container = $info['container'];
 	}
 
 	/**
@@ -323,15 +323,15 @@ class SwiftRepo extends LocalRepo {
 	 * @return CF_Connection
 	 */
 	function connect() {
-		$auth = new CF_Authentication($this->swiftuser, $this->swiftkey, NULL, $this->authurl);
+		$auth = new CF_Authentication( $this->swiftuser, $this->swiftkey, NULL, $this->authurl );
 		try {
 			$auth->authenticate();
-		} catch (AuthenticationException $e) {
+		} catch ( AuthenticationException $e ) {
 			throw new MWException( "We can't authenticate ourselves." );
-		#} catch (InvalidResponseException $e) {
+		# } catch (InvalidResponseException $e) {
 		#	throw new MWException( __METHOD__ . "unexpected response '$e'" );
 		}
-		return new CF_Connection($auth);
+		return new CF_Connection( $auth );
 	}
 
 	/**
@@ -342,12 +342,12 @@ class SwiftRepo extends LocalRepo {
 	 *
 	 * @return CF_Container
 	 */
-	function get_container($conn, $cont) {
+	function get_container( $conn, $cont ) {
 		try {
-			return $conn->get_container($cont);
-		} catch (NoSuchContainerException $e) {
+			return $conn->get_container( $cont );
+		} catch ( NoSuchContainerException $e ) {
 			throw new MWException( "A container we thought existed, doesn't." );
-		#} catch (InvalidResponseException $e) {
+		# } catch (InvalidResponseException $e) {
 		#	throw new MWException( __METHOD__ . "unexpected response '$e'" );
 		}
 	}
@@ -359,17 +359,17 @@ class SwiftRepo extends LocalRepo {
 	 *
 	 * @return CF_Container
 	 */
-	function write_swift_object( $srcPath, $dstc, $dstRel) {
+	function write_swift_object( $srcPath, $dstc, $dstRel ) {
 		try {
-			$obj = $dstc->create_object($dstRel);
-			$obj->load_from_filename( $srcPath, True);
-		} catch (SyntaxException $e) {
+			$obj = $dstc->create_object( $dstRel );
+			$obj->load_from_filename( $srcPath, True );
+		} catch ( SyntaxException $e ) {
 			throw new MWException( 'missing required parameters' );
-		} catch (BadContentTypeException $e) {
+		} catch ( BadContentTypeException $e ) {
 			throw new MWException( 'No Content-Type was/could be set' );
-		#} catch (InvalidResponseException $e) {
+		# } catch (InvalidResponseException $e) {
 		#	throw new MWException( __METHOD__ . "unexpected response '$e'" );
-		} catch (IOException $e) {
+		} catch ( IOException $e ) {
 			throw new MWException( "error opening file '$e'" );
 		}
 	}
@@ -381,12 +381,12 @@ class SwiftRepo extends LocalRepo {
 	 */
 	function swift_delete( $container, $rel ) {
 		try {
-			$container->delete_object($rel);
-		} catch (SyntaxException $e) {
+			$container->delete_object( $rel );
+		} catch ( SyntaxException $e ) {
 			throw new MWException( "Swift object name not well-formed: '$e'" );
-		} catch (NoSuchObjectException $e) {
+		} catch ( NoSuchObjectException $e ) {
 			throw new MWException( "Swift object we are trying to delete does not exist: '$e'" );
-		#} catch (InvalidResponseException $e) {
+		# } catch (InvalidResponseException $e) {
 		#	throw new MWException( "unexpected response '$e'" );
 		}
 	}
@@ -416,7 +416,7 @@ class SwiftRepo extends LocalRepo {
 			}
 
 			// Check overwriting
-			if (0) { #FIXME
+			if ( 0 ) { # FIXME
 			if ( !( $flags & self::OVERWRITE ) && file_exists( $dstPath ) ) { // FIXME: $dstPath is undefined
 				if ( $flags & self::OVERWRITE_SAME ) {
 					$hashSource = sha1_file( $srcPath );
@@ -444,28 +444,28 @@ class SwiftRepo extends LocalRepo {
 
 			// Point to the container.
 			$dstContainer = $this->getZoneContainer( $dstZone );
-			$dstc = $this->get_container($conn, $dstContainer);
+			$dstc = $this->get_container( $conn, $dstContainer );
 
 			$good = true;
 
 			// Where are we copying this from?
-			if (self::isVirtualUrl( $srcPath )) {
+			if ( self::isVirtualUrl( $srcPath ) ) {
 				$src = $this->getContainerRel( $srcPath );
-				list ($srcContainer, $srcRel) = $src;
-				$srcc = $this->get_container($conn, $srcContainer);
+				list ( $srcContainer, $srcRel ) = $src;
+				$srcc = $this->get_container( $conn, $srcContainer );
 
-				$this->swiftcopy($srcc, $srcRel, $dstc, $dstRel);
+				$this->swiftcopy( $srcc, $srcRel, $dstc, $dstRel );
 				if ( $flags & self::DELETE_SOURCE ) {
 					$this->swift_delete( $srcc, $srcRel );
 				}
 			} else {
-				$this->write_swift_object( $srcPath, $dstc, $dstRel);
+				$this->write_swift_object( $srcPath, $dstc, $dstRel );
 				// php-cloudfiles throws exceptions, so failure never gets here.
 				if ( $flags & self::DELETE_SOURCE ) {
 					unlink ( $srcPath );
 				}
 			}
-			if (0) {
+			if ( 0 ) {
 				$status->error( 'filecopyerror', $srcPath, $dstPath );
 				$good = false;
 			}
@@ -489,19 +489,19 @@ class SwiftRepo extends LocalRepo {
 	 * @return mixed Status or false
 	 */
 
-	function append( $srcPath, $toAppendPath, $flags = 0 ){
-		throw new MWException( __METHOD__.': Not yet implemented.' );
+	function append( $srcPath, $toAppendPath, $flags = 0 ) {
+		throw new MWException( __METHOD__ . ': Not yet implemented.' );
 		// I think we need to count the number of files whose names
 		// start with $toAppendPath, then add that count (with leading zeroes) to
 		// the end of $toAppendPath and write the chunk there.
 
 		// Count the number of files whose names start with $toAppendPath
 		$conn = $this->connect();
-		$container = $this->repo->get_container($conn,$this->repo->container . "%2Ftemp");
-		$nextone = count($container->list_objects(0, NULL, $srcPath));
+		$container = $this->repo->get_container( $conn, $this->repo->container . "%2Ftemp" );
+		$nextone = count( $container->list_objects( 0, NULL, $srcPath ) );
 
 		// Do the append to the next name
-		$status = $this->store( $srcPath, 'temp', sprintf("%s.%05d", $toAppendPath, $nextone) );
+		$status = $this->store( $srcPath, 'temp', sprintf( "%s.%05d", $toAppendPath, $nextone ) );
 
 		if ( $flags & self::DELETE_SOURCE ) {
 			unlink( $srcPath );
@@ -513,7 +513,7 @@ class SwiftRepo extends LocalRepo {
 	 * Finish the append operation.
 	 * @param $toAppendPath String: path to append to.
 	 */
-	function appendFinish( $toAppendPath ){
+	function appendFinish( $toAppendPath ) {
 		$conn = $this->connect();
 		$container = $this->repo->get_container( $conn, $this->repo->container . '%2Ftemp' );
 		$parts = $container->list_objects( 0, NULL, $srcPath ); // FIXME: $srcPath is undefined
@@ -521,7 +521,7 @@ class SwiftRepo extends LocalRepo {
 
 		// The first object as the same name as the destination, so
 		// we read it into memory and then write it out as the first chunk.
-		$obj = $container->get_object( array_shift($parts) );
+		$obj = $container->get_object( array_shift( $parts ) );
 		$first = $obj->read();
 
 		$biggie = $container->create_object( $toAppendPath );
@@ -546,7 +546,7 @@ class SwiftRepo extends LocalRepo {
 	 * @return FileRepoStatus
 	 */
 	function deleteBatch( $sourceDestPairs ) {
-		wfDebug(  __METHOD__ . ' deleting ' . var_export($sourceDestPairs, true) . '\n');
+		wfDebug(  __METHOD__ . ' deleting ' . var_export( $sourceDestPairs, true ) . '\n' );
 
 		/**
 		 * Move the files
@@ -576,24 +576,24 @@ class SwiftRepo extends LocalRepo {
 	 * @return Either array of files and existence flags, or false
 	 */
 	function fileExistsBatch( $files, $flags = 0 ) {
-		if ($flags != self::FILES_ONLY) {
+		if ( $flags != self::FILES_ONLY ) {
 			// we ONLY support when $flags & self::FILES_ONLY is set!
-			throw new MWException( "Swift Media Store doesn't have directories");
+			throw new MWException( "Swift Media Store doesn't have directories" );
 		}
 		$result = array();
 		$conn = $this->connect();
 
 		foreach ( $files as $key => $file ) {
 			if ( !self::isVirtualUrl( $file ) ) {
-				throw new MWException( __METHOD__ . " requires a virtual URL, not '$file'");
+				throw new MWException( __METHOD__ . " requires a virtual URL, not '$file'" );
 			}
 			$rvu = $this->getContainerRel( $file );
-			list ($cont, $rel) = $rvu;
-			$container = $this->get_container($conn,$cont);
+			list ( $cont, $rel ) = $rvu;
+			$container = $this->get_container( $conn, $cont );
 			try {
-				$obj = $container->get_object($rel);
+				$obj = $container->get_object( $rel );
 				$result[$key] = true;
-			} catch (NoSuchObjectException $e) {
+			} catch ( NoSuchObjectException $e ) {
 				$result[$key] = false;
 			}
 		}
@@ -604,7 +604,7 @@ class SwiftRepo extends LocalRepo {
 
 	// FIXME: do we really need to reject empty titles?
 	function newFile( $title, $time = false ) {
-		if ( empty($title) ) {
+		if ( empty( $title ) ) {
 			return null;
 		}
 		return parent::newFile( $title, $time );
@@ -617,38 +617,38 @@ class SwiftRepo extends LocalRepo {
 	 * @param $dstContainer CF_Container
 	 * @param $dstRel String: relative path to the destination.
 	 */
-	protected function swiftcopy($srcContainer, $srcRel, $dstContainer, $dstRel ) {
+	protected function swiftcopy( $srcContainer, $srcRel, $dstContainer, $dstRel ) {
 		// The destination must exist already.
-		$obj = $dstContainer->create_object($dstRel);
+		$obj = $dstContainer->create_object( $dstRel );
 		$obj->content_type = 'text/plain';
 
 		try {
-			$obj->write('.');
-		} catch (SyntaxException $e ) {
+			$obj->write( '.' );
+		} catch ( SyntaxException $e ) {
 			throw new MWException( "Write failed: $e" );
-		} catch (BadContentTypeException $e ) {
+		} catch ( BadContentTypeException $e ) {
 			throw new MWException( "Missing Content-Type: $e" );
-		} catch (MisMatchedChecksumException $e ) {
+		} catch ( MisMatchedChecksumException $e ) {
 			throw new MWException( __METHOD__ . "should not happen: '$e'" );
-		#} catch (InvalidResponseException $e ) {
+		# } catch (InvalidResponseException $e ) {
 		#	throw new MWException( __METHOD__ . "unexpected response '$e'" );
 		}
 
 		try {
-			$obj = $dstContainer->get_object($dstRel);
-		} catch (NoSuchObjectException $e) {
+			$obj = $dstContainer->get_object( $dstRel );
+		} catch ( NoSuchObjectException $e ) {
 			throw new MWException( 'The object we just created does not exist: ' . $dstContainer->name . "/$dstRel: $e" );
 		}
 
-		wfDebug( __METHOD__ . ' copying to ' . $dstContainer->name . "/$dstRel from " . $srcContainer->name . "/$srcRel\n");
+		wfDebug( __METHOD__ . ' copying to ' . $dstContainer->name . "/$dstRel from " . $srcContainer->name . "/$srcRel\n" );
 
 		try {
-			$obj->copy($srcContainer->name . "/$srcRel");
-		} catch (SyntaxException $e ) {
+			$obj->copy( $srcContainer->name . "/$srcRel" );
+		} catch ( SyntaxException $e ) {
 			throw new MWException( 'Source file does not exist: ' . $srcContainer->name . "/$srcRel: $e" );
-		} catch (MisMatchedChecksumException $e ) {
+		} catch ( MisMatchedChecksumException $e ) {
 			throw new MWException( "Checksums do not match: $e" );
-		#} catch (InvalidResponseException $e ) {
+		# } catch (InvalidResponseException $e ) {
 		#	throw new MWException( __METHOD__ . "unexpected response '$e'" );
 		}
 	}
@@ -663,7 +663,7 @@ class SwiftRepo extends LocalRepo {
 
 		# paranoia
 		$status = $this->newGood( array() );
-		foreach ( $triplets as $i => $triplet ) {
+		foreach ( $triplets as $triplet ) {
 			list( $srcPath, $dstRel, $archiveRel ) = $triplet;
 
 			if ( !$this->validateFilename( $dstRel ) ) {
@@ -680,9 +680,9 @@ class SwiftRepo extends LocalRepo {
 
 		try {
 			$conn = $this->connect();
-			$container = $this->get_container($conn,$this->container);
-		} catch (InvalidResponseException $e) {
-			$status->fatal("Unexpected Swift response: '$e'");
+			$container = $this->get_container( $conn, $this->container );
+		} catch ( InvalidResponseException $e ) {
+			$status->fatal( "Unexpected Swift response: '$e'" );
 		}
 
 		if ( !$status->ok ) {
@@ -694,18 +694,18 @@ class SwiftRepo extends LocalRepo {
 
 			// Archive destination file if it exists
 			try {
-				$pic = $container->get_object($dstRel);
-			} catch (InvalidResponseException $e) {
-				$status->error("Unexpected Swift response: '$e'");
+				$pic = $container->get_object( $dstRel );
+			} catch ( InvalidResponseException $e ) {
+				$status->error( "Unexpected Swift response: '$e'" );
 				$status->failCount++;
 				continue;
-			} catch (NoSuchObjectException $e) {
+			} catch ( NoSuchObjectException $e ) {
 				$pic = NULL;
 			}
 
-			if( $pic ) {
-				$this->swiftcopy($container, $dstRel, $container, $archiveRel );
-				wfDebug(__METHOD__.": moved file $dstRel to $archiveRel\n");
+			if ( $pic ) {
+				$this->swiftcopy( $container, $dstRel, $container, $archiveRel );
+				wfDebug( __METHOD__ . ": moved file $dstRel to $archiveRel\n" );
 				$status->value[$i] = 'archived';
 			} else {
 				$status->value[$i] = 'new';
@@ -714,30 +714,30 @@ class SwiftRepo extends LocalRepo {
 			$good = true;
 			try {
 				// Where are we copying this from?
-				if (self::isVirtualUrl( $srcPath )) {
+				if ( self::isVirtualUrl( $srcPath ) ) {
 					$src = $this->getContainerRel( $srcPath );
-					list ($srcContainer, $srcRel) = $src;
-					$srcc = $this->get_container($conn, $srcContainer);
+					list ( $srcContainer, $srcRel ) = $src;
+					$srcc = $this->get_container( $conn, $srcContainer );
 
-					$this->swiftcopy($srcc, $srcRel, $container, $dstRel);
+					$this->swiftcopy( $srcc, $srcRel, $container, $dstRel );
 					if ( $flags & self::DELETE_SOURCE ) {
 						$this->swift_delete( $srcc, $srcRel );
 					}
 				} else {
-					$this->write_swift_object( $srcPath, $container, $dstRel);
+					$this->write_swift_object( $srcPath, $container, $dstRel );
 					// php-cloudfiles throws exceptions, so failure never gets here.
 					if ( $flags & self::DELETE_SOURCE ) {
 						unlink ( $srcPath );
 					}
 				}
-			} catch (InvalidResponseException $e) {
-				$status->error("Unexpected Swift response: '$e'");
+			} catch ( InvalidResponseException $e ) {
+				$status->error( "Unexpected Swift response: '$e'" );
 				$good = false;
 			}
 
 			if ( $good ) {
 				$status->successCount++;
-				wfDebug(__METHOD__.": wrote tempfile $srcPath to $dstRel\n");
+				wfDebug( __METHOD__ . ": wrote tempfile $srcPath to $dstRel\n" );
 			} else {
 				$status->failCount++;
 			}
@@ -762,15 +762,15 @@ class SwiftRepo extends LocalRepo {
 				if ( self::isVirtualUrl( $file ) ) {
 					// This is a virtual url, resolve it
 					$path = $this->getContainerRel( $file );
-					list( $cont, $rel) = $path;
+					list( $cont, $rel ) = $path;
 				} else {
 					// FIXME: This is a full file name
-					throw new MWException( __METHOD__.": $file needs an unlink()" );
+					throw new MWException( __METHOD__ . ": $file needs an unlink()" );
 				}
 			}
 
-			wfDebug( __METHOD__.": $cont/$rel\n" );
-			$container = $this->get_container($conn,$cont);
+			wfDebug( __METHOD__ . ": $cont/$rel\n" );
+			$container = $this->get_container( $conn, $cont );
 			$this->swift_delete( $container, $rel );
 		}
 	}
@@ -785,7 +785,7 @@ class SwiftRepo extends LocalRepo {
 	function cleanupDeletedBatch( $storageKeys ) {
 		$conn = $this->connect();
 		$cont = $this->getZoneContainer( 'deleted' );
-		$container = $this->get_container($conn,$cont);
+		$container = $this->get_container( $conn, $cont );
 
 		$dbw = $this->getMasterDB();
 		$status = $this->newGood();
@@ -797,14 +797,14 @@ class SwiftRepo extends LocalRepo {
 			$inuse = $dbw->selectField( 'filearchive', '1',
 				array( 'fa_storage_group' => 'deleted', 'fa_storage_key' => $key ),
 				__METHOD__, array( 'FOR UPDATE' ) );
-			if( !$inuse ) {
+			if ( !$inuse ) {
 				$sha1 = self::getHashFromKey( $key );
 				$ext = substr( $key, strcspn( $key, '.' ) + 1 );
-				$ext = File::normalizeExtension($ext);
+				$ext = File::normalizeExtension( $ext );
 				$inuse = $dbw->selectField( 'oldimage', '1',
 					array( 'oi_sha1' => $sha1,
 						'oi_archive_name ' . $dbw->buildLike( $dbw->anyString(), ".$ext" ),
-						$dbw->bitAnd('oi_deleted', File::DELETED_FILE) => File::DELETED_FILE ),
+						$dbw->bitAnd( 'oi_deleted', File::DELETED_FILE ) => File::DELETED_FILE ),
 					__METHOD__, array( 'FOR UPDATE' ) );
 			}
 			if ( !$inuse ) {
@@ -823,13 +823,13 @@ class SwiftRepo extends LocalRepo {
 	 * Makes no sense in our context -- don't let anybody call it.
 	 */
 	function getZonePath( $zone ) {
-		throw new MWException( __METHOD__.': not implemented' );
+		throw new MWException( __METHOD__ . ': not implemented' );
 	}
 
 	/**
 	 * Get the Swift container corresponding to one of the three basic zones
 	 */
-	protected function getZoneContainer( $zone ) {
+	public function getZoneContainer( $zone ) {
 		switch ( $zone ) {
 			case 'public':
 				return $this->container;
@@ -849,22 +849,22 @@ class SwiftRepo extends LocalRepo {
 	 */
 	protected function getContainerRel( $url ) {
 		if ( substr( $url, 0, 9 ) != 'mwrepo://' ) {
-			throw new MWException( __METHOD__.': unknown protocol' );
+			throw new MWException( __METHOD__ . ': unknown protocol' );
 		}
 
 		$bits = explode( '/', substr( $url, 9 ), 3 );
 		if ( count( $bits ) != 3 ) {
-			throw new MWException( __METHOD__.": invalid mwrepo URL: $url" );
+			throw new MWException( __METHOD__ . ": invalid mwrepo URL: $url" );
 		}
 		list( $repo, $zone, $rel ) = $bits;
 		if ( $repo !== $this->name ) {
-			throw new MWException( __METHOD__.': fetching from a foreign repo is not supported' );
+			throw new MWException( __METHOD__ . ': fetching from a foreign repo is not supported' );
 		}
 		$container = $this->getZoneContainer( $zone );
-		if ( $container === false) {
-			throw new MWException( __METHOD__.": invalid zone: $zone" );
+		if ( $container === false ) {
+			throw new MWException( __METHOD__ . ": invalid zone: $zone" );
 		}
-		return array($container, rawurldecode( $rel ));
+		return array( $container, rawurldecode( $rel ) );
 	}
 
 	/**
@@ -875,14 +875,14 @@ class SwiftRepo extends LocalRepo {
 	function freeTemp( $virtualUrl ) {
 		$temp = "mwrepo://{$this->name}/temp";
 		if ( substr( $virtualUrl, 0, strlen( $temp ) ) != $temp ) {
-			wfDebug( __METHOD__.": Invalid virtual URL\n" );
+			wfDebug( __METHOD__ . ": Invalid virtual URL\n" );
 			return false;
 		}
 		$path = $this->getContainerRel( $virtualUrl );
-		list ($c, $r) = $path;
+		list ( $c, $r ) = $path;
 		$conn = $this->connect();
-		$container = $this->get_container($conn,$c);
-		$this->swift_delete($container, $r);
+		$container = $this->get_container( $conn, $c );
+		$this->swift_delete( $container, $r );
 	}
 
 	/**
@@ -891,8 +891,8 @@ class SwiftRepo extends LocalRepo {
 	 */
 	function resolveVirtualUrl( $url ) {
 		$path = $this->getContainerRel( $url );
-		list($c, $r) = $path;
-		return $this->getLocalCopy($c, $r);
+		list( $c, $r ) = $path;
+		return $this->getLocalCopy( $c, $r );
 	}
 
 
@@ -903,27 +903,27 @@ class SwiftRepo extends LocalRepo {
 	 * scope.
 	 * FIXME: how do we return a fatal error from Swift?
 	 */
-	function getLocalCopy($container, $rel) {
+	function getLocalCopy( $container, $rel ) {
 
 		// get a temporary place to put the original.
 		$tempPath = tempnam( wfTempDir(), 'swift_in_' ) . '.' . pathinfo( $rel, PATHINFO_EXTENSION );
 
 		/* Fetch the image out of Swift */
 		$conn = $this->connect();
-		$cont = $this->get_container($conn,$container);
+		$cont = $this->get_container( $conn, $container );
 
 		try {
-			$obj = $cont->get_object($rel);
-		} catch (NoSuchObjectException $e) {
-			throw new MWException( "Unable to open original file at $container/$rel");
+			$obj = $cont->get_object( $rel );
+		} catch ( NoSuchObjectException $e ) {
+			throw new MWException( "Unable to open original file at $container/$rel" );
 		}
 
-		wfDebug(  __METHOD__ . " writing to $tempPath\n");
+		wfDebug(  __METHOD__ . " writing to $tempPath\n" );
 		try {
-			$obj->save_to_filename( $tempPath);
-		} catch (IOException $e) {
+			$obj->save_to_filename( $tempPath );
+		} catch ( IOException $e ) {
 			throw new MWException( __METHOD__ . ": error opening '$e'" );
-		} catch (InvalidResponseException $e) {
+		} catch ( InvalidResponseException $e ) {
 			throw new MWException( __METHOD__ . "unexpected response '$e'" );
 		}
 
@@ -965,7 +965,7 @@ class SwiftStash extends UploadStash {
 }
 
 class SwiftStashFile extends UploadStashFile {
-	//public function __construct( $stash, $repo, $path, $key, $data ) {
+	// public function __construct( $stash, $repo, $path, $key, $data ) {
 	//	// We don't call parent:: because UploadStashFile expects to be able to call $this->resolveURL() and get a pathname.
 	//	$this->sessionStash = $stash;
 	//	$this->sessionKey = $key;
@@ -975,10 +975,10 @@ class SwiftStashFile extends UploadStashFile {
 	//	UnregisteredLocalFile::__construct( false, $repo, $path, false );
 	//	$this->name = basename( $this->path );
 
-	//}
+	// }
 
-	//function getPath() {
-	//}
+	// function getPath() {
+	// }
 }
 
 /**
@@ -1001,8 +1001,8 @@ class OldSwiftFile extends SwiftFile {
 
 	static function newFromTitle( $title, $repo, $time = null ) {
 		# The null default value is only here to avoid an E_STRICT
-		if( $time === null )
-			throw new MWException( __METHOD__.' got null for $time parameter' );
+		if ( $time === null )
+			throw new MWException( __METHOD__ . ' got null for $time parameter' );
 		return new self( $title, $repo, $time, null );
 	}
 
@@ -1026,12 +1026,12 @@ class OldSwiftFile extends SwiftFile {
 	 */
 	static function newFromKey( $sha1, $repo, $timestamp = false ) {
 		$conds = array( 'oi_sha1' => $sha1 );
-		if( $timestamp ) {
+		if ( $timestamp ) {
 			$conds['oi_timestamp'] = $timestamp;
 		}
 		$dbr = $repo->getSlaveDB();
 		$row = $dbr->selectRow( 'oldimage', self::selectFields(), $conds, __METHOD__ );
-		if( $row ) {
+		if ( $row ) {
 			return self::newFromRow( $row, $repo );
 		} else {
 			return false;
@@ -1073,7 +1073,7 @@ class OldSwiftFile extends SwiftFile {
 		$this->requestedTime = $time;
 		$this->archive_name = $archiveName;
 		if ( is_null( $time ) && is_null( $archiveName ) ) {
-			throw new MWException( __METHOD__.': must specify at least one of $time or $archiveName' );
+			throw new MWException( __METHOD__ . ': must specify at least one of $time or $archiveName' );
 		}
 	}
 
@@ -1093,7 +1093,7 @@ class OldSwiftFile extends SwiftFile {
 	}
 
 	function isVisible() {
-		return $this->exists() && !$this->isDeleted(File::DELETED_FILE);
+		return $this->exists() && !$this->isDeleted( File::DELETED_FILE );
 	}
 
 	function loadFromDB() {
@@ -1137,7 +1137,7 @@ class OldSwiftFile extends SwiftFile {
 
 		# Don't destroy file info of missing files
 		if ( !$this->fileExists ) {
-			wfDebug( __METHOD__.': file does not exist, aborting\n' );
+			wfDebug( __METHOD__ . ': file does not exist, aborting\n' );
 			wfProfileOut( __METHOD__ );
 			return;
 		}
@@ -1145,7 +1145,7 @@ class OldSwiftFile extends SwiftFile {
 		$dbw = $this->repo->getMasterDB();
 		list( $major, $minor ) = self::splitMime( $this->mime );
 
-		wfDebug(__METHOD__.': upgrading '.$this->archive_name.' to the current schema\n');
+		wfDebug( __METHOD__ . ': upgrading ' . $this->archive_name . ' to the current schema\n' );
 		$dbw->update( 'oldimage',
 			array(
 				'oi_width' => $this->width,
@@ -1171,7 +1171,7 @@ class OldSwiftFile extends SwiftFile {
 	 */
 	function isDeleted( $field ) {
 		$this->load();
-		return ($this->deleted & $field) == $field;
+		return ( $this->deleted & $field ) == $field;
 	}
 
 	/**
@@ -1244,7 +1244,7 @@ class SwiftForeignDBFile extends SwiftFile {
 	function move( $target ) {
 		$this->readOnlyError();
 	}
-	
+
 	function getDescriptionUrl() {
 		// Restore remote behaviour
 		return File::getDescriptionUrl();
@@ -1287,7 +1287,7 @@ class SwiftForeignDBRepo extends SwiftRepo {
 	 * @return DatabaseBase
 	 */
 	function getMasterDB() {
-		wfDebug( __METHOD__.": {$this->dbServer}\n" );
+		wfDebug( __METHOD__ . ": {$this->dbServer}\n" );
 		if ( !isset( $this->dbConn ) ) {
 			$this->dbConn = DatabaseBase::factory( $this->dbType,
 				array(
@@ -1316,7 +1316,7 @@ class SwiftForeignDBRepo extends SwiftRepo {
 
 	/**
 	 * Get a key on the primary cache for this repository.
-	 * Returns false if the repository's cache is not accessible at this site. 
+	 * Returns false if the repository's cache is not accessible at this site.
 	 * The parameters are the parts of the key, as for wfMemcKey().
 	 */
 	function getSharedCacheKey( /*...*/ ) {
@@ -1330,15 +1330,15 @@ class SwiftForeignDBRepo extends SwiftRepo {
 	}
 
 	function store( $srcPath, $dstZone, $dstRel, $flags = 0 ) {
-		throw new MWException( get_class($this) . ': write operations are not supported' );
+		throw new MWException( get_class( $this ) . ': write operations are not supported' );
 	}
 
 	function publish( $srcPath, $dstRel, $archiveRel, $flags = 0 ) {
-		throw new MWException( get_class($this) . ': write operations are not supported' );
+		throw new MWException( get_class( $this ) . ': write operations are not supported' );
 	}
 
 	function deleteBatch( $sourceDestPairs ) {
-		throw new MWException( get_class($this) . ': write operations are not supported' );
+		throw new MWException( get_class( $this ) . ': write operations are not supported' );
 	}
 }
 
@@ -1354,7 +1354,7 @@ class SwiftForeignDBRepo extends SwiftRepo {
  *
  * @ingroup FileRepo
  */
-class SwiftForeignDBViaLBRepo extends SwiftRepo{
+class SwiftForeignDBViaLBRepo extends SwiftRepo {
 	var $wiki, $dbName, $tablePrefix;
 	var $fileFactory = array( 'SwiftForeignDBFile', 'newFromTitle' );
 	var $fileFromRowFactory = array( 'SwiftForeignDBFile', 'newFromRow' );
@@ -1389,7 +1389,7 @@ class SwiftForeignDBViaLBRepo extends SwiftRepo{
 
 	/**
 	 * Get a key on the primary cache for this repository.
-	 * Returns false if the repository's cache is not accessible at this site. 
+	 * Returns false if the repository's cache is not accessible at this site.
 	 * The parameters are the parts of the key, as for wfMemcKey().
 	 */
 	function getSharedCacheKey( /*...*/ ) {
@@ -1403,14 +1403,14 @@ class SwiftForeignDBViaLBRepo extends SwiftRepo{
 	}
 
 	function store( $srcPath, $dstZone, $dstRel, $flags = 0 ) {
-		throw new MWException( get_class($this) . ': write operations are not supported' );
+		throw new MWException( get_class( $this ) . ': write operations are not supported' );
 	}
 
 	function publish( $srcPath, $dstRel, $archiveRel, $flags = 0 ) {
-		throw new MWException( get_class($this) . ': write operations are not supported' );
+		throw new MWException( get_class( $this ) . ': write operations are not supported' );
 	}
 
 	function deleteBatch( $fileMap ) {
-		throw new MWException( get_class($this) . ': write operations are not supported' );
+		throw new MWException( get_class( $this ) . ': write operations are not supported' );
 	}
 }
