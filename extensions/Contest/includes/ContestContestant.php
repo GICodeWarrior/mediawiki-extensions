@@ -480,7 +480,7 @@ class ContestContestant extends ContestDBObject {
 		global $wgPasswordSender, $wgPasswordSenderName, $wgParser;
 		
 		$title = wfMsg( 'contest-email-signup-title' );
-		$emailText = $wgParser->parse( $this->getArticleContent( $this->getContest()->getField( 'signup_email' ) ) );
+		$emailText = $wgParser->parse( $this->getParsedArticleContent( $this->getContest()->getField( 'signup_email' ) ) );
 		$user = $this->getUser();
 		$sender = $wgPasswordSender;
 		$senderName = $wgPasswordSenderName;
@@ -507,7 +507,7 @@ class ContestContestant extends ContestDBObject {
 	 * 
 	 * @return string
 	 */
-	protected function getArticleContent( $pageName ) {
+	protected function getParsedArticleContent( $pageName ) {
 		$title = Title::newFromText( $pageName );
 		
 		if ( is_null( $title ) ) {
@@ -515,7 +515,13 @@ class ContestContestant extends ContestDBObject {
 		}
 		 
 		$article = new Article( $title, 0 );
-		return $article->getContent();
+		
+		global $wgParser;
+		return $wgParser->parse(
+			$article->getContent(),
+			$article->getTitle(),
+			$article->getParserOptions()
+		);
 	}
 	
 	/**
