@@ -46,11 +46,12 @@ $messages['de'] = array(
 
 /** French (Français)
  * @author Gomoko
+ * @author IAlex
  */
 $messages['fr'] = array(
 	'apiexplorer' => 'API Explorer',
-	'apiexplorer-desc' => "Page pour explorer de façon interactive la documentation de la version courante de l'API MediaWiki tournant sur cette installation.",
-	'apiexplorer-intro' => "Cette page affiche la documentation pour l'API du wiki actuel. Merci de cliquer sur une fonction ci-dessous pour voir plus d'information sur les paramètres qui peuvent être utilisés dans chaque appel. Pour la documentation générale de l'API MediaWiki, voyez $1",
+	'apiexplorer-desc' => "Page pour explorer de façon interactive la documentation de l'API MediaWiki",
+	'apiexplorer-intro' => "Cette page affiche la documentation pour l'API du wiki actuel. Merci de cliquer sur une fonction ci-dessous pour voir plus d'information sur les paramètres qui peuvent être utilisés dans chaque appel. Voyez également [http://www.mediawiki.org/wiki/API:Main_page la documentation générale de l'API].",
 	'apiexplorer-loading' => 'Chargement des fonctions...',
 );
 

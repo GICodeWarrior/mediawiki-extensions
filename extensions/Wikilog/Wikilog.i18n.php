@@ -6533,11 +6533,17 @@ $messages['sl'] = array(
 	'wikilog-specialwikilog-title' => 'Wikilogi',
 	'wikilog-log-pagename' => 'Dnevnik dejanj Wikilog',
 	'wikilog-log-pagetext' => 'Spodaj se nahaja seznam dejanj wikiloga.',
-	'wikilog-log-cmt-approve' => 'odobril(-a) pripombo »[[$1]]«',
-	'wikilog-log-cmt-reject' => 'zavrnil(-a) pripombo »[[$1]]«',
+	'wikilog-log-cmt-approve' => 'je odobril(-a) pripombo »[[$1]]«',
+	'wikilog-log-cmt-reject' => 'je zavrnil(-a) pripombo »[[$1]]«',
 	'wikilog-log-cmt-rejdel' => 'Zavrnjena pripomba wikilog od [[Special:Contributions/$1|$1]]',
 	'wikilog-tab' => 'Wikilog',
 	'wikilog-tab-title' => 'Dejanja Wikilog',
+	'wikilog-missing-wikilog' => 'To je stran [[{{int:wikilog-help}}|wikiloga]] za [[{{FULLPAGENAME}}]].
+
+Ta wikilog še ne obstaja.
+Če želite objavljati članke in omogočiti druge zmožnosti wikiloga, ga morate najprej ustvariti.
+
+* <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} Ustvari wikilog].</span>',
 	'wikilog-information' => 'Informacije wikiloga',
 	'wikilog-post-count-published' => 'Na tem wikilogu {{PLURAL:$1|je $1 objavljen članek|sta $1 objavljena članka|so $1 objavljeni članki|je $1 objavljenih člankov}}',
 	'wikilog-post-count-drafts' => '{{PLURAL:$1|Obstaja $1 neobjavljen (osnutek) članka|Obstajata $1 neobjavljena (osnutka) članka|Obstajo $1 neobjavljeni (osnutki) člankov|Obstaja $1 neobjavljenih (osnutkov) člankov}}',

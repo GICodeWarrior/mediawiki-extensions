@@ -1045,6 +1045,7 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'accountmanager' => 'Upravitelj računov',
 	'am-username' => 'uporabniško ime',
 	'am-email' => 'e-pošta',
 	'am-active' => 'dejavno',
@@ -1056,6 +1057,7 @@ $messages['sl'] = array(
 	'nss-no-mail' => 'Ne pošlji e-pošte',
 	'nss-welcome-mail' => 'Račun z uporabniškim imenom $1 in geslom $2 je bil ustvarjen za vas.',
 	'nss-welcome-mail-subject' => 'Ustvarjanje računa',
+	'nss-db-error' => 'Napaka pri branju iz overitvene zbirke podatkov',
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)

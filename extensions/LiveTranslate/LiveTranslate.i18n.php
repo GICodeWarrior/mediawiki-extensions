@@ -254,7 +254,7 @@ $messages['de'] = array(
 	'livetranslate-desc' => 'Ermöglicht die unmittelbare Übersetzung des Seiteninhalts mit „Google Übersetzer“',
 	'right-managetms' => 'Liste der Übersetzungsspeicher [[Special:SpecialLiveTranslate|anpassen]]',
 	'group-tmxadmin' => 'TMX-Administratoren',
-	'group-tmxadmin-member' => 'TMX-Administrator',
+	'group-tmxadmin-member' => '{{GENDER:$1|TMX-Administrator|TMX-Administratorin}}',
 	'grouppage-tmxadmin' => 'Project:TMX-Administratoren',
 	'livetranslate-translate-to' => 'Diese Seite in folgende Sprache übersetzen:',
 	'livetranslate-button-translate' => 'Übersetze',
@@ -356,13 +356,14 @@ $messages['eu'] = array(
 /** French (Français)
  * @author Crochet.david
  * @author Hashar
+ * @author IAlex
  * @author Sherbrooke
  */
 $messages['fr'] = array(
 	'livetranslate-desc' => 'Permet la traduction immédiate du contenu de la page en utilisant le service de traduction de Google',
 	'right-managetms' => '[[Special:SpecialLiveTranslate|Modifier]] la liste des mémoires de traduction',
 	'group-tmxadmin' => 'Admins TMX',
-	'group-tmxadmin-member' => 'Admin TMX',
+	'group-tmxadmin-member' => '{{GENDER:$1|administrateur TMX|administratrice TMX}}',
 	'grouppage-tmxadmin' => 'Project:Admins_TMX',
 	'livetranslate-translate-to' => 'Traduire cette page en',
 	'livetranslate-button-translate' => 'Traduire',
@@ -425,7 +426,7 @@ $messages['gl'] = array(
 	'livetranslate-desc' => 'Activa a tradución en vivo do contido dunha páxina mediante o servizo de tradución do Google',
 	'right-managetms' => '[[Special:SpecialLiveTranslate|Modificar]] a lista de memorias de tradución',
 	'group-tmxadmin' => 'Administradores TMX',
-	'group-tmxadmin-member' => 'Administrador TMX',
+	'group-tmxadmin-member' => '{{GENDER:$1|administrador|administradora}} TMX',
 	'grouppage-tmxadmin' => 'Project:Administradores TMX',
 	'livetranslate-translate-to' => 'Traducir esta páxina ao',
 	'livetranslate-button-translate' => 'Traducir',
@@ -491,7 +492,7 @@ $messages['he'] = array(
 	'livetranslate-desc' => 'הפעלת תרגום חי של תוכן הדף באמצעות שירות התרגום של גוגל',
 	'right-managetms' => '[[Special:SpecialLiveTranslate|לשנות]] את רשימת זיכרונות התרגום',
 	'group-tmxadmin' => 'מנהלי TMX',
-	'group-tmxadmin-member' => 'מנהל TMX',
+	'group-tmxadmin-member' => '{{GENDER:$1|מנהל TMX|מנהלת TMX}}',
 	'grouppage-tmxadmin' => 'Project:מנהלי TMX',
 	'livetranslate-translate-to' => 'לתרגם דף זה ל',
 	'livetranslate-button-translate' => 'תרגום',

@@ -79,7 +79,7 @@ $messages['de'] = array(
 	'mirrortools-desc' => 'Ermöglicht, Bearbeitungen via API-Schnittstelle unter jedwedem Benutzernamen durchzuführen',
 	'right-mirroredit' => 'Bearbeitungen unter jedwedem Benutzernamen über eine API-Schnittstelle durchführen',
 	'group-MirrorTools' => 'Mirror-Bearbeiter',
-	'group-MirrorTools-member' => 'Mirror-Bearbeiter',
+	'group-MirrorTools-member' => '{{GENDER:$1|Mirror-Bearbeiter|Mirror-Bearbeiterin}}',
 	'grouppage-MirrorTools' => '{{ns:project}}:Mirror-Bearbeiter',
 );
 
@@ -115,6 +115,7 @@ $messages['eu'] = array(
 );
 
 /** French (Français)
+ * @author IAlex
  * @author Peter17
  */
 $messages['fr'] = array(
@@ -122,7 +123,7 @@ $messages['fr'] = array(
 	'mirrortools-desc' => 'Autorise les modifications via l’API à être faites sous n’importe quel nom d’utilisateur',
 	'right-mirroredit' => 'Modifier via l’API sous n’importe quel nom d’utilisateur',
 	'group-MirrorTools' => 'Utilisateurs de l’outil miroir',
-	'group-MirrorTools-member' => 'utilisateur de l’outil miroir',
+	'group-MirrorTools-member' => '{{GENDER:$1|utilisateur de l’outil miroir|utilisatrice de l’outil miroir}}',
 	'grouppage-MirrorTools' => '{{ns:project}}:Utilisateurs de l’outil miroir',
 );
 
@@ -144,7 +145,7 @@ $messages['gl'] = array(
 	'mirrortools-desc' => 'Permite que calquera usuario realice edicións a través da API',
 	'right-mirroredit' => 'Editar baixo calquera nome de usuario a través da API',
 	'group-MirrorTools' => 'Usuarios das ferramentas de espello',
-	'group-MirrorTools-member' => 'Usuario das ferramentas de espello',
+	'group-MirrorTools-member' => '{{GENDER:$1|usuario|usuaria}} das ferramentas de espello',
 	'grouppage-MirrorTools' => '{{ns:project}}:Usuarios das ferramentas de espello',
 );
 
@@ -168,7 +169,7 @@ $messages['he'] = array(
 	'mirrortools-desc' => 'אפשור עריכות API בכל שם משתמש',
 	'right-mirroredit' => 'לערוך ב־API מכל שם משתמש',
 	'group-MirrorTools' => 'משתמשי כלי מראה',
-	'group-MirrorTools-member' => 'משתמש כלי מראה',
+	'group-MirrorTools-member' => '{{GENDER:$1|משתמש כלי מראה|משתמשת כלי מראה}}',
 	'grouppage-MirrorTools' => '{{ns:project}}:משתמשי כלי מראה',
 );
 

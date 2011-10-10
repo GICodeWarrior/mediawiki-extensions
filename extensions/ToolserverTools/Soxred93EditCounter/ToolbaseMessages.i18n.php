@@ -1287,6 +1287,7 @@ Se chegou cá a partir de um link <a href="$1">reporte este defeito</a>, por fav
 );
 
 /** Russian (Русский)
+ * @author Askarmuk
  * @author Haffman
  * @author Александр Сигачёв
  */
@@ -1295,9 +1296,30 @@ $messages['ru'] = array(
 	'toolbase-replag-years' => 'годы',
 	'toolbase-replag-months' => 'месяцы',
 	'toolbase-replag-weeks' => 'недели',
+	'toolbase-replag-days' => 'дней',
+	'toolbase-replag-hours' => 'часов',
+	'toolbase-replag-minutes' => 'минут',
+	'toolbase-replag-seconds' => 'секунд',
+	'toolbase-footer-exectime' => 'Выполнено за $1 секунд',
+	'toolbase-footer-source' => 'Исходный код',
 	'toolbase-footer-language' => 'Изменить язык',
+	'toolbase-footer-translate' => 'Перевести',
+	'toolbase-navigation-homepage' => 'Домашняя страница',
+	'toolbase-navigation-user_id' => 'Найти ID участника',
+	'toolbase-userid-submit' => 'Получить ID участника',
+	'toolbase-userid-title' => 'Найти ID участника',
+	'toolbase-autoedits-totalauto' => 'Общее количество автоматизированных правок',
+	'toolbase-autoedits-totalall' => 'Общее количество правок',
+	'toolbase-autoedits-pct' => '% количества автоматизированных правок',
 	'toolbase-main-title' => 'Добро пожаловать!',
 	'toolbase-main-404' => 'Файл не найден',
+	'toolbase-main-404-content' => 'Упс! Страница не найдена!
+
+Проверьте, что вы правильно ввели адрес URL в адресной строке браузера.
+Если вы перешли по ссылке с какого-то места, то, пожалуйста, <a href="$1">сообщите об ошибке</a>.
+</ul>',
+	'toolbase-form-wiki' => 'wiki',
+	'toolbase-error-nouser' => 'Участник $1 не существует',
 );
 
 /** Slovenian (Slovenščina)
