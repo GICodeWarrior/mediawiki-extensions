@@ -257,8 +257,8 @@ $(document).ready( function() {
 											'content': { 'text': 'First item' },
 											'children': [ // FIXME?!?
 												{
-													'style': 'bullet',
-													'items': [
+													'attributes': { 'style': 'bullet'},
+													'children': [
 														{ 'content': { 'text': 'First subitem' } },
 														{ 'content': { 'text': 'Second subitem' } }
 													]
@@ -324,7 +324,7 @@ $(document).ready( function() {
 			'attributes': { 'style': 'number' },
 			'children': [
 				{
-					'type': 'listItem'.
+					'type': 'listItem',
 					'content': { 'text': 'Operating Systems' },
 					'children': [ // FIXME?!?
 						{
