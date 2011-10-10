@@ -458,6 +458,7 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Raimond Spekking
  */
 $messages['de'] = array(
@@ -481,7 +482,7 @@ $messages['de'] = array(
 	'patrol-stopped' => 'Du hast entschieden, keine weitere Bearbeitung zu kontrollieren. $1',
 	'patrol-resume' => 'Klicke hier zum fortsetzen.',
 	'group-patroller' => 'Kontrolleure',
-	'group-patroller-member' => 'Kontrolleur',
+	'group-patroller-member' => '{{GENDER:$1|Kontrolleur|Kontrolleurin}}',
 	'grouppage-patroller' => '{{ns:project}}:Kontrolleur',
 	'right-patroller' => 'Seiten kontrollieren',
 );
@@ -711,6 +712,7 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author IAlex
  * @author Urhixidur
  * @author Verdy p
  */
@@ -902,7 +904,7 @@ $messages['he'] = array(
 	'patrol-stopped' => 'בחרתם לא לנטר עוד עריכה. $1',
 	'patrol-resume' => 'לחצו כאן להמשך.',
 	'group-patroller' => 'מנטרים',
-	'group-patroller-member' => 'מנטר',
+	'group-patroller-member' => '{{GENDER:$1|מנטר|מנטרת}}',
 	'grouppage-patroller' => '{{ns:project}}:מנטר',
 	'right-patroller' => 'לנטר דפים',
 );
@@ -1971,7 +1973,7 @@ $messages['sr-ec'] = array(
 	'right-patroller' => 'Патролирање страна',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -2207,7 +2209,7 @@ $messages['tr'] = array(
 	'right-patroller' => 'Sayfaları gözle',
 );
 
-/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+/** Tatar (Cyrillic script) (Татарча)
  * @author Ильнар
  * @author Рашат Якупов
  */
@@ -2220,7 +2222,7 @@ $messages['tt-cyrl'] = array(
 	'right-patroller' => 'Битләрне тикшерү',
 );
 
-/** ئۇيغۇرچە (ئۇيغۇرچە)
+/** Uyghur (Arabic script) (ئۇيغۇرچە)
  * @author Sahran
  */
 $messages['ug-arab'] = array(
