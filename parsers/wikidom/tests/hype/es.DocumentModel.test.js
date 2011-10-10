@@ -201,7 +201,7 @@ var tree = [
 	new es.ParagraphModel( data[25], 1 )
 ];
 
-test( 'es.DocumentModel', 16, function() {
+test( 'es.DocumentModel', 17, function() {
 	var documentModel = es.DocumentModel.newFromPlainObject( obj );
 	
 	deepEqual( documentModel.getData(), data, 'Flattening plain objects results in correct data' );
@@ -339,5 +339,21 @@ test( 'es.DocumentModel', 16, function() {
 		'prepareContentAnnotation skips over content that is already set or cleared'
 	);
 	
+	deepEqual(
+		documentModel.prepareRemoval( new es.Range( 1, 4 ) ),
+		[
+			{ 'type': 'retain', 'length': 1 },
+			{
+				'type': 'remove',
+				'data': [
+					'a',
+					['b', { 'type': 'bold', 'hash': '#bold' }],
+					['c', { 'type': 'italic', 'hash': '#italic' }]
+				]
+			},
+			{ 'type': 'retain', 'length': 25 }
+		],
+		'prepareRemove includes the content being removed'
+	);
 } );
 
