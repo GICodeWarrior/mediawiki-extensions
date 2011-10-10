@@ -353,7 +353,16 @@ test( 'es.DocumentModel', 17, function() {
 			},
 			{ 'type': 'retain', 'length': 25 }
 		],
-		'prepareRemove includes the content being removed'
+		'prepareRemoval includes the content being removed'
+	);
+	
+	deepEqual(
+		documentModel.prepareInsertion( 1, ['d', 'e', 'f'] ),
+		[
+			{ 'type': 'retain', 'length': 1 },
+			{ 'type': 'insert', 'data': ['d', 'e', 'f'] },
+			{ 'type': 'retain', 'length': 27 }
+		],
+		'prepareInsertion retains data up to the offset and includes the content being inserted'
 	);
 } );
-
