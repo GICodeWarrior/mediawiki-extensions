@@ -14,7 +14,7 @@ $messages['en'] = array(
 	'mirrortools-desc' => 'Allows edits via API to be made under any username',
 	'right-mirroredit' => 'Edit via API under any username',
 	'group-MirrorTools' => 'Mirror tool users',
-	'group-MirrorTools-member' => 'mirror tool user',
+	'group-MirrorTools-member' => '{{GENDER:$1|mirror tool user}}',
 	'grouppage-MirrorTools' => '{{ns:project}}:Mirror tool users',
 );
 
