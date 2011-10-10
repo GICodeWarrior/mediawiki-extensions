@@ -208,6 +208,14 @@ $messages['bn'] = array(
 	'editmsg-patch-success' => 'সফলভাবে প্যাচকৃত হয়েছে।',
 );
 
+/** Tibetan (བོད་ཡིག)
+ * @author Freeyak
+ */
+$messages['bo'] = array(
+	'editmsg-search' => 'འཚོལ་བ།',
+	'editmsg-new-search' => 'གསར་འཚོལ།',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
@@ -966,12 +974,13 @@ $messages['ksh'] = array(
 	'editmsg-patch-success' => 'Hurra, et Ändere hät jeflupp.',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author Bangin
  * @author George Animal
+ * @author Gomada
  */
 $messages['ku-latn'] = array(
-	'editmessages' => 'Mesajan biguherîne',
+	'editmessages' => 'Peyaman biguherîne',
 	'editmsg-search' => 'Lêbigere',
 );
 
