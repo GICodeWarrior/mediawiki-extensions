@@ -513,15 +513,15 @@ class ContestContestant extends ContestDBObject {
 		if ( is_null( $title ) ) {
 			return '';
 		}
-		 
+		
 		$article = new Article( $title, 0 );
 		
 		global $wgParser;
 		return $wgParser->parse(
-			$article->getContent(),
+			$article->fetchContent(),
 			$article->getTitle(),
 			$article->getParserOptions()
-		);
+		)->getText(); // TODO: have full urls instead of relative ones
 	}
 	
 	/**
