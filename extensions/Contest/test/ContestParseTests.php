@@ -14,7 +14,7 @@ class ContestParseTests extends MediaWikiTestCase {
 	/**
 	 * Tests @see ContestUtils::replaceRelativeLinks
 	 */
-	public function testObjectSelectCount() {
+	public function testLinkReplacing() {
 		$tests = array(
 			'[[Foo|Bar]]' => '[' . Title::newFromText( 'Foo' )->getFullUrl() . ' Bar]',
 			'[[Foo|Foo]]' => '[' . Title::newFromText( 'Foo' )->getFullUrl() . ' Foo]',

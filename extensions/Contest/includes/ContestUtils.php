@@ -58,7 +58,7 @@ class ContestUtils {
 			self::replaceRelativeLinks( $article->fetchContent() ),
 			$article->getTitle(),
 			$article->getParserOptions()
-		)->getText(); // TODO: have full urls instead of relative ones
+		)->getText();
 	}
 	
 	/**

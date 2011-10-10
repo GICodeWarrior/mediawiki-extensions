@@ -430,4 +430,26 @@ class Contest extends ContestDBObject {
 		// TODO
 	}
 	
+	/**
+	 * Gets the amount of time left, in seconds.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return integer
+	 */
+	public function getTimeLeft() {
+		return wfTimestamp( TS_UNIX, $this->getField( 'end' ) ) - time();
+	}
+	
+	/**
+	 * Gets the amount of days left, rounded up to the nearest integer.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return integer
+	 */
+	public function getDaysLeft() {
+		return (int)ceil( $this->getTimeLeft() / ( 60 * 60 * 24 ) );
+	}
+	
 }
