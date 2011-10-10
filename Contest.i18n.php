@@ -178,6 +178,7 @@ $messages['en'] = array(
 
 	// Emails
 	'contest-email-signup-title' => 'Thanks for joining the challenge!',
+	'contest-email-reminder-title' => 'Only $1 {{PLURAL:$1|day|days}} until the end of the challenge!',
 );
 
 /** Message documentation (Message documentation)

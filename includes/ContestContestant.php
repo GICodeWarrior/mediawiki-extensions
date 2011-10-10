@@ -468,9 +468,7 @@ class ContestContestant extends ContestDBObject {
 	}
 	
 	/**
-	 * Send the ignup email.
-	 * TODO: use actual config
-	 * TODO: test code on machine that is properly configured for email sending
+	 * Send the signup email.
 	 * 
 	 * @since 0.1
 	 * 
@@ -486,6 +484,34 @@ class ContestContestant extends ContestDBObject {
 		$senderName = $wgPasswordSenderName;
 		
 		wfRunHooks( 'ContestBeforeSignupEmail', array( &$this, &$title, &$emailText, &$user, &$sender, &$senderName ) );
+		
+		return UserMailer::send( 
+    		new MailAddress( $user ),
+    		new MailAddress( $sender, $senderName ),
+    		$title,
+    		$emailText,
+    		null,
+    		'text/html; charset=ISO-8859-1'
+    	);
+	}
+	
+	/**
+	 * Send a reminder email.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return Status
+	 */
+	public function sendReminderEmail() {
+		global $wgPasswordSender, $wgPasswordSenderName;
+		
+		$title = wfMsgExt( 'contest-email-reminder-title', 'parsemag', $this->getContest()->getDaysLeft() );
+		$emailText = ContestUtils::getParsedArticleContent( $this->getContest()->getField( 'reminder_email' ) );
+		$user = $this->getUser();
+		$sender = $wgPasswordSender;
+		$senderName = $wgPasswordSenderName;
+		
+		wfRunHooks( 'ContestBeforeReminderEmail', array( &$this, &$title, &$emailText, &$user, &$sender, &$senderName ) );
 		
 		return UserMailer::send( 
     		new MailAddress( $user ),
