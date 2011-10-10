@@ -12,7 +12,7 @@
 class ContestParseTests extends MediaWikiTestCase {
 	
 	/**
-	 * Tests @see ContestContestant::replaceRelativeLinks
+	 * Tests @see ContestUtils::replaceRelativeLinks
 	 */
 	public function testObjectSelectCount() {
 		$tests = array(
@@ -27,6 +27,7 @@ class ContestParseTests extends MediaWikiTestCase {
 		
 			'This should [not be altered!' => 'This should [not be altered!',
 			"This''' should [not be alt/\\|ered!'''" => "This''' should [not be alt/\\|ered!'''",
+			'[http://foo.bar/wiki/Baz O_o]' => '[http://foo.bar/wiki/Baz O_o]',
 		);
 		
 		foreach ( $tests as $source => $target ) {
