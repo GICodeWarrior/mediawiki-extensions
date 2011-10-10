@@ -54,10 +54,17 @@ class SwiftFile extends LocalFile {
 	/**#@-*/
 
 	/**
+	 * @var SwiftRepo
+	 */
+	protected $repo;
+
+	/**
 	 * Create a LocalFile from a title
 	 * Do not call this except from inside a repo class.
 	 *
 	 * Note: $unused param is only here to avoid an E_STRICT
+	 *
+	 * @return SwiftFile
 	 */
 	static function newFromTitle( $title, $repo, $unused = null ) {
 		if ( empty($title) ) {
@@ -213,7 +220,6 @@ class SwiftFile extends LocalFile {
 		throw new MWException( __METHOD__.': not implemented' );
 	}
 
-
 	/** getHandler inherited */
 	/** iconThumb inherited */
 	/** getLastError inherited */
@@ -332,6 +338,8 @@ class SwiftRepo extends LocalRepo {
 	 * Given a connection and container name, return the container.
 	 * We KNOW the container should exist, so puke if it doesn't.
 	 *
+	 * @param $conn CF_Connection
+	 *
 	 * @return CF_Container
 	 */
 	function get_container($conn, $cont) {
@@ -370,7 +378,6 @@ class SwiftRepo extends LocalRepo {
 	 * Given a container and object name, delete the object.
 	 * None of these error conditions are recoverable by the user, so we just dump
 	 * an Internal Error on them.
-	 *
 	 */
 	function swift_delete( $container, $rel ) {
 		try {
@@ -401,7 +408,7 @@ class SwiftRepo extends LocalRepo {
 
 		// Validate each triplet
 		$status = $this->newGood();
-		foreach ( $triplets as $i => $triplet ) {
+		foreach ( $triplets as $triplet ) {
 			list( $srcPath, $dstZone, $dstRel ) = $triplet;
 
 			if ( !$this->validateFilename( $dstRel ) ) {
@@ -1192,16 +1199,16 @@ class OldSwiftFile extends SwiftFile {
 /**
  * Foreign file with an accessible MediaWiki database
  *
- * @file
- * @ingroup FileRepo
- */
-
-/**
- * Foreign file with an accessible MediaWiki database
- *
  * @ingroup FileRepo
  */
 class SwiftForeignDBFile extends SwiftFile {
+
+	/**
+	 * @param $title
+	 * @param $repo
+	 * @param $unused
+	 * @return SwiftForeignDBFile
+	 */
 	static function newFromTitle( $title, $repo, $unused = null ) {
 		return new self( $title, $repo );
 	}
@@ -1225,12 +1232,15 @@ class SwiftForeignDBFile extends SwiftFile {
 		$watch = false, $timestamp = false ) {
 		$this->readOnlyError();
 	}
+
 	function restore( $versions = array(), $unsuppress = false ) {
 		$this->readOnlyError();
 	}
+
 	function delete( $reason, $suppress = false ) {
 		$this->readOnlyError();
 	}
+
 	function move( $target ) {
 		$this->readOnlyError();
 	}
@@ -1245,13 +1255,6 @@ class SwiftForeignDBFile extends SwiftFile {
 		return File::getDescriptionText();
 	}
 }
-
-/**
- * A foreign repository with an accessible MediaWiki database
- *
- * @file
- * @ingroup FileRepo
- */
 
 /**
  * A foreign repository with an accessible MediaWiki database
@@ -1280,6 +1283,9 @@ class SwiftForeignDBRepo extends SwiftRepo {
 		$this->hasSharedCache = $info['hasSharedCache'];
 	}
 
+	/**
+	 * @return DatabaseBase
+	 */
 	function getMasterDB() {
 		wfDebug( __METHOD__.": {$this->dbServer}\n" );
 		if ( !isset( $this->dbConn ) ) {
@@ -1297,6 +1303,9 @@ class SwiftForeignDBRepo extends SwiftRepo {
 		return $this->dbConn;
 	}
 
+	/**
+	 * @return DatabaseBase
+	 */
 	function getSlaveDB() {
 		return $this->getMasterDB();
 	}
@@ -1323,9 +1332,11 @@ class SwiftForeignDBRepo extends SwiftRepo {
 	function store( $srcPath, $dstZone, $dstRel, $flags = 0 ) {
 		throw new MWException( get_class($this) . ': write operations are not supported' );
 	}
+
 	function publish( $srcPath, $dstRel, $archiveRel, $flags = 0 ) {
 		throw new MWException( get_class($this) . ': write operations are not supported' );
 	}
+
 	function deleteBatch( $sourceDestPairs ) {
 		throw new MWException( get_class($this) . ': write operations are not supported' );
 	}
@@ -1355,13 +1366,23 @@ class SwiftForeignDBViaLBRepo extends SwiftRepo{
 		$this->hasSharedCache = $info['hasSharedCache'];
 	}
 
+	/**
+	 * @return DatabaseBase
+	 */
 	function getMasterDB() {
 		return wfGetDB( DB_MASTER, array(), $this->wiki );
 	}
 
+	/**
+	 * @return DatabaseBase
+	 */
 	function getSlaveDB() {
 		return wfGetDB( DB_SLAVE, array(), $this->wiki );
 	}
+
+	/**
+	 * @return bool
+	 */
 	function hasSharedCache() {
 		return $this->hasSharedCache;
 	}
@@ -1384,9 +1405,11 @@ class SwiftForeignDBViaLBRepo extends SwiftRepo{
 	function store( $srcPath, $dstZone, $dstRel, $flags = 0 ) {
 		throw new MWException( get_class($this) . ': write operations are not supported' );
 	}
+
 	function publish( $srcPath, $dstRel, $archiveRel, $flags = 0 ) {
 		throw new MWException( get_class($this) . ': write operations are not supported' );
 	}
+
 	function deleteBatch( $fileMap ) {
 		throw new MWException( get_class($this) . ': write operations are not supported' );
 	}
