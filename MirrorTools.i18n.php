@@ -133,7 +133,7 @@ $messages['fr'] = array(
 $messages['frp'] = array(
 	'mirrortools' => 'OutilsMerior',
 	'group-MirrorTools' => 'Utilisators de l’outil merior',
-	'group-MirrorTools-member' => 'utilisator de l’outil merior',
+	'group-MirrorTools-member' => 'utilisat{{GENDER:$1|or|rice}} de l’outil merior',
 	'grouppage-MirrorTools' => '{{ns:project}}:Utilisators de l’outil merior',
 );
 
@@ -260,7 +260,7 @@ $messages['mk'] = array(
 	'mirrortools-desc' => 'Овозможува вршење на уредувања под било кое корисничко име преку API',
 	'right-mirroredit' => 'Уредување преку API под било кое корисничко име',
 	'group-MirrorTools' => 'Корисници на огледална алатка',
-	'group-MirrorTools-member' => 'корисник на огледална алатка',
+	'group-MirrorTools-member' => '{{GENDER:$1|корисник на огледална алатка}}',
 	'grouppage-MirrorTools' => '{{ns:project}}:Корисници на огледална алатка',
 );
 
