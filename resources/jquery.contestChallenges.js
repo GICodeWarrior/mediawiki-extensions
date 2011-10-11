@@ -54,6 +54,9 @@
 							)
 							.append(
 								$( '<div class="mw-codechallenge-popup"><div>' )
+									.click( function() {
+										return false;
+									} )
 									.append( '<div class="mw-codechallenge-popup-callout"></div>' )
 									.append( challenge.text )
 									.append(
