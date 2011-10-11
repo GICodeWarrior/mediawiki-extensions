@@ -597,16 +597,12 @@ es.DocumentModel.prototype.prepareRemoval = function( range ) {
 	tx.pushRemove( removed );
 	
 	// Retain up to the end of the document
-	tx.pushRetain( this.data.length - range.end );
-	
-	range.normalize();
-
-	if ( range.start > 0 ) {
-		tx.pushRetain( range.start );
+	if ( range.end < this.data.length ) {
+		tx.pushRetain( this.data.length - range.end );
 	}
-
-	var i = range.start;
-		removeData = [];
+	
+	/*
+	 * Loop to detect structural changes:
 	while ( i < range.end ) {
 		var data = this.data[i];
 		if ( data.type !== undefined ) {
@@ -617,7 +613,7 @@ es.DocumentModel.prototype.prepareRemoval = function( range ) {
 		}
 		i++;
 	}
-	tx.pushRemove( removeData );
+	*/
 
 	/*
 	 * // Structural changes
@@ -634,9 +630,7 @@ es.DocumentModel.prototype.prepareRemoval = function( range ) {
 		i++;
 	}
 	*/
-	if ( range.end < this.data.length ) {
-		tx.pushRetain( this.data.length - range.end );
-	}
+	
 	return tx;
 };
 

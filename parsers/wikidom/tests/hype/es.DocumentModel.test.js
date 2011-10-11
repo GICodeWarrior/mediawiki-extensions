@@ -357,6 +357,23 @@ test( 'es.DocumentModel', 17, function() {
 	);
 	
 	deepEqual(
+		documentModel.prepareRemoval( new es.Range( 15, 18 ) ),
+		[
+			{ 'type': 'retain', 'length': 15 },
+			{
+				'type': 'remove',
+				'data': [
+					{ 'type': 'listItem', 'attributes': { 'styles': ['bullet', 'bullet'] } },
+					'b',
+					{ 'type': '/listItem' }
+				]
+			},
+			{ 'type': 'retain', 'length': 10 }
+		],
+		'prepareRemoval removes entire elements'
+	);
+	
+	deepEqual(
 		documentModel.prepareInsertion( 1, ['d', 'e', 'f'] ),
 		[
 			{ 'type': 'retain', 'length': 1 },
