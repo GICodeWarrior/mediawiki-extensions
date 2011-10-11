@@ -55,6 +55,13 @@ $messages['fr'] = array(
 	'apiexplorer-loading' => 'Chargement des fonctions...',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'apiexplorer-loading' => 'Chargement de les fonccions...',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
