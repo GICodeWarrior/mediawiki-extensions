@@ -323,66 +323,55 @@ class OpenIDHooks {
 	}
 
 	public static function onLoadExtensionSchemaUpdates( $updater = null ) {
-		$base = dirname( __FILE__ ) . '/patches';
-		if ( $updater === null ) { // < 1.17
-			global $wgDBtype, $wgUpdates, $wgExtNewTables;
-			if ( $wgDBtype == 'mysql' ) {
-				$wgExtNewTables[] = array( 'user_openid', "$base/openid_table.sql" );
-				$wgUpdates['mysql'][] = array( array( __CLASS__, 'makeUoiUserNotUnique' ) );
-				$wgUpdates['mysql'][] = array( array( __CLASS__, 'addUoiUserRegistration' ) );
-			} elseif ( $wgDBtype == 'postgres' ) {
-				$wgExtNewTables[] = array( 'user_openid', "$base/openid_table.pg.sql" );
-				# This doesn't work since MediaWiki doesn't use $wgUpdates when
-				# updating a PostgreSQL database
-				# $wgUpdates['postgres'][] = array( array( __CLASS__, 'makeUoiUserNotUnique' ) );
-			}
-		} else {
-			$dbPatch = "$base/" . ( $updater->getDB()->getType() == 'postgres' ?
-				'openid_table.pg.sql' : 'openid_table.sql' );
-			$updater->addExtensionUpdate( array( 'addTable', 'user_openid', $dbPatch, true ) );
-			if ( $updater->getDB()->getType() == 'mysql' ) {
-				$updater->addExtensionUpdate( array( array( __CLASS__, 'makeUoiUserNotUnique' ) ) );
-				$updater->addExtensionUpdate( array( array( __CLASS__, 'addUoiUserRegistration' ) ) );
-			}
-		}
+		if ( $updater === null ) {
+			// <= 1.16 support - but OpenID does not work with such old MW versions
+			global $wgExtNewTables, $wgExtNewFields;
+			$wgExtNewTables[] = array(
+				'user_openid',
+				dirname( __FILE__ ) . '/patches/openid_table.sql'
+			);
 
+			# if index of older OpenID version is unique then upgrade and make index non unique
+			$db = wfGetDB( DB_MASTER );
+			$info = $db->fieldInfo( 'user_openid', 'uoi_user' );
+			if ( !$info->isMultipleKey() ) {
+				echo( "Making uoi_user field non UNIQUE...\n" );
+				$db->sourceFile( dirname( __FILE__ ) . '/patches/patch-uoi_user-not-unique.sql' );
+				echo( " done.\n" );
+			} else {
+				echo( "...uoi_user field is already non UNIQUE.\n" );
+			}
+			
+			# uoi_user_registration field was added in OpenID version 0.937
+			$wgExtNewFields[] = array(
+				'user_openid',
+				'uoi_user_registration',
+				dirname( __FILE__ ) . '/patches/patch-add_uoi_user_registration.sql'
+			);
+		} else {
+			// >= 1.17 support
+			$updater->addExtensionUpdate( array( 'addTable', 'user_openid',
+				dirname( __FILE__ ) . '/patches/openid_table.sql', true ) );
+
+			# if index of older OpenID version is unique then upgrade and make index non unique
+			$db = $updater->getDB();
+			$info = $db->fieldInfo( 'user_openid', 'uoi_user' );
+			if ( !$info->isMultipleKey() ) {
+				echo( "Making uoi_user field non UNIQUE...\n" );
+				$updater->dropIndex( 'user_openid', 'uoi_user',
+					dirname( __FILE__ ) . '/patches/patch-drop_non_multiple_key_index_uoi_user.sql', true );
+				$updater->addIndex( 'user_openid', 'user_openid_user',
+					dirname( __FILE__ ) . '/patches/patch-add_multiple_key_index_user_openid_user.sql', true );
+				echo( "...done.\n" );
+			} else {
+				echo( "...uoi_user field is already non UNIQUE.\n" );
+			}
+			
+			# uoi_user_registration field was added in OpenID version 0.937
+			$updater->addExtensionUpdate( array( 'addField', 'user_openid', 'uoi_user_registration',
+				dirname( __FILE__ ) . '/patches/patch-add_uoi_user_registration.sql', true ) );			
+		}
 		return true;
-	}
-
-	public static function makeUoiUserNotUnique( $updater = null ) {
-		if ( $updater === null ) {
-			$db = wfGetDB( DB_MASTER );
-		} else {
-			$db = $updater->getDB();
-		}
-		if ( !$db->tableExists( 'user_openid' ) )
-			return;
-
-		$info = $db->fieldInfo( 'user_openid', 'uoi_user' );
-		if ( !$info->isMultipleKey() ) {
-			echo( "Making uoi_user field not unique..." );
-			$db->sourceFile( dirname( __FILE__ ) . '/patches/patch-uoi_user-not-unique.sql' );
-			echo( " done.\n" );
-		} else {
-			echo( "...uoi_user field is already not unique.\n" );
-		}
-	}
-	public static function addUoiUserRegistration( $updater = null ) {
-		if ( $updater === null ) {
-			$db = wfGetDB( DB_MASTER );
-		} else {
-			$db = $updater->getDB();
-		}
-		if ( !$db->tableExists( 'user_openid' ) )
-			return;
-
-		if ( !$db->fieldExists( 'user_openid', 'uoi_user_registration' ) ) {
-			echo( "Adding uoi_user_registration field..." );
-			$db->sourceFile( dirname( __FILE__ ) . '/patches/patch-uoi_user_registration-not-present.sql' );
-			echo( " done.\n" );
-		} else {
-			echo( "...uoi_user_registration field present.\n" );
-		}
 	}
 
 	private static function loginStyle() {
