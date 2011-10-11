@@ -49,7 +49,7 @@ class SpecialContestSignup extends SpecialContestPage {
 	 * landing page.
 	 * 
 	 * @return false|boolean
-	 */	
+	 */
 	public function isListed() {
 
 		return false;
@@ -157,7 +157,7 @@ class SpecialContestSignup extends SpecialContestPage {
 		}
 		else {
 			$out->redirect( SpecialPage::getTitleFor( 'MyContests', $contest->getField( 'name' ) )->getLocalURL() );
-		}		
+		}
 	}
 	
 	/**
@@ -174,7 +174,7 @@ class SpecialContestSignup extends SpecialContestPage {
 		$form->setSubmitCallback( array( $this, 'handleSubmission' ) );
 		$form->setSubmitText( wfMsg( 'contest-signup-submit' ) );
 		
-		if( $form->show() ){
+		if( $form->show() ) {
 			$this->showSucess( $contest );
 		}
 		else {

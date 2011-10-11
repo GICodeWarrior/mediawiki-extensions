@@ -113,7 +113,7 @@ class ContestComment extends ContestDBObject {
 		
 		if ( $success ) {
 			$contestant = new ContestContestant( array( 'id' => $this->getField( 'contestant_id' ) ) );
-			$contestant->addToField( 'comments', 1  );
+			$contestant->addToField( 'comments', 1 );
 		}
 		
 		return $success;

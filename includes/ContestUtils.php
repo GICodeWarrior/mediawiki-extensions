@@ -55,7 +55,7 @@ class ContestUtils {
 		
 		// Looks like the LinkEnd hook can be used here instead of replaceRelativeLinks.
 		// The hook could just turn relative urls into absolute ones in a nice way,
-		// but would reauire setting some global such as $isContestEmailParse to true
+		// but would require setting some global such as $isContestEmailParse to true
 		// before the parse call and to false afterwards, which also is not very nice.
 		
 		global $wgParser;
