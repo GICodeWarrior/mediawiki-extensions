@@ -173,7 +173,7 @@ abstract class ContestDBObject {
 						$value = serialize( (array)$value );
 				}
 				
-				$values[$this->getFieldPrefix() . $name] = $value;				
+				$values[$this->getFieldPrefix() . $name] = $value;
 			}
 		}
 		
@@ -354,7 +354,7 @@ abstract class ContestDBObject {
 			
 			$this->fields[$name] = $value;
 		} else {
-			throw new MWException( 'Attempted to set unknonw field ' . $name );
+			throw new MWException( 'Attempted to set unknown field ' . $name );
 		}
 	}
 	

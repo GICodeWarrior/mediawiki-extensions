@@ -411,7 +411,7 @@ class Contest extends ContestDBObject {
 			
 			if ( count( $contestantIds ) > 0 ) {
 				$success = ContestComment::s()->delete( array( 'contestant_id' => $contestantIds ) ) && $success;
-				$success = ContestVote::s()->delete( array( 'contestant_id' => $contestantIds ) ) && $success;				
+				$success = ContestVote::s()->delete( array( 'contestant_id' => $contestantIds ) ) && $success;
 			}
 			
 			$success = ContestContestant::s()->delete( $condition ) && $success;

@@ -83,13 +83,13 @@ $wgSpecialPages['ContestWelcome'] 				= 'SpecialContestWelcome';
 $wgSpecialPages['EditContest'] 					= 'SpecialEditContest';
 $wgSpecialPages['MyContests'] 					= 'SpecialMyContests';
 
-$wgSpecialPageGroups['Contest'] 				= 'other';
-$wgSpecialPageGroups['Contestant'] 				= 'other';
-$wgSpecialPageGroups['Contests'] 				= 'other';
-$wgSpecialPageGroups['ContestSignup'] 			= 'other';
-$wgSpecialPageGroups['ContestWelcome'] 			= 'other';
-$wgSpecialPageGroups['EditContest'] 			= 'other';
-$wgSpecialPageGroups['MyContests'] 				= 'other';
+$wgSpecialPageGroups['Contest'] 				= 'contest';
+$wgSpecialPageGroups['Contestant'] 				= 'contest';
+$wgSpecialPageGroups['Contests'] 				= 'contest';
+$wgSpecialPageGroups['ContestSignup'] 			= 'contest';
+$wgSpecialPageGroups['ContestWelcome'] 			= 'contest';
+$wgSpecialPageGroups['EditContest'] 			= 'contest';
+$wgSpecialPageGroups['MyContests'] 				= 'contest';
 
 // API
 $wgAPIModules['deletecontest'] 					= 'ApiDeleteContest';
