@@ -1299,7 +1299,7 @@ $messages['sr-ec'] = array(
 	'refreshspecial-page-result' => '{{PLURAL:$1|добијен је|добијена су|добијено је}} $1 {{PLURAL:$1|ред|реда|редова}} у',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Жељко Тодоровић
  */
 $messages['sr-el'] = array(
@@ -1308,7 +1308,7 @@ $messages['sr-el'] = array(
 	'refreshspecial-refreshing' => 'Osvežavanje specijalnih strana',
 	'refreshspecial-choice' => 'osvežavanje specijalnih strana',
 	'refreshspecial-js-disabled' => '(<i>Ne možete da naznačite sve strane kada je JavaScript onemogućen</i>)',
-	'refreshspecial-select-all-pages' => 'Odaberi sve stranice',
+	'refreshspecial-select-all-pages' => 'Izaberi sve stranice',
 	'refreshspecial-link-back' => 'Vrati se na specijalnu stranu',
 	'refreshspecial-none-selected' => 'Možda niste označili ni jednu specijalnu stranu. Vraćanje na podrazumevan izbor.',
 	'refreshspecial-db-error' => 'Nije uspelo: Greška u bazi podataka',
