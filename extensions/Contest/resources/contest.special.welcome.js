@@ -10,8 +10,8 @@
 	
 	$( document ).ready( function() {
 
-		$( '#contest-challanges' ).contestChallanges(
-			mw.config.get( 'ContestChallanges' ),
+		$( '#contest-challenges' ).contestChallenges(
+			mw.config.get( 'ContestChallenges' ),
 			mw.config.get( 'ContestConfig' )
 		);
 		

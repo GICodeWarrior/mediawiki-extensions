@@ -106,24 +106,24 @@ class SpecialContestWelcome extends SpecialContestPage {
 	protected function showChallenges( Contest $contest ) {
 		$this->showNoJSFallback( $contest );
 
-		$this->getOutput()->addHTML( '<div id="contest-challanges"></div>' );
+		$this->getOutput()->addHTML( '<div id="contest-challenges"></div>' );
 		
 		$this->addContestJS( $contest );
 	}
 	
 	protected function addContestJS( Contest $contest ) {
-		$challanges = array();
+		$challenges = array();
 		
 		foreach ( $contest->getChallenges() as /* ContestChallenge */ $challenge ) {
 			$data = $challenge->toArray();
 			$data['target'] = $this->getSignupLink( $contest->getField( 'name' ), $challenge->getId() );
-			$challanges[] = $data;
+			$challenges[] = $data;
 		}
 		
 		$this->getOutput()->addScript( 
 			Skin::makeVariablesScript( 
 				array(
-					'ContestChallanges' => $challanges,
+					'ContestChallenges' => $challenges,
 					'ContestConfig' => array()
 				)
 			)

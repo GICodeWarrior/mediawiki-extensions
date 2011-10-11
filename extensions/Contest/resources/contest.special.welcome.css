@@ -8,19 +8,19 @@
 
 
 /* dialog type selection */
-/*#mw-codechallenge-dialog*/ #contest-challanges-list {
+/*#mw-codechallenge-dialog*/ #contest-challenges-list {
 	float: left;
 	width: 250px;
 }
 
-/*#mw-codechallenge-dialog*/ #contest-challanges-list ul {
+/*#mw-codechallenge-dialog*/ #contest-challenges-list ul {
 	list-style: none;
 	margin: 0;
 	padding: 0;
 }
 
-/*#mw-codechallenge-dialog*/ #contest-challanges-list ul li,
-/*#mw-codechallenge-dialog*/ #contest-challanges-list a
+/*#mw-codechallenge-dialog*/ #contest-challenges-list ul li,
+/*#mw-codechallenge-dialog*/ #contest-challenges-list a
 {
 	display: block;
 	width: 250px;
@@ -32,19 +32,19 @@
 	outline: none;
 }
 
-/*#mw-codechallenge-dialog*/ #contest-challanges-list a:hover,
-/*#mw-codechallenge-dialog*/ #contest-challanges-list a:focus {
+/*#mw-codechallenge-dialog*/ #contest-challenges-list a:hover,
+/*#mw-codechallenge-dialog*/ #contest-challenges-list a:focus {
 	text-decoration:none;
 }
 
 /* IGNORED BY IE6 */
-/*#mw-codechallenge-dialog*/ #contest-challanges-list ul > li,
-/*#mw-codechallenge-dialog*/ #contest-challanges-list ul li > a {
+/*#mw-codechallenge-dialog*/ #contest-challenges-list ul > li,
+/*#mw-codechallenge-dialog*/ #contest-challenges-list ul li > a {
 	display: inline-block;
 }
 
-/*#mw-codechallenge-dialog*/ #contest-challanges-list a .mw-codechallenge-left-cap,
-/*#mw-codechallenge-dialog*/ #contest-challanges-list a .mw-codechallenge-right-cap {
+/*#mw-codechallenge-dialog*/ #contest-challenges-list a .mw-codechallenge-left-cap,
+/*#mw-codechallenge-dialog*/ #contest-challenges-list a .mw-codechallenge-right-cap {
 	padding: 0;
 	margin: 0;
 	width: 6px;
@@ -53,56 +53,56 @@
 	top: 0px;
 }
 
-/*#mw-codechallenge-dialog*/ #contest-challanges-list a .mw-codechallenge-l-cap,
-/*#mw-codechallenge-dialog*/ #contest-challanges-list a .mw-codechallenge-r-cap,
-/*#mw-codechallenge-dialog*/ #contest-challanges-list a .mw-codechallenge-icon-box {
+/*#mw-codechallenge-dialog*/ #contest-challenges-list a .mw-codechallenge-l-cap,
+/*#mw-codechallenge-dialog*/ #contest-challenges-list a .mw-codechallenge-r-cap,
+/*#mw-codechallenge-dialog*/ #contest-challenges-list a .mw-codechallenge-icon-box {
 	background-repeat: no-repeat;
 	height: 66px;
 	position: absolute;
 }
 
-/*#mw-codechallenge-dialog*/ #contest-challanges-list a .mw-codechallenge-l-cap,
-/*#mw-codechallenge-dialog*/ #contest-challanges-list a .mw-codechallenge-r-cap {
+/*#mw-codechallenge-dialog*/ #contest-challenges-list a .mw-codechallenge-l-cap,
+/*#mw-codechallenge-dialog*/ #contest-challenges-list a .mw-codechallenge-r-cap {
 	width: 6px;
 }
 
-/*#mw-codechallenge-dialog*/ #contest-challanges-list a .mw-codechallenge-l-cap {
+/*#mw-codechallenge-dialog*/ #contest-challenges-list a .mw-codechallenge-l-cap {
 	/* @noflip */
 	left: 0px;
 	/* @embed */
 	background-image: url(images/icon-box-left-cap.png);
 }
 
-/*#mw-codechallenge-dialog*/ #contest-challanges-list a:hover .mw-codechallenge-l-cap,
-/*#mw-codechallenge-dialog*/ #contest-challanges-list a:focus .mw-codechallenge-l-cap {
+/*#mw-codechallenge-dialog*/ #contest-challenges-list a:hover .mw-codechallenge-l-cap,
+/*#mw-codechallenge-dialog*/ #contest-challenges-list a:focus .mw-codechallenge-l-cap {
 	/* @embed */
 	background-image: url(images/icon-box-hover-left-cap.png);
 }
 
-/*#mw-codechallenge-dialog*/ #contest-challanges-list a.selected .mw-codechallenge-l-cap {
+/*#mw-codechallenge-dialog*/ #contest-challenges-list a.selected .mw-codechallenge-l-cap {
 	/* @embed */
 	background-image: url(images/icon-box-selected-left-cap.png);
 }
 
-/*#mw-codechallenge-dialog*/ #contest-challanges-list a .mw-codechallenge-r-cap {
+/*#mw-codechallenge-dialog*/ #contest-challenges-list a .mw-codechallenge-r-cap {
 	/* @noflip */
 	right: 0px;
 	/* @embed */
 	background-image: url(images/icon-box-right-cap.png);
 }
 
-/*#mw-codechallenge-dialog*/ #contest-challanges-list a:hover .mw-codechallenge-r-cap,
-/*#mw-codechallenge-dialog*/ #contest-challanges-list a:focus .mw-codechallenge-r-cap {
+/*#mw-codechallenge-dialog*/ #contest-challenges-list a:hover .mw-codechallenge-r-cap,
+/*#mw-codechallenge-dialog*/ #contest-challenges-list a:focus .mw-codechallenge-r-cap {
 	/* @embed */
 	background-image: url(images/icon-box-hover-right-cap.png);
 }
 
-/*#mw-codechallenge-dialog*/ #contest-challanges-list a.selected .mw-codechallenge-r-cap {
+/*#mw-codechallenge-dialog*/ #contest-challenges-list a.selected .mw-codechallenge-r-cap {
 	/* @embed */
 	background-image: url(images/icon-box-selected-right-cap.png);
 }
 
-/*#mw-codechallenge-dialog*/ #contest-challanges-list a .mw-codechallenge-inside {
+/*#mw-codechallenge-dialog*/ #contest-challenges-list a .mw-codechallenge-inside {
 	padding: 0;
 	margin: 0;
 	width: 238px;
@@ -117,16 +117,16 @@
 	background-repeat: repeat-x;
 }
 
-/*#mw-codechallenge-dialog*/ #contest-challanges-list a:hover .mw-codechallenge-inside,
-/*#mw-codechallenge-dialog*/ #contest-challanges-list a:focus .mw-codechallenge-inside {
+/*#mw-codechallenge-dialog*/ #contest-challenges-list a:hover .mw-codechallenge-inside,
+/*#mw-codechallenge-dialog*/ #contest-challenges-list a:focus .mw-codechallenge-inside {
 	background-position: 0px -66px;
 }
 
-/*#mw-codechallenge-dialog*/ #contest-challanges-list a.selected .mw-codechallenge-inside {
+/*#mw-codechallenge-dialog*/ #contest-challenges-list a.selected .mw-codechallenge-inside {
 	background-position: 0px -132px;
 }
 
-/*#mw-codechallenge-dialog*/ #contest-challanges-list a .mw-codechallenge-icon-box {
+/*#mw-codechallenge-dialog*/ #contest-challenges-list a .mw-codechallenge-icon-box {
 	padding: 0;
 	margin: 0;
 	width: 53px;
@@ -138,7 +138,7 @@
 	background-image: url(images/button_arrow.png);
 }
 
-/*#mw-codechallenge-dialog*/ #contest-challanges-list a .mw-codechallenge-icon-box img {
+/*#mw-codechallenge-dialog*/ #contest-challenges-list a .mw-codechallenge-icon-box img {
 	padding: 0;
 	margin: 0;
 	width: 53px;
@@ -148,18 +148,18 @@
 	left: 0px;
 }
 
-/*#mw-codechallenge-dialog*/ #contest-challanges-list a:hover .mw-codechallenge-icon-box,
-/*#mw-codechallenge-dialog*/ #contest-challanges-list a:focus .mw-codechallenge-icon-box {
+/*#mw-codechallenge-dialog*/ #contest-challenges-list a:hover .mw-codechallenge-icon-box,
+/*#mw-codechallenge-dialog*/ #contest-challenges-list a:focus .mw-codechallenge-icon-box {
 	/* @embed */
 	background-image: url(images/button_arrow_hover.png);
 }
 
-/*#mw-codechallenge-dialog*/ #contest-challanges-list a.selected .mw-codechallenge-icon-box {
+/*#mw-codechallenge-dialog*/ #contest-challenges-list a.selected .mw-codechallenge-icon-box {
 	/* @embed */
 	background-image: url(images/icon-box-selected.png);
 }
 
-/*#mw-codechallenge-dialog*/ #contest-challanges-list a .mw-codechallenge-link-text {
+/*#mw-codechallenge-dialog*/ #contest-challenges-list a .mw-codechallenge-link-text {
 	padding: 0;
 	margin: 0;
 	width: 170px;
@@ -174,7 +174,7 @@
 	color: white;
 }
 
-/*#mw-codechallenge-dialog*/ #contest-challanges-list a .mw-codechallenge-no-icon .mw-codechallenge-link-text {
+/*#mw-codechallenge-dialog*/ #contest-challenges-list a .mw-codechallenge-no-icon .mw-codechallenge-link-text {
 	left: 3px;
 }
 

@@ -49,7 +49,7 @@ class ApiQueryChallenges extends ApiContestQuery {
 	 * @see includes/api/ApiBase#getDescription()
 	 */
 	public function getDescription() {
-		return 'API module for querying contest challanges';
+		return 'API module for querying contest challenges';
 	}
 	
 	/**

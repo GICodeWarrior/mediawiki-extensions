@@ -185,7 +185,7 @@ $wgResourceModules['contest.special.editcontest'] = $moduleTemplate + array(
 	)
 );
 
-$wgResourceModules['jquery.contestChallanges'] = $moduleTemplate + array(
+$wgResourceModules['jquery.contestChallenges'] = $moduleTemplate + array(
 	'scripts' => array(
 		'jquery.contestChallenges.js'
 	)
@@ -199,7 +199,7 @@ $wgResourceModules['contest.special.welcome'] = $moduleTemplate + array(
 		'contest.special.welcome.css',
 	),
 	'dependencies' => array(
-		'jquery.contestChallanges',
+		'jquery.contestChallenges',
 	),
 	'messages' => array(
 		'contest-welcome-select-header'
