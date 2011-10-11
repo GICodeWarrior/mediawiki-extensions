@@ -6,8 +6,8 @@
 CREATE TABLE IF NOT EXISTS /*_*/contests (
   contest_id                   SMALLINT unsigned   NOT NULL auto_increment PRIMARY KEY,
   contest_name                 VARCHAR(255)        NOT NULL, -- String indentifier for the contest
-  contest_status               TINYINT unsigned    NOT NULL default '0', -- Status of the contest
-  contest_end                  varbinary(14)       NOT NULL default '', -- End time of the contest
+  contest_status               TINYINT unsigned    NOT NULL default '0', -- Status of the contest. One of 0 (DRAFT), 1 (ACTIVE), 2 (FINISHED)
+  contest_end                  varbinary(14)       NOT NULL default '', -- End time of the contest (MW timestamp)
   
   contest_rules_page           VARCHAR(255)        NOT NULL, -- Name of the page with rules
   contest_opportunities        VARCHAR(255)        NOT NULL, -- Name of the page with opportunities
@@ -16,10 +16,10 @@ CREATE TABLE IF NOT EXISTS /*_*/contests (
   contest_signup_email         VARCHAR(255)        NOT NULL, -- Name of the page with the signup email text
   contest_reminder_email       VARCHAR(255)        NOT NULL, -- Name of the page with the reminder email text
   
-  contest_submission_count     SMALLINT unsigned   NOT NULL-- Amount of submissions made to the contest
+  contest_submission_count     SMALLINT unsigned   NOT NULL  -- Number of submissions made to the contest
 ) /*$wgDBTableOptions*/;
-CREATE UNIQUE INDEX /*i*/contest_name ON /*_*/contests (contest_name);
-CREATE INDEX /*i*/contest_status ON /*_*/contests (contest_status, contest_end);
+CREATE UNIQUE INDEX /*i*/contests_name ON /*_*/contests (contest_name);
+CREATE INDEX /*i*/contests_status_end ON /*_*/contests (contest_status, contest_end);
 
 -- Contestants
 CREATE TABLE IF NOT EXISTS /*_*/contest_contestants (
@@ -35,19 +35,20 @@ CREATE TABLE IF NOT EXISTS /*_*/contest_contestants (
   
   -- Extra contestant info
   contestant_country           VARCHAR(255)        NOT NULL, -- Country code of the contestant
-  contestant_volunteer         TINYINT unsigned    NOT NULL, -- If the user is interested in voluneer oportunities
+  contestant_volunteer         TINYINT unsigned    NOT NULL, -- If the user is interested in volunteer opportunities
   contestant_wmf               TINYINT unsigned    NOT NULL, -- If the user is interested in a WMF job
   contestant_cv                TINYBLOB            NOT NULL, -- URL to the users CV
   
   contestant_submission        TINYBLOB            NOT NULL, -- URL to the users submission
   
-  contestant_rating            TINYINT unsigned    NOT NULL, -- The avarage rating of the contestant
-  contestant_rating_count      SMALLINT unsigned   NOT NULL, -- The amount of ratings
-  contestant_comments          SMALLINT unsigned   NOT NULL -- The amount of comments
+  contestant_rating            TINYINT unsigned    NOT NULL, -- The average rating of the contestant
+  contestant_rating_count      SMALLINT unsigned   NOT NULL, -- The number of ratings
+  contestant_comments          SMALLINT unsigned   NOT NULL  -- The number of comments
 ) /*$wgDBTableOptions*/;
-CREATE INDEX /*i*/contestant_interests ON /*_*/contest_contestants (contestant_challenge_id, contestant_wmf, contestant_volunteer);
-CREATE INDEX /*i*/contestant_rating ON /*_*/contest_contestants (contestant_challenge_id, contestant_rating, contestant_rating_count);
-CREATE UNIQUE INDEX /*i*/contestant_user_contest ON /*_*/contest_contestants (contestant_contest_id, contestant_user_id);
+-- TODO: probably need to split indexes, see queries in ContestantPager
+CREATE INDEX /*i*/contest_contestants_interests ON /*_*/contest_contestants (contestant_challenge_id, contestant_wmf, contestant_volunteer);
+CREATE INDEX /*i*/contest_contestants_rating ON /*_*/contest_contestants (contestant_challenge_id, contestant_rating, contestant_rating_count);
+CREATE UNIQUE INDEX /*i*/contest_contestants_id_user ON /*_*/contest_contestants (contestant_contest_id, contestant_user_id);
 
 -- Challenges
 CREATE TABLE IF NOT EXISTS /*_*/contest_challenges (
@@ -58,8 +59,8 @@ CREATE TABLE IF NOT EXISTS /*_*/contest_challenges (
   challenge_title             VARCHAR(255)        NOT NULL, -- Title of the challenge
   challenge_oneline           TEXT                NOT NULL -- One line description of the challenge
 ) /*$wgDBTableOptions*/;
-CREATE INDEX /*i*/challenge_contest_id ON /*_*/contest_challenges (challenge_contest_id);
-CREATE UNIQUE INDEX /*i*/challenge_title ON /*_*/contest_challenges (challenge_title);
+CREATE INDEX /*i*/contest_challenges_contest_id ON /*_*/contest_challenges (challenge_contest_id);
+CREATE UNIQUE INDEX /*i*/contest_challenges_title ON /*_*/contest_challenges (challenge_title);
 
 -- Judge votes
 CREATE TABLE IF NOT EXISTS /*_*/contest_votes (
@@ -69,9 +70,8 @@ CREATE TABLE IF NOT EXISTS /*_*/contest_votes (
   
   vote_value                   SMALLINT            NOT NULL -- The value of the vote
 ) /*$wgDBTableOptions*/;
-CREATE INDEX /*i*/vote_contestant_id ON /*_*/contest_votes (vote_contestant_id);
-CREATE UNIQUE INDEX /*i*/vote_contestant_user ON /*_*/contest_votes (vote_contestant_id, vote_user_id);
-CREATE INDEX /*i*/vote_user_id ON /*_*/contest_votes (vote_user_id);
+CREATE UNIQUE INDEX /*i*/contest_votes_contestant_user ON /*_*/contest_votes (vote_contestant_id, vote_user_id);
+CREATE INDEX /*i*/contest_votes_user ON /*_*/contest_votes (vote_user_id);
 
 -- Judge comments
 CREATE TABLE IF NOT EXISTS /*_*/contest_comments (
@@ -82,4 +82,4 @@ CREATE TABLE IF NOT EXISTS /*_*/contest_comments (
   comment_text                 TEXT                NOT NULL, -- The comment text
   comment_time                 varbinary(14)       NOT NULL default '' -- The time at which the comment was made
 ) /*$wgDBTableOptions*/;
-CREATE INDEX /*i*/comment_time ON /*_*/contest_comments (comment_contestant_id, comment_time);
+CREATE INDEX /*i*/contest_comments_id_time ON /*_*/contest_comments (comment_contestant_id, comment_time);
