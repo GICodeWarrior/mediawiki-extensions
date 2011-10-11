@@ -113,27 +113,27 @@ for(group in c("unlikely", "possible", "golden")){
 	cat("============================================================\n")
 	
 	print(summary(glm(
-		good_outcome ~ anon + ntalk_edits_before_msg + talk_edits_before_msg + teaching * personal,
+		good_outcome ~ anon + ntalk_edits_before_msg + talk_edits_before_msg + teaching * personal * image,
 		data = group_codings
 	)))
 	
 	print(summary(glm(
-		improves ~ anon + ntalk_edits_before_msg + talk_edits_before_msg + teaching * personal,
+		improves ~ anon + ntalk_edits_before_msg + talk_edits_before_msg + teaching * personal * image,
 		data = group_codings
 	)))
 	
 	print(summary(glm(
-		contact ~ anon + ntalk_edits_before_msg + talk_edits_before_msg + teaching * personal,
+		contact ~ anon + ntalk_edits_before_msg + talk_edits_before_msg + teaching * personal * image,
 		data = group_codings
 	)))
 	
 	print(summary(glm(
-		good_contact ~ anon + ntalk_edits_before_msg + talk_edits_before_msg + teaching * personal,
+		good_contact ~ anon + ntalk_edits_before_msg + talk_edits_before_msg + teaching * personal * image,
 		data = group_codings
 	)))
 	
 	print(summary(glm(
-		stay ~ anon + ntalk_edits_before_msg + talk_edits_before_msg + teaching * personal,
+		stay ~ anon + ntalk_edits_before_msg + talk_edits_before_msg + teaching * personal * image,
 		data = group_codings
 	)))
 	
@@ -203,3 +203,123 @@ for(outcomeName in c("good_outcome", "improves", "contact", "good_contact", "sta
 	))
 	dev.off()
 }
+
+messaged_codings$default = !messaged_codings$personal & !messaged_codings$teaching
+messaged_codings$teaching_only = messaged_codings$teaching & !messaged_codings$personal
+messaged_codings$personal_only = !messaged_codings$teaching & messaged_codings$personal
+messaged_codings$teaching_and_personal = messaged_codings$teaching & messaged_codings$personal
+
+s = scale
+
+for(condition in c("teaching_only", "personal_only", "teaching_and_personal")){
+	cat("-----------------------------------------------------------\n")
+	cat("-----------", condition, "\n")
+	cat("-----------------------------------------------------------\n")
+	exp_codings = messaged_codings[
+		messaged_codings[[condition]] | 
+		messaged_codings$default,
+	]
+	
+	exp_codings$condition = exp_codings[[condition]]
+	
+	print(summary(glm(
+		good_outcome ~ 
+		anon + 
+		s(ntalk_edits_before_msg) + 
+		s(talk_edits_before_msg) + 
+		s(before_rating) * 
+		condition,
+		data = exp_codings[exp_codings$image,]
+	)))
+	print(summary(glm(
+		good_outcome ~ 
+		anon + 
+		s(ntalk_edits_before_msg) + 
+		s(talk_edits_before_msg) + 
+		s(before_rating) * 
+		condition,
+		data = exp_codings[!exp_codings$image,]
+	)))
+	
+	
+	print(summary(glm(
+		improves ~ 
+		anon + 
+		s(ntalk_edits_before_msg) + 
+		s(talk_edits_before_msg) + 
+		s(before_rating) * 
+		condition,
+		data = exp_codings[exp_codings$image,]
+	)))
+	print(summary(glm(
+		improves ~ 
+		anon + 
+		s(ntalk_edits_before_msg) + 
+		s(talk_edits_before_msg) + 
+		s(before_rating) * 
+		condition,
+		data = exp_codings[!exp_codings$image,]
+	)))
+	
+	
+	print(summary(glm(
+		contact ~ 
+		anon + 
+		s(ntalk_edits_before_msg) + 
+		s(talk_edits_before_msg) + 
+		s(before_rating) * 
+		condition,
+		data = exp_codings[exp_codings$image,]
+	)))
+	print(summary(glm(
+		contact ~ 
+		anon + 
+		s(ntalk_edits_before_msg) + 
+		s(talk_edits_before_msg) + 
+		s(before_rating) * 
+		condition,
+		data = exp_codings[!exp_codings$image,]
+	)))
+	
+	
+	print(summary(glm(
+		good_contact ~ 
+		anon + 
+		s(ntalk_edits_before_msg) + 
+		s(talk_edits_before_msg) + 
+		s(before_rating) * 
+		condition,
+		data = exp_codings[exp_codings$image,]
+	)))
+	print(summary(glm(
+		good_contact ~ 
+		anon + 
+		s(ntalk_edits_before_msg) + 
+		s(talk_edits_before_msg) + 
+		s(before_rating) * 
+		condition,
+		data = exp_codings[!exp_codings$image,]
+	)))
+	
+	
+	print(summary(glm(
+		stay ~ 
+		anon + 
+		s(ntalk_edits_before_msg) + 
+		s(talk_edits_before_msg) + 
+		s(before_rating) * 
+		condition,
+		data = exp_codings[exp_codings$image,]
+	)))
+	print(summary(glm(
+		stay ~ 
+		anon + 
+		s(ntalk_edits_before_msg) + 
+		s(talk_edits_before_msg) + 
+		s(before_rating) * 
+		condition,
+		data = exp_codings[!exp_codings$image,]
+	)))
+}
+
+
