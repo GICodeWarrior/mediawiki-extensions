@@ -102,7 +102,7 @@ class ContestantPager extends TablePager {
 	 * @return OutputPage
 	 */
 	public function getOutput() {
-		return version_compare( $GLOBALS['wgVersion'], '1.19', '>=' ) ? parent::getOutput() : $GLOBALS['wgOut'];
+		return version_compare( $GLOBALS['wgVersion'], '1.18', '>' ) ? parent::getOutput() : $GLOBALS['wgOut'];
 	}
 	
 	/**
@@ -114,7 +114,7 @@ class ContestantPager extends TablePager {
 	 * @return Language
 	 */
 	public function getLang() {
-		return version_compare( $GLOBALS['wgVersion'], '1.19', '>=' ) ? parent::getLang() : $GLOBALS['wgLang'];
+		return version_compare( $GLOBALS['wgVersion'], '1.18', '>' ) ? parent::getLang() : $GLOBALS['wgLang'];
 	}
 
 	public function getFieldNames() {
