@@ -955,13 +955,13 @@ $messages['sr-ec'] = array(
 	'randomincategory-submit' => 'Иди',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  * @author Жељко Тодоровић
  */
 $messages['sr-el'] = array(
-	'randomincategory' => 'Slučajna strana iz kategorije',
-	'randomincategory-desc' => '[[Special:Randomincategory|Specijalna strana]] za preuzimanje slučajne strane iz kategorije',
+	'randomincategory' => 'Slučajna stranica u kategoriji',
+	'randomincategory-desc' => '[[Special:Randomincategory|Posebna stranica]] za preuzimanje slučajne stranice u kategoriji',
 	'randomincategory-toolbox' => 'Slučajna stranica',
 	'randomincategory-nocategory' => 'Kategorija $1 ne postoji ili je prazna',
 	'randomincategory-label' => 'Kategorija:',
