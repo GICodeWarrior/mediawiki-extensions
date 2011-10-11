@@ -21,7 +21,7 @@ es.Transaction.prototype.pushRetain = function( length ) {
 es.Transaction.prototype.pushInsert = function( content ) {
 	this.push( {
 		'type': 'insert',
-		'data': data
+		'data': content
 	} );
 };
 
