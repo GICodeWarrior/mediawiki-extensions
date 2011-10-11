@@ -1146,7 +1146,7 @@ $messages['mk'] = array(
 	'vector-editwarning-preference' => 'Предупреди ме кога сакам да напуштам страница за уредување без да ги имам зачувано промените',
 	'vector-simplesearch-search' => 'Пребарување',
 	'vector-simplesearch-containing' => 'содржи...',
-	'vector-noexperiments-preference' => 'Изземиме од експерименти сo функции',
+	'vector-noexperiments-preference' => 'Изземи ме од експерименти сo функции',
 );
 
 /** Malayalam (മലയാളം)
