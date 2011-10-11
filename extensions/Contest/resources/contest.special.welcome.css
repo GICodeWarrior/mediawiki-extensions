@@ -6,178 +6,131 @@
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
  */
 
-
 /* dialog type selection */
-/*#mw-codechallenge-dialog*/ #contest-challenges-list {
+#contest-challenges-list {
 	float: left;
-	width: 250px;
+	width: 354px;
+	margin: 1.5em 0 1.5em 0;
+	margin-top: 1.5em;
 }
-
-/*#mw-codechallenge-dialog*/ #contest-challenges-list ul {
+#contest-challenges-list ul,
+#contest-challenges-list li {
 	list-style: none;
+	list-style-image: none;
 	margin: 0;
 	padding: 0;
 }
-
-/*#mw-codechallenge-dialog*/ #contest-challenges-list ul li,
-/*#mw-codechallenge-dialog*/ #contest-challenges-list a
-{
-	display: block;
-	width: 250px;
-	height: 66px;
-	padding: 0;
-	margin: 0;
-	position: relative;
-	text-decoration: none;
-	outline: none;
-}
-
-/*#mw-codechallenge-dialog*/ #contest-challenges-list a:hover,
-/*#mw-codechallenge-dialog*/ #contest-challenges-list a:focus {
-	text-decoration:none;
-}
-
 /* IGNORED BY IE6 */
-/*#mw-codechallenge-dialog*/ #contest-challenges-list ul > li,
-/*#mw-codechallenge-dialog*/ #contest-challenges-list ul li > a {
+#contest-challenges-list ul > li {
 	display: inline-block;
 }
-
-/*#mw-codechallenge-dialog*/ #contest-challenges-list a .mw-codechallenge-left-cap,
-/*#mw-codechallenge-dialog*/ #contest-challenges-list a .mw-codechallenge-right-cap {
+.mw-codechallenge-box-outside {
+	position: relative;
+	display: block;
+	width: 354px;
 	padding: 0;
 	margin: 0;
-	width: 6px;
-	height: 66px;
-	position: absolute;
-	top: 0px;
+	/* @embed */
+	background-image: url(images/box-sprite.png);
+	background-position: 0 0;
+	background-repeat: repeat-y;
+	cursor: pointer;
 }
-
-/*#mw-codechallenge-dialog*/ #contest-challenges-list a .mw-codechallenge-l-cap,
-/*#mw-codechallenge-dialog*/ #contest-challenges-list a .mw-codechallenge-r-cap,
-/*#mw-codechallenge-dialog*/ #contest-challenges-list a .mw-codechallenge-icon-box {
+.mw-codechallenge-box-outside:hover,
+.mw-codechallenge-box-outside:focus {
+	background-position: -354px 0;
+}
+.mw-codechallenge-box-selected {
+	background-position: -708px 0 !important;
+}
+.mw-codechallenge-box-outside .mw-codechallenge-box-inside {
+	/* @embed */
+	background-image: url(images/box-bottom-sprite.png);
+	background-position: 0 bottom;
 	background-repeat: no-repeat;
-	height: 66px;
-	position: absolute;
 }
-
-/*#mw-codechallenge-dialog*/ #contest-challenges-list a .mw-codechallenge-l-cap,
-/*#mw-codechallenge-dialog*/ #contest-challenges-list a .mw-codechallenge-r-cap {
-	width: 6px;
+.mw-codechallenge-box-outside:hover .mw-codechallenge-box-inside,
+.mw-codechallenge-box-outside:focus .mw-codechallenge-box-inside {
+	background-position: -354px bottom;
 }
-
-/*#mw-codechallenge-dialog*/ #contest-challenges-list a .mw-codechallenge-l-cap {
-	/* @noflip */
-	left: 0px;
+.mw-codechallenge-box-selected .mw-codechallenge-box-inside {
+	background-position: -708px bottom !important;
+}
+.mw-codechallenge-box-outside .mw-codechallenge-box-top {
+	height: 10px;
 	/* @embed */
-	background-image: url(images/icon-box-left-cap.png);
+	background-image: url(images/box-top-sprite.png);
+	background-position: 0 top;
+	background-repeat: no-repeat;
 }
-
-/*#mw-codechallenge-dialog*/ #contest-challenges-list a:hover .mw-codechallenge-l-cap,
-/*#mw-codechallenge-dialog*/ #contest-challenges-list a:focus .mw-codechallenge-l-cap {
-	/* @embed */
-	background-image: url(images/icon-box-hover-left-cap.png);
+.mw-codechallenge-box-outside:hover .mw-codechallenge-box-top,
+.mw-codechallenge-box-outside:focus .mw-codechallenge-box-top {
+	background-position: -354px top;
 }
-
-/*#mw-codechallenge-dialog*/ #contest-challenges-list a.selected .mw-codechallenge-l-cap {
-	/* @embed */
-	background-image: url(images/icon-box-selected-left-cap.png);
+.mw-codechallenge-box-selected .mw-codechallenge-box-top {
+	background-position: -708px top !important;
 }
-
-/*#mw-codechallenge-dialog*/ #contest-challenges-list a .mw-codechallenge-r-cap {
-	/* @noflip */
-	right: 0px;
-	/* @embed */
-	background-image: url(images/icon-box-right-cap.png);
-}
-
-/*#mw-codechallenge-dialog*/ #contest-challenges-list a:hover .mw-codechallenge-r-cap,
-/*#mw-codechallenge-dialog*/ #contest-challenges-list a:focus .mw-codechallenge-r-cap {
-	/* @embed */
-	background-image: url(images/icon-box-hover-right-cap.png);
-}
-
-/*#mw-codechallenge-dialog*/ #contest-challenges-list a.selected .mw-codechallenge-r-cap {
-	/* @embed */
-	background-image: url(images/icon-box-selected-right-cap.png);
-}
-
-/*#mw-codechallenge-dialog*/ #contest-challenges-list a .mw-codechallenge-inside {
-	padding: 0;
-	margin: 0;
-	width: 238px;
-	height: 66px;
-	position: absolute;
-	top: 0px;
-	left: 6px;
-	
-	/* @embed */
-	background-image: url(images/select-bg-sprite.png);
-	background-position: 0px 0px;
-	background-repeat: repeat-x;
-}
-
-/*#mw-codechallenge-dialog*/ #contest-challenges-list a:hover .mw-codechallenge-inside,
-/*#mw-codechallenge-dialog*/ #contest-challenges-list a:focus .mw-codechallenge-inside {
-	background-position: 0px -66px;
-}
-
-/*#mw-codechallenge-dialog*/ #contest-challenges-list a.selected .mw-codechallenge-inside {
-	background-position: 0px -132px;
-}
-
-/*#mw-codechallenge-dialog*/ #contest-challenges-list a .mw-codechallenge-icon-box {
-	padding: 0;
-	margin: 0;
-	width: 53px;
-	height: 53px;
-	position: absolute;
-	right: 0px;
-	top: 5px;
-	/* @embed */
-	background-image: url(images/button_arrow.png);
-}
-
-/*#mw-codechallenge-dialog*/ #contest-challenges-list a .mw-codechallenge-icon-box img {
-	padding: 0;
-	margin: 0;
-	width: 53px;
-	height: 53px;
-	position: absolute:
-	top: 0px;
-	left: 0px;
-}
-
-/*#mw-codechallenge-dialog*/ #contest-challenges-list a:hover .mw-codechallenge-icon-box,
-/*#mw-codechallenge-dialog*/ #contest-challenges-list a:focus .mw-codechallenge-icon-box {
-	/* @embed */
-	background-image: url(images/button_arrow_hover.png);
-}
-
-/*#mw-codechallenge-dialog*/ #contest-challenges-list a.selected .mw-codechallenge-icon-box {
-	/* @embed */
-	background-image: url(images/icon-box-selected.png);
-}
-
-/*#mw-codechallenge-dialog*/ #contest-challenges-list a .mw-codechallenge-link-text {
-	padding: 0;
-	margin: 0;
-	width: 170px;
-	height: 53px;
-	position: absolute;
-	left: 64px;
-	top: 5px;
-	line-height: 53px;
-	font-size: 1.2em;
-	font-weight: bold;
+.mw-codechallenge-box-text {
+	display: block;
+	margin-top: -10px;
+	padding: 1em 1.5em 1.25em 1.5em;
 	text-decoration: none;
+	outline: none;
+	background-image: url(images/arrow.png);
+	background-position: right center;
+	background-repeat: no-repeat;
+}
+.mw-codechallenge-box-outside:hover .mw-codechallenge-box-text,
+.mw-codechallenge-box-outside:focus .mw-codechallenge-box-text,
+.mw-codechallenge-box-selected .mw-codechallenge-box-text {
+	background-image: url(images/arrow-hover.png);
+	text-decoration:none;
+}
+.mw-codechallenge-box-title {
 	color: white;
+	margin: 0;
+	padding: 0 32px 0 0;
+}
+.mw-codechallenge-box-desc {
+	color: white;
+	margin: 0;
+	padding: 0 32px 0 0;
+}
+.mw-codechallenge-popup {
+	display: none;
+	position: absolute;
+	left: 354px;
+	top: 50%;
+	margin-top: -22px;
+	width: 354px;
+	padding: 1.25em;
+	border: solid 3px #3263b6;
+	-webkit-box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.5);
+	box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.5);
+	background-color: white;
+}
+.mw-codechallenge-popup-callout {
+	position: absolute;
+	left: -16px;
+	top: 3px;
+	width: 16px;
+	height: 32px;
+	background-image: url(images/callout.png);
+	background-position: left top;
+	background-repeat: no-repeat;
+}
+.mw-codechallenge-popup-buttons {
+	margin-top: 1em;
+	margin-bottom: -0.5em;
+	text-align: right;
 }
 
-/*#mw-codechallenge-dialog*/ #contest-challenges-list a .mw-codechallenge-no-icon .mw-codechallenge-link-text {
-	left: 3px;
-}
 
-#mw-codechallenge-dialog a {
-	color: #0645AD;
-}
+
+
+
+
+
+
+

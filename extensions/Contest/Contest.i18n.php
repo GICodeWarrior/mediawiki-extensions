@@ -110,6 +110,7 @@ $messages['en'] = array(
 	'contest-welcome-rules' => 'In order to participate, you must agree to [[$1|the contest rules]].',
 	'contest-welcome-signup' => 'Signup now',
 	'contest-welcome-js-off' => 'Contest uses JavaScript for an improved interface. Your browser either does not support JavaScript or has JavaScript turned off.',
+	'contest-welcome-accept-challenge' => 'Challenge Accepted',
 
 	'contest-welcome-select-header' => 'Select your challenge:',
 

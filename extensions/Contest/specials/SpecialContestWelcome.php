@@ -105,8 +105,8 @@ class SpecialContestWelcome extends SpecialContestPage {
 	 */
 	protected function showChallenges( Contest $contest ) {
 		$this->showNoJSFallback( $contest );
-
-		$this->getOutput()->addHTML( '<div id="contest-challenges"></div>' );
+		
+		$this->getOutput()->addHTML( '<div id="contest-challenges"></div><div style="clear:both"></div>' );
 		
 		$this->addContestJS( $contest );
 	}
