@@ -351,7 +351,7 @@ test( 'es.DocumentModel', 17, function() {
 					['c', { 'type': 'italic', 'hash': '#italic' }]
 				]
 			},
-			{ 'type': 'retain', 'length': 25 }
+			{ 'type': 'retain', 'length': 24 }
 		],
 		'prepareRemoval includes the content being removed'
 	);

@@ -583,6 +583,26 @@ es.DocumentModel.prototype.prepareInsertion = function( offset, data ) {
  */
 es.DocumentModel.prototype.prepareRemoval = function( range ) {
 	var tx = new es.Transaction();
+	range.normalize();
+
+	if ( range.start > 0 ) {
+		tx.pushRetain( range.start );
+	}
+
+	var i = range.start;
+		removeData = [];
+	while ( i < range.end ) {
+		var data = this.data[i];
+		if ( data.type !== undefined ) {
+			console.log( "later" );
+			// TODO structural
+		} else {
+			removeData.push( this.data[i] );
+		}
+		i++;
+	}
+	tx.pushRemove( removeData );
+
 	/*
 	 * // Structural changes
 	 * if ( The range spans structural elements ) {
@@ -594,7 +614,13 @@ es.DocumentModel.prototype.prepareRemoval = function( range ) {
 	 * } else {
 	 *     Removing only content is OK, do nothing
 	 * }
-	 */
+	 /
+		i++;
+	}
+	*/
+	if ( range.end < this.data.length ) {
+		tx.pushRetain( this.data.length - range.end );
+	}
 	return tx;
 };
 
