@@ -64,6 +64,15 @@ $wgGroupPermissions['user']['wikimania-checkstatus'] = true;
 $wgGroupPermissions['sysop']['wikimania-admin'] = true;
 
 /**
+ * RL
+ */
+$wgResourceModules['ext.wikimania'] = array(
+	'localBasePath' => dirname( __FILE__ ) . '/resources',
+	'remoteExtPath' => 'Wikimania/resources',
+	'styles'  => 'ext.wikimania.css',
+);
+
+/**
  * Configuration array for Wikimania. It is a complex array, with many sub-options.
  * Dates, unless otherwise specified, should be in MediaWiki timestamp format,
  * that is: YYYYMMDDHHMMSS

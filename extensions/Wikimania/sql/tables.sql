@@ -21,8 +21,8 @@ CREATE TABLE /*_*/registration (
 	-- Last name
 	reg_lname varchar(255) not null,
 
-	-- Gender
-	reg_sex varchar(1) not null,
+	-- Gender (male, female, decline)
+	reg_sex varchar(8) not null,
 
 	-- Country of residence
 	reg_country varchar(4) not null,
