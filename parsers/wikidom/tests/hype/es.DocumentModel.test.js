@@ -374,6 +374,22 @@ test( 'es.DocumentModel', 17, function() {
 	);
 	
 	deepEqual(
+		documentModel.prepareRemoval( new es.Range( 17, 19 ) ),
+		[
+			{ 'type': 'retain', 'length': 17 },
+			{
+				'type': 'remove',
+				'data': [
+					{ 'type': '/listItem' },
+					{ 'type': 'listItem', 'attributes': { 'styles': ['number'] } }
+				]
+			},
+			{ 'type': 'retain', 'length': 9 }
+		],
+		'prepareRemoval merges two list items'
+	); 
+	
+	deepEqual(
 		documentModel.prepareInsertion( 1, ['d', 'e', 'f'] ),
 		[
 			{ 'type': 'retain', 'length': 1 },
@@ -381,5 +397,15 @@ test( 'es.DocumentModel', 17, function() {
 			{ 'type': 'retain', 'length': 27 }
 		],
 		'prepareInsertion retains data up to the offset and includes the content being inserted'
+	);
+	
+	deepEqual(
+		documentModel.prepareInsertion( 5, [ { 'type': 'paragraph' }, 'd', 'e', 'f', { 'type': '/paragraph' } ] ),
+		[
+			{ 'type': 'retain', 'length': 5 },
+			{ 'type': 'insert', 'data': [ { 'type': 'paragraph' }, 'd', 'e', 'f', { 'type': '/paragraph' } ] },
+			{ 'type': 'retain', 'length': 23 }
+		],
+		'prepareInsertion inserts a paragraph between two structural elements'
 	);
 } );
