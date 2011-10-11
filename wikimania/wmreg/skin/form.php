@@ -293,19 +293,19 @@ about any problems you encounter with it.</p>
 		<td>
 			<?php get_lang( 'hackingdays' ); ?>:<br>
 			<input type="checkbox" value="1" name="join_date[]" id="join1" <?php if ( in_array( 1, $register_data['join_date'] ) ) echo 'checked="checked"'; ?>/>
-			<a href="http://wikimania2011.wikimedia.org/wiki/Schedule#Developer_meetings" onClick="return popup(this, 'join1')"><?php get_lang( 'join1' ); ?></a><br>
+			<a href="https://wikimania2011.wikimedia.org/wiki/Schedule#Developer_meetings" onClick="return popup(this, 'join1')"><?php get_lang( 'join1' ); ?></a><br>
 			<input type="checkbox" value="2" name="join_date[]" id="join2" <?php if ( in_array( 2, $register_data['join_date'] ) ) echo 'checked="checked"'; ?>/>
-			<a href="http://wikimania2011.wikimedia.org/wiki/Schedule#Developer_meetings" onClick="return popup(this, 'join2')"><?php get_lang( 'join2' ); ?></a><br>
+			<a href="https://wikimania2011.wikimedia.org/wiki/Schedule#Developer_meetings" onClick="return popup(this, 'join2')"><?php get_lang( 'join2' ); ?></a><br>
 			<strong><?php get_lang( 'maindays' ); ?>:<br>
 			<input type="checkbox" value="3" name="join_date[]" id="join3" <?php if ( in_array( 3, $register_data['join_date'] ) ) echo 'checked="checked"'; ?>/>
-			<a href="http://wikimania2011.wikimedia.org/wiki/Schedule#Thursday.2C_August_4th" onClick="return popup(this, 'join3')"><?php get_lang( 'join3' ); ?></a><br>
+			<a href="https://wikimania2011.wikimedia.org/wiki/Schedule#Thursday.2C_August_4th" onClick="return popup(this, 'join3')"><?php get_lang( 'join3' ); ?></a><br>
 			<input type="checkbox" value="4" name="join_date[]" id="join4" <?php if ( in_array( 4, $register_data['join_date'] ) ) echo 'checked="checked"'; ?>/>
-			<a href="http://wikimania2011.wikimedia.org/wiki/Schedule#Friday.2C_August_5th" onClick="return popup(this, 'join4')"><?php get_lang( 'join4' ); ?></a><br>
+			<a href="https://wikimania2011.wikimedia.org/wiki/Schedule#Friday.2C_August_5th" onClick="return popup(this, 'join4')"><?php get_lang( 'join4' ); ?></a><br>
 			<input type="checkbox" value="5" name="join_date[]" id="join5" <?php if ( in_array( 5, $register_data['join_date'] ) ) echo 'checked="checked"'; ?>/>
-			<a href="http://wikimania2011.wikimedia.org/wiki/Schedule#Saturday.2C_August_6th" onClick="return popup(this, 'join5')"><?php get_lang( 'join5' ); ?></a><br>
+			<a href="https://wikimania2011.wikimedia.org/wiki/Schedule#Saturday.2C_August_6th" onClick="return popup(this, 'join5')"><?php get_lang( 'join5' ); ?></a><br>
 			</strong><?php get_lang( 'tourdays' ); ?>:<br>
 			<input type="checkbox" value="6" name="join_date[]" id="join6" <?php if ( in_array( 6, $register_data['join_date'] ) ) echo 'checked="checked"'; ?> onclick='flip(["tour0","tour1","tour2","tour3","tour4","tour5"])'/>
-			<a href="http://wikimania2011.wikimedia.org/wiki/Schedule#Sunday.2C_August_7th" onClick="return popup(this, 'join6')"><?php get_lang( 'join6' ); ?></a><br>
+			<a href="https://wikimania2011.wikimedia.org/wiki/Schedule#Sunday.2C_August_7th" onClick="return popup(this, 'join6')"><?php get_lang( 'join6' ); ?></a><br>
 		</td>
 	</tr>
 	<tr>
@@ -316,15 +316,15 @@ about any problems you encounter with it.</p>
 			<input type="radio" value="0" name="tours" id="tour0" <?php if ( $register_data['tours'] == 0 || empty( $register_data['tour'] ) ) echo 'checked="checked"'; ?> <?php if ( !in_array( 6, $register_data['join_date'] ) ) echo 'disabled=True'; ?>/>
 			<?php get_lang( 'tour0' ); ?><br>
 			<input type="radio" value="1" name="tours" id="tour1" <?php if ( $register_data['tours'] == 1 ) echo 'checked="checked"'; ?><?php if ( !in_array( 6, $register_data['join_date'] ) ) echo 'disabled=True'; ?>/>
-			<a href="http://wikimania2011.wikimedia.org/wiki/Tours/Nazareth_and_the_Galilee" onClick="return popup(this, 'tour1')"><?php get_lang( 'tour1' ); ?></a><br>
+			<a href="https://wikimania2011.wikimedia.org/wiki/Tours/Nazareth_and_the_Galilee" onClick="return popup(this, 'tour1')"><?php get_lang( 'tour1' ); ?></a><br>
 			<input type="radio" value="2" name="tours" id="tour2" <?php if ( $register_data['tours'] == 2 ) echo 'checked="checked"'; ?><?php if ( !in_array( 6, $register_data['join_date'] ) ) echo 'disabled=True'; ?>/>
-			<a href="http://wikimania2011.wikimedia.org/wiki/Tours/Jerusalem" onClick="return popup(this, 'tour2')"><?php get_lang( 'tour2' ); ?></a><br>
+			<a href="https://wikimania2011.wikimedia.org/wiki/Tours/Jerusalem" onClick="return popup(this, 'tour2')"><?php get_lang( 'tour2' ); ?></a><br>
 			<input type="radio" value="3" name="tours" id="tour3" <?php if ( $register_data['tours'] == 3 ) echo 'checked="checked"'; ?><?php if ( !in_array( 6, $register_data['join_date'] ) ) echo 'disabled=True'; ?>/>
-			<a href="http://wikimania2011.wikimedia.org/wiki/Tours/Acre_(Acco)"  onClick="return popup(this, 'tour3')"><?php get_lang( 'tour3' ); ?></a><br>
+			<a href="https://wikimania2011.wikimedia.org/wiki/Tours/Acre_(Acco)"  onClick="return popup(this, 'tour3')"><?php get_lang( 'tour3' ); ?></a><br>
 			<input type="radio" value="4" name="tours" id="tour4" <?php if ( $register_data['tours'] == 4 ) echo 'checked="checked"'; ?> <?php if ( !in_array( 6, $register_data['join_date'] ) ) echo 'disabled=True'; ?>/>
-			<a href="http://wikimania2011.wikimedia.org/wiki/Tours/The_Baha%27i_Gardens"  onClick="return popup(this, 'tour4')"><?php get_lang( 'tour4' ); ?></a><br>
+			<a href="https://wikimania2011.wikimedia.org/wiki/Tours/The_Baha%27i_Gardens"  onClick="return popup(this, 'tour4')"><?php get_lang( 'tour4' ); ?></a><br>
 			<input type="radio" value="5" name="tours" id="tour5" <?php if ( $register_data['tours'] == 5 ) echo 'checked="checked"'; ?> <?php if ( !in_array( 6, $register_data['join_date'] ) ) echo 'disabled=True'; ?>/>
-			<a href="http://wikimania2011.wikimedia.org/wiki/Tours/Druze_villages"  onClick="return popup(this, 'tour5')"><?php get_lang( 'tour5' ); ?></a><br>
+			<a href="https://wikimania2011.wikimedia.org/wiki/Tours/Druze_villages"  onClick="return popup(this, 'tour5')"><?php get_lang( 'tour5' ); ?></a><br>
 		</td>
 	<tr>
 		<td><?php create_label( 'showname', true ) ?></td>
@@ -495,18 +495,18 @@ about any problems you encounter with it.</p>
 		<td><?php create_label( 'accommodation_hotel' ); ?></td>
 		<td>
 			<input type="radio" value="1" name="hotels" id="hotel1" <?php if ( $register_data['hotels'] == 1 ) echo 'checked="checked"'; ?> disabled=True/>
-			<a href="http://wikimania2011.wikimedia.org/wiki/Accommodation/Dorms" onClick="return popup(this, 'hotel1')"><?php create_label( 'hotel1' ); ?></a><br>
+			<a href="https://wikimania2011.wikimedia.org/wiki/Accommodation/Dorms" onClick="return popup(this, 'hotel1')"><?php create_label( 'hotel1' ); ?></a><br>
 			<?php get_lang( 'hotel3stars' ); ?>:<br>
 			<input type="radio" value="2" name="hotels" id="hotel2" <?php if ( $register_data['hotels'] == 2 ) echo 'checked="checked"'; ?> disabled=True/>
-			<a href="http://wikimania2011.wikimedia.org/wiki/Accommodation/Three_Stars_Hotels#Dan_Gardens_.28.2A.2A.2A.29"  onClick="return popup(this, 'hotel2')"><?php create_label( 'hotel2' ); ?></a><br>
+			<a href="https://wikimania2011.wikimedia.org/wiki/Accommodation/Three_Stars_Hotels#Dan_Gardens_.28.2A.2A.2A.29"  onClick="return popup(this, 'hotel2')"><?php create_label( 'hotel2' ); ?></a><br>
 			<?php get_lang( 'hotel4stars' ); ?>:<br>
 			<input type="radio" value="4" name="hotels" id="hotel4" <?php if ( $register_data['hotels'] == 4 ) echo 'checked="checked"'; ?> disabled=True/>
-			<a href="http://wikimania2011.wikimedia.org/wiki/Accommodation/Four_Stars_Hotels#Mount_Carmel_.28.2A.2A.2A.2A.29"  onClick="return popup(this, 'hotel4')"><?php create_label( 'hotel4' ); ?></a><br>
+			<a href="https://wikimania2011.wikimedia.org/wiki/Accommodation/Four_Stars_Hotels#Mount_Carmel_.28.2A.2A.2A.2A.29"  onClick="return popup(this, 'hotel4')"><?php create_label( 'hotel4' ); ?></a><br>
 			<input type="radio" value="5" name="hotels" id="hotel5" <?php if ( $register_data['hotels'] == 5 ) echo 'checked="checked"'; ?> disabled=True/>
-			<a href="http://wikimania2011.wikimedia.org/wiki/Accommodation/Four_Stars_Hotels#Nof_.28.2A.2A.2A.2A.29"  onClick="return popup(this, 'hotel5')"><?php create_label( 'hotel5' ); ?></a><br>
+			<a href="https://wikimania2011.wikimedia.org/wiki/Accommodation/Four_Stars_Hotels#Nof_.28.2A.2A.2A.2A.29"  onClick="return popup(this, 'hotel5')"><?php create_label( 'hotel5' ); ?></a><br>
 			<?php get_lang( 'hotel5stars' ); ?>:<br>
 			<input type="radio" value="6" name="hotels" id="hotel6" <?php if ( $register_data['hotels'] == 6 ) echo 'checked="checked"'; ?>/>
-			<a href="http://wikimania2011.wikimedia.org/wiki/Accommodation/Five_Stars_Hotels#Dan_Panorama_.28.2A.2A.2A.2A.2A.29"  onClick="return popup(this, 'hotel6')"><?php create_label( 'hotel6' ); ?></a><br>
+			<a href="https://wikimania2011.wikimedia.org/wiki/Accommodation/Five_Stars_Hotels#Dan_Panorama_.28.2A.2A.2A.2A.2A.29"  onClick="return popup(this, 'hotel6')"><?php create_label( 'hotel6' ); ?></a><br>
 			<?php
 			?>
 		</td>
