@@ -1085,13 +1085,13 @@ $messages['gl'] = array(
 	'prefstats' => 'Estatísticas das preferencias',
 	'prefstats-desc' => 'Segue as estatísticas sobre cantos usuarios teñen determinadas preferencias activadas',
 	'prefstats-title' => 'Estatísticas das preferencias',
-	'prefstats-list-intro' => 'Actualmente as seguintes preferencias están sendo seguidas.
+	'prefstats-list-intro' => 'Actualmente estanse a seguir as seguintes preferencias.
 Prema sobre unha para ver as estatísticas sobre ela.',
 	'prefstats-noprefs' => 'Actualmente non se segue preferencia algunha. Configure $wgPrefStatsTrackPrefs para seguir preferencias.',
-	'prefstats-counters' => '* $1 {{PLURAL:$1|usuario ten|usuarios teñen}} activada esta preferencia des que as estatísticas de preferencias foron habilitadas
+	'prefstats-counters' => '* $1 {{PLURAL:$1|usuario ten|usuarios teñen}} activada esta preferencia des que as estatísticas de preferencias foron activadas
 ** $2 {{PLURAL:$2|usuario aínda a ten|usuarios aínda a teñen}} activada
 ** $3 {{PLURAL:$3|usuario tena|usuarios téñena}} desactivada',
-	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|usuario ten|usuarios teñen}} activada esta preferencia des que as estatísticas de preferencias foron habilitadas
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|usuario ten|usuarios teñen}} activada esta preferencia des que as estatísticas de preferencias foron activadas
 ** $2 {{PLURAL:$2|usuario aínda a ten|usuarios aínda a teñen}} activada
 ** $3 {{PLURAL:$3|usuario tena|usuarios téñena}} desactivada
 * En total, $4 {{PLURAL:$4|usuario ten|usuarios teñen}} definida esta preferencia',
