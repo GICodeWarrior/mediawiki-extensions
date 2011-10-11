@@ -24,7 +24,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-if ( version_compare( $wgVersion, '1.18blah', '<' ) ) {
+if ( version_compare( $wgVersion, '1.18a', '<' ) ) {
 	die( '<b>Error:</b> Contest requires MediaWiki 1.18 or above.' );
 }
 
