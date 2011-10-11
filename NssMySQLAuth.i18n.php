@@ -1060,7 +1060,7 @@ $messages['sl'] = array(
 	'nss-db-error' => 'Napaka pri branju iz overitvene zbirke podatkov',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -1071,10 +1071,10 @@ $messages['sr-ec'] = array(
 	'am-active' => 'активан',
 	'am-updated' => 'Ваше измене су сачуване.',
 	'nss-save-changes' => 'Сачувај измене',
-	'nss-create-account-header' => 'Направи нови налог',
+	'nss-create-account-header' => 'Отвори нови налог',
 	'nss-create-account' => 'Отвори налог',
-	'nss-no-mail' => 'Не шаљи имејл',
-	'nss-welcome-mail' => 'За Вас је направљен налог са корисничким именом $1 и лозинком $2.',
+	'nss-no-mail' => 'Не шаљи е-поруке',
+	'nss-welcome-mail' => 'Отворен вам је налог с корисничким именом $1 и лозинком $2.',
 	'nss-welcome-mail-subject' => 'Прављење налога',
 );
 
