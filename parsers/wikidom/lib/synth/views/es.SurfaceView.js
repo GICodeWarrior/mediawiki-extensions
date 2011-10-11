@@ -122,12 +122,16 @@ es.SurfaceView.prototype.onKeyDown = function( e ) {
 		case 35: // End
 			break;
 		case 37: // Left arrow
+			this.moveCursor( 'left' );
 			break;
 		case 38: // Up arrow
+			this.moveCursor( 'up' );
 			break;
 		case 39: // Right arrow
+			this.moveCursor( 'right' );
 			break;
 		case 40: // Down arrow
+			this.moveCursor( 'down' );
 			break;
 		case 8: // Backspace
 			break;
@@ -155,18 +159,6 @@ es.SurfaceView.prototype.onKeyUp = function( e ) {
 			break;
 		case 91: // Command
 			this.keyboard.keys.command = false;
-			break;
-		case 37: // Left arrow
-			this.moveCursor( 'left' );
-			break;
-		case 38: // Up arrow
-			this.moveCursor( 'up' );
-			break;
-		case 39: // Right arrow
-			this.moveCursor( 'right' );
-			break;
-		case 40: // Down arrow
-			this.moveCursor( 'down' );
 			break;
 		default:
 			break;
@@ -276,6 +268,19 @@ es.SurfaceView.prototype.hideCursor = function( position ) {
 		clearInterval( this.cursor.interval );
 	}
 	this.cursor.$.hide();
+};
+
+es.SurfaceView.prototype.moveCursor = function( direction ) {
+	switch ( direction ) {
+		case 'left':
+			this.showCursor( this.cursor.offset - 1 );
+			break;
+		case 'right':
+			this.showCursor( this.cursor.offset + 1 );
+			break;
+		default:
+			break;
+	}
 };
 
 es.SurfaceView.prototype.drawSelection = function() {
