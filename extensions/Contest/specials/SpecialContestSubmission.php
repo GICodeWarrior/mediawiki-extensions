@@ -152,7 +152,7 @@ class SpecialContestSubmission extends SpecialContestPage {
 			'wmf' => $data['contestant-wmf'],
 			'cv' => $data['contestant-cv'],
 		
-			'submission' => $data['contestant-submission'],
+			'submission' => trim( $data['contestant-submission'] ),
 		) );
 		
 		return $contestant->writeToDB();
@@ -302,6 +302,12 @@ class SpecialContestSubmission extends SpecialContestPage {
 	 * @return true|string
 	 */
 	public static function validateSubmissionField( $value, $alldata = null  ) {
+		$value = trim( $value );
+		
+		if ( $value == '' ) {
+			return true;
+		}
+		
 		$allowedPatterns = array(
 			// GitHub URLs such as https://github.com/JeroenDeDauw/smwcon/tree/f9b26ec4ba1101b1f5d4ef76b7ae6ad3dabfb53b
 			'@^https://github\.com/[a-zA-Z0-9-]+/[a-zA-Z0-9_-]+/tree/[a-zA-Z0-9]{40}$@i'
