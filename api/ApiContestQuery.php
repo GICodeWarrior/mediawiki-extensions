@@ -29,7 +29,7 @@ abstract class ApiContestQuery extends ApiQueryBase {
 	
 	/**
 	 * Returns an instance of the ContestDBObject deriving class.
-	 * Once PHP 5.3 becomes an accaptable requirement, we
+	 * Once PHP 5.3 becomes an acceptable requirement, we
 	 * can get rid of this silly hack and simply return the class
 	 * name (since all methods we need ought to be static in PHP >= 5.3).  
 	 * 
@@ -54,12 +54,12 @@ abstract class ApiContestQuery extends ApiQueryBase {
 		
 		if ( count( $params['props'] ) > 0 ) {
 			$results = $this->getResults( $params, $this->getConditions( $params ) );
-			$this->addResults( $params, $results );		
+			$this->addResults( $params, $results );
 		}
 	}
 	
 	/**
-	 * Get the request paramaters, handle the * value for the props param
+	 * Get the request parameters, handle the * value for the props param
 	 * and remove all params set to null (ie those that are not actually provided).
 	 * 
 	 * @since 0.1
