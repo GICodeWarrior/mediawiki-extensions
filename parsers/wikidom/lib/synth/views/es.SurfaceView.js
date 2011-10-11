@@ -278,6 +278,16 @@ es.SurfaceView.prototype.moveCursor = function( direction ) {
 		case 'right':
 			this.showCursor( this.cursor.offset + 1 );
 			break;
+		case 'up':
+			var position = this.documentView.getRenderedPosition( this.cursor.offset );
+			position.top--;
+			this.showCursor( this.documentView.getOffsetFromPosition( position ) );
+			break;
+		case 'down':
+			var position = this.documentView.getRenderedPosition( this.cursor.offset );
+			position.top = position.bottom + 1;
+			this.showCursor( this.documentView.getOffsetFromPosition( position ) );
+			break;
 		default:
 			break;
 	}
