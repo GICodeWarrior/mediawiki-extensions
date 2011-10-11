@@ -205,14 +205,16 @@ final class ContestHooks {
 		
 		$contestantIds = array();
 		
-		foreach ( $contestants as $contestant ) {
-			$contestantIds[] = $contestant->contestant_id;
+		if ( count( $contestants ) > 0 ) {
+			foreach ( $contestants as $contestant ) {
+				$contestantIds[] = $contestant->contestant_id;
+			}
+			
+			ContestContestant::s()->update(
+				array( 'email' => $email ),
+				array( 'id' => $contestantIds )
+			);
 		}
-		
-		ContestContestant::s()->update(
-			array( 'email' => $email ),
-			array( 'id' => $contestantIds )
-		);
 		
 		return true;
 	}
