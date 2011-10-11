@@ -199,8 +199,7 @@ final class ContestHooks {
 			array( 'contestant_id' ),
 			array( 'contest_status' => Contest::STATUS_ACTIVE ),
 			'',
-			array(),
-			array( 'contest_id=contestant_contest_id' )
+			array( 'contests' => array( 'INNER JOIN', array( 'contest_id=contestant_contest_id' ) ) )
 		);
 		
 		$contestantIds = array();
