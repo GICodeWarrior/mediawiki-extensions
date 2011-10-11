@@ -24,6 +24,9 @@ class ContestValidationTests extends MediaWikiTestCase {
 			'https://github.com/JeroenDeDauw/smwcon/tree/f9b26ec4ba1101b1f5d4ef76b7ae6ad3dabfb53ba' => false,
 			'https://github.com/JeroenDeDauw/smwc*/tree/f9b26ec4ba1101b1f5d4ef76b7ae6ad3dabfb53b' => false,
 			'in ur unit test, being quite silly' => false,
+			'   https://github.com/JeroenDeDauw/smwcon/tree/f9b26ec4ba1101b1f5d4ef76b7ae6ad3dabfb53b   ' => true,
+			'' => true,
+			'   ' => true,
 		);
 		
 		foreach ( $tests as $test => $isValdid ) {
