@@ -545,6 +545,7 @@ es.DocumentModel.prototype.getContentFromNode = function( node, range ) {
  */
 es.DocumentModel.prototype.prepareInsertion = function( offset, data ) {
 	var tx = new es.Transaction();
+	
 	/*
 	 * // Structural changes
 	 * There are 2 basic types of locations the insertion point can be:
@@ -554,8 +555,9 @@ es.DocumentModel.prototype.prepareInsertion = function( offset, data ) {
 	 *         <p>a</p><p>b</p>| - End of the document
 	 *     Content locations
 	 *         <p>|a</p><p>b</p> - Inside an element (like in a paragraph or listItem)
+	 *         <p>a|</p><p>b</p> - May also be inside an element but right before/after an open/close
 	 * 
-	 * if ( Incoming data contains structural elements ) {
+	 * if ( Incoming data contains structural elements ) { // We're assuming the incoming data is balanced, is that OK?
 	 *     if ( Insertion point is a structural location ) {
 	 *         if ( Incoming data is not a complete structural element ) {
 	 *             Incoming data must be balanced
@@ -565,7 +567,7 @@ es.DocumentModel.prototype.prepareInsertion = function( offset, data ) {
 	 *     }
 	 * } else {
 	 *     if ( Insertion point is a structural location ) {
-	 *         Incoming data must be balanced
+	 *         Incoming data must be balanced   //how? Should this even be allowed?
 	 *     } else {
 	 *         Content being inserted into content is OK, do nothing
 	 *     }
@@ -582,7 +584,21 @@ es.DocumentModel.prototype.prepareInsertion = function( offset, data ) {
  * @returns {es.Transaction}
  */
 es.DocumentModel.prototype.prepareRemoval = function( range ) {
-	var tx = new es.Transaction();
+	var tx = new es.Transaction(), removed = [];
+	range.normalize();
+	
+	// Retain to the start of the range
+	if ( range.start > 0 ) {
+		tx.pushRetain( range.start );
+	}
+	// TODO check for overlaps with structured elements and compensate
+	
+	removed = this.data.slice( range.start, range.end );
+	tx.pushRemove( removed );
+	
+	// Retain up to the end of the document
+	tx.pushRetain( this.data.length - range.end );
+	
 	range.normalize();
 
 	if ( range.start > 0 ) {
