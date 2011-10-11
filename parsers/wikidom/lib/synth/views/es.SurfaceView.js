@@ -59,6 +59,7 @@ es.SurfaceView = function( $container, model ) {
 		.prependTo( this.$ )
 		.bind( {
 			'focus' : function() {
+				$document.unbind( '.editSurface' );
 				$document.bind({
 					'mousemove.editSurface' : function(e) {
 						return surfaceView.onMouseMove( e );
