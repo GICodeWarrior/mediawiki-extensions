@@ -81,8 +81,8 @@ final class ContestHooks {
 		$contestants = $dbr->select(
 			array( 'contest_contestants', 'contests' ),
 			array( 'contestant_id' ),
-			array( 'contest_status' => Contest::STATUS_ACTIVE ),
-			'',
+			array( 'contest_status' => Contest::STATUS_ACTIVE, 'contestant_user_id' => $user->getId() ),
+			__METHOD__,
 			array(),
 			array( 'contests' => array( 'INNER JOIN', array( 'contest_id=contestant_contest_id' ) ) )
 		);
@@ -102,5 +102,63 @@ final class ContestHooks {
 		
 		return true;
 	}
+	
+	/**
+	 * Called after the personal URLs have been set up, before they are shown.
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/PersonalUrls
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param array $personal_urls
+	 * @param Title $title
+	 * 
+	 * @return true
+	 */
+	public static function onPersonalUrls( array &$personal_urls, Title &$title ) {
+			if ( ContestSettings::get( 'enableTopLink' ) ) {
+			global $wgUser;
+			
+			// Find the watchlist item and replace it by the my contests link and itself.
+			if ( $wgUser->isLoggedIn() && $wgUser->getOption( 'contest_showtoplink' ) ) {
+				$keys = array_keys( $personal_urls );
+				$watchListLocation = array_search( 'watchlist', $keys );
+				$watchListItem = $personal_urls[$keys[$watchListLocation]];
+				
+				$url = SpecialPage::getTitleFor( 'MyContests' )->getLinkUrl();
+				$myContests = array(
+					'text' => wfMsg( 'contest-toplink' ),
+					'href' => $url,
+					'active' => ( $url == $title->getLinkUrl() )
+				);
+				
+				array_splice( $personal_urls, $watchListLocation, 1, array( $myContests, $watchListItem ) );				
+			}
+		}
+		
+		return true;
+	}
+	
+    /**
+     * Adds the preferences of Contest to the list of available ones.
+     * @see https://www.mediawiki.org/wiki/Manual:Hooks/GetPreferences
+     * 
+     * @since 0.1
+     * 
+     * @param User $user
+     * @param array $preferences
+     * 
+     * @return true
+     */
+	public static function onGetPreferences( User $user, array &$preferences ) {
+		if ( ContestSettings::get( 'enableTopLink' ) ) {
+			$preferences['contest_showtoplink'] = array(
+				'type' => 'toggle',
+				'label-message' => 'contest-prefs-showtoplink',
+				'section' => 'contest',
+			);	
+		}
+
+		return true;
+	}  
 	
 }

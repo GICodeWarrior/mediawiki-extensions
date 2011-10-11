@@ -70,7 +70,6 @@ $wgAutoloadClasses['SpecialContestant'] 		= dirname( __FILE__ ) . '/specials/Spe
 $wgAutoloadClasses['SpecialContestPage'] 		= dirname( __FILE__ ) . '/specials/SpecialContestPage.php';
 $wgAutoloadClasses['SpecialContests'] 			= dirname( __FILE__ ) . '/specials/SpecialContests.php';
 $wgAutoloadClasses['SpecialContestSignup'] 		= dirname( __FILE__ ) . '/specials/SpecialContestSignup.php';
-$wgAutoloadClasses['SpecialContestSubmission'] 	= dirname( __FILE__ ) . '/specials/SpecialContestSubmission.php';
 $wgAutoloadClasses['SpecialContestWelcome'] 	= dirname( __FILE__ ) . '/specials/SpecialContestWelcome.php';
 $wgAutoloadClasses['SpecialEditContest'] 		= dirname( __FILE__ ) . '/specials/SpecialEditContest.php';
 $wgAutoloadClasses['SpecialMyContests'] 		= dirname( __FILE__ ) . '/specials/SpecialMyContests.php';
@@ -80,7 +79,6 @@ $wgSpecialPages['Contest'] 						= 'SpecialContest';
 $wgSpecialPages['Contestant'] 					= 'SpecialContestant';
 $wgSpecialPages['Contests'] 					= 'SpecialContests';
 $wgSpecialPages['ContestSignup'] 				= 'SpecialContestSignup';
-$wgSpecialPages['ContestSubmission'] 			= 'SpecialContestSubmission';
 $wgSpecialPages['ContestWelcome'] 				= 'SpecialContestWelcome';
 $wgSpecialPages['EditContest'] 					= 'SpecialEditContest';
 $wgSpecialPages['MyContests'] 					= 'SpecialMyContests';
@@ -89,7 +87,6 @@ $wgSpecialPageGroups['Contest'] 				= 'other';
 $wgSpecialPageGroups['Contestant'] 				= 'other';
 $wgSpecialPageGroups['Contests'] 				= 'other';
 $wgSpecialPageGroups['ContestSignup'] 			= 'other';
-$wgSpecialPageGroups['ContestSubmission'] 		= 'other';
 $wgSpecialPageGroups['ContestWelcome'] 			= 'other';
 $wgSpecialPageGroups['EditContest'] 			= 'other';
 $wgSpecialPageGroups['MyContests'] 				= 'other';
@@ -105,6 +102,8 @@ $wgAPIListModules['contests'] 					= 'ApiQueryContests';
 $wgHooks['LoadExtensionSchemaUpdates'][] 		= 'ContestHooks::onSchemaUpdate';
 $wgHooks['UnitTestsList'][] 					= 'ContestHooks::registerUnitTests';
 $wgHooks['UserSetEmail'][] 						= 'ContestHooks::onUserSetEmail';
+$wgHooks['PersonalUrls'][] 						= 'ContestHooks::onPersonalUrls';
+$wgHooks['GetPreferences'][] 					= 'ContestHooks::onGetPreferences';
 
 // Rights
 

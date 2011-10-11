@@ -20,8 +20,7 @@ $specialPageAliases['en'] = array(
 	'Contestant' => array( 'Contestant' ),
 	'Contests' => array( 'Contests' ),
 	'ContestSignup' => array( 'ContestSignup' ),
-	'ContestSubmission' => array( 'ContestSubmission' ),
 	'ContestWelcome' => array( 'ContestWelcome' ),
 	'EditContest' => array( 'EditContest' ),
-	'MyContests' => array( 'MyContests' ),
+	'MyContests' => array( 'MyContests', 'ContestSubmission', 'My contests' ),
 );
