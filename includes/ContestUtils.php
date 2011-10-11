@@ -31,7 +31,7 @@ class ContestUtils {
 		}
 		 
 		$article = new Article( $title, 0 );
-		return $article->getContent();
+		return $article->fetchContent();
 	}
 	
 	/**
