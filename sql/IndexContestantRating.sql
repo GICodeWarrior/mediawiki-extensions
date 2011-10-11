@@ -1,1 +1,0 @@
-CREATE INDEX /*i*/contestant_rating ON /*_*/contest_contestants (contestant_challenge_id, contestant_rating, contestant_rating_count);

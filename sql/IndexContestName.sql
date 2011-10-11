@@ -1,1 +1,0 @@
-CREATE UNIQUE INDEX /*i*/contest_name ON /*_*/contests (contest_name);
