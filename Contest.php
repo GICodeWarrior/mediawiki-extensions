@@ -187,6 +187,12 @@ $wgResourceModules['contest.special.editcontest'] = $moduleTemplate + array(
 $wgResourceModules['jquery.contestChallenges'] = $moduleTemplate + array(
 	'scripts' => array(
 		'jquery.contestChallenges.js'
+	),
+	'messages' => array(
+		'contest-welcome-accept-challenge'
+	),
+	'dependencies' => array(
+		'jquery.ui.button'
 	)
 );
 

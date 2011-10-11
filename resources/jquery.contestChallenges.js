@@ -16,31 +16,58 @@
 	
 	this.challengesList = null;
 	
-	this.showChallenge = function( challenge ) {
-		// TODO: show challenge pop-up with text and participate button
-		window.location = challenge.target;
-	};
-	
 	this.addChallenge = function( challenge ) {
-		var item = $( '<a />' ).attr( 'href', '#' ).html( '' ).click( function() {
-			_this.showChallenge( challenge );
-		} );
-		
-		item.append( $( '<div />' ).attr( 'class', 'mw-codechallenge-l-cap' ) );
-		
-		var innerDiv = $( '<div />' ).attr( 'class', 'mw-codechallenge-inside' );
-		
-		innerDiv.html( $( '<div />' ).attr( 'class', 'mw-codechallenge-link-text' )
-			.html( $( '<p />' ).text( challenge.title ) )
-			.append( $( '<p />' ).text( challenge.oneline ) )
-		);
-		
-		innerDiv.append( $( '<div />' ).attr( 'class', 'mw-codechallenge-icon-box' ) );
-		item.append( innerDiv );
-		
-		item.append( $( '<div />' ).attr( 'class', 'mw-codechallenge-r-cap' ) );
-		
-		this.challengesList.append( $( '<li />' ).html( item ) );
+		this.challengesList
+			.append(
+				$( '<li class="mw-codechallenge-box-outside"></li>' )
+					.click( function( e ) {
+						var box = $(this);
+						box
+							.addClass( 'mw-codechallenge-box-selected' )
+							.find( '.mw-codechallenge-popup' )
+							.fadeIn( 'fast' );
+						$(document).one( 'click', function() {
+							box
+								.removeClass( 'mw-codechallenge-box-selected' )
+								.find( '.mw-codechallenge-popup' )
+								.fadeOut( 'fast' );
+						} );
+						e.stopPropagation();
+						return false;
+					} )
+					.append(
+						$( '<div class="mw-codechallenge-box-inside"></div>' )
+							.append( '<div class="mw-codechallenge-box-top"></div>' )
+							.append(
+								$('<div class="mw-codechallenge-box-text"></div>' )
+									.append(
+										$( '<h4 class="mw-codechallenge-box-title"></h4>' )
+											.text( challenge.title )
+									)
+									.append(
+										$( '<p class="mw-codechallenge-box-desc">' )
+											.text( challenge.oneline )
+									)
+							)
+							.append(
+								$( '<div class="mw-codechallenge-popup"><div>' )
+									.append( '<div class="mw-codechallenge-popup-callout"></div>' )
+									.append( challenge.text )
+									.append(
+										$( '<div class="mw-codechallenge-popup-buttons"></div>' )
+											.append(
+												$( '<button class="ui-button-green"></button>' )
+													// TODO: Internationalize this!
+													.text( mw.msg( 'contest-welcome-accept-challenge' ) )
+													.button()
+													.click( function() {
+														window.location = challenge.target;
+													} )
+											)
+									)
+							)
+					)
+			);
 	}
 	
 	this.initChallenges = function() {
