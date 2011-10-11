@@ -20,6 +20,9 @@ $messages = array();
 $messages['en'] = array(
 	'contest-desc' => 'Contest extension that allows users to participate in admin defined contest challenges. Via a judging interface, judges can discuss and vote on submissions.',
 
+	// Misc
+	'contest-toplink' => 'My contests',
+
 	// Rights
 	'right-contestadmin' => 'Manage contests',
 	'right-contestparticipant' => 'Participate in contests',
@@ -38,6 +41,10 @@ $messages['en'] = array(
 	'group-contestjudge-member' => 'contest judge',
 	'grouppage-contestjudge' => 'Project:Contest_judges',
 
+	// Preferences
+	'prefs-contest' => 'Contests',
+	'contest-prefs-showtoplink' => 'Show a link to [[Special:MyContests|My Contests]] in the top menue.',
+
 	// Contest statuses
 	'contest-status-draft' => 'Draft (disabled)',
 	'contest-status-active' => 'Active (enabled)',
@@ -50,6 +57,7 @@ $messages['en'] = array(
 	'special-contestsubmission' => 'Contest submission',
 	'special-contestwelcome' => 'Contest',
 	'special-editcontest' => 'Edit contest',
+	'special-mycontests' => 'Contests',
 
 	// Navigation links
 	'contest-nav-contests' => 'Contests list',
@@ -182,9 +190,14 @@ $messages['en'] = array(
 	'contest-email-reminder-title' => 'Only $1 {{PLURAL:$1|day|days}} until the end of the challenge!',
 
 	// Special:MyContests
+	'contest-mycontests-toplink' => 'My contests',
 	'contest-mycontests-no-contests' => 'You are not participating in any contest.',
 	'contest-mycontests-active-header' => 'Running contests',
 	'contest-mycontests-finished-header' => 'Passed contests',
+	'contest-mycontests-active-text' => 'These are the contests you are currently participating in.',
+	'contest-mycontests-finished-text' => 'These are the passed contests you have participated in.',
+	'contest-mycontests-header-contest' => 'Contest',
+	'contest-mycontests-header-challenge' => 'Challenge',
 );
 
 /** Message documentation (Message documentation)
@@ -240,4 +253,10 @@ $messages['qqq'] = array(
 	// Emails
 	'contest-email-signup-title' => 'Title for signup emails',
 	'contest-email-reminder-title' => 'Title for reminder emails',
+
+	// Special:MyContests
+	'contest-mycontests-toplink' => 'Text for link in the top menue (ie where watchlist and preferences are linked)',
+	'contest-mycontests-no-contests' => 'Message indicating there are no contests for the user, displayed instead of a list.',
+	'contest-mycontests-active-header' => 'Page header (h2)',
+	'contest-mycontests-finished-header' => 'Page header (h2)',
 );

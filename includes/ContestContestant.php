@@ -458,13 +458,26 @@ class ContestContestant extends ContestDBObject {
 		$success = parent::insertIntoDB();
 		
 		if ( $success ) {
-			$this->getContest( array( 'id' ) )->addToSubmissionCount( 1 );
-			$this->sendSignupEmail();
-			
-			wfRunHooks( 'ContestAfterContestantInsert', array( &$this ) );
+			$this->onUserSignup();
 		}
 		
 		return $success;
+	}
+	
+	/**
+	 * Handles successfull user signup for a contest.
+	 * 
+	 * @since 0.1
+	 */
+	protected function onUserSignup() {
+		$this->getContest( array( 'id' ) )->addToSubmissionCount( 1 );
+		
+		$this->getUser()->setOption( 'contest_showtoplink', true );
+		$this->getUser()->saveSettings(); // TODO: can't we just save this single option instead of everything?
+		
+		$this->sendSignupEmail();
+		
+		wfRunHooks( 'ContestAfterContestantInsert', array( &$this ) );
 	}
 	
 	/**

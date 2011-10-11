@@ -643,7 +643,7 @@ abstract class ContestDBObject {
 			$this->getDBTable(),
 			$fields,
 			count( $conditions ) == 0 ? '' : $conditions,
-			'',
+			__METHOD__,
 			$options
 		);
 	}
