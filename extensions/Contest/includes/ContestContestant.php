@@ -144,11 +144,11 @@ class ContestContestant extends ContestDBObject {
 	 * 
 	 * @since 0.1
 	 * 
-	 * @param array|null $fields The fields to load, null for all fields.
+	 * @param array|string|null $fields The fields to load, null for all fields.
 	 * 
 	 * @return Contest
 	 */
-	public function getContest( array $fields = null ) {
+	public function getContest( $fields = null ) {
 		if ( !is_null( $this->contest ) ) {
 			return $this->contest;
 		}
