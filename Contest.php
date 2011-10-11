@@ -15,7 +15,7 @@
  */
 
 /**
- * This documenation group collects source code files belonging to Contest.
+ * This documentation group collects source code files belonging to Contest.
  *
  * @defgroup Contest Contest
  */
@@ -24,16 +24,16 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-if ( version_compare( $wgVersion, '1.18', '<' ) ) {
+if ( version_compare( $wgVersion, '1.18blah', '<' ) ) {
 	die( '<b>Error:</b> Contest requires MediaWiki 1.18 or above.' );
 }
 
-define( 'Contest_VERSION', '0.1 alpha' );
+define( 'CONTEST_VERSION', '0.1alpha' );
 
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Contest',
-	'version' => Contest_VERSION,
+	'version' => CONTEST_VERSION,
 	'author' => array(
 		'[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]',
 	),
@@ -153,13 +153,22 @@ $wgResourceModules['contest.special.contests'] = $moduleTemplate + array(
 	)
 );
 
-$wgResourceModules['contest.special.editcontest'] = $moduleTemplate + array(
+$wgResourceModules['jquery.ui.timepicker'] = $moduleTemplate + array(
 	'scripts' => array(
-		'jquery-ui-timepicker-addon.js',
-		'contest.special.editcontest.js',
+		'jquery-ui-timepicker-addon.js', // TODO: rename to jquery.ui.timepicker.js
 	),
 	'styles' => array(
-		'jquery-ui-timepicker-addon.css',
+		'jquery-ui-timepicker-addon.css', // TODO rename
+	),
+	'dependencies' => array(
+		'jquery.ui.slider',
+		'jquery.ui.datepicker'
+	)
+);
+
+$wgResourceModules['contest.special.editcontest'] = $moduleTemplate + array(
+	'scripts' => array(
+		'contest.special.editcontest.js',
 	),
 	'messages' => array(
 		'contest-edit-delete',
@@ -172,21 +181,25 @@ $wgResourceModules['contest.special.editcontest'] = $moduleTemplate + array(
 	),
 	'dependencies' => array(
 		'jquery.ui.button',
-		'jquery.ui.slider',
-		'jquery.ui.datepicker'
+		'jquery.ui.timepicker'
+	)
+);
+
+$wgResourceModules['jquery.contestChallanges'] = $moduleTemplate + array(
+	'scripts' => array(
+		'jquery.contestChallanges.js' // TODO rename
 	)
 );
 
 $wgResourceModules['contest.special.welcome'] = $moduleTemplate + array(
 	'scripts' => array(
-		'contest.special.welcome.js',
-		'jquery.contestChallanges.js'
+		'contest.special.welcome.js'
 	),
 	'styles' => array(
 		'contest.special.welcome.css',
 	),
 	'dependencies' => array(
-		'jquery.ui.button'
+		'jquery.contestChallanges',
 	),
 	'messages' => array(
 		'contest-welcome-select-header'
