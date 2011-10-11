@@ -543,7 +543,7 @@ abstract class ContestDBObject {
 	 * 
 	 * @since 0.1
 	 * 
-	 * @param array|null $fields
+	 * @param array|string|null $fields
 	 * @param array $conditions
 	 * @param array $options
 	 * 
@@ -575,7 +575,7 @@ abstract class ContestDBObject {
 	 * 
 	 * @since 0.1
 	 * 
-	 * @param array|null $fields
+	 * @param array|string|null $fields
 	 * @param array $conditions
 	 * @param array $options
 	 * 

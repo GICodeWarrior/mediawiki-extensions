@@ -180,6 +180,11 @@ $messages['en'] = array(
 	// Emails
 	'contest-email-signup-title' => 'Thanks for joining the challenge!',
 	'contest-email-reminder-title' => 'Only $1 {{PLURAL:$1|day|days}} until the end of the challenge!',
+
+	// Special:MyContests
+	'contest-mycontests-no-contests' => 'You are not participating in any contest.',
+	'contest-mycontests-active-header' => 'Running contests',
+	'contest-mycontests-finished-header' => 'Passed contests',
 );
 
 /** Message documentation (Message documentation)
