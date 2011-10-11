@@ -155,10 +155,10 @@ $wgResourceModules['contest.special.contests'] = $moduleTemplate + array(
 
 $wgResourceModules['jquery.ui.timepicker'] = $moduleTemplate + array(
 	'scripts' => array(
-		'jquery-ui-timepicker-addon.js', // TODO: rename to jquery.ui.timepicker.js
+		'jquery.ui.timepicker.js',
 	),
 	'styles' => array(
-		'jquery-ui-timepicker-addon.css', // TODO rename
+		'jquery.ui.timepicker.css',
 	),
 	'dependencies' => array(
 		'jquery.ui.slider',
@@ -187,7 +187,7 @@ $wgResourceModules['contest.special.editcontest'] = $moduleTemplate + array(
 
 $wgResourceModules['jquery.contestChallanges'] = $moduleTemplate + array(
 	'scripts' => array(
-		'jquery.contestChallanges.js' // TODO rename
+		'jquery.contestChallenges.js'
 	)
 );
 
