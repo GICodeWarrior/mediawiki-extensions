@@ -9,6 +9,8 @@ class SpecialRegisterForWikimania extends SpecialPage {
 
 	public function execute( $par = '' ) {
 		$this->setHeaders();
-		$this->getOutput()->addHTML( '<p>Todo</p>' );
+		$this->getOutput()->addModules( 'ext.wikimania' );
+		$form = new WikimaniaRegistration( Wikimania::getWikimania(), $this->getContext() );
+		$form->show();
 	}
 }
