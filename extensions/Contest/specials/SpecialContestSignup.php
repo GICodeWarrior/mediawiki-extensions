@@ -51,8 +51,8 @@ class SpecialContestSignup extends SpecialContestPage {
 	 * 
 	 * @return true|array
 	 */
-	public static function handleSubmission( array $data ) {
-		$user = $GLOBALS['wgUser']; //$this->getUser();
+	public function handleSubmission( array $data ) {
+		$user = $this->getUser();
 		
 		$user->setEmail( $data['contestant-email'] );
 		$user->setRealName( $data['contestant-realname'] );
@@ -63,8 +63,11 @@ class SpecialContestSignup extends SpecialContestPage {
 			'user_id' => $user->getId(),
 			'challenge_id' => $data['contestant-challengeid'],
 		
-			'country' => $data['contestant-country'],
+			'full_name' => $data['contestant-realname'],
+			'user_name' => $user->getName(),
+			'email' => $data['contestant-email'],
 		
+			'country' => $data['contestant-country'],
 			'volunteer' => $data['contestant-volunteer'],
 			'wmf' => $data['contestant-wmf'],
 		) );
@@ -156,7 +159,7 @@ class SpecialContestSignup extends SpecialContestPage {
 	protected function showSignupForm( Contest $contest, $challengeId = false ) {
 		$form = new HTMLForm( $this->getFormFields( $contest, $challengeId ), $this->getContext() );
 		
-		$form->setSubmitCallback( array( __CLASS__, 'handleSubmission' ) );
+		$form->setSubmitCallback( array( $this, 'handleSubmission' ) );
 		$form->setSubmitText( wfMsg( 'contest-signup-submit' ) );
 		
 		if( $form->show() ){

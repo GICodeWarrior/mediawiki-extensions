@@ -177,4 +177,44 @@ final class ContestHooks {
 		return true;
 	}
 	
+	/**
+	 * Called when changing user email address.
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/UserSetEmail
+	 * 
+	 * Checks if there are any active contests in which the user is participating,
+	 * and if so, updates the email there as well.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param User $user
+	 * @param string $email
+	 * 
+	 * @return true
+	 */
+	public static function onUserSetEmail( User $user, &$email ) {
+		$dbr = wfGetDB( DB_SLAVE );
+		
+		$contestants = $dbr->select(
+			array( 'contest_contestants', 'contests' ),
+			array( 'contestant_id' ),
+			array( 'contest_status' => Contest::STATUS_ACTIVE ),
+			'',
+			array(),
+			array( 'contest_id=contestant_contest_id' )
+		);
+		
+		$contestantIds = array();
+		
+		foreach ( $contestants as $contestant ) {
+			$contestantIds[] = $contestant->contestant_id;
+		}
+		
+		ContestContestant::s()->update(
+			array( 'email' => $email ),
+			array( 'id' => $contestantIds )
+		);
+		
+		return true;
+	}
+	
 }
