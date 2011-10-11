@@ -15,29 +15,32 @@ CREATE TABLE /*_*/registration (
 	-- Current status of the registration, see WikimaniaRegistration::getPossibleStatuses()
 	reg_status varchar(12) not null,
 
+	-- First name
 	reg_fname varchar(255) not null,
+
+	-- Last name
 	reg_lname varchar(255) not null,
+
+	-- Gender
 	reg_sex varchar(1) not null,
+
+	-- Country of residence
 	reg_country varchar(4) not null,
+
+	-- Wiki ID info
 	reg_wiki_id varchar(255) not null,
 	reg_wiki_language varchar(12) not null,
 	reg_wiki_project varchar(12) not null,
+
+	-- E-mail address
 	reg_email varchar(255) not null,
-	reg_showname set('1','2','3') not null,
-	reg_custom_showname varchar(255),
+
+	-- How the name on the badge will be shown, as a string
+	reg_showname varchar(255) not null,
 	reg_shirt_size enum('XXS','XS','S','M','L','XL','XXL','XXXL') not null,
 	reg_shirt_color enum('W','B') not null,
 	reg_food_preference enum('','1','2','3') not null,
 	reg_food_other varchar(255),
-	reg_visa_assistance tinyint(1) not null,
-	reg_nationality varchar(4),
-	reg_passport varchar(30),
-	reg_passport_valid varbinary(16),
-	reg_passport_issued varchar(255),
-	reg_birthday varbinary(16),
-	reg_countryofbirth varchar(4),
-	reg_homeaddress blob,
-	reg_visa_description blob,
 	reg_discount_code varchar(16),
 	reg_attendance_cost decimal(10,2) not null,
 	reg_accommodation_cost decimal(10,2) not null,
@@ -48,6 +51,39 @@ CREATE TABLE /*_*/registration (
 	reg_cost_paid decimal(10,2) not null
 ) /**$wgDBTableOptions*/;
 CREATE UNIQUE INDEX /*i*/reg_code ON /*_*/registrations (reg_code);
+
+-- Table to handle passport information
+CREATE TABLE /*_*/registration_passports (
+	-- Just a primary key
+	rp_id unsigned int not null primary key auto_increment,
+
+	-- Tied to a specific registration
+	rp_reg_id unsigned int not null,
+
+	-- Nationality on passport
+	reg_nationality varchar(4),
+
+	-- Passport ID
+	reg_passport varchar(30),
+
+	-- Issuing date
+	reg_passport_valid varbinary(16),
+
+	-- Issuing city
+	reg_passport_issued varchar(255),
+
+	-- Birthday
+	reg_birthday varbinary(16),
+
+	-- Country of birth
+	reg_countryofbirth varchar(4),
+
+	-- Home address
+	reg_homeaddress blob,
+
+	-- Any additional considerations
+	reg_visa_description blob,
+) /**$wgDBTableOptions*/;
 
 -- Table to handle date(s) people register for
 CREATE TABLE /*_*/registration_dates (
