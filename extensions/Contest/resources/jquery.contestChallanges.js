@@ -46,7 +46,7 @@
 	this.initChallanges = function() {
 		this.challangesList = $( '<ul />' ).attr( 'id', 'contest-challanges-list' );
 		
-		for ( i in this.challanges ) {
+		for ( var i in this.challanges ) {
 			this.addChallange( this.challanges[i] );
 		}
 	};
