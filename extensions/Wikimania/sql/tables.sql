@@ -61,28 +61,28 @@ CREATE TABLE /*_*/registration_passports (
 	rp_reg_id unsigned int not null,
 
 	-- Nationality on passport
-	reg_nationality varchar(4),
+	rp_nationality varchar(4),
 
 	-- Passport ID
-	reg_passport varchar(30),
+	rp_passport varchar(30),
 
 	-- Issuing date
-	reg_passport_valid varbinary(16),
+	rp_passport_valid varbinary(16),
 
 	-- Issuing city
-	reg_passport_issued varchar(255),
+	rp_passport_issued varchar(255),
 
 	-- Birthday
-	reg_birthday varbinary(16),
+	rp_birthday varbinary(16),
 
 	-- Country of birth
-	reg_countryofbirth varchar(4),
+	rp_countryofbirth varchar(4),
 
 	-- Home address
-	reg_homeaddress blob,
+	rp_homeaddress blob,
 
 	-- Any additional considerations
-	reg_visa_description blob,
+	rp_visa_description blob,
 ) /**$wgDBTableOptions*/;
 
 -- Table to handle date(s) people register for
