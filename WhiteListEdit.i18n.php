@@ -1346,9 +1346,9 @@ $2',
 	'action-editwhitelist' => 'changiér la lista blanche por los utilisators ègzistents',
 	'action-restricttowhitelist' => 'changiér et vêre les pâges que figuront ren que sur la lista blanche',
 	'group-restricted' => 'Utilisators a accès rètrent',
-	'group-restricted-member' => 'Utilisator a accès rètrent',
+	'group-restricted-member' => 'utilisat{{GENDER:$1|or|rice}} a accès rètrent',
 	'group-manager' => 'Administrators',
-	'group-manager-member' => 'Administrator',
+	'group-manager-member' => 'administrat{{GENDER:$1|or|rice}}',
 );
 
 /** Western Frisian (Frysk)
@@ -2361,9 +2361,9 @@ $2',
 	'action-editwhitelist' => 'менување на белиот список за постоечки корисници',
 	'action-restricttowhitelist' => 'уредувај и прегледувај само страници на белиот список',
 	'group-restricted' => 'Ограничени корисници',
-	'group-restricted-member' => 'Ограничен корисник',
+	'group-restricted-member' => '{{GENDER:$1|ограничен корисник}}',
 	'group-manager' => 'Раководители',
-	'group-manager-member' => 'Раководител',
+	'group-manager-member' => '{{GENDER:$1|раководител}}',
 );
 
 /** Malayalam (മലയാളം)
@@ -3076,6 +3076,7 @@ $messages['rif'] = array(
  * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Mihai
+ * @author Minisarm
  */
 $messages['ro'] = array(
 	'mywhitelistpages' => 'Paginile mele',
@@ -3108,9 +3109,9 @@ $2',
 Această pagină este aplicabilă doar utilizatorilor restricționați",
 	'whitelistnever' => 'niciodată',
 	'group-restricted' => 'Utilizatori restricționați',
-	'group-restricted-member' => 'Utilizator restricționat',
+	'group-restricted-member' => '{{GENDER:$1|utilizator restricționat|utilizatoare restricționată|utilizator restricționat}}',
 	'group-manager' => 'Manageri',
-	'group-manager-member' => 'Manager',
+	'group-manager-member' => '{{GENDER:$1|manager}}',
 );
 
 /** Tarandíne (Tarandíne)
