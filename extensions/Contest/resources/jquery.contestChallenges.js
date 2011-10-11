@@ -22,18 +22,21 @@
 				$( '<li class="mw-codechallenge-box-outside"></li>' )
 					.click( function( e ) {
 						var box = $(this);
-						box
-							.addClass( 'mw-codechallenge-box-selected' )
-							.find( '.mw-codechallenge-popup' )
-							.fadeIn( 'fast' );
-						$(document).one( 'click', function() {
+						if ( !box.hasClass( 'mw-codechallenge-box-selected' ) ) {
+							$( '.mw-codechallenge-popup' ).not( box ).fadeOut( 'fast' );
 							box
-								.removeClass( 'mw-codechallenge-box-selected' )
+								.addClass( 'mw-codechallenge-box-selected' )
 								.find( '.mw-codechallenge-popup' )
-								.fadeOut( 'fast' );
-						} );
-						e.stopPropagation();
-						return false;
+								.fadeIn( 'fast' );
+							$(document).one( 'click', function() {
+								box
+									.removeClass( 'mw-codechallenge-box-selected' )
+									.find( '.mw-codechallenge-popup' )
+									.fadeOut( 'fast' );
+							} );
+							e.stopPropagation();
+							return false;
+						}
 					} )
 					.append(
 						$( '<div class="mw-codechallenge-box-inside"></div>' )
