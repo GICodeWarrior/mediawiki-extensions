@@ -545,6 +545,16 @@ es.DocumentModel.prototype.getContentFromNode = function( node, range ) {
  */
 es.DocumentModel.prototype.prepareInsertion = function( offset, data ) {
 	var tx = new es.Transaction();
+	if ( offset > 0 ) {
+		tx.pushRetain( offset );
+	}
+	// TODO check for structural changes
+	tx.pushInsert( data );
+	if ( offset < this.data.length ) {
+		tx.pushRetain( this.data.length - offset );
+	}
+	
+	return tx;
 	
 	/*
 	 * // Structural changes
