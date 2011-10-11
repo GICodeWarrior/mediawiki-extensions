@@ -82,7 +82,7 @@ CREATE TABLE /*_*/registration_passports (
 	rp_homeaddress blob,
 
 	-- Any additional considerations
-	rp_visa_description blob,
+	rp_visa_description blob
 ) /**$wgDBTableOptions*/;
 
 -- Table to handle date(s) people register for
