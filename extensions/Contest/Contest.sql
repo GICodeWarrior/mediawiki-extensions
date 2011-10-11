@@ -13,6 +13,8 @@ CREATE TABLE IF NOT EXISTS /*_*/contests (
   contest_opportunities        VARCHAR(255)        NOT NULL, -- Name of the page with opportunities
   contest_intro                VARCHAR(255)        NOT NULL, -- Name of the page with the intro text
   contest_help                 VARCHAR(255)        NOT NULL, -- Name of the page with contest help
+  contest_signup_email         VARCHAR(255)        NOT NULL, -- Name of the page with the signup email text
+  contest_reminder_email       VARCHAR(255)        NOT NULL, -- Name of the page with the reminder email text
   
   contest_submission_count     SMALLINT unsigned   NOT NULL-- Amount of submissions made to the contest
 ) /*$wgDBTableOptions*/;
