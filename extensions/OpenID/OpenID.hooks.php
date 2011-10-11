@@ -357,14 +357,10 @@ class OpenIDHooks {
 			$db = $updater->getDB();
 			$info = $db->fieldInfo( 'user_openid', 'uoi_user' );
 			if ( !$info->isMultipleKey() ) {
-				echo( "Making uoi_user field non UNIQUE...\n" );
-				$updater->dropIndex( 'user_openid', 'uoi_user',
-					dirname( __FILE__ ) . '/patches/patch-drop_non_multiple_key_index_uoi_user.sql', true );
-				$updater->addIndex( 'user_openid', 'user_openid_user',
-					dirname( __FILE__ ) . '/patches/patch-add_multiple_key_index_user_openid_user.sql', true );
-				echo( "...done.\n" );
-			} else {
-				echo( "...uoi_user field is already non UNIQUE.\n" );
+				$updater->addExtensionUpdate( array( 'dropIndex', 'user_openid', 'uoi_user',
+					dirname( __FILE__ ) . '/patches/patch-drop_non_multiple_key_index_uoi_user.sql', true ) );
+				$updater->addExtensionUpdate( array( 'addIndex', 'user_openid', 'user_openid_user',
+					dirname( __FILE__ ) . '/patches/patch-add_multiple_key_index_user_openid_user.sql', true ) );
 			}
 			
 			# uoi_user_registration field was added in OpenID version 0.937
