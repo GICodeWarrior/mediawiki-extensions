@@ -54,11 +54,6 @@ class SwiftFile extends LocalFile {
 	/**#@-*/
 
 	/**
-	 * @var SwiftRepo
-	 */
-	protected $repo;
-
-	/**
 	 * Create a LocalFile from a title
 	 * Do not call this except from inside a repo class.
 	 *
@@ -406,35 +401,7 @@ class SwiftRepo extends LocalRepo {
 		wfDebug( __METHOD__  . ': Storing ' . count( $triplets ) .
 			" triplets; flags: {$flags}\n" );
 
-		// Validate each triplet
 		$status = $this->newGood();
-		foreach ( $triplets as $triplet ) {
-			list( $srcPath, $dstZone, $dstRel ) = $triplet;
-
-			if ( !$this->validateFilename( $dstRel ) ) {
-				throw new MWException( "Validation error in $dstRel" );
-			}
-
-			// Check overwriting
-			if ( 0 ) { # FIXME
-			if ( !( $flags & self::OVERWRITE ) && file_exists( $dstPath ) ) { // FIXME: $dstPath is undefined
-				if ( $flags & self::OVERWRITE_SAME ) {
-					$hashSource = sha1_file( $srcPath );
-					$hashDest = sha1_file( $dstPath );
-					if ( $hashSource != $hashDest ) {
-						$status->fatal( 'fileexistserror', $dstPath );
-					}
-				} else {
-					$status->fatal( 'fileexistserror', $dstPath );
-				}
-			}
-			}
-		}
-
-		// Abort now on failure
-		if ( !$status->ok ) {
-			return $status;
-		}
 
 		// Execute the store operation for each triplet
 		$conn = $this->connect();
@@ -442,32 +409,86 @@ class SwiftRepo extends LocalRepo {
 		foreach ( $triplets as $i => $triplet ) {
 			list( $srcPath, $dstZone, $dstRel ) = $triplet;
 
+			wfDebug( __METHOD__  . ": Storing $srcPath into $dstZone::$dstRel\n");
+
 			// Point to the container.
 			$dstContainer = $this->getZoneContainer( $dstZone );
-			$dstc = $this->get_container( $conn, $dstContainer );
+			$dstc = $this->get_container($conn, $dstContainer);
 
 			$good = true;
 
 			// Where are we copying this from?
-			if ( self::isVirtualUrl( $srcPath ) ) {
+			if (self::isVirtualUrl( $srcPath )) {
 				$src = $this->getContainerRel( $srcPath );
-				list ( $srcContainer, $srcRel ) = $src;
-				$srcc = $this->get_container( $conn, $srcContainer );
+				list ($srcContainer, $srcRel) = $src;
+				$srcc = $this->get_container($conn, $srcContainer);
 
-				$this->swiftcopy( $srcc, $srcRel, $dstc, $dstRel );
-				if ( $flags & self::DELETE_SOURCE ) {
-					$this->swift_delete( $srcc, $srcRel );
+				// See if we're not supposed to overwrite an existing file.
+				if ( !( $flags & self::OVERWRITE ) ) {
+					// does it exist?
+					try {
+						$objd = $dstc->get_object($dstRel);
+						// and if it does, are we allowed to overwrite it?
+						if ( $flags & self::OVERWRITE_SAME ) {
+							$objs = $srcc->get_object($srcRel);
+							if ( $objd->getETag() != $objs->getETag() ) {
+								$status->fatal( 'fileexistserror', $dstRel );
+								$good = false;
+							}
+						} else {
+							$status->fatal( 'fileexistserror', $dstRel );
+							$good = false;
+						}
+						$exists = true;
+					} catch (NoSuchObjectException $e) {
+						$exists = false;
+					}
+				}
+	
+				if ($good) {
+					try {
+						$this->swiftcopy($srcc, $srcRel, $dstc, $dstRel);
+					} catch (InvalidResponseException $e ) {
+						$status->error( 'filecopyerror', $srcPath, "{$dstc->name}/$dstRel");
+						$good = false;
+					}
+					if ( $flags & self::DELETE_SOURCE ) {
+						$this->swift_delete( $srcc, $srcRel );
+					}
 				}
 			} else {
-				$this->write_swift_object( $srcPath, $dstc, $dstRel );
-				// php-cloudfiles throws exceptions, so failure never gets here.
-				if ( $flags & self::DELETE_SOURCE ) {
-					unlink ( $srcPath );
+				// See if we're not supposed to overwrite an existing file.
+				if ( !( $flags & self::OVERWRITE ) ) {
+					// does it exist?
+					try {
+						$objd = $dstc->get_object($dstRel);
+						// and if it does, are we allowed to overwrite it?
+						if ( $flags & self::OVERWRITE_SAME ) {
+							if ( $objd->getETag() != md5_file($srcPath) ) {
+								$status->fatal( 'fileexistserror', $dstRel );
+								$good = false;
+							}
+						} else {
+							$status->fatal( 'fileexistserror', $dstRel );
+							$good = false;
+						}
+						$exists = true;
+					} catch (NoSuchObjectException $e) {
+						$exists = false;
+					}
 				}
-			}
-			if ( 0 ) {
-				$status->error( 'filecopyerror', $srcPath, $dstPath );
-				$good = false;
+				if ($good) {
+					wfDebug( __METHOD__  . ": Writing $srcPath to {$dstc->name}/$dstRel\n");
+					try {
+						$this->write_swift_object( $srcPath, $dstc, $dstRel);
+					} catch (InvalidResponseException $e ) {
+						$status->error( 'filecopyerror', $srcPath, "{$dstc->name}/$dstRel");
+						$good = false;
+					}
+					if ( $flags & self::DELETE_SOURCE ) {
+						unlink ( $srcPath );
+					}
+				}
 			}
 			if ( $good ) {
 				$status->successCount++;
@@ -901,7 +922,6 @@ class SwiftRepo extends LocalRepo {
 	 * copy of the file MUST delete the produced file, or else store it in
 	 * SwiftFile->tempPath so it will be deleted when the object goes out of
 	 * scope.
-	 * FIXME: how do we return a fatal error from Swift?
 	 */
 	function getLocalCopy( $container, $rel ) {
 
