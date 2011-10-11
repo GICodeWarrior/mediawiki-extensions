@@ -195,15 +195,44 @@ $messages['qqq'] = array(
 	'contest-edit-name' => 'form field label',
 	'contest-edit-status' => 'form field label',
 
+	// Special:Contest
 	'contest-contest-title' => 'Page title',
+	'contest-contest-no-results' => 'Message displayed instead of a table when there are no contests',
 	'contest-contest-name' => 'Table row header',
 	'contest-contest-status' => 'Table row header',
 	'contest-contest-submissioncount' => 'Table row header',
 	'contest-contest-contestants' => 'Page section header',
 
+	// Contestant pager
 	'contest-contestant-id' => 'Table column header',
 	'contest-contestant-volunteer' => 'Table column header',
 	'contest-contestant-wmf' => 'Table column header',
 	'contest-contestant-no' => 'Table cell value',
 	'contest-contestant-yes' => 'Table cell value',
+	'contest-contestant-commentcount' => 'Table column header',
+	'contest-contestant-overallrating' => 'Table column header',
+	'contest-contestant-rating' => '$1 is the avarage rating, $2 is the amount of votes',
+
+	// Special:Contestant
+	'contest-contestant-title' => 'Page title with contestant id $1 and contest name $2',
+	'contest-contestant-header-id' => 'Table row header',
+	'contest-contestant-header-contest' => 'Table row header',
+	'contest-contestant-header-challenge' => 'Table row header',
+	'contest-contestant-header-submission' => 'Table row header',
+	'contest-contestant-header-country' => 'Table row header',
+	'contest-contestant-header-wmf' => 'Table row header',
+	'contest-contestant-header-volunteer' => 'Table row header',
+	'contest-contestant-header-rating' => 'Table row header',
+	'contest-contestant-header-comments' => 'Table row header',
+	'contest-contestant-submission-url' => 'Text for the link to the submission',
+	'contest-contestant-comments' => 'Page header (h2)',
+	'contest-contestant-submit' => 'Submit button text',
+	'contest-contestant-comment-by' => '$1 is a user name',
+	'contest-contestant-rate' => 'Page header (h2)',
+	'contest-contestant-voted' => '$1 is an integer',
+	'contest-contestant-permalink' => 'Hover-text for comment permalinks',
+
+	// Emails
+	'contest-email-signup-title' => 'Title for signup emails',
+	'contest-email-reminder-title' => 'Title for reminder emails',
 );
