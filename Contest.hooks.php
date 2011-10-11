@@ -83,16 +83,17 @@ final class ContestHooks {
 			array( 'contestant_id' ),
 			array( 'contest_status' => Contest::STATUS_ACTIVE ),
 			'',
+			array(),
 			array( 'contests' => array( 'INNER JOIN', array( 'contest_id=contestant_contest_id' ) ) )
 		);
 		
 		$contestantIds = array();
 		
-		if ( count( $contestants ) > 0 ) {
-			foreach ( $contestants as $contestant ) {
-				$contestantIds[] = $contestant->contestant_id;
-			}
-			
+		foreach ( $contestants as $contestant ) {
+			$contestantIds[] = $contestant->contestant_id;
+		}
+		
+		if ( count( $contestantIds ) > 0 ) {
 			ContestContestant::s()->update(
 				array( 'email' => $email ),
 				array( 'id' => $contestantIds )
