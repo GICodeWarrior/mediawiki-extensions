@@ -178,7 +178,8 @@ class SpecialContestSignup extends SpecialContestPage {
 	 * @param Contest $contest
 	 */
 	protected function showSucess( Contest $contest ) {
-		$this->getOutput()->redirect( SpecialPage::getTitleFor( 'MyContests', $contest->getField( 'name' ) )->getLocalURL() );
+		// TODO: insert something here so the mycontests page can identiy it's a signup and show a success message
+		$this->getOutput()->redirect( SpecialPage::getTitleFor( 'MyContests', $contest->getField( 'name' ) ) );
 	}
 	
 	/**

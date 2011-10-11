@@ -235,6 +235,11 @@ class SpecialMyContests extends SpecialContestPage {
 	 * @param ContestContestant $contestant
 	 */
 	protected function showSubmissionPage( ContestContestant $contestant ) {
+		// TODO: redirects with fragment apparenelt don't work - need other solution here
+		if ( $this->getTitle()->getFragment() == 'new' ) {
+			$this->showSuccess( 'contest-mycontests-signup-success' );
+		}
+		
 		$this->getOutput()->setPageTitle( $contestant->getContest()->getField( 'name' ) );
 		$this->getOutput()->addWikiMsg( 'contest-submission-header', $contestant->getContest()->getField( 'name' ) );
 		

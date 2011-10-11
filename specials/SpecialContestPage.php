@@ -86,6 +86,19 @@ abstract class SpecialContestPage extends SpecialPage {
 	}
 	
 	/**
+	 * Show a message in a success box.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param string $message
+	 */
+	protected function showSuccess( $message ) {
+		$this->getOutput()->addHTML(
+			'<div class="successbox"><strong><p>' . wfMsgExt( $message, 'parseinline' ) . '</p></strong></div>'
+		);
+	}
+	
+	/**
 	 * Get an array of navigation links.
 	 * 
 	 * @param string $contestName
