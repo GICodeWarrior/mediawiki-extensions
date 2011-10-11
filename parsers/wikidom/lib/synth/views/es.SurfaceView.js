@@ -15,34 +15,34 @@ es.SurfaceView = function( $container, model ) {
 	// Interaction state
 	this.width = null;
 	this.mouse = {
-		'selecting': false,
-		'clicks': 0,
-		'clickDelay': 500,
-		'clickTimeout': null,
-		'clickPosition': null,
-		'hotSpotRadius': 1
+		selecting: false,
+		clicks: 0,
+		clickDelay: 500,
+		clickTimeout: null,
+		clickPosition: null,
+		hotSpotRadius: 1
 	};
 	this.keyboard = {
-		'selecting': false,
-		'cursorAnchor': null,
-		'keydownTimeout': null,
-		'keys': {
-			'shift': false,
-			'control': false,
-			'command': false,
-			'alt': false
+		selecting: false,
+		cursorAnchor: null,
+		keydownTimeout: null,
+		keys: {
+			shift: false,
+			control: false,
+			command: false,
+			alt: false
 		}
 	};
 	this.selection = {
-		'from': 0,
-		'to': 0
+		from: 0,
+		to: 0
+	};
+	this.cursor = {
+		$: $( '<div class="editSurface-cursor"></div>' ).appendTo( this.$ ),
+		interval: null,
+		offset: null
 	};
 
-	// Cursor
-	this.cursorOffset = null;
-	this.blinkInterval = null;
-	this.$cursor = $( '<div class="editSurface-cursor"></div>' ).appendTo( this.$ );
-	
 	// References for use in closures
 	var surfaceView = this,
 		$document = $( document );
@@ -246,22 +246,23 @@ es.SurfaceView.prototype.setInputContent = function( content ) {
  */
 es.SurfaceView.prototype.showCursor = function( offset ) {
 	if ( typeof offset !== 'undefined' ) {
+		this.cursor.offset = offset;
 		var position = this.documentView.getRenderedPosition( offset );
-		this.$cursor.css( {
+		this.cursor.$.css( {
 			'left': position.left,
 			'top': position.top,
 			'height': position.bottom - position.top
 		} ).show();
 	} else {
-		this.$cursor.show();
+		this.cursor.$.show();
 	}
 
-	if ( this.blinkInterval ) {
-		clearInterval( this.blinkInterval );
+	if ( this.cursor.interval ) {
+		clearInterval( this.cursor.interval );
 	}
-	this.blinkInterval = setInterval( function( surface ) {
-		surface.$cursor.css( 'display' ) == 'block'
-			? surface.$cursor.hide() : surface.$cursor.show();
+	this.cursor.interval = setInterval( function( surface ) {
+		surface.cursor.$.css( 'display' ) == 'block'
+			? surface.cursor.$.hide() : surface.cursor.$.show();
 	}, 500, this );
 };
 
@@ -271,10 +272,10 @@ es.SurfaceView.prototype.showCursor = function( offset ) {
  * @method
  */
 es.SurfaceView.prototype.hideCursor = function( position ) {
-	if( this.blinkInterval ) {
-		clearInterval( this.blinkInterval );
+	if( this.cursor.interval ) {
+		clearInterval( this.cursor.interval );
 	}
-	this.$cursor.hide();
+	this.cursor.$.hide();
 };
 
 es.SurfaceView.prototype.drawSelection = function() {
