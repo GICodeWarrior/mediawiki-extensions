@@ -499,13 +499,13 @@ class ContestContestant extends ContestDBObject {
 		wfRunHooks( 'ContestBeforeSignupEmail', array( &$this, &$title, &$emailText, &$user, &$sender, &$senderName ) );
 		
 		return UserMailer::send( 
-    		new MailAddress( $user ),
-    		new MailAddress( $sender, $senderName ),
-    		$title,
-    		$emailText,
-    		null,
-    		'text/html; charset=ISO-8859-1'
-    	);
+			new MailAddress( $user ),
+			new MailAddress( $sender, $senderName ),
+			$title,
+			$emailText,
+			null,
+			'text/html; charset=ISO-8859-1'
+		);
 	}
 	
 	/**
@@ -527,13 +527,13 @@ class ContestContestant extends ContestDBObject {
 		wfRunHooks( 'ContestBeforeReminderEmail', array( &$this, &$title, &$emailText, &$user, &$sender, &$senderName ) );
 		
 		return UserMailer::send( 
-    		new MailAddress( $user ),
-    		new MailAddress( $sender, $senderName ),
-    		$title,
-    		$emailText,
-    		null,
-    		'text/html; charset=ISO-8859-1'
-    	);
+			new MailAddress( $user ),
+			new MailAddress( $sender, $senderName ),
+			$title,
+			$emailText,
+			null,
+			'text/html; charset=ISO-8859-1'
+		);
 	}
 	
 	/**

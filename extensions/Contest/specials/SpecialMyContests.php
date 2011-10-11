@@ -194,7 +194,7 @@ class SpecialMyContests extends SpecialContestPage {
 				case Contest::STATUS_FINISHED:
 					$this->showWarning( 'contest-submission-finished' );
 					$out->addHTML( '<br /><br /><br /><br />' );
-					$out->returnToMain();	
+					$out->returnToMain();
 					break;
 			}
 		}
@@ -209,7 +209,7 @@ class SpecialMyContests extends SpecialContestPage {
 	 */
 	protected function handleEnabledPage( Contest $contest ) {
 		// Check if the user is already a contestant in this contest.
-		// If he is, reirect to submission page, else show signup form.
+		// If he is, redirect to submission page, else show signup form.
 		$contestant = ContestContestant::s()->selectRow(
 			null,
 			array(
@@ -235,7 +235,7 @@ class SpecialMyContests extends SpecialContestPage {
 	 * @param ContestContestant $contestant
 	 */
 	protected function showSubmissionPage( ContestContestant $contestant ) {
-		// TODO: redirects with fragment apparenelt don't work - need other solution here
+		// TODO: redirects with fragment apparently don't work - need other solution here
 		if ( $this->getTitle()->getFragment() == 'new' ) {
 			$this->showSuccess( 'contest-mycontests-signup-success' );
 		}

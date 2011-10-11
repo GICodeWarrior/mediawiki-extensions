@@ -41,7 +41,8 @@ class SpecialContestant extends SpecialContestPage {
 		}
 		else {
 			if ( $this->getRequest()->wasPosted()
-				&& $this->getUser()->matchEditToken( $this->getRequest()->getVal( 'wpEditToken' ) ) ) {
+				&& $this->getUser()->matchEditToken( $this->getRequest()->getVal( 'wpEditToken' ) ) )
+			{
 				$this->handleSubmission( $contestant );
 			}
 			
@@ -75,7 +76,7 @@ class SpecialContestant extends SpecialContestPage {
 			
 			if ( $success ) {
 				ContestContestant::s()->addToField( 'comments', 1 );
-			}		
+			}
 		}
 		
 		if ( $success && !is_null( $this->getRequest()->getVal( 'contestant-rating' ) ) ) {
@@ -174,7 +175,7 @@ class SpecialContestant extends SpecialContestPage {
 		$stats['challenge'] = htmlspecialchars( $challengeTitles[$contestant->getField( 'challenge_id' )] );
 		
 		if ( $contestant->getField( 'submission' ) === '' ) {
-			$stats['submission'] = wfMsg( 'contest-contestant-notsubmitted' );
+			$stats['submission'] = htmlspecialchars( wfMsg( 'contest-contestant-notsubmitted' ) );
 		}
 		else {
 			$stats['submission'] = '<b>' . Html::element(
@@ -187,17 +188,17 @@ class SpecialContestant extends SpecialContestPage {
 		$countries = ContestContestant::getCountries();
 		$stats['country'] = htmlspecialchars( $countries[$contestant->getField( 'country' )] );
 		
-		$stats['wmf'] = wfMsg( 'contest-contestant-' . ( $contestant->getField( 'wmf' ) ? 'yes' : 'no' ) );
-		$stats['volunteer'] = wfMsg( 'contest-contestant-' . ( $contestant->getField( 'volunteer' ) ? 'yes' : 'no' ) );
+		$stats['wmf'] = htmlspecialchars( wfMsg( 'contest-contestant-' . ( $contestant->getField( 'wmf' ) ? 'yes' : 'no' ) ) );
+		$stats['volunteer'] = htmlspecialchars( wfMsg( 'contest-contestant-' . ( $contestant->getField( 'volunteer' ) ? 'yes' : 'no' ) ) );
 		
-		$stats['rating'] = wfMsgExt(
+		$stats['rating'] = htmlspecialchars( wfMsgExt(
 			'contest-contestant-rating',
 			'parsemag',
 			$this->getLang()->formatNum( $contestant->getField( 'rating' ) ),
 			$this->getLang()->formatNum( $contestant->getField( 'rating_count' ) )
-		);
+		) );
 		
-		$stats['comments'] = $this->getLang()->formatNum( $contestant->getField( 'comments' ) );
+		$stats['comments'] = htmlspecialchars( $this->getLang()->formatNum( $contestant->getField( 'comments' ) ) );
 		
 		return $stats;
 	}
@@ -320,7 +321,7 @@ class SpecialContestant extends SpecialContestPage {
 				'contest-contestant-comment-by',
 				Linker::userLink( $comment->getField( 'user_id' ), $user->getName() ) .
 					Linker::userToolLinks( $comment->getField( 'user_id' ), $user->getName() )
-			) . '&#160;&#160;&#160;' . $this->getLang()->timeanddate( $comment->getField( 'time' ), true )
+			) . '&#160;&#160;&#160;' . htmlspecialchars( $this->getLang()->timeanddate( $comment->getField( 'time' ), true ) )
 		);
 		
 		$html .= Html::rawElement(
