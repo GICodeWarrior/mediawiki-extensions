@@ -1,1 +1,0 @@
-CREATE INDEX /*i*/contest_status ON /*_*/contests (contest_status, contest_end);

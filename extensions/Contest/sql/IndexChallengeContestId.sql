@@ -1,1 +1,0 @@
-CREATE INDEX /*i*/challenge_contest_id ON /*_*/contest_challenges (challenge_contest_id);

@@ -1,1 +1,0 @@
-CREATE UNIQUE INDEX /*i*/vote_contestant_user ON /*_*/contest_votes (vote_contestant_id, vote_user_id);

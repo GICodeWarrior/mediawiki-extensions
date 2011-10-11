@@ -18,6 +18,8 @@ CREATE TABLE IF NOT EXISTS /*_*/contests (
   
   contest_submission_count     SMALLINT unsigned   NOT NULL-- Amount of submissions made to the contest
 ) /*$wgDBTableOptions*/;
+CREATE UNIQUE INDEX /*i*/contest_name ON /*_*/contests (contest_name);
+CREATE INDEX /*i*/contest_status ON /*_*/contests (contest_status, contest_end);
 
 -- Contestants
 CREATE TABLE IF NOT EXISTS /*_*/contest_contestants (
@@ -43,6 +45,9 @@ CREATE TABLE IF NOT EXISTS /*_*/contest_contestants (
   contestant_rating_count      SMALLINT unsigned   NOT NULL, -- The amount of ratings
   contestant_comments          SMALLINT unsigned   NOT NULL -- The amount of comments
 ) /*$wgDBTableOptions*/;
+CREATE INDEX /*i*/contestant_interests ON /*_*/contest_contestants (contestant_challenge_id, contestant_wmf, contestant_volunteer);
+CREATE INDEX /*i*/contestant_rating ON /*_*/contest_contestants (contestant_challenge_id, contestant_rating, contestant_rating_count);
+CREATE UNIQUE INDEX /*i*/contestant_user_contest ON /*_*/contest_contestants (contestant_contest_id, contestant_user_id);
 
 -- Challenges
 CREATE TABLE IF NOT EXISTS /*_*/contest_challenges (
@@ -53,6 +58,8 @@ CREATE TABLE IF NOT EXISTS /*_*/contest_challenges (
   challenge_title             VARCHAR(255)        NOT NULL, -- Title of the challenge
   challenge_oneline           TEXT                NOT NULL -- One line description of the challenge
 ) /*$wgDBTableOptions*/;
+CREATE INDEX /*i*/challenge_contest_id ON /*_*/contest_challenges (challenge_contest_id);
+CREATE UNIQUE INDEX /*i*/challenge_title ON /*_*/contest_challenges (challenge_title);
 
 -- Judge votes
 CREATE TABLE IF NOT EXISTS /*_*/contest_votes (
@@ -62,6 +69,9 @@ CREATE TABLE IF NOT EXISTS /*_*/contest_votes (
   
   vote_value                   SMALLINT            NOT NULL -- The value of the vote
 ) /*$wgDBTableOptions*/;
+CREATE INDEX /*i*/vote_contestant_id ON /*_*/contest_votes (vote_contestant_id);
+CREATE UNIQUE INDEX /*i*/vote_contestant_user ON /*_*/contest_votes (vote_contestant_id, vote_user_id);
+CREATE INDEX /*i*/vote_user_id ON /*_*/contest_votes (vote_user_id);
 
 -- Judge comments
 CREATE TABLE IF NOT EXISTS /*_*/contest_comments (
@@ -72,3 +82,4 @@ CREATE TABLE IF NOT EXISTS /*_*/contest_comments (
   comment_text                 TEXT                NOT NULL, -- The comment text
   comment_time                 varbinary(14)       NOT NULL default '' -- The time at which the comment was made
 ) /*$wgDBTableOptions*/;
+CREATE INDEX /*i*/comment_time ON /*_*/contest_comments (comment_contestant_id, comment_time);
