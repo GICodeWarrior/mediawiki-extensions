@@ -35,7 +35,7 @@ $messages['en'] = array(
 	'patrol-stopped'         => 'You have opted not to patrol another edit. $1',
 	'patrol-resume'          => 'Click here to resume.',
 	'group-patroller'        => 'Patrollers',
-	'group-patroller-member' => 'patroller',
+	'group-patroller-member' => '{{GENDER:$1|patroller}}',
 	'grouppage-patroller'    => '{{ns:project}}:Patroller',
 	'right-patroller'        => 'Patrol pages',
 );
@@ -458,7 +458,6 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
- * @author Kghbln
  * @author Raimond Spekking
  */
 $messages['de'] = array(
@@ -482,7 +481,7 @@ $messages['de'] = array(
 	'patrol-stopped' => 'Du hast entschieden, keine weitere Bearbeitung zu kontrollieren. $1',
 	'patrol-resume' => 'Klicke hier zum fortsetzen.',
 	'group-patroller' => 'Kontrolleure',
-	'group-patroller-member' => '{{GENDER:$1|Kontrolleur|Kontrolleurin}}',
+	'group-patroller-member' => 'Kontrolleur',
 	'grouppage-patroller' => '{{ns:project}}:Kontrolleur',
 	'right-patroller' => 'Seiten kontrollieren',
 );
@@ -712,7 +711,6 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
- * @author IAlex
  * @author Urhixidur
  * @author Verdy p
  */
@@ -904,7 +902,7 @@ $messages['he'] = array(
 	'patrol-stopped' => 'בחרתם לא לנטר עוד עריכה. $1',
 	'patrol-resume' => 'לחצו כאן להמשך.',
 	'group-patroller' => 'מנטרים',
-	'group-patroller-member' => '{{GENDER:$1|מנטר|מנטרת}}',
+	'group-patroller-member' => 'מנטר',
 	'grouppage-patroller' => '{{ns:project}}:מנטר',
 	'right-patroller' => 'לנטר דפים',
 );
@@ -1973,7 +1971,7 @@ $messages['sr-ec'] = array(
 	'right-patroller' => 'Патролирање страна',
 );
 
-/** Serbian (Latin script) (‪Srpski (latinica)‬)
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -2209,7 +2207,7 @@ $messages['tr'] = array(
 	'right-patroller' => 'Sayfaları gözle',
 );
 
-/** Tatar (Cyrillic script) (Татарча)
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
  * @author Ильнар
  * @author Рашат Якупов
  */
@@ -2222,7 +2220,7 @@ $messages['tt-cyrl'] = array(
 	'right-patroller' => 'Битләрне тикшерү',
 );
 
-/** Uyghur (Arabic script) (ئۇيغۇرچە)
+/** ئۇيغۇرچە (ئۇيغۇرچە)
  * @author Sahran
  */
 $messages['ug-arab'] = array(
