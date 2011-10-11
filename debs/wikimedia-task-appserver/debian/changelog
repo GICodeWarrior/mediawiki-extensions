@@ -1,3 +1,9 @@
+wikimedia-task-appserver (2.3-4) hardy-wikimedia; urgency=low
+
+  * Fix for mw-cksum-list (thanks to Asher)
+
+ -- Aaron Schulz <aschulz@wikimedia.org>  Tue, 11 Oct 2011 20:44:33 +0000
+
 wikimedia-task-appserver (2.3-3) lucid-wikimedia; urgency=low
 
   * Added scripts to create MediaWiki fingerprints. Used for checking if installations are synced.
