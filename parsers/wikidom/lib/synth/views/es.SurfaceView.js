@@ -39,6 +39,7 @@ es.SurfaceView = function( $container, model ) {
 	};
 
 	// Cursor
+	this.cursorOffset = null;
 	this.blinkInterval = null;
 	this.$cursor = $( '<div class="editSurface-cursor"></div>' ).appendTo( this.$ );
 	
@@ -155,6 +156,18 @@ es.SurfaceView.prototype.onKeyUp = function( e ) {
 		case 91: // Command
 			this.keyboard.keys.command = false;
 			break;
+		case 37: // Left arrow
+			this.moveCursor( 'left' );
+			break;
+		case 38: // Up arrow
+			this.moveCursor( 'up' );
+			break;
+		case 39: // Right arrow
+			this.moveCursor( 'right' );
+			break;
+		case 40: // Down arrow
+			this.moveCursor( 'down' );
+			break;
 		default:
 			break;
 	}
@@ -162,29 +175,24 @@ es.SurfaceView.prototype.onKeyUp = function( e ) {
 };
 
 es.SurfaceView.prototype.onMouseDown = function( e ) {
-	var	contentOffset = this.documentView.getOffsetFromEvent( e ),
-		position = this.documentView.getRenderedPosition( contentOffset );
-
-	if ( e.button === 0 ) {
+	if ( e.button === 0 /* left mouse button */ ) {
+		var	offset = this.documentView.getOffsetFromEvent( e );
+		this.showCursor( offset );
 		this.mouse.selecting = true;
-		this.showCursor( position );
-		if ( this.keyboard.keys.shift ) {
-			this.selection.to = contentOffset;
-		} else {
-			this.selection.from = this.selection.to = contentOffset;
+		if ( !this.keyboard.keys.shift ) {
+			this.selection.from = offset;
 		}
+		this.selection.to = offset;
 		this.drawSelection();
 	}
-
-	if ( !this.$input.is(':focus') ) {
+	if ( !this.$input.is( ':focus' ) ) {
 		this.$input.focus().select();
 	}
-
 	return false;
 };
 
 es.SurfaceView.prototype.onMouseMove = function( e ) {
-	if ( e.button === 0 && this.mouse.selecting ) {
+	if ( e.button === 0 /* left mouse button */ && this.mouse.selecting ) {
 		this.hideCursor();
 		this.selection.to = this.documentView.getOffsetFromEvent( e );
 		if ( !this.drawSelection() ) {
@@ -194,7 +202,7 @@ es.SurfaceView.prototype.onMouseMove = function( e ) {
 };
 
 es.SurfaceView.prototype.onMouseUp = function( e ) {
-	if ( e.button === 0 && this.selection.to ) {
+	if ( e.button === 0 /* left mouse button */ && this.selection.to ) {
 		if ( this.drawSelection() ) {
 			this.hideCursor();
 		}
@@ -234,11 +242,11 @@ es.SurfaceView.prototype.setInputContent = function( content ) {
  * Shows the cursor in a new position.
  * 
  * @method
- * @param position {Position} Position to show the cursor at
- * @param offset {Position} Offset to be added to position
+ * @param offset {Integer} Position to show the cursor at
  */
-es.SurfaceView.prototype.showCursor = function( position ) {
-	if ( position ) {
+es.SurfaceView.prototype.showCursor = function( offset ) {
+	if ( typeof offset !== 'undefined' ) {
+		var position = this.documentView.getRenderedPosition( offset );
 		this.$cursor.css( {
 			'left': position.left,
 			'top': position.top,
