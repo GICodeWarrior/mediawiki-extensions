@@ -144,7 +144,7 @@ class SpecialContestSignup extends SpecialContestPage {
 			$this->showSignupForm( $contest, $challengeId );
 		}
 		else {
-			$out->redirect( SpecialPage::getTitleFor( 'ContestSubmission', $contest->getField( 'name' ) )->getLocalURL() );
+			$out->redirect( SpecialPage::getTitleFor( 'MyContests', $contest->getField( 'name' ) )->getLocalURL() );
 		}		
 	}
 	
@@ -178,9 +178,7 @@ class SpecialContestSignup extends SpecialContestPage {
 	 * @param Contest $contest
 	 */
 	protected function showSucess( Contest $contest ) {
-		$out = $this->getOutput();
-		
-		// TODO
+		$this->getOutput()->redirect( SpecialPage::getTitleFor( 'MyContests', $contest->getField( 'name' ) )->getLocalURL() );
 	}
 	
 	/**

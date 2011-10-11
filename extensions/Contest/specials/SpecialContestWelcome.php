@@ -71,7 +71,7 @@ class SpecialContestWelcome extends SpecialContestPage {
 		}
 		
 		if ( $alreadySignedup ) {
-			$out->redirect( SpecialPage::getTitleFor( 'ContestSubmission', $contest->getField( 'name' ) )->getLocalURL() );
+			$out->redirect( SpecialPage::getTitleFor( 'MyContests', $contest->getField( 'name' ) )->getLocalURL() );
 		}
 		else {
 			$out->setPageTitle( $contest->getField( 'name' ) );
