@@ -462,7 +462,7 @@ $messages['da'] = array(
  */
 $messages['de'] = array(
 	'patrol' => 'Kontrolle der Bearbeitungen',
-	'patrol-desc' => 'Erweiterte Schnittstelle für die Kontrolle von Bearbeitungen',
+	'patrol-desc' => 'Ermöglicht einer erweiterte Schnittstelle zur Kontrolle von Bearbeitungen',
 	'patrol-endorse' => 'Bestätigen',
 	'patrol-revert' => 'Zurücksetzen',
 	'patrol-revert-reason' => 'Grund:',
@@ -479,7 +479,7 @@ $messages['de'] = array(
 * Siehe Diskussionsseite',
 	'patrol-another' => 'Zeige eine weitere Bearbeitung, sofern verfügbar.',
 	'patrol-stopped' => 'Du hast entschieden, keine weitere Bearbeitung zu kontrollieren. $1',
-	'patrol-resume' => 'Klicke hier zum fortsetzen.',
+	'patrol-resume' => 'Klicke hier, um weiterzumachen.',
 	'group-patroller' => 'Kontrolleure',
 	'group-patroller-member' => 'Kontrolleur',
 	'grouppage-patroller' => '{{ns:project}}:Kontrolleur',
@@ -762,7 +762,7 @@ $messages['frp'] = array(
 	'patrol-another' => 'Fâre vêre un ôtro changement, se disponiblo.',
 	'patrol-resume' => 'Clicar ique por reprendre.',
 	'group-patroller' => 'Patrolyors',
-	'group-patroller-member' => 'Patrolyor',
+	'group-patroller-member' => 'patrolyor',
 	'grouppage-patroller' => '{{ns:project}}:Patrolyors',
 	'right-patroller' => 'Controlar des pâges',
 );
@@ -808,7 +808,7 @@ $messages['gl'] = array(
 	'patrol-stopped' => 'Optou por non patrullar outra edición. $1',
 	'patrol-resume' => 'Prema aquí para continuar.',
 	'group-patroller' => 'Patrulleiros',
-	'group-patroller-member' => 'patrulleiro',
+	'group-patroller-member' => '{{GENDER:$1|patrulleiro|patrulleira}}',
 	'grouppage-patroller' => '{{ns:project}}:Patrulleiro',
 	'right-patroller' => 'Patrullar páxinas',
 );
@@ -1430,6 +1430,7 @@ $messages['mr'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Aviator
  * @author Kurniasan
  */
@@ -1663,7 +1664,7 @@ $messages['pl'] = array(
 	'patrol-stopped' => 'Wybrano, by nie patrolować więcej edycji. $1',
 	'patrol-resume' => 'Kliknij tu by kontynuować',
 	'group-patroller' => 'Patrolujący',
-	'group-patroller-member' => 'Patrolujący',
+	'group-patroller-member' => '{{GENDER:$1|patrolujący|patrolująca}}',
 	'grouppage-patroller' => '{{ns:project}}:Patrolujący',
 	'right-patroller' => 'Patrolowanie stron',
 );
@@ -1792,6 +1793,7 @@ $messages['rm'] = array(
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Minisarm
  */
 $messages['ro'] = array(
 	'patrol' => 'Patrulează modificări',
@@ -1858,7 +1860,7 @@ $messages['rue'] = array(
  */
 $messages['sah'] = array(
 	'group-patroller' => 'Ботурууллар',
-	'group-patroller-member' => 'ботуруул',
+	'group-patroller-member' => '{{GENDER:$1|ботуруул}}',
 );
 
 /** Serbo-Croatian (Srpskohrvatski / Српскохрватски)
@@ -1929,7 +1931,7 @@ $messages['sl'] = array(
 	'patrol-stopped' => 'Odločili ste se za prenehanje nadziranja urejanj. $1',
 	'patrol-resume' => 'Kliknite tukaj za nadaljevanje.',
 	'group-patroller' => 'Nadzorniki',
-	'group-patroller-member' => 'nadzornik',
+	'group-patroller-member' => '{{GENDER:$1|nadzornik|nadzornica}}',
 	'grouppage-patroller' => '{{ns:project}}:Nadzornik',
 	'right-patroller' => 'Nadziranje strani',
 );
