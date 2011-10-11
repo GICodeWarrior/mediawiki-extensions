@@ -125,9 +125,15 @@
 			if ( 'eot' in fontconfig ) {
 				styleString += "\tsrc: url('"+base+fontconfig.eot+"');\n";
 			}
-			//If the font is present locally, use it.
-			styleString += "\tsrc: local('"+fontfamily+"'),";
-
+			styleString += "\tsrc: ";
+			 // If the font is present locally, use it.
+			var ua = navigator.userAgent;
+			if( ua.match( /Android 2.3/ ) == null ) {
+				// Android 2.3.x does not respect local() syntax.  
+				// http://code.google.com/p/android/issues/detail?id=10609
+				styleString += "local('"+fontfamily+"'),";
+			}
+			
 			if ( 'woff' in fontconfig ) {
 				styleString += "\t\turl('"+base+fontconfig.woff+"') format('woff'),";
 			}
