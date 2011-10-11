@@ -6,24 +6,24 @@
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
  */
 
-( function ( $, mw ) { $.fn.contestChallanges = function( challanges, config ) {
+( function ( $, mw ) { $.fn.contestChallenges = function( challenges, config ) {
 	
-	this.challanges = challanges;
+	this.challenges = challenges;
 	this.config = config;
 	
 	var _this = this;
 	var $this = $( this );
 	
-	this.challangesList = null;
+	this.challengesList = null;
 	
-	this.showChallange = function( challange ) {
-		// TODO: show challange pop-up with text and participate button
-		window.location = challange.target;
+	this.showChallenge = function( challenge ) {
+		// TODO: show challenge pop-up with text and participate button
+		window.location = challenge.target;
 	};
 	
-	this.addChallange = function( challange ) {
+	this.addChallenge = function( challenge ) {
 		var item = $( '<a />' ).attr( 'href', '#' ).html( '' ).click( function() {
-			_this.showChallange( challange );
+			_this.showChallenge( challenge );
 		} );
 		
 		item.append( $( '<div />' ).attr( 'class', 'mw-codechallenge-l-cap' ) );
@@ -31,8 +31,8 @@
 		var innerDiv = $( '<div />' ).attr( 'class', 'mw-codechallenge-inside' );
 		
 		innerDiv.html( $( '<div />' ).attr( 'class', 'mw-codechallenge-link-text' )
-			.html( $( '<p />' ).text( challange.title ) )
-			.append( $( '<p />' ).text( challange.oneline ) )
+			.html( $( '<p />' ).text( challenge.title ) )
+			.append( $( '<p />' ).text( challenge.oneline ) )
 		);
 		
 		innerDiv.append( $( '<div />' ).attr( 'class', 'mw-codechallenge-icon-box' ) );
@@ -40,23 +40,23 @@
 		
 		item.append( $( '<div />' ).attr( 'class', 'mw-codechallenge-r-cap' ) );
 		
-		this.challangesList.append( $( '<li />' ).html( item ) );
+		this.challengesList.append( $( '<li />' ).html( item ) );
 	}
 	
-	this.initChallanges = function() {
-		this.challangesList = $( '<ul />' ).attr( 'id', 'contest-challanges-list' );
+	this.initChallenges = function() {
+		this.challengesList = $( '<ul />' ).attr( 'id', 'contest-challenges-list' );
 		
-		for ( var i in this.challanges ) {
-			this.addChallange( this.challanges[i] );
+		for ( var i in this.challenges ) {
+			this.addChallenge( this.challenges[i] );
 		}
 	};
 	
 	this.init = function() {
 		$this.html( $( '<h3 />' ).text( mw.msg( 'contest-welcome-select-header' ) ) );
 		
-		this.initChallanges();
+		this.initChallenges();
 		
-		$this.append( this.challangesList );
+		$this.append( this.challengesList );
 	};
 	
 	this.init();
