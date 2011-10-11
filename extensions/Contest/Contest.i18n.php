@@ -191,6 +191,7 @@ $messages['en'] = array(
 	'contest-mycontests-finished-text' => 'These are the passed contests you have participated in.',
 	'contest-mycontests-header-contest' => 'Contest',
 	'contest-mycontests-header-challenge' => 'Challenge',
+	'contest-mycontests-signup-success' => 'You have successfully signed up for this contest.',
 
 	'contest-submission-submit' => 'Submit',
 	'contest-submission-unknown' => 'There is no contest with the provided name.',
