@@ -15,11 +15,6 @@ This group all relate to the 404 handler:
 12) Why is anybody calling resolveVirtualUrl()? It's defined in the Repo, but getPath() is defined against a file.
 Why is UploadStashFile() being called with a virtual URL? Once the file has been stashed() it has an object name. The container name is implicit.
 Should UploadStashFile *always* (in our case) be called with a virtual URL?
-21) TS: "// Check overwriting
-            if (0) { #FIXME
-
-Fix that. It's important to avoid data loss in file rename operations."
-22) TS: "I think this [MD65] validation feature in FSRepo is just a hack for NFS. Okay to remove it."
 23) TS: "When you get around to implementing SwiftRepo::append(), it will need some sort of concurrency control to avoid having chunks overwrite each other. "
 24) TS: "SwiftRepo::swiftcopy() should return a Status object instead of throwing exceptions."
 
@@ -30,6 +25,11 @@ Partially resolved:
 
 Resolved:
 
+21a) TS: "// Check overwriting
+            if (0) { #FIXME
+
+Fix that. It's important to avoid data loss in file rename operations."
+22) TS: "I think this [MD65] validation feature in FSRepo is just a hack for NFS. Okay to remove it."
 5) The Upload seems to take more time than I expect, but that could be a function of generating the six thumbnails.
    It *is* a function of generating the seven (we generate 800x600 twice) thumbnails. Each one takes 1/2 second.
 8) Test cases (but of course that could be done until the cows come home).
