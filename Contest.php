@@ -101,6 +101,7 @@ $wgAPIListModules['contests'] 					= 'ApiQueryContests';
 // Hooks
 $wgHooks['LoadExtensionSchemaUpdates'][] 		= 'ContestHooks::onSchemaUpdate';
 $wgHooks['UnitTestsList'][] 					= 'ContestHooks::registerUnitTests';
+$wgHooks['UserSetEmail'][] 						= 'ContestHooks::onUserSetEmail';
 
 // Rights
 

@@ -144,8 +144,10 @@ class SpecialContestSubmission extends SpecialContestPage {
 		$contestant = new ContestContestant( array(
 			'id' => $data['contestant-id'],
 		
-			'country' => $data['contestant-country'],
+			'full_name' => $data['contestant-realname'],
+			'email' => $data['contestant-email'],
 		
+			'country' => $data['contestant-country'],
 			'volunteer' => $data['contestant-volunteer'],
 			'wmf' => $data['contestant-wmf'],
 			'cv' => $data['contestant-cv'],
