@@ -382,11 +382,7 @@ es.ContentView.prototype.getPosition = function( offset ) {
 	var line,
 		lineCount = this.lines.length,
 		lineIndex = 0,
-		position = {
-			'left': 0,
-			'top': 0,
-			'bottom': 0
-		};
+		position = new es.Position();
 	while ( lineIndex < lineCount ) {
 		line = this.lines[lineIndex];
 		if ( line.range.containsOffset( offset ) ) {
