@@ -190,18 +190,19 @@ class ContestantPager extends TablePager {
 				);
 				break;
 			case 'contestant_volunteer': case 'contestant_wmf':
-				$value = wfMsg( 'contest-contestant-' . ( $value === '1' ? 'yes' : 'no' ) );
+				// contest-contestant-yes, contest-contestant-no
+				$value = htmlspecialchars( wfMsg( 'contest-contestant-' . ( $value === '1' ? 'yes' : 'no' ) ) );
 				break;
 			case 'contestant_comments':
-				$value = $this->getLang()->formatNum( $value );
+				$value = htmlspecialchars( $this->getLang()->formatNum( $value ) );
 				break;
 			case 'contestant_rating':
-				$value = wfMsgExt(
+				$value = htmlspecialchars( wfMsgExt(
 					'contest-contestant-rating',
 					'parsemag',
 					$this->getLang()->formatNum( $value ),
 					$this->getLang()->formatNum( $this->mCurrentRow->contestant_rating_count )
-				);
+				) );
 				break;
 		}
 		
