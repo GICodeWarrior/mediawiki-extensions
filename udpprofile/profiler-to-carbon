@@ -1,0 +1,109 @@
+#!/usr/bin/python
+
+# udpprofile to graphite - uses collector as an aggregator
+# for MediaWiki profiling stats, feeding all data in the 
+# all and stats/all db's into carbon, in one minute moving
+# averages. 
+
+# this should be wherever extractprofile.py is
+sys.path.append( '/usr/udpprofile/web' ) 
+
+from extractprofile import ExtractProfile
+import time
+import socket
+import re
+import sys
+import logging
+
+profile_host = "spence.wikimedia.org"
+profile_port = 3811
+carbon_host = '127.0.0.1'
+carbon_port = 2003
+dbs = ('all', 'stats/all')
+delay = 60
+
+invalid = re.compile ( '[^\w\-]+' )
+prior={}
+
+class SocketSource (socket.socket):
+	def read(self,what):
+		enc = self.recv(what,0)
+		return enc.decode('latin-1').encode('utf-8')
+
+def BuildStats(db, fullprofile):
+	stats = {}
+	events=fullprofile[db]["-"].items()
+		
+	for event in events:
+		if "close" in event[0]: continue
+		if "Profiling error" in event[0]: continue
+		# . is the graphite path separator 
+		# stats are sent as stats.$stat, regular functions with 
+		# up to two path levels (i.e. API::Foo::Bar = API.Foo.Bar) 
+		if (db.startswith('stats')):
+			name = 'stats.'+invalid.sub('_', str(event[0])).rstrip('_')
+		else:
+			name = invalid.sub('_', str(event[0])).rstrip('_').replace('_', '.', 2)
+		stats[name] = {}
+		stats[name]['count'] = event[1]['count']
+		# real = time in ms
+		stats[name]['real'] = event[1]['real']*1000
+
+	return stats
+	
+def SendStats(db, current, graph):
+	now = int(time.time())
+	message = ""
+	for key in current.keys():
+		if key not in prior[db]: continue
+		count = current[key]['count'] - prior[db][key]['count']
+		
+		if (count <= 0): continue
+		 
+		message = "%s.count %d %d\n" % ( key, count, now )
+		logging.debug("sending: %s", message)
+		graph.send(message)
+					
+		if (db.startswith('stats')): continue
+			
+		real = current[key]['real'] - prior[db][key]['real']
+		message = "%s.time %.3g %d\n" % ( key, real/count, now )
+		logging.debug("sending: %s", message)
+		graph.send(message)
+
+while True:
+	profsock=SocketSource()
+	try:
+		profsock.connect((profile_host,profile_port))
+	except:
+		logging.debug ("Couldn't connect to %s on port %d, is collector running?", \
+			profile_host, profile_port)
+		time.sleep(delay)
+		continue
+
+	graph = socket.socket()
+	try:
+		graph.connect((carbon_host,carbon_port))
+	except:
+		logging.debug ("Couldn't connect to %s on port %d, is carbon-agent.py running?", \
+			carbon_host, profile_port)
+		time.sleep(delay)
+		continue
+
+	fullprofile=ExtractProfile().extract(profsock)
+	profsock.shutdown(socket.SHUT_RDWR)
+	profsock.close()
+
+	current={}
+	
+	for db in dbs:
+		current[db] = BuildStats(db, fullprofile)
+		if (len(current[db]) > 1):
+			try:
+				SendStats(db, current[db], graph)
+			except:
+				logging.debug("error sending stats")
+				continue
+				
+	prior = current
+	time.sleep(delay)

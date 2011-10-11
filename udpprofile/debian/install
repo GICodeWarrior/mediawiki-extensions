@@ -1,5 +1,6 @@
 collector /usr/udpprofile/sbin
 exporter /usr/udpprofile/sbin
+profiler-to-carbon /usr/udpprofile/sbin
 web /usr/udpprofile/web
 web/admin.py /usr/udpprofile/web
 web/config.py /usr/udpprofile/web

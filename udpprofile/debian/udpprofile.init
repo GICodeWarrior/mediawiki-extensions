@@ -16,6 +16,8 @@
 PATH=/sbin:/usr/sbin:/bin:/usr/bin
 DESC="UDP Profile Collector"
 DAEMON="/usr/udpprofile/sbin/collector"
+DAEMON2="/usr/udpprofile/sbin/profiler-to-carbon"
+
 USER="nobody"
 SCRIPTNAME=/etc/init.d/udpprofile
 
@@ -45,6 +47,14 @@ do_start()
 		|| return 1
 	start-stop-daemon --start --quiet -m --pidfile /var/lock/collector -d /tmp -c $USER --exec $DAEMON \
 		|| return 2
+
+	if [ -x "$DAEMON2" ] ; then
+		start-stop-daemon --start --quiet -m --pidfile /var/lock/profiler-to-carbon -d /tmp -b -c $USER \
+			--exec $DAEMON2 --test > /dev/null || return 1
+		start-stop-daemon --start --quiet -m --pidfile /var/lock/profiler-to-carbon -d /tmp -b -c $USER \
+			--exec $DAEMON2 > /dev/null || return 2
+	fi
+
 	# Add code here, if necessary, that waits for the process to be ready
 	# to handle requests from services started subsequently which depend
 	# on this one.  As a last resort, sleep for some time.
@@ -62,6 +72,7 @@ do_stop()
 	#   other if a failure occurred
 	start-stop-daemon --stop --quiet -c $USER --exec $DAEMON
 	RETVAL="$?"
+	start-stop-daemon --stop --quiet -c $USER --exec $DAEMON2
 	[ "$RETVAL" = 2 ] && return 2
 	return "$RETVAL"
 }

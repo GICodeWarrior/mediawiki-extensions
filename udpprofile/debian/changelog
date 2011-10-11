@@ -1,3 +1,10 @@
+udpprofile (1.1) lucid-wikimedia; urgency=low
+
+  * profiler-to-carbon - realtime graphing of rate and timing in ms of 
+    profiling data in the all and stats/all dbs
+
+ -- Asher Feldman <afeldman@wikimedia.org>  Wed, 11 Oct 2011 21:55:00 +0000
+
 udpprofile (1.0-2) lucid-wikimedia; urgency=low
 
   * Fix init script agin
