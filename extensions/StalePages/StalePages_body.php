@@ -13,7 +13,7 @@
  */
 class Stalepages extends QueryPage
 {
-	public function __construct( $name = 'Stalepages' ) {
+	public function __construct( $name = 'StalePages' ) {
 		parent::__construct( $name );
 	}
 
