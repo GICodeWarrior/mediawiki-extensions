@@ -46,8 +46,19 @@ CREATE TABLE IF NOT EXISTS /*_*/contest_contestants (
   contestant_comments          SMALLINT unsigned   NOT NULL  -- The number of comments
 ) /*$wgDBTableOptions*/;
 -- TODO: probably need to split indexes, see queries in ContestantPager
-CREATE INDEX /*i*/contest_contestants_interests ON /*_*/contest_contestants (contestant_challenge_id, contestant_wmf, contestant_volunteer);
-CREATE INDEX /*i*/contest_contestants_rating ON /*_*/contest_contestants (contestant_challenge_id, contestant_rating, contestant_rating_count);
+CREATE INDEX /*i*/contest_contestants_contest_id ON /*_*/contest_contestants (contestant_contest_id, contestant_id);
+CREATE INDEX /*i*/contest_contestants_challenge_id ON /*_*/contest_contestants (contestant_challenge_id, contestant_id);
+CREATE INDEX /*i*/contest_contestants_contest_challenge ON /*_*/contest_contestants (contestant_contest_id, contestant_challenge_id);
+CREATE INDEX /*i*/contest_contestants_contest_volunteer ON /*_*/contest_contestants (contestant_contest_id, contestant_volunteer);
+CREATE INDEX /*i*/contest_contestants_challenge_volunteer ON /*_*/contest_contestants (contestant_challenge_id, contestant_volunteer);
+CREATE INDEX /*i*/contest_contestants_contest_wmf ON /*_*/contest_contestants (contestant_contest_id, contestant_wmf);
+CREATE INDEX /*i*/contest_contestants_challenge_wmf ON /*_*/contest_contestants (contestant_challenge_id, contestant_wmf);
+CREATE INDEX /*i*/contest_contestants_contest_comments ON /*_*/contest_contestants (contestant_contest_id, contestant_comments);
+CREATE INDEX /*i*/contest_contestants_challenge_comments ON /*_*/contest_contestants (contestant_challenge_id, contestant_comments);
+CREATE INDEX /*i*/contest_contestants_contest_rating ON /*_*/contest_contestants (contestant_contest_id, contestant_rating);
+CREATE INDEX /*i*/contest_contestants_challenge_rating ON /*_*/contest_contestants (contestant_challenge_id, contestant_rating);
+CREATE INDEX /*i*/contest_contestants_contest_rating_count ON /*_*/contest_contestants (contestant_contest_id, contestant_rating_count);
+CREATE INDEX /*i*/contest_contestants_challenge_rating_count ON /*_*/contest_contestants (contestant_challenge_id, contestant_rating_count);
 CREATE UNIQUE INDEX /*i*/contest_contestants_id_user ON /*_*/contest_contestants (contestant_contest_id, contestant_user_id);
 
 -- Challenges

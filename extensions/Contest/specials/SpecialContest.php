@@ -130,6 +130,7 @@ class SpecialContest extends SpecialContestPage {
 			
 			if ( $challenge !== false ) {
 				$conds['contestant_challenge_id'] = $challenge->getField( 'id' );
+				unset( $conds['contestant_contest_id'] ); // Not needed because the challenge implies the context
 			}
 		}
 		
