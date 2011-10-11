@@ -1241,6 +1241,15 @@ $messages['mk'] = array(
 	'wah-api-error' => 'Настана грешка при работата со  API. Повторно обидете се подоцна.',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'wah-desc' => 'Membolehkan pengedaran tugas-tugas mentranskodkan video kepada klien dengan menggunakan Firefogg',
+	'wah-user-desc' => 'Wiki@Home membolehkanpara  ahli komuniti untuk menderma kitaran cpu ganti untuk membantu operasi intensif sumber',
+	'wah-short-audio' => 'Fail bunyi $1, $2',
+);
+
 /** Dutch (Nederlands)
  * @author Reedy
  * @author SPQRobin

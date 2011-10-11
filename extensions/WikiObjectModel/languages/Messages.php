@@ -35,6 +35,14 @@ $messages['fr'] = array(
 	'wom-desc' => "Modèle d'objet de page simple pour l'utilisateur wiki",
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'objecteditor' => 'Èditor de chousa',
+	'wom_editor' => 'Modèlo de chousa',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

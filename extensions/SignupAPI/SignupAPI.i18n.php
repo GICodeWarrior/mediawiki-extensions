@@ -176,6 +176,20 @@ $messages['ia'] = array(
 	'signupapi-invalidemailaddress' => 'Le adresse de e-mail es invalide',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'signupapi-ok' => 'OK',
+	'signupapi-noname' => 'Et gouf kee Benotzernumm uginn',
+	'signupapi-userexists' => 'De Benotzer gëtt et schonn',
+	'signupapi-enterpassword' => 'Dir musst e Passwuert aginn',
+	'signupapi-passwordtooshort' => "D'Passwuert ass ze kuerz",
+	'signupapi-weak' => 'Schwaach',
+	'signupapi-medium' => 'Duerchschnëttlech',
+	'signupapi-strong' => 'Staark',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

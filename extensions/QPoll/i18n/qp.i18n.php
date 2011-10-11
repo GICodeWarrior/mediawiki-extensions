@@ -1159,6 +1159,7 @@ $messages['frp'] = array(
 	'qp_users_list' => 'Listar tôs los utilisators',
 	'qp_browse_to_poll' => 'Navegar tant qu’a $1',
 	'qp_browse_to_user' => 'Navegar tant qu’a $1',
+	'qp_browse_to_interpretation' => 'Navegar tant qu’a $1',
 	'qp_votes_count' => '$1 voto{{PLURAL:$1||s}}',
 	'qp_source_link' => 'Sôrsa',
 	'qp_stats_link' => 'Statistiques',

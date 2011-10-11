@@ -810,19 +810,20 @@ $messages['ru'] = array(
 	'pf-header-approve' => 'Утверждение',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'pf-admin-menu-default' => 'Подразумевано',
-	'pf-admin-menu-unsortedtemplates' => 'Шаблони још увек нису сортирани',
-	'pf-admin-link-view-documentation' => 'Види документацију повезану са страном.',
-	'pf-admin-link-editlink-page' => 'Измени страну',
-	'pf-admin-link-approve' => 'Одобри страну',
+	'pf-admin-menu-unsortedtemplates' => 'Шаблони још нису поређани',
+	'pf-admin-link-view-documentation' => 'Погледај приложену документацију.',
+	'pf-admin-link-editlink-page' => 'Уреди страницу',
+	'pf-admin-link-approve' => 'Одобри страницу',
 	'pf-header-documentation' => 'Документација',
 	'pf-header-in_packages' => 'Пакети',
-	'pf-header-edit' => 'Измени везу',
-	'pf-header-type' => 'Врста стране',
+	'pf-header-edit' => 'Уреди везу',
+	'pf-header-type' => 'Врста странице',
 	'pf-header-page_title' => 'Наслов',
 	'pf-header-approve' => 'Одобри',
 );

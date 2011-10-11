@@ -1129,24 +1129,25 @@ $messages['sl'] = array(
 	'onlinestatus-toggles-desc' => 'Vaše stanje:',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'onlinestatus-desc' => 'Додаје подешавања да би се показивало да ли је корисник трентно присутан на викију или не.',
 	'onlinestatus-js-anon' => 'Грешка: морате бити улоговани да бисте користили ову погодност.',
-	'onlinestatus-js-changed' => 'Ваш статус је промењен на "$1"',
-	'onlinestatus-js-error' => 'Немогуће променити статус, вредност "$1" је неисправна',
-	'onlinestatus-subtitle-offline' => 'Овај корисник је тренутно одсутан',
-	'onlinestatus-subtitle-online' => 'Овај корисник је тренутно присутан',
+	'onlinestatus-js-changed' => 'Ваш статус је промењен на „$1“',
+	'onlinestatus-js-error' => 'Не могу да променим статус. Вредност „$1“ је неисправна',
+	'onlinestatus-subtitle-offline' => 'Овај корисник је тренутно ван мреже',
+	'onlinestatus-subtitle-online' => 'Овај корисник је тренутно на мрежи',
 	'onlinestatus-tab' => 'Статус',
 	'onlinestatus-toggles-desc' => 'Ваш статус:',
-	'onlinestatus-toggles-explain' => 'Ово Вам омогућава да покажете другим корисницима да на вашој страни виде да ли сте тренутно присутни или не.',
-	'onlinestatus-toggles-show' => 'Показуј присутност на мојој корисничкој страни',
-	'onlinestatus-toggle-offline' => 'Одсутан',
-	'onlinestatus-toggle-online' => 'Присутан',
-	'onlinestatus-pref-onlineonlogin' => 'Промени мој статус на онлајн када се улогујем',
-	'onlinestatus-pref-offlineonlogout' => 'Промени мој статус на офлајн када се излогујем',
+	'onlinestatus-toggles-explain' => 'Уз помоћ овога, други корисници на вашој страници могу да виде да ли сте тренутно на мрежи.',
+	'onlinestatus-toggles-show' => 'Приказуј присутност на мојој корисничкој страници',
+	'onlinestatus-toggle-offline' => 'Ван мреже',
+	'onlinestatus-toggle-online' => 'На мрежи',
+	'onlinestatus-pref-onlineonlogin' => 'Промени ми статус на „на мрежи“ када се пријавим',
+	'onlinestatus-pref-offlineonlogout' => 'Промени ми статус на „ван мреже“ када се одјавим',
 );
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)
