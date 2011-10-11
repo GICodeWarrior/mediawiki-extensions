@@ -43,7 +43,7 @@ $messages['en'] = array(
 
 	// Preferences
 	'prefs-contest' => 'Contests',
-	'contest-prefs-showtoplink' => 'Show a link to [[Special:MyContests|My Contests]] in the top menue.',
+	'contest-prefs-showtoplink' => 'Show a link to [[Special:MyContests|My Contests]] in the top menu.',
 
 	// Contest statuses
 	'contest-status-draft' => 'Draft (disabled)',
@@ -51,12 +51,12 @@ $messages['en'] = array(
 	'contest-status-finished' => 'Finished (disabled)',
 
 	// Special page names
-	'special-contest' => 'Contest',
-	'special-contests' => 'Contests',
-	'special-contestsignup' => 'Contest signup',
-	'special-contestwelcome' => 'Contest',
-	'special-editcontest' => 'Edit contest',
-	'special-mycontests' => 'Contests',
+	'special-contest' => 'View a contest',
+	'special-contests' => 'Manage contests',
+	'special-contestsignup' => 'Sign up for a contest',
+	'special-contestwelcome' => 'View a contest',
+	'special-editcontest' => 'Edit a contest',
+	'special-mycontests' => 'My contests',
 
 	// Navigation links
 	'contest-nav-contests' => 'Contests list',
@@ -136,7 +136,7 @@ $messages['en'] = array(
 	'contest-signup-require-challenge' => 'You must select a challenge.',
 	'contest-signup-invalid-cv' => 'You entered an invalid URL.',
 	
-	'contest-submission-submission' => 'Url to your submission',
+	'contest-submission-submission' => 'Link to your submission',
 	'contest-submission-invalid-url' => 'This URL does not match one of the allowed formats.',
 
 	// Special:Contest
@@ -196,7 +196,7 @@ $messages['en'] = array(
 
 	'contest-submission-submit' => 'Submit',
 	'contest-submission-unknown' => 'There is no contest with the provided name.',
-	'contest-submission-header' => 'On this page you can modify your submission until the deadline.',
+	'contest-submission-header' => 'Thanks for participating in this contest! Once you have completed the challenge, you can add a link to you submission below.',
 	'contest-submission-finished' => 'This contest has ended.',
 );
 

@@ -43,7 +43,19 @@ class SpecialContestSignup extends SpecialContestPage {
 			$this->showPage( $subPage );
 		}
 	}
-	
+
+	/**
+	 * This page is unlisted because the only way to access it is though a contest
+	 * landing page.
+	 * 
+	 * @return false|boolean
+	 */	
+	public function isListed() {
+
+		return false;
+
+	}
+
 	/**
 	 * Handle form submission.
 	 * 
@@ -369,5 +381,5 @@ class SpecialContestSignup extends SpecialContestPage {
 		
 		return true;
 	}
-	
+
 }
