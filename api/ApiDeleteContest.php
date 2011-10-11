@@ -68,7 +68,7 @@ class ApiDeleteContest extends ApiBase {
 	public function getParamDescription() {
 		return array(
 			'ids' => 'The IDs of the contests to delete',
-			'token' => 'Edit token. You can get one of these through prop=info.',
+			'token' => 'Edit token, salted with the contest id',
 		);
 	}
 	

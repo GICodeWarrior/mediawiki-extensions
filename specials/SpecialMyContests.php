@@ -65,7 +65,7 @@ class SpecialMyContests extends SpecialContestPage {
 			$contest =  $contestants[0]->getContest( array( 'status', 'name' ) );
 			
 			if ( $contest->getField( 'status' ) == Contest::STATUS_ACTIVE ) {
-				$this->getOutput()->redirect( SpecialPage::getTitleFor( 'ContestSubmission', $contest->getField( 'name' ) )->getLocalURL() );
+				$this->getOutput()->redirect( $this->getTitle( $contest->getField( 'name' ) )->getLocalURL() );
 			}
 			else {
 				$this->displayContestsTable( $contestants );

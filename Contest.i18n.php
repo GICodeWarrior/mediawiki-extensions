@@ -54,7 +54,6 @@ $messages['en'] = array(
 	'special-contest' => 'Contest',
 	'special-contests' => 'Contests',
 	'special-contestsignup' => 'Contest signup',
-	'special-contestsubmission' => 'Contest submission',
 	'special-contestwelcome' => 'Contest',
 	'special-editcontest' => 'Edit contest',
 	'special-mycontests' => 'Contests',
@@ -139,12 +138,6 @@ $messages['en'] = array(
 	'contest-submission-submission' => 'Url to your submission',
 	'contest-submission-invalid-url' => 'This URL does not match one of the allowed formats.',
 
-	// Special:ContestSubmission
-	'contest-submission-submit' => 'Submit',
-	'contest-submission-unknown' => 'There is no contest with the provided name.',
-	'contest-submission-header' => 'On this page you can modify your submission until the deadline.',
-	'contest-submission-finished' => 'This contest has ended.',
-
 	// Special:Contest
 	'contest-contest-title' => 'Contest: $1',
 	'contest-contest-no-results' => 'There are no contestants to list.',
@@ -198,6 +191,11 @@ $messages['en'] = array(
 	'contest-mycontests-finished-text' => 'These are the passed contests you have participated in.',
 	'contest-mycontests-header-contest' => 'Contest',
 	'contest-mycontests-header-challenge' => 'Challenge',
+
+	'contest-submission-submit' => 'Submit',
+	'contest-submission-unknown' => 'There is no contest with the provided name.',
+	'contest-submission-header' => 'On this page you can modify your submission until the deadline.',
+	'contest-submission-finished' => 'This contest has ended.',
 );
 
 /** Message documentation (Message documentation)

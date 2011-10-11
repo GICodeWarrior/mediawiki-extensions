@@ -12,7 +12,7 @@
 class ContestValidationTests extends MediaWikiTestCase {
 
 	/**
-	 * Tests @see SpecialContestSubmission::validateSubmissionField
+	 * Tests @see SpecialMyContests::::validateSubmissionField
 	 */
 	public function testURLValidation() {
 		$tests = array(
@@ -31,10 +31,10 @@ class ContestValidationTests extends MediaWikiTestCase {
 		
 		foreach ( $tests as $test => $isValdid ) {
 			if ( $isValdid ) {
-				$this->assertEquals( true, SpecialContestSubmission::validateSubmissionField( $test ) );
+				$this->assertEquals( true, SpecialMyContests::validateSubmissionField( $test ) );
 			}
 			else {
-				$this->assertFalse( SpecialContestSubmission::validateSubmissionField( $test ) === true );
+				$this->assertFalse( SpecialMyContests::validateSubmissionField( $test ) === true );
 			}
 		}
 	}
