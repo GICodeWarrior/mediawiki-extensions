@@ -97,3 +97,12 @@ $messages['pt'] = array(
 	'wom-desc' => 'Modelo de Objectos "Easy Page" para os utilizadores da wiki',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'objecteditor' => 'Trình sửa đổi đối tượng',
+	'wom_editor' => 'Mô hình đối tượng',
+	'wom-desc' => 'Mô hình đối tượng trang dễ sử dụng trên wiki',
+);
+
