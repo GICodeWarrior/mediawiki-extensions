@@ -1231,6 +1231,7 @@ Tätä sivua sovelletaan ainoastaan rajoituksenalaisiin käyttäjiin",
 
 /** French (Français)
  * @author Crochet.david
+ * @author Gomoko
  * @author Grondin
  * @author McDutchie
  * @author PieRRoMaN
@@ -1290,9 +1291,9 @@ Cette page ne s’applique qu’aux utilisateurs disposant de droits restreints.
 	'action-editwhitelist' => 'modifier la liste blanche pour les utilisateurs existants',
 	'action-restricttowhitelist' => 'modifier et visionner les pages figurant uniquement sur la liste blanche',
 	'group-restricted' => 'Utilisateurs restreints',
-	'group-restricted-member' => 'Utilisateur restreint',
+	'group-restricted-member' => '{{GENDER:$1|utilisateur restreint}}',
 	'group-manager' => 'Gestionnaires',
-	'group-manager-member' => 'Gestionnaire',
+	'group-manager-member' => '{{GENDER:$1|gestionnaire}}',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -1817,9 +1818,9 @@ Iste pagina es solmente applicabile al usatores restringite",
 	'action-editwhitelist' => 'modificar le lista blanc pro usatores existente',
 	'action-restricttowhitelist' => 'modificar e vider paginas figurante solmente in le lista blanc',
 	'group-restricted' => 'Usatores restringite',
-	'group-restricted-member' => 'Usator restringite',
+	'group-restricted-member' => '{{GENDER:$1|usator|usatrice}} restringite',
 	'group-manager' => 'Gerentes',
-	'group-manager-member' => 'Gerente',
+	'group-manager-member' => 'gerente',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -2509,6 +2510,7 @@ $messages['nds-nl'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author SPQRobin
  * @author Siebrand
  */
 $messages['nl'] = array(
@@ -2563,7 +2565,7 @@ Deze pagina is alleen van toepassing op gebruikers met beperkte rechten.",
 	'action-editwhitelist' => 'de witte lijst voor bestaande gebruikers aan te passen',
 	'action-restricttowhitelist' => "alleen pagina's te bekijken en te bewerken die op de witte lijst staan",
 	'group-restricted' => 'beperkte gebruikers',
-	'group-restricted-member' => 'beperkte gebruiker',
+	'group-restricted-member' => '{{GENDER:$1|beperkte gebruiker}}',
 	'group-manager' => 'managers',
 	'group-manager-member' => 'gebruiker',
 );
