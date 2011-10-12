@@ -10,6 +10,7 @@
 <tr>
 <th>Username</th>
 <th>Real name</th>
+<th>Ready for git?</th>
 </tr>
 <?php
 
