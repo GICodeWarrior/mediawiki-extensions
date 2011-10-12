@@ -30,12 +30,15 @@ foreach ( $lines as $line ) {
 	$userInfo = getUserInfo( $parts[0] );
 	$encUsername = htmlspecialchars( $parts[0] );
 	$userInfo = array_map( 'htmlspecialchars', $userInfo );
+	$readyForGit = isset( $userInfo['name'] ) && isset( $userInfo['email'] ) ? 'Y' : 'N';
 	$link = $userInfo['url'] ? "<a href=\"{$userInfo['url']}\">$encUsername</a>" : $encUsername;
 
 	$rows[$parts[0]] = <<<EOT
 <tr id="$encUsername">
 <td>$link</td>
 <td>{$userInfo['name']}</td>
+<td></td>
+<td>$readyForGit</td>
 </tr>
 
 EOT;
