@@ -33,8 +33,11 @@ class qp_PollStore {
 	/*** optional attributes ***/
 	# dependance from other poll address in the following format: "page#otherpollid"
 	var $dependsOn = null;
-	# NS & DBkey of Title object representing interpretation template for Special:Pollresults page
+	## NS of Title object representing interpretation template
 	var $interpNS = 0;
+	## DBkey of Title object representing interpretation template
+	# '' indicates that interpretation template does not exists (a poll without quiz)
+	# null indicates that value is unknown (uninitialized yet)
 	var $interpDBkey = null;
 	# interpretation of user answer
 	var $interpResult;
@@ -222,12 +225,12 @@ class qp_PollStore {
 		# non-checked fields:
 		# 'pid' is key (result of insert);
 		# 'article_id' is always created by constructor
-		# 'poll_id' is a mandatory parameter of constructor
+		# 'poll_id' is mandatory parameter of constructor
+		# 'interpretation_namespace' is determined by 'interpretation_title' (dbkey)
 		return
 			!is_null( $this->mOrderId ) &&
 			!is_null( $this->dependsOn ) &&
-			!is_null( $this->interpNS ) &&
-			!is_null ( $this->interpDBkey ) &&
+			!is_null( $this->interpDBkey ) &&
 			!is_null ( $this->randomQuestionCount );
 	}
 
@@ -251,11 +254,19 @@ class qp_PollStore {
 	}
 
 	/**
-	 * @return Title instance of interpretation template
+	 * @return mixed Title instance of interpretation template
+	 *               false, when no interpretation template is defined in poll header
+	 *               null, when interpretation template does not exist (error)
 	 */
 	function getInterpTitle() {
+		if ( is_null( $this->interpDBkey ) ) {
+			throw new MWException( 'interpDBkey is uninitialized in ' . __METHOD__ );
+		}
+		if ( $this->interpNS === 0 && $this->interpDBkey === '' ) {
+			return false;
+		}
 		$title = Title::newFromText( $this->interpDBkey, $this->interpNS );
-		return ( $title instanceof Title ) ? $title : null;
+		return ( $title instanceof Title ) ? ( $title->exists() ? $title : null ) : null;
 	}
 
 	// warning: will work only after successful loadUserAlreadyVoted() or loadUserVote()
@@ -750,7 +761,7 @@ class qp_PollStore {
 			if ( $this->dependsOn === null ) {
 				$this->dependsOn = $row->dependance;
 			}
-			if ( $this->interpDBkey === null ) {
+			if ( is_null( $this->interpDBkey ) ) {
 				$this->interpNS = $row->interpretation_namespace;
 				$this->interpDBkey = $row->interpretation_title;
 			}
@@ -771,6 +782,20 @@ class qp_PollStore {
 			'poll_id=' . self::$db->addQuotes( $this->mPollId ) );
 		$row = self::$db->fetchObject( $res );
 		if ( $row == false ) {
+			# paranoiac checks;
+			# commented out because it is worth to fight bugs instead of hiding them
+			/*
+			if ( is_null( $this->interpDBkey ) ) {
+				$this->interpDBkey = 0;
+			}
+			if ( is_null( $this->randomQuestionCount ) ) {
+				$this->randomQuestionCount = 0;
+			}
+			if ( is_null( $this->dependsOn ) ) {
+				$this->dependsOn = '';
+			}
+			*/
+			# end of paranoiac checks
 			self::$db->insert( 'qp_poll_desc',
 				array( 'article_id' => $this->mArticleId, 'poll_id' => $this->mPollId, 'order_id' => $this->mOrderId, 'dependance' => $this->dependsOn, 'interpretation_namespace' => $this->interpNS, 'interpretation_title' => $this->interpDBkey, 'random_question_count' => $this->randomQuestionCount ),
 				__METHOD__ . ':update poll' );
@@ -863,13 +888,15 @@ class qp_PollStore {
 	private function interpretVote() {
 		$this->interpResult = new qp_InterpResult();
 		$interpTitle = $this->getInterpTitle();
+		if ( $interpTitle === false ) {
+			return;
+		}
 		if ( $interpTitle === null ) {
+			$this->interpResult->storeErroneous = false;
+			$this->interpResult->setError( wfMsg( 'qp_error_no_interpretation' ) );
 			return;
 		}
 		$interpArticle = new Article( $interpTitle, 0 );
-		if ( !$interpArticle->exists() ) {
-			return;
-		}
 
 		# prepare array of user answers that will be passed to the interpreter
 		$poll_answer = array();
