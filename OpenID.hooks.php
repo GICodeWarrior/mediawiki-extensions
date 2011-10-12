@@ -359,13 +359,13 @@ class OpenIDHooks {
 			if ( !$info->isMultipleKey() ) {
 				$updater->addExtensionUpdate( array( 'dropIndex', 'user_openid', 'uoi_user',
 					dirname( __FILE__ ) . '/patches/patch-drop_non_multiple_key_index_uoi_user.sql', true ) );
-				$updater->addExtensionUpdate( array( 'addIndex', 'user_openid', 'user_openid_user',
-					dirname( __FILE__ ) . '/patches/patch-add_multiple_key_index_user_openid_user.sql', true ) );
+				$updater->addExtensionIndex( 'user_openid', 'user_openid_user',
+					dirname( __FILE__ ) . '/patches/patch-add_multiple_key_index_user_openid_user.sql' );
 			}
 			
 			# uoi_user_registration field was added in OpenID version 0.937
-			$updater->addExtensionUpdate( array( 'addField', 'user_openid', 'uoi_user_registration',
-				dirname( __FILE__ ) . '/patches/patch-add_uoi_user_registration.sql', true ) );			
+			$updater->addExtensionField( 'user_openid', 'uoi_user_registration',
+				dirname( __FILE__ ) . '/patches/patch-add_uoi_user_registration.sql' );
 		}
 		return true;
 	}
