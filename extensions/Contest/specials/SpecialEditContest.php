@@ -138,9 +138,8 @@ class SpecialEditContest extends FormSpecialPage {
 			'cancelEdit',
 			wfMsg( 'cancel' ),
 			'cancelEdit',
-			// FIXME: don't use onclick, use jQuery
 			array(
-				'onclick' => 'window.location="' . SpecialPage::getTitleFor( 'Contests' )->getFullURL() . '";return false;'
+				'target-url' => SpecialPage::getTitleFor( 'Contests' )->getFullURL()
 			)
 		);
 		

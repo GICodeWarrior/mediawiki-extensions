@@ -127,6 +127,10 @@
 	
 	$( document ).ready( function() {
 
+		$( '#cancelEdit' ).click( function() {
+			window.location = $( this ).attr( 'target-url' );
+		} );
+		
 		$table = $( '#contest-name-field' ).closest( 'tbody' );
 		
 		$( '#bodyContent' ).find( '[type="submit"]' ).button();
