@@ -5,15 +5,15 @@
 # all and stats/all db's into carbon, in one minute moving
 # averages. 
 
-# this should be wherever extractprofile.py is
-sys.path.append( '/usr/udpprofile/web' ) 
-
-from extractprofile import ExtractProfile
 import time
 import socket
 import re
 import sys
 import logging
+
+# this should be wherever extractprofile.py is
+sys.path.append( '/usr/udpprofile/web' ) 
+from extractprofile import ExtractProfile
 
 profile_host = "spence.wikimedia.org"
 profile_port = 3811
