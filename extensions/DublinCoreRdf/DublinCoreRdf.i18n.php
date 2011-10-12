@@ -80,6 +80,13 @@ $messages['gl'] = array(
 	'dublincorerdf-desc' => 'Metadatos RDF de Dublin Core',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Chlämens
+ */
+$messages['gsw'] = array(
+	'dublincorerdf-desc' => 'Dublin Core RDF-Metadate',
+);
+
 /** Hebrew (עברית)
  * @author Amire80
  */

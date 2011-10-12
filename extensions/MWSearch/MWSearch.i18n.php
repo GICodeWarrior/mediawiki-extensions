@@ -636,7 +636,7 @@ $messages['vec'] = array(
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
-	'mwsearch-desc' => 'Plugin MWSearch',
+	'mwsearch-desc' => 'Phần bổ trợ MWSearch',
 );
 
 /** Volapük (Volapük)

@@ -4980,6 +4980,7 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Adata80
  * @author Aleksandrit
  * @author Ferrer
  * @author Kaganer
@@ -4989,7 +4990,7 @@ $messages['roa-tara'] = array(
  */
 $messages['ru'] = array(
 	'openid-desc' => 'Вход в вики с помощью [http://openid.net/ OpenID], а также вход на другие сайты поддерживающие OpenID с помощью учётной записи в вики',
-	'openidlogin' => 'Вход с помощью OpenID',
+	'openidlogin' => 'Войти / создать учетную запись с OpenID',
 	'openidserver' => 'Сервер OpenID',
 	'openidxrds' => 'Файл Yadis',
 	'openidconvert' => 'Преобразователь OpenID',
@@ -5069,6 +5070,7 @@ OpenID позволяет вам заходить на различные веб
 	'openid-pref-update-userinfo-on-login' => 'Обновлять следующую информацию обо мне через OpenID каждый раз, когда я представляюсь системе:',
 	'openid-urls-desc' => 'OpenID, связанные с Вашей учётной записью:',
 	'openid-urls-action' => 'Действие',
+	'openid-urls-registration' => 'Время регистрации',
 	'openid-urls-delete' => 'Удалить',
 	'openid-add-url' => 'Добавить новый OpenID',
 	'openid-login-or-create-account' => 'Представиться системе или создать новую учётную запись',
@@ -5077,6 +5079,8 @@ OpenID позволяет вам заходить на различные веб
 	'openid-provider-label-yahoo' => 'Представиться, используя учётную запись Yahoo',
 	'openid-provider-label-aol' => 'Введите ваше имя в AOL',
 	'openid-provider-label-other-username' => 'Введите ваше имя участника $1',
+	'openid-dashboard-title' => 'панель OpenID',
+	'openid-dashboard-number-openid-users' => 'Чисто пользователей с OpenID',
 );
 
 /** Rusyn (Русиньскый)
@@ -6322,6 +6326,7 @@ Bạn sẽ không đăng nhập được dùng OpenID này.',
 	'openid-pref-update-userinfo-on-login' => 'Cập nhật thông tin sau từ persona OpenID mỗi khi tôi đăng nhập:',
 	'openid-urls-desc' => 'Các OpenID được gắn vào tài khoản của bạn:',
 	'openid-urls-action' => 'Tác vụ',
+	'openid-urls-registration' => 'Thời điểm đăng ký',
 	'openid-urls-delete' => 'Xóa',
 	'openid-add-url' => 'Thêm OpenID mới',
 	'openid-login-or-create-account' => 'Đăng nhập hay mở tài khoản mới',

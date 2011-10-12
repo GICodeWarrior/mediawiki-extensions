@@ -100,6 +100,13 @@ $messages['gl'] = array(
 	'editpagetracking-desc' => 'Rexistra a primeira vez que cada usuario abre a páxina de edición',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Chlämens
+ */
+$messages['gsw'] = array(
+	'editpagetracking-desc' => 'Due de erschte Bsuech vumene Benutzer uff d Bearbeitigssyte notiere',
+);
+
 /** Hebrew (עברית)
  * @author Amire80
  */

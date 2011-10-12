@@ -66,6 +66,13 @@ $messages['gl'] = array(
 	'creativecommonsrdf-desc' => 'Metadatos RDF de Creative Commons',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Chlämens
+ */
+$messages['gsw'] = array(
+	'creativecommonsrdf-desc' => 'CreativeCommons RDF-Metadate',
+);
+
 /** Hebrew (עברית)
  * @author Amire80
  */

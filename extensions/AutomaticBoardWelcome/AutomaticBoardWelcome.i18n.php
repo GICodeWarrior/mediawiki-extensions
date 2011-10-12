@@ -58,6 +58,13 @@ $messages['gl'] = array(
 	'automaticboardwelcome-desc' => 'Publica automaticamente [[MediaWiki:User-board-welcome-message|unha mensaxe de benvida]] nos taboleiros dos usuarios despois da creación da conta',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Chlämens
+ */
+$messages['gsw'] = array(
+	'automaticboardwelcome-desc' => 'Duet automatisch [[MediaWiki:User-board-welcome-message|e Begriessigsnoocht]] uff d Benutzerdiskusionssyte yystelle, wänn s Chonto aaglait worde isch',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

@@ -165,3 +165,12 @@ $messages['te'] = array(
 	'userdebuginfo-language' => 'భాష',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'userdebuginfo-key' => 'Khóa',
+	'userdebuginfo-value' => 'Giá trị',
+	'userdebuginfo-language' => 'Ngôn ngữ',
+);
+

@@ -410,9 +410,10 @@ $messages['ms'] = array(
 
 /** Nahuatl (Nāhuatl)
  * @author Fluence
+ * @author Ricardo gs
  */
 $messages['nah'] = array(
-	'logentry-invalidpage' => 'Ahcualli zāzanilli',
+	'logentry-invalidpage' => 'Ahcualli āmatl: $1',
 );
 
 /** Dutch (Nederlands)

@@ -5079,6 +5079,7 @@ Mangyaring huwag paganahin ang <b>Firebug</b> para sa pahinang ito.',
  * @author CnkALTDS
  * @author Emperyan
  * @author Joseph
+ * @author Khutuck
  * @author Vito Genovese
  */
 $messages['tr'] = array(
@@ -5161,7 +5162,8 @@ $messages['tr'] = array(
 	'fogg-please-install' => '$1. Daha fazla $2',
 	'fogg-please-install-install-linktext' => "Firefogg'u yükle",
 	'fogg-please-install-about-linktext' => 'Firefogg hakkında',
-	'fogg-use_latest_firefox' => 'Lütfen önce <a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=firefogg">Firefox 3.5</a>\'i (ya da sonrası) yükleyin. <i>Daha sonra <b>Firefogg</b> eklentisini yüklemek için bu sayfayı tekrar ziyaret edin.</i>',
+	'fogg-use_latest_firefox' => 'Lütfen önce $1 yükleyin. 
+<i>Daha sonra <b>Firefogg</b> eklentisini yüklemek için bu sayfayı tekrar ziyaret edin.</i>',
 	'fogg-latest-firefox' => 'en son Firefox',
 	'fogg-passthrough_mode' => 'Seçtiğiniz dosya zaten Ogg ya da bir video dosyası değil',
 	'fogg-encoding-done' => 'Kodlama tamamlandı',

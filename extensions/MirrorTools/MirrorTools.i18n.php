@@ -200,7 +200,7 @@ $messages['ia'] = array(
 	'mirrortools-desc' => 'Permitte facer modificationes via API sub qualcunque nomine de usator',
 	'right-mirroredit' => 'Modificar via API sub qualcunque nomine de usator',
 	'group-MirrorTools' => 'Usatores del instrumentos pro duplication',
-	'group-MirrorTools-member' => 'usator del instrumentos pro duplication',
+	'group-MirrorTools-member' => '{{GENDER:$1|usator|usatrice}} del instrumentos pro duplication',
 	'grouppage-MirrorTools' => '{{ns:project}}:Usatores del instrumentos pro duplication',
 );
 
@@ -266,6 +266,7 @@ $messages['mk'] = array(
 
 /** Dutch (Nederlands)
  * @author Kjell
+ * @author SPQRobin
  * @author Siebrand
  */
 $messages['nl'] = array(
@@ -273,7 +274,7 @@ $messages['nl'] = array(
 	'mirrortools-desc' => 'Maakt het mogelijk via de API onder iedere gebruikersnaam te bewerken',
 	'right-mirroredit' => 'Bewerk via de API onder elke gebruikersnaam',
 	'group-MirrorTools' => 'Mirrortool-gebruikers',
-	'group-MirrorTools-member' => 'Mirrortool-gebruiker',
+	'group-MirrorTools-member' => '{{GENDER:$1|Mirrortool-gebruiker}}',
 	'grouppage-MirrorTools' => '{{ns:project}}:Mirrortool-gebruikers',
 );
 
