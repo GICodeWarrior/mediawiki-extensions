@@ -168,7 +168,7 @@ final class ContestHooks {
 	 * 
 	 * @since 0.1
 	 * 
-	 * @param Skin $skin
+	 * @param $skin
 	 * @param Title $target
 	 * @param array $options
 	 * @param string $text
@@ -177,7 +177,7 @@ final class ContestHooks {
 	 * 
 	 * @return true
 	 */
-	public static function onLinkEnd( Skin $skin, Title $target, array $options, &$text, array &$attribs, &$ret ) {
+	public static function onLinkEnd( $skin, Title $target, array $options, &$text, array &$attribs, &$ret ) {
 		if ( $GLOBALS['wgContestEmailParse'] ) {
 			$attribs['href'] = $target->getFullURL();
 		}
