@@ -36,8 +36,7 @@ class SpecialMyContests extends SpecialContestPage {
 			return;
 		}
 		
-		if ( $this->getRequest()->wasPosted()
-			&& $this->getUser()->matchEditToken( $this->getRequest()->getVal( 'wpEditToken' ) ) ) {
+		if ( $this->getRequest()->wasPosted() ) {
 			$contestant = ContestContestant::s()->selectRow( null, array( 'id' => $this->getRequest()->getInt( 'wpcontestant-id' ) ) );
 			$this->showSubmissionPage( $contestant );
 		}
@@ -238,6 +237,10 @@ class SpecialMyContests extends SpecialContestPage {
 	protected function showSubmissionPage( ContestContestant $contestant ) {
 		if ( $this->getRequest()->getCheck( 'new' ) ) {
 			$this->showSuccess( 'contest-mycontests-signup-success' );
+		}
+		else if ( $this->getRequest()->wasPosted()
+			&& !$this->getUser()->matchEditToken( $this->getRequest()->getVal( 'wpEditToken' ) ) ) {
+			$this->showError( 'contest-mycontests-sessionfail' );
 		}
 		
 		$this->getOutput()->setPageTitle( $contestant->getContest()->getField( 'name' ) );
