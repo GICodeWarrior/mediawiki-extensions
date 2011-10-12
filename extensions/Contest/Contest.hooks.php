@@ -181,6 +181,8 @@ final class ContestHooks {
 		if ( $GLOBALS['wgContestEmailParse'] ) {
 			$attribs['href'] = $target->getFullURL();
 		}
+		
+		return true;
 	}
 	
 }
