@@ -558,7 +558,7 @@ $messages['ia'] = array(
 	'livetranslate-desc' => 'Permitte le traduction in directo de contento de paginas usante le servicio Google Translate',
 	'right-managetms' => '[[Special:SpecialLiveTranslate|Modificar]] le lista de memorias de traduction',
 	'group-tmxadmin' => 'Administratores TMX',
-	'group-tmxadmin-member' => 'Administrator TMX',
+	'group-tmxadmin-member' => '{{GENDER:$1|administrator|administratrice}} TMX',
 	'grouppage-tmxadmin' => 'Project:Administratores_TMX',
 	'livetranslate-translate-to' => 'Traducer iste pagina in',
 	'livetranslate-button-translate' => 'Traducer',
@@ -788,7 +788,7 @@ $messages['nl'] = array(
 	'livetranslate-desc' => 'Maakt het mogelijk paginainhoud live te vertalen met behulp van de dienst Google Translate',
 	'right-managetms' => 'De lijst met vertaalgeheugens [[Special:SpecialLiveTranslate|wijzigen]]',
 	'group-tmxadmin' => 'TMX-beheerders',
-	'group-tmxadmin-member' => 'TMX-beheerder',
+	'group-tmxadmin-member' => '{{GENDER:$1|TMX-beheerder}}',
 	'grouppage-tmxadmin' => 'Project:TMX-beheerders',
 	'livetranslate-translate-to' => 'Pagina vertalen in het',
 	'livetranslate-button-translate' => 'Vertalen',
@@ -949,6 +949,7 @@ $messages['pt-br'] = array(
 );
 
 /** Russian (Русский)
+ * @author Adata80
  * @author Byulent
  * @author Kaganer
  * @author MaxSem
@@ -958,7 +959,7 @@ $messages['ru'] = array(
 	'livetranslate-desc' => 'Включает перевод текста страницы на лету с помощью службы переводов Google',
 	'right-managetms' => '[[Special:SpecialLiveTranslate|изменять]] список памяти переводов',
 	'group-tmxadmin' => 'Администраторы TMX',
-	'group-tmxadmin-member' => 'Администратор TMX',
+	'group-tmxadmin-member' => '{{GENDER:$1|TMX Администратор}}',
 	'grouppage-tmxadmin' => 'Project:TMX-админы',
 	'livetranslate-translate-to' => 'Перевести эту страницу на',
 	'livetranslate-button-translate' => 'Перевести',
