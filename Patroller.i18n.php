@@ -395,12 +395,14 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author El libre
+ * @author SMP
  * @author Solde
  */
 $messages['ca'] = array(
 	'patrol-revert-reason' => 'Motiu:',
-	'group-patroller' => 'Patrullers/es',
-	'group-patroller-member' => 'Patruller/a',
+	'group-patroller' => 'Patrullers',
+	'group-patroller-member' => '{{GENDER:$1|patruller|patrullera}}',
+	'grouppage-patroller' => '{{ns:project}}:Patrullers',
 );
 
 /** Chechen (Нохчийн) */
@@ -1042,7 +1044,7 @@ $messages['ia'] = array(
 	'patrol-stopped' => 'Tu ha optate pro non patruliar on altere modification. $1',
 	'patrol-resume' => 'Clicca hic pro reprender.',
 	'group-patroller' => 'Patruliatores',
-	'group-patroller-member' => 'patruliator',
+	'group-patroller-member' => '{{GENDER:$1|patruliator|patruliatrice}}',
 	'grouppage-patroller' => '{{ns:project}}:Patruliator',
 	'right-patroller' => 'Paginas de patrulia',
 );
@@ -1518,7 +1520,7 @@ $messages['nl'] = array(
 	'patrol-stopped' => 'U hebt gekozen geen andere bewerking te controleren. $1',
 	'patrol-resume' => 'Klik hier om verder te gaan.',
 	'group-patroller' => 'controleurs',
-	'group-patroller-member' => 'controleur',
+	'group-patroller-member' => '{{GENDER:$1|controleur}}',
 	'grouppage-patroller' => '{{ns:project}}:Controleur',
 	'right-patroller' => "Pagina's markeren",
 );
@@ -1841,7 +1843,7 @@ $messages['ru'] = array(
 	'patrol-stopped' => 'Вы решили не патрулировать другую правку. $1',
 	'patrol-resume' => 'Нажмите здесь для продолжения.',
 	'group-patroller' => 'Патрулирующие',
-	'group-patroller-member' => 'патрулирующий',
+	'group-patroller-member' => '{{GENDER:$1|патрулирующий|патрулирующая}}',
 	'grouppage-patroller' => '{{ns:project}}:Патрулирование',
 	'right-patroller' => 'Патрулирование страниц',
 );
@@ -1931,7 +1933,7 @@ $messages['sl'] = array(
 	'patrol-stopped' => 'Odločili ste se za prenehanje nadziranja urejanj. $1',
 	'patrol-resume' => 'Kliknite tukaj za nadaljevanje.',
 	'group-patroller' => 'Nadzorniki',
-	'group-patroller-member' => '{{GENDER:$1|nadzornik|nadzornica}}',
+	'group-patroller-member' => 'nadzornik',
 	'grouppage-patroller' => '{{ns:project}}:Nadzornik',
 	'right-patroller' => 'Nadziranje strani',
 );
@@ -2292,7 +2294,7 @@ $messages['vi'] = array(
 	'patrol-stopped' => 'Bạn đã chọn không tuần tra sửa đổi khác. $1',
 	'patrol-resume' => 'Nhấn vào đây để tiếp tục.',
 	'group-patroller' => 'Tuần tra viên',
-	'group-patroller-member' => 'tuần tra viên',
+	'group-patroller-member' => '{{GENDER:$1}}tuần tra viên',
 	'grouppage-patroller' => '{{ns:project}}:Tuần tra viên',
 	'right-patroller' => 'Tuần tra trang',
 );
