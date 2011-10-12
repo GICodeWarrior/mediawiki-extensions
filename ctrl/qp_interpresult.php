@@ -9,7 +9,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class qp_InterpResult {
 
-	private static $props = array( 'short', 'long', 'structured', 'error' );
+	private static $props = array( 'error', 'short', 'long', 'structured' );
 
 	# short answer. it is supposed to be sortable and accountable in statistics
 	# by default, it is private (displayed only in Special:Pollresults page)
@@ -56,9 +56,9 @@ class qp_InterpResult {
 		}
 	}
 
-	function isEmpty() {
+	function hasVisibleProperties() {
 		foreach ( self::$props as $prop ) {
-			if ( $this->{ $prop } !== '' ) {
+			if ( $this->{ $prop } !== '' && qp_Setup::$show_interpretation[$prop] ) {
 				return false;
 			}
 		}

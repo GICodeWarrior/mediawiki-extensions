@@ -227,9 +227,10 @@ class qp_Setup {
 	public static $structured_interpretation_max_length = 65535;
 	# whether to show short, long, structured interpretation results to end user
 	public static $show_interpretation = array(
+		'error' => true,
 		'short' => true,
 		'long' => true,
-		'structured' => true
+		'structured' => false
 	);
 	/* end of default configuration settings */
 
