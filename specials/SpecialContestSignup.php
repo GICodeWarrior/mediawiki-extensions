@@ -183,7 +183,8 @@ class SpecialContestSignup extends SpecialContestPage {
 	}
 	
 	/**
-	 * Display a success message and helpfull links for further contest participation. 
+	 * Redirect the user to the contest page and add the "new" argument to the URL
+	 * so they get a success message. 
 	 * 
 	 * @since 0.1
 	 * 
