@@ -113,11 +113,11 @@ class SpecialContests extends SpecialContestPage {
 		$user = $this->getUser();
 		$out = $this->getOutput();
 		
-		$out->addHTML( Html::element( 'h2', array(), wfMsg( 'contest-special-existing' ) ) );
+		$out->addHTML( Html::element( 'h2', array( 'class' => 'contests-title' ), wfMsg( 'contest-special-existing' ) ) );
 		
 		$out->addHTML( Xml::openElement(
 			'table',
-			array( 'class' => 'wikitable sortable' )
+			array( 'class' => 'wikitable sortable contests-table' )
 		) );
 		
 		$headers = array(
