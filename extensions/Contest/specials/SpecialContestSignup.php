@@ -51,9 +51,7 @@ class SpecialContestSignup extends SpecialContestPage {
 	 * @return false|boolean
 	 */
 	public function isListed() {
-
 		return false;
-
 	}
 
 	/**

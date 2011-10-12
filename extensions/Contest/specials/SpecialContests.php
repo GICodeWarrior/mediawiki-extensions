@@ -23,6 +23,28 @@ class SpecialContests extends SpecialContestPage {
 	}
 	
 	/**
+	 * Returns if the user can access the page or not.
+	 * 
+	 * @return boolean
+	 */
+	protected function userCanAccess() {
+		$user = $this->getUser();
+		return 
+			( $user->isAllowed( 'contestadmin' ) || $user->isAllowed( 'contestjudge' ) )
+			&& !$user->isBlocked();
+	}
+	
+	/**
+	 * This page is unlisted because the only way to access it is though a contest
+	 * landing page.
+	 * 
+	 * @return false|boolean
+	 */
+	public function isListed() {
+		return $this->userCanAccess();
+	}
+	
+	/**
 	 * Main method.
 	 * 
 	 * @since 0.1
@@ -38,8 +60,7 @@ class SpecialContests extends SpecialContestPage {
 		
 		$user = $this->getUser();
 		
-		if ( !$user->isAllowed( 'contestadmin' ) || !$user->isAllowed( 'contestjudge' ) || $user->isBlocked() ) {
-			// TODO: does this work property?
+		if ( !$this->userCanAccess() ) {
 			$this->displayRestrictionError();
 		}
 		
