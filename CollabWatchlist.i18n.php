@@ -947,9 +947,11 @@ $messages['pt'] = array(
 );
 
 /** Russian (Русский)
+ * @author Adata80
  * @author Alexandr Efremov
  */
 $messages['ru'] = array(
+	'collabwatchlisttagcomment' => 'Комментарий',
 	'collabwatchlistedit-normal-submit' => 'Сохранить',
 );
 
