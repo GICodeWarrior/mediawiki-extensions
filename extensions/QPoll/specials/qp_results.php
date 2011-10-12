@@ -182,7 +182,7 @@ class PollResults extends qp_SpecialPage {
 			array( '__tag' => 'div', 'style' => 'font-weight:bold;', wfMsg( 'qp_results_submit_attempts', intval( $pollStore->attempts ) ) )
 		);
 		$interpTitle = $pollStore->getInterpTitle();
-		if ( $interpTitle === null ) {
+		if ( !( $interpTitle instanceof Title ) ) {
 			$tags[] = wfMsg( 'qp_poll_has_no_interpretation' );
 			return $tags;
 		}
