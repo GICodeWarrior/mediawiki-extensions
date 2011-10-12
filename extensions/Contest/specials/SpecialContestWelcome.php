@@ -187,7 +187,7 @@ class SpecialContestWelcome extends SpecialContestPage {
 //		else {
 //			return SpecialPage::getTitleFor( 'Userlogin' )->getLocalURL( array(
 //				//'type' => 'signup',
-//				'returnto' => $signupitle->getFullText()
+//				'returnto' => $signupTitle->getFullText()
 //			) );
 //		}
 	}
