@@ -134,6 +134,8 @@ class SpecialContest extends SpecialContestPage {
 			}
 		}
 		
+		$out->addWikiMsg( 'contest-contest-contestants-text' );
+		
 		$pager = new ContestantPager( $this, $conds );
 		
 		if ( $pager->getNumRows() ) {

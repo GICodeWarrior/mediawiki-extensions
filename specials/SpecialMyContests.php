@@ -36,7 +36,8 @@ class SpecialMyContests extends SpecialContestPage {
 			return;
 		}
 		
-		if ( $this->getRequest()->wasPosted() && $this->getUser()->matchEditToken( $this->getRequest()->getVal( 'wpEditToken' ) ) ) {
+		if ( $this->getRequest()->wasPosted()
+			&& $this->getUser()->matchEditToken( $this->getRequest()->getVal( 'wpEditToken' ) ) ) {
 			$contestant = ContestContestant::s()->selectRow( null, array( 'id' => $this->getRequest()->getInt( 'wpcontestant-id' ) ) );
 			$this->showSubmissionPage( $contestant );
 		}
@@ -235,12 +236,13 @@ class SpecialMyContests extends SpecialContestPage {
 	 * @param ContestContestant $contestant
 	 */
 	protected function showSubmissionPage( ContestContestant $contestant ) {
-		// TODO: redirects with fragment apparently don't work - need other solution here
-		if ( $this->getTitle()->getFragment() == 'new' ) {
+		if ( $this->getRequest()->getCheck( 'new' ) ) {
 			$this->showSuccess( 'contest-mycontests-signup-success' );
 		}
 		
 		$this->getOutput()->setPageTitle( $contestant->getContest()->getField( 'name' ) );
+		
+		$this->getOutput()->addHTML('<div style="clear:both;"></div>');
 		$this->getOutput()->addWikiMsg( 'contest-submission-header', $contestant->getContest()->getField( 'name' ) );
 		
 		$form = new HTMLForm( $this->getFormFields( $contestant ), $this->getContext() );
