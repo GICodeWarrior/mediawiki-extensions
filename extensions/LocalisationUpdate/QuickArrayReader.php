@@ -10,6 +10,9 @@
 class QuickArrayReader {
 	var $vars = array();
 
+	/**
+	 * @param $string string
+	 */
 	function __construct( $string ) {
 		$scalarTypes = array(
 			T_LNUMBER => true,
@@ -118,6 +121,11 @@ class QuickArrayReader {
 		}
 	}
 
+	/**
+	 * @param $got string
+	 * @param $expected string
+	 * @return Exception
+	 */
 	private function except( $got, $expected ) {
 		if( is_array( $got ) ) {
 			$got = token_name( $got[0] ) . " ('" . $got[1] . "')";
@@ -129,6 +137,9 @@ class QuickArrayReader {
 
 	/**
 	 * Parse a scalar value in PHP
+	 *
+	 * @param $token string
+	 *
 	 * @return mixed Parsed value
 	 */
 	function parseScalar( $token ) {
@@ -161,6 +172,10 @@ class QuickArrayReader {
 		return $str;
 	}
 
+	/**
+	 * @param $varname string
+	 * @return null|string
+	 */
 	function getVar( $varname ) {
 		if( isset( $this->vars[$varname] ) ) {
 			return $this->vars[$varname];
