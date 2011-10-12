@@ -8,7 +8,7 @@
 
 (function( $, mw ) { $( document ).ready( function() {
 
-	function deleteSurvey( options, successCallback, failCallback ) {
+	function deleteContest( options, successCallback, failCallback ) {
 		$.post(
 			wgScriptPath + '/api.php',
 			{
@@ -31,13 +31,20 @@
 		$this = $( this );
 		
 		if ( confirm( mw.msg( 'contest-special-confirm-delete' ) ) ) {
-			deleteSurvey(
+			deleteContest(
 				{
 					id: $this.attr( 'data-contest-id' ),
 					token: $this.attr( 'data-contest-token' )
 				},
 				function() {
-					$this.closest( 'tr' ).slideUp( 'slow', function() { $( this ).remove(); } );
+					$this.closest( 'tr' ).slideUp( 'slow', function() {
+						$( this ).remove();
+						
+						if ( $( '.contests-table tr' ).length < 2 ) {
+							$( '.contests-table' ).remove();
+							$( '.contests-title' ).remove();
+						}
+					} );
 				},
 				function( error ) {
 					alert( error );
