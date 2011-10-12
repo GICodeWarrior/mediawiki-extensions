@@ -254,9 +254,9 @@ class qp_PollStore {
 	}
 
 	/**
-	 * @return mixed Title instance of interpretation template
+	 * @return mixed Title instance of interpretation template (existing or not)
 	 *               false, when no interpretation template is defined in poll header
-	 *               null, when interpretation template does not exist (error)
+	 *               null, when the title parts are invalid (error)
 	 */
 	function getInterpTitle() {
 		if ( is_null( $this->interpDBkey ) ) {
@@ -266,7 +266,7 @@ class qp_PollStore {
 			return false;
 		}
 		$title = Title::newFromText( $this->interpDBkey, $this->interpNS );
-		return ( $title instanceof Title ) ? ( $title->exists() ? $title : null ) : null;
+		return ( $title instanceof Title ) ? $title : null;
 	}
 
 	// warning: will work only after successful loadUserAlreadyVoted() or loadUserVote()
@@ -889,9 +889,10 @@ class qp_PollStore {
 		$this->interpResult = new qp_InterpResult();
 		$interpTitle = $this->getInterpTitle();
 		if ( $interpTitle === false ) {
+			# this poll has no interpretation script
 			return;
 		}
-		if ( $interpTitle === null ) {
+		if ( !( $interpTitle instanceof Title ) || !$interpTitle->exists() ) {
 			$this->interpResult->storeErroneous = false;
 			$this->interpResult->setError( wfMsg( 'qp_error_no_interpretation' ) );
 			return;
