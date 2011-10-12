@@ -334,6 +334,7 @@ class SwiftRepo extends LocalRepo {
 	 * We KNOW the container should exist, so puke if it doesn't.
 	 *
 	 * @param $conn CF_Connection
+	 * @param $cont string
 	 *
 	 * @return CF_Container
 	 */
@@ -583,7 +584,11 @@ class SwiftRepo extends LocalRepo {
 		return $status;
 	}
 
-
+	/**
+	 * @param $title
+	 * @param $archiveName
+	 * @return OldSwiftFile
+	 */
 	function newFromArchiveName( $title, $archiveName ) {
 		return OldSwiftFile::newFromArchiveName( $title, $this, $archiveName );
 	}
@@ -612,7 +617,7 @@ class SwiftRepo extends LocalRepo {
 			list ( $cont, $rel ) = $rvu;
 			$container = $this->get_container( $conn, $cont );
 			try {
-				$obj = $container->get_object( $rel );
+				$container->get_object( $rel );
 				$result[$key] = true;
 			} catch ( NoSuchObjectException $e ) {
 				$result[$key] = false;
@@ -621,7 +626,6 @@ class SwiftRepo extends LocalRepo {
 
 		return $result;
 	}
-
 
 	// FIXME: do we really need to reject empty titles?
 	function newFile( $title, $time = false ) {
