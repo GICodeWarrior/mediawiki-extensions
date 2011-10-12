@@ -128,7 +128,7 @@
 			styleString += "\tsrc: ";
 			 // If the font is present locally, use it.
 			var ua = navigator.userAgent;
-			if( ua.match( /Android 2.3/ ) == null ) {
+			if( ua.match( /Android 2\.3/ ) == null ) {
 				// Android 2.3.x does not respect local() syntax.  
 				// http://code.google.com/p/android/issues/detail?id=10609
 				styleString += "local('"+fontfamily+"'),";
