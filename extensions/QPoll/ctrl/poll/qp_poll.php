@@ -200,7 +200,8 @@ class qp_Poll extends qp_AbstractPoll {
 		# generate or regenerate random questions
 		$this->questions->randomize( $this->randomQuestionCount );
 		$this->pollStore->randomQuestions = $this->questions->getUsedQuestions();
-		# store random questions into DB
+		# store random questions for current user into DB
+		$this->pollStore->setLastUser( $this->username );
 		$this->pollStore->setRandomQuestions();
 	}
 
