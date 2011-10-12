@@ -117,7 +117,7 @@ class PollResults extends qp_SpecialPage {
 						$pid = intval( $pid );
 						$output = self::getPollsLink();
 						$output .= self::getUsersLink();
-						$output .= $this->showVotes( $pid );
+						$output .= $this->showStats( $pid );
 					}
 					break;
 				case 'stats_xls':
@@ -231,7 +231,7 @@ class PollResults extends qp_SpecialPage {
 		return $output;
 	}
 
-	private function showVotes( $pid ) {
+	private function showStats( $pid ) {
 		$output = "";
 		if ( $pid !== null ) {
 			$pollStore = new qp_PollStore( array( 'from' => 'pid', 'pid' => $pid ) );
@@ -243,6 +243,11 @@ class PollResults extends qp_SpecialPage {
 				# 'parentheses' is unavailable in 1.14.x
 				$poll_link = $this->qpLink( $poll_title, $poll_title->getPrefixedText() . wfMsg( 'word-separator' ) . wfMsg( 'qp_parentheses', $pollStore->mPollId ) );
 				$output .= wfMsg( 'qp_browse_to_poll', $poll_link ) . "<br />\n";
+				$interpTitle = $pollStore->getInterpTitle();
+				if ( $interpTitle !== null ) {
+					$interp_link = $this->qpLink( $interpTitle, $interpTitle->getPrefixedText() );
+					$output .= wfMsg( 'qp_browse_to_interpretation', $interp_link ) . "<br />\n";
+				}
 				$output .= $this->qpLink( $this->getTitle(), wfMsg( 'qp_export_to_xls' ), array( "style" => "font-weight:bold;" ), array( 'action' => 'stats_xls', 'id' => $pid ) ) . "<br />\n";
 				$output .= $this->qpLink( $this->getTitle(), wfMsg( 'qp_voices_to_xls' ), array( "style" => "font-weight:bold;" ), array( 'action' => 'voices_xls', 'id' => $pid ) ) . "<br />\n";
 				$output .= $this->qpLink( $this->getTitle(), wfMsg( 'qp_interpretation_results_to_xls' ), array( "style" => "font-weight:bold;" ), array( 'action' => 'interpretation_xls', 'id' => $pid ) ) . "<br />\n";

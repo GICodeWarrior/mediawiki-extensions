@@ -54,7 +54,7 @@ class qp_InterpResultView {
 	 * Add interpretation results to tagarray of poll view
 	 */
 	function showInterpResults( &$tagarray, qp_InterpResult $ctrl, $showDescriptions = false ) {
-		if ( $ctrl->isEmpty() ) {
+		if ( $ctrl->hasVisibleProperties() ) {
 			return;
 		}
 		$interp = array();

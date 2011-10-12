@@ -49,7 +49,7 @@
 
 /* LTR part (RTL is included from separate file) */
 .qpoll .attempts_counter{ border: 1px solid gray; padding: 0.1em 0.5em 0.1em 0.5em; color: black; background-color: lightblue; margin-left: 1em; }
-.qpoll .question { margin-left:2em; }
+.qpoll .question { margin-left:2em; padding:0.3em; }
 .qpoll .margin { padding-left:20px; }
 .qpoll .header .questionId { font-size: 1.1em; font-weight: bold; float: left; }
 .qpoll .header .questionId { *padding-right: 0.5em; } /* applies to IE7 and below */
