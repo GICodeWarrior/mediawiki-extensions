@@ -179,10 +179,10 @@ class SpecialContestWelcome extends SpecialContestPage {
 			$contestName .= '/' . $challengeId;
 		}
 		
-		$signupitle = SpecialPage::getTitleFor( 'ContestSignup', $contestName );
+		$signupTitle = SpecialPage::getTitleFor( 'ContestSignup', $contestName );
 		
 		if ( $this->getUser()->isLoggedIn() ) {
-			return $signupitle->getLocalURL();
+			return $signupTitle->getLocalURL();
 		}
 		else {
 			return SpecialPage::getTitleFor( 'Userlogin' )->getLocalURL( array(

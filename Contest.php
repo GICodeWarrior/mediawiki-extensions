@@ -104,6 +104,7 @@ $wgHooks['UnitTestsList'][] 					= 'ContestHooks::registerUnitTests';
 $wgHooks['UserSetEmail'][] 						= 'ContestHooks::onUserSetEmail';
 $wgHooks['PersonalUrls'][] 						= 'ContestHooks::onPersonalUrls';
 $wgHooks['GetPreferences'][] 					= 'ContestHooks::onGetPreferences';
+$wgHooks['LinkEnd'][] 							= 'ContestHooks::onLinkEnd';
 
 // Rights
 
@@ -247,3 +248,5 @@ $wgResourceModules['contest.special.contestant'] = $moduleTemplate + array(
 unset( $moduleTemplate );
 
 $egContestSettings = array();
+
+$wgContestEmailParse = false;
