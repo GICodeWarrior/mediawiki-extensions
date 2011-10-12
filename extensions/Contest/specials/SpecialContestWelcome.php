@@ -179,17 +179,18 @@ class SpecialContestWelcome extends SpecialContestPage {
 			$contestName .= '/' . $challengeId;
 		}
 		
-		$signupTitle = SpecialPage::getTitleFor( 'ContestSignup', $contestName );
+		$signupitle = SpecialPage::getTitleFor( 'ContestSignup', $contestName );
 		
-//		if ( $this->getUser()->isLoggedIn() ) {
-			return $signupTitle->getLocalURL();
-//		}
-//		else {
-//			return SpecialPage::getTitleFor( 'Userlogin' )->getLocalURL( array(
-//				//'type' => 'signup',
-//				'returnto' => $signupTitle->getFullText()
-//			) );
-//		}
+		if ( $this->getUser()->isLoggedIn() ) {
+			return $signupitle->getLocalURL();
+		}
+		else {
+			return SpecialPage::getTitleFor( 'Userlogin' )->getLocalURL( array(
+				//'type' => 'signup',
+				'returnto' => $signupTitle->getFullText(),
+				'campaign' => 'contests'
+			) );
+		}
 	}
 
 }
