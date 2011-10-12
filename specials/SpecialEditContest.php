@@ -269,14 +269,12 @@ class SpecialEditContest extends FormSpecialPage {
 			}
 		}
 		
+		// If no ID is set, this means it's a new contest, so set the ID to null for an insert.
+		// However, the user can have hot the back button after creation of a new contest,
+		// re-submitting the form. In this case, get the ID of the already existing item for an update.
 		if ( !array_key_exists( 'id', $fields ) || $fields['id'] === '' ) {
-			$fields['id'] = null;
-		}
-		
-		$sessionField = 'contestid-' . $fields['name'];
-		
-		if ( is_null( $fields['id'] ) && !is_null( $this->getRequest()->getSessionData( $sessionField ) ) ) {
-			$fields['id'] = $this->getRequest()->getSessionData( $sessionField );
+			$contest = Contest::s()->selectRow( 'id', array( 'name' => $fields['name'] ) );
+			$fields['id'] = $contest === false ? null : $contest->getField( 'id' );
 		}
 		
 		$contest = new Contest( $fields, true );
@@ -286,8 +284,6 @@ class SpecialEditContest extends FormSpecialPage {
 		
 		$success = $this->removeDeletedChallenges( $data['delete-challenges'] ) && $success;
 
-		$this->getRequest()->setSessionData( $sessionField, $contest->getId() );
-		
 		if ( $success ) {
 			return true;
 		}
