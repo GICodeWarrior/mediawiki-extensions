@@ -58,12 +58,19 @@ class ContestUtils {
 		// but would require setting some global such as $isContestEmailParse to true
 		// before the parse call and to false afterwards, which also is not very nice.
 		
-		global $wgParser;
-		return $wgParser->parse(
-			self::replaceRelativeLinks( $article->fetchContent() ),
+		global $wgParser, $wgContestEmailParse;
+		
+		$wgContestEmailParse = true;
+		
+		$text = $wgParser->parse(
+			$article->fetchContent(),
 			$article->getTitle(),
 			$article->getParserOptions()
 		)->getText();
+		
+		$wgContestEmailParse = false;
+		
+		return $text;
 	}
 	
 	/**

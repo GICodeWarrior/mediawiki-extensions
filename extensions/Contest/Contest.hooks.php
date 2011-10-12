@@ -159,6 +159,28 @@ final class ContestHooks {
 		}
 
 		return true;
-	}  
+	} 
+	
+	/**
+     * Used when generating internal and interwiki links in Linker::link(),
+     * just before the function returns a value.
+     * @see https://www.mediawiki.org/wiki/Manual:Hooks/LinkEnd
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param Skin $skin
+	 * @param Title $target
+	 * @param array $options
+	 * @param string $text
+	 * @param array $attribs
+	 * @param $ret
+	 * 
+	 * @return true
+	 */
+	function onLinkEnd( Skin $skin, Title $target, array $options, &$text, array &$attribs, &$ret ) {
+		if ( $GLOBALS['wgContestEmailParse'] ) {
+			$attribs['href'] = $target->getFullURL();
+		}
+	}
 	
 }
