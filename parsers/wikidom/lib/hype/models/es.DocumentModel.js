@@ -446,27 +446,41 @@ es.DocumentModel.prototype.getData = function( range, deep ) {
  * This method is pretty expensive. If you need to get different slices of the same content, get
  * the content first, then slice it up locally.
  * 
- * TODO: Rewrite this method to not use recursion, because the function call overhead is expensive
- * 
  * @method
  * @param {es.DocumentModelNode} node Node to get offset of
  * @returns {Integer} Offset of node or -1 of node was not found
  */
 es.DocumentModel.prototype.getOffsetFromNode = function( node ) {
-	var offset = 0;
-	for ( var i = 0; i < this.length; i++ ) {
-		if ( node === this[i] ) {
-			return offset;
-		}
-		if ( this[i].length ) {
-			var childOffset = es.DocumentModel.prototype.getOffsetFromNode.call( this[i], node );
-			if ( childOffset !== -1 ) {
-				return offset + childOffset;
+	var offset = 0,
+		currentNode,
+		iteration = [this, 0],
+		iterations = [iteration];
+	while ( iterations[0][0].length < iteration[0][1] ) {
+		currentNode = iteration[0][iteration[1]];
+		if ( currentNode === node ) {
+			break;
+		} else {
+			if ( currentNode.length ) {
+				// Include opening element when descending
+				offset++;
+				// Descend one level down
+				iterations.push( [currentNode, 0] );
+				iteration = iterations[iterations.length - 1];
+			} else {
+				// Include opening and closing when passing over
+				offset += 2;
 			}
 		}
-		offset += this[i].getElementLength();
+		iteration[1]++;
+		if ( iteration[1] >= iteration[0].length ) {
+			// Include closing element when ascending
+			offset++;
+			// Ascend one level up
+			iterations.pop();
+			iteration = iterations[iterations.length - 1];
+		}
 	}
-	return -1;
+	return offset;
 };
 
 /**
