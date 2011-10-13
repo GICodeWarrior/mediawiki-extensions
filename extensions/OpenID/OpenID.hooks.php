@@ -331,10 +331,11 @@ class OpenIDHooks {
 				dirname( __FILE__ ) . '/patches/openid_table.sql'
 			);
 
-			# if index of older OpenID version is unique then upgrade and make index non unique
+			# when updating an older OpenID version
+			# make the index non unique (remove unique index uoi_user, add new index user_openid_user)
 			$db = wfGetDB( DB_MASTER );
 			$info = $db->fieldInfo( 'user_openid', 'uoi_user' );
-			if ( !$info->isMultipleKey() ) {
+			if ( $info && !$info->isMultipleKey() ) {
 				echo( "Making uoi_user field non UNIQUE...\n" );
 				$db->sourceFile( dirname( __FILE__ ) . '/patches/patch-uoi_user-not-unique.sql' );
 				echo( " done.\n" );
@@ -350,19 +351,20 @@ class OpenIDHooks {
 			);
 		} else {
 			// >= 1.17 support
-			$updater->addExtensionUpdate( array( 'addTable', 'user_openid',
-				dirname( __FILE__ ) . '/patches/openid_table.sql', true ) );
+			$updater->addExtensionTable( 'user_openid',
+				dirname( __FILE__ ) . '/patches/openid_table.sql' );
 
-			# if index of older OpenID version is unique then upgrade and make index non unique
+			# when updating an older OpenID version
+			# make the index non unique (remove unique index uoi_user, add new index user_openid_user)
 			$db = $updater->getDB();
 			$info = $db->fieldInfo( 'user_openid', 'uoi_user' );
-			if ( !$info->isMultipleKey() ) {
+			if ( $info && !$info->isMultipleKey() ) {
 				$updater->addExtensionUpdate( array( 'dropIndex', 'user_openid', 'uoi_user',
 					dirname( __FILE__ ) . '/patches/patch-drop_non_multiple_key_index_uoi_user.sql', true ) );
 				$updater->addExtensionIndex( 'user_openid', 'user_openid_user',
 					dirname( __FILE__ ) . '/patches/patch-add_multiple_key_index_user_openid_user.sql' );
 			}
-			
+
 			# uoi_user_registration field was added in OpenID version 0.937
 			$updater->addExtensionField( 'user_openid', 'uoi_user_registration',
 				dirname( __FILE__ ) . '/patches/patch-add_uoi_user_registration.sql' );
