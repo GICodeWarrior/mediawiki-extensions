@@ -27,7 +27,7 @@ es.ViewNode = function( model, $element ) {
 	}
 	
 	// Extension
-	var node = $.extend( [], this )
+	var node = $.extend( [], this );
 	
 	// Properties
 	node.model = model;

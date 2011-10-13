@@ -62,9 +62,9 @@ es.compareObjects = function( a, b, asymmetrical ) {
 		bValue = b[k];
 		aType = typeof aValue;
 		bType = typeof bValue;
-		if ( aType !== bType
-				|| ( ( aType === 'string' || aType === 'number' ) && aValue !== bValue )
-				|| ( $.isPlainObject( aValue ) && !es.compareObjects( aValue, bValue ) ) ) {
+		if ( aType !== bType ||
+			( ( aType === 'string' || aType === 'number' ) && aValue !== bValue ) ||
+			( $.isPlainObject( aValue ) && !es.compareObjects( aValue, bValue ) ) ) {
 			return false;
 		}
 	}

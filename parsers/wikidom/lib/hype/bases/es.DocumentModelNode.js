@@ -58,13 +58,15 @@ es.DocumentModelNode.prototype.onBeforeShift = function() {
 };
 
 es.DocumentModelNode.prototype.onBeforeSplice = function( index, howmany ) {
-	var diff = 0,
+	var i,
+		length,
+		diff = 0,
 		removed = this.slice( index, index + howmany ),
 		added = Array.prototype.slice.call( arguments, 2 );
-	for ( var i = 0; i < removed.length; i++ ) {
+	for ( i = 0, length = removed.length; i < length; i++ ) {
 		diff -= removed[i].getElementLength();
 	}
-	for ( var i = 0; i < added.length; i++ ) {
+	for ( i = 0, length = added.length; i < length;  i++ ) {
 		diff += added[i].getElementLength();
 	}
 	this.adjustContentLength( diff );

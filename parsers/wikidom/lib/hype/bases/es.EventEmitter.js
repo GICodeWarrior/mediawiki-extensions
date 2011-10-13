@@ -7,7 +7,7 @@
  */
 es.EventEmitter = function() {
 	this.events = {};
-}
+};
 
 /* Methods */
 
@@ -144,7 +144,7 @@ es.EventEmitter.prototype.removeListener = function( type, listener ) {
 		return this;
 	}
 	var handlers = this.events[type];
-	if ( handlers.length == 1 && handlers[0] === listener ) {
+	if ( handlers.length === 1 && handlers[0] === listener ) {
 		delete this.events[type];
 	} else {
 		var i = handlers.indexOf( listener );
@@ -152,7 +152,7 @@ es.EventEmitter.prototype.removeListener = function( type, listener ) {
 			return this;
 		}
 		handlers.splice( i, 1 );
-		if ( handlers.length == 0 ) {
+		if ( handlers.length === 0 ) {
 			delete this.events[type];
 		}
 	}

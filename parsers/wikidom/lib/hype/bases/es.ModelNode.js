@@ -16,7 +16,7 @@ es.ModelNode = function( children ) {
 	es.EventEmitter.call( this );
 	
 	// Extension
-	var node = $.extend( [], this )
+	var node = $.extend( [], this );
 	
 	// Reusable function for passing update events upstream
 	node.emitUpdate = function() {
@@ -136,15 +136,17 @@ es.ModelNode.prototype.shift = function() {
  * @emits update
  */
 es.ModelNode.prototype.splice = function( index, howmany ) {
-	var args = Array.prototype.slice.call( arguments, 0 );
+	var i,
+		length,
+		args = Array.prototype.slice.call( arguments, 0 );
 	this.emit.apply( this, ['beforeSplice'].concat( args ) );
 	if ( args.length >= 3 ) {
-		for ( var i = 2; i < args.length; i++ ) {
+		for ( i = 2, length = args.length; i < length; i++ ) {
 			args[i].attach( this );
 		}
 	}
 	var removed = Array.prototype.splice.apply( this, args );
-	for ( var i = 0; i < removed.length; i++ ) {
+	for ( i = 0, length = removed.length; i < length; i++ ) {
 		removed[i].detach();
 		removed[i].removeListener( 'update', this.emitUpdate );
 	}
