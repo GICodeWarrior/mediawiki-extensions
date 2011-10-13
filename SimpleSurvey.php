@@ -92,5 +92,3 @@ foreach ( $wgPrefSwitchSurveys as &$survey ) {
 }
 unset( $survey );
 
-
-
