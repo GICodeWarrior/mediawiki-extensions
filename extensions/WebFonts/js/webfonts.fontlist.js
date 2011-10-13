@@ -82,6 +82,13 @@
 				ttf: "or/Lohit-Oriya.ttf",
 				woff: "or/Lohit-Oriya.woff"
 			},
+ 
+			"Utkal": {
+				eot: "or/utkal.eot",
+				ttf: "or/utkal.ttf",
+				woff: "or/utkal.woff"
+			},
+ 
 			"Lohit Tamil": {
 				eot: "ta/Lohit-Tamil.eot",
 				ttf: "ta/Lohit-Tamil.ttf",
@@ -240,7 +247,7 @@
 		languages: {
 			// en: [ "RufScript", "Perizia", "Ubuntu" ],
 			ml: [ "AnjaliOldLipi", "Meera", "Rachana", "RaghuMalayalam" ],
-			or: [ "Lohit Oriya" ],
+			or: [ "Lohit Oriya" , "Utkal"],
 			ta: [ "Lohit Tamil" ],
 			te: [ "Lohit Telugu" ],
 			bn: [ "Lohit Bengali" ],
