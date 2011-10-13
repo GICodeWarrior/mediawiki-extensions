@@ -41,9 +41,6 @@ $wgNarayamShortcutKey = array(
 	'key' => 'm'
 );
 
-// Schemes for the languages specified in this arrays will be loaded always
-$wgNarayamAlwaysLoadForLanguages = array();
-
 // Array mapping language codes and scheme names to module names
 // Custom schemes can be added here
 $wgNarayamSchemes = array(

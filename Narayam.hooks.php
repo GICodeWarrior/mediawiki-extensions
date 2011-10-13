@@ -53,19 +53,10 @@ class NarayamHooks {
 
 	/**
 	 * Get the available schemes for the user and content language
-	 * and mandatory schemes for the languages specifed, if any.
 	 * @return array( scheme name => module name )
 	 */
 	protected static function getSchemes() {
 		global $wgLanguageCode, $wgLang, $wgNarayamSchemes;
-		global $wgNarayamAlwaysLoadForLanguages;
-		
-		$mandatorySchemes = array ();
-		foreach ($wgNarayamAlwaysLoadForLanguages as $languageCode) {
-			if ( isset( $wgNarayamSchemes[$languageCode] ) ) {
-				$mandatorySchemes += $wgNarayamSchemes[$languageCode];
-			}
-		}
 
 		$userlangCode = $wgLang->getCode();
 		$contlangSchemes = isset( $wgNarayamSchemes[$wgLanguageCode] ) ?
@@ -73,7 +64,7 @@ class NarayamHooks {
 		$userlangSchemes = isset( $wgNarayamSchemes[$userlangCode] ) ?
 				$wgNarayamSchemes[$userlangCode] : array();
 
-		return $mandatorySchemes + $userlangSchemes + $contlangSchemes;
+		return $userlangSchemes + $contlangSchemes;
 	}
 
 	public static function addPreference( $user, &$preferences ) {
