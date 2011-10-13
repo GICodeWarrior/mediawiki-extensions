@@ -29,6 +29,12 @@ $wgHooks['smwUpdatePropertySubjects'][] = 'SIOHandler::handleUpdatingOfInternalO
 $wgHooks['TitleMoveComplete'][] = 'SIOHandler::handlePageMove';
 $wgHooks['smwRefreshDataJobs'][] = 'SIOHandler::handleRefreshingOfInternalObjects';
 $wgHooks['smwAddToRDFExport'][] = 'SIOSQLStore::createRDF';
+$wgHooks['PageSchemasGetTemplateHTML'][] = 'SIOPageSchemas::getTemplateHTML';
+$wgHooks['PageSchemasGetTemplateXML'][] = 'SIOPageSchemas::getTemplateXML';
+$wgHooks['PageSchemasGetTemplateDisplayInfo'][] = 'SIOPageSchemas::getPropertyDisplayInfo';
+$wgHooks['PageSchemasGetObject'][] = 'SIOPageSchemas::createPageSchemasObject';
+$wgHooks['PageSchemasGetPageList'][] = 'SIOPageSchemas::getPageList';
+$wgHooks['PageSchemasGeneratePages'][] = 'SIOPageSchemas::generatePages';
 
 $siogIP = dirname( __FILE__ );
 $wgExtensionMessagesFiles['SemanticInternalObjects'] = $siogIP . '/SemanticInternalObjects.i18n.php';
@@ -40,6 +46,7 @@ if ( class_exists( 'SMWDIWikiPage' ) ) {
 } else {
 	$wgAutoloadClasses['SIOInternalObjectValue'] = $siogIP . '/SIO_RDFClasses.php';
 }
+$wgAutoloadClasses['SIOPageSchemas'] = $siogIP . '/SIO_PageSchemas.php';
 
 function siofRegisterParserFunctions( &$parser ) {
 	$parser->setFunctionHook( 'set_internal', array( 'SIOHandler', 'doSetInternal' ) );
