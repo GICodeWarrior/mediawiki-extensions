@@ -225,6 +225,7 @@ $wgResourceModules['contest.special.signup'] = $moduleTemplate + array(
 
 $wgResourceModules['contest.special.submission'] = $moduleTemplate + array(
 	'scripts' => array(
+		'jquery.contestSubmission.js',
 		'contest.special.submission.js',
 	),
 	'dependencies' => array(
