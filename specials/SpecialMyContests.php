@@ -310,6 +310,16 @@ class SpecialMyContests extends SpecialContestPage {
 			'id' => 'contest-id',
 		);
 		
+		$fields['contestant-submission'] = array(
+			'class' => 'ContestSubmissionField',
+			'label-message' => 'contest-submission-submission',
+			'validation-callback' => array( __CLASS__, 'validateSubmissionField' ),
+			'options' => array(
+				'domains' => implode( '|', ContestSettings::get( 'submissionDomains' ) ),
+				'value' => $contestant->getField( 'submission' )
+			)
+		);
+		
 		$fields['contestant-realname'] = array(
 			'type' => 'text',
 			'default' => $user->getRealName(),
@@ -319,11 +329,11 @@ class SpecialMyContests extends SpecialContestPage {
 		);
 		
 		$fields['contestant-email'] = array(
-			'type' => 'text',
+			'type' => 'email',
 			'default' => $user->getEmail(),
 			'label-message' => 'contest-signup-email',
 			'required' => true,
-			'validation-callback' => array( __CLASS__, 'validateEmailField' )
+			'validation-callback' => array( __CLASS__, 'validateEmailField' ),
 		);
 		
 		$fields['contestant-country'] = array(
@@ -352,17 +362,7 @@ class SpecialMyContests extends SpecialContestPage {
 			'type' => $hasWMF && $contestant->getField( 'wmf' ) ? 'text' : 'hidden',
 			'default' => $hasWMF ? $contestant->getField( 'cv' ) : '',
 			'label-message' => 'contest-signup-cv',
-			'validation-callback' => array( __CLASS__, 'validateCVField' )
-		);
-		
-		// TODO: this needs UI work to explain to the user what they can enter here,
-		// and possibly some pop-up thing where they can just enter their
-		// user and project, after which we just find the latest rev and store that url.
-		$fields['contestant-submission'] = array(
-			'type' => 'text',
-			'default' => $contestant->getField( 'submission' ),
-			'label-message' => 'contest-submission-submission',
-			'validation-callback' => array( __CLASS__, 'validateSubmissionField' )
+			'validation-callback' => array( __CLASS__, 'validateCVField' ),
 		);
 		
 		return $fields;
@@ -460,6 +460,26 @@ class SpecialMyContests extends SpecialContestPage {
 		}
 		
 		return wfMsg( 'contest-submission-invalid-url' );
+	}
+	
+}
+
+class ContestSubmissionField extends HTMLFormField {
+	
+	public function getInputHTML( $value ) {
+		$attribs = array(
+			'class' => 'contest-submission',
+			'data-name' => $this->mName
+		);
+		
+		foreach ( $this->mParams['options'] as $name => $value ) {
+			$attribs['data-' . $name] = $value;
+		}
+		
+		return Html::element(
+			'div',
+			$attribs
+		);
 	}
 	
 }

@@ -137,9 +137,6 @@ $messages['en'] = array(
 	'contest-signup-require-challenge' => 'You must select a challenge.',
 	'contest-signup-invalid-cv' => 'You entered an invalid URL.',
 	
-	'contest-submission-submission' => 'Link to your submission',
-	'contest-submission-invalid-url' => 'This URL does not match one of the allowed formats.',
-
 	// Special:Contest
 	'contest-contest-title' => 'Contest: $1',
 	'contest-contest-no-results' => 'There are no contestants to list.',
@@ -201,6 +198,14 @@ $messages['en'] = array(
 	'contest-submission-unknown' => 'There is no contest with the provided name.',
 	'contest-submission-header' => 'Thanks for participating in this contest! Once you have completed the challenge, you can add a link to you submission below.',
 	'contest-submission-finished' => 'This contest has ended.',
+
+	'contest-submission-submission' => 'Link to your submission',
+	'contest-submission-invalid-url' => 'This URL does not match one of the allowed formats.',
+	'contest-submission-new-submission' => 'You still need to enter the URL to your submission. This needs to be done before the deadline.',
+	'contest-submission-current-submission' => 'This is the URL to your submission, which you can modify untill the deadline.',
+	
+	// TODO: how can this be done properly in JS?
+	'contest-submission-domains' => 'Submissions are restricted to these sites: $1',
 );
 
 /** Message documentation (Message documentation)

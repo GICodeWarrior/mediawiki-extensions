@@ -228,7 +228,12 @@ $wgResourceModules['contest.special.submission'] = $moduleTemplate + array(
 		'contest.special.submission.js',
 	),
 	'dependencies' => array(
-		'jquery.ui.button'
+		'jquery.ui.button', 'contest.jquery.validate'
+	),
+	'messages' => array(
+		'contest-submission-new-submission',
+		'contest-submission-current-submission',
+		'contest-submission-domains',
 	)
 );
 
