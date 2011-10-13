@@ -30,6 +30,7 @@ class ContestSettings {
 		return array(
 			'votevalues' => range( 0, 5 ),
 			'enableTopLink' => true,
+			'submissionDomains' => array( 'github.com', 'gitorious.org' ),
 		);
 	}
 
