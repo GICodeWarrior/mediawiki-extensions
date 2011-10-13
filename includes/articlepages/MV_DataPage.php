@@ -84,7 +84,7 @@
 	}
 	/*
 	 * function article top 
-	 * @returns MV dataPage top html
+	 * @return MV dataPage top html
 	 */
 	function mvArticleTop() {
 		global $mvgIP, $wgUser;
