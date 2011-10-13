@@ -22,7 +22,7 @@ module( 'Models' );
 var obj = {
 	'type': 'document',
 	'children': [
- 		{
+		{
 			'type': 'paragraph',
 			'content': {
 				'text': 'abc',
@@ -49,51 +49,51 @@ var obj = {
 						{
 							'type': 'tableCell',
 							'children': [
-					      		{
-					    			'type': 'paragraph',
-					    			'content': {
-					    				'text': 'a'
-					    			}
-					    		},
-					    		{
-					    			'type': 'list',
-					    			'children': [
-						    			{
-						    				'type': 'listItem',
-							    			'attributes': {
-							    				'styles': ['bullet']
-							    			},
-							    			'content': {
-							    				'text': 'a'
-							    			}
-						    			},
-						    			{
-						    				'type': 'listItem',
-							    			'attributes': {
-							    				'styles': ['bullet', 'bullet']
-							    			},
-							    			'content': {
-							    				'text': 'b'
-							    			}
-						    			},
-						    			{
-						    				'type': 'listItem',
-							    			'attributes': {
-							    				'styles': ['number']
-							    			},
-							    			'content': {
-							    				'text': 'c'
-							    			}
-						    			}
-					    			]
-					    		}
-					      	]
+								{
+									'type': 'paragraph',
+									'content': {
+										'text': 'a'
+									}
+								},
+								{
+									'type': 'list',
+									'children': [
+										{
+											'type': 'listItem',
+											'attributes': {
+												'styles': ['bullet']
+											},
+											'content': {
+												'text': 'a'
+											}
+										},
+										{
+											'type': 'listItem',
+											'attributes': {
+												'styles': ['bullet', 'bullet']
+											},
+											'content': {
+												'text': 'b'
+											}
+										},
+										{
+											'type': 'listItem',
+											'attributes': {
+												'styles': ['number']
+											},
+											'content': {
+												'text': 'c'
+											}
+										}
+									]
+								}
+							]
 						}
 					]
 				}
 			]
 		},
-  		{
+		{
 			'type': 'paragraph',
 			'content': {
 				'text': 'a'
@@ -120,8 +120,8 @@ var obj = {
  *         [attributes]: {Object} List of symbolic attribute name and literal value pairs
  */
 var data = [
- 	//  0 - Beginning of paragraph
- 	{ 'type': 'paragraph' },
+	//  0 - Beginning of paragraph
+	{ 'type': 'paragraph' },
 	//  1 - Plain content
 	'a',
 	//  2 - Annotated content
@@ -130,39 +130,39 @@ var data = [
 	['c', { 'type': 'italic', 'hash': '#italic' }],
 	//  4 - End of paragraph
 	{ 'type': '/paragraph' },
- 	//  5 - Beginning of table
+	//  5 - Beginning of table
 	{ 'type': 'table' },
- 	//  6 - Beginning of row
+	//  6 - Beginning of row
 	{ 'type': 'tableRow' },
- 	//  7 - Beginning of cell
+	//  7 - Beginning of cell
 	{ 'type': 'tableCell' },
- 	//  8 - Beginning of paragraph
+	//  8 - Beginning of paragraph
 	{ 'type': 'paragraph' },
 	//  9 - Plain content
 	'a',
- 	// 10 - End of paragraph
+	// 10 - End of paragraph
 	{ 'type': '/paragraph' },
- 	// 11 - Beginning of list
+	// 11 - Beginning of list
 	{ 'type': 'list' },
- 	// 12 - Beginning of bullet list item
+	// 12 - Beginning of bullet list item
 	{ 'type': 'listItem', 'attributes': { 'styles': ['bullet'] } },
 	// 13 - Plain content
 	'a',
- 	// 14 - End of item
+	// 14 - End of item
 	{ 'type': '/listItem' },
- 	// 15 - Beginning of nested bullet list item
+	// 15 - Beginning of nested bullet list item
 	{ 'type': 'listItem', 'attributes': { 'styles': ['bullet', 'bullet'] } },
 	// 16 - Plain content
 	'b',
- 	// 17 - End of item
+	// 17 - End of item
 	{ 'type': '/listItem' },
- 	// 18 - Beginning of numbered list item
+	// 18 - Beginning of numbered list item
 	{ 'type': 'listItem', 'attributes': { 'styles': ['number'] } },
 	// 19 - Plain content
 	'c',
- 	// 20 - End of item
+	// 20 - End of item
 	{ 'type': '/listItem' },
- 	// 21 - End of list
+	// 21 - End of list
 	{ 'type': '/list' },
 	// 22 - End of cell
 	{ 'type': '/tableCell' },
@@ -170,11 +170,11 @@ var data = [
 	{ 'type': '/tableRow' },
 	// 24 - End of table
 	{ 'type': '/table' },
- 	// 25 - Beginning of paragraph
+	// 25 - Beginning of paragraph
 	{ 'type': 'paragraph' },
 	// 26 - Plain content
 	'a',
- 	// 27 - End of paragraph
+	// 27 - End of paragraph
 	{ 'type': '/paragraph' }
 ];
 
@@ -231,13 +231,13 @@ test( 'es.DocumentModel', 21, function() {
 	
 	try {
 		documentModel[0].getContent( new es.Range( -1, 3 ) );
-	} catch ( err ) {
+	} catch ( negativeIndexError ) {
 		ok( true, 'getContent throws exceptions when given a range with start < 0' );
 	}
 	
 	try {
 		documentModel[0].getContent( new es.Range( 0, 4 ) );
-	} catch ( err ) {
+	} catch ( outOfRangeError ) {
 		ok( true, 'getContent throws exceptions when given a range with end > length' );
 	}
 	
@@ -286,8 +286,8 @@ test( 'es.DocumentModel', 21, function() {
 	);
 	
 	try {
-		documentModel.prepareElementAttributeChange( 1, 'set', 'test', 1234 )
-	} catch ( err ) {
+		documentModel.prepareElementAttributeChange( 1, 'set', 'test', 1234 );
+	} catch ( invalidOffsetError ) {
 		ok(
 			true,
 			'prepareElementAttributeChange throws an exception when offset is not an element'
@@ -295,8 +295,8 @@ test( 'es.DocumentModel', 21, function() {
 	}
 	
 	try {
-		documentModel.prepareElementAttributeChange( 4, 'set', 'test', 1234 )
-	} catch ( err ) {
+		documentModel.prepareElementAttributeChange( 4, 'set', 'test', 1234 );
+	} catch ( closingElementError ) {
 		ok(
 			true,
 			'prepareElementAttributeChange throws an exception when offset is a closing element'

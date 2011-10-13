@@ -114,7 +114,7 @@ es.DocumentModel.operations = ( function() {
 			}
 			// Automatically clean up attributes object
 			var empty = true;
-			for ( key in element.attributes ) {
+			for ( var key in element.attributes ) {
 				empty = false;
 				break;
 			}
@@ -127,11 +127,15 @@ es.DocumentModel.operations = ( function() {
 	}
 	
 	function annotate( to ) {
+		var i,
+			j,
+			length,
+			annotation;
 		// Handle annotations
 		if ( this.set.length ) {
-			for ( var i = 0, length = this.set.length; i < length; i++ ) {
-				var annotation = this.set[i];
-				for ( var j = this.cursor; j < to; j++ ) {
+			for ( i = 0, length = this.set.length; i < length; i++ ) {
+				annotation = this.set[i];
+				for ( j = this.cursor; j < to; j++ ) {
 					if ( $.isArray( this.data[j] ) ) {
 						this.data[j].push( annotation );
 					} else {
@@ -143,9 +147,9 @@ es.DocumentModel.operations = ( function() {
 			}
 		}
 		if ( this.clear.length ) {
-			for ( var i = 0, length = this.clear.length; i < length; i++ ) {
-				var annotation = this.clear[i];
-				for ( var j = this.cursor; j < to; j++ ) {
+			for ( i = 0, length = this.clear.length; i < length; i++ ) {
+				annotation = this.clear[i];
+				for ( j = this.cursor; j < to; j++ ) {
 					var index = es.DocumentModel.getIndexOfAnnotation( this.data[j], annotation );
 					if ( index !== -1 ) {
 						this.data[j].splice( index, 1 );
@@ -261,7 +265,7 @@ es.DocumentModel.getAnnotationHash = function( annotation ) {
 
 es.DocumentModel.getIndexOfAnnotation = function( character, annotation ) {
 	if ( annotation === undefined || annotation.type === undefined ) {
-		throw 'Invalid annotation error. Can not find non-annotation data in character.'
+		throw 'Invalid annotation error. Can not find non-annotation data in character.';
 	}
 	if ( $.isArray( character ) ) {
 		// Find the index of a comparable annotation (checking for same value, not reference)
@@ -333,7 +337,9 @@ es.DocumentModel.flattenPlainObjectContentNode = function( obj ) {
 				}
 				for ( var j = src.start; j < src.end; j++ ) {
 					// Auto-convert to array
-					typeof data[j] === 'string' && ( data[j] = [data[j]] );
+					if ( typeof data[j] === 'string' ) {
+						data[j] = [data[j]];
+					}
 					// Append 
 					data[j].push( dst );
 				}
@@ -424,7 +430,7 @@ es.DocumentModel.prototype.createView = function() {
  */
 es.DocumentModel.prototype.getData = function( range, deep ) {
 	var start = 0,
-		end = undefined;
+		end;
 	if ( range !== undefined ) {
 		range.normalize();
 		start = Math.max( 0, Math.min( this.data.length, range.start ) );
@@ -481,8 +487,8 @@ es.DocumentModel.prototype.getNodeFromOffset = function( offset ) {
 	for ( var i = 0, length = this.length; i < length; i++ ) {
 		nodeLength = this[i].getElementLength();
 		if ( offset >= nodeOffset && offset < nodeOffset + nodeLength ) {
-			return this[i].length
-				? es.DocumentModel.prototype.getNode.call( this[i], offset - nodeOffset ) : this[i];
+			return this[i].length ?
+				es.DocumentModel.prototype.getNode.call( this[i], offset - nodeOffset ) : this[i];
 		}
 		nodeOffset += nodeLength;
 	}
@@ -525,7 +531,7 @@ es.DocumentModel.prototype.getContentFromNode = function( node, range ) {
 		range = {
 			'start': 0,
 			'end': length
-		}
+		};
 	}
 	var offset = this.getOffsetFromNode( node );
 	if ( offset !== -1 ) {
@@ -583,7 +589,6 @@ es.DocumentModel.prototype.prepareInsertion = function( offset, data ) {
 	 *     }
 	 * }
 	 */
-	return tx;
 };
 
 /**
@@ -718,10 +723,10 @@ es.DocumentModel.prototype.prepareElementAttributeChange = function( offset, met
 		tx.pushRetain( offset );
 	}
 	if ( this.data[offset].type === undefined ) {
-		throw 'Invalid element offset error. Can not set attributes to non-element data.'
+		throw 'Invalid element offset error. Can not set attributes to non-element data.';
 	}
 	if ( this.data[offset].type[0] === '/' ) {
-		throw 'Invalid element offset error. Can not set attributes on closing element.'
+		throw 'Invalid element offset error. Can not set attributes on closing element.';
 	}
 	tx.pushChangeElementAttribute( method, key, value );
 	if ( offset < this.data.length ) {
