@@ -175,9 +175,10 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Urhixidur
  */
 $messages['fr'] = array(
-	'skinperpage-desc' => 'ajoute la balise <code>&lt;skin&gt;</code> pour utiliser différentes interfaces par page',
+	'skinperpage-desc' => 'ajoute la balise <code>&lt;skin&gt;</code> pour utiliser différents habillages par page',
 );
 
 /** Franco-Provençal (Arpetan)

@@ -434,6 +434,7 @@ $messages['cy'] = array(
 /** Danish (Dansk)
  * @author Jon Harald Søby
  * @author Masz
+ * @author Peter Alberti
  */
 $messages['da'] = array(
 	'patrol-endorse' => 'Godkendt',
@@ -454,7 +455,7 @@ $messages['da'] = array(
 	'patrol-stopped' => 'Du har valgt ikke at patruljere en anden ændring. $1',
 	'patrol-resume' => 'Tryk her for at fortsætte.',
 	'group-patroller' => 'Patruljanter',
-	'group-patroller-member' => 'patruljant',
+	'group-patroller-member' => '{{GENDER:$1|patruljant}}',
 	'grouppage-patroller' => '{{ns:project}}:Patruljanter',
 	'right-patroller' => 'Patruljere ssider',
 );

@@ -1192,9 +1192,10 @@ du kan vælge et fra nedenstående muligheder.',
  * @author Tbleher
  * @author The Evil IP address
  * @author Umherirrender
+ * @author Wikinaut
  */
 $messages['de'] = array(
-	'openid-desc' => 'Ermöglicht die Anmeldung bei diesem Wiki mit einer [http://openid.net/ OpenID] sowie die Anmeldung mit dem Benutzerkonto dieses Wikis bei anderen Websites, die OpenID unterstützen',
+	'openid-desc' => 'Erlaubt die Anmeldung mit einer [http://openid.net/ OpenID]. Sofern es für dieses Wiki aktiviert wurde, kann man sich auch mit seinem Benutzerkonto (dieses Wikis) als OpenID bei anderen Websites per OpenID anmelden',
 	'openidlogin' => 'Anmelden / Benutzerkonto erstellen mit OpenID',
 	'openidserver' => 'OpenID-Server',
 	'openidxrds' => 'Yadis-Datei',
@@ -1241,7 +1242,7 @@ du kannst einen aus der untenstehenden Liste auswählen.',
 	'openidchooseexisting' => 'Ein existierendes Benutzerkonto in diesem Wiki',
 	'openidchooseusername' => 'Benutzername:',
 	'openidchoosepassword' => 'Passwort:',
-	'openidconvertinstructions' => 'Mit diesem Formular kannst du dein Benutzerkonto zur Benutzung einer OpenID-URL freigeben oder eine weitere OpenID-URL hinzufügen',
+	'openidconvertinstructions' => 'Mit diesem Formular kannst du dein Benutzerkonto zur Benutzung mit deiner OpenID-URL freigeben oder eine weitere OpenID-URL hinzufügen.',
 	'openidconvertoraddmoreids' => 'Zu OpenID konvertieren oder eine andere OpenID-URL hinzufügen',
 	'openidconvertsuccess' => 'Erfolgreich nach OpenID konvertiert',
 	'openidconvertsuccesstext' => 'Du hast die Konvertierung deiner OpenID nach $1 erfolgreich durchgeführt.',
@@ -1254,7 +1255,7 @@ Du kannst diese und weitere OpenIDs unter dem Reiter [[Special:Preferences#prefs
 	'openidnousername' => 'Kein Benutzername angegeben.',
 	'openidbadusername' => 'Falscher Benutzername angegeben.',
 	'openidautosubmit' => 'Diese Seite enthält ein Formular, das automatisch übertragen wird, wenn JavaSkript aktiviert ist. Falls nicht, klicke bitte auf „Continue“ (Weiter).',
-	'openidclientonlytext' => 'Du kannst keine Benutzerkonten aus diesem Wiki als OpenID für andere Seiten verwenden.',
+	'openidclientonlytext' => 'Du kannst Benutzerkonten dieses Wiki nicht als OpenID für andere Seiten verwenden.',
 	'openidloginlabel' => 'OpenID-URL',
 	'openidlogininstructions' => '{{SITENAME}} unterstützt den [http://openid.net/ OpenID-Standard] für eine einheitliche Anmeldung auf mehreren Websites.
 OpenID meldet dich bei vielen unterschiedlichen Websites an, ohne dass du für jede ein separates Passwort verwenden musst.
@@ -1274,7 +1275,7 @@ Ohne OpenID könntest du dich nicht mehr anmelden.',
 Ohne OpenID könntest du dich nicht mehr anmelden.',
 	'openiddelete-sucess' => 'Die OpenID wurde erfolgreich von deinem Benutzerkonto entfernt.',
 	'openiddelete-error' => 'Beim Entfernen der OpenID von deinem Benutzerkonto ist ein Fehler aufgetreten.',
-	'openid-openids-were-not-merged' => 'Die OpenID(s) wurden nicht während der Zusammenlegung der Benutzerkonten zusammengeführt.',
+	'openid-openids-were-not-merged' => 'Die OpenID(s) wurden während der Zusammenlegung der Benutzerkonten nicht zusammengeführt.',
 	'openid-prefstext' => 'Einstellungen zur [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'Verstecke deine OpenID auf deiner Benutzerseite, wenn du dich mit OpenID anmeldest.',
 	'openid-pref-update-userinfo-on-login' => 'Nachfolgende Daten anhand des OpenID-Kontos bei jeder Anmeldung aktualisieren:',
@@ -1295,9 +1296,9 @@ Ohne OpenID könntest du dich nicht mehr anmelden.',
 	'openid-dashboard-title' => 'OpenID - Übersicht',
 	'openid-dashboard-title-admin' => 'OpenID - Übersicht und Einstellungen',
 	'openid-dashboard-introduction' => 'Die aktuellen Einstellungen zu OpenID ([$1 Hilfe])',
-	'openid-dashboard-number-openid-users' => 'Anzahl der Benutzer mit einer OpenID',
+	'openid-dashboard-number-openid-users' => 'Anzahl der Benutzer mit mindestens einer OpenID',
 	'openid-dashboard-number-openids-in-database' => 'Anzahl der OpenIDs (gesamt)',
-	'openid-dashboard-number-users-without-openid' => 'Anzahl der Benutzer ohne einer OpenID',
+	'openid-dashboard-number-users-without-openid' => 'Anzahl der Benutzer ohne OpenID',
 );
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
@@ -1325,7 +1326,7 @@ Sie können einen aus der untenstehenden Liste auswählen.',
 	'openidchoosefull' => 'Ihr bürgerlicher Name ($1)',
 	'openidchooseurl' => 'Ein Name aus Ihrer OpenID ($1)',
 	'openidchoosemanual' => 'Ein Name Ihrer Wahl:',
-	'openidconvertinstructions' => 'Mit diesem Formular können Sie Ihr Benutzerkonto zur Benutzung einer OpenID-URL freigeben oder eine weitere OpenID-URL hinzufügen',
+	'openidconvertinstructions' => 'Mit diesem Formular können Sie Ihr Benutzerkonto zur Benutzung mit Ihrer OpenID-URL freigeben oder eine weitere OpenID-URL hinzufügen.',
 	'openidconvertsuccesstext' => 'Sie haben die Konvertierung Ihrer OpenID nach $1 erfolgreich durchgeführt.',
 	'openidconvertyourstext' => 'Dies ist bereits Ihre OpenID.',
 	'openidalreadyloggedin' => 'Sie sind bereits angemeldet.',

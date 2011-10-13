@@ -110,9 +110,11 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Davidpar
+ * @author SMP
  */
 $messages['ca'] = array(
-	'addmediawizard-desc' => 'Afegeix assistent pels mitjans de comunicació (Media Wizard), desenvolupat en col·laboració de Kaltura i Wikimedia Foundation.',
+	'addmediawizard-desc' => 'Assistent per carregar fitxers multimèdia, desenvolupat en col·laboració de Kaltura i la Fundació Wikimedia.',
+	'addmediawizard-loading' => "S'està carregant l'assistent de càrregues multimèdia",
 );
 
 /** Czech (Česky)
