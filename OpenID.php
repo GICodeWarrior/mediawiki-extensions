@@ -27,7 +27,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	exit( 1 );
 }
 
-define( 'MEDIAWIKI_OPENID_VERSION', '0.942-beta 20111012' );
+define( 'MEDIAWIKI_OPENID_VERSION', '0.943-beta 20111013' );
 
 $path = dirname( __FILE__ );
 set_include_path( implode( PATH_SEPARATOR, array( $path ) ) . PATH_SEPARATOR . get_include_path() );
@@ -294,13 +294,15 @@ $wgHooks['GetPreferences'][] = 'OpenIDHooks::onGetPreferences';
 $wgAvailableRights[] = 'openid-dashboard-access';
 $wgAvailableRights[] = 'openid-dashboard-admin';
 
-# allow users to read access the dashboard
-$wgGroupPermissions['user']['openid-dashboard-access'] = true;
+# uncomment to allow users to read access the dashboard
+# $wgGroupPermissions['user']['openid-dashboard-access'] = true;
 
 # allow users to add or convert OpenIDs to their accounts
 $wgGroupPermissions['user']['openid-converter-access'] = true;
 
-# allow sysops to adminster the OpenID settings (under construction)
+# allow sysops to read access the dashboard and
+# allow sysops to adminstrate the OpenID settings (feature under construction)
+$wgGroupPermissions['sysop']['openid-dashboard-access'] = true;
 $wgGroupPermissions['sysop']['openid-dashboard-admin'] = true;
 
 $myResourceTemplate = array(
