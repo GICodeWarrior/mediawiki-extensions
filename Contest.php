@@ -51,6 +51,7 @@ $wgAutoloadClasses['ContestSettings'] 			= dirname( __FILE__ ) . '/Contest.setti
 
 $wgAutoloadClasses['ApiContestQuery'] 			= dirname( __FILE__ ) . '/api/ApiContestQuery.php';
 $wgAutoloadClasses['ApiDeleteContest'] 			= dirname( __FILE__ ) . '/api/ApiDeleteContest.php';
+$wgAutoloadClasses['ApiMailContestants'] 		= dirname( __FILE__ ) . '/api/ApiMailContestants.php';
 $wgAutoloadClasses['ApiQueryChallenges'] 		= dirname( __FILE__ ) . '/api/ApiQueryChallenges.php';
 $wgAutoloadClasses['ApiQueryContestants'] 		= dirname( __FILE__ ) . '/api/ApiQueryContestants.php';
 $wgAutoloadClasses['ApiQueryContestComments'] 	= dirname( __FILE__ ) . '/api/ApiQueryContestComments.php';
@@ -93,6 +94,7 @@ $wgSpecialPageGroups['MyContests'] 				= 'contest';
 
 // API
 $wgAPIModules['deletecontest'] 					= 'ApiDeleteContest';
+// $wgAPIModules['mailcontestants'] 				= 'ApiMailContestants'; // TODO
 $wgAPIListModules['challenges'] 				= 'ApiQueryChallenges';
 $wgAPIListModules['contestants'] 				= 'ApiQueryContestants';
 $wgAPIListModules['contestcomments'] 			= 'ApiQueryContestComments';
