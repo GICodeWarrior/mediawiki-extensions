@@ -205,7 +205,7 @@ class RatingHistory extends UnlistedSpecialPage
 	* Generate an HTML table for this tag
 	* @param string $tag
 	* @param string $filePath
-	* @returns string, html table
+	* @return string, html table
 	*/
 	public function makeHTMLTable( $tag, $filePath ) {
 		$dir = dirname($filePath);
@@ -255,7 +255,7 @@ class RatingHistory extends UnlistedSpecialPage
 	* Generate a graph for this tag
 	* @param string $tag
 	* @param string $filePath
-	* @returns bool, success
+	* @return bool, success
 	*/
 	public function makePngGraph( $tag, $filePath ) {
 		if( !function_exists( 'ImageCreate' ) ) {
@@ -355,7 +355,7 @@ class RatingHistory extends UnlistedSpecialPage
 	* Generate a graph for this tag
 	* @param string $tag
 	* @param string $filePath
-	* @returns bool, success
+	* @return bool, success
 	*/
 	public function makeSvgGraph( $tag, $filePath ) {
 		global $wgSvgGraphDir, $wgContLang, $wgMemc;
@@ -548,7 +548,7 @@ class RatingHistory extends UnlistedSpecialPage
 	* Get the path to where the corresponding graph file should be
 	* @param string $tag
 	* @param string $ext
-	* @returns string
+	* @return string
 	*/
 	public function getFilePath( $tag, $ext='' ) {
 		global $wgUploadDirectory;
@@ -560,7 +560,7 @@ class RatingHistory extends UnlistedSpecialPage
 	* Get the url to where the corresponding graph file should be
 	* @param string $tag
 	* @param string $ext
-	* @returns string
+	* @return string
 	*/
 	public function getUrlPath( $tag, $ext='' ) {
 		global $wgUploadPath;
@@ -689,7 +689,7 @@ class RatingHistory extends UnlistedSpecialPage
 	* Check if a graph file is expired. Set $this->dScale.
 	* @param string $tag
 	* @param string $path, filepath to existing file
-	* @returns string
+	* @return string
 	*/
 	protected function fileExpired( $tag, $path ) {
 		global $wgMemc;
@@ -721,7 +721,7 @@ class RatingHistory extends UnlistedSpecialPage
 	/**
 	* Get highest touch timestamp of the tags. This uses a tiny filesort.
 	* @param $page Title
-	* @returns string
+	* @return string
 	*/
 	public static function getTouched( $page ) {
 		$dbr = wfGetDB( DB_SLAVE );

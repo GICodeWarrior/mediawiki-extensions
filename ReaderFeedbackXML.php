@@ -5,7 +5,7 @@ class ReaderFeedbackXML {
 	 * Get a selector of rateable namespaces
 	 * @param int $selected, namespace selected
 	 * @param $all Mixed: Value of an item denoting all namespaces, or null to omit
-	 * @returns string
+	 * @return string
 	 */
 	public static function getNamespaceMenu( $selected=null, $all=null ) {
 		global $wgContLang, $wgFeedbackNamespaces;
@@ -42,7 +42,7 @@ class ReaderFeedbackXML {
 	/**
 	 * Get tag dropdown select
 	 * @param int $selected, selected level
-	 * @returns string
+	 * @return string
 	 */
 	public static function getTagMenu( $selected = '' ) {
 		$s  = "<label for='wpRatingTag'>" . wfMsgHtml('readerfeedback-tagfilter') . "</label>&#160;";
@@ -57,7 +57,7 @@ class ReaderFeedbackXML {
 	/**
 	 * Get rating tier dropdown select
 	 * @param int $selected, selected tier
-	 * @returns string
+	 * @return string
 	 */	
 	 public static function getRatingTierMenu( $selected = '' ) {
 		$s  = "<label for='wpRatingTier'>" . wfMsgHtml('readerfeedback-tierfilter') . "</label>&#160;";
