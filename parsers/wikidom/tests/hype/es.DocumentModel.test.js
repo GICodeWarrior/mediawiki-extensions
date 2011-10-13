@@ -400,10 +400,16 @@ test( 'es.DocumentModel', 21, function() {
 	);
 	
 	deepEqual(
-		documentModel.prepareInsertion( 5, [ { 'type': 'paragraph' }, 'd', 'e', 'f', { 'type': '/paragraph' } ] ),
+		documentModel.prepareInsertion(
+			5,
+			[{ 'type': 'paragraph' }, 'd', 'e', 'f', { 'type': '/paragraph' }]
+		),
 		[
 			{ 'type': 'retain', 'length': 5 },
-			{ 'type': 'insert', 'data': [ { 'type': 'paragraph' }, 'd', 'e', 'f', { 'type': '/paragraph' } ] },
+			{
+				'type': 'insert',
+				'data': [{ 'type': 'paragraph' }, 'd', 'e', 'f', { 'type': '/paragraph' }]
+			},
 			{ 'type': 'retain', 'length': 23 }
 		],
 		'prepareInsertion inserts a paragraph between two structural elements'
