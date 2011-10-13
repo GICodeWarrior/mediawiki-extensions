@@ -82,7 +82,7 @@ class ConfigureHandlerDb implements ConfigureHandler {
 
 	/**
 	 * Cache the data to the filesystem.
-	 * @returns int bytes
+	 * @return int bytes
 	 */
 	protected function cacheToFS( $data ) {
 		global $wgConfigureFileSystemCache;
