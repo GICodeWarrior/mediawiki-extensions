@@ -414,4 +414,36 @@ test( 'es.DocumentModel', 21, function() {
 		],
 		'prepareInsertion inserts a paragraph between two structural elements'
 	);
+	
+	deepEqual(
+		documentModel.prepareInsertion(
+			5,
+			['d', 'e', 'f']
+		),
+		[
+			{ 'type': 'retain', 'length': 5 },
+			{
+				'type': 'insert',
+				'data': [{ 'type': 'paragraph' }, 'd', 'e', 'f', { 'type': '/paragraph' }]
+			},
+			{ 'type': 'retain', 'length': 23 }
+		],
+		'prepareInsertion wraps unstructured content inserted between elements in a paragraph'
+	);
+	
+	deepEqual(
+		documentModel.prepareInsertion(
+			5,
+			[{ 'type': 'paragraph' }, 'd', 'e', 'f']
+		),
+		[
+			{ 'type': 'retain', 'length': 5 },
+			{
+				'type': 'insert',
+				'data': [{ 'type': 'paragraph' }, 'd', 'e', 'f', { 'type': '/paragraph' }]
+			},
+			{ 'type': 'retain', 'length': 23 }
+		],
+		'prepareInsertion completes opening elements in inserted content'
+	);
 } );
