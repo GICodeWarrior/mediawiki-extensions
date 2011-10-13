@@ -94,6 +94,7 @@ $wgNarayamSchemes = array(
 	'ta' => array(
 		'ta' => 'ext.narayam.rules.ta',
 		'ta99' => 'ext.narayam.rules.ta99',
+		'ta-bamini' => 'ext.narayam.rules.ta-bamini',
 	),
 	'te' => array(
 		'te-inscript' => 'ext.narayam.rules.te-inscript',
@@ -270,6 +271,11 @@ $wgResourceModules['ext.narayam.rules.ta'] = $narayamTpl + array(
 $wgResourceModules['ext.narayam.rules.ta99'] = $narayamTpl + array(
 	'scripts' => 'js/ext.narayam.rules.ta99.js',
 	'messages' => array( 'narayam-ta99' ),
+	'dependencies' => 'ext.narayam.rules.ta', // make sure ta99 loads after ta
+);
+$wgResourceModules['ext.narayam.rules.ta-bamini'] = $narayamTpl + array(
+	'scripts' => 'js/ext.narayam.rules.ta-bamini.js',
+	'messages' => array( 'narayam-ta-bamini' ),
 	'dependencies' => 'ext.narayam.rules.ta', // make sure ta99 loads after ta
 );
 $wgResourceModules['ext.narayam.rules.te-inscript'] = $narayamTpl + array(
