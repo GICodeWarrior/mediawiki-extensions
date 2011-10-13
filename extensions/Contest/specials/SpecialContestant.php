@@ -98,6 +98,7 @@ class SpecialContestant extends SpecialContestPage {
 	}
 	
 	protected function showPage( ContestContestant $contestant ) {
+		global $wgScript;
 		$out = $this->getOutput();
 		
 		$out->setPageTitle( wfMsgExt(
@@ -111,7 +112,8 @@ class SpecialContestant extends SpecialContestPage {
 		
 		$this->showGeneralInfo( $contestant );
 		
-		$out->addHTML( '<form method="post" action="' . htmlspecialchars( $this->getTitle( $this->subPage )->getLocalURL() ) . '">' );
+		$out->addHTML( '<form method="post" action="' . htmlspecialchars( $wgScript ) . '">' );
+		$out->addHTML( Html::hidden( 'title', $this->getTitle( $this->subPage )->getPrefixedDBkey() ) );
 		$out->addHTML( Html::hidden( 'wpEditToken', $this->getUser()->editToken() ) );
 		
 		$this->showRating( $contestant );
