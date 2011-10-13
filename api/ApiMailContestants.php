@@ -18,6 +18,7 @@ class ApiMailContestants extends ApiBase {
 		parent::__construct( $main, $action );
 	}
 	
+	// TODO
 	public function execute() {
 		global $wgUser;
 		
@@ -29,19 +30,35 @@ class ApiMailContestants extends ApiBase {
 		
 		$everythingOk = true;
 		
-		$contestIds = array();
-		$challengeIds = array();
+		$contestIds = is_null( $params['contestids'] ) ? array() : $params['contestids'];
+		$challengeIds = is_null( $params['challengeids'] ) ? array() : $params['challengeids'];
 		
-		if ( !is_null( 'challengetitles' ) ) {
+		if ( !is_null( $params['challengetitles'] ) ) {
+			$challenges = ContestChallenge::s()->select( 'id', array( 'title' => $params['challengetitles'] ) );
 			
+			if ( $challenges === false ) {
+				// TODO: error
+			}
+			
+			foreach ( $challenges as /* ContestChallenge */ $challenge ) {
+				$challengeIds[] = $challenge->getId();
+			}
 		}
 		
-		if ( !is_null( 'contestnames' ) ) {
+		if ( !is_null( $params['contestnames'] ) ) {
+			$contests = Contest::s()->select( 'id', array( 'name' => $params['contestnames'] ) );
 			
+			if ( $contests === false ) {
+				// TODO: error
+			}
+			
+			foreach ( $contests as /* Contest */ $contest ) {
+				$contestIds[] = $contest->getId();
+			}
 		}
 		
 		$conditions = array();
-		// TODO
+		
 		if ( count( $contestIds ) > 0 ) {
 			$conditions[] = array( 'contest_id' => $contestIds );
 		}
@@ -60,10 +77,17 @@ class ApiMailContestants extends ApiBase {
 			$recipients = array();
 			
 			foreach ( $contestants as /* ContestContestant */ $contestant ) {
-				$recipients[] = $contestant->getField( 'email' );
+				$recipients[] = new MailAddress( $contestant->getField( 'email' ) );
 			}
 			
-			$everythingOk = $this->sendReminderEmail( $recipients );
+			$everythingOk = $this->sendReminderEmail(
+				ContestUtils::getParsedArticleContent( $params['page'] ), // TODO: have some magic here for params such as daysleft
+				$recipients,
+				array( 'daysleft' => $this->getContest()->getDaysLeft() )
+			);
+		}
+		else {
+			// TODO: error
 		}
 		
 		$this->getResult()->addValue(
@@ -80,21 +104,22 @@ class ApiMailContestants extends ApiBase {
 	 * 
 	 * @since 0.1
 	 * 
+	 * @param string $emailText
+	 * @param array $recipients
+	 * 
 	 * @return Status
 	 */
-	public function sendReminderEmail( array $recipients ) {
+	public function sendReminderEmail( $emailText, array /* of MailAddress */ $recipients, array $params ) {
 		global $wgPasswordSender, $wgPasswordSenderName;
 		
-		$title = wfMsgExt( 'contest-email-reminder-title', 'parsemag', $this->getContest()->getDaysLeft() );
-		$emailText = ContestUtils::getParsedArticleContent( $this->getContest()->getField( 'reminder_email' ) );
-		$user = $this->getUser();
+		$title = wfMsgExt( 'contest-email-reminder-title', 'parsemag', $params['daysleft'] );
 		$sender = $wgPasswordSender;
 		$senderName = $wgPasswordSenderName;
 		
-		wfRunHooks( 'ContestBeforeReminderEmail', array( &$this, &$title, &$emailText, &$user, &$sender, &$senderName ) );
+		wfRunHooks( 'ContestBeforeReminderEmail', array( &$this, &$title, &$emailText, &$recipients, &$sender, &$senderName ) );
 		
 		return UserMailer::send( 
-			new MailAddress( $user ),
+			$recipients,
 			new MailAddress( $sender, $senderName ),
 			$title,
 			$emailText,
@@ -118,6 +143,11 @@ class ApiMailContestants extends ApiBase {
 	*/
 	public function getAllowedParams() {
 		return array(
+			'page' => array(
+				ApiBase::PARAM_TYPE => 'string',
+				ApiBase::PARAM_REQUIRED => true,
+				ApiBase::PARAM_ISMULTI => false,
+			),
 			'ids' => array(
 				ApiBase::PARAM_TYPE => 'integer',
 				ApiBase::PARAM_REQUIRED => false,
@@ -149,14 +179,20 @@ class ApiMailContestants extends ApiBase {
 	
 	public function getParamDescription() {
 		return array(
+			'page' => 'Name of the page from which to pull content for the email body',
 			'ids' => 'The IDs of the contestants to mail',
+			'contestids' => 'The IDs of the contests where of the contestants should be mailed',
+			'contestnames' => 'The names of the contests where of the contestants should be mailed',
+			'challengeids' => 'The IDs of the challenges where of the contestants should be mailed',
+			'challengetitles' => 'The titles of the challenges where of the contestants should be mailed',
 			'token' => 'Edit token',
 		);
 	}
 	
 	public function getDescription() {
 		return array(
-			'API module for mailing contestants. The provided conditions such as contest ids and challenge titles will be joined with AND.'
+			'API module for mailing contestants. Selection criteria will be joined with AND,
+			except for the challange ids/titles and contest ids/names pairs, which will be joined wit OR.'
 		);
 	}
 	
