@@ -513,8 +513,7 @@ class RecordAdmin {
 	 */
 	function formatDate( $ts ) {
 		global $wgLang;
-		$ts = preg_replace( "|^(....)(..)(..)(..)(..)(..)|", "$1-$2-$3 $4:$5:$6", $wgLang->userAdjust( $ts ) );
-		return date( 'd M Y, H:i', strtotime( $ts ) );
+		return $wgLang->sprintfDate( 'd M Y, H:i', $wgLang->userAdjust( $ts ) );
 	}
 
 
