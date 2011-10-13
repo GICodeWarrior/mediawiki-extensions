@@ -496,7 +496,7 @@ class WikilogCommentsPage
 	/**
 	 * Checks if the given comment is valid for posting.
 	 * @param $comment Comment to validate.
-	 * @returns False if comment is valid, error message identifier otherwise.
+	 * @return False if comment is valid, error message identifier otherwise.
 	 */
 	protected static function validateComment( WikilogComment &$comment ) {
 		global $wgWikilogMaxCommentSize;
