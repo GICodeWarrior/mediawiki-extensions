@@ -29,7 +29,7 @@ class ResumableUploadHandler extends UploadBase {
 	 * @param $pageText string
 	 * @param $watchlist bodolean
 	 *
-	 * @returns string the session key for this chunked upload
+	 * @return string the session key for this chunked upload
 	 */
 	public function setupChunkSession( $comment, $pageText, $watchlist ) {
 		if ( !isset( $this->sessionKey ) ) {
@@ -101,7 +101,7 @@ class ResumableUploadHandler extends UploadBase {
 	 * @param $request WebRequest
 	 * @param $fileSize int Size of this chunk
 	 *
-	 * @returns void
+	 * @return void
 	 */
 	protected function initFromSessionKey( $sessionKey, $sessionData, $fileSize ) {
 		// testing against null because we don't want to cause obscure

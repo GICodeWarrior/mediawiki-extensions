@@ -406,7 +406,7 @@ class Wikilog
 	 * namespace, and returns an appropriate WikilogInfo instance if so.
 	 *
 	 * @param $title Article title object.
-	 * @returns WikilogInfo instance, or NULL.
+	 * @return WikilogInfo instance, or NULL.
 	 */
 	static function getWikilogInfo( $title ) {
 		global $wgWikilogNamespaces;

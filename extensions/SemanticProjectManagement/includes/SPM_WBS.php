@@ -71,7 +71,7 @@ class SPMWBS extends SMWResultPrinter {
 	 * 
 	 *  @param res				SMWQueryResult, result set of the ask query provided by SMW
 	 *  @param outputmode		?
-	 *  @returns				String, rendered HTML output of this printer for the ask-query
+	 *  @return				String, rendered HTML output of this printer for the ask-query
 	 *
 	 */
 	protected function getResultText($res, $outputmode) {

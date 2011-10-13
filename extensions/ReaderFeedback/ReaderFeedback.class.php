@@ -26,7 +26,7 @@ class ReaderFeedback {
 	
 	/**
 	 * Get the array of tag feedback tags
-	 * @returns array
+	 * @return array
 	 */
 	public static function getFeedbackTags() {
 		self::load();
@@ -36,7 +36,7 @@ class ReaderFeedback {
 	/**
 	 * Get the weight of a feedback tag
 	 * @param string $tag
-	 * @returns array
+	 * @return array
 	 */
 	public static function getFeedbackWeight( $tag ) {
 		self::load();
@@ -45,7 +45,7 @@ class ReaderFeedback {
 
 	/**
 	 * Get the number of reviews that is considered a good sample
-	 * @returns int
+	 * @return int
 	 */	
 	public static function getFeedbackSize() {
 		global $wgFeedbackSizeThreshhold;
@@ -79,7 +79,7 @@ class ReaderFeedback {
 	
 	/**
 	 * Purge outdated page average data
-	 * @returns bool
+	 * @return bool
 	 */	
 	public static function purgeExpiredAverages() {
 		global $wgFeedbackAge;
@@ -108,7 +108,7 @@ class ReaderFeedback {
    	/**
 	* Expand feedback ratings into an array
 	* @param string $ratings
-	* @returns Array
+	* @return Array
 	*/
 	public static function expandRatings( $rating ) {
 		$dims = array();
@@ -128,7 +128,7 @@ class ReaderFeedback {
 	* @param int $period, number of days back
 	* @param array $add, optional vote to add on (used to visually avoid lag)
 	* @param string $cache, optional param to not use cache
-	* @returns string HTML table
+	* @return string HTML table
 	*/	
 	public static function getVoteAggregates(
 		$page, $period, $add = array(), $cache = 'useCache'

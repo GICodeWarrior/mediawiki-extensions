@@ -62,7 +62,7 @@ class ReaderFeedbackHooks {
 	/**
 	 * Is this a view page action?
 	 * @param $action string
-	 * @returns bool
+	 * @return bool
 	 */
 	protected static function isViewAction( $action ) {
 		return ( $action == 'view' || $action == 'purge' || $action == 'render' );

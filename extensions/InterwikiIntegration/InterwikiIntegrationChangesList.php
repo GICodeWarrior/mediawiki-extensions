@@ -183,7 +183,7 @@ class InterwikiIntegrationChangesList {
 	 * Show formatted char difference
 	 * @param $old Integer: bytes
 	 * @param $new Integer: bytes
-	 * @returns String
+	 * @return String
 	 */
 	public static function showCharacterDifference( $old, $new ) {
 		global $wgRCChangedSizeThreshold, $wgLang, $wgMiserMode;

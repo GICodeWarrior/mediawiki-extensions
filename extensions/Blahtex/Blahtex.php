@@ -244,7 +244,7 @@ class BlahtexRenderer {
 	 *    blahtexOutputParser::parse() .
 	 * @param $node Node in the tree that the message is stored
 	 *    under (string)
-	 * @returns HTML fragment with the error message (string)
+	 * @return HTML fragment with the error message (string)
 	 */
 	function blahtexError( $results, $node ) {
 		$id = 'math_' . $results[$node . ":id"];
