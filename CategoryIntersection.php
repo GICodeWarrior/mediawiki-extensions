@@ -63,7 +63,7 @@ function CategoryIntersectionGetHashValues ( $categories ) {
 	return $hash;
 }
 
-/*
+/**
  * Updates the category intersection table for a page.
  * Called by LinksUpdate hook.
  */
