@@ -384,6 +384,7 @@ $messages['fi'] = array(
  * @author Crochet.david
  * @author IAlex
  * @author Peter17
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'communityvoice' => 'Voix de la communauté',
@@ -393,8 +394,8 @@ $messages['fr'] = array(
 	'communityvoice-ratings-scale-status-error' => "Erreur lors de l'envoi !",
 	'communityvoice-ratings-scale-status-thanks' => 'Merci de votre vote !',
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 vote{{PLURAL:$2||s}})',
-	'communityvoice-ratings-error-no-category' => "L'attribut de catégorie est absent dans la balise de notation.",
-	'communityvoice-ratings-error-no-title' => "L'attribut de titre est absent dans la balise de notation.",
+	'communityvoice-ratings-error-no-category' => 'L’attribut de catégorie est absent de la balise de notation.',
+	'communityvoice-ratings-error-no-title' => 'L’attribut de titre est absent de la balise de notation.',
 );
 
 /** Franco-Provençal (Arpetan)
