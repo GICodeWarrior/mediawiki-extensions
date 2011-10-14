@@ -31,9 +31,9 @@ class SIOPageSchemas {
 	 * Constructs XML for the SIO property, based on what was submitted
 	 * in the 'edit schema' form.
 	 */
-	function getTemplateXML( $request, &$xmlArray ) {
+	function getTemplateXML( $request, &$templateXMLFromExtensions ) {
 		$fieldNum = -1;
-		$templatePerField = array();
+		$xmlPerTemplate = array();
 		foreach ( $request->getValues() as $var => $val ) {
 			if ( substr( $var, 0, 18 ) == 'sio_property_name_' ) {
 				$templateNum = substr( $var, 18 );
@@ -41,7 +41,7 @@ class SIOPageSchemas {
 				$xmlPerTemplate[$templateNum] = $xml;
 			}
 		}
-		$xmlArray['sio'] = $xmlPerTemplate;
+		$templateXMLFromExtensions['sio'] = $xmlPerTemplate;
 		return true;
 	}
 
@@ -49,25 +49,25 @@ class SIOPageSchemas {
 	 * Returns the HTML necessary for getting information about the
 	 * semantic property within the Page Schemas 'editschema' page.
 	 */
-	function getTemplateHTML( $template, &$text_extensions ) {
+	function getTemplateHTML( $psTemplate, &$templateHTMLFromExtensions ) {
 		$prop_array = array();
 		$hasExistingValues = false;
-		if ( !is_null( $template ) ) {
-			$sio_array = $template->getObject('semanticinternalobjects_MainProperty');
+		if ( !is_null( $psTemplate ) ) {
+			$sio_array = $psTemplate->getObject( 'semanticinternalobjects_MainProperty' );
 			if ( array_key_exists( 'sio', $sio_array ) ) {
 				$prop_array = $sio_array['sio'];
 				$hasExistingValues = true;
 			}
 		}
-		$html_text = '<p>' . 'Name of property to connect this template\'s fields to the rest of the page (should only be used if this template can have multiple instances):' . ' ';
+		$text = '<p>' . 'Name of property to connect this template\'s fields to the rest of the page (should only be used if this template can have multiple instances):' . ' ';
 		if ( array_key_exists( 'name', $prop_array ) ) {
 			$propName = $prop_array['name'];
 		} else {
 			$propName = null;
 		}
-		$html_text .= Html::input( 'sio_property_name_num', $propName, array( 'size' => 15 ) ) . "\n";
+		$text .= Html::input( 'sio_property_name_num', $propName, array( 'size' => 15 ) ) . "\n";
 
-		$text_extensions['sio'] = array( 'Internal property', '#FF8', $html_text, $hasExistingValues );
+		$templateHTMLFromExtensions['sio'] = array( 'Internal property', '#FF8', $text, $hasExistingValues );
 
 		return true;
 	}
@@ -108,34 +108,33 @@ class SIOPageSchemas {
 		return $sioPropertyObj['sio']['name'];
 	}
 
-	function getPageList( $psSchemaObj , &$genPageList ) {
-		$templates = $psSchemaObj->getTemplates();
-		foreach ( $templates as $template ) {
-			$sioPropertyName = self::getInternalObjectPropertyName( $template );
+	function getPageList( $pageSchemaObj , &$genPageList ) {
+		$psTemplates = $pageSchemaObj->getTemplates();
+		foreach ( $psTemplates as $psTemplate ) {
+			$sioPropertyName = self::getInternalObjectPropertyName( $psTemplate );
 			if ( is_null( $sioPropertyName ) ) {
 				continue;
 			}
-			$title = Title::makeTitleSafe( SMW_NS_PROPERTY, $sioPropertyName );
-			$genPageList[] = $title;
+			$genPageList[] = Title::makeTitleSafe( SMW_NS_PROPERTY, $sioPropertyName );
 		}
 		return true;
 	}
 
-        function generatePages( $psSchemaObj, $toGenPageList ) {
+        function generatePages( $psSchemaObj, $selectedPageList ) {
 		global $smwgContLang;
 
 		$datatypeLabels = $smwgContLang->getDatatypeLabels();
 		$pageTypeLabel = $datatypeLabels['_wpg'];
 
-		$templates = $psSchemaObj->getTemplates();
-		foreach ( $templates as $template ) {
-			$sioPropertyName = self::getInternalObjectPropertyName( $template );
+		$psTemplates = $psSchemaObj->getTemplates();
+		foreach ( $psTemplates as $psTemplate ) {
+			$sioPropertyName = self::getInternalObjectPropertyName( $psTemplate );
 			if ( is_null( $sioPropertyName ) ) {
 				continue;
 			}
 			$title = Title::makeTitleSafe( SMW_NS_PROPERTY, $sioPropertyName );
 			$key_title = PageSchemas::titleString( $title );
-			if ( !in_array( $key_title, $toGenPageList ) ) {
+			if ( !in_array( $key_title, $selectedPageList ) ) {
 				continue;
 			}
 			SMWPageSchemas::createProperty( $sioPropertyName, $pageTypeLabel, null );
