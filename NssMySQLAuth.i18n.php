@@ -1065,9 +1065,9 @@ $messages['sl'] = array(
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'accountmanager' => 'Менаџер за налог',
+	'accountmanager' => 'Управљање налогом',
 	'am-username' => 'корисичко име',
-	'am-email' => 'имејл',
+	'am-email' => 'е-пошта',
 	'am-active' => 'активан',
 	'am-updated' => 'Ваше измене су сачуване.',
 	'nss-save-changes' => 'Сачувај измене',
@@ -1075,7 +1075,7 @@ $messages['sr-ec'] = array(
 	'nss-create-account' => 'Отвори налог',
 	'nss-no-mail' => 'Не шаљи е-поруке',
 	'nss-welcome-mail' => 'Отворен вам је налог с корисничким именом $1 и лозинком $2.',
-	'nss-welcome-mail-subject' => 'Прављење налога',
+	'nss-welcome-mail-subject' => 'Отварање налога',
 );
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)
