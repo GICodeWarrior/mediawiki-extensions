@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * Created on 2009/3/25
  *
  * Author: ning

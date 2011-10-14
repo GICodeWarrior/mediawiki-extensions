@@ -23,7 +23,7 @@ global $swbgIP;
 //   require_once "EasyRdf.php";
 //   require_once "html_tag_helpers.php";
 set_include_path($swbgIP.'lib/');
-/*
+/**
  * Here, we need EasyRDF.
  */
 require_once ($swbgIP.'lib/EasyRdf.php');
@@ -107,7 +107,7 @@ class SWBSpecialBrowseWiki extends SpecialPage {
 		// Why do we need different variants? Removed...
 
 		// Why do we need to input query form? Removed...
-			
+
 		// print OutputPage
 		$wgOut->addHTML( $this->displayBrowse() );
 		SMWOutputs::commitToOutputPage( $wgOut ); // make sure locally collected output data is pushed to the output!
@@ -300,7 +300,7 @@ class SWBSpecialBrowseWiki extends SpecialPage {
 				// Build the graph
 				$graph = new EasyRdf_Graph($uri->getURI());
 				$graph->load();
-					
+
 				// Now, we resolve this URI and store the rdf
 
 				$html .= $this->displaySemanticHead($uri->getURI());
@@ -584,7 +584,7 @@ class SWBSpecialBrowseWiki extends SpecialPage {
 			foreach ($allSpecResources as $aSpecResource) {
 				if (!$aSpecResource->isBnode()) {
 					if ($aSpecResource->getUri() == $object) {
-							
+
 						$res = array("type" => "uri", "value" => $aSpecResource->getUri());
 						$arr_subjects[] = $res;
 					}
@@ -683,7 +683,7 @@ class SWBSpecialBrowseWiki extends SpecialPage {
 					'a',
 				array(
 						'href' => SpecialPage::getSafeTitleFor( 'SearchByProperty' )->getLocalURL( array(
-							 'property' => $dvProperty->getWikiValue(), 
+							 'property' => $dvProperty->getWikiValue(),
 							 'value' => $this->subject->getWikiValue()
 				) )
 				),
@@ -737,7 +737,7 @@ class SWBSpecialBrowseWiki extends SpecialPage {
 
 				// Typically, we have a URI. Provide link to further browse the SW.
 				// Always type 11 for prop: echo "dipropType:".$diProperty->getDIType();
-					
+
 			} elseif ( $diProperty->getKey() == '_INST' ) {
 				$proptext = smwfGetLinker()->specialLink( 'Categories' );
 			} elseif ( $diProperty->getKey() == '_REDI' ) {
@@ -785,7 +785,7 @@ class SWBSpecialBrowseWiki extends SpecialPage {
 					'a',
 				array(
 						'href' => SpecialPage::getSafeTitleFor( 'SearchByProperty' )->getLocalURL( array(
-							 'property' => $dvProperty->getWikiValue(), 
+							 'property' => $dvProperty->getWikiValue(),
 							 'value' => $this->subject->getWikiValue()
 				) )
 				),
@@ -876,7 +876,7 @@ class SWBSpecialBrowseWiki extends SpecialPage {
 					'a',
 				array(
 						'href' => SpecialPage::getSafeTitleFor( 'SearchByProperty' )->getLocalURL( array(
-							 'property' => $dvProperty->getWikiValue(), 
+							 'property' => $dvProperty->getWikiValue(),
 							 'value' => $this->subject->getWikiValue()
 				) )
 				),

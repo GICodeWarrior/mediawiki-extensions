@@ -1,11 +1,11 @@
 <?php
-/*
+/**
  * Author: ning
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) die();
 
-/*
+/**
  * Standard class that is resopnsible for the creation of the Special Page
  */
 class SMWNotifyMe extends SpecialPage {

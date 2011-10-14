@@ -14,7 +14,7 @@ $wgExtensionMessagesFiles['SemanticWebBrowser'] = $swbgIP . 'languages/SWB_Messa
 // Register special pages aliases file
 $wgExtensionAliasesFiles['SemanticWebBrowser'] = $swbgIP . 'languages/SWB_Aliases.php';
 
-/*
+/**
  * create Special Page for Browse Wiki
  */
 $wgAutoloadClasses['SWBSpecialBrowseWiki']    = $swbgIP . 'specials/SearchTriple/SWB_SpecialBrowseWiki.php';
