@@ -16,15 +16,25 @@ class qp_TextQuestionProposalView extends qp_StubQuestionProposalView {
 	#     property 'options' indicates current category options list
 	#     property 'error' indicates error message
 	var $viewtokens = array();
+	var $lastTokenType = '';
 
 	/**
 	 * Add new proposal part (between two categories or line bounds)
 	 * It is just an element of string type
 	 *
-	 * @param  $prop  string  proposal part
+	 * @param  $token  string  proposal part
 	 */
-	function addProposalPart( $prop ) {
-		$this->viewtokens[] = $prop;
+	function addProposalPart( $token ) {
+		if ( $this->lastTokenType === 'proposal' ) {
+			# add to already existing proposal part
+			$last_prop = array_pop( $this->viewtokens );
+			$last_prop .= $token;
+			array_push( $this->viewtokens, $last_prop );
+			return;
+		}
+		# start new proposal part
+		$this->viewtokens[] = $token;
+		$this->lastTokenType = 'proposal';
 	}
 
 	/**
@@ -39,27 +49,26 @@ class qp_TextQuestionProposalView extends qp_StubQuestionProposalView {
 	 */
 	function addCatDef( qp_TextQuestionOptions $opt, $name, $text_answer, $unanswered ) {
 		# $catdef instanceof stdClass properties:
+		# property 'type' contains type of current category: 'text', 'checkbox', 'radio'
 		# property 'options' stores an array of user options
 		#          Multiple options will be selected from the list
 		#          Single option will be displayed as text input
 		# property 'name' contains name of input element
 		# property 'value' contains value previousely chosen
 		#          by user (if any)
-		# property 'textwidth' may optionally override default
-		#          text input width
+		# property 'attributes' contain extra atttibutes of current category definition
 		# property 'unanswered'  boolean
 		#          true - the question was POSTed but category is unanswered
 		#          false - the question was not POSTed or category is answered
-		$catdef = (object) array(
+		$this->viewtokens[] = (object) array(
+			'type' => $opt->type,
 			'options' => $opt->input_options,
 			'name' => $name,
 			'value' => $text_answer,
-			'unanswered' => $unanswered
+			'unanswered' => $unanswered,
+			'attributes' => $opt->attributes
 		);
-		if ( !is_null( $opt->textwidth ) ) {
-			$catdef->textwidth = $opt->textwidth;
-		}
-		$this->viewtokens[] = $catdef;
+		$this->lastTokenType = 'category';
 	}
 
 	/**
@@ -77,6 +86,9 @@ class qp_TextQuestionProposalView extends qp_StubQuestionProposalView {
 		#       when $state == 'error' only the first $errmsg is non-empty;
 		if ( $errmsg !== '' ) {
 			array_unshift( $this->viewtokens, (object) array( 'error'=> $errmsg ) );
+		}
+		if ( count( $this->viewtokens ) < 2 ) {
+			$this->lastTokenType = 'errmsg';
 		}
 	}
 
