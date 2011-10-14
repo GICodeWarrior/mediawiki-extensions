@@ -192,6 +192,8 @@ $messages['en'] = array(
 	'contest-mycontests-header-contest' => 'Contest',
 	'contest-mycontests-header-challenge' => 'Challenge',
 	'contest-mycontests-signup-success' => 'You have successfully signed up for this contest.',
+	'contest-mycontests-addition-success' => 'Your submission has been added.',
+	'contest-mycontests-updated-success' => 'Your submission has been updated.',
 	'contest-mycontests-sessionfail' => 'Your submission could not be saved due to loss of session data. Please try again.',
 
 	'contest-submission-submit' => 'Submit',
