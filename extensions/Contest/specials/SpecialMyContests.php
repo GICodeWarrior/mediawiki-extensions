@@ -447,10 +447,10 @@ class SpecialMyContests extends SpecialContestPage {
 			// '@^https://github\.com/[a-zA-Z0-9-]+/[a-zA-Z0-9_-]+/tree/[a-zA-Z0-9]{40}$@i'
 			
 			// Any GitHub URL
-			'@^https://github\.com/.*$@i',
+			'@^https?://github\.com/.*$@i',
 			
 			// Any Gitorious URL
-			'@^https://(www\.)?gitorious\.org/.*$@i',
+			'@^https?://(www\.)?gitorious\.org/.*$@i',
 		);
 		
 		foreach ( $allowedPatterns as $pattern ) {
