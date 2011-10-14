@@ -309,7 +309,7 @@ es.ContentView.prototype.getOffset = function( position ) {
 		top = 0;
 	while ( i < lineCount ) {
 		top += this.lines[i].height;
-		if ( position.top <= top ) {
+		if ( position.top < top ) {
 			break;
 		}
 		i++;

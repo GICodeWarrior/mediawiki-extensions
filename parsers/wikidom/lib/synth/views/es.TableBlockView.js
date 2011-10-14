@@ -71,16 +71,16 @@ es.TableBlockView.prototype.getOffsetFromPosition = function( position ) {
 		return 0;
 	}
 	
-	var rowView = this.items[0];
+	var rowView;
 
 	for ( var i = 0; i < this.items.length; i++ ) {
-		if ( this.items[i].$.offset().top >= position.top ) {
+		if ( this.items[i].$.offset().top > position.top ) {
 			break;
 		}
 		rowView = this.items[i];
 	}
-	
-	return rowView.list.items.offsetOf( rowView ) + rowView.getOffsetFromPosition( position );
+
+	return rowView.list.items.offsetOf( rowView ) + rowView.getOffsetFromPosition( position );	
 };
 
 /**

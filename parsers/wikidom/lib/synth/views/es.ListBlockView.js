@@ -73,17 +73,17 @@ es.ListBlockView.prototype.getOffsetFromPosition = function( position ) {
 	if ( this.items.length === 0 ) {
 		return 0;
 	}
-	
-	var listItemView = this.items[0];
+
+	var listItemView;
 
 	for ( var i = 0; i < this.items.length; i++ ) {
-		if ( this.items[i].$.offset().top >= position.top ) {
+		if ( this.items[i].$.offset().top > position.top ) {
 			break;
 		}
 		listItemView = this.items[i];
 	}
-	
-	return listItemView.list.items.offsetOf( listItemView ) + listItemView.getOffsetFromPosition( position );
+
+	return listItemView.list.items.offsetOf( listItemView ) + listItemView.getOffsetFromPosition( position );	
 };
 
 /**

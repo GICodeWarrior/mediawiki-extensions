@@ -87,15 +87,15 @@ es.DocumentView.prototype.getOffsetFromPosition = function( position ) {
 		return 0;
 	}
 	
-	var blockView = this.items[0];
+	var blockView;
 
 	for ( var i = 0; i < this.items.length; i++ ) {
-		if ( this.items[i].$.offset().top >= position.top ) {
+		if ( this.items[i].$.offset().top > position.top ) {
 			break;
 		}
 		blockView = this.items[i];
 	}
-	
+
 	return blockView.list.items.offsetOf( blockView ) + blockView.getOffsetFromPosition( position );
 };
 
