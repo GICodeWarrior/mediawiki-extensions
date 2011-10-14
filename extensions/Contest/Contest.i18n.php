@@ -214,6 +214,28 @@ $messages['en'] = array(
  * @author Jeroen De Dauw
  */
 $messages['qqq'] = array(
+	// Special:EditContest
+	'editcontest-text' => 'Short text displayed at the top of the page notifying the user they are editting a contest',
+	'contest-edit-name' => 'Form field label',
+	'contest-edit-status' => 'Form field label',
+	'contest-edit-intro' => 'Form field label',
+	'contest-edit-opportunities' => 'Form field label',
+	'contest-edit-rulespage' => 'Form field label',
+	'contest-edit-help' => 'Form field label',
+	'contest-edit-signup' => 'Form field label',
+	'contest-edit-reminder' => 'Form field label',
+	'contest-edit-end' => 'Form field label',
+	'contest-edit-exists-already' => 'Warning message to show when the contest already exists',
+	'contest-edit-submit' => 'Submit button text',
+
+	'contest-edit-delete' => 'Delete challange button text',
+	'contest-edit-add-first' => 'Add a challenge button text',
+	'contest-edit-add-another' => 'Add another challenge button text',
+	'contest-edit-confirm-delete' => 'Challange deletion confirmation message',
+	'contest-edit-challenge-title' => 'Form field label',
+	'contest-edit-challenge-text' => 'Form field label',
+	'contest-edit-challenge-oneline' => 'Form field label',
+
 	'contest-special-name' => 'Table column header',
 	'contest-special-status' => 'Table column header',
 	'contest-special-submissioncount' => 'Table column header',
