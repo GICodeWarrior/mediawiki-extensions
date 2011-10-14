@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * MV_Messages.php Created on Jan 8, 2008
  *
  * Internationalization file for MetaVidWiki extension
@@ -8592,7 +8592,7 @@ $mvMVDTypeDefaultDisp a dovrìa esse un sotansema ëd $mvMVDTypeAllAvailable',
 	'mvvideofeed' => "Esportassion dl'alimentassion ëd filmà MetaVid",
 	'mvexportask' => "Esportassion d'un fil ëd filmà semàntich",
 	'video_feed_cat' => 'Alimentassion dël filmà për la categorìa:',
-	'mv_cat_search_note' => "Nòta: Le categorìe a elenco mach le categorìe ëd prim livel. 
+	'mv_cat_search_note' => "Nòta: Le categorìe a elenco mach le categorìe ëd prim livel.
 Për tùit ij metadat ant l'ansema dle categorìe, ch'a serca $1",
 	'mv-category-media-count' => '$1 {{PLURAL:$1|segment|segment}} ëd mojen ant la categorìa',
 	'mv_mvd_linkback' => 'Part dël fluss $1 <br />

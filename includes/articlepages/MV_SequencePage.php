@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * MV_SequencePage.php Created on Oct 17, 2007
  *
  * All Metavid Wiki code is Released Under the GPL2
@@ -36,15 +36,15 @@ class MV_SequencePage extends Article {
 
 		$parserOptions = ParserOptions::newFromUser( $wgUser );
 		$parserOptions->addExtraKey( 'mv:seq-xml' ); //differentiate the articles xml from article
-		
+
 		if( $wgEnableParserCache ) {
 			$mvParserCache = ParserCache::singleton();
 			$parserOutput = $mvParserCache->get( $this, $parserOptions );
-			
+
 			if( $parserOutput != false )
 				return $parserOutput->getText();
 		}
-		
+
 		//get the high level sequence description:
 		$this->getSequenceHLRD();
 		$this->parseHLRD_DOM();

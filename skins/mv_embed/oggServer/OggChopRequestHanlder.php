@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * OggChopRequestHanlder.php is a simple ogg video server for mediawiki
  * it uses the general oggChop class (which we should probably make part of
  * PEAR oggServer or something like that )

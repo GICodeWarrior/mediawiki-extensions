@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * MV_SpecialListStreams.php Created on Apr 24, 2007
  *
  * All Metavid Wiki code is Released Under the GPL2
@@ -26,7 +26,7 @@ class MV_SpecialListStreams extends QueryPage {
 	public function __construct( $name = 'Mv_List_Streams' ) {
 		parent::__construct( $name );
 	}
-	
+
 	function isExpensive() {
 		return false;
 	}
@@ -65,11 +65,11 @@ class MV_SpecialListStreams extends QueryPage {
 		return ' ORDER BY date_start_time DESC ';
 			// ($this->sortDescending() ? 'DESC' : '');
 	}
-	
+
 	function getOrderFields() {
 		return array( 'date_start_time' );
 	}
-	
+
 	function sortDescending() {
 		return false;
 	}

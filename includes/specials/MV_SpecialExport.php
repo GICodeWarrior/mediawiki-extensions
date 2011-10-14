@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * MV_SpecialExport.php Created on Oct 23, 2007
  *
  * All Metavid Wiki code is Released Under the GPL2

@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * scrape_and_insert.inc.php Created on Feb 14, 2008
  *
  * All Metavid Wiki code is Released under the GPL2

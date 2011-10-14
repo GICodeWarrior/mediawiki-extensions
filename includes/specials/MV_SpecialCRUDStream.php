@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * MV_SepcialAddStream.php Created on Apr 25, 2007
  *
  * All Metavid Wiki code is Released under the GPL2

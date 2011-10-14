@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * Created on Aug 15, 2008
  *
  * All Metavid Wiki code is Released Under the GPL2

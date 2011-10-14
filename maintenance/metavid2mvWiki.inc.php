@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * metavid2mvWiki.inc.php Created on Jan 19, 2008
  *
  * All Metavid Wiki code is Released under the GPL2
@@ -483,7 +483,7 @@ function do_process_text( $stream, $force ) {
 			do_update_wiki_page( 'Ht_en:' . $page_title, $page_body, MV_NS_MVD );
 		}
 }
-/*
+/**
  * for each image add it to the image directory
  */
 function do_process_images( $stream, $force = false ) {

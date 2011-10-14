@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * mv_flvServer.php
  *
  * @date Jul 25, 2008

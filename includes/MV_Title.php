@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * MV_Title.php Created on May 3, 2007
  *
  * All Metavid Wiki code is Released under the GPL2
