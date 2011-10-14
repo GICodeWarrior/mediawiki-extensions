@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * A plugin to authenticate against a libnss-mysql database
  *
  * Copyright 2008 - Bryan Tong Minh / Delft Aerospace Rocket Engineering
@@ -10,7 +10,7 @@
  */
 
  ### READ BEFORE USING ###
-/*
+/**
  * This plugin allows authentication against an libnss-mysql database and thus
  * allows the use of the same login for MediaWiki as for shell.
  *
