@@ -115,7 +115,7 @@ final class ContestHooks {
 	 * @return true
 	 */
 	public static function onPersonalUrls( array &$personal_urls, Title &$title ) {
-			if ( ContestSettings::get( 'enableTopLink' ) ) {
+		if ( ContestSettings::get( 'enableTopLink' ) ) {
 			global $wgUser;
 			
 			// Find the watchlist item and replace it by the my contests link and itself.
