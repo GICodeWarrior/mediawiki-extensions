@@ -95,6 +95,7 @@ $messages['an'] = array(
 
 /** Arabic (العربية)
  * @author Aiman titi
+ * @author Alexknight12
  * @author Meno25
  * @author OsamaK
  */
@@ -108,7 +109,7 @@ $messages['ar'] = array(
 	'vector-editwarning-preference' => 'حذّرني عندما أغادر تحرير صفحة ذات تغييرات غير محفوظة',
 	'vector-simplesearch-search' => 'ابحث',
 	'vector-simplesearch-containing' => 'يحتوي...',
-	'vector-noexperiments-preference' => 'استبعادي من إستخدام الميزة',
+	'vector-noexperiments-preference' => 'استبعدني من تجارب الخاصية',
 );
 
 /** Aramaic (ܐܪܡܝܐ)
