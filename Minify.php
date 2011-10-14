@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * Minify bundles the YUI CSS compressor by Julien Lecomte and Isaac Schlueter with
  * the JSMin Javascript compressor by Douglass Crockford and Ryan Grove.
  *
