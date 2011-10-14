@@ -1,10 +1,10 @@
 <?php
-/*
+/**
  * WikiArticleFeeds.php - A MediaWiki extension for converting regular pages into feeds.
  * @author Jim R. Wilson
  * @version 0.6.6
  * @copyright Copyright (C) 2007 Jim R. Wilson
- * @license The MIT License - http://www.opensource.org/licenses/mit-license.php 
+ * @license The MIT License - http://www.opensource.org/licenses/mit-license.php
  * -----------------------------------------------------------------------
  * Description:
  *     This is a MediaWiki (http://www.mediawiki.org/) extension which adds support
@@ -21,15 +21,15 @@
  *     Once installed, you may utilize WikiArticleFeeds by invoking the 'feed' action of an article:
  *         $wgScript?title=Some_Article&action=feed
  *     Note: You may optionally supply a feed type.  Acceptable values inculde 'rss' and 'atom'.
- *     If no feed type is specified, the default is 'atom'.  For example: 
+ *     If no feed type is specified, the default is 'atom'.  For example:
  *         $wgScript?title=Some_Article&action=feed&feed=atom
  * Creating a Feed:
- *     To delimit a section of an article as containing feed items, use the <startFeed /> 
+ *     To delimit a section of an article as containing feed items, use the <startFeed />
  *     and <endFeed /> tags respectively.  These tags are merely flags, and any attributes
  *     specified, or content inside the tags themselves will be ignored.
  * Tagging a Feed item:
- *     To tag a feed item, insert either the <itemTags> tag, or the a call to the {{#itemTags}} parser 
- *     function somewhere between the opening header of the item (== Item Title ==) and the header of 
+ *     To tag a feed item, insert either the <itemTags> tag, or the a call to the {{#itemTags}} parser
+ *     function somewhere between the opening header of the item (== Item Title ==) and the header of
  *     the next item.  For example, to mark an item about dogs and cats, you could do any of the following:
  *         <itemTags>dogs, cats</itemTags>
  *         {{#itemTags:dogs, cats}}
@@ -76,25 +76,25 @@
  *         Initial release.
  * -----------------------------------------------------------------------
  * Copyright (c) 2007 Jim R. Wilson
- * 
- * Permission is hereby granted, free of charge, to any person obtaining a copy 
- * of this software and associated documentation files (the "Software"), to deal 
- * in the Software without restriction, including without limitation the rights to 
- * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of 
- * the Software, and to permit persons to whom the Software is furnished to do 
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights to
+ * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+ * the Software, and to permit persons to whom the Software is furnished to do
  * so, subject to the following conditions:
- * 
- * The above copyright notice and this permission notice shall be included in all 
+ *
+ * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES 
- * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
- * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
- * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR 
- * OTHER DEALINGS IN THE SOFTWARE. 
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
  * -----------------------------------------------------------------------
  */
 
@@ -313,7 +313,7 @@ function wfWikiArticleFeedsToolboxLinks( $template ) {
  * @param $article Article to be converted to rss or atom feed
  */
 function wfWikiArticleFeedsAction( $action, $article ) {
-	
+
 	# If some other action is in the works, cut and run!
 	if ( $action != 'feed' ) return true;
 
@@ -380,7 +380,7 @@ function wfWikiArticleFeedsAction( $action, $article ) {
 		wfGenerateWikiFeed( $article, $feedFormat, $filterTags );
 		$cachedFeed = ob_get_contents();
 		ob_end_flush();
-		
+
 		$expire = 3600 * 24; # One day
 		$messageMemc->set( $key, $cachedFeed );
 		$messageMemc->set( $timekey, wfTimestamp( TS_MW ), $expire );
@@ -453,7 +453,7 @@ function wfGenerateWikiFeed( $article, $feedFormat = 'atom', $filterTags = null 
 		# Determine the item titles and default item links
 		preg_match_all(
 					   $sectionRegExp,
-					   $feedContent, 
+					   $feedContent,
 					   $matches
 					   );
 		$itemLinks = $matches[1];
@@ -466,7 +466,7 @@ function wfGenerateWikiFeed( $article, $feedFormat = 'atom', $filterTags = null 
 			if ( !$feedDescription ) {
 				$feedDescription = $segDesc;
 			} else {
-				
+
 				$feedDescription = wfMsg( 'wikiarticlefeeds_combined_description' );
 			}
 		}
@@ -550,7 +550,7 @@ function wfGenerateWikiFeed( $article, $feedFormat = 'atom', $filterTags = null 
 	$feedTitle = $wgSitename . ' - ' . $title->getPrefixedText();
 	$feedId = $title->getFullUrl();
 
-	# Create feed    
+	# Create feed
 	$feed = new $wgFeedClasses[$feedFormat]( $feedTitle, $feedDescription, $feedId );
 
 	# Push feed header
