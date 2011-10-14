@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * simple stats output and gather for oggPlay and a "sample page"
  */
 
@@ -13,7 +13,7 @@ EOT;
 }
 $psScriptPath = $wgScriptPath . '/extensions/PlayerStatsGrabber';
 
-/*
+/**
  * config values
  */
 
@@ -83,7 +83,7 @@ $psEmbedAry = array(
 
 
 
-/*
+/**
  * end config
  */
 $wgExtensionMessagesFiles['PlayerStatsGrabber'] = dirname( __FILE__ ) . '/PlayerStatsGrabber.i18n.php';
@@ -104,7 +104,7 @@ $wgExtensionCredits['media'][] = array(
 );
 
 
-/*
+/**
  * does a player stats request.. returns the "db key"
  *  (lets people fill out survey after playing clip)
  *  or
@@ -114,7 +114,7 @@ function mw_push_player_stats() {
 	return SpecialPlayerStatsGrabber::do_submit_player_log();
 }
 
-/*
+/**
  * @@todo should use API json output wrappers
  */
 if ( ! function_exists( 'php2jsObj' ) ) {
