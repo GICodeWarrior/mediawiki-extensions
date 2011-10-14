@@ -37,7 +37,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( "This file is a part of MediaWiki extension.\n" );
 }
 
-/*
+/**
  * browsing class - both for special page and AJAX calls
  */
 class CategoryBrowser {
