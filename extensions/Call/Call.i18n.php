@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * Internationalization file for Call Extension
  *
  * @addGroup Extension

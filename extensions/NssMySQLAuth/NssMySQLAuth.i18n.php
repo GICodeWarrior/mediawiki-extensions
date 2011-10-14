@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * Internationalization for NssMySQLAuth extension.
  */
 
@@ -11,7 +11,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'accountmanager' => 'Account manager',
-	
+
 	'am-username' 	=> 'username',
 	'am-email' => 'e-mail',
 	'am-active' 	=> 'active',
@@ -25,7 +25,7 @@ $messages['en'] = array(
 	'nss-no-mail'	=> 'Do not send email',
 	'nss-welcome-mail'	=> 'An account with username $1 and password $2 has been created for you.',
 	'nss-welcome-mail-subject' => 'Account creation',
-	
+
 	'nss-db-error' => 'Error reading from authentication database'
 );
 
