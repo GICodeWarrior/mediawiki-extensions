@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * Extension for managing the Wikimania conferences
  */
 

@@ -45,7 +45,6 @@ class Wikimania {
 	 */
 	private $country;
 
-
 	/**
 	 * Do a bit of delayed setup, based on this year's config
 	 * @param $year int Year to host Wikimania for

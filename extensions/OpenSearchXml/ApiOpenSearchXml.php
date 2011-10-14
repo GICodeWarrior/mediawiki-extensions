@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * Created on Oct 13, 2006
  * Adapted to XML output variant, plus extra text extraction 2008
  * Text extraction adapted from ActiveAbstract extension.

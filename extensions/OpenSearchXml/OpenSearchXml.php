@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * Copyright (C) 2008 Brion Vibber <brion@wikimedia.org>
  * http://www.mediawiki.org/
  *
