@@ -12,30 +12,31 @@ class FundraiserLandingPage extends UnlistedSpecialPage
 	}
 
 	function execute( $par ) {
-		global $wgRequest, $wgOut, $wgFundraiserLPDefaults;
+		global $wgFundraiserLPDefaults;
 
+		$request = $this->getRequest();
 		$this->setHeaders();
 
 		# load the querystring variables
-		$values = $wgRequest->getValues();
+		$values = $request->getValues();
 
 		# clear output variable to be safe
-		$output = "";
+		$output = '';
 
 		# get the required variables to use for the landing page
 		# (escaping with both htmlspecialchars and wfEscapeWikiText since the
 		# parameters are intending to reference templates)
-		$template = wfEscapeWikiText( htmlspecialchars( $wgRequest->getText( 'template', $wgFundraiserLPDefaults[ 'template' ] ) ) );
-		$appeal = wfEscapeWikiText( htmlspecialchars( $wgRequest->getText( 'appeal', $wgFundraiserLPDefaults[ 'appeal' ] ) ) );
-		$form = wfEscapeWikiText( htmlspecialchars( $wgRequest->getText( 'form', $wgFundraiserLPDefaults[ 'form' ] ) ) );
+		$template = wfEscapeWikiText( htmlspecialchars( $request->getText( 'template', $wgFundraiserLPDefaults[ 'template' ] ) ) );
+		$appeal = wfEscapeWikiText( htmlspecialchars( $request->getText( 'appeal', $wgFundraiserLPDefaults[ 'appeal' ] ) ) );
+		$form = wfEscapeWikiText( htmlspecialchars( $request->getText( 'form', $wgFundraiserLPDefaults[ 'form' ] ) ) );
 
 		# begin generating the template call
 		$output .= "{{ $template\n| appeal = $appeal\n| form = $form\n";
 
 		# add any parameters passed in the querystring
-		foreach ( $values as $k=>$v){
+		foreach ( $values as $k=>$v ) {
 			# skip the required variables
-			if ( $k == "template" || $k == "appeal" || $k == "form" ){
+			if ( $k == "template" || $k == "appeal" || $k == "form" ) {
 				continue;
 			}
 			# get the variables name and value
@@ -48,6 +49,6 @@ class FundraiserLandingPage extends UnlistedSpecialPage
 		$output .= "}}";
 
 		# print the output to the page
-		$wgOut->addWikiText( $output );
+		$this->getOutput()->addWikiText( $output );
 	}
 }

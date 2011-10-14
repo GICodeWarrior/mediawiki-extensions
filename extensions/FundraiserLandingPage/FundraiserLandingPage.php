@@ -17,9 +17,10 @@ EOT;
 }
 
 $wgExtensionCredits[ 'specialpage' ][ ] = array(
+	'path' => __FILE__,
 	'name' => 'FundraiserLandingPage',
 	'author' => 'Peter Gehres',
-	'url' => '',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:FundraiserLandingPage',
 	'description' => '',
 	'descriptionmsg' => '',
 	'version' => '1.0.0',
