@@ -77,6 +77,7 @@
 	padding: 1em 1.5em 1.25em 1.5em;
 	text-decoration: none;
 	outline: none;
+	/* @embed */
 	background-image: url(images/arrow.png);
 	background-position: right center;
 	background-repeat: no-repeat;
@@ -84,6 +85,7 @@
 .mw-codechallenge-box-outside:hover .mw-codechallenge-box-text,
 .mw-codechallenge-box-outside:focus .mw-codechallenge-box-text,
 .mw-codechallenge-box-selected .mw-codechallenge-box-text {
+	/* @embed */
 	background-image: url(images/arrow-hover.png);
 	text-decoration:none;
 }
@@ -118,6 +120,7 @@
 	top: 3px;
 	width: 16px;
 	height: 32px;
+	/* @embed */
 	background-image: url(images/callout.png);
 	background-position: left top;
 	background-repeat: no-repeat;
