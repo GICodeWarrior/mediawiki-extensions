@@ -126,7 +126,7 @@ $messages['en'] = array(
 	'contest-signup-cv' => 'Link to your CV',
 	'contest-signup-readrules' => 'I confirm that I have read, and agree to, [[$1|the contest rules]]',
 	'contest-signup-challenge' => 'What challenge do you want to take on?',
-	'contest-signup-finished' => 'This contest has ended.',
+	'contest-signup-finished' => 'This contest has ended. Thanks for your participation!',
 	'contest-signup-draft' => 'This contest has not started yet. Please be patient.',
 	'contest-signup-country' => 'Your country',
 
@@ -192,14 +192,14 @@ $messages['en'] = array(
 	'contest-mycontests-header-contest' => 'Contest',
 	'contest-mycontests-header-challenge' => 'Challenge',
 	'contest-mycontests-signup-success' => 'You have successfully signed up for this contest.',
-	'contest-mycontests-addition-success' => 'Your submission has been added.',
-	'contest-mycontests-updated-success' => 'Your submission has been updated.',
+	'contest-mycontests-addition-success' => 'You have successfully posted your submission! Thanks for participating in this contest.',
+	'contest-mycontests-updated-success' => 'You have successfully modified your submission.',
 	'contest-mycontests-sessionfail' => 'Your submission could not be saved due to loss of session data. Please try again.',
 
 	'contest-submission-submit' => 'Submit',
 	'contest-submission-unknown' => 'There is no contest with the provided name.',
 	'contest-submission-header' => 'Thanks for participating in this contest! Once you have completed the challenge, you can add a link to you submission below.',
-	'contest-submission-finished' => 'This contest has ended.',
+	'contest-submission-finished' => 'This contest has ended. Thanks for your participation!',
 
 	'contest-submission-submission' => 'Link to your submission',
 	'contest-submission-invalid-url' => 'This URL does not match one of the allowed formats.',
