@@ -426,8 +426,6 @@ class SpecialMyContests extends SpecialContestPage {
 	 * HTMLForm field validation-callback for the submissiom field.
 	 * Warning: regexes used! o_O
 	 * 
-	 * TODO: add support for other services such as Gitorious?
-	 * 
 	 * @since 0.1
 	 * 
 	 * @param $value String
@@ -445,13 +443,11 @@ class SpecialMyContests extends SpecialContestPage {
 		$allowedPatterns = array(
 			// GitHub URLs such as https://github.com/JeroenDeDauw/smwcon/tree/f9b26ec4ba1101b1f5d4ef76b7ae6ad3dabfb53b
 			// '@^https://github\.com/[a-zA-Z0-9-]+/[a-zA-Z0-9_-]+/tree/[a-zA-Z0-9]{40}$@i'
-			
-			// Any GitHub URL
-			'@^https?://github\.com/.*$@i',
-			
-			// Any Gitorious URL
-			'@^https?://(www\.)?gitorious\.org/.*$@i',
 		);
+		
+		foreach ( ContestSettings::get( 'submissionDomains' ) as $domain ) {
+			$allowedPatterns[] = '@^https?://(([a-z0-9]+)\.)?' . str_replace( '.', '\.', $domain ) . '/.*$@i';
+		}
 		
 		foreach ( $allowedPatterns as $pattern ) {
 			if ( preg_match( $pattern, $value ) ) {
