@@ -444,6 +444,23 @@ class qp_Setup {
 		return $username;
 	}
 
+	/**
+	 * Parse string with XML-like attributes (no tag, only attributes)
+	 * @param    $attr_str  attribute string
+	 * @param    $attr_list list of XML attributes, PCRE allowed
+	 * @return   array  key is attribute regexp
+	 *                  value is the value of attribute or null
+	 */
+	static function getXmlLikeAttributes( $attr_str, $attr_list ) {
+		$attr_vals = array();
+		$match = array();
+		foreach ( $attr_list as $attr_name ) {
+			preg_match( '/' . $attr_name . '\s?=\s?"(.*?)"/u', $attr_str, $match );
+			$attr_vals[$attr_name] = ( count( $match ) > 1 ) ? $match[1] : null;
+		}
+		return $attr_vals;
+	}
+
 	static function onLoadAllMessages() {
 		if ( !self::$messagesLoaded ) {
 			self::$messagesLoaded = true;

@@ -75,6 +75,13 @@ class qp_AbstractPoll {
 	var $pollStore = null;
 
 	/**
+	 * possible xml-like attributes the question may have
+	 */
+	var $questionAttributeKeys = array(
+		't[yi]p[eo]', 'layout', 'textwidth', 'propwidth', 'showresults'
+	);
+
+	/**
 	 * default values of 'propwidth', 'textwidth' and 'layout' attributes
 	 * will be applied to child questions that do not have these attributes defined
 	 *
@@ -232,12 +239,7 @@ class qp_AbstractPoll {
 	 * @return   string  the value of question's type attribute
 	 */
 	function getQuestionAttributes( $attr_str, &$paramkeys ) {
-		$paramkeys = array( 't[yi]p[eo]' => null, 'layout' => null, 'textwidth' => null, 'propwidth' => null, 'showresults' => null );
-		$match = array();
-		foreach ( $paramkeys as $key => $val ) {
-			preg_match( '`' . $key . '\s?=\s?"(.*?)"`u', $attr_str, $match );
-			$paramkeys[$key] = ( count( $match ) > 1 ) ? $match[1] : null;
-		}
+		$paramkeys = qp_Setup::getXmlLikeAttributes( $attr_str, $this->questionAttributeKeys );
 		# apply default questions attributes from poll definition, if there is any
 		foreach ( $this->defaultQuestionAttributes as $attr => $val ) {
 			if ( $paramkeys[$attr] === null ) {

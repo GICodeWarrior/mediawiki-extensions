@@ -6,22 +6,41 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 /**
  * Stores the list of current category options -
- * usually the pipe-separated entries in double angle brackets list
+ * usually the pipe-separated entries in specified brackets list
  */
 class qp_TextQuestionOptions {
 
 	# boolean, indicates whether incoming tokens are category list elements
 	var $isCatDef;
+	# type of created element (text,radio,checkbox)
+	var $type;
 	# counter of pipe-separated elements in-between << >> markup
-	# used to distinguish real category options from textwidth definition
+	# used to distinguish real category options from attributes definition
+	# for type='text'
 	var $catDefIdx;
 	# list of input options; array whose every element is a string
 	var $input_options;
-	# a value of textwidth definition for input text field
-	# it is defined as first element of options list, for example:
-	# <<::12>> or <<::15|test>>
-	# currently, it is used only for text inputs (not for select/option list)
-	var $textwidth;
+
+	# whether the current option has xml-like attributes specified
+	var $hasAttributes = false;
+	var $attributes = array(
+		## a value of input text field width in 'em'
+		# possible values: null, positive int
+		# defined as first element xml-like attribute of options list, for example:
+		# <<:: width="12">> or <<:: width="15"|test>>
+		# currently, it is used only for text inputs (not for select/option list)
+		'width' => null,
+		## whether the text options of current category has to be sorted;
+		# possible values: null (do not sort), 'asc', 'desc'
+		# defined as first element xml-like attribute of options list, for example:
+		# <<:: sorting="desc"|a|b|c>>
+		'sorting' => null,
+		## whether the checkbox type option of current category has to be checked by default;
+		# possible value: null (not checked), not null (checked)
+		# defined as first element xml-like attribute of options list, for example:
+		# <[checked=""]>
+		'checked' => null
+	);
 	# a pointer to last element in $this->input_options array
 	var $iopt_last;
 
@@ -39,10 +58,15 @@ class qp_TextQuestionOptions {
 	 * Applies default settings to the options list
 	 * New category begins
 	 */
-	function startOptionsList() {
+	function startOptionsList( $type ) {
 		$this->isCatDef = true;
+		$this->type = $type;
 		$this->input_options = array( 0 => '' );
-		$this->textwidth = null; // will use default value
+		$this->hasAttributes = false;
+		# set default values of xml-like attributes
+		foreach ( $this->attributes as $attr_name => &$attr_val ) {
+			$attr_val = null;
+		}
 		$this->iopt_last = &$this->input_options[0];
 	}
 
@@ -51,33 +75,54 @@ class qp_TextQuestionOptions {
 	 * This option will be "current last option"
 	 */
 	function addEmptyOption() {
-		# add new empty option only if there was no textwidth definition
-		if ( is_null( $this->textwidth ) || $this->catDefIdx !== 0 ) {
-			# add new empty option to the end of the list
-			$this->input_options[] = '';
-			$this->iopt_last = &$this->input_options[count( $this->input_options ) - 1];
+		# new options are meaningful only for type 'text'
+		if ( $this->type === 'text' ) {
+			# add new empty option only if there was no xml attributes definition
+			if ( !$this->hasAttributes || $this->catDefIdx !== 0 ) {
+				# add new empty option to the end of the list
+				$this->input_options[] = '';
+				$this->iopt_last = &$this->input_options[count( $this->input_options ) - 1];
+			}
+			$this->catDefIdx++;
 		}
-		$this->catDefIdx++;
 	}
 
 	/**
-	 * Set string value to current last option
+	 * Add string part to value of current last option
 	 * @param  $token  string current value of token between pipe separators
-	 * Also, _optionally_ overrides textwidth property
+	 * Also, _optionally_ parses xml-like attributes (when these are found in category definition)
 	 */
 	function addToLastOption( $token ) {
-		# first entry of category options might be definition of
-		# the current category input textwidth instead
 		$matches = array();
-		if ( count( $this->input_options ) === 1 &&
-				preg_match( '`^\s*::(\d{1,2})\s*$`', $token, $matches ) &&
-				$matches[1] > 0 ) {
-			# override the textwidth of input options
-			$this->textwidth = intval( $matches[1] );
-		} else {
-			# add new input option
-			$this->iopt_last .= $token;
+		if ( $this->type === 'text' ) {
+			# first entry of "category type text" might contain current category
+			# xml-like attributes
+			if ( count( $this->input_options ) === 1 &&
+				preg_match( '`^::\s*(.+)$`', $token, $matches ) ) {
+				# note that hasAttributes is always true regardless the attributes are used or not,
+				# because it is checked in $this->addEmptyOption()
+				$this->hasAttributes = true;
+				# parse attributes string
+				$option_attributes = qp_Setup::getXmlLikeAttributes( $matches[1], array( 'width', 'sorting' ) );
+				# apply attributes to current option
+				foreach ( $option_attributes as $attr_name => $attr_val ) {
+					$this->attributes[$attr_name] = $attr_val;
+				}
+				return;
+			}
+		} elseif ( $this->type === 'checkbox' ) {
+			if ( $token !== '' ) {
+				# checkbox type of categories do not contain text values,
+				# only xml-like attributes
+				$option_attributes = qp_Setup::getXmlLikeAttributes( $token, array( 'checked' ) );
+				# apply attributes to current option
+				foreach ( $option_attributes as $attr_name => $attr_val ) {
+					$this->attributes[$attr_name] = $attr_val;
+				}
+			}
 		}
+		# add new input option
+		$this->iopt_last .= $token;
 	}
 
 	/**
@@ -92,6 +137,14 @@ class qp_TextQuestionOptions {
 			# make sure unique elements keys are consequitive starting from 0
 			$this->input_options[] = $option;
 		}
+		switch ( $this->attributes['sorting'] ) {
+		case 'asc' :
+			sort( $this->input_options, SORT_STRING );
+			break;
+		case 'desc' :
+			rsort( $this->input_options, SORT_STRING );
+			break;
+		}
 	}
 
 } /* end of qp_TextQuestionOptions class */
@@ -105,7 +158,8 @@ class qp_TextQuestionOptions {
  */
 class qp_TextQuestion extends qp_StubQuestion {
 
-	const PROP_CAT_PATTERN = '`(<<|>>|{{|}}|\[\[|\]\]|\|)`u';
+	# regexp for separation of proposal line tokens
+	static $propCatPattern = null;
 
 	# $propview is an instance of qp_TextQuestionProposalView
 	#             which contains parsed tokens for combined
@@ -116,6 +170,47 @@ class qp_TextQuestion extends qp_StubQuestion {
 	# $dbtokens elements do not include error messages;
 	# only proposal parts and category options
 	var $dbtokens = array();
+
+	# list of opening input braces types
+	static $input_braces_types = array(
+		'<<' => 'text',
+		'<(' => 'radio',
+		'<[' => 'checkbox'
+	);
+	# matches of opening / closing braces
+	static $matching_braces = array(
+		# wiki link
+		'[[' => ']]',
+		# wiki magicword
+		'{{' => '}}',
+		# text input / select option
+		'<<' => '>>',
+		# radiobutton
+		'<(' => ')>',
+		# checkbox
+		'<[' => ']>'
+	);
+
+	/**
+	 * Constructor
+	 * @public
+	 * @param  $poll            an instance of question's parent controller
+	 * @param  $view            an instance of question view "linked" to this question
+	 * @param  $questionId      the identifier of the question used to generate input names
+	 */
+	function __construct( qp_AbstractPoll $poll, qp_StubQuestionView $view, $questionId ) {
+		parent::__construct( $poll, $view, $questionId );
+		if ( self::$propCatPattern === null ) {
+			$braces_list = array_map( 'preg_quote',
+				array_merge(
+					( array_values( self::$matching_braces ) ),
+					array_keys( self::$matching_braces ),
+					array( '|' )
+				)
+			);
+			self::$propCatPattern = '/(' . implode( '|', $braces_list ) . ')/u';
+		}
+	}
 
 	/**
 	 * Parses question body header.
@@ -167,11 +262,6 @@ class qp_TextQuestion extends qp_StubQuestion {
 	 * also may be altered during the poll generation
 	 */
 	function parseBody() {
-		$matching_braces = array(
-			'[[' => ']]',
-			'{{' => '}}',
-			'<<' => '>>'
-		);
 		$proposalId = 0;
 		# Currently, we use just a single instance (no nested categories)
 		$opt = new qp_TextQuestionOptions();
@@ -185,62 +275,69 @@ class qp_TextQuestion extends qp_StubQuestion {
 			$this->dbtokens = $brace_stack = array();
 			$catId = 0;
 			$last_brace = '';
-			$tokens = preg_split( self::PROP_CAT_PATTERN, $raw, -1, PREG_SPLIT_DELIM_CAPTURE );
+			$tokens = preg_split( self::$propCatPattern, $raw, -1, PREG_SPLIT_DELIM_CAPTURE );
+			$matching_closed_brace = '';
 			foreach ( $tokens as $token ) {
-				$isContinue = false;
-				switch ( $token ) {
-				case '|' :
+				try {
+					# $toBeStored == true when current $token has to be stored into
+					# category / proposal list (depending on $opt->isCatDef)
+					$toBeStored = true;
+					if ( $token === '|' ) {
+						# parameters separator
+						if ( $opt->isCatDef ) {
+							if ( count( $brace_stack ) == 1 && $brace_stack[0] === $matching_closed_brace ) {
+								# pipe char starts new option only at top brace level,
+								# with matching input brace
+								$opt->addEmptyOption();
+								$toBeStored = false;
+							}
+						}
+					} elseif ( array_key_exists( $token, self::$matching_braces ) ) {
+						# opening braces
+						array_push( $brace_stack, self::$matching_braces[$token] );
+						if ( array_key_exists( $token, self::$input_braces_types ) &&
+								count( $brace_stack ) == 1 ) {
+							# start category definiton
+							$matching_closed_brace = self::$matching_braces[$token];
+							$opt->startOptionsList( self::$input_braces_types[$token] );
+							$toBeStored = false;
+						}
+					} elseif ( in_array( $token, self::$matching_braces ) ) {
+						# closing braces
+						if ( count( $brace_stack ) > 0 ) {
+							$last_brace = array_pop( $brace_stack );
+							if ( $last_brace != $token ) {
+								array_push( $brace_stack, $last_brace );
+								throw new Exception( 'break' );
+							}
+							if ( count( $brace_stack ) > 0 || $token !== $matching_closed_brace ) {
+								throw new Exception( 'break' );
+							}
+							$matching_closed_brace = '';
+							# add new category input options for the storage
+							$this->dbtokens[] = $opt->input_options;
+							# setup mCategories
+							$this->mCategories[$catId] = array( 'name' => strval( $catId ) );
+							# load proposal/category answer (when available)
+							$this->loadProposalCategory( $opt, $proposalId, $catId );
+							# current category is over
+							$catId++;
+							$toBeStored = false;
+						}
+					}
+				} catch ( Exception $e ) {
+					if ( $e->getMessage() !== 'break' ) {
+						throw new MWException( $e->getMessage() );
+					}
+				}
+				if ( $toBeStored ) {
 					if ( $opt->isCatDef ) {
-						if ( count( $brace_stack ) == 1 && $brace_stack[0] === '>>' ) {
-							# pipe char starts new option only at top brace level,
-							# with angled braces
-							$opt->addEmptyOption();
-							$isContinue = true;
-						}
+						$opt->addToLastOption( $token );
+					} else {
+						# add new proposal part
+						$this->dbtokens[] = strval( $token );
+						$this->propview->addProposalPart( $token );
 					}
-					break;
-				case '[[' :
-				case '{{' :
-				case '<<' :
-					array_push( $brace_stack, $matching_braces[$token] );
-					if ( $token === '<<' && count( $brace_stack ) == 1 ) {
-						$opt->startOptionsList();
-						$isContinue = true;
-					}
-					break;
-				case ']]' :
-				case '}}' :
-				case '>>' :
-					if ( count( $brace_stack ) > 0 ) {
-						$last_brace = array_pop( $brace_stack );
-						if ( $last_brace != $token ) {
-							array_push( $brace_stack, $last_brace );
-							break;
-						}
-						if ( count( $brace_stack ) > 0 || $token !== '>>' ) {
-							break;
-						}
-						# add new category input options for the storage
-						$this->dbtokens[] = $opt->input_options;
-						# setup mCategories
-						$this->mCategories[$catId] = array( 'name' => strval( $catId ) );
-						# load proposal/category answer (when available)
-						$this->loadProposalCategory( $opt, $proposalId, $catId );
-						# current category is over
-						$catId++;
-						$isContinue = true;
-					}
-					break;
-				}
-				if ( $isContinue ) {
-					continue;
-				}
-				if ( $opt->isCatDef ) {
-					$opt->addToLastOption( $token );
-				} else {
-					# add new proposal part
-					$this->dbtokens[] = strval( $token );
-					$this->propview->addProposalPart( $token );
 				}
 			}
 			# check if there is at least one category defined
