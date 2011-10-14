@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * Created on Jul 26, 2007
  *
  * All Metavid Wiki code is Released Under the GPL2
@@ -41,7 +41,7 @@ class MV_SpecialSearch extends SpecialPage {
 		}
 	}
 }
-/*
+/**
  * simple/quick implementation ...
  * @@todo future version should be better integrated with semantic wiki and or
  * an external scalable search engine ie sphinx or lucene

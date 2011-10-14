@@ -2,7 +2,7 @@
 
 if ( !defined( 'MEDIAWIKI' ) ) die();
 
-/*
+/**
  * MV_SpecialMVAdmin.php Created on Apr 24, 2007
  *
  * All Metavid Wiki code is Released Under the GPL2

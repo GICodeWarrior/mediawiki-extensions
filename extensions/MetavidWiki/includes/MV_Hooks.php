@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * MV_Hooks.php Created on Apr 24, 2007
  *
  * All Metavid Wiki code is Released under the GPL2
@@ -70,7 +70,7 @@ function mvLinkBegin($skin, $target, &$text, &$customAttribs, &$query, &$options
  	}
  	return true;
 }
-/*
+/**
  * enables the rewriting of links to the Stream and Sequence namespace to support inline embeding.
  * see page: sample in-wiki-embed syntax
  * @@todo should probably be integrated to respective Stream and Sequence class.
@@ -345,7 +345,7 @@ function mv_edit_sequence_submit() {
 	$MV_SequenceTools = new MV_SequenceTools();
 	return $MV_SequenceTools->do_edit_submit();
 }
-/*
+/**
  * mv_edit_submit
  * @@todo this could be cleaned up by using the api .. lots of weridness otherwise
  */

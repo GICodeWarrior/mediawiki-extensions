@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * maintenance_util.inc.php Created on Jan 19, 2008
  *
  * All Metavid Wiki code is Released under the GPL2
@@ -13,7 +13,7 @@
  * Maintenance Utility Functions:
  */
 require_once ( '../../../maintenance/commandLine.inc' );
- /*
+/**
  * set up the bot user:
  */
 $botUserName = 'MvBot';

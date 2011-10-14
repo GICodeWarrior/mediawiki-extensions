@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * ogg_thum_insert.php Created on Mar 13, 2008
  *
  * All Metavid Wiki code is Released under the GPL2

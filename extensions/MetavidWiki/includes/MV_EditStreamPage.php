@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * MV_EditStreamPage.php Created on Nov 28, 2007
  *
  * All Metavid Wiki code is Released Under the GPL2

@@ -419,7 +419,7 @@ function mvfInitUserLanguage( $langcode ) {
 	}
 }
 
-/*
+/**
  * Utility functions:
  */
 function mvOutputJSON( & $data ) {
@@ -513,7 +513,7 @@ function mvIsNtpTime( $time ) {
 		return true;
 	return false;
 }
-/*
+/**
  * simple array increment (supports up two 2 dim deep)
  * should be a cleaner way to write this... hmm...
  */
@@ -540,7 +540,7 @@ function mvIsNtpTime( $time ) {
  	}
  }
 
-/*
+/**
  * takes ntp time of format hh:mm:ss and converts to seconds
  */
 function npt2seconds( $str_time ) {
@@ -558,7 +558,7 @@ function npt2seconds( $str_time ) {
 	}
 	return ( $hours * 3600 ) + ( $min * 60 ) + $sec;
 }
-/*
+/**
  * takes seconds duration and return hh:mm:ss time
  */
 function seconds2npt( $seconds, $short = false ) {
@@ -607,7 +607,7 @@ function seconds2Description( $seconds, $short=false, $singular=false){
 	}
 	return $o;
 }
-/*
+/**
  * converts seconds to time unit array
  */
 function time_duration_2array ( $seconds, $periods = null ) {
@@ -644,7 +644,7 @@ function time_duration_2array ( $seconds, $periods = null ) {
 	}
 	return $values;
 }
-/*
+/**
  * direct output for quick creation of non editable pages (errors, stream access etc)
  */
 function mvOutputSpecialPage( $title, & $page ) {
@@ -719,7 +719,7 @@ function mvDoMetavidStreamPage( &$title, &$article ) {
 	}
 }
 
-/*
+/**
  * global MV_Stream server
  * @@todo cache this function
  */

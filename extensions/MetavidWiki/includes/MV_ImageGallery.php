@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * MV_ImageGallery.php Created on Oct 22, 2007
  *
  * All Metavid Wiki code is Released Under the GPL2

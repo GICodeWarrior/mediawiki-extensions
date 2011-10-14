@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * MV_Index.php Created on May 16, 2007
  *
  * All Metavid Wiki code is Released under the GPL2
