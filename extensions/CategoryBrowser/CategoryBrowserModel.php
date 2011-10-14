@@ -114,7 +114,7 @@ abstract class CB_AbstractPager {
 
 } /* end of CB_AbstractPager class */
 
-/*
+/**
  * parent categories pager
  */
 class CB_ParentPager extends CB_AbstractPager {
@@ -177,7 +177,7 @@ class CB_ParentPager extends CB_AbstractPager {
 
 } /* end of CB_ParentPager class */
 
-/*
+/**
  * subentries (subcategories, pages, files) pager
  * TODO: gracefully set offset = 0 when too large offset was given
  */
@@ -215,7 +215,7 @@ class CB_SubPager extends CB_AbstractPager {
 	 * @param $limit SQL limit
 	 */
 	function getCurrentRows() {
-		/* 
+		/*
 		 * SELECT cl_sortkey,cat_id,cat_title,cat_subcats,cat_pages,cat_files FROM `wiki_page` INNER JOIN `wiki_categorylinks` FORCE INDEX (cl_sortkey) ON (cl_from = page_id) LEFT JOIN `wiki_category` ON (cat_title = page_title AND page_namespace = 14)  WHERE cl_to = 'parent category name' AND page_namespace = 14 ORDER BY cl_sortkey LIMIT 0,11
 		 */
 		$query_string =
@@ -258,7 +258,7 @@ class CB_SubPager extends CB_AbstractPager {
 
 }  /* end of CB_SubPager class */
 
-/*
+/**
  * creates a root category pager
  * TODO: gracefully set offset = 0 when too large offset was given
  * TODO: with $conds == '' categories aren't always sorted alphabetically

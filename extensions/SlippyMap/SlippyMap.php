@@ -54,7 +54,7 @@ function wfSlippyMapHook() {
 	return true;
 }
 
-/*
+/**
  * Configuration variables for the SlippyMap extension.
  */
 

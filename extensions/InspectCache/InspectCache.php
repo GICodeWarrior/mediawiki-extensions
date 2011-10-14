@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * This is a simple debugging tool to inspect the contents of the shared cache
  * It is unrestricted and insecure, do not enable it on a public site.
  */

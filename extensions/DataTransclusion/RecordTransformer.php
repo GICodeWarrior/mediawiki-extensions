@@ -1,7 +1,7 @@
 <?php
 /**
  * Base class for record transformers. Record transformers know about the structure
- * of replies or query results from data sources, and implement a way to turn 
+ * of replies or query results from data sources, and implement a way to turn
  * these results into flat arrays that can be handed to a template for formatting.
  *
  * @file
@@ -16,7 +16,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 1 );
 }
 
-/*
+/**
  */
 abstract class RecordTransformer {
 	static function splitList( $s, $chars = ',;|' ) {
@@ -42,7 +42,7 @@ abstract class RecordTransformer {
 	}
 
 	/**
-	* Implementations must return a flat associative array of key/value pairs, ready to be 
+	* Implementations must return a flat associative array of key/value pairs, ready to be
 	* handed to a template for formatting. The values are usually but not neccessarily
 	* derived from the $record parameter in some way.
 	* @param $raw_record raw data record, as returned by extractRecord(). May have any type,
@@ -60,7 +60,7 @@ abstract class RecordTransformer {
 
 	/**
 	* Implementations should extract the actual data record from the response. This record
-	* is later handed to transform() for further processing. 
+	* is later handed to transform() for further processing.
 	* @param $response response as received from the data source (after decodeData())
 	* @return raw data record, as returned by extractRecord(). May have any type,
 	* 	but will frequenty consists of nested array or an XML DOM.
@@ -82,7 +82,7 @@ abstract class RecordTransformer {
 
 		wfDebugLog( 'DataTransclusion', "created instance of $c\n" );
 		$transformer = $obj;
-		
+
 		return $transformer;
 	}
 

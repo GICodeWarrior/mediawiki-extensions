@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * the api module responsible for dishing out jobs, and taking in results.
  */
 

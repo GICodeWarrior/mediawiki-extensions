@@ -137,7 +137,7 @@ $wgDerivativeSettings[ WikiAtHome::ENC_HQ_STREAM ] =
 		);
 
 
-/*
+/**
  * Main WikiAtHome Class hold some constants and config values
  *
  */
@@ -146,7 +146,7 @@ class WikiAtHome {
 	const ENC_WEB_STREAM = '400_300kbs';
 	const ENC_HQ_STREAM = 'high_quality';
 
-/*
+/**
  * the mapping between firefogg api and ffmpeg2theora command line
  * (this way shell command to ffmpeg2theora and firefogg can share a common api)
  * also see: http://firefogg.org/dev/index.html
@@ -222,7 +222,7 @@ class WikiAtHome {
 }
 
 //GLOBAL FUNCTIONS:
-/*
+/**
  * wahDoEncode issues an encode command to ffmpeg2theora
  */
 function wahDoEncode($source, $target, $encodeSettings ){
@@ -256,7 +256,7 @@ function wahDoEncode($source, $target, $encodeSettings ){
 	return true;
 }
 
-/*
+/**
  * runs concatenation checks if we get a non zero length output
  */
 function wahDoOggCat( $destFile, $oggList ){

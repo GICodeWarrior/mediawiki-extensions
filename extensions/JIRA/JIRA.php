@@ -1,6 +1,6 @@
 <?php
 /* Copyright (c) 2007 River Tarnell <river@wikimedia.org>.        */
-/*
+/**
  * Permission is granted to anyone to use this software for any purpose,
  * including commercial applications, and to alter it and redistribute it
  * freely. This software is provided 'as-is', without any express or implied
@@ -11,7 +11,7 @@
 
 
 # To use:
-# 
+#
 # * Make sure remote API is enabled in your JIRA.
 # * Set $JIRAs similar to this:
 #
@@ -29,9 +29,9 @@
 #
 # Also set:
 #   $JIRAdefault = 'whit';
-# 
+#
 # This sets the default jira install to use when none is specified.
-# 
+#
 # To display a list of JIRA issues in a wiki page, do this:
 #
 # <jiralist jira="whit" projects="TEST,OTHER">
@@ -40,7 +40,7 @@
 #
 # jira="" is optional, and defaults to $JIRAdefault.  projects="" is also
 # optional; if not specified, all projects will be searched.  The search term
-# is a quick search string, as describe at 
+# is a quick search string, as describe at
 #   http://www.atlassian.com/software/jira/docs/v3.11/quicksearch.html
 
 $wgExtensionCredits['parserhook'][] = array(
@@ -56,7 +56,7 @@ function efJIRASetHook( $parser ) {
 	$parser->setHook( 'jiralist', 'efJIRARender' );
 	return true;
 }
- 
+
 function efJIRARender( $input, $args, $parser ) {
 global	$JIRAs, $JIRAdefault;
 	try {
@@ -82,7 +82,7 @@ global	$JIRAs, $JIRAdefault;
 		$resolutions = $jira->getResolutions($auth);
 
 		$fields = array(
-			'status' => $statuses, 
+			'status' => $statuses,
 			'priority' => $priorities,
 			'resolution' => $resolutions,
 			'url' => $url);

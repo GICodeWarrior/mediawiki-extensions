@@ -1145,7 +1145,7 @@ class PEAR_Error
     // }}}
 }
 
-/*
+/**
  * Local Variables:
  * mode: php
  * tab-width: 4

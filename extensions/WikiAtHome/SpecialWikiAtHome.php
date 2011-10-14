@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * MV_Special Page
  */
 class SpecialWikiAtHome extends SpecialPage {
@@ -13,7 +13,7 @@ class SpecialWikiAtHome extends SpecialPage {
 	}
 	function execute( $par ) {
 		global $wgOut;
-		$wgOut->addScriptClass('WikiAtHome');		
+		$wgOut->addScriptClass('WikiAtHome');
 		//for now just render out wiki@home header
 		$html = '<h1 class="firstHeading" id="firstHeading">'.wfMsg('specialwikiathome').'</h1>';
 		$html.='<div id="bodyContent">';

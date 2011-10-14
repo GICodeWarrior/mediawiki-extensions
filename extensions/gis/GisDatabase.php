@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  *  Maintain a database of articles containing the <GEO> tag
  *
  *

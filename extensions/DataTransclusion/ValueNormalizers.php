@@ -14,7 +14,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 1 );
 }
 
-/*
+/**
  */
 abstract class ValueNormalizers {
 	static function trim( $v ) {

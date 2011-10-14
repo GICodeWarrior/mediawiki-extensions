@@ -23,7 +23,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 define("egSparkQuery", "data-spark-query");
 define("egSparkFormat", "data-spark-format");
 
-/*
+/**
  * Example configuration modules
 
  $wgResourceModules['ext.spark.oatpivot'] = array(

@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * creates an stub for non-free video that is waiting to be transcoded once the free format file is available
  * it re-maps all requests to the free format file. (only transcoding jobs will get the non-free file)
  */

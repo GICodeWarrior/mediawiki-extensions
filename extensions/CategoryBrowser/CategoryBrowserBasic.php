@@ -212,7 +212,7 @@ class CB_XML {
 	}
 } /* end of CB_XML class */
 
-/*
+/**
  * Localization of SQL tokens list
  * comparsions like "a > 1" are treated like single-ops
  */

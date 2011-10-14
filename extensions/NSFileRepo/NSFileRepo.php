@@ -69,7 +69,7 @@ function NSFileRepoSetup() {
 	RepoGroup::destroySingleton();
 }
 
-/*
+/**
  * Check for Namespace in Title Line
 */
 function NSFileRepoNSCheck( $uploadForm ) {
@@ -94,7 +94,7 @@ function NSFileRepolockdownUserCan( $title, $user, $action, &$result) {
 	} elseif( function_exists( 'lockdownUserCan' ) ) {
 		if( $title->getNamespace() == NS_FILE ) {
 			$ntitle = Title::newFromText( $title->mDbkeyform );
-			return ( $ntitle->getNamespace() < 100 ) ? 
+			return ( $ntitle->getNamespace() < 100 ) ?
 				true : lockdownUserCan( $ntitle, $user, $action, $result );
 		}
 	}
