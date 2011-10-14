@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * Classes for PrefSwitch extension
  *
  * @file
@@ -7,9 +7,9 @@
  */
 
 class PrefSwitchSurvey {
-	
+
 	/* Private Static Members */
-	
+
 	// Correlation between names of field types and implementation classes
 	protected static $fieldTypes = array(
 		'select' => 'PrefSwitchSurveyFieldSelect',
@@ -20,9 +20,9 @@ class PrefSwitchSurvey {
 		'text' => 'PrefSwitchSurveyFieldText',
 		'smallinput' => 'PrefSwitchSurveyFieldSmallInput',
 	);
-	
+
 	/* Static Methods */
-	
+
 	/**
 	 * Render the HTML for a survey.
 	 * @param $name string Survey name
@@ -57,7 +57,7 @@ class PrefSwitchSurvey {
 		$html .= Xml::closeElement( 'dl' );
 		return $html;
 	}
-	
+
 	/**
 	 * Save a survey to the database
 	 * @param $name string Survey name
@@ -85,10 +85,10 @@ class PrefSwitchSurvey {
 		}
 	}
 }
-interface PrefSwitchSurveyField {	
+interface PrefSwitchSurveyField {
 
 	/* Static Methods */
-	
+
 	/**
 	 * Render the HTML for a question
 	 * @param $question string Question ID
@@ -98,7 +98,7 @@ interface PrefSwitchSurveyField {
 	 * @return string HTML
 	 */
 	public static function render( $question, $config, $answer, $answerData );
-	
+
 	/**
 	 * Get values to insert into the database for a question
 	 * @param $question Question ID
@@ -142,7 +142,7 @@ class PrefSwitchSurveyFieldSelect implements PrefSwitchSurveyField {
 		$html .= Xml::closeElement( 'dd' );
 		return $html;
 	}
-	
+
 	public static function save( $question, $request ) {
 		$answer = $request->getVal( "prefswitch-survey-{$question}", '' );
 		switch ( $answer ) {
