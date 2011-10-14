@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * Created on 24.6.2009
  *
  * Author: ning
@@ -80,7 +80,7 @@ function smwgNMSetupExtension() {
 	require_once( $smwgNMIP . '/includes/jobs/SMW_NMSendMailJob.php' );
 	$wgJobClasses['SMWNMRefreshJob'] = 'SMWNMRefreshJob';
 	require_once( $smwgNMIP . '/includes/jobs/SMW_NMRefreshJob.php' );
-	
+
 	if ( defined( 'SMW_VERSION' ) && strpos( SMW_VERSION, '1.5' ) == 0 ) {
 		$wgAutoloadClasses['SMWNotifyProcessor'] = $smwgNMIP . '/includes/SMW_NotifyProcessor.smw15.php';
 	} else {

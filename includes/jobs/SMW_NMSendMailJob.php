@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * SMW_NMSendMailJob.php
  *
  * This job is triggered whenever a notify-me page was saved or removed.

@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * Author: ning
  */
 if ( !defined( 'MEDIAWIKI' ) ) {
