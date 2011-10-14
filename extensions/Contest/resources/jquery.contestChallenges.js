@@ -24,6 +24,7 @@
 						var box = $(this);
 						if ( !box.hasClass( 'mw-codechallenge-box-selected' ) ) {
 							$( '.mw-codechallenge-popup' ).not( box ).fadeOut( 'fast' );
+							$( '.mw-codechallenge-box-selected' ).removeClass( 'mw-codechallenge-box-selected' );
 							box
 								.addClass( 'mw-codechallenge-box-selected' )
 								.find( '.mw-codechallenge-popup' )
