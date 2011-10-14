@@ -681,6 +681,7 @@ $messages['fo'] = array(
  * @author IAlex
  * @author Jean-Frédéric
  * @author Sherbrooke
+ * @author Urhixidur
  * @author Verdy p
  * @author Zetud
  */
@@ -699,7 +700,7 @@ Elle réalise ceci en appelant les étages successifs appropriés du parseur de 
 	'expand_templates_ok' => 'OK',
 	'expand_templates_remove_comments' => 'Supprimer les commentaires',
 	'expand_templates_remove_nowiki' => 'Supprime les marqueurs <nowiki> dans le résultat',
-	'expand_templates_generate_xml' => "Afficher l’arbre d'analyse au format XML",
+	'expand_templates_generate_xml' => 'Voir l’arborescence d’analyse XML',
 	'expand_templates_preview' => 'Aperçu du rendu',
 );
 
