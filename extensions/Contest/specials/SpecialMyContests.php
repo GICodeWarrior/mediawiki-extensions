@@ -13,6 +13,8 @@
  */
 class SpecialMyContests extends SpecialContestPage {
 	
+	protected $submissionState = null;
+	
 	/**
 	 * Constructor.
 	 * 
@@ -238,6 +240,12 @@ class SpecialMyContests extends SpecialContestPage {
 		if ( $this->getRequest()->getCheck( 'new' ) ) {
 			$this->showSuccess( 'contest-mycontests-signup-success' );
 		}
+		else if ( $this->getRequest()->getCheck( 'added' ) ) {
+			$this->showSuccess( 'contest-mycontests-addition-success' );
+		}
+		else if ( $this->getRequest()->getCheck( 'updated' ) ) {
+			$this->showSuccess( 'contest-mycontests-updated-success' );
+		}
 		else if ( $this->getRequest()->wasPosted()
 			&& !$this->getUser()->matchEditToken( $this->getRequest()->getVal( 'wpEditToken' ) ) ) {
 			$this->showError( 'contest-mycontests-sessionfail' );
@@ -253,8 +261,9 @@ class SpecialMyContests extends SpecialContestPage {
 		$form->setSubmitCallback( array( $this, 'handleSubmission' ) );
 		$form->setSubmitText( wfMsg( 'contest-submission-submit' ) );
 		
-		if( $form->show() ){
-			$this->getOutput()->redirect( $this->getTitle( $contestant->getContest()->getField( 'name' ) )->getLocalURL() );
+		if( $form->show() ) {
+			$query = is_null( $this->submissionState ) ? '' : $this->submissionState;
+			$this->getOutput()->redirect( $this->getTitle( $contestant->getContest()->getField( 'name' ) )->getLocalURL( $query ) );
 		}
 		else {
 			$this->getOutput()->addModules( 'contest.special.submission' );
@@ -289,7 +298,18 @@ class SpecialMyContests extends SpecialContestPage {
 			'submission' => trim( $data['contestant-submission'] ),
 		) );
 		
-		return $contestant->writeToDB();
+		$success = $contestant->writeToDB();
+		
+		if ( $success ) {
+			if ( trim( $data['contestant-previous-submission'] ) === '' && trim( $data['contestant-submission'] ) !== '' ) {
+				$this->submissionState = 'added';
+			}
+			else {
+				$this->submissionState = 'updated';
+			}
+		}
+		
+		return $success;
 	}
 	
 	/**
@@ -308,6 +328,11 @@ class SpecialMyContests extends SpecialContestPage {
 			'type' => 'hidden',
 			'default' => $contestant->getId(),
 			'id' => 'contest-id',
+		);
+		
+		$fields['contestant-previous-submission'] = array(
+			'type' => 'hidden',
+			'default' => $contestant->getField( 'submission' ),
 		);
 		
 		$fields['contestant-submission'] = array(
