@@ -162,9 +162,9 @@ final class ContestHooks {
 	} 
 	
 	/**
-     * Used when generating internal and interwiki links in Linker::link(),
-     * just before the function returns a value.
-     * @see https://www.mediawiki.org/wiki/Manual:Hooks/LinkEnd
+	 * Used when generating internal and interwiki links in Linker::link(),
+	 * just before the function returns a value.
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/LinkEnd
 	 * 
 	 * @since 0.1
 	 * 
