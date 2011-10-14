@@ -1,5 +1,5 @@
 <?
-/*
+/**
  * this encoder is run from the command line and takes "encoding" jobs from the command line
  */
 
