@@ -1,4 +1,4 @@
-OPENID_PHP_VERSION=2.2.2
+PHP_OPENID_VERSION=2.2.2
 SUBDIR=openid-php-openid-782224d
 SHELL = /bin/sh
 
@@ -69,13 +69,13 @@ check-if-patch-exists:
 		false; \
 	fi
 
-Auth:	php-openid-$(OPENID_PHP_VERSION).tar.gz
-	@echo "... Extracting php-openid-$(OPENID_PHP_VERSION).tar.gz:"
-	tar -xzf php-openid-$(OPENID_PHP_VERSION).tar.gz $(SUBDIR)/Auth
-	rm -f php-openid-$(OPENID_PHP_VERSION).tar.gz
+Auth:	php-openid-$(PHP_OPENID_VERSION).tar.gz
+	@echo "... Extracting php-openid-$(PHP_OPENID_VERSION).tar.gz:"
+	tar -xzf php-openid-$(PHP_OPENID_VERSION).tar.gz $(SUBDIR)/Auth
+	rm -f php-openid-$(PHP_OPENID_VERSION).tar.gz
 	mv $(SUBDIR)/Auth ./
-	@echo "... Patching php-openid-$(OPENID_PHP_VERSION) files in the Auth subdirectory:"
-	patch -p1 -d Auth < patches/php-openid-$(OPENID_PHP_VERSION).patch
+	@echo "... Patching php-openid-$(PHP_OPENID_VERSION) files in the Auth subdirectory:"
+	patch -p1 -d Auth < patches/php-openid-$(PHP_OPENID_VERSION).patch
 	rmdir $(SUBDIR)
 	@echo -e "\n\
 ... Now almost everything is ready for making your MediaWiki OpenID-aware.\n\
@@ -83,13 +83,13 @@ Auth:	php-openid-$(OPENID_PHP_VERSION).tar.gz
     require_once( \"\$$IP/extensions/OpenID/OpenID.php\" );\n\
 ... to your \$$IP/LocalSettings.php, if not yet done. Then start your wiki."
 
-php-openid-$(OPENID_PHP_VERSION).tar.gz:
+php-openid-$(PHP_OPENID_VERSION).tar.gz:
 	@echo "... Downloading the PHP library for OpenID:"
-	wget --no-check-certificate https://github.com/openid/php-openid/tarball/$(OPENID_PHP_VERSION) -O php-openid-$(OPENID_PHP_VERSION).tar.gz
+	wget --no-check-certificate https://github.com/openid/php-openid/tarball/$(PHP_OPENID_VERSION) -O php-openid-$(PHP_OPENID_VERSION).tar.gz
 
 # before starting a fresh installation or update,
 # you could use "make clean" to clean up, then "make" again
 clean:
-	@echo "... Deleting the Auth subdirectory and the php-openid-$(OPENID_PHP_VERSION).tar.gz file:"
-	rm -rf Auth php-openid-$(OPENID_PHP_VERSION).tar.gz
+	@echo "... Deleting the Auth subdirectory and the php-openid-$(PHP_OPENID_VERSION).tar.gz file:"
+	rm -rf Auth php-openid-$(PHP_OPENID_VERSION).tar.gz
 	@echo "... A new installation can be started now by typing 'make'."
