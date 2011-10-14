@@ -81,9 +81,10 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Tpt
+ * @author Urhixidur
  */
 $messages['fr'] = array(
-	'editpagetracking-desc' => "Enregistre la première fois que chaque utilisateur ouvre la page d'édition",
+	'editpagetracking-desc' => 'Enregistre la première fois que chaque utilisateur ouvre la page de modification',
 );
 
 /** Franco-Provençal (Arpetan)
