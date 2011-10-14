@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * Year-specific localization for 2012
  */
 
