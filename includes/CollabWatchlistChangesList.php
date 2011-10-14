@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * Generates a list of changes for a collaborative watchlist. Builds on the EnhancedChangesList
  */
 class CollabWatchlistChangesList extends EnhancedChangesList {
