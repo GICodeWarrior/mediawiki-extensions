@@ -796,12 +796,13 @@ $messages['sk'] = array(
 * Self',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Обрадовић Горан
  */
 $messages['sr-ec'] = array(
 	'minipreview-no_more_files_here' => 'Нема више фајлова у овом смеру',
-	'minipreview-no_category_gallery' => 'Нема категорија или галерија',
+	'minipreview-no_category_gallery' => 'Нема категорија или галерија!',
 );
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)
