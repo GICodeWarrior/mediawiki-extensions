@@ -120,20 +120,19 @@ if ( !class_exists( 'ec_QueryPage' ) ) {
 
 				// if list is empty, display a warning
 				if( $num == 0 ) {
-					$wgOut->addHTML( '<p>' . wfMsgHTML('specialpage-empty') . '</p>' );
+					$wgOut->addWikiMsg( 'specialpage-empty' );
 					return;
 				}
 
-				$top = wfShowingResults( $offset, $num );
-				$wgOut->addHTML( "<p>{$top}\n" );
+				$wgOut->addHTML( wfMsgExt( 'showingresults', 'parse',
+					$wgLang->formatNum( $num ), $wgLang->formatNum( $offset + 1 ) ) );
 
 				// often disable 'next' link when we reach the end
 				$atend = $num < $limit;
 
-				$sl = wfViewPrevNext( $offset, $limit ,
-					$wgContLang->specialPage( $sname ),
+				$sl = wfViewPrevNext( $offset, $limit, SpecialPage::getTitleFor( 'CurrentEdits' ),
 					wfArrayToCGI( $this->linkParameters() ), $atend );
-				$wgOut->addHTML( "<br />{$sl}</p>\n" );
+				$wgOut->addHTML( "<p>{$sl}</p>\n" );
 			}
 			if ( $num > 0 ) {
 				$s = array();
@@ -205,7 +204,7 @@ class ec_CurrentEditsList extends ec_QueryPage {
 				$this->order_queries[ $order_key ] = $msg;
 			} else {
 				# link all other orders
-				$this->order_queries[ $order_key ] = $skin->makeKnownLinkObj( $this->getTitle(), $msg , $action );
+				$this->order_queries[ $order_key ] = $skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'CurrentEdits' ), $msg , $action );
 			}
 		}
 	}
@@ -270,7 +269,7 @@ class ec_CurrentEditsList extends ec_QueryPage {
 		if ( $this->order_key != EC_DEFAULT_ORDER_KEY ) {
 			$action .= '&order=' . $this->order_key;
 		}
-		$session_close_link = $skin->makeKnownLinkObj( $this->getTitle(), '&#8251;', $action, '', '', 'title="Close this session."' );
+		$session_close_link = $skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'CurrentEdits' ), '&#8251;', $action, '', '', 'title="Close this session."' );
 		return wfMsg( 'ec_list_order_' . $this->order_key, $title_link, $user_page_link, htmlspecialchars( $user_weight ), htmlspecialchars( $editing_time ), $session_close_link );
 	}
 
