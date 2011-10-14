@@ -2581,6 +2581,7 @@ Za več informacij obiščite $1.',
 
 /** Swedish (Svenska)
  * @author Ainali
+ * @author Diupwijk
  * @author Lokal Profil
  */
 $messages['sv'] = array(
@@ -2633,6 +2634,9 @@ För mer information, besök $1 .',
 	'moodbar-header-user-editcount' => 'Användarens antal redigeringar',
 	'moodbar-header-namespace' => 'Namnrymd',
 	'moodbar-header-own-talk' => 'Egen diskussionssida',
+	'moodbar-feedback-filters-username' => 'Användarnamn',
+	'moodbar-feedback-newer' => 'Nyare',
+	'moodbar-feedback-older' => 'Äldre',
 	'moodbar-type-happy' => 'Glad',
 	'moodbar-type-sad' => 'Ledsen',
 	'moodbar-type-confused' => 'Förvirrad',

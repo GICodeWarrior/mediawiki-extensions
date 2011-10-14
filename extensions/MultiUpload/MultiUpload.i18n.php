@@ -366,6 +366,7 @@ Upassende filer bliver slettet øjeblikkeligt - se [[{{MediaWiki:Multipleupload-
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author LWChris
  * @author Purodha
  * @author Raimond Spekking
@@ -388,7 +389,7 @@ Wahlweise kannst du auch einen '''Ziel-Dateinamen''' vorgeben und eine '''Beschr
 
 Ungeeignete Dateien werden sofort gelöscht, siehe die [[{{MediaWiki:Multipleupload-page}}|Löschrichtlinien]].",
 	'multiupload-fileuploaded' => 'Datei hochgeladen.',
-	'multiupload-toolbox' => 'Hochladen mehrerer Dateien',
+	'multiupload-toolbox' => 'Mehrere Dateien hochladen',
 	'multiupload-no-files' => 'Bitte wähle mindestens eine Datei zum Hochladen aus',
 	'multiupload-blank' => 'Keine Datei ausgewählt',
 );
@@ -1572,20 +1573,20 @@ $messages['sq'] = array(
 	'multiupload-toolbox' => 'Ngarko skeda të shumta',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Verlor
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'multipleupload' => 'Пошаљи фајлове',
+	'multipleupload' => 'Слање више датотека',
 	'multiupload-desc' => 'Омогући корисницима да [[Special:MultipleUpload|шаљу више фајлова одједном]]',
-	'multipleupload-ignoreallwarnings' => "Игнорипи '''сва упозорења''' и сними фајлове без обзира на њих.",
-	'multipleupload-saveallfiles' => 'Сними све фајлове',
-	'multipleupload-page' => '{{ns:project}}:Политика брисања фајлова',
+	'multipleupload-ignoreallwarnings' => "Занемари '''сва упозорења''' и ипак сачувај датотеке.",
+	'multipleupload-saveallfiles' => 'Сачувај све датотеке',
+	'multipleupload-page' => '{{ns:project}}:Правила за брисање датотека',
 	'multiupload-fileuploaded' => 'Датотека је послата.',
-	'multiupload-toolbox' => 'Пошаљи више фајлова',
-	'multiupload-no-files' => 'Молимо Вас да назначите макар један фајл за слање',
+	'multiupload-toolbox' => 'Пошаљи више датотека',
+	'multiupload-no-files' => 'Изаберите барем једну датотеку за слање',
 	'multiupload-blank' => 'Није изабрана ниједна датотека',
 );
 

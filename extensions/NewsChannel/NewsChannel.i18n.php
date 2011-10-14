@@ -705,7 +705,7 @@ $messages['sk'] = array(
 	'newschannel_submit_button' => 'Vytvoriť kanál',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -713,7 +713,7 @@ $messages['sr-ec'] = array(
 	'newschannel_format' => 'Формат:',
 	'newschannel_limit' => 'Ограничење:',
 	'newschannel_include_category' => 'Додатна категорија:',
-	'newschannel_exclude_category' => 'Искључи категорију:',
+	'newschannel_exclude_category' => 'Изузми категорију:',
 );
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)

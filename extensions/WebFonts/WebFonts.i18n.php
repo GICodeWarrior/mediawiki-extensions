@@ -373,6 +373,17 @@ $messages['sv'] = array(
 	'webfonts-disable-preference' => 'Inaktivera typsnittsinbäddning (WebFonts)',
 );
 
+/** Tamil (தமிழ்)
+ * @author Sodabottle
+ */
+$messages['ta'] = array(
+	'webfonts' => 'இணைய எழுத்துருக்கள்',
+	'webfonts-desc' => 'பக்கங்களில் எழுத்துருக்களை செயலாக்க',
+	'webfonts-load' => 'எழுத்துரு மாற்ற',
+	'webfonts-reset' => 'மீட்டமைக்க',
+	'webfonts-disable-preference' => 'இணைய எழுத்துருக்களை செயலிழக்கச் செய்',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

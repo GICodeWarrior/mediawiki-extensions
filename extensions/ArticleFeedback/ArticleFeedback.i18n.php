@@ -2181,6 +2181,7 @@ Kiitos! Terveisin,
  * @author Peter17
  * @author Seb35
  * @author Sherbrooke
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'articlefeedback' => "Tableau de bord de l'évaluation d’article",
@@ -2275,9 +2276,9 @@ Veuillez ré-essayer plus tard.',
 	'articleFeedback-table-heading-page' => 'Page',
 	'articleFeedback-table-heading-average' => 'Moyenne',
 	'articleFeedback-copy-above-highlow-tables' => "Il s'agit d'une fonctionnalité expérimentale. Veuillez fournir des commentaires sur la [$1 page de discussion].",
-	'articlefeedback-dashboard-bottom' => "'''Note''' : Nous allons continuer à expérimenter différentes façons de représenter les articles dans ces tableaux de bord. Ceux-ci contiennent les articles suivants :
+	'articlefeedback-dashboard-bottom' => "'''Note''' : Nous allons continuer à expérimenter avec différentes façons de représenter les articles dans ces tableaux de bord. Ceux-ci contiennent les articles suivants :
 * pages qui ont les taux les plus faibles ou plus élevés : ce sont les articles qui ont reçu au moins 10 évaluations dans les dernières 24 heures. Les moyennes sont obtenues en calculant la moyenne de toutes les évaluations des dernières 24 heures.
-* bas récents : articles qui ont reçu deux étoiles ou moins, 70 % du temps ou plus, peu importe la catégorie dans les dernières 24 heures. Cela s'applique seulement aux articles qui ont reçu au moins 10 évaluations dans les dernières 24 heures.",
+* bas récents : articles qui ont reçu deux étoiles ou moins, 70 % du temps ou plus, peu importe la catégorie dans les dernières 24 heures. Cela s’applique seulement aux articles qui ont reçu au moins 10 évaluations dans les dernières 24 heures.",
 	'articlefeedback-disable-preference' => 'Ne pas afficher le widget Évaluation d’article sur les pages',
 	'articlefeedback-emailcapture-response-body' => "Bonjour !
 

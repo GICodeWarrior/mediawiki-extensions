@@ -482,11 +482,12 @@ $messages['sk'] = array(
 	'minnamelength-desc' => 'Vynútiť minimálnu dĺžku používateľského mena',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'minnamelength-error' => 'Ваше корисничко име је прекратко. Минимална дужина је $1.',
+	'minnamelength-error' => 'Ваше корисничко име је прекратко. Најмања дужина је $1.',
 	'minnamelength-desc' => 'Одређује минималну дужину корисничког имена',
 );
 

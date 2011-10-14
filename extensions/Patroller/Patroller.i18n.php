@@ -286,7 +286,7 @@ $messages['be-tarask'] = array(
 	'patrol-stopped' => 'Вы вырашылі не патруляваць іншае рэдагаваньне. $1',
 	'patrol-resume' => 'Націсьніце тут, каб працягваць.',
 	'group-patroller' => 'Патруліруючыя',
-	'group-patroller-member' => 'патруліруючы',
+	'group-patroller-member' => '{{GENDER:$1|патрулюючы|патрулюючая}}',
 	'grouppage-patroller' => '{{ns:project}}:Патруліруючыя',
 	'right-patroller' => 'патруляваньне старонак',
 );
@@ -832,6 +832,7 @@ $messages['grc'] = array(
 );
 
 /** Swiss German (Alemannisch)
+ * @author Als-Chlämens
  * @author Als-Holder
  */
 $messages['gsw'] = array(
@@ -855,7 +856,7 @@ $messages['gsw'] = array(
 	'patrol-stopped' => 'Du hesch entschide, keini Bearbeitige meh as Fäldhieter aazluege. $1',
 	'patrol-resume' => 'Druck doo zum Wytermache.',
 	'group-patroller' => 'Fäldhieter',
-	'group-patroller-member' => 'Fäldhieter',
+	'group-patroller-member' => '{{GENDER:$1|Fäldhieter|Fäldhieteri}}',
 	'grouppage-patroller' => '{{ns:project}}:Fäldhieter',
 	'right-patroller' => 'Syte as Fäldhieter aaluege',
 );
@@ -1626,7 +1627,7 @@ $messages['oc'] = array(
  */
 $messages['or'] = array(
 	'group-patroller' => 'ପହରାଦାର',
-	'group-patroller-member' => 'ପହରାଦାର',
+	'group-patroller-member' => '{{GENDER:$1|ପହରାଦାର}}',
 );
 
 /** Ossetic (Ирон)
@@ -2059,6 +2060,7 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Diupwijk
  * @author Lejonel
  * @author Lokal Profil
  * @author M.M.S.
@@ -2084,7 +2086,7 @@ $messages['sv'] = array(
 	'patrol-stopped' => 'Du har valt och inte patrullera en annan redigering. $1',
 	'patrol-resume' => 'Klicka här för att fortsätta.',
 	'group-patroller' => 'Patrullerare',
-	'group-patroller-member' => 'patrullerare',
+	'group-patroller-member' => '{{GENDER:$1|patrullerare}}',
 	'grouppage-patroller' => '{{ns:project}}:Patrullerare',
 	'right-patroller' => 'Patrullera sidor',
 );

@@ -1396,6 +1396,7 @@ $messages['an'] = array(
 );
 
 /** Arabic (العربية)
+ * @author Alexknight12
  * @author Alnokta
  * @author Antime
  * @author Ciphers
@@ -1456,8 +1457,8 @@ $messages['ar'] = array(
 	'configure-setting-wgRevisionCacheExpiry' => 'الانتهاء من التخزين المؤقت لمراجعة النص (أو 0 للتعطيل)',
 	'configure-setting-wgThumbnailEpoch' => 'وقت تحديث المصغرات',
 	'configure-setting-wgTranscludeCacheExpiry' => 'انتهاء الكاش لتضمين الإنترويكي',
-	'configure-setting-wgUseFileCache' => 'إستخدم كاش الملف',
-	'configure-setting-wgUseGzip' => 'GZIP إستخدم ترميز',
+	'configure-setting-wgUseFileCache' => 'استخدم كاش الملف',
+	'configure-setting-wgUseGzip' => 'GZIP استخدم ترميز',
 	'configure-setting-wgAllowDisplayTitle' => 'اسمح باستخدام <nowiki>{{DISPLAYTITLE}}</nowiki>',
 	'configure-setting-wgAllowExternalImages' => 'إسمح لتحويل الرابط الساخن للملف',
 	'configure-setting-wgAllowExternalImagesFrom' => 'إستثناءات $wgAllowExternalImages = خطأ',
@@ -1550,7 +1551,7 @@ $messages['ar'] = array(
 	'configure-setting-wgSpecialPageGroups' => 'مجموعات الصفحة الخاصة',
 	'configure-setting-wgSpecialPageGroups-key' => 'مجموعة',
 	'configure-setting-wgSpecialVersionShowHooks' => 'اعرض محتويات $wgHooks في [[Special:Version]]',
-	'configure-setting-wgUseNPPatrol' => 'إستخدم دوريات الصفحات الجديدة لمراجعة التخريب',
+	'configure-setting-wgUseNPPatrol' => 'استخدم دوريات الصفحات الجديدة للتحقق من التخريب',
 	'configure-setting-wgAutopromote' => 'شروط الترقية التلقائية للمستخدمين لمجموعات معينة',
 	'configure-setting-wgAutopromote-value' => 'شروط',
 	'configure-setting-wgAccountCreationThrottle' => 'عدد الحسابات التي يمكن أن ينشئها كل أيبي',
@@ -1783,7 +1784,7 @@ $messages['ar'] = array(
 	'configure-setting-wgSQLiteDataDir' => 'دليل بيانات SQLite',
 	'configure-setting-wgDBmwschema' => 'ملف بوستجري',
 	'configure-setting-wgDBts2schema' => 'نمط Tsearch2 postgres',
-	'configure-setting-wgDBmysql5' => 'UTF-8 إستخدم تكويد',
+	'configure-setting-wgDBmysql5' => 'UTF-8 استخدم تكويد',
 	'configure-setting-wgDBprefix' => 'بادئة الجدول',
 	'configure-setting-wgDBTableOptions' => 'خيارات جدول MySQL',
 	'configure-setting-wgDBtransactions' => 'استخدم جداول InnoDB',

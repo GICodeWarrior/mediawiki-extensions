@@ -4646,7 +4646,7 @@ $messages['sl'] = array(
 Prosimo, onemogočite <b>Firebug</b> za to strani.',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
@@ -4680,7 +4680,7 @@ $messages['sr-ec'] = array(
 	'fogg-copyright-help' => 'Ауторска права над клипом',
 	'fogg-license-title' => 'Лиценца',
 	'fogg-contact-title' => 'Контакт',
-	'fogg-contact-help' => 'Контакт-линк',
+	'fogg-contact-help' => 'Веза за контакт',
 	'fogg-select_file' => 'Избор датотеке',
 );
 
