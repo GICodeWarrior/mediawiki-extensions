@@ -1,14 +1,14 @@
 <?php
-/*
+/**
  * A special page that populates the Integration tables, specifically
  * integration_prefix and integration_namespace
  */
 class PopulateInterwikiIntegrationTable extends SpecialPage {
 	function __construct() {
 		parent::__construct( 'PopulateInterwikiIntegrationTable', 'integration' );
-		
+
 	}
- 
+
 	function execute( $par ) {
 		global $wgRequest, $wgOut, $wgUser, $wgLanguageCode
 			,$wgLocalisationCacheConf, $wgExtraNamespaces
@@ -35,7 +35,7 @@ class PopulateInterwikiIntegrationTable extends SpecialPage {
 					'integration_prefix' => $thisPrefix,
 					'integration_pwd'    => $thisPWD
 				);
-				$dbw->insert ( 'integration_prefix', $newDatabaseRow );				
+				$dbw->insert ( 'integration_prefix', $newDatabaseRow );
 				foreach ( $wgLocalDatabases as $thisDB ) {
 					$foreignDbr = wfGetDB ( DB_SLAVE, array(), $thisDB );
 					$foreignDbw = wfGetDB ( DB_MASTER, array(), $thisDB );
@@ -107,9 +107,9 @@ class PopulateInterwikiIntegrationTable extends SpecialPage {
 class PopulateInterwikiWatchlistTable extends SpecialPage {
 	function __construct() {
 		parent::__construct( 'PopulateInterwikiWatchlistTable', 'integration' );
-		
+
 	}
-	
+
 	function execute( $par ) {
 		global $wgInterwikiIntegrationPrefix, $wgOut;
 		$dbr = wfGetDB( DB_SLAVE );
@@ -145,9 +145,9 @@ class PopulateInterwikiWatchlistTable extends SpecialPage {
 class PopulateInterwikiRecentChangesTable extends SpecialPage {
 	function __construct() {
 		parent::__construct( 'PopulateInterwikiRecentChangesTable', 'integration' );
-		
+
 	}
-	
+
 	function execute( $par ) {
 		global $wgInterwikiIntegrationPrefix, $wgOut;
 		$dbr = wfGetDB( DB_SLAVE );
@@ -183,9 +183,9 @@ class PopulateInterwikiRecentChangesTable extends SpecialPage {
 class PopulateInterwikiPageTable extends SpecialPage {
 	function __construct() {
 		parent::__construct( 'PopulateInterwikiPageTable', 'integration' );
-		
+
 	}
-	
+
 	function execute( $par ) {
 		global $wgInterwikiIntegrationPrefix, $wgOut;
 		$dbr = wfGetDB( DB_SLAVE );
