@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * Check your registration status
  */
 class SpecialCheckWikimaniaStatus extends SpecialPage {

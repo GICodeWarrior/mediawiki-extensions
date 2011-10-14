@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * Register for Wikimania
  */
 class SpecialRegisterForWikimania extends SpecialPage {

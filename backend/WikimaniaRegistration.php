@@ -3,15 +3,29 @@
  * Class referring to a specific registration
  */
 class WikimaniaRegistration extends HTMLForm {
+
+	/**
+	 * @param $wm Wikimania
+	 * @param $context ContextSource
+	 */
 	public function  __construct( Wikimania $wm, $context = null ) {
 		parent::__construct( $this->getFields( $wm, $context->getUser() ), $context, 'wikimania' );
 	}
 
+	/**
+	 * @param $u user
+	 * @return string
+	 */
 	public static function generateRegistrationID( User $u ) {
 		$str = $u->getName() . ":" . microtime() . ":" . wfGetIP();
 		return substr( sha1( $str ), 0, 5 );
 	}
 
+	/**
+	 * @param $wm Wikimania
+	 * @param $u User
+	 * @return array
+	 */
 	private function getFields( Wikimania $wm, User $u ) {
 		static $fields;
 		if( !$fields ) {
@@ -76,6 +90,10 @@ class WikimaniaRegistration extends HTMLForm {
 		return $fields;
 	}
 
+	/**
+	 * @static
+	 * @return array
+	 */
 	private static function getGenderPossibilities() {
 		return array(
 			wfMsg( 'gender-male') => 'male',
