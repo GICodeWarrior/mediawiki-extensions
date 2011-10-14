@@ -280,14 +280,37 @@ es.SurfaceView.prototype.moveCursor = function( direction ) {
 			this.showCursor( this.cursor.offset + 1 );
 			break;
 		case 'up':
-			var position = this.documentView.getRenderedPosition( this.cursor.offset );
-			position.top--;
-			this.showCursor( this.documentView.getOffsetFromPosition( position ) );
+			var currentOffset = this.cursor.offset;
+			var currentPosition = this.documentView.getRenderedPosition( currentOffset );
+			var newPosition = new es.Position(currentPosition.left, currentPosition.top, currentPosition.bottom);
+			var off = -1;
+			var newPosTop = newPosition.top;
+
+			while ( currentPosition.top === newPosition.top && off !== 0 ) {
+				newPosTop = newPosTop - 10;
+				newPosition.top = newPosTop;
+				off = this.documentView.getOffsetFromPosition( newPosition );
+				newPosition = this.documentView.getRenderedPosition( off );
+			}
+			newPosition.left = currentPosition.left;
+			this.showCursor( this.documentView.getOffsetFromPosition( newPosition ) );
 			break;
 		case 'down':
-			var position = this.documentView.getRenderedPosition( this.cursor.offset );
-			position.top = position.bottom + 1;
-			this.showCursor( this.documentView.getOffsetFromPosition( position ) );
+			var currentOffset = this.cursor.offset;
+			var currentPosition = this.documentView.getRenderedPosition( currentOffset );
+			var newPosition = new es.Position(currentPosition.left, currentPosition.top, currentPosition.bottom);
+			var off = -1;
+			var newPosTop = newPosition.top;
+			var alllength = this.documentView.getLength();
+
+			while ( currentPosition.top === newPosition.top && off !== alllength ) {
+				newPosTop = newPosTop + 10;
+				newPosition.top = newPosTop;
+				off = this.documentView.getOffsetFromPosition( newPosition );
+				newPosition = this.documentView.getRenderedPosition( off );
+			}
+			newPosition.left = currentPosition.left;
+			this.showCursor( this.documentView.getOffsetFromPosition( newPosition ) );
 			break;
 		default:
 			break;

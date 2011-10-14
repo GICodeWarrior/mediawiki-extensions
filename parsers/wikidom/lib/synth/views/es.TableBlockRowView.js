@@ -70,9 +70,9 @@ es.TableBlockRowView.prototype.getOffsetFromPosition = function( position ) {
 		return 0;
 	}
 
-	var cellView;
+	var cellView = this.items[0];
 
-	for ( var i = 0; i < this.items.length; i++ ) {
+	for ( var i = 1; i < this.items.length; i++ ) {
 		if ( this.items[i].$.offset().left > position.left ) {
 			break;
 		}

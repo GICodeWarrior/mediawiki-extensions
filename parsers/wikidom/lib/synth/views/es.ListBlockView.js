@@ -74,9 +74,9 @@ es.ListBlockView.prototype.getOffsetFromPosition = function( position ) {
 		return 0;
 	}
 
-	var listItemView;
+	var listItemView = this.items[0];
 
-	for ( var i = 0; i < this.items.length; i++ ) {
+	for ( var i = 1; i < this.items.length; i++ ) {
 		if ( this.items[i].$.offset().top > position.top ) {
 			break;
 		}
