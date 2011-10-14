@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * Class to extract the first bit of text from an article
  * Adapted from the OpenSearchXML extension, by Brion Vibber
  */

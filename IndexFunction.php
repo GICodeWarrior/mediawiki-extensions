@@ -49,7 +49,7 @@ $wgAutoloadClasses['IndexFunction'] = $dir . 'IndexFunction_body.php';
 $wgAutoloadClasses['IndexAbstracts'] = $dir . 'IndexAbstracts.php';
 $wgAutoloadClasses['SpecialIndexPager'] = $dir . 'SpecialIndex.php';
 
-/*
+/**
  * Used to set the context given on Special:Index auto-disambig pages
  * Can be 1 of 2 options:
  * 'extract' (default) - Show an extract from the start of the article
