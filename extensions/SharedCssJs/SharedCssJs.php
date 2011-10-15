@@ -38,7 +38,6 @@ $wgHooks['SkinTemplateSetupPageCss'][] = 'wfSharedUserCSS';
 $wgHooks['BeforePageDisplay'][] = 'wfSharedJS';
 $wgHooks['BeforePageDisplay'][] = 'wfSharedUserJS';
 
-
 function wfSharedCSS( &$out ) {
 	global $wgDisableSharedCSS, $wgSharedCssJsUrl;
 	if( !empty( $wgDisableSharedCSS ) ) {
