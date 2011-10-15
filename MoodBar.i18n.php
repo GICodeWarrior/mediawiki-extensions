@@ -2343,6 +2343,7 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Engineering
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -2418,12 +2419,14 @@ $messages['ru'] = array(
 	'moodbar-feedback-hide' => 'скрыть отзыв',
 	'moodbar-hidden-footer' => 'Скрытый отзыв $1',
 	'moodbar-feedback-restore' => 'восстановить скрытый отзыв',
+	'moodbar-action-item' => 'Пункт Обратная связь:',
 	'moodbar-type-happy' => 'Радость',
 	'moodbar-type-sad' => 'Грусть',
 	'moodbar-type-confused' => 'Замешательство',
 	'moodbar-user-anonymized' => 'Аноним',
 	'moodbar-user-ip' => 'IP-адрес',
 	'moodbar-user-user' => 'Зарегистрированный участник',
+	'moodbar-log-hide' => 'скрыть [[$1]]',
 );
 
 /** Rusyn (Русиньскый)
