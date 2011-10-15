@@ -164,6 +164,8 @@ Die [http://www.mediawiki.org/wiki/API Dokumentation zur API] enthält weitere H
 	'apisb-query-prop' => 'Eigenschaften',
 	'apisb-query-list' => 'Listen',
 	'apisb-query-meta' => 'Metainformationen',
+	'apisb-generic-parameters' => 'Generische Parameter',
+	'apisb-generator-parameters' => 'Generator',
 );
 
 /** Greek (Ελληνικά)

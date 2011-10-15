@@ -442,6 +442,14 @@ $messages['ms'] = array(
 	'piwik-countries' => 'Negara',
 );
 
+/** Nahuatl (Nāhuatl)
+ * @author Ricardo gs
+ */
+$messages['nah'] = array(
+	'piwik-countries' => 'Tlācatiyān',
+	'piwik-browsers' => 'Ācalpāpanōni',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

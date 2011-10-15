@@ -949,9 +949,18 @@ $messages['pt'] = array(
 /** Russian (Русский)
  * @author Adata80
  * @author Alexandr Efremov
+ * @author Engineering
  */
 $messages['ru'] = array(
 	'collabwatchlisttagcomment' => 'Комментарий',
+	'collabwatchlisttools-view' => 'Дисплей',
+	'collabwatchlisttools-edit' => 'Изменить категорию',
+	'collabwatchlisttools-delete' => 'Удалить',
+	'collabwatchlistsall' => 'Все списки',
+	'collabwatchlistfiltertags' => 'Скрыть метки',
+	'collabwatchlistedit-users-raw-submit' => 'Сохранить',
+	'collabwatchlistedit-users-raw-titles' => 'Участники:',
+	'collabwatchlistdelete-submit' => 'Удалить',
 	'collabwatchlistedit-normal-submit' => 'Сохранить',
 );
 

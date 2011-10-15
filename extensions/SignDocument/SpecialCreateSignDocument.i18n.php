@@ -2069,6 +2069,7 @@ $messages['tr'] = array(
 	'createsigndoc-optional' => 'Opsiyonel',
 	'createsigndoc-create' => 'Oluştur',
 	'createsigndoc-error-generic' => 'Hata: $1',
+	'createsigndoc-error-pagenoexist' => 'Hata: [[$1]] sayfası bulunamadı.',
 );
 
 /** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))

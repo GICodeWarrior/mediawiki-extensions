@@ -38,6 +38,13 @@ $messages['qqq'] = array(
 	'abcvorbis' => '{{optional}}',
 );
 
+/** Batak Toba (Batak Toba)
+ * @author Aldnonymous
+ */
+$messages['bbc-latn'] = array(
+	'abc-desc' => 'Tamba <code>&lt;abc&gt;</code> Tanda tu susunan musik ABC',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */

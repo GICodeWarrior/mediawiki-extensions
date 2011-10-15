@@ -344,6 +344,13 @@ $messages['tl'] = array(
 	'fileattach-editcomment' => 'Nailakip ang talaksang [[File:$1|$1]]',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'fileattach-attachfile' => 'Dosya Ekle',
+);
+
 /** Ukrainian (Українська)
  * @author Dim Grits
  */

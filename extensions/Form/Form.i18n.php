@@ -1669,6 +1669,7 @@ Pakipunuan {{PLURAL:$2|ito|sila}} ng laman.',
 $messages['tr'] = array(
 	'form' => 'Form',
 	'formnoname' => 'Form adı yok',
+	'formbadname' => 'Kötü form adı',
 	'formbadnametext' => 'Bu isimde bir form yok.',
 	'formtitlepattern' => 'Yeni $1 ekle',
 	'formsave' => 'Kaydet',
