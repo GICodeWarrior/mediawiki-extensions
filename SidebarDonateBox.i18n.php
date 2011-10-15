@@ -281,9 +281,11 @@ $messages['tl'] = array(
 
 /** Turkish (Türkçe)
  * @author CnkALTDS
+ * @author Karduelis
  */
 $messages['tr'] = array(
 	'sidebardonatebox-desc' => 'Kenar çubuğuna özel bir bağış kutusu ekler',
+	'DONATE' => 'Bağış',
 );
 
 /** Ukrainian (Українська)
