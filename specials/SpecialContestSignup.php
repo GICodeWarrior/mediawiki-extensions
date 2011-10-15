@@ -147,7 +147,6 @@ class SpecialContestSignup extends SpecialContestPage {
 		);
 		
 		if ( $contestant === false ) {
-			// TODO: we might want to have a title field here
 			$out->setPageTitle( $contest->getField( 'name' ) );
 			$out->addWikiMsg( 'contest-signup-header', $contest->getField( 'name' ) );
 			

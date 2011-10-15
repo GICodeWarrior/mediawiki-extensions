@@ -98,14 +98,13 @@ class ApiMailContestants extends ApiBase {
 	}
 	
 	/**
-	 * TODO
-	 * 
 	 * Send a reminder email.
 	 * 
 	 * @since 0.1
 	 * 
 	 * @param string $emailText
 	 * @param array $recipients
+	 * @param array $params
 	 * 
 	 * @return Status
 	 */
