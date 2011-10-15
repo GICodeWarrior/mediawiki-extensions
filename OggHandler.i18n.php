@@ -2806,6 +2806,9 @@ $messages['pnb'] = array(
 	'ogg-stop' => 'رکو',
 	'ogg-play-video' => 'وڈیو چلاؤ',
 	'ogg-play-sound' => 'واز چلاؤ',
+	'ogg-no-player' => 'معاف کرنا تواڈے پربندھ چ لگدا اے موسیقی چلان دا سوفٹویر نئیں۔ مہربانی کرکے <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">موسیقی چلان والا ڈاؤنلوڈ کرو۔</a>',
+	'ogg-no-xiphqt' => 'تواڈے کول لگدا اے QuickTime دا پرزہ XiphQT کوئی نیں  QuickTime ایس توں بنا اوگ فائلاں نئیں چلاسکدا۔
+مہربانی کرکے <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">download XiphQT</a> ڈاؤنلوڈ کرو یا ہور سوفٹویر چنو۔',
 	'ogg-player-videoElement' => 'دیسی براؤزر سپورٹ',
 	'ogg-player-oggPlugin' => 'براؤزر پلگ ان',
 	'ogg-player-thumbnail' => 'صرف کذڑیاں مورتاں',
