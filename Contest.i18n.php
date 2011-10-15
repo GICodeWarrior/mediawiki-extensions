@@ -108,17 +108,17 @@ $messages['en'] = array(
 
 	// Special:ContestWelcome
 	'contest-welcome-unknown' => 'There is no contest with the provided name.',
-	'contest-welcome-rules' => 'In order to participate, you must agree to', // js i18n
+	'contest-welcome-rules' => 'In order to participate, you are required to agree to', // js i18n
 	'contest-welcome-rules-link' => 'the contest rules', // js i18n
 	'contest-welcome-signup' => 'Signup now',
-	'contest-welcome-js-off' => 'Contest uses JavaScript for an improved interface. Your browser either does not support JavaScript or has JavaScript turned off.',
+	'contest-welcome-js-off' => 'The contest user interface uses JavaScript for an improved interface. Your browser either does not support JavaScript or has JavaScript turned off.',
 	'contest-welcome-accept-challenge' => 'Challenge Accepted',
 
 	'contest-welcome-select-header' => 'Select your challenge:',
 
 	// Special:ContestSignup & Special:ContestSubmission
 	'contest-signup-unknown' => 'There is no contest with the provided name.',
-	'contest-signup-submit' => 'Signup',
+	'contest-signup-submit' => 'Sign up',
 	'contest-signup-header' => 'Please fill out the form to complete your registration for $1.',
 	'contest-signup-email' => 'Your email address',
 	'contest-signup-realname' => 'Your real name',
@@ -134,13 +134,13 @@ $messages['en'] = array(
 	'contest-signup-require-rules' => 'You need to agree to the contest rules.',
 	'contest-signup-require-country' => 'You need to provide your country of residence.',
 	'contest-signup-invalid-email' => 'The email address you provided is not valid.',
-	'contest-signup-invalid-name' => 'The name you provided is to short.',
+	'contest-signup-invalid-name' => 'The name you provided is too short.',
 	'contest-signup-require-challenge' => 'You must select a challenge.',
 	'contest-signup-invalid-cv' => 'You entered an invalid URL.',
 	
 	// Special:Contest
 	'contest-contest-title' => 'Contest: $1',
-	'contest-contest-no-results' => 'There are no contestants to list.',
+	'contest-contest-no-results' => 'There are no contestants to display.',
 	'contest-contest-name' => 'Name',
 	'contest-contest-status' => 'Status',
 	'contest-contest-submissioncount' => 'Amount of participants',
@@ -288,7 +288,7 @@ $messages['qqq'] = array(
 	'contest-email-reminder-title' => 'Title for reminder emails',
 
 	// Special:MyContests
-	'contest-mycontests-toplink' => 'Text for link in the top menue (ie where watchlist and preferences are linked)',
+	'contest-mycontests-toplink' => 'Text for link in the top menu (ie where watchlist and preferences are linked)',
 	'contest-mycontests-no-contests' => 'Message indicating there are no contests for the user, displayed instead of a list.',
 	'contest-mycontests-active-header' => 'Page header (h2)',
 	'contest-mycontests-finished-header' => 'Page header (h2)',
