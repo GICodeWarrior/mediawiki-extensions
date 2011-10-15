@@ -27,11 +27,13 @@ $messages['qqq'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
 	'apiexplorer' => 'API-аглядальнік',
 	'apiexplorer-desc' => 'Старонка інтэрактыўнага агляду дакумэнтацыі цяперашняй вэрсіі MediaWiki API, якая працуе разам з гэтым усталяваньнем.',
+	'apiexplorer-loading' => 'Загрузка функцыяў…',
 );
 
 /** German (Deutsch)
@@ -97,5 +99,13 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'apiexplorer-loading' => 'Bezig met het laden van functies...',
+);
+
+/** Russian (Русский)
+ * @author Engineering
+ */
+$messages['ru'] = array(
+	'apiexplorer-desc' => 'Страница для интерактивного изучения документации MediaWiki API',
+	'apiexplorer-loading' => 'Загрузка функций...',
 );
 
