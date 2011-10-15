@@ -15,12 +15,24 @@ import time
 # the account remains valid forever, but the token times out.
 account = 'AUTH_dea4a45c-a80b-43b5-8e8b-e452f0dc778f'
 
+# Copy2 is hairy. If we were only opening a URL, and returning it, we could
+# just return the open file handle, and webob would take care of reading from
+# the socket and returning the data to the client machine. If we were only
+# opening a URL and writing its contents out to Swift, we could call
+# put_object with the file handle and it would read take care of reading from
+# the socket and writing the data to the Swift proxy.
+#     We have to do both at the same time. This requires that we hand over a class which
+# is an iterable which reads, writes one copy to Swift (using put_object_chunked), and
+# returns a copy to webob.  This is controlled by writethumb in /etc/swift/proxy.conf,
+
 class Copy2(object):
     """
-    Given an open file and a Swift object, we hand back an iterator which reads from the file,
-    writes a copy into a Swift object, and returns what it read.
+    Given an open file and a Swift object, we hand back an iterator which
+    reads from the file, writes a copy into a Swift object, and returns
+    what it read.
     """
     token = None
+
 
     def __init__(self, conn, app, url, container, obj, authurl, login, key, content_type=None, modified=None):
         self.app = app
@@ -77,6 +89,7 @@ class WMFRewrite(object):
         self.login = conf['login'].strip()
         self.key = conf['key'].strip()
         self.thumbhost = conf['thumbhost'].strip()
+        self.writethumb = conf.has_key('writethumb')
         self.user_agent  = conf['user_agent'].strip()
 
     def handle404(self, reqorig, url, container, obj):
@@ -104,13 +117,13 @@ class WMFRewrite(object):
         uinfo = upcopy.info()
         c_t = uinfo.gettype()
         last_modified = time.mktime(uinfo.getdate('Last-Modified'))
-        # Fetch from upload, write into the cluster, and return it
-        app_iter = Copy2(upcopy, self.app, url,
-            urllib2.quote(container), obj, self.authurl, self.login,
-            self.key, content_type=c_t, modified=last_modified)
+        if self.writethumb:
+            # Fetch from upload, write into the cluster, and return it
+            upcopy = Copy2(upcopy, self.app, url,
+                urllib2.quote(container), obj, self.authurl, self.login,
+                self.key, content_type=c_t, modified=last_modified)
  
-        resp = webob.Response(app_iter=app_iter, content_type=c_t)
-        resp.headers.add('Things', "%s %s %s %s %s %s %s %s" % (url, urllib2.quote(container), obj, self.authurl, self.login, self.key, c_t, last_modified))
+        resp = webob.Response(app_iter=upcopy, content_type=c_t)
         resp.headers.add('Last-Modified', uinfo.getheader('Last-Modified'))
         return resp
  
@@ -171,7 +184,7 @@ class WMFRewrite(object):
                 return webob.Response(status=status, headers=headers ,
                         app_iter=app_iter)(env, start_response) #01a
             elif status == 404: #4
-                resp = self.handle404(reqorig)
+                resp = self.handle404(reqorig, url, container, obj)
                 return resp(env, start_response)
             elif status == 401:
                 # if the Storage URL is invalid or has expired we'll get this error.
