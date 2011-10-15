@@ -1,6 +1,4 @@
 -- Remove the ct_id column which was introduced in a previous revision
--- This is intended to be used manually as there does not seem to be
--- support
 
 ALTER TABLE /*$wgDBprefix*/collabwatchlistrevisiontag
   ADD ct_tag varbinary(255) NOT NULL;

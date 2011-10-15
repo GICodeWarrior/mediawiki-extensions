@@ -168,7 +168,7 @@ class SpecialCollabWatchlist extends SpecialWatchlist {
 		$recentchanges = $dbr->tableName( 'recentchanges' );
 
 		$nitems = $dbr->selectField( 'collabwatchlistcategory', 'COUNT(*)',
-			$collabWatchlist == 0 ? array() : array( 'rl_id' => $collabWatchlist
+			$collabWatchlist == 0 ? array() : array( 'cw_id' => $collabWatchlist
 			), __METHOD__ );
 		if ( $nitems == 0 ) {
 			$wgOut->addWikiMsg( 'nowatchlist' );
@@ -459,28 +459,28 @@ class SpecialCollabWatchlist extends SpecialWatchlist {
 
 	/** Returns an array of maps representing collab watchlist tags. The following fields are present
 	 * in each map:
-	 * - rl_id Id of the collaborative watchlist
+	 * - cw_id Id of the collaborative watchlist
 	 * - ct_tag Name of the tag
 	 * - collabwatchlistrevisiontag.user_id User which set the tag
 	 * - user_name Username of the user which set the tag
 	 * - rrt_comment Collabwatchlist tag comment
 	 * @param $rev_id
-	 * @param $rl_ids
+	 * @param $cw_ids
 	 * @return unknown_type
 	 */
-	function wlTagsForRevision( $rev_id, $rl_ids = array(), $filterTags = array() ) {
+	function wlTagsForRevision( $rev_id, $cw_ids = array(), $filterTags = array() ) {
 		// Some DB stuff
 		$dbr = wfGetDB( DB_SLAVE );
 		$cond = array();
-		if ( isset( $rl_ids ) && !( count( $rl_ids ) == 1 && $rl_ids[0] == 0 ) ) {
-			$cond = array( "rl_id" => $rl_ids );
+		if ( isset( $cw_ids ) && !( count( $cw_ids ) == 1 && $cw_ids[0] == 0 ) ) {
+			$cond = array( "cw_id" => $cw_ids );
 		}
 		if ( isset( $filterTags ) && count( $filterTags ) > 0 ) {
 			$cond[] = "ct_tag not in (" . $dbr->makeList( $filterTags ) . ")";
 		}
 		// $table, $vars, $conds='', $fname = 'Database::select', $options = array(), $join_conds = array()
 		$res = $dbr->select( array( 'change_tag', 'collabwatchlistrevisiontag', 'user' ), # Tables
-			array( 'rl_id', 'collabwatchlistrevisiontag.ct_tag', 'collabwatchlistrevisiontag.user_id', 'user_name', 'rrt_comment' ), # Fields
+			array( 'cw_id', 'collabwatchlistrevisiontag.ct_tag', 'collabwatchlistrevisiontag.user_id', 'user_name', 'rrt_comment' ), # Fields
 			array( 'change_tag.ct_rev_id' => $rev_id ) + $cond,  # Conditions
 			__METHOD__, array(),
 			 # Join conditions
@@ -500,12 +500,12 @@ class SpecialCollabWatchlist extends SpecialWatchlist {
 	 * It filters entries which are not relevant for the given watchlists. I.e.
 	 * entries which don't belong to a category and are not listed explicitly as a 
 	 * page for one of the given watchlists.
-	 * @param $rl_ids Array: A list of collaborative watchlist ids
+	 * @param $cw_ids Array: A list of collaborative watchlist ids
 	 * @param $catNameCol String: The name of the column containing category names
 	 * @param $pageIdCol String: The name of the column containing page ids
 	 * @return String: An SQL clause usable in the conditions parameter of $db->select()
 	 */
-	function wlGetFilterClauseForCollabWatchlistIds( $rl_ids, $catNameCol, $pageIdCol ) {
+	function wlGetFilterClauseForCollabWatchlistIds( $cw_ids, $catNameCol, $pageIdCol ) {
 		global $wgCollabWatchlistRecursiveCatScan;
 		$excludedCatPageIds = array();
 		$includedCatPageIds = array();
@@ -513,10 +513,10 @@ class SpecialCollabWatchlist extends SpecialWatchlist {
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select( array( 'collabwatchlist', 'collabwatchlistcategory', 'page' ), # Tables
 			array( 'cat_page_id', 'page_title', 'page_namespace', 'subtract' ), # Fields
-			$rl_ids != 0 ? array( 'collabwatchlist.rl_id' => $rl_ids ) : array(),  # Conditions
+			$cw_ids != 0 ? array( 'collabwatchlist.cw_id' => $cw_ids ) : array(),  # Conditions
 			__METHOD__, array(),
 			 # Join conditions
-			array(	'collabwatchlistcategory' => array( 'JOIN', 'collabwatchlist.rl_id = collabwatchlistcategory.rl_id' ),
+			array(	'collabwatchlistcategory' => array( 'JOIN', 'collabwatchlist.cw_id = collabwatchlistcategory.cw_id' ),
 					'page' => array( 'JOIN', 'page.page_id = collabwatchlistcategory.cat_page_id' ) )
 		);
 		foreach ( $res as $row ) {
@@ -553,15 +553,15 @@ class SpecialCollabWatchlist extends SpecialWatchlist {
 	/**
 	 * Constructs the user filter SQL clause for the given collaborative watchlist ids.
 	 * It filters entries from the users of the given watchlists.
-	 * @param $rl_ids Array: A list of collaborative watchlist ids
+	 * @param $cw_ids Array: A list of collaborative watchlist ids
 	 * @return String: An SQL clause usable in the conditions parameter of $db->select()
 	 */
-	function wlGetFilterClauseListUser( $rl_id ) {
+	function wlGetFilterClauseListUser( $cw_id ) {
 		$excludedUserIds = array();
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select( 'collabwatchlistuser', # Tables
 			'user_id', # Fields
-			array( 'collabwatchlistuser.rl_id' => $rl_id )  # Conditions
+			array( 'collabwatchlistuser.cw_id' => $cw_id )  # Conditions
 		);
 		$clause = '';
 		foreach ( $res as $row ) {
