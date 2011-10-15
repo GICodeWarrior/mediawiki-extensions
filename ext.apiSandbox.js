@@ -192,8 +192,8 @@ jQuery( function( $ ) {
 	getParamInfo( { mainmodule: 1, pagesetmodule: 1, modules: 'query' },
 		function() {},
 		function() {
-			paramInfo.mainmodule.parameters.shift(); // remove format
-			paramInfo.mainmodule.parameters.shift(); // ...and action
+			paramInfo.mainmodule.parameters = paramInfo.mainmodule.parameters.slice( 2 ); // remove format and action
+			paramInfo.modules.query.parameters = paramInfo.modules.query.parameters.slice( 3 );
 			$genericContainer = $( '#api-sandbox-generic-inputs > div' );
 			genericRequest = new UiBuilder( $genericContainer, paramInfo.mainmodule, '' );
 			queryRequest = new UiBuilder( $queryContainer, paramInfo.modules.query, '',
