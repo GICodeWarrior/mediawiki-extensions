@@ -89,7 +89,7 @@ class SpecialApiSandbox extends SpecialPage {
 			. '</td></tr>
 </table>
 ';
-		$s .= '<div id="api-sandbox-main-inputs"></div>'
+		$s .= '<div id="api-sandbox-main-inputs"></div><div id="api-sandbox-query-inputs" style="display: none"></div>'
 			. $this->openFieldset( 'generic-parameters' ) 
 			. '<div id="api-sandbox-generic-inputs" class="mw-collapsible mw-collapsed"></div></fieldset>'
 			. $this->openFieldset( 'generator-parameters', array( 'style' => 'display: none;' ) )

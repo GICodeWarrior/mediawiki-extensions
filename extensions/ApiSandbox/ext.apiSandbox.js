@@ -7,10 +7,11 @@ jQuery( function( $ ) {
 	 * @param info {Object} Query information
 	 * @param prefix {String} Additional prefix for parameter names
 	 */
-	function UiBuilder( $container, info, prefix ) {
+	function UiBuilder( $container, info, prefix, params ) {
 		this.$container = $container;
 		this.info = info;
 		this.prefix = prefix + info.prefix;
+		this.params = isset( params ) ? params : info.parameters;
 
 		this.createInputs();
 	}
@@ -21,8 +22,8 @@ jQuery( function( $ ) {
 		 */
 		createInputs: function() {
 			var s = '<table class="api-sandbox-options">\n<tbody>';
-			for ( var i = 0; i < this.info.parameters.length; i++ ) {
-				var param = this.info.parameters[i],
+			for ( var i = 0; i < this.params.length; i++ ) {
+				var param = this.params[i],
 					name = this.prefix + param.name;
 
 				s += '<tr><td class="api-sandbox-label"><label for="param-' + name + '">' + name + '=</label></td>'
@@ -148,6 +149,8 @@ jQuery( function( $ ) {
 	    $mainContainer = $( '#api-sandbox-main-inputs' ),
 		$genericContainer, // will be set later
 		$generatorContainer = $( '#api-sandbox-generator-inputs' ),
+		$queryContainer = $( '#api-sandbox-query-inputs' ),
+		$generatorBox = $( '#api-sandbox-generator-parameters' ),
 	    $submit = $( '#api-sandbox-submit' ),
 	    $requestUrl = $( '#api-sandbox-url' ),
 	    $requestPost = $( '#api-sandbox-post' ),
@@ -155,9 +158,10 @@ jQuery( function( $ ) {
 	    $postRow = $( '#api-sandbox-post-row' );
 
 	// UiBuilder objects
-	var mainQuery,
-		genericQuery,
-		generatorQuery;
+	var mainRequest,
+		genericRequest,
+		generatorRequest,
+		queryRequest;
 
 	// cached stuff
 	var paramInfo = { modules: {}, querymodules: {} },
@@ -191,7 +195,10 @@ jQuery( function( $ ) {
 			paramInfo.mainmodule.parameters.shift(); // remove format
 			paramInfo.mainmodule.parameters.shift(); // ...and action
 			$genericContainer = $( '#api-sandbox-generic-inputs > div' );
-			genericQuery = new UiBuilder( $genericContainer, paramInfo.mainmodule, '' );
+			genericRequest = new UiBuilder( $genericContainer, paramInfo.mainmodule, '' );
+			queryRequest = new UiBuilder( $queryContainer, paramInfo.modules.query, '',
+				[].concat( paramInfo.modules.query.parameters, paramInfo.pagesetmodule.parameters )
+			);
 		},
 		function() {}
 	);
@@ -202,32 +209,34 @@ jQuery( function( $ ) {
 	$( '#param-generator' ).live( 'change', function() {
 		var generator = $( '#param-generator' ).val();
 		if ( generator == '' ) {
-			$generatorContainer.hide();
+			$generatorBox.hide();
 		} else {
+			$generatorBox.show();
 			getParamInfo( { querymodules: generator },
 				function() { showLoading( $generatorContainer ); },
 				function() {
-					generatorQuery = new UiBuilder( $generatorContainer, paramInfo.querymodules[generator], 'g' );
-					$generatorContainer.show();
+					generatorRequest = new UiBuilder( $generatorContainer, paramInfo.querymodules[generator], 'g' );
 				},
-				function() {}
+				function() {
+					showLoadError( $generatorContainer, 'apisb-request-error' );
+				}
 			);
 		}
 	} );
 
 	$submit.click( function() {
-		var url = mw.util.wikiScript( 'api' ) + '?action=' + $action.val();
+		var url = mw.util.wikiScript( 'api' ) + '?action=' + $action.val(),
+		    params = mainRequest.getRequestData(),
+		    mustBePosted = isset( mainRequest.info.mustbeposted );
 		if ( $action.val() == 'query' ) {
 			url += '&' + $query.val();
+			params += queryRequest.getRequestData();
 		}
 		url += '&format=' + $format.val();
 
-		var params = mainQuery.getRequestData(),
-		    mustBePosted = isset( mainQuery.info.mustbeposted );
-		
-		params += genericQuery.getRequestData();
-		if ( $( '#param-generator' ).val() != '' ) {
-			params += generatorQuery.getRequestData();
+		params += genericRequest.getRequestData();
+		if ( $( '#param-generator' ).length &&  $( '#param-generator' ).val() != '' ) {
+			params += generatorRequest.getRequestData();
 		}
 
 		showLoading( $output );
@@ -360,12 +369,12 @@ jQuery( function( $ ) {
 			function() {
 				var info;
 				if ( isQuery ) {
-					info = merge( paramInfo.querymodules[query], paramInfo.modules.query, paramInfo.pagesetmodule );
+					info = paramInfo.querymodules[query];
 				} else {
 					info = paramInfo.modules[action];
 				}
-				mainQuery = new UiBuilder( $mainContainer, info, '' );
-				mainQuery.setHelp( $help );
+				mainRequest = new UiBuilder( $mainContainer, info, '' );
+				mainRequest.setHelp( $help );
 				$submit.removeAttr( 'disabled' );
 			},
 			function() {
@@ -400,15 +409,19 @@ jQuery( function( $ ) {
 		    isQuery = a == 'query';
 		if ( isQuery ) {
 			$queryRow.show();
-			$( '#api-sandbox-generator-parameters' ).show();
+			if ( q != '-' ) {
+				$queryContainer.show();
+			} else {
+				$queryContainer.hide();
+			}
 		} else {
 			$queryRow.hide();
-			$( '#api-sandbox-generator-parameters' ).hide();
+			$queryContainer.hide();
 		}
 		$mainContainer.text( '' );
 		$help.text( '' );
 		updateQueryInfo( a, q );
-		$generatorContainer.hide();
+		$generatorBox.hide();
 	}
 
 });
