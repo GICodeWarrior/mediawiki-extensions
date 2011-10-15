@@ -94,7 +94,7 @@ class CollabWatchlistEditor {
 					}
 					$wanted = $this->extractCollabWatchlistUsers( $request->getText( 'titles' ) );
 					$current = $this->getCollabWatchlistUsers( $rlId );
-					$isOwnerCb = create_function( '$a', 'return stripos($a, "' . COLLABWATCHLISTUSER_OWNER_TEXT . ' ' . '") === 0;' );
+					$isOwnerCb = create_function( '$a', 'return stripos($a, "' . CollabWatchlist::$USER_OWNER_TEXT . ' ' . '") === 0;' );
 					$wantedOwners = array_filter( $wanted, $isOwnerCb );
 					if ( count( $wantedOwners ) < 1 ) {
 						// Make sure there is at least one owner left
@@ -179,7 +179,7 @@ class CollabWatchlistEditor {
 				$redirTarget = SpecialPage::getTitleFor( 'CollabWatchlist' )->getLocalUrl();
 				if ( $request->wasPosted() ) {
 					$rlId = $request->getInt( 'collabwatchlist', -1 );
-					if ( ! $this->checkPermissions( $wgUser, $rlId, array( COLLABWATCHLISTUSER_USER, COLLABWATCHLISTUSER_OWNER ) ) ) {
+					if ( ! $this->checkPermissions( $wgUser, $rlId, array( CollabWatchlist::$USER_USER, CollabWatchlist::$USER_OWNER ) ) ) {
 						$output->redirect( $permissionDeniedTarget );
 						break;
 					}
@@ -206,7 +206,7 @@ class CollabWatchlistEditor {
 				break;
 			case self::UNSET_TAGS:
 				$rlId = $request->getInt( 'collabwatchlist', -1 );
-				if ( ! $this->checkPermissions( $wgUser, $rlId, array( COLLABWATCHLISTUSER_USER, COLLABWATCHLISTUSER_OWNER ) ) ) {
+				if ( ! $this->checkPermissions( $wgUser, $rlId, array( CollabWatchlist::$USER_USER, CollabWatchlist::$USER_OWNER ) ) ) {
 					$output->redirect( $permissionDeniedTarget );
 					break;
 				}
@@ -261,19 +261,25 @@ class CollabWatchlistEditor {
 	 * @param $memberTypes Which types of members are allowed
 	 * @return bool
 	 */
-	private function checkToken( $request, $user, $rlId, $memberTypes = array( COLLABWATCHLISTUSER_OWNER ) ) {
+	private function checkToken( $request, $user, $rlId, $memberTypes = NULL ) {
+		if ( is_null($member_types) )
+			$member_types = array( CollabWatchlist::$USER_OWNER );
+		
 		$tokenOk = $user->matchEditToken( $request->getVal( 'token' ), 'watchlistedit' ) && $request->getVal( 'collabwatchlist' ) !== 0;
 		if ( $tokenOk === false )
 			return $tokenOk;
 		return $this->checkPermissions( $user, $rlId, $memberTypes );
 	}
 
-	private function checkPermissions( $user, $rlId, $memberTypes = array( COLLABWATCHLISTUSER_OWNER ) ) {
+	private function checkPermissions( $user, $rlId, $memberTypes = NULL ) {
+		if ( is_null($member_types) )
+			$member_types = array( CollabWatchlist::$USER_OWNER );
+		
 		// Check permissions
 		$dbr = wfGetDB( DB_MASTER );
 		$res = $dbr->select( 'collabwatchlistuser',
 			'COUNT(*) AS count',
-			array( 'rl_id' => $rlId, 'user_id' => $user->getId(), 'rlu_type' => $memberTypes ),
+			array( 'cw_id' => $rlId, 'user_id' => $user->getId(), 'rlu_type' => $memberTypes ),
 			__METHOD__
 		);
 		$row = $dbr->fetchObject( $res );
@@ -313,22 +319,22 @@ class CollabWatchlistEditor {
 	}
 
 	private function extractTypeTypeTextAndUsername( $typeAndUsernameStr ) {
-		$type = COLLABWATCHLISTUSER_USER;
-		$typeText = COLLABWATCHLISTUSER_USER_TEXT;
+		$type = CollabWatchlist::$USER_USER;
+		$typeText = CollabWatchlist::$USER_USER_TEXT;
 		$text = trim( $typeAndUsernameStr );
 		$titleText = $text;
-		if ( stripos( $text, COLLABWATCHLISTUSER_OWNER_TEXT . ' ' ) === 0 ) {
-			$type = COLLABWATCHLISTUSER_OWNER;
-			$typeText = COLLABWATCHLISTUSER_OWNER_TEXT;
-			$titleText = trim( substr( $text, strlen( COLLABWATCHLISTUSER_OWNER_TEXT . ' ' ) ) );
-		} else if ( stripos( $text, COLLABWATCHLISTUSER_USER_TEXT . ' ' ) === 0 ) {
-			$type = COLLABWATCHLISTUSER_USER;
-			$typeText = COLLABWATCHLISTUSER_USER_TEXT;
-			$titleText = trim( substr( $text, strlen( COLLABWATCHLISTUSER_USER_TEXT . ' ' ) ) );
-		} else if ( stripos( $text, COLLABWATCHLISTUSER_TRUSTED_EDITOR_TEXT . ' ' ) === 0 ) {
-			$type = COLLABWATCHLISTUSER_TRUSTED_EDITOR;
-			$typeText = COLLABWATCHLISTUSER_TRUSTED_EDITOR_TEXT;
-			$titleText = trim( substr( $text, strlen( COLLABWATCHLISTUSER_TRUSTED_EDITOR_TEXT . ' ' ) ) );
+		if ( stripos( $text, CollabWatchlist::$USER_OWNER_TEXT . ' ' ) === 0 ) {
+			$type = CollabWatchlist::$USER_OWNER;
+			$typeText = CollabWatchlist::$USER_OWNER_TEXT;
+			$titleText = trim( substr( $text, strlen( CollabWatchlist::$USER_OWNER_TEXT . ' ' ) ) );
+		} else if ( stripos( $text, CollabWatchlist::$USER_USER_TEXT . ' ' ) === 0 ) {
+			$type = CollabWatchlist::$USER_USER;
+			$typeText = CollabWatchlist::$USER_USER_TEXT;
+			$titleText = trim( substr( $text, strlen( CollabWatchlist::$USER_USER_TEXT . ' ' ) ) );
+		} else if ( stripos( $text, CollabWatchlist::$USER_TRUSTED_EDITOR_TEXT . ' ' ) === 0 ) {
+			$type = CollabWatchlist::$USER_TRUSTED_EDITOR;
+			$typeText = CollabWatchlist::$USER_TRUSTED_EDITOR_TEXT;
+			$titleText = trim( substr( $text, strlen( CollabWatchlist::$USER_TRUSTED_EDITOR_TEXT . ' ' ) ) );
 		}
 		return array( $type, $typeText, $titleText );
 	}
@@ -454,7 +460,7 @@ class CollabWatchlistEditor {
 	 */
 	private function countCollabWatchlistCategories( $rlId ) {
 		$dbr = wfGetDB( DB_MASTER );
-		$res = $dbr->select( 'collabwatchlistcategory', 'COUNT(*) AS count', array( 'rl_id' => $rlId ), __METHOD__ );
+		$res = $dbr->select( 'collabwatchlistcategory', 'COUNT(*) AS count', array( 'cw_id' => $rlId ), __METHOD__ );
 		$row = $dbr->fetchObject( $res );
 		return $row->count;
 	}
@@ -467,7 +473,7 @@ class CollabWatchlistEditor {
 	 */
 	private function countCollabWatchlistUsers( $rlId ) {
 		$dbr = wfGetDB( DB_MASTER );
-		$res = $dbr->select( 'collabwatchlistuser', 'COUNT(*) AS count', array( 'rl_id' => $rlId ), __METHOD__ );
+		$res = $dbr->select( 'collabwatchlistuser', 'COUNT(*) AS count', array( 'cw_id' => $rlId ), __METHOD__ );
 		$row = $dbr->fetchObject( $res );
 		return $row->count;
 	}
@@ -480,7 +486,7 @@ class CollabWatchlistEditor {
 	 */
 	private function countCollabWatchlistTags( $rlId ) {
 		$dbr = wfGetDB( DB_MASTER );
-		$res = $dbr->select( 'collabwatchlisttag', 'COUNT(*) AS count', array( 'rl_id' => $rlId ), __METHOD__ );
+		$res = $dbr->select( 'collabwatchlisttag', 'COUNT(*) AS count', array( 'cw_id' => $rlId ), __METHOD__ );
 		$row = $dbr->fetchObject( $res );
 		return $row->count;
 	}
@@ -493,7 +499,7 @@ class CollabWatchlistEditor {
 	 */
 	private function countCollabWatchlistSetTags( $rlId ) {
 		$dbr = wfGetDB( DB_MASTER );
-		$res = $dbr->select( 'collabwatchlistrevisiontag', 'COUNT(*) AS count', array( 'rl_id' => $rlId ), __METHOD__ );
+		$res = $dbr->select( 'collabwatchlistrevisiontag', 'COUNT(*) AS count', array( 'cw_id' => $rlId ), __METHOD__ );
 		$row = $dbr->fetchObject( $res );
 		return $row->count;
 	}
@@ -512,7 +518,7 @@ class CollabWatchlistEditor {
 			array( 'collabwatchlistcategory', 'page' ),
 			array( 'page_title', 'page_namespace', 'subtract' ),
 			array(
-				'rl_id' => $rlId,
+				'cw_id' => $rlId,
 			),
 			__METHOD__, array(),
 			 # Join conditions
@@ -542,7 +548,7 @@ class CollabWatchlistEditor {
 			array( 'collabwatchlistuser', 'user' ),
 			array( 'user_name', 'rlu_type' ),
 			array(
-				'rl_id' => $rlId,
+				'cw_id' => $rlId,
 			),
 			__METHOD__, array(),
 			 # Join conditions
@@ -550,7 +556,7 @@ class CollabWatchlistEditor {
 		);
 		if ( $res->numRows() > 0 ) {
 			foreach ( $res as $row ) {
-				$typeText = fnCollabWatchlistUserTypeToText( $row->rlu_type );
+				$typeText = Collabwatchlist::userTypeToText( $row->rlu_type );
 				$list[] = $typeText . ' ' . $row->user_name;
 			}
 		}
@@ -571,7 +577,7 @@ class CollabWatchlistEditor {
 			array( 'collabwatchlisttag' ),
 			array( 'rt_name', 'rt_description' ),
 			array(
-				'rl_id' => $rlId,
+				'cw_id' => $rlId,
 			), __METHOD__
 		);
 		if ( $res->numRows() > 0 ) {
@@ -598,7 +604,7 @@ class CollabWatchlistEditor {
 			array( 'collabwatchlistcategory', 'page' ),
 			array( 'page_title', 'page_namespace', 'page_id', 'page_len', 'page_is_redirect', 'subtract' ),
 			array(
-				'rl_id' => $rlId,
+				'cw_id' => $rlId,
 			),
 			__METHOD__, array(),
 			 # Join conditions
@@ -704,7 +710,7 @@ class CollabWatchlistEditor {
 	 */
 	private function clearCollabWatchlist( $rlId ) {
 		$dbw = wfGetDB( DB_MASTER );
-		$dbw->delete( 'collabwatchlistcategory', array( 'rl_id' => $rlId ), __METHOD__ );
+		$dbw->delete( 'collabwatchlistcategory', array( 'cw_id' => $rlId ), __METHOD__ );
 	}
 
 	/**
@@ -731,7 +737,7 @@ class CollabWatchlistEditor {
 			$titleObj = Title::newFromText( $titleText );
 			if ( $titleObj instanceof Title && $titleObj->exists() ) {
 				$rows[] = array(
-					'rl_id' => $rlId,
+					'cw_id' => $rlId,
 					'cat_page_id' => $titleObj->getArticleID(),
 					'subtract' => $subtract,
 				);
@@ -759,7 +765,7 @@ class CollabWatchlistEditor {
 			$user = User::newFromName( $titleText );
 			if ( $user instanceof User && $user->getId() !== 0 ) {
 				$rows[] = array(
-					'rl_id' => $rlId,
+					'cw_id' => $rlId,
 					'user_id' => $user->getId(),
 					'rlu_type' => $type,
 				);
@@ -789,7 +795,7 @@ class CollabWatchlistEditor {
 				}
 			}
 			// Add the tagged revisions to the collaborative watchlist
-			$sql = 'INSERT IGNORE INTO collabwatchlistrevisiontag (ct_rc_id, ct_tag, rl_id, user_id, rrt_comment)
+			$sql = 'INSERT IGNORE INTO collabwatchlistrevisiontag (ct_rc_id, ct_tag, cw_id, user_id, rrt_comment)
 					SELECT ct_rc_id, ct_tag, ' . $dbw->strencode( $rlId ) . ',' .
 						$dbw->strencode( $userId ) . ',' .
 						$dbw->addQuotes( $comment ) . ' FROM change_tag WHERE ct_tag = ? AND ct_rc_id ';
@@ -844,7 +850,7 @@ class CollabWatchlistEditor {
 		$rows = array();
 		foreach ( $titles as $title => $description ) {
 			$rows[] = array(
-				'rl_id' => $rlId,
+				'cw_id' => $rlId,
 				'rt_name' => $title,
 				'rt_description' => $description,
 			);
@@ -876,7 +882,7 @@ class CollabWatchlistEditor {
 				$dbw->delete(
 					'collabwatchlistcategory',
 					array(
-						'rl_id' => $rlId,
+						'cw_id' => $rlId,
 						'cat_page_id' => $title->getArticleID(),
 						'subtract' => $subtract,
 					),
@@ -906,7 +912,7 @@ class CollabWatchlistEditor {
 				$dbw->delete(
 					'collabwatchlistuser',
 					array(
-						'rl_id' => $rlId,
+						'cw_id' => $rlId,
 						'user_id' => $user->getId(),
 						'rlu_type' => $type,
 					),
@@ -932,7 +938,7 @@ class CollabWatchlistEditor {
 			$dbw->delete(
 				'collabwatchlisttag',
 				array(
-					'rl_id' => $rlId,
+					'cw_id' => $rlId,
 					'rt_name' => $title,
 				),
 				__METHOD__
@@ -1003,11 +1009,11 @@ class CollabWatchlistEditor {
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->begin();
 		try {
-			$rl_id = $dbw->nextSequenceValue( 'collabwatchlist_rl_id_seq' );
+			$cw_id = $dbw->nextSequenceValue( 'collabwatchlist_cw_id_seq' );
 			$dbw->insert( 'collabwatchlist', array(
-				'rl_id'           => $rl_id,
-				'rl_name'    => $name,
-				'rl_start'	=> wfTimestamp( TS_ISO_8601 ),
+				'cw_id'           => $cw_id,
+				'cw_name'    => $name,
+				'cw_start'	=> wfTimestamp( TS_ISO_8601 ),
 			), __METHOD__, 'IGNORE' );
 
 			$affected = $dbw->affectedRows();
@@ -1019,9 +1025,9 @@ class CollabWatchlistEditor {
 			$rlu_id = $dbw->nextSequenceValue( 'collabwatchlistuser_rlu_id_seq' );
 			$dbw->insert( 'collabwatchlistuser', array(
 				'rlu_id'	=> $rlu_id,
-				'rl_id'		=> $newid,
+				'cw_id'		=> $newid,
 				'user_id'	=> $wgUser->getId(),
-				'rlu_type'	=> COLLABWATCHLISTUSER_OWNER,
+				'rlu_type'	=> CollabWatchlist::$USER_OWNER,
 			), __METHOD__, 'IGNORE' );
 			$affected = $dbw->affectedRows();
 			if ( ! $affected ) {
@@ -1042,19 +1048,19 @@ class CollabWatchlistEditor {
 		$dbw->begin();
 		try {
 			$dbw->delete( 'collabwatchlistrevisiontag', array(
-				'rl_id' => $rlId,
+				'cw_id' => $rlId,
 			), __METHOD__ );
 			$dbw->delete( 'collabwatchlisttag', array(
-				'rl_id' => $rlId,
+				'cw_id' => $rlId,
 			), __METHOD__ );
 			$dbw->delete( 'collabwatchlistcategory', array(
-				'rl_id' => $rlId,
+				'cw_id' => $rlId,
 			), __METHOD__ );
 			$dbw->delete( 'collabwatchlistuser', array(
-				'rl_id' => $rlId,
+				'cw_id' => $rlId,
 			), __METHOD__ );
 			$dbw->delete( 'collabwatchlist', array(
-				'rl_id' => $rlId,
+				'cw_id' => $rlId,
 			), __METHOD__ );
 			$affected = $dbw->affectedRows();
 			if ( ! $affected ) {

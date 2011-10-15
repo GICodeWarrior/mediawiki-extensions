@@ -180,7 +180,7 @@ class CollabWatchlistChangesList extends EnhancedChangesList {
 
 			/** Insert links to user page, user talk page and eventually a blocking link */
 			$userLink = $this->skin->userLink( $tagRow['user_id'], $tagRow['user_name'] );
-			$delTagTarget = CollabWatchlistEditor::getUnsetTagUrl( $wgRequest->getFullRequestURL(), $attr['rc_title'], $tagRow['rl_id'], $tag, $attr['rc_id'] );
+			$delTagTarget = CollabWatchlistEditor::getUnsetTagUrl( $wgRequest->getFullRequestURL(), $attr['rc_title'], $tagRow['cw_id'], $tag, $attr['rc_id'] );
 			$delTagLink = Xml::element( 'a', array( 'href' => $delTagTarget, 'class' => 'mw-collabwatchlist-unsettag-' . $tag ), wfMsg( 'collabwatchlist-unset-tag' ) );
 			$displayTags[] = $collabwatchlistTag . ' ' . $delTagLink . ' ' . $userLink;
 		}
@@ -286,7 +286,7 @@ class CollabWatchlistChangesList extends EnhancedChangesList {
 		$options = array();
 		foreach ( $tagsAndInfo as $tagName => $info ) {
 			$optionsAll[] = Xml::option( $tagName . ' ' . $info['rt_description'], $tagName );
-			foreach ( $info['rl_ids'] as $rlId ) {
+			foreach ( $info['cw_ids'] as $rlId ) {
 				$options[$rlId][] = Xml::option( $tagName, $tagName );
 			}
 		}
@@ -322,7 +322,7 @@ class CollabWatchlistChangesList extends EnhancedChangesList {
 	 *
 	 * The info is an array with the following keys:
 	 * 'rt_description' The description of the tag
-	 * 'rl_ids' An array of collab watchlist ids the tag belongs to
+	 * 'cw_ids' An array of collab watchlist ids the tag belongs to
 	 * @param array $rlIds A list of collab watchlist ids
 	 * @return array Mapping from tag name to info
 	 */
@@ -332,16 +332,16 @@ class CollabWatchlistChangesList extends EnhancedChangesList {
 		}
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select( array( 'collabwatchlisttag' ), # Tables
-			array( 'rt_name', 'rt_description', 'rl_id' ), # Fields
-			array( 'rl_id' => $rlIds ),  # Conditions
+			array( 'rt_name', 'rt_description', 'cw_id' ), # Fields
+			array( 'cw_id' => $rlIds ),  # Conditions
 			__METHOD__
 		);
 		$list = array();
 		foreach ( $res as $row ) {
 			if ( array_key_exists( $row->rt_name, $list ) ) {
-				$list[$row->rt_name]['rl_ids'][] = $row->rl_id;
+				$list[$row->rt_name]['cw_ids'][] = $row->cw_id;
 			} else {
-				$list[$row->rt_name] = array( 'rt_description' => $row->rt_description, 'rl_ids' => array( $row->rl_id ) );
+				$list[$row->rt_name] = array( 'rt_description' => $row->rt_description, 'cw_ids' => array( $row->cw_id ) );
 			}
 		}
 		return $list;
@@ -354,20 +354,22 @@ class CollabWatchlistChangesList extends EnhancedChangesList {
 	 * @param array $member_types A list of allowed membership types
 	 * @return array Mapping from collab watchlist id to its name
 	 */
-	public static function getCollabWatchlistIdAndName( $user_id, $member_types = array( COLLABWATCHLISTUSER_OWNER, COLLABWATCHLISTUSER_USER ) ) {
+	public static function getCollabWatchlistIdAndName( $user_id, $member_types = NULL ) {
 		global $wgDBprefix;
+		if ( is_null($member_types) )
+			$member_types = array( CollabWatchlist::$USER_OWNER, CollabWatchlist::$USER_USER );
 		$dbr = wfGetDB( DB_SLAVE );
 		$list = array();
 		// $table, $vars, $conds='', $fname = 'Database::select', $options = array(), $join_conds = array()
 		$res = $dbr->select( array( 'collabwatchlist', 'collabwatchlistuser' ), # Tables
-			array( $wgDBprefix . 'collabwatchlist.rl_id', 'rl_name' ), # Fields
+			array( $wgDBprefix . 'collabwatchlist.cw_id', 'cw_name' ), # Fields
 			array( 'rlu_type' => $member_types, $wgDBprefix . 'collabwatchlistuser.user_id' => $user_id ),  # Conditions
 			__METHOD__, array(),
 			 # Join conditions
-			array(	'collabwatchlistuser' => array( 'JOIN', $wgDBprefix . 'collabwatchlist.rl_id = ' . $wgDBprefix . 'collabwatchlistuser.rl_id' ) )
+			array(	'collabwatchlistuser' => array( 'JOIN', $wgDBprefix . 'collabwatchlist.cw_id = ' . $wgDBprefix . 'collabwatchlistuser.cw_id' ) )
 		);
 		foreach ( $res as $row ) {
-			$list[$row->rl_id] = $row->rl_name;
+			$list[$row->cw_id] = $row->cw_name;
 		}
 		return $list;
 	}

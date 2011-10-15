@@ -1,6 +1,9 @@
 <?php
 
 class CollabWatchlistTest extends PHPUnit_Framework_TestCase {
+	protected function setUp() {
+		$this->markTestSkipped('Manually only');
+	}
 	public function testCategoryTree() {
 		/* Workaround for eclipse xdebug
 		$path = '/usr/share/php';
