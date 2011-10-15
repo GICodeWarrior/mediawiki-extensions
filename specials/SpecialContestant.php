@@ -97,6 +97,14 @@ class SpecialContestant extends SpecialContestPage {
 		return $success;
 	}
 	
+	/**
+	 * Show the actual page, conisting of the navigation, the summary and
+	 * the rating and voting controls.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param ContestContestant $contestant
+	 */
 	protected function showPage( ContestContestant $contestant ) {
 		global $wgScript;
 		$out = $this->getOutput();

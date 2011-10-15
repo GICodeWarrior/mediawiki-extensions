@@ -52,6 +52,14 @@ class SpecialMyContests extends SpecialContestPage {
 		}
 	}
 	
+	/**
+	 * On regular page view, ie no submission and no sub-page,
+	 * display a list of all contests the user is participating in,
+	 * or in case there is only one, redirect them to the submissiom
+	 * UI of it.
+	 * 
+	 * @since 0.1
+	 */
 	protected function displayContestsOverview() {
 		$contestants = ContestContestant::s()->select( 
 			array( 'id', 'contest_id', 'challenge_id' ),
@@ -115,6 +123,14 @@ class SpecialMyContests extends SpecialContestPage {
 		}
 	}
 	
+	/**
+	 * Display a table with the running (active) contests for this user.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param array $contestants
+	 * @param array $contests
+	 */
 	protected function displayRunningContests( array /* of ContestContestant */ $contestants, array /* Contest */ $contests ) {
 		$out = $this->getOutput();
 		
@@ -162,6 +178,14 @@ class SpecialMyContests extends SpecialContestPage {
 		$out->addHTML( '</table>' );
 	}
 	
+	/**
+	 * Display a table with the passed (finished) contests for this user.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param array $contestants
+	 * @param array $contests
+	 */
 	protected function displayPassedContests( array /* of ContestContestant */ $contestants, array /* Contest */ $contests ) {
 		$out = $this->getOutput();
 		

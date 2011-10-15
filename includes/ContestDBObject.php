@@ -214,6 +214,13 @@ abstract class ContestDBObject {
 		return $data;
 	}
 	
+	/**
+	 * Load the default values, via getDefaults.
+	 * 
+	 *  @since 0.1
+	 *  
+	 * @param boolean $override
+	 */
 	public function loadDefaults( $override = true ) {
 		$this->setFields( $this->getDefaults(), $override );
 	}
@@ -648,6 +655,18 @@ abstract class ContestDBObject {
 		);
 	}
 
+	/**
+	 * Update the records matching the provided conditions by 
+	 * setting the fields that are keys in the $values patam to
+	 * their corresponding values.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param array $values
+	 * @param array $conditions
+	 * 
+	 * @return boolean Success indicator
+	 */
 	public function update( array $values, array $conditions = array() ) {
 		$dbw = wfGetDB( DB_MASTER );
 		
