@@ -364,6 +364,17 @@ $messages['pt'] = array(
 	'admanager_return' => 'Voltar para [[Special:AdManager|Ad Manager]]',
 );
 
+/** Russian (Русский)
+ * @author Engineering
+ */
+$messages['ru'] = array(
+	'admanager_invalidtargetpage' => 'Не найдена страница " $1 ".',
+	'admanager_Page' => 'Страницы',
+	'admanager_Category' => 'Категории',
+	'admanager_zonenum' => 'Зона #:$1',
+	'admanager_zonenotnumber' => 'Ошибка!  $1  не является числом.',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
