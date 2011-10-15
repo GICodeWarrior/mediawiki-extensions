@@ -221,7 +221,7 @@ $wgResourceModules['contest.special.signup'] = $moduleTemplate + array(
 		'contest.special.signup.js',
 	),
 	'dependencies' => array(
-		'jquery.ui.button'
+		'jquery.ui.button', 'jquery.fancybox',
 	)
 );
 

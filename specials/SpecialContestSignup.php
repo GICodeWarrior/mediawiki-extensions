@@ -177,6 +177,14 @@ class SpecialContestSignup extends SpecialContestPage {
 		else {
 			$this->getOutput()->addModules( 'contest.special.signup' );
 		}
+		
+		$this->getOutput()->addScript( 
+			Skin::makeVariablesScript( 
+				array(
+					'ContestConfig' => array( 'rules_page' => ContestUtils::getParsedArticleContent( $contest->getField( 'rules_page' ) ) )
+				)
+			)
+		);
 	}
 	
 	/**
@@ -263,7 +271,9 @@ class SpecialContestSignup extends SpecialContestPage {
 			'type' => 'check',
 			'default' => '0',
 			'label-message' => array( 'contest-signup-readrules', $contest->getField( 'rules_page' ) ),
-			'validation-callback' => array( __CLASS__, 'validateRulesField' )
+			'validation-callback' => array( __CLASS__, 'validateRulesField' ),
+			'id' => 'contest-rules',
+			'data-foo' => 'bar'
 		);
 		
 		return $fields;
