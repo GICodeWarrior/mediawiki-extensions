@@ -210,7 +210,9 @@ $wgResourceModules['contest.special.welcome'] = $moduleTemplate + array(
 		'jquery.contestChallenges', 'jquery.fancybox',
 	),
 	'messages' => array(
-		'contest-welcome-select-header'
+		'contest-welcome-select-header',
+		'contest-welcome-rules',
+		'contest-welcome-rules-link',
 	)
 );
 
