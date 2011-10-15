@@ -5,8 +5,6 @@
  * in the even they go down a backup will be available.
  */
 
-error_reporting( E_ALL | E_STRICT );
-
 $path = dirname( __FILE__ );
 
 $wgExtensionMessagesFiles['ArchiveLinks'] = "$path/ArchiveLinks.i18n.php";
@@ -44,10 +42,10 @@ $wgArchiveLinksConfig = array(
 );
 
 $wgExtensionCredits['other'][] = array(
-        'path' => __FILE__,
-        'name' => 'ArchiveLinks',
-        'description' => 'Enables archival of external links on the wiki to prevent linkrot.',
-        'version' => '0.1',
-        'author' => 'Kevin Brown',
-        'url' => '',
+	'path' => __FILE__,
+	'name' => 'ArchiveLinks',
+	'description' => 'Enables archival of external links on the wiki to prevent linkrot.',
+	'version' => '0.1',
+	'author' => 'Kevin Brown',
+	'url' => '',
 );

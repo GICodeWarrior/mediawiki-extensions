@@ -12,31 +12,33 @@ require_once "$path/maintenance/Maintenance.php";
 
 class ArchiveLinksSpider extends Maintenance {
 
-	private $db_master;
-	private $db_slave;
+	/**
+	 * @var DatabaseBase
+	 */
+	private $db_master, $db_slave;
 	private $db_result;
 	private $jobs;
 	private $downloaded_files;
 
 	/**
-	 * Primary function called from Maintenance.php to run the actual spider. 
+	 * Primary function called from Maintenance.php to run the actual spider.
 	 * Queries the queue and then downloads and stores each link for which archival
 	 * has been requested
-	 *  
+	 *
 	 * @global $wgArchiveLinksConfig array
 	 * @global $wgLoadBalancer object
 	 * @global $path string Install path of mediawiki
 	 * @return bool
 	 */
 	public function execute( ) {
-		global $wgArchiveLinksConfig, $wgLoadBalancer, $path;
+		global $wgArchiveLinksConfig;
 
 		$this->db_master = $this->getDB(DB_MASTER);
 		$this->db_slave = $this->getDB(DB_SLAVE);
 		$this->db_result = array();
 
 		if ( $wgArchiveLinksConfig['run_spider_in_loop'] ) {
-			/* while ( TRUE ) {		
+			/* while ( TRUE ) {
 			  if ( ( $url = $this->check_queue() ) !== false ) {
 
 			  }
@@ -47,11 +49,11 @@ class ArchiveLinksSpider extends Maintenance {
 			//for right now we will pipe everything through the replication_check_queue function just for testing purposes
 			/*if ( $wgLoadBalancer->getServerCount() > 1 ) {
 				if ( ( $url = $this->replication_check_queue() ) !== false ) {
-					
+
 				}
 			  } else {
 				if ( ( $url = $this->check_queue() ) !== false ) {
-				  
+
 				}
 			}*/
 
@@ -71,19 +73,19 @@ class ArchiveLinksSpider extends Maintenance {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * This function goes and checks to make sure the configuration values are valid
 	 * Then calls wget, finds the result and updates the appropiate database tables to
-	 * record it. 
-	 * 
+	 * record it.
+	 *
 	 * @global $wgArchiveLinksConfig array
 	 * @global $path string
 	 * @param $url string the URL that is to be archvied
 	 */
 	private function call_wget( $url ) {
 		global $wgArchiveLinksConfig, $path;
-		
+
 		//Check Configuration
 		if ( isset( $wgArchiveLinksConfig['file_types'] ) ) {
 			if ( is_array( $wgArchiveLinksConfig['file_types']) ){
@@ -105,8 +107,8 @@ class ArchiveLinksSpider extends Maintenance {
 				} elseif ( isset( $wgArchiveLinksConfig['content_path'] ) ) {
 					$dir =  realpath( $wgArchiveLinksConfig['content_path'] );
 					if ( !$dir ) {
-						die ( 'The path you have set for $wgArchiveLinksConfig[\'content_path\'] does not exist. ' .
-								'This makes the spider a very sad panda. Please either create it or use a different setting.');
+						$this->error ( 'The path you have set for $wgArchiveLinksConfig[\'content_path\'] does not exist. ' .
+							'This makes the spider a very sad panda. Please either create it or use a different setting.');
 					}
 				} else {
 					$dir = $path . '/archived_content/';
@@ -130,8 +132,8 @@ class ArchiveLinksSpider extends Maintenance {
 			//serveral minutes to go through all the retries which has the potential to stall the spider unnecessarily
 			$wgArchiveLinksConfig['retry_times'] = '3';
 		}
-		
-		
+
+
 		//Do stuff with wget
 		if ( isset( $wgArchiveLinksConfig['wget_path'] ) && file_exists( $wgArchiveLinksConfig['wget_path'] ) ) {
 			die ( 'Support is not yet added for wget in a different directory' );
@@ -142,22 +144,22 @@ class ArchiveLinksSpider extends Maintenance {
 			$this->parse_wget_log( $log_dir, $url );
 			/*foreach( $this->downloaded_files as $file ) {
 				if ( $file['status'] === 'success' ) {
-					
+
 				} elseif ( $file['status'] === 'failure' ) {
 					echo 'bar';
 				}
 			}*/
-			$this->db_master->insert( $this->downloaded_files[0]['url'] );
+			$this->db_master->insert( $this->downloaded_files[0]['url'] ); // FIXME: Missing parameters
 		} else {
 			//this is primarily designed with windows in mind and no built in wget, so yeah, *nix support should be added, in other words note to self...
-			die ( 'wget must be installed in order for the spider to function in wget mode' );
+			$this->error( 'wget must be installed in order for the spider to function in wget mode' );
 		}
 	}
 
 	/**
 	 * This function checks the archive queue without any attempt to work around replag.
 	 * Only one URL is taken at a time.
-	 * 
+	 *
 	 * @return mixed The URL to archive on success, False on failure
 	 */
 	private function check_queue( ) {
@@ -166,11 +168,11 @@ class ArchiveLinksSpider extends Maintenance {
 				array( 'delay_time' => ' >=' . time(), 'in_progress' => '0'),
 				__METHOD__,
 				array( 'ORDER BY' =>  'queue_id ASC', 'LIMIT' => '1' ));
-		
+
 		if ( $this->db_result['job-fetch']->numRows() > 0 ) {
 			$row = $this->db_result['job-fetch']->fetchRow();
-			
-			//$this->delete_dups( $row['url'] );			
+
+			//$this->delete_dups( $row['url'] );
 
 			return $row['url'];
 		} else {
@@ -181,10 +183,10 @@ class ArchiveLinksSpider extends Maintenance {
 
 	/**
 	 * This function checks a local file for a local block of jobs that is to be done
-	 * if there is none that exists it gets a block, creates one, and waits for the 
+	 * if there is none that exists it gets a block, creates one, and waits for the
 	 * data to propagate to avoid any replag problems. All urls are not returned directly
 	 * but are put into $this->jobs.
-	 * 
+	 *
 	 * @return bool
 	 */
 	private function replication_check_queue( ) {
@@ -194,28 +196,28 @@ class ArchiveLinksSpider extends Maintenance {
 			$file = unserialize( $file );
 		} else {
 			//we don't have any temp file, lets get a block of jobs to do and make one
-			$this->db_result['job-fetch'] = $this->db_slave->select( 'el_archive_queue', '*', 
+			$this->db_result['job-fetch'] = $this->db_slave->select( 'el_archive_queue', '*',
 					array(
 						'delay_time <= "' . time() . '"',
 						'in_progress' => '0')
-					, __METHOD__, 
+					, __METHOD__,
 					array(
 						'LIMIT' => '15',
 						'ORDER BY' => 'queue_id ASC'
 					));
 			//echo $this->db_result['job-fetch'];
-			
+
 			$this->jobs = array();
 
 			$wait_time = wfGetLB()->safeGetLag( $this->db_slave ) * 3;
 			$pid = (string) microtime() . ' - ' .  getmypid();
 			$time = time();
-			
+
 			//echo $pid;
-			
+
 			$this->jobs['pid'] = $pid;
 			$this->jobs['execute_time'] = $wait_time + $time;
-			
+
 			if ($this->db_result['job-fetch']->numRows() > 0) {
 				//$row = $this->db_result['job-fetch']->fetchRow();
 				while ( $row = $this->db_result['job-fetch']->fetchRow() ) {
@@ -227,40 +229,40 @@ class ArchiveLinksSpider extends Maintenance {
 						} else {
 							//in_progress is not equal to 0, this means that the job was reserved some time before
 							//it could have been by a previous instance of this spider (assuming not running in a loop)
-							//or a different spider entirely, since we don't have have a temp file to go on we have to assume 
+							//or a different spider entirely, since we don't have have a temp file to go on we have to assume
 							//it was a different spider (it could have been deleted by a user), we will only ignore the in_progress
 							//lock if it has been a long time (2 hours by default) since the job was initally reserved
 							$reserve_time = explode( ' ', $row['in_progress'] );
 							$reserve_time = $reserve_time[2];
-							
+
 							isset( $wgArchiveLinksConfig['in_progress_ignore_delay'] ) ? $ignore_in_prog_time = $wgArchiveLinksConfig['in_progress_ignore_delay'] :
 								$ignore_in_prog_time = 7200;
-							
+
 							if ( $time - $reserve_time - $wait_time > $ignore_in_prog_time ) {
 								$retval = $this->reserve_job( $row );
 							}
 						}
-						
+
 					} else {
 						//let's wait for everything to replicate, add to temp file and check back later
 						$this->jobs[] = $row;
 					}
 				}
 			}
-			
+
 			//var_dump( $this->jobs );
-			
+
 			$this->jobs = serialize( $this->jobs );
 			//file_put_contents( "$path/extensions/ArchiveLinks/spider-temp.txt", $this->jobs );
 		}
-		
+
 		if ( $retval !== true ) {
 			$retval = false;
 		}
 		return $retval;
 	}
-	
-	
+
+
 	/**
 	 * This function checks for duplicates in the queue table, if it finds one it keeps the oldest and deletes
 	 * everything else.
@@ -270,9 +272,9 @@ class ArchiveLinksSpider extends Maintenance {
 	private function delete_dups( $url ) {
 		//Since we querried the slave to check for dups when we insterted instead of the master let's check
 		//that the job isn't in the queue twice, we don't want to archive it twice
-		$this->db_result['dup-check'] = $this->db_slave->select('el_archive_queue', '*', array( 'url' => $url ), __METHOD__, 
+		$this->db_result['dup-check'] = $this->db_slave->select('el_archive_queue', '*', array( 'url' => $url ), __METHOD__,
 				array( 'ORDER BY' => 'queue_id ASC' ) );
-		
+
 		if ( $this->db_result['dup-check']->numRows() > 1 ) {
 			//keep only the first job and remove all duplicates
 			$this->db_result['dup-check']->fetchRow();
@@ -281,16 +283,16 @@ class ArchiveLinksSpider extends Maintenance {
 				var_dump( $del_row );
 				//this is commented for testing purposes, so I don't have to keep readding the duplicate to my test db
 				//in other words this has a giant "remove before flight" ribbon hanging from it...
-				//$this->db_master->delete( 'el_archive_queue', '`el_archive_queue`.`queue_id` = ' . $del_row['queue_id'] );    
+				//$this->db_master->delete( 'el_archive_queue', '`el_archive_queue`.`queue_id` = ' . $del_row['queue_id'] );
 			}
 		}
 	}
-	
-	
+
+
 	/**
 	 * This function sets in_progess in the queue table to 1 so other instances of the spider know that
 	 * the job is in the process of being archived.
-	 * 
+	 *
 	 * @param $row array The row of the database result from the database object.
 	 * @return bool
 	 */
@@ -302,7 +304,7 @@ class ArchiveLinksSpider extends Maintenance {
 		$this->delete_dups( $row['url'] );
 		return true;
 	}
-	
+
 	/**
 	 * Uses regular expressions to parse the log file of wget in non-verbose mode
 	 * This is then returned to call_wget and updated in the db
@@ -313,10 +315,10 @@ class ArchiveLinksSpider extends Maintenance {
 	 */
 	private function parse_wget_log( $log_path, $url ) {
 		$fp = fopen( $log_path, 'r' ) or die( 'can\'t find wget log file to parse' );
-		
+
 		$this->downloaded_files = array ( );
-		
-		$line_regexes = array ( 
+
+		$line_regexes = array (
 			'url' => '%^\d{4}-(?:\d{2}(?:-|:| )?){5}URL:(http://.*?) \[.+?\] ->%',
 			'finish' => '%^Downloaded: \d+ files, (\d(?:.\d)?+(?:K|M)).*%',
 			'sole_url' => '%^(http://.*):%',
@@ -324,7 +326,7 @@ class ArchiveLinksSpider extends Maintenance {
 			'quota_exceed' => '%^Download quota of .*? EXCEEDED!%',
 			'finish_line' => '%^FINISHED --(\d{4}-(?:\d{2}(?:-|:| )){5})-%',
 		);
-		
+
 		while ( $line = fgets( $fp ) ) {
 			foreach( $line_regexes as $line_type => $regex ) {
 				if ( preg_match( $regex, $line, $matches ) ) {
@@ -365,7 +367,7 @@ class ArchiveLinksSpider extends Maintenance {
 				}
 			}
 		}
-		
+
 		return $this->downloaded_files;
 	}
 }

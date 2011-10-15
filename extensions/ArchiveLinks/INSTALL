@@ -5,9 +5,9 @@ To install add the following to LocalSettings.php
 Configuration settings are in the array $wgArchiveLinksConfig, which is currently defined in ArchiveLinks.php for testing purposes.
 
 	$wgArchiveLinksConfig = array (
-	    'archive_service' => 'wikiwix',
-	    'use_multiple_archives' => false,
-	    'run_spider_in_loop' => false,
+		'archive_service' => 'wikiwix',
+		'use_multiple_archives' => false,
+		'run_spider_in_loop' => false,
 	);
 
 archive_service has the following options:
