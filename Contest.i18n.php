@@ -30,15 +30,15 @@ $messages['en'] = array(
 
 	// Groups
 	'group-contestadmin' => 'Contest admins',
-	'group-contestadmin-member' => 'contest admin',
+	'group-contestadmin-member' => '{{GENDER:$1|contest admin}}',
 	'grouppage-contestadmin' => 'Project:Contest_admins',
 
 	'group-contestparticipant' => 'Contest participants',
-	'group-contestparticipant-member' => 'contest participant',
+	'group-contestparticipant-member' => '{{GENDER:$1|contest participant}}',
 	'grouppage-contestparticipant' => 'Project:Contest_participants',
 
 	'group-contestjudge' => 'Contest judges',
-	'group-contestjudge-member' => 'contest judge',
+	'group-contestjudge-member' => '{{GENDER:$1|contest judge}}',
 	'grouppage-contestjudge' => 'Project:Contest_judges',
 
 	// Preferences
