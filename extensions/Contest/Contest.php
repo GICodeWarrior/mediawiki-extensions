@@ -94,7 +94,7 @@ $wgSpecialPageGroups['MyContests'] 				= 'contest';
 
 // API
 $wgAPIModules['deletecontest'] 					= 'ApiDeleteContest';
-// $wgAPIModules['mailcontestants'] 				= 'ApiMailContestants'; // TODO
+$wgAPIModules['mailcontestants'] 				= 'ApiMailContestants'; // TODO
 $wgAPIListModules['challenges'] 				= 'ApiQueryChallenges';
 $wgAPIListModules['contestants'] 				= 'ApiQueryContestants';
 $wgAPIListModules['contestcomments'] 			= 'ApiQueryContestComments';
@@ -207,7 +207,7 @@ $wgResourceModules['contest.special.welcome'] = $moduleTemplate + array(
 		'contest.special.welcome.css',
 	),
 	'dependencies' => array(
-		'jquery.contestChallenges',
+		'jquery.contestChallenges', 'jquery.fancybox',
 	),
 	'messages' => array(
 		'contest-welcome-select-header'
@@ -250,6 +250,15 @@ $wgResourceModules['contest.contestant.pager'] = $moduleTemplate + array(
 $wgResourceModules['contest.special.contestant'] = $moduleTemplate + array(
 	'styles' => array(
 		'contest.special.contestant.css',
+	),
+);
+
+$wgResourceModules['jquery.fancybox'] = $moduleTemplate + array(
+	'scripts' => array(
+		'fancybox/jquery.fancybox-1.3.4.js',
+	),
+	'styles' => array(
+		'fancybox/jquery.fancybox-1.3.4.css'
 	),
 );
 
