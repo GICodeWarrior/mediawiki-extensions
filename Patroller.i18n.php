@@ -359,7 +359,7 @@ $messages['br'] = array(
 	'patrol-stopped' => "Dibabet hoc'h eus chom hep gwiriañ degasadenn ebet all. $1",
 	'patrol-resume' => "Klikit amañ evit kenderc'hel.",
 	'group-patroller' => 'Patrouilherien',
-	'group-patroller-member' => 'patrouilher',
+	'group-patroller-member' => '{{GENDER:$1|patrouilher|patrouilherez}}',
 	'grouppage-patroller' => '{{ns:project}}:Patrouilher',
 	'right-patroller' => 'Pajennoù patrouilhañ',
 );
