@@ -31,6 +31,8 @@ $messages['en'] = array(
 	'apisb-query-prop'        => 'Properties',
 	'apisb-query-list'        => 'Lists',
 	'apisb-query-meta'        => 'Meta information',
+	'apisb-generic-parameters'=> 'Generic parameters',
+	'apisb-generator-parameters'=> 'Generator',
 );
 
 /** Message documentation (Message documentation)

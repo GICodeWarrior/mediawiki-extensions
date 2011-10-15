@@ -88,8 +88,14 @@ class SpecialApiSandbox extends SpecialPage {
 			. self::getSelect( 'query', $queryModules )
 			. '</td></tr>
 </table>
-<div id="api-sandbox-further-inputs"></div>
 ';
+		$s .= '<div id="api-sandbox-main-inputs"></div>'
+			. $this->openFieldset( 'generic-parameters' ) 
+			. '<div id="api-sandbox-generic-inputs" class="mw-collapsible mw-collapsed"></div></fieldset>'
+			. $this->openFieldset( 'generator-parameters', array( 'style' => 'display: none;' ) )
+			. '<div id="api-sandbox-generator-inputs">foo</div></fieldset>
+';
+
 		$s .= Html::element( 'input',
 			array(
 				'type' => 'button',
@@ -111,7 +117,7 @@ class SpecialApiSandbox extends SpecialPage {
 		foreach ( $params[$type][ApiBase::PARAM_TYPE] as $module ) {
 			$res[] = array(
 				'value' => "$type=$module",
-				'text' => /* &nbsp; */ "\xc2\xa0\xc2\xa0\xc2\xa0$type=$module",
+				'text' => /* &nbsp; x 3 */ "\xc2\xa0\xc2\xa0\xc2\xa0$type=$module",
 			);
 		}
 		sort( $res );
@@ -174,10 +180,11 @@ class SpecialApiSandbox extends SpecialPage {
 
 	/**
 	 * @param $name string
+	 * @param $attribs Array
 	 * @return string
 	 */
-	private function openFieldset( $name ) {
-		return "\n" . Html::openElement( 'fieldset', array( 'id' => "api-sandbox-$name" ) )
+	private function openFieldset( $name, $attribs = array() ) {
+		return "\n" . Html::openElement( 'fieldset', array( 'id' => "api-sandbox-$name" ) + $attribs )
 			. "\n\t" . Html::rawElement( 'legend', array(), wfMessage( "apisb-$name" )->parse() )
 			. "\n";
 	}
