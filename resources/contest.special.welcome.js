@@ -15,6 +15,27 @@
 			mw.config.get( 'ContestConfig' )
 		);
 		
+		$rules = $( '#contest-rules' );
+		
+		$div = $( '<div />' ).attr( {
+			'style': 'display:none'
+		} ).html( $( '<div />' ).attr( { 'id': 'contest-rules-div' } ).html( $rules.attr( 'data-rules' ) ) );
+		
+		// TODO: fix very ugly message construction.
+		$a = $( '<a />' ).text( mw.msg( 'contest-welcome-rules-link' ) ).attr( { 'href': '#contest-rules-div' } );
+		$p = $( '<p />' ).text( mw.msg( 'contest-welcome-rules' ) + ' ' ).append( $a ).append( '.' );
+		
+		$rules.html( $p ).append( $div );
+		
+		$a.fancybox( {
+			'width'         : '75%',
+//			'height'        : '75%',
+//			'autoScale'     : true,
+			'transitionIn'  : 'none',
+			'transitionOut' : 'none',
+			'type'          : 'inline',
+//			'autoDimensions': false
+		} );
 	} );
 
 })( window.jQuery, window.mediaWiki );

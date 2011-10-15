@@ -46,7 +46,9 @@ class SpecialContestWelcome extends SpecialContestPage {
 			$out->returnToMain();
 		}
 		else if ( $contest->getField( 'status' ) !== Contest::STATUS_ACTIVE ) {
-			// TODO: show message 
+			$this->showWarning( 'contest-signup-finished' );
+			$out->addHTML( '<br /><br /><br /><br />' );
+			$out->returnToMain();	
 		}
 		else {
 			$this->showEnabledPage( $contest );
@@ -158,8 +160,13 @@ class SpecialContestWelcome extends SpecialContestPage {
 	 * @param Contest $contest
 	 */
 	protected function showRules( Contest $contest ) {
-		// TODO: we might want to have a pop-up with the content here, instead of a link to the page.
-		$this->getOutput()->addWikiMsgArray( 'contest-welcome-rules', $contest->getField( 'rules_page' ) ); 
+		$this->getOutput()->addHTML( Html::element(
+			'div',
+			array(
+				'id' => 'contest-rules',
+				'data-rules' => ContestUtils::getParsedArticleContent( $contest->getField( 'rules_page' ) )
+			)
+		) );
 	}
 	
 	/**
