@@ -1,7 +1,6 @@
 <?php
-
 /**
- * Internationalization file for the GlobalUserGroups extension
+ * Internationalization file for the GlobalUserGroups extension.
  *
  * @since 1.0
  *
@@ -27,4 +26,3 @@ $messages['en'] = array(
 $messages['de'] = array(
 	'globalusergroups-desc' => 'Ermöglicht das Nutzen von definierten lokalen Benutzergruppen als globale Gruppen',
 );
-
