@@ -264,3 +264,20 @@ $messages['ru'] = array(
 	'signupapi-desc' => 'Очищает Special:UserLogin от элементов, связанных с регистрацией, добавляет API для регистрации',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'signupapi-ok' => 'Tamam',
+	'signupapi-noname' => 'Herhangi bir kullanıcı adı belirtilmedi.',
+	'signupapi-userexists' => 'Kullanıcı yok',
+	'signupapi-enterpassword' => 'Bir parola girmelisiniz',
+	'signupapi-passwordtooshort' => 'Parola çok kısa',
+	'signupapi-weak' => 'Zayıf',
+	'signupapi-medium' => 'Orta',
+	'signupapi-strong' => 'İyi',
+	'signupapi-badretype' => 'Girdiğiniz parolalar uyuşmuyor',
+	'signupapi-passwordsmatch' => 'Parolalar',
+	'signupapi-invalidemailaddress' => 'E-posta adresi geçersiz',
+);
+
