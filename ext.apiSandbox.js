@@ -31,7 +31,6 @@ jQuery( function( $ ) {
 			}
 			s += '\n</tbody>\n</table>\n';
 			this.$container.html( s );
-			this.$container.show();
 		},
 
 		/**
@@ -209,6 +208,7 @@ jQuery( function( $ ) {
 				function() { showLoading( $generatorContainer ); },
 				function() {
 					generatorQuery = new UiBuilder( $generatorContainer, paramInfo.querymodules[generator], 'g' );
+					$generatorContainer.show();
 				},
 				function() {}
 			);
