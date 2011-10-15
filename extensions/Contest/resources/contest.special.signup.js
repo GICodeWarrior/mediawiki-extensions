@@ -10,7 +10,30 @@
 	
 	$( document ).ready( function() {
 
+		var contestConfig = mw.config.get( 'ContestConfig' );
+		
 		$( '.mw-htmlform-submit' ).button();
+		
+		$rules = $( '#contest-rules' );
+		
+		$div = $( '<div />' ).attr( {
+			'style': 'display:none'
+		} ).html( $( '<div />' ).attr( { 'id': 'contest-rules-div' } ).html( contestConfig['rules_page'] ) );
+		
+		$a = $( "label[for='contest-rules']" ).find( 'a' );
+		$a.attr( { 'href': '#contest-rules-div' } );
+		
+		$rules.closest( 'td' ).append( $div );
+		
+		$a.fancybox( {
+			'width'         : '75%',
+//			'height'        : '75%',
+//			'autoScale'     : true,
+			'transitionIn'  : 'none',
+			'transitionOut' : 'none',
+			'type'          : 'inline',
+//			'autoDimensions': false
+		} );
 		
 	} );
 
