@@ -63,6 +63,7 @@ $wgAutoloadClasses['ContestChallenge'] 			= dirname( __FILE__ ) . '/includes/Con
 $wgAutoloadClasses['ContestComment'] 			= dirname( __FILE__ ) . '/includes/ContestComment.php';
 $wgAutoloadClasses['ContestContestant'] 		= dirname( __FILE__ ) . '/includes/ContestContestant.php';
 $wgAutoloadClasses['ContestDBObject'] 			= dirname( __FILE__ ) . '/includes/ContestDBObject.php';
+$wgAutoloadClasses['ContestReminderJob'] 		= dirname( __FILE__ ) . '/includes/ContestReminderJob.php';
 $wgAutoloadClasses['ContestUtils'] 				= dirname( __FILE__ ) . '/includes/ContestUtils.php';
 $wgAutoloadClasses['ContestVote'] 				= dirname( __FILE__ ) . '/includes/ContestVote.php';
 

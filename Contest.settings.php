@@ -28,9 +28,10 @@ class ContestSettings {
 	 */
 	protected static function getDefaultSettings() {
 		return array(
-			'votevalues' => range( 0, 5 ),
+			'voteValues' => range( 0, 5 ),
 			'enableTopLink' => true,
 			'submissionDomains' => array( 'github.com', 'gitorious.org' ),
+			'reminderJobSize' => 50
 		);
 	}
 
