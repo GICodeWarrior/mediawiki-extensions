@@ -414,15 +414,15 @@ class SwiftRepo extends LocalRepo {
 
 			// Point to the container.
 			$dstContainer = $this->getZoneContainer( $dstZone );
-			$dstc = $this->get_container($conn, $dstContainer);
+			$dstc = $this->get_container( $conn, $dstContainer );
 
 			$good = true;
 
 			// Where are we copying this from?
-			if (self::isVirtualUrl( $srcPath )) {
+			if ( self::isVirtualUrl( $srcPath ) ) {
 				$src = $this->getContainerRel( $srcPath );
-				list ($srcContainer, $srcRel) = $src;
-				$srcc = $this->get_container($conn, $srcContainer);
+				list ( $srcContainer, $srcRel ) = $src;
+				$srcc = $this->get_container( $conn, $srcContainer );
 
 				// See if we're not supposed to overwrite an existing file.
 				if ( !( $flags & self::OVERWRITE ) ) {
@@ -431,7 +431,7 @@ class SwiftRepo extends LocalRepo {
 						$objd = $dstc->get_object($dstRel);
 						// and if it does, are we allowed to overwrite it?
 						if ( $flags & self::OVERWRITE_SAME ) {
-							$objs = $srcc->get_object($srcRel);
+							$objs = $srcc->get_object( $srcRel );
 							if ( $objd->getETag() != $objs->getETag() ) {
 								$status->fatal( 'fileexistserror', $dstRel );
 								$good = false;
@@ -446,11 +446,11 @@ class SwiftRepo extends LocalRepo {
 					}
 				}
 	
-				if ($good) {
+				if ( $good ) {
 					try {
-						$this->swiftcopy($srcc, $srcRel, $dstc, $dstRel);
+						$this->swiftcopy( $srcc, $srcRel, $dstc, $dstRel );
 					} catch (InvalidResponseException $e ) {
-						$status->error( 'filecopyerror', $srcPath, "{$dstc->name}/$dstRel");
+						$status->error( 'filecopyerror', $srcPath, "{$dstc->name}/$dstRel" );
 						$good = false;
 					}
 					if ( $flags & self::DELETE_SOURCE ) {
@@ -462,7 +462,7 @@ class SwiftRepo extends LocalRepo {
 				if ( !( $flags & self::OVERWRITE ) ) {
 					// does it exist?
 					try {
-						$objd = $dstc->get_object($dstRel);
+						$objd = $dstc->get_object( $dstRel );
 						// and if it does, are we allowed to overwrite it?
 						if ( $flags & self::OVERWRITE_SAME ) {
 							if ( $objd->getETag() != md5_file($srcPath) ) {
@@ -478,12 +478,12 @@ class SwiftRepo extends LocalRepo {
 						$exists = false;
 					}
 				}
-				if ($good) {
+				if ( $good ) {
 					wfDebug( __METHOD__  . ": Writing $srcPath to {$dstc->name}/$dstRel\n");
 					try {
-						$this->write_swift_object( $srcPath, $dstc, $dstRel);
+						$this->write_swift_object( $srcPath, $dstc, $dstRel );
 					} catch (InvalidResponseException $e ) {
-						$status->error( 'filecopyerror', $srcPath, "{$dstc->name}/$dstRel");
+						$status->error( 'filecopyerror', $srcPath, "{$dstc->name}/$dstRel" );
 						$good = false;
 					}
 					if ( $flags & self::DELETE_SOURCE ) {
