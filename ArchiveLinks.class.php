@@ -4,29 +4,29 @@
  */
 
 class ArchiveLinks {
-    private $db_master;
-    private $db_slave;
-    private $db_result;
-    
-    /**
+	private $db_master;
+	private $db_slave;
+	private $db_result;
+
+	/**
 	 * This is the primary function for the Archive Links Extension
 	 * It fires off of the ArticleSaveComplete hook and is primarily responsible for updating
 	 * the appropiate tables to began the process of archival
-	 * 
-	 * @param $article object article object from ArticleSaveComplete hook
+	 *
+	 * @param $article Article object article object from ArticleSaveComplete hook
 	 * @return bool
 	 */
 	public static function queueExternalLinks ( &$article ) {
 		global $wgParser, $wgArchiveLinksConfig;
 		$external_links = $wgParser->getOutput();
 		$external_links = $external_links->mExternalLinks;
-		
+
 		$db_master = wfGetDB( DB_MASTER );
 		$db_slave = wfGetDB( DB_SLAVE );
 		$db_result = array();
-		
+
 		$db_master->begin();
-		
+
 		if ( !isset( $wgArchiveLinksConfig['global_rearchive_time'] ) ) {
 			//30 days or 2,592,000 seconds...
 			$wgArchiveLinksConfig['global_rearchive_time'] = 2592000;
@@ -36,24 +36,24 @@ class ArchiveLinks {
 			//200 days or 17,280,000 seconds
 			$wgArchiveLinksConfig['page_rearchive_time'] = 1728000;
 		}
-		
+
 		if( !isset( $wgArchiveLinksConfig['previous_archive_lockout_time'] ) ) {
 			//2 days or 172,800 seconds
 			$wgArchiveLinksConfig['previous_archive_lockout_time'] = 172800;
 		}
-		
+
 		$page_id = $article->getID();
 		$time = time();
-		
+
 		if ( $wgArchiveLinksConfig['generate_feed'] === true ) {
 			$old_id = $article->getTitle();
 			$old_id = $old_id->getPreviousRevisionID( $page_id );
-			
+
 			$db_result['links_on_page'] = $db_master->select( 'el_archive_link_history', '*', array( 'hist_page_id' => $page_id ), __METHOD__ );
-			
+
 			$old_external_links = array();
 			$new_external_links = array();
-			
+
 			if ( $db_result['links_on_page']->numRows() > 0 ) {
 				while( $row = $db_result['links_on_page']->fetchRow() ) {
 					$old_external_links[] = $row['hist_url'];
@@ -66,14 +66,14 @@ class ArchiveLinks {
 			} elseif ( count( $external_links ) > 0 ) {
 				$new_external_links = $external_links;
 			}
-			
+
 			if ( !isset( $wgArchiveLinksConfig['link_insert_max'] ) ) {
 				$wgArchiveLinksConfig['link_insert_max'] = 100;
 			}
 			die ( count( $new_external_links ));
 			if ( count( $new_external_links ) <= $wgArchiveLinksConfig['link_insert_max'] ) {
 				//insert the links into the queue now
-				foreach( $new_external_links as $link ) {					
+				foreach( $new_external_links as $link ) {
 					$db_result['queue'] = $db_slave->select( 'el_archive_queue', '*', array( 'url' => $link ), __METHOD__, array( 'LIMIT' => '1', ) );
 					$db_result['blacklist'] = $db_slave->select( 'el_archive_blacklist', '*', array( 'bl_url' => $link ), __METHOD__, array( 'LIMIT' => '1', ) );
 
@@ -128,14 +128,14 @@ class ArchiveLinks {
 		}
 
 		$db_master->commit();
-		
+
 		return true;
 	}
-	
+
 	/**
 	 * This is the function resposible for rewriting the link html to insert the [cache] link
 	 * after each external link on the page. This function will get called once for every external link.
-	 * 
+	 *
 	 * @global $wgArchiveLinksConfig array
 	 * @param $url string The url of the page (what would appear in href)
 	 * @param $text string The assoicated text of the URL (what would go between the anchor tags)
@@ -172,26 +172,26 @@ class ArchiveLinks {
 						break;
 				}
 			}
-			
-		    $link = HTML::element('a', array ( 'rel' => 'nofollow', 'class' => $attributes['class'], 'href' => $url ), $text )
+
+			$link = HTML::element('a', array ( 'rel' => 'nofollow', 'class' => $attributes['class'], 'href' => $url ), $text )
 				. HTML::openElement('sup')
 				. HTML::openElement('small')
 				. '&#160;'
 				. HTML::element('a', array ( 'rel' => 'nofollow', 'href' => $link_to_archive ), '[' . wfMsg( 'archivelinks-cache-title') . ']')
 				. HTML::closeElement('small')
 				. HTML::closeElement('sup');
-		
+
 			return false;
 		} else {
 			return true;
 		}
 	}
-	
+
 	/**
 	 * This function is responsible for any database updates within the extension and hooks into
 	 * update.php
-	 * 
-	 * @param $updater object Passed by the LoadExtensionSchemaUpdates hook
+	 *
+	 * @param $updater DatabaseUpdater object Passed by the LoadExtensionSchemaUpdates hook
 	 * @return bool
 	 */
 	public static function schemaUpdates ( $updater = null ) {
@@ -202,42 +202,17 @@ class ArchiveLinks {
 			$path . '/setuptables.sql',
 			true
 		));
-		$updater->addExtensionUpdate( array(
-			'addTable',
-			'el_archive_queue',
-			$path . '/setuptables.sql',
-			true
-		));
-		$updater->addExtensionUpdate( array(
-			'addTable',
-			'el_archive_log',
-			$path . '/setuptables.sql',
-			true
-		));
-		$updater->addExtensionUpdate( array(
-			'addTable',
-			'el_archive_resource',
-			$path . '/setuptables.sql',
-			true
-		));
-		$updater->addExtensionUpdate( array(
-			'addTable',
-			'el_archive_link_blacklist',
-			$path . '/setuptables.sql',
-			true
-		));
 		return true;
 	}
 }
 
 class InsertURLsIntoQueue extends Job {
-        public function __construct( $title, $params ) {
-                // Replace synchroniseThreadArticleData with the an identifier for your job.
-                parent::__construct( 'insertURLsIntoQueue', $title, $params );
-        }
-	
-	
-        public function run() {
-	    
-        }
+		public function __construct( $title, $params ) {
+			// Replace synchroniseThreadArticleData with the an identifier for your job.
+			parent::__construct( 'insertURLsIntoQueue', $title, $params );
+		}
+
+		public function run() {
+
+		}
 }
