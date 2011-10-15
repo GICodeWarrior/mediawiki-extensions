@@ -28,13 +28,12 @@
 		$rules.html( $p ).append( $div );
 		
 		$a.fancybox( {
-			'width'         : '75%',
-//			'height'        : '75%',
-//			'autoScale'     : true,
+			'width'         : '85%',
+			'height'        : '85%',
 			'transitionIn'  : 'none',
 			'transitionOut' : 'none',
 			'type'          : 'inline',
-//			'autoDimensions': false
+			'autoDimensions': false
 		} );
 	} );
 

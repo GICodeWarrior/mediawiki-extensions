@@ -141,12 +141,12 @@ class Contest extends ContestDBObject {
 			'status' => self::STATUS_DRAFT,
 			'end' => '',
 			
-			'rules_page' => 'MediaWiki:',
-			'opportunities' => 'MediaWiki:',
-			'intro' => 'MediaWiki:',
+			'rules_page' => 'MediaWiki:Contests/',
+			'opportunities' => 'MediaWiki:Contests/',
+			'intro' => 'MediaWiki:Contests/',
 			'help' => '',
-			'signup_email' => 'MediaWiki:',
-			'reminder_email' => 'MediaWiki:',
+			'signup_email' => 'MediaWiki:Contests/',
+			'reminder_email' => 'MediaWiki:Contests/',
 		
 			'submission_count' => 0,
 		);
