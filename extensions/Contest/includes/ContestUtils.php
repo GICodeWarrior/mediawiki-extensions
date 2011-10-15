@@ -67,4 +67,5 @@ class ContestUtils {
 		
 		return $text;
 	}
+	
 }

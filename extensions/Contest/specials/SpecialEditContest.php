@@ -291,6 +291,17 @@ class SpecialEditContest extends FormSpecialPage {
 		}
 	}
 	
+	/**
+	 * The UI keeps track of 'removed' challenges by storing them into a
+	 * hidden HTML input, pipe-separated. On submission, this method
+	 * takes this string and actually deletes them.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param string $idString
+	 * 
+	 * @return boolean Success indicator
+	 */
 	protected function removeDeletedChallenges( $idString ) {
 		if ( $idString == '' ) {
 			return true;
@@ -299,6 +310,14 @@ class SpecialEditContest extends FormSpecialPage {
 		return ContestChallenge::s()->delete( array( 'id' => explode( '|', $idString ) ) ); 
 	}
 	
+	/**
+	 * Finds the submitted challanges and returns them as a list of
+	 * ContestChallenge objects.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return array of ContestChallenge
+	 */
 	protected function getSubmittedChallenges() {
 		$challenges = array();
 		

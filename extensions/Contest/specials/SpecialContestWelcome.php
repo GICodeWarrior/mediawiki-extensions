@@ -113,6 +113,13 @@ class SpecialContestWelcome extends SpecialContestPage {
 		$this->addContestJS( $contest );
 	}
 	
+	/**
+	 * Output the needed JS data.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param Contest $contest
+	 */
 	protected function addContestJS( Contest $contest ) {
 		$challenges = array();
 		
@@ -132,6 +139,13 @@ class SpecialContestWelcome extends SpecialContestPage {
 		);
 	}
 	
+	/**
+	 * Output fallback code for people that have JS disabled or have a crappy browser.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param Contest $contest
+	 */
 	protected function showNoJSFallback( Contest $contest ) {
 		$out = $this->getOutput();
 		

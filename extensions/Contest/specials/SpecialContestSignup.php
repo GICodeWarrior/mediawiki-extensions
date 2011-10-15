@@ -292,7 +292,7 @@ class SpecialContestSignup extends SpecialContestPage {
 	
 	/**
 	 * HTMLForm field validation-callback for name field.
-	 * 
+	 * 1
 	 * @since 0.1
 	 * 
 	 * @param $value String

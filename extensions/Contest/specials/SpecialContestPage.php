@@ -109,7 +109,7 @@ abstract class SpecialContestPage extends SpecialPage {
 	 * 
 	 * @return array
 	 */
-	protected static function getNavigationLinks( $contestName, $user, $exclude = false ) {
+	protected static function getNavigationLinks( $contestName, User $user, $exclude = false ) {
 		$pages = array();
 		
 		$pages['contest-nav-contests'] = array( 'Contests' );
@@ -149,7 +149,17 @@ abstract class SpecialContestPage extends SpecialPage {
 		return $links;
 	}
 	
-	public static function getNavigation( $contestName, $user, $lang, $exclude = false ) {
+	/**
+	 * Get the navigation links for the specified contest in a pipe-separated list. 
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param string $contestName
+	 * @param User $user
+	 * @param Language $lang
+	 * @param boolean $exclude
+	 */
+	public static function getNavigation( $contestName, User $user, Language $lang, $exclude = false ) {
 		$links = self::getNavigationLinks( $contestName, $user, $exclude );
 		return Html::rawElement( 'p', array(), $lang->pipeList( $links ) );
 	}
@@ -158,6 +168,8 @@ abstract class SpecialContestPage extends SpecialPage {
 	 * Display navigation links.
 	 * 
 	 * @since 0.1
+	 * 
+	 * @param string|null $subPage
 	 */
 	protected function displayNavigation( $subPage = null ) {
 		if ( is_null( $subPage ) ) {
