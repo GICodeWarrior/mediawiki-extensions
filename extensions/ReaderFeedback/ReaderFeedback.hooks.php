@@ -4,15 +4,14 @@ class ReaderFeedbackHooks {
 	/**
 	* Add ReaderFeedback css/js.
 	*/
-	public static function injectStyleAndJS() {
-		global $wgOut, $wgTitle;
-		if( $wgOut->hasHeadItem( 'ReaderFeedback' ) )
+	public static function injectStyleAndJS( $out ) {
+		if( $out->hasHeadItem( 'ReaderFeedback' ) )
 			return true; # Don't double-load
-		if( !isset($wgTitle) || !$wgOut->isArticleRelated() ) {
-			return self::InjectStyleForSpecial(); // try special page CSS?
+		if( !$out->getTitle() || !$out->isArticleRelated() ) {
+			return self::InjectStyleForSpecial( $out ); // try special page CSS?
 		}
 		# Try to only add to relevant pages
-		if( !ReaderFeedback::isPageRateable($wgTitle) ) {
+		if( !ReaderFeedback::isPageRateable( $out->getTitle() ) ) {
 			return true;
 		}
 		global $wgScriptPath, $wgJsMimeType, $wgFeedbackStylePath, $wgFeedbackStyleVersion;
@@ -22,9 +21,9 @@ class ReaderFeedbackHooks {
 		$cssFile = "$stylePath/readerfeedback.css?$wgFeedbackStyleVersion";
 		$jsFile = "$stylePath/readerfeedback.js?$wgFeedbackStyleVersion";
 		// Add CSS
-		$wgOut->addExtensionStyle( $cssFile );
+		$out->addExtensionStyle( $cssFile );
 		// Add JS
-		$wgOut->addScriptFile( $jsFile );
+		$out->addScriptFile( $jsFile );
 
 		return true;
 	}
@@ -41,18 +40,17 @@ class ReaderFeedbackHooks {
 	/**
 	* Add ReaderFeedback css for relevant special pages.
 	*/
-	public static function InjectStyleForSpecial() {
-		global $wgTitle, $wgOut;
-		if( empty($wgTitle) || $wgTitle->getNamespace() !== NS_SPECIAL ) {
+	public static function InjectStyleForSpecial( $out ) {
+		if ( !is_object( $out->getTitle() ) || $out->getTitle()->getNamespace() !== NS_SPECIAL ) {
 			return true;
 		}
 		$spPages = array( 'RatingHistory' );
 		foreach( $spPages as $key ) {
-			if( $wgTitle->isSpecial( $key ) ) {
+			if( $out->getTitle()->isSpecial( $key ) ) {
 				global $wgScriptPath, $wgFeedbackStylePath, $wgFeedbacktyleVersion;
 				$stylePath = str_replace( '$wgScriptPath', $wgScriptPath, $wgFeedbackStylePath );
 				$encCssFile = htmlspecialchars( "$stylePath/readerfeedback.css?$wgFeedbacktyleVersion" );
-				$wgOut->addExtensionStyle( $encCssFile );
+				$out->addExtensionStyle( $encCssFile );
 				break;
 			}
 		}
@@ -164,9 +162,8 @@ class ReaderFeedbackHooks {
 	}
 	
 	public static function addRatingLink( &$skintemplate, &$nav_urls, &$oldid, &$revid ) {
-		global $wgTitle;
 		# Add rating tab
-		if( isset($wgTitle) && ReaderFeedback::isPageRateable($wgTitle) ) {
+		if( $skintemplate->getTitle() && ReaderFeedback::isPageRateable( $skintemplate->getTitle() ) ) {
 			$nav_urls['ratinghist'] = array( 
 				'text' => wfMsg( 'ratinghistory-link' ),
 				'href' => $skintemplate->makeSpecialUrl( 'RatingHistory', 
