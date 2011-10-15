@@ -60,34 +60,29 @@ class ApiMailContestants extends ApiBase {
 		$conditions = array();
 		
 		if ( count( $contestIds ) > 0 ) {
-			$conditions[] = array( 'contest_id' => $contestIds );
+			$conditions['contest_id'] = $contestIds;
 		}
 		
 		if ( count( $challengeIds ) > 0 ) {
-			$conditions[] = array( 'challenge_id' => $challengeIds );
+			$conditions['challenge_id'] = $challengeIds;
 		}
 		
 		if ( !is_null( $params['ids'] ) && count( $params['ids'] ) > 0 ) {
-			$conditions[] = array( 'id' => $params['ids'] );
+			$conditions['id'] = $params['ids'];
 		}
 		
 		$contestants = ContestContestant::s()->select( 'email', $conditions );
 		
 		if ( $contestants !== false && count( $contestants ) > 0 ) {
-			$recipients = array();
+			$setSize = ContestSettings::get( 'reminderJobSize' );
+			$limit = count( $contestants ) - $setSize;
 			
-			foreach ( $contestants as /* ContestContestant */ $contestant ) {
-				$recipients[] = new MailAddress( $contestant->getField( 'email' ) );
+			for ( $i = 0; $i <= $limit; $i += $setSize ) {
+				$this->createReminderJob( array_splice( $contestants, $i, $setSize ) );
 			}
-			
-			$everythingOk = $this->sendReminderEmail(
-				ContestUtils::getParsedArticleContent( $params['page'] ), // TODO: have some magic here for params such as daysleft
-				$recipients,
-				array( 'daysleft' => $this->getContest()->getDaysLeft() )
-			);
 		}
 		else {
-			// TODO: error
+			$everythingOk = false;
 		}
 		
 		$this->getResult()->addValue(
@@ -95,58 +90,42 @@ class ApiMailContestants extends ApiBase {
 			'success',
 			$everythingOk
 		);
+		
+		if ( $everythingOk ) {
+			$this->getResult()->addValue(
+				null,
+				'contestantcount',
+				count( $contestants )
+			);
+		}
 	}
 	
-	/**
-	 * Send a reminder email.
-	 * 
-	 * @since 0.1
-	 * 
-	 * @param string $emailText
-	 * @param array $recipients
-	 * @param array $params
-	 * 
-	 * @return Status
-	 */
-	public function sendReminderEmail( $emailText, array /* of MailAddress */ $recipients, array $params ) {
-		global $wgPasswordSender, $wgPasswordSenderName;
-		
-		$title = wfMsgExt( 'contest-email-reminder-title', 'parsemag', $params['daysleft'] );
-		$sender = $wgPasswordSender;
-		$senderName = $wgPasswordSenderName;
-		
-		wfRunHooks( 'ContestBeforeReminderEmail', array( &$this, &$title, &$emailText, &$recipients, &$sender, &$senderName ) );
-		
-		return UserMailer::send( 
-			$recipients,
-			new MailAddress( $sender, $senderName ),
-			$title,
-			$emailText,
-			null,
-			'text/html; charset=ISO-8859-1'
+	protected function createReminderJob( array /* of ContestContestant */ $contestants ) {
+		$job = new ContestReminderJob(
+			Title::newMainPage(), // WTF does this require a title for??
+			array(
+				'contest' => $contestants[0]->getContest(),
+				'contestants' => $contestants
+			)
 		);
+		$job->insert();	
 	}
-	/*
+	
 	public function needsToken() {
 		return true;
-	}
-	
-	public function getTokenSalt() {
-		$params = $this->extractRequestParams();
-		return 'deletecontest' . implode( '|', $params['ids'] ); // TODO
 	}
 	
 	public function mustBePosted() {
 		return true;
 	}
-	*/
+	
 	public function getAllowedParams() {
 		return array(
-			'page' => array(
-				ApiBase::PARAM_TYPE => 'string',
-				ApiBase::PARAM_REQUIRED => true,
-				ApiBase::PARAM_ISMULTI => false,
-			),
+//			'page' => array(
+//				ApiBase::PARAM_TYPE => 'string',
+//				ApiBase::PARAM_REQUIRED => true,
+//				ApiBase::PARAM_ISMULTI => false,
+//			),
 			'ids' => array(
 				ApiBase::PARAM_TYPE => 'integer',
 				ApiBase::PARAM_REQUIRED => false,
@@ -158,7 +137,7 @@ class ApiMailContestants extends ApiBase {
 				ApiBase::PARAM_ISMULTI => true,
 			),
 			'contestnames' => array(
-				ApiBase::PARAM_TYPE => 'integer',
+				ApiBase::PARAM_TYPE => 'string',
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI => true,
 			),
@@ -168,7 +147,7 @@ class ApiMailContestants extends ApiBase {
 				ApiBase::PARAM_ISMULTI => true,
 			),
 			'challengetitles' => array(
-				ApiBase::PARAM_TYPE => 'integer',
+				ApiBase::PARAM_TYPE => 'string',
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_ISMULTI => true,
 			),
@@ -178,7 +157,7 @@ class ApiMailContestants extends ApiBase {
 	
 	public function getParamDescription() {
 		return array(
-			'page' => 'Name of the page from which to pull content for the email body',
+//			'page' => 'Name of the page from which to pull content for the email body',
 			'ids' => 'The IDs of the contestants to mail',
 			'contestids' => 'The IDs of the contests where of the contestants should be mailed',
 			'contestnames' => 'The names of the contests where of the contestants should be mailed',

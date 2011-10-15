@@ -246,7 +246,7 @@ class SpecialContestant extends SpecialContestPage {
 		
 		$out->addHTML( Html::element( 'p', array(), $message ) );
 		
-		foreach ( ContestSettings::get( 'votevalues' ) as $value ) {
+		foreach ( ContestSettings::get( 'voteValues' ) as $value ) {
 			$attribs = array(
 				'type' => 'radio',
 				'value' => $value,

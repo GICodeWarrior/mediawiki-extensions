@@ -515,11 +515,14 @@ class ContestContestant extends ContestDBObject {
 	 * 
 	 * @return Status
 	 */
-	public function sendReminderEmail() {
+	public function sendReminderEmail( $emailText, array $params = array() ) {
 		global $wgPasswordSender, $wgPasswordSenderName;
 		
-		$title = wfMsgExt( 'contest-email-reminder-title', 'parsemag', $this->getContest()->getDaysLeft() );
-		$emailText = ContestUtils::getParsedArticleContent( $this->getContest()->getField( 'reminder_email' ) );
+		if ( !array_key_exists( 'daysLeft', $params ) ) {
+			$params['daysLeft'] = $this->getContest()->getDaysLeft();
+		}
+		
+		$title = wfMsgExt( 'contest-email-reminder-title', 'parsemag', $params['daysLeft'] );
 		$user = $this->getUser();
 		$sender = $wgPasswordSender;
 		$senderName = $wgPasswordSenderName;

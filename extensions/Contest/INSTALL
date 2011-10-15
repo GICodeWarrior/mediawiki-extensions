@@ -40,3 +40,25 @@ http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/Contest/Contest.setti
 You should NOT modify the settings file, but can have a look at it to get an idea of
 how to use the settings, in case the below descriptions do not suffice.
 
+{| class="wikitable sortable"
+! Name
+! Type
+! Default
+! Description
+|-
+| votevalues
+| array of integer
+| range( 0, 5 )
+| Values that can be voted by judges on a participant
+|-
+| enableTopLink
+| boolean
+| True
+| Enable display of the top link to Special:MyContests
+|-
+| submissionDomains
+| array of string
+| array( 'github.com', 'gitorious.org' )
+| Domains on which submissions can be placed
+|}
+
