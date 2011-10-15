@@ -423,3 +423,10 @@ $messages['te'] = array(
 	'notificator-subject' => 'విషయం:',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'notificator-new-tag' => 'yeni',
+);
+
