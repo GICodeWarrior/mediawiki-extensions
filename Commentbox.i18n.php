@@ -681,6 +681,17 @@ Dir hutt eng Bemierkung zu dëser Säit? Setzt ze hei derbäi oder <span class="
 	'commentbox-error-empty-comment' => 'Eidel Bemierkunge sinn net erlaabt!',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Eitvys200
+ */
+$messages['lt'] = array(
+	'commentbox-savebutton' => 'Išsaugoti komentarą',
+	'commentbox-name' => 'Pavadinimas:',
+	'commentbox-log' => 'Nauji komentarai',
+	'commentbox-first-comment-heading' => '== Komentarai ==',
+	'commentbox-error-page-nonexistent' => 'Puslapis neegzistuoja',
+);
+
 /** Latgalian (Latgaļu)
  * @author Dark Eagle
  */
