@@ -20,6 +20,13 @@ $messages['en'] = array(
 	'globalusergroups-desc' => 'Allows the use of defined local user groups as global groups',
 );
 
+/** Message documentation (Message documentation)
+ * @author SVG
+ */
+$messages['qqq'] = array(
+	'globalusergroups-desc' => 'Description of GlobalUserGroups extension on Special:Version',
+);
+
 /** German (Deutsch)
  * @author SVG
  */
