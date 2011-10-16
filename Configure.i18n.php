@@ -7057,16 +7057,25 @@ $messages['lmo'] = array(
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Eitvys200
  * @author Tomasdd
  */
 $messages['lt'] = array(
 	'configure-desc-group' => 'Grupės',
+	'configure-edit-core' => 'MediaViki',
+	'configure-form-reason' => 'Priežastis:',
 	'configure-error' => 'Konfigūracijos išsaugojimas negalimas',
 	'configure-js-group-exists' => 'Klaida: tokia grupė jau yra.',
 	'configure-js-prompt-group' => 'Įrašyti naujos grupės pavadinimą:',
 	'configure-js-remove' => 'Ištrinti',
 	'configure-js-remove-row' => 'Trinti šį įrašą',
+	'configure-js-biglist-show' => '[rodyti detales]',
+	'configure-js-biglist-hide' => '[slėpti detales]',
+	'configure-old' => 'Senos versijos',
 	'configure-saved' => 'Konfigūracija išsaugota',
+	'configure-section-pages' => 'Puslapiai',
+	'configure-section-email' => 'El. paštas',
+	'configure-section-timezone' => 'Laiko zona',
 	'configure-section-css-js' => 'CSS ir JavaScript',
 	'configure-section-stats' => 'Puslapio statistika',
 	'configure-section-category' => 'Kategorijos',
@@ -7079,6 +7088,10 @@ $messages['lt'] = array(
 	'configure-section-copyright' => 'Autorinės teisės',
 	'configure-section-htcp' => 'HTCP protokolo perdavimas',
 	'configure-section-misc' => 'Įvairūs nustatymai',
+	'configure-select-wiki-view-all' => 'Visos wiki',
+	'configure-select-wiki-submit' => 'Pasirinkti',
+	'configure-view' => 'Žiūrėti',
+	'configure-view-all-versions' => 'Visas sąrašas versijų',
 );
 
 /** Latgalian (Latgaļu)
