@@ -459,7 +459,7 @@ class Contest extends ContestDBObject {
 		return (int)ceil( $this->getTimeLeft() / ( 60 * 60 * 24 ) );
 	}
 
-	/*
+	/**
 	 * Gets the contest status, which is either expired, or whatever the
 	 * contest administrator has manually set it to. Only active contests will
 	 * be evaluated for expiry.

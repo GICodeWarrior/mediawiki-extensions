@@ -117,6 +117,9 @@ class ContestantPager extends TablePager {
 		return version_compare( $GLOBALS['wgVersion'], '1.18', '>' ) ? parent::getLang() : $GLOBALS['wgLang'];
 	}
 
+	/**
+	 * @return array
+	 */
 	public function getFieldNames() {
 		static $headers = null;
 
@@ -253,6 +256,9 @@ class ContestantPager extends TablePager {
 		);
 	}
 
+	/**
+	 * @return Title
+	 */
 	function getTitle() {
 		return $this->page->getFullTitle();
 	}
