@@ -1,8 +1,8 @@
 <?php
-class SpecialDiagnostics extends SpecialPage {
+class SpecialDiagnosis extends SpecialPage {
         function __construct() {
-                parent::__construct( 'Diagnostics', 'diagnostics-access' );
-                wfLoadExtensionMessages('Diagnostics');
+                parent::__construct( 'Diagnosis', 'diagnosis-access' );
+                wfLoadExtensionMessages('Diagnosis');
         }
 
         function execute( $par ) {
@@ -24,7 +24,7 @@ class SpecialDiagnostics extends SpecialPage {
 				$sdSystemLocale = explode(" ",shell_exec('locale -a'));
 				$wgOut->addHTML( '<td>' );
 				foreach ($sdSystemLocale as $value) { 
-					$wgOut->addHTML($value . '<br\>');
+					$wgOut->addHTML($value . '<br/>');
 					} 
 				$wgOut->addHTML('</td>' );
 				$wgOut->addHTML( '<td>' . $wgShellLocale . '</td>' );
@@ -67,6 +67,26 @@ class SpecialDiagnostics extends SpecialPage {
 					}
 				$wgOut->addHTML( '<td>' . $sdSVGPathStatus . '</td>' );
 				$wgOut->addHTML( '</tr>' );
+				### PHP Extensions ###
+				$wgOut->addHTML( '<tr>' );
+				$wgOut->addHTML( '<td>PHP Extensions</td>' );
+				$sdPHPExtensions = get_loaded_extensions();
+				$wgOut->addHTML( '<td colspan=2>' );
+				foreach ($sdPHPExtensions as $value) { 
+					$wgOut->addHTML($value . '<br/>');
+					} 
+				$wgOut->addHTML('</td>' );
+				$wgOut->addHTML( '<td> Loaded PHP Extensions </td>' );
+				if ( true ) {
+					$sdSVGPathStatus='OK';
+					} 
+					else {
+					$sdSVGPathStatus='ERROR';
+					}
+				$wgOut->addHTML( '<td>' . $sdSVGPathStatus . '</td>' );
+				$wgOut->addHTML( '</tr>' );
+				
+				
 				### End Table ###
 				$wgOut->addHTML( '</table>' );
         }
