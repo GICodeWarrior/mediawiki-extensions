@@ -284,6 +284,7 @@ $messages['lt'] = array(
 	'admanager_addedzone' => 'Pridėta zona',
 	'admanager_zonenum' => 'Zona #: $1',
 	'admanager_zonenotnumber' => 'Klaida! $1 nėra skaičius.',
+	'admanager_gotozones' => '[[Special:AdManagerZones|Redaguoti reklamos zonas]]',
 );
 
 /** Macedonian (Македонски)
