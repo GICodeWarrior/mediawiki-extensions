@@ -1461,6 +1461,7 @@ $messages['grc'] = array(
 );
 
 /** Swiss German (Alemannisch)
+ * @author Als-Chlämens
  * @author Als-Holder
  */
 $messages['gsw'] = array(
@@ -1515,9 +1516,9 @@ Die Syte giltet nume fir bschränkti Bentzer.",
 	'action-editwhitelist' => 'modifizier di Wyss Lischt fir Benutzer, wu s git',
 	'action-restricttowhitelist' => 'bearbeit un bschau nume Syte, wu in dr Wysse Lischt din sin',
 	'group-restricted' => 'Yygschränkti Benutzer',
-	'group-restricted-member' => 'Yygschränkter Benutzer',
+	'group-restricted-member' => '{{GENDER:$1|Yygschränkter Benutzer|Yygschränkter Benutzeri}}',
 	'group-manager' => 'Verwalter',
-	'group-manager-member' => 'Verwalter',
+	'group-manager-member' => '{{GENDER:$1|Verwalter|Verwalteri}}',
 );
 
 /** Hausa (هَوُسَ) */
