@@ -176,6 +176,7 @@ class HomeDirectoryManager:
 		return uniqueKeys
 
 	# Write a list of keys to the user's authorized_keys file
+	# TODO: run this when keys change as well as when directories need to be created
 	def writeKeys(self, user, keys):
 		self.writeFile(self.basedir + user + '/.ssh/authorized_keys', "\n".join(keys) + "\n")
 
