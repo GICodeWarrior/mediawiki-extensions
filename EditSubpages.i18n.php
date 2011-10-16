@@ -809,10 +809,11 @@ $messages['uk'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'editsubpages-desc' => 'Cho phép các quản lý mở khóa một trang và tất cả các trang con của nó để thành viên vô danh có thể sửa đổi thông qua [[MediaWiki:Unlockedpages]]',
+	'editsubpages-desc' => 'Cho phép các quản lý mở khóa một trang và tất cả các trang con của nó để người dùng vô danh có thể sửa đổi thông qua [[MediaWiki:Unlockedpages]]',
 	'unlockedpages' => ' #<!-- đừng sửa vào dòng này --><pre>
 # Đặt trang bạn muốn mở khóa vào dưới đây
 # dùng tên trang là *
