@@ -2,69 +2,69 @@
 
 /**
  * Class representing a single contest contestant.
- * A contestant is a unique user + contest combination.  
- * 
+ * A contestant is a unique user + contest combination.
+ *
  * @since 0.1
- * 
+ *
  * @file ContestContestant.php
  * @ingroup Contest
- * 
+ *
  * @licence GNU GPL v3 or later
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class ContestContestant extends ContestDBObject {
-	
+
 	protected $contest = null;
-	
+
 	/**
 	 * Cached user object, created from the user_id field.
-	 * 
+	 *
 	 * @since 0.1
 	 * @var USer
 	 */
 	protected $user = null;
-	
+
 	/**
 	 * Method to get an instance so methods that ought to be static,
 	 * but can't be due to PHP 5.2 not having LSB, can be called on
 	 * it. This also allows easy identifying of code that needs to
-	 * be changed once PHP 5.3 becomes an acceptable requirement. 
-	 * 
+	 * be changed once PHP 5.3 becomes an acceptable requirement.
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @return ContestDBObject
 	 */
 	public static function s() {
 		static $instance = false;
-		
+
 		if ( $instance === false ) {
 			$instance = new self( array() );
 		}
-		
+
 		return $instance;
 	}
-	
+
 	/**
 	 * Get a new instance of the class from an array.
 	 * This method ought to be in the basic class and
 	 * return a new static(), but this requires LSB/PHP>=5.3.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param array $data
 	 * @param boolean $loadDefaults
-	 * 
+	 *
 	 * @return ContestDBObject
-	 */	
+	 */
 	public function newFromArray( array $data, $loadDefaults = false ) {
 		return new self( $data, $loadDefaults );
 	}
-	
+
 	/**
 	 * @see parent::getFieldTypes
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @return string
 	 */
 	public function getDBTable() {
@@ -73,20 +73,20 @@ class ContestContestant extends ContestDBObject {
 
 	/**
 	 * @see parent::getFieldTypes
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @return string
 	 */
 	protected function getFieldPrefix() {
 		return 'contestant_';
 	}
-	
+
 	/**
 	 * @see parent::getFieldTypes
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @return array
 	 */
 	protected function getFieldTypes() {
@@ -95,29 +95,29 @@ class ContestContestant extends ContestDBObject {
 			'contest_id' => 'id',
 			'challenge_id' => 'id',
 			'user_id' => 'id',
-		
+
 			'full_name' => 'str',
 			'user_name' => 'str',
 			'email' => 'str',
-		
+
 			'country' => 'str',
 			'volunteer' => 'bool',
 			'wmf' => 'bool',
 			'cv' => 'str',
-		
+
 			'submission' => 'str',
-		
+
 			'rating' => 'float',
 			'rating_count' => 'int',
 			'comments' => 'int',
 		);
 	}
-	
+
 	/**
 	 * @see parent::getDefaults
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @return array
 	 */
 	public function getDefaults() {
@@ -125,87 +125,87 @@ class ContestContestant extends ContestDBObject {
 			'full_name' => '',
 			'user_name' => '',
 			'email' => '',
-		
+
 			'country' => '',
 			'volunteer' => false,
 			'wmf' => false,
 			'cv' => false,
-		
+
 			'submission' => '',
-		
+
 			'rating' => 0,
 			'rating_count' => 0,
 			'comments' => 0,
 		);
 	}
-	
+
 	/**
 	 * Gets the contest for this participant.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param array|string|null $fields The fields to load, null for all fields.
-	 * 
+	 *
 	 * @return Contest
 	 */
 	public function getContest( $fields = null ) {
 		if ( !is_null( $this->contest ) ) {
 			return $this->contest;
 		}
-		
+
 		$contest = Contest::s()->selectRow( $fields, array( 'id' => $this->getField( 'contest_id' ) ) );
-		
+
 		if ( is_null( $this->contest ) && is_null( $fields ) ) {
 			$this->contest = $contest;
 		}
-		
+
 		return $contest;
 	}
-	
+
 	/**
 	 * Sets the contest for this participant.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param Contest $contest
 	 */
 	public function setContest( Contest $contest ) {
 		$this->contest = $contest;
 	}
-	
+
 	/**
 	 * Returns a list of countries and their corresponding country
 	 * codes that can be fed directly into an HTML input.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param booolean $addEmptyItem
-	 * 
+	 *
 	 * @return array
 	 */
 	public static function getCountriesForInput( $addEmptyItem = false ) {
 		$countries = array();
-		
+
 		if ( $addEmptyItem ) {
 			$countries[''] = '';
 		}
-		
+
 		foreach ( self::getCountries() as $code => $name ) {
 			$countries["$code - $name"] = $code;
 		}
-		
+
 		return $countries;
 	}
-	
+
 	/**
 	 * Returns a list of ISO 3166-1-alpha-2 country codes (keys) and their corresponding country (values).
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @return array
 	 */
 	public static function getCountries() {
-		return array( 
+		return array(
 			'AF' => 'Afghanistan',
 			'AL' => 'Albania',
 			'DZ' => 'Algeria',
@@ -447,58 +447,58 @@ class ContestContestant extends ContestDBObject {
 			'ZW' => 'Zimbabwe'
 		);
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see ContestDBObject::insertIntoDB()
 	 */
 	protected function insertIntoDB() {
 		wfRunHooks( 'ContestBeforeContestantInsert', array( &$this ) );
-		
+
 		$success = parent::insertIntoDB();
-		
+
 		if ( $success ) {
 			$this->onUserSignup();
 		}
-		
+
 		return $success;
 	}
-	
+
 	/**
 	 * Handles successfull user signup for a contest.
-	 * 
+	 *
 	 * @since 0.1
 	 */
 	protected function onUserSignup() {
 		$this->getContest( array( 'id' ) )->addToSubmissionCount( 1 );
-		
+
 		$this->getUser()->setOption( 'contest_showtoplink', true );
 		$this->getUser()->saveSettings(); // TODO: can't we just save this single option instead of everything?
-		
+
 		$this->sendSignupEmail();
-		
+
 		wfRunHooks( 'ContestAfterContestantInsert', array( &$this ) );
 	}
-	
+
 	/**
 	 * Send the signup email.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @return Status
 	 */
 	public function sendSignupEmail() {
 		global $wgPasswordSender, $wgPasswordSenderName;
-		
+
 		$title = wfMsg( 'contest-email-signup-title' );
 		$emailText = ContestUtils::getParsedArticleContent( $this->getContest()->getField( 'signup_email' ) );
 		$user = $this->getUser();
 		$sender = $wgPasswordSender;
 		$senderName = $wgPasswordSenderName;
-		
+
 		wfRunHooks( 'ContestBeforeSignupEmail', array( &$this, &$title, &$emailText, &$user, &$sender, &$senderName ) );
-		
-		return UserMailer::send( 
+
+		return UserMailer::send(
 			new MailAddress( $user ),
 			new MailAddress( $sender, $senderName ),
 			$title,
@@ -507,29 +507,29 @@ class ContestContestant extends ContestDBObject {
 			'text/html; charset=ISO-8859-1'
 		);
 	}
-	
+
 	/**
 	 * Send a reminder email.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @return Status
 	 */
 	public function sendReminderEmail( $emailText, array $params = array() ) {
 		global $wgPasswordSender, $wgPasswordSenderName;
-		
+
 		if ( !array_key_exists( 'daysLeft', $params ) ) {
 			$params['daysLeft'] = $this->getContest()->getDaysLeft();
 		}
-		
+
 		$title = wfMsgExt( 'contest-email-reminder-title', 'parsemag', $params['daysLeft'] );
 		$user = $this->getUser();
 		$sender = $wgPasswordSender;
 		$senderName = $wgPasswordSenderName;
-		
+
 		wfRunHooks( 'ContestBeforeReminderEmail', array( &$this, &$title, &$emailText, &$user, &$sender, &$senderName ) );
-		
-		return UserMailer::send( 
+
+		return UserMailer::send(
 			new MailAddress( $user ),
 			new MailAddress( $sender, $senderName ),
 			$title,
@@ -538,64 +538,64 @@ class ContestContestant extends ContestDBObject {
 			'text/html; charset=ISO-8859-1'
 		);
 	}
-	
+
 	/**
 	 * Update the vote count and avarage vote fields.
 	 * This does not write the changes to the database,
 	 * if this is required, call writeToDB.
-	 * 
+	 *
 	 * @since 0.1
 	 */
 	public function updateVotes() {
 		$votes = $this->getVotes();
-		
+
 		$amount = count( $votes );
 		$total = 0;
-		
+
 		foreach ( $votes as /* ContestVote */ $vote ) {
 			$total += $vote->getField( 'value' );
 		}
-		
+
 		$this->setField( 'rating_count', $amount );
 		$this->setField( 'rating', $amount > 0 ? $total / $amount : 0 );
 	}
-	
+
 	/**
 	 * Returns the user object for this contestant, created
 	 * from the user_id field and cached in $this->user.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @return User
 	 */
 	public function getUser() {
 		if ( is_null( $this->user ) ) {
 			$this->user = User::newFromId( $this->getField( 'user_id' ) );
 		}
-		
+
 		return $this->user;
 	}
-	
+
 	/**
 	 * Get the votes for this contestant.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @return array of ContestVote
 	 */
 	public function getVotes() {
 		return ContestVote::s()->select( null, array( 'contestant_id' => $this->getId() ) );
 	}
-	
+
 	/**
 	 * Get the comments for this contestant.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @return array of ContestComment
 	 */
 	public function getComments() {
 		return ContestComment::s()->select( null, array( 'contestant_id' => $this->getId() ) );
 	}
-	
+
 }

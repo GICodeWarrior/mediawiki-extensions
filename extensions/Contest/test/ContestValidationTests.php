@@ -32,7 +32,7 @@ class ContestValidationTests extends MediaWikiTestCase {
 			'https://gitorious.org/statusnet' => true,
 			'https://gitorious.org/statusnet/mainline/merge_requests/2224' => true,
 		);
-		
+
 		foreach ( $tests as $test => $isValdid ) {
 			if ( $isValdid ) {
 				$this->assertEquals( true, SpecialMyContests::validateSubmissionField( $test ) );
@@ -48,7 +48,7 @@ class ContestValidationTests extends MediaWikiTestCase {
 	 */
 	public function testObjectSelectCount() {
 		$classes = array( 'Contest', 'ContestChallenge' );
-		
+
 		foreach ( $classes as $class ) {
 			$this->assertEquals( count( $class::s()->select() ), $class::s()->count() );
 		}

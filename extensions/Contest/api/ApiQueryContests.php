@@ -13,7 +13,7 @@
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class ApiQueryContests extends ApiContestQuery {
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see ApiContestQuery::getClassInfo()
@@ -25,7 +25,7 @@ class ApiQueryContests extends ApiContestQuery {
 			'set' => 'contests',
 		);
 	}
-	
+
 	public function __construct( $main, $action ) {
 		parent::__construct( $main, $action, 'co' );
 	}
@@ -36,14 +36,14 @@ class ApiQueryContests extends ApiContestQuery {
 	 */
 	public function execute() {
 		global $wgUser;
-		
+
 		if ( !$wgUser->isAllowed( 'contestadmin' ) || $wgUser->isBlocked() ) {
 			$this->dieUsageMsg( array( 'badaccess-groups' ) );
 		}
 
 		parent::execute();
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see includes/api/ApiBase#getDescription()
@@ -51,7 +51,7 @@ class ApiQueryContests extends ApiContestQuery {
 	public function getDescription() {
 		return 'API module for querying contests';
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see includes/api/ApiBase#getExamples()
@@ -70,5 +70,5 @@ class ApiQueryContests extends ApiContestQuery {
 	public function getVersion() {
 		return __CLASS__ . ': $Id$';
 	}
-	
+
 }

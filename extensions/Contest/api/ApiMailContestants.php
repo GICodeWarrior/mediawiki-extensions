@@ -13,70 +13,70 @@
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class ApiMailContestants extends ApiBase {
-	
+
 	public function __construct( $main, $action ) {
 		parent::__construct( $main, $action );
 	}
-	
+
 	// TODO
 	public function execute() {
 		global $wgUser;
-		
+
 		if ( !$wgUser->isAllowed( 'contestadmin' ) || $wgUser->isBlocked() ) {
 			$this->dieUsageMsg( array( 'badaccess-groups' ) );
 		}
-		
+
 		$params = $this->extractRequestParams();
-		
+
 		$everythingOk = true;
-		
+
 		$contestIds = is_null( $params['contestids'] ) ? array() : $params['contestids'];
 		$challengeIds = is_null( $params['challengeids'] ) ? array() : $params['challengeids'];
-		
+
 		if ( !is_null( $params['challengetitles'] ) ) {
 			$challenges = ContestChallenge::s()->select( 'id', array( 'title' => $params['challengetitles'] ) );
-			
+
 			if ( $challenges === false ) {
 				// TODO: error
 			}
-			
+
 			foreach ( $challenges as /* ContestChallenge */ $challenge ) {
 				$challengeIds[] = $challenge->getId();
 			}
 		}
-		
+
 		if ( !is_null( $params['contestnames'] ) ) {
 			$contests = Contest::s()->select( 'id', array( 'name' => $params['contestnames'] ) );
-			
+
 			if ( $contests === false ) {
 				// TODO: error
 			}
-			
+
 			foreach ( $contests as /* Contest */ $contest ) {
 				$contestIds[] = $contest->getId();
 			}
 		}
-		
+
 		$conditions = array();
-		
+
 		if ( count( $contestIds ) > 0 ) {
 			$conditions['contest_id'] = $contestIds;
 		}
-		
+
 		if ( count( $challengeIds ) > 0 ) {
 			$conditions['challenge_id'] = $challengeIds;
 		}
-		
+
 		if ( !is_null( $params['ids'] ) && count( $params['ids'] ) > 0 ) {
 			$conditions['id'] = $params['ids'];
 		}
-		
+
 		$contestants = ContestContestant::s()->select( 'email', $conditions );
-		
+
 		if ( $contestants !== false && count( $contestants ) > 0 ) {
 			$setSize = ContestSettings::get( 'reminderJobSize' );
 			$limit = count( $contestants ) - $setSize;
-			
+
 			for ( $i = 0; $i <= $limit; $i += $setSize ) {
 				$this->createReminderJob( array_splice( $contestants, $i, $setSize ) );
 			}
@@ -84,13 +84,13 @@ class ApiMailContestants extends ApiBase {
 		else {
 			$everythingOk = false;
 		}
-		
+
 		$this->getResult()->addValue(
 			null,
 			'success',
 			$everythingOk
 		);
-		
+
 		if ( $everythingOk ) {
 			$this->getResult()->addValue(
 				null,
@@ -99,7 +99,7 @@ class ApiMailContestants extends ApiBase {
 			);
 		}
 	}
-	
+
 	protected function createReminderJob( array /* of ContestContestant */ $contestants ) {
 		$job = new ContestReminderJob(
 			Title::newMainPage(), // WTF does this require a title for??
@@ -108,17 +108,17 @@ class ApiMailContestants extends ApiBase {
 				'contestants' => $contestants
 			)
 		);
-		$job->insert();	
+		$job->insert();
 	}
-	
+
 	public function needsToken() {
 		return true;
 	}
-	
+
 	public function mustBePosted() {
 		return true;
 	}
-	
+
 	public function getAllowedParams() {
 		return array(
 //			'page' => array(
@@ -154,7 +154,7 @@ class ApiMailContestants extends ApiBase {
 			'token' => null,
 		);
 	}
-	
+
 	public function getParamDescription() {
 		return array(
 //			'page' => 'Name of the page from which to pull content for the email body',
@@ -166,14 +166,14 @@ class ApiMailContestants extends ApiBase {
 			'token' => 'Edit token',
 		);
 	}
-	
+
 	public function getDescription() {
 		return array(
 			'API module for mailing contestants. Selection criteria will be joined with AND,
 			except for the challange ids/titles and contest ids/names pairs, which will be joined wit OR.'
 		);
 	}
-	
+
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
 			array( 'missingparam', 'ids' ),
@@ -188,10 +188,10 @@ class ApiMailContestants extends ApiBase {
 			'api.php?action=mailcontestants&contestnames=Weekend of Code',
 			'api.php?action=mailcontestants&challengetitles=foo|bar|baz',
 		);
-	}	
-	
+	}
+
 	public function getVersion() {
 		return __CLASS__ . ': $Id$';
-	}		
-	
+	}
+
 }

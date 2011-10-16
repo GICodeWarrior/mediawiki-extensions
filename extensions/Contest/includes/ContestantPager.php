@@ -2,29 +2,29 @@
 
 /**
  * Contestant pager, for on Special:Contest
- * 
+ *
  * @since 0.1
- * 
+ *
  * @file ContestantPager.php
  * @ingroup Contest
- * 
+ *
  * @licence GNU GPL v3 or later
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class ContestantPager extends TablePager {
-	
+
 	/**
 	 * Query conditions, full field names (ie inc prefix).
 	 * @var array
 	 */
 	protected $conds;
-	
+
 	/**
 	 * Special page on which the pager is displayed.
 	 * @var SpecialContestPage
 	 */
 	protected $page;
-	
+
 	/**
 	 * Cache for challenge titles.
 	 * challenge id => challenge title
@@ -34,7 +34,7 @@ class ContestantPager extends TablePager {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param SpecialContestPage $page
 	 * @param array $conds
 	 */
@@ -42,45 +42,45 @@ class ContestantPager extends TablePager {
 		$this->page = $page;
 		$this->conds = $conds;
 		$this->mDefaultDirection = true;
-		
+
 		$this->queryChallengeTitles( $conds );
-		
-		// when MW 1.19 becomes min, we want to pass an IContextSource $context here. 
+
+		// when MW 1.19 becomes min, we want to pass an IContextSource $context here.
 		parent::__construct();
-		
+
 		$this->getOutput()->addModules( 'contest.contestant.pager' );
 	}
-	
+
 	/**
 	 * Query all challenge names we might need,
 	 * based on the queries conditions, and set them
 	 * to the challengeTitles field.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param array $allConds
 	 */
 	protected function queryChallengeTitles( array $allConds ) {
 		$conds = array();
-		
+
 		if ( array_key_exists( 'contestant_contest_id', $allConds ) ) {
 			$conds['contest_id'] = $allConds['contestant_contest_id'];
 		}
-		
+
 		if ( array_key_exists( 'contestant_challenge_id', $allConds ) ) {
 			$conds['id'] = $allConds['contestant_challenge_id'];
 		}
-		
+
 		foreach ( ContestChallenge::s()->select( array( 'id', 'title' ), $conds ) as /* ContestChallenge */ $challenge ) {
 			$this->challengeTitles[$challenge->getId()] = $challenge->getField( 'title' );
 		}
 	}
-	
+
 	/**
 	 * Gets the title of a challenge given it's id.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param integer $challengeId
 	 * @throws MWException
 	 */
@@ -91,11 +91,11 @@ class ContestantPager extends TablePager {
 		else {
 			throw new MWException( 'Attempt to get non-set challenge title' );
 		}
-	} 
-	
+	}
+
 	/**
 	 * Get the OutputPage being used for this instance.
-	 * IndexPager extends ContextSource as of 1.19. 
+	 * IndexPager extends ContextSource as of 1.19.
 	 *
 	 * @since 0.1
 	 *
@@ -104,10 +104,10 @@ class ContestantPager extends TablePager {
 	public function getOutput() {
 		return version_compare( $GLOBALS['wgVersion'], '1.18', '>' ) ? parent::getOutput() : $GLOBALS['wgOut'];
 	}
-	
+
 	/**
 	 * Get the Language being used for this instance.
-	 * IndexPager extends ContextSource as of 1.19. 
+	 * IndexPager extends ContextSource as of 1.19.
 	 *
 	 * @since 0.1
 	 *
@@ -129,7 +129,7 @@ class ContestantPager extends TablePager {
 				'contestant_comments' => 'contest-contestant-commentcount',
 				'contestant_rating' => 'contest-contestant-overallrating',
 			);
-			
+
 			$headers = array_map( 'wfMsg', $headers );
 		}
 
@@ -139,32 +139,32 @@ class ContestantPager extends TablePager {
 	function formatRow( $row ) {
 		$this->mCurrentRow = $row;  	# In case formatValue etc need to know
 		$s = Xml::openElement( 'tr', $this->getRowAttrs($row) );
-		
+
 		foreach ( $this->getFieldNames() as $field => $name ) {
 			$value = isset( $row->$field ) ? $row->$field : null;
 			$formatted = strval( $this->formatValue( $field, $value ) );
-			
+
 			if ( $formatted == '' ) {
 				$formatted = '&#160;';
 			}
 			$s .= Xml::tags( 'td', $this->getCellAttrs( $field, $value ), $formatted );
 		}
 		$s .= "</tr>\n";
-		
+
 		return $s;
 	}
-	
+
 	function getRowAttrs( $row ) {
 		return array_merge(
 			parent::getRowAttrs( $row ),
 			array( 'data-contestant-target' => SpecialPage::getTitleFor( 'Contestant', $row->contestant_id )->getLocalURL() )
 		);
 	}
-	
+
 	function getRowClass( $row ) {
 		return 'contestant-row';
 	}
-	
+
 	public function formatValue( $name, $value ) {
 		switch ( $name ) {
 			case 'contestant_id':
@@ -205,7 +205,7 @@ class ContestantPager extends TablePager {
 				) );
 				break;
 		}
-		
+
 		return $value;
 	}
 
@@ -256,5 +256,5 @@ class ContestantPager extends TablePager {
 	function getTitle() {
 		return $this->page->getFullTitle();
 	}
-	
+
 }
