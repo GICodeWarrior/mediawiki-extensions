@@ -621,6 +621,7 @@ comezando a partir da revisión $3?',
 );
 
 /** Swiss German (Alemannisch)
+ * @author Als-Chlämens
  * @author Als-Holder
  */
 $messages['gsw'] = array(
@@ -649,9 +650,10 @@ $messages['gsw'] = array(
 	'wikisync_apply_button' => 'Aawände',
 	'wikisync_log_imported_by' => 'Importiert vu [[Special:WikiSync|WikiSync]]',
 	'wikisync_log_uploaded_by' => 'Uffeglade vu [[Special:WikiSync|WikiSync]]',
+	'wikisync_unsupported_user' => 'Numme s Bötli $1 cha Wiki-Synchronisierige durefiere. Bitte due dich als $1 aamälde. De Name $1 derf nit zwüsche de Synchronisierige gänderet werde, wyl sunscht Versione ohni Veränderige nit gscheit übersprunge werde chönne (lueg dezue uff [http://www.mediawiki.org/wiki/Extension:WikiSync] für mee Informatione).',
 	'wikisync_api_result_unknown_action' => 'Nit bekannti API-Aktion',
 	'wikisync_api_result_exception' => 'Bim lokale API-Ufruef isch e Uusnahm ufträtte',
-	'wikisync_api_result_noaccess' => 'Nume Mitglider vu däne Benutzergruppe chenne die Aktion uusfiere: $1',
+	'wikisync_api_result_noaccess' => 'Nume Mitglider vu {{PLURAL:$2|derre Benutzergrupp|dänne Benutzergruppe}} chenne die Aktion uusfiere: $1',
 	'wikisync_api_result_invalid_parameter' => 'Nit giltige Parameterwärt',
 	'wikisync_api_result_http' => 'HTTP-Fähler bim Abfroge vu Date vu dr andere API',
 	'wikisync_api_result_Unsupported' => 'Die MediaWiki-Version wird nit unterstitzt (niderer wie 1.15)',
