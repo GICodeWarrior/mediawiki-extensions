@@ -95,8 +95,6 @@ class SpecialMyContests extends SpecialContestPage {
 	 * @param array $contestants
 	 */
 	protected function displayContestsTable( array /* of ContestContestant */ $contestants ) {
-		$user = $this->getUser();
-
 		$running = array();
 		$passed = array();
 		$contests = array();

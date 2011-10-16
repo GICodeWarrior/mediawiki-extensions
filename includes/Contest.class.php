@@ -274,6 +274,7 @@ class Contest extends ContestDBObject {
 	/**
 	 * (non-PHPdoc)
 	 * @see ContestDBObject::writeToDB()
+	 * @return bool
 	 */
 	public function writeToDB() {
 		$success = parent::writeToDB();

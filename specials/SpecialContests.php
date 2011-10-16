@@ -159,6 +159,10 @@ class SpecialContests extends SpecialContestPage {
 		$out->addHTML( '<tbody>' );
 
 		foreach ( $contests as $contest ) {
+			/**
+			 * @var $contest Contest
+			 */
+
 			$fields = array();
 
 			if ( $user->isAllowed( 'contestparticipant' ) ) {
@@ -171,7 +175,7 @@ class SpecialContests extends SpecialContestPage {
 				);
 			}
 			else {
-				$contest->getField( 'name' );
+				$name = $contest->getField( 'name' );
 			}
 
 			$fields[] = Html::rawElement(

@@ -107,6 +107,7 @@ class ContestComment extends ContestDBObject {
 	/**
 	 * (non-PHPdoc)
 	 * @see ContestDBObject::insertIntoDB()
+	 * @return bool
 	 */
 	protected function insertIntoDB() {
 		$success = parent::insertIntoDB();

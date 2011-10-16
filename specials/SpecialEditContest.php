@@ -130,6 +130,7 @@ class SpecialEditContest extends FormSpecialPage {
 	/**
 	 * (non-PHPdoc)
 	 * @see FormSpecialPage::getForm()
+	 * @return HTMLForm|null
 	 */
 	protected function getForm() {
 		$form = parent::getForm();
@@ -155,6 +156,7 @@ class SpecialEditContest extends FormSpecialPage {
 	/**
 	 * (non-PHPdoc)
 	 * @see FormSpecialPage::getFormFields()
+	 * @return array
 	 */
 	protected function getFormFields() {
 		$contest = $this->contest;
