@@ -257,6 +257,7 @@ $messages['gl'] = array(
 );
 
 /** Swiss German (Alemannisch)
+ * @author Als-Chlämens
  * @author Als-Holder
  */
 $messages['gsw'] = array(
@@ -264,7 +265,7 @@ $messages['gsw'] = array(
 	'logentry-parserhook-desc' => 'Die Tag-Erwyterig bietet e Formular zum Aahänge/Voraastelle in Logbuechsyte',
 	'logentry-specialpage-desc' => 'Die Tag-Erwyterig bietet d Ufbereitig fir s Aahänge an Logbuechsyte',
 	'logentry' => 'Logbuechyytrag',
-	'logentry-invalidpage' => 'Nit giltigi Syte',
+	'logentry-invalidpage' => 'Nit giltigi Syte: $1',
 	'logentry-invalidtoken' => 'Nit giltig Token',
 );
 
@@ -278,7 +279,7 @@ $messages['he'] = array(
 	'logentry-parserhook-desc' => 'הרחבת התג הזאת יוצרת טופס להוספה לדפי יומן',
 	'logentry-specialpage-desc' => 'הרחבת התג הזאת מאפשרת עיבוד להוספת לדפי יומן',
 	'logentry' => 'שורה ביומן',
-	'logentry-invalidpage' => 'דף בלתי תקין',
+	'logentry-invalidpage' => 'דף בלתי תקין: $1',
 	'logentry-invalidtoken' => 'אסימון בלתי תקין',
 );
 
