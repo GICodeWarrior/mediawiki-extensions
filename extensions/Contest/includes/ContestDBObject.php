@@ -254,7 +254,8 @@ abstract class ContestDBObject {
 		return $dbw->update(
 			$this->getDBTable(),
 			$this->getWriteValues(),
-			array( $this->getFieldPrefix() . 'id' => $this->getId() )
+			array( $this->getFieldPrefix() . 'id' => $this->getId() ),
+			__METHOD__
 		);
 	}
 
@@ -270,7 +271,9 @@ abstract class ContestDBObject {
 
 		$result = $dbw->insert(
 			$this->getDBTable(),
-			$this->getWriteValues()
+			$this->getWriteValues(),
+			__METHOD__,
+			array( 'IGNORE' )
 		);
 
 		$this->setField( 'id', $dbw->insertId() );
@@ -534,7 +537,8 @@ abstract class ContestDBObject {
 		$success = $dbw->update(
 			$this->getDBTable(),
 			array( "$fullField=$fullField" . ( $isNegative ? '-' : '+' ) . $absoluteAmount ),
-			array( $this->getPrefixedField( 'id' ) => $this->getId() )
+			array( $this->getPrefixedField( 'id' ) => $this->getId() ),
+			__METHOD__
 		);
 
 		if ( $success && $this->hasField( $field ) ) {
@@ -673,7 +677,8 @@ abstract class ContestDBObject {
 		return $dbw->update(
 			$this->getDBTable(),
 			$this->getPrefixedValues( $values ),
-			$this->getPrefixedValues( $conditions )
+			$this->getPrefixedValues( $conditions ),
+			__METHOD__
 		);
 	}
 
