@@ -150,6 +150,7 @@ $messages['gl'] = array(
 );
 
 /** Swiss German (Alemannisch)
+ * @author Als-Chlämens
  * @author Als-Holder
  */
 $messages['gsw'] = array(
@@ -157,7 +158,7 @@ $messages['gsw'] = array(
 	'mirrortools-desc' => 'Macht s megli, Bearbeitige iber e API-Schnittstell unter jedwädem Benutzername z mache',
 	'right-mirroredit' => 'Bearbeitige mache unter jedwädem Benutzername iber e API-Schnittstell',
 	'group-MirrorTools' => 'Mirror-Benutzer',
-	'group-MirrorTools-member' => 'Mirrorprogramm-Benutzer',
+	'group-MirrorTools-member' => '{{GENDER:$1|Mirror-Bearbeiter|Mirror-Bearbeiteri}}',
 	'grouppage-MirrorTools' => '{{ns:project}}:Mirror-Benutzer',
 );
 
@@ -248,7 +249,7 @@ $messages['lb'] = array(
 	'mirrortools-desc' => 'Erlaabt et Ännerungen iwwer API ënner all Benotzernumm ze maachen',
 	'right-mirroredit' => 'Iwwer API ënner all Benotzernumm änneren',
 	'group-MirrorTools' => 'Mirror-Fonctiouns Benotzer',
-	'group-MirrorTools-member' => 'Mirror-Fonctiouns Benotzer',
+	'group-MirrorTools-member' => '{{GENDER:$1|Mirror-Fonctiouns Benotzer}}',
 	'grouppage-MirrorTools' => '{{ns:project}}:Mirror-Fonctiouns Benotzer',
 );
 
