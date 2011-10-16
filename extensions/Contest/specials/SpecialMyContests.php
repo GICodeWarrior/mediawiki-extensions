@@ -72,6 +72,10 @@ class SpecialMyContests extends SpecialContestPage {
 			$this->getOutput()->addWikiMsg( 'contest-mycontests-no-contests' );
 		}
 		else if ( $contestantCount == 1 ) {
+
+			/**
+			 * @var $contest Contest
+			 */
 			$contest =  $contestants[0]->getContest( array( 'status', 'name' ) );
 
 			if ( $contest->getField( 'status' ) == Contest::STATUS_ACTIVE ) {
@@ -100,6 +104,9 @@ class SpecialMyContests extends SpecialContestPage {
 		$contests = array();
 
 		foreach ( $contestants as $contestant ) {
+			/**
+			 * @var $contest Contest
+			 */
 			$contest = $contestant->getContest();
 
 			if ( $contest->getField( 'status' ) == Contest::STATUS_ACTIVE ) {
@@ -150,6 +157,14 @@ class SpecialMyContests extends SpecialContestPage {
 		$out->addHTML( '<tbody>' );
 
 		foreach ( $contestants as $contestant ) {
+
+			/**
+			 * @var $contestant ContestContestant
+			 */
+
+			/**
+			 * @var $contest Contest
+			 */
 			$contest = $contests[$contestant->getField( 'contest_id' )];
 
 			$challengeTitle = ContestChallenge::s()->selectRow(

@@ -43,6 +43,9 @@ class SpecialContest extends SpecialContestPage {
 
 		$out = $this->getOutput();
 
+		/**
+		 * @var $contest Contest
+		 */
 		$contest = Contest::s()->selectRow( null, array( 'name' => $subPage ) );
 
 		if ( $contest === false ) {

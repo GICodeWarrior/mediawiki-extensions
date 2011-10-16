@@ -40,6 +40,10 @@ class SpecialContestWelcome extends SpecialContestPage {
 
 		$contest = Contest::s()->selectRow( null, array( 'name' => $subPage ) );
 
+		/**
+		 * @var $contest Contest
+		 */
+
 		if ( $contest === false ) {
 			$this->showError( 'contest-welcome-unknown' );
 			$out->addHTML( '<br /><br /><br /><br />' );
