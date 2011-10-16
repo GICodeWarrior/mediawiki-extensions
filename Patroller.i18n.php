@@ -203,6 +203,14 @@ $messages['arz'] = array(
 	'right-patroller' => 'مراجعة الصفحات',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'group-patroller' => 'Patrulleros',
+	'group-patroller-member' => '{{GENDER:$1|patrulleru|patrullera}}',
+);
+
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
  * @author Vugar 1981
@@ -1252,7 +1260,7 @@ $messages['ksh'] = array(
 	'patrol-stopped' => 'Do häß Desch entschiede, dat De jetz kei Änderunge mieh nohloore wells. $1',
 	'patrol-resume' => 'Wigger maache!',
 	'group-patroller' => 'Patrullje',
-	'group-patroller-member' => 'Patrullje',
+	'group-patroller-member' => '{{GENDER:$1|Patrullör|Patrullören|Patrullör|Patrullören|Patrullör}}',
 	'grouppage-patroller' => '{{ns:project}}:Patrullje',
 	'right-patroller' => 'Sigge Nohloore (Patrullje)',
 );
@@ -1288,7 +1296,7 @@ $messages['lb'] = array(
 	'patrol-stopped' => 'Dir hutt decidéiert keng weider Ännerung ze kontrolléieren. $1',
 	'patrol-resume' => 'Hei clicke fir weiderzefueren.',
 	'group-patroller' => 'Kontrolleren',
-	'group-patroller-member' => 'Kontroller',
+	'group-patroller-member' => '{{GENDER:$1|Kontroller|Kontrollesch}}',
 	'grouppage-patroller' => '{{ns:project}}:Kontroller',
 	'right-patroller' => 'Sàiten iwwerkucken',
 );
@@ -1721,6 +1729,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Giro720
  * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
@@ -1747,7 +1756,7 @@ $messages['pt'] = array(
 	'patrol-stopped' => 'Optou por não patrulhar uma outra edição. $1',
 	'patrol-resume' => 'Carregue aqui para continuar.',
 	'group-patroller' => 'Patrulhadores',
-	'group-patroller-member' => 'patrulhador',
+	'group-patroller-member' => '{{GENDER:$1|patrulhador|patrulhadora}}',
 	'grouppage-patroller' => '{{ns:project}}:Patrulhador',
 	'right-patroller' => 'Patrulhar páginas',
 );
@@ -1816,7 +1825,7 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'group-patroller' => 'Condrollore',
-	'group-patroller-member' => 'condrollore',
+	'group-patroller-member' => '{{GENDER:$1|condrollore}}',
 );
 
 /** Russian (Русский)
