@@ -676,6 +676,28 @@ $messages['lb'] = array(
 	'tog-collabwatchlisthidelistusers' => 'Ännerunge vu Benotzer vun der gemeinsamer Iwwerwaachungslëscht verstoppen',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Eitvys200
+ */
+$messages['lt'] = array(
+	'collabwatchlisttagselect' => 'Žyma',
+	'collabwatchlisttagcomment' => 'Komentaras',
+	'collabwatchlistsettagbutton' => 'Nustatyti žymę',
+	'collabwatchlisttools-edit' => 'Redaguoti kategorijas',
+	'collabwatchlisttools-delete' => 'Ištrinti',
+	'collabwatchlistsall' => 'Visi sąrašai',
+	'collabwatchlistfiltertags' => 'Slėpti žymes',
+	'collabwatchlistedit-users-raw-submit' => 'Išsaugoti',
+	'collabwatchlistedit-raw-titles' => 'Kategorijos:',
+	'collabwatchlistedit-tags-raw-titles' => 'Žymės:',
+	'collabwatchlistedit-users-raw-titles' => 'Naudotojai:',
+	'collabwatchlistedit-normal-title' => 'Redaguoti kategorijas',
+	'collabwatchlistedit-tags-raw-submit' => 'Išsaugoti',
+	'collabwatchlistdelete-submit' => 'Ištrinti',
+	'collabwatchlistnew-submit' => 'Sukurti',
+	'collabwatchlistedit-normal-submit' => 'Išsaugoti',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
