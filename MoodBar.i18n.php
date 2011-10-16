@@ -1887,6 +1887,8 @@ Ga naar de $1 voor mee informatie.',
 	'moodbar-feedback-older' => 'Oudere',
 	'moodbar-feedback-ajaxerror' => 'Er is een fout opgetreden bij het ophalen van meer resultaten.',
 	'moodbar-user-hidden' => '(Gebruiker verborgen)',
+	'moodbar-comment-hidden' => '(Terugkoppeling verborgen door een administratieve handeling)',
+	'moodbar-feedback-show' => 'verborgen terugkoppeling weergeven',
 	'moodbar-feedback-hide' => 'terugkoppeling verbergen',
 	'moodbar-hidden-footer' => 'Verborgen terugkoppeling $1',
 	'moodbar-feedback-restore' => 'verborgen terugkoppeling herstellen',
@@ -2334,12 +2336,14 @@ $messages['roa-tara'] = array(
 	'moodbar-header-user-editcount' => "Condatore de le cangiaminde de l'utende",
 	'moodbar-header-namespace' => 'Namespace',
 	'moodbar-header-own-talk' => "Pàgene de le 'ngazzaminde meje",
+	'moodbar-feedback-filters-username' => "Nome de l'utende",
 	'moodbar-type-happy' => 'Felice',
 	'moodbar-type-sad' => 'Triste',
 	'moodbar-type-confused' => 'Confuse',
 	'moodbar-user-anonymized' => 'Anonimate',
 	'moodbar-user-ip' => 'Indirizze IP',
 	'moodbar-user-user' => 'Utende reggistrate',
+	'moodbar-log-hide' => 'scunne "[[$1]]"',
 );
 
 /** Russian (Русский)
