@@ -1480,6 +1480,7 @@ Es doe dees foutmeljing jedere kier weer zuus, is de database allezelaeve kepot.
  * @author Eitvys200
  */
 $messages['lt'] = array(
+	'changeauthor-pagenameform-go' => 'Pirmyn',
 	'changeauthor-comment' => 'Komentaras:',
 	'changeauthor-changeauthors-single' => 'Keisti autorių',
 	'changeauthor-nosuchtitle' => 'Nėra puslapio pavadinimu " $1 ".',
