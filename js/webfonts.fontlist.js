@@ -252,6 +252,7 @@
 			te: [ "Lohit Telugu" ],
 			bn: [ "Lohit Bengali" ],
 			as: [ "Lohit Bengali" ],
+			bpy: [ "Lohit Bengali" ],
 			gu: [ "Samyak Gujarati" ],
 			hi: [ "Samyak Devanagari", "Lohit Hindi" ],
 			mr: [ "Samyak Devanagari", "Lohit Hindi" ],
