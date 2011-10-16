@@ -354,7 +354,6 @@ jQuery( function( $ ) {
 			return;
 		}
 		query = query.replace( /^.*=/, '' );
-		//if ( typeof cached != 'object' ) { // stupid FF adds watch() everywhere
 		data = {};
 		if (isQuery ) {
 			data.querymodules = query;
