@@ -105,24 +105,23 @@ class SpecialContestSignup extends SpecialContestPage {
 			$this->showError( 'contest-signup-unknown' );
 			$out->addHTML( '<br /><br /><br /><br />' );
 			$out->returnToMain();
+			return;
 		}
-		else {
-			switch ( $contest->getStatus() ) {
-				case Contest::STATUS_ACTIVE:
-					$this->showEnabledPage( $contest, $challengeId );
-					break;
-				case Contest::STATUS_DRAFT:
-					$this->showWarning( 'contest-signup-draft' );
-					$out->addHTML( '<br /><br /><br /><br />' );
-					$out->returnToMain();
-					break;
-				case Contest::STATUS_FINISHED:
-				case Contest::STATUS_EXPIRED:
-					$this->showWarning( 'contest-signup-finished' );
-					$out->addHTML( '<br /><br /><br /><br />' );
-					$out->returnToMain();
-					break;
-			}
+		switch ( $contest->getStatus() ) {
+			case Contest::STATUS_ACTIVE:
+				$this->showEnabledPage( $contest, $challengeId );
+				break;
+			case Contest::STATUS_DRAFT:
+				$this->showWarning( 'contest-signup-draft' );
+				$out->addHTML( '<br /><br /><br /><br />' );
+				$out->returnToMain();
+				break;
+			case Contest::STATUS_FINISHED:
+			case Contest::STATUS_EXPIRED:
+				$this->showWarning( 'contest-signup-finished' );
+				$out->addHTML( '<br /><br /><br /><br />' );
+				$out->returnToMain();
+				break;
 		}
 	}
 
