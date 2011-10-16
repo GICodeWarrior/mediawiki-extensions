@@ -9,6 +9,7 @@ except ImportError:
 	sys.stderr.write("Unable to import LDAP library.\n")
 	sys.exit(1)
 
+# TODO: move all configuration to scriptconfig
 class LDAPSupportLib:
 
 	def __init__(self):
