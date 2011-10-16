@@ -70,6 +70,63 @@ $messages['en'] = array(
    'grouppage-sysop-global'          => '{{ns:project}}:Global administrators',
 );
 
+/** Message documentation (Message documentation)
+ * @author SVG
+ */
+$messages['qqq'] = array(
+   'group-bot-global'                => '{{doc-group|bot-global}}',
+   'group-bot-global-member'         => '{{doc-group|bot-global|member}}',
+   'grouppage-bot-global'            => '{{doc-group|bot-global|page}}',
+
+   'group-checkuser-global'          => '{{doc-group|checkuser-global}}',
+   'group-checkuser-global-member'   => '{{doc-group|checkuser-global|member}}',
+   'grouppage-checkuser-global'      => '{{doc-group|checkuser-global|page}}',
+
+   'group-communitymanager'          => '{{doc-group|communitymanager}}',
+   'group-communitymanager-member'   => '{{doc-group|communitymanager|member}}',
+   'grouppage-communitymanager'      => '{{doc-group|communitymanager|page}}',
+
+   'group-helper'                    => '{{doc-group|helper}}',
+   'group-helper-member'             => '{{doc-group|helper|member}}',
+   'grouppage-helper'                => '{{doc-group|helper|page}}',
+
+   'group-helper-global'             => '{{doc-group|helper-global}}',
+   'group-helper-global-member'      => '{{doc-group|helper-global|member}}',
+   'grouppage-helper-global'         => '{{doc-group|helper-global|page}}',
+
+   'group-ipblock-exempt'            => '{{doc-group|ipblock-exempt}}',
+   'group-ipblock-exempt-member'     => '{{doc-group|ipblock-exempt|member}}',
+   'grouppage-ipblock-exempt'        => '{{doc-group|ipblock-exempt|page}}',
+
+   'group-ipblock-exempt-g'          => '{{doc-group|ipblock-exempt-g}}',
+   'group-ipblock-exempt-g-member'   => '{{doc-group|ipblock-exempt-g|member}}',
+   'grouppage-ipblock-exempt-g'      => '{{doc-group|ipblock-exempt-g|page}}',
+
+   'group-rollback-global'           => '{{doc-group|rollback-global}}',
+   'group-rollback-global-member'    => '{{doc-group|rollback-global|member}}',
+   'grouppage-rollback-global'       => '{{doc-group|rollback-global|page}}',
+
+   'group-steward'                   => '{{doc-group|steward}}',
+   'group-steward-member'            => '{{doc-group|steward|member}}',
+   'grouppage-steward'               => '{{doc-group|steward|page}}',
+
+   'group-steward-global'            => '{{doc-group|steward-global}}',
+   'group-steward-global-member'     => '{{doc-group|steward-global|member}}',
+   'grouppage-steward-global'        => '{{doc-group|steward-global|page}}',
+
+   'group-sysadmin'                  => '{{doc-group|sysadmin}}',
+   'group-sysadmin-member'           => '{{doc-group|sysadmin|member}}',
+   'grouppage-sysadmin'              => '{{doc-group|sysadmin|page}}',
+
+   'group-sysadmin-global'           => '{{doc-group|sysadmin-global}}',
+   'group-sysadmin-global-member'    => '{{doc-group|sysadmin-global|member}}',
+   'grouppage-sysadmin-global'       => '{{doc-group|sysadmin-global|page}}',
+
+   'group-sysop-global'              => '{{doc-group|sysop-global}}',
+   'group-sysop-global-member'       => '{{doc-group|sysop-global|member}}',
+   'grouppage-sysop-global'          => '{{doc-group|sysop-global|page}}',
+);
+
 /** German (Deutsch)
  * @author SVG
  */
