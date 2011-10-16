@@ -2426,6 +2426,7 @@ OpenID מאפשר לכם להיכנס לחשבון במגוון אתרים מב�
 	'openid-pref-update-userinfo-on-login' => 'עדכון המידע הבא מכרטיס ה־OpenID עם כל כניסה לחשבון:',
 	'openid-urls-desc' => 'כתובות OpenID המשויכות לחשבונכם:',
 	'openid-urls-action' => 'פעולה',
+	'openid-urls-registration' => 'זמן ההרשמה',
 	'openid-urls-delete' => 'מחיקה',
 	'openid-add-url' => 'הוספת OpenID חדש',
 	'openid-login-or-create-account' => 'כניסה או יצירת חשבון חדש',

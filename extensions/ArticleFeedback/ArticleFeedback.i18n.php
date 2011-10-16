@@ -2563,11 +2563,13 @@ O equipo de {{SITENAME}}',
 );
 
 /** Swiss German (Alemannisch)
+ * @author Als-Chlämens
  * @author Als-Holder
  */
 $messages['gsw'] = array(
-	'articlefeedback' => 'Artikelyyschetzig',
+	'articlefeedback' => 'Übersichtssyte für Artikelbeurteilige',
 	'articlefeedback-desc' => 'Macht d Yyschetzig vu Artikel megli (Pilotversion)',
+	'articlefeedback-survey-question-origin' => 'Uff wellere Syte bisch gsi, wo die Umfroog aagfange hesch?',
 	'articlefeedback-survey-question-whyrated' => 'Bitte loss es is wisse, wurum Du dää Artikel hite yygschetzt hesch (bitte aachryzle, was zuetrifft):',
 	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'Ich haa welle mitmache bi dr Yyschetzig vu däm Artikel',
 	'articlefeedback-survey-answer-whyrated-development' => 'Ich hoffe, ass myy Yyschetzig e positive Yyfluss het uf di chimftig Entwicklig vum Artikel',
@@ -2581,16 +2583,24 @@ $messages['gsw'] = array(
 	'articlefeedback-survey-submit' => 'Ibertrage',
 	'articlefeedback-survey-title' => 'Bitte gib Antworte uf e paar Froge',
 	'articlefeedback-survey-thanks' => 'Dankschen fir Dyy Ruckmäldig.',
+	'articlefeedback-survey-disclaimer' => 'Zume mitzhälfe die Funktion z verbessre, chasch dyni Ruggmäldig anonym de Wikipedia-Gmeinschaft mitteile.',
 	'articlefeedback-error' => 'S het e Fähler gee. Bitte versuech s speter nomol.',
 	'articlefeedback-form-switch-label' => 'Die Syte yyschetze',
 	'articlefeedback-form-panel-title' => 'Die Syte yyschetze',
+	'articlefeedback-form-panel-explanation' => 'Was isch des de?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:Artikelbeurteilig',
 	'articlefeedback-form-panel-clear' => 'Yyschetzig uuseneh',
-	'articlefeedback-form-panel-expertise' => 'Ich haa umfangrychi Chänntnis zue däm Thema',
+	'articlefeedback-form-panel-expertise' => 'Ich haa umfangrychi Chänntnis zue däm Thema (optional)',
 	'articlefeedback-form-panel-expertise-studies' => 'Ich haa ne entsprächende Hochschuelabschluss',
 	'articlefeedback-form-panel-expertise-profession' => 'S isch Teil vu myym Beruef',
 	'articlefeedback-form-panel-expertise-hobby' => 'Ich haa ne seli stark persenlig Inträssi an däm Thema',
 	'articlefeedback-form-panel-expertise-other' => 'Dr Grund fir myy Chänntnis isch do nit ufgfiert',
+	'articlefeedback-form-panel-helpimprove' => 'Ich wott debi hälfe, {{SITENAME}} z verbessre. Schicket mir bitte es Mail. (optional)',
+	'articlefeedback-form-panel-helpimprove-note' => 'Mir schicke dir es Bstätigungsmail. Dyni E-Mail-Adräss wird sälbstverständli aa niemern wytergee. $1',
+	'articlefeedback-form-panel-helpimprove-privacy' => 'Dateschutz',
+	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Dateschutz',
 	'articlefeedback-form-panel-submit' => 'Yyschetzig ibertrage',
+	'articlefeedback-form-panel-pending' => 'Dyni Beurteilig isch no nit veröffentlicht worde',
 	'articlefeedback-form-panel-success' => 'Erfolgrych gspycheret',
 	'articlefeedback-form-panel-expiry-title' => 'Dyy Yyschetzig isch z lang här.',
 	'articlefeedback-form-panel-expiry-message' => 'Bitte tue d Syte nomol beurteile un e neji yyschetzitg spychere.',
@@ -2601,12 +2611,32 @@ $messages['gsw'] = array(
 	'articlefeedback-report-ratings' => '$1 Yyschetzige',
 	'articlefeedback-field-trustworthy-label' => 'Vertröueswirdig',
 	'articlefeedback-field-trustworthy-tip' => 'Hesch Du dr Yydruck, ass es in däm Artikel gnue Quällenaagabe het un ass mer däne Quälle cha tröue?',
+	'articlefeedback-field-trustworthy-tooltip-1' => 'Git kei zueverlässigi Quelle aa',
+	'articlefeedback-field-trustworthy-tooltip-2' => 'Git wenig zueverlässigi Quelle aa',
+	'articlefeedback-field-trustworthy-tooltip-3' => 'Git ussryychend zueverlässigi Quelle aa',
+	'articlefeedback-field-trustworthy-tooltip-4' => 'Gueti un zueverlässigi Quelle',
+	'articlefeedback-field-trustworthy-tooltip-5' => 'Git sehr zueverlässigi Quelle aa',
 	'articlefeedback-field-complete-label' => 'Vollständig',
 	'articlefeedback-field-complete-tip' => 'Hesch Du dr Yydruck, ass in däm Artikel aali Aschpäkt ufgfiert sin, wu mit däm Thema zämmehange?',
+	'articlefeedback-field-complete-tooltip-1' => 'Di meiste Informatione fääle no',
+	'articlefeedback-field-complete-tooltip-2' => 'Enthält bstimmti Informatione',
+	'articlefeedback-field-complete-tooltip-3' => 'Enthält d Hauptinformatione, aber es het no Lücke',
+	'articlefeedback-field-complete-tooltip-4' => 'Enthält di meiste Hauptinformatione',
+	'articlefeedback-field-complete-tooltip-5' => 'Enthält umfassendi Informatione',
 	'articlefeedback-field-objective-label' => 'Nit voryygnuu',
 	'articlefeedback-field-objective-tip' => 'Hesch Du dr Yydruck, ass dää Artikel e uusgwogeni Darstellig isch vu allne Aschpäkt, wu mit däm Thema verbunde sin?',
+	'articlefeedback-field-objective-tooltip-1' => 'De Inhalt isch sehr eisytig',
+	'articlefeedback-field-objective-tooltip-2' => 'De Inhalt isch e weng eisytig',
+	'articlefeedback-field-objective-tooltip-3' => 'Fast nit eisytig',
+	'articlefeedback-field-objective-tooltip-4' => 'Kei offesichtlichi Eisytigkeit',
+	'articlefeedback-field-objective-tooltip-5' => 'De Inhalt isch nit eisytig',
 	'articlefeedback-field-wellwritten-label' => 'Guet gschribe',
 	'articlefeedback-field-wellwritten-tip' => 'Hesch Du dr Yydruck, ass dää Artikel guet strukturiert un gschribe isch?',
+	'articlefeedback-field-wellwritten-tooltip-1' => 'Unverständlig',
+	'articlefeedback-field-wellwritten-tooltip-2' => 'Schwer verständlig',
+	'articlefeedback-field-wellwritten-tooltip-3' => 'Ussryychend verständlig',
+	'articlefeedback-field-wellwritten-tooltip-4' => 'Guet verständlig',
+	'articlefeedback-field-wellwritten-tooltip-5' => 'Bsunders chlar verständlig',
 	'articlefeedback-pitch-reject' => 'Villicht speter',
 	'articlefeedback-pitch-or' => 'oder',
 	'articlefeedback-pitch-thanks' => 'Dankschen! Dyy Yyschetzig isch gspycheret wore.',
@@ -2621,6 +2651,38 @@ $messages['gsw'] = array(
 	'articlefeedback-survey-message-success' => 'Dankschen, ass Du bi däre Umfrog mitgmacht hesch.',
 	'articlefeedback-survey-message-error' => 'E Fähler isch ufträtte.
 Bitte versuech s speter nomol.',
+	'articleFeedback-table-caption-dailyhighsandlows' => 'Di Hööche- un Diefpunkt vo hüt',
+	'articleFeedback-table-caption-dailyhighs' => 'Artikel mit de beschte Bewertige: $1',
+	'articleFeedback-table-caption-dailylows' => 'Artikel mit de schlächteste Bewertige: $1',
+	'articleFeedback-table-caption-weeklymostchanged' => 'In derre Wuche am meiste gänderet',
+	'articleFeedback-table-caption-recentlows' => 'Aktuelli Diefpünkt',
+	'articleFeedback-table-heading-page' => 'Syte',
+	'articleFeedback-table-heading-average' => 'Durschnitt',
+	'articleFeedback-copy-above-highlow-tables' => 'Des isch e Versuechsfunktion. Bitte gib uff de [$1 Diskussionssyte] e Ruggmäldig dezue.',
+	'articlefeedback-dashboard-bottom' => "'''Hywyys''': Mir experimentiere wyter mit verschidne Mögligkeite zume Artikel uff dänne Übersichtssyte uffzeige. Zur Zit werde doo die Artikel aazeigt:
+*Syte mit de beschte/schlächteschte Bewertige: Artikel wo derwyylischt de letschte 24 Stunde mindestens 10 Bewertige kriegt hen. De Durchschnitt wird durch alli Beurteilige in de letschte 24 Stunde berächnet.
+*Aktuelli schlächti Bewertige: Artikel wo derwyylischt de letschte 24 Stunde e Bewertige vo 70% oder niidriger übercho hen (2 Stärnli oder weniger), in allene Kategorie. Numme Artikel wo derwyylscht de letschte 24 Stunde mindestens 10 Bewertige übercho hen, sin beruggsichtigt.",
+	'articlefeedback-disable-preference' => 'S Widget zur Syte-Beurteilig nit aazeige',
+	'articlefeedback-emailcapture-response-body' => 'Sali!
+Merci für dyni Intress, {{SITENAME}} z verbessre!
+Bitte nimm der en Augeblick, zume dyni E-Mail-Adräss z bstätige. Des goot über de Link unte:
+
+$1
+
+Du chasch au uff die Syte go:
+
+$2
+
+Un dörte de Code yygee:
+
+$3
+
+Mir benoochrichtige dich deno bal mit Informatione, wie du chasch {{SITENAME}} verbessre.
+
+Wänn du im Fall die Aafroog nit gstellt hesch, no ignorier die E-Mail bitte, un mir unternämme nüüt wyters.
+
+Viili Griess un viile Dank,
+D Mitarbeiter vo {{SITENAME}}',
 );
 
 /** Hebrew (עברית)

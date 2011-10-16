@@ -612,6 +612,7 @@ En wikis privados, aplique o parche linkd da documentación do Push ou actualice
 );
 
 /** Swiss German (Alemannisch)
+ * @author Als-Chlämens
  * @author Als-Holder
  */
 $messages['gsw'] = array(
@@ -619,6 +620,15 @@ $messages['gsw'] = array(
 	'right-push' => 'Syten in anderi Wiki transferiere',
 	'right-bulkpush' => 'Syte gsammlet in anderi Wiki transferiere',
 	'right-pushadmin' => 'Transferyystellige un -ziil ändere',
+	'group-pusher' => 'Transferierer',
+	'group-pusher-member' => '{{GENDER:$1|Transferierer|Transferiereri}}',
+	'grouppage-pusher' => 'Project:Transferierer',
+	'group-bulkpusher' => 'Sammeltransferierer',
+	'group-bulkpusher-member' => '{{GENDER:$1|Sammeltransferierer|Sammeltransferiereri}}',
+	'grouppage-bulkpusher' => 'Project:Sammeltransferierer',
+	'group-filepusher' => 'Dateitransferierer',
+	'group-filepusher-member' => '{{GENDER:$1|Dateitransferierer|Dateitransferiereri}}',
+	'grouppage-filepusher' => 'Project:Dateitransferierer',
 	'push-err-captacha' => 'Transfer no $1 wäg eme CAPTCHA nit megli.',
 	'push-err-captcha-page' => 'Syte $1 het wäge CAPTCHA zue keim vu dr Ziil chenne transferiert wäre.',
 	'push-err-authentication' => 'Authentifizierig uf $1 isch fählgschlaa. $2',
@@ -675,6 +685,11 @@ Go Syte transferiere sin d Titel vun ene im Yygabefäld unten aazgee (ei Titel p
 	'push-special-obtaining-fileinfo' => '$1: Am Abruefe vu Dateiinformatione …',
 	'push-special-pushing-file' => '$1: Am Transferiere vu dr Datei $2 …',
 	'push-special-return' => 'Meh Syte transferiere',
+	'push-api-err-nocurl' => 'cURL isch nit installiert.
+De Parameter $egPushDirectFileUploads muess wäge däm für alli öffentlichi Wikis uff "false" gsetzt werde. Alternativ cURL für alli nitöffentlichi Wikis installiere.',
+	'push-api-err-nofilesupport' => 'Di lokali MediaWiki-Installation unterstützt s Uffelade vo Dateie nit.
+Uff öffentliche Wikis muess de Parameter $egPushDirectFileUploads uff "false" gsetzt werde.
+Uff nit-öffentliche Wikis muess de Patch aagwändet werde, wo über d Dokumentationssyte zu derre Softwareerwyyterig erhältli isch, oder d MediaWiki-Installation sälber muess aktualisiert werde.',
 );
 
 /** Hebrew (עברית)

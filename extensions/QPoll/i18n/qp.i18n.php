@@ -2091,6 +2091,7 @@ $messages['nl'] = array(
 	'qp_users_list' => 'Alle gebruikers weergeven',
 	'qp_browse_to_poll' => 'Naar de peiling $1',
 	'qp_browse_to_user' => 'Naar gebruiker $1',
+	'qp_browse_to_interpretation' => 'Bladeren naar $1',
 	'qp_votes_count' => '$1 {{PLURAL:$1|stem|stemmen}}',
 	'qp_source_link' => 'Bron',
 	'qp_stats_link' => 'Statistieken',

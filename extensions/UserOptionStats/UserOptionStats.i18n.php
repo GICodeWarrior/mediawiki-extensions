@@ -355,6 +355,7 @@ $messages['grc'] = array(
 );
 
 /** Swiss German (Alemannisch)
+ * @author Als-Chlämens
  * @author Als-Holder
  */
 $messages['gsw'] = array(
@@ -362,6 +363,7 @@ $messages['gsw'] = array(
 	'useroptionstats-desc' => '[[Special:UserOptionStats|Spezialsyte]] zum Berichte wie d Benutzeroptione uf Mediawiki brucht wäre',
 	'uos-warn' => 'PHPlot isch nit installiert!',
 	'uos-choose' => 'Wehl eini vu däne Benutzeroptione: $1',
+	'uos-choose-hidden' => 'Wehl eini vu däne versteckte Yystellige: $1',
 	'uos-unknown' => '*Standard',
 	'uos-other' => '*Anderi',
 	'uos-title' => 'Wärtverteilig vu dr Benutzeroption $1',

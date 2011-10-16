@@ -752,13 +752,14 @@ $messages['grc'] = array(
 );
 
 /** Swiss German (Alemannisch)
+ * @author Als-Chlämens
  * @author Als-Holder
  */
 $messages['gsw'] = array(
 	'importusers' => 'Benutzer importiere',
 	'importusers-desc' => '[[Special:ImportUsers|Importiert Benutzer]] us ere CSV-Datei; Codierig: UTF-8',
 	'importusers-uploadfile' => 'Datei uffelade',
-	'importusers-form-caption' => 'CSV-Datei (UTF-8)',
+	'importusers-form-caption' => 'CSV-Importdatei (UTF-8):',
 	'importusers-form-file' => 'Benutzerdateiformat (CSV):',
 	'importusers-form-replace-present' => 'Benutzer, wu s git, ersetze',
 	'importusers-form-button' => 'Importiere',
@@ -768,9 +769,9 @@ $messages['gsw'] = array(
 	'importusers-user-invalid-format' => 'D Benutzerdate in dr Zyyle #$1 hän e nit giltig Format oder sin läär. Ibergumpe.',
 	'importusers-log' => 'Benutzerimport-Logbuech',
 	'importusers-log-summary' => 'Zämmefassig',
-	'importusers-log-summary-all' => 'Alli',
-	'importusers-log-summary-added' => 'Zuegfiegt',
-	'importusers-log-summary-updated' => 'Aktualisiert',
+	'importusers-log-summary-all' => 'Alli: $1',
+	'importusers-log-summary-added' => 'Zuegfiegt: $1',
+	'importusers-log-summary-updated' => 'Aktualisiert: $1',
 	'importusers-login-name' => 'Benutzername',
 	'importusers-password' => 'Passwort',
 	'importusers-email' => 'E-Mail',

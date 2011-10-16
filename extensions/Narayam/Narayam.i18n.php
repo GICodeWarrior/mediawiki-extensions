@@ -579,6 +579,7 @@ $messages['frp'] = array(
 	'narayam-si-wijesekara' => 'Wijesekara cingalês',
 	'narayam-ta99' => 'Tamil99',
 	'narayam-ta' => 'Translitèracion tamoule',
+	'narayam-ta-bamini' => 'Tamoul Bamini',
 	'narayam-te-inscript' => 'InScript tèlougou',
 	'narayam-bn-avro' => 'Avro bengali',
 	'narayam-bn-inscript' => 'InScript bengali',
@@ -627,18 +628,31 @@ $messages['gl'] = array(
 );
 
 /** Swiss German (Alemannisch)
+ * @author Als-Chlämens
  * @author Als-Holder
  */
 $messages['gsw'] = array(
 	'narayam-desc' => 'Macht benutzerdefinierti Yygabemethode fir Yygabefälder megli',
-	'narayam-toggle-ime' => 'Yygabemethode umschalte ($1)',
+	'narayam-toggle-ime' => 'Yyschalte ($1)',
+	'narayam-menu' => 'Yygab-Method',
+	'narayam-menu-tooltip' => 'Stüürig vum Yygabmethode-Editor vo Narayam (IME)',
+	'narayam-help' => 'Hilf',
 	'narayam-help-page' => 'Help:Yygabe',
 	'narayam-checkbox-tooltip' => 'Yygabemethode aa- un abstelle',
+	'narayam-disable-preference' => 'Narayam-Editor ussschalte',
+	'narayam-am' => 'Amharisch (Transliteration)',
+	'narayam-as' => 'Assamesisch (Transliteration)',
+	'narayam-as-avro' => 'Assamesisch (Avro)',
+	'narayam-as-bornona' => 'Assamesisch (Bornona)',
+	'narayam-as-inscript' => 'Assamesisch (InScript)',
+	'narayam-eo' => 'Esperanto',
 	'narayam-hi-inscript' => 'Hindi (InScript)',
 	'narayam-kn' => 'Kannada (Transliteration)',
 	'narayam-kn-inscript' => 'Kannada (InScript)',
 	'narayam-ml' => 'Malayalam (Transliteration)',
 	'narayam-ml-inscript' => 'Malayalam (InScript)',
+	'narayam-ne' => 'Nepali (Transliteration)',
+	'narayam-ne-inscript' => 'Nepali (InScript)',
 	'narayam-or' => 'Oriya (Transliteration)',
 	'narayam-or-inscript' => 'Oriya (InScript)',
 	'narayam-sa' => 'Sanskrit (Transliteration)',
@@ -647,6 +661,8 @@ $messages['gsw'] = array(
 	'narayam-si-wijesekara' => 'Singhalesisch (Wijesekara)',
 	'narayam-ta99' => 'Tamil (Tamil 99)',
 	'narayam-ta' => 'Tamil (Transliteration)',
+	'narayam-ta-bamini' => 'Tamil (Bamini)',
+	'narayam-te-inscript' => 'Telugu (InScript)',
 	'narayam-bn-avro' => 'Bengalisch (Avro)',
 	'narayam-bn-inscript' => 'Bengalisch (InScript)',
 	'narayam-bn-nkb' => 'Bengalisch (NKB)',

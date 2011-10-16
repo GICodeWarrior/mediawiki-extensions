@@ -455,10 +455,15 @@ $messages['gl'] = array(
 );
 
 /** Swiss German (Alemannisch)
+ * @author Als-Chlämens
  * @author Als-Holder
  */
 $messages['gsw'] = array(
 	'livetranslate-desc' => 'Macht di diräkt Ibersetzig vum Syteninhalt megli mit „Google Ibersetzer“',
+	'right-managetms' => 'Lischt vum Übersetzigsgedächtnis [[Special:SpecialLiveTranslate|aapasse]]',
+	'group-tmxadmin' => 'TMX-Ammanne',
+	'group-tmxadmin-member' => '{{GENDER:$1|TMX-Ammann|TMX-Amtsfrou}}',
+	'grouppage-tmxadmin' => 'Project:TMX-Ammanne',
 	'livetranslate-translate-to' => 'Die Syte ibersetze in',
 	'livetranslate-button-translate' => 'Ibersetze',
 	'livetranslate-button-translating' => 'Am Ibersetze …',
@@ -681,7 +686,7 @@ $messages['lb'] = array(
 	'livetranslate-desc' => 'Erméiglecht d\'live Iwwersetzen vu Säiteninhalt mam Service "Google Translate"',
 	'right-managetms' => "[[Special:SpecialLiveTranslate|Ännert]] d'Lëscht vun Iwwersetzungen am Späicher",
 	'group-tmxadmin' => 'TMX-Administrateuren',
-	'group-tmxadmin-member' => 'TMX-Administrateur',
+	'group-tmxadmin-member' => '{{GENDER:$1|TMX-Administrateur|TMX-Administratrice}}',
 	'grouppage-tmxadmin' => 'Project:TMX-Administrateuren',
 	'livetranslate-translate-to' => 'Iwwersetzt dës Säit op',
 	'livetranslate-button-translate' => 'Iwwersetzen',

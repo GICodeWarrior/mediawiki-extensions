@@ -990,21 +990,40 @@ $messages['grc'] = array(
 );
 
 /** Swiss German (Alemannisch)
+ * @author Als-Chlämens
  * @author Als-Holder
  */
 $messages['gsw'] = array(
+	'inlinecategorizer-desc' => 'E JavaScript Modul, wo s mögli macht, Kategorilinks diräkt vunere Syte dezuezfiege, z ändre oder usseznee',
 	'inlinecategorizer-add-category' => 'Kategorii zuefiege',
 	'inlinecategorizer-add-category-submit' => 'Zuefiege',
 	'inlinecategorizer-add-category-summary' => 'Kategorii „$1“ zuefiege',
+	'inlinecategorizer-api-error' => 'D API het en Fääler gmolde: $1: $2',
+	'inlinecategorizer-api-unknown-error' => 'D API het en unbekannte Fääler gmolde.',
+	'inlinecategorizer-cancel' => 'Bearbeitig abbräche',
+	'inlinecategorizer-cancel-all' => 'Alli Änderige abbräche',
+	'inlinecategorizer-category-already-present' => 'Die Syte ghört zur Kategori $1',
+	'inlinecategorizer-category-hook-error' => 'E lokali Funktion verhindret, dass d Änderige gspyycheret werde',
+	'inlinecategorizer-category-question' => 'Worum wottsch die Änderige mache:',
+	'inlinecategorizer-confirm-ok' => 'In Ornig',
 	'inlinecategorizer-confirm-save' => 'Spychere',
+	'inlinecategorizer-confirm-save-all' => 'Alli Änderige spychere',
 	'inlinecategorizer-confirm-title' => 'Aktion bstetige',
+	'inlinecategorizer-edit-category' => 'Kategorie ändere',
+	'inlinecategorizer-edit-category-error' => 'Es isch nit mögli gsi, d Kategori „$1“ z bearbeite.
+Normalerwys passiert des, wänn d Kategori zur Syte vunere Vorlag dezuegfiegt worde isch.',
+	'inlinecategorizer-edit-category-summary' => 'Kategori „$1“ zu „$2“ ändre.',
 	'inlinecategorizer-error-title' => 'Fähler',
-	'inlinecategorizer-remove-category-error' => 'S isch nit megli gsi, die Kategorii uusezneh. Normalerwys git s des, wänn d Kategorii iber e Vorlag yybunden isch.',
+	'inlinecategorizer-remove-category' => 'Kategorii uuseneh',
+	'inlinecategorizer-remove-category-error' => 'S isch nit megli gsi, d Kategorii „$1“ uusezneh. Normalerwys git s des, wänn d Kategorii iber e Vorlag yybunden isch.',
 	'inlinecategorizer-remove-category-summary' => 'Kategorii „$1“ uuseneh',
 );
 
-/** Hebrew (עברית) */
+/** Hebrew (עברית)
+ * @author Amire80
+ */
 $messages['he'] = array(
+	'inlinecategorizer-desc' => 'מודול JavaScript שמפעיל שינוי, הוספה והסרה של קישורי קטגורי בתוך הדף',
 	'inlinecategorizer-add-category' => 'הוספת קטגוריה',
 	'inlinecategorizer-add-category-submit' => 'הוספה',
 	'inlinecategorizer-add-category-summary' => 'הוספת הקטגוריה "$1"',

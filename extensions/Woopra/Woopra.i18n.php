@@ -49,6 +49,13 @@ $messages['arz'] = array(
 	'woopra-desc' => 'يسمح ل[http://www.woopra.com/ برنامج وبرا للتتبع الحي] بالعمل لنسخة ميدياويكى الخاصة بك',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'woopra-desc' => 'Permite al [http://www.woopra.com/ software de siguimientu en vivo Woopra] funcionar cola to instalación MediaWiki',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Jim-by
  */

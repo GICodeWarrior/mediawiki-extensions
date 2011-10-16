@@ -84,6 +84,14 @@ $messages['ia'] = array(
 	'apiexplorer-loading' => 'Carga functiones...',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Eitvys200
+ */
+$messages['lt'] = array(
+	'apiexplorer' => 'API Explorer',
+	'apiexplorer-loading' => 'Funkcijos kraunasi...',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -95,9 +103,13 @@ $messages['mk'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author SPQRobin
  * @author Siebrand
  */
 $messages['nl'] = array(
+	'apiexplorer' => 'API-verkenner',
+	'apiexplorer-desc' => 'Pagina om de documentatie van de MediaWiki-API interactief te verkennen',
+	'apiexplorer-intro' => 'Deze pagina geeft de documentatie voor de API van de huidige wiki weer. Klik op een onderstaande functie om meer informatie te zien over welke parameters gebruikt kunnen worden. Zie ook de [http://www.mediawiki.org/wiki/API:Main_page algemene documentatie van de MediaWiki-API].',
 	'apiexplorer-loading' => 'Bezig met het laden van functies...',
 );
 

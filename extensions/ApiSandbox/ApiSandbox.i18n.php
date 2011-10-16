@@ -239,6 +239,7 @@ $messages['fa'] = array(
 /** French (Français)
  * @author Balzac 40
  * @author Crochet.david
+ * @author Grondin
  * @author Verdy p
  */
 $messages['fr'] = array(
@@ -264,6 +265,8 @@ Reportez-vous sur [http://www.mediawiki.org/wiki/API la documentation de l’API
 	'apisb-query-prop' => 'Propriétés',
 	'apisb-query-list' => 'Listes',
 	'apisb-query-meta' => 'Méta-information',
+	'apisb-generic-parameters' => 'Paramètres génériques',
+	'apisb-generator-parameters' => 'Générateur',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -292,6 +295,8 @@ Reportâd-vos sur [http://www.mediawiki.org/wiki/API la documentacion de l’API
 	'apisb-query-prop' => 'Propriètâts',
 	'apisb-query-list' => 'Listes',
 	'apisb-query-meta' => 'Mèta-enformacions',
+	'apisb-generic-parameters' => 'Paramètres g·ènèricos',
+	'apisb-generator-parameters' => 'G·ènèrator',
 );
 
 /** Galician (Galego)
@@ -320,6 +325,8 @@ Consulte a [http://www.mediawiki.org/wiki/API documentación de API] para obter 
 	'apisb-query-prop' => 'Propiedades',
 	'apisb-query-list' => 'Listas',
 	'apisb-query-meta' => 'Metainformación',
+	'apisb-generic-parameters' => 'Parámetros xenéricos',
+	'apisb-generator-parameters' => 'Xerador',
 );
 
 /** Interlingua (Interlingua)
@@ -348,6 +355,8 @@ Consulta [http://www.mediawiki.org/wiki/API le documentation del API] pro ulteri
 	'apisb-query-prop' => 'Proprietates',
 	'apisb-query-list' => 'Listas',
 	'apisb-query-meta' => 'Metainformationes',
+	'apisb-generic-parameters' => 'Parametros generic',
+	'apisb-generator-parameters' => 'Generator',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -467,6 +476,7 @@ $messages['lt'] = array(
 	'apisb-query-prop' => 'Nusttymai',
 	'apisb-query-list' => 'Sąrašai',
 	'apisb-query-meta' => 'Meta informacija',
+	'apisb-generator-parameters' => 'Generatorius',
 );
 
 /** Macedonian (Македонски)
@@ -495,6 +505,8 @@ $messages['mk'] = array(
 	'apisb-query-prop' => 'Својства',
 	'apisb-query-list' => 'Списоци',
 	'apisb-query-meta' => 'Метаинформации',
+	'apisb-generic-parameters' => 'Општи параметри',
+	'apisb-generator-parameters' => 'Создавач',
 );
 
 /** Malayalam (മലയാളം)
@@ -530,6 +542,8 @@ $messages['ms'] = array(
 	'apisb-query-prop' => 'Sifat',
 	'apisb-query-list' => 'Senarai',
 	'apisb-query-meta' => 'Maklumat meta',
+	'apisb-generic-parameters' => 'Parameter am',
+	'apisb-generator-parameters' => 'Penjana',
 );
 
 /** Dutch (Nederlands)
@@ -559,6 +573,7 @@ Zie de [http://www.mediawiki.org/wiki/API API-documentatie] voor verdere details
 	'apisb-query-prop' => 'Eigenschappen',
 	'apisb-query-list' => 'Lijsten',
 	'apisb-query-meta' => 'Metaigegevens',
+	'apisb-generic-parameters' => 'Algemene parameters',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -741,6 +756,8 @@ $messages['sl'] = array(
 	'apisb-query-prop' => 'Lastnosti',
 	'apisb-query-list' => 'Seznami',
 	'apisb-query-meta' => 'Metapodatki',
+	'apisb-generic-parameters' => 'Generični parametri',
+	'apisb-generator-parameters' => 'Generator',
 );
 
 /** Swedish (Svenska)

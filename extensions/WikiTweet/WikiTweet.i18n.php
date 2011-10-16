@@ -376,6 +376,37 @@ $messages['gl'] = array(
 	'wikitweet-cannotparse' => 'Non se pode analizar',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Chlämens
+ */
+$messages['gsw'] = array(
+	'wikitweet-desc' => 'En Zwitscher-äänlichi Feed uff MediaWiki erstelle',
+	'wikitweet-pleaselogin' => 'Bitte due dich zum zwitschtre aamälde.',
+	'wikitweet-moretweets' => 'Wyteri Zwitschter-Noochrichte...',
+	'wikitweet-submit' => 'Zwitschtre',
+	'wikitweet-submitandmail' => 'Abschigge un per E-Mail verschigge',
+	'wikitweet-subscribe' => 'abonniere',
+	'wikitweet-subscribed' => 'abonniert',
+	'wikitweet-unsubscribe' => 'abbstelle',
+	'wikitweet-delete' => 'lesche',
+	'wikitweet-inform' => 'vum Informant',
+	'wikitweet-private' => 'privat',
+	'wikitweet-answer' => 'Antwort uff',
+	'wikitweet-anonymous' => 'anonym',
+	'wikitweet-timeago' => 'Vor $1',
+	'wikitweet-inthefuture' => 'In de Zuechumft !!',
+	'wikitweet-fewsecondsago' => 'Vor e paar Sekunde',
+	'wikitweet-status' => 'Status:',
+	'wikitweet-status0' => 'Diskussion',
+	'wikitweet-status1' => 'Ereignis',
+	'wikitweet-status2' => 'Warnig',
+	'wikitweet-status3' => 'Alarmierig',
+	'wikitweet-resolve' => 'erledige',
+	'wikitweet-concerns' => 'Betrifft dich',
+	'wikitweet-comment' => 'Kommentar',
+	'wikitweet-subscribers' => 'Abonnente:',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

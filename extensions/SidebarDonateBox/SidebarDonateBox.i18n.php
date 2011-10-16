@@ -110,10 +110,12 @@ $messages['gl'] = array(
 );
 
 /** Swiss German (Alemannisch)
+ * @author Als-Chlämens
  * @author Als-Holder
  */
 $messages['gsw'] = array(
 	'sidebardonatebox-desc' => 'Fiegt e Spändebchäschtli in d Syteleischte yy',
+	'DONATE' => 'Spände',
 );
 
 /** Hebrew (עברית)

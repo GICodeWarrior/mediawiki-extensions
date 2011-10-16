@@ -530,7 +530,7 @@ $messages['uk'] = array(
  */
 $messages['vi'] = array(
 	'purge' => 'làm tươi',
-	'purge-desc' => 'Thêm một tab tẩy bộ đệm tại những trang bình thường, và bỏ qua kiểm tra tẩy đệm cho những thành viên vô danh cho phép tẩy nhanh bộ đệm',
+	'purge-desc' => 'Thêm một tab tẩy bộ đệm tại những trang bình thường, và bỏ qua kiểm tra tẩy đệm cho những người dùng vô danh cho phép tẩy nhanh bộ đệm',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
