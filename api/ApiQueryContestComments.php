@@ -13,7 +13,7 @@
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class ApiQueryContestComments extends ApiContestQuery {
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see ApiContestQuery::getClassInfo()
@@ -25,7 +25,7 @@ class ApiQueryContestComments extends ApiContestQuery {
 			'set' => 'comments',
 		);
 	}
-	
+
 	public function __construct( $main, $action ) {
 		parent::__construct( $main, $action, 'coco' );
 	}
@@ -36,14 +36,14 @@ class ApiQueryContestComments extends ApiContestQuery {
 	 */
 	public function execute() {
 		global $wgUser;
-		
+
 		if ( !$wgUser->isAllowed( 'contestjudge' ) || $wgUser->isBlocked() ) {
 			$this->dieUsageMsg( array( 'badaccess-groups' ) );
 		}
 
 		parent::execute();
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see includes/api/ApiBase#getDescription()
@@ -51,7 +51,7 @@ class ApiQueryContestComments extends ApiContestQuery {
 	public function getDescription() {
 		return 'API module for querying contest comments';
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see includes/api/ApiBase#getExamples()
@@ -70,5 +70,5 @@ class ApiQueryContestComments extends ApiContestQuery {
 	public function getVersion() {
 		return __CLASS__ . ': $Id$';
 	}
-	
+
 }

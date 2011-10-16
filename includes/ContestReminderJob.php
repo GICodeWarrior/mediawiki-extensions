@@ -2,20 +2,20 @@
 
 /**
  * Contest reminder job for email reminders.
- * 
+ *
  * @since 0.1
- * 
+ *
  * @file ContestReminderJob.php
  * @ingroup Contest
- * 
+ *
  * @licence GNU GPL v3 or later
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class ContestReminderJob extends Job {
-	
+
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param Title $title
 	 * @param array $params
 	 * * contestants, array of ContestContestant, required
@@ -41,5 +41,5 @@ class ContestReminderJob extends Job {
 
 		return true;
 	}
-	
+
 }
