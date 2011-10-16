@@ -3,7 +3,7 @@
 if (!defined('MEDIAWIKI')) {
         echo <<<EOT
 To install my extension, put the following line in LocalSettings.php:
-require_once( "\$IP/extensions/Diagnostics/Diagnostics.php" );
+require_once( "\$IP/extensions/Diagnosis/Diagnosis.php" );
 EOT;
         exit( 1 );
 }
@@ -12,7 +12,7 @@ $wgExtensionCredits['specialpage'][] = array(
 		'path' => __FILE__,
         'name' => 'Diagnosis',
         'author' => '[http://www.dasch-tour.de DaSch]',
-        'url' => 'http://www.mediawiki.org/wiki/Extension:Diagnostics',
+        'url' => 'http://www.mediawiki.org/wiki/Extension:Diagnosis',
         'descriptionmsg' => 'diagnosis-desc',
         'version' => '0.0.1',
 );
