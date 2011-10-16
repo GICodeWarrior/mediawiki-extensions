@@ -111,8 +111,8 @@ jQuery( function( $ ) {
 
 		getRequestData: function() {
 			var params = '';
-			for ( var i = 0; i < this.info.parameters.length; i++ ) {
-				var param = this.info.parameters[i],
+			for ( var i = 0; i < this.params.length; i++ ) {
+				var param = this.params[i],
 					name = this.prefix + param.name,
 					$node = $( '#param-' + name );
 				if ( param.type == 'boolean' ) {
