@@ -16,7 +16,8 @@ class Contest extends ContestDBObject {
 	// Constants representing the states a contest can have.
 	const STATUS_DRAFT = 0;
 	const STATUS_ACTIVE = 1;
-	const STATUS_FINISHED = 2;
+	const STATUS_FINISHED = 2;   // manually stopped by contest manager
+	const STATUS_EXPIRED = 3;    // past configured contest end date
 	
 	/**
 	 * List of challenges for this contest.
@@ -172,21 +173,23 @@ class Contest extends ContestDBObject {
 	/**
 	 * Returns a list of status messages and their corresponding constants.
 	 * 
+	 * @param boolean $onlySettable Whether to return only messages for modifiable status.
+	 * 
 	 * @since 0.1
 	 * 
 	 * @return array
 	 */
-	public static function getStatusMessages() {
+	public static function getStatusMessages( $onlySettable = false ) {
 		static $map = false;
 		
 		if ( $map === false ) {
 			$map = array(
 				wfMsg( 'contest-status-draft' ) => self::STATUS_DRAFT,
 				wfMsg( 'contest-status-active' ) => self::STATUS_ACTIVE,
-				wfMsg(  'contest-status-finished' ) => self::STATUS_FINISHED,
+				wfMsg( 'contest-status-finished' ) => self::STATUS_FINISHED,
 			);
 		}
-		
+		if (!$onlySettable) $map[wfMsg( 'contest-status-expired')] = self::STATUS_EXPIRED;
 		return $map;
 	}
 	
@@ -455,4 +458,22 @@ class Contest extends ContestDBObject {
 		return (int)ceil( $this->getTimeLeft() / ( 60 * 60 * 24 ) );
 	}
 	
+	/*
+	 * Gets the contest status, which is either expired, or whatever the 
+	 * contest administrator has manually set it to. Only active contests will
+	 * be evaluated for expiry.
+	 * 
+	 * @return integer status constant
+	 * 
+	 **/
+	public function getStatus() {
+		
+		$dbStatus = $this->getField('status');
+		
+		if ( $dbStatus === self::STATUS_ACTIVE && $this->getTimeLeft() <= 0  ) {
+			return self::STATUS_EXPIRED;
+		} else {
+			return $dbStatus;
+		}
+	}
 }

@@ -172,7 +172,7 @@ class SpecialEditContest extends FormSpecialPage {
 		$fields['status'] = array (
 			'type' => 'radio',
 			'label-message' => 'contest-edit-status',
-			'options' => Contest::getStatusMessages()
+			'options' => Contest::getStatusMessages( $onlySettable = true )
 		);
 		
 		$fields['intro'] = array (

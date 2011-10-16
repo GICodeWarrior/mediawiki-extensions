@@ -48,6 +48,7 @@ $messages['en'] = array(
 	// Contest statuses
 	'contest-status-draft' => 'Draft (disabled)',
 	'contest-status-active' => 'Active (enabled)',
+	'contest-status-expired' => 'Expired (enabled, past end date)',
 	'contest-status-finished' => 'Finished (disabled)',
 
 	// Special page names

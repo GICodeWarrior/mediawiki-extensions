@@ -45,10 +45,15 @@ class SpecialContestWelcome extends SpecialContestPage {
 			$out->addHTML( '<br /><br /><br /><br />' );
 			$out->returnToMain();
 		}
-		else if ( $contest->getField( 'status' ) !== Contest::STATUS_ACTIVE ) {
+		else if ( ( $contest->getStatus() == Contest::STATUS_FINISHED ) || 
+		          ( $contest->getStatus() == Contest::STATUS_EXPIRED ) ) {
 			$this->showWarning( 'contest-signup-finished' );
 			$out->addHTML( '<br /><br /><br /><br />' );
-			$out->returnToMain();	
+			$out->returnToMain();
+		} else if ( $contest->getStatus() == Contest::STATUS_DRAFT ) {
+			$this->showWarning( 'contest-signup-draft' );
+			$out->addHTML( '<br /><br /><br /><br />' );
+			$out->returnToMain();
 		}
 		else {
 			$this->showEnabledPage( $contest );
