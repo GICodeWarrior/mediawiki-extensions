@@ -334,7 +334,6 @@ class SwiftRepo extends LocalRepo {
 	 * We KNOW the container should exist, so puke if it doesn't.
 	 *
 	 * @param $conn CF_Connection
-	 * @param $cont string
 	 *
 	 * @return CF_Container
 	 */
@@ -512,11 +511,6 @@ class SwiftRepo extends LocalRepo {
 	 */
 
 	function append( $srcPath, $toAppendPath, $flags = 0 ) {
-		throw new MWException( __METHOD__ . ': Not yet implemented.' );
-		// I think we need to count the number of files whose names
-		// start with $toAppendPath, then add that count (with leading zeroes) to
-		// the end of $toAppendPath and write the chunk there.
-
 		// Count the number of files whose names start with $toAppendPath
 		$conn = $this->connect();
 		$container = $this->repo->get_container( $conn, $this->repo->container . "%2Ftemp" );
@@ -538,20 +532,15 @@ class SwiftRepo extends LocalRepo {
 	function appendFinish( $toAppendPath ) {
 		$conn = $this->connect();
 		$container = $this->repo->get_container( $conn, $this->repo->container . '%2Ftemp' );
-		$parts = $container->list_objects( 0, NULL, $srcPath ); // FIXME: $srcPath is undefined
+		$parts = $container->list_objects( 0, NULL, $toAppendPath);
 		// list_objects() returns a sorted list.
 
-		// The first object as the same name as the destination, so
-		// we read it into memory and then write it out as the first chunk.
-		$obj = $container->get_object( array_shift( $parts ) );
-		$first = $obj->read();
-
+		// FIXME probably want to put this into a different container.
 		$biggie = $container->create_object( $toAppendPath );
-		$biggie->write( $first );
-
 		foreach ( $parts as $part ) {
 			$obj = $container->get_object( $part );
 			$biggie->write( $obj->read() );
+			$obj = $container->delete_object( $part );
 		}
 		return Status::newGood();
 	}
@@ -584,11 +573,7 @@ class SwiftRepo extends LocalRepo {
 		return $status;
 	}
 
-	/**
-	 * @param $title
-	 * @param $archiveName
-	 * @return OldSwiftFile
-	 */
+
 	function newFromArchiveName( $title, $archiveName ) {
 		return OldSwiftFile::newFromArchiveName( $title, $this, $archiveName );
 	}
@@ -617,7 +602,7 @@ class SwiftRepo extends LocalRepo {
 			list ( $cont, $rel ) = $rvu;
 			$container = $this->get_container( $conn, $cont );
 			try {
-				$container->get_object( $rel );
+				$obj = $container->get_object( $rel );
 				$result[$key] = true;
 			} catch ( NoSuchObjectException $e ) {
 				$result[$key] = false;

@@ -33,7 +33,6 @@ class Copy2(object):
     """
     token = None
 
-
     def __init__(self, conn, app, url, container, obj, authurl, login, key, content_type=None, modified=None):
         self.app = app
         self.conn = conn
@@ -55,8 +54,8 @@ class Copy2(object):
             # if we get a 401 error, it's okay, but we should re-auth.
             try:
                 self.copyconn.close() #06 or #04 if it fails.
-            except wmf.client.ClientException,err:
-                self.app.logger.warn( "PUT Status: %d" % err.http_status)
+            except wmf.client.ClientException, err:
+                self.app.logger.warn("PUT Status: %d" % err.http_status)
                 if err.http_status == 401:
                     # not worth retrying the write.
                     self.token = None
@@ -89,8 +88,8 @@ class WMFRewrite(object):
         self.login = conf['login'].strip()
         self.key = conf['key'].strip()
         self.thumbhost = conf['thumbhost'].strip()
-        self.writethumb = conf.has_key('writethumb')
-        self.user_agent  = conf['user_agent'].strip()
+        self.writethumb = 'writethumb' in conf
+        self.user_agent = conf['user_agent'].strip()
 
     def handle404(self, reqorig, url, container, obj):
         """ return a webob.Response which reads the request, but from the thumb host.
@@ -110,7 +109,7 @@ class WMFRewrite(object):
                 resp = webob.exc.HTTPNotFound('Expected original file not found')
                 return resp
             else:
-                resp = webob.exc.HTTPNotFound('Unexpected error %s' % `status`)
+                resp = webob.exc.HTTPNotFound('Unexpected error %s' % status)
                 return resp
 
         # get the Content-Type.
@@ -181,7 +180,7 @@ class WMFRewrite(object):
                 # We have it! Just return it as usual.
                 #headers['X-Swift-Proxy']= `headers`
                 if 'etag' in headers: del headers['etag']
-                return webob.Response(status=status, headers=headers ,
+                return webob.Response(status=status, headers=headers,
                         app_iter=app_iter)(env, start_response) #01a
             elif status == 404: #4
                 resp = self.handle404(reqorig, url, container, obj)
@@ -202,6 +201,7 @@ class WMFRewrite(object):
 def filter_factory(global_conf, **local_conf):
     conf = global_conf.copy()
     conf.update(local_conf)
+
     def wmfrewrite_filter(app):
         return WMFRewrite(app, conf)
     return wmfrewrite_filter
