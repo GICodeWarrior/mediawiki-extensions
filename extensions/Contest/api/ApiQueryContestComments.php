@@ -17,6 +17,7 @@ class ApiQueryContestComments extends ApiContestQuery {
 	/**
 	 * (non-PHPdoc)
 	 * @see ApiContestQuery::getClassInfo()
+	 * @return array
 	 */
 	protected function getClassInfo() {
 		return array(

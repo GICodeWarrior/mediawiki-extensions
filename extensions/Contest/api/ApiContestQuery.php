@@ -183,6 +183,7 @@ abstract class ApiContestQuery extends ApiQueryBase {
 	/**
 	 * (non-PHPdoc)
 	 * @see includes/api/ApiBase#getAllowedParams()
+	 * @return array
 	 */
 	public function getAllowedParams() {
 		$params = array (

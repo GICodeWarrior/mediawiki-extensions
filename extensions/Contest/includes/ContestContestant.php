@@ -451,6 +451,7 @@ class ContestContestant extends ContestDBObject {
 	/**
 	 * (non-PHPdoc)
 	 * @see ContestDBObject::insertIntoDB()
+	 * @return bool
 	 */
 	protected function insertIntoDB() {
 		wfRunHooks( 'ContestBeforeContestantInsert', array( &$this ) );

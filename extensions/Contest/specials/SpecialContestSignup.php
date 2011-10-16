@@ -208,6 +208,7 @@ class SpecialContestSignup extends SpecialContestPage {
 	 *
 	 * @param Contest $contest
 	 * @param integer|false $challengeId
+	 * @return array
 	 */
 	protected function getFormFields( Contest $contest, $challengeId ) {
 		$fields = array();
