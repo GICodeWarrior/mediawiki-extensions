@@ -820,6 +820,15 @@ $messages['lb'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform, Feeler bei der Saisie!',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Eitvys200
+ */
+$messages['lt'] = array(
+	'chemicalsources' => 'Cheminiai šaltiniai',
+	'chemFunctions_ListPage' => 'Cheminiai šaltiniai',
+	'chemFunctions_Formula' => 'Formulė',
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */
