@@ -213,11 +213,12 @@ class SpecialMyContests extends SpecialContestPage {
 			$out->returnToMain();
 		}
 		else {
-			switch ( $contest->getField( 'status' ) ) {
+			switch ( $contest->getStatus() ) {
 				case Contest::STATUS_ACTIVE:
-					$this->handleEnabledPage( $contest );	
+					$this->handleEnabledPage( $contest );
 					break;
 				case Contest::STATUS_FINISHED:
+				case Contest::STATUS_EXPIRED:
 					$this->showWarning( 'contest-submission-finished' );
 					$out->addHTML( '<br /><br /><br /><br />' );
 					$out->returnToMain();

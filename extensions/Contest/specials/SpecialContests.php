@@ -77,7 +77,7 @@ class SpecialContests extends SpecialContestPage {
 	 * @since 0.1
 	 */
 	protected function displayContests() {
-		$contests = Contest::s()->select( array( 'id', 'name', 'status', 'submission_count' ) );
+		$contests = Contest::s()->select( array( 'id', 'name', 'status', 'end', 'submission_count' ) );
 		
 		if ( count( $contests ) > 0 ) {
 			$this->displayContestsTable( $contests );
@@ -173,7 +173,7 @@ class SpecialContests extends SpecialContestPage {
 			else {
 				$contest->getField( 'name' );
 			}
-			
+
 			$fields[] = Html::rawElement(
 				'td',
 				array( 'data-sort-value' => $contest->getField( 'name' ) ),
@@ -182,8 +182,8 @@ class SpecialContests extends SpecialContestPage {
 			
 			$fields[] = Html::element(
 				'td',
-				array( 'data-sort-value' => $contest->getField( 'status' ) ),
-				Contest::getStatusMessage( $contest->getField( 'status' ) )
+				array( 'data-sort-value' => $contest->getStatus() ),
+				Contest::getStatusMessage( $contest->getStatus() )
 			);
 			
 			$fields[] = Html::element(

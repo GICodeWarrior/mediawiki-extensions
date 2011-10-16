@@ -102,7 +102,7 @@ class SpecialContest extends SpecialContestPage {
 		$stats = array();
 		
 		$stats['name'] = $contest->getField( 'name' );
-		$stats['status'] = Contest::getStatusMessage( $contest->getField( 'status' ) );
+		$stats['status'] = Contest::getStatusMessage( $contest->getStatus() );
 		$stats['submissioncount'] = $this->getLang()->formatNum( $contest->getField( 'submission_count' ) );
 		
 		return $stats;

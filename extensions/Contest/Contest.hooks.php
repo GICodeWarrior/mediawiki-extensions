@@ -56,7 +56,6 @@ final class ContestHooks {
 		$testDir = dirname( __FILE__ ) . '/test/';
 		
 		$files[] = $testDir . 'ContestValidationTests.php';
-		$files[] = $testDir . 'ContestParseTests.php';
 		
 		return true;
 	}

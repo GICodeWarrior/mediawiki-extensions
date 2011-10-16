@@ -107,7 +107,7 @@ class SpecialContestSignup extends SpecialContestPage {
 			$out->returnToMain();
 		}
 		else {
-			switch ( $contest->getField( 'status' ) ) {
+			switch ( $contest->getStatus() ) {
 				case Contest::STATUS_ACTIVE:
 					$this->showEnabledPage( $contest, $challengeId );	
 					break;
@@ -117,6 +117,7 @@ class SpecialContestSignup extends SpecialContestPage {
 					$out->returnToMain();	
 					break;
 				case Contest::STATUS_FINISHED:
+				case Contest::STATUS_EXPIRED:
 					$this->showWarning( 'contest-signup-finished' );
 					$out->addHTML( '<br /><br /><br /><br />' );
 					$out->returnToMain();	
