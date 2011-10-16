@@ -767,7 +767,7 @@ Asegúrese tamén de que especifica todos os campos exactamente como han de ser 
 	'createsigndoc-bday' => 'Data de nacemento:',
 	'createsigndoc-minage' => 'Idade mínima:',
 	'createsigndoc-introtext' => 'Introdución:',
-	'createsigndoc-hidden' => 'Oculto',
+	'createsigndoc-hidden' => 'Agochado',
 	'createsigndoc-optional' => 'Opcional',
 	'createsigndoc-create' => 'Crear',
 	'createsigndoc-error-generic' => 'Erro: $1',
