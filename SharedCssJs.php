@@ -16,12 +16,13 @@ if(!defined('MEDIAWIKI')) {
     die(1);
 }
 
-$wgExtensionCredits['skin'][] = array(
-    'name' => 'SharedCssJs',
-    'author' => array( "Tim Weyer" ),
-    'version' => '1.0',
-    'url' => 'http://www.mediawiki.org/wiki/Extension:SharedCssJs',
-    'descriptionmsg' => 'sharedcssjs-desc',
+$wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
+	'name' => 'SharedCssJs',
+	'author' => array( "Tim Weyer" ),
+	'version' => '1.0',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:SharedCssJs',
+	'descriptionmsg' => 'sharedcssjs-desc',
 );
 
 // Localisation of this extension
