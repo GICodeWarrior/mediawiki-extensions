@@ -241,6 +241,11 @@
 				eot: "fa/IranianSans.eot",
 				ttf: "fa/IranianSans.ttf",
 				woff: "fa/IranianSans.woff"
+			},
+			"Charis SIL": {
+				eot: "cdo/CharisSIL-R.eot",
+				ttf: "cdo/CharisSIL-R.ttf",
+				woff: "cdo/CharisSIL-R.woff"
 			}
 		},
 
@@ -267,7 +272,8 @@
 			saz: [ "Pagul" ],
 			am: [ "AbyssinicaSIL" ],
 			ti: [ "AbyssinicaSIL" ],
-			fa: [ "Iranian Sans" ]
+			fa: [ "Iranian Sans" ],
+			cdo: [ "Charis SIL" ]
 		}
 	};
 })(jQuery);
