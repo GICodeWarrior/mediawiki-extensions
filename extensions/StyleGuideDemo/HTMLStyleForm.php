@@ -60,29 +60,29 @@
  */
 class HTMLStyleForm {
 
-	# A mapping of 'type' inputs onto standard HTMLFormField subclasses
+	# A mapping of 'type' inputs onto standard HTMLStyleFormField subclasses
 	static $typeMappings = array(
-		'text' => 'HTMLTextField',
-		'textarea' => 'HTMLTextAreaField',
-		'select' => 'HTMLSelectField',
-		'radio' => 'HTMLRadioField',
-		'multiselect' => 'HTMLMultiSelectField',
-		'check' => 'HTMLCheckField',
-		'toggle' => 'HTMLCheckField',
-		'int' => 'HTMLIntField',
-		'float' => 'HTMLFloatField',
-		'info' => 'HTMLInfoField',
-		'selectorother' => 'HTMLSelectOrOtherField',
-		'selectandother' => 'HTMLSelectAndOtherField',
-		'submit' => 'HTMLSubmitField',
-		'hidden' => 'HTMLHiddenField',
-		'edittools' => 'HTMLEditTools',
+		'text' => 'HTMLStyleTextField',
+		'textarea' => 'HTMLStyleTextAreaField',
+		'select' => 'HTMLStyleSelectField',
+		'radio' => 'HTMLStyleRadioField',
+		'multiselect' => 'HTMLStyleMultiSelectField',
+		'check' => 'HTMLStyleCheckField',
+		'toggle' => 'HTMLStyleCheckField',
+		'int' => 'HTMLStyleIntField',
+		'float' => 'HTMLStyleFloatField',
+		'info' => 'HTMLStyleInfoField',
+		'selectorother' => 'HTMLStyleSelectOrOtherField',
+		'selectandother' => 'HTMLStyleSelectAndOtherField',
+		'submit' => 'HTMStyleLSubmitField',
+		'hidden' => 'HTMLStyleHiddenField',
+		'edittools' => 'HTMLStyleEditTools',
 
-		# HTMLTextField will output the correct type="" attribute automagically.
+		# HTMLStyleTextField will output the correct type="" attribute automagically.
 		# There are about four zillion other HTML5 input types, like url, but
 		# we don't use those at the moment, so no point in adding all of them.
-		'email' => 'HTMLTextField',
-		'password' => 'HTMLTextField',
+		'email' => 'HTMLStyleTextField',
+		'password' => 'HTMLStyleTextField',
 	);
 
 	protected $mMessagePrefix;
@@ -118,7 +118,7 @@ class HTMLStyleForm {
 	protected $mWrapperLegend = false;
 
 	/**
-	 * Build a new HTMLForm from an array of field attributes
+	 * Build a new HTMLStyleForm from an array of field attributes
 	 * @param $descriptor Array of Field constructs, as described above
 	 * @param $context RequestContext available since 1.18, will become compulsory in 1.19.
 	 *     Obviates the need to call $form->setTitle()
@@ -176,7 +176,7 @@ class HTMLStyleForm {
 	}
 
 	/**
-	 * Add the HTMLForm-specific JavaScript, if it hasn't been
+	 * Add the HTMLStyleForm-specific JavaScript, if it hasn't been
 	 * done already.
 	 * @deprecated since 1.18 load modules with ResourceLoader instead
 	 */
@@ -185,7 +185,7 @@ class HTMLStyleForm {
 	/**
 	 * Initialise a new Object for the field
 	 * @param $descriptor input Descriptor, as described above
-	 * @return HTMLFormField subclass
+	 * @return HTMLStyleFormField subclass
 	 */
 	static function loadInputFromParameters( $fieldname, $descriptor ) {
 		if ( isset( $descriptor['class'] ) ) {
@@ -214,7 +214,7 @@ class HTMLStyleForm {
 	function prepareForm() {
 		# Check if we have the info we need
 		if ( !$this->mTitle instanceof Title && $this->mTitle !== false ) {
-			throw new MWException( "You must call setTitle() on an HTMLForm" );
+			throw new MWException( "You must call setTitle() on an HTMLStyleForm" );
 		}
 
 		# Load data from the request.
@@ -290,7 +290,7 @@ class HTMLStyleForm {
 	 * Set a callback to a function to do something with the form
 	 * once it's been successfully validated.
 	 * @param $cb String function name.  The function will be passed
-	 *	 the output from HTMLForm::filterDataForSubmit, and must
+	 *	 the output from HTMLStyleForm::filterDataForSubmit, and must
 	 *	 return Bool true on success, Bool false if no submission
 	 *	 was attempted, or String HTML output to display on error.
 	 */
@@ -373,7 +373,7 @@ class HTMLStyleForm {
 	/**
 	 * Display the form (sending to wgOut), with an appropriate error
 	 * message or stack of messages, and any validation errors, etc.
-	 * @param $submitResult Mixed output from HTMLForm::trySubmit()
+	 * @param $submitResult Mixed output from HTMLStyleForm::trySubmit()
 	 */
 	function displayForm( $submitResult ) {
 		# For good measure (it is the default)
@@ -792,7 +792,7 @@ class HTMLStyleForm {
  * The parent class to generate form fields.  Any field type should
  * be a subclass of this.
  */
-abstract class HTMLFormField {
+abstract class HTMLStyleFormField {
 
 	protected $mValidationCallback;
 	protected $mFilterCallback;
@@ -804,7 +804,7 @@ abstract class HTMLFormField {
 	protected $mDefault;
 
 	/**
-	 * @var HTMLForm
+	 * @var HTMLStyleForm
 	 */
 	public $mParent;
 
@@ -872,7 +872,7 @@ abstract class HTMLFormField {
 
 	/**
 	 * Initialise the object
-	 * @param $params array Associative Array. See HTMLForm doc for syntax.
+	 * @param $params array Associative Array. See HTMLStyleForm doc for syntax.
 	 */
 	function __construct( $params ) {
 		$this->mParams = $params;
@@ -1116,7 +1116,7 @@ abstract class HTMLFormField {
 	}
 }
 
-class HTMLTextField extends HTMLFormField {
+class HTMLStyleTextField extends HTMLStyleFormField {
 	function getSize() {
 		return isset( $this->mParams['size'] )
 			? $this->mParams['size']
@@ -1180,7 +1180,7 @@ class HTMLTextField extends HTMLFormField {
 		return Html::element( 'input', $attribs );
 	}
 }
-class HTMLTextAreaField extends HTMLFormField {
+class HTMLStyleTextAreaField extends HTMLStyleFormField {
 	function getCols() {
 		return isset( $this->mParams['cols'] )
 			? $this->mParams['cols']
@@ -1223,7 +1223,7 @@ class HTMLTextAreaField extends HTMLFormField {
 /**
  * A field that will contain a numeric value
  */
-class HTMLFloatField extends HTMLTextField {
+class HTMLStyleFloatField extends HTMLStyleTextField {
 	function getSize() {
 		return isset( $this->mParams['size'] )
 			? $this->mParams['size']
@@ -1270,7 +1270,7 @@ class HTMLFloatField extends HTMLTextField {
 /**
  * A field that must contain a number
  */
-class HTMLIntField extends HTMLFloatField {
+class HTMLStyleIntField extends HTMLStyleFloatField {
 	function validate( $value, $alldata ) {
 		$p = parent::validate( $value, $alldata );
 
@@ -1296,7 +1296,7 @@ class HTMLIntField extends HTMLFloatField {
 /**
  * A checkbox field
  */
-class HTMLCheckField extends HTMLFormField {
+class HTMLStyleCheckField extends HTMLStyleFormField {
 	function getInputHTML( $value ) {
 		if ( !empty( $this->mParams['invert'] ) ) {
 			$value = !$value;
@@ -1315,7 +1315,7 @@ class HTMLCheckField extends HTMLFormField {
 
 	/**
 	 * For a checkbox, the label goes on the right hand side, and is
-	 * added in getInputHTML(), rather than HTMLFormField::getRow()
+	 * added in getInputHTML(), rather than HTMLStyleFormField::getRow()
 	 */
 	function getLabel() {
 		return '&#160;';
@@ -1349,7 +1349,7 @@ class HTMLCheckField extends HTMLFormField {
 /**
  * A select dropdown field.  Basically a wrapper for Xmlselect class
  */
-class HTMLSelectField extends HTMLFormField {
+class HTMLStyleSelectField extends HTMLStyleFormField {
 	function validate( $value, $alldata ) {
 		$p = parent::validate( $value, $alldata );
 
@@ -1357,7 +1357,7 @@ class HTMLSelectField extends HTMLFormField {
 			return $p;
 		}
 
-		$validOptions = HTMLFormField::flattenOptions( $this->mParams['options'] );
+		$validOptions = HTMLStyleFormField::flattenOptions( $this->mParams['options'] );
 
 		if ( in_array( $value, $validOptions ) )
 			return true;
@@ -1391,7 +1391,7 @@ class HTMLSelectField extends HTMLFormField {
 /**
  * Select dropdown field, with an additional "other" textbox.
  */
-class HTMLSelectOrOtherField extends HTMLTextField {
+class HTMLStyleSelectOrOtherField extends HTMLStyleTextField {
 	static $jsAdded = false;
 
 	function __construct( $params ) {
@@ -1416,7 +1416,7 @@ class HTMLSelectOrOtherField extends HTMLTextField {
 		if ( $value !== false ) {
 			$valInSelect = in_array(
 				$value,
-				HTMLFormField::flattenOptions( $this->mParams['options'] )
+				HTMLStyleFormField::flattenOptions( $this->mParams['options'] )
 			);
 		}
 
@@ -1474,7 +1474,7 @@ class HTMLSelectOrOtherField extends HTMLTextField {
 /**
  * Multi-select field
  */
-class HTMLMultiSelectField extends HTMLFormField {
+class HTMLStyleMultiSelectField extends HTMLStyleFormField {
 
 	public function __construct( $params ){
 		parent::__construct( $params );
@@ -1496,7 +1496,7 @@ class HTMLMultiSelectField extends HTMLFormField {
 
 		# If all options are valid, array_intersect of the valid options
 		# and the provided options will return the provided options.
-		$validOptions = HTMLFormField::flattenOptions( $this->mParams['options'] );
+		$validOptions = HTMLStyleFormField::flattenOptions( $this->mParams['options'] );
 
 		$validValues = array_intersect( $value, $validOptions );
 		if ( count( $validValues ) == count( $value ) ) {
@@ -1590,7 +1590,7 @@ class HTMLMultiSelectField extends HTMLFormField {
  * select dropdown.
  * @todo FIXME: If made 'required', only the text field should be compulsory.
  */
-class HTMLSelectAndOtherField extends HTMLSelectField {
+class HTMLStyleSelectAndOtherField extends HTMLStyleSelectField {
 
 	function __construct( $params ) {
 		if ( array_key_exists( 'other', $params ) ) {
@@ -1607,7 +1607,7 @@ class HTMLSelectAndOtherField extends HTMLSelectField {
 			$params['options'] = self::parseMessage( wfMsg( $params['options-message'], $params['other'] ) );
 		} else {
 			# Sulk
-			throw new MWException( 'HTMLSelectAndOtherField called without any options' );
+			throw new MWException( 'HTMLStyleSelectAndOtherField called without any options' );
 		}
 		$this->mFlatOptions = self::flattenOptions( $params['options'] );
 
@@ -1723,7 +1723,7 @@ class HTMLSelectAndOtherField extends HTMLSelectField {
 	}
 
 	function validate( $value, $alldata ) {
-		# HTMLSelectField forces $value to be one of the options in the select
+		# HTMLStyleSelectField forces $value to be one of the options in the select
 		# field, which is not useful here.  But we do want the validation further up
 		# the chain
 		$p = parent::validate( $value[1], $alldata );
@@ -1743,7 +1743,7 @@ class HTMLSelectAndOtherField extends HTMLSelectField {
 /**
  * Radio checkbox fields.
  */
-class HTMLRadioField extends HTMLFormField {
+class HTMLStyleRadioField extends HTMLStyleFormField {
 	function validate( $value, $alldata ) {
 		$p = parent::validate( $value, $alldata );
 
@@ -1755,7 +1755,7 @@ class HTMLRadioField extends HTMLFormField {
 			return false;
 		}
 
-		$validOptions = HTMLFormField::flattenOptions( $this->mParams['options'] );
+		$validOptions = HTMLStyleFormField::flattenOptions( $this->mParams['options'] );
 
 		if ( in_array( $value, $validOptions ) ) {
 			return true;
@@ -1766,7 +1766,7 @@ class HTMLRadioField extends HTMLFormField {
 
 	/**
 	 * This returns a block of all the radio options, in one cell.
-	 * @see includes/HTMLFormField#getInputHTML()
+	 * @see includes/HTMLStyleFormField#getInputHTML()
 	 */
 	function getInputHTML( $value ) {
 		$html = $this->formatOptions( $this->mParams['options'], $value );
@@ -1813,7 +1813,7 @@ class HTMLRadioField extends HTMLFormField {
 /**
  * An information field (text blob), not a proper input.
  */
-class HTMLInfoField extends HTMLFormField {
+class HTMLStyleInfoField extends HTMLStyleFormField {
 	function __construct( $info ) {
 		$info['nodata'] = true;
 
@@ -1837,7 +1837,7 @@ class HTMLInfoField extends HTMLFormField {
 	}
 }
 
-class HTMLHiddenField extends HTMLFormField {
+class HTMLStyleHiddenField extends HTMLStyleFormField {
 	public function __construct( $params ) {
 		parent::__construct( $params );
 
@@ -1866,9 +1866,9 @@ class HTMLHiddenField extends HTMLFormField {
 
 /**
  * Add a submit button inline in the form (as opposed to
- * HTMLForm::addButton(), which will add it at the end).
+ * HTMLStyleForm::addButton(), which will add it at the end).
  */
-class HTMLSubmitField extends HTMLFormField {
+class HTMLStyleSubmitField extends HTMLStyleFormField {
 
 	function __construct( $info ) {
 		$info['nodata'] = true;
@@ -1898,7 +1898,7 @@ class HTMLSubmitField extends HTMLFormField {
 	}
 }
 
-class HTMLEditTools extends HTMLFormField {
+class HTMLStyleEditTools extends HTMLStyleFormField {
 	public function getInputHTML( $value ) {
 		return '';
 	}
