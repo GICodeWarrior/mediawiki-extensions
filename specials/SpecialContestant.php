@@ -34,7 +34,7 @@ class SpecialContestant extends SpecialContestPage {
 			return;
 		}
 
-		$contestant = ContestContestant::s()->selectRow( null, array( 'id' => (int)$subPage ) );
+		$contestant = ContestContestant::s()->selectRow( 'id', array( 'id' => (int)$subPage ) );
 
 		if ( $contestant === false ) {
 			$this->getOutput()->redirect( SpecialPage::getTitleFor( 'Contests' )->getLocalURL() );
@@ -43,9 +43,10 @@ class SpecialContestant extends SpecialContestPage {
 			if ( $this->getRequest()->wasPosted()
 				&& $this->getUser()->matchEditToken( $this->getRequest()->getVal( 'wpEditToken' ) ) )
 			{
-				$this->handleSubmission( $contestant );
+				$this->handleSubmission( $contestant->getId() );
 			}
 
+			$contestant->loadFields();
 			$this->showPage( $contestant );
 		}
 	}
@@ -56,17 +57,17 @@ class SpecialContestant extends SpecialContestPage {
 	 *
 	 * @since 0.1
 	 *
-	 * @param ContestContestant $contestant
+	 * @param integer $contestantId
 	 *
 	 * @return boolean Success indicator
 	 */
-	protected function handleSubmission( ContestContestant $contestant ) {
+	protected function handleSubmission( $contestantId ) {
 		$success = true;
 
 		if ( trim( $this->getRequest()->getText( 'new-comment-text' ) ) !== '' ) {
 			$comment = new ContestComment( array(
 				'user_id' => $this->getUser()->getId(),
-				'contestant_id' => $contestant->getId(),
+				'contestant_id' => $contestantId,
 
 				'text' => $this->getRequest()->getText( 'new-comment-text' ),
 				'time' => wfTimestampNow()
@@ -82,7 +83,7 @@ class SpecialContestant extends SpecialContestPage {
 		if ( $success && !is_null( $this->getRequest()->getVal( 'contestant-rating' ) ) ) {
 			$attribs = array(
 				'value' => $this->getRequest()->getInt( 'contestant-rating' ),
-				'contestant_id' => $contestant->getId(),
+				'contestant_id' => $contestantId,
 				'user_id' => $this->getUser()->getId()
 			);
 

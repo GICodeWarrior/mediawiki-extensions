@@ -43,6 +43,39 @@ abstract class ContestDBObject {
 
 		$this->setFields( $fields );
 	}
+	
+	/**
+	 * Load the specified fields from the database.
+	 *
+	 * @since 0.1
+	 *
+	 * @param array|null $fields
+	 * @param boolean $override
+	 * 
+	 * @return Success indicator
+	 */
+	public function loadFields( $fields = null, $override = true ) {
+		if ( is_null( $this->getId() ) ) {
+			return false;
+		}
+		
+		if ( is_null( $fields ) ) {
+			$fields = array_keys( $this->getFieldTypes() );
+		}
+		
+		$results = $this->rawSelect(
+			$this->getPrefixedFields( $fields ),
+			array( $this->getPrefixedField( 'id' ) => $this->getId() ),
+			array( 'LIMIT' => 1 )
+		);
+		
+		foreach ( $results as $result ) {
+			$this->setFields( $this->getFieldsFromDBResult( $result ), $override );
+			return true;
+		}
+		
+		return false;
+	}
 
 	/**
 	 * Returns the name of the database table objects of this type are stored in.
@@ -472,6 +505,29 @@ abstract class ContestDBObject {
 	}
 
 	/**
+	 * Get an array with fields from a database result,
+	 * that can be fed directly to the constructor or
+	 * to setFields.
+	 *
+	 * @since 0.1
+	 *
+	 * @param object $result
+	 *
+	 * @return array
+	 */
+	protected function getFieldsFromDBResult( $result ) {
+		$result = (array)$result;
+		$data = array();
+		$idFieldLength = strlen( $this->getFieldPrefix() );
+
+		foreach ( $result as $name => $value ) {
+			$data[substr( $name, $idFieldLength )] = $value;
+		}
+		
+		return $data;
+	}
+	
+	/**
 	 * Get a new instance of the class from a database result.
 	 *
 	 * @since 0.1
@@ -481,15 +537,7 @@ abstract class ContestDBObject {
 	 * @return ContestDBObject
 	 */
 	public function newFromDBResult( $result ) {
-		$result = (array)$result;
-		$data = array();
-		$idFieldLength = strlen( $this->getFieldPrefix() );
-
-		foreach ( $result as $name => $value ) {
-			$data[substr( $name, $idFieldLength )] = $value;
-		}
-
-		return $this->newFromArray( $data );
+		return $this->newFromArray( $this->getFieldsFromDBResult( $result ) );
 	}
 
 	/**
