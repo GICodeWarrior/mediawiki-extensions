@@ -127,15 +127,24 @@ $messages['af'] = array(
 );
 
 /** Arabic (العربية)
+ * @author AwamerT
  * @author Meno25
  * @author زكريا
  */
 $messages['ar'] = array(
 	'narayam-desc' => 'يتيح إضافة أساليب إدخال مخصصة لحقول الإدخال',
 	'narayam-toggle-ime' => 'فعل ($1)',
+	'narayam-menu' => 'أسلوب الإدخال',
+	'narayam-menu-tooltip' => 'تعطيل محرر أسلوب إدخال نارايام (Narayam IME)',
+	'narayam-help' => 'مساعدة',
 	'narayam-help-page' => 'Help:كتابة',
 	'narayam-checkbox-tooltip' => 'لتشغيل أو تعطيل أسلوب الإدخال',
 	'narayam-disable-preference' => 'تعطيل محرر أسلوب إدخال نارايام (Narayam IME)',
+	'narayam-am' => 'نسخ حرفي للغة الأمهرية',
+	'narayam-as' => 'نسخ حرفي للاسامية',
+	'narayam-as-avro' => 'اللغة الهندية الاسامية بواسطة لوحة مفاتيح افرو',
+	'narayam-as-bornona' => 'اللغة الاسامية بورونا',
+	'narayam-as-inscript' => 'اللغة الاسامية إينسكريبت',
 	'narayam-eo' => 'إسبرنتو',
 	'narayam-hi-inscript' => 'هندي إنسكربت (Hindi InScript)',
 	'narayam-kn' => 'نسخ حرفي كانادي',
@@ -1162,6 +1171,8 @@ $messages['pl'] = array(
 	'narayam-help-page' => 'Help:Wprowadzanie znaków',
 	'narayam-checkbox-tooltip' => 'Włączanie i wyłączanie metody wprowadzania',
 	'narayam-disable-preference' => 'Wyłącz w edytorze nietypowe metody wprowadzania znaków',
+	'narayam-am' => 'Transliteracja amharskiego',
+	'narayam-as' => 'Transliteracja assamskiego',
 	'narayam-as-avro' => 'Assamski avro',
 	'narayam-as-bornona' => 'Assamski bornona',
 	'narayam-as-inscript' => 'Assamski InScript',
@@ -1181,6 +1192,7 @@ $messages['pl'] = array(
 	'narayam-si-wijesekara' => 'Syngaleski wijesekara',
 	'narayam-ta99' => 'Tamil99',
 	'narayam-ta' => 'Transliteracja tamilskiego',
+	'narayam-ta-bamini' => 'Tamilski bamini',
 	'narayam-te-inscript' => 'Telugu InScript',
 	'narayam-bn-avro' => 'Bengalski avro',
 	'narayam-bn-inscript' => 'Bengalski InScript',

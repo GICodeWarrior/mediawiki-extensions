@@ -61,6 +61,7 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'apiexplorer' => 'Èxplorator API',
 	'apiexplorer-loading' => 'Chargement de les fonccions...',
 );
 

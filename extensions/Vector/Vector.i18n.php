@@ -707,7 +707,7 @@ Ma tha thu air logadh a-steach, \'s urrainn dhut an rabhadh seo a chur dheth san
 $messages['gl'] = array(
 	'vector' => 'Melloras na interface de usuario para a aparencia Vector',
 	'vector-desc' => 'Mellora os elementos da interface de usuario da aparencia Vector.',
-	'vector-collapsiblenav-preference' => 'Activar o menú de navegación despregable á esquerda na aparencia vector',
+	'vector-collapsiblenav-preference' => 'Activar o menú de navegación despregable á esquerda na aparencia Vector',
 	'vector-collapsiblenav-more' => 'Máis linguas',
 	'vector-editwarning-warning' => 'Deixar esta páxina pode causar a perda de calquera cambio feito.
 Se accedeu ao sistema, pode desactivar esta mensaxe de advertencia na sección "Edición" das súas preferencias.',

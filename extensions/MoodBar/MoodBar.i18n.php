@@ -318,6 +318,7 @@ $messages['af'] = array(
 );
 
 /** Arabic (العربية)
+ * @author AwamerT
  * @author OsamaK
  * @author زكريا
  */
@@ -353,6 +354,7 @@ $messages['ar'] = array(
 	'moodbar-success-subtitle' => 'مشاركة تجربتك التحريرية تساعدك على تحسين $1.',
 	'moodbar-error-subtitle' => 'لقد حصل خطأ! كرر محاولة مشاركة التعليقات لاحقا.',
 	'right-moodbar-view' => 'انظر تعليقات شريط المزاج وصدرها',
+	'right-moodbar-admin' => 'غير مستوى الظهور على لوحة الملاحظات',
 	'moodbar-admin-title' => 'تعليقات شريط المزاج',
 	'moodbar-admin-intro' => 'تتيح هذه الصفحة الاطلاع على التعليقات المرسلة باستعمال شريط المزاج.',
 	'moodbar-admin-empty' => 'لا نتائج',
@@ -371,12 +373,42 @@ $messages['ar'] = array(
 	'moodbar-header-user-editcount' => 'عداد تعديلات المستخدم',
 	'moodbar-header-namespace' => 'نطاق',
 	'moodbar-header-own-talk' => 'الصفحة النقاش الخاصة',
+	'moodbar-feedback-title' => 'لوحة الملاحظات',
+	'moodbar-feedback-filters' => 'مرشحات',
+	'moodbar-feedback-filters-type' => 'النوع:',
+	'moodbar-feedback-filters-type-happy' => 'شكر',
+	'moodbar-feedback-filters-type-confused' => 'إرتباك',
+	'moodbar-feedback-filters-type-sad' => 'قضايا',
+	'moodbar-feedback-filters-username' => 'اسم المستخدم',
+	'moodbar-feedback-filters-button' => 'إضبط المرشحات',
+	'moodbar-feedback-whatis' => 'ماهذه الميزة؟',
+	'moodbar-feedback-permalink' => 'وصلة تصل الى هنا',
+	'moodbar-feedback-noresults' => 'لا يوجد تعليقات مطابقة للمرشحات الخاصة بك.',
+	'moodbar-feedback-more' => 'المزيد',
+	'moodbar-feedback-nomore' => 'لا يوجد نتائج أكثر لإظهارها.',
+	'moodbar-feedback-newer' => 'احدث',
+	'moodbar-feedback-older' => 'أقدم',
+	'moodbar-feedback-ajaxerror' => 'حدث خطأ عند المحاولة في جلب المزيد من النتائج.',
+	'moodbar-user-hidden' => '(مستخدم مخفي)',
+	'moodbar-comment-hidden' => '(الملاحظات مخفية بواسطة إجراءات إدارية)',
+	'moodbar-feedback-show' => 'أظهر الملاحظات المخفية',
+	'moodbar-feedback-hide' => 'إخف الملاحظات',
+	'moodbar-hidden-footer' => 'الملاحظات المخفية$1',
+	'moodbar-feedback-restore' => 'إستعد الملاحظات المخفية',
+	'moodbar-action-item' => 'بند الملاحظات:',
+	'moodbar-hide-header' => 'إخف هذا العنصر من الظهور',
+	'moodbar-restore-header' => 'إستعد ظهور هذا العنصر',
+	'moodbar-invalid-item' => 'لم يتمكن النظام من العثور على عنصر الملاحظات الصحيح.',
 	'moodbar-type-happy' => 'سعيد',
 	'moodbar-type-sad' => 'حزين',
 	'moodbar-type-confused' => 'مرتبك',
 	'moodbar-user-anonymized' => 'مجهّل',
 	'moodbar-user-ip' => 'عنوان بروتوكول إنترنت',
 	'moodbar-user-user' => 'مستخدم مسجل',
+	'moodbar-log-name' => 'سجل الملاحظات',
+	'moodbar-log-header' => 'هذا هو سجل الإجراءات المتخذة بشأن عناصر الملاحظات المدرجة في [[Special:FeedbackDashboard|feedback dashboard]].',
+	'moodbar-log-hide' => 'تم إخفاء "[[$1]]"',
+	'moodbar-log-restore' => 'تم استعادة الظهور لـ [[ $1 ]]',
 );
 
 /** Azerbaijani (Azərbaycanca)
