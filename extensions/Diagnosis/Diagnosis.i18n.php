@@ -16,28 +16,28 @@ $aliases = array();
  
 /* *** English *** */
 $aliases['en'] = array(
-        'Diagnosis' => array( 'Diagnosis' ),
+		'Diagnosis' => array( 'Diagnosis' ),
 );
 $messages['en'] = array(
-        'diagnosis' => 'Diagnosis',
-        'diagnosis-desc' => 'Extension to find possible problems and errors or security risks',
+		'diagnosis' => 'Diagnosis',
+		'diagnosis-desc' => 'Extension to find possible problems and errors or security risks',
 );
 
 /** Message documentation (Message documentation) */
 $aliases['qqq'] = array(
-        'Diagnosis' => array( 'Diagnosis' ),
+		'Diagnosis' => array( 'Diagnosis' ),
 );
 
 $messages['qqq'] = array(
-        'diagnosis' => 'Diagnosis',
-        'diagnosis-desc' => 'Extensions description',
+		'diagnosis' => 'Diagnosis',
+		'diagnosis-desc' => 'Extensions description',
 );
  
 /* *** German (Deutsch) *** */
 $aliases['de'] = array(
-        'Diagnosis' => array( 'Diagnose' ),
+		'Diagnosis' => array( 'Diagnose' ),
 );
 $messages['de'] = array(
-        'diagnosis' => 'Diagnose',
-        'diagnosis-desc' => 'Erweiterung um Probleme, Fehler oder Sicherheitsl¸cken zu finden',
+		'diagnosis' => 'Diagnose',
+		'diagnosis-desc' => 'Erweiterung um Probleme, Fehler oder Sicherheitsl√ºcken zu finden',
 );

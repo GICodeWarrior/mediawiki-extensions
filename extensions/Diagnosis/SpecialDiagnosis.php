@@ -1,15 +1,13 @@
 <?php
 class SpecialDiagnosis extends SpecialPage {
-        function __construct() {
-                parent::__construct( 'Diagnosis', 'diagnosis-access' );
-                wfLoadExtensionMessages('Diagnosis');
-        }
+		function __construct() {
+				parent::__construct( 'Diagnosis', 'diagnosis-access' );
+		}
+		function execute( $par ) {
+				global $wgRequest, $wgOut, $wgShellLocale, $wgImageMagickConvertCommand ,$wgSVGConverterPath, $wgSVGConverters;
 
-        function execute( $par ) {
-                global $wgRequest, $wgOut, $wgShellLocale, $wgImageMagickConvertCommand ,$wgSVGConverterPath, $wgSVGConverters;
- 
-                $this->setHeaders();
- 
+				$this->setHeaders();
+
 				$wgOut->addHTML( '<table class=wikitable>' );
 				$wgOut->addHTML( '<tr>' );
 				$wgOut->addHTML( '<th>Parameter</th>' );
@@ -71,23 +69,36 @@ class SpecialDiagnosis extends SpecialPage {
 				$wgOut->addHTML( '<tr>' );
 				$wgOut->addHTML( '<td>PHP Extensions</td>' );
 				$sdPHPExtensions = get_loaded_extensions();
-				$wgOut->addHTML( '<td colspan=2>' );
+				$wgOut->addHTML( '<td>' );
 				foreach ($sdPHPExtensions as $value) { 
 					$wgOut->addHTML($value . '<br/>');
 					} 
 				$wgOut->addHTML('</td>' );
+				$wgOut->addHTML( '<td> Minimum:<br/>SPL<br/>pcre</td>' );
 				$wgOut->addHTML( '<td> Loaded PHP Extensions </td>' );
-				if ( true ) {
-					$sdSVGPathStatus='OK';
+				if ( in_array('SPL',$sdPHPExtensions) ) {
+					$sdSPL = true;
+				}
+				else {
+					$sdSPL = false;
+				}
+				if ( in_array('pcre',$sdPHPExtensions) ) {
+					$sdpcre = true;
+				}
+				else {
+					$sdpcre = false;
+				}
+				if ( $sdpcre and $sdSPL ) {
+					$sdPHPStatus='OK';
 					} 
 					else {
-					$sdSVGPathStatus='ERROR';
+					$sdPHPStatus='ERROR';
 					}
-				$wgOut->addHTML( '<td>' . $sdSVGPathStatus . '</td>' );
+				$wgOut->addHTML( '<td>' . $sdPHPStatus . '</td>' );
 				$wgOut->addHTML( '</tr>' );
 				
 				
 				### End Table ###
 				$wgOut->addHTML( '</table>' );
-        }
+		}
 }
