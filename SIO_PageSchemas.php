@@ -10,6 +10,11 @@
  */
 
 class SIOPageSchemas extends PSExtensionHandler {
+	public static function registerClass() {
+		global $wgPageSchemasHandlerClasses;
+		$wgPageSchemasHandlerClasses[] = 'SIOPageSchemas';
+		return true;
+	}
 
 	public static function getDisplayColor() {
 		return '#FF8';

@@ -29,11 +29,7 @@ $wgHooks['smwUpdatePropertySubjects'][] = 'SIOHandler::handleUpdatingOfInternalO
 $wgHooks['TitleMoveComplete'][] = 'SIOHandler::handlePageMove';
 $wgHooks['smwRefreshDataJobs'][] = 'SIOHandler::handleRefreshingOfInternalObjects';
 $wgHooks['smwAddToRDFExport'][] = 'SIOSQLStore::createRDF';
-
-// Register class with the Page Schemas extension
-if ( isset( $wgPageSchemasHandlerClasses ) ) {
-	$wgPageSchemasHandlerClasses[] = 'SIOPageSchemas';
-}
+$wgHooks['PageSchemasRegisterHandlers'][] = 'SIOPageSchemas::registerClass';
 
 $siogIP = dirname( __FILE__ );
 $wgExtensionMessagesFiles['SemanticInternalObjects'] = $siogIP . '/SemanticInternalObjects.i18n.php';
