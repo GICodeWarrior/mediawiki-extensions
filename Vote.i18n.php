@@ -1188,6 +1188,16 @@ Laachsack|Dä Laachsack',
 	'right-voteadmin' => 'Affstemmunge beloore',
 );
 
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
+ * @author Gomada
+ */
+$messages['ku-latn'] = array(
+	'vote' => 'Deng',
+	'vote-submit' => 'Deng bide',
+	'vote-results' => 'Encama dengan',
+	'right-vote' => 'Deng',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
