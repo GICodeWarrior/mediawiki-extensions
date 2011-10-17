@@ -49,8 +49,7 @@ class TemplateLink extends SpecialPage
 	function sandboxParse($wikiText){
 		global $wgUser;
 		$myParser = new Parser();
-		$myParserOptions = new ParserOptions();
-		$myParserOptions->initialiseFromUser($wgUser);
+		$myParserOptions = ParserOptions::newFromUser( $wgUser );
 		$result = $myParser->parse($wikiText, $this->getTitle(), $myParserOptions);
 		return $result->getText();
 	}
