@@ -9,136 +9,134 @@
  * @ingroup SIO
  */
 
-class SIOPageSchemas {
+class SIOPageSchemas extends PSExtensionHandler {
+
+	public static function getDisplayColor() {
+		return '#FF8';
+	}
+
+	public static function getTemplateDisplayString() {
+		return 'Internal property';
+	}
 
 	/**
 	 * Returns the display info for the property (if any is defined)
 	 * for a single field in the Page Schemas XML.
 	 */
-	function getPropertyDisplayInfo( $templateXML, &$text_object ) {
+	public static function getTemplateDisplayValues( $templateXML ) {
 		foreach ( $templateXML->children() as $tag => $child ) {
 			if ( $tag == "semanticinternalobjects_MainProperty" ) {
 				$propName = $child->attributes()->name;
 				$values = array();
-				$text_object['sio'] = array( 'Internal property', $propName, '#FF8', $values );
-				break;
+				return array( $propName, $values );
 			}
 		}
-		return true;
+		return null;
 	}
 
 	/**
 	 * Constructs XML for the SIO property, based on what was submitted
 	 * in the 'edit schema' form.
 	 */
-	function getTemplateXML( $request, &$templateXMLFromExtensions ) {
+	public static function createTemplateXMLFromForm() {
+		global $wgRequest;
+
 		$fieldNum = -1;
 		$xmlPerTemplate = array();
-		foreach ( $request->getValues() as $var => $val ) {
+		foreach ( $wgRequest->getValues() as $var => $val ) {
 			if ( substr( $var, 0, 18 ) == 'sio_property_name_' ) {
 				$templateNum = substr( $var, 18 );
 				$xml = '<semanticinternalobjects_MainProperty name="' . $val . '" />';
 				$xmlPerTemplate[$templateNum] = $xml;
 			}
 		}
-		$templateXMLFromExtensions['sio'] = $xmlPerTemplate;
-		return true;
+		return $xmlPerTemplate;
 	}
 
 	/**
 	 * Returns the HTML necessary for getting information about the
 	 * semantic property within the Page Schemas 'editschema' page.
 	 */
-	function getTemplateHTML( $psTemplate, &$templateHTMLFromExtensions ) {
+	public static function getTemplateEditingHTML( $psTemplate) {
 		$prop_array = array();
 		$hasExistingValues = false;
 		if ( !is_null( $psTemplate ) ) {
-			$sio_array = $psTemplate->getObject( 'semanticinternalobjects_MainProperty' );
-			if ( array_key_exists( 'sio', $sio_array ) ) {
-				$prop_array = $sio_array['sio'];
+			$prop_array = $psTemplate->getObject( 'semanticinternalobjects_MainProperty' );
+			if ( !is_null( $prop_array ) ) {
 				$hasExistingValues = true;
 			}
 		}
 		$text = '<p>' . 'Name of property to connect this template\'s fields to the rest of the page (should only be used if this template can have multiple instances):' . ' ';
-		if ( array_key_exists( 'name', $prop_array ) ) {
-			$propName = $prop_array['name'];
-		} else {
-			$propName = null;
-		}
+		$propName = PageSchemas::getValueFromObject( $prop_array, 'name' );
 		$text .= Html::input( 'sio_property_name_num', $propName, array( 'size' => 15 ) ) . "\n";
 
-		$templateHTMLFromExtensions['sio'] = array( 'Internal property', '#FF8', $text, $hasExistingValues );
-
-		return true;
+		return array( $text, $hasExistingValues );
 	}
 
 	/**
 	 * Returns the property based on the XML passed from the Page Schemas
 	 * extension.
 	*/
-	function createPageSchemasObject( $objectName, $xmlForField, &$object ) {
-		$sio_array = array();
-		if ( $objectName == "semanticinternalobjects_MainProperty" ) {
-			foreach ( $xmlForField->children() as $tag => $child ) {
-				if ( $tag == $objectName ) {
+	public static function createPageSchemasObject( $tagName, $xml ) {
+		if ( $tagName == "semanticinternalobjects_MainProperty" ) {
+			foreach ( $xml->children() as $tag => $child ) {
+				if ( $tag == $tagName ) {
+					$sio_array = array();
 					$propName = $child->attributes()->name;
 					$sio_array['name'] = (string)$propName;
-					$count = 0;
 					foreach ( $child->children() as $prop => $value ) {
 						$sio_array[$prop] = (string)$value;
 					}
-					$object['sio'] = $sio_array;
-					return true;
+					return $sio_array;
 				}
 			}
 		}
-		return true;
+		return null;
 	}
 
 	function getInternalObjectPropertyName ( $psTemplate ) {
 		// TODO - there should be a more direct way to get
 		// this data.
-		$sioPropertyObj = $psTemplate->getObject( 'semanticinternalobjects_MainProperty' );
-		if ( !array_key_exists( 'sio', $sioPropertyObj ) ) {
-			return null;
-		}
-		if ( !array_key_exists( 'name', $sioPropertyObj['sio'] ) ) {
-			return null;
-		}
-		return $sioPropertyObj['sio']['name'];
+		$sioPropertyArray = $psTemplate->getObject( 'semanticinternalobjects_MainProperty' );
+		return PageSchemas::getValueFromObject( $sioPropertyArray, 'name' );
 	}
 
-	function getPageList( $pageSchemaObj , &$genPageList ) {
+	public static function getPagesToGenerate( $pageSchemaObj ) {
+		$pagesToGenerate = array();
 		$psTemplates = $pageSchemaObj->getTemplates();
 		foreach ( $psTemplates as $psTemplate ) {
 			$sioPropertyName = self::getInternalObjectPropertyName( $psTemplate );
 			if ( is_null( $sioPropertyName ) ) {
 				continue;
 			}
-			$genPageList[] = Title::makeTitleSafe( SMW_NS_PROPERTY, $sioPropertyName );
+			$pagesToGenerate[] = Title::makeTitleSafe( SMW_NS_PROPERTY, $sioPropertyName );
 		}
-		return true;
+		return $pagesToGenerate;
 	}
 
-        function generatePages( $psSchemaObj, $selectedPageList ) {
-		global $smwgContLang;
+	public static function generatePages( $pageSchemaObj, $selectedPages ) {
+		global $smwgContLang, $wgUser;
 
 		$datatypeLabels = $smwgContLang->getDatatypeLabels();
 		$pageTypeLabel = $datatypeLabels['_wpg'];
 
-		$psTemplates = $psSchemaObj->getTemplates();
+		$jobs = array();
+		$jobParams = array();
+		$jobParams['user_id'] = $wgUser->getId();
+
+		$psTemplates = $pageSchemaObj->getTemplates();
 		foreach ( $psTemplates as $psTemplate ) {
 			$sioPropertyName = self::getInternalObjectPropertyName( $psTemplate );
 			if ( is_null( $sioPropertyName ) ) {
 				continue;
 			}
-			$title = Title::makeTitleSafe( SMW_NS_PROPERTY, $sioPropertyName );
-			$key_title = PageSchemas::titleString( $title );
-			if ( !in_array( $key_title, $selectedPageList ) ) {
+			$propTitle = Title::makeTitleSafe( SMW_NS_PROPERTY, $sioPropertyName );
+			if ( !in_array( $propTitle, $selectedPages ) ) {
 				continue;
 			}
-			SMWPageSchemas::createProperty( $sioPropertyName, $pageTypeLabel, null );
+			$jobParams['page_text'] = SMWPageSchemas::createPropertyText( $pageTypeLabel, null );
+			$jobs[] = new PSCreatePageJob( $propTitle, $jobParams );
 		}
-		return true;
+		Job::batchInsert( $jobs );
 	}
 }
