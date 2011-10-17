@@ -50,6 +50,8 @@ The replacement values should not be escaped.',
 	'masseditregex-badregex' => 'Invalid regex:',
 	'masseditregex-editfailed' => 'Edit failed:',
 	'masseditregex-tooltip-execute' => 'Apply these changes to each page',
+
+	'right-masseditregex' => 'Replace page contents using regular expressions',
 );
 
 /** Message documentation (Message documentation)
@@ -61,6 +63,8 @@ $messages['qqq'] = array(
 	'masseditregex-desc' => '{{desc}}',
 	'masseditregextext' => 'Replace <code>/en/</code> in the middle in link <code>http://php.net/manual/en/function.preg-replace.php</code> with your language code between slashes, if that page exists. Otherwise leave it as is to link to the English documentation, or choose an appropriate fallback language code.',
 	'masseditregex-hint-headmatch' => "Noun. This is a column header for the 'match' regexes.",
+
+	'right-masseditregex' => '{{doc-right|masseditregex}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -433,6 +437,8 @@ Die Ersetzungswerte sollten nicht ausgelassen werden.',
 	'masseditregex-badregex' => 'Ungültiger regulärer Ausdruck:',
 	'masseditregex-editfailed' => 'Bearbeitung fehlgeschlagen:',
 	'masseditregex-tooltip-execute' => 'Diese Änderungen an jeder Seite durchführen',
+
+	'right-masseditregex' => 'Textersetzungen mit regulären Ausdrücken durchführen',
 );
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
