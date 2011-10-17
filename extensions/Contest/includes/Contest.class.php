@@ -472,10 +472,9 @@ class Contest extends ContestDBObject {
 	 *
 	 **/
 	public function getStatus() {
+		$dbStatus = $this->getField( 'status' );
 
-		$dbStatus = $this->getField('status');
-
-		if ( $dbStatus === self::STATUS_ACTIVE && $this->getTimeLeft() <= 0  ) {
+		if ( $dbStatus === self::STATUS_ACTIVE && $this->getTimeLeft() <= 0 ) {
 			return self::STATUS_EXPIRED;
 		} else {
 			return $dbStatus;
