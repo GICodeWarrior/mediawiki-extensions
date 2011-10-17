@@ -387,6 +387,13 @@ $messages['ksh'] = array(
 	'authors_anonymous' => 'Namelos',
 );
 
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
+ * @author Gomada
+ */
+$messages['ku-latn'] = array(
+	'authors_anonymous' => 'Bênav',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
