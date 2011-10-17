@@ -198,7 +198,7 @@ jQuery( function( $ ) {
 	 */
 	function showHiddenComment(e) {
 		var $item = $(this).closest('.fbd-item');
-		var cont = $item.attr('data-mbccontinue');
+		var cont = $item.data('mbccontinue');
 		
 		var request = {
 			'action' : 'query',
@@ -209,10 +209,18 @@ jQuery( function( $ ) {
 			'mbccontinue' : cont
 		};
 		
+		var $spinner = $('<span class="mw-ajax-loader">&nbsp;</span>');
+		$item.find('.fbd-item-show').empty().append( $spinner );
+		
 		$.post( mw.util.wikiScript('api'), request,
 			function( data ) {
-				var $content = $j(data.query.moodbarcomments[0].formatted);
-				$item.replaceWith($content);
+				if ( data && data.query && data.query.moodbarcomments ) {
+					var $content = $j(data.query.moodbarcomments[0].formatted);
+					$item.replaceWith($content);
+				} else {
+					// Failure, just remove the link.
+					$item.find('.fbd-item-show').remove();
+				}
 			}, 'json' );
 		
 		e.preventDefault();

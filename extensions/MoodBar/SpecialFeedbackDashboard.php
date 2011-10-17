@@ -261,7 +261,7 @@ HTML;
 			$linkText = wfMessage('moodbar-feedback-show')->escaped();
 			$query = array('show-feedback' => '1');
 			$link = $GLOBALS['wgUser']->getSkin()
-					->link( $permalinkTitle, $linkText );
+					->link( $permalinkTitle, $linkText, array(), $query );
 			return Xml::tags( 'div', array( 'class' => 'fbd-item-show' ), "($link)" );
 		}
 	}
@@ -276,7 +276,8 @@ HTML;
 		$permalinkTitle = SpecialPage::getTitleFor( 'FeedbackDashboard', $id );
 		$permalinkText = wfMessage( 'moodbar-feedback-hide' )->escaped();
 		$permalink = $GLOBALS['wgUser']->getSkin()
-				->link( $permalinkTitle, $permalinkText, array(), array('hide-feedback' => '1') );
+				->link( $permalinkTitle, $permalinkText,
+					array(), array('hide-feedback' => '1') );
 		return Xml::tags( 'div', array( 'class' => 'fbd-item-permalink' ), "($permalink)" );
 	}
 	
