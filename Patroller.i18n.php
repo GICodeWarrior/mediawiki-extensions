@@ -138,6 +138,7 @@ $messages['ang'] = array(
 );
 
 /** Arabic (العربية)
+ * @author AwamerT
  * @author Meno25
  * @author OsamaK
  */
@@ -162,7 +163,7 @@ $messages['ar'] = array(
 	'patrol-stopped' => 'لقد اخترت عدم مراجعة تعديل آخر. $1',
 	'patrol-resume' => 'اضغط هنا للمتابعة.',
 	'group-patroller' => 'مراجعون',
-	'group-patroller-member' => 'مراجع',
+	'group-patroller-member' => 'مدقق',
 	'grouppage-patroller' => '{{ns:project}}:مراجع',
 	'right-patroller' => 'مراجعة الصفحات',
 );
