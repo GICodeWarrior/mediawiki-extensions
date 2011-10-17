@@ -92,8 +92,8 @@ $messages['en'] = array(
 	'contest-edit-opportunities' => 'Opportunities page',
 	'contest-edit-rulespage' => 'Rules page',
 	'contest-edit-help' => 'Help page',
-	'contest-edit-signup' => 'Signup email page',
-	'contest-edit-reminder' => 'Reminder email page',
+	'contest-edit-signup' => 'Signup e-mail page',
+	'contest-edit-reminder' => 'Reminder e-mail page',
 	'contest-edit-end' => 'Contest end',
 	'contest-edit-exists-already' => 'Note: you are editing an already existing contest, not creating a new one.',
 	'contest-edit-submit' => 'Submit',
@@ -113,7 +113,7 @@ $messages['en'] = array(
 	'contest-welcome-rules-link' => 'the contest rules', // js i18n
 	'contest-welcome-signup' => 'Signup now',
 	'contest-welcome-js-off' => 'The contest user interface uses JavaScript for an improved interface. Your browser either does not support JavaScript or has JavaScript turned off.',
-	'contest-welcome-accept-challenge' => 'Challenge Accepted',
+	'contest-welcome-accept-challenge' => 'Challenge accepted',
 
 	'contest-welcome-select-header' => 'Select your challenge:',
 
@@ -121,7 +121,7 @@ $messages['en'] = array(
 	'contest-signup-unknown' => 'There is no contest with the provided name.',
 	'contest-signup-submit' => 'Sign up',
 	'contest-signup-header' => 'Please fill out the form to complete your registration for $1.',
-	'contest-signup-email' => 'Your email address',
+	'contest-signup-email' => 'Your e-mail address',
 	'contest-signup-realname' => 'Your real name',
 	'contest-signup-volunteer' => 'I am interested in volunteer opportunities',
 	'contest-signup-wmf' => 'I am interested in working for the Wikimedia Foundation',
@@ -134,7 +134,7 @@ $messages['en'] = array(
 
 	'contest-signup-require-rules' => 'You need to agree to the contest rules.',
 	'contest-signup-require-country' => 'You need to provide your country of residence.',
-	'contest-signup-invalid-email' => 'The email address you provided is not valid.',
+	'contest-signup-invalid-email' => 'The e-mail address you provided is not valid.',
 	'contest-signup-invalid-name' => 'The name you provided is too short.',
 	'contest-signup-require-challenge' => 'You must select a challenge.',
 	'contest-signup-invalid-cv' => 'You entered an invalid URL.',
@@ -200,7 +200,7 @@ $messages['en'] = array(
 
 	'contest-submission-submit' => 'Submit',
 	'contest-submission-unknown' => 'There is no contest with the provided name.',
-	'contest-submission-header' => 'Thanks for participating in this contest! Once you have completed the challenge, you can add a link to you submission below.',
+	'contest-submission-header' => 'Thanks for participating in this contest! Once you have completed the challenge, you can add a link to your submission below.',
 	'contest-submission-finished' => 'This contest has ended. Thanks for your participation!',
 
 	'contest-submission-submission' => 'Link to your submission',
@@ -285,8 +285,8 @@ $messages['qqq'] = array(
 	'contest-contestant-permalink' => 'Hover-text for comment permalinks',
 
 	// Emails
-	'contest-email-signup-title' => 'Title for signup emails',
-	'contest-email-reminder-title' => 'Title for reminder emails',
+	'contest-email-signup-title' => 'Title for signup e-mails',
+	'contest-email-reminder-title' => 'Title for reminder e-mails',
 
 	// Special:MyContests
 	'contest-mycontests-toplink' => 'Text for link in the top menu (ie where watchlist and preferences are linked)',
@@ -294,3 +294,4 @@ $messages['qqq'] = array(
 	'contest-mycontests-active-header' => 'Page header (h2)',
 	'contest-mycontests-finished-header' => 'Page header (h2)',
 );
+
