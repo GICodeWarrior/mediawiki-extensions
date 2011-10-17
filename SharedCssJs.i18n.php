@@ -27,21 +27,21 @@ $messages['en'] = array(
  * @author SVG
  */
 $messages['qqq'] = array(
-	'sharedcssjs-desc'    => '{{desc}}',
-	'sharedcssjs-error'   => '{{msg-mw|sharedcssjs-error}}
+	'sharedcssjs-desc' => '{{desc}}',
+	'sharedcssjs-error' => '{{msg-mw|sharedcssjs-error}}
 
 Similar to {{msg-mw|protectedpagetext}}',
-	'global.css'          => '{{msg-mw|global.css}}',
-	'global.js'           => '{{msg-mw|global.js}}',
+	'global.css' => '{{msg-mw|global.css}}',
+	'global.js' => '{{msg-mw|global.js}}',
 );
 
 /** German (Deutsch)
  * @author SVG
  */
 $messages['de'] = array(
-	'sharedcssjs-desc'    => 'Ermöglicht das Nutzen von globalen Wiki- und Benutzer-CSS und JS-Dateien aus dem Zentral Wiki',
-	'sharedcssjs-error'   => 'Diese Seite ist aus dem Zentral Wiki auf einem anderen Weg eingebunden und kann auch nur dort bearbeitet werden.',
-	'global.css'          => '/* Das folgende CSS wird für alle Benutzeroberflächen auf allen Wikis der Wiki-Farm geladen */',
-	'global.js'           => '/* Das folgende JavaScript wird für alle Benutzeroberflächen auf allen Wikis der Wiki-Farm geladen */',
+	'sharedcssjs-desc' => 'Ermöglicht das Nutzen von globalen Wiki- und Benutzer-CSS und JS-Dateien aus dem Zentral Wiki',
+	'sharedcssjs-error' => 'Diese Seite ist aus dem Zentral Wiki auf einem anderen Weg eingebunden und kann auch nur dort bearbeitet werden.',
+	'global.css' => '/* Das folgende CSS wird für alle Benutzeroberflächen auf allen Wikis der Wiki-Farm geladen */',
+	'global.js' => '/* Das folgende JavaScript wird für alle Benutzeroberflächen auf allen Wikis der Wiki-Farm geladen */',
 );
 
