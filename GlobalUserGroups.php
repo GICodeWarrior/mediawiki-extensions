@@ -17,12 +17,13 @@ if (!defined('MEDIAWIKI')){
 
 $wgExtensionFunctions[] = 'efGlobalUserGroupsEMWT';
 
-$wgExtensionCredits['specialpage'][] = array(
-    'name' => 'GlobalUserGroups',
-    'url' => 'http://www.mediawiki.org/wiki/Extension:GlobalUserGroups',
-    'author' => 'Tim Weyer',
-    'descriptionmsg' => 'globalusergroups-desc',
-    'version' => '1.0.1',
+$wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
+	'name' => 'GlobalUserGroups',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:GlobalUserGroups',
+	'author' => 'Tim Weyer',
+	'descriptionmsg' => 'globalusergroups-desc',
+	'version' => '1.0.1',
 );
 
 // Use extra translations for various user group names and similars
