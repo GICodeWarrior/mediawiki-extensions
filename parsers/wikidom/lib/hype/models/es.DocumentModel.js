@@ -613,53 +613,99 @@ es.DocumentModel.prototype.prepareInsertion = function( offset, data ) {
  * @returns {es.Transaction}
  */
 es.DocumentModel.prototype.prepareRemoval = function( range ) {
-	var tx = new es.Transaction(), removed = [];
+	var doc = this;
+	debugger;
+
+	/**
+	 * Return true if can merge the remaining contents of the elements after a selection is deleted across them. 
+	 * For instance, if a selection is painted across two paragraphs, and then the text is deleted, the two paragraphs can become one paragraph. 
+	 * However, if the selection crosses into a table, those cannot be merged.
+	 * @param {Number} integer offset
+	 * @param {Number} integer offset
+	 * @return {Boolean}
+	*/
+	function canMerge( range ) {
+		var node1 = doc.getNodeFromOffset( range.start );
+		var node2 = doc.getNodeFromOffset( range.end - 1 );
+		// This is the simple rule we are following for now -- same type & same parent = can merge. So you can merge adjacent paragraphs, or listitems.
+		// And you can't merge a paragraph into a table row.
+		// There may be other rules we will want in here later, for instance, special casing merging a listitem into a paragraph.
+		
+		// wait, some nodes don't have types? Is this the top document node?
+		return ( 
+					( 
+						( node1.type !== undefined && node2.type !== undefined ) 
+							&& 
+						( node1.type === node2.type ) 
+					) 
+						&&
+					( node1.getParent() === node2.getParent() )
+				);
+	}
+	
+	function mergeDelete( range, tx ) {	
+		// yay, content can be removed in one fell swoop
+		var removed = doc.data.slice( range.start, range.end );
+		tx.pushRemove( removed );
+	}
+
+	// remove string content only, retain structure
+	function stripDelete( range, tx ) { 
+		var lastOperation, operationStart;
+
+		var ops = [];
+		debugger;
+
+		// get a list of operations, with 0-based indexes
+		for (var i = range.start; i < range.end; i++ ) {
+			var neededOp = doc.data[i].type === undefined ? 'remove' : 'retain';
+			var op = ops[ ops.length - 1 ];
+			if ( op === undefined || op.type !== neededOp ) {
+				ops.push( { type: neededOp, start: i, end: i } );
+			} else {
+				op.end = i;
+			}
+		}					
+
+		debugger;
+		// insert operations as transactions (end must be adjusted)
+		for (var j = 0; j < ops.length; j++ ) {
+			var op = ops[j];
+			if ( op.type === 'retain' ) {
+				// we add one because retain(3,3) really means retain 1 char at pos 3
+				tx.pushRetain( op.end - op.start + 1 );
+			} else if ( op.type === 'remove' ) {
+				// we add one because to remove(3,5) we need to slice(3,6), the ending is last subscript removed + 1.
+				tx.pushRemove( this.data.slice( op.start, op.end + 1 ) );
+			} else {
+				console.log( "this is impossible" );
+			}
+		}
+
+	}
+
+	
+	var tx = new es.Transaction();
 	range.normalize();
 	
 	// Retain to the start of the range
 	if ( range.start > 0 ) {
 		tx.pushRetain( range.start );
 	}
-	// TODO check for overlaps with structured elements and compensate
-	
-	removed = this.data.slice( range.start, range.end );
-	tx.pushRemove( removed );
-	
-	// Retain up to the end of the document
-	if ( range.end < this.data.length ) {
-		tx.pushRetain( this.data.length - range.end );
-	}
-	
-	/*
-	 * Loop to detect structural changes:
-	while ( i < range.end ) {
-		var data = this.data[i];
-		if ( data.type !== undefined ) {
-			console.log( "later" );
-			// TODO structural
-		} else {
-			removeData.push( this.data[i] );
-		}
-		i++;
-	}
-	*/
 
-	/*
-	 * // Structural changes
-	 * if ( The range spans structural elements ) {
-	 *     if ( The range partially overlaps structural elements ) {
-	 *         Add insertions to replace removed openings and closing to overlapped elements
-	 *     } else {
-	 *         Removing entire structural elements is OK, do nothing
-	 *     }
-	 * } else {
-	 *     Removing only content is OK, do nothing
-	 * }
-	 /
-		i++;
-	}
-	*/
 	
+	// choose a deletion strategy; merging nodes together, or stripping content from existing structure.
+	if ( canMerge( range ) ) {
+		mergeDelete( range, tx );
+	} else {
+		stripDelete( range, tx );
+	}
+
+	// Retain up to the end of the document. Why do we do this?
+	if ( range.end < doc.data.length ) {
+		tx.pushRetain( doc.data.length - range.end );
+	}
+		
 	return tx;
 };
 
