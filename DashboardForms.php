@@ -143,7 +143,7 @@ class MBHideForm extends MBActionForm {
 	public function getForm() {
 		$form = parent::getForm();
 		
-		$header = Html::element( 'h3', null,
+		$header = Html::rawElement( 'h3', null,
 			wfMessage( 'moodbar-hide-header' )->parse() );
 		
 		$header .= wfMessage( 'moodbar-hide-intro' )->parse();
@@ -182,7 +182,7 @@ class MBRestoreForm extends MBActionForm {
 	public function getForm() {
 		$form = parent::getForm();
 		
-		$header = Html::element( 'h3', null,
+		$header = Html::rawElement( 'h3', null,
 			wfMessage( 'moodbar-restore-header' )->parse() );
 		
 		$header .= wfMessage( 'moodbar-restore-intro' )->parse();
