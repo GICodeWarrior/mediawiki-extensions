@@ -189,7 +189,11 @@ class Contest extends ContestDBObject {
 				wfMsg( 'contest-status-finished' ) => self::STATUS_FINISHED,
 			);
 		}
-		if (!$onlySettable) $map[wfMsg( 'contest-status-expired')] = self::STATUS_EXPIRED;
+		
+		if ( !$onlySettable ) {
+			$map[wfMsg( 'contest-status-expired')] = self::STATUS_EXPIRED;
+		} 
+		
 		return $map;
 	}
 
