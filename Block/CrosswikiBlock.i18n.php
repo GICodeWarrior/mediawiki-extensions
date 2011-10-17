@@ -532,7 +532,7 @@ Prosím, ověřte si, že můžete na dané wiki provádět takové akce a že v
 	'crosswikiblock-expiry' => 'Čas vypršení:',
 	'crosswikiblock-reason' => 'Důvod:',
 	'crosswikiblock-submit' => 'Zablokovat tohoto uživatele',
-	'crosswikiblock-anononly' => 'Zablokovat všechny anonymní uživatele',
+	'crosswikiblock-anononly' => 'Zablokovat pouze anonymní uživatele',
 	'crosswikiblock-nocreate' => 'Zabránit tvorbě účtů',
 	'crosswikiblock-autoblock' => 'Automaticky blokovat poslední IP adresu, kterou tento uživatel použil a jakékoli další adresy, z kterých se pokusí editovat.',
 	'crosswikiblock-noemail' => 'Zabránit uživateli odesílat e-mail',
