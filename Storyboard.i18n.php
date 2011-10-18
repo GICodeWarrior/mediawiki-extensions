@@ -1512,6 +1512,15 @@ $messages['ksh'] = array(
 	'storyboard-desc' => 'Brängg en [[Special:Story|Aanloufsigg för Jävver]] en et Wiki, woh Jescheschte [[Special:StorySubmission|enjeshtallt]] wääde künne, un en [[Special:StoryReview|Schnettshtäll för Jescheeschte ze betreue]].',
 );
 
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
+ * @author Gomada
+ */
+$messages['ku-latn'] = array(
+	'storyboard-authorname' => 'Navê nivîskar',
+	'storyboard-authorlocation' => 'Cihê nivîskar',
+	'storyboard-authoroccupation' => 'Pîşeyê nivîskar',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
