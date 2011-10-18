@@ -2102,11 +2102,17 @@ udder sök Der en annder Affspellprojramm uß.',
 	'ogg-oggThumb-failed' => '<code lang="en">oggThumb</code> kunnt kei MiniBelldsche maache.',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author George Animal
+ * @author Gomada
  */
 $messages['ku-latn'] = array(
-	'ogg-more' => 'Zav...',
+	'ogg-play' => 'Bileyzîne',
+	'ogg-pause' => 'Rawestîne',
+	'ogg-stop' => 'Bisekne',
+	'ogg-play-video' => 'Vîdeoyê bileyzîne',
+	'ogg-play-sound' => 'Deng veke',
+	'ogg-more' => 'Bêhtir...',
 );
 
 /** Latin (Latina)
