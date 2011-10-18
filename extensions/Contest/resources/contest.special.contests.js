@@ -1,7 +1,7 @@
 /**
  * JavasSript for the Contest MediaWiki extension.
  * @see https://www.mediawiki.org/wiki/Extension:Contest
- * 
+ *
  * @licence GNU GPL v3 or later
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
  */
@@ -24,12 +24,12 @@
 					failCallback( mw.msg( 'contest-special-delete-failed' ) );
 				}
 			}
-		);	
+		);
 	}
-	
+
 	$( '.contest-delete' ).click( function() {
 		$this = $( this );
-		
+
 		if ( confirm( mw.msg( 'contest-special-confirm-delete' ) ) ) {
 			deleteContest(
 				{
@@ -39,7 +39,7 @@
 				function() {
 					$this.closest( 'tr' ).slideUp( 'slow', function() {
 						$( this ).remove();
-						
+
 						if ( $( '.contests-table tr' ).length < 2 ) {
 							$( '.contests-table' ).remove();
 							$( '.contests-title' ).remove();
@@ -53,5 +53,5 @@
 		}
 		return false;
 	} );
-	
+
 } ); })( window.jQuery, window.mediaWiki );

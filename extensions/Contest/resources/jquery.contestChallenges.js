@@ -1,21 +1,21 @@
 /**
  * JavasSript for the Contest MediaWiki extension.
  * @see https://www.mediawiki.org/wiki/Extension:Contest
- * 
+ *
  * @licence GNU GPL v3 or later
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
  */
 
 ( function ( $, mw ) { $.fn.contestChallenges = function( challenges, config ) {
-	
+
 	this.challenges = challenges;
 	this.config = config;
-	
+
 	var _this = this;
 	var $this = $( this );
-	
+
 	this.challengesList = null;
-	
+
 	this.addChallenge = function( challenge ) {
 		this.challengesList
 			.append(
@@ -76,25 +76,25 @@
 					)
 			);
 	}
-	
+
 	this.initChallenges = function() {
 		this.challengesList = $( '<ul />' ).attr( 'id', 'contest-challenges-list' );
-		
+
 		for ( var i in this.challenges ) {
 			this.addChallenge( this.challenges[i] );
 		}
 	};
-	
+
 	this.init = function() {
 		$this.html( $( '<h3 />' ).text( mw.msg( 'contest-welcome-select-header' ) ) );
-		
+
 		this.initChallenges();
-		
+
 		$this.append( this.challengesList );
 	};
-	
+
 	this.init();
-	
+
 	return this;
-	
+
 }; } )( window.jQuery, window.mediaWiki );
