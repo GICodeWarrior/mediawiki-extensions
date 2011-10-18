@@ -18,7 +18,7 @@ $messages = array();
  * @author Jeroen De Dauw
  */
 $messages['en'] = array(
-	'contest-desc' => 'Contest extension that allows users to participate in admin defined contest challenges. Via a judging interface, judges can discuss and vote on submissions.',
+	'contest-desc' => 'Allows users to participate in contest challenges. Judges can discuss and vote on submissions',
 
 	// Misc
 	'contest-toplink' => 'My contests',
@@ -43,7 +43,7 @@ $messages['en'] = array(
 
 	// Preferences
 	'prefs-contest' => 'Contests',
-	'contest-prefs-showtoplink' => 'Show a link to [[Special:MyContests|My Contests]] in the top menu.',
+	'contest-prefs-showtoplink' => 'Show a link to [[Special:MyContests|My Contests]] in the user menu.',
 
 	// Contest statuses
 	'contest-status-draft' => 'Draft (disabled)',
@@ -273,7 +273,7 @@ $messages['qqq'] = array(
 	'contest-contestant-permalink' => 'Hover-text for comment permalinks',
 	'contest-email-signup-title' => 'Title for signup e-mails',
 	'contest-email-reminder-title' => 'Title for reminder e-mails',
-	'contest-mycontests-toplink' => 'Text for link in the top menu (ie where watchlist and preferences are linked)',
+	'contest-mycontests-toplink' => 'Text for link in the user menu (i.e. where watchlist and preferences are linked)',
 	'contest-mycontests-no-contests' => 'Message indicating there are no contests for the user, displayed instead of a list.',
 	'contest-mycontests-active-header' => 'Page header (h2)',
 	'contest-mycontests-finished-header' => 'Page header (h2)',
