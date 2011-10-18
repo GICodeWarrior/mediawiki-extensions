@@ -139,6 +139,10 @@ class ContestantPager extends TablePager {
 		return $headers;
 	}
 
+	/**
+	 * @param $row
+	 * @return string
+	 */
 	function formatRow( $row ) {
 		$this->mCurrentRow = $row;  	# In case formatValue etc need to know
 		$s = Xml::openElement( 'tr', $this->getRowAttrs($row) );
@@ -157,6 +161,10 @@ class ContestantPager extends TablePager {
 		return $s;
 	}
 
+	/**
+	 * @param $row
+	 * @return array
+	 */
 	function getRowAttrs( $row ) {
 		return array_merge(
 			parent::getRowAttrs( $row ),
@@ -164,10 +172,19 @@ class ContestantPager extends TablePager {
 		);
 	}
 
+	/**
+	 * @param $row
+	 * @return string
+	 */
 	function getRowClass( $row ) {
 		return 'contestant-row';
 	}
 
+	/**
+	 * @param $name
+	 * @param $value
+	 * @return string
+	 */
 	public function formatValue( $name, $value ) {
 		switch ( $name ) {
 			case 'contestant_id':

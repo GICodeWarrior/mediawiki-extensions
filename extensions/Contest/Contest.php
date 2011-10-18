@@ -126,7 +126,7 @@ $wgGroupPermissions['contestadmin' ]['contestadmin'] = true;
 # Users that can be contest participants.
 $wgGroupPermissions['*'            ]['contestparticipant'] = false;
 $wgGroupPermissions['user'         ]['contestparticipant'] = true;
-$wgGroupPermissions['autoconfirmed']['contestparticipant'] = true;
+//$wgGroupPermissions['autoconfirmed']['contestparticipant'] = true;
 //$wgGroupPermissions['bot'          ]['contestparticipant'] = false;
 $wgGroupPermissions['sysop'        ]['contestparticipant'] = true;
 $wgGroupPermissions['contestparticipant']['contestparticipant'] = true;
