@@ -276,7 +276,7 @@ class SpecialMyContests extends SpecialContestPage {
 	 */
 	protected function showSubmissionPage( ContestContestant $contestant ) {
 		if ( $this->getRequest()->getCheck( 'new' ) ) {
-			$this->showSuccess( 'contest-mycontests-signup-success' );
+			$this->showSuccess( 'contest-mycontests-signup-success', $contestant->getContest()->getField( 'name' ) );
 		}
 		else if ( $this->getRequest()->getCheck( 'added' ) ) {
 			$this->showSuccess( 'contest-mycontests-addition-success' );

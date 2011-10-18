@@ -73,7 +73,7 @@ $messages['en'] = array(
 	'contest-special-newname' => 'Contest name',
 	'contest-special-add' => 'Add contest',
 	'contest-special-existing' => 'Existing contests',
-	
+
 	'contest-special-name' => 'Name',
 	'contest-special-status' => 'Status',
 	'contest-special-submissioncount' => 'Submission count',
@@ -138,7 +138,7 @@ $messages['en'] = array(
 	'contest-signup-invalid-name' => 'The name you provided is too short.',
 	'contest-signup-require-challenge' => 'You must select a challenge.',
 	'contest-signup-invalid-cv' => 'You entered an invalid URL.',
-	
+
 	// Special:Contest
 	'contest-contest-title' => 'Contest: $1',
 	'contest-contest-no-results' => 'There are no contestants to display.',
@@ -158,7 +158,7 @@ $messages['en'] = array(
 	'contest-contestant-commentcount' => 'Comments',
 	'contest-contestant-overallrating' => 'Rating',
 	'contest-contestant-rating' => '$1 ($2 {{PLURAL:$2|vote|votes}})',
-	
+
 	// Special:Contestant
 	'contest-contestant-title' => 'Contestant $1 ($2)',
 	'contest-contestant-header-id' => 'Contestant ID',
@@ -193,7 +193,7 @@ $messages['en'] = array(
 	'contest-mycontests-finished-text' => 'These are the passed contests you have participated in.',
 	'contest-mycontests-header-contest' => 'Contest',
 	'contest-mycontests-header-challenge' => 'Challenge',
-	'contest-mycontests-signup-success' => 'You have successfully signed up for this contest.',
+	'contest-mycontests-signup-success' => 'You have successfully signed up for the $1 contest.',
 	'contest-mycontests-addition-success' => 'You have successfully posted your submission! Thanks for participating in this contest.',
 	'contest-mycontests-updated-success' => 'You have successfully modified your submission.',
 	'contest-mycontests-sessionfail' => 'Your submission could not be saved due to loss of session data. Please try again.',
@@ -207,7 +207,7 @@ $messages['en'] = array(
 	'contest-submission-invalid-url' => 'This URL does not match one of the allowed formats.',
 	'contest-submission-new-submission' => 'You still need to enter the URL to your submission. This needs to be done before the deadline.',
 	'contest-submission-current-submission' => 'This is the URL to your submission, which you can modify untill the deadline.',
-	
+
 	// TODO: how can this be done properly in JS?
 	'contest-submission-domains' => 'Submissions are restricted to these sites: $1',
 );
