@@ -242,6 +242,9 @@ jQuery( function( $ ) {
 		showLoading( $output );
 		if ( mustBePosted ) {
 			$requestUrl.val( url );
+			if ( params.length > 0 ) {
+				params = params.substr( 1 ); // remove leading &
+			}
 			$requestPost.val( params );
 			$postRow.show();
 		} else {
