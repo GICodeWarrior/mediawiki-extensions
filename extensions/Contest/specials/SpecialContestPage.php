@@ -93,9 +93,9 @@ abstract class SpecialContestPage extends SpecialPage {
 	 *
 	 * @param string $message
 	 */
-	protected function showSuccess( $message ) {
+	protected function showSuccess( $message, $subst = '' ) {
 		$this->getOutput()->addHTML(
-			'<div class="successbox"><strong><p>' . wfMsgExt( $message, 'parseinline' ) . '</p></strong></div>'
+			'<div class="successbox"><strong><p>' . wfMsgExt( $message, array( 'parseinline' ), $subst ) . '</p></strong></div>'
 		);
 	}
 
