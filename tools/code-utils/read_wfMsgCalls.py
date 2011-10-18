@@ -15,7 +15,12 @@
 # * the results are CSV
 # * the format of the messageStrings file is: 1/ language code (from the name of the file when available); 2/ message key; 3/ content of the message
 # * the format of the wfMsgCalls file is: 1/ path of the file; 2/ line number; 3/ wfMsg type (wfMsg, wfMessage, etc.); 4/ message key (when possible); 5/ complete call of the function
+# 
+# Author: Seb35 on Wikimedia projects
+# 
+# License: WTFPL 2.0 http://sam.zoy.org/wtfpl/
 #
+
 
 
 # # # # # # # #
@@ -25,7 +30,7 @@
 # BASE PARAMETERS
 
 # Folder containing a tree of MediaWiki
-baseFolder = "mediawiki/repo/phase3"
+baseFolder = "mediawiki/trunk/phase3"
 
 # Name of the CSV result file (in the current folder) containing the calls to the functions wfMsg* (specified thereafter in a parameter) obtained by analysing the code
 wfMsgCallsResultFile = "wfMsgCalls.csv"
