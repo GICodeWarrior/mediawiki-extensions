@@ -275,24 +275,27 @@ class SpecialMyContests extends SpecialContestPage {
 	 * @param ContestContestant $contestant
 	 */
 	protected function showSubmissionPage( ContestContestant $contestant ) {
-		if ( $this->getRequest()->getCheck( 'new' ) ) {
-			$this->showSuccess( 'contest-mycontests-signup-success', $contestant->getContest()->getField( 'name' ) );
+		$request = $this->getRequest();
+		$contest = $contestant->getContest();
+		if ( $request->getCheck( 'new' ) ) {
+			$this->showSuccess( 'contest-mycontests-signup-success', $contest->getField( 'name' ) );
 		}
-		else if ( $this->getRequest()->getCheck( 'added' ) ) {
+		else if ( $request->getCheck( 'added' ) ) {
 			$this->showSuccess( 'contest-mycontests-addition-success' );
 		}
-		else if ( $this->getRequest()->getCheck( 'updated' ) ) {
+		else if ( $request->getCheck( 'updated' ) ) {
 			$this->showSuccess( 'contest-mycontests-updated-success' );
 		}
-		else if ( $this->getRequest()->wasPosted()
-			&& !$this->getUser()->matchEditToken( $this->getRequest()->getVal( 'wpEditToken' ) ) ) {
+		else if ( $request->wasPosted()
+			&& !$this->getUser()->matchEditToken( $request->getVal( 'wpEditToken' ) ) ) {
 			$this->showError( 'contest-mycontests-sessionfail' );
 		}
 
-		$this->getOutput()->setPageTitle( $contestant->getContest()->getField( 'name' ) );
+		$output = $this->getOutput();
+		$output->setPageTitle( $contest->getField( 'name' ) );
 
-		$this->getOutput()->addHTML('<div style="clear:both;"></div>');
-		$this->getOutput()->addWikiMsg( 'contest-submission-header', $contestant->getContest()->getField( 'name' ) );
+		$output->addHTML('<div style="clear:both;"></div>');
+		$output->addWikiMsg( 'contest-submission-header', $contest->getField( 'name' ) );
 
 		$form = new HTMLForm( $this->getFormFields( $contestant ), $this->getContext() );
 
@@ -301,10 +304,10 @@ class SpecialMyContests extends SpecialContestPage {
 
 		if( $form->show() ) {
 			$query = is_null( $this->submissionState ) ? '' : $this->submissionState;
-			$this->getOutput()->redirect( $this->getTitle( $contestant->getContest()->getField( 'name' ) )->getLocalURL( $query ) );
+			$output->redirect( $this->getTitle( $contest->getField( 'name' ) )->getLocalURL( $query ) );
 		}
 		else {
-			$this->getOutput()->addModules( 'contest.special.submission' );
+			$output->addModules( 'contest.special.submission' );
 		}
 	}
 
