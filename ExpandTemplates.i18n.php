@@ -1081,13 +1081,14 @@ Perkara iki dilakokaké caranémawa nyeluk tahapan parser sing rélévan saka Me
 
 /** Georgian (ქართული)
  * @author BRUTE
+ * @author Dawid Deutschland
  */
 $messages['ka'] = array(
 	'expandtemplates' => 'გაშლილი თარგები',
 	'expand_templates_title' => 'კონტექსტის სათაური, {{FULLPAGENAME}}-სთვის და ა.შ.:',
 	'expand_templates_input' => 'შესაყვანი ტექსტი:',
 	'expand_templates_output' => 'შედეგი',
-	'expand_templates_ok' => 'OK',
+	'expand_templates_ok' => 'შესრულება',
 	'expand_templates_remove_comments' => 'კომენტარების წაშლა',
 	'expand_templates_preview' => 'წინა',
 );
