@@ -574,6 +574,7 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Gomoko
  * @author IAlex
  * @author Peter17
  * @author PieRRoMaN
@@ -614,6 +615,7 @@ $messages['fr'] = array(
 	'masseditregex-badregex' => 'Regex invalide:',
 	'masseditregex-editfailed' => "Erreur lors de l'édition :",
 	'masseditregex-tooltip-execute' => 'Appliquer ces changements à chaque page',
+	'right-masseditregex' => 'Remplacer le contenu de la page en utilisant des expressions régulières',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -673,6 +675,7 @@ $messages['gl'] = array(
 	'masseditregex-badregex' => 'Expresión regular non válida:',
 	'masseditregex-editfailed' => 'Fallou a edición:',
 	'masseditregex-tooltip-execute' => 'Aplicar estes cambios a cada páxina',
+	'right-masseditregex' => 'Substituír os contidos das páxinas por expresións regulares',
 );
 
 /** Swiss German (Alemannisch)
@@ -878,6 +881,7 @@ Le valores de reimplaciamento non debe esser escappate.',
 	'masseditregex-badregex' => 'Regex invalide:',
 	'masseditregex-editfailed' => 'Modification falleva:',
 	'masseditregex-tooltip-execute' => 'Applicar iste modificationes a cata pagina',
+	'right-masseditregex' => 'Reimplaciar le contento de paginas usante expressiones regular',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -1087,6 +1091,7 @@ $messages['mk'] = array(
 	'masseditregex-badregex' => 'Неважечки регуларен израз:',
 	'masseditregex-editfailed' => 'Уредувањето не успеа:',
 	'masseditregex-tooltip-execute' => 'Примени ги истите промени во секоја страница',
+	'right-masseditregex' => 'Замена на содржини на страници користејќи регуларни изрази',
 );
 
 /** Dutch (Nederlands)
