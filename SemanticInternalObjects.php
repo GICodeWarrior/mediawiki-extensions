@@ -9,14 +9,14 @@
 
 if ( !defined( 'MEDIAWIKI' ) ) die();
 
-define( 'SIO_VERSION', '0.6.6' );
+define( 'SIO_VERSION', '0.6.7' );
 
 $wgExtensionCredits[defined( 'SEMANTIC_EXTENSION_TYPE' ) ? 'semantic' : 'parserhook'][] = array(
 	'path' => __FILE__,
 	'name'	=> 'Semantic Internal Objects',
-	'version'	=> SIO_VERSION,
-	'author'	=> 'Yaron Koren',
-	'url'	=> 'http://www.mediawiki.org/wiki/Extension:Semantic_Internal_Objects',
+	'version' => SIO_VERSION,
+	'author' => 'Yaron Koren',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Semantic_Internal_Objects',
 	'descriptionmsg' => 'semanticinternalobjects-desc',
 );
 
