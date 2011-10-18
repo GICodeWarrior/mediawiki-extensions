@@ -115,6 +115,25 @@ $messages['arz'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: خطأ إدخال!',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'chemicalsources' => 'Fontes pa la química',
+	'chemicalsource-desc' => 'Amiesta la etiqueta <nowiki><chemform></nowiki>, pa fórmules químiques',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Páxina especial]] pa fontes de química',
+	'chemFunctions_ListPage' => 'Fontes pa la química',
+	'chemFunctions_DataList' => 'Darréu tienes una llista d\'enllaces a sitios que puen proporcionate información tocante a la sustancia química que tas buscando.<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Componer $MIXCASNameFormula en NIST</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS na Universidá d\'Oxford (R.X.) (ensin guetes)</a><br />',
+	'chemFunctions_CAS' => 'Númberu CAS',
+	'chemFunctions_ATCCode' => 'Códigu ATC',
+	'chemFunctions_ECNumber' => 'Númberu EC',
+	'chemFunctions_Formula' => 'Fórmula',
+	'chemFunctions_Name' => 'Nome IUPAC',
+	'chemFunctions_ChemFormInputError' => "Chemform: ¡error d'entrada!",
+);
+
 /** Azerbaijani (Azərbaycanca)
  * @author Sortilegus
  */
