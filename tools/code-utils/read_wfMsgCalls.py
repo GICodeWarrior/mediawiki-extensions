@@ -37,7 +37,7 @@ messageStringsResultFile = "messageStrings.csv"
 lightMessageStrings = False
 
 # Name of the wfMsg functions to search in the code
-messageFunctions = [ "wfMsg", "wfMessage", "wfMessageFallback", "wfMsgExt", "wfMsgForContent", "wfMsgNoTrans", "wfMsgForContentNoTrans", "wfMsgReal", "wfMsgHtml", "wfMsgWikiHtml", "wfEmptyMsg", "wfMsgReplaceArgs", "wfMsgGetKey" ]
+messageFunctions = [ "wfMsg", "wfMessage", "wfMessageFallback", "wfMsgExt", "wfMsgForContent", "wfMsgNoTrans", "wfMsgForContentNoTrans", "wfMsgReal", "wfMsgHtml", "wfMsgWikiHtml", "wfEmptyMsg", "wfMsgReplaceArgs", "wfMsgGetKey", "addWikiMsg", "wrapWikiMsg", "addWikiMsgArray" ]
 
 
 # MESSAGES FOLDERS AND FILES
