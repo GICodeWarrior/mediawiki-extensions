@@ -33,8 +33,8 @@ class ContestValidationTests extends MediaWikiTestCase {
 			'https://gitorious.org/statusnet/mainline/merge_requests/2224' => true,
 		);
 
-		foreach ( $tests as $test => $isValdid ) {
-			if ( $isValdid ) {
+		foreach ( $tests as $test => $isValid ) {
+			if ( $isValid ) {
 				$this->assertEquals( true, SpecialMyContests::validateSubmissionField( $test ) );
 			}
 			else {
