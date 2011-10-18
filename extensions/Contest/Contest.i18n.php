@@ -189,8 +189,8 @@ $messages['en'] = array(
 	'contest-mycontests-no-contests' => 'You are not participating in any contest.',
 	'contest-mycontests-active-header' => 'Running contests',
 	'contest-mycontests-finished-header' => 'Passed contests',
-	'contest-mycontests-active-text' => 'These are the contests you are currently participating in.',
-	'contest-mycontests-finished-text' => 'These are the passed contests you have participated in.',
+	'contest-mycontests-active-text' => 'These are the contests you are currently participating in:',
+	'contest-mycontests-finished-text' => 'These are the past contests you have participated in:',
 	'contest-mycontests-header-contest' => 'Contest',
 	'contest-mycontests-header-challenge' => 'Challenge',
 	'contest-mycontests-signup-success' => 'You have successfully signed up for the $1 contest.',
@@ -221,7 +221,7 @@ $messages['qqq'] = array(
 	'contest-special-submissioncount' => 'Table column header',
 	'contest-special-edit' => 'Table column header',
 	'contest-special-delete' => 'Table column header',
-	'editcontest-text' => 'Short text displayed at the top of the page notifying the user they are editting a contest',
+	'editcontest-text' => 'Short text displayed at the top of the page notifying the user they are editing a contest',
 	'contest-edit-name' => 'form field label',
 	'contest-edit-status' => 'form field label',
 	'contest-edit-intro' => 'Form field label',
@@ -273,10 +273,20 @@ $messages['qqq'] = array(
 	'contest-contestant-permalink' => 'Hover-text for comment permalinks',
 	'contest-email-signup-title' => 'Title for signup e-mails',
 	'contest-email-reminder-title' => 'Title for reminder e-mails',
+
+	// Special:MyContests
 	'contest-mycontests-toplink' => 'Text for link in the user menu (i.e. where watchlist and preferences are linked)',
 	'contest-mycontests-no-contests' => 'Message indicating there are no contests for the user, displayed instead of a list.',
 	'contest-mycontests-active-header' => 'Page header (h2)',
 	'contest-mycontests-finished-header' => 'Page header (h2)',
+	'contest-mycontests-active-text' => 'A list of all contests that a user is part of',
+	'contest-mycontests-finished-text' => 'A list of all contests a user has been part of',
+	'contest-mycontests-header-contest' => 'Contest',
+	'contest-mycontests-header-challenge' => 'Header',
+	'contest-mycontests-signup-success' => 'Message shown when a user successfully signs up for a contest. $1 is the name of the contest.',
+	'contest-mycontests-addition-success' => 'Message shown when a user has added a submission',
+	'contest-mycontests-updated-success' => 'Message shown when a user has editied a submission',
+	'contest-mycontests-sessionfail' => 'Session failure',
 );
 
 /** German (Deutsch)
