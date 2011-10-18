@@ -110,7 +110,6 @@ class SmoothGalleryParser {
 	}
 
 	function parseGallery( $input, $parser ) {
-		global $wgTitle;
 		global $wgSmoothGalleryDelimiter;
 		global $wgSmoothGalleryAllowExternal;
 
