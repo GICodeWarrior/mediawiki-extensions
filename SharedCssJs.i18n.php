@@ -17,10 +17,10 @@ $messages = array();
  * @author SVG
  */
 $messages['en'] = array(
-	'sharedcssjs-desc'    => 'Enables fetching of global wiki and user CSS and JS from central wiki',
-	'sharedcssjs-error'   => 'This page is included from central wiki by another way and can only editing there.',
+	'sharedcssjs-desc'    => 'Enables fetching of global wiki and user CSS and JS from a central wiki',
+	'sharedcssjs-error'   => 'This page is included from a central wiki and can only be edited there.',
 	'global.css'          => '/* CSS placed here will be applied to all skins on all wikis of the wiki farm */',
-	'global.js'           => '/* JavaScript placed here will be applied to all skins on all wikis of the wiki farm */',
+	'global.js'           => '/* Any JavaScript here will be loaded for users on every page load in the wiki farm */',
 );
 
 /** Message documentation (Message documentation)
