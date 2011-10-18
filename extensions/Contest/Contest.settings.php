@@ -30,7 +30,7 @@ class ContestSettings {
 		return array(
 			'voteValues' => range( 0, 5 ),
 			'enableTopLink' => true,
-			'submissionDomains' => array( 'github.com', 'gitorious.org' ),
+			'submissionDomains' => array( 'github.com', 'gitorious.org', 'mediawiki.org' ),
 			'reminderJobSize' => 50
 		);
 	}
