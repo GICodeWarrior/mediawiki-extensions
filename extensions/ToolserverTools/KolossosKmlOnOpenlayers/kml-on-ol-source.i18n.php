@@ -388,10 +388,13 @@ $messages['ksh'] = array(
 	'ts-kml-on-ol-map-by' => 'Kaat vum',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author George Animal
+ * @author Gomada
  */
 $messages['ku-latn'] = array(
+	'ts-kml-on-ol-languages' => 'Ziman',
+	'ts-kml-on-ol-thumbnails' => 'Wêneyên biçûk',
 	'ts-kml-on-ol-help' => 'Alîkarî',
 	'ts-kml-on-ol-all' => 'Hemû',
 );

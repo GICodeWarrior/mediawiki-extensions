@@ -157,7 +157,7 @@ $messages['qqq'] = array(
 	'pollresults' => 'Special page name in [[Special:SpecialPages]]',
 	'qpollwebinstall' => 'Special page name in [[Special:SpecialPages]]',
 	'qp_desc' => '{{desc}} Important notice: Categories can be grouped into category groups, which are internally referred as "spans". Such grouped categories become "subcategories". While the extension evolved, these groups were consequentially called as "spans", "metacategories", "category groups". Please read the on-line documentation carefully before translating.',
-	'qp_desc-sp' => 'Description of extension\'s special page at Special:Version page.',
+	'qp_desc-sp' => "Description of extension's special page at Special:Version page.",
 	'qp_result_NA' => '{{Identical|Not answered}}',
 	'qp_result_error' => '{{Identical|Syntax error}}',
 	'qp_vote_button' => '{{Identical|Vote}}',
@@ -166,7 +166,7 @@ $messages['qqq'] = array(
 	'qp_polls_list' => 'A link title in the header of [[Special:Pollresults]] which displays list of polls at current wiki site.',
 	'qp_users_list' => 'A link title in the header of [[Special:Pollresults]] which displays list of poll participants at current wiki site.',
 	'qp_browse_to_poll' => 'A link title at [[Special:Pollresults]] which opens wiki page where the selected poll was defined.',
-	'qp_browse_to_user' => 'A link title at [[Special:Pollresults]] which opens user page of selected poll\'s voter (participant).',
+	'qp_browse_to_user' => "A link title at [[Special:Pollresults]] which opens user page of selected poll's voter (participant).",
 	'qp_browse_to_interpretation' => 'A link title at [[Special:Pollresults]] which opens wiki page where the interpretation script of selected poll was defined.',
 	'qp_votes_count' => 'Displays how many times the user re-submitted the poll. $1 is number of poll submissions.',
 	'qp_source_link' => '"Source" is the link text for a link to the page where the poll is defined.
@@ -198,33 +198,19 @@ $messages['qqq'] = array(
 * $1 is a link to the [[Special:Pollresults]] which displays either the list of users which participated in current poll, or the list of users that participated in another polls but this one
 * $2 is a link to the page title where the poll is defined
 * $3 is the poll name (poll identifier) in plain text',
-	'qp_results_line_qpl' => 'Parameters:
-* $1 is a link to the page page name the poll is on with the page title as link label
-* $2 is the poll name in plain text
-* $3 is a link to the poll with link label {{msg-mw|qp_source_link}}
-* $4 is a link to the poll statistics with link label {{msg-mw|qp_stats_link}}
-* $5 is a link to the users that participated in the poll with link label {{msg-mw|qp_users_link}}
-* $6 is a link to the with link label {{msg-mw|qp_not_participated_link}}',
 	'qp_results_submit_attempts' => 'Parameters:
 * $1 is the number of submit attempts',
 	'qp_results_interpretation_header' => 'Since v0.8.0 polls may have interpretation scripts defined at separate wiki pages, which allows to use the extension for quizes. Interpretation scripts return the following types of interpretation results: global error message, proposal error, proposal/category error, short interpretation, long interpretation, structured interpretation.  This message is the header of the block of these results displayed both to end-user and to poll admin at [[Special:Pollresults]] page.',
 	'qp_results_short_interpretation' => 'Short interpretation header. Short interpretation will contain small sortable string in separate block. No parameters.',
 	'qp_results_long_interpretation' => 'Long interpretation header. Long interpretation will contain long text (usually displayed to end-user) in separate block. No parameters.',
-	'qp_results_structured_interpretation' => 'Structured interpretation header. This type of interpretation is used to store measurable accountable structured data in interpretation scripts. Structured interpretation also can be read by another poll\'s interpretation scripts at later time and exported into XLS format. No parameters.',
-	'qp_error_missed_dependance_poll' => 'Parameters:
-* $1 is the poll ID of the poll having an error.
-* $2 is a link to the page with the poll, that this erroneous poll depends on.
-* $3 is the poll ID of the poll, which this erroneous poll depends on.',
-	'qp_error_too_many_spans' => 'There cannot be more category groups defined than the total count of subcategories.',
-	'qp_error_too_few_spans' => 'Every category group should include at least two subcategories',
-	'qp_error_no_interpretation' => 'Title of interpretation script was specified in poll header, but no article was found with that title. Either remove "interpretation" xml attribute of poll or create the title specified by "interpretation" attribute.',
-	'qp_interpetation_wrong_answer' => 'Indicates that user-submitted choices of categories are considered incorrect by poll\'s interpretation script.',
+	'qp_results_structured_interpretation' => "Structured interpretation header. This type of interpretation is used to store measurable accountable structured data in interpretation scripts. Structured interpretation also can be read by another poll's interpretation scripts at later time and exported into XLS format. No parameters.",
+	'qp_interpetation_wrong_answer' => "Indicates that user-submitted choices of categories are considered incorrect by poll's interpretation script.",
 	'qp_export_to_xls' => 'Poll average statistics will be exported into XLS file.',
 	'qp_voices_to_xls' => 'Poll user category choices will be exported into XLS file.',
-	'qp_interpretation_results_to_xls' => 'Poll\`s structured interpetation results will be exported into XLS file.',
+	'qp_interpretation_results_to_xls' => 'Poll\\`s structured interpetation results will be exported into XLS file.',
 	'qp_users_answered_questions' => 'Writes the message how many users answered to the poll questions in XLS file cell.',
-	'qp_func_no_such_poll' => 'qpuserchoice parser function did not found the poll specified in it\'s parameter.
-* $1 is the poll address (page title + hash sign + qp prefix + poll id)',
+	'qp_func_no_such_poll' => "qpuserchoice parser function did not found the poll specified in it's parameter.
+* $1 is the poll address (page title + hash sign + qp prefix + poll id)",
 	'qp_func_missing_question_id' => 'qpuserchoice parser function call should have question_id parameter specified.',
 	'qp_func_invalid_question_id' => 'qpuserchoice parser function question_id call value should be integer number, [1..n].',
 	'qp_func_missing_proposal_id' => 'qpuserchoice parser function call should have proposal id parameter specified.',
@@ -237,9 +223,16 @@ $messages['qqq'] = array(
 	'qp_error_address_in_decl_mode' => 'Poll "address" attribute is meaningless in poll declaration / voting mode.',
 	'qp_error_question_not_implemented' => 'Invalid value of qustion xml-like "type" attribute was specified. There is no such type of question. Please read the manual for list of valid question types.',
 	'qp_error_invalid_question_type' => '{{Identical|Invalid value of qustion xml-like "type" attribute was specified. There is no such type of question. Please read the manual for list of valid question types.}}',
-	'qp_error_interpretation_no_return' => 'Interpretation script missed an return statement.',
 	'qp_error_type_in_stats_mode' => 'Question\'s "type" xml-like attribute is meaningless in statistical display mode.',
 	'qp_error_no_poll_id' => 'Every poll definition in declaration / voting mode must have "id" attribute.',
+	'qp_error_missed_dependance_poll' => 'Parameters:
+* $1 is the poll ID of the poll having an error.
+* $2 is a link to the page with the poll, that this erroneous poll depends on.
+* $3 is the poll ID of the poll, which this erroneous poll depends on.',
+	'qp_error_too_many_spans' => 'There cannot be more category groups defined than the total count of subcategories.',
+	'qp_error_too_few_spans' => 'Every category group should include at least two subcategories',
+	'qp_error_no_interpretation' => 'Title of interpretation script was specified in poll header, but no article was found with that title. Either remove "interpretation" xml attribute of poll or create the title specified by "interpretation" attribute.',
+	'qp_error_interpretation_no_return' => 'Interpretation script missed an return statement.',
 	'qp_error_structured_interpretation_is_too_long' => "Structured interpretation is serialized string containing scalar value or an associative array stored into database table field. It's purpose is to have measurable, easily processable interpretation result for the particular poll which then can be processed by external tools (via XLS export) or, to be read and processed by next poll interpretation script (data import and in the future maybe an export as well). When the serialized string is too long, it should never be stored, otherwise it will be truncated by DBMS so it cannot be properly unserialized later.",
 	'qp_error_eval_missed_lang_attr' => '{{doc-important|Do not translate "lang" as it is the name of an XML attribute that is not localised.}}',
 	'qp_error_eval_mix_languages' => 'Parameters:

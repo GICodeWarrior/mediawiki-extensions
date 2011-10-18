@@ -1400,10 +1400,12 @@ un kei eije Fommolaa.',
 	'right-changeauthor' => 'Dä Metmaacher ußwääßelle, dä en Version jemaat hät',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author George Animal
+ * @author Gomada
  */
 $messages['ku-latn'] = array(
+	'changeauthor-pagenameform-go' => 'Here',
 	'changeauthor-comment' => 'Şîrove:',
 );
 

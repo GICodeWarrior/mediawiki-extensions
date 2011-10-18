@@ -31,6 +31,41 @@ $messages['qqq'] = array(
  * @author SVG
  */
 $messages['de'] = array(
-	'globalusergroups-desc' => 'Ermöglicht das Nutzen von definierten lokalen Benutzergruppen als globale Gruppen',
+	'globalusergroups-desc' => 'Ermöglicht das Nutzen definierter lokaler Benutzergruppen als globale Gruppen',
+);
+
+/** French (Français)
+ * @author Gomoko
+ */
+$messages['fr'] = array(
+	'globalusergroups-desc' => "Permet l'utilisation de groupes d'utilisateurs locaux définis comme des groupes globaux",
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'globalusergroups-desc' => 'Permite o uso de grupos de usuario locais definidos como grupos globais',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'globalusergroups-desc' => 'Permitte le uso de gruppos definite de usatores local como gruppos global',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'globalusergroups-desc' => 'Löht et zoh, em Wiki aanjelaate Metmaacher-Jroppe als jemeinsam Metmaacher-Jroppe  ze bruche.',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'globalusergroups-desc' => 'Овозможува употреба на дадени локални кориснички групи како глобални групи',
 );
 

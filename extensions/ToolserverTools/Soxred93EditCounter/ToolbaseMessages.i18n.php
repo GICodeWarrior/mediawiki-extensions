@@ -977,11 +977,18 @@ $messages['ksh'] = array(
 	'toolbase-main-title' => 'Wellkumme!',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author George Animal
+ * @author Gomada
  */
 $messages['ku-latn'] = array(
-	'toolbase-footer-source' => 'Çavkanîyê bibîne',
+	'toolbase-replag-years' => 'sal',
+	'toolbase-replag-months' => 'meh',
+	'toolbase-replag-weeks' => 'hefte',
+	'toolbase-replag-hours' => 'saet',
+	'toolbase-replag-minutes' => 'xulek',
+	'toolbase-replag-seconds' => 'çirke',
+	'toolbase-footer-source' => 'Çavkaniyê bibîne',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
