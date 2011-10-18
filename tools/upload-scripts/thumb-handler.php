@@ -107,8 +107,6 @@ if ( $site == 'wikipedia' ) {
 			break;
 		default:
 			$host = "$lang.wikipedia.org";
-
-
 	}
 } else {
 	$sitelang = str_replace( '-', '.', $lang );
@@ -208,29 +206,7 @@ EOT;
 	# Error message, suppress cache
 	header( 'HTTP/1.1 500 Internal server error' );
 	header( 'Cache-Control: no-cache' );
-} 
-/* we don't use caching servers any more
-else {
-	# Cache the file locally if this is a cache server
-	$uname = posix_uname();
-	$server = $uname['nodename'];
-	if ( !in_array($server, array('amane.pmtpa.wmnet', 'storage1', 'ms1', 'ms2')) ) {
-		$dest = pathFromUrl( $uri );
-		if( $dest ) {
-			if ( strpos( $dest, '..' ) === false ) {
-				# Make directory and parents
-				for ( $i = 0, $path = dirname( $dest ); !file_exists( $path ) && $i < 6; $path = dirname( $path ), $i++ ) {
-					@mkdir( $path );
-				}
-				@file_put_contents( $dest, $text );
-			}
-		} else {
-			
-			header( "X-Debug: got invalid input path" );
-		}
-	}
 }
-*/
 
 if ( !$contentType ) {
 	header( 'Content-Type:' );
@@ -239,42 +215,3 @@ if ( !$contentType ) {
 }
 print $text;
 curl_close( $ch );
-
-function pathFromUrl( $url ) {
-	if( preg_match( '!^(?:http://upload.wikimedia.org)?/+([\w-]*)/([\w-]*)/thumb(/archive|/temp|)/(\w)/(\w\w)/([^/]*)/([^/]*)$!',
-		$url, $matches ) ) {
-		$parts = array_map( 'rawurldecode', $matches );
-		list( $all, $site, $lang, $archOrTemp, $hash1, $hash2, $filename, $fn2 ) = $parts;
-				
-		$md5 = md5( $filename );
-		if( $hash1 != substr( $md5, 0, 1 ) ) return false;
-		if( $hash2 != substr( $md5, 0, 2 ) ) return false;
-
-		$testNames = array( $filename, "$filename.png", "$filename.jpg" );
-		$good = false;
-		foreach ( $testNames as $testName ) {
-			if ( substr( $fn2, -strlen( $testName ) ) == $testName ) {
-				$good = true;
-				break;
-			}
-		}
-		
-		if( $good ) {
-			$thumbPath = array( '', 'export', 'upload', $site, $lang, 'thumb', $archOrTemp, $hash1, $hash2, $filename, $fn2 );
-			if ( !checkPathComponents( $thumbPath ) ) return false;
-			return implode( '/', $thumbPath );
-		}
-	}
-	return false;
-}
-
-function checkPathComponents( $components ) {
-	foreach( $components as $component ) {
-		if( strpos( $component, '/' ) !== false ) return false;
-		if( $component == '.' ) return false;
-		if( $component == '..' ) return false;
-	}
-	return true;
-}
-
-?>
