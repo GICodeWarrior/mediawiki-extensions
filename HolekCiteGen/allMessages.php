@@ -708,12 +708,14 @@ $messages['ksh'] = array(
 	'ts-citegen-base-disabled' => 'Fähler: De Datebank %s es nit zohjänglesch',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author George Animal
+ * @author Gomada
  */
 $messages['ku-latn'] = array(
 	'ts-citegen-Output-title' => 'Encam',
 	'ts-citegen-Other-languages' => 'Zmanên din',
+	'ts-citegen-Errors-title' => 'Çewtî',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
