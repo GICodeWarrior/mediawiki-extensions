@@ -165,7 +165,7 @@ $wgResourceModules['contest.special.contest'] = $moduleTemplate + array(
 		'contest-contest-reminder-send',
 		'contest-contest-reminder-preview',
 		'contest-contest-reminder-sending',
-		'contest-contest-reminder-success', 
+		'contest-contest-reminder-success',
 		'contest-contest-reminder-close',
 		'contest-contest-reminder-retry',
 		'contest-contest-reminder-failed',
@@ -294,3 +294,6 @@ unset( $moduleTemplate );
 $egContestSettings = array();
 
 $wgContestEmailParse = false;
+
+$wgContestMailSender = $wgPasswordSender;
+$wgContestMailSenderName = $wgPasswordSenderName;
