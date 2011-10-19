@@ -119,7 +119,14 @@ MWTreeSerializer.prototype.treeToSource = function(tree, callback) {
 			// @fixme validate that text doesn't contain '-->'
 			src = '<!--' + tree.text + '-->';
 			break;
+                case 'ul':
+                case 'ol':
+                case 'dl':
+			src = subParseArray(tree.content);
+			break;
 		case 'li':
+		case 'dt':
+		case 'dd':
 			src = tree.listStyle.join('');
 			src += subParseArray(tree.content) + '\n';
 			break;
