@@ -217,12 +217,12 @@ HTML;
 				->userToolLinks( $user->getId(), $username );
 		
 		return <<<HTML
-			<h3 class="fbd-item-userName">
+			<div class="fbd-item-userName">
 				<a href="#">$username</a>
 				<sup class="fbd-item-userLinks">
 					$links
 				</sup>
-			</h3>
+			</div>
 HTML;
 	}
 	
