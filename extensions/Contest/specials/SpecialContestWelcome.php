@@ -38,11 +38,10 @@ class SpecialContestWelcome extends SpecialContestPage {
 
 		$out = $this->getOutput();
 
-		$contest = Contest::s()->selectRow( null, array( 'name' => $subPage ) );
-
 		/**
 		 * @var $contest Contest
 		 */
+		$contest = Contest::s()->selectRow( null, array( 'name' => $subPage ) );
 
 		if ( $contest === false ) {
 			$this->showError( 'contest-welcome-unknown' );
@@ -50,7 +49,7 @@ class SpecialContestWelcome extends SpecialContestPage {
 			$out->returnToMain();
 		}
 		else if ( ( $contest->getStatus() == Contest::STATUS_FINISHED ) ||
-		          ( $contest->getStatus() == Contest::STATUS_EXPIRED ) ) {
+			( $contest->getStatus() == Contest::STATUS_EXPIRED ) ) {
 			$this->showWarning( 'contest-signup-finished' );
 			$out->addHTML( '<br /><br /><br /><br />' );
 			$out->returnToMain();
@@ -132,9 +131,14 @@ class SpecialContestWelcome extends SpecialContestPage {
 	protected function addContestJS( Contest $contest ) {
 		$challenges = array();
 
+		$output = $this->getOutput();
+		/**
+		 * @var $challenge ContestChallenge
+		 */
 		foreach ( $contest->getChallenges() as /* ContestChallenge */ $challenge ) {
 			$data = $challenge->toArray();
 			$data['target'] = $this->getSignupLink( $contest->getField( 'name' ), $challenge->getId() );
+			$data['text'] = $output->parse( $data['text'] );
 			$challenges[] = $data;
 		}
 
