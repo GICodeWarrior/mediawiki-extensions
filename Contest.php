@@ -112,7 +112,7 @@ $wgHooks['LinkEnd'][] 							= 'ContestHooks::onLinkEnd';
 // Rights
 
 $wgAvailableRights[] = 'contestadmin';
-$wgAvailableRights[] = 'contestparticipant';
+$wgAvailableRights[] = 'contestant';
 $wgAvailableRights[] = 'contestjudge';
 
 # Users that can manage the contests.
@@ -124,12 +124,12 @@ $wgGroupPermissions['sysop'        ]['contestadmin'] = true;
 $wgGroupPermissions['contestadmin' ]['contestadmin'] = true;
 
 # Users that can be contest participants.
-$wgGroupPermissions['*'            ]['contestparticipant'] = false;
-$wgGroupPermissions['user'         ]['contestparticipant'] = true;
-//$wgGroupPermissions['autoconfirmed']['contestparticipant'] = true;
-//$wgGroupPermissions['bot'          ]['contestparticipant'] = false;
-$wgGroupPermissions['sysop'        ]['contestparticipant'] = true;
-$wgGroupPermissions['contestparticipant']['contestparticipant'] = true;
+$wgGroupPermissions['*'            ]['contestant'] = false;
+$wgGroupPermissions['user'         ]['contestant'] = true;
+//$wgGroupPermissions['autoconfirmed']['contestant'] = true;
+//$wgGroupPermissions['bot'          ]['contestant'] = false;
+$wgGroupPermissions['sysop'        ]['contestant'] = true;
+$wgGroupPermissions['contestant']['contestant'] = true;
 
 # Users that can vote and comment on submissions.
 $wgGroupPermissions['*'            ]['contestjudge'] = false;

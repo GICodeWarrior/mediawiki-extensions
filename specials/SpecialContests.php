@@ -165,7 +165,7 @@ class SpecialContests extends SpecialContestPage {
 
 			$fields = array();
 
-			if ( $user->isAllowed( 'contestparticipant' ) ) {
+			if ( $user->isAllowed( 'contestant' ) ) {
 				$name = Html::element(
 					'a',
 					array(
@@ -237,7 +237,7 @@ class SpecialContests extends SpecialContestPage {
 				wfMsg( 'contest-nav-contestwelcome' )
 			);
 
-			if ( $user->isAllowed( 'contestparticipant' ) ) {
+			if ( $user->isAllowed( 'contestant' ) ) {
 				$links[] = Html::element(
 					'a',
 					array(

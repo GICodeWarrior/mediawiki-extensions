@@ -21,7 +21,7 @@ class SpecialMyContests extends SpecialContestPage {
 	 * @since 0.1
 	 */
 	public function __construct() {
-		parent::__construct( 'MyContests', 'contestparticipant' );
+		parent::__construct( 'MyContests', 'contestant' );
 	}
 
 	/**
