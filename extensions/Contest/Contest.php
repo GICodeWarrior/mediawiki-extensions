@@ -155,6 +155,21 @@ $wgResourceModules['contest.special.contests'] = $moduleTemplate + array(
 	)
 );
 
+$wgResourceModules['contest.special.contest'] = $moduleTemplate + array(
+	'scripts' => array(
+		'contest.special.contest.js'
+	),
+	'messages' => array(
+		'contest-contest-reminder-title',
+		'contest-contest-reminder-cancel',
+		'contest-contest-reminder-send',
+		'contest-contest-reminder-preview'
+	),
+	'dependencies' => array(
+		'jquery.ui.button', 'jquery.ui.dialog',
+	)
+);
+
 $wgResourceModules['jquery.ui.timepicker'] = $moduleTemplate + array(
 	'scripts' => array(
 		'jquery.ui.timepicker.js',

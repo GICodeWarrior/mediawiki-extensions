@@ -53,9 +53,13 @@ class SpecialContest extends SpecialContestPage {
 		}
 		else {
 			$out->setPageTitle( wfMsgExt( 'contest-contest-title', 'parseinline', $contest->getField( 'name' ) ) );
+			
 			$this->displayNavigation();
 			$this->showGeneralInfo( $contest );
+			// TODO $this->showMailFunctionality( $contest );
 			$this->showContestants( $contest, $challengeTitle );
+			
+			$out->addModules( 'contest.special.contest' );
 		}
 	}
 
@@ -107,10 +111,49 @@ class SpecialContest extends SpecialContestPage {
 		$stats['name'] = $contest->getField( 'name' );
 		$stats['status'] = Contest::getStatusMessage( $contest->getStatus() );
 		$stats['submissioncount'] = $this->getLang()->formatNum( $contest->getField( 'submission_count' ) );
-
+		
+		$stats['end'] = wfMsgExt(
+			$contest->getDaysLeft() < 0 ? 'contest-contest-days-ago' : 'contest-contest-days-left',
+			'parsemag',
+			$this->getLang()->timeanddate( $contest->getField( 'end' ), true ),
+			$this->getLang()->formatNum( abs( $contest->getDaysLeft() ) )
+		);
+		
 		return $stats;
 	}
 
+	/**
+	 * 
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param Contest $contest
+	 */
+	protected function showMailFunctionality( Contest $contest ) {
+		$out = $this->getOutput();
+
+		$out->addHTML( Html::element( 'h3', array(), wfMsg( 'contest-contest-reminder-mail' ) ) );
+		
+		$out->addWikiMsg( 'contest-contest-reminder-page', $contest->getField( 'reminder_email' ) );
+		
+		$out->addHTML( Html::element(
+			'button',
+			array(
+				'id' => 'send-reminder',
+			),
+			wfMsg( 'contest-contest-send-reminder' )
+		) );
+		
+		$out->addHTML( Html::rawElement(
+			'div',
+			array(
+				'id' => 'reminder-content',
+				'style' => 'display:none'
+			),
+			ContestUtils::getParsedArticleContent( $contest->getField( 'reminder_email' ) )
+		) );
+	}
+	
 	/**
 	 * Show a paged list of the contestants foe this contest.
 	 *
