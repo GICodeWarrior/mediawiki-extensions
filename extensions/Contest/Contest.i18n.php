@@ -30,16 +30,16 @@ $messages['en'] = array(
 
 	// Groups
 	'group-contestadmin' => 'Contest admins',
-	'group-contestadmin-member' => '{{GENDER:$1|contest admin}}',
-	'grouppage-contestadmin' => 'Project:Contest_admins',
+	'group-contestadmin-member' => '{{GENDER:$1|contest administrator}}',
+	'grouppage-contestadmin' => '{{ns:project}}:Contest_administrators',
 
 	'group-contestant' => 'Contestant',
 	'group-contestant-member' => '{{GENDER:$1|Contestant}}',
-	'grouppage-contestant' => 'Project:Contestant',
+	'grouppage-contestant' => '{{ns:project}}:Contestants',
 
 	'group-contestjudge' => 'Contest judges',
 	'group-contestjudge-member' => '{{GENDER:$1|contest judge}}',
-	'grouppage-contestjudge' => 'Project:Contest_judges',
+	'grouppage-contestjudge' => '{{ns:project}}:Contest_judges',
 
 	// Preferences
 	'prefs-contest' => 'Contests',
@@ -69,7 +69,7 @@ $messages['en'] = array(
 
 	// Special:Contests
 	'contest-special-addnew' => 'Add a new contest',
-	'contest-special-namedoc' => 'The name of the contest is the identifier used in URLs. ie "name" in Special:Contest/name',
+	'contest-special-namedoc' => 'The name of the contest is the identifier used in URLs (i.e. "name" in {{#Special:Contest}}/name).',
 	'contest-special-newname' => 'Contest name',
 	'contest-special-add' => 'Add contest',
 	'contest-special-existing' => 'Existing contests',
@@ -81,7 +81,7 @@ $messages['en'] = array(
 	'contest-special-delete' => 'Delete',
 
 	'contest-special-confirm-delete' => 'Are you sure you want to delete this contest?',
-	'contest-special-delete-failed' => 'Failed to delete the contest.',
+	'contest-special-delete-failed' => 'It was not possible to delete the contest.',
 
 	// Special:EditContest
 	'editcontest-text' => 'You are editing a contest.',
@@ -95,7 +95,7 @@ $messages['en'] = array(
 	'contest-edit-signup' => 'Signup e-mail page',
 	'contest-edit-reminder' => 'Reminder e-mail page',
 	'contest-edit-end' => 'Contest end',
-	'contest-edit-exists-already' => 'Note: you are editing an already existing contest, not creating a new one.',
+	'contest-edit-exists-already' => 'You are editing an existing contest.',
 	'contest-edit-submit' => 'Submit',
 
 	'contest-edit-challenges' => 'Contest challenges',
@@ -112,7 +112,7 @@ $messages['en'] = array(
 	'contest-welcome-rules' => 'In order to participate, you are required to agree to', // js i18n
 	'contest-welcome-rules-link' => 'the contest rules', // js i18n
 	'contest-welcome-signup' => 'Signup now',
-	'contest-welcome-js-off' => 'The contest user interface uses JavaScript for an improved interface. Your browser either does not support JavaScript or has JavaScript turned off.',
+	'contest-welcome-js-off' => 'The contest user interface uses JavaScript. Your browser does not support JavaScript or JavaScript is disabled.',
 	'contest-welcome-accept-challenge' => 'Challenge accepted',
 
 	'contest-welcome-select-header' => 'Select your challenge:',
@@ -126,36 +126,36 @@ $messages['en'] = array(
 	'contest-signup-volunteer' => 'I am interested in volunteer opportunities',
 	'contest-signup-wmf' => 'I am interested in working for the Wikimedia Foundation',
 	'contest-signup-cv' => 'Link to your CV',
-	'contest-signup-readrules' => 'I confirm that I have read, and agree to, [[$1|the contest rules]]',
+	'contest-signup-readrules' => 'I confirm that I have read [[$1|the contest rules]] and agree to them',
 	'contest-signup-challenge' => 'What challenge do you want to take on?',
-	'contest-signup-finished' => 'This contest has ended. Thanks for your participation!',
-	'contest-signup-draft' => 'This contest has not started yet. Please be patient.',
+	'contest-signup-finished' => 'This contest has ended. Thank you for your participation!',
+	'contest-signup-draft' => 'This contest has not yet started. Please be patient.',
 	'contest-signup-country' => 'Your country',
 
-	'contest-signup-require-rules' => 'You need to agree to the contest rules.',
-	'contest-signup-require-country' => 'You need to provide your country of residence.',
+	'contest-signup-require-rules' => 'You must agree to the contest rules.',
+	'contest-signup-require-country' => 'You must provide your country of residence.',
 	'contest-signup-invalid-email' => 'The e-mail address you provided is not valid.',
 	'contest-signup-invalid-name' => 'The name you provided is too short.',
 	'contest-signup-require-challenge' => 'You must select a challenge.',
-	'contest-signup-invalid-cv' => 'You entered an invalid URL.',
+	'contest-signup-invalid-cv' => 'You have entered an invalid URL.',
 
 	// Special:Contest
 	'contest-contest-title' => 'Contest: $1',
 	'contest-contest-no-results' => 'There are no contestants to display.',
 	'contest-contest-name' => 'Name',
 	'contest-contest-status' => 'Status',
-	'contest-contest-submissioncount' => 'Amount of participants',
+	'contest-contest-submissioncount' => 'Number of participants',
 	'contest-contest-end' => 'Contest end',
 	'contest-contest-days-ago' => '$1, $2 {{PLURAL:$2|day|days}} ago',
 	'contest-contest-days-left' => '$1, in $2 {{PLURAL:$2|day|days}}',
 	'contest-contest-contestants' => 'Contestants',
-	'contest-contest-contestants-text' => 'To judge an individual entry, click on the entry ID in the left column.',
-	'contest-contest-reminder-mail' => 'Reminder email',
-	'contest-contest-reminder-page' => 'The content for the reminder email is pulled from [[$1|this page]].',
+	'contest-contest-contestants-text' => 'Click on the entry ID in the left column to judge an individual entry.',
+	'contest-contest-reminder-mail' => 'Reminder e-mail',
+	'contest-contest-reminder-page' => 'The content for the reminder e-mail comes from [[$1|this page]].',
 	'contest-contest-send-reminder' => 'Send reminder',
 	
-	'contest-contest-reminder-preview' => 'Preview of the reminder email:',
-	'contest-contest-reminder-title' => 'Reminder email',
+	'contest-contest-reminder-preview' => 'Preview of the reminder e-mail:',
+	'contest-contest-reminder-title' => 'Reminder e-mail',
 	'contest-contest-reminder-send' => 'Send reminder',
 	'contest-contest-reminder-cancel' => 'Cancel',
 
@@ -180,7 +180,7 @@ $messages['en'] = array(
 	'contest-contestant-header-wmf' => 'Interested in WMF job',
 	'contest-contestant-header-volunteer' => 'Interested in volunteer opportunities',
 	'contest-contestant-header-rating' => 'Rating',
-	'contest-contestant-header-comments' => 'Amount of comments',
+	'contest-contestant-header-comments' => 'Number of comments',
 	'contest-contestant-submission-url' => 'Submission',
 	'contest-contestant-notsubmitted' => 'Not submitted yet',
 	'contest-contestant-comments' => 'Comments',
@@ -188,11 +188,11 @@ $messages['en'] = array(
 	'contest-contestant-comment-by' => 'Comment by $1',
 	'contest-contestant-rate' => 'Rate this contestant',
 	'contest-contestant-not-voted' => 'You have not voted on this participant yet.',
-	'contest-contestant-voted' => 'Your current vote is $1.',
+	'contest-contestant-voted' => 'Your current vote is "$1".',
 	'contest-contestant-permalink' => 'Permalink',
 
 	// Emails
-	'contest-email-signup-title' => 'Thanks for joining the challenge!',
+	'contest-email-signup-title' => 'Thank you for joining the challenge!',
 	'contest-email-reminder-title' => 'Only $1 {{PLURAL:$1|day|days}} until the end of the challenge!',
 
 	// Special:MyContests
@@ -200,19 +200,19 @@ $messages['en'] = array(
 	'contest-mycontests-no-contests' => 'You are not participating in any contest.',
 	'contest-mycontests-active-header' => 'Running contests',
 	'contest-mycontests-finished-header' => 'Passed contests',
-	'contest-mycontests-active-text' => 'These are the contests you are currently participating in:',
-	'contest-mycontests-finished-text' => 'These are the past contests you have participated in:',
+	'contest-mycontests-active-text' => 'You are currently participating in these contests:',
+	'contest-mycontests-finished-text' => 'You have have participated in these contests:',
 	'contest-mycontests-header-contest' => 'Contest',
 	'contest-mycontests-header-challenge' => 'Challenge',
-	'contest-mycontests-signup-success' => 'You have successfully signed up for the $1 contest.',
-	'contest-mycontests-addition-success' => 'You have successfully posted your submission! Thanks for participating in this contest.',
-	'contest-mycontests-updated-success' => 'You have successfully modified your submission.',
+	'contest-mycontests-signup-success' => 'You have successfully signed up for the "$1" contest.',
+	'contest-mycontests-addition-success' => 'You have successfully posted your submission! Thank you for participating in this contest.',
+	'contest-mycontests-updated-success' => 'You have modified your submission.',
 	'contest-mycontests-sessionfail' => 'Your submission could not be saved due to loss of session data. Please try again.',
 
 	'contest-submission-submit' => 'Submit',
 	'contest-submission-unknown' => 'There is no contest with the provided name.',
-	'contest-submission-header' => 'Thanks for participating in this contest! Once you have completed the challenge, you can add a link to your submission below.',
-	'contest-submission-finished' => 'This contest has ended. Thanks for your participation!',
+	'contest-submission-header' => 'Thank you for participating in this contest! Once you have completed the challenge, you can add a link to your submission below.',
+	'contest-submission-finished' => 'This contest has ended. Thank you for your participation!',
 
 	'contest-submission-submission' => 'Link to your submission',
 	'contest-submission-invalid-url' => 'This URL does not match one of the allowed formats.',
