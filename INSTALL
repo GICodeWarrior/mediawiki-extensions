@@ -58,7 +58,12 @@ how to use the settings, in case the below descriptions do not suffice.
 |-
 | submissionDomains
 | array of string
-| array( 'github.com', 'gitorious.org' )
+| array( 'mediawiki.org', 'github.com', 'gitorious.org' )
 | Domains on which submissions can be placed
+|-
+| reminderJobSize
+| integer
+| 50
+| Max size of the reminder email jobs (in emails to send) 
 |}
 
