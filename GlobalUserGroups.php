@@ -26,7 +26,7 @@ $wgExtensionCredits['other'][] = array(
 	'version' => '1.0.1',
 );
 
-// Use extra translations for various user group names and similars
+// Use extra translations for various user group names
 $wgGlobalUserGroupsUseEMWT = true;
 
 // Translations
@@ -99,6 +99,6 @@ function efGlobalUserGroupsEMWT() {
 	$dir = dirname( __FILE__ ) . '/';
 
 	if ( $wgGlobalUserGroupsUseEMWT ) {
-		$wgExtensionMessagesFiles['GlobalUserGroupsExtras'] = $dir . 'GlobalUserGroups.i18n.extras.php';
+		$wgExtensionMessagesFiles['GlobalUserGroupsExtras'] = $dir . 'GlobalUserGroups.i18n.groups.php';
 	}
 }
