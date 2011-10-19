@@ -159,6 +159,10 @@ class SpecialEditContest extends FormSpecialPage {
 	 * @return array
 	 */
 	protected function getFormFields() {
+
+		/**
+		 * @var $contest Contest
+		 */
 		$contest = $this->contest;
 
 		$fields = array();

@@ -145,7 +145,7 @@ $messages['en'] = array(
 	'contest-contest-name' => 'Name',
 	'contest-contest-status' => 'Status',
 	'contest-contest-submissioncount' => 'Amount of participants',
-	'contest-contest-contestants' => 'Contest contestants',
+	'contest-contest-contestants' => 'Contestants',
 	'contest-contest-contestants-text' => 'To judge an individual entry, click on the entry ID in the left column.',
 
 	// Contestant pager

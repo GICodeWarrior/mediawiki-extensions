@@ -110,7 +110,6 @@ $wgHooks['GetPreferences'][] 					= 'ContestHooks::onGetPreferences';
 $wgHooks['LinkEnd'][] 							= 'ContestHooks::onLinkEnd';
 
 // Rights
-
 $wgAvailableRights[] = 'contestadmin';
 $wgAvailableRights[] = 'contestant';
 $wgAvailableRights[] = 'contestjudge';

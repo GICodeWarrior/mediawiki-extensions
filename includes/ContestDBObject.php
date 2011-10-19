@@ -43,7 +43,7 @@ abstract class ContestDBObject {
 
 		$this->setFields( $fields );
 	}
-	
+
 	/**
 	 * Load the specified fields from the database.
 	 *
@@ -51,29 +51,29 @@ abstract class ContestDBObject {
 	 *
 	 * @param array|null $fields
 	 * @param boolean $override
-	 * 
+	 *
 	 * @return Success indicator
 	 */
 	public function loadFields( $fields = null, $override = true ) {
 		if ( is_null( $this->getId() ) ) {
 			return false;
 		}
-		
+
 		if ( is_null( $fields ) ) {
 			$fields = array_keys( $this->getFieldTypes() );
 		}
-		
+
 		$results = $this->rawSelect(
 			$this->getPrefixedFields( $fields ),
 			array( $this->getPrefixedField( 'id' ) => $this->getId() ),
 			array( 'LIMIT' => 1 )
 		);
-		
+
 		foreach ( $results as $result ) {
 			$this->setFields( $this->getFieldsFromDBResult( $result ), $override );
 			return true;
 		}
-		
+
 		return false;
 	}
 
@@ -219,7 +219,7 @@ abstract class ContestDBObject {
 	 *
 	 * @since 0.1
 	 *
-	 * @param null|array $props
+	 * @param null|array $fields
 	 * @param boolean $incNullId
 	 *
 	 * @return array
@@ -431,6 +431,20 @@ abstract class ContestDBObject {
 	 */
 	public abstract function getDefaults();
 
+	/**
+	 * Get a new instance of the class from an array.
+	 * This method ought to be in the basic class and
+	 * return a new static(), but this requires LSB/PHP>=5.3.
+	 *
+	 * @since 0.1
+	 *
+	 * @param array $data
+	 * @param boolean $loadDefaults
+	 *
+	 * @return ContestDBObject
+	 */
+	public abstract function newFromArray( array $data, $loadDefaults = false );
+
 	//
 	//
 	// All below methods ought to be static, but can't be since this would require LSB introduced in PHP 5.3.
@@ -523,10 +537,10 @@ abstract class ContestDBObject {
 		foreach ( $result as $name => $value ) {
 			$data[substr( $name, $idFieldLength )] = $value;
 		}
-		
+
 		return $data;
 	}
-	
+
 	/**
 	 * Get a new instance of the class from a database result.
 	 *
