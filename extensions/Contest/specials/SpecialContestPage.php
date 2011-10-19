@@ -125,7 +125,7 @@ abstract class SpecialContestPage extends SpecialPage {
 
 		$pages['contest-nav-contestwelcome'] = array( 'ContestWelcome', $contestName );
 
-		if ( $user->isAllowed( 'contestparticipant' ) ) {
+		if ( $user->isAllowed( 'contestant' ) ) {
 			$pages['contest-nav-contestsignup'] = array( 'ContestSignup', $contestName );
 		}
 
