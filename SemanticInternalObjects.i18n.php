@@ -18,6 +18,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'semanticinternalobjects-desc' => 'Setting of internal objects in Semantic MediaWiki',
+	'semanticinternalobjects-internalproperty' => 'Internal property',
 );
 
 /** Message documentation (Message documentation)
@@ -25,6 +26,7 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'semanticinternalobjects-desc' => '{{desc}}',
+	'semanticinternalobjects-internalproperty' => 'A semantic property stored internally in the page'
 );
 
 /** Gheg Albanian (Gegë)
