@@ -123,8 +123,8 @@ $messages['en'] = array(
 	'contest-signup-header' => 'Please fill out the form to complete your registration for $1.',
 	'contest-signup-email' => 'Your e-mail address',
 	'contest-signup-realname' => 'Your real name',
-	'contest-signup-volunteer' => 'I am interested in volunteer opportunities',
-	'contest-signup-wmf' => 'I am interested in working for the Wikimedia Foundation',
+	'contest-signup-volunteer' => 'I am interested in receiving email about volunteer opportunities',
+	'contest-signup-wmf' => 'I am interested in being contacted about working for the Wikimedia Foundation',
 	'contest-signup-cv' => 'Link to your CV',
 	'contest-signup-readrules' => 'I confirm that I have read [[$1|the contest rules]] and agree to them',
 	'contest-signup-challenge' => 'What challenge do you want to take on?',
@@ -153,7 +153,7 @@ $messages['en'] = array(
 	'contest-contest-reminder-mail' => 'Reminder e-mail',
 	'contest-contest-reminder-page' => 'The content for the reminder e-mail comes from [[$1|this page]].',
 	'contest-contest-send-reminder' => 'Send reminder',
-	
+
 	// Special:Contest, reminder email JS
 	'contest-contest-reminder-preview' => 'Preview of the reminder e-mail:',
 	'contest-contest-reminder-title' => 'Reminder e-mail',
@@ -306,11 +306,11 @@ $messages['qqq'] = array(
 	'contest-contest-reminder-send' => 'Send button text',
 	'contest-contest-reminder-cancel' => 'Cancel button text',
 	'contest-contest-reminder-sending' => 'Send button text after clicking it',
-	'contest-contest-reminder-success' => 'Success message, $1 is the amount of contesnats. No PLURAL for now, just assume there are multiple untill MWs JS supports plural.', 
+	'contest-contest-reminder-success' => 'Success message, $1 is the amount of contesnats. No PLURAL for now, just assume there are multiple untill MWs JS supports plural.',
 	'contest-contest-reminder-close' => 'Close button text',
 	'contest-contest-reminder-retry' => 'Retry button text',
 	'contest-contest-reminder-failed' => 'Failiure message, displayed in an alert box',
-	
+
 	// Special:MyContests
 	'contest-mycontests-toplink' => 'Text for link in the user menu (i.e. where watchlist and preferences are linked)',
 	'contest-mycontests-no-contests' => 'Message indicating there are no contests for the user, displayed instead of a list.',
