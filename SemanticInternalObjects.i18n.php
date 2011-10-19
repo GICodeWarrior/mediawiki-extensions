@@ -78,6 +78,7 @@ $messages['ca'] = array(
  */
 $messages['de'] = array(
 	'semanticinternalobjects-desc' => 'Ermöglicht das Definieren interner semantischer Datenobjekte',
+	'semanticinternalobjects-internalproperty' => 'Internes Attribut',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -111,9 +112,11 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Crochet.david
+ * @author Gomoko
  */
 $messages['fr'] = array(
 	'semanticinternalobjects-desc' => 'Réglage des objets internes dans Semantic MediaWiki',
+	'semanticinternalobjects-internalproperty' => 'Propriété interne',
 );
 
 /** Galician (Galego)
@@ -121,6 +124,7 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'semanticinternalobjects-desc' => 'Configuracións de obxectos internos en Semantic MediaWiki',
+	'semanticinternalobjects-internalproperty' => 'Propiedade interna',
 );
 
 /** Swiss German (Alemannisch)
@@ -206,6 +210,7 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'semanticinternalobjects-desc' => 'Задавање на внатрешни објекти во Семантички МедијаВики',
+	'semanticinternalobjects-internalproperty' => 'Внатрешно својство',
 );
 
 /** Malay (Bahasa Melayu)
