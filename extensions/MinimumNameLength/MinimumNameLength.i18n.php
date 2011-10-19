@@ -108,11 +108,12 @@ $messages['cy'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Raimond Spekking
  */
 $messages['de'] = array(
 	'minnamelength-error' => 'Der Benutzername ist zu kurz. Die Mindestlänge beträgt $1 Zeichen.',
-	'minnamelength-desc' => 'Erzwinge eine Mindestlänge des Benutzernamens',
+	'minnamelength-desc' => 'Ermöglicht die Festlegung einer Mindestlänge für Benutzernamen',
 );
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)

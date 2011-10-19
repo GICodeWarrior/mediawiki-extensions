@@ -163,7 +163,7 @@ $messages['ar'] = array(
 	'patrol-stopped' => 'لقد اخترت عدم مراجعة تعديل آخر. $1',
 	'patrol-resume' => 'اضغط هنا للمتابعة.',
 	'group-patroller' => 'مراجعون',
-	'group-patroller-member' => 'مدقق',
+	'group-patroller-member' => '{{GENDER:$1|مدقق}}',
 	'grouppage-patroller' => '{{ns:project}}:مراجع',
 	'right-patroller' => 'مراجعة الصفحات',
 );
