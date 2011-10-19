@@ -302,6 +302,10 @@ class SpecialMyContests extends SpecialContestPage {
 		$form->setSubmitCallback( array( $this, 'handleSubmission' ) );
 		$form->setSubmitText( wfMsg( 'contest-submission-submit' ) );
 
+		$challengeId = $contestant->getField( 'challenge_id' );
+		$challenge = ContestChallenge::getTitlesForIds( $challengeId );
+		$output->addWikiMsg( 'contest-submission-challenge', $challenge[$challengeId] );
+
 		if( $form->show() ) {
 			$query = is_null( $this->submissionState ) ? '' : $this->submissionState;
 			$output->redirect( $this->getTitle( $contest->getField( 'name' ) )->getLocalURL( $query ) );

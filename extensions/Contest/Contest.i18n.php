@@ -207,6 +207,7 @@ $messages['en'] = array(
 	'contest-submission-invalid-url' => 'This URL does not match one of the allowed formats.',
 	'contest-submission-new-submission' => 'You still need to enter the URL to your submission. This needs to be done before the deadline.',
 	'contest-submission-current-submission' => 'This is the URL to your submission, which you can modify untill the deadline.',
+	'contest-submission-challenge' => 'You are currently on the $1 challenge',
 
 	// TODO: how can this be done properly in JS?
 	'contest-submission-domains' => 'Submissions are restricted to these sites: $1',
