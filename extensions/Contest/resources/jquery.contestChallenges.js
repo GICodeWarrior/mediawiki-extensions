@@ -36,7 +36,6 @@
 									.fadeOut( 'fast' );
 							} );
 							e.stopPropagation();
-							return false;
 						}
 					} )
 					.append(
@@ -55,8 +54,9 @@
 							)
 							.append(
 								$( '<div class="mw-codechallenge-popup"><div>' )
-									.click( function() {
-										return false;
+									.click( function( e ) {
+										e.stopPropogation();
+										e.preventDefault();
 									} )
 									.append( '<div class="mw-codechallenge-popup-callout"></div>' )
 									.append( challenge.text )
