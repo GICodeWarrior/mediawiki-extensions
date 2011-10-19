@@ -37,31 +37,34 @@ Similar to {{msg-mw|protectedpagetext}}',
 
 /** German (Deutsch)
  * @author Kghbln
+ * @author McDutchie
  * @author SVG
  */
 $messages['de'] = array(
 	'sharedcssjs-desc' => 'Ermöglicht das Nutzen globaler, in einem zentralen Wiki hinterlegter, CSS- und JS-Dateien für Wiki sowie Benutzer',
-	'sharedcssjs-error' => 'Diese Seite wird aus dem zentralen Wiki eingebunden und kann auch nur dort bearbeitet werden.',
+	'sharedcssjs-error' => 'Diese Seite wird aus einem zentralen Wiki eingebunden und kann auch nur dort bearbeitet werden.',
 	'global.css' => '/* Das folgende CSS wird für alle Benutzeroberflächen auf allen Wikis der Wiki-Farm geladen */',
 	'global.js' => '/* Das folgende JavaScript wird für alle Benutzeroberflächen auf allen Wikis der Wiki-Farm geladen */',
 );
 
 /** French (Français)
  * @author Gomoko
+ * @author McDutchie
  */
 $messages['fr'] = array(
 	'sharedcssjs-desc' => "Permettre l'analyse du wiki global et des CSS et JS utilisateur depuis le wiki central",
-	'sharedcssjs-error' => "Cette page est incluse depuis le wiki central d'une autre manière et ne peut être modifié que là.",
+	'sharedcssjs-error' => 'Cette page est incluse depuis un wiki central et ne peut être modifié que là.',
 	'global.css' => '/* Les CSS placés ici seront appliqués à tous les thèmes sur tous les wikis de la ferme wiki */',
 	'global.js' => '/* Les JavaScript placés ici seront appliqués à tous les schémas de tous les wikis de la ferme wiki */',
 );
 
 /** Galician (Galego)
+ * @author McDutchie
  * @author Toliño
  */
 $messages['gl'] = array(
 	'sharedcssjs-desc' => 'Permite a análise do wiki global e dos CSS e JS de usuario desde o wiki central',
-	'sharedcssjs-error' => 'Esta páxina está incluída desde o wiki central doutro xeito e só se pode editar alí.',
+	'sharedcssjs-error' => 'Esta páxina está incluída desde un wiki central e só se pode editar alí.',
 	'global.css' => '/* O CSS que se coloque aquí afectará a todas as aparencias dos wikis */',
 	'global.js' => '/* O JavaScript que se coloque aquí afectará a todas as aparencias dos wikis */',
 );
@@ -71,7 +74,7 @@ $messages['gl'] = array(
  */
 $messages['ia'] = array(
 	'sharedcssjs-desc' => 'Permitte obtener le CSS e JS global e de usator ab un wiki central',
-	'sharedcssjs-error' => 'Iste pagina es includite del wiki central per un altere via e pote solmente esser modificate ibi.',
+	'sharedcssjs-error' => 'Iste pagina es includite ab un wiki central e pote solmente esser modificate ibi.',
 	'global.css' => '/* CSS inserite hic essera applicate a tote le apparentias in tote le wikis del ferma */',
 	'global.js' => '/* JavaScript inserite hic essera applicate a tote le apparentias de tote le wikis del ferma */',
 );
@@ -80,7 +83,8 @@ $messages['ia'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'sharedcssjs-desc' => 'Määd et müjjelesch, CSSe un JavaSkreppte us em jemeinsame Wiki ze holle.',
+	'sharedcssjs-desc' => 'Määd et müjjelesch, CSSe un JavaSkreppte us enem jemeinsame Wiki ze holle.',
+	'sharedcssjs-error' => 'Heh di Sigg küdd uss_enem jemeinsame Wiki un blohß doh kam_mer se ändere.',
 	'global.css' => '/* Heh dat CSS weed vun alle Bovverfläshe vun alle Wikis heh em Schtall vun Wikis jebruch */',
 	'global.js' => '/* Heh dat JavaSkrepp weed vun alle Bovverfläshe vun alle Wikis heh em Schtall vun Wikis jebruch */',
 );
@@ -93,5 +97,12 @@ $messages['mk'] = array(
 	'sharedcssjs-error' => 'Оваа страница е поставена од централното вики на поинаков начин и затоа може да се уредува само таму.',
 	'global.css' => '/* Тука поставениот CSS ќе се применува врз сите рува на сите викија во викифармата */',
 	'global.js' => '/* Тука поставениот JavaScript ќе се применува врз сите рува на сите викија во викифармата */',
+);
+
+/** Dutch (Nederlands)
+ * @author McDutchie
+ */
+$messages['nl'] = array(
+	'sharedcssjs-error' => 'Deze pagina is opgenomen vanuit een centrale wiki en kan ook alleen daar worden bewerkt.',
 );
 
