@@ -282,7 +282,7 @@ class SpecialEditContest extends FormSpecialPage {
 			$fields['id'] = $contest === false ? null : $contest->getField( 'id' );
 		}
 
-		$contest = new Contest( $fields, true );
+		$contest = new Contest( $fields, is_null( $fields['id'] ) );
 
 		$contest->setChallenges( $this->getSubmittedChallenges() );
 		$success = $contest->writeAllToDB();
