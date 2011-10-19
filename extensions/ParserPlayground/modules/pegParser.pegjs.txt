@@ -1,7 +1,61 @@
 /* Produces output more or less compatible with FakeParser; plug it into FP's output and see */
 
+{
+
+    /* Temporary debugging help */
+    var print_r = function (arr, level) {
+
+        var dumped_text = "";
+        if (!level) level = 0;
+
+        //The padding given at the beginning of the line.
+        var level_padding = "";
+        var bracket_level_padding = "";
+
+        for (var j = 0; j < level + 1; j++) level_padding += "    ";
+        for (var b = 0; b < level; b++) bracket_level_padding += "    ";
+
+        if (typeof(arr) == 'object') { //Array/Hashes/Objects 
+            dumped_text += "Array\n";
+            dumped_text += bracket_level_padding + "(\n";
+            for (var item in arr) {
+
+                var value = arr[item];
+
+                if (typeof(value) == 'object') { //If it is an array,
+                    dumped_text += level_padding + "[" + item + "] => ";
+                    dumped_text += print_r(value, level + 2);
+                } else {
+                    dumped_text += level_padding + "[" + item + "] => " + value + "\n";
+                }
+
+            }
+            dumped_text += bracket_level_padding + ")\n\n";
+        } else { //Stings/Chars/Numbers etc.
+            dumped_text = "===>" + arr + "<===(" + typeof(arr) + ")";
+        }
+
+        return dumped_text;
+
+    }
+}
+
 start
-  = e:block* { return {type: 'page', content: e } }
+  = e:block* { 
+        var es = [];
+        // flatten sub-arrays, as a list block can contain multiple lists
+        $.each(e, function(i, ei) {
+            if (ei.constructor == Array)
+                es = es.concat(ei);
+            else
+                es.push(ei);
+        });
+        //console.log(print_r(es, 10));
+        return {
+            type: 'page', 
+            content: es
+        } 
+    }
 
 anything
   = a:[A-Za-z0-9,._ -]+ { return a.join('') } / [^\n]
@@ -15,7 +69,7 @@ newline
 block
   = br
   / h
-  / li
+  / lists
   / para
 
 h = h1 / h2 / h3 / h4 / h5 / h6
@@ -82,7 +136,7 @@ para
     c:anything
 
 inline
-  = c:inline_element+ {
+  = c:(inline_element / anything)+ {
     var out = [];
     var text = '';
     for (var i = 0; i < c.length; i++) {
@@ -116,7 +170,6 @@ inline_element
   / link
   / bold
   / italic
-  / anything
 
 comment
   = '<!--' c:comment_chars+ '-->' {
@@ -293,7 +346,7 @@ ref_end
 }
 
 ref_content
-  = !ref_end a:inline_element {
+  = !ref_end a:(inline_element / anything) {
   return a;
 }
 
@@ -337,7 +390,7 @@ references_end
 }
 
 references_content
-  = !references_end a:inline_element {
+  = !references_end a:(inline_element / anything) {
   return a;
 }
 
@@ -358,20 +411,120 @@ ext_param_val
   / "'" t:[^'>]+ "'" { return { quote: "'", text: t.join('') } }
   / '"' t:[^">]+ '"' { return { quote: '"', text: t.join('') } }
 
+lists = es:(dtdd / li)+
+{  
+    var out = [],    // List of list nodes
+        bstack = "", // Bullet stack, previous element's listStyle
+        bnext = "",  // Next element's listStyle
+        nodes = [];  // Stack of currently active, nested list nodes
+    
+    var commonPrefixLength = function (x, y) {
+        var minLength = Math.min(x.length, y.length);
+        for(var i = 0; i < minLength; i++) {
+            if (x[i] != y[i])
+                break;
+        }
+        return i;
+    }
+    
+    var pushN = function ( n ) {
+        if (nodes.length > 0) {
+            nodes[nodes.length - 1].content.push(n);
+        } else {
+            out.push(n);
+            nodes.push(n);
+        }
+
+    }
+
+    var openLists = function ( bs, bn ) {
+        var prefix = commonPrefixLength (bs, bn);
+        nodes = nodes.slice(0, prefix);
+        $.each(bn.slice(prefix, bn.length), function (i, c) {
+            switch (c) {
+                case '*':
+                    pushN({type: 'ul', content: []});
+                    break;
+                case '#':
+                    pushN({type: 'ol', content: []});
+                    break;
+                case ';':
+                case ':':
+                    pushN({type: 'dl', content: []});
+                    break;
+                default:
+                    throw("Unknown node prefix " + c);
+            }
+        });
+    }
+                    
+
+    $.each(es, function(i, e) {
+        if (e.type == 'dtdd') {
+            bnext = e.content[0].listStyle;
+            lnode = openLists( bstack, bnext );
+            
+            nodes[nodes.length - 1].content = 
+                nodes[nodes.length - 1].content.concat(e.content);
+        } else {
+            bnext = e.listStyle;
+            openLists( bstack, bnext, nodes );
+            nodes[nodes.length - 1].content.push(e);
+        }
+        bstack = bnext;
+    });
+    //console.log("out: " + print_r(out, 5));
+    return out;
+
+
+
+}
 
 li = bullets:list_char+ 
     c:(inline / anything)
     newline 
 {
+    var type;
+    switch (bullets[bullets.length - 1]) {
+        case '#': 
+        case '*': 
+            type = 'li'; break;
+        case ';': type = 'dt'; break;
+        case ':': type = 'dd'; break;
+    }
     return {
-        type: 'li',
+        type: type,
         listStyle: bullets,
         content: c
     };
 }
 
-list_char =
-    '*' /
-    '#' /
-    ':' /
-    ';'
+dtdd = bullets:list_char+
+       c:(inline_element / [^:\n])+
+       ":"
+       d:(inline / anything)
+       newline 
+{
+    // reject rule if bullets do not end in colon
+    if (bullets[bullets.length - 1] != ';')
+        return null;
+    else
+        return { type: 'dtdd',
+                 content: [
+                    {
+                        type: 'dt',
+                        listStyle: bullets,
+                        content: c
+                    },
+                    {
+                        type: 'dd',
+                        listStyle: bullets.slice(0, bullets.length - 1) + ':',
+                        content: d
+                    }
+
+                ]
+            };
+}
+
+
+list_char = [*#:;]

@@ -123,6 +123,9 @@ MWTreeRenderer.prototype.treeToHtml = function(tree, callback, inspectorMap) {
 		case 'span':
 		case 'ol':
 		case 'ul':
+		case 'dl':
+		case 'dt':
+		case 'dd':
 		case 'li':
 			var $span = $('<' + tree.type + '>');
 			if ('attrs' in tree) {
