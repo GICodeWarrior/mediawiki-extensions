@@ -207,7 +207,8 @@ $messages['en'] = array(
 	'contest-submission-invalid-url' => 'This URL does not match one of the allowed formats.',
 	'contest-submission-new-submission' => 'You still need to enter the URL to your submission. This needs to be done before the deadline.',
 	'contest-submission-current-submission' => 'This is the URL to your submission, which you can modify untill the deadline.',
-	'contest-submission-challenge' => 'You are currently on the $1 challenge',
+	'contest-submission-challenge' => 'You are currently participating in the $1 challenge.',
+	'contest-submission-challenge-description' => "'''Current challenge: $1''' -- $2",
 
 	// TODO: how can this be done properly in JS?
 	'contest-submission-domains' => 'Submissions are restricted to these sites: $1',
@@ -288,6 +289,9 @@ $messages['qqq'] = array(
 	'contest-mycontests-addition-success' => 'Message shown when a user has added a submission',
 	'contest-mycontests-updated-success' => 'Message shown when a user has editied a submission',
 	'contest-mycontests-sessionfail' => 'Session failure',
+
+	'contest-submission-challenge' => 'Tells the user which challenge they are part of. $1 is the challenge name',
+	'contest-submission-challenge-description' => 'Output of challenge name and description. $1 is the challenge name, $2 is the challenge description',
 );
 
 /** German (Deutsch)
