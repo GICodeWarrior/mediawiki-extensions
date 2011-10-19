@@ -55,7 +55,7 @@
 							.append(
 								$( '<div class="mw-codechallenge-popup"><div>' )
 									.click( function( e ) {
-										e.stopPropogation();
+										e.stopPropagation();
 										e.preventDefault();
 									} )
 									.append( '<div class="mw-codechallenge-popup-callout"></div>' )
