@@ -4,7 +4,7 @@
  *
  * @since 1.0
  *
- * @file GlobalUserGroups.i18n.extras.php
+ * @file GlobalUserGroups.i18n.groups.php
  * @ingroup GlobalUserGroupsExtras
  *
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
