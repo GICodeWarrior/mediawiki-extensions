@@ -145,8 +145,19 @@ $messages['en'] = array(
 	'contest-contest-name' => 'Name',
 	'contest-contest-status' => 'Status',
 	'contest-contest-submissioncount' => 'Amount of participants',
+	'contest-contest-end' => 'Contest end',
+	'contest-contest-days-ago' => '$1, $2 {{PLURAL:$2|day|days}} ago',
+	'contest-contest-days-left' => '$1, in $2 {{PLURAL:$2|day|days}}',
 	'contest-contest-contestants' => 'Contestants',
 	'contest-contest-contestants-text' => 'To judge an individual entry, click on the entry ID in the left column.',
+	'contest-contest-reminder-mail' => 'Reminder email',
+	'contest-contest-reminder-page' => 'The content for the reminder email is pulled from [[$1|this page]].',
+	'contest-contest-send-reminder' => 'Send reminder',
+	
+	'contest-contest-reminder-preview' => 'Preview of the reminder email:',
+	'contest-contest-reminder-title' => 'Reminder email',
+	'contest-contest-reminder-send' => 'Send reminder',
+	'contest-contest-reminder-cancel' => 'Cancel',
 
 	// Contestant pager
 	'contest-contestant-id' => 'ID',

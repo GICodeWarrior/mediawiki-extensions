@@ -16,8 +16,8 @@ class Contest extends ContestDBObject {
 	// Constants representing the states a contest can have.
 	const STATUS_DRAFT = 0;
 	const STATUS_ACTIVE = 1;
-	const STATUS_FINISHED = 2;   // manually stopped by contest manager
-	const STATUS_EXPIRED = 3;    // past configured contest end date
+	const STATUS_FINISHED = 2;   // Manually stopped by contest manager.
+	const STATUS_EXPIRED = 3;    // Past configured contest end date.
 
 	/**
 	 * List of challenges for this contest.
@@ -138,6 +138,7 @@ class Contest extends ContestDBObject {
 	 */
 	public function getDefaults() {
 		$defaultPage = 'MediaWiki:Contests/';
+		
 		return array(
 			'name' => '',
 			'status' => self::STATUS_DRAFT,
@@ -188,14 +189,18 @@ class Contest extends ContestDBObject {
 				wfMsg( 'contest-status-draft' ) => self::STATUS_DRAFT,
 				wfMsg( 'contest-status-active' ) => self::STATUS_ACTIVE,
 				wfMsg( 'contest-status-finished' ) => self::STATUS_FINISHED,
+				wfMsg( 'contest-status-expired' ) => self::STATUS_EXPIRED,
 			);
 		}
 
-		if ( !$onlySettable ) {
-			$map[wfMsg( 'contest-status-expired')] = self::STATUS_EXPIRED;
+		if ( $onlySettable ) {
+			$messages = $map;
+			unset( $messages[wfMsg( 'contest-status-expired' )] );
+			return $messages;
 		}
-
-		return $map;
+		else {
+			return $map;
+		}
 	}
 
 	/**
