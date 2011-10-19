@@ -303,8 +303,25 @@ class SpecialMyContests extends SpecialContestPage {
 		$form->setSubmitText( wfMsg( 'contest-submission-submit' ) );
 
 		$challengeId = $contestant->getField( 'challenge_id' );
-		$challenge = ContestChallenge::getTitlesForIds( $challengeId );
-		$output->addWikiMsg( 'contest-submission-challenge', $challenge[$challengeId] );
+		$challenges = $contest->getChallenges();
+
+		/**
+		 * @var $challenge ContestChallenge
+		 */
+		$challenge = null;
+		foreach( $challenges as $challenge ) {
+			if ( $challenge->getId() == $challengeId ) {
+				break;
+			}
+		}
+
+		if ( $challenge !== null ) {
+			$challengeName = $challenge->getField( 'title' );
+			$challengeDescription = $challenge->getField( 'text' );
+
+			$output->addWikiMsg( 'contest-submission-challenge', $challengeName );
+			$output->addWikiMsg( 'contest-submission-challenge-description', $challengeName, $challengeDescription );
+		}
 
 		if( $form->show() ) {
 			$query = is_null( $this->submissionState ) ? '' : $this->submissionState;
