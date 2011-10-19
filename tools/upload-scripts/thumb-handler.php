@@ -82,13 +82,6 @@ if ( strpos( $filename, '%20' ) !== false ) {
 	exit;
 }
 
-/* Breaks SVG and ogg
-if ( $filename != $fn2 ) {
-	require_once( '404.php' );
-	exit;
-}
-*/
-
 # Determine hostname
 if ( $site == 'wikipedia' ) {
 	switch ( $lang ) {
@@ -213,5 +206,7 @@ if ( !$contentType ) {
 } else {
 	header( "Content-Type: $contentType" );
 }
+
 print $text;
+
 curl_close( $ch );
