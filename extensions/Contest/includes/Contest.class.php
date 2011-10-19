@@ -137,17 +137,18 @@ class Contest extends ContestDBObject {
 	 * @return array
 	 */
 	public function getDefaults() {
+		$defaultPage = 'MediaWiki:Contests/';
 		return array(
 			'name' => '',
 			'status' => self::STATUS_DRAFT,
 			'end' => '',
 
-			'rules_page' => 'MediaWiki:Contests/',
-			'opportunities' => 'MediaWiki:Contests/',
-			'intro' => 'MediaWiki:Contests/',
-			'help' => '',
-			'signup_email' => 'MediaWiki:Contests/',
-			'reminder_email' => 'MediaWiki:Contests/',
+			'rules_page' => $defaultPage,
+			'opportunities' => $defaultPage,
+			'intro' => $defaultPage,
+			'help' => $defaultPage,
+			'signup_email' => $defaultPage,
+			'reminder_email' => $defaultPage,
 
 			'submission_count' => 0,
 		);
@@ -189,11 +190,11 @@ class Contest extends ContestDBObject {
 				wfMsg( 'contest-status-finished' ) => self::STATUS_FINISHED,
 			);
 		}
-		
+
 		if ( !$onlySettable ) {
 			$map[wfMsg( 'contest-status-expired')] = self::STATUS_EXPIRED;
-		} 
-		
+		}
+
 		return $map;
 	}
 
