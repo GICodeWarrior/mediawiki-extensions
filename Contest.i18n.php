@@ -154,10 +154,17 @@ $messages['en'] = array(
 	'contest-contest-reminder-page' => 'The content for the reminder e-mail comes from [[$1|this page]].',
 	'contest-contest-send-reminder' => 'Send reminder',
 	
+	// Special:Contest, reminder email JS
 	'contest-contest-reminder-preview' => 'Preview of the reminder e-mail:',
 	'contest-contest-reminder-title' => 'Reminder e-mail',
 	'contest-contest-reminder-send' => 'Send reminder',
 	'contest-contest-reminder-cancel' => 'Cancel',
+	'contest-contest-reminder-sending' => 'Sending...',
+	// We really want // {{PLURAL:$1|contestant|contestants}} here, but the JS i18n shizzle does not support it yet :/
+	'contest-contest-reminder-success' => 'Successfully send the reminder email to $1 contestants',
+	'contest-contest-reminder-close' => 'Close',
+	'contest-contest-reminder-retry' => 'Retry sending',
+	'contest-contest-reminder-failed' => 'Could not send the reminder emails.',
 
 	// Contestant pager
 	'contest-contestant-id' => 'ID',
@@ -258,14 +265,10 @@ $messages['qqq'] = array(
 	'contest-contest-name' => 'Table row header',
 	'contest-contest-status' => 'Table row header',
 	'contest-contest-submissioncount' => 'Table row header',
+	'contest-contest-end' => 'Table row header',
 	'contest-contest-contestants' => 'Page section header',
-	'contest-contest-reminder-mail' => 'Reminder email',
-	'contest-contest-reminder-page' => 'Text explaining the email content is pulled from a page, $1 is the page name.',
-	'contest-contest-send-reminder' => 'Send reminder button text',
-	'contest-contest-reminder-preview' => 'Text indicating that the following content is the preview for the reminder email.',
-	'contest-contest-reminder-title' => 'Dialog title',
-	'contest-contest-reminder-send' => 'Send button text',
-	'contest-contest-reminder-cancel' => 'Cancel button text',
+	'contest-contest-days-ago' => '$1 is a date, $2 is an integer, the amount of days',
+	'contest-contest-days-left' => '$1 is a date, $2 is an integer, the amount of days',
 	'contest-contestant-id' => 'Table column header',
 	'contest-contestant-volunteer' => 'Table column header',
 	'contest-contestant-wmf' => 'Table column header',
@@ -293,6 +296,22 @@ $messages['qqq'] = array(
 	'contest-contestant-permalink' => 'Hover-text for comment permalinks',
 	'contest-email-signup-title' => 'Title for signup e-mails',
 	'contest-email-reminder-title' => 'Title for reminder e-mails',
+
+	// Special:Contest, reminder email
+	'contest-contest-reminder-mail' => 'Reminder email',
+	'contest-contest-reminder-page' => 'Text explaining the email content is pulled from a page, $1 is the page name.',
+	'contest-contest-send-reminder' => 'Send reminder button text',
+	'contest-contest-reminder-preview' => 'Text indicating that the following content is the preview for the reminder email.',
+	'contest-contest-reminder-title' => 'Dialog title',
+	'contest-contest-reminder-send' => 'Send button text',
+	'contest-contest-reminder-cancel' => 'Cancel button text',
+	'contest-contest-reminder-sending' => 'Send button text after clicking it',
+	'contest-contest-reminder-success' => 'Success message, $1 is the amount of contesnats. No PLURAL for now, just assume there are multiple untill MWs JS supports plural.', 
+	'contest-contest-reminder-close' => 'Close button text',
+	'contest-contest-reminder-retry' => 'Retry button text',
+	'contest-contest-reminder-failed' => 'Failiure message, displayed in an alert box',
+	
+	// Special:MyContests
 	'contest-mycontests-toplink' => 'Text for link in the user menu (i.e. where watchlist and preferences are linked)',
 	'contest-mycontests-no-contests' => 'Message indicating there are no contests for the user, displayed instead of a list.',
 	'contest-mycontests-active-header' => 'Page header (h2)',
