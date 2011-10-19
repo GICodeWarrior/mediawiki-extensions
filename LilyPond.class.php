@@ -276,7 +276,7 @@ class LilyPond {
 				}
 			}
 		}
-		return 0;
+		return $min;
 	}
 
 	/**
