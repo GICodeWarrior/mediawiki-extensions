@@ -22,6 +22,7 @@ $messages['en'] = array(
 	'narayam-help-page' => 'Help:Typing',
 	'narayam-checkbox-tooltip' => 'To toggle input method on and off', // FIXME: better message
 	'narayam-disable-preference' => 'Disable Narayam Input Method Editor (IME)',
+	'narayam-more-imes' => 'More input methods',
 	'narayam-am' => 'Amharic Transliteration',
 	'narayam-as' => 'Assamese Transliteration',
 	'narayam-as-avro' => 'Assamese Avro',

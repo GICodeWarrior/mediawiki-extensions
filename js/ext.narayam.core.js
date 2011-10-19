@@ -30,6 +30,9 @@ $.narayam = new ( function() {
 	// This object is formatted as { 'schemename': '', 'schemename2': '', ... }
 	// for easy searching
 	var availableSchemes = mw.config.get( 'wgNarayamAvailableSchemes' ) || {};
+	// All input methods. This will be used for selecting input methods from languages
+	// other than uselang- optionally
+	var allImes =  mw.config.get( 'wgNarayamAllSchemes' ) || {};
 	// Currently selected scheme
 	var currentScheme = null;
 	// Shortcut key for turning Narayam on and off
@@ -389,12 +392,9 @@ $.narayam = new ( function() {
 	 * @return True if added, false if not
 	 */
 	this.addScheme = function( name, data ) {
-		if ( name in availableSchemes ) {
-			schemes[name] = data;
-			return true;
-		} else {
-			return false;
-		}
+		schemes[name] = data;
+		return true;
+		
 	};
 	
 	/**
@@ -402,9 +402,13 @@ $.narayam = new ( function() {
 	 * @param name String
 	 */
 	this.setScheme = function( name ) {
-		if ( name in schemes ) {
-			currentScheme = schemes[name];
+		currentScheme = schemes[name];
+		if ( currentScheme ){
 			$.cookie( 'narayam-scheme', name, { 'path': '/', 'expires': 30 } );
+			return true;
+		}
+		else {
+			return false;
 		}
 	};
 	
@@ -500,6 +504,52 @@ $.narayam = new ( function() {
 			.text( mw.msg( 'narayam-toggle-ime', shortcutText() ) )
 			.prepend( $checkbox )
 			.attr( 'title', mw.msg( 'narayam-checkbox-tooltip' ) );
+		
+			$narayamMenuItems.append( $( '<li class="narayam-more-imes-link" />')
+			.append(
+				$( '<a/>' )
+					.text( mw.msg( 'narayam-more-imes' ) )
+					.click( function() {
+						$('.narayam-scheme-dynamic-item').toggle('fast');
+						if( $('li.narayam-more-imes-link').hasClass( 'open' )){
+							$('li.narayam-more-imes-link').removeClass('open');
+						}else{
+							$('li.narayam-more-imes-link').addClass('open');
+						}
+					})
+				)
+		);
+
+		for ( var lang in allImes ) {
+			var langschemes = allImes[lang];
+			for ( var langscheme in langschemes ) {
+				 
+				var $input = $( '<input type="radio" name="narayam-input-method" class="narayam-scheme-dynamic" />' );
+				$input
+					.attr( 'id', 'narayam-' + langscheme )
+					.val( langscheme );
+					
+				var $narayamMenuItemLabel = $( '<label />' )
+						.attr( 'for' ,'narayam-' + langscheme )
+						.append( $input )
+						.append( mw.html.escape( mw.msg( "narayam-"+ langscheme ) ) );
+				
+				var $narayamMenuItem = $( '<li class="narayam-scheme-dynamic-item" />' )
+					.append( $input )
+					.append( $narayamMenuItemLabel );
+					
+				$narayamMenuItems.append( $narayamMenuItem );
+				
+			}
+		}	
+		
+		// Event listener for scheme selection - dynamic loading of rules.
+		$( '.narayam-scheme-dynamic', $( '#narayam-menu-items > ul')[0] ).live( 'click', function() {
+			var curVal =  $(this).val();
+			mw.loader.using( "ext.narayam.rules." + $(this).val() ,  function() {
+				that.setScheme( curVal )
+			});
+		} );
 			
 		var helppage = mw.msg( 'narayam-help-page' );
 		if ( helppage ) {
@@ -546,7 +596,7 @@ $.narayam = new ( function() {
 				$( '#searchform' ).css( 'visibility', 'visible' );
 			});
 		}
-		
+		$('.narayam-scheme-dynamic-item').hide();
 		// Narayam controls setup complete, returns true
 		return true;
 	};	
