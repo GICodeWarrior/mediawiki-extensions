@@ -76,7 +76,7 @@ class SpecialMyContests extends SpecialContestPage {
 			/**
 			 * @var $contest Contest
 			 */
-			$contest =  $contestants[0]->getContest( array( 'status', 'name' ) );
+			$contest = $contestants[0]->getContest( array( 'status', 'name' ) );
 
 			if ( $contest->getField( 'status' ) == Contest::STATUS_ACTIVE ) {
 				$this->getOutput()->redirect( $this->getTitle( $contest->getField( 'name' ) )->getLocalURL() );
@@ -302,20 +302,15 @@ class SpecialMyContests extends SpecialContestPage {
 		$form->setSubmitCallback( array( $this, 'handleSubmission' ) );
 		$form->setSubmitText( wfMsg( 'contest-submission-submit' ) );
 
-		$challengeId = $contestant->getField( 'challenge_id' );
-		$challenges = $contest->getChallenges();
-
 		/**
 		 * @var $challenge ContestChallenge
 		 */
-		$challenge = null;
-		foreach( $challenges as $challenge ) {
-			if ( $challenge->getId() == $challengeId ) {
-				break;
-			}
-		}
+		$challenge = ContestChallenge::s()->selectRow(
+			array( 'title', 'text' ),
+			array( 'id' => $contestant->getField( 'challenge_id' ) )
+		);
 
-		if ( $challenge !== null ) {
+		if ( $challenge !== false ) {
 			$challengeName = $challenge->getField( 'title' );
 			$challengeDescription = $challenge->getField( 'text' );
 
