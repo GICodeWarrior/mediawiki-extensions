@@ -56,7 +56,7 @@ class SpecialContest extends SpecialContestPage {
 			
 			$this->displayNavigation();
 			$this->showGeneralInfo( $contest );
-			// TODO $this->showMailFunctionality( $contest );
+			$this->showMailFunctionality( $contest );
 			$this->showContestants( $contest, $challengeTitle );
 			
 			$out->addModules( 'contest.special.contest' );

@@ -287,6 +287,15 @@ $messages['qqq'] = array(
 	'contest-email-signup-title' => 'Title for signup e-mails',
 	'contest-email-reminder-title' => 'Title for reminder e-mails',
 
+	'contest-contest-reminder-mail' => 'Reminder email',
+	'contest-contest-reminder-page' => 'Text explaining the email content is pulled from a page, $1 is the page name.',
+	'contest-contest-send-reminder' => 'Send reminder button text',
+	
+	'contest-contest-reminder-preview' => 'Text indicating that the following content is the preview for the reminder email.',
+	'contest-contest-reminder-title' => 'Dialog title',
+	'contest-contest-reminder-send' => 'Send button text',
+	'contest-contest-reminder-cancel' => 'Cancel button text',
+
 	// Special:MyContests
 	'contest-mycontests-toplink' => 'Text for link in the user menu (i.e. where watchlist and preferences are linked)',
 	'contest-mycontests-no-contests' => 'Message indicating there are no contests for the user, displayed instead of a list.',
