@@ -138,7 +138,7 @@ class Contest extends ContestDBObject {
 	 */
 	public function getDefaults() {
 		$defaultPage = 'MediaWiki:Contests/';
-		
+
 		return array(
 			'name' => '',
 			'status' => self::STATUS_DRAFT,
