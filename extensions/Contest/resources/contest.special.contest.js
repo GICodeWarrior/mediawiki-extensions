@@ -10,22 +10,59 @@
 	
 	var _this = this;
 	
-	this.sendReminder = function() {
+	this.sendReminder = function( callback ) {
+		var requestArgs = {
+			'action': 'mailcontestants',
+			'format': 'json',
+			'token': $( '#send-reminder' ).attr( 'data-token' ),
+			'contestids': $( '#send-reminder' ).attr( 'data-contest-id' )
+		};
 		
+		$.post(
+			wgScriptPath + '/api.php',
+			requestArgs,
+			function( data ) {
+				callback( data );
+			}
+		);
 	};
 	
 	this.showReminderDialog = function() {
+		var $dialog = null;
+		
 		$dialog = $( '<div />' ).html( '' ).dialog( {
 			'title': mw.msg( 'contest-contest-reminder-title' ),
 			'buttons': [
 				{
 					'text': mw.msg( 'contest-contest-reminder-send' ),
-					'click': function() { _this.sendReminder(); }
+					'id': 'reminder-send-button',
+					'click': function() {
+						var $send = $( '#reminder-send-button' );
+						var $cancel = $( '#reminder-cancel-button' );
+						
+						$send.button( 'option', 'disabled', true );
+						$send.button( 'option', 'label', mw.msg( 'contest-contest-reminder-sending' ) );
+						
+						_this.sendReminder( function( data ) {
+							if ( data.success ) {
+								$dialog.text( mw.msg( 'contest-contest-reminder-success', data.contestantcount ) );
+								$send.remove();
+								$cancel.button( 'option', 'label', mw.msg( 'contest-contest-reminder-close' ) );
+							}
+							else {
+								$send.button( 'option', 'label', mw.msg( 'contest-contest-reminder-retry' ) );
+								$send.button( 'option', 'disabled', false );
+								
+								alert( mw.msg( 'contest-contest-reminder-failed' ) );
+							}
+						} );
+					}
 				},
 				{
 					'text': mw.msg( 'contest-contest-reminder-cancel' ),
+					'id': 'reminder-cancel-button',
 					'click': function() {
-						$( this ).dialog( 'close' );
+						$dialog.dialog( 'close' );
 					}
 				}
 			]

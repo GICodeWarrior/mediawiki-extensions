@@ -18,7 +18,6 @@ class ApiMailContestants extends ApiBase {
 		parent::__construct( $main, $action );
 	}
 
-	// TODO
 	public function execute() {
 		global $wgUser;
 
@@ -71,11 +70,11 @@ class ApiMailContestants extends ApiBase {
 			$conditions['id'] = $params['ids'];
 		}
 
-		$contestants = ContestContestant::s()->select( 'email', $conditions );
+		$contestants = ContestContestant::s()->select( array( 'contest_id', 'email' ), $conditions );
 
 		if ( $contestants !== false && count( $contestants ) > 0 ) {
 			$setSize = ContestSettings::get( 'reminderJobSize' );
-			$limit = count( $contestants ) - $setSize;
+			$limit = count( $contestants );
 
 			for ( $i = 0; $i <= $limit; $i += $setSize ) {
 				$this->createReminderJob( array_splice( $contestants, $i, $setSize ) );

@@ -140,6 +140,8 @@ class SpecialContest extends SpecialContestPage {
 			'button',
 			array(
 				'id' => 'send-reminder',
+				'data-token' => $this->getUser()->editToken(),
+				'data-contest-id' => $contest->getId()
 			),
 			wfMsg( 'contest-contest-send-reminder' )
 		) );
