@@ -343,6 +343,7 @@ class SpecialMyContests extends SpecialContestPage {
 
 		$contestant = new ContestContestant( array(
 			'id' => $data['contestant-id'],
+			'challenge_id' => $data['contestant-challengeid'],
 
 			'full_name' => $data['contestant-realname'],
 			'email' => $data['contestant-email'],
@@ -426,6 +427,15 @@ class SpecialMyContests extends SpecialContestPage {
 			'options' => ContestContestant::getCountriesForInput()
 		);
 
+		$fields['contestant-challengeid'] = array(
+			'type' => 'radio',
+			'label-message' => 'contest-signup-challenge',
+			'options' => $this->getChallengesList( $contestant ),
+			'default' => $contestant->getField( 'challenge_id' ),
+			'required' => true,
+			'validation-callback' => array( __CLASS__, 'validateChallengeField' )
+		);
+		
 		$fields['contestant-volunteer'] = array(
 			'type' => 'check',
 			'default' => $contestant->getField( 'volunteer' ),
@@ -448,6 +458,32 @@ class SpecialMyContests extends SpecialContestPage {
 		);
 
 		return $fields;
+	}
+	
+	/**
+	 * Gets a list of contests that can be fed directly to the options field of
+	 * an HTMLForm radio input.
+	 * challenge title => challenge id
+	 *
+	 * @since 0.1
+	 *
+	 * @param ContestContestant $contestant
+	 *
+	 * @return array
+	 */
+	protected function getChallengesList( ContestContestant $contestant ) {
+		$list = array();
+
+		$challenges = ContestChallenge::s()->select(
+			array( 'id', 'title' ),
+			array( 'contest_id' => $contestant->getField( 'contest_id' ) )
+		);
+		
+		foreach ( $challenges as /* ContestChallenge */ $challenge ) {
+			$list[$challenge->getField( 'title' )] = $challenge->getId();
+		}
+
+		return $list;
 	}
 
 	/**
@@ -538,6 +574,24 @@ class SpecialMyContests extends SpecialContestPage {
 		}
 
 		return wfMsg( 'contest-submission-invalid-url' );
+	}
+	
+	/**
+	 * HTMLForm field validation-callback for challenge field.
+	 *
+	 * @since 0.1
+	 *
+	 * @param $value String
+	 * @param $alldata Array
+	 *
+	 * @return true|string
+	 */
+	public static function validateChallengeField( $value, $alldata = null ) {
+		if ( is_null( $value ) ) {
+			return wfMsg( 'contest-signup-require-challenge' );
+		}
+
+		return true;
 	}
 
 }
