@@ -39,7 +39,7 @@ class NarayamHooks {
 	}
 
 	public static function addVariables( &$vars ) {
-		global $wgUser;
+		global $wgUser, $wgNarayamSchemes;
 
 		if ( $wgUser->getOption( 'narayamDisable' ) ) {
 			// User disabled Narayam
@@ -47,7 +47,7 @@ class NarayamHooks {
 		}
 
 		$vars['wgNarayamAvailableSchemes'] = self::getSchemes(); // Note: scheme names must be keys, not values
-
+		$vars['wgNarayamAllSchemes'] = $wgNarayamSchemes;
 		return true;
 	}
 
