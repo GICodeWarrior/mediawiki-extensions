@@ -21,7 +21,7 @@ class SIOPageSchemas extends PSExtensionHandler {
 	}
 
 	public static function getTemplateDisplayString() {
-		return 'Internal property';
+		return wfMsg( 'semanticinternalobjects-internalproperty' );
 	}
 
 	/**
@@ -46,7 +46,6 @@ class SIOPageSchemas extends PSExtensionHandler {
 	public static function createTemplateXMLFromForm() {
 		global $wgRequest;
 
-		$fieldNum = -1;
 		$xmlPerTemplate = array();
 		foreach ( $wgRequest->getValues() as $var => $val ) {
 			if ( substr( $var, 0, 18 ) == 'sio_property_name_' ) {
@@ -99,7 +98,7 @@ class SIOPageSchemas extends PSExtensionHandler {
 		return null;
 	}
 
-	function getInternalObjectPropertyName ( $psTemplate ) {
+	static function getInternalObjectPropertyName ( $psTemplate ) {
 		// TODO - there should be a more direct way to get
 		// this data.
 		$sioPropertyArray = $psTemplate->getObject( 'semanticinternalobjects_MainProperty' );
