@@ -44,5 +44,20 @@ class ContestReminderJob extends Job {
 
 		return true;
 	}
+	
+	function toString() {
+		$stringContestants = array();
+		
+		/**
+		 * @var $contestant ContestContestant
+		 */
+		foreach ( $this->params['contestants'] as /* ContestContestant */ $contestant ) {
+			$stringContestants[] = FormatJson::encode( $contestant->getFields() );
+		}
+		
+		return 'Contest reminder email for contest '
+			. $this->params['contest']->getId()
+			. ' for these ' . count( $this->params['contestants'] ) . ' contestants: ' . implode( ', ', $stringContestants ) . '.';
+	}
 
 }
