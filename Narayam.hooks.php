@@ -68,7 +68,9 @@ class NarayamHooks {
 		
 		// Get user selected scheme from cookie
 		// TODO: use $wgRequest;
-		$lastScheme = $_COOKIE['narayam-scheme'];
+		$lastScheme = isset($_COOKIE['narayam-scheme'])
+						? $_COOKIE['narayam-scheme']
+						: null;
 		// If user selected scheme is not in the array of schemes to be loaded
 		// Add it
 		if ( $lastScheme && !array_key_exists( $lastScheme, $schemes ) ) {
