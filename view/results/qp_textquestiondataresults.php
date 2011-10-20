@@ -30,13 +30,25 @@ class qp_TextQuestionDataResults extends qp_QuestionDataResults {
 					$row[] = array( '__tag' => 'span', 'class' => 'prop_part', qp_Setup::entities( $token ) );
 				} elseif ( is_array( $token ) ) {
 					# add a category definition with selected text answer (if any)
+					$className = 'cat_part';
 					if ( array_key_exists( $propkey, $ctrl->ProposalCategoryId ) &&
 						( $id_key = array_search( $catId, $ctrl->ProposalCategoryId[$propkey] ) ) !== false ) {
-						$text_answer = $ctrl->ProposalCategoryText[$propkey][$id_key];
+						if ( ( $text_answer = $ctrl->ProposalCategoryText[$propkey][$id_key] ) === '' &&
+									count( $token ) === 1 ) {
+							# indicate selected checkbox / radiobuttn
+							$text_answer = '+';
+						}
 					} else {
 						$text_answer = '';
+						$className .= ' cat_unanswered';
 					}
-					$className = ( count( $token ) === 1 || in_array( $text_answer, $token ) ) ? 'cat_part' : 'cat_unknown';
+					if ( count( $token ) > 1 &&
+							$text_answer !== '' &&
+							!in_array( $text_answer, $token ) ) {
+						if ( !qp_Renderer::hasClassName( $className, 'cat_unknown' ) ) {
+							$className .= ' cat_unknown';
+						};
+					}
 					$titleAttr = '';
 					foreach ( $token as &$option ) {
 						if ( $option !== $text_answer ) {
@@ -46,7 +58,14 @@ class qp_TextQuestionDataResults extends qp_QuestionDataResults {
 							$titleAttr .= qp_Setup::entities( $option );
 						}
 					}
-					$row[] = array( '__tag' => 'span', 'class' => $className, 'title'=>$titleAttr, qp_Setup::entities( $text_answer ) );
+					if ( $text_answer === '' ) {
+						# many browsers trim the spaces between spans when the text node is empty;
+						# use non-breaking space to prevent this
+						$text_answer = '&#160;';
+					} else {
+						$text_answer = qp_Setup::entities( $text_answer );
+					}
+					$row[] = array( '__tag' => 'span', 'class' => $className, 'title'=>$titleAttr, $text_answer );
 					# move to the next category (if any)
 					$catId++;
 				} else {

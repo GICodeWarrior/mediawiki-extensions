@@ -33,104 +33,200 @@
  */
 
 (function() {
-	function uniqueRadioButtonColumn() {
-		// example of input id: 'uq1c2p2'
-		var propId, inp;
-		var id = new String( this.getAttribute('id') );
-		// IE split is really buggy, so we have to search for p letter instead, was:
-		// var params = id.split('/(uq\d{1,}?c\d{1,}?p)(\d{1,}?)/g');
-		// if ( params !== null && params[1] !== null && params[2] != null ) {
-		//   var currPropId = parseInt( params[2] );
-		//   var basepart = params[1];
-		//   ...
-		var p = id.indexOf( 'p' ) + 1;
-		var currPropId = parseInt( id.substring( p ) );
-		var basepart = id.substring( 0, p );
-		if ( p != 0)  {
-			for ( propId = 0; ( inp = document.getElementById( basepart + propId ) ) !== null; propId++ ) {
-				if ( propId != currPropId) {
+
+	var self = {
+
+		radioIsClicked : false,
+
+		// coordinate of current poll's question input id
+		catCoord : {
+			'toq' : '', // question prefix which contains "T"ype_of_poll + poll_"O"rder_id + "Q"uestion_id,
+			'p' : '-1', // "P"roposal_id,
+			'c' : '-1'  // "C"ategory_id
+		},
+
+		/**
+		 * Parses coordinate of poll's input stored in id and
+		 * stores it into self.catCoord;
+		 * @param  id  id attribute of input / select element
+		 * @return  true, when value of id has valid coordinate, false otherwise.
+		 */
+		setCatCoord : function( id ) {
+			// IE split is really buggy, so we have to search for p and c letters instead
+			var p, c;
+			if ( ( p = id.indexOf( 'p' ) + 1 ) == -1 ||
+					( c = id.indexOf( 'c' ) + 1 ) == -1 ) {
+				return false;
+			}
+			self.catCoord.toq = id.slice( 0, p - 1 );
+			if ( p > c ||
+					( p = parseInt( id.substring( p ) ) ) === NaN ||
+					( c = parseInt( id.substring( c ) ) ) === NaN ) {
+				self.catCoord.toq = '';
+				return false;
+			}
+			self.catCoord.p = p;
+			self.catCoord.c = c;
+			return true;
+		},
+
+		/**
+		 * Get input node of current poll's question (stored in self.catCoord.toq) with specific coordinates.
+		 * @param  params  object  'prop' (optional) property id; 'cat' (optional) category id.
+		 */
+		getCatByCoord : function( params ) {
+			var p = ( typeof params['prop'] !== 'undefined' ) ? params['prop'] : self.catCoord.p;
+			var c = ( typeof params['cat'] !== 'undefined' ) ? params['cat'] : self.catCoord.c;
+			return document.getElementById( self.catCoord.toq + 'p' + p + 'c' + c );
+		},
+
+		/**
+		 * Logic of switching on / off radiobuttons for all inputs in one proposal line.
+		 * @param  catElem  DOM node of poll/question/proposal/category; input or select only.
+		 */
+		applyRadio : function( catElem ) {
+			if ( self.radioIsClicked ) {
+				// deselect all inputs
+				if ( catElem.nodeName == 'SELECT' || catElem.type == 'text' ) {
+					catElem.value = '';
+				} else {
+					catElem.checked = false;
+				}
+			} else {
+				// deselect only radio
+				if ( catElem.nodeName == 'INPUT' && catElem.type == 'radio' ) {
+					catElem.checked = false;
+				}
+			}
+		},
+
+		/**
+		 * Makes this radio button to be unique in their column
+		 * (it is already unique in their row)
+		 * Used for question type="unique()"
+		 */
+		uniqueRadioButtonColumn : function() {
+			// example of input id: 'uq3q1p4c2'
+			// where uq3 is mOrderId of poll on the page
+			// q1 first question of that poll
+			// p4 proposal index 4 of that question
+			// c2 category index 2 of that proposal
+			var propId, inp;
+			if ( !self.setCatCoord( this.getAttribute( 'id' ) ) ) {
+				return;
+			}
+			for ( propId = 0; ( inp = self.getCatByCoord( { 'prop' : propId } ) ) !== null; propId++ ) {
+				if ( propId != self.catCoord.p ) {
 					inp.checked = false;
 				}
 			}
-		}
-	}
+		},
 
-	function clickMixedRow() {
-		// example of input id: 'mx1p2c2'
-		var catId, inp;
-		var id = new String( this.getAttribute('id') );
-		var c = id.indexOf( 'c' ) + 1;
-		var currCatId = parseInt( id.substring( c ) );
-		var basepart = id.substring( 0, c );
-		if ( c != 0)  {
-			for ( catId = 0; ( inp = document.getElementById( basepart + catId ) ) !== null; catId++ ) {
-				if ( catId != currCatId ) {
-          if ( this.type == 'radio' ) {
-            if (inp.type == 'text' ) {
-              inp.value = '';
-            } else {
-              inp.checked = false;
-            }
-          } else {
-            if (inp.type == 'radio' ) {
-              inp.checked = false;
-            }
-          }
+		processMixedRow : function( currElem ) {
+			var catId, inp;
+			self.radioIsClicked = ( currElem.nodeName == 'INPUT' && currElem.type == 'radio' );
+			if ( !self.setCatCoord( currElem.getAttribute( 'id' ) ) ) {
+				return false;
+			}
+			for ( catId = 0; ( inp = self.getCatByCoord( { 'cat' : catId } ) ) !== null; catId++ ) {
+				if ( catId != self.catCoord.c ) {
+					self.applyRadio( inp );
 				}
 			}
-		}
-	}
+			return true;
+		},
 
-	function clickPrefilledText() {
-		if ( this.className === 'cat_prefilled' ) {
-			this.select();
-			this.className = 'cat_part';
-		}
-	}
+		/**
+		 * Makes this input to switch radiobuttons in the same row
+		 * Used for questions type="mixed"
+		 */
+		clickMixedRow : function() {
+			// example of input id: 'mx1q3p2c4'
+			self.processMixedRow( this );
+		},
 
-	/**
-	 * Prepare the Poll for "javascriptable" browsers
-	 */
-	function preparePoll() {
-		var bodyContentDiv = document.getElementById( 'bodyContent' ).getElementsByTagName( 'div' );
-		var inputFuncId;
-		for ( var i=0; i<bodyContentDiv.length; ++i ) {
-			if ( bodyContentDiv[i].className == 'qpoll' ) {
+		/**
+		 * Used for questions type="text", type="text!"
+		 */
+		clickTextRow : function() {
+			// example of input id: 'tx1q3p2c4'
+			if ( !self.processMixedRow( this ) ) {
+				return;
+			}
+			// clear pre_filled text attribute, when available
+			if ( hasClass( this, 'cat_prefilled' ) ) {
+				this.select();
+				removeClass( this, 'cat_prefilled' );
+			}
+		},
+
+		/**
+		 * Prepare the Poll for "javascriptable" browsers
+		 */
+		preparePoll : function() {
+			var bodyContentDiv = document.getElementById( 'bodyContent' ).getElementsByTagName( 'div' );
+			var i, j;
+			for ( i=0; i<bodyContentDiv.length; i++ ) {
+				if ( !hasClass( bodyContentDiv[i], 'qpoll' ) ) {
+					continue;
+				}
 				var input = bodyContentDiv[i].getElementsByTagName( 'input' );
-				for ( var j=0; j<input.length; ++j ) {
+				for ( j=0; j<input.length; j++ ) {
 					if ( input[j].id ) {
 						// only unique or mixed questions currently have id
-						inputFuncId = new String( input[j].id ).slice( 0, 2 );
-						switch ( inputFuncId ) {
-						case "uq":
+						switch ( input[j].id.slice( 0, 2 ) ) {
+						case 'uq' :
 							if ( input[j].type == "radio" ) {
 								// unset the column of radiobuttons in case of unique proposal
-								addEvent( input[j], "click", uniqueRadioButtonColumn );
+								addEvent( input[j], "click", self.uniqueRadioButtonColumn );
 							}
 							break;
-						case "mx":
+						case 'mx' :
 							// unset the row of checkboxes in case of "mixed" question type
-							addEvent( input[j], "click", clickMixedRow );
+							addEvent( input[j], "click", self.clickMixedRow );
 							break;
+						case 'tx' :
+							// handler for text question proposal rows
+							addEvent( input[j], "click", self.clickTextRow );
 						}
 					} else {
-						// check non-unique, non-mixed tabular questions and
-						// text questions
-						switch ( input[j].getAttribute( 'type' ) ) {
-						case 'radio' :
+						// non-unique, non-mixed tabular questions
+						if ( input[j].getAttribute( 'type' ) == 'radio' ) {
 							// Add the possibility of unchecking radio buttons
 							addEvent( input[j], "dblclick", function() { this.checked = false; } );
-							break;
-						case 'text' :
-							if ( input[j].className === 'cat_prefilled' ) {
-								// Add the handler to clear prefilled text
-								addEvent( input[j], "click", clickPrefilledText );
-							}
-							break;
 						}
 					}
 				}
+				var select = bodyContentDiv[i].getElementsByTagName( 'select' );
+				for ( j = 0; j < select.length; j++ ) {
+					// selects currently are used only with question type="text", type="text!"
+					if ( select[j].id && select[j].id.slice( 0, 2 ) == 'tx' ) {
+						addEvent( select[j], "click", self.clickTextRow );
+					}
+				}
 			}
+		}
+	};
+
+	/**
+	 * The following functions are defined to not to be dependant on jQuery (MW 1.15).
+	 * They should not cause any trouble, running in the closure.
+	 * Class manipulation is taken from http://www.openjs.com/scripts/dom/class_manipulation.php
+	 */
+	function hasClass( ele, cls ) {
+		return ele.className.match( new RegExp('(\\s|^)'+cls+'(\\s|$)') );
+	}
+
+	function addClass( ele, cls ) {
+		if ( !this.hasClass(ele,cls)) {
+			ele.className += " "+cls;
+		}
+	}
+
+	function removeClass( ele, cls ) {
+		if ( hasClass(ele,cls) ) {
+			var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
+			ele.className = ele.className.replace(reg,' ').replace(/\s+/g,' ').replace(/^\s|\s$/,'');
 		}
 	}
 
@@ -148,7 +244,7 @@
 		}
 	}
 
-	if (document.getElementById && document.createTextNode) {
-		addEvent(window,"load",preparePoll);
+	if ( document.getElementById && document.createTextNode ) {
+		addEvent( window, "load", self.preparePoll );
 	}
 })();

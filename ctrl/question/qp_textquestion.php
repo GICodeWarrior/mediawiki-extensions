@@ -159,7 +159,7 @@ class qp_TextQuestionOptions {
 class qp_TextQuestion extends qp_StubQuestion {
 
 	# regexp for separation of proposal line tokens
-	static $propCatPattern = null;
+	var $propCatPattern = null;
 
 	# source "raw" tokens (preg_split)
 	var $rawtokens;
@@ -167,14 +167,14 @@ class qp_TextQuestion extends qp_StubQuestion {
 	/**
 	 * array with parsed braces pairs
 	 * every element may have the following keys:
-	 *   'type' : type of brace string _key_values_ of self::$matching_braces
+	 *   'type' : type of brace string _key_values_ of $this->matching_braces
 	 *   'closed_at' : indicates opening brace;
 	 *     false when no matching closing brace was found
 	 *     int  key of $this->rawtokens a "link" to matching closing brace
 	 *   'opened_at' : indicates closing brace;
 	 *     false when no matching opening brace was found
 	 *     int  key of $this->rawtokens a "link" to matching opening brace
-	 *   'iscat'     : indicates brace that belongs to self::$input_braces_types AND
+	 *   'iscat'     : indicates brace that belongs to $this->input_braces_types AND
 	 *                 has a proper match (both 'closed_at' and 'opened_at' are int)
 	 */
 	var $brace_matches;
@@ -190,13 +190,13 @@ class qp_TextQuestion extends qp_StubQuestion {
 	var $dbtokens = array();
 
 	# list of opening input braces types
-	static $input_braces_types = array(
+	var $input_braces_types = array(
 		'<<' => 'text',
 		'<(' => 'radio',
 		'<[' => 'checkbox'
 	);
 	# matches of opening / closing braces
-	static $matching_braces = array(
+	var $matching_braces = array(
 		# wiki link
 		'[[' => ']]',
 		# wiki magicword
@@ -210,23 +210,30 @@ class qp_TextQuestion extends qp_StubQuestion {
 	);
 
 	/**
-	 * Constructor
-	 * @public
-	 * @param  $poll            an instance of question's parent controller
-	 * @param  $view            an instance of question view "linked" to this question
-	 * @param  $questionId      the identifier of the question used to generate input names
-	 */
-	function __construct( qp_AbstractPoll $poll, qp_StubQuestionView $view, $questionId ) {
-		parent::__construct( $poll, $view, $questionId );
-		if ( self::$propCatPattern === null ) {
+	 * Applies previousely parsed attributes from main header into question's view
+	 * (all attributes but type)
+	 *
+	 * @param   $attr_str - source text with question attributes
+	 * @return  string : type of the question, empty when not defined
+	 */ 
+	function applyAttributes( $paramkeys ) {
+		parent::applyAttributes( $paramkeys );
+		if ( $this->mSubType === 'requireAllCategories' ) {
+			# radio button prevents from filling all categories, disable it
+			if ( ( $radio_brace = array_search( 'radio', $this->input_braces_types, true ) ) !== false ) {
+				unset( $this->input_braces_types[$radio_brace] );
+				unset( $this->matching_braces[$radio_brace] );
+			}
+		}
+		if ( $this->propCatPattern === null ) {
 			$braces_list = array_map( 'preg_quote',
 				array_merge(
-					( array_values( self::$matching_braces ) ),
-					array_keys( self::$matching_braces ),
+					( array_values( $this->matching_braces ) ),
+					array_keys( $this->matching_braces ),
 					array( '|' )
 				)
 			);
-			self::$propCatPattern = '/(' . implode( '|', $braces_list ) . ')/u';
+			$this->propCatPattern = '/(' . implode( '|', $braces_list ) . ')/u';
 		}
 	}
 
@@ -241,38 +248,54 @@ class qp_TextQuestion extends qp_StubQuestion {
 	}
 
 	/**
-	 * Load text answer to the selected (proposal,category) pair, when available
-	 * Also, stores text answer into the parsed tokens list (propview)
+	 * Load checkbox / radio / text answer to the selected (proposal,category) pair, when available
+	 * Also, stores checkbox / radio / text answer into the parsed tokens list (propview)
 	 */
 	function loadProposalCategory( qp_TextQuestionOptions $opt, $proposalId, $catId ) {
 		$name = "q{$this->mQuestionId}p{$proposalId}s{$catId}";
-		$text_answer = '';
-		$user_answered = false;
+		# default value for unanswered category
+		# boolean true "checked" checkbox / radiobutton
+		# string - text input / select option value
+		$text_answer = false;
 		# try to load from POST data
-		if ( $this->poll->mBeingCorrected && $this->mRequest->getVal( $name ) !== null ) { 
-			$text_answer = trim( $this->mRequest->getText( $name ) );
-		}
-		if ( strlen( $text_answer ) > qp_Setup::MAX_TEXT_ANSWER_LENGTH ) {
-			$text_answer = substr( $text_answer, 0, qp_Setup::MAX_TEXT_ANSWER_LENGTH );
-		}
-		if ( $text_answer != '' ) {
-			$user_answered = true;
+		if ( $this->poll->mBeingCorrected && $this->mRequest->getVal( $name ) !== null ) {
+			if ( $opt->type === 'text' ) {
+				if ( ( $ta = trim( $this->mRequest->getText( $name ) ) ) != '' ) {
+					if ( strlen( $ta ) > qp_Setup::MAX_TEXT_ANSWER_LENGTH ) {
+						$text_answer = substr( $ta, 0, qp_Setup::MAX_TEXT_ANSWER_LENGTH );
+					} else {
+						$text_answer = $ta;
+					}
+				}
+			} else {
+				$text_answer = true;
+			}
 		}
 		# try to load from pollStore
 		# pollStore optionally overrides POST data
-		$prev_text_answer = $this->answerExists( 'text', $proposalId, $catId );
-		if ( $prev_text_answer !== false ) {
-			$user_answered = true;
+		$prev_text_answer = $this->answerExists( $opt->type, $proposalId, $catId );
+		if ( is_string( $prev_text_answer ) ) {
 			$text_answer = $prev_text_answer;
+		} else {
+			if ( $prev_text_answer === true ) {
+				$text_answer = true;
+			}
 		}
-		if ( $user_answered ) {
+		if ( $text_answer !== false ) {
 			# add category to the list of user answers for current proposal (row)
 			$this->mProposalCategoryId[ $proposalId ][] = $catId;
-			$this->mProposalCategoryText[ $proposalId ][] = $text_answer;
+			if ( is_string( $text_answer ) ) {
+				$this->mProposalCategoryText[ $proposalId ][] = $text_answer;
+			} else {
+				$this->mProposalCategoryText[ $proposalId ][] = '';
+				if ( $opt->type !== 'text' ) {
+					$opt->attributes['checked'] = true;
+				}
+			}
 		}
 		# finally, add new category input options for the view
 		$opt->closeCategory();
-		$this->propview->addCatDef( $opt, $name, $text_answer, $this->poll->mBeingCorrected && !$user_answered );
+		$this->propview->addCatDef( $opt, $name, $text_answer, $this->poll->mBeingCorrected && $text_answer === false );
 	}
 
 	/**
@@ -285,30 +308,30 @@ class qp_TextQuestion extends qp_StubQuestion {
 		$matching_closed_brace = '';
 		# building $this->brace_matches
 		foreach ( $this->rawtokens as $tkey => $token ) {
-			if ( array_key_exists( $token, self::$matching_braces ) ) {
+			if ( array_key_exists( $token, $this->matching_braces ) ) {
 				# opening braces
 				$this->brace_matches[$tkey] = array(
 					'closed_at' => false,
 					'type' => $token
 				);
-				$match = self::$matching_braces[$token];
+				$match = $this->matching_braces[$token];
 				# create new brace_stack element:
 				$last_brace_def = array(
 					'match' => $match,
 					'idx' => $tkey
 				);
-				if ( array_key_exists( $token, self::$input_braces_types ) &&
+				if ( array_key_exists( $token, $this->input_braces_types ) &&
 						count( $brace_stack ) == 0 ) {
 					# will try to start category definiton (on closing)
 					$matching_closed_brace = $match;
 				}
 				array_push( $brace_stack, $last_brace_def );
-			} elseif ( in_array( $token, self::$matching_braces ) ) {
+			} elseif ( in_array( $token, $this->matching_braces ) ) {
 				# closing braces
 				$this->brace_matches[$tkey] = array(
 					'opened_at' => false,
 					# we always put opening brace in 'type'
-					'type' => array_search( $token, self::$matching_braces, true )
+					'type' => array_search( $token, $this->matching_braces, true )
 				);
 				if ( count( $brace_stack ) > 0 ) {
 					$last_brace_def = array_pop( $brace_stack );
@@ -322,7 +345,7 @@ class qp_TextQuestion extends qp_StubQuestion {
 					$this->brace_matches[$tkey]['opened_at'] = $idx;
 					$this->brace_matches[$idx]['closed_at'] = $tkey;
 					if ( count( $brace_stack ) > 0 || $token !== $matching_closed_brace ) {
-						# brace does not belong to self::$input_braces_types
+						# brace does not belong to $this->input_braces_types
 						continue;
 					}
 					# stack level 1 and found a matching_closed_brace;
@@ -336,15 +359,15 @@ class qp_TextQuestion extends qp_StubQuestion {
 			}
 		}
 		# trying to backtrack non-closed braces only these which belong to
-		# self::$input_braces_types
+		# $this->input_braces_types
 		$brace_keys = array_keys( $this->brace_matches, true );
 		for ( $i = count( $brace_keys ) - 1; $i >= 0; $i-- ) {
 			$brace_match = &$this->brace_matches[$brace_keys[$i]];
-			# match non-closed brace which belongs to self::$input_braces_types
+			# match non-closed brace which belongs to $this->input_braces_types
 			# (non-closed category definitions)
 			if ( array_key_exists( 'opened_at', $brace_match ) &&
 					$brace_match['opened_at'] === false &&
-					array_key_exists( $brace_match['type'], self::$input_braces_types ) ) {
+					array_key_exists( $brace_match['type'], $this->input_braces_types ) ) {
 				# try to find matching opening brace for current non-closed closing brace
 				for ( $j = $i - 1; $j >= 0; $j-- ) {
 					$checked_brace = &$this->brace_matches[$brace_keys[$j]];
@@ -398,7 +421,7 @@ class qp_TextQuestion extends qp_StubQuestion {
 			$this->dbtokens = $brace_stack = array();
 			$catId = 0;
 			$last_brace = '';
-			$this->rawtokens = preg_split( self::$propCatPattern, $raw, -1, PREG_SPLIT_DELIM_CAPTURE );
+			$this->rawtokens = preg_split( $this->propCatPattern, $raw, -1, PREG_SPLIT_DELIM_CAPTURE );
 			$matching_closed_brace = '';
 			$this->findMatchingBraces();
 			foreach ( $this->rawtokens as $tkey => $token ) {
@@ -421,11 +444,11 @@ class qp_TextQuestion extends qp_StubQuestion {
 					if ( array_key_exists( 'closed_at', $brace_match ) &&
 							$brace_match['closed_at'] !== false ) {
 						# valid opening brace
-						array_push( $brace_stack, self::$matching_braces[$token] );
+						array_push( $brace_stack, $this->matching_braces[$token] );
 						if ( array_key_exists( 'iscat', $brace_match ) ) {
 							# start category definition
-							$matching_closed_brace = self::$matching_braces[$token];
-							$opt->startOptionsList( self::$input_braces_types[$token] );
+							$matching_closed_brace = $this->matching_braces[$token];
+							$opt->startOptionsList( $this->input_braces_types[$token] );
 							$toBeStored = false;
 						}
 					} elseif ( array_key_exists( 'opened_at', $brace_match ) &&
