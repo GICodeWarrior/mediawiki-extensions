@@ -33,6 +33,9 @@ class ContestReminderJob extends Job {
 	 * @return bool
 	 */
 	public function run() {
+		/**
+		 * @var $contestant ContestContestant
+		 */
 		foreach ( $this->params['contestants'] as /* ContestContestant */ $contestant ) {
 			$contestant->sendReminderEmail( $this->params['emailText'], array(
 				'daysLeft' => $this->params['daysLeft'],

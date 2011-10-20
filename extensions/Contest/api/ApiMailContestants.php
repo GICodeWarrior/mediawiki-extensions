@@ -70,7 +70,7 @@ class ApiMailContestants extends ApiBase {
 			$conditions['id'] = $params['ids'];
 		}
 
-		$contestants = ContestContestant::s()->select( array( 'contest_id', 'email' ), $conditions );
+		$contestants = ContestContestant::s()->select( array( 'id', 'user_id', 'contest_id', 'email' ), $conditions );
 
 		if ( $contestants !== false && count( $contestants ) > 0 ) {
 			$setSize = ContestSettings::get( 'reminderJobSize' );
@@ -169,7 +169,7 @@ class ApiMailContestants extends ApiBase {
 	public function getDescription() {
 		return array(
 			'API module for mailing contestants. Selection criteria will be joined with AND,
-			except for the challange ids/titles and contest ids/names pairs, which will be joined wit OR.'
+			except for the challange ids/titles and contest ids/names pairs, which will be joined with OR.'
 		);
 	}
 
@@ -184,7 +184,7 @@ class ApiMailContestants extends ApiBase {
 			'api.php?action=mailcontestants&ids=42',
 			'api.php?action=mailcontestants&ids=4|2',
 			'api.php?action=mailcontestants&contestids=42',
-			'api.php?action=mailcontestants&contestnames=Weekend of Code',
+			'api.php?action=mailcontestants&contestnames=Weekend_of_Code',
 			'api.php?action=mailcontestants&challengetitles=foo|bar|baz',
 		);
 	}
