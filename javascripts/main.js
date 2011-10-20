@@ -16,31 +16,32 @@ function fptc_relocate() {
     
     // Relocate
     var pageName = RegExp.$1;
-	window.location = window.location.href.replace(new RegExp(pageName + ".*"), pageName + "/" + $("#fptc_attributeName").val());
+	window.location = window.location.href.replace(new RegExp(pageName + ".*"), pageName + "/" + $j("#fptc_attributeName").val());
 };
 
-$().ready(function() {
+
+$j().ready(function() {
     // Process form when key "return" is pressed
-	$("#fptc_attributeName").keypress(function(e) {
+	$j("#fptc_attributeName").keypress(function(e) {
 		if(e.which == 13){
 			fptc_relocate();
 		}
 	});
 	
-	var attribute = $("#fptc_attributeName").val();
+	var attribute = $j("#fptc_attributeName").val();
 	
 	// Context menu for tag cloud
-    $(".fptc_tag a").contextMenu({
+    $j(".fptc_tag a").contextMenu({
         menu: "fptc_contextMenu",
         onOpen: function(el) {
             // Indicate loading
-            $("#fptc_contextMenu li").slice(2).remove();
-            $("#fptc_contextMenu").append('<li class="loading"></li>');
+            $j("#fptc_contextMenu li").slice(2).remove();
+            $j("#fptc_contextMenu").append('<li class="loading"></li>');
         
             // Replace contents when done with loading
             sajax_do_call("FreqPatternTagCloud::getSuggestions", [attribute, el.text()], function(data) {
                 // Process return data
-                $("#fptc_contextMenu .loading").replaceWith(data.responseText);
+                $j("#fptc_contextMenu .loading").replaceWith(data.responseText);
             });
         }
     }, function(action, el, pos, menu) {
@@ -52,7 +53,7 @@ $().ready(function() {
     });
     
     // Autosuggestion for input field
-    $("#fptc_attributeName").autocomplete({
+    $j("#fptc_attributeName").autocomplete({
         delay: 0,
         source: function(currentValue, callbackForResults) {
             sajax_do_call("FreqPatternTagCloud::getAttributeSuggestions", [currentValue.term], function(data) {

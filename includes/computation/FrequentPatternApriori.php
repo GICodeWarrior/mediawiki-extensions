@@ -17,6 +17,10 @@ class FrequentPatternApriori extends FrequentPatternAlgorithm {
 		$numTransactions = count($transactions);
 		$allFrequentItemsets = array();
 		
+		if ($numTransactions == 0) {
+			return array(); 
+		}
+		else {
 		// Get all 1-frequent itemsets
 		foreach ($items as $item) {
 			$freq = 0;
@@ -65,6 +69,7 @@ class FrequentPatternApriori extends FrequentPatternAlgorithm {
 		}
 		
 		return $allFrequentItemsets;
+		}
 	}
 	
 	

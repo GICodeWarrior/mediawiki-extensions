@@ -70,7 +70,8 @@ function fptc_initializeHeaders() {
 	// @todo FIXME: this should use ResourceLoader and the appropriate core
 	// functions instead of using its own jQuery etc.
 	$wgOut->addExtensionStyle( $wgScriptPath.'/extensions/FreqPatternTagCloud/stylesheets/jquery/ui-lightness/jquery-ui-1.8.custom.css' );
-	$wgOut->addScriptFile( $wgScriptPath . '/extensions/FreqPatternTagCloud/javascripts/jquery-1.4.2.min.js' );
+	#$wgOut->addScriptFile( $wgScriptPath . '/extensions/FreqPatternTagCloud/javascripts/jquery-1.4.2.min.js' );
+	$wgOut->addScriptFile( $wgScriptPath . '/extensions/FreqPatternTagCloud/javascripts/jquery.parseJSON.js' );
 	$wgOut->addScriptFile( $wgScriptPath . '/extensions/FreqPatternTagCloud/javascripts/jquery-ui-1.8.custom.min.js' );
 
 	if ( $wgFreqPatternTagCloudSearchBarModification ) {
