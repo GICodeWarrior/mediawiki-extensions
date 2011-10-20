@@ -22,7 +22,7 @@ div.fptc_tag
 
 #fptc_contextMenu .loading,
 #fptc_contextMenu .no_entries,
-#fptc_contextMenu .suggestions
+#fptc_contextMenu .fptc_suggestions
 {
 	text-decoration: none;
 	display: block;
@@ -40,7 +40,7 @@ div.fptc_tag
 	background-image: url("../images/loading.gif");
 }
 
-#fptc_contextMenu .suggestions
+#fptc_contextMenu .fptc_suggestions
 {
 	font-weight: bold;
 }

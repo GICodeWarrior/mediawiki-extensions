@@ -1,3 +1,5 @@
+jQuery( document ).ready( function( $ ) { 
+
 // jQuery Context Menu Plugin
 //
 // Version 1.01
@@ -213,3 +215,5 @@ if(jQuery)( function() {
 		
 	});
 })(jQuery);
+
+});

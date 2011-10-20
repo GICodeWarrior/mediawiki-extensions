@@ -130,7 +130,6 @@ class FreqPatternTagCloud extends SpecialPage {
 		$dbr = wfGetDB( DB_SLAVE );
 
 		// Get possible attribute values
-		// @todo FIXME: ugly + SQL INJECTION POINT!
 		$res = $dbr->query(
 			"(SELECT DISTINCT vals.smw_title AS val, atts.smw_title AS att
 				FROM ".$dbr->tableName("smw_ids")." vals, ".$dbr->tableName("smw_ids")." atts, ".$dbr->tableName("smw_rels2")." rels
@@ -140,10 +139,10 @@ class FreqPatternTagCloud extends SpecialPage {
 				AND atts.smw_namespace = 102
 				AND LENGTH(vals.smw_iw) = 0
 				AND LENGTH(atts.smw_iw) = 0
-				AND vals.smw_title LIKE '%".mysql_real_escape_string($currentSearchValue)."%'
-				ORDER BY vals.smw_title
-				LIMIT 20) UNION (
-					SELECT smw_title AS val, '".wfMsg("fptc-categoryname")."' AS att
+					AND vals.smw_title LIKE '%".mysql_real_escape_string($currentSearchValue)."%'
+					ORDER BY vals.smw_title
+					LIMIT 20) UNION (
+					SELECT smw_title AS val, '".mysql_real_escape_string(wfMsg("fptc-categoryname"))."' AS att
 					FROM ".$dbr->tableName("smw_ids")."
 					WHERE smw_title LIKE '%".mysql_real_escape_string($currentSearchValue)."%'
 					AND smw_namespace = 14
@@ -252,7 +251,7 @@ class FreqPatternTagCloud extends SpecialPage {
 					<li class="browse">
 						<a href="#browse">' . wfMsg( 'fptc-context-menu-browse' ) . '</a>
 					</li>
-					<li class="suggestions separator">
+					<li class="fptc_suggestions separator">
 						' . wfMsg( 'fptc-context-menu-similar-tags' ) . '
 					</li>
 				</ul>'
