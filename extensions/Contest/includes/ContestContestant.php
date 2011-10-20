@@ -20,7 +20,7 @@ class ContestContestant extends ContestDBObject {
 	 * Cached user object, created from the user_id field.
 	 *
 	 * @since 0.1
-	 * @var USer
+	 * @var User
 	 */
 	protected $user = null;
 
@@ -579,7 +579,7 @@ class ContestContestant extends ContestDBObject {
 					$this->loadFields( 'user_id' );
 				}
 			}
-			
+
 			$this->user = User::newFromId( $this->getField( 'user_id' ) );
 		}
 
