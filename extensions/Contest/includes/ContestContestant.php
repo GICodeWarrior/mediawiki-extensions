@@ -571,6 +571,15 @@ class ContestContestant extends ContestDBObject {
 	 */
 	public function getUser() {
 		if ( is_null( $this->user ) ) {
+			if ( !$this->hasField( 'user_id' ) ) {
+				if ( is_null( $this->getId() ) ) {
+					throw new MWException( 'Can not get an user object when the user_id field is not set.' );
+				}
+				else {
+					$this->loadFields( 'user_id' );
+				}
+			}
+			
 			$this->user = User::newFromId( $this->getField( 'user_id' ) );
 		}
 

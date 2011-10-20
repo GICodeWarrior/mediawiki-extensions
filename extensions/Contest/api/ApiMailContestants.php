@@ -78,7 +78,7 @@ class ApiMailContestants extends ApiBase {
 			$limit = count( $contestants );
 
 			for ( $i = 0; $i <= $limit; $i += $setSize ) {
-				$this->createReminderJob( array_splice( $contestants, $i, $setSize ) );
+				$this->createReminderJob( array_slice( $contestants, $i, $setSize ) );
 			}
 		}
 		else {
