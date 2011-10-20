@@ -63,8 +63,23 @@ class NarayamHooks {
 				$wgNarayamSchemes[$wgLanguageCode] : array();
 		$userlangSchemes = isset( $wgNarayamSchemes[$userlangCode] ) ?
 				$wgNarayamSchemes[$userlangCode] : array();
+				
+		$schemes = $userlangSchemes + $contlangSchemes;
+		
+		// Get user selected scheme from cookie
+		// TODO: use $wgRequest;
+		$lastScheme = $_COOKIE['narayam-scheme'];
+		// If user selected scheme is not in the array of schemes to be loaded
+		// Add it
+		if ( $lastScheme && !array_key_exists( $lastScheme, $schemes ) ) {
+			// scheme names are of patten <language-code>[-<some-name>]
+			list( $lastSchemeLanguageCode ) = explode( '-', $lastScheme, 2 );
+			if ( isset( $wgNarayamSchemes[$lastSchemeLanguageCode][$lastScheme] ) ) {
+				$schemes[$lastScheme] = $wgNarayamSchemes[$lastSchemeLanguageCode][$lastScheme];
+			}
+		}
 
-		return $userlangSchemes + $contlangSchemes;
+		return $schemes;
 	}
 
 	public static function addPreference( $user, &$preferences ) {
