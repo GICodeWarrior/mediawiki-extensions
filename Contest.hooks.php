@@ -37,6 +37,12 @@ final class ContestHooks {
 			dirname( __FILE__ ) . '/sql/AddContestEmailFields.sql',
 			true
 		) );
+		
+		$updater->addExtensionUpdate( array(
+			'applyPatch',
+			dirname( __FILE__ ) . '/sql/UpdateContestantRatingField.sql',
+			true
+		) );
 
 		return true;
 	}
