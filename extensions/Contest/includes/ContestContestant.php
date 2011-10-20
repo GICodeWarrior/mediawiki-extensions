@@ -558,7 +558,7 @@ class ContestContestant extends ContestDBObject {
 		}
 
 		$this->setField( 'rating_count', $amount );
-		$this->setField( 'rating', $amount > 0 ? $total / $amount : 0 );
+		$this->setField( 'rating', $amount > 0 ? $total / $amount * 100 : 0 );
 	}
 
 	/**

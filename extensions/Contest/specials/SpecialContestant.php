@@ -205,7 +205,7 @@ class SpecialContestant extends SpecialContestPage {
 		$stats['rating'] = htmlspecialchars( wfMsgExt(
 			'contest-contestant-rating',
 			'parsemag',
-			$this->getLang()->formatNum( $contestant->getField( 'rating' ) ),
+			$this->getLang()->formatNum( $contestant->getField( 'rating' ) / 100 ),
 			$this->getLang()->formatNum( $contestant->getField( 'rating_count' ) )
 		) );
 

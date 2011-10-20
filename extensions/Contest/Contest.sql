@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS /*_*/contest_contestants (
 
   contestant_submission        TINYBLOB            NOT NULL, -- URL to the users submission
 
-  contestant_rating            TINYINT unsigned    NOT NULL, -- The average rating of the contestant
+  contestant_rating            SMALLINT unsigned   NOT NULL, -- The average rating of the contestant, multiplied by 100 for precision
   contestant_rating_count      SMALLINT unsigned   NOT NULL, -- The number of ratings
   contestant_comments          SMALLINT unsigned   NOT NULL  -- The number of comments
 ) /*$wgDBTableOptions*/;

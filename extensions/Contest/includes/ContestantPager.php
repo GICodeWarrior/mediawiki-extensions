@@ -220,7 +220,7 @@ class ContestantPager extends TablePager {
 				$value = htmlspecialchars( wfMsgExt(
 					'contest-contestant-rating',
 					'parsemag',
-					$this->getLang()->formatNum( $value ),
+					$this->getLang()->formatNum( $value / 100 ),
 					$this->getLang()->formatNum( $this->mCurrentRow->contestant_rating_count )
 				) );
 				break;
