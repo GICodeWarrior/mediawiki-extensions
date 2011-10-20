@@ -182,8 +182,8 @@ var rules = [
 ['\\\\9', '','௯']
 ];
 
-jQuery.narayam.addScheme( 'ta99', {
-	'namemsg': 'narayam-ta99',
+jQuery.narayam.addScheme( 'ta-99', {
+	'namemsg': 'narayam-ta-99',
 	'extended_keyboard': false,
 	'lookbackLength': 4,
 	'keyBufferLength': 1,
