@@ -14,7 +14,7 @@
 $messages = array();
 
 $messages['en'] = array(
-	'formatnum-desc'  => 'Passes formatnum to php number_format',
+	'formatnum-desc'  => 'Passes formatnum to PHP\'s number_format',
 );
 
 /** Message documentation (Message documentation) */
