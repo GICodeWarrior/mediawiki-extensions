@@ -141,7 +141,11 @@ class SpecialContest extends SpecialContestPage {
 			array(
 				'id' => 'send-reminder',
 				'data-token' => $this->getUser()->editToken(),
-				'data-contest-id' => $contest->getId()
+				'data-contest-id' => $contest->getId(),
+			
+				// Note: this is a copy of the message in ContestContestant::sendReminderEmail.
+				// If it's changed or modified by a hook, this message might not be accurate.
+				'data-reminder-subject' => wfMsgExt( 'contest-email-reminder-title', 'parsemag', $contest->getDaysLeft() )
 			),
 			wfMsg( 'contest-contest-send-reminder' )
 		) );

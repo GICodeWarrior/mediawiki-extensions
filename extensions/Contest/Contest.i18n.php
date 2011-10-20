@@ -165,6 +165,7 @@ $messages['en'] = array(
 	'contest-contest-reminder-close' => 'Close',
 	'contest-contest-reminder-retry' => 'Retry sending',
 	'contest-contest-reminder-failed' => 'Could not sent the reminder emails.',
+	'contest-contest-reminder-subject' => 'Subject:',
 
 	// Contestant pager
 	'contest-contestant-id' => 'ID',
@@ -310,6 +311,7 @@ $messages['qqq'] = array(
 	'contest-contest-reminder-close' => 'Close button text',
 	'contest-contest-reminder-retry' => 'Retry button text',
 	'contest-contest-reminder-failed' => 'Failiure message, displayed in an alert box',
+	'contest-contest-reminder-subject' => 'Email subject indicator',
 
 	// Special:MyContests
 	'contest-mycontests-toplink' => 'Text for link in the user menu (i.e. where watchlist and preferences are linked)',
