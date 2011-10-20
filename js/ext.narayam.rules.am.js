@@ -437,6 +437,6 @@ jQuery.narayam.addScheme( 'am', {
 	'namemsg': 'narayam-am',
 	'extended_keyboard': false,
 	'lookbackLength': 2,
-	'keyBufferLength': 4,
+	'keyBufferLength': 1,
 	'rules': rules
 } );
