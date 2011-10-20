@@ -169,6 +169,7 @@ $wgResourceModules['contest.special.contest'] = $moduleTemplate + array(
 		'contest-contest-reminder-close',
 		'contest-contest-reminder-retry',
 		'contest-contest-reminder-failed',
+		'contest-contest-reminder-subject',
 	),
 	'dependencies' => array(
 		'jquery.ui.button', 'jquery.ui.dialog',

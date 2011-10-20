@@ -32,6 +32,7 @@
 		
 		$dialog = $( '<div />' ).html( '' ).dialog( {
 			'title': mw.msg( 'contest-contest-reminder-title' ),
+			'minWidth': 550,
 			'buttons': [
 				{
 					'text': mw.msg( 'contest-contest-reminder-send' ),
@@ -69,6 +70,12 @@
 		} );
 		
 		$dialog.append( $( '<p />' ).text( mw.msg( 'contest-contest-reminder-preview' ) ) ).append( '<hr />' );
+		
+		$dialog.append( $( '<p />' )
+			.html( $( '<b />' )
+				.text( mw.msg( 'contest-contest-reminder-subject' ) ) )
+				.append( ' ' + $( '#send-reminder' ).attr( 'data-reminder-subject' ) ) )
+			.append( '<hr />' );
 		
 		$dialog.append( $( '#reminder-content' ).html() ); 
 	};
