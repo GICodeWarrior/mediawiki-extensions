@@ -72,7 +72,8 @@ class ApiMailContestants extends ApiBase {
 
 		$contestants = ContestContestant::s()->select( array( 'id', 'user_id', 'contest_id', 'email' ), $conditions );
 
-		if ( $contestants !== false && count( $contestants ) > 0 ) {
+		$contestantCount = count( $contestants );
+		if ( $contestants !== false && $contestantCount > 0 ) {
 			$setSize = ContestSettings::get( 'reminderJobSize' );
 			$limit = count( $contestants );
 
@@ -94,7 +95,7 @@ class ApiMailContestants extends ApiBase {
 			$this->getResult()->addValue(
 				null,
 				'contestantcount',
-				count( $contestants )
+				$contestantCount
 			);
 		}
 	}
