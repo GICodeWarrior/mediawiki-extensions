@@ -22,8 +22,8 @@ class ContestReminderJob extends Job {
 	 * * contest, Contest, required
 	 */
 	public function __construct( Title $title, array $params ) {
-		parent::__construct( 'ContestReminderJob', $title, $params );
-		$this->params['emailText'] = ContestUtils::getParsedArticleContent( $this->params['reminder_email'] );
+		parent::__construct( __CLASS__, $title, $params );
+		$this->params['emailText'] = ContestUtils::getParsedArticleContent( $this->params['contest']->getField( 'reminder_email' ) );
 		$this->params['daysLeft'] = $this->params['contest']->getDaysLeft();
 	}
 
