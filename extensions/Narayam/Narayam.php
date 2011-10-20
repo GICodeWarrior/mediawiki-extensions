@@ -275,7 +275,7 @@ $wgResourceModules['ext.narayam.rules.ta-99'] = $narayamTpl + array(
 );
 $wgResourceModules['ext.narayam.rules.ta-bamini'] = $narayamTpl + array(
 	'scripts' => 'js/ext.narayam.rules.ta-bamini.js',
-	'dependencies' => 'ext.narayam.rules.ta', // make sure ta99 loads after ta
+	'dependencies' => 'ext.narayam.rules.ta', // make sure ta-bamini loads after ta
 );
 $wgResourceModules['ext.narayam.rules.te-inscript'] = $narayamTpl + array(
 	'scripts' => 'js/ext.narayam.rules.te-inscript.js',
