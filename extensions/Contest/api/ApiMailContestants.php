@@ -108,7 +108,7 @@ class ApiMailContestants extends ApiBase {
 				'contestants' => $contestants
 			)
 		);
-		$job->insert();
+		return $job->insert();
 	}
 
 	public function needsToken() {
