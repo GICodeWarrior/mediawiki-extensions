@@ -102,8 +102,8 @@ class qp_MixedQuestion extends qp_TabularQuestion {
 				}
 				# always borderless (mixed questions do not have spans)
 				$pview->setCategorySpan();
-				# unique (question,proposal,category) "coordinate" for javascript
-				$inp['id'] = 'mx' . $this->mQuestionId . 'p' . $proposalId . 'c' . $catId;
+				# unique (poll,question,proposal,category) "coordinate" for javascript
+				$inp['id'] = "mx{$this->poll->mOrderId}q{$this->mQuestionId}p{$proposalId}c{$catId}";
 				$inp['class'] = 'check';
 				$inp['type'] = $inputType;
 				$inp['name'] = $name;

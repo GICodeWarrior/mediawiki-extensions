@@ -132,9 +132,16 @@ class qp_Renderer {
 			$tag['class'] = $className;
 			return;
 		}
-		if ( array_search( $className, explode( ' ', $tag['class'] ) ) === false ) {
+		if ( !self::hasClassName( $tag['class'], $className ) ) {
 			$tag['class'] .= " $className";
 		}
+	}
+
+	/**
+	 * Finds whether the class name already exists in class attribute
+	 */
+	static function hasClassName( $classAttr, $className ) {
+		return preg_match( '/(\s|^)' . preg_quote( $className ). '(\s|$)/', $classAttr );
 	}
 
 	/**

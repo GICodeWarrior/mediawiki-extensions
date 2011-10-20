@@ -329,8 +329,8 @@ class qp_TabularQuestion extends qp_StubQuestion {
 				}
 				$pview->setCategorySpan();
 				if ( $this->mSubType == 'unique' ) {
-					# unique (question,category,proposal) "coordinate" for javascript
-					$inp['id'] = 'uq' . $this->mQuestionId . 'c' . $catId . 'p' . $proposalId;
+					# unique (orderid,question,proposal,category) "coordinate" for javascript
+					$inp['id'] = "uq{$this->poll->mOrderId}q{$this->mQuestionId}p{$proposalId}c{$catId}";
 					# If type='unique()' question has more proposals than categories, such question is impossible to complete
 					if ( count( $this->mProposalText ) > count( $this->mCategories ) ) {
 						# if there was no previous errors, hightlight the whole row

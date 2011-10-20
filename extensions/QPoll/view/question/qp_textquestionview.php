@@ -177,23 +177,32 @@ class qp_TextQuestionView extends qp_StubQuestionView {
 	}
 
 	/**
-	 * Generates tagarray representation from the list of viewtokens
+	 * Generates tagarray representation from the list of viewtokens.
+	 * @param   $pkey  proposal index (starting from 0):
+	 *                 it is required for JS code, because text questions
+	 *                 now may optionally have "tabular transposed" layout.
 	 * @param   $viewtokens  array of viewtokens
 	 * @return  tagarray
 	 */
-	function renderParsedProposal( &$viewtokens ) {
+	function renderParsedProposal( $pkey, &$viewtokens ) {
+		# proposal prefix for id generation
+		$id_prefix = "tx{$this->ctrl->poll->mOrderId}q{$this->ctrl->mQuestionId}p{$pkey}";
 		$vr = $this->vr;
 		$vr->reset();
+		# category index, starting from 0
+		$ckey = 0;
 		foreach ( $viewtokens as $elem ) {
 			$vr->cell = array();
 			if ( is_object( $elem ) ) {
 				if ( isset( $elem->options ) ) {
 					$className = 'cat_part';
 					if ( $this->ctrl->mSubType === 'requireAllCategories' && $elem->unanswered ) {
-						$className = 'cat_noanswer';
+						$className .= ' cat_noanswer';
 					}
 					if ( isset( $elem->interpError ) ) {
-						$className = 'cat_noanswer';
+						if ( !qp_Renderer::hasClassName( $className, 'cat_noanswer' ) ) {
+							$className .= ' cat_noanswer';
+						}
 						# create view for proposal/category error message
 						$vr->cell[] = array(
 							'__tag' => 'span',
@@ -210,16 +219,19 @@ class qp_TextQuestionView extends qp_StubQuestionView {
 						if ( !$elem->unanswered && $elem->value === '' && $elem->options[0] !== '' ) {
 							# input text pre-fill
 							$value = $elem->options[0];
-							$className = 'cat_prefilled';
+							$className .= ' cat_prefilled';
 						}
 						$input = array(
 							'__tag' => 'input',
+							# unique (orderid,question,proposal,category) "coordinate" for javascript
+							'id' => "{$id_prefix}c{$ckey}",
 							'class' => $className,
 							'type' => $elem->type,
 							'name' => $elem->name,
 							'value' => qp_Setup::specialchars( $value )
 						);
-						if ( $elem->attributes['checked'] !== null ) {
+						$ckey++;
+						if ( $elem->type !== 'text' && $elem->attributes['checked'] === true ) {
 							$input['checked'] = 'checked';
 						}
 						if ( $this->textInputStyle != '' ) {
@@ -253,10 +265,13 @@ class qp_TextQuestionView extends qp_StubQuestionView {
 					}
 					$vr->cell[] = array(
 						'__tag' => 'select',
+						# unique (poll,question,proposal,category) "coordinate" for javascript
+						'id' => "{$id_prefix}c{$ckey}",
 						'class' => $className,
 						'name' => $elem->name,
 						$html_options
 					);
+					$ckey++;
 					$vr->addCell();
 				} elseif ( isset( $elem->error ) ) {
 					# create view for proposal/category error message
@@ -305,8 +320,8 @@ class qp_TextQuestionView extends qp_StubQuestionView {
 			}
 			qp_Renderer::addRow( $questionTable, $row, $rowattrs, 'th', $attribute_maps );
 		}
-		foreach ( $this->pviews as &$propview ) {
-			$prop = $this->renderParsedProposal( $propview->viewtokens );
+		foreach ( $this->pviews as $pkey => &$propview ) {
+			$prop = $this->renderParsedProposal( $pkey, $propview->viewtokens );
 			$rowattrs = array( 'class' => $propview->rowClass );
 			if ( $this->transposed ) {
 				qp_Renderer::addColumn( $questionTable, $prop, $rowattrs );
