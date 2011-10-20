@@ -3,13 +3,13 @@
 # lighttpd puts the original request in REQUEST_URI, while
 # sjs sets that to the 404 handler, and puts the original
 # request in REDIRECT_URL.
-if (isset($_SERVER['REDIRECT_URL'])) {
+if ( isset( $_SERVER['REDIRECT_URL'] ) ) {
 	# The URL is un-encoded, so put it back how it was.
 	$uri = str_replace("%2F", "/", urlencode($_SERVER['REDIRECT_URL']));
 } else {
 	$uri = $_SERVER['REQUEST_URI'];
 }
-	
+
 # Is this a thumbnail?
 if ( preg_match('!^(?:http://upload.wikimedia.org)?/+([\w-]*)/([\w-]*)/thumb(/archive|/temp|)/\w/\w\w/([^/]*)/' . 
 	'(page(\d*)-)*(\d*)px-([^/]*)$!', $uri, $matches ) )
@@ -121,12 +121,11 @@ foreach ( $params as $name => $value ) {
 
 header( "X-Wikimedia-Thumb: $reqURL" );
 
-
 $ch = curl_init( $reqURL );
 curl_setopt($ch, CURLOPT_PROXY, '10.2.1.21:80');
 
 # Set an XFF header for abuse tracking
-# Use $_SERVER not apache_request_headers beccause this runs under fastcgi
+# Use $_SERVER not apache_request_headers because this runs under fastcgi
 if ( !empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
 	$xff = $_SERVER['HTTP_X_FORWARDED_FOR'] . ', ' . $_SERVER['REMOTE_ADDR'];
 } else {
