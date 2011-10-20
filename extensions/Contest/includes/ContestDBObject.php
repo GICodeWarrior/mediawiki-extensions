@@ -332,7 +332,7 @@ abstract class ContestDBObject {
 	}
 
 	/**
-	 * Return the names of the fields.
+	 * Return the names and values of the fields.
 	 *
 	 * @since 0.1
 	 *
