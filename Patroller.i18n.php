@@ -1395,7 +1395,7 @@ $messages['ml'] = array(
 	'patrol-stopped' => 'മറ്റൊരു തിരുത്തലിൽ റോന്തു ചുറ്റേണ്ടതില്ല എന്നു താങ്കൾ തിരഞ്ഞെടുത്തു.   $1',
 	'patrol-resume' => 'തുടരുന്നതിനായി ഇവിടെ ഞെക്കുക.',
 	'group-patroller' => 'റോന്തു ചുറ്റുന്നവർ',
-	'group-patroller-member' => 'റോന്തു ചുറ്റുന്നവർ',
+	'group-patroller-member' => '{{GENDER:$1|റോന്തു ചുറ്റുന്നവർ}}',
 	'grouppage-patroller' => '{{ns:project}}:റോന്തു ചുറ്റുന്നവർ',
 	'right-patroller' => 'താളുകളിൽ റോന്തുചുറ്റുക',
 );
