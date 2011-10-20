@@ -101,6 +101,9 @@ $wgAPIListModules['contestants'] 				= 'ApiQueryContestants';
 $wgAPIListModules['contestcomments'] 			= 'ApiQueryContestComments';
 $wgAPIListModules['contests'] 					= 'ApiQueryContests';
 
+// Jobs
+$wgJobClasses['ContestReminderJob'] 			= 'ContestReminderJob';
+
 // Hooks
 $wgHooks['LoadExtensionSchemaUpdates'][] 		= 'ContestHooks::onSchemaUpdate';
 $wgHooks['UnitTestsList'][] 					= 'ContestHooks::registerUnitTests';
