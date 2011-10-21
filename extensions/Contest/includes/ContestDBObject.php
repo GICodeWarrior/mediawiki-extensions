@@ -30,8 +30,8 @@ abstract class ContestDBObject {
 	 * @since 0.2
 	 * @var integer DB_ enum
 	 */
-	protected $readDb = DB_SLAVE;
-
+	protected static $readDb = DB_SLAVE;
+	
 	/**
 	 * Constructor.
 	 *
@@ -283,27 +283,6 @@ abstract class ContestDBObject {
 	}
 	
 	/**
-	 * Get the database type used for read operations.
-	 * 
-	 * @since 0.2
-	 * @return integer DB_ enum
-	 */
-	public function getReadDb() {
-		return $this->readDb;
-	}
-	
-	/**
-	 * Set the database type to use for read operations.
-	 * 
-	 * @param integer $db
-	 * 
-	 * @since 0.2
-	 */
-	public function setReadDb( $db ) {
-		$this->readDb = $db;
-	}
-	
-	/**
 	 * Updates the object in the database.
 	 *
 	 * @since 0.1
@@ -480,6 +459,27 @@ abstract class ContestDBObject {
 	//
 	//
 
+	/**
+	 * Get the database type used for read operations.
+	 * 
+	 * @since 0.2
+	 * @return integer DB_ enum
+	 */
+	public function getReadDb() {
+		return self::$readDb;
+	}
+	
+	/**
+	 * Set the database type to use for read operations.
+	 * 
+	 * @param integer $db
+	 * 
+	 * @since 0.2
+	 */
+	public function setReadDb( $db ) {
+		self::$readDb = $db;
+	}
+	
 	/**
 	 * Gets if the object can take a certain field.
 	 *
