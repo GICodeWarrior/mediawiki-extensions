@@ -118,7 +118,7 @@ $messages['fi'] = array(
  * @author Urhixidur
  */
 $messages['fr'] = array(
-	'pipeescape-desc' => 'Fonction parseur <code>#!</code> pour inséser la barre verticale en tant que simple caractère.',
+	'pipeescape-desc' => 'Fonction de l’analyseur syntaxique <code>#!</code> pour insérer une barre verticale non-interprétée.',
 );
 
 /** Galician (Galego)
