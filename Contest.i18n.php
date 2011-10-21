@@ -61,7 +61,7 @@ $messages['en'] = array(
 	'specialpages-group-contest' => 'Contests',
 
 	// Navigation links
-	'contest-nav-contests' => 'Contests list',
+	'contest-nav-contests' => 'Contest list',
 	'contest-nav-editcontest' => 'Edit contest',
 	'contest-nav-contest' => 'Summary and participants',
 	'contest-nav-contestwelcome' => 'Landing page',

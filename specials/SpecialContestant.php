@@ -27,13 +27,16 @@ class SpecialContestant extends SpecialContestPage {
 	 *
 	 * @since 0.1
 	 *
-	 * @param string $arg
+	 * @param string $subPage
 	 */
 	public function execute( $subPage ) {
 		if ( !parent::execute( $subPage ) ) {
 			return;
 		}
 
+		/**
+		 * @var $contestant ContestContestant
+		 */
 		$contestant = ContestContestant::s()->selectRow( 'id', array( 'id' => (int)$subPage ) );
 
 		if ( $contestant === false ) {
