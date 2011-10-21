@@ -142,13 +142,11 @@ class SpecialContestWelcome extends SpecialContestPage {
 			$challenges[] = $data;
 		}
 
-		global $wgContestDeletionEnabled;
-		$this->getOutput()->addScript(
+		$output->addScript(
 			Skin::makeVariablesScript(
 				array(
 					'ContestChallenges' => $challenges,
 					'ContestConfig' => array(),
-					'ContestDeletionEnabled' => $wgContestDeletionEnabled,
 				)
 			)
 		);
