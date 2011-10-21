@@ -286,16 +286,22 @@ es.SurfaceView.prototype.moveCursor = function( direction ) {
 			this.cursor.initialLeft = currentPosition.left;
 		}
 		var	fakePosition = new es.Position( this.cursor.initialLeft, currentPosition.top ),
-			edgeCondition = ( direction == 'up' ) ? 0 : this.documentView.getLength(),
+			edgeCondition = ( direction === 'up' ) ? 0 : this.documentView.getLength(),
 			offset,
 			i = 1;
-
 		do {
-			( direction == 'up' ) ? fakePosition.top -= i++ * 10 : fakePosition.top += i++ * 10;
+			if ( direction == 'up' ) {
+				fakePosition.top -= i++ * 5;
+			} else {
+				fakePosition.top += i++ * 5;
+			}
 			offset = this.documentView.getOffsetFromPosition( fakePosition );
+			if ( offset === edgeCondition ) {
+				return;
+			}
 			fakePosition = this.documentView.getRenderedPosition( offset );
 			fakePosition.left = this.cursor.initialLeft;
-		} while ( currentPosition.top === fakePosition.top && offset !== edgeCondition )
+		} while ( currentPosition.top === fakePosition.top );
 		this.showCursor( this.documentView.getOffsetFromPosition( fakePosition ) );
 	}
 	return;
