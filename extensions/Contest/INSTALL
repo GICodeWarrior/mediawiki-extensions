@@ -61,9 +61,19 @@ how to use the settings, in case the below descriptions do not suffice.
 | array( 'mediawiki.org', 'github.com', 'gitorious.org' )
 | Domains on which submissions can be placed
 |-
-| reminderJobSize
-| integer
-| 50
-| Max size of the reminder email jobs (in emails to send) 
+| mailSender
+| string
+| $GLOBALS['wgPasswordSender']
+| Email address used as sender in signup and reminder emails.
+|-
+| mailSenderName
+| string
+| $GLOBALS['wgPasswordSenderName']
+| Sender name used for signup and reminder emails.
+|-
+| contestDeletionEnabled
+| boolean
+| true
+| Allow deleting of contests and challenges.
 |}
 
