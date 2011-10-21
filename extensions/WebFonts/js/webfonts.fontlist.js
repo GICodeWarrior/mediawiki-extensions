@@ -9,31 +9,31 @@
 	$.webfonts.config = {
 		fonts: {
 			RufScript: {
-				eot: "en/Rufscript.eot",
-				ttf: "en/Rufscript.ttf",
-				woff: "en/Rufscript.woff"
+				eot: "Latn/Rufscript.eot",
+				ttf: "Latn/Rufscript.ttf",
+				woff: "Latn/Rufscript.woff"
 			},
 			Perizia: {
-				eot: "en/Perizia.eot",
-				ttf: "en/Perizia.ttf",
-				woff: "en/Perizia.woff"
+				eot: "Latn/Perizia.eot",
+				ttf: "Latn/Perizia.ttf",
+				woff: "Latn/Perizia.woff"
 			},
 			Ubuntu: {
-				eot: "en/ubuntu-r-webfont.eot",
-				ttf: "en/ubuntu-r.ttf",
-				woff: "en/ubuntu-r-webfont.woff",
-				svg: "en/ubuntu-r-webfont.svg"
+				eot: "Latn/ubuntu-r-webfont.eot",
+				ttf: "Latn/ubuntu-r.ttf",
+				woff: "Latn/ubuntu-r-webfont.woff",
+				svg: "Latn/ubuntu-r-webfont.svg"
 			},
 			
 			AnjaliOldLipi: {
-				eot: "ml/AnjaliOldLipi.eot",
-				ttf: "ml/AnjaliOldLipi.ttf",
-				woff: "ml/AnjaliOldLipi.woff"
+				eot: "Mlym/AnjaliOldLipi.eot",
+				ttf: "Mlym/AnjaliOldLipi.ttf",
+				woff: "Mlym/AnjaliOldLipi.woff"
 			},
 			Meera: {
-				eot: "ml/Meera.eot",
-				ttf: "ml/Meera.ttf",
-				woff: "ml/Meera.woff",
+				eot: "Mlym/Meera.eot",
+				ttf: "Mlym/Meera.ttf",
+				woff: "Mlym/Meera.woff",
 				scale: 1.5,
 				normalization: {
 					"ൾ": "ള്‍",
@@ -47,9 +47,9 @@
 				}
 			},
 			Rachana: {
-				eot: "ml/Rachana.eot",
-				ttf: "ml/Rachana.ttf",
-				woff: "ml/Rachana.woff",
+				eot: "Mlym/Rachana.eot",
+				ttf: "Mlym/Rachana.ttf",
+				woff: "Mlym/Rachana.woff",
 				normalization: {
 					"ൾ": "ള്‍",
 					"ൻ": "ന്‍",
@@ -62,9 +62,9 @@
 				}
 			},
 			RaghuMalayalam: {
-				eot: "ml/RaghuMalayalam.eot",
-				ttf: "ml/RaghuMalayalam.ttf",
-				woff: "ml/RaghuMalayalam.woff",
+				eot: "Mlym/RaghuMalayalam.eot",
+				ttf: "Mlym/RaghuMalayalam.ttf",
+				woff: "Mlym/RaghuMalayalam.woff",
 				normalization: {
 					"ൾ": "ള്‍",
 					"ൻ": "ന്‍",
@@ -78,174 +78,174 @@
 			},
 			
 			"Lohit Oriya": {
-				eot: "or/Lohit-Oriya.eot",
-				ttf: "or/Lohit-Oriya.ttf",
-				woff: "or/Lohit-Oriya.woff"
+				eot: "Orya/Lohit-Oriya.eot",
+				ttf: "Orya/Lohit-Oriya.ttf",
+				woff: "Orya/Lohit-Oriya.woff"
 			},
  
 			"Utkal": {
-				eot: "or/utkal.eot",
-				ttf: "or/utkal.ttf",
-				woff: "or/utkal.woff"
+				eot: "Orya/utkal.eot",
+				ttf: "Orya/utkal.ttf",
+				woff: "Orya/utkal.woff"
 			},
  
 			"Lohit Tamil": {
-				eot: "ta/Lohit-Tamil.eot",
-				ttf: "ta/Lohit-Tamil.ttf",
-				woff: "ta/Lohit-Tamil.woff"
+				eot: "Taml/Lohit-Tamil.eot",
+				ttf: "Taml/Lohit-Tamil.ttf",
+				woff: "Taml/Lohit-Tamil.woff"
 			},
 			
 			"Lohit Telugu": {
-				eot: "te/LohitTelugu.eot",
-				ttf: "te/LohitTelugu.ttf",
-				woff: "te/LohitTelugu.woff"
+				eot: "Telu/LohitTelugu.eot",
+				ttf: "Telu/LohitTelugu.ttf",
+				woff: "Telu/LohitTelugu.woff"
 			},
 			
 			"Lohit Bengali": {
-				eot: "bn/LohitBengali.eot",
-				ttf: "bn/LohitBengali.ttf",
-				woff: "bn/LohitBengali.woff"
+				eot: "Beng/LohitBengali.eot",
+				ttf: "Beng/LohitBengali.ttf",
+				woff: "Beng/LohitBengali.woff"
 			},
 			
 			"Samyak Gujarati": {
-				eot: "gu/SamyakGujarati.eot",
-				ttf: "gu/SamyakGujarati.ttf",
-				woff: "gu/SamyakGujarati.woff"
+				eot: "Gujr/SamyakGujarati.eot",
+				ttf: "Gujr/SamyakGujarati.ttf",
+				woff: "Gujr/SamyakGujarati.woff"
 			},
 			
 			"Lohit Hindi": {
-				eot: "hi/LohitHindi.eot",
-				ttf: "hi/LohitHindi.ttf",
-				woff: "hi/LohitHindi.woff"
+				eot: "Deva/LohitHindi.eot",
+				ttf: "Deva/LohitHindi.ttf",
+				woff: "Deva/LohitHindi.woff"
 			},
 			"Samyak Devanagari": {
-				eot: "hi/SamyakDevanagari.eot",
-				ttf: "hi/SamyakDevanagari.ttf",
-				woff: "hi/SamyakDevanagari.woff"
+				eot: "Deva/SamyakDevanagari.eot",
+				ttf: "Deva/SamyakDevanagari.ttf",
+				woff: "Deva/SamyakDevanagari.woff"
 			},
 			
 			"Miriam CLM": {
-				eot: "he/MiriamCLM-Book.eot",
-				ttf: "he/MiriamCLM-Book.ttf",
-				woff: "he/MiriamCLM-Book.woff"
+				eot: "Hebr/MiriamCLM-Book.eot",
+				ttf: "Hebr/MiriamCLM-Book.ttf",
+				woff: "Hebr/MiriamCLM-Book.woff"
 			},
 			"Taamey Frank CLM": {
-				eot: "he/TaameyFrankCLM.eot",
-				ttf: "he/TaameyFrankCLM.ttf",
-				woff: "he/TaameyFrankCLM.woff",
-				svg: "he/TaameyFrankCLM.svg"
+				eot: "Hebr/TaameyFrankCLM.eot",
+				ttf: "Hebr/TaameyFrankCLM.ttf",
+				woff: "Hebr/TaameyFrankCLM.woff",
+				svg: "Hebr/TaameyFrankCLM.svg"
 			},
 			
 			Kedage: {
-				eot: "kn/Kedage.eot",
-				ttf: "kn/Kedage.ttf",
-				woff: "kn/Kedage.woff"
+				eot: "Knda/Kedage.eot",
+				ttf: "Knda/Kedage.ttf",
+				woff: "Knda/Kedage.woff"
 			},
 			"Lohit Kannada": {
-				eot: "kn/LohitKannada.eot",
-				ttf: "kn/LohitKannada.ttf",
-				woff: "kn/LohitKannada.woff"
+				eot: "Knda/LohitKannada.eot",
+				ttf: "Knda/LohitKannada.ttf",
+				woff: "Knda/LohitKannada.woff"
 			},
 			
 			"Masterpiece Uni Sans": {
-				eot: "my/MasterpieceUniSans.eot",
-				ttf: "my/MasterpieceUniSans.ttf",
-				woff: "my/MasterpieceUniSans.woff",
-				svg:  "my/MasterpieceUniSans.svg"
+				eot: "Mymr/MasterpieceUniSans.eot",
+				ttf: "Mymr/MasterpieceUniSans.ttf",
+				woff: "Mymr/MasterpieceUniSans.woff",
+				svg:  "Mymr/MasterpieceUniSans.svg"
 			},
 			"Padauk-Regular": {
-				eot: "my/Padauk-Regular.eot",
-				ttf: "my/Padauk-Regular.ttf",
-				woff: "my/Padauk-Regular.woff",
-				svg:  "my/Padauk-Regular.svg"
+				eot: "Mymr/Padauk-Regular.eot",
+				ttf: "Mymr/Padauk-Regular.ttf",
+				woff: "Mymr/Padauk-Regular.woff",
+				svg:  "Mymr/Padauk-Regular.svg"
 			},
 			Myanmar3: {
-				eot: "my/Myanmar3.eot",
-				ttf: "my/Myanmar3.ttf",
-				woff: "my/Myanmar3.woff",
-				svg:  "my/Myanmar3.svg"
+				eot: "Mymr/Myanmar3.eot",
+				ttf: "Mymr/Myanmar3.ttf",
+				woff: "Mymr/Myanmar3.woff",
+				svg:  "Mymr/Myanmar3.svg"
 			},
 			Yunghkio: {
-				eot: "my/Yunghkio.eot",
-				ttf: "my/Yunghkio.ttf",
-				woff: "my/Yunghkio.woff",
-				svg:  "my/Yunghkio.svg"
+				eot: "Mymr/Yunghkio.eot",
+				ttf: "Mymr/Yunghkio.ttf",
+				woff: "Mymr/Yunghkio.woff",
+				svg:  "Mymr/Yunghkio.svg"
 			},
 			
 			KhmerOSbattambang: {
-				eot: "km/KhmerOSbattambang.eot",
-				ttf: "km/KhmerOSbattambang.ttf",
-				woff: "km/KhmerOSbattambang.woff",
-				svg:  "km/KhmerOSbattambang.svg"
+				eot: "Khmr/KhmerOSbattambang.eot",
+				ttf: "Khmr/KhmerOSbattambang.ttf",
+				woff: "Khmr/KhmerOSbattambang.woff",
+				svg:  "Khmr/KhmerOSbattambang.svg"
 			},
 			KhmerOSbokor: {
-				eot: "km/KhmerOSbokor.eot",
-				ttf: "km/KhmerOSbokor.ttf",
-				woff: "km/KhmerOSbokor.woff",
-				svg:  "km/KhmerOSbokor.svg"
+				eot: "Khmr/KhmerOSbokor.eot",
+				ttf: "Khmr/KhmerOSbokor.ttf",
+				woff: "Khmr/KhmerOSbokor.woff",
+				svg:  "Khmr/KhmerOSbokor.svg"
 			},
 			KhmerOS: {
-				eot: "km/KhmerOS.eot",
-				ttf: "km/KhmerOS.ttf",
-				woff: "km/KhmerOS.woff",
-				svg:  "km/KhmerOS.svg"
+				eot: "Khmr/KhmerOS.eot",
+				ttf: "Khmr/KhmerOS.ttf",
+				woff: "Khmr/KhmerOS.woff",
+				svg:  "Khmr/KhmerOS.svg"
 			},
 			KhmerOSsiemreap: {
-				eot: "km/KhmerOSsiemreap.eot",
-				ttf: "km/KhmerOSsiemreap.ttf",
-				woff: "km/KhmerOSsiemreap.woff",
-				svg:  "km/KhmerOSsiemreap.svg"
+				eot: "Khmr/KhmerOSsiemreap.eot",
+				ttf: "Khmr/KhmerOSsiemreap.ttf",
+				woff: "Khmr/KhmerOSsiemreap.woff",
+				svg:  "Khmr/KhmerOSsiemreap.svg"
 			},
 			KhmerOSmuollight: {
-				eot: "km/KhmerOSmuollight.eot",
-				ttf: "km/KhmerOSmuollight.ttf",
-				woff: "km/KhmerOSmuollight.woff",
-				svg:  "km/KhmerOSmuollight.svg"
+				eot: "Khmr/KhmerOSmuollight.eot",
+				ttf: "Khmr/KhmerOSmuollight.ttf",
+				woff: "Khmr/KhmerOSmuollight.woff",
+				svg:  "Khmr/KhmerOSmuollight.svg"
 			},
 			KhmerOSmuol: {
-				eot: "km/KhmerOSmuol.eot",
-				ttf: "km/KhmerOSmuol.ttf",
-				woff: "km/KhmerOSmuol.woff",
-				svg:  "km/KhmerOSmuol.svg"
+				eot: "Khmr/KhmerOSmuol.eot",
+				ttf: "Khmr/KhmerOSmuol.ttf",
+				woff: "Khmr/KhmerOSmuol.woff",
+				svg:  "Khmr/KhmerOSmuol.svg"
 			},
 			KhmerOSmuolpali: {
-				eot: "km/KhmerOSmuolpali.eot",
-				ttf: "km/KhmerOSmuolpali.ttf",
-				woff: "km/KhmerOSmuolpali.woff",
-				svg:  "km/KhmerOSmuolpali.svg"
+				eot: "Khmr/KhmerOSmuolpali.eot",
+				ttf: "Khmr/KhmerOSmuolpali.ttf",
+				woff: "Khmr/KhmerOSmuolpali.woff",
+				svg:  "Khmr/KhmerOSmuolpali.svg"
 			},
 			KhmerOSfreehand: {
-				eot: "km/KhmerOSfreehand.eot",
-				ttf: "km/KhmerOSfreehand.ttf",
-				woff: "km/KhmerOSfreehand.woff",
-				svg:  "km/KhmerOSfreehand.svg"
+				eot: "Khmr/KhmerOSfreehand.eot",
+				ttf: "Khmr/KhmerOSfreehand.ttf",
+				woff: "Khmr/KhmerOSfreehand.woff",
+				svg:  "Khmr/KhmerOSfreehand.svg"
 			},
 			KhmerOSfasthand: {
-				eot: "km/KhmerOSfasthand.eot",
-				ttf: "km/KhmerOSfasthand.ttf",
-				woff: "km/KhmerOSfasthand.woff",
-				svg:  "km/KhmerOSfasthand.svg"
+				eot: "Khmr/KhmerOSfasthand.eot",
+				ttf: "Khmr/KhmerOSfasthand.ttf",
+				woff: "Khmr/KhmerOSfasthand.woff",
+				svg:  "Khmr/KhmerOSfasthand.svg"
 			},
 			
 			Pagul: {
-				eot: "saz/Pagul.eot",
-				ttf: "saz/Pagul.ttf",
-				woff: "saz/Pagul.woff"
+				eot: "Saur/Pagul.eot",
+				ttf: "Saur/Pagul.ttf",
+				woff: "Saur/Pagul.woff"
 			},
 			AbyssinicaSIL: {
-				eot: "gez/AbyssinicaSIL-R.eot",
-				ttf: "gez/AbyssinicaSIL-R.ttf",
-				woff: "gez/AbyssinicaSIL-R.woff"
+				eot: "Ethi/AbyssinicaSIL-R.eot",
+				ttf: "Ethi/AbyssinicaSIL-R.ttf",
+				woff: "Ethi/AbyssinicaSIL-R.woff"
 			},
 			"Iranian Sans": {
-				eot: "fa/IranianSans.eot",
-				ttf: "fa/IranianSans.ttf",
-				woff: "fa/IranianSans.woff"
+				eot: "Arab/IranianSans.eot",
+				ttf: "Arab/IranianSans.ttf",
+				woff: "Arab/IranianSans.woff"
 			},
 			"Charis SIL": {
-				eot: "cdo/CharisSIL-R.eot",
-				ttf: "cdo/CharisSIL-R.ttf",
-				woff: "cdo/CharisSIL-R.woff"
+				eot: "Latn/CharisSIL-R.eot",
+				ttf: "Latn/CharisSIL-R.ttf",
+				woff: "Latn/CharisSIL-R.woff"
 			}
 		},
 
