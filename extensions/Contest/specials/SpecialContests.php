@@ -216,8 +216,8 @@ class SpecialContests extends SpecialContestPage {
 					),
 					wfMsg( 'contest-special-edit' )
 				);
-				global $wgContestDeletionEnabled;
-				if ( $wgContestDeletionEnabled ) {
+				
+				if ( ContestSettings::get( 'contestDeletionEnabled' ) ) {
 					$links[] = Html::element(
 						'a',
 						array(

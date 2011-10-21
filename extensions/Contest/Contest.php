@@ -296,8 +296,3 @@ unset( $moduleTemplate );
 $egContestSettings = array();
 
 $wgContestEmailParse = false;
-
-$wgContestMailSender = $wgPasswordSender;
-$wgContestMailSenderName = $wgPasswordSenderName;
-
-$wgContestDeletionEnabled = true;

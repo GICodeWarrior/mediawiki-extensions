@@ -412,8 +412,7 @@ class Contest extends ContestDBObject {
 	 * @return boolean Success indicator
 	 */
 	public function removeAllFromDB() {
-		global $wgContestDeletionEnabled;
-		if ( !$wgContestDeletionEnabled ) {
+		if ( !ContestSettings::get( 'contestDeletionEnabled' ) ) {
 			// Shouldn't get here (UI should prevent it)
 			throw new MWException( 'Contest deletion is disabled', 'contestdeletiondisabled' );
 		}

@@ -95,11 +95,10 @@ class SpecialEditContest extends FormSpecialPage {
 	protected function showContent( $subPage ) {
 		$isNew = $this->getRequest()->wasPosted() && $this->getUser()->matchEditToken( $this->getRequest()->getVal( 'newEditToken' ) );
 
-		global $wgContestDeletionEnabled;
 		$this->getOutput()->addScript(
 			Skin::makeVariablesScript(
 				array(
-					'ContestDeletionEnabled' => $wgContestDeletionEnabled,
+					'ContestDeletionEnabled' => ContestSettings::get( 'contestDeletionEnabled' ),
 				)
 			)
 		);
@@ -320,11 +319,12 @@ class SpecialEditContest extends FormSpecialPage {
 		if ( $idString == '' ) {
 			return true;
 		}
-		global $wgContestDeletionEnabled;
-		if ( !$wgContestDeletionEnabled ) {
+		
+		if ( !ContestSettings::get( 'contestDeletionEnabled' ) ) {
 			// Shouldn't get here (UI should prevent it)
 			throw new MWException( 'Contest deletion is disabled', 'contestdeletiondisabled' );
 		}
+		
 		return ContestChallenge::s()->delete( array( 'id' => explode( '|', $idString ) ) );
 	}
 
