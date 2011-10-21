@@ -216,17 +216,19 @@ class SpecialContests extends SpecialContestPage {
 					),
 					wfMsg( 'contest-special-edit' )
 				);
-
-				$links[] = Html::element(
-					'a',
-					array(
-						'href' => '#',
-						'class' => 'contest-delete',
-						'data-contest-id' => $contest->getId(),
-						'data-contest-token' => $this->getUser()->editToken( 'deletecontest' . $contest->getId() )
-					),
-					wfMsg( 'contest-special-delete' )
-				);
+				global $wgContestDeletionEnabled;
+				if ( $wgContestDeletionEnabled ) {
+					$links[] = Html::element(
+						'a',
+						array(
+							'href' => '#',
+							'class' => 'contest-delete',
+							'data-contest-id' => $contest->getId(),
+							'data-contest-token' => $this->getUser()->editToken( 'deletecontest' . $contest->getId() )
+						),
+						wfMsg( 'contest-special-delete' )
+					);
+				}
 			}
 
 			$links[] = Html::element(
