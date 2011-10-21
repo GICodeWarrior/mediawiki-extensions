@@ -143,7 +143,6 @@ class qp_Setup {
 
 	const ERROR_MISSED_TITLE = 1;
 	const ERROR_INVALID_ADDRESS = 2;
-	const MAX_TEXT_ANSWER_LENGTH = 1024;
 
 	static $pollTag = 'qpoll';
 	static $interpTag = 'qpinterpret';
@@ -157,6 +156,9 @@ class qp_Setup {
 	static $title; // Title instance we got from hook parameter
 	static $user; // User instance we got from hook parameter
 
+	/**
+	 * The map of question 'type' attribute value to the question's ctrl / view / subtype.
+	 */
 	static $questionTypes = array(
 		'[]' => array(
 			'ctrl' => 'qp_TabularQuestion',
@@ -198,9 +200,11 @@ class qp_Setup {
 		NS_QP_INTERPRETATION_TALK => 'Interpretation_talk'
 	);
 
-	# stores interpretation script line numbers separately for
-	# every script language (currently only php eval is implemented)
-	# key is value of <qpinterpret> xml tag 'lang' attribute, value is source line counter
+	/**
+	 * Stores interpretation script line numbers separately for
+	 * every script language.
+	 * key is value of <qpinterpret> xml tag 'lang' attribute, value is source line counter
+	 */
 	static $scriptLinesCount = array();
 
 	/**
@@ -215,16 +219,26 @@ class qp_Setup {
 	public static $cache_control = false;
 	# number of submit attempts allowed (0 or less for infinite number)
 	public static $max_submit_attempts = 0;
-	# maximal length of question proposal row
-	# tuned for MySQL ROW_FORMAT=REDUNDANT, ROW_FORMAT=COMPACT
-	# feel free to increase the value for ROW_FORMAT=DYNAMIC, ROW_FORMAT=COMPRESSED
-	# however make sure that the whole row will fit into DB page,
-	# otherwise the performance may decrease
-	# it is important only for question type="text", where
-	# proposal text contains serialized array of proposal parts and category fields
-	public static $proposal_max_length = 768;
-	# not larger than DB field size, otherwise serialization will be invalid
-	public static $structured_interpretation_max_length = 65535;
+	/**
+	 * Maximal length of table row is tuned for
+	 * MySQL ROW_FORMAT=REDUNDANT, ROW_FORMAT=COMPACT .
+	 * Feel free to increase the value for
+	 * ROW_FORMAT=DYNAMIC, ROW_FORMAT=COMPRESSED ,
+	 * however make sure that the whole row will fit into DB page.
+	 * Otherwise the DB performance may decrease.
+	 */
+	public static $field_max_len = array(
+		# not larger than DB field size, otherwise checking of dependance chain will fail:
+		'dependance' => 768,
+		'common_question' => 768,
+		# 'proposal_text' length is important for question type="text", where
+		# proposal text contains serialized array of proposal parts and category fields:
+		'proposal_text' => 768,
+		'text_answer' => 768,
+		'long_interpretation' => 768,
+		# not larger than DB field size, otherwise unserialization will be invalid:
+		'serialized_interpretation' => 65535
+	);
 	# whether to show short, long, structured interpretation results to end user
 	public static $show_interpretation = array(
 		'error' => true,
@@ -235,11 +249,11 @@ class qp_Setup {
 	/* end of default configuration settings */
 
 	static function entities( $s ) {
-		return htmlentities( $s, ENT_COMPAT, 'UTF-8' );
+		return htmlentities( $s, ENT_QUOTES, 'UTF-8' );
 	}
 
 	static function specialchars( $s ) {
-		return htmlspecialchars( $s, ENT_COMPAT, 'UTF-8' );
+		return htmlentities( $s, ENT_QUOTES, 'UTF-8' );
 	}
 
 	/**

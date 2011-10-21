@@ -188,6 +188,7 @@
 						case 'tx' :
 							// handler for text question proposal rows
 							addEvent( input[j], "click", self.clickTextRow );
+							break;
 						}
 					} else {
 						// non-unique, non-mixed tabular questions

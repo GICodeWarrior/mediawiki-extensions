@@ -159,7 +159,7 @@ class qp_TextQuestionOptions {
 class qp_TextQuestion extends qp_StubQuestion {
 
 	# regexp for separation of proposal line tokens
-	var $propCatPattern = null;
+	var $propCatPattern;
 
 	# source "raw" tokens (preg_split)
 	var $rawtokens;
@@ -189,7 +189,11 @@ class qp_TextQuestion extends qp_StubQuestion {
 	# only proposal parts and category options
 	var $dbtokens = array();
 
-	# list of opening input braces types
+	# List of opening input braces types
+	# input is html representation of category:
+	# brace value 'text' is mapped to input text or to select option;
+	# brace values 'radio' and 'checkbox' are mapped to
+	# input radio and input checkbox, respectively.
 	var $input_braces_types = array(
 		'<<' => 'text',
 		'<(' => 'radio',
@@ -225,16 +229,14 @@ class qp_TextQuestion extends qp_StubQuestion {
 				unset( $this->matching_braces[$radio_brace] );
 			}
 		}
-		if ( $this->propCatPattern === null ) {
-			$braces_list = array_map( 'preg_quote',
-				array_merge(
-					( array_values( $this->matching_braces ) ),
-					array_keys( $this->matching_braces ),
-					array( '|' )
-				)
-			);
-			$this->propCatPattern = '/(' . implode( '|', $braces_list ) . ')/u';
-		}
+		$braces_list = array_map( 'preg_quote',
+			array_merge(
+				( array_values( $this->matching_braces ) ),
+				array_keys( $this->matching_braces ),
+				array( '|' )
+			)
+		);
+		$this->propCatPattern = '/(' . implode( '|', $braces_list ) . ')/u';
 	}
 
 	/**
@@ -252,6 +254,7 @@ class qp_TextQuestion extends qp_StubQuestion {
 	 * Also, stores checkbox / radio / text answer into the parsed tokens list (propview)
 	 */
 	function loadProposalCategory( qp_TextQuestionOptions $opt, $proposalId, $catId ) {
+		global $wgContLang;
 		$name = "q{$this->mQuestionId}p{$proposalId}s{$catId}";
 		# default value for unanswered category
 		# boolean true "checked" checkbox / radiobutton
@@ -261,8 +264,8 @@ class qp_TextQuestion extends qp_StubQuestion {
 		if ( $this->poll->mBeingCorrected && $this->mRequest->getVal( $name ) !== null ) {
 			if ( $opt->type === 'text' ) {
 				if ( ( $ta = trim( $this->mRequest->getText( $name ) ) ) != '' ) {
-					if ( strlen( $ta ) > qp_Setup::MAX_TEXT_ANSWER_LENGTH ) {
-						$text_answer = substr( $ta, 0, qp_Setup::MAX_TEXT_ANSWER_LENGTH );
+					if ( strlen( $ta ) > qp_Setup::$field_max_len['text_answer'] ) {
+						$text_answer = $wgContLang->truncate( $ta, qp_Setup::$field_max_len['text_answer'] , '' );
 					} else {
 						$text_answer = $ta;
 					}
@@ -358,8 +361,13 @@ class qp_TextQuestion extends qp_StubQuestion {
 				}
 			}
 		}
-		# trying to backtrack non-closed braces only these which belong to
-		# $this->input_braces_types
+	}
+
+	/**
+	 * Trying to backtrack non-closed braces only for these which belong to
+	 * $this->input_braces_types
+	 */
+	private function backtrackMismatchingBraces() {
 		$brace_keys = array_keys( $this->brace_matches, true );
 		for ( $i = count( $brace_keys ) - 1; $i >= 0; $i-- ) {
 			$brace_match = &$this->brace_matches[$brace_keys[$i]];
@@ -424,6 +432,7 @@ class qp_TextQuestion extends qp_StubQuestion {
 			$this->rawtokens = preg_split( $this->propCatPattern, $raw, -1, PREG_SPLIT_DELIM_CAPTURE );
 			$matching_closed_brace = '';
 			$this->findMatchingBraces();
+			$this->backtrackMismatchingBraces();
 			foreach ( $this->rawtokens as $tkey => $token ) {
 				# $toBeStored == true when current $token has to be stored into
 				# category / proposal list (depending on $opt->isCatDef)
@@ -486,7 +495,7 @@ class qp_TextQuestion extends qp_StubQuestion {
 			}
 			$proposal_text = serialize( $this->dbtokens );
 			# build the whole raw DB proposal_text value to check it's maximal length
-			if ( strlen( qp_QuestionData::getProposalNamePrefix( $prop_name ) . $proposal_text ) > qp_Setup::$proposal_max_length ) {
+			if ( strlen( qp_QuestionData::getProposalNamePrefix( $prop_name ) . $proposal_text ) > qp_Setup::$field_max_len['proposal_text'] ) {
 				# too long proposal field to store into the DB
 				# this is very important check for text questions because
 				# category definitions are stored within the proposal text

@@ -832,9 +832,10 @@ class qp_PollStore {
 	}
 
 	private function setQuestionDesc() {
+		global $wgContLang;
 		$insert = array();
 		foreach ( $this->Questions as $qkey => &$ques ) {
-			$insert[] = array( 'pid' => $this->pid, 'question_id' => $qkey, 'type' => $ques->type, 'common_question' => $ques->CommonQuestion );
+			$insert[] = array( 'pid' => $this->pid, 'question_id' => $qkey, 'type' => $ques->type, 'common_question' => $wgContLang->truncate( $ques->CommonQuestion, qp_Setup::$field_max_len['common_question'] , '' ) );
 			$ques->question_id = $qkey;
 		}
 		if ( count( $insert ) > 0 ) {
@@ -870,7 +871,7 @@ class qp_PollStore {
 				if ( isset( $ques->ProposalNames[$propkey] ) ) {
 					$ptext = qp_QuestionData::getProposalNamePrefix( $ques->ProposalNames[$propkey] ) . $ptext;
 				}
-				$insert[] = array( 'pid' => $this->pid, 'question_id' => $qkey, 'proposal_id' => $propkey, 'proposal_text' => $wgContLang->truncate( $ptext, qp_Setup::$proposal_max_length , '' ) );
+				$insert[] = array( 'pid' => $this->pid, 'question_id' => $qkey, 'proposal_id' => $propkey, 'proposal_text' => $wgContLang->truncate( $ptext, qp_Setup::$field_max_len['proposal_text'] , '' ) );
 			}
 		}
 		if ( count( $insert ) > 0 ) {

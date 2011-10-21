@@ -43,6 +43,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class qp_TextQuestionViewRow {
 
+	# owner of row ( an insance of qp_TextQuestionView )
+	var $owner;
+	# proposal prefix for category tag id generation
+	var $id_prefix;
 	# each element of row is real table cell or "cell" with spans,
 	# depending on $this->tabularDisplay value
 	var $row;
@@ -51,15 +55,98 @@ class qp_TextQuestionViewRow {
 	# tagarray with current cell builded for row
 	# cell contains one or multiple tags, describing proposal part or category
 	var $cell;
+	# current category id
+	var $ckey;
 
-	function __construct() {
-		$this->reset();
+	function __construct( qp_TextQuestionView $owner ) {
+		$this->owner = $owner;
+		$this->reset( '' );
 	}
 
-	function reset() {
+	function reset( $id_prefix ) {
+		$this->id_prefix = $id_prefix;
 		$this->row = array();
 		$this->error = array();
 		$this->cell = array();
+		# category index, starting from 0
+		$this->ckey = 0;
+	}
+
+	function addError( $elem ) {
+		$this->cell[] = array(
+			'__tag' => 'span',
+			'class' => 'proposalerror',
+			$elem->interpError
+		);
+	}
+
+	function addInput( $elem, $className ) {
+		$value = $elem->value;
+		# check, whether the definition of category has "pre-filled" value
+		# single, non-unanswered, non-empty option is a pre-filled value
+		if ( !$elem->unanswered && $elem->value === '' && $elem->options[0] !== '' ) {
+			# input text pre-fill
+			$value = $elem->options[0];
+			$className .= ' cat_prefilled';
+		}
+		$input = array(
+			'__tag' => 'input',
+			# unique (poll_type,order_id,question,proposal,category) "coordinate" for javascript
+			'id' => "{$this->id_prefix}c{$this->ckey}",
+			'class' => $className,
+			'type' => $elem->type,
+			'name' => $elem->name,
+			'value' => qp_Setup::specialchars( $value )
+		);
+		$this->ckey++;
+		if ( $elem->type !== 'text' && $elem->attributes['checked'] === true ) {
+			$input['checked'] = 'checked';
+		}
+		if ( $elem->type === 'text' && $this->owner->textInputStyle != '' ) {
+			# apply poll's textwidth attribute
+			$input['style'] = $this->owner->textInputStyle;
+		}
+		if ( $elem->attributes['width'] !== null ) {
+			# apply current category width attribute
+			$input['style'] = 'width:' . intval( $elem->attributes['width'] ) . 'em;';
+		}
+		$this->cell[] = $input;
+	}
+
+	function addSelect( $elem, $className ) {
+		if ( $elem->options[0] !== '' ) {
+			# default element in select/option set always must be empty option
+			array_unshift( $elem->options, '' );
+		}
+		$html_options = array();
+		foreach ( $elem->options as $option ) {
+			$html_option = array(
+				'__tag' => 'option',
+				'value' => qp_Setup::entities( $option ),
+				qp_Setup::specialchars( $option )
+			);
+			if ( $option === $elem->value ) {
+				$html_option['selected'] = 'selected';
+			}
+			$html_options[] = $html_option;
+		}
+		$this->cell[] = array(
+			'__tag' => 'select',
+			# unique (poll_type,order_id,question,proposal,category) "coordinate" for javascript
+			'id' => "{$this->id_prefix}c{$this->ckey}",
+			'class' => $className,
+			'name' => $elem->name,
+			$html_options
+		);
+		$this->ckey++;
+	}
+
+	function addProposalPart( $elem ) {
+		$this->cell[] = array(
+			'__tag' => 'span',
+			'class' => 'prop_part',
+			$this->owner->rtp( $elem )
+		);
 	}
 
 	function addCell() {
@@ -105,7 +192,7 @@ class qp_TextQuestionView extends qp_StubQuestionView {
 	 */
 	function __construct( &$parser, &$frame, $showResults ) {
 		parent::__construct( $parser, $frame );
-		$this->vr = new qp_TextQuestionViewRow();
+		$this->vr = new qp_TextQuestionViewRow( $this );
 		/* todo: implement showResults */
 	}
 
@@ -185,12 +272,9 @@ class qp_TextQuestionView extends qp_StubQuestionView {
 	 * @return  tagarray
 	 */
 	function renderParsedProposal( $pkey, &$viewtokens ) {
-		# proposal prefix for id generation
-		$id_prefix = "tx{$this->ctrl->poll->mOrderId}q{$this->ctrl->mQuestionId}p{$pkey}";
 		$vr = $this->vr;
-		$vr->reset();
-		# category index, starting from 0
-		$ckey = 0;
+		# proposal prefix for category tag id generation
+		$vr->reset( "tx{$this->ctrl->poll->mOrderId}q{$this->ctrl->mQuestionId}p{$pkey}" );
 		foreach ( $viewtokens as $elem ) {
 			$vr->cell = array();
 			if ( is_object( $elem ) ) {
@@ -204,74 +288,17 @@ class qp_TextQuestionView extends qp_StubQuestionView {
 							$className .= ' cat_noanswer';
 						}
 						# create view for proposal/category error message
-						$vr->cell[] = array(
-							'__tag' => 'span',
-							'class' => 'proposalerror',
-							$elem->interpError
-						);
+						$vr->addError( $elem );
 					}
 					# create view for the input options part
 					if ( count( $elem->options ) === 1 ) {
 						# one option produces html text / radio / checkbox input
-						$value = $elem->value;
-						# check, whether the definition of category has "pre-filled" value
-						# single, non-unanswered, non-empty option is a pre-filled value
-						if ( !$elem->unanswered && $elem->value === '' && $elem->options[0] !== '' ) {
-							# input text pre-fill
-							$value = $elem->options[0];
-							$className .= ' cat_prefilled';
-						}
-						$input = array(
-							'__tag' => 'input',
-							# unique (orderid,question,proposal,category) "coordinate" for javascript
-							'id' => "{$id_prefix}c{$ckey}",
-							'class' => $className,
-							'type' => $elem->type,
-							'name' => $elem->name,
-							'value' => qp_Setup::specialchars( $value )
-						);
-						$ckey++;
-						if ( $elem->type !== 'text' && $elem->attributes['checked'] === true ) {
-							$input['checked'] = 'checked';
-						}
-						if ( $this->textInputStyle != '' ) {
-							# apply poll's textwidth attribute
-							$input['style'] = $this->textInputStyle;
-						}
-						if ( $elem->attributes['width'] !== null ) {
-							# apply current category width attribute
-							$input['style'] = 'width:' . intval( $elem->attributes['width'] ) . 'em;';
-						}
-						$vr->cell[] = $input;
+						$vr->addInput( $elem, $className );
 						$vr->addCell();
 						continue;
 					}
 					# multiple options produce html select / options
-					if ( $elem->options[0] !== '' ) {
-						# default element in select/option set always must be empty option
-						array_unshift( $elem->options, '' );
-					}
-					$html_options = array();
-					foreach ( $elem->options as $option ) {
-						$html_option = array(
-							'__tag' => 'option',
-							'value' => qp_Setup::entities( $option ),
-							qp_Setup::specialchars( $option )
-						);
-						if ( $option === $elem->value ) {
-							$html_option['selected'] = 'selected';
-						}
-						$html_options[] = $html_option;
-					}
-					$vr->cell[] = array(
-						'__tag' => 'select',
-						# unique (poll,question,proposal,category) "coordinate" for javascript
-						'id' => "{$id_prefix}c{$ckey}",
-						'class' => $className,
-						'name' => $elem->name,
-						$html_options
-					);
-					$ckey++;
+					$vr->addSelect( $elem, $className );
 					$vr->addCell();
 				} elseif ( isset( $elem->error ) ) {
 					# create view for proposal/category error message
@@ -285,11 +312,7 @@ class qp_TextQuestionView extends qp_StubQuestionView {
 				}
 			} else {
 				# create view for the proposal part
-				$vr->cell[] = array(
-					'__tag' => 'span',
-					'class' => 'prop_part',
-					$this->rtp( $elem )
-				);
+				$vr->addProposalPart( $elem );
 				$vr->addCell();
 			}
 		}
