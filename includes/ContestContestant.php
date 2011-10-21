@@ -492,8 +492,8 @@ class ContestContestant extends ContestDBObject {
 		$title = wfMsg( 'contest-email-signup-title' );
 		$emailText = ContestUtils::getParsedArticleContent( $this->getContest()->getField( 'signup_email' ) );
 		$user = $this->getUser();
-		$sender = ContestSettings::get( 'wgPasswordSender' );
-		$senderName = ContestSettings::get( 'wgPasswordSenderName' );
+		$sender = ContestSettings::get( 'mailSender' );
+		$senderName = ContestSettings::get( 'mailSenderName' );
 
 		wfRunHooks( 'ContestBeforeSignupEmail', array( &$this, &$title, &$emailText, &$user, &$sender, &$senderName ) );
 
@@ -521,8 +521,8 @@ class ContestContestant extends ContestDBObject {
 
 		$title = wfMsgExt( 'contest-email-reminder-title', 'parsemag', $params['daysLeft'] );
 		$user = $this->getUser();
-		$sender = ContestSettings::get( 'wgPasswordSender' );
-		$senderName = ContestSettings::get( 'wgPasswordSenderName' );
+		$sender = ContestSettings::get( 'mailSender' );
+		$senderName = ContestSettings::get( 'mailSenderName' );
 
 		wfRunHooks( 'ContestBeforeReminderEmail', array( &$this, &$title, &$emailText, &$user, &$sender, &$senderName ) );
 
