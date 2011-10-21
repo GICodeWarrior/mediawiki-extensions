@@ -291,11 +291,7 @@ es.SurfaceView.prototype.moveCursor = function( direction ) {
 			i = 1;
 
 		do {
-			if ( direction == 'up' ) {
-				fakePosition.top -= i++ * 10;
-			} else {
-				fakePosition.top += i++ * 10;
-			}
+			( direction == 'up' ) ? fakePosition.top -= i++ * 10 : fakePosition.top += i++ * 10;
 			offset = this.documentView.getOffsetFromPosition( fakePosition );
 			fakePosition = this.documentView.getRenderedPosition( offset );
 			fakePosition.left = this.cursor.initialLeft;
