@@ -21,11 +21,6 @@ class WebFontsHooks {
 	public static function addVariables( &$vars ) {
 		global $wgWebFontsEnabledByDefault, $wgUser;
 
-		if ( $wgUser->getOption( 'webfontsDisable' ) ) {
-			// User disabled WebFonts
-			return true;
-		}
-
 		if ( $wgUser->isAnon() ) {
 			// If user enabled webfonts from preference page, 
 			// wgWebFontsEnabledByDefault is overridden by that.
