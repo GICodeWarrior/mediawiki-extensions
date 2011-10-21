@@ -55,11 +55,11 @@ class qp_PollStats extends qp_AbstractPoll {
 	function setHeaders() {
 		if ( $this->mPollId !== null ) {
 			$this->mState = "error";
-			return self::fatalError( 'qp_error_id_in_stats_mode' );
+			return self::fatalErrorNoQuote( 'qp_error_id_in_stats_mode' );
 		}
 		if ( isset( $this->dependsOn ) && $this->dependsOn !== '' ) {
 			$this->mState = "error";
-			return self::fatalError( 'qp_error_dependance_in_stats_mode' );
+			return self::fatalErrorNoQuote( 'qp_error_dependance_in_stats_mode' );
 		}
 		return true;
 	}
@@ -72,11 +72,11 @@ class qp_PollStats extends qp_AbstractPoll {
 	function getPollStore() {
 		$this->pollStore = qp_PollStore::newFromAddr( $this->pollAddr );
 		if ( !( $this->pollStore instanceof qp_PollStore ) || $this->pollStore->pid === null ) {
-			return self::fatalError( 'qp_error_no_such_poll', $this->pollAddr );
+			return self::fatalErrorQuote( 'qp_error_no_such_poll', $this->pollAddr );
 		}
 		if ( !$this->pollStore->loadQuestions() ) {
 			$this->mState = "error";
-			return self::fatalError( 'qp_error_no_stats', $this->pollAddr );
+			return self::fatalErrorQuote( 'qp_error_no_stats', $this->pollAddr );
 		}
 		$this->pollStore->setLastUser( $this->username, false );
 		# do not check the result, because we may show results even if the user hasn't voted

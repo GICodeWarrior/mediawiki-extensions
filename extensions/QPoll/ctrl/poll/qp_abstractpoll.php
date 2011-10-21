@@ -162,13 +162,27 @@ class qp_AbstractPoll {
 		}
 	}
 
-	static function fatalError() {
+	/**
+	 * Warning! When calling, do not forget to htmlquote the arguments, when required!
+	 */
+	static function fatalErrorNoQuote() {
 		$args = func_get_args();
-		$result = 'Extension bug: ' . __METHOD__ . ' called without arguments';
-		if ( count( $args > 0 ) ) {
-			$result = call_user_func_array( 'wfMsgHTML', $args );
+		if ( count( $args ) < 1 ) {
+			throw new MWException( 'Too few arguments in ' . __METHOD__ );
 		}
-		return '<div class="qpoll"><div class="fatalerror">' . $result . '</div></div>';
+		return '<div class="qpoll"><div class="fatalerror">' . call_user_func_array( 'wfMsgHTML', $args ) . '</div></div>';
+	}
+
+	static function fatalErrorQuote() {
+		$args = func_get_args();
+		if ( count( $args ) < 1 ) {
+			throw new MWException( 'Too few arguments in ' . __METHOD__ );
+		}
+		$key = array_shift( $args );
+		# quote the params (if any)
+		$args = array_map( array( 'qp_Setup', 'specialchars' ), $args );
+		array_unshift( $args, $key );
+		return call_user_func_array( array( self, 'fatalErrorNoQuote' ), $args );
 	}
 
 	static function s_getPollTitleFragment( $pollid, $dash = '#' ) {

@@ -69,7 +69,7 @@ class qp_Interpret {
 	 * @return instance of qp_InterpResult class (interpretation result)
 	 */
 	static function getResult( $interpArticle, $injectVars ) {
-		global $wgParser;
+		global $wgParser, $wgContLang;
 		$matches = array();
 		# extract <qpinterpret> tags from the article content
 		$wgParser->extractTagsAndParams( array( qp_Setup::$interpTag ), $interpArticle->getRawText(), $matches );
@@ -153,12 +153,17 @@ class qp_Interpret {
 			return $interpResult->setError( wfMsg( 'qp_error_interpretation_no_return' ) );
 		}
 		$interpResult->structured = isset( $result['structured'] ) ? serialize( $result['structured'] ) : '';
-		if ( strlen( $interpResult->structured ) > qp_Setup::$structured_interpretation_max_length ) {
+		if ( strlen( $interpResult->structured ) > qp_Setup::$field_max_len['serialized_interpretation'] ) {
+			# serialized structured interpretation is too long and
+			# this type of interpretation cannot be truncated
 			unset( $interpResult->structured );
 			return $interpResult->setError( wfMsg( 'qp_error_structured_interpretation_is_too_long' ) );
 		}
 		$interpResult->short = isset( $result['short'] ) ? strval( $result['short'] ) : '';
 		$interpResult->long = isset( $result['long'] ) ? strval( $result['long'] ) : '';
+		if ( strlen( $interpResult->long ) > qp_Setup::$field_max_len['long_interpretation'] ) {
+			$interpResult->long = $wgContLang->truncate( $interpResult->long, qp_Setup::$field_max_len['long_interpretation'] , '' );
+		}
 		return $interpResult;
 	}
 

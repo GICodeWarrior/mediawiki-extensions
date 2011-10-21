@@ -15,6 +15,7 @@ class qp_MixedQuestion extends qp_TabularQuestion {
 	 * also may be altered during the poll generation
 	 */
 	function parseBody() {
+		global $wgContLang;
 		$this->mProposalPattern = '`^';
 		foreach ( $this->mCategories as $catDesc ) {
 			$this->mProposalPattern .= '(\[\]|\(\)|<>)';
@@ -76,8 +77,8 @@ class qp_MixedQuestion extends qp_TabularQuestion {
 				if ( $this->poll->mBeingCorrected && $this->mRequest->getVal( $name ) !== null ) {
 					if ( $inputType == 'text' ) {
 						$text_answer = trim( $this->mRequest->getText( $name ) );
-						if ( strlen( $text_answer ) > qp_Setup::MAX_TEXT_ANSWER_LENGTH ) {
-							$text_answer = substr( $text_answer, 0, qp_Setup::MAX_TEXT_ANSWER_LENGTH );
+						if ( strlen( $text_answer ) > qp_Setup::$field_max_len['text_answer'] ) {
+							$text_answer = $wgContLang->truncate( $text_answer, qp_Setup::$field_max_len['text_answer'] , '' );
 						}
 						if ( $text_answer != '' ) {
 							$input_checked = true;

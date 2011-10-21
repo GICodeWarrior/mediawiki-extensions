@@ -108,6 +108,7 @@ Make sure that the poll declared and saved, also be sure to use address delimite
 	'qp_error_invalid_poll_id' => 'Invalid poll id (id=$1).
 Poll id may contain only letters, numbers and space character.',
 	'qp_error_already_used_poll_id' => 'The poll id has already been used on this page (id=$1).',
+	'qp_error_too_long_dependance_value' => 'The poll (id=$1) dependance attribute value (dependance="$2") is too long to be stored in database.',
 	'qp_error_invalid_dependance_value' => 'The poll (id=$1) dependance chain has invalid value of dependance attribute (dependance="$2").',
 	'qp_error_missed_dependance_title' => 'The poll (id=$1) is dependant on the another poll (id=$3) from page [[$2]], but the title [[$2]] was not found.
 Either remove the dependance attribute, or restore [[$2]].',
@@ -225,6 +226,9 @@ $messages['qqq'] = array(
 	'qp_error_invalid_question_type' => '{{Identical|Invalid value of qustion xml-like "type" attribute was specified. There is no such type of question. Please read the manual for list of valid question types.}}',
 	'qp_error_type_in_stats_mode' => 'Question\'s "type" xml-like attribute is meaningless in statistical display mode.',
 	'qp_error_no_poll_id' => 'Every poll definition in declaration / voting mode must have "id" attribute.',
+	'qp_error_too_long_dependance_value' => 'Parameters:
+* $1 is the poll ID of the poll having an error.
+* $2 is the value of poll "dependance" attribute, which cannot be stored into database because it is too long.',
 	'qp_error_missed_dependance_poll' => 'Parameters:
 * $1 is the poll ID of the poll having an error.
 * $2 is a link to the page with the poll, that this erroneous poll depends on.
@@ -2707,6 +2711,7 @@ $messages['ru'] = array(
 	'qp_error_no_poll_id' => 'Тэг опроса не имеет атрибута id.',
 	'qp_error_invalid_poll_id' => 'Недопустимый идентификатор опроса (id=$1). Идентификатор опроса может содержать только буквы, цифры и символ пробела',
 	'qp_error_already_used_poll_id' => 'Установленный атрибут id опроса уже используется другим опросом на данной странице (id=$1).',
+	'qp_error_too_long_dependance_value' => 'Значение атрибута зависимости опросов (dependance="$2") для опроса (id=$1) имеет слишком большую длину, из-за чего не может быть сохранено.',
 	'qp_error_invalid_dependance_value' => 'В цепочке зависимости опросов для опроса (id=$1) было найдено синтаксически неверное значение атрибута зависимости (dependance="$2")',
 	'qp_error_missed_dependance_title' => 'Опрос с идентификатором id=$1 имеет атрибут зависимости от другого опроса (id=$3), находящегося на отсутствующей странице [[$2]]. Необходимо убрать атрибут зависимости от другого опроса, либо восстановить страницу [[$2]]',
 	'qp_error_missed_dependance_poll' => 'Опрос с идентификатором id=$1 требует прохождения другого опроса с идентификатором id=$3, находящегося на странице $2. Однако же, последний не был найден. Необходимо удалить атрибут зависимости из опроса (id=$1), либо создать опрос с идентификатором id=$3 на странице $2 и сохранить его. Для сохранения опроса будет достаточно нажать кнопку "Проголосовать", не отвечая ни на один вопрос.',
