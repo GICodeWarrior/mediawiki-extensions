@@ -35,7 +35,6 @@ $wgAutoloadClasses['WebFontsHooks'] = "$dir/WebFonts.hooks.php";
 
 $wgHooks['BeforePageDisplay'][] = 'WebFontsHooks::addModules';
 $wgHooks['GetPreferences'][] = 'WebFontsHooks::addPreference';
-$wgHooks['ResourceLoaderGetConfigVars'][] = 'WebFontsHooks::addConfig';
 $wgHooks['MakeGlobalVariablesScript'][] = 'WebFontsHooks::addVariables';
 
 $wgWebFontsEnabled = true;
