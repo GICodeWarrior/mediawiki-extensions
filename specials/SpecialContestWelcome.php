@@ -142,11 +142,13 @@ class SpecialContestWelcome extends SpecialContestPage {
 			$challenges[] = $data;
 		}
 
+		global $wgContestDeletionEnabled;
 		$this->getOutput()->addScript(
 			Skin::makeVariablesScript(
 				array(
 					'ContestChallenges' => $challenges,
-					'ContestConfig' => array()
+					'ContestConfig' => array(),
+					'ContestDeletionEnabled' => $wgContestDeletionEnabled,
 				)
 			)
 		);
@@ -188,7 +190,7 @@ class SpecialContestWelcome extends SpecialContestPage {
 	 */
 	protected function showRules( Contest $contest ) {
 		// TODO: we might want to have a pop-up with the content here, instead of a link to the page.
-		$this->getOutput()->addWikiMsgArray( 'contest-welcome-rules', $contest->getField( 'rules_page' ) ); 
+		$this->getOutput()->addWikiMsgArray( 'contest-welcome-rules', $contest->getField( 'rules_page' ) );
 	}
 
 	/**

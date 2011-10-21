@@ -80,14 +80,16 @@
 				).append( '<br />' ).append( this.textInput )
 			);
 
-			this.deleteButton = $( '<button />' )
-				.button( { 'label': mw.msg( 'contest-edit-delete' ) } )
-				.click( function() {
-					if ( confirm( mw.msg( 'contest-edit-confirm-delete' ) ) ) {
-						_this.remove();
-						return false;
-					}
-				} );
+			if ( mw.config.get( 'ContestDeletionEnabled' ) ) {
+				this.deleteButton = $( '<button />' )
+					.button( { 'label': mw.msg( 'contest-edit-delete' ) } )
+					.click( function() {
+						if ( confirm( mw.msg( 'contest-edit-confirm-delete' ) ) ) {
+							_this.remove();
+							return false;
+						}
+					} );
+			}
 
 			$this.append( this.deleteButton );
 		};
