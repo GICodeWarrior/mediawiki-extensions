@@ -442,6 +442,22 @@ Tamén pode [[Special:Favoritelist/edit|empregar o editor normal]].',
 	'favoritelisttools-raw' => 'Editar a lista simple de favoritos',
 );
 
+/** Hebrew (עברית)
+ * @author Deror avi
+ */
+$messages['he'] = array(
+	'favorites-desc' => 'יצירת רשימת מועדפים',
+	'favoritethis' => 'הוסף דף זה לרשימת המועדפים',
+	'prefs-favoritelist' => 'רשימת מועדפים',
+	'prefs-favoritelist-token' => 'מידע על מועדפים:',
+	'prefs-advancedfavoritelist' => 'אפשרויות מתקדמות',
+	'favoritelist' => 'המועדפים שלי',
+	'myfavoritelist' => 'המועדפים שלי',
+	'favoritelistfor' => "(עבור '''$1''')",
+	'nofavoritelist' => 'אין פריטים ברשימת המועדפים שלך.',
+	'favoritelistanontext' => 'נא $1 על מנת לצפות או לערוך פריטים ברשימת המעקב שלך.',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
