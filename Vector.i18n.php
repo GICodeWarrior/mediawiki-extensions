@@ -873,6 +873,15 @@ $messages['ig'] = array(
 	'vector-simplesearch-search' => 'Chọwa',
 );
 
+/** Iloko (Ilokano)
+ * @author Lam-ang
+ */
+$messages['ilo'] = array(
+	'vector-collapsiblenav-more' => 'Adu pay nga pagsasao',
+	'vector-simplesearch-search' => 'Biroken',
+	'vector-simplesearch-containing' => 'nagyan na nga...',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
