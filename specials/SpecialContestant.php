@@ -46,6 +46,10 @@ class SpecialContestant extends SpecialContestPage {
 				$this->handleSubmission( $contestant->getId() );
 			}
 
+			if ( $this->getRequest()->wasPosted() ) {
+				$contestant->setReadDb( DB_MASTER );
+			}
+			
 			$contestant->loadFields();
 			$this->showPage( $contestant );
 		}
