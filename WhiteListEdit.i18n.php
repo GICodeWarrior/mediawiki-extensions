@@ -2568,7 +2568,7 @@ Deze pagina is alleen van toepassing op gebruikers met beperkte rechten.",
 	'group-restricted' => 'beperkte gebruikers',
 	'group-restricted-member' => '{{GENDER:$1|beperkte gebruiker}}',
 	'group-manager' => 'managers',
-	'group-manager-member' => 'gebruiker',
+	'group-manager-member' => '{{GENDER:$1|manager}}',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
