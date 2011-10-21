@@ -301,3 +301,5 @@ $wgContestEmailParse = false;
 
 $wgContestMailSender = $wgPasswordSender;
 $wgContestMailSenderName = $wgPasswordSenderName;
+
+$wgContestDeletionEnabled = true;
