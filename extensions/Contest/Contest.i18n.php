@@ -109,8 +109,7 @@ $messages['en'] = array(
 
 	// Special:ContestWelcome
 	'contest-welcome-unknown' => 'There is no contest with the provided name.',
-	'contest-welcome-rules' => 'In order to participate, you are required to agree to', // js i18n
-	'contest-welcome-rules-link' => 'the contest rules', // js i18n
+	'contest-welcome-rules' => 'In order to participate, you must agree to [[$1|the contest rules]].',
 	'contest-welcome-signup' => 'Signup now',
 	'contest-welcome-js-off' => 'The contest user interface uses JavaScript. Your browser does not support JavaScript or JavaScript is disabled.',
 	'contest-welcome-accept-challenge' => 'Challenge accepted',

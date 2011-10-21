@@ -187,13 +187,8 @@ class SpecialContestWelcome extends SpecialContestPage {
 	 * @param Contest $contest
 	 */
 	protected function showRules( Contest $contest ) {
-		$this->getOutput()->addHTML( Html::element(
-			'div',
-			array(
-				'id' => 'contest-rules',
-				'data-rules' => ContestUtils::getParsedArticleContent( $contest->getField( 'rules_page' ) )
-			)
-		) );
+		// TODO: we might want to have a pop-up with the content here, instead of a link to the page.
+		$this->getOutput()->addWikiMsgArray( 'contest-welcome-rules', $contest->getField( 'rules_page' ) ); 
 	}
 
 	/**
