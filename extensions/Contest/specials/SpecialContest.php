@@ -56,7 +56,11 @@ class SpecialContest extends SpecialContestPage {
 
 			$this->displayNavigation();
 			$this->showGeneralInfo( $contest );
-			$this->showMailFunctionality( $contest );
+			
+			if ( $this->getUser()->isAllowed( 'contestadmin' ) ) {
+				$this->showMailFunctionality( $contest );
+			}
+			
 			$this->showContestants( $contest, $challengeTitle );
 
 			$out->addModules( 'contest.special.contest' );
