@@ -31,7 +31,10 @@ class ContestSettings {
 			'voteValues' => range( 0, 5 ),
 			'enableTopLink' => true,
 			'submissionDomains' => array( 'github.com', 'gitorious.org', 'mediawiki.org' ),
-			'reminderJobSize' => 50
+			'reminderJobSize' => 50,
+			'mailSender' => $GLOBALS['wgPasswordSender'],
+			'mailSenderName' => $GLOBALS['wgPasswordSenderName'],
+			'contestDeletionEnabled' => true
 		);
 	}
 

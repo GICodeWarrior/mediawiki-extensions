@@ -19,8 +19,7 @@ class ApiDeleteContest extends ApiBase {
 	}
 
 	public function execute() {
-		global $wgContestDeletionEnabled;
-		if ( !$wgContestDeletionEnabled ) {
+		if ( !ContestSettings::get( 'contestDeletionEnabled' ) ) {
 			$this->dieUsage( 'Contest deletion is disabled', 'contestdeletiondisabled' );
 		}
 		global $wgUser;
