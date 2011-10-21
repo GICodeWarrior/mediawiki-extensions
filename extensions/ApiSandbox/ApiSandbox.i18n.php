@@ -329,6 +329,29 @@ Consulte a [http://www.mediawiki.org/wiki/API documentación de API] para obter 
 	'apisb-generator-parameters' => 'Xerador',
 );
 
+/** Hebrew (עברית)
+ * @author Deror avi
+ */
+$messages['he'] = array(
+	'apisb-parameters' => 'פרמטרים',
+	'apisb-result' => 'תוצאה',
+	'apisb-request-url' => 'כתובת ה-URL של הבקשה:',
+	'apisb-select-action' => 'בחירת פעולה',
+	'apisb-select-query' => 'מהי השאילתה?',
+	'apisb-select-value' => 'בחירת ערך',
+	'apisb-loading' => 'בטעינה...',
+	'apisb-load-error' => 'שגיאה בטעינת תיאור API',
+	'apisb-request-error' => 'שגיעה בביצוע בקשת API',
+	'apisb-namespaces-error' => 'שגיעה בטעינת שם מתחם',
+	'apisb-ns-main' => '(ראשי)',
+	'apisb-submit' => 'ביצוע שאילתה',
+	'apisb-query-prop' => 'מאפיינים',
+	'apisb-query-list' => 'רשימות',
+	'apisb-query-meta' => 'מידע נוסף',
+	'apisb-generic-parameters' => 'פרמטרים כלליים',
+	'apisb-generator-parameters' => 'מחולל',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -574,6 +597,7 @@ Zie de [http://www.mediawiki.org/wiki/API API-documentatie] voor verdere details
 	'apisb-query-list' => 'Lijsten',
 	'apisb-query-meta' => 'Metaigegevens',
 	'apisb-generic-parameters' => 'Algemene parameters',
+	'apisb-generator-parameters' => 'Generator',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

@@ -69,3 +69,10 @@ $messages['mk'] = array(
 	'formatnum-desc' => 'Овозможува форматирање на бројки со php number_format',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'formatnum-desc' => 'Geeft formatnum door aan number_format van PHP',
+);
+

@@ -2184,7 +2184,7 @@ Kiitos! Terveisin,
  * @author Urhixidur
  */
 $messages['fr'] = array(
-	'articlefeedback' => "Tableau de bord de l'évaluation d’article",
+	'articlefeedback' => 'Tableau de bord de l’évaluation d’article',
 	'articlefeedback-desc' => 'Évaluation d’article (version pilote)',
 	'articlefeedback-survey-question-origin' => 'À quelle page étiez-vous lorsque vous avez commencé cette évaluation ?',
 	'articlefeedback-survey-question-whyrated' => 'Veuillez nous indiquer pourquoi vous avez évalué cette page aujourd’hui (cochez tout ce qui s’applique) :',
@@ -2201,7 +2201,7 @@ $messages['fr'] = array(
 	'articlefeedback-survey-title' => 'Veuillez répondre à quelques questions',
 	'articlefeedback-survey-thanks' => 'Merci d’avoir rempli le questionnaire.',
 	'articlefeedback-survey-disclaimer' => 'Pour aider à améliorer cette fonctionnalité, vous pouvez partager anonymement votre feedback avec la communauté Wikipédia.',
-	'articlefeedback-error' => "Une erreur s'est produite. Veuillez réessayer plus tard.",
+	'articlefeedback-error' => 'Une erreur s’est produite. Veuillez réessayer plus tard.',
 	'articlefeedback-form-switch-label' => 'Noter cette page',
 	'articlefeedback-form-panel-title' => 'Noter cette page',
 	'articlefeedback-form-panel-explanation' => 'Qu’est-ce que c’est?',
@@ -2210,7 +2210,7 @@ $messages['fr'] = array(
 	'articlefeedback-form-panel-expertise' => 'Je suis très bien informé sur ce sujet (facultatif)',
 	'articlefeedback-form-panel-expertise-studies' => "Je détiens un diplôme d'études supérieures (université ou grande école)",
 	'articlefeedback-form-panel-expertise-profession' => 'Cela fait partie de ma profession',
-	'articlefeedback-form-panel-expertise-hobby' => "C'est une passion profonde et personnelle",
+	'articlefeedback-form-panel-expertise-hobby' => 'C’est une passion profonde et personnelle',
 	'articlefeedback-form-panel-expertise-other' => "La source de ma connaissance n'est pas répertoriée ici",
 	'articlefeedback-form-panel-helpimprove' => "J'aimerais aider à améliorer Wikipédia, envoyez-moi un courriel (facultatif)",
 	'articlefeedback-form-panel-helpimprove-note' => 'Nous vous enverrons un courriel de confirmation. Nous ne partagerons votre adresse avec personne. $1',
@@ -2268,14 +2268,14 @@ $messages['fr'] = array(
 	'articlefeedback-survey-message-success' => 'Merci d’avoir rempli le questionnaire.',
 	'articlefeedback-survey-message-error' => 'Une erreur est survenue.
 Veuillez ré-essayer plus tard.',
-	'articleFeedback-table-caption-dailyhighsandlows' => "Les hauts et bas d'aujourd'hui",
+	'articleFeedback-table-caption-dailyhighsandlows' => 'Les hauts et les bas d’aujourd’hui',
 	'articleFeedback-table-caption-dailyhighs' => 'Pages avec les plus hautes cotes : $1',
 	'articleFeedback-table-caption-dailylows' => 'Pages avec cotes les plus basses : $1',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Les plus modifiés cette semaine',
 	'articleFeedback-table-caption-recentlows' => 'Dernières cotes basses',
 	'articleFeedback-table-heading-page' => 'Page',
 	'articleFeedback-table-heading-average' => 'Moyenne',
-	'articleFeedback-copy-above-highlow-tables' => "Il s'agit d'une fonctionnalité expérimentale. Veuillez fournir des commentaires sur la [$1 page de discussion].",
+	'articleFeedback-copy-above-highlow-tables' => 'Il s’agit d’une fonctionnalité expérimentale. Veuillez fournir des commentaires sur la [$1 page de discussion].',
 	'articlefeedback-dashboard-bottom' => "'''Note''' : Nous allons continuer à expérimenter avec différentes façons de représenter les articles dans ces tableaux de bord. Ceux-ci contiennent les articles suivants :
 * pages qui ont les taux les plus faibles ou plus élevés : ce sont les articles qui ont reçu au moins 10 évaluations dans les dernières 24 heures. Les moyennes sont obtenues en calculant la moyenne de toutes les évaluations des dernières 24 heures.
 * bas récents : articles qui ont reçu deux étoiles ou moins, 70 % du temps ou plus, peu importe la catégorie dans les dernières 24 heures. Cela s’applique seulement aux articles qui ont reçu au moins 10 évaluations dans les dernières 24 heures.",

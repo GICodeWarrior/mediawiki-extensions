@@ -206,9 +206,10 @@ $messages['fi'] = array(
  * @author Crochet.david
  * @author IAlex
  * @author PieRRoMaN
+ * @author Urhixidur
  */
 $messages['fr'] = array(
-	'transliterator-desc' => 'Fournit une fonction parseur configurable pour la translittération',
+	'transliterator-desc' => 'Fournit une fonction d’analyseur syntaxique configurable pour la translittération',
 	'transliterator-error-ambiguous' => 'Règle ambiguë <code>$1</code> dans [[MediaWiki:$2]]',
 	'transliterator-error-syntax' => 'Syntaxe incorrecte <code>$1</code> dans [[MediaWiki:$2]]',
 	'transliterator-error-rulecount' => 'Plus de $1 {{PLURAL:$1|règle|règles}} dans [[MediaWiki:$2]]',

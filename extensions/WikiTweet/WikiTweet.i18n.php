@@ -407,6 +407,30 @@ $messages['gsw'] = array(
 	'wikitweet-subscribers' => 'Abonnente:',
 );
 
+/** Hebrew (עברית)
+ * @author Deror avi
+ */
+$messages['he'] = array(
+	'wikitweet-private' => 'פרטי',
+	'wikitweet-tweets-from-room' => 'ציוצים מתוך חדר',
+	'wikitweet-fewsecondsago' => 'לפני מספר שניות',
+	'wikitweet-status' => 'מצב:',
+	'wikitweet-status0' => 'דף שיחה',
+	'wikitweet-status1' => 'אירוע',
+	'wikitweet-status2' => 'אזהרה',
+	'wikitweet-status3' => 'התראה',
+	'wikitweet-resolve' => 'פתרון',
+	'wikitweet-comment' => 'הערה',
+	'wikitweet-subscribers' => 'מנויים:',
+	'wikitweet-hourly' => 'מדי שעה',
+	'wikitweet-from' => 'מאת',
+	'wikitweet-in' => 'ב',
+	'wikitweet-directlink' => 'קישור ישיר:',
+	'wikitweet-mailsent' => 'דואל נשלח',
+	'wikitweet-viaroom' => 'דרך חדר',
+	'wikitweet-alertsolved' => 'אחת ההתראות שלך נפתרה ב',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

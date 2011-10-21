@@ -518,6 +518,27 @@ $messages['gsw'] = array(
 	'tog-collabwatchlisthidelistusers' => 'Due Änderige vo andere gmeinsame Beobachtigslischtebenutzer ussblände.',
 );
 
+/** Hebrew (עברית)
+ * @author Deror avi
+ */
+$messages['he'] = array(
+	'collabwatchlisttools-view' => 'תצוגה',
+	'collabwatchlisttools-edit' => 'עריכת קטגוריות',
+	'collabwatchlisttools-delete' => 'מחיקה',
+	'collabwatchlistsall' => 'כל הרשימות',
+	'collabwatchlistfiltertags' => 'הסתרת תגיות',
+	'collabwatchlistedit-users-raw-submit' => 'שמירה',
+	'collabwatchlistdelete-submit' => 'מחיקה',
+	'collabwatchlistdelete-title' => 'מחיקת רשימת מעקב שיתופית',
+	'collabwatchlistnew-legend' => 'יצירת רשימת מעקב שיתופית חדשה',
+	'collabwatchlistnew-explain' => 'שם הרשימה חייב להיות יחידאי.',
+	'collabwatchlistnew-name' => 'שם הרשימה',
+	'collabwatchlistnew-submit' => 'ליצירה',
+	'collabwatchlistedit-raw-done' => 'רשימת המעקב השיתופית עודכנה',
+	'collabwatchlistedit-normal-submit' => 'שמירה',
+	'tog-collabwatchlisthidelistusers' => 'הסתרת עריכות ממשתמשי רשימת מעקב שיתופית',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

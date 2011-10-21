@@ -687,7 +687,7 @@ $messages['fo'] = array(
  */
 $messages['fr'] = array(
 	'expandtemplates' => 'Expansion des modèles',
-	'expandtemplates-desc' => '[[Special:ExpandTemplates|Réalise l’expansion des modèles, fonctions parseurs et variables]] afin de visionner le texte wiki obtenu après expansion et prévisualiser le rendu effectif de la page.',
+	'expandtemplates-desc' => '[[Special:ExpandTemplates|Réalise l’expansion des modèles, fonctions de l’analyseur syntaxique et variables]] afin de visionner le texte wiki obtenu après expansion et prévisualiser le rendu effectif de la page.',
 	'expand_templates_intro' => 'Cette page spéciale accepte un texte wiki source et permet de réaliser récursivement l’expansion des modèles qu’il contient.
 Elle réalise aussi l’expansion des fonctions du parseur telles que
 <tt><nowiki>{{</nowiki>#if:...<nowiki>}}</nowiki></tt>  et des variables prédéfinies telles que

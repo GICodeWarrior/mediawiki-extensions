@@ -794,7 +794,7 @@ $messages['de'] = array(
 	'qp_result_error' => 'Syntaxfehler',
 	'qp_vote_button' => 'Abstimmen',
 	'qp_vote_again_button' => 'Stimme ändern',
-	'qp_submit_attempts_left' => 'Noch {{PLURAL:$1|ist $1 Versuch|sind $1 Versuche}} möglich',
+	'qp_submit_attempts_left' => 'Noch {{PLURAL:$1|ist ein Versuch|sind $1 Versuche}} möglich',
 	'qp_polls_list' => 'Alle Abstimmungen auflisten',
 	'qp_users_list' => 'Alle Benutzer anzeigen',
 	'qp_browse_to_poll' => 'Nach $1 wechseln',
@@ -826,30 +826,31 @@ $messages['de'] = array(
 	'qp_interpretation_results_to_xls' => 'Auswertungen der Antworten im XLS-Format exportieren',
 	'qp_users_answered_questions' => '$1 {{PLURAL:$1|Benutzer|Benutzer}} haben auf die Fragen geantwortet',
 	'qp_func_no_such_poll' => 'Abstimmung nicht vorhanden ($1)',
-	'qp_func_missing_question_id' => 'Bitte lege eine existierende Frage-ID (ab 1 aufwärts) für die Abstimmung $1 fest',
-	'qp_func_invalid_question_id' => 'Ungültige Frage ID=$2 (keine Nummer) für die Abstimmung $1',
+	'qp_func_missing_question_id' => 'Bitte lege eine vorhandene Fragekennung (ab 1 aufwärts) für die Abstimmung $1 fest.',
+	'qp_func_invalid_question_id' => 'Ungültige Fragekennung $2 (keine Nummer) für die Abstimmung $1',
 	'qp_func_missing_proposal_id' => 'Bitte lege eine existierende Vorschlagskennung für die Abstimmung $1 fest (ab 0 aufwärts), Frage $2.',
-	'qp_func_invalid_proposal_id' => 'Ungültige Vorschlagskennung id=$3 (keine Nummer) für die Abstimmung $1, Frage $2',
+	'qp_func_invalid_proposal_id' => 'Ungültige Vorschlagskennung $3 (keine Nummer) für die Abstimmung $1, Frage $2',
 	'qp_error_no_such_poll' => 'Abstimmung nicht vorhanden ($1).
 Stelle sicher, dass die Abstimmung festgelegt und gespeichert ist und dass # als Trennsymbol für Adressen verwendet wird',
 	'qp_error_in_question_header' => 'Ungültige Bezeichnung: $1',
 	'qp_error_id_in_stats_mode' => 'Kann keine Kennung für diese Abstimmung im Statistik-Modus festlegen.',
 	'qp_error_dependance_in_stats_mode' => 'Kann Abhängigkeitskette der Abstimmung im statistischen Modus nicht festlegen',
-	'qp_error_no_stats' => 'Es sind keine statistischen Daten verfügbar, da noch niemand für diese Abstimmung gestimmt hat (Adresse=$1)',
+	'qp_error_no_stats' => 'Es sind keine statistischen Daten verfügbar, da noch niemand für diese Abstimmung gestimmt hat (Adresse $1)',
 	'qp_error_address_in_decl_mode' => 'Kann keine Adresse der Abstimmung im Festlegungs-Modus ermitteln',
 	'qp_error_question_not_implemented' => 'Fragen diesen Typs sind nicht implementiert: $1',
 	'qp_error_invalid_question_type' => 'Ungültiger Fragetyp: $1',
 	'qp_error_type_in_stats_mode' => 'Der Fragetyp kann im statistischen Anzeigemodus nicht definiert werden: $1',
 	'qp_error_no_poll_id' => 'Für das Abstimmungs-Tag wurde keine Abstimmungskennung definiert.',
-	'qp_error_invalid_poll_id' => 'Ungültige Abstimmungskennung (id=$1).
-Abstimmungskennung darf nur Buchstaben, Zahlen und Leerstellen enthalten.',
-	'qp_error_already_used_poll_id' => 'Die Abstimmungskennung wurde bereits auf dieser Seite benutzt (id=$1).',
-	'qp_error_invalid_dependance_value' => 'Die Abhängigkeitskette der Abstimmung (id=$1) hat einen ungültigen Wert in dem Abhängigkeits-Attribut (Abhängigkeit=„$2“)',
-	'qp_error_missed_dependance_title' => 'Die Abstimmung (id=$1) ist abhängig von einer anderen Abstimmung (id=$3) auf der Seite [[$2]], aber der Titel [[$2]] wurde nicht gefunden.
-Entferne entweder die Abhängigkeits-Attribute, oder stelle [[$2]] wieder her',
-	'qp_error_missed_dependance_poll' => 'Die Abstimmung (id=$1) ist abhängig von einer anderen Abstimmung (id=$3) auf Seite $2, aber diese Abstimmung existiert nicht oder wurde noch nicht gespeichert.
-Entferne entweder die Abhängigkeits-Attribute oder erstelle die Abstimmung mit id=$3 auf Seite $2 und speichere sie.
-Um die Abstimmung zu speichern, übermittle sie während du nicht auf eine Antragsanfrage antwortest.',
+	'qp_error_invalid_poll_id' => 'Ungültige Abstimmungskennung ($1).
+Die Abstimmungskennung darf nur Buchstaben, Zahlen und Leerstellen enthalten.',
+	'qp_error_already_used_poll_id' => 'Die Abstimmungskennung wurde bereits auf dieser Seite benutzt (Kennung $1).',
+	'qp_error_too_long_dependance_value' => 'Das Abhängigkeitsattribut (Abhängigkeit „$2“) der Abstimmung (Kennung $1) ist zu lang, um in der Datenbank gespeichert werden zu können.',
+	'qp_error_invalid_dependance_value' => 'Die Abhängigkeitskette der Abstimmung (Kennung $1) hat einen ungültigen Wert in dem Abhängigkeitssttribut (Abhängigkeit „$2“)',
+	'qp_error_missed_dependance_title' => 'Die Abstimmung (Kennung $1) ist abhängig von einer anderen Abstimmung (Kennung $3) auf der Seite [[$2]], aber der Titel [[$2]] wurde nicht gefunden.
+Entferne entweder die Abhängigkeitsattribute, oder stelle [[$2]] wieder her.',
+	'qp_error_missed_dependance_poll' => 'Die Abstimmung (Kennung $1) ist abhängig von einer anderen Abstimmung (Kennung $3) auf Seite $2, welche aber nicht vorhanden ist noch nicht gespeichert wurde.
+Entferne entweder die Abhängigkeitsattribute oder erstelle die Abstimmung mit Kennung $3 auf Seite $2 und speichere sie.
+Um die Abstimmung zu speichern, übermittle sie ohne dabei auf eine Frage zu antworten.',
 	'qp_error_vote_dependance_poll' => 'Bitte erst für $1 abstimmen.',
 	'qp_error_too_many_spans' => 'Zu viele Kategoriegruppen für die Gesamtzahl der Unterkategorien definiert',
 	'qp_error_unanswered_span' => 'Unbeantwortete Unterrubrik',
@@ -884,14 +885,14 @@ Um die Abstimmung zu speichern, übermittle sie während du nicht auf eine Antra
  * @author Kghbln
  */
 $messages['de-formal'] = array(
-	'qp_func_missing_question_id' => 'Bitte legen Sie eine existierende Frage-ID (ab 1 aufwärts) für die Abstimmung $1 fest',
+	'qp_func_missing_question_id' => 'Bitte legen Sie eine vorhandene Fragekennung (ab 1 aufwärts) für die Abstimmung $1 fest.',
 	'qp_error_no_such_poll' => 'Abstimmung nicht vorhanden ($1).
 Stellen Sie sicher, dass die Abstimmung festgelegt und gespeichert ist und dass # als Trennsymbol für Adressen verwendet wird',
-	'qp_error_missed_dependance_title' => 'Die Abstimmung (id=$1) ist abhängig von einer anderen Abstimmung (id=$3) auf der Seite [[$2]], aber der Titel [[$2]] wurde nicht gefunden.
-Entfernen Sie entweder die Abhängigkeits-Attribute, oder stellen Sie [[$2]] wieder her',
-	'qp_error_missed_dependance_poll' => 'Die Abstimmung (id=$1) ist abhängig von einer anderen Abstimmung (id=$3) auf Seite $2, aber diese Abstimmung existiert nicht oder wurde noch nicht gespeichert.
-Entfernen Sie entweder die Abhängigkeits-Attribute oder erstellen Sie die Abstimmung mit id=$3 auf Seite $2 und speichern Sie sie.
-Um die Abstimmung zu speichern, übermitteln Sie sie während Sie nicht auf eine Antragsanfrage antworten.',
+	'qp_error_missed_dependance_title' => 'Die Abstimmung (Kennung $1) ist abhängig von einer anderen Abstimmung (Kennung $3) auf der Seite [[$2]], aber der Titel [[$2]] wurde nicht gefunden.
+Entfernen Sie entweder die Abhängigkeitsattribute, oder stellen Sie [[$2]] wieder her.',
+	'qp_error_missed_dependance_poll' => 'Die Abstimmung (Kennung $1) ist abhängig von einer anderen Abstimmung (Kennung $3) auf Seite $2, welche aber nicht vorhanden ist noch nicht gespeichert wurde.
+Entfernen Sie entweder die Abhängigkeitsattribute oder erstellen Sie die Abstimmung mit Kennung $3 auf Seite $2 und speichern Sie sie.
+Um die Abstimmung zu speichern, übermitteln Sie sie ohne dabei auf eine Frage zu antworten.',
 	'qp_error_no_more_attempts' => 'Sie haben die maximale Anzahl an Abstimmversuchen für diese Abstimmung erreicht',
 );
 
@@ -1306,6 +1307,7 @@ Asegúrese de que a enquisa está declarada e gardada, non esqueza usar o carác
 	'qp_error_invalid_poll_id' => 'O id da enquisa non é válido (id=$1).
 O id só pode conter letras, números e espazos',
 	'qp_error_already_used_poll_id' => 'O id da enquisa xa se empregou nesta páxina (id=$1).',
+	'qp_error_too_long_dependance_value' => 'O valor do atributo de dependencia (dependencia="$2") da enquisa (id=$1) é longo de máis e a base de datos non o pode almacenar.',
 	'qp_error_invalid_dependance_value' => 'A cadea de dependencia da enquisa (id=$1) ten un valor non válido para o atributo de dependencia (dependance="$2")',
 	'qp_error_missed_dependance_title' => 'A enquisa (id=$1) depende doutra enquisa (id=$3) da páxina [[$2]], pero non se atopou o título [[$2]].
 Elimine o atributo de dependencia ou restaure [[$2]]',
@@ -2072,6 +2074,7 @@ $messages['mk'] = array(
 	'qp_error_invalid_poll_id' => 'Неважечки id-број на анкетата (id=$1).
 id-бројот може да содржи само букви, бројки и знак за место (проред)',
 	'qp_error_already_used_poll_id' => 'id-бројот на анкетата веќе се користи на оваа страница (id=$1).',
+	'qp_error_too_long_dependance_value' => 'Вредноста (dependance="$2") на атрибутот за зависноста на анкетата (id=$1) е предолга за може да се складира во базата.',
 	'qp_error_invalid_dependance_value' => 'Ланецот на зависност за анкетата (id=$1) има неважечка вредност во атрибутот за зависност (dependance="$2")',
 	'qp_error_missed_dependance_title' => 'Анкетата (id=$1) е зависна од друга анкета (id=$3) од страницата [[$2]], но насловот [[$2]] не беше најден.
 Или отстранете го атрибутот за зависност, или вратете ја страницата [[$2]]',

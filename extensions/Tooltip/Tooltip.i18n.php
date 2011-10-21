@@ -171,9 +171,10 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Urhixidur
  */
 $messages['fr'] = array(
-	'tooltip-desc' => 'Ajoute une balise <nowiki><tooltip></nowiki> et un parseur <nowiki>{{#tooltip:}}</nowiki>',
+	'tooltip-desc' => 'Ajoute une balise <nowiki><tooltip></nowiki> et une fonction d’analyseur syntaxique <nowiki>{{#tooltip:}}</nowiki>',
 );
 
 /** Franco-Provençal (Arpetan)

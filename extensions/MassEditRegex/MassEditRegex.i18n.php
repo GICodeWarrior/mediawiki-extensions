@@ -1135,6 +1135,7 @@ Voor de te vervangen tekst is escapen niet nodig.',
 	'masseditregex-badregex' => 'Ongeldige reguliere expressie:',
 	'masseditregex-editfailed' => 'Bewerking mislukt:',
 	'masseditregex-tooltip-execute' => 'Deze wijzigingen op iedere pagina toepassen',
+	'right-masseditregex' => 'Pagina-inhoud vervangen met behulp van reguliere expressies',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

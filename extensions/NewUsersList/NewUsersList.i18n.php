@@ -31,9 +31,10 @@ $messages['de'] = array(
 
 /** French (Français)
  * @author Gomoko
+ * @author Urhixidur
  */
 $messages['fr'] = array(
-	'newuserslist-desc' => "Ajoute la balise de l'analyseur <tt>&lt;newusers&gt;</tt> pour récupérer la liste des nouveaux utilisateurs et leur avatar",
+	'newuserslist-desc' => 'Ajoute la balise de l’analyseur <tt>&lt;newusers&gt;</tt> pour récupérer la liste des nouveaux utilisateurs et leurs avatars',
 );
 
 /** Galician (Galego)

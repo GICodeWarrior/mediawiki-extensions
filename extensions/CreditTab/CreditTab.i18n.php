@@ -44,6 +44,14 @@ $messages['fr'] = array(
 	'credits-tab-title' => 'Remerciements pour cette page',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'credits-tab' => 'Remarciements',
+	'credits-tab-title' => 'Remarciements por cela pâge',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -51,6 +59,15 @@ $messages['gl'] = array(
 	'credits-desc' => 'Engade unha ligazón aos créditos',
 	'credits-tab' => 'Créditos',
 	'credits-tab-title' => 'Créditos desta páxina',
+);
+
+/** Hebrew (עברית)
+ * @author Deror avi
+ */
+$messages['he'] = array(
+	'credits-desc' => 'להוספת קישור לקרדיטים',
+	'credits-tab' => 'קרדיטים',
+	'credits-tab-title' => 'קרדיטים לדף זה',
 );
 
 /** Interlingua (Interlingua)
