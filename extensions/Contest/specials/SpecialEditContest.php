@@ -95,6 +95,14 @@ class SpecialEditContest extends FormSpecialPage {
 	protected function showContent( $subPage ) {
 		$isNew = $this->getRequest()->wasPosted() && $this->getUser()->matchEditToken( $this->getRequest()->getVal( 'newEditToken' ) );
 
+		global $wgContestDeletionEnabled;
+		$this->getOutput()->addScript(
+			Skin::makeVariablesScript(
+				array(
+					'ContestDeletionEnabled' => $wgContestDeletionEnabled,
+				)
+			)
+		);
 		if ( $isNew ) {
 			$data = array( 'name' => $this->getRequest()->getVal( 'newcontest' ) );
 

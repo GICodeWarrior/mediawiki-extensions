@@ -89,9 +89,8 @@
 							return false;
 						}
 					} );
+				$this.append( this.deleteButton );
 			}
-
-			$this.append( this.deleteButton );
 		};
 
 		this.init();
