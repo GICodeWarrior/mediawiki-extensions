@@ -213,6 +213,26 @@ $messages['gl'] = array(
 	'right-admanager' => '[[Special:AdManager|Xestionar a configuración dos anuncios]]',
 );
 
+/** Hebrew (עברית)
+ * @author Deror avi
+ */
+$messages['he'] = array(
+	'admanager_labelCategory' => 'שמות קטגוריות',
+	'admanager_submit' => 'שליחה',
+	'admanager_noads' => 'הצגה ללא פרסומות',
+	'admanager_Page' => 'דפים',
+	'admanager_Category' => 'קטגוריות',
+	'admanager_added' => 'השינויים נשמרו',
+	'admanager_noadsset' => '$1 הוגדרה להצגה ללא פרסומות',
+	'admanager_addedzone' => 'אזור נוסף',
+	'admanager_zonenum' => 'אזור #: $1',
+	'admanager_zonenotnumber' => 'שגיאה! $1 אינו מספר.',
+	'admanager_return' => 'חזרה ל[[Special:AdManager|מנהל הפרסומות]]',
+	'admanager_gotoads' => '[[Special:AdManager|עריכת מיקום מודעה]]',
+	'admanager_gotozones' => '[[Special:AdManagerZones|עריכת איזורי מודעה]]',
+	'right-admanager' => '[[Special:AdManager|ניהול תצורת פרסום]]',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
