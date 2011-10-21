@@ -168,6 +168,7 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'semanticinternalobjects-desc' => 'Configuration de objectos interne in Semantic MediaWiki',
+	'semanticinternalobjects-internalproperty' => 'Proprietate interne',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -225,6 +226,7 @@ $messages['ms'] = array(
  */
 $messages['nl'] = array(
 	'semanticinternalobjects-desc' => 'Interne objecten in Semantic MediaWiki instellen',
+	'semanticinternalobjects-internalproperty' => 'Interne eigenschap',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
