@@ -2830,12 +2830,13 @@ $messages['haw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
 	'apc' => 'נתוני APC',
-	'apc-desc' => '[[Special:APC|צפייה וניהול מטמון ה־ APC]] באמצעות מדיה־ויקי',
+	'apc-desc' => '[[Special:APC|צפייה במטמון ה־APC וניהולו]] באמצעות מדיה־ויקי',
 	'right-apc' => 'שימוש בכל התכונות של [[Special:APC|APC]]',
 	'viewapc-apc-not-available' => 'אין נתוני מטמון זמינים.
 נראה שה־APC אינו פעיל.',
@@ -2862,14 +2863,14 @@ $messages['he'] = array(
 	'viewapc-cached-files-d' => '{{PLURAL:$1|קובץ אחד|$1 קבצים}} ($2)',
 	'viewapc-hits' => 'פגיעות',
 	'viewapc-misses' => 'החטאות',
-	'viewapc-requests' => 'מדד הביקוש',
+	'viewapc-requests' => 'מדד הבקשות',
 	'viewapc-hitrate' => 'מדד הפגיעות',
 	'viewapc-missrate' => 'מדד ההחטאות',
-	'viewapc-insertrate' => 'מדד ההוספה',
-	'viewapc-cachefull' => 'ספירת מטמון מלאה',
-	'viewapc-rps' => '$1 בקשות לשניה',
-	'viewapc-info-runtime' => 'נתוני משך הפעילות',
-	'viewapc-info-memory' => 'רישומי מצב המארח',
+	'viewapc-insertrate' => 'מדד ההכנסה',
+	'viewapc-cachefull' => 'מספר הפעמים שהמטמון התמלא',
+	'viewapc-rps' => 'בקשות לשנייה: $1',
+	'viewapc-info-runtime' => 'נתוני זמן ריצה',
+	'viewapc-info-memory' => 'תרשימי מצב המארח',
 	'viewapc-memory-usage-detailed' => 'שימוש בזיכרון<br />
 (נתחים מרובים מציינים מקטעים)',
 	'viewapc-memory-usage' => 'שימוש בזיכרון',
@@ -2932,8 +2933,8 @@ $messages['he'] = array(
 	'viewapc-version-info' => 'נתוני גרסה',
 	'viewapc-version-changelog' => 'יומן השינויים',
 	'viewapc-version-failed' => 'לא ניתן לקבל את נתוני הגרסה.',
-	'viewapc-version-ok' => 'הנכם מריצים את הגרסה העדכנית ביותר של APC ($1)',
-	'viewapc-version-old' => 'אתם מריצים גרסה ישנה של APC ($1)
+	'viewapc-version-ok' => 'הנכם מריצים את הגרסה העדכנית ביותר של APC&rlm; ($1)',
+	'viewapc-version-old' => 'אתם מריצים גרסה ישנה של APC&rlm; ($1)
 גרסה חדשה יותר $2 ניתן למצוא בכתובת http://pecl.php.net/package/APC/$2',
 	'viewapc-filecache-cleared' => "'''''מטמון הקבצים רוקן.'''''",
 	'viewapc-usercache-cleared' => "'''''מטמון היישום רוקן.'''''",
