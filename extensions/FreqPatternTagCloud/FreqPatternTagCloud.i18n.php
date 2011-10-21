@@ -14,13 +14,14 @@ $messages = array();
 $messages['en'] = array(
 	'freqpatterntagcloud' => 'Frequent Pattern Tag Cloud',
 	'freqpatterntagcloudmaintenance' => 'Frequent Pattern Tag Cloud Maintenance',
+	'freqpatterntagcloud-desc' => '[[Special:FreqPatternTagCloud|Special page]] to build a tag cloud based on properties and to search for similar property values',
 	'fptc-categoryname' => 'Category',
 	'fptc-context-menu-browse' => 'Browse pages with this value',
 	'fptc-context-menu-similar-tags' => 'Similar tags:',
 	'fptc-form-attribute-name' => 'Property:',
 	'fptc-form-submit-button' => 'Submit',
 	'fptc-invalid-attribute' => 'The entered property is invalid.',
-	'fptc-insufficient-rights-for-maintenance' => 'You have to log in as system administrator to view this page.',
+	'fptc-insufficient-rights-for-maintenance' => 'You have to log in as administrator to view this page.',
 	'fptc-refresh-frequent-patterns' => 'Refresh data',
 	'fptc-refreshed-frequent-patterns' => 'Frequent pattern rules refreshed.',
 	'fptc-search-attribute-name' => 'Search property',
@@ -28,29 +29,6 @@ $messages['en'] = array(
 	'fptc-search-suggestion-value' => 'Similar to "%s":',
 	'fptc-suggestion' => 'Do you mean:',
 	'fptc-no-suggestion' => 'No suggestions found'
-);
-
-/** German (Deutsch)
- * @author Tobias Beck, University of Heidelberg
- * @author Andreas Fay, University of Heidelberg
- */
-$messages['de'] = array(
-	'freqpatterntagcloud' => 'Frequent Pattern Tag Cloud',
-	'freqpatterntagcloudmaintenance' => 'Frequent Pattern Tag Cloud Maintenance',
-	'fptc-categoryname' => 'Kategorie',
-	'fptc-context-menu-browse' => 'Durchsuche Seiten mit diesem Wert',
-	'fptc-context-menu-similar-tags' => 'Ähnliche Tags:',
-	'fptc-form-attribute-name' => 'Attribut:',
-	'fptc-form-submit-button' => 'Eingabe',
-	'fptc-invalid-attribute' => 'Das eingegebene Attribut ist ungültig.',
-	'fptc-insufficient-rights-for-maintenance' => 'Um diese Seite sehen zu können müssen Sie als Systemadministrator angemeldet sein.',
-	'fptc-refresh-frequent-patterns' => 'Aktualisierung der Daten',
-	'fptc-refreshed-frequent-patterns' => 'Regeln für frequent pattern neu generiert.',
-	'fptc-search-attribute-name' => 'Suche nach Attribut',
-	'fptc-search-button' => 'Suche',
-	'fptc-search-suggestion-value' => 'Ähnlich zu "%s":',
-	'fptc-suggestion' => 'Meinten Sie:',
-	'fptc-no-suggestion' => 'Keine Vorschläge gefunden'
 );
 
 $messages['qqq'] = array(
@@ -70,4 +48,27 @@ $messages['qqq'] = array(
 	'fptc-search-suggestion-value' => 'This mesage is the title of the search suggestions (parameter %s = suggestion, do not translate)',
 	'fptc-suggestion' => 'This message appears after submitting an invalid value in the input box on the frequent-pattern-tag-cloud-specialpage',
 	'fptc-no-suggestion' => 'This message appears if no suggestions can be found.'
+);
+
+/** German (Deutsch)
+ * @author Tobias Beck, University of Heidelberg
+ * @author Andreas Fay, University of Heidelberg
+ */
+$messages['de'] = array(
+	'freqpatterntagcloud' => 'Frequent Pattern Tag Cloud',
+	'freqpatterntagcloudmaintenance' => 'Frequent Pattern Tag Cloud Maintenance',
+	'fptc-categoryname' => 'Kategorie',
+	'fptc-context-menu-browse' => 'Durchsuche Seiten mit diesem Wert',
+	'fptc-context-menu-similar-tags' => 'Ähnliche Tags:',
+	'fptc-form-attribute-name' => 'Attribut:',
+	'fptc-form-submit-button' => 'Eingabe',
+	'fptc-invalid-attribute' => 'Das eingegebene Attribut ist ungültig.',
+	'fptc-insufficient-rights-for-maintenance' => 'Um diese Seite sehen zu können, musst du als Administrator angemeldet sein.',
+	'fptc-refresh-frequent-patterns' => 'Aktualisierung der Daten',
+	'fptc-refreshed-frequent-patterns' => 'Regeln für frequent pattern neu generiert.',
+	'fptc-search-attribute-name' => 'Suche nach Attribut',
+	'fptc-search-button' => 'Suche',
+	'fptc-search-suggestion-value' => 'Ähnlich zu "%s":',
+	'fptc-suggestion' => 'Meintest du:',
+	'fptc-no-suggestion' => 'Keine Vorschläge gefunden'
 );
