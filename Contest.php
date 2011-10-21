@@ -28,7 +28,7 @@ if ( version_compare( $wgVersion, '1.18c', '<' ) ) { // Needs to be 1.18c becaus
 	die( '<b>Error:</b> Contest requires MediaWiki 1.18 or above.' );
 }
 
-define( 'CONTEST_VERSION', '0.1' );
+define( 'CONTEST_VERSION', '0.2 alpha' );
 
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,

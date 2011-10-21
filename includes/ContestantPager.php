@@ -131,6 +131,7 @@ class ContestantPager extends TablePager {
 				'contestant_wmf' => 'contest-contestant-wmf',
 				'contestant_comments' => 'contest-contestant-commentcount',
 				'contestant_rating' => 'contest-contestant-overallrating',
+				'contestant_submission' => 'contest-contestant-submission',
 			);
 
 			$headers = array_map( 'wfMsg', $headers );
@@ -217,12 +218,21 @@ class ContestantPager extends TablePager {
 				$value = htmlspecialchars( $this->getLang()->formatNum( $value ) );
 				break;
 			case 'contestant_rating':
-				$value = htmlspecialchars( wfMsgExt(
+				$value = '<div style="white-space:nowrap;">' . htmlspecialchars( wfMsgExt(
 					'contest-contestant-rating',
 					'parsemag',
 					$this->getLang()->formatNum( $value / 100 ),
 					$this->getLang()->formatNum( $this->mCurrentRow->contestant_rating_count )
-				) );
+				) ) . '</div>';
+				break;
+			case 'contestant_submission':
+				$value = Html::element(
+					'a',
+					array(
+						'href' => $value
+					),
+					$value
+				);
 				break;
 		}
 
@@ -240,6 +250,7 @@ class ContestantPager extends TablePager {
 				'contestant_comments',
 				'contestant_rating',
 				'contestant_rating_count',
+				'contestant_submission',
 			),
 			'conds' => $this->conds,
 		);
