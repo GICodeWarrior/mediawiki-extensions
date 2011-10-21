@@ -142,7 +142,7 @@ es.SurfaceView.prototype.onKeyDown = function( e ) {
 		default: // Insert content (maybe)
 			break;
 	}
-	return true;
+	return false;
 };
 
 es.SurfaceView.prototype.onKeyUp = function( e ) {
@@ -281,27 +281,39 @@ es.SurfaceView.prototype.moveCursor = function( direction ) {
 		this.showCursor( this.cursor.offset + 1 );
 		this.cursor.initialLeft = null;
 	} else if ( direction === 'up' || direction === 'down' ) {
-		var currentPosition = this.documentView.getRenderedPosition( this.cursor.offset );
+		
+		/*
+		 * Looks for the in-document character position that would match up with the same horizontal
+		 * position - jumping a few pixels up/down at a time until we reach the next/previous line
+		 */
+
+		var oldPosition = this.documentView.getRenderedPosition( this.cursor.offset );
+
 		if ( this.cursor.initialLeft === null ) {
-			this.cursor.initialLeft = currentPosition.left;
+			this.cursor.initialLeft = oldPosition.left;
 		}
-		var	fakePosition = new es.Position( this.cursor.initialLeft, currentPosition.top ),
-			edgeCondition = ( direction === 'up' ) ? 0 : this.documentView.getLength(),
+
+		var	fakePosition = new es.Position( this.cursor.initialLeft, oldPosition.top ),
+			i = 1,
 			offset,
-			i = 1;
+			step,
+			edge;
+
+		if ( direction === 'up' ) {
+			step = -5;
+			edge = 0;
+		} else {
+			step = 5;
+			edge = this.documentView.getLength();
+		}
+		
 		do {
-			if ( direction == 'up' ) {
-				fakePosition.top -= i++ * 5;
-			} else {
-				fakePosition.top += i++ * 5;
-			}
+			fakePosition.top += i++ * step;
 			offset = this.documentView.getOffsetFromPosition( fakePosition );
-			if ( offset === edgeCondition ) {
-				return;
-			}
 			fakePosition = this.documentView.getRenderedPosition( offset );
 			fakePosition.left = this.cursor.initialLeft;
-		} while ( currentPosition.top === fakePosition.top );
+		} while ( oldPosition.top === fakePosition.top && offset !== edge );
+
 		this.showCursor( this.documentView.getOffsetFromPosition( fakePosition ) );
 	}
 	return;
