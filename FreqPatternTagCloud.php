@@ -25,10 +25,11 @@ define( 'FPTC_PATH_RESOURCES', dirname( __FILE__ ) . '/res/' );
 
 // Register extension with Special:Version
 $wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
 	'author' => array( 'Tobias Beck', 'Andreas Fay' ),
 	'version' => '1.0',
 	'name' => 'FreqPatternTagCloud',
-	'description' => 'Extension is represented by a special page that allows to build a tag cloud based on properties and to search for similar property values.',
+	'descriptionmsg' => 'freqpatterntagcloud-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:FrequentPatternTagCloud',
 );
 
