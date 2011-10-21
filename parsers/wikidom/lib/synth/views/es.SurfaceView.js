@@ -40,7 +40,8 @@ es.SurfaceView = function( $container, model ) {
 	this.cursor = {
 		$: $( '<div class="editSurface-cursor"></div>' ).appendTo( this.$ ),
 		interval: null,
-		offset: null
+		offset: null,
+		initialLeft: null
 	};
 
 	// References for use in closures
@@ -181,6 +182,7 @@ es.SurfaceView.prototype.onMouseDown = function( e ) {
 	if ( !this.$input.is( ':focus' ) ) {
 		this.$input.focus().select();
 	}
+	this.cursor.initialLeft = null;
 	return false;
 };
 
@@ -272,49 +274,35 @@ es.SurfaceView.prototype.hideCursor = function( position ) {
 };
 
 es.SurfaceView.prototype.moveCursor = function( direction ) {
-	switch ( direction ) {
-		case 'left':
-			this.showCursor( this.cursor.offset - 1 );
-			break;
-		case 'right':
-			this.showCursor( this.cursor.offset + 1 );
-			break;
-		case 'up':
-			var currentOffset = this.cursor.offset;
-			var currentPosition = this.documentView.getRenderedPosition( currentOffset );
-			var newPosition = new es.Position(currentPosition.left, currentPosition.top, currentPosition.bottom);
-			var off = -1;
-			var newPosTop = newPosition.top;
+	if ( direction === 'left' ) {
+		this.showCursor( this.cursor.offset - 1 );
+		this.cursor.initialLeft = null;
+	} else if ( direction === 'right' ) {
+		this.showCursor( this.cursor.offset + 1 );
+		this.cursor.initialLeft = null;
+	} else if ( direction === 'up' || direction === 'down' ) {
+		var currentPosition = this.documentView.getRenderedPosition( this.cursor.offset );
+		if ( this.cursor.initialLeft === null ) {
+			this.cursor.initialLeft = currentPosition.left;
+		}
+		var	fakePosition = new es.Position( this.cursor.initialLeft, currentPosition.top ),
+			edgeCondition = ( direction == 'up' ) ? 0 : this.documentView.getLength(),
+			offset,
+			i = 1;
 
-			while ( currentPosition.top === newPosition.top && off !== 0 ) {
-				newPosTop = newPosTop - 10;
-				newPosition.top = newPosTop;
-				off = this.documentView.getOffsetFromPosition( newPosition );
-				newPosition = this.documentView.getRenderedPosition( off );
+		do {
+			if ( direction == 'up' ) {
+				fakePosition.top -= i++ * 10;
+			} else {
+				fakePosition.top += i++ * 10;
 			}
-			newPosition.left = currentPosition.left;
-			this.showCursor( this.documentView.getOffsetFromPosition( newPosition ) );
-			break;
-		case 'down':
-			var currentOffset = this.cursor.offset;
-			var currentPosition = this.documentView.getRenderedPosition( currentOffset );
-			var newPosition = new es.Position(currentPosition.left, currentPosition.top, currentPosition.bottom);
-			var off = -1;
-			var newPosTop = newPosition.top;
-			var alllength = this.documentView.getLength();
-
-			while ( currentPosition.top === newPosition.top && off !== alllength ) {
-				newPosTop = newPosTop + 10;
-				newPosition.top = newPosTop;
-				off = this.documentView.getOffsetFromPosition( newPosition );
-				newPosition = this.documentView.getRenderedPosition( off );
-			}
-			newPosition.left = currentPosition.left;
-			this.showCursor( this.documentView.getOffsetFromPosition( newPosition ) );
-			break;
-		default:
-			break;
+			offset = this.documentView.getOffsetFromPosition( fakePosition );
+			fakePosition = this.documentView.getRenderedPosition( offset );
+			fakePosition.left = this.cursor.initialLeft;
+		} while ( currentPosition.top === fakePosition.top && offset !== edgeCondition )
+		this.showCursor( this.documentView.getOffsetFromPosition( fakePosition ) );
 	}
+	return;
 };
 
 es.SurfaceView.prototype.drawSelection = function() {
