@@ -177,6 +177,7 @@ $messages['en'] = array(
 	'contest-contestant-commentcount' => 'Comments',
 	'contest-contestant-overallrating' => 'Rating',
 	'contest-contestant-rating' => '$1 ($2 {{PLURAL:$2|vote|votes}})',
+	'contest-contestant-submission' => 'Submission',
 
 	// Special:Contestant
 	'contest-contestant-title' => 'Contestant $1 ($2)',
@@ -290,6 +291,7 @@ $messages['qqq'] = array(
 	'contest-contestant-yes' => 'Table cell value',
 	'contest-contestant-commentcount' => 'Table column header',
 	'contest-contestant-overallrating' => 'Table column header',
+	'contest-contestant-submission' => 'Table column header',
 	'contest-contestant-rating' => '$1 is the avarage rating, $2 is the amount of votes',
 	'contest-contestant-title' => 'Page title with contestant id $1 and contest name $2',
 	'contest-contestant-header-id' => 'Table row header',
