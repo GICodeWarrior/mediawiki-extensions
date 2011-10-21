@@ -17,19 +17,6 @@ class WebFontsHooks {
 
 		return true; // Hooks must return value
 	}
-	
-	public static function addConfig( &$vars ) {
-		global $wgUser;
-
-		if ( $wgUser->getOption( 'webfontsDisable' ) ) {
-			wfDebugLog( 'webfonts', 'User disabled WebFonts: '  , true  );
-			// User disabled WebFonts
-			return true;
-		}
-
-		
-		return true;
-	}
 
 	public static function addVariables( &$vars ) {
 		global $wgWebFontsEnabledByDefault, $wgUser;
