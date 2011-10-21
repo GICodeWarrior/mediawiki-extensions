@@ -8,12 +8,15 @@
 
 (function( $, mw ) {
 
-	$( document ).ready( function() {
-
-		$( '.contestant-row' ).click( function() {
-			window.location = $( this ).attr( 'data-contestant-target' );
-		} );
-
-	} );
+//	$( document ).ready( function() {
+//
+//		$( '.contestant-row' ).click( function( e ) {
+//			window.open(
+//				$( this ).attr( 'data-contestant-target' ),
+//				e.metaKey ? '_blank' : '_self' 
+//			);
+//		} );
+//
+//	} );
 
 })( window.jQuery, window.mediaWiki );
