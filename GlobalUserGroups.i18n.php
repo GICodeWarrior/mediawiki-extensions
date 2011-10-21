@@ -69,3 +69,10 @@ $messages['mk'] = array(
 	'globalusergroups-desc' => 'Овозможува употреба на дадени локални кориснички групи како глобални групи',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'globalusergroups-desc' => 'Maakt het mogelijk lokale groepen als globale groepen te gebruiken',
+);
+
