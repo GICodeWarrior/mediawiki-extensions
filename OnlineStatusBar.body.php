@@ -15,8 +15,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 
 class OnlineStatusBar {
-	public static $Timeout = 8000;
-	
 	private static function GetNow()
 	{
 		return gmdate('Ymdhis', time());
@@ -29,8 +27,7 @@ class OnlineStatusBar {
 	        return '<div style="border: 0px solid black; background: transparent; float: right; position: relative; top:-3px; padding: 5px"><p><b>' . $text . ': <span style="color: ' . $color . '; font:bold;"><img alt="Ledorange.svg" src="//upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Ledorange.svg/20px-Ledorange.svg.png" width="20" height="20" />' . $wgOnlineStatusBarModes[$mode] . '</span></b></p></div>';
 	}
 
-
-	static function UpdateDb($user, $db)
+	static function UpdateDb()
 	{
                 global $wgUser, $wgDBname, $wgOnlineStatusBarTable;
                 if ( OnlineStatusBar::GetStatus($wgUser->getID()) != $OnlineStatusBar->DefaultOnline )
@@ -48,12 +45,29 @@ class OnlineStatusBar {
 	
 		return false;
 	}
+
+	static function UpdateStatus()
+	{
+		global $wgUser, $wgDBname, $wgOnlineStatusBarDefaultOffline, $wgOnlineStatusBarTable;
+		$now = OnlineStatusBar::GetNow();
+		if (OnlineStatusBar::GetStatus() != $wgOnlineStatusBarDefaultOffline)
+		{
+			OnlineStatusBar::UpdateDb();	
+			return true;
+		}
+		$db = wfGetDB ( DB_MASTER );
+                $db->SelectDB( $wgDBname );
+                $db->update($wgOnlineStatusBarTable, array ('timestamp' => $now), array ('username' => $wgUser->getName()), __METHOD__ );
+
+                return false;
+	
+	}
 	
 	public static function DeleteOld()
 	{
-		global $wgOnlineStatusBarTable, $wgDBname;
+		global $wgOnlineStatusBarTable, $wgOnlineStatusBar_LogoutTime, $wgDBname;
                 $db = wfGetDB ( DB_MASTER );
-                $time = OnlineStatusBar::GetNow() - $Timeout;
+                $time = OnlineStatusBar::GetNow() - $wgOnlineStatusBar_LogoutTime;
                 $db->SelectDB( $wgDBname );
                 $db->delete( $wgOnlineStatusBarTable,   array( 'timestamp < "' . $time . '"' ) ,__METHOD__ );
 		return 0;

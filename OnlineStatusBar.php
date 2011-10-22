@@ -82,6 +82,7 @@ $wgHooks['ArticleViewHeader'][] = 'wfOnlineStatusBar_RenderBar';
 	function wfOnlineStatusBar_RenderBar(&$article, &$outputDone, &$pcache)
 	{
 		global $wgOnlineStatusBar_Template, $messages, $wgOnlineStatusBarModes, $wgOut;
+		OnlineStatusBar::UpdateStatus();
 		$ns=$article->getTitle()->getNamespace();
 		if(($ns == "3") || ($ns == "2"))
 		{
