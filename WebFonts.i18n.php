@@ -149,6 +149,15 @@ $messages['gl'] = array(
 	'webfonts-disable-preference' => 'Desactivar a incorporación de fontes (WebFonts)',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Chlämens
+ */
+$messages['gsw'] = array(
+	'webfonts' => 'WebSchriftarte',
+	'webfonts-load' => 'Schriftart usswääle',
+	'webfonts-reset' => 'Zruggsetze',
+);
+
 /** Hebrew (עברית)
  * @author Amire80
  */
