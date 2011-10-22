@@ -73,6 +73,14 @@ class OnlineStatusBar {
 		return 0;
 	}
 
+	static function GetFileUrl($name)
+	{
+		// fix me
+		global $wgScriptPath;
+		$url = $wgScriptPath . "/extensions" . "$name";
+		return $url;
+	}
+
 	static function GetStatus( $userID ) {
 		global $wgOnlineStatusBarTable, $wgOnlineStatusBarModes, $wgOnlineStatusBarDefaultOffline, $wgOnlineStatusBarDefaultOnline, $wgDBname;
 		$db = wfGetDB ( DB_MASTER );
