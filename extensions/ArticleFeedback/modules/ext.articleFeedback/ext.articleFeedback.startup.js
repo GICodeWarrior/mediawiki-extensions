@@ -25,8 +25,6 @@ jQuery( function( $ ) {
 		&& mw.util.getParamValue( 'redirect' ) != 'no'
 		// Not viewing the printable version
 		&& mw.util.getParamValue( 'printable' ) != 'yes'
-		// Not using CologneBlue skin (see bug 31410)
-		&& mw.config.get( 'skin' ) != 'cologneblue'
 	) {
 		// Assign a tracking bucket using options from wgArticleFeedbackTracking
 		mw.user.bucket(
