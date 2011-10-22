@@ -87,7 +87,7 @@ class RecordAdmin {
 			# Add a tab for each type with a form filled in with the parameters from its template call
 			$jsFormsList = array();
 			$tabset = "<div class=\"tabset\">";
-			$tabset .= "<fieldset><legend>" . wfMsg( 'recordadmin-properties' ) . "</legend>";
+			$tabset .= "<fieldset><legend>" . wfMsgHtml( 'recordadmin-properties' ) . "</legend>";
 			$tabset .= wfMsg( 'recordadmin-edit-info', $wgRequest->appendQuery( 'nora=1' ) ) . "</fieldset>";
 			foreach( $records as $type => $record ) {
 				$jsFormsList[] = "'$type'";
@@ -95,7 +95,7 @@ class RecordAdmin {
 				$this->examineForm();
 				$values = $this->valuesFromText( $record );
 				$this->populateForm( $values );
-				$tabset .= "<fieldset><legend>$type " . strtolower( wfMsg( 'recordadmin-properties' ) ) . "</legend>\n";
+				$tabset .= "<fieldset><legend>$type " . strtolower( wfMsgHtml( 'recordadmin-properties' ) ) . "</legend>\n";
 				$tabset .= "<form id=\"" . strtolower($type) . "-form\" class=\"{$this->formClass}\"{$this->formAtts}>$this->form</form>\n";
 				$tabset .= "</fieldset>";
 			}
@@ -303,7 +303,7 @@ class RecordAdmin {
 	 */
 	function renderRecords( $records, $cols = false, $sortable = true, $template = false, $name = 'wpSelect', $export = true, $groupby = false ) {
 		global $wgOut, $wgParser, $wgTitle, $wgRequest;
-		if( count( $records ) < 1 ) return wfMsg( 'recordadmin-nomatch' );
+		if( count( $records ) < 1 ) return wfMsgHtml( 'recordadmin-nomatch' );
 		if( $groupby ) $groupby = self::split( $groupby, ',' );
 
 		$type     = $this->type;
@@ -324,11 +324,11 @@ class RecordAdmin {
 		# Table header (col0-3 class atts are for backward compatibility, only use named from now on)
 		$table = "<table$id class='recordadmin$sortable $type-record'>\n<tr>";
 		$th = array(
-			'select'   => "<th class='col-select'>"        . wfMsg( 'recordadmin-select' )       . "$br</th>",
-			'title'    => "<th class='col0 col-title'>"    . wfMsg( 'recordadmin-title', $type ) . "$br</th>",
-			'actions'  => "<th class='col1 col-actions'>"  . wfMsg( 'recordadmin-actions' )      . "$br</th>",
-			'created'  => "<th class='col2 col-created'>"  . wfMsg( 'recordadmin-created' )      . "$br</th>",
-			'modified' => "<th class='col3 col-modified'>" . wfMsg( 'recordadmin-modified' )     . "$br</th>"
+			'select'   => "<th class='col-select'>"        . wfMsgHtml( 'recordadmin-select' )       . "$br</th>",
+			'title'    => "<th class='col0 col-title'>"    . wfMsgHtml( 'recordadmin-title', $type ) . "$br</th>",
+			'actions'  => "<th class='col1 col-actions'>"  . wfMsgHtml( 'recordadmin-actions' )      . "$br</th>",
+			'created'  => "<th class='col2 col-created'>"  . wfMsgHtml( 'recordadmin-created' )      . "$br</th>",
+			'modified' => "<th class='col3 col-modified'>" . wfMsgHtml( 'recordadmin-modified' )     . "$br</th>"
 		);
 		foreach( array_keys( $this->types ) as $col ) {
 			$class = 'col' . preg_replace( "|\W|", "-", $col );
@@ -353,13 +353,13 @@ class RecordAdmin {
 			$tmp = array();
 			foreach( $records as $k1 => $v1 ) {
 				if( empty( $k1 ) ) {
-					$k1 = wfMsg( 'recordadmin-notset', $groupby[0] );
+					$k1 = wfMsgHtml( 'recordadmin-notset', $groupby[0] );
 				}
 				$tmp[] = "$td<h2>$k1</h2></td>\n";
 				foreach( $v1 as $k2 => $v2 ) {
 					if( isset( $groupby[1] ) ) {
 						if( empty( $k2 ) ) {
-							$k2 = wfMsg( 'recordadmin-notset', $groupby[1] );
+							$k2 = wfMsgHtml( 'recordadmin-notset', $groupby[1] );
 						}
 						$tmp[] = "$td<h3>$k2</h3></td>\n";
 						foreach( $v2 as $v3 ) $tmp[] = $v3;
@@ -429,7 +429,7 @@ class RecordAdmin {
 						'select'   => "<td class='col-select'>$sel</td>\n",
 						'title'    => "<td class='col0 col-title'><a href='$u'>$col</a></td>",
 						'actions'  => "<td class='col1 col-actions'><a href='" . $t->getLocalURL( "action=edit" ) . "'>"
-									  . wfMsg( 'recordadmin-editlink' ) . "</a></td>",
+									  . wfMsgHtml( 'recordadmin-editlink' ) . "</a></td>",
 						'created'  => "<td class='col2 col-created'>$tsc</td>\n",
 						'modified' => "<td class='col3 col-modified'>$tsm</td>\n"
 					);
@@ -497,10 +497,10 @@ class RecordAdmin {
 			$url = $wgTitle->getLocalURL( $qs );
 			$table .= "\n<a class=\"recordadmin-export-url\" href=\"$url\">URL</a>";
 			if( in_array( 'csv', $export ) ) {
-				$table .= "\n<a class=\"recordadmin-export-csv\" href=\"$url&export=csv\">" . wfMsg( 'recordadmin-export-csv' ) . "</a>";
+				$table .= "\n<a class=\"recordadmin-export-csv\" href=\"$url&export=csv\">" . wfMsgHtml( 'recordadmin-export-csv' ) . "</a>";
 			}
 			if( in_array( 'pdf', $export ) ) {
-				$table .= "\n<a class=\"recordadmin-export-pdf\" href=\"$url&export=pdf\">" . wfMsg( 'recordadmin-export-pdf' ) . "</a>";
+				$table .= "\n<a class=\"recordadmin-export-pdf\" href=\"$url&export=pdf\">" . wfMsgHtml( 'recordadmin-export-pdf' ) . "</a>";
 			}
 		}
 
@@ -551,9 +551,9 @@ class RecordAdmin {
 			else {
 
 				# Create a red link to the form if it doesn't exist
-				$form = '<b>' . wfMsg( 'recordadmin-noform', $type ) . '</b>'
+				$form = '<b>' . wfMsgHtml( 'recordadmin-noform', $type ) . '</b>'
 					. '<br /><a href="' . $title->getLocalURL( 'action=edit' )
-					. '">(' . wfMsg( 'recordadmin-createlink' ) . ')</a><br />';
+					. '">(' . wfMsgHtml( 'recordadmin-createlink' ) . ')</a><br />';
 			}
 		} else $form = '';
 		$this->form = $form;
@@ -884,19 +884,19 @@ class RecordAdmin {
 		$ttitle = Title::newFromtext( $newtype, NS_TEMPLATE );
 		$ftitle = Title::newFromtext( $newtype, NS_FORM );
 		if( !is_object( $ttitle ) || !is_object( $ftitle ) ) {
-			$wgOut->addHTML( "<div class='errorbox'>" . wfMsg( 'recordadmin-createerror', $rtype ) . "</div>\n" );
+			$wgOut->addHTML( "<div class='errorbox'>" . wfMsgHtml( 'recordadmin-createerror', $rtype ) . "</div>\n" );
 		}
 		$tttext = $ttitle->getPrefixedText();
 		$fttext = $ftitle->getPrefixedText();
 
 		# check if the template already exists
 		if( $ttitle->exists() ) {
-			$wgOut->addHTML( "<div class='errorbox'>" . wfMsg( 'recordadmin-alreadyexist', $tttext ) . "</div>\n" );
+			$wgOut->addHTML( "<div class='errorbox'>" . wfMsgHtml( 'recordadmin-alreadyexist', $tttext ) . "</div>\n" );
 		}
 
 		# check if the form already exists
 		elseif( $ftitle->exists() ) {
-			$wgOut->addHTML( "<div class='errorbox'>" . wfMsg( 'recordadmin-alreadyexist', $fttext ) . "</div>\n" );
+			$wgOut->addHTML( "<div class='errorbox'>" . wfMsgHtml( 'recordadmin-alreadyexist', $fttext ) . "</div>\n" );
 		}
 
 		# Attempt to create the template and form
@@ -914,15 +914,15 @@ class RecordAdmin {
 			if( $success ) {
 				$cat = Title::newFromText( $wgRecordAdminCategory, NS_CATEGORY )->getPrefixedText();
 				$url = $ftitle->getLocalUrl( 'action=edit' );
-				$link = "<a href=\"$url\">" . wfMsg( 'recordadmin-needscontent' ) . "</a>";
+				$link = "<a href=\"$url\">" . wfMsgHtml( 'recordadmin-needscontent' ) . "</a>";
 				$text = "<html>\n\t<form>\n\t\t<table>\n\t\t$link\n\t\t</table>\n\t</form>\n</html>";
 				$article = new Article( $ftitle );
 				$success = $article->doEdit( $text, $summary, EDIT_NEW );
-				if( !$success ) $wgOut->addHTML( "<div class='errorbox'>" . wfMsg( 'recordadmin-createerror', $fttext ) . "</div>\n" );
-			} else $wgOut->addHTML( "<div class='errorbox'>" . wfMsg( 'recordadmin-createerror', $tttext ) . "</div>\n" );
+				if( !$success ) $wgOut->addHTML( "<div class='errorbox'>" . wfMsgHtml( 'recordadmin-createerror', $fttext ) . "</div>\n" );
+			} else $wgOut->addHTML( "<div class='errorbox'>" . wfMsgHtml( 'recordadmin-createerror', $tttext ) . "</div>\n" );
 
 			# Report success
-			if( $success ) $wgOut->addHTML( "<div class='successbox'>" . wfMsg( 'recordadmin-createsuccess', $rtype ) . "</div>\n" );
+			if( $success ) $wgOut->addHTML( "<div class='successbox'>" . wfMsgHtml( 'recordadmin-createsuccess', $rtype ) . "</div>\n" );
 		}
 	}
 
