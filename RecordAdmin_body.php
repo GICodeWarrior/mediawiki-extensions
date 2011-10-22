@@ -88,7 +88,7 @@ class RecordAdmin {
 			$jsFormsList = array();
 			$tabset = "<div class=\"tabset\">";
 			$tabset .= "<fieldset><legend>" . wfMsgHtml( 'recordadmin-properties' ) . "</legend>";
-			$tabset .= wfMsg( 'recordadmin-edit-info', $wgRequest->appendQuery( 'nora=1' ) ) . "</fieldset>";
+			$tabset .= wfMsgExt( 'recordadmin-edit-info', array( 'parse' ), wfExpandUrl( $wgRequest->appendQuery( 'nora=1' ), PROTO_CURRENT ) ) . "</fieldset>";
 			foreach( $records as $type => $record ) {
 				$jsFormsList[] = "'$type'";
 				$this->preProcessForm( $type );

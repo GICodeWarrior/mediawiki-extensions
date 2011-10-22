@@ -54,7 +54,7 @@ $messages['en'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'No "$1"',
-	'recordadmin-edit-info' => 'This page contains templates which have their own forms that you can fill in from this tab-set.<br />Alternatively <a href="$1">use the normal MediaWiki edit functionality without template forms</a>.',
+	'recordadmin-edit-info' => 'This page contains templates which have their own forms that you can fill in from this tab-set.<br />Alternatively [$1 use the normal MediaWiki edit functionality without template forms].',
 	'recordadmin-properties' => 'Properties',
 );
 
@@ -128,7 +128,7 @@ $messages['af'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Geen "$1"',
-	'recordadmin-edit-info' => 'Hierdie bladsy lys sjablone wat hul eie vorms wat ingevul kan word bevat.<br /> U kan ook die <a href="$1">normale MediaWiki fasiliteite sonder sjabloonvorms gebruik</a>.',
+	'recordadmin-edit-info' => 'Hierdie bladsy lys sjablone wat hul eie vorms wat ingevul kan word bevat.<br /> U kan ook die [$1 normale MediaWiki fasiliteite sonder sjabloonvorms gebruik].',
 	'recordadmin-properties' => 'Eienskappe',
 );
 
@@ -312,7 +312,7 @@ $messages['be-tarask'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Няма $1',
-	'recordadmin-edit-info' => 'Гэтая старонка ўтрымлівае шаблёны, якія маюць уласныя формы, якія Вы можаце запоўніць з гэтага набору закладак.<br />Націсьніце, <a href="$1">калі Вы жадаеце выкарыстоўваць звычайнае рэдагаваньне MediaWiki без шаблённых формаў</a>.',
+	'recordadmin-edit-info' => 'Гэтая старонка ўтрымлівае шаблёны, якія маюць уласныя формы, якія Вы можаце запоўніць з гэтага набору закладак.<br />Націсьніце, [$1 калі Вы жадаеце выкарыстоўваць звычайнае рэдагаваньне MediaWiki без шаблённых формаў].',
 	'recordadmin-properties' => 'Уласьцівасьці',
 );
 
@@ -406,7 +406,7 @@ $messages['br'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => '"$1" ebet',
-	'recordadmin-edit-info' => 'Er bajenn-mañ ez eus patromoù dezho o furmskridoù o-unan a c\'hallit leuniañ adalek an strobad ivinelloù-mañ.<br />Gallout a rit ivez<a href="$1">ober gant arc\'hwelioù kemmañ boas MediaWiki hep furmskridoù ar patromoù</a>.',
+	'recordadmin-edit-info' => 'Er bajenn-mañ ez eus patromoù dezho o furmskridoù o-unan a c\'hallit leuniañ adalek an strobad ivinelloù-mañ.<br />Gallout a rit ivez[$1 ober gant arc\'hwelioù kemmañ boas MediaWiki hep furmskridoù ar patromoù].',
 	'recordadmin-properties' => 'Perzhioù',
 );
 
@@ -452,7 +452,7 @@ $messages['bs'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Bez "$1"',
-	'recordadmin-edit-info' => 'Ova stranica sadrži šablone sa vlastitim obrascima koje možete popuniti iz ovog seta jezičaka.<br />Alternativno <a href="$1">koristite normalni MediaWiki uređivač koji radi bez šablonskih obrazaca</a>.',
+	'recordadmin-edit-info' => 'Ova stranica sadrži šablone sa vlastitim obrascima koje možete popuniti iz ovog seta jezičaka.<br />Alternativno [$1 koristite normalni MediaWiki uređivač koji radi bez šablonskih obrazaca].',
 	'recordadmin-properties' => 'Svojstva',
 );
 
@@ -545,7 +545,7 @@ $messages['de'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Keine „$1“',
-	'recordadmin-edit-info' => 'Diese Seite enthält Vorlagen, die über eigene Bearbeitungsformulare verfügen.<br /><a href="$1">Hier</a> klicken, um den regulären Bearbeitungsmodus von MediaWiki zu verwenden.',
+	'recordadmin-edit-info' => 'Diese Seite enthält Vorlagen, die über eigene Bearbeitungsformulare verfügen.<br />[$1 Hier] klicken, um den regulären Bearbeitungsmodus von MediaWiki zu verwenden.',
 	'recordadmin-properties' => 'Attribute',
 );
 
@@ -600,7 +600,7 @@ $messages['dsb'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Žeden "$1"',
-	'recordadmin-edit-info' => 'Toś ten bok wopśimujo pśedłogi, kótarež maju swójske formulary, kótarež móžoš z toś teje sajźby rejtarkow wupołniś.<br />Klikni <a href="$1">sem</a>, aby normalnu wobźěłowańsku funkcionalnosć MediaWiki bźez pśedłogowych formularow wužywał.',
+	'recordadmin-edit-info' => 'Toś ten bok wopśimujo pśedłogi, kótarež maju swójske formulary, kótarež móžoš z toś teje sajźby rejtarkow wupołniś.<br />Klikni [$1 sem], aby normalnu wobźěłowańsku funkcionalnosć MediaWiki bźez pśedłogowych formularow wužywał.',
 	'recordadmin-properties' => 'Kakosći',
 );
 
@@ -833,7 +833,7 @@ $messages['fr'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Aucun « $1 »',
-	'recordadmin-edit-info' => 'Cette page contient des modèles qui ont leurs propres formulaires que vous pouvez remplir depuis ce jeu d’onglets.<br /> Vous pouvez aussi <a href="$1">utiliser les fonctions de modification de MediaWiki habituelles sans les formulaires de modèles</a>.',
+	'recordadmin-edit-info' => 'Cette page contient des modèles qui ont leurs propres formulaires que vous pouvez remplir depuis ce jeu d’onglets.<br /> Vous pouvez aussi [$1 utiliser les fonctions de modification de MediaWiki habituelles sans les formulaires de modèles].',
 	'recordadmin-properties' => 'Propriétés',
 );
 
@@ -927,7 +927,7 @@ $messages['gl'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Non existe ningún "$1"',
-	'recordadmin-edit-info' => 'Esta páxina contén os modelos que teñen os seus propios formularios que pode encher desde este grupo de lapelas.<br />Como alternativa, <a href="$1">empregue a funcionalidade de edición habitual de MediaWiki sen os formularios</a>.',
+	'recordadmin-edit-info' => 'Esta páxina contén os modelos que teñen os seus propios formularios que pode encher desde este grupo de lapelas.<br />Como alternativa, [$1 empregue a funcionalidade de edición habitual de MediaWiki sen os formularios].',
 	'recordadmin-properties' => 'Propiedades',
 );
 
@@ -988,7 +988,7 @@ $messages['gsw'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Kei „$1“',
-	'recordadmin-edit-info' => 'In däre Syte het s Vorlage mit eigene Formular, wu Du iber die Regischtercharte chasch uusfille<br /><a href="$1">Do</a> drucke, zum dr regulär Bearbeitigsmodus vu MediaWiki ohni Formular z verwände.',
+	'recordadmin-edit-info' => 'In däre Syte het s Vorlage mit eigene Formular, wu Du iber die Regischtercharte chasch uusfille<br />[$1 Do] drucke, zum dr regulär Bearbeitigsmodus vu MediaWiki ohni Formular z verwände.',
 	'recordadmin-properties' => 'Eigeschafte',
 );
 
@@ -1049,7 +1049,7 @@ $messages['he'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'ללא "$1"',
-	'recordadmin-edit-info' => 'הדף הזה מכיל תבניות עם טפסים משלהן שאפשר למלא מערכת הלשוניות הזאת<br />לחלופין <a href="$1">השתמשו בעריכה רגילה של מדיה־ויקי ללא טופסי תבניות</a>.',
+	'recordadmin-edit-info' => 'הדף הזה מכיל תבניות עם טפסים משלהן שאפשר למלא מערכת הלשוניות הזאת<br />לחלופין [$1 השתמשו בעריכה רגילה של מדיה־ויקי ללא טופסי תבניות].',
 	'recordadmin-properties' => 'מאפיינים',
 );
 
@@ -1095,7 +1095,7 @@ $messages['hsb'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Žadyn "$1"',
-	'recordadmin-edit-info' => 'Tuta strona wobsahuje předłohi, kotrež maja swójske formulary, kotrež móžeš z tuteje sadźby rajtarkow wupjelnić.<br />Klikń <a href="$1">sem</a>, zo by normalnu wobdźěłowansku funkcionalnosć MediaWiki bjez předłohowych formularow wužiwał.',
+	'recordadmin-edit-info' => 'Tuta strona wobsahuje předłohi, kotrež maja swójske formulary, kotrež móžeš z tuteje sadźby rajtarkow wupjelnić.<br />Klikń [$1 sem], zo by normalnu wobdźěłowansku funkcionalnosć MediaWiki bjez předłohowych formularow wužiwał.',
 	'recordadmin-properties' => 'Kajkosće',
 );
 
@@ -1185,7 +1185,7 @@ $messages['ia'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Non existe "$1"',
-	'recordadmin-edit-info' => 'Iste pagina contine patronos que ha lor proprie formularios le quales tu pote completar ab iste gruppo de schedas.<br />Alternativemente tu pote <a href="$1">usar le normal functionalitate de modification de MediaWiki sin formularios de patrono</a>.',
+	'recordadmin-edit-info' => 'Iste pagina contine patronos que ha lor proprie formularios le quales tu pote completar ab iste gruppo de schedas.<br />Alternativemente tu pote [$1 usar le normal functionalitate de modification de MediaWiki sin formularios de patrono].',
 	'recordadmin-properties' => 'Proprietates',
 );
 
@@ -1235,7 +1235,7 @@ $messages['id'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Tidak ada "$1"',
-	'recordadmin-edit-info' => 'Halaman ini berisi templat yang memiliki formulir sendiri yang dapat Anda isi dari set tab ini.<br />Sebagai alternatif, <a href="$1">gunakan fungsi penyuntingan normal MediaWiki tanpa formulir templat</a>.',
+	'recordadmin-edit-info' => 'Halaman ini berisi templat yang memiliki formulir sendiri yang dapat Anda isi dari set tab ini.<br />Sebagai alternatif, [$1 gunakan fungsi penyuntingan normal MediaWiki tanpa formulir templat].',
 	'recordadmin-properties' => 'Properti',
 );
 
@@ -1329,7 +1329,7 @@ $messages['ja'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => '"$1"なし',
-	'recordadmin-edit-info' => 'このページは、このタブ集合から入力できる、独自のフォームを持つテンプレートを含んでいます。<br />代替手段としては、<a href="$1">テンプレートフォームを使用しないで、通常のMediaWiki編集機能を使ってください。</a>',
+	'recordadmin-edit-info' => 'このページは、このタブ集合から入力できる、独自のフォームを持つテンプレートを含んでいます。<br />代替手段としては、[$1 テンプレートフォームを使用しないで、通常のMediaWiki編集機能を使ってください。]',
 	'recordadmin-properties' => 'プロパティー',
 );
 
@@ -1427,7 +1427,7 @@ $messages['ksh'] = array(
 	'recordadmin-export-pdf' => '<i lang="en">PDF</i>',
 	'recordadmin-notset' => 'Keine „$1“',
 	'recordadmin-edit-info' => 'En heh dä Sigg sen Schabloone dren met eije Fommulaare för ußzefölle.<br />
-Söns donn de <a href="$1">jewöhnlijje Aat vum MediaWiki för et Ändere nämme</a>.',
+Söns donn de [$1 jewöhnlijje Aat vum MediaWiki för et Ändere nämme].',
 	'recordadmin-properties' => 'Eijeschaffte',
 );
 
@@ -1507,7 +1507,7 @@ $messages['mk'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Нема „$1“',
-	'recordadmin-edit-info' => 'Оваа страница содржи шаблони кои имаат свои обрасци што можете да ги пополните од овој збир јазичиња.<br />Можете и да <a href="$1">ја употребите обичната функција за уредување од МедијаВики, без шаблонски обрасци</a>.',
+	'recordadmin-edit-info' => 'Оваа страница содржи шаблони кои имаат свои обрасци што можете да ги пополните од овој збир јазичиња.<br />Можете и да [$1 ја употребите обичната функција за уредување од МедијаВики, без шаблонски обрасци].',
 	'recordadmin-properties' => 'Својства',
 );
 
@@ -1598,7 +1598,7 @@ $messages['nl'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Geen "$1"',
-	'recordadmin-edit-info' => 'Deze pagina bevat sjablonen die hun eigen formulieren hebben die u hier in kunt vullen.<br />U kunt ook de <a href="$1">normale MediaWiki bewerkingsfunctionaliteit zonder sjabloonformulieren gebruiken</a>.',
+	'recordadmin-edit-info' => 'Deze pagina bevat sjablonen die hun eigen formulieren hebben die u hier in kunt vullen.<br />U kunt ook de [$1 normale MediaWiki bewerkingsfunctionaliteit zonder sjabloonformulieren gebruiken].',
 	'recordadmin-properties' => 'Eigenschappen',
 );
 
@@ -1690,7 +1690,7 @@ $messages['no'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Ingen «$1»',
-	'recordadmin-edit-info' => 'Siden inneholder maler som har sine egne skjemaer du kan fylle ut ved valg blant angitte faner.<br />Alternativt <a href="$1">kan du bruke standard MediaWiki-redigeringsfunksjonalitet uten malskjemaer</a>.',
+	'recordadmin-edit-info' => 'Siden inneholder maler som har sine egne skjemaer du kan fylle ut ved valg blant angitte faner.<br />Alternativt [$1 kan du bruke standard MediaWiki-redigeringsfunksjonalitet uten malskjemaer].',
 	'recordadmin-properties' => 'Egenskaper',
 );
 
@@ -1806,7 +1806,7 @@ $messages['pl'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Nie „$1”',
-	'recordadmin-edit-info' => 'Ta strona zawiera szablony z formularzami, które można wypełnić korzystając z zestawu gotowych odpowiedzi.<br />Kliknij <a href="$1">tutaj</a> jeśli chcesz edytować bez użycia formularzy.',
+	'recordadmin-edit-info' => 'Ta strona zawiera szablony z formularzami, które można wypełnić korzystając z zestawu gotowych odpowiedzi.<br />Kliknij [$1 tutaj] jeśli chcesz edytować bez użycia formularzy.',
 	'recordadmin-properties' => 'Właściwości',
 );
 
@@ -1853,7 +1853,7 @@ $messages['pms'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Pa gnun "$1"',
-	'recordadmin-edit-info' => "Costa pàgina a conten djë stamp che a l'han ij sò pròpi formolari ch'a peul compilé da st'ansem..<br />Dësnò <a href=\"\$1\">ch'a deuvra la funsionalità normal ëd modìfica MediaWiki sensa formolari dë stamp</a>.",
+	'recordadmin-edit-info' => "Costa pàgina a conten djë stamp che a l'han ij sò pròpi formolari ch'a peul compilé da st'ansem..<br />Dësnò <a href=\"\$1\">ch'a deuvra la funsionalità normal ëd modìfica MediaWiki sensa formolari dë stamp].",
 	'recordadmin-properties' => 'Proprietà',
 );
 
@@ -1924,7 +1924,7 @@ $messages['pt'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => '"$1" não {{PLURAL:$1|existe|existem}}',
-	'recordadmin-edit-info' => 'Esta página contém predefinições que têm formulários próprios, os quais pode preencher a partir deste grupo de separadores.<br />Em alternativa, <a href="$1">pode usar a funcionalidade normal de edição do MediaWiki, sem formulários</a>.',
+	'recordadmin-edit-info' => 'Esta página contém predefinições que têm formulários próprios, os quais pode preencher a partir deste grupo de separadores.<br />Em alternativa, [$1 pode usar a funcionalidade normal de edição do MediaWiki, sem formulários].',
 	'recordadmin-properties' => 'Propriedades',
 );
 
@@ -1973,7 +1973,7 @@ $messages['pt-br'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Não {{PLURAL:$1|existe|existem}} "$1"',
-	'recordadmin-edit-info' => 'Esta página contém predefinições que têm formulários próprios, os quais pode preencher a partir deste grupo de abas.<br />Em alternativa, <a href="$1">pode usar a funcionalidade normal de edição do MediaWiki, sem formulários</a>.',
+	'recordadmin-edit-info' => 'Esta página contém predefinições que têm formulários próprios, os quais pode preencher a partir deste grupo de abas.<br />Em alternativa, [$1 pode usar a funcionalidade normal de edição do MediaWiki, sem formulários].',
 	'recordadmin-properties' => 'Propriedades',
 );
 
@@ -2052,7 +2052,7 @@ $messages['ru'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Нет «$1»',
-	'recordadmin-edit-info' => 'Эта страница содержит шаблоны, которые имеют свои собственные формы, которые можно заполнить с этого набора вкладок.<br />Нажмите <a href="$1">здесь</a>, чтобы использовать обычное редактирование MediaWiki без шаблонных форм.',
+	'recordadmin-edit-info' => 'Эта страница содержит шаблоны, которые имеют свои собственные формы, которые можно заполнить с этого набора вкладок.<br />Нажмите [$1 здесь], чтобы использовать обычное редактирование MediaWiki без шаблонных форм.',
 	'recordadmin-properties' => 'Свойства',
 );
 
@@ -2357,8 +2357,8 @@ $messages['tl'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Walang "$1"',
-	'recordadmin-edit-info' => 'Ang pahinang ito ay naglalaman ng mga suleras na may sarili nilang mga pormularyo na maaari mong punuin mula sa pangkat ng panglaylay na ito.<br />O kaya <a href="$1">gamitin ang pangkaraniwang tungkuling pambago ng MediaWiki na walang mga pormularyo ng suleras</a>.
-This page contains templates which have their own forms that you can fill in from this tab-set.<br />Alternatively <a href="$1">use the normal MediaWiki edit functionality without template forms</a>.',
+	'recordadmin-edit-info' => 'Ang pahinang ito ay naglalaman ng mga suleras na may sarili nilang mga pormularyo na maaari mong punuin mula sa pangkat ng panglaylay na ito.<br />O kaya [$1 gamitin ang pangkaraniwang tungkuling pambago ng MediaWiki na walang mga pormularyo ng suleras].
+This page contains templates which have their own forms that you can fill in from this tab-set.<br />Alternatively [$1 use the normal MediaWiki edit functionality without template forms].',
 	'recordadmin-properties' => 'Mga katangiang-ari',
 );
 
