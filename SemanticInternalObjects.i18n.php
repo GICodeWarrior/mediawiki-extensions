@@ -128,10 +128,12 @@ $messages['gl'] = array(
 );
 
 /** Swiss German (Alemannisch)
+ * @author Als-Chlämens
  * @author Als-Holder
  */
 $messages['gsw'] = array(
 	'semanticinternalobjects-desc' => 'Intärni Objäkt in Semantic MediaWiki yysetze',
+	'semanticinternalobjects-internalproperty' => 'Interns Attribut',
 );
 
 /** Hebrew (עברית)
@@ -230,10 +232,12 @@ $messages['nl'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Event
  * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'semanticinternalobjects-desc' => 'Innstilling for interne objekt i Semantic MediaWiki',
+	'semanticinternalobjects-internalproperty' => 'Intern egenskap',
 );
 
 /** Occitan (Occitan)
