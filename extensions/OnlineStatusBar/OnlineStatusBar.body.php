@@ -50,7 +50,7 @@ class OnlineStatusBar {
 	{
 		global $wgUser, $wgDBname, $wgOnlineStatusBarDefaultOffline, $wgOnlineStatusBarTable;
 		$now = OnlineStatusBar::GetNow();
-		if (OnlineStatusBar::GetStatus() != $wgOnlineStatusBarDefaultOffline)
+		if (OnlineStatusBar::GetStatus() == $wgOnlineStatusBarDefaultOffline)
 		{
 			OnlineStatusBar::UpdateDb();	
 			return true;
