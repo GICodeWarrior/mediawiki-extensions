@@ -326,8 +326,9 @@ var config = {
 var $aftDiv = $( '<div id="mw-articlefeedback"></div>' ).articleFeedback( config );
 
 // Put on bottom of article before #catlinks (if it exists)
-// Except in Classic, which has #catlinks above the article but inside content-div.
-if ( $( '#catlinks' ).length && !mw.config.get( 'skin' ) in ['standard', 'cologneblue', 'nostalgia'] ) {
+// Except in legacy skins, which have #catlinks above the article but inside content-div.
+var legacyskins = [ 'standard', 'cologneblue', 'nostalgia' ];
+if ( $( '#catlinks' ).length && $.inArray( mw.config.get( 'skin' ), legacyskins ) < 0 ) {
 	$aftDiv.insertBefore( '#catlinks' );
 } else {
 	// CologneBlue, Nostalgia, ...
