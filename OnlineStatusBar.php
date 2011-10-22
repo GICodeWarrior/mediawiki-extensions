@@ -37,6 +37,14 @@ $wgOnlineStatusBarModes = array (
         'offline' => "Offline",
 );
 
+$wgOnlineStatusBarIcon = array (
+	'online' => "//upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Ledgreen.svg/20px-Ledgreen.svg.png",
+	'busy' => "//upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Ledorange.svg/20px-Ledorange.svg.png",
+	'away' => "//upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Ledorange.svg/20px-Ledorange.svg.png",
+	'hidden' => "//upload.wikimedia.org/wikipedia/commons/thumb/6/60/Nuvola_apps_krec.svg/20px-Nuvola_apps_krec.svg.png",
+	'offline' => "//upload.wikimedia.org/wikipedia/commons/thumb/6/60/Nuvola_apps_krec.svg/20px-Nuvola_apps_krec.svg.png",
+);
+
 $wgOnlineStatusBarColor = array (
 	'online' => "green",
 	'busy' => "orange",
