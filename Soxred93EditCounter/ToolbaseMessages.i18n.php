@@ -706,6 +706,16 @@ Se seguiu unha ligazón, <a href="$1">informe do erro</a>.
 	'toolbase-error-toomanyedits' => '$1 fixo $2 edicións. Esta ferramenta ten un máximo de $3 edicións.',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Chlämens
+ */
+$messages['gsw'] = array(
+	'toolbase-form-wiki' => 'Wiki',
+	'toolbase-error-nouser' => '$1 isch kei giltige Benutzername.',
+	'toolbase-error-nowiki' => "S Wiki $1.$2.org git's nit",
+	'toolbase-error-toomanyedits' => 'Benutzer $1 het $2 Bearbeitige gmacht. Des Hilfsprogramm het e Maximum vo $3 Bearbeitige.',
+);
+
 /** Hebrew (עברית)
  * @author Amire80
  */
