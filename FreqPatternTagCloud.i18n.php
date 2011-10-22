@@ -31,6 +31,7 @@ $messages['en'] = array(
 	'fptc-no-suggestion' => 'No suggestions found'
 );
 
+/** Message documentation (Message documentation) */
 $messages['qqq'] = array(
 	'freqpatterntagcloud' => 'This message is the page title of the frequent-pattern-tag-cloud-specialpage and must not be translated.',
 	'freqpatterntagcloudmaintenance' => 'This message is the page title of the frequent-pattern-tag-cloud-maintenace-specialpage and must not be translated.',
@@ -47,28 +48,92 @@ $messages['qqq'] = array(
 	'fptc-search-button' => 'This message is the text of the button search',
 	'fptc-search-suggestion-value' => 'This mesage is the title of the search suggestions (parameter %s = suggestion, do not translate)',
 	'fptc-suggestion' => 'This message appears after submitting an invalid value in the input box on the frequent-pattern-tag-cloud-specialpage',
-	'fptc-no-suggestion' => 'This message appears if no suggestions can be found.'
+	'fptc-no-suggestion' => 'This message appears if no suggestions can be found.',
 );
 
 /** German (Deutsch)
- * @author Tobias Beck, University of Heidelberg
  * @author Andreas Fay, University of Heidelberg
+ * @author Kghbln
+ * @author Tobias Beck, University of Heidelberg
  */
 $messages['de'] = array(
 	'freqpatterntagcloud' => 'Frequent Pattern Tag Cloud',
-	'freqpatterntagcloudmaintenance' => 'Frequent Pattern Tag Cloud Maintenance',
+	'freqpatterntagcloudmaintenance' => 'Administration von Frequent Pattern Tag Cloud',
+	'freqpatterntagcloud-desc' => 'Ergänzt eine [[Special:FreqPatternTagCloud|Spezialseite]] zum Erstellen einer Stichwortwolke auf Basis von Attributen sowie zur Suche ähnlicher Attributwerte',
 	'fptc-categoryname' => 'Kategorie',
 	'fptc-context-menu-browse' => 'Durchsuche Seiten mit diesem Wert',
-	'fptc-context-menu-similar-tags' => 'Ähnliche Tags:',
+	'fptc-context-menu-similar-tags' => 'Ähnliche Attribute:',
 	'fptc-form-attribute-name' => 'Attribut:',
-	'fptc-form-submit-button' => 'Eingabe',
+	'fptc-form-submit-button' => 'Speichern',
 	'fptc-invalid-attribute' => 'Das eingegebene Attribut ist ungültig.',
-	'fptc-insufficient-rights-for-maintenance' => 'Um diese Seite sehen zu können, musst du als Administrator angemeldet sein.',
-	'fptc-refresh-frequent-patterns' => 'Aktualisierung der Daten',
-	'fptc-refreshed-frequent-patterns' => 'Regeln für frequent pattern neu generiert.',
+	'fptc-insufficient-rights-for-maintenance' => 'Um diese Seite sehen zu können, muss man ein Administrator sein.',
+	'fptc-refresh-frequent-patterns' => 'Daten aktualisieren',
+	'fptc-refreshed-frequent-patterns' => "Die Regeln für ''Frequent Pattern'' wurden neu generiert.",
 	'fptc-search-attribute-name' => 'Suche nach Attribut',
 	'fptc-search-button' => 'Suche',
-	'fptc-search-suggestion-value' => 'Ähnlich zu "%s":',
+	'fptc-search-suggestion-value' => 'Ähnlich zu „%s“:',
 	'fptc-suggestion' => 'Meintest du:',
-	'fptc-no-suggestion' => 'Keine Vorschläge gefunden'
+	'fptc-no-suggestion' => 'Es wurden keine Vorschläge gefunden.',
 );
+
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
+ * @author Kghbln
+ */
+$messages['de-formal'] = array(
+	'fptc-suggestion' => 'Meinten Sie:',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'freqpatterntagcloud' => 'Frequent Pattern Tag Cloud',
+	'freqpatterntagcloudmaintenance' => 'Frequent Pattern Tag Cloud Maintenance',
+	'freqpatterntagcloud-desc' => '[[Special:FreqPatternTagCloud|Páxina especial]] para construír unha nube de etiquetas baseada en propiedades e para procurar valores de propiedades similares',
+	'fptc-categoryname' => 'Categoría',
+	'fptc-context-menu-browse' => 'Navegar polas páxinas con este valor',
+	'fptc-context-menu-similar-tags' => 'Etiquetas similares:',
+	'fptc-form-attribute-name' => 'Propiedade:',
+	'fptc-form-submit-button' => 'Enviar',
+	'fptc-invalid-attribute' => 'A propiedade inserida non é válida.',
+	'fptc-insufficient-rights-for-maintenance' => 'Cómpre acceder como administrador para ollar esta páxina.',
+	'fptc-refresh-frequent-patterns' => 'Actualizar os datos',
+	'fptc-refreshed-frequent-patterns' => 'Actualizáronse os patróns frecuentes.',
+	'fptc-search-attribute-name' => 'Procurar a propiedade',
+	'fptc-search-button' => 'Procurar',
+	'fptc-search-suggestion-value' => 'Similar a "%s":',
+	'fptc-suggestion' => 'Quizais quixo dicir:',
+	'fptc-no-suggestion' => 'Non se atopou suxestión ningunha',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'freqpatterntagcloud' => 'Облак со ознаки на зачестено поведение',
+	'freqpatterntagcloudmaintenance' => 'Одржување на облакот со ознаки на зачестено поведение',
+	'freqpatterntagcloud-desc' => '[[Special:FreqPatternTagCloud|Специјална страница]] за составување на облак од ознаки според својства и за пребарување на слични својствени вредности',
+	'fptc-categoryname' => 'Категорија',
+	'fptc-context-menu-browse' => 'Прелистување на страници со оваа вредност',
+	'fptc-context-menu-similar-tags' => 'Слични ознаки:',
+	'fptc-form-attribute-name' => 'Својство:',
+	'fptc-form-submit-button' => 'Поднеси',
+	'fptc-invalid-attribute' => 'Внесеното својство е неважечко.',
+	'fptc-insufficient-rights-for-maintenance' => 'Ќе мора да се најавите како администратор за да ви се отвори страницава.',
+	'fptc-refresh-frequent-patterns' => 'Поднови податоци',
+	'fptc-refreshed-frequent-patterns' => 'Правилата на зачестено поведение се подновени.',
+	'fptc-search-attribute-name' => 'Пребарај својство',
+	'fptc-search-button' => 'Пребарај',
+	'fptc-search-suggestion-value' => 'Слично на „%s“:',
+	'fptc-suggestion' => 'Дали мислевте на:',
+	'fptc-no-suggestion' => 'Не пронајдов ниеден предлог',
+);
+
+/** Dutch (Nederlands)
+ * @author SPQRobin
+ */
+$messages['nl'] = array(
+	'fptc-categoryname' => 'Categorie',
+	'fptc-suggestion' => 'Bedoelt u:',
+);
+
