@@ -44,6 +44,13 @@ $messages['gl'] = array(
 	'newuserslist-desc' => 'Engade a etiqueta analítica <tt>&lt;newusers&gt;</tt> para recuperar a lista de novos usuarios e os seus avatares',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'newuserslist-desc' => 'הוספת תג מפענח <tt>&lt;newusers&gt;</tt> כדי לאחזר רשימת של משתמשים ושל תמונותיהם',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
