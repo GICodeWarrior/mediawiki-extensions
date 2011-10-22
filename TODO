@@ -17,6 +17,7 @@ Why is UploadStashFile() being called with a virtual URL? Once the file has been
 Should UploadStashFile *always* (in our case) be called with a virtual URL?
 23) TS: "When you get around to implementing SwiftRepo::append(), it will need some sort of concurrency control to avoid having chunks overwrite each other. "
 24) TS: "SwiftRepo::swiftcopy() should return a Status object instead of throwing exceptions."
+26) Hazmat wonders what happens if two clients fetch missing thumbnails at the same time. What happens when you have overlapping writes to the same object.
 
 Partially resolved:
 

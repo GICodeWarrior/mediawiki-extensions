@@ -91,7 +91,7 @@ class SwiftFile extends LocalFile {
 
 		parent::__construct( $title, $repo );
 
-		$this->tempPath = false; // Points to our local copy.
+		$this->tempPaths = array(); // Hash from rel to local copy.
 	}
 
 	/** splitMime inherited */
@@ -101,33 +101,61 @@ class SwiftFile extends LocalFile {
 	/** getViewURL inherited */
 	/** isVisible inherited */
 
+	/**
+	 * We're re-purposing getPath() to checkout a copy of the file, if we don't already have a copy.
+	 *
+	 * @return string Path to a local copy of the file.
+	 */
 	public function getPath() {
-		$this->tempPath = $this->repo->getLocalCopy( $this->repo->container, $this->getRel() );
-		return $this->tempPath;
-	}
-
-	/** Get the path of the archive directory, or a particular file if $suffix is specified */
-	public function getArchivePath( $suffix = false ) {
-		$this->tempPath = $this->repo->getLocalCopy( $this->repo->getZoneContainer( 'public' ), $this->getArchiveRel( $suffix ) );
-		return $this->tempPath;
-	}
-
-	/** Get the path of the thumbnail directory, or a particular file if $suffix is specified */
-	public function getThumbPath( $suffix = false ) {
-		$path = $this->getRel();
-		if ( $suffix !== false ) {
-			$path .= '/' . $suffix;
+		if ( !$this->TempPaths[''] ) {
+			$this->tempPaths[''] = $this->repo->getLocalCopy( $this->repo->container, $this->getRel(), 'getPath' );
 		}
-		$this->tempPath = $this->repo->getLocalCopy( $this->repo->getZoneContainer( 'thumb' ), $path );
-		return $this->tempPath;
+		return $this->tempPaths[''];
 	}
+
+	/**
+	 * We're re-purposing getPath() to checkout a copy of the file, if we don't already have a copy.
+	 * Get a local copy of a particular archived file specified by $suffix 
+	 *
+	 * @param string suffix Specific archived copy.
+	 * @return string Path to a local copy of the file.
+	 */
+	public function getArchivePath( $suffix = false) {
+		if (!$suffix) {
+			throw new MWException( "Can't call getArchivePath without a suffix" );
+		}
+		$rel = $this->getArchiveRel( $suffix );
+		if ( !array_key_exists($rel, $this->tempPaths ) ) {
+			$this->tempPaths[$rel] = $this->repo->getLocalCopy( $this->repo->container, $rel );
+		}
+		return $this->tempPaths[$rel];
+	}
+
+	/**
+	 * We're re-purposing getPath() to checkout a copy of the file, if we don't already have a copy.
+	 * Get a local copy of a particular thumb specified by $suffix 
+	 *
+	 * @param string suffix Specific thumbnail.
+	 * @return string Path to a local copy of the file.
+	 */
+	public function getThumbPath( $suffix = false) {
+		if (!$suffix) {
+			throw new MWException( "Can't call getThumbPath without a suffix" );
+		}
+		$rel = $this->getRel() . '/' . $suffix;
+		if ( !array_key_exists($rel, $this->tempPaths ) ) {
+			$this->tempPaths[$rel] = $this->repo->getLocalCopy( $this->repo->getZoneContainer( 'thumb' ), $rel );
+		}
+		return $this->tempPaths[$rel];
+		}
 
 	function __destruct() {
-		if ( $this->tempPath ) {
+		foreach ( $this->tempPaths as $path) {
 			// Clean up temporary data.
-			unlink( $this->tempPath );
-			$this->tempPath = null;
+			wfDebug( __METHOD__ . ": deleting $path\n" );
+			unlink( $path );
 		}
+		$this->tempPaths = array();
 	}
 
 	/**
@@ -146,7 +174,10 @@ class SwiftFile extends LocalFile {
 		global $wgIgnoreImageErrors, $wgThumbnailEpoch, $wgTmpDirectory;
 
 		// get a temporary place to put the original.
-		$thumbPath = tempnam( $wgTmpDirectory, 'transform_out_' ) . '.' . pathinfo( $thumbName, PATHINFO_EXTENSION );
+		$thumbPath = tempnam( $wgTmpDirectory, 'transform_out_' );
+		unlink( $thumbPath );
+		$thumbPath .=  '.' . pathinfo( $thumbName, PATHINFO_EXTENSION );
+		
 
 		if ( $this->repo && $this->repo->canTransformVia404() && !( $flags & self::RENDER_NOW ) ) {
 			return $this->handler->getTransform( $this, $thumbPath, $thumbUrl, $params );
@@ -912,10 +943,12 @@ class SwiftRepo extends LocalRepo {
 	 * SwiftFile->tempPath so it will be deleted when the object goes out of
 	 * scope.
 	 */
-	function getLocalCopy( $container, $rel ) {
+	function getLocalCopy( $container, $rel, $prefix = 'swift_in_' ) {
 
 		// get a temporary place to put the original.
-		$tempPath = tempnam( wfTempDir(), 'swift_in_' ) . '.' . pathinfo( $rel, PATHINFO_EXTENSION );
+		$tempPath = tempnam( wfTempDir(), $prefix );
+		unlink( $tempPath );
+		$tempPath .= '.' . pathinfo( $rel, PATHINFO_EXTENSION );
 
 		/* Fetch the image out of Swift */
 		$conn = $this->connect();
