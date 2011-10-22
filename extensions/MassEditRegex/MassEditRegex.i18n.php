@@ -679,6 +679,7 @@ $messages['gl'] = array(
 );
 
 /** Swiss German (Alemannisch)
+ * @author Als-Chlämens
  * @author Als-Holder
  */
 $messages['gsw'] = array(
@@ -717,6 +718,7 @@ Bim Text, wu yygsetzt wird, isch d Richtig nit relevant.',
 	'masseditregex-badregex' => 'Nit giltige reguläre Uusdruck:',
 	'masseditregex-editfailed' => 'Bearbeitige sin fähl gschlaa:',
 	'masseditregex-tooltip-execute' => 'Die Änderige in jedere Syte vorneh',
+	'right-masseditregex' => 'Syteinhalt mit reguläre Ussdrugg ersetze',
 );
 
 /** Hebrew (עברית)

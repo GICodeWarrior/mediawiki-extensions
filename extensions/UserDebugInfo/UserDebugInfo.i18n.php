@@ -104,6 +104,19 @@ $messages['gl'] = array(
 	'userdebuginfo-language' => 'Lingua',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Chlämens
+ */
+$messages['gsw'] = array(
+	'userdebuginfo' => 'Benutzerinformatione für d Fäälermäldig',
+	'userdebuginfo-useragent' => 'HTTP: Programm vum Benutzer',
+	'userdebuginfo-remotehost' => 'HTTP: Host vum Benutzer',
+	'userdebuginfo-remoteaddr' => 'HTTP: IP-Adräss vum Benutzer',
+	'userdebuginfo-key' => 'Schlissel',
+	'userdebuginfo-value' => 'Wärt',
+	'userdebuginfo-language' => 'Sprooch',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

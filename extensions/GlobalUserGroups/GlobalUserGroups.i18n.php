@@ -48,6 +48,13 @@ $messages['gl'] = array(
 	'globalusergroups-desc' => 'Permite o uso de grupos de usuario locais definidos como grupos globais',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'globalusergroups-desc' => 'מאפשרת שימוש בקבוצות מקומיות מוגדרות כמו בקבוצות גלובליות',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

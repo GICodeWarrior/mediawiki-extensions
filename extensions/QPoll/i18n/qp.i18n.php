@@ -1161,6 +1161,7 @@ Assurez-vous que le sondage soit déclaré et sauvegardé. Vérifiez également 
 	'qp_error_invalid_poll_id' => 'Identifiant de sondage invalide (id=$1).
 L’identifiant de sondage peut contenir uniquement des lettres, des nombres et le caractère espace',
 	'qp_error_already_used_poll_id' => 'L’identifiant de sondage a déjà été utilisé sur cette page (id=$1).',
+	'qp_error_too_long_dependance_value' => 'La valeur de l\'attribut de dépendance (dependance="$2") du sondage (id=$1) est trop longue pour être stocké dans la base de données.',
 	'qp_error_invalid_dependance_value' => 'La chaîne de dépendance du sondage (id=$1) a une valeur invalide pour l’attribut de dépendance (dependance="$2")',
 	'qp_error_missed_dependance_title' => 'Le sondage (i=$1) dépend d’un autre sondage (id=$3) de la page [[$2]], mais le titre [[$2]] n’a pas été trouvé.
 Supprimez l’attribut de dépendance, ou bien restaurez [[$2]]',
