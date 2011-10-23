@@ -89,6 +89,13 @@ $messages['ksh'] = array(
 	'global.js' => '/* Heh dat JavaSkrepp weed vun alle Bovverfläshe vun alle Wikis heh em Schtall vun Wikis jebruch */',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'sharedcssjs-error' => 'Dës Säit gëtt aus enger zentraler Wiki agebonn a ka just do geännert ginn.',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
