@@ -16,15 +16,6 @@
  * For information how to install and use this extension, see the README file.
  */
 
-# Alert the user that this is not a valid entry point to MediaWiki if they try to access the extension file directly.
-if ( !defined( 'MEDIAWIKI' ) ) {
-	echo <<<EOT
-To install the ChangeAuthor extension, put the following line in LocalSettings.php:
-require_once( "\$IP/extensions/ChangeAuthor/ChangeAuthor.setup.php" );
-EOT;
-	exit( 1 );
-}
-
 $messages = array();
 
 /** English
