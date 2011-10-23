@@ -40,7 +40,7 @@ HTML;
 
 	static function UpdateDb()
 	{
-		global $wgUser, $wgOnlineStatusBarDefaultOnlinee;
+		global $wgUser, $wgOnlineStatusBarDefaultOnline;
 		if ( OnlineStatusBar::GetStatus( $wgUser->getName() ) != $wgOnlineStatusBarDefaultOnline )
 		{
 			$dbw = wfGetDB( DB_MASTER );
@@ -90,7 +90,7 @@ HTML;
 		$dbw = wfGetDB( DB_MASTER );
 		OnlineStatusBar::DeleteOld();
 		$result = $dbw->selectField( 'online_status', 'username', array( 'username' => $userID ), __METHOD__, array( 'limit 1', 'order by timestamp desc' ) );
-		if ( $result );
+		if ( $result )
 		{
 			return $wgOnlineStatusBarDefaultOnline;
 		}
