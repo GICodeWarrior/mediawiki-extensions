@@ -31,7 +31,8 @@ class OnlineStatusBar {
 	static function UpdateDb()
 	{
 		global $wgUser, $wgDBname, $wgOnlineStatusBarTable;
-		if ( OnlineStatusBar::GetStatus($wgUser->getID()) != $OnlineStatusBar->DefaultOnline )
+		//FIXME: GetStatus needs a user id
+		if ( OnlineStatusBar::GetStatus( $wgUser->getID()) != $OnlineStatusBar->DefaultOnline )
 		{
 			$dbw = wfGetDB( DB_MASTER );
 			$now = OnlineStatusBar::GetNow();
@@ -50,12 +51,13 @@ class OnlineStatusBar {
 	{
 		global $wgUser, $wgDBname, $wgOnlineStatusBarDefaultOffline, $wgOnlineStatusBarTable;
 		$now = OnlineStatusBar::GetNow();
+		//FIXME: GetStatus needs a user id
 		if (OnlineStatusBar::GetStatus() == $wgOnlineStatusBarDefaultOffline)
 		{
-			OnlineStatusBar::UpdateDb();	
+			OnlineStatusBar::UpdateDb();
 			return true;
 		}
-		$dbw = wfGetDB ( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		$dbw->update($wgOnlineStatusBarTable, array ('timestamp' => $now), array ('username' => $wgUser->getName()), __METHOD__ );
 
 		return false;
@@ -65,7 +67,7 @@ class OnlineStatusBar {
 	public static function DeleteOld()
 	{
 		global $wgOnlineStatusBarTable, $wgOnlineStatusBar_LogoutTime, $wgDBname;
-		$dbw= wfGetDB ( DB_MASTER );
+		$dbw= wfGetDB( DB_MASTER );
 		$time = OnlineStatusBar::GetNow() - $wgOnlineStatusBar_LogoutTime;
 		$dbw->delete( $wgOnlineStatusBarTable,   array( 'timestamp < "' . $time . '"' ) ,__METHOD__ );
 		return 0;
@@ -73,12 +75,10 @@ class OnlineStatusBar {
 
 	static function GetStatus( $userID ) {
 		global $wgOnlineStatusBarTable, $wgOnlineStatusBarModes, $wgOnlineStatusBarDefaultOffline, $wgOnlineStatusBarDefaultOnline, $wgDBname;
-		$dbw= wfGetDB ( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		OnlineStatusBar::DeleteOld();
-		$result = $dbw->select( $wgOnlineStatusBarTable, array ('userid', 'username', 'timestamp'), array('username' => $userID), __METHOD__, array('limit 1', 'order by timestamp desc')); 
-		$values = new ResultWrapper ($dbw, $result);
-
-		if ($values->numRows() > 0)
+		$result = $dbw->select( $wgOnlineStatusBarTable, array('userid', 'username', 'timestamp'), array('username' => $userID), __METHOD__, array('limit 1', 'order by timestamp desc')); 
+		if ($result->numRows() > 0)
 		{
 			return $wgOnlineStatusBarDefaultOnline;
 		}
@@ -90,7 +90,7 @@ class OnlineStatusBar {
 	{
 		global $wgOnlineStatusBarTable, $wgDBname;
 		$dbw= wfGetDB ( DB_MASTER );
-		$dbw->delete( $wgOnlineStatusBarTable, array ('username' => $user), __METHOD__ ); // delete user
+		$dbw->delete( $wgOnlineStatusBarTable, array('username' => $user), __METHOD__ ); // delete user
 		return true;
 	}	
 }
