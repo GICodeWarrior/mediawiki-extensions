@@ -22,9 +22,9 @@ class OnlineStatusBar {
 	
 	public static function Get_Html( $text, $mode)
 	{
-		global $wgOnlineStatusBarModes, $wgOnlineStatusBarIcon, $wgOnlineStatusBarColor;
+		global $wgOnlineStatusBarModes, $wgOnlineStatusBarIcon, $wgOnlineStatusBarColor, $wgOnlineStatusBarY;
 		$color= $wgOnlineStatusBarColor[$mode];
-	        return '<div style="border: 0px solid black; background: transparent; float: right; position: relative; top:-52px; padding: 5px"><p><b>' . $text . ': <span style="color: ' . $color . '; font:bold;"><img alt=" . $text . " - " . $mode  ." src="' . $wgOnlineStatusBarIcon[$mode] .  '" width="20" height="20" />' . $wgOnlineStatusBarModes[$mode] . '</span></b></p></div>';
+	        return '<div style="right:0px; margin-top:-10px;" class="metadata topicon" id="status-top"><div style="border: 0px solid black; background: transparent; float: right; position: relative; top:' . $wgOnlineStatusBarY . 'px; padding: 5px"><p><b>' . $text . ': <span style="color: ' . $color . '; font:bold;"><img alt=' . $text . " - " . $mode  .' src="' . $wgOnlineStatusBarIcon[$mode] .  '" width="20" height="20" />' . $wgOnlineStatusBarModes[$mode] . '</span></b></p></div></div>';
 	}
 
 	static function UpdateDb()
