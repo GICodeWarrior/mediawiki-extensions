@@ -12,8 +12,8 @@ $wgExtensionCredits['parserhook'][] = array(
 	'descriptionmsg' => 'descriptionmsg'
        );
  
-function efSternograph(){
-	new Sternograph;
+function efSternograph(&$parser){
+	new Sternograph($parser);
 	return true;
 }
 

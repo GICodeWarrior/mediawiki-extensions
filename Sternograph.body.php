@@ -36,9 +36,8 @@ class Sternograph{
 	/**
 	Core constructor.  Sets the hooks to be used.
 	*/
-	function __construct(){
-		global $wgParser;
-		$wgParser->setHook(Sternograph::TAG, array($this, 'parse'));
+	function __construct($parser){
+		$parser->setHook(Sternograph::TAG, array($this, 'parse'));
 	}
 //====METHODS
 	/**
@@ -204,8 +203,8 @@ class Sternograph{
 	/**
 	Returns the i18n'd error message.
 	*/
-	static private function error($key){
-		return '<strong class="error">'.wfMsgNoTrans($key).'</strong>';
+	static private function error($key, $param = ''){
+		return '<strong class="error">' . htmlspecialchars( wfMsgForContent( $key, $param ) ) .'</strong>';
 	}
 
 	/**

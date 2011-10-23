@@ -5,8 +5,8 @@
 $messages = array();
 
 /**
-Translation documentation.
-*/
+ * Translation documentation.
+ */
 $messages['qqq'] = array(
 	'descriptionmsg'=>'Description of the Sternograph extension; displayed on the Special:Extensions page only.',
 	'empty' => 'Error message when an empty &lt;sterno> tag is detected on the wiki-formatted page.',
@@ -24,13 +24,13 @@ $messages['qqq'] = array(
 );
 
 /**
-English
-*/
+ * English
+ */
 $messages['en'] = array(
 	'descriptionmsg'=>'&lt;sterno> tags for transcripts of spokens words (plays, interviews, etc).',
-	'empty' => '&lt;sterno> tag cannot be empty.',
-	'nested'=>'&lt;sterno> tag cannot be nested.',
-	'speakerIs' => '&lt;sterno> speaker block lines must have '.Sternograph::SPEAKER_IS.' character.',
+	'empty' => '<sterno> tag cannot be empty.',
+	'nested'=>'<sterno> tag cannot be nested.',
+	'speakerIs' => '<sterno> speaker block lines must have $1 character.',
 
 	'speakerPre'=>'',
 	'speakerPost'=>':&nbsp;',
