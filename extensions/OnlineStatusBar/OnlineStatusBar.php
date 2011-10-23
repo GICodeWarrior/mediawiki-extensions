@@ -29,6 +29,7 @@ $wgExtensionMessagesFiles['OnlineStatusBar'] =  "$dir/OnlineStatusBar.i18n.php";
 $wgAutoloadClasses['OnlineStatusBar'] = "$dir/OnlineStatusBar.body.php";
 
 // Configuration
+// Those values can be overriden in LocalSettings, do not change it here
 $wgOnlineStatusBarModes = array (
         'online' => "On-line",
         'busy' => "Busy",
@@ -37,11 +38,11 @@ $wgOnlineStatusBarModes = array (
         'offline' => "Offline",
 );
 $wgOnlineStatusBarIcon = array (
-	'online' =>  OnlineStatusBar::GetFileUrl( "/OnlineStatusBar/20px-Ledgreen.svg.png" ),
-	'busy' =>  OnlineStatusBar::GetFileUrl( "/OnlineStatusBar/20px-Ledorange.svg.png" ),
-	'away' => OnlineStatusBar::GetFileUrl( "/OnlineStatusBar/20px-Ledorange.svg.png" ),
-	'hidden' =>  OnlineStatusBar::GetFileUrl( "/OnlineStatusBar/20px-Nuvola_apps_krec.svg.png"),
-	'offline' => OnlineStatusBar::GetFileUrl( "/OnlineStatusBar/20px-Nuvola_apps_krec.svg.png"),
+	'online' =>  OnlineStatusBar::GetFileUrl( "/20px-Ledgreen.svg.png" ),
+	'busy' =>  OnlineStatusBar::GetFileUrl( "/20px-Ledorange.svg.png" ),
+	'away' => OnlineStatusBar::GetFileUrl( "/20px-Ledorange.svg.png" ),
+	'hidden' =>  OnlineStatusBar::GetFileUrl( "/20px-Nuvola_apps_krec.svg.png"),
+	'offline' => OnlineStatusBar::GetFileUrl( "/20px-Nuvola_apps_krec.svg.png"),
 );
 $wgOnlineStatusBarColor = array (
 	'online' => "green",
@@ -51,10 +52,15 @@ $wgOnlineStatusBarColor = array (
 	'offline' => "red",
 );
 
+//default for online
 $wgOnlineStatusBarDefaultOnline = "online";
+//default for offline
 $wgOnlineStatusBarDefaultOffline = "offline";
+//name of table in db
 $wgOnlineStatusBarTable = "online_status";
+//if new users have this feature enabled by default (experimental)
 $wgOnlineStatusBarDefaultEnabled = false;
+//how long to wait until user is considered as offline
 $wgOnlineStatusBar_LogoutTime = 3600;
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'wfOnlineStatusBar_CkSchema';

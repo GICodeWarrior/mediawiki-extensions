@@ -24,7 +24,7 @@ class OnlineStatusBar {
 	{
 		global $wgOnlineStatusBarModes, $wgOnlineStatusBarIcon, $wgOnlineStatusBarColor;
 		$color= $wgOnlineStatusBarColor[$mode];
-	        return '<div style="border: 0px solid black; background: transparent; float: right; position: relative; top:-3px; padding: 5px"><p><b>' . $text . ': <span style="color: ' . $color . '; font:bold;"><img alt="Ledorange.svg" src="' . $wgOnlineStatusBarIcon[$mode] .  '" width="20" height="20" />' . $wgOnlineStatusBarModes[$mode] . '</span></b></p></div>';
+	        return '<div style="border: 0px solid black; background: transparent; float: right; position: relative; top:-52px; padding: 5px"><p><b>' . $text . ': <span style="color: ' . $color . '; font:bold;"><img alt=" . $text . " - " . $mode  ." src="' . $wgOnlineStatusBarIcon[$mode] .  '" width="20" height="20" />' . $wgOnlineStatusBarModes[$mode] . '</span></b></p></div>';
 	}
 
 	static function UpdateDb()
@@ -77,7 +77,7 @@ class OnlineStatusBar {
 	{
 		// fix me
 		global $wgScriptPath;
-		$url = $wgScriptPath . "/extensions" . "$name";
+		$url = $wgScriptPath . "/extensions/OnlineStatusBar" . "$name";
 		return $url;
 	}
 
