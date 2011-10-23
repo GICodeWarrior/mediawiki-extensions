@@ -1,4 +1,4 @@
-CREATE TABLE online_status (
+CREATE TABLE /*$wgDBprefix*/online_status (
 	`userid` int(5) NOT NULL default '0',
 	`username` varchar(255) NOT NULL default '',
 	`timestamp` char(14) NOT NULL default '',
