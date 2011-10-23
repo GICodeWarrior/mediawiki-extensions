@@ -3919,7 +3919,8 @@ $messages['mr'] = array(
  * @author Diagramma Della Verita
  */
 $messages['ms'] = array(
-	'openidlogin' => 'Log masuk dengan OpenID',
+	'openid-desc' => 'Membolehkan pengguna untuk log masuk ke dalam wiki dengan [http://openid.net/ OpenID]. Jika dihidupkan pada wiki, pengguna juga obleh menggunakan URL akaun penggunanya di wiki ini sebagai OpenID untuk log masuk ke dalam tapak web lain yang sedia OpenID',
+	'openidlogin' => 'Log masuk / buka akaun dengan OpenID',
 	'openidserver' => 'Pelayan OpenID',
 	'openidxrds' => 'Fail Yadis',
 	'openidconvert' => 'Penukar OpenID',
@@ -3929,8 +3930,24 @@ $messages['ms'] = array(
 	'openidconfigerrortext' => 'Konfigurasi storan OpenID bagi wiki ini tidak sah.
 Sila hubungi [[Special:ListUsers/sysop|pentadbir]].',
 	'openidpermission' => 'Ralat keizinan OpenID',
+	'openidpermissiontext' => 'OpenID yang anda berikan tidak dibenarkan untuk mengakses pelayan ini.',
 	'openidcancel' => 'Pengesahan telah dibatalkan',
 	'openidcanceltext' => 'Pengesahan URL OpenID telah dibatalkan.',
+	'openidfailure' => 'Pengesahan gagal',
+	'openidfailuretext' => 'Pengesahan URL OpenID gagal. Pesanan ralat: "$1"',
+	'openidsuccess' => 'Pengesahan berjaya',
+	'openidsuccesstext' => "'''Pengesahan berjaya dan log masuk sebagai pengguna $1'''.
+
+OpenID anda ialah $2 .
+
+Ini dan OpenID pilihan yang lain boleh diuruskan dalam [[Special:Preferences#prefsection-openid|tab OpenID]] keutamaan anda.<br />
+Kata laluan akaun pilihan boleh ditambahkan ke dalam [[Special:Preferences#prefsection-personal|Profil pengguna]] anda.",
+	'openidusernameprefix' => 'PenggunaOpenID',
+	'openidserverlogininstructions' => '$3 meminta supaya anda memasukkan kata laluan anda untuk laman $2 anda, $1 (iaitu URL OpenID anda)',
+	'openidtrustinstructions' => 'Raitkan jika anda ingin berkongsi data dengan $1.',
+	'openidallowtrust' => 'Benarkan $1 untuk mempercayai akaun pengguna ini.',
+	'openidnopolicy' => 'Tapak ini belum menetapkan dasar privasi.',
+	'openidpolicy' => 'Rujuk <a target="_new" href="$1">dasar privasi</a> untuk maklumat lanjut.',
 	'openidoptional' => 'Pilihan',
 	'openidrequired' => 'Wajib',
 	'openidnickname' => 'Nama timangan',
@@ -3938,20 +3955,23 @@ Sila hubungi [[Special:ListUsers/sysop|pentadbir]].',
 	'openidemail' => 'Alamat e-mel',
 	'openidlanguage' => 'Bahasa',
 	'openidtimezone' => 'Zon waktu',
+	'openidchooselegend' => 'Pilihan nama pengguna dan akaun',
+	'openidchooseinstructions' => 'Semua pengguna memerlukan nama timangan;
+anda boleh memilih satu daripada pilihan-pilihan berikut.',
+	'openidchoosenick' => 'Nama timangan anda ($1)',
 	'openidchoosefull' => 'Nama penuh anda ($1)',
 	'openidchooseurl' => 'Nama yang dipilih daripada OpenID anda ($1)',
 	'openidchooseauto' => 'Nama janaan automatik ($1)',
 	'openidchoosemanual' => 'Nama pilihan anda:',
+	'openidchooseexisting' => 'Akaun yang sedia ada di wiki ini',
 	'openidchooseusername' => 'Nama pengguna:',
 	'openidchoosepassword' => 'Kata laluan:',
-	'openidconvertinstructions' => 'Gunakan borang ini untuk menukar akaun anda untuk menggunakan OpenID URL.',
+	'openidconvertinstructions' => 'Borang membolehkan anda untuk ini untuk menukar akaun anda untuk menggunakan OpenID URL. atau menambahkan lagi URL OpenID',
 	'openidconvertsuccess' => 'Berjaya ditukar ke OpenID',
 	'openidconvertsuccesstext' => 'Anda telah berjaya menukar OpenID ke $1.',
 	'openidconvertyourstext' => 'OpenID anda seperti yang tertera.',
 	'openidconvertothertext' => 'OpenID tersebut merupakan milik orang lain.',
-	'openidalreadyloggedin' => "'''Anda telah log masuk, $1!'''
-
-Sekiranya anda inign menggunakan OpenID untuk log masuk pada masa hadapan, sila [[Special:OpenIDConvert|tukar akaun anda untuk menggunakan OpenID]].",
+	'openidalreadyloggedin' => 'Anda sudah log masuk.',
 	'openidnousername' => 'Nama pengguna tidak dinyatakan.',
 	'openidbadusername' => 'Nama pengguna yang dinyatakan tidak sah.',
 	'openidloginlabel' => 'URL OpenID',
@@ -6384,6 +6404,7 @@ $messages['yi'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Anakmalaysia
  * @author Gaoxuewei
  * @author Liangent
  * @author Onecountry
@@ -6439,9 +6460,7 @@ $messages['zh-hans'] = array(
 	'openidconvertsuccesstext' => '您已经成功的将您的OpenID转化为$1。',
 	'openidconvertyourstext' => '这已经是您的OpenID。',
 	'openidconvertothertext' => '这是别人的OpenID。',
-	'openidalreadyloggedin' => "'''您已经成功登录，$1！'''
-
-如果您想以后继续使用OpenID登录，您可以[[Special:OpenIDConvert|将账户转换为使用OpenID]]。",
+	'openidalreadyloggedin' => '您已经登录了。',
 	'openidnousername' => '没有指定用户名。',
 	'openidbadusername' => '指定的用户名是错误的。',
 	'openidautosubmit' => '本页包含的表单在启用JavaScript的情况下可以自动提交。
@@ -6483,6 +6502,7 @@ OpenID可以让你不必使用不同的密码登录不同站点。
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Anakmalaysia
  * @author Frankou
  * @author Gzdavidwong
  * @author Horacewai2
@@ -6540,9 +6560,7 @@ $messages['zh-hant'] = array(
 	'openidconvertsuccesstext' => '您已經成功的將您的 OpenID 轉化為 $1。',
 	'openidconvertyourstext' => '這已是您的 OpenID 了。',
 	'openidconvertothertext' => '這是別人的 OpenID。',
-	'openidalreadyloggedin' => "'''您已經成功登入了，$1！'''
-
-如果您想以後使用 OpenID 登入，您可以[[Special:OpenIDConvert|轉換您的帳號使用 OpenID]]。",
+	'openidalreadyloggedin' => '您已經登入。',
 	'openidnousername' => '沒有指定用戶名。',
 	'openidbadusername' => '指定的用戶名是錯誤的。',
 	'openidautosubmit' => '本頁包含的表單在啟用 JavaScript 的情況下可以自動提交。
