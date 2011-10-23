@@ -31,18 +31,18 @@ $wgAutoloadClasses['OnlineStatusBar'] = "$dir/OnlineStatusBar.body.php";
 // Configuration
 // Those values can be overriden in LocalSettings, do not change it here
 $wgOnlineStatusBarModes = array (
-        'online' => "On-line",
-        'busy' => "Busy",
-        'away' => "Away",
-        'hidden' => "Offline",
-        'offline' => "Offline",
+	'online' => "On-line",
+	'busy' => "Busy",
+	'away' => "Away",
+	'hidden' => "Offline",
+	'offline' => "Offline",
 );
 $wgOnlineStatusBarIcon = array (
-	'online' =>  OnlineStatusBar::GetFileUrl( "/20px-Ledgreen.svg.png" ),
-	'busy' =>  OnlineStatusBar::GetFileUrl( "/20px-Ledorange.svg.png" ),
-	'away' => OnlineStatusBar::GetFileUrl( "/20px-Ledorange.svg.png" ),
-	'hidden' =>  OnlineStatusBar::GetFileUrl( "/20px-Nuvola_apps_krec.svg.png"),
-	'offline' => OnlineStatusBar::GetFileUrl( "/20px-Nuvola_apps_krec.svg.png"),
+	'online' => "20px-Ledgreen.svg.png",
+	'busy' => "20px-Ledorange.svg.png",
+	'away' => "20px-Ledorange.svg.png",
+	'hidden' => "20px-Nuvola_apps_krec.svg.png",
+	'offline' => "20px-Nuvola_apps_krec.svg.png",
 );
 $wgOnlineStatusBarColor = array (
 	'online' => "green",
