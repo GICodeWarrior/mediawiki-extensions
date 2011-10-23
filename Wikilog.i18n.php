@@ -1245,7 +1245,7 @@ Ret eo e vefe krouet da gentañ evit ma vefe posupl embann pennadoù hag implijo
 	'wikilog-wikilog' => 'Wikilog',
 	'wikilog-title' => 'Titl',
 	'wikilog-actions' => 'Oberoù',
-	'wikilog-comments' => 'Addisplegoù',
+	'wikilog-comments' => 'Evezhiadennoù',
 	'wikilog-replies' => 'Respontoù',
 	'wikilog-view-archives' => 'Dielloù',
 	'wikilog-view-summary' => 'Diverradur',
