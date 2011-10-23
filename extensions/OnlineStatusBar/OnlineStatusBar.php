@@ -66,59 +66,56 @@ $wgOnlineStatusBar_LogoutTime = 3600;
 $wgOnlineStatusBarY = "-35";
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'wfOnlineStatusBar_CkSchema';
-
-        function wfOnlineStatusBar_CkSchema($updater = null)
-        {
+function wfOnlineStatusBar_CkSchema($updater = null)
+{
 	global $wgOnlineStatusBarTable;
-                if ($updater != null)
-                {
-                        $updater->addExtensionUpdate( array ( 'addtable', $wgOnlineStatusBarTable, dirname( __FILE__) . '/OnlineStatusBar.sql', true));
-                }
-                else
-                {
-                        global $wgExtNewTables;
-                        $wgExtNewTables[] = array(
-                        $wgOnlineStatusBarTable, dirname( __FILE__ ) . '/OnlineStatusBar.sql' );
-                }
-                return true;
-        }
+	if ($updater != null)
+	{
+		$updater->addExtensionUpdate( array ( 'addtable', $wgOnlineStatusBarTable, dirname( __FILE__) . '/OnlineStatusBar.sql', true));
+	}
+	else
+	{
+		global $wgExtNewTables;
+		$wgExtNewTables[] = array(
+		$wgOnlineStatusBarTable, dirname( __FILE__ ) . '/OnlineStatusBar.sql' );
+	}
+	return true;
+}
 
 $wgHooks['UserLogoutComplete'][] = 'wfOnlineStatusBar_Logout';
-
-	function wfOnlineStatusBar_Logout(&$user, &$inject_html, $old_name)
-	{
-		global $wgUser;
-		OnlineStatusBar::DeleteStatus($old_name);
-		return true;
-	}
+function wfOnlineStatusBar_Logout(&$user, &$inject_html, $old_name)
+{
+	global $wgUser;
+	OnlineStatusBar::DeleteStatus($old_name);
+	return true;
+}
 
 $wgHooks['ArticleViewHeader'][] = 'wfOnlineStatusBar_RenderBar';
-	function wfOnlineStatusBar_RenderBar(&$article, &$outputDone, &$pcache)
+function wfOnlineStatusBar_RenderBar(&$article, &$outputDone, &$pcache)
+{
+	global $wgOnlineStatusBar_Template, $messages, $wgOnlineStatusBarModes, $wgOut;
+	OnlineStatusBar::UpdateStatus();
+	$ns=$article->getTitle()->getNamespace();
+	if(($ns == NS_USER_TALK) || ($ns == NS_USER))
 	{
-		global $wgOnlineStatusBar_Template, $messages, $wgOnlineStatusBarModes, $wgOut;
-		OnlineStatusBar::UpdateStatus();
-		$ns=$article->getTitle()->getNamespace();
-		if(($ns == NS_USER_TALK) || ($ns == NS_USER))
-		{
-			// better way to get a username would be great :)
-			$user = preg_replace('/\/.*/', '', preg_replace('/^.*\:/', "", $article->getTitle()));
-			$OnlineStatus_Text = $user . language::getMessageFromDB("onlinestatusbar-line");
-			$OnlineStatus_Mode = OnlineStatusBar::GetStatus($user);
-			$wgOut->addHtml(OnlineStatusBar::Get_Html($OnlineStatus_Text, $OnlineStatus_Mode));
-		}
-		return true;
+		// better way to get a username would be great :)
+		$user = preg_replace('/\/.*/', '', preg_replace('/^.*\:/', "", $article->getTitle()));
+		$OnlineStatus_Text = $user . language::getMessageFromDB("onlinestatusbar-line");
+		$OnlineStatus_Mode = OnlineStatusBar::GetStatus($user);
+		$wgOut->addHtml(OnlineStatusBar::Get_Html($OnlineStatus_Text, $OnlineStatus_Mode));
 	}
+	return true;
+}
 
 $wgHooks['UserLoginComplete'][] = 'wfOnlineStatusBar_UpdateStatus';
+function wfOnlineStatusBar_UpdateStatus()
+{
+	OnlineStatusBar::UpdateDb();
+	return true;
+}
 
-        function wfOnlineStatusBar_UpdateStatus()
-        {
-		OnlineStatusBar::UpdateDb();
-                return true;
-        }
-
-
+// Unused?
 $commonModuleInfo = array(
 	'localBasePath' => dirname( __FILE__ ) . '/modules',
 	'remoteExtPath' => 'OnlineStatusBar/modules',
-	);
+);
