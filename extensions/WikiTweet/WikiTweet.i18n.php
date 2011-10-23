@@ -166,13 +166,22 @@ $messages['br'] = array(
 	'wikitweet-inthefuture' => 'En dazont !!',
 	'wikitweet-fewsecondsago' => 'Un nebeud eilennoù zo',
 	'wikitweet-status' => 'Statud :',
+	'wikitweet-status0' => 'Kaozeal',
 	'wikitweet-status1' => 'Darvoud',
 	'wikitweet-status2' => 'Diwallit',
+	'wikitweet-status3' => 'Kemenn-diwall',
 	'wikitweet-resolve' => 'diskoulmañ',
+	'wikitweet-concerns' => "Sellet a ra ouzhoc'h",
 	'wikitweet-comment' => 'Evezhiadenn',
+	'wikitweet-subscribers' => 'Koumananterien :',
+	'wikitweet-hourly' => 'dre eur',
 	'wikitweet-perperson' => 'Dre zen',
+	'wikitweet-inresponseto' => 'En ur respont da :',
 	'wikitweet-from' => 'eus',
 	'wikitweet-in' => 'e-barzh',
+	'wikitweet-directlink' => 'Liamm eeun :',
+	'wikitweet-mailsent' => 'postel kaset',
+	'wikitweet-viaroom' => 'dre ar sal',
 );
 
 /** German (Deutsch)

@@ -118,10 +118,12 @@ $messages['be-tarask'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
 	'notificator-e-mail-address' => "chomlec'h postel",
+	'notificator-return-to' => 'Distreiñ da',
 	'notificator-change-tag' => 'kemmañ',
 	'notificator-new-tag' => 'nevez',
 	'notificator-subject' => 'Danvez :',

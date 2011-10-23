@@ -594,7 +594,7 @@ Ar bajenn-mañ ne dalvez nemet evit an implijerien zo bevennet o gwirioù.",
 	'action-editwhitelist' => 'Kemmañ ar roll gwenn evit an implijerien zo anezho.',
 	'action-restricttowhitelist' => 'kemmañ ha gwelet ar pajennoù zo war ar roll gwenn hepken',
 	'group-restricted' => 'Implijerien bevennet',
-	'group-restricted-member' => 'Implijer bevennet',
+	'group-restricted-member' => '{{GENDER:$1|implijer|implijerez}} bevennet',
 	'group-manager' => 'Merourien',
 	'group-manager-member' => 'Merour',
 );
@@ -1226,7 +1226,7 @@ Tätä sivua sovelletaan ainoastaan rajoituksenalaisiin käyttäjiin",
 	'whitelistnever' => 'ei koskaan',
 	'whitelistnummatches' => '  - {{PLURAL:$1|yksi osuma|$1 osumaa}}',
 	'group-restricted' => 'rajoitetut käyttäjät',
-	'group-restricted-member' => 'rajoitettu käyttäjä',
+	'group-restricted-member' => '{{GENDER:$1|rajoitettu käyttäjä}}',
 );
 
 /** French (Français)

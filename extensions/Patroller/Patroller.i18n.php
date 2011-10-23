@@ -716,7 +716,7 @@ $messages['fi'] = array(
 	'patrol-stopped' => 'Olet valinnut olla tarkastamatta lisää muokkauksia. $1',
 	'patrol-resume' => 'Napsauta jatkaaksesi.',
 	'group-patroller' => 'tarkastajat',
-	'group-patroller-member' => 'tarkastaja',
+	'group-patroller-member' => '{{GENDER:$1|tarkastaja}}',
 	'grouppage-patroller' => '{{ns:project}}:Tarkastajat',
 	'right-patroller' => 'Tarkastaa sivuja',
 );
@@ -1886,10 +1886,11 @@ $messages['sh'] = array(
 
 /** Sinhala (සිංහල)
  * @author Calcey
+ * @author බිඟුවා
  */
 $messages['si'] = array(
 	'group-patroller' => 'මුර සංචාරකයන්',
-	'group-patroller-member' => 'මුර සංචාරකයා',
+	'group-patroller-member' => '{{GENDER:$1|මුර සංචාරකයා}}',
 );
 
 /** Slovak (Slovenčina)

@@ -88,6 +88,15 @@ $messages['ksh'] = array(
 	'credits-tab-title' => 'Danksaarunge för heh di Sigg',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'credits-desc' => "Setzt e Link op d'Bedeelegungen derbäi",
+	'credits-tab' => 'Bedeelegungen',
+	'credits-tab-title' => 'Bedeelegt un dëser Säit',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

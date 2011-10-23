@@ -69,6 +69,13 @@ $messages['ksh'] = array(
 	'globalusergroups-desc' => 'Löht et zoh, em Wiki aanjelaate Metmaacher-Jroppe als jemeinsam Metmaacher-Jroppe  ze bruche.',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'globalusergroups-desc' => 'Erlaabt et fir definéiert lokal Benotzergruppen als global Gruppen ze benotzen',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

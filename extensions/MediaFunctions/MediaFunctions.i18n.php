@@ -58,6 +58,15 @@ $messages['arz'] = array(
 	'mediafunctions-not-exist' => '"$1" غير موجود',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'mediafunctions-desc' => "Funciones d'analís pa obtener información de los ficheros multimedia",
+	'mediafunctions-invalid-title' => '"$1" nun ye un títulu válidu',
+	'mediafunctions-not-exist' => '"$1" nun esiste',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by

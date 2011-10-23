@@ -108,7 +108,7 @@ $messages['br'] = array(
 	'logentry-parserhook-desc' => "Ouzhpennañ a ra an astenn-mañ ur valizenn a bourchas ur furmskrid da ouzhpennañ/rakproseziñ testennoù d'ar pajennoù marilh",
 	'logentry-specialpage-desc' => 'Porvezañ a ra an astenn balizennoù-mañ un argerzh evit ober ouzhpennadennoù da bajennoù ar marilhoù',
 	'logentry' => 'Marilh ar monedoù',
-	'logentry-invalidpage' => 'Pajenn direizh',
+	'logentry-invalidpage' => 'Pajenn direizh : $1',
 	'logentry-invalidtoken' => 'Fichenn direizh',
 );
 

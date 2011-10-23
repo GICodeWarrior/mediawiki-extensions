@@ -253,6 +253,13 @@ $messages['tl'] = array(
 	'arrayext-desc' => 'Itabi at tuusin ang pinangalanang mga hanay',
 );
 
+/** Turkish (Türkçe)
+ * @author Khutuck
+ */
+$messages['tr'] = array(
+	'arrayext-desc' => 'İsimlendirilmiş dizileri sakla ve hsapla',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

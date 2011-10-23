@@ -15,6 +15,13 @@ $messages['en'] = array(
 	'newuserslist-desc' => 'Adds <tt>&lt;newusers&gt;</tt> parser tag to retrieve the list of new users and their avatars',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'newuserslist-desc' => "Amiesta la etiqueta d'analís <tt>&lt;newusers&gt;</tt> pa recuperar la llista d'usuarios nuevos y los sos avatares",
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */

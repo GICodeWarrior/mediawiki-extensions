@@ -734,6 +734,7 @@ $messages['lb'] = array(
 	'ts-citegen-Sidebar-title' => 'Generator fir Zitatiounen',
 	'ts-citegen-Sidebar-add-Firefox' => 'Op de säitleche Panneau derbäisetzen',
 	'ts-citegen-Sidebar-add-Opera' => "Op d'Hotlist derbäisetzen",
+	'ts-citegen-Sidebar-add-IE-Mac' => "Bäi d'Favoriten derbäisetzen",
 	'ts-citegen-Tools' => 'Geschir (Tools)',
 	'ts-citegen-Other-languages' => 'Aner Sproochen',
 	'ts-citegen-Save-it' => 'Aktuell Ufro',

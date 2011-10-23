@@ -60,6 +60,7 @@ $messages['be-tarask'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -68,6 +69,7 @@ $messages['br'] = array(
 	'signupapi-weak' => 'Gwan',
 	'signupapi-medium' => 'Etre',
 	'signupapi-strong' => 'Kreñv',
+	'signupapi-passwordsmatch' => 'Klotañ a ra ar gerioù-tremen',
 );
 
 /** German (Deutsch)

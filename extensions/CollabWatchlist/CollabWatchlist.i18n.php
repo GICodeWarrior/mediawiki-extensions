@@ -185,16 +185,26 @@ $messages['be-tarask'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
+	'collabwatchlisttagselect' => 'Tikedenn',
+	'collabwatchlisttagcomment' => 'Evezhiadenn',
+	'collabwatchlisttools-view' => 'Diskwel',
+	'collabwatchlisttools-edit' => 'Kemmañ ar rummadoù',
 	'collabwatchlisttools-delete' => 'Dilemel',
 	'collabwatchlistsall' => 'An holl rolloù',
+	'collabwatchlistfiltertags' => 'Kuzhat an tikedennoù',
 	'collabwatchlistedit-users-raw-submit' => 'Enrollañ',
+	'collabwatchlistedit-users-last-owner' => "Ur perc'henn a rank bezañ da nebeutañ",
 	'collabwatchlistedit-raw-titles' => 'Rummadoù :',
 	'collabwatchlistedit-tags-raw-titles' => 'Balizennoù :',
 	'collabwatchlistedit-users-raw-titles' => 'Implijerien :',
 	'collabwatchlistedit-normal-title' => 'Kemmañ ar rummadoù',
+	'collabwatchlistedit-tags-raw-submit' => 'Enrollañ',
+	'collabwatchlistdelete-submit' => 'Diverkañ',
+	'collabwatchlistnew-name' => 'Anv ar roll',
 	'collabwatchlistnew-submit' => 'Krouiñ',
 	'collabwatchlistedit-normal-submit' => 'Enrollañ',
 );
