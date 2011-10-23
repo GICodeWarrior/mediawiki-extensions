@@ -41,6 +41,14 @@ $messages['arz'] = array(
 	'minnamelength-desc' => 'يجبر على طول أدنى لاسم اليوزر',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'minnamelength-error' => "El to nome d'usuariu ye demasiao curtiu. El tamañu mínimu ye $1.",
+	'minnamelength-desc' => "Forzar una llonxitú mínima pa los nomes d'usuariu",
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */
