@@ -51,6 +51,22 @@ $messages['qqq'] = array(
 	'fptc-no-suggestion' => 'This message appears if no suggestions can be found.',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'fptc-categoryname' => 'Rummad',
+	'fptc-context-menu-similar-tags' => 'Tikedennoù damheñvel :',
+	'fptc-form-attribute-name' => 'Perzh :',
+	'fptc-form-submit-button' => 'Kas',
+	'fptc-refresh-frequent-patterns' => 'Freskaat ar roadennoù',
+	'fptc-search-attribute-name' => 'Klask dre berzh',
+	'fptc-search-button' => 'Klask',
+	'fptc-search-suggestion-value' => 'Damheñvel ouzh "%s":',
+	'fptc-suggestion' => "N'hoc'h eus ket soñjet kentoc'h e :",
+	'fptc-no-suggestion' => "N'eus bet kavet kinnig ebet",
+);
+
 /** German (Deutsch)
  * @author Andreas Fay, University of Heidelberg
  * @author Kghbln
@@ -106,6 +122,17 @@ $messages['gl'] = array(
 	'fptc-no-suggestion' => 'Non se atopou suxestión ningunha',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'fptc-categoryname' => 'Kategorie',
+	'fptc-insufficient-rights-for-maintenance' => 'Dir musst Iech als Administrateur alogge fir dës Säit ze gesinn.',
+	'fptc-refresh-frequent-patterns' => 'Daten aktualiséieren',
+	'fptc-search-button' => 'Sichen',
+	'fptc-suggestion' => 'Mengt Dir:',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -134,6 +161,20 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'fptc-categoryname' => 'Categorie',
+	'fptc-form-attribute-name' => 'Eigenschap:',
+	'fptc-invalid-attribute' => 'De ingevoerde eigenschap is ongeldig.',
+	'fptc-search-attribute-name' => 'Eigenschap zoeken',
+	'fptc-search-button' => 'Zoeken',
+	'fptc-search-suggestion-value' => 'Gelijkaardig aan "%s":',
 	'fptc-suggestion' => 'Bedoelt u:',
+	'fptc-no-suggestion' => 'Geen suggesties gevonden',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'fptc-categoryname' => 'వర్గం',
+	'fptc-search-button' => 'వెతుకు',
 );
 
