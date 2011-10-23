@@ -70,6 +70,17 @@ $messages['arz'] = array(
 حساب يوزر  جديد، $2، إتفتح على $3 فى $4.',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'newusernotifsubj' => 'Avisu de nuevu usuariu pa $1',
+	'newusernotif-desc' => "Unvia un avisu per corréu electrónicu cuando se creen cuentes d'usuariu",
+	'newusernotifbody' => "Hola $1:
+
+Se creó una nueva cuenta d'usuariu, $2, en $3 el $5 a les $6.",
+);
+
 /** Kotava (Kotava)
  * @author Wikimistusik
  */
