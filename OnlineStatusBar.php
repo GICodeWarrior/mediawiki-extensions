@@ -98,7 +98,7 @@ $wgHooks['ArticleViewHeader'][] = 'wfOnlineStatusBar_RenderBar';
 		global $wgOnlineStatusBar_Template, $messages, $wgOnlineStatusBarModes, $wgOut;
 		OnlineStatusBar::UpdateStatus();
 		$ns=$article->getTitle()->getNamespace();
-		if(($ns == "3") || ($ns == "2"))
+		if(($ns == NS_USER_TALK) || ($ns == NS_USER))
 		{
 			// better way to get a username would be great :)
 			$user = preg_replace('/\/.*/', '', preg_replace('/^.*\:/', "", $article->getTitle()));
@@ -114,13 +114,11 @@ $wgHooks['UserLoginComplete'][] = 'wfOnlineStatusBar_UpdateStatus';
         function wfOnlineStatusBar_UpdateStatus()
         {
 		OnlineStatusBar::UpdateDb();
-                return 0;
+                return true;
         }
 
 
 $commonModuleInfo = array(
 	'localBasePath' => dirname( __FILE__ ) . '/modules',
 	'remoteExtPath' => 'OnlineStatusBar/modules',
-);
-
-?>
+	);
