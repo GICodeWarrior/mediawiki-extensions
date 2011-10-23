@@ -30,6 +30,7 @@ $wgAutoloadClasses['OnlineStatusBar'] = "$dir/OnlineStatusBar.body.php";
 
 // Configuration
 // Those values can be overriden in LocalSettings, do not change it here
+$wgOnlineStatusBarTable = "online_status";
 $wgOnlineStatusBarModes = array (
 	'online' => "On-line",
 	'busy' => "Busy",
