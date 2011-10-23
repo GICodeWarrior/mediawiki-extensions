@@ -82,7 +82,7 @@ function wfOnlineStatusBar_CkSchema( $updater = null )
 $wgHooks['UserLogoutComplete'][] = 'wfOnlineStatusBar_Logout';
 function wfOnlineStatusBar_Logout( &$user, &$inject_html, $old_name )
 {
-	OnlineStatusBar::DeleteStatus( $user->getId() );
+	OnlineStatusBar::DeleteStatus( $old_name );
 	return true;
 }
 

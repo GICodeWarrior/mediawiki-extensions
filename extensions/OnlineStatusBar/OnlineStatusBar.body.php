@@ -101,7 +101,7 @@ HTML;
 	static function DeleteStatus( $userId )
 	{
 		$dbw = wfGetDB ( DB_MASTER );
-		$dbw->delete( 'online_status', array( 'userid' => $userId ), __METHOD__ ); // delete user
+		$dbw->delete( 'online_status', array( 'username' => $userId ), __METHOD__ ); // delete user
 		return true;
 	}
 }
