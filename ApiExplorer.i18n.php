@@ -36,6 +36,13 @@ $messages['be-tarask'] = array(
 	'apiexplorer-loading' => 'Загрузка функцыяў…',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'apiexplorer' => 'Ergerzher API',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -83,6 +90,13 @@ $messages['ia'] = array(
 	'apiexplorer-desc' => 'Pagina pro explorar interactivemente le documentation del API de MediaWiki',
 	'apiexplorer-intro' => 'Iste pagina monstra documentation pro le API del wiki actual. Clicca sur un function hic infra pro vider plus information super le parametros que pote esser usate in cata appello. Vide tamben [http://www.mediawiki.org/wiki/API:Main_page le documentation general del API de MediaWiki].',
 	'apiexplorer-loading' => 'Carga functiones...',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'apiexplorer-loading' => 'Fonctioune lueden ...',
 );
 
 /** Lithuanian (Lietuvių)
