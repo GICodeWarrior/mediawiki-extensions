@@ -3,11 +3,13 @@
 class WikidataHooks {
 
 	public static function onBeforePageDisplay( &$out, &$skin ) {
-		global $wgLang, $wgScriptPath;
+		global $wgLang, $wgScriptPath, $wgRequest;
 
-		$out->addScriptFile ( "{$wgScriptPath}/extensions/Wikidata/OmegaWiki/suggest.js");
 		$out->addScriptFile ( "{$wgScriptPath}/extensions/Wikidata/OmegaWiki/omegawiki-ajax.js");
-
+		if ( $wgRequest->getText( 'action' )=='edit' ) {
+			$out->addScriptFile ( "{$wgScriptPath}/extensions/Wikidata/OmegaWiki/suggest.js");
+			$out->addScriptFile ( "{$wgScriptPath}/extensions/Wikidata/OmegaWiki/omegawiki-edit.js");
+		}
 		$rtl = '' ;
 		if ( $wgLang->isRTL() ) $rtl = '-rtl';
 
