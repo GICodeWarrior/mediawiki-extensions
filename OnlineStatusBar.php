@@ -56,8 +56,6 @@ $wgOnlineStatusBarColor = array (
 $wgOnlineStatusBarDefaultOnline = "online";
 //default for offline
 $wgOnlineStatusBarDefaultOffline = "offline";
-//name of table in db
-$wgOnlineStatusBarTable = "online_status";
 //if new users have this feature enabled by default (experimental)
 $wgOnlineStatusBarDefaultEnabled = false;
 //how long to wait until user is considered as offline
@@ -68,16 +66,15 @@ $wgOnlineStatusBarY = "-35";
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'wfOnlineStatusBar_CkSchema';
 function wfOnlineStatusBar_CkSchema($updater = null)
 {
-	global $wgOnlineStatusBarTable;
 	if ($updater != null)
 	{
-		$updater->addExtensionUpdate( array ( 'addtable', $wgOnlineStatusBarTable, dirname( __FILE__) . '/OnlineStatusBar.sql', true));
+		$updater->addExtensionUpdate( array ( 'addtable', 'online_status', dirname( __FILE__) . '/OnlineStatusBar.sql', true));
 	}
 	else
 	{
 		global $wgExtNewTables;
 		$wgExtNewTables[] = array(
-		$wgOnlineStatusBarTable, dirname( __FILE__ ) . '/OnlineStatusBar.sql' );
+		'online_status', dirname( __FILE__ ) . '/OnlineStatusBar.sql' );
 	}
 	return true;
 }
