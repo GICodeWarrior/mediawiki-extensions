@@ -82,7 +82,6 @@
 	background-position: right center;
 	background-repeat: no-repeat;
 }
-.mw-codechallenge-box-outside:hover .mw-codechallenge-box-text,
 .mw-codechallenge-box-outside:focus .mw-codechallenge-box-text,
 .mw-codechallenge-box-selected .mw-codechallenge-box-text {
 	/* @embed */
