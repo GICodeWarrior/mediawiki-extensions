@@ -32,15 +32,14 @@ class OnlineStatusBar {
                 global $wgUser, $wgDBname, $wgOnlineStatusBarTable;
                 if ( OnlineStatusBar::GetStatus($wgUser->getID()) != $OnlineStatusBar->DefaultOnline )
                 {
-                        $db = wfGetDB( DB_MASTER );
-                        $db->SelectDB( $wgDBname );
+                        $dbw = wfGetDB( DB_MASTER );
                         $now = OnlineStatusBar::GetNow();
                         $row = array(
                                 'userid' => $wgUser->getID(),
                                 'username' => $wgUser->getName(),
                                 'timestamp' => $now,
                                 );
-                        $db->insert( $wgOnlineStatusBarTable, $row, __METHOD__, 'DELAYED' );
+                        $dbw->insert( $wgOnlineStatusBarTable, $row, __METHOD__, 'DELAYED' );
                 }
 	
 		return false;
@@ -55,9 +54,8 @@ class OnlineStatusBar {
 			OnlineStatusBar::UpdateDb();	
 			return true;
 		}
-		$db = wfGetDB ( DB_MASTER );
-                $db->SelectDB( $wgDBname );
-                $db->update($wgOnlineStatusBarTable, array ('timestamp' => $now), array ('username' => $wgUser->getName()), __METHOD__ );
+		$dbw = wfGetDB ( DB_MASTER );
+                $dbw->update($wgOnlineStatusBarTable, array ('timestamp' => $now), array ('username' => $wgUser->getName()), __METHOD__ );
 
                 return false;
 	
@@ -66,10 +64,9 @@ class OnlineStatusBar {
 	public static function DeleteOld()
 	{
 		global $wgOnlineStatusBarTable, $wgOnlineStatusBar_LogoutTime, $wgDBname;
-                $db = wfGetDB ( DB_MASTER );
+                $dbw= wfGetDB ( DB_MASTER );
                 $time = OnlineStatusBar::GetNow() - $wgOnlineStatusBar_LogoutTime;
-                $db->SelectDB( $wgDBname );
-                $db->delete( $wgOnlineStatusBarTable,   array( 'timestamp < "' . $time . '"' ) ,__METHOD__ );
+                $dbw->delete( $wgOnlineStatusBarTable,   array( 'timestamp < "' . $time . '"' ) ,__METHOD__ );
 		return 0;
 	}
 
@@ -83,11 +80,10 @@ class OnlineStatusBar {
 
 	static function GetStatus( $userID ) {
 		global $wgOnlineStatusBarTable, $wgOnlineStatusBarModes, $wgOnlineStatusBarDefaultOffline, $wgOnlineStatusBarDefaultOnline, $wgDBname;
-		$db = wfGetDB ( DB_MASTER );
+		$dbw= wfGetDB ( DB_MASTER );
 		OnlineStatusBar::DeleteOld();
-		$db->SelectDB( $wgDBname );
-		$result = $db->select( $wgOnlineStatusBarTable, array ('userid', 'username', 'timestamp'), array('username' => $userID), __METHOD__, array('limit 1', 'order by timestamp desc')); 
-		$values = new ResultWrapper ($db, $result);
+		$result = $dbw->select( $wgOnlineStatusBarTable, array ('userid', 'username', 'timestamp'), array('username' => $userID), __METHOD__, array('limit 1', 'order by timestamp desc')); 
+		$values = new ResultWrapper ($dbw, $result);
 
 		if ($values->numRows() > 0)
 		{
@@ -100,11 +96,8 @@ class OnlineStatusBar {
 	static function DeleteStatus( $user )
 	{
 		global $wgOnlineStatusBarTable, $wgDBname;
-		$db = wfGetDB ( DB_MASTER );
-		$db->SelectDB( $wgDBname );
-		$db->delete( $wgOnlineStatusBarTable, array ('username' => $user), __METHOD__ ); // delete user
+		$dbw= wfGetDB ( DB_MASTER );
+		$dbw->delete( $wgOnlineStatusBarTable, array ('username' => $user), __METHOD__ ); // delete user
 		return true;
 	}	
 }
-	
-?>
