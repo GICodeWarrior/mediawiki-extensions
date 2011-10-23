@@ -15,31 +15,35 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 
 class OnlineStatusBar {
-	private static function GetNow()
-	{
-		return gmdate( 'Ymdhis', time() );
-	}
 
 	public static function Get_Html( $text, $mode )
 	{
-		global $wgOnlineStatusBarModes, $wgOnlineStatusBarIcon, $wgOnlineStatusBarColor, $wgOnlineStatusBarY;
-		$icon = "$wgExtensionAssetsPath/OnlineStatusBar/{$wgOnlineStatusBarModes[$mode]}";
+		global $wgOnlineStatusBarColor, $wgOnlineStatusBarY;
 		$color = $wgOnlineStatusBarColor[$mode];
-		return '<div style="right:0px; margin-top:-10px;" class="metadata topicon" id="status-top"><div style="border: 0px solid black; background: transparent; float: right; position: relative; top:' . $wgOnlineStatusBarY . 'px; padding: 5px"><p><b>' . $text . ': <span style="color: ' . $color . '; font:bold;"><img alt=' . $text . " - " . $mode  . ' src="' . $wgOnlineStatusBarIcon[$mode] .  '" width="20" height="20" />' . $icon . '</span></b></p></div></div>';
+		return <<<HTML
+<div style="right:0px; margin-top:-10px;" class="metadata topicon" id="status-top">
+<div style="border: 0px solid black; background: transparent; float: right; position: relative; top: {$wgOnlineStatusBarY}px; padding: 5px">
+$text</div></div>
+HTML;
+	}
+	public static function GetImageHtml( $mode ) {
+		global $wgExtensionAssetsPath, $wgOnlineStatusBarIcon, $wgOnlineStatusBarModes;
+		$icon = "$wgExtensionAssetsPath/OnlineStatusBar/{$wgOnlineStatusBarIcon[$mode]}";
+		$modeText = $wgOnlineStatusBarModes[$mode];
+		return Html::element( 'img', array( 'src' => $icon ) );
 	}
 
 	static function UpdateDb()
 	{
-		global $wgUser;
-		// FIXME: GetStatus needs a user id
-		if ( OnlineStatusBar::GetStatus( $wgUser->getID() ) != $OnlineStatusBar->DefaultOnline )
+		global $wgUser, $wgOnlineStatusBarDefaultOnline;
+		if ( OnlineStatusBar::GetStatus( $wgUser->getID() ) != $wgOnlineStatusBarDefaultOnline )
 		{
 			$dbw = wfGetDB( DB_MASTER );
 			$now = OnlineStatusBar::GetNow();
 			$row = array(
 				'userid' => $wgUser->getID(),
 				'username' => $wgUser->getName(),
-				'timestamp' => $now,
+				'timestamp' => $dbw->timestamp( wfTimestamp() ),
 			);
 			$dbw->insert( 'online_status', $row, __METHOD__, 'DELAYED' );
 		}
@@ -51,14 +55,18 @@ class OnlineStatusBar {
 	{
 		global $wgUser, $wgOnlineStatusBarDefaultOffline;
 		$now = OnlineStatusBar::GetNow();
-		// FIXME: GetStatus needs a user id
-		if ( OnlineStatusBar::GetStatus() == $wgOnlineStatusBarDefaultOffline )
+		if ( OnlineStatusBar::GetStatus( $wgUser->getId() ) == $wgOnlineStatusBarDefaultOffline )
 		{
 			OnlineStatusBar::UpdateDb();
 			return true;
 		}
 		$dbw = wfGetDB( DB_MASTER );
-		$dbw->update( 'online_status', array ( 'timestamp' => $now ), array ( 'username' => $wgUser->getName() ), __METHOD__ );
+		$dbw->update(
+			'online_status',
+			array( 'timestamp' => $dbw->timestamp( wfTimestamp() ) ),
+			array( 'username' => $wgUser->getID() ),
+			__METHOD__
+		);
 
 		return false;
 
@@ -68,8 +76,9 @@ class OnlineStatusBar {
 	{
 		global $wgOnlineStatusBar_LogoutTime, $wgDBname;
 		$dbw = wfGetDB( DB_MASTER );
-		$time = OnlineStatusBar::GetNow() - $wgOnlineStatusBar_LogoutTime;
-		$dbw->delete( 'online_status', array( 'timestamp < "' . $time . '"' ) , __METHOD__ );
+		$time = wfTimestamp( TS_UNIX ) - $wgOnlineStatusBar_LogoutTime;
+		$time = $dbw->addQuotes( $dbw->timestamp( $time ) );
+		$dbw->delete( 'online_status', array( "timestamp < $time" ) , __METHOD__ );
 		return 0;
 	}
 
@@ -77,8 +86,8 @@ class OnlineStatusBar {
 		global $wgOnlineStatusBarModes, $wgOnlineStatusBarDefaultOffline, $wgOnlineStatusBarDefaultOnline, $wgDBname;
 		$dbw = wfGetDB( DB_MASTER );
 		OnlineStatusBar::DeleteOld();
-		$result = $dbw->select( 'online_status', array( 'userid', 'username', 'timestamp' ), array( 'username' => $userID ), __METHOD__, array( 'limit 1', 'order by timestamp desc' ) );
-		if ( $result->numRows() > 0 )
+		$result = $dbw->selectField( 'online_status', 'userid', array( 'userid' => $userID ), __METHOD__, array( 'limit 1', 'order by timestamp desc' ) );
+		if ( $result )
 		{
 			return $wgOnlineStatusBarDefaultOnline;
 		}
@@ -86,10 +95,10 @@ class OnlineStatusBar {
 		return $wgOnlineStatusBarDefaultOffline;
 	}
 
-	static function DeleteStatus( $user )
+	static function DeleteStatus( $userId )
 	{
 		$dbw = wfGetDB ( DB_MASTER );
-		$dbw->delete( 'online_status', array( 'username' => $user ), __METHOD__ ); // delete user
+		$dbw->delete( 'online_status', array( 'userid' => $userId ), __METHOD__ ); // delete user
 		return true;
 	}
 }
