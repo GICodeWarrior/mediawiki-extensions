@@ -127,6 +127,7 @@ Kit da deuler ur sell war [http://www.mediawiki.org/wiki/API teulioù API] evit 
 	'apisb-query-prop' => 'Perzhioù',
 	'apisb-query-list' => 'Rolloù',
 	'apisb-query-meta' => 'Titouroù Meta',
+	'apisb-generator-parameters' => 'Ganer',
 );
 
 /** Catalan (Català)
