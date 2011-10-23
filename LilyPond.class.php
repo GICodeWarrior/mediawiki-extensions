@@ -6,7 +6,7 @@ class LilyPond {
 	 * @return string
 	 */
 	public static function renderMidiFragment( $lilypond_code ) {
-		return renderLilyPondFragment( $lilypond_code, true );
+		return self::renderFragment( $lilypond_code, true );
 	}
 
 	/**
@@ -15,7 +15,7 @@ class LilyPond {
 	 * @return string
 	 */
 	public static function renderFragment( $lilypond_code, $midi = false ) {
-		return renderLilyPond( "\\header {\n"
+		return self::render( "\\header {\n"
 			. "\ttagline = ##f\n"
 			. "}\n"
 			. "\\paper {\n"
