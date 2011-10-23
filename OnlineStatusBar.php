@@ -14,7 +14,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * @link http://www.mediawiki.org/wiki/Extension:OnlineStatusBar Documentation
  */
 
-$wgExtensionCredits[version_compare($wgVersion, '1.17', '>=') ? 'userpage tools' : 'other'][] = array(
+$wgExtensionCredits[version_compare( $wgVersion, '1.17', '>=' ) ? 'userpage tools' : 'other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Online status bar',
 	'version' => '1.0.0',
@@ -52,23 +52,23 @@ $wgOnlineStatusBarColor = array (
 	'offline' => "red",
 );
 
-//default for online
+// default for online
 $wgOnlineStatusBarDefaultOnline = "online";
-//default for offline
+// default for offline
 $wgOnlineStatusBarDefaultOffline = "offline";
-//if new users have this feature enabled by default (experimental)
+// if new users have this feature enabled by default (experimental)
 $wgOnlineStatusBarDefaultEnabled = false;
-//how long to wait until user is considered as offline
+// how long to wait until user is considered as offline
 $wgOnlineStatusBar_LogoutTime = 3600;
-//position of status bar
+// position of status bar
 $wgOnlineStatusBarY = "-35";
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'wfOnlineStatusBar_CkSchema';
-function wfOnlineStatusBar_CkSchema($updater = null)
+function wfOnlineStatusBar_CkSchema( $updater = null )
 {
-	if ($updater != null)
+	if ( $updater != null )
 	{
-		$updater->addExtensionUpdate( array ( 'addtable', 'online_status', dirname( __FILE__) . '/OnlineStatusBar.sql', true));
+		$updater->addExtensionUpdate( array ( 'addtable', 'online_status', dirname( __FILE__ ) . '/OnlineStatusBar.sql', true ) );
 	}
 	else
 	{
@@ -80,26 +80,26 @@ function wfOnlineStatusBar_CkSchema($updater = null)
 }
 
 $wgHooks['UserLogoutComplete'][] = 'wfOnlineStatusBar_Logout';
-function wfOnlineStatusBar_Logout(&$user, &$inject_html, $old_name)
+function wfOnlineStatusBar_Logout( &$user, &$inject_html, $old_name )
 {
 	global $wgUser;
-	OnlineStatusBar::DeleteStatus($old_name);
+	OnlineStatusBar::DeleteStatus( $old_name );
 	return true;
 }
 
 $wgHooks['ArticleViewHeader'][] = 'wfOnlineStatusBar_RenderBar';
-function wfOnlineStatusBar_RenderBar(&$article, &$outputDone, &$pcache)
+function wfOnlineStatusBar_RenderBar( &$article, &$outputDone, &$pcache )
 {
 	global $wgOnlineStatusBar_Template, $messages, $wgOnlineStatusBarModes, $wgOut;
 	OnlineStatusBar::UpdateStatus();
-	$ns=$article->getTitle()->getNamespace();
-	if(($ns == NS_USER_TALK) || ($ns == NS_USER))
+	$ns = $article->getTitle()->getNamespace();
+	if ( ( $ns == NS_USER_TALK ) || ( $ns == NS_USER ) )
 	{
 		// better way to get a username would be great :)
-		$user = preg_replace('/\/.*/', '', preg_replace('/^.*\:/', "", $article->getTitle()));
-		$OnlineStatus_Text = $user . language::getMessageFromDB("onlinestatusbar-line");
-		$OnlineStatus_Mode = OnlineStatusBar::GetStatus($user);
-		$wgOut->addHtml(OnlineStatusBar::Get_Html($OnlineStatus_Text, $OnlineStatus_Mode));
+		$user = preg_replace( '/\/.*/', '', preg_replace( '/^.*\:/', "", $article->getTitle() ) );
+		$OnlineStatus_Text = $user . language::getMessageFromDB( "onlinestatusbar-line" );
+		$OnlineStatus_Mode = OnlineStatusBar::GetStatus( $user );
+		$wgOut->addHtml( OnlineStatusBar::Get_Html( $OnlineStatus_Text, $OnlineStatus_Mode ) );
 	}
 	return true;
 }
