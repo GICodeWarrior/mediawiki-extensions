@@ -168,10 +168,14 @@ $messages['be-tarask'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
+	'prefs-advancedfavoritelist' => 'Dibarzhioù araokaet',
+	'favoritenologin' => 'Digevreet',
 	'favoritelistall2' => 'pep tra',
+	'favoritelistedit-normal-submit' => 'Tennañ an titloù',
 	'favoritelistedit-raw-titles' => 'Titloù :',
 );
 
