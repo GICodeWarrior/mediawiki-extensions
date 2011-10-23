@@ -1120,6 +1120,7 @@ $messages['nl'] = array(
 	'narayam-help-page' => 'Help:Invoermethoden',
 	'narayam-checkbox-tooltip' => 'De invoermethode in- of uitschakelen',
 	'narayam-disable-preference' => 'Narayam invoermethode (IME) uitschakelen',
+	'narayam-more-imes' => 'Meer invoermethoden',
 	'narayam-am' => 'Transliteratie in Amhaars',
 	'narayam-as' => 'Transliteratie in Assamees',
 	'narayam-as-avro' => 'Assamees Avro',
@@ -1139,7 +1140,7 @@ $messages['nl'] = array(
 	'narayam-sa-inscript' => 'Sanskrit InScript',
 	'narayam-si-singlish' => 'Singalees Singlish',
 	'narayam-si-wijesekara' => 'Singalees Wijesekara',
-	'narayam-ta99' => 'Tamil99',
+	'narayam-ta-99' => 'Tamil99',
 	'narayam-ta' => 'Transliteratie in Tamil',
 	'narayam-te-inscript' => 'Telugu InScript',
 	'narayam-bn-avro' => 'Bengaals Avro',
@@ -1623,10 +1624,12 @@ $messages['sv'] = array(
 );
 
 /** Tamil (தமிழ்)
+ * @author Logicwiki
  * @author Sodabottle
  * @author Surya Prakash.S.A.
  */
 $messages['ta'] = array(
+	'narayam-desc' => 'விருப்பிற்கேற்ற தட்டச்சு முறைகளை உள்ளீட்டுப் பெட்டிகளில் சேர்க்க அனுமதிக்கிறது',
 	'narayam-toggle-ime' => 'செயலாக்குக ($1)',
 	'narayam-menu' => 'தமிழில் எழுத',
 	'narayam-menu-tooltip' => 'இக்கருவியைப் பயன்படுத்தி தமிழில் எழுதலாம்; குறுக்கு விசை :CTRL+M',
@@ -1634,7 +1637,8 @@ $messages['ta'] = array(
 	'narayam-help-page' => 'Help:தமிழ்த் தட்டச்சு',
 	'narayam-checkbox-tooltip' => 'தட்டச்சுக் கருவியைத் தேர்வு செய்ய இப்பெட்டியை சொடுக்குங்கள்',
 	'narayam-disable-preference' => 'நரையம் தட்டச்சுக் கருவியை நீக்கு',
-	'narayam-ta99' => 'தமிழ்99',
+	'narayam-more-imes' => 'மேலுமுள்ள தட்டச்சு முறைகள்',
+	'narayam-ta-99' => 'தமிழ்99',
 	'narayam-ta' => 'எழுத்துப்பெயர்ப்பு',
 	'narayam-ta-bamini' => 'பாமினி',
 );
