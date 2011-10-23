@@ -8,11 +8,11 @@
 
 $messages = array();
 
-/** English
+/**
+ * English
  * @author Petr Bena
  */
 $messages['en'] = array(
-'onlinestatusbar-desc' => "Status bar which shows whether a user is online, based on preferences, on their user page",
-'onlinestatusbar-line' => " is now",
+	'onlinestatusbar-desc' => "Status bar which shows whether a user is online, based on preferences, on their user page",
+	'onlinestatusbar-line' => " is now",
 );
-?>
