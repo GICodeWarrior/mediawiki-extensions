@@ -82,8 +82,7 @@ function wfOnlineStatusBar_CkSchema( $updater = null )
 $wgHooks['UserLogoutComplete'][] = 'wfOnlineStatusBar_Logout';
 function wfOnlineStatusBar_Logout( &$user, &$inject_html, $old_name )
 {
-	global $wgUser;
-	OnlineStatusBar::DeleteStatus( $old_name );
+	OnlineStatusBar::DeleteStatus( $user->getId() );
 	return true;
 }
 
@@ -97,9 +96,12 @@ function wfOnlineStatusBar_RenderBar( &$article, &$outputDone, &$pcache )
 	{
 		// better way to get a username would be great :)
 		$user = preg_replace( '/\/.*/', '', preg_replace( '/^.*\:/', "", $article->getTitle() ) );
-		$OnlineStatus_Text = $user . language::getMessageFromDB( "onlinestatusbar-line" );
-		$OnlineStatus_Mode = OnlineStatusBar::GetStatus( $user );
-		$wgOut->addHtml( OnlineStatusBar::Get_Html( $OnlineStatus_Text, $OnlineStatus_Mode ) );
+
+		$mode = OnlineStatusBar::GetStatus( $user );
+		$modetext = $wgOnlineStatusBarModes[$mode];
+		$image = OnlineStatusBar::getImageHtml( $mode );
+		$text = wfMessage( 'onlinestatusbar-line', $user )->rawParams( $image )->params( $modetext )->escaped();
+		$wgOut->addHtml( OnlineStatusBar::Get_Html( $text, $mode ) );
 	}
 	return true;
 }
