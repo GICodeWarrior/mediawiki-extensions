@@ -1,6 +1,6 @@
 <?php
 /**
- * Localisation file for the SharedCssJs extension
+ * Internationalization file for the SharedCssJs extension
  *
  * @since 1.0
  *
@@ -41,8 +41,8 @@ Similar to {{msg-mw|protectedpagetext}}',
  * @author SVG
  */
 $messages['de'] = array(
-	'sharedcssjs-desc' => 'Ermöglicht das Nutzen globaler, in einem zentralen Wiki hinterlegter, CSS- und JS-Dateien für Wiki sowie Benutzer',
-	'sharedcssjs-error' => 'Diese Seite wird aus einem zentralen Wiki eingebunden und kann auch nur dort bearbeitet werden.',
+	'sharedcssjs-desc' => 'Ermöglicht das Nutzen globaler, in einem zentralen Wiki hinterlegter, CSS- und JS-Dateien für das ganze Wiki sowie einzelner Benutzer',
+	'sharedcssjs-error' => 'Diese Seite wird aus einem zentralen Wiki eingebunden und kann ausschließlich dort bearbeitet werden.',
 	'global.css' => '/* Das folgende CSS wird für alle Benutzeroberflächen auf allen Wikis der Wiki-Farm geladen */',
 	'global.js' => '/* Das folgende JavaScript wird für alle Benutzeroberflächen auf allen Wikis der Wiki-Farm geladen */',
 );
@@ -83,7 +83,7 @@ $messages['ia'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'sharedcssjs-desc' => 'Määd et müjjelesch, CSSe un JavaSkreppte us enem jemeinsame Wiki ze holle.',
+	'sharedcssjs-desc' => 'Määd et müjjelesch, CSSe un JavaSkreppte us enem jemeinsame Wiki ze holle',
 	'sharedcssjs-error' => 'Heh di Sigg küdd uss_enem jemeinsame Wiki un blohß doh kam_mer se ändere.',
 	'global.css' => '/* Heh dat CSS weed vun alle Bovverfläshe vun alle Wikis heh em Schtall vun Wikis jebruch */',
 	'global.js' => '/* Heh dat JavaSkrepp weed vun alle Bovverfläshe vun alle Wikis heh em Schtall vun Wikis jebruch */',
