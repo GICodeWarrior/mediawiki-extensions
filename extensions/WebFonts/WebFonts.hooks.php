@@ -31,12 +31,13 @@ class WebFontsHooks {
 	}
 	
 	public static function addPreference( $user, &$preferences ) {
+		global $wgUser;
 		// A checkbox in preferences to enable WebFonts
 		$preferences['webfontsEnable'] = array(
 			'type' => 'toggle',
 			'label-message' => 'webfonts-enable-preference', // a system message
 			'section' => 'rendering/advancedrendering', // under 'Advanced options' section of 'Editing' tab
-			'default' => true
+			'default' =>  $wgUser->getOption( 'webfontsEnable' )
 		);
 
 		return true;
