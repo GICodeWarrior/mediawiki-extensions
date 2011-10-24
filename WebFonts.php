@@ -37,7 +37,7 @@ $wgHooks['BeforePageDisplay'][] = 'WebFontsHooks::addModules';
 $wgHooks['GetPreferences'][] = 'WebFontsHooks::addPreference';
 $wgHooks['MakeGlobalVariablesScript'][] = 'WebFontsHooks::addVariables';
 
-$wgWebFontsEnabled = true;
+$wgWebFontsEnabledByDefault = true; 
 
 $wgResourceModules['webfonts'] = array(
 	'scripts' => 'js/webfonts.js',
