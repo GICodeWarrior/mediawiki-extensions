@@ -586,9 +586,11 @@ es.DocumentModel.prototype.prepareInsertion = function( offset, data ) {
 	 *         <p>a</p><p>b</p>| - End of the document
 	 *     Content locations
 	 *         <p>|a</p><p>b</p> - Inside an element (like in a paragraph or listItem)
-	 *         <p>a|</p><p>b</p> - May also be inside an element but right before/after an open/close
+	 *         <p>a|</p><p>b</p> - May also be inside an element but right before/after an
+	 *                             open/close
 	 * 
-	 * if ( Incoming data contains structural elements ) { // We're assuming the incoming data is balanced, is that OK?
+	 * if ( Incoming data contains structural elements ) {
+		   // We're assuming the incoming data is balanced, is that OK?
 	 *     if ( Insertion point is a structural location ) {
 	 *         if ( Incoming data is not a complete structural element ) {
 	 *             Incoming data must be balanced
@@ -618,9 +620,10 @@ es.DocumentModel.prototype.prepareRemoval = function( range ) {
 	//debugger;
 
 	/**
-	 * Return true if can merge the remaining contents of the elements after a selection is deleted across them. 
-	 * For instance, if a selection is painted across two paragraphs, and then the text is deleted, the two paragraphs can become one paragraph. 
-	 * However, if the selection crosses into a table, those cannot be merged.
+	 * Return true if can merge the remaining contents of the elements after a selection is deleted
+	 * across them. For instance, if a selection is painted across two paragraphs, and then the text
+	 * is deleted, the two paragraphs can become one paragraph. However, if the selection crosses
+	 * into a table, those cannot be merged.
 	 * @param {Number} integer offset
 	 * @param {Number} integer offset
 	 * @return {Boolean}
@@ -628,9 +631,10 @@ es.DocumentModel.prototype.prepareRemoval = function( range ) {
 	function canMerge( range ) {
 		var node1 = doc.getNodeFromOffset( range.start );
 		var node2 = doc.getNodeFromOffset( range.end - 1 );
-		// This is the simple rule we are following for now -- same type & same parent = can merge. So you can merge adjacent paragraphs, or listitems.
-		// And you can't merge a paragraph into a table row.
-		// There may be other rules we will want in here later, for instance, special casing merging a listitem into a paragraph.
+		// This is the simple rule we are following for now -- same type & same parent = can merge.
+		// So you can merge adjacent paragraphs, or listitems. And you can't merge a paragraph into
+		// a table row. There may be other rules we will want in here later, for instance, special
+		// casing merging a listitem into a paragraph.
 		
 		// wait, some nodes don't have types? Is this the top document node?
 		return ( 
@@ -675,7 +679,8 @@ es.DocumentModel.prototype.prepareRemoval = function( range ) {
 				// we add one because retain(3,3) really means retain 1 char at pos 3
 				tx.pushRetain( op.end - op.start + 1 );
 			} else if ( op.type === 'remove' ) {
-				// we add one because to remove(3,5) we need to slice(3,6), the ending is last subscript removed + 1.
+				// we add one because to remove(3,5) we need to slice(3,6), the ending is last
+				// subscript removed + 1.
 				tx.pushRemove( this.data.slice( op.start, op.end + 1 ) );
 			} else {
 				console.log( "this is impossible" );
@@ -694,7 +699,8 @@ es.DocumentModel.prototype.prepareRemoval = function( range ) {
 	}
 
 	
-	// choose a deletion strategy; merging nodes together, or stripping content from existing structure.
+	// choose a deletion strategy; merging nodes together, or stripping content from existing
+	// structure.
 	if ( canMerge( range ) ) {
 		mergeDelete( range, tx );
 	} else {
