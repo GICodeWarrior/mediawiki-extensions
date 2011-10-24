@@ -19,6 +19,13 @@ $messages['qqq'] = array(
 	'proxyconnect-desc' => '{{desc}}',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'proxyconnect-desc' => 'Encadarma la funcionalidá de Proxy Connect nel llau del sirvidor',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
