@@ -21,7 +21,7 @@ $wgExtensionCredits[ 'specialpage' ][ ] = array(
 	'name' => 'FundraiserLandingPage',
 	'author' => 'Peter Gehres',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:FundraiserLandingPage',
-	'descriptionmsg' => 'fundraisinglandingpage-desc',
+	'descriptionmsg' => 'fundraiserlandingpage-desc',
 	'version' => '1.0.0',
 );
 
