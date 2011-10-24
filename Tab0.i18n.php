@@ -34,6 +34,13 @@ $messages['arz'] = array(
 	'tab0-desc' => 'يضيف اللسان "0"، موصولا إلى صفحة التعديل لأول قسم من الصفحة',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'tab0-desc' => "Amiesta la llingüeta «0», qu'enllaza a la páxina d'edición de la primera seición de la páxina.",
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
