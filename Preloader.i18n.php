@@ -37,6 +37,13 @@ $messages['arz'] = array(
 	'preloader-desc' => 'يوفر نص بويلربلات مخصص لكل نطاق للصفحات الجديدة',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'preloader-desc' => 'Proporciona un testu patrón personalizable por espaciu de nome pa les páxines nueves',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
