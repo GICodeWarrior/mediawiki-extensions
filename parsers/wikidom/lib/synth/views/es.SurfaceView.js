@@ -251,14 +251,20 @@ es.SurfaceView.prototype.showCursor = function( offset ) {
 	} else {
 		this.cursor.$.show();
 	}
+	// 
+	this.$input.css({
+		'top': this.cursor.$.css('top'),
+		'height': this.cursor.$.css('height')
+	});
 
 	if ( this.cursor.interval ) {
 		clearInterval( this.cursor.interval );
 	}
 	this.cursor.interval = setInterval( function( surface ) {
-		surface.cursor.$.css( 'display' ) == 'block'
-			? surface.cursor.$.hide() : surface.cursor.$.show();
-	}, 500, this );
+		surface.cursor.$.css(
+			'display', ( 'block' ? surface.cursor.$.hide() : surface.cursor.$.show() )
+		);
+	}, 500 );
 };
 
 /**
@@ -298,7 +304,7 @@ es.SurfaceView.prototype.moveCursor = function( direction ) {
 			offset,
 			step,
 			edge;
-
+		
 		if ( direction === 'up' ) {
 			step = -5;
 			edge = 0;
@@ -315,6 +321,18 @@ es.SurfaceView.prototype.moveCursor = function( direction ) {
 		} while ( oldPosition.top === fakePosition.top && offset !== edge );
 
 		this.showCursor( this.documentView.getOffsetFromPosition( fakePosition ) );
+
+		// Auto scroll to cursor
+		var $window = $(window),
+			scrollTop = $window.scrollTop(),
+			windowHeight = $window.height(),
+			inputTop = this.$input.offset().top,
+			inputBottom = inputTop + this.$input.height();
+		if (inputTop < scrollTop) {
+			$window.scrollTop(inputTop);
+		} else if (inputBottom > (scrollTop + windowHeight)) {
+			$window.scrollTop(inputBottom - windowHeight);
+		}
 	}
 	return;
 };
