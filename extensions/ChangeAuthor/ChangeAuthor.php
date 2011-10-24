@@ -43,6 +43,9 @@ $wgAutoloadClasses['ChangeAuthor'] = $dir . 'ChangeAuthor.body.php';
 $wgSpecialPages['ChangeAuthor'] = 'ChangeAuthor';
 $wgSpecialPageGroups['ChangeAuthor'] = 'pagetools';
 
+// Required permission to use Special:ChangeAuthor
+$wgAvailableRights[] = 'changeauthor';
+
 // Add new log type
 $wgLogTypes[] = 'changeauth';
 $wgLogNames['changeauth'] = 'changeauthor-logpagename';
