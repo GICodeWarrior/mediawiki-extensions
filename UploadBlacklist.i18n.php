@@ -47,6 +47,13 @@ $messages['arz'] = array(
 	'uploadblacklist-desc' => 'يزود وظيفه بلاكليست للرفع',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'uploadblacklist-desc' => 'Amiesta una función de llista prieta pa xubir ficheros',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  */
