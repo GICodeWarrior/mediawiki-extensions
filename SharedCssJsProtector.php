@@ -18,29 +18,29 @@ if(!defined('MEDIAWIKI')) {
 
 $wgHooks['getUserPermissionsErrors'][] = 'fnProtectSharedCssJs';
 
-function fnProtectSharedCssJs( &$title, &$user, $action, &$result) {
+function fnProtectSharedCssJs( &$title, &$user, $action, &$result ) {
 	global $wgSharedCssJsDB, $wgDBname;
 
 	// only protect MediaWiki:Global.css and MediaWiki:Global.js on non-central wikis
 	if( $wgSharedCssJsDB != $wgDBname ) {
 
 	// block actions 'edit' and 'create'
-	if( $action != 'edit' && $action != 'create') {
+	if( $action != 'edit' && $action != 'create' ) {
 		return true;
 	}
 	
-	// check pagenames
-	if( $title->getText() != 'Global.css' && $title->getText() != 'Global.js' ) {
+	// check pagenames (includes subpages)
+	if( $title->getBaseText() != 'Global.css' && $title->getBaseText() != 'Global.js' ) {
 		return true;
 	}
 	
 	$ns = $title->getNamespace();
 	
 	// check namespaces
-	if($ns == 8 || $ns == 9 ) {
+	if( $ns == 8 || $ns == 9 ) {
 		
 		// error message if action is blocked
-		$result = array('sharedcssjs-error');
+		$result = array( 'sharedcssjs-error' );
 		
 		// bail, and stop the request
 		return false;
