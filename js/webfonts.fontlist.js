@@ -246,14 +246,30 @@
 				eot: "Latn/CharisSIL-R.eot",
 				ttf: "Latn/CharisSIL-R.ttf",
 				woff: "Latn/CharisSIL-R.woff"
+			},
+			"Thendral":  {
+				eot: "Taml/ThendralUni.eot",
+				ttf: "Taml/ThendralUni.ttf",
+				woff: "Taml/ThendralUni.woff"
+			},
+			"Thenee":  {
+				eot: "Taml/TheneeUni.eot",
+				ttf: "Taml/TheneeUni.ttf",
+				woff: "Taml/TheneeUni.woff"
+			},
+			"Vaigai":  {
+				eot: "Taml/VaigaiUni.eot",
+				ttf: "Taml/VaigaiUni.ttf",
+				woff: "Taml/VaigaiUni.woff"
 			}
+
 		},
 
 		languages: {
 			// en: [ "RufScript", "Perizia", "Ubuntu" ],
 			ml: [ "AnjaliOldLipi", "Meera", "Rachana", "RaghuMalayalam" ],
 			or: [ "Lohit Oriya" , "Utkal"],
-			ta: [ "Lohit Tamil" ],
+			ta: [ "Lohit Tamil", "Thendral", "Thenee", "Vaigai" ],
 			te: [ "Lohit Telugu" ],
 			bn: [ "Lohit Bengali" ],
 			as: [ "Lohit Bengali" ],
