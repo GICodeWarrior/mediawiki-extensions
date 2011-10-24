@@ -21,6 +21,13 @@ $messages['qqq'] = array(
 	'xmlrc-desc' => '{{desc}}',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'xmlrc-desc' => 'Unvía avisos de los cambios en formatu XML, per UDP,  Jabber o otros medios',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
