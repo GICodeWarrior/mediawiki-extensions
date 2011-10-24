@@ -39,6 +39,9 @@ $wgHooks['MakeGlobalVariablesScript'][] = 'WebFontsHooks::addVariables';
 
 $wgWebFontsEnabledByDefault = true; 
 
+// By default, the preference page option to enable webfonts is set to true.
+$wgDefaultUserOptions['webfontsEnable'] = true;
+
 $wgResourceModules['webfonts'] = array(
 	'scripts' => 'js/webfonts.js',
 	'styles' => 'css/webfonts.css',
