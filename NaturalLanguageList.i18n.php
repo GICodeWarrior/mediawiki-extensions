@@ -40,6 +40,14 @@ $messages['arc'] = array(
 	'nll-lastseparator' => '&#32;ܘ&#32;',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'nll-desc' => 'Formatéu cenciellu de les llistes en llingües naturales',
+	'nll-lastseparator' => '&#32;y&#32;',
+);
+
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
  */
