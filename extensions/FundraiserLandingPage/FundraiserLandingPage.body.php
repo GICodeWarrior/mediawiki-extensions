@@ -17,31 +17,26 @@ class FundraiserLandingPage extends UnlistedSpecialPage
 		$request = $this->getRequest();
 		$this->setHeaders();
 
-		# load the querystring variables
-		$values = $request->getValues();
-
 		# clear output variable to be safe
 		$output = '';
 
 		# get the required variables to use for the landing page
-		# (escaping with both htmlspecialchars and wfEscapeWikiText since the
-		# parameters are intending to reference templates)
-		$template = wfEscapeWikiText( htmlspecialchars( $request->getText( 'template', $wgFundraiserLPDefaults[ 'template' ] ) ) );
-		$appeal = wfEscapeWikiText( htmlspecialchars( $request->getText( 'appeal', $wgFundraiserLPDefaults[ 'appeal' ] ) ) );
-		$form = wfEscapeWikiText( htmlspecialchars( $request->getText( 'form', $wgFundraiserLPDefaults[ 'form' ] ) ) );
+		$template = $this->make_safe( $request->getText( 'template', $wgFundraiserLPDefaults[ 'template' ] ) );
+		$appeal = $this->make_safe( $request->getText( 'appeal', $wgFundraiserLPDefaults[ 'appeal' ] ) );
+		$form = $this->make_safe( $request->getText( 'form', $wgFundraiserLPDefaults[ 'form' ] ) );
 
 		# begin generating the template call
 		$output .= "{{ $template\n| appeal = $appeal\n| form = $form\n";
 
 		# add any parameters passed in the querystring
-		foreach ( $values as $k=>$v ) {
+		foreach ( $request->getValues() as $k_unsafe => $v_unsafe ) {
 			# skip the required variables
-			if ( $k == "template" || $k == "appeal" || $k == "form" ) {
+			if ( $k_unsafe == "template" || $k_unsafe == "appeal" || $k_unsafe == "form" ) {
 				continue;
 			}
 			# get the variables name and value
-			$key = wfEscapeWikiText( htmlspecialchars( $k ) );
-			$val = wfEscapeWikiText( htmlspecialchars( $v ) );
+			$key = $this->make_safe( $k_unsafe );
+			$val = $this->make_safe( $v_unsafe );
 			# print to the template in wiki-syntax
 			$output .= "| $key = $val\n";
 		}
@@ -50,5 +45,23 @@ class FundraiserLandingPage extends UnlistedSpecialPage
 
 		# print the output to the page
 		$this->getOutput()->addWikiText( $output );
+	}
+
+	/**
+	 * This function limits the possible charactes passed as template keys and
+	 * values to letters, numbers, hypens and underscores. The function also
+	 * performs standard escaping of the passed values.
+	 *
+	 * @param $string The unsafe string to escape and check for invalid characters
+	 * @return mixed|String A string matching the regex or an empty string
+	 */
+	function make_safe( $string ) {
+		$num = preg_match( '([a-zA-Z0-9_-]+)', $string, $matches );
+		
+		if ( $num == 1 ){
+			# theoretically this is overkill, but better safe than sorry
+			return wfEscapeWikiText( htmlspecialchars( $matches[0] ) );
+		}
+		return '';
 	}
 }
