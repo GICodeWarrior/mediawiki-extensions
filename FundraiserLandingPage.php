@@ -38,7 +38,7 @@ $wgSpecialPages[ 'FundraiserLandingPage' ] = 'FundraiserLandingPage';
  * or not they are passed through the querystring.
  */
 $wgFundraiserLPDefaults = array(
-	'template' => 'LandingPage',
-	'appeal' => 'appeal-brandon-1',
-	'form' => 'lp-form-US7amounts-extrainfo-noppval'
+	'template' => 'Lp-wrapper',
+	'appeal' => 'Appeal-default',
+	'form' => 'Form-default'
 );
