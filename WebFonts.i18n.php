@@ -26,6 +26,16 @@ $messages['qqq'] = array(
 	'webfonts-reset' => '{{Identical|Reset}}',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'webfonts' => 'WebFonts',
+	'webfonts-desc' => 'Incorporar fontes nes páxines',
+	'webfonts-load' => 'Seleiciona la fonte',
+	'webfonts-reset' => 'Reaniciar',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Wizardist
@@ -79,7 +89,7 @@ $messages['da'] = array(
 	'webfonts-desc' => 'Integrer skrifttyper i siderne',
 	'webfonts-load' => 'Vælg skrifttype',
 	'webfonts-reset' => 'Nulstil',
-	'webfonts-disable-preference' => 'Deaktiver integrering af skrifttyper (WebFonts)',
+	'webfonts-enable-preference' => 'Aktiver integrering af skrifttyper (WebFonts)',
 );
 
 /** German (Deutsch)
@@ -87,10 +97,10 @@ $messages['da'] = array(
  */
 $messages['de'] = array(
 	'webfonts' => 'WebSchriftarten',
-	'webfonts-desc' => 'Ermöglicht das Einbetten von Schriftarten auf  Seiten',
+	'webfonts-desc' => 'Ermöglicht die Schriftarteneinbettung in Seiten',
 	'webfonts-load' => 'Schriftart auswählen',
 	'webfonts-reset' => 'Zurücksetzen',
-	'webfonts-disable-preference' => 'Schriftarteneinbettung deaktivieren (WebSchriftarten)',
+	'webfonts-enable-preference' => 'Schriftarteneinbettung aktivieren',
 );
 
 /** Spanish (Español)
@@ -166,7 +176,7 @@ $messages['he'] = array(
 	'webfonts-desc' => 'הטמעת גופנים בדפים',
 	'webfonts-load' => 'בחירת גופן',
 	'webfonts-reset' => 'ביטול גופן רשת',
-	'webfonts-disable-preference' => 'ביטול הטמעת גופנים (גופני רשת)',
+	'webfonts-enable-preference' => 'הפעלה של הטמעת גופנים (גופני רשת)',
 );
 
 /** Interlingua (Interlingua)
@@ -244,7 +254,7 @@ $messages['mk'] = array(
 	'webfonts-desc' => 'Вградување на фонтови во страници',
 	'webfonts-load' => 'Изберете фонт',
 	'webfonts-reset' => 'Врати',
-	'webfonts-disable-preference' => 'Оневозможи вградување фонтови (WebFonts)',
+	'webfonts-enable-preference' => 'Овозможи на вметнување на фонтови (WebFonts)',
 );
 
 /** Malayalam (മലയാളം)
@@ -383,14 +393,14 @@ $messages['sv'] = array(
 );
 
 /** Tamil (தமிழ்)
+ * @author Logicwiki
  * @author Sodabottle
  */
 $messages['ta'] = array(
 	'webfonts' => 'இணைய எழுத்துருக்கள்',
 	'webfonts-desc' => 'பக்கங்களில் எழுத்துருக்களை செயலாக்க',
 	'webfonts-load' => 'எழுத்துரு மாற்ற',
-	'webfonts-reset' => 'மீட்டமைக்க',
-	'webfonts-disable-preference' => 'இணைய எழுத்துருக்களை செயலிழக்கச் செய்',
+	'webfonts-reset' => 'இயல்பு எழுத்துரு',
 );
 
 /** Tagalog (Tagalog)
