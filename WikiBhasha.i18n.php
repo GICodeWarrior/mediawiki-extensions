@@ -67,6 +67,13 @@ $messages['ar'] = array(
 	'wikiBhashaLink' => 'ويكي باشا (بيتا)',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'wikibhasha-desc' => "Aplicación pa crear conteníu multilingüe a partir del conteníu de la Wikipedia n'inglés",
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
