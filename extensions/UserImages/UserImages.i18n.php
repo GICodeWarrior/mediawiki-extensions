@@ -536,13 +536,14 @@ $messages['nn'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Event
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'userimages-desc' => 'Genererer gallerier av brukeropplastede bilder med <code><nowiki><userimage /></nowiki></code>',
 	'userimages-caption' => 'Bilder lastet opp av $1',
-	'userimages-noname' => 'Ugyldig brukernavn, eller intet angitt brukernavn.',
+	'userimages-noname' => 'Ugyldig eller manglende angitt brukernavn.',
 	'userimages-noimages' => '$1 har ingen bildeopplastinger.',
 );
 

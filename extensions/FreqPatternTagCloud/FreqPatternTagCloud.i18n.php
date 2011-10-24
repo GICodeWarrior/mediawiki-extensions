@@ -122,6 +122,27 @@ $messages['gl'] = array(
 	'fptc-no-suggestion' => 'Non se atopou suxestión ningunha',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'freqpatterntagcloud-desc' => '[[Special:FreqPatternTagCloud|Pagina special]] pro construer un etiquettario (tag cloud) a base de proprietates e pro cercar valores de similar proprietates',
+	'fptc-categoryname' => 'Categoria',
+	'fptc-context-menu-browse' => 'Navigar per paginas con iste valor',
+	'fptc-context-menu-similar-tags' => 'Similar etiquettas:',
+	'fptc-form-attribute-name' => 'Proprietate:',
+	'fptc-form-submit-button' => 'Submitter',
+	'fptc-invalid-attribute' => 'Iste proprietate es invalide.',
+	'fptc-insufficient-rights-for-maintenance' => 'Es necessari identificar se como administrator pro poter acceder a iste pagina.',
+	'fptc-refresh-frequent-patterns' => 'Refrescar datos',
+	'fptc-refreshed-frequent-patterns' => 'Le regulas pro patronos frequente ha essite refrescate.',
+	'fptc-search-attribute-name' => 'Cercar proprietate',
+	'fptc-search-button' => 'Cercar',
+	'fptc-search-suggestion-value' => 'Similar a "%s":',
+	'fptc-suggestion' => 'Esque tu vole dicer:',
+	'fptc-no-suggestion' => 'Nulle suggestion trovate',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -161,8 +182,13 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'fptc-categoryname' => 'Categorie',
+	'fptc-context-menu-browse' => "Pagina's met deze waarde doorbladeren",
+	'fptc-context-menu-similar-tags' => 'Gelijkaardige labels:',
 	'fptc-form-attribute-name' => 'Eigenschap:',
+	'fptc-form-submit-button' => 'OK',
 	'fptc-invalid-attribute' => 'De ingevoerde eigenschap is ongeldig.',
+	'fptc-insufficient-rights-for-maintenance' => 'U moet zich aanmelden als beheerder om deze pagina te bekijken.',
+	'fptc-refresh-frequent-patterns' => 'Gegevens verversen',
 	'fptc-search-attribute-name' => 'Eigenschap zoeken',
 	'fptc-search-button' => 'Zoeken',
 	'fptc-search-suggestion-value' => 'Gelijkaardig aan "%s":',

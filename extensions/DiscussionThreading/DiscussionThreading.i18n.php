@@ -89,6 +89,17 @@ $messages['arz'] = array(
 	'discussionthreading-threadnewsectionhint' => 'بدء مجموعة رسائل جديدة',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'discussionthreading-desc' => "Amestar filos a les páxines d'alderique",
+	'discussionthreading-replysection' => 'responder',
+	'discussionthreading-replysectionhint' => 'Responder a esti mensaxe',
+	'discussionthreading-threadnewsection' => 'nuevu',
+	'discussionthreading-threadnewsectionhint' => 'Principiar un filu nuevu',
+);
+
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
  */

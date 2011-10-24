@@ -236,7 +236,7 @@ $messages['nl'] = array(
  * @author Nghtwlkr
  */
 $messages['no'] = array(
-	'semanticinternalobjects-desc' => 'Innstilling for interne objekt i Semantic MediaWiki',
+	'semanticinternalobjects-desc' => 'Innstilling for interne objekter i Semantic MediaWiki',
 	'semanticinternalobjects-internalproperty' => 'Intern egenskap',
 );
 

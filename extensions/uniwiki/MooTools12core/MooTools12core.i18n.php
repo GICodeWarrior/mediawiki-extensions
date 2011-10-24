@@ -50,6 +50,13 @@ $messages['arz'] = array(
 	'mootools12core-desc' => 'يضيف [http://mootools.net mootools-1.2-core-yc.js]، إطار جافاسكريبت مضغوط، لكل صفحة',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'mootools12core-desc' => 'Amiesta [http://mootools.net mootools-1.2-core-yc.js], un entornu de trabayu JavaScript compautu, a cada páxina',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */

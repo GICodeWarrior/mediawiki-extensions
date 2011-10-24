@@ -1253,7 +1253,7 @@ $messages['ia'] = array(
 	'contest-edit-challenge-text' => 'Texto del defia',
 	'contest-edit-challenge-oneline' => 'Curte description',
 	'contest-welcome-unknown' => 'Non existe un concurso con le nomine specificate.',
-	'contest-welcome-rules' => 'Pro poter participar, es necessari declarar se de accordo con',
+	'contest-welcome-rules' => 'Pro poter participar, es necessari declarar se de accordo con [[$1|le regulas del concurso]].',
 	'contest-welcome-signup' => 'Inscriber ora',
 	'contest-welcome-js-off' => 'Le interfacie de usator del concurso usa JavaScript pro un experientia melior. Ma tu navigator non supporta JavaScript o lo ha disactivate.',
 	'contest-welcome-accept-challenge' => 'Defia acceptate',
@@ -1309,6 +1309,7 @@ $messages['ia'] = array(
 	'contest-contestant-commentcount' => 'Commentos',
 	'contest-contestant-overallrating' => 'Evalutation',
 	'contest-contestant-rating' => '$1 ($2 {{PLURAL:$2|voto|votos}})',
+	'contest-contestant-submission' => 'Submission',
 	'contest-contestant-title' => 'Concurrente $1 ($2)',
 	'contest-contestant-header-id' => 'ID de concurrente',
 	'contest-contestant-header-contest' => 'Nomine de concurso',
@@ -1366,11 +1367,13 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'contest-desc' => "Erlaabt et de Benotzer bei Concoursen matzemaachen. D'Membere vum Jury kënnen iwwert d'Äntwerten diskutéieren an ofstëmmen",
 	'contest-toplink' => 'Meng Concoursen',
 	'right-contestadmin' => 'Concourse geréieren',
 	'right-contestant' => 'Bäi Concourse matmaachen',
 	'group-contestant' => 'Konkurrent',
 	'prefs-contest' => 'Concoursen',
+	'contest-status-draft' => 'Brouillon (desaktivéiert)',
 	'special-contest' => 'E Concours weisen',
 	'special-contestwelcome' => 'E Concours weisen',
 	'special-editcontest' => 'E Concours änneren',
@@ -1402,13 +1405,17 @@ $messages['lb'] = array(
 	'contest-signup-unknown' => 'Et gëtt kee Concours mam Numm deen ugi gouf.',
 	'contest-signup-email' => 'Är Mailadress',
 	'contest-signup-realname' => 'Äre richtegen Numm',
+	'contest-signup-draft' => 'De Concours huet nach net ugefaang. Merci fir Är Gedold.',
 	'contest-signup-country' => 'Ärt Land',
+	'contest-signup-invalid-name' => 'Den Numm deen Dir uginn hutt ass ze kuerz.',
 	'contest-contest-title' => 'Concours: $1',
 	'contest-contest-name' => 'Numm',
 	'contest-contest-end' => 'Ënn vum Concours',
+	'contest-contest-days-ago' => '$1, {{PLURAL:$2|virun 1 Dag| viru(n) $2 Deeg}}',
 	'contest-contest-contestants' => 'Konkurrenten',
 	'contest-contest-reminder-mail' => 'Erënnerungs-Mail',
 	'contest-contest-send-reminder' => 'Erënnerung schécken',
+	'contest-contest-reminder-title' => 'Erënnerungs-Mail',
 	'contest-contest-reminder-send' => 'Erënnerung schécken',
 	'contest-contest-reminder-cancel' => 'Ofbriechen',
 	'contest-contest-reminder-sending' => 'Schécken...',
@@ -1430,10 +1437,12 @@ $messages['lb'] = array(
 	'contest-contestant-comment-by' => 'Bemierkung vum $1',
 	'contest-email-signup-title' => 'Merci datt Dir bäi dëser Erausfuerderung matmaacht!',
 	'contest-mycontests-toplink' => 'Meng Concoursen',
+	'contest-mycontests-no-contests' => 'Dir maacht bäi kengem Concours mat.',
 	'contest-mycontests-active-header' => 'Aktuell Concoursen',
 	'contest-mycontests-header-contest' => 'Concours',
 	'contest-mycontests-header-challenge' => 'Erausfuerderung',
 	'contest-submission-unknown' => 'Et gëtt kee Concours mam Numm deen ugi gouf.',
+	'contest-submission-finished' => 'Dëse Concours ass eriwwer. Merci datt Dir matgemaach hutt!',
 );
 
 /** Macedonian (Македонски)
@@ -2018,6 +2027,7 @@ $messages['nl'] = array(
 	'contest-contestant-not-voted' => 'U hebt nog niet gestemd op deze deelnemer.',
 	'contest-contestant-voted' => 'Uw huidige stem is $1.',
 	'contest-contestant-permalink' => 'Permanente verwijzing',
+	'contest-email-signup-title' => 'Bedankt voor uw deelname aan deze uitdaging!',
 	'contest-email-reminder-title' => 'Nog maar $1 {{PLURAL:$1|dag|dagen}} tot het einde van deze uitdaging!',
 	'contest-mycontests-toplink' => 'Mijn wedstrijden',
 	'contest-mycontests-no-contests' => 'U neemt niet deel aan een wedstrijd.',
@@ -2036,6 +2046,28 @@ $messages['nl'] = array(
 	'contest-submission-challenge' => 'U neemt momenteel deel aan de uitdaging $1.',
 	'contest-submission-challenge-description' => "'''Huidige uitdaging: $1''' -- $2",
 	'contest-submission-domains' => 'Inzendingen zijn beperkt tot deze sites: $1',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'contest-contest-name' => 'Ime',
+	'contest-contest-status' => 'Stanje',
+	'contest-contest-reminder-close' => 'Zapri',
+	'contest-contest-reminder-subject' => 'Zadeva:',
+	'contest-contestant-id' => 'ID',
+	'contest-contestant-wmf' => 'WMP',
+	'contest-contestant-no' => 'Ne',
+	'contest-contestant-yes' => 'Da',
+	'contest-contestant-header-comments' => 'Število pripomb',
+	'contest-contestant-comments' => 'Pripombe',
+	'contest-contestant-submit' => 'Shrani spremembe',
+	'contest-contestant-comment-by' => 'Pripomba $1',
+	'contest-contestant-permalink' => 'Trajna povezava',
+	'contest-submission-submit' => 'Potrdi',
+	'contest-submission-challenge-description' => "'''Trenutni izziv: $1''' – $2",
+	'contest-submission-domains' => 'Vloge so omejene na strani: $1',
 );
 
 /** Telugu (తెలుగు)

@@ -12460,6 +12460,7 @@ $messages['sl'] = array(
 	'ow_transaction_restore' => 'Obnovi',
 	'ow_transaction_summary' => 'Povzetek',
 	'ow_dm_OK' => 'V redu',
+	'ow_Language' => 'Jezik',
 );
 
 /** Lower Silesian (Schläsch)

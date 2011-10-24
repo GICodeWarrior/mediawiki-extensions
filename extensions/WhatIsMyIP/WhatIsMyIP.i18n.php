@@ -79,6 +79,16 @@ $messages['arz'] = array(
 	'right-whatismyip' => 'رؤية [[Special:WhatIsMyIP|عنوان الأيبى الشخصي]]',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'whatismyip' => '¿Qué direición IP tengo?',
+	'whatismyip-desc' => 'Amuesa la [[Special:WhatIsMyIP|direición IP]] actual del usuariu',
+	'whatismyip-out' => 'La to direición IP:',
+	'right-whatismyip' => 'Ver la [[Special:WhatIsMyIP|direición IP propia]]',
+);
+
 /** Azerbaijani (Azərbaycanca)
  * @author Wertuose
  */

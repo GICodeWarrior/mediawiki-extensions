@@ -63,6 +63,14 @@ $messages['arz'] = array(
 	'usercontactlinks-desc' => 'يوفر القدرة على تبسيط وإضافة أسماء اليوزرز  التانيين باستخدام صياغة ^^^user^^^',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'usercontactlink-baduser' => "nome d'usuariu incorreutu",
+	'usercontactlinks-desc' => "Da la capacidá p'amestar cenciellamente y con consistencia otros nomes d'usuariu utilizando la sintaxis ^^^user^^^",
+);
+
 /** Kotava (Kotava)
  * @author Wikimistusik
  */

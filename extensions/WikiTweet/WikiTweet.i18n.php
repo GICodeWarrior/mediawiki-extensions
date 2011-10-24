@@ -73,6 +73,52 @@ $messages['qqq'] = array(
 	'wikitweet-from' => '{{Identical|From}}',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'wikitweet-desc' => "Crear un fluxu como'l de Twitter, en MediaWiki",
+	'wikitweet-pleaselogin' => 'Por favor, anicia sesión pa twitear.',
+	'wikitweet-moretweets' => 'Más tweets...',
+	'wikitweet-infoajax' => "Usa la teunoloxía AJAX y s'anueva automáticamente cada 5 segundos ensin tener que recargar la páxina.",
+	'wikitweet-submit' => 'Tweet',
+	'wikitweet-submitandmail' => 'Tweet y corréu electrónicu',
+	'wikitweet-intheroom' => 'Tas na sala',
+	'wikitweet-subscribe' => 'suscribir',
+	'wikitweet-subscribed' => 'suscritu',
+	'wikitweet-unsubscribe' => 'desuscribir',
+	'wikitweet-delete' => 'desaniciar',
+	'wikitweet-inform' => 'pol informador',
+	'wikitweet-private' => 'priváu',
+	'wikitweet-answer' => 'respuesta a',
+	'wikitweet-anonymous' => 'anónimu',
+	'wikitweet-tweets-tagged' => 'Tweets etiquetaos',
+	'wikitweet-back-timeline' => 'Tornar a la llinia temporal',
+	'wikitweet-tweets-from-room' => 'Tweets de la sala',
+	'wikitweet-timeago' => 'hai $1',
+	'wikitweet-inthefuture' => '¡Nel futuru!',
+	'wikitweet-fewsecondsago' => 'hai unos segundos',
+	'wikitweet-status' => 'Estáu:',
+	'wikitweet-status0' => 'Alderique',
+	'wikitweet-status1' => 'Actividá',
+	'wikitweet-status2' => 'Avisu',
+	'wikitweet-status3' => 'Alerta',
+	'wikitweet-resolve' => 'resolver',
+	'wikitweet-concerns' => 'Tas implicáu',
+	'wikitweet-comment' => 'Comentariu',
+	'wikitweet-subscribers' => 'Soscriptores:',
+	'wikitweet-hourly' => 'Cada hora',
+	'wikitweet-perperson' => 'Por persona',
+	'wikitweet-inresponseto' => 'Respondiendo a:',
+	'wikitweet-from' => 'de',
+	'wikitweet-in' => 'en',
+	'wikitweet-directlink' => 'Enllaz direutu:',
+	'wikitweet-mailsent' => 'corréu unviáu',
+	'wikitweet-viaroom' => 'al traviés de la sala',
+	'wikitweet-alertsolved' => 'una de les tos alertes resolviose en',
+	'wikitweet-cannotparse' => 'Nun se pue analizar',
+);
+
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
  */
