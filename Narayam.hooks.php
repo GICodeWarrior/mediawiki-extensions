@@ -48,6 +48,7 @@ class NarayamHooks {
 
 		$vars['wgNarayamAvailableSchemes'] = self::getSchemes(); // Note: scheme names must be keys, not values
 		$vars['wgNarayamAllSchemes'] = $wgNarayamSchemes;
+		$vars['wgNarayamHelpPage'] = wfMsgForContent( 'narayam-help-page' );
 		return true;
 	}
 
