@@ -242,29 +242,27 @@ es.SurfaceView.prototype.setInputContent = function( content ) {
 es.SurfaceView.prototype.showCursor = function( offset ) {
 	if ( typeof offset !== 'undefined' ) {
 		this.cursor.offset = offset;
-		var position = this.documentView.getRenderedPosition( offset );
+		var position = this.documentView.getRenderedPosition( this.cursor.offset );
 		this.cursor.$.css( {
 			'left': position.left,
 			'top': position.top,
 			'height': position.bottom - position.top
 		} ).show();
+		this.$input.css({
+			'top': this.cursor.$.css('top'),
+			'height': this.cursor.$.css('height')
+		});
 	} else {
 		this.cursor.$.show();
 	}
-	// 
-	this.$input.css({
-		'top': this.cursor.$.css('top'),
-		'height': this.cursor.$.css('height')
-	});
-
 	if ( this.cursor.interval ) {
 		clearInterval( this.cursor.interval );
 	}
 	this.cursor.interval = setInterval( function( surface ) {
-		surface.cursor.$.css(
-			'display', ( 'block' ? surface.cursor.$.hide() : surface.cursor.$.show() )
-		);
-	}, 500 );
+		surface.cursor.$.css( 'display', function( index, value ) {
+			return value === 'block' ? 'none' : 'block';
+		} );
+	}, 500, this );
 };
 
 /**
@@ -321,19 +319,20 @@ es.SurfaceView.prototype.moveCursor = function( direction ) {
 		} while ( oldPosition.top === fakePosition.top && offset !== edge );
 
 		this.showCursor( this.documentView.getOffsetFromPosition( fakePosition ) );
-
-		// Auto scroll to cursor
-		var $window = $(window),
-			scrollTop = $window.scrollTop(),
-			windowHeight = $window.height(),
-			inputTop = this.$input.offset().top,
-			inputBottom = inputTop + this.$input.height();
-		if (inputTop < scrollTop) {
-			$window.scrollTop(inputTop);
-		} else if (inputBottom > (scrollTop + windowHeight)) {
-			$window.scrollTop(inputBottom - windowHeight);
-		}
 	}
+
+	// Auto scroll to cursor
+	var $window = $(window),
+		scrollTop = $window.scrollTop(),
+		windowHeight = $window.height(),
+		inputTop = this.$input.offset().top,
+		inputBottom = inputTop + this.$input.height();
+	if (inputTop < scrollTop) {
+		$window.scrollTop(inputTop);
+	} else if (inputBottom > (scrollTop + windowHeight)) {
+		$window.scrollTop(inputBottom - windowHeight);
+	}	
+
 	return;
 };
 
