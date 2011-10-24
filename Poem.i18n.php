@@ -298,6 +298,13 @@ $messages['id'] = array(
 	'poem-desc' => 'Menambahkan tag <code>&lt;poem&gt;</code> tag untuk pemformatan puisi',
 );
 
+/** Iloko (Ilokano)
+ * @author Lam-ang
+ */
+$messages['ilo'] = array(
+	'poem-desc' => 'Ikkan na iti<code>&lt;poem&gt;</code> nga tag para ti pagporma ti daniw',
+);
+
 /** Italian (Italiano)
  * @author BrokenArrow
  */
