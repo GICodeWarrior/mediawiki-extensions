@@ -1692,6 +1692,7 @@ Verifica que le sondage ha essite declarate e salveguardate, e que le character 
 	'qp_error_invalid_poll_id' => 'ID de sondage invalide (id=$1).
 Le ID del sondage pote continer solmente litteras, numeros e le character de spatio.',
 	'qp_error_already_used_poll_id' => 'Le ID del sondage ha ja essite usate in iste pagina (id=$1).',
+	'qp_error_too_long_dependance_value' => 'Le valor del attributo de dependentia (dependance="$2") del sondage (id=$1) es troppo longe pro esser immagazinate in le base de datos.',
 	'qp_error_invalid_dependance_value' => 'Le catena de dependentia del sondage (id=$1) ha un valor invalide del attributo de dependentia (dependance="$2")',
 	'qp_error_missed_dependance_title' => 'Le sondage (id=$1) depende de un altere sondage (id=$3) del pagina [[$2]], ma le titulo [[$2]] non ha essite trovate.
 O remove le attributo de dependentia, o restaura [[$2]].',
