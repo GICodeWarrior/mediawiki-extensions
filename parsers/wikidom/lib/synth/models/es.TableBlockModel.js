@@ -34,7 +34,7 @@ es.TableBlockModel.newFromPlainObject = function( obj ) {
 	return new es.TableBlockModel(
 		// Cells - if given, convert plain row objects to es.TableBlockRowModel objects
 		!$.isArray( obj.children ) ? [] : $.map( obj.children, function( row ) {
-			return !$.isPlainObject( row ) ? null : es.TableBlockRowModel.newFromPlainObject( row )
+			return !$.isPlainObject( row ) ? null : es.TableBlockRowModel.newFromPlainObject( row );
 		} ),
 		// Attributes - if given, make a deep copy of attributes
 		!$.isPlainObject( obj.attributes ) ? {} : $.extend( true, {}, obj.attributes )
@@ -114,7 +114,7 @@ es.TableBlockModel.prototype.annotateContent = function( range, annotation ) {
 };
 
 // Register constructor
-es.BlockModel.constructors['table'] = es.TableBlockModel.newFromPlainObject;
+es.BlockModel.constructors.table = es.TableBlockModel.newFromPlainObject;
 
 /* Inheritance */
 

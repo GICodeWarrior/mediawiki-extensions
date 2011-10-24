@@ -31,8 +31,8 @@ es.Document.Context = function( options ) {
  * @returns {Boolean} True if page exists
  */
 es.Document.Context.prototype.isPage = function( namespace, title ) {
-	return typeof this.options.isPage === 'function'
-		? this.options.isPage( namespace, title ) : false;
+	return typeof this.options.isPage === 'function' ?
+		this.options.isPage( namespace, title ) : false;
 };
 
 /**
@@ -46,8 +46,8 @@ es.Document.Context.prototype.isPage = function( namespace, title ) {
  * @returns {Object} Page DOM (document object)
  */
 es.Document.Context.prototype.getWikiDom = function( namespace, title ) {
-	return typeof this.options.getWikiDom === 'function'
-		? this.options.getWikiDom( namespace, title ) : null;
+	return typeof this.options.getWikiDom === 'function' ?
+		this.options.getWikiDom( namespace, title ) : null;
 };
 
 /**

@@ -14,9 +14,9 @@ $.fn.editSurface = function( options ) {
 		.addClass( 'editSurface-container' )
 		.append( '<div class="editSurface-document"></div>' )
 		.after( '<div class="editSurface-cursor"></div>' )
-		.before( '<div class="editSurface-range"></div>'
-				+ '<div class="editSurface-range"></div>'
-				+ '<div class="editSurface-range"></div>');
+		.before( '<div class="editSurface-range"></div>' +
+				'<div class="editSurface-range"></div>' +
+				'<div class="editSurface-range"></div>');
 	
 	// Shortcuts
 	var $document = $this.find( '.editSurface-document' );
@@ -63,8 +63,8 @@ $.fn.editSurface = function( options ) {
 		},
 		'mouseup': function( e ) {
 			if ( sel.active ) {
-				if ( !sel.from || !sel.to
-						|| ( sel.from.line === sel.to.line && sel.from.char === sel.to.char ) ) {
+				if ( !sel.from || !sel.to ||
+						( sel.from.line === sel.to.line && sel.from.char === sel.to.char ) ) {
 					sel.from = null;
 					sel.to = null;
 					sel.start = null;
@@ -84,9 +84,9 @@ $.fn.editSurface = function( options ) {
 					$target = getNearestLine( sel.start.$target.parent().children(), e.pageY );
 				}
 				sel.end = getCursorPosition( e.pageX, e.pageY, $target );
-				if ( sel.start.line < sel.end.line
-						|| ( sel.start.line === sel.end.line
-								&& sel.start.char < sel.end.char ) ) {
+				if ( sel.start.line < sel.end.line ||
+						( sel.start.line === sel.end.line &&
+								sel.start.char < sel.end.char ) ) {
 					sel.from = sel.start;
 					sel.to = sel.end;
 				} else {
@@ -131,7 +131,7 @@ $.fn.editSurface = function( options ) {
 				text = sel.from.$target.data( 'flow' ).text.substr( sel.from.char );
 				var $sibling = sel.from.$target.next();
 				for ( var i = sel.from.line + 1; i < sel.to.line; i++ ) {
-					text += $sibling.data( 'flow' ).text
+					text += $sibling.data( 'flow' ).text;
 					$sibling = $sibling.next();
 				}
 				text += sel.to.$target.data( 'flow' ).text.substr( 0, sel.to.char );
@@ -203,8 +203,8 @@ $.fn.editSurface = function( options ) {
 				ranges.$first.show().css( {
 					'left': sel.from.x,
 					'top': sel.from.top,
-					'width': ( $container.innerWidth() - sel.from.x )
-							+ $container.offset().left,
+					'width': ( $container.innerWidth() - sel.from.x ) +
+						$container.offset().left,
 					'height': sel.from.height
 				} );
 				if ( sel.from.line < sel.to.line - 1 ) {
@@ -235,10 +235,8 @@ $.fn.editSurface = function( options ) {
 	function renderDocument( doc ) {
 		$document.empty();
 		for ( var i = 0; i < doc.blocks.length; i++ ) {
-			switch ( doc.blocks[i].type ) {
-				case 'paragraph':
-					renderParagraph( doc.blocks[i], $document )
-					break;
+			if ( doc.blocks[i].type === 'paragraph' ) {
+				renderParagraph( doc.blocks[i], $document );
 			}
 		}
 	}
@@ -269,10 +267,14 @@ $.fn.editSurface = function( options ) {
 		// Flip
 		cursor.visible = !cursor.visible;
 		// Hide/show
-		cursor.visible ? cursor.$.hide() : cursor.$.show();
+		if ( cursor.visible ) {
+			cursor.$.hide();
+		} else {
+			cursor.$.show();
+		}
 		// Repeat
-		cursor.timeout = setTimeout( cursor.blink, cursor.speed )
-	}
+		cursor.timeout = setTimeout( cursor.blink, cursor.speed );
+	};
 	cursor.show = function() {
 		// Start visible (will flip when run)
 		cursor.visible = true;

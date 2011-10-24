@@ -5,7 +5,8 @@ var context = new es.Document.Context(),
 	wikitextSerializer = new es.Document.WikitextSerializer( context );
 
 function assertSerializations( tests, domToDom ) {
-	for ( var i = 0; i < tests.length; i++ ) {
+	var i;
+	for ( i = 0; i < tests.length; i++ ) {
 		if ( typeof tests[i].html !== 'undefined' ) {
 			equals(
 				htmlSerializer.serializeDocument( tests[i].dom ),
@@ -14,7 +15,7 @@ function assertSerializations( tests, domToDom ) {
 			);
 		}
 	}
-	for ( var i = 0; i < tests.length; i++ ) {
+	for ( i = 0; i < tests.length; i++ ) {
 		if ( typeof tests[i].wikitext !== 'undefined' ) {
 			equals(
 				wikitextSerializer.serializeDocument( tests[i].dom ),
@@ -25,7 +26,7 @@ function assertSerializations( tests, domToDom ) {
 	}
 	if ( typeof domToDom !== 'undefined' && domToDom === true ) {
 		var doc;
-		for ( var i = 0; i < tests.length; i++ ) {
+		for ( i = 0; i < tests.length; i++ ) {
 			deepEqual(
 				doc = es.Document.newFromWikiDomDocument( tests[i].dom ).getWikiDomDocument(),
 				tests[i].dom,
@@ -142,13 +143,13 @@ test( 'Headings', function() {
 			} ] },
 			'html': '<h1>Heading with a <a href="/wiki/Main_Page">link</a></h1>',
 			'wikitext': '=Heading with a [[Main_Page|link]]='
-		},
+		}
 	] );
 } );
 
 test( 'Paragraphs', function() {
 	assertSerializations( [
-   		{
+		{
 			'subject': 'paragraph with a single line of plain text',
 			'dom': { 'blocks': [ {
 				'type': 'paragraph',
@@ -186,13 +187,13 @@ test( 'Paragraphs', function() {
 			'html': '<p>Line with <strong>bold</strong> and <em>italic</em> text</p>',
 			'wikitext': 'Line with \'\'\'bold\'\'\' and \'\'italic\'\' text'
 		}
-   	], true );
+	], true );
 } );
 
 // Lists
 test( 'Lists', function() {
 	assertSerializations( [
-  		{
+		{
 			'subject': 'numbered list',
 			'dom': { 'blocks': [ {
 				'type': 'list',
@@ -206,7 +207,7 @@ test( 'Lists', function() {
 			'html': '<ol>\n<li>1</li>\n<li>2</li>\n<li>3</li>\n</ol>',
 			'wikitext': '# 1\n# 2\n# 3'
 		},
-  		{
+		{
 			'subject': 'bulleted list',
 			'dom': { 'blocks': [ {
 				'type': 'list',
@@ -220,7 +221,7 @@ test( 'Lists', function() {
 			'html': '<ul>\n<li>1</li>\n<li>2</li>\n<li>3</li>\n</ul>',
 			'wikitext': '* 1\n* 2\n* 3'
 		},
-  		{
+		{
 			'subject': 'mixed-style nested lists (1)',
 			'dom': { 'blocks': [ {
 				'type': 'list',
@@ -242,11 +243,11 @@ test( 'Lists', function() {
 					{ 'line': { 'text': '2' } }
 				]
 			} ] },
-			'html': '<ul>\n<li>1\n<ol>\n<li>1.1</li>\n<li>1.2</li>\n<li>1.3</li>\n</ol>'
-				+ '\n</li>\n<li>2</li>\n</ul>',
+			'html': '<ul>\n<li>1\n<ol>\n<li>1.1</li>\n<li>1.2</li>\n<li>1.3</li>\n</ol>' +
+				'\n</li>\n<li>2</li>\n</ul>',
 			'wikitext': '* 1\n*# 1.1\n*# 1.2\n*# 1.3\n* 2'
 		},
-  		{
+		{
 			'subject': 'mixed-style nested lists (2)',
 			'dom': { 'blocks': [ {
 				'type': 'list',
@@ -285,7 +286,7 @@ test( 'Lists', function() {
 				]
 			} ] }
 		},
-  		{
+		{
 			'subject': 'mixed-style nested lists (3)',
 			'dom': { 'blocks': [ {
 				'type': 'list',
@@ -362,8 +363,8 @@ test( 'Tables', function() {
 			        ]
 				]
 			}] },
-			'html': '<table>\n<tr>\n<th>A</th>\n<th>B</th>\n</tr>\n<tr>\n'
-				+ '<td>1</td>\n<td>2</td>\n</tr>\n</table>',
+			'html': '<table>\n<tr>\n<th>A</th>\n<th>B</th>\n</tr>\n<tr>\n' +
+				'<td>1</td>\n<td>2</td>\n</tr>\n</table>',
 			'wikitext': '{|\n!A\n!B\n|-\n|1\n|2\n|}'
 		},
 		{

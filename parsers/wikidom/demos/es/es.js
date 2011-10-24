@@ -16,10 +16,10 @@ $(document).ready( function() {
 							'type': 'xlink',
 							'data': { 'href': '#' },
 							'range': { 'start': 22, 'end': 29 }
-						},
+						}
 					]
 				},
-				{ 'text': "Word wrap is the additional feature of most text editors, word processors, and web browsers, of breaking lines between and not within words, except when a single word is longer than a line." },
+				{ 'text': "Word wrap is the additional feature of most text editors, word processors, and web browsers, of breaking lines between and not within words, except when a single word is longer than a line." }
 			]
 		},
 		{
@@ -38,7 +38,7 @@ $(document).ready( function() {
 						}
 					]
 				},
-				{ 'text': "A soft return is the break resulting from line wrap or word wrap, whereas a hard return is an intentional break, creating a new paragraph." },
+				{ 'text': "A soft return is the break resulting from line wrap or word wrap, whereas a hard return is an intentional break, creating a new paragraph." }
 			]
 		},
 		{

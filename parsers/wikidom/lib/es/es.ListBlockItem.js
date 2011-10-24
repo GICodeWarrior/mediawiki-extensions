@@ -26,7 +26,7 @@ es.ListBlockItem = function( content, styles ) {
 	this.flow.on( 'render', function() {
 		listBlockItem.emit( 'update' );
 	} );
-}
+};
 
 /* Public Methods */
 

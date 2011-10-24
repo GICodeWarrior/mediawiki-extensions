@@ -63,7 +63,7 @@ es.Document.Serializer.buildXmlTag = function( tag, attributes, value, escape ) 
 		if ( escape ) {
 			value = wiki.util.xml.esc( value );
 		}
-		return '<' + tag + es.Document.Serializer.buildXmlAttributes( attributes, true ) + '>'
-			+ value + '</' + tag + '>';
+		return '<' + tag + es.Document.Serializer.buildXmlAttributes( attributes, true ) + '>' +
+			value + '</' + tag + '>';
 	}
 };

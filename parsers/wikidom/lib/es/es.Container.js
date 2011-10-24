@@ -60,8 +60,7 @@ es.Container.prototype.first = function() {
  * @returns {Object} Last child object
  */
 es.Container.prototype.last = function() {
-	return this._list.length
-		? this._list[this._list.length - 1] : null;
+	return this._list.length ? this._list[this._list.length - 1] : null;
 };
 
 /**

@@ -185,7 +185,9 @@ es.Content.convertWikiDomLine = function( wikidomLine ) {
 		}
 		for ( k = src.range.start; k < src.range.end; k++ ) {
 			// Auto-convert to array
-			typeof data[k] === 'string' && ( data[k] = [data[k]] );
+			if ( typeof data[k] === 'string' ) {
+				data[k] = [data[k]];
+			}
 			// Append 
 			data[k].push( dst );
 		}
@@ -209,23 +211,22 @@ es.Content.convertWikiDomLine = function( wikidomLine ) {
 es.Content.renderAnnotation = function( bias, annotation, stack ) {
 	var renderers = es.Content.annotationRenderers,
 		type = annotation.type,
-		out = '';
+		out = '',
+		i;
 	if ( type in renderers ) {
 		if ( bias === 'open' ) {
 			// Add annotation to the top of the stack
 			stack.push( annotation );
 			// Open annotation
-			out += typeof renderers[type]['open'] === 'function'
-				? renderers[type]['open']( annotation.data )
-				: renderers[type]['open'];
+			out += typeof renderers[type].open === 'function' ?
+				renderers[type].open( annotation.data ) : renderers[type].open;
 		} else {
 			if ( stack[stack.length - 1] === annotation ) {
 				// Remove annotation from top of the stack
 				stack.pop();
 				// Close annotation
-				out += typeof renderers[type]['close'] === 'function'
-					? renderers[type]['close']( annotation.data )
-					: renderers[type]['close'];
+				out += typeof renderers[type].close === 'function' ?
+					renderers[type].close( annotation.data ) : renderers[type].close;
 			} else {
 				// Find the annotation in the stack
 				var depth = stack.indexOf( annotation );
@@ -233,20 +234,20 @@ es.Content.renderAnnotation = function( bias, annotation, stack ) {
 					throw 'Invalid stack error. An element is missing from the stack.';
 				}
 				// Close each already opened annotation
-				for ( var i = stack.length - 1; i >= depth + 1; i-- ) {
-					out += typeof renderers[stack[i].type]['close'] === 'function'
-						? renderers[stack[i].type]['close']( stack[i].data )
-						: renderers[stack[i].type]['close'];
+				for ( i = stack.length - 1; i >= depth + 1; i-- ) {
+					out += typeof renderers[stack[i].type].close === 'function' ?
+						renderers[stack[i].type].close( stack[i].data ) :
+							renderers[stack[i].type].close;
 				}
 				// Close the buried annotation
-				out += typeof renderers[type]['close'] === 'function'
-					? renderers[type]['close']( annotation.data )
-					: renderers[type]['close'];
+				out += typeof renderers[type].close === 'function' ?
+					renderers[type].close( annotation.data ) :
+						renderers[type].close;
 				// Re-open each previously opened annotation
-				for ( var i = depth + 1; i < stack.length; i++ ) {
-					out += typeof renderers[stack[i].type]['open'] === 'function'
-						? renderers[stack[i].type]['open']( stack[i].data )
-						: renderers[stack[i].type]['open'];
+				for ( i = depth + 1; i < stack.length; i++ ) {
+					out += typeof renderers[stack[i].type].open === 'function' ?
+						renderers[stack[i].type].open( stack[i].data ) :
+							renderers[stack[i].type].open;
 				}
 				// Remove the annotation from the middle of the stack
 				stack.splice( depth, 1 );
@@ -532,6 +533,7 @@ es.Content.prototype.annotate = function( method, annotation, range ) {
 	} else {
 		range.normalize();
 	}
+	var i;
 	/*
 	 * Because content data is an array of either strings containing a single character each or
 	 * references to arrays containing a single character string followed by a series of references
@@ -542,7 +544,7 @@ es.Content.prototype.annotate = function( method, annotation, range ) {
 	 * expensive to do on all content on every copy, so we only do it when we are going to modify
 	 * the annotation information, and on as few annotated characters as possible.
 	 */
-	for ( var i = range.start; i < range.end; i++ ) {
+	for ( i = range.start; i < range.end; i++ ) {
 		if ( typeof this.data[i] !== 'string' ) {
 			this.data[i] = this.data[i].slice( 0 );
 		}
@@ -563,7 +565,7 @@ es.Content.prototype.annotate = function( method, annotation, range ) {
 	}
 	if ( method === 'add' ) {
 		var duplicate;
-		for ( var i = range.start; i < range.end; i++ ) {
+		for ( i = range.start; i < range.end; i++ ) {
 			duplicate = -1;
 			if ( typeof this.data[i] === 'string' ) {
 				// Never annotate new lines
@@ -585,7 +587,7 @@ es.Content.prototype.annotate = function( method, annotation, range ) {
 			}
 		}
 	} else if ( method === 'remove' ) {
-		for ( var i = range.start; i < range.end; i++ ) {
+		for ( i = range.start; i < range.end; i++ ) {
 			if ( typeof this.data[i] !== 'string' ) {
 				if ( annotation.type === 'all' ) {
 					// Remove all annotations by converting the annotated character to a plain
@@ -659,8 +661,8 @@ es.Content.prototype.render = function( range ) {
 			}
 		}
 		
-		out += right[0] in es.Content.htmlCharacters
-			? es.Content.htmlCharacters[right[0]] : right[0];
+		out += right[0] in es.Content.htmlCharacters ?
+			es.Content.htmlCharacters[right[0]] : right[0];
 		left = right;		
 	}
 	// close all remaining tags at the end of the content
@@ -756,7 +758,7 @@ es.Content.prototype.getWikiDomLines = function() {
 
 	for ( i = 0; i < this.data.length; i++ ) {
 		
-		if ( line == null ) {
+		if ( line === null ) {
 			line = { text : '' };
 		}
 		
@@ -799,7 +801,7 @@ es.Content.prototype.getWikiDomLines = function() {
 		left = right;		
 	}
 
-	if ( line != null ) {
+	if ( line !== null ) {
 		this.handleAnnotation( 'close', line, i - offset );
 		lines.push( line );
 	}

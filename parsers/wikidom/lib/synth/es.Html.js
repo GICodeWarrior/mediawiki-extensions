@@ -33,8 +33,8 @@ es.Html = {
 			if ( escape ) {
 				value = wiki.util.xml.esc( value );
 			}
-			return '<' + name + es.Html.makeAttributeList( attributes, true ) + '>'
-				+ value + '</' + name + '>';
+			return '<' + name + es.Html.makeAttributeList( attributes, true ) + '>' +
+				value + '</' + name + '>';
 		}
 	}
 };

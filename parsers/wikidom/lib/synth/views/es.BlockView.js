@@ -71,7 +71,7 @@ es.BlockView.prototype.getRenderedPosition = function( offset ) {
  */
 es.BlockView.prototype.getHtml = function( options ) {
 	throw 'BlockView.getHtml not implemented in this subclass.';
-}
+};
 
 /* Inheritance */
 

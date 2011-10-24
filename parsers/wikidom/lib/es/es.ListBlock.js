@@ -173,7 +173,7 @@ es.ListBlock.prototype.getLocationFromOffset = function( offset ) {
 			return {
 				'item' : this.list.items[i],
 				'offset' : offset - globalOffset
-			}
+			};
 		}
 		globalOffset += itemLength + 1;
 	}
@@ -366,11 +366,13 @@ es.ListBlock.prototype.getText = function( range, render ) {
 };
 
 es.ListBlock.prototype.getWikiDom = function() {
-	var items = this.list.items;
-	var stack = [];
-	var lastStyle = null;
+	var items = this.list.items,
+		stack = [],
+		lastStyle = null,
+		i,
+		j;
 
-	for ( var i = 0; i < items.length; i++ ) {
+	for ( i = 0; i < items.length; i++ ) {
 		var item = items[i];
 		var itemLevel = item.getLevel();
 
@@ -385,7 +387,7 @@ es.ListBlock.prototype.getWikiDom = function() {
 
 		// if the current element level is higher than the previous one
 		if ( itemLevel + 1 > stack.length ) {
-			for ( var j = stack.length; j < itemLevel + 1; j++ ) {
+			for ( j = stack.length; j < itemLevel + 1; j++ ) {
 				stack.push( {
 					'style' : item.getStyle(j),
 					'items' : []
@@ -395,7 +397,7 @@ es.ListBlock.prototype.getWikiDom = function() {
 
 		// if the current element level is lower then the previous one
 		if ( itemLevel + 1 < stack.length ) {
-			for ( var j = stack.length; j > itemLevel + 1; j-- ) {
+			for ( j = stack.length; j > itemLevel + 1; j-- ) {
 				stack = es.ListBlock.wikiDomPushPop( stack );
 			}
 		}
@@ -407,7 +409,7 @@ es.ListBlock.prototype.getWikiDom = function() {
 		}
 	}
 
-	for ( var i = stack.length; i > 1; i-- ) {
+	for ( i = stack.length; i > 1; i-- ) {
 		stack = es.ListBlock.wikiDomPushPop( stack );
 	}
 

@@ -23,11 +23,11 @@ es.Document.JsonSerializer.typeOf = function( value ) {
 			return 'null';
 		}
 		switch ( value.constructor ) {
-			case ( new Array ).constructor:
+			case [].constructor:
 				return 'array';
-			case ( new Date ).constructor:
+			case ( new Date() ).constructor:
 				return 'date';
-			case ( new RegExp ).constructor:
+			case ( new RegExp() ).constructor:
 				return 'regex';
 			default:
 				return 'object';
@@ -43,7 +43,8 @@ es.Document.JsonSerializer.prototype.encode = function( data, indention ) {
 	var type = es.Document.JsonSerializer.typeOf( data );
 	
 	// Open object/array
-	var json = '';
+	var json = '',
+		key;
 	if ( type === 'array' ) {
 		if (data.length === 0) {
 			// Empty array
@@ -52,7 +53,7 @@ es.Document.JsonSerializer.prototype.encode = function( data, indention ) {
 		json += '[';
 	} else {
 		var empty = true;
-		for ( var i in data ) {
+		for ( key in data ) {
 			if ( data.hasOwnProperty( i ) ) {
 				empty = false;
 				break;
@@ -66,29 +67,28 @@ es.Document.JsonSerializer.prototype.encode = function( data, indention ) {
 	
 	// Iterate over items
 	var comma = false;
-	for ( var i in data ) {
-		if ( data.hasOwnProperty( i ) ) {
-			json += ( comma ? ',' : '' ) + '\n' + indention + this.options.indentWith
-				+ ( type === 'array' ? '' : '"' + i + '"' + ': ' );
-			switch ( es.Document.JsonSerializer.typeOf( data[i] ) ) {
+	for ( key in data ) {
+		if ( data.hasOwnProperty( key ) ) {
+			json += ( comma ? ',' : '' ) + '\n' + indention + this.options.indentWith +
+				( type === 'array' ? '' : '"' + key + '"' + ': ' );
+			switch ( es.Document.JsonSerializer.typeOf( data[key] ) ) {
 				case 'array':
 				case 'object':
 					json += this.encode(
-						data[i], indention + this.options.indentWith
+						data[key], indention + this.options.indentWith
 					);
 					break;
 				case 'boolean':
 				case 'number':
-					json += data[i].toString();
+					json += data[key].toString();
 					break;
 				case 'null':
 					json += 'null';
 					break;
 				case 'string':
-					json += '"' + data[i]
+					json += '"' + data[key]
 						.replace(/[\n]/g, '\\n')
-						.replace(/[\t]/g, '\\t')
-						+ '"';
+						.replace(/[\t]/g, '\\t') + '"';
 					break;
 				// Skip other types
 			}
@@ -111,7 +111,7 @@ es.Document.JsonSerializer.prototype.serializeDocument = function( doc ) {
 /* Registration */
 
 es.Document.serializers.json = function( doc, context, options ) {
-	var serializer = new es.Document.JsonSerializer( context, options )
+	var serializer = new es.Document.JsonSerializer( context, options );
 	return serializer.serializeDocument( doc );
 };
 

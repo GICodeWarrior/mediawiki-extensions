@@ -118,12 +118,12 @@ es.Surface = function( $container, doc ) {
 	// First render
 	this.$.append( this.doc.$ );
 	this.doc.renderBlocks();
-}
+};
 
 es.Surface.prototype.getLocationFromEvent = function( e ) {
 	var $target = $( e.target ),
-		$block = $target.is( '.editSurface-block' )
-			? $target : $target.closest( '.editSurface-block' );
+		$block = $target.is( '.editSurface-block' ) ?
+			$target : $target.closest( '.editSurface-block' );
 	// Not a block or child of a block? Find the nearest block...
 	if( !$block.length ) {
 		var $blocks = this.$.find( '> .editSurface-document .editSurface-block' );
@@ -143,10 +143,11 @@ es.Surface.prototype.getLocationFromEvent = function( e ) {
 };
 
 es.Surface.prototype.onKeyDown = function( e ) {
+	var range;
 	switch ( e.keyCode ) {
 		case 36: // Home
 			this.initialHorizontalCursorPosition = null;
-			var range = this.location.block.getLineBoundaries( this.location.offset );
+			range = this.location.block.getLineBoundaries( this.location.offset );
 			this.location = new es.Location( this.location.block, range.start );
 			this.cursor.show(
 				this.location.block.getPosition( this.location.offset ),
@@ -161,7 +162,7 @@ es.Surface.prototype.onKeyDown = function( e ) {
 			break;
 		case 35: // End
 			this.initialHorizontalCursorPosition = null;
-			var range = this.location.block.getLineBoundaries( this.location.offset );
+			range = this.location.block.getLineBoundaries( this.location.offset );
 			this.location = new es.Location( this.location.block, range.end );
 			this.cursor.show(
 				this.location.block.getPosition( this.location.offset ),
@@ -317,14 +318,15 @@ es.Surface.prototype.onKeyUp = function( e ) {
 };
 
 es.Surface.prototype.handleBackspace = function() {
+	var deleteSelection;
 	if ( this.selection.from && this.selection.to ) {
-		var deleteSelection = this.selection;
+		deleteSelection = this.selection;
 		deleteSelection.normalize();
 		this.location = this.selection.start;
 		this.selection = new es.Selection();
 		this.deleteContent( deleteSelection );
 	} else if ( this.location.offset > 0 ) {
-		var deleteSelection = new es.Selection(
+		deleteSelection = new es.Selection(
 			new es.Location( this.location.block, this.location.offset - 1 ), this.location
 		);
 		deleteSelection.normalize();
@@ -335,14 +337,15 @@ es.Surface.prototype.handleBackspace = function() {
 };
 
 es.Surface.prototype.handleDelete = function() {
+	var deleteSelection;
 	if ( this.selection.from && this.selection.to ) {
-		var deleteSelection = this.selection;
+		deleteSelection = this.selection;
 		deleteSelection.normalize();
 		this.location = this.selection.start;
 		this.selection = new es.Selection();
 		this.deleteContent( deleteSelection );
 	} else if ( this.location.offset < this.location.block.getLength() ) {
-		var deleteSelection = new es.Selection(
+		deleteSelection = new es.Selection(
 			new es.Location( this.location.block, this.location.offset + 1 ), this.location
 		);
 		deleteSelection.normalize();
@@ -371,6 +374,7 @@ es.Surface.prototype.onMouseDown = function( e ) {
 			this.mouse.clickPosition = clickPosition;
 		}
 		this.location = this.getLocationFromEvent( e );
+		var boundaries;
 		switch ( this.mouse.clicks ) {
 			case 1:
 				if ( this.keyboard.keys.shift ) {
@@ -388,7 +392,7 @@ es.Surface.prototype.onMouseDown = function( e ) {
 				break;
 			case 2:
 				// Select word offset is within
-				var boundaries = this.location.block.getWordBoundaries( this.location.offset );
+				boundaries = this.location.block.getWordBoundaries( this.location.offset );
 				this.selection = new es.Selection(
 					new es.Location( this.location.block, boundaries.start ),
 					new es.Location( this.location.block, boundaries.end )
@@ -397,7 +401,7 @@ es.Surface.prototype.onMouseDown = function( e ) {
 				break;
 			case 3:
 				// Select section within block offset is within
-				var boundaries = this.location.block.getSectionBoundaries( this.location.offset );
+				boundaries = this.location.block.getSectionBoundaries( this.location.offset );
 				this.selection = new es.Selection(
 					new es.Location( this.location.block, boundaries.start ),
 					new es.Location( this.location.block, boundaries.end )
@@ -542,8 +546,8 @@ es.Surface.prototype.drawSelection = function() {
 					'top': fromBlockOffset.top + from.position.bottom,
 					'left': blockLeft,
 					'width': blockWidth,
-					'height': ( toBlockOffset.top + to.position.top )
-						- ( fromBlockOffset.top + from.position.bottom )
+					'height': ( toBlockOffset.top + to.position.top ) -
+						( fromBlockOffset.top + from.position.bottom )
 				} )
 				.show();
 			// TODO: Get text from multiple-block selection

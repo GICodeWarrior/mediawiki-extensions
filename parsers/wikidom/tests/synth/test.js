@@ -8,7 +8,7 @@ test( 'es.ModelContainer', function() {
 	
 	var updates = 0;
 	container1.on( 'update', function( item ) {
-		updates++
+		updates++;
 	} );
 	
 	// Creating
@@ -39,7 +39,7 @@ test( 'es.ModelContainer', function() {
 	
 	// Accessing
 	
-	deepEqual( container1.all(), [item1, item2, item3], 'es.ModelContainer.items returns all items' )
+	deepEqual( container1.all(), [item1, item2, item3], 'es.ModelContainer.items returns all items' );
 	
 	strictEqual( container1.get( 0 ), item1, 'es.ModelContainer.get returns correct item at index' );
 	strictEqual( container1.get( 1 ), item2, 'es.ModelContainer.get returns correct item at index' );
@@ -74,7 +74,7 @@ test( 'es.ModelContainer', function() {
 			return false;
 		}
 	} );
-	equal( count, 2, 'es.ModelContainer.each stops iterating when a callback returns false' )
+	equal( count, 2, 'es.ModelContainer.each stops iterating when a callback returns false' );
 	
 	// Updating
 	
@@ -208,7 +208,8 @@ test( 'es.AggregateArray', function() {
 		c = new ContentStub( 'c', 2 ),
 		d = new ContentStub( 'd', 3 ),
 		e = new ContentStub( 'e', 4 ),
-		contentSeries1 = new es.AggregateArray( [a, b, c, d, e] );
+		contentSeries1 = new es.AggregateArray( [a, b, c, d, e] ),
+		i;
 		
 	var lengthOfItemsTests = [
 		{ 'input': [], 'output': 0 },
@@ -219,7 +220,7 @@ test( 'es.AggregateArray', function() {
 		{ 'input': [a, b, c, d, e], 'output': 14 }
 	];
 
-	for ( var i = 0; i < lengthOfItemsTests.length; i++ ) {
+	for ( i = 0; i < lengthOfItemsTests.length; i++ ) {
 		strictEqual(
 			( new es.AggregateArray( lengthOfItemsTests[i].input ) ).getLengthOfItems(),
 			lengthOfItemsTests[i].output,
@@ -247,7 +248,7 @@ test( 'es.AggregateArray', function() {
 		{ 'input': 15, 'output': null }
 	];
 	
-	for ( var i = 0; i < lookupTests.length; i++ ) {
+	for ( i = 0; i < lookupTests.length; i++ ) {
 		strictEqual(
 			contentSeries1.lookup( lookupTests[i].input ),
 			lookupTests[i].output,
@@ -264,7 +265,7 @@ test( 'es.AggregateArray', function() {
 		{ 'input': null, 'output': null }
 	];
 	
-	for ( var i = 0; i < rangeOfTests.length; i++ ) {
+	for ( i = 0; i < rangeOfTests.length; i++ ) {
 		deepEqual(
 			contentSeries1.rangeOf( rangeOfTests[i].input ),
 			rangeOfTests[i].output,
@@ -279,15 +280,15 @@ test( 'es.AggregateArray', function() {
 	var selectTests = [
 		{
 			'input': [0, 5],
-			'output': [{ 'item': f, 'from': 0, 'to': 5 }],
+			'output': [{ 'item': f, 'from': 0, 'to': 5 }]
 		},
 		{
 			'input': [11, 16],
-			'output': [{ 'item': g, 'from': 0, 'to': 5 }],
+			'output': [{ 'item': g, 'from': 0, 'to': 5 }]
 		},
 		{
 			'input': [22, 27],
-			'output': [{ 'item': h, 'from': 0, 'to': 5 }],
+			'output': [{ 'item': h, 'from': 0, 'to': 5 }]
 		},
 		{
 			'input': [0, 33],
@@ -307,7 +308,7 @@ test( 'es.AggregateArray', function() {
 		},
 		{
 			'input': [5, 9],
-			'output': [{ 'item': f, 'from': 5, 'to': 9 }],
+			'output': [{ 'item': f, 'from': 5, 'to': 9 }]
 		},
 		{
 			'input': [5, 10],
@@ -343,7 +344,7 @@ test( 'es.AggregateArray', function() {
 		}
 	];
 	
-	for ( var i = 0; i < selectTests.length; i++ ) {
+	for ( i = 0; i < selectTests.length; i++ ) {
 		deepEqual(
 			contentSeries2.select.apply( contentSeries2, selectTests[i].input ),
 			selectTests[i].output,

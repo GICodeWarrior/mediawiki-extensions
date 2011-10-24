@@ -118,7 +118,7 @@ $(document).ready( function() {
 						'type': 'xlink',
 						'data': { 'href': '#' },
 						'range': { 'start': 22, 'end': 29 }
-					},
+					}
 				]
 			}
 		},

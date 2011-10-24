@@ -68,8 +68,8 @@ es.AggregateArray.prototype.select = function( start, end, off ) {
 	var	result = { 'on': [], 'off': [] },
 		left = 0,
 		right,
-		items = [],
-		off = off || false;
+		items = [];
+	off = off || false;
 
 	if ( typeof start.from === 'number' && typeof start.to === 'number') {
 		start.normalize();

@@ -154,38 +154,36 @@ es.ContentView.renderAnnotation = function( bias, annotation, stack ) {
 			// Add annotation to the top of the stack
 			stack.push( annotation );
 			// Open annotation
-			out += typeof renderers[type]['open'] === 'function'
-				? renderers[type]['open']( annotation.data )
-				: renderers[type]['open'];
+			out += typeof renderers[type].open === 'function' ?
+				renderers[type].open( annotation.data ) : renderers[type].open;
 		} else {
 			if ( stack[stack.length - 1] === annotation ) {
 				// Remove annotation from top of the stack
 				stack.pop();
 				// Close annotation
-				out += typeof renderers[type]['close'] === 'function'
-					? renderers[type]['close']( annotation.data )
-					: renderers[type]['close'];
+				out += typeof renderers[type].close === 'function' ?
+					renderers[type].close( annotation.data ) : renderers[type].close;
 			} else {
 				// Find the annotation in the stack
-				var depth = stack.indexOf( annotation );
+				var depth = stack.indexOf( annotation ),
+					i;
 				if ( depth === -1 ) {
 					throw 'Invalid stack error. An element is missing from the stack.';
 				}
 				// Close each already opened annotation
-				for ( var i = stack.length - 1; i >= depth + 1; i-- ) {
-					out += typeof renderers[stack[i].type]['close'] === 'function'
-						? renderers[stack[i].type]['close']( stack[i].data )
-						: renderers[stack[i].type]['close'];
+				for ( i = stack.length - 1; i >= depth + 1; i-- ) {
+					out += typeof renderers[stack[i].type].close === 'function' ?
+						renderers[stack[i].type].close( stack[i].data ) :
+							renderers[stack[i].type].close;
 				}
 				// Close the buried annotation
-				out += typeof renderers[type]['close'] === 'function'
-					? renderers[type]['close']( annotation.data )
-					: renderers[type]['close'];
+				out += typeof renderers[type].close === 'function' ?
+					renderers[type].close( annotation.data ) : renderers[type].close;
 				// Re-open each previously opened annotation
-				for ( var i = depth + 1; i < stack.length; i++ ) {
-					out += typeof renderers[stack[i].type]['open'] === 'function'
-						? renderers[stack[i].type]['open']( stack[i].data )
-						: renderers[stack[i].type]['open'];
+				for ( i = depth + 1; i < stack.length; i++ ) {
+					out += typeof renderers[stack[i].type].open === 'function' ?
+						renderers[stack[i].type].open( stack[i].data ) :
+							renderers[stack[i].type].open;
 				}
 				// Remove the annotation from the middle of the stack
 				stack.splice( depth, 1 );
@@ -445,7 +443,7 @@ es.ContentView.prototype.scanBoundaries = function() {
 	// Iterate over each word+boundary sequence, capturing offsets and encoding text as we go
 	var match,
 		end;
-	while ( match = this.boundaryTest.exec( text ) ) {
+	while ( ( match = this.boundaryTest.exec( text ) ) ) {
 		// Include the boundary character in the range
 		end = match.index + 1;
 		// Store the boundary offset
@@ -797,29 +795,31 @@ es.ContentView.prototype.getHtml = function( range, options ) {
 		right,
 		leftPlain,
 		rightPlain,
-		stack = [];
-	for ( var i = 0; i < data.length; i++ ) {
+		stack = [],
+		i,
+		j;
+	for ( i = 0; i < data.length; i++ ) {
 		right = data[i];
 		leftPlain = typeof left === 'string';
 		rightPlain = typeof right === 'string';
 		if ( !leftPlain && rightPlain ) {
 			// [formatted][plain] pair, close any annotations for left
-			for ( var j = 1; j < left.length; j++ ) {
+			for ( j = 1; j < left.length; j++ ) {
 				out += render( 'close', left[j], stack );
 			}
 		} else if ( leftPlain && !rightPlain ) {
 			// [plain][formatted] pair, open any annotations for right
-			for ( var j = 1; j < right.length; j++ ) {
+			for ( j = 1; j < right.length; j++ ) {
 				out += render( 'open', right[j], stack );
 			}
 		} else if ( !leftPlain && !rightPlain ) {
 			// [formatted][formatted] pair, open/close any differences
-			for ( var j = 1; j < left.length; j++ ) {
+			for ( j = 1; j < left.length; j++ ) {
 				if ( right.indexOf( left[j] ) === -1 ) {
 					out += render( 'close', left[j], stack );
 				}
 			}
-			for ( var j = 1; j < right.length; j++ ) {
+			for ( j = 1; j < right.length; j++ ) {
 				if ( left.indexOf( right[j] ) === -1 ) {
 					out += render( 'open', right[j], stack );
 				}
@@ -830,7 +830,7 @@ es.ContentView.prototype.getHtml = function( range, options ) {
 	}
 	// Close all remaining tags at the end of the content
 	if ( !rightPlain && right ) {
-		for ( var j = 1; j < right.length; j++ ) {
+		for ( j = 1; j < right.length; j++ ) {
 			out += render( 'close', right[j], stack );
 		}
 	}

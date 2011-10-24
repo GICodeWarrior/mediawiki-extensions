@@ -38,10 +38,11 @@ es.BlockTransaction = function() {
  */
 es.BlockTransaction.operations = ( function() {
 	function annotate( con, add, rem ) {
-		for ( var i = 0; i < add.length; i++ ) {
+		var i;
+		for ( i = 0; i < add.length; i++ ) {
 			con.annotate( 'add', add[i] );
 		}
-		for ( var i = 0; i < rem.length; i++ ) {
+		for ( i = 0; i < rem.length; i++ ) {
 			con.annotate( 'remove', rem[i] );
 		}
 	}

@@ -47,11 +47,11 @@ es.HorizontalBlockModel.prototype.getContentLength = function() {
  * @returns obj {Object}
  */
 es.HorizontalRuleBlockModel.prototype.getPlainObject = function() {
-	return { 'type': 'horizontal-rule' };
+	return { 'type': 'horizontalRule' };
 };
 
 // Register constructor
-es.BlockModel.constructors['horizontal-rule'] = es.HorizontalRuleBlockModel;
+es.BlockModel.constructors.horizontalRule = es.HorizontalRuleBlockModel;
 
 /* Inheritance */
 

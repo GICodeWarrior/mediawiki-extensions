@@ -46,7 +46,7 @@ es.ModelList.prototype.all = function() {
  * @returns {Integer} Number of items in container
  */
 es.ModelList.prototype.getLength = function() {
-	return this.items.length
+	return this.items.length;
 };
 
 /**
@@ -76,8 +76,7 @@ es.ModelList.prototype.first = function() {
  * @returns {Object} Last item
  */
 es.ModelList.prototype.last = function() {
-	return this.items.length
-		? this.items[this.items.length - 1] : null;
+	return this.items.length ? this.items[this.items.length - 1] : null;
 };
 
 /**

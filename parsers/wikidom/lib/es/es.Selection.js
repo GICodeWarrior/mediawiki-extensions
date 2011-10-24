@@ -15,7 +15,7 @@ es.Selection = function( from, to ) {
 	this.to = to;
 	this.start = from;
 	this.end = to;
-}
+};
 
 /* Methods */
 

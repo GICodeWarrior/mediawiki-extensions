@@ -103,7 +103,7 @@ es.ParagraphBlockModel.prototype.annotateContent = function( range, annotation )
 };
 
 // Register constructor
-es.BlockModel.constructors['paragraph'] = es.ParagraphBlockModel.newFromPlainObject;
+es.BlockModel.constructors.paragraph = es.ParagraphBlockModel.newFromPlainObject;
 
 /* Inheritance */
 

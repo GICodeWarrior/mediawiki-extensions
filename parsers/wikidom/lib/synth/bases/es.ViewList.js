@@ -40,7 +40,7 @@ es.ViewList = function( model, $element ) {
 			itemView = itemModel.createView();
 		}
 		return itemView;
-	}
+	};
 	
 	this.model.on( 'prepend', function( itemModel ) {
 		var itemView = list.recycleItemView( itemModel, true );

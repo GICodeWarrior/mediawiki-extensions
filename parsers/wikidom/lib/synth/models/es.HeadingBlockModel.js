@@ -93,7 +93,7 @@ es.HeadingBlockModel.prototype.annotateContent = function( range, annotation ) {
 };
 
 // Register constructor
-es.BlockModel.constructors['heading'] = es.HeadingBlockModel.newFromPlainObject;
+es.BlockModel.constructors.heading = es.HeadingBlockModel.newFromPlainObject;
 
 /* Inheritance */
 

@@ -109,7 +109,7 @@ es.Document.HtmlSerializer.prototype.serializeTable = function( table ) {
 es.Document.HtmlSerializer.prototype.serializeTransclusion = function( transclusion ) {
 	var title = [];
 	if ( transclusion.namespace !== 'Main' ) {
-		title.push( transclusion.namespace )
+		title.push( transclusion.namespace );
 	}
 	title.push( transclusion.title );
 	title = title.join( ':' );
@@ -129,7 +129,7 @@ es.Document.HtmlSerializer.prototype.serializeItem = function( item ) {
 		for ( var l = 0, lMax = item.lists.length; l < lMax; l++ ) {
 			out.push( this.serializeList( item.lists[l] ) );
 		}
-		out.push( es.Document.Serializer.buildXmlClosingTag( 'li' ) )
+		out.push( es.Document.Serializer.buildXmlClosingTag( 'li' ) );
 		return out.join( '\n' );
 	} else {
 		return es.Document.Serializer.buildXmlTag( 'li', {}, this.serializeLine( item.line ) );
@@ -137,15 +137,15 @@ es.Document.HtmlSerializer.prototype.serializeItem = function( item ) {
 };
 
 es.Document.HtmlSerializer.prototype.serializeLine = function( line ) {
+	var as = new es.AnnotationSerializer();
+	function addXml( range, tag, attributes ) {
+		as.add(
+			range,
+			es.Document.Serializer.buildXmlOpeningTag( tag, attributes ),
+			es.Document.Serializer.buildXmlClosingTag( tag )
+		);
+	}
 	if ( 'annotations' in line && line.annotations.length ) {
-		var as = new es.AnnotationSerializer();
-		function addXml( range, tag, attributes ) {
-			as.add(
-				range,
-				es.Document.Serializer.buildXmlOpeningTag( tag, attributes ),
-				es.Document.Serializer.buildXmlClosingTag( tag )
-			);
-		};
 		for ( var a = 0, aMax = line.annotations.length; a < aMax; a++ ) {
 			var an = line.annotations[a];
 			switch ( an.type ) {
@@ -195,7 +195,7 @@ es.Document.HtmlSerializer.prototype.serializeLine = function( line ) {
 /* Registration */
 
 es.Document.serializers.html = function( doc, context, options ) {
-	var serializer = new es.Document.HtmlSerializer( context, options )
+	var serializer = new es.Document.HtmlSerializer( context, options );
 	return serializer.serializeDocument( doc );
 };
 

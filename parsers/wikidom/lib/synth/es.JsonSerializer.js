@@ -22,11 +22,11 @@ es.JsonSerializer.typeOf = function( value ) {
 			return 'null';
 		}
 		switch ( value.constructor ) {
-			case ( new Array ).constructor:
+			case [].constructor:
 				return 'array';
-			case ( new Date ).constructor:
+			case ( new Date() ).constructor:
 				return 'date';
-			case ( new RegExp ).constructor:
+			case ( new RegExp() ).constructor:
 				return 'regex';
 			default:
 				return 'object';
@@ -39,7 +39,8 @@ es.JsonSerializer.prototype.encode = function( data, indention ) {
 	if ( indention === undefined ) {
 		indention = '';
 	}
-	var type = es.JsonSerializer.typeOf( data );
+	var type = es.JsonSerializer.typeOf( data ),
+		key;
 	
 	// Open object/array
 	var json = '';
@@ -51,8 +52,8 @@ es.JsonSerializer.prototype.encode = function( data, indention ) {
 		json += '[';
 	} else {
 		var empty = true;
-		for ( var i in data ) {
-			if ( data.hasOwnProperty( i ) ) {
+		for ( key in data ) {
+			if ( data.hasOwnProperty( key ) ) {
 				empty = false;
 				break;
 			}
@@ -65,27 +66,26 @@ es.JsonSerializer.prototype.encode = function( data, indention ) {
 	
 	// Iterate over items
 	var comma = false;
-	for ( var i in data ) {
-		if ( data.hasOwnProperty( i ) ) {
-			json += ( comma ? ',' : '' ) + '\n' + indention + this.options.indentWith
-				+ ( type === 'array' ? '' : '"' + i + '"' + ': ' );
-			switch ( es.JsonSerializer.typeOf( data[i] ) ) {
+	for ( key in data ) {
+		if ( data.hasOwnProperty( key ) ) {
+			json += ( comma ? ',' : '' ) + '\n' + indention + this.options.indentWith +
+				( type === 'array' ? '' : '"' + key + '"' + ': ' );
+			switch ( es.JsonSerializer.typeOf( data[key] ) ) {
 				case 'array':
 				case 'object':
-					json += this.encode( data[i], indention + this.options.indentWith );
+					json += this.encode( data[key], indention + this.options.indentWith );
 					break;
 				case 'boolean':
 				case 'number':
-					json += data[i].toString();
+					json += data[key].toString();
 					break;
 				case 'null':
 					json += 'null';
 					break;
 				case 'string':
-					json += '"' + data[i]
+					json += '"' + data[key]
 						.replace(/[\n]/g, '\\n')
-						.replace(/[\t]/g, '\\t')
-						+ '"';
+						.replace(/[\t]/g, '\\t') + '"';
 					break;
 				// Skip other types
 			}

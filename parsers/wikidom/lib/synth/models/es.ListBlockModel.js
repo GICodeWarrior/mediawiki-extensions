@@ -143,7 +143,7 @@ es.ListBlockModel.prototype.annotateContent = function( range, annotation ) {
 };
 
 // Register constructor
-es.BlockModel.constructors['list'] = es.ListBlockModel.newFromPlainObject
+es.BlockModel.constructors.list = es.ListBlockModel.newFromPlainObject;
 
 /* Inheritance */
 

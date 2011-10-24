@@ -38,9 +38,12 @@ es.Cursor.prototype.show = function( position, offset ) {
 		clearInterval( this.blinkInterval );
 	}
 	this.blinkInterval = setInterval( function( cursor ) {
-		cursor.$.css( 'display' ) == 'block'
-			? cursor.$.hide() : cursor.$.show();
-	}, 500, this );
+		if ( cursor.$.css( 'display' ) === 'block' ) {
+			cursor.$.hide();
+		} else {
+			cursor.$.show();
+		}
+	}, 500 );
 };
 
 /**

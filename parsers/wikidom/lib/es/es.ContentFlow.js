@@ -44,7 +44,7 @@ es.ContentFlow = function( $container, content ) {
 	
 	// Initialization
 	this.scanBoundaries();
-}
+};
 
 es.ContentFlow.prototype.getLineIndex = function( offset ) {
 	for ( var i = 0; i < this.lines.length; i++ ) {
@@ -230,7 +230,7 @@ es.ContentFlow.prototype.scanBoundaries = function() {
 	// Iterate over each word+boundary sequence, capturing offsets and encoding text as we go
 	var match,
 		end;
-	while ( match = this.boundaryTest.exec( text ) ) {
+	while ( ( match = this.boundaryTest.exec( text ) ) ) {
 		// Include the boundary character in the range
 		end = match.index + 1;
 		// Store the boundary offset

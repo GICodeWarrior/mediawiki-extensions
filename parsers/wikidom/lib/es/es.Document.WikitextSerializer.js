@@ -98,8 +98,8 @@ es.Document.WikitextSerializer.prototype.serializeTable = function( table ) {
 		}
 		for ( var c = 0, cMax = row.length; c < cMax; c++ ) {
 			var type = types[row[c].type || 'data'],
-				attr = row[c].attributes
-					? es.Document.Serializer.buildXmlAttributes( row[c].attributes ) + '|' : ''
+				attr = row[c].attributes ?
+					es.Document.Serializer.buildXmlAttributes( row[c].attributes ) + '|' : '';
 			out.push( type + attr + this.serializeDocument( row[c].document, true ) );
 		}
 	}
@@ -112,7 +112,7 @@ es.Document.WikitextSerializer.prototype.serializeTransclusion = function( trans
 	if ( transclusion.namespace === 'Main' ) {
 		title.push( '' );
 	} else if ( transclusion.namespace !== 'Template' ) {
-		title.push( transclusion.namespace )
+		title.push( transclusion.namespace );
 	}
 	title.push( transclusion.title );
 	return '{{' + title.join( ':' ) + '}}';
@@ -166,7 +166,7 @@ es.Document.WikitextSerializer.prototype.serializeLine = function( line ) {
 /* Registration */
 
 es.Document.serializers.wikitext = function( doc, context, options ) {
-	var serializer = new es.Document.WikitextSerializer( context, options )
+	var serializer = new es.Document.WikitextSerializer( context, options );
 	return serializer.serializeDocument( doc );
 };
 

@@ -64,7 +64,7 @@ es.CommentBlockModel.prototype.getPlainObject = function() {
 };
 
 // Register constructor
-es.BlockModel.constructors['comment'] = es.CommentBlockModel;
+es.BlockModel.constructors.comment = es.CommentBlockModel;
 
 /* Inheritance */
 

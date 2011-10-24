@@ -88,9 +88,11 @@ es.ContentModel.newFromPlainObject = function( obj ) {
 					// TODO: This is invalid data! Throw error?
 					src.range.end = data.length;
 				}
-				for ( var i = src.range.start; i < src.range.end; i++ ) {
+				for ( var j = src.range.start; j < src.range.end; j++ ) {
 					// Auto-convert to array
-					typeof data[i] === 'string' && ( data[i] = [data[i]] );
+					if ( typeof data[j] === 'string' ) {
+						data[j] = [data[j]];
+					}
 					// Append 
 					data[i].push( dst );
 				}
@@ -273,8 +275,8 @@ es.ContentModel.prototype.getPlainObject = function() {
 		for ( var i = stack.length - 1; i >= 0; i-- ) {
 			if ( !stack[i].range.end ) {
 				if ( annotation ) {
-					if ( stack[i].type === annotation.type
-							&& es.compareObjects( stack[i].data, annotation.data ) ) {
+					if ( stack[i].type === annotation.type &&
+							es.compareObjects( stack[i].data, annotation.data ) ) {
 						stack[i].range.end = offset;
 						break;
 					}
@@ -508,6 +510,7 @@ es.ContentModel.prototype.annotateContent = function( method, annotation, range 
 	} else {
 		range.normalize();
 	}
+	var i;
 	/*
 	 * Content isolation
 	 * 
@@ -520,7 +523,7 @@ es.ContentModel.prototype.annotateContent = function( method, annotation, range 
 	 * expensive to do on all content on every copy, so we only do it when we are going to modify
 	 * the annotation information, and on as few annotated characters as possible.
 	 */
-	for ( var i = range.start; i < range.end; i++ ) {
+	for ( i = range.start; i < range.end; i++ ) {
 		if ( typeof this.data[i] !== 'string' ) {
 			this.data[i] = this.data[i].slice( 0 );
 		}
@@ -541,7 +544,7 @@ es.ContentModel.prototype.annotateContent = function( method, annotation, range 
 	}
 	if ( method === 'add' ) {
 		var duplicate;
-		for ( var i = range.start; i < range.end; i++ ) {
+		for ( i = range.start; i < range.end; i++ ) {
 			duplicate = -1;
 			if ( typeof this.data[i] === 'string' ) {
 				// Never annotate new lines
@@ -563,7 +566,7 @@ es.ContentModel.prototype.annotateContent = function( method, annotation, range 
 			}
 		}
 	} else if ( method === 'remove' ) {
-		for ( var i = range.start; i < range.end; i++ ) {
+		for ( i = range.start; i < range.end; i++ ) {
 			if ( typeof this.data[i] !== 'string' ) {
 				if ( annotation.type === 'all' ) {
 					// Remove all annotations by converting the annotated character to a plain

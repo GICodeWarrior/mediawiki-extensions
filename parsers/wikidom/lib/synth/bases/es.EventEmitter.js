@@ -7,7 +7,7 @@
  */
 es.EventEmitter = function() {
 	this.events = {};
-}
+};
 
 /* Methods */
 
@@ -104,7 +104,7 @@ es.EventEmitter.prototype.removeListener = function( type, listener ) {
 			return this;
 		}
 		handlers.splice( i, 1 );
-		if ( handlers.length == 0 ) {
+		if ( handlers.length === 0 ) {
 			delete this.events[type];
 		}
 	}
