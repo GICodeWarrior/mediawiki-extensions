@@ -11,7 +11,7 @@ class WebFontsHooks {
 	public static function addModules( $out, $skin ) {
 		global $wgUser;
 
-		if ( !$wgUser->getOption( 'webfontsDisable' ) ) {
+		if ( $wgUser->getOption( 'webfontsEnable' ) ) {
 			$out->addModules( 'webfonts' );
 		}
 
@@ -31,11 +31,12 @@ class WebFontsHooks {
 	}
 	
 	public static function addPreference( $user, &$preferences ) {
-		// A checkbox in preferences to disable WebFonts
-		$preferences['webfontsDisable'] = array(
+		// A checkbox in preferences to enable WebFonts
+		$preferences['webfontsEnable'] = array(
 			'type' => 'toggle',
-			'label-message' => 'webfonts-disable-preference', // a system message
+			'label-message' => 'webfonts-enable-preference', // a system message
 			'section' => 'rendering/advancedrendering', // under 'Advanced options' section of 'Editing' tab
+			'default' => true
 		);
 
 		return true;

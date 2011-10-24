@@ -16,7 +16,7 @@ $messages['en'] = array(
 	'webfonts-desc'    => 'Embed fonts in pages',
 	'webfonts-load'    => 'Select font',
 	'webfonts-reset'   => 'Reset',
-	'webfonts-disable-preference' => 'Disable font embedding (WebFonts)',
+	'webfonts-enable-preference' => 'Enable font embedding (WebFonts)',
 );
 
 /** Message documentation (Message documentation)
@@ -256,7 +256,7 @@ $messages['ml'] = array(
 	'webfonts-desc' => 'മീഡിയവിക്കി താളുകളില്‍ ഫോണ്ടുകള്‍ എംബെഡ് ചെയ്യുക',
 	'webfonts-load' => 'ഫോണ്ടുകള്‍',
 	'webfonts-reset' => 'പഴയപടിയാക്കുക',
-	'webfonts-disable-preference' => 'ഫോണ്ട് എംബെഡ് ചെയ്യൽ (വെബ്ഫോണ്ട്സ്) പ്രവർത്തനരഹിതമാക്കുക',
+	'webfonts-enable-preference' => 'ഫോണ്ട് എംബെഡ് ചെയ്യുക.(വെബ്ഫോണ്ട്സ്)',
 );
 
 /** Marathi (मराठी)
