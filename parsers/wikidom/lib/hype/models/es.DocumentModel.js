@@ -502,7 +502,8 @@ es.DocumentModel.prototype.getNodeFromOffset = function( offset ) {
 		nodeLength = this[i].getElementLength();
 		if ( offset >= nodeOffset && offset < nodeOffset + nodeLength ) {
 			return this[i].length ?
-				es.DocumentModel.prototype.getNode.call( this[i], offset - nodeOffset ) : this[i];
+				es.DocumentModel.prototype.getNodeFromOffset.call( this[i], offset - nodeOffset ) :
+					this[i];
 		}
 		nodeOffset += nodeLength;
 	}
@@ -614,7 +615,7 @@ es.DocumentModel.prototype.prepareInsertion = function( offset, data ) {
  */
 es.DocumentModel.prototype.prepareRemoval = function( range ) {
 	var doc = this;
-	debugger;
+	//debugger;
 
 	/**
 	 * Return true if can merge the remaining contents of the elements after a selection is deleted across them. 
@@ -634,11 +635,9 @@ es.DocumentModel.prototype.prepareRemoval = function( range ) {
 		// wait, some nodes don't have types? Is this the top document node?
 		return ( 
 					( 
-						( node1.type !== undefined && node2.type !== undefined ) 
-							&& 
+						( node1.type !== undefined && node2.type !== undefined ) && 
 						( node1.type === node2.type ) 
-					) 
-						&&
+					)  &&
 					( node1.getParent() === node2.getParent() )
 				);
 	}
@@ -653,13 +652,14 @@ es.DocumentModel.prototype.prepareRemoval = function( range ) {
 	function stripDelete( range, tx ) { 
 		var lastOperation, operationStart;
 
-		var ops = [];
-		debugger;
+		var ops = [],
+			op;
+		//debugger;
 
 		// get a list of operations, with 0-based indexes
 		for (var i = range.start; i < range.end; i++ ) {
 			var neededOp = doc.data[i].type === undefined ? 'remove' : 'retain';
-			var op = ops[ ops.length - 1 ];
+			op = ops[ ops.length - 1 ];
 			if ( op === undefined || op.type !== neededOp ) {
 				ops.push( { type: neededOp, start: i, end: i } );
 			} else {
@@ -667,10 +667,10 @@ es.DocumentModel.prototype.prepareRemoval = function( range ) {
 			}
 		}					
 
-		debugger;
+		//debugger;
 		// insert operations as transactions (end must be adjusted)
 		for (var j = 0; j < ops.length; j++ ) {
-			var op = ops[j];
+			op = ops[j];
 			if ( op.type === 'retain' ) {
 				// we add one because retain(3,3) really means retain 1 char at pos 3
 				tx.pushRetain( op.end - op.start + 1 );
