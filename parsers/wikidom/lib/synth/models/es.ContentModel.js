@@ -94,7 +94,7 @@ es.ContentModel.newFromPlainObject = function( obj ) {
 						data[j] = [data[j]];
 					}
 					// Append 
-					data[i].push( dst );
+					data[j].push( dst );
 				}
 			} );
 		}
