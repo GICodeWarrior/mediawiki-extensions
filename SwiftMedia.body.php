@@ -107,8 +107,8 @@ class SwiftFile extends LocalFile {
 	 * @return string Path to a local copy of the file.
 	 */
 	public function getPath() {
-		if ( !$this->TempPaths[''] ) {
-			$this->tempPaths[''] = $this->repo->getLocalCopy( $this->repo->container, $this->getRel(), 'getPath' );
+		if ( !array_key_exists('', $this->tempPaths ) ) {
+			$this->tempPaths[''] = $this->repo->getLocalCopy( $this->repo->container, $this->getRel(), "getPath_" );
 		}
 		return $this->tempPaths[''];
 	}
