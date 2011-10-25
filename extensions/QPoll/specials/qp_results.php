@@ -313,7 +313,12 @@ class PollResults extends qp_SpecialPage {
 			@unlink( $xls_fname );
 			exit();
 		} catch ( Exception $e ) {
-			die( "Error while exporting poll statistics to Excel table\n" );
+			if ( $e instanceof MWException ) {
+				$e->reportHTML();
+				exit();
+			} else {
+				die( "Error while exporting poll statistics to Excel table\n" );
+			}
 		}
 	}
 

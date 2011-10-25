@@ -51,6 +51,7 @@ class qp_TextQuestionViewRow {
 	# depending on $this->tabularDisplay value
 	var $row;
 	# tagarray with error elements will be merged into adjascent cells
+	# (otherwise tabular layout will be broken by proposal errors)
 	var $error;
 	# tagarray with current cell builded for row
 	# cell contains one or multiple tags, describing proposal part or category
@@ -63,6 +64,9 @@ class qp_TextQuestionViewRow {
 		$this->reset( '' );
 	}
 
+	/**
+	 * Prepare current instance for new proposal row
+	 */
 	function reset( $id_prefix ) {
 		$this->id_prefix = $id_prefix;
 		$this->row = array();
@@ -72,6 +76,9 @@ class qp_TextQuestionViewRow {
 		$this->ckey = 0;
 	}
 
+	/**
+	 * Add proposal error tagarray
+	 */
 	function addError( $elem ) {
 		$this->cell[] = array(
 			'__tag' => 'span',
@@ -80,57 +87,98 @@ class qp_TextQuestionViewRow {
 		);
 	}
 
+	/**
+	 * Add category as input type text / checkbox / radio / textarea tagarray
+	 */
 	function addInput( $elem, $className ) {
+		$tagName = ( $elem->type === 'text' && $elem->attributes['height'] !== 0 ) ? 'textarea' : 'input';
+		$lines_count = 1;
+		# get category value
 		$value = $elem->value;
 		# check, whether the definition of category has "pre-filled" value
 		# single, non-unanswered, non-empty option is a pre-filled value
 		if ( !$elem->unanswered && $elem->value === '' && $elem->options[0] !== '' ) {
 			# input text pre-fill
 			$value = $elem->options[0];
+			if ( $tagName === 'textarea' ) {
+				# oversimplicated regexp, but it's enough for our needs
+				$value = preg_replace( '/<br[\sA-Z\d="]*\/{0,1}>/i', "\n", $value, -1, $lines_count );
+				$lines_count++;
+			}
 			$className .= ' cat_prefilled';
 		}
-		$input = array(
-			'__tag' => 'input',
+		$tag = array(
+			'__tag' => $tagName,
 			# unique (poll_type,order_id,question,proposal,category) "coordinate" for javascript
 			'id' => "{$this->id_prefix}c{$this->ckey}",
 			'class' => $className,
-			'type' => $elem->type,
 			'name' => $elem->name,
-			'value' => qp_Setup::specialchars( $value )
 		);
+		if ( $tagName === 'input' ) {
+			$tag['type'] = $elem->type;
+			$tag['value'] = qp_Setup::specialchars( $value );
+		} else { /* 'textarea' */
+			$tag[] = qp_Setup::specialchars( $value );
+			if ( is_int( $elem->attributes['height'] ) ) {
+				$tag['rows'] = $elem->attributes['height'];
+			} else { /* 'auto' */
+				# todo: allow multiline prefilled text and calculate number of new lines
+				$tag['rows'] = $lines_count;
+			}
+		}
 		$this->ckey++;
-		if ( $elem->type !== 'text' && $elem->attributes['checked'] === true ) {
-			$input['checked'] = 'checked';
+		if ( $elem->type === 'text' ) {
+			# input type text and textarea
+			if ( $this->owner->textInputStyle != '' ) {
+				# apply poll's textwidth attribute
+				$tag['style'] = $this->owner->textInputStyle;
+			}
+			if ( $elem->attributes['width'] !== 0 ) {
+				# apply current category width attribute
+				if ( is_int( $elem->attributes['width'] ) ) {
+					$tag['style'] = 'width:' . $elem->attributes['width'] . 'em;';
+				} else { /* 'auto' */
+					$tag['style'] = 'width:99%;';
+				}
+			}
+		} else {
+			# checkbox or radiobutton
+			if ( $elem->attributes['checked'] === true ) {
+				$tag['checked'] = 'checked';
+			}
 		}
-		if ( $elem->type === 'text' && $this->owner->textInputStyle != '' ) {
-			# apply poll's textwidth attribute
-			$input['style'] = $this->owner->textInputStyle;
-		}
-		if ( $elem->attributes['width'] !== null ) {
-			# apply current category width attribute
-			$input['style'] = 'width:' . intval( $elem->attributes['width'] ) . 'em;';
-		}
-		$this->cell[] = $input;
+		$this->cell[] = $tag;
 	}
 
+	/**
+	 * Add category as select / option list tagarray
+	 */
 	function addSelect( $elem, $className ) {
 		if ( $elem->options[0] !== '' ) {
-			# default element in select/option set always must be empty option
+			# default element in select/option set always must be an empty option
 			array_unshift( $elem->options, '' );
 		}
 		$html_options = array();
+		# prepare the list of selected values
+		if ( $elem->attributes['multiple'] !== null ) {
+			# new lines are separator for selected multiple options
+			$selected_values = explode( "\n", $elem->value );
+		} else {
+			$selected_values = array( $elem->value );
+		}
+		# generate options list
 		foreach ( $elem->options as $option ) {
 			$html_option = array(
 				'__tag' => 'option',
 				'value' => qp_Setup::entities( $option ),
 				qp_Setup::specialchars( $option )
 			);
-			if ( $option === $elem->value ) {
+			if ( in_array( $option, $selected_values ) ) {
 				$html_option['selected'] = 'selected';
 			}
 			$html_options[] = $html_option;
 		}
-		$this->cell[] = array(
+		$select = array(
 			'__tag' => 'select',
 			# unique (poll_type,order_id,question,proposal,category) "coordinate" for javascript
 			'id' => "{$this->id_prefix}c{$this->ckey}",
@@ -138,9 +186,29 @@ class qp_TextQuestionViewRow {
 			'name' => $elem->name,
 			$html_options
 		);
+		# multiple options 'name' attribute should have array hint []
+		if ( $elem->attributes['multiple'] !== null ) {
+			$select['multiple'] = 'multiple';
+			$select['name'] .= '[]';
+		}
+		# determine visual height of select options list
+		if ( ( $size = $elem->attributes['height'] ) !== 0 ) {
+			if ( is_int( $size ) ) {
+				if ( count( $elem->options ) < $size ) {
+					$size = count( $elem->options );
+				}
+			} else { /* 'auto' */
+				$size = count( $elem->options );
+			}
+			$select['size'] = $size;
+		}
+		$this->cell[] = $select;
 		$this->ckey++;
 	}
 
+	/**
+	 * Add tagarray representation of proposal part
+	 */
 	function addProposalPart( $elem ) {
 		$this->cell[] = array(
 			'__tag' => 'span',
@@ -149,6 +217,11 @@ class qp_TextQuestionViewRow {
 		);
 	}
 
+	/**
+	 * Build "final" cell which contain tagarray representation of
+	 * proposal parts, proposal errors and one adjascent category
+	 * and then add it to the row
+	 */
 	function addCell() {
 		if ( count( $this->error ) > 0 ) {
 			# merge previous errors to current cell
@@ -179,6 +252,11 @@ class qp_TextQuestionView extends qp_StubQuestionView {
 	# whether the resulting display table should be transposed
 	# meaningful only when $this->tabularDisplay is true
 	var $transposed = false;
+	# how many characters will hold horizontal line of textarea;
+	# currently is unused, because textarea 'cols' attribute renders
+	# poorly in table cells in modern versions of Firefox, so
+	# we are using CSS $this->textInputStyle instead
+	# var $textwidth = 0;
 
 	# default style of text input
 	var $textInputStyle = '';
@@ -206,9 +284,11 @@ class qp_TextQuestionView extends qp_StubQuestionView {
 			$this->transposed = strpos( $layout, 'transpose' ) !== false;
 		}
 		if ( $textwidth !== null ) {
-			$textwidth = intval( $textwidth );
-			if ( $textwidth > 0 ) {
+			if ( is_numeric( $textwidth ) &&
+					$textwidth = intval( $textwidth ) > 0 ) {
 				$this->textInputStyle = 'width:' . $textwidth . 'em;';
+			} elseif ( $textwidth === 'auto' ) {
+				$this->textInputStyle = 'width:auto;';
 			}
 		}
 	}
@@ -290,9 +370,9 @@ class qp_TextQuestionView extends qp_StubQuestionView {
 						# create view for proposal/category error message
 						$vr->addError( $elem );
 					}
-					# create view for the input options part
+					# create view for the input / textarea options part
 					if ( count( $elem->options ) === 1 ) {
-						# one option produces html text / radio / checkbox input
+						# one option produces html text / radio / checkbox input or an textarea
 						$vr->addInput( $elem, $className );
 						$vr->addCell();
 						continue;
