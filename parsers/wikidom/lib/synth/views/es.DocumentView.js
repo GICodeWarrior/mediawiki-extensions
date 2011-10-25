@@ -74,9 +74,8 @@ es.DocumentView.prototype.getOffsetFromEvent = function( e ) {
 		//console.log(position.top);
 		
 		if (position.top - $(window).scrollTop() > window.innerHeight) {
-			console.log("b " + position.top);
-			position.top = window.innerHeight + $(window).scrollTop() + 10;
-			console.log("j " + position.top);
+			position.top = window.innerHeight + $(window).scrollTop();
+			position.left = window.innerWidth;
 		}
 
 		
@@ -97,10 +96,8 @@ es.DocumentView.prototype.getOffsetFromPosition = function( position ) {
 	}
 
 		if (position.top - $(window).scrollTop() > window.innerHeight) {
-			console.log("b " + position.top);
-			position.top = window.innerHeight + $(window).scrollTop() + 10;
+			position.top = window.innerHeight + $(window).scrollTop();
 			position.left = window.innerWidth;
-			console.log("j " + position.top);
 		}	
 	
 	
