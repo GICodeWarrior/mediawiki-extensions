@@ -17,46 +17,9 @@ es.DocumentModel = function( data, attributes ) {
 	node.data = $.isArray( data ) ? data : [];
 	node.attributes = $.isPlainObject( attributes ) ? attributes : {};
 	
-	// Build a tree of models, which is a space partitioning data structure
-	var currentNode = node;
-	for ( var i = 0, length = node.data.length; i < length; i++ ) {
-		if ( data[i].type !== undefined ) {
-			// It's an element, figure out it's type
-			var element = node.data[i],
-				type = element.type,
-				open = type[0] !== '/';
-			// Trim the "/" off the beginning of closing tag types
-			if ( !open ) {
-				type = type.substr( 1 );
-			}
-			if ( open ) {
-				// Validate the element type
-				if ( !( type in es.DocumentModel.nodeModels ) ) {
-					throw 'Unsuported element error. No class registered for element type: ' + type;
-				}
-				// Create a model node for the element
-				var newNode = new es.DocumentModel.nodeModels[element.type]( element );
-				// Add the new model node as a child
-				currentNode.push( newNode );
-				// Descend into the new model node
-				currentNode = newNode;
-			} else {
-				// Return to the parent node
-				currentNode = currentNode.getParent();
-			}
-		} else {
-			// It's content, let's start tracking the length
-			var start = i;
-			// Move forward to the next object, tracking the length as we go
-			while ( data[i].type === undefined && i < length ) {
-				i++;
-			}
-			// Now we know how long the current node is
-			currentNode.setContentLength( i - start );
-			// The while loop left us 1 element to far
-			i--;
-		}
-	}
+	// Auto-generate tree
+	this.growNodeTreeFromData( node, node.data );
+	
 	return node;
 };
 
@@ -442,6 +405,54 @@ es.DocumentModel.prototype.getData = function( range, deep ) {
 	}
 	var data = this.data.slice( start, end );
 	return deep ? es.copyArray( data ) : data;
+};
+
+/*
+ * Grow child nodes onto a root node from an array of data.
+ * 
+ * A model tree is a space partitioning data structure in which each node contains the length of
+ * itself (1 for opening, 1 for closing) and the lengths of it's child nodes.
+ */
+es.DocumentModel.prototype.growNodeTreeFromData = function( root, data ) {
+	var currentNode = root;
+	for ( var i = 0, length = data.length; i < length; i++ ) {
+		if ( data[i].type !== undefined ) {
+			// It's an element, figure out it's type
+			var element = data[i],
+				type = element.type,
+				open = type[0] !== '/';
+			// Trim the "/" off the beginning of closing tag types
+			if ( !open ) {
+				type = type.substr( 1 );
+			}
+			if ( open ) {
+				// Validate the element type
+				if ( !( type in es.DocumentModel.nodeModels ) ) {
+					throw 'Unsuported element error. No class registered for element type: ' + type;
+				}
+				// Create a model node for the element
+				var newNode = new es.DocumentModel.nodeModels[element.type]( element );
+				// Add the new model node as a child
+				currentNode.push( newNode );
+				// Descend into the new model node
+				currentNode = newNode;
+			} else {
+				// Return to the parent node
+				currentNode = currentNode.getParent();
+			}
+		} else {
+			// It's content, let's start tracking the length
+			var start = i;
+			// Move forward to the next object, tracking the length as we go
+			while ( data[i].type === undefined && i < length ) {
+				i++;
+			}
+			// Now we know how long the current node is
+			currentNode.setContentLength( i - start );
+			// The while loop left us 1 element to far
+			i--;
+		}
+	}
 };
 
 /**
