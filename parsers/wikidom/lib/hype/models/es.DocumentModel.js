@@ -817,8 +817,8 @@ es.DocumentModel.prototype.commit = function( transaction ) {
 	};
 	for ( var i = 0, length = transaction.length; i < length; i++ ) {
 		var operation = transaction[i];
-		if ( operation.type in this.operations ) {
-			this.operations[operation.type].commit.call( state, operation );
+		if ( operation.type in es.DocumentModel.operations ) {
+			es.DocumentModel.operations[operation.type].commit.call( state, operation );
 		} else {
 			throw 'Invalid operation error. Operation type is not supported: ' + operation.type;
 		}
@@ -842,8 +842,8 @@ es.DocumentModel.prototype.rollback = function( transaction ) {
 	};
 	for ( var i = 0, length = transaction.length; i < length; i++ ) {
 		var operation = transaction[i];
-		if ( operation.type in this.operations ) {
-			this.operations[operation.type].rollback.call( state, operation );
+		if ( operation.type in es.DocumentModel.operations ) {
+			es.DocumentModel.operations[operation.type].rollback.call( state, operation );
 		} else {
 			throw 'Invalid operation error. Operation type is not supported: ' + operation.type;
 		}

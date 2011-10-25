@@ -498,3 +498,37 @@ test( 'es.DocumentModel.prepareInsertion', 4, function() {
 		'prepareInsertion completes opening elements in inserted content'
 	);
 } );
+
+test( 'es.DocumentModel.commit, es.DocumentModel.rollback', 2, function() {
+	var documentModel = es.DocumentModel.newFromPlainObject( obj );
+
+	var tx = documentModel.prepareInsertion( 4, ['d'] );
+	documentModel.commit( tx );
+
+	deepEqual(
+		documentModel.getData( new es.Range( 0, 6 ) ),
+		[
+			{ 'type': 'paragraph' },
+			'a',
+			['b', { 'type': 'bold', 'hash': '#bold' }],
+			['c', { 'type': 'italic', 'hash': '#italic' }],
+			'd',
+			{ 'type': '/paragraph' }
+		],
+		'commit applies a transaction to the content'
+	);
+
+	documentModel.rollback( tx );
+
+	deepEqual(
+		documentModel.getData( new es.Range( 0, 5 ) ),
+		[
+			{ 'type': 'paragraph' },
+			'a',
+			['b', { 'type': 'bold', 'hash': '#bold' }],
+			['c', { 'type': 'italic', 'hash': '#italic' }],
+			{ 'type': '/paragraph' }
+		],
+		'rollback reverses the effect of a transaction on the content'
+	);
+} );
