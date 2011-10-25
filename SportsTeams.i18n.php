@@ -6,6 +6,8 @@
  * @ingroup Extensions
  */
 
+$messages = array();
+
 /** English */
 $messages['en'] = array(
 	'topnetworks' => 'Network Statistics',
