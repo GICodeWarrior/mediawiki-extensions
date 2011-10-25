@@ -126,45 +126,54 @@ es.DocumentModel.operations = ( function() {
 		if ( this.set.length ) {
 			for ( i = 0, length = this.set.length; i < length; i++ ) {
 				annotation = this.set[i];
+				// Auto-build annotation hash
+				if ( annotation.hash === undefined ) {
+					annotation.hash = es.DocumentModel.getAnnotationHash( annotation );
+				}
 				for ( j = this.cursor; j < to; j++ ) {
+					// Auto-convert to array
 					if ( $.isArray( this.data[j] ) ) {
 						this.data[j].push( annotation );
 					} else {
 						this.data[j] = [this.data[j], annotation];
 					}
 				}
-				// Rebuild annotation hash
-				annotation.hash = es.DocumentModel.getAnnotationHash( annotation );
 			}
 		}
 		if ( this.clear.length ) {
 			for ( i = 0, length = this.clear.length; i < length; i++ ) {
 				annotation = this.clear[i];
+				// Auto-build annotation hash
+				if ( annotation.hash === undefined ) {
+					annotation.hash = es.DocumentModel.getAnnotationHash( annotation );
+				}
 				for ( j = this.cursor; j < to; j++ ) {
 					var index = es.DocumentModel.getIndexOfAnnotation( this.data[j], annotation );
 					if ( index !== -1 ) {
 						this.data[j].splice( index, 1 );
 					}
+					// Auto-convert to string
+					if ( this.data[j].length === 1 ) {
+						this.data[j] = this.data[j][0];
+					}
 				}
-				// Rebuild annotation hash
-				annotation.hash = es.DocumentModel.getAnnotationHash( annotation );
 			}
 		}
 	}
 	
 	function mark( op, invert ) {
 		var target;
-		if ( op.method === 'set' || ( op.method === 'clear' && invert ) ) {
+		if ( ( op.method === 'set' && !invert ) || ( op.method === 'clear' && invert ) ) {
 			target = this.set;
-		} else if ( op.method === 'clear' || ( op.method === 'set' && invert ) ) {
+		} else if ( ( op.method === 'clear' && !invert ) || ( op.method === 'set' && invert ) ) {
 			target = this.clear;
 		} else {
 			throw 'Invalid method error. Can not operate attributes this way: ' + method;
 		}
 		if ( op.bias === 'start' ) {
 			target.push( op.annotation );
-		} else if ( op.bias === 'end' ) {
-			var index = es.DocumentModel.getIndexOfAnnotation( target[i], op.annotation );
+		} else if ( op.bias === 'stop' ) {
+			var index = es.DocumentModel.getIndexOfAnnotation( target, op.annotation );
 			if ( index === -1 ) {
 				throw 'Annotation stack error. Annotation is missing.';
 			}
@@ -191,19 +200,19 @@ es.DocumentModel.operations = ( function() {
 		// Change element attributes
 		'attribute': {
 			'commit': function( op ) {
-				attribute( op, false );
+				attribute.call( this, op, false );
 			},
 			'rollback': function( op ) {
-				attribute( op, true );
+				attribute.call( this, op, true );
 			}
 		},
 		// Change content annotations
 		'annotate': {
 			'commit': function( op ) {
-				mark( op, false );
+				mark.call( this, op, false );
 			},
 			'rollback': function( op ) {
-				mark( op, true );
+				mark.call( this, op, true );
 			}
 		}
 	};
@@ -254,14 +263,18 @@ es.DocumentModel.getAnnotationHash = function( annotation ) {
 	return hash;
 };
 
-es.DocumentModel.getIndexOfAnnotation = function( character, annotation ) {
+es.DocumentModel.getIndexOfAnnotation = function( annotations, annotation ) {
 	if ( annotation === undefined || annotation.type === undefined ) {
 		throw 'Invalid annotation error. Can not find non-annotation data in character.';
 	}
-	if ( $.isArray( character ) ) {
+	if ( $.isArray( annotations ) ) {
 		// Find the index of a comparable annotation (checking for same value, not reference)
-		for ( var i = 1; i < character.length; i++ ) {
-			if ( character[i].hash === annotation.hash ) {
+		for ( var i = 0; i < annotations.length; i++ ) {
+			// Skip over character data - used when this is called on a content data item
+			if ( typeof annotations[i] === 'string' ) {
+				continue;
+			}
+			if ( annotations[i].hash === annotation.hash ) {
 				return i;
 			}
 		}
