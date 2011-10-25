@@ -79,16 +79,7 @@ es.DocumentModel.operations = ( function() {
 	}
 	
 	function insert( op ) {
-		// Splice content into document in 1024 element batches, as to not overflow max allowed
-		// arguments, which apply is limited by
-		var index = 0,
-			batchSize = 1024;
-		while ( index < op.data.length ) {
-			this.data.splice.apply(
-				this.data, [this.cursor, 0].concat( op.data.slice( index, index + batchSize ) )
-			);
-			index += batchSize;
-		}
+		es.spliceArray( this.data, this.cursor, op.data );
 		annotate.call( this, this.cursor + op.data.length );
 		this.cursor += op.data.length;
 	}

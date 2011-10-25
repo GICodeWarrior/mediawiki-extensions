@@ -119,3 +119,26 @@ es.copyObject = function( source ) {
 	}
 	return destination;
 };
+
+/**
+ * Splice one array into another. This is the equivalent of arr.splice( offset, 0, i1, i2, i3, ... )
+ * except that i1, i2, i3, ... are specified as an array rather than separate parameters.
+ * 
+ * @static
+ * @method
+ * @param arr {Array} Array to splice insertion into. Will be modified
+ * @param offset {Number} Offset in arr to splice insertion in at. May be negative; see the 'index' parameter for Array.prototype.splice()
+ * @param insertion {Array} Array to insert
+ */
+es.spliceArray = function( arr, offset, insertion ) {
+	// We need to splice insertion in in batches, because of parameter list length limits which vary cross-browser.
+	// 1024 seems to be a safe batch size on all browsers.
+	var index = 0, batchSize = 1024;
+	while ( index < insertion.length ) {
+		// Call arr.splice( offset, 0, i0, i1, i2, ..., i1023 );
+		arr.splice.apply(
+			arr, [index + offset, 0].concat( insertion.slice( index, index + batchSize ) )
+		);
+		index += batchSize;
+	}
+};
