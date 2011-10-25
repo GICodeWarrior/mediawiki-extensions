@@ -201,16 +201,24 @@ var tree = [
 	new es.ParagraphModel( data[25], 1 )
 ];
 
-test( 'es.DocumentModel', 23, function() {
+test( 'es.DocumentModel.getData', 1, function() {
 	var documentModel = es.DocumentModel.newFromPlainObject( obj );
 	
 	// Test 1
 	deepEqual( documentModel.getData(), data, 'Flattening plain objects results in correct data' );
+} );
 
-	// Test 2
-	deepEqual( documentModel.slice( 0 ), tree, 'Nodes in the model tree contain correct lengths' );
+test( 'es.DocumentModel.slice', 1, function() {
+	var documentModel = es.DocumentModel.newFromPlainObject( obj );
 	
-	// Test 3
+	// Test 1
+	deepEqual( documentModel.slice( 0 ), tree, 'Nodes in the model tree contain correct lengths' );
+} );
+
+test( 'es.DocumentModel.getContent', 6, function() {
+	var documentModel = es.DocumentModel.newFromPlainObject( obj );
+	
+	// Test 1
 	deepEqual(
 		documentModel[0].getContent( new es.Range( 1, 3 ) ),
 		[
@@ -220,14 +228,14 @@ test( 'es.DocumentModel', 23, function() {
 		'getContent can return an ending portion of the content'
 	);
 
-	// Test 4
+	// Test 2
 	deepEqual(
 		documentModel[0].getContent( new es.Range( 0, 2 ) ),
 		['a', ['b', { 'type': 'bold', 'hash': '#bold' }]],
 		'getContent can return a beginning portion of the content'
 	);
 	
-	// Test 5
+	// Test 3
 	deepEqual(
 		documentModel[0].getContent( new es.Range( 1, 2 ) ),
 		[['b', { 'type': 'bold', 'hash': '#bold' }]],
@@ -237,47 +245,55 @@ test( 'es.DocumentModel', 23, function() {
 	try {
 		documentModel[0].getContent( new es.Range( -1, 3 ) );
 	} catch ( negativeIndexError ) {
-		// Test 6
+		// Test 4
 		ok( true, 'getContent throws exceptions when given a range with start < 0' );
 	}
 	
 	try {
 		documentModel[0].getContent( new es.Range( 0, 4 ) );
 	} catch ( outOfRangeError ) {
-		// Test 7
+		// Test 5
 		ok( true, 'getContent throws exceptions when given a range with end > length' );
 	}
 	
-	// Test 8
+	// Test 6
 	deepEqual( documentModel[2].getContent(), ['a'], 'Content can be extracted from nodes' );
+} );
+
+test( 'es.DocumentModel.getIndexOfAnnotation', 3, function() {
+	var documentModel = es.DocumentModel.newFromPlainObject( obj );
 	
 	var bold = { 'type': 'bold', 'hash': '#bold' },
 		italic = { 'type': 'italic', 'hash': '#italic' },
 		nothing = { 'type': 'nothing', 'hash': '#nothing' },
 		character = ['a', bold, italic];
 	
-	// Test 9
+	// Test 1
 	equal(
 		es.DocumentModel.getIndexOfAnnotation( character, bold ),
 		1,
 		'getIndexOfAnnotation get the correct index'
 	);
 	
-	// Test 10
+	// Test 2
 	equal(
 		es.DocumentModel.getIndexOfAnnotation( character, italic ),
 		2,
 		'getIndexOfAnnotation get the correct index'
 	);
 	
-	// Test 11
+	// Test 3
 	equal(
 		es.DocumentModel.getIndexOfAnnotation( character, nothing ),
 		-1,
 		'getIndexOfAnnotation returns -1 if the annotation was not found'
 	);
-	
-	// Test 12
+} );
+
+test( 'es.DocumentModel.prepareElementAttributeChange', 4, function() {
+	var documentModel = es.DocumentModel.newFromPlainObject( obj );
+
+	// Test 1
 	deepEqual(
 		documentModel.prepareElementAttributeChange( 0, 'set', 'test', 1234 ),
 		[
@@ -287,7 +303,7 @@ test( 'es.DocumentModel', 23, function() {
 		'prepareElementAttributeChange retains data after attribute change for first element'
 	);
 	
-	// Test 13
+	// Test 2
 	deepEqual(
 		documentModel.prepareElementAttributeChange( 5, 'set', 'test', 1234 ),
 		[
@@ -301,7 +317,7 @@ test( 'es.DocumentModel', 23, function() {
 	try {
 		documentModel.prepareElementAttributeChange( 1, 'set', 'test', 1234 );
 	} catch ( invalidOffsetError ) {
-		// Test 14
+		// Test 3
 		ok(
 			true,
 			'prepareElementAttributeChange throws an exception when offset is not an element'
@@ -311,14 +327,18 @@ test( 'es.DocumentModel', 23, function() {
 	try {
 		documentModel.prepareElementAttributeChange( 4, 'set', 'test', 1234 );
 	} catch ( closingElementError ) {
-		// Test 15
+		// Test 4
 		ok(
 			true,
 			'prepareElementAttributeChange throws an exception when offset is a closing element'
 		);
 	}
-	
-	// Test 16
+} );
+
+test( 'es.DocumentModel.prepareContentAnnotation', 1, function() {
+	var documentModel = es.DocumentModel.newFromPlainObject( obj );
+
+	// Test 1
 	deepEqual(
 		documentModel.prepareContentAnnotation( new es.Range( 1, 4 ), 'set', { 'type': 'bold' } ),
 		[
@@ -354,8 +374,12 @@ test( 'es.DocumentModel', 23, function() {
 		],
 		'prepareContentAnnotation skips over content that is already set or cleared'
 	);
-	
-	// Test 17
+} );
+
+test( 'es.DocumentModel.prepareRemoval', 3, function() {
+	var documentModel = es.DocumentModel.newFromPlainObject( obj );
+
+	// Test 1
 	deepEqual(
 		documentModel.prepareRemoval( new es.Range( 1, 4 ) ),
 		[
@@ -373,7 +397,7 @@ test( 'es.DocumentModel', 23, function() {
 		'prepareRemoval includes the content being removed'
 	);
 	
-	// Test 18
+	// Test 2
 	deepEqual(
 		documentModel.prepareRemoval( new es.Range( 15, 18 ) ),
 		[
@@ -391,7 +415,7 @@ test( 'es.DocumentModel', 23, function() {
 		'prepareRemoval removes entire elements'
 	);
 	
-	// Test 19
+	// Test 3
 	deepEqual(
 		documentModel.prepareRemoval( new es.Range( 17, 19 ) ),
 		[
@@ -407,8 +431,12 @@ test( 'es.DocumentModel', 23, function() {
 		],
 		'prepareRemoval merges two list items'
 	); 
-	
-	// Test 20
+} );
+
+test( 'es.DocumentModel.prepareInsertion', 4, function() {
+	var documentModel = es.DocumentModel.newFromPlainObject( obj );
+
+	// Test 1
 	deepEqual(
 		documentModel.prepareInsertion( 1, ['d', 'e', 'f'] ),
 		[
@@ -419,7 +447,7 @@ test( 'es.DocumentModel', 23, function() {
 		'prepareInsertion retains data up to the offset and includes the content being inserted'
 	);
 	
-	// Test 21
+	// Test 2
 	deepEqual(
 		documentModel.prepareInsertion(
 			5,
@@ -436,7 +464,7 @@ test( 'es.DocumentModel', 23, function() {
 		'prepareInsertion inserts a paragraph between two structural elements'
 	);
 	
-	// Test 22
+	// Test 3
 	deepEqual(
 		documentModel.prepareInsertion(
 			5,
@@ -453,7 +481,7 @@ test( 'es.DocumentModel', 23, function() {
 		'prepareInsertion wraps unstructured content inserted between elements in a paragraph'
 	);
 	
-	// Test 23
+	// Test 4
 	deepEqual(
 		documentModel.prepareInsertion(
 			5,
