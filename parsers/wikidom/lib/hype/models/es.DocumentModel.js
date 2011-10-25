@@ -556,12 +556,46 @@ es.DocumentModel.prototype.getContentFromNode = function( node, range ) {
  * @returns {es.Transaction}
  */
 es.DocumentModel.prototype.prepareInsertion = function( offset, data ) {
-	var tx = new es.Transaction();
+	function containsStructuralElements( data ) {
+		var i;
+		for ( i = 0; i < data.length; i++ ) {
+			if ( data[i].type !== undefined ) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	function isStructuralLocation( offset, data ) {
+		// The following are structural locations:
+		// * The beginning of the document (offset 0)
+		// * The end of the document (offset length-1)
+		// * Any location between elements, i.e. the item before is a closing and the item after is an opening
+		return offset <= 0 || offset >= data.length - 1 || (
+			data[offset - 1].type !== undefined && data[offset - 1].type.charAt( 0 ) != '/' &&
+			data[offset].type !== undefined && data[offset].type.charAt( 0 ) == '/'
+		);
+	}
+	
+	var tx = new es.Transaction(), insertedData = data;
 	if ( offset > 0 ) {
 		tx.pushRetain( offset );
 	}
 	// TODO check for structural changes
-	tx.pushInsert( data );
+	if ( containsStructuralElements( insertedData ) ) {
+		// TODO
+	} else {
+		if ( isStructuralLocation( offset, insertedData ) ) {
+			// We're inserting content into a structural location,
+			// so we need to wrap the inserted content in a paragraph.
+			insertedData = [ { 'type': 'paragraph' }, { 'type': '/paragraph' } ];
+			es.spliceArray( insertedData, 1, data );
+		} else {
+			// Content being inserted in content is fine, do nothing
+		}
+	}
+	
+	tx.pushInsert( insertedData );
 	if ( offset < this.data.length ) {
 		tx.pushRetain( this.data.length - offset );
 	}
