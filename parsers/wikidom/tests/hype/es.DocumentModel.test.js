@@ -242,17 +242,17 @@ test( 'es.DocumentModel.getContent', 6, function() {
 		'getContent can return a middle portion of the content'
 	);
 	
+	// Test 4
 	try {
 		documentModel[0].getContent( new es.Range( -1, 3 ) );
 	} catch ( negativeIndexError ) {
-		// Test 4
 		ok( true, 'getContent throws exceptions when given a range with start < 0' );
 	}
 	
+	// Test 5
 	try {
 		documentModel[0].getContent( new es.Range( 0, 4 ) );
 	} catch ( outOfRangeError ) {
-		// Test 5
 		ok( true, 'getContent throws exceptions when given a range with end > length' );
 	}
 	
@@ -314,20 +314,20 @@ test( 'es.DocumentModel.prepareElementAttributeChange', 4, function() {
 		'prepareElementAttributeChange retains data before and after attribute change'
 	);
 	
+	// Test 3
 	try {
 		documentModel.prepareElementAttributeChange( 1, 'set', 'test', 1234 );
 	} catch ( invalidOffsetError ) {
-		// Test 3
 		ok(
 			true,
 			'prepareElementAttributeChange throws an exception when offset is not an element'
 		);
 	}
 	
+	// Test 4
 	try {
 		documentModel.prepareElementAttributeChange( 4, 'set', 'test', 1234 );
 	} catch ( closingElementError ) {
-		// Test 4
 		ok(
 			true,
 			'prepareElementAttributeChange throws an exception when offset is a closing element'
@@ -499,12 +499,13 @@ test( 'es.DocumentModel.prepareInsertion', 4, function() {
 	);
 } );
 
-test( 'es.DocumentModel.commit, es.DocumentModel.rollback', 2, function() {
+test( 'es.DocumentModel.commit, es.DocumentModel.rollback', 4, function() {
 	var documentModel = es.DocumentModel.newFromPlainObject( obj );
 
-	var tx = documentModel.prepareInsertion( 4, ['d'] );
-	documentModel.commit( tx );
+	var insertion = documentModel.prepareInsertion( 4, ['d'] );
 
+	// Test 1
+	documentModel.commit( insertion );
 	deepEqual(
 		documentModel.getData( new es.Range( 0, 6 ) ),
 		[
@@ -515,11 +516,11 @@ test( 'es.DocumentModel.commit, es.DocumentModel.rollback', 2, function() {
 			'd',
 			{ 'type': '/paragraph' }
 		],
-		'commit applies a transaction to the content'
+		'commit applies an insertion transaction to the content'
 	);
 
-	documentModel.rollback( tx );
-
+	// Test 2
+	documentModel.rollback( insertion );
 	deepEqual(
 		documentModel.getData( new es.Range( 0, 5 ) ),
 		[
@@ -529,6 +530,35 @@ test( 'es.DocumentModel.commit, es.DocumentModel.rollback', 2, function() {
 			['c', { 'type': 'italic', 'hash': '#italic' }],
 			{ 'type': '/paragraph' }
 		],
-		'rollback reverses the effect of a transaction on the content'
+		'rollback reverses the effect of an insertion transaction on the content'
 	);
+
+	var removal = documentModel.prepareRemoval( new es.Range( 2, 4 ) );
+
+	// Test 3
+	documentModel.commit( removal );
+	deepEqual(
+		documentModel.getData( new es.Range( 0, 3 ) ),
+		[
+			{ 'type': 'paragraph' },
+			'a',
+			{ 'type': '/paragraph' }
+		],
+		'commit applies a removal transaction to the content'
+	);
+
+	// Test 4
+	documentModel.rollback( removal );
+	deepEqual(
+		documentModel.getData( new es.Range( 0, 5 ) ),
+		[
+			{ 'type': 'paragraph' },
+			'a',
+			['b', { 'type': 'bold', 'hash': '#bold' }],
+			['c', { 'type': 'italic', 'hash': '#italic' }],
+			{ 'type': '/paragraph' }
+		],
+		'rollback reverses the effect of a removal transaction on the content'
+	);
+
 } );
