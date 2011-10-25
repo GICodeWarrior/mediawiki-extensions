@@ -43,15 +43,6 @@
 			//Set the font, fallback fonts.Need to change the fonts of Input Select and Textarea explicitly.
 			$("body, input, select, textarea").css('font-family', "'"+ font +"', Helvetica, Arial, sans-serif");
 
-			//scale the font of the page. Scale is in percentage.
-			// For example scale = 1.2 means  scale the font by 120 percentage
-			if ( 'scale' in config ) {
-			    $.webfonts.scale(config.scale);
-			}
-			else{
-			    $.webfonts.scale(1);
-			}
-
 			if ( 'normalization' in config ) {
 				$(document).ready(function() {
 					$.webfonts.normalize(config.normalization);
@@ -75,16 +66,6 @@
 			$("select").css('font-family', $.webfonts.oldconfig["font-family"]);
 			//remove the cookie
 			$.cookie( 'webfonts-font', 'none', { 'path': '/', 'expires': 30 } );
-		},
-
-		/**
-		 * Scale the font of the page by given percentage
-		 * @param  percentage of scale. eg 1.2 for 120% scale
-		 */
-		scale: function(percentage) {
-			//TODO: Not Implemented. Need to find a better way to emulate fontconfig font-scale feature.
-			//Changing the font-size of few selectors does not work properly and not able to achieve
-			//uniform scaling.
 		},
 
 		/**
