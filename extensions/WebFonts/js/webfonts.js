@@ -50,6 +50,9 @@
 			}
 			//set the font option in cookie
 			$.cookie( 'webfonts-font', font, { 'path': '/', 'expires': 30 } );
+
+			// If we had reset the fonts for tags with lang attribute, apply the fonts again.
+			$.webfonts.loadFontsForLangAttr();
 		},
 
 		/**
@@ -64,6 +67,11 @@
 			//we need to reset the fonts of Input and Select explicitly.
 			$("input").css('font-family', $.webfonts.oldconfig["font-family"]);
 			$("select").css('font-family', $.webfonts.oldconfig["font-family"]);
+
+			// Reset the fonts applied for tags with lang attribute.
+			$(".webfonts-lang-attr").css( 'font-family', 'none' );
+			$(".webfonts-lang-attr").removeClass( 'webfonts-lang-attr' );
+
 			//remove the cookie
 			$.cookie( 'webfonts-font', 'none', { 'path': '/', 'expires': 30 } );
 		},
@@ -186,7 +194,11 @@
 			
 			$.webfonts.loadFontsForFontFamilyStyle();
 			$.webfonts.loadFontsForLangAttr();
-
+			if ( $(".webfonts-lang-attr").length && !$( '#webfonts-fontsmenu' ).length ){
+				// We need to show the reset option even if there is no font to show 
+				// for the language, if there is lang attr based font embedding.
+				 $.webfonts.buildMenu(config);
+			}
 		},
 		
 		/**
@@ -199,7 +211,7 @@
 			$('body').find('*[lang]').each(function(index) {
 				//check the availability of font.
 				//add a font-family style if it does not have any
-				if( languages[this.lang] && !this.style.fontFamily ) {
+				if( languages[this.lang] && ( !this.style.fontFamily || this.style.fontFamily == "none" ) ) {
 					fontFamily = languages[this.lang][0];
 					$.webfonts.addFont( fontFamily );
 					$(this).css('font-family', fontFamily);
@@ -259,6 +271,13 @@
 				$fontsMenu.append($fontMenuItem);
 
 			}
+
+			if ( !haveSchemes &&  !$('.webfonts-lang-attr').length ) {
+				// No schemes available, and no tags with lang attr
+				// with fonts loaded. Don't show the menu.
+				return;
+			}
+
 			var $resetLink = $( '<input />' )
 				.attr("type","radio")
 				.attr("name","font")
@@ -278,10 +297,6 @@
 				.append( $resetLabel );
 
 			$fontsMenu.append($resetLinkItem);
-			if ( !haveSchemes ) {
-				// No schemes available, don't show the tool
-				return;
-			}
 
 			var $menuDiv = $( '<div />' ).attr('id','webfonts-fonts')
 					.addClass( 'menu' )
