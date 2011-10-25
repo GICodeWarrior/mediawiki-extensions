@@ -263,7 +263,7 @@ class CommitInfo {
 		$cmd = "{$this->svnnotify} --repos-path \"{$this->repo}\" --revision \"{$this->transaction}\""
 			. " --to \"{$list}\" --smtp {$smtp} --subject-prefix \"SVN: \""
 			. " --subject-cx --no-first-line --with-diff --user-domain \"svn.wikimedia.org\""
-			. " --header \"http://www.mediawiki.org/wiki/Special:Code/MediaWiki/{$this->transaction}\""
+			. " --header \"https://www.mediawiki.org/wiki/Special:Code/MediaWiki/{$this->transaction}\""
 			. " -l {$this->svnlook}";
 	}
 
