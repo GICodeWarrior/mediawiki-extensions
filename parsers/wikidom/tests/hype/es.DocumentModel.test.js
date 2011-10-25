@@ -502,11 +502,43 @@ test( 'es.DocumentModel.prepareInsertion', 4, function() {
 test( 'es.DocumentModel.commit, es.DocumentModel.rollback', 6, function() {
 	var documentModel = es.DocumentModel.newFromPlainObject( obj );
 
+	var elementAttributeChange = documentModel.prepareElementAttributeChange(
+		0, 'set', 'test', 1
+	);
+
+	// Test 1
+	documentModel.commit( elementAttributeChange );
+	deepEqual(
+		documentModel.getData( new es.Range( 0, 5 ) ),
+		[
+			{ 'type': 'paragraph', 'attributes': { 'test': 1 } },
+			'a',
+			['b', { 'type': 'bold', 'hash': '#bold' }],
+			['c', { 'type': 'italic', 'hash': '#italic' }],
+			{ 'type': '/paragraph' }
+		],
+		'commit applies an element attribute change transaction to the content'
+	);
+
+	// Test 2
+	documentModel.rollback( elementAttributeChange );
+	deepEqual(
+		documentModel.getData( new es.Range( 0, 5 ) ),
+		[
+			{ 'type': 'paragraph' },
+			'a',
+			['b', { 'type': 'bold', 'hash': '#bold' }],
+			['c', { 'type': 'italic', 'hash': '#italic' }],
+			{ 'type': '/paragraph' }
+		],
+		'rollback reverses the effect of an element attribute change transaction on the content'
+	);
+
 	var contentAnnotation = documentModel.prepareContentAnnotation(
 		new es.Range( 1, 4 ), 'set', { 'type': 'bold' }
 	);
 
-	// Test 1
+	// Test 3
 	documentModel.commit( contentAnnotation );
 	deepEqual(
 		documentModel.getData( new es.Range( 0, 5 ) ),
@@ -520,7 +552,7 @@ test( 'es.DocumentModel.commit, es.DocumentModel.rollback', 6, function() {
 		'commit applies a content annotation transaction to the content'
 	);
 
-	// Test 2
+	// Test 4
 	documentModel.rollback( contentAnnotation );
 	deepEqual(
 		documentModel.getData( new es.Range( 0, 5 ) ),
@@ -536,7 +568,7 @@ test( 'es.DocumentModel.commit, es.DocumentModel.rollback', 6, function() {
 
 	var insertion = documentModel.prepareInsertion( 4, ['d'] );
 
-	// Test 3
+	// Test 5
 	documentModel.commit( insertion );
 	deepEqual(
 		documentModel.getData( new es.Range( 0, 6 ) ),
@@ -551,7 +583,7 @@ test( 'es.DocumentModel.commit, es.DocumentModel.rollback', 6, function() {
 		'commit applies an insertion transaction to the content'
 	);
 
-	// Test 4
+	// Test 6
 	documentModel.rollback( insertion );
 	deepEqual(
 		documentModel.getData( new es.Range( 0, 5 ) ),
@@ -567,7 +599,7 @@ test( 'es.DocumentModel.commit, es.DocumentModel.rollback', 6, function() {
 
 	var removal = documentModel.prepareRemoval( new es.Range( 2, 4 ) );
 
-	// Test 5
+	// Test 7
 	documentModel.commit( removal );
 	deepEqual(
 		documentModel.getData( new es.Range( 0, 3 ) ),
@@ -579,7 +611,7 @@ test( 'es.DocumentModel.commit, es.DocumentModel.rollback', 6, function() {
 		'commit applies a removal transaction to the content'
 	);
 
-	// Test 6
+	// Test 8
 	documentModel.rollback( removal );
 	deepEqual(
 		documentModel.getData( new es.Range( 0, 5 ) ),

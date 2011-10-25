@@ -93,15 +93,15 @@ es.DocumentModel.operations = ( function() {
 		if ( element.type === undefined ) {
 			throw 'Invalid element error. Can not set attributes on non-element data.';
 		}
-		if ( op.method === 'set' || ( op.method === 'clear' && invert ) ) {
+		if ( ( op.method === 'set' && !invert ) || ( op.method === 'clear' && invert ) ) {
 			// Automatically initialize attributes object
 			if ( !element.attributes ) {
 				element.attributes = {};
 			}
-			element.attributes[op.name] = op.value;
-		} else if ( op.method === 'clear' || ( op.method === 'set' && invert ) ) {
+			element.attributes[op.key] = op.value;
+		} else if ( ( op.method === 'clear' && !invert ) || ( op.method === 'set' && invert ) ) {
 			if ( element.attributes ) {
-				delete element.attributes[op.name];
+				delete element.attributes[op.key];
 			}
 			// Automatically clean up attributes object
 			var empty = true;
