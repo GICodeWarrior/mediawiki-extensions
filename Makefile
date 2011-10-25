@@ -69,7 +69,7 @@ check-if-patch-exists:
 		false; \
 	fi
 
-Auth:	php-openid-$(PHP_OPENID_VERSION).tar.gz
+Auth:	php-openid-$(PHP_OPENID_VERSION).tar.gz check-php-openid-sha1
 	@echo "... Extracting php-openid-$(PHP_OPENID_VERSION).tar.gz:"
 	tar -xzf php-openid-$(PHP_OPENID_VERSION).tar.gz $(SUBDIR)/Auth
 	rm -f php-openid-$(PHP_OPENID_VERSION).tar.gz
@@ -86,6 +86,16 @@ Auth:	php-openid-$(PHP_OPENID_VERSION).tar.gz
 php-openid-$(PHP_OPENID_VERSION).tar.gz:
 	@echo "... Downloading the PHP library for OpenID:"
 	wget --no-check-certificate https://github.com/openid/php-openid/tarball/$(PHP_OPENID_VERSION) -O php-openid-$(PHP_OPENID_VERSION).tar.gz
+
+check-php-openid-sha1:
+	@if $(SHELL) -c "sha1sum -c php-openid-$(PHP_OPENID_VERSION).tar.gz.sha1" >/dev/null 2>&1; then \
+		# echo "... The SHA1 hash does match."; \
+		true; \
+	else \
+		echo "... Something is wrong: the SHA1 of the downloaded file does not match the expected value."; \
+		false; \
+	fi
+
 
 # before starting a fresh installation or update,
 # you could use "make clean" to clean up, then "make" again
