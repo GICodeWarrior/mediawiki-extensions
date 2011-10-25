@@ -185,14 +185,24 @@ es.SurfaceView.prototype.onMouseDown = function( e ) {
 	this.cursor.initialLeft = null;
 	return false;
 };
-
+var lastEventPosition = new es.Position();
 es.SurfaceView.prototype.onMouseMove = function( e ) {
 	if ( e.button === 0 /* left mouse button */ && this.mouse.selecting ) {
+
+		if ( e.pageY - $(window).scrollTop() <= window.innerHeight ) {
+			stopScrolling();
+		} else {
+			lastEventPosition = es.Position.newFromEventPagePosition( e );
+			stopScrolling();
+			startScrolling();
+		}
+
 		this.hideCursor();
 		this.selection.to = this.documentView.getOffsetFromEvent( e );
 		if ( !this.drawSelection() ) {
 			this.showCursor();
 		}
+
 	}
 };
 
@@ -343,4 +353,28 @@ es.SurfaceView.prototype.drawSelection = function() {
 	} else {
 		return false;
 	}
+};
+
+
+
+
+
+var scrollStep = function() {
+	lastEventPosition.top += 20;
+	lastEventPosition.bottom += 20;
+	
+	fakelastEventPosition = new es.Position(lastEventPosition.left, lastEventPosition.top, lastEventPosition.bottom);
+
+	surfaceView.selection.to = surfaceView.documentView.getOffsetFromPosition( fakelastEventPosition );
+	surfaceView.drawSelection();
+		
+	$(window).scrollTop( $(window).scrollTop() + 20 );
+};
+var scrollInterval = null;
+var startScrolling = function( interval ) {
+	scrollStep();
+	scrollInterval = setInterval(scrollStep, interval || 50);
+};
+var stopScrolling = function() {
+	clearInterval( scrollInterval );
 };
