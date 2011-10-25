@@ -16,10 +16,13 @@ es.DocumentModel = function( data, attributes ) {
 	// Properties
 	node.data = $.isArray( data ) ? data : [];
 	node.attributes = $.isPlainObject( attributes ) ? attributes : {};
-	
-	// Auto-generate tree
-	this.growNodeTreeFromData( node, node.data );
-	
+
+	// Auto-generate model tree
+	var nodes = es.DocumentModel.createNodesFromData( node.data );
+	for ( var i = 0; i < nodes.length; i++ ) {
+		node.push( nodes[i] );
+	}
+
 	return node;
 };
 
@@ -36,19 +39,86 @@ es.DocumentModel.nodeModels = {};
  * Each function is called in the context of a state, and takes an operation object as a parameter.
  */
 es.DocumentModel.operations = ( function() {
+	function containsElements( op ) {
+		for ( i = 0; i < op.data.length; i++ ) {
+			if ( op.data.type !== undefined ) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	function isStructural( offset ) {
+		var edge = offset === 0 || offset === this.data.length - 1,
+			elementLeft = this.data[offset - 1].type !== undefined,
+			elementRight = this.data[offset].type !== undefined;
+		if ( edge || ( elementLeft && elementRight ) ) {
+			return true;
+		}
+		return false;
+	}
+
 	function retain( op ) {
 		annotate.call( this, this.cursor + op.length );
 		this.cursor += op.length;
 	}
-	
+
 	function insert( op ) {
-		es.spliceArray( this.data, this.cursor, op.data );
-		annotate.call( this, this.cursor + op.data.length );
+		if ( isStructural( this.cursor ) ) {
+			// TODO: Support tree updates when inserting between elements
+		} else {
+			// Get the node we are about to insert into
+			var node = this.tree.getNodeFromOffset( this.cursor );
+			if ( containsElements( op ) ) {
+				var nodeParent = node.getParent();
+				if ( !nodeParent ) {
+					throw 'Missing parent error. Node does not have a parent node.';
+				}
+				var offset = this.tree.getOffsetFromNode( node ),
+					length = node.getElementLength() + op.data.length,
+					index = nodeParent.indexOf( node );
+				if ( index === -1 ) {
+					throw 'Missing child error. Node could not be found in it\'s parent node.';
+				}
+				// Remove the node we are about to insert into from the model tree
+				nodeParent.splice( index, 1 );
+				// Perform insert on linear data model
+				es.spliceArray( this.data, this.cursor, op.data );
+				annotate.call( this, this.cursor + op.data.length );
+				// Regenerate nodes for the data we've affected
+				var nodes = es.DocumentModel.createNodesFromData(
+					this.data.slice( offset, length )
+				);
+				// Insert new elements into the tree where the old one used to be
+				for ( var i = nodes.length; i >= 0; i-- ) {
+					this.tree.splice( index, nodes[i] );
+				}
+			} else {
+				// Perform insert on linear data model
+				es.spliceArray( this.data, this.cursor, op.data );
+				annotate.call( this, this.cursor + op.data.length );
+				// Update model tree
+				node.adjustContentLength( op.data.length );
+			}
+		}
 		this.cursor += op.data.length;
 	}
 	
 	function remove( op ) {
-		this.data.splice( this.cursor, op.data.length );
+		if ( isStructural( this.cursor ) && isStructural( this.cursor + op.data.length ) ) {
+			// TODO: Support tree updates when removing whole elements
+		} else {
+			if ( containsElements( op ) ) {
+				// TODO: Support tree updates when removing partial elements
+			} else {
+				// Get the node we are removing content from
+				var node = this.tree.getNodeFromOffset( this.cursor );
+				// Update model tree
+				node.adjustContentLength( -op.data.length );
+				// Remove content from linear data model
+				this.data.splice( this.cursor, op.data.length );
+			}
+		}
 	}
 	
 	function attribute( op, invert ) {
@@ -182,6 +252,56 @@ es.DocumentModel.operations = ( function() {
 } )();
 
 /* Static Methods */
+
+/*
+ * Create child nodes from an array of data.
+ * 
+ * These child nodes are used for the model tree, which is a space partitioning data structure in
+ * which each node contains the length of itself (1 for opening, 1 for closing) and the lengths of
+ * it's child nodes.
+ */
+es.DocumentModel.createNodesFromData = function( data ) {
+	var currentNode = new es.DocumentModelNode();
+	for ( var i = 0, length = data.length; i < length; i++ ) {
+		if ( data[i].type !== undefined ) {
+			// It's an element, figure out it's type
+			var element = data[i],
+				type = element.type,
+				open = type[0] !== '/';
+			// Trim the "/" off the beginning of closing tag types
+			if ( !open ) {
+				type = type.substr( 1 );
+			}
+			if ( open ) {
+				// Validate the element type
+				if ( !( type in es.DocumentModel.nodeModels ) ) {
+					throw 'Unsuported element error. No class registered for element type: ' + type;
+				}
+				// Create a model node for the element
+				var newNode = new es.DocumentModel.nodeModels[element.type]( element );
+				// Add the new model node as a child
+				currentNode.push( newNode );
+				// Descend into the new model node
+				currentNode = newNode;
+			} else {
+				// Return to the parent node
+				currentNode = currentNode.getParent();
+			}
+		} else {
+			// It's content, let's start tracking the length
+			var start = i;
+			// Move forward to the next object, tracking the length as we go
+			while ( data[i].type === undefined && i < length ) {
+				i++;
+			}
+			// Now we know how long the current node is
+			currentNode.setContentLength( i - start );
+			// The while loop left us 1 element to far
+			i--;
+		}
+	}
+	return currentNode.slice();
+};
 
 /**
  * Creates a document model from a plain object.
@@ -407,54 +527,6 @@ es.DocumentModel.prototype.getData = function( range, deep ) {
 	return deep ? es.copyArray( data ) : data;
 };
 
-/*
- * Grow child nodes onto a root node from an array of data.
- * 
- * A model tree is a space partitioning data structure in which each node contains the length of
- * itself (1 for opening, 1 for closing) and the lengths of it's child nodes.
- */
-es.DocumentModel.prototype.growNodeTreeFromData = function( root, data ) {
-	var currentNode = root;
-	for ( var i = 0, length = data.length; i < length; i++ ) {
-		if ( data[i].type !== undefined ) {
-			// It's an element, figure out it's type
-			var element = data[i],
-				type = element.type,
-				open = type[0] !== '/';
-			// Trim the "/" off the beginning of closing tag types
-			if ( !open ) {
-				type = type.substr( 1 );
-			}
-			if ( open ) {
-				// Validate the element type
-				if ( !( type in es.DocumentModel.nodeModels ) ) {
-					throw 'Unsuported element error. No class registered for element type: ' + type;
-				}
-				// Create a model node for the element
-				var newNode = new es.DocumentModel.nodeModels[element.type]( element );
-				// Add the new model node as a child
-				currentNode.push( newNode );
-				// Descend into the new model node
-				currentNode = newNode;
-			} else {
-				// Return to the parent node
-				currentNode = currentNode.getParent();
-			}
-		} else {
-			// It's content, let's start tracking the length
-			var start = i;
-			// Move forward to the next object, tracking the length as we go
-			while ( data[i].type === undefined && i < length ) {
-				i++;
-			}
-			// Now we know how long the current node is
-			currentNode.setContentLength( i - start );
-			// The while loop left us 1 element to far
-			i--;
-		}
-	}
-};
-
 /**
  * Gets the content offset of a node.
  * 
@@ -586,7 +658,8 @@ es.DocumentModel.prototype.prepareInsertion = function( offset, data ) {
 	/*function isStructuralData( data ) {
 		return data.length >= 2 &&
 			data[0].type !== undefined && data[0].type.charAt( 0 ) != '/' &&
-			data[data.length - 1].type !== undefined && data[data.length - 1].type.charAt( 0 ) == '/';
+			data[data.length - 1].type !==
+				undefined && data[data.length - 1].type.charAt( 0 ) == '/';
 	}*/
 	function isStructuralData( data ) {
 		var i;
@@ -602,7 +675,8 @@ es.DocumentModel.prototype.prepareInsertion = function( offset, data ) {
 		// The following are structural locations:
 		// * The beginning of the document (offset 0)
 		// * The end of the document (offset length-1)
-		// * Any location between elements, i.e. the item before is a closing and the item after is an opening
+		// * Any location between elements, i.e. the item before is a closing and the item after is
+		// * an opening
 		return offset <= 0 || offset >= data.length - 1 || (
 			data[offset - 1].type !== undefined && data[offset - 1].type.charAt( 0 ) == '/' &&
 			data[offset].type !== undefined && data[offset].type.charAt( 0 ) != '/'
@@ -611,7 +685,8 @@ es.DocumentModel.prototype.prepareInsertion = function( offset, data ) {
 
 	/**
 	 * Balances mismatched openings/closings in data
-	 * @return data itself if nothing was changed, or a clone of data with balancing changes made. data itself is never touched
+	 * @return data itself if nothing was changed, or a clone of data with balancing changes made.
+	 * data itself is never touched
 	 */
 	function balance( data ) {
 		var i, stack = [], element, workingData = null;
@@ -638,7 +713,8 @@ es.DocumentModel.prototype.prepareInsertion = function( offset, data ) {
 					// Closing doesn't match what's expected
 					// This means the input is malformed and cannot possibly
 					// have been a fragment taken from well-formed data
-					throw 'Input is malformed: expected /' + element + ' but got ' + data[i].type + ' at index ' + i;
+					throw 'Input is malformed: expected /' + element + ' but got ' + data[i].type +
+						' at index ' + i;
 				}
 			}
 		}

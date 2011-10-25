@@ -499,7 +499,7 @@ test( 'es.DocumentModel.prepareInsertion', 4, function() {
 	);
 } );
 
-test( 'es.DocumentModel.commit, es.DocumentModel.rollback', 8, function() {
+test( 'es.DocumentModel.commit, es.DocumentModel.rollback', 10, function() {
 	var documentModel = es.DocumentModel.newFromPlainObject( obj );
 
 	var elementAttributeChange = documentModel.prepareElementAttributeChange(
@@ -584,6 +584,18 @@ test( 'es.DocumentModel.commit, es.DocumentModel.rollback', 8, function() {
 	);
 
 	// Test 6
+	deepEqual(
+		documentModel[0].getContent(),
+		[
+			'a',
+			['b', { 'type': 'bold', 'hash': '#bold' }],
+			['c', { 'type': 'italic', 'hash': '#italic' }],
+			'd'
+		],
+		'commit keeps model tree up to date'
+	);
+
+	// Test 7
 	documentModel.rollback( insertion );
 	deepEqual(
 		documentModel.getData( new es.Range( 0, 5 ) ),
@@ -597,9 +609,20 @@ test( 'es.DocumentModel.commit, es.DocumentModel.rollback', 8, function() {
 		'rollback reverses the effect of an insertion transaction on the content'
 	);
 
+	// Test 8
+	deepEqual(
+		documentModel[0].getContent(),
+		[
+			'a',
+			['b', { 'type': 'bold', 'hash': '#bold' }],
+			['c', { 'type': 'italic', 'hash': '#italic' }]
+		],
+		'rollback keeps model tree up to date'
+	);
+
 	var removal = documentModel.prepareRemoval( new es.Range( 2, 4 ) );
 
-	// Test 7
+	// Test 9
 	documentModel.commit( removal );
 	deepEqual(
 		documentModel.getData( new es.Range( 0, 3 ) ),
@@ -611,7 +634,7 @@ test( 'es.DocumentModel.commit, es.DocumentModel.rollback', 8, function() {
 		'commit applies a removal transaction to the content'
 	);
 
-	// Test 8
+	// Test 10
 	documentModel.rollback( removal );
 	deepEqual(
 		documentModel.getData( new es.Range( 0, 5 ) ),
