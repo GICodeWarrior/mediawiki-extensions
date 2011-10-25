@@ -13,6 +13,7 @@
 		config : $.webfonts.config,
 		/* Version number */
 		version: "0.1.2",
+		fonts : [],
 		set: function( font ) {
 			if ( !font || font === "none" ) {
 				$.webfonts.reset();
@@ -28,8 +29,8 @@
 			var config = $.webfonts.config.fonts[font];
 
 			//load the style sheet for the font
-			$.webfonts.loadcss(font);
-
+			$.webfonts.addFont(font)
+			
 			//save the current font and its size. Used for reset.
 			if ( !$.webfonts.oldconfig ) {
 				var $body = $("body");
@@ -150,6 +151,24 @@
 			$(styleString).appendTo("head");
 
 		},
+		
+		/*
+		 * Add a font to the page.
+		 * This method ensures that css are not duplicated and
+		 * keep track of added fonts.
+		 * @param fontFamilyName The fontfamily name
+		 */
+		addFont : function( fontFamilyName ) {
+			// avoid duplication
+			if ( $.inArray(fontFamilyName, $.webfonts.fonts ) < 0 ){
+				// check whether the requested font is available.
+				if ( fontFamilyName in $.webfonts.config.fonts ) {
+					$.webfonts.loadcss( fontFamilyName );
+					$.webfonts.fonts.push( fontFamilyName );
+				}
+			}
+		},
+		
 		/**
 		 * Setup the font selection menu.
 		 * It also apply the font from cookie, if any.
@@ -183,43 +202,56 @@
 				//mark it as checked
 				$('#'+fontID(cookie_font)).attr('checked', 'checked');
 			}
-
-			//if there are tags with font-family style definition, get a list of fonts to be loaded
-			var fontFamilies = [];
-			$('body').find('*[style]').each(function(index) {
-				if( this.style.fontFamily) {
-					var fontFamilyItems = this.style.fontFamily.split(",");
-					$.each(fontFamilyItems, function(index, value) {
-						fontFamilies.push(value);
-					});
-				}
-			});
 			
+			$.webfonts.loadFontsForFontFamilyStyle();
+			$.webfonts.loadFontsForLangAttr();
+
+		},
+		
+		/**
+		 * Scan the page for tags with lang attr and load the default font
+		 * for that language if available.
+		 */
+		loadFontsForLangAttr: function() {
+			var languages = $.webfonts.config.languages;
 			//if there are tags with lang attribute, 
 			$('body').find('*[lang]').each(function(index) {
 				//check the availability of font.
-				if(languages[this.lang]){
-					//add a font-family style if it does not have any
-					if( !this.style.fontFamily) {
-						//use the default font, ie the first one.
-						fontFamilies.push(languages[this.lang][0]);
-						$(this).css('font-family', languages[this.lang][0]);
-					}
+				//add a font-family style if it does not have any
+				if( languages[this.lang] && !this.style.fontFamily ) {
+					fontFamily = languages[this.lang][0];
+					$.webfonts.addFont( fontFamily );
+					$(this).css('font-family', fontFamily);
+					$(this).addClass('webfonts-lang-attr');
 				}
 			});
 			
-			//get unique list
-			fontFamilies = $.unique(fontFamilies);
-			//load css for each of the item in fontfamily list
-			$.each(fontFamilies, function(index, fontFamily) {
-				//remove the ' characters if any.
-				fontFamily = fontFamily.replace(/'/g, '');
-				if ( fontFamily in $.webfonts.config.fonts ) {
-					$.webfonts.loadcss(fontFamily);
+		},
+		
+		/**
+		 * Scan the page for tags with font-family style declarations
+		 * If that font is available, embed it.
+		 */
+		loadFontsForFontFamilyStyle: function() {
+			var languages = $.webfonts.config.languages;
+			//if there are tags with font-family style definition, get a list of fonts to be loaded
+			$('body').find('*[style]').each(function(index) {
+				if( this.style.fontFamily ) {
+					var fontFamilyItems = this.style.fontFamily.split(",");
+					$.each( fontFamilyItems, function(index, fontFamily ) {
+						//remove the ' characters if any.
+						fontFamily = fontFamily.replace(/'/g, '');
+						$.webfonts.addFont( fontFamily );
+					});
 				}
 			});
 
 		},
+		
+		/**
+		 * Prepare the menu for the webfonts.
+		 * @param config The webfont configuration.
+		 */
 		buildMenu: function(config) {
 			var haveSchemes = false;
 			// Build font dropdown
