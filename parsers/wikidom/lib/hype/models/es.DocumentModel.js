@@ -580,7 +580,15 @@ es.DocumentModel.prototype.getContentFromNode = function( node, range ) {
  * @returns {es.Transaction}
  */
 es.DocumentModel.prototype.prepareInsertion = function( offset, data ) {
-	function containsStructuralElements( data ) {
+	/**
+	 * Returns true if data starts with an opening element and ends with a closing element
+	 */
+	/*function isStructuralData( data ) {
+		return data.length >= 2 &&
+			data[0].type !== undefined && data[0].type.charAt( 0 ) != '/' &&
+			data[data.length - 1].type !== undefined && data[data.length - 1].type.charAt( 0 ) == '/';
+	}*/
+	function isStructuralData( data ) {
 		var i;
 		for ( i = 0; i < data.length; i++ ) {
 			if ( data[i].type !== undefined ) {
@@ -596,20 +604,76 @@ es.DocumentModel.prototype.prepareInsertion = function( offset, data ) {
 		// * The end of the document (offset length-1)
 		// * Any location between elements, i.e. the item before is a closing and the item after is an opening
 		return offset <= 0 || offset >= data.length - 1 || (
-			data[offset - 1].type !== undefined && data[offset - 1].type.charAt( 0 ) != '/' &&
-			data[offset].type !== undefined && data[offset].type.charAt( 0 ) == '/'
+			data[offset - 1].type !== undefined && data[offset - 1].type.charAt( 0 ) == '/' &&
+			data[offset].type !== undefined && data[offset].type.charAt( 0 ) != '/'
 		);
 	}
+
+	/**
+	 * Balances mismatched openings/closings in data
+	 * @return data itself if nothing was changed, or a clone of data with balancing changes made. data itself is never touched
+	 */
+	function balance( data ) {
+		var i, stack = [], element, workingData = null;
+		
+		for ( i = 0; i < data.length; i++ ) {
+			if ( data[i].type === undefined ) {
+				// Not an opening or a closing, skip
+			} else if ( data[i].type.charAt( 0 ) != '/' ) {
+				// Opening
+				stack.push( data[i].type );
+			} else {
+				// Closing
+				if ( stack.length == 0 ) {
+					// The stack is empty, so this is an unopened closing
+					// Remove it
+					if ( workingData === null ) {
+						workingData = data.slice( 0 );
+					}
+					workingData.splice( i, 1 );
+				}
+				
+				element = stack.pop();
+				if ( element != data[i].type.substr( 1 ) ) {
+					// Closing doesn't match what's expected
+					// This means the input is malformed and cannot possibly
+					// have been a fragment taken from well-formed data
+					throw 'Input is malformed: expected /' + element + ' but got ' + data[i].type + ' at index ' + i;
+				}
+			}
+		}
+		
+		// Check whether there are any unclosed tags and close them
+		if ( stack.length > 0 && workingData === null ) {
+			workingData = data.slice( 0 );
+		}
+		while ( stack.length > 0 ) {
+			element = stack.pop();
+			workingData.push( { 'type': '/' + element } );
+		}
+		
+		// TODO
+		// Check whether there is any raw unenclosed content and deal with that somehow
+		
+		return workingData || data;
+	}
 	
-	var tx = new es.Transaction(), insertedData = data;
+	var tx = new es.Transaction(),
+		insertedData = data, // may be cloned and modified
+		isStructuralLoc = isStructuralLocation( offset, this.data );
+		
 	if ( offset > 0 ) {
 		tx.pushRetain( offset );
 	}
-	// TODO check for structural changes
-	if ( containsStructuralElements( insertedData ) ) {
-		// TODO
+	
+	if ( isStructuralData( insertedData ) ) {
+		if ( isStructuralLoc ) {
+			insertedData = balance( insertedData );
+		} else {
+			// TODO close and reopen the element the insertion point is in
+		}
 	} else {
-		if ( isStructuralLocation( offset, this.data ) ) {
+		if ( isStructuralLoc ) {
 			// We're inserting content into a structural location,
 			// so we need to wrap the inserted content in a paragraph.
 			insertedData = [ { 'type': 'paragraph' }, { 'type': '/paragraph' } ];
