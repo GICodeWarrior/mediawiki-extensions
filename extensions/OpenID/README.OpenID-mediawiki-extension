@@ -1,5 +1,5 @@
 MediaWiki OpenID extension README.OpenID-mediawiki-extension file
-version 0.944-beta 20111014
+version 0.945-beta 20111025
 
 Homepage and manual http://www.mediawiki.org/wiki/Extension:OpenID
 
@@ -467,6 +467,7 @@ The big changes for the future:
   into that account now
 
 == CHANGES ==
+* 0.945 improved Makefile: added the SHA1 checksum of php-openid library.tar.gz
 * 0.944 improved the Makefile by adding a test if "patch" (program) exists
         some users reported that this is not standard in all distrubtions
 * 0.942 code cosmetic db schema updater
