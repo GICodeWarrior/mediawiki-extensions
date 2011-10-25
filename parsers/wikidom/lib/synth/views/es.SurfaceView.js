@@ -9,11 +9,10 @@ es.SurfaceView = function( $container, model ) {
 	this.model = model;
 	
 	// Initialize document view
-	this.documentView = new es.DocumentView( this.model.getDocument() );
+	this.documentView = new es.DocumentView( this.model.getDocument(), this );
 	this.$.append( this.documentView.$ );
 
 	// Interaction state
-	this.width = null;
 	this.mouse = {
 		selecting: false,
 		clicks: 0,
@@ -90,19 +89,34 @@ es.SurfaceView = function( $container, model ) {
 				return surfaceView.onPaste( e );			
 			}
 		} ).focus();
+
+	// First render
+	this.documentView.renderContent();
+
+	this.dimensions = {
+		width: this.$.width(),
+		height: this.$.height(),
+		scrollTop: $(window).scrollTop()
+	};
 	
 	// Re-render when resizing horizontally
-	$(window).resize( function() {
+	$( window ).resize( function() {
 		surfaceView.hideCursor();
+		surfaceView.dimensions.height = surfaceView.$.height();
 		var width = surfaceView.$.width();
-		if ( surfaceView.width !== width ) {
-			surfaceView.width = width;
+		if ( surfaceView.dimensions.width !== width ) {
+			surfaceView.dimensions.width = width;
 			surfaceView.documentView.renderContent();
 		}
 	} );
 	
-	// First render
-	this.documentView.renderContent();
+	$( window ).scroll( function() {
+		surfaceView.dimensions.scrollTop = $( window ).scrollTop()
+	} );
+};
+
+es.SurfaceView.prototype.getDimensions = function() {
+	return this.dimensions;
 };
 
 es.SurfaceView.prototype.onKeyDown = function( e ) {

@@ -5,9 +5,10 @@
  * @extends {es.ViewList}
  * @constructor
  */
-es.DocumentView = function( documentModel ) {
+es.DocumentView = function( documentModel, surfaceView ) {
 	es.ViewList.call( this, documentModel );
-	this.$.addClass( 'editSurface-document' )
+	this.$.addClass( 'editSurface-document' );
+	this.surfaceView = surfaceView;
 };
 
 /* Methods */
