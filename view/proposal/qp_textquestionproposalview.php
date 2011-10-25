@@ -45,6 +45,8 @@ class qp_TextQuestionProposalView extends qp_StubQuestionProposalView {
 	 * @param  $name  string  name of input/select element (used in the view)
 	 * @param  $text_answer  string user's POSTed category answer
 	 *         (empty string '' means no answer)
+	 * @param  $unanswered  boolean indicates whether the category of submitted poll
+	 *                      was non-blank (true) or not (false)
 	 * @return  stdClass object with viewtokens entry
 	 */
 	function addCatDef( qp_TextQuestionOptions $opt, $name, $text_answer, $unanswered ) {
@@ -57,10 +59,7 @@ class qp_TextQuestionProposalView extends qp_StubQuestionProposalView {
 		# property 'value' contains value previousely chosen
 		#          by user (if any)
 		# property 'attributes' contain extra atttibutes of current category definition
-		# property 'unanswered'  boolean
-		#          true - the question was POSTed but category is unanswered
-		#          false - the question was not POSTed or category is answered
-		$this->viewtokens[] = (object) array(
+		$viewtoken = (object) array(
 			'type' => $opt->type,
 			'options' => $opt->input_options,
 			'name' => $name,
@@ -68,6 +67,21 @@ class qp_TextQuestionProposalView extends qp_StubQuestionProposalView {
 			'unanswered' => $unanswered,
 			'attributes' => $opt->attributes
 		);
+		# fix values of measurable attributes (allow only non-negative integer values)
+		# zero value means attribute is unused
+		foreach ( array( 'width', 'height' ) as $measurable ) {
+			$val = &$viewtoken->attributes[$measurable];
+			if ( $val === null ) {
+				$val = 0;
+			} elseif ( is_numeric( $val ) ) {
+				if ( ( $val = intval( $val ) ) < 1 ) {
+					$val = 0;
+				}
+			} else {
+				$val = 'auto';
+			}
+		}
+		$this->viewtokens[] = $viewtoken;
 		$this->lastTokenType = 'category';
 	}
 

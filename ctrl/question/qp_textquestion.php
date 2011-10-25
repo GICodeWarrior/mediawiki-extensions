@@ -23,23 +23,34 @@ class qp_TextQuestionOptions {
 
 	# whether the current option has xml-like attributes specified
 	var $hasAttributes = false;
+	## Category attributes;
+	#    Defined as xml-like attribute in the first element of options list.
 	var $attributes = array(
-		## a value of input text field width in 'em'
-		# possible values: null, positive int
-		# defined as first element xml-like attribute of options list, for example:
-		# <<:: width="12">> or <<:: width="15"|test>>
-		# currently, it is used only for text inputs (not for select/option list)
+		## width of input text field
+		#    possible values: null, positive int, 'auto'
+		# <<:: width="12">> or <<:: width="15"|test>> or <<:: width="auto"|asd|fgh>>
+		# currently, it is used only for text input / textarea (not for select/option list)
 		'width' => null,
+		## number of text lines in an select / textarea
+		#    possible values: null, positive int, 'auto'
+		#    when there is no options or only one option, it produces an textarea
+		#    when there is more than one option, it produces a scrollable select / options list
+		#    value 'auto' is meaningful only when there are more than one option given;
+		# <<:: height="4">> or <<:: height="10"|prefilled text>>
+		'height' => null,
 		## whether the text options of current category has to be sorted;
-		# possible values: null (do not sort), 'asc', 'desc'
-		# defined as first element xml-like attribute of options list, for example:
+		#    possible values: null (do not sort), 'asc', 'desc'
 		# <<:: sorting="desc"|a|b|c>>
 		'sorting' => null,
 		## whether the checkbox type option of current category has to be checked by default;
-		# possible value: null (not checked), not null (checked)
-		# defined as first element xml-like attribute of options list, for example:
+		#    possible values: null (not checked), not null (checked)
 		# <[checked=""]>
-		'checked' => null
+		'checked' => null,
+		## whether the select for current category can have multiple options selected
+		#    possible values: null (no multiple selection), not null (multiple selection)
+		#    it is meaningful only for text categories with multiple options defined:
+		# <<:: multiple=""|1|2|3>>
+		'multiple' => null
 	);
 	# a pointer to last element in $this->input_options array
 	var $iopt_last;
@@ -103,7 +114,7 @@ class qp_TextQuestionOptions {
 				# because it is checked in $this->addEmptyOption()
 				$this->hasAttributes = true;
 				# parse attributes string
-				$option_attributes = qp_Setup::getXmlLikeAttributes( $matches[1], array( 'width', 'sorting' ) );
+				$option_attributes = qp_Setup::getXmlLikeAttributes( $matches[1], array( 'width', 'height', 'sorting', 'multiple' ) );
 				# apply attributes to current option
 				foreach ( $option_attributes as $attr_name => $attr_val ) {
 					$this->attributes[$attr_name] = $attr_val;
@@ -256,14 +267,21 @@ class qp_TextQuestion extends qp_StubQuestion {
 	function loadProposalCategory( qp_TextQuestionOptions $opt, $proposalId, $catId ) {
 		global $wgContLang;
 		$name = "q{$this->mQuestionId}p{$proposalId}s{$catId}";
-		# default value for unanswered category
-		# boolean true "checked" checkbox / radiobutton
-		# string - text input / select option value
-		$text_answer = false;
+		$answered = false;
+		$text_answer = '';
 		# try to load from POST data
-		if ( $this->poll->mBeingCorrected && $this->mRequest->getVal( $name ) !== null ) {
+		if ( $this->poll->mBeingCorrected &&
+				( $ta = $this->mRequest->getArray( $name ) ) !== null ) {
 			if ( $opt->type === 'text' ) {
-				if ( ( $ta = trim( $this->mRequest->getText( $name ) ) ) != '' ) {
+				if ( count( $ta ) === 1 ) {
+					# fallback to WebRequest::getText(), because it offers useful preprocessing
+					$ta = trim( $this->mRequest->getText( $name ) );
+				} else {
+					# select multiple values are separated with new lines
+					$ta = implode( "\n", array_map( 'trim', $ta ) );
+				}
+				if ( $ta != '' ) {
+					$answered = true;
 					if ( strlen( $ta ) > qp_Setup::$field_max_len['text_answer'] ) {
 						$text_answer = $wgContLang->truncate( $ta, qp_Setup::$field_max_len['text_answer'] , '' );
 					} else {
@@ -271,34 +289,28 @@ class qp_TextQuestion extends qp_StubQuestion {
 					}
 				}
 			} else {
-				$text_answer = true;
+				$answered = true;
 			}
 		}
 		# try to load from pollStore
 		# pollStore optionally overrides POST data
-		$prev_text_answer = $this->answerExists( $opt->type, $proposalId, $catId );
-		if ( is_string( $prev_text_answer ) ) {
-			$text_answer = $prev_text_answer;
-		} else {
-			if ( $prev_text_answer === true ) {
-				$text_answer = true;
+		if ( ( $prev_text_answer = $this->answerExists( $opt->type, $proposalId, $catId ) ) !== false ) {
+			$answered = true;
+			if ( is_string( $prev_text_answer ) ) {
+				$text_answer = $prev_text_answer;
 			}
 		}
-		if ( $text_answer !== false ) {
+		if ( $answered !== false ) {
 			# add category to the list of user answers for current proposal (row)
 			$this->mProposalCategoryId[ $proposalId ][] = $catId;
-			if ( is_string( $text_answer ) ) {
-				$this->mProposalCategoryText[ $proposalId ][] = $text_answer;
-			} else {
-				$this->mProposalCategoryText[ $proposalId ][] = '';
-				if ( $opt->type !== 'text' ) {
-					$opt->attributes['checked'] = true;
-				}
+			$this->mProposalCategoryText[ $proposalId ][] = $text_answer;
+			if ( $opt->type !== 'text' ) {
+				$opt->attributes['checked'] = true;
 			}
 		}
 		# finally, add new category input options for the view
 		$opt->closeCategory();
-		$this->propview->addCatDef( $opt, $name, $text_answer, $this->poll->mBeingCorrected && $text_answer === false );
+		$this->propview->addCatDef( $opt, $name, $text_answer, $this->poll->mBeingCorrected && !$answered );
 	}
 
 	/**

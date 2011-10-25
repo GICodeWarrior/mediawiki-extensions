@@ -469,8 +469,9 @@ class qp_Setup {
 		$attr_vals = array();
 		$match = array();
 		foreach ( $attr_list as $attr_name ) {
-			preg_match( '/' . $attr_name . '\s?=\s?"(.*?)"/u', $attr_str, $match );
-			$attr_vals[$attr_name] = ( count( $match ) > 1 ) ? $match[1] : null;
+			preg_match( '/' . $attr_name . '\s?=\s?(?:"(.*?)"|(\d+))/u', $attr_str, $match );
+			# array_pop() "prefers" to match (\d+), when available
+			$attr_vals[$attr_name] = ( count( $match ) > 1 ) ? array_pop( $match ) : null;
 		}
 		return $attr_vals;
 	}

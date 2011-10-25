@@ -48,7 +48,7 @@
 		/**
 		 * Parses coordinate of poll's input stored in id and
 		 * stores it into self.catCoord;
-		 * @param  id  id attribute of input / select element
+		 * @param  id  id attribute of input / textarea / select element
 		 * @return  true, when value of id has valid coordinate, false otherwise.
 		 */
 		setCatCoord : function( id ) {
@@ -87,9 +87,14 @@
 		applyRadio : function( catElem ) {
 			if ( self.radioIsClicked ) {
 				// deselect all inputs
-				if ( catElem.nodeName == 'SELECT' || catElem.type == 'text' ) {
+				if ( catElem.nodeName != 'INPUT' || catElem.type == 'text' ) {
+					// text controls
 					catElem.value = '';
+					if ( catElem.nodeName == 'TEXTAREA' ) {
+						catElem.innerHTML = '';
+					}
 				} else {
+					// switching controls
 					catElem.checked = false;
 				}
 			} else {
@@ -160,6 +165,15 @@
 			}
 		},
 
+		setTextRowHandler : function( parent, tagName ) {
+			var tags = parent.getElementsByTagName( tagName );
+			for ( j = 0; j < tags.length; j++ ) {
+				if ( tags[j].id && tags[j].id.slice( 0, 2 ) == 'tx' ) {
+					addEvent( tags[j], "click", self.clickTextRow );
+				}
+			}
+		},
+
 		/**
 		 * Prepare the Poll for "javascriptable" browsers
 		 */
@@ -198,13 +212,8 @@
 						}
 					}
 				}
-				var select = bodyContentDiv[i].getElementsByTagName( 'select' );
-				for ( j = 0; j < select.length; j++ ) {
-					// selects currently are used only with question type="text", type="text!"
-					if ( select[j].id && select[j].id.slice( 0, 2 ) == 'tx' ) {
-						addEvent( select[j], "click", self.clickTextRow );
-					}
-				}
+				self.setTextRowHandler( bodyContentDiv[i], 'select' );
+				self.setTextRowHandler( bodyContentDiv[i], 'textarea' );
 			}
 		}
 	};
