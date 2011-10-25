@@ -62,7 +62,7 @@ es.DocumentView.prototype.getOffsetFromEvent = function( e ) {
 			? $target : $target.closest( '.editSurface-block' ),
 		position = es.Position.newFromEventPagePosition( e );
 
-	if( $block.length ) {
+	if( false && $block.length ) {
 		var	block = $block.data( 'block' ),
 			offset = block.getOffsetFromPosition( position );
 		while ( typeof block.list !== 'undefined' ) {
@@ -71,6 +71,15 @@ es.DocumentView.prototype.getOffsetFromEvent = function( e ) {
 		}
 		return offset;
 	} else {
+		//console.log(position.top);
+		
+		if (position.top - $(window).scrollTop() > window.innerHeight) {
+			console.log("b " + position.top);
+			position.top = window.innerHeight + $(window).scrollTop() + 10;
+			console.log("j " + position.top);
+		}
+
+		
 		return this.getOffsetFromPosition( position );
 	}
 };
@@ -86,6 +95,14 @@ es.DocumentView.prototype.getOffsetFromPosition = function( position ) {
 	if ( this.items.length === 0 ) {
 		return 0;
 	}
+
+		if (position.top - $(window).scrollTop() > window.innerHeight) {
+			console.log("b " + position.top);
+			position.top = window.innerHeight + $(window).scrollTop() + 10;
+			position.left = window.innerWidth;
+			console.log("j " + position.top);
+		}	
+	
 	
 	var blockView = this.items[0];
 

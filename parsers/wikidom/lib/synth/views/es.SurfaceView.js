@@ -213,6 +213,7 @@ es.SurfaceView.prototype.onMouseUp = function( e ) {
 		}
 	}
 	this.mouse.selecting = false;
+	stopScrolling();
 };
 
 es.SurfaceView.prototype.onCut = function( e ) {
