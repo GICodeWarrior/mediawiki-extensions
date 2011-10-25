@@ -598,7 +598,7 @@ es.DocumentModel.prototype.prepareInsertion = function( offset, data ) {
 	if ( containsStructuralElements( insertedData ) ) {
 		// TODO
 	} else {
-		if ( isStructuralLocation( offset, insertedData ) ) {
+		if ( isStructuralLocation( offset, this.data ) ) {
 			// We're inserting content into a structural location,
 			// so we need to wrap the inserted content in a paragraph.
 			insertedData = [ { 'type': 'paragraph' }, { 'type': '/paragraph' } ];

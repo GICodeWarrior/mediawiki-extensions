@@ -499,7 +499,7 @@ test( 'es.DocumentModel.prepareInsertion', 4, function() {
 	);
 } );
 
-test( 'es.DocumentModel.commit, es.DocumentModel.rollback', 6, function() {
+test( 'es.DocumentModel.commit, es.DocumentModel.rollback', 8, function() {
 	var documentModel = es.DocumentModel.newFromPlainObject( obj );
 
 	var elementAttributeChange = documentModel.prepareElementAttributeChange(
