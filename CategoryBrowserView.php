@@ -87,7 +87,7 @@ abstract class CB_AbstractPagesView {
 		# }}}
 	}
 
-	/*
+	/**
 	 * previous page AJAX link
 	 * @param $list, when the link is available it will be rendered then pushed to the list
 	 *     we cannot just return rendered link, because it depends not just on pager offset,
@@ -112,7 +112,7 @@ abstract class CB_AbstractPagesView {
 		}
 	}
 
-	/*
+	/**
 	 * next page AJAX link
 	 * @param $list, when the link is available it will be rendered then pushed to the list
 	 *     we cannot just return rendered link, because it depends not just on pager offset,
@@ -136,7 +136,7 @@ abstract class CB_AbstractPagesView {
 		}
 	}
 
-	/*
+	/**
 	 * show the sortkey, when it does not match title name
 	 * note that cl_sortkey is empty for CB_RootCond pager
 	 * @return sortkey html hint, when the sortkey differs from title name, empty string otherwise

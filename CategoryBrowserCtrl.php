@@ -46,7 +46,7 @@ class CategoryBrowser {
 		CB_Setup::initUser();
 	}
 
-	/*
+	/**
 	 * include stylesheets and scripts; set javascript variables
 	 * @param $outputPage - an instance of OutputPage
 	 * @param $isRTL - whether the current language is RTL
@@ -94,11 +94,11 @@ class CategoryBrowser {
 		return $result;
 	}
 
-	/*
+	/**
 	 * currently passed to Javascript:
 	 * localMessages, localDbFields, localBrackets, localBoolOps, localCmpOps
 	 */
-	/*
+	/**
 	 * getJsObject callback
 	 */
 	static private function cbLocalMessages( $arg ) {
@@ -109,21 +109,21 @@ class CategoryBrowser {
 		return wfMsg( "cb_edit_${arg}_hint" );
 	}
 
-	/*
+	/**
 	 * getJsObject callback
 	 */
 	static private function cbLocalOps( $arg ) {
 		return wfMsg( "cb_${arg}_op" );
 	}
 
-	/*
+	/**
 	 * getJsObject callback
 	 */
 	static private function cbLocalDbFields( $arg ) {
 		return wfMsg( "cb_" . CB_SqlCond::$decoded_fields[ $arg ] );
 	}
 
-	/*
+	/**
 	 * generates "complete" ranges
 	 * @param $source_ranges source ranges which contain only decoded infix queue
 	 * @return "complete" ranges which contain decoded infix queue and encoded polish queue
@@ -138,7 +138,7 @@ class CategoryBrowser {
 		return $ranges;
 	}
 
-	/*
+	/**
 	 * add new "complete" range to "complete" ranges list
 	 * @param $ranges "complete" ranges list (decoded infix, encoded polish)
 	 * @param $sqlCond will be added to $ranges only when no such queue already exists
@@ -159,7 +159,7 @@ class CategoryBrowser {
 		}
 	}
 
-	/*
+	/**
 	 * generates SQL condition selector html code
 	 * @param $ranges - array of "complete" (decode infix/encoded polish) token queues
 	 * @param $rootPager - root pager currently used with this selector
@@ -214,7 +214,7 @@ class CategoryBrowser {
 		return CB_XML::toText( $condOptTpl );
 	}
 
-	/*
+	/**
 	 * called via AJAX to get root list for specitied offset, limit
 	 * where condition will be read from the cookie previousely set
 	 * @param $args[0] : encoded reverse polish queue
@@ -243,7 +243,7 @@ class CategoryBrowser {
 		return CB_XML::toText( $catlist );
 	}
 
-	/*
+	/**
 	 * called via AJAX to setup custom edited expression cookie then display category root offset
 	 * @param $args[0] : encoded infix expression
 	 * @param $args[1] : category name filter string
@@ -269,7 +269,7 @@ class CategoryBrowser {
 		return self::getRootOffsetHtml( $encPolishQueue, $nameFilter, $nameFilterCI, $noParentsOnly, 0, $limit );
 	}
 
-	/*
+	/**
 	 * called via AJAX to get list of (subcategories,pages,files) for specitied parent category id, offset, limit
 	 * @param $args[0] : type of pager ('subcats','pages','files')
 	 * @param $args[1] : parent category name
@@ -349,7 +349,7 @@ class CategoryBrowser {
 		return CB_XML::toText( $list );
 	}
 
-	/*
+	/**
 	 * called via AJAX to generate new selected option when the selected rootcond is new (the rootcond cookie was set)
 	 * @param $args[0] currently selected expression in encoded infix format
 	 */

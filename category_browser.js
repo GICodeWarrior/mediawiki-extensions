@@ -42,7 +42,7 @@ var CB_lib = {
 		}
 	},
 
-	/*
+	/**
 	 * get Internet Explorer version
 	 * @return version of Internet Explorer or 1000 (indicating the use of another browser)
 	 */
@@ -91,14 +91,14 @@ var CB_lib = {
 	// basename prefix of user's cookies
 	cookiePrefix : null,
 
-	/*
+	/**
 	 * TODO: unused, remove
 	 */
 	 setCookiePrefix : function( name ) {
 		this.cookiePrefix = name;
 	},
 
-	/*
+	/**
 	 * TODO: unused, remove
 	 * @return empty string in case cookie value is empty, null when cookie is not set
 	 */
@@ -131,7 +131,7 @@ var CB_lib = {
 		return parentObj;
 	},
 
-	/*
+	/**
 	 * TODO: unused, remove
 	 * usage example: CB_lib.setCookie( 'rootcond', eventObj.value, 24 * 60 * 60, '/' );
 	 */
@@ -159,7 +159,7 @@ var CB_lib = {
 	},
 
 	/*** simple form elements generators ***/
-	/*
+	/**
 	 * generate select/option from the list given
 	 * @param optionsList - object key/value pairs
 	 * @param selectedOption - selected key in optionsList
@@ -179,7 +179,7 @@ var CB_lib = {
 		return select;
 	},
 
-	/*
+	/**
 	 * generate input box from value given
 	 * @param value to put into input box
 	 */
@@ -192,7 +192,7 @@ var CB_lib = {
 		return input;
 	},
 
-	/*
+	/**
 	 * find option node of select which has the specified value of value attribute
 	 * @param select select node
 	 * @param value of option attribute to find (if not specified, uses select.value)
@@ -268,7 +268,7 @@ var CategoryBrowser = {
 	// nested container object
 	container : null,
 
-	/*
+	/**
 	 * @param encPolishQueue encoded queue in reverse polish format (SQL condition)
 	 * @param rootCond condition string in encoded polish format
 	 * @param offset queue offset
@@ -288,7 +288,7 @@ var CategoryBrowser = {
 		return false;
 	},
 
-	/*
+	/**
 	 * find DOM node of currently clicked control
 	 * @param eventObj - click event object
 	 * @return DOM node (which lastChild may contain the nested list of entries) if found, null otherwise
@@ -302,7 +302,7 @@ var CategoryBrowser = {
 		return node;
 	},
 
-	/*
+	/**
 	 * create / get nested DOM container of the specified category DOM node
 	 * @param node - category DOM node
 	 * @return DOM node of current nested container
@@ -320,7 +320,7 @@ var CategoryBrowser = {
 		return container;
 	},
 
-	/*
+	/**
 	 * switch visibility of container
 	 * @param: id - set id attribute of nested container (indicates the type of content placed into container)
 	 */
@@ -499,7 +499,7 @@ var CategoryBrowser = {
 		window.setTimeout( function() { CategoryBrowser.filterPoll(); }, CB_Setup.ajaxPollTimeout );
 	},
 
-	/*
+	/**
 	 * condition selector (with cookie manager)
 	 * warning! use CB_lib.log(); placing debug alert() in js code may screw up event handling
 	 */
@@ -1595,7 +1595,7 @@ var CB_ConditionEditor = {
 		this.localCmpOps = localCmpOps;
 	},
 
-	/*
+	/**
 	 * creates a visual editor from encoded infix expression given
 	 */
 	createExpr : function( encInfixQueue ) {
@@ -1686,7 +1686,7 @@ var CB_ConditionEditor = {
 		}
 	},
 
-	/*
+	/**
 	 * @param request.responsetext html representation of select's option for new expression value just applied
 	 */
 	appendSelectedOption : function( request ) {

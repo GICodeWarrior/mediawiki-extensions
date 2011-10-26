@@ -221,7 +221,7 @@ class CB_LocalExpr {
 	var $src_tokens;
 	var $local_tokens;
 
-	/*
+	/**
 	 * @param $tokens - list of encoded SQL condition tokens
 	 *     (infix or RPN - doesn't matter for localization)
 	 * comparsions are single-ops
@@ -320,7 +320,7 @@ class CB_SqlCond {
 	private static $valid_logical_ops;
 	private static $valid_bracket_ops;
 
-	/*
+	/**
 	 * constructor (creates an instance, initializes $this->rpn_tokens, returns an instance)
 	 *
 	 * converts encoded RPN queue (string) to RPN tokens array ($this->rpn_tokens) (1:1)
@@ -366,7 +366,7 @@ class CB_SqlCond {
 		return $sc;
 	}
 
-	/*
+	/**
 	 * constructor (creates an instance, initializes $this->infix_tokens, returns an instance)
 	 *
 	 * converts encoded infix operations queue (string) to
@@ -427,7 +427,7 @@ class CB_SqlCond {
 		return self::newFromInfixTokens( $infix_tokens );
 	}
 
-	/*
+	/**
 	 * constructor (creates an instance, initializes $this->rpn_tokens, returns an instance)
 	 *
 	 * fills up RPN array $this->rpn_tokens from infix $tokens array provided
@@ -484,7 +484,7 @@ class CB_SqlCond {
 		return $sc;
 	}
 
-	/*
+	/**
 	 * @param $value - encoded token value
 	 * @return encoded token object
 	 */
@@ -517,7 +517,7 @@ class CB_SqlCond {
 		return $result;
 	}
 
-	/*
+	/**
 	 * @param $token - encoded token object
 	 * @result - SQL token
 	 */
@@ -610,7 +610,7 @@ in actual code (null,null,null) isset() is used instead of ('','','')
 		}
 	}
 
-	/*
+	/**
 	 * build properly bracketed infix expression string
 	 * also builds $this->infix_tokens array
 	 * from triples tree previousely built by CategoryFilter::buildTriples (left to right)
@@ -652,7 +652,7 @@ in actual code (null,null,null) isset() is used instead of ('','','')
 		$this->infixLevel--;
 	}
 
-	/*
+	/**
 	 * get SQL condition expression with full brackets (to indicate operators priority)
 	 * *** !!also builds $this->infix_tokens array!! ***
 	 */
@@ -671,7 +671,7 @@ in actual code (null,null,null) isset() is used instead of ('','','')
 		return $out;
 	}
 
-	/*
+	/**
 	 * get encoded queue string to be stored in a cookie or passed from PHP AJAX handler to js callback
 	 * @param $infix set true when infix queue is decoded, otherwise brackets will cause to reset to default "all"
 	 *
