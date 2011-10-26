@@ -109,7 +109,7 @@ window.WikiSyncScheduler = {
 				}
 			}
 		}
-		window.setTimeout( function() { WikiSyncScheduler.poll(); }, this.pollTimeout ); 
+		window.setTimeout( function() { WikiSyncScheduler.poll(); }, this.pollTimeout );
 	}
 
 };
@@ -163,7 +163,7 @@ window.WikiSync = {
 
 	// {{{ remote login context
 	remoteContext : {
-		'wikiroot' : '', 
+		'wikiroot' : '',
 		'userid' : '',
 		'username' : '',
 		'logintoken' : '',
@@ -352,7 +352,7 @@ window.WikiSync = {
 		return false;
 	},
 
-	/*
+	/**
 	 * initializes everything in remoteContext except of wikiroot
 	 */
 	setRemoteContext : function( login ) {
@@ -376,7 +376,7 @@ window.WikiSync = {
 		return false;
 	},
 
-	/*
+	/**
 	 * @param request.responsetext - login "final" response
 	 */
 	remoteLogin : function( request ) {
