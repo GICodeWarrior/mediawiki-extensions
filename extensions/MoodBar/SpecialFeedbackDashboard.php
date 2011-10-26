@@ -278,7 +278,7 @@ HTML;
 		$permalink = $GLOBALS['wgUser']->getSkin()
 				->link( $permalinkTitle, $permalinkText,
 					array(), array('hide-feedback' => '1') );
-		return Xml::tags( 'div', array( 'class' => 'fbd-item-permalink' ), "($permalink)" );
+		return Xml::tags( 'div', array( 'class' => 'fbd-item-hide' ), "($permalink)" );
 	}
 	
 	

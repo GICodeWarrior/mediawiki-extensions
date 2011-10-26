@@ -194,27 +194,31 @@ jQuery( function( $ ) {
 	}
 	
 	/**
-	 * Show a hidden comment
+	 * Reload a comment, showing hidden comments if necessary
+	 * @param $item jQuery item containing the .fbd-item
+	 * @param show Set to true to show the comment despite its hidden status
 	 */
-	function showHiddenComment(e) {
-		var $item = $(this).closest('.fbd-item');
+	function reloadItem( $item, show ) {
 		var cont = $item.data('mbccontinue');
 		
 		var request = {
 			'action' : 'query',
 			'list' : 'moodbarcomments',
 			'format' : 'json',
-			'mbcprop' : 'formatted|hidden',
+			'mbcprop' : 'formatted',
 			'mbclimit' : 1,
 			'mbccontinue' : cont
 		};
 		
-		var $spinner = $('<span class="mw-ajax-loader">&nbsp;</span>');
-		$item.find('.fbd-item-show').empty().append( $spinner );
+		if ( show ) {
+			request.mbcprop = 'formatted|hidden';
+		}
 		
 		$.post( mw.util.wikiScript('api'), request,
 			function( data ) {
-				if ( data && data.query && data.query.moodbarcomments ) {
+				if ( data && data.query && data.query.moodbarcomments &&
+					data.query.moodbarcomments.length > 0
+				) {
 					var $content = $j(data.query.moodbarcomments[0].formatted);
 					$item.replaceWith($content);
 				} else {
@@ -222,13 +226,83 @@ jQuery( function( $ ) {
 					$item.find('.fbd-item-show').remove();
 				}
 			}, 'json' );
+	}
+	
+	/**
+	 * Show a hidden comment
+	 */
+	function showHiddenItem(e) {
+		var $item = $(this).closest('.fbd-item');
+		
+		var $spinner = $('<span class="mw-ajax-loader">&nbsp;</span>');
+		$item.find('.fbd-item-show').empty().append( $spinner );
+		
+		reloadItem( $item, true );
+		
+		e.preventDefault();
+	}
+	
+	/**
+	 * Execute an action on an item
+	 */
+	function doAction( params, $item ) {
+		var item_id = $item.data('mbccontinue').split('|')[1];
+		
+		$.post( mw.util.wikiScript('api'),
+			$.extend( {
+				'action' : 'feedbackdashboard',
+				'token' : mw.user.tokens.get('editToken'),
+				'item' : item_id,
+				'format' : 'json'
+			}, params ),
+			function(response) {
+				if ( response && response.feedbackdashboard ) {
+					if ( response.feedbackdashboard.result == 'success' ) {
+						reloadItem( $item );
+					} else {
+						alert( response.feedbackdashboard.error );
+					}
+				} else {
+					alert('Unknown error');
+				}
+			} );
+	}
+	
+	/**
+	 * Restore a hidden item to full visibility (event handler)
+	 */
+	function restoreItem(e) {
+		var $item = $(this).closest('.fbd-item');
+		
+		var $spinner = $('<span class="mw-ajax-loader">&nbsp;</span>');
+		$item.find('.fbd-item-restore').empty().append( $spinner );
+		
+		doAction( { 'mbaction' : 'restore' }, $item );
+		
+		e.preventDefault();
+	}
+	
+	/**
+	 * Hide a item from view (event handler)
+	 */
+	function hideItem(e) {
+		var $item = $(this).closest('.fbd-item');
+		
+		var $spinner = $('<span class="mw-ajax-loader">&nbsp;</span>');
+		$item.find('.fbd-item-hide').empty().append( $spinner );
+		
+		doAction( { 'mbaction' : 'hide' }, $item );
 		
 		e.preventDefault();
 	}
 	
 	// On-load stuff
 	
-	$('.fbd-item-show a').live( 'click', showHiddenComment );
+	$('.fbd-item-show a').live( 'click', showHiddenItem );
+	
+	$('.fbd-item-hide a').live( 'click', hideItem );
+	
+	$('.fbd-item-restore').live( 'click', restoreItem );
 	
 	$( '#fbd-filters' ).children( 'form' ).submit( function( e ) {
 		e.preventDefault();
