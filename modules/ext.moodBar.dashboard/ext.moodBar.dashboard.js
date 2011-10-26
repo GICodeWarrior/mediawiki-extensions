@@ -333,6 +333,12 @@ jQuery( function( $ ) {
 		loadComments( 'filter' );
 	} );
 	
+	$( '.fbd-item-userLink' ).live( 'click', function( e ) {
+		e.preventDefault();
+		$('#fbd-filters-username').val( $(this).text() );
+		$('#fbd-filters').children('form').submit();
+	} );
+	
 	$( '#fbd-list-more' ).children( 'a' ).click( function( e ) {
 		e.preventDefault();
 		// We don't call saveFormState() here because we want to use the state of the form
