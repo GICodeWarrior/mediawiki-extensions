@@ -1900,6 +1900,7 @@ $messages['pdc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'inlinecategorizer-desc' => 'Moduł JavaScript, który umożliwia zmianę, dodawanie i usuwanie linków do kategorii bezpośrednio na stronie',
 	'inlinecategorizer-add-category' => 'Dodaj kategorię',
 	'inlinecategorizer-add-category-submit' => 'Dodaj',
 	'inlinecategorizer-add-category-summary' => 'Dodaj kategorię „$1”',
