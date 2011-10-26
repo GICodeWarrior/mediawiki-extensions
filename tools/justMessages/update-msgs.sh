@@ -6,7 +6,9 @@ if [ ! -z "$1" ]; then
    FOLDER="$1"
 fi
 
-if ! which "$JUSTMESSAGES" 2> /dev/null 1>&2; then
+if which "$JUSTMESSAGES" 2> /dev/null 1>&2; then
+ : # Solaris sh doesn't lile if ! <command> (!: not found)
+else
   DIRNAME=`dirname $0`
   if [ -z "$DIRNAME" ]; then
     DIRNAME="."
@@ -25,5 +27,6 @@ svn up "$TEMP"
 find "$TEMP" -name "*.php" -exec "$JUSTMESSAGES" \{\} +
 touch "$TEMP/.svn/lock"
 rsync -a --delete "$TEMP"/ "$FOLDER"
+rm -rf "$TEMP"
 # $LOCKFILE removed on exit
 
