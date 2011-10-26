@@ -102,6 +102,7 @@ For more information, please visit the $1.',
 	'moodbar-restore-header' => "Restore this item's visibility",
 	'moodbar-restore-intro' => '',
 	'moodbar-invalid-item' => 'The system was unable to find the correct feedback item.',
+	'moodbar-feedback-action-error' => 'An error occurred when trying to perform this action.',
 	// Mood types
 	'moodbar-type-happy' => 'Happy',
 	'moodbar-type-sad' => 'Sad',
