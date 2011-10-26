@@ -52,7 +52,7 @@ var obj = {
 								{
 									'type': 'paragraph',
 									'content': {
-										'text': 'a'
+										'text': 'd'
 									}
 								},
 								{
@@ -64,7 +64,7 @@ var obj = {
 												'styles': ['bullet']
 											},
 											'content': {
-												'text': 'a'
+												'text': 'e'
 											}
 										},
 										{
@@ -73,7 +73,7 @@ var obj = {
 												'styles': ['bullet', 'bullet']
 											},
 											'content': {
-												'text': 'b'
+												'text': 'f'
 											}
 										},
 										{
@@ -82,7 +82,7 @@ var obj = {
 												'styles': ['number']
 											},
 											'content': {
-												'text': 'c'
+												'text': 'g'
 											}
 										}
 									]
@@ -96,7 +96,7 @@ var obj = {
 		{
 			'type': 'paragraph',
 			'content': {
-				'text': 'a'
+				'text': 'h'
 			}
 		}
 	]
@@ -139,7 +139,7 @@ var data = [
 	//  8 - Beginning of paragraph
 	{ 'type': 'paragraph' },
 	//  9 - Plain content
-	'a',
+	'd',
 	// 10 - End of paragraph
 	{ 'type': '/paragraph' },
 	// 11 - Beginning of list
@@ -147,19 +147,19 @@ var data = [
 	// 12 - Beginning of bullet list item
 	{ 'type': 'listItem', 'attributes': { 'styles': ['bullet'] } },
 	// 13 - Plain content
-	'a',
+	'e',
 	// 14 - End of item
 	{ 'type': '/listItem' },
 	// 15 - Beginning of nested bullet list item
 	{ 'type': 'listItem', 'attributes': { 'styles': ['bullet', 'bullet'] } },
 	// 16 - Plain content
-	'b',
+	'f',
 	// 17 - End of item
 	{ 'type': '/listItem' },
 	// 18 - Beginning of numbered list item
 	{ 'type': 'listItem', 'attributes': { 'styles': ['number'] } },
 	// 19 - Plain content
-	'c',
+	'g',
 	// 20 - End of item
 	{ 'type': '/listItem' },
 	// 21 - End of list
@@ -173,7 +173,7 @@ var data = [
 	// 25 - Beginning of paragraph
 	{ 'type': 'paragraph' },
 	// 26 - Plain content
-	'a',
+	'h',
 	// 27 - End of paragraph
 	{ 'type': '/paragraph' }
 ];
@@ -217,7 +217,7 @@ test( 'es.DocumentModel.slice', 1, function() {
 
 test( 'es.DocumentModel.getContent', 6, function() {
 	var documentModel = es.DocumentModel.newFromPlainObject( obj );
-	
+
 	// Test 1
 	deepEqual(
 		documentModel[0].getContent( new es.Range( 1, 3 ) ),
@@ -257,7 +257,7 @@ test( 'es.DocumentModel.getContent', 6, function() {
 	}
 	
 	// Test 6
-	deepEqual( documentModel[2].getContent(), ['a'], 'Content can be extracted from nodes' );
+	deepEqual( documentModel[2].getContent(), ['h'], 'Content can be extracted from nodes' );
 } );
 
 test( 'es.DocumentModel.getIndexOfAnnotation', 3, function() {
