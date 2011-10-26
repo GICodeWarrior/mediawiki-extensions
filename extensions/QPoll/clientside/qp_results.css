@@ -8,7 +8,10 @@
 .qpoll table.qdata td.spanodd {background-color: Moccasin;}
 .qpoll table.qdata tr.qdatatext td { text-align: left; }
 .qpoll .cat_part { background-color: LightYellow; border: 1px solid Gray; padding: 0 0.5em 0 0.5em; }
-.qpoll .cat_unanswered { color: White; background-color: PowderBlue; border: 1px solid Gray; padding: 0 0.5em 0 0.5em; }
+.qpoll .cat_first { border-left: 1px solid Gray !important; }
+.qpoll .cat_even { border-left: none; }
+.qpoll .cat_odd { background-color: MediumSpringGreen; border-left: none; }
+.qpoll .cat_unanswered { color: Black; background-color: PowderBlue; border: 1px solid Gray; padding: 0 0.5em 0 0.5em; }
 .qpoll .cat_unknown { color: White; background-color: IndianRed; border: 1px solid Gray; padding: 0 0.5em 0 0.5em; }
 .qpoll .interp_header { background-color: LightGrey; padding: 0.2em; border: 1px solid Gray; margin: 0.3em 0 0.3em 0; }
 .qpoll .interp_answer { border: 1px solid Gray; padding: 0.2em; margin: 0.3em 0 0.3em 0; color: Black; background-color: LightBlue; font-weight:600; line-height:2em; }

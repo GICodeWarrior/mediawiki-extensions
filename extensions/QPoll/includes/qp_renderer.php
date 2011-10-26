@@ -145,6 +145,27 @@ class qp_Renderer {
 	}
 
 	/**
+	 * Creates the tagarray from the row given
+	 * @param  $row  array of source values
+	 * @param  $destinationAttr  where to write the values into resulting tagarray
+	 * @param  rowattrs  array  extra attributes (including tagName) to set for
+	 *         each element of resulting tagarray
+	 * @return array  tagarray
+	 */
+	static function tagList( $row, $destinationAttr = 0, $rowattrs = array( '__tag' => 'td' ) ) {
+		if ( count( $row ) <= 0 ) {
+			return '';
+		}
+		$result = array();
+		foreach ( $row as &$cell ) {
+			$tag = $rowattrs;
+			$tag[$destinationAttr] = $cell;
+			$result[] = $tag;
+		}
+		return $result;
+	} 
+
+	/**
 	 * Creates one tagarray row of the table
 	 * @param  $row  a string/number value of cell or
 	 *               an array( "count"=>colspannum, "attribute"=>value, 0=>html_inside_tag )

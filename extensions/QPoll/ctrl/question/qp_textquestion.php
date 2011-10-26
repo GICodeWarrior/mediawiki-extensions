@@ -277,8 +277,8 @@ class qp_TextQuestion extends qp_StubQuestion {
 					# fallback to WebRequest::getText(), because it offers useful preprocessing
 					$ta = trim( $this->mRequest->getText( $name ) );
 				} else {
-					# select multiple values are separated with new lines
-					$ta = implode( "\n", array_map( 'trim', $ta ) );
+					# pack select multiple values
+					$ta = implode( qp_Setup::SELECT_MULTIPLE_VALUES_SEPARATOR, array_map( 'trim', $ta ) );
 				}
 				if ( $ta != '' ) {
 					$answered = true;
