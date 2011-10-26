@@ -317,7 +317,7 @@ var jscolor = {
 	},
 
 
-	/*
+	/**
 	 * Usage example:
 	 * var myColor = new jscolor.color(myInputElement)
 	 */
