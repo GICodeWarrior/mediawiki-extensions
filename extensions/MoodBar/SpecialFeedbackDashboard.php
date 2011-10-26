@@ -392,6 +392,8 @@ HTML;
 	 * @return array( 'rows' => array( row, row, ... ), 'olderRow' => row|null, 'newerRow' => row|null )
 	 */
 	public function doQuery( $filters, $limit, $offset, $backwards ) {
+		global $wgUser;
+		
 		$dbr = wfGetDB( DB_SLAVE );
 		
 		// Set $conds based on $filters
@@ -411,6 +413,8 @@ HTML;
 		}
 		if ( isset( $filters['id'] ) ) {
 			$conds['mbf_id'] = $filters['id'];
+		} elseif ( !$wgUser->isAllowed('moodbar-admin') ) {
+			$conds['mbf_hidden_state'] = 0;
 		}
 		
 		// Process $offset
