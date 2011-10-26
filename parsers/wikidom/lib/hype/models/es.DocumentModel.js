@@ -39,23 +39,8 @@ es.DocumentModel.nodeModels = {};
  * Each function is called in the context of a state, and takes an operation object as a parameter.
  */
 es.DocumentModel.operations = ( function() {
-	function containsElements( op ) {
-		for ( i = 0; i < op.data.length; i++ ) {
-			if ( op.data.type !== undefined ) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-	function isStructural( offset ) {
-		var edge = offset === 0 || offset === this.data.length - 1,
-			elementLeft = this.data[offset - 1].type !== undefined,
-			elementRight = this.data[offset].type !== undefined;
-		if ( edge || ( elementLeft && elementRight ) ) {
-			return true;
-		}
-		return false;
+	function invalidate( from, to ) {
+		this.rebuild.push( { 'from': from, 'to': to } );
 	}
 
 	function retain( op ) {
@@ -64,12 +49,12 @@ es.DocumentModel.operations = ( function() {
 	}
 
 	function insert( op ) {
-		if ( isStructural( this.cursor ) ) {
+		if ( es.DocumentModel.isStructuralOffset( this.data, this.cursor ) ) {
 			// TODO: Support tree updates when inserting between elements
 		} else {
 			// Get the node we are about to insert into
 			var node = this.tree.getNodeFromOffset( this.cursor );
-			if ( containsElements( op ) ) {
+			if ( es.DocumentModel.containsElementData( op.data ) ) {
 				var nodeParent = node.getParent();
 				if ( !nodeParent ) {
 					throw 'Missing parent error. Node does not have a parent node.';
@@ -105,10 +90,12 @@ es.DocumentModel.operations = ( function() {
 	}
 	
 	function remove( op ) {
-		if ( isStructural( this.cursor ) && isStructural( this.cursor + op.data.length ) ) {
+		var elementLeft = es.DocumentModel.isElementOffset( this.data, this.cursor ),
+			elementRight = es.DocumentModel.isElementOffset( this.cursor + op.data.length );
+		if ( elementLeft && elementRight ) {
 			// TODO: Support tree updates when removing whole elements
 		} else {
-			if ( containsElements( op ) ) {
+			if ( es.DocumentModel.containsElementData( op.data ) ) {
 				// TODO: Support tree updates when removing partial elements
 			} else {
 				// Get the node we are removing content from
@@ -470,32 +457,106 @@ es.DocumentModel.flattenPlainObjectElementNode = function( obj ) {
 	return data;
 };
 
-/* Methods */
-
 /**
  * Checks if a data at a given offset is content.
  * 
+ * Content offsets are those which are between an opening and a closing element.
+ * 
+ * @example Content offsets:
+ *      <paragraph> a b c </paragraph> <list> <listItem> d e f </listItem> </list>
+ *                 ^ ^ ^                                ^ ^ ^
+ * 
  * @static
  * @method
+ * @param {Array} data Data to evaluate offset within
  * @param {Integer} offset Offset in data to check
  * @returns {Boolean} If data at offset is content
  */
-es.DocumentModel.prototype.isContent = function( offset ) {
-	return typeof this.data[offset] === 'string' || $.isArray( this.data[offset] );
+es.DocumentModel.isContentOffset = function( data, offset ) {
+	// Content can't exist at the edges
+	if ( offset > 0 && offset < data.length - 1 ) {
+		// Shortcut: if there's already content there, we will trust it's supposed to be there
+		if ( typeof data[offset] === 'string' || $.isArray( data[offset] ) ) {
+			return true;
+		}
+		// Empty elements will have an opening and a closing next to each other
+		var openLeft = data[offset - 1].type !== undefined && data[offset - 1].type[0] !== '/',
+			closeRight = data[offset].type !== undefined && data[offset].type[0] !== '/';
+		// Check that there's an opening and a closing on the left and right, and the types match
+		if ( openLeft && closeRight && ('/' + data[offset - 1].type === data[offset].type ) ) {
+			return true;
+		}
+	}
+	return false;
 };
 
 /**
  * Checks if a data at a given offset is an element.
  * 
+ * Element offsets are those at which an element is present.
+ * 
+ * @example Element offsets:
+ *      <paragraph> a b c </paragraph> <list> <listItem> d e f </listItem> </list>
+ *     ^                 ^            ^      ^                ^           ^
+ * 
  * @static
  * @method
+ * @param {Array} data Data to evaluate offset within
  * @param {Integer} offset Offset in data to check
  * @returns {Boolean} If data at offset is an element
  */
-es.DocumentModel.prototype.isElement = function( offset ) {
+es.DocumentModel.isElementOffset = function( data, offset ) {
 	// TODO: Is there a safer way to check if it's a plain object without sacrificing speed?
-	return this.data[offset].type !== undefined;
+	return offset >= 0 && offset < data.length && data[offset].type !== undefined;
 };
+
+/**
+ * Checks if an offset within given data is structural.
+ * 
+ * Structural offsets are those at the beginning, end or surrounded by elements. This differs
+ * from a location at which an element is present in that elements can be safely inserted at a
+ * structural location, but not nessecarily where an element is present.
+ * 
+ * @example Structural offsets:
+ *      <paragraph> a b c </paragraph> <list> <listItem> d e f </listItem> </list>
+ *     ^                              ^      ^                            ^       ^
+ * 
+ * @static
+ * @method
+ * @param {Array} data Data to evaluate offset within
+ * @param {Integer} offset Offset to check
+ * @returns {Boolean} Whether offset is structural or not
+ */
+es.DocumentModel.isStructuralOffset = function( data, offset ) {
+	// Edges are always structural
+	if ( offset === 0 || offset === data.length - 1 ) {
+		return true;
+	}
+	// Structual offsets will have elements on each side
+	if ( data[offset - 1].type !== undefined && data[offset].type !== undefined ) {
+		return true;
+	}
+	return false;
+};
+
+/**
+ * Checks if elements are present within data.
+ * 
+ * @static
+ * @method
+ * @param {Array} data Data to look for elements within
+ * @returns {Boolean} If elements exist in data
+ */
+es.DocumentModel.containsElementData = function( data ) {
+	for ( var i = 0, length = data.length; i < length; i++ ) {
+		if ( data[i].type !== undefined ) {
+			return true;
+		}
+	}
+	return false;
+};
+
+/* Methods */
 
 /**
  * Creates a document view for this model.
@@ -653,37 +714,6 @@ es.DocumentModel.prototype.getContentFromNode = function( node, range ) {
  */
 es.DocumentModel.prototype.prepareInsertion = function( offset, data ) {
 	/**
-	 * Returns true if data starts with an opening element and ends with a closing element
-	 */
-	/*function isStructuralData( data ) {
-		return data.length >= 2 &&
-			data[0].type !== undefined && data[0].type.charAt( 0 ) != '/' &&
-			data[data.length - 1].type !==
-				undefined && data[data.length - 1].type.charAt( 0 ) == '/';
-	}*/
-	function isStructuralData( data ) {
-		var i;
-		for ( i = 0; i < data.length; i++ ) {
-			if ( data[i].type !== undefined ) {
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	function isStructuralLocation( offset, data ) {
-		// The following are structural locations:
-		// * The beginning of the document (offset 0)
-		// * The end of the document (offset length-1)
-		// * Any location between elements, i.e. the item before is a closing and the item after is
-		// * an opening
-		return offset <= 0 || offset >= data.length - 1 || (
-			data[offset - 1].type !== undefined && data[offset - 1].type.charAt( 0 ) == '/' &&
-			data[offset].type !== undefined && data[offset].type.charAt( 0 ) != '/'
-		);
-	}
-
-	/**
 	 * Balances mismatched openings/closings in data
 	 * @return data itself if nothing was changed, or a clone of data with balancing changes made.
 	 * data itself is never touched
@@ -699,7 +729,7 @@ es.DocumentModel.prototype.prepareInsertion = function( offset, data ) {
 				stack.push( data[i].type );
 			} else {
 				// Closing
-				if ( stack.length == 0 ) {
+				if ( stack.length === 0 ) {
 					// The stack is empty, so this is an unopened closing
 					// Remove it
 					if ( workingData === null ) {
@@ -736,13 +766,13 @@ es.DocumentModel.prototype.prepareInsertion = function( offset, data ) {
 	
 	var tx = new es.Transaction(),
 		insertedData = data, // may be cloned and modified
-		isStructuralLoc = isStructuralLocation( offset, this.data );
+		isStructuralLoc = es.DocumentModel.isStructuralOffset( this.data, offset );
 		
 	if ( offset > 0 ) {
 		tx.pushRetain( offset );
 	}
 	
-	if ( isStructuralData( insertedData ) ) {
+	if ( es.DocumentModel.containsElementData( insertedData ) ) {
 		if ( isStructuralLoc ) {
 			insertedData = balance( insertedData );
 		} else {
@@ -1002,7 +1032,8 @@ es.DocumentModel.prototype.commit = function( transaction ) {
 		'tree': this,
 		'cursor': 0,
 		'set': [],
-		'clear': []
+		'clear': [],
+		'rebuild': []
 	};
 	for ( var i = 0, length = transaction.length; i < length; i++ ) {
 		var operation = transaction[i];
@@ -1027,7 +1058,8 @@ es.DocumentModel.prototype.rollback = function( transaction ) {
 		'tree': this,
 		'cursor': 0,
 		'set': [],
-		'clear': []
+		'clear': [],
+		'rebuild': []
 	};
 	for ( var i = 0, length = transaction.length; i < length; i++ ) {
 		var operation = transaction[i];
