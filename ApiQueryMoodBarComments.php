@@ -6,7 +6,7 @@ class ApiQueryMoodBarComments extends ApiQueryBase {
 	}
 	
 	public function execute() {
-		global $wgLang;
+		global $wgLang, $wgUser;
 		$params = $this->extractRequestParams();
 		$prop = array_flip( $params['prop'] );
 		
@@ -37,6 +37,10 @@ class ApiQueryMoodBarComments extends ApiQueryBase {
 		$this->addWhereRange( 'mbf_timestamp', $params['dir'], null, null );
 		$this->addWhereRange( 'mbf_id', $params['dir'], null, null );
 		$this->addOption( 'LIMIT', $params['limit'] + 1 );
+		
+		if ( ! $wgUser->isAllowed( 'moodbar-admin' ) ) {
+			$this->addWhereFld( 'mbf_hidden_state', 0 );
+		}
 		
 		$res = $this->select( __METHOD__ );
 		$result = $this->getResult();
