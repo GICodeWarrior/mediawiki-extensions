@@ -73,12 +73,8 @@ class qp_TextQuestionProposalView extends qp_StubQuestionProposalView {
 			$val = &$viewtoken->attributes[$measurable];
 			if ( $val === null ) {
 				$val = 0;
-			} elseif ( is_numeric( $val ) ) {
-				if ( ( $val = intval( $val ) ) < 1 ) {
-					$val = 0;
-				}
-			} else {
-				$val = 'auto';
+			} elseif ( $val !== 'auto' ) {
+				$val = preg_match( qp_Setup::PREG_POSITIVE_INT4_MATCH, $val ) ? intval( $val ) : 0;
 			}
 		}
 		$this->viewtokens[] = $viewtoken;

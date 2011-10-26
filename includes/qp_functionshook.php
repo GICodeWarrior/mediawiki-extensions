@@ -69,7 +69,7 @@ class qp_FunctionsHook {
 							# get poll's proposal choice
 							$this->proposal_id = trim( $frame->expand( $args[ 2 ] ) );
 							$this->error_message = 'invalid_proposal_id';
-							if ( is_numeric( $this->proposal_id ) && $this->proposal_id >= 0 ) {
+							if ( preg_match( qp_Setup::PREG_NON_NEGATIVE_INT4_MATCH, $this->proposal_id ) ) {
 								$this->defaultProposalText = isset( $args[ 3 ] ) ? trim( $frame->expand( $args[ 3 ] ) ) : '';
 								$this->proposal_id = intval( $this->proposal_id );
 								$this->error_message = 'missing_proposal_id';
@@ -88,7 +88,7 @@ class qp_FunctionsHook {
 	function getQuestionData( $qid ) {
 		$this->question_id = $qid;
 		$this->error_message = 'invalid_question_id';
-		if ( is_numeric( $this->question_id ) ) {
+		if ( preg_match( qp_Setup::PREG_POSITIVE_INT4_MATCH, $this->question_id ) ) {
 			$this->question_id = intval( $this->question_id );
 			$this->pollStore->loadQuestions();
 			$this->pollStore->setLastUser( qp_Setup::getCurrUserName(), false );

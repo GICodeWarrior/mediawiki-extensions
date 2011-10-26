@@ -144,6 +144,11 @@ class qp_Setup {
 	const ERROR_MISSED_TITLE = 1;
 	const ERROR_INVALID_ADDRESS = 2;
 
+	# matches string which contains integer number in range 0..9999
+	const PREG_NON_NEGATIVE_INT4_MATCH = '/^(?:\d|[1-9]\d{1,3})$/';
+	# matches string which contains integer number in range 1..9999
+	const PREG_POSITIVE_INT4_MATCH = '/^[1-9]\d{0,3}$/';
+
 	static $pollTag = 'qpoll';
 	static $interpTag = 'qpinterpret';
 	# parser $interpTag hook output market list

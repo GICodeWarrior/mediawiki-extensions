@@ -284,9 +284,8 @@ class qp_TextQuestionView extends qp_StubQuestionView {
 			$this->transposed = strpos( $layout, 'transpose' ) !== false;
 		}
 		if ( $textwidth !== null ) {
-			if ( is_numeric( $textwidth ) &&
-					$textwidth = intval( $textwidth ) > 0 ) {
-				$this->textInputStyle = 'width:' . $textwidth . 'em;';
+			if ( preg_match( qp_Setup::PREG_POSITIVE_INT4_MATCH, $textwidth ) ) {
+				$this->textInputStyle = "width:{$textwidth}em;";
 			} elseif ( $textwidth === 'auto' ) {
 				$this->textInputStyle = 'width:auto;';
 			}
