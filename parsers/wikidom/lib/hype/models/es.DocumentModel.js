@@ -565,7 +565,7 @@ es.DocumentModel.containsElementData = function( data ) {
  * @returns {es.DocumentView}
  */
 es.DocumentModel.prototype.createView = function() {
-	// return new es.DocumentView( this );
+	return new es.DocumentView( this );
 };
 
 /**

@@ -18,7 +18,7 @@ es.TableCellModel = function( element, length ) {
  * @returns {es.TableCellView}
  */
 es.TableCellModel.prototype.createView = function() {
-	// return new es.TableCellView( this );
+	return new es.TableCellView( this );
 };
 
 /* Registration */

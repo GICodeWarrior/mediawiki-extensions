@@ -18,7 +18,7 @@ es.ListItemModel = function( element, length ) {
  * @returns {es.ListItemView}
  */
 es.ListItemModel.prototype.createView = function() {
-	// return new es.ListItemView( this );
+	return new es.ListItemView( this );
 };
 
 /* Registration */

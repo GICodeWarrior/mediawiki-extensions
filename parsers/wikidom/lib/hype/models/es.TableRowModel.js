@@ -18,7 +18,7 @@ es.TableRowModel = function( element, length ) {
  * @returns {es.TableRowView}
  */
 es.TableRowModel.prototype.createView = function() {
-	// return new es.TableRowView( this );
+	return new es.TableRowView( this );
 };
 
 /* Registration */

@@ -18,7 +18,7 @@ es.ParagraphModel = function( element, length ) {
  * @returns {es.ParagraphView}
  */
 es.ParagraphModel.prototype.createView = function() {
-	// return new es.ParagraphView( this );
+	return new es.ParagraphView( this );
 };
 
 /* Registration */

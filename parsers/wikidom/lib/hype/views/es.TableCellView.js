@@ -1,11 +1,11 @@
 /**
- * Creates an es.ListView object.
+ * Creates an es.TableCellView object.
  * 
  * @class
  * @constructor
  * @extends {es.DocumentViewBranchNode}
  */
-es.ListView = function( model ) {
+es.TableCellView = function( model ) {
 	// Extension
 	return $.extend( new es.DocumentViewBranchNode( model ), this );
 };
