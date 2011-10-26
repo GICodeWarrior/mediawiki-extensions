@@ -81,7 +81,7 @@ function efABCRender( $input, $args, $parser ) {
 	if ( $abcPath == false || $abcURL == false )
 		return 'Error: $abcPath and $abcURL must be set to use the ABC extension.';
 
-	/*
+	/**
 	 * To avoid re-rendering the same tunes on every view,
 	 * use the hash of the ABC content for the filename.
 	 * This has the added benefit that rendering the same tune
@@ -106,7 +106,7 @@ function efABCRender( $input, $args, $parser ) {
 		if ( !@mkdir( "$abcPath/$directory", 0777, true ) )
 			return "Cannot create directory \"$abcPath/$directory\".";
 
-	/*
+	/**
 	 * Try to extract the title from the ABC.  This is used as the
 	 * alt text for the image.
 	 */
@@ -132,7 +132,7 @@ function efABCRender( $input, $args, $parser ) {
 				return str_replace( "\n", "<br />", htmlspecialchars( $error ) );
 	}
 
-	/*
+	/**
 	 * Succeeded to create all the output formats, return the
 	 * output.  We produce an image from the PNG, and include
 	 * links to the ABC and PS.
