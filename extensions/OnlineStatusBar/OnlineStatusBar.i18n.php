@@ -29,9 +29,9 @@ $messages['en'] = array(
 
 $messages['qqq'] = array(
 	'onlinestatusbar-desc' => '{{desc}}',
-        'onlinestatusbar-line' => 'Status bar text line (User is now Offline) etc.',
-        'onlinestatusbar-used' => 'Message in config asking user if they want to enable it',
-        'onlinestatusbar-status' => 'Message in config asking what status they want to use',
+        'onlinestatusbar-line' => "Status bar text line (User is now Offline), parameters:\n* $1 is user\n* $2 is a picture of status (small icon in color of status)\n* $3 a status, it will appear in title bar of their user space pages",
+        'onlinestatusbar-used' => 'Message in config asking user if they want to enable it, checkbox',
+        'onlinestatusbar-status' => 'Message in config asking what status they want to use, option box',
         'prefs-onlinestatusbar' => 'Title for config',
         'prefs-onlinestatus' => 'Section for config',
 };
