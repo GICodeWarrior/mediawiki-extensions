@@ -16,7 +16,7 @@
 ( function( $ ) {
 $.narayam = new ( function() {
 	/* Private members */
-	
+
 	// Reference to this object
 	var that = this;
 	// jQuery array holding all text inputs Narayam applies to
@@ -42,9 +42,9 @@ $.narayam = new ( function() {
 		shiftKey: false,
 		key: null
 	};
-	
+
 	/* Private functions */
-	
+
 	/**
 	 * Transliterate a string using the current scheme
 	 * @param str String to transliterate
@@ -58,13 +58,13 @@ $.narayam = new ( function() {
 		for ( var i = 0;  i < rules.length; i++ ) {
 			var regex = new RegExp( rules[i][0] + '$' );
 			if ( regex.test( str )	// Input string match
-				&& 
+				&&
 				(
 					rules[i][1].length == 0 // Keybuffer match not required
 					||
 					(	// Keybuffer match specified, so it should be met
-						rules[i][1].length > 0 
-						&& rules[i][1].length <= keyBuffer.length 
+						rules[i][1].length > 0
+						&& rules[i][1].length <= keyBuffer.length
 						&& new RegExp( rules[i][1] + '$' ).test( keyBuffer )
 					)
 				)
@@ -75,7 +75,7 @@ $.narayam = new ( function() {
 		// No matches, return the input
 		return str;
 	}
-	
+
 	/**
 	 * Get the n characters in str that immediately precede pos
 	 * Example: lastNChars( "foobarbaz", 5, 2 ) == "ba"
@@ -94,7 +94,7 @@ $.narayam = new ( function() {
 			return str.substr( pos - n, n );
 		}
 	}
-	
+
 	/**
 	 * Find the point at which a and b diverge, i.e. the first position
 	 * at which they don't have matching characters.
@@ -111,7 +111,7 @@ $.narayam = new ( function() {
 		}
 		return -1;
 	}
-	
+
 	/**
 	 * Check whether a keypress event corresponds to the shortcut key
 	 * @param e Event object
@@ -123,7 +123,7 @@ $.narayam = new ( function() {
 			e.shiftKey == shortcutKey.shiftKey &&
 			String.fromCharCode( e.which ).toLowerCase() == shortcutKey.key.toLowerCase();
 	}
-	
+
 	/**
 	 * Get a description of the shortcut key, e.g. "Ctrl-M"
 	 * @return string
@@ -143,7 +143,7 @@ $.narayam = new ( function() {
 		text += shortcutKey.key.toUpperCase();
 		return text;
 	}
-	
+
 	/**
 	 * Change visual appearance of element (text input, textarea) according
 	 * current state of Narayam
@@ -157,17 +157,17 @@ $.narayam = new ( function() {
 			$element.removeClass( 'narayam-input' );
 		}
 	}
-	
+
 	/**
 	 * Replace text part from startPos to endPos with peri
 	 * It function is specifically for webkit browsers,
 	 * because of bug: https://bugs.webkit.org/show_bug.cgi?id=66630
 	 * TODO: remove when webkit bug is handled in jQuery.textSelection.js
-	 * 
+	 *
 	 * @param $element jQuery object to wich replacement to be taked place
 	 * @param startPos Starting position of text range to be replaced
 	 * @param endPos Ending position of text range to be replaced
-	 * @param peri String to be substituted 
+	 * @param peri String to be substituted
 	 */
 	function replaceString( $element, startPos, endPos, peri ) {
 		// Take entire text of the element
@@ -178,7 +178,7 @@ $.narayam = new ( function() {
 		// Then replace
 		$element.val( pre + peri + post );
 	}
-	
+
 	/**
 	 * Keydown event handler. Handles shortcut key presses
 	 * @param e Event object
@@ -196,7 +196,7 @@ $.narayam = new ( function() {
 		}
 		return true;
 	}
-	
+
 	/**
 	 * Keypress event handler. This is where the real work happens
 	 * @param e Event object
@@ -205,19 +205,19 @@ $.narayam = new ( function() {
 		if ( !enabled ) {
 			return true;
 		}
-		
+
 		if ( e.which == 8 ) { // Backspace
 			// Blank the keybuffer
 			$( this ).data( 'narayamKeyBuffer', '' );
 			return true;
 		}
-		
+
 		// Leave non-ASCII stuff alone, as well as anything involving
 		// Alt (except for extended keymaps), Ctrl and Meta
 		if ( e.which < 32 || ( e.altKey && !currentScheme.extended_keyboard ) || e.ctrlKey || e.metaKey ) {
 			return true;
 		}
-		
+
 		var $this = $( this );
 		var c = String.fromCharCode( e.which );
 		// Get the current caret position. The user may have selected text to overwrite,
@@ -232,7 +232,7 @@ $.narayam = new ( function() {
 		var input = lastNChars( $this.val(), startPos, currentScheme.lookbackLength ) + c;
 		var keyBuffer = $this.data( 'narayamKeyBuffer' );
 		var replacement = transliterate( input, keyBuffer, e.altKey );
-		
+
 		// Update the key buffer
 		keyBuffer += c;
 		if ( keyBuffer.length > currentScheme.keyBufferLength ) {
@@ -240,7 +240,7 @@ $.narayam = new ( function() {
 			keyBuffer = keyBuffer.substring( keyBuffer.length - currentScheme.keyBufferLength );
 		}
 		$this.data( 'narayamKeyBuffer', keyBuffer );
-		
+
 		// textSelection() magic is expensive, so we avoid it as much as we can
 		if ( replacement == input ) {
 			return true;
@@ -250,7 +250,7 @@ $.narayam = new ( function() {
 		var divergingPos = firstDivergence( input, replacement );
 		input = input.substring( divergingPos );
 		replacement = replacement.substring( divergingPos );
-		
+
 		$this.textSelection( 'encapsulateSelection', {
 				'peri': replacement,
 				'replace': true,
@@ -259,11 +259,11 @@ $.narayam = new ( function() {
 				'selectionEnd': endPos
 
 			} );
-		
+
 		e.stopPropagation();
 		return false;
 	}
-	
+
 	/**
 	 * Focus event handler.
 	 * @param e Event object
@@ -276,7 +276,7 @@ $.narayam = new ( function() {
 		}
 		changeVisual( $( this ) );
 	}
-	
+
 	/**
 	 * Blur event handler.
 	 * @param e Event object
@@ -284,8 +284,8 @@ $.narayam = new ( function() {
 	function onblur( e ) {
 		$( this ).removeClass( 'narayam-input' );
 	}
-	
-	
+
+
 	/* Public functions */
 
 	/**
@@ -313,7 +313,7 @@ $.narayam = new ( function() {
 				.bind( 'blur', onblur);
 		}
 	};
-	
+
 	/**
 	 * Enable Narayam
 	 */
@@ -326,7 +326,7 @@ $.narayam = new ( function() {
 			enabled = true;
 		}
 	};
-	
+
 	/**
 	 * Disable Narayam
 	 */
@@ -339,7 +339,7 @@ $.narayam = new ( function() {
 			enabled = false;
 		}
 	};
-	
+
 	/**
 	 * Toggle the enabled/disabled state
 	 */
@@ -350,7 +350,7 @@ $.narayam = new ( function() {
 			that.enable();
 		}
 	};
-	
+
 	/**
 	 * Add a transliteration scheme. Schemes whose name is not in
 	 * wgNarayamAvailableSchemes will be ignored.
@@ -394,9 +394,9 @@ $.narayam = new ( function() {
 	this.addScheme = function( name, data ) {
 		schemes[name] = data;
 		return true;
-		
+
 	};
-	
+
 	/**
 	 * Change the current transliteration scheme
 	 * @param name String
@@ -411,7 +411,7 @@ $.narayam = new ( function() {
 			return false;
 		}
 	};
-	
+
 	/**
 	 * Set up Narayam. This adds the scheme dropdown, binds the handlers
 	 * and initializes the enabled/disabled state and selected scheme
@@ -424,7 +424,7 @@ $.narayam = new ( function() {
 			// No need to proceed
 			return;
 		}
-	
+
 		// Restore state from cookies
 		var savedScheme = $.cookie( 'narayam-scheme' );
 		if ( savedScheme && savedScheme in schemes ) {
@@ -451,10 +451,10 @@ $.narayam = new ( function() {
 				'expires': 30
 			} );
 		}
-			
+
 	};
-	
-	/*
+
+	/**
 	 * Construct the menu for Narayam
 	 */
 	this.buildMenu = function() {
@@ -466,45 +466,45 @@ $.narayam = new ( function() {
 			$input
 				.attr( 'id', 'narayam-' + scheme )
 				.val( scheme );
-				
+
 			var $narayamMenuItemLabel = $( '<label />' )
 					.attr( 'for' ,'narayam-' + scheme )
 					.append( $input )
 					.append( mw.html.escape( mw.msg( schemes[scheme].namemsg ) ) );
-			
+
 			var $narayamMenuItem = $( '<li/>' )
 				.append( $input )
 				.append( $narayamMenuItemLabel );
-				
+
 			haveSchemes = true;
 			$narayamMenuItems.append( $narayamMenuItem );
 		}
-		
+
 		if ( !haveSchemes ) {
 			// No schemes available, don't show the tool
 			// So return false
 			return false;
 		}
-		
+
 		// Event listener for scheme selection.
 		// There is a plan to add a feature that allow dynamic loading of schemes.
 		// So .live will be useful
 		$( '.narayam-scheme', $( '#narayam-menu-items > ul')[0] ).live( 'click', function() {
 			that.setScheme( $(this).val() );
 		} );
-		
+
 		// Build enable/disable checkbox and label
 		var $checkbox = $( '<input type="checkbox" id="narayam-toggle" />' );
 		$checkbox
 			.attr( 'title', mw.msg( 'narayam-checkbox-tooltip' ) )
 			.click( that.toggle );
-			
+
 		var $label = $( '<label for="narayam-toggle" />' );
 		$label
 			.text( mw.msg( 'narayam-toggle-ime', shortcutText() ) )
 			.prepend( $checkbox )
 			.attr( 'title', mw.msg( 'narayam-checkbox-tooltip' ) );
-		
+
 			$narayamMenuItems.append( $( '<li class="narayam-more-imes-link" />')
 			.append(
 				$( '<a/>' )
@@ -523,26 +523,26 @@ $.narayam = new ( function() {
 		for ( var lang in allImes ) {
 			var langschemes = allImes[lang];
 			for ( var langscheme in langschemes ) {
-				 
+
 				var $input = $( '<input type="radio" name="narayam-input-method" class="narayam-scheme-dynamic" />' );
 				$input
 					.attr( 'id', 'narayam-' + langscheme )
 					.val( langscheme );
-					
+
 				var $narayamMenuItemLabel = $( '<label />' )
 						.attr( 'for' ,'narayam-' + langscheme )
 						.append( $input )
 						.append( mw.html.escape( mw.msg( "narayam-"+ langscheme ) ) );
-				
+
 				var $narayamMenuItem = $( '<li class="narayam-scheme-dynamic-item" />' )
 					.append( $input )
 					.append( $narayamMenuItemLabel );
-					
+
 				$narayamMenuItems.append( $narayamMenuItem );
-				
+
 			}
-		}	
-		
+		}
+
 		// Event listener for scheme selection - dynamic loading of rules.
 		$( '.narayam-scheme-dynamic', $( '#narayam-menu-items > ul')[0] ).live( 'click', function() {
 			var curVal =  $(this).val();
@@ -550,27 +550,27 @@ $.narayam = new ( function() {
 				that.setScheme( curVal )
 			});
 		} );
-			
+
 		var helppage = mw.config.get( 'wgNarayamHelpPage' );
 		if ( helppage ) {
 			$narayamMenuItems.append( $( '<li class="narayam-help-link" />')
 				.append(
 					$( '<a/>' )
 						.text( mw.msg( 'narayam-help' ) )
-						.attr( 
+						.attr(
 							'href',
 							mw.util.wikiGetlink( mw.config.get( 'wgNarayamHelpPage' ) )
 						)
 					)
 				);
 		}
-		
+
 		$narayamMenuItems.prepend( $( '<li/>' ).append( $label ) );
-		
+
 		var $menuItemsDiv = $( '<div id="narayam-menu-items" class="menu-items" />' );
 		$menuItemsDiv
 			.append( $narayamMenuItems );
-			
+
 		var $menu = $( '<div id="narayam-menu" class="narayam-menu" />');
 		$menu
 			.append(
@@ -579,17 +579,17 @@ $.narayam = new ( function() {
 					.attr( 'title', mw.msg( 'narayam-menu-tooltip' ) )
 			)
 			.append( $menuItemsDiv );
-		
+
 		var $li = $( '<li id="pt-narayam" />' );
 		$li.append( $menu );
-			
+
 		// If rtl, add to the right of top personal links. Else, to the left
 		var fn = $( 'body' ).hasClass( 'rtl' ) ? "append" : "prepend";
 		$( '#p-personal ul:first' )[fn]( $li );
 		// Workaround for IE bug - activex components like input fields
 		// coming on top of everything.
 		// TODO: is there a better solution other than hiding it on hover?
-		if ( $.browser.msie ) { 
+		if ( $.browser.msie ) {
 			$( '#narayam-menu' ).hover( function() {
 				$( '#searchform' ).css( 'visibility', 'hidden' );
 			}, function() {
@@ -599,7 +599,7 @@ $.narayam = new ( function() {
 		$('.narayam-scheme-dynamic-item').hide();
 		// Narayam controls setup complete, returns true
 		return true;
-	};	
+	};
 } )();
 
 } )( jQuery );
