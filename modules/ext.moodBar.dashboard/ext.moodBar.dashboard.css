@@ -224,7 +224,8 @@
 }
 
 .fbd-item-permalink,
-.fbd-item-show {
+.fbd-item-show,
+.fbd-item-hide {
 	float: right;
 	font-size: 0.8em;
 }
