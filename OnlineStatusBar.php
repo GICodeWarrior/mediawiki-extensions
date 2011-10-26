@@ -52,6 +52,8 @@ $wgOnlineStatusBarColor = array (
 	'offline' => "red",
 );
 
+// default for anonymous and uknown users
+$wgOnlineStatusBarDefaultIpUsers = false;
 // default for online
 $wgOnlineStatusBarDefaultOnline = "online";
 // default for offline
@@ -96,12 +98,14 @@ function wfOnlineStatusBar_RenderBar( &$article, &$outputDone, &$pcache )
 	{
 		// better way to get a username would be great :)
 		$user = preg_replace( '/\/.*/', '', preg_replace( '/^.*\:/', "", $article->getTitle() ) );
-
-		$mode = OnlineStatusBar::GetStatus( $user );
-		$modetext = $wgOnlineStatusBarModes[$mode];
-		$image = OnlineStatusBar::getImageHtml( $mode );
-		$text = wfMessage( 'onlinestatusbar-line', $user )->rawParams( $image )->params( $modetext )->escaped();
-		$wgOut->addHtml( OnlineStatusBar::Get_Html( $text, $mode ) );
+		if (OnlineStatusBar::IsValid($user))
+		{
+			$mode = OnlineStatusBar::GetStatus( $user );
+			$modetext = $wgOnlineStatusBarModes[$mode];
+			$image = OnlineStatusBar::getImageHtml( $mode );
+			$text = wfMessage( 'onlinestatusbar-line', $user )->rawParams( $image )->params( $modetext )->escaped();
+			$wgOut->addHtml( OnlineStatusBar::Get_Html( $text, $mode ) );
+		}
 	}
 	return true;
 }
@@ -113,8 +117,19 @@ function wfOnlineStatusBar_UpdateStatus()
 	return true;
 }
 
-// Unused?
-$commonModuleInfo = array(
-	'localBasePath' => dirname( __FILE__ ) . '/modules',
-	'remoteExtPath' => 'OnlineStatusBar/modules',
-);
+$wgHooks['GetPreferences'][] = 'wfOnlineStatusBar_PreferencesHook';
+function wfOnlineStatusBar_PreferencesHook($user, &$preferences)
+{
+	global $wgOnlineStatusBarModes;
+	$preferences['OnlineStatusBar_active'] = array ('type' => 'toggle', 'label-message' => 'onlinestatusbar-used', 'section' => 'gadgets/onlinestatus' );
+	$preferences['OnlineStatusBar_status'] = array ('type' => 'radio', 'label-message' => 'onlinestatusbar-status', 'section' => 'gadgets/onlinestatus',
+							'options' => array(
+									   $wgOnlineStatusBarModes['online'] => 'online',
+									   $wgOnlineStatusBarModes['busy'] => 'busy',
+									   $wgOnlineStatusBarModes['away'] => 'away',
+									   $wgOnlineStatusBarModes['hidden'] => 'hidden' 
+										),
+							'default' => 'online',
+							);
+	return true;
+}
