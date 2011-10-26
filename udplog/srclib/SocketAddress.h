@@ -36,7 +36,7 @@ public:
 		data.v6.sin6_family = AF_INET6;
 	}
 
-	SocketAddress(IPAddress & ip, unsigned short int port) 
+	SocketAddress(const IPAddress & ip, unsigned short int port) 
 	{
 		switch (ip.GetType()) {
 			case AF_INET:

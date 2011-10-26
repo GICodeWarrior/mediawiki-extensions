@@ -14,8 +14,14 @@
 // Do not instantiate this directly
 class Socket
 {
-public:
+private:
+	// Not default constructible
 	Socket(){}
+
+	// Not copyable
+	Socket(const Socket & s) {}
+
+protected:
 	Socket(int domain, int type, int protocol)
 		: fd(-1) 
 	{
@@ -27,6 +33,8 @@ public:
 			good = true;
 		}
 	}
+
+public:
 
 	operator bool() {
 		return good;
@@ -56,22 +64,6 @@ public:
 	int Bind(SocketAddress & s) {
 		if (bind(fd, s.GetBinaryData(), s.GetBinaryLength()) < 0) {
 			RaiseError("Socket::Bind");
-			return errno;
-		} else {
-			return 0;
-		}
-	}
-
-	int Mcast(const char* multicastAddr) { 
-		IPAddress any(INADDR_ANY);
-		struct ip_mreq imreq;
-
-		bzero(&imreq, sizeof(struct ip_mreq));
-		imreq.imr_multiaddr.s_addr = inet_addr(multicastAddr);
-		imreq.imr_interface.s_addr = INADDR_ANY;
-		if (setsockopt(fd, IPPROTO_IP, IP_ADD_MEMBERSHIP, (const void *)&imreq, 
-					sizeof(struct ip_mreq))) {
-			RaiseError("Socket::Mcast");
 			return errno;
 		} else {
 			return 0;
@@ -168,6 +160,11 @@ public:
 			good = false;
 		}
 	}
+	
+	int JoinMulticast(const IPAddress & addr);
+private:
+	int JoinMulticast4(const IPAddress & addr);
+	int JoinMulticast6(const IPAddress & addr);
 };
 
 #endif

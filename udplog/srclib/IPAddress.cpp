@@ -2,6 +2,9 @@
 #include "Exception.h"
 #include "SocketAddress.h"
 
+const IPAddress IPAddress::any4(INADDR_ANY);
+const IPAddress IPAddress::any6(&in6addr_any);
+
 std::string & IPAddress::ToString()
 {
 	if (!presentation.size()) {
@@ -19,8 +22,17 @@ std::string & IPAddress::ToString()
 	return presentation;
 }
 
-IPAddress::IPAddress(int type, char *presentation)
+void IPAddress::InitFromString(const char *presentation)
 {
+	domain = PF_INET;
+	if (strstr(presentation, ":")) {
+		type = AF_INET6;
+		length = sizeof(in6_addr);
+	} else {
+		type = AF_INET;
+		length = sizeof(in_addr);
+	}
+
 	int ret = inet_pton(type, presentation, &data);
 	if (!ret ) {
 		throw std::runtime_error("Invalid IP address");

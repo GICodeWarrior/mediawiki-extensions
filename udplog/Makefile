@@ -17,7 +17,7 @@ host: $(HOST_OBJS)
 	g++ $(CFLAGS) $(HOST_OBJS) -o host
 
 log2udp: $(LOG2UDP_OBJS)
-	g++ $(CFLAGS) -lboost_program_options $(LOG2UDP_OBJS) -o log2udp
+	g++ $(CFLAGS) $(LOG2UDP_OBJS) -lboost_program_options -o log2udp
 
 udprecv: $(UDPRECV_OBJS)
 	g++ $(CFLAGS) -Wall $(UDPRECV_OBJS) -o udprecv
@@ -29,7 +29,7 @@ packet-loss: srcmisc/packet-loss.cpp
 	g++ $(CFLAGS) -o packet-loss srcmisc/packet-loss.cpp
 
 udp2log/udp2log: $(UDP2LOG_OBJS)
-	g++ $(CFLAGS) -o udp2log/udp2log -lboost_program_options $(UDP2LOG_OBJS) 
+	g++ $(CFLAGS) -o udp2log/udp2log $(UDP2LOG_OBJS) -lboost_program_options
 
 install:
 	install log2udp $(DESTDIR)/usr/bin/log2udp

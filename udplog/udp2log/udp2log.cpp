@@ -182,17 +182,22 @@ int main(int argc, char** argv)
 	signal(SIGPIPE, SIG_IGN);
 
 	// Open the receiving socket
-	IPAddress any(INADDR_ANY);
-	SocketAddress saddr(any, (unsigned short int)port);
-	Socket socket;
-	socket = *(new UDPSocket());
+	SocketAddress saddr(IPAddress::any4, (unsigned short int)port);
+	UDPSocket socket;
 	if (!socket) {
 		cerr << "Unable to open socket\n";
 		return 1;
 	}
 	socket.Bind(saddr);
-	if(strcmp("0", multicastAddr.c_str())){ //if multicast
-		socket.Mcast(multicastAddr.c_str());
+
+	// Join a multicast group if requested
+	if (multicastAddr != "0") {
+		try {
+			socket.JoinMulticast(multicastAddr);
+		} catch (runtime_error & e) {
+			cerr << "Error joining multicast group: " << e.what() << endl;
+			return 1;
+		}
 	}
 	// Process received packets
 	boost::shared_ptr<SocketAddress> address;
