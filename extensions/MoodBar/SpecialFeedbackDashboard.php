@@ -215,10 +215,12 @@ HTML;
 		// 1.17wmf1 compat
 		$links = $GLOBALS['wgUser']->getSkin()
 				->userToolLinks( $user->getId(), $username );
+				
+		$userPageUrl = htmlspecialchars($user->getUserPage()->getLocalURL());
 		
 		return <<<HTML
 			<div class="fbd-item-userName">
-				<a href="#">$username</a>
+				<a href="$userPageUrl" class="fbd-item-userLink">$username</a>
 				<sup class="fbd-item-userLinks">
 					$links
 				</sup>
