@@ -226,8 +226,11 @@ int yywrap() {
 	return 1;
 }
 
+#ifdef YY_NEED_STRLEN
 /* Shut up warning about yy_flex_strlen being unused */
 int dummy() {
 	return yy_flex_strlen("");
 }
+#endif
+
 

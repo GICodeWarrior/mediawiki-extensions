@@ -1,5 +1,5 @@
 CC=gcc
-LEX=lex
+LEX=flex
 CFLAGS=-Wall -O3 -fwhole-program
 
 justMessages: justMessages.c
