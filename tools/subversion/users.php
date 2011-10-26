@@ -39,7 +39,6 @@ foreach ( $lines as $line ) {
 			<tr id="$encUsername">
 				<td>$link</td>
 				<td>{$userInfo['name']}</td>
-				<td></td>
 				<td>$readyForGit</td>
 			</tr>
 
@@ -52,7 +51,7 @@ echo "	<!-- Request time: " . ( microtime( true ) - $time ) . " -->\n";
 if ( $retval ) {
 	echo "	<p>Error: " . htmlspecialchars( $error ) . "</p>\n";
 }
-echo "	</body>";
+echo "	</body>\n";
 echo "</html>\n";
 
 function getUserInfo( $userName ) {
