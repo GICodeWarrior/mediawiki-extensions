@@ -38,11 +38,11 @@ $wgOnlineStatusBarModes = array(
 	'offline' => "Offline",
 );
 $wgOnlineStatusBarIcon = array(
-	'online' => "20px-Ledgreen.svg.png",
-	'busy' => "20px-Ledorange.svg.png",
-	'away' => "20px-Ledorange.svg.png",
-	'hidden' => "20px-Nuvola_apps_krec.svg.png",
-	'offline' => "20px-Nuvola_apps_krec.svg.png",
+	'online' => "statusgreen.png",
+	'busy' => "statusorange.png",
+	'away' => "statusorange.png",
+	'hidden' => "statusred.png",
+	'offline' => "statusred.png",
 );
 $wgOnlineStatusBarColor = array(
 	'online' => "green",
