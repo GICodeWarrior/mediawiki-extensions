@@ -6,6 +6,7 @@
  */
 es.SurfaceView = function( $container, model ) {
 	this.$ = $container.addClass( 'editSurface' );
+	this.$window = $( window );
 	this.model = model;
 	
 	// Initialize document view
@@ -96,11 +97,11 @@ es.SurfaceView = function( $container, model ) {
 	this.dimensions = {
 		width: this.$.width(),
 		height: this.$.height(),
-		scrollTop: $(window).scrollTop()
+		scrollTop: this.$window.scrollTop()
 	};
 	
 	// Re-render when resizing horizontally
-	$( window ).resize( function() {
+	this.$window.resize( function() {
 		surfaceView.hideCursor();
 		surfaceView.dimensions.height = surfaceView.$.height();
 		var width = surfaceView.$.width();
@@ -110,8 +111,8 @@ es.SurfaceView = function( $container, model ) {
 		}
 	} );
 	
-	$( window ).scroll( function() {
-		surfaceView.dimensions.scrollTop = $( window ).scrollTop()
+	this.$window.scroll( function() {
+		surfaceView.dimensions.scrollTop = surfaceView.$window.scrollTop();
 	} );
 };
 
@@ -203,7 +204,12 @@ var lastEventPosition = new es.Position();
 es.SurfaceView.prototype.onMouseMove = function( e ) {
 	if ( e.button === 0 /* left mouse button */ && this.mouse.selecting ) {
 
-		if ( e.pageY - $(window).scrollTop() <= window.innerHeight ) {
+
+		if ( e.pageY - $(window).scrollTop() < 0 ) {
+			lastEventPosition = es.Position.newFromEventPagePosition( e );
+			stopScrolling();
+			startScrolling(true);			
+		} else if ( e.pageY - $(window).scrollTop() <= window.innerHeight ) {
 			stopScrolling();
 		} else {
 			lastEventPosition = es.Position.newFromEventPagePosition( e );
@@ -347,16 +353,13 @@ es.SurfaceView.prototype.moveCursor = function( direction ) {
 	}
 
 	// Auto scroll to cursor
-	var $window = $(window),
-		scrollTop = $window.scrollTop(),
-		windowHeight = $window.height(),
-		inputTop = this.$input.offset().top,
+	var inputTop = this.$input.offset().top,
 		inputBottom = inputTop + this.$input.height();
-	if (inputTop < scrollTop) {
-		$window.scrollTop(inputTop);
-	} else if (inputBottom > (scrollTop + windowHeight)) {
-		$window.scrollTop(inputBottom - windowHeight);
-	}	
+	if ( inputTop < this.dimensions.scrollTop ) {
+		this.$window.scrollTop( inputTop );
+	} else if ( inputBottom > ( this.dimensions.scrollTop + this.dimensions.height ) ) {
+		this.$window.scrollTop( inputBottom - this.dimensions.height );
+	}
 
 	return;
 };
@@ -374,7 +377,7 @@ es.SurfaceView.prototype.drawSelection = function() {
 
 
 
-var scrollStep = function() {
+var scrollStepDown = function() {
 	lastEventPosition.top += 20;
 	lastEventPosition.bottom += 20;
 	
@@ -385,10 +388,29 @@ var scrollStep = function() {
 		
 	$(window).scrollTop( $(window).scrollTop() + 20 );
 };
+
+var scrollStepUp = function() {
+	lastEventPosition.top -= 20;
+	lastEventPosition.bottom -= 20;
+	
+	fakelastEventPosition = new es.Position(lastEventPosition.left, lastEventPosition.top, lastEventPosition.bottom);
+
+	surfaceView.selection.to = surfaceView.documentView.getOffsetFromPosition( fakelastEventPosition );
+	surfaceView.drawSelection();
+		
+	$(window).scrollTop( $(window).scrollTop() - 20 );
+};
+
 var scrollInterval = null;
-var startScrolling = function( interval ) {
-	scrollStep();
-	scrollInterval = setInterval(scrollStep, interval || 50);
+var startScrolling = function( up ) {
+	if ( up ) {
+		console.log('t');
+		scrollStepUp();
+		scrollInterval = setInterval(scrollStepUp, 50);		
+	} else {
+		scrollStepDown();
+		scrollInterval = setInterval(scrollStepDown, 50);
+	}
 };
 var stopScrolling = function() {
 	clearInterval( scrollInterval );
