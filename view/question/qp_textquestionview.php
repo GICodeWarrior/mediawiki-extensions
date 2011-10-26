@@ -57,7 +57,7 @@ class qp_TextQuestionViewRow {
 	# cell contains one or multiple tags, describing proposal part or category
 	var $cell;
 	# current category id
-	var $ckey;
+	var $catId;
 
 	function __construct( qp_TextQuestionView $owner ) {
 		$this->owner = $owner;
@@ -73,7 +73,7 @@ class qp_TextQuestionViewRow {
 		$this->error = array();
 		$this->cell = array();
 		# category index, starting from 0
-		$this->ckey = 0;
+		$this->catId = 0;
 	}
 
 	/**
@@ -102,7 +102,7 @@ class qp_TextQuestionViewRow {
 			$value = $elem->options[0];
 			if ( $tagName === 'textarea' ) {
 				# oversimplicated regexp, but it's enough for our needs
-				$value = preg_replace( '/<br[\sA-Z\d="]*\/{0,1}>/i', "\n", $value, -1, $lines_count );
+				$value = preg_replace( '/<br[\sA-Z\d="]*\/{0,1}>/i', qp_Setup::TEXTAREA_LINES_SEPARATOR, $value, -1, $lines_count );
 				$lines_count++;
 			}
 			$className .= ' cat_prefilled';
@@ -110,7 +110,7 @@ class qp_TextQuestionViewRow {
 		$tag = array(
 			'__tag' => $tagName,
 			# unique (poll_type,order_id,question,proposal,category) "coordinate" for javascript
-			'id' => "{$this->id_prefix}c{$this->ckey}",
+			'id' => "{$this->id_prefix}c{$this->catId}",
 			'class' => $className,
 			'name' => $elem->name,
 		);
@@ -126,7 +126,7 @@ class qp_TextQuestionViewRow {
 				$tag['rows'] = $lines_count;
 			}
 		}
-		$this->ckey++;
+		$this->catId++;
 		if ( $elem->type === 'text' ) {
 			# input type text and textarea
 			if ( $this->owner->textInputStyle != '' ) {
@@ -162,7 +162,7 @@ class qp_TextQuestionViewRow {
 		# prepare the list of selected values
 		if ( $elem->attributes['multiple'] !== null ) {
 			# new lines are separator for selected multiple options
-			$selected_values = explode( "\n", $elem->value );
+			$selected_values = explode( qp_Setup::SELECT_MULTIPLE_VALUES_SEPARATOR, $elem->value );
 		} else {
 			$selected_values = array( $elem->value );
 		}
@@ -181,7 +181,7 @@ class qp_TextQuestionViewRow {
 		$select = array(
 			'__tag' => 'select',
 			# unique (poll_type,order_id,question,proposal,category) "coordinate" for javascript
-			'id' => "{$this->id_prefix}c{$this->ckey}",
+			'id' => "{$this->id_prefix}c{$this->catId}",
 			'class' => $className,
 			'name' => $elem->name,
 			$html_options
@@ -203,7 +203,7 @@ class qp_TextQuestionViewRow {
 			$select['size'] = $size;
 		}
 		$this->cell[] = $select;
-		$this->ckey++;
+		$this->catId++;
 	}
 
 	/**

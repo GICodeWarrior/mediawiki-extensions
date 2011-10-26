@@ -144,10 +144,21 @@ class qp_Setup {
 	const ERROR_MISSED_TITLE = 1;
 	const ERROR_INVALID_ADDRESS = 2;
 
+	# unicode character used to display selected checkboxes and radiobuttons in
+	# result views at Special:Pollresults page
+	const RESULTS_CHECK_SIGN = '&#9734;';
+
 	# matches string which contains integer number in range 0..9999
 	const PREG_NON_NEGATIVE_INT4_MATCH = '/^(?:\d|[1-9]\d{1,3})$/';
 	# matches string which contains integer number in range 1..9999
 	const PREG_POSITIVE_INT4_MATCH = '/^[1-9]\d{0,3}$/';
+
+	## separators of lines / values for question type 'text' / 'text!'
+	#    these should not be the same and should not appear in valid text;
+	# characters that are used to separate values of select multiple
+	const SELECT_MULTIPLE_VALUES_SEPARATOR = "\r";
+	# characters that are used to separate lines of textarea
+	const TEXTAREA_LINES_SEPARATOR = "\n";
 
 	static $pollTag = 'qpoll';
 	static $interpTag = 'qpinterpret';

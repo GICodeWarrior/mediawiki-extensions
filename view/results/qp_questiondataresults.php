@@ -51,7 +51,7 @@ class qp_QuestionDataResults {
 							$cell[ 0 ] = qp_Setup::entities( $text_answer );
 						}
 					} else {
-						$cell[ 0 ] = '+';
+						$cell[ 0 ] = qp_Setup::RESULTS_CHECK_SIGN;
 					}
 				}
 				if ( $spansUsed ) {
