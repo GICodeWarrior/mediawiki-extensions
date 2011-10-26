@@ -7,12 +7,12 @@
 
 	<body>
 		<h1>Wikimedia Subversion user list</h1>
-			<table border="1">
-				<tr>
-					<th>Username</th>
-					<th>Real name</th>
-					<th>Ready for git?</th>
-				</tr>
+		<table border="1">
+			<tr>
+				<th>Username</th>
+				<th>Real name</th>
+				<th>Ready for git?</th>
+			</tr>
 <?php
 
 $time = microtime( true );
@@ -36,21 +36,23 @@ foreach ( $lines as $line ) {
 	$link = $userInfo['url'] ? "<a href=\"{$userInfo['url']}\">$encUsername</a>" : $encUsername;
 
 	$rows[$parts[0]] = <<<EOT
-<tr id="$encUsername">
-<td>$link</td>
-<td>{$userInfo['name']}</td>
-<td></td>
-<td>$readyForGit</td>
-</tr>
+			<tr id="$encUsername">
+				<td>$link</td>
+				<td>{$userInfo['name']}</td>
+				<td></td>
+				<td>$readyForGit</td>
+			</tr>
 
 EOT;
 }
 ksort( $rows );
-echo implode( '', $rows ) . "</table>\n";
-echo "<!-- Request time: " . ( microtime( true ) - $time ) . " -->\n";
+echo implode( '', $rows );
+echo "		</table>\n";
+echo "	<!-- Request time: " . ( microtime( true ) - $time ) . " -->\n";
 if ( $retval ) {
-	echo "<p>Error: " . htmlspecialchars( $error ) . "</p>\n";
+	echo "	<p>Error: " . htmlspecialchars( $error ) . "</p>\n";
 }
+echo "	</body>";
 echo "</html>\n";
 
 function getUserInfo( $userName ) {
