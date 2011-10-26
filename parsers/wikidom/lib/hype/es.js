@@ -28,8 +28,8 @@ var es = {};
  * 
  * @static
  * @method
- * @param dst {Function} Class to extend
- * @param src {Function} Base class to use methods from
+ * @param {Function} dst Class to extend
+ * @param {Function} src Base class to use methods from
  */
 es.extend = function( dst, src ) {
 	var base = new src();
@@ -49,9 +49,9 @@ es.extend = function( dst, src ) {
  * 
  * @static
  * @method
- * @param a {Object} First object to compare
- * @param b {Object} Second object to compare
- * @param asymmetrical {Boolean} Whether to check only that b contains values from a
+ * @param {Object} a First object to compare
+ * @param {Object} b Second object to compare
+ * @param {Boolean} [asymmetrical] Whether to check only that b contains values from a
  * @returns {Boolean} If the objects contain the same values as each other
  */
 es.compareObjects = function( a, b, asymmetrical ) {
@@ -77,7 +77,7 @@ es.compareObjects = function( a, b, asymmetrical ) {
  * 
  * @static
  * @method
- * @param source {Array} Array to copy
+ * @param {Array} source Array to copy
  * @returns {Array} Copy of source array
  */
 es.copyArray = function( source ) {
@@ -101,7 +101,7 @@ es.copyArray = function( source ) {
  * 
  * @static
  * @method
- * @param source {Object} Object to copy
+ * @param {Object} source Object to copy
  * @returns {Object} Copy of source object
  */
 es.copyObject = function( source ) {
@@ -126,18 +126,18 @@ es.copyObject = function( source ) {
  * 
  * @static
  * @method
- * @param arr {Array} Array to splice insertion into. Will be modified
- * @param offset {Number} Offset in arr to splice insertion in at. May be negative; see the 'index' parameter for Array.prototype.splice()
- * @param insertion {Array} Array to insert
+ * @param {Array} dst Array to splice insertion into. Will be modified
+ * @param {Number} offset Offset in arr to splice insertion in at. May be negative; see the 'index' parameter for Array.prototype.splice()
+ * @param {Array} src Array of items to insert
  */
-es.spliceArray = function( arr, offset, insertion ) {
+es.insertIntoArray = function( dst, offset, src ) {
 	// We need to splice insertion in in batches, because of parameter list length limits which vary cross-browser.
 	// 1024 seems to be a safe batch size on all browsers.
 	var index = 0, batchSize = 1024;
-	while ( index < insertion.length ) {
+	while ( index < src.length ) {
 		// Call arr.splice( offset, 0, i0, i1, i2, ..., i1023 );
-		arr.splice.apply(
-			arr, [index + offset, 0].concat( insertion.slice( index, index + batchSize ) )
+		dst.splice.apply(
+			dst, [index + offset, 0].concat( src.slice( index, index + batchSize ) )
 		);
 		index += batchSize;
 	}

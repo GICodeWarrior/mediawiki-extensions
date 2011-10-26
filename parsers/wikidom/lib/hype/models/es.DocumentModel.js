@@ -68,7 +68,7 @@ es.DocumentModel.operations = ( function() {
 				// Remove the node we are about to insert into from the model tree
 				nodeParent.splice( index, 1 );
 				// Perform insert on linear data model
-				es.spliceArray( this.data, this.cursor, op.data );
+				es.insertIntoArray( this.data, this.cursor, op.data );
 				annotate.call( this, this.cursor + op.data.length );
 				// Regenerate nodes for the data we've affected
 				var nodes = es.DocumentModel.createNodesFromData(
@@ -80,7 +80,7 @@ es.DocumentModel.operations = ( function() {
 				}
 			} else {
 				// Perform insert on linear data model
-				es.spliceArray( this.data, this.cursor, op.data );
+				es.insertIntoArray( this.data, this.cursor, op.data );
 				annotate.call( this, this.cursor + op.data.length );
 				// Update model tree
 				node.adjustContentLength( op.data.length );
@@ -796,7 +796,7 @@ es.DocumentModel.prototype.prepareInsertion = function( offset, data ) {
 			// We're inserting content into a structural location,
 			// so we need to wrap the inserted content in a paragraph.
 			insertedData = [ { 'type': 'paragraph' }, { 'type': '/paragraph' } ];
-			es.spliceArray( insertedData, 1, data );
+			es.insertIntoArray( insertedData, 1, data );
 		} else {
 			// Content being inserted in content is fine, do nothing
 		}
