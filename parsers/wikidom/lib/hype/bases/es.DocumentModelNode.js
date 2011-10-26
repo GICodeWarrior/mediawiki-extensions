@@ -98,7 +98,7 @@ es.DocumentModelNode.prototype.setContentLength = function( contentLength ) {
  * @param {Integer} adjustment Amount to adjust content length by
  * @throws Invalid adjustment error if resulting length is less than 0
  */
-es.DocumentModelNode.prototype.adjustContentLength = function( adjustment ) {
+es.DocumentModelNode.prototype.adjustContentLength = function( adjustment, quiet ) {
 	this.contentLength += adjustment;
 	// Make sure the adjustment was sane
 	if ( this.contentLength < 0 ) {
@@ -108,7 +108,10 @@ es.DocumentModelNode.prototype.adjustContentLength = function( adjustment ) {
 		throw 'Invalid adjustment error. Content length can not be less than 0.';
 	}
 	if ( this.parent ) {
-		this.parent.adjustContentLength( adjustment );
+		this.parent.adjustContentLength( adjustment, true );
+	}
+	if ( !quiet ) {
+		this.emit( 'update' );
 	}
 };
 

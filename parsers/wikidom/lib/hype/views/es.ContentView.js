@@ -23,6 +23,7 @@
  * @property {Object} renderState
  */
 es.ContentView = function( $container, model ) {
+	es.EventEmitter.call( this );
 	this.$ = $container;
 	this.model = model;
 	this.boundaries = [];

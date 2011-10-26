@@ -40,7 +40,7 @@ es.ViewNode = function( model, $element ) {
 	
 	// Append existing model children
 	for ( var i = 0; i < model.length; i++ ) {
-		node.onPush( model[i] );
+		node.onAfterPush( model[i] );
 	}
 	
 	// Observe and mimic changes on model
@@ -57,7 +57,7 @@ es.ViewNode = function( model, $element ) {
 	return node;
 };
 
-es.ViewNode.onAfterPush = function( childModel ) {
+es.ViewNode.prototype.onAfterPush = function( childModel ) {
 	var childView = childModel.createView();
 	this.emit( 'beforePush', childView );
 	childView.attach( this );
@@ -68,7 +68,7 @@ es.ViewNode.onAfterPush = function( childModel ) {
 	this.emit( 'update' );
 };
 
-es.ViewNode.onAfterUnshift = function( childModel ) {
+es.ViewNode.prototype.onAfterUnshift = function( childModel ) {
 	var childView = childModel.createView();
 	this.emit( 'beforeUnshift', childView );
 	childView.attach( this );
@@ -79,7 +79,7 @@ es.ViewNode.onAfterUnshift = function( childModel ) {
 	this.emit( 'update' );
 };
 
-es.ViewNode.onAfterPop = function() {
+es.ViewNode.prototype.onAfterPop = function() {
 	this.emit( 'beforePop' );
 	var childView = this.pop();
 	childView.detach();
@@ -89,7 +89,7 @@ es.ViewNode.onAfterPop = function() {
 	this.emit( 'update' );
 };
 
-es.ViewNode.onAfterShift = function() {
+es.ViewNode.prototype.onAfterShift = function() {
 	this.emit( 'beforeShift' );
 	var childView = this.shift();
 	childView.detach();
@@ -99,7 +99,7 @@ es.ViewNode.onAfterShift = function() {
 	this.emit( 'update' );
 };
 
-es.ViewNode.onAfterSplice = function( index, howmany ) {
+es.ViewNode.prototype.onAfterSplice = function( index, howmany ) {
 	var args = Array.prototype.slice( arguments, 0 );
 	this.emit.apply( ['beforeSplice'].concat( args ) );
 	this.$.children()
@@ -113,7 +113,7 @@ es.ViewNode.onAfterSplice = function( index, howmany ) {
 	this.emit( 'update' );
 };
 
-es.ViewNode.onAfterSort = function() {
+es.ViewNode.prototype.onAfterSort = function() {
 	this.emit( 'beforeSort' );
 	for ( var i = 0; i < this.model.length; i++ ) {
 		for ( var j = 0; j < this.length; j++ ) {
@@ -129,7 +129,7 @@ es.ViewNode.onAfterSort = function() {
 	this.emit( 'update' );
 };
 
-es.ViewNode.onAfterReverse = function() {
+es.ViewNode.prototype.onAfterReverse = function() {
 	this.emit( 'beforeReverse' );
 	this.reverse();
 	this.$.children().each( function() {
