@@ -659,6 +659,19 @@ es.DocumentModel.prototype.getNodeFromOffset = function( offset ) {
 };
 
 /**
+ * Gets the affected nodes and the range of data they occupy.
+ */
+es.DocumentModel.prototype.select = function( range, includeSubRanges ) {
+	range.normalize();
+	var result = {
+		'nodes': [],
+		'range': new es.Range()
+	};
+	// Add list of highest-common-level nodes that are covered by range to results.nodes
+	// Set range from beginning of first node to the end of the last node
+};
+
+/**
  * Gets the element object of a node.
  * 
  * @method
