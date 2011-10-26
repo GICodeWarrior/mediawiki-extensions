@@ -32,46 +32,102 @@ es.DocumentNode.prototype.getRangeFromNode = function( node ) {
 };
 
 /**
- * Gets the first offset within this node of a given child node.
+ * Gets the content offset of a node.
+ * 
+ * This method is pretty expensive. If you need to get different slices of the same content, get
+ * the content first, then slice it up locally.
  * 
  * @method
- * @param {es.ModelNode} node
+ * @param {es.DocumentModelNode} node Node to get offset of
+ * @param {Boolean} [shallow] Do not iterate into child nodes of child nodes
+ * @returns {Integer} Offset of node or -1 of node was not found
  */
-es.DocumentNode.prototype.getOffsetFromNode = function( node ) {
-	if ( this.length ) {
-		var offset = 0;
-		for( var i = 0; i < this.length; i++ ) {
-			if ( this[i] === node ) {
-				return offset;
+es.DocumentNode.prototype.getOffsetFromNode = function( node, shallow ) {
+	var offset = 0;
+	if ( shallow ) {
+		if ( this.length ) {
+			for ( var i = 0; i < this.length; i++ ) {
+				if ( this[i] === node ) {
+					return offset;
+				}
+				offset += this[i].getElementLength() + 1;
 			}
-			offset += this[i].getElementLength() + 1;
+		}
+	} else {
+		var currentNode,
+			iteration = [this, 0],
+			iterations = [iteration];
+		while ( iterations[0][0].length < iteration[0][1] ) {
+			currentNode = iteration[0][iteration[1]];
+			if ( currentNode === node ) {
+				break;
+			} else {
+				if ( currentNode.length ) {
+					// Include opening element when descending
+					offset++;
+					// Descend one level down
+					iterations.push( [currentNode, 0] );
+					iteration = iterations[iterations.length - 1];
+				} else {
+					// Include opening and closing when passing over
+					offset += 2;
+				}
+			}
+			iteration[1]++;
+			if ( iteration[1] >= iteration[0].length ) {
+				// Include closing element when ascending
+				offset++;
+				// Ascend one level up
+				iterations.pop();
+				iteration = iterations[iterations.length - 1];
+			}
 		}
 	}
-	return null;
+	return offset;
 };
 
 /**
- * Gets the node which a given offset is within.
+ * Gets the node at a given offset.
+ * 
+ * This method is pretty expensive. If you need to get different slices of the same content, get
+ * the content first, then slice it up locally.
+ * 
+ * TODO: Rewrite this method to not use recursion, because the function call overhead is expensive
  * 
  * @method
- * @param {Integer} offset
+ * @param {Integer} offset Offset within this node to look for child node in
+ * @param {Boolean} [shallow] Do not iterate into child nodes of child nodes
+ * @returns {es.DocumentModelNode|null} Node at offset, or null if non was found
  */
-es.DocumentNode.prototype.getNodeFromOffset = function( offset ) {
-	if ( this.length ) {
-		var i = 0,
-			length = this.length,
-			left = 0,
-			right;
-		while ( i < length ) {
-			right = left + this[i].getElementLength() + 1;
-			if ( offset >= left && offset < right ) {
-				return this[i];
+es.DocumentNode.prototype.getNodeFromOffset = function( offset, shallow ) {
+	var i,
+		length;
+	if ( shallow ) {
+		if ( this.length ) {
+			var left = 0,
+				right;
+			for ( i = 0, length = this.length; i < length; i++ ) {
+				right = left + this[i].getElementLength() + 1;
+				if ( offset >= left && offset < right ) {
+					return this[i];
+				}
+				left = right;
 			}
-			left = right;
-			i++;
 		}
+		return null;
+	} else {
+		var nodeOffset = 0,
+			nodeLength;
+		for ( i = 0, length = this.length; i < length; i++ ) {
+			nodeLength = this[i].getElementLength();
+			if ( offset >= nodeOffset && offset < nodeOffset + nodeLength ) {
+				return this[i].length ?
+					this.getNodeFromOffset.call( this[i], offset - nodeOffset ) : this[i];
+			}
+			nodeOffset += nodeLength;
+		}
+		return null;
 	}
-	return null;
 };
 
 /**

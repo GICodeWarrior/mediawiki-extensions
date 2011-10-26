@@ -71,7 +71,8 @@ es.DocumentViewBranchNode.prototype.getOffsetFromRenderedPosition = function( po
 		}
 		node = this.items[i];
 	}
-	return node.getParent().getOffsetFromNode( node ) + node.getOffsetFromPosition( position );	
+	return node.getParent().getOffsetFromNode( node, true ) +
+		node.getOffsetFromPosition( position );	
 };
 
 /**
@@ -82,9 +83,9 @@ es.DocumentViewBranchNode.prototype.getOffsetFromRenderedPosition = function( po
  * @returns {es.Position} Position of offset
  */
 es.DocumentViewBranchNode.prototype.getRenderedPositionFromOffset = function( offset ) {
-	var node = this.getNodeFromOffset( offset );
+	var node = this.getNodeFromOffset( offset, true );
 	if ( node !== null ) {
-		return node.getRenderedPositionFromOffset( offset - this.getOffsetFromNode( node ) );
+		return node.getRenderedPositionFromOffset( offset - this.getOffsetFromNode( node, true ) );
 	}
 	return null;
 };
