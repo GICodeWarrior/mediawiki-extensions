@@ -224,8 +224,11 @@ jQuery( function( $ ) {
 				} else {
 					// Failure, just remove the link.
 					$item.find('.fbd-item-show').remove();
+					$item.find('.mw-ajax-loader').remove();
+					showItemError( $item );
 				}
-			}, 'json' );
+			}, 'json' )
+			.error( function() { showItemError( $item ); } );
 	}
 	
 	/**
@@ -243,10 +246,26 @@ jQuery( function( $ ) {
 	}
 	
 	/**
+	 * Show an error on an individual item
+	 * @param $item The .fbd-item to show the message on
+	 * @param message The message to show (currently ignored)
+	 */
+	function showItemError( $item, message ) {
+		$item.find('.mw-ajax-loader').remove();
+		$('<div class="error"/>')
+			.text( mw.msg('moodbar-feedback-action-error') )
+			.prependTo($item);
+	}
+	
+	/**
 	 * Execute an action on an item
 	 */
 	function doAction( params, $item ) {
 		var item_id = $item.data('mbccontinue').split('|')[1];
+		
+		var errorHandler = function(error_str) {
+			showItemError( $item, error_str );
+		};
 		
 		$.post( mw.util.wikiScript('api'),
 			$.extend( {
@@ -260,12 +279,15 @@ jQuery( function( $ ) {
 					if ( response.feedbackdashboard.result == 'success' ) {
 						reloadItem( $item );
 					} else {
-						alert( response.feedbackdashboard.error );
+						errorHandler( response.feedbackdashboard.error );
 					}
+				} else if ( response && response.error ) {
+					errorHandler( response.error.message );
 				} else {
-					alert('Unknown error');
+					errorHandler();
 				}
-			} );
+			} )
+			.error( errorHandler );
 	}
 	
 	/**
