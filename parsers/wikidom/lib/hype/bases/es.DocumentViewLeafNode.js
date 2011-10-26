@@ -9,7 +9,7 @@
  */
 es.DocumentViewLeafNode = function( model, $element ) {
 	// Extension
-	var node = $.extend( new es.ViewNode( model, $element ), this );
+	var node = $.extend( new es.DocumentNode( new es.ViewNode( model, $element ) ), this );
 	
 	// Content
 	node.contentView = new es.ContentView( node.$, model );
@@ -67,4 +67,14 @@ es.DocumentViewLeafNode.prototype.getOffsetFromRenderedPosition = function( posi
  */
 es.DocumentViewLeafNode.prototype.getRenderedPositionFromOffset = function( offset ) {
 	return this.contentView.getRenderedPositionFromOffset( offset );
+};
+
+/**
+ * Gets the length of the content in the model.
+ * 
+ * @method
+ * @returns {Integer} Length of content
+ */
+es.DocumentViewLeafNode.prototype.getElementLength = function() {
+	return this.model.getElementLength();
 };

@@ -24,7 +24,7 @@
  */
 es.ContentView = function( $container, model ) {
 	this.$ = $container;
-	this.model = model || new es.ContentModel();
+	this.model = model;
 	this.boundaries = [];
 	this.lines = [];
 	this.width = null;

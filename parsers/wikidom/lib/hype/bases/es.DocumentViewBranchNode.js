@@ -9,7 +9,7 @@
  */
 es.DocumentViewBranchNode = function( model, $element ) {
 	// Extension
-	return $.extend( new es.ViewNode( model, $element ), this );
+	return $.extend( new es.DocumentNode( new es.ViewNode( model, $element ) ), this );
 };
 
 /* Methods */
@@ -87,4 +87,14 @@ es.DocumentViewBranchNode.prototype.getRenderedPositionFromOffset = function( of
 		return node.getRenderedPositionFromOffset( offset - this.getOffsetFromNode( node ) );
 	}
 	return null;
+};
+
+/**
+ * Gets the length of the content in the model.
+ * 
+ * @method
+ * @returns {Integer} Length of content
+ */
+es.DocumentViewBranchNode.prototype.getElementLength = function() {
+	return this.model.getElementLength();
 };
