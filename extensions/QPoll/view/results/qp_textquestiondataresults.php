@@ -36,7 +36,6 @@ class qp_TextQuestionDataResults extends qp_QuestionDataResults {
 						'class' => 'cat_part',
 						'' // text_answer
 					);
-					$titleAttr = '';
 					if ( array_key_exists( $propkey, $ctrl->ProposalCategoryId ) &&
 						( $id_key = array_search( $catId, $ctrl->ProposalCategoryId[$propkey] ) ) !== false ) {
 						if ( ( $text_answer = $ctrl->ProposalCategoryText[$propkey][$id_key] ) === '' ) {
@@ -45,9 +44,11 @@ class qp_TextQuestionDataResults extends qp_QuestionDataResults {
 								$catview[0] = qp_Setup::RESULTS_CHECK_SIGN;
 							}
 						} else {
+							# text answer is not empty;
 							# try to extract select multiple, if any
 							$text_answer = explode( qp_Setup::SELECT_MULTIPLE_VALUES_SEPARATOR, $text_answer );
 							# place unused categories into the value of 'title' attribute
+							$titleAttr = '';
 							foreach ( $token as &$option ) {
 								if ( !in_array( $option, $text_answer ) ) {
 									if ( $titleAttr !== '' ) {
@@ -56,25 +57,34 @@ class qp_TextQuestionDataResults extends qp_QuestionDataResults {
 									$titleAttr .= qp_Setup::entities( $option );
 								}
 							}
-							# re-create the view of chosen category parts
-							$catview = array();
-							foreach ( $text_answer as $key => &$cat_part ) {
-								$tag = array(
-									'__tag' => 'span',
-									'class' => 'cat_part',
-									'title' => $titleAttr,
-									qp_Setup::specialchars( $cat_part )
-								);
-								if ( in_array( $cat_part, $token ) ) {
-										$tag['class'] .= ( $key % 2 === 0 ) ? ' cat_even' : ' cat_odd';
-								} elseif ( count( $text_answer ) > 1 ) {
-									# add 'cat_unanswered' CSS class only to select multiple values
-									$tag['class'] .= ' cat_unanswered';
+							if ( count( $text_answer ) > 1 ) {
+								# selected multiple values;
+								# re-create the view for multiple category parts
+								$catview = array();
+								foreach ( $text_answer as $key => &$cat_part ) {
+									$tag = array(
+										'__tag' => 'span',
+										'class' => 'cat_part',
+										'title' => $titleAttr,
+										qp_Setup::specialchars( $cat_part )
+									);
+									if ( in_array( $cat_part, $token ) ) {
+											$tag['class'] .= ( $key % 2 === 0 ) ? ' cat_even' : ' cat_odd';
+									} else {
+										# add 'cat_unanswered' CSS class only to select multiple values
+										$tag['class'] .= ' cat_unanswered';
+									}
+									if ( $key == 0 ) {
+										$tag['class'] .= ' cat_first';
+									}
+									$catview[] = $tag;
 								}
-								if ( $key == 0 ) {
-									$tag['class'] .= ' cat_first';
-								}
-								$catview[] = $tag;
+							} else {
+								# text input or textarea
+								$catview['title'] = $titleAttr;
+								# note that count( $text_answer) here cannot be zero, because
+								# explode() was performed on non-empty $text_answer
+								$catview[0] = qp_Setup::specialchars( array_pop( $text_answer ) );
 							}
 						}
 					} else {
