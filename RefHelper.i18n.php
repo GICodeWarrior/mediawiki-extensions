@@ -1410,8 +1410,16 @@ $messages['rue'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'refhelper-label_authorforename' => 'Avtorjevo $1 ime:',
+	'refhelper-label_authorsurname' => 'Priimek:',
+	'refhelper-title' => 'Naslov:',
+	'refhelper-journal' => 'Revija:',
+	'refhelper-volume' => 'Zvezek:',
 	'refhelper-pages' => 'Strani:',
 	'refhelper-year' => 'Leto:',
+	'refhelper-category' => 'Kategorija $1:',
+	'refhelper-create' => 'Ustvari',
+	'refhelper-search' => 'Išči',
 );
 
 /** Somali (Soomaaliga)
