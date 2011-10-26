@@ -17,6 +17,6 @@ $messages['en'] = array(
 	'onlinestatusbar-line' => "$1 is now $2 $3",
 	'onlinestatusbar-used' => 'Do you want to let others see if you are online?',
 	'onlinestatusbar-status' => 'What is the default status you wish to use:',
-	'prefs-gadgets' => 'Gadgets',
+	'prefs-onlinestatusbar' => 'Online status bar',
 	'prefs-onlinestatus' => 'Online Status',
 );

@@ -79,7 +79,7 @@ HTML;
 	}
 
 	public static function IsValid( $id ) {
-		global $wgOnlineStatusBarDefaultIpUsers;
+		global $wgOnlineStatusBarDefaultIpUsers, $wgOnlineStatusBarDefaultEnabled;
 		// checks if anon
 		if ( User::isIP( $id ) ) {
 			return $wgOnlineStatusBarDefaultIpUsers;
@@ -90,7 +90,11 @@ HTML;
 			return false;
 		}
 		// do we track them
-		if ( $user->getOption( "OnlineStatusBar_active" ) == true ) {
+		$value = $user->getOption( "OnlineStatusBar_active" ); 
+		if ( $value == null ) {
+			return $wgOnlineStatusBarDefaultEnabled;
+		}
+		if ( $value == true ) {
 			return true;
 		}
 		return false;
