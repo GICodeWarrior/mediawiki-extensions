@@ -74,7 +74,7 @@ STRING ({STRING_SINGLE}|{STRING_DOUBLE})
 
 {WHITESPACE}|{NEWLINE} ;
 <ERROR>.* { fprintf(stderr, "near %s\n", yytext); ERRORLEVEL(5); return 1; }
-. { fprintf(stderr, "%s: Error in state %d ", filename, YY_START); BEGIN(ERROR); unput(yytext[0]); if (0) goto find_rule; }
+. { fprintf(stderr, "%s: Error in state %d ", filename, YY_START); BEGIN(ERROR); unput(yytext[0]); }}
 
 %%
 
