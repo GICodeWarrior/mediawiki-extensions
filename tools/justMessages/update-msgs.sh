@@ -7,7 +7,7 @@ if [ ! -z "$1" ]; then
 fi
 
 if ! which "$JUSTMESSAGES" 2> /dev/null 1>&2; then
-  DIRNAME=$(dirname $0)
+  DIRNAME=`dirname $0`
   if [ -z "$DIRNAME" ]; then
     DIRNAME="."
   fi
