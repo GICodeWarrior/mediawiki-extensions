@@ -30,6 +30,13 @@ $messages['be-tarask'] = array(
 	'automaticboardwelcome-desc' => 'Аўтаматычна разьмяшчае [[MediaWiki:User-board-welcome-message|вітальнае паведамленьне]] на дошцы новага карыстальніка пасьля стварэньне рахунку',
 );
 
+/** Welsh (Cymraeg)
+ * @author Pwyll
+ */
+$messages['cy'] = array(
+	'automaticboardwelcome-desc' => 'Yn postio [[MediaWiki:User-board-message|neges groesawu]] ar dudalennau defnyddwyr newydd wedi iddynt greu cyfrif.',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
