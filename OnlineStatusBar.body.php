@@ -110,10 +110,23 @@ HTML;
 		global $wgOnlineStatusBarModes, $wgOnlineStatusBarDefaultOffline, $wgOnlineStatusBarDefaultOnline, $wgDBname;
 		$dbw = wfGetDB( DB_MASTER );
 		OnlineStatusBar::DeleteOld();
+		$user = User::newFromName($userID);
+		if ($user == null)
+		{
+			//something is wrong
+			return $wgOnlineStatusBarDefaultOffline;
+		}
 		$result = $dbw->selectField( 'online_status', 'username', array( 'username' => strtolower($userID) ), __METHOD__, array( 'limit 1', 'order by timestamp desc' ) );
 		if ( $result )
 		{
-			return $wgOnlineStatusBarDefaultOnline;
+			$status = $user->getOption("OnlineStatusBar_status");
+			if ($status == null || $status == "")
+			{
+				return $wgOnlineStatusBarDefaultOnline;
+			} else
+			{
+				return $status;
+			}
 		}
 
 		return $wgOnlineStatusBarDefaultOffline;
