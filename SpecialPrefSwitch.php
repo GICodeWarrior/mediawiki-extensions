@@ -46,7 +46,7 @@ class SpecialPrefSwitch extends SpecialPage {
 		}
 		return false;
 	}
-	/*
+	/**
 	 * Returns a string representing the current state of a given user. There are 3 modes the system can be in, 'anon',
 	 * 'on' or 'off'. If the user is not logged in, the mode is always 'anon'. If the user is logged in, the mode will
 	 * be 'on' if SpecialPrefSwitch::isSwitchedOn() returns true, and 'off' otherwise.
