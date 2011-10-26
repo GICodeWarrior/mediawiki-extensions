@@ -1,7 +1,7 @@
 <?php
 /**
  * Hooks for ResearchTools extension
- * 
+ *
  * @file
  * @ingroup Extensions
  */
@@ -25,7 +25,7 @@ class ResearchToolsHooks {
 	 */
 	public static function loadExtensionSchemaUpdates( $updater = null ) {
 		$dir = dirname( __FILE__ ) . '/';
-		
+
 		// Survey tables
 		$updater->addExtensionTable(
 			'research_tools_surveys', $dir . 'patches/CreateSurveysTable.sql'
@@ -39,11 +39,11 @@ class ResearchToolsHooks {
 		$updater->addExtensionTable(
 			'research_tools_survey_answers', $dir . 'patches/CreateSurveyAnswersTable.sql'
 		);
-		
+
 		return true;
 	}
 
-	/*
+	/**
 	 * ResourceLoaderRegisterModules hook
 	 */
 	public static function resourceLoaderRegisterModules( &$resourceLoader ) {
