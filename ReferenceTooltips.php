@@ -1,0 +1,45 @@
+<?php
+
+/**
+ * MoodBar extension
+ * Allows specified users to send their "mood" back to the site operator.
+ */
+
+$wgExtensionCredits['other'][] = array(
+	'author' => array( 'Andrew Garrett' ),
+	'name' => 'ReferenceTooltips',
+	'url' => 'http://www.mediawiki.org/wiki/Reference_Tooltips',
+	'version' => '0.1',
+	'path' => __FILE__,
+);
+
+$wgHooks['BeforePageDisplay'][] = 'rtfBeforePageDisplay';
+
+// Resources
+$rtResourceTemplate = array(
+	'localBasePath' => dirname(__FILE__) . '/modules',
+	'remoteExtPath' => 'ReferenceTooltips/modules'
+);
+
+$wgResourceModules['ext.reference-tooltips'] = $rtResourceTemplate + array(
+	'styles' => array(),
+	'scripts' => 'ext.reference-tooltips/ext.reference-tooltips.js',
+	'position' => 'bottom',
+	'dependencies' => array(
+		'jquery.tooltip',
+	),
+);
+
+$wgResourceModules['jquery.tooltip'] = $rtResourceTemplate + array(
+	'styles' => 'jquery.tooltip/jquery.tooltip.css',
+	'scripts' => 'jquery.tooltip/jquery.tooltip.js',
+	'position' => 'bottom',
+);
+
+function rtfBeforePageDisplay() {
+	global $wgOut;
+	
+	$wgOut->addModules( 'ext.reference-tooltips' );
+	
+	return true;
+}
