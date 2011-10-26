@@ -71,6 +71,13 @@ $messages['cs'] = array(
 	'categorymembersonsidebar-desc' => 'Přidá členy kategorie na boční panel',
 );
 
+/** Welsh (Cymraeg)
+ * @author Pwyll
+ */
+$messages['cy'] = array(
+	'categorymembersonsidebar-desc' => 'Yn ychwanegu aelodau categori ar y bar ochrog',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
