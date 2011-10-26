@@ -1050,6 +1050,7 @@ $messages['sl'] = array(
 	'am-email' => 'e-pošta',
 	'am-active' => 'dejavno',
 	'am-updated' => 'Vaše spremembe so bile uspešno shranjene',
+	'nss-desc' => 'Vtičnik za overitev zbirk podatkov libnss-mysql. Vsebuje [[Special:AccountManager|upravljavca računov]]',
 	'nss-rights' => 'pravice',
 	'nss-save-changes' => 'Shrani spremembe',
 	'nss-create-account-header' => 'Ustvari nov račun',
