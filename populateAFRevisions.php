@@ -28,7 +28,7 @@ class PopulateAFRevisions extends Maintenance {
 	}
 
 	public function execute() {
-		global $wgArticleFeedbackRatings;
+		global $wgArticleFeedbackRatingTypes;
 		
 		$this->output( "Populating article_feedback_revisions table ...\n" );
 		
@@ -63,10 +63,10 @@ class PopulateAFRevisions extends Maintenance {
 			);
 			
 			// Initialize counts and sums for each rating
-			// If $wgArticleFeedbackRatings = array( 1, 2, 3, 4 ) this initializes them
+			// If array_keys( $wgArticleFeedbackRatingTypes ) = array( 1, 2, 3, 4 ) this initializes them
 			// to array( 1 => 0, 2 => 0, 3 => 0, 4 => 0 )
-			$counts = $sums = array_combine( $wgArticleFeedbackRatings,
-				array_fill( 0, count( $wgArticleFeedbackRatings ), 0 )
+			$counts = $sums = array_combine( array_keys( $wgArticleFeedbackRatingTypes ),
+				array_fill( 0, count( $wgArticleFeedbackRatingTypes ), 0 )
 			);
 			
 			// Process each of the queried rows and update $data

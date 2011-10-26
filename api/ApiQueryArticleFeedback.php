@@ -5,31 +5,24 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 	}
 
 	public function execute() {
-		global $wgArticleFeedbackRatings;
+		global $wgArticleFeedbackRatingTypes;
 		
 		$params = $this->extractRequestParams();
 		$result = $this->getResult();
 		$revisionLimit = $this->getRevisionLimit( $params['pageid'] );
 		
-		$this->addTables( array( 'article_feedback_revisions', 'article_feedback_ratings' ) );
+		$this->addTables( array( 'article_feedback_revisions' ) );
 		$this->addFields( array(
 			'MAX(afr_revision) as afr_revision',
 			'SUM(afr_total) as afr_total',
 			'SUM(afr_count) as afr_count',
 			'afr_rating_id',
-			'aar_rating',
-		) );
-		$this->addJoinConds( array(
-				'article_feedback_ratings' => array( 'LEFT JOIN', array(
-					'aar_id=afr_rating_id',
-					'afr_rating_id' => $wgArticleFeedbackRatings,
-				)
-			),
 		) );
 		$this->addWhereFld( 'afr_page_id', $params['pageid'] );
 		$this->addWhere( 'afr_revision >= ' . $revisionLimit );
+		$this->addWhereFld( 'afr_rating_id', array_keys( $wgArticleFeedbackRatingTypes ) );
 		$this->addOption( 'GROUP BY', 'afr_rating_id' );
-		$this->addOption( 'LIMIT', count( $wgArticleFeedbackRatings ) );
+		$this->addOption( 'LIMIT', count( $wgArticleFeedbackRatingTypes ) );
 
 		// Rating counts and totals
 		$res = $this->select( __METHOD__ );
@@ -44,7 +37,7 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 			}
 			$ratings[$params['pageid']]['ratings'][] = array(
 				'ratingid' => (int) $row->afr_rating_id,
-				'ratingdesc' => $row->aar_rating,
+				'ratingdesc' => $wgArticleFeedbackRatingTypes[$row->afr_rating_id],
 				'total' => (int) $row->afr_total,
 				'count' => (int) $row->afr_count,
 				'countall' => isset( $historicCounts[$row->afr_rating_id] )
@@ -122,7 +115,7 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 	}
 
 	protected function getHistoricCounts( $params ) {
-		global $wgArticleFeedbackRatings;
+		global $wgArticleFeedbackRatingTypes;
 		
 		$res = $this->getDB()->select(
 			'article_feedback_pages',
@@ -132,7 +125,7 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 			),
 			array(
 				'aap_page_id' => $params['pageid'],
-				'aap_rating_id' => $wgArticleFeedbackRatings,
+				'aap_rating_id' => array_keys( $wgArticleFeedbackRatingTypes ),
 			),
 			__METHOD__
 		);
@@ -174,29 +167,25 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 	}
 	
 	protected function getUserRatings( $params ) {
-		global $wgUser, $wgArticleFeedbackRatings;
+		global $wgUser, $wgArticleFeedbackRatingTypes;
 
 		$res = $this->getDB()->select(
-			array( 'article_feedback', 'article_feedback_ratings' ),
+			array( 'article_feedback' ),
 			array(
 				'aa_rating_id',
-				'aar_rating',
 				'aa_revision',
 				'aa_rating_value',
 			),
 			array(
 				'aa_page_id' => $params['pageid'],
-				'aa_rating_id' => $wgArticleFeedbackRatings,
+				'aa_rating_id' => array_keys( $wgArticleFeedbackRatingTypes ),
 				'aa_user_text' => $wgUser->getName(),
 				'aa_user_anon_token' => $this->getAnonToken( $params ),
 			),
 			__METHOD__,
 			array(
-				'LIMIT' => count( $wgArticleFeedbackRatings ),
+				'LIMIT' => count( $wgArticleFeedbackRatingTypes ),
 				'ORDER BY' => 'aa_id DESC',
-			),
-			array(
-				'article_feedback_ratings' => array( 'LEFT JOIN', array( 'aar_id=aa_rating_id' ) )
 			)
 		);
 		$ratings = array();
@@ -210,7 +199,7 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 				$ratings[$row->aa_rating_id] = array(
 					'value' => $row->aa_rating_value,
 					'revision' => $row->aa_revision,
-					'text' => $row->aar_rating,
+					'text' => $wgArticleFeedbackRatingTypes[$row->aa_rating_id],
 				);
 			}
 		}

@@ -536,19 +536,11 @@ class SpecialArticleFeedback extends SpecialPage {
 	}
 
 	protected static function getCategories() {
-		global $wgArticleFeedbackRatings;
+		global $wgArticleFeedbackRatingTypes;
 
 		if ( !isset( self::$categories ) ) {
-			$dbr = wfGetDB( DB_SLAVE );
-			$res = $dbr->select(
-				'article_feedback_ratings',
-				array( 'aar_id', 'aar_rating' ),
-				array( 'aar_id' => $wgArticleFeedbackRatings ),
-				__METHOD__
-			);
-			self::$categories = array();
-			foreach ( $res as $row ) {
-				self::$categories[$row->aar_id] = wfMsg( $row->aar_rating );
+			foreach ( $wgArticleFeedbackRatingTypes as $id => $rating ) {
+				self::$categories[$id] = wfMsg( $rating );
 			}
 		}
 		return self::$categories;
