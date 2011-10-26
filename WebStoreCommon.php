@@ -234,7 +234,7 @@ EOT;
 		return $success;
 	}
 
-	/*
+	/**
 	 * Atomically copy a file from one place to another. Fails if the destination file
 	 * already exists. Requires a filesystem with locking semantics to work concurrently,
 	 * i.e. not NFS.
