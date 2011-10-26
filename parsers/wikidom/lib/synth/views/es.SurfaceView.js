@@ -20,7 +20,8 @@ es.SurfaceView = function( $container, model ) {
 		clickDelay: 500,
 		clickTimeout: null,
 		clickPosition: null,
-		hotSpotRadius: 1
+		hotSpotRadius: 1,
+		lastMovePosition: null
 	};
 	this.keyboard = {
 		selecting: false,
@@ -96,14 +97,14 @@ es.SurfaceView = function( $container, model ) {
 
 	this.dimensions = {
 		width: this.$.width(),
-		height: this.$.height(),
+		height: this.$window.height(),
 		scrollTop: this.$window.scrollTop()
 	};
 	
 	// Re-render when resizing horizontally
 	this.$window.resize( function() {
 		surfaceView.hideCursor();
-		surfaceView.dimensions.height = surfaceView.$.height();
+		surfaceView.dimensions.height = surfaceView.$window.height();
 		var width = surfaceView.$.width();
 		if ( surfaceView.dimensions.width !== width ) {
 			surfaceView.dimensions.width = width;
@@ -200,30 +201,33 @@ es.SurfaceView.prototype.onMouseDown = function( e ) {
 	this.cursor.initialLeft = null;
 	return false;
 };
-var lastEventPosition = new es.Position();
+
 es.SurfaceView.prototype.onMouseMove = function( e ) {
 	if ( e.button === 0 /* left mouse button */ && this.mouse.selecting ) {
-
-
-		if ( e.pageY - $(window).scrollTop() < 0 ) {
-			lastEventPosition = es.Position.newFromEventPagePosition( e );
-			stopScrolling();
-			startScrolling(true);			
-		} else if ( e.pageY - $(window).scrollTop() <= window.innerHeight ) {
-			stopScrolling();
+		if ( e.pageY - this.dimensions.scrollTop < 0 ) {
+			//this.mouse.lastMovePosition = 
+			this.scroll( 'up' );
+		} else if( e.pageY - this.dimensions.scrollTop > this.dimensions.height ) {
+			this.scroll( 'down' );
 		} else {
-			lastEventPosition = es.Position.newFromEventPagePosition( e );
-			stopScrolling();
-			startScrolling();
+			this.scroll( 'stop' );
+			this.hideCursor();
+			this.selection.to = this.documentView.getOffsetFromEvent( e );
+			if ( !this.drawSelection() ) {
+				this.showCursor();
+			}
 		}
-
-		this.hideCursor();
-		this.selection.to = this.documentView.getOffsetFromEvent( e );
-		if ( !this.drawSelection() ) {
-			this.showCursor();
-		}
-
 	}
+};
+
+es.SurfaceView.prototype.scroll = function( type ) {
+/*	
+	switch ( type ) {
+		case 'down':
+			this.mouse.lastMovePosition = 
+			break;
+	};
+*/
 };
 
 es.SurfaceView.prototype.onMouseUp = function( e ) {
@@ -372,6 +376,7 @@ es.SurfaceView.prototype.drawSelection = function() {
 		return false;
 	}
 };
+
 
 
 
