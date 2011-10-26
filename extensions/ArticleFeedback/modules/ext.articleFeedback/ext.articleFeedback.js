@@ -199,28 +199,7 @@ var survey = new ( function() {
 } )();
 
 var config = {
-	'ratings': {
-		'trustworthy': {
-			'id': '1',
-			'label': 'articlefeedback-field-trustworthy-label',
-			'tip': 'articlefeedback-field-trustworthy-tip'
-		},
-		'objective': {
-			'id': '2',
-			'label': 'articlefeedback-field-objective-label',
-			'tip': 'articlefeedback-field-objective-tip'
-		},
-		'complete': {
-			'id': '3',
-			'label': 'articlefeedback-field-complete-label',
-			'tip': 'articlefeedback-field-complete-tip'
-		},
-		'wellwritten': {
-			'id': '4',
-			'label': 'articlefeedback-field-wellwritten-label',
-			'tip': 'articlefeedback-field-wellwritten-tip'
-		}
-	},
+	'ratings': mw.config.get( 'wgArticleFeedbackRatingTypesFlipped' ),
 	'pitches': {
 		'survey': {
 			'weight': 1,

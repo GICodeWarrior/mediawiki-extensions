@@ -1,17 +1,3 @@
--- Store mapping of i18n key of "rating" to an ID
-CREATE TABLE IF NOT EXISTS /*_*/article_feedback_ratings (
-  -- Rating Id
-  aar_id int unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  -- Text (i18n key) for rating description
-  aar_rating varbinary(255) NOT NULL
-) /*$wgDBTableOptions*/;
-
--- Default article feedback ratings for the pilot
-INSERT INTO /*_*/article_feedback_ratings (aar_rating) VALUES ('articlefeedback-field-trustworthy-label');
-INSERT INTO /*_*/article_feedback_ratings (aar_rating) VALUES ('articlefeedback-field-objective-label');
-INSERT INTO /*_*/article_feedback_ratings (aar_rating) VALUES ('articlefeedback-field-complete-label');
-INSERT INTO /*_*/article_feedback_ratings (aar_rating) VALUES ('articlefeedback-field-wellwritten-label');
-
 -- Store article feedbacks (user rating per revision)
 CREATE TABLE IF NOT EXISTS /*_*/article_feedback (
   -- Row ID (primary key)
@@ -28,7 +14,7 @@ CREATE TABLE IF NOT EXISTS /*_*/article_feedback (
   aa_revision integer unsigned NOT NULL,
   -- MW Timestamp
   aa_timestamp binary(14) NOT NULL DEFAULT '',
-  -- Foreign key to article_feedback_ratings.aar_rating
+  -- Rating ID, mapped to a name in $wgArticleFeedbackRatingTypes
   aa_rating_id int unsigned NOT NULL,
   -- Value of the rating (0 is "unrated", else 1-5)
   aa_rating_value int unsigned NOT NULL,
@@ -45,7 +31,7 @@ CREATE INDEX /*i*/aa_page_id ON /*_*/article_feedback (aa_page_id, aa_timestamp)
 CREATE TABLE IF NOT EXISTS /*_*/article_feedback_pages (
   -- Foreign key to page.page_id
   aap_page_id integer unsigned NOT NULL,
-  -- Foreign key to article_feedback_ratings.aar_rating
+  -- Rating ID, mapped to a name in $wgArticleFeedbackRatingTypes
   aap_rating_id integer unsigned NOT NULL,
   -- Sum (total) of all the ratings for this article revision
   aap_total integer unsigned NOT NULL,
@@ -61,7 +47,7 @@ CREATE TABLE IF NOT EXISTS /*_*/article_feedback_revisions (
   afr_page_id integer unsigned NOT NULL,
   -- Revision that totals are relevant to
   afr_revision integer unsigned NOT NULL,
-  -- Foreign key to article_feedback_ratings.aar_rating
+  -- Rating ID, mapped to a name in $wgArticleFeedbackRatingTypes
   afr_rating_id integer unsigned NOT NULL,
   -- Sum (total) of all the ratings for this article revision
   afr_total integer unsigned NOT NULL,

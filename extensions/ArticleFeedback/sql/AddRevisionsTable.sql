@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS /*_*/article_feedback_revisions (
   afr_page_id integer unsigned NOT NULL,
   -- Revision that totals are relevant to
   afr_revision integer unsigned NOT NULL,
-  -- Foreign key to article_feedback_ratings.aar_rating
+  -- Rating ID, mapped to a name in $wgArticleFeedbackRatingTypes
   afr_rating_id integer unsigned NOT NULL,
   -- Sum (total) of all the ratings for this article revision
   afr_total integer unsigned NOT NULL,

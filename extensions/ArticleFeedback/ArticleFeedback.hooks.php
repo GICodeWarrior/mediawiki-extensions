@@ -19,34 +19,6 @@ class ArticleFeedbackHooks {
 			'scripts' => 'ext.articleFeedback/ext.articleFeedback.js',
 			'styles' => 'ext.articleFeedback/ext.articleFeedback.css',
 			'messages' => array(
-				'articlefeedback-field-trustworthy-label',
-				'articlefeedback-field-trustworthy-tip',
-				'articlefeedback-field-trustworthy-tooltip-1',
-				'articlefeedback-field-trustworthy-tooltip-2',
-				'articlefeedback-field-trustworthy-tooltip-3',
-				'articlefeedback-field-trustworthy-tooltip-4',
-				'articlefeedback-field-trustworthy-tooltip-5',
-				'articlefeedback-field-complete-label',
-				'articlefeedback-field-complete-tip',
-				'articlefeedback-field-complete-tooltip-1',
-				'articlefeedback-field-complete-tooltip-2',
-				'articlefeedback-field-complete-tooltip-3',
-				'articlefeedback-field-complete-tooltip-4',
-				'articlefeedback-field-complete-tooltip-5',
-				'articlefeedback-field-objective-label',
-				'articlefeedback-field-objective-tip',
-				'articlefeedback-field-objective-tooltip-1',
-				'articlefeedback-field-objective-tooltip-2',
-				'articlefeedback-field-objective-tooltip-3',
-				'articlefeedback-field-objective-tooltip-4',
-				'articlefeedback-field-objective-tooltip-5',
-				'articlefeedback-field-wellwritten-label',
-				'articlefeedback-field-wellwritten-tip',
-				'articlefeedback-field-wellwritten-tooltip-1',
-				'articlefeedback-field-wellwritten-tooltip-2',
-				'articlefeedback-field-wellwritten-tooltip-3',
-				'articlefeedback-field-wellwritten-tooltip-4',
-				'articlefeedback-field-wellwritten-tooltip-5',
 				'articlefeedback-pitch-reject',
 				'articlefeedback-pitch-or',
 				'articlefeedback-pitch-thanks',
@@ -71,7 +43,11 @@ class ArticleFeedbackHooks {
 				'jquery.articleFeedback',
 				'jquery.cookie',
 				'jquery.clickTracking',
+				'ext.articleFeedback.ratingi18n',
 			),
+		),
+		'ext.articleFeedback.ratingi18n' => array(
+			'messages' => null, // Filled in by the resourceLoaderRegisterModules() hook function later
 		),
 		'ext.articleFeedback.dashboard' => array(
 			'scripts' => 'ext.articleFeedback/ext.articleFeedback.dashboard.js',
@@ -260,7 +236,6 @@ class ArticleFeedbackHooks {
 		$tables[] = 'article_feedback';
 		$tables[] = 'article_feedback_pages';
 		$tables[] = 'article_feedback_revisions';
-		$tables[] = 'article_feedback_ratings';
 		$tables[] = 'article_feedback_properties';
 		return true;
 	}
@@ -280,6 +255,11 @@ class ArticleFeedbackHooks {
 		global $wgExtensionAssetsPath;
 		$localpath = dirname( __FILE__ ) . '/modules';
 		$remotepath = "$wgExtensionAssetsPath/ArticleFeedback/modules";
+		
+		if ( self::$modules['ext.articleFeedback.ratingi18n']['messages'] === null ) {
+			self::$modules['ext.articleFeedback.ratingi18n']['messages'] = self::buildRatingMessagesArray();
+		}
+		
 		foreach ( self::$modules as $name => $resources ) {
 			$resourceLoader->register(
 				$name, new ResourceLoaderFileModule( $resources, $localpath, $remotepath )
@@ -298,7 +278,8 @@ class ArticleFeedbackHooks {
 			$wgArticleFeedbackLotteryOdds,
 			$wgArticleFeedbackTracking,
 			$wgArticleFeedbackOptions,
-			$wgArticleFeedbackNamespaces;
+			$wgArticleFeedbackNamespaces,
+			$wgArticleFeedbackRatingTypes;
 		$vars['wgArticleFeedbackSMaxage'] = $wgArticleFeedbackSMaxage;
 		$vars['wgArticleFeedbackCategories'] = $wgArticleFeedbackCategories;
 		$vars['wgArticleFeedbackBlacklistCategories'] = $wgArticleFeedbackBlacklistCategories;
@@ -307,6 +288,7 @@ class ArticleFeedbackHooks {
 		$vars['wgArticleFeedbackOptions'] = $wgArticleFeedbackOptions;
 		$vars['wgArticleFeedbackNamespaces'] = $wgArticleFeedbackNamespaces;
 		$vars['wgArticleFeedbackWhatsThisPage'] = wfMsgForContent( 'articlefeedback-form-panel-explanation-link' );
+		$vars['wgArticleFeedbackRatingTypesFlipped'] = array_flip( $wgArticleFeedbackRatingTypes );
 		return true;
 	}
 
@@ -322,5 +304,16 @@ class ArticleFeedbackHooks {
 			'label-message' => 'articlefeedback-disable-preference',
 		);
 		return true;
+	}
+	
+	protected static function buildRatingMessagesArray() {
+		global $wgArticleFeedbackRatingTypes;
+		$messages = array();
+		foreach ( $wgArticleFeedbackRatingTypes as $key ) {
+			foreach ( array( 'label', 'tip', 'tooltip-1', 'tooltip-2', 'tooltip-3', 'tooltip-4', 'tooltip-5' ) as $suffix ) {
+				$messages[] = "articlefeedback-field-$key-$suffix";
+			}
+		}
+		return $messages;
 	}
 }

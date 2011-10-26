@@ -5,7 +5,7 @@ class ApiArticleFeedback extends ApiBase {
 	}
 
 	public function execute() {
-		global $wgUser, $wgArticleFeedbackRatings, $wgArticleFeedbackSMaxage,
+		global $wgUser, $wgArticleFeedbackRatingTypes, $wgArticleFeedbackSMaxage,
 			$wgArticleFeedbackNamespaces;
 		$params = $this->extractRequestParams();
 
@@ -44,7 +44,7 @@ class ApiArticleFeedback extends ApiBase {
 		
 		// Build array( rating ID => rating value )
 		$ratings = array();
-		foreach ( $wgArticleFeedbackRatings as $ratingID ) {
+		foreach ( $wgArticleFeedbackRatingTypes as $ratingID => $unused ) {
 			$ratings[$ratingID] = intval( $params["r{$ratingID}"] );
 		}
 		// Insert the new ratings
@@ -60,14 +60,14 @@ class ApiArticleFeedback extends ApiBase {
 			array(
 				'aa_user_text' => $wgUser->getName(),
 				'aa_page_id' => $params['pageid'],
-				'aa_rating_id' => $wgArticleFeedbackRatings,
+				'aa_rating_id' => array_keys( $wgArticleFeedbackRatingTypes ),
 				'aa_user_anon_token' => $token,
 				'aa_id < ' . intval( $id )
 			),
 			__METHOD__,
 			array(
 				'ORDER BY' => 'aa_id DESC',
-				'LIMIT' => count( $wgArticleFeedbackRatings ),
+				'LIMIT' => count( $wgArticleFeedbackRatingTypes ),
 			)
 		);
 		$lastRatings = array();
@@ -76,22 +76,22 @@ class ApiArticleFeedback extends ApiBase {
 			$lastRatings[$row->aa_rating_id]['revision'] = $row->aa_revision;
 		}
 		
-		foreach ( $wgArticleFeedbackRatings as $rating ) {
+		foreach ( $wgArticleFeedbackRatingTypes as $ratingID => $unused ) {
 			$lastPageRating = false;
 			$lastRevRating = false;
-			if ( isset( $lastRatings[$rating] ) ) {
-				$lastPageRating = intval( $lastRatings[$rating]['value'] );
-				if ( intval( $lastRatings[$rating]['revision'] ) == $revisionId ) {
+			if ( isset( $lastRatings[$ratingID] ) ) {
+				$lastPageRating = intval( $lastRatings[$ratingID]['value'] );
+				if ( intval( $lastRatings[$ratingID]['revision'] ) == $revisionId ) {
 					$lastRevRating = $lastPageRating;
 				}
 			}
-			$thisRating = intval( $params["r{$rating}"] );
+			$thisRating = intval( $params["r{$ratingID}"] );
 			
 			// Update counter tables
-			$this->insertRevisionRating( $pageId, $revisionId, $rating, $thisRating - $lastRevRating,
+			$this->insertRevisionRating( $pageId, $revisionId, $ratingID, $thisRating - $lastRevRating,
 				$thisRating, $lastRevRating
 			);
-			$this->insertPageRating( $pageId, $rating, $thisRating - $lastPageRating, $thisRating, $lastPageRating );
+			$this->insertPageRating( $pageId, $ratingID, $thisRating - $lastPageRating, $thisRating, $lastPageRating );
 		}
 
 		$this->insertProperties( $revisionId, $wgUser, $token, $params );
@@ -328,7 +328,7 @@ class ApiArticleFeedback extends ApiBase {
 	}
 
 	public function getAllowedParams() {
-		global $wgArticleFeedbackRatings;
+		global $wgArticleFeedbackRatingTypes;
 		$ret = array(
 			'pageid' => array(
 				ApiBase::PARAM_TYPE => 'integer',
@@ -352,8 +352,8 @@ class ApiArticleFeedback extends ApiBase {
 			),
 		);
 
-		foreach( $wgArticleFeedbackRatings as $rating ) {
-			$ret["r{$rating}"] = array(
+		foreach( $wgArticleFeedbackRatingTypes as $ratingID => $unused ) {
+			$ret["r{$ratingID}"] = array(
 				ApiBase::PARAM_TYPE => 'integer',
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_ISMULTI => false,
@@ -366,7 +366,7 @@ class ApiArticleFeedback extends ApiBase {
 	}
 
 	public function getParamDescription() {
-		global $wgArticleFeedbackRatings;
+		global $wgArticleFeedbackRatingTypes;
 		$ret = array(
 			'pageid' => 'Page ID to submit feedback for',
 			'revid' => 'Revision ID to submit feedback for',
@@ -374,7 +374,7 @@ class ApiArticleFeedback extends ApiBase {
 			'bucket' => 'Which rating widget was shown to the user',
 			'expertise' => 'What kinds of expertise does the user claim to have',
 		);
-		foreach( $wgArticleFeedbackRatings as $rating ) {
+		foreach( $wgArticleFeedbackRatingTypes as $rating => $unused ) {
 			$ret["r{$rating}"] = "Rating {$rating}";
 		}
 		return $ret;

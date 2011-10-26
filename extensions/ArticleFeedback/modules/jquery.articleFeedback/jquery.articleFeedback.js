@@ -204,7 +204,7 @@ $.articleFeedback = {
 			// Build data from form values for 'action=articlefeedback'
 			var data = {};
 			for ( var key in context.options.ratings ) {
-				var id = context.options.ratings[key].id;
+				var id = context.options.ratings[key];
 				data['r' + id] = context.$ui.find( 'input[name="r' + id + '"]' ).val();
 			}
 			var expertise = [];
@@ -410,8 +410,8 @@ $.articleFeedback = {
 					context.$ui.find( '.articleFeedback-rating' ).each( function() {
 						var name = $(this).attr( 'rel' );
 						var rating = name in context.options.ratings
-							&& context.options.ratings[name].id in ratings ?
-								ratings[context.options.ratings[name].id] : null;
+							&& context.options.ratings[name] in ratings ?
+								ratings[context.options.ratings[name]] : null;
 						// Report
 						if (
 							rating !== null
@@ -489,12 +489,13 @@ $.articleFeedback = {
 				.find( '.articleFeedback-ratings' )
 					.each( function() {
 						for ( var key in context.options.ratings ) {
-							var rating = context.options.ratings[key];
+							var	tipMsg = 'articlefeedback-field-' + key + '-tip',
+								labelMsg = 'articlefeedback-field-' + key + '-label';
 							$( $.articleFeedback.tpl.rating )
 								.attr( 'rel', key )
 								.find( '.articleFeedback-label' )
-									.attr( 'title', mw.msg( rating.tip ) )
-									.text( mw.msg( rating.label ) )
+									.attr( 'title', mw.msg( tipMsg ) )
+									.text( mw.msg( labelMsg ) )
 									.end()
 								.find( '.articleFeedback-rating-clear' )
 									.attr( 'title', mw.msg( 'articlefeedback-form-panel-clear' ) )
@@ -709,8 +710,8 @@ $.articleFeedback = {
 					.end()
 				// Name the hidden fields
 				.find( '.articleFeedback-rating' )
-					.each( function( rating ) {
-						$(this).find( 'input:hidden' ) .attr( 'name', 'r' + ( rating + 1 ) );
+					.each( function() {
+						$(this).find( 'input:hidden' ) .attr( 'name', 'r' + context.options.ratings[$(this).attr( 'rel' )] );
 					} )
 					.end()
 				// Setup switch behavior
@@ -838,9 +839,7 @@ $.articleFeedback = {
  * 		}
  * 	} );
  * 
- * Rating IDs need to match up to the contents of your article_feedback_ratings table, which is a
- * lookup table containing rating IDs and message keys used for translating rating IDs into string;
- * and be included in $wgArticleFeedbackRatings, which is an array of allowed IDs.
+ * Rating IDs need to be included in $wgArticleFeedbackRatingTypes, which is an array mapping allowed IDs to rating names.
  */
 $.fn.articleFeedback = function() {
 	var args = arguments;

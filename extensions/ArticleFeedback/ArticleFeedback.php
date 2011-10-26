@@ -24,8 +24,8 @@ $wgArticleFeedbackDashboard = false;
 // Number of revisions to keep a rating alive for
 $wgArticleFeedbackRatingLifetime = 30;
 
-// Array of the "ratings" id's to store. Allows it to be a bit more dynamic
-$wgArticleFeedbackRatings = array( 1, 2, 3, 4 );
+// Array of rating types
+$wgArticleFeedbackRatingTypes = array( 1 => 'trustworthy', 2 => 'objective', 3 => 'complete', 4 => 'wellwritten' );
 
 // Which categories the pages must belong to have the rating widget added (with _ in text)
 // Extension is "disabled" if this field is an empty array (as per default configuration)
