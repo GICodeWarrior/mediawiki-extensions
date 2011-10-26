@@ -112,7 +112,7 @@ function wfOnlineStatusBar_UpdateStatus() {
 $wgHooks['GetPreferences'][] = 'wfOnlineStatusBar_PreferencesHook';
 function wfOnlineStatusBar_PreferencesHook( $user, &$preferences ) {
 	global $wgOnlineStatusBarDefaultOnline, $wgOnlineStatusBarDefaultEnabled, $wgOnlineStatusBarModes;
-	$preferences['OnlineStatusBar_active'] = array( 'type' => 'toggle', 'label-message' => 'onlinestatusbar-used', 'section' => 'misc/onlinestatus', 'default' => $wgOnlineStatusBarDefaultEnabled );
+	$preferences['OnlineStatusBar_active'] = array( 'type' => 'toggle', 'label-message' => 'onlinestatusbar-used', 'section' => 'misc/onlinestatus' ); // 'default' => $wgOnlineStatusBarDefaultEnabled );
 	$preferences['OnlineStatusBar_status'] = array( 'type' => 'radio', 'label-message' => 'onlinestatusbar-status', 'section' => 'misc/onlinestatus',
 		'options' => array(
 			$wgOnlineStatusBarModes['online'] => 'online',
@@ -120,7 +120,7 @@ function wfOnlineStatusBar_PreferencesHook( $user, &$preferences ) {
 			$wgOnlineStatusBarModes['away'] => 'away',
 			$wgOnlineStatusBarModes['hidden'] => 'hidden'
 		),
-		'default' => 'online',
+		//'default' => 'online',
 	);
 	return true;
 }
