@@ -58,7 +58,7 @@ $wgOnlineStatusBarDefaultIpUsers = false;
 $wgOnlineStatusBarDefaultOnline = "online";
 // default for offline
 $wgOnlineStatusBarDefaultOffline = "offline";
-// if new users have this feature enabled by default (experimental)
+// if users have this feature enabled by default
 $wgOnlineStatusBarDefaultEnabled = false;
 // how long to wait until user is considered as offline
 $wgOnlineStatusBar_LogoutTime = 3600;
@@ -111,8 +111,8 @@ function wfOnlineStatusBar_UpdateStatus() {
 $wgHooks['GetPreferences'][] = 'wfOnlineStatusBar_PreferencesHook';
 function wfOnlineStatusBar_PreferencesHook( $user, &$preferences ) {
 	global $wgOnlineStatusBarModes;
-	$preferences['OnlineStatusBar_active'] = array( 'type' => 'toggle', 'label-message' => 'onlinestatusbar-used', 'section' => 'gadgets/onlinestatus' );
-	$preferences['OnlineStatusBar_status'] = array( 'type' => 'radio', 'label-message' => 'onlinestatusbar-status', 'section' => 'gadgets/onlinestatus',
+	$preferences['OnlineStatusBar_active'] = array( 'type' => 'toggle', 'label-message' => 'onlinestatusbar-used', 'section' => 'onlinestatusbar/onlinestatus' );
+	$preferences['OnlineStatusBar_status'] = array( 'type' => 'radio', 'label-message' => 'onlinestatusbar-status', 'section' => 'onlinestatusbar/onlinestatus',
 		'options' => array(
 			$wgOnlineStatusBarModes['online'] => 'online',
 			$wgOnlineStatusBarModes['busy'] => 'busy',
