@@ -82,7 +82,7 @@
 
 		return $this->confirmDelete( '', $reason );
 	}
-	/*
+	/**
 	 * function article top
 	 * @return MV dataPage top html
 	 */
@@ -123,7 +123,7 @@
 		return $html;
 	}
 
-	/*
+	/**
 	 * function article_bottom
 	 * @return MV dataPage lower html
 	 */

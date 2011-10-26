@@ -25,7 +25,7 @@ class MV_SequencePage extends Article {
 		global $wgRequest;
 		return parent::__construct( $title );
 	}
-	/*
+	/**
 	 * returns the xml output of the sequence with all wiki-text templates/magic words swapped out
 	 * also resolves all image and media locations with absolute paths.
 	 */
@@ -322,7 +322,7 @@ class MV_SequencePage extends Article {
 	function validateNodeAttributes( &$node ){
 		//make sure only valid node Attributes per node name get through & htmlentities the values
 	}
-	/*
+	/**
 	 * parse the inner node as wiki text
 	 */
 	function parseInnerWikiText( &$node, $innerWikiText=''){
@@ -434,7 +434,7 @@ class MV_SequencePage extends Article {
 		//print_r($this->aHLRD);
 		//die;
 	}*/
-	/*
+	/**
 	 * resolves any resource refrences and gets things ready to be parsed as wikiText
 	 */
 	/*function resolveResource(& $i){ //pass in the current index

@@ -523,7 +523,7 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 		$out .= " )<br /> ";
 		return $out;
 	}
-	/*
+	/**
 	 * generate soft colors vi page ids (we use ids so that page moves don't change the color')
 	*/
 	function getMvdBgColor( & $mvd_page ) {

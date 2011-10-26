@@ -135,7 +135,7 @@
 			}
 		}
 	}
-	/*
+	/**
 	 * renders the full page  to the wgOut object
 	 */
 	function render_full() {

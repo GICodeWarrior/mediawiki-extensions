@@ -27,7 +27,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 
 class MVAdmin extends SpecialPage {
 
-	/*
+	/**
 	 * Constructor
 	 */
 	public function __construct() {

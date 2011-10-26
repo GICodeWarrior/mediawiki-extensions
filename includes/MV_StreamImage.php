@@ -24,7 +24,7 @@ if ( !defined( 'MEDIAWIKI' ) )die( 'not an entry point' );
 // * this is not easy to enforce while *Stream* is not tied to a given uploaded file*
 // all static functions:
 class MV_StreamImage {
-	/*
+	/**
 	 * getStreamImageURL
 	 *
 	 * @parm:
