@@ -3063,6 +3063,7 @@ $messages['et'] = array(
 /** Basque (Euskara)
  * @author An13sa
  * @author Kobazulo
+ * @author Xabier Armendaritz
  */
 $messages['eu'] = array(
 	'mv_duration_label' => 'Iraupena',
@@ -3082,7 +3083,7 @@ $messages['eu'] = array(
 	'mv_search_or' => 'edo',
 	'mv_days' => '{{PLURAL:$1|Egun bat|$1 egun}}',
 	'mv_hours' => '{{PLURAL:$1|Ordu bat|$1 ordu}}',
-	'mv_hours_singular' => 'Ordu 1',
+	'mv_hours_singular' => 'Ordubete',
 	'mv_minutes' => '{{PLURAL:$1|Minutu bat|$1 minutu}}',
 	'mv_minutes_singular' => 'Minutu 1',
 	'mv_seconds' => '{{PLURAL:$1|Segundo bat|$1 segundo}}',
@@ -3839,8 +3840,8 @@ Saltar á vista do fluxo: $2',
 	'mv_adjust_default_reason' => 'axuste da interface do metavid',
 	'mv_adjust_old_title_missing' => 'A páxina que está tentando mover desde ($1) non existe',
 	'mv_adjust_ok_move' => 'Exitoso, axustando...',
-	'mv_start_desc' => 'Tempo do comezo',
-	'mv_end_desc' => 'Tempo da fin',
+	'mv_start_desc' => 'Hora de inicio',
+	'mv_end_desc' => 'Hora de fin',
 	'mv_edit_metadata' => 'Editar os metadatos',
 	'mv_advanced_edit' => 'Edición avanzada',
 	'mv_basic_edit' => 'Edición básica',

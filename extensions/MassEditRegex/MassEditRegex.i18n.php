@@ -1266,6 +1266,7 @@ Tekst wstawiany nie wymaga escapowania.',
 	'masseditregex-badregex' => 'Nieprawidłowe wyrażenie regularne',
 	'masseditregex-editfailed' => 'Edycja nie powiodła się',
 	'masseditregex-tooltip-execute' => 'Zastosuj te zmiany do wszystkich stron',
+	'right-masseditregex' => 'Zamiana treści stron z użyciem wyrażeń regularnych',
 );
 
 /** Piedmontese (Piemontèis)

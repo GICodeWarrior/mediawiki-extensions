@@ -119,6 +119,13 @@ $messages['fr'] = array(
 	'semanticinternalobjects-internalproperty' => 'Propriété interne',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'semanticinternalobjects-internalproperty' => 'Propriètât de dedens',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -221,6 +228,7 @@ $messages['mk'] = array(
  */
 $messages['ms'] = array(
 	'semanticinternalobjects-desc' => 'Penetapan objek dalaman di Semantic MediaWiki',
+	'semanticinternalobjects-internalproperty' => 'Harta dalaman',
 );
 
 /** Dutch (Nederlands)
@@ -298,10 +306,12 @@ $messages['sk'] = array(
 );
 
 /** Slovenian (Slovenščina)
+ * @author Dbc334
  * @author Lesko987
  */
 $messages['sl'] = array(
-	'semanticinternalobjects-desc' => 'Nastavitev internih predmetov v Semantic MediaWiki',
+	'semanticinternalobjects-desc' => 'Nastavitev notranjih predmetov v semantičnem MediaWiki',
+	'semanticinternalobjects-internalproperty' => 'Notranja lastnina',
 );
 
 /** Swedish (Svenska)

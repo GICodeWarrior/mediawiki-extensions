@@ -108,8 +108,11 @@ $messages['mk'] = array(
 
 /** Dutch (Nederlands)
  * @author McDutchie
+ * @author Siebrand
  */
 $messages['nl'] = array(
 	'sharedcssjs-error' => 'Deze pagina is opgenomen vanuit een centrale wiki en kan ook alleen daar worden bewerkt.',
+	'global.css' => "/* CSS die hier wordt geplaatst, wordt toegepast op alle skins van alle wiki's in de wikifarm  */",
+	'global.js' => "/* JavaScript die hier wordt geplaatst heeft invloed op alle pagina's in de wikifarm */",
 );
 

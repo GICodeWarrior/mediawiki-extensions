@@ -2073,6 +2073,7 @@ $messages['frp'] = array(
 	'openiddelete' => 'Suprimar l’OpenID',
 	'openiddelete-button' => 'Confirmar',
 	'openid-urls-action' => 'Accion',
+	'openid-urls-registration' => 'Dâta d’encartâjo',
 	'openid-urls-delete' => 'Suprimar',
 	'openid-add-url' => 'Apondre un OpenID novél',
 	'openid-login-or-create-account' => 'Sè branchiér ou ben fâre un compto novél',
@@ -4539,6 +4540,7 @@ Nie będziesz mógł się zalogować bez OpenID.',
 	'openid-pref-update-userinfo-on-login' => 'Aktualizuj następujące informacje o mnie z OpenID przy każdym logowaniu',
 	'openid-urls-desc' => 'OpenID powiązane z Twoim kontem:',
 	'openid-urls-action' => 'Akcja',
+	'openid-urls-registration' => 'Moment rejestracji',
 	'openid-urls-delete' => 'Usuń',
 	'openid-add-url' => 'Dodaj nowe OpenID',
 	'openid-login-or-create-account' => 'Zaloguj się lub utwórz nowe konto',
@@ -5059,9 +5061,7 @@ $messages['ru'] = array(
 	'openidconvertsuccesstext' => 'Вы успешно преобразовали ваш OpenID в $1.',
 	'openidconvertyourstext' => 'Это уже ваш OpenID.',
 	'openidconvertothertext' => 'Это чужой OpenID.',
-	'openidalreadyloggedin' => "'''Вы уже вошли, $1!'''
-
-Если вы желаете использовать в будущем вход через OpenID, вы можете [[Special:OpenIDConvert|преобразовать вашу учётную запись для использования в OpenID]].",
+	'openidalreadyloggedin' => 'Вы уже вошли.',
 	'openidnousername' => 'Не указано имя участника.',
 	'openidbadusername' => 'Указано неверное имя участника.',
 	'openidautosubmit' => 'Эта страница содержит форму, которая должна быть автоматически отправлена, если у вас включён JavaScript.

@@ -70,6 +70,13 @@ $messages['bs'] = array(
 	'arrayext-desc' => 'Sačuvaj i izračunaj imenovane nizove',
 );
 
+/** Welsh (Cymraeg)
+ * @author Pwyll
+ */
+$messages['cy'] = array(
+	'arrayext-desc' => "Storio a chyfrifo trefnau wedi'u henwi",
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

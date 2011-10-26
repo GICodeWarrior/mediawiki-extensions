@@ -181,6 +181,7 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 $1 is an integer, and the rating count.",
 	'articlefeedback-pitch-or' => '{{Identical|Or}}',
 	'articlefeedback-pitch-join-body' => 'Based on {{msg-mw|Articlefeedback-pitch-join-message}}.',
+	'articlefeedback-pitch-join-accept' => '{{Identical|Create an account}}',
 	'articlefeedback-pitch-join-login' => '{{Identical|Log in}}',
 	'articleFeedback-table-heading-page' => 'This is used in the [[mw:Extension:ArticleFeedback|Article Feedback extension]].
 {{Identical|Page}}',
@@ -1147,6 +1148,125 @@ Pokud tato žádost nepochází od vás, ignorujte prosím tento e-mail, nic dal
 
 Děkujeme, s pozdravem
 tým {{grammar:2sg|{{SITENAME}}}}',
+);
+
+/** Welsh (Cymraeg)
+ * @author Pwyll
+ */
+$messages['cy'] = array(
+	'articlefeedback' => 'Dangosfwrdd adborth erthygl',
+	'articlefeedback-desc' => 'Adborth am erthygl',
+	'articlefeedback-survey-question-origin' => 'Ar ba dudalen oeddech chi pan ddechreuoch chi ar yr holiadur hwn?',
+	'articlefeedback-survey-question-whyrated' => "Rhowch wybod i ni pam roeddech chi wedi teilyngu'r dudalen hon heddiw, os gwelwch yn dda (ticiwch bob un sy'n berthnasol):",
+	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'Roeddwn i eisiau cyfrannu at fesur gwerth y dudalen',
+	'articlefeedback-survey-answer-whyrated-development' => "Gobeithiaf y bydd fy marn yn effeithio'n gadarnhaol at ddatblygiad y dudalen",
+	'articlefeedback-survey-answer-whyrated-contribute-wiki' => 'Roeddwn eisiau cyfrannu at {{SITENAME}}',
+	'articlefeedback-survey-answer-whyrated-sharing-opinion' => "Dw i'n hoffi mynegi fy marn",
+	'articlefeedback-survey-answer-whyrated-didntrate' => 'Ni roddais sgôrau heddiw, ond roeddwn i eisiau rhoi adborth am yr erthygl',
+	'articlefeedback-survey-answer-whyrated-other' => 'Arall',
+	'articlefeedback-survey-question-useful' => "Ydych chi'n credu fod y sgôr a ddarparwyd yn ddefnyddiol a chlir?",
+	'articlefeedback-survey-question-useful-iffalse' => 'Pam?',
+	'articlefeedback-survey-question-comments' => 'A oes gennych unrhyw sylwadau ychwanegol?',
+	'articlefeedback-survey-submit' => 'Cyflwyner',
+	'articlefeedback-survey-title' => 'Atebwch ambell gwestiwn os gwelwch yn dda.',
+	'articlefeedback-survey-thanks' => "Diolch am gwblhau'r holiadur.",
+	'articlefeedback-survey-disclaimer' => "Er mwyn ceisio gwella'r adnodd hwn, mae'n bosib y bydd eich adborth yn cael ei rannu'n anhysbys gyda'r gymuned Wicipedia.",
+	'articlefeedback-error' => 'Cafwyd gwall. Ceisiwch eto nes ymlaen os gwelwch yn dda.',
+	'articlefeedback-form-switch-label' => "Rhowch sgôr i'r dudalen hon.",
+	'articlefeedback-form-panel-title' => "Rhowch sgôr i'r dudalen hon.",
+	'articlefeedback-form-panel-explanation' => 'Beth yw hwn?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:ArticleFeedback',
+	'articlefeedback-form-panel-clear' => 'Dilëer y sgôr hwn.',
+	'articlefeedback-form-panel-expertise' => 'Rwyf yn hynod wybodus am y pwnc hwn (dewisol).',
+	'articlefeedback-form-panel-expertise-studies' => 'Mae gennyf radd coleg/prifysgol perthnasol.',
+	'articlefeedback-form-panel-expertise-profession' => "Mae'n rhan o'm swyddogaeth",
+	'articlefeedback-form-panel-expertise-hobby' => "Mae'n ddiddordeb personol, dwfn.",
+	'articlefeedback-form-panel-expertise-other' => 'Ni rhestrir ffynhonnell fy ngwybodaeth yn y fan hon',
+	'articlefeedback-form-panel-helpimprove' => 'Hoffwn gynorthwyo i wella Wicipedia, danfonwch e-bost ataf (dewisol)',
+	'articlefeedback-form-panel-helpimprove-note' => "Byddwn yn danfon e-bost atoch i gadarnhau. Ni fyddwn yn rhannu'ch cyfeiriad e-bost gydag unrhyw un. $1",
+	'articlefeedback-form-panel-helpimprove-privacy' => 'Polisi preifatrwydd',
+	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Polisi preifatrwydd',
+	'articlefeedback-form-panel-submit' => 'Cyflwyno sgôr',
+	'articlefeedback-form-panel-pending' => "Nid yw'ch sgôr wedi cael ei gyflwyno eto",
+	'articlefeedback-form-panel-success' => 'Cadwyd yn llwyddiannus',
+	'articlefeedback-form-panel-expiry-title' => "Mae'ch sgôr wedi dirwyn i ben",
+	'articlefeedback-form-panel-expiry-message' => 'Ail-werthuswch y dudalen hon a chyflwynwch sgôr newydd os gwelwch yn dda',
+	'articlefeedback-report-switch-label' => "Gweld sgôrau'r dudalen",
+	'articlefeedback-report-panel-title' => "Sgôrau'r dudalen",
+	'articlefeedback-report-panel-description' => 'Sgôrau cyfartalog ar hyn o bryd',
+	'articlefeedback-report-empty' => 'Dim sgôr',
+	'articlefeedback-report-ratings' => '$1 sgôr',
+	'articlefeedback-field-trustworthy-label' => 'Dibynadwy',
+	'articlefeedback-field-trustworthy-tip' => "Ydych chi'n credu fod gan y dudalen hon ddigon o gyfeiriadau a bod y cyfeiriadau hynny'n dod o ffynonnellau dibynadwy?",
+	'articlefeedback-field-trustworthy-tooltip-1' => 'Heb ddigon o ffynonnellau dibynadwy',
+	'articlefeedback-field-trustworthy-tooltip-2' => 'Ambell ffynhonnell ddibynadwy',
+	'articlefeedback-field-trustworthy-tooltip-3' => 'Ffynonnellau dibynadwy digonol',
+	'articlefeedback-field-trustworthy-tooltip-4' => 'Ffynonnellau dibynadwy da',
+	'articlefeedback-field-trustworthy-tooltip-5' => 'Ffynonnellau dibynadwy rhagorol',
+	'articlefeedback-field-complete-label' => 'Cyflawn',
+	'articlefeedback-field-complete-tip' => "Ydych chi'n teimlo fod y dudalen hon yn ymdrin â'r meysydd pynciol allweddol a ddylai fod yno?",
+	'articlefeedback-field-complete-tooltip-1' => "Gyda'r mwyaf o wybodaeth coll",
+	'articlefeedback-field-complete-tooltip-2' => 'Yn cynnwys peth gwybodaeth',
+	'articlefeedback-field-complete-tooltip-3' => 'Yn cynnwys y prif wybodaeth, ond gyda bylchau',
+	'articlefeedback-field-complete-tooltip-4' => "Yn cynnwys y rhan fwyaf o'r prif wybodaeth",
+	'articlefeedback-field-complete-tooltip-5' => 'Ymdriniaeth gynhwysfawr',
+	'articlefeedback-field-objective-label' => 'Gwrthrychol',
+	'articlefeedback-field-objective-tip' => "Ydych chi'n teimlo fod y dudalen yn ddarlun teg o'r holl safbwyntiau am y pwnc?",
+	'articlefeedback-field-objective-tooltip-1' => 'Yn llawn tuedd',
+	'articlefeedback-field-objective-tooltip-2' => 'Peth tuedd',
+	'articlefeedback-field-objective-tooltip-3' => 'Ychydig bach o duedd',
+	'articlefeedback-field-objective-tooltip-4' => 'Dim tuedd amlwg',
+	'articlefeedback-field-objective-tooltip-5' => 'Yn gwbl ddi-duedd',
+	'articlefeedback-field-wellwritten-label' => "Wedi'i ysgrifennu'n dda",
+	'articlefeedback-field-wellwritten-tip' => "Ydych chi'n teimlo fod y dudalen hon wedi'i threfnu a'i hysgrifennu'n llwyddiannus?",
+	'articlefeedback-field-wellwritten-tooltip-1' => 'Annealladwy',
+	'articlefeedback-field-wellwritten-tooltip-2' => "Anodd i'w deall",
+	'articlefeedback-field-wellwritten-tooltip-3' => 'Eglurder boddhaol',
+	'articlefeedback-field-wellwritten-tooltip-4' => 'Eglurder da',
+	'articlefeedback-field-wellwritten-tooltip-5' => 'Hynod eglur',
+	'articlefeedback-pitch-reject' => 'Nes ymlaen efallai',
+	'articlefeedback-pitch-or' => 'neu',
+	'articlefeedback-pitch-thanks' => 'Diolch! Cadwyd eich sgôrau.',
+	'articlefeedback-pitch-survey-message' => "A fyddech gystal â threulio ychydig funudau'n cwblhau holiadur byr, os gwelwch yn dda?",
+	'articlefeedback-pitch-survey-accept' => "Dechrau'r holiadur",
+	'articlefeedback-pitch-join-message' => 'Oeddech chi eisiau creu cyfrif?',
+	'articlefeedback-pitch-join-body' => "Bydd cyfrif yn eich galluogi i dracio'ch golygiadau, gymryd rhan mewn trafodaethau, a bod yn rhan o'r gymuned.",
+	'articlefeedback-pitch-join-accept' => 'Crëwch gyfrif',
+	'articlefeedback-pitch-join-login' => 'Mewngofnodi',
+	'articlefeedback-pitch-edit-message' => "Wyddoch chi y gallech chi olygu'r dudalen hon?",
+	'articlefeedback-pitch-edit-accept' => 'Golygwch y dudalen hon',
+	'articlefeedback-survey-message-success' => "Diolch am gwblhau'r holiadur.",
+	'articlefeedback-survey-message-error' => 'Cafwyd gwall. Ceisiwch eto nes ymlaen os gwelwch yn dda.',
+	'articleFeedback-table-caption-dailyhighsandlows' => 'Uchafbwyntiau ac iselfannau heddiw',
+	'articleFeedback-table-caption-dailyhighs' => "Tudalennau gyda'r sgôrau uchaf: $1",
+	'articleFeedback-table-caption-dailylows' => "Tudalennau gyda'r sgôrau isaf: $1",
+	'articleFeedback-table-caption-weeklymostchanged' => 'Newidiadau mwyaf yr wythnos hon',
+	'articleFeedback-table-caption-recentlows' => 'Iselfannau diweddar',
+	'articleFeedback-table-heading-page' => 'Tudalen',
+	'articleFeedback-table-heading-average' => 'Cyfartaledd',
+	'articleFeedback-copy-above-highlow-tables' => 'Nodwedd arbrofol yw hon. Darparwch adborth ar [dudalen sgwrs $1] os gwelwch yn dda.',
+	'articlefeedback-dashboard-bottom' => "'''Noder''': Byddwn yn parhau i arbrofi gyda ffyrdd gwahanol o gyflwyno erthyglau ar y dangosfyrddau hyn. Ar hyn o bryd, mae'r dangosfyrddau'n cynnwys yr erthyglau canlynol:
+* Tudalennau gyda'r sgôrau uchaf/isaf: erthyglau sydd wedi derbyn 10 sgôr o leiaf yn ystod y 24 awr diwethaf. Daw'r cyfartaleddau trwy gymryd y cymedr o'r holl sgôrau a gyflwynwyd yn ystod y 24 awr diwethaf.
+* Iselfannau diweddar: erthyglau a gafodd sgôrau o 70% neu'n is (2 seren neu'n is) mewn unrhyw gategori yn ystod y 24 awr diwethaf. Dim ond erthyglau a dderbyniodd 10 sgôr o leiaf yn ystod y 24 awr diwethaf sy'n cael eu cynnwys.",
+	'articlefeedback-disable-preference' => 'Peidiwch dangos y teclyn adborth erthygl ar dudalennau.',
+	'articlefeedback-emailcapture-response-body' => "Helo!
+Diolch am ddangos eich diddordeb i wella {{SITENAME}}.
+
+A fyddech gystal â chadarnhau eich e-bost trwy glicio ar y ddolen isod:
+$1
+
+Hefyd gallwch ymweld â:
+$2
+
+A nodi'r côd cadarnhau canlynol:
+$3
+
+Byddwn ni mewn cysylltiad â chi'n fuan ynglyn â sut y gallwch chi wella {{SITENAME}}.
+
+Os nad oeddech wedi gwneud y cais hwn, anwybyddwch yr e-bost hwn os gwelwch yn dda. Ni fyddwn yn danfon dim byd arall atoch.
+
+Dymuniadau gorau, a diolch,
+Tîm {{SITENAME}}",
 );
 
 /** Danish (Dansk)
@@ -2972,7 +3092,7 @@ Molimo, pokušajte ponovno kasnije.',
 	'articlefeedback-field-trustworthy-label' => 'Vjerodostojno',
 	'articlefeedback-field-trustworthy-tip' => 'Smatrate li da ova stranica ima dovoljno izvora i da su oni iz vjerodostojnih izvora?',
 	'articlefeedback-field-complete-label' => 'Zaokružena cjelina teme',
-	'articlefeedback-field-complete-tip' => 'Da li mislite da ova stranica pokriva osnovna područja teme koja bi trebala?',
+	'articlefeedback-field-complete-tip' => 'Mislite li da ova stranica pokriva osnovna područja teme koja bi trebala?',
 	'articlefeedback-field-objective-label' => 'Nepristrano',
 	'articlefeedback-field-objective-tip' => 'Da li smatrate da ova stranica prikazuje neutralni prikaz iz svih perspektiva o temi?',
 	'articlefeedback-field-wellwritten-label' => 'Dobro napisano',

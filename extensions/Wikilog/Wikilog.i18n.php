@@ -7294,6 +7294,7 @@ Lilitaw lamang ang puna pagkaraang masuri ito ng isang tagapamagitan.',
 );
 
 /** Turkish (Türkçe)
+ * @author Emperyan
  * @author Homonihilis
  * @author Manco Capac
  * @author Universal Life
@@ -7354,10 +7355,12 @@ Madde yayımlamak ve diğer vikikayıt özelliklerini etkinleştirmek için, ilk
 	'wikilog-summary-categories' => '$2 altına yerleştirilmiştir',
 	'wikilog-summary-more' => '[[$3|→ okumaya devam edin...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|tartışma]])',
+	'wikilog-edit-hint' => 'Wikilog maddesini düzenleyin: $1',
 	'wikilog-edit-fieldset-legend' => 'Vikikayıt seçenekleri:',
 	'wikilog-edit-signpub' => 'Bu maddeyi imzala ve yayınla',
 	'wikilog-edit-signpub-tooltip' => 'Kaydedildiğinde bu maddenin imzalanmasını ve vikikaydında yayımlanmasını sağlar.  
 Bu maddeyi taslak olarak tutmak için bu kutunun seçimini kaldırın.',
+	'wikilog-comment-anonsig' => '$3 (anonim)',
 	'wikilog-comment-pending' => 'Bu yorum onay beklemektedir.',
 	'wikilog-comment-deleted' => 'Bu yorum silindi.',
 	'wikilog-comment-autosumm' => '$1 tarafından yapılan yeni yorum: $2',

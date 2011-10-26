@@ -97,6 +97,28 @@ $messages['br'] = array(
 	'admanager_return' => 'Distreiñ da [[Special:AdManager|Ad Manager]]',
 );
 
+/** Welsh (Cymraeg)
+ * @author Pwyll
+ */
+$messages['cy'] = array(
+	'admanager' => 'Rheolwr hysbysebion',
+	'admanagerzones' => 'Ardaloedd Rheolwr Hysbysebion',
+	'admanager_invalidtargetpage' => 'Ni ddaethpwyd o hyd i dudalen gyda\'r teitl "$1".',
+	'admanager_invalidtargetcategory' => 'Ni ddaethpwyd o hyd i gategori gyda\'r teitl "$1".',
+	'admanager_notable' => 'Gwall! Ni ddaethpwyd o hyd i dabl cronfa ddata angenrheidiol. Rhedwch update.php yn gyntaf.',
+	'admanager_noAdManagerZones' => 'Gwall! Rhaid i chi ychwanegu rhai ardaloedd. Nodwch nhw yn [[Special:AdManagerZones|Ardaloedd Rheolwr Hysbysebion]].',
+	'admanager_labelPage' => 'Teitlau tudalennau',
+	'admanager_submit' => 'Cyflwyner',
+	'admanager_noads' => 'Peidio arddangos hysbysebion',
+	'admanager_Page' => 'Tudalennau',
+	'admanager_added' => 'Cadwyd eich newidiadau',
+	'admanager_noadsset' => 'Gosodwyd $1 i beidio ag arddangos hysbysebion',
+	'admanager_addedzone' => 'Ardal a ychwanegwyd',
+	'admanager_zonenum' => 'Ardal #: $1',
+	'admanager_zonenotnumber' => 'Gwall! Nid rhif yw $1',
+	'admanager_return' => 'Dychwelyd i [[Special:AdManager|Rheolwr Hysbesebion]]',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -217,6 +239,15 @@ $messages['gl'] = array(
  * @author Deror avi
  */
 $messages['he'] = array(
+	'admanager' => 'ניהול המודעות',
+	'admanagerzones' => 'איזור ניהול המודעות',
+	'admanager_docu' => 'על מנת להוסיף או להסיר את איזור המועדות של עמוד או של קטגוריה שלמה, נא להוסיף או להסיר את כותרתו מטה.',
+	'admanagerzones_docu' => 'נא להזין כל מספר איזור מודעה בשורה נפרדת.',
+	'admanager_invalidtargetpage' => 'לא נמצא דף שכותרתו "$1".',
+	'admanager_invalidtargetcategory' => 'לא נמצאה קטגוריה שכותרתה "$1".',
+	'admanager_notable' => 'שגיאה! לא נמצאה טבלת מסד הנתונים! נא הרץ תחילה את update.php',
+	'admanager_noAdManagerZones' => 'שגיאה! עליך להזין אזורי מודעות. נא הזנתם ב- [[Special:AdManagerZones|איזור ניהול המודעות]].',
+	'admanager_labelPage' => 'כותרות דפים',
 	'admanager_labelCategory' => 'שמות קטגוריות',
 	'admanager_submit' => 'שליחה',
 	'admanager_noads' => 'הצגה ללא פרסומות',

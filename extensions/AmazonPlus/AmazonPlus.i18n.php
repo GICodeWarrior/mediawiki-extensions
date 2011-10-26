@@ -389,6 +389,18 @@ $messages['cs'] = array(
 	'amazonplus-less' => 'méně',
 );
 
+/** Welsh (Cymraeg)
+ * @author Pwyll
+ */
+$messages['cy'] = array(
+	'amazonplus-nores' => 'Gwall: Dim canlyniadau!',
+	'amazonplus-amazon' => 'Pris Amazon',
+	'amazonplus-new' => 'newydd',
+	'amazonplus-cp-none' => 'Dim',
+	'amazonplus-more' => 'Mwy',
+	'amazonplus-less' => 'llai',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  * @author MF-Warburg

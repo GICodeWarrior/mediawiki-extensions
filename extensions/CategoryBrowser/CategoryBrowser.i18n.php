@@ -474,6 +474,22 @@ $messages['cs'] = array(
 	'cb_edit_remove_hint' => 'Smazat, pokud je to možné',
 );
 
+/** Welsh (Cymraeg)
+ * @author Pwyll
+ */
+$messages['cy'] = array(
+	'categorybrowser' => 'Porwr categorïau',
+	'categorybrowser-desc' => "Yn darparu [[Special:CategoryBrowser|tudalen arbennig]] i hidlo'r categorïau mwyaf poblog ac i'w llywio gan ddefnyddio rhyngwyneb AJAX",
+	'cb_requires_javascript' => 'Mae angen galluogi Javascript yn y porwr ar gyfer yr estyniad porwr categorïau.',
+	'cb_cat_name_filter' => 'Chwilio am gategori yn ôl enw',
+	'cb_cat_name_filter_clear' => "Gwasgwch i glirio'r hidlydd enw categorïau",
+	'cb_previous_items_link' => 'Blaenorol',
+	'cb_next_items_link' => 'Nesaf',
+	'cb_next_items_stats' => '(oddi wrth $1)',
+	'cb_cat_subcats' => 'Is-gategorïau',
+	'cb_cat_pages' => 'Tudalennau',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  * @author The Evil IP address

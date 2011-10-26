@@ -99,6 +99,43 @@ $messages['de-formal'] = array(
 	'fptc-suggestion' => 'Meinten Sie:',
 );
 
+/** French (Français)
+ * @author Gomoko
+ */
+$messages['fr'] = array(
+	'freqpatterntagcloud-desc' => '[[Special:FreqPatternTagCloud|Page spéciale]] pour construire un ensemble de balises basé sur les propriétés et pour rechercher des valeurs de propriété semblables',
+	'fptc-categoryname' => 'Catégorie',
+	'fptc-context-menu-browse' => 'Parcourir les pages avec cette valeur.',
+	'fptc-context-menu-similar-tags' => 'Balises similaires :',
+	'fptc-form-attribute-name' => 'Propriété :',
+	'fptc-form-submit-button' => 'Envoyer',
+	'fptc-invalid-attribute' => 'La propriété saisie est invalide.',
+	'fptc-insufficient-rights-for-maintenance' => 'Vous devez vous connecter comme administrateur pour voir cette page.',
+	'fptc-refresh-frequent-patterns' => 'Actualiser les données',
+	'fptc-refreshed-frequent-patterns' => 'Règles de modèle fréquentes rafraîchies.',
+	'fptc-search-attribute-name' => 'Propriété de recherche',
+	'fptc-search-button' => 'Recherche',
+	'fptc-search-suggestion-value' => 'Semblable à " %s " :',
+	'fptc-suggestion' => 'Voulez-vous dire:',
+	'fptc-no-suggestion' => 'Aucune suggestion trouvée',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'fptc-categoryname' => 'Catègorie',
+	'fptc-context-menu-similar-tags' => 'Balises pariéres :',
+	'fptc-form-attribute-name' => 'Propriètât :',
+	'fptc-form-submit-button' => 'Mandar',
+	'fptc-refresh-frequent-patterns' => 'Betar a jorn les balyês',
+	'fptc-search-attribute-name' => 'Propriètât de rechèrche',
+	'fptc-search-button' => 'Rechèrche',
+	'fptc-search-suggestion-value' => 'Pariér a « %s » :',
+	'fptc-suggestion' => 'Voléd-vos dére :',
+	'fptc-no-suggestion' => 'Gins de consèly trovâ',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -179,19 +216,22 @@ $messages['mk'] = array(
 
 /** Dutch (Nederlands)
  * @author SPQRobin
+ * @author Siebrand
  */
 $messages['nl'] = array(
+	'freqpatterntagcloud-desc' => '[[Special:FreqPatternTagCloud|Speciale pagina]] om een woordenwolk te maken die gebaseerd is op eigenschappen en om te zoeken naar soortgelijke eigenschapswaarden',
 	'fptc-categoryname' => 'Categorie',
 	'fptc-context-menu-browse' => "Pagina's met deze waarde doorbladeren",
-	'fptc-context-menu-similar-tags' => 'Gelijkaardige labels:',
+	'fptc-context-menu-similar-tags' => 'Soortgelijke labels:',
 	'fptc-form-attribute-name' => 'Eigenschap:',
 	'fptc-form-submit-button' => 'OK',
 	'fptc-invalid-attribute' => 'De ingevoerde eigenschap is ongeldig.',
 	'fptc-insufficient-rights-for-maintenance' => 'U moet zich aanmelden als beheerder om deze pagina te bekijken.',
 	'fptc-refresh-frequent-patterns' => 'Gegevens verversen',
+	'fptc-refreshed-frequent-patterns' => 'De regels voor frequente patronen zijn ververst.',
 	'fptc-search-attribute-name' => 'Eigenschap zoeken',
 	'fptc-search-button' => 'Zoeken',
-	'fptc-search-suggestion-value' => 'Gelijkaardig aan "%s":',
+	'fptc-search-suggestion-value' => 'Soortgelijk aan "%s":',
 	'fptc-suggestion' => 'Bedoelt u:',
 	'fptc-no-suggestion' => 'Geen suggesties gevonden',
 );
@@ -201,6 +241,7 @@ $messages['nl'] = array(
  */
 $messages['te'] = array(
 	'fptc-categoryname' => 'వర్గం',
+	'fptc-form-submit-button' => 'దాఖలుచెయ్యి',
 	'fptc-search-button' => 'వెతుకు',
 );
 

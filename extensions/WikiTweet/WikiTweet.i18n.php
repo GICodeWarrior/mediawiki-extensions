@@ -554,7 +554,9 @@ $messages['lb'] = array(
 	'wikitweet-fewsecondsago' => 'Virun e puer Sekonnen',
 	'wikitweet-status0' => 'Diskussioun',
 	'wikitweet-status2' => 'Warnung',
+	'wikitweet-concerns' => 'Betrëfft Iech',
 	'wikitweet-comment' => 'Bemierkung',
+	'wikitweet-perperson' => 'Pro Persoun',
 	'wikitweet-directlink' => 'Direkte Link:',
 );
 
@@ -823,6 +825,20 @@ $messages['tl'] = array(
 	'wikitweet-tweets-tagged' => 'Tinatakang mga pagsiyap',
 	'wikitweet-back-timeline' => 'Bumalik sa guhit ng panahon',
 	'wikitweet-tweets-from-room' => 'Mga pagsiyap mula sa silid',
+);
+
+/** Turkish (Türkçe)
+ * @author Emperyan
+ */
+$messages['tr'] = array(
+	'wikitweet-pleaselogin' => 'Tweet için lütfen giriş yapınız.',
+	'wikitweet-moretweets' => 'Diğer tweetler...',
+	'wikitweet-submit' => 'Tweet',
+	'wikitweet-submitandmail' => 'Tweet and e-posta',
+	'wikitweet-delete' => 'sil',
+	'wikitweet-private' => 'özel',
+	'wikitweet-timeago' => '$1 önce',
+	'wikitweet-status0' => 'Sohbet',
 );
 
 /** Vietnamese (Tiếng Việt)

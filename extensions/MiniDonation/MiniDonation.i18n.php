@@ -144,6 +144,14 @@ $messages['el'] = array(
 	'donationform-submit' => 'Δωρίστε μέσω PayPal',
 );
 
+/** British English (British English)
+ * @author Pwyll
+ */
+$messages['en-gb'] = array(
+	'donationform-desc' => 'Yn ychwanegu tag <code>&lt;donateform&gt;</code> i alluogi cyfraniadau trwy Paypal',
+	'donationform-submit' => 'Cyfrannwch gan ddefnyddio Paypal',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

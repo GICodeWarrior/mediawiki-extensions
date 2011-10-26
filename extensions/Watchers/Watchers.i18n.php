@@ -1088,6 +1088,7 @@ $messages['tl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Emperyan
  * @author Vito Genovese
  */
 $messages['tr'] = array(
@@ -1095,6 +1096,7 @@ $messages['tr'] = array(
 	'watchers-desc' => '[[Special:Watchers|Hangi kullanıcıların bu sayfayı izleme listesine aldığını]] gösterir',
 	'watchers_link_title' => 'Bu sayfayı kim izliyor?',
 	'watchers_error_article' => "'''Hata:''' Sayfa mevcut değil.",
+	'watchers-error-invalid-page' => "'''Hata:''' \"\$1\" geçersiz bir sayfa başlığı.",
 	'watchers_header' => '"[[:$1]]" adlı sayfayı izleyen {{PLURAL:$2|kullanıcı|kullanıcılar}}',
 	'watchers_noone_watches' => 'Sayfayı kimse izlemiyor.',
 	'watchers_x_or_more' => '$1 veya daha fazla {{PLURAL:$1|kullanıcı|kullanıcı}} bu sayfayı izleme listesine almış durumda.',

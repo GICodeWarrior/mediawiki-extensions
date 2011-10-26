@@ -97,6 +97,14 @@ $messages['pt'] = array(
 	'wom-desc' => 'Modelo de Objectos "Easy Page" para os utilizadores da wiki',
 );
 
+/** Turkish (Türkçe)
+ * @author Emperyan
+ */
+$messages['tr'] = array(
+	'objecteditor' => 'Nesne Düzenleyicisi',
+	'wom_editor' => 'Nesne Modeli',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

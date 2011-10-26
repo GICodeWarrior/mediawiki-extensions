@@ -368,6 +368,24 @@ $messages['cu'] = array(
 	'bookinfo-result-author' => 'творь́ць :',
 );
 
+/** Welsh (Cymraeg)
+ * @author Pwyll
+ */
+$messages['cy'] = array(
+	'bookinfo-header' => 'Gwybodaeth am lyfr',
+	'bookinformation-desc' => "Ehangu'r [[Special:Booksources|tudalen arbennig ffynhonellau llyfrau]] gyda gwybodaeth o wasanaeth ar y wê",
+	'bookinfo-result-title' => 'Teitl:',
+	'bookinfo-result-author' => 'Awdur:',
+	'bookinfo-result-publisher' => 'Cyhoeddwr:',
+	'bookinfo-result-year' => 'Blwyddyn:',
+	'bookinfo-error-invalidisbn' => 'Nodwyd ISBN annilys.',
+	'bookinfo-error-nosuchitem' => "Nid yw'r eitem yn bodoli neu ni allwyd dod o hyd iddo.",
+	'bookinfo-error-nodriver' => 'Ni allwyd cychwyn ar Yrrwr Gwybodaeth am Lyfrau addas.',
+	'bookinfo-error-noresponse' => 'Dim ymateb neu rhedodd y cais allan o amser.',
+	'bookinfo-purchase' => 'Prynwch y llyfr hwn o $1',
+	'bookinfo-provider' => 'Darparwr data: $1',
+);
+
 /** Danish (Dansk)
  * @author Froztbyte
  * @author Morten LJ

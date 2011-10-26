@@ -2195,6 +2195,7 @@ $messages['tl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Emperyan
  * @author Joseph
  * @author Karduelis
  * @author Suelnur
@@ -2220,7 +2221,7 @@ $messages['tr'] = array(
 	'patrol-stopped' => 'Başka bir değişikliği gözlememeyi seçtiniz. $1',
 	'patrol-resume' => 'Devam etmek için buraya tıklayın.',
 	'group-patroller' => 'Devriyeler',
-	'group-patroller-member' => 'Devriye',
+	'group-patroller-member' => '{{GENDER:$1|devriye}}',
 	'grouppage-patroller' => '{{ns:project}}:Devriye',
 	'right-patroller' => 'Sayfaları gözle',
 );

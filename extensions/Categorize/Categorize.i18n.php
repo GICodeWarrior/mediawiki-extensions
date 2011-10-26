@@ -52,6 +52,16 @@ $messages['be-tarask'] = array(
 	'categorize-advice' => 'Націсьніце на меткі, якія Вы жадаеце дадаць да гэтай старонкі:',
 );
 
+/** Welsh (Cymraeg)
+ * @author Pwyll
+ */
+$messages['cy'] = array(
+	'categorize-desc' => "Yn ychwanegu blwch mewnbynnu i olygu ac uwchlwytho tudalennau sy'n galluogi defnyddwyr i aseinio categorïau",
+	'categorize-title' => 'Cymhwyster gwybodaeth',
+	'categorize-footer' => 'Os hoffech ychwanegu label, cysylltwch â [[Special:ListUsers/sysop|gweinyddwr]] os gwelwch yn dda.',
+	'categorize-advice' => "Cliciwch ar y labeli yr hoffech briodoli i'r dudalen hon:",
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -204,6 +214,7 @@ $messages['pl'] = array(
 	'categorize-desc' => 'Dodaje do stron edycji i przesyłania pole pozwalające użytkownikom na przypisanie kategorii',
 	'categorize-title' => 'Porządkowanie wiedzy',
 	'categorize-footer' => 'Jeśli chcesz dodać etykietę, skontaktuj się z [[Special:ListUsers/sysop|administratorem]].',
+	'categorize-advice' => 'Kliknij wybrane etykiety, które pasują do tej strony',
 );
 
 /** Portuguese (Português)
