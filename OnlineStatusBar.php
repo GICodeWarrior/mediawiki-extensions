@@ -24,27 +24,27 @@ $wgExtensionCredits[version_compare( $wgVersion, '1.17', '>=' ) ? 'userpage tool
 );
 
 $dir = dirname( __FILE__ );
-$wgExtensionMessagesFiles['OnlineStatusBar'] =  "$dir/OnlineStatusBar.i18n.php";
+$wgExtensionMessagesFiles['OnlineStatusBar'] = "$dir/OnlineStatusBar.i18n.php";
 
 $wgAutoloadClasses['OnlineStatusBar'] = "$dir/OnlineStatusBar.body.php";
 
 // Configuration
 // Those values can be overriden in LocalSettings, do not change it here
-$wgOnlineStatusBarModes = array (
+$wgOnlineStatusBarModes = array(
 	'online' => "On-line",
 	'busy' => "Busy",
 	'away' => "Away",
 	'hidden' => "Offline",
 	'offline' => "Offline",
 );
-$wgOnlineStatusBarIcon = array (
+$wgOnlineStatusBarIcon = array(
 	'online' => "20px-Ledgreen.svg.png",
 	'busy' => "20px-Ledorange.svg.png",
 	'away' => "20px-Ledorange.svg.png",
 	'hidden' => "20px-Nuvola_apps_krec.svg.png",
 	'offline' => "20px-Nuvola_apps_krec.svg.png",
 );
-$wgOnlineStatusBarColor = array (
+$wgOnlineStatusBarColor = array(
 	'online' => "green",
 	'busy' => "orange",
 	'away' => "orange",
@@ -66,40 +66,32 @@ $wgOnlineStatusBar_LogoutTime = 3600;
 $wgOnlineStatusBarY = "-35";
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'wfOnlineStatusBar_CkSchema';
-function wfOnlineStatusBar_CkSchema( $updater = null )
-{
-	if ( $updater != null )
-	{
-		$updater->addExtensionUpdate( array ( 'addtable', 'online_status', dirname( __FILE__ ) . '/OnlineStatusBar.sql', true ) );
-	}
-	else
-	{
+function wfOnlineStatusBar_CkSchema( $updater = null ) {
+	if ( $updater != null ) {
+		$updater->addExtensionUpdate( array( 'addtable', 'online_status', dirname( __FILE__ ) . '/OnlineStatusBar.sql', true ) );
+	} else {
 		global $wgExtNewTables;
 		$wgExtNewTables[] = array(
-		'online_status', dirname( __FILE__ ) . '/OnlineStatusBar.sql' );
+			'online_status', dirname( __FILE__ ) . '/OnlineStatusBar.sql' );
 	}
 	return true;
 }
 
 $wgHooks['UserLogoutComplete'][] = 'wfOnlineStatusBar_Logout';
-function wfOnlineStatusBar_Logout( &$user, &$inject_html, $old_name )
-{
+function wfOnlineStatusBar_Logout( &$user, &$inject_html, $old_name ) {
 	OnlineStatusBar::DeleteStatus( $old_name );
 	return true;
 }
 
 $wgHooks['ArticleViewHeader'][] = 'wfOnlineStatusBar_RenderBar';
-function wfOnlineStatusBar_RenderBar( &$article, &$outputDone, &$pcache )
-{
+function wfOnlineStatusBar_RenderBar( &$article, &$outputDone, &$pcache ) {
 	global $wgOnlineStatusBar_Template, $messages, $wgOnlineStatusBarModes, $wgOut;
 	OnlineStatusBar::UpdateStatus();
 	$ns = $article->getTitle()->getNamespace();
-	if ( ( $ns == NS_USER_TALK ) || ( $ns == NS_USER ) )
-	{
+	if ( ( $ns == NS_USER_TALK ) || ( $ns == NS_USER ) ) {
 		// better way to get a username would be great :)
 		$user = preg_replace( '/\/.*/', '', preg_replace( '/^.*\:/', "", $article->getTitle() ) );
-		if (OnlineStatusBar::IsValid($user))
-		{
+		if ( OnlineStatusBar::IsValid( $user ) ) {
 			$mode = OnlineStatusBar::GetStatus( $user );
 			$modetext = $wgOnlineStatusBarModes[$mode];
 			$image = OnlineStatusBar::getImageHtml( $mode );
@@ -111,25 +103,23 @@ function wfOnlineStatusBar_RenderBar( &$article, &$outputDone, &$pcache )
 }
 
 $wgHooks['UserLoginComplete'][] = 'wfOnlineStatusBar_UpdateStatus';
-function wfOnlineStatusBar_UpdateStatus()
-{
+function wfOnlineStatusBar_UpdateStatus() {
 	OnlineStatusBar::UpdateDb();
 	return true;
 }
 
 $wgHooks['GetPreferences'][] = 'wfOnlineStatusBar_PreferencesHook';
-function wfOnlineStatusBar_PreferencesHook($user, &$preferences)
-{
+function wfOnlineStatusBar_PreferencesHook( $user, &$preferences ) {
 	global $wgOnlineStatusBarModes;
-	$preferences['OnlineStatusBar_active'] = array ('type' => 'toggle', 'label-message' => 'onlinestatusbar-used', 'section' => 'gadgets/onlinestatus' );
-	$preferences['OnlineStatusBar_status'] = array ('type' => 'radio', 'label-message' => 'onlinestatusbar-status', 'section' => 'gadgets/onlinestatus',
-							'options' => array(
-									   $wgOnlineStatusBarModes['online'] => 'online',
-									   $wgOnlineStatusBarModes['busy'] => 'busy',
-									   $wgOnlineStatusBarModes['away'] => 'away',
-									   $wgOnlineStatusBarModes['hidden'] => 'hidden' 
-										),
-							'default' => 'online',
-							);
+	$preferences['OnlineStatusBar_active'] = array( 'type' => 'toggle', 'label-message' => 'onlinestatusbar-used', 'section' => 'gadgets/onlinestatus' );
+	$preferences['OnlineStatusBar_status'] = array( 'type' => 'radio', 'label-message' => 'onlinestatusbar-status', 'section' => 'gadgets/onlinestatus',
+		'options' => array(
+			$wgOnlineStatusBarModes['online'] => 'online',
+			$wgOnlineStatusBarModes['busy'] => 'busy',
+			$wgOnlineStatusBarModes['away'] => 'away',
+			$wgOnlineStatusBarModes['hidden'] => 'hidden'
+		),
+		'default' => 'online',
+	);
 	return true;
 }
