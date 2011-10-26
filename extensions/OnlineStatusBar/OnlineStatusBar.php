@@ -90,7 +90,8 @@ function wfOnlineStatusBar_RenderBar( &$article, &$outputDone, &$pcache ) {
 	$ns = $article->getTitle()->getNamespace();
 	if ( ( $ns == NS_USER_TALK ) || ( $ns == NS_USER ) ) {
 		// better way to get a username would be great :)
-		$user = preg_replace( '/\/.*/', '', preg_replace( '/^.*\:/', "", $article->getTitle() ) );
+		$user = $article->getTitle();
+		$user = preg_replace( '/\/.*/', '', substr($user, strpos($user, ":") + 1));
 		if ( OnlineStatusBar::IsValid( $user ) ) {
 			$mode = OnlineStatusBar::GetStatus( $user );
 			$modetext = $wgOnlineStatusBarModes[$mode];
