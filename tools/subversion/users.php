@@ -51,8 +51,6 @@ echo "	<!-- Request time: " . ( microtime( true ) - $time ) . " -->\n";
 if ( $retval ) {
 	echo "	<p>Error: " . htmlspecialchars( $error ) . "</p>\n";
 }
-echo "	</body>\n";
-echo "</html>\n";
 
 function getUserInfo( $userName ) {
 	$userInfo = array(
@@ -73,3 +71,6 @@ function getUserInfo( $userName ) {
 }
 
 ?>
+
+	</body>
+</html>
