@@ -540,7 +540,7 @@ class SpecialArticleFeedback extends SpecialPage {
 
 		if ( !isset( self::$categories ) ) {
 			foreach ( $wgArticleFeedbackRatingTypes as $id => $rating ) {
-				self::$categories[$id] = wfMsg( $rating );
+				self::$categories[$id] = wfMsg( "articlefeedback-field-$rating-label" );
 			}
 		}
 		return self::$categories;
