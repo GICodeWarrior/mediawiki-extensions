@@ -1,8 +1,8 @@
 <?php
 
 /**
- * MoodBar extension
- * Allows specified users to send their "mood" back to the site operator.
+ * ReferenceTooltips Extension
+ * Provides the full citation when a user hovers over a footnote.
  */
 
 $wgExtensionCredits['other'][] = array(
