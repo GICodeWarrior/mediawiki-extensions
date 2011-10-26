@@ -21,8 +21,6 @@ $messages['en'] = array(
 	'onlinestatusbar-used' => 'Do you want to let others see if you are online?',
 	// Message in config asking what status they want to use
 	'onlinestatusbar-status' => 'What is the default status you wish to use:',
-	// Title for config
-	'prefs-onlinestatusbar' => 'Online status bar',
 	// Section for config
 	'prefs-onlinestatus' => 'Online Status',
 );
@@ -32,6 +30,5 @@ $messages['qqq'] = array(
         'onlinestatusbar-line' => "Status bar text line (User is now Offline), parameters:\n* $1 is user\n* $2 is a picture of status (small icon in color of status)\n* $3 a status, it will appear in title bar of their user space pages",
         'onlinestatusbar-used' => 'Message in config asking user if they want to enable it, checkbox',
         'onlinestatusbar-status' => 'Message in config asking what status they want to use, option box',
-        'prefs-onlinestatusbar' => 'Title for config',
-        'prefs-onlinestatus' => 'Section for config',
-};
+        'prefs-onlinestatus' => 'Section for config, located in preferences - misc',
+);
