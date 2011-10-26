@@ -33,7 +33,7 @@ class ApiWikiAtHome extends ApiBase {
 			return $this->doProccessJobKey ( $this->mParams['jobkey'] ) ;
 		}
 	}
-	/*
+	/**
 	 * Process a newJob req:
 	 */
 	function proccessJobReq(){
@@ -76,7 +76,7 @@ class ApiWikiAtHome extends ApiBase {
 			);
 		}
 	}
-	/*
+	/**
 	 * process the submitted job:
 	 */
 	function doProccessJobKey( $job_key ){

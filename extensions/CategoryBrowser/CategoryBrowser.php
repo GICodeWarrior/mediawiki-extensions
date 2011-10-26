@@ -136,7 +136,7 @@ class CB_Setup {
 		}
 	}
 
-	/*
+	/**
 	 * should not be called from LocalSettings.php
 	 * should be called only when the wiki is fully initialized
 	 */

@@ -115,7 +115,7 @@ class NonFreeVideoHandler extends MediaHandler {
 			return false;
 		}
 	}
-	/*
+	/**
 	 * sucks we have to maintain two version of Ogg doTransform but it proved difficult to integrate them.
 	 * in the future we should have a concept of "derivatives" and greatly simplify the media handlers.
 	 */

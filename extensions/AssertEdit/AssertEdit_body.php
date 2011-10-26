@@ -33,7 +33,7 @@ class AssertEdit {
 		return $editPage->mTitle->exists();
 	}
 
-	/*
+	/**
 	 * List of assertions; can be modified with setAssert
 	 */
 	public static $msAssert = array(

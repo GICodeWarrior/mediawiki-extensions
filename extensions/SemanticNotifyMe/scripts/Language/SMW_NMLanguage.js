@@ -23,7 +23,7 @@ NMLanguage.prototype = {
 	initialize: function() {
 	},
 
-	/*
+	/**
 	 * @public
 	 *
 	 * Returns a language dependent message for an ID, or the ID, if there is

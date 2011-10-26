@@ -52,13 +52,13 @@ window.WikiSyncUtils = {
 	// basename prefix of user's cookies
 	cookiePrefix : null,
 
-	/*
+	/**
 	 */
 	setCookiePrefix : function( name ) {
 		this.cookiePrefix = name;
 	},
 
-	/*
+	/**
 	 * @return empty string in case cookie value is empty, null when cookie is not set
 	 */
 	getCookie : function ( cookieName ) {
@@ -81,7 +81,7 @@ window.WikiSyncUtils = {
 		return null;
 	},
 
-	/*
+	/**
 	 * usage example: WikiSyncUtils.setCookie( 'rootcond', eventObj.value, 24 * 60 * 60, '/' );
 	 */
 	setCookie : function( cookieName, value, expires, path, domain, secure ) {

@@ -204,7 +204,7 @@ class MV_SpecialCRUDStream extends SpecialPage {
 		}
 		return $out;
 	}
-	/*
+	/**
 	 * Returns an array of stream types the current user can add
 	 * @@todo we should just check the $mvStreamTypePermission directly if we can...
 	 * @@todo deprecate this: use mediaWikis user system:

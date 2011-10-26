@@ -55,7 +55,7 @@ abstract class CB_AbstractPager {
 	var $query_offset;
 	/* indicates, whether the pager has further elements */
 	var $hasMoreEntries = false;
-	/*
+	/**
 	 * maximal number of entries per page (actual number of entries on page)
 	 * warning: is not initialized until $this->getCurrentRows() call
 	 */
@@ -65,7 +65,7 @@ abstract class CB_AbstractPager {
 	/* array of current entries */
 	var $entries = array();
 
-	/*
+	/**
 	 * abstract query (doesn't instantinate)
 	 * @param offset - suggested SQL offset
 	 * @param limit - suggested SQL limit
@@ -79,7 +79,7 @@ abstract class CB_AbstractPager {
 		$this->query_offset = intval( $offset );
 	}
 
-	/*
+	/**
 	 *
 	 * initializes hasMoreEntries and array of entries from DB result
 	 */
@@ -127,7 +127,7 @@ class CB_ParentPager extends CB_AbstractPager {
 		$this->childCatName = $childCatName;
 	}
 
-	/*
+	/**
 	 * set offset, limit, hasMoreEntries and entries
 	 * @param $offset SQL offset
 	 * @param $limit SQL limit
@@ -149,7 +149,7 @@ class CB_ParentPager extends CB_AbstractPager {
 		$this->setEntries( $res );
 	}
 
-	/*
+	/**
 	 * returns JS function call used to navigate to the previous page of this pager
 	 * when placeholders = true, empty html placeholder should be generated in pager view instead of link
 	 * when placeholders = false, nothing ('') will be generated in pager view instead of link
@@ -162,7 +162,7 @@ class CB_ParentPager extends CB_AbstractPager {
 		return $result;
 	}
 
-	/*
+	/**
 	 * returns JS function call used to navigate to the next page of this pager
 	 * when placeholders = true, empty html placeholder should be generated in pager view instead of link
 	 * when placeholders = false, nothing ('') will be generated in pager view instead of link
@@ -192,7 +192,7 @@ class CB_SubPager extends CB_AbstractPager {
 	// javascript function used to navigate between the pages
 	var $js_nav_func;
 
-	/*
+	/**
 	 * creates subcategory list pager
 	 *
 	 * @param $parentCatName cat_title of parent category
@@ -209,7 +209,7 @@ class CB_SubPager extends CB_AbstractPager {
 		$this->js_nav_func = $js_nav_func;
 	}
 
-	/*
+	/**
 	 * set offset, limit, hasMoreEntries and entries
 	 * @param $offset SQL offset
 	 * @param $limit SQL limit
@@ -230,7 +230,7 @@ class CB_SubPager extends CB_AbstractPager {
 		$this->setEntries( $res );
 	}
 
-	/*
+	/**
 	 * returns JS function call used to navigate to the previous page of this pager
 	 * when placeholders = true, empty html placeholder should be generated in pager view instead of link
 	 * when placeholders = false, nothing ('') will be generated in pager view instead of link
@@ -243,7 +243,7 @@ class CB_SubPager extends CB_AbstractPager {
 		return $result;
 	}
 
-	/*
+	/**
 	 * returns JS function call used to navigate to the next page of this pager
 	 * when placeholders = true, empty html placeholder should be generated in pager view instead of link
 	 * when placeholders = false, nothing ('') will be generated in pager view instead of link
@@ -281,7 +281,7 @@ class CB_RootPager extends CB_AbstractPager {
 	// category name filter case-insensetive flag (when true, tries to use insensetive LIKE COLLATE)
 	var $nameFilterCI = false;
 
-	/*
+	/**
 	 * formal constructor
 	 * real instantination should be performed by calling public static methods below
 	 */
@@ -289,7 +289,7 @@ class CB_RootPager extends CB_AbstractPager {
 		parent::__construct( $offset, $limit );
 	}
 
-	/*
+	/**
 	 * @param $conds - instanceof CB_SqlCond (parentized condition generator)
 	 * @param $offset - SQL OFFSET
 	 * @param $limit - SQL LIMIT
@@ -301,7 +301,7 @@ class CB_RootPager extends CB_AbstractPager {
 		return $rp;
 	}
 
-	/*
+	/**
 	 * @param $tokens - array of infix ops of sql condition
 	 * @param $offset - SQL OFFSET
 	 * @param $limit - SQL LIMIT
@@ -318,7 +318,7 @@ class CB_RootPager extends CB_AbstractPager {
 		return self::newFromSqlCond( $sqlCond, $offset, $limit );
 	}
 
-	/*
+	/**
 	 * create root pager from the largest non-empty category range
 	 * @param $ranges - array of "complete" token queues (range)
 	 *   (every range is an stdobject of decoded infix queue and encoded reverse polish queue)
@@ -335,7 +335,7 @@ class CB_RootPager extends CB_AbstractPager {
 		return $rp;
 	}
 
-	/*
+	/**
 	 * setup query only for categories, which does not have the parents
 	 * @param: $noParentsOnly - boolean flag
 	 *     true - query only for categories, which does not have the parents
@@ -344,7 +344,7 @@ class CB_RootPager extends CB_AbstractPager {
 		$this->noParentsOnly = (boolean) $noParentsOnly;
 	}
 
-	/*
+	/**
 	 * filter catetories by names
 	 * @param $cat_name_filter - string category name begins from
 	 * @param $cat_name_filter_ci - boolean, true attempts to use case-insensetive search, when available
@@ -354,7 +354,7 @@ class CB_RootPager extends CB_AbstractPager {
 		$this->nameFilterCI = $cat_name_filter_ci;
 	}
 
-	/*
+	/**
 	 * performs range query and stores the results
 	 */
 	function getCurrentRows() {
@@ -394,7 +394,7 @@ class CB_RootPager extends CB_AbstractPager {
 		$this->setEntries( $res );
 	}
 
-	/*
+	/**
 	 * returns JS function call used to navigate to the previous page of this pager
 	 * when placeholders = true, empty html placeholder should be generated in pager view instead of link
 	 * when placeholders = false, nothing ('') will be generated in pager view instead of link
@@ -407,7 +407,7 @@ class CB_RootPager extends CB_AbstractPager {
 		return $result;
 	}
 
-	/*
+	/**
 	 * returns JS function call used to navigate to the next page of this pager
 	 * when placeholders = true, empty html placeholder should be generated in pager view instead of link
 	 * when placeholders = false, nothing ('') will be generated in pager view instead of link

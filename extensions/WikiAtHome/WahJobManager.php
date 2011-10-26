@@ -61,7 +61,7 @@ class WahJobManager {
 		);
 		return $this->mSetRow;
 	}
-	/*
+	/**
 	 * get the percentage done (return 1 if done)
 	 */
 	function getDonePerc(){
@@ -113,7 +113,7 @@ class WahJobManager {
 		$thumbPath = $file->getThumbPath( $this->getEncodeKey() );
 		return is_file ( $thumbPath . '.ogg' );
 	}
-	/*
+	/**
 	 * returns a new job
 	 *
 	 * @param prefered jobset id
@@ -226,7 +226,7 @@ class WahJobManager {
 		global $wgJobTypeConfig;
 		return $wgJobTypeConfig[ $reqType ][ 'assign' . $reqMode ];
 	}
-	/*
+	/**
 	 * assigns a job:
 	 *
 	 * @param $job result object
@@ -298,7 +298,7 @@ class WahJobManager {
 			__METHOD__
 		);
 	}
-	/*
+	/**
 	 * setups up a new job
 	 */
 	function doJobSetup(){

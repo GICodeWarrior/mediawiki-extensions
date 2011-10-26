@@ -62,13 +62,13 @@ $messages['en'] = array (
 	'wc_month'                     => 'month',       # 月
 	'wc_day'                       => 'day',         # 日
 
-	/*
+	/**
 	 * Literal text
 	 */
 	'wc-personal-communication'          => 'personal communication',
 
 
-	/*
+	/**
 	 * Labels
 	 */
 	'wc-author-long-singular'            => 'author',
@@ -225,7 +225,7 @@ $messages['en'] = array (
 	'wc-circa-symbol-singular'           => 'c.',
 	'wc-circa-symbol-plural'             => 'c.',
 
-	/*
+	/**
 	 * Error messages
 	 */
 	'wc-style-not-recognized'    => 'Cite error: <code>$1</code> citation style not recognized.',

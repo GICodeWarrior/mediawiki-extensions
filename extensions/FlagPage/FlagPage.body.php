@@ -10,7 +10,7 @@ class FlagPage extends SpecialPage {
 
 	}
 
-	/*
+	/**
 	 * First function to be called. Calls different functions depending on what information is given:
 	 * selection() if page is set
 	 * preview() if page and template are set
@@ -50,7 +50,7 @@ class FlagPage extends SpecialPage {
 		}
 	}
 
-	/*
+	/**
 	 * Parses 'MediaWiki:Flagarticle-templatelist' with replaceLinks() and normal mediawiki parser
 	 * Shows a selection of different templates (which are defined in the above message)
 	 *
@@ -68,7 +68,7 @@ class FlagPage extends SpecialPage {
 		$wgOut->addWikiText( '<div class="plainlinks">' . $templatelistcontent . '</div>' );
 	}
 
-	/*
+	/**
 	 * Small parser that provides an easier way of using 'MediaWiki:Flagarticle-templatelist'
 	 *
 	 * @param $page String: title of the page that needs to be edited
@@ -83,7 +83,7 @@ class FlagPage extends SpecialPage {
 		return $wikitext;
 	}
 
-	/*
+	/**
 	 * Preview the template before actually saving the page. Is called when the user specified one of several predifined templates
 	 * Provides a HTML form for submitting the confirmation. An edit token is included to prevent (possibly malicious) external POST request.
 	 *
@@ -109,7 +109,7 @@ class FlagPage extends SpecialPage {
 		$wgOut->addHTML($s);
 	}
 
-	/*
+	/**
 	 * Function that is called after the user confirms the change.
 	 * Checks for the token and insertes the template. If the token is wrong or the article doesn't exist, preview() is shown
 	 *

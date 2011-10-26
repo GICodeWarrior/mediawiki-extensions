@@ -42,7 +42,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			$cond[] = 'AND end_time >= ' . $dbr->addQuotes( $start_time );
 		return $dbr->selectField( 'mv_mvd_index', 'COUNT(1)', $cond,  __METHOD__ );
 	}
-	/*
+	/**
 	 * getMVDInRange returns the mvd titles that are in the given range
 	 * param list got kind of crazy long... @@todo re-factor into something cleaner
 	 */
@@ -262,7 +262,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		$dbw = wfGetDB( DB_WRITE );
 		$dbw->delete( 'mv_mvd_index', array( 'stream_id' => $stream_id ) );
 	}
-	/*
+	/**
 	 * removes a single entry by wiki_title name
 	 */
 	function remove_by_wiki_title( $wiki_title ) {
@@ -742,7 +742,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			throw new MWException( "Invalid Page name for MVD namespace \n" );
 		}
 	}
-	/*
+	/**
 	 * update_index_page updates the `mv_mvd_index` table (on MVD namespace saves)
 	 */
 	function update_index_page( &$article, &$text ) {

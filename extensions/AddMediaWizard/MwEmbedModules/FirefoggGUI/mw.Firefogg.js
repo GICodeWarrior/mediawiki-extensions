@@ -407,7 +407,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 		}
 	},
 
-	/*
+	/**
 	 * Get the URL for installing firefogg on the client OS
 	 */
 	getFirefoggInstallUrl: function() {

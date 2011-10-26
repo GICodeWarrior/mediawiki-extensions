@@ -29,7 +29,7 @@ class MV_Stream {
 	# pointers:
 	var $mvTitle = '';
 
-	/*
+	/**
 	 * Array init of stream
 	 */
 	function __construct( $initVal = array() ) {
@@ -103,7 +103,7 @@ class MV_Stream {
 			return $this->date_start_time;
 		}
 	}
-	/*
+	/**
 	 * @@todo cache this!:
 	 */
 	function getStreamNameFromId( $id ) {
@@ -123,7 +123,7 @@ class MV_Stream {
 		// if still not set return null
 		return $this->duration;
 	}
-	/*
+	/**
 	 * returns a list of files from the mv_stream_files table
 	 */
 	function getFileList() {
@@ -138,7 +138,7 @@ class MV_Stream {
 		}
 		return $file_list;
 	}
-	/*
+	/**
 	 * returns full web accessible path to stream
 	 * (by default this is the web streamable version of the file)
 	 * web stream is file_desc_msg as: mv_ogg_low_quality
@@ -154,7 +154,7 @@ class MV_Stream {
 	function getStreamImageURL( $size = null, $req_time = null ) {
 		return 	$this->mvTitle->getStreamImageURL( $size, $req_time );
 	}
-	/*
+	/**
 	 * Inserts the current stream
 	 */
 	function insertStream( $stream_type = '' ) {

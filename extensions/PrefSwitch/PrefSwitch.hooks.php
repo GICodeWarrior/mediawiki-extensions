@@ -9,7 +9,7 @@
 class PrefSwitchHooks {
 
 	/* Protected Static Members */
-	
+
 	protected static $modules = array(
 		'ext.prefSwitch' => array(
 			'scripts' => 'ext.prefSwitch.js',
@@ -17,10 +17,10 @@ class PrefSwitchHooks {
 			'dependencies' => 'jquery.client',
 		),
 	);
-	
+
 	/* Static Methods */
-	
-	/*
+
+	/**
 	 * LoadExtensionSchemaUpdates hook
 	 */
 	public static function loadExtensionSchemaUpdates( $updater = null ) {
@@ -38,15 +38,15 @@ class PrefSwitchHooks {
 		return true;
 	}
 
-	/*
+	/**
 	 * PersonalUrls hook
 	 */
 	public static function personalUrls( &$personal_urls, &$title ) {
 		global $wgUser, $wgRequest, $wgPrefSwitchShowLinks;
 		if ( !$wgPrefSwitchShowLinks ) {
-			return true;	
+			return true;
 		}
-		
+
 		// Figure out the orgin to include in the link
 		$fromquery = array();
 		if ( !( $wgRequest->wasPosted() ) ) {

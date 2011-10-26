@@ -67,7 +67,7 @@ class MV_StreamPage extends Article {
 		$MV_MetavidInterface->render_full();
 		wfProfileOut( __METHOD__ );
 	}
-	/*
+	/**
 	 * test if this is a base editable request
 	 * of type Metavid:streamname
 	 */

@@ -19,7 +19,7 @@ class SimpleSecurity {
 		# Put SimpleSecurity's setup function before all others
 		array_unshift( $wgExtensionFunctions, array( $this, 'setup' ) );
 	}
-	
+
 	function setup() {
 		global $wgParser, $wgHooks, $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions,
 			$wgSecurityMagicIf, $wgSecurityMagicGroup, $wgSecurityExtraActions, $wgSecurityExtraGroups,
@@ -162,7 +162,7 @@ class SimpleSecurity {
 	}
 
 
-	/*
+	/**
 	 * Check if image is accessible by current user when using img_auth
 	 */
 	public function onImgAuthBeforeStream( &$title, &$path, &$name, &$result ) {

@@ -12,7 +12,7 @@ class SMWNotifyMe extends SpecialPage {
 	public function __construct() {
 		parent::__construct( 'NotifyMe' );
 	}
-	/*
+	/**
 	 * Overloaded function that is responsible for the creation of the Special Page
 	 */
 	public function execute() {

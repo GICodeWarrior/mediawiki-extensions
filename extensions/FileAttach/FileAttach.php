@@ -6,7 +6,7 @@
  * @subpackage Extensions
  * @author Milan Holzapfel
  * @licence GNU General Public Licence 2.0 or later
- * 
+ *
  */
 if ( !defined( 'MEDIAWIKI' ) ) die( 'Not an entry point.' );
 define( 'FILEATTCH_VERSION', '1.0.2, 2010-04-24' );
@@ -30,7 +30,7 @@ class FileAttach {
 	public static $attachto = false;
 	public static $wgOut = false;
 
-	/*
+	/**
 	 * Modify the upload form and attachment heading
 	 */
 	public static function onBeforePageDisplay( $out, $skin ) {
@@ -81,7 +81,7 @@ class FileAttach {
 		return true;
 	}
 
-	/*
+	/**
 	 * Note if this is the upload form or warning form so that we can modify it before page display
 	 */
 	public static function onUploadFormInitial( $form ) {
@@ -89,7 +89,7 @@ class FileAttach {
 		return true;
 	}
 
-	/*
+	/**
 	 * Check if the upload should attach to an article
 	 */
 	public static function onUploadFormBeforeProcessing( $form ) {
@@ -103,7 +103,7 @@ class FileAttach {
 		return true;
 	}
 
-	/*
+	/**
 	 * Change the redirection after upload to the page the file attached to,
 	 * and attach the file to the article
 	 */
@@ -118,7 +118,7 @@ class FileAttach {
 		return true;
 	}
 
-	/*
+	/**
 	 * Return an icon path from passed filename
 	 */
 	private static function getIcon( $filename ) {

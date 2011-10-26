@@ -136,7 +136,7 @@
 		) );
 	}
 
-	/*
+	/**
 	 * outputs basic stream paging (this could be done client side)
 	 *
 	 */
@@ -174,7 +174,7 @@
 		if ( $return_set == 'prev' )return $prev_link;
 		if ( $return_set == 'next' )return $next_link;
 	}
-	/*
+	/**
 	 * list all the available "tool" functions
 	 * @@todo better integration with wiki
 	 * (ie tool listing should be a page like navigationBar or in our case MvStreamTools

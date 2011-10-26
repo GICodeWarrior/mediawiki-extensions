@@ -849,7 +849,7 @@ class MV_SpecialMediaSearch {
 		return SpecialPage::getTitleFor( 'MediaSearch' ) .
 		$this->get_httpd_filters_query();
 	}
-	/*
+	/**
 	 * returns human readable description of filters
 	 */
 	function getFilterDesc( $query_key = false ) {

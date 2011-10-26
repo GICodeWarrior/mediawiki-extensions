@@ -11,7 +11,7 @@ class ApiRPED extends ApiBase {
 			$this->displayRestrictionError();
 			return;
 		}*/
- 
+
 		if( !$wgUser->isAllowed( 'rped' ) ) {
 			$this->displayRestrictionError();
 			return;
@@ -30,8 +30,8 @@ class ApiRPED extends ApiBase {
         }
         return;
     }
-    
-	/*
+
+	/**
 	 * Insert or delete a row from the rped_page table
 	 * @param key "insert" or "delete"
 	 * @param $value Page name to delete

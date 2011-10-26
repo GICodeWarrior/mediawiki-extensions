@@ -160,7 +160,7 @@ class ArticleFeedbackHooks {
 				) );
 			}
 
-			if ( !$db->indexExists( 'article_feedback', 'aa_page_id', __METHOD__ ) ) { 
+			if ( !$db->indexExists( 'article_feedback', 'aa_page_id', __METHOD__ ) ) {
 				$updater->addExtensionUpdate( array(
 					'addIndex',
 					'article_feedback',
@@ -240,7 +240,7 @@ class ArticleFeedbackHooks {
 				$dir . '/sql/AddArticleFeedbackTimestampIndex.sql',
 				true
 			) );
-			
+
 			// This change recreates the PK on a new field. Check for that new field's existence
 			$updater->addExtensionUpdate( array(
 				'addField',
@@ -273,7 +273,7 @@ class ArticleFeedbackHooks {
 		return true;
 	}
 
-	/*
+	/**
 	 * ResourceLoaderRegisterModules hook
 	 */
 	public static function resourceLoaderRegisterModules( &$resourceLoader ) {
@@ -288,7 +288,7 @@ class ArticleFeedbackHooks {
 		return true;
 	}
 
-	/*
+	/**
 	 * ResourceLoaderGetConfigVars hook
 	 */
 	public static function resourceLoaderGetConfigVars( &$vars ) {
