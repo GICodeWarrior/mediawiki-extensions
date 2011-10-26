@@ -559,7 +559,7 @@ $.narayam = new ( function() {
 						.text( mw.msg( 'narayam-help' ) )
 						.attr(
 							'href',
-							mw.util.wikiGetlink( mw.config.get( 'wgNarayamHelpPage' ) )
+							mw.util.wikiGetlink( helppage )
 						)
 					)
 				);
