@@ -45,8 +45,7 @@ HTML;
 		{
 			$dbw = wfGetDB( DB_MASTER );
 			$row = array(
-				'userid' => $wgUser->getID(),
-				'username' => $wgUser->getName(),
+				'username' => strtolower($wgUser->getName()),
 				'timestamp' => $dbw->timestamp( wfTimestamp() ),
 			);
 			$dbw->insert( 'online_status', $row, __METHOD__, 'DELAYED' );
@@ -67,7 +66,7 @@ HTML;
 		$dbw->update(
 			'online_status',
 			array( 'timestamp' => $dbw->timestamp( wfTimestamp() ) ),
-			array( 'username' => $wgUser->getID() ),
+			array( 'username' => strtolower($wgUser->getID()) ),
 			__METHOD__
 		);
 
@@ -85,11 +84,33 @@ HTML;
 		return 0;
 	}
 
+	public static function IsValid($id)
+	{
+		global $wgOnlineStatusBarDefaultIpUsers;
+		// checks if anon
+		if (User::isIP($id))
+		{
+			return $wgOnlineStatusBarDefaultIpUsers;
+		}
+		$user = User::newFromName($id);
+		// check if exist
+	        if ($user == null)
+		{
+			return false;
+		} 
+		// do we track them
+		if ($user->getOption("OnlineStatusBar_active") == true)
+		{
+			return true;		
+		}
+		return false;
+	}
+
 	static function GetStatus( $userID ) {
 		global $wgOnlineStatusBarModes, $wgOnlineStatusBarDefaultOffline, $wgOnlineStatusBarDefaultOnline, $wgDBname;
 		$dbw = wfGetDB( DB_MASTER );
 		OnlineStatusBar::DeleteOld();
-		$result = $dbw->selectField( 'online_status', 'username', array( 'username' => $userID ), __METHOD__, array( 'limit 1', 'order by timestamp desc' ) );
+		$result = $dbw->selectField( 'online_status', 'username', array( 'username' => strtolower($userID) ), __METHOD__, array( 'limit 1', 'order by timestamp desc' ) );
 		if ( $result )
 		{
 			return $wgOnlineStatusBarDefaultOnline;
