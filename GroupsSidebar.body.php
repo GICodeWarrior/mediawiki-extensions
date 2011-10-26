@@ -1,7 +1,7 @@
 <?php
 
 class GroupsSidebar {
-	/*
+	/**
 	 * Gets called by Hook SkinBuildSidebar
 	 */
 	function efHideSidebar( $skin, &$bar ) {
