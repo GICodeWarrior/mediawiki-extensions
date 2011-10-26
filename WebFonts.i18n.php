@@ -127,6 +127,7 @@ $messages['fa'] = array(
 );
 
 /** French (Français)
+ * @author Gomoko
  * @author IAlex
  * @author Sherbrooke
  */
@@ -135,7 +136,7 @@ $messages['fr'] = array(
 	'webfonts-desc' => 'Incorpore les polices dans les pages',
 	'webfonts-load' => 'Sélectionnez une police',
 	'webfonts-reset' => 'Réinitialiser',
-	'webfonts-disable-preference' => "Désactiver l'incorporation des polices (Polices web)",
+	'webfonts-enable-preference' => "Active l'incorporation des fontes (WebFonts)",
 );
 
 /** Franco-Provençal (Arpetan)
@@ -156,7 +157,7 @@ $messages['gl'] = array(
 	'webfonts-desc' => 'Incorporar fontes nas páxinas',
 	'webfonts-load' => 'Seleccione a fonte',
 	'webfonts-reset' => 'Restablecer',
-	'webfonts-disable-preference' => 'Desactivar a incorporación de fontes (WebFonts)',
+	'webfonts-enable-preference' => 'Activar a incorporación de fontes (WebFonts)',
 );
 
 /** Swiss German (Alemannisch)
@@ -286,7 +287,7 @@ $messages['ms'] = array(
 	'webfonts-desc' => 'Gunakan fon dalam laman',
 	'webfonts-load' => 'Pilih fon',
 	'webfonts-reset' => 'Set semula',
-	'webfonts-disable-preference' => 'Matikan penggunaan fon (WebFonts)',
+	'webfonts-enable-preference' => 'Hidupkan pembenaman fon (WebFonts)',
 );
 
 /** Dutch (Nederlands)
@@ -298,7 +299,7 @@ $messages['nl'] = array(
 	'webfonts-desc' => "Lettertypen op pagina's insluiten",
 	'webfonts-load' => 'Lettertype selecteren',
 	'webfonts-reset' => 'Opnieuw instellen',
-	'webfonts-disable-preference' => 'Lettertypen insluiten (WebFonts) uitschakelen',
+	'webfonts-enable-preference' => 'Lettertypen insluiten inschakelen (WebFonts)',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -368,7 +369,7 @@ $messages['sl'] = array(
 	'webfonts-desc' => 'Vdelaj pisave na strani',
 	'webfonts-load' => 'Izberite pisavo',
 	'webfonts-reset' => 'Ponastavi',
-	'webfonts-disable-preference' => 'Onemogoči vdelavo pisav (SpletnePisave)',
+	'webfonts-enable-preference' => 'Omogoči vdelavo pisav (SpletnePisave)',
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
@@ -411,6 +412,14 @@ $messages['tl'] = array(
 	'webfonts-desc' => 'Magbaon ng mga estilo ng titik sa mga pahina',
 	'webfonts-load' => 'Pumili ng estilo ng titik',
 	'webfonts-disable-preference' => 'Huwag paganahin ang pagbabaon ng estilo ng titik (WebFonts)',
+);
+
+/** Turkish (Türkçe)
+ * @author Emperyan
+ */
+$messages['tr'] = array(
+	'webfonts-load' => 'Yazı tipi seçin',
+	'webfonts-reset' => 'Sıfırla',
 );
 
 /** Vietnamese (Tiếng Việt)
