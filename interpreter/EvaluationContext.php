@@ -26,7 +26,7 @@ if( !defined( 'MEDIAWIKI' ) )
 /**
  * An internal class used by WikiScripts. Used to evaluate a parsed code
  * in a sepereate context with its own output, variables and parser frame.
- * 
+ *
  * Handles evaluation of an individual functions.
  */
 class WSEvaluationContext {
@@ -65,7 +65,7 @@ class WSEvaluationContext {
 	public function getModule() {
 		return $this->mModule;
 	}
-	
+
 	public function getFrame() {
 		return $this->mFrame;
 	}
@@ -387,7 +387,7 @@ class WSEvaluationContext {
 		}
 	}
 
-	/*
+	/**
 	 * Converts commaList* to a PHP array.
 	 */
 	protected function parseArray( $node, $rec, &$arraytype ) {
@@ -425,7 +425,7 @@ class WSEvaluationContext {
 					$value = $this->evaluateNode( $value, $rec + 1 );
 					$result[ $key->toString() ] = $value;
 				}
-				
+
 				$arraytype = WSData::DAssoc;
 				wfProfileOut( __METHOD__ );
 				return $result;
@@ -594,7 +594,7 @@ class WSEvaluationContext {
 		if( count( $args ) < $count )
 			throw new WSUserVisibleException( 'notenoughargs', $this->mModuleName, $pos );
 	}
-	
+
 	protected function deleteVar( $lval, $rec ) {
 		// First throw an exception if a variable does not exist
 		$this->getVar( $lval, $rec + 1 );
@@ -638,7 +638,7 @@ class WSEvaluationContext {
 		$this->checkParamsCount( $args, $pos, 1 );
 		return WSData::castTypes( $args[0], WSData::DString );
 	}
-	
+
 	protected function castInt( $args, $pos ) {
 		$this->checkParamsCount( $args, $pos, 1 );
 		return WSData::castTypes( $args[0], WSData::DInt );
@@ -648,7 +648,7 @@ class WSEvaluationContext {
 		$this->checkParamsCount( $args, $pos, 1 );
 		return WSData::castTypes( $args[0], WSData::DFloat );
 	}
-	
+
 	protected function castBool( $args, $pos ) {
 		$this->checkParamsCount( $args, $pos, 1 );
 		return WSData::castTypes( $args[0], WSData::DBool );
