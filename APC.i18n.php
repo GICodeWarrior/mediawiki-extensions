@@ -1388,7 +1388,7 @@ $messages['ckb'] = array(
 $messages['cs'] = array(
 	'apc' => 'Informace o APC',
 	'apc-desc' => '[[Special:APC|Zobrazit a spravovat vyrovnávací paměť APC]] pomocí MediaWiki',
-	'right-apc' => 'Použít všechny funkce na [[Special:APC|APC]].',
+	'right-apc' => 'Používání všech funkcí v [[Special:APC|APC]]',
 	'viewapc-apc-not-available' => 'Nejsou dostupné žádné informace o vyrovnávací paměti.
 Zdá se, že APC neběží.',
 	'viewapc-clear-confirm' => 'Opravdu chcete vyčistit vyrovnávací paměť?',
