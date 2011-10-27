@@ -12,7 +12,7 @@ except ImportError:
 
 def main():
         parser = OptionParser(conflict_handler="resolve")
-	parser.set_usage('modify-ldap-group [options]')
+	parser.set_usage('manage-exports [options]')
 
 	ldapSupportLib = ldapsupportlib.LDAPSupportLib()
 	ldapSupportLib.addParserOptions(parser)
