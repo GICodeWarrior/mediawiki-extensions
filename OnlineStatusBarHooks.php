@@ -171,7 +171,7 @@ class OnlineStatusBarHooks {
 			}
 			$ret = OnlineStatusBar::GetStatus( $name );
 			if ( $ret == "hidden" ) {
-				$ret = $wgOnlineStatusBarDefaultOffline; 
+				$ret = $wgOnlineStatusBarDefaultOffline;
 			}
 		}
 		return true;
