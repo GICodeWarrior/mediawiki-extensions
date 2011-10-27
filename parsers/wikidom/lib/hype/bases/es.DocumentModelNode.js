@@ -156,6 +156,19 @@ es.DocumentModelNode.prototype.getElementType = function() {
 };
 
 /**
+ * Gets an element attribute value.
+ * 
+ * @method
+ * @returns {Mixed} Value of attribute, or null if no such attribute exists
+ */
+es.DocumentModelNode.prototype.getElementAttribute = function( key ) {
+	if ( this.element.attributes && key in this.element.attributes ) {
+		return this.element.attributes[key];
+	}
+	return null;
+};
+
+/**
  * Gets the content length.
  * 
  * FIXME: This method makes assumptions that a node with a data property is a DocumentModel, which
