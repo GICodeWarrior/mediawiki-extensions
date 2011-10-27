@@ -943,6 +943,9 @@ class CheckVars {
 		if ( $name == '$wgHooks' && $this->mClass == 'Installer' && $this->mFunction == 'includeExtensions' )
 			return false;
 
+		if ( basename( $this->mFilename ) == "thumb-handler.php" )
+			return substr( $name, 0, 9 ) == '$thgThumb';
+
 		return ( ( substr( $name, 0, 3 ) == '$wg' ) || ( substr( $name, 0, 3 ) == '$eg' ) || in_array( $name, $specialGlobals ) ) && !in_array( $name, $nonGlobals );
 	}
 
