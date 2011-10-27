@@ -1,51 +1,70 @@
-﻿<?php
+<?php
  
 class AutoProxyBlock {
 	function isProxy( $ip ) {
-		global $wgAutoProxyBlockSources;
+		global $wgMemc, $wgAutoProxyBlockSources;
 		
-		if( isset($wgAutoProxyBlockSources['api']) ) {
-			foreach($wgAutoProxyBlockSources['api'] as $url) {
-				$request_options = array(
-					'action' => 'query',
-					'list' => 'blocks',
-					'bkip' => "$ip",
-					'bklimit' => '1',
-					'bkprop' => 'expiry|reason',					
-				);
- 
-				$ban = self::requestForeighAPI($url, $request_options);
-				if( isset($ban['query']['blocks'][0]) && preg_match($wgAutoProxyBlockSources['key'], $ban['query']['blocks'][0]['reason']) ) {
-					return true;
-				}
-			}
-		}
- 
-		if( isset($wgAutoProxyBlockSources['raw']) ) {
-			$list = array();
-			foreach($wgAutoProxyBlockSources['raw'] as $file) {
-				if( file_exists($file) ) {
-					$p = file($file);
-					if( $p ) {
-						array_merge($list, $p);
+		$memcKey = wfMemcKey( 'isproxy', $ip );
+		$data = $wgMemc->get( $memcKey );
+		
+		if( $data != '' ) {
+			return ( $data === 'proxy' ) ? true : false;
+		} else {		
+			if( isset($wgAutoProxyBlockSources['api']) ) {
+				foreach($wgAutoProxyBlockSources['api'] as $url) {
+					$request_options = array(
+						'action' => 'query',
+						'list' => 'blocks',
+						'bkip' => $ip,
+						'bklimit' => '1',
+						'bkprop' => 'expiry|reason',					
+					);
+	
+					$ban = self::requestForeighAPI($url, $request_options);
+					if( isset($ban['query']['blocks'][0]) && preg_match($wgAutoProxyBlockSources['key'], $ban['query']['blocks'][0]['reason']) ) {
+						$wgMemc->set( $memcKey, 'proxy', 60 * 60 * 24 );
+						return true;
 					}
 				}
 			}
+			
+			if( isset($wgAutoProxyBlockSources['raw']) ) {
+				$list = array();
+				foreach($wgAutoProxyBlockSources['raw'] as $file) {
+					if( file_exists($file) ) {
+						$p = file($file);
+						if( $p ) {
+							array_merge($list, $p);
+						}
+					}
+				}
  
-			return in_array( $ip, array_unique($list) );
-		}
+				if ( in_array( $ip, array_unique($list) ) ) {
+					$wgMemc->set( $memcKey, 'proxy', 60 * 60 * 24 );
+					return true;
+				} else {
+					$wgMemc->set( $memcKey, 'not', 60 * 60 * 24 );
+					return false;
+				}
+			}
 		
-		return false;
+			return false;
+		}
 	}
  
 	function checkProxy( $title, $user, $action, &$result ) {
 		global $wgProxyCanPerform, $wgAutoProxyBlockLog;
 		
-		if( in_array( $action, $wgProxyCanPerform ) || $user->isAllowed('proxyunbannable') ) return true;
+		if( in_array( $action, $wgProxyCanPerform ) || $user->isAllowed('proxyunbannable') ) {
+			return true;
+		}
 		
-		$IP = wfGetIP();
-		if( self::isProxy( $IP ) ) {
-			if($wgAutoProxyBlockLog) self::addInternalLogEntry( $IP, $title->mTextform, $user->mName, $action, $user );
+		$userIP = wfGetIP();
+		if( self::isProxy( $userIP ) ) {
+			if( $wgAutoProxyBlockLog ) {
+				$log = new LogPage( 'proxyblock' );
+				$log->addEntry( 'blocked', $title, false, array( $action, $user->mName ) );
+			}
 			$result[] = array( 'proxy-blocked', $IP );
 			return false;		   
 		}
@@ -63,11 +82,16 @@ class AutoProxyBlock {
 		return true;
 	}
  
-	function tagProxyChange( $recentChange ) { // -> add check user rights
+	function tagProxyChange( $recentChange ) {
 		global $wgTagProxyActions, $wgUser;
 		
 		if ( $wgTagProxyActions && self::isProxy( wfGetIP() ) && !$wgUser->isAllowed( 'notagproxychanges' ) ) {
-			ChangeTags::addTags( 'proxy', $recentChange->mAttribs['rc_id'], $recentChange->mAttribs['rc_this_oldid'], $recentChange->mAttribs['rc_logid'] );
+			ChangeTags::addTags( 
+				'proxy',
+				$recentChange->mAttribs['rc_id'],
+				$recentChange->mAttribs['rc_this_oldid'],
+				$recentChange->mAttribs['rc_logid'] 
+			);
 		}
 		return true;
 	}
@@ -79,20 +103,6 @@ class AutoProxyBlock {
 			$emptyTags[] = 'proxy';
 		}
 		return true;
-	}
- 
-	function addInternalLogEntry( $ip, $title, $user, $action, $object ) {
-		global $wgAutoProxyBlockLog;
-		
-		if( !$object->isAllowed('notagproxychanges') ) {
-			$string = $ip . ' ' . $user . ' on page ' . $title . ' perform ' . $action . "\n";
- 
-			$file = fopen($wgAutoProxyBlockLog, 'a');
-			fwrite($file, $string);
-			fclose($file);
-		}
-		
-		return true;		
 	}
  
 	function requestForeighAPI( $url, $options ) {

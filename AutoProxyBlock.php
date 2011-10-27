@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 if ( !defined( 'MEDIAWIKI' ) ) {
 	exit(1);
 }
@@ -8,6 +8,7 @@ $wgExtensionCredits['antispam'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'AutoProxyBlock',
 	'author'         => 'Cryptocoryne',
+	'version'        => '0.9',
 	'descriptionmsg' => 'autoproxyblock-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:AutoProxyBlock',
 );
@@ -38,5 +39,16 @@ $wgAutoProxyBlockSources['api'][] = 'http://en.wikipedia.org/w/api.php';
 $wgAutoProxyBlockSources['raw'][] = '/var/www/mediawiki/proxy.list';
 $wgAutoProxyBlockSources['key'] = '/blocked proxy/i';
  
-// if set, log all blocked actions in file
+// if set, log all blocked actions in log
 $wgAutoProxyBlockLog = false;
+
+if( $wgAutoProxyBlockLog ) {
+	$wgAvailableRights[] = 'autoproxyblock-log';
+	$wgGroupPermissions['bureaucrat']['autoproxyblock-log'] = true;
+	$wgLogTypes[] = 'proxyblock';
+	$wgLogNames['proxyblock']             = 'proxyblock-log-name';
+	$wgLogHeaders['proxyblock']           = 'proxyblock-log-header';
+	$wgLogActions['proxyblock/proxyblock'] = 'proxyblock-logentry';
+	$wgLogActions['proxyblock/blocked']   = 'proxyblock-logentry-blocked';
+	$wgLogRestrictions['proxyblock'] = 'autoproxyblock-log';
+}
