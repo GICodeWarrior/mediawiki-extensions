@@ -27,6 +27,13 @@ $messages['gl'] = array(
 	'fundraiserlandingpage-desc' => 'Toma parámetros URL e pásaos como variables de modelo a aquel modelo especificado',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'fundraiserlandingpage-desc' => 'Přepodawa URL-parametry na podatu předłohu jako wariable předłohi',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
