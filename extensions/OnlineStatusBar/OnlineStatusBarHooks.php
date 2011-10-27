@@ -61,9 +61,11 @@ class OnlineStatusBarHooks {
 				// it's anon user and we want to track them
 				$sanitizedusername = $userName;
 				$anon = true;
-			} else {
+			} else if ( $user != null ) {
 				// Fix capitalisation issues
 				$sanitizedusername = $user->getName();
+			} else {
+				return true;
 			}
 			if ( $anon == false )
 			{
