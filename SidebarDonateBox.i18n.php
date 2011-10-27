@@ -132,6 +132,7 @@ $messages['he'] = array(
  */
 $messages['hsb'] = array(
 	'sidebardonatebox-desc' => 'Přidawa swójski darjenski kašćik do bóčnicy',
+	'DONATE' => 'Darić',
 );
 
 /** Interlingua (Interlingua)
