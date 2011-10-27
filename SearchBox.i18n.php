@@ -465,6 +465,13 @@ $messages['ig'] = array(
 	'searchbox-namespaces' => 'Ámááhà:',
 );
 
+/** Iloko (Ilokano)
+ * @author Lam-ang
+ */
+$messages['ilo'] = array(
+	'searchbox-search' => 'Biroken',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */
