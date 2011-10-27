@@ -114,6 +114,8 @@ function processTest(item) {
 	console.log(item.title);
 
 	parser.parseToTree(item.input + "\n", function(tree, err) {
+		console.log('INPUT:');
+		console.log(item.input + "\n");
 		if (err) {
 			console.log('PARSE FAIL', err);
 		} else {
@@ -128,8 +130,6 @@ function processTest(item) {
 				if (err) {
 					console.log('RENDER FAIL', err);
 				} else {
-					console.log('INPUT:');
-					console.log(item.input + "\n");
 					console.log('EXPECTED:');
 					console.log(item.result + "\n");
 					
