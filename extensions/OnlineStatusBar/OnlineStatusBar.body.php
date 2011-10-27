@@ -116,6 +116,10 @@ HTML;
 		if ( $user == null ) {
 			return false;
 		}
+		if ( $user->getId() == 0 )
+		{
+			return false;
+		}
 		// do we track them
 		return $user->getOption( "OnlineStatusBar_active", $wgOnlineStatusBarDefaultEnabled );
 	}
