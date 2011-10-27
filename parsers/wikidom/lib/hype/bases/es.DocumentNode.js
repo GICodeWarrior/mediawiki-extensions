@@ -45,24 +45,13 @@ es.DocumentNode.prototype.getRangeFromNode = function( node ) {
  * @returns {Integer} Offset of node or -1 of node was not found
  */
 es.DocumentNode.prototype.getOffsetFromNode = function( node, shallow ) {
-	var offset = 0,
-		i;
-	if ( shallow ) {
-		if ( this.length ) {
-			for ( i = 0; i < this.length; i++ ) {
-				if ( this[i] === node ) {
-					return offset;
-				}
-				offset += this[i].getElementLength() + 1;
-			}
-			return -1;
-		}
-	} else {
-		for ( i = 0; i < this.length; i++ ) {
+	if ( this.length ) {
+		var offset = 0;
+		for ( var i = 0; i < this.length; i++ ) {
 			if ( this[i] === node ) {
 				return offset;
 			}
-			if ( this[i].length ) {
+			if ( !shallow && this[i].length ) {
 				var childOffset = this.getOffsetFromNode.call( this[i], node );
 				if ( childOffset !== -1 ) {
 					return offset + 1 + childOffset;
@@ -70,8 +59,8 @@ es.DocumentNode.prototype.getOffsetFromNode = function( node, shallow ) {
 			}
 			offset += this[i].getElementLength();
 		}
-		return -1;
 	}
+	return -1;
 };
 
 /**
@@ -88,34 +77,22 @@ es.DocumentNode.prototype.getOffsetFromNode = function( node, shallow ) {
  * @returns {es.DocumentModelNode|null} Node at offset, or null if non was found
  */
 es.DocumentNode.prototype.getNodeFromOffset = function( offset, shallow ) {
-	var i,
-		length;
-	if ( shallow ) {
-		if ( this.length ) {
-			var left = 0,
-				right;
-			for ( i = 0, length = this.length; i < length; i++ ) {
-				right = left + this[i].getElementLength() + 1;
-				if ( offset >= left && offset < right ) {
-					return this[i];
-				}
-				left = right;
-			}
-		}
-		return null;
-	} else {
+	if ( this.length ) {
 		var nodeOffset = 0,
 			nodeLength;
-		for ( i = 0, length = this.length; i < length; i++ ) {
+		for ( var i = 0, length = this.length; i < length; i++ ) {
 			nodeLength = this[i].getElementLength();
 			if ( offset >= nodeOffset && offset < nodeOffset + nodeLength ) {
-				return this[i].length ?
-					this.getNodeFromOffset.call( this[i], offset - nodeOffset ) : this[i];
+				if ( !shallow && this[i].length ) {
+					return this.getNodeFromOffset.call( this[i], offset - nodeOffset );
+				} else {
+					return this[i];
+				}
 			}
 			nodeOffset += nodeLength;
 		}
-		return null;
 	}
+	return null;
 };
 
 /**
