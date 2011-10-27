@@ -82,22 +82,37 @@ class qp_TextQuestionProposalView extends qp_StubQuestionProposalView {
 	}
 
 	/**
-	 * Adds new non-empty error message to the list of parsed tokens (viewtokens)
+	 * Adds new non-empty error message to the begin of the list of parsed tokens (viewtokens)
 	 * @param    $msg - text of message
 	 * @param    $state - set new question controller state
 	 *               note that the 'error' state cannot be changed and '' state cannot be set
 	 * @param    $rowClass - string set rowClass value, boolean false (do not set)
 	 */
 	function prependErrorToken( $msg, $state, $rowClass = 'proposalerror' ) {
-		# note: error message also can be added in the middle of the list,
-		# for any category, if desired, although that is currently not implemented
 		$errmsg = $this->bodyErrorMessage( $msg, $state, $rowClass );
 		# note: when $state == '' every $errmsg is non-empty;
 		#       when $state == 'error' only the first $errmsg is non-empty;
 		if ( $errmsg !== '' ) {
 			array_unshift( $this->viewtokens, (object) array( 'error'=> $errmsg ) );
+			if ( count( $this->viewtokens ) < 2 ) {
+				$this->lastTokenType = 'errmsg';
+			}
 		}
-		if ( count( $this->viewtokens ) < 2 ) {
+	}
+
+	/**
+	 * Adds new non-empty error message to the end of the list of parsed tokens (viewtokens)
+	 * @param    $msg - text of message
+	 * @param    $state - set new question controller state
+	 *               note that the 'error' state cannot be changed and '' state cannot be set
+	 * @param    $rowClass - string set rowClass value, boolean false (do not set)
+	 */
+	function addErrorToken( $msg, $state, $rowClass = 'proposalerror' ) {
+		$errmsg = $this->bodyErrorMessage( $msg, $state, $rowClass );
+		# note: when $state == '' every $errmsg is non-empty;
+		#       when $state == 'error' only the first $errmsg is non-empty;
+		if ( $errmsg !== '' ) {
+			array_push( $this->viewtokens, (object) array( 'error'=> $errmsg ) );
 			$this->lastTokenType = 'errmsg';
 		}
 	}

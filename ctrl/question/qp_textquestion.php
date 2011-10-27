@@ -12,6 +12,11 @@ class qp_TextQuestionOptions {
 
 	# boolean, indicates whether incoming tokens are category list elements
 	var $isCatDef;
+	# indicates whether list of select options will fit into DB field or not
+	#   boolean false the values will fit;
+	#   int 0         the longest value won't fit;
+	#   int 1         all the values of select multiple won't fit;
+	var $hasOverflow;
 	# type of created element (text,radio,checkbox)
 	var $type;
 	# counter of pipe-separated elements in-between << >> markup
@@ -71,6 +76,7 @@ class qp_TextQuestionOptions {
 	 */
 	function startOptionsList( $type ) {
 		$this->isCatDef = true;
+		$this->hasOverflow = false;
 		$this->type = $type;
 		$this->input_options = array( 0 => '' );
 		$this->hasAttributes = false;
@@ -155,6 +161,25 @@ class qp_TextQuestionOptions {
 		case 'desc' :
 			rsort( $this->input_options, SORT_STRING );
 			break;
+		}
+		if ( $this->type === 'text' && count( $this->input_options ) > 1 ) {
+			# check max length of select values that may be stored
+			# into 'text_answer' DB field
+			if ( $this->attributes['multiple'] === null ) {
+				# one value may be selected and then submitted
+				$multiple = 0;
+				$val_max_len = 0;
+				foreach ( $this->input_options as $option ) {
+					if ( strlen( $option ) > $val_max_len ) {
+						$val_max_len= strlen( $option );
+					}
+				}
+			} else {
+				# all of the values may be selected and then submitted
+				$multiple = 1;
+				$val_max_len = strlen( implode( qp_Setup::SELECT_MULTIPLE_VALUES_SEPARATOR, $this->input_options ) );
+			}
+			$this->hasOverflow = ( $val_max_len > qp_Setup::$field_max_len['text_answer'] ) ? $multiple : false;
 		}
 	}
 
@@ -310,6 +335,10 @@ class qp_TextQuestion extends qp_StubQuestion {
 		}
 		# finally, add new category input options for the view
 		$opt->closeCategory();
+		if ( $opt->hasOverflow !== false ) {
+			$msg_key = ( $opt->hasOverflow === 0 ) ? 'qp_error_too_long_category_option_value' : 'qp_error_too_long_category_options_values';
+			$this->propview->addErrorToken( wfMsg( $msg_key ), 'error' );
+		}
 		$this->propview->addCatDef( $opt, $name, $text_answer, $this->poll->mBeingCorrected && !$answered );
 	}
 
