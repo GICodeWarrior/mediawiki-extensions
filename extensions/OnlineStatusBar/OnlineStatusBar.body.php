@@ -126,18 +126,21 @@ HTML;
          * @return string
          */
 	static function GetStatus( $userName ) {
-		global $wgOnlineStatusBarModes, $wgOnlineStatusBarDefaultOffline, $wgOnlineStatusBarDefaultOnline, $wgDBname;
+		global $wgOnlineStatusBarModes, $wgOnlineStatusBarDefaultOffline, $wgOnlineStatusBarDefaultIpUsers, $wgOnlineStatusBarDefaultOnline, $wgDBname;
 		$dbw = wfGetDB( DB_MASTER );
 		OnlineStatusBar::DeleteOld();
 		$user = User::newFromName( $userName );
-		if ( $user == null ) {
+		if ( $user == null && User::isIP ( $userName ) != true ) {
 			// something is wrong
 			return $wgOnlineStatusBarDefaultOffline;
 		}
 		$result = $dbw->selectField( 'online_status', 'username', array( 'username' => $userName ),
 			__METHOD__, array( 'limit 1', 'order by timestamp desc' ) );
-		if ( $result ) {
+		if ( $result && $user != null ) {
 			return $user->getOption( "OnlineStatusBar_status", $wgOnlineStatusDefaultOnline );
+		} else if ( $result && User::isIP ( $userName ) && $wgOnlineStatusBarDefaultIpUsers ) {
+			// user is anon
+			return $wgOnlineStatusBarDefaultOnline;	
 		}
 		return $wgOnlineStatusBarDefaultOffline;
 	}
