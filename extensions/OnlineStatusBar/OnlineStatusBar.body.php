@@ -81,7 +81,7 @@ HTML;
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->update(
 			'online_status',
-			array( 'timestamp' => $dbw->timestamp( wfTimestamp() ) ),
+			array( 'timestamp' => $dbw->timestamp(),
 			array( 'username' => $wgUser->getID() ),
 			__METHOD__
 		);
