@@ -539,26 +539,30 @@ list_char = [*#:;]
 /* Tables */
 
 table 
-  = table_start c:table_caption? b:table_body? table_end { 
-      var res = null;
+  = tas:table_start c:table_caption? b:table_body? table_end { 
+      var res = {type: 'table'}
       var body = b !== '' ? b : [];
       if (c !== '') {
-          res = {type: 'table', content: [c].concat(body)}; 
+          res.content = [c].concat(body); 
       } else { 
-          res = {type: 'table', content: body };
+          res.content = body;
       }
-      //console.log(print_r(res));
+      if (tas.length > 0) {
+          // FIXME: actually parse and build structure
+          res.attributes = { unparsed: tas } 
+      }
+      console.log(print_r(res));
       return res;
   }
 
-table_start = "{|" table_attribs* space* newline?
+table_start = "{|" ta:table_attribs* space* newline? { return ta }
 
 table_attribs = anything
 
 table_caption 
   = "|+" c:(inline_element / anything / [^\n])* newline? { 
       return {
-          type: 'table_caption',
+          type: 'tableCaption',
           content: c
       }
   }
@@ -577,7 +581,7 @@ table_body
 table_firstrow 
   = td:table_data+ { 
       return {
-          type: 'table_row',
+          type: 'tableRow',
           content: td
       };
   }
@@ -585,28 +589,33 @@ table_firstrow
 table_row 
   = "|-" space* newline? td:(table_data / table_header)* { 
       return {
-          type: 'table_row',
+          type: 'tableRow',
           content: td
       };
   }
 
+/* TODO: Allow general block-level or inline elements, except if they span a
+ * source line starting with a pipe. To avoid duplicating all block-level
+ * productions, a quick check if a potential block-level match spanned a line
+ * starting with a pipe might be used. Checking this requires access to the
+ * matched source string.  */
 table_data 
   = t:table { 
-      console.log("recursive table result:" + print_r(t));
+      //console.log("recursive table result:" + print_r(t));
       return { 
-          type: 'table_data', 
+          type: 'tableCell', 
               content: [t]
       }
   }
   / "||" td_attr? td:[^|]* newline? { 
       return {
-          type: 'table_data',
+          type: 'tableCell',
           content: td.join('')
       };
   }
   / "|" ![}+-] td_attr? td:[^|\n]* newline? { 
       return {
-          type: 'table_data',
+          type: 'tableCell',
           content: td.join('')
       };
   }
@@ -616,15 +625,22 @@ td_attr = a:[^\n|]+ "|" !"|" { return a.join('') }
 table_header 
   = "!!" c:(block/ inline_element / text / ("!" !"!") / [^!\n])* newline? { 
       return { 
-          type: 'table_header',
+          type: 'tableHeader',
               content: c
       }
   }
   / "!" c:(block/ inline_element / text / '!' !'!' / [^!\n])* newline? { 
       return { 
-          type: 'table_header',
+          type: 'tableHeader',
               content: c
       }
   }
 
 table_end = "|}" newline?
+
+
+/* Wikidom TODO:
+ * split off text into content nodes
+ * convert inlines into annotations
+ * change contents into children
+ */
