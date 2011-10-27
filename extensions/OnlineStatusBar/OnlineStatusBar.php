@@ -74,7 +74,7 @@ $wgOnlineStatusBarY = "0";
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'wfOnlineStatusBar_CkSchema';
 function wfOnlineStatusBar_CkSchema( $updater = null ) {
-	if ( $updater != null ) {
+	if ( ( $updater === null ) != true  ){
 		$updater->addExtensionUpdate( array( 'addtable', 'online_status', dirname( __FILE__ ) . '/OnlineStatusBar.sql', true ) );
 	} else {
 		global $wgExtNewTables;
@@ -97,14 +97,12 @@ function wfOnlineStatusBar_RenderBar( &$article, &$outputDone, &$pcache ) {
 	$ns = $article->getTitle()->getNamespace();
 	if ( ( $ns == NS_USER_TALK ) || ( $ns == NS_USER ) ) {
 		$user = OnlineStatusBar::GetOwnerFromTitle ( $article->getTitle() );
-		if ( $user == null ) {
+		if ( $user === null ) {
 			return true;
 		}
 		$username = $user->getName();
-		if ( $user != null ) {
-			if ( $user->getOption ( "OnlineStatusBar_hide" ) == true ) {
-				return true;
-			}
+		if ( $user->getOption ( "OnlineStatusBar_hide" ) == true ) {
+			return true;
 		}
 		if ( OnlineStatusBar::IsValid( $username ) ) {
 			$mode = OnlineStatusBar::GetStatus( $username );
