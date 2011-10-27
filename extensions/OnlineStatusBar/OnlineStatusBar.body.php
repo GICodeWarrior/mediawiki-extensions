@@ -21,8 +21,8 @@ class OnlineStatusBar {
 		global $wgOnlineStatusBarColor, $wgOnlineStatusBarY;
 		$color = $wgOnlineStatusBarColor[$mode];
 		return <<<HTML
-<div style="right:0px; margin-top:-10px;" class="metadata topiconstatus" id="status-top">
-<div style="border: 0px solid black; background: transparent; float: right; position: relative; top: {$wgOnlineStatusBarY}px; padding: 5px">
+<div class="onlinebar metadata topiconstatus" id="status-top">
+<div class="statusbaricon">
 $text</div></div>
 HTML;
 	}

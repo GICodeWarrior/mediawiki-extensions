@@ -3,9 +3,22 @@ This is a part of css used on english wp, it's needed for wikis
 where topicon isn't defined
 */
 div.topiconstatus {
-  position: absolute;
-  top: -2em;
-  margin-right: -10px;
-  display: block !important;
+	position: absolute;
+	top: -2em;
+	margin-right: -10px;
+	display: block !important;
 }
 
+div.statusbaricon {
+	border: 0px solid black;
+	background: transparent;
+	float: right;
+	position: relative;
+	top: 0px;
+	padding: 5px;
+}
+
+div.onlinebar {
+	right:0px;
+	margin-top:-10px;
+}
