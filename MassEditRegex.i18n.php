@@ -801,6 +801,7 @@ Hlej [http://php.net/manual/de/function.preg-replace.php the PHP function preg_r
 	'masseditregex-badregex' => 'Njepłaćiwy regularny wuraz:',
 	'masseditregex-editfailed' => 'Wobdźěłanje je so njeporadźiło:',
 	'masseditregex-tooltip-execute' => 'Tute změny na kóždu stronu nałožić',
+	'right-masseditregex' => 'Wobsah strony z pomocu regularnych wurazow wuměnić',
 );
 
 /** Hungarian (Magyar)
