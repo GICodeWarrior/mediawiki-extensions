@@ -722,8 +722,13 @@ es.DocumentModel.prototype.prepareInsertion = function( offset, data ) {
 	
 	var tx = new es.Transaction(),
 		insertedData = data, // may be cloned and modified
-		isStructuralLoc = es.DocumentModel.isStructuralOffset( this.data, offset );
+		isStructuralLoc = es.DocumentModel.isStructuralOffset( this.data, offset ),
+		wrappingElementType;
 		
+	if ( offset < 0 || offset > this.data.length ) {
+		throw 'Offset ' + offset + ' out of bounds [0..' + this.data.length + ']';
+	}
+	
 	if ( offset > 0 ) {
 		tx.pushRetain( offset );
 	}
@@ -732,7 +737,11 @@ es.DocumentModel.prototype.prepareInsertion = function( offset, data ) {
 		if ( isStructuralLoc ) {
 			insertedData = balance( insertedData );
 		} else {
-			// TODO close and reopen the element the insertion point is in
+			// We're inserting structure at a content location,
+			// so we need to split up the wrapping element
+			wrappingElementType = this.getNodeFromOffset( offset ).getElementType();
+			insertedData = [ { 'type': '/' + wrappingElementType }, { 'type': wrappingElementType } ];
+			es.insertIntoArray( insertedData, 1, data );
 		}
 	} else {
 		if ( isStructuralLoc ) {

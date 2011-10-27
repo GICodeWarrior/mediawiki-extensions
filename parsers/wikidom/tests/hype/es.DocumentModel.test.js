@@ -531,6 +531,8 @@ test( 'es.DocumentModel.prepareInsertion', 6, function() {
 		],
 		'prepareInsertion splits up paragraph when inserting a paragraph closing and opening into a paragraph'
 	);
+	
+	// TODO add test cases for expected exceptions for bad offset and malformed input
 } );
 
 test( 'es.DocumentModel.commit, es.DocumentModel.rollback', 10, function() {
