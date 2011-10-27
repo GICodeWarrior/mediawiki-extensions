@@ -572,8 +572,7 @@ test( 'es.DocumentModel.prepareInsertion', 10, function() {
 				[ { 'type': 'paragraph' }, 'f', 'o', 'o', { 'type': '/paragraph' } ]
 			);
 		},
-		function ( e ) { 
-			return /^Offset -1 out of bounds/.test( e ); },
+		/^Offset -1 out of bounds/,
 		'prepareInsertion throws exception for negative offset'
 	);
 	
@@ -585,8 +584,7 @@ test( 'es.DocumentModel.prepareInsertion', 10, function() {
 				[ { 'type': 'paragraph' }, 'f', 'o', 'o', { 'type': '/paragraph' } ]
 			);
 		},
-		function ( e ) { 
-			return /^Offset 29 out of bounds/.test( e ); },
+		/^Offset 29 out of bounds/,
 		'prepareInsertion throws exception for offset past the end'
 	);
 } );
