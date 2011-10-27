@@ -163,6 +163,7 @@ $messages['hil'] = array(
  */
 $messages['hsb'] = array(
 	'semanticinternalobjects-desc' => 'Nastajenje internych objektow w Semantic MediaWiki',
+	'semanticinternalobjects-internalproperty' => 'Interna kajkosć',
 );
 
 /** Hungarian (Magyar)
