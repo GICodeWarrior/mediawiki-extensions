@@ -5729,6 +5729,13 @@ $messages['ig'] = array(
 	'configure-condition-operator-or' => 'Mà',
 );
 
+/** Iloko (Ilokano)
+ * @author Lam-ang
+ */
+$messages['ilo'] = array(
+	'configure-section-search' => 'Biroken',
+);
+
 /** Ingush (ГІалгІай Ğalğaj)
  * @author Amire80
  * @author Sapral Mikail
