@@ -37,7 +37,7 @@ es.DocumentModel.nodeModels = {};
  * Mapping of symbolic names and nesting rules.
  * 
  * Each rule is an object with a parents and children property. Each of these properties may contain
- * one of three possible values:
+ * one of two possible values:
  *     Array - List of allowed element types (if empty, no elements will be allowed)
  *     Null - Any element type is allowed (as long as the other element also allows it)
  * 
