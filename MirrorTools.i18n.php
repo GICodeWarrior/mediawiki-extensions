@@ -182,7 +182,7 @@ $messages['hsb'] = array(
 	'mirrortools-desc' => 'Zmóžnja změny z API pod wužiwarskim mjenom',
 	'right-mirroredit' => 'Z API pod wužiwarskim mjenom wobdźěłać',
 	'group-MirrorTools' => 'Wužiwarjo špiheloweho nastroja',
-	'group-MirrorTools-member' => 'wužiwar špiheloweho nastroja',
+	'group-MirrorTools-member' => '{{GENDER:$1|wužiwar špiheloweho nastroja|wužiwarka špiheloweho nastroja}}',
 	'grouppage-MirrorTools' => '{{ns:project}}:Wužiwarjo špiheloweho nastroja',
 );
 
