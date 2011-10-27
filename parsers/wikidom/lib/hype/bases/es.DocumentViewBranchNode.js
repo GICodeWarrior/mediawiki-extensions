@@ -21,7 +21,7 @@ es.DocumentViewBranchNode = function( model, $element ) {
  */
 es.DocumentViewBranchNode.prototype.renderContent = function() {
 	for ( var i = 0; i < this.length; i++ ) {
-		this[i].contentView.render();
+		this[i].renderContent();
 	}
 };
 
@@ -52,7 +52,7 @@ es.DocumentViewBranchNode.prototype.drawSelection = function( range ) {
  */
 es.DocumentViewBranchNode.prototype.clearSelection = function() {
 	for ( var i = 0; i < this.length; i++ ) {
-		this[i].contentView.clearSelection();
+		this[i].clearSelection();
 	}
 };
 
