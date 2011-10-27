@@ -500,7 +500,7 @@ es.DocumentModel.flattenPlainObjectElementNode = function( obj ) {
  */
 es.DocumentModel.isContentOffset = function( data, offset ) {
 	// Content can't exist at the edges
-	if ( offset > 0 && offset < data.length - 1 ) {
+	if ( offset > 0 && offset < data.length ) {
 		// Shortcut: if there's already content there, we will trust it's supposed to be there
 		if ( typeof data[offset] === 'string' || $.isArray( data[offset] ) ) {
 			return true;
@@ -555,7 +555,7 @@ es.DocumentModel.isElementOffset = function( data, offset ) {
  */
 es.DocumentModel.isStructuralOffset = function( data, offset ) {
 	// Edges are always structural
-	if ( offset === 0 || offset === data.length - 1 ) {
+	if ( offset === 0 || offset === data.length ) {
 		return true;
 	}
 	// Structual offsets will have elements on each side
