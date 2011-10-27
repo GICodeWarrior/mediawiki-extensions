@@ -34,25 +34,6 @@ HTML;
 		return Html::element( 'img', array( 'src' => $icon ) );
 	}
 
-	public static function ParserGetVariable ( &$parser, &$varCache, &$index, &$ret ){
-		global $wgOnlineStatusBarModes;
-		if( $index == 'isonline' ){
-		$name = self::GetOwnerFromTitle ( $parser->getTitle() )->getName();
-		
-		if ( self::IsValid($name) != true ) {
-			$ret = "unknown";
-			return true;
-		}
-			$ret = $wgOnlineStatusBarModes[self::GetStatus( $name )];
-		}
-		return true;
-	}
-
-	public static function StylePage ( &$out, &$skin ) {
-		$out->addModules ( 'ext.OnlineStatusBar' );
-		return true;
-		}
-
 	public static function GetNow() {
 		return gmdate( 'Ymdhis', time() );
 	}
@@ -73,24 +54,13 @@ HTML;
 			$dbw = wfGetDB( DB_MASTER );
 			$row = array(
 				'username' => $wgUser->getName(),
-				'timestamp' => $dbw->timestamp( wfTimestamp() ),
+				'timestamp' => $dbw->timestamp( wfTimestamp() ), /// fixme
 			);
 			$dbw->insert( 'online_status', $row, __METHOD__, 'DELAYED' );
 		}
 
 		return false;
 	}
-
-	public static function MagicWordSet ( &$vars ) {
-		$vars[] = 'isonline';
-		return true;
-	}
-
-	public static function MagicWordVar ( &$magicWords, $ln ) {
-		$magicWords['isonline'] = array ( 0, 'isonline' );
- 	
-		return true;
- 	}
 
 	public static function UpdateStatus() {
 		global $wgUser, $wgOnlineStatusBarDefaultOffline;
