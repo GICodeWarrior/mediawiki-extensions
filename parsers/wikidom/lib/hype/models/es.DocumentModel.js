@@ -34,6 +34,33 @@ es.DocumentModel = function( data, attributes ) {
 es.DocumentModel.nodeModels = {};
 
 /**
+ * Mapping of symbolic names and nesting rules.
+ * 
+ * Each rule is an object with a parents and children property. Each of these properties may contain
+ * one of three possible values:
+ *     Array - List of allowed element types
+ *     Null - Any element type is allowed (as long as the other element also allows it)
+ *     Boolean False - No elements are allowed (used for nodes that can not have children)
+ * 
+ * @example Paragraph rules
+ *     {
+ *         'parents': null,
+ *         'children': false
+ *     }
+ * @example List rules
+ *     {
+ *         'parents': null,
+ *         'children': ['listItem']
+ *     }
+ * @example ListItem rules
+ *     {
+ *         'parents': ['list'],
+ *         'children': false
+ *     }
+ */
+es.DocumentModel.nodeRules = {};
+
+/**
  * Mapping of operation types to pure functions.
  * 
  * Each function is called in the context of a state, and takes an operation object as a parameter.

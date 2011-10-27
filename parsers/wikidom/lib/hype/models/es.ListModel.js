@@ -24,3 +24,8 @@ es.ListModel.prototype.createView = function() {
 /* Registration */
 
 es.DocumentModel.nodeModels.list = es.ListModel;
+
+es.DocumentModel.nodeRules.list = {
+	'parents': null,
+	'children': ['listItem']
+};

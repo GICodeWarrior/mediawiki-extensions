@@ -24,3 +24,8 @@ es.TableCellModel.prototype.createView = function() {
 /* Registration */
 
 es.DocumentModel.nodeModels.tableCell = es.TableCellModel;
+
+es.DocumentModel.nodeRules.listItem = {
+	'parents': ['tableRow'],
+	'children': null
+};

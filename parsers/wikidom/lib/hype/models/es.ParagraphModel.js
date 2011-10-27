@@ -24,3 +24,8 @@ es.ParagraphModel.prototype.createView = function() {
 /* Registration */
 
 es.DocumentModel.nodeModels.paragraph = es.ParagraphModel;
+
+es.DocumentModel.nodeRules.paragraph = {
+	'parents': null,
+	'children': false
+};

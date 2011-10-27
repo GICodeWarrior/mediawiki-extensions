@@ -32,13 +32,16 @@ es.DocumentViewBranchNode.prototype.renderContent = function() {
  * @param {es.Range} range Range of content to draw selection around
  */
 es.DocumentViewBranchNode.prototype.drawSelection = function( range ) {
-	var nodes = this.selectNodes( range, true ),
-		i;
-	for ( i = 0; i < nodes.on.length; i++ ) {
-		nodes.on[i].node.drawSelection( nodes.on[i].range );
-	}
-	for ( i = 0; i < nodes.off.length; i++ ) {
-		nodes.off[i].clearSelection();
+	var nodes = this.selectNodes( range, true );
+	for ( var i = 0; i < this.length; i++ ) {
+		if ( nodes.length && this[i] === nodes[0] ) {
+			for ( var j = 0; j < nodes.on.length; j++ ) {
+				nodes.on[j].node.drawSelection( nodes.on[j].range );
+				i++;
+			}
+		} else {
+			this[i].clearSelection();
+		}
 	}
 };
 

@@ -123,33 +123,30 @@ es.DocumentNode.prototype.getNodeFromOffset = function( offset, shallow ) {
  * 
  * @method
  * @param {es.Range} range Range to select nodes within
- * @param {Boolean} [off] Whether to include a list of nodes that are not covered by the range
  * @returns {Object} Object with 'on' and 'off' properties, 'on' being a list of objects with 'node'
  * and 'range' properties describing nodes which are covered by the range and the range within the
  * node that is covered, and 'off' being a list of nodes that are not covered by the range
  */
-es.DocumentNode.prototype.selectNodes = function( range, off ) {
+es.DocumentNode.prototype.selectNodes = function( range ) {
 	range.normalize();
-	var	result = { 'on': [], 'off': [] };
+	var	nodes = [];
 	for ( var i = 0, length = this.length, left = 0, right; i < length; i++ ) {
 		right = left + this[i].getElementLength() + 1;
 		if ( range.start >= left && range.start < right ) {
 			if ( range.end < right ) {
-				result.on.push( {
+				nodes.push( {
 					'node': this[i],
 					'range': new es.Range( range.start - left, range.end - left )
 				} );
-				if ( !off ) {
-					break;
-				}
+				break;
 			} else {
-				result.on.push( {
+				nodes.push( {
 					'node': this[i],
 					'range': new es.Range( range.start - left, right - left - 1 )
 				} );	
 			}
 		} else if ( range.end >= left && range.end < right ) {
-			result.on.push( {
+			nodes.push( {
 				'node': this[i],
 				'range': new es.Range( 0, range.end - left )
 			} );
@@ -157,14 +154,12 @@ es.DocumentNode.prototype.selectNodes = function( range, off ) {
 				break;
 			}
 		} else if ( left >= range.start && right <= range.end ) {
-			result.on.push( {
+			nodes.push( {
 				'node': this[i],
 				'range': new es.Range( 0, right - left - 1 )
 			} );
-		} else if( off ) {
-			result.off.push( this[i] );
 		}
 		left = right;
 	}
-	return result;
+	return nodes;
 };
