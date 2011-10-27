@@ -996,7 +996,7 @@ $messages['hsb'] = array(
 	'patrol-stopped' => 'Sy rozsudźił, zo njeby žane dalše změny dohladował. $1',
 	'patrol-resume' => 'Klikń sem, zo by pokročował.',
 	'group-patroller' => 'Dohladowarjo',
-	'group-patroller-member' => 'Dohladowar',
+	'group-patroller-member' => '{{GENDER:$1|dohladowar|dohladowarka}}',
 	'grouppage-patroller' => '{{ns:project}}:Dohladowar',
 	'right-patroller' => 'Strony dohladować',
 );
