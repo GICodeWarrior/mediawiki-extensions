@@ -146,6 +146,16 @@ es.DocumentModelNode.prototype.getElement = function() {
 };
 
 /**
+ * Gets the symbolic element type name.
+ * 
+ * @method
+ * @returns {String} Symbolic name of element type
+ */
+es.DocumentModelNode.prototype.getElementType = function() {
+	return this.element.type;
+};
+
+/**
  * Gets the content length.
  * 
  * FIXME: This method makes assumptions that a node with a data property is a DocumentModel, which
