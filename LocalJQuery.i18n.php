@@ -61,6 +61,13 @@ $messages['he'] = array(
 	'localjquery-desc' => 'טעינת jQuery מתוך [[MediaWiki:JQuery.js]] (עם ResourceLoader)',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'localjquery-desc' => 'jQuery z [[MediaWiki:JQuery.js]] z pomocu ResourceLoader začitać',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
