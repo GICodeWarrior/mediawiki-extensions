@@ -101,7 +101,7 @@ class AutoProxyBlock {
 			$url .= '&'.$param.'='.$value;
 		}
 		
-		$content = Http::get($url)
+		$content = Http::get($url);
 		return unserialize($content);
 	}
 }
