@@ -5633,6 +5633,13 @@ Lompat ke aliran: $2',
 	'right-mv_edit_stream' => 'Sunting berkas stream',
 );
 
+/** Iloko (Ilokano)
+ * @author Lam-ang
+ */
+$messages['ilo'] = array(
+	'mv_tool_search' => 'Biroken',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */
