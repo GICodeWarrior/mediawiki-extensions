@@ -24,7 +24,7 @@ es.DocumentNode.prototype.getRangeFromNode = function( node ) {
 			if ( this[i] === node ) {
 				return new es.Range( left, left + this[i].getElementLength() );
 			}
-			left += this[i].getElementLength() + 1;
+			left += this[i].getElementLength();
 			i++;
 		}
 	}
@@ -108,7 +108,7 @@ es.DocumentNode.prototype.selectNodes = function( range ) {
 	range.normalize();
 	var	nodes = [];
 	for ( var i = 0, length = this.length, left = 0, right; i < length; i++ ) {
-		right = left + this[i].getElementLength() + 1;
+		right = left + this[i].getElementLength();
 		if ( range.start >= left && range.start < right ) {
 			if ( range.end < right ) {
 				nodes.push( {
