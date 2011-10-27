@@ -35,6 +35,7 @@ HTML;
 	}
 
 	public static function ParserGetVariable ( &$parser, &$varCache, &$index, &$ret ){
+		global $wgOnlineStatusBarModes;
 		if( $index == 'isonline' ){
 		$name = self::GetOwnerFromTitle ( $parser->getTitle() )->getName();
 		
@@ -42,7 +43,7 @@ HTML;
 			$ret = "unknown";
 			return true;
 		}
-			$ret = self::GetStatus( $name );
+			$ret = $wgOnlineStatusBarModes[self::GetStatus( $name )];
 		}
 		return true;
 	}
