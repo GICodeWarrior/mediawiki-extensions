@@ -127,12 +127,12 @@ HTML;
 		}
 		$user = User::newFromName( $id );
 		// check if exist
-		if ( $user == null ) {
+		if ( $user === null ) {
 			return false;
 		}
 		// do we track them
 		$value = $user->getOption( "OnlineStatusBar_active" ); 
-		if ( $value == null ) {
+		if ( $value === null ) {
 			return $wgOnlineStatusBarDefaultEnabled;
 		}
 		if ( $value == true ) {
@@ -146,7 +146,7 @@ HTML;
 		$dbw = wfGetDB( DB_MASTER );
 		OnlineStatusBar::DeleteOld();
 		$user = User::newFromName( $userID );
-		if ( $user == null ) {
+		if ( $user === null ) {
 			// something is wrong
 			return $wgOnlineStatusBarDefaultOffline;
 		}
@@ -154,7 +154,7 @@ HTML;
 			__METHOD__, array( 'limit 1', 'order by timestamp desc' ) );
 		if ( $result ) {
 			$status = $user->getOption( "OnlineStatusBar_status" );
-			if ( $status == null || $status == "" ) {
+			if ( $status === null || $status == "" ) {
 				return $wgOnlineStatusBarDefaultOnline;
 			} else {
 				return $status;
