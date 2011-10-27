@@ -89,7 +89,7 @@ es.DocumentModel.operations = ( function() {
 					length = node.getElementLength() + op.data.length,
 					index = nodeParent.indexOf( node );
 				if ( index === -1 ) {
-					throw 'Missing child error. Node could not be found in it\'s parent node.';
+					throw 'Missing child error. Node could not be found in its parent node.';
 				}
 				// Remove the node we are about to insert into from the model tree
 				nodeParent.splice( index, 1 );
