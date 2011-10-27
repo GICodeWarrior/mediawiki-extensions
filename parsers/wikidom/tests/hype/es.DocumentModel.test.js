@@ -433,7 +433,7 @@ test( 'es.DocumentModel.prepareRemoval', 3, function() {
 	); 
 } );
 
-test( 'es.DocumentModel.prepareInsertion', 10, function() {
+test( 'es.DocumentModel.prepareInsertion', 11, function() {
 	var documentModel = es.DocumentModel.newFromPlainObject( obj );
 
 	// Test 1
@@ -586,6 +586,18 @@ test( 'es.DocumentModel.prepareInsertion', 10, function() {
 		},
 		/^Offset 29 out of bounds/,
 		'prepareInsertion throws exception for offset past the end'
+	);
+	
+	// Test 11
+	raises(
+		function() {
+			documentModel.prepareInsertion(
+				5,
+				[{ 'type': 'paragraph' }, 'a', { 'type': 'listItem' }, { 'type': '/paragraph' }]
+			);
+		},
+		/^Input is malformed: expected \/listItem but got \/paragraph at index 3$/,
+		'prepareInsertion throws exception for malformed input'
 	);
 } );
 
