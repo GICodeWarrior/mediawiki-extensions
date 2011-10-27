@@ -31,7 +31,7 @@ var es = {};
  * @param {Function} dst Class to extend
  * @param {Function} src Base class to use methods from
  */
-es.extend = function( dst, src ) {
+es.extendClass = function( dst, src ) {
 	var base = new src();
 	for ( var method in base ) {
 		if ( typeof base[method] === 'function' && !( method in dst.prototype ) ) {
@@ -39,6 +39,12 @@ es.extend = function( dst, src ) {
 		}
 	}
 };
+
+es.extendObject = $.extend;
+
+es.isPlainObject = $.isPlainObject;
+
+es.isArray = $.isArray;
 
 /**
  * Recursively compares string and number property between two objects.
@@ -64,7 +70,7 @@ es.compareObjects = function( a, b, asymmetrical ) {
 		bType = typeof bValue;
 		if ( aType !== bType ||
 			( ( aType === 'string' || aType === 'number' ) && aValue !== bValue ) ||
-			( $.isPlainObject( aValue ) && !es.compareObjects( aValue, bValue ) ) ) {
+			( es.isPlainObject( aValue ) && !es.compareObjects( aValue, bValue ) ) ) {
 			return false;
 		}
 	}
@@ -87,9 +93,9 @@ es.copyArray = function( source ) {
 		sourceType = typeof sourceValue;
 		if ( sourceType === 'string' || sourceType === 'number' ) {
 			destination.push( sourceValue );
-		} else if ( $.isPlainObject( sourceValue ) ) {
+		} else if ( es.isPlainObject( sourceValue ) ) {
 			destination.push( es.copyObject( sourceValue ) );
-		} else if ( $.isArray( sourceValue ) ) {
+		} else if ( es.isArray( sourceValue ) ) {
 			destination.push( es.copyArray( sourceValue ) );
 		}
 	}
@@ -111,9 +117,9 @@ es.copyObject = function( source ) {
 		sourceType = typeof sourceValue;
 		if ( sourceType === 'string' || sourceType === 'number' ) {
 			destination[key] = sourceValue;
-		} else if ( $.isPlainObject( sourceValue ) ) {
+		} else if ( es.isPlainObject( sourceValue ) ) {
 			destination[key] = es.copyObject( sourceValue );
-		} else if ( $.isArray( sourceValue ) ) {
+		} else if ( es.isArray( sourceValue ) ) {
 			destination[key] = es.copyArray( sourceValue );
 		}
 	}

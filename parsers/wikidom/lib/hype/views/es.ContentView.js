@@ -840,4 +840,4 @@ es.ContentView.prototype.getHtml = function( range, options ) {
 
 /* Inheritance */
 
-es.extend( es.ContentView, es.EventEmitter );
+es.extendClass( es.ContentView, es.EventEmitter );

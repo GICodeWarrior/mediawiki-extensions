@@ -7,5 +7,5 @@
  */
 es.TableCellView = function( model ) {
 	// Extension
-	return $.extend( new es.DocumentViewBranchNode( model ), this );
+	return es.extendObject( new es.DocumentViewBranchNode( model ), this );
 };

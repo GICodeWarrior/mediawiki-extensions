@@ -6,7 +6,7 @@
  */
 es.ParagraphModel = function( element, length ) {
 	// Extension
-	return $.extend( new es.DocumentModelNode( element, length ), this );
+	return es.extendObject( new es.DocumentModelNode( element, length ), this );
 };
 
 /* Methods */

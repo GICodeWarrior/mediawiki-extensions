@@ -7,5 +7,5 @@
  */
 es.ListItemView = function( model ) {
 	// Extension
-	return $.extend( new es.DocumentViewLeafNode( model ), this );
+	return es.extendObject( new es.DocumentViewLeafNode( model ), this );
 };

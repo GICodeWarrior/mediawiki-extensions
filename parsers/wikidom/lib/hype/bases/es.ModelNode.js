@@ -16,7 +16,7 @@ es.ModelNode = function( children ) {
 	es.EventEmitter.call( this );
 	
 	// Extension
-	var node = $.extend( [], this );
+	var node = es.extendObject( [], this );
 	
 	// Reusable function for passing update events upstream
 	node.emitUpdate = function() {
@@ -24,7 +24,7 @@ es.ModelNode = function( children ) {
 	};
 	
 	// Children
-	if ( $.isArray( children ) ) {
+	if ( es.isArray( children ) ) {
 		for ( var i = 0; i < children.length; i++ ) {
 			node.push( children[i] );
 		}
@@ -245,4 +245,4 @@ es.ModelNode.prototype.createView = function() {
 
 /* Inheritance */
 
-es.extend( es.ModelNode, es.EventEmitter );
+es.extendClass( es.ModelNode, es.EventEmitter );

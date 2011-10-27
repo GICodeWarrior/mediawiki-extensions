@@ -9,7 +9,7 @@
  */
 es.DocumentViewBranchNode = function( model, $element ) {
 	// Extension
-	return $.extend( new es.DocumentNode( new es.ViewNode( model, $element ) ), this );
+	return es.extendObject( new es.DocumentNode( new es.ViewNode( model, $element ) ), this );
 };
 
 /* Methods */

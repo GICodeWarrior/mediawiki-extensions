@@ -9,7 +9,7 @@
  */
 es.DocumentViewLeafNode = function( model, $element ) {
 	// Extension
-	var node = $.extend( new es.DocumentNode( new es.ViewNode( model, $element ) ), this );
+	var node = es.extendObject( new es.DocumentNode( new es.ViewNode( model, $element ) ), this );
 	
 	// Content
 	node.contentView = new es.ContentView( node.$, model );

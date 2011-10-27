@@ -10,12 +10,12 @@
  * @param {Object} attributes Document attributes
  */
 es.DocumentModel = function( data, attributes ) {
-	// Inheritance
-	var node = $.extend( new es.DocumentModelNode( null, length ), this );
+	// Extension
+	var node = es.extendObject( new es.DocumentModelNode( null, length ), this );
 	
 	// Properties
-	node.data = $.isArray( data ) ? data : [];
-	node.attributes = $.isPlainObject( attributes ) ? attributes : {};
+	node.data = es.isArray( data ) ? data : [];
+	node.attributes = es.isPlainObject( attributes ) ? attributes : {};
 
 	// Auto-generate model tree
 	var nodes = es.DocumentModel.createNodesFromData( node.data );
@@ -178,7 +178,7 @@ es.DocumentModel.operations = ( function() {
 				}
 				for ( j = this.cursor; j < to; j++ ) {
 					// Auto-convert to array
-					if ( $.isArray( this.data[j] ) ) {
+					if ( es.isArray( this.data[j] ) ) {
 						this.data[j].push( annotation );
 					} else {
 						this.data[j] = [this.data[j], annotation];
@@ -327,7 +327,7 @@ es.DocumentModel.createNodesFromData = function( data ) {
 es.DocumentModel.newFromPlainObject = function( obj ) {
 	if ( obj.type === 'document' ) {
 		var data = [],
-			attributes = $.isPlainObject( obj.attributes ) ? es.copyObject( obj.attributes ) : {};
+			attributes = es.isPlainObject( obj.attributes ) ? es.copyObject( obj.attributes ) : {};
 		for ( var i = 0; i < obj.children.length; i++ ) {
 			data = data.concat( es.DocumentModel.flattenPlainObjectElementNode( obj.children[i] ) );
 		}
@@ -363,7 +363,7 @@ es.DocumentModel.getIndexOfAnnotation = function( annotations, annotation ) {
 	if ( annotation === undefined || annotation.type === undefined ) {
 		throw 'Invalid annotation error. Can not find non-annotation data in character.';
 	}
-	if ( $.isArray( annotations ) ) {
+	if ( es.isArray( annotations ) ) {
 		// Find the index of a comparable annotation (checking for same value, not reference)
 		for ( var i = 0; i < annotations.length; i++ ) {
 			// Skip over character data - used when this is called on a content data item
@@ -407,14 +407,14 @@ es.DocumentModel.getIndexOfAnnotation = function( annotations, annotation ) {
  * @returns {Array}
  */
 es.DocumentModel.flattenPlainObjectContentNode = function( obj ) {
-	if ( !$.isPlainObject( obj ) ) {
+	if ( !es.isPlainObject( obj ) ) {
 		// Use empty content
 		return [];
 	} else {
 		// Convert string to array of characters
 		var data = obj.text.split('');
 		// Render annotations
-		if ( $.isArray( obj.annotations ) ) {
+		if ( es.isArray( obj.annotations ) ) {
 			for ( var i = 0, length = obj.annotations.length; i < length; i++ ) {
 				var src = obj.annotations[i];
 				// Build simplified annotation object
@@ -463,15 +463,15 @@ es.DocumentModel.flattenPlainObjectElementNode = function( obj ) {
 	var i,
 		data = [],
 		element = { 'type': obj.type };
-	if ( $.isPlainObject( obj.attributes ) ) {
+	if ( es.isPlainObject( obj.attributes ) ) {
 		element.attributes = es.copyObject( obj.attributes );
 	}
 	// Open element
 	data.push( element );
-	if ( $.isPlainObject( obj.content ) ) {
+	if ( es.isPlainObject( obj.content ) ) {
 		// Add content
 		data = data.concat( es.DocumentModel.flattenPlainObjectContentNode( obj.content ) );
-	} else if ( $.isArray( obj.children ) ) {
+	} else if ( es.isArray( obj.children ) ) {
 		// Add children - only do this if there is no content property
 		for ( i = 0; i < obj.children.length; i++ ) {
 			// TODO: Figure out if all this concatenating is inefficient. I think it is
@@ -502,7 +502,7 @@ es.DocumentModel.isContentOffset = function( data, offset ) {
 	// Content can't exist at the edges
 	if ( offset > 0 && offset < data.length ) {
 		// Shortcut: if there's already content there, we will trust it's supposed to be there
-		if ( typeof data[offset] === 'string' || $.isArray( data[offset] ) ) {
+		if ( typeof data[offset] === 'string' || es.isArray( data[offset] ) ) {
 			return true;
 		}
 		// Empty elements will have an opening and a closing next to each other
@@ -1042,4 +1042,4 @@ es.DocumentModel.prototype.rollback = function( transaction ) {
 
 /* Inheritance */
 
-es.extend( es.DocumentModel, es.DocumentModelNode );
+es.extendClass( es.DocumentModel, es.DocumentModelNode );

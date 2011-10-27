@@ -6,7 +6,7 @@
  * @constructor
  */
 es.Transaction = function() {
-	return $.extend( [], this );
+	return es.extendObject( [], this );
 };
 
 /* Methods */

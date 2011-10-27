@@ -2,11 +2,7 @@
  * Creates an es.DocumentNode object.
  */
 es.DocumentNode = function( nodes ) {
-	if ( nodes === undefined ) {
-		nodes = [];
-	}
-	$.extend( nodes, this );
-	return nodes;
+	return es.extendObject( nodes === undefined ? [] : nodes, this );
 };
 
 /**

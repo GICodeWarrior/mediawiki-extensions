@@ -27,7 +27,7 @@ es.ViewNode = function( model, $element ) {
 	}
 	
 	// Extension
-	var node = $.extend( [], this );
+	var node = es.extendObject( [], this );
 	
 	// Properties
 	node.model = model;
@@ -185,4 +185,4 @@ es.ViewNode.prototype.detach = function() {
 
 /* Inheritance */
 
-es.extend( es.ViewNode, es.EventEmitter );
+es.extendClass( es.ViewNode, es.EventEmitter );
