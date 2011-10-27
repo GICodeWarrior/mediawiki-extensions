@@ -25,10 +25,6 @@ $messages['en'] = array(
 	'prefs-onlinestatus' => 'Online status',
 	// Message in config
 	'onlinestatusbar-hide' => 'Do you want to hide the status bar in order to use just the magic word? (For advanced users)',
-	'onlinestatusbar-status-online' => 'On-line',
-	'onlinestatusbar-status-busy' => 'Busy',
-	'onlinestatusbar-status-away' => 'Away',
-	'onlinestatusbar-status-offline' => 'Offline',
 );
 
 $messages['qqq'] = array(
