@@ -94,6 +94,13 @@ $messages['he'] = array(
 	'dublincorerdf-desc' => 'מטא־נתונים של Dublin Core בתסדיר RDF',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'dublincorerdf-desc' => 'Dublin Core RDF-metadaty',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
