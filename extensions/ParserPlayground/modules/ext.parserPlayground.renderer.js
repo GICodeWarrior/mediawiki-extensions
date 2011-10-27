@@ -127,6 +127,11 @@ MWTreeRenderer.prototype.treeToHtml = function(tree, callback, inspectorMap) {
 		case 'dt':
 		case 'dd':
 		case 'li':
+		case 'table':
+		case 'table_row':
+		case 'table_caption':
+		case 'table_data':
+		case 'table_header':
 			var $span = $('<' + tree.type + '>');
 			if ('attrs' in tree) {
 				$.map(tree.attrs, function(val, key) {

@@ -2,7 +2,7 @@
 
 {
 
-    /* Temporary debugging help */
+    /* Temporary debugging help. Is there anything similar in JS or a library? */
     var print_r = function (arr, level) {
 
         var dumped_text = "";
@@ -57,8 +57,13 @@ start
         } 
     }
 
+anyblock = block / inline_element 
+
 anything
-  = a:[A-Za-z0-9,._ -]+ { return a.join('') } / [^\n]
+  = text / [^\n]
+
+// All chars that cannot start syntactic structures
+text = t:[A-Za-z0-9,._ -]+ { return t.join('') }
 
 space
   = s:[ ]+ { return s.join(''); }
@@ -69,6 +74,7 @@ newline
 block
   = br
   / h
+  / table
   / lists
   / para
 
@@ -301,7 +307,9 @@ italic_marker
 italic_text
   = h:( !italic_marker x:(anything) { return x } )+ { return h.join(''); }
 
-
+/* Will need to check anything xmlish agains known/allowed HTML tags and
+ * registered extensions, otherwise fail the match. Should ref be treated as a
+ * regular extension? */
 xmlish_tag =
     ref /
     references
@@ -475,9 +483,6 @@ lists = es:(dtdd / li)+
     });
     //console.log("out: " + print_r(out, 5));
     return out;
-
-
-
 }
 
 li = bullets:list_char+ 
@@ -505,26 +510,121 @@ dtdd = bullets:list_char+
        d:(inline / anything)
        newline 
 {
-    // reject rule if bullets do not end in colon
-    if (bullets[bullets.length - 1] != ';')
+    // reject rule if bullets do not end in semicolon
+    if (bullets[bullets.length - 1] != ';') {
         return null;
-    else
-        return { type: 'dtdd',
-                 content: [
-                    {
-                        type: 'dt',
-                        listStyle: bullets,
-                        content: c
-                    },
-                    {
-                        type: 'dd',
-                        listStyle: bullets.slice(0, bullets.length - 1) + ':',
-                        content: d
-                    }
+    } else {
+        return { 
+            type: 'dtdd',
+            content: [
+                {
+                    type: 'dt',
+                    listStyle: bullets,
+                    content: c
+                }, {
+                    type: 'dd',
+                    listStyle: bullets.slice(0, bullets.length - 1) + ':',
+                    content: d
+                }
 
-                ]
-            };
+            ]
+        }
+    }
 }
 
 
 list_char = [*#:;]
+
+
+/* Tables */
+
+table 
+  = table_start c:table_caption? b:table_body? table_end { 
+      var res = null;
+      var body = b !== '' ? b : [];
+      if (c !== '') {
+          res = {type: 'table', content: [c].concat(body)}; 
+      } else { 
+          res = {type: 'table', content: body };
+      }
+      //console.log(print_r(res));
+      return res;
+  }
+
+table_start = "{|" table_attribs* space* newline?
+
+table_attribs = anything
+
+table_caption 
+  = "|+" c:(inline_element / anything / [^\n])* newline? { 
+      return {
+          type: 'table_caption',
+          content: c
+      }
+  }
+
+table_body 
+  = firstrow:table_firstrow otherrows:table_row* { 
+      /* console.log('table first and otherrows: ' 
+       * + print_r([firstrow].concat(otherrows))); */
+      return [firstrow].concat(otherrows); 
+  }
+  / otherrows:table_row* {
+      //console.log('table otherrows: ' + print_r(otherrows));
+      return otherrows;
+  }
+
+table_firstrow 
+  = td:table_data+ { 
+      return {
+          type: 'table_row',
+          content: td
+      };
+  }
+
+table_row 
+  = "|-" space* newline? td:(table_data / table_header)* { 
+      return {
+          type: 'table_row',
+          content: td
+      };
+  }
+
+table_data 
+  = t:table { 
+      console.log("recursive table result:" + print_r(t));
+      return { 
+          type: 'table_data', 
+              content: [t]
+      }
+  }
+  / "||" td_attr? td:[^|]* newline? { 
+      return {
+          type: 'table_data',
+          content: td.join('')
+      };
+  }
+  / "|" ![}+-] td_attr? td:[^|\n]* newline? { 
+      return {
+          type: 'table_data',
+          content: td.join('')
+      };
+  }
+
+td_attr = a:[^\n|]+ "|" !"|" { return a.join('') }
+
+table_header 
+  = "!!" c:(block/ inline_element / text / ("!" !"!") / [^!\n])* newline? { 
+      return { 
+          type: 'table_header',
+              content: c
+      }
+  }
+  / "!" c:(block/ inline_element / text / '!' !'!' / [^!\n])* newline? { 
+      return { 
+          type: 'table_header',
+              content: c
+      }
+  }
+
+table_end = "|}" newline?

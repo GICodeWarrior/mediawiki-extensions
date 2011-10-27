@@ -120,7 +120,7 @@ MWReferencesTagHook = function( env ) {
 		} else {
 			out.content.push(arrow)
 			$.each(ref.linkbacks, function(i, linkback) {
-				out.contents.push({
+				out.content.push({
 					type: 'hashlink',
 					target: '#' + ref.linkbacks[0],
 					content: [
