@@ -244,15 +244,25 @@ class qp_Setup {
 	 * Otherwise the DB performance may decrease.
 	 */
 	public static $field_max_len = array(
-		# not larger than DB field size, otherwise checking of dependance chain will fail:
+		# 'dependance' is not longer than DB field size (65535),
+		# otherwise checking of dependance chain will fail:
 		'dependance' => 768,
+		# limited due to performance improvements (to fit into DB row),
+		# and also to properly truncate UFT8 tails:
 		'common_question' => 768,
-		# 'proposal_text' length is important for question type="text", where
-		# proposal text contains serialized array of proposal parts and category fields:
-		'proposal_text' => 768,
+		# 'proposal_text' is not longer than DB field size (65535),
+		# otherwise unserialization of question type="text" proposal parts and
+		# category fields will be invalid:
+		'proposal_text' => 1536,
+		# 'text_answer' is not longer than DB field size (65535),
+		# otherwise question type="text" user-selected select multiple values
+		# may be lost:
 		'text_answer' => 768,
+		# limited due to performance improvements (to fit into DB row),
+		# and also to properly truncate UFT8 tails:
 		'long_interpretation' => 768,
-		# not larger than DB field size, otherwise unserialization will be invalid:
+		# 'serialized_interpretation' is not longer than DB field size (65535),
+		# otherwise unserialization of structured answer will be invalid:
 		'serialized_interpretation' => 65535
 	);
 	# whether to show short, long, structured interpretation results to end user
