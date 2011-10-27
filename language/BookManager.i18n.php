@@ -284,6 +284,8 @@ $messages['he'] = array(
  */
 $messages['hsb'] = array(
 	'bookmanager-desc' => 'Nastroje za knihi',
+	'bm-booktools-section' => 'Nastroje za knihi',
+	'bm-randomchapter-link' => 'Připadny kapitl',
 	'bm-printversion' => 'Ćišćerska wersija',
 	'bm-printversion-desc' => 'Twori [[Special:PrintVersion|ćišćersku wersiju]] knihi',
 	'bm-printversion-no-book' => 'Prošu zapodaj mjeno knihi, za kotruž ma so ćišćerska wersija wutworić.',
