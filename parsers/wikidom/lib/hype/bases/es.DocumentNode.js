@@ -13,19 +13,25 @@ es.DocumentNode = function( nodes ) {
  * Gets the range within this node that a given child node covers.
  * 
  * @method
- * @param {es.ModelNode} node
+ * @param {es.ModelNode} node Node to get range for
+ * @param {Boolean} [shallow] Do not iterate into child nodes of child nodes
+ * @returns {es.Range|null} Range of node or null if node was not found
  */
-es.DocumentNode.prototype.getRangeFromNode = function( node ) {
+es.DocumentNode.prototype.getRangeFromNode = function( node, shallow ) {
 	if ( this.length ) {
-		var i = 0,
-			length = this.length,
-			left = 0;
-		while ( i < length ) {
+		for ( var i = 0, length = this.length, left = 0; i < length; i++ ) {
 			if ( this[i] === node ) {
 				return new es.Range( left, left + this[i].getElementLength() );
 			}
+			if ( !shallow && this[i].length ) {
+				var range = this[i].getRangeFromNode( node );
+				if ( range !== null ) {
+					// Include opening of parent
+					left++;
+					return es.Range.newFromTranslatedRange( range, left );
+				}
+			}
 			left += this[i].getElementLength();
-			i++;
 		}
 	}
 	return null;
@@ -47,7 +53,7 @@ es.DocumentNode.prototype.getRangeFromNode = function( node ) {
 es.DocumentNode.prototype.getOffsetFromNode = function( node, shallow ) {
 	if ( this.length ) {
 		var offset = 0;
-		for ( var i = 0; i < this.length; i++ ) {
+		for ( var i = 0, length = this.length; i < length; i++ ) {
 			if ( this[i] === node ) {
 				return offset;
 			}
@@ -72,7 +78,7 @@ es.DocumentNode.prototype.getOffsetFromNode = function( node, shallow ) {
  * TODO: Rewrite this method to not use recursion, because the function call overhead is expensive
  * 
  * @method
- * @param {Integer} offset Offset within this node to look for child node in
+ * @param {Integer} offset Offset get node for
  * @param {Boolean} [shallow] Do not iterate into child nodes of child nodes
  * @returns {es.DocumentModelNode|null} Node at offset, or null if non was found
  */
@@ -100,9 +106,8 @@ es.DocumentNode.prototype.getNodeFromOffset = function( offset, shallow ) {
  * 
  * @method
  * @param {es.Range} range Range to select nodes within
- * @returns {Object} Object with 'on' and 'off' properties, 'on' being a list of objects with 'node'
- * and 'range' properties describing nodes which are covered by the range and the range within the
- * node that is covered, and 'off' being a list of nodes that are not covered by the range
+ * @returns {Array} List of objects with 'node' and 'range' properties describing nodes which are
+ * covered by the range and the range within the node that is covered
  */
 es.DocumentNode.prototype.selectNodes = function( range ) {
 	range.normalize();
