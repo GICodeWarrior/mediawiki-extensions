@@ -11,7 +11,7 @@ class OnlineStatusBarHooks {
 	 * @return bool
 	 */
 	public static function ckSchema( $updater = null ) {
-		if ( ( $updater === null ) != true  ){
+		if ( $updater !== null ){
 			$updater->addExtensionUpdate( array( 'addtable', 'online_status', dirname( __FILE__ ) . '/OnlineStatusBar.sql', true ) );
 		} else {
 			global $wgExtNewTables;
@@ -52,7 +52,7 @@ class OnlineStatusBarHooks {
 		$ns = $article->getTitle()->getNamespace();
 		if ( ( $ns == NS_USER_TALK ) || ( $ns == NS_USER ) ) {
 			$user = OnlineStatusBar::GetOwnerFromTitle ( $article->getTitle() );
-			if ( $user === null ) {
+			if ( $user == null ) {
 				return true;
 			}
 			$username = $user->getName();
@@ -111,7 +111,6 @@ class OnlineStatusBarHooks {
 	 */
 	public static function magicWordVar ( array &$magicWords, $ln ) {
 		$magicWords['isonline'] = array ( 0, 'isonline' );
-
 		return true;
 	}
 
@@ -142,7 +141,7 @@ class OnlineStatusBarHooks {
 	 * @return bool
 	 */
 	public static function parserGetVariable ( &$parser, &$varCache, &$index, &$ret ){
-		global $wgOnlineStatusBarModes;
+		global $wgOnlineStatusBarModes, $wgOnlineStatusBarDefaultOffline;
 		if( $index == 'isonline' ){
 			$name = OnlineStatusBar::GetOwnerFromTitle ( $parser->getTitle() )->getName();
 
@@ -150,7 +149,10 @@ class OnlineStatusBarHooks {
 				$ret = "unknown";
 				return true;
 			}
-			$ret = $wgOnlineStatusBarModes[OnlineStatusBar::GetStatus( $name )];
+			$ret = OnlineStatusBar::GetStatus( $name );
+			if ( $ret == "hidden" ) {
+				$ret = $wgOnlineStatusBarDefaultOffline; 
+			}
 		}
 		return true;
 	}
