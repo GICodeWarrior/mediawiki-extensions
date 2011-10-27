@@ -117,6 +117,13 @@ $messages['gsw'] = array(
 	'userdebuginfo-language' => 'Sprooch',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'userdebuginfo-language' => 'Rěč',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
