@@ -433,7 +433,7 @@ test( 'es.DocumentModel.prepareRemoval', 3, function() {
 	); 
 } );
 
-test( 'es.DocumentModel.prepareInsertion', 6, function() {
+test( 'es.DocumentModel.prepareInsertion', 10, function() {
 	var documentModel = es.DocumentModel.newFromPlainObject( obj );
 
 	// Test 1
@@ -532,7 +532,63 @@ test( 'es.DocumentModel.prepareInsertion', 6, function() {
 		'prepareInsertion splits up paragraph when inserting a paragraph closing and opening into a paragraph'
 	);
 	
-	// TODO add test cases for expected exceptions for bad offset and malformed input
+	// Test 7
+	deepEqual(
+		documentModel.prepareInsertion(
+			0,
+			[ { 'type': 'paragraph' }, 'f', 'o', 'o', { 'type': '/paragraph' } ]
+		),
+		[
+			{
+				'type': 'insert',
+				'data': [ { 'type': 'paragraph' }, 'f', 'o', 'o', { 'type': '/paragraph' } ]
+			},
+			{ 'type': 'retain', 'length': 28 }
+		],
+		'prepareInsertion inserts at the beginning, then retains up to the end'
+	);
+	
+	// Test 8
+	deepEqual(
+		documentModel.prepareInsertion(
+			28,
+			[ { 'type': 'paragraph' }, 'f', 'o', 'o', { 'type': '/paragraph' } ]
+		),
+		[
+			{ 'type': 'retain', 'length': 28 },
+			{
+				'type': 'insert',
+				'data': [ { 'type': 'paragraph' }, 'f', 'o', 'o', { 'type': '/paragraph' } ]
+			}
+		],
+		'prepareInsertion inserts at the end'
+	);
+	
+	// Test 9
+	raises(
+		function() {
+			documentModel.prepareInsertion(
+				-1,
+				[ { 'type': 'paragraph' }, 'f', 'o', 'o', { 'type': '/paragraph' } ]
+			);
+		},
+		function ( e ) { 
+			return /^Offset -1 out of bounds/.test( e ); },
+		'prepareInsertion throws exception for negative offset'
+	);
+	
+	// Test 10
+	raises(
+		function() {
+			documentModel.prepareInsertion(
+				29,
+				[ { 'type': 'paragraph' }, 'f', 'o', 'o', { 'type': '/paragraph' } ]
+			);
+		},
+		function ( e ) { 
+			return /^Offset 29 out of bounds/.test( e ); },
+		'prepareInsertion throws exception for offset past the end'
+	);
 } );
 
 test( 'es.DocumentModel.commit, es.DocumentModel.rollback', 10, function() {

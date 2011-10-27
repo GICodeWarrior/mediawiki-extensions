@@ -722,12 +722,15 @@ es.DocumentModel.prototype.prepareInsertion = function( offset, data ) {
 	
 	var tx = new es.Transaction(),
 		insertedData = data, // may be cloned and modified
-		isStructuralLoc = es.DocumentModel.isStructuralOffset( this.data, offset ),
+		isStructuralLoc,
 		wrappingElementType;
 		
 	if ( offset < 0 || offset > this.data.length ) {
 		throw 'Offset ' + offset + ' out of bounds [0..' + this.data.length + ']';
 	}
+	
+	// Has to be after the bounds check, because isStructuralOffset doesn't like out-of-bounds offsets
+	isStructuralLoc = es.DocumentModel.isStructuralOffset( this.data, offset );
 	
 	if ( offset > 0 ) {
 		tx.pushRetain( offset );
