@@ -23,12 +23,15 @@ $messages['en'] = array(
 	'onlinestatusbar-status' => 'What is the default status you wish to use:',
 	// Section for config
 	'prefs-onlinestatus' => 'Online Status',
+	// Message in config
+	'onlinestatusbar-hide' => 'Do you want to hide the status bar in order to use just the magic word? (For advanced users)',
 );
 
 $messages['qqq'] = array(
 	'onlinestatusbar-desc' => '{{desc}}',
         'onlinestatusbar-line' => "Status bar text line (User is now Offline), parameters:\n* $1 is user\n* $2 is a picture of status (small icon in color of status)\n* $3 a status, it will appear in title bar of their user space pages",
         'onlinestatusbar-used' => 'Message in config asking user if they want to enable it, checkbox',
+	'onlinestatusbar-hide' => 'Ask user if they want to hide status bar this is useful when they are using custom template but need to check if they are online',
         'onlinestatusbar-status' => 'Message in config asking what status they want to use, option box',
         'prefs-onlinestatus' => 'Section for config, located in preferences - misc',
 );

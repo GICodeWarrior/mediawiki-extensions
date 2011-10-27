@@ -63,7 +63,8 @@ $wgOnlineStatusBarDefaultEnabled = false;
 // how long to wait until user is considered as offline
 $wgOnlineStatusBar_LogoutTime = 3600;
 // position of status bar
-$wgOnlineStatusBarY = "-35";
+// change to -35 to have it in title bar
+$wgOnlineStatusBarY = "0";
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'wfOnlineStatusBar_CkSchema';
 function wfOnlineStatusBar_CkSchema( $updater = null ) {
@@ -89,14 +90,21 @@ function wfOnlineStatusBar_RenderBar( &$article, &$outputDone, &$pcache ) {
 	OnlineStatusBar::UpdateStatus();
 	$ns = $article->getTitle()->getNamespace();
 	if ( ( $ns == NS_USER_TALK ) || ( $ns == NS_USER ) ) {
-		// better way to get a username would be great :)
-		$user = $article->getTitle();
-		$user = preg_replace( '/\/.*/', '', substr($user, strpos($user, ":") + 1));
-		if ( OnlineStatusBar::IsValid( $user ) ) {
-			$mode = OnlineStatusBar::GetStatus( $user );
+		$user = OnlineStatusBar::GetOwnerFromTitle ( $article->getTitle() );
+		if ( $user == null ) {
+			return true;
+		}
+		$username = $user->getName();
+		if ( $user != null ) {
+			if ( $user->getOption ( "OnlineStatusBar_hide" ) == true ) {
+				return true;
+			}
+		}
+		if ( OnlineStatusBar::IsValid( $username ) ) {
+			$mode = OnlineStatusBar::GetStatus( $username );
 			$modetext = $wgOnlineStatusBarModes[$mode];
 			$image = OnlineStatusBar::getImageHtml( $mode );
-			$text = wfMessage( 'onlinestatusbar-line', $user )->rawParams( $image )->params( $modetext )->escaped();
+			$text = wfMessage( 'onlinestatusbar-line', $username )->rawParams( $image )->params( $modetext )->escaped();
 			$wgOut->addHtml( OnlineStatusBar::Get_Html( $text, $mode ) );
 		}
 	}
@@ -113,6 +121,7 @@ $wgHooks['GetPreferences'][] = 'wfOnlineStatusBar_PreferencesHook';
 function wfOnlineStatusBar_PreferencesHook( $user, &$preferences ) {
 	global $wgOnlineStatusBarDefaultOnline, $wgOnlineStatusBarDefaultEnabled, $wgOnlineStatusBarModes;
 	$preferences['OnlineStatusBar_active'] = array( 'type' => 'toggle', 'label-message' => 'onlinestatusbar-used', 'section' => 'misc/onlinestatus' );
+	$preferences['OnlineStatusBar_hide'] = array( 'type' => 'toggle', 'label-message' => 'onlinestatusbar-hide', 'section' => 'misc/onlinestatus' );
 	$preferences['OnlineStatusBar_status'] = array( 'type' => 'radio', 'label-message' => 'onlinestatusbar-status', 'section' => 'misc/onlinestatus',
 		'options' => array(
 			$wgOnlineStatusBarModes['online'] => 'online',
@@ -130,6 +139,11 @@ function wfOnlineStatusBar_SetDefaultOptions( &$defaultOptions ) {
 	// set defaults
 	$defaultOptions['OnlineStatusBar_status'] = $wgOnlineStatusBarDefaultOnline;
 	$defaultOptions['OnlineStatusBar_active'] = $wgOnlineStatusBarDefaultEnabled;
+	$defaultOptions['OnlineStatusBar_hide'] = false;
 	// quit
 	return true;	
 }
+
+$wgHooks['LanguageGetMagic'][] = 'OnlineStatusBar::MagicWordVar';
+$wgHooks['MagicWordwgVariableIDs'][] = 'OnlineStatusBar::MagicWordSet';
+$wgHooks['ParserGetVariableValueSwitch'][] = 'OnlineStatusBar::ParserGetVariable';

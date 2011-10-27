@@ -10,6 +10,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * @file
  * @ingroup Extensions
  * @author Petr Bena <benapetr@gmail.com>
+ * @author of magic word Alexandre Emsenhuber
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  * @link http://www.mediawiki.org/wiki/Extension:OnlineStatusBar Documentation
  */
@@ -32,12 +33,42 @@ HTML;
 		$modeText = $wgOnlineStatusBarModes[$mode];
 		return Html::element( 'img', array( 'src' => $icon ) );
 	}
+	
+	public static function ParserGetVariable ( &$parser, &$varCache, &$index, &$ret ){
+		global $wgOnlineStatusBarDefaultOffline;
+		if( $index == 'isonline' ){
+		$name = self::GetOwnerFromTitle ( $parser->getTitle() )->getName();
+		
+		if ( self::IsValid($name) != true ) {
+			$ret = "false";
+			return true;
+		}
+		 	
+		if( self::GetStatus ( $name ) == $wgOnlineStatusBarDefaultOffline ) {
+			$ret = "false";
+			return true;
+		} else {
+			$ret = "true";
+		}
+		}
+		return true;
+	}
 
-	static function GetNow() {
+	public static function GetNow() {
 		return gmdate( 'Ymdhis', time() );
 	}
 
-	static function UpdateDb() {
+	public static function GetOwnerFromTitle ( $title )
+	{
+		if ( $title === null ) {
+			return null;
+		}
+		$username = preg_replace( '/\/.*/', '', $title->getText() );
+                $user_object = User::newFromName ( $username );	
+		return $user_object;
+	}
+
+	public static function UpdateDb() {
 		global $wgUser, $wgOnlineStatusBarDefaultOnline;
 		if ( OnlineStatusBar::GetStatus( $wgUser->getName() ) != $wgOnlineStatusBarDefaultOnline ) {
 			$dbw = wfGetDB( DB_MASTER );
@@ -51,7 +82,18 @@ HTML;
 		return false;
 	}
 
-	static function UpdateStatus() {
+	public static function MagicWordSet ( &$vars ) {
+		$vars[] = 'isonline';
+		return true;
+	}
+
+	public static function MagicWordVar ( &$magicWords, $ln ) {
+		$magicWords['isonline'] = array ( 0, 'isonline' );
+ 	
+		return true;
+ 	}
+
+	public static function UpdateStatus() {
 		global $wgUser, $wgOnlineStatusBarDefaultOffline;
 		if ( OnlineStatusBar::GetStatus( $wgUser->getName() ) == $wgOnlineStatusBarDefaultOffline ) {
 			OnlineStatusBar::UpdateDb();
