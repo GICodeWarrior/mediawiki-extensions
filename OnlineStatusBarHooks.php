@@ -47,23 +47,36 @@ class OnlineStatusBarHooks {
 	 * @return bool
 	 */
 	public static function renderBar( &$article, &$outputDone, &$pcache ) {
-		global $wgOnlineStatusBar_Template, $messages, $wgOnlineStatusBarModes, $wgOut;
+		global $wgOnlineStatusBar_Template, $messages, $wgOnlineStatusBarDefaultIpUsers, $wgOnlineStatusBarModes, $wgOut;
 		OnlineStatusBar::UpdateStatus();
+		$anon = false;
 		$ns = $article->getTitle()->getNamespace();
 		if ( ( $ns == NS_USER_TALK ) || ( $ns == NS_USER ) ) {
 			$user = OnlineStatusBar::GetOwnerFromTitle ( $article->getTitle() );
-			if ( $user == null ) {
+			$userName = $article->getTitle()->getBaseText();
+			if ( User::isIP ( $userName ) != true && $user == null ) {
 				return true;
 			}
-			$username = $user->getName();
-			if ( $user->getOption ( "OnlineStatusBar_hide" ) == true ) {
-				return true;
+			if ( User::isIP ( $userName ) && $user == null && $wgOnlineStatusBarDefaultIpUsers ) {
+				// it's anon user and we want to track them
+				$sanitizedusername = $userName;
+				$anon = true;
+			} else {
+				// Fix capitalisation issues
+				$sanitizedusername = $user->getName();
 			}
-			if ( OnlineStatusBar::IsValid( $username ) ) {
-				$mode = OnlineStatusBar::GetStatus( $username );
+			if ( $anon == false )
+			{
+			//we don't want to check this
+				if ( $user->getOption ( "OnlineStatusBar_hide" ) == true ) {
+					return true;
+				}
+			}
+			if ( OnlineStatusBar::IsValid( $userName ) ) {
+				$mode = OnlineStatusBar::GetStatus( $userName );
 				$modetext = $wgOnlineStatusBarModes[$mode];
 				$image = OnlineStatusBar::getImageHtml( $mode );
-				$text = wfMessage( 'onlinestatusbar-line', $username )->rawParams( $image )->params( $modetext )->escaped();
+				$text = wfMessage( 'onlinestatusbar-line', $userName )->rawParams( $image )->params( $modetext )->escaped();
 				$wgOut->addHtml( OnlineStatusBar::Get_Html( $text, $mode ) );
 			}
 		}
@@ -143,6 +156,11 @@ class OnlineStatusBarHooks {
 	public static function parserGetVariable ( &$parser, &$varCache, &$index, &$ret ){
 		global $wgOnlineStatusBarModes, $wgOnlineStatusBarDefaultOffline;
 		if( $index == 'isonline' ){
+			$ns = $parser->getTitle()->getNamespace();
+                	if ( ( $ns != NS_USER_TALK ) && ( $ns != NS_USER ) ) {
+				$ret = "unknown";
+				return true;
+			}
 			$name = OnlineStatusBar::GetOwnerFromTitle ( $parser->getTitle() )->getName();
 
 			if ( OnlineStatusBar::IsValid($name) != true ) {
