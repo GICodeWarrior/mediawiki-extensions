@@ -23,16 +23,16 @@ es.ModelNode = function( children ) {
 		node.emit( 'update' );
 	};
 	
+	// Properties
+	node.parent = null;
+	node.root = node;
+	
 	// Children
 	if ( es.isArray( children ) ) {
 		for ( var i = 0; i < children.length; i++ ) {
 			node.push( children[i] );
 		}
 	}
-	
-	// Properties
-	node.parent = undefined;
-	node.root = node;
 	
 	return node;
 };
@@ -216,7 +216,7 @@ es.ModelNode.prototype.getRoot = function() {
 es.ModelNode.prototype.attach = function( parent ) {
 	this.emit( 'beforeAttach', parent );
 	this.parent = parent;
-	this.root = parent.getRoot();
+	this.setRoot( parent.getRoot() );
 	this.emit( 'afterAttach', parent );
 };
 
@@ -228,9 +228,34 @@ es.ModelNode.prototype.attach = function( parent ) {
  */
 es.ModelNode.prototype.detach = function() {
 	this.emit( 'beforeDetach' );
-	this.parent = undefined;
-	this.root = this;
+	this.parent = null;
+	this.clearRoot();
 	this.emit( 'afterDetach' );
+};
+
+/**
+ * Sets the root node to this and all of it's children.
+ * 
+ * @method
+ * @param {es.ModelNode} root Node to use as root
+ */
+es.ModelNode.prototype.setRoot = function( root ) {
+	this.root = root;
+	for ( var i = 0; i < this.length; i++ ) {
+		this[i].setRoot( root );
+	}
+};
+
+/**
+ * Clears the root node from this and all of it's children.
+ * 
+ * @method
+ */
+es.ModelNode.prototype.clearRoot = function() {
+	this.root = null;
+	for ( var i = 0; i < this.length; i++ ) {
+		this[i].clearRoot();
+	}
 };
 
 /**
