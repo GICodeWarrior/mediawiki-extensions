@@ -47,8 +47,9 @@ class OnlineStatusBarHooks {
 	 * @return bool
 	 */
 	public static function renderBar( &$article, &$outputDone, &$pcache ) {
-		global $wgOnlineStatusBar_Template, $messages, $wgOnlineStatusBarDefaultIpUsers, $wgOnlineStatusBarModes, $wgOut;
+		global $messages, $wgOnlineStatusBarDefaultIpUsers, $wgOnlineStatusBarModes, $wgOut;
 		OnlineStatusBar::UpdateStatus();
+		// anonymous user
 		$anon = false;
 		$ns = $article->getTitle()->getNamespace();
 		if ( ( $ns == NS_USER_TALK ) || ( $ns == NS_USER ) ) {
@@ -69,7 +70,7 @@ class OnlineStatusBarHooks {
 			}
 			if ( $anon == false )
 			{
-			//we don't want to check this
+			// check if it's not anon, let's check the config
 				if ( $user->getOption ( "OnlineStatusBar_hide" ) == true ) {
 					return true;
 				}
