@@ -433,7 +433,7 @@ test( 'es.DocumentModel.prepareRemoval', 3, function() {
 	); 
 } );
 
-test( 'es.DocumentModel.prepareInsertion', 4, function() {
+test( 'es.DocumentModel.prepareInsertion', 6, function() {
 	var documentModel = es.DocumentModel.newFromPlainObject( obj );
 
 	// Test 1
@@ -496,6 +496,40 @@ test( 'es.DocumentModel.prepareInsertion', 4, function() {
 			{ 'type': 'retain', 'length': 23 }
 		],
 		'prepareInsertion completes opening elements in inserted content'
+	);
+	
+	// Test 5
+	deepEqual(
+		documentModel.prepareInsertion(
+			2,
+			[ { 'type': 'table' }, { 'type': '/table' } ]
+		),
+		[
+			{ 'type': 'retain', 'length': 2 },
+			{
+				'type': 'insert',
+				'data': [ { 'type': '/paragraph' }, { 'type': 'table' }, { 'type': '/table' }, { 'type': 'paragraph' } ]
+			},
+			{ 'type': 'retain', 'length': 26 }
+		],
+		'prepareInsertion splits up paragraph when inserting a table in the middle'
+	);
+	
+	// Test 6
+	deepEqual(
+		documentModel.prepareInsertion(
+			2,
+			[ 'f', 'o', 'o', { 'type': '/paragraph' }, { 'type': 'paragraph' }, 'b', 'a', 'r' ]
+		),
+		[
+			{ 'type': 'retain', 'length': 2 },
+			{
+				'type': 'insert',
+				'data': [ 'f', 'o', 'o', { 'type': '/paragraph' }, { 'type': 'paragraph' }, 'b', 'a', 'r' ]
+			},
+			{ 'type': 'retain', 'length': 26 }
+		],
+		'prepareInsertion splits up paragraph when inserting a paragraph closing and opening into a paragraph'
 	);
 } );
 
