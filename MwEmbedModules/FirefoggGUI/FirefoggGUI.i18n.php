@@ -941,6 +941,15 @@ Více inromací o <a target="_new" href="http://en.wikipedia.org/wiki/Aspect_rat
 Prosím vypněte <b>Firebug</b> pro tutu stránku.',
 );
 
+/** Welsh (Cymraeg)
+ * @author Pwyll
+ */
+$messages['cy'] = array(
+	'fogg-wont-upload-to-server' => "Sylwer: Bydd eich ffeil fideo'n cael ei amgodio'n lleol ac ni fydd yn cael ei uwchlwytho i unrhyw weinydd.",
+	'fogg-save_local_file' => "Amgodio i'r ffeil",
+	'fogg-cg-range' => 'Ystod amgodio',
+);
+
 /** German (Deutsch)
  * @author F.trott
  * @author Jan Luca
