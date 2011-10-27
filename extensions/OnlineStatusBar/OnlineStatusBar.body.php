@@ -71,7 +71,7 @@ HTML;
 		if ( OnlineStatusBar::GetStatus( $wgUser->getName() ) != $wgOnlineStatusBarDefaultOnline ) {
 			$dbw = wfGetDB( DB_MASTER );
 			$row = array(
-				'username' => strtolower( $wgUser->getName() ),
+				'username' => $wgUser->getName(),
 				'timestamp' => $dbw->timestamp( wfTimestamp() ),
 			);
 			$dbw->insert( 'online_status', $row, __METHOD__, 'DELAYED' );
@@ -101,7 +101,7 @@ HTML;
 		$dbw->update(
 			'online_status',
 			array( 'timestamp' => $dbw->timestamp( wfTimestamp() ) ),
-			array( 'username' => strtolower( $wgUser->getID() ) ),
+			array( 'username' => $wgUser->getID() ),
 			__METHOD__
 		);
 
@@ -149,7 +149,7 @@ HTML;
 			// something is wrong
 			return $wgOnlineStatusBarDefaultOffline;
 		}
-		$result = $dbw->selectField( 'online_status', 'username', array( 'username' => strtolower( $userID ) ),
+		$result = $dbw->selectField( 'online_status', 'username', array( 'username' => $userID ),
 			__METHOD__, array( 'limit 1', 'order by timestamp desc' ) );
 		if ( $result ) {
 			$status = $user->getOption( "OnlineStatusBar_status" );
