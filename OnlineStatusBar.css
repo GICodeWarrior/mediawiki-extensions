@@ -2,7 +2,7 @@
 This is a part of css used on english wp, it's needed for wikis
 where topicon isn't defined
 */
-div.topicon {
+div.topiconstatus {
   position: absolute;
   top: -2em;
   margin-right: -10px;
