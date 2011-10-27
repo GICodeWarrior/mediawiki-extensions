@@ -694,6 +694,13 @@ $messages['ig'] = array(
 	'edituser-dosearch' => 'Chọwa',
 );
 
+/** Iloko (Ilokano)
+ * @author Lam-ang
+ */
+$messages['ilo'] = array(
+	'edituser-dosearch' => 'Biroken',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
