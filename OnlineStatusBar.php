@@ -68,9 +68,6 @@ $wgOnlineStatusBarDefaultOffline = "offline";
 $wgOnlineStatusBarDefaultEnabled = false;
 // how long to wait until user is considered as offline
 $wgOnlineStatusBar_LogoutTime = 3600;
-// position of status bar
-// change to -35 to have it in title bar
-$wgOnlineStatusBarY = "0";
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'wfOnlineStatusBar_CkSchema';
 function wfOnlineStatusBar_CkSchema( $updater = null ) {
