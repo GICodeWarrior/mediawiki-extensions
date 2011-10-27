@@ -114,7 +114,7 @@ es.DocumentModel.operations = ( function() {
 		}
 		this.cursor += op.data.length;
 	}
-	
+
 	function remove( op ) {
 		var elementLeft = es.DocumentModel.isElementOffset( this.data, this.cursor ),
 			elementRight = es.DocumentModel.isElementOffset( this.cursor + op.data.length );
@@ -126,10 +126,10 @@ es.DocumentModel.operations = ( function() {
 			} else {
 				// Get the node we are removing content from
 				var node = this.tree.getNodeFromOffset( this.cursor );
-				// Update model tree
-				node.adjustContentLength( -op.data.length );
 				// Remove content from linear data model
 				this.data.splice( this.cursor, op.data.length );
+				// Update model tree
+				node.adjustContentLength( -op.data.length );
 			}
 		}
 	}

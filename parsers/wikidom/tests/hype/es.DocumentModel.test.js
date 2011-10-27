@@ -668,7 +668,7 @@ test( 'es.DocumentModel.commit, es.DocumentModel.rollback', 10, function() {
 		'rollback reverses the effect of a content annotation transaction on the content'
 	);
 
-	var insertion = documentModel.prepareInsertion( 4, ['d'] );
+	var insertion = documentModel.prepareInsertion( 3, ['d'] );
 
 	// Test 5
 	documentModel.commit( insertion );
@@ -678,8 +678,8 @@ test( 'es.DocumentModel.commit, es.DocumentModel.rollback', 10, function() {
 			{ 'type': 'paragraph' },
 			'a',
 			['b', { 'type': 'bold', 'hash': '#bold' }],
-			['c', { 'type': 'italic', 'hash': '#italic' }],
 			'd',
+			['c', { 'type': 'italic', 'hash': '#italic' }],
 			{ 'type': '/paragraph' }
 		],
 		'commit applies an insertion transaction to the content'
@@ -691,8 +691,8 @@ test( 'es.DocumentModel.commit, es.DocumentModel.rollback', 10, function() {
 		[
 			'a',
 			['b', { 'type': 'bold', 'hash': '#bold' }],
-			['c', { 'type': 'italic', 'hash': '#italic' }],
-			'd'
+			'd',
+			['c', { 'type': 'italic', 'hash': '#italic' }]
 		],
 		'commit keeps model tree up to date'
 	);
