@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import sys, traceback, os, datetime, ldapsupportlib, shutil, pwd, re, pycurl
+import sys, traceback, os, datetime, ldapsupportlib, shutil, pwd, re, pycurl, time, datetime
 from optparse import OptionParser
 from cStringIO import StringIO
 
@@ -8,7 +8,6 @@ try:
 	import ldap.modlist
 except ImportError:
 	sys.stderr.write("Unable to import LDAP library.\n")
-	sys.exit(1)
 
 class HomeDirectoryManager:
 
@@ -31,6 +30,9 @@ class HomeDirectoryManager:
 		# LDAP accounts associated with them
 		self.excludedFromModification = ['lost+found', 'SAVE', 'svn-private']
 
+		# Limit home directory management to the specified group
+		self.group = None
+
 		# Skeleton files to add to the user's home directory
 		self.skelFiles = {}
 		self.skelFiles['/etc/skel/'] = ['.bashrc', '.profile', '.bash_logout']
@@ -51,10 +53,16 @@ class HomeDirectoryManager:
 
 		parser.add_option("--dry-run", action="store_true", dest="dryRun", help="Show what would be done, but don't actually do anything")
 		parser.add_option("--debug", action="store_true", dest="debugStatus", help="Run in debug mode (you likely want to use --dry-run with this)")
+		parser.add_option("--basedir", dest="basedir", help="Base directory to manage home directories (default: /home)")
+		parser.add_option("--group", dest="group", help="Only manage home directories for users in the provided group (default: manage all users)")
 		(self.options, args) = parser.parse_args()
 
 		self.dryRun = self.options.dryRun
 		self.debugStatus = self.options.debugStatus
+		if self.options.basedir:
+			self.basedir = self.options.basedir
+		if self.options.group:
+			self.group = self.options.group
 
 		# use proxy agent by default
 		ldapSupportLib.setBindInfoByOptions(self.options, parser)
@@ -69,6 +77,9 @@ class HomeDirectoryManager:
 			# get all user's uids
 			UsersData = ldapSupportLib.getUsers(ds, '*')
 			self.logDebug("Pulled the user information")
+			if self.group:
+				GroupData = ds.search_s("ou=groups," + base,ldap.SCOPE_SUBTREE,"(&(objectclass=posixGroup)(cn=" + self.group + "))")
+				groupdns = GroupData[0][1]['member']
 
 			# We are going to use a dictionary (associative array) as a hash bucket (keys pointing to dictionaries)
 			# for the AllUsers data structure.
@@ -77,6 +88,10 @@ class HomeDirectoryManager:
 			#  "<uid>": {"uidNumber": <uidNumber>, "gidNumber": <gidNumber>, "sshPublicKey": ['key1', 'key2']}}
 			AllUsers = {}
 			for user in UsersData:
+				if self.group:
+					dn = user[0]
+					if dn not in groupdns:
+						continue
 				uid = user[1]['uid'][0]
 				# uidNumber and gidNumber come back from LDAP as strings, we need ints here.
 				uidNumber = int(user[1]['uidNumber'][0])
@@ -85,21 +100,24 @@ class HomeDirectoryManager:
 				if 'sshPublicKey' not in user[1]:
 					continue
 				sshPublicKey = user[1]['sshPublicKey']
+				modifyTimestamp = user[1]['modifyTimestamp']
 
 				AllUsers[uid] = {}
 				AllUsers[uid]["uidNumber"] = uidNumber
 				AllUsers[uid]["gidNumber"] = gidNumber
 				AllUsers[uid]["sshPublicKey"] = sshPublicKey
+				AllUsers[uid]["modifyTimestamp"] = modifyTimestamp[0]
 
 			self.changeGid(AllUsers)
 			self.changeUid(AllUsers)
 			self.moveUsers(AllUsers)
+			self.updateKeys(AllUsers)
 			self.createHomeDir(AllUsers)
 			
 		except ldap.UNWILLING_TO_PERFORM, msg:
 			sys.stderr.write("The search returned an error. Error was: %s\n" % msg[0]["info"])
 			ds.unbind()
-			sys.exit(1)
+			return 1
 		except Exception:
 			try:
 				sys.stderr.write("There was a general error, please contact an administrator via the helpdesk. Please include the following stack trace with your report:\n")
@@ -107,10 +125,10 @@ class HomeDirectoryManager:
 				ds.unbind()
 			except Exception:
 				pass
-			sys.exit(1)
+			return 1
 
 		ds.unbind()
-		sys.exit(0)
+		return 0
 
 	# Creates home directories for new users. Will not create home directories
 	# for users that already have a directory in SAVE
@@ -176,7 +194,6 @@ class HomeDirectoryManager:
 		return uniqueKeys
 
 	# Write a list of keys to the user's authorized_keys file
-	# TODO: run this when keys change as well as when directories need to be created
 	def writeKeys(self, user, keys):
 		self.writeFile(self.basedir + user + '/.ssh/authorized_keys', "\n".join(keys) + "\n")
 
@@ -257,6 +274,26 @@ class HomeDirectoryManager:
 					self.chown(os.path.join(root, name), newUid, -1)
 				for name in dirs:
 					self.chown(os.path.join(root, name), newUid, -1)
+
+	def updateKeys(self, users):
+		for userdir in os.listdir(self.basedir):
+			if not os.path.isdir(self.basedir + userdir) or userdir in self.excludedFromModification:
+				continue
+			if userdir not in users.keys():
+				continue
+			stat = os.stat(self.basedir + userdir + "/.ssh/authorized_keys")
+			atime = stat.st_atime
+			mtime = stat.st_mtime
+			d_mtime = datetime.datetime.utcfromtimestamp(mtime)
+			d_ldap_mtime = users[userdir]["modifyTimestamp"]
+			d_ldap_mtime = datetime.datetime.strptime(d_ldap_mtime[0:-1], "%Y%m%d%H%M%S")
+			if d_ldap_mtime != d_mtime:
+				# Either the user's entry has been updated, or someone
+				# has been manually mucking with the keys, either way
+				# let's overwrite them
+				self.writeKeys(userdir, users[userdir]['sshPublicKey'])
+				self.log( "Updating keys for %s" % (userdir) )
+				os.utime(self.basedir + userdir + "/.ssh/authorized_keys", (atime, time.mktime(d_ldap_mtime.timetuple())))
 
 	def log(self, logstring):
 		print datetime.datetime.now().strftime("%m/%d/%Y - %H:%M:%S - ")  + logstring

@@ -34,7 +34,7 @@ class LDAPSupportLib:
 			self.defaults['authuser'] = "scriptuser"
 
 	def getUsers(self, ds, username):
-		PosixData = ds.search_s("ou=people," + self.base,ldap.SCOPE_SUBTREE,"(&(objectclass=inetOrgPerson)(uid=" + username + "))")
+		PosixData = ds.search_s("ou=people," + self.base,ldap.SCOPE_SUBTREE,"(&(objectclass=inetOrgPerson)(uid=" + username + "))", attrlist=['*', '+'])
 		return PosixData
 
 	def getKeys(self, ds, username):
