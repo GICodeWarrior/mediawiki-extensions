@@ -1175,7 +1175,7 @@ $messages['no'] = array(
  */
 $messages['or'] = array(
 	'narayam-toggle-ime' => '($1) ସଚଳ କରାଇବେ',
-	'narayam-menu' => 'ନିବେଶ (Press Ctl+M for Odia typing)',
+	'narayam-menu' => 'ନିବେଶ (Press Ctrl+M for Odia Typing)',
 	'narayam-help' => 'ସହଯୋଗ',
 	'narayam-help-page' => 'Help:ଟାଇପ କରିବା',
 	'narayam-or' => 'Odia Transliteration',
