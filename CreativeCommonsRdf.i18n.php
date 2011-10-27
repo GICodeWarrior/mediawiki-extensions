@@ -80,6 +80,13 @@ $messages['he'] = array(
 	'creativecommonsrdf-desc' => 'מטא־נתונים של קריאייטיב קומונז בתסדיר RDF',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'creativecommonsrdf-desc' => 'CreativeCommons RDF-metadaty',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
