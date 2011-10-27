@@ -1,44 +1,28 @@
 #ifndef SOCKET_H______
 #define SOCKET_H______
 
-#include <set>
-#include <vector>
-#include <boost/shared_ptr.hpp>
 #include <sys/socket.h>
-#include <cerrno>
+#include "FileDescriptor.h"
 #include "SocketAddress.h"
 #include "Exception.h"
 
-
 // Socket base class
 // Do not instantiate this directly
-class Socket
+class Socket : public FileDescriptor
 {
-private:
-	// Not default constructible
-	Socket(){}
-
-	// Not copyable
-	Socket(const Socket & s) {}
-
 protected:
 	Socket(int domain, int type, int protocol)
-		: fd(-1) 
+		: FileDescriptor()
 	{
 		fd = socket(domain, type, protocol);
 		if (fd == -1) {
 			RaiseError("Socket constructor");
-			good = false;
 		} else {
 			good = true;
 		}
 	}
 
 public:
-
-	operator bool() {
-		return good;
-	}
 
 	int Connect(SocketAddress & s) {
 		if (connect(fd, s.GetBinaryData(), s.GetBinaryLength()) < 0) {
@@ -122,28 +106,8 @@ public:
 		to = SocketAddress::NewFromBuffer();
 		return length;
 	}
-
-	// Ignore a given set of errors
-	void Ignore(boost::shared_ptr<std::set<int> > s) {
-		ignoreErrors.push_back(s);
-	}
-		
-	// Ignore all errors
-	void IgnoreAll() {
-		ignoreErrors.push_back(boost::shared_ptr<std::set<int> >((std::set<int>*)NULL));
-	}
-		
-	// Restore the previous ignore set
-	void PopIgnore() {
-		ignoreErrors.pop_back();
-	}
-
-	void RaiseError(const char* msg);
 protected:
-	int fd;
 	boost::shared_ptr<SocketAddress> peer;
-	bool good;
-	std::vector<boost::shared_ptr<std::set<int> > > ignoreErrors;
 };
 
 class UDPSocket : public Socket
@@ -162,9 +126,6 @@ public:
 	}
 	
 	int JoinMulticast(const IPAddress & addr);
-private:
-	int JoinMulticast4(const IPAddress & addr);
-	int JoinMulticast6(const IPAddress & addr);
 };
 
 #endif

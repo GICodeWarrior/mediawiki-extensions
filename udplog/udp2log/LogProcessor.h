@@ -3,18 +3,34 @@
 
 #include <fstream>
 #include <sys/time.h>
+#include <string>
+#include "../srclib/Exception.h"
 #include "../srclib/Socket.h"
+#include "../srclib/Pipe.h"
 
 class LogProcessor
 {
 public:
-	virtual void ProcessLine(char *buffer, size_t size) = 0;
+	virtual void ProcessLine(const char *buffer, size_t size) = 0;
 	virtual void FixIfBroken() {}
 	virtual ~LogProcessor() {}
+	virtual bool IsOpen() = 0;
+	virtual std::string & GetName() = 0;
+
+	virtual int IsUnsampledPipe() {
+		return false;
+	}
+
+	int GetFactor() const
+	{
+		return factor;
+	}
+
+	uint64_t GetNumLost() { return numLost; }
 
 protected:
 	LogProcessor(int factor_, bool flush_)
-		: counter(0), factor(factor_), flush(flush_)
+		: counter(0), factor(factor_), flush(flush_), numLost(0)
 	{}
 
 
@@ -35,57 +51,80 @@ protected:
 	int counter;
 	int factor;
 	bool flush;
+	uint64_t numLost;
 };
 
 class FileProcessor : public LogProcessor
 {
 public:
 	static LogProcessor * NewFromConfig(char * params, bool flush);
-	virtual void ProcessLine(char *buffer, size_t size);
+	virtual void ProcessLine(const char *buffer, size_t size);
 
-	FileProcessor(char * filename, int factor_, bool flush_) 
+	FileProcessor(char * fileName_, int factor_, bool flush_) 
 		: LogProcessor(factor_, flush_)
 	{
-		f.open(filename, std::ios::app | std::ios::out);
+		fileName = fileName_;
+		f.open(fileName_, std::ios::app | std::ios::out);
 	}
 	
-	bool IsOpen() {
+	virtual bool IsOpen() {
 		return f.good();
 	}
 
+
+	virtual std::string & GetName() {
+		return fileName;
+	}
+
 	std::ofstream f;
+	std::string fileName;
 };
 
 class PipeProcessor : public LogProcessor
 {
 public:
-	static LogProcessor * NewFromConfig(char * params, bool flush);
-	virtual void ProcessLine(char *buffer, size_t size);
+	static LogProcessor * NewFromConfig(char * params, bool flush, bool blocking);
+	virtual void ProcessLine(const char *buffer, size_t size);
 	virtual void FixIfBroken();
 
-	PipeProcessor(char * command_, int factor_, bool flush_) 
-		: LogProcessor(factor_, flush_)
-	{
-		command = strdup(command_);
-		f = popen(command, "w");
-	}
+	PipeProcessor(char * command_, int factor_, bool flush_, bool blocking_);
 
 	~PipeProcessor() 
 	{
-		free(command);
-		if (f) {
-			pclose(f);
-		}
+		Close();
 	}
 
-	bool IsOpen() 
+	virtual bool IsOpen() 
 	{
-		return (bool)f;
+		return (bool)child;
 	}
 
-	FILE * f;
-	char * command;
+	virtual int IsUnsampledPipe() {
+		return factor == 1;
+	}
+
+	Pipe & GetPipe() {
+		return pipes->writeEnd;
+	}
+
+	void CopyFromPipe(Pipe & source, size_t dataLength);
+	virtual std::string & GetName() { return command; }
+
+protected:
+	typedef boost::shared_ptr<PipePair> PipePairPointer;
+
+	void Open();
+	void Close();
+	void HandleError(libc_error & e);
+	
+	std::string command;
+
+	PipePairPointer pipes;
+	pid_t child;
+	bool blocking;
+	
 	enum {RESTART_INTERVAL = 5};
+
 };
 
 

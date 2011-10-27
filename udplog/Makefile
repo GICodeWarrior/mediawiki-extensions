@@ -1,8 +1,9 @@
 TARGETS = log2udp udprecv delta udp2log/udp2log packet-loss
-HOST_OBJS = srcmisc/host.o srclib/HostEntry.o srclib/IPAddress.o
-LOG2UDP_OBJS = srcmisc/log2udp.o srclib/HostEntry.o srclib/IPAddress.o srclib/Socket.o srclib/SocketAddress.o
-UDPRECV_OBJS = srcmisc/udprecv.o srclib/IPAddress.o srclib/Socket.o srclib/SocketAddress.o
-UDP2LOG_OBJS = udp2log/udp2log.o udp2log/LogProcessor.o udp2log/Udp2LogConfig.o srclib/IPAddress.o srclib/Socket.o srclib/SocketAddress.o
+SRCLIB_OBJS = srclib/HostEntry.o srclib/FileDescriptor.o srclib/IPAddress.o srclib/Socket.o srclib/SocketAddress.o
+HOST_OBJS = srcmisc/host.o $(SRCLIB_OBJS)
+LOG2UDP_OBJS = srcmisc/log2udp.o $(SRCLIB_OBJS)
+UDPRECV_OBJS = srcmisc/udprecv.o $(SRCLIB_OBJS)
+UDP2LOG_OBJS = udp2log/udp2log.o udp2log/LogProcessor.o udp2log/Udp2LogConfig.o $(SRCLIB_OBJS)
 CFLAGS:=$(CFLAGS) -Wall
 
 all: $(TARGETS)

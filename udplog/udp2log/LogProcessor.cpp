@@ -1,5 +1,9 @@
 #include <stdio.h>
 #include <iostream>
+#include <unistd.h>
+#include <linux/limits.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 #include "LogProcessor.h"
 #include "Udp2LogConfig.h"
 
@@ -31,7 +35,7 @@ LogProcessor * FileProcessor::NewFromConfig(char * params, bool flush)
 	return (LogProcessor*)fp;
 }
 
-void FileProcessor::ProcessLine(char *buffer, size_t size)
+void FileProcessor::ProcessLine(const char *buffer, size_t size)
 {
 	if (Sample()) {
 		f.write(buffer, size);
@@ -45,7 +49,14 @@ void FileProcessor::ProcessLine(char *buffer, size_t size)
 // PipeProcessor
 //---------------------------------------------------------------------------
 
-LogProcessor * PipeProcessor::NewFromConfig(char * params, bool flush)
+PipeProcessor::PipeProcessor(char * command_, int factor_, bool flush_, bool blocking_)
+	: LogProcessor(factor_, flush_), child(0), blocking(blocking_)
+{
+	command = command_;
+	Open();
+}
+
+LogProcessor * PipeProcessor::NewFromConfig(char * params, bool flush, bool blocking)
 {
 	char * strFactor = strtok(params, " \t");
 	if (strFactor == NULL) {
@@ -60,7 +71,7 @@ LogProcessor * PipeProcessor::NewFromConfig(char * params, bool flush)
 		);
 	}
 	char * command = strtok(NULL, "");
-	PipeProcessor * pp = new PipeProcessor(command, factor, flush);
+	PipeProcessor * pp = new PipeProcessor(command, factor, flush, blocking);
 	if (!pp->IsOpen()) {
 		delete pp;
 		throw ConfigError("Unable to open pipe");
@@ -69,37 +80,54 @@ LogProcessor * PipeProcessor::NewFromConfig(char * params, bool flush)
 	return (LogProcessor*)pp;
 }
 
-void PipeProcessor::ProcessLine(char *buffer, size_t size)
+void PipeProcessor::HandleError(libc_error & e)
 {
-	if (!f) {
+	bool restart;
+	if (e.code == EAGAIN) {
+		numLost++;
+		restart = false;
+	} else if (e.code == EPIPE) {
+		std::cerr << "Pipe terminated, suspending output: " << command << std::endl;
+		restart = true;
+	} else {
+		std::cerr << "Error writing to pipe: " << e.what() << std::endl;
+		restart = true;
+	}
+	if (restart) {
+		Close();
+		// Reopen it after a few seconds
+		alarm(RESTART_INTERVAL);
+	}
+}
+
+void PipeProcessor::ProcessLine(const char *buffer, size_t size)
+{
+	if (!child) {
 		return;
 	}
 
+
 	if (Sample()) {
-		fwrite(buffer, 1, size, f);
-		if (ferror(f)) {
-			if (errno == EPIPE) {
-				std::cerr << "Pipe terminated, suspending output: " << command << std::endl;
+		try {
+			if (blocking && size > PIPE_BUF) {
+				// Write large packets in blocking mode to preserve data integrity
+				GetPipe().SetStatusFlags(0);
+				GetPipe().Write(buffer, size);
+				GetPipe().SetStatusFlags(O_NONBLOCK);
 			} else {
-				std::cerr << "Error writing to pipe: " << strerror(errno) << std::endl;
+				GetPipe().Write(buffer, size);
 			}
-			pclose(f);
-			f = NULL;
-			// Reopen it after a few seconds
-			alarm(RESTART_INTERVAL);
-		} else {
-			if (flush) {
-				fflush(f);
-			}
+		} catch (libc_error & e) {
+			HandleError(e);
 		}
 	}
 }
 
 void PipeProcessor::FixIfBroken()
 {
-	if (!f) {
-		f = popen(command, "w");
-		if (!f) {
+	if (!child) {
+		Open();
+		if (!child) {
 			std::cerr << "Unable to restart pipe: " << command << std::endl;
 			// Try again later
 			alarm(RESTART_INTERVAL);
@@ -108,3 +136,71 @@ void PipeProcessor::FixIfBroken()
 		}
 	}
 }
+
+void PipeProcessor::Close()
+{
+	if (child) {
+		int status = 0;
+		waitpid(child, &status, 0);
+		GetPipe().Close();
+		child = 0;
+	}
+}
+
+void PipeProcessor::Open()
+{
+	if (child) {
+		throw std::runtime_error("PipeProcessor::Open called but the pipe is already open");
+	}
+	pipes = PipePairPointer(new PipePair);
+	child = fork();
+	if (!child) {
+		// This is the child process
+		pipes->writeEnd.Close();
+		pipes->readEnd.Dup2(STDIN_FILENO);
+		pipes->readEnd.Close();
+		
+		// Run the command, similar to how popen() does it
+		std::string fullCommand = std::string("exec ") + command;
+		execl("/bin/sh", "sh", "-c", fullCommand.c_str(), NULL);
+		throw libc_error("PipeProcessor::Open");
+	}
+
+	if (child == -1) {
+		// Fork failed
+		child = 0;
+		throw libc_error("PipeProcessor::Open");
+	}
+	
+	// This is the parent process
+	pipes->readEnd.Close();
+	pipes->writeEnd.SetDescriptorFlags(FD_CLOEXEC);
+	if (!blocking) {
+		pipes->writeEnd.SetStatusFlags(O_NONBLOCK);
+	}
+}
+
+void PipeProcessor::CopyFromPipe(Pipe & source, size_t dataLength)
+{
+	if (!child) {
+		return;
+	}
+
+	int flags = 0;
+	if (!blocking) {
+		flags |= SPLICE_F_NONBLOCK;
+	}
+	try {
+		if (blocking && dataLength > PIPE_BUF) {
+			// Write large packets in blocking mode to preserve data integrity
+			GetPipe().SetStatusFlags(0);
+			source.Tee(GetPipe(), dataLength, 0);
+			GetPipe().SetStatusFlags(O_NONBLOCK);
+		} else {
+			source.Tee(GetPipe(), dataLength, flags);
+		}
+	} catch (libc_error & e) {
+		HandleError(e);
+	}
+}
+

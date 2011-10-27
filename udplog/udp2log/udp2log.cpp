@@ -13,10 +13,12 @@
 #include <fcntl.h>
 #include <pwd.h>
 #include <cstdlib>
+#include <functional>
 
 #include "../srclib/Exception.h"
 #include "../srclib/Socket.h"
 #include "Udp2LogConfig.h"
+#include "SendBuffer.h"
 
 std::string configFileName("/etc/udp2log");
 std::string logFileName("/var/log/udp2log/udp2log.log");
@@ -26,7 +28,7 @@ std::string multicastAddr("0");
 
 Udp2LogConfig config;
 
-void OnHangup(int) 
+void OnHangup(int)
 {
 	config.reload = true;
 }
@@ -53,7 +55,7 @@ pid_t Daemonize()
 
 	// Change user
 	if (setgid(userData->pw_gid) == -1
-			|| setuid(userData->pw_uid) == -1) 
+			|| setuid(userData->pw_uid) == -1)
 	{
 		throw libc_error("Error changing user ID");
 	}
@@ -188,6 +190,7 @@ int main(int argc, char** argv)
 		cerr << "Unable to open socket\n";
 		return 1;
 	}
+	socket.SetDescriptorFlags(FD_CLOEXEC);
 	socket.Bind(saddr);
 
 	// Join a multicast group if requested
@@ -199,14 +202,18 @@ int main(int argc, char** argv)
 			return 1;
 		}
 	}
+
 	// Process received packets
 	boost::shared_ptr<SocketAddress> address;
 	const size_t bufSize = 65536;
-	char buffer[bufSize];
-	char *line1, *line2;
-	ssize_t bytesRemaining, bytesRead;
+	char receiveBuffer[bufSize];
+	ssize_t bytesRead;
+	SendBuffer<ConfigWriteCallback> sendBuffer(PIPE_BUF, config.GetWriteCallback());
+
+	time_t lossReportTime = 0;
+
 	for (;;) {
-		bytesRead = socket.RecvFrom(buffer, bufSize, address);
+		bytesRead = socket.RecvFrom(receiveBuffer, bufSize, address);
 		if (bytesRead <= 0) {
 			continue;
 		}
@@ -219,24 +226,12 @@ int main(int argc, char** argv)
 			continue;
 		}
 
-		// Split into lines and hand off to the processors
-		line1 = buffer;
-		bytesRemaining = bytesRead;
-		while (bytesRemaining) {
-			// Find the next line break
-			line2 = (char*)memchr(line1, '\n', bytesRemaining);
-			if (line2) {
-				// advance line2 to the start of the next line
-				line2++;
-				// Process the line
-				config.ProcessLine(line1, line2 - line1);
-				bytesRemaining -= line2 - line1;
-			} else {
-				// no more lines, process the remainder of the buffer
-				config.ProcessLine(line1, bytesRemaining);
-				bytesRemaining = 0;
-			}
-			line1 = line2;
+		sendBuffer.Write(receiveBuffer, bytesRead);
+
+		time_t currentTime = time(NULL);
+		if (currentTime - lossReportTime > 60) {
+			config.PrintLossReport(std::cout);
+			lossReportTime = currentTime;
 		}
 	}
 }

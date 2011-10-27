@@ -9,7 +9,8 @@
 class libc_error : public std::runtime_error {
 public:
 	libc_error(const std::string & what_arg)
-		: std::runtime_error(std::string(what_arg).append(": ").append(std::strerror(errno)))
+		: std::runtime_error(std::string(what_arg).append(": ").append(std::strerror(errno))),
+		code(errno)
 	{}
 
 	const char* what() {
@@ -19,5 +20,6 @@ public:
 	virtual ~libc_error() throw() {}
 
 	std::string msg;
+	int code;
 };
 #endif
