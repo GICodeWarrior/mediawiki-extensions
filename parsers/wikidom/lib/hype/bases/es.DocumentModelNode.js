@@ -182,6 +182,7 @@ es.DocumentModelNode.prototype.getElementAttribute = function( key ) {
 es.DocumentModelNode.prototype.getContent = function( range ) {
 	// Find root
 	var root = this.data ? this : ( this.root.data ? this.root : null );
+
 	if ( root ) {
 		return root.getContentFromNode( this, range );
 	}

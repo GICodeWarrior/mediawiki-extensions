@@ -7,5 +7,7 @@
  */
 es.ListView = function( model ) {
 	// Extension
-	return es.extendObject( new es.DocumentViewBranchNode( model ), this );
+	var view = es.extendObject( new es.DocumentViewBranchNode( model ), this );
+	view.$.addClass( 'editSurface-listBlock' );
+	return view;
 };

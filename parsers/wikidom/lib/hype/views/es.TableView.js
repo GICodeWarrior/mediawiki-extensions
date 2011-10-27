@@ -7,5 +7,8 @@
  */
 es.TableView = function( model ) {
 	// Extension
-	return es.extendObject( new es.DocumentViewBranchNode( model ), this );
+	var view = es.extendObject( new es.DocumentViewBranchNode( model, $( '<table>' ) ), this );
+	view.$.attr( 'style', model.getElementAttribute( 'html/style' ) );
+	view.$.addClass( 'editSurface-tableBlock' );
+	return view;
 };

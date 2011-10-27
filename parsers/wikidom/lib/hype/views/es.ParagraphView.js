@@ -7,5 +7,7 @@
  */
 es.ParagraphView = function( model ) {
 	// Extension
-	return es.extendObject( new es.DocumentViewLeafNode( model ), this );
+	var view = es.extendObject( new es.DocumentViewLeafNode( model ), this );
+	view.$.addClass( 'editSurface-paragraphBlock' );
+	return view;
 };

@@ -31,6 +31,7 @@ es.ModelNode = function( children ) {
 	if ( es.isArray( children ) ) {
 		for ( var i = 0; i < children.length; i++ ) {
 			node.push( children[i] );
+			children[i].parent = node;
 		}
 	}
 	

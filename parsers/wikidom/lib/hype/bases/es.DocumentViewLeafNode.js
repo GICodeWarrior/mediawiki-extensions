@@ -12,7 +12,8 @@ es.DocumentViewLeafNode = function( model, $element ) {
 	var node = es.extendObject( new es.DocumentNode( new es.ViewNode( model, $element ) ), this );
 	
 	// Content
-	node.contentView = new es.ContentView( node.$, model );
+	node.$content = $( '<div class="editSurface-content"></div>' ).appendTo( node.$ );
+	node.contentView = new es.ContentView( node.$content, model );
 	
 	return node;
 };
