@@ -38,14 +38,13 @@ es.DocumentModel.nodeModels = {};
  * 
  * Each rule is an object with a parents and children property. Each of these properties may contain
  * one of three possible values:
- *     Array - List of allowed element types
+ *     Array - List of allowed element types (if empty, no elements will be allowed)
  *     Null - Any element type is allowed (as long as the other element also allows it)
- *     Boolean False - No elements are allowed (used for nodes that can not have children)
  * 
  * @example Paragraph rules
  *     {
  *         'parents': null,
- *         'children': false
+ *         'children': []
  *     }
  * @example List rules
  *     {
@@ -55,7 +54,7 @@ es.DocumentModel.nodeModels = {};
  * @example ListItem rules
  *     {
  *         'parents': ['list'],
- *         'children': false
+ *         'children': []
  *     }
  */
 es.DocumentModel.nodeRules = {};

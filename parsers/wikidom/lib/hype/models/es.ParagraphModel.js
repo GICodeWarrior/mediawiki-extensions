@@ -27,5 +27,5 @@ es.DocumentModel.nodeModels.paragraph = es.ParagraphModel;
 
 es.DocumentModel.nodeRules.paragraph = {
 	'parents': null,
-	'children': false
+	'children': []
 };
