@@ -75,6 +75,13 @@ $messages['he'] = array(
 	'resumableupload-desc' => 'תמיכה בהעלאה שאפשר להפסיק ולהמשיך',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'resumableupload-desc' => 'Zmóžnja z nahraćom pokročować',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
