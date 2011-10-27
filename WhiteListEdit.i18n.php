@@ -1698,9 +1698,9 @@ Tuta strona je jenož na wobmjezowanych wužiwarjow nałožujomna.",
 	'action-editwhitelist' => 'Běłu lisćinu za eksistowacych wužiwarjow změnić',
 	'action-restricttowhitelist' => 'Jenož strony z běłeje lisćiny wobdźěłać a sej wobhladać',
 	'group-restricted' => 'Wobmjezowani wužiwarjo',
-	'group-restricted-member' => 'Wobmjezowany wužiwar',
+	'group-restricted-member' => '{{GENDER:$1|wobmjezowany wužiwar|wobmjezowana wužiwarka}}',
 	'group-manager' => 'Zarjadnicy',
-	'group-manager-member' => 'Zarjadnik',
+	'group-manager-member' => '{{GENDER:$1|zarjadnik|zarjadnica}}',
 );
 
 /** Hungarian (Magyar)
