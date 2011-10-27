@@ -393,6 +393,7 @@ $messages['hsb'] = array(
 	'useroptionstats-desc' => '[[Special:UserOptionStats|Specialna strona]] za rozprawjenje wo wužiwanju wužiwarskich opcijow na MediaWiki',
 	'uos-warn' => 'PHPlot njeje instalowany!',
 	'uos-choose' => 'Jednu ze slědowacych wužiwarskich opcijow wubrać: $1',
+	'uos-choose-hidden' => 'Wubjer jednu ze slědowacych schowanych wužiwarskich opcijow: $1',
 	'uos-unknown' => '*Standardnu',
 	'uos-other' => '*Druhu',
 	'uos-title' => 'Distribucija hódnotow wužiwarskeje opcije $1',
