@@ -26,6 +26,12 @@ $wgExtensionCredits[version_compare( $wgVersion, '1.17', '>=' ) ? 'userpage tool
 $dir = dirname( __FILE__ );
 $wgExtensionMessagesFiles['OnlineStatusBar'] = "$dir/OnlineStatusBar.i18n.php";
 
+$wgResourceModules['ext.OnlineStatusBar'] = array (
+	'styles' => 'OnlineStatusBar.css',
+	'localBasePath' => dirname ( __FILE__ ),
+	'remoteExtPath' => 'OnlineStatusBar',
+	);
+
 $wgAutoloadClasses['OnlineStatusBar'] = "$dir/OnlineStatusBar.body.php";
 
 // Configuration
@@ -145,5 +151,6 @@ function wfOnlineStatusBar_SetDefaultOptions( &$defaultOptions ) {
 }
 
 $wgHooks['LanguageGetMagic'][] = 'OnlineStatusBar::MagicWordVar';
+$wgHooks['BeforePageDisplay'][] = 'OnlineStatusBar::StylePage';
 $wgHooks['MagicWordwgVariableIDs'][] = 'OnlineStatusBar::MagicWordSet';
 $wgHooks['ParserGetVariableValueSwitch'][] = 'OnlineStatusBar::ParserGetVariable';

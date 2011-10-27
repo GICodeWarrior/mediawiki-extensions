@@ -33,7 +33,7 @@ HTML;
 		$modeText = $wgOnlineStatusBarModes[$mode];
 		return Html::element( 'img', array( 'src' => $icon ) );
 	}
-	
+
 	public static function ParserGetVariable ( &$parser, &$varCache, &$index, &$ret ){
 		if( $index == 'isonline' ){
 		$name = self::GetOwnerFromTitle ( $parser->getTitle() )->getName();
@@ -46,6 +46,11 @@ HTML;
 		}
 		return true;
 	}
+
+	public static function StylePage ( &$out, &$skin ) {
+		$out->addModules ( 'ext.OnlineStatusBar' );
+		return true;
+		}
 
 	public static function GetNow() {
 		return gmdate( 'Ymdhis', time() );
