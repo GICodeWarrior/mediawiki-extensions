@@ -291,7 +291,7 @@ $messages['hsb'] = array(
 	'logentry-parserhook-desc' => 'Tute rozšěrjenje staja formular za připójsnjenje teksta resp. započenje z tekstom k protokolowym stronam',
 	'logentry-specialpage-desc' => 'Tute rozšěrjenje skića předźěłanje za připójsnjenje k protokolowym stronam',
 	'logentry' => 'Protokolowy zapisk',
-	'logentry-invalidpage' => 'Njepłaćiwa strona',
+	'logentry-invalidpage' => 'Njepłaćiwa strona: $1',
 	'logentry-invalidtoken' => 'Njepłaćiwy token',
 );
 

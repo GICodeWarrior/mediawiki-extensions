@@ -3691,6 +3691,13 @@ $messages['ig'] = array(
 	'deletequeue-case-reason' => 'Mgbághapụtà:',
 );
 
+/** Iloko (Ilokano)
+ * @author Lam-ang
+ */
+$messages['ilo'] = array(
+	'deletequeue-list-search' => 'Biroken',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */

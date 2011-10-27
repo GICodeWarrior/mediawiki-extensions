@@ -407,6 +407,15 @@ $messages['id'] = array(
 	'block_title_error' => 'Maaf, judul halaman ini tidak diperbolehkan untuk disimpan.',
 );
 
+/** Iloko (Ilokano)
+ * @author Lam-ang
+ */
+$messages['ilo'] = array(
+	'block_title_error_page_title' => 'Naserraan a titulo',
+	'blocktitles-desc' => 'Mangikabil ti kaunaan a daan ti panangiparit kadagiti panid nga adda dagiti kas siguru a titulo ti pinaka-idulin wenno pinaka-aramid.',
+	'block_title_error' => 'Pasensian a, ti titulo daytoy nga panid ket saan nga mabalin nga idulin.',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Internationalization file for the Semantic Data Types extension.
  *

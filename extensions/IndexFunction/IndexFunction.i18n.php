@@ -751,6 +751,13 @@ $messages['ig'] = array(
 	'index-search' => 'Chọwa:',
 );
 
+/** Iloko (Ilokano)
+ * @author Lam-ang
+ */
+$messages['ilo'] = array(
+	'index-search' => 'Biroken:',
+);
+
 /** Italian (Italiano)
  * @author Civvì
  * @author Darth Kule

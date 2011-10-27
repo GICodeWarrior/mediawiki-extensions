@@ -2960,6 +2960,13 @@ $wgGoogleMapsMessages['ig'] = array(
 	'gm-mars' => 'Ùwà Ikenga',
 );
 
+/** Iloko (Ilokano)
+ * @author Lam-ang
+ */
+$wgGoogleMapsMessages['ilo'] = array(
+	'gm-search' => 'Biroken',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */

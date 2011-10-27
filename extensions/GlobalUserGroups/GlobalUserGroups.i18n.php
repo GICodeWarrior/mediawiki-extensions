@@ -55,6 +55,13 @@ $messages['he'] = array(
 	'globalusergroups-desc' => 'מאפשרת שימוש בקבוצות מקומיות מוגדרות כמו בקבוצות גלובליות',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'globalusergroups-desc' => 'Zmóžnja wužiwanje definowanych lokalnych wužiwarskich skupinow jako globalne skupiny',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

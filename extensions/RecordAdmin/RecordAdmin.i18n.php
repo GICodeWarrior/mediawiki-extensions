@@ -1252,6 +1252,13 @@ $messages['ig'] = array(
 	'recordadmin-actions' => 'Mèzi',
 );
 
+/** Iloko (Ilokano)
+ * @author Lam-ang
+ */
+$messages['ilo'] = array(
+	'recordadmin-buttonsearch' => 'Biroken',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */

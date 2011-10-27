@@ -843,6 +843,13 @@ $messages['ig'] = array(
 	'refhelper-search' => 'Chọwa',
 );
 
+/** Iloko (Ilokano)
+ * @author Lam-ang
+ */
+$messages['ilo'] = array(
+	'refhelper-search' => 'Biroken',
+);
+
 /** Italian (Italiano) */
 $messages['it'] = array(
 	'refhelper-title' => 'Titolo:',

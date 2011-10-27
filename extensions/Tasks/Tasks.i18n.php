@@ -2005,6 +2005,13 @@ $messages['ig'] = array(
 	'tasks_search_form_title' => 'Chọwa',
 );
 
+/** Iloko (Ilokano)
+ * @author Lam-ang
+ */
+$messages['ilo'] = array(
+	'tasks_search_form_title' => 'Biroken',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  * @author Pietrodn

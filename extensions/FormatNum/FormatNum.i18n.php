@@ -41,6 +41,13 @@ $messages['gl'] = array(
 	'formatnum-desc' => 'Pasa formatnum ao number_format do PHP',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'formatnum-desc' => 'Formatuje ličby we formaće number_format z PHP',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

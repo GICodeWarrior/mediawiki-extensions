@@ -830,6 +830,13 @@ $messages['ig'] = array(
 	'editmsg-search' => 'Chọwa',
 );
 
+/** Iloko (Ilokano)
+ * @author Lam-ang
+ */
+$messages['ilo'] = array(
+	'editmsg-search' => 'Biroken',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  * @author Pietrodn

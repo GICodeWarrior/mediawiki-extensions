@@ -225,6 +225,15 @@ $messages['id'] = array(
 	'pdfbook-desc' => 'Menyusun suatu buku dari halaman dalam kategori dan mengekspornya sebagai buku PDF',
 );
 
+/** Iloko (Ilokano)
+ * @author Lam-ang
+ */
+$messages['ilo'] = array(
+	'pdfbook-action' => 'Imaldit a kasla PDF',
+	'pdfbook-log' => '$1 iangkat a kasla PDF na libro',
+	'pdfbook-desc' => 'Agaramid ti libro nga naggapu kadagiti pampanid iti kategoria ken iangkat a kasla PDF a libro',
+);
+
 /** Italian (Italiano)
  * @author Beta16
  */
