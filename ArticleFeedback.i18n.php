@@ -7235,7 +7235,7 @@ $messages['yo'] = array(
  * @author Xiaomingyan
  * @author 阿pp
  */
-$messages['zh'] = $messages['zh-cn'] = $messages['zh-my'] = $messages['zh-sg'] = $messages['zh-hans'] = array(
+$messages['zh-hans'] = array(
 	'articlefeedback' => '条目评分面板',
 	'articlefeedback-desc' => '条目评分',
 	'articlefeedback-survey-question-origin' => '当你开始这项统计调查的时候正在访问哪个页面？',
@@ -7363,7 +7363,7 @@ $3
  * @author Shizhao
  * @author Waihorace
  */
-$messages['zh-hk'] = $messages['zh-tw'] = $messages['zh-mo'] = $messages['zh-hant'] = array(
+$messages['zh-hant'] = array(
 	'articlefeedback' => '條目評分公告板',
 	'articlefeedback-desc' => '條目評分',
 	'articlefeedback-survey-question-origin' => '在你開始這個調查的時候你在哪一頁？',
