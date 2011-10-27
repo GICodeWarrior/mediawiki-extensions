@@ -35,21 +35,14 @@ HTML;
 	}
 	
 	public static function ParserGetVariable ( &$parser, &$varCache, &$index, &$ret ){
-		global $wgOnlineStatusBarDefaultOffline;
 		if( $index == 'isonline' ){
 		$name = self::GetOwnerFromTitle ( $parser->getTitle() )->getName();
 		
 		if ( self::IsValid($name) != true ) {
-			$ret = "false";
+			$ret = "unknown";
 			return true;
 		}
-		 	
-		if( self::GetStatus ( $name ) == $wgOnlineStatusBarDefaultOffline ) {
-			$ret = "false";
-			return true;
-		} else {
-			$ret = "true";
-		}
+			$ret = self::GetStatus( $name );
 		}
 		return true;
 	}
