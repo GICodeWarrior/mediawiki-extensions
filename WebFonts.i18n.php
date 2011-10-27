@@ -202,6 +202,17 @@ $messages['id'] = array(
 	'webfonts-disable-preference' => 'Nonaktifkan penyertaan fon (WebFonts)',
 );
 
+/** Iloko (Ilokano)
+ * @author Lam-ang
+ */
+$messages['ilo'] = array(
+	'webfonts' => 'WebFonts',
+	'webfonts-desc' => 'Ikabil dagiti kita ti letra kadagiti panid',
+	'webfonts-load' => 'Agpili ti kita ti letra',
+	'webfonts-reset' => 'Isubli',
+	'webfonts-enable-preference' => 'Ipabalin ti pinagikabil ti kita ti letra (WebFonts)',
+);
+
 /** Italian (Italiano)
  * @author Beta16
  */
