@@ -1166,6 +1166,7 @@ $messages['fo'] = array(
 /** French (Français)
  * @author AVRS
  * @author Crochet.david
+ * @author DavidL
  * @author Grondin
  * @author Jean-Frédéric
  * @author Peter17
@@ -1189,8 +1190,8 @@ $messages['fr'] = array(
 	'ogg-stop' => 'Arrêt',
 	'ogg-play-video' => 'Lire la vidéo',
 	'ogg-play-sound' => 'Lire le son',
-	'ogg-no-player' => 'Désolé, votre système ne possède apparemment aucun des lecteurs supportés. Veuillez installer <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/fr">un des lecteurs supportés</a>.',
-	'ogg-no-xiphqt' => 'Vous n’avez apparemment pas le composant XiphQT pour Quicktime. Quicktime ne peut pas lire les fichiers Ogg sans ce composant. Veuillez <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/fr">télécharger XiphQT</a> ou choisir un autre lecteur.',
+	'ogg-no-player' => 'Désolé, votre système ne possède apparemment aucun des lecteurs supportés. Veuillez installer <a href="//www.mediawiki.org/wiki/Extension:OggHandler/Client_download/fr">un des lecteurs supportés</a>.',
+	'ogg-no-xiphqt' => 'Vous n’avez apparemment pas le composant XiphQT pour Quicktime. Quicktime ne peut pas lire les fichiers Ogg sans ce composant. Veuillez <a href="//www.mediawiki.org/wiki/Extension:OggHandler/Client_download/fr">télécharger XiphQT</a> ou choisir un autre lecteur.',
 	'ogg-player-videoElement' => 'Support du navigateur natif',
 	'ogg-player-oggPlugin' => 'Module complémentaire du navigateur',
 	'ogg-player-thumbnail' => 'Image statique seulement',
