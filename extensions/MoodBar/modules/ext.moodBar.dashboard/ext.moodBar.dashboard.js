@@ -333,12 +333,6 @@ jQuery( function( $ ) {
 		loadComments( 'filter' );
 	} );
 	
-	$( '.fbd-item-userLink' ).live( 'click', function( e ) {
-		e.preventDefault();
-		$('#fbd-filters-username').val( $(this).text() );
-		$('#fbd-filters').children('form').submit();
-	} );
-	
 	$( '#fbd-list-more' ).children( 'a' ).click( function( e ) {
 		e.preventDefault();
 		// We don't call saveFormState() here because we want to use the state of the form
@@ -346,15 +340,4 @@ jQuery( function( $ ) {
 		// you changed the form state then clicked More.
 		loadComments( 'more' );
 	} );
-	
-	saveFormState();
-	var filterType = $( '#fbd-filters' ).children( 'form' ).data( 'filtertype' );
-	// If filtering already happened on the PHP side, don't load the form state from cookies
-	if ( filterType != 'filtered' ) {
-		// Don't do an AJAX filter if we're on an ID view, or if the form is still blank after loadFromCookies()
-		if ( loadFromCookies() && filterType != 'id' ) {
-			saveFormState();
-			loadComments( 'filter' );
-		}
-	}
 } );
