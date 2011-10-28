@@ -165,8 +165,10 @@ $messages['gl'] = array(
  */
 $messages['gsw'] = array(
 	'webfonts' => 'WebSchriftarte',
+	'webfonts-desc' => 'Schriftarte in Syte yybette',
 	'webfonts-load' => 'Schriftart usswääle',
 	'webfonts-reset' => 'Zruggsetze',
+	'webfonts-enable-preference' => 'D Yybettig vo Schriftarte aktiviere',
 );
 
 /** Hebrew (עברית)
