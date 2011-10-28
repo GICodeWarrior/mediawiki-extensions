@@ -1133,6 +1133,7 @@ $messages['mr'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author CoolCityCat
  * @author Diagramma Della Verita
  */
@@ -1145,7 +1146,13 @@ $messages['ms'] = array(
 	'editmsg-get-patch' => 'Lakukan penyesuaian',
 	'editmsg-new-search' => 'Carian baru',
 	'editmsg-warning-parse1' => '* Nama mesej regex tidak tepat: $1',
+	'editmsg-warning-parse2' => '* Aksara petikan dijangka selepas anak panah: $1',
+	'editmsg-warning-parse3' => '* Hujung rentetan nilai tidak dijumpai: $1',
+	'editmsg-warning-file' => '* Ralat pembacaan fail ditemui untuk {{PLURAL:$2|bahasa|bahasa-bahasa}} yang berikut: $1',
+	'editmsg-warning-mismatch' => '* Teks asal tiada nilai yang dijangka untuk {{PLURAL:$2|bahasa|bahasa-bahasa}} yang berikut: $1',
+	'editmsg-apply-patch' => 'Gunakan tampung',
 	'editmsg-no-patch' => 'Tidak dapat menjalankan perintah "tampal"',
+	'editmsg-patch-failed' => 'Tampung tidak menjadi dengan status keluar $1',
 	'editmsg-patch-success' => 'Tampalan berjaya.',
 );
 
