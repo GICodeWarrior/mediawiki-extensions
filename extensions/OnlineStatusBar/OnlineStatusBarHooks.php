@@ -67,7 +67,7 @@ class OnlineStatusBarHooks {
 			return true;
 		}
 
-		$modetext = wfMessage( 'onlinestatusbar-status-' . $status )->escaped();
+		$modetext = wfMessage( 'onlinestatusbar-status-' . $status )->toString();
 		$image = OnlineStatusBar::getImageHtml( $status );
 		$text = wfMessage( 'onlinestatusbar-line', $user->getName() )
 				->rawParams( $image )->params( $modetext )->escaped();
