@@ -7,11 +7,11 @@
  */
 class OnlineStatusBarHooks {
 	/**
-	 * @param DatabaseUpdate|null $updater
+	 * @param DatabaseUpdater|null $updater
 	 * @return bool
 	 */
 	public static function ckSchema( $updater = null ) {
-		if ( $updater !== null ){
+		if ( $updater !== null ) {
 			$updater->addExtensionUpdate( array( 'addtable', 'online_status', dirname( __FILE__ ) . '/OnlineStatusBar.sql', true ) );
 		} else {
 			global $wgExtNewTables;
@@ -47,48 +47,35 @@ class OnlineStatusBarHooks {
 	 * @return bool
 	 */
 	public static function renderBar( &$article, &$outputDone, &$pcache ) {
-		global $messages, $wgOnlineStatusBarDefaultIpUsers, $wgOnlineStatusBarModes, $wgOut;
+		$context = $article->getContext();
+
 		OnlineStatusBar::UpdateStatus();
-		// anonymous user
-		$anon = false;
-		$ns = $article->getTitle()->getNamespace();
-		if ( ( $ns == NS_USER_TALK ) || ( $ns == NS_USER ) ) {
-			$user = OnlineStatusBar::GetOwnerFromTitle ( $article->getTitle() );
-			$userName = $article->getTitle()->getBaseText();
-			if ( User::isIP ( $userName ) != true && $user == null ) {
-				return true;
-			}
-			if ( User::isIP ( $userName ) && $user == null && $wgOnlineStatusBarDefaultIpUsers ) {
-				// it's anon user and we want to track them
-				$sanitizedusername = $userName;
-				$anon = true;
-			} else if ( $user != null ) {
-				// Fix capitalisation issues
-				$sanitizedusername = $user->getName();
-			} else {
-				return true;
-			}
-			if ( $anon == false )
-			{
-			// check if it's not anon, let's check the config
-				if ( $user->getOption ( "OnlineStatusBar_hide" ) == true ) {
-					return true;
-				}
-			}
-			if ( OnlineStatusBar::IsValid( $userName ) ) {
-				$mode = OnlineStatusBar::GetStatus( $userName );
-				$modetext = $wgOnlineStatusBarModes[$mode];
-				$image = OnlineStatusBar::getImageHtml( $mode );
-				$text = wfMessage( 'onlinestatusbar-line', $userName )->rawParams( $image )->params( $modetext )->escaped();
-				$wgOut->addHtml( OnlineStatusBar::Get_Html( $text, $mode ) );
-			}
+		$result = OnlineStatusBar::getUserInfoFromTitle( $article->getTitle() );
+
+		if ( $result === false ) {
+			return true;
 		}
+
+		/** @var $user User */
+		list( $status, $user ) = $result;
+
+		// Don't display status of those who have opted out
+		if ( $user->getOption( 'OnlineStatusBar_hide' ) == true ) {
+			return true;
+		}
+
+		$modetext = wfMessage( 'onlinestatusbar-status-' . $status )	;
+		$image = OnlineStatusBar::getImageHtml( $status );
+		$text = wfMessage( 'onlinestatusbar-line', $user->getName() )
+				->rawParams( $image )->params( $modetext )->escaped();
+		$context->getOutput()->addHtml( OnlineStatusBar::getStatusBarHtml( $text ) );
+
 		return true;
 	}
 
 	/**
 	 * @param $user User
-	 * @paramNireferences array
+	 * @param $preferences array
 	 * @return bool
 	 */
 	public static function preferencesHook( User $user, array &$preferences ) {
@@ -97,10 +84,10 @@ class OnlineStatusBarHooks {
 		$preferences['OnlineStatusBar_hide'] = array( 'type' => 'toggle', 'label-message' => 'onlinestatusbar-hide', 'section' => 'misc/onlinestatus' );
 		$preferences['OnlineStatusBar_status'] = array( 'type' => 'radio', 'label-message' => 'onlinestatusbar-status', 'section' => 'misc/onlinestatus',
 			'options' => array(
-				$wgOnlineStatusBarModes['online'] => 'online',
-				$wgOnlineStatusBarModes['busy'] => 'busy',
-				$wgOnlineStatusBarModes['away'] => 'away',
-				$wgOnlineStatusBarModes['hidden'] => 'hidden'
+				wfMessage( 'onlinestatusbar-status-online' )->escaped() => 'online',
+				wfMessage( 'onlinestatusbar-status-busy' )->escaped() => 'busy',
+				wfMessage( 'onlinestatusbar-status-away' )->escaped() => 'away',
+				wfMessage( 'onlinestatusbar-status-hidden' )->escaped() => 'hidden'
 			),
 		);
 		return true;
@@ -125,8 +112,8 @@ class OnlineStatusBarHooks {
 	 * @param $ln string?
 	 * @return bool
 	 */
-	public static function magicWordVar ( array &$magicWords, $ln ) {
-		$magicWords['isonline'] = array ( 0, 'isonline' );
+	public static function magicWordVar( array &$magicWords, $ln ) {
+		$magicWords['isonline'] = array( 0, 'isonline' );
 		return true;
 	}
 
@@ -135,7 +122,7 @@ class OnlineStatusBarHooks {
 	 * @param $skin Skin
 	 * @return bool
 	 */
-	public static function stylePage ( &$out, &$skin ) {
+	public static function stylePage( &$out, &$skin ) {
 		$out->addModules( 'ext.OnlineStatusBar' );
 		return true;
 	}
@@ -144,7 +131,7 @@ class OnlineStatusBarHooks {
 	 * @param $vars array
 	 * @return bool
 	 */
-	public static function magicWordSet ( &$vars ) {
+	public static function magicWordSet( &$vars ) {
 		$vars[] = 'isonline';
 		return true;
 	}
@@ -156,25 +143,19 @@ class OnlineStatusBarHooks {
 	 * @param $ret string?
 	 * @return bool
 	 */
-	public static function parserGetVariable ( &$parser, &$varCache, &$index, &$ret ){
-		global $wgOnlineStatusBarModes, $wgOnlineStatusBarDefaultOffline;
-		if( $index == 'isonline' ){
-			$ns = $parser->getTitle()->getNamespace();
-                	if ( ( $ns != NS_USER_TALK ) && ( $ns != NS_USER ) ) {
-				$ret = "unknown";
-				return true;
-			}
-			$name = OnlineStatusBar::GetOwnerFromTitle ( $parser->getTitle() )->getName();
-
-			if ( OnlineStatusBar::IsValid($name) != true ) {
-				$ret = "unknown";
-				return true;
-			}
-			$ret = OnlineStatusBar::GetStatus( $name );
-			if ( $ret == "hidden" ) {
-				$ret = $wgOnlineStatusBarDefaultOffline;
-			}
+	public static function parserGetVariable( &$parser, &$varCache, &$index, &$ret ) {
+		if ( $index != 'isonline' ) {
+			return true;
 		}
+
+		$result = OnlineStatusBar::getUserInfoFromTitle( $parser->getTitle() );
+
+		if ( $result === null ) {
+			$ret = "unknown";
+			return true;
+		}
+
+		$ret = $result[0];
 		return true;
 	}
 }

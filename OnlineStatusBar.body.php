@@ -17,40 +17,70 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 class OnlineStatusBar {
 
-	public static function Get_Html( $text, $mode ) {
-		global $wgOnlineStatusBarColor, $wgOnlineStatusBarY;
-		$color = $wgOnlineStatusBarColor[$mode];
+	public static function getStatusBarHtml( $text ) {
 		return <<<HTML
 <div class="onlinebar metadata topiconstatus" id="status-top">
 <div class="statusbaricon">
 $text</div></div>
 HTML;
 	}
-	
+
 	/**
-	 * Returns image
-	 * @param $mode User
+	 * Returns image element
+	 *
+	 * @param $mode String
 	 * @return string
 	 */
 	public static function GetImageHtml( $mode ) {
 		global $wgExtensionAssetsPath, $wgOnlineStatusBarIcon, $wgOnlineStatusBarModes;
 		$icon = "$wgExtensionAssetsPath/OnlineStatusBar/{$wgOnlineStatusBarIcon[$mode]}";
-		$modeText = $wgOnlineStatusBarModes[$mode];
 		return Html::element( 'img', array( 'src' => $icon ) );
 	}
 
 	/**
-	 * @param $title Title
-	 * @return user
+	 * Returns the status and User element
+	 *
+	 * @param Title $title
+	 * @return array|bool Array containing the status and User object
 	 */
-	public static function GetOwnerFromTitle ( $title )
-	{
-		if ( $title === null ) {
-			return null;
+	public static function getUserInfoFromTitle( Title $title ) {
+		if ( $title->getNamespace() != NS_USER && $title->getNamespace() != NS_USER_TALK ) {
+			return false;
 		}
-		$username =  $title->getBaseText();
-		$user_object = User::newFromName ( $username );
-		return $user_object;
+
+		$user = User::newFromName( $title->getBaseText() );
+		// Invalid user
+		if ( $user === false ) {
+			return false;
+		}
+
+		if ( !self::isValid( $user ) ) {
+			return false;
+		}
+
+		$status = self::getStatus( $user );
+
+		return array( $status, $user );
+	}
+
+	public static function getStatus( $user ) {
+		global $wgOnlineStatusBarDefaultOffline, $wgOnlineStatusBarDefaultOnline;
+
+		$dbr = wfGetDB( DB_SLAVE );
+		$result = $dbr->selectField( 'online_status', 'username', array( 'username' => $user->getName() ),
+			__METHOD__, array( 'LIMIT 1', 'ORDER BY timestamp DESC' ) );
+
+		if ( $result === false ) {
+			$status = $wgOnlineStatusBarDefaultOffline;
+		} else {
+			$status = $user->getOption( 'OnlineStatusBar_status', $wgOnlineStatusBarDefaultOnline );
+		}
+
+		if ( $status == 'hidden' ) {
+			$status = 'offline';
+		}
+
+		return $status;
 	}
 
 	/**
@@ -58,7 +88,9 @@ HTML;
 	 */
 	public static function UpdateDb() {
 		global $wgUser, $wgOnlineStatusBarDefaultOnline;
-		if ( OnlineStatusBar::GetStatus( $wgUser->getName() ) != $wgOnlineStatusBarDefaultOnline ) {
+		// TODO: This means that if the current status isn't online we insert a
+		// new row each request. yuck.
+		if ( OnlineStatusBar::GetStatus( $wgUser ) != $wgOnlineStatusBarDefaultOnline ) {
 			$dbw = wfGetDB( DB_MASTER );
 			$row = array(
 				'username' => $wgUser->getName(),
@@ -74,10 +106,11 @@ HTML;
 	 */
 	public static function UpdateStatus() {
 		global $wgUser, $wgOnlineStatusBarDefaultOffline;
-		if ( OnlineStatusBar::GetStatus( $wgUser->getName() ) == $wgOnlineStatusBarDefaultOffline ) {
+		if ( OnlineStatusBar::GetStatus( $wgUser ) == $wgOnlineStatusBarDefaultOffline ) {
 			OnlineStatusBar::UpdateDb();
 			return true;
 		}
+
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->update(
 			'online_status',
@@ -85,6 +118,7 @@ HTML;
 			array( 'username' => $wgUser->getID() ),
 			__METHOD__
 		);
+
 		return false;
 	}
 
@@ -92,9 +126,10 @@ HTML;
 	 * @return int
 	 */
 	public static function DeleteOld() {
-		global $wgOnlineStatusBar_LogoutTime, $wgDBname;
+		global $wgOnlineStatusBar_LogoutTime;
 		$dbw = wfGetDB( DB_MASTER );
 		$time = wfTimestamp( TS_UNIX ) - $wgOnlineStatusBar_LogoutTime;
+		// FIXME: This looks wrong:
 		$time = $dbw->addQuotes( $dbw->timestamp( $time ) - $wgOnlineStatusBar_LogoutTime );
 		$dbw->delete( 'online_status', array( "timestamp < $time" ), __METHOD__ );
 		return 0;
@@ -102,50 +137,25 @@ HTML;
 
 
 	/**
-	 * @param $userName string
+	 * Checks to see if the user can be tracked
+	 *
+	 * @param User $user
 	 * @return bool
 	 */
-	public static function IsValid( $userName ) {
-		global $wgOnlineStatusBarDefaultIpUsers, $wgOnlineStatusBarDefaultEnabled;
+	public static function isValid( User $user ) {
+		global $wgOnlineStatusBarTrackIpUsers, $wgOnlineStatusBarDefaultEnabled;
+
 		// checks if anon
-		if ( User::isIP( $userName ) ) {
-			return $wgOnlineStatusBarDefaultIpUsers;
+		if ( $user->isAnon() ) {
+			return $wgOnlineStatusBarTrackIpUsers;
 		}
-		$user = User::newFromName( $userName );
-		// check if exist
-		if ( $user == null ) {
-			return false;
-		}
+
 		if ( $user->getId() == 0 )
 		{
 			return false;
 		}
 		// do we track them
 		return $user->getOption( "OnlineStatusBar_active", $wgOnlineStatusBarDefaultEnabled );
-	}
-
-	/**
-	 * @param $userName string
-	 * @return string
-	 */
-	static function GetStatus( $userName ) {
-		global $wgOnlineStatusBarModes, $wgOnlineStatusBarDefaultOffline, $wgOnlineStatusBarDefaultIpUsers, $wgOnlineStatusBarDefaultOnline, $wgDBname;
-		$dbw = wfGetDB( DB_MASTER );
-		OnlineStatusBar::DeleteOld();
-		$user = User::newFromName( $userName );
-		if ( $user == null && User::isIP ( $userName ) != true ) {
-			// something is wrong
-			return $wgOnlineStatusBarDefaultOffline;
-		}
-		$result = $dbw->selectField( 'online_status', 'username', array( 'username' => $userName ),
-			__METHOD__, array( 'limit 1', 'order by timestamp desc' ) );
-		if ( $result && $user != null ) {
-			return $user->getOption( "OnlineStatusBar_status", $wgOnlineStatusDefaultOnline );
-		} else if ( $result && User::isIP ( $userName ) && $wgOnlineStatusBarDefaultIpUsers ) {
-			// user is anon
-			return $wgOnlineStatusBarDefaultOnline;	
-		}
-		return $wgOnlineStatusBarDefaultOffline;
 	}
 
 	/**

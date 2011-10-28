@@ -37,13 +37,6 @@ $wgAutoloadClasses['OnlineStatusBarHooks'] = "$dir/OnlineStatusBarHooks.php";
 
 // Configuration
 // Those values can be overriden in LocalSettings, do not change it here
-$wgOnlineStatusBarModes = array(
-	'online' => "On-line",
-	'busy' => "Busy",
-	'away' => "Away",
-	'hidden' => "Offline",
-	'offline' => "Offline",
-);
 $wgOnlineStatusBarIcon = array(
 	'online' => "statusgreen.png",
 	'busy' => "statusorange.png",
@@ -51,16 +44,9 @@ $wgOnlineStatusBarIcon = array(
 	'hidden' => "statusred.png",
 	'offline' => "statusred.png",
 );
-$wgOnlineStatusBarColor = array(
-	'online' => "green",
-	'busy' => "orange",
-	'away' => "orange",
-	'hidden' => "red",
-	'offline' => "red",
-);
 
 // default for anonymous and uknown users
-$wgOnlineStatusBarDefaultIpUsers = false;
+$wgOnlineStatusBarTrackIpUsers = false;
 // default for online
 $wgOnlineStatusBarDefaultOnline = "online";
 // default for offline
