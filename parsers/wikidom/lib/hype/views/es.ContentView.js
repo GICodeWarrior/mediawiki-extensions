@@ -332,12 +332,14 @@ es.ContentView.prototype.getOffsetFromRenderedPosition = function( position ) {
 		ruler = $ruler[0],
 		fit = this.fitCharacters( line.range, ruler, position.left );
 	ruler.innerHTML = this.getHtml( new es.Range( line.range.start, fit.end ) );
-	var left = ruler.clientWidth;
 	if ( fit.end < this.model.getContentLength() ) {
+		var left = ruler.clientWidth;
 		ruler.innerHTML = this.getHtml( new es.Range( line.range.start, fit.end + 1 ) );
+		var right = ruler.clientWidth;
+		var center = Math.round( left + ( ( right - left ) / 2 ) );
+	} else {
+		var center = ruler.clientWidth;
 	}
-	var right = ruler.clientWidth;
-	var center = Math.round( left + ( ( right - left ) / 2 ) );
 	$ruler.remove();
 	// Reset RegExp object's state
 	this.boundaryTest.lastIndex = 0;
