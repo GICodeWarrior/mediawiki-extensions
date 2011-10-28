@@ -463,6 +463,16 @@ $messages['mr'] = array(
 	'msfunc_div_zero' => 'शून्याने भागाकार',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'msfunc_desc' => 'Koleksi fungsi matematik dan statistik',
+	'msfunc_nan' => 'Nilai hasil tidak berupa nombor',
+	'msfunc_inf' => 'Nilai hasil adalah ketakterhinggaan',
+	'msfunc_div_zero' => 'Pembahagian dengan sifar',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
