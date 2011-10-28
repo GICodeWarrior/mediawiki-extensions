@@ -2602,7 +2602,7 @@ Bez OpenId nećete se moći prijaviti.',
  */
 $messages['hsb'] = array(
 	'openid-desc' => 'Přizjewjenje pola wikija z [http://openid.net/ OpenID], a přizjewjenje pola druhich websydłow, kotrež OpenID podpěruja, z wikijowym wužiwarskim kontom',
-	'openidlogin' => 'Přizjewjenje z OpenID',
+	'openidlogin' => 'Z OpenID přizjewić/konto załožić',
 	'openidserver' => 'Serwer OpenID',
 	'openidxrds' => 'Yadis-dataja',
 	'openidconvert' => 'Konwerter OpenID',
@@ -2617,9 +2617,14 @@ $messages['hsb'] = array(
 	'openidfailure' => 'Přepruwowanje njeporadźiło',
 	'openidfailuretext' => 'Přepruwowanje URL OpenID je so njeporadźiło. Zmylkowa zdźělenka: "$1"',
 	'openidsuccess' => 'Přepruwowanje poradźiło',
-	'openidsuccesstext' => 'Přepruwowanje URL OpenID je so poradźiło.',
+	'openidsuccesstext' => "'''Přepruwowanje a přizjewjenje jako wužiwar $1 běštej wuspěšnej.'''
+
+Twój OpenID je $2.
+
+Tutón a dalše OpenID hodźa so na [[Special:Preferences#prefsection-openid|OpenID-rajtarku]] twojich nastajenjow zrjadować.<br />
+Faktulatiwne hesło hodźi so w twojim [[Special:Preferences#prefsection-personal|wužiwarskim profilu]] přidać.",
 	'openidusernameprefix' => 'Wužiwar OpenID',
-	'openidserverlogininstructions' => 'Zapodaj deleka swoje hesło, zo by so pola $3 jako wužiwar $2 přizjewił (wužiwarska strona $1).',
+	'openidserverlogininstructions' => '$3 sej žada, zo zapodaš swoje hesło za swoje wužiwarske konto $2 na stronje $1 (to je twój OpenID-URL)',
 	'openidtrustinstructions' => 'Pruwuj, hač chceš z $1 daty dźělić.',
 	'openidallowtrust' => '$1 dowolić, zo by so tutomu wužiwarskemu konće dowěriło.',
 	'openidnopolicy' => 'Sydło njeje zasady za priwatnosć podało.',
@@ -2631,7 +2636,7 @@ $messages['hsb'] = array(
 	'openidemail' => 'E-mejlowa adresa',
 	'openidlanguage' => 'Rěč',
 	'openidtimezone' => 'Časowe pasmo',
-	'openidchooselegend' => 'Wuběr wužiwarskich mjenow',
+	'openidchooselegend' => 'Wuběranje wužiwarskeho mjena a wužiwarskeho konta',
 	'openidchooseinstructions' => 'Wšitcy wužiwarjo trjebaja přimjeno; móžěs jedne z opcijow deleka wuzwolić.',
 	'openidchoosenick' => 'Twoje přimjeno ($1)',
 	'openidchoosefull' => 'Twoje dospołne mjeno ($1)',
@@ -2678,7 +2683,7 @@ Ty njemóhł so bjez OpenID přizjewić.',
 	'openid-urls-action' => 'Akcija',
 	'openid-urls-delete' => 'Wušmórnyć',
 	'openid-add-url' => 'Nowy OpenID přidać',
-	'openid-login-or-create-account' => 'Přizjewić so abo nowe konto załožić',
+	'openid-login-or-create-account' => 'Přizjewić abo nowe konto załožić',
 	'openid-provider-label-openid' => 'Zapodaj swój URL OpenID',
 	'openid-provider-label-google' => 'Z pomocu twojeho konta Google so přizjewić',
 	'openid-provider-label-yahoo' => 'Z pomocu twojeho konta Yahoo so přizjewić',
@@ -3968,17 +3973,63 @@ anda boleh memilih satu daripada pilihan-pilihan berikut.',
 	'openidchooseusername' => 'Nama pengguna:',
 	'openidchoosepassword' => 'Kata laluan:',
 	'openidconvertinstructions' => 'Borang membolehkan anda untuk ini untuk menukar akaun anda untuk menggunakan OpenID URL. atau menambahkan lagi URL OpenID',
+	'openidconvertoraddmoreids' => 'Tukar ke OpenID atau tambahkan satu lagi URL OpenID',
 	'openidconvertsuccess' => 'Berjaya ditukar ke OpenID',
 	'openidconvertsuccesstext' => 'Anda telah berjaya menukar OpenID ke $1.',
 	'openidconvertyourstext' => 'OpenID anda seperti yang tertera.',
 	'openidconvertothertext' => 'OpenID tersebut merupakan milik orang lain.',
 	'openidalreadyloggedin' => 'Anda sudah log masuk.',
+	'openidalreadyloggedintext' => "'''Anda sudah log masuk, $1!'''
+
+Anda boleh menguruskan (lihat, hapuskan, tambahkan lagi) OpenID dalam [[Special:Preferences#prefsection-openid|tab OpenID]] dalam keutamaan anda.",
 	'openidnousername' => 'Nama pengguna tidak dinyatakan.',
 	'openidbadusername' => 'Nama pengguna yang dinyatakan tidak sah.',
+	'openidautosubmit' => 'Laman ini mempunyai borang yang sepatutnya diserahkan secara automatik jika JavaScript dihidupkan.
+Jika tidak, cuba butang "Continue" (sambung).',
+	'openidclientonlytext' => 'Anda tidak boleh menggunakan akaun-akaun dari wiki ini sebagai OpenID di laman lain.',
 	'openidloginlabel' => 'URL OpenID',
+	'openidlogininstructions' => '{{SITENAME}} menyokong piawaian [http://openid.net/ OpenID] untuk daftar masuk sekali sesama tapak web.
+OpenID membolehkan anda untuk log masuk ke dalam pelbagai tapak web tanpa menggunakan kata laluan yang berbeza untuk setiap satu.
+(Lihat [http://ms.wikipedia.org/wiki/OpenID rencana OpenID di Wikipedia] untuk maklumat lanjut.)
+Terdapat banyak [http://openid.net/get/ perkhidmatan OpenID]; anda mungkin sudah membuka akaun yang dihidupkan OpenID di sebuah perkhidmatan lain.',
+	'openidlogininstructions-openidloginonly' => "{{SITENAME}} ''hanya'' membolehkan anda untuk log masuk dengan OpenID.",
+	'openidlogininstructions-passwordloginallowed' => 'Jika anda sudah memiliki akaun di {{SITENAME}}, anda boleh [[Special:UserLogin|log masuk]] dengan nama pengguna dan kata laluan anda seperti biasa.
+Untuk menggunakan OpenID pada masa akan datang, anda boleh [[Special:OpenIDConvert|mengubah akuan anda menjadi OpenID]] selepas anda log masuk seperti biasa.',
+	'openidupdateuserinfo' => 'Kemas kinikan maklumat pribadi saya:',
+	'openiddelete' => 'Hapuskan OpenID',
+	'openiddelete-text' => 'Dengan menekan butang "{{int:openiddelete-button}}", anda akan menghapuskan OpenID $1 dari akaun Anda.
+Anda tidak akan dapat log masuk dengan OpenID ini lagi.',
 	'openiddelete-button' => 'Sahkan',
+	'openiddeleteerrornopassword' => 'Anda tidak boleh menghapuskan semua OpenID Anda kerana akaun anda tidak diberi kata kata laluan.
+Anda tidak boleh log masuk tanpa OpenID.',
+	'openiddeleteerroropenidonly' => 'Anda tidak boleh menghapuskan semua OpenID Anda kerana anda hanya dibenarkan untuk log masuk dengan OpenID.
+Anda tidak boleh log masuk tanpa OpenID.',
+	'openiddelete-sucess' => 'OpenID ini berjaya dibuang dari akaun anda.',
+	'openiddelete-error' => 'Ralat berlaku ketika membuang OpenID ini dari akaun anda.',
+	'openid-openids-were-not-merged' => 'OpenID tidak digabungkan sekali ketika akaun-akaun pengguna digabungkan.',
+	'openid-prefstext' => 'Keutamaan [http://openid.net/ OpenID]',
+	'openid-pref-hide' => 'Sorokkan URL OpenID anda pada laman pengguna anda, jika anda log masuk dengan OpenID.',
+	'openid-pref-update-userinfo-on-login' => 'Kemaskinikan maklumat berikut dari persona OpenID setiap kali saya log masuk:',
+	'openid-urls-desc' => 'OpenID yang dikaitkan dengan akaun anda:',
 	'openid-urls-action' => 'Tindakan',
+	'openid-urls-registration' => 'Waktu pendaftaran',
 	'openid-urls-delete' => 'Hapuskan',
+	'openid-add-url' => 'Tambahkan OpenID baru',
+	'openid-login-or-create-account' => 'Log masuk atau buka akaun baru',
+	'openid-provider-label-openid' => 'Taipkan URL OpenID anda',
+	'openid-provider-label-google' => 'Log masuk dengan menggunakan akaun Google anda',
+	'openid-provider-label-yahoo' => 'Log masuk dengan menggunakan akaun Yahoo anda',
+	'openid-provider-label-aol' => 'Taipkan nama pengguna AOL anda',
+	'openid-provider-label-other-username' => 'Taipkan nama pengguna $1 anda',
+	'specialpages-group-openid' => 'Laman-laman perkhidmatan dan maklumat status OpenID',
+	'right-openid-dashboard-access' => 'Akses piawai ke dalam papan pemuka OpenID',
+	'right-openid-dashboard-admin' => 'Akses pentadbir ke dalam papan pemuka OpenID',
+	'openid-dashboard-title' => 'Papan pemuka OpenID',
+	'openid-dashboard-title-admin' => 'Papan Pemuka OpenID (pentadbir)',
+	'openid-dashboard-introduction' => 'Tetapan sambungan OpenID semasa ([$1 bantuan])',
+	'openid-dashboard-number-openid-users' => 'Bilangan pengguna dengan OpenID',
+	'openid-dashboard-number-openids-in-database' => 'Bilangan OpenID (jumlah)',
+	'openid-dashboard-number-users-without-openid' => 'Bilangan pengguna tanpa OpenID',
 );
 
 /** Maltese (Malti)
