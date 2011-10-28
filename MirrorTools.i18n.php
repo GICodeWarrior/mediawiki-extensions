@@ -293,13 +293,14 @@ $messages['no'] = array(
 
 /** Polish (Polski)
  * @author Sp5uhe
+ * @author Woytecr
  */
 $messages['pl'] = array(
 	'mirrortools' => 'MirrorTools',
 	'mirrortools-desc' => 'Umożliwia edycję poprzez API z użyciem dowolnej nazwy użytkownika',
 	'right-mirroredit' => 'Edycja poprzez API z użyciem dowolnej nazwy użytkownika',
 	'group-MirrorTools' => 'Użytkownicy MirrorTools',
-	'group-MirrorTools-member' => 'użytkownik MirrorTools',
+	'group-MirrorTools-member' => '{{GENDER:$1|użytkownik|użytkowniczka}} MirrorTools',
 	'grouppage-MirrorTools' => '{{ns:project}}:Użytkownicy MirrorTools',
 );
 
