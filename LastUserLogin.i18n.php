@@ -201,13 +201,13 @@ $messages['csb'] = array(
  * @author The Evil IP address
  */
 $messages['de'] = array(
-	'lastuserlogin' => 'Letzte Anmeldungen',
-	'lastuserlogin-desc' => 'Zeigt an, wann sich ein Benutzer letztmalig angemeldet hat',
+	'lastuserlogin' => 'Letzte Anmeldung von Benutzern',
+	'lastuserlogin-desc' => 'Ermöglicht die Anzeige der letzten Anmeldung von Benutzern',
 	'lastuserlogin_userid' => 'Benutzername',
 	'lastuserlogin_username' => 'Bürgerlicher Name',
 	'lastuserlogin_useremail' => 'E-Mail-Adresse',
 	'lastuserlogin_lastlogin' => 'Letzte Anmeldung',
-	'lastuserlogin_daysago' => 'Tage',
+	'lastuserlogin_daysago' => 'vor Tagen',
 	'right-lastlogin' => 'Ansehen, wann sich ein Benutzer letztmalig angemeldet hat',
 );
 
