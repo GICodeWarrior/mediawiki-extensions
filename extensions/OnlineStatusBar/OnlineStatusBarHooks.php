@@ -152,11 +152,11 @@ class OnlineStatusBarHooks {
 		}
 
 		$result = OnlineStatusBar::getUserInfoFromTitle( $parser->getTitle() );
-
-		if ( User::isIP( $parser->getTitle()->getBaseText() ) && $result === null ) {
+		if ( User::isIP( $parser->getTitle()->getBaseText() ) && $result == null ) {
 			$result = OnlineStatusBar::getAnonFromTitle( $parser->getTitle() );
 		}
-		if ( $result === null ) {
+
+		if ( $result == null ) {
 			$ret = "unknown";
 			return true;
 		}
