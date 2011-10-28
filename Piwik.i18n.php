@@ -439,7 +439,11 @@ $messages['ml'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'piwik-desc' => 'Memasukkan skrip Piwik ke dalam laman-laman MediaWiki untuk tujuan penjejakan serta membubuh [[Special:Piwik|maklumat statistik]]',
+	'piwik-lastvisits' => 'Kunjungan terkini',
 	'piwik-countries' => 'Negara',
+	'piwik-browsers' => 'Pelayar',
+	'right-viewpiwik' => 'Melihat [[Special:Piwik|statistik Piwik]]',
 );
 
 /** Nahuatl (Nāhuatl)
