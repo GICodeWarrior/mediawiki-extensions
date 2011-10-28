@@ -497,6 +497,7 @@ $messages['gl'] = array(
 
 /** Swiss German (Alemannisch)
  * @author 80686
+ * @author Als-Chlämens
  */
 $messages['gsw'] = array(
 	'collabwatchlist' => 'Gmeinsami Beobachtigslischte',
@@ -513,7 +514,7 @@ $messages['gsw'] = array(
 	'collabwatchlisttools-rawUsers' => 'Benutzer als Lischte ändere',
 	'collabwatchlisttools-delete' => 'Lösche',
 	'collabwatchlistsall' => 'Alli Lischte',
-	'collabwatchlistfiltertags' => 'Verschteck Markierige',
+	'collabwatchlistfiltertags' => 'Stichwörter verstecke',
 	'collabwatchlistedit-users-raw-submit' => 'Spychere',
 	'collabwatchlistedit-raw-title' => 'Kategorie als Lischte ändere',
 	'collabwatchlistedit-tags-raw-title' => 'Markiierige als Lischte ändere',
@@ -523,8 +524,22 @@ $messages['gsw'] = array(
 	'collabwatchlistedit-noitems' => 'Sälli gmeinsami Beobachtigslischte het cheini Kategorie.',
 	'collabwatchlistedit-tags-numitems' => 'Sälli gmeinsami Beobachtigslischte het {{PLURAL:$1|1 Markierig|$1 Markierige}}',
 	'collabwatchlistedit-tags-noitems' => 'Sälli gmeinsami Beobachtigslischte het cheini Markierige.',
-	'collabwatchlistedit-users-numitems' => 'Sälli gmeinsami Beobachtigslischte het $1 Benutzer.',
+	'collabwatchlistedit-users-numitems' => 'Sälli gmeinsami Beobachtigslischte het {{PLURAL:$1|ei Benutzer|$1 Benutzer}}',
 	'collabwatchlistedit-users-noitems' => 'Sälli gmeinsami Beobachtigslischte het cheini Benutzer.',
+	'collabwatchlistedit-users-raw-legend' => 'Benutzer vo kollaborative Beobachtigslischte im Listeformat bearbeite',
+	'collabwatchlistedit-raw-titles' => 'Kategorie',
+	'collabwatchlistedit-tags-raw-titles' => 'Stichwörter:',
+	'collabwatchlistedit-users-raw-titles' => 'Benutzer:',
+	'collabwatchlistedit-normal-title' => 'Kategorie ändere',
+	'collabwatchlistedit-tags-raw-submit' => 'Spychere',
+	'collabwatchlistedit-tags-raw-added' => '{{PLURAL:$1|ei Stichwort isch|$1 Stichwörter sin}} dezuedüü worde:',
+	'collabwatchlistedit-users-raw-added' => '{{PLURAL:$1|ei Benutzer isch|$1 Benutzer sin}} dezuedüü worde:',
+	'collabwatchlistedit-tags-raw-removed' => '{{PLURAL:$1|ei Stichwort isch|$1 Stichwörter sin}} ussegno worde:',
+	'collabwatchlistedit-users-raw-removed' => '{{PLURAL:$1|ei Benutzer isch|$1 Benutzer sin}} ussegno worde:',
+	'collabwatchlistinverttags' => 'Stichwortfilter umdreie',
+	'collabwatchlistdelete-submit' => 'Lösche',
+	'collabwatchlistnew-name' => 'Name vo de Lischt',
+	'collabwatchlistedit-normal-submit' => 'Spychere',
 	'tog-collabwatchlisthidelistusers' => 'Due Änderige vo andere gmeinsame Beobachtigslischtebenutzer ussblände.',
 );
 
