@@ -37,34 +37,35 @@ HTML;
 		return Html::element( 'img', array( 'src' => $icon ) );
 	}
 
+
 	/**
-         * Returns the status and User element
-         *
-         * @param Title $title
-         * @return array|bool Array containing the status and User object
+	 * Returns the status and User element
+	 *
+	 * @param Title $title
+	 * @return array|bool Array containing the status and User object
          */
-        public static function getAnonFromTitle( Title $title ) {
+	public static function getAnonFromTitle( Title $title ) {
 		global $wgOnlineStatusBarTrackIpUsers;
 		if ( $wgOnlineStatusBarTrackIpUsers == false ) {
 			return false;
 		}
 	
-                if ( $title->getNamespace() != NS_USER && $title->getNamespace() != NS_USER_TALK ) {
-                        return false;
-                }
+		if ( $title->getNamespace() != NS_USER && $title->getNamespace() != NS_USER_TALK ) {
+			return false;
+		}
 
-                $user = User::newFromId( 0 );
+		$user = User::newFromId( 0 );
 		$user->setName( $title->getBaseText() );
 
-                // Check if something wrong didn't happen
-                if ( $user === false ) {
-                        return false;
-                }
+		// Check if something wrong didn't happen
+		if ( $user === false ) {
+			return false;
+		}
 
-                $status = self::getStatus( $user );
+		$status = self::getStatus( $user );
 
-                return array( $status, $user );
-        }
+		return array( $status, $user );
+	}
 
 
 	/**
