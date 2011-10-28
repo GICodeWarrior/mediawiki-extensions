@@ -18,7 +18,7 @@ $messages['en'] = array(
 	'hashtables-desc' => 'Parser functions allowing to work with hash tables in a page scoped context',
 );
 
-/** German
+/** German (Deutsch)
  * @author Daniel Werner
  */
 $messages['de'] = array(
