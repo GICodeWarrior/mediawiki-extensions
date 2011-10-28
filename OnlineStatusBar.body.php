@@ -69,6 +69,8 @@ HTML;
 	 */
 	public static function getStatus( $user ) {
 		global $wgOnlineStatusBarDefaultOffline, $wgOnlineStatusBarDefaultOnline;
+		// remove old entries
+		self::DeleteOld();
 
 		$dbr = wfGetDB( DB_SLAVE );
 		$result = $dbr->selectField( 'online_status', 'username', array( 'username' => $user->getName() ),
@@ -92,16 +94,17 @@ HTML;
 	 */
 	public static function UpdateDb() {
 		global $wgUser, $wgOnlineStatusBarDefaultOnline;
-		// TODO: This means that if the current status isn't online we insert a
-		// new row each request. yuck.
-		if ( OnlineStatusBar::GetStatus( $wgUser ) != $wgOnlineStatusBarDefaultOnline ) {
-			$dbw = wfGetDB( DB_MASTER );
-			$row = array(
-				'username' => $wgUser->getName(),
-				'timestamp' => $dbw->timestamp(),
-			);
-			$dbw->insert( 'online_status', $row, __METHOD__, 'DELAYED' );
+		// Skip users we don't track
+		if ( self::IsValid ( $wgUser ) != true ) {
+			return false;
 		}
+		// If we track them, let's insert it to the table 
+		$dbw = wfGetDB( DB_MASTER );
+		$row = array(
+			'username' => $wgUser->getName(),
+			'timestamp' => $dbw->timestamp(),
+		);
+		$dbw->insert( 'online_status', $row, __METHOD__, 'DELAYED' );
 		return false;
 	}
 
