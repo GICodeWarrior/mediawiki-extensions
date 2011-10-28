@@ -1,0 +1,53 @@
+ Changelog:
+ ==========
+ 
+ * trunk, version 0.6.4 alpha
+   - using hook 'ParserFirstCallInit' now.
+   - some gernal cleanup done.
+   - put into wikimedia.org svn (http://svn.wikimedia.org/svnroot/mediawiki/trunk/extensions/HashTables/)
+
+ * August 3, 2011 version 0.6.3
+   - minor bug in 'parameterstohash' function solved.
+   
+ * March 29, 2011 version 0.6.2
+   - 'hashtotemplate' has a new parameter to define a string which will replace pipes '|'. Can be
+     useful to preserve links.
+	 
+ * January 24, 2011 version 0.6.1
+   - Constant VERSION and function getHash() added to class ExtHashTables.
+   
+ * January 19, 2011 version 0.6
+   - New public class methods for creating and removing hash tables. Good for use by other extensions.
+   - New experimental function 'hashtotemplate'.
+   
+   
+ * August 3, 2010 version 0.5.1
+   - Hashinclude didn't trim key and value so keys with ending space ' ' and values with leading
+     space were possible when defining something like {{#hashinclude: a | a = 1}}
+   
+ * August 1, 2010 version 0.5
+   - New parameter for function 'hashtoarray' which allows to specify the name of a second array
+     which will contain the key names.
+   - Function 'arraytohash' doesn't mind non existent arrays in parameter 2 anymore. This allows
+     to create an hash table with keys only.
+	 
+	 
+ * July 20, 2010 version 0.4
+   - Removed critical bug. Some kind of "Superglobal" HashTables on page imports and job queue jobs.
+     Values were passed from one page to another page.
+	 
+	 
+ * June 11, 2010  version 0.3
+   - Third parameter for 'arraytohash' allows to set a key array.
+   - New function 'hashkeyexists'.
+   
+   
+ * June 6, 2010  version 0.2
+   - New functions 'hashmerge', 'hashmix', 'hashdiff', 'hashinclude' and 'hashexclude'.
+   - New functions if 'ArrayExtension' is available in the wiki: 'hashtoarray' and 'arraytohash'.
+   - New parameter for 'hashprint' which allows to define the print order thru an array.
+   
+   
+ * Mai 30, 2010  version 0.1 
+   - First version of HashTables featuring the functions 'hashdefine', 'hashvalue', 'hashsize',
+     'hashprint', 'hashreset' and 'parameterstohash'.
