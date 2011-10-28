@@ -15,7 +15,7 @@ $messages = array();
  * @author Daniel Werner
  */
 $messages['en'] = array(
-	'hashtables-desc' => 'Parser functions allowing to work with hash tables in an article scoped context',
+	'hashtables-desc' => 'Parser functions allowing to work with hash tables in a page scoped context',
 );
 
 /** German
