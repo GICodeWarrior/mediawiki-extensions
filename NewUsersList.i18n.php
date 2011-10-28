@@ -93,6 +93,13 @@ $messages['mk'] = array(
 	'newuserslist-desc' => 'Додава парсерска ознака <tt>&lt;newusers&gt;</tt> за добивање на списокот на нови корисници и нивните аватари',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'newuserslist-desc' => 'Membubuh tag penghurai <tt>&lt;newusers&gt;</tt> untuk mengambil senarai pengguna baru dan avatar mereka',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
