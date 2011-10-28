@@ -11,6 +11,7 @@ $messages = array();
 /**
  * English
  * @author Petr Bena
+ * @author John Du Hart
  */
 $messages['en'] = array(
 	// Description 
@@ -25,9 +26,18 @@ $messages['en'] = array(
 	'prefs-onlinestatus' => 'Online status',
 	// Message in config
 	'onlinestatusbar-hide' => 'Do you want to hide the status bar in order to use just the magic word? (For advanced users)',
+
+	'onlinestatusbar-status-online' => 'On-line',
+	'onlinestatusbar-status-busy' => 'Busy',
+	'onlinestatusbar-status-away' => 'Away',
+	'onlinestatusbar-status-offline' => 'Offline',
+	'onlinestatusbar-status-hidden' => 'Hidden',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Petr Bena
+ * @author John Du Hart
+ */
 $messages['qqq'] = array(
 	'onlinestatusbar-desc' => '{{desc}}',
 	'onlinestatusbar-line' => 'Status bar text line (User is now Offline), parameters:
@@ -38,6 +48,12 @@ $messages['qqq'] = array(
 	'onlinestatusbar-status' => 'Message in config asking what status they want to use, option box',
 	'prefs-onlinestatus' => 'Section for config, located in preferences - misc',
 	'onlinestatusbar-hide' => 'Ask user if they want to hide status bar this is useful when they are using custom template but need to check if they are online',
+
+	'onlinestatusbar-status-online' => 'Status for users who mark themselves as active',
+	'onlinestatusbar-status-busy' => 'Status for users who mark themselves as busy',
+	'onlinestatusbar-status-away' => 'Status for users who mark themselves as away',
+	'onlinestatusbar-status-offline' => 'Status for users who are offline',
+	'onlinestatusbar-status-hidden' => 'Status for users who mark themselves as hidden (used on preferences only)',
 );
 
 /** German (Deutsch)
