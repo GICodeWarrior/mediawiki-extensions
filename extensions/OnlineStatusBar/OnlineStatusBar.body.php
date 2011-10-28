@@ -38,6 +38,36 @@ HTML;
 	}
 
 	/**
+         * Returns the status and User element
+         *
+         * @param Title $title
+         * @return array|bool Array containing the status and User object
+         */
+        public static function getAnonFromTitle( Title $title ) {
+		global $wgOnlineStatusBarTrackIpUsers;
+		if ( $wgOnlineStatusBarTrackIpUsers == false ) {
+			return false;
+		}
+	
+                if ( $title->getNamespace() != NS_USER && $title->getNamespace() != NS_USER_TALK ) {
+                        return false;
+                }
+
+                $user = User::newFromId( 0 );
+		$user->setName( $title->getBaseText() );
+
+                // Check if something wrong didn't happen
+                if ( $user === false ) {
+                        return false;
+                }
+
+                $status = self::getStatus( $user );
+
+                return array( $status, $user );
+        }
+
+
+	/**
 	 * Returns the status and User element
 	 *
 	 * @param Title $title
@@ -53,7 +83,6 @@ HTML;
 		if ( $user === false ) {
 			return false;
 		}
-
 		if ( !self::isValid( $user ) ) {
 			return false;
 		}
@@ -79,7 +108,12 @@ HTML;
 		if ( $result === false ) {
 			$status = $wgOnlineStatusBarDefaultOffline;
 		} else {
-			$status = $user->getOption( 'OnlineStatusBar_status', $wgOnlineStatusBarDefaultOnline );
+			// let's check if it isn't anon
+			if ( $user->isLoggedIn() ) {
+				$status = $user->getOption( 'OnlineStatusBar_status', $wgOnlineStatusBarDefaultOnline );
+			} else {
+				$status = $wgOnlineStatusBarDefaultOnline;
+			}
 		}
 
 		if ( $status == 'hidden' ) {
@@ -136,8 +170,6 @@ HTML;
 		global $wgOnlineStatusBar_LogoutTime;
 		$dbw = wfGetDB( DB_MASTER );
 		$time = wfTimestamp( TS_UNIX ) - $wgOnlineStatusBar_LogoutTime;
-		// FIXME: This looks wrong:
-		$time = $dbw->addQuotes( $dbw->timestamp( $time ) - $wgOnlineStatusBar_LogoutTime );
 		$dbw->delete( 'online_status', array( "timestamp < $time" ), __METHOD__ );
 		return 0;
 	}

@@ -51,6 +51,9 @@ class OnlineStatusBarHooks {
 
 		OnlineStatusBar::UpdateStatus();
 		$result = OnlineStatusBar::getUserInfoFromTitle( $article->getTitle() );
+		if ( $result === false && User::isIP ( $article->getTitle()->getBaseText() ) ) {
+			$result = OnlineStatusBar::getAnonFromTitle( $article->getTitle() ); 
+		}
 
 		if ( $result === false ) {
 			return true;
