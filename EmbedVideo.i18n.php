@@ -254,6 +254,19 @@ $messages['mk'] = array(
 	'embedvideo-illegal-width' => 'EmbedVideo има добиено недозволен параметар за ширина „$1“.',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'embedvideo-desc' => 'Membubuh fungsi penghurai untuk membenamkan video dari sumber-sumber yang terkenal',
+	'embedvideo-missing-params' => 'EmbedVideo kepincangan satu parameter yang diperlukan.',
+	'embedvideo-bad-params' => 'EmbedVideo menerima parameter yang tidak elok.',
+	'embedvideo-unparsable-param-string' => 'EmbedVideo menerima rentetan parameter "<code>$1</code>" yang tidak boleh dihuraikan.',
+	'embedvideo-unrecognized-service' => 'EmbedVideo tidak mengenali perkhidmatan video "<code>$1</code>".',
+	'embedvideo-bad-id' => 'EmbedVideo menerima id "$1" yang tidak elok untuk perkhidmatan "$2".',
+	'embedvideo-illegal-width' => 'EmbedVideo menerima parameter lebar "$1" yang tidak sah.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
