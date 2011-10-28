@@ -145,7 +145,6 @@ $wgResourceModules['ext.narayam.core'] = $narayamTpl + array(
 		'narayam-menu',
 		'narayam-menu-tooltip',
 		'narayam-help',
-		'narayam-help-page',
 		'narayam-toggle-ime',
 		'narayam-more-imes',
 		'narayam-am',
