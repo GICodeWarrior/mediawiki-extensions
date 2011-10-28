@@ -63,6 +63,10 @@ HTML;
 		return array( $status, $user );
 	}
 
+	/**
+	 * @param $user User
+	 * @return String
+	 */
 	public static function getStatus( $user ) {
 		global $wgOnlineStatusBarDefaultOffline, $wgOnlineStatusBarDefaultOnline;
 
@@ -150,10 +154,6 @@ HTML;
 			return $wgOnlineStatusBarTrackIpUsers;
 		}
 
-		if ( $user->getId() == 0 )
-		{
-			return false;
-		}
 		// do we track them
 		return $user->getOption( "OnlineStatusBar_active", $wgOnlineStatusBarDefaultEnabled );
 	}
