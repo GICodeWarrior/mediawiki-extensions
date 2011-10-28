@@ -111,7 +111,7 @@ class LocalisationUpdate {
 
 		// Create a full path.
 		// TODO: add support for $wgExtensionAssetsPath
-		$localfile = "$IP/extensions/$relfile";
+		// $localfile = "$IP/extensions/$relfile";
 
 		// Get the full SVN directory path.
 		// TODO: add support for $wgExtensionAssetsPath
@@ -401,6 +401,10 @@ class LocalisationUpdate {
 		return @$hashes[$file] !== $hash;
 	}
 
+	/**
+	 * @param $file
+	 * @param $hash
+	 */
 	public static function saveHash( $file, $hash ) {
 		if ( is_null( self::$newHashes ) ) {
 			self::$newHashes = self::readFile( 'hashes' );
@@ -594,6 +598,7 @@ class LocalisationUpdate {
 	 * Logs a message.
 	 *
 	 * @param $log String
+	 * @param bool $verbose
 	 */
 	public static function myLog( $log, $verbose = true ) {
 		if ( !$verbose ) {
@@ -621,6 +626,11 @@ class LocalisationUpdate {
 		}
 	}
 
+	/**
+	 * @param $lang
+	 * @return string
+	 * @throws MWException
+	 */
 	public static function filename( $lang ) {
 		global $wgLocalisationUpdateDirectory, $wgCacheDirectory;
 
@@ -635,6 +645,10 @@ class LocalisationUpdate {
 		return "$dir/l10nupdate-$lang.cache";
 	}
 
+	/**
+	 * @param $lang
+	 * @return mixed
+	 */
 	public static function readFile( $lang ) {
 		if ( !isset( self::$filecache[$lang] ) ) {
 			$file = self::filename( $lang );
@@ -657,6 +671,11 @@ class LocalisationUpdate {
 		return self::$filecache[$lang];
 	}
 
+	/**
+	 * @param $lang
+	 * @param $var
+	 * @throws MWException
+	 */
 	public static function writeFile( $lang, $var ) {
 		$file = self::filename( $lang );
 
