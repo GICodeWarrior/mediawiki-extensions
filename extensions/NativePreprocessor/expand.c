@@ -33,6 +33,8 @@ struct PPFrame_Native {
 	void *parent;
 };
 
+const struct str_ref empty_str = { NULL, 0, false };
+
 /* Call insertStripItem() in the parser object, and return the given 
  * zval, which shall be a string (or null)
  */

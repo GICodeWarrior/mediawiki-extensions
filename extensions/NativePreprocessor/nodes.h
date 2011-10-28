@@ -32,11 +32,11 @@ enum nodeTypes {
 
 /* May contain childs: root_node, ext_node, name_node, heading_node (h?_node), template_node, tplarg_node, title_node, part_node, value_node */
 
-const struct str_ref {
+struct str_ref {
 	char const* string;
 	int length;
 	bool allocated;
-} empty_str = { NULL, 0, false };
+};
 
 extern inline void str_ref_free(struct str_ref* str) {
 	if ( str->allocated ) {
