@@ -886,7 +886,7 @@ No nakastrekka, mabalin mo nga ikkaten daytoy nga ballaag idiay "Pagbaliwan" a b
 	'vector-editwarning-preference' => 'Pagballaagannak ket no pumanawak iti pabaliwan a panid nga saan nga naidulin ti sinukatak',
 	'vector-simplesearch-search' => 'Biroken',
 	'vector-simplesearch-containing' => 'nagyan na nga...',
-	'vector-noexperiments-preference' => 'Saannak nga iraman kadagiti experinto ti ramramit',
+	'vector-noexperiments-preference' => 'Saannak nga iraman kadagiti experimento ti ramramit',
 );
 
 /** Ido (Ido)

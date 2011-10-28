@@ -355,10 +355,33 @@ $messages['cs'] = array(
  * @author Peter Alberti
  */
 $messages['da'] = array(
+	'narayam-desc' => 'Gør det muligt at tilføje tilpassede indtastningsmetoder til indtastningsfelter',
 	'narayam-toggle-ime' => 'Aktiver ($1)',
-	'narayam-menu' => 'Inputmetode',
+	'narayam-menu' => 'Indtastningsmetode',
+	'narayam-menu-tooltip' => 'Kontroller Narayam indtastningsmetoderedigeringen',
 	'narayam-help' => 'Hjælp',
+	'narayam-help-page' => 'Help:Indtastning',
+	'narayam-checkbox-tooltip' => 'Slå indtastningsmetoden til og fra',
+	'narayam-disable-preference' => 'Slå Narayam indtastningsmetoderedigeringen fra',
+	'narayam-more-imes' => 'Flere indtastningsmetoder',
+	'narayam-am' => 'Amharisk translitteration',
+	'narayam-as' => 'Assamesisk translitteration',
+	'narayam-as-inscript' => 'Assamesisk InScript',
 	'narayam-eo' => 'Esperanto',
+	'narayam-hi-inscript' => 'Hindi InScript',
+	'narayam-kn' => 'Kannada translitteration',
+	'narayam-kn-inscript' => 'Kannada InScript',
+	'narayam-ml' => 'Malayalam translitteration',
+	'narayam-ml-inscript' => 'Malayalam InScript',
+	'narayam-ne' => 'Nepalesisk translitteration',
+	'narayam-ne-inscript' => 'Nepalesisk InScript',
+	'narayam-or' => 'Oriya translitteration',
+	'narayam-or-inscript' => 'Oriya InScript',
+	'narayam-sa' => 'Sanskrit translitteration',
+	'narayam-sa-inscript' => 'Sanskrit InScript',
+	'narayam-ta-99' => 'Tamil99',
+	'narayam-ta' => 'Tamilsk translitteration',
+	'narayam-bn-inscript' => 'Bengali InScript',
 );
 
 /** German (Deutsch)
@@ -739,7 +762,7 @@ $messages['he'] = array(
  */
 $messages['hsb'] = array(
 	'narayam-desc' => 'Zmóžnja swójske zapodawanske metody za zapodawanske pola přidać',
-	'narayam-toggle-ime' => 'Zapodawansku metodu přepinać ($1)',
+	'narayam-toggle-ime' => 'Zmóžnić ($1)',
 	'narayam-help-page' => 'Help:Zapodaće',
 	'narayam-checkbox-tooltip' => 'Zapodawansku metodu za- a wupinać',
 	'narayam-disable-preference' => 'Narayam Input Method Editor (IME) znjemóžnić',
@@ -754,7 +777,7 @@ $messages['hsb'] = array(
 	'narayam-sa-inscript' => 'Sanskrit InScript',
 	'narayam-si-singlish' => 'Sinhala (Singlsih)',
 	'narayam-si-wijesekara' => 'Sinhala (Wijesekara)',
-	'narayam-ta99' => 'Tamil99',
+	'narayam-ta-99' => 'Tamil99',
 	'narayam-ta' => 'Transliteracija tamilšćiny',
 	'narayam-bn-avro' => 'Bengali-Avro',
 	'narayam-bn-inscript' => 'Bengali InScript',

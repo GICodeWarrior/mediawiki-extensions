@@ -2801,6 +2801,7 @@ $messages['pfl'] = array(
  * @author Leinad
  * @author Maikking
  * @author Sp5uhe
+ * @author Woytecr
  * @author Wpedzich
  */
 $messages['pl'] = array(
@@ -2855,7 +2856,7 @@ Ta strona ma zastosowanie tylko do użytkowników na których zostały narzucone
 	'action-editwhitelist' => 'modyfikowania białej listy dla istniejących użytkowników',
 	'action-restricttowhitelist' => 'edytowania i przeglądania wyłącznie białej listy',
 	'group-restricted' => 'Ograniczenie użytkownicy',
-	'group-restricted-member' => 'Ograniczony użytkownik',
+	'group-restricted-member' => '{{GENDER:$1|ograniczony użytkownik|ograniczona użytkowniczka}}',
 	'group-manager' => 'Zarządcy',
 	'group-manager-member' => 'Zarządca',
 );

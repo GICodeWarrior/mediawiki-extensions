@@ -1122,7 +1122,7 @@ $messages['hsb'] = array(
 	'inlinecategorizer-edit-category-summary' => 'Kategoriju "$1" do "$2" změnić',
 	'inlinecategorizer-error-title' => 'Zmylk',
 	'inlinecategorizer-remove-category' => 'Kategoriju wotstronić',
-	'inlinecategorizer-remove-category-error' => 'Njebě móžno tutu kategoriju wotstronić.
+	'inlinecategorizer-remove-category-error' => 'Njebě móžno kategoriju "$1" wotstronić.
 To so zwjetša stawa, hdyž kategorija je so stronje w předłoze přidała.',
 	'inlinecategorizer-remove-category-summary' => 'Kategoriju "$1" wotstronić',
 );

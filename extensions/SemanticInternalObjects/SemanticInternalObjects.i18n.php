@@ -70,6 +70,7 @@ $messages['bs'] = array(
  */
 $messages['ca'] = array(
 	'semanticinternalobjects-desc' => "Definició d'objectes interns en el Semantic MediaWiki",
+	'semanticinternalobjects-internalproperty' => 'Propietat interna',
 );
 
 /** German (Deutsch)

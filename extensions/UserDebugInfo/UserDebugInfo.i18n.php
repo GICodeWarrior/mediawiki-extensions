@@ -109,6 +109,7 @@ $messages['gl'] = array(
  */
 $messages['gsw'] = array(
 	'userdebuginfo' => 'Benutzerinformatione für d Fäälermäldig',
+	'userdebuginfo-desc' => 'Zeigt Informatione über de aktuelle Benutzer aa, wo vilycht für d Fäälerermittlig chönnte nützlig sy',
 	'userdebuginfo-useragent' => 'HTTP: Programm vum Benutzer',
 	'userdebuginfo-remotehost' => 'HTTP: Host vum Benutzer',
 	'userdebuginfo-remoteaddr' => 'HTTP: IP-Adräss vum Benutzer',

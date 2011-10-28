@@ -272,6 +272,15 @@ $messages['mk'] = array(
 	'tspoll-id-error' => 'Нема дадено ид. бр.!',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'tspoll-desc' => 'Menyertakan [http://www.toolserver.org/~jan/poll/index.php Toolserver-Poll-Skript] sebagai tag HTML',
+	'tspoll-fetch-error' => 'Ralat ketika mengambil URL!',
+	'tspoll-id-error' => 'ID belum diberikan!',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

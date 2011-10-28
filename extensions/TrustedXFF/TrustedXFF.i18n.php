@@ -148,10 +148,11 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author DavidL
  * @author Seb35
  */
 $messages['fr'] = array(
-	'trustedxff-desc' => 'Gestion d’une liste d’adresses de serveurs mandataires de confiance ([http://meta.wikimedia.org/wiki/XFF_project projet XFF])',
+	'trustedxff-desc' => 'Gestion d’une liste d’adresses de serveurs mandataires de confiance ([//meta.wikimedia.org/wiki/XFF_project projet XFF])',
 );
 
 /** Franco-Provençal (Arpetan)

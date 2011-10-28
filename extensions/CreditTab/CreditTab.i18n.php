@@ -115,3 +115,12 @@ $messages['nl'] = array(
 	'credits-tab-title' => 'Vermeldingen voor deze pagina',
 );
 
+/** Polish (Polski)
+ * @author Woytecr
+ */
+$messages['pl'] = array(
+	'credits-desc' => 'Dodaje link do listy autorów',
+	'credits-tab' => 'Autorzy',
+	'credits-tab-title' => 'Autorzy tej strony',
+);
+

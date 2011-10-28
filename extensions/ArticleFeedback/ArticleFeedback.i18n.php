@@ -1412,9 +1412,9 @@ Bitte später erneut versuchen.',
 	'articleFeedback-table-heading-page' => 'Seite',
 	'articleFeedback-table-heading-average' => 'Durchschnitt',
 	'articleFeedback-copy-above-highlow-tables' => 'Dies ist ein experimenteller Funktionsbestandteil. Bitte hierzu auf der [$1 Diskussionsseite] eine Rückmeldung geben.',
-	'articlefeedback-dashboard-bottom' => "'''Hinweis:''' Wir werden weiterhin unterschiedliche Möglichkeiten ausprobieren Artikel auf diesen Arbeits- und Übersichtseiten anzuzeigen. Momentan werden hier die folgenden Artikel angezeigt:
-* Seiten mit den höchsten/niedrigsten Bewertungen: Artikel die mindestens zehn Bewertungen während der vergangenen 24 Stunden erhalten haben. Die Durchschnittswerte sind dabei der Mittelwert aller Bewertungen während der vergangenen 24 Stunden.
-* Aktuelle schlechte Bewertungen: Artikel die während der vergangenen 24 Stunden 70 % oder schlechtere Bewertungen (zwei Sterne oder weniger) in jeder der Kategorien erhalten haben. Lediglich Artikel mit wenigstens zehn Bewertungen während der vergangenen 24 Stunden werden dabei einbezogen.",
+	'articlefeedback-dashboard-bottom' => "'''Hinweis:''' Wir werden weiterhin unterschiedliche Möglichkeiten ausprobieren, Artikel auf diesen Arbeits- und Übersichtseiten anzuzeigen. Momentan werden hier die folgenden Artikel angezeigt:
+* Seiten mit den höchsten/niedrigsten Bewertungen: Artikel, die mindestens zehn Bewertungen während der vergangenen 24 Stunden erhalten haben. Die Durchschnittswerte sind dabei der Mittelwert aller Bewertungen während der vergangenen 24 Stunden.
+* Aktuelle schlechte Bewertungen: Artikel, die während der vergangenen 24 Stunden 70 % oder schlechtere Bewertungen (zwei Sterne oder weniger) in jeder der Kategorien erhalten haben. Lediglich Artikel mit wenigstens zehn Bewertungen während der vergangenen 24 Stunden werden dabei einbezogen.",
 	'articlefeedback-disable-preference' => 'Das Widget zum Einschätzen von Seiten nicht anzeigen',
 	'articlefeedback-emailcapture-response-body' => 'Hallo!
 
@@ -3782,10 +3782,12 @@ $messages['ka'] = array(
 	'articlefeedback-field-trustworthy-tip' => 'ფიქრობთ, რომ ეს სტატია საკმარისი რაოდენობით შეიცავს სანდო წყაროებს?',
 	'articlefeedback-field-complete-label' => 'დასრულებულია',
 	'articlefeedback-field-complete-tip' => 'მიგაჩნიათ, რომ ეს სტატია შეიცავს მისივე შინაარსთან დაკავშირებულ ყველა მნიშვნელოვან ასპექტს?',
+	'articlefeedback-field-complete-tooltip-1' => 'ინფორმაციის დიდი ნაწილი დაკარგულია',
 	'articlefeedback-field-objective-label' => 'მიუკერძოებელია',
 	'articlefeedback-field-objective-tip' => 'მიგაჩნიათ, რომ ეს სტატია შეიცავს მისივე თემასთან დაკავშირებული წარმოდგენის შესახებ მიუკერძოებელ ინფორმაციას?',
 	'articlefeedback-field-wellwritten-label' => 'კარგად დაწერილი',
 	'articlefeedback-field-wellwritten-tip' => 'მიგაჩნიათ, რომ ეს სტატია კარგი სტრუქტურისაა და კარგადაა დაწერილი?',
+	'articlefeedback-field-wellwritten-tooltip-2' => 'გასაგებად ძნელი',
 	'articlefeedback-pitch-reject' => 'იქნებ მოგვიანებით',
 	'articlefeedback-pitch-or' => 'ან',
 	'articlefeedback-pitch-thanks' => 'გმადლობთ! თქვენი შეფასება შენახულია.',

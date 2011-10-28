@@ -710,6 +710,48 @@ Se seguiu unha ligazón, <a href="$1">informe do erro</a>.
  * @author Als-Chlämens
  */
 $messages['gsw'] = array(
+	'toolbase-header-title' => 'X!s Tools (BETA)',
+	'toolbase-header-bugs' => 'Softwarefääler',
+	'toolbase-header-sitenotice' => 'Zentrali Mäldig vum Toolserver: $1',
+	'toolbase-replag' => 'Serververzögerig isch bi $1 glege',
+	'toolbase-replag-years' => 'Joor',
+	'toolbase-replag-months' => 'Monet',
+	'toolbase-replag-weeks' => 'Wuche',
+	'toolbase-replag-days' => 'Täg',
+	'toolbase-replag-hours' => 'Stunde',
+	'toolbase-replag-minutes' => 'Minute',
+	'toolbase-replag-seconds' => 'Sekunde',
+	'toolbase-footer-exectime' => 'Innerhalb vo $1 Sekunde ussgfiert worde',
+	'toolbase-footer-source' => 'Quelltext aaluege',
+	'toolbase-footer-language' => 'Sprooch wechsle',
+	'toolbase-footer-translate' => 'Ibersetze',
+	'toolbase-navigation' => 'Navigation',
+	'toolbase-navigation-homepage' => 'Startsyte',
+	'toolbase-navigation-user_id' => 'Benutzerkennig sueche',
+	'toolbase-navigation-autoedits' => 'Automatische Bearbeitigszääler',
+	'toolbase-userid-submit' => 'Benutzerkennig beantrage',
+	'toolbase-userid-title' => 'Benutzerkennig sueche',
+	'toolbase-userid-result' => 'D Benutzerkennig vo <b>$1</b> uff<a href="$3"><b>$3</b></a> luutet <b>$2</b>.',
+	'toolbase-autoedits-title' => 'Automatische Bearbeitigszääler',
+	'toolbase-autoedits-submit' => 'Berächne',
+	'toolbase-autoedits-approximate' => '<b>Ungfääri</b> Aazaal vo Bearbeitige mit …',
+	'toolbase-autoedits-totalauto' => 'Gsamti Aazaal vo automatische Bearbeitige',
+	'toolbase-autoedits-totalall' => 'Gsamtzaal vo Bearbeitige',
+	'toolbase-autoedits-pct' => 'Prozentaateil vo automatisierte Bearbeitige',
+	'toolbase-main-title' => 'Willchu!',
+	'toolbase-main-content' => 'Willchu bi X!s Tools!
+
+Die Tools werde zur Zit für s <a href="$1">Symfony</a>-Framework parat gmacht. Des wird no es Wyyl goo, allerdings sötte si jetzt scho funktioniere.
+
+E Lischt vo de Tools, wo mit däm Framework laufe, befindet sich in de rächte Syteleiste.
+
+Softwarefääler chönne bi <a href="$2">Google Code</a> gmolde werde.',
+	'toolbase-main-404' => 'Datei nit gfunde',
+	'toolbase-main-404-content' => 'Hoppla! Es isch kei Websyte gfunde worde!
+
+Lueg emool, ob du d URL richtig yygee hesch.
+Wänn du über en Link doo ane cho bisch, no due des bitte <a href="$1">als Fääler mälde</a>.
+</ul>',
 	'toolbase-form-wiki' => 'Wiki',
 	'toolbase-error-nouser' => '$1 isch kei giltige Benutzername.',
 	'toolbase-error-nowiki' => "S Wiki $1.$2.org git's nit",

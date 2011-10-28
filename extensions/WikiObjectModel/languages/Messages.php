@@ -79,6 +79,15 @@ $messages['mk'] = array(
 	'wom-desc' => 'Лесен модел на објект за страници за корисник на вики',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'objecteditor' => 'Editor Objek',
+	'wom_editor' => 'Model Objek',
+	'wom-desc' => 'Model Objek Laman Mudah untuk pengguna wiki',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

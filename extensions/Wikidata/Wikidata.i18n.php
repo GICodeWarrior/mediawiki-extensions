@@ -8748,6 +8748,7 @@ $messages['mk'] = array(
 	'ow_Link' => 'Врска',
 	'ow_LinkAttribute' => 'Својство',
 	'ow_LinkAttributeValues' => 'Врски',
+	'ow_URL' => 'URL-адреса',
 	'ow_User' => 'Корисник',
 	'ow_Property' => 'Својство',
 	'ow_Value' => 'Вредност',

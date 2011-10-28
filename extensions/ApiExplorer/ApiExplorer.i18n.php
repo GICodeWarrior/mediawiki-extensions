@@ -117,6 +117,16 @@ $messages['mk'] = array(
 	'apiexplorer-loading' => 'Вчитувам функции...',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'apiexplorer' => 'API Explorer',
+	'apiexplorer-desc' => 'Laman untuk menjelajah dokumentasi API MediaWiki secara interaktif',
+	'apiexplorer-intro' => 'Laman ini memaparkan dokumentasi untuk API wiki semasa. Sila klik satu fungsi berikut untuk melihat maklumat lanjut mengenai parameter mana yang boleh digunakan di setiap panggilan. Lihat juga [http://www.mediawiki.org/wiki/API:Main_page dokumentasi am API MediaWiki].',
+	'apiexplorer-loading' => 'Memuatkan fungsi...',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
