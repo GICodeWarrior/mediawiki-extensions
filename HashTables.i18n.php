@@ -1,6 +1,4 @@
 <?php
-#coding: utf-8
-
 /**
  * Internationalization file of the 'HashTables' extension.
  *
@@ -26,3 +24,4 @@ $messages['en'] = array(
 $messages['de'] = array(
 	'hashtables-desc' => 'Bietet Parser-Funktionen zur Verwendung Assoziativer Datenfelder (Hashes) in Wiki-Artikeln',
 );
+
