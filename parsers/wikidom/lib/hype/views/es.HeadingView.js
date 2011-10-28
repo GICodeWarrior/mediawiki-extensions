@@ -11,3 +11,12 @@ es.HeadingView = function( model ) {
 	view.$.addClass( 'editSurface-headingBlock' );
 	return view;
 };
+
+es.HeadingView.prototype.getRenderedPositionFromOffset = function( offset ) {
+	var	position = this.contentView.getRenderedPositionFromOffset( offset ),
+		offset = this.$content.offset();
+	position.top += offset.top;
+	position.left += offset.left;
+	position.bottom += offset.top;
+	return position;
+};

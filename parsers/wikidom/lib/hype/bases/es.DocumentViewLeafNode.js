@@ -56,7 +56,7 @@ es.DocumentViewLeafNode.prototype.clearSelection = function() {
  * @returns {Integer} Offset of position
  */
 es.DocumentViewLeafNode.prototype.getOffsetFromRenderedPosition = function( position ) {
-	return this.contentView.getOffsetFromRenderedPosition( offset );
+	return this.contentView.getOffsetFromRenderedPosition( position );
 };
 
 /**

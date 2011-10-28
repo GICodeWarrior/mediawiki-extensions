@@ -72,10 +72,10 @@ es.DocumentViewBranchNode.prototype.getOffsetFromRenderedPosition = function( po
 		if ( this[i].$.offset().top > position.top ) {
 			break;
 		}
-		node = this.items[i];
+		node = this[i];
 	}
 	return node.getParent().getOffsetFromNode( node, true ) +
-		node.getOffsetFromPosition( position );	
+		node.getOffsetFromRenderedPosition( position );	
 };
 
 /**
