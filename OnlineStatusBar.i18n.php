@@ -35,8 +35,8 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
- * @author Petr Bena
  * @author John Du Hart
+ * @author Petr Bena
  */
 $messages['qqq'] = array(
 	'onlinestatusbar-desc' => '{{desc}}',
@@ -48,7 +48,6 @@ $messages['qqq'] = array(
 	'onlinestatusbar-status' => 'Message in config asking what status they want to use, option box',
 	'prefs-onlinestatus' => 'Section for config, located in preferences - misc',
 	'onlinestatusbar-hide' => 'Ask user if they want to hide status bar this is useful when they are using custom template but need to check if they are online',
-
 	'onlinestatusbar-status-online' => 'Status for users who mark themselves as active',
 	'onlinestatusbar-status-busy' => 'Status for users who mark themselves as busy',
 	'onlinestatusbar-status-away' => 'Status for users who mark themselves as away',
@@ -66,6 +65,11 @@ $messages['de'] = array(
 	'onlinestatusbar-status' => 'Welchen Status möchtest du standardmäßig nutzen:',
 	'prefs-onlinestatus' => 'Onlinestatus',
 	'onlinestatusbar-hide' => "Möchtest du die Statusleiste ausblenden, um stattdessen lediglich das ''Magic Word'' zu nutzen? (Für Fortgeschrittene)",
+	'onlinestatusbar-status-online' => 'Online',
+	'onlinestatusbar-status-busy' => 'Beschäftigt',
+	'onlinestatusbar-status-away' => 'Abwesend',
+	'onlinestatusbar-status-offline' => 'Offline',
+	'onlinestatusbar-status-hidden' => 'Versteckt',
 );
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
@@ -75,6 +79,18 @@ $messages['de-formal'] = array(
 	'onlinestatusbar-used' => 'Möchten Sie, dass andere Benutzer Ihren Onlinestatus sehen?',
 	'onlinestatusbar-status' => 'Welchen Status möchten Sie standardmäßig nutzen:',
 	'onlinestatusbar-hide' => "Möchten Sie die Statusleiste ausblenden, um stattdessen lediglich das ''Magic Word'' zu nutzen? (Für Fortgeschrittene)",
+);
+
+/** French (Français)
+ * @author DavidL
+ */
+$messages['fr'] = array(
+	'onlinestatusbar-desc' => "Barre d'état montrant si un utilisateur est en ligne, basé sur les préférences, sur leur page utilisateur",
+	'onlinestatusbar-line' => '$1 est maintenant $2 $3',
+	'onlinestatusbar-used' => 'Voulez-vous permettre que les autres voient si vous êtes en ligne ?',
+	'onlinestatusbar-status' => 'Quel est le statut par défaut que vous souhaitez utiliser :',
+	'prefs-onlinestatus' => 'État en ligne',
+	'onlinestatusbar-hide' => "Voulez-vous masquer la barre d'état afin d'utiliser le mot magique seulement ? (Pour les utilisateurs avancés)",
 );
 
 /** Galician (Galego)
@@ -87,5 +103,17 @@ $messages['gl'] = array(
 	'onlinestatusbar-status' => 'Cal é o estado por defecto que quere usar:',
 	'prefs-onlinestatus' => 'Conectado',
 	'onlinestatusbar-hide' => 'Quere agochar a barra de estado para usar unicamente a palabra máxica? (Para usuarios avanzados)',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'onlinestatusbar-desc' => 'Статусник што прикажува дали корисникот е на линија, зависно од нагодувањата на корисничката страница',
+	'onlinestatusbar-line' => '$1 сега е $2 $3',
+	'onlinestatusbar-used' => 'Дали сакате другите да знаат кога сте на линија?',
+	'onlinestatusbar-status' => 'Вашиот статус по основно:',
+	'prefs-onlinestatus' => 'Вклученост',
+	'onlinestatusbar-hide' => 'Дали би сакале да го скриете статусникот за да го користите само волшебниот збор (за напредни корисници)',
 );
 
