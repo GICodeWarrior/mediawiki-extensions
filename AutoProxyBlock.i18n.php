@@ -11,7 +11,7 @@ $messages['en'] = array(
 	'proxyblock-log-name' => 'Auto proxy block log',
 	'proxyblock-log-header' => 'List of automatically blocked changes through proxies',
 	'proxyblock-logentry' => '',
-	'proxyblock-logentry-blocked' => 'User [[User:$3|$3]]\'s action "$2" on page [[$1]] automatically blocked.',
+	'proxyblock-logentry-blocked' => 'action "$2" by user $3 on page [[$1]] automatically blocked.',
 );
 
 $messages['ru'] = array(
@@ -19,5 +19,10 @@ $messages['ru'] = array(
 	'proxy-blocked' => 'Ваш IP-адрес находится в списках прокси, действие отменено.',
 	'abusefilter-edit-builder-vars-is-proxy' => 'Истинно, если действие совершено через прокси',
 	'tag-proxy' => 'совершено через прокси',
-	'right-notagproxychanges' => 'правки через прокси не отмечаются меткой',	
+	'right-notagproxychanges' => 'правки через прокси не отмечаются меткой',
+	'right-autoproxyblock-log' => 'просмотр журнала блокировки действий, совершённых через прокси',
+	'proxyblock-log-name' => 'Журнал автоматической блокировки прокси',
+	'proxyblock-log-header' => 'Список автоматически заблокированных действий, совершённых через прокси',
+	'proxyblock-logentry' => '',
+	'proxyblock-logentry-blocked' => 'действие «$2» от участника $3 на странице [[$1]] автоматически заблокировано.',
 );

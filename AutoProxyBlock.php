@@ -39,7 +39,7 @@ $wgAutoProxyBlockSources['api'][] = 'http://en.wikipedia.org/w/api.php';
 $wgAutoProxyBlockSources['raw'][] = '/var/www/mediawiki/proxy.list';
 $wgAutoProxyBlockSources['key'] = '/blocked proxy/i';
  
-// if set, log all blocked actions in log
+// if set to true, log all blocked actions in Special:Log/proxyblock
 $wgAutoProxyBlockLog = false;
 
 if( $wgAutoProxyBlockLog ) {
