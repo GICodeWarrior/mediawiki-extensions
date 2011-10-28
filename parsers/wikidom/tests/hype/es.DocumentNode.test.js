@@ -103,4 +103,96 @@ test( 'es.DocumentNode', function() {
 			'getOffsetFromNode finds the right offset or returns -1 when node is not found'
 		);
 	}
+
+	// selectNodes tests
+
+	var f = new DocumentNodeStub( [], 'f', 8 ),
+		g = new DocumentNodeStub( [], 'g', 8 ),
+		h = new DocumentNodeStub( [], 'h', 8 ),
+		root2 = new DocumentNodeStub( [f, g, h], 'root2', 30 );
+	var selectNodesTests = [
+		/*
+		{
+			'input': new es.Range( 0, 5 ),
+			'output': [{ 'node': f, 'range': new es.Range( 1, 4 ) }]
+		},
+		{
+			'input': new es.Range( 11, 16 ),
+			'output': [{ 'node': g, 'range': new es.Range( 1, 4 ) }]
+		},
+		{
+			'input': new es.Range( 22, 27 ),
+			'output': [{ 'node': h, 'range': new es.Range( 1, 4 ) }]
+		},
+		{
+			'input': new es.Range( 0, 33 ),
+			'output': [
+				{ 'node': f, 'range': new es.Range( 0, 8 ) },
+				{ 'node': g, 'range': new es.Range( 0, 8 ) },
+				{ 'node': h, 'range': new es.Range( 0, 8 ) }
+			]
+		},
+		{
+			'input': new es.Range( 5, 25 ),
+			'output': [
+				{ 'node': f, 'range': new es.Range( 4, 8 ) },
+				{ 'node': g, 'range': new es.Range( 0, 8 ) },
+				{ 'node': h, 'range': new es.Range( 0, 4 ) }
+			]
+		},
+		{
+			'input': new es.Range( 5, 9 ),
+			'output': [{ 'node': f, 'range': new es.Range( 5, 9 ) }]
+		},
+		{
+			'input': new es.Range( 5, 10 ),
+			'output': [{ 'node': f, 'range': new es.Range( 5, 10 ) }]
+		},
+		{
+			'input': new es.Range( 5, 11 ),
+			'output': [{ 'node': f, 'range': new es.Range( 5, 10 ) }]
+		},
+		{
+			'input': new es.Range( 5, 12 ),
+			'output': [
+				{ 'node': f, 'range': new es.Range( 5, 10 ) },
+				{ 'node': g, 'range': new es.Range( 0, 1 ) }
+			]
+		},
+		{
+			'input': new es.Range( 8, 16 ),
+			'output': [
+				{ 'node': f, 'range': new es.Range( 8, 10 ) },
+				{ 'node': g, 'range': new es.Range( 0, 5 ) }
+			]
+		},
+		{
+			'input': new es.Range( 9, 16 ),
+			'output': [
+				{ 'node': f, 'range': new es.Range( 9, 10 ) },
+				{ 'node': g, 'range': new es.Range( 0, 5 ) }
+			]
+		},
+		{
+			'input': new es.Range( 10, 16 ),
+			'output': [{ 'node': g, 'range': new es.Range( 0, 5 ) }]
+		},
+		{
+			'input': new es.Range( 11, 16 ),
+			'output': [{ 'node': g, 'range': new es.Range( 0, 5 ) }]
+		},
+		{
+			'input': new es.Range( 12, 16 ),
+			'output': [{ 'node': g, 'range': new es.Range( 1, 5 ) }]
+		}
+		*/
+	];
+
+	for ( i = 0; i < selectNodesTests.length; i++ ) {
+		deepEqual(
+			root2.selectNodes( selectNodesTests[i].input ),
+			selectNodesTests[i].output,
+			'selectNodes returns the correct items and ranges.'
+		);
+	}
 } );

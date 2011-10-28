@@ -121,16 +121,14 @@ es.DocumentNode.prototype.selectNodes = function( range ) {
 				nodes.push( {
 					'node': this[i],
 					'range': new es.Range( range.start - left, right - left - 1 )
-				} );	
+				} );
 			}
 		} else if ( range.end >= left && range.end < right ) {
 			nodes.push( {
 				'node': this[i],
 				'range': new es.Range( 0, range.end - left )
 			} );
-			if ( !off ) {
-				break;
-			}
+			break;
 		} else if ( left >= range.start && right <= range.end ) {
 			nodes.push( {
 				'node': this[i],

@@ -333,7 +333,9 @@ es.ContentView.prototype.getOffsetFromRenderedPosition = function( position ) {
 		fit = this.fitCharacters( line.range, ruler, position.left );
 	ruler.innerHTML = this.getHtml( new es.Range( line.range.start, fit.end ) );
 	var left = ruler.clientWidth;
-	ruler.innerHTML = this.getHtml( new es.Range( line.range.start, fit.end + 1 ) );
+	if ( fit.end < this.model.getContentLength() ) {
+		ruler.innerHTML = this.getHtml( new es.Range( line.range.start, fit.end + 1 ) );
+	}
 	var right = ruler.clientWidth;
 	var center = Math.round( left + ( ( right - left ) / 2 ) );
 	$ruler.remove();
