@@ -22,11 +22,11 @@
 					</div>\
 					<div class="mw-moodBar-form">\
 						<div class="mw-moodBar-formTitle">\
-							<span class="mw-moodBar-formNote"><html:msg key="moodbar-form-note" /></span>\
+							<span class="mw-moodBar-formNote"><span id="mw-moodBar-charCount"></span><html:msg key="moodbar-form-note-dynamic" /></span>\
 							<html:msg key="moodbar-form-title" />\
 						</div>\
 						<div class="mw-moodBar-formInputs">\
-							<textarea rows="3" maxlength="140" class="mw-moodBar-formInput" /></textarea>\
+							<textarea rows="3" maxlength="140" id="mw-moodBar-feedbackInput" class="mw-moodBar-formInput" /></textarea>\
 							<div class="mw-moodBar-privacy"></div>\
 							<input type="button" class="mw-moodBar-formSubmit" disabled="disabled" />\
 						</div>\
@@ -207,6 +207,22 @@
 						}
 					)
 					.end()
+				// set up character count
+				.find( '.mw-moodBar-formNote' )
+					.html(
+						function() {
+							var message, counterElement;
+							message = mw.msg( 'moodbar-form-note-dynamic' );							
+							counterElement = mw.html.element( 'span', {
+									'id': 'mw-moodBar-charCount',
+								} );
+							return mw.html.escape( message )
+								.replace( /\$1/, counterElement );
+						}
+					)
+					.end()
+
+					
 				// Submit
 				.find( '.mw-moodBar-formSubmit' )
 					.val( mw.msg( 'moodbar-form-submit' ) )
@@ -216,6 +232,11 @@
 						$.moodBar.submit( mb.feedbackItem );
 					} )
 					.end();
+			
+				// Set up character counter
+				// This is probably not the right way to do this.
+				$( '#mw-moodBar-feedbackInput' ).NobleCount('#mw-moodBar-charCount', {max_chars:140});
+			
 		},
 
 		core: function() {
@@ -249,7 +270,7 @@
 			
  			mb.ui.overlay.width(newWidth);
 			mb.ui.overlay.hide();
-
+			
 			// Bind triger
 			mb.ui.trigger.click( mb.event.trigger );
 		},

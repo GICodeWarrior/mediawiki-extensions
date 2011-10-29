@@ -92,6 +92,11 @@ if ( !$oldVersion ) {
 	$wgResourceModules['ext.moodBar.init']['dependencies'][] = 'mediawiki.user';
 }
 
+
+$wgResourceModules['jquery.NobleCount'] = $mbResourceTemplate + array(
+	'scripts' => 'jquery.NobleCount/jquery.NobleCount.min.js',
+);
+
 $wgResourceModules['ext.moodBar.core'] = $mbResourceTemplate + array(
 	'styles' => 'ext.moodBar/ext.moodBar.core.css',
 	'scripts' => 'ext.moodBar/ext.moodBar.core.js',
@@ -130,6 +135,7 @@ $wgResourceModules['ext.moodBar.core'] = $mbResourceTemplate + array(
 		'mediawiki.util',
 		'ext.moodBar.init', // just in case
 		'jquery.localize',
+	    'jquery.NobleCount',
 		'jquery.moodBar',
 	),
 	'position' => 'bottom',
