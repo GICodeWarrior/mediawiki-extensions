@@ -33,6 +33,7 @@ class OnlineStatusBarHooks {
 	}
 
 	/**
+	 * Called everytime when it's needed to update db
 	 * @return bool
 	 */
 	public static function updateStatus() {
@@ -41,6 +42,7 @@ class OnlineStatusBarHooks {
 	}
 
 	/**
+	 * Creates a bar
 	 * @param $article Article
 	 * @param $outputDone bool
 	 * @param $pcache string
@@ -77,6 +79,7 @@ class OnlineStatusBarHooks {
 	}
 
 	/**
+	 * Insert user options
 	 * @param $user User
 	 * @param $preferences array
 	 * @return bool
@@ -112,7 +115,7 @@ class OnlineStatusBarHooks {
 
 	/**
 	 * @param $magicWords array
-	 * @param $ln string?
+	 * @param $ln string (language)
 	 * @return bool
 	 */
 	public static function magicWordVar( array &$magicWords, $ln ) {
