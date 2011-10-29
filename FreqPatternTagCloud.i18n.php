@@ -236,6 +236,23 @@ $messages['nl'] = array(
 	'fptc-no-suggestion' => 'Geen suggesties gevonden',
 );
 
+/** Polish (Polski)
+ * @author Woytecr
+ */
+$messages['pl'] = array(
+	'fptc-categoryname' => 'Kategoria',
+	'fptc-context-menu-similar-tags' => 'Podobne etykiety:',
+	'fptc-form-attribute-name' => 'Właściwość',
+	'fptc-form-submit-button' => 'Wyślij',
+	'fptc-invalid-attribute' => 'Wprowadzona własność jest nieprawidłowa.',
+	'fptc-insufficient-rights-for-maintenance' => 'Musisz zalogować się jako administrator aby wyświetlić tę stronę.',
+	'fptc-refresh-frequent-patterns' => 'Odśwież dane',
+	'fptc-search-attribute-name' => 'Znajdź właściwość',
+	'fptc-search-button' => 'Szukaj',
+	'fptc-suggestion' => 'Czy miałeś na myśli',
+	'fptc-no-suggestion' => 'Nie znaleziono podpowiedzi',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
