@@ -799,16 +799,16 @@ $messages['mhr'] = array(
  * @author Brest
  */
 $messages['mk'] = array(
-	'contributiontracking-desc' => 'Следење на донации во акцијата за собирање на средства на Викимедија',
-	'contributiontracking' => 'Следење на донации',
+	'contributiontracking-desc' => 'Следење на дарувани прилози во иницијативата за собирање на средства на Викимедија',
+	'contributiontracking' => 'Следење на дарувања',
 	'contrib-tracking-error' => 'Грешка',
 	'contrib-tracking-error-text' => 'Неважечко поднесување на образецот',
 	'contrib-tracking-submitting' => 'Поднесувам на обработувачот на плаќања...',
 	'contrib-tracking-continue' => 'Ако се случи да не бидете пренасочени автоматски, кликнете на копчето за да ја довршите донацијата на PayPal.',
 	'contrib-tracking-redirect' => 'Системот автоматски ќе ве префрли на PayPal за да ја довршите донацијата.',
 	'contrib-tracking-button' => 'Продолжи',
-	'contrib-tracking-item-name-onetime' => 'Еднократна донација',
-	'contrib-tracking-item-name-recurring' => 'Месечна донација',
+	'contrib-tracking-item-name-onetime' => 'Еднократен прилог',
+	'contrib-tracking-item-name-recurring' => 'Месечен прилог',
 );
 
 /** Malayalam (മലയാളം)
