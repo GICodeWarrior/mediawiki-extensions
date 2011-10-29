@@ -173,8 +173,9 @@ HTML;
 	public static function DeleteOld() {
 		global $wgOnlineStatusBar_LogoutTime;
 		$dbw = wfGetDB( DB_MASTER );
-		$time = $dbw->timestamp() - $wgOnlineStatusBar_LogoutTime;
-		$dbw->delete( 'online_status', array( "timestamp < " . $dbw->addQuotes( $time ) ), __METHOD__ );
+		// calculate time and convert it back to mediawiki format
+		$time = wfTimestamp( TS_UNIX ) - $wgOnlineStatusBar_LogoutTime;
+		$dbw->delete( 'online_status', array( "timestamp < " . $dbw->addQuotes( $dbw->timestamp( $time ) ) ), __METHOD__ );
 		return 0;
 	}
 
