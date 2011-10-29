@@ -103,6 +103,24 @@ $messages['gl'] = array(
 	'onlinestatusbar-status' => 'Cal é o estado por defecto que quere usar:',
 	'prefs-onlinestatus' => 'Conectado',
 	'onlinestatusbar-hide' => 'Quere agochar a barra de estado para usar unicamente a palabra máxica? (Para usuarios avanzados)',
+	'onlinestatusbar-status-online' => 'Conectado',
+	'onlinestatusbar-status-busy' => 'Ocupado',
+	'onlinestatusbar-status-away' => 'Non dispoñible',
+	'onlinestatusbar-status-offline' => 'Desconectado',
+	'onlinestatusbar-status-hidden' => 'Agochado',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'onlinestatusbar-line' => '$1 je nětko $3 $2',
+	'prefs-onlinestatus' => 'Onlinestatus',
+	'onlinestatusbar-status-online' => 'Online',
+	'onlinestatusbar-status-busy' => 'Ma dźěło',
+	'onlinestatusbar-status-away' => 'Preč',
+	'onlinestatusbar-status-offline' => 'Offline',
+	'onlinestatusbar-status-hidden' => 'Schowany',
 );
 
 /** Macedonian (Македонски)
@@ -115,5 +133,33 @@ $messages['mk'] = array(
 	'onlinestatusbar-status' => 'Вашиот статус по основно:',
 	'prefs-onlinestatus' => 'Вклученост',
 	'onlinestatusbar-hide' => 'Дали би сакале да го скриете статусникот за да го користите само волшебниот збор (за напредни корисници)',
+	'onlinestatusbar-status-online' => 'Вклучен',
+	'onlinestatusbar-status-busy' => 'Зафатен',
+	'onlinestatusbar-status-away' => 'Отсутен',
+	'onlinestatusbar-status-offline' => 'Исклучен',
+	'onlinestatusbar-status-hidden' => 'Скриен',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'onlinestatusbar-line' => '$1 is nu $2 $3',
+	'onlinestatusbar-used' => 'Wilt u andere gebruikers laten zien dat u online bent?',
+	'onlinestatusbar-status' => 'Welke standaard status wilt u gebruiken:',
+	'prefs-onlinestatus' => 'Onlinestatus',
+	'onlinestatusbar-hide' => 'Wilt u de statusbalk verbergen en alleen het magische woord gebruiken (voor gevorderde gebruikers)?',
+	'onlinestatusbar-status-online' => 'Online',
+	'onlinestatusbar-status-busy' => 'Druk',
+	'onlinestatusbar-status-away' => 'Weg',
+	'onlinestatusbar-status-offline' => 'Offline',
+	'onlinestatusbar-status-hidden' => 'Verborgen',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'onlinestatusbar-used' => 'మీరు ఆన్‌లైనులో ఉన్నట్టు ఇతరులుకు చూపించాలా?',
 );
 
