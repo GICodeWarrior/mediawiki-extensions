@@ -243,6 +243,21 @@ $messages['or'] = array(
 	'signupapi-ok' => 'ଠିକ ଅଛି',
 );
 
+/** Polish (Polski)
+ * @author Woytecr
+ */
+$messages['pl'] = array(
+	'signupapi-noname' => 'Nie podano nazwy użytkownika',
+	'signupapi-userexists' => 'Użytkownik już istnieje',
+	'signupapi-enterpassword' => 'Musisz wprowadzić hasło',
+	'signupapi-passwordtooshort' => 'Hasło jest za krótkie',
+	'signupapi-weak' => 'Słabe',
+	'signupapi-medium' => 'Średnie',
+	'signupapi-strong' => 'Silne',
+	'signupapi-badretype' => 'Wprowadzone hasła nie pasują do siebie',
+	'signupapi-invalidemailaddress' => 'Adres e-mail jest nieprawidłowy',
+);
+
 /** Portuguese (Português)
  * @author Giro720
  * @author Hamilton Abreu
