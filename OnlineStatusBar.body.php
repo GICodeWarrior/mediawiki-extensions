@@ -97,10 +97,13 @@ HTML;
 	 * @param $user User
 	 * @return String
 	 */
-	public static function getStatus( $user ) {
+	public static function getStatus( $user, $update = false ) {
 		global $wgOnlineStatusBarDefaultOffline, $wgOnlineStatusBarDefaultOnline;
 		// remove old entries
-		self::DeleteOld();
+		if ( $update )
+		{
+			self::DeleteOld();
+		}
 
 		$dbr = wfGetDB( DB_SLAVE );
 		$result = $dbr->selectField( 'online_status', 'username', array( 'username' => $user->getName() ),
@@ -148,7 +151,7 @@ HTML;
 	 */
 	public static function UpdateStatus() {
 		global $wgUser, $wgOnlineStatusBarDefaultOffline;
-		if ( OnlineStatusBar::GetStatus( $wgUser ) == $wgOnlineStatusBarDefaultOffline ) {
+		if ( OnlineStatusBar::GetStatus( $wgUser, true ) == $wgOnlineStatusBarDefaultOffline ) {
 			OnlineStatusBar::UpdateDb();
 			return true;
 		}
@@ -171,7 +174,7 @@ HTML;
 		global $wgOnlineStatusBar_LogoutTime;
 		$dbw = wfGetDB( DB_MASTER );
 		$time = $dbw->timestamp() - $wgOnlineStatusBar_LogoutTime;
-		$dbw->delete( 'online_status', array( "timestamp < $time" ), __METHOD__ );
+		$dbw->delete( 'online_status', array( "timestamp < " . $dbw->addQuotes( $time ) ), __METHOD__ );
 		return 0;
 	}
 
@@ -203,4 +206,3 @@ HTML;
 		$dbw->delete( 'online_status', array( 'username' => $userName ), __METHOD__ ); // delete user
 		return true;
 	}
-}
