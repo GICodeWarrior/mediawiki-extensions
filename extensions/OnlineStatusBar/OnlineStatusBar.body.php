@@ -19,8 +19,8 @@ class OnlineStatusBar {
 
 	public static function getStatusBarHtml( $text ) {
 		return <<<HTML
-<div class="onlinebar metadata topiconstatus" id="status-top">
-<div class="statusbaricon">
+<div class="onlinestatusbarbody metadata onlinestatusbartop" id="status-top">
+<div class="onlinestatusbaricon">
 $text</div></div>
 HTML;
 	}
