@@ -160,7 +160,7 @@ HTML;
 		$dbw->update(
 			'online_status',
 			array( 'timestamp' => $dbw->timestamp() ),
-			array( 'username' => $wgUser->getID() ),
+			array( 'username' => $wgUser->getName() ),
 			__METHOD__
 		);
 
