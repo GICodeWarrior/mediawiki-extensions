@@ -206,3 +206,4 @@ HTML;
 		$dbw->delete( 'online_status', array( 'username' => $userName ), __METHOD__ ); // delete user
 		return true;
 	}
+}
