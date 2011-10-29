@@ -573,7 +573,7 @@ char* preprocessToObj( const char* text, int text_len, int flags, HashTable* par
 			if ( count >= rulemin ) {
 				// Add it to the stack
 				addNodeWithTags( found, count );
-				parentNode->flags = (i == 0 || text[i-1] == '\n') /* lineStart boolean */;
+				parentNode->flags = (i > 0 && text[i-1] == '\n') /* lineStart boolean */;
 				/* close char does not need to be stored per Known rules */
 				parentNode->count = count;
 				parentNode->argIndex = 0;
