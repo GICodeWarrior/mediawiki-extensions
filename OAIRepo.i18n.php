@@ -207,6 +207,7 @@ $messages['frp'] = array(
  */
 $messages['gl'] = array(
 	'oai-desc' => 'Proporciona a interface [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] no repositorio',
+	'oairepository' => 'Repositorio OAI',
 );
 
 /** Swiss German (Alemannisch)
