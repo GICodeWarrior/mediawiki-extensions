@@ -272,6 +272,19 @@ Mungkin Anda ingin melihat:
 * [[{{MediaWiki:Mainpage}}|Halaman utama]]',
 );
 
+/** Icelandic (Íslenska)
+ * @author Snævar
+ */
+$messages['is'] = array(
+	'error404' => '404 Síðan fannst ekki.',
+	'special404-body' => 'Vefslóðin sem þú baðst um fannst ekki.
+
+Ætlaðir þú að skrifa {{fullurl:$1}} ?
+
+Myndir þú vilja kíkja á: 
+* [[{{MediaWiki:Mainpage}}|Forsíðuna]]',
+);
+
 /** Japanese (日本語)
  * @author Ohgi
  */
