@@ -12,4 +12,7 @@
 	white-space: nowrap;
 	line-height: 1.125em;
 	text-transform: none;
+	background: url(images/icon-speechbubble-blue.png);
+	background-repeat: no-repeat;
+	padding-left: 18px;
 }
