@@ -1365,20 +1365,24 @@ $messages['grc'] = array(
 );
 
 /** Swiss German (Alemannisch)
+ * @author Als-Chlämens
  * @author Als-Holder
  */
 $messages['gsw'] = array(
 	'pollresults' => 'Ergebnis vu dr Abstimmige uf däm Site',
+	'qpollwebinstall' => 'Installation/Aktualisierig vo QPoll',
 	'qp_desc' => 'Erlaubt s Aalege vu Abstimmige',
 	'qp_desc-sp' => '[[Special:PollResults|Spezialsyte]] zum Aalueg vu dr Ergebnis vu dr Abstimmige',
 	'qp_result_NA' => 'Kei Antwort',
 	'qp_result_error' => 'Syntaxfähler',
 	'qp_vote_button' => 'Abstimme',
 	'qp_vote_again_button' => 'Dyy Stimm ändere',
+	'qp_submit_attempts_left' => 'Noch {{PLURAL:$1|isch ei Versuech|sin $1 Versuech}} mögli',
 	'qp_polls_list' => 'Alli Abstimmige uflischte',
 	'qp_users_list' => 'Alli Benutzer uflischte',
 	'qp_browse_to_poll' => 'Wyter zue $1',
 	'qp_browse_to_user' => 'Wyter zue $1',
+	'qp_browse_to_interpretation' => 'Wyter zue $1',
 	'qp_votes_count' => '$1 {{PLURAL:$1|Stimm|Stimme}}',
 	'qp_source_link' => 'Quälle',
 	'qp_stats_link' => 'Statischtik',
@@ -1394,8 +1398,16 @@ $messages['gsw'] = array(
 	'qp_results_line_qpl' => 'Syte „$1“ Abstimmig „$2“: $3, $4, $5, $6',
 	'qp_header_line_qpul' => '$1 [ Syte „$2“ Abstimmig „$3“ ]',
 	'qp_header_line_qucl' => '$1. $2<br />$3 ??? $4',
+	'qp_results_submit_attempts' => 'Abstimmversuech: $1',
+	'qp_results_interpretation_header' => 'Usswärtig vo de Antworte',
+	'qp_results_short_interpretation' => 'Churzusswärtig',
+	'qp_results_long_interpretation' => 'Ussfierlichi Usswärtig',
+	'qp_results_structured_interpretation' => 'Strukturierti Usswärtig',
+	'qp_poll_has_no_interpretation' => 'Die Abstimmig het kei Usswärtigsvorlag im Chopf',
+	'qp_interpetation_wrong_answer' => 'Falschi Antwort',
 	'qp_export_to_xls' => 'Statischtik im XLS-Format exportiere',
 	'qp_voices_to_xls' => 'Stimme im XLS-Format exportiere',
+	'qp_interpretation_results_to_xls' => 'Usswärtig vo de Antworte in s XLS-Format exportiere',
 	'qp_users_answered_questions' => '$1 {{PLURAL:$1|Benutzer het|Benutzer hän}} Antworte uf d Froge gee',
 	'qp_func_no_such_poll' => 'Kei sonigi Abstimmig ($1)',
 	'qp_func_missing_question_id' => 'Bitte spezifizier e Froge-Chännnummere (mit 1 aafange) fir d Abstimmig $1',
@@ -2202,6 +2214,7 @@ Zorg dat de peiling is ingesteld en opgeslagen, en dat het adresscheidingsteken 
 	'qp_error_invalid_poll_id' => 'Ongeldig peiling-ID ($1)
 Het ID mag alleen letters, cijfers en spaties bevatten.',
 	'qp_error_already_used_poll_id' => 'Het peilingsnummer wordt al gebruikt op deze pagina (ID $1)',
+	'qp_error_too_long_dependance_value' => 'De waarde van het afhankelijkheidsattribuut (dependance=$2) van de peiling (id=$1) is te lang om opgeslagen te kunnen worden in de database.',
 	'qp_error_invalid_dependance_value' => 'De peilingafhankelijkheidsketen (ID $1) heeft een ongeldige waarde voor de afhankelijkheidseigenschap (dependance "$2")',
 	'qp_error_missed_dependance_title' => 'De peiling (ID $1) is afhankelijk van een andere peiling (ID $3) op pagina [[$2]], maar de pagina [[$2]] bestaat niet.
 Verwijder de eigenschap "dependance" of plaats de pagina [[$2]] terug.',
@@ -2214,6 +2227,8 @@ Sla een peiling op door deze op te slaan zonder dat enig voorstel is beantwoord.
 	'qp_error_non_unique_choice' => 'Voor deze vraag is een uniek voorstelantwoord nodig',
 	'qp_error_category_name_empty' => 'Er is geen categorienaam opgegeven',
 	'qp_error_proposal_text_empty' => 'Er is geen voorsteltekst opgegeven',
+	'qp_error_too_long_category_option_value' => 'De categorie-optiewaarde is te lang om opgeslagen te kunnen worden in de database.',
+	'qp_error_too_long_category_options_values' => 'De categorie-optiewaarden zijn te lang om opgeslagen te kunnen worden in de database.',
 	'qp_error_too_long_proposal_text' => 'Het tekstvoorstel is te lang om opgeslagen te kunnen worden in de database.',
 	'qp_error_too_few_categories' => 'Er moeten tenminste twee categorieën gedefinieerd worden.',
 	'qp_error_too_few_spans' => 'Voor iedere categorieklasse dienen tenminste twee mogelijk antwoorden gedefinieerd te zijn',

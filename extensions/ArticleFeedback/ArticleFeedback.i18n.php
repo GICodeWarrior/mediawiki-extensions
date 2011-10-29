@@ -148,6 +148,7 @@ The {{SITENAME}} team',
  * @author Purodha
  * @author Raymond
  * @author Sam Reed
+ * @author Siebrand
  * @author Yekrats
  */
 $messages['qqq'] = array(
@@ -173,11 +174,13 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedback-survey-disclaimer' => 'This text appears on the survey form below the comment field and above the submit button.',
 	'articlefeedback-form-panel-explanation' => '{{Identical|What is this}}',
 	'articlefeedback-form-panel-explanation-link' => 'Do not translate "Project:". Also translate the "ArticleFeedback" special page name at [[Special:AdvancedTranslate]].',
+	'articlefeedback-form-panel-helpimprove' => 'This message should use {{SITENAME}}.',
 	'articlefeedback-form-panel-helpimprove-email-placeholder' => '{{Optional}}',
 	'articlefeedback-form-panel-helpimprove-privacy' => '{{Identical|Privacy}}',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Do not translate "Project:"
 {{Identical|Privacypage}}',
-	'articlefeedback-report-ratings' => "This message is used in JavaScript by module 'jquery.articleFeedback'.
+	'articlefeedback-report-ratings' => "Needs plural support.
+This message is used in JavaScript by module 'jquery.articleFeedback'.
 $1 is an integer, and the rating count.",
 	'articlefeedback-pitch-or' => '{{Identical|Or}}',
 	'articlefeedback-pitch-join-body' => 'Based on {{msg-mw|Articlefeedback-pitch-join-message}}.',
@@ -3136,6 +3139,8 @@ $messages['hsb'] = array(
 Prošu spytaj pozdźišo hišće raz.',
 	'articlefeedback-form-switch-label' => 'Tutu stronu pohódnoćić',
 	'articlefeedback-form-panel-title' => 'Tutu stronu pohódnoćić',
+	'articlefeedback-form-panel-explanation' => 'Što to je?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:ArticleFeedback',
 	'articlefeedback-form-panel-clear' => 'Tute pohódnoćenje wotstronić',
 	'articlefeedback-form-panel-expertise' => 'Mam wobšěrne znajomosće wo tutej temje (na přeće)',
 	'articlefeedback-form-panel-expertise-studies' => 'Sym na wotpowědnej wyšej šuli/uniwersiće studował',
@@ -3173,6 +3178,8 @@ Prošu spytaj pozdźišo hišće raz.',
 	'articlefeedback-survey-message-success' => 'Dźakujemy so za wobdźělenje na naprašowanju.',
 	'articlefeedback-survey-message-error' => 'Zmylk je wustupił.
 Prošu spytaj pozdźišo hišće raz.',
+	'articleFeedback-table-heading-page' => 'Strona',
+	'articleFeedback-table-heading-average' => 'Přerězk',
 );
 
 /** Hungarian (Magyar)
@@ -7208,7 +7215,7 @@ Nhóm {{SITENAME}}',
  * @author Demmy
  */
 $messages['yo'] = array(
-	'articlefeedback' => '条目评级',
+	'articlefeedback' => 'Ibi èsì àyọkà',
 	'articlefeedback-desc' => '条目评级（测试版）',
 	'articlefeedback-survey-question-whyrated' => '请告诉我们今天你为何评价了此页面(选择所有符合的):',
 	'articlefeedback-survey-answer-whyrated-contribute-rating' => '我想对网页的总体评价作贡献',
@@ -7225,7 +7232,7 @@ $messages['yo'] = array(
 	'articlefeedback-survey-thanks' => '谢谢您回答问卷。',
 	'articlefeedback-form-switch-label' => 'Wọn ojúewé yìí',
 	'articlefeedback-form-panel-title' => 'Wọn ojúewé yìí',
-	'articlefeedback-form-panel-submit' => '上载意见',
+	'articlefeedback-form-panel-submit' => 'Ìkóólẹ̀ ìdíyelé',
 	'articlefeedback-field-complete-label' => '完成',
 );
 

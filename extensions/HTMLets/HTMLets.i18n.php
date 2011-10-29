@@ -73,9 +73,12 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Paucabot
+ * @author Toniher
  */
 $messages['ca'] = array(
 	'htmlets-desc' => "Permet inserir snippets HTML de fitxers usant l'etiqueta <code>&lt;htmlet&gt;</code>",
+	'htmlets-filenotfound' => 'No es pot trobar el fitxer HTML $1',
+	'htmlets-loadfailed' => "No s'ha pogut carregar el fitxer HTML $1",
 );
 
 /** Czech (Česky)

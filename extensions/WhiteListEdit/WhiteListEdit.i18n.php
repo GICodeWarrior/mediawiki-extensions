@@ -2856,9 +2856,9 @@ Ta strona ma zastosowanie tylko do użytkowników na których zostały narzucone
 	'action-editwhitelist' => 'modyfikowania białej listy dla istniejących użytkowników',
 	'action-restricttowhitelist' => 'edytowania i przeglądania wyłącznie białej listy',
 	'group-restricted' => 'Ograniczenie użytkownicy',
-	'group-restricted-member' => '{{GENDER:$1|ograniczony użytkownik|ograniczona użytkowniczka}}',
-	'group-manager' => 'Zarządcy',
-	'group-manager-member' => 'Zarządca',
+	'group-restricted-member' => '{{GENDER:$1|użytkownik|użytkowniczka}} z ograniczonymi uprawnieniami',
+	'group-manager' => 'Menadżerowie',
+	'group-manager-member' => '{{GENDER:$1|menadżer|menadżerka}}',
 );
 
 /** Piedmontese (Piemontèis)

@@ -326,6 +326,19 @@ $messages['nl'] = array(
 	'includewp-include-par-height' => 'De maximale hooghte (in pixels) voor de "div" waarin de inhoud wordt gelaten. Stel dit in op 0 voor geen limiet.',
 );
 
+/** Polish (Polski)
+ * @author Woytecr
+ */
+$messages['pl'] = array(
+	'includewp-desc' => 'IncludeWP jest rozszerzeniem pozwalającym na dołączanie zawartości Wikipedii',
+	'includewp-loading-page' => 'Ładowanie strony...',
+	'includewp-show-full-page' => 'Pokaż całą stronę',
+	'includewp-show-fragment' => 'Pokaż tylko pierwszy akapit',
+	'includewp-loading-failed' => 'Nie można załadować strony.',
+	'includewp-parserhook-desc' => 'Hak analizatora składni umożliwiający wyświetlanie zawartości strony z Wikipedii.',
+	'includewp-include-par-page' => 'Nazwa strony którą chcesz wyświetlić.',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  * @author Dragonòt

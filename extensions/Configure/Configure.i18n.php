@@ -10359,6 +10359,7 @@ $messages['so'] = array(
 );
 
 /** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Nikola Smolenski
  * @author Rancher
  * @author Sasa Stefanovic
  * @author Жељко Тодоровић
@@ -10479,7 +10480,7 @@ $messages['sr-ec'] = array(
 	'configure-select-wiki' => 'Избор Викија',
 	'configure-select-wiki-desc' => 'Изаберите Вики коју желите да подешавате.',
 	'configure-select-wiki-view-desc' => 'Изаберите вики за кога желите да видите конфигурационе верзије.',
-	'configure-select-wiki-view-all' => 'Све викије',
+	'configure-select-wiki-view-all' => 'Сви викији',
 	'configure-select-wiki-view-specific' => 'Одређена Вики:',
 	'configure-select-wiki-submit' => 'Изабери',
 	'configure-setting-not-available' => 'Ов подешавање није могуће на овој верзики МедијаВикија',

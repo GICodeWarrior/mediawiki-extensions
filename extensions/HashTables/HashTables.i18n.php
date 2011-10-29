@@ -20,8 +20,30 @@ $messages['en'] = array(
 
 /** German (Deutsch)
  * @author Daniel Werner
+ * @author Kghbln
  */
 $messages['de'] = array(
-	'hashtables-desc' => 'Bietet Parser-Funktionen zur Verwendung Assoziativer Datenfelder (Hashes) in Wiki-Artikeln',
+	'hashtables-desc' => 'Ergänzt Parserfunktionen die assoziative Datenfelder (Hashes) auf Wikiseiten ermöglichen sowie nutzbar machen',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'hashtables-desc' => 'Funcións analíticas destinadas ás páxinas que permiten traballar con táboas hash',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'hashtables-desc' => 'Parserowe funkcije, kotrež tabele hašow (asociatiwne datowe pola) zmóžnjeja',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'hashtables-desc' => 'Парсерски функции што овозможуваат работа со тарабни табели во контекст со опфатност определена во страница',
 );
 

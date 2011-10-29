@@ -316,7 +316,7 @@ $messages['lt'] = array(
  */
 $messages['mk'] = array(
 	'variablepage' => 'ПроменливаСтраница',
-	'variablepage-navlink_text' => 'Донирајте',
+	'variablepage-navlink_text' => 'Дарувајте',
 	'variablepage-desc' => 'Леко променливо пренасочување на страници',
 );
 

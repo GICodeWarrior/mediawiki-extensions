@@ -364,8 +364,8 @@ $messages['lv'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'donationform-desc' => 'Додава ознака <code>&lt;donateform&gt;</code> за поддршка на донации преку PayPal',
-	'donationform-submit' => 'Донирајте преку PayPal',
+	'donationform-desc' => 'Додава ознака <code>&lt;donateform&gt;</code> за поддршка на дарување преку PayPal',
+	'donationform-submit' => 'Дарувајте преку PayPal',
 );
 
 /** Malayalam (മലയാളം)

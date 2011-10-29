@@ -122,6 +122,8 @@ $messages['gsw'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
+	'userdebuginfo-key' => 'Kluč',
+	'userdebuginfo-value' => 'Hódnota',
 	'userdebuginfo-language' => 'Rěč',
 );
 

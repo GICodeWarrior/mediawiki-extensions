@@ -501,6 +501,16 @@ $messages['he'] = array(
 	'wikitweet-alertsolved' => 'אחת ההתראות שלך נפתרה ב',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'wikitweet-status' => 'Status:',
+	'wikitweet-status0' => 'Diskusija',
+	'wikitweet-status1' => 'Podawk',
+	'wikitweet-status2' => 'Warnowanje',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
