@@ -128,6 +128,7 @@ HTML;
 	}
 
 	/**
+	 * Insert to the database
 	 * @return bool
 	 */
 	public static function UpdateDb() {
@@ -199,6 +200,7 @@ HTML;
 	}
 
 	/**
+	 * Delete user who logged out
 	 * @param $userName string
 	 * @return bool
 	 */
