@@ -170,7 +170,7 @@ HTML;
 	public static function DeleteOld() {
 		global $wgOnlineStatusBar_LogoutTime;
 		$dbw = wfGetDB( DB_MASTER );
-		$time = wfTimestamp( TS_UNIX ) - $wgOnlineStatusBar_LogoutTime;
+		$time = $dbw->timestamp() - $wgOnlineStatusBar_LogoutTime;
 		$dbw->delete( 'online_status', array( "timestamp < $time" ), __METHOD__ );
 		return 0;
 	}
