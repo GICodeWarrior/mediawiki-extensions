@@ -11,10 +11,6 @@ from eventlet.green import urllib2
 import wmf.client
 import time
 
-# the auth system turns our login and key into an account / token pair.
-# the account remains valid forever, but the token times out.
-account = 'AUTH_dea4a45c-a80b-43b5-8e8b-e452f0dc778f'
-
 # Copy2 is hairy. If we were only opening a URL, and returning it, we could
 # just return the open file handle, and webob would take care of reading from
 # the socket and returning the data to the client machine. If we were only
@@ -33,12 +29,17 @@ class Copy2(object):
     """
     token = None
 
-    def __init__(self, conn, app, url, container, obj, authurl, login, key, content_type=None, modified=None):
+    def __init__(self, conn, app, url, container, obj, authurl, login, key,
+            content_type=None, modified=None):
         self.app = app
         self.conn = conn
         if self.token is None:
             (account, self.token) = wmf.client.get_auth(authurl, login, key)
         if modified is not None:
+            # The issue here is that we need to keep the timestamp between the
+            # thumb server and us. The Migration-Timestamp header was in 1.2,
+            # but was deprecated. They likely have a different solution for
+            # setting the timestamp on an uploaded file.
             h = {'!Migration-Timestamp!': '%s' % modified}
         else:
             h = {}
@@ -46,9 +47,11 @@ class Copy2(object):
                 container, obj, content_type=content_type, headers=h)
 
     def __iter__(self):
+        # We're an iterator; we get passed back to wsgi as a consumer.
         return self
 
     def next(self):
+        # We read from the thumb server, write out to Swift, and return it.
         data = self.conn.read(4096)
         if not data:
             # if we get a 401 error, it's okay, but we should re-auth.
@@ -57,7 +60,8 @@ class Copy2(object):
             except wmf.client.ClientException, err:
                 self.app.logger.warn("PUT Status: %d" % err.http_status)
                 if err.http_status == 401:
-                    # not worth retrying the write.
+                    # not worth retrying the write. Thumb will get saved
+                    # the next time.
                     self.token = None
                 else:
                     raise
@@ -66,6 +70,10 @@ class Copy2(object):
         return data
 
 class ObjectController(object):
+    """
+    We're an object controller that doesn't actually do anything, but we
+    will need these arguments later
+    """
 
     def __init__(self):
         self.response_args = []
@@ -78,7 +86,7 @@ class WMFRewrite(object):
     """
     Rewrite Media Store URLs so that swift knows how to deal.
 
-    Mostly it's a question of inserting the AUTH_ string, and escaping the %2F's in the container section.
+    Mostly it's a question of inserting the AUTH_ string, and changing / to - in the container section.
     """
 
     def __init__(self, app, conf):
@@ -92,16 +100,22 @@ class WMFRewrite(object):
         self.user_agent = conf['user_agent'].strip()
 
     def handle404(self, reqorig, url, container, obj):
-        """ return a webob.Response which reads the request, but from the thumb host.
+        """
+        Return a webob.Response which fetches the thumbnail from the thumb
+        host, potentially writes it out to Swift so we don't 404 next time,
+        and returns it. Note also that the thumb host might write it out
+        to Swift so we don't have to.
         """
         # go to the thumb media store for unknown files
         reqorig.host = self.thumbhost
-        # upload doesn't like our User-agent, otherwise we could call it using urllib2.url()
+        # upload doesn't like our User-agent, otherwise we could call it
+        # using urllib2.url()
         opener = urllib2.build_opener()
         opener.addheaders = [('User-agent', self.user_agent)]
-        # At least in theory, we shouldn't be handing out links to files that we don't have
-        # (or in the case of thumbs, can't generate). However, someone may have a formerly
-        # valid link to a file, so we should do them the favor of giving them a 404.
+        # At least in theory, we shouldn't be handing out links to originals
+        # that we don't have (or in the case of thumbs, can't generate).
+        # However, someone may have a formerly valid link to a file, so we
+        # should do them the favor of giving them a 404.
         try:
             upcopy = opener.open(reqorig.url)
         except urllib2.HTTPError,status:
@@ -127,7 +141,7 @@ class WMFRewrite(object):
         return resp
  
     def __call__(self, env, start_response):
-      #try:
+      #try: commented-out while debugging so you can see where stuff happened.
         req = webob.Request(env)
         # PUT requests never need rewriting.
         if req.method == 'PUT':
@@ -146,14 +160,14 @@ class WMFRewrite(object):
         match = re.match(r'/(.*?)/(.*?)/(.*)', req.path)
         if match:
             # Our target URL is as follows:
-            # https://alsted.wikimedia.org:8080/v1/AUTH_6790933748e741268babd69804c6298b/wikipedia%252Fen/2/25/Machinesmith.png
+            # https://alsted.wikimedia.org:8080/v1/AUTH_6790933748e741268babd69804c6298b/wikipedia-en/2/25/Machinesmith.png
 
             # quote slashes in the container name
-            container = "%s%%2F%s" % (match.group(1), match.group(2)) #02
+            container = "%s-%s" % (match.group(1), match.group(2)) #02
             obj = match.group(3)
             # include the thumb in the container.
             if obj.startswith("thumb/"): #03
-                container += "%2Fthumb"
+                container += "-thumb"
                 obj = obj[len("thumb/"):]
 
             if not obj:
