@@ -28,29 +28,13 @@ class SwiftFile extends LocalFile {
 	 * @private
 	 */
 	var
-		$conn;             # our connection to the Swift proxy.
-		# $fileExists,       # does the file file exist on disk? (loadFromXxx)
-		# $historyLine,      # Number of line to return by nextHistoryLine() (constructor)
-		# $historyRes,       # result of the query for the file's history (nextHistoryLine)
-		# $width,            # \
-		# $height,           #  |
-		# $bits,             #   --- returned by getimagesize (loadFromXxx)
-		# $attr,             # /
-		# $media_type,       # MEDIATYPE_xxx (bitmap, drawing, audio...)
-		# $mime,             # MIME type, determined by MimeMagic::guessMimeType
-		# $major_mime,       # Major mime type
-		# $minor_mime,       # Minor mime type
-		# $size,             # Size in bytes (loadFromXxx)
-		# $metadata,         # Handler-specific metadata
-		# $timestamp,        # Upload timestamp
-		# $sha1,             # SHA-1 base 36 content hash
-		# $user, $user_text, # User, who uploaded the file
-		# $description,      # Description of current revision of the file
-		# $dataLoaded,       # Whether or not all this has been loaded from the database (loadFromXxx)
-		# $upgraded,         # Whether the row was upgraded on load
-		# $locked,           # True if the image row is locked
-		# $missing,          # True if file is not present in file system. Not to be cached in memcached
-		# $deleted;          # Bitfield akin to rev_deleted
+		$conn,             # our connection to the Swift proxy.
+		$fileExists,       # does the file file exist on disk? (loadFromXxx)
+		$dataLoaded,       # Whether or not all this has been loaded from the database (loadFromXxx)
+		$swiftuser,
+		$swiftkey,
+		$authurl,
+		$container;
 	/**#@-*/
 
 	/**
@@ -185,7 +169,7 @@ class SwiftFile extends LocalFile {
 
 		// see if the file exists, and if it exists, is not too old.
 		$conn = $this->repo->connect();
-		$container = $this->repo->get_container( $conn, $this->repo->container . '%2Fthumb' );
+		$container = $this->repo->get_container( $conn, $this->repo->container . '-thumb' );
 		try {
 			$pic = $container->get_object( $this->getRel() . "/$thumbName" );
 		} catch ( NoSuchObjectException $e ) {
@@ -216,7 +200,7 @@ class SwiftFile extends LocalFile {
 		// what if they didn't actually write out a thumbnail? Check the file size.
 		if ( $thumb && file_exists( $thumbPath ) && filesize( $thumbPath ) ) {
 			// Store the thumbnail into Swift, but in the thumb version of the container.
-			wfDebug(  __METHOD__ . 'Creating thumb ' . $this->getRel() . "/$thumbName\n" );
+			wfDebug(  __METHOD__ . ': creating thumb ' . $this->getRel() . "/$thumbName\n" );
 			$this->repo->write_swift_object( $thumbPath, $container, $this->getRel() . "/$thumbName" );
 			// php-cloudfiles throws exceptions, so failure never gets here.
 		}
@@ -264,7 +248,7 @@ class SwiftFile extends LocalFile {
 			$prefix = $this->getRel();
 		}
 		$conn = $this->repo->connect();
-		$container = $this->repo->get_container( $conn, $this->repo->container . '%2Fthumb' );
+		$container = $this->repo->get_container( $conn, $this->repo->container . '-thumb' );
 		$files = $container->list_objects( 0, NULL, $prefix );
 		array_unshift( $files, 'unused' ); # return an unused $dir.
 		return $files;
@@ -272,14 +256,14 @@ class SwiftFile extends LocalFile {
 
 	/**
 	 * Delete cached transformed files
-	 * @param $dir string If needed for this repo, the directory prefix.
+	 * @param $dir string Should always be the 'unused' we specified earlier.
 	 * @param $files array of strings listing the thumbs to be deleted.
 	 */
 	function purgeThumbList( $dir, $files ) {
 		global $wgExcludeFromThumbnailPurge;
 
 		$conn = $this->repo->connect();
-		$container = $this->repo->get_container( $conn, $this->repo->container . '%2Fthumb' );
+		$container = $this->repo->get_container( $conn, $this->repo->container . '-thumb' );
 		foreach ( $files as $file ) {
 			// Only remove files not in the $wgExcludeFromThumbnailPurge configuration variable
 			$ext = pathinfo( $file, PATHINFO_EXTENSION );
@@ -544,7 +528,7 @@ class SwiftRepo extends LocalRepo {
 	function append( $srcPath, $toAppendPath, $flags = 0 ) {
 		// Count the number of files whose names start with $toAppendPath
 		$conn = $this->connect();
-		$container = $this->repo->get_container( $conn, $this->repo->container . "%2Ftemp" );
+		$container = $this->repo->get_container( $conn, $this->repo->container . "-temp" );
 		$nextone = count( $container->list_objects( 0, NULL, $srcPath ) );
 
 		// Do the append to the next name
@@ -562,7 +546,7 @@ class SwiftRepo extends LocalRepo {
 	 */
 	function appendFinish( $toAppendPath ) {
 		$conn = $this->connect();
-		$container = $this->repo->get_container( $conn, $this->repo->container . '%2Ftemp' );
+		$container = $this->repo->get_container( $conn, $this->repo->container . '-temp' );
 		$parts = $container->list_objects( 0, NULL, $toAppendPath);
 		// list_objects() returns a sorted list.
 
@@ -671,8 +655,6 @@ class SwiftRepo extends LocalRepo {
 			throw new MWException( "Missing Content-Type: $e" );
 		} catch ( MisMatchedChecksumException $e ) {
 			throw new MWException( __METHOD__ . "should not happen: '$e'" );
-		# } catch (InvalidResponseException $e ) {
-		#	throw new MWException( __METHOD__ . "unexpected response '$e'" );
 		}
 
 		try {
@@ -681,16 +663,20 @@ class SwiftRepo extends LocalRepo {
 			throw new MWException( 'The object we just created does not exist: ' . $dstContainer->name . "/$dstRel: $e" );
 		}
 
+		try {
+			$srcObj = $srcContainer->get_object( $srcRel );
+		} catch ( NoSuchObjectException $e ) {
+			throw new MWException( 'Source file does not exist: ' . $srcContainer->name . "/$srcRel: $e" );
+		} 
+
 		wfDebug( __METHOD__ . ' copying to ' . $dstContainer->name . "/$dstRel from " . $srcContainer->name . "/$srcRel\n" );
 
 		try {
-			$obj->copy( $srcContainer->name . "/$srcRel" );
+			$dstContainer->copy_object_from($srcObj,$srcContainer,$dstRel);
 		} catch ( SyntaxException $e ) {
 			throw new MWException( 'Source file does not exist: ' . $srcContainer->name . "/$srcRel: $e" );
 		} catch ( MisMatchedChecksumException $e ) {
 			throw new MWException( "Checksums do not match: $e" );
-		# } catch (InvalidResponseException $e ) {
-		#	throw new MWException( __METHOD__ . "unexpected response '$e'" );
 		}
 	}
 
@@ -875,11 +861,11 @@ class SwiftRepo extends LocalRepo {
 			case 'public':
 				return $this->container;
 			case 'temp':
-				return $this->container . '%2Ftemp';
+				return $this->container . '-temp';
 			case 'deleted':
-				return $this->container . '%2Fdeleted';
+				return $this->container . '-deleted';
 			case 'thumb':
-				return $this->container . '%2Fthumb';
+				return $this->container . '-thumb';
 			default:
 				return false;
 		}
