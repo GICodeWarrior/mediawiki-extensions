@@ -188,8 +188,8 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'sidebardonatebox-desc' => 'Во страничната лента додава посебна кутија за донации',
-	'DONATE' => 'Донирајте',
+	'sidebardonatebox-desc' => 'Во страничната лента додава посебна кутија за доброволни прилози',
+	'DONATE' => 'Дарувајте',
 );
 
 /** Malay (Bahasa Melayu)
@@ -231,9 +231,11 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Sp5uhe
+ * @author Woytecr
  */
 $messages['pl'] = array(
-	'sidebardonatebox-desc' => 'Dodaje na pasku bocznym ramkę donacji',
+	'sidebardonatebox-desc' => 'Dodaje na pasku bocznym ramkę dotacji',
+	'DONATE' => 'Dotacja',
 );
 
 /** Piedmontese (Piemontèis)
