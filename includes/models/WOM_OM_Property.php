@@ -11,6 +11,8 @@
 class WOMPropertyModel extends WikiObjectModel {
 	protected $m_property; // name
 	protected $m_smwdatavalue; // value, caption, type
+	protected $m_value;
+	protected $m_caption;
 	protected $m_visible;
 
 	public function __construct( $property, $value, $caption = '' ) {
@@ -22,10 +24,20 @@ class WOMPropertyModel extends WikiObjectModel {
 		}
 
 		$property = SMWPropertyValue::makeUserProperty( $property );
-		$smwdatavalue = SMWDataValueFactory::newPropertyObjectValue( $property, $value, $caption );
+		$smwdatavalue = null;
+		// FIXME: property should be collection object according to templates
+		// if template/field used
+		if ( preg_match( '/\{\{.+\}\}/s', $value . $caption ) ) {
+			$value = "{$value}|{$caption}";
+			$caption = '';
+		} else {
+			$smwdatavalue = SMWDataValueFactory::newPropertyObjectValue( $property, $value, $caption );
+		}
 
 		$this->m_property = $property;
 		$this->m_smwdatavalue = $smwdatavalue;
+		$this->m_value = $value;
+		$this->m_caption = $caption;
 		$this->m_visible = !preg_match( '/\s+/', $caption );
 	}
 
@@ -63,11 +75,11 @@ class WOMPropertyModel extends WikiObjectModel {
 	}
 
 	public function getPropertyValue() {
-		return $this->m_smwdatavalue->getWikiValue();
+		return $this->m_smwdatavalue == null ? $this->m_value : $this->m_smwdatavalue->getWikiValue();
 	}
 
 	public function getCaption() {
-		$caption = $this->m_smwdatavalue->getShortWikiText();
+		$caption = $this->m_smwdatavalue == null ? $this->m_caption : $this->m_smwdatavalue->getShortWikiText();
 		return ( $caption == $this->getPropertyValue() ) ? '' : $caption;
 	}
 
@@ -81,12 +93,12 @@ class WOMPropertyModel extends WikiObjectModel {
 		}
 	}
 	protected function getXMLAttributes() {
-		return "name=\"{$this->getPropertyName()}\"";
+		return 'name="' . self::xml_entities( $this->getPropertyName() ) . '"';
 	}
 	protected function getXMLContent() {
 		return "
-<value>{$this->getPropertyValue()}</value>
-<caption>{$this->getCaption()}</caption>
+<value><![CDATA[{$this->getPropertyValue()}]]></value>
+<caption><![CDATA[{$this->getCaption()}]]></caption>
 ";
 	}
 }

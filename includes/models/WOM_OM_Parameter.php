@@ -41,6 +41,6 @@ class WOMParameterModel extends WikiObjectModelCollection {
 	}
 
 	protected function getXMLAttributes() {
-		return "key=\"{$this->m_key}\"";
+		return 'key="' . self::xml_entities( $this->m_key ) . '"';
 	}
 }

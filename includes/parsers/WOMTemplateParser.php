@@ -15,7 +15,7 @@ class WOMTemplateParser extends WikiObjectModelParser {
 
 	public function parseNext( $text, WikiObjectModelCollection $parentObj, $offset = 0 ) {
 		$text = substr( $text, $offset );
-		$r = preg_match( '/^(\{\{([^|}]+))([|}])/', $text, $m );
+		$r = preg_match( '/^(\{\{([^{|}]+))([|}])/', $text, $m );
 
 		if ( $r ) {
 			if ( !preg_match( '/[^' . Title::legalChars() . ']/', trim( $m[2] ) ) )
