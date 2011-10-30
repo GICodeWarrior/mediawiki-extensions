@@ -7,7 +7,7 @@
 
 function SFI_DP_init ( input_id, params ) {
 
-	var input = jQuery("#" + input_id);
+	var input = jQuery("#" + input_id + "_dp_show");
 	var re = /\d{4}\/\d{2}\/\d{2}/
 
 	if ( params.disabled ) {
