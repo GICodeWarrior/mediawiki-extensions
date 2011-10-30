@@ -169,7 +169,7 @@ $messages['en'] = array(
 	// Contestant pager
 	'contest-contestant-id' => 'ID',
 	'contest-contestant-challenge-name' => 'Challenge name',
-	'contest-contestant-volunteer' => 'Volunteer',
+	'contest-contestant-volunteer' => '{{GENDER:$1|Volunteer}}',
 	'contest-contestant-wmf' => 'WMF',
 	'contest-contestant-no' => 'No',
 	'contest-contestant-yes' => 'Yes',
