@@ -595,6 +595,13 @@ $messages['de-formal'] = array(
 	'contest-submission-challenge' => 'Sie stellen sich gerade der Herausforderung $1',
 );
 
+/** Persian (فارسی)
+ * @author Leyth
+ */
+$messages['fa'] = array(
+	'contest-status-draft' => 'پیش نویس (غیر فعال)',
+);
+
 /** French (Français)
  * @author Gomoko
  * @author Reedy
