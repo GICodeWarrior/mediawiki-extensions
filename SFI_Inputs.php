@@ -192,12 +192,10 @@ class SFIInputs {
 
 		// register event to validate regexp on submit/preview
 		$jstext = <<<JAVASCRIPT
-jQuery(function(){
-	jQuery('#input_$sfgFieldNum').SemanticForms_registerInputValidation( SFI_RE_validate, {retext: {$regexp}, inverse: {$inverseString}, message: {$message} });
-});
+jQuery(function(){ jQuery('#input_$sfgFieldNum').SemanticForms_registerInputValidation( SFI_RE_validate, {retext: {$regexp}, inverse: {$inverseString}, message: {$message} }); });
 JAVASCRIPT;
 
-		$wgOut->addInlineScript( $jstext );
+		$wgOut->addScript( Html::inlineScript(  $jstext ) );
 
 		// create other_args for base input type
 		$new_other_args = array();
@@ -213,7 +211,7 @@ JAVASCRIPT;
 		$funcArgs[] = $cur_value;
 		$funcArgs[] = $input_name;
 		$funcArgs[] = $is_mandatory;
-		$funcArgs[] = $is_disabled;
+		$funcArgs[] = $is_disabled;	
 		$funcArgs[] = $new_other_args;
 
 		// get the input type hooks for the base input type
@@ -241,74 +239,75 @@ JAVASCRIPT;
 
 			$wgOut->addScript( '<script type="text/javascript" src="' . $sfgScriptPath . '/libs/jquery-ui/jquery.ui.datepicker.min.js"></script> ' );
 			$wgOut->addExtensionStyle( $sfgScriptPath . '/skins/jquery-ui/base/jquery.ui.datepicker.css' );
+			$wgOut->addExtensionStyle( $sfgScriptPath . '/skins/jquery-ui/base/jquery.ui.theme.css' );
 			$wgOut->addScript( '<script type="text/javascript" src="' . $sfigSettings->scriptPath . '/libs/datepicker.js"></script> ' );
 
 			// set localized messages (use MW i18n, not jQuery i18n)
 			$jstext =
-					"jQuery(function(){\n"
-					. "	jQuery.datepicker.regional['wiki'] = {\n"
-					. "		closeText: '" . wfMsg( 'semanticformsinputs-close' ) . "',\n"
-					. "		prevText: '" . wfMsg( 'semanticformsinputs-prev' ) . "',\n"
-					. "		nextText: '" . wfMsg( 'semanticformsinputs-next' ) . "',\n"
-					. "		currentText: '" . wfMsg( 'semanticformsinputs-today' ) . "',\n"
-					. "		monthNames: ['"
-						. wfMsg( 'january' ) . "','"
-						. wfMsg( 'february' ) . "','"
-						. wfMsg( 'march' ) . "','"
-						. wfMsg( 'april' ) . "','"
-						. wfMsg( 'may_long' ) . "','"
-						. wfMsg( 'june' ) . "','"
-						. wfMsg( 'july' ) . "','"
-						. wfMsg( 'august' ) . "','"
-						. wfMsg( 'september' ) . "','"
-						. wfMsg( 'october' ) . "','"
-						. wfMsg( 'november' ) . "','"
-						. wfMsg( 'december' ) . "'],\n"
-					. "		monthNamesShort: ['"
-						. wfMsg( 'jan' ) . "','"
-						. wfMsg( 'feb' ) . "','"
-						. wfMsg( 'mar' ) . "','"
-						. wfMsg( 'apr' ) . "','"
-						. wfMsg( 'may' ) . "','"
-						. wfMsg( 'jun' ) . "','"
-						. wfMsg( 'jul' ) . "','"
-						. wfMsg( 'aug' ) . "','"
-						. wfMsg( 'sep' ) . "','"
-						. wfMsg( 'oct' ) . "','"
-						. wfMsg( 'nov' ) . "','"
-						. wfMsg( 'dec' ) . "'],\n"
-					. "		dayNames: ['"
-						. wfMsg( 'sunday' ) . "','"
-						. wfMsg( 'monday' ) . "','"
-						. wfMsg( 'tuesday' ) . "','"
-						. wfMsg( 'wednesday' ) . "','"
-						. wfMsg( 'thursday' ) . "','"
-						. wfMsg( 'friday' ) . "','"
-						. wfMsg( 'saturday' ) . "'],\n"
-					. "		dayNamesShort: ['"
-						. wfMsg( 'sun' ) . "','"
-						. wfMsg( 'mon' ) . "','"
-						. wfMsg( 'tue' ) . "','"
-						. wfMsg( 'wed' ) . "','"
-						. wfMsg( 'thu' ) . "','"
-						. wfMsg( 'fri' ) . "','"
-						. wfMsg( 'sat' ) . "'],\n"
-					. "		dayNamesMin: ['"
-						. $wgLang->firstChar( wfMsg( 'sun' ) ) . "','"
-						. $wgLang->firstChar( wfMsg( 'mon' ) ) . "','"
-						. $wgLang->firstChar( wfMsg( 'tue' ) ) . "','"
-						. $wgLang->firstChar( wfMsg( 'wed' ) ) . "','"
-						. $wgLang->firstChar( wfMsg( 'thu' ) ) . "','"
-						. $wgLang->firstChar( wfMsg( 'fri' ) ) . "','"
-						. $wgLang->firstChar( wfMsg( 'sat' ) ) . "'],\n"
-					. "		weekHeader: '',\n"
-					. "		dateFormat: '" . wfMsg( 'semanticformsinputs-dateformatshort' ) . "',\n"
-					. "		firstDay: '" . wfMsg( 'semanticformsinputs-firstdayofweek' ) . "',\n"
-					. "		isRTL: " . ( $wgLang->isRTL() ? "true":"false" ) . ",\n"
-					. "		showMonthAfterYear: false,\n"
-					. "		yearSuffix: ''};\n"
-					. "	jQuery.datepicker.setDefaults(jQuery.datepicker.regional['wiki']);\n"
-					. "});\n";
+				"jQuery(function(){\n"
+				. "	jQuery.datepicker.regional['wiki'] = {\n"
+				. "		closeText: '" . Xml::escapeJsString( wfMsg( 'semanticformsinputs-close' ) ) . "',\n"
+				. "		prevText: '" . Xml::escapeJsString( wfMsg( 'semanticformsinputs-prev' ) ) . "',\n"
+				. "		nextText: '" . Xml::escapeJsString( wfMsg( 'semanticformsinputs-next' ) ) . "',\n"
+				. "		currentText: '" . Xml::escapeJsString( wfMsg( 'semanticformsinputs-today' ) ) . "',\n"
+				. "		monthNames: ['"
+				. Xml::escapeJsString( wfMsg( 'january' ) ) . "','"
+				. Xml::escapeJsString( wfMsg( 'february' ) ) . "','"
+				. Xml::escapeJsString( wfMsg( 'march' ) ) . "','"
+				. Xml::escapeJsString( wfMsg( 'april' ) ) . "','"
+				. Xml::escapeJsString( wfMsg( 'may_long' ) ) . "','"
+				. Xml::escapeJsString( wfMsg( 'june' ) ) . "','"
+				. Xml::escapeJsString( wfMsg( 'july' ) ) . "','"
+				. Xml::escapeJsString( wfMsg( 'august' ) ) . "','"
+				. Xml::escapeJsString( wfMsg( 'september' ) ) . "','"
+				. Xml::escapeJsString( wfMsg( 'october' ) ) . "','"
+				. Xml::escapeJsString( wfMsg( 'november' ) ) . "','"
+				. Xml::escapeJsString( wfMsg( 'december' ) ) . "'],\n"
+				. "		monthNamesShort: ['"
+				. Xml::escapeJsString( wfMsg( 'jan' ) ) . "','"
+				. Xml::escapeJsString( wfMsg( 'feb' ) ) . "','"
+				. Xml::escapeJsString( wfMsg( 'mar' ) ) . "','"
+				. Xml::escapeJsString( wfMsg( 'apr' ) ) . "','"
+				. Xml::escapeJsString( wfMsg( 'may' ) ) . "','"
+				. Xml::escapeJsString( wfMsg( 'jun' ) ) . "','"
+				. Xml::escapeJsString( wfMsg( 'jul' ) ) . "','"
+				. Xml::escapeJsString( wfMsg( 'aug' ) ) . "','"
+				. Xml::escapeJsString( wfMsg( 'sep' ) ) . "','"
+				. Xml::escapeJsString( wfMsg( 'oct' ) ) . "','"
+				. Xml::escapeJsString( wfMsg( 'nov' ) ) . "','"
+				. Xml::escapeJsString( wfMsg( 'dec' ) ) . "'],\n"
+				. "		dayNames: ['"
+				. Xml::escapeJsString( wfMsg( 'sunday' ) ) . "','"
+				. Xml::escapeJsString( wfMsg( 'monday' ) ) . "','"
+				. Xml::escapeJsString( wfMsg( 'tuesday' ) ) . "','"
+				. Xml::escapeJsString( wfMsg( 'wednesday' ) ) . "','"
+				. Xml::escapeJsString( wfMsg( 'thursday' ) ) . "','"
+				. Xml::escapeJsString( wfMsg( 'friday' ) ) . "','"
+				. Xml::escapeJsString( wfMsg( 'saturday' ) ) . "'],\n"
+				. "		dayNamesShort: ['"
+				. Xml::escapeJsString( wfMsg( 'sun' ) ) . "','"
+				. Xml::escapeJsString( wfMsg( 'mon' ) ) . "','"
+				. Xml::escapeJsString( wfMsg( 'tue' ) ) . "','"
+				. Xml::escapeJsString( wfMsg( 'wed' ) ) . "','"
+				. Xml::escapeJsString( wfMsg( 'thu' ) ) . "','"
+				. Xml::escapeJsString( wfMsg( 'fri' ) ) . "','"
+				. Xml::escapeJsString( wfMsg( 'sat' ) ) . "'],\n"
+				. "		dayNamesMin: ['"
+				. Xml::escapeJsString( $wgLang->firstChar( wfMsg( 'sun' ) ) ) . "','"
+				. Xml::escapeJsString( $wgLang->firstChar( wfMsg( 'mon' ) ) ) . "','"
+				. Xml::escapeJsString( $wgLang->firstChar( wfMsg( 'tue' ) ) ) . "','"
+				. Xml::escapeJsString( $wgLang->firstChar( wfMsg( 'wed' ) ) ) . "','"
+				. Xml::escapeJsString( $wgLang->firstChar( wfMsg( 'thu' ) ) ) . "','"
+				. Xml::escapeJsString( $wgLang->firstChar( wfMsg( 'fri' ) ) ) . "','"
+				. Xml::escapeJsString( $wgLang->firstChar( wfMsg( 'sat' ) ) ) . "'],\n"
+				. "		weekHeader: '',\n"
+				. "		dateFormat: '" . Xml::escapeJsString( wfMsg( 'semanticformsinputs-dateformatshort' ) ) . "',\n"
+				. "		firstDay: '" . Xml::escapeJsString( wfMsg( 'semanticformsinputs-firstdayofweek' ) ) . "',\n"
+				. "		isRTL: " . ( $wgLang->isRTL() ? "true" : "false" ) . ",\n"
+				. "		showMonthAfterYear: false,\n"
+				. "		yearSuffix: ''};\n"
+				. "	jQuery.datepicker.setDefaults(jQuery.datepicker.regional['wiki']);\n"
+				. "});\n";
 
 
 			$wgOut->addInlineScript( $jstext );
@@ -821,8 +820,12 @@ JAVASCRIPT;
 		$jsattribsString = Xml::encodeJsVar( $jsattribs );
 
 		// wrap the JS code fragment in a function for deferred init
+//		$jstext = <<<JAVASCRIPT
+//jQuery(function(){ jQuery('#input_{$sfgFieldNum}_dp_show').SemanticForms_registerInputInit(SFI_DP_init, $jsattribsString ); });
+//JAVASCRIPT;
+//
 		$jstext = <<<JAVASCRIPT
-jQuery(function(){ jQuery('#input_{$sfgFieldNum}_dp_show').SemanticForms_registerInputInit(SFI_DP_init, $jsattribsString ); });
+jQuery(function(){ jQuery('#input_{$sfgFieldNum}').SemanticForms_registerInputInit(SFI_DP_init, $jsattribsString ); });
 JAVASCRIPT;
 
 		// insert the code of the JS init function into the pages code
@@ -1213,20 +1216,29 @@ JAVASCRIPT;
 
 	}
 
+	static function menuselectSetGlobalVars(&$vars) {
+		global $sfigSettings;
+		$vars['sfigScriptPath'] = $sfigSettings->scriptPath;
+		return true;
+	}
+	
 	/**
 	 * Setup for input type "menuselect".
 	 * Adds the Javascript code and css used by all menuselects.
 	*/
 	static private function menuselectSetup() {
 
-		global $wgOut;
+		global $wgOut, $wgHooks;
 		global $sfigSettings;
 
 		static $hasRun = false;
 
 		if ( !$hasRun ) {
 
-			$wgOut->addScript( '<script type="text/javascript">sfigScriptPath="' . $sfigSettings->scriptPath . '";</script> ' );
+			$hasRun = true;
+
+			$wgHooks['MakeGlobalVariablesScript'][] = 'SFIInputs::menuselectSetGlobalVars';
+			
 			$wgOut->addScript( '<script type="text/javascript" src="' . $sfigSettings->scriptPath . '/libs/menuselect.js"></script> ' );
 			$wgOut->addExtensionStyle( $sfigSettings->scriptPath . '/skins/SFI_Menuselect.css' );
 
@@ -1301,7 +1313,8 @@ JAVASCRIPT;
 			// write JS code directly to the page's code
 		$wgOut->addScript( '<script type="text/javascript">' . $jstext . '</script>' );
 
-		return array( $html, "", "SFI_MS_init" );
+//		return array( $html, "", "SFI_MS_init" );
 
+		return $html;
 	}
 }

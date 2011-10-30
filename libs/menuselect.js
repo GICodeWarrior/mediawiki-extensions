@@ -36,8 +36,11 @@ function SFI_MS_init( inputID, params ) {
 			.each( function() {
 
 				var item = jQuery( this );
-				var contents = item.contents().not( "ul" );
-
+				var contents = item.contents()//.not( "ul" );
+					.filter(function() {
+					  return ! jQuery( this ).is('ul');
+					});
+				
 				contents
 				.wrapAll( '<table><tbody><tr><td class="cont"/>' );
 
