@@ -22,6 +22,14 @@ $messages['en'] = array(
 	'sdt-duration' => 'Duration',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'sdt-desc' => 'Tribes de datos adicionales pa Semantic MediaWiki y estensiones',
+	'sdt-duration' => 'Duración',
+);
+
 /** Catalan (Català)
  * @author Toniher
  */
