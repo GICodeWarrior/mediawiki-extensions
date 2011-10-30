@@ -12,10 +12,11 @@ class FundraiserLandingPage extends UnlistedSpecialPage
 	}
 
 	function execute( $par ) {
-		global $wgFundraiserLPDefaults;
-
+		global $wgFundraiserLPDefaults, $wgOut, $wgFundraiserLandingPageMaxAge;
+		
+		#Set squid age
+		$wgOut->setSquidMaxage($wgFundraiserLandingPageMaxAge);		
 		$request = $this->getRequest();
-		$this->setHeaders();
 
 		# clear output variable to be safe
 		$output = '';
@@ -47,6 +48,7 @@ class FundraiserLandingPage extends UnlistedSpecialPage
 		$this->getOutput()->addWikiText( $output );
 	}
 
+
 	/**
 	 * This function limits the possible charactes passed as template keys and
 	 * values to letters, numbers, hypens and underscores. The function also
@@ -65,3 +67,4 @@ class FundraiserLandingPage extends UnlistedSpecialPage
 		return '';
 	}
 }
+
