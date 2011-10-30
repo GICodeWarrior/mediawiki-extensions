@@ -15,7 +15,7 @@ import time
 # just return the open file handle, and webob would take care of reading from
 # the socket and returning the data to the client machine. If we were only
 # opening a URL and writing its contents out to Swift, we could call
-# put_object with the file handle and it would read take care of reading from
+# put_object with the file handle and it would take care of reading from
 # the socket and writing the data to the Swift proxy.
 #     We have to do both at the same time. This requires that we hand over a class which
 # is an iterable which reads, writes one copy to Swift (using put_object_chunked), and
@@ -153,13 +153,15 @@ class WMFRewrite(object):
 
         # keep a copy of the original request so we can ask the scalers for it
         reqorig = req.copy()
-        # match these two URL forms, with the wikipedia, commons, and the rest
-        # going into groups.
+        # match these two URL forms (source files and thumbnails):
+        # http://upload.wikimedia.org/<site>/<lang>/.*
+        # http://upload.wikimedia.org/<site>/<lang>/thumb/.*
+        # example:
         # http://upload.wikimedia.org/wikipedia/commons/a/aa/000_Finlanda_harta.PNG
         # http://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/000_Finlanda_harta.PNG/75px-000_Finlanda_harta.PNG
         match = re.match(r'/(.*?)/(.*?)/(.*)', req.path)
         if match:
-            # Our target URL is as follows:
+            # Our target URL is as follows (example):
             # https://alsted.wikimedia.org:8080/v1/AUTH_6790933748e741268babd69804c6298b/wikipedia-en/2/25/Machinesmith.png
 
             # quote slashes in the container name
