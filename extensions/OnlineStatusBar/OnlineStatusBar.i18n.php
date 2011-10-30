@@ -123,6 +123,17 @@ $messages['hsb'] = array(
 	'onlinestatusbar-status-hidden' => 'Schowany',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'onlinestatusbar-line' => '$1 ass elo $2 $3',
+	'onlinestatusbar-used' => 'Wëllt dir datt Anerer kënne gesinn op Dir online sidd?',
+	'onlinestatusbar-status-busy' => 'Beschäftegt',
+	'onlinestatusbar-status-away' => 'Net do',
+	'onlinestatusbar-status-hidden' => 'Verstoppt',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

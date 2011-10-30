@@ -53,6 +53,13 @@ $messages['de'] = array(
 	'apiexplorer-loading' => 'Funktionen werden geladen …',
 );
 
+/** Persian (فارسی)
+ * @author Leyth
+ */
+$messages['fa'] = array(
+	'apiexplorer-loading' => 'در حال بارگیری توابع...',
+);
+
 /** French (Français)
  * @author Gomoko
  * @author IAlex

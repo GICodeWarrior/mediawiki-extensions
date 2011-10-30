@@ -299,9 +299,9 @@ $messages['pl'] = array(
 	'mirrortools' => 'MirrorTools',
 	'mirrortools-desc' => 'Umożliwia edycję poprzez API z użyciem dowolnej nazwy użytkownika',
 	'right-mirroredit' => 'Edycja poprzez API z użyciem dowolnej nazwy użytkownika',
-	'group-MirrorTools' => 'Użytkownicy narzędzia tworzenia lustrzanych kopii',
+	'group-MirrorTools' => 'Użytkownicy narzędzia MirrorTools',
 	'group-MirrorTools-member' => '{{GENDER:$1|użytkownik|użytkowniczka}} MirrorTools',
-	'grouppage-MirrorTools' => '{{ns:project}}:Użytkownicy narzędzia tworzenia lustrzanych kopii',
+	'grouppage-MirrorTools' => '{{ns:project}}:Użytkownicy narzędzia MirrorTools',
 );
 
 /** Piedmontese (Piemontèis)

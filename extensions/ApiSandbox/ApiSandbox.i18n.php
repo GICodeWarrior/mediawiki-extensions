@@ -227,6 +227,7 @@ $messages['es'] = array(
 
 /** Persian (فارسی)
  * @author Ebraminio
+ * @author Leyth
  */
 $messages['fa'] = array(
 	'apisb-desc' => 'اشکال‌یابی فراخوانی‌های [http://www.mediawiki.org/wiki/API رابط برنامه‌نویسی مدیاویکی] را از طریق مرورگر اجازه می‌دهد',
@@ -235,6 +236,16 @@ $messages['fa'] = array(
 	'apisb-api-disabled' => 'رابط برنامه‌نویسی در این وب‌گاه غیرفعال شده‌است.',
 	'apisb-parameters' => 'پارامترها',
 	'apisb-result' => 'نتیجه',
+	'apisb-request-url' => 'درخواست آدرس:',
+	'apisb-select-action' => 'انتخاب اقدامات',
+	'apisb-loading' => 'در حال بارگذاری…',
+	'apisb-load-error' => 'خطا در بارگذاری توضیحات ای‌پی‌آی',
+	'apisb-request-error' => 'خطا در اجرای درخواست ای‌پی‌آی',
+	'apisb-namespaces-error' => 'خطا در بارگذاری فضاهای نام',
+	'apisb-ns-main' => '(اصلی)',
+	'apisb-submit' => 'ایجاد درخواست',
+	'apisb-query-list' => 'فهرست‌ها',
+	'apisb-query-meta' => 'اطلاعات متا',
 );
 
 /** French (Français)
