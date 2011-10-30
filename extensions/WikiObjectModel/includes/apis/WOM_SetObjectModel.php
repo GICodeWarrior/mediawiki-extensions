@@ -38,6 +38,15 @@ class ApiWOMSetObjectModel extends ApiBase {
 		if ( !$article->exists() )
 			$this->dieUsage( "Article doesn't exist ($page)", 4 );
 
+//		$ep = new EditPage( $article );
+//		// EditPage wants to parse its stuff from a WebRequest
+//		// That interface kind of sucks, but it's workable
+//		$reqArr = array( 'wpTextbox1' => $params['text'],
+//				'wpEditToken' => $params['token'],
+//				'wpIgnoreBlankSummary' => ''
+//		);
+//		if ( !is_null( $summary ) )
+//			$reqArr['wpSummary'] = $summary;
 
 		try {
 			$objs = WOMProcessor::getObjIdByXPath( $articleTitle, $xpath, $rid );
@@ -119,6 +128,7 @@ class ApiWOMSetObjectModel extends ApiBase {
 	protected function getAllowedParams() {
 		return array (
 			'page' => null,
+//			'token' => null,
 			'verb' => array(
 				ApiBase :: PARAM_DFLT => 'update',
 				ApiBase :: PARAM_TYPE => array(
@@ -153,6 +163,7 @@ class ApiWOMSetObjectModel extends ApiBase {
 	protected function getParamDescription() {
 		return array (
 			'page' => 'Title of the page to modify',
+//			'token' => 'Edit token. You can get one of these through prop=info',
 			'verb' => 'Action verb to set to change wiki object instances',
 			'xpath' => array(
 				'DOM-like xpath to locate WOM object instances (http://www.w3schools.com/xpath/xpath_syntax.asp)',
@@ -183,7 +194,7 @@ class ApiWOMSetObjectModel extends ApiBase {
 
 	protected function getExamples() {
 		return array (
-			'api.php?action=womset&page=Somepage&xpath=//template[@name=SomeTempate]/template_field[@key=templateparam]&value=It+works!&summary=Editing+template+param+using+Wiki+Object+Model'
+			'api.php?action=womset&page=Somepage&token=ABC123&xpath=//template[@name=SomeTempate]/template_field[@key=templateparam]&value=It+works!&summary=Editing+template+param+using+Wiki+Object+Model'
 		);
 	}
 
