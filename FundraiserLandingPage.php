@@ -42,3 +42,7 @@ $wgFundraiserLPDefaults = array(
 	'appeal' => 'Appeal-default',
 	'form' => 'Form-default'
 );
+
+// Adding configurrable variable for caching time
+$wgFundraiserLandingPageMaxAge = 300; //5 minutes
+
