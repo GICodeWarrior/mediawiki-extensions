@@ -53,10 +53,10 @@ class Sternograph{
 	public function parse($input, array $args, Parser $parser, PPFrame $frame){
 	//Sanity checks
 		if ($input == null){
-			return Sternograph::error('empty');
+			return Sternograph::error('sternograph-empty', Sternograph::TAG);
 		}
 		if (preg_match('/<\s*'.Sternograph::TAG.'\s*>/', $input) > 0){
-			return Sternograph::error('nested');
+			return Sternograph::error('sternograph-nested', Sternograph::TAG);
 		}
 	//3 chunks we have to work through:
 		$speakers = null;
@@ -79,9 +79,9 @@ class Sternograph{
 		}else{
 			$input = substr($lines, 0, $context);
 			$context = substr($lines, $context + strlen(Sternograph::CONTEXT_DELIM));
-			$context = wfMsgNoTrans('contextPre').
+			$context = wfMsgNoTrans('sternograph-context-pre').
 				trim($context).
-				wfMsgNoTrans('contextPost');
+				wfMsgNoTrans('sternograph-context-post');
 			$context = '<div class="sternographContext">'.
 				$parser->recursiveTagParse($context, $frame).
 				'</div>';
@@ -143,12 +143,12 @@ class Sternograph{
 			$raw[1] = trim($raw[1]);
 			return $raw;
 		}else{
-			return Sternograph::error('speakerIs');
+			return Sternograph::error('sternograph-speaker-is', Sternograph::TAG, Sternograph::SPEAKER_IS);
 		}
 	}
 
 	static private function line($raw, $speakers, Parser $parser, PPFrame $frame){
-		$result = '<font class="sternographName">'.wfMsgNoTrans('speakerPre');
+		$result = '<font class="sternographName">'.wfMsgNoTrans('sternograph-speaker-pre');
 		$raw = Sternograph::splitSpeaker($raw);
 		if (!is_array($raw)){
 			return $raw;
@@ -159,7 +159,7 @@ class Sternograph{
 		}else{
 			$raw[0] = $speakers[$raw[0]];
 		}
-		$result .= $raw[0].wfMsgNoTrans('speakerPost').'</font>';
+		$result .= $raw[0].wfMsgNoTrans('sternograph-speaker-post').'</font>';
 		$raw = explode(Sternograph::INLINE, $raw[1]);
 		$limit = count($raw);
 		$result .= Sternograph::expandSpeakers($raw[0], $speakers, $parser, $frame);
@@ -188,13 +188,13 @@ class Sternograph{
 	static private function direction($raw, $speakers, $block, Parser $parser, PPFrame $frame){
 		if ($block === true){
 			return '<font class="sternographDirection sternographDirectionBlock">'.
-					Sternograph::expandSpeakers(wfMsgNoTrans('blockPre').
-						$raw.wfMsgNoTrans('blockPost'),
+					Sternograph::expandSpeakers(wfMsgNoTrans('sternograph-block-pre').
+						$raw.wfMsgNoTrans('sternograph-block-post'),
 					$speakers, $parser, $frame).'</font>';
 		}else{
 			return '<font class="sternographDirection sternographDirectionInline">'.
-					Sternograph::expandSpeakers(wfMsgNoTrans('inlinePre').
-							$raw.wfMsgNoTrans('inlinePost'),
+					Sternograph::expandSpeakers(wfMsgNoTrans('sternograph-inline-pre').
+							$raw.wfMsgNoTrans('sternograph-inline-post'),
 					$speakers, $parser, $frame).'</font>';
 		}
 	}
@@ -203,8 +203,8 @@ class Sternograph{
 	/**
 	Returns the i18n'd error message.
 	*/
-	static private function error($key, $param = ''){
-		return '<strong class="error">' . htmlspecialchars( wfMsgForContent( $key, $param ) ) .'</strong>';
+	static private function error($key, $param1 = '', $param2 = ''){
+		return '<strong class="error">' . htmlspecialchars( wfMsgForContent( $key, $param1, $param2 ) ) .'</strong>';
 	}
 
 	/**

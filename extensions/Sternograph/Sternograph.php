@@ -6,10 +6,10 @@ $wgAutoloadClasses['Sternograph'] = dirname( __FILE__ ) . "/Sternograph.body.php
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'name' => 'Sternograph',
-	'version' => '0.0',
+	'version' => '1.1',
 	'author' =>'Smoke 003723', 
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Sternograph', 
-	'descriptionmsg' => 'descriptionmsg'
+	'descriptionmsg' => 'sternograph-descriptionmsg'
        );
  
 function efSternograph(&$parser){
