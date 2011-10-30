@@ -15,8 +15,9 @@ class FundraiserLandingPage extends UnlistedSpecialPage
 		global $wgFundraiserLPDefaults, $wgOut, $wgFundraiserLandingPageMaxAge;
 		
 		#Set squid age
-		$wgOut->setSquidMaxage($wgFundraiserLandingPageMaxAge);		
+		$wgOut->setSquidMaxage( $wgFundraiserLandingPageMaxAge );		
 		$request = $this->getRequest();
+		$this->setHeaders();
 
 		# clear output variable to be safe
 		$output = '';
