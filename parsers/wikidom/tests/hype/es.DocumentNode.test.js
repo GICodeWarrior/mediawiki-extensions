@@ -6,6 +6,10 @@ function DocumentNodeStub( items, name, size ) {
 	return es.extendObject( new es.DocumentNode( items ), this );
 }
 
+DocumentNodeStub.prototype.getContentLength = function() {
+	return this.size;
+};
+
 DocumentNodeStub.prototype.getElementLength = function() {
 	// Mimic document data which has an opening and closing around the content
 	return this.size + 2;
@@ -103,96 +107,182 @@ test( 'es.DocumentNode', function() {
 			'getOffsetFromNode finds the right offset or returns -1 when node is not found'
 		);
 	}
+} );
+
+test( 'es.DocumentNode.selectNodes', function() {
 
 	// selectNodes tests
 
+	// <f> a b c d e f g h </f> <g> a b c d e f g h </g> <h> a b c d e f g h </h>
+	//^   ^ ^ ^ ^ ^ ^ ^ ^ ^    ^   ^ ^ ^ ^ ^ ^ ^ ^ ^    ^   ^ ^ ^ ^ ^ ^ ^ ^ ^     ^
+	//0   1 2 3 4 5 6 7 8 9    0   1 2 3 4 5 6 7 8 9    0   1 2 3 4 5 6 7 8 9     0
+	//    0 1 2 3 4 5 6 7 8        0 1 2 3 4 5 6 7 8        0 1 2 3 4 5 6 7 8
 	var f = new DocumentNodeStub( [], 'f', 8 ),
 		g = new DocumentNodeStub( [], 'g', 8 ),
 		h = new DocumentNodeStub( [], 'h', 8 ),
 		root2 = new DocumentNodeStub( [f, g, h], 'root2', 30 );
+	// FIXME: QUnit thinks f == g because both are empty arrays. Rawr.
+	// TODO make sure there is a test case for everything that is special-cased in the code
+	// TODO also nest with a more complicated nested structure, like the one from es.DocumentModel.test.js
+	
+	// Possible positions are:
+	// * before beginning
+	// * at beginning
+	// * middle
+	// * at end
+	// * past end
 	var selectNodesTests = [
-		/*
+		// Complete set of combinations within the same node:
 		{
-			'input': new es.Range( 0, 5 ),
-			'output': [{ 'node': f, 'range': new es.Range( 1, 4 ) }]
+			'node': root2,
+			'input': new es.Range( 0, 0 ),
+			'output': [],
+			'desc': 'Zero-length range before the beginning of a node'
 		},
 		{
-			'input': new es.Range( 11, 16 ),
-			'output': [{ 'node': g, 'range': new es.Range( 1, 4 ) }]
+			'node': root2,
+			'input': new es.Range( 0, 1 ),
+			'output': [{ 'node': f, 'range': new es.Range( 0, 0 ) }],
+			'desc': 'Range starting before the beginning of a node and ending at the beginning'
 		},
 		{
-			'input': new es.Range( 22, 27 ),
-			'output': [{ 'node': h, 'range': new es.Range( 1, 4 ) }]
+			'node': root2,
+			'input': new es.Range( 10, 15 ),
+			'output': [{ 'node': g, 'range': new es.Range( 0, 4 ) }],
+			'desc': 'Range starting before the beginning of a node and ending in the middle'
 		},
 		{
-			'input': new es.Range( 0, 33 ),
-			'output': [
-				{ 'node': f, 'range': new es.Range( 0, 8 ) },
-				{ 'node': g, 'range': new es.Range( 0, 8 ) },
-				{ 'node': h, 'range': new es.Range( 0, 8 ) }
-			]
+			'node': root2,
+			'input': new es.Range( 20, 29 ),
+			'output': [{ 'node': h, 'range': new es.Range( 0, 8 ) }],
+			'desc': 'Range starting before the beginning of a node and ending at the end'
 		},
 		{
+			'node': root2,
+			'input': new es.Range( 0, 10 ),
+			'output': [{ 'node': f } ],
+			'desc': 'Range starting before the beginning of a node and ending past the end'
+		},
+		{
+			'node': root2,
+			'input': new es.Range( 11, 11 ),
+			'output': [{ 'node': g, 'range': new es.Range( 0, 0 ) }],
+			'desc': 'Zero-length range at the beginning of a node'
+		},
+		{
+			'node': root2,
+			'input': new es.Range( 21, 26 ),
+			'output': [{ 'node': h, 'range': new es.Range( 0, 5 ) }],
+			'desc': 'Range starting at the beginning of a node and ending in the middle'
+		},
+		{
+			'node': root2,
+			'input': new es.Range( 1, 9 ),
+			'output': [{ 'node': f, 'range': new es.Range( 0, 8 ) }],
+			'desc': 'Range starting at the beginning of a node and ending at the end'
+		},
+		{
+			'node': root2,
+			'input': new es.Range( 11, 20 ),
+			'output': [{ 'node': g, 'range': new es.Range( 0, 8 ) }],
+			'desc': 'Range starting at the beginning of a node and ending past the end'
+		},
+		{
+			'node': root2,
+			'input': new es.Range( 22, 22 ),
+			'output': [{ 'node': h, 'range': new es.Range( 1, 1 ) }],
+			'desc': 'Zero-length range in the middle of a node'
+		},
+		{
+			'node': root2,
+			'input': new es.Range( 2, 7 ),
+			'output': [{ 'node': f, 'range': new es.Range( 1, 6 ) }],
+			'desc': 'Range starting and ending in the middle of the same node'
+		},
+		{
+			'node': root2,
+			'input': new es.Range( 13, 19 ),
+			'output': [{ 'node': g, 'range': new es.Range( 2, 8 ) }],
+			'desc': 'Range starting in the middle of a node and ending at the end'
+		},
+		{
+			'node': root2,
+			'input': new es.Range( 24, 30 ),
+			'output': [{ 'node': h, 'range': new es.Range( 3, 8 ) }],
+			'desc': 'Range starting in the middle of a node and ending past the end'
+		},
+		{
+			'node': root2,
+			'input': new es.Range( 9, 9 ),
+			'output': [{ 'node': f, 'range': new es.Range( 8, 8 ) }],
+			'desc': 'Zero-length range at the end of a node'
+		},
+		{
+			'node': root2,
+			'input': new es.Range( 19, 20 ),
+			'output': [{ 'node': g, 'range': new es.Range( 8, 8 ) }],
+			'desc': 'Range starting at the end of a node and ending past the end'
+		},
+		{
+			'node': root2,
+			'input': new es.Range( 30, 30 ),
+			'output': [],
+			'desc': 'Zero-length range past the end of a node'
+		},
+		// TODO add a complete set of combinations for cross-node ranges
+		{
+			'node': root2,
 			'input': new es.Range( 5, 25 ),
 			'output': [
 				{ 'node': f, 'range': new es.Range( 4, 8 ) },
-				{ 'node': g, 'range': new es.Range( 0, 8 ) },
+				{ 'node': g },
 				{ 'node': h, 'range': new es.Range( 0, 4 ) }
-			]
+			],
+			'desc': 'Range starting in the middle of the first node and ending in the middle of the third'
 		},
 		{
-			'input': new es.Range( 5, 9 ),
-			'output': [{ 'node': f, 'range': new es.Range( 5, 9 ) }]
-		},
-		{
-			'input': new es.Range( 5, 10 ),
-			'output': [{ 'node': f, 'range': new es.Range( 5, 10 ) }]
-		},
-		{
+			'node': root2,
 			'input': new es.Range( 5, 11 ),
-			'output': [{ 'node': f, 'range': new es.Range( 5, 10 ) }]
+			'output': [
+				{ 'node': f, 'range': new es.Range( 4, 8 ) },
+				{ 'node': g, 'range': new es.Range( 0, 0 ) }
+			],
+			'desc': 'Range starting in the middle of a node and ending at the beginning of the second'
 		},
 		{
+			'node': root2,
 			'input': new es.Range( 5, 12 ),
 			'output': [
-				{ 'node': f, 'range': new es.Range( 5, 10 ) },
+				{ 'node': f, 'range': new es.Range( 4, 8 ) },
 				{ 'node': g, 'range': new es.Range( 0, 1 ) }
-			]
+			],
+			'desc': 'Range starting in the middle of a node and ending after the first character of the second'
 		},
 		{
+			'node': root2,
 			'input': new es.Range( 8, 16 ),
 			'output': [
-				{ 'node': f, 'range': new es.Range( 8, 10 ) },
+				{ 'node': f, 'range': new es.Range( 7, 8 ) },
 				{ 'node': g, 'range': new es.Range( 0, 5 ) }
-			]
+			],
+			'desc': 'Range starting before the last character of a node and ending in the middle of the next node'
 		},
 		{
+			'node': root2,
 			'input': new es.Range( 9, 16 ),
 			'output': [
-				{ 'node': f, 'range': new es.Range( 9, 10 ) },
+				{ 'node': f, 'range': new es.Range( 8, 8 ) },
 				{ 'node': g, 'range': new es.Range( 0, 5 ) }
-			]
+			],
+			'desc': 'Range starting at the end of a node and ending in the middle of the next node'
 		},
-		{
-			'input': new es.Range( 10, 16 ),
-			'output': [{ 'node': g, 'range': new es.Range( 0, 5 ) }]
-		},
-		{
-			'input': new es.Range( 11, 16 ),
-			'output': [{ 'node': g, 'range': new es.Range( 0, 5 ) }]
-		},
-		{
-			'input': new es.Range( 12, 16 ),
-			'output': [{ 'node': g, 'range': new es.Range( 1, 5 ) }]
-		}
-		*/
 	];
 
-	for ( i = 0; i < selectNodesTests.length; i++ ) {
+	for ( var i = 0; i < selectNodesTests.length; i++ ) {
 		deepEqual(
 			root2.selectNodes( selectNodesTests[i].input ),
 			selectNodesTests[i].output,
-			'selectNodes returns the correct items and ranges.'
+			selectNodesTests[i].desc
 		);
 	}
 } );

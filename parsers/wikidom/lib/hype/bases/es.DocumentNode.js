@@ -106,36 +106,87 @@ es.DocumentNode.prototype.getNodeFromOffset = function( offset, shallow ) {
  * covered by the range and the range within the node that is covered
  */
 es.DocumentNode.prototype.selectNodes = function( range ) {
+	var nodes = [], i, left, right, start, end, startInside, endInside;
 	range.normalize();
-	var	nodes = [];
-	for ( var i = 0, length = this.length, left = 0, right; i < length; i++ ) {
-		right = left + this[i].getElementLength();
-		if ( range.start >= left && range.start < right ) {
-			if ( range.end < right ) {
-				nodes.push( {
-					'node': this[i],
-					'range': new es.Range( range.start - left, range.end - left )
-				} );
-				break;
-			} else {
-				nodes.push( {
-					'node': this[i],
-					'range': new es.Range( range.start - left, right - left - 1 )
-				} );
-			}
-		} else if ( range.end >= left && range.end < right ) {
-			nodes.push( {
-				'node': this[i],
-				'range': new es.Range( 0, range.end - left )
-			} );
-			break;
-		} else if ( left >= range.start && right <= range.end ) {
-			nodes.push( {
-				'node': this[i],
-				'range': new es.Range( 0, right - left - 1 )
-			} );
+	start = range.start;
+	end = range.end;
+	
+	if ( start < 0 ) {
+		throw 'The start offset of the range is negative';
+	}
+	
+	
+	if ( this.length == 0 ) {
+		// Special case: this node doesn't have any children
+		// The return value is simply the range itself, if it is not out of bounds
+		if ( end > this.getContentLength() ) {
+			throw 'The end offset of the range is past the end of the node';
 		}
-		left = right;
+		return [ { 'node': this, 'range': new es.Range( start, end ) } ];
+	}
+	
+	// This node has children, loop over them
+	left = 1; // First offset inside the first child. Offset 0 is before the first child
+	for ( i = 0; i < this.length; i++ ) {
+		// left <= any offset inside this[i] <= right
+		right = left + this[i].getContentLength();
+		
+		if ( start == end && ( start == left - 1 || start == right + 1 ) ) {
+			// Empty range outside of any node
+			return [];
+		}
+		if ( start == left - 1 && end == right + 1 ) {
+			// The range covers the entire node, including its opening and closing elements
+			return [ { 'node': this[i] } ];
+		}
+		if ( start == left - 1 ) {
+			// start is between this[i-1] and this[i], move it to left for convenience
+			// We don't need to check for start < end here because we already have start != end and start <= end
+			start = left;
+		}
+		if ( end == right + 1 ) {
+			// end is between this[i] and this[i+1], move it to right for convenience
+			// We don't need to check for start < end here because we already have start != end and start <= end
+			end = right;
+		}
+		
+		startInside = start >= left && start <= right; // is the start inside this[i]?
+		endInside = end >= left && end <= right; // is the end inside this[i]?
+		
+		if ( startInside && endInside ) {
+			// The range is entirely inside this[i]
+			// Recurse into this[i]
+			// Since the start and end are both inside this[i], we know for sure that we're done, so return
+			return this[i].selectNodes( new es.Range( start - left, end - left ) );
+		} else if ( startInside ) {
+			// The start is inside this[i] but the end isn't
+			// Add a range from the start of the range to the end of this[i]
+			nodes.push( { 'node': this[i], 'range': new es.Range( start - left, right - left ) } );
+		} else if ( endInside ) {
+			// The end is inside this[i] but the start isn't
+			// Add a range from the start of this[i] to the end of the range
+			nodes.push( { 'node': this[i], 'range': new es.Range( 0, end - left ) } );
+			// We've found the end, so we're done
+			return nodes;
+		} else if ( nodes.length > 0 ) {
+			// Neither the start nor the end is inside this[i], but nodes is non-empty,
+			// so this[i] must be between the start and the end
+			// Add the entire node, so no range property
+			nodes.push( { 'node': this[i] } );
+		}
+		
+		// Move left to the start of this[i+1] for the next iteration
+		// +2 because we need to jump over the offset between this[i] and this[i+1]
+		left = right + 2;
+	}
+	
+	// If we got here, that means that at least some part of the range is out of bounds
+	// This is an error
+	if ( nodes.length == 0 ) {
+		throw 'The start offset of the range is past the end of the node';
+	} else {
+		// Apparently the start was inside this node, but the end wasn't
+		throw 'The end offset of the range is past the end of the node';
 	}
 	return nodes;
 };
