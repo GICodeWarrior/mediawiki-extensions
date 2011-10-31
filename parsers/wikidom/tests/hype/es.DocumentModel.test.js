@@ -290,6 +290,58 @@ test( 'es.DocumentModel.getIndexOfAnnotation', 3, function() {
 	);
 } );
 
+test( 'es.DocumentModel.getWordBoundaries', 2, function() {
+	var documentModel = es.DocumentModel.newFromPlainObject( obj );
+	deepEqual(
+		documentModel.getWordBoundaries( 2 ),
+		new es.Range( 1, 4 ),
+		'getWordBoundaries returns range around nearest whole word'
+	);
+	strictEqual(
+		documentModel.getWordBoundaries( 5 ),
+		null,
+		'getWordBoundaries returns null when given non-content offset'
+	);
+} );
+
+test( 'es.DocumentModel.getAnnotationBoundaries', 2, function() {
+	var documentModel = es.DocumentModel.newFromPlainObject( obj );
+	deepEqual(
+		documentModel.getAnnotationBoundaries( 2, { 'type': 'bold' } ),
+		new es.Range( 2, 3 ),
+		'getWordBoundaries returns range around content covered by annotation'
+	);
+	strictEqual(
+		documentModel.getAnnotationBoundaries( 1, { 'type': 'bold' } ),
+		null,
+		'getWordBoundaries returns null if offset is not covered by annotation'
+	);
+} );
+
+test( 'es.DocumentModel.getAnnotationsFromOffset', 4, function() {
+	var documentModel = es.DocumentModel.newFromPlainObject( obj );
+	deepEqual(
+		documentModel.getAnnotationsFromOffset( 1 ),
+		[],
+		'getAnnotationsFromOffset returns empty array for non-annotated content'
+	);
+	deepEqual(
+		documentModel.getAnnotationsFromOffset( 2 ),
+		[{ 'type': 'bold', 'hash': '#bold' }],
+		'getAnnotationsFromOffset returns annotations of annotated content correctly'
+	);
+	deepEqual(
+		documentModel.getAnnotationsFromOffset( 3 ),
+		[{ 'type': 'italic', 'hash': '#italic' }],
+		'getAnnotationsFromOffset returns annotations of annotated content correctly'
+	);
+	deepEqual(
+		documentModel.getAnnotationsFromOffset( 0 ),
+		[],
+		'getAnnotationsFromOffset returns empty array when given a non-content offset'
+	);
+} );
+
 test( 'es.DocumentModel.prepareElementAttributeChange', 4, function() {
 	var documentModel = es.DocumentModel.newFromPlainObject( obj );
 

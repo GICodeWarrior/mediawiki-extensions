@@ -661,6 +661,93 @@ es.DocumentModel.prototype.getContentFromNode = function( node, range ) {
 };
 
 /**
+ * Gets the range of content surrounding a given offset that's covered by a given annotation.
+ * 
+ * @method
+ * @param {Integer} offset Offset to begin looking forward and backward from
+ * @param {Object} annotation Annotation to test for coverage with
+ * @returns {es.Range|null} Range of content covered by annotation, or null if offset is not covered
+ */
+es.DocumentModel.prototype.getAnnotationBoundaries = function( offset, annotation ) {
+	if ( annotation.hash === undefined ) {
+		annotation.hash = es.DocumentModel.getAnnotationHash( annotation );
+	}
+	if ( es.DocumentModel.getIndexOfAnnotation( this.data[offset], annotation ) === -1 ) {
+		return null;
+	}
+	var start = offset,
+		end = offset,
+		item;
+	while ( start > 0 ) {
+		start--;
+		if ( es.DocumentModel.getIndexOfAnnotation( this.data[start], annotation ) === -1 ) {
+			start++;
+			break;
+		}
+	}
+	while ( end < this.data.length ) {
+		if ( es.DocumentModel.getIndexOfAnnotation( this.data[end], annotation ) === -1 ) {
+			break;
+		}
+		end++;
+	}
+	return new es.Range( start, end );
+};
+
+/**
+ * Gets a list of annotations that a given offset is covered by.
+ * 
+ * @method
+ * @param {Integer} offset Offset to get annotations for
+ * @returns {Object[]} A copy of all annotation objects offset is covered by
+ */
+es.DocumentModel.prototype.getAnnotationsFromOffset = function( offset ) {
+	if ( es.isArray( this.data[offset] ) ) {
+		return es.copyArray( this.data[offset].slice( 1 ) );
+	}
+	return [];
+};
+
+/**
+ * Gets the range of content surrounding a given offset that makes up a whole word.
+ * 
+ * @method
+ * @param {Integer} offset Offset to begin looking forward and backward from
+ * @returns {es.Range|null} Range of content making up a whole word or null if offset is not content
+ */
+es.DocumentModel.prototype.getWordBoundaries = function( offset ) {
+	if ( !es.DocumentModel.isContentOffset( this.data, offset ) ) {
+		return null;
+	}
+	var start = offset,
+		end = offset,
+		item;
+	while ( start > 0 ) {
+		start--;
+		if ( typeof this.data[start] !== 'string' && !es.isArray( this.data[start] ) ) {
+			start++;
+			break;
+		}
+		item = typeof this.data[start] === 'string' ? this.data[start] : this.data[start][0];
+		if ( item.match( /\B/ ) ) {
+			start++;
+			break;
+		}
+	}
+	while ( end < this.data.length ) {
+		if ( typeof this.data[end] !== 'string' && !es.isArray( this.data[end] ) ) {
+			break;
+		}
+		item = typeof this.data[end] === 'string' ? this.data[end] : this.data[end][0];
+		if ( item.match( /\B/ ) ) {
+			break;
+		}
+		end++;
+	}
+	return new es.Range( start, end );
+};
+
+/**
  * Generates a transaction which inserts data at a given offset.
  * 
  * @method
