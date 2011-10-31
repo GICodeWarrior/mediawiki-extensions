@@ -84,3 +84,7 @@ es.DocumentViewLeafNode.prototype.getRenderedPositionFromOffset = function( offs
 es.DocumentViewLeafNode.prototype.getElementLength = function() {
 	return this.model.getElementLength();
 };
+
+es.DocumentViewLeafNode.prototype.getRenderedLineRange = function( offset ) {
+	return this.contentView.getRenderedLineRange( offset );
+};

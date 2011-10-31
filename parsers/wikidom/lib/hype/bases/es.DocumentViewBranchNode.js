@@ -107,3 +107,15 @@ es.DocumentViewBranchNode.prototype.getRenderedPositionFromOffset = function( of
 es.DocumentViewBranchNode.prototype.getElementLength = function() {
 	return this.model.getElementLength();
 };
+
+es.DocumentViewBranchNode.prototype.getRenderedLineRange = function( offset ) {
+	var node = this.getNodeFromOffset( offset, true );
+	if ( node !== null ) {
+		var nodeOffset = this.getOffsetFromNode( node, true );
+		return es.Range.newFromTranslatedRange(
+			node.getRenderedLineRange( offset - nodeOffset - 1 ),
+			nodeOffset + 1
+		);
+	}
+	return null;
+};
