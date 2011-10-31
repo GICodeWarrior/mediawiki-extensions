@@ -10,7 +10,7 @@
  */
 
 # Swift API client module and helper functions
-require_once( '/usr/local/apache/common-local/lib/cloudfiles/php-cloudfiles/cloudfiles.php' );
+require_once( '/usr/local/apache/common-local/lib/php-cloudfiles/cloudfiles.php' );
 
 /**
  * Handler for the LocalFilePurgeThumbnails hook.
