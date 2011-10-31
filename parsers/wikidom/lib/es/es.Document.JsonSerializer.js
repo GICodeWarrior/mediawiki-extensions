@@ -54,7 +54,7 @@ es.Document.JsonSerializer.prototype.encode = function( data, indention ) {
 	} else {
 		var empty = true;
 		for ( key in data ) {
-			if ( data.hasOwnProperty( i ) ) {
+			if ( data.hasOwnProperty( key ) ) {
 				empty = false;
 				break;
 			}

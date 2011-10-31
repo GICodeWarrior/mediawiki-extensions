@@ -37,11 +37,12 @@ es.Cursor.prototype.show = function( position, offset ) {
 	if ( this.blinkInterval ) {
 		clearInterval( this.blinkInterval );
 	}
-	this.blinkInterval = setInterval( function( cursor ) {
-		if ( cursor.$.css( 'display' ) === 'block' ) {
-			cursor.$.hide();
+	var that = this;
+	this.blinkInterval = setInterval( function() {
+		if ( that.$.css( 'display' ) === 'block' ) {
+			that.$.hide();
 		} else {
-			cursor.$.show();
+			that.$.show();
 		}
 	}, 500 );
 };
