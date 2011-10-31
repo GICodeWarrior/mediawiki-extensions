@@ -128,6 +128,33 @@ HTML;
 	}
 
 	/**
+	 * Purge page
+	 * @return bool
+	 *
+	 */
+	public static function purge( $userName, $user ) {
+		if ( $user === null && $userName != null ) {
+			$old_user = User::newFromName( $userName );
+		}
+		else {
+			$old_user = $user;
+		}
+		// check if something weird didn't happen
+		if ( $old_user === false || $old_user == null ) {
+			return true;
+		}
+		if ( $old_user->getOption('OnlineStatusBar_active') ) {
+			if ( $old_user->getOption('OnlineStatusBar_autoupdate') == true ) {
+				$update = SquidUpdate::newSimplePurge( $user->getTalkPage() );
+            			$update->doUpdate();
+				$update = SquidUpdate::newSimplePurge( $user->getUserPage() );
+            			$update->doUpdate();
+			}
+		}
+		return true;
+	}
+
+	/**
 	 * Insert to the database
 	 * @return bool
 	 */
@@ -160,7 +187,7 @@ HTML;
 			}
 		}
 		// if user doesn't want to be tracked leave him aswel for privacy reasons
-		if ( !$wgUser->getOption ( "OnlineStatusBar_active", $wgOnlineStatusBarDefaultEnabled ) ) {
+		if ( $wgUser->isLoggedIn() && !$wgUser->getOption ( "OnlineStatusBar_active", $wgOnlineStatusBarDefaultEnabled ) ) {
 			return false;
 		}
 		if ( OnlineStatusBar::GetStatus( $wgUser, true ) == $wgOnlineStatusBarDefaultOffline ) {
