@@ -69,6 +69,14 @@ $messages['gl'] = array(
 	'sdt-duration' => 'Duración',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'sdt-desc' => 'Typos de datos additional pro Semantic MediaWiki e su extensiones',
+	'sdt-duration' => 'Duration',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
