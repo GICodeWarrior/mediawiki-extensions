@@ -271,6 +271,22 @@ es.ContentView.prototype.getRenderedLineIndex = function( offset ) {
 };
 
 /**
+ * Gets the range of the rendered line a given offset is within.
+ * 
+ * @method
+ * @param {Integer} offset Offset to get line for
+ * @returns {Range}
+ */
+es.ContentView.prototype.getRenderedLineRange = function( offset ) {
+	for ( var i = 0; i < this.lines.length; i++ ) {
+		if ( this.lines[i].range.containsOffset( offset ) ) {
+			return this.lines[i].range;
+		}
+	}
+	return null;
+};
+
+/**
  * Gets offset within content model closest to of a given position.
  * 
  * Position is assumed to be local to the container the text is being flowed in.
