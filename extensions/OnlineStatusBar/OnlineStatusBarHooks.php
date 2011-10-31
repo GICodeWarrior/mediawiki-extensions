@@ -28,7 +28,7 @@ class OnlineStatusBarHooks {
 	 * @return bool
 	 */
 	public static function logout( &$user, &$inject_html, $old_name ) {
-		OnlineStatusBar::purge( $old_name, null );
+		OnlineStatusBar::purge( $old_name );
 		OnlineStatusBar::DeleteStatus( $old_name );
 		return true;
 	}
@@ -39,7 +39,7 @@ class OnlineStatusBarHooks {
 	 */
 	public static function updateStatus() {
 		global $wgUser;
-		OnlineStatusBar::purge( "", $wgUser );
+		OnlineStatusBar::purge( $wgUser );
 		OnlineStatusBar::UpdateStatus();
 		return true;
 	}
