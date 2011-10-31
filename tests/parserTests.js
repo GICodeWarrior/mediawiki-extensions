@@ -58,7 +58,12 @@ if (process.argv.length > 2) {
 	console.log(testFileName);
 }
 
-var testParser = PEG.buildParser(fs.readFileSync('parserTests.pegjs', 'utf8'));
+try {
+        var testParser = PEG.buildParser(fs.readFileSync('parserTests.pegjs', 'utf8'));
+} catch (e) {
+	console.log(e);
+}
+
 var testFile = fs.readFileSync(testFileName, 'utf8');
 
 
