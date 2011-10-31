@@ -330,6 +330,14 @@ $messages['qqq'] = array(
 	'contest-submission-challenge-description' => 'Output of challenge name and description. $1 is the challenge name, $2 is the challenge description',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'contest-special-edit' => 'عدل',
+	'contest-special-delete' => 'احذف',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
@@ -352,22 +360,84 @@ $messages['be-tarask'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
+	'contest-toplink' => "Ma c'henstrivadegoù",
+	'right-contestadmin' => "Merañ ar c'henstrivadegoù",
+	'right-contestant' => 'Kemer perzh e kenstrivadegoù',
+	'right-contestjudge' => "Barn ar respontoù d'ar genstrivadeg",
+	'group-contestadmin' => 'Merourien ar genstrivadeg',
+	'group-contestadmin-member' => '{{GENDER:$1|merour|merourez}} ar genstrivadeg',
+	'grouppage-contestadmin' => '{{ns:project}}:Merourien_kenstrivadeg',
+	'group-contestant' => 'Perzhiad er genstrivadeg',
+	'group-contestant-member' => '{{GENDER:$1|Perzhiad|Perzhiadez}} er genstrivadeg',
+	'grouppage-contestant' => '{{ns:project}}:Perzhidi',
+	'group-contestjudge' => 'Barnerien ar genstrivadeg',
+	'group-contestjudge-member' => '{{GENDER:$1|barner ar genstrivadeg}}',
+	'grouppage-contestjudge' => '{{ns:project}}:Barnerien_kenstrivadeg',
+	'prefs-contest' => 'Kenstrivadegoù',
+	'contest-prefs-showtoplink' => "Diskouez ul liamm war-du [[Special:MyContests|Ma C'henstrivadegoù]] el lañser pennañ",
+	'contest-status-draft' => 'Brouilhed (diweredekaet)',
+	'contest-status-active' => 'Oberiant (gweredekaet)',
+	'contest-status-expired' => "Aet d'e dermen (gweredekaet, deiziad termen aet hebiou)",
+	'contest-status-finished' => 'Echu (diweredekaet)',
+	'special-contest' => 'Gwelet ur genstrivadeg',
+	'special-contests' => "Merañ ar c'henstrivadegoù",
+	'special-contestsignup' => 'Lakaat e anv en ur genstrivadeg',
+	'special-contestwelcome' => 'Diskouez ur genstrivadeg',
+	'special-editcontest' => 'Cheñch ur genstrivadeg bennak',
+	'special-mycontests' => "Ma c'henstrivadegoù",
+	'specialpages-group-contest' => 'Kenstrivadegoù',
+	'contest-nav-contests' => "Roll ar c'henstrivadegoù",
+	'contest-nav-editcontest' => 'Cheñch ur genstrivadeg bennak',
+	'contest-nav-contest' => 'Diverrañ ha perzhidi',
+	'contest-nav-contestwelcome' => 'Pajenn degouezhout',
+	'contest-nav-contestsignup' => 'Pajenn gevreañ',
+	'contest-special-addnew' => 'Ouzhpennañ un genstrivadeg nevez',
+	'contest-special-namedoc' => 'Anv ar genstrivadeg eo anv an anaouder implijet en URLoù (d.l.e. "anv" e {{#Special:Contest}}/anv).',
+	'contest-special-newname' => 'Anv ar genstrivadeg',
+	'contest-special-add' => 'Ouzhpennañ ur genstrivadeg',
+	'contest-special-existing' => 'Kenstrivadegoù zo anezho',
 	'contest-special-name' => 'Anv',
 	'contest-special-status' => 'Statud',
+	'contest-special-submissioncount' => 'Niver a respontoù',
 	'contest-special-edit' => 'Kemmañ',
 	'contest-special-delete' => 'Diverkañ',
 	'contest-special-confirm-delete' => "Ha sur oc'h hoc'h eus c'hoant da zilemel ar genstrivadeg-mañ ?",
+	'contest-special-delete-failed' => "N'eus ket bet gallet dilemel ar genstrivadeg.",
+	'editcontest-text' => "Emaoc'h o cheñch un dra bennak en ur genstrivadeg.",
+	'editcontest-legend' => 'Kenstrivadeg',
+	'contest-edit-name' => 'Anv ar genstrivadeg',
+	'contest-edit-status' => 'Statud ar genstrivadeg',
 	'contest-edit-intro' => 'Pajenn digeriñ',
+	'contest-edit-opportunities' => 'Pajenn digarezioù',
+	'contest-edit-rulespage' => 'Pajenn ar reolennoù',
 	'contest-edit-help' => 'Pajenn skoazell',
+	'contest-edit-signup' => 'Pajenn an enrollañ dre bostel',
+	'contest-edit-reminder' => 'Pajenn degas da soñj dre bostel',
+	'contest-edit-end' => 'Fin ar genstrivadeg',
+	'contest-edit-exists-already' => "Emaoc'h o cheñch un dra bennak en ur genstrivadeg bete savet c'hoazh.",
 	'contest-edit-submit' => 'Kas',
+	'contest-edit-challenges' => 'Daeoù ar genstrivadeg',
+	'contest-edit-delete' => 'Dilemel un dae',
+	'contest-edit-add-first' => 'Ouzhpennañ un dae',
+	'contest-edit-add-another' => 'Ouzhpennañ un dae all',
+	'contest-edit-confirm-delete' => "Ha sur oc'h hoc'h eus c'hoant da zilemel an dae-mañ ?",
+	'contest-edit-challenge-title' => 'Anv an dae',
+	'contest-edit-challenge-text' => 'Testenn an dae',
 	'contest-edit-challenge-oneline' => 'Diverrañ',
+	'contest-welcome-unknown' => "N'eus kenstrivadeg ebet dezhi an anv bet merket ganeoc'h.",
+	'contest-welcome-rules' => 'Evit gallout kemer perzh e rankit asantiñ da [[$1|reolennoù ar genstrivadeg]].',
+	'contest-welcome-signup' => 'En em enskrivañ diouzhtu',
+	'contest-welcome-accept-challenge' => 'Dae asantet',
+	'contest-welcome-select-header' => 'Dibabit un dae :',
 	'contest-signup-submit' => 'En em enskrivañ',
 	'contest-signup-email' => "Ho chomlec'h postel",
 	'contest-signup-realname' => "Hoc'h anv gwir",
 	'contest-signup-cv' => 'Liamm betek ho CV',
 	'contest-signup-country' => 'Ho pro',
 	'contest-signup-require-rules' => "rest eo deoc'h asantiñ da reolennoù ar genstrivadeg.",
+	'contest-signup-invalid-cv' => "Un URL fall zo bet merket ganeoc'h.",
 	'contest-contest-title' => 'Kenstrivadeg: $1',
+	'contest-contest-no-results' => "N'eus perzhiad ebet da ziskwel.",
 	'contest-contest-name' => 'Anv',
 	'contest-contest-status' => 'Statud',
 	'contest-contest-submissioncount' => 'Niver a berzhidi',
@@ -386,6 +456,7 @@ $messages['br'] = array(
 	'contest-contestant-submit' => "Enrollañ ar c'hemmoù",
 	'contest-mycontests-toplink' => "Ma c'henstrivadegoù",
 	'contest-mycontests-header-contest' => 'Kenstrivadeg',
+	'contest-mycontests-header-challenge' => 'Dae',
 	'contest-submission-submit' => 'Kas',
 );
 
@@ -1573,6 +1644,7 @@ $messages['ka'] = array(
  */
 $messages['ksh'] = array(
 	'contest-contest-reminder-failed' => 'Mer kunnte kein <i lang="en">e-mail</i>s för draan ze ä\'ennere verschecke.',
+	'contest-contestant-volunteer' => 'Fräiwėlleje',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
