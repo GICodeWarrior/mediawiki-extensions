@@ -200,8 +200,8 @@ es.ContentView.renderAnnotation = function( bias, annotation, stack ) {
 es.ContentView.prototype.drawSelection = function( range ) {
 	range.normalize();
 
-	var fromLineIndex = this.getLineIndex( range.start ),
-		toLineIndex = this.getLineIndex( range.end ),
+	var fromLineIndex = this.getRenderedLineIndex( range.start ),
+		toLineIndex = this.getRenderedLineIndex( range.end ),
 		fromPosition = this.getRenderedPositionFromOffset( range.start ),
 		toPosition = this.getRenderedPositionFromOffset( range.end );
 
@@ -261,7 +261,7 @@ es.ContentView.prototype.clearSelection = function() {
  * @param {Integer} offset Offset to get line for
  * @returns {Integer} Index of rendered lin offset is within
  */
-es.ContentView.prototype.getLineIndex = function( offset ) {
+es.ContentView.prototype.getRenderedLineIndex = function( offset ) {
 	for ( var i = 0; i < this.lines.length; i++ ) {
 		if ( this.lines[i].range.containsOffset( offset ) ) {
 			return i;
