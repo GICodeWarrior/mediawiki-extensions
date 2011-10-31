@@ -22,3 +22,7 @@ es.ListItemView.prototype.setClasses = function() {
 	this.$.addClass( 'editSurface-listItem-' + styles[ styles.length - 1 ] )
 		.addClass( 'editSurface-listItem-level' + ( styles.length - 1 ) );
 };
+
+es.ListItemView.prototype.setNumber = function( number ) {
+	this.$icon.text( number + '.' );
+};
