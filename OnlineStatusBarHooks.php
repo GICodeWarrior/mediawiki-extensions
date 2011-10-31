@@ -88,6 +88,7 @@ class OnlineStatusBarHooks {
 		global $wgOnlineStatusBarDefaultOnline, $wgOnlineStatusBarDefaultEnabled, $wgOnlineStatusBarModes;
 		$preferences['OnlineStatusBar_active'] = array( 'type' => 'toggle', 'label-message' => 'onlinestatusbar-used', 'section' => 'misc/onlinestatus' );
 		$preferences['OnlineStatusBar_hide'] = array( 'type' => 'toggle', 'label-message' => 'onlinestatusbar-hide', 'section' => 'misc/onlinestatus' );
+		$preferences['OnlineStatusBar_autoupdate'] = array( 'type' => 'toggle', 'label-message' => 'onlinestatusbar-purge', 'section' => 'misc/onlinestatus' );
 		$preferences['OnlineStatusBar_status'] = array( 'type' => 'radio', 'label-message' => 'onlinestatusbar-status', 'section' => 'misc/onlinestatus',
 			'options' => array(
 				wfMessage( 'onlinestatusbar-status-online' )->escaped() => 'online',
@@ -106,6 +107,7 @@ class OnlineStatusBarHooks {
 	public static function setDefaultOptions( &$defaultOptions ) {
 		global $wgOnlineStatusBarDefaultOnline, $wgOnlineStatusBarDefaultEnabled;
 		// set defaults
+		$defaultOptions['OnlineStatusBar_autoupdate'] = false;
 		$defaultOptions['OnlineStatusBar_status'] = $wgOnlineStatusBarDefaultOnline;
 		$defaultOptions['OnlineStatusBar_active'] = $wgOnlineStatusBarDefaultEnabled;
 		$defaultOptions['OnlineStatusBar_hide'] = false;

@@ -22,6 +22,8 @@ $messages['en'] = array(
 	'onlinestatusbar-used' => 'Do you want to let others see if you are online?',
 	// Message in config asking what status they want to use
 	'onlinestatusbar-status' => 'What is the default status you wish to use:',
+	// Message in config asking if user wants to purge the user page
+	'onlinestatusbar-purge' => 'Purge user page everytime when you login or logout',
 	// Section for config
 	'prefs-onlinestatus' => 'Online status',
 	// Message in config
@@ -53,6 +55,7 @@ $messages['qqq'] = array(
 	'onlinestatusbar-status-away' => 'Status for users who mark themselves as away',
 	'onlinestatusbar-status-offline' => 'Status for users who are offline',
 	'onlinestatusbar-status-hidden' => 'Status for users who mark themselves as hidden (used on preferences only)',
+	'onlinestatusbar-purge' => 'Option to purge user page everytime they login so that magic word is updated',
 );
 
 /** German (Deutsch)
