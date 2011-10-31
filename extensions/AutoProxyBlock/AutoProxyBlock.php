@@ -8,7 +8,7 @@ $wgExtensionCredits['antispam'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'AutoProxyBlock',
 	'author'         => 'Cryptocoryne',
-	'version'        => '0.9',
+	'version'        => '1.0',
 	'descriptionmsg' => 'autoproxyblock-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:AutoProxyBlock',
 );
