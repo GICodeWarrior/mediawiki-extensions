@@ -748,6 +748,38 @@ es.DocumentModel.prototype.getWordBoundaries = function( offset ) {
 };
 
 /**
+ * Gets a content offset a given distance forwards or backwards from another.
+ * 
+ * @method
+ * @param {Integer} offset Offset to start from
+ * @param {Integer} distance Number of content offsets to move
+ * @param {Integer} Offset a given distance from the given offset
+ */
+es.DocumentModel.prototype.getRelativeContentOffset = function( offset, distance ) {
+	if ( !es.DocumentModel.isContentOffset( this.data, offset ) ) {
+		throw 'Invalid offset error. Can not get relative content offset from non-content offset.';
+	}
+	if ( distance === 0 ) {
+		return offset;
+	}
+	var direction = distance > 0 ? 1 : -1,
+		i = offset + direction,
+		steps = 0;
+	distance = Math.abs( distance );
+	while ( i > 0 && i < this.data.length - 1 ) {
+		if ( typeof this.data[i] === 'string' || es.isArray( this.data[i] ) ) {
+			steps++;
+			offset = i;
+			if ( distance === steps ) {
+				return offset;
+			}
+		}
+		i += direction;
+	}
+	return offset;
+};
+
+/**
  * Generates a transaction which inserts data at a given offset.
  * 
  * @method

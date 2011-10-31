@@ -215,6 +215,47 @@ test( 'es.DocumentModel.slice', 1, function() {
 	deepEqual( documentModel.slice( 0 ), tree, 'Nodes in the model tree contain correct lengths' );
 } );
 
+test( 'es.DocumentModel.getRelativeContentOffset', 6, function() {
+	var documentModel = es.DocumentModel.newFromPlainObject( obj );
+	
+	// Test 1
+	equal(
+		documentModel.getRelativeContentOffset( 1, 1 ),
+		2,
+		'getRelativeContentOffset advances forwards through the inside of elements'
+	);
+	// Test 2
+	equal(
+		documentModel.getRelativeContentOffset( 2, -1 ),
+		1,
+		'getRelativeContentOffset advances backwards through the inside of elements'
+	);
+	// Test 3
+	equal(
+		documentModel.getRelativeContentOffset( 1, -1 ),
+		1,
+		'getRelativeContentOffset treats the begining a document as a non-content offset'
+	);
+	// Test 4
+	equal(
+		documentModel.getRelativeContentOffset( 26, 1 ),
+		26,
+		'getRelativeContentOffset treats the end a document as a non-content offset'
+	);
+	// Test 5
+	equal(
+		documentModel.getRelativeContentOffset( 3, 1 ),
+		9,
+		'getRelativeContentOffset advances forwards between elements'
+	);
+	// Test 6
+	equal(
+		documentModel.getRelativeContentOffset( 26, -1 ),
+		19,
+		'getRelativeContentOffset advances backwards between elements'
+	);
+} );
+
 test( 'es.DocumentModel.getContent', 6, function() {
 	var documentModel = es.DocumentModel.newFromPlainObject( obj );
 
