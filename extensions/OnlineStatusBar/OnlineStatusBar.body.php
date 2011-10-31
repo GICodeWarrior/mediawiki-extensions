@@ -148,10 +148,21 @@ HTML;
 	}
 
 	/**
+	 * Update status of user
 	 * @return bool
 	 */
 	public static function UpdateStatus() {
-		global $wgUser, $wgOnlineStatusBarDefaultOffline;
+		global $wgUser, $wgOnlineStatusBarDefaultOffline, $wgOnlineStatusBarTrackIpUsers, $wgOnlineStatusBarDefaultEnabled;
+		// if anon users are not tracked and user is anon leave it
+		if ( !$wgOnlineStatusBarTrackIpUsers ) {
+			if ( !$wgUser->isLoggedIn() ) {
+				return false;
+			}
+		}
+		// if user doesn't want to be tracked leave him aswel for privacy reasons
+		if ( !$wgUser->getOption ( "OnlineStatusBar_active", $wgOnlineStatusBarDefaultEnabled ) ) {
+			return false;
+		}
 		if ( OnlineStatusBar::GetStatus( $wgUser, true ) == $wgOnlineStatusBarDefaultOffline ) {
 			OnlineStatusBar::UpdateDb();
 			return true;
@@ -165,7 +176,7 @@ HTML;
 			__METHOD__
 		);
 
-		return false;
+		return true;
 	}
 
 	/**
