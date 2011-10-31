@@ -28,16 +28,20 @@ class OnlineStatusBarHooks {
 	 * @return bool
 	 */
 	public static function logout( &$user, &$inject_html, $old_name ) {
+		// this doesn't work yet
+		//OnlineStatusBar::purge( $old_name, null );
 		OnlineStatusBar::DeleteStatus( $old_name );
 		return true;
 	}
 
 	/**
-	 * Called everytime when it's needed to update db
+	 * Called everytime on login 
 	 * @return bool
 	 */
 	public static function updateStatus() {
-		OnlineStatusBar::UpdateDb();
+		global $wgUser;
+		OnlineStatusBar::purge( "", $wgUser );
+		OnlineStatusBar::UpdateStatus();
 		return true;
 	}
 
