@@ -91,7 +91,9 @@ es.DocumentViewBranchNode.prototype.getOffsetFromRenderedPosition = function( po
 es.DocumentViewBranchNode.prototype.getRenderedPositionFromOffset = function( offset ) {
 	var node = this.getNodeFromOffset( offset, true );
 	if ( node !== null ) {
-		return node.getRenderedPositionFromOffset( offset - this.getOffsetFromNode( node, true ) - 1);
+		return node.getRenderedPositionFromOffset(
+			offset - this.getOffsetFromNode( node, true ) - 1
+		);
 	}
 	return null;
 };
