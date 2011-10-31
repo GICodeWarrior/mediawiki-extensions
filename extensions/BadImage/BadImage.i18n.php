@@ -616,7 +616,7 @@ $messages['de'] = array(
 	'badimages-remove-confirm' => 'Bitte bestätige, dass du $1 von der Liste entfernen möchten.',
 	'badimages-removed' => '$1 wurde aus der Liste entfernt.',
 	'badimages-subheading' => 'Aktuelle Einträge',
-	'badimages-unprivileged' => '(Du hast keine Berechtigung, die Liste zu ändern)',
+	'badimages-unprivileged' => '(Du hast nicht die erforderliche Berechtigung, die Liste ändern zu können)',
 	'badimages-log-name' => 'Liste unerwünschter Bilder',
 	'badimages-log-header' => 'Dies ist das Logbuch der Änderungen an der [[{{MediaWiki:Badimages-page}}|Liste unerwünschter Bilder]].',
 	'badimages-log-add' => 'fügte [[$1]] zu der Liste unerwünschter Bilder hinzu',
@@ -626,11 +626,12 @@ $messages['de'] = array(
 );
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
+ * @author Kghbln
  * @author Raimond Spekking
  */
 $messages['de-formal'] = array(
 	'badimages-remove-confirm' => 'Bitte bestätigen Sie, dass Sie $1 von der Liste entfernen möchten.',
-	'badimages-unprivileged' => '(Sie haben keine Berechtigung, die Liste zu ändern)',
+	'badimages-unprivileged' => '(Sie haben nicht die erforderliche Berechtigung, die Liste ändern zu können)',
 );
 
 /** Lower Sorbian (Dolnoserbski)

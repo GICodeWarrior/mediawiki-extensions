@@ -27,6 +27,13 @@ $messages['qqq'] = array(
 	'globalusergroups-desc' => 'Description of GlobalUserGroups extension on Special:Version',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'globalusergroups-desc' => "Permite l'usu de grupos d'usuarios llocales definíos como grupos globales",
+);
+
 /** German (Deutsch)
  * @author SVG
  */
@@ -95,5 +102,12 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'globalusergroups-desc' => 'Maakt het mogelijk lokale groepen als globale groepen te gebruiken',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Borichèt
+ */
+$messages['pms'] = array(
+	'globalusergroups-desc' => "A përmëtt ëd dovré dle partìe d'utent definì locaj com dle partìe globaj",
 );
 

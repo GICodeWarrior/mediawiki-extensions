@@ -43,6 +43,14 @@ $messages['ar'] = array(
 	'semanticinternalobjects-desc' => 'ضبط الأشياء الداخلية في ميدياويكي الدلالي',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'semanticinternalobjects-desc' => "Definición d'oxetos internos en Semantic MediaWiki",
+	'semanticinternalobjects-internalproperty' => 'Propiedá interna',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Zedlik

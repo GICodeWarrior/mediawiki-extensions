@@ -30,6 +30,13 @@ $messages['ar'] = array(
 	'editpagetracking-desc' => 'يسجل أول مرة برى فيها كل مستخدم صفحة التحرير',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'editpagetracking-desc' => "Rexistra la primera vez que cada usuariu ve la páxina d'edición",
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Wizardist
  */

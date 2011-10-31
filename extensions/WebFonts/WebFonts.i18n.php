@@ -190,7 +190,7 @@ $messages['ia'] = array(
 	'webfonts-desc' => 'Incorporar typos de litteras in paginas',
 	'webfonts-load' => 'Selige un typo de litteras',
 	'webfonts-reset' => 'Reinitialisar',
-	'webfonts-disable-preference' => 'Disactivar le incorporation de typos de litteras (WebFonts)',
+	'webfonts-enable-preference' => 'Activar le incorporation de typos de litteras (WebFonts)',
 );
 
 /** Indonesian (Bahasa Indonesia)

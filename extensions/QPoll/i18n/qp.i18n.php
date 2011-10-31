@@ -1728,6 +1728,8 @@ Pro salveguardar un sondage, submitte lo sin responder a alcun question de propo
 	'qp_error_non_unique_choice' => 'Iste question require un responsa de proposition unic',
 	'qp_error_category_name_empty' => 'Le nomine del categoria es vacue',
 	'qp_error_proposal_text_empty' => 'Le texto del proposition es vacue',
+	'qp_error_too_long_category_option_value' => 'Le valor del option de categoria es troppo longe pro esser immagazinate in le base de datos.',
+	'qp_error_too_long_category_options_values' => 'Le valores del optiones de categoria es troppo longe pro esser immagazinate in le base de datos.',
 	'qp_error_too_long_proposal_text' => 'Le texto del proposition es troppo longe pro poter esser immagazinate in le base de datos',
 	'qp_error_too_few_categories' => 'Al minus duo categorias debe esser definite',
 	'qp_error_too_few_spans' => 'Cata classe de categoria require le definition de al minus duo responsas possibile',

@@ -1867,6 +1867,14 @@ $wgLocalTmpDirectory ची किंमत योग्य अशा डिर�
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'inplace_access_disabled' => 'Akses kepada perkhidmatan ini telah dimatikan untuk semua klien.',
+	'inplace_access_denied' => 'Perkhidmatan ini disekat oleh IP klien.',
+	'inplace_scaler_no_temp' => 'Tiada direktori sementara yang sah.
+Tetapkan $wgLocalTmpDirectory kepada direktori yang boleh tulis.',
+	'inplace_scaler_not_enough_params' => 'Parameter tidak cukup.',
+	'inplace_scaler_invalid_image' => 'Imej tidak sah, saiz tidak dapat ditentukan.',
+	'webstore-desc' => 'Perisian tengah (middleware) storan fail dalam Web sahaja (bukan NFS)',
+	'webstore_access' => 'Perkhidmatan ini disekat oleh IP klien.',
 	'webstore_404' => 'Fail tidak dijumpai.',
 );
 

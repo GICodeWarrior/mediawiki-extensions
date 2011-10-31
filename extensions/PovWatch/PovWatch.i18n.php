@@ -423,6 +423,7 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Imre
+ * @author Kghbln
  * @author Purodha
  * @author Raimond Spekking
  * @author Umherirrender
@@ -443,7 +444,7 @@ $messages['de'] = array(
 Ein Logbuch der über mittels PovWatch hinzugefügten Seiten ist verfügbar unter [[Special:PovWatch/log]].',
 	'povwatch_subscriber_list' => 'Eine [[Special:PovWatch/subscribers|Liste der registrierten Benutzer]] ist verfügbar.',
 	'povwatch_subscriber_list_intro' => '<strong>Liste der registrierten Benutzer</strong>',
-	'povwatch_not_allowed_subscribers' => 'Du hast keine Berechtigung, die PovWatch-Benutzerliste einzusehen.',
+	'povwatch_not_allowed_subscribers' => 'Du hast nicht die erforderliche Berechtigung, um die PovWatch-Benutzerliste einsehen zu können.',
 	'povwatch_unknown_subpage' => 'Unbekannte Unterseite',
 	'povwatch_push' => 'Hinzufügen',
 	'povwatch_push_intro' => 'Benutze das Formular, um Seiten den Beobachtungslisten der registrierten Benutzer hinzuzufügen.
@@ -465,6 +466,7 @@ Bitte beachte: auch nicht vorhandene Seiten können hinzugefügt werden und es g
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Imre
+ * @author Kghbln
  */
 $messages['de-formal'] = array(
 	'povwatch_not_allowed_push' => 'Sie sind kein PovWatch-Administrator und können fremden Beobachtungslisten keine Seiten hinzufügen.',
@@ -472,7 +474,7 @@ $messages['de-formal'] = array(
 	'povwatch_subscribed' => 'Sie sind nun für PovWatch registriert',
 	'povwatch_not_subscribed' => 'Sie sind nicht für PovWatch registriert; eine Abmeldung ist daher nicht möglich.',
 	'povwatch_unsubscribed' => 'Sie sind nun von PovWatch abgemeldet',
-	'povwatch_not_allowed_subscribers' => 'Sie haben keine Berechtigung, die PovWatch-Benutzerliste einzusehen.',
+	'povwatch_not_allowed_subscribers' => 'Sie haben nicht die erforderliche Berechtigung, um die PovWatch-Benutzerliste einsehen zu können.',
 	'povwatch_push_intro' => 'Benutzen Sie das Formular, um Seiten den Beobachtungslisten der registrierten Benutzer hinzuzufügen.
 Bitte beachten Sie: Auch nicht vorhandene Seiten können hinzugefügt werden und es gibt keinen Weg, dies rückgängig zu machen.',
 	'povwatch_unsubscribe_intro' => 'Sie sind für PovWatch registriert. Klicken Sie auf die Schaltfläche, um sich abzumelden.',

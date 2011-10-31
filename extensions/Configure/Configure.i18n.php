@@ -2546,7 +2546,7 @@ Bitte erstelle sie und führe configure.sql darin aus oder korrigiere ihren Name
 	'configure-no-directory' => 'Das Verzeichnis zum Speichern der Einstellungen, <tt>$1</tt>, ist nicht vorhanden. Bitte erstelle oder ändere es, um diese Erweiterung nutzen zu können.',
 	'configure-no-old' => 'Es ist keine alte Konfigurationsversion vorhanden.',
 	'configure-no-setup' => '<code>efConfigureSetup()</code> muss explizit in deiner LocalSettings.php aufgerufen werden, um diese Erweiterung nutzen zu können.',
-	'configure-no-transwiki' => 'Du hast keine Berechtigung, Einstellungen in anderen Wikis zu ändern',
+	'configure-no-transwiki' => 'Du hast nicht die erforderliche Berechtigung, um Einstellungen in anderen Wikis ändern zu können.',
 	'configure-old' => 'Alte Versionen',
 	'configure-old-versions' => 'Liste der alten Versionen der Konfiguration:',
 	'configure-old-not-available' => 'Die alte Version der Einstellungen, die du angefragt hast, $1, ist nicht vorhanden',
@@ -2686,6 +2686,7 @@ Bitte erstelle sie und führe configure.sql darin aus oder korrigiere ihren Name
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author ChrisiPK
  * @author Imre
+ * @author Kghbln
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
@@ -2698,7 +2699,7 @@ Bitte erstellen Sie sie und führen Sie configure.sql darin aus oder korrigieren
 	'configure-js-image-error' => 'Beim Abruf der URL ist ein Fehler aufgetreten. Bitte stellen Sie sicher, dass die Datei existiert.',
 	'configure-no-directory' => 'Das Verzeichnis zum Speichern der Einstellungen, <tt>$1</tt>, ist nicht vorhanden. Bitte erstellen oder ändern Sie es, um diese Erweiterung nutzen zu können.',
 	'configure-no-setup' => '<code>efConfigureSetup()</code> muss explizit in Ihrer LocalSettings.php aufgerufen werden, um diese Erweiterung nutzen zu können.',
-	'configure-no-transwiki' => 'Sie haben keine Berechtigung, Einstellungen in anderen Wikis zu ändern',
+	'configure-no-transwiki' => 'Sie haben nicht die erforderliche Berechtigung, um Einstellungen in anderen Wikis ändern zu können.',
 	'configure-old-not-available' => 'Die alte Version der Einstellungen, die Sie angefragt haben, $1, ist nicht vorhanden',
 	'configure-image-url-explanation' => 'Geben Sie die URL zu einem Bild oder den Namen eines Bildes auf diesem Wiki (ohne den Namensraum) an. Wenn Sie das Feld verlassen, wird eine Vorschau angezeigt.',
 	'configure-select-wiki-desc' => 'Wählen Sie das Wiki aus, dessen Einstellungen Sie bearbeiten möchten.',

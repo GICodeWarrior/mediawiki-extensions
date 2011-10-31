@@ -22,6 +22,13 @@ $messages['qqq'] = array(
 	'formatnum-desc' => 'Description for Special:Version',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'formatnum-desc' => 'Pasa de formatnum a number_format de PHP',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'formatnum-desc' => 'Ermöglicht das Formatieren von Zahlen mit php number_format',
@@ -81,5 +88,12 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'formatnum-desc' => 'Geeft formatnum door aan number_format van PHP',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'formatnum-desc' => 'A passa formatnum a number_format ëd PHP',
 );
 

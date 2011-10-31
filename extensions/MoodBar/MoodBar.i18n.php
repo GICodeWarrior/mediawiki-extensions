@@ -1439,6 +1439,7 @@ $messages['he'] = array(
 	'moodbar-hide-header' => 'הסתרת הפריט הזה מהתצוגה',
 	'moodbar-restore-header' => 'שחזור הנראוּת של הפריט הזה',
 	'moodbar-invalid-item' => 'המערכת לא הצליחה למצא את פריט המשוב הנכון.',
+	'moodbar-feedback-action-error' => 'אירעה שגיאה בעת ניסיון לבצע את הפעולה הזאת.',
 	'moodbar-type-happy' => 'שמחה',
 	'moodbar-type-sad' => 'עצב',
 	'moodbar-type-confused' => 'בלבול',
