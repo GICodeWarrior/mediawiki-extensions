@@ -727,11 +727,6 @@ table_row
       };
   }
 
-/* TODO: Allow general block-level or inline elements, except if they span a
- * source line starting with a pipe. To avoid duplicating all block-level
- * productions, a quick check if a potential block-level match spanned a line
- * starting with a pipe might be used. Checking this requires access to the
- * matched source string.  */
 table_data 
   = & { dp("table_data enter, pos=" + pos); return true; }
     "||" td_attr? td:anyblock* newline? { 
