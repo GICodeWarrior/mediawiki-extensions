@@ -7,7 +7,8 @@
  * @param model {es.ModelNode} Model to observe
  * @param {jQuery} [$element] Element to use as a container
  */
-es.DocumentViewBranchNode = function( model, $element ) {
+es.DocumentViewBranchNode = function( model, $element, horizontal ) {
+	this.horizontal = horizontal || false;
 	// Extension
 	return es.extendObject( new es.DocumentNode( new es.ViewNode( model, $element ) ), this );
 };
@@ -69,13 +70,15 @@ es.DocumentViewBranchNode.prototype.getOffsetFromRenderedPosition = function( po
 	}
 	var node = this[0];
 	for ( var i = 1; i < this.length; i++ ) {
-		if ( this[i].$.offset().top > position.top ) {
+		if ( this.horizontal && this[i].$.offset().left > position.left ) {
 			break;
+		} else if ( this[i].$.offset().top > position.top ) {
+			break;			
 		}
 		node = this[i];
 	}
 	return node.getParent().getOffsetFromNode( node, true ) +
-		node.getOffsetFromRenderedPosition( position );	
+		node.getOffsetFromRenderedPosition( position ) + 1;
 };
 
 /**
@@ -88,7 +91,7 @@ es.DocumentViewBranchNode.prototype.getOffsetFromRenderedPosition = function( po
 es.DocumentViewBranchNode.prototype.getRenderedPositionFromOffset = function( offset ) {
 	var node = this.getNodeFromOffset( offset, true );
 	if ( node !== null ) {
-		return node.getRenderedPositionFromOffset( offset - this.getOffsetFromNode( node, true ) );
+		return node.getRenderedPositionFromOffset( offset - this.getOffsetFromNode( node, true ) - 1);
 	}
 	return null;
 };
