@@ -794,15 +794,15 @@ es.DocumentModel.prototype.prepareInsertion = function( offset, data ) {
 						workingData = data.slice( 0 );
 					}
 					workingData.splice( i, 1 );
-				}
-				
-				element = stack.pop();
-				if ( element != data[i].type.substr( 1 ) ) {
-					// Closing doesn't match what's expected
-					// This means the input is malformed and cannot possibly
-					// have been a fragment taken from well-formed data
-					throw 'Input is malformed: expected /' + element + ' but got ' + data[i].type +
-						' at index ' + i;
+				} else {
+					element = stack.pop();
+					if ( element != data[i].type.substr( 1 ) ) {
+						// Closing doesn't match what's expected
+						// This means the input is malformed and cannot possibly
+						// have been a fragment taken from well-formed data
+						throw 'Input is malformed: expected /' + element + ' but got ' + data[i].type +
+							' at index ' + i;
+					}
 				}
 			}
 		}
@@ -839,14 +839,23 @@ es.DocumentModel.prototype.prepareInsertion = function( offset, data ) {
 	}
 	
 	if ( es.DocumentModel.containsElementData( insertedData ) ) {
-		if ( isStructuralLoc ) {
+		if ( insertedData[0].type !== undefined && insertedData[0].type.charAt( 0 ) != '/' ) {
+			// insertedData starts with an opening, so this is really intended to insert structure
+			// Balance it to make it sane, if it's not already
+			// TODO we need an actual validator and check that the insertion is really valid
 			insertedData = balance( insertedData );
+			if ( !isStructuralLoc ) {
+				// We're inserting structure at a content location,
+				// so we need to split up the wrapping element
+				wrappingElementType = this.getNodeFromOffset( offset ).getElementType();
+				var arr = [ { 'type': '/' + wrappingElementType }, { 'type': wrappingElementType } ];
+				es.insertIntoArray( arr, 1, insertedData );
+				insertedData = arr;
+			}
+			// else we're inserting structure at a structural location, which is fine
 		} else {
-			// We're inserting structure at a content location,
-			// so we need to split up the wrapping element
-			wrappingElementType = this.getNodeFromOffset( offset ).getElementType();
-			insertedData = [ { 'type': '/' + wrappingElementType }, { 'type': wrappingElementType } ];
-			es.insertIntoArray( insertedData, 1, data );
+			// insertedData starts with content but contains structure
+			// TODO balance and validate, will be different for this case
 		}
 	} else {
 		if ( isStructuralLoc ) {
