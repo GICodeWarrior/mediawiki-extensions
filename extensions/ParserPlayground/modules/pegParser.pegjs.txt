@@ -1,6 +1,49 @@
 /* Produces output more or less compatible with FakeParser; plug it into FP's output and see */
 
 {
+    var dp = function ( msg ) {
+        if ( false ) {
+            console.log(msg);
+        }
+    }
+    
+
+    // Forbidden chars in anything content
+    var forbiddenThingRegexp = {
+        // key: regexp
+        // value: nesting counter, regexp removed if zero reached
+        kvs: {},
+        regexp: "",
+        rebuild: function () {
+            var keys = [];
+            for (var key in this.kvs) {
+                keys.push(key);
+            }
+            this.regexp = keys.join('|');
+        },
+        push: function (key) {
+            if (this.kvs[key] !== undefined) {
+                this.kvs[key]++;
+            } else {
+                this.kvs[key] = 1;
+                this.rebuild();
+            }
+        },
+        pop: function (key) {
+            if (this.kvs[key] !== undefined) {
+                if(this.kvs[key] == 1) {
+                    delete this.kvs[key];
+                    this.rebuild();
+                } else {
+                    this.kvs[key]--;
+                }
+            } else {
+                throw "Trying to pop non-existing forbiddenThingRegexp";
+            }
+        }
+    }
+                
+
 
     /* Temporary debugging help. Is there anything similar in JS or a library? */
     var print_r = function (arr, level) {
@@ -26,7 +69,7 @@
                     dumped_text += level_padding + "[" + item + "] => ";
                     dumped_text += print_r(value, level + 2);
                 } else {
-                    dumped_text += level_padding + "[" + item + "] => " + value + "\n";
+                    dumped_text += level_padding + "[" + item + "] => '" + value + "'\n";
                 }
 
             }
@@ -50,17 +93,72 @@ start
             else
                 es.push(ei);
         });
-        //console.log(print_r(es, 10));
+        //dp(print_r(es));
         return {
             type: 'page', 
             content: es
         } 
     }
 
-anyblock = block / inline_element 
+anyblock = block / inline
+anyblockline = block / inlineline
 
 anything
-  = text / [^\n]
+  = text 
+  / s:.+ { 
+      // reject match if forbiddenThingRegexp matches
+      var str = s.join('');
+      dp("anything: " +print_r(str));
+      if (forbiddenThingRegexp.regexp !== '') {
+          var m = str.search(forbiddenThingRegexp.regexp)
+          if ( m > 0 ) {
+              dp("anything reverse " + (str.length - m) 
+                      + ", matched: " + str.substr(0,m));
+              // reverse parser position
+              pos -= str.length - m;
+              return str.substr(0,m);
+          } else {
+              if (m == 0) {
+                  pos -= str.length;
+                  return null;
+              } else {
+                  return str;
+              }
+          }
+      } else {
+          return str;
+      }
+  }
+
+anyline
+  = text
+  / s:[^\n]+ {
+      // reject match if forbiddenThingRegexp matches
+      var str = s.join('');
+      dp("anyline: " + print_r(str) + ", pos:" + pos);
+      if (forbiddenThingRegexp.regexp !== '') {
+          var m = str.search(forbiddenThingRegexp.regexp)
+          if ( m > 0 ) {
+              // reverse parser position
+              pos -= str.length - m;
+              dp("anyline reverse " + (str.length - m) 
+                      + ", matched: " + str.substr(0,m));
+              return str.substr(0,m);
+          } else {
+              if (m == 0) {
+                  pos -= str.length;
+                  return null;
+              } else {
+                  return str;
+              }
+          }
+      } else {
+          return str;
+      }
+  }
+        
+
+
 
 // All chars that cannot start syntactic structures
 text = t:[A-Za-z0-9,._ -]+ { return t.join('') }
@@ -132,17 +230,44 @@ heading_marker
   = '=' '='*
 
 heading_text
-  = h:( !heading_marker x:(anything) { return x } )* { return h.join(''); }
+  = h:( !heading_marker x:(anyline) { return x } )* { return h.join(''); }
 
 br
   = newline { return {type: 'br'} }
 
 para
-  = c:inline newline { return {type: 'para', content: c } } /
-    c:anything
+  = c:inlineline newline { return {type: 'para', content: c } } /
+    c:anyline
 
 inline
   = c:(inline_element / anything)+ {
+    var out = [];
+    var text = '';
+    for (var i = 0; i < c.length; i++) {
+      if (typeof c[i] == 'string') {
+        text += c[i];
+      } else {
+        if (text.length) {
+          out.push({
+            type: 'text',
+            text: text
+          });
+          text = '';
+        }
+        out.push(c[i]);
+      }
+    }
+    if (text.length) {
+      out.push({
+        type: 'text',
+        text: text
+      });
+    }
+    return out;
+}
+
+inlineline
+  = c:(inline_element / anyline)+ {
     var out = [];
     var text = '';
     for (var i = 0; i < c.length; i++) {
@@ -277,7 +402,7 @@ link_target
   = h:( !"]]" x:([^|]) { return x } )* { return h.join(''); }
 
 link_text
-  = h:( !"]]" x:(anything) { return x } )* { return h.join(''); }
+  = h:( !"]]" x:(anyline) { return x } )* { return h.join(''); }
 
 bold
   = bold_marker c:bold_text bold_marker {
@@ -291,7 +416,7 @@ bold_marker
   = "'''"
 
 bold_text
-  = h:( !bold_marker x:(anything) { return x } )+ { return h.join(''); }
+  = h:( !bold_marker x:(anyline) { return x } )+ { return h.join(''); }
 
 italic
   = italic_marker c:italic_text italic_marker {
@@ -305,7 +430,7 @@ italic_marker
   = "''"
 
 italic_text
-  = h:( !italic_marker x:(anything) { return x } )+ { return h.join(''); }
+  = h:( !italic_marker x:(anyline) { return x } )+ { return h.join(''); }
 
 /* Will need to check anything xmlish agains known/allowed HTML tags and
  * registered extensions, otherwise fail the match. Should ref be treated as a
@@ -354,7 +479,7 @@ ref_end
 }
 
 ref_content
-  = !ref_end a:(inline_element / anything) {
+  = !ref_end a:(inline_element / anyline) {
   return a;
 }
 
@@ -398,7 +523,7 @@ references_end
 }
 
 references_content
-  = !references_end a:(inline_element / anything) {
+  = !references_end a:(inline_element / anyline) {
   return a;
 }
 
@@ -481,12 +606,12 @@ lists = es:(dtdd / li)+
         }
         bstack = bnext;
     });
-    //console.log("out: " + print_r(out, 5));
+    //dp("out: " + print_r(out, 5));
     return out;
 }
 
 li = bullets:list_char+ 
-    c:(inline / anything)
+    c:(inlineline / anyline)
     newline 
 {
     var type;
@@ -507,7 +632,7 @@ li = bullets:list_char+
 dtdd = bullets:list_char+
        c:(inline_element / [^:\n])+
        ":"
-       d:(inline / anything)
+       d:(inline / anyline)
        newline 
 {
     // reject rule if bullets do not end in semicolon
@@ -551,16 +676,23 @@ table
           // FIXME: actually parse and build structure
           res.attributes = { unparsed: tas } 
       }
-      console.log(print_r(res));
+      dp(print_r(res));
       return res;
   }
 
-table_start = "{|" ta:table_attribs* space* newline? { return ta }
+table_start 
+  =  "{|"
+     & { forbiddenThingRegexp.push('(\n|^)\\||\\|[|\x7d+]'); return true; }
+     ta:table_attribs* space* newline? { 
+         dp("table_start " + print_r(ta) + ", pos:" + pos);
+         return ta;
+     }
+  / "{|" { forbiddenThingRegexp.pop('(\n|^)\\||\\|[|\x7d+]'); return null; }
 
-table_attribs = anything
+table_attribs = anyline
 
 table_caption 
-  = "|+" c:(inline_element / anything / [^\n])* newline? { 
+  = "|+" c:inline* newline? { 
       return {
           type: 'tableCaption',
           content: c
@@ -568,13 +700,14 @@ table_caption
   }
 
 table_body 
-  = firstrow:table_firstrow otherrows:table_row* { 
-      /* console.log('table first and otherrows: ' 
+  = & { dp("table_body enter"); return true; }
+    firstrow:table_firstrow otherrows:table_row* { 
+      /* dp('table first and otherrows: ' 
        * + print_r([firstrow].concat(otherrows))); */
       return [firstrow].concat(otherrows); 
   }
   / otherrows:table_row* {
-      //console.log('table otherrows: ' + print_r(otherrows));
+      //dp('table otherrows: ' + print_r(otherrows));
       return otherrows;
   }
 
@@ -600,43 +733,43 @@ table_row
  * starting with a pipe might be used. Checking this requires access to the
  * matched source string.  */
 table_data 
-  = t:table { 
-      //console.log("recursive table result:" + print_r(t));
-      return { 
-          type: 'tableCell', 
-              content: [t]
-      }
-  }
-  / "||" td_attr? td:[^|]* newline? { 
+  = & { dp("table_data enter, pos=" + pos); return true; }
+    "||" td_attr? td:anyblock* newline? { 
+      //dp("table || result:" + print_r(td));
       return {
           type: 'tableCell',
-          content: td.join('')
+          content: td
       };
   }
-  / "|" ![}+-] td_attr? td:[^|\n]* newline? { 
+  / & { dp("table_data : | enter pos=" + pos); return true; }
+    "|" ![}+-] td_attr? td:anyblock* newline? { 
+      //dp("table | result:" + print_r(td));
       return {
           type: 'tableCell',
-          content: td.join('')
+          content: td
       };
   }
 
-td_attr = a:[^\n|]+ "|" !"|" { return a.join('') }
+td_attr = a:[^\n|]+ "|" !"|" { 
+    dp("td_attr: " + a.join(''));
+    return a.join('');
+}
 
 table_header 
-  = "!!" c:(block/ inline_element / text / ("!" !"!") / [^!\n])* newline? { 
+  = "!!" c:(inline / ("!" !"!") / [^!\n])* newline? { 
       return { 
           type: 'tableHeader',
               content: c
       }
   }
-  / "!" c:(block/ inline_element / text / '!' !'!' / [^!\n])* newline? { 
+  / "!" c:(inline / text / '!' !'!' / [^!\n])* newline? { 
       return { 
           type: 'tableHeader',
               content: c
       }
   }
 
-table_end = "|}" newline?
+table_end = "|}" newline? { forbiddenThingRegexp.pop('(\n|^)\\||\\|[|\x7d+]'); }
 
 
 /* Wikidom TODO:
