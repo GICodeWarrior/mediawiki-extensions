@@ -116,8 +116,8 @@ es.DocumentModel.operations = ( function() {
 	}
 
 	function remove( op ) {
-		var elementLeft = es.DocumentModel.isElementOffset( this.data, this.cursor ),
-			elementRight = es.DocumentModel.isElementOffset( this.cursor + op.data.length );
+		var elementLeft = es.DocumentModel.isElementData( this.data, this.cursor ),
+			elementRight = es.DocumentModel.isElementData( this.cursor + op.data.length );
 		if ( elementLeft && elementRight ) {
 			// TODO: Support tree updates when removing whole elements
 		} else {
@@ -486,9 +486,7 @@ es.DocumentModel.flattenPlainObjectElementNode = function( obj ) {
 /**
  * Checks if a data at a given offset is content.
  * 
- * Content offsets are those which are between an opening and a closing element.
- * 
- * @example Content offsets:
+ * @example Content data:
  *      <paragraph> a b c </paragraph> <list> <listItem> d e f </listItem> </list>
  *                 ^ ^ ^                                ^ ^ ^
  * 
@@ -498,30 +496,15 @@ es.DocumentModel.flattenPlainObjectElementNode = function( obj ) {
  * @param {Integer} offset Offset in data to check
  * @returns {Boolean} If data at offset is content
  */
-es.DocumentModel.isContentOffset = function( data, offset ) {
-	// Content can't exist at the edges
-	if ( offset > 0 && offset < data.length ) {
-		// Shortcut: if there's already content there, we will trust it's supposed to be there
-		if ( typeof data[offset] === 'string' || es.isArray( data[offset] ) ) {
-			return true;
-		}
-		// Empty elements will have an opening and a closing next to each other
-		var openLeft = data[offset - 1].type !== undefined && data[offset - 1].type[0] !== '/',
-			closeRight = data[offset].type !== undefined && data[offset].type[0] !== '/';
-		// Check that there's an opening and a closing on the left and right, and the types match
-		if ( openLeft && closeRight && ('/' + data[offset - 1].type === data[offset].type ) ) {
-			return true;
-		}
-	}
-	return false;
+es.DocumentModel.isContentData = function( data, offset ) {
+	// Shortcut: if there's already content there, we will trust it's supposed to be there
+	return typeof data[offset] === 'string' || es.isArray( data[offset] );
 };
 
 /**
  * Checks if a data at a given offset is an element.
  * 
- * Element offsets are those at which an element is present.
- * 
- * @example Element offsets:
+ * @example Element data:
  *      <paragraph> a b c </paragraph> <list> <listItem> d e f </listItem> </list>
  *     ^                 ^            ^      ^                ^           ^
  * 
@@ -531,7 +514,7 @@ es.DocumentModel.isContentOffset = function( data, offset ) {
  * @param {Integer} offset Offset in data to check
  * @returns {Boolean} If data at offset is an element
  */
-es.DocumentModel.isElementOffset = function( data, offset ) {
+es.DocumentModel.isElementData = function( data, offset ) {
 	// TODO: Is there a safer way to check if it's a plain object without sacrificing speed?
 	return offset >= 0 && offset < data.length && data[offset].type !== undefined;
 };
@@ -716,7 +699,7 @@ es.DocumentModel.prototype.getAnnotationsFromOffset = function( offset ) {
  * @returns {es.Range|null} Range of content making up a whole word or null if offset is not content
  */
 es.DocumentModel.prototype.getWordBoundaries = function( offset ) {
-	if ( !es.DocumentModel.isContentOffset( this.data, offset ) ) {
+	if ( es.DocumentModel.isStructuralOffset( this.data, offset ) ) {
 		return null;
 	}
 	var start = offset,
@@ -756,7 +739,7 @@ es.DocumentModel.prototype.getWordBoundaries = function( offset ) {
  * @param {Integer} Offset a given distance from the given offset
  */
 es.DocumentModel.prototype.getRelativeContentOffset = function( offset, distance ) {
-	if ( !es.DocumentModel.isContentOffset( this.data, offset ) ) {
+	if ( es.DocumentModel.isStructuralOffset( this.data, offset ) ) {
 		throw 'Invalid offset error. Can not get relative content offset from non-content offset.';
 	}
 	if ( distance === 0 ) {
@@ -767,7 +750,7 @@ es.DocumentModel.prototype.getRelativeContentOffset = function( offset, distance
 		steps = 0;
 	distance = Math.abs( distance );
 	while ( i > 0 && i < this.data.length - 1 ) {
-		if ( typeof this.data[i] === 'string' || es.isArray( this.data[i] ) ) {
+		if ( !es.DocumentModel.isStructuralOffset( this.data, i ) ) {
 			steps++;
 			offset = i;
 			if ( distance === steps ) {

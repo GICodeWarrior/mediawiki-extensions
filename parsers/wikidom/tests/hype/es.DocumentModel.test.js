@@ -215,7 +215,7 @@ test( 'es.DocumentModel.slice', 1, function() {
 	deepEqual( documentModel.slice( 0 ), tree, 'Nodes in the model tree contain correct lengths' );
 } );
 
-test( 'es.DocumentModel.getRelativeContentOffset', 6, function() {
+test( 'es.DocumentModel.getRelativeContentOffset', 7, function() {
 	var documentModel = es.DocumentModel.newFromPlainObject( obj );
 	
 	// Test 1
@@ -232,26 +232,32 @@ test( 'es.DocumentModel.getRelativeContentOffset', 6, function() {
 	);
 	// Test 3
 	equal(
+		documentModel.getRelativeContentOffset( 3, 1 ),
+		4,
+		'getRelativeContentOffset uses the offset after the last character in an element'
+	);
+	// Test 3
+	equal(
 		documentModel.getRelativeContentOffset( 1, -1 ),
 		1,
 		'getRelativeContentOffset treats the begining a document as a non-content offset'
 	);
 	// Test 4
 	equal(
-		documentModel.getRelativeContentOffset( 26, 1 ),
-		26,
+		documentModel.getRelativeContentOffset( 27, 1 ),
+		27,
 		'getRelativeContentOffset treats the end a document as a non-content offset'
 	);
 	// Test 5
 	equal(
-		documentModel.getRelativeContentOffset( 3, 1 ),
+		documentModel.getRelativeContentOffset( 4, 1 ),
 		9,
 		'getRelativeContentOffset advances forwards between elements'
 	);
 	// Test 6
 	equal(
 		documentModel.getRelativeContentOffset( 26, -1 ),
-		19,
+		20,
 		'getRelativeContentOffset advances backwards between elements'
 	);
 } );
