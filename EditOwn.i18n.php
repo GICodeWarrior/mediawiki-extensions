@@ -50,6 +50,13 @@ $messages['arz'] = array(
 	'editown-desc' => 'المستخدمون بدون الصلاحية editall يمكنهم تعديل الصفحات التى قاموا بإنشائها فقط',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'editown-desc' => 'Los usuarios ensin el permisu editall sólo pueden editar les páxines que crearon ellos',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */
