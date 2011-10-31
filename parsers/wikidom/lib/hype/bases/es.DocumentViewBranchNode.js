@@ -34,9 +34,9 @@ es.DocumentViewBranchNode.prototype.renderContent = function() {
 es.DocumentViewBranchNode.prototype.drawSelection = function( range ) {
 	var nodes = this.selectNodes( range, true );
 	for ( var i = 0; i < this.length; i++ ) {
-		if ( nodes.length && this[i] === nodes[0] ) {
-			for ( var j = 0; j < nodes.on.length; j++ ) {
-				nodes.on[j].node.drawSelection( nodes.on[j].range );
+		if ( nodes.length && this[i] === nodes[0].node ) {
+			for ( var j = 0; j < nodes.length; j++ ) {
+				nodes[j].node.drawSelection( nodes[j].range );
 				i++;
 			}
 		} else {
