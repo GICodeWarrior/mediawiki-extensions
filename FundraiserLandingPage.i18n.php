@@ -6,6 +6,13 @@ $messages['en'] = array(
 	'fundraiserlandingpage-desc' => 'Takes URL parameters and passes them to the specified template as template variables',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'fundraiserlandingpage-desc' => 'Toma los parámetros de la URL y los pasa como variables de plantía a la plantía especificada',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -34,6 +41,13 @@ $messages['hsb'] = array(
 	'fundraiserlandingpage-desc' => 'Přepodawa URL-parametry na podatu předłohu jako wariable předłohi',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'fundraiserlandingpage-desc' => 'Prende parametros de URL e los passa al patrono specificate como variabiles de patrono',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -53,5 +67,12 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'fundraiserlandingpage-desc' => 'Accepteert URL-parameters en geeft deze door aan het opgegeven sjabloon als sjabloonvariabelen',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'fundraiserlandingpage-desc' => "A pija ij paràmetr d'anliura e a-j passa a lë stamp spessificà com variàbil dë stamp",
 );
 
