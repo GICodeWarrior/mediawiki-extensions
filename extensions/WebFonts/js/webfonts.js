@@ -29,7 +29,7 @@
 			var config = $.webfonts.config.fonts[font];
 
 			//load the style sheet for the font
-			$.webfonts.addFont(font)
+			$.webfonts.addFont(font);
 			
 			//save the current font and its size. Used for reset.
 			if ( !$.webfonts.oldconfig ) {
