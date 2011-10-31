@@ -28,8 +28,7 @@ class OnlineStatusBarHooks {
 	 * @return bool
 	 */
 	public static function logout( &$user, &$inject_html, $old_name ) {
-		// this doesn't work yet
-		//OnlineStatusBar::purge( $old_name, null );
+		OnlineStatusBar::purge( $old_name, null );
 		OnlineStatusBar::DeleteStatus( $old_name );
 		return true;
 	}

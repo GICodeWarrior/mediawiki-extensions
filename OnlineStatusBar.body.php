@@ -132,13 +132,15 @@ HTML;
 	 * @return bool
 	 *
 	 */
-	public static function purge( $userName, $user ) {
-		if ( $user === null && $userName != null ) {
-			$old_user = User::newFromName( $userName );
-		}
-		else {
+	public static function purge( $user_type ) {
+		if ( is_a( $user_type, User ) ) {
 			$old_user = $user;
+		} else if ( is_string( $user_type ) ){
+			$old_user = User::newFromName( $userName );
+		} else {
+			return false;
 		}
+
 		// check if something weird didn't happen
 		if ( $old_user === false || $old_user == null ) {
 			return true;
