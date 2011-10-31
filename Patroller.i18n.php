@@ -1116,6 +1116,7 @@ $messages['is'] = array(
 
 /** Italian (Italiano)
  * @author BrokenArrow
+ * @author Nemo bis
  * @author Pietrodn
  */
 $messages['it'] = array(
@@ -1139,7 +1140,7 @@ $messages['it'] = array(
 	'patrol-stopped' => 'Si è scelto di non verificare altre modifiche. $1',
 	'patrol-resume' => 'Fare clic qui per riprendere.',
 	'group-patroller' => 'Patrollatori',
-	'group-patroller-member' => 'Patrollatore',
+	'group-patroller-member' => '{{GENDER:$1|patrollatore|patrollatrice|patrollatore/trice}}',
 	'grouppage-patroller' => '{{ns:project}}:Patrollatore',
 	'right-patroller' => 'Verifica le pagine',
 );
