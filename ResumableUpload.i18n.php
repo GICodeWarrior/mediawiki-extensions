@@ -19,6 +19,13 @@ $messages['qqq'] = array(
 	'resumableupload-desc' => '{{desc}}',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'resumableupload-desc' => 'Sofitu pa les xubíes continuables',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Wizardist
  */
