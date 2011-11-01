@@ -78,9 +78,9 @@ class ApiWOMOutputObjectModel extends ApiBase {
 					header ( "Content-Type: application/rdf+xml" );
 					echo <<<OUTPUT
 <?xml version="1.0" encoding="UTF-8" ?>
-<api><womget result="Success"><return>
+<api><womoutput result="Success"><return>
 {$xml}
-</return></womget></api>
+</return></womoutput></api>
 OUTPUT;
 					exit( 1 );
 				}
@@ -129,7 +129,7 @@ OUTPUT;
 
 	protected function getExamples() {
 		return array (
-			'api.php?action=womget&page=Somepage&xpath=//template[@name=SomeTempate]/template_field[@key=templateparam]'
+			'api.php?action=womoutput&page=Somepage&xpath=//template[@name=SomeTempate]/template_field[@key=templateparam]'
 		);
 	}
 

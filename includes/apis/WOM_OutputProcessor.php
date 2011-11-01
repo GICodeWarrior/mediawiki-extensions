@@ -134,10 +134,10 @@ class WOMOutputProcessor {
 	static function smwgWTregisterParserFunctions( &$parser ) {
 		global $wgWOMOutputHooked;
 		if ( $wgWOMOutputHooked === true ) {
-			if (	defined( SMW_VERSION ) ) {
+			if (	defined( 'SMW_VERSION' ) ) {
 				$parser->setFunctionHook( 'ask', 'WOMOutputProcessor::smwfProcessInlineQueryParserFunctionGTP' );
 			}
-			if (	defined( SMW_HALO_VERSION ) ) {
+			if (	defined( 'SMW_HALO_VERSION' ) ) {
 				$parser->setFunctionHook( 'sparql', 'WOMOutputProcessor::smwfProcessSPARQLQueryParserFunctionGTP' );
 			}
 		}

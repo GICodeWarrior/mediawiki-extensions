@@ -94,9 +94,9 @@ class ApiWOMQuery extends ApiBase {
 					header ( "Content-Type: application/rdf+xml" );
 					echo <<<OUTPUT
 <?xml version="1.0" encoding="UTF-8" ?>
-<api><womget result="Success"><return>
+<api><womquery result="Success"><return>
 {$xml}
-</return></womget></api>
+</return></womquery></api>
 OUTPUT;
 					exit( 1 );
 				}
