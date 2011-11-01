@@ -102,7 +102,7 @@ es.DocumentNode.prototype.getNodeFromOffset = function( offset, shallow ) {
  * 
  * @method
  * @param {es.Range} range Range to select nodes within
- * @param {Boolean} [shallow] Do not iterate into child nodes of child nodes
+ * @param {Boolean} [shallow] Do not recurse into child nodes of child nodes
  * @returns {Array} List of objects with 'node' and 'range' properties describing nodes which are
  * covered by the range and the range within the node that is covered
  */
@@ -158,11 +158,16 @@ es.DocumentNode.prototype.selectNodes = function( range, shallow ) {
 		startInside = start >= left && start <= right; // is the start inside this[i]?
 		endInside = end >= left && end <= right; // is the end inside this[i]?
 		
-		if ( !shallow && startInside && endInside ) {
+		if ( startInside && endInside ) {
 			// The range is entirely inside this[i]
-			// Recurse into this[i]
+			if ( shallow ) {
+				nodes = [ { 'node': this[i], 'range': new es.Range( start - left, end - left ) } ];
+			} else {
+				// Recurse into this[i]
+				nodes = this[i].selectNodes( new es.Range( start - left, end - left ) );
+			}
 			// Since the start and end are both inside this[i], we know for sure that we're done, so return
-			return this[i].selectNodes( new es.Range( start - left, end - left ) );
+			return nodes;
 		} else if ( startInside ) {
 			// The start is inside this[i] but the end isn't
 			// Add a range from the start of the range to the end of this[i]
