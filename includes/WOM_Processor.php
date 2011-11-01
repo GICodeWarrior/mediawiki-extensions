@@ -734,7 +734,7 @@ class WOMProcessor {
 		wfProfileOut( $fname );
 	}
 
-	private static function getValidText( $text, $parent, $wom ) {
+	public static function getValidText( $text, $parent, $wom ) {
 		if ( $parent != null ) {
 			$parserId = self::getObjectParser( $parent )->getSubParserID();
 			if ( $parserId != '' ) {

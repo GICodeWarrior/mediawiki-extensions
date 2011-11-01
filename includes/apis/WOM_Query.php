@@ -28,24 +28,24 @@ class ApiWOMQuery extends ApiBase {
 		global $wgUser;
 
 		$params = $this->extractRequestParams();
-		if ( is_null( $params['page'] ) )
+		if ( is_null( $params['title'] ) )
 			$this->dieUsage( 'Must specify page title', 0 );
 		if ( is_null( $params['key'] ) )
 			$this->dieUsage( 'Must specify key', 1 );
 
-		$page = $params['page'];
+		$page_name = $params['title'];
 		$key = $params['key'];
 		$rid = $params['rid'];
 		$type = $params['type'];
 		$xpath = $params['xpath'];
 
-		$articleTitle = Title::newFromText( $page );
+		$articleTitle = Title::newFromText( $page_name );
 		if ( !$articleTitle )
-			$this->dieUsage( "Can't create title object ($page)", 2 );
+			$this->dieUsage( "Can't create title object ($page_name)", 2 );
 
 		$article = new Article( $articleTitle );
 		if ( !$article->exists() )
-			$this->dieUsage( "Article doesn't exist ($page)", 3 );
+			$this->dieUsage( "Article doesn't exist ($page_name)", 3 );
 
 		if ( !$xpath ) {
 			$xpath = '/';
@@ -107,7 +107,7 @@ OUTPUT;
 
 	protected function getAllowedParams() {
 		return array (
-			'page' => null,
+			'title' => null,
 			'key' => null,
 			'xpath' => null,
 			'type' => array(
@@ -128,7 +128,7 @@ OUTPUT;
 
 	protected function getParamDescription() {
 		return array (
-			'page' => 'Title of the page to modify',
+			'title' => 'Title of the page to modify',
 			'key' => 'query key',
 			'xpath' => 'DOM-like xpath to locate WOM object instances (http://www.w3schools.com/xpath/xpath_syntax.asp)',
 			'type' => array (
@@ -144,7 +144,7 @@ OUTPUT;
 
 	protected function getExamples() {
 		return array (
-			'api.php?action=womquery&page=Somepage&key=hello,world'
+			'api.php?action=womquery&title=Somepage&key=hello,world'
 		);
 	}
 
