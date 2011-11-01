@@ -81,7 +81,7 @@ HTML;
 
 		$user = User::newFromName( $title->getBaseText() );
 		// Invalid user
-		if ( $user === false ) {
+		if ( !($user instanceof User) ) {
 			return false;
 		}
 		if ( !self::isValid( $user ) ) {
@@ -134,22 +134,21 @@ HTML;
 	 */
 	public static function purge( $user_type ) {
 		if (  $user_type instanceof User  ) {
-			$old_user = $user_type;
+			$user = $user_type;
 		} else if ( is_string( $user_type ) ){
-			$old_user = User::newFromName( $user_type );
+			$user = User::newFromName( $user_type );
 		} else {
 			return false;
 		}
 
 		// check if something weird didn't happen
-		if ( $old_user === false || $old_user == null ) {
-			return false;
-		}
-		// purge both pages now
-		if ( $old_user->getOption('OnlineStatusBar_active', false) ) {
-			if ( $old_user->getOption('OnlineStatusBar_autoupdate', false) == true ) {
-				WikiPage::factory( $old_user->getUserPage() )->doPurge();
-				WikiPage::factory( $old_user->getTalkPage() )->doPurge();
+		if ( $user instanceof User ) {
+			// purge both pages now
+			if ( $user->getOption('OnlineStatusBar_active', false) ) {
+				if ( $user->getOption('OnlineStatusBar_autoupdate', false) == true ) {
+					WikiPage::factory( $user->getUserPage() )->doPurge();
+					WikiPage::factory( $user->getTalkPage() )->doPurge();
+				}
 			}
 		}
 		return true;
@@ -187,7 +186,7 @@ HTML;
 				return false;
 			}
 		}
-		// if user doesn't want to be tracked leave him aswel for privacy reasons
+		// if user doesn't want to be tracked leave it as well for privacy reasons
 		if ( $wgUser->isLoggedIn() && !$wgUser->getOption ( "OnlineStatusBar_active", $wgOnlineStatusBarDefaultEnabled ) ) {
 			return false;
 		}
