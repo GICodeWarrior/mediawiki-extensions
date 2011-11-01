@@ -145,8 +145,9 @@ HTML;
 		if ( $old_user === false || $old_user == null ) {
 			return false;
 		}
-		if ( $old_user->getOption('OnlineStatusBar_active') ) {
-			if ( $old_user->getOption('OnlineStatusBar_autoupdate') == true ) {
+		
+		if ( $old_user->getOption('OnlineStatusBar_active', false) ) {
+			if ( $old_user->getOption('OnlineStatusBar_autoupdate', false) == true ) {
 				$update = SquidUpdate::newSimplePurge( $old_user->getTalkPage() );
             			$update->doUpdate();
 				$update = SquidUpdate::newSimplePurge( $old_user->getUserPage() );
