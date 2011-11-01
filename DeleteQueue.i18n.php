@@ -6346,9 +6346,9 @@ $messages['so'] = array(
 	'deletequeue-list-search-legend' => 'Raadi boggaga',
 	'deletequeue-list-search' => 'Raadi',
 	'deletequeue-list-anyqueue' => '(wax kasto)',
-	'deletequeue-list-header-expiry' => 'waxoo dhacaa',
+	'deletequeue-list-header-expiry' => 'Waxuu dhacaa',
 	'deletequeue-case-reason' => 'Sababta:',
-	'deletequeue-case-expiry' => 'Waxoo dhacaa:',
+	'deletequeue-case-expiry' => 'Wuxuu dhacaa:',
 );
 
 /** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
