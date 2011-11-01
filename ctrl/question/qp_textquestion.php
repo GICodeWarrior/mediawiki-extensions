@@ -468,6 +468,7 @@ class qp_TextQuestion extends qp_StubQuestion {
 			# set proposal name (if any)
 			$prop_name = qp_QuestionData::splitRawProposal( $raw );
 			$this->dbtokens = $brace_stack = array();
+			$dbtokens_idx = -1;
 			$catId = 0;
 			$last_brace = '';
 			$this->rawtokens = preg_split( $this->propCatPattern, $raw, -1, PREG_SPLIT_DELIM_CAPTURE );
@@ -508,7 +509,7 @@ class qp_TextQuestion extends qp_StubQuestion {
 						if ( array_key_exists( 'iscat', $brace_match ) ) {
 							$matching_closed_brace = '';
 							# add new category input options for the storage
-							$this->dbtokens[] = $opt->input_options;
+							$this->dbtokens[++$dbtokens_idx] = $opt->input_options;
 							# setup mCategories
 							$this->mCategories[$catId] = array( 'name' => strval( $catId ) );
 							# load proposal/category answer (when available)
@@ -524,7 +525,11 @@ class qp_TextQuestion extends qp_StubQuestion {
 						$opt->addToLastOption( $token );
 					} else {
 						# add new proposal part
-						$this->dbtokens[] = strval( $token );
+						if ( $dbtokens_idx >= 0 && is_string( $this->dbtokens[$dbtokens_idx] ) ) {
+							$this->dbtokens[$dbtokens_idx] .= strval( $token );
+						} else {
+							$this->dbtokens[++$dbtokens_idx] = strval( $token );
+						}
 						$this->propview->addProposalPart( $token );
 					}
 				}
