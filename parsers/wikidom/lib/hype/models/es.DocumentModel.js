@@ -946,6 +946,7 @@ es.DocumentModel.prototype.prepareRemoval = function( range ) {
 		// wait, some nodes don't have types? Is this the top document node?
 		return ( 
 					( 
+						( node1 && node2 ) &&
 						( node1.type !== undefined && node2.type !== undefined ) && 
 						( node1.type === node2.type ) 
 					)  &&
