@@ -9,6 +9,10 @@ try:
 except ImportError:
 	sys.stderr.write("Unable to import LDAP library.\n")
 
+NONE = 0
+INFO = 10
+DEBUG = 20
+
 class HomeDirectoryManager:
 
 	def __init__(self):
@@ -37,8 +41,13 @@ class HomeDirectoryManager:
 		self.skelFiles = {}
 		self.skelFiles['/etc/skel/'] = ['.bashrc', '.profile', '.bash_logout']
 
+		# Log file to use, rather than stdout
+		self.logfile = None
+
+		self.loglevel = INFO
+		self.logfile = None
+
 		self.dryRun = False
-		self.debugStatus = False
 
 		if (os.path.exists('/usr/sbin/nscd')):
 			os.system('nscd -i passwd')
@@ -52,17 +61,23 @@ class HomeDirectoryManager:
 		ldapSupportLib.addParserOptions(parser)
 
 		parser.add_option("--dry-run", action="store_true", dest="dryRun", help="Show what would be done, but don't actually do anything")
-		parser.add_option("--debug", action="store_true", dest="debugStatus", help="Run in debug mode (you likely want to use --dry-run with this)")
 		parser.add_option("--basedir", dest="basedir", help="Base directory to manage home directories (default: /home)")
 		parser.add_option("--group", dest="group", help="Only manage home directories for users in the provided group (default: manage all users)")
+		parser.add_option("--loglevel", dest="loglevel", help="Change level of logging; NONE, INFO, DEBUG (default: INFO)")
+		parser.add_option("--logfile", dest="logfile", help="Log file to write to (default: stdout)")
 		(self.options, args) = parser.parse_args()
 
 		self.dryRun = self.options.dryRun
-		self.debugStatus = self.options.debugStatus
 		if self.options.basedir:
 			self.basedir = self.options.basedir
 		if self.options.group:
 			self.group = self.options.group
+
+		if options.logfile:
+			self.logfile = options.logfile
+
+		if options.loglevel:
+			self.setLogLevel(options.loglevel)
 
 		# use proxy agent by default
 		ldapSupportLib.setBindInfoByOptions(self.options, parser)
@@ -296,28 +311,51 @@ class HomeDirectoryManager:
 				os.utime(self.basedir + userdir + "/.ssh/authorized_keys", (atime, time.mktime(d_ldap_mtime.timetuple())))
 
 	def log(self, logstring):
-		print datetime.datetime.now().strftime("%m/%d/%Y - %H:%M:%S - ")  + logstring
+		if self.loglevel >= INFO:
+			log = datetime.datetime.now().strftime("%m/%d/%Y - %H:%M:%S - ")  + logstring + "\n"
+			if self.logfile:
+				lf = open(self.logfile, 'a')
+				lf.write(log)
+				lf.close()
+			else:
+				print log
 
 	def logDebug(self, logstring):
-		if self.debugStatus  == True:
-			sys.stderr.write("Debug: " + logstring + "\n")
+		if self.loglevel >= DEBUG:
+			log = datetime.datetime.now().strftime("%m/%d/%Y - %H:%M:%S - ") + "(Debug) " + logstring + "\n" 
+			if self.logfile:
+				lf = open(self.logfile, 'a')
+				lf.write(log)
+				lf.close()
+			else:
+				sys.stderr.write(log)
+
+	def setDebugLevel(self, loglevel):
+		if loglevel.lower() == "debug":
+			self.loglevel = DEBUG
+		else if loglevel.lower() == "info":
+			self.loglevel = INFO
+		else if loglevel.lower() == "none":
+			self.loglevel = NONE
+		else:
+			self.loglevel = INFO
 
 	def chown(self, path, user, group):
 		if not self.dryRun:
 			os.chown(path, user, group)
-		if self.dryRun or self.debugStatus:
+		if self.dryRun or self.loglevel >= DEBUG:
 			self.log('chown %s %d %d' % (path, user, group))
 	
 	def mkdir(self, path, mode):
 		if not self.dryRun:
 			os.mkdir(path, mode)
-		if self.dryRun or self.debugStatus:
+		if self.dryRun or self.loglevel >= DEBUG:
 			self.log('mkdir %s %o' % (path, mode))
 	
 	def chmod(self, path, mode):
 		if not self.dryRun:
 			os.chmod(path, mode)
-		if self.dryRun or self.debugStatus:
+		if self.dryRun or self.loglevel >= DEBUG:
 			self.log('chmod %s %o' % (path, mode))
 	
 	def writeFile(self, path, contents):
@@ -325,19 +363,19 @@ class HomeDirectoryManager:
 			f = open(path, 'w')
 			f.write(contents)
 			f.close()
-		if self.dryRun or self.debugStatus:
+		if self.dryRun or self.loglevel >= DEBUG:
 			self.log("write file %s:\n%s" % (path, contents))
 
 	def rename(self, oldPath, newPath):
 		if not self.dryRun:
 			os.rename(oldPath, newPath)
-		if self.dryRun or self.debugStatus:
+		if self.dryRun or self.loglevel >= DEBUG:
 			self.log('rename %s %s' % (oldPath, newPath))
 
 	def copy(self, srcPath, dstPath):
 		if not self.dryRun:
 			shutil.copy(srcPath, dstPath)
-		if self.dryRun or self.debugStatus:
+		if self.dryRun or self.loglevel >= DEBUG:
 			self.log('copy %s %s' % (srcPath, dstPath))
 
 def main():

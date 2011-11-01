@@ -17,6 +17,8 @@ def main():
 	ldapSupportLib = ldapsupportlib.LDAPSupportLib()
 	ldapSupportLib.addParserOptions(parser)
 
+	parser.add_option("--logfile", dest="logfile", help="Write output to the specified log file. (default: stdin)")
+	parser.add_option("--loglevel", dest="loglevel", help="Change level of logging; NONE, INFO, DEBUG (default: INFO)")
 	(options, args) = parser.parse_args()
 	ldapSupportLib.setBindInfoByOptions(options, parser)
 
@@ -35,6 +37,10 @@ def main():
 			project_name = project[1]["cn"][0]
 			if not os.path.exists(basedir + project_name):
 				os.mkdir(basedir + project_name, 0755)
+			if options.logfile:
+				hdm.logfile = options.logfile
+			if options.loglevel:
+				hdm.setDebugLevel(options.loglevel)
 			hdm.basedir = basedir + project_name + "/"
 			hdm.group = project_name
 			hdm.run()
