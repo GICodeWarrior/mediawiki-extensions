@@ -32,7 +32,7 @@ HTML;
 	 * @return string
 	 */
 	public static function GetImageHtml( $mode ) {
-		global $wgExtensionAssetsPath, $wgOnlineStatusBarIcon, $wgOnlineStatusBarModes;
+		global $wgExtensionAssetsPath, $wgOnlineStatusBarIcon;
 		$icon = "$wgExtensionAssetsPath/OnlineStatusBar/{$wgOnlineStatusBarIcon[$mode]}";
 		return Html::element( 'img', array( 'src' => $icon ) );
 	}
@@ -46,19 +46,22 @@ HTML;
          */
 	public static function getAnonFromTitle( Title $title ) {
 		global $wgOnlineStatusBarTrackIpUsers;
+		// if user is anon and we don't track them stop
 		if ( $wgOnlineStatusBarTrackIpUsers == false ) {
 			return false;
 		}
 	
+		// checks ns
 		if ( $title->getNamespace() != NS_USER && $title->getNamespace() != NS_USER_TALK ) {
 			return false;
 		}
 
+		// we need to create temporary user object
 		$user = User::newFromId( 0 );
 		$user->setName( $title->getBaseText() );
 
 		// Check if something wrong didn't happen
-		if ( $user === false ) {
+		if ( !($user instanceof User) ) {
 			return false;
 		}
 
@@ -102,7 +105,7 @@ HTML;
 		// remove old entries
 		if ( $update )
 		{
-			self::DeleteOld();
+			self::deleteOld();
 		}
 
 		// instead of delete every time just select the records which are not that old
@@ -161,10 +164,10 @@ HTML;
 	 * Insert to the database
 	 * @return bool
 	 */
-	public static function UpdateDb() {
-		global $wgUser, $wgOnlineStatusBarDefaultOnline;
+	public static function updateDb() {
+		global $wgUser;
 		// Skip users we don't track
-		if ( self::IsValid ( $wgUser ) != true ) {
+		if ( self::isValid ( $wgUser ) != true ) {
 			return false;
 		}
 		// If we track them, let's insert it to the table 
@@ -181,7 +184,7 @@ HTML;
 	 * Update status of user
 	 * @return bool
 	 */
-	public static function UpdateStatus() {
+	public static function updateStatus() {
 		global $wgUser, $wgOnlineStatusBarDefaultOffline, $wgOnlineStatusBarTrackIpUsers, $wgOnlineStatusBarDefaultEnabled;
 		// if anon users are not tracked and user is anon leave it
 		if ( !$wgOnlineStatusBarTrackIpUsers ) {
@@ -193,8 +196,8 @@ HTML;
 		if ( $wgUser->isLoggedIn() && !$wgUser->getOption ( "OnlineStatusBar_active", $wgOnlineStatusBarDefaultEnabled ) ) {
 			return false;
 		}
-		if ( OnlineStatusBar::GetStatus( $wgUser ) == $wgOnlineStatusBarDefaultOffline ) {
-			OnlineStatusBar::UpdateDb();
+		if ( OnlineStatusBar::getStatus( $wgUser ) == $wgOnlineStatusBarDefaultOffline ) {
+			OnlineStatusBar::updateDb();
 			return true;
 		}
 
@@ -221,7 +224,7 @@ HTML;
 	 * Delete old records from the table, this function is called frequently too keep it as small as possible
 	 * @return int
 	 */
-	public static function DeleteOld() {
+	public static function deleteOld() {
 		$dbw = wfGetDB( DB_MASTER );
 		// calculate time and convert it back to mediawiki format
 		$time = self::getTimeoutDate();
@@ -253,7 +256,7 @@ HTML;
 	 * @param $userName string
 	 * @return bool
 	 */
-	static function DeleteStatus( $userName ) {
+	static function deleteStatus( $userName ) {
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->delete( 'online_status', array( 'username' => $userName ), __METHOD__ ); // delete user
 		return true;
