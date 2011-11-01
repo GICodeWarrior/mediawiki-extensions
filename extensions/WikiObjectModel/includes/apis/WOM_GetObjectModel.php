@@ -13,24 +13,24 @@ class ApiWOMGetObjectModel extends ApiBase {
 		global $wgUser;
 
 		$params = $this->extractRequestParams();
-		if ( is_null( $params['page'] ) )
+		if ( is_null( $params['title'] ) )
 			$this->dieUsage( 'Must specify page title', 0 );
 		if ( is_null( $params['xpath'] ) )
 			$this->dieUsage( 'Must specify xpath', 1 );
 
-		$page = $params['page'];
+		$page_name = $params['title'];
 		$xpath = $params['xpath'];
 		$type = $params['type'];
 		$rid = $params['rid'];
 
 
-		$articleTitle = Title::newFromText( $page );
+		$articleTitle = Title::newFromText( $page_name );
 		if ( !$articleTitle )
-			$this->dieUsage( "Can't create title object ($page)", 2 );
+			$this->dieUsage( "Can't create title object ($page_name)", 2 );
 
 		$article = new Article( $articleTitle );
 		if ( !$article->exists() )
-			$this->dieUsage( "Article doesn't exist ($page)", 3 );
+			$this->dieUsage( "Article doesn't exist ($page_name)", 3 );
 
 		try {
 			$objs = WOMProcessor::getObjIdByXPath( $articleTitle, $xpath, $rid );
@@ -89,7 +89,7 @@ OUTPUT;
 
 	protected function getAllowedParams() {
 		return array (
-			'page' => null,
+			'title' => null,
 			'xpath' => null,
 			'type' => array(
 				ApiBase :: PARAM_DFLT => 'wiki',
@@ -109,7 +109,7 @@ OUTPUT;
 
 	protected function getParamDescription() {
 		return array (
-			'page' => 'Title of the page to modify',
+			'title' => 'Title of the page to modify',
 			'xpath' => 'DOM-like xpath to locate WOM object instances (http://www.w3schools.com/xpath/xpath_syntax.asp)',
 			'type' => array (
 				'Type to fetch useful wiki object data',
@@ -127,7 +127,7 @@ OUTPUT;
 
 	protected function getExamples() {
 		return array (
-			'api.php?action=womget&page=Somepage&xpath=//template[@name=SomeTempate]/template_field[@key=templateparam]'
+			'api.php?action=womget&title=Somepage&xpath=//template[@name=SomeTempate]/template_field[@key=templateparam]'
 		);
 	}
 

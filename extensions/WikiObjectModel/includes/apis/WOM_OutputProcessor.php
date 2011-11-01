@@ -42,7 +42,7 @@ class WOMOutputProcessor {
 
 		// Query routing allows extensions to provide alternative stores as data sources
 		// The while feature is experimental and is not properly integrated with most of SMW's architecture. For instance, some query printers just fetch their own store.
-		/// TODO: case-insensitive
+		// / TODO: case-insensitive
 		global $smwgQuerySources;
 
 		$query->params = $params; // this is a hack
