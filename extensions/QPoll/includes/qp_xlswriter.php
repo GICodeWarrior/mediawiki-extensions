@@ -38,241 +38,159 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 /**
- * PEAR Excel helper / wrapper
- *
+ * Generic Xls format wrapper / helper for Excel PEAR class.
+ * It is used as base class for poll and for it's questions.
  */
-class qp_Excel {
+class qp_XlsWriter {
 
-	# an instance of XLS worksheet
-	var $ws;
+	/**
+	 * Static properties are shared across instances, including
+	 * derived ones (ancestors). This prevents from writing multiple
+	 * worksheets simultaneously, however currently we do not need it.
+	 * Instead, question XLS writers are derived from poll XLS writer,
+	 * sharing all the useful write*() methods, not having to build
+	 * hierarchial XLS writers structure (with owner property in
+	 * children constructor to access parents write*() methods ).
+	 *
+	 * Please keep all direct access to static properties here, not
+	 * expanding to ancestors.
+	 *
+	 * Warning: watch out for "self" references in ancestors, PHP 5.2
+	 * does not support late static binding (unfortunately). Let's wait
+	 * for the time when PHP 5.3 will become minimal common standard.
+	 *
+	 */
+	# an instance of XLS workbook (it contains worksheets and formats)
+	static $wb;
+	# an instance of XLS worksheet (only one currently is used)
+	static $ws;
 	# list of formats added to workbook
-	var $format;
-	# current row number in a worksheet
-	var $rownum = 0;
+	static $format;
+	# current row number in a worksheet (pointer)
+	static $rownum = 0;
 
-	static function newFromWorksheet( Spreadsheet_Excel_Writer_Worksheet $worksheet ) {
-		$self = new self();
-		$self->ws = $worksheet;
-		$self->ws->setInputEncoding( "utf-8" );
-		$self->ws->setPaper( 9 );
-		return $self;
+	function __construct( $xls_fname = null ) {
+		if ( is_string( $xls_fname ) ) {
+			# create special "default" format key/val to avoid extra "if" logic:
+			self::$format = array( 'null' => null );
+			self::$wb = new Spreadsheet_Excel_Writer_Workbook( $xls_fname );
+			self::$wb->setVersion( 8 );
+			self::$ws = self::$wb->addworksheet();
+			self::$ws->setInputEncoding( 'utf-8' );
+			self::$ws->setPaper( 9 );
+		}
 	}
 
-	static function prepareExcelString( $s ) {
+	function closeWorkbook() {
+		self::$wb->close();
+	}
+
+	/**
+	 * PEAR Excel class uses instances of Spreadsheet_Excel_Writer_Format
+	 * for cell formatting; we store these instances in self::$format array
+	 * and then address these by passing array keys (strings with format "name").
+	 */
+	function addFormats( $formats ) {
+		foreach ( $formats as $fkey => $fdef ) {
+			self::$format[$fkey] = self::$wb->addformat( $fdef );
+		}
+	}
+
+	function getFormat( $fkey ) {
+		return self::$format[$fkey];
+	}
+
+	/**
+	 * This function is used to prevent text answer strings starting with '=' sign
+	 * to be evaluated as Excel formula; In fact this function is used on every
+	 * string type input in the write*() functions below; effectively disabling
+	 * formulas at all, however the extension currently does not need formulas in
+	 * XLS export and unlikely will to.
+	 */
+	function prepareXlsString( $s ) {
 		if ( preg_match( '`^=.?`', $s ) ) {
 			return "'" . $s;
 		}
 		return $s;
 	}
 
-	function writeFormattedTable( $colnum, &$table, $format = null ) {
-		$ws = $this->ws;
+	/**
+	 * Write scalar value into selected column of the current row.
+	 */
+	function write( $col, $val, $fkey = 'null' ) {
+		if ( is_string( $val ) ) {
+			$val = $this->prepareXlsString( $val );
+		}
+		self::$ws->write( self::$rownum, $col, $val, self::$format[$fkey] );
+	}
+
+	/**
+	 * Write scalar value into selected column of the current row.
+	 * Advance row pointer to the next row ("line feed")
+	 */
+	function writeLn( $col, $val, $fkey = 'null' ) {
+		$this->write( $col, $val, $fkey );
+		self::$rownum++;
+	}
+
+	/**
+	 * Write array of values into current row at the selected column.
+	 */
+	function writeRow( $col, $arr, $fkey = 'null' ) {
+		foreach( $arr as &$val ) {
+			if ( is_string( $val ) ) {
+				$val = $this->prepareXlsString( $val );
+			}
+		}
+		self::$ws->writerow( self::$rownum, $col, $arr, self::$format[$fkey] );
+	}
+
+	/**
+	 * Write array of values into current row at the selected column.
+	 * Advance row pointer to the next row ("line feed")
+	 */
+	function writeRowLn( $col, $arr, $fkey = 'null' ) {
+		$this->writeRow( $col, $arr, $fkey );
+		self::$rownum++;
+	}
+
+	/**
+	 * Write array of values into selected column of the current row.
+	 */
+	function writeCol( $col, $arr, $fkey = 'null' ) {
+		foreach( $arr as &$val ) {
+			if ( is_string( $val ) ) {
+				$val = $this->prepareXlsString( $val );
+			}
+		}
+		self::$ws->writecol( self::$rownum, $arr, $val, self::$format[$fkey] );
+	}
+
+	/**
+	 * Write 2d-table of data into selected column of the current row.
+	 */
+	function writeFormattedTable( $colnum, &$table, $fkey = 'null' ) {
+		$ws = self::$ws;
 		foreach ( $table as $rnum => &$row ) {
 			foreach ( $row as $cnum => &$cell ) {
 				if ( is_array( $cell ) ) {
-					if ( array_key_exists( "format", $cell ) ) {
-						$ws->write( $this->rownum + $rnum, $colnum + $cnum, $cell[ 0 ], $cell[ "format" ] );
-					} else {
-						$ws->write( $this->rownum + $rnum, $colnum + $cnum, $cell[ 0 ], $format );
-					}
+					$val = is_string( $cell[0] ) ? $this->prepareXlsString( $cell[0] ) : $cell[0];
+					$curr_fkey = array_key_exists( 'format', $cell ) ? $cell['format'] : $fkey;
+					$ws->write( self::$rownum + $rnum, $colnum + $cnum, $val, self::$format[$curr_fkey] );
 				} else {
-					$ws->write( $this->rownum + $rnum, $colnum + $cnum, $cell, $format );
+					$val = is_string( $cell ) ? $this->prepareXlsString( $cell ) : $cell;
+					$ws->write( self::$rownum + $rnum, $colnum + $cnum, $val, self::$format[$fkey] );
 				}
 			}
 		}
 	}
 
-	function writeHeader( $totalUsersAnsweredQuestion ) {
-		$this->ws->write( $this->rownum, 0, $totalUsersAnsweredQuestion, $this->format['heading'] );
-		$this->ws->write( $this->rownum++, 1, wfMsgExt( 'qp_users_answered_questions', array( 'parsemag' ), $totalUsersAnsweredQuestion ), $this->format['heading'] );
-		$this->rownum++;
+	function nextRow() {
+		self::$rownum ++;
 	}
 
-	function voicesToXls( $format, qp_PollStore $pollStore ) {
-		$this->format = &$format;
-		$pollStore->loadQuestions();
-		$ws = $this->ws;
-		$first_question = true;
-		foreach ( $pollStore->Questions as $qkey => &$qdata ) {
-			if ( $first_question ) {
-				$this->writeHeader( $pollStore->totalUsersAnsweredQuestion( $qdata ) );
-			} else {
-				# get maximum count of voters of the first question
-				$total_voters = $first_question_voters;
-			}
-			$ws->write( $this->rownum, 0, $qdata->question_id, $format['heading'] );
-			$ws->write( $this->rownum++, 1, self::prepareExcelString( $qdata->CommonQuestion ), $format['heading'] );
-			if ( count( $qdata->CategorySpans ) > 0 ) {
-				$row = array();
-				foreach ( $qdata->CategorySpans as &$span ) {
-					$row[] = self::prepareExcelString( $span[ "name" ] );
-					for ( $i = 1; $i < $span[ "count" ]; $i++ ) {
-						$row[] = "";
-					}
-				}
-				$ws->writerow( $this->rownum++, 0, $row );
-			}
-			$row = array();
-			foreach ( $qdata->Categories as &$categ ) {
-				$row[] = self::prepareExcelString( $categ[ "name" ] );
-			}
-			$ws->writerow( $this->rownum++, 0, $row );
-/*
-			foreach ( $qdata->Percents as $pkey=>&$percent ) {
-				$ws->writerow( $this->rownum + $pkey, 0, $percent );
-			}
-*/
-			$voters = array();
-			$offset = 0;
-			$spansUsed = count( $qdata->CategorySpans ) > 0 || $qdata->type == "multipleChoice";
-			# iterate through the voters of the current poll (there might be many)
-			while ( ( $limit = count( $voters = $pollStore->pollVotersPager( $offset ) ) ) > 0 ) {
-				if ( !$first_question ) {
-					# do not export more user voices than first question has
-					for ( $total_voters -= $limit; $total_voters < 0 && $limit > 0; $total_voters++, $limit-- ) {
-						array_pop( $voters );
-					}
-					if ( count( $voters ) === 0 ) {
-						break;
-					}
-				}
-				$uvoices = $pollStore->questionVoicesRange( $qdata->question_id, array_keys( $voters ) );
-				# get each of proposal votes for current uid
-				foreach ( $uvoices as $uid => &$pvoices ) {
-					# output square table of proposal / category answers for each uid in uvoices array
-					$voicesTable = array();
-					foreach ( $qdata->ProposalText as $propkey => &$proposal_text ) {
-						$row = array_fill( 0, count( $qdata->Categories ), '' );
-						if ( isset( $pvoices[$propkey] ) ) {
-							foreach ( $pvoices[$propkey] as $catkey => $text_answer ) {
-								$row[$catkey] = self::prepareExcelString( $text_answer );
-							}
-							if ( $spansUsed ) {
-								foreach ( $row as $catkey => &$cell ) {
-									$cell = array( 0 => $cell );
-									if ( $qdata->type == "multipleChoice" ) {
-										$cell['format'] = ( ( $catkey & 1 ) === 0 ) ? $format['even'] : $format['odd'];
-									} else {
-										$cell['format'] = ( ( $qdata->Categories[ $catkey ][ "spanId" ] & 1 ) === 0 ) ? $format['even'] : $format['odd'];
-									}
-								}
-							}
-						}
-						$voicesTable[] = $row;
-					}
-					$this->writeFormattedTable( 0, $voicesTable, $format['answer'] );
-					$row = array();
-					foreach ( $qdata->ProposalText as $ptext ) {
-						$row[] = self::prepareExcelString( $ptext );
-					}
-					$ws->writecol( $this->rownum, count( $qdata->Categories ), $row );
-					$this->rownum += count( $qdata->ProposalText ) + 1;
-				}
-				if ( !$first_question && $total_voters < 1 ) {
-					# break on reaching the count of first question user voices
-					break;
-				}
-				$offset += $limit;
-			}
-			if ( $first_question ) {
-				# store maximum count of voters of the first question
-				$first_question_voters = $offset;
-				$first_question = false;
-			}
-		}
+	function relRow( $delta ) {
+		self::$rownum += $delta;
 	}
 
-	function statsToXls( $format, qp_PollStore $pollStore ) {
-		$this->format = &$format;
-		$pollStore->loadQuestions();
-		$pollStore->loadTotals();
-		$pollStore->calculateStatistics();
-		$ws = $this->ws;
-		$first_question = true;
-		foreach ( $pollStore->Questions as $qkey => &$qdata ) {
-			if ( $first_question ) {
-				$this->writeHeader( $pollStore->totalUsersAnsweredQuestion( $qdata ) );
-				$first_question = false;
-			}
-			$ws->write( $this->rownum, 0, $qdata->question_id, $format['heading'] );
-			$ws->write( $this->rownum++, 1, self::prepareExcelString( $qdata->CommonQuestion ), $format['heading'] );
-			if ( count( $qdata->CategorySpans ) > 0 ) {
-				$row = array();
-				foreach ( $qdata->CategorySpans as &$span ) {
-					$row[] = self::prepareExcelString( $span[ "name" ] );
-					for ( $i = 1; $i < $span[ "count" ]; $i++ ) {
-						$row[] = "";
-					}
-				}
-				$ws->writerow( $this->rownum++, 0, $row );
-			}
-			$row = array();
-			foreach ( $qdata->Categories as &$categ ) {
-				$row[] = self::prepareExcelString( $categ[ "name" ] );
-			}
-			$ws->writerow( $this->rownum++, 0, $row );
-/*
-			foreach ( $qdata->Percents as $pkey=>&$percent ) {
-				$ws->writerow( $this->rownum + $pkey, 0, $percent );
-			}
-*/
-			$percentsTable = array();
-			$spansUsed = count( $qdata->CategorySpans ) > 0 || $qdata->type == "multipleChoice";
-			foreach ( $qdata->ProposalText as $propkey => &$proposal_text ) {
-				if ( isset( $qdata->Percents[ $propkey ] ) ) {
-					$row = $qdata->Percents[ $propkey ];
-					foreach ( $row as $catkey => &$cell ) {
-						$cell = array( 0 => $cell );
-						if ( $spansUsed ) {
-							if ( $qdata->type == "multipleChoice" ) {
-								$cell['format'] = ( ( $catkey & 1 ) === 0 ) ? $format['even'] : $format['odd'];
-							} else {
-								$cell['format'] = ( ( $qdata->Categories[ $catkey ][ "spanId" ] & 1 ) === 0 ) ? $format['even'] : $format['odd'];
-							}
-						}
-					}
-				} else {
-					$row = array_fill( 0, count( $qdata->Categories ), '' );
-				}
-				$percentsTable[] = $row;
-			}
-			$this->writeFormattedTable( 0, $percentsTable, $format['percent'] );
-			$row = array();
-			foreach ( $qdata->ProposalText as $ptext ) {
-				$row[] = self::prepareExcelString( $ptext );
-			}
-			$ws->writecol( $this->rownum, count( $qdata->Categories ), $row );
-			$this->rownum += count( $qdata->ProposalText ) + 1;
-		}
-	}
-
-	function interpretationToXLS( $format, qp_PollStore $pollStore ) {
-		$offset = 0;
-		$ws = $this->ws;
-		# iterate through the voters of the current poll (there might be many)
-		while ( ( $limit = count( $voters = $pollStore->pollVotersPager( $offset ) ) ) > 0 ) {
-			foreach ( $voters as &$voter ) {
-				if ( $voter['interpretation']->short != '' ) {
-					$ws->write( $this->rownum++, 0, self::prepareExcelString( wfMsg( 'qp_results_short_interpretation' ) ), $format['heading'] );
-					$ws->write( $this->rownum++, 0, self::prepareExcelString( $voter['interpretation']->short ) );
-				}
-				if ( $voter['interpretation']->structured != '' ) {
-					$ws->write( $this->rownum++, 0, self::prepareExcelString( wfMsg( 'qp_results_structured_interpretation' ) ), $format['heading'] );
-					$strucTable = $voter['interpretation']->getStructuredAnswerTable();
-					foreach ( $strucTable as &$line ) {
-						if ( isset( $line['keys'] ) ) {
-							# current node is associative array
-							$ws->writeRow( $this->rownum++, 0, $line['keys'], $format['odd'] );
-							$ws->writeRow( $this->rownum++, 0, $line['vals'] );
-						} else {
-							$ws->write( $this->rownum++, 0, $line['vals'] );
-						}
-					}
-					$this->rownum++;
-				}
-			}
-			$offset += $limit;
-		}
-	}
-
-} /* end of qp_Excel class */
+} /* end of qp_XlsWriter class */
