@@ -6,71 +6,279 @@
  * 
  * @class
  * @constructor
- * @extends {es.ModelNode}
+ * @extends {es.DocumentNode}
+ * @extends {es.EventEmitter}
  * @param {Integer|Array} contents Either Length of content or array of child nodes to append
  * @property {Integer} contentLength Length of content
  */
 es.DocumentModelNode = function( element, contents ) {
-	// Extension
-	var node = es.extendObject( new es.DocumentNode( new es.ModelNode() ), this );
-	
-	// Observe add and remove operations to keep lengths up to date
-	node.addListenerMethods( node, {
-		'beforePush': 'onBeforePush',
-		'beforeUnshift': 'onBeforeUnshift',
-		'beforePop': 'onBeforePop',
-		'beforeShift': 'onBeforeShift',
-		'beforeSplice': 'onBeforeSplice'
-	} );
+	// Inheritance
+	es.DocumentNode.call( this );
+	es.EventEmitter.call( this );
+
+	// Reusable function for passing update events upstream
+	var _this = this;
+	this.emitUpdate = function() {
+		_this.emit( 'update' );
+	};
 	
 	// Properties
-	node.element = element || null;
-	node.contentLength = 0;
+	this.parent = null;
+	this.root = this;
+	this.element = element || null;
+	this.contentLength = 0;
 	if ( typeof contents === 'number' ) {
 		if ( contents < 0 ) {
 			throw 'Invalid content length error. Content length can not be less than 0.';
 		}
-		node.contentLength = contents;
+		this.contentLength = contents;
 	} else if ( es.isArray( contents ) ) {
 		for ( var i = 0; i < contents.length; i++ ) {
-			node.push( contents[i] );
+			this.push( contents[i] );
 		}
 	}
-	
-	return node;
+};
+
+/* Abstract Methods */
+
+/**
+ * Creates a view for this node.
+ * 
+ * @abstract
+ * @method
+ * @returns {es.DocumentViewNode} New item view associated with this model
+ */
+es.DocumentModelNode.prototype.createView = function() {
+	throw 'DocumentModelNode.createView not implemented in this subclass:' + this.constructor;
 };
 
 /* Methods */
 
-es.DocumentModelNode.prototype.onBeforePush = function( childModel ) {
-	this.adjustContentLength( childModel.getElementLength() );
+/**
+ * Adds a node to the end of this node's children.
+ * 
+ * @method
+ * @param {es.DocumentModelNode} childModel Item to add
+ * @returns {Integer} New number of children
+ * @emits beforePush (childModel)
+ * @emits afterPush (childModel)
+ * @emits update
+ */
+es.DocumentModelNode.prototype.push = function( childModel ) {
+	this.emit( 'beforePush', childModel );
+	childModel.attach( this );
+	childModel.on( 'update', this.emitUpdate );
+	this.children.push( childModel );
+	this.adjustContentLength( childModel.getElementLength(), true );
+	this.emit( 'afterPush', childModel );
+	this.emit( 'update' );
+	return this.children.length;
 };
 
-es.DocumentModelNode.prototype.onBeforeUnshift = function( childModel ) {
-	this.adjustContentLength( childModel.getElementLength() );
+/**
+ * Adds a node to the beginning of this node's children.
+ * 
+ * @method
+ * @param {es.DocumentModelNode} childModel Item to add
+ * @returns {Integer} New number of children
+ * @emits beforeUnshift (childModel)
+ * @emits afterUnshift (childModel)
+ * @emits update
+ */
+es.DocumentModelNode.prototype.unshift = function( childModel ) {
+	this.emit( 'beforeUnshift', childModel );
+	childModel.attach( this );
+	childModel.on( 'update', this.emitUpdate );
+	this.children.unshift( childModel );
+	this.adjustContentLength( childModel.getElementLength(), true );
+	this.emit( 'afterUnshift', childModel );
+	this.emit( 'update' );
+	return this.children.length;
 };
 
-es.DocumentModelNode.prototype.onBeforePop = function() {
-	this.adjustContentLength( -this[this.length - 1].getElementLength() );
+/**
+ * Removes a node from the end of this node's children
+ * 
+ * @method
+ * @returns {es.DocumentModelNode} Removed childModel
+ * @emits beforePop
+ * @emits afterPop
+ * @emits update
+ */
+es.DocumentModelNode.prototype.pop = function() {
+	if ( this.children.length ) {
+		this.emit( 'beforePop' );
+		var childModel = this.children[this.children.length - 1];
+		childModel.detach();
+		childModel.removeListener( 'update', this.emitUpdate );
+		this.children.pop();
+		this.adjustContentLength( -childModel.getElementLength(), true );
+		this.emit( 'afterPop' );
+		this.emit( 'update' );
+		return childModel;
+	}
 };
 
-es.DocumentModelNode.prototype.onBeforeShift = function() {
-	this.adjustContentLength( -this[0].getElementLength() );
+/**
+ * Removes a node from the beginning of this node's children
+ * 
+ * @method
+ * @returns {es.DocumentModelNode} Removed childModel
+ * @emits beforeShift
+ * @emits afterShift
+ * @emits update
+ */
+es.DocumentModelNode.prototype.shift = function() {
+	if ( this.children.length ) {
+		this.emit( 'beforeShift' );
+		var childModel = this.children[0];
+		childModel.detach();
+		childModel.removeListener( 'update', this.emitUpdate );
+		this.children.shift();
+		this.adjustContentLength( -childModel.getElementLength(), true );
+		this.emit( 'afterShift' );
+		this.emit( 'update' );
+		return childModel;
+	}
 };
 
-es.DocumentModelNode.prototype.onBeforeSplice = function( index, howmany ) {
+/**
+ * Adds and removes nodes from this node's children.
+ * 
+ * @method
+ * @param {Integer} index Index to remove and or insert nodes at
+ * @param {Integer} howmany Number of nodes to remove
+ * @param {es.DocumentModelNode} [...] Variadic list of nodes to insert
+ * @returns {es.DocumentModelNode[]} Removed nodes
+ * @emits beforeSplice (index, howmany, [...])
+ * @emits afterSplice (index, howmany, [...])
+ * @emits update
+ */
+es.DocumentModelNode.prototype.splice = function( index, howmany ) {
 	var i,
 		length,
-		diff = 0,
-		removed = this.slice( index, index + howmany ),
-		added = Array.prototype.slice.call( arguments, 2 );
+		args = Array.prototype.slice.call( arguments, 0 ),
+		diff = 0;
+	this.emit.apply( this, ['beforeSplice'].concat( args ) );
+	if ( args.length >= 3 ) {
+		for ( i = 2, length = args.length; i < length; i++ ) {
+			diff += args[i].getElementLength();
+			args[i].attach( this );
+		}
+	}
+	var removed = this.children.splice.apply( this.children, args );
 	for ( i = 0, length = removed.length; i < length; i++ ) {
 		diff -= removed[i].getElementLength();
+		removed[i].detach();
+		removed[i].removeListener( 'update', this.emitUpdate );
 	}
-	for ( i = 0, length = added.length; i < length;  i++ ) {
-		diff += added[i].getElementLength();
+	this.adjustContentLength( diff, true );
+	this.emit.apply( this, ['afterSplice'].concat( args ) );
+	this.emit( 'update' );
+	return removed;
+};
+
+/**
+ * Sorts this node's children.
+ * 
+ * @method
+ * @param {Function} sortfunc Function to use when sorting
+ * @emits beforeSort (sortfunc)
+ * @emits afterSort (sortfunc)
+ * @emits update
+ */
+es.DocumentModelNode.prototype.sort = function( sortfunc ) {
+	this.emit( 'beforeSort', sortfunc );
+	this.children.sort( sortfunc );
+	this.emit( 'afterSort', sortfunc );
+	this.emit( 'update' );
+};
+
+/**
+ * Reverses the order of this node's children.
+ * 
+ * @method
+ * @emits beforeReverse
+ * @emits afterReverse
+ * @emits update
+ */
+es.DocumentModelNode.prototype.reverse = function() {
+	this.emit( 'beforeReverse' );
+	this.children.reverse();
+	this.emit( 'afterReverse' );
+	this.emit( 'update' );
+};
+
+/**
+ * Gets a reference to this node's parent.
+ * 
+ * @method
+ * @returns {es.DocumentModelNode} Reference to this node's parent
+ */
+es.DocumentModelNode.prototype.getParent = function() {
+	return this.parent;
+};
+
+/**
+ * Gets the root node in the tree this node is currently attached to.
+ * 
+ * @method
+ * @returns {es.DocumentModelNode} Root node
+ */
+es.DocumentModelNode.prototype.getRoot = function() {
+	return this.root;
+};
+
+/**
+ * Sets the root node to this and all of it's children.
+ * 
+ * @method
+ * @param {es.DocumentModelNode} root Node to use as root
+ */
+es.DocumentModelNode.prototype.setRoot = function( root ) {
+	this.root = root;
+	for ( var i = 0; i < this.children.length; i++ ) {
+		this.children[i].setRoot( root );
 	}
-	this.adjustContentLength( diff );
+};
+
+/**
+ * Clears the root node from this and all of it's children.
+ * 
+ * @method
+ */
+es.DocumentModelNode.prototype.clearRoot = function() {
+	this.root = null;
+	for ( var i = 0; i < this.children.length; i++ ) {
+		this.children[i].clearRoot();
+	}
+};
+
+/**
+ * Attaches this node to another as a child.
+ * 
+ * @method
+ * @param {es.DocumentModelNode} parent Node to attach to
+ * @emits attach (parent)
+ */
+es.DocumentModelNode.prototype.attach = function( parent ) {
+	this.emit( 'beforeAttach', parent );
+	this.parent = parent;
+	this.setRoot( parent.getRoot() );
+	this.emit( 'afterAttach', parent );
+};
+
+/**
+ * Detaches this node from it's parent.
+ * 
+ * @method
+ * @emits detach
+ */
+es.DocumentModelNode.prototype.detach = function() {
+	this.emit( 'beforeDetach' );
+	this.parent = null;
+	this.clearRoot();
+	this.emit( 'afterDetach' );
 };
 
 /**
@@ -208,3 +416,8 @@ es.DocumentModelNode.prototype.getText = function( range ) {
 	}
 	return text;
 };
+
+/* Inheritance */
+
+es.extendClass( es.DocumentModelNode, es.DocumentNode );
+es.extendClass( es.DocumentModelNode, es.EventEmitter );

@@ -1,4 +1,4 @@
-module( 'Models' );
+module( 'es/models' );
 
 /*
  * Sample plain object (WikiDom).
@@ -208,11 +208,30 @@ test( 'es.DocumentModel.getData', 1, function() {
 	deepEqual( documentModel.getData(), data, 'Flattening plain objects results in correct data' );
 } );
 
-test( 'es.DocumentModel.slice', 1, function() {
+test( 'es.DocumentModel.getChildren', 1, function() {
 	var documentModel = es.DocumentModel.newFromPlainObject( obj );
+
+	function equalLengths( a, b ) {
+		if ( a.length !== b.length ) {
+			return false;
+		}
+		for ( var i = 0; i < a.length; i++ ) {
+			if ( a[i].getContentLength() !== b[i].getContentLength() ) {
+				console.log( 'mismatched content lengths', a[i], b[i] );
+				return false;
+			}
+			if ( !equalLengths( a[i].getChildren(), b[i].getChildren() ) ) {
+				return false;
+			}
+		}
+		return true;
+	}
 	
 	// Test 1
-	deepEqual( documentModel.slice( 0 ), tree, 'Nodes in the model tree contain correct lengths' );
+	ok(
+		equalLengths( documentModel.getChildren(), tree ),
+		'Nodes in the model tree contain correct lengths'
+	);
 } );
 
 test( 'es.DocumentModel.getRelativeContentOffset', 7, function() {
@@ -263,11 +282,12 @@ test( 'es.DocumentModel.getRelativeContentOffset', 7, function() {
 } );
 
 test( 'es.DocumentModel.getContent', 6, function() {
-	var documentModel = es.DocumentModel.newFromPlainObject( obj );
+	var documentModel = es.DocumentModel.newFromPlainObject( obj ),
+		childNodes = documentModel.getChildren();
 
 	// Test 1
 	deepEqual(
-		documentModel[0].getContent( new es.Range( 1, 3 ) ),
+		childNodes[0].getContent( new es.Range( 1, 3 ) ),
 		[
 			['b', { 'type': 'bold', 'hash': '#bold' }],
 			['c', { 'type': 'italic', 'hash': '#italic' }]
@@ -277,34 +297,34 @@ test( 'es.DocumentModel.getContent', 6, function() {
 
 	// Test 2
 	deepEqual(
-		documentModel[0].getContent( new es.Range( 0, 2 ) ),
+		childNodes[0].getContent( new es.Range( 0, 2 ) ),
 		['a', ['b', { 'type': 'bold', 'hash': '#bold' }]],
 		'getContent can return a beginning portion of the content'
 	);
 	
 	// Test 3
 	deepEqual(
-		documentModel[0].getContent( new es.Range( 1, 2 ) ),
+		childNodes[0].getContent( new es.Range( 1, 2 ) ),
 		[['b', { 'type': 'bold', 'hash': '#bold' }]],
 		'getContent can return a middle portion of the content'
 	);
 	
 	// Test 4
 	try {
-		documentModel[0].getContent( new es.Range( -1, 3 ) );
+		childNodes[0].getContent( new es.Range( -1, 3 ) );
 	} catch ( negativeIndexError ) {
 		ok( true, 'getContent throws exceptions when given a range with start < 0' );
 	}
 	
 	// Test 5
 	try {
-		documentModel[0].getContent( new es.Range( 0, 4 ) );
+		childNodes[0].getContent( new es.Range( 0, 4 ) );
 	} catch ( outOfRangeError ) {
 		ok( true, 'getContent throws exceptions when given a range with end > length' );
 	}
 	
 	// Test 6
-	deepEqual( documentModel[2].getContent(), ['h'], 'Content can be extracted from nodes' );
+	deepEqual( childNodes[2].getContent(), ['h'], 'Content can be extracted from nodes' );
 } );
 
 test( 'es.DocumentModel.getIndexOfAnnotation', 3, function() {
@@ -395,21 +415,21 @@ test( 'es.DocumentModel.prepareElementAttributeChange', 4, function() {
 	// Test 1
 	deepEqual(
 		documentModel.prepareElementAttributeChange( 0, 'set', 'test', 1234 ),
-		[
+		new es.Transaction( [
 			{ 'type': 'attribute', 'method': 'set', 'key': 'test', 'value': 1234  },
 			{ 'type': 'retain', 'length': 28 }
-		],
+		] ),
 		'prepareElementAttributeChange retains data after attribute change for first element'
 	);
 	
 	// Test 2
 	deepEqual(
 		documentModel.prepareElementAttributeChange( 5, 'set', 'test', 1234 ),
-		[
+		new es.Transaction( [
 			{ 'type': 'retain', 'length': 5 },
 			{ 'type': 'attribute', 'method': 'set', 'key': 'test', 'value': 1234 },
 			{ 'type': 'retain', 'length': 23 }
-		],
+		] ),
 		'prepareElementAttributeChange retains data before and after attribute change'
 	);
 	
@@ -440,7 +460,7 @@ test( 'es.DocumentModel.prepareContentAnnotation', 1, function() {
 	// Test 1
 	deepEqual(
 		documentModel.prepareContentAnnotation( new es.Range( 1, 4 ), 'set', { 'type': 'bold' } ),
-		[
+		new es.Transaction( [
 			{ 'type': 'retain', 'length': 1 },
 			{
 				'type': 'annotate',
@@ -470,7 +490,7 @@ test( 'es.DocumentModel.prepareContentAnnotation', 1, function() {
 				'annotation': { 'type': 'bold', 'hash': '#bold' }
 			},
 			{ 'type': 'retain', 'length': 24 }
-		],
+		] ),
 		'prepareContentAnnotation skips over content that is already set or cleared'
 	);
 } );
@@ -481,7 +501,7 @@ test( 'es.DocumentModel.prepareRemoval', 3, function() {
 	// Test 1
 	deepEqual(
 		documentModel.prepareRemoval( new es.Range( 1, 4 ) ),
-		[
+		new es.Transaction( [
 			{ 'type': 'retain', 'length': 1 },
 			{
 				'type': 'remove',
@@ -492,14 +512,14 @@ test( 'es.DocumentModel.prepareRemoval', 3, function() {
 				]
 			},
 			{ 'type': 'retain', 'length': 24 }
-		],
+		] ),
 		'prepareRemoval includes the content being removed'
 	);
 	
 	// Test 2
 	deepEqual(
 		documentModel.prepareRemoval( new es.Range( 15, 18 ) ),
-		[
+		new es.Transaction( [
 			{ 'type': 'retain', 'length': 15 },
 			{
 				'type': 'remove',
@@ -510,14 +530,14 @@ test( 'es.DocumentModel.prepareRemoval', 3, function() {
 				]
 			},
 			{ 'type': 'retain', 'length': 10 }
-		],
+		] ),
 		'prepareRemoval removes entire elements'
 	);
 	
 	// Test 3
 	deepEqual(
 		documentModel.prepareRemoval( new es.Range( 17, 19 ) ),
-		[
+		new es.Transaction( [
 			{ 'type': 'retain', 'length': 17 },
 			{
 				'type': 'remove',
@@ -527,7 +547,7 @@ test( 'es.DocumentModel.prepareRemoval', 3, function() {
 				]
 			},
 			{ 'type': 'retain', 'length': 9 }
-		],
+		] ),
 		'prepareRemoval merges two list items'
 	); 
 } );
@@ -538,11 +558,11 @@ test( 'es.DocumentModel.prepareInsertion', 11, function() {
 	// Test 1
 	deepEqual(
 		documentModel.prepareInsertion( 1, ['d', 'e', 'f'] ),
-		[
+		new es.Transaction( [
 			{ 'type': 'retain', 'length': 1 },
 			{ 'type': 'insert', 'data': ['d', 'e', 'f'] },
 			{ 'type': 'retain', 'length': 27 }
-		],
+		] ),
 		'prepareInsertion retains data up to the offset and includes the content being inserted'
 	);
 	
@@ -552,14 +572,14 @@ test( 'es.DocumentModel.prepareInsertion', 11, function() {
 			5,
 			[{ 'type': 'paragraph' }, 'd', 'e', 'f', { 'type': '/paragraph' }]
 		),
-		[
+		new es.Transaction( [
 			{ 'type': 'retain', 'length': 5 },
 			{
 				'type': 'insert',
 				'data': [{ 'type': 'paragraph' }, 'd', 'e', 'f', { 'type': '/paragraph' }]
 			},
 			{ 'type': 'retain', 'length': 23 }
-		],
+		] ),
 		'prepareInsertion inserts a paragraph between two structural elements'
 	);
 	
@@ -569,14 +589,14 @@ test( 'es.DocumentModel.prepareInsertion', 11, function() {
 			5,
 			['d', 'e', 'f']
 		),
-		[
+		new es.Transaction( [
 			{ 'type': 'retain', 'length': 5 },
 			{
 				'type': 'insert',
 				'data': [{ 'type': 'paragraph' }, 'd', 'e', 'f', { 'type': '/paragraph' }]
 			},
 			{ 'type': 'retain', 'length': 23 }
-		],
+		] ),
 		'prepareInsertion wraps unstructured content inserted between elements in a paragraph'
 	);
 	
@@ -586,14 +606,14 @@ test( 'es.DocumentModel.prepareInsertion', 11, function() {
 			5,
 			[{ 'type': 'paragraph' }, 'd', 'e', 'f']
 		),
-		[
+		new es.Transaction( [
 			{ 'type': 'retain', 'length': 5 },
 			{
 				'type': 'insert',
 				'data': [{ 'type': 'paragraph' }, 'd', 'e', 'f', { 'type': '/paragraph' }]
 			},
 			{ 'type': 'retain', 'length': 23 }
-		],
+		] ),
 		'prepareInsertion completes opening elements in inserted content'
 	);
 	
@@ -603,14 +623,14 @@ test( 'es.DocumentModel.prepareInsertion', 11, function() {
 			2,
 			[ { 'type': 'table' }, { 'type': '/table' } ]
 		),
-		[
+		new es.Transaction( [
 			{ 'type': 'retain', 'length': 2 },
 			{
 				'type': 'insert',
 				'data': [ { 'type': '/paragraph' }, { 'type': 'table' }, { 'type': '/table' }, { 'type': 'paragraph' } ]
 			},
 			{ 'type': 'retain', 'length': 26 }
-		],
+		] ),
 		'prepareInsertion splits up paragraph when inserting a table in the middle'
 	);
 	
@@ -620,14 +640,14 @@ test( 'es.DocumentModel.prepareInsertion', 11, function() {
 			2,
 			[ 'f', 'o', 'o', { 'type': '/paragraph' }, { 'type': 'paragraph' }, 'b', 'a', 'r' ]
 		),
-		[
+		new es.Transaction( [
 			{ 'type': 'retain', 'length': 2 },
 			{
 				'type': 'insert',
 				'data': [ 'f', 'o', 'o', { 'type': '/paragraph' }, { 'type': 'paragraph' }, 'b', 'a', 'r' ]
 			},
 			{ 'type': 'retain', 'length': 26 }
-		],
+		] ),
 		'prepareInsertion splits up paragraph when inserting a paragraph closing and opening into a paragraph'
 	);
 	
@@ -637,13 +657,13 @@ test( 'es.DocumentModel.prepareInsertion', 11, function() {
 			0,
 			[ { 'type': 'paragraph' }, 'f', 'o', 'o', { 'type': '/paragraph' } ]
 		),
-		[
+		new es.Transaction( [
 			{
 				'type': 'insert',
 				'data': [ { 'type': 'paragraph' }, 'f', 'o', 'o', { 'type': '/paragraph' } ]
 			},
 			{ 'type': 'retain', 'length': 28 }
-		],
+		] ),
 		'prepareInsertion inserts at the beginning, then retains up to the end'
 	);
 	
@@ -653,13 +673,13 @@ test( 'es.DocumentModel.prepareInsertion', 11, function() {
 			28,
 			[ { 'type': 'paragraph' }, 'f', 'o', 'o', { 'type': '/paragraph' } ]
 		),
-		[
+		new es.Transaction( [
 			{ 'type': 'retain', 'length': 28 },
 			{
 				'type': 'insert',
 				'data': [ { 'type': 'paragraph' }, 'f', 'o', 'o', { 'type': '/paragraph' } ]
 			}
-		],
+		] ),
 		'prepareInsertion inserts at the end'
 	);
 	
@@ -786,7 +806,7 @@ test( 'es.DocumentModel.commit, es.DocumentModel.rollback', 10, function() {
 
 	// Test 6
 	deepEqual(
-		documentModel[0].getContent(),
+		documentModel.getChildren()[0].getContent(),
 		[
 			'a',
 			['b', { 'type': 'bold', 'hash': '#bold' }],
@@ -812,7 +832,7 @@ test( 'es.DocumentModel.commit, es.DocumentModel.rollback', 10, function() {
 
 	// Test 8
 	deepEqual(
-		documentModel[0].getContent(),
+		documentModel.getChildren()[0].getContent(),
 		[
 			'a',
 			['b', { 'type': 'bold', 'hash': '#bold' }],
@@ -849,4 +869,127 @@ test( 'es.DocumentModel.commit, es.DocumentModel.rollback', 10, function() {
 		'rollback reverses the effect of a removal transaction on the content'
 	);
 
+} );
+
+test( 'es.DocumentDocumentModelNode child operations', 20, function() {
+	// Example data (integers) is used for simplicity of testing
+	var node1 = new es.DocumentModelNode( null ),
+		node2 = new es.DocumentModelNode( null ),
+		node3 = new es.DocumentModelNode( null, [new es.DocumentModelNode()] ),
+		node4 = new es.DocumentModelNode(
+			null,
+			[new es.DocumentModelNode(), new es.DocumentModelNode()]
+		);
+	
+	// Event triggering is detected using a callback that increments a counter
+	var updates = 0;
+	node1.on( 'update', function() {
+		updates++;
+	} );
+	var attaches = 0;
+	node2.on( 'afterAttach', function() {
+		attaches++;
+	} );
+	node3.on( 'afterAttach', function() {
+		attaches++;
+	} );
+	node4.on( 'afterAttach', function() {
+		attaches++;
+	} );
+	var detaches = 0;
+	node2.on( 'afterDetach', function() {
+		detaches++;
+	} );
+	node3.on( 'afterDetach', function() {
+		detaches++;
+	} );
+	node4.on( 'afterDetach', function() {
+		detaches++;
+	} );
+	function strictArrayValueEqual( a, b, msg ) {
+		if ( a.length !== b.length ) {
+			ok( false, msg );
+			return;
+		}
+		for ( var i = 0; i < a.length; i++ ) {
+			if ( a[i] !== b[i] ) {
+				ok( false, msg );
+				return;
+			}
+		}
+		ok( true, msg );
+	}
+	
+	// Test 1
+	node1.push( node2 );
+	equal( updates, 1, 'push emits update events' );
+	strictArrayValueEqual( node1.getChildren(), [node2], 'push appends a node' );
+
+	// Test 2
+	equal( attaches, 1, 'push attaches added node' );
+	
+	// Test 3, 4
+	node1.unshift( node3 );
+	equal( updates, 2, 'unshift emits update events' );
+	strictArrayValueEqual( node1.getChildren(), [node3, node2], 'unshift prepends a node' );
+	
+	// Test 5
+	equal( attaches, 2, 'unshift attaches added node' );
+	
+	// Test 6, 7
+	node1.splice( 1, 0, node4 );
+	equal( updates, 3, 'splice emits update events' );
+	strictArrayValueEqual( node1.getChildren(), [node3, node4, node2], 'splice inserts nodes' );
+	
+	// Test 8
+	equal( attaches, 3, 'splice attaches added nodes' );
+	
+	// Test 9
+	node1.reverse();
+	equal( updates, 4, 'reverse emits update events' );
+	
+	// Test 10, 11
+	node1.sort( function( a, b ) {
+		return a.getChildren().length < b.getChildren().length ? -1 : 1;
+	} );
+	equal( updates, 5, 'sort emits update events' );
+	strictArrayValueEqual(
+		node1.getChildren(),
+		[node2, node3, node4],
+		'sort reorderes nodes correctly'
+	);
+	
+	// Test 12, 13
+	node1.pop();
+	equal( updates, 6, 'pop emits update events' );
+	strictArrayValueEqual(
+		node1.getChildren(),
+		[node2, node3],
+		'pop removes the last child node'
+	);
+
+	// Test 14
+	equal( detaches, 1, 'pop detaches a node' );
+	
+	// Test 15, 16
+	node1.shift();
+	equal( updates, 7, 'es.ModelNode emits update events on shift' );
+	strictArrayValueEqual(
+		node1.getChildren(),
+		[node3],
+		'es.ModelNode removes first Node on shift'
+	);
+	
+	// Test 17
+	equal( detaches, 2, 'shift detaches a node' );
+	
+	// Test 18
+	strictEqual( node3.getParent(), node1, 'getParent returns the correct reference' );
+	
+	// Test 19
+	try {
+		var view = node3.createView();
+	} catch ( err ){
+		ok( true, 'createView throws an exception when not overridden' );
+	}
 } );

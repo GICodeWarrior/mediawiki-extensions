@@ -3,10 +3,13 @@
  * 
  * @class
  * @constructor
+ * @extends {es.DocumentModelNode}
+ * @param {Object} element Document data element of this node
+ * @param {es.DocumentModelNode[]} contents List of child nodes to initially add
  */
-es.TableRowModel = function( element, length ) {
-	// Extension
-	return es.extendObject( new es.DocumentModelNode( element, length ), this );
+es.TableRowModel = function( element, contents ) {
+	// Inheritance
+	es.DocumentModelNode.call( this, element, contents );
 };
 
 /* Methods */
@@ -29,3 +32,7 @@ es.DocumentModel.nodeRules.listItem = {
 	'parents': ['table'],
 	'children': ['tableCell']
 };
+
+/* Inheritance */
+
+es.extendClass( es.TableRowModel, es.DocumentModelNode );

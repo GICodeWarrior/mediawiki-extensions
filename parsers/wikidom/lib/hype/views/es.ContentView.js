@@ -23,7 +23,10 @@
  * @property {Object} renderState
  */
 es.ContentView = function( $container, model ) {
+	// Inheritance
 	es.EventEmitter.call( this );
+
+	// Properties
 	this.$ = $container;
 	this.model = model;
 	this.boundaries = [];
@@ -32,19 +35,24 @@ es.ContentView = function( $container, model ) {
 	this.boundaryTest = /([ \-\t\r\n\f])/g;
 	this.widthCache = {};
 	this.renderState = {};
-	// Respond to model changes
-	var contentView = this;
-	this.model.on( 'update', function( args ) {
-		contentView.scanBoundaries();
-		contentView.render( args ? args.offset : 0 );
-	} );
-	// Perform initial boundary scan
-	this.scanBoundaries();
-	// Create range divs for drawing selection
-	this.$ranges = $( '<div class="editSurface-ranges"></div>' ).prependTo( this.$ );
-	this.$rangeStart = $( '<div class="editSurface-range"></div>' ).appendTo( this.$ranges );
-	this.$rangeFill = $( '<div class="editSurface-range"></div>' ).appendTo( this.$ranges );
-	this.$rangeEnd = $( '<div class="editSurface-range"></div>' ).appendTo( this.$ranges );
+
+	if ( model ) {
+		// Events
+		var _this = this;
+		this.model.on( 'update', function( args ) {
+			_this.scanBoundaries();
+			_this.render( args ? args.offset : 0 );
+		} );
+
+		// DOM Changes
+		this.$ranges = $( '<div class="editSurface-ranges"></div>' ).prependTo( this.$ );
+		this.$rangeStart = $( '<div class="editSurface-range"></div>' ).appendTo( this.$ranges );
+		this.$rangeFill = $( '<div class="editSurface-range"></div>' ).appendTo( this.$ranges );
+		this.$rangeEnd = $( '<div class="editSurface-range"></div>' ).appendTo( this.$ranges );
+		
+		// Initialization
+		this.scanBoundaries();
+	}
 };
 
 /* Static Members */

@@ -4,10 +4,16 @@
  * @class
  * @constructor
  * @extends {es.DocumentViewBranchNode}
+ * @param {es.TableRowModel} model Table row model to view
  */
 es.TableRowView = function( model ) {
-	// Extension
-	var view = es.extendObject( new es.DocumentViewBranchNode( model, $( '<tr>' ), true ), this );
-	view.$.attr( 'style', model.getElementAttribute( 'html/style' ) );
-	return view;
+	// Inheritance
+	es.DocumentViewBranchNode.call( this, model, $( '<tr>' ) );
+	
+	// DOM Changes
+	this.$.attr( 'style', model.getElementAttribute( 'html/style' ) );
 };
+
+/* Inheritance */
+
+es.extendClass( es.TableRowView, es.DocumentViewBranchNode );

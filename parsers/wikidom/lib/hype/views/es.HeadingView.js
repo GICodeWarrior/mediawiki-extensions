@@ -4,10 +4,16 @@
  * @class
  * @constructor
  * @extends {es.DocumentViewLeafNode}
+ * @param {es.HeadingModel} model Heading model to view
  */
 es.HeadingView = function( model ) {
-	// Extension
-	var view = es.extendObject( new es.DocumentViewLeafNode( model, $('<h' + model.getElementAttribute( 'level' ) +'/>') ), this );
-	view.$.addClass( 'editSurface-headingBlock' );
-	return view;
+	// Inheritance
+	es.DocumentViewLeafNode.call( this, model );
+
+	// DOM Changes
+	this.$.addClass( 'editSurface-headingBlock' );
 };
+
+/* Inheritance */
+
+es.extendClass( es.HeadingView, es.DocumentViewLeafNode );

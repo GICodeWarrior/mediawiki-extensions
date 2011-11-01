@@ -3,14 +3,16 @@
  * 
  * @class
  * @constructor
- * @extends {es.ViewNode}
+ * @extends {es.DocumentViewNode}
  * @param model {es.ModelNode} Model to observe
  * @param {jQuery} [$element] Element to use as a container
  */
 es.DocumentViewBranchNode = function( model, $element, horizontal ) {
+	// Inheritance
+	es.DocumentViewNode.call( this, model, $element );
+
+	// Properties
 	this.horizontal = horizontal || false;
-	// Extension
-	return es.extendObject( new es.DocumentNode( new es.ViewNode( model, $element ) ), this );
 };
 
 /* Methods */
@@ -21,8 +23,8 @@ es.DocumentViewBranchNode = function( model, $element, horizontal ) {
  * @method
  */
 es.DocumentViewBranchNode.prototype.renderContent = function() {
-	for ( var i = 0; i < this.length; i++ ) {
-		this[i].renderContent();
+	for ( var i = 0; i < this.children.length; i++ ) {
+		this.children[i].renderContent();
 	}
 };
 
@@ -34,14 +36,14 @@ es.DocumentViewBranchNode.prototype.renderContent = function() {
  */
 es.DocumentViewBranchNode.prototype.drawSelection = function( range ) {
 	var nodes = this.selectNodes( range, true );
-	for ( var i = 0; i < this.length; i++ ) {
-		if ( nodes.length && this[i] === nodes[0].node ) {
+	for ( var i = 0; i < this.children.length; i++ ) {
+		if ( nodes.length && this.children[i] === nodes[0].node ) {
 			for ( var j = 0; j < nodes.length; j++ ) {
 				nodes[j].node.drawSelection( nodes[j].range );
 				i++;
 			}
 		} else {
-			this[i].clearSelection();
+			this.children[i].clearSelection();
 		}
 	}
 };
@@ -52,8 +54,8 @@ es.DocumentViewBranchNode.prototype.drawSelection = function( range ) {
  * @method
  */
 es.DocumentViewBranchNode.prototype.clearSelection = function() {
-	for ( var i = 0; i < this.length; i++ ) {
-		this[i].clearSelection();
+	for ( var i = 0; i < this.children.length; i++ ) {
+		this.children[i].clearSelection();
 	}
 };
 
@@ -65,17 +67,17 @@ es.DocumentViewBranchNode.prototype.clearSelection = function() {
  * @returns {Integer} Offset of position
  */
 es.DocumentViewBranchNode.prototype.getOffsetFromRenderedPosition = function( position ) {
-	if ( this.length === 0 ) {
+	if ( this.children.length === 0 ) {
 		return 0;
 	}
-	var node = this[0];
-	for ( var i = 1; i < this.length; i++ ) {
-		if ( this.horizontal && this[i].$.offset().left > position.left ) {
+	var node = this.children[0];
+	for ( var i = 1; i < this.children.length; i++ ) {
+		if ( this.horizontal && this.children[i].$.offset().left > position.left ) {
 			break;
-		} else if ( this[i].$.offset().top > position.top ) {
+		} else if ( this.children[i].$.offset().top > position.top ) {
 			break;			
 		}
-		node = this[i];
+		node = this.children[i];
 	}
 	return node.getParent().getOffsetFromNode( node, true ) +
 		node.getOffsetFromRenderedPosition( position ) + 1;
@@ -119,3 +121,7 @@ es.DocumentViewBranchNode.prototype.getRenderedLineRange = function( offset ) {
 	}
 	return null;
 };
+
+/* Inheritance */
+
+es.extendClass( es.DocumentViewBranchNode, es.DocumentViewNode );

@@ -4,15 +4,23 @@
  * @class
  * @constructor
  * @extends {es.DocumentViewLeafNode}
+ * @param {es.ListItemModel} model List item model to view
  */
 es.ListItemView = function( model ) {
-	// Extension
-	var view = es.extendObject( new es.DocumentViewLeafNode( model ), this );
-	view.$icon = $( '<div class="editSurface-listItem-icon"></div>' ).prependTo( view.$ );
-	view.$.addClass( 'editSurface-listItem' );
-	view.on( 'update', view.setClasses );
-	view.setClasses();
-	return view;
+	// Inheritance
+	es.DocumentViewLeafNode.call( this, model );
+
+	// Properties
+	this.$icon = $( '<div class="editSurface-listItem-icon"></div>' ).prependTo( this.$ );
+	
+	// DOM Changes
+	this.$.addClass( 'editSurface-listItem' );
+
+	// Events
+	this.on( 'update', this.setClasses );
+
+	// Initialization
+	this.setClasses();
 };
 
 es.ListItemView.prototype.setClasses = function() {
@@ -26,3 +34,7 @@ es.ListItemView.prototype.setClasses = function() {
 es.ListItemView.prototype.setNumber = function( number ) {
 	this.$icon.text( number + '.' );
 };
+
+/* Inheritance */
+
+es.extendClass( es.ListItemView, es.DocumentViewLeafNode );

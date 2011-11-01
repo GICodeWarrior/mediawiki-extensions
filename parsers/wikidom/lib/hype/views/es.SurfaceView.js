@@ -1,3 +1,11 @@
+/**
+ * Creates an es.SurfaceView object.
+ * 
+ * @class
+ * @constructor
+ * @param {jQuery} $container DOM Container to render surface into
+ * @param {es.SurfaceModel} model Surface model to view
+ */
 es.SurfaceView = function( $container, model ) {
 	this.$ = $container.addClass( 'editSurface' );
 	this.$window = $( window );
@@ -30,7 +38,7 @@ es.SurfaceView = function( $container, model ) {
 		.prependTo( this.$ )
 		.bind( {
 			'focus' : function() {
-				console.log("focus");
+				//console.log("focus");
 				$document.unbind( '.editSurface' );
 				$document.bind({
 					'mousemove.editSurface' : function(e) {
@@ -43,12 +51,12 @@ es.SurfaceView = function( $container, model ) {
 						return surfaceView.onKeyDown( e );			
 					},
 					'keyup.editSurface' : function( e ) {
-						return surfaceView.onKeyUp( e );			
+						return surfaceView.onKeyUp( e );		
 					}
 				});
 			},
 			'blur': function( e ) {
-				console.log("blur");
+				//console.log("blur");
 				$document.unbind( '.editSurface' );
 				surfaceView.hideCursor();
 			}
@@ -105,6 +113,10 @@ es.SurfaceView.prototype.onKeyDown = function( e ) {
 			break;
 	}
 	return false;
+};
+
+es.SurfaceView.prototype.onKeyUp = function( e ) {
+	//
 };
 
 es.SurfaceView.prototype.moveCursor = function( direction ) {

@@ -3,19 +3,17 @@
  * 
  * @class
  * @constructor
- * @extends {es.ViewNode}
+ * @extends {es.DocumentViewNode}
  * @param model {es.ModelNode} Model to observe
  * @param {jQuery} [$element] Element to use as a container
  */
 es.DocumentViewLeafNode = function( model, $element ) {
-	// Extension
-	var node = es.extendObject( new es.DocumentNode( new es.ViewNode( model, $element ) ), this );
-	
-	// Content
-	node.$content = $( '<div class="editSurface-content"></div>' ).appendTo( node.$ );
-	node.contentView = new es.ContentView( node.$content, model );
-	
-	return node;
+	// Inheritance
+	es.DocumentViewNode.call( this, model, $element );
+
+	// Properties
+	this.$content = $( '<div class="editSurface-content"></div>' ).appendTo( this.$ );
+	this.contentView = new es.ContentView( this.$content, model );
 };
 
 /* Methods */
@@ -88,3 +86,7 @@ es.DocumentViewLeafNode.prototype.getElementLength = function() {
 es.DocumentViewLeafNode.prototype.getRenderedLineRange = function( offset ) {
 	return this.contentView.getRenderedLineRange( offset );
 };
+
+/* Inheritance */
+
+es.extendClass( es.DocumentViewLeafNode, es.DocumentViewNode );

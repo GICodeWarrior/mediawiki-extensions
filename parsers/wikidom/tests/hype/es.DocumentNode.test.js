@@ -1,4 +1,4 @@
-module( 'Bases' );
+module( 'es/bases' );
 
 function DocumentNodeStub( items, name, size ) {
 	this.name = name;
@@ -275,7 +275,7 @@ test( 'es.DocumentNode.selectNodes', function() {
 				{ 'node': g, 'range': new es.Range( 0, 5 ) }
 			],
 			'desc': 'Range starting at the end of a node and ending in the middle of the next node'
-		},
+		}
 	];
 
 	for ( var i = 0; i < selectNodesTests.length; i++ ) {

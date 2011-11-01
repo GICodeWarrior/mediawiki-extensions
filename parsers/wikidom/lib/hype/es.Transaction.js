@@ -2,38 +2,42 @@
  * Creates an es.Transaction object.
  * 
  * @class
- * @extends {Array}
  * @constructor
+ * @param {Object[]} operations List of operations
  */
-es.Transaction = function() {
-	return es.extendObject( [], this );
+es.Transaction = function( operations ) {
+	this.operations = es.isArray( operations ) ? operations : [];
 };
 
 /* Methods */
 
+es.Transaction.prototype.getOperations = function() {
+	return this.operations;	
+};
+
 es.Transaction.prototype.pushRetain = function( length ) {
-	this.push( {
+	this.operations.push( {
 		'type': 'retain',
 		'length': length
 	} );
 };
 
 es.Transaction.prototype.pushInsert = function( content ) {
-	this.push( {
+	this.operations.push( {
 		'type': 'insert',
 		'data': content
 	} );
 };
 
 es.Transaction.prototype.pushRemove = function( data ) {
-	this.push( {
+	this.operations.push( {
 		'type': 'remove',
 		'data': data
 	} );
 };
 
 es.Transaction.prototype.pushChangeElementAttribute = function( method, key, value ) {
-	this.push( {
+	this.operations.push( {
 		'type': 'attribute',
 		'method': method,
 		'key': key,
@@ -42,7 +46,7 @@ es.Transaction.prototype.pushChangeElementAttribute = function( method, key, val
 };
 
 es.Transaction.prototype.pushStartAnnotating = function( method, annotation ) {
-	this.push( {
+	this.operations.push( {
 		'type': 'annotate',
 		'method': method,
 		'bias': 'start',
@@ -51,7 +55,7 @@ es.Transaction.prototype.pushStartAnnotating = function( method, annotation ) {
 };
 
 es.Transaction.prototype.pushStopAnnotating = function( method, annotation ) {
-	this.push( {
+	this.operations.push( {
 		'type': 'annotate',
 		'method': method,
 		'bias': 'stop',

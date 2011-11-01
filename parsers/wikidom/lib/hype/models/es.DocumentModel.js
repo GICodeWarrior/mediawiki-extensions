@@ -6,24 +6,23 @@
  * 
  * @class
  * @constructor
+ * @extends {es.DocumentModelNode}
  * @param {Array} data Model data to initialize with, such as data from es.DocumentModel.getData()
  * @param {Object} attributes Document attributes
  */
 es.DocumentModel = function( data, attributes ) {
-	// Extension
-	var node = es.extendObject( new es.DocumentModelNode( null, length ), this );
+	// Inheritance
+	es.DocumentModelNode.call( this, null, data ? data.length : 0 );
 	
 	// Properties
-	node.data = es.isArray( data ) ? data : [];
-	node.attributes = es.isPlainObject( attributes ) ? attributes : {};
+	this.data = es.isArray( data ) ? data : [];
+	this.attributes = es.isPlainObject( attributes ) ? attributes : {};
 
 	// Auto-generate model tree
-	var nodes = es.DocumentModel.createNodesFromData( node.data );
+	var nodes = es.DocumentModel.createNodesFromData( this.data );
 	for ( var i = 0; i < nodes.length; i++ ) {
-		node.push( nodes[i] );
+		this.push( nodes[i] );
 	}
-
-	return node;
 };
 
 /* Static Members */
@@ -313,7 +312,7 @@ es.DocumentModel.createNodesFromData = function( data ) {
 			i--;
 		}
 	}
-	return currentNode.slice();
+	return currentNode.getChildren().slice( 0 );
 };
 
 /**
@@ -1107,15 +1106,16 @@ es.DocumentModel.prototype.prepareElementAttributeChange = function( offset, met
  */
 es.DocumentModel.prototype.commit = function( transaction ) {
 	var state = {
-		'data': this.data,
-		'tree': this,
-		'cursor': 0,
-		'set': [],
-		'clear': [],
-		'rebuild': []
-	};
-	for ( var i = 0, length = transaction.length; i < length; i++ ) {
-		var operation = transaction[i];
+			'data': this.data,
+			'tree': this,
+			'cursor': 0,
+			'set': [],
+			'clear': [],
+			'rebuild': []
+		},
+		operations = transaction.getOperations();
+	for ( var i = 0, length = operations.length; i < length; i++ ) {
+		var operation = operations[i];
 		if ( operation.type in es.DocumentModel.operations ) {
 			es.DocumentModel.operations[operation.type].commit.call( state, operation );
 		} else {
@@ -1133,15 +1133,16 @@ es.DocumentModel.prototype.commit = function( transaction ) {
  */
 es.DocumentModel.prototype.rollback = function( transaction ) {
 	var state = {
-		'data': this.data,
-		'tree': this,
-		'cursor': 0,
-		'set': [],
-		'clear': [],
-		'rebuild': []
-	};
-	for ( var i = 0, length = transaction.length; i < length; i++ ) {
-		var operation = transaction[i];
+			'data': this.data,
+			'tree': this,
+			'cursor': 0,
+			'set': [],
+			'clear': [],
+			'rebuild': []
+		},
+		operations = transaction.getOperations();
+	for ( var i = 0, length = operations.length; i < length; i++ ) {
+		var operation = operations[i];
 		if ( operation.type in es.DocumentModel.operations ) {
 			es.DocumentModel.operations[operation.type].rollback.call( state, operation );
 		} else {
