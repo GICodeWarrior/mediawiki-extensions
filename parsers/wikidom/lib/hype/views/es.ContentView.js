@@ -350,15 +350,15 @@ es.ContentView.prototype.getOffsetFromRenderedPosition = function( position ) {
 	 */
 	var $ruler = $( '<div class="editSurface-ruler"></div>' ).appendTo( this.$ ),
 		ruler = $ruler[0],
-		fit = this.fitCharacters( line.range, ruler, position.left );
+		fit = this.fitCharacters( line.range, ruler, position.left ),
+		center;
 	ruler.innerHTML = this.getHtml( new es.Range( line.range.start, fit.end ) );
 	if ( fit.end < this.model.getContentLength() ) {
 		var left = ruler.clientWidth;
 		ruler.innerHTML = this.getHtml( new es.Range( line.range.start, fit.end + 1 ) );
-		var right = ruler.clientWidth;
-		var center = Math.round( left + ( ( right - left ) / 2 ) );
+		center = Math.round( left + ( ( ruler.clientWidth - left ) / 2 ) );
 	} else {
-		var center = ruler.clientWidth;
+		center = ruler.clientWidth;
 	}
 	$ruler.remove();
 	// Reset RegExp object's state

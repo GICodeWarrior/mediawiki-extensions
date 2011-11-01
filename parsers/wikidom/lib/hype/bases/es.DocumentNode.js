@@ -146,12 +146,14 @@ es.DocumentNode.prototype.selectNodes = function( range, shallow ) {
 		}
 		if ( start == left - 1 ) {
 			// start is between this[i-1] and this[i], move it to left for convenience
-			// We don't need to check for start < end here because we already have start != end and start <= end
+			// We don't need to check for start < end here because we already have start != end and
+			// start <= end
 			start = left;
 		}
 		if ( end == right + 1 ) {
 			// end is between this[i] and this[i+1], move it to right for convenience
-			// We don't need to check for start < end here because we already have start != end and start <= end
+			// We don't need to check for start < end here because we already have start != end and
+			// start <= end
 			end = right;
 		}
 		
@@ -166,7 +168,8 @@ es.DocumentNode.prototype.selectNodes = function( range, shallow ) {
 				// Recurse into this[i]
 				nodes = this[i].selectNodes( new es.Range( start - left, end - left ) );
 			}
-			// Since the start and end are both inside this[i], we know for sure that we're done, so return
+			// Since the start and end are both inside this[i], we know for sure that we're done, so
+			// return
 			return nodes;
 		} else if ( startInside ) {
 			// The start is inside this[i] but the end isn't
