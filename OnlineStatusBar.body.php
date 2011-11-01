@@ -145,13 +145,11 @@ HTML;
 		if ( $old_user === false || $old_user == null ) {
 			return false;
 		}
-		
+		// purge both pages now
 		if ( $old_user->getOption('OnlineStatusBar_active', false) ) {
 			if ( $old_user->getOption('OnlineStatusBar_autoupdate', false) == true ) {
-				$tp = WikiPage::factory( $old_user->getTalkPage() );
-				$up = WikiPage::factory( $old_user->getUserPage() );
-				$tp->doPurge();
-				$up->doPurge();
+				WikiPage::factory( $old_user->getUserPage() )->doPurge();
+				WikiPage::factory( $old_user->getTalkPage() )->doPurge();
 			}
 		}
 		return true;
