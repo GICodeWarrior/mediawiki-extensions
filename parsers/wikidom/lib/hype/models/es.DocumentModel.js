@@ -908,6 +908,16 @@ es.DocumentModel.prototype.prepareInsertion = function( offset, data ) {
 /**
  * Generates a transaction which removes data from a given range.
  * 
+ * When removing data inside an element, the data is simply discarded and the node's length is
+ * adjusted accordingly. When removing data across elements, there are two situations that can cause
+ * added complexity:
+ *     1. A range spans between nodes of different levels or types
+ *     2. A range only partially covers one or two nodes
+ * 
+ * To resolve these issues in a predictable way the following rules must be obeyed:
+ *     1. Structural elements are retained unless the range being removed covers the entire element
+ *     2. Elements can only be merged if they are of the same time and share a common parent
+ * 
  * @method
  * @param {es.Range} range
  * @returns {es.Transaction}
