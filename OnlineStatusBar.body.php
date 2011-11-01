@@ -62,7 +62,7 @@ HTML;
 			return false;
 		}
 
-		$status = self::getStatus( $user );
+		$status = self::getStatus( $user, true );
 
 		return array( $status, $user );
 	}
@@ -88,7 +88,7 @@ HTML;
 			return false;
 		}
 
-		$status = self::getStatus( $user );
+		$status = self::getStatus( $user, true );
 
 		return array( $status, $user );
 	}
@@ -105,8 +105,11 @@ HTML;
 			self::DeleteOld();
 		}
 
+		// instead of delete every time just select the records which are not that old
+		$t_time = self::getTimeoutDate();
 		$dbr = wfGetDB( DB_SLAVE );
-		$result = $dbr->selectField( 'online_status', 'username', array( 'username' => $user->getName() ),
+		$result = $dbr->selectField( 'online_status', 'username', array( 'username' => $user->getName(),
+			"timestamp > " . $dbr->addQuotes( $dbr->timestamp( $t_time ) ) ),
 			__METHOD__, array( 'LIMIT 1', 'ORDER BY timestamp DESC' ) );
 
 		if ( $result === false ) {
@@ -190,7 +193,7 @@ HTML;
 		if ( $wgUser->isLoggedIn() && !$wgUser->getOption ( "OnlineStatusBar_active", $wgOnlineStatusBarDefaultEnabled ) ) {
 			return false;
 		}
-		if ( OnlineStatusBar::GetStatus( $wgUser, true ) == $wgOnlineStatusBarDefaultOffline ) {
+		if ( OnlineStatusBar::GetStatus( $wgUser ) == $wgOnlineStatusBarDefaultOffline ) {
 			OnlineStatusBar::UpdateDb();
 			return true;
 		}
@@ -206,14 +209,19 @@ HTML;
 		return true;
 	}
 
+
+	private static function getTimeoutDate() {
+		global $wgOnlineStatusBar_LogoutTime;
+		return wfTimestamp( TS_UNIX ) - $wgOnlineStatusBar_LogoutTime;
+	}
+
 	/**
 	 * @return int
 	 */
 	public static function DeleteOld() {
-		global $wgOnlineStatusBar_LogoutTime;
 		$dbw = wfGetDB( DB_MASTER );
 		// calculate time and convert it back to mediawiki format
-		$time = wfTimestamp( TS_UNIX ) - $wgOnlineStatusBar_LogoutTime;
+		$time = self::getTimeoutDate();
 		$dbw->delete( 'online_status', array( "timestamp < " . $dbw->addQuotes( $dbw->timestamp( $time ) ) ), __METHOD__ );
 		return 0;
 	}
