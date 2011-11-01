@@ -158,7 +158,7 @@ $messages['dsb'] = array(
 	'logentry-parserhook-desc' => 'Toś to rozšyrjenje staja formular za pśipowjesenje a zachopjenje k protokolowym bokam k dispoziciji',
 	'logentry-specialpage-desc' => 'Toś to rozšyrjenje staja pśeźěłanje za pśipowjesenje k protokolowym bokam k dispoziciji',
 	'logentry' => 'Protokolowy zapisk',
-	'logentry-invalidpage' => 'Njepłaśiwy bok',
+	'logentry-invalidpage' => 'Njepłaśiwy bok: $1',
 	'logentry-invalidtoken' => 'Njepłaśiwy token',
 );
 
