@@ -599,7 +599,7 @@ $.articleFeedback = {
 							}, mw.msg('articlefeedback-form-panel-helpimprove-privacy')
 						);
 						return mw.html.escape( mw.msg( 'articlefeedback-form-panel-helpimprove-note') )
-							.replace( /\$1/, mw.message( 'parentheses', link ).toString() );
+							.replace( /\$1/, link );
 					})
 					.end()
 				.find( '.articleFeedback-helpimprove-email' )
