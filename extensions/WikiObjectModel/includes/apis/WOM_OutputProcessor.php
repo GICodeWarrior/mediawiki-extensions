@@ -260,6 +260,8 @@ class WOMOutputProcessor {
 				$wom->addToPageObjectSet( $parent );
 			}
 			$parent->insertObject( $query_res );
+			$query_res->setObjectID( 'output' . ( $tmp_id ++ ) );
+			$wom->addToPageObjectSet( $query_res );
 			foreach ( $queries as $label => $vals ) {
 				$vals = array_unique( $vals );
 				foreach ( $vals as $val ) {
