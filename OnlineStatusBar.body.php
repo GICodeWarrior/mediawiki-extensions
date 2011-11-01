@@ -209,13 +209,16 @@ HTML;
 		return true;
 	}
 
-
+	/**
+	 * @return timestamp
+	 */
 	private static function getTimeoutDate() {
 		global $wgOnlineStatusBar_LogoutTime;
 		return wfTimestamp( TS_UNIX ) - $wgOnlineStatusBar_LogoutTime;
 	}
 
 	/**
+	 * Delete old records from the table, this function is called frequently too keep it as small as possible
 	 * @return int
 	 */
 	public static function DeleteOld() {
