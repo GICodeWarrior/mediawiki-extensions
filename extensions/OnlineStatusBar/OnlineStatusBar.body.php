@@ -133,23 +133,23 @@ HTML;
 	 *
 	 */
 	public static function purge( $user_type ) {
-		if ( is_a( $user_type, User ) ) {
-			$old_user = $user;
+		if (  $user_type instanceof User  ) {
+			$old_user = $user_type;
 		} else if ( is_string( $user_type ) ){
-			$old_user = User::newFromName( $userName );
+			$old_user = User::newFromName( $user_type );
 		} else {
 			return false;
 		}
 
 		// check if something weird didn't happen
 		if ( $old_user === false || $old_user == null ) {
-			return true;
+			return false;
 		}
 		if ( $old_user->getOption('OnlineStatusBar_active') ) {
 			if ( $old_user->getOption('OnlineStatusBar_autoupdate') == true ) {
-				$update = SquidUpdate::newSimplePurge( $user->getTalkPage() );
+				$update = SquidUpdate::newSimplePurge( $old_user->getTalkPage() );
             			$update->doUpdate();
-				$update = SquidUpdate::newSimplePurge( $user->getUserPage() );
+				$update = SquidUpdate::newSimplePurge( $old_user->getUserPage() );
             			$update->doUpdate();
 			}
 		}
