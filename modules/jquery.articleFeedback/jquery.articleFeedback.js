@@ -3,6 +3,11 @@
  */
 
 ( function( $ ) {
+// HACK: This code is broken in IE7 and below, so if this is IE < 8, bail now
+var browser = $.client.profile();
+if ( browser.name === 'msie' && browser.versionNumber < 8 ) {
+	return;
+}
 
 // Only track users who have been assigned to the tracking group
 var tracked = 'track' === mw.user.bucket(
