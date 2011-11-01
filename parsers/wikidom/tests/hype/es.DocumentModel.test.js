@@ -414,22 +414,22 @@ test( 'es.DocumentModel.prepareElementAttributeChange', 4, function() {
 
 	// Test 1
 	deepEqual(
-		documentModel.prepareElementAttributeChange( 0, 'set', 'test', 1234 ),
-		new es.Transaction( [
+		documentModel.prepareElementAttributeChange( 0, 'set', 'test', 1234 ).getOperations(),
+		[
 			{ 'type': 'attribute', 'method': 'set', 'key': 'test', 'value': 1234  },
 			{ 'type': 'retain', 'length': 28 }
-		] ),
+		],
 		'prepareElementAttributeChange retains data after attribute change for first element'
 	);
 	
 	// Test 2
 	deepEqual(
-		documentModel.prepareElementAttributeChange( 5, 'set', 'test', 1234 ),
-		new es.Transaction( [
+		documentModel.prepareElementAttributeChange( 5, 'set', 'test', 1234 ).getOperations(),
+		[
 			{ 'type': 'retain', 'length': 5 },
 			{ 'type': 'attribute', 'method': 'set', 'key': 'test', 'value': 1234 },
 			{ 'type': 'retain', 'length': 23 }
-		] ),
+		],
 		'prepareElementAttributeChange retains data before and after attribute change'
 	);
 	
@@ -459,8 +459,10 @@ test( 'es.DocumentModel.prepareContentAnnotation', 1, function() {
 
 	// Test 1
 	deepEqual(
-		documentModel.prepareContentAnnotation( new es.Range( 1, 4 ), 'set', { 'type': 'bold' } ),
-		new es.Transaction( [
+		documentModel.prepareContentAnnotation(
+			new es.Range( 1, 4 ), 'set', { 'type': 'bold' }
+		).getOperations(),
+		[
 			{ 'type': 'retain', 'length': 1 },
 			{
 				'type': 'annotate',
@@ -490,7 +492,7 @@ test( 'es.DocumentModel.prepareContentAnnotation', 1, function() {
 				'annotation': { 'type': 'bold', 'hash': '#bold' }
 			},
 			{ 'type': 'retain', 'length': 24 }
-		] ),
+		],
 		'prepareContentAnnotation skips over content that is already set or cleared'
 	);
 } );
@@ -500,8 +502,8 @@ test( 'es.DocumentModel.prepareRemoval', 3, function() {
 
 	// Test 1
 	deepEqual(
-		documentModel.prepareRemoval( new es.Range( 1, 4 ) ),
-		new es.Transaction( [
+		documentModel.prepareRemoval( new es.Range( 1, 4 ) ).getOperations(),
+		[
 			{ 'type': 'retain', 'length': 1 },
 			{
 				'type': 'remove',
@@ -512,14 +514,14 @@ test( 'es.DocumentModel.prepareRemoval', 3, function() {
 				]
 			},
 			{ 'type': 'retain', 'length': 24 }
-		] ),
+		],
 		'prepareRemoval includes the content being removed'
 	);
 	
 	// Test 2
 	deepEqual(
-		documentModel.prepareRemoval( new es.Range( 15, 18 ) ),
-		new es.Transaction( [
+		documentModel.prepareRemoval( new es.Range( 15, 18 ) ).getOperations(),
+		[
 			{ 'type': 'retain', 'length': 15 },
 			{
 				'type': 'remove',
@@ -530,14 +532,14 @@ test( 'es.DocumentModel.prepareRemoval', 3, function() {
 				]
 			},
 			{ 'type': 'retain', 'length': 10 }
-		] ),
+		],
 		'prepareRemoval removes entire elements'
 	);
 	
 	// Test 3
 	deepEqual(
-		documentModel.prepareRemoval( new es.Range( 17, 19 ) ),
-		new es.Transaction( [
+		documentModel.prepareRemoval( new es.Range( 17, 19 ) ).getOperations(),
+		[
 			{ 'type': 'retain', 'length': 17 },
 			{
 				'type': 'remove',
@@ -547,7 +549,7 @@ test( 'es.DocumentModel.prepareRemoval', 3, function() {
 				]
 			},
 			{ 'type': 'retain', 'length': 9 }
-		] ),
+		],
 		'prepareRemoval merges two list items'
 	); 
 } );
@@ -557,129 +559,120 @@ test( 'es.DocumentModel.prepareInsertion', 11, function() {
 
 	// Test 1
 	deepEqual(
-		documentModel.prepareInsertion( 1, ['d', 'e', 'f'] ),
-		new es.Transaction( [
+		documentModel.prepareInsertion( 1, ['d', 'e', 'f'] ).getOperations(),
+		[
 			{ 'type': 'retain', 'length': 1 },
 			{ 'type': 'insert', 'data': ['d', 'e', 'f'] },
 			{ 'type': 'retain', 'length': 27 }
-		] ),
+		],
 		'prepareInsertion retains data up to the offset and includes the content being inserted'
 	);
 	
 	// Test 2
 	deepEqual(
 		documentModel.prepareInsertion(
-			5,
-			[{ 'type': 'paragraph' }, 'd', 'e', 'f', { 'type': '/paragraph' }]
-		),
-		new es.Transaction( [
+			5, [{ 'type': 'paragraph' }, 'd', 'e', 'f', { 'type': '/paragraph' }]
+		).getOperations(),
+		[
 			{ 'type': 'retain', 'length': 5 },
 			{
 				'type': 'insert',
 				'data': [{ 'type': 'paragraph' }, 'd', 'e', 'f', { 'type': '/paragraph' }]
 			},
 			{ 'type': 'retain', 'length': 23 }
-		] ),
+		],
 		'prepareInsertion inserts a paragraph between two structural elements'
 	);
 	
 	// Test 3
 	deepEqual(
-		documentModel.prepareInsertion(
-			5,
-			['d', 'e', 'f']
-		),
-		new es.Transaction( [
+		documentModel.prepareInsertion( 5, ['d', 'e', 'f'] ).getOperations(),
+		[
 			{ 'type': 'retain', 'length': 5 },
 			{
 				'type': 'insert',
 				'data': [{ 'type': 'paragraph' }, 'd', 'e', 'f', { 'type': '/paragraph' }]
 			},
 			{ 'type': 'retain', 'length': 23 }
-		] ),
+		],
 		'prepareInsertion wraps unstructured content inserted between elements in a paragraph'
 	);
 	
 	// Test 4
 	deepEqual(
 		documentModel.prepareInsertion(
-			5,
-			[{ 'type': 'paragraph' }, 'd', 'e', 'f']
-		),
-		new es.Transaction( [
+			5, [{ 'type': 'paragraph' }, 'd', 'e', 'f']
+		).getOperations(),
+		[
 			{ 'type': 'retain', 'length': 5 },
 			{
 				'type': 'insert',
 				'data': [{ 'type': 'paragraph' }, 'd', 'e', 'f', { 'type': '/paragraph' }]
 			},
 			{ 'type': 'retain', 'length': 23 }
-		] ),
+		],
 		'prepareInsertion completes opening elements in inserted content'
 	);
 	
 	// Test 5
 	deepEqual(
 		documentModel.prepareInsertion(
-			2,
-			[ { 'type': 'table' }, { 'type': '/table' } ]
-		),
-		new es.Transaction( [
+			2, [ { 'type': 'table' }, { 'type': '/table' } ]
+		).getOperations(),
+		[
 			{ 'type': 'retain', 'length': 2 },
 			{
 				'type': 'insert',
 				'data': [ { 'type': '/paragraph' }, { 'type': 'table' }, { 'type': '/table' }, { 'type': 'paragraph' } ]
 			},
 			{ 'type': 'retain', 'length': 26 }
-		] ),
+		],
 		'prepareInsertion splits up paragraph when inserting a table in the middle'
 	);
 	
 	// Test 6
 	deepEqual(
 		documentModel.prepareInsertion(
-			2,
-			[ 'f', 'o', 'o', { 'type': '/paragraph' }, { 'type': 'paragraph' }, 'b', 'a', 'r' ]
-		),
-		new es.Transaction( [
+			2, [ 'f', 'o', 'o', { 'type': '/paragraph' }, { 'type': 'paragraph' }, 'b', 'a', 'r' ]
+		).getOperations(),
+		[
 			{ 'type': 'retain', 'length': 2 },
 			{
 				'type': 'insert',
 				'data': [ 'f', 'o', 'o', { 'type': '/paragraph' }, { 'type': 'paragraph' }, 'b', 'a', 'r' ]
 			},
 			{ 'type': 'retain', 'length': 26 }
-		] ),
+		],
 		'prepareInsertion splits up paragraph when inserting a paragraph closing and opening into a paragraph'
 	);
 	
 	// Test 7
 	deepEqual(
 		documentModel.prepareInsertion(
-			0,
-			[ { 'type': 'paragraph' }, 'f', 'o', 'o', { 'type': '/paragraph' } ]
-		),
-		new es.Transaction( [
+			0, [ { 'type': 'paragraph' }, 'f', 'o', 'o', { 'type': '/paragraph' } ]
+		).getOperations(),
+		[
 			{
 				'type': 'insert',
 				'data': [ { 'type': 'paragraph' }, 'f', 'o', 'o', { 'type': '/paragraph' } ]
 			},
 			{ 'type': 'retain', 'length': 28 }
-		] ),
+		],
 		'prepareInsertion inserts at the beginning, then retains up to the end'
 	);
 	
 	// Test 8
 	deepEqual(
 		documentModel.prepareInsertion(
-			28,
-			[ { 'type': 'paragraph' }, 'f', 'o', 'o', { 'type': '/paragraph' } ]
-		),
-		new es.Transaction( [
+			28, [ { 'type': 'paragraph' }, 'f', 'o', 'o', { 'type': '/paragraph' } ]
+		).getOperations(),
+		[
 			{ 'type': 'retain', 'length': 28 },
 			{
 				'type': 'insert',
 				'data': [ { 'type': 'paragraph' }, 'f', 'o', 'o', { 'type': '/paragraph' } ]
 			}
-		] ),
+		],
 		'prepareInsertion inserts at the end'
 	);
 	
