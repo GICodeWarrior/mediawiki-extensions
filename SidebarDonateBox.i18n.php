@@ -69,6 +69,7 @@ $messages['de'] = array(
  */
 $messages['dsb'] = array(
 	'sidebardonatebox-desc' => 'Pśidawa swójski pósćiwański kašćik do bócnicy',
+	'DONATE' => 'Pósćiś',
 );
 
 /** Spanish (Español)
