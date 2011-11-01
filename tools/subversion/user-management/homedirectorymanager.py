@@ -73,11 +73,11 @@ class HomeDirectoryManager:
 		if self.options.group:
 			self.group = self.options.group
 
-		if options.logfile:
-			self.logfile = options.logfile
+		if self.options.logfile:
+			self.logfile = self.options.logfile
 
-		if options.loglevel:
-			self.setLogLevel(options.loglevel)
+		if self.options.loglevel:
+			self.setLogLevel(self.options.loglevel)
 
 		# use proxy agent by default
 		ldapSupportLib.setBindInfoByOptions(self.options, parser)
@@ -333,9 +333,9 @@ class HomeDirectoryManager:
 	def setDebugLevel(self, loglevel):
 		if loglevel.lower() == "debug":
 			self.loglevel = DEBUG
-		else if loglevel.lower() == "info":
+		elif loglevel.lower() == "info":
 			self.loglevel = INFO
-		else if loglevel.lower() == "none":
+		elif loglevel.lower() == "none":
 			self.loglevel = NONE
 		else:
 			self.loglevel = INFO
