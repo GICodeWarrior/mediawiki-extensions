@@ -329,7 +329,7 @@ class qp_Setup {
 			'qp_user.php' => 'qp_Setup',
 			'includes/qp_functionshook.php' => 'qp_FunctionsHook',
 			'includes/qp_renderer.php' => 'qp_Renderer',
-			'includes/qp_excel.php' => 'qp_Excel',
+			'includes/qp_xlswriter.php' => 'qp_XlsWriter',
 
 			## DB schema updater
 			'maintenance/qp_schemaupdater.php' => 'qp_SchemaUpdater',
@@ -371,6 +371,10 @@ class qp_Setup {
 			## question data views are used to display question results in Special:PollResults page
 			'view/results/qp_questiondataresults.php' => 'qp_QuestionDataResults',
 			'view/results/qp_textquestiondataresults.php' => 'qp_TextQuestionDataResults',
+			## exporting results into XLS format
+			'view/xls/qp_xlspoll.php' => 'qp_XlsPoll',
+			'view/xls/qp_xlstabularquestion.php' => 'qp_XlsTabularQuestion',
+			'view/xls/qp_xlstextquestion.php' => 'qp_XlsTextQuestion',
 			# interpretation results
 			'view/qp_interpresultview.php' => 'qp_InterpResultView',
 

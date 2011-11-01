@@ -274,38 +274,38 @@ class PollResults extends qp_SpecialPage {
 		try {
 			require_once( qp_Setup::$ExtDir . '/Excel/Excel_Writer.php' );
 			$xls_fname = tempnam( "", ".xls" );
-			$xls_workbook = new Spreadsheet_Excel_Writer_Workbook( $xls_fname );
-			$xls_workbook->setVersion( 8 );
-			$qp_xls = qp_Excel::newFromWorksheet( $xls_workbook->addworksheet() );
+			$qp_xls = new qp_XlsPoll( $xls_fname );
 			# setup common formats
-			$format = array(
-				'heading' => $xls_workbook->addformat( array( 'bold' => 1 ) ),
-				'answer' => $xls_workbook->addformat( array( 'fgcolor' => 0x1A, 'border' => 1 ) ),
-				'even' => $xls_workbook->addformat( array( 'fgcolor' => 0x2A, 'border' => 1 ) ),
-				'odd' => $xls_workbook->addformat( array( 'fgcolor' => 0x23, 'border' => 1 ) )
-			);
-			$format['answer']->setAlign( 'left' );
-			$format['even']->setAlign( 'left' );
-			$format['odd']->setAlign( 'left' );
+			$qp_xls->addFormats( array(
+				'heading' => array( 'bold' => 1 ),
+				'answer' => array( 'fgcolor' => 0x1A /* 26 */, 'border' => 1 ),
+				'even' => array( 'fgcolor' => 0x2A /* 42 */, 'border' => 1 ),
+				'odd' => array( 'fgcolor' => 0x23 /* 35 */, 'border' => 1 )
+			) );
+			$qp_xls->getFormat( 'answer' )->setAlign( 'left' );
+			$qp_xls->getFormat( 'even' )->setAlign( 'left' );
+			$qp_xls->getFormat( 'odd' )->setAlign( 'left' );
 			switch ( $cmd ) {
 			case 'voices_xls' :
-				$qp_xls->voicesToXLS( $format, $pollStore );
+				$qp_xls->voicesToXLS( $pollStore );
 				break;
 			case 'stats_xls' :
 				# statistics export uses additional formats
 				$percent_num_format = '[Blue]0.0%;[Red]-0.0%;[Black]0%';
-				$format['percent'] = $xls_workbook->addformat( array( 'fgcolor' => 0x1A, 'border' => 1 ) );
-				$format['percent']->setAlign( 'left' );
-				$format['percent']->setNumFormat( $percent_num_format );
-				$format['even']->setNumFormat( $percent_num_format );
-				$format['odd']->setNumFormat( $percent_num_format );
-				$qp_xls->statsToXLS( $format, $pollStore );
+				$qp_xls->addFormats( array(
+					'percent' => array( 'fgcolor' => 0x1A, 'border' => 1 )
+				) );
+				$qp_xls->getFormat( 'percent' )->setAlign( 'left' );
+				$qp_xls->getFormat( 'percent' )->setNumFormat( $percent_num_format );
+				$qp_xls->getFormat( 'even' )->setNumFormat( $percent_num_format );
+				$qp_xls->getFormat( 'odd' )->setNumFormat( $percent_num_format );
+				$qp_xls->statsToXLS( $pollStore );
 				break;
 			case 'interpretation_xls' :
-				$qp_xls->interpretationToXLS( $format, $pollStore );
+				$qp_xls->interpretationToXLS( $pollStore );
 				break;
 			}
-			$xls_workbook->close();
+			$qp_xls->closeWorkbook();
 			header( 'Content-Type: application/x-msexcel; name="' . $poll_id . '.xls"' );
 			header( 'Content-Disposition: inline; filename="' . $poll_id . '.xls"' );
 			$fxls = @fopen( $xls_fname, "rb" );
