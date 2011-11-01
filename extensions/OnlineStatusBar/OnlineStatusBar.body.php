@@ -148,10 +148,10 @@ HTML;
 		
 		if ( $old_user->getOption('OnlineStatusBar_active', false) ) {
 			if ( $old_user->getOption('OnlineStatusBar_autoupdate', false) == true ) {
-				$update = SquidUpdate::newSimplePurge( $old_user->getTalkPage() );
-            			$update->doUpdate();
-				$update = SquidUpdate::newSimplePurge( $old_user->getUserPage() );
-            			$update->doUpdate();
+				$tp = WikiPage::factory( $old_user->getTalkPage() );
+				$up = WikiPage::factory( $old_user->getUserPage() );
+				$tp->doPurge();
+				$up->doPurge();
 			}
 		}
 		return true;
