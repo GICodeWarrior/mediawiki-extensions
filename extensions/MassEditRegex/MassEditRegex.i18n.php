@@ -55,6 +55,7 @@ The replacement values should not be escaped.',
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Fryed-peach
  * @author Purodha
  * @author Siebrand
@@ -63,6 +64,7 @@ $messages['qqq'] = array(
 	'masseditregex-desc' => '{{desc}}',
 	'masseditregextext' => 'Replace <code>/en/</code> in the middle in link <code>http://php.net/manual/en/function.preg-replace.php</code> with your language code between slashes, if that page exists. Otherwise leave it as is to link to the English documentation, or choose an appropriate fallback language code.',
 	'masseditregex-hint-headmatch' => "Noun. This is a column header for the 'match' regexes.",
+	'masseditregex-hint-headreplace' => '{{Identical|Replace}}',
 	'right-masseditregex' => '{{doc-right|masseditregex}}',
 );
 

@@ -169,6 +169,21 @@ $messages['ar'] = array(
 	'narayam-bn-nkb' => 'بنغالي إن كي بي (Bengali NKB)',
 );
 
+/** Assamese (অসমীয়া)
+ * @author Chaipau
+ * @author Psneog
+ */
+$messages['as'] = array(
+	'narayam-toggle-ime' => 'সক্ৰিয় কৰক ($1)',
+	'narayam-menu' => "কীব'ৰ্ডৰ ভাষা",
+	'narayam-menu-tooltip' => '"নাৰায়ম"ৰ কীব\'ৰ্ড বাচনি কৰিবলৈ এই লিংক ব্যৱহাৰ কৰক',
+	'narayam-help-page' => 'Help:টাইপিং',
+	'narayam-as' => 'অসমীয়া প্ৰতিৰূপান্তৰণ',
+	'narayam-as-avro' => 'অসমীয়া অভ্ৰ',
+	'narayam-as-bornona' => 'অসমীয়া বৰ্ণনা',
+	'narayam-as-inscript' => 'অসমীয়া ইন্‌স্ক্ৰিপ্ত',
+);
+
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
  */
@@ -514,14 +529,20 @@ $messages['fa'] = array(
  * @author Olli
  */
 $messages['fi'] = array(
-	'narayam-desc' => 'Sallii mukautettujen syöttötapojen lisäämisen kenttiin',
-	'narayam-toggle-ime' => 'Ota käyttöön ($1)',
+	'narayam-desc' => 'Mahdollistaa kirjoittamisen eri kirjoitusjärjestelmillä',
+	'narayam-toggle-ime' => 'Käytössä ($1)',
 	'narayam-menu' => 'Syöttötapa',
-	'narayam-menu-tooltip' => 'Hallitse Narayam Input Method Editor (IME)',
+	'narayam-menu-tooltip' => 'Hallitse Narayam-syöttötapoja',
 	'narayam-help' => 'Ohje',
 	'narayam-help-page' => 'Help:Kirjoittaminen',
 	'narayam-checkbox-tooltip' => 'Ota syöttötapa käyttöön ja pois',
-	'narayam-disable-preference' => 'Poista Narayam Input Method Editor (IME) käytöstä',
+	'narayam-disable-preference' => 'Poista Narayam-syöttötavat käytöstä',
+	'narayam-more-imes' => 'Lisää syöttötapoja',
+	'narayam-am' => 'Amhara-translitterointi',
+	'narayam-as' => 'Assami-translitterointi',
+	'narayam-as-avro' => 'Assami Avro',
+	'narayam-as-bornona' => 'Assami Bornona',
+	'narayam-as-inscript' => 'Assami InScript',
 	'narayam-eo' => 'Esperanto',
 	'narayam-hi-inscript' => 'Hindi InScript',
 	'narayam-kn' => 'Kannada-translitterointi',
@@ -536,8 +557,9 @@ $messages['fi'] = array(
 	'narayam-sa-inscript' => 'Sanskrit InScript',
 	'narayam-si-singlish' => 'Sinhala Singlish',
 	'narayam-si-wijesekara' => 'Sinhala Wijesekara',
-	'narayam-ta99' => 'Tamil99',
+	'narayam-ta-99' => 'Tamil99',
 	'narayam-ta' => 'Tamil-translitterointi',
+	'narayam-ta-bamini' => 'Tamil Bamini',
 	'narayam-te-inscript' => 'Telugu InScript',
 	'narayam-bn-avro' => 'Bengali Avro',
 	'narayam-bn-inscript' => 'Bengali InScript',

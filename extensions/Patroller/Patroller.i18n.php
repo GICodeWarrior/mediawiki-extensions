@@ -538,7 +538,7 @@ $messages['dsb'] = array(
 	'patrol-stopped' => 'Sy rozsuźił žednu dalšnu změnu doglědowaś. $1',
 	'patrol-resume' => 'Klikni sem, aby pokšacował.',
 	'group-patroller' => 'Doglědowarje',
-	'group-patroller-member' => 'doglědowaŕ',
+	'group-patroller-member' => '{{GENDER:$1|doglědowaŕ|doglědowarka}}',
 	'grouppage-patroller' => '{{ns:project}}:Doglědowaŕ',
 	'right-patroller' => 'Boki doglědowaś',
 );

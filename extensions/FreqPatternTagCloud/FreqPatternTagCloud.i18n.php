@@ -188,7 +188,9 @@ $messages['lb'] = array(
 	'fptc-insufficient-rights-for-maintenance' => 'Dir musst Iech als Administrateur alogge fir dës Säit ze gesinn.',
 	'fptc-refresh-frequent-patterns' => 'Daten aktualiséieren',
 	'fptc-search-button' => 'Sichen',
+	'fptc-search-suggestion-value' => 'Ähnlech wéi „%s“:',
 	'fptc-suggestion' => 'Mengt Dir:',
+	'fptc-no-suggestion' => 'Keng Virschléi fonnt',
 );
 
 /** Macedonian (Македонски)

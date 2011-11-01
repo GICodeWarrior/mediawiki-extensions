@@ -340,6 +340,7 @@ $messages['ar'] = array(
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
 	'contest-desc' => 'Дазваляе ўдзельнікам прымаць удзел у конкурсах. Судзьдзі могуць абмяркоўваць і галасаваць па падачах.',
@@ -354,6 +355,9 @@ $messages['be-tarask'] = array(
 	'group-contestant-member' => '{{GENDER:$1|Удзельнік конкурсаў|Удзельніца конкурсаў}}',
 	'grouppage-contestant' => '{{ns:project}}:Удзельнікі конкурсаў',
 	'group-contestjudge' => 'Судзьдзі конкурсаў',
+	'group-contestjudge-member' => '{{GENDER:$1|судзьдзя конкурсаў|судзьдзя конкурсаў}}',
+	'grouppage-contestjudge' => '{{ns:project}}:Судзьдзі конкурсаў',
+	'prefs-contest' => 'Конкурсы',
 );
 
 /** Breton (Brezhoneg)
@@ -1656,7 +1660,11 @@ $messages['lb'] = array(
 	'right-contestadmin' => 'Concourse geréieren',
 	'right-contestant' => 'Bäi Concourse matmaachen',
 	'group-contestant' => 'Konkurrent',
+	'group-contestjudge' => 'Arbittere vum Concours',
+	'group-contestjudge-member' => '{{GENDER:$1|Arbitter|Arbittesch}} vum Concours',
+	'grouppage-contestjudge' => '{{ns:project}}: Arbittere vum Concours',
 	'prefs-contest' => 'Concoursen',
+	'contest-prefs-showtoplink' => 'E Link op [[Special:MyContests|Meng Concoursen]] am Benotzer-Menü weisen.',
 	'contest-status-draft' => 'Brouillon (desaktivéiert)',
 	'special-contest' => 'E Concours weisen',
 	'special-contestwelcome' => 'E Concours weisen',
@@ -1680,6 +1688,8 @@ $messages['lb'] = array(
 	'contest-edit-help' => 'Hëllef-Säit',
 	'contest-edit-reminder' => 'Säit mat der Erënnerungs-Mail',
 	'contest-edit-end' => 'Ënn vum Concours',
+	'contest-edit-exists-already' => 'Dir ännert en Concours deen et scho gëtt.',
+	'contest-edit-challenges' => 'Erausfuerderunge vum Concours',
 	'contest-edit-delete' => 'Erausfuerderung läschen',
 	'contest-edit-add-first' => 'Eng Erausfuerderung derbäisetzen',
 	'contest-edit-add-another' => 'Eng aner Erausfuerderung derbäisetzen',
@@ -1693,25 +1703,32 @@ $messages['lb'] = array(
 	'contest-signup-unknown' => 'Et gëtt kee Concours mam Numm deen ugi gouf.',
 	'contest-signup-email' => 'Är Mailadress',
 	'contest-signup-realname' => 'Äre richtegen Numm',
+	'contest-signup-cv' => 'Link op Ären CV',
 	'contest-signup-challenge' => 'Wat fir eng Erausfuerderung wëllt Dir unhuelen?',
 	'contest-signup-finished' => 'Dëse Concours ass eriwwer. Merci datt Dir matgemaach hutt!',
 	'contest-signup-draft' => 'De Concours huet nach net ugefaang. Merci fir Är Gedold.',
 	'contest-signup-country' => 'Ärt Land',
 	'contest-signup-require-rules' => "Dir musst d' Regele vum Concours akzeptéieren.",
+	'contest-signup-require-country' => 'Dir musst dat Land ugi wou Dir wunnt.',
 	'contest-signup-invalid-name' => 'Den Numm deen Dir uginn hutt ass ze kuerz.',
 	'contest-signup-require-challenge' => 'Dir musst eng Erausfuerderung eraussichen.',
+	'contest-signup-invalid-cv' => 'Dir hutt eng URL aginn déi net valabel ass.',
 	'contest-contest-title' => 'Concours: $1',
 	'contest-contest-name' => 'Numm',
+	'contest-contest-submissioncount' => 'Zuel vun de Participanten',
 	'contest-contest-end' => 'Ënn vum Concours',
 	'contest-contest-days-ago' => '$1, {{PLURAL:$2|virun 1 Dag| viru(n) $2 Deeg}}',
+	'contest-contest-days-left' => '$1, a(n) $2 {{PLURAL:$2|Dag|Deeg}}',
 	'contest-contest-contestants' => 'Konkurrenten',
 	'contest-contest-reminder-mail' => 'Erënnerungs-Mail',
 	'contest-contest-send-reminder' => 'Erënnerung schécken',
+	'contest-contest-reminder-preview' => "D'Erënnungsmail kucken ouni se ze schécken",
 	'contest-contest-reminder-title' => 'Erënnerungs-Mail',
 	'contest-contest-reminder-send' => 'Erënnerung schécken',
 	'contest-contest-reminder-cancel' => 'Ofbriechen',
 	'contest-contest-reminder-sending' => 'Schécken...',
 	'contest-contest-reminder-close' => 'Zoumaachen',
+	'contest-contest-reminder-failed' => "D'Erënnerungs-Maile konnten net geschéckt ginn.",
 	'contest-contest-reminder-subject' => 'Sujet:',
 	'contest-contestant-challenge-name' => 'Numm vun der Erausfuerderung',
 	'contest-contestant-volunteer' => 'Fräiwëllegen',
@@ -1735,6 +1752,7 @@ $messages['lb'] = array(
 	'contest-mycontests-header-challenge' => 'Erausfuerderung',
 	'contest-submission-unknown' => 'Et gëtt kee Concours mam Numm deen ugi gouf.',
 	'contest-submission-finished' => 'Dëse Concours ass eriwwer. Merci datt Dir matgemaach hutt!',
+	'contest-submission-challenge-description' => "'''Aktuell Erausfuerderung: $1''' -- $2",
 );
 
 /** Macedonian (Македонски)
@@ -2009,7 +2027,7 @@ $messages['ml'] = array(
 	'contest-contest-reminder-failed' => 'ഓർമ്മപ്പെടുത്തൽ ഇമെയിൽ അയയ്ക്കാൻ കഴിഞ്ഞില്ല.',
 	'contest-contest-reminder-subject' => 'വിഷയം:',
 	'contest-contestant-id' => 'ഐ.ഡി.',
-	'contest-contestant-volunteer' => 'സന്നദ്ധസേവകൻ',
+	'contest-contestant-volunteer' => 'സന്നദ്ധസേവക(ൻ)',
 	'contest-contestant-wmf' => 'ഡബ്ല്യു.എം.എഫ്.',
 	'contest-contestant-no' => 'ഇല്ല',
 	'contest-contestant-yes' => 'ഉണ്ട്',

@@ -143,6 +143,7 @@ $messages['dsb'] = array(
 	'svgedit-desc' => 'Zmóžnja wobźěłowanje SVG-kreslankow z [http://code.google.com/p/svg-edit/ SVG-Edit] we wobglědowaku',
 	'svgedit-edit-tab' => 'Kreslanku wobźěłaś',
 	'svgedit-edit-tab-tooltip' => 'Móžoš toś tu SVG-kreslanku we swójom wobglědowaku wobźěłaś',
+	'svgedit-toolbar-insert' => 'SVG-kreslanka',
 );
 
 /** Esperanto (Esperanto)
