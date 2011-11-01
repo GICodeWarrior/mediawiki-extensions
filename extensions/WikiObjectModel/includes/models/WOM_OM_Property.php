@@ -10,9 +10,10 @@
 
 class WOMPropertyModel extends WikiObjectModel {
 	protected $m_property; // name
-	protected $m_smwdatavalue; // value, caption, type
 	protected $m_value;
 	protected $m_caption;
+	protected $m_user_property; // name
+	protected $m_smwdatavalue; // value, caption, type
 	protected $m_visible;
 
 	public function __construct( $property, $value, $caption = '' ) {
@@ -23,7 +24,12 @@ class WOMPropertyModel extends WikiObjectModel {
 			throw new MWException( __METHOD__ . ": Property model is invalid. Please install 'SemanticMediaWiki extension' first." );
 		}
 
-		$property = SMWPropertyValue::makeUserProperty( $property );
+		$user_property = SMWPropertyValue::makeUserProperty( $property );
+		if ( count ( $user_property->getErrors() ) > 0 ) {
+			$user_property = SMWPropertyValue::makeUserProperty( '///NA///' );
+		} else {
+			$property = '';
+		}
 		$smwdatavalue = null;
 		// FIXME: property should be collection object according to templates
 		// if template/field used
@@ -31,22 +37,23 @@ class WOMPropertyModel extends WikiObjectModel {
 			$value = "{$value}|{$caption}";
 			$caption = '';
 		} else {
-			$smwdatavalue = SMWDataValueFactory::newPropertyObjectValue( $property, $value, $caption );
+			$smwdatavalue = SMWDataValueFactory::newPropertyObjectValue( $user_property, $value, $caption );
 		}
 
-		$this->m_property = $property;
+		$this->m_user_property = $user_property;
 		$this->m_smwdatavalue = $smwdatavalue;
+		$this->m_property = $property;
 		$this->m_value = $value;
 		$this->m_caption = $caption;
-		$this->m_visible = !preg_match( '/\s+/', $caption );
+		$this->m_visible = !preg_match( '/^\s+$/', $caption );
 	}
 
 	public function getProperty() {
-		return $this->m_property;
+		return $this->m_user_property;
 	}
 
 	public function setProperty( $property ) {
-		$this->m_property = $property;
+		$this->m_user_property = $property;
 	}
 
 	public function getSMWDataValue() {
@@ -71,7 +78,7 @@ class WOMPropertyModel extends WikiObjectModel {
 	}
 
 	public function getPropertyName() {
-		return $this->m_property->getWikiValue();
+		return ( $this->m_property ) ? $this->m_property : $this->m_user_property->getWikiValue();
 	}
 
 	public function getPropertyValue() {
