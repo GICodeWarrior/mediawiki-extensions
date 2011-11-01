@@ -257,6 +257,8 @@ es.ContentView.prototype.clearSelection = function() {
 /**
  * Gets the index of the rendered line a given offset is within.
  * 
+ * Offsets that are out of range will always return the index of the last line.
+ * 
  * @method
  * @param {Integer} offset Offset to get line for
  * @returns {Integer} Index of rendered lin offset is within
@@ -273,9 +275,11 @@ es.ContentView.prototype.getRenderedLineIndex = function( offset ) {
 /**
  * Gets the range of the rendered line a given offset is within.
  * 
+ * Offsets that are out of range will always return the range of the last line.
+ * 
  * @method
  * @param {Integer} offset Offset to get line for
- * @returns {Range}
+ * @returns {es.Range} Range of line offset is within
  */
 es.ContentView.prototype.getRenderedLineRange = function( offset ) {
 	for ( var i = 0; i < this.lines.length; i++ ) {
@@ -283,7 +287,7 @@ es.ContentView.prototype.getRenderedLineRange = function( offset ) {
 			return this.lines[i].range;
 		}
 	}
-	return null;
+	return this.lines[this.lines.length - 1].range;
 };
 
 /**
