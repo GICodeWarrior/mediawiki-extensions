@@ -124,8 +124,8 @@ $messages['eu'] = array(
  * @author Silvonen
  */
 $messages['fi'] = array(
-	'flvhandler_desc' => 'Mahdollistaa Flash Video (.flv) -tiedostojen lisäämisen tavanomaisten tiedostojen tapaan (esim. <nowiki>[[</nowiki>{{ns:file}}:Movie.flv<nowiki>]]</nowiki>).',
-	'flv-long-desc' => 'Flash Video, $1 × $2 pikseliä, tiedostokoko: $3',
+	'flvhandler_desc' => 'Mahdollistaa Flash-videotiedostojen (.flv) lisäämisen tavanomaisten tiedostojen tapaan (esim. <nowiki>[[</nowiki>{{ns:file}}:Movie.flv<nowiki>]]</nowiki>).',
+	'flv-long-desc' => 'Flash-video, $1 × $2 pikseliä, tiedostokoko: $3',
 );
 
 /** French (Français)
