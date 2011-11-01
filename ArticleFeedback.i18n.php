@@ -978,6 +978,7 @@ Vaš {{SITENAME}} tim',
  * @author BroOk
  * @author El libre
  * @author Solde
+ * @author Toniher
  */
 $messages['ca'] = array(
 	'articlefeedback' => "Avaluació de l'article",
@@ -996,7 +997,7 @@ $messages['ca'] = array(
 	'articlefeedback-survey-title' => 'Si us plau, contesti algunes preguntes',
 	'articlefeedback-survey-thanks' => "Gràcies per omplir l'enquesta.",
 	'articlefeedback-form-switch-label' => 'Proporciona informació',
-	'articlefeedback-form-panel-title' => 'Els teus comentaris',
+	'articlefeedback-form-panel-title' => 'Valoreu la pàgina',
 	'articlefeedback-form-panel-submit' => 'Envia comentaris',
 	'articlefeedback-form-panel-success' => 'Desat correctament',
 	'articlefeedback-report-switch-label' => 'Mostra els resultats',
