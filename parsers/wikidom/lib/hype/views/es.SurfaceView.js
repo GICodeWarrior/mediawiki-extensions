@@ -39,7 +39,7 @@ es.SurfaceView = function( $container, model ) {
 		$document = $( document );
 
 	// MouseDown on surface
-	this.$.bind( {
+	this.$.on( {
 		'mousedown' : function(e) {
 			return surfaceView.onMouseDown( e );
 		}
@@ -48,11 +48,11 @@ es.SurfaceView = function( $container, model ) {
 	// Hidden input
 	this.$input = $( '<input class="editSurface-input" />' )
 		.prependTo( this.$ )
-		.bind( {
+		.on( {
 			'focus' : function() {
 				//console.log("focus");
-				$document.unbind( '.editSurface' );
-				$document.bind({
+				$document.off( '.editSurface' );
+				$document.on({
 					'mousemove.editSurface' : function(e) {
 						//return surfaceView.onMouseMove( e );
 					},
@@ -69,7 +69,7 @@ es.SurfaceView = function( $container, model ) {
 			},
 			'blur': function( e ) {
 				//console.log("blur");
-				$document.unbind( '.editSurface' );
+				$document.off( '.editSurface' );
 				surfaceView.hideCursor();
 			}
 		} ).focus();
