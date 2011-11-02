@@ -21,6 +21,7 @@
  * @property {RegExp} bondaryTest
  * @property {Object} widthCache
  * @property {Object} renderState
+ * @property {Object} contentCache
  */
 es.ContentView = function( $container, model ) {
 	// Inheritance
