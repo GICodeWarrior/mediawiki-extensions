@@ -24,10 +24,19 @@ es.ListItemView = function( model ) {
 };
 
 es.ListItemView.prototype.setClasses = function() {
-	// TODO: Unset previously set classes in case of switching from bullet list to numbered list
-	// or changing indentation level
-	var styles = this.model.getElementAttribute( 'styles' );
-	this.$.addClass( 'editSurface-listItem-' + styles[ styles.length - 1 ] )
+	var classes = this.$.attr( 'class' ),
+		styles = this.model.getElementAttribute( 'styles' );
+	this.$
+		// Remove any existing level classes
+		.attr(
+			'class',
+			classes
+				.replace( /editSurface-listItem-level[0-9]+/, '' )
+				.replace( /editSurface-listItem-(bullet|number)/, '' )
+		)
+		// Set the list style class from the style on top of the stack
+		.addClass( 'editSurface-listItem-' + styles[styles.length - 1] )
+		// Set the list level class from the length of the stack
 		.addClass( 'editSurface-listItem-level' + ( styles.length - 1 ) );
 };
 
