@@ -43,7 +43,7 @@ switch( $mode ) {
 		exit( 1 );
 }
 
-require_once( 'testswarm-mw-fetcher.php' );
+require_once( __DIR__ . '/testswarm-mw-fetcher.php' );
 
 $main = new TestSwarmMWMain( $options );
 $main->tryFetchNextRev();
