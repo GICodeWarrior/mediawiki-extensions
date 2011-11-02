@@ -1,5 +1,5 @@
 TARGETS = log2udp udprecv delta udp2log/udp2log packet-loss
-SRCLIB_OBJS = srclib/HostEntry.o srclib/FileDescriptor.o srclib/IPAddress.o srclib/Socket.o srclib/SocketAddress.o
+SRCLIB_OBJS = srclib/HostEntry.o srclib/FileDescriptor.o srclib/IPAddress.o srclib/Socket.o srclib/SocketAddress.o srclib/PosixClock.o
 HOST_OBJS = srcmisc/host.o $(SRCLIB_OBJS)
 LOG2UDP_OBJS = srcmisc/log2udp.o $(SRCLIB_OBJS)
 UDPRECV_OBJS = srcmisc/udprecv.o $(SRCLIB_OBJS)
@@ -30,7 +30,7 @@ packet-loss: srcmisc/packet-loss.cpp
 	g++ $(CFLAGS) -o packet-loss srcmisc/packet-loss.cpp
 
 udp2log/udp2log: $(UDP2LOG_OBJS)
-	g++ $(CFLAGS) -o udp2log/udp2log $(UDP2LOG_OBJS) -lboost_program_options
+	g++ $(CFLAGS) -o udp2log/udp2log $(UDP2LOG_OBJS) -lboost_program_options -lrt
 
 install:
 	install log2udp $(DESTDIR)/usr/bin/log2udp

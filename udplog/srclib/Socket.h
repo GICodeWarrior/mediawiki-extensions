@@ -102,9 +102,31 @@ public:
 		ssize_t length = recvfrom(fd, buf, len, flags, SocketAddress::GetBuffer(), &addrLength);
 		if (length == (ssize_t)-1) {
 			RaiseError("Socket::RecvFrom");
+		} else {
+			to = SocketAddress::NewFromBuffer();
 		}
-		to = SocketAddress::NewFromBuffer();
 		return length;
+	}
+
+	int SetSockOpt(int level, int optName, const void * optValue, socklen_t optLength) {
+		int result = setsockopt(fd, level, optName, optValue, optLength);
+		if (result == -1) {
+			RaiseError("Socket::SetSockOpt");
+			return errno;
+		}
+		return result;
+	}
+
+	int SetSockOpt(int level, int optName, bool optValue) {
+		return SetSockOpt(level, optName, (int)optValue);
+	}
+
+	int SetSockOpt(int level, int optName, int optValue) {
+		return SetSockOpt(level, optName, &optValue, sizeof(int));
+	}
+
+	int SetSockOpt(int level, int optName, const std::string & optValue) {
+		return SetSockOpt(level, optName, optValue.data(), optValue.size());
 	}
 protected:
 	boost::shared_ptr<SocketAddress> peer;

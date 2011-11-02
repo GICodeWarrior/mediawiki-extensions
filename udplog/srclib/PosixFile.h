@@ -1,6 +1,8 @@
 #ifndef UDPLOG_POSIXFILE_H
 #define UDPLOG_POSIXFILE_H
 
+#include "FileDescriptor.h"
+
 class PosixFile : public FileDescriptor
 {
 public:

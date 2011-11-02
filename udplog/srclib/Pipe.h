@@ -6,6 +6,8 @@
 #endif
 #include <fcntl.h>
 
+#include "FileDescriptor.h"
+
 class Pipe : public FileDescriptor
 {
 public:

@@ -4,14 +4,38 @@
 #include <linux/limits.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <sys/prctl.h>
 #include "LogProcessor.h"
 #include "Udp2LogConfig.h"
+
+//---------------------------------------------------------------------------
+// LogProcessor
+//---------------------------------------------------------------------------
+bool LogProcessor::IsActive(const PosixClock::Time & currentTime) {
+	if (!IsOpen()) {
+		return false;
+	}
+	if (currentTime > holidayEndTime) {
+		return true;
+	} else {
+		// On holiday
+		return false;
+	}
+}
+
+void LogProcessor::IncrementBytesLost(size_t bytes) {
+	if (bytes) {
+		bytesLost += bytes;
+		lossRate.Increment(bytes);
+	}
+}
 
 //---------------------------------------------------------------------------
 // FileProcessor
 //---------------------------------------------------------------------------
 
-LogProcessor * FileProcessor::NewFromConfig(char * params, bool flush)
+boost::shared_ptr<LogProcessor> FileProcessor::NewFromConfig(
+		Udp2LogConfig & config, int index, char * params, bool flush)
 {
 	char * strFactor = strtok(params, " \t");
 	if (strFactor == NULL) {
@@ -26,37 +50,41 @@ LogProcessor * FileProcessor::NewFromConfig(char * params, bool flush)
 		);
 	}
 	char * filename = strtok(NULL, "");
-	FileProcessor * fp = new FileProcessor(filename, factor, flush);
+	FileProcessor * fp = new FileProcessor(config, index, filename, factor, flush);
 	if (!fp->IsOpen()) {
 		delete fp;
 		throw ConfigError("Unable to open file");
 	}
 	std::cerr << "Opened log file " << filename << " with sampling factor " << factor << std::endl;
-	return (LogProcessor*)fp;
+	return boost::shared_ptr<LogProcessor>(fp);
 }
 
-void FileProcessor::ProcessLine(const char *buffer, size_t size)
+ssize_t FileProcessor::Write(const char *buffer, size_t size)
 {
-	if (Sample()) {
+	if (IsActive(config.GetCurrentTime())) {
 		f.write(buffer, size);
 		if (flush) {
 			f.flush();
 		}
 	}
+	return (ssize_t)size;
 }
 
 //---------------------------------------------------------------------------
 // PipeProcessor
 //---------------------------------------------------------------------------
 
-PipeProcessor::PipeProcessor(char * command_, int factor_, bool flush_, bool blocking_)
-	: LogProcessor(factor_, flush_), child(0), blocking(blocking_)
+PipeProcessor::PipeProcessor(Udp2LogConfig & config_, int index_, 
+		char * command_, int factor_, bool flush_, bool blocking_)
+	: LogProcessor(config_, index_, factor_, flush_), 
+	child(0), blocking(blocking_)
 {
 	command = command_;
 	Open();
 }
 
-LogProcessor * PipeProcessor::NewFromConfig(char * params, bool flush, bool blocking)
+boost::shared_ptr<LogProcessor> PipeProcessor::NewFromConfig(
+		Udp2LogConfig & config, int index, char * params, bool flush, bool blocking)
 {
 	char * strFactor = strtok(params, " \t");
 	if (strFactor == NULL) {
@@ -71,20 +99,19 @@ LogProcessor * PipeProcessor::NewFromConfig(char * params, bool flush, bool bloc
 		);
 	}
 	char * command = strtok(NULL, "");
-	PipeProcessor * pp = new PipeProcessor(command, factor, flush, blocking);
+	PipeProcessor * pp = new PipeProcessor(config, index, command, factor, flush, blocking);
 	if (!pp->IsOpen()) {
 		delete pp;
 		throw ConfigError("Unable to open pipe");
 	}
 	std::cerr << "Opened pipe with factor " << factor << ": " << command << std::endl;
-	return (LogProcessor*)pp;
+	return boost::shared_ptr<LogProcessor>(pp);
 }
 
-void PipeProcessor::HandleError(libc_error & e)
+void PipeProcessor::HandleError(libc_error & e, size_t bytes)
 {
 	bool restart;
 	if (e.code == EAGAIN) {
-		numLost++;
 		restart = false;
 	} else if (e.code == EPIPE) {
 		std::cerr << "Pipe terminated, suspending output: " << command << std::endl;
@@ -100,27 +127,23 @@ void PipeProcessor::HandleError(libc_error & e)
 	}
 }
 
-void PipeProcessor::ProcessLine(const char *buffer, size_t size)
+ssize_t PipeProcessor::Write(const char *buffer, size_t size)
 {
-	if (!child) {
-		return;
+	if (!IsActive(config.GetCurrentTime())) {
+		IncrementBytesLost(size);
+		return size;
 	}
 
+	ssize_t bytesWritten = 0;
 
-	if (Sample()) {
-		try {
-			if (blocking && size > PIPE_BUF) {
-				// Write large packets in blocking mode to preserve data integrity
-				GetPipe().SetStatusFlags(0);
-				GetPipe().Write(buffer, size);
-				GetPipe().SetStatusFlags(O_NONBLOCK);
-			} else {
-				GetPipe().Write(buffer, size);
-			}
-		} catch (libc_error & e) {
-			HandleError(e);
-		}
+	try {
+		bytesWritten = GetPipe().Write(buffer, size);
+	} catch (libc_error & e) {
+		bytesWritten = 0;
+		HandleError(e, size);
 	}
+	IncrementBytesLost(size - bytesWritten);
+	return bytesWritten;
 }
 
 void PipeProcessor::FixIfBroken()
@@ -141,8 +164,10 @@ void PipeProcessor::Close()
 {
 	if (child) {
 		int status = 0;
-		waitpid(child, &status, 0);
+		// Send HUP signal
 		GetPipe().Close();
+		// Wait for it to respond
+		waitpid(child, &status, 0);
 		child = 0;
 	}
 }
@@ -156,6 +181,7 @@ void PipeProcessor::Open()
 	child = fork();
 	if (!child) {
 		// This is the child process
+		prctl(PR_SET_PDEATHSIG, SIGTERM, 0, 0, 0);
 		pipes->writeEnd.Close();
 		pipes->readEnd.Dup2(STDIN_FILENO);
 		pipes->readEnd.Close();
@@ -180,27 +206,27 @@ void PipeProcessor::Open()
 	}
 }
 
-void PipeProcessor::CopyFromPipe(Pipe & source, size_t dataLength)
+ssize_t PipeProcessor::CopyFromPipe(Pipe & source, size_t size)
 {
-	if (!child) {
-		return;
+	if (!IsActive(config.GetCurrentTime())) {
+		IncrementBytesLost(size);
+		return size;
 	}
 
+	ssize_t bytesWritten = 0;
 	int flags = 0;
 	if (!blocking) {
 		flags |= SPLICE_F_NONBLOCK;
 	}
 	try {
-		if (blocking && dataLength > PIPE_BUF) {
-			// Write large packets in blocking mode to preserve data integrity
-			GetPipe().SetStatusFlags(0);
-			source.Tee(GetPipe(), dataLength, 0);
-			GetPipe().SetStatusFlags(O_NONBLOCK);
-		} else {
-			source.Tee(GetPipe(), dataLength, flags);
-		}
+		bytesWritten = source.Tee(GetPipe(), size, flags);
 	} catch (libc_error & e) {
-		HandleError(e);
+		bytesWritten = 0;
+		HandleError(e, size);
 	}
+	IncrementBytesLost(size - bytesWritten);
+	return bytesWritten;
 }
+
+
 

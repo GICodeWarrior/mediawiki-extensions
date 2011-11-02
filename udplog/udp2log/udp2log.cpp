@@ -19,12 +19,14 @@
 #include "../srclib/Socket.h"
 #include "Udp2LogConfig.h"
 #include "SendBuffer.h"
+#include "../srclib/EpollInstance.h"
 
 std::string configFileName("/etc/udp2log");
 std::string logFileName("/var/log/udp2log/udp2log.log");
 std::string pidFileName("/var/run/udp2log.pid");
 std::string daemonUserName("udp2log");
 std::string multicastAddr("0");
+int udpReceiveQueue = 128; // KB
 
 Udp2LogConfig config;
 
@@ -119,7 +121,6 @@ int main(int argc, char** argv)
 	// Process command line
 	options_description optDesc;
 	optDesc.add_options()
-		("multicast", value<string>(&multicastAddr)->default_value(multicastAddr), "multicast address to listen to")
 		("help", "Show help message.")
 		("port,p", value<unsigned int>(&port)->default_value(port), "UDP port.")
 		("config-file,f", value<string>(&configFileName)->default_value(configFileName), 
@@ -130,7 +131,11 @@ int main(int argc, char** argv)
 		("pid-file", value<string>(&pidFileName)->default_value(pidFileName),
 		 	"The location to write the new PID, if --daemon is specified.")
 		("user", value<string>(&daemonUserName)->default_value(daemonUserName),
-		 	"User to switch to, after daemonizing");
+		 	"User to switch to, after daemonizing")
+		("multicast", value<string>(&multicastAddr)->default_value(multicastAddr), 
+		 	"Multicast address to listen to")
+		("recv-queue", value<int>(&udpReceiveQueue)->default_value(udpReceiveQueue),
+		 	"The size of the kernel UDP receive buffer, in KB");
 
 	variables_map vm;
 	try {
@@ -179,8 +184,14 @@ int main(int argc, char** argv)
 		return 1;
 	}
 
+	// Set up signals
 	signal(SIGHUP, OnHangup);
-	signal(SIGALRM, OnAlarm);
+
+	struct sigaction sa;
+	memset(&sa, 0, sizeof(sa));
+	sa.sa_handler = OnAlarm;
+	sigaction(SIGALRM, &sa, NULL);
+
 	signal(SIGPIPE, SIG_IGN);
 
 	// Open the receiving socket
@@ -191,6 +202,7 @@ int main(int argc, char** argv)
 		return 1;
 	}
 	socket.SetDescriptorFlags(FD_CLOEXEC);
+	socket.SetSockOpt(SOL_SOCKET, SO_RCVBUF, udpReceiveQueue * 1024);
 	socket.Bind(saddr);
 
 	// Join a multicast group if requested
@@ -204,34 +216,63 @@ int main(int argc, char** argv)
 	}
 
 	// Process received packets
-	boost::shared_ptr<SocketAddress> address;
 	const size_t bufSize = 65536;
+
 	char receiveBuffer[bufSize];
 	ssize_t bytesRead;
-	SendBuffer<ConfigWriteCallback> sendBuffer(PIPE_BUF, config.GetWriteCallback());
+	SendBuffer<ConfigWriteCallback> sendBuffer(
+			config.GetPool(),
+			Udp2LogConfig::BLOCK_SIZE, 
+			config.GetWriteCallback());
+	
+	const PosixClock::Time reportInterval(5, 0);
+	const PosixClock::Time updateInterval(Udp2LogConfig::UPDATE_PERIOD);
+	PosixClock clock(CLOCK_REALTIME);
+	PosixClock::Time nextReportTime = clock.Get() + reportInterval;
+	PosixClock::Time nextUpdateTime = clock.Get() + updateInterval;
+	struct itimerval itv;
+	itv.it_interval.tv_sec = 0;
+	itv.it_interval.tv_usec = 250000;
+	itv.it_value = itv.it_interval;
+	setitimer(ITIMER_REAL, &itv, NULL);
 
-	time_t lossReportTime = 0;
+	FileDescriptor::ErrorSetPointer ignoredErrors(new FileDescriptor::ErrorSet);
+	ignoredErrors->insert(EINTR);
+	socket.Ignore(ignoredErrors);
 
 	for (;;) {
-		bytesRead = socket.RecvFrom(receiveBuffer, bufSize, address);
-		if (bytesRead <= 0) {
-			continue;
-		}
+		bytesRead = socket.Recv(receiveBuffer, bufSize);
 
 		// Reload configuration
 		try {
 			config.Reload();
 		} catch (runtime_error & e) {
 			cerr << e.what() << endl;
-			continue;
 		}
 
-		sendBuffer.Write(receiveBuffer, bytesRead);
+		if (bytesRead <= 0) {
+			// Timeout
+			sendBuffer.Flush();
+		} else {
+			sendBuffer.Write(receiveBuffer, bytesRead);
+			config.IncrementPacketCount();
+		}
 
-		time_t currentTime = time(NULL);
-		if (currentTime - lossReportTime > 60) {
-			config.PrintLossReport(std::cout);
-			lossReportTime = currentTime;
+		// Counter update
+		PosixClock::Time currentTime = clock.Get();
+		if (currentTime >= nextUpdateTime) {
+			while (currentTime >= nextUpdateTime) {
+				nextUpdateTime += updateInterval;
+			}
+			config.UpdateCounters();
+		}
+
+		// Status report
+		if (currentTime >= nextReportTime) {
+			while (currentTime >= nextReportTime) {
+				nextReportTime += reportInterval;
+			}
+			config.PrintStatusReport(std::cout);
 		}
 	}
 }

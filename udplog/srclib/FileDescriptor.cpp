@@ -8,7 +8,7 @@ void FileDescriptor::RaiseError(const char* msg)
 		throw libc_error(msg);
 	}
 
-	std::set<int> * curIgnore = ignoreErrors.back().get();
+	ErrorSet * curIgnore = ignoreErrors.back().get();
 	if (!curIgnore) {
 		// Ignore all
 		return;

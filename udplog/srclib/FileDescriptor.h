@@ -21,6 +21,9 @@ protected:
 		: fd(-1), good(false), ownFd(true)
 	{}
 public:
+
+	typedef std::set<int> ErrorSet;
+	typedef boost::shared_ptr<ErrorSet> ErrorSetPointer;
 	
 	virtual ~FileDescriptor() {
 		Close();
@@ -111,13 +114,13 @@ public:
 	}
 
 	// Ignore a given set of errors
-	void Ignore(boost::shared_ptr<std::set<int> > s) {
+	void Ignore(ErrorSetPointer s) {
 		ignoreErrors.push_back(s);
 	}
 		
 	// Ignore all errors
 	void IgnoreAll() {
-		ignoreErrors.push_back(boost::shared_ptr<std::set<int> >((std::set<int>*)NULL));
+		ignoreErrors.push_back(ErrorSetPointer((std::set<int>*)NULL));
 	}
 		
 	// Restore the previous ignore set
@@ -131,6 +134,6 @@ protected:
 	int fd;
 	bool good;
 	bool ownFd;
-	std::vector<boost::shared_ptr<std::set<int> > > ignoreErrors;
+	std::vector<ErrorSetPointer> ignoreErrors;
 };
 #endif

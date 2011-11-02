@@ -4,24 +4,23 @@
 template <class Callback>
 class SendBuffer {
 public:
-	SendBuffer(size_t capacity_, Callback writeCallback_)
-		: capacity(capacity_), size(0), writeCallback(writeCallback_)
-	{
-		data = new char[capacity];
-	}
+	SendBuffer(BlockPool & pool_, size_t capacity_, Callback writeCallback_)
+		: pool(pool_), block(pool.New()), capacity(capacity_), writeCallback(writeCallback_)
+	{}
 
 	void Flush() {
-		if (!size) {
+		if (!block.GetSize()) {
 			return;
 		}
-		writeCallback(data, size);
-		size = 0;
+		writeCallback(block);
+		block = pool.New();
 	}
 
 	void Write(const char* buffer, size_t bufSize);
 protected:
-	char * data;
-	size_t capacity, size;
+	BlockPool & pool;
+	Block block;
+	size_t capacity;
 	Callback writeCallback;
 };
 
@@ -29,15 +28,13 @@ template <class Callback>
 void SendBuffer<Callback>::Write(const char* buffer, size_t bufSize)
 {
 	if (bufSize > capacity) {
-		Flush();
-		writeCallback(buffer, bufSize);
-	} else if (size + bufSize > capacity) {
-		Flush();
-		memcpy(data, buffer, bufSize);
-		size = bufSize;
-	} else {
-		memcpy(data + size, buffer, bufSize);
-		size += bufSize;
+		// Truncate oversize writes
+		bufSize = capacity;
 	}
+
+	if (block.GetSize() + bufSize > capacity) {
+		Flush();
+	}
+	block.Append(buffer, bufSize);
 }
 #endif
