@@ -78,7 +78,7 @@ es.SurfaceView = function( $container, model ) {
 	this.documentView.renderContent();
 };
 
-es.SurfaceView.boundaries = [' ', '-', '\t', '\r', '\n', '\f'];
+es.SurfaceView.boundaryTest = /([ \-\t\r\n\f])/;
 
 es.SurfaceView.prototype.onMouseDown = function( e ) {
 	var	offset = this.documentView.getOffsetFromEvent( e );
@@ -156,7 +156,7 @@ es.SurfaceView.prototype.moveCursor = function( instruction ) {
 		var end = this.documentView.getRenderedLineRange( this.cursor.offset ).end
 		var data = this.documentView.getModel().data;
 		if ( es.DocumentModel.isContentData( data, end ) ) {
-			while( $.inArray( data[ end - 1 ], es.SurfaceView.boundaries ) ) {
+			while( es.SurfaceView.boundaryTest.exec( data[ end - 1 ] ) ) {
 				end--;
 			}
 		}
