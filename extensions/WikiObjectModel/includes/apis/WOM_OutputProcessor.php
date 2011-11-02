@@ -207,21 +207,38 @@ class WOMOutputProcessor {
 		// fill in semantic properties
 		$properties = array();
 		foreach ( $semdata->getProperties() as $property ) {
+			$label = '';
 			if ( !$property->isShown() ) { // showing this is not desired, hide
 				continue;
 			} elseif ( $property->isUserDefined() ) { // user defined property
-				$property->setCaption( preg_replace( '/[ ]/u', '&nbsp;', $property->getWikiValue(), 2 ) );
-				// / NOTE: the preg_replace is a slight hack to ensure that the left column does not get too narrow
-				$properties[$property->getWikiValue()] = array();
-			} elseif ( $property->isVisible() ) { // predefined property
-				$properties[$property->getWikiValue()] = array();
-			} else { // predefined, internal property
-				continue;
+				if ( version_compare ( SMW_VERSION, '1.6', '>=' ) ) {
+					$label = $property->getLabel();
+				} else {
+					$property->setCaption( preg_replace( '/[ ]/u', '&nbsp;', $property->getWikiValue(), 2 ) );
+					// / NOTE: the preg_replace is a slight hack to ensure that the left column does not get too narrow
+					$label = $property->getWikiValue();
+				}
+			} else {
+				if ( version_compare ( SMW_VERSION, '1.6', '>=' ) ) {
+					$label = $property->getLabel();
+				} else {
+					if ( $property->isVisible() ) { // predefined property
+						$label = $property->getWikiValue();
+					} else { // predefined, internal property
+						continue;
+					}
+				}
 			}
+			$properties[$label] = array();
 
 			$propvalues = $semdata->getPropertyValues( $property );
 			foreach ( $propvalues as $propvalue ) {
-				$properties[$property->getWikiValue()][$propvalue->getWikiValue()] = false;
+				if ( version_compare ( SMW_VERSION, '1.6', '>=' ) ) {
+					if ( $propvalue->getDIType() == SMWDataItem::TYPE_ERROR ) continue;
+					$properties[$label][$propvalue->getSerialization()] = false;
+				} else {
+					$properties[$label][$propvalue->getWikiValue()] = false;
+				}
 			}
 		}
 		$props = $wom->getObjectsByTypeID( WOM_TYPE_PROPERTY );

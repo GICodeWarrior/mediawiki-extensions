@@ -37,7 +37,11 @@ class WOMPropertyModel extends WikiObjectModel {
 			$value = "{$value}|{$caption}";
 			$caption = '';
 		} else {
-			$smwdatavalue = SMWDataValueFactory::newPropertyObjectValue( $user_property, $value, $caption );
+			if ( version_compare ( SMW_VERSION, '1.6', '>=' ) ) {
+				$smwdatavalue = SMWDataValueFactory::newPropertyObjectValue( $user_property->getDataItem(), $value, $caption );
+			} else {
+				$smwdatavalue = SMWDataValueFactory::newPropertyObjectValue( $user_property, $value, $caption );
+			}
 		}
 
 		$this->m_user_property = $user_property;
