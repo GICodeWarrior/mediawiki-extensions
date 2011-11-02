@@ -595,7 +595,7 @@ $.articleFeedback = {
 					.html( function() {
 						var link = mw.html.element(
 							'a', {
-								href: context.options.privacyURL
+								href: mw.msg( 'articlefeedback-privacyurl' )
 							}, mw.msg( 'articlefeedback-form-panel-helpimprove-privacy' )
 						);
 						return mw.html.escape( mw.msg( 'articlefeedback-form-panel-helpimprove-note' ) )
