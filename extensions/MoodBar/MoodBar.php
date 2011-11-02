@@ -94,7 +94,7 @@ if ( !$oldVersion ) {
 
 
 $wgResourceModules['jquery.NobleCount'] = $mbResourceTemplate + array(
-	'scripts' => 'jquery.NobleCount/jquery.NobleCount.min.js',
+	'scripts' => 'jquery.NobleCount/jquery.NobleCount.js',
 );
 
 $wgResourceModules['ext.moodBar.core'] = $mbResourceTemplate + array(
