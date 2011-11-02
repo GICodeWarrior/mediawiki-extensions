@@ -61,6 +61,13 @@ $messages['mk'] = array(
 	'hashtables-desc' => 'Парсерски функции што овозможуваат работа со тарабни табели во контекст со опфатност определена во страница',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'hashtables-desc' => 'Parserfuncties die het mogelijk maken om met hashtabellen te werken in een paginacontext',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  */

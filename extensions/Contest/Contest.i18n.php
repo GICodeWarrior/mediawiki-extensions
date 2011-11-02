@@ -263,6 +263,7 @@ $messages['qqq'] = array(
 	'contest-edit-challenge-title' => 'Form field label',
 	'contest-edit-challenge-text' => 'Form field label',
 	'contest-edit-challenge-oneline' => 'Form field label',
+	'contest-signup-emailwarn' => "Warning message shown above an email input when the user starts changing it's value",
 	'contest-contest-title' => 'Page title',
 	'contest-contest-no-results' => 'Message displayed instead of a table when there are no contests',
 	'contest-contest-name' => 'Table row header',
@@ -329,7 +330,6 @@ $messages['qqq'] = array(
 	'contest-mycontests-sessionfail' => 'Session failure',
 	'contest-submission-challenge' => 'Tells the user which challenge they are part of. $1 is the challenge name',
 	'contest-submission-challenge-description' => 'Output of challenge name and description. $1 is the challenge name, $2 is the challenge description',
-	'contest-signup-emailwarn' => "Warning message shown above an email input when the user starts changing it's value",
 );
 
 /** Arabic (العربية)
@@ -360,6 +360,8 @@ $messages['be-tarask'] = array(
 	'group-contestjudge-member' => '{{GENDER:$1|судзьдзя конкурсаў|судзьдзя конкурсаў}}',
 	'grouppage-contestjudge' => '{{ns:project}}:Судзьдзі конкурсаў',
 	'prefs-contest' => 'Конкурсы',
+	'contest-prefs-showtoplink' => 'Паказваць спасылку на [[Special:MyContests|Мае конкурсы]] у мэню ўдзельніка.',
+	'contest-status-draft' => 'Чарнавік (адключаны)',
 );
 
 /** Breton (Brezhoneg)
@@ -468,6 +470,7 @@ $messages['br'] = array(
 
 /** German (Deutsch)
  * @author Kghbln
+ * @author Metalhead64
  * @author Reedy
  */
 $messages['de'] = array(
@@ -555,6 +558,7 @@ $messages['de'] = array(
 	'contest-signup-finished' => 'Dieser Wettbewerb ist beendet. Vielen Dank für die Teilnahme.',
 	'contest-signup-draft' => 'Der Wettbewerb hat noch nicht begonnen. Wir bitten um etwas Geduld.',
 	'contest-signup-country' => 'Dein Land',
+	'contest-signup-emailwarn' => 'Achtung: Du änderst deine E-Mail-Adresse, was die Bestätigung der neuen E-Mail-Adresse erforderlich macht.',
 	'contest-signup-require-rules' => 'Du musst den Teilnahmebedingungen zustimmen.',
 	'contest-signup-require-country' => 'Du muss das Land angeben, in dem du wohnst.',
 	'contest-signup-invalid-email' => 'Die angegebene E-Mail-Adresse ist ungültig.',
@@ -653,6 +657,7 @@ $messages['de-formal'] = array(
 	'contest-signup-realname' => 'Ihr bürgerlicher Name',
 	'contest-signup-challenge' => 'Welche Herausforderung möchten Sie annehmen?',
 	'contest-signup-country' => 'Ihr Land',
+	'contest-signup-emailwarn' => 'Achtung: Sie ändern Ihre E-Mail-Adresse, was die Bestätigung der neuen E-Mail-Adresse erforderlich macht.',
 	'contest-signup-require-rules' => 'Sie müssen den Teilnahmebedingungen zustimmen.',
 	'contest-signup-require-country' => 'Sie müssen das Land angeben, in dem Sie wohnen.',
 	'contest-signup-require-challenge' => 'Sie müssen eine Herausforderung annehmen.',
@@ -897,6 +902,7 @@ $messages['frp'] = array(
 	'contest-special-submissioncount' => 'Nombro de rèponses',
 	'contest-special-edit' => 'Changiér',
 	'contest-special-delete' => 'Suprimar',
+	'editcontest-text' => 'Vos éte aprés changiér un concors.',
 	'editcontest-legend' => 'Concors',
 	'contest-edit-name' => 'Nom du concors',
 	'contest-edit-status' => 'Statut du concors',
@@ -907,6 +913,7 @@ $messages['frp'] = array(
 	'contest-edit-signup' => 'Pâge du mèssâjo d’abonement',
 	'contest-edit-reminder' => 'Pâge du mèssâjo de rapèl',
 	'contest-edit-end' => 'Fin du concors',
+	'contest-edit-exists-already' => 'Vos éte aprés changiér un concors ègzistent.',
 	'contest-edit-submit' => 'Sometre',
 	'contest-edit-challenges' => 'Dèfis du concors',
 	'contest-edit-delete' => 'Suprimar un dèfi',
@@ -1846,6 +1853,7 @@ $messages['mk'] = array(
 	'contest-signup-finished' => 'Конкурсот заврши. Ви благодариме за учеството.',
 	'contest-signup-draft' => 'Конкурсот сè уште не е започнат. Бидете трпеливи.',
 	'contest-signup-country' => 'Вашата земја',
+	'contest-signup-emailwarn' => 'Предупредување: ја менувате е-поштата на вашата сметка, што значи дека ќе реба да ја потврдите новата адреса.',
 	'contest-signup-require-rules' => 'Ќе треба да се согласите со правилата на конкурсот.',
 	'contest-signup-require-country' => 'Ќе треба да ја наведете земјата кајшто живеете.',
 	'contest-signup-invalid-email' => 'Наведенат е-пошта е неважечка.',
@@ -2152,6 +2160,7 @@ $messages['ms'] = array(
 	'contest-signup-finished' => 'Peraduan ini sudah tamat. Terima kasih atas penyertaan anda!',
 	'contest-signup-draft' => 'Peraduan ini belum bermula. Harap bersabar.',
 	'contest-signup-country' => 'Negara anda',
+	'contest-signup-emailwarn' => 'Peringatan: anda sedang menukar alamat e-mel akaun anda. Ini akan memerlukan pengesahan anda bagi alamat baru itu.',
 	'contest-signup-require-rules' => 'Anda mesti bersetuju dengan peraturan peraduan.',
 	'contest-signup-require-country' => 'Anda mesti menyatakan negara tempat tinggal anda.',
 	'contest-signup-invalid-email' => 'Alamat e-mel yang anda berikan itu tidak sah.',

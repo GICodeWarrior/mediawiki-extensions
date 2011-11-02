@@ -104,6 +104,19 @@ $messages['fr'] = array(
 	'onlinestatusbar-status-hidden' => 'Caché',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'onlinestatusbar-line' => '$1 est ora $2 $3',
+	'prefs-onlinestatus' => 'Ètat en legne',
+	'onlinestatusbar-status-online' => 'Present',
+	'onlinestatusbar-status-busy' => 'Ocupo',
+	'onlinestatusbar-status-away' => 'Viâ',
+	'onlinestatusbar-status-offline' => 'Absent',
+	'onlinestatusbar-status-hidden' => 'Cachiê',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -191,6 +204,7 @@ $messages['nl'] = array(
 	'onlinestatusbar-line' => '$1 is nu $2 $3',
 	'onlinestatusbar-used' => 'Wilt u andere gebruikers laten zien dat u online bent?',
 	'onlinestatusbar-status' => 'Welke standaard status wilt u gebruiken:',
+	'onlinestatusbar-purge' => 'Uw gebruikerspagina bij aanmelden en afmelden uit de cache verwijderen',
 	'prefs-onlinestatus' => 'Onlinestatus',
 	'onlinestatusbar-hide' => 'Wilt u de statusbalk verbergen en alleen het magische woord gebruiken (voor gevorderde gebruikers)?',
 	'onlinestatusbar-status-online' => 'Online',

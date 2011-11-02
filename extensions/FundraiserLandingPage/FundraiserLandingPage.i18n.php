@@ -62,6 +62,13 @@ $messages['mk'] = array(
 	'fundraiserlandingpage-desc' => 'Зема параметри од URL-адреса и му ги дава на наведениот шаблон како негови променливи',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'fundraiserlandingpage-desc' => 'Mengambil parameter URL untuk diserahkan kepada templat yang ditentukan dalam bentuk pembolehubah templat',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -74,5 +81,12 @@ $messages['nl'] = array(
  */
 $messages['pms'] = array(
 	'fundraiserlandingpage-desc' => "A pija ij paràmetr d'anliura e a-j passa a lë stamp spessificà com variàbil dë stamp",
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'fundraiserlandingpage-desc' => 'Vzame parametre URL in jih posreduje navedeni predlogi kot spremenljivke predloge',
 );
 

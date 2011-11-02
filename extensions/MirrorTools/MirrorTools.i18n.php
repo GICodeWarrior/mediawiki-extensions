@@ -91,7 +91,7 @@ $messages['dsb'] = array(
 	'mirrortools-desc' => 'Zmóžnja změny pśez API pód wužywarskim mjenim',
 	'right-mirroredit' => 'Pśez API pód wužywarskim mjenim wobźěłaś',
 	'group-MirrorTools' => 'Wužywarje głědałkowego rěda',
-	'group-MirrorTools-member' => 'Wužywaŕ głědałkowego rěda',
+	'group-MirrorTools-member' => '{{GENDER:$1|wužywaŕ glědałkowego rěda|wužywarka glědałkowego rěda}}',
 	'grouppage-MirrorTools' => '{{ns:project}}:Wužywarje głědałkowego rěda',
 );
 
