@@ -130,7 +130,7 @@ $messages['en'] = array(
 	'contest-signup-finished' => 'This contest has ended. Thank you for your participation!',
 	'contest-signup-draft' => 'This contest has not yet started. Please be patient.',
 	'contest-signup-country' => 'Your country',
-	'contest-signup-emailwarn' => 'Warning: you are changing your accounts email address, which will require your confirming the new address.',
+	'contest-signup-emailwarn' => 'Warning: You are changing your accounts e-mail address, which will require your confirming the new address.',
 
 	'contest-signup-require-rules' => 'You must agree to the contest rules.',
 	'contest-signup-require-country' => 'You must provide your country of residence.',
@@ -275,7 +275,7 @@ $messages['qqq'] = array(
 	'contest-contest-reminder-mail' => 'Reminder e-mail',
 	'contest-contest-reminder-page' => 'Text explaining the e-mail content is pulled from a page, $1 is the page name.',
 	'contest-contest-send-reminder' => 'Send reminder button text',
-	'contest-contest-reminder-preview' => 'Text indicating that the following content is the preview for the reminder email.',
+	'contest-contest-reminder-preview' => 'Text indicating that the following content is the preview for the reminder e-mail.',
 	'contest-contest-reminder-title' => 'Dialog title',
 	'contest-contest-reminder-send' => 'Send button text',
 	'contest-contest-reminder-cancel' => 'Cancel button text',
