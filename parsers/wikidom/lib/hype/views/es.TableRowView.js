@@ -8,7 +8,7 @@
  */
 es.TableRowView = function( model ) {
 	// Inheritance
-	es.DocumentViewBranchNode.call( this, model, $( '<tr>' ) );
+	es.DocumentViewBranchNode.call( this, model, $( '<tr>' ), true );
 	
 	// DOM Changes
 	this.$.attr( 'style', model.getElementAttribute( 'html/style' ) );
