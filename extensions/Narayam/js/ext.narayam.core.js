@@ -318,7 +318,7 @@ $.narayam = new ( function() {
 	 * Enable Narayam
 	 */
 	this.enable = function() {
-		if ( !enabled && currentScheme !== null ) {
+		if ( !enabled) {
 			$.cookie( 'narayam-enabled', '1', { 'path': '/', 'expires': 30 } );
 			$( '#narayam-toggle' ).attr( 'checked', true );
 			$( 'li#pt-narayam').removeClass( 'narayam-inactive' );
@@ -402,14 +402,26 @@ $.narayam = new ( function() {
 	 * @param name String
 	 */
 	this.setScheme = function( name ) {
-		currentScheme = schemes[name];
-		if ( currentScheme ){
-			$.cookie( 'narayam-scheme', name, { 'path': '/', 'expires': 30 } );
-			return true;
+		var recent = $.cookie( 'narayam-scheme' ) || [];
+		if ( typeof recent === "string" ) {
+			recent = recent.split( "," );
+		};
+		recent = $.grep(recent, function(value) {
+ 			 return value != name;
+		});
+		recent.unshift( name );
+		recent = recent.slice( 0, 5 );
+		recent = recent.join( "," );
+		$.cookie( 'narayam-scheme', recent, { 'path': '/', 'expires': 30 } );
+		if (name in schemes){
+			currentScheme = schemes[name];
+		}else{
+			// load the rules dynamically.
+			mw.loader.using( "ext.narayam.rules." + name,  function() {
+				currentScheme = schemes[name];
+			});
 		}
-		else {
-			return false;
-		}
+		return true;
 	};
 
 	/**
@@ -426,10 +438,14 @@ $.narayam = new ( function() {
 		}
 
 		// Restore state from cookies
-		var savedScheme = $.cookie( 'narayam-scheme' );
-		if ( savedScheme && savedScheme in schemes ) {
-			that.setScheme( savedScheme );
-			$( '#narayam-' + savedScheme ).attr( 'checked', 'checked' );
+		var recentSchemes = $.cookie( 'narayam-scheme' );
+		var lastScheme = null;
+		if ( typeof recent === "string" ) {
+			lastScheme = recent.split( "," )[0];
+		}
+		if ( lastScheme) {
+			that.setScheme( lastScheme );
+			$( '#narayam-' + lastScheme ).attr( 'checked', 'checked' );
 		} else {
 			//if no saved input scheme, select the first.
 			var $firstScheme = $( 'input.narayam-scheme:first' );
@@ -453,30 +469,56 @@ $.narayam = new ( function() {
 		}
 
 	};
-
 	/**
-	 * Construct the menu for Narayam
+	 * Construct the menu item, for the given scheme name.
 	 */
-	this.buildMenu = function() {
+	this.buildMenuItem  =function(scheme) {
+		var $input = $( '<input type="radio" name="narayam-input-method" class="narayam-scheme" />' );
+		$input.attr( 'id', 'narayam-' + scheme ).val( scheme );
+
+		var $narayamMenuItemLabel = $( '<label />' )
+				.attr( 'for' ,'narayam-' + scheme )
+				.append( $input )
+				.append( mw.html.escape( mw.msg( "narayam-"+ scheme ) ) );
+
+		var $narayamMenuItem = $( '<li/>' )
+			.append( $input )
+			.append( $narayamMenuItemLabel );
+		return $narayamMenuItem;
+	};
+	
+	/**
+	 * prepare the menu list for all the input methods.
+	 * @return The div containing the constructed menu.
+	 */
+	this.buildMenuItems = function(){
 		var haveSchemes = false;
 		// Build schemes option list
 		var $narayamMenuItems = $( '<ul/>' );
+		var count = 1;
+		var seen = [];
+		
+		var recent = $.cookie( "narayam-scheme" ) || [];
+		if ( typeof recent === "string" ) {
+			recent = recent.split( "," );
+		}
+		// Prepare the recent inputmethods menu items
+		for ( var i = 0; i < recent.length; i++ ) {
+			var scheme = recent[i];
+			if ( $.inArray( scheme, seen ) > -1 ) { continue; }
+			seen.push( scheme );
+			//we show 5 recent input methods.
+			if ( count++ > 5 ) { break; }
+			$narayamMenuItem  = that.buildMenuItem(scheme);
+			$narayamMenuItem.addClass('narayam-recent-menu-item');
+			$narayamMenuItems.append( $narayamMenuItem );
+		}
+		
 		for ( var scheme in schemes ) {
-			var $input = $( '<input type="radio" name="narayam-input-method" class="narayam-scheme" />' );
-			$input
-				.attr( 'id', 'narayam-' + scheme )
-				.val( scheme );
-
-			var $narayamMenuItemLabel = $( '<label />' )
-					.attr( 'for' ,'narayam-' + scheme )
-					.append( $input )
-					.append( mw.html.escape( mw.msg( schemes[scheme].namemsg ) ) );
-
-			var $narayamMenuItem = $( '<li/>' )
-				.append( $input )
-				.append( $narayamMenuItemLabel );
-
 			haveSchemes = true;
+			if ( $.inArray( scheme, seen ) > -1 ) { continue; }
+			seen.push( scheme );
+			$narayamMenuItem  = that.buildMenuItem(scheme);
 			$narayamMenuItems.append( $narayamMenuItem );
 		}
 
@@ -487,8 +529,6 @@ $.narayam = new ( function() {
 		}
 
 		// Event listener for scheme selection.
-		// There is a plan to add a feature that allow dynamic loading of schemes.
-		// So .live will be useful
 		$( '.narayam-scheme', $( '#narayam-menu-items > ul')[0] ).live( 'click', function() {
 			that.setScheme( $(this).val() );
 		} );
@@ -523,32 +563,25 @@ $.narayam = new ( function() {
 		for ( var lang in allImes ) {
 			var langschemes = allImes[lang];
 			for ( var langscheme in langschemes ) {
-
-				var $input = $( '<input type="radio" name="narayam-input-method" class="narayam-scheme-dynamic" />' );
-				$input
-					.attr( 'id', 'narayam-' + langscheme )
-					.val( langscheme );
-
-				var $narayamMenuItemLabel = $( '<label />' )
-						.attr( 'for' ,'narayam-' + langscheme )
-						.append( $input )
-						.append( mw.html.escape( mw.msg( "narayam-"+ langscheme ) ) );
-
-				var $narayamMenuItem = $( '<li class="narayam-scheme-dynamic-item" />' )
-					.append( $input )
-					.append( $narayamMenuItemLabel );
-
+				// Donot repeat the input methods in more input methods section.
+				// If already shown on recent items.
+				if ( $.inArray( langscheme, seen ) > -1 ) { continue; }
+				$narayamMenuItem  = that.buildMenuItem(langscheme);
+				$narayamMenuItem.addClass( 'narayam-scheme-dynamic-item' );
 				$narayamMenuItems.append( $narayamMenuItem );
 
 			}
 		}
 
 		// Event listener for scheme selection - dynamic loading of rules.
-		$( '.narayam-scheme-dynamic', $( '#narayam-menu-items > ul')[0] ).live( 'click', function() {
-			var curVal =  $(this).val();
-			mw.loader.using( "ext.narayam.rules." + $(this).val() ,  function() {
-				that.setScheme( curVal )
-			});
+		$( '.narayam-scheme', $('.narayam-scheme-dynamic-item') ).live( 'click', function() {
+			that.setScheme(  $(this).val() );
+			// rebuild the menu items with recent items.
+			$( '#narayam-menu-items' ).html( $.narayam.buildMenuItems() );
+			$( '#narayam-' +  $(this).val() ).attr( 'checked', 'checked' );
+			if ( enabled ) {
+				$( '#narayam-toggle' ).attr( 'checked', true );
+			}
 		} );
 
 		var helppage = mw.config.get( 'wgNarayamHelpPage' );
@@ -566,11 +599,18 @@ $.narayam = new ( function() {
 		}
 
 		$narayamMenuItems.prepend( $( '<li/>' ).append( $label ) );
-
 		var $menuItemsDiv = $( '<div id="narayam-menu-items" class="menu-items" />' );
 		$menuItemsDiv
 			.append( $narayamMenuItems );
-
+		return $menuItemsDiv;
+	}
+	
+	
+	/**
+	 * Construct the menu for Narayam
+	 */
+	this.buildMenu = function() {
+		var $menuItemsDiv = that.buildMenuItems();
 		var $menu = $( '<div id="narayam-menu" class="narayam-menu" />');
 		$menu
 			.append(
