@@ -35,7 +35,6 @@ jQuery( function( $ ) {
 	 */
 	function setCookies() {
 		$.cookie( 'moodbar-feedback-types', formState.types.join( '|' ), { 'path': '/', 'expires': 7 } );
-		$.cookie( 'moodbar-feedback-username', formState.username, { 'path': '/', 'expires': 7 } );
 	}
 	
 	/**
@@ -45,15 +44,7 @@ jQuery( function( $ ) {
 	 */
 	function loadFromCookies() {
 		var	cookieTypes = $.cookie( 'moodbar-feedback-types' ),
-			$username = $( '#fbd-filters-username' ),
 			changed = false;
-		if ( $username.val() == '' ) {
-			var cookieUsername = $.cookie( 'moodbar-feedback-username' );
-			if ( cookieUsername != '' && cookieUsername !== null ) {
-				$username.val( cookieUsername );
-				changed = true;
-			}
-		}
 		
 		if ( cookieTypes ) {
 			// Because calling .indexOf() on an array doesn't work in all browsers,
@@ -340,4 +331,15 @@ jQuery( function( $ ) {
 		// you changed the form state then clicked More.
 		loadComments( 'more' );
 	} );
+	
+	saveFormState();
+	var filterType = $( '#fbd-filters' ).children( 'form' ).data( 'filtertype' );
+	// If filtering already happened on the PHP side, don't load the form state from cookies
+	if ( filterType != 'filtered' ) {
+		// Don't do an AJAX filter if we're on an ID view, or if the form is still blank after loadFromCookies()
+		if ( loadFromCookies() && filterType != 'id' ) {
+			saveFormState();
+			loadComments( 'filter' );
+		}
+	}
 } );
