@@ -84,7 +84,7 @@ es.SurfaceView.prototype.onMouseDown = function( e ) {
 	var position = es.Position.newFromEventPagePosition( e ),
 		offset = this.documentView.getOffsetFromEvent( e ),
 		nodeView = this.documentView.getNodeFromOffset( offset, false );
-	this.showCursor( offset, position.left > nodeView.$.offset().left + nodeView.$.width() / 2 );
+	this.showCursor( offset, position.left > nodeView.$.offset().left );
 	if ( !this.$input.is( ':focus' ) ) {
 		this.$input.focus().select();
 	}
