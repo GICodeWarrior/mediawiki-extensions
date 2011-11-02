@@ -29,7 +29,8 @@ es.SurfaceView = function( $container, model ) {
 		$: $( '<div class="es-surfaceView-cursor"></div>' ).appendTo( this.$ ),
 		interval: null,
 		offset: null,
-		initialLeft: null
+		initialLeft: null,
+		initialBias: false
 	};
 	this.keyboard = {
 		selecting: false,
@@ -111,8 +112,6 @@ es.SurfaceView = function( $container, model ) {
 		surfaceView.dimensions.scrollTop = surfaceView.$window.scrollTop();
 	} );
 };
-
-es.SurfaceView.boundaryTest = /([ \-\t\r\n\f])/;
 
 es.SurfaceView.prototype.onMouseDown = function( e ) {
 	var position = es.Position.newFromEventPagePosition( e ),
@@ -209,29 +208,19 @@ es.SurfaceView.prototype.moveCursor = function( instruction ) {
 		);
 	} else if ( instruction === 'up' || instruction === 'down' ) {
 		// ...
-	} else if ( instruction === 'home' ) {
-		if ( wasLeftBias ) {
-			this.showCursor(
-				this.documentView.getRenderedLineRangeFromOffset(
-					this.documentView.getModel().getRelativeContentOffset( this.cursor.offset, -1 )
-				).start
-			);
+	} else if ( instruction === 'home' || instruction === 'end' ) {
+		var offset;
+		if ( this.cursor.initialBias ) {
+			offset = this.documentView.getModel().getRelativeContentOffset(
+				this.cursor.offset, -1 );
 		} else {
-			this.showCursor( this.documentView.getRenderedLineRangeFromOffset( this.cursor.offset ).start );
+			offset = this.cursor.offset;
 		}
-	} else if ( instruction === 'end' ) {
-		if ( !wasLeftBias ) {
+		if ( instruction === 'home' ) {
 			this.showCursor(
-				this.documentView.getRenderedLineRangeFromOffset( this.cursor.offset ).end,
-				true
-			);
-		} else {
-			this.showCursor(
-				this.documentView.getRenderedLineRangeFromOffset(
-					this.documentView.getModel().getRelativeContentOffset( this.cursor.offset, -1 )
-				).end,
-				true
-			);
+				this.documentView.getRenderedLineRangeFromOffset( offset ).start, false );
+		} else { // end
+			this.showCursor( this.documentView.getRenderedLineRangeFromOffset( offset ).end, true );
 		}
 	}
 };
@@ -242,15 +231,9 @@ es.SurfaceView.prototype.moveCursor = function( instruction ) {
  * @method
  * @param offset {Integer} Position to show the cursor at
  */
-var wasLeftBias = false;
 es.SurfaceView.prototype.showCursor = function( offset, leftBias ) {	
 	if ( typeof offset !== 'undefined' ) {
-		if ( leftBias ) {
-			wasLeftBias = true;
-		} else {
-			wasLeftBias = false;
-		}
-		console.log('showCursor: ' + offset + ' leftBias: ' + leftBias);
+		this.cursor.initialBias = leftBias ? true : false;
 		this.cursor.offset = offset;
 		var position = this.documentView.getRenderedPositionFromOffset(
 			this.cursor.offset, leftBias
