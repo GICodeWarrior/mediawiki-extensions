@@ -15,7 +15,7 @@ es.DocumentView = function( model, surfaceView ) {
 	this.surfaceView = surfaceView;
 
 	// DOM Changes
-	this.$.addClass( 'editSurface-documentView' );
+	this.$.addClass( 'es-documentView' );
 };
 
 /**

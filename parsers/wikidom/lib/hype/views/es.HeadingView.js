@@ -11,7 +11,7 @@ es.HeadingView = function( model ) {
 	es.DocumentViewLeafNode.call( this, model, $( '<h' + model.getElementAttribute( 'level' )  + '>') );
 
 	// DOM Changes
-	this.$.addClass( 'editSurface-headingView' );
+	this.$.addClass( 'es-headingView' );
 
 	// Events
 	this.on( 'update', this.setClasses );
@@ -27,9 +27,9 @@ es.HeadingView.prototype.setClasses = function() {
 		level = this.model.getElementAttribute( 'level' );
 	this.$
 		// Remove any existing level classes
-		.attr( 'class', classes.replace( /editSurface-headingView-level[1-6]/, '' ) )
+		.attr( 'class', classes.replace( /es-headingView-level[1-6]/, '' ) )
 		// Add a new level class
-		.addClass( 'editSurface-headingView-level' + level );
+		.addClass( 'es-headingView-level' + level );
 };
 
 /* Inheritance */

@@ -13,7 +13,7 @@ es.TableCellView = function( model ) {
 	// DOM Changes
 	this.$
 		.attr( 'style', model.getElementAttribute( 'html/style' ) )
-		.addClass( 'editSurface-tableCellView' );
+		.addClass( 'es-tableCellView' );
 };
 
 /* Inheritance */

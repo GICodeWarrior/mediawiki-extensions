@@ -11,7 +11,7 @@ es.ParagraphView = function( model ) {
 	es.DocumentViewLeafNode.call( this, model );
 
 	// DOM Changes
-	this.$.addClass( 'editSurface-paragraphView' );
+	this.$.addClass( 'es-paragraphView' );
 };
 
 /* Inheritance */

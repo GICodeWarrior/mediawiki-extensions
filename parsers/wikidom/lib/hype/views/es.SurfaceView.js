@@ -7,7 +7,7 @@
  * @param {es.SurfaceModel} model Surface model to view
  */
 es.SurfaceView = function( $container, model ) {
-	this.$ = $container.addClass( 'editSurface' );
+	this.$ = $container.addClass( 'es-surfaceView' );
 	this.$window = $( window );
 	this.model = model;
 	
@@ -16,7 +16,7 @@ es.SurfaceView = function( $container, model ) {
 	this.$.append( this.documentView.$ );
 	
 	this.cursor = {
-		$: $( '<div class="editSurface-surfaceView-cursor"></div>' ).appendTo( this.$ ),
+		$: $( '<div class="es-surfaceView-cursor"></div>' ).appendTo( this.$ ),
 		interval: null,
 		offset: null,
 		initialLeft: null
@@ -46,30 +46,30 @@ es.SurfaceView = function( $container, model ) {
 	} );
 	
 	// Hidden input
-	this.$input = $( '<input class="editSurface-surfaceView-input" />' )
+	this.$input = $( '<input class="es-surfaceView-input" />' )
 		.prependTo( this.$ )
 		.on( {
 			'focus' : function() {
 				//console.log("focus");
-				$document.off( '.editSurface' );
+				$document.off( '.es-surfaceView' );
 				$document.on({
-					'mousemove.editSurface' : function(e) {
+					'mousemove.es-surfaceView': function(e) {
 						//return surfaceView.onMouseMove( e );
 					},
-					'mouseup.editSurface' : function(e) {
+					'mouseup.es-surfaceView': function(e) {
 						//return surfaceView.onMouseUp( e );
 					},
-					'keydown.editSurface' : function( e ) {
+					'keydown.es-surfaceView': function( e ) {
 						return surfaceView.onKeyDown( e );			
 					},
-					'keyup.editSurface' : function( e ) {
+					'keyup.es-surfaceView': function( e ) {
 						return surfaceView.onKeyUp( e );		
 					}
 				});
 			},
 			'blur': function( e ) {
 				//console.log("blur");
-				$document.off( '.editSurface' );
+				$document.off( '.es-surfaceView' );
 				surfaceView.hideCursor();
 			}
 		} ).focus();

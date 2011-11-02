@@ -45,10 +45,10 @@ es.ContentView = function( $container, model ) {
 		} );
 
 		// DOM Changes
-		this.$ranges = $( '<div class="editSurface-contentView-ranges"></div>' );
-		this.$rangeStart = $( '<div class="editSurface-contentView-range"></div>' );
-		this.$rangeFill = $( '<div class="editSurface-contentView-range"></div>' );
-		this.$rangeEnd = $( '<div class="editSurface-contentView-range"></div>' );
+		this.$ranges = $( '<div class="es-contentView-ranges"></div>' );
+		this.$rangeStart = $( '<div class="es-contentView-range"></div>' );
+		this.$rangeFill = $( '<div class="es-contentView-range"></div>' );
+		this.$rangeEnd = $( '<div class="es-contentView-range"></div>' );
 		this.$.prepend( this.$ranges.append( this.$rangeStart, this.$rangeFill, this.$rangeEnd ) );
 
 		// Initialization
@@ -70,7 +70,7 @@ es.ContentView = function( $container, model ) {
 es.ContentView.annotationRenderers = {
 	'template': {
 		'open': function( data ) {
-			return '<span class="editSurface-contentView-format-object">' + data.html;
+			return '<span class="es-contentView-format-object">' + data.html;
 		},
 		'close': '</span>',
 		'float': function( data ) {
@@ -79,41 +79,39 @@ es.ContentView.annotationRenderers = {
 		}
 	},
 	'bold': {
-		'open': '<span class="editSurface-contentView-format-bold">',
+		'open': '<span class="es-contentView-format-bold">',
 		'close': '</span>',
 		'float': false
 	},
 	'italic': {
-		'open': '<span class="editSurface-contentView-format-italic">',
+		'open': '<span class="es-contentView-format-italic">',
 		'close': '</span>',
 		'float': false
 	},
 	'size': {
 		'open': function( data ) {
-			return '<span class="editSurface-contentView-format-' + data.type + '">';
+			return '<span class="es-contentView-format-' + data.type + '">';
 		},
 		'close': '</span>',
 		'float': false
 	},
 	'script': {
 		'open': function( data ) {
-			return '<span class="editSurface-contentView-format-' + data.type + '">';
+			return '<span class="es-contentView-format-' + data.type + '">';
 		},
 		'close': '</span>',
 		'float': false
 	},
 	'xlink': {
 		'open': function( data ) {
-			return '<span class="editSurface-contentView-format-link" data-href="' + data.href +
-				'">';
+			return '<span class="es-contentView-format-link" data-href="' + data.href + '">';
 		},
 		'close': '</span>',
 		'float': false
 	},
 	'ilink': {
 		'open': function( data ) {
-			return '<span class="editSurface-contentView-format-link" data-title="' + data.title +
-				'">';
+			return '<span class="es-contentView-format-link" data-title="' + data.title + '">';
 		},
 		'close': '</span>',
 		'float': false
@@ -132,8 +130,8 @@ es.ContentView.htmlCharacters = {
 	'>': '&gt;',
 	'\'': '&#039;',
 	'"': '&quot;',
-	'\n': '<span class="editSurface-contentView-whitespace">&#182;</span>',
-	'\t': '<span class="editSurface-contentView-whitespace">&#8702;</span>',
+	'\n': '<span class="es-contentView-whitespace">&#182;</span>',
+	'\t': '<span class="es-contentView-whitespace">&#8702;</span>',
 	' ': '&nbsp;'
 };
 
@@ -366,7 +364,7 @@ es.ContentView.prototype.getOffsetFromRenderedPosition = function( position ) {
 	 * TODO: The offset needs to be chosen based on nearest offset to the cursor, not offset before
 	 * the cursor.
 	 */
-	var $ruler = $( '<div class="editSurface-contentView-ruler"></div>' ).appendTo( this.$ ),
+	var $ruler = $( '<div class="es-contentView-ruler"></div>' ).appendTo( this.$ ),
 		ruler = $ruler[0],
 		fit = this.fitCharacters( line.range, ruler, position.left ),
 		center;
@@ -451,7 +449,7 @@ es.ContentView.prototype.getRenderedPositionFromOffset = function( offset, leftB
 	 * measuring for those cases.
 	 */
 	if ( line.range.start < offset ) {
-		var $ruler = $( '<div class="editSurface-contentView-ruler"></div>' ).appendTo( this.$ ),
+		var $ruler = $( '<div class="es-contentView-ruler"></div>' ).appendTo( this.$ ),
 			ruler = $ruler[0];
 		ruler.innerHTML = this.getHtml( new es.Range( line.range.start, offset ) );
 		position.left = ruler.clientWidth;
@@ -564,7 +562,7 @@ es.ContentView.prototype.renderIteration = function( limit ) {
 		// Cleanup
 		rs.$ruler.remove();
 		this.lines = rs.lines;
-		this.$.find( '.editSurface-contentView-line[line-index=' + ( this.lines.length - 1 ) + ']' )
+		this.$.find( '.es-contentView-line[line-index=' + ( this.lines.length - 1 ) + ']' )
 			.nextAll()
 			.remove();
 		rs.timeout = undefined;
@@ -606,7 +604,7 @@ es.ContentView.prototype.render = function( offset ) {
 	// In case of empty content model we still want to display empty with non-breaking space inside
 	// This is very important for lists
 	if(this.model.getContentLength() === 0) {
-		var $line = $( '<div class="editSurface-contentView-line" line-index="0">&nbsp;</div>' );
+		var $line = $( '<div class="es-contentView-line" line-index="0">&nbsp;</div>' );
 		this.$.empty().append( $line );
 		this.lines = [{
 			'text': ' ',
@@ -628,7 +626,7 @@ es.ContentView.prototype.render = function( offset ) {
 	 */
 	rs.$ruler = $( '<div>&nbsp;</div>' ).appendTo( this.$ );
 	rs.width = rs.$ruler.innerWidth();
-	rs.ruler = rs.$ruler.addClass('editSurface-contentView-ruler')[0];
+	rs.ruler = rs.$ruler.addClass('es-contentView-ruler')[0];
 	// Ignore offset optimization if the width has changed or the text has never been flowed before
 	if (this.width !== rs.width) {
 		offset = undefined;
@@ -674,7 +672,7 @@ es.ContentView.prototype.appendLine = function( range, wordOffset, fractional ) 
 		$line = this.$.children( '[line-index=' + lineCount + ']' );
 	if ( !$line.length ) {
 		$line = $(
-			'<div class="editSurface-contentView-line" line-index="' + lineCount + '"></div>'
+			'<div class="es-contentView-line" line-index="' + lineCount + '"></div>'
 		);
 		this.$.append( $line );
 	}
@@ -689,7 +687,7 @@ es.ContentView.prototype.appendLine = function( range, wordOffset, fractional ) 
 		'fractional': fractional
 	});
 	// Disable links within rendered content
-	$line.find( '.editSurface-contentView-format-object a' )
+	$line.find( '.es-contentView-format-object a' )
 		.mousedown( function( e ) {
 			e.preventDefault();
 		} )

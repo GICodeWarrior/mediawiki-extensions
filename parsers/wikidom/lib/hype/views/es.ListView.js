@@ -11,7 +11,7 @@ es.ListView = function( model ) {
 	es.DocumentViewBranchNode.call( this, model );
 
 	// DOM Changes
-	this.$.addClass( 'editSurface-listView' );
+	this.$.addClass( 'es-listView' );
 
 	// Events
 	this.on( 'update', this.enumerate );
