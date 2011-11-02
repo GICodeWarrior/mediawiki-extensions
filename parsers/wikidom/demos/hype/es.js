@@ -19,8 +19,102 @@ $(document).ready( function() {
 				}
 			},
 			{
+				'type': 'heading',
+				'attributes': { 'level': 2 },
+				'content': {
+					'text': 'This is a heading (level 2)',
+					'annotations': [
+						{
+							'type': 'italic',
+							'range': {
+								'start': 10,
+								'end': 17
+							}
+						}
+					]	
+				}
+			},
+			{
+				'type': 'heading',
+				'attributes': { 'level': 3 },
+				'content': {
+					'text': 'This is a heading (level 3)',
+					'annotations': [
+						{
+							'type': 'italic',
+							'range': {
+								'start': 10,
+								'end': 17
+							}
+						}
+					]	
+				}
+			},
+			{
+				'type': 'heading',
+				'attributes': { 'level': 4 },
+				'content': {
+					'text': 'This is a heading (level 4)',
+					'annotations': [
+						{
+							'type': 'italic',
+							'range': {
+								'start': 10,
+								'end': 17
+							}
+						}
+					]	
+				}
+			},
+			{
+				'type': 'heading',
+				'attributes': { 'level': 5 },
+				'content': {
+					'text': 'This is a heading (level 5)',
+					'annotations': [
+						{
+							'type': 'italic',
+							'range': {
+								'start': 10,
+								'end': 17
+							}
+						}
+					]	
+				}
+			},
+			{
+				'type': 'heading',
+				'attributes': { 'level': 6 },
+				'content': {
+					'text': 'This is a heading (level 6)',
+					'annotations': [
+						{
+							'type': 'italic',
+							'range': {
+								'start': 10,
+								'end': 17
+							}
+						}
+					]	
+				}
+			},
+			{
 				'type': 'paragraph',
-				'content': { 'text': 'Test 1' }
+				'content': {
+					'text': 'In text display, line wrap is the feature of continuing on a new line when a line is full, such that each line fits in the viewable window, allowing text to be read from top to bottom without any horizontal scrolling.\nWord wrap is the additional feature of most text editors, word processors, and web browsers, of breaking lines between and not within words, except when a single word is longer than a line.',
+					'annotations': [
+						// 'In text display' should be bold
+						{ 'type': 'bold', 'range': { 'start': 0, 'end': 15 } },
+						// 'line wrap' should be italic
+						{ 'type': 'italic', 'range': { 'start': 17, 'end': 26 } },
+						// 'wrap is' should be a link to '#'
+						{
+							'type': 'xlink',
+							'data': { 'href': '#' },
+							'range': { 'start': 22, 'end': 29 }
+						}
+					]
+				}
 			},
 			{
 				'type': 'paragraph',
