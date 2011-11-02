@@ -5,10 +5,9 @@
  * As of November 2nd 2011, this is still a work in progress.
  *
  * Latest version can be found in the Mediawiki repository under
- *  /trunk/tools/testswarm/
+ * /trunk/tools/testswarm/
  *
  * Based on http://svn.wikimedia.org/viewvc/mediawiki/trunk/tools/testswarm/scripts/testswarm-mediawiki-svn.php?revision=94359&view=markup
- * (which only did a static dump of /resources and /tests/qunit).
  *
  * @author Timo Tijhof, 2011
  * @author Antoine "hashar" Musso, 2011
@@ -21,277 +20,260 @@
  * to install any PECL extension.
  *
  * @todo We might want to abstract svn commands to later use git
- * @todo FIXME: Get the classes/function implied from MediaWiki somehow.
+ * @todo Create some kind of locking system (either inside this script or outside of it),
+ * to prevent this script from running if it is already running (since checking out & installing MediaWiki
+ * can easily take over 5 minutes).
  *
  * @example:
  * @code
  *   $options = array(
- *     'root' => '',
- *     'url' => 'http://svn.wikimedia.org/svnroot/mediawiki/trunk/phase3',
+ *     'root' => '/tmp/testswarm-mw',
+ *     'svnUrl' => 'http://svn.wikimedia.org/svnroot/mediawiki/trunk/phase3',
  *   );
- *   $fetcher = new TestSwarmMWFetcher( $options );
- *   $fetcher->tryInstallNextRev();
+ *   $main = new TestSwarmMWMain( $options );
+ *   $main->tryFetchNextRev();
  * @endcode
  */
-class TestSwarmMWFetcher {
+class TestSwarmMWMain {
 
 	/** Base path to run into */
 	protected $root;
+
 	/** URL to a subversion repository as supported by the Subversion cli */
-	protected $url;
+	protected $svnUrl;
+
 	/** subversion command line utility */
 	protected $svnCmd = '/usr/bin/svn';
-	/** whether to enable debugging */
-	protected $debugEnabled = false;
-	/** hold previous path when chdir() to a checkout directory */
-	protected $savedPath = null;
+
+	/** Whether to enable debugging */
+	protected $debugMode = false;
+
 	/** Minimum revision to start with. At least 1 */
-	protected $minRevision = 1;
+	protected $minRev = 1;
+
+	/** Path to log file */
+	protected $logPath;
+
+
+	/** GETTERS **/
+
+	public function getSvnCmd() { return $this->svnCmd; }
+	public function getSvnUrl() { return $this->svnUrl; }
+	public function getLogPath() { return $this->logPath; }
+
+
+	/** SETTERS **/
+
+	public function setLogPath( $path ) {
+		$this->logPath = $path;
+		return true;
+	}
+
+
+	/** INIT **/
 
 	/**
 	 * Init the testswarm fetcher.
 	 *
-	 * @param @options Array: Required options are:
+	 * @param @options array: Required options are:
 	 *  'root' => root path where all stuff happens
-	 *  'url' => URL for the repository
+	 *  'svnUrl' => URL to the repository (or a subdirectory of it)
 	 * Other options:
 	 *  'svnCmd' => path/to/svn (default: /usr/bin/svn)
-	 *  'debug' => true/false
-	 *  'minrevision' => int (revision to start at)
+	 *  'debug' => (default: false)
+	 *  'minRev' => int (default: 1)
 	 */
-	function __construct( $options = array() ) {
+	public function __construct( $options = array() ) {
 
 		// Verify we have been given required options
-		if(    !isset( $options['root'] )
-			&& !isset( $options['url'] )
-		) {
-			throw new Exception( __METHOD__ . ": " . __CLASS__ . " constructor must be passed 'root' and 'url' options\n" );
+		if ( !isset( $options['root'] ) || !isset( $options['svnUrl'] ) ) {
+			throw new Exception( __METHOD__ . ": Required options 'root' and/or 'svnUrl' missing" );
 		}
-		$this->root       = $options['root'];
-		$this->url        = $options['url'];
 
-		// and now the optional options 
-		if( isset($options['svnCmd'] ) ) {
+		$this->root = $options['root'];
+		$this->svnUrl = $options['svnUrl'];
+
+		// Default log file
+		$this->setLogPath( "{$options['root']}/logs/default.log" );
+
+		// Optional options 
+		if ( isset( $options['svnCmd'] ) ) {
 			$this->svnCmd = $options['svnCmd'];
 		}
-		if( isset($options['debug'] ) ) {
-			$this->debugEnabled = true;
+
+		if ( isset( $options['debug'] ) ) {
+			$this->debugMode = true;
 		}
-		if( isset($options['minrevision'] ) ) {
-			if( $options['minrevision'] < 1 ) {
-				# minrevision = 0 will just screw any assumption made in this script.
+
+		if ( isset( $options['minRev'] ) ) {
+			if ( $options['minRev'] < 1 ) {
+				# minRev = 0 will just screw any assumption made in this script.
 				# so we really do not want it.
-				throw new Exception( __METHOD__ . ": " . __CLASS__ . " option 'minrevision' must be >= 1 \n" );
+				throw new Exception( __METHOD__ . ": Option 'minRev' must be >= 1 " );
 			}
-			$this->minRevision = $options['minrevision'];
+			$this->minRev = $options['minRev'];
 		}
+
+		return $this;
 	}
 
 	/**
-	 * Try to install the next revision after our latest install.
+	 * Try to fetch the next revision (relative latest checkout in the checkouts directory).
 	 * This is the main entry point after construction.
 	 */
-	function tryInstallNextRev() {
-		// Setup checkouts dir if it does not exist yet (happens on initial run).
-		$checkouts = "{$this->root}/checkouts";
-		if( !file_exists( $checkouts ) ) {
-			$this->mkdir( $checkouts );
-		}
+	public function tryFetchNextRev() {
+		$this->prepareRootDirs();
 
 		// Now find out the next revision in the remote repository
-		$next = $this->getNextRevisionId();
+		$next = $this->getNextCheckoutRevId();
 		if ( !$next ) {
-			$this->debug( __METHOD__ . " no next revision." );
+			$this->debug( 'No next revision', __METHOD__ );
 			return false;
 		} else {
 			// And install it
-			return $this->doInstallById( $next );
+			$fetcher = new TestSwarmMWFetcher( &$this, $next );
+			return $fetcher->run();
+		}
+	}
+
+
+	/** SVN REVISION HELPERS **/
+
+	/**
+	 * Get latest revision fetched in the working copy.
+	 * @return integer
+	 */
+	public function getLastCheckoutRevId() {
+		$paths = $this->getPathsForRev( 0 );
+		$checkoutPath = dirname( $paths['mw'] );
+
+		// scandir() sorts in descending order if given a nonzero value as second argument.
+		// PHP 5.4 accepts constant SCANDIR_SORT_DESCENDING
+		$subdirs = scandir( $checkoutPath, 1 );
+		$this->debug( "Scan of '{$checkoutPath}' returned:\n - /" . implode("\n - /", $subdirs ) );
+
+		// Verify the directory is like 'r123' (it could be '.', '..' or even something completely different)
+		if ( $subdirs[0][0] === 'r' ) {
+			return substr( $subdirs[0], 1 );
+		} else {
+			return null;
 		}
 	}
 
 	/**
-	 * This is the main function doing checkout and installation for
-	 * a given rev.
-	 *
-	 * @param $id integer: Revision id to install
-	 * @return
+	 * Get the first revision after the given revision in the remote repository.
+	 * @param $id integer
+	 * @return null|integer: Null if there is no next, other wise integer id of next revision.
 	 */
-	function doInstallById( $id ) {
-		if( !is_int( $id ) ) {
-			throw new Exception( __METHOD__ . " passed a non integer revision number\n" );
-		}
-
-		$this->doCheckout( $id );
-		$this->doInstall( $id );
-		$this->doAppendSettings( $id );
-
-		# TODO:
-		// get list of tests (see the current file in svn/trunk/tools)
-		// request to testswarm to add jobs to run these tests
-		// --> 'api' POST request to TestSwarm/addjob.php (with login/auth token)
-	}
-
-	/**
-	 * Checkout a given revision in our specific tree.
-	 * Throw an exception if anything got wrong.
-	 * @todo Output is not logged.
-	 *
-	 * @param $id integer: Revision id to checkout.
-	 */
-	function doCheckout( $id ){
-		$this->msg( "Checking out r{$id}" );
-
-		// create checkout directory
-		$revPath = self::getPath( 'mw', $id );
-		$this->mkdir( $revPath );
-
-		# TODO FIXME : we might want to log the output of svn commands
-		$cmd = "{$this->svnCmd} checkout {$this->url}@r{$id} {$revPath}";
-		$this->exec( $cmd, $retval );
-		if( $retval !== 0 ) {
-			throw new Exception(__METHOD__." error running subversion checkout.\n" );
-		}
-
-		// TODO handle errors for above commands.
-		// $this->getPath( 'log' );
-	}
-
-	/**
-	 * Install a given revision.
-	 *
-	 * @param $id integer: Revision id to run the installer for.
-	 */
-	function doInstall( $id ) {
-		$this->msg( "Installing r{$id}" );
-
-		# Create database directory (needed on initial run)
-		$this->mkdir(
-			$this->getPath( 'db', $id )
-		);
-
-		# Erase MW_INSTALL_PATH which would interact with the install script
-		putenv( "MW_INSTALL_PATH" );
-
-		// Now simply run the CLI installer:
-		$cmd = "php {$this->getPath( 'mw', $id )}/maintenance/install.php \
-			--dbname=testwarm_mw_r{$id} \
-			--dbtype=sqlite \
-			--dbpath={$this->getPath( 'db', $id )} \
-			--pass=testpass \
-			--showexceptions=true \
-			--confpath={$this->getPath( 'mw', $id )} \
-			WIKINAME \
-			ADMINNAME
-			";
-		$output = $this->exec( $cmd, $retval );
-
-		print "Installer output for r{$id}:\n";
-		print $output;
-
-		if( $retval !== 0 ) {
-			throw new Exception(__METHOD__." error running MediaWiki installer.\n" );
-		}
-	}
-
-	/**
-	 * TODO: implement :-)
-	 * @param $id integer: Revision id to append settings to.
-	 */
-	function doAppendSettings( $id ) {
-		$this->msg( "Appending settings for r{$id} installation (not implemented)" );
-		return true;
-
-		# Notes for later implementation:
-
-		// append to mwPath/LocalSettings.php
-		// -- contents of LocalSettings.tpl.php
-		// -- require_once( '{$this->getPath('globalsettings')}' );"
+	public function getNextFollowingRevId( $id ) {
 
 		/**
-		 * Possible additional common settings to append to LocalSettings after install:
-		 * See gerrit integration/jenkins.git :
-		 *  https://gerrit.wikimedia.org/r/gitweb?p=integration/jenkins.git;a=tree;f=jobs/MediaWiki-phpunit;hb=HEAD
+		 * @todo FIXME: Takes a loooooooongg time to look up for "1:HEAD"
 		 *
-		 * $wgShowExceptionDetails = true;
-		 * $wgShowSQLErrors = true;
-		 * #$wgDebugLogFile = dirname( __FILE__ ) . '/build/debug.log';
-		 * $wgDebugDumpSql = true;
+		 * @example:
+		 * $ svn log -q -r101656:HEAD --limit 2 http://svn.wikimedia.org/svnroot/mediawiki/trunk/phase3
+		 * ------------------------------------------------------------------------
+		 * r101656 | aaron | 2011-11-02 19:47:04 +0100 (Wed, 02 Nov 2011)
+		 * ------------------------------------------------------------------------
+		 * r101666 | brion | 2011-11-02 20:36:49 +0100 (Wed, 02 Nov 2011)
+		 * ------------------------------------------------------------------------
 		 */
+		$nextRev = $id + 1;
+		$cmd = "{$this->svnCmd} log -q -r{$nextRev}:HEAD --limit 1 {$this->svnUrl}";
+
+		$retval = null;
+		$output = $this->exec( $cmd, $retval );
+
+		if ( $retval !== 0 ) {
+			throw new Exception(__METHOD__. ': Error running subversion log' );
+		}
+
+		preg_match( "/r(\d+)/m", $output, $m );
+
+		if ( !isset( $m[1] ) ) {
+			// No next revision, given id is already >= HEAD
+			return null;
+		}
+
+		$followingRev = (int)$m[1];
+		if ( $followingRev === 0 ) {
+			throw new Exception( __METHOD__ . " Remote returned a invalid revision id: '{$m[1]}'" );
+		}
+		return $followingRev;
 	}
 
 	/**
-	 * Utility function to log a message for a given id
-	 *
-	 * @param $msg String message to log. Will be prefixed with date("c")
-	 * @param $id Integer Revision id.
+	 * Get next changed revision for a given checkout
+	 * @return String|Boolean: false if nothing changed, else the upstream revision just after.
 	 */
-	function log( $msg, $id ) {
-		$file = $this->getLogFile( $id );
-		// append stuff to logfile
-		fopen( $file, "w+" );
-		fwrite( date("c").$msg, $file );
-		fclose( $file );
-	}
-
-	/**
-	 * Utility function to output a dated message
-	 *
-	 * @param $msg String message to show. Will be prefixed with date("c")
-	 */
-	function msg( $msg ) {
-		print date("c") . " $msg\n";
-	}
-
-	/**
-	 * Print a message to STDOUT when debug mode is enabled
-	 * Messages are prefixed with "DEBUG> "
-	 * Multi lines messages will be prefixed as well.
-	 *
-	 * @param $msg string Message to print
-	 */
-	function debug( $msg ) {
-		if( !$this->debugEnabled ) {
-			return;
-		}
-		foreach( explode( "\n", $msg ) as $line ) {
-			print "DEBUG> $line\n";
-		}
-	}
-
-	/** unused / unneeded? @author Antoine Musso */
-	function changePath( $path ) {
-		if( $this->savedPath !== null ) {
-			throw new Exception( __METHOD__ . " called but a saved path exist '" . $this->savedPath ."' Did you forget to call restorePath()?\n");
-		}
-		$this->debug( "chdir( $path )" );
-
-		$oldPath = getcwd();
-		if( chdir( $path ) ) {
-			$this->savedPath = $oldPath;
+	public function getNextCheckoutRevId() {
+		$cur = $this->getLastCheckoutRevId();
+		if ( is_null ( $cur ) ) {
+			$this->debug( 'Checkouts dir empty? Looking up remote repo...', __METHOD__ );
+			$next = $this->minRev;
 		} else {
-			throw new Exception( __METHOD__ . " failed to chdir() to $path\n" );
+			$next = (int)$cur;//$this->getNextFollowingRevId( $cur );
 		}
+
+		$this->debug( __METHOD__ . ": Going to use r{$next}" );
+		return $next;
 	}
 
-	/** unused / unneeded? @author Antoine Musso */
-	function restorePath() {
-		if( $this->savedPath === null ) {
-			return false;
+
+	/** DIRECTORY STRUCTURE **/
+
+	public function getRootDirs() {
+		return array(
+			"{$this->root}/dbs",
+			"{$this->root}/checkouts",
+			"{$this->root}/conf",
+			"{$this->root}/logs",
+		);
+	}
+
+	public function prepareRootDirs() {
+		foreach( $this->getRootDirs() as $dir ) {			
+			if ( !file_exists( $dir ) ) {
+				$this->mkdir( $dir );
+			}
 		}
-		chdir( $this->savedPath );
 	}
 
 	/**
-	 * Execute a command!
-	 * Ripped partially from wfExec()
-	 * throw an exception if anything goes wrong.
+	 * This function is where most of the directory layout is kept.
+	 * All other methods should use this array to determine where to look or save.
 	 *
-	 * @param $cmd string Command which will be passed as is (no escaping FIXME)
-	 * @param &$retval reference Will be given the command exit level
-	 * @return Command output.
+	 * @param $id integer: Revision number.
+	 * @return Array of paths relevant for an install.
 	 */
-	function exec( $cmd, &$retval = 0 ) {
-		$this->debug( __METHOD__ . " $cmd" );
+	public function getPathsForRev( $id ) {
+		if ( !is_int( $id ) ) {
+			throw new Exception( __METHOD__ . ': Given non numerical revision' );
+		}
+
+		return array(
+			'db' => "{$this->root}/dbs",
+			'mw' => "{$this->root}/checkouts/r{$id}",
+			'globalsettings' => "{$this->root}/conf/GlobalSettings.php",
+			'localsettingstpl' => "{$this->root}/conf/LocalSettings.tpl.php",
+			'log' => "{$this->root}/logs/r{$id}.log",
+		);
+	}
+
+
+	/** UTILITY FUNCTIONS **/
+
+	/**
+	 * Execute a shell command!
+	 * Ripped partially from wfShellExec()
+	 * Throws an exception if anything goes wrong.
+	 *
+	 * @param $cmd string: Command which will be passed as is (no escaping FIXME)
+	 * @param &$retval reference: Will be given the command exit level
+	 * @return mixed: Command output.
+	 */
+	public function exec( $cmd, &$retval = 0 ) {
+		$this->debug( "Executing '$cmd'", __METHOD__ );
 
 		// Pass command to shell and use ob to fetch the output
 		ob_start();
@@ -299,9 +281,11 @@ class TestSwarmMWFetcher {
 		$output = ob_get_contents();
 		ob_end_clean();
 
-		if( $retval == 127 ) {
-			throw new Exception( __METHOD__ . "probably missing executable. Check env.\n" );
+		if ( $retval == 127 ) {
+			throw new Exception( __METHOD__ . ': Probably missing executable. Check env.' );
 		}
+
+		$this->debug( "Done executing '$cmd'", __METHOD__ );
 
 		return $output;
 	}
@@ -311,152 +295,187 @@ class TestSwarmMWFetcher {
 	 *
 	 * @param $path String Path to create ex: /tmp/my/foo/bar 
 	 */
-	function mkdir( $path ) {
-		$this->debug( __METHOD__ . " mkdir( $path )" );
-		if(!file_exists( $path ) ) {
-			if( mkdir( $path, 0777, true ) ) {
-				$this->debug( __METHOD__ . ": Created directory $path" );
+	public function mkdir( $path ) {
+		$this->debug( "Attempting to create directory '$path'...", __METHOD__ );
+		if ( !file_exists( $path ) ) {
+			if ( mkdir( $path, 0777, true ) ) {
+				$this->debug( "Created directory '$path'", __METHOD__ );
 			} else {
-				throw new Exception( __METHOD__ . " Error creating directory $path\n" );
+				throw new Exception( __METHOD__ . ": Failed to create directory '$path'" );
 			}
 		} else {
-			$this->debug( __METHOD__ . " mkdir( $path ). Path already exist." );
+			$this->debug( "Creating directory '$path' aborted. Directory already exist", __METHOD__ );
 		}
 	}
 
-	/** unused / unneeded? @author Antoine Musso */
-	function getLogFile( $id ) {
-		return $logfile = $this->getPath( 'log', $id ). "/debug.log";
-	}
 
-	/** UTILITY FUNCTIONS **/
+	/** LOGGING **/
 
 	/**
-	 * Get next changed revision for a given checkout
-	 * @return String|Boolean: false if nothing changed, else the upstream revision just after.
-	 */
-	function getNextRevisionId() {
-		$cur = $this->getCurrentRevisionId();
-		if( $cur === null ) {
-			$this->debug( __METHOD__ . " checkouts dir empty? Looking up remote repo." );
-			$next = $this->getFirstRevision();
-		} else {
-			$next = $this->getRevFollowing( $cur );
-		}
-
-		$this->debug( __METHOD__ . " returns $next" );
-		return $next;
-	}
-
-	function getFirstRevision() {
-		$start = $this->minRevision - 1;
-		$firstRevision = $this->getRevFollowing( $start );
-		$this->debug( __METHOD__ . " using first revision '$firstRevision'" );
-		return $firstRevision;
-	}
-
-	function getRevFollowing( $id ) {
-		$nextRev = $id + 1;
-		// FIXME looking up for 1:HEAD takes a loooooooongg time
-		$cmd = "{$this->svnCmd} log -q -r{$nextRev}:HEAD --limit 1 {$this->url}";
-		$output = $this->exec( $cmd, $retval );
-
-		if( $retval !== 0 ) {
-			throw new Exception(__METHOD__." error running subversion log.\n" );
-		}
-
-		preg_match( "/r(\d+)/m", $output, $m );
-		$followingRev = (int) $m[1];
-		if( $followingRev === 0  ) {
-			throw new Exception( __METHOD__ . " remote gave us non integer revision: '{$m[1]}'\n" );
-		}
-		return $followingRev;
-	}
-	/**
-	 * Get latest revision fetched in the working copy.
-	 * @return integer
-	 */
-	function getCurrentRevisionId() {
-		$checkoutsDir = dirname( $this->getPath( 'mw', 0 ) );
-		// scandir sort in descending order if passing a nonzero value
-	   // PHP 5.4 accepts constant SCANDIR_SORT_DESCENDING
-		$dirs = scandir( $checkoutsDir, 1 );
-		$this->debug( "From '$checkoutsDir' Got directories:\n".implode("\n", $dirs ) );
-		// On first run, we will have to take care of that.
-		if ( $dirs[0][0] === 'r' ) {
-			return substr( $dirs[0], 1 );
-		} else {
-			return null;
-		}
-	}
-
-	/**
-	 * This function is where most of the directory layout is kept
-	 * All other methods should use getPath whenever they are looking for a path
+	 * Utility function to log a message for a given id.
 	 *
-	 * @param $type string: Resource to fetch:
-	 *   'db': path to DB dir to put testwarm_mw_r123.sqlite file in
-	 *   'mw': path to MW dir
-	 *   'globalsettings': path to global settings file
-	 *   'localsettingstpl': path to LocalSettings.php template file
-	 *   'log': path to log file
-	 * @param $id integer: Revision number.
-	 * @return Full path to ressource or 'false'
+	 * @param $msg string: message to log. Will be prefixed with date("c")
+	 * @param $callee string: Callee function to be logged as origin.
 	 */
-	function getPath( $type, $id ) {
-		if (   !in_array( $type, array( 'globalsettings', 'localsettingstpl' ) )
-			&& !is_int( $id ) ) {
-			throw new Exception( __METHOD__ . "given non numerical revision" );
+	public function log( $msg, $callee = '', $prefix = '' ) {
+		$msg = $prefix . ( $callee !== '' ? "$callee: " : '' ) . $msg;
+		$file = $this->getLogPath();
+
+		echo "$msg\n";
+
+		// Append to logfile
+		$fhandle = fopen( $file, "w+" );
+		fwrite( $fhandle, '[' . date( 'r' ) . '] ' . $msg );
+		fclose( $fhandle );
+	}
+
+	/**
+	 * Log a debug message. Only logged in debug mode.
+	 * Messages are prefixed with "DEBUG> ".
+	 * Multiline messages will be split up.
+	 *
+	 * @param $msg string: Message to print.
+	 * @param $callee string.
+	 */
+	public function debug( $msg, $callee = '', $prefix = '' ) {
+		if ( !$this->debugMode ) {
+			return;
 		}
-
-		switch ( $type ) {
-
-		case 'db':
-			return "{$this->root}/dbs/";
-
-		case 'mw':
-			return "{$this->root}/checkouts/r{$id}";
-
-		case 'globalsettings':
-			return "{$this->root}/conf/GlobalSettings.php";
-
-		case 'localsettingstpl':
-			return "{$this->root}/conf/LocalSettings.tpl.php";
-
-		case 'log':
-			return "{$this->root}/log/r{$id}";
-
-		default:
-			return false;
+		foreach( explode( "\n", $msg ) as $line ) {
+			$line = $prefix . ( $callee !== '' ? "$callee: " : '' ) . $line;
+			echo "DEBUG> $line\n";
 		}
 	}
 }
 
-# Remaning notes from design session. Leave them for now unless you are Timo.
-/** GENERAL:
-format: php
-Directory structure:
-dbs/
-testswarm_mw_r123.sqlite
-conf/
-GlobalSettings.php
-// global conf, empty in most cases. Could be used to globally do something important
-LocalSettingsTemplate.php
-// copied/appended to LocalSettings.php that install.php makes
-checkouts/
-// publicly available through Apache; symlinked to /var/www/testswarm-mw
-r123/
- */
+class TestSwarmMWFetcher {
 
-/** INIT:
-get latest svn revision number for trunk/phase3
-you want the next changed revision. Not the latest.
-svn log -r BASE:HEAD -l 2 -q
-I didn't even know that was an option, even better (no risk of missing a rev if > 1 commit between runs). Awesome!
-If BASE is at HEAD, you will only get one line though. So need to verify!
-Getting the latest checked out directory is all about ls -1 | tail -1
-check: already checked out ? Abort otherwise
-(file_exists(checkouts/r...)
-svn checkout (or export) into the checkouts/r..
- */
+	/** Instance of TestSwarmMWMain */
+	private $main;
 
+	/** MediaWiki revision id being fetched */
+	protected $svnRevId;
+
+	/** Array as created by TestSwarmMWMain::getPathsForRev */
+	protected $paths;
+
+	public function __construct( TestSwarmMWMain $main, $svnRevId ) {
+		// Basic validation
+		if ( !is_int( $svnRevId ) ) {
+			throw new Exception( __METHOD__ . ": Invalid argument. svnRevId must be an integer" );
+		}
+
+		$this->paths = $main->getPathsForRev( $svnRevId );
+		$main->setLogPath( $this->paths['log'] );
+
+		$this->main = $main;
+		$this->svnRevId = $svnRevId;
+	}
+
+	/**
+	 * This is the main function doing checkout and installation for
+	 * a given rev.
+	 *
+	 * @param $id integer: Revision id to install
+	 * @return
+	 */
+	public function run() {
+		$this->main->log( "Run for r{$this->svnRevId} started", __METHOD__ );
+
+		$this->doCheckout();
+		$this->doInstall();
+		$this->doAppendSettings();
+
+		/**
+		 * @todo FIXME:
+		 * - Get list of tests (see  old file for how)
+		 * - Make POST request to TestSwarm install to add jobs for these test runs
+		 *   (CURL addjob.php with login/auth token)
+		 */
+	}
+
+	/**
+	 * Checkout a given revision in our specific tree.
+	 * Throw an exception if anything got wrong.
+	 *
+	 * @todo Output is not logged.
+	 */
+	public function doCheckout(){
+		$this->main->log( 'Checking out...', __METHOD__ );
+
+		// Create checkout directory for this revision
+		$this->main->mkdir( $this->paths['mw'] );
+
+		// @todo FIXME: We might want to log the output of svn commands
+		$cmd = "{$this->main->getSvnCmd()} checkout {$this->main->getSvnUrl()}@r{$this->svnRevId} {$this->paths['mw']}";
+
+		$retval = null;
+		$this->main->exec( $cmd, $retval );
+		if ( $retval !== 0 ) {
+			throw new Exception(__METHOD__ . ": Error running subversion checkout" );
+		}
+
+		// @todo: Handle errors for above commands.
+	}
+
+	/**
+	 * Install the fresly checked out MediaWiki version.
+	 */
+	public function doInstall() {
+		$this->main->log( 'Installing...', __METHOD__ );
+
+		// Erase MW_INSTALL_PATH which would interact with the install script
+		putenv( 'MW_INSTALL_PATH' );
+
+		// If admin access is needed, shell dev should run maintenance/changePassword.php,
+		// we don't need to know this password.
+		$randomAdminPass = substr( sha1( $this->svnRevId . serialize( $this->paths ) . rand( 100, 999 ) ), 0, 32 );
+		// For convenience, put it in debug (not in saved log)
+		$this->main->debug( "Generated wikiadmin pass: {$randomAdminPass}", __METHOD__ );
+
+		// Now simply run the CLI installer:
+		$cmd = "php {$this->paths['mw']}/maintenance/install.php \
+			--dbname=testwarm_mw_r{$this->svnRevId} \
+			--dbtype=sqlite \
+			--dbpath={$this->paths['db']} \
+			--showexceptions=true \
+			--confpath={$this->paths['mw']} \
+			--pass={$randomAdminPass} \
+			TrunkWikiR{$this->svnRevId} \
+			WikiSysop
+			";
+
+		$retval = null;
+		$output = $this->main->exec( $cmd, $retval );
+
+		$this->main->log( "-- MediaWiki installer output: \n$output\n-- End of MediaWiki installer output", __METHOD__ );
+
+		if ( $retval !== 0 ) {
+			throw new Exception(__METHOD__ . ": Error running MediaWiki installer" );
+		}
+	}
+
+	/**
+	 * @todo FIXME: Implement :-)
+	 * @param $id integer: Revision id to append settings to.
+	 */
+	public function doAppendSettings() {
+		$this->log( 'Appending settings... *TODO!*', __METHOD__ );
+		return true;
+
+		// append to mwPath/LocalSettings.php
+		// -- contents of LocalSettings.tpl.php
+		// -- require_once( '{$this->getPath('globalsettings')}' );"
+
+		/**
+		 * Possible additional common settings to append to LocalSettings after install:
+		 * See gerrit integration/jenkins.git:
+		 * https://gerrit.wikimedia.org/r/gitweb?p=integration/jenkins.git;a=tree;f=jobs/MediaWiki-phpunit;hb=HEAD
+		 *
+		 * $wgShowExceptionDetails = true;
+		 * $wgShowSQLErrors = true;
+		 * #$wgDebugLogFile = dirname( __FILE__ ) . '/build/debug.log';
+		 * $wgDebugDumpSql = true;
+		 */
+	}
+}
