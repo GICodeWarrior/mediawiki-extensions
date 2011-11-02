@@ -154,6 +154,7 @@ es.SurfaceView.prototype.moveCursor = function( instruction ) {
 		var end = this.documentView.getRenderedLineRange( this.cursor.offset ).end
 		var data = this.documentView.getModel().data;
 		if ( es.DocumentModel.isContentData( data, end ) ) {
+			// TODO: Support all of this /([ \-\t\r\n\f])/g, not just space
 			while( data[ end - 1] === ' ' ) {
 				end--;
 			}
