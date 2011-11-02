@@ -81,8 +81,10 @@ es.SurfaceView = function( $container, model ) {
 es.SurfaceView.boundaryTest = /([ \-\t\r\n\f])/;
 
 es.SurfaceView.prototype.onMouseDown = function( e ) {
-	var	offset = this.documentView.getOffsetFromEvent( e );
-	this.showCursor( offset );
+	var position = es.Position.newFromEventPagePosition( e ),
+		offset = this.documentView.getOffsetFromEvent( e ),
+		nodeView = this.documentView.getNodeFromOffset( offset, false );
+	this.showCursor( offset, position.left > nodeView.$.offset().left + nodeView.$.width() / 2 );
 	if ( !this.$input.is( ':focus' ) ) {
 		this.$input.focus().select();
 	}
@@ -153,10 +155,10 @@ es.SurfaceView.prototype.moveCursor = function( instruction ) {
 	} else if ( instruction === 'home' ) {
 		this.showCursor( this.documentView.getRenderedLineRange( this.cursor.offset ).start );
 	} else if ( instruction === 'end' ) {
-		var end = this.documentView.getRenderedLineRange( this.cursor.offset ).end
+		var end = this.documentView.getRenderedLineRange( this.cursor.offset ).end;
 		var data = this.documentView.getModel().data;
 		if ( es.DocumentModel.isContentData( data, end ) ) {
-			while( es.SurfaceView.boundaryTest.exec( data[ end - 1 ] ) ) {
+			while ( es.SurfaceView.boundaryTest.exec( data[ end - 1 ] ) ) {
 				end--;
 			}
 		}
@@ -170,10 +172,12 @@ es.SurfaceView.prototype.moveCursor = function( instruction ) {
  * @method
  * @param offset {Integer} Position to show the cursor at
  */
-es.SurfaceView.prototype.showCursor = function( offset ) {
+es.SurfaceView.prototype.showCursor = function( offset, leftBias ) {
 	if ( typeof offset !== 'undefined' ) {
 		this.cursor.offset = offset;
-		var position = this.documentView.getRenderedPositionFromOffset( this.cursor.offset );
+		var position = this.documentView.getRenderedPositionFromOffset(
+			this.cursor.offset, leftBias
+		);
 		this.cursor.$.css( {
 			'left': position.left,
 			'top': position.top,

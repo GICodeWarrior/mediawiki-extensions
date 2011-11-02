@@ -74,7 +74,7 @@ es.DocumentViewBranchNode.prototype.getOffsetFromRenderedPosition = function( po
 	for ( var i = 1; i < this.children.length; i++ ) {
 		if ( this.horizontal && this.children[i].$.offset().left > position.left ) {
 			break;
-		} else if ( this.children[i].$.offset().top > position.top ) {
+		} else if ( !this.horizontal && this.children[i].$.offset().top > position.top ) {
 			break;			
 		}
 		node = this.children[i];
@@ -90,11 +90,12 @@ es.DocumentViewBranchNode.prototype.getOffsetFromRenderedPosition = function( po
  * @param {Integer} offset Offset to get position for
  * @returns {es.Position} Position of offset
  */
-es.DocumentViewBranchNode.prototype.getRenderedPositionFromOffset = function( offset ) {
+es.DocumentViewBranchNode.prototype.getRenderedPositionFromOffset = function( offset, leftBias ) {
 	var node = this.getNodeFromOffset( offset, true );
 	if ( node !== null ) {
 		return node.getRenderedPositionFromOffset(
-			offset - this.getOffsetFromNode( node, true ) - 1
+			offset - this.getOffsetFromNode( node, true ) - 1,
+			leftBias
 		);
 	}
 	return null;
@@ -110,12 +111,12 @@ es.DocumentViewBranchNode.prototype.getElementLength = function() {
 	return this.model.getElementLength();
 };
 
-es.DocumentViewBranchNode.prototype.getRenderedLineRange = function( offset ) {
+es.DocumentViewBranchNode.prototype.getRenderedLineRangeFromOffset = function( offset ) {
 	var node = this.getNodeFromOffset( offset, true );
 	if ( node !== null ) {
 		var nodeOffset = this.getOffsetFromNode( node, true );
 		return es.Range.newFromTranslatedRange(
-			node.getRenderedLineRange( offset - nodeOffset - 1 ),
+			node.getRenderedLineRangeFromOffset( offset - nodeOffset - 1 ),
 			nodeOffset + 1
 		);
 	}

@@ -208,8 +208,8 @@ es.ContentView.renderAnnotation = function( bias, annotation, stack ) {
 es.ContentView.prototype.drawSelection = function( range ) {
 	range.normalize();
 
-	var fromLineIndex = this.getRenderedLineIndex( range.start ),
-		toLineIndex = this.getRenderedLineIndex( range.end ),
+	var fromLineIndex = this.getRenderedLineIndexFromOffset( range.start ),
+		toLineIndex = this.getRenderedLineIndexFromOffset( range.end ),
 		fromPosition = this.getRenderedPositionFromOffset( range.start ),
 		toPosition = this.getRenderedPositionFromOffset( range.end );
 
@@ -271,13 +271,46 @@ es.ContentView.prototype.clearSelection = function() {
  * @param {Integer} offset Offset to get line for
  * @returns {Integer} Index of rendered lin offset is within
  */
-es.ContentView.prototype.getRenderedLineIndex = function( offset ) {
+es.ContentView.prototype.getRenderedLineIndexFromOffset = function( offset ) {
 	for ( var i = 0; i < this.lines.length; i++ ) {
 		if ( this.lines[i].range.containsOffset( offset ) ) {
 			return i;
 		}
 	}
 	return this.lines.length - 1;
+};
+
+/*
+ * Gets the index of the rendered line closest to a given position.
+ * 
+ * If the position is above the first line, the offset will always be 0, and if the position is
+ * below the last line the offset will always be the content length. All other vertical
+ * positions will fall inside of one of the lines.
+ * 
+ * @method
+ * @returns {Integer} Index of rendered line closest to position
+ */
+es.ContentView.prototype.getRenderedLineIndexFromPosition = function( position ) {
+	var lineCount = this.lines.length;
+	// Positions above the first line always jump to the first offset
+	if ( !lineCount || position.top < 0 ) {
+		return 0;
+	}
+	// Find which line the position is inside of
+	var i = 0,
+		top = 0;
+	while ( i < lineCount ) {
+		top += this.lines[i].height;
+		if ( position.top < top ) {
+			break;
+		}
+		i++;
+	}
+	// Positions below the last line always jump to the last offset
+	if ( i === lineCount ) {
+		return i - 1;
+	}
+	return i;
 };
 
 /**
@@ -289,7 +322,7 @@ es.ContentView.prototype.getRenderedLineIndex = function( offset ) {
  * @param {Integer} offset Offset to get line for
  * @returns {es.Range} Range of line offset is within
  */
-es.ContentView.prototype.getRenderedLineRange = function( offset ) {
+es.ContentView.prototype.getRenderedLineRangeFromOffset = function( offset ) {
 	for ( var i = 0; i < this.lines.length; i++ ) {
 		if ( this.lines[i].range.containsOffset( offset ) ) {
 			return this.lines[i].range;
@@ -318,35 +351,9 @@ es.ContentView.prototype.getOffsetFromRenderedPosition = function( position ) {
 	// Localize position
 	position.subtract( es.Position.newFromElementPagePosition( this.$ ) );
 
-	//
-	/*
-	 * Line finding
-	 * 
-	 * If the position is above the first line, the offset will always be 0, and if the position is
-	 * below the last line the offset will always be the content length. All other vertical
-	 * positions will fall inside of one of the lines.
-	 */
-	var lineCount = this.lines.length;
-	// Positions above the first line always jump to the first offset
-	if ( !lineCount || position.top < 0 ) {
-		return 0;
-	}
-	// Find which line the position is inside of
-	var i = 0,
-		top = 0;
-	while ( i < lineCount ) {
-		top += this.lines[i].height;
-		if ( position.top < top ) {
-			break;
-		}
-		i++;
-	}
-	// Positions below the last line always jump to the last offset
-	if ( i == lineCount ) {
-		return this.model.getContentLength();
-	}
-	// Alias current line object
-	var line = this.lines[i];
+	// Get the line object nearest the position
+	var line = this.lines[this.getRenderedLineIndexFromPosition( position )];
+
 	/*
 	 * Offset finding
 	 * 
@@ -374,8 +381,8 @@ es.ContentView.prototype.getOffsetFromRenderedPosition = function( position ) {
 	return Math.min(
 		// If the position is right of the center of the character it's on top of, increment offset
 		fit.end + ( position.left >= center ? 1 : 0 ),
-		// If the line ends in a non-boundary character, decrement offset
-		line.range.end + ( this.boundaryTest.exec( line.text.substr( -1 ) ) ? -1 : 0 )
+		// Don't allow the value to be higher than the end
+		line.range.end
 	);
 };
 
@@ -390,8 +397,8 @@ es.ContentView.prototype.getOffsetFromRenderedPosition = function( position ) {
  * @returns {Object} Object containing left, top and bottom properties, each positions in pixels as
  * well as a line index
  */
-es.ContentView.prototype.getRenderedPositionFromOffset = function( offset ) {
-	/*
+es.ContentView.prototype.getRenderedPositionFromOffset = function( offset, leftBias ) {
+	/* 
 	 * Range validation
 	 * 
 	 * Rather than clamping the range, which can hide errors, exceptions will be thrown if offset is
@@ -416,7 +423,7 @@ es.ContentView.prototype.getRenderedPositionFromOffset = function( offset ) {
 		position = new es.Position();
 	while ( lineIndex < lineCount ) {
 		line = this.lines[lineIndex];
-		if ( line.range.containsOffset( offset ) ) {
+		if ( line.range.containsOffset( offset ) || ( leftBias && line.range.end === offset ) ) {
 			position.bottom = position.top + line.height;
 			break;
 		}

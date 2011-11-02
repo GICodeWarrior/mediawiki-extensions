@@ -117,7 +117,7 @@ es.DocumentNode.prototype.getNodeFromOffset = function( offset, shallow ) {
 			nodeLength = this.children[i].getElementLength();
 			if ( offset >= nodeOffset && offset < nodeOffset + nodeLength ) {
 				if ( !shallow && this.children[i].getChildren().length ) {
-					return this.getNodeFromOffset.call( this.children[i], offset - nodeOffset );
+					return this.getNodeFromOffset.call( this.children[i], offset - nodeOffset - 1 );
 				} else {
 					return this.children[i];
 				}

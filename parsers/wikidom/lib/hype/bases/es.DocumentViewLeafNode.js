@@ -64,8 +64,8 @@ es.DocumentViewLeafNode.prototype.getOffsetFromRenderedPosition = function( posi
  * @param {Integer} offset Offset to get position for
  * @returns {es.Position} Position of offset
  */
-es.DocumentViewLeafNode.prototype.getRenderedPositionFromOffset = function( offset ) {
-	var	position = this.contentView.getRenderedPositionFromOffset( offset ),
+es.DocumentViewLeafNode.prototype.getRenderedPositionFromOffset = function( offset, leftBias ) {
+	var	position = this.contentView.getRenderedPositionFromOffset( offset, leftBias ),
 		offset = this.$content.offset();
 	position.top += offset.top;
 	position.left += offset.left;
@@ -83,8 +83,8 @@ es.DocumentViewLeafNode.prototype.getElementLength = function() {
 	return this.model.getElementLength();
 };
 
-es.DocumentViewLeafNode.prototype.getRenderedLineRange = function( offset ) {
-	return this.contentView.getRenderedLineRange( offset );
+es.DocumentViewLeafNode.prototype.getRenderedLineRangeFromOffset = function( offset ) {
+	return this.contentView.getRenderedLineRangeFromOffset( offset );
 };
 
 /* Inheritance */
