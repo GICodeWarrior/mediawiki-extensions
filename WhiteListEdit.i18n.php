@@ -951,9 +951,9 @@ Toś ten bok dajo se jano na wobgranicowanych wužywarjow nałožyś.",
 	'action-editwhitelist' => 'Běłu liscínu za eksistujucych wužywarjow změniś',
 	'action-restricttowhitelist' => 'Jano boki z běłeje lisćiny wobźěłaś a se woglědaś',
 	'group-restricted' => 'Wobgranicowane wužywarje',
-	'group-restricted-member' => 'Wobgranicowany wužywaŕ',
+	'group-restricted-member' => '{{GENDER:$1|wobgranicowany wužywaŕ|wobgranicowana wužywarka}}',
 	'group-manager' => 'Zastojniki',
-	'group-manager-member' => 'Zastojnik',
+	'group-manager-member' => '{{GENDER:$1|zastojnik|zastojnica}}',
 );
 
 /** Ewe (Eʋegbe)
