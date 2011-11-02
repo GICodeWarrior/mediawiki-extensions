@@ -8,7 +8,7 @@
  */
 es.HeadingView = function( model ) {
 	// Inheritance
-	es.DocumentViewLeafNode.call( this, model );
+	es.DocumentViewLeafNode.call( this, model, $( '<h' + model.getElementAttribute( 'level' )  + '>') );
 
 	// DOM Changes
 	this.$.addClass( 'editSurface-headingBlock' );
