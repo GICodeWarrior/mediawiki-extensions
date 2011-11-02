@@ -293,6 +293,7 @@ class WOMProcessor {
 //		wfProfileOut( $fname );
 	}
 
+/*
 	public static function getTemplateEditor( $template_name, $form_name = null ) {
 		$fname = 'WikiObjectModel::getTemplateEditor (WOM)';
 		wfProfileIn( $fname );
@@ -374,6 +375,7 @@ class WOMProcessor {
 			return array( 'textarea', 'text' );
 		}
 	}
+*/
 
 	public static function getPageObject( $title, $rid = 0 ) {
 		$fname = 'WikiObjectModel::getPageObject (WOM)';
