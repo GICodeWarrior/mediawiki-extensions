@@ -22,6 +22,18 @@ es.SurfaceView = function( $container, model ) {
 		initialLeft: null
 	};
 	
+	this.keyboard = {
+		selecting: false,
+		cursorAnchor: null,
+		keydownTimeout: null,
+		keys: {
+			shift: false,
+			control: false,
+			command: false,
+			alt: false
+		}
+	};	
+	
 	// References for use in closures
 	var surfaceView = this,
 		$document = $( document );
