@@ -3,81 +3,107 @@ import sys, traceback, ldapsupportlib, os, homedirectorymanager
 from optparse import OptionParser
 from subprocess import call
 
-try:    
-        import ldap
+try:
+	import ldap
 	import ldap.modlist
 except ImportError:
-        sys.stderr.write("Unable to import LDAP library.\n")
-        sys.exit(1)
+	sys.stderr.write("Unable to import LDAP library.\n")
 
-def main():
-        parser = OptionParser(conflict_handler="resolve")
-	parser.set_usage('manage-exports [options]')
+NONE = 0
+INFO = 10
+DEBUG = 20
 
-	ldapSupportLib = ldapsupportlib.LDAPSupportLib()
-	ldapSupportLib.addParserOptions(parser)
+class ExportManager:
+	def __init__(self):
+		self.basedir = "/export/home/"
+		self.loglevel = INFO
+		self.logfile = None
 
-	parser.add_option("--logfile", dest="logfile", help="Write output to the specified log file. (default: stdin)")
-	parser.add_option("--loglevel", dest="loglevel", help="Change level of logging; NONE, INFO, DEBUG (default: INFO)")
-	(options, args) = parser.parse_args()
-	ldapSupportLib.setBindInfoByOptions(options, parser)
+	def run(self):
+		parser = OptionParser(conflict_handler="resolve")
+		parser.set_usage('manage-exports [options]')
+	
+		ldapSupportLib = ldapsupportlib.LDAPSupportLib()
+		ldapSupportLib.addParserOptions(parser)
+	
+		parser.add_option("--logfile", dest="logfile", help="Write output to the specified log file. (default: stdin)")
+		parser.add_option("--loglevel", dest="loglevel", help="Change level of logging; NONE, INFO, DEBUG (default: INFO)")
+		(options, args) = parser.parse_args()
+		ldapSupportLib.setBindInfoByOptions(options, parser)
 
-	base = ldapSupportLib.getBase()
-	ds = ldapSupportLib.connect()
+		if options.logfile:
+			self.logfile = options.logfile
+		if options.loglevel:
+			self.loglevel = options.loglevel
 
-        # w00t We're in!
-        try:
-		projectdata = ds.search_s("ou=groups," + base,ldap.SCOPE_SUBTREE,"(&(cn=*)(owner=*))")
-		projects = []
-		basedir = "/export/home/"
-		if not projectdata:
-			raise ldap.NO_SUCH_OBJECT()
-		hdm = homedirectorymanager.HomeDirectoryManager()
-		for project in projectdata:
-			project_name = project[1]["cn"][0]
-			if not os.path.exists(basedir + project_name):
-				os.mkdir(basedir + project_name, 0755)
-			if options.logfile:
-				hdm.logfile = options.logfile
-			if options.loglevel:
-				hdm.setDebugLevel(options.loglevel)
-			hdm.basedir = basedir + project_name + "/"
-			hdm.group = project_name
-			hdm.run()
-			hostdata = ds.search_s("ou=hosts," + base,ldap.SCOPE_SUBTREE,"(puppetvar=instanceproject=" + project_name + ")")
-			hosts = []
-			for host in hostdata:
-
-				host_ip = host[1]["aRecord"][0]
-				hosts.append(host_ip + "(rw,no_subtree_check)")
-			projects.append(basedir + project_name + "	" + " ".join(hosts) + "\n")
-
-		exports = open('/etc/exports', 'w')
-		exports.writelines(projects)
-		exports.close()
-		retcode = call("/usr/sbin/exportfs" + " -r", shell=True)
-
-	except ldap.NO_SUCH_OBJECT:
-                sys.stderr.write("The project search returned no entries.\n")
-		ds.unbind()
-		sys.exit(1)
-	except ldap.PROTOCOL_ERROR:
-		sys.stderr.write("There was an LDAP protocol error; see traceback.\n")
-		traceback.print_exc(file=sys.stderr)
-		ds.unbind()
-		sys.exit(1)
-        except Exception:
+		base = ldapSupportLib.getBase()
+		ds = ldapSupportLib.connect()
+	
+		# w00t We're in!
 		try:
-                	sys.stderr.write("There was a general error, this is unexpected; see traceback.\n")
+			projectdata = ds.search_s("ou=groups," + base,ldap.SCOPE_SUBTREE,"(&(cn=*)(owner=*))")
+			projects = []
+			if not projectdata:
+				raise ldap.NO_SUCH_OBJECT()
+			hdm = homedirectorymanager.HomeDirectoryManager()
+			for project in projectdata:
+				project_name = project[1]["cn"][0]
+				if not os.path.exists(self.basedir + project_name):
+					self.log( "Creating a project directory for %s" % (project_name) )
+					os.mkdir(self.basedir + project_name, 0755)
+				if options.logfile:
+					hdm.logfile = options.logfile
+				if options.loglevel:
+					hdm.setDebugLevel(options.loglevel)
+				hdm.basedir = self.basedir + project_name + "/"
+				hdm.group = project_name
+				hdm.run()
+				hostdata = ds.search_s("ou=hosts," + base,ldap.SCOPE_SUBTREE,"(puppetvar=instanceproject=" + project_name + ")")
+				hosts = []
+				for host in hostdata:
+					host_ip = host[1]["aRecord"][0]
+					hosts.append(host_ip + "(rw,no_subtree_check)")
+				projects.append(self.basedir + project_name + "	" + " ".join(hosts) + "\n")
+			exports = open('/etc/exports', 'w')
+			exports.writelines(projects)
+			exports.close()
+			retcode = call("/usr/sbin/exportfs" + " -r", shell=True)
+			# TODO: Check directories that exist against projects; move deleted projects
+		except ldap.NO_SUCH_OBJECT:
+			sys.stderr.write("The project search returned no entries.\n")
+			ds.unbind()
+			return 1
+		except ldap.PROTOCOL_ERROR:
+			sys.stderr.write("There was an LDAP protocol error; see traceback.\n")
 			traceback.print_exc(file=sys.stderr)
 			ds.unbind()
+			return 1
 		except Exception:
-                	sys.stderr.write("Also failed to unbind.\n")
-			traceback.print_exc(file=sys.stderr)
-		sys.exit(1)
+			try:
+				sys.stderr.write("There was a general error, this is unexpected; see traceback.\n")
+				traceback.print_exc(file=sys.stderr)
+				ds.unbind()
+			except Exception:
+				sys.stderr.write("Also failed to unbind.\n")
+				traceback.print_exc(file=sys.stderr)
+			return 1
+	
+		ds.unbind()
+		return 0
+	
+	def log(self, logstring):
+		if self.loglevel >= INFO:
+			log = datetime.datetime.now().strftime("%m/%d/%Y - %H:%M:%S - ")  + logstring + "\n"
+			if self.logfile:
+				lf = open(self.logfile, 'a')
+				lf.write(log)
+				lf.close()
+			else:
+				print log
 
-        ds.unbind()
-	sys.exit(0)
+def main():
+	export_manager = ExportManager()
+	export_manager.run()
 
 if __name__ == "__main__":
 	main()

@@ -45,7 +45,6 @@ class HomeDirectoryManager:
 		self.logfile = None
 
 		self.loglevel = INFO
-		self.logfile = None
 
 		self.dryRun = False
 
