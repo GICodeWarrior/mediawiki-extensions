@@ -61,6 +61,13 @@ $messages['fr'] = array(
 	'sdt-duration' => 'Durée',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'sdt-duration' => 'Temps',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
