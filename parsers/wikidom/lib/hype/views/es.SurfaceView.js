@@ -90,17 +90,27 @@ es.SurfaceView.prototype.onKeyDown = function( e ) {
 			this.keyboard.keys.command = true;
 			break;
 		case 36: // Home
+			this.moveCursor( 'home' );
 			break;
 		case 35: // End
+			this.moveCursor( 'end' );
 			break;
 		case 37: // Left arrow
-			this.moveCursor( 'left' );
+			if ( this.keyboard.keys.command ) {
+				this.moveCursor( 'home' );
+			} else { 
+				this.moveCursor( 'left' );
+			}
 			break;
 		case 38: // Up arrow
 			this.moveCursor( 'up' );
 			break;
 		case 39: // Right arrow
-			this.moveCursor( 'right' );
+			if ( this.keyboard.keys.command ) {
+				this.moveCursor( 'end' );
+			} else { 
+				this.moveCursor( 'right' );
+			}
 			break;
 		case 40: // Down arrow
 			this.moveCursor( 'down' );
@@ -119,13 +129,24 @@ es.SurfaceView.prototype.onKeyUp = function( e ) {
 	//
 };
 
-es.SurfaceView.prototype.moveCursor = function( direction ) {
-	if ( direction === 'left') {
+es.SurfaceView.prototype.moveCursor = function( instruction ) {
+	if ( instruction === 'left') {
 		this.showCursor( this.documentView.getModel().getRelativeContentOffset( this.cursor.offset, -1 ) );
-	} else if ( direction === 'right' ) {
+	} else if ( instruction === 'right' ) {
 		this.showCursor( this.documentView.getModel().getRelativeContentOffset( this.cursor.offset, 1 ) );
-	} else if ( direction === 'up' || direction === 'down' ) {
+	} else if ( instruction === 'up' || instruction === 'down' ) {
 		// ...
+	} else if ( instruction === 'home' ) {
+		this.showCursor( this.documentView.getRenderedLineRange( this.cursor.offset ).start );
+	} else if ( instruction === 'end' ) {
+		var end = this.documentView.getRenderedLineRange( this.cursor.offset ).end
+		var data = this.documentView.getModel().data;
+		if ( es.DocumentModel.isContentData( data, end ) ) {
+			while( data[ end - 1] === ' ' ) {
+				end--;
+			}
+		}
+		this.showCursor( end );
 	}
 };
 
