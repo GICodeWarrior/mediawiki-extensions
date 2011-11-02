@@ -64,7 +64,14 @@ class SpecialContestSignup extends SpecialContestPage {
 	public function handleSubmission( array $data ) {
 		$user = $this->getUser();
 
-		$user->setEmail( $data['contestant-email'] );
+		$oldEmail = $user->getEmail();
+		
+		if ( $oldEmail !== $data['contestant-email'] ) {
+			$user->setEmail( $data['contestant-email'] );
+			$user->invalidateEmail();
+			$user->sendConfirmationMail( $oldEmail == '' ? 'set' : 'changed' );
+		}
+		
 		$user->setRealName( $data['contestant-realname'] );
 		$user->saveSettings();
 

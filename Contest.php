@@ -243,8 +243,8 @@ $wgResourceModules['contest.special.signup'] = $moduleTemplate + array(
 		'contest.special.signup.js',
 	),
 	'dependencies' => array(
-		'jquery.ui.button', 'jquery.fancybox',
-	)
+		'jquery.ui.button', 'jquery.fancybox', 'jquery.contestEmail',
+	),
 );
 
 $wgResourceModules['contest.special.submission'] = $moduleTemplate + array(
@@ -252,7 +252,16 @@ $wgResourceModules['contest.special.submission'] = $moduleTemplate + array(
 		'contest.special.submission.js',
 	),
 	'dependencies' => array(
-		'jquery.ui.button', 'jquery.contestSubmission',
+		'jquery.ui.button', 'jquery.contestSubmission', 'jquery.contestEmail'
+	),
+);
+
+$wgResourceModules['jquery.contestEmail'] = $moduleTemplate + array(
+	'scripts' => array(
+		'jquery.contestEmail.js',
+	),
+	'messages' => array(
+		'contest-signup-emailwarn',
 	),
 );
 
