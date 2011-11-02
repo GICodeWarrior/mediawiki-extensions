@@ -10,3 +10,7 @@
 	font-weight: normal; /* Override bold */
 	font-style: italic;
 }
+
+.articleFeedback-survey-disclaimer a {
+	color: #0645AD; /* Override blackish color set by JUI */
+}
