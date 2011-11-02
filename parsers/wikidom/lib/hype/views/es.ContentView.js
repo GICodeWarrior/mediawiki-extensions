@@ -35,6 +35,7 @@ es.ContentView = function( $container, model ) {
 	this.boundaryTest = /([ \-\t\r\n\f])/g;
 	this.widthCache = {};
 	this.renderState = {};
+	this.contentCache = null;
 
 	if ( model ) {
 		// Events
@@ -476,7 +477,13 @@ es.ContentView.prototype.scanBoundaries = function() {
 	 * "boundaries" array. Slices of the "words" array can be joined, producing the escaped HTML of
 	 * the words.
 	 */
-	var text = this.model.getText();
+	// Get and cache a copy of all content, the make a plain-text version of the cached content
+	var data = this.contentCache = this.model.getContent(),
+		text = '';
+	debugger;
+	for ( var i = 0, length = data.length; i < length; i++ ) {
+		text += typeof data[i] === 'string' ? data[i] : data[i][0];
+	}
 	// Purge "boundaries" and "words" arrays
 	this.boundaries = [0];
 	// Reset RegExp object's state
@@ -830,7 +837,12 @@ es.ContentView.prototype.fitCharacters = function( range, ruler, width ) {
  * @param {String} Rendered HTML of data within content model
  */
 es.ContentView.prototype.getHtml = function( range, options ) {
-	var data = this.model.getContent( range ),
+	if ( range ) {
+		range.normalize();
+	} else {
+		range = { 'start': 0, 'end': undefined };
+	}
+	var data = this.contentCache.slice( range.start, range.end ),
 		render = es.ContentView.renderAnnotation,
 		htmlChars = es.ContentView.htmlCharacters;
 	var out = '',
