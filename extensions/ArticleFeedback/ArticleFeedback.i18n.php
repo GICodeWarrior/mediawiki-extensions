@@ -26,7 +26,8 @@ $messages['en'] = array(
 	'articlefeedback-survey-submit' => 'Submit',
 	'articlefeedback-survey-title' => 'Please answer a few questions',
 	'articlefeedback-survey-thanks' => 'Thanks for filling out the survey.',
-	'articlefeedback-survey-disclaimer' => 'By submitting, you agree to transparency under these [http://wikimediafoundation.org/wiki/Feedback_privacy_statement terms]',
+	'articlefeedback-survey-disclaimer' => 'By submitting, you agree to transparency under these $1.',
+	'articlefeedback-survey-disclaimerlink' => 'terms',
 	/* ext.articleFeedback and jquery.articleFeedback */
 	'articlefeedback-error' => 'An error has occured. Please try again later.',
 	'articlefeedback-form-switch-label' => 'Rate this page',
@@ -43,7 +44,6 @@ $messages['en'] = array(
 	'articlefeedback-form-panel-helpimprove-note' => 'We will send you a confirmation e-mail. We will not share your e-mail address with outside parties as per our $1.',
 	'articlefeedback-form-panel-helpimprove-email-placeholder' => 'email@example.org', // Optional
 	'articlefeedback-form-panel-helpimprove-privacy' => 'feedback privacy statement',
-	'articlefeedback-form-panel-helpimprove-privacylink' => 'http://wikimediafoundation.org/wiki/Feedback_privacy_statement',
 	'articlefeedback-form-panel-submit' => 'Submit ratings',
 	'articlefeedback-form-panel-pending' => 'Your ratings have not been submitted yet',
 	'articlefeedback-form-panel-success' => 'Saved successfully',
@@ -171,11 +171,12 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 {{Identical|Submit}}',
 	'articlefeedback-survey-title' => 'This text appears in the title bar of the survey dialog.',
 	'articlefeedback-survey-thanks' => 'This text appears when the user has successfully submitted the survey.',
-	'articlefeedback-survey-disclaimer' => 'This text appears on the survey form below the comment field and above the submit button.',
+	'articlefeedback-survey-disclaimer' => 'This text appears on the survey form below the comment field and above the submit button. $1 is a link pointing to the privacy policy. The link text is in the articlefeedback-survey-disclaimerlink message.',
 	'articlefeedback-form-panel-explanation' => '{{Identical|What is this}}',
 	'articlefeedback-form-panel-explanation-link' => 'Do not translate "Project:". Also translate the "ArticleFeedback" special page name at [[Special:AdvancedTranslate]].',
 	'articlefeedback-form-panel-helpimprove' => 'This message should use {{SITENAME}}.',
 	'articlefeedback-form-panel-helpimprove-email-placeholder' => '{{Optional}}',
+	'articlefeedback-form-panel-helpimprove-note' => '$1 is a link pointing to the privacy policy. The link text is in the articlefeedback-form-panel-helpimprove-privacy message.',
 	'articlefeedback-form-panel-helpimprove-privacy' => '{{Identical|Privacy}}',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Do not translate "Project:"
 {{Identical|Privacypage}}',

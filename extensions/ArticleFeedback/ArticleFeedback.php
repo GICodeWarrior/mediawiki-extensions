@@ -88,6 +88,11 @@ $wgArticleFeedbackOptions = array(
  */
 $wgArticleFeedbackDashboardTalkPage = "http://www.mediawiki.org/wiki/Talk:Article_feedback";
 
+/**
+ * The full URL for the privacy policy links
+ */
+$wgArticleFeedbackPrivacyURL = 'http://wikimediafoundation.org/wiki/Feedback_privacy_statement';
+
 // Would ordinarily call this articlefeedback but survey names are 16 chars max
 $wgPrefSwitchSurveys['articlerating'] = array(
 	'updatable' => false,

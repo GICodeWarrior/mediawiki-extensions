@@ -592,13 +592,13 @@ $.articleFeedback = {
 				.find( '.articleFeedback-helpimprove-note' )
 					// Can't use .text() with mw.message(, /* $1 */ link).toString(),
 					// because 'link' should not be re-escaped (which would happen if done by mw.message)
-					.html( function(){
+					.html( function() {
 						var link = mw.html.element(
 							'a', {
-								href: mw.util.wikiGetlink( mw.msg('articlefeedback-form-panel-helpimprove-privacylink') )
-							}, mw.msg('articlefeedback-form-panel-helpimprove-privacy')
+								href: context.options.privacyURL
+							}, mw.msg( 'articlefeedback-form-panel-helpimprove-privacy' )
 						);
-						return mw.html.escape( mw.msg( 'articlefeedback-form-panel-helpimprove-note') )
+						return mw.html.escape( mw.msg( 'articlefeedback-form-panel-helpimprove-note' ) )
 							.replace( /\$1/, link );
 					})
 					.end()
