@@ -11,7 +11,9 @@ es.TableCellView = function( model ) {
 	es.DocumentViewBranchNode.call( this, model, $( '<td>' ) );
 
 	// DOM Changes
-	this.$.attr( 'style', model.getElementAttribute( 'html/style' ) );
+	this.$
+		.attr( 'style', model.getElementAttribute( 'html/style' ) )
+		.addClass( 'editSurface-tableCellView' );
 };
 
 /* Inheritance */

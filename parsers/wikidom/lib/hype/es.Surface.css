@@ -1,4 +1,8 @@
-.editSurface-input {
+.editSurface {
+	overflow: hidden;
+}
+
+.editSurface-surfaceView-input {
 	position: absolute;
 	z-index: -1;
 	opacity: 0;
@@ -10,160 +14,11 @@
 	width: 1px;
 }
 
-.editSurface-input:focus {
+.editSurface-surfaceView-input:focus {
 	outline: none;
 }
 
-.editSurface {
-	overflow: hidden;
-}
-
-.editSurface-document {
-	cursor: text;
-	margin-top: 1em;
-	overflow: hidden;
-	-webkit-user-select: none;
-}
-
-.editSurface-content {
-	position: relative;
-}
-
-.editSurface-headingBlock,
-.editSurface-tableBlock,
-.editSurface-listBlock,
-.editSurface-paragraphBlock {
-	margin: 1em;
-	margin-top: 0;
-	position: relative;
-	min-height: 1.5em;
-	font-size: 1em;
-}
-
-.editSurface-headingBlock-level1,
-.editSurface-headingBlock-level2 {
-	border-bottom: 1px solid #AAA;
-}
-
-.editSurface-headingBlock-level1 > * {
-	font-size:188%;
-	font-weight: normal;
-}
-
-.editSurface-headingBlock-level2 > * {
-	font-size:150%;
-	font-weight: normal;
-}
-
-.editSurface-headingBlock-level3 > * {
-	font-size:132%;
-	font-weight: bold;
-}
-
-.editSurface-headingBlock-level4 > * {
-	font-size:116%;
-	font-weight: bold;
-}
-
-.editSurface-headingBlock-level5 > * {
-	font-size:100%;
-	font-weight: bold;
-}
-
-.editSurface-headingBlock-level6 > * {
-	font-size:80%;
-	font-weight: bold;
-}
-
-.editSurface-listItem {
-	position: relative;
-	padding: 0 0 0 1em;
-	background-position: left 0.6em;
-	background-repeat: no-repeat;
-}
-
-.editSurface-listItem-bullet {
-	background-image: url(images/bullet.png);
-}
-
-.editSurface-listItem-number {
-	/* */
-}
-
-.editSurface-listItem-bullet .editSurface-listItem-icon {
-	display: none;
-}
-
-.editSurface-listItem-number .editSurface-listItem-icon {
-	position: absolute;
-	right: 100%;
-	margin-right: -0.5em;
-	height: 1.5em;
-	line-height: 1.5em;
-}
-
-.editSurface-listItem-level0 {
-	margin-left: 0.5em;
-}
-
-.editSurface-listItem-level1 {
-	margin-left: 2.5em;
-}
-
-.editSurface-listItem-level2 {
-	margin-left: 4.5em;
-}
-
-.editSurface-listItem-level3 {
-	margin-left: 6.5em;
-}
-
-.editSurface-listItem-level4 {
-	margin-left: 8.5em;
-}
-
-.editSurface-listItem-level5 {
-	margin-left: 10.5em;
-}
-
-.editSurface-listItem-level6 {
-	margin-left: 12.5em;
-}
-
-.editSurface-line,
-.editSurface-ruler {
-	line-height: 1.5em;
-	cursor: text;
-	white-space: nowrap;
-	color: #000000;
-}
-
-.editSurface-ruler {
-	position: absolute;
-	top: 0;
-	left: 0;
-	display: inline-block;
-	z-index: -1000;
-}
-
-.editSurface-line.empty {
-	display: block;
-	width: 0px;
-}
-
-.editSurface-whitespace {
-	color: #ffffff;
-}
-
-.editSurface-range {
-	display: none;
-	position: absolute;
-	background-color: #bbffcc;
-	cursor: text;
-	z-index: -1;
-}
-
-.editSurface-cursor {
+.editSurface-surfaceView-cursor {
 	position: absolute;
 	background-color: black;
 	width: 1px;
@@ -172,7 +27,152 @@
 	display: none;
 }
 
-.editSurface-format-object {
+.editSurface-documentView {
+	cursor: text;
+	margin-top: 1em;
+	overflow: hidden;
+	-webkit-user-select: none;
+}
+
+.editSurface-contentView {
+	position: relative;
+}
+
+.editSurface-headingView,
+.editSurface-tableView,
+.editSurface-listView,
+.editSurface-paragraphView {
+	margin: 1em;
+	margin-top: 0;
+	position: relative;
+	min-height: 1.5em;
+	font-size: 1em;
+}
+
+.editSurface-headingView-level1,
+.editSurface-headingView-level2 {
+	border-bottom: 1px solid #AAA;
+}
+
+.editSurface-headingView-level1 > * {
+	font-size:188%;
+	font-weight: normal;
+}
+
+.editSurface-headingView-level2 > * {
+	font-size:150%;
+	font-weight: normal;
+}
+
+.editSurface-headingView-level3 > * {
+	font-size:132%;
+	font-weight: bold;
+}
+
+.editSurface-headingView-level4 > * {
+	font-size:116%;
+	font-weight: bold;
+}
+
+.editSurface-headingView-level5 > * {
+	font-size:100%;
+	font-weight: bold;
+}
+
+.editSurface-headingView-level6 > * {
+	font-size:80%;
+	font-weight: bold;
+}
+
+.editSurface-listItemView {
+	position: relative;
+	padding: 0 0 0 1em;
+	background-position: left 0.6em;
+	background-repeat: no-repeat;
+}
+
+.editSurface-listItemView-bullet {
+	background-image: url(images/bullet.png);
+}
+
+.editSurface-listItemView-number {
+	/* */
+}
+
+.editSurface-listItemView-bullet .editSurface-listItemView-icon {
+	display: none;
+}
+
+.editSurface-listItemView-number .editSurface-listItemView-icon {
+	position: absolute;
+	right: 100%;
+	margin-right: -0.5em;
+	height: 1.5em;
+	line-height: 1.5em;
+}
+
+.editSurface-listItemView-level0 {
+	margin-left: 0.5em;
+}
+
+.editSurface-listItemView-level1 {
+	margin-left: 2.5em;
+}
+
+.editSurface-listItemView-level2 {
+	margin-left: 4.5em;
+}
+
+.editSurface-listItemView-level3 {
+	margin-left: 6.5em;
+}
+
+.editSurface-listItemView-level4 {
+	margin-left: 8.5em;
+}
+
+.editSurface-listItemView-level5 {
+	margin-left: 10.5em;
+}
+
+.editSurface-listItemView-level6 {
+	margin-left: 12.5em;
+}
+
+.editSurface-contentView-line,
+.editSurface-contentView-ruler {
+	line-height: 1.5em;
+	cursor: text;
+	white-space: nowrap;
+	color: #000000;
+}
+
+.editSurface-contentView-ruler {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: inline-block;
+	z-index: -1000;
+}
+
+.editSurface-contentView-line.empty {
+	display: block;
+	width: 0px;
+}
+
+.editSurface-contentView-whitespace {
+	color: #ffffff;
+}
+
+.editSurface-contentView-range {
+	display: none;
+	position: absolute;
+	background-color: #bbffcc;
+	cursor: text;
+	z-index: -1;
+}
+
+.editSurface-contentView-format-object {
 	background-color: rgba(0,0,0,0.05);
 	border-radius: 0.25em;
 	margin: 1px 0 1px 1px;
@@ -180,43 +180,43 @@
 	cursor: default;
 }
 
-.editSurface-format-object * {
+.editSurface-contentView-format-object * {
 	cursor: default !important;
 }
 
-.editSurface-format-object a:link,
-.editSurface-format-object a:visited,
-.editSurface-format-object a:active {
+.editSurface-contentView-format-object a:link,
+.editSurface-contentView-format-object a:visited,
+.editSurface-contentView-format-object a:active {
 	color: blue;
 }
 
-.editSurface-format-italic {
+.editSurface-contentView-format-italic {
 	font-style: italic;
 }
 
-.editSurface-format-bold {
+.editSurface-contentView-format-bold {
 	font-weight: bold;
 }
 
-.editSurface-format-link {
+.editSurface-contentView-format-link {
 	color: blue;
 	text-decoration: underline;
 }
 
-.editSurface-format-big {
+.editSurface-contentView-format-big {
 	font-size: 1.2em;
 }
 
-.editSurface-format-small,
-.editSurface-format-sub,
-.editSurface-format-super {
+.editSurface-contentView-format-small,
+.editSurface-contentView-format-sub,
+.editSurface-contentView-format-super {
 	font-size: .8em;
 }
 
-.editSurface-format-sub {
+.editSurface-contentView-format-sub {
 	vertical-align: sub;
 }
 
-.editSurface-format-super {
+.editSurface-contentView-format-super {
 	vertical-align: super;
 }

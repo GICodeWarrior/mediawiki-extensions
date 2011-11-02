@@ -16,7 +16,7 @@ es.SurfaceView = function( $container, model ) {
 	this.$.append( this.documentView.$ );
 	
 	this.cursor = {
-		$: $( '<div class="editSurface-cursor"></div>' ).appendTo( this.$ ),
+		$: $( '<div class="editSurface-surfaceView-cursor"></div>' ).appendTo( this.$ ),
 		interval: null,
 		offset: null,
 		initialLeft: null
@@ -46,7 +46,7 @@ es.SurfaceView = function( $container, model ) {
 	} );
 	
 	// Hidden input
-	this.$input = $( '<input class="editSurface-input" />' )
+	this.$input = $( '<input class="editSurface-surfaceView-input" />' )
 		.prependTo( this.$ )
 		.on( {
 			'focus' : function() {
@@ -147,9 +147,13 @@ es.SurfaceView.prototype.onKeyUp = function( e ) {
 
 es.SurfaceView.prototype.moveCursor = function( instruction ) {
 	if ( instruction === 'left') {
-		this.showCursor( this.documentView.getModel().getRelativeContentOffset( this.cursor.offset, -1 ) );
+		this.showCursor(
+			this.documentView.getModel().getRelativeContentOffset( this.cursor.offset, -1 )
+		);
 	} else if ( instruction === 'right' ) {
-		this.showCursor( this.documentView.getModel().getRelativeContentOffset( this.cursor.offset, 1 ) );
+		this.showCursor(
+			this.documentView.getModel().getRelativeContentOffset( this.cursor.offset, 1 )
+		);
 	} else if ( instruction === 'up' || instruction === 'down' ) {
 		// ...
 	} else if ( instruction === 'home' ) {

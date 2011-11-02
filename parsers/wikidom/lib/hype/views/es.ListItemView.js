@@ -11,10 +11,10 @@ es.ListItemView = function( model ) {
 	es.DocumentViewLeafNode.call( this, model );
 
 	// Properties
-	this.$icon = $( '<div class="editSurface-listItem-icon"></div>' ).prependTo( this.$ );
+	this.$icon = $( '<div class="editSurface-listItemView-icon"></div>' ).prependTo( this.$ );
 	
 	// DOM Changes
-	this.$.addClass( 'editSurface-listItem' );
+	this.$.addClass( 'editSurface-listItemView' );
 
 	// Events
 	this.on( 'update', this.setClasses );
@@ -31,13 +31,13 @@ es.ListItemView.prototype.setClasses = function() {
 		.attr(
 			'class',
 			classes
-				.replace( /editSurface-listItem-level[0-9]+/, '' )
-				.replace( /editSurface-listItem-(bullet|number)/, '' )
+				.replace( /editSurface-listItemView-level[0-9]+/, '' )
+				.replace( /editSurface-listItemView-(bullet|number)/, '' )
 		)
 		// Set the list style class from the style on top of the stack
-		.addClass( 'editSurface-listItem-' + styles[styles.length - 1] )
+		.addClass( 'editSurface-listItemView-' + styles[styles.length - 1] )
 		// Set the list level class from the length of the stack
-		.addClass( 'editSurface-listItem-level' + ( styles.length - 1 ) );
+		.addClass( 'editSurface-listItemView-level' + ( styles.length - 1 ) );
 };
 
 es.ListItemView.prototype.setNumber = function( number ) {

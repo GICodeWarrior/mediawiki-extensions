@@ -13,7 +13,7 @@ es.TableView = function( model ) {
 	// DOM Changes
 	this.$
 		.attr( 'style', model.getElementAttribute( 'html/style' ) )
-		.addClass( 'editSurface-tableBlock' );
+		.addClass( 'editSurface-tableView' );
 };
 
 /* Inheritance */
