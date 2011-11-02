@@ -130,6 +130,7 @@ $messages['en'] = array(
 	'contest-signup-finished' => 'This contest has ended. Thank you for your participation!',
 	'contest-signup-draft' => 'This contest has not yet started. Please be patient.',
 	'contest-signup-country' => 'Your country',
+	'contest-signup-emailwarn' => 'Warning: you are changing your accounts email address, which will require your confirming the new address.',
 
 	'contest-signup-require-rules' => 'You must agree to the contest rules.',
 	'contest-signup-require-country' => 'You must provide your country of residence.',

@@ -19,4 +19,14 @@
 //
 //	} );
 
+		$( '.contestant-row' ).click( function() {
+			debugger;
+			$this = $( this );
+			$a = $this.children( 'td:first' );
+			$a = $a.children( 'a' );
+			$a.trigger( 'click' );
+		} );
+
+	} );
+
 })( window.jQuery, window.mediaWiki );

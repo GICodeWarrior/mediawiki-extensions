@@ -10,7 +10,9 @@
 
 	$( document ).ready( function() {
 
-		var contestConfig = mw.config.get( 'ContestConfig' );
+		var _this = this;
+		
+		this.contestConfig = mw.config.get( 'ContestConfig' );
 
 		$( '.mw-htmlform-submit' ).button();
 
@@ -18,7 +20,7 @@
 
 		$div = $( '<div />' ).attr( {
 			'style': 'display:none'
-		} ).html( $( '<div />' ).attr( { 'id': 'contest-rules-div' } ).html( contestConfig['rules_page'] ) );
+		} ).html( $( '<div />' ).attr( { 'id': 'contest-rules-div' } ).html( this.contestConfig['rules_page'] ) );
 
 		$a = $( "label[for='contest-rules']" ).find( 'a' );
 		$a.attr( { 'href': '#contest-rules-div' } );
@@ -33,7 +35,9 @@
 			'type'          : 'inline',
 			'autoDimensions': false
 		} );
-
+		
+		$( '#mw-input-wpcontestant-email' ).contestEmail();
+		
 	} );
 
 })( window.jQuery, window.mediaWiki );

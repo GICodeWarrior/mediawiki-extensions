@@ -14,6 +14,8 @@
 
 		$( '.contest-submission' ).contestSubmission();
 
+		$( '#mw-input-wpcontestant-email' ).contestEmail();
+		
 	} );
 
 })( window.jQuery, window.mediaWiki );
