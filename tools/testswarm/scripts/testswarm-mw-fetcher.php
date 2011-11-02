@@ -118,7 +118,7 @@ class TestSwarmMWMain {
 	}
 
 	/**
-	 * Try to fetch the next revision (relative latest checkout in the checkouts directory).
+	 * Try to fetch the next revision (relative to the latest checkout in the checkouts directory).
 	 * This is the main entry point after construction.
 	 */
 	public function tryFetchNextRev() {
@@ -312,9 +312,9 @@ class TestSwarmMWMain {
 	/** LOGGING **/
 
 	/**
-	 * Utility function to log a message for a given id.
+	 * Utility function to save a message to the log file.
 	 *
-	 * @param $msg string: message to log. Will be prefixed with date("c")
+	 * @param $msg string: message to log. Will be prefixed with a timestamp.
 	 * @param $callee string: Callee function to be logged as origin.
 	 */
 	public function log( $msg, $callee = '', $prefix = '' ) {
@@ -330,9 +330,12 @@ class TestSwarmMWMain {
 	}
 
 	/**
-	 * Log a debug message. Only logged in debug mode.
+	 * Echo a debug message directly to the output. Ignored when not in debug mode.
 	 * Messages are prefixed with "DEBUG> ".
 	 * Multiline messages will be split up.
+	 *
+	 * In contrary to log(), these are not saved in a file (you can save them if needed,
+	 * simply point output to a file from the shell; $ php foo.php > debug.log).
 	 *
 	 * @param $msg string: Message to print.
 	 * @param $callee string.
