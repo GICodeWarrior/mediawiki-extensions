@@ -1,3 +1,11 @@
+= DO NOT COMMIT CODE HERE =
+
+We've moved!
+
+http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/VisualEditor/
+
+----------------------------------------------------------------------------------------------------
+
 = WikiDom and Edit Surface =
 
 WikiDom is a serializable document object model for Wikitext. Once a parser is created that can emit
