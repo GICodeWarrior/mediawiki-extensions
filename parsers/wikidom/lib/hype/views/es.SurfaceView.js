@@ -14,14 +14,23 @@ es.SurfaceView = function( $container, model ) {
 	// Initialize document view
 	this.documentView = new es.DocumentView( this.model.getDocument(), this );
 	this.$.append( this.documentView.$ );
-	
+
+	// Interaction state
+	this.mouse = {
+		selecting: false,
+		clicks: 0,
+		clickDelay: 500,
+		clickTimeout: null,
+		clickPosition: null,
+		hotSpotRadius: 1,
+		lastMovePosition: null
+	};
 	this.cursor = {
 		$: $( '<div class="es-surfaceView-cursor"></div>' ).appendTo( this.$ ),
 		interval: null,
 		offset: null,
 		initialLeft: null
 	};
-	
 	this.keyboard = {
 		selecting: false,
 		cursorAnchor: null,
@@ -32,10 +41,14 @@ es.SurfaceView = function( $container, model ) {
 			command: false,
 			alt: false
 		}
-	};	
-	
+	};
+	this.selection = {
+		from: 0,
+		to: 0
+	};
+
 	// References for use in closures
-	var surfaceView = this,
+	var	surfaceView = this,
 		$document = $( document );
 
 	// MouseDown on surface
@@ -76,6 +89,27 @@ es.SurfaceView = function( $container, model ) {
 	
 	// First render
 	this.documentView.renderContent();
+
+	this.dimensions = {
+		width: this.$.width(),
+		height: this.$window.height(),
+		scrollTop: this.$window.scrollTop()
+	};
+	
+	// Re-render when resizing horizontally
+	this.$window.resize( function() {
+		surfaceView.hideCursor();
+		surfaceView.dimensions.height = surfaceView.$window.height();
+		var width = surfaceView.$.width();
+		if ( surfaceView.dimensions.width !== width ) {
+			surfaceView.dimensions.width = width;
+			surfaceView.documentView.renderContent();
+		}
+	} );
+	
+	this.$window.scroll( function() {
+		surfaceView.dimensions.scrollTop = surfaceView.$window.scrollTop();
+	} );
 };
 
 es.SurfaceView.boundaryTest = /([ \-\t\r\n\f])/;
@@ -142,7 +176,26 @@ es.SurfaceView.prototype.onKeyDown = function( e ) {
 };
 
 es.SurfaceView.prototype.onKeyUp = function( e ) {
-	//
+	switch ( e.keyCode ) {
+		case 16: // Shift
+			this.keyboard.keys.shift = false;
+			if ( this.keyboard.selecting ) {
+				this.keyboard.selecting = false;
+			}
+			break;
+		case 17: // Control
+			this.keyboard.keys.control = false;
+			break;
+		case 18: // Alt
+			this.keyboard.keys.alt = false;
+			break;
+		case 91: // Command
+			this.keyboard.keys.command = false;
+			break;
+		default:
+			break;
+	}
+	return true;
 };
 
 es.SurfaceView.prototype.moveCursor = function( instruction ) {
@@ -157,16 +210,29 @@ es.SurfaceView.prototype.moveCursor = function( instruction ) {
 	} else if ( instruction === 'up' || instruction === 'down' ) {
 		// ...
 	} else if ( instruction === 'home' ) {
-		this.showCursor( this.documentView.getRenderedLineRange( this.cursor.offset ).start );
-	} else if ( instruction === 'end' ) {
-		var end = this.documentView.getRenderedLineRange( this.cursor.offset ).end;
-		var data = this.documentView.getModel().data;
-		if ( es.DocumentModel.isContentData( data, end ) ) {
-			while ( es.SurfaceView.boundaryTest.exec( data[ end - 1 ] ) ) {
-				end--;
-			}
+		if ( wasLeftBias ) {
+			this.showCursor(
+				this.documentView.getRenderedLineRangeFromOffset(
+					this.documentView.getModel().getRelativeContentOffset( this.cursor.offset, -1 )
+				).start
+			);
+		} else {
+			this.showCursor( this.documentView.getRenderedLineRangeFromOffset( this.cursor.offset ).start );
 		}
-		this.showCursor( end );
+	} else if ( instruction === 'end' ) {
+		if ( !wasLeftBias ) {
+			this.showCursor(
+				this.documentView.getRenderedLineRangeFromOffset( this.cursor.offset ).end,
+				true
+			);
+		} else {
+			this.showCursor(
+				this.documentView.getRenderedLineRangeFromOffset(
+					this.documentView.getModel().getRelativeContentOffset( this.cursor.offset, -1 )
+				).end,
+				true
+			);
+		}
 	}
 };
 
@@ -176,8 +242,15 @@ es.SurfaceView.prototype.moveCursor = function( instruction ) {
  * @method
  * @param offset {Integer} Position to show the cursor at
  */
-es.SurfaceView.prototype.showCursor = function( offset, leftBias ) {
+var wasLeftBias = false;
+es.SurfaceView.prototype.showCursor = function( offset, leftBias ) {	
 	if ( typeof offset !== 'undefined' ) {
+		if ( leftBias ) {
+			wasLeftBias = true;
+		} else {
+			wasLeftBias = false;
+		}
+		console.log('showCursor: ' + offset + ' leftBias: ' + leftBias);
 		this.cursor.offset = offset;
 		var position = this.documentView.getRenderedPositionFromOffset(
 			this.cursor.offset, leftBias
