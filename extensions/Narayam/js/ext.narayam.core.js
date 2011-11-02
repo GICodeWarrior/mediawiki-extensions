@@ -35,13 +35,7 @@ $.narayam = new ( function() {
 	var allImes =  mw.config.get( 'wgNarayamAllSchemes' ) || {};
 	// Currently selected scheme
 	var currentScheme = null;
-	// Shortcut key for turning Narayam on and off
-	var shortcutKey = mw.config.get( 'wgNarayamShortcutKey' ) || {
-		altKey: false,
-		ctrlKey: false,
-		shiftKey: false,
-		key: null
-	};
+
 
 	/* Private functions */
 
@@ -118,10 +112,8 @@ $.narayam = new ( function() {
 	 * @return bool
 	 */
 	function isShortcutKey( e ) {
-		return e.altKey == shortcutKey.altKey &&
-			e.ctrlKey == shortcutKey.ctrlKey &&
-			e.shiftKey == shortcutKey.shiftKey &&
-			String.fromCharCode( e.which ).toLowerCase() == shortcutKey.key.toLowerCase();
+		return e.ctrlKey &&
+			String.fromCharCode( e.which ).toLowerCase() == 'm';
 	}
 
 	/**
@@ -129,18 +121,8 @@ $.narayam = new ( function() {
 	 * @return string
 	 */
 	function shortcutText() {
-		var text = '';
-		// TODO: Localize these things (in core, too)
-		if ( shortcutKey.ctrlKey ) {
-			text += 'Ctrl-';
-		}
-		if ( shortcutKey.shiftKey ) {
-			text += 'Shift-';
-		}
-		if ( shortcutKey.altKey ) {
-			text += 'Alt-';
-		}
-		text += shortcutKey.key.toUpperCase();
+		var text = 'Ctrl-M';
+		// TODO: Address Bug #31026
 		return text;
 	}
 

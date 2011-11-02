@@ -25,7 +25,7 @@ class NarayamHooks {
 	}
 
 	public static function addConfig( &$vars ) {
-		global $wgNarayamEnabledByDefault, $wgNarayamShortcutKey, $wgUser;
+		global $wgNarayamEnabledByDefault, $wgUser;
 
 		if ( $wgUser->getOption( 'narayamDisable' ) ) {
 			// User disabled Narayam
@@ -33,7 +33,6 @@ class NarayamHooks {
 		}
 
 		$vars['wgNarayamEnabledByDefault'] = $wgNarayamEnabledByDefault;
-		$vars['wgNarayamShortcutKey'] = $wgNarayamShortcutKey;
 
 		return true;
 	}
