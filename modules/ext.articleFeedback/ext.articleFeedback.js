@@ -124,7 +124,7 @@ var survey = new ( function() {
 							.html( function() {
 								var link = mw.html.element(
 									'a', {
-										href: mw.config.get( 'wgArticleFeedbackPrivacyURL' )
+										href: mw.msg( 'articlefeedback-privacyurl' )
 									}, mw.msg( 'articlefeedback-survey-disclaimerlink' )
 								);
 								return mw.html.escape( mw.msg( 'articlefeedback-survey-disclaimer' ) )
@@ -312,8 +312,7 @@ var config = {
 			'accept': 'articlefeedback-pitch-edit-accept',
 			'reject': 'articlefeedback-pitch-reject'
 		}
-	},
-	'privacyURL': mw.config.get( 'wgArticleFeedbackPrivacyURL' )
+	}
 };
 
 /* Load at the bottom of the article */

@@ -36,7 +36,8 @@ class ArticleFeedbackHooks {
 				'articlefeedback-survey-message-success',
 				'articlefeedback-survey-message-error',
 				'articlefeedback-survey-disclaimer',
-				'articlefeedback-survey-disclaimerlink'
+				'articlefeedback-survey-disclaimerlink',
+				'articlefeedback-privacyurl'
 			),
 			'dependencies' => array(
 				'jquery.ui.dialog',
@@ -83,7 +84,7 @@ class ArticleFeedbackHooks {
 				'articlefeedback-report-panel-description',
 				'articlefeedback-report-empty',
 				'articlefeedback-report-ratings',
-				'parentheses',
+				'articlefeedback-privacyurl'
 			),
 			'dependencies' => array(
 				'jquery.appear',
@@ -279,8 +280,7 @@ class ArticleFeedbackHooks {
 			$wgArticleFeedbackTracking,
 			$wgArticleFeedbackOptions,
 			$wgArticleFeedbackNamespaces,
-			$wgArticleFeedbackRatingTypes,
-			$wgArticleFeedbackPrivacyURL;
+			$wgArticleFeedbackRatingTypes;
 		$vars['wgArticleFeedbackSMaxage'] = $wgArticleFeedbackSMaxage;
 		$vars['wgArticleFeedbackCategories'] = $wgArticleFeedbackCategories;
 		$vars['wgArticleFeedbackBlacklistCategories'] = $wgArticleFeedbackBlacklistCategories;
@@ -290,7 +290,6 @@ class ArticleFeedbackHooks {
 		$vars['wgArticleFeedbackNamespaces'] = $wgArticleFeedbackNamespaces;
 		$vars['wgArticleFeedbackWhatsThisPage'] = wfMsgForContent( 'articlefeedback-form-panel-explanation-link' );
 		$vars['wgArticleFeedbackRatingTypesFlipped'] = array_flip( $wgArticleFeedbackRatingTypes );
-		$vars['wgArticleFeedbackPrivacyURL'] = $wgArticleFeedbackPrivacyURL;
 		return true;
 	}
 

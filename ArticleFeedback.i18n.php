@@ -98,6 +98,7 @@ $messages['en'] = array(
 	'articlefeedback-survey-message-success' => 'Thanks for filling out the survey.',
 	'articlefeedback-survey-message-error' => 'An error has occurred.
 Please try again later.',
+	'articlefeedback-privacyurl' => 'http://wikimediafoundation.org/wiki/Feedback_privacy_statement',
 	/* Special:ArticleFeedback */
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Today\'s highs and lows',
 	'articleFeedback-table-caption-dailyhighs' => 'Pages with highest ratings: $1',
@@ -187,6 +188,7 @@ $1 is an integer, and the rating count.",
 	'articlefeedback-pitch-join-body' => 'Based on {{msg-mw|Articlefeedback-pitch-join-message}}.',
 	'articlefeedback-pitch-join-accept' => '{{Identical|Create an account}}',
 	'articlefeedback-pitch-join-login' => '{{Identical|Log in}}',
+	'articlefeedback-privacyurl' => 'This URL can be changed to point to a translated version of the page if it exists.',
 	'articleFeedback-table-heading-page' => 'This is used in the [[mw:Extension:ArticleFeedback|Article Feedback extension]].
 {{Identical|Page}}',
 	'articleFeedback-table-heading-average' => '{{Identical|Average}}',
