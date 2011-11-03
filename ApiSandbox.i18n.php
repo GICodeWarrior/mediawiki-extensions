@@ -228,12 +228,13 @@ $messages['es'] = array(
 /** Persian (فارسی)
  * @author Ebraminio
  * @author Leyth
+ * @author Mjbmr
  */
 $messages['fa'] = array(
 	'apisb-desc' => 'اشکال‌یابی فراخوانی‌های [http://www.mediawiki.org/wiki/API رابط برنامه‌نویسی مدیاویکی] را از طریق مرورگر اجازه می‌دهد',
 	'apisandbox' => 'گودال ماسه‌بازی رابط برنامه‌نویسی',
 	'apisb-no-js' => "'''خطا''': این قابلیت نیازمند جاوااسکریپت است.",
-	'apisb-api-disabled' => 'رابط برنامه‌نویسی در این وب‌گاه غیرفعال شده‌است.',
+	'apisb-api-disabled' => 'رابط برنامه‌نویسی در این تارنما غیرفعال شده‌است.',
 	'apisb-parameters' => 'پارامترها',
 	'apisb-result' => 'نتیجه',
 	'apisb-request-url' => 'درخواست آدرس:',
