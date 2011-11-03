@@ -206,7 +206,7 @@ function getSynonymId( $definedMeaningId, $expressionId ) {
 	$dbr = wfGetDB( DB_SLAVE );
 	$queryResult = $dbr->query( "SELECT syntrans_sid FROM {$dc}_syntrans " .
 								"WHERE defined_meaning_id=$definedMeaningId AND expression_id=$expressionId " .
-								getLatestTransactionRestriction( "{$dc}_syntrans" ) . " LIMIT 1" );
+								' AND ' . getLatestTransactionRestriction( "{$dc}_syntrans" ) . " LIMIT 1" );
 
 	if ( $synonym = $dbr->fetchObject( $queryResult ) )
 		return $synonym->syntrans_sid;
