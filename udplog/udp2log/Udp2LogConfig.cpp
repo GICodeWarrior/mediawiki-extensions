@@ -22,8 +22,10 @@ const double Udp2LogConfig::RATE_PERIOD = 60;
 const double Udp2LogConfig::MIN_LOSS_RATIO = 0.05;
 
 // Minimum time a pipe can be put on holiday. This is used when a reliable 
-// estimate of the pipe capacity is not available.
-const PosixClock::Time Udp2LogConfig::MIN_HOLIDAY_TIME(100e-6);
+// estimate of the pipe capacity is not available. This must be at least 2ns
+// so that pipes with a backlog are excluded from the write operation later 
+// in the same ProcessBlock() call.
+const PosixClock::Time Udp2LogConfig::MIN_HOLIDAY_TIME(2e-9);
 
 // Maximum time a pipe can be put on holiday. The point of holiday is to avoid 
 // regular backlog write operations, which adversely affect the global 
@@ -183,17 +185,28 @@ void Udp2LogConfig::ProcessBlock(const Block & block)
 	HandleBacklogs();
 
 	// Do an epoll to make sure all pipes are ready for input
-	// If any aren't ready, put them on holiday
-	CheckReadiness();
+	// If any aren't ready, put them on holiday and move the block to the
+	// pipe's backlog
+	CheckReadiness(block);
 
 	// Identify the pipes that can be written to with tee()
 	ProcessorIterator iter;
-	teePipes.assign(processors.size(), false);
+	teeProcessors.assign(processors.size(), false);
+	activeProcessors.assign(processors.size(), false);
 
 	int numPipes = 0;
 	for (iter = processors.begin(); iter != processors.end(); iter++) {
+		if ((**iter).IsBacklogged()) {
+			(**iter).IncrementBytesLost(block.GetSize());
+			continue;
+		}
+		if (!(**iter).IsActive(currentTime)) {
+			(**iter).SetBacklog(block);
+			continue;
+		}
+		activeProcessors.at(iter - processors.begin()) = true;
 		if ((**iter).IsUnsampledPipe() && (**iter).IsActive(currentTime)) {
-			teePipes.at(iter - processors.begin()) = true;
+			teeProcessors.at(iter - processors.begin()) = true;
 			numPipes++;
 		}
 	}
@@ -234,7 +247,10 @@ void Udp2LogConfig::ProcessBlock(const Block & block)
 			for (std::vector<int>::iterator bfi2 = bfi->second.begin(); 
 					bfi2 != bfi->second.end(); bfi2++) 
 			{
-				if (teeDone && teePipes.at(*bfi2)) {
+				if (teeDone && teeProcessors.at(*bfi2)) {
+					continue;
+				}
+				if (!activeProcessors.at(*bfi2)) {
 					continue;
 				}
 				LogProcessor & p = *processors[*bfi2];
@@ -274,21 +290,22 @@ void Udp2LogConfig::HandleBacklogs() {
 	}
 }
 
-void Udp2LogConfig::CheckReadiness() {
+void Udp2LogConfig::CheckReadiness(const Block & block) {
 	epoll->EpollWait(&epollEvents, 0);
 	if (epollEvents.size() != numPipeProcessors) {
-		readyPipes.assign(numPipeProcessors, false);
+		readyProcessors.assign(numPipeProcessors, false);
 		for (MyEventsIterator iter = epollEvents.begin(); iter != epollEvents.end(); iter++) {
 			if (iter->first & EPOLLOUT) {
-				readyPipes.at(iter->second->GetProcessorIndex()) = true;
+				readyProcessors.at(iter->second->GetProcessorIndex()) = true;
 			}
 		}
 
-		std::vector<bool>::iterator bi = readyPipes.begin();
+		std::vector<bool>::iterator bi = readyProcessors.begin();
 		//std::cout << "Check readiness\n";
-		while (readyPipes.end() != (bi = find(bi, readyPipes.end(), false))) {
-			//std::cout << "Not ready: " << bi - readyPipes.begin() << "\n";
-			PutOnHoliday(*processors.at(bi - readyPipes.begin()));
+		while (readyProcessors.end() != (bi = find(bi, readyProcessors.end(), false))) {
+			LogProcessor & p = *processors.at(bi - readyProcessors.begin());
+			//std::cout << "Not ready: " << bi - readyProcessors.begin() << "\n";
+			PutOnHoliday(p);
 			bi++;
 		}
 	}
@@ -301,13 +318,13 @@ void Udp2LogConfig::HandleTeePipes(const Block & block) {
 	
 	// Now send it out to all unsampled pipes using the zero-copy tee() syscall.
 	for (ProcessorIterator iter = processors.begin(); iter != processors.end(); iter++) {
-		if (!teePipes.at(iter - processors.begin())) {
+		if (!teeProcessors.at(iter - processors.begin())) {
 			continue;
 		}
 		PipeProcessor * p = dynamic_cast<PipeProcessor*>(iter->get());
 		ssize_t bytesWritten = p->CopyFromPipe(bufferPipe.readEnd, block.GetSize());
 		if (bytesWritten != (ssize_t)block.GetSize()) {
-			//std::cout << "Processor[" << (iter - processors.begin()) << "]: teed " <<
+			//std::cout << "Processor " << (iter - processors.begin()) << ": teed " <<
 			//	bytesWritten << "/" << (ssize_t)block.GetSize() << "\n";
 			// Partial write done, make a backlog entry and put the 
 			// processor on an input holiday as punishment
@@ -342,8 +359,8 @@ void Udp2LogConfig::PutOnHoliday(LogProcessor & p)
 
 	endTime += interval;
 	p.SetHoliday(endTime);
-	//std::cout << "Putting processor on holiday for " << (double)interval << " seconds: " <<
-	//	p.GetProcessorIndex() << "\n";
+	//std::cout << "Putting processor " << p.GetProcessorIndex() << " on holiday for " << 
+	//	((double)interval * 1e9) << " ns\n";
 }
 
 void Udp2LogConfig::UpdateCounters()

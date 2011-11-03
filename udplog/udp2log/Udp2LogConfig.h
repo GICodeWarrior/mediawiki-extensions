@@ -33,7 +33,7 @@ public:
 	void Reload();
 	void ProcessBlock(const Block & block);
 	void HandleBacklogs();
-	void CheckReadiness();
+	void CheckReadiness(const Block & block);
 	void HandleTeePipes(const Block & block);
 	void PutOnHoliday(LogProcessor & p);
 	void UpdateCounters();
@@ -110,13 +110,13 @@ protected:
 	// This is a temporary vector used to hold the result of an epoll_wait(). 
 	// It's in the object state instead of the stack to avoid reallocation
 	// during the high-performance sections of the code. The same goes for 
-	// teePipes and readyPipes.
+	// teeProcessors and readyPipes.
 	MyEpollEvents epollEvents;
 
 	bool currentTimeValid;
 	PosixClock::Time currentTime;
 	PosixClock clock;
-	std::vector<bool> teePipes;
+	std::vector<bool> teeProcessors, activeProcessors, readyProcessors;
 	size_t numPipeProcessors;
 	std::vector<bool> readyPipes;
 

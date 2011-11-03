@@ -130,7 +130,6 @@ void PipeProcessor::HandleError(libc_error & e, size_t bytes)
 ssize_t PipeProcessor::Write(const char *buffer, size_t size)
 {
 	if (!IsActive(config.GetCurrentTime())) {
-		IncrementBytesLost(size);
 		return size;
 	}
 
@@ -142,7 +141,6 @@ ssize_t PipeProcessor::Write(const char *buffer, size_t size)
 		bytesWritten = 0;
 		HandleError(e, size);
 	}
-	IncrementBytesLost(size - bytesWritten);
 	return bytesWritten;
 }
 
@@ -209,7 +207,6 @@ void PipeProcessor::Open()
 ssize_t PipeProcessor::CopyFromPipe(Pipe & source, size_t size)
 {
 	if (!IsActive(config.GetCurrentTime())) {
-		IncrementBytesLost(size);
 		return size;
 	}
 
