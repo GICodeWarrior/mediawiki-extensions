@@ -444,6 +444,10 @@ function sortTable(columnNode, skipRows, columnIndex) {
 	changeSortIcons(tableNode, columnNode, sortOrder.getColumn(0).direction);		
 }
 
+function stripSuffix(source, suffix) {
+	return source.substr(0, source.length - suffix.length);
+}
+
 function changePopupLinkArrow(popupLink, newArrow) {
 	var linkHTML = popupLink.innerHTML;
 	popupLink.innerHTML = linkHTML.substr(0, linkHTML.length - 1) + newArrow;
