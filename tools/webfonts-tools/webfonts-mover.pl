@@ -1,4 +1,8 @@
 #!/usr/bin/perl
+# webfonts-mover.pl
+# A simple program to uninstall and install WebFonts.
+# run perl webfonts-mover.pl --help for more information.
+# Author: Amir E. Aharoni
 
 use 5.010;
 
@@ -27,16 +31,45 @@ my $removed_fonts_dir = 'removed_fonts';
 my $system_fonts_dir  = '/usr/share/fonts';
 my $dry               = 0;
 my $restore           = 0;
+my $help              = 0;
 
 my $getopt_success = GetOptions(
     'source_fonts_dir=s'  => \$source_fonts_dir,
     'removed_fonts_dir=s' => \$removed_fonts_dir,
     'dry'                 => \$dry,
     'restore'             => \$restore,
+    'help'                => \$help,
 );
 
 if (not $getopt_success) {
     croak('Fatal error reading command-line options. Exiting.');
+}
+
+if ($help) {
+    say <<"END_USAGE";
+This programs moves font files that have the same names as in the WebFonts
+extension out of the system fonts directory to a backup directory
+or restores them back. After moving the files it rebuild the cache by
+running fc-cache.
+
+Notes:
+* Currently it only works on Linux.
+* You probably need to run it as a superuser.
+* It's a very preliminary version. Consider backing up your fonts directory.
+
+Command line options:
+--source_fonts_dir      The fonts directory in the WebFonts source tree.
+                        The default is ../../extensions/WebFonts/fonts.
+--removed_fonts_dir     The destination directory for removed web fonts.
+                        The default is ./removed_fonts.
+--dry                   Don't move files or update the cache.
+                        Only show which files would be moved and on which
+                        directories fc-cache would run.
+--restore               Moved font files back to the system fonts directory.
+                        Default is false.
+--help                  Print this help message.
+END_USAGE
+    exit;
 }
 
 $source_fonts_dir = abs_path($source_fonts_dir);
