@@ -244,7 +244,7 @@ def makeRelease(version, branch, dir, prevVersion = None, prevBranch = None):
 	# Sign
 	uploadFiles = []
 	for fileName in outFiles:
-		proc = subprocess.Popen(['gpg', '--detach-sign', dir +' /' + fileName])
+		proc = subprocess.Popen(['gpg', '--detach-sign', dir +'/' + fileName])
 		if proc.wait() != 0:
 			print "gpg failed, exiting"
 			sys.exit(1)
