@@ -8,24 +8,7 @@
 
 (function( $, mw ) {
 
-//	$( document ).ready( function() {
-//
-//		$( '.contestant-row' ).click( function( e ) {
-//			window.open(
-//				$( this ).attr( 'data-contestant-target' ),
-//				e.metaKey ? '_blank' : '_self' 
-//			);
-//		} );
-//
-//	} );
-
-		$( '.contestant-row' ).click( function() {
-			debugger;
-			$this = $( this );
-			$a = $this.children( 'td:first' );
-			$a = $a.children( 'a' );
-			$a.trigger( 'click' );
-		} );
+	$( document ).ready( function() {
 
 	} );
 
