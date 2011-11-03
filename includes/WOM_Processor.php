@@ -406,7 +406,7 @@ class WOMProcessor {
 		wfProfileOut( $fname );
 		return $xObj;
 	}
-	public static function getObjIdByXPath2( WOMPageModel $wom_obj, $xpath ) {
+	public static function getObjIdByXPath2( WOMPageModel $wom_obj, $xpath, $extra_msg = '' ) {
 		$fname = 'WikiObjectModel::getObjIdByXPath2 (WOM)';
 		wfProfileIn( $fname );
 
@@ -424,7 +424,7 @@ class WOMProcessor {
 				$ret[] = strval( $o['id'] );
 			}
 		} else {
-			throw new MWException( __METHOD__ . ": XML element not found in {$title} ({$rid}), xpath: {$xpath}" );
+			throw new MWException( __METHOD__ . ": XML element not found{$extra_msg}, xpath: {$xpath}" );
 		}
 		wfProfileOut( $fname );
 		return $ret;
@@ -433,7 +433,7 @@ class WOMProcessor {
 		$fname = 'WikiObjectModel::getObjIdByXPath (WOM)';
 		wfProfileIn( $fname );
 
-		$ret = self::getObjIdByXPath2( self::getPageObject( $title, $rid ), $xpath );
+		$ret = self::getObjIdByXPath2( self::getPageObject( $title, $rid ), $xpath, " in {$title} ({$rid})" );
 
 		wfProfileOut( $fname );
 		return $ret;
