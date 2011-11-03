@@ -1,5 +1,3 @@
-window.onload=sortAll;
-
 function getHTTPObject() {
 	var xmlhttp;
 
