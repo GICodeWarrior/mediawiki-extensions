@@ -28,6 +28,7 @@ function pageAsURL( $nameSpace, $title, $usedc = true ) {
 	global $wgArticlePath, $wdDefaultViewDataSet;
 
 	$myTitle = str_replace( "&", urlencode("&") , $title ) ;
+	$myTitle = str_replace( "?", urlencode("?") , $title ) ;
 	$url = str_replace( "$1", $nameSpace . ':' . $myTitle , $wgArticlePath );
 
 	if ( $usedc ) {
