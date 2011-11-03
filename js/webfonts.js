@@ -149,7 +149,7 @@
 		 */
 		addFont : function( fontFamilyName ) {
 			// avoid duplication
-			if ( $.inArray(fontFamilyName, $.webfonts.fonts ) < 0 ){
+			if ( $.inArray( fontFamilyName, $.webfonts.fonts ) < 0 ){
 				// check whether the requested font is available.
 				if ( fontFamilyName in $.webfonts.config.fonts ) {
 					$.webfonts.loadcss( fontFamilyName );
@@ -166,7 +166,7 @@
 			var config = [];
 			var languages = $.webfonts.config.languages;
 			var requested = [wgUserLanguage, wgContentLanguage];
-			if ( mw.config.get( 'wgWebFontsEnabledByDefault' ) == false) {
+			if ( mw.config.get( 'wgWebFontsEnabledByDefault' ) == false ) {
 				// Webfonts are not enabled by default. Not setting up.
 				// This is applicable only for anonymous users.
 				return false;
@@ -231,7 +231,7 @@
 			$('body').find('*[style]').each(function(index) {
 				if( this.style.fontFamily ) {
 					var fontFamilyItems = this.style.fontFamily.split(",");
-					$.each( fontFamilyItems, function(index, fontFamily ) {
+					$.each( fontFamilyItems, function(index, fontFamily) {
 						//remove the ' characters if any.
 						fontFamily = fontFamily.replace(/'/g, '');
 						$.webfonts.addFont( fontFamily );

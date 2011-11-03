@@ -37,7 +37,7 @@ class WebFontsHooks {
 			'type' => 'toggle',
 			'label-message' => 'webfonts-enable-preference', // a system message
 			'section' => 'rendering/advancedrendering', // under 'Advanced options' section of 'Editing' tab
-			'default' =>  $wgUser->getOption( 'webfontsEnable' )
+			'default' => $wgUser->getOption( 'webfontsEnable' )
 		);
 
 		return true;
