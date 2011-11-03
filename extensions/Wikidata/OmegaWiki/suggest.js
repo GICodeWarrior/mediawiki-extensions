@@ -20,10 +20,6 @@ function getHTTPObject() {
 	return xmlhttp;
 }
 
-function stripSuffix(source, suffix) {
-	return source.substr(0, source.length - suffix.length);
-}
-
 function getSuggestPrefix(node, postFix) {
 	var nodeId = node.id;
 	return stripSuffix(nodeId, postFix);
