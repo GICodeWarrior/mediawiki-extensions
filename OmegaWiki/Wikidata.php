@@ -251,7 +251,7 @@ class DefaultWikidataApplication {
 		$wgOut->addHTML(
 			'<div class="option-panel">' .
 				'<table cellpadding="0" cellspacing="0"><tr>' .
-					'<th>' . wfMsg( "summary" ) . ': </th>' .
+					'<th>' . wfMsg( "summary" ) . '</th>' .
 					'<td class="option-field">' . getTextBox( "summary" ) . '</td>' .
 				'</tr></table>' .
 				getSubmitButton( "save", wfMsgSc( "save" ) ) .
