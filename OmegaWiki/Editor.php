@@ -1115,8 +1115,15 @@ class DefinedMeaningHeaderEditor extends ScalarEditor {
 			$wgOut->addMeta( 'Description', $expression . ": " . $definition );
 			$isMetaDescSet = 1 ;
 		}
- 
-		return $definedMeaningAsLink . ": " . $escapedDefinition;
+
+		$DMPageName = definingExpression( $value ) . " (" . $value . ")" ;
+		$DMTitle = Title::makeTitle( NS_DEFINEDMEANING , $DMPageName );
+		$editURL = $DMTitle->getLocalURL( 'action=edit' ) ;
+		$editLink = '<div style="float:right; font-size:60%;"><sup>['
+			. createLink( $editURL , wfMsg( 'edit') )
+			. ']</sup></div>' ;
+
+		return $editLink . $definedMeaningAsLink . ": " . $escapedDefinition ;
 	}
 
 	public function getEditHTML( IdStack $idPath, $value ) {
@@ -1132,8 +1139,7 @@ class DefinedMeaningHeaderEditor extends ScalarEditor {
 	}
 
 	public function getInputValue( $id ) {
-		global
-			$wgRequest;
+		global $wgRequest;
 
 		return trim( $wgRequest->getText( $id ) );
 	}
