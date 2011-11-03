@@ -150,6 +150,7 @@ The {{SITENAME}} team',
  * @author Raymond
  * @author Sam Reed
  * @author Siebrand
+ * @author Toliño
  * @author Yekrats
  */
 $messages['qqq'] = array(
@@ -176,7 +177,7 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedback-form-panel-explanation' => '{{Identical|What is this}}',
 	'articlefeedback-form-panel-explanation-link' => 'Do not translate "Project:". Also translate the "ArticleFeedback" special page name at [[Special:AdvancedTranslate]].',
 	'articlefeedback-form-panel-helpimprove' => 'This message should use {{SITENAME}}.',
-	'articlefeedback-form-panel-helpimprove-note' => '$1 is a link pointing to the privacy policy. The link text is in the articlefeedback-form-panel-helpimprove-privacy message.',
+	'articlefeedback-form-panel-helpimprove-note' => '$1 is a link pointing to the privacy policy. The link text is in the {{msg-mw|articlefeedback-form-panel-helpimprove-privacy}} message.',
 	'articlefeedback-form-panel-helpimprove-email-placeholder' => '{{Optional}}',
 	'articlefeedback-form-panel-helpimprove-privacy' => '{{Identical|Privacy}}',
 	'articlefeedback-report-ratings' => "Needs plural support.
@@ -1148,6 +1149,7 @@ tým {{grammar:2sg|{{SITENAME}}}}',
 );
 
 /** Welsh (Cymraeg)
+ * @author Lloffiwr
  * @author Pwyll
  */
 $messages['cy'] = array(
@@ -1168,6 +1170,7 @@ $messages['cy'] = array(
 	'articlefeedback-survey-title' => 'Atebwch ambell gwestiwn os gwelwch yn dda.',
 	'articlefeedback-survey-thanks' => "Diolch am gwblhau'r holiadur.",
 	'articlefeedback-survey-disclaimer' => "Er mwyn ceisio gwella'r adnodd hwn, mae'n bosib y bydd eich adborth yn cael ei rannu'n anhysbys gyda'r gymuned Wicipedia.",
+	'articlefeedback-survey-disclaimerlink' => 'termau',
 	'articlefeedback-error' => 'Cafwyd gwall. Ceisiwch eto nes ymlaen os gwelwch yn dda.',
 	'articlefeedback-form-switch-label' => "Rhowch sgôr i'r dudalen hon.",
 	'articlefeedback-form-panel-title' => "Rhowch sgôr i'r dudalen hon.",
@@ -1180,8 +1183,8 @@ $messages['cy'] = array(
 	'articlefeedback-form-panel-expertise-hobby' => "Mae'n ddiddordeb personol, dwfn.",
 	'articlefeedback-form-panel-expertise-other' => 'Ni rhestrir ffynhonnell fy ngwybodaeth yn y fan hon',
 	'articlefeedback-form-panel-helpimprove' => 'Hoffwn gynorthwyo i wella Wicipedia, danfonwch e-bost ataf (dewisol)',
-	'articlefeedback-form-panel-helpimprove-note' => "Byddwn yn danfon e-bost atoch i gadarnhau. Ni fyddwn yn rhannu'ch cyfeiriad e-bost gydag unrhyw un. $1",
-	'articlefeedback-form-panel-helpimprove-privacy' => 'Polisi preifatrwydd',
+	'articlefeedback-form-panel-helpimprove-note' => "Byddwn yn danfon e-bost atoch i gadarnhau. Ni fyddwn yn rhannu'ch cyfeiriad e-bost gyda neb o'r tu allan, yn ôl ein $1.",
+	'articlefeedback-form-panel-helpimprove-privacy' => 'datganiad ar breifatrwydd adborth',
 	'articlefeedback-form-panel-submit' => 'Cyflwyno sgôr',
 	'articlefeedback-form-panel-pending' => "Nid yw'ch sgôr wedi cael ei gyflwyno eto",
 	'articlefeedback-form-panel-success' => 'Cadwyd yn llwyddiannus',
@@ -1233,6 +1236,7 @@ $messages['cy'] = array(
 	'articlefeedback-pitch-edit-accept' => 'Golygwch y dudalen hon',
 	'articlefeedback-survey-message-success' => "Diolch am gwblhau'r holiadur.",
 	'articlefeedback-survey-message-error' => 'Cafwyd gwall. Ceisiwch eto nes ymlaen os gwelwch yn dda.',
+	'articlefeedback-privacyurl' => 'http://wikimediafoundation.org/wiki/Feedback_privacy_statement',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Uchafbwyntiau ac iselfannau heddiw',
 	'articleFeedback-table-caption-dailyhighs' => "Tudalennau gyda'r sgôrau uchaf: $1",
 	'articleFeedback-table-caption-dailylows' => "Tudalennau gyda'r sgôrau isaf: $1",
@@ -1639,7 +1643,8 @@ $messages['eo'] = array(
 	'articlefeedback-survey-submit' => 'Enigi',
 	'articlefeedback-survey-title' => 'Bonvolu respondi al kelkaj demandoj',
 	'articlefeedback-survey-thanks' => 'Dankon pro plenumante la enketon.',
-	'articlefeedback-survey-disclaimer' => 'Por helpi plibonigi ĉi tiun econ, via komentaro eble estos donita anonime kun la Vikipedia komunumo.',
+	'articlefeedback-survey-disclaimer' => 'Sendonte, vi konstentos al travidebleco sub ĉi tiuj $1.',
+	'articlefeedback-survey-disclaimerlink' => 'kondiĉoj',
 	'articlefeedback-error' => 'Eraro okazis. Bonvolu reprovi baldaŭ.',
 	'articlefeedback-form-switch-label' => 'Taksi ĉi tiun paĝon',
 	'articlefeedback-form-panel-title' => 'Taksi ĉi tiun paĝon',
@@ -2298,6 +2303,7 @@ Kiitos! Terveisin,
 /** French (Français)
  * @author Crochet.david
  * @author Faure.thomas
+ * @author Gomoko
  * @author IAlex
  * @author Jean-Frédéric
  * @author Od1n
@@ -2323,7 +2329,8 @@ $messages['fr'] = array(
 	'articlefeedback-survey-submit' => 'Soumettre',
 	'articlefeedback-survey-title' => 'Veuillez répondre à quelques questions',
 	'articlefeedback-survey-thanks' => 'Merci d’avoir rempli le questionnaire.',
-	'articlefeedback-survey-disclaimer' => 'Pour aider à améliorer cette fonctionnalité, vous pouvez partager anonymement votre feedback avec la communauté Wikipédia.',
+	'articlefeedback-survey-disclaimer' => "En répondant, vous acceptez d'être transparent selon $1.",
+	'articlefeedback-survey-disclaimerlink' => 'conditions',
 	'articlefeedback-error' => 'Une erreur s’est produite. Veuillez réessayer plus tard.',
 	'articlefeedback-form-switch-label' => 'Noter cette page',
 	'articlefeedback-form-panel-title' => 'Noter cette page',
@@ -2336,8 +2343,8 @@ $messages['fr'] = array(
 	'articlefeedback-form-panel-expertise-hobby' => 'C’est une passion profonde et personnelle',
 	'articlefeedback-form-panel-expertise-other' => 'La source de ma connaissance n’est pas répertoriée ici',
 	'articlefeedback-form-panel-helpimprove' => 'J’aimerais aider à améliorer {{SITENAME}}, envoyez-moi un courriel (facultatif)',
-	'articlefeedback-form-panel-helpimprove-note' => 'Nous vous enverrons un courriel de confirmation. Nous ne partagerons votre adresse avec personne. $1',
-	'articlefeedback-form-panel-helpimprove-privacy' => 'Politique de confidentialité',
+	'articlefeedback-form-panel-helpimprove-note' => 'Nous vous enverrons un courriel de confirmation. Nous ne partagerons votre adresse électronique avec des parties extérieures, selon $1.',
+	'articlefeedback-form-panel-helpimprove-privacy' => 'Déclaration de confidentialité des ressentis',
 	'articlefeedback-form-panel-submit' => 'Envoyer les cotes',
 	'articlefeedback-form-panel-pending' => 'Vos votes n’ont pas encore été soumis',
 	'articlefeedback-form-panel-success' => 'Enregistré avec succès',
@@ -2390,6 +2397,7 @@ $messages['fr'] = array(
 	'articlefeedback-survey-message-success' => 'Merci d’avoir rempli le questionnaire.',
 	'articlefeedback-survey-message-error' => 'Une erreur est survenue.
 Veuillez ré-essayer plus tard.',
+	'articlefeedback-privacyurl' => 'http://wikimediafoundation.org/wiki/Feedback_privacy_statement',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Les hauts et les bas d’aujourd’hui',
 	'articleFeedback-table-caption-dailyhighs' => 'Pages avec les plus hautes cotes : $1',
 	'articleFeedback-table-caption-dailylows' => 'Pages avec cotes les plus basses : $1',
@@ -2579,7 +2587,8 @@ $messages['gl'] = array(
 	'articlefeedback-survey-submit' => 'Enviar',
 	'articlefeedback-survey-title' => 'Responda algunhas preguntas',
 	'articlefeedback-survey-thanks' => 'Grazas por encher a enquisa.',
-	'articlefeedback-survey-disclaimer' => 'Para axudar a mellorar esta característica, os seus comentarios compartiranse de xeito anónimo coa comunidade da Wikipedia.',
+	'articlefeedback-survey-disclaimer' => 'Se envía os seus comentarios, acepta publicalos baixo estes $1.',
+	'articlefeedback-survey-disclaimerlink' => 'termos',
 	'articlefeedback-error' => 'Houbo un erro. Inténteo de novo máis tarde.',
 	'articlefeedback-form-switch-label' => 'Avaliar esta páxina',
 	'articlefeedback-form-panel-title' => 'Avaliar esta páxina',
@@ -2592,8 +2601,8 @@ $messages['gl'] = array(
 	'articlefeedback-form-panel-expertise-hobby' => 'É unha das miñas afeccións persoais',
 	'articlefeedback-form-panel-expertise-other' => 'A fonte do meu coñecemento non está nesta lista',
 	'articlefeedback-form-panel-helpimprove' => 'Gustaríame axudar a mellorar a Wikipedia; enviádeme un correo electrónico (opcional)',
-	'articlefeedback-form-panel-helpimprove-note' => 'Enviarémoslle un correo electrónico de confirmación. Non compartiremos o seu enderezo con ninguén. $1',
-	'articlefeedback-form-panel-helpimprove-privacy' => 'Política de protección de datos',
+	'articlefeedback-form-panel-helpimprove-note' => 'Enviarémoslle un correo electrónico de confirmación. Non compartiremos o seu enderezo con terceiras partes fóra da nosa $1',
+	'articlefeedback-form-panel-helpimprove-privacy' => 'declaración de confidencialidade dos comentarios',
 	'articlefeedback-form-panel-submit' => 'Enviar a avaliación',
 	'articlefeedback-form-panel-pending' => 'Non enviou as súas valoracións',
 	'articlefeedback-form-panel-success' => 'Gardado correctamente',
@@ -4349,7 +4358,8 @@ $messages['mk'] = array(
 	'articlefeedback-survey-submit' => 'Поднеси',
 	'articlefeedback-survey-title' => 'Ве молиме одговорете на неколку прашања',
 	'articlefeedback-survey-thanks' => 'Ви благодариме што ја пополнивте анкетата.',
-	'articlefeedback-survey-disclaimer' => 'Поднесувајќи го ова, се согласувате на транспарентноста што ја налагаат овие [http://wikimediafoundation.org/wiki/Feedback_privacy_statement?uselang=mk услови]',
+	'articlefeedback-survey-disclaimer' => 'Поднесувајќи го ова, се согласувате на транспарентноста што ја налагаат овие $1.',
+	'articlefeedback-survey-disclaimerlink' => 'услови',
 	'articlefeedback-error' => 'Се појави грешка. Обидете се повторно.',
 	'articlefeedback-form-switch-label' => 'Оценете ја страницава',
 	'articlefeedback-form-panel-title' => 'Оценете ја страницава',
@@ -4417,6 +4427,7 @@ $messages['mk'] = array(
 	'articlefeedback-survey-message-success' => 'Ви благодариме што ја пополнивте анкетата.',
 	'articlefeedback-survey-message-error' => 'Се појави грешка.
 Обидете се подоцна.',
+	'articlefeedback-privacyurl' => 'http://wikimediafoundation.org/wiki/Feedback_privacy_statement?uselang=mk',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Издигања и падови за денес',
 	'articleFeedback-table-caption-dailyhighs' => 'Статии со највисоки оценки: $1',
 	'articleFeedback-table-caption-dailylows' => 'Статии со најниски оценки: $1',
@@ -4600,7 +4611,8 @@ $messages['ms'] = array(
 	'articlefeedback-survey-submit' => 'Serahkan',
 	'articlefeedback-survey-title' => 'Sila jawab beberapa soalan',
 	'articlefeedback-survey-thanks' => 'Terima kasih kerana membalas tinjauan kami.',
-	'articlefeedback-survey-disclaimer' => 'Dengan penyerahan ini, anda bersetuju dengan ketelusan mengikut [http://wikimediafoundation.org/wiki/Feedback_privacy_statement syarat-syarat] ini',
+	'articlefeedback-survey-disclaimer' => 'Dengan penyerahan ini, anda bersetuju dengan ketelusan di bawah $1 ini.',
+	'articlefeedback-survey-disclaimerlink' => 'syarat-syarat',
 	'articlefeedback-error' => 'Berlakunya ralat. Sila cuba lagi kemudian.',
 	'articlefeedback-form-switch-label' => 'Nilai laman ini',
 	'articlefeedback-form-panel-title' => 'Nilai laman ini',
@@ -4667,6 +4679,7 @@ $messages['ms'] = array(
 	'articlefeedback-survey-message-success' => 'Terima kasih kerana membalas tinjauan kami.',
 	'articlefeedback-survey-message-error' => 'Berlakunya ralat.
  Sila cuba lagi kemudian.',
+	'articlefeedback-privacyurl' => 'http://wikimediafoundation.org/wiki/Feedback_privacy_statement',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Penilaian tertinggi dan terendah hari ini',
 	'articleFeedback-table-caption-dailyhighs' => 'Laman yang tertinggi penilaiannya: $1',
 	'articleFeedback-table-caption-dailylows' => 'Laman yang terendah penilaiannya: $1',
@@ -7060,7 +7073,8 @@ $messages['vi'] = array(
 	'articlefeedback-survey-submit' => 'Gửi',
 	'articlefeedback-survey-title' => 'Xin vui lòng trả lời một số câu hỏi',
 	'articlefeedback-survey-thanks' => 'Cám ơn bạn đã điền khảo sát.',
-	'articlefeedback-survey-disclaimer' => 'Để giúp cải thiện tính năng này, thông tin phản hồi của bạn có thể được chia sẻ nặc danh với cộng đồng Wikipedia.',
+	'articlefeedback-survey-disclaimer' => 'Bằng cách gửi thông tin, bạn đồng ý phát hành thông tin này công khai theo các $1 này.',
+	'articlefeedback-survey-disclaimerlink' => 'điều khoản',
 	'articlefeedback-error' => 'Đã gặp lỗi. Xin vui lòng thử lại sau.',
 	'articlefeedback-form-switch-label' => 'Đánh giá trang này',
 	'articlefeedback-form-panel-title' => 'Đánh giá trang này',
@@ -7073,8 +7087,8 @@ $messages['vi'] = array(
 	'articlefeedback-form-panel-expertise-hobby' => 'Tôi quan tâm một cách thiết tha về đề tài này',
 	'articlefeedback-form-panel-expertise-other' => 'Tôi hiểu về đề tài này vì lý do khác',
 	'articlefeedback-form-panel-helpimprove' => 'Tôi muốn giúp cải tiến Wikipedia – gửi cho tôi một thư điện tử (tùy chọn)',
-	'articlefeedback-form-panel-helpimprove-note' => 'Chúng tôi sẽ gửi cho bạn một thư điện tử xác nhận. Chúng tôi sẽ không chia sẽ địa chỉ của bạn với bất cứ ai. $1',
-	'articlefeedback-form-panel-helpimprove-privacy' => 'Chính sách về sự riêng tư',
+	'articlefeedback-form-panel-helpimprove-note' => 'Chúng tôi sẽ gửi cho bạn một thư điện tử xác nhận. Chúng tôi sẽ không chia sẽ địa chỉ thư điện tử của bạn với bên ngoài, tuân theo $1 của chúng tôi.',
+	'articlefeedback-form-panel-helpimprove-privacy' => 'tuyên bố riêng tư của thông tin phản hồi',
 	'articlefeedback-form-panel-submit' => 'Gửi đánh giá',
 	'articlefeedback-form-panel-pending' => 'Các đánh giá của bạn chưa được gửi',
 	'articlefeedback-form-panel-success' => 'Lưu thành công',

@@ -6259,12 +6259,12 @@ $messages['eu'] = array(
  * @author Mjbmr
  */
 $messages['fa'] = array(
-	'configure-setting-wgLanguageCode' => 'کد زبان وب‌گاه',
+	'configure-setting-wgLanguageCode' => 'کد زبان تارنما',
 	'configure-setting-wgArticleRobotPolicies-key' => 'عنوان صفحه',
 	'configure-setting-wgArticleRobotPolicies-value' => 'سیاست رباتیک',
 	'configure-setting-wgExtraLanguageNames-key' => 'کد زبان',
 	'configure-setting-wgExtraLanguageNames-value' => 'نام',
-	'configure-setting-wgSiteNotice' => 'پیام وب‌گاه',
+	'configure-setting-wgSiteNotice' => 'پیام تارنما',
 	'configure-setting-wgSpecialPageGroups-key' => 'گروه',
 	'configure-setting-wgDebugLogGroups-value' => 'پرونده',
 	'configure-setting-wgSessionName' => 'نام جلسه',

@@ -95,6 +95,7 @@ $messages['fr'] = array(
 	'onlinestatusbar-line' => '$1 est maintenant $2 $3',
 	'onlinestatusbar-used' => 'Voulez-vous permettre que les autres voient si vous êtes en ligne ?',
 	'onlinestatusbar-status' => 'Quel est le statut par défaut que vous souhaitez utiliser :',
+	'onlinestatusbar-purge' => 'Vider la page utilisateur chaque vous que vous vous connectez ou vous déconnectez',
 	'prefs-onlinestatus' => 'État en ligne',
 	'onlinestatusbar-hide' => "Voulez-vous masquer la barre d'état afin d'utiliser le mot magique seulement ? (Pour les utilisateurs avancés)",
 	'onlinestatusbar-status-online' => 'Présent',
