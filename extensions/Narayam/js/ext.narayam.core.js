@@ -35,7 +35,8 @@ $.narayam = new ( function() {
 	var allImes =  mw.config.get( 'wgNarayamAllSchemes' ) || {};
 	// Currently selected scheme
 	var currentScheme = null;
-
+	// Shortcut key for turning Narayam on and off
+	var shortcutKey = getShortCutKey();
 
 	/* Private functions */
 
@@ -112,18 +113,62 @@ $.narayam = new ( function() {
 	 * @return bool
 	 */
 	function isShortcutKey( e ) {
-		return e.ctrlKey &&
-			String.fromCharCode( e.which ).toLowerCase() == 'm';
+		return e.altKey == shortcutKey.altKey &&
+			e.ctrlKey == shortcutKey.ctrlKey &&
+			e.shiftKey == shortcutKey.shiftKey &&
+			String.fromCharCode( e.which ).toLowerCase() == shortcutKey.key.toLowerCase();
 	}
-
+	
+	/**
+	 * Get the shortcut key for the tool, depending on OS, browser
+	 * @return shortcutKey
+	 */
+	function getShortCutKey() {
+		var defaultShortcut = {
+			altKey: false,
+			ctrlKey: true,
+			shiftKey: false,
+			cmdKey: false,
+			key: 'm'
+		}
+		// Browser sniffing to determine the available shortcutKey
+		// Refer:  mediawiki.util.js and en.wikipedia.org/wiki/Access_key
+		var profile = $.client.profile();
+		// Safari/Konqueror on any platform, but not Safari on Windows
+		// or any browser on Mac except chrome and opera
+		if ( !( profile.platform == 'win' && profile.name == 'safari' ) &&
+			 ( profile.name == 'safari'|| profile.platform == 'mac' || profile.name == 'konqueror' ) 
+			 && !(profile.name == 'opera' || profile.name == 'chrome' ) ) {
+			defaultShortcut.key = 'g';
+		}
+		// For Opera in OSX, shortcut is control+command+m.
+		if ( profile.name == 'opera' && profile.platform == 'mac' ) {
+			defaultShortcut.cmdKey = true;
+		}
+		return defaultShortcut;
+	}
+	
 	/**
 	 * Get a description of the shortcut key, e.g. "Ctrl-M"
 	 * @return string
 	 */
 	function shortcutText() {
-		var text = 'Ctrl-M';
-		// TODO: Address Bug #31026
-		return text;
+		var text = '';
+		// TODO: Localize these things (in core, too)
+		if ( shortcutKey.ctrlKey ) {
+			text += 'Ctrl-';
+		}
+		if ( shortcutKey.shiftKey ) {
+			text += 'Shift-';
+		}
+		if ( shortcutKey.altKey ) {
+			text += 'Alt-';
+		}
+		if ( shortcutKey.cmdKey ) {
+			text += 'Command-';
+		}
+		text += shortcutKey.key.toUpperCase();
+ 		return text;
 	}
 
 	/**
