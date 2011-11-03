@@ -265,7 +265,7 @@ abstract class DefaultEditor implements Editor {
 	}
 
 	public function getExpansionPrefix( $class, $elementId ) {
-		return '<span id="prefix-collapsed-' . $elementId . '" class="collapse-' . $class . '">+</span><span id="prefix-expanded-' . $elementId . '" class="expand-' . $class . '">–</span>' . EOL;
+		return '<span id="prefix-collapsed-' . $elementId . '" class="collapse-' . $class . '">▶</span><span id="prefix-expanded-' . $elementId . '" class="expand-' . $class . '">▼</span>' . EOL;
 	}
 
 	static private $staticExpansionStyles = array();
