@@ -212,7 +212,7 @@ class TestSwarmMWMain {
 			$this->debug( 'Checkouts dir empty? Looking up remote repo...', __METHOD__ );
 			$next = $this->minRev;
 		} else {
-			$next = (int)$cur;//$this->getNextFollowingRevId( $cur );
+			$next = $this->getNextFollowingRevId( $cur );
 		}
 
 		$this->debug( __METHOD__ . ": Going to use r{$next}" );
@@ -463,12 +463,29 @@ class TestSwarmMWFetcher {
 	 * @param $id integer: Revision id to append settings to.
 	 */
 	public function doAppendSettings() {
-		$this->log( 'Appending settings... *TODO!*', __METHOD__ );
-		return true;
+		$this->main->log( 'Appending settings... *TODO!*', __METHOD__ );
 
-		// append to mwPath/LocalSettings.php
-		// -- contents of LocalSettings.tpl.php
-		// -- require_once( '{$this->getPath('globalsettings')}' );"
+		$localSettings = "{$this->paths['mw']}/LocalSettings.php";
+		if ( !file_exists( $localSettings ) ) {
+			throw new Exception(__METHOD__ . ": LocalSettings.php missing, expected at {$localSettings}" );
+		}
+
+		// Optional, only if existant
+		if ( file_exists( $this->paths['localsettingstpl'] ) ) {
+			// @todo
+		}
+
+		// Required, must exist to avoid having to do backwards editing
+		// Make empt file if needed
+		if ( !file_exists( $this->paths['globalsettings'] ) ) {
+			$this->main->debug( "No GlobalSettings.php found at {$this->paths['globalsettings']}. Creating...", __METHOD__ );
+			if ( touch( $this->paths['globalsettings'] ) ) {
+				$this->main->debug( "Created {$this->paths['globalsettings']}", __METHOD__ );
+			} else {
+				throw new Exception(__METHOD__ . ": Aborting. Unable to create GlobalSettings.php" );
+			}
+		}
+		// @todo
 
 		/**
 		 * Possible additional common settings to append to LocalSettings after install:
@@ -480,5 +497,6 @@ class TestSwarmMWFetcher {
 		 * #$wgDebugLogFile = dirname( __FILE__ ) . '/build/debug.log';
 		 * $wgDebugDumpSql = true;
 		 */
+		return true;
 	}
 }
