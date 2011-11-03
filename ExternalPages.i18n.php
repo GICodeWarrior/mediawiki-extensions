@@ -209,12 +209,13 @@ $messages['et'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Mjbmr
  * @author Sahim
  * @author Wayiran
  */
 $messages['fa'] = array(
 	'externalpages' => 'صفحات خارجی',
-	'externalpages-desc' => 'بازیابی مجدد و نمایش صفحات از راه دور توسط وب‌گاه بنیاد ویکی‌مدیا',
+	'externalpages-desc' => 'بازیابی مجدد و نمایش صفحات از راه دور توسط تارنمای بنیاد ویکی‌مدیا',
 	'externalpages-bad-page' => 'صفحهٔ بد مشخص‌شده',
 	'externalpages-no-page' => 'هیچ صفحه‌ای مشخص نشده',
 );
