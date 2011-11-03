@@ -1,3 +1,4 @@
+window.onload=sortAll;
 
 function isFormElement(node) {
 	var name = node.nodeName.toLowerCase();
