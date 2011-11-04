@@ -442,7 +442,7 @@ $messages['hu'] = array(
 $messages['ia'] = array(
 	'searchbox-desc' => 'Permitter le inclusion de formularios de recerca',
 	'searchbox-search' => 'Cercar',
-	'searchbox-go' => 'Ir',
+	'searchbox-go' => 'Va',
 	'searchbox-namespaces' => 'Spatios de nomines:',
 );
 
