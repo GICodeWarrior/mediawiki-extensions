@@ -90,6 +90,14 @@ $messages['niu'] = array(
 	'todo-list-cancel' => 'Tiaki',
 );
 
+/** толышә зывон (толышә зывон)
+ * @author Гусейн
+ */
+$messages['tly'] = array(
+	'todo-list-change' => 'Дәгиш кардеј',
+	'todo-list-cancel' => 'Ләғв кардеј',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj
