@@ -2123,7 +2123,7 @@ riddler|Riddler',
 	'vote-results-none' => 'Chưa có phiếu nào được bỏ vào lúc này.',
 	'vote-login' => 'Bạn cần [$1 đăng nhập] để bỏ phiếu.',
 	'vote-invalid-choice' => 'Bạn phải chọn một trong các tùy chọn hiện có.',
-	'right-vote' => 'Bổ phiếu',
+	'right-vote' => 'Bỏ phiếu',
 	'right-voteadmin' => 'Xem kết quả cuộc bỏ phiếu',
 );
 
