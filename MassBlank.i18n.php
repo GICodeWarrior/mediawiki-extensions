@@ -381,7 +381,7 @@ entra un commento e clicca le button pro vacuar los.',
 	'massblank-defaultreason' => 'Vacuation in massa de paginas addite per $1',
 	'massblank-tools' => 'Iste instrumento permitte le vacuation in massa de paginas recentemente addite per un usator o IP specific.
 Entra le nomine de usator o adresse IP pro obtener un lista de paginas a vacuar.',
-	'massblank-submit-user' => 'Ir',
+	'massblank-submit-user' => 'Va',
 	'massblank-submit-blank' => 'Vacuar le paginas seligite',
 	'massblank-blankcomment' => 'Motivo:',
 	'right-massblank' => 'Vacuar paginas in massa',
