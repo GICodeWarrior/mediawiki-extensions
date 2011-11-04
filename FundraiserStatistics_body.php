@@ -13,10 +13,10 @@ class SpecialFundraiserStatistics extends SpecialPage {
 	public function __construct() {
 		parent::__construct( 'FundraiserStatistics' );
 	}
-	
+
 	public function execute( $sub ) {
 		global $wgRequest, $wgOut, $wgUser, $wgLang, $wgScriptPath, $egFundraiserStatisticsFundraisers;
-		
+
 		$showYear = array();
 		foreach ( $egFundraiserStatisticsFundraisers as $fundraiser ) {
 			if ( $wgRequest->wasPosted() ) {
@@ -25,11 +25,11 @@ class SpecialFundraiserStatistics extends SpecialPage {
 				$showYear[$fundraiser['id']] = true;
 			}
 		}
-		
+
 		$this->timezone = $wgRequest->getText( 'timezone', '+0:00' );
-		
+
 		/* Configuration (this isn't totally static data, some of it gets built on the fly) */
-		
+
 		$charts = array(
 			'totals' => array(
 				'data' => array(),
@@ -72,9 +72,9 @@ class SpecialFundraiserStatistics extends SpecialPage {
 				'max' => 1,
 			),
 		);
-		
+
 		/* Setup */
-		
+
 		$this->setHeaders();
 		$wgOut->addScriptFile( $wgScriptPath . '/extensions/ContributionReporting/FundraiserStatistics.js' );
 		$wgOut->addLink(
@@ -84,9 +84,9 @@ class SpecialFundraiserStatistics extends SpecialPage {
 				'href' => $wgScriptPath . '/extensions/ContributionReporting/FundraiserStatistics.css',
 			)
 		);
-		
+
 		/* Display */
-		
+
 		// Chart maximums
 		foreach ( $egFundraiserStatisticsFundraisers as $fundraiser ) {
 			foreach ( $charts as $name => $chart ) {
@@ -97,7 +97,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 			}
 		}
 		// Scale factors
-		foreach ( $charts as $name => $chart ) {			
+		foreach ( $charts as $name => $chart ) {
 			$charts[$name]['factor'] = 300 / $chart['max'];
 		}
 		// HTML-time!
@@ -112,7 +112,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 					if ( !isset( $charts[$name]['data'][$column] ) ) {
 						$charts[$name]['data'][$column] = '';
 					}
-					
+
 					// Add spacer between days
 					if ( $fundraiserIndex == 0 ) {
 						$attributes = array(
@@ -123,7 +123,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 							'td', array( 'valign' => 'bottom' ), Xml::element( 'div', $attributes, '', false )
 						);
 					}
-					
+
 					$height = $chart['factor'] * $day[$chart['index']];
 					$style = "height:{$height}px;";
 					if ( $showYear[$fundraiser['id']] !== true ) {
@@ -189,13 +189,13 @@ class SpecialFundraiserStatistics extends SpecialPage {
 				}
 			}
 		}
-		
+
 		$wgOut->addHTML( Xml::openElement( 'div', array( 'id' => 'configtoggle' ) ) );
 		$wgOut->addHTML( '<a id="customize-chart">'.wfMsg( 'fundraiserstats-customize' ).'</a>' );
 		$wgOut->addHTML( Xml::closeElement( 'div' ) );
-		
+
 		$wgOut->addHTML( Xml::openElement( 'form', array( 'method' => 'post', 'id' => 'configform' ) ) );
-		
+
 		$years = wfMsg( 'fundraiserstats-show-years' ).'<br/>';
 		foreach ( $egFundraiserStatisticsFundraisers as $fundraiser ) {
 			$years .= Xml::check( 'toogle'.$fundraiser['id'], $showYear[$fundraiser['id']], array( 'id' => 'bar-'.$fundraiser['id'], 'class' => 'yeartoggle' ) );
@@ -207,9 +207,9 @@ class SpecialFundraiserStatistics extends SpecialPage {
 		$wgOut->addHTML( wfMsg( 'fundraiserstats-time-zone' ).'<br/>' );
 		$wgOut->addHTML( '&#160;'.Xml::listDropDown( 'timezone', $this->dropDownList( range ( -12, 14, 1 ) ), '', $this->timezone, '', 1 ).' '.wfMsg( 'fundraiserstats-utc' ) );
 		$wgOut->addHTML( Xml::closeElement( 'div' ) );
-		
+
 		$wgOut->addHTML( Xml::closeElement( 'form' ) );
-		
+
 		// Instructions
 		$wgOut->addWikiMsg( 'fundraiserstats-instructions' );
 
@@ -237,7 +237,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 				array(
 					'id' => "fundraiserstats-chart-{$name}",
 					'class' => 'fundraiserstats-chart',
-					'style' => 'display:' . ( $first ? 'block' : 'none' ) 
+					'style' => 'display:' . ( $first ? 'block' : 'none' )
 				),
 				Xml::tags(
 					'table',
@@ -261,12 +261,12 @@ class SpecialFundraiserStatistics extends SpecialPage {
 			)
 		);
 	}
-	
+
 	/* Private Functions */
-	
+
 	private function query( $type, $start, $end ) {
 		global $wgMemc, $egFundraiserStatisticsMinimum, $egFundraiserStatisticsMaximum, $egFundraiserStatisticsCacheTimeout;
-		
+
 		$key = wfMemcKey( 'fundraiserstatistics', $type, $start, $end );
 		$cache = $wgMemc->get( $key );
 		if ( $cache != false && $cache != -1 ) {
@@ -362,7 +362,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 		}
 		return null;
 	}
-	
+
 	private function dropDownList ( $values ) {
 		$dropDown = '';
 		foreach ( $values as $value ) {

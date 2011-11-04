@@ -10,27 +10,27 @@ class ContributionHistory extends SpecialPage {
 		# Emergecny short cut until post donation comments are enabled
 		$wgOut->redirect( SpecialPage::getTitleFor( 'FundraiserStatistics' )->getFullURL() );
 		return;
-		
+
 
 		if ( !preg_match( '/^[a-z-]+$/', $language ) ) {
 			$language = 'en';
 		}
 		$this->lang = Language::factory( $language );
-		
+
 		// Get request data
 		$offset = $wgRequest->getIntOrNull( 'offset' );
 		$show = 100;
-		
+
 		$this->setHeaders();
-		
+
 		$db = efContributionReportingConnection();
-		
+
 		$output = '<style type="text/css">';
 		$output .= 'td.left {padding-right: 10px;}';
 		$output .= 'td.right {padding-left: 10px; text-align: right;}';
 		$output .= 'td.alt {background-color: #DDDDDD;}';
 		$output .= '</style>';
-		
+
 		// Paging controls
 		$newer = $db->selectField( 'public_reporting', 'received',
 			array_merge(
@@ -41,7 +41,7 @@ class ContributionHistory extends SpecialPage {
 			array(
 				'ORDER BY' => 'received ASC',
 				'LIMIT' => 1,
-				'OFFSET' => $show 
+				'OFFSET' => $show
 			)
 		);
 		$older = $db->selectField( 'public_reporting', 'received',
@@ -56,9 +56,9 @@ class ContributionHistory extends SpecialPage {
 				'OFFSET' => $show
 			)
 		);
-		
+
 		$title = $this->getTitle( $language == 'en' ? null : $language );
-		
+
 		$pagingLinks = array();
 		if( $offset !== null ) {
 			$pagingLinks[] = Xml::element( 'a',
@@ -79,14 +79,14 @@ class ContributionHistory extends SpecialPage {
 			$wgLang->pipeList( $pagingLinks ) .
 			Xml::closeElement( 'div' );
 		$output .= $pagingDiv;
-		
+
 		$output .= '<table style="width: 100%">';
 		$output .= '<tr>';
 		$output .= '<th width="60%">' . $this->msg( 'contrib-hist-name' ) . '</th>';
 		$output .= '<th width="25%">' . $this->msg( 'contrib-hist-date' ) . '</th>';
 		$output .= '<th width="15%" align="right">' . $this->msg( 'contrib-hist-amount' ) . '</th>';
 		$output .= '</tr>';
-		
+
 		if ( $offset == null ) {
 			$offset = $db->selectField( 'public_reporting', 'received',
 				array( 'received > ' . strtotime( 'July 1st 2008' ) ),
@@ -97,9 +97,9 @@ class ContributionHistory extends SpecialPage {
 				)
 			);
 		}
-		
+
 		$url = SpecialPage::getTitleFor( 'ContributionHistory' )->getFullURL();
-		
+
 		$res = $db->select( 'public_reporting', '*',
 			array_merge(
 				array( 'received > ' . strtotime( 'July 1st 2008' ) ),
@@ -126,7 +126,7 @@ class ContributionHistory extends SpecialPage {
 			if ( $alt ) {
 				$class = ' alt';
 			}
-			
+
 			$output .= "<tr>";
 			$output .= "<td class=\"left $class\"><a name=\"{$contributionId}\"></a><a href=\"{$url}?offset={$offset}#{$contributionId}\">{$name}</a></td>";
 			$output .= "<td class=\"left $class\" style=\"width: 100px;\">$date</td>";
@@ -135,9 +135,9 @@ class ContributionHistory extends SpecialPage {
 
 			$alt = !$alt;
 		}
-		
+
 		$output .= '</table>';
-		
+
 		$output .= $pagingDiv;
 
 		header( 'Cache-Control: max-age=300,s-maxage=300' );
@@ -146,25 +146,25 @@ class ContributionHistory extends SpecialPage {
 		$wgOut->addWikiText( '<strong>{{2008/Contribution history introduction/' . $language . '}}</strong>' );
 		$wgOut->addHTML( $output );
 	}
-	
+
 	function msg( $key ) {
 		return wfMsgExt( $key, array( 'escape', 'language' => $this->lang ) );
 	}
-	
+
 	function formatName( $row ) {
 		$name = htmlspecialchars( $row['name'] );
 		if( !$name ) {
 			$name = $this->msg( 'contrib-hist-anonymous' );
 		}
 		$name = '<strong>' . $name . '</strong>';
-		
+
 		if( $row['note'] && !$this->isTiny( $row ) ) {
 			$name .= '<br />' . htmlspecialchars( $row['note'] );
 		}
 
 		return $name;
 	}
-	
+
 	function isTiny( $row ) {
 		$mins = array(
 			'USD' => 1,
@@ -200,7 +200,7 @@ class ContributionHistory extends SpecialPage {
 			return false;
 		}
 	}
-	
+
 	function formatDate( $row ) {
 		$ts = wfTimestamp( TS_MW, $row['received'] );
 		return $this->lang->timeanddate( $ts );
@@ -208,7 +208,7 @@ class ContributionHistory extends SpecialPage {
 
 	function formatAmount( $row ) {
 		$converted = $row['converted_amount'];
-		
+
 		if ( $row['original_currency'] ) {
 			$currency = $row['original_currency'];
 			$amount = $row['original_amount'];
