@@ -66,6 +66,18 @@ $messages['arc'] = array(
 	'semanticformsinputs-today' => 'ܝܘܡܢܐ',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'semanticformsinputs-desc' => "Más tribes d'entrada pa los [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Formularios Semánticos]",
+	'semanticformsinputs-wrongformat' => 'Formatu incorreutu.',
+	'semanticformsinputs-close' => 'Zarrar',
+	'semanticformsinputs-prev' => 'Anterior',
+	'semanticformsinputs-next' => 'Siguiente',
+	'semanticformsinputs-today' => 'Güei',
+);
+
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
  */
