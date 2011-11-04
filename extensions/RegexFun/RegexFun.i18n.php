@@ -16,7 +16,7 @@ $messages = array();
  * @author Daniel Werner
  */
 $messages['en'] = array(
-	'regexfun-desc' => 'Adds parser functions allowing the use of regular expressions within wiki articles',
+	'regexfun-desc' => 'Adds parser functions allowing the use of regular expressions within wiki pages',
 	'regexfun-invalid' => 'The regular expression "$1" is invalid.',
 );
 
