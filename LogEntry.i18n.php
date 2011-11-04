@@ -253,7 +253,7 @@ $messages['gl'] = array(
 	'logentry-specialpage-desc' => 'Esta extensión proporciona un proceso para anexar ás páxinas de rexistros',
 	'logentry' => 'Entrada do rexistro',
 	'logentry-invalidpage' => 'Páxina inválida: $1',
-	'logentry-invalidtoken' => 'Ficha inválida',
+	'logentry-invalidtoken' => 'Pase incorrecto',
 );
 
 /** Swiss German (Alemannisch)
