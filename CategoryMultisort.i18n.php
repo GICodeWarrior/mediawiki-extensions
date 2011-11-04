@@ -350,7 +350,7 @@ $messages['ia'] = array(
 	'categorymultisort-desc' => 'Permitte le presentation de categorias con differente claves de ordination',
 	'categorymultisort-defaultsortkey-name' => 'Predefinition',
 	'categorymultisort-sortkey' => 'Clave de ordination:',
-	'categorymultisort-go' => 'Ir',
+	'categorymultisort-go' => 'Va',
 	'categorymultisort-default-sortkey' => 'Clave de ordination predefinite:',
 	'prefs-category' => 'Categoria',
 );
