@@ -1,0 +1,3 @@
+etc/etherpad-lite/settings.json usr/share/etherpad-lite/settings.json
+var/lib/etherpad-lite/APIKEY.txt usr/share/etherpad-lite/APIKEY.txt
+var/lib/etherpad-lite/ usr/share/etherpad-lite/var

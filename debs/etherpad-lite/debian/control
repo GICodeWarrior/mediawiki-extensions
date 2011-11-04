@@ -1,0 +1,17 @@
+Source: etherpad-lite
+Section: net
+Priority: extra
+Maintainer: John Du Hart <john@johnduhart.me>
+Build-Depends: debhelper (>= 4), npm (>= 1), curl
+Standards-Version: 1.0
+
+Package: etherpad-lite
+Depends: nodejs (>= 0.4), curl
+Architecture: all
+Description: A web-based word processor that allows people to work
+ together in real-time.
+ .
+ When multiple people edit the same document simultaneously, any changes are
+ instantly reflected on everyone's screen. The result is a new and productive
+ way to collaborate on text documents, useful for meeting notes, drafting
+ sessions, education, team programming, and more.

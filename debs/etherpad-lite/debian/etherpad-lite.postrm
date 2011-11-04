@@ -1,0 +1,13 @@
+#!/bin/sh -e
+
+if [ "$1" = "purge" ] ; then
+	# remove etherpad-lite user
+	if getent passwd etherpad-lite >/dev/null; then
+		deluser etherpad-lite
+	fi
+	if getent group etherpad-lite >/dev/null; then
+		delgroup etherpad-lite
+	fi
+fi
+
+#DEBHELPER#
