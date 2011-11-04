@@ -4,8 +4,9 @@
  * Defines a subset of parser functions to handle hash tables. Inspired by the ArrayExtension
  * (http://www.mediawiki.org/wiki/Extension:ArrayExtension).
  *
- * @version: 0.6.4 alpha
+ * @version: 0.7
  * @author:  Daniel Werner < danweetz@web.de >
+ * @license: ISC license
  * 
  * Documentation: http://www.mediawiki.org/wiki/Extension:HashTables
  * Support:       http://www.mediawiki.org/wiki/Extension_talk:HashTables
@@ -16,8 +17,8 @@
  *
  * @ToDo:
  * ======
- * - binding hash tables instance to each initialized parser instead of having one global one.
- * Considering about:
+ * - binding one hash tables instance per initialized parser instead of having one global one.
+ * Thinking about:
  * - Sort function
  * - Search function
  *
@@ -51,13 +52,13 @@ unset( $dir );
 class ExtHashTables {
 
 	/**
-	 * Version of the HashTables extension.
+	 * Version of the 'HashTables' extension.
 	 * 
 	 * @since 0.6.1
 	 * 
 	 * @var string
 	 */
-	const VERSION = '0.6.4 alpha';
+	const VERSION = '0.7';
 
 	/**
 	 * @since 0.1
@@ -135,25 +136,29 @@ class ExtHashTables {
 	 * Returns the size of a hash table. Returns '' if the table doesn't exist.
 	 */
     function hashsize( &$parser, $hashId) {
-		if( !isset($hashId) || !$this->hashExists($hashId) )
+		if( ! isset($hashId) || ! $this->hashExists($hashId) ) {
 			return '';
-        
+        }		
         return count( $this->mHashTables[ $hashId ] );
     }
 	
 	/**
-	 * Returns "1" or 'yes' (if set) if the hash item key 'key' exists inside the hash table 'hashId'.
-	 * Otherwise the output will be a void string or 'no' (if set).
-	 */
-    function hashkeyexists( &$parser, $hashId, $key = '', $yes = '1', $no = '' ) {
+	 * Returns "1" or the third parameter (if set) if the hash item key 'key' exists inside the hash
+	 * table 'hashId'. Otherwise the output will be a void string or the fourth (if set).
+	 */		
+    function hashkeyexists( Parser &$parser, PPFrame $frame, $args ) {		
+        $hashId = trim( $frame->expand( $args[0] ) );
+        $key = isset( $args[1] ) ? trim( $frame->expand( $args[1] ) ) : '';
+		
 		// get hash or null:
 		$hash = $this->getHash( $hashId );
 		
+		// only expand the one argument needed:
 		if( $hash !== null && array_key_exists( $key, $hash ) ) {
-			return $yes;
+			return isset( $args[2] ) ? trim( $frame->expand( $args[2] ) ) : '1'; // true '1'
 		}
 		else {
-			return $no;
+			return isset( $args[3] ) ? trim( $frame->expand( $args[3] ) ) : ''; // false ''
 		}
     }
 	
@@ -162,7 +167,7 @@ class ExtHashTables {
 	 * Syntax:
 	 *   {{#hashprint:hashID |seperator |keyPattern |valuePattern |subject |printOrderArrayId}}
 	 */
-    function hashprint( Parser &$parser, PPFrame $frame, $args) {
+    function hashprint( Parser &$parser, PPFrame $frame, $args ) {
 		if( ! isset( $args[0] ) ) {
 			return '';
 		}
@@ -175,10 +180,15 @@ class ExtHashTables {
 		
 		// parameter validation:		
         $seperator =         isset( $args[1] ) ? trim( $frame->expand( $args[1] ) ) : ', ';
+		/*
+		 * PPFrame::NO_ARGS and PPFrame::NO_TEMPLATES for expansion make a lot of sense here since the patterns getting replaced
+		 * in $subject before $subject is being parsed. So any template or argument influence in the patterns wouldn't make any
+		 * sense in any sane scenario.
+		 */
         $keyPattern =        isset( $args[2] ) ? trim( $frame->expand( $args[2], PPFrame::NO_ARGS | PPFrame::NO_TEMPLATES ) ) : '';
         $valuePattern =      isset( $args[3] ) ? trim( $frame->expand( $args[3], PPFrame::NO_ARGS | PPFrame::NO_TEMPLATES ) ) : '@@@@';
         $subject =           isset( $args[4] ) ? trim( $frame->expand( $args[4], PPFrame::NO_ARGS | PPFrame::NO_TEMPLATES ) ) : '@@@@';
-		$printOrderArrayId = isset( $args[5] ) ? trim( $frame->expand( $args[5], PPFrame::NO_ARGS | PPFrame::NO_TEMPLATES ) ) : null;
+		$printOrderArrayId = isset( $args[5] ) ? trim( $frame->expand( $args[5] ) ) : null;
 		
 		if( $printOrderArrayId !== null ) {
 			global $wgArrayExtension;
@@ -228,27 +238,24 @@ class ExtHashTables {
 	 * Define an hash filled with all given parameters of the current template.
 	 * In case there are no parameters, the hash will be void.
 	 */
-    function parameterstohash( &$parser, $frame, $args) {
-		if( !isset($args[0]) )
+    function parameterstohash( &$parser, PPFrame $frame, $args) {
+		if( ! isset( $args[0] ) ) {
 			return '';
-		
-		$hashId = trim( $frame->expand($args[0]) );
-		
-		// in case the page is not used as template i.e. when displayed by it's own...
-        if( !( $frame instanceof PPTemplateFrame_Dom ) )
-        {
-			$this->mHashTables[ $hashId ] = array();  // create empty hash table
+		}
+		$hashId = trim( $frame->expand( $args[0] ) );
+		$this->mHashTables[ $hashId ] = array();  // create empty hash table
+
+		// in case the page is not used as template i.e. when displayed on its own
+		if( ! $frame->isTemplate() ) {
 			return '';
-        }
-		
+		}
+
 		$templateArgs = $frame->getArguments();
-		
-		foreach ( $templateArgs as $argName => $argVal )
-		{
+
+		foreach ( $templateArgs as $argName => $argVal ) {
 			$this->mHashTables[ $hashId ][ trim( $argName ) ] = trim( $argVal );
-		}		
-		return '';
-		
+		}
+		return '';		
     }
 
 	/**
@@ -257,8 +264,9 @@ class ExtHashTables {
 	 */
 	function hashreset( &$parser, $frame, $args) {		
 		// reset all hash tables if no specific tables are given:
-		if( !isset( $args[0] ) || ( $args[0] === '' && count( $args ) == 1 ) )
+		if( !isset( $args[0] ) || ( $args[0] === '' && count( $args ) == 1 ) ) {
 			$this->mHashTables = array();
+		}
 		else {
 			foreach ( $args as $arg )
 			{
@@ -324,10 +332,10 @@ class ExtHashTables {
 	 *   {{#hashmerge:hashID |hash1 |hash2 |... |hash n}}
 	 */
 	function hashmerge( &$parser, $frame, $args) {				
-		$this->multiHashOperation( $frame, $args, __FUNCTION__ );
+		$this->multiHashOperation( $frame, $args, __FUNCTION__, true );
 		return '';
 	}	
-	private function multi_hashmerge( $hash1, $hash2 ) {
+	private function multi_hashmerge( $hash1, $hash2 = array() ) {
 		return array_merge( $hash1, $hash2 );
 	}
 	
@@ -337,8 +345,8 @@ class ExtHashTables {
 	 * Syntax:
 	 *   {{#hashmix:hashID |hash1 |hash2 |... |hash n}}
 	 */
-	function hashmix( &$parser, $frame, $args) {				
-		$this->multiHashOperation( $frame, $args, __FUNCTION__ );
+	function hashmix( &$parser, $frame, $args) {
+		$this->multiHashOperation( $frame, $args, __FUNCTION__, false );
 		return '';
 	}	
 	private function multi_hashmix( $hash1, $hash2 ) {
@@ -357,7 +365,7 @@ class ExtHashTables {
 	 *   {{#hashdiff:hashID |hash1 |hash2 |... |hash n}}
 	 */
 	function hashdiff( &$parser, $frame, $args) {
-		$this->multiHashOperation( $frame, $args, __FUNCTION__ );
+		$this->multiHashOperation( $frame, $args, __FUNCTION__, false );
 		return '';
 	}
 	private function multi_hashdiff( $hash1, $hash2 ) {
@@ -372,7 +380,7 @@ class ExtHashTables {
 	 *   {{#hashintersect:hashID |hash1 |hash2 |... |hash n}}
 	 */
 	function hashintersect( &$parser, $frame, $args) {
-		$this->multiHashOperation( $frame, $args, __FUNCTION__ );
+		$this->multiHashOperation( $frame, $args, __FUNCTION__, false );
 		return '';
 	}
 	private function multi_hashintersect( $hash1, $hash2 ) {
@@ -482,16 +490,18 @@ class ExtHashTables {
 		$templateCall = '{{' . $template;
 		
 		foreach ($params as $paramKey => $paramValue){
-			// replace '}' and '|' to avoid template call manipulation
-			$paramValue = str_replace( array( '}', '|' ), array( '&#125;', $pipeReplacer ), $paramValue );
+			// replace '{', '}' and '|' to avoid template call manipulation
+			$paramValue = str_replace( array( '{', '}', '|' ), array( '&#123;', '&#125;', $pipeReplacer ), $paramValue );
 			$templateCall .= "|$paramKey=$paramValue";
 		}
 		$templateCall .= '}}';
-				
+		
+		// parse template call:
 		$result = $parser->preprocessToDom( $templateCall, $frame->isTemplate() ? Parser::PTD_FOR_INCLUSION : 0 );
 		$result = trim( $frame->expand( $result ) );
 		
-		return array( $result , 'noparse' => false, 'isHTML' => false );
+		// we don't have to set 'noparse' to false since parsing is done above
+		return array( $result , 'noparse' => true, 'isHTML' => false );
 	}
 	
 	/* ============================ */	
@@ -506,7 +516,7 @@ class ExtHashTables {
 	 * Returns a value within a hash. If key or hash doesn't exist, this will return null
 	 * or another predefined default.
 	 * 
-	 * @since 0.6.4
+	 * @since 0.7
 	 * 
 	 * @param string $hashId
 	 * @param string $key
@@ -585,15 +595,18 @@ class ExtHashTables {
 	 * $hash1 and $hash2 which will perform an action between $hash1 and hash2 which will
 	 * result into a new $hash1. There can be 1 to n $hash2 in the whole process.
 	 * 
-	 * @param $frame
-	 * @param $args
-	 * @param $operationFunc name of the function calling this. There must be a counterpart
+	 * @param $frame PPFrame
+	 * @param $args array
+	 * @param $operationFunc string name of the function calling this. There must be a counterpart
 	 *        function with prefix 'multi_' which should have two parameters. Both parameters
 	 *        will receive a hash (array), the function must return the result hash of the
 	 *        processing.
+	 * @param $runFuncOnSingleHash boolean whether the $operationFunc function should be run in case
+	 *        only one hash table id is given. If not, the original hash will end up in the new hash.
 	 */
-	protected function multiHashOperation( $frame, $args ,$operationFunc ) {
+	protected function multiHashOperation( PPFrame $frame, array $args, $operationFunc, $runFuncOnSingleHash = true ) {
 		$lastHash = null;
+		$operationRan = false;
 		$finalHashId = trim( $frame->expand( $args[0] ) );
 		$operationFunc = 'multi_' . $operationFunc;
 		
@@ -614,12 +627,17 @@ class ExtHashTables {
 				else {
 					// second or later hash table, process with previous:
 					$lastHash = $this->{ $operationFunc }( $lastHash, $argHash ); // perform action between last and current hash
+					$operationRan = true;
 				}
 			}			
 		}
-		// in case no array were given:
+		// in case no hash was given at all:
 		if( $lastHash === null ) {
 			$lastHash = array();
+		}
+		// if the operation didn't run because there was only one or no array:
+		if( $operationRan == false && $runFuncOnSingleHash ) {
+			$lastHash = $this->{ $operationFunc }( $lastHash );
 		}
 		$this->mHashTables[ $finalHashId ] = $lastHash;
 	}
@@ -638,7 +656,7 @@ class ExtHashTables {
 
 
 
-function efHashTablesParserFirstCallInit( &$parser ) {
+function efHashTablesParserFirstCallInit( Parser &$parser ) {
     global $wgHashTables, $wgArrayExtension;
  
     $wgHashTables = new ExtHashTables();
@@ -646,7 +664,7 @@ function efHashTablesParserFirstCallInit( &$parser ) {
     $parser->setFunctionHook( 'hashdefine',       array( &$wgHashTables, 'hashdefine'       ) );
 	$parser->setFunctionHook( 'hashvalue',        array( &$wgHashTables, 'hashvalue'        ) );
 	$parser->setFunctionHook( 'hashsize',         array( &$wgHashTables, 'hashsize'         ) );
-	$parser->setFunctionHook( 'hashkeyexists',    array( &$wgHashTables, 'hashkeyexists'    ) );
+	$parser->setFunctionHook( 'hashkeyexists',    array( &$wgHashTables, 'hashkeyexists'    ), SFH_OBJECT_ARGS );
 	$parser->setFunctionHook( 'hashprint',        array( &$wgHashTables, 'hashprint'        ), SFH_OBJECT_ARGS );
 	$parser->setFunctionHook( 'parameterstohash', array( &$wgHashTables, 'parameterstohash' ), SFH_OBJECT_ARGS );
 	$parser->setFunctionHook( 'hashtotemplate',   array( &$wgHashTables, 'hashtotemplate'   ), SFH_OBJECT_ARGS );
