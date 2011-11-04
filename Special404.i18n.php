@@ -340,6 +340,20 @@ $messages['mk'] = array(
 * [[{{MediaWiki:Mainpage}}|Главната страница]]',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'special404-desc' => 'Menyediakan destinasi untuk ralat "404 Tidak dijumpai"',
+	'error404' => '404 Tidak dijumpai',
+	'special404-body' => 'URL yang anda minta itu tidak dijumpai.
+
+Adakah anda bermaksud untuk menaipkan {{fullurl:$1}}?
+
+Mungkin anda ingin melihat:
+* [[{{MediaWiki:Mainpage}}|Laman utama]]',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
