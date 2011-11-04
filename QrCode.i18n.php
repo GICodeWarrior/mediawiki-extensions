@@ -121,6 +121,13 @@ $messages['hsb'] = array(
 	'qrcode-desc' => 'Płodźi a přidawa wikistronje wobrazy QRCode',
 );
 
+/** Armenian (Հայերեն)
+ * @author Xelgen
+ */
+$messages['hy'] = array(
+	'qrcode-desc' => 'Ստեղծում և ավելացնում է ՔյուԱր կոդով պատկերներ վիքի էջերին',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
