@@ -2879,6 +2879,7 @@ $messages['uk'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Trần Nguyễn Minh Huy
  */
 $messages['vi'] = array(
 	'moodbar-desc' => 'Cho phép những người dùng được chỉ định gửi thông tin phản hồi về quá trình sửa đổi',
@@ -2893,7 +2894,7 @@ $messages['vi'] = array(
 	'moodbar-type-sad-title' => 'Bực mình',
 	'moodbar-type-confused-title' => 'Bối rối',
 	'tooltip-moodbar-what' => 'Tìm hiểu thêm về tính năng này',
-	'moodbar-what-label' => 'Này là gì?',
+	'moodbar-what-label' => 'Đây là gì?',
 	'moodbar-what-content' => 'Tính năng này nhằm mục đích giúp cộng đồng hiểu biết những ấn tượng của người sửa đổi trang này.
 Để biết thêm chi tiết, xin ghé vào $1.',
 	'moodbar-what-link' => 'trang tính năng',
