@@ -1,0 +1,38 @@
+#!/usr/bin/make -f
+
+include /usr/share/cdbs/1/rules/utils.mk
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/class/autotools.mk
+
+DEB_UPSTREAM_URL = http://nodejs.org/dist
+DEB_UPSTREAM_TARBALL_BASENAME = node-v$(DEB_UPSTREAM_TARBALL_VERSION)
+
+# suppress checking binary files, to not upset dpkg-source
+DEB_COPYRIGHT_CHECK_IGNORE_REGEX = ^(doc/joyent-logo_orange_nodeorg-01\.png|debian/(changelog|copyright(|_hints|_newhints)))$
+
+DEB_CONFIGURE_NORMAL_ARGS = ""
+DEB_CONFIGURE_EXTRA_FLAGS = --debug --no-ssl2
+DEB_CONFIGURE_SCRIPT_ENV += PREFIX="/usr"
+DEB_DESTDIR = $(CURDIR)/debian/tmp
+DEB_MAKE_CLEAN_TARGET = clean
+#  * relax regression tests when targeted experimental suite
+exp-relax-check := $(if $(shell dpkg-parsechangelog | grep -Fx 'Distribution: experimental'),-i)
+DEB_MAKE_CHECK_TARGET = $(exp-relax-check) test
+
+# properly clean files from build, waf, test, python
+clean::
+	rm -f node
+	rm -f node_g
+	rm -f .lock-wscript
+	rm -rf build
+	rm -f test/fixtures/hello.txt
+	rm -rf test/tmp
+	find . -name "*.pyc" -delete
+
+# we have completion for nodejs-waf
+install/nodejs-dev::
+	dh_bash-completion
+
+# rename and install binary in nodejs-dbg
+install/nodejs-dbg::
+	mv $(CURDIR)/debian/tmp/usr/bin/node_g $(CURDIR)/debian/nodejs-dbg/usr/lib/debug/usr/bin/node

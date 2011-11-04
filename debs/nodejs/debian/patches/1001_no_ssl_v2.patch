@@ -1,0 +1,60 @@
+Description: Provide --no-ssl2 option to disable ssl2 methods
+Bug-Debian: http://bugs.debian.org/589706
+Bug-Debian: http://bugs.debian.org/622065
+Bug-Node: https://github.com/joyent/node/issues/880
+Author: Jérémy Lal <kapouer@melix.org>
+Last-Update: 2011-06-26
+--- a/src/node_crypto.cc
++++ b/src/node_crypto.cc
+@@ -98,11 +98,23 @@
+     String::Utf8Value sslmethod(args[0]->ToString());
+ 
+     if (strcmp(*sslmethod, "SSLv2_method") == 0) {
++#ifndef OPENSSL_NO_SSL2
+       method = SSLv2_method();
++#else
++      return ThrowException(Exception::Error(String::New("SSLv2 methods disabled")));
++#endif
+     } else if (strcmp(*sslmethod, "SSLv2_server_method") == 0) {
++#ifndef OPENSSL_NO_SSL2
+       method = SSLv2_server_method();
++#else
++      return ThrowException(Exception::Error(String::New("SSLv2 methods disabled")));
++#endif
+     } else if (strcmp(*sslmethod, "SSLv2_client_method") == 0) {
++#ifndef OPENSSL_NO_SSL2
+       method = SSLv2_client_method();
++#else
++      return ThrowException(Exception::Error(String::New("SSLv2 methods disabled")));
++#endif
+     } else if (strcmp(*sslmethod, "SSLv3_method") == 0) {
+       method = SSLv3_method();
+     } else if (strcmp(*sslmethod, "SSLv3_server_method") == 0) {
+--- a/wscript
++++ b/wscript
+@@ -143,6 +143,13 @@
+                 , dest='openssl_libpath'
+                 )
+ 
++  opt.add_option( '--no-ssl2'
++                , action='store_true'
++                , default=False
++                , help="Disable OpenSSL v2"
++                , dest='openssl_nov2'
++                )
++
+   opt.add_option( '--gdb'
+                 , action='store_true'
+                 , default=False
+@@ -279,6 +286,11 @@
+   if not Options.options.without_ssl:
+     # Don't override explicitly supplied openssl paths with pkg-config results.
+     explicit_openssl = o.openssl_includes or o.openssl_libpath
++
++    # Disable ssl v2 methods
++    if o.openssl_nov2:
++      conf.env.append_value("CPPFLAGS", "-DOPENSSL_NO_SSL2=1")
++
+     if not explicit_openssl and conf.check_cfg(package='openssl',
+                                                args='--cflags --libs',
+                                                uselib_store='OPENSSL'):

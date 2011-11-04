@@ -1,0 +1,24 @@
+Description: libev compatibility flag removed
+Forwarded: not-needed
+Author: Jérémy Lal <kapouer@melix.org>
+Last-Update: 2011-02-13
+--- a/wscript
++++ b/wscript
+@@ -463,7 +463,6 @@
+   # LFS
+   conf.env.append_value('CPPFLAGS',  '-D_LARGEFILE_SOURCE')
+   conf.env.append_value('CPPFLAGS',  '-D_FILE_OFFSET_BITS=64')
+-  conf.env.append_value('CPPFLAGS',  '-DEV_MULTIPLICITY=0')
+ 
+   # Makes select on windows support more than 64 FDs
+   if sys.platform.startswith("win32"):
+--- a/tools/wafadmin/Tools/node_addon.py
++++ b/tools/wafadmin/Tools/node_addon.py
+@@ -31,7 +31,6 @@
+   conf.env['CPPPATH_NODE'] = join(prefix, 'include', 'nodejs')
+ 
+   conf.env.append_value('CPPFLAGS_NODE', '-D_GNU_SOURCE')
+-  conf.env.append_value('CPPFLAGS_NODE', '-DEV_MULTIPLICITY=0')
+ 
+   conf.env.append_value('CCFLAGS_NODE', '-D_LARGEFILE_SOURCE')
+   conf.env.append_value('CCFLAGS_NODE', '-D_FILE_OFFSET_BITS=64')

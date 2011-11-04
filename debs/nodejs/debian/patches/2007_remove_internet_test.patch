@@ -1,0 +1,92 @@
+Description: Remove test which requires internet connection
+Author: Angel Abad <angelabad@ubuntu.com>
+Forwarded: no
+
+Index: nodejs-0.4.9/test/simple/test-c-ares.js
+===================================================================
+--- nodejs-0.4.9.orig/test/simple/test-c-ares.js	2011-06-29 13:24:02.000000000 +0200
++++ nodejs-0.4.9/test/simple/test-c-ares.js	2011-06-30 07:17:20.000000000 +0200
+@@ -52,12 +52,12 @@
+   assert.equal(6, addressType);
+ });
+ 
+-dns.lookup('ipv6.google.com', function(error, result, addressType) {
+-  if (error) throw error;
+-  console.dir(arguments);
++//dns.lookup('ipv6.google.com', function(error, result, addressType) {
++//  if (error) throw error;
++//  console.dir(arguments);
+   //assert.equal('string', typeof result);
+-  assert.equal(6, addressType);
+-});
++//  assert.equal(6, addressType);
++//});
+ 
+ dns.resolve('127.0.0.1', 'PTR', function(error, domains) {
+   if (error) throw error;
+Index: nodejs-0.4.9/test/simple/test-regress-GH-819.js
+===================================================================
+--- nodejs-0.4.9.orig/test/simple/test-regress-GH-819.js	2011-06-30 07:38:39.000000000 +0200
++++ nodejs-0.4.9/test/simple/test-regress-GH-819.js	2011-06-30 08:09:44.000000000 +0200
+@@ -3,5 +3,5 @@
+ var assert = require('assert');
+ 
+ // Connect to something that we need to DNS resolve
+-var c = net.createConnection(80, "google.com");
+-c.destroy();
++//var c = net.createConnection(80, "google.com");
++//c.destroy();
+Index: nodejs-0.4.9/test/simple/test-net-connect-timeout.js
+===================================================================
+--- nodejs-0.4.9.orig/test/simple/test-net-connect-timeout.js	2011-06-30 19:51:04.000000000 +0200
++++ nodejs-0.4.9/test/simple/test-net-connect-timeout.js	2011-06-30 22:47:31.000000000 +0200
+@@ -42,23 +42,23 @@
+ 
+ // With DNS
+ 
+-var socket0 = net.createConnection(9999, 'google.com');
++//var socket0 = net.createConnection(9999, 'google.com');
+ 
+-socket0.setTimeout(T);
++//socket0.setTimeout(T);
+ 
+-socket0.on('timeout', function() {
+-  console.error("timeout");
+-  gotTimeout0 = true;
+-  var now = new Date();
+-  assert.ok(now - start < T + 500);
+-  socket0.destroy();
+-});
+-
+-socket0.on('connect', function() {
+-  console.error("connect");
+-  gotConnect0 = true;
+-  socket0.destroy();
+-});
++//socket0.on('timeout', function() {
++//  console.error("timeout");
++//  gotTimeout0 = true;
++//  var now = new Date();
++//  assert.ok(now - start < T + 500);
++//  socket0.destroy();
++//});
++
++//socket0.on('connect', function() {
++//  console.error("connect");
++//  gotConnect0 = true;
++//  socket0.destroy();
++//});
+ 
+ 
+ // Without DNS
+@@ -86,8 +86,8 @@
+ 
+ 
+ process.on('exit', function() {
+-  assert.ok(gotTimeout0);
+-  assert.ok(!gotConnect0);
++//  assert.ok(gotTimeout0);
++//  assert.ok(!gotConnect0);
+ 
+   assert.ok(gotTimeout1);
+   assert.ok(!gotConnect1);

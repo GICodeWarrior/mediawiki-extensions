@@ -1,0 +1,14 @@
+Description: Expected failing tests
+ Some tests can fail on machines without network access,
+ run them without failing.
+Forwarded: not-needed
+Author: Jérémy Lal <kapouer@melix.org>
+Last-Update: 2011-04-19
+--- a/test/simple/simple.status
++++ b/test/simple/simple.status
+@@ -1 +1,5 @@
+ prefix simple
++
++test-net-server-on-fd-0: PASS || FAIL
++test-http-dns-fail: PASS || FAIL
++test-dgram-multicast: PASS || TIMEOUT
