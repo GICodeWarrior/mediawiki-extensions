@@ -1,0 +1,22 @@
+Description: Fix bash_completion invocation
+Forwarded: not-needed
+Author: Jérémy Lal <kapouer@melix.org>
+Last-Update: 2011-01-23
+--- a/npm-completion.sh
++++ b/npm-completion.sh
+@@ -17,7 +17,8 @@
+ COMP_WORDBREAKS=${COMP_WORDBREAKS/=/}
+ COMP_WORDBREAKS=${COMP_WORDBREAKS/@/}
+ export COMP_WORDBREAKS
+-__npm_completion () {
++have npm &&
++_npm() {
+   COMPREPLY=()
+   local cur prev opts logfile
+   if [ "${loglevel:-silent}" == "silent" ]; then
+@@ -39,4 +40,4 @@
+   return $?
+ }
+ 
+-complete -o default -F __npm_completion npm
++complete -o default -F _npm npm

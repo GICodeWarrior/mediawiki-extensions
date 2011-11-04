@@ -1,0 +1,3 @@
+version=3
+opts=filenamemangle=s/.*v(.*)$/npm-$1\.tar\.gz/ \
+http://github.com/isaacs/npm/downloads .*/tarball/v(.*) debian uupdate

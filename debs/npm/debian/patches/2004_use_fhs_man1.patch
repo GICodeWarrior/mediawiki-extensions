@@ -1,0 +1,30 @@
+Description: Use manpages from /usr/share/man/man1
+Forwarded: not-needed
+Author: Jérémy Lal <kapouer@melix.org>
+Last-Update: 2011-01-23
+Index: npm-1.0.13/lib/help.js
+===================================================================
+--- npm-1.0.13.orig/lib/help.js	2011-06-17 19:34:16.514994010 +0000
++++ npm-1.0.13/lib/help.js	2011-06-17 19:34:23.244993994 +0000
+@@ -26,7 +26,7 @@
+       npm.config.set("loglevel", "silent")
+       return output.write(npm.commands[section].usage, cb)
+     }
+-    var section_path = path.join(__dirname, "../man1/"+section+".1")
++    var section_path = path.join(__dirname, "../man1/"+section+".1.gz")
+     return fs.stat
+       ( section_path
+       , function (e, o) {
+@@ -91,9 +91,9 @@
+ function getSections(cb) {
+   fs.readdir(path.join(__dirname, "../man1/"), function (er, files) {
+     if (er) return cb(er)
+-    var sectionList = files.concat("help.1")
+-      .filter(function (s) { return s.match(/\.1$/) })
+-      .map(function (s) { return s.replace(/\.1$/, '')})
++    var sectionList = files.concat("help.1.gz")
++      .filter(function (s) { return s.match(/\.1\.gz$/) })
++      .map(function (s) { return s.replace(/\.1\.gz$/, '')})
+     cb(null, sectionList)
+   })
+ }
