@@ -67,11 +67,11 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 	 */
 	protected function inXmlMode() {
 		$format = $this->validateFormat();
-		return ($format == 'xml' || $format == 'xmlfm');
+		return ( $format == 'xml' || $format == 'xmlfm' );
 	}
 
 	public function execute() {
-		if (!$this->inXmlMode()) {
+		if ( !$this->inXmlMode() ) {
 			// Pass back to the JSON defaults
 			parent::execute();
 			return;
@@ -138,11 +138,14 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 			$item['Url']['*'] = wfExpandUrl( $title->getFullUrl(), PROTO_CURRENT );
 			if( $image ) {
 				$thumb = $image->transform( array( 'width' => 50, 'height' => 50 ), 0 );
-				$item['Image'] = array(
-					'source' => wfExpandUrl( $thumb->getUrl(), PROTO_CURRENT ),
-					//alt
-					'width' => $thumb->getWidth(),
-					'height' => $thumb->getHeight() );
+				if( $thumb ) {
+					$item['Image'] = array(
+						'source' => wfExpandUrl( $thumb->getUrl(), PROTO_CURRENT ),
+						//alt
+						'width' => $thumb->getWidth(),
+						'height' => $thumb->getHeight()
+					);
+				}
 			}
 		} else {
 			$item = array( 'Text' => array( '*' => $name ) );
