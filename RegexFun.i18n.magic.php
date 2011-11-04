@@ -15,7 +15,6 @@ $magicWords = array();
 
 $magicWords['en'] = array(
 	'regex'        => array( 0, 'regex' ),
-	'regexsearch'  => array( 0, 'regexsearch' ),
 	'regex_var'    => array( 0, 'regex_var' ),
 	'regexall'     => array( 0, 'regexall' ),
 	'regexquote'   => array( 0, 'regexquote' ),
