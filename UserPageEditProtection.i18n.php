@@ -50,6 +50,14 @@ $messages['ar'] = array(
 	'right-editalluserpages' => 'تحرير صفحات المستخدم',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'userpageeditprotection-desc' => "Acuta la edición de les páxines d'usuariu pal usuariu y los editores con permisu",
+	'right-editalluserpages' => "Editar les páxines d'usuariu",
+);
+
 /** Bavarian (Boarisch)
  * @author Mucalexx
  */
