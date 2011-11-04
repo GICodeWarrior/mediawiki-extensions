@@ -1,12 +1,13 @@
 <?php
 
 /**
- * This is a MediaWiki extension which adds parser functions for performing regular
+ * 'Regex Fun' is a MediaWiki extension which adds parser functions for performing regular
  * expression searches and replacements.
  * 
  * Info on mediawiki.org: http://www.mediawiki.org/wiki/Extension:Regex_Fun
  * 
- * @version: 1.0 alpha
+ * @version: 1.0
+ * @license: ISC license
  * @author:  Daniel Werner < danweetz@web.de >
  * 
  * Documentation: http://www.mediawiki.org/wiki/Extension:Regex_Fun
@@ -30,12 +31,8 @@ $wgExtensionCredits['parserhook'][] = array(
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Regex_Fun',
 );
 
-$dir = dirname( __FILE__ );
-
-$wgExtensionMessagesFiles['RegexFun'     ] = $dir . '/RegexFun.i18n.php';
-$wgExtensionMessagesFiles['RegexFunMagic'] = $dir . '/RegexFun.i18n.magic.php';
-
-unset( $dir );
+$wgExtensionMessagesFiles['RegexFun'     ] = ExtRegexFun::getDir() . '/RegexFun.i18n.php';
+$wgExtensionMessagesFiles['RegexFunMagic'] = ExtRegexFun::getDir() . '/RegexFun.i18n.magic.php';
 
 $wgHooks['ParserFirstCallInit'][] = 'ExtRegexFun::init';
 $wgHooks['ParserClearState'   ][] = 'ExtRegexFun::onParserClearState';
@@ -55,67 +52,131 @@ class ExtRegexFun {
 	 * 
 	 * @var string
 	 */
-	const VERSION = '1.0 alpha';
-	
-	protected static $lastMatches = null;
-	protected static $lastPattern = '';
-	protected static $lastSubject = '';
+	const VERSION = '1.0';
 	
     /**
      * Sets up parser functions
      */
 	public static function init( &$parser ) {		
     	$parser->setFunctionHook( 'regex',       array( __CLASS__, 'regex'       ) );
-    	$parser->setFunctionHook( 'regexsearch', array( __CLASS__, 'regexsearch' ) );
 		$parser->setFunctionHook( 'regex_var',   array( __CLASS__, 'regex_var'   ) );
     	$parser->setFunctionHook( 'regexall',    array( __CLASS__, 'regexall'    ) );
     	$parser->setFunctionHook( 'regexquote',  array( __CLASS__, 'regexquote'  ) );
     	$parser->setFunctionHook( 'regexascii',  array( __CLASS__, 'regexascii'  ) );
 		
-		return true;
+		return true;		
     }
 	
 	/**
+	 * Returns the extensions base installation directory.
+	 *
+	 * @since 1.0
+	 * 
+	 * @return boolean
+	 */
+	public static function getDir() {		
+		static $dir = null;
+		
+		if( $dir === null ) {
+			$dir = dirname( __FILE__ );
+		}
+		return $dir;
+	}
+	
+	
+	const FLAG_NO_REPLACE_NO_OUT = 'r';
+	const FLAG_REPLACEMENT_PARSE = 'e'; // overwrites php 'e' flag
+	
+	/**
+	 * helper store for transmitting some values to a preg_replace_callback function
+	 * 
+	 * @var array
+	 */
+	private static $tmpRegexCB;
+	
+	/**
 	 * Checks whether the given regular expression is valid or would cause an error.
-	 * Also alters the pattern in case it would be a security risk
+	 * Also alters the pattern in case it would be a security risk and communicates
+	 * about special flags which have no or different meaning in PHP. These will be
+	 * removed from the original regex string but put into the &$specialFlags array.
+	 * 
+	 * @since 1.0
 	 * 
 	 * @param &$pattern String
+	 * @param &$specialFlags array will contain all special flags the $pattern contains
+	 * 
 	 * @return Boolean
 	 */
-	public static function isValidRegex( &$pattern ) {
-		//return (bool)preg_match( '/^([\\/\\|%]).*\\1[imsSuUx]*$/', $pattern );
+	public static function validateRegex( &$pattern, &$specialFlags = array() ) {		
 		
-		// replace all eventual 'e' pattern modifiers since it's a huge security risk!
-		$origPattern = $pattern;
-		$delimiter = preg_quote( substr( $pattern, 0, 1 ), '/' );		
-		// from last delimiter (regex end) to end (only flags), replace all 'e':
-		$pattern = preg_replace_callback(
-				'/(?<=' . $delimiter . ')[^' . $delimiter . ']*?$/i',
-				array( __CLASS__, 'validRegexHelper' ),
-				$pattern
-		);
+		$specialFlags = array();
 		
-		/*
-		 * this takes care of all invalid regular expression use and the php notices
-		 * many regular expression extensions won't supress
-		 */
-		wfSuppressWarnings(); // instead of using the evil @ operator!
-		$validRegex = preg_match( $pattern, ' ' );
-		wfRestoreWarnings();
-		
-		if( $validRegex === false ) {
-			// set pattern back since the whole thing is invalid anyway:
-			$pattern = $origPattern;
+		if( strlen( $pattern ) < 2 ) {			
 			return false;
 		}
+		
+		$delimiter = substr( trim( $pattern ), 0, 1 );
+		$delimiterQuoted = preg_quote( $delimiter, '/' );
+		
+		// two parts, split by the last delimiter
+		$parts = preg_split( "/{$delimiterQuoted}(?=[^{$delimiterQuoted}]*$)/", $pattern, 2 );
+		
+		$mainPart  = $parts[0] . $delimiter; // delimiter to delimiter without flags
+		$flagsPart = $parts[1];
+		
+		// remove 'e' modifier from final regex since it's a huge security risk with user input!
+		self::regexSpecialFlagsHandler( $flagsPart, self::FLAG_REPLACEMENT_PARSE, $specialFlags );
+		
+		// marks #regex with replacement will output '' in case of no replacement
+		self::regexSpecialFlagsHandler( $flagsPart, self::FLAG_NO_REPLACE_NO_OUT, $specialFlags );
+		
+		// put purified regex back together:
+		$newPattern = $mainPart . $flagsPart;
+		
+		if( ! self::isValidRegex( $newPattern ) ) {
+			// no modification to $pattern done!
+			$specialFlags = array();
+			return false;
+		}
+		$pattern = $newPattern; // remember reference!
 		return true;
-	}	
+	}
+	
 	/**
-	 * only used by 'preg_replace_callback' in 'isValidRegex'
+	 * Returns whether the regular expression would be a valid one or not.
+	 * 
+	 * @since 1.0
+	 * 
+	 * @param $pattern string
+	 * 
+	 * @return boolean
 	 */
-	private static function validRegexHelper( $matches ) {
-		// there is no big 'E' modifier so it won't hurt to replace it as well:
-		return preg_replace( '/[e\s]/i', '', $matches[0] );
+	public static function isValidRegex( $pattern ) {
+		//return (bool)preg_match( '/^([\\/\\|%]).*\\1[imsSuUx]*$/', $pattern );
+		/*
+		 * Testing of the pattern in a very simple way:
+		 * This takes care of all invalid regular expression use and the ugly php notices
+		 * which some other regex extensions for MW won't handle right.
+		 */
+		wfSuppressWarnings(); // instead of using the evil @ operator!
+		$isValid = false !== preg_match( $pattern, ' ' ); // preg_match returns false on error
+		wfRestoreWarnings();
+		
+		return $isValid;
+	}
+	
+	/**
+	 * Helper function to check a string of flags for a certain flag and set it as an array key
+	 * in a special flags collecting array.
+	 */
+	private static function regexSpecialFlagsHandler( &$modifiers, $flag, &$specialFlags ) {
+		$count = 0;
+		$modifiers = preg_replace( "/{$flag}/", '', $modifiers, -1, $count );
+		if( $count > 0 ) {
+			$specialFlags[ $flag ] = true;
+			return true;
+		}
+		return false;
 	}
 	
 	/**
@@ -124,42 +185,28 @@ class ExtRegexFun {
 	 * which can be recognized by #iferror
 	 * 
 	 * @param $pattern String the invalid regular expression
+	 * 
 	 * @return Array
 	 */
 	public static function invalidRegexParsingOutput( $pattern ) {
 		$msg = '<span class="error">' . wfMsgExt( 'regexfun-invalid', array( 'content' ), "<tt><nowiki>$pattern</nowiki></tt>" ). '</span>';
-		return array( $msg, 'noparse' => false, 'isHTML' => false ); // isHTML must be false for #iferror!
-	}
-	
-	public static function onParserClearState( &$parser ) {
-		//cleanup to avoid conflicts with job queue or Special:Import
-		self::$lastMatches = null;
-		self::$lastPattern = '';
-		self::$lastSubject = '';
-		
-		return true;
-	}
-	
-	protected static function initLastRegex( $pattern, $subject ) {
-		self::$lastMatches = array();
-		self::$lastPattern = $pattern;
-		self::$lastSubject = $subject;	
+		return array( $msg, 'noparse' => true, 'isHTML' => false ); // isHTML must be false for #iferror!
 	}
 	
 	/**
-	 * also takes care of security risks in pattern which is why
-	 * the pattern is given by reference!
+	 * Helper function. Validates regex and takes care of security risks in pattern which is why
+	 * the pattern is taken by reference!
 	 */
-	protected static function validateRegexCall( $subject, &$pattern, $resetLastRegex = false ) {
-		self::$lastMatches = null; //reset last matches for the case anything goes wrong
-        if( $subject === null || $pattern === null ) {
-			return '';
+	protected static function validateRegexCall( Parser &$parser, $subject, &$pattern, &$specialFlags, $resetLastRegex = false ) {
+		if( $resetLastRegex ) {
+			//reset last matches for the case anything goes wrong
+			self::setLastMatches( $parser , null );
+		}        
+        if( ! self::validateRegex( $pattern, $specialFlags ) ) {			
+			return false;
 		}
-        if( ! self::isValidRegex( $pattern ) ) {			
-			return self::invalidRegexParsingOutput( $pattern );
-		}
-		if( $resetLastRegex ) {		
-			self::initLastRegex( $pattern, $subject );
+		if( $resetLastRegex ) {
+			self::initLastRegex( $parser, $pattern, $subject );
 		}
 		return true;
 	}
@@ -171,86 +218,105 @@ class ExtRegexFun {
      * @param $subject String input string to evaluate
      * @param $pattern String regular expression pattern - must use /, | or % delimiter
      * @param $replace String regular expression replacement
+	 * 
      * @return String Result of replacing pattern with replacement in string, or matching text if replacement was omitted
      */
-    public static function regex( &$parser, $subject = null, $pattern = null, $replace = null, $limit = null ) {
+    public static function regex( Parser &$parser, $subject = '', $pattern = '', $replace = null, $limit = -1 ) {
+		
 		// validate, initialise and check for wrong input:
-		$continue = self::validateRegexCall( $subject, $pattern, true );
-		if( $continue !== true ) {
-			return $continue;
-		}		
+		$continue = self::validateRegexCall( $parser, $subject, $pattern, $specialFlags, true );
+		if( ! $continue ) {
+			return self::invalidRegexParsingOutput( $pattern );;
+		}
 		
 		if( $replace === null ) {
 			// search mode:
-            $output = ( preg_match( $pattern, $subject, self::$lastMatches ) ? self::$lastMatches[0] : '' );
+			$lastMatches = self::getLastMatches( $parser );
+            $output = ( preg_match( $pattern, $subject, $lastMatches ) ? $lastMatches[0] : '' );
+			self::setLastMatches( $parser, $lastMatches );
         } else {
-			// replace mode:
-			if( $limit === null ) {
-				$limit = -1;
-			}
+			// replace mode:			
 			$limit = (int)$limit;
 			
-			self::$lastMatches = false;
-            $output = preg_replace( $pattern, $replace, $subject, $limit );
-        }		
-		return array( $output, 'noparse' => true, 'isHTML' => false );
-    }
-	
-	/**
-	 * Same as #regex but returns nothing if the pattern doesn't match and a replacement is given.
-	 */
-    public static function regexsearch( &$parser, $subject = null, $pattern = null, $replace = null, $limit = null ) {
-		// validate, initialise and check for wrong input:
-		$continue = self::validateRegexCall( $subject, $pattern, true );
-		if( $continue !== true ) {
-			return $continue;
-		}
-		
-        if( $replace === null ) {
-			// search mode:
-            $output = ( preg_match( $pattern, $subject, self::$lastMatches ) ? self::$lastMatches[0] : '' );
-        } else {
-			// replace mode:
-			if( $limit === null ) {
-				$limit = -1;
+			// set last matches to 'false' and get them on demand instead since preg_replace won't communicate them
+			self::setLastMatches( $parser , false );
+						
+			// FLAG 'e' (parse replace after match) handling:
+			if( ! empty( $specialFlags[ self::FLAG_REPLACEMENT_PARSE ] ) ) {				
+				// if 'e' flag is set, each replacement has to be parsed after matches are inserted but before replacing!
+				self::$tmpRegexCB = array(
+					'replacement' => $replace,
+					'parser' => &$parser,
+				);
+				$output = preg_replace_callback( $pattern, array( __CLASS__, 'regex_eFlag_callback' ), $subject, $limit, $count );
 			}
-			$limit = (int)$limit;
+			else {
+				$output = preg_replace( $pattern, $replace, $subject, $limit, $count );
+			}
 			
-			self::$lastMatches = false;
-            $output = preg_replace( $pattern, $replace, $subject, $limit, $count );
-			if( $count < 1 ) {
-				return '';
+			// FLAG 'r' (no replacement - no output) handling:
+			if( ! empty( $specialFlags[ self::FLAG_NO_REPLACE_NO_OUT ] ) ) {				
+				/*
+				 *  only output replacement result if there actually was a match and therewith a replacement happened
+				 * (otherwise the input string would be returned)
+				 */
+				if( $count < 1 ) {
+					return '';
+				}
 			}
         }
-		return array( $output, 'noparse' => false, 'isHTML' => false );
+		return $output;
     }
 	
+	private static function regex_eFlag_callback( $matches ) {
+		
+		/** Don't cache this since it could contain dynamic content like #var which should be parsed */
+		
+		$replace = self::$tmpRegexCB['replacement'];
+		$parser  = self::$tmpRegexCB['parser'];
+		
+		// last matches in #regex replace mode were set to false before, set them now:
+		self::setLastMatches( $parser, $matches );
+		
+		// use #regex_var for transforming replacement string with matches:
+		$replace = self::regex_var( $parser, $replace );
+		
+		// parse the replacement after matches are inserted
+		// use a new frame, no need for SFH_OBJECT_ARGS style parser functions
+		$frame = $parser->getPreprocessor()->newCustomFrame( $parser );
+		$replace = $parser->preprocessToDom( $replace );
+		$replace = trim( $frame->expand( $replace ) );
+				
+		return $replace;
+	}
+	
 	/**
-	* Performs regular expression search and returns ALL matches separated
+	* Performs regular expression searches and returns ALL matches separated
 	* 
 	* @param $parser Parser instance of running Parser
 	* @param $subject String input string to evaluate
 	* @param $pattern String regular expression pattern - must use /, | or % as delimiter
 	* @param $separator String to separate all the matches
 	* @param $offset Integer first match to print out. Negative values possible: -1 means last match.
-	* @param $length Integer maximum matches for print out
+	* @param $limit Integer maximum matches for print out
+	 * 
 	* @return String result of all matching text parts separated by a string
 	*/
-    public static function regexall( &$parser , $subject = null , $pattern = null , $separator = ', ' , $offset = 0 , $length = null ) {
+    public static function regexall( &$parser , $subject = '' , $pattern = '' , $separator = ', ' , $offset = 0 , $limit = null ) {
 		// validate and check for wrong input:
-		$continue = self::validateRegexCall( $subject, $pattern, false );
-		if( $continue !== true ) {
-			return $continue;
+		$continue = self::validateRegexCall( $parser, $subject, $pattern, $specialFlags, false );
+		if( ! $continue ) {
+			return self::invalidRegexParsingOutput( $pattern );;
 		}
 		// adjust default values:
 		$offset = (int)$offset;
-		if( $length !== null ) {
-			$length = (int)$length;
+		if( $limit !== null ) {
+			$limit = (int)$limit;
 		}
 
 		if( preg_match_all( $pattern, $subject, $matches, PREG_SET_ORDER ) ) {
 			
-			$matches = array_slice( $matches, $offset, $length );								
+			$matches = array_slice( $matches, $offset, $limit );								
 			$output = ''; //$end = ($end or ($end >= count($matches)) ? $end : count($matches) );
 
 			for( $count = 0; $count < count( $matches ); $count++ ) {
@@ -259,7 +325,7 @@ class ExtRegexFun {
 				}
 				$output .= trim( $matches[ $count ][0] );
 			}
-			return array( $output, 'noparse' => false, 'isHTML' => false );
+			return $output;
 		}
 		return '';
     }
@@ -272,27 +338,24 @@ class ExtRegexFun {
      * @param $defaultVal Integer default value which will be returned when the result with the given index doesn't exist or is a void string
      */
 	public static function regex_var( &$parser, $index = 0, $defaultVal = '' ) {
-		if( self::$lastMatches === null ) { // last regex was invalid or none executed yet
+		// get matches from last #regex
+		$lastMatches = self::getLastMatches( $parser );
+		
+		if( $lastMatches === null ) { // last regex was invalid or none executed yet
 			return '';
 		}
-		// last matches are set to false in case last regex was in replace mode!
-		if( self::$lastMatches === false ) {
-			// execute last regular expression again, but this time not as replace
-			preg_match( self::$lastPattern, self::$lastSubject, self::$lastMatches );
-		}
-		
+				
 		// if requested index is numerical:
 		if (preg_match( '/^\d+$/', $index ) ) {
 			// if requested index is in matches and isn't '':
-			if( array_key_exists( $index, self::$lastMatches ) && self::$lastMatches[$index] !== '' )
-				return self::$lastMatches[ $index ];
+			if( array_key_exists( $index, $lastMatches ) && $lastMatches[$index] !== '' )
+				return $lastMatches[ $index ];
 			else {
 				// no match! Return just the default value:
 				return $defaultVal;
 			}
 		} else {
-			// complex string is given, something like "$1, $2 and $3":
-			
+			// complex string is given, something like "$1, $2 and $3":			
 			/*
 			 * replace all back-references with their number increased by 1!
 			 * this way we can also handle $0 in the right way!
@@ -307,13 +370,13 @@ class ExtRegexFun {
 			 * which will handle all the replace-escaping handling correct
 			 */
 			$regEx = '';
-			foreach( self::$lastMatches as $match ) {
+			foreach( $lastMatches as $match ) {
 				$regEx .= '(' . preg_quote( $match, '/' ) . ')';
 			}
 			$regEx = "/^{$regEx}$/";
-			$output = preg_replace( $regEx, $index, implode( '', self::$lastMatches ) );
+			$output = preg_replace( $regEx, $index, implode( '', $lastMatches ) );
 
-			return array( $output, 'noparse' => false, 'isHTML' => false );
+			return $output;
 		}
 	}
 	/**
@@ -336,6 +399,7 @@ class ExtRegexFun {
      * @param $parser Parser instance of running Parser
      * @param $str String input string to change
      * @param $delimiter String delimiter which also will be escaped within $str (default is set to '/')
+	 * 
      * @return String Returns the quoted string
      */
 	public static function regexquote( &$parser, $str = null, $delimiter = '/' ) {		
@@ -365,27 +429,74 @@ class ExtRegexFun {
 	}
 	
 	
-    /**
-	 * DEPRECATED: Functionality is included in 'regexquote' now for the first character
-	 *             in case its a trouble-maker.
-	 * 
-     * Converts all chars in a pattern for regex to escaped hex ascii syntax '=' => '\x3D'
-	 * This function is good for escaping characters which can cause problems in MW like
-	 * ';' as a first character of a string or '|' characters
-	 * 
-     * @param $parser ParseriInstance of running Parser
-     * @param $str String input string to change
-     * @return String result of the input with escaped characters in hex ascii syntax
-     */
-	/*
-    public static function regexascii( &$parser, $str = null ) {	
-		if( $str === null ) return '';
+	/*********************************
+	 ****  HELPER - For Store of  ****
+	 **** regex_var within Parser ****
+	 *********************************
+	 ****
+	 **
+	 * Adding the info to each Parser object makes it invulnerable to new Parser objects being created
+	 * and destroyed throughout main parsing process. Only the one parser, 'ParserClearState' is called
+	 * on will losse its data since the parsing process has been declared finished and the data won't be
+	 * needed anymore.
+	 **
+	 ***/
 	
-		$pattern = '/(.)/e';
-		$replace = "'\\x' . dechex( ord( '$1' ) )";
+	protected static function initLastRegex( Parser &$parser, $pattern, $subject ) {
+		self::setLastMatches( $parser, array() );
+		self::setLastPattern( $parser, $pattern );
+		self::setLastSubject( $parser, $subject );
+	}
 	
-        $output = preg_replace( $pattern, $replace, $str );
-		return array($output, 'noparse' => true);
-    }
-	*/
+	public static function onParserClearState( &$parser ) {
+		//cleanup to avoid conflicts with job queue or Special:Import
+		self::setLastMatches( $parser, null );
+		self::setLastPattern( $parser, '' );
+		self::setLastSubject( $parser, '' );		
+		
+		return true;
+	}
+	
+	/**
+	 * Returns the last regex matches done by #regex in the context of the same parser object.
+	 * 
+	 * @param Parser $parser
+	 * @return array|null
+	 */
+	public static function getLastMatches( Parser &$parser ) {
+				
+		if( isset( $parser->mExtRegexFun['lastMatches'] ) ) {
+			
+			// last matches are set to false in case last regex was in replace mode! Get them on demand:
+			if( $parser->mExtRegexFun['lastMatches'] === false ) {				
+				preg_match( self::getLastPattern( $parser ), self::getLastSubject( $parser ), $parser->mExtRegexFun['lastMatches'] );
+			}			
+			return $parser->mExtRegexFun['lastMatches'];
+		}
+		return null;
+	}	
+	protected static function setLastMatches( Parser &$parser, $value ) {
+		$parser->mExtRegexFun['lastMatches'] = $value;
+	}
+	
+	public static function getLastPattern( Parser &$parser ) {
+		if( isset( $parser->mExtRegexFun['lastPattern'] ) ) {
+			return $parser->mExtRegexFun['lastPattern'];
+		}
+		return '';
+	}
+	protected static function setLastPattern( Parser &$parser, $value ) {
+		$parser->mExtRegexFun['lastPattern'] = $value;
+	}
+	
+	public static function getLastSubject( Parser &$parser ) {
+		if( isset( $parser->mExtRegexFun['lastSubject'] ) ) {
+			return $parser->mExtRegexFun['lastSubject'];
+		}
+		return '';
+	}
+	protected static function setLastSubject( Parser &$parser, $value ) {
+		$parser->mExtRegexFun['lastSubject'] = $value;
+	}
+	
 }

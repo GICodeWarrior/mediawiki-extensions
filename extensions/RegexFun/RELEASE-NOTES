@@ -1,9 +1,0 @@
- Changelog:
- ==========
- * Nov. xx, 2011 -- Version 1.0 (initial release).
-   Introduces the following parser functions defined within 'ExtRegexFun' class:
-   - #regex
-   - #regexsearch
-   - #regexall
-   - #regex_var
-   - #regexquote
