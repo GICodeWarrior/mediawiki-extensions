@@ -1,10 +1,17 @@
  Changelog:
  ==========
  
- * trunk, version 0.6.4 alpha
+ * November 3, version 0.7
+   - buggy behavior in 'hashkeyexists' which led to expanding both arguments 'yes' and 'no' in
+     case custom arguments were given is solved. Now only the one actual case is being expanded.
+   - 'hashtotemplate' now changes '{' to '&#123;' since '{{' made some problems in some cases.
+   - 'hashprint' last parameter for print order now evaluates templates and arguments as it should
+     always have done.
+   - 'hashmerge' on single hash will re-asign its numeric keys in ascending order instead of doing nothing.
    - using hook 'ParserFirstCallInit' now.
    - some gernal cleanup done.
    - put into wikimedia.org svn (http://svn.wikimedia.org/svnroot/mediawiki/trunk/extensions/HashTables/)
+   - distributed under ISC license.
 
  * August 3, 2011 version 0.6.3
    - minor bug in 'parameterstohash' function solved.
@@ -12,7 +19,7 @@
  * March 29, 2011 version 0.6.2
    - 'hashtotemplate' has a new parameter to define a string which will replace pipes '|'. Can be
      useful to preserve links.
-	 
+	
  * January 24, 2011 version 0.6.1
    - Constant VERSION and function getHash() added to class ExtHashTables.
    
