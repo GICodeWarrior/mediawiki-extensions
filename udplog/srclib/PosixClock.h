@@ -87,6 +87,13 @@ public:
 		return res;
 	}
 
+	Time NanoSleep(int flags, const Time & request) {
+		Time remain;
+		if (clock_nanosleep(id, flags, &request.data, &remain.data) == -1) {
+			throw libc_error("PosixClock::NanoSleep");
+		}
+		return remain;
+	}
 protected:
 	clockid_t id;
 	Time res;
