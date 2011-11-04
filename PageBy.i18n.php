@@ -468,6 +468,9 @@ $messages['mr'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'pageby-desc' => 'Menunjukkan para penyumbang dalam baris di laman wiki dengan menggunakan tag <code><nowiki><pageby></nowiki></code>',
+	'pageby-first' => 'Laman dibuat oleh $1 pada $2',
+	'pageby-last' => 'Kali terakhir <a href="$3">diubah</a> oleh $1, $2',
 	'pageby-contributors' => 'Penyumbang:',
 	'pageby-anon' => '<i>tanpa nama</i>',
 );
