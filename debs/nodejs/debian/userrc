@@ -1,0 +1,5 @@
+; npm configuration for non-root usage
+binroot = ~/bin
+root = ~/.node_libraries
+manroot = false
+loglevel = WARN

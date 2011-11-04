@@ -1,0 +1,52 @@
+npm for Debian
+==============
+
+npm is invoked through /usr/bin/npm,
+ensuring install paths follow debian policy.
+
+
+WARNING
+-------
+
+* To prevent confusion and breakage, root user can't do :
+  `npm install npm`
+  However non-root user can still do it.
+* Do not use /usr/share/npm/cli.js directly as root.
+  it will break your npm installation, or worse.
+
+
+using npm as root
+-----------------
+
+/etc/npm/rootrc configures the default install paths
+when calling npm as root :
+
+Modules go to /usr/local/lib/nodejs
+Executables go to /usr/local/bin
+Documentation go to /usr/local/share/man
+
+Installed modules must be on node path before calling it :
+export NODE_PATH=/usr/local/lib/nodejs
+
+
+using npm as non-root
+---------------------
+
+/etc/npm/userrc configures the default install paths
+when calling npm as a non-root user :
+
+Modules go to ~/.node_libraries
+Executables go to ~/bin
+Documentation is not installed
+
+~/.node_libraries is already on the NODE_PATH.
+
+
+do not confuse with /usr/lib/nodejs
+-----------------------------------
+
+/usr/lib/nodejs directory is reserved for modules that are provided by a
+debian package.
+
+
+ -- Jérémy Lal <kapouer@melix.org>  Fri, 28 Jan 2011 00:33:28 +0200
