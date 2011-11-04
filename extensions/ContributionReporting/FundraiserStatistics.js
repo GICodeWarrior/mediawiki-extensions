@@ -1,7 +1,7 @@
 /* JavaScript */
 
 $j( document ).ready( function() {
-	
+
 	var currentViewID = 'fundraiserstats-view-box-0';
 	function replaceView( newLayerID ) {
 		var currentLayer = document.getElementById( currentViewID );
@@ -10,7 +10,7 @@ $j( document ).ready( function() {
 		newLayer.style.display = 'block';
 		currentViewID = newLayerID;
 	}
-	
+
 	var currentChartID = 'fundraiserstats-chart-totals';
 	function replaceChart( newLayerID ) {
 		var currentLayer = document.getElementById( currentChartID );
@@ -47,5 +47,5 @@ $j( document ).ready( function() {
 	$j( '#timezone' ).change( function() {
 		$j('#configform').submit();
 	} );
-	
+
 } );

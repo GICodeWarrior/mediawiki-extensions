@@ -37,18 +37,18 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 		);
 
 		$htmlOut .=  Xml::tags( 'tr', null,
-				Xml::element( 'td', array( 'align' => 'left' ), 
+				Xml::element( 'td', array( 'align' => 'left' ),
 					wfMsg( 'contribstats-imperfect-data' ) ) .
-				Xml::element( 'td', array( 'align' => 'right' ), 
+				Xml::element( 'td', array( 'align' => 'right' ),
 					wfTimestamp( TS_DB ) . ' (UTC)')
 		);
 		$htmlOut .= Xml::tags( 'tr', null,
-				Xml::element( 'td', array( 'align' => 'left' ), 
-					wfMsg( 'contribstats-fraud-note' ) . " " . 
+				Xml::element( 'td', array( 'align' => 'left' ),
+					wfMsg( 'contribstats-fraud-note' ) . " " .
 						wfMsg( 'contribstats-unaudited' ) )
 		);
 		$htmlOut .= Xml::tags( 'tr', null,
-				Xml::element(  'td', array( 'align' => 'left' ), 
+				Xml::element(  'td', array( 'align' => 'left' ),
 					'PP = ' . wfMsg( 'contribstats-paypal-donations' ) . ', ' .
 							'CC = ' . wfMsg( 'contribstats-credit-card' ) )
 		);
@@ -74,11 +74,11 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 	public function showTotalsForRange( $range, $format ) {
 		list( $start, $end ) = $range;
 		$current = $end;
-		
+
 		switch( $format ) {
 			case 1:
 				while( $current > $start ) {
-					$this->showDayTotals( $current ); 
+					$this->showDayTotals( $current );
 					$current = $current - 24 * 60 * 60;
 				}
 				break;
@@ -91,7 +91,7 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 				$this->showCombinedTotals( $totals, $range );
 				break;
 
-		}	
+		}
 	}
 
 	// Display tracking information for one day
@@ -187,7 +187,7 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 	public function showCombinedTotals( $totals, $range ) {
 		global $wgOut;
 
-		$msg = date( 'o-m-d', wfTimestamp( TS_UNIX, $range[0] ) ) . ' - ' . 
+		$msg = date( 'o-m-d', wfTimestamp( TS_UNIX, $range[0] ) ) . ' - ' .
 			date( 'o-m-d', wfTimestamp( TS_UNIX, $range[1] ) ) ;
 		$htmlOut = Xml::element( 'h3', null, $msg );
 
@@ -224,7 +224,7 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 
 		$res = $dbr->select(
 			array( 'contribution_tracking',
-			       'civicrm.public_reporting',
+				   'civicrm.public_reporting',
 			),
 			array(
 				'utm_source',
@@ -242,7 +242,7 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 			array( 'civicrm.public_reporting' =>
 				array(
 					'LEFT JOIN',
-				 	'contribution_tracking.contribution_id = civicrm.public_reporting.contribution_id',
+					'contribution_tracking.contribution_id = civicrm.public_reporting.contribution_id',
 				)
 			)
 

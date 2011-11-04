@@ -16,16 +16,16 @@ $messages['en'] = array(
 	'contributionreporting-desc' => 'Live reporting on the Wikimedia fundraiser',
 	'contributiontotal' => 'Contribution total',
 	'contributionhistory' => 'Contribution history',
-	
+
 	'contrib-hist-header' => 'Donor comments from around the world',
-	
+
 	'contrib-hist-name' => 'Name',
 	'contrib-hist-date' => 'Time and date',
 	'contrib-hist-amount' => 'Amount',
-	
+
 	'contrib-hist-next' => 'Earlier donations',
 	'contrib-hist-previous' => 'Newer donations',
-	
+
 	'contrib-hist-anonymous' => 'Anonymous',
 
 	// ContributionStatistics
@@ -118,21 +118,21 @@ $messages['qqq'] = array(
 	'contrib-hist-name' => '{{Identical|Name}}',
 	'contrib-hist-date' => '{{Identical|Date}}',
 	'contrib-hist-amount' => '{{Identical|Amount}}',
-	'contributionstatistics' => 'Title on the contribution report for <nowiki>[[Special:ContributionStatistics]]</nowiki>. 
+	'contributionstatistics' => 'Title on the contribution report for <nowiki>[[Special:ContributionStatistics]]</nowiki>.
 You may see an example in context at http://wikimediafoundation.org/wiki/Special:ContributionStatistics',
 	'contribstats-desc' => '{{desc}}',
 	'contribstats-currency-range-totals' => '* $1 is a start date
 * $2 is an end date',
-	'contribstats-contribution-breakdown' => 'Title on the contribution report for <nowiki>[[</nowiki>Special:ContributionStatistics<nowiki>]]</nowiki>. 
+	'contribstats-contribution-breakdown' => 'Title on the contribution report for <nowiki>[[</nowiki>Special:ContributionStatistics<nowiki>]]</nowiki>.
 You may see an example in context at http://wikimediafoundation.org/wiki/Special:ContributionStatistics',
-	'contribstats-day' => '"Day" on the contribution report for <nowiki>[[</nowiki>Special:ContributionStatistics<nowiki>]]</nowiki>. 
+	'contribstats-day' => '"Day" on the contribution report for <nowiki>[[</nowiki>Special:ContributionStatistics<nowiki>]]</nowiki>.
 You may see an example in context at http://wikimediafoundation.org/wiki/Special:ContributionStatistics
 {{Identical|Day}}',
-	'contribstats-month' => '"Month" on the contribution report for <nowiki>[[</nowiki>Special:ContributionStatistics<nowiki>]]</nowiki>. 
+	'contribstats-month' => '"Month" on the contribution report for <nowiki>[[</nowiki>Special:ContributionStatistics<nowiki>]]</nowiki>.
 You may see an example in context at http://wikimediafoundation.org/wiki/Special:ContributionStatistics
 {{Identical|Month}}',
 	'contribstats-currency' => '{{Identical|Currency}}',
-	'contribstats-contributions' => 'The number of contributions (donations) on a report for <nowiki>[[</nowiki>Special:ContributionStatistics<nowiki>]]</nowiki>. 
+	'contribstats-contributions' => 'The number of contributions (donations) on a report for <nowiki>[[</nowiki>Special:ContributionStatistics<nowiki>]]</nowiki>.
 You may see an example in context at http://wikimediafoundation.org/wiki/Special:ContributionStatistics',
 	'contribstats-day-totals' => 'The day for which the contribution statistics are being displayed.',
 	'contribstats-conversion' => 'Click conversion rate, see [[:wikipedia:Conversion rate|Wikipedia article]].',
