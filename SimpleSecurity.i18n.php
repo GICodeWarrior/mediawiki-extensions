@@ -1229,10 +1229,11 @@ $messages['vep'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Trần Nguyễn Minh Huy
  */
 $messages['vi'] = array(
-	'security' => 'Nhật trình an toàn',
-	'security-logpage' => 'Nhật trình an toàn',
+	'security' => 'Nhật trình bảo mật',
+	'security-logpage' => 'Nhật trình bảo mật',
 	'security-info' => 'Có $1 tại trang này',
 	'security-info-toggle' => 'hạn chế an toàn',
 	'security-manygroups' => 'các nhóm $1 và $2',
