@@ -1,7 +1,7 @@
  Changelog:
  ==========
  
- * November 3, version 0.7
+ * November 4, 2011 version 0.7
    - buggy behavior in 'hashkeyexists' which led to expanding both arguments 'yes' and 'no' in
      case custom arguments were given is solved. Now only the one actual case is being expanded.
    - 'hashtotemplate' now changes '{' to '&#123;' since '{{' made some problems in some cases.
@@ -12,6 +12,7 @@
    - some gernal cleanup done.
    - put into wikimedia.org svn (http://svn.wikimedia.org/svnroot/mediawiki/trunk/extensions/HashTables/)
    - distributed under ISC license.
+
 
  * August 3, 2011 version 0.6.3
    - minor bug in 'parameterstohash' function solved.
