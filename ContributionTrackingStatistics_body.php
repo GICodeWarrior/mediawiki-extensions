@@ -27,6 +27,7 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 		// Begin output
 		$this->setHeaders();
 
+		$wgOut->addWikiText(wfMsg('contribstats-header'));
 		// Build Header
 		$htmlOut = Xml::openElement( 'table',
 				array(
@@ -65,6 +66,7 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 			$offset = SpecialContributionTrackingStatistics::$number_of_days_to_show * 24 * 60 * 60;
 			$this->showTotalsForRange( array( ( $end - $offset ), $end ), $format );
 		}
+		$wgOut->addWikiText(wfMsg('contribstats-footer'));
 	}
 
 	/* Display Functions */

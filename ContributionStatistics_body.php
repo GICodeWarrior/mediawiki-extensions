@@ -23,7 +23,7 @@ class SpecialContributionStatistics extends SpecialPage {
 	}
 
 	public function execute( $sub ) {
-		global $egContributionStatisticsViewDays;
+		global $wgOut,$egContributionStatisticsViewDays;
 
 		$this->evalDateRange();
 
@@ -53,6 +53,7 @@ class SpecialContributionStatistics extends SpecialPage {
 		// Begin output
 		$this->setHeaders();
 
+		$wgOut->addWikiText(wfMsg('contribstats-header'));
 		// Show daily totals if the range includes today
 		if( $this->mEndDate > time() && $this->mStartDate < time() ) {
 			$this->showDailyTotals( $egContributionStatisticsViewDays );
@@ -66,6 +67,7 @@ class SpecialContributionStatistics extends SpecialPage {
 
 		// Show contribution breakdown
 		$this->showContributionBreakdown();
+		$wgOut->addWikiText(wfMsg('contribstats-footer'));
 	}
 
 	/* Display Functions */

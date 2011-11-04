@@ -53,6 +53,8 @@ $messages['en'] = array(
 	'contribstats-value-under' => 'Under $1',
 	'contribstats-value-from' => 'From $1 - $2',
 	'contribstats-value-over' => 'Over $1',
+	'contribstats-header' => '',
+	'contribstats-footer' => '',
 
 	// Tracking Statistics
 	'contributiontrackingstatistics' => 'Contribution tracking statistics',
