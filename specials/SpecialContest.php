@@ -61,6 +61,10 @@ class SpecialContest extends SpecialContestPage {
 				$this->showMailFunctionality( $contest );
 			}
 			
+			$out->addHTML( Html::element( 'h3', array(), wfMsg( 'contest-contest-contestants' ) ) );
+			
+			$this->addFilterOptionsToSession();
+			$this->showFilterControl( $contest, $challengeTitle );
 			$this->showContestants( $contest, $challengeTitle );
 
 			$out->addModules( 'contest.special.contest' );
@@ -175,23 +179,14 @@ class SpecialContest extends SpecialContestPage {
 	protected function showContestants( Contest $contest, $challengeTitle ) {
 		$out = $this->getOutput();
 
-		$out->addHTML( Html::element( 'h3', array(), wfMsg( 'contest-contest-contestants' ) ) );
+		$out->addWikiMsg( 'contest-contest-contestants-text' );
 
 		$conds = array(
 			'contestant_contest_id' => $contest->getId()
 		);
-
-		if ( $challengeTitle !== false ) {
-			$challenge = ContestChallenge::s()->selectRow( 'id', array( 'title' => $challengeTitle ) );
-
-			if ( $challenge !== false ) {
-				$conds['contestant_challenge_id'] = $challenge->getField( 'id' );
-				unset( $conds['contestant_contest_id'] ); // Not needed because the challenge implies the context
-			}
-		}
-
-		$out->addWikiMsg( 'contest-contest-contestants-text' );
-
+		
+		$this->addRequestConditions( $conds );
+		
 		$pager = new ContestantPager( $this, $conds );
 
 		if ( $pager->getNumRows() ) {
@@ -204,6 +199,179 @@ class SpecialContest extends SpecialContestPage {
 		else {
 			$out->addWikiMsg( 'contest-contest-no-results' );
 		}
+	}
+	
+	/**
+	 * Add the filter options to the session, so they get retained
+	 * when the user does navigation such as going to the next
+	 * set of results using the pager.
+	 * 
+	 * @since 0.2
+	 */
+	protected function addFilterOptionsToSession() {
+		$fields = array(
+			'volunteer',
+			'wmf',
+			'comments',
+			'rating_count',
+			'challenge',
+			'submission'
+		);
+		
+		$req = $this->getRequest();
+		
+		foreach ( $fields as $field ) {
+			if ( $req->getCheck( $field ) ) {
+				$req->setSessionData( 'contestant-' . $field, $req->getVal( $field ) );
+			}
+		}
+	}
+	
+	/**
+	 * Add the needed conditions to the provided array depending
+	 * on the filter options set.
+	 * 
+	 * @since 0.2
+	 * 
+	 * @param array $conds
+	 */
+	protected function addRequestConditions( &$conds ) {
+		$req = $this->getRequest();
+		
+		foreach ( array( 'volunteer', 'wmf' ) as $field ) {
+			if ( in_array( $req->getSessionData( 'contestant-' . $field ), array( 'yes', 'no' ) ) ) {
+				$conds['contestant_' . $field] = $req->getSessionData( 'contestant-' . $field ) == 'yes' ? 1 : 0;
+			}
+		}
+
+		foreach ( array( 'comments', 'rating_count' ) as $field ) {
+			if ( in_array( $req->getSessionData( 'contestant-' . $field ), array( 'some', 'none' ) ) ) {
+				if ( $req->getSessionData( 'contestant-' . $field ) == 'none' ) {
+					$conds['contestant_' . $field] = 0;
+				}
+				else {
+					$conds[] = 'contestant_' . $field . ' > 0';
+				}
+			}
+		}
+	
+		if ( $req->getSessionData( 'contestant-challenge' ) ) {
+			$challenge = ContestChallenge::s()->selectRow( 'id', array( 'title' => $req->getSessionData( 'contestant-' . $field ) ) );
+
+			if ( $challenge !== false ) {
+				$conds['contestant_challenge_id'] = $challenge->getField( 'id' );
+				unset( $conds['contestant_contest_id'] ); // Not needed because the challenge implies the context
+			}
+		}
+		
+		if ( in_array( $req->getSessionData( 'contestant-submission' ), array( 'some', 'none' ) ) ) {
+			if ( $req->getSessionData( 'contestant-submission' ) == 'none' ) {
+				$conds['contestant_submission'] = '';
+			}
+			else {
+				$conds[] = 'contestant_submission <> ""';
+			}
+		}
+	}
+	
+	/**
+	 * Create the filter control and add it to the output.
+	 * 
+	 * @since 0.2
+	 * 
+	 * @param Contest $contest
+	 */
+	protected function showFilterControl( Contest $contest ) {
+		$req = $this->getRequest();
+		$challenges = array();
+		
+		foreach ( $contest->getChallenges() as /* ContestChallenge */ $challenge ) {
+			$challenges[$challenge->getField( 'title' )] = $challenge->getField( 'title' );
+		}
+		
+		$yesNo = array(
+			'yes' => wfMsg( 'contest-contest-yes' ),
+			'no' => wfMsg( 'contest-contest-no' )
+		);
+		
+		$noneSome = array(
+			'none' => wfMsg( 'contest-contest-none' ),
+			'some' => wfMsg( 'contest-contest-some' ),
+		);
+		
+		$title = $this->getTitle( $this->subPage )->getFullText();
+		
+		$this->getOutput()->addHTML(
+			'<fieldset>' .
+				'<legend>' . wfMsgHtml( 'contest-contest-showonly' ) . '</legend>' .
+				'<form method="post" action="' . $GLOBALS['wgScript'] . '?title=' . $title . '">' .
+					Html::hidden( 'title', $title ) .
+					$this->getDropdownHTML(
+						'challenge', 
+						$challenges
+					) .
+					$this->getDropdownHTML(
+						'volunteer', 
+						$yesNo
+					) .
+					$this->getDropdownHTML(
+						'wmf', 
+						$yesNo
+					) .
+					$this->getDropdownHTML(
+						'comments', 
+						$noneSome
+					) .
+					$this->getDropdownHTML(
+						'rating_count', 
+						$noneSome
+					) .
+					$this->getDropdownHTML(
+						'submission', 
+						$noneSome
+					) .
+					'<input type="submit" value="' . wfMsgHtml( 'contest-contest-go' ) . '">' .
+				'</form>' .
+			'</fieldset>'
+		);
+	}
+	
+	/**
+	 * Get the HTML for a filter option dropdown menu.
+	 * 
+	 * @since 0.2
+	 * 
+	 * @param string $name
+	 * @param array $options
+	 * @param string|null $message
+	 * @param mixed $value
+	 * 
+	 * @return string
+	 */
+	protected function getDropdownHTML( $name, array $options, $message = null, $value = null ) {
+		$opts = array();
+		$options = array_merge( array( '' => ' ' ), $options );
+		
+		if ( is_null( $value ) ) {
+			$value = $this->getRequest()->getSessionData( 'contestant-' . $name );
+		}
+		
+		if ( is_null( $message ) ) {
+			$message = 'contest-contest-filter-' . $name;
+		}
+		
+		foreach ( $options as $val => $label ) {
+			$attribs = array( 'value' => $val );
+			
+			if ( $val == $value || ( $val === ' ' && !array_key_exists( $val, $options ) ) ) {
+				$attribs['selected'] = 'selected';
+			}
+			
+			$opts[] = Html::element( 'option', $attribs, $label );
+		}
+		
+		return Html::element( 'label', array( 'for' => $name ), wfMsg( $message ) ) . '&#160;' .
+			Html::rawElement( 'select', array( 'name' => $name, 'id' => $name ), implode( "\n", $opts ) ) . '&#160;';
 	}
 
 }

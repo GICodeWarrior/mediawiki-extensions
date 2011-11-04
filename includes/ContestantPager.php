@@ -198,7 +198,7 @@ class ContestantPager extends TablePager {
 				);
 				break;
 			case 'contestant_challenge_id':
-				$value = Html::element(
+				$value = /*Html::element(
 					'a',
 					array(
 						'href' =>
@@ -207,8 +207,8 @@ class ContestantPager extends TablePager {
 								$this->page->subPage . '/' . $this->getChallengeTitle( $value )
 							)->getLocalURL()
 					),
-					$this->getChallengeTitle( $value )
-				);
+					*/$this->getChallengeTitle( $value );
+				//);
 				break;
 			case 'contestant_volunteer': case 'contestant_wmf':
 				// contest-contestant-yes, contest-contestant-no
