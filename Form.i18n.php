@@ -1043,6 +1043,7 @@ $messages['mr'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Izzudin
  */
 $messages['ms'] = array(
@@ -1055,6 +1056,18 @@ $messages['ms'] = array(
 	'formpattern' => 'borang $1',
 	'formtitlepattern' => 'Tambahkan $1 baru',
 	'formsave' => 'Simpan',
+	'formindexmismatch-title' => 'Pola nama dan templat tersalah padan',
+	'formindexmismatch' => 'Borang ini telah tersalah padan pola nama dan templat yang bermula dari indeks $1.',
+	'formarticleexists' => 'Laman wujud',
+	'formarticleexiststext' => 'Laman [[$1]] sudah wujud.',
+	'formbadpagename' => 'Nama laman salah',
+	'formbadrecaptcha' => 'Nilai reCaptcha salah. Cuba lagi.',
+	'formbadpagenametext' => 'Data borang yang anda masukkan itu membuat nama laman yang tidak elok, "$1".',
+	'formrequiredfielderror' => '{{PLURAL:$2|Ruangan $1|Ruangan-ruangan $1}} wajib diisi untuk borang ini.
+Sila {{PLURAL:$2|isinya|isi semuanya}}.',
+	'formsavesummary' => 'Laman baru yang menggunakan [[Special:Form/$1|borang $1]]',
+	'formsaveerror' => 'Ralat ketika menyimpan borang',
+	'formsaveerrortext' => "Berlakunya ralat yang tidak dikenali sewaktu menyimpan laman '$1'.",
 );
 
 /** Burmese (မြန်မာဘာသာ)
