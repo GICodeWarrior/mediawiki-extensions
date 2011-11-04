@@ -4,6 +4,10 @@ Extension page on mediawiki.org: https://www.mediawiki.org/wiki/Extension:Contes
 Latest version of the release notes: http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/Contest/RELEASE-NOTES?view=co
 
 
+=== Version 0.2 ===
+
+* Added filter options for the contestant pager on Special:Contest.
+
 === Version 0.1 ===
 2011-10-20
 
