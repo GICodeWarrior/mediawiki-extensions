@@ -1,6 +1,6 @@
 <?php
 /**
- * Initialization file for the Deployment extension.
+ * Deployment extension.
  * Extension documentation: http://www.mediawiki.org/wiki/Extension:Deployment
  *
  * @file Deployment.php
