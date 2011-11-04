@@ -394,6 +394,17 @@ $messages['niu'] = array(
 	'ow_history' => 'Liu onoono atu ki tua',
 );
 
+/** толышә зывон (толышә зывон)
+ * @author Гусейн
+ */
+$messages['tly'] = array(
+	'langman_addlang' => 'Зывон зијод кардеј',
+	'datasearch_language' => 'Зывон:',
+	'ow_exporttsv_languages' => 'Зывонон:',
+	'ow_save' => 'Огәте',
+	'ow_history' => 'Тарых',
+);
+
 /** Abkhazian (Аҧсуа)
  * @author Temuri rajavi
  */

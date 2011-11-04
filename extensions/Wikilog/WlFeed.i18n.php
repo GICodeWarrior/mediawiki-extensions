@@ -72,6 +72,13 @@ $messages['bs'] = array(
 	'wlfeed-desc' => 'Napredno generisanje klasa fida',
 );
 
+/** Catalan (Català)
+ * @author Gemmaa
+ */
+$messages['ca'] = array(
+	'wlfeed-desc' => 'Realçava tindre una generació classes',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

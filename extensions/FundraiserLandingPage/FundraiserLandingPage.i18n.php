@@ -90,3 +90,10 @@ $messages['sl'] = array(
 	'fundraiserlandingpage-desc' => 'Vzame parametre URL in jih posreduje navedeni predlogi kot spremenljivke predloge',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'fundraiserlandingpage-desc' => 'Đưa các tham số URL vào bản mẫu được chỉ định như các biến bản mẫu',
+);
+

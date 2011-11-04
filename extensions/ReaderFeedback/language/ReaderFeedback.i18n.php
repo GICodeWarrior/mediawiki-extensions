@@ -92,6 +92,13 @@ $messages['qqq'] = array(
 	'readerfeedback-tt-review' => 'Pop-up text for the submit button (captioned with {{msg-mw|readerfeedback-submit}}) on review form',
 );
 
+/** толышә зывон (толышә зывон)
+ * @author Гусейн
+ */
+$messages['tly'] = array(
+	'readerfeedback-submit' => 'Вығәндеј',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */

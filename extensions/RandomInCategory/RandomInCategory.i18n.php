@@ -491,7 +491,7 @@ $messages['ia'] = array(
 	'randomincategory-toolbox' => 'Pagina aleatori',
 	'randomincategory-nocategory' => 'Le categoria $1 non existe o es vacue',
 	'randomincategory-label' => 'Categoria:',
-	'randomincategory-submit' => 'Ir',
+	'randomincategory-submit' => 'Va',
 );
 
 /** Indonesian (Bahasa Indonesia)

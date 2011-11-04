@@ -27,6 +27,13 @@ $messages['ar'] = array(
 	'magicnonumberedheadings-desc' => 'يضيف الكلمة السحرية "<nowiki>__NONUMBEREDHEADINGS__</nowiki>"',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'magicnonumberedheadings-desc' => 'Amiesta la pallabra máxica "<nowiki>__NONUMBEREDHEADINGS__</nowiki>"',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */

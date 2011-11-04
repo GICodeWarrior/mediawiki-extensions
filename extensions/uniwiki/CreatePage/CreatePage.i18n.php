@@ -43,6 +43,7 @@ $messages['qqq'] = array(
 $messages['tly'] = array(
 	'createpage' => 'Сәһифә офәјеј',
 	'uwcreatepage-desc' => 'Зијод кардеј [[Special:CreatePage|хымәтә сәһифә]] бо тожә сәһифон сохте',
+	'createpage_submitbutton' => 'Вығәндеј',
 	'createpage_entertitle' => 'Зәһмәт ныбо ыштә сәһифә номи бынывыштән',
 	'createpage_tryagain' => 'Не. Аз пијејдәме тожә сәһифә сохте де ҹо номи.',
 );

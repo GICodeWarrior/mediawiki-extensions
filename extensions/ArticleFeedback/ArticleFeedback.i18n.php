@@ -140,6 +140,7 @@ The {{SITENAME}} team',
 );
 
 /** Message documentation (Message documentation)
+ * @author Amire80
  * @author Arthur Richards
  * @author Brandon Harris
  * @author EugeneZelenko
@@ -174,6 +175,7 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedback-survey-title' => 'This text appears in the title bar of the survey dialog.',
 	'articlefeedback-survey-thanks' => 'This text appears when the user has successfully submitted the survey.',
 	'articlefeedback-survey-disclaimer' => 'This text appears on the survey form below the comment field and above the submit button. $1 is a link pointing to the privacy policy. The link text is in the articlefeedback-survey-disclaimerlink message.',
+	'articlefeedback-survey-disclaimerlink' => 'Used in Articlefeedback-survey-disclaimer.',
 	'articlefeedback-form-panel-explanation' => '{{Identical|What is this}}',
 	'articlefeedback-form-panel-explanation-link' => 'Do not translate "Project:". Also translate the "ArticleFeedback" special page name at [[Special:AdvancedTranslate]].',
 	'articlefeedback-form-panel-helpimprove' => 'This message should use {{SITENAME}}.',
@@ -515,7 +517,7 @@ $messages['be-tarask'] = array(
 	'articlefeedback-survey-submit' => 'Даслаць',
 	'articlefeedback-survey-title' => 'Калі ласка, адкажыце на некалькі пытаньняў',
 	'articlefeedback-survey-thanks' => 'Дзякуй за адказы на пытаньні.',
-	'articlefeedback-survey-disclaimer' => 'Дасылаючы, Вы згаджаецеся на распаўсюджаньне на [http://wikimediafoundation.org/wiki/Feedback_privacy_statement ўмовах]',
+	'articlefeedback-survey-disclaimer' => 'Дасылаючы, Вы пагаджаецеся на доступ на гэтых $1.',
 	'articlefeedback-error' => 'Узьнікла памылка. Калі ласка, паспрабуйце потым',
 	'articlefeedback-form-switch-label' => 'Адзначце гэтую старонку',
 	'articlefeedback-form-panel-title' => 'Адзначце гэтую старонку',
@@ -2835,7 +2837,8 @@ $messages['he'] = array(
 	'articlefeedback-survey-submit' => 'שליחה',
 	'articlefeedback-survey-title' => 'נא לענות על מספר שאלות',
 	'articlefeedback-survey-thanks' => 'תודה לך על מילוי הסקר.',
-	'articlefeedback-survey-disclaimer' => 'כדי לסייע בשיפור תכונה זו, המשוב שלך ישותף באופן אלמוני עם קהילת ויקיפדיה.',
+	'articlefeedback-survey-disclaimer' => 'שליחה מביעה את הסכמתך לשקיפות לפי $1 הבאים.',
+	'articlefeedback-survey-disclaimerlink' => 'התנאים',
 	'articlefeedback-error' => 'אירעה שגיאה. נא לנסות שוב מאוחר יותר.',
 	'articlefeedback-form-switch-label' => 'תנו הערכה לדף הזה',
 	'articlefeedback-form-panel-title' => 'תנו הערכה לדף הזה',
@@ -3318,7 +3321,8 @@ $messages['ia'] = array(
 	'articlefeedback-survey-submit' => 'Submitter',
 	'articlefeedback-survey-title' => 'Per favor responde a alcun questiones',
 	'articlefeedback-survey-thanks' => 'Gratias pro completar le questionario.',
-	'articlefeedback-survey-disclaimer' => 'Per submitter, tu te declara de accordo con transparentia sub iste [http://wikimediafoundation.org/wiki/Feedback_privacy_statement conditiones]',
+	'articlefeedback-survey-disclaimer' => 'Per submitter, tu te declara de accordo con transparentia sub iste $1.',
+	'articlefeedback-survey-disclaimerlink' => 'conditiones',
 	'articlefeedback-error' => 'Un error ha occurrite. Per favor reproba plus tarde.',
 	'articlefeedback-form-switch-label' => 'Evalutar iste pagina',
 	'articlefeedback-form-panel-title' => 'Evalutar iste pagina',
@@ -3385,6 +3389,7 @@ $messages['ia'] = array(
 	'articlefeedback-survey-message-success' => 'Gratias pro haber respondite al inquesta.',
 	'articlefeedback-survey-message-error' => 'Un error ha occurrite.
 Per favor reproba plus tarde.',
+	'articlefeedback-privacyurl' => 'http://wikimediafoundation.org/wiki/Feedback_privacy_statement',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Altos e bassos de hodie',
 	'articleFeedback-table-caption-dailyhighs' => 'Articulos le plus appreciate: $1',
 	'articleFeedback-table-caption-dailylows' => 'Articulos le minus appreciate: $1',
@@ -4032,6 +4037,7 @@ $messages['lb'] = array(
 	'articlefeedback-survey-title' => 'Beäntwert w.e.g. e puer Froen',
 	'articlefeedback-survey-thanks' => 'Merci datt Dir eis Ëmfro ausgefëllt hutt.',
 	'articlefeedback-survey-disclaimer' => 'Wann Dir Äre Feedback gitt sidd Dir mat der Transparenz esou wéi se op $1 gewise gëtt averstan.',
+	'articlefeedback-survey-disclaimerlink' => 'Bedingungen',
 	'articlefeedback-error' => 'Et ass e Feeler geschitt. Probéiert w.e.g. méi spéit nach emol.',
 	'articlefeedback-form-switch-label' => 'Dës Säit bewäerten',
 	'articlefeedback-form-panel-title' => 'Dës Säit bewäerten',
@@ -4485,6 +4491,7 @@ $messages['ml'] = array(
 	'articlefeedback-survey-title' => 'ദയവായി ഏതാനം ചോദ്യങ്ങൾക്ക് ഉത്തരം നൽകുക',
 	'articlefeedback-survey-thanks' => 'സർവേ പൂരിപ്പിച്ചതിനു നന്ദി',
 	'articlefeedback-survey-disclaimer' => 'ഈ വിശേഷഗുണം മെച്ചപ്പെടുത്താനായി, താങ്കളുടെ അഭിപ്രായങ്ങൾ വിക്കിപീഡിയ സമൂഹവുമായി പേരു വെളിപ്പെടുത്താതെ പങ്കുവെയ്ക്കപ്പെട്ടേക്കാം.',
+	'articlefeedback-survey-disclaimerlink' => 'നിബന്ധനകൾ',
 	'articlefeedback-error' => 'എന്തോ പിഴവുണ്ടായിരിക്കുന്നു. ദയവായി പിന്നീട് വീണ്ടും ശ്രമിക്കുക.',
 	'articlefeedback-form-switch-label' => 'ഈ താളിനു നിലവാരമിടുക',
 	'articlefeedback-form-panel-title' => 'ഈ താളിനു നിലവാരമിടുക',
@@ -4626,6 +4633,7 @@ $messages['ms'] = array(
 	'articlefeedback-form-panel-expertise-other' => 'Sumber pengetahuan saya tidak tersenarai di sini',
 	'articlefeedback-form-panel-helpimprove' => 'Saya ingin membantu mempertingkat Wikipedia, hantarkan saya e-mel (pilihan)',
 	'articlefeedback-form-panel-helpimprove-note' => 'Kami akan menghantar e-mel pengesahan kepada anda. Kami tidak akan berkongsi alamat anda dengan pihak luar mengikut $1 kami.',
+	'articlefeedback-form-panel-helpimprove-email-placeholder' => 'emel@contoh.org',
 	'articlefeedback-form-panel-helpimprove-privacy' => 'kenyataan keperibadian maklum balas',
 	'articlefeedback-form-panel-submit' => 'Serahkan penilaian',
 	'articlefeedback-form-panel-pending' => 'Penilaian anda belum diserahkan',
@@ -4935,7 +4943,7 @@ Probeer het later opnieuw.',
 	'articlefeedback-field-trustworthy-tooltip-3' => 'Voldoende betrouwbare bronnen',
 	'articlefeedback-field-trustworthy-tooltip-4' => 'Goede betrouwbare bronnen',
 	'articlefeedback-field-trustworthy-tooltip-5' => 'Uitstekend betrouwbare bronnen',
-	'articlefeedback-field-complete-label' => 'Afgerond',
+	'articlefeedback-field-complete-label' => 'Voltooid',
 	'articlefeedback-field-complete-tip' => 'Vindt u dat deze pagina de essentie van dit onderwerp bestrijkt?',
 	'articlefeedback-field-complete-tooltip-1' => 'Meeste informatie ontbreekt',
 	'articlefeedback-field-complete-tooltip-2' => 'Bevat enige informatie',
@@ -7055,6 +7063,7 @@ $messages['vec'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Trần Nguyễn Minh Huy
  */
 $messages['vi'] = array(
 	'articlefeedback' => 'Bảng phản hồi bài',
@@ -7078,7 +7087,7 @@ $messages['vi'] = array(
 	'articlefeedback-error' => 'Đã gặp lỗi. Xin vui lòng thử lại sau.',
 	'articlefeedback-form-switch-label' => 'Đánh giá trang này',
 	'articlefeedback-form-panel-title' => 'Đánh giá trang này',
-	'articlefeedback-form-panel-explanation' => 'Này là gì?',
+	'articlefeedback-form-panel-explanation' => 'Đây là gì?',
 	'articlefeedback-form-panel-explanation-link' => 'Project:Phản hồi bài',
 	'articlefeedback-form-panel-clear' => 'Hủy đánh giá này',
 	'articlefeedback-form-panel-expertise' => 'Tôi rất am hiểu về đề tài này (tùy chọn)',
@@ -7141,6 +7150,7 @@ $messages['vi'] = array(
 	'articlefeedback-survey-message-success' => 'Cám ơn bạn đã điền khảo sát.',
 	'articlefeedback-survey-message-error' => 'Đã gặp lỗi.
 Xin hãy thử lại sau.',
+	'articlefeedback-privacyurl' => 'http://wikimediafoundation.org/wiki/Feedback_privacy_statement',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Các điểm cao và thấp nhất hôm nay',
 	'articleFeedback-table-caption-dailyhighs' => 'Các bài đánh giá cao nhất: $1',
 	'articleFeedback-table-caption-dailylows' => 'Các bài đánh giá thấp nhất: $1',

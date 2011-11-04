@@ -25,6 +25,13 @@ $messages['qqq'] = array(
 	'catboxattop-categories' => '{{Identical|Categories}}',
 );
 
+/** толышә зывон (толышә зывон)
+ * @author Гусейн
+ */
+$messages['tly'] = array(
+	'catboxattop-categories' => 'Категоријон',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */

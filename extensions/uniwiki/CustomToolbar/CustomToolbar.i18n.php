@@ -77,6 +77,20 @@ $messages['qqq'] = array(
 	'ct_user_sample' => '{{Identical|Username}}',
 );
 
+/** толышә зывон (толышә зывон)
+ * @author Гусейн
+ */
+$messages['tly'] = array(
+	'ct_bold_sample' => 'Нимәтындә шрифт',
+	'ct_italic_sample' => 'Курсивә мәтн',
+	'ct_image_caption' => 'Шикил зијод кардеј',
+	'ct_nowiki_sample' => 'Формат кардә ныбә мәтн дәғандән ијо',
+	'ct_nowiki_tip_ins' => 'Вики формат кардеј бә нәзә ныстәнеј',
+	'ct_horizontal_tip' => 'Уфуғијә ријә дәғандән (рә-рә истифодә мәкән)',
+	'ct_user_user' => 'Иштирокәкә',
+	'ct_user_sample' => 'Иштирокәкә ном',
+);
+
 /** Abkhazian (Аҧсуа)
  * @author Temuri rajavi
  */
