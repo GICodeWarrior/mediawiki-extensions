@@ -87,6 +87,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 
 		/* Display */
 
+		$wgOut->addWikiText(wfMsg('contribstats-header'));
 		// Chart maximums
 		foreach ( $egFundraiserStatisticsFundraisers as $fundraiser ) {
 			foreach ( $charts as $name => $chart ) {
@@ -260,6 +261,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 				Xml::tags( 'tr', null, Xml::tags( 'td', null, $htmlViews ) )
 			)
 		);
+		$wgOut->addWikiText(wfMsg('contribstats-footer'));
 	}
 
 	/* Private Functions */
