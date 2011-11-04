@@ -34,6 +34,7 @@ $messages['ast'] = array(
 	'webfonts-desc' => 'Incorporar fontes nes páxines',
 	'webfonts-load' => 'Seleiciona la fonte',
 	'webfonts-reset' => 'Reaniciar',
+	'webfonts-enable-preference' => 'Activar la incorporación de fontes (WebFonts)',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
