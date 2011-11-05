@@ -20,8 +20,8 @@ if ( ! defined( 'MEDIAWIKI' ) )
 $wgExtensionCredits['media'][] = array(
 	'path'         => __FILE__,
 	'name'         => 'FLV Image Handler',
-	'version'      => 'r3',
-	'author'       => 'Adam Nielsen', 
+	'version'      => 'r4',
+	'author'       => 'Adam Nielsen',
 	'url'          => 'http://www.mediawiki.org/wiki/Extension:FlvHandler',
 	'descriptionmsg' => 'flvhandler_desc'
 );
@@ -34,7 +34,7 @@ $wgMediaHandlers['video/x-flv'] = 'FlvImageHandler';
 
 // Commands to extract still frames out of the FLV files
 $wgFLVConverters = array(
-	'ffmpeg' => '$path/ffmpeg -vcodec png -i $input -ss 0 -vframes 1 -s $widthx$height -f image2 $output'
+	'ffmpeg' => '$path/ffmpeg -i $input -ss 0 -vframes 1 -vcodec png -s $widthx$height -f image2 $output'
 );
 // Probe command (to get video width and height.)  'regex' is run over the
 // command's output to get the dimensions.
