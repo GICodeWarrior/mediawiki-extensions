@@ -98,6 +98,25 @@ $messages['qqq'] = array(
 	'collabwatchlistshowhidelistusers' => '$1 can be "Show" ({{msg-mw|show}}) or "Hide" ({{msg-mw|hide}}). (source: [[Thread:Support/About MediaWiki:Collabwatchlistshowhidelistusers/en|this thread]])',
 );
 
+/** Arabic (العربية)
+ * @author روخو
+ */
+$messages['ar'] = array(
+	'collabwatchlisttagselect' => 'وسم',
+	'collabwatchlisttools-view' => 'اعرض',
+	'collabwatchlistsall' => 'جميع القوائم',
+	'collabwatchlistfiltertags' => 'إخفاء الوسوم',
+	'collabwatchlistedit-users-raw-submit' => 'احفظ',
+	'collabwatchlistedit-users-last-owner' => 'لا بد من مالك واحد على الاقل',
+	'collabwatchlistedit-tags-raw-titles' => 'وسوم:',
+	'collabwatchlistedit-users-raw-titles' => 'مستخدمون:',
+	'collabwatchlistedit-normal-title' => 'عدل التصانيف',
+	'collabwatchlistpatrol' => 'تعديلات مراجعة',
+	'collabwatchlistdelete-submit' => 'احذف',
+	'collabwatchlistnew-submit' => 'أنشئ',
+	'collabwatchlistedit-normal-submit' => 'احفظ',
+);
+
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
  * @author Vago

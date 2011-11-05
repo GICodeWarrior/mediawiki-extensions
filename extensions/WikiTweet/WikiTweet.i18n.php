@@ -73,6 +73,38 @@ $messages['qqq'] = array(
 	'wikitweet-from' => '{{Identical|From}}',
 );
 
+/** Arabic (العربية)
+ * @author روخو
+ */
+$messages['ar'] = array(
+	'wikitweet-intheroom' => 'أنت في الغرفة',
+	'wikitweet-subscribe' => 'اشترك',
+	'wikitweet-subscribed' => 'مشترك',
+	'wikitweet-unsubscribe' => 'إلغاء الاشتراك',
+	'wikitweet-delete' => 'احذفحذف',
+	'wikitweet-private' => 'خاص',
+	'wikitweet-anonymous' => 'مجهول',
+	'wikitweet-back-timeline' => 'أرجع الى خط الزمن',
+	'wikitweet-timeago' => '$1 مضى',
+	'wikitweet-inthefuture' => 'في المستقبل !!',
+	'wikitweet-fewsecondsago' => 'منذ بضع ثوان',
+	'wikitweet-status' => 'الحالة',
+	'wikitweet-status0' => 'حوار',
+	'wikitweet-status1' => 'حدث',
+	'wikitweet-status2' => 'تحذير',
+	'wikitweet-status3' => 'تنبيه',
+	'wikitweet-resolve' => 'حل',
+	'wikitweet-comment' => 'تعليق',
+	'wikitweet-hourly' => 'باستمرار',
+	'wikitweet-perperson' => 'للشخص الواحد',
+	'wikitweet-from' => 'من',
+	'wikitweet-in' => 'في',
+	'wikitweet-directlink' => 'رابط مباشر:',
+	'wikitweet-mailsent' => 'إرسال بريد',
+	'wikitweet-viaroom' => 'عبر الغرفة',
+	'wikitweet-cannotparse' => 'لا يمكن تحليل',
+);
+
 /** Asturian (Asturianu)
  * @author Xuacu
  */

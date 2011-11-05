@@ -34,6 +34,18 @@ $messages['qqq'] = array(
 	'flagpage-desc' => '{{desc}}',
 );
 
+/** Arabic (العربية)
+ * @author روخو
+ */
+$messages['ar'] = array(
+	'flagpage' => 'صفحة العلم',
+	'flagpage-nopageselectedtitle' => 'لا توجد صفحة محدد',
+	'flagpage-emptylisttitle' => 'لا قوالب تكوين',
+	'flagpage-preview' => 'معاينة القالب المحدد:',
+	'flagpage-submitbutton' => 'حفظ الصفحة مع هذا القالب',
+	'flagpage-tab' => 'العلم',
+);
+
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
  */

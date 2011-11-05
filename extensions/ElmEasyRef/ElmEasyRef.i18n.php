@@ -28,6 +28,13 @@ $messages['qqq'] = array(
 	'elm-easyref-close' => '{{Identical|Close}}',
 );
 
+/** Arabic (العربية)
+ * @author روخو
+ */
+$messages['ar'] = array(
+	'elm-easyref-close' => 'أغلق',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by

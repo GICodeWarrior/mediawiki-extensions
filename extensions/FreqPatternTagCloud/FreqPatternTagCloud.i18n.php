@@ -51,6 +51,19 @@ $messages['qqq'] = array(
 	'fptc-no-suggestion' => 'This message appears if no suggestions can be found.',
 );
 
+/** Arabic (العربية)
+ * @author روخو
+ */
+$messages['ar'] = array(
+	'fptc-categoryname' => 'التصنيف',
+	'fptc-context-menu-browse' => 'تصفح الصفحات التي تحتوي على هذه المدخلة',
+	'fptc-search-attribute-name' => 'بحث خاص',
+	'fptc-search-button' => 'ابحث',
+	'fptc-search-suggestion-value' => 'مشابه ل "%s":',
+	'fptc-suggestion' => 'هل تقصد',
+	'fptc-no-suggestion' => 'لم يعثر على اقتراحات',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

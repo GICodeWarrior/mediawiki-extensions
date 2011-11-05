@@ -285,6 +285,7 @@ $messages['an'] = array(
  * @author Meno25
  * @author Mido
  * @author OsamaK
+ * @author روخو
  * @author زكريا
  */
 $messages['ar'] = array(
@@ -305,6 +306,7 @@ $messages['ar'] = array(
 	'articlefeedback-survey-title' => 'الرجاء الإجابة على بعض الأسئلة',
 	'articlefeedback-survey-thanks' => 'شكرا لملء الاستبيان.',
 	'articlefeedback-survey-disclaimer' => 'للمساعدة على تحسين هذه الخاصية، يمكنك لك أن تشارك مجتمع ويكيبيديا في التعليق وبصفة مجهولة.',
+	'articlefeedback-survey-disclaimerlink' => 'الشروط',
 	'articlefeedback-error' => 'لقد حدث خطأ. كرر المحاولة لاحقا.',
 	'articlefeedback-form-switch-label' => 'قيم هذه الصفحة',
 	'articlefeedback-form-panel-title' => 'قيم هذه الصفحة',
@@ -371,6 +373,7 @@ $messages['ar'] = array(
 	'articlefeedback-survey-message-success' => 'شكرا للمشاركة في الاستطلاع',
 	'articlefeedback-survey-message-error' => 'لقد حدث خطأ.
 كرر المحاولة لاحقا.',
+	'articlefeedback-privacyurl' => 'http://wikimediafoundation.org/wiki/Feedback_privacy_statement',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'تقييمات اليوم',
 	'articleFeedback-table-caption-dailyhighs' => 'أعلى الصفحات تقييما: $1',
 	'articleFeedback-table-caption-dailylows' => 'أدنى الصفحات تقييما: $1',
@@ -974,12 +977,14 @@ Vaš {{SITENAME}} tim',
  * @author Aleator
  * @author BroOk
  * @author El libre
+ * @author Gemmaa
  * @author Solde
  * @author Toniher
  */
 $messages['ca'] = array(
-	'articlefeedback' => "Avaluació de l'article",
+	'articlefeedback' => 'Quadre de comandament de retroalimentació article',
 	'articlefeedback-desc' => "Avaluació de l'article",
+	'articlefeedback-survey-question-origin' => 'Quina pàgina es van a quan va començar aquesta enquesta?',
 	'articlefeedback-survey-question-whyrated' => "Per favor, diga'ns per què has valorat aquesta pàgina avui (marca totes les opcions que creguis convenient):",
 	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'Vull contribuir a la qualificació global de la pàgina',
 	'articlefeedback-survey-answer-whyrated-development' => 'Espero que la meva qualificació afecti positivament al desenvolupament de la pàgina',
@@ -993,24 +998,66 @@ $messages['ca'] = array(
 	'articlefeedback-survey-submit' => 'Trametre',
 	'articlefeedback-survey-title' => 'Si us plau, contesti algunes preguntes',
 	'articlefeedback-survey-thanks' => "Gràcies per omplir l'enquesta.",
-	'articlefeedback-form-switch-label' => 'Proporciona informació',
+	'articlefeedback-survey-disclaimer' => 'En enviar, vostè es compromet a transparència sota aquests  $1 .',
+	'articlefeedback-survey-disclaimerlink' => 'termes',
+	'articlefeedback-error' => "S'ha produït un error. Si us plau provi una altra vegada més tard.",
+	'articlefeedback-form-switch-label' => "La velocitat d'aquesta pàgina",
 	'articlefeedback-form-panel-title' => 'Valoreu la pàgina',
-	'articlefeedback-form-panel-submit' => 'Envia comentaris',
+	'articlefeedback-form-panel-explanation' => 'Què és això?',
+	'articlefeedback-form-panel-explanation-link' => 'Projecte: ArticleFeedback',
+	'articlefeedback-form-panel-clear' => 'Suprimeix la Darrera classificació',
+	'articlefeedback-form-panel-expertise' => 'Jo sóc molt ben informats sobre aquest tema (opcional)',
+	'articlefeedback-form-panel-expertise-studies' => 'Tinc un rellevant college/llicenciatura',
+	'articlefeedback-form-panel-expertise-profession' => 'És part de la meva professió',
+	'articlefeedback-form-panel-expertise-hobby' => 'És una passió profunda personal',
+	'articlefeedback-form-panel-expertise-other' => 'La font del meu coneixement no apareix aquí',
+	'articlefeedback-form-panel-helpimprove' => "M'agradaria ajudar a millorar la Wikipedia, enviar-me un correu electrònic (opcional)",
+	'articlefeedback-form-panel-helpimprove-note' => 'Us enviarem un correu electrònic de confirmació. No compartirem la seva adreça de correu electrònic amb tercers com per la nostra  $1 .',
+	'articlefeedback-form-panel-helpimprove-privacy' => 'declaració de privacitat de resposta',
+	'articlefeedback-form-panel-submit' => 'Presentar les classificacions',
+	'articlefeedback-form-panel-pending' => "La classificació no han estat presentats encara s'ha",
 	'articlefeedback-form-panel-success' => 'Desat correctament',
-	'articlefeedback-report-switch-label' => 'Mostra els resultats',
-	'articlefeedback-report-panel-title' => 'Resultats dels comentaris',
+	'articlefeedback-form-panel-expiry-title' => 'El seu índexs han caducat',
+	'articlefeedback-form-panel-expiry-message' => 'Si us plau reavaluar aquesta pàgina i presentar les classificacions noves.',
+	'articlefeedback-report-switch-label' => 'Veure pàgina ratings',
+	'articlefeedback-report-panel-title' => 'Classificacions de pàgina',
 	'articlefeedback-report-panel-description' => 'Actual mitjana de qualificacions.',
 	'articlefeedback-report-empty' => 'No hi ha valoracions',
 	'articlefeedback-report-ratings' => '$1 valoracions',
 	'articlefeedback-field-trustworthy-label' => 'Digne de confiança',
+	'articlefeedback-field-trustworthy-tip' => 'Et sents aquesta pàgina té cites suficients i que aquestes cites provenen de fonts de confiança?',
+	'articlefeedback-field-trustworthy-tooltip-1' => 'No té fonts de bona reputació',
+	'articlefeedback-field-trustworthy-tooltip-2' => 'Algunes fonts de bona reputació',
+	'articlefeedback-field-trustworthy-tooltip-3' => 'Fonts de bona reputació adequadas',
+	'articlefeedback-field-trustworthy-tooltip-4' => 'Bones fonts de bona reputació',
+	'articlefeedback-field-trustworthy-tooltip-5' => 'Grans fonts de bona reputació',
 	'articlefeedback-field-complete-label' => 'Complet',
 	'articlefeedback-field-complete-tip' => 'Consideres que aquesta pàgina aborda els temes essencials que havien de ser coberts?',
+	'articlefeedback-field-complete-tooltip-1' => 'Falta més informació',
+	'articlefeedback-field-complete-tooltip-2' => 'Conté informació',
+	'articlefeedback-field-complete-tooltip-3' => 'Conté informació clau, però amb les llacunes',
+	'articlefeedback-field-complete-tooltip-4' => 'Conté informació clau de la majoria dels',
+	'articlefeedback-field-complete-tooltip-5' => 'Cobertura completa',
 	'articlefeedback-field-objective-label' => 'Imparcial',
 	'articlefeedback-field-objective-tip' => "Creus que aquesta pàgina representa, de forma equilibrada, tots els punts de vista sobre l'assumpte?",
+	'articlefeedback-field-objective-tooltip-1' => 'Fortament esbiaixat',
+	'articlefeedback-field-objective-tooltip-2' => 'Biaix moderat',
+	'articlefeedback-field-objective-tooltip-3' => 'Biaix mínim',
+	'articlefeedback-field-objective-tooltip-4' => 'No hi ha biaix evident',
+	'articlefeedback-field-objective-tooltip-5' => 'Completament imparcial',
 	'articlefeedback-field-wellwritten-label' => 'Ben escrit',
+	'articlefeedback-field-wellwritten-tip' => 'Et sents que aquesta pàgina és ben organitzat i ben escrit?',
+	'articlefeedback-field-wellwritten-tooltip-1' => 'Incomprensible',
+	'articlefeedback-field-wellwritten-tooltip-2' => "Difícil d'entendre",
+	'articlefeedback-field-wellwritten-tooltip-3' => 'Claredat adequada',
+	'articlefeedback-field-wellwritten-tooltip-4' => 'Bona claredat',
+	'articlefeedback-field-wellwritten-tooltip-5' => 'Claredat excepcional',
 	'articlefeedback-pitch-reject' => 'Potser més tard',
 	'articlefeedback-pitch-or' => 'o',
+	'articlefeedback-pitch-thanks' => "Gràcies! S'han desat les seves classificacions.",
+	'articlefeedback-pitch-survey-message' => 'Si us plau, prengui un moment per completar una enquesta curta.',
 	'articlefeedback-pitch-survey-accept' => "Comença l'enquesta",
+	'articlefeedback-pitch-join-message' => 'Vols crear un compte?',
 	'articlefeedback-pitch-join-accept' => 'Crea un compte',
 	'articlefeedback-pitch-edit-accept' => 'Comença a editar',
 	'articleFeedback-table-heading-page' => 'Pàgina',
@@ -1274,6 +1321,7 @@ Tîm {{SITENAME}}",
 /** Danish (Dansk)
  * @author Peter Alberti
  * @author Sarrus
+ * @author Tjernobyl
  */
 $messages['da'] = array(
 	'articlefeedback-survey-question-origin' => 'Hvilken side var du på, da du startede denne undersøgelse?',
@@ -1310,6 +1358,7 @@ $messages['da'] = array(
 	'articlefeedback-pitch-join-accept' => 'Opret en konto',
 	'articlefeedback-pitch-join-login' => 'Log ind',
 	'articlefeedback-pitch-edit-message' => 'Vidste du, at du kan redigere denne side?',
+	'articlefeedback-pitch-edit-accept' => 'Redigér denne side',
 	'articlefeedback-survey-message-error' => 'En fejl opstod.
 Prøv venligst igen senere.',
 	'articleFeedback-table-heading-page' => 'Side',
@@ -7150,7 +7199,7 @@ $messages['vi'] = array(
 	'articlefeedback-survey-message-success' => 'Cám ơn bạn đã điền khảo sát.',
 	'articlefeedback-survey-message-error' => 'Đã gặp lỗi.
 Xin hãy thử lại sau.',
-	'articlefeedback-privacyurl' => 'http://wikimediafoundation.org/wiki/Feedback_privacy_statement',
+	'articlefeedback-privacyurl' => 'http://wikimediafoundation.org/wiki/Feedback_privacy_statement/vi',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Các điểm cao và thấp nhất hôm nay',
 	'articleFeedback-table-caption-dailyhighs' => 'Các bài đánh giá cao nhất: $1',
 	'articleFeedback-table-caption-dailylows' => 'Các bài đánh giá thấp nhất: $1',

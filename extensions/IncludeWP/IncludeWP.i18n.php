@@ -61,6 +61,15 @@ $messages['af'] = array(
 	'includewp-include-par-page' => 'Die naam van die (afgeleë) bladsy om te vertoon.',
 );
 
+/** Arabic (العربية)
+ * @author روخو
+ */
+$messages['ar'] = array(
+	'includewp-loading-page' => 'جاري تحميل الصفحة...',
+	'includewp-show-full-page' => 'إظهار صفحة كاملة',
+	'includewp-loading-failed' => 'فشل تحميل الصفحة.',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by

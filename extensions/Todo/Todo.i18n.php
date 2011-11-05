@@ -706,6 +706,7 @@ $4',
  * @author Peter17
  * @author PieRRoMaN
  * @author Urhixidur
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'todo' => 'Liste des choses à faire',
@@ -730,7 +731,7 @@ $4',
 	'todo-add-queue' => 'Ajouter à la liste d’attente…',
 	'todo-move-queue' => 'Déplacer vers la liste d’attente…',
 	'todo-list-for' => 'Liste des choses à faire pour $1',
-	'todo-list-change' => 'Modifier',
+	'todo-list-change' => 'Changer',
 	'todo-list-cancel' => 'Annuler',
 	'todo-new-item' => 'Nouvel élément',
 	'todo-not-updated' => 'Impossible de mettre à jour l’enregistrement dans la base de données',
