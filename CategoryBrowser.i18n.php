@@ -145,11 +145,18 @@ $messages['an'] = array(
 
 /** Arabic (العربية)
  * @author OsamaK
+ * @author روخو
  */
 $messages['ar'] = array(
 	'cb_previous_items_link' => 'السابق',
 	'cb_next_items_link' => 'التالي',
+	'cb_next_items_stats' => ' (من $1)',
+	'cb_cat_pages' => 'الصفحات',
+	'cb_cat_files' => 'ملفات',
 	'cb_apply_button' => 'طبّق',
+	'cb_all_op' => 'الكل',
+	'cb_or_op' => 'أو',
+	'cb_and_op' => 'و',
 );
 
 /** Aramaic (ܐܪܡܝܐ)
