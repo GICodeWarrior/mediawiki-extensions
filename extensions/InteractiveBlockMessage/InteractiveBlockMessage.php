@@ -23,10 +23,11 @@ $wgExtensionCredits[version_compare( $wgVersion, '1.17', '>=' ) ? 'userpage tool
 	'url' => 'http://www.mediawiki.org/wiki/Extension:InteractiveBlockMessage',
 );
 
+$dir = dirname( __FILE__ );
+
 $wgAutoloadClasses['InteractiveBlockMessage'] = "$dir/InteractiveBlockMessage.php";
 $wgAutoloadClasses['InteractiveBlockMessageHooks'] = "$dir/InteractiveBlockMessageHooks.php";
 
-$dir = dirname( __FILE__ );
 $wgExtensionMessagesFiles['InteractiveBlockMessage'] = "$dir/InteractiveBlockMessage.i18n.php";
 
 
