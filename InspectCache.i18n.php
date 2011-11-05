@@ -63,6 +63,7 @@ $messages['an'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author روخو
  */
 $messages['ar'] = array(
 	'inspectcache' => 'افحص الكاش',
@@ -74,6 +75,7 @@ $messages['ar'] = array(
 	'inspectcache-delete' => 'حذف',
 	'inspectcache-deleted' => 'الكاش المحذوف',
 	'inspectcache-list' => 'عرض',
+	'right-inspectcache' => 'عرض وحذف إدخالات ذاكرة التخزين المؤقت',
 );
 
 /** Aramaic (ܐܪܡܝܐ)
