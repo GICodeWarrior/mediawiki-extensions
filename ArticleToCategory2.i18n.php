@@ -44,10 +44,15 @@ $messages['af'] = array(
 
 /** Arabic (العربية)
  * @author OsamaK
+ * @author روخو
  */
 $messages['ar'] = array(
+	'articletocategory2-create-article-under-category-text' => 'إضافة صفحة إلى هذا التصنيف',
 	'articletocategory2-create-article-under-category-button' => 'أنشئ',
+	'articletocategory2-create-category-under-category-text' => 'إضافة تصنيف لهذا التصنيف',
 	'articletocategory2-create-category-under-category-button' => 'أنشئ',
+	'right-ArticleToCategory2' => 'إضافة الصفحة إلى تصنيف',
+	'right-ArticleToCategory2AddCat' => 'إضافة تصنيف إلى تصنيف',
 );
 
 /** Aramaic (ܐܪܡܝܐ)
