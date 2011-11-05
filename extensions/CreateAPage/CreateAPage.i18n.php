@@ -60,7 +60,7 @@ $messages['en'] = array(
 	'createpage-must-specify-title' => 'Please specify a title first!',
 	'createpage-unsaved-changes' => 'Unsaved changes',
 	'createpage-unsaved-changes-details' => 'You have unsaved changes. Clicking OK will result in abandoning them.',
-	'tog-createpage-redlinks' => 'Use <a href="http://www.shoutwiki.com/wiki/Help:CreatePage">CreatePage</a> when following broken links',
+	'tog-createpage-redlinks' => 'Use [http://www.shoutwiki.com/wiki/Help:CreatePage CreatePage] when following broken links',
 	'createpage-template-infobox-format' => '/\{\{[^\{\}]*Infobox.*\}\}/is', # regex used to find out whether our template is an infobox or not
 );
 
@@ -254,7 +254,7 @@ Inserta texto aquí',
 	'createpage-about-info' => 'Este es un editor simplificado. Para saber más ve a la [[s:Help:CreatePage|Hub de ShoutWiki]].',
 	'createpage-advanced-text' => 'Puedes usar también el $1.',
 	'createpage-advanced-edit' => 'editor avanzado',
-	'tog-createpage-redlinks' => 'Usa <a href="http://www.shoutwiki.com/wiki/Help:CreatePage">CreatePage</a> cuando sigas enlaces rotos',
+	'tog-createpage-redlinks' => 'Usa [http://www.shoutwiki.com/wiki/Help:CreatePage CreatePage] cuando sigas enlaces rotos',
 );
 
 /** Persian (فارسی) */
@@ -314,7 +314,7 @@ $messages['fi'] = array(
 	'createpage-must-specify-title' => 'Anna otsikko ensiksi!',
 	'createpage-unsaved-changes' => 'Tallentamattomat muutokset',
 	'createpage-unsaved-changes-details' => 'Sinulla on tallentamattomia muutoksia. Painamalla OK-painiketta hylkäät ne.',
-	'tog-createpage-redlinks' => 'Käytä <a href="http://fi.shoutwiki.com/wiki/Ohje:CreatePage">CreatePagea</a> rikkinäisiä linkkejä seuratessa',
+	'tog-createpage-redlinks' => 'Käytä [http://fi.shoutwiki.com/wiki/Ohje:CreatePage CreatePagea] rikkinäisiä linkkejä seuratessa',
 	'createpage-template-infobox-format' => '/\{\{[^\{\}]*tietolaatikko.*\}\}/is',
 );
 
@@ -366,7 +366,7 @@ $messages['fr'] = array(
 	'createpage-advanced-edit' => 'éditeur avancé',
 	'createpage-optionals-text' => 'Ajouter des sections optionnelles :',
 	'createpage-save' => 'Sauvegarde',
-	'tog-createpage-redlinks' => 'Utiliser <a href="http://www.shoutwiki.com/wiki/Help:CreatePage">CreatePage</a> après avoir suivi des liens cassés',
+	'tog-createpage-redlinks' => 'Utiliser [http://www.shoutwiki.com/wiki/Help:CreatePage CreatePage] après avoir suivi des liens cassés',
 );
 
 /** Galician (Galego)
@@ -501,7 +501,7 @@ $messages['mk'] = array(
 	'createpage-advanced-text' => 'Можете да користите и $1.',
 	'createpage-advanced-edit' => 'напреден уредник',
 	'createpage-optionals-text' => 'Додај дополнителни делови:',
-	'tog-createpage-redlinks' => 'Користи <a href="http://www.shoutwiki.com/wiki/Help:CreatePage">СоздајСтраница</a> кога следам прекинати врски',
+	'tog-createpage-redlinks' => 'Користи [http://www.shoutwiki.com/wiki/Help:CreatePage СоздајСтраница] кога следам прекинати врски',
 	'createpage-template-infobox-format' => '/\{\{[^\{\}]*Инфокутија.*\}\}/is',
 );
 
@@ -552,7 +552,7 @@ $messages['nl'] = array(
 	'createpage-advanced-edit' => 'uitgebreide tekstverwerker',
 	'createpage-optionals-text' => 'Optionele secties toevoegen:',
 	'createpage-save' => 'Opslaan',
-	'tog-createpage-redlinks' => 'Gebruik <a href="http://www.shoutwiki.com/wiki/Help:CreatePage">pagina aanmaken</a> als u verbroken verwijzigen volgt',
+	'tog-createpage-redlinks' => 'Gebruik [http://www.shoutwiki.com/wiki/Help:CreatePage pagina aanmaken] als u verbroken verwijzigen volgt',
 	'createpage-template-infobox-format' => '/\{\{[^\{\}]*Informatievenster.*\}\}/is',
 );
 
@@ -601,7 +601,7 @@ $messages['pl'] = array(
 	'createpage-advanced-text' => 'Możesz też użyć $1',
 	'createpage-advanced-edit' => 'zaawansowanego edytora',
 	'createpage-optionals-text' => 'Dodaj opcjonalne sekcje:',
-	'tog-createpage-redlinks' => 'Otwórz <a href="http://www.shoutwiki.com/wiki/Help:CreatePage">CreatePage\'a</a> po przejściu do nieistniejącej strony'
+	'tog-createpage-redlinks' => 'Otwórz [http://www.shoutwiki.com/wiki/Help:CreatePage CreatePage\'a] po przejściu do nieistniejącej strony'
 );
 
 /** Piedmontese (Piemontèis)
@@ -648,7 +648,7 @@ $messages['pms'] = array(
 	'createpage-advanced-text' => 'It peule ëdcò dovré ël $1.',
 	'createpage-advanced-edit' => 'editor avansà',
 	'createpage-optionals-text' => 'Gionta session opsinaj:',
-	'tog-createpage-redlinks' => 'Dòvra <a href="http://www.shoutwiki.com/wiki/Help:CreatePage">CreatePage</a> quand dré a colegament pa bon',
+	'tog-createpage-redlinks' => 'Dòvra [http://www.shoutwiki.com/wiki/Help:CreatePage CreatePage] quand dré a colegament pa bon',
 );
 
 /** Portuguese (Português)

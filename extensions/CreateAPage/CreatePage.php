@@ -5,7 +5,7 @@
  *
  * @file
  * @ingroup Extensions
- * @version 3.90 (r15554)
+ * @version 3.91 (r15554)
  * @author Bartek Łapiński <bartek@wikia-inc.com>
  * @author Jack Phoenix <jack@countervandalism.net>
  * @copyright Copyright © 2007-2008 Wikia Inc.
@@ -25,7 +25,7 @@ $wgExtensionCredits['specialpage'][] = array(
 		'Bartek Łapiński', 'Łukasz Garczewski', 'Przemek Piotrowski',
 		'Jack Phoenix'
 	),
-	'version' => '3.90',
+	'version' => '3.91',
 	'description' => '[[Special:CreatePage|Easy to use interface]] for creating new articles',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:CreateAPage',
 );
@@ -81,9 +81,7 @@ $wgHooks['EditPage::showEditForm:initial'][] = 'wfCreatePagePreloadContent';
 $wgHooks['CustomEditor'][] = 'wfCreatePageRedLinks';
 $wgHooks['ConfirmEdit::onConfirmEdit'][] = 'wfCreatePageConfirmEdit'; // ConfirmEdit CAPTCHA
 
-if ( $wgCreatePageCoverRedLinks ) {
-	$wgHooks['GetPreferences'][] = 'wfCreatePageToggle';
-}
+$wgHooks['GetPreferences'][] = 'wfCreatePageToggle';
 
 // handle ConfirmEdit CAPTCHA, only for CreatePage, which will be treated a bit differently (edits in special page)
 function wfCreatePageConfirmEdit( &$captcha, &$editPage, $newtext, $section, $merged, &$result ) {
@@ -182,11 +180,14 @@ function wfCreatePageRedLinks( $article, $user ) {
  * @return Boolean: true
  */
 function wfCreatePageToggle( $user, &$preferences ) {
-	$preferences['create-page-redlinks'] = array(
-		'type' => 'toggle',
-		'section' => 'editing',
-		'label-message' => 'tog-createpage-redlinks',
-	);
+	global $wgCreatePageCoverRedLinks;
+	if ( $wgCreatePageCoverRedLinks ) {
+		$preferences['create-page-redlinks'] = array(
+			'type' => 'toggle',
+			'section' => 'editing/advancedediting',
+			'label-message' => 'tog-createpage-redlinks',
+		);
+	}
 	return true;
 }
 
