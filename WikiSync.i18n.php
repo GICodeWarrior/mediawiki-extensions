@@ -107,6 +107,31 @@ $messages['af'] = array(
 	'wikisync_js_revision' => 'Weergawe $1',
 );
 
+/** Arabic (العربية)
+ * @author روخو
+ */
+$messages['ar'] = array(
+	'wikisync_remote_login_button' => 'دخول',
+	'wikisync_sync_files' => 'مزامنة الملفات',
+	'wikisync_synchronization_button' => 'مزامنة',
+	'wikisync_scheduler_log' => 'سجل الجدولة',
+	'wikisync_scheduler_setup' => 'إعداد الجدولة',
+	'wikisync_scheduler_turn_on' => 'تشغيل الجدولة',
+	'wikisync_apply_button' => 'طب',
+	'wikisync_js_synchronization_confirmation' => 'هل أنت متأكد أنك تريد مزامنة
+
+من $1
+
+إلى $2
+
+بدءا من مراجعة $3؟',
+	'wikisync_js_revision' => 'تنقيح $1',
+	'wikisync_js_sync_start_ltr' => 'بدء التزامن من ويكي محلي إلى ويكي عن بعد على 1$',
+	'wikisync_js_sync_start_rtl' => 'بدء التزامن من ويكي عن بعد إلى ويكي محلي على 1$',
+	'wikisync_js_sync_end_ltr' => 'انهاء التزامن من ويكي محلي إلى ويكي عن بعد على 1$',
+	'wikisync_js_sync_end_rtl' => 'انهاء التزامن من ويكي عن بعد إلى ويكي محلي على 1$',
+);
+
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
  */
