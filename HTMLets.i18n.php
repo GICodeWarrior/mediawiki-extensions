@@ -24,9 +24,11 @@ $messages['qqq'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author روخو
  */
 $messages['ar'] = array(
 	'htmlets-desc' => 'يسمح لك باستخدام صيغ HTML من الملفات باستخدام وسم <code>&lt;htmlet&gt;</code>',
+	'htmlets-filenotfound' => 'لا يمكن العثور على ملف أتش تي أم أل $1',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
