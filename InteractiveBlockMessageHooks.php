@@ -37,7 +37,7 @@ class InteractiveBlockMessageHooks {
 			return true;
 		}
 		
-		if ( $parser->getTitle->getNamespace() != NS_USER && $parser->getTitle->getNamespace() != NS_USER_TALK ) {
+		if ( $parser->getTitle()->getNamespace() != NS_USER && $parser->getTitle()->getNamespace() != NS_USER_TALK ) {
 			$ret = "unknown";
                         return true;
                 }
