@@ -26,6 +26,13 @@ $messages['qqq'] = array(
 	'credits-tab-title' => 'Title of the link that is shown when hovering (Tool-Tip)',
 );
 
+/** Arabic (العربية)
+ * @author روخو
+ */
+$messages['ar'] = array(
+	'credits-tab' => 'ائتمانات',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
