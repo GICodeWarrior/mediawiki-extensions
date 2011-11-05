@@ -38,8 +38,10 @@ See http://www.mediawiki.org/wiki/Extension:BookManager',
 
 /** Arabic (العربية)
  * @author OsamaK
+ * @author روخو
  */
 $messages['ar'] = array(
+	'bm-booktools-section' => 'أدوات الكتب',
 	'bm-printversion' => 'نسخة الطباعة',
 );
 
