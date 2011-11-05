@@ -26,6 +26,14 @@ $messages['qqq'] = array(
 	'webfonts-reset' => '{{Identical|Reset}}',
 );
 
+/** Arabic (العربية)
+ * @author روخو
+ */
+$messages['ar'] = array(
+	'webfonts-load' => 'أختر الخط',
+	'webfonts-reset' => 'أعد الضبط',
+);
+
 /** Asturian (Asturianu)
  * @author Xuacu
  */
@@ -434,6 +442,13 @@ $messages['tl'] = array(
 $messages['tr'] = array(
 	'webfonts-load' => 'Yazı tipi seçin',
 	'webfonts-reset' => 'Sıfırla',
+);
+
+/** Ukrainian (Українська)
+ * @author Microcell
+ */
+$messages['uk'] = array(
+	'webfonts-load' => 'Обрати шрифт',
 );
 
 /** Vietnamese (Tiếng Việt)
