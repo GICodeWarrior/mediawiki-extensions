@@ -32,7 +32,7 @@ $wgGroupPermissions['sysop']['watchers-list'] = true;
 
 $wgSpecialPages['Watchers'] = 'SpecialWatchers';
 
-$wgHooks['SkinTemplateToolboxEnd'][] = 'wfWatchersExtensionAfterToolbox';
+$wgHooks['BaseTemplateToolbox'][] = 'wfWatchersExtensionAfterToolbox';
 
 /**
  * Set this to a number to anonymize results ("X or more" / "Less that X" people watching this page)
@@ -43,30 +43,22 @@ $wgWatchersLimit = null;
 /**
  * Display link in toolbox
 */
-function wfWatchersExtensionAfterToolbox( &$tpl ) { # Checked for HTML and MySQL insertion attacks
-	if ( method_exists( $tpl, 'getSkin' ) ) {
-		$title = $tpl->getSkin()->getTitle();
-	} else {
-		global $wgTitle;
-		$title = $wgTitle;
-	}
-	
-	if( $title->isTalkPage() ) {
-		# No talk pages please
+function wfWatchersExtensionAfterToolbox( $tpl, $toolbox ) { # Checked for HTML and MySQL insertion attacks
+	# Only when displaying non-talk pages
+	if( !isset( $toolbox['whatlinkshere'] ) || $toolbox['whatlinkshere'] === false ) {
 		return true;
 	}
 
-	if( $title->getNamespace() < 0 ) {
-		# No special pages please
-		return true;
-	}
-
-	echo '<li id="t-watchers"><a href="' ;
+	$title = $tpl->getSkin()->getTitle();
 	$nt = SpecialPage::getTitleFor( 'Watchers' );
-	echo $nt->escapeLocalURL( 'page=' . $title->getPrefixedDBkey() );
-	echo '">';
-	echo wfMsgHtml( 'watchers_link_title' );
-	echo "</a></li>\n";
+	$res['watchers'] = array(
+		'href' => $nt->getLocalURL( 'page=' . $title->getPrefixedDBkey() ),
+		'msg' => 'watchers_link_title',
+		'id' => 't-watchers',
+	);
+
+	$after = isset( $toolbox['recentchangeslinked'] ) ? 'recentchangeslinked' : 'whatlinkshere';
+	$toolbox = wfArrayInsertAfter( $toolbox, $res, $after );
 
 	return true;
 }
