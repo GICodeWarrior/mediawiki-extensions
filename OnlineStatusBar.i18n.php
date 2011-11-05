@@ -136,6 +136,24 @@ $messages['gl'] = array(
 	'onlinestatusbar-status-hidden' => 'Agochado',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'onlinestatusbar-desc' => 'שורת מצב שמציגה בדף המשתמש אם המשתמש מקוון, בהתאם להעדפות',
+	'onlinestatusbar-line' => '$1 $2 $3 עכשיו',
+	'onlinestatusbar-used' => 'לאפשר לאחרים לראות שאתם מחוברים?',
+	'onlinestatusbar-status' => 'מהו המצב שתרצו להיות פה לפי בררת המחדל:',
+	'onlinestatusbar-purge' => 'לנקות את המטמון של דף המשתמש בכל פעם שאתם נכנסים או יוצאים',
+	'prefs-onlinestatus' => 'מצב ההימצאות באתר',
+	'onlinestatusbar-hide' => 'האם להסתיר את שורת המצב כדי להשתמש רק במילת הקסם? (למשתמשים מתקדמים)',
+	'onlinestatusbar-status-online' => 'באתר',
+	'onlinestatusbar-status-busy' => 'עסוק',
+	'onlinestatusbar-status-away' => 'לא ליד מחשב',
+	'onlinestatusbar-status-offline' => 'לא באתר',
+	'onlinestatusbar-status-hidden' => 'מוסתר',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
