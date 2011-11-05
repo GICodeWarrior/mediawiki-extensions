@@ -201,6 +201,7 @@ $messages['ka'] = array(
 
 /** Korean (한국어)
  * @author Devunt
+ * @author Kwj2772
  */
 $messages['ko'] = array(
 	'logofunctions-desc' => '위키의 로고에 관한 파서 훅들을 추가합니다.',
