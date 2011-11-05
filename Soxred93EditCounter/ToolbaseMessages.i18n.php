@@ -134,6 +134,7 @@ As u \'n skakel vanaf elders gevolg het, <a href="$1">rapporteer \'n fout</a>.
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author روخو
  */
 $messages['ar'] = array(
 	'toolbase-header-bugs' => 'علل',
@@ -151,6 +152,12 @@ $messages['ar'] = array(
 	'toolbase-navigation' => 'إبحار',
 	'toolbase-navigation-homepage' => 'الصفحة الرئيسية',
 	'toolbase-navigation-api' => 'إيه بي آي',
+	'toolbase-navigation-user_id' => 'البحث عن معرف المستخدم',
+	'toolbase-userid-submit' => 'الحصول على معرف المستخدم',
+	'toolbase-userid-title' => 'البحث عن معرف المستخدم',
+	'toolbase-autoedits-title' => 'تحرير الحساب آليا',
+	'toolbase-autoedits-submit' => 'حساب',
+	'toolbase-autoedits-totalall' => 'مجموع عدد التعديلات',
 	'toolbase-main-title' => 'مرحبا!',
 	'toolbase-main-404' => 'الملف غير موجود',
 	'toolbase-form-wiki' => 'ويكي',
