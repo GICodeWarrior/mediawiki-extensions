@@ -26,6 +26,15 @@ $messages['qqq'] = array(
 	'userdebuginfo-language' => '{{Identical|Language}}',
 );
 
+/** Arabic (العربية)
+ * @author روخو
+ */
+$messages['ar'] = array(
+	'userdebuginfo-key' => 'مفتاح',
+	'userdebuginfo-value' => 'قيمة',
+	'userdebuginfo-language' => 'اللغة',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Renessaince
