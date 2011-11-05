@@ -6,7 +6,7 @@
  * 
  * Info on mediawiki.org: http://www.mediawiki.org/wiki/Extension:Regex_Fun
  * 
- * @version: 1.0
+ * @version: 1.0.1
  * @license: ISC license
  * @author:  Daniel Werner < danweetz@web.de >
  * 
@@ -52,7 +52,7 @@ class ExtRegexFun {
 	 * 
 	 * @var string
 	 */
-	const VERSION = '1.0';
+	const VERSION = '1.0.1';
 	
     /**
      * Sets up parser functions
@@ -298,25 +298,29 @@ class ExtRegexFun {
 	* @param $pattern String regular expression pattern - must use /, | or % as delimiter
 	* @param $separator String to separate all the matches
 	* @param $offset Integer first match to print out. Negative values possible: -1 means last match.
-	* @param $limit Integer maximum matches for print out
+	* @param $length Integer maximum matches for print out
 	 * 
 	* @return String result of all matching text parts separated by a string
 	*/
-    public static function regexall( &$parser , $subject = '' , $pattern = '' , $separator = ', ' , $offset = 0 , $limit = null ) {
+    public static function regexall( &$parser , $subject = '' , $pattern = '' , $separator = ', ' , $offset = 0 , $length = '' ) {
 		// validate and check for wrong input:
 		$continue = self::validateRegexCall( $parser, $subject, $pattern, $specialFlags, false );
 		if( ! $continue ) {
 			return self::invalidRegexParsingOutput( $pattern );;
 		}
+		
 		// adjust default values:
 		$offset = (int)$offset;
-		if( $limit !== null ) {
-			$limit = (int)$limit;
+		
+		if( trim( $length ) === '' ) {
+			$length = null;
+		} else {
+			$length = (int)$length;
 		}
 
 		if( preg_match_all( $pattern, $subject, $matches, PREG_SET_ORDER ) ) {
 			
-			$matches = array_slice( $matches, $offset, $limit );								
+			$matches = array_slice( $matches, $offset, $length );								
 			$output = ''; //$end = ($end or ($end >= count($matches)) ? $end : count($matches) );
 
 			for( $count = 0; $count < count( $matches ); $count++ ) {
@@ -342,7 +346,7 @@ class ExtRegexFun {
 		$lastMatches = self::getLastMatches( $parser );
 		
 		if( $lastMatches === null ) { // last regex was invalid or none executed yet
-			return '';
+			return $defaultVal;
 		}
 				
 		// if requested index is numerical:

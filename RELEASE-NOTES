@@ -1,5 +1,11 @@
  Changelog:
  ==========
+ * (trunk) 2011 -- version 1.0.1
+   - Bug in '#regex_var' solved: default value now gets returned in case '#regex' went wront or
+     not called before.
+   - '#regexall' last parameter, 'length' can be empty '' which is the specified default now. It
+     simply means there is not limit and all items should be returned.
+
  * November 4, 2011 -- Version 1.0 (initial public release).
    Introduces the following parser functions defined within 'ExtRegexFun' class:
    - #regex

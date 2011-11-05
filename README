@@ -11,7 +11,7 @@ with it. 'RegexParserFunctions' simply is outdated and lacks some advanced funct
                   Use of the 'e' modifier behind the expression will be detected, the effect of using 'e' now is
                   adapted for mediawiki. With 'e' the replacement string will be parsed after references are replaced.
  - #regexall:     Searches the whole string for as many matches as possible and returns them separated by a separator.
- - #regex_var:    Allows to access references of the last used 'regex' or 'regexsearch' function.
+ - #regex_var:    Allows to access subexpression references of the last used 'regex' function.
  - #regexquote:   Runs php function 'preg_quote' on a string to use user-input savelly in regex functions. In case the
                   first character is a character with special meaning in MW, it will be replaced with its hexadecimal
                   notation e.g. '\x23' instead of '#'. This will prevent from things going terribly wrong when using
