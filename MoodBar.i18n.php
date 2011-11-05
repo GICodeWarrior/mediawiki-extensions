@@ -322,6 +322,7 @@ $messages['af'] = array(
 /** Arabic (العربية)
  * @author AwamerT
  * @author OsamaK
+ * @author روخو
  * @author زكريا
  */
 $messages['ar'] = array(
@@ -401,6 +402,7 @@ $messages['ar'] = array(
 	'moodbar-hide-header' => 'إخف هذا العنصر من الظهور',
 	'moodbar-restore-header' => 'إستعد ظهور هذا العنصر',
 	'moodbar-invalid-item' => 'لم يتمكن النظام من العثور على عنصر الملاحظات الصحيح.',
+	'moodbar-feedback-action-error' => 'حدث خطأ عند محاولة تنفيذ هذا الإجراء.',
 	'moodbar-type-happy' => 'سعيد',
 	'moodbar-type-sad' => 'حزين',
 	'moodbar-type-confused' => 'مرتبك',
