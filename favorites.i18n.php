@@ -102,6 +102,24 @@ $messages['qqq'] = array(
 	'favoritelistedit-raw-titles' => '{{Identical|Title}}',
 );
 
+/** Arabic (العربية)
+ * @author روخو
+ */
+$messages['ar'] = array(
+	'favorites-desc' => 'إنشاء قائمة المفضلة',
+	'prefs-advancedfavoritelist' => 'خيارات متقدمة',
+	'favoritelist' => 'تفضيلاتي',
+	'myfavoritelist' => 'تفضيلاتي',
+	'favoritelistfor' => "(ل '''$1''')",
+	'nofavoritelist' => 'لا توجد مدخلات في مفضلتك.',
+	'favorite' => 'مفضلة',
+	'favoritelistall2' => 'الكل',
+	'favoritelistedit-normal-title' => 'تعديل المفضلات',
+	'favoritelistedit-raw-titles' => 'العناوين:',
+	'favoritelistedit-raw-submit' => 'تحديث المفضلات',
+	'favoritelisttools-view' => 'عرض التفضيلات',
+);
+
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
  */
