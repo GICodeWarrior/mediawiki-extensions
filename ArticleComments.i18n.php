@@ -106,10 +106,13 @@ Beskikbare modusse is: "plain", "normal" en "wiki".',
 
 /** Arabic (العربية)
  * @author OsamaK
+ * @author روخو
  */
 $messages['ar'] = array(
 	'article-comments-url-string' => 'المسار:',
 	'article-comments-submit-button' => 'أرسل',
+	'article-comments-commenter-said' => '$1 قال ...',
+	'article-comments-comment-missing-name-parameter' => 'اسم مفقود',
 );
 
 /** Aramaic (ܐܪܡܝܐ)
