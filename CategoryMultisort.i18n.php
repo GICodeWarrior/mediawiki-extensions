@@ -38,8 +38,10 @@ $messages['af'] = array(
 
 /** Arabic (العربية)
  * @author OsamaK
+ * @author روخو
  */
 $messages['ar'] = array(
+	'categorymultisort-defaultsortkey-name' => 'افتراضي',
 	'categorymultisort-go' => 'اذهب',
 );
 
