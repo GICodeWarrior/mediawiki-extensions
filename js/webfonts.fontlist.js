@@ -304,6 +304,7 @@
 			ks:  [ "Samyak Devanagari", "Lohit Hindi" ],
 			sa:  [ "Lohit Hindi", "Samyak Devanagari" ],
 			he:  [ "Miriam CLM", "Taamey Frank CLM" ],
+			hbo: [ "Taamey Frank CLM" ],
 			kn:  [ "Kedage", "Lohit Kannada" ],
 			my:  [ "Masterpiece Uni Sans", "Padauk-Regular", "Myanmar3", "Yunghkio" ],
 			km:  [ "KhmerOSbattambang", "KhmerOSsiemreap", "KhmerOS", "KhmerOSbokor",
