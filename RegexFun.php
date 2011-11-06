@@ -4,15 +4,13 @@
  * 'Regex Fun' is a MediaWiki extension which adds parser functions for performing regular
  * expression searches and replacements.
  * 
- * Info on mediawiki.org: http://www.mediawiki.org/wiki/Extension:Regex_Fun
+ * Documentation: http://www.mediawiki.org/wiki/Extension:Regex_Fun
+ * Support:       http://www.mediawiki.org/wiki/Extension_talk:Regex_Fun
+ * Source code:   http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/RegexFun
  * 
  * @version: 1.0.1
  * @license: ISC license
  * @author:  Daniel Werner < danweetz@web.de >
- * 
- * Documentation: http://www.mediawiki.org/wiki/Extension:Regex_Fun
- * Support:       http://www.mediawiki.org/wiki/Extension_talk:Regex_Fun
- * Source code:   http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/RegexFun
  *
  * @file RegexFun.php
  * @ingroup RegexFun
@@ -32,15 +30,18 @@ $wgExtensionCredits['parserhook'][] = array(
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Regex_Fun',
 );
 
+// language files:
 $wgExtensionMessagesFiles['RegexFun'     ] = ExtRegexFun::getDir() . '/RegexFun.i18n.php';
 $wgExtensionMessagesFiles['RegexFunMagic'] = ExtRegexFun::getDir() . '/RegexFun.i18n.magic.php';
 
+// hooks registration:
 $wgHooks['ParserFirstCallInit'][] = 'ExtRegexFun::init';
 $wgHooks['ParserClearState'   ][] = 'ExtRegexFun::onParserClearState';
 $wgHooks['ParserLimitReport'  ][] = 'ExtRegexFun::onParserLimitReport';
 
 // Include the settings file:
 require_once ExtRegexFun::getDir() . '/RegexFun_Settings.php';
+
 
 /**
  * Extension class with all the regex functions functionality
@@ -50,7 +51,7 @@ require_once ExtRegexFun::getDir() . '/RegexFun_Settings.php';
 class ExtRegexFun {
 	
 	/**
-	 * Version of the RegexFun extension.
+	 * Version of the 'RegexFun' extension.
 	 * 
 	 * @since 1.0
 	 * 
@@ -87,7 +88,7 @@ class ExtRegexFun {
 	 *
 	 * @since 1.0
 	 * 
-	 * @return boolean
+	 * @return string
 	 */
 	public static function getDir() {		
 		static $dir = null;
