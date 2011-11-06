@@ -187,6 +187,17 @@ $messages['mk'] = array(
 	'trustedmath-not-found' => 'Страницата [[:$1]] не постои',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'trustedmath-desc' => 'Membolehkan pembenaman persamaan LaTeX pada laman, serupa dengan penerap matematik yang sedia ada, cuma tanpa bergantung pada Ocaml',
+	'trustedmath-permission-error' => 'Matematik yang tidak dipercayai dimatikan di wiki ini',
+	'trustedmath-path-error' => 'Ralat ketika membuat direktori matematik',
+	'trustedmath-convert-error' => 'Ralat ketika membuat imej matematik. "$1" memulangkan <tt><nowiki>$2</nowiki></tt>.',
+	'trustedmath-not-found' => 'Laman [[:$1]] tidak wujud',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
