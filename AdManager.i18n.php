@@ -48,6 +48,18 @@ $messages['qqq'] = array(
 	'right-admanager' => '{{doc-right|admanager}}',
 );
 
+/** Arabic (العربية)
+ * @author روخو
+ */
+$messages['ar'] = array(
+	'admanager_labelPage' => 'عناوين الصفحة:',
+	'admanager_labelCategory' => 'أسماء التصنيف',
+	'admanager_submit' => 'أرسل',
+	'admanager_noads' => 'لا تعرض إعلانات',
+	'admanager_Page' => 'صفحات',
+	'admanager_added' => 'تم حفظ التغييرات',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
