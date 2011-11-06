@@ -34,6 +34,13 @@ $messages['gl'] = array(
 	'fundraiserlandingpage-desc' => 'Toma parámetros URL e pásaos como variables de modelo a aquel modelo especificado',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'fundraiserlandingpage-desc' => 'קבלת פרמטרים מכתובת והעברתן לתבנית שצוינה בתור משתנה תבנית',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
