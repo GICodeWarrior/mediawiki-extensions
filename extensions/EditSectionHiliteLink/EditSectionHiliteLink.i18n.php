@@ -29,6 +29,13 @@ $messages['ar'] = array(
 	'editsectionhilitelink-desc' => 'إظهار القسم المناسب لصفحة عندما تنقل الفأرة فوق وصلة التعديل',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'editsectionhilitelink-desc' => "Resalta la seición afayadiza d'una páxina al pasar el mur per riba del enllaz d'edición",
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */

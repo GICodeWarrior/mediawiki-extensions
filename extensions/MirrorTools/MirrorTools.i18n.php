@@ -237,7 +237,7 @@ $messages['ksh'] = array(
 	'mirrortools-desc' => 'Määd et müjjelesch, Änderonge aam Wiki över de Projrammschnetshtäll (<i lang="en">API</i>) onger jeedem Metmaacher-Name ze maache.',
 	'right-mirroredit' => 'Sigge över de Projrammschnetshtäll (<i lang="en">API</i>) onger jeedem Name ändere',
 	'group-MirrorTools' => 'Aanwänder vum Speejelwärkzüsh',
-	'group-MirrorTools-member' => 'Aanwänder vum Speejelwärkzüsh',
+	'group-MirrorTools-member' => '{{GENDER:$2|Aanwänder|Aanwänderėn|Aanwänder|Aanwänderėn|Aanwänder}} vum Speejelwärkzüsh',
 	'grouppage-MirrorTools' => '{{ns:project}}:Aanwänder vum Speejelwärkzüsh',
 );
 

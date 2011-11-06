@@ -92,6 +92,7 @@ $messages['an'] = array(
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
+ * @author روخو
  */
 $messages['ar'] = array(
 	'security' => 'سجل الأمن',
@@ -110,6 +111,7 @@ $messages['ar'] = array(
 	'security-type-category' => 'تصنيف',
 	'security-type-namespace' => 'نطاق',
 	'security-restricttogroup' => 'الوصول إلى المحتوى مُقيّد لأعضاء "$1"',
+	'restriction-read' => 'اقرأ',
 );
 
 /** Aramaic (ܐܪܡܝܐ)

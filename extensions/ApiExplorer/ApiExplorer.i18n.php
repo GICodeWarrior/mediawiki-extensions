@@ -26,6 +26,14 @@ $messages['qqq'] = array(
 	'apiexplorer-intro' => 'The intro at the top of the page to acquiant new users with what the page does.',
 );
 
+/** Arabic (العربية)
+ * @author روخو
+ */
+$messages['ar'] = array(
+	'apiexplorer' => 'مستكشف API',
+	'apiexplorer-loading' => 'جاري تحميل المهام.',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by

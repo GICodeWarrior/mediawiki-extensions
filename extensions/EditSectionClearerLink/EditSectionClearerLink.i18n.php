@@ -22,6 +22,13 @@ $messages['qqq'] = array(
 	'editsectionclearerlink-desc' => '{{desc}}',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'editsectionclearerlink-desc' => "Meyora la usabilidá de los enllaces d'edición de les seiciones con aiciones al pasar el mur sobro les seiciones y enllaces",
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */

@@ -129,6 +129,23 @@ $messages['arz'] = array(
 	'countedits-nocontribs' => 'مافيش مساهمين فى الويكى دى.',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'countedits' => 'Contar ediciones',
+	'countedits-desc' => '[[Special:CountEdits|Páxina especial]] que cuenta les ediciones de los usuarios y da la llista de los diez que más collaboraron',
+	'countedits-warning' => "'''Alvertencia:''' Nun xulgues un llibru pola tapa.
+Nun xulgues a los collaboradores pol númberu d'ediciones.",
+	'countedits-username' => "Nome d'usuariu:",
+	'countedits-ok' => 'Aceutar',
+	'countedits-nosuchuser' => 'Nun hai dengún usuariu nomáu "$1".',
+	'countedits-resultheader' => 'Resultaos de $1',
+	'countedits-resulttext' => '$1 tien {{PLURAL:$2|fecha una edición|feches $2 ediciones}}',
+	'countedits-mostactive' => 'Collaboradores más activos',
+	'countedits-nocontribs' => 'Nun hebo denguna collaboración nesta wiki.',
+);
+
 /** Kotava (Kotava)
  * @author Wikimistusik
  */

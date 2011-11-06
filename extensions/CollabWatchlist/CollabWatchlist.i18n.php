@@ -103,16 +103,21 @@ $messages['qqq'] = array(
  */
 $messages['ar'] = array(
 	'collabwatchlisttagselect' => 'وسم',
+	'collabwatchlisttagcomment' => 'تعليق',
 	'collabwatchlisttools-view' => 'اعرض',
+	'collabwatchlisttools-delete' => 'احذف',
 	'collabwatchlistsall' => 'جميع القوائم',
 	'collabwatchlistfiltertags' => 'إخفاء الوسوم',
 	'collabwatchlistedit-users-raw-submit' => 'احفظ',
 	'collabwatchlistedit-users-last-owner' => 'لا بد من مالك واحد على الاقل',
+	'collabwatchlistedit-raw-titles' => 'تصنيفات:',
 	'collabwatchlistedit-tags-raw-titles' => 'وسوم:',
 	'collabwatchlistedit-users-raw-titles' => 'مستخدمون:',
 	'collabwatchlistedit-normal-title' => 'عدل التصانيف',
+	'collabwatchlistedit-tags-raw-submit' => 'احفظ',
 	'collabwatchlistpatrol' => 'تعديلات مراجعة',
 	'collabwatchlistdelete-submit' => 'احذف',
+	'collabwatchlistnew-name' => 'اسم القائمة',
 	'collabwatchlistnew-submit' => 'أنشئ',
 	'collabwatchlistedit-normal-submit' => 'احفظ',
 );

@@ -216,6 +216,7 @@ $messages['ja'] = array(
  */
 $messages['ksh'] = array(
 	'semanticinternalobjects-desc' => 'De ennere Objäkte vum Semantesch MedijaWiki enschtälle.',
+	'semanticinternalobjects-internalproperty' => 'Enner Eijeschaff',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -2900,7 +2900,7 @@ $messages['he'] = array(
 	'articlefeedback-form-panel-expertise-hobby' => 'זה מעורר בי תשוקה רבה',
 	'articlefeedback-form-panel-expertise-other' => 'מקור הידע שלי לא מופיע כאן',
 	'articlefeedback-form-panel-helpimprove' => 'אני רוצה לעזור לשפר את ויקיפדיה, שלחו לי מכתב על זה (לא חובה)',
-	'articlefeedback-form-panel-helpimprove-note' => 'אנו נשלח לך מכתב אימות בדוא״ל. לא נשתף את הכתובת עם איש. $1',
+	'articlefeedback-form-panel-helpimprove-note' => 'אנו נשלח לך מכתב אימות בדוא״ל. לא נשתף את הכתובת עם איש בהתאם ל$1.',
 	'articlefeedback-form-panel-helpimprove-privacy' => 'הצהרת פרטיות על משוב',
 	'articlefeedback-form-panel-submit' => 'לשלוח דירוגים',
 	'articlefeedback-form-panel-pending' => 'הדירוגים שלכם לא נשלחו',
@@ -2954,6 +2954,7 @@ $messages['he'] = array(
 	'articlefeedback-survey-message-success' => 'תודה על מילוי הסקר.',
 	'articlefeedback-survey-message-error' => 'אירעה שגיאה. 
 נא לנסות שוב מאוחר יותר.',
+	'articlefeedback-privacyurl' => 'http://wikimediafoundation.org/wiki/Feedback_privacy_statement',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'התוצאות הגבוהות והנמוכות היום',
 	'articleFeedback-table-caption-dailyhighs' => 'ערכים עם הדירוגים הגבוהים ביותר: $1',
 	'articleFeedback-table-caption-dailylows' => 'ערכים עם הדירוגים הנמוכים ביותר: $1',

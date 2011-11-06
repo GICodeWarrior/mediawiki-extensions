@@ -621,6 +621,7 @@ $messages['an'] = array(
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
+ * @author روخو
  */
 $messages['ar'] = array(
 	'wikilog-desc' => 'يضيف خصائص تدوين، منشئا تهجين ويكي-مدونة',
@@ -681,6 +682,7 @@ $messages['ar'] = array(
 	'wikilog-edit-signpub' => 'وقع وانشر هذه المقالة',
 	'wikilog-edit-signpub-tooltip' => 'يسبب هذه المقالة أن يتم توقيعها ونشرها في سجلها للويكي عند حفظها.
 لا تعلم على هذا الصندوق لإبقاء المقالة كمسودة.',
+	'wikilog-comment-anonsig' => '$3 (مجهول)',
 	'wikilog-comment-pending' => 'هذا التعليق بانتظار الموافقة.',
 	'wikilog-comment-deleted' => 'هذا التعليق تم حذفه.',
 	'wikilog-comment-autosumm' => 'تعليق جديد بواسطة $1: $2',

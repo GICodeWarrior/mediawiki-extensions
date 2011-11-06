@@ -38,6 +38,13 @@ met vermelding van fout: "$2".',
 	'sql2wiki-err-feature_not_supported' => 'SQL2Wiki: Die funksie word nie deur $1 tipe databasisse ondersteun nie!',
 );
 
+/** Arabic (العربية)
+ * @author روخو
+ */
+$messages['ar'] = array(
+	'sql2wiki-cache_refresh' => 'تحديث',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Wizardist

@@ -111,6 +111,7 @@ $messages['af'] = array(
  * @author روخو
  */
 $messages['ar'] = array(
+	'wikisync' => 'مزامنة الويكي',
 	'wikisync_remote_login_button' => 'دخول',
 	'wikisync_sync_files' => 'مزامنة الملفات',
 	'wikisync_synchronization_button' => 'مزامنة',
@@ -118,6 +119,7 @@ $messages['ar'] = array(
 	'wikisync_scheduler_setup' => 'إعداد الجدولة',
 	'wikisync_scheduler_turn_on' => 'تشغيل الجدولة',
 	'wikisync_apply_button' => 'طب',
+	'wikisync_api_result_Blocked' => 'مستخدم محظور',
 	'wikisync_js_synchronization_confirmation' => 'هل أنت متأكد أنك تريد مزامنة
 
 من $1

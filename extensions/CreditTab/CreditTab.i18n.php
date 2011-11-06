@@ -33,6 +33,15 @@ $messages['ar'] = array(
 	'credits-tab' => 'ائتمانات',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'credits-desc' => 'Amiesta un enllaz a los créditos',
+	'credits-tab' => 'Créditos',
+	'credits-tab-title' => "Créditos d'esta páxina",
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

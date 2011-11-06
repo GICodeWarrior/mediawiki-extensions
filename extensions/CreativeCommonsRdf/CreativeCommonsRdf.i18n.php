@@ -94,6 +94,13 @@ $messages['ia'] = array(
 	'creativecommonsrdf-desc' => 'Metadatos RDF de Creative Commons',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Kenrick95
+ */
+$messages['id'] = array(
+	'creativecommonsrdf-desc' => 'Metadata CreativeCommons RDF',
+);
+
 /** Japanese (日本語)
  * @author Schu
  */

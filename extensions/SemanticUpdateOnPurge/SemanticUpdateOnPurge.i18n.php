@@ -25,3 +25,10 @@ $messages['de'] = array(
 	'suop-desc' => 'Aktualisiert semantische Attribute, wenn der Seitencache durch „purge“ geleert wird',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'suop-desc' => 'Ги подновува семантичките атрибути на една вики-страница при нејзино пречистување (на кешот)',
+);
+

@@ -168,6 +168,7 @@ $messages['an'] = array(
  * @author Moemin05
  * @author OsamaK
  * @author Samer
+ * @author روخو
  * @author محمد الجداوي
  */
 $messages['ar'] = array(
@@ -247,6 +248,7 @@ $messages['ar'] = array(
 	'fogg-installed' => 'Firefogg منصّب.',
 	'fogg-not-installed' => 'Firefogg ليس منصب أو ليس مفعّل',
 	'fogg-for_improved_uploads' => 'لرفع مُحسّن:',
+	'fogg-please-install' => '$1. المزيد $2',
 	'fogg-please-install-install-linktext' => 'نصِّب Firefogg',
 	'fogg-please-install-about-linktext' => 'عن Firefogg',
 	'fogg-use_latest_firefox' => 'يرجى تنصيب $1 أولاً، <i>ثم زر هذه الصفحة ثانيةً لتنصيب إضافة <b>Firefogg</b>.</i>',

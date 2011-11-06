@@ -76,7 +76,7 @@ $messages['ja'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'newuserslist-desc' => 'Deiht ene <code lang="en">&lt;newusers&gt;</code> befähl en et Wiki, ön en Leß met neue Metmaacher un dänne ier  Avatare ze krijje.',
+	'newuserslist-desc' => 'Deiht ene <code lang="en">&lt;newusers&gt;</code> Befähl en et Wiki, ön en Leß met neue Metmaacher un dänne ier Avataa-Belldscher ze krijje.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

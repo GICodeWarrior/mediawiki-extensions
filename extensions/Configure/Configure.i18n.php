@@ -517,6 +517,7 @@ $messages['an'] = array(
  * @author Meno25
  * @author OsamaK
  * @author Ouda
+ * @author روخو
  */
 $messages['ar'] = array(
 	'configure' => 'ضبط الويكي',
@@ -615,6 +616,7 @@ $messages['ar'] = array(
 	'configure-section-squid' => 'سكويد',
 	'configure-section-cookie' => 'كوكيز',
 	'configure-section-performance' => 'الأداء',
+	'configure-section-test' => 'اختبارات',
 	'configure-section-upload' => 'الرفع',
 	'configure-section-sharedupload' => 'الرفع المشترك',
 	'configure-section-mime' => 'أنواع MIME',

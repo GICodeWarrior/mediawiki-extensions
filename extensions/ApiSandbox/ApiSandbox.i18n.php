@@ -49,6 +49,20 @@ $messages['qqq'] = array(
 	'apisb-query-list' => '{{Identical|List}}',
 );
 
+/** Arabic (العربية)
+ * @author روخو
+ */
+$messages['ar'] = array(
+	'apisb-no-js' => "'''خطأ''' : هذه الخاصية تتطلب الجافا سكريبت.",
+	'apisb-result' => 'النتيجة',
+	'apisb-select-action' => 'اختر حدث',
+	'apisb-ns-main' => '(رئيسي)',
+	'apisb-query-prop' => 'الخصائص',
+	'apisb-query-list' => 'قوائم',
+	'apisb-query-meta' => 'معلومات الميتا',
+	'apisb-generator-parameters' => 'مولد',
+);
+
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
  * @author Vago
