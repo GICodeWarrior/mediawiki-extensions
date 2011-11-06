@@ -32,8 +32,32 @@ $wgResourceModules['ext.OnlineStatusBar'] = array (
 	'remoteExtPath' => 'OnlineStatusBar',
 );
 
+$wgResourceModules['ext.OnlineStatusBar.chick'] = array (
+	'styles' => 'OnlineStatusBarChick.css',
+	'localBasePath' => dirname ( __FILE__ ),
+	'remoteExtPath' => 'OnlineStatusBar',
+);
+
 $wgResourceModules['ext.OnlineStatusBar.mono'] = array (
 	'styles' => 'OnlineStatusBarMono.css',
+	'localBasePath' => dirname ( __FILE__ ),
+	'remoteExtPath' => 'OnlineStatusBar',
+);
+
+$wgResourceModules['ext.OnlineStatusBar.simple'] = array (
+	'styles' => 'OnlineStatusBarSimple.css',
+	'localBasePath' => dirname ( __FILE__ ),
+	'remoteExtPath' => 'OnlineStatusBar',
+);
+
+$wgResourceModules['ext.OnlineStatusBar.cologne'] = array (
+	'styles' => 'OnlineStatusBarCologne.css',
+	'localBasePath' => dirname ( __FILE__ ),
+	'remoteExtPath' => 'OnlineStatusBar',
+);
+
+$wgResourceModules['ext.OnlineStatusBar.nostalgia'] = array (
+	'styles' => 'OnlineStatusBarNostalgia.css',
 	'localBasePath' => dirname ( __FILE__ ),
 	'remoteExtPath' => 'OnlineStatusBar',
 );

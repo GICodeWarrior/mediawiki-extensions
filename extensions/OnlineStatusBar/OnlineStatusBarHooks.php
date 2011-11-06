@@ -138,6 +138,18 @@ class OnlineStatusBarHooks {
 			case "monobook":
 				$out->addModules( 'ext.OnlineStatusBar.mono' );
 				break;
+			case "simple":
+				$out->addModules( 'ext.OnlineStatusBar.simple' );
+				break;
+			case "nostalgia":
+				$out->addModules( 'ext.OnlineStatusBar.nostalgia' );
+				break;
+			case "chick":
+				$out->addModules( 'ext.OnlineStatusBar.chick' );
+				break;
+			case "cologneblue":
+				$out->addModules( 'ext.OnlineStatusBar.cologne' );
+				break;
 			default:
 				$out->addModules( 'ext.OnlineStatusBar' );
 		}
