@@ -40,7 +40,7 @@ class SpecialLogEntry extends UnlistedSpecialPage {
 			$title = Title::newFromText( $page );
 			
 			// Check permissions
-			if( $title && $title->userCan( 'edit', $page ) )
+			if( $title && $title->userCan( 'edit' ) )
 			{
 				// Get article
 				$article = new Article( $title, 0 );

@@ -20,7 +20,7 @@ class ImageTagPage extends ImagePage {
 
 		if (
 			$wgUser->isAllowed( 'edit' ) &&
-			$this->mTitle->userCan( 'edit', true ) &&
+			$this->mTitle->userCan( 'edit' ) &&
 			( $this->mTitle->isProtected( 'edit' ) == false || in_array( 'sysop', $wgUser->getGroups() ) )
 		)
 		{
