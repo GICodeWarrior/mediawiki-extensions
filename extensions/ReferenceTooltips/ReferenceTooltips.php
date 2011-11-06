@@ -36,10 +36,8 @@ $wgResourceModules['jquery.tooltip'] = $rtResourceTemplate + array(
 	'position' => 'bottom',
 );
 
-function rtfBeforePageDisplay() {
-	global $wgOut;
-	
-	$wgOut->addModules( 'ext.reference-tooltips' );
-	
+function rtfBeforePageDisplay( $out, &$sk ) {
+	$out->addModules( 'ext.reference-tooltips' );
+
 	return true;
 }
