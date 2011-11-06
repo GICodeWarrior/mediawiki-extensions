@@ -135,20 +135,13 @@ class OnlineStatusBarHooks {
 	 */
 	public static function stylePage( &$out, &$skin ) {
 		switch ($skin->getSkinName()) {
-			case "monobook":
-				$out->addModules( 'ext.OnlineStatusBar.mono' );
-				break;
-			case "simple":
-				$out->addModules( 'ext.OnlineStatusBar.simple' );
-				break;
-			case "nostalgia":
-				$out->addModules( 'ext.OnlineStatusBar.nostalgia' );
-				break;
-			case "chick":
-				$out->addModules( 'ext.OnlineStatusBar.chick' );
-				break;
-			case "cologneblue":
-				$out->addModules( 'ext.OnlineStatusBar.cologne' );
+			case 'monobook':
+			case 'vector':
+			case 'simple':
+			case 'nostalgia':
+			case 'chick':
+			case 'cologneblue':
+				$out->addModules( 'ext.OnlineStatusBar.' . $skin->getSkinName() );
 				break;
 			default:
 				$out->addModules( 'ext.OnlineStatusBar' );
