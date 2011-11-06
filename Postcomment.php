@@ -127,7 +127,7 @@ function wfPostcommentForm( &$data, $sk ) {
 		return true;
 	}
 
-	if ( !$title->userCan( 'edit', true ) ) {
+	if ( !$title->userCan( 'edit' ) ) {
 		$data .= wfMsgHtml( 'postcomment_discussionprotected' );
 		return true;
 	}
