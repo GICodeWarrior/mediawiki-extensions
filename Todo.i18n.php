@@ -126,6 +126,7 @@ $messages['an'] = array(
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
+ * @author روخو
  */
 $messages['ar'] = array(
 	'todo' => 'قائمة للعمل',
@@ -153,6 +154,7 @@ $4',
 	'todo-list-change' => 'غيّر',
 	'todo-list-cancel' => 'ألغِ',
 	'todo-new-item' => 'مدخلة جديدة',
+	'todo-not-updated' => 'لا يمكن تحديث سجل قاعدة بيانات',
 	'todo-issue-summary' => 'ملخص القضية:',
 	'todo-form-details' => 'التفاصيل:',
 	'todo-form-email' => 'لاستقبال إخطار بواسطة البريد الإلكتروني عندما يتم إغلاق المدخلة، اكتب عنوانك هنا:',
