@@ -105,6 +105,8 @@ class Premoderation {
 	}
 	
 	public static function checkWhitelist( $ip ) {
+		global $wgMemc;
+		
 		$whitelist = self::loadWhitelist();
 		
 		$memcKey = wfMemcKey( 'whitelisted', $ip );
