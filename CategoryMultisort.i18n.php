@@ -43,6 +43,7 @@ $messages['af'] = array(
 $messages['ar'] = array(
 	'categorymultisort-defaultsortkey-name' => 'افتراضي',
 	'categorymultisort-go' => 'اذهب',
+	'prefs-category' => 'تصنيف',
 );
 
 /** Aramaic (ܐܪܡܝܐ)
