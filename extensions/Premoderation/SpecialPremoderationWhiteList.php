@@ -20,6 +20,12 @@ class SpecialPremoderationWhiteList extends SpecialPage {
 		if( !$wgUser->isAllowed( 'premoderation-wlist' ) ) {
 			$this->displayRestrictionError();
 			return;
+		} elseif( wfReadOnly() ) {
+			$wgOut->readOnlyPage();
+			return;
+		} elseif( $wgUser->isBlocked() ) {
+			$wgOut->blockedPage();
+			return;
 		}
 		
 		$wgOut->setPageTitle( wfMsg( 'premoderationwhitelist' ) );
@@ -50,7 +56,8 @@ class SpecialPremoderationWhiteList extends SpecialPage {
 			$output = '<table class="wikitable"><tr><th>' . wfMsg( 'premoderation-table-list-ip' ) .
 				'</th><th>' . wfMsg( 'premoderation-table-list-delete' ) . '</th></tr>';
 			foreach( $whiteList as $ip ) {
-				$output .= '<tr><td>' . $ip . '</td><td>' . $this->getDeletionButton( $ip ) . '</td></tr>';
+				$output .= '<tr><td>' . $ip . '</td>' .
+					'<td>' . $this->getDeletionButton( $ip ) . '</td></tr>';
 			}
 			$output .= '</table>';
 			$wgOut->addHTML( $output );
@@ -61,18 +68,21 @@ class SpecialPremoderationWhiteList extends SpecialPage {
 	
 	protected function getAddForm() {
 		return Xml::fieldset( wfMsg( 'premoderation-wl-addip-fieldset' ) ) .
-			Xml::openElement( 'form', array( 'id' => 'prem-wl-form', 'method' => 'post' ) ) . '<table><tr><td>' .
-			wfMsg( 'premoderation-private-ip' ) . '</td><td>' . Xml::input( 'ip', 50, '', array( 'id' => 'prem-whitelist-addip' ) ) .
-			'</td></tr><tr><td>' . wfMsg( 'summary' ) . '</td><td>' . Xml::input( 'summary', 50, '',
-			array( 'id' => 'prem-summary' ) ) . '</td></tr><tr>' . '<td>' . Xml::submitButton( wfMsg( 'htmlform-submit' ),
-			array( 'id' => 'prem-wl-submit' ) ) . '<input type="hidden" name="action" value="add" />' .
-			'</td></tr></table>' . Xml::closeElement( 'form' ) . Xml::closeElement( 'fieldset' );
+			Xml::openElement( 'form', array( 'id' => 'prem-wl-form', 'method' => 'post' ) ) .
+			'<table><tr><td>' .	wfMsg( 'premoderation-private-ip' ) . '</td><td>' .
+			Xml::input( 'ip', 50, '', array( 'id' => 'prem-whitelist-addip' ) ) . '</td></tr>' .
+			'<tr><td>' . wfMsg( 'summary' ) . '</td><td>' . Xml::input( 'summary', 50, '',
+			array( 'id' => 'prem-summary' ) ) . '</td></tr><tr>' . '<td>' .
+			Xml::submitButton( wfMsg( 'htmlform-submit' ), array( 'id' => 'prem-wl-submit' ) ) .
+			'<input type="hidden" name="action" value="add" /></td></tr></table>' .
+			Xml::closeElement( 'form' ) . Xml::closeElement( 'fieldset' );
 	}
 	
 	protected function getDeletionButton( $ip ) {
 		return Xml::openElement( 'form', array( 'id' => 'prem-wl-delete' . $ip, 'method' => 'post' ) ) .
 			Xml::submitButton( wfMsg( 'premoderation-table-list-delete' ) ) .
-			'<input type="hidden" name="action" value="delete" /><input type="hidden" name="ip" value="' . $ip . '" />' .
+			'<input type="hidden" name="action" value="delete" />' .
+			'<input type="hidden" name="ip" value="' . $ip . '" />' .
 			Xml::closeElement( 'form' );
 	}
 	

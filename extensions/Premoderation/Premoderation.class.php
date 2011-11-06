@@ -23,6 +23,7 @@ class Premoderation {
 		}
 		
 		$wgHooks['ArticleEditUpdatesDeleteFromRecentchanges'][] = 'Premoderation::deleteOldQueueEntries';
+		$wgHooks['LoadExtensionSchemaUpdates'][] = 'Premoderation::updateDBSchema';
 		
 		return true;
 	}
@@ -170,6 +171,12 @@ class Premoderation {
 				'pmq_status = \'approved\'';
 			$dbw->delete( 'pm_queue', array( $conds ), __METHOD__ );
 		}
+		return true;
+	}
+	
+	public static function updateDBSchema( $updater ) {
+		$updater->addExtensionUpdate( array( 'addTable', 'pm_queue',
+			dirname( __FILE__ ) . '/db_tables.sql', true ) );
 		return true;
 	}
 }
