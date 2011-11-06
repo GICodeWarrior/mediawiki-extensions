@@ -22,6 +22,13 @@ Maybe you would like to look at:
 * [[{{MediaWiki:Mainpage}}|The main page]]',
 );
 
+/** Arabic (العربية)
+ * @author روخو
+ */
+$messages['ar'] = array(
+	'error404' => '404 لم يتم العثور على',
+);
+
 /** Asturian (Asturianu)
  * @author Xuacu
  */
