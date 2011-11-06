@@ -1404,6 +1404,7 @@ $messages['an'] = array(
  * @author Orango
  * @author OsamaK
  * @author Ouda
+ * @author روخو
  */
 $messages['ar'] = array(
 	'configure-setting-desc' => 'وصوفات لإعدادات ضبط ميدياويكي',
@@ -1416,6 +1417,7 @@ $messages['ar'] = array(
 	'configure-setting-wgDBerrorLog' => 'الملف لتسجيل أخطاء قاعدة البيانات فيه',
 	'configure-setting-wgDBname' => 'اسم قاعدة البيانات للإستعمال',
 	'configure-setting-wgDBpassword' => 'كلمة السر ل$wgDBuser',
+	'configure-setting-wgDBadminpassword' => 'كلمة السر ل $wgDBadminuser',
 	'configure-setting-wgDBport' => 'المنفذ لخادم قاعدة البيانات',
 	'configure-setting-wgDBserver' => 'اسم المضيف أو عنوان الأيبي لخادم قاعدة البيانات',
 	'configure-setting-wgDBtype' => 'نوع قاعدة البيانات للإستخدام',
