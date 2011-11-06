@@ -18,6 +18,7 @@ $messages = array();
 $messages['en'] = array(
 	'regexfun-desc' => 'Adds parser functions allowing the use of regular expressions within wiki pages',
 	'regexfun-invalid' => 'The regular expression "$1" is invalid.',
+	'regexfun-limit-exceed' => 'Maximum of $1 "Regex Fun" regular expression handlings reached.',
 );
 
 /** German (Deutsch)
@@ -26,6 +27,7 @@ $messages['en'] = array(
 $messages['de'] = array(
 	'regexfun-desc' => 'Fügt Parser-Funktionen hinzu, um reguläre Ausdrücke auf Wiki-Seiten verwenden zu können',
 	'regexfun-invalid' => '„$1“ ist kein gültiger regulärer Ausdruck.',
+	'regexfun-limit-exceed' => 'Maximale Anzahl von $1 durch „Regex Fun“ behandelte reguläre Ausdrücke erreicht.',
 );
 
 /** Galician (Galego)

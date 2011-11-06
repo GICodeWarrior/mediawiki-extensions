@@ -1,10 +1,14 @@
  Changelog:
  ==========
- * (trunk) 2011 -- version 1.0.1
-   - Bug in '#regex_var' solved: default value now gets returned in case '#regex' went wront or
+ * November 6, 2011 -- Version 1.0.1
+   - Bug in '#regex_var' solved: default value now gets returned in case '#regex' went wrong or
      not called before.
-   - '#regexall' last parameter, 'length' can be empty '' which is the specified default now. It
-     simply means there is not limit and all items should be returned.
+   - '#regexall' last parameter, 'length', can be empty '' which is the specified default now. It
+     simply means there is no limit and all items should be returned ('-1' has another meaning).
+   - Introduces two global configuration variables:
+     + '$egRegexFunDisabledFunctions' - to disable certain functions within the wiki.
+     + '$egRegexFunMaxRegexPerParse'  - limit for number of function calls per parser process.
+   - Some minor cleanup done.
 
  * November 4, 2011 -- Version 1.0 (initial public release).
    Introduces the following parser functions defined within 'ExtRegexFun' class:
@@ -18,22 +22,22 @@
    - Replacing within strings, using regular expression.
    - Allows save use of user input within expressions by running '#regexquote' parser function
      over it. An important function other regex extensions still lack.
-   - Allows to get the last '#regex' subexpression matches via '#regex_var', even allows to
+   - Allows to get the last '#regex' sub-expression matches via '#regex_var', even allows to
      get them in an extensive way, e.g. "$0 has $2, $1 and $3".
    - Invalid regex will result in an inline error message instead of php notice as some other
      regex extensions might do it.
-   - Efficient regex validation allowing all kinds of delimitiers and flags but filtering 'e'
+   - Efficient regex validation allowing all kinds of delimiters and flags but filtering 'e'
      flag for security reasons in any case...
    - ... therefore, original 'e' flag instead has another but very similar meaning adjusted for
-     a mediawiki context. Instead of executing php code within the replacement string, the 'e'
+     a MediaWiki context. Instead of executing php code within the replacement string, the 'e'
      flag now causes the replacement string to be parsed after references ('$1', '\1') are
      replaced. This allows stuff like "{{((}}Template{{!}}$1{{))}}" within the replacement.
    
    Changes since earlier versions (trunk and earlier, non-public):
    - '#regexsearch' parser function removed. Instead there is a special flag 'r' now which leads
      to the same result if #regex and replacement is being used: '' as output if nothing replaced.
-   - '#regexascii' parser function removed. Instead '#regexquote' will make an ascii-quote MW
-     special characters ';' and '#' if they are first character in the string.
+   - '#regexascii' parser function removed. Instead '#regexquote' will ascii-quote MW special
+     characters ';' and '#' if they are first character in the string.
    - '#regexquote' delimiter set to '/' by default.
    - '#regex' no longer returns its value as parsed wikitext (option 'noparse' => false) instead
      the 'e' flag can be used (although not exactly the same).
