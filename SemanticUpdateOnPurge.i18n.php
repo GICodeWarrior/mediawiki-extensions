@@ -1,6 +1,4 @@
 <?php
-#coding: utf-8
-
 /**
  * Internationalisation file of the 'SemanticUpdateOnPurge' extension
  *
@@ -17,12 +15,13 @@ $messages = array();
  * @author Daniel Werner
  */
 $messages['en'] = array(
-	'suop-desc' => 'Updates semantic attributes of a wiki page when purging the page.',
+	'suop-desc' => 'Updates semantic attributes of a wiki page when purging the page',
 );
 
 /** German (Deutsch)
  * @author Daniel Werner
  */
 $messages['de'] = array(
-	'suop-desc' => 'Aktualisiert semantische Attribute wenn der Seitencache durch „purge“ geleert wird.',
+	'suop-desc' => 'Aktualisiert semantische Attribute, wenn der Seitencache durch „purge“ geleert wird',
 );
+
