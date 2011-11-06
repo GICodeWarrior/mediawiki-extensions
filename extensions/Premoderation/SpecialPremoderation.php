@@ -160,9 +160,9 @@ class SpecialPremoderation extends SpecialPage {
 		}
 		
 		$rev = Revision::newFromID( $row['pmq_page_last_id'] );
-		$diff = new DifferenceEngine( $rev->getTitle() );
+		$diff = new DifferenceEngine();
 		$diff->showDiffStyle();
-		$formattedDiff = $diff->generateDiffBody( $rev->getText(), $row['pmq_text'] );
+		$formattedDiff = $diff->generateDiffBody( isset( $rev ) ? $rev->getText() : '', $row['pmq_text'] );
 		
 		$wgOut->addHTML( '<h2>' . wfMsg( 'premoderation-diff-h2' ) . '</h2>' .
 			"<table class='mw-abusefilter-diff-multiline'><col class='diff-marker' />" .
