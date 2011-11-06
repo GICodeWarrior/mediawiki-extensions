@@ -31,6 +31,14 @@ $messages['qqq'] = array(
 	'signupapi-medium' => '{{Identical|Medium}}',
 );
 
+/** Arabic (العربية)
+ * @author روخو
+ */
+$messages['ar'] = array(
+	'signupapi-weak' => 'ضعيف',
+	'signupapi-medium' => 'متوسط',
+);
+
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
  */
