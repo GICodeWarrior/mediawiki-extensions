@@ -47,10 +47,16 @@ $wgLogActions['prem-whitelist/delete'] = 'prem-log-whitelist-delete';
 $wgLogRestrictions['prem-private'] = 'premoderation-log';
 $wgLogRestrictions['prem-whitelist'] = 'premoderation-wlist';
 
-// 'all' or 'abusefilter'
+// Handler: 'all' or 'abusefilter'
 $wgPremoderationType = 'all';
+
+// Disable approved revision in pages with new published revisions
 $wgPremoderationStrict = false;
+
+// Disable editing of pages with unapproved revisions in moderation queue
 $wgPremoderationLockPages = false;
+
+// Lifetime of revisions in moderation queue
 $wgPremoderationDeclinedPurge = 86400 * 3;
 $wgPremoderationNewPurge = 86400 * 14;
 

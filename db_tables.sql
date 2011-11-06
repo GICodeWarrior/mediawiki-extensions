@@ -1,5 +1,5 @@
-CREATE TABLE /*$wgDBprefix*/pm_queue (
-	pmq_id BIGINT unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE /*_*/pm_queue (
+	pmq_id BIGINT unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	pmq_page_last_id INT unsigned NOT NULL,
 	pmq_page_ns INT NOT NULL,
 	pmq_page_title VARCHAR(255) BINARY NOT NULL,
@@ -15,14 +15,10 @@ CREATE TABLE /*$wgDBprefix*/pm_queue (
 	pmq_updated BINARY(14) DEFAULT NULL,
 	pmq_updated_user INT unsigned DEFAULT NULL,
 	pmq_updated_user_text VARCHAR(255) BINARY DEFAULT NULL,
-	pmq_status VARBINARY(40) NOT NULL DEFAULT '',
-	
-	PRIMARY KEY (pmq_id),
-	KEY (pmq_user)
+	pmq_status VARBINARY(40) NOT NULL DEFAULT ''
 ) /*$wgDBTableOptions*/;
+CREATE INDEX /*i*/pmq_user ON /*_*/pm_queue (pmq_user);
 
-CREATE TABLE /*$wgDBprefix*/pm_whitelist (
-	pmw_ip VARBINARY(40) NOT NULL DEFAULT '',
-
-	PRIMARY KEY (pmw_ip)
+CREATE TABLE /*_*/pm_whitelist (
+	pmw_ip VARBINARY(40) NOT NULL PRIMARY KEY DEFAULT '',
 ) /*$wgDBTableOptions*/;

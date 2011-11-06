@@ -22,18 +22,16 @@ class SpecialPremoderation extends SpecialPage {
 		if( !$wgUser->isAllowed( 'premoderation' ) ) {
 			$this->displayRestrictionError();
 			return;
+		} elseif( wfReadOnly() ) {
+			$wgOut->readOnlyPage();
+			return;
+		} elseif( $wgUser->isBlocked() ) {
+			$wgOut->blockedPage();
+			return;
 		}
-		
-		$allowedActions = array( '', 'list', 'status' );
 		
 		$params = array_values( explode( '/', $subpage ) );
 		$action = array_shift( &$params );
-		
-		if( !in_array( $action, $allowedActions ) ) {
-			$wgOut->setPageTitle( wfMsg( 'premoderation-manager-invalidaction' ) );
-			$wgOut->addWikiMsg( 'premoderation-invalidaction' );
-			return;
-		}
 		
 		if( $action == '' ) {
 			$action = 'list';
@@ -49,6 +47,10 @@ class SpecialPremoderation extends SpecialPage {
 			case 'status':
 				( $this->mPosted ) ? $this->performChanges() : $this->statusInterface();
 				break;
+				
+			default:
+				$wgOut->setPageTitle( wfMsg( 'premoderation-manager-invalidaction' ) );
+				$wgOut->addWikiMsg( 'premoderation-invalidaction' );
 		}
 	}
 	
@@ -61,9 +63,13 @@ class SpecialPremoderation extends SpecialPage {
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select(
 			'pm_queue',
-			array( 'pmq_id', 'pmq_page_ns', 'pmq_page_title', 'pmq_user', 'pmq_user_text', 'pmq_timestamp',
-				'pmq_minor', 'pmq_summary', 'pmq_len', 'pmq_status', 'pmq_updated', 'pmq_updated_user_text' ),
-			'', __METHOD__,
+			array(
+				'pmq_id', 'pmq_page_ns', 'pmq_page_title', 'pmq_user', 'pmq_user_text',
+				'pmq_timestamp', 'pmq_minor', 'pmq_summary', 'pmq_len', 'pmq_status',
+				'pmq_updated', 'pmq_updated_user_text'
+			),
+			'',
+			__METHOD__,
 			array( 'ORDER BY' => 'pmq_timestamp DESC', 'LIMIT' => 100 )
 		);
 		
@@ -101,7 +107,8 @@ class SpecialPremoderation extends SpecialPage {
 	}
 	
 	protected function getListTableHeader( $type ) {
-		return Xml::openElement( 'table', array( 'id' => 'prem-table-' . $type, 'class' => 'wikitable', 'style' => 'width: 90%' ) ) .
+		return Xml::openElement( 'table', array( 'id' => 'prem-table-' . $type,
+			'class' => 'wikitable', 'style' => 'width: 90%' ) ) .
 			'<tr><th>' . wfMsg( 'premoderation-table-list-time' ) . '</th>' .
 			'<th>' . wfMsg( 'premoderation-table-list-user' ) . '</th>' .
 			'<th colspan="2">' . wfMsg( 'premoderation-table-list-title' ) . '</th>' .
@@ -119,7 +126,8 @@ class SpecialPremoderation extends SpecialPage {
 			'</td><td>' . ( $row['pmq_minor'] == 0 ? '' : ' ' . wfMsg( 'minoreditletter' ) ) . '</td>' .
 			'<td>' . $row['pmq_summary'] . '</td><td>' . '<a href="' . $articlePath .
 			'Special:Premoderation/status/id/' . $row['pmq_id'] . '">' .
-			wfMessage( 'premoderation-status-' . $row['pmq_status'] . ( $row['pmq_updated_user_text'] ? '-changed' : '-added' ),
+			wfMessage( 'premoderation-status-' . $row['pmq_status'] .
+				( $row['pmq_updated_user_text'] ? '-changed' : '-added' ),
 				array( $row['pmq_updated_user_text'] ) ) .
 			'</a></td></tr>';
 	}
@@ -139,7 +147,8 @@ class SpecialPremoderation extends SpecialPage {
 		$res = $dbr->select(
 			'pm_queue',
 			'*',
-			"pmq_id = '$id'", __METHOD__,
+			"pmq_id = '$id'",
+			__METHOD__,
 			array( 'LIMIT' => 1 )
 		);
 		$row = $dbr->fetchRow( $res );
@@ -153,7 +162,8 @@ class SpecialPremoderation extends SpecialPage {
 		$wgOut->addWikiMsg( 'premoderation-status-intro' );
 		
 		$wgOut->addHTML( '<h2>' . wfMsg( 'premoderation-status-info' ) . '</h2>' .
-			$this->getListTableHeader( 'status' ) . $this->formatListTableRow( $row ) . Xml::closeElement( 'table' ) );
+			$this->getListTableHeader( 'status' ) . $this->formatListTableRow( $row ) .
+			Xml::closeElement( 'table' ) );
 		
 		if( $wgUser->isAllowed( 'premoderation-viewip' ) ) {
 			$wgOut->addHTML( wfMsg( 'premoderation-private-ip' ) . ' ' . $row['pmq_ip'] );
@@ -162,7 +172,9 @@ class SpecialPremoderation extends SpecialPage {
 		$rev = Revision::newFromID( $row['pmq_page_last_id'] );
 		$diff = new DifferenceEngine();
 		$diff->showDiffStyle();
-		$formattedDiff = $diff->generateDiffBody( isset( $rev ) ? $rev->getText() : '', $row['pmq_text'] );
+		$formattedDiff = $diff->generateDiffBody(
+			isset( $rev ) ? $rev->getText() : '', $row['pmq_text']
+		);
 		
 		$wgOut->addHTML( '<h2>' . wfMsg( 'premoderation-diff-h2' ) . '</h2>' .
 			"<table class='mw-abusefilter-diff-multiline'><col class='diff-marker' />" .
@@ -188,7 +200,8 @@ class SpecialPremoderation extends SpecialPage {
 		
 		$final = Xml::fieldset( wfMsg( 'premoderation-status-fieldset' ) ) .
 			Xml::openElement( 'form', array( 'id' => 'prem-status-form', 'method' => 'post' ) ) .
-			$this->getStatusForm( $row['pmq_status'] ) . '<input type="hidden" name="id" value="' . $id . '" />' .
+			$this->getStatusForm( $row['pmq_status'] ) .
+			'<input type="hidden" name="id" value="' . $id . '" />' .
 			Xml::closeElement( 'form' ) . Xml::closeElement( 'fieldset' );
 			
 		$wgOut->addHTML( $final );
@@ -208,7 +221,15 @@ class SpecialPremoderation extends SpecialPage {
 			$db->addQuotes( $page ) . ' AND pmq_id != ' . $id . ' AND pmq_status != "approved"';
 		
 		$res = $db->select(
-			'pm_queue', '*', $conds, __METHOD__,
+			'pm_queue',
+			'*',
+			array(
+				'pmq_page_ns' => $ns,
+				'pmq_page_title' => $page,
+				"pmq_id <> $id",
+				'pmq_status <> "approved"'
+			),
+			__METHOD__,
 			array( 'ORDER BY' => 'pmq_timestamp DESC', 'LIMIT' => 20 )
 		);
 		
@@ -294,7 +315,9 @@ class SpecialPremoderation extends SpecialPage {
 	
 	protected function approveRevision( $id ) {
 		$dbw = wfGetDB( DB_MASTER );
-		$res = $dbw->fetchRow( $dbw->select( 'pm_queue', '*', "pmq_id = '$id'", __METHOD__ ) );
+		$res = $dbw->fetchRow(
+			$dbw->select( 'pm_queue', '*', "pmq_id = '$id'", __METHOD__ )
+		);
 		
 		$title = Title::newFromText( $res['pmq_page_title'], $res['pmq_page_ns'] );
 		$user = User::newFromName( $res['pmq_user_text'] );
@@ -321,41 +344,56 @@ class SpecialPremoderation extends SpecialPage {
 				$pageId = $wikipage->insertOn( $dbw );
 				$cond = array( 'page_id' => $pageId );
 				$actionType = 'create';
+				
+				$dbw->update(
+					'revision',
+					array( 'rev_page' => $pageId ),
+					array( 'rev_id' => $revId ),
+					__METHOD__
+				);
 			} else {
 				$wikipage->updateRevisionOn( $dbw, $rev );
 				$cond = array( 'page_latest' => $res['pmq_page_last_id'] );
 				$actionType = 'update';
 				
 				$dbw->update(
-					'revision', array( 'rev_page' => $title->getArticleID(), 'rev_parent_id' => $title->getLatestRevID() ),
+					'revision',
+					array(
+						'rev_page' => $title->getArticleID(),
+						'rev_parent_id' => $title->getLatestRevID()
+					),
 					array( 'rev_id' => $revId ), __METHOD__
 				);
 			}
 			
 			$dbw->update(
-				'page', array( 'page_latest' => $revId, 'page_len' => $rev->getSize() ),
-				$cond, __METHOD__
+				'page',
+				array( 'page_latest' => $revId, 'page_len' => $rev->getSize() ),
+				$cond,
+				__METHOD__
 			);
 		} else {
 			$actionType = 'updateold';
 			
 			$latestRevId = intval( $title->getLatestRevID() );
-			$res = $dbw->fetchRow( $dbw->select( 'revision', 'rev_parent_id', "rev_id = '$latestRevId'", __METHOD__ ) );
+			$res = $dbw->fetchRow(
+				$dbw->select( 'revision', 'rev_parent_id', "rev_id = '$latestRevId'", __METHOD__ )
+			);
 			
 			$dbw->update(
-				'revision', array( 'rev_page' => $title->getArticleID(), 'rev_parent_id' => $res['rev_parent_id'] ),
-				array( 'rev_id' => $revId ), __METHOD__
+				'revision',
+				array( 
+					'rev_page' => $title->getArticleID(),
+					'rev_parent_id' => $res['rev_parent_id']
+				),
+				array( 'rev_id' => $revId ),
+				__METHOD__
 			);
 			$dbw->update(
-				'revision', array( 'rev_parent_id' => $revId ),
-				array( 'rev_id' => $latestRevId ), __METHOD__
-			);
-		}
-		
-		if( isset( $pageId ) ) {
-			$dbw->update(
-				'revision', array( 'rev_page' => $pageId ),
-				array( 'rev_id' => $revId ), __METHOD__
+				'revision',
+				array( 'rev_parent_id' => $revId ),
+				array( 'rev_id' => $latestRevId ),
+				__METHOD__
 			);
 		}
 		
