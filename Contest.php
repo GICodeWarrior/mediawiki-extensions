@@ -276,15 +276,6 @@ $wgResourceModules['jquery.contestSubmission'] = $moduleTemplate + array(
 	)
 );
 
-$wgResourceModules['contest.contestant.pager'] = $moduleTemplate + array(
-	'scripts' => array(
-		'contest.contestant.pager.js',
-	),
-	'styles' => array(
-		'contest.contestant.pager.css',
-	),
-);
-
 $wgResourceModules['contest.special.contestant'] = $moduleTemplate + array(
 	'styles' => array(
 		'contest.special.contestant.css',
