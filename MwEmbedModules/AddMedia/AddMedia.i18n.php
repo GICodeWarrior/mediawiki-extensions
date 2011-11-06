@@ -325,6 +325,7 @@ $messages['an'] = array(
  * @author Moemin05
  * @author OsamaK
  * @author Samer
+ * @author روخو
  * @author محمد الجداوي
  */
 $messages['ar'] = array(
@@ -348,8 +349,10 @@ $messages['ar'] = array(
 	'mwe-filesource' => 'مصدر:',
 	'mwe-filestatus' => 'حالة حقوق النسخ',
 	'mwe-loading-add-media-wiz' => 'جاري تحميل معالج إضافة الوسائط',
+	'mwe-imported_from' => '$1 تم استيراده من [$2 $3].
+شاهد الاصل [$4 resource page] لمزيد من المعلومات.',
+	'mwe-import-description' => '$1, تم استيرادها من $2',
 	'mwe-select_file' => 'اختر ملفًا',
-	'mwe-select_ownwork' => 'أنا أرفع عملاً أمتلكه تمامًا وأرخصه تحت:',
 	'mwe-license_cc-by-sa' => 'مشاع مبدع - المشاركة بالمثل (3.0)',
 	'mwe-upload' => 'ارفع الملف',
 	'mwe-destfilename' => 'اسم ملف المقصد:',
@@ -357,17 +360,9 @@ $messages['ar'] = array(
 	'mwe-date-of-work' => 'تاريخ العمل',
 	'mwe-error_not_loggedin' => 'لا يبدو أنك سجلت الدخول أو أنك لا تملك تصاريح الرفع.',
 	'mwe-error-not-loggedin-file' => 'لا يبدو أنك سجّلت الدخول أو أن هناك خطأً في البرنامج. فضلاً $1 وحاول مرة أخرى.',
-	'mwe-link-login' => 'ادخل',
-	'mwe-watch-this-file' => 'شاهد هذا الملف',
-	'mwe-ignore-any-warnings' => 'تجاهل كل التحذيرات',
-	'mwe-i-would-like-to' => 'أريد أن',
-	'mwe-upload-own-file' => 'أرفع عملي إلى $1',
-	'mwe-upload-not-my-file' => 'أرفع وسائط لا تخصني إلى $1',
-	'mwe-upload-once-done' => 'رجاءً $1
-ما إن تنهي رفعك، $2',
-	'mwe-upload-refresh' => 'حدّث قائمة رفعك',
 	'mwe-upload-in-progress' => 'يُرفع (لا تغلق هذه النافذة)',
 	'mwe-uploaded-status' => 'مرفوع',
+	'mwe-transcoded-status' => 'المحولة',
 	'mwe-uploaded-time-remaining' => 'الوقت المتبقي: $1',
 	'mwe-upload-done' => '<i>ينبغي أن يكون</i> ملفك المرفوع متاحًا.',
 	'mwe-add_media_wizard' => 'أضف معالج وسائط',
@@ -382,6 +377,7 @@ $messages['ar'] = array(
 	'mwe-upload_tab' => 'ارفع ملفًا',
 	'mwe-am-layout' => 'التخطيط:',
 	'mwe-link' => 'وصلة',
+	'mwe-am-do_insert' => 'هل تدرج',
 	'mwe-cc_title' => 'مشاع مبدع',
 	'mwe-cc_by_title' => 'العزو',
 	'mwe-cc_nc_title' => 'غير تجاري',
@@ -390,16 +386,20 @@ $messages['ar'] = array(
 	'mwe-cc_pd_title' => 'ملكية عامة',
 	'mwe-unknown_license' => 'رخصة غير معروفة',
 	'mwe-results_from' => 'النتائج من $1',
+	'mwe-your-recent-uploads' => 'مرفوعاتك',
 	'mwe-your-recent-uploads-to' => 'مرفوعاتك الحديثة إلى $1',
 	'mwe-no_recent_uploads' => 'لا توجد مرفوعات حديثة',
+	'mwe-not-logged-in-uploads' => 'ربما لم تقم بتسجيل الدخول, لذلك لا يمكن عرض الملفات المرفوعه مؤخرا. [$1 الرجاء تسجيل الدخول] و [$2 المحاولة مرة أخرى].',
 	'mwe-ie-eye-permision' => 'إن كنت تستخدم إنترنت إكسبرور وسجلت دخولك، فربما تحتاج إلى تعديل إعدادات الخصوصية عندك',
 	'mwe-upload-a-file' => 'ارفع ملفًا جديدًا',
 	'mwe-upload-a-file-to' => 'ارفع ملفًا جديدًا إلى $1',
+	'mwe-local_resource_title' => 'عنوان المورد المحلي:',
 	'mwe-watch_this_page' => 'راقب هذه الصفحة',
 	'mwe-do_import_resource' => 'استورد موردًا',
 	'mwe-update_preview' => 'حدّث المعاينة',
 	'mwe-return-search-results' => 'عد إلى صفحة النتائج',
 	'mwe-do-more-modification' => 'أجرِ المزيد من التعديل',
+	'mwe-checking-resource' => 'التحقق من وجود مورد',
 	'mwe-warning-upload-to-commons' => '$1 تنصحك بالرفع إلى ويكيميديا كومنز، لا ترفع محليا إلى بعد قراءة $2',
 	'mwe-local-upload-policy-link' => 'سياسة الرفع المحلية',
 	'mwe-ftype-svg' => 'ملف SVG متجهي',
@@ -419,8 +419,10 @@ $messages['ar'] = array(
 	'mwe-am-flickr-desc' => 'Flickr.com، موقع لتبادل الصور على الإنترنت',
 	'mwe-am-metavid-title' => 'ميتافيد دوت أورج',
 	'mwe-am-search-timeout' => 'لم يكتمل طلب البحث. قد يكون الخادم معطلاً بسبب الضغط الكثيف. بإمكانك المحاولة مرة أخرى لاحقًا.',
+	'mwe-upload-transcoded-status' => 'المحولة',
 	'mwe-upload-transcode-in-progress' => 'يجري الترميز والرفع (لا تغلق هذه النافذة)',
 	'mwe-upload-multi' => 'ارفع {{PLURAL:$1|الملف|الملف|الملفين|الملفات|الملفات|الملفات}}',
+	'mwe-review-upload' => 'مراجعة ملف {{PLURAL:$1|upload|uploads}}',
 );
 
 /** Aramaic (ܐܪܡܝܐ)
