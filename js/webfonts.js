@@ -184,12 +184,22 @@
 
 			// Build font dropdown
 			$.webfonts.buildMenu(config);
-			//see if there is a font in cookie
-			var cookie_font = $.cookie('webfonts-font') || config[0];
-			if (cookie_font && cookie_font !== 'none') {
-				$.webfonts.set(cookie_font);
+			// See if there is a font in cookie if not first font is default font.
+			var cookieFont = $.cookie( 'webfonts-font' );
+			var selectedFont = null;
+			// check whether this font is for the current userlang/contentlang
+			if ( $.inArray(cookieFont, config) >=0 ){
+				selectedFont = cookieFont;
+			}
+			else{
+				// We cannot use cookie font since it is not one of the fonts suitable 
+				// for current language.
+				selectedFont = config[0];
+			}
+			if ( selectedFont && selectedFont !== 'none' ) {
+				$.webfonts.set( selectedFont );
 				//mark it as checked
-				$('#'+fontID(cookie_font)).attr('checked', 'checked');
+				$( '#'+fontID( selectedFont ) ).attr( 'checked', 'checked' );
 			}
 			
 			$.webfonts.loadFontsForFontFamilyStyle();
