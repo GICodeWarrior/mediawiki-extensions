@@ -459,14 +459,34 @@ $messages['pt'] = array(
 );
 
 /** Russian (Русский)
+ * @author DCamer
  * @author Engineering
  */
 $messages['ru'] = array(
+	'admanager' => 'Менеджер рекламы',
+	'admanagerzones' => 'Менеджер рекламных зон',
+	'admanager-desc' => 'Добавляет [[Special:AdManager|служебную страницу]] которая позволяет администраторам устанавливать зоны для страниц или категорий',
+	'admanager_docu' => 'Чтобы добавить или удалить рекламную зону страницы или всей категории, добавьте или удалите ее название.',
+	'admanagerzones_docu' => 'Введите номер каждой рекламной зоны на отдельной строке.',
 	'admanager_invalidtargetpage' => 'Не найдена страница " $1 ".',
+	'admanager_invalidtargetcategory' => 'Не найдена категория " $1 ".',
+	'admanager_notable' => 'Ошибка! Не найдена необходимая таблица базы данных! Сначала запустите update.php.',
+	'admanager_noAdManagerZones' => 'Ошибка! Необходимо добавить несколько рекламных зон. Введите их в [[Special:AdManagerZones|Менеджере рекламных зон]].',
+	'admanager_labelPage' => 'Названия страниц',
+	'admanager_labelCategory' => 'Названия категорий',
+	'admanager_submit' => 'Отправить',
+	'admanager_noads' => 'Не отображать рекламу',
 	'admanager_Page' => 'Страницы',
 	'admanager_Category' => 'Категории',
+	'admanager_added' => 'Ваши изменения были сохранены',
+	'admanager_noadsset' => '$1 отключил показ рекламы',
+	'admanager_addedzone' => 'Добавлена зона',
 	'admanager_zonenum' => 'Зона #:$1',
 	'admanager_zonenotnumber' => 'Ошибка!  $1  не является числом.',
+	'admanager_return' => 'Обратно в [[Special:AdManager|Менеджер рекламы]]',
+	'admanager_gotoads' => '[[Special:AdManager|Изменить размещение рекламы]]',
+	'admanager_gotozones' => '[[Special:AdManagerZones|Изменить рекламные зоны]]',
+	'right-admanager' => '[[Special:AdManager|Управление конфигурацией рекламы]]',
 );
 
 /** Telugu (తెలుగు)
