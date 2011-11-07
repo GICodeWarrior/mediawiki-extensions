@@ -733,6 +733,7 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author DCamer
  * @author KorneySan
  * @author Александр Сигачёв
  */
@@ -759,6 +760,8 @@ $messages['ru'] = array(
 	'apisb-query-prop' => 'Свойства',
 	'apisb-query-list' => 'Списки',
 	'apisb-query-meta' => 'Мета-информация',
+	'apisb-generic-parameters' => 'Общие параметры',
+	'apisb-generator-parameters' => 'Генератор',
 );
 
 /** Slovak (Slovenčina)
