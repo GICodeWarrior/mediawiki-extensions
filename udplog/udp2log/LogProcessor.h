@@ -68,13 +68,17 @@ public:
 		return index;
 	}
 
+	bool IsBlocking() {
+		return blocking;
+	}
+
 	bool IsActive(const PosixClock::Time & currentTime);
 	void IncrementBytesLost(size_t bytes);
 
 protected:
-	LogProcessor(Udp2LogConfig & config_, int index_, int factor_, bool flush_)
+	LogProcessor(Udp2LogConfig & config_, int index_, int factor_, bool flush_, bool blocking_)
 		: config(config_), index(index_), counter(0), 
-		factor(factor_), flush(flush_), bytesLost(0), 
+		factor(factor_), flush(flush_), blocking(blocking_), bytesLost(0), 
 		lossRate(Udp2LogConfig::UPDATE_PERIOD, Udp2LogConfig::RATE_PERIOD),
 		backlog(config_.GetPool().GetEmptyBlock())
 	{}
@@ -98,6 +102,7 @@ protected:
 	int counter;
 	int factor;
 	bool flush;
+	bool blocking;
 	uint64_t bytesLost;
 	PosixClock::Time holidayEndTime;
 	RateAverage lossRate;
@@ -113,7 +118,7 @@ public:
 
 	FileProcessor(Udp2LogConfig & config_, int index_, char * fileName_, 
 			int factor_, bool flush_) 
-		: LogProcessor(config_, index_, factor_, flush_)
+		: LogProcessor(config_, index_, factor_, flush_, true)
 	{
 		fileName = fileName_;
 		f.open(fileName_, std::ios::app | std::ios::out);
@@ -169,13 +174,12 @@ protected:
 
 	void Open();
 	void Close();
-	void HandleError(libc_error & e, size_t bytes);
+	bool HandleError(libc_error & e, size_t bytes);
 	
 	std::string command;
 
 	PipePairPointer pipes;
 	pid_t child;
-	bool blocking;
 	
 	enum {RESTART_INTERVAL = 5};
 

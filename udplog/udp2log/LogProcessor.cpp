@@ -76,8 +76,8 @@ ssize_t FileProcessor::Write(const char *buffer, size_t size)
 
 PipeProcessor::PipeProcessor(Udp2LogConfig & config_, int index_, 
 		char * command_, int factor_, bool flush_, bool blocking_)
-	: LogProcessor(config_, index_, factor_, flush_), 
-	child(0), blocking(blocking_)
+	: LogProcessor(config_, index_, factor_, flush_, blocking_), 
+	child(0)
 {
 	command = command_;
 	Open();
@@ -108,10 +108,10 @@ boost::shared_ptr<LogProcessor> PipeProcessor::NewFromConfig(
 	return boost::shared_ptr<LogProcessor>(pp);
 }
 
-void PipeProcessor::HandleError(libc_error & e, size_t bytes)
+bool PipeProcessor::HandleError(libc_error & e, size_t bytes)
 {
 	bool restart;
-	if (e.code == EAGAIN) {
+	if (e.code == EAGAIN || e.code == EINTR) {
 		restart = false;
 	} else if (e.code == EPIPE) {
 		std::cerr << "Pipe terminated, suspending output: " << command << std::endl;
@@ -125,6 +125,7 @@ void PipeProcessor::HandleError(libc_error & e, size_t bytes)
 		// Reopen it after a few seconds
 		alarm(RESTART_INTERVAL);
 	}
+	return restart;
 }
 
 ssize_t PipeProcessor::Write(const char *buffer, size_t size)
@@ -134,14 +135,23 @@ ssize_t PipeProcessor::Write(const char *buffer, size_t size)
 	}
 
 	ssize_t bytesWritten = 0;
+	ssize_t bytesRemaining = size;
+	ssize_t totalBytesWritten = 0;
 
-	try {
-		bytesWritten = GetPipe().Write(buffer, size);
-	} catch (libc_error & e) {
-		bytesWritten = 0;
-		HandleError(e, size);
-	}
-	return bytesWritten;
+	do {
+		try {
+			bytesWritten = GetPipe().Write(buffer, bytesRemaining);
+			totalBytesWritten += bytesWritten;
+			buffer += bytesWritten;
+			bytesRemaining -= bytesWritten;
+		} catch (libc_error & e) {
+			if (HandleError(e, size)) {
+				return totalBytesWritten;
+			}
+		}
+	} while (blocking && bytesRemaining > 0);
+
+	return totalBytesWritten;
 }
 
 void PipeProcessor::FixIfBroken()
@@ -221,7 +231,6 @@ ssize_t PipeProcessor::CopyFromPipe(Pipe & source, size_t size)
 		bytesWritten = 0;
 		HandleError(e, size);
 	}
-	IncrementBytesLost(size - bytesWritten);
 	return bytesWritten;
 }
 

@@ -27,6 +27,7 @@ std::string pidFileName("/var/run/udp2log.pid");
 std::string daemonUserName("udp2log");
 std::string multicastAddr("0");
 int udpReceiveQueue = 128; // KB
+int reportIntervalSeconds = 300;
 
 Udp2LogConfig config;
 
@@ -121,21 +122,25 @@ int main(int argc, char** argv)
 	// Process command line
 	options_description optDesc;
 	optDesc.add_options()
-		("help", "Show help message.")
-		("port,p", value<unsigned int>(&port)->default_value(port), "UDP port.")
-		("config-file,f", value<string>(&configFileName)->default_value(configFileName), 
+		("help", 
+		 	"Show help message.")
+		("port,p", value<unsigned int>(&port), 
+		 	"UDP port.")
+		("config-file,f", value<string>(&configFileName), 
 		 	"Config file location.")
 		("daemon", "Run as a background process.")
-		("log-file", value<string>(&logFileName)->default_value(logFileName),
+		("log-file", value<string>(&logFileName),
 		 	"The log file, for internal udp2log messages. Used only if --daemon is specified.")
-		("pid-file", value<string>(&pidFileName)->default_value(pidFileName),
+		("pid-file", value<string>(&pidFileName),
 		 	"The location to write the new PID, if --daemon is specified.")
-		("user", value<string>(&daemonUserName)->default_value(daemonUserName),
+		("user", value<string>(&daemonUserName),
 		 	"User to switch to, after daemonizing")
-		("multicast", value<string>(&multicastAddr)->default_value(multicastAddr), 
+		("multicast", value<string>(&multicastAddr), 
 		 	"Multicast address to listen to")
-		("recv-queue", value<int>(&udpReceiveQueue)->default_value(udpReceiveQueue),
-		 	"The size of the kernel UDP receive buffer, in KB");
+		("recv-queue", value<int>(&udpReceiveQueue),
+		 	"The size of the kernel UDP receive buffer, in KB")
+		("report-interval", value<int>(&reportIntervalSeconds),
+		 	"Show a status report once every this many number of seconds");
 
 	variables_map vm;
 	try {
@@ -143,8 +148,7 @@ int main(int argc, char** argv)
 		notify(vm);   
 	} catch (exception & e) {
 		cerr << e.what() << endl;
-		cerr << "Usage: " << argv[0] << 
-			" [-p <port>] [-f <config_file>]\n";
+		cerr << "Usage: " << argv[0] << " [..options..]\nOptions:\n" << optDesc;
 		return 1;
 	}
 	if (vm.count("help")) {
@@ -225,7 +229,7 @@ int main(int argc, char** argv)
 			Udp2LogConfig::BLOCK_SIZE, 
 			config.GetWriteCallback());
 	
-	const PosixClock::Time reportInterval(5, 0);
+	const PosixClock::Time reportInterval(reportIntervalSeconds, 0);
 	const PosixClock::Time updateInterval(Udp2LogConfig::UPDATE_PERIOD);
 	PosixClock clock(CLOCK_REALTIME);
 	PosixClock::Time nextReportTime = clock.Get() + reportInterval;

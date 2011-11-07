@@ -122,7 +122,7 @@ Block & Block::operator=(const Block & b) {
 }
 
 Block Block::Offset(size_t newOffset) const {
-	if (offset + newOffset > size) {
+	if (newOffset > size) {
 		throw std::runtime_error("Block::Offset buffer overrun");
 	}
 	Block b(*this);

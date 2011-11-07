@@ -28,7 +28,7 @@ public:
 	Udp2LogConfig();
 	void Open(const std::string & name);
 	void Load();
-	void AddUnsampledPipe(ProcessorPointer p);
+	void AddAsyncPipe(ProcessorPointer p);
 	void FixBrokenProcessors();
 	void Reload();
 	void ProcessBlock(const Block & block);
@@ -117,7 +117,7 @@ protected:
 	PosixClock::Time currentTime;
 	PosixClock clock;
 	std::vector<bool> teeProcessors, activeProcessors, readyProcessors;
-	size_t numPipeProcessors;
+	size_t numAsyncProcessors;
 	std::vector<bool> readyPipes;
 
 	typedef std::map<int, std::vector<int> > ByFactorArray;

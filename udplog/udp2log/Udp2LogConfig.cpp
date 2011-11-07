@@ -31,7 +31,7 @@ const PosixClock::Time Udp2LogConfig::MIN_HOLIDAY_TIME(2e-9);
 // regular backlog write operations, which adversely affect the global 
 // throughput due to high CPU overhead. This rationale only makes sense as long
 // as the holiday time is only a few times higher than the write overhead.
-const PosixClock::Time Udp2LogConfig::MAX_HOLIDAY_TIME(1e-3);
+const PosixClock::Time Udp2LogConfig::MAX_HOLIDAY_TIME(2e-9);
 
 // The maximum input block size. On Linux 2.6.11 and later, this can be up 
 // to 64KB. If it was more than 64KB, the temporary pipe buffer used for 
@@ -48,7 +48,7 @@ Udp2LogConfig::Udp2LogConfig()
 	processRate(UPDATE_PERIOD, RATE_PERIOD),
 	currentTimeValid(false),
 	clock(CLOCK_REALTIME),
-	numPipeProcessors(0),
+	numAsyncProcessors(0),
 	lineIndex(0)
 {
 	// Make the buffer pipe non-blocking
@@ -92,15 +92,15 @@ void Udp2LogConfig::Load()
 
 			params = strtok(NULL, "");
 			ProcessorPointer processor;
-			bool flush = false, blocking = false;
+			bool flush = false, blocking = true;
 
 			if (!strcmp(type, "flush")) {
 				flush = true;
 				type = strtok(params, " \t");
 				params = strtok(NULL, "");
 			}
-			if (!strcmp(type, "blocking")) {
-				blocking = true;
+			if (!strcmp(type, "nonblocking")) {
+				blocking = false;
 				type = strtok(params, " \t");
 				params = strtok(NULL, "");
 			}
@@ -134,11 +134,11 @@ void Udp2LogConfig::Load()
 
 	// Initialise epoll and processorsByFactor
 	processorsByFactor.clear();
-	numPipeProcessors = 0;
+	numAsyncProcessors = 0;
 	for (unsigned i = 0; i < processors.size(); i++) {
 		ProcessorPointer p = processors[i];
-		if (p->IsUnsampledPipe()) {
-			AddUnsampledPipe(p);
+		if (p->IsUnsampledPipe() && !p->IsBlocking()) {
+			AddAsyncPipe(p);
 		}
 		processorsByFactor[p->GetFactor()].push_back(i);
 	}
@@ -146,15 +146,15 @@ void Udp2LogConfig::Load()
 	epollEvents.resize(processors.size());
 }
 
-void Udp2LogConfig::AddUnsampledPipe(ProcessorPointer lp) {
+void Udp2LogConfig::AddAsyncPipe(ProcessorPointer lp) {
 	boost::shared_ptr<PipeProcessor> p = 
 		boost::dynamic_pointer_cast<PipeProcessor, LogProcessor>(lp);
 	if (!p) {
 		throw std::runtime_error(
-			"Udp2LogConfig::AddUnsampledPipe: only works on PipeProcessor for now");
+			"Udp2LogConfig::AddAsyncPipe: only works on PipeProcessor for now");
 	}
 	epoll->AddPoll(p->GetPipe(), EPOLLOUT, p);
-	numPipeProcessors++;
+	numAsyncProcessors++;
 }
 
 void Udp2LogConfig::FixBrokenProcessors()
@@ -196,16 +196,24 @@ void Udp2LogConfig::ProcessBlock(const Block & block)
 
 	int numPipes = 0;
 	for (iter = processors.begin(); iter != processors.end(); iter++) {
-		if ((**iter).IsBacklogged()) {
+		bool blocking = (**iter).IsBlocking();
+		bool backlogged = (**iter).IsBacklogged();
+		bool active = (**iter).IsActive(currentTime);
+		bool unsampled = (**iter).IsUnsampledPipe();
+		if (backlogged && !blocking) {
 			(**iter).IncrementBytesLost(block.GetSize());
 			continue;
 		}
-		if (!(**iter).IsActive(currentTime)) {
-			(**iter).SetBacklog(block);
+		if (!active) {
+			if (backlogged) {
+				(**iter).IncrementBytesLost(block.GetSize());
+			} else {
+				(**iter).SetBacklog(block);
+			}
 			continue;
 		}
 		activeProcessors.at(iter - processors.begin()) = true;
-		if ((**iter).IsUnsampledPipe() && (**iter).IsActive(currentTime)) {
+		if (unsampled && active) {
 			teeProcessors.at(iter - processors.begin()) = true;
 			numPipes++;
 		}
@@ -258,9 +266,13 @@ void Udp2LogConfig::ProcessBlock(const Block & block)
 				if (bytesWritten != (ssize_t)lineLength) {
 					// Partial write done
 					// Make a backlog entry
-					Block block = pool.New();
-					block.Append(line1 + bytesWritten, lineLength - bytesWritten);
-					p.SetBacklog(block);
+					if (p.IsBacklogged()) {
+						p.IncrementBytesLost(lineLength - bytesWritten);
+					} else {
+						Block block = pool.New();
+						block.Append(line1 + bytesWritten, lineLength - bytesWritten);
+						p.SetBacklog(block);
+					}
 					PutOnHoliday(*processors[*bfi2]);
 				}
 			}
@@ -292,8 +304,8 @@ void Udp2LogConfig::HandleBacklogs() {
 
 void Udp2LogConfig::CheckReadiness(const Block & block) {
 	epoll->EpollWait(&epollEvents, 0);
-	if (epollEvents.size() != numPipeProcessors) {
-		readyProcessors.assign(numPipeProcessors, false);
+	if (epollEvents.size() != numAsyncProcessors) {
+		readyProcessors.assign(numAsyncProcessors, false);
 		for (MyEventsIterator iter = epollEvents.begin(); iter != epollEvents.end(); iter++) {
 			if (iter->first & EPOLLOUT) {
 				readyProcessors.at(iter->second->GetProcessorIndex()) = true;
@@ -339,6 +351,11 @@ void Udp2LogConfig::HandleTeePipes(const Block & block) {
 
 void Udp2LogConfig::PutOnHoliday(LogProcessor & p)
 {
+	if (!p.IsBlocking()) {
+		// Blocking pipes don't go on holiday
+		return;
+	}
+
 	PosixClock::Time endTime = GetCurrentTime();
 	int lossRate = p.GetLossRate();
 	int inputRate = GetProcessRate();
