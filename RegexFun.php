@@ -220,8 +220,8 @@ class ExtRegexFun {
 	}
 	
 	protected static function msgLimitExceeded() {
-		global $egRegexFunMaxRegexPerParse;
-		$msg = '<span class="error">' . wfMsgForContent( 'regexfun-limit-exceed', $egRegexFunMaxRegexPerParse ). '</span>';
+		global $egRegexFunMaxRegexPerParse, $wgContLang;
+		$msg = '<span class="error">' . wfMsgForContent( 'regexfun-limit-exceed', $wgContLang->formatNum( $$egRegexFunMaxRegexPerParse ) ) . '</span>';
 		return array( $msg, 'noparse' => true, 'isHTML' => false ); // 'isHTML' must be false for #iferror!
 	}
 	
