@@ -23,22 +23,31 @@ $messages['en'] = array(
 	'sternograph-context-post' => ''
 );
 
-/**
- * Translation documentation.
- */
+/** Message documentation (Message documentation) */
 $messages['qqq'] = array(
-	'sternograph-desc'=>'Description of the Sternograph extension; displayed on the Special:Extensions page only.',
+	'sternograph-desc' => 'Description of the Sternograph extension; displayed on the Special:Extensions page only.',
 	'sternograph-empty' => 'Error message when an empty tag is detected on the wiki-formatted page.  The tag name to display is parsed to this function as the first parameter.',
-	'sternograph-nested'=>'Error message when a sternograph tag occurs within an existing sternograph tag on the wiki-formatted page.  The tag name to display is the first parameter.',
+	'sternograph-nested' => 'Error message when a sternograph tag occurs within an existing sternograph tag on the wiki-formatted page.  The tag name to display is the first parameter.',
 	'sternograph-speaker-is' => 'Error message when a speaker block does not contain the speaker delimeter on the wiki-formatted page.  The tag name to display is the first parameter; the character that is required is the second parameter.',
+);
 
-	'sternograph-speaker-pre'=>'Text that will always occur before the name of a speaker in the formatted text.  This text is formatted by the sternographName CSS class.',
-	'sternograph-speaker-post'=>'Text that will always occur after the name of a speaker in the formatted text.  This text is formatted by the sternographName CSS class.',
-	'sternograph-block-pre'=>'Text that will always occur before a stage direction block in the formatted text.  This text is formatted by the sternographDirection and sternographDirectionBlock CSS classes.',
-	'sternograph-block-post'=>'Text that will always occur after a stage direction block in the formatted text.  This text is formatted by the sternographDirection and sternographDirectionBlock CSS classes.',
-	'sternograph-inline-pre'=>'Text that will always occur before an in-line stage direction in the formatted text.  This text is formatted by the sternographDirection and sternographDirectionInline CSS classes.',
-	'sternograph-inline-post'=>'Text that will always occur after an in-line stage direction in the formatted text.  This text is formatted by the sternographDirection and sternographDirectionInline CSS classes.',
-	'sternograph-context-pre'=>'Text that will always occur before the context block in the formatted text.  This text is formatted by the sternographContext CSS class.',
-	'sternograph-context-post'=>'Text that will always occur after the context block in the formatted text.  This text is formatted by the sternographContext CSS class.'
+/** German (Deutsch)
+ * @author Kghbln
+ */
+$messages['de'] = array(
+	'sternograph-desc' => 'Ermöglicht <nowiki><sterno></nowiki>-Tags für Niederschriften von Gesprochenem (Theaterstücke, Interviews, usw.)',
+	'sternograph-empty' => 'Das <$1>-Tag darf nicht leer sein.',
+	'sternograph-nested' => 'Das <$1>-Tag darf nicht verschachtelt sein.',
+	'sternograph-speaker-is' => 'Die Zeilen des <$1>-Blocks müssen das Zeichen „$2“ enthalten.',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'sternograph-desc' => 'Etiquettas <nowiki><sterno></nowiki> pro transcriptos de parolas parlate (dramas, interviews, etc.)',
+	'sternograph-empty' => 'Le etiquetta <$1> non pote esser vacue.',
+	'sternograph-nested' => 'Le etiquetta <$1> non pote esser usate recursivemente.',
+	'sternograph-speaker-is' => 'Le delimitator de bloco de parlator pro <$1> debe haber le character $2.',
 );
 

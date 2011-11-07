@@ -2352,6 +2352,7 @@ $messages['pt-br'] = array(
 
 /** Romanian (Română)
  * @author Firilacroco
+ * @author Minisarm
  */
 $messages['ro'] = array(
 	'moodbar-desc' => 'Permite utilizatorilor specificați să își trimită părerea despre experiența lor din timpul editării',
@@ -2402,6 +2403,13 @@ Pentru mai multe informații, vizitați $1.',
 	'moodbar-header-user-editcount' => 'Număr contribuții utilizator',
 	'moodbar-header-namespace' => 'Spațiu de nume',
 	'moodbar-header-own-talk' => 'Pagina proprie de discuții',
+	'moodbar-feedback-filters' => 'Filtre',
+	'moodbar-feedback-filters-type' => 'Stare de spirit:',
+	'moodbar-feedback-filters-type-happy' => 'Fericit',
+	'moodbar-feedback-filters-type-confused' => 'Confuz',
+	'moodbar-feedback-filters-type-sad' => 'Trist',
+	'moodbar-feedback-filters-username' => 'Nume de utilizator',
+	'moodbar-feedback-more' => 'Mai multe',
 	'moodbar-type-happy' => 'Fericit',
 	'moodbar-type-sad' => 'Trist',
 	'moodbar-type-confused' => 'Confuz',

@@ -626,7 +626,7 @@ $messages['myv'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'mwe-loading' => 'bezig met laden ...',
+	'mwe-loading' => 'Bezig met laden…',
 	'mwe-error_load_lib' => 'Fout: JavaScript $1 kon niet opgehaald worden of definieert $2 niet',
 	'mwe-apiproxy-setup' => 'Bezig met het opzetten van een API-proxy',
 	'mwe-load-drag-item' => 'Bezig met het laden van het gesleepte bestand',

@@ -17,6 +17,15 @@ $messages['af'] = array(
 	'wom-desc' => 'Maklike bladsyobjek-model',
 );
 
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author Renessaince
+ */
+$messages['be-tarask'] = array(
+	'objecteditor' => 'Рэдактар аб’ектаў',
+	'wom_editor' => 'Мадэль аб’ектаў',
+	'wom-desc' => 'Мадэль аб’ектаў Easy Page для вікі-ўдзельніка',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

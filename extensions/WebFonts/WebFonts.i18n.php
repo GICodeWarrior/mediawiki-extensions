@@ -350,7 +350,7 @@ $messages['pms'] = array(
 	'webfonts-desc' => 'Anserì ij caràter ant le pàgine',
 	'webfonts-load' => "Ch'a selession-a un tipo ëd caràter",
 	'webfonts-reset' => 'Spian-a',
-	'webfonts-disable-preference' => "Disabilité l'anseriment ëd tipo ëd caràter (Caràter dl'aragnà)",
+	'webfonts-enable-preference' => "Abilité l'anseriment ëd tipo ëd caràter (Caràter dl'aragnà)",
 );
 
 /** Pashto (پښتو)

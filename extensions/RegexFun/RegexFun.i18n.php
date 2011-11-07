@@ -38,6 +38,15 @@ $messages['de'] = array(
 	'regexfun-limit-exceed' => 'Die maximale Anzahl von $1, durch „Regex Fun“ behandelten, regulären Ausdrücken ist erreicht.',
 );
 
+/** French (Français)
+ * @author Gomoko
+ */
+$messages['fr'] = array(
+	'regexfun-desc' => "Ajoute les fonctions d'analyse permettant l'utilisation d'expressions régulières dans les pages du wiki",
+	'regexfun-invalid' => 'L\'expression régulière "$1" n\'est pas valide.',
+	'regexfun-limit-exceed' => 'Le nombre maximal de $1 expressions régulières gérées "Regex Fun" a été atteint.',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -69,7 +78,7 @@ $messages['mk'] = array(
  * @author Tjcool007
  */
 $messages['nl'] = array(
-	'regexfun-desc' => "Voegt parser functies toe die toelaten om reguliere expressies te gebruiken in wiki pagina's",
+	'regexfun-desc' => "Voegt parserfuncties toe die mogelijk maken om reguliere expressies te gebruiken in wikipagina's",
 	'regexfun-invalid' => 'De reguliere expressie "$1" is ongeldig.',
 	'regexfun-limit-exceed' => 'Het maximale aantal af te handelen reguliere expressies is bereikt ($1).',
 );
