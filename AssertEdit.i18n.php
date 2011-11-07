@@ -314,7 +314,7 @@ $messages['fy'] = array(
  */
 $messages['gl'] = array(
 	'assert_edit_title' => 'Afirmación fracasada',
-	'assertedit-desc' => 'Engade afirmacións de edición para o uso mediante bots.',
+	'assertedit-desc' => 'Engade afirmacións de edición para o uso mediante bots',
 	'assert_edit_message' => 'A afirmación especificada ($1) fracasou.',
 );
 
