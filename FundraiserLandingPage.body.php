@@ -19,6 +19,9 @@ class FundraiserLandingPage extends UnlistedSpecialPage
 		$request = $this->getRequest();
 		$this->setHeaders();
 
+		# set the page title to something useful
+		$this->getOutput()->setPagetitle( wfMsg( 'donate_interface-make-your-donation' ) );
+
 		# clear output variable to be safe
 		$output = '';
 
