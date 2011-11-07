@@ -116,7 +116,7 @@ var rules = [
 
 ['//','', 'ঽ'],
 ['\\^','', 'ং'], // Anusvara
-['ত্~','', 'ৎ'], // BENGALI LETTER KHANDA TA
+['ত্~','', 'ৎ'] // BENGALI LETTER KHANDA TA
 ];
 
 jQuery.narayam.addScheme( 'as', {
