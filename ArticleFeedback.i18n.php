@@ -501,6 +501,7 @@ $messages['ba'] = array(
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Renessaince
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
@@ -521,6 +522,7 @@ $messages['be-tarask'] = array(
 	'articlefeedback-survey-title' => 'Калі ласка, адкажыце на некалькі пытаньняў',
 	'articlefeedback-survey-thanks' => 'Дзякуй за адказы на пытаньні.',
 	'articlefeedback-survey-disclaimer' => 'Дасылаючы, Вы пагаджаецеся на доступ на гэтых $1.',
+	'articlefeedback-survey-disclaimerlink' => 'умовы',
 	'articlefeedback-error' => 'Узьнікла памылка. Калі ласка, паспрабуйце потым',
 	'articlefeedback-form-switch-label' => 'Адзначце гэтую старонку',
 	'articlefeedback-form-panel-title' => 'Адзначце гэтую старонку',
@@ -533,7 +535,7 @@ $messages['be-tarask'] = array(
 	'articlefeedback-form-panel-expertise-hobby' => 'Гэта мая асабістая жарсьць',
 	'articlefeedback-form-panel-expertise-other' => 'Крыніцы маіх ведаў няма ў гэтым сьпісе',
 	'articlefeedback-form-panel-helpimprove' => 'Я жадаю дапамагчы палепшыць {{GRAMMAR:вінавальны|{{SITENAME}}}}, дашліце мне ліст (па жаданьні)',
-	'articlefeedback-form-panel-helpimprove-note' => 'Вам будзе дасланы ліст з пацьверджаньнем. Ваш адрас ня будзе разгалошаны. $1',
+	'articlefeedback-form-panel-helpimprove-note' => 'Вам будзе дасланы электронны ліст з пацьверджаньнем. Ваш адрас ня будзе разгалошаны зьнешнім бакам паводле $1',
 	'articlefeedback-form-panel-helpimprove-privacy' => 'водгук пра правілы адносна прыватнасьці',
 	'articlefeedback-form-panel-submit' => 'Даслаць адзнакі',
 	'articlefeedback-form-panel-pending' => 'Вашыя адзнакі не адпраўленыя',
@@ -587,6 +589,7 @@ $messages['be-tarask'] = array(
 	'articlefeedback-survey-message-success' => 'Дзякуй за адказы на гэтае апытаньне.',
 	'articlefeedback-survey-message-error' => 'Узьнікла памылка.
 Калі ласка, паспрабуйце потым.',
+	'articlefeedback-privacyurl' => 'http://wikimediafoundation.org/wiki/Водгук_пра_правілы_адносна_прыватнасьці',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Сёньняшнія ўзьлёты і падзеньні',
 	'articleFeedback-table-caption-dailyhighs' => 'Артыкулы з найвышэйшымі адзнакамі: $1',
 	'articleFeedback-table-caption-dailylows' => 'Артыкулы з найніжэйшымі адзнакамі: $1',
@@ -5931,7 +5934,7 @@ $messages['roa-tara'] = array(
 	'articlefeedback-form-panel-expertise-studies' => "Tènghe 'nu grade de scole/università 'mbortande",
 	'articlefeedback-form-panel-expertise-profession' => "Jè parte d'a professiona meje",
 	'articlefeedback-form-panel-expertise-hobby' => "Queste jè 'na passiona profonda meje",
-	'articlefeedback-form-panel-helpimprove-privacy' => "Regole p'a privacy",
+	'articlefeedback-form-panel-helpimprove-privacy' => "'mbormaziune sus a le regole p'a privacy",
 	'articlefeedback-form-panel-submit' => 'Conferme le pundegge',
 	'articlefeedback-form-panel-pending' => "'U vote tune non g'ha state confermate",
 	'articlefeedback-form-panel-success' => 'Reggistrate cu successe',
@@ -5992,6 +5995,7 @@ Pe piacere pruève arrete.",
  * @author AlexSm
  * @author Assele
  * @author Catrope
+ * @author DCamer
  * @author Dim Grits
  * @author MaxSem
  * @author Александр Сигачёв
@@ -6014,7 +6018,8 @@ $messages['ru'] = array(
 	'articlefeedback-survey-submit' => 'Отправить',
 	'articlefeedback-survey-title' => 'Пожалуйста, ответьте на несколько вопросов',
 	'articlefeedback-survey-thanks' => 'Спасибо за участие в опросе.',
-	'articlefeedback-survey-disclaimer' => 'В целях улучшения этой функции, ваш отзыв может быть анонимно передан сообществу Википедии.',
+	'articlefeedback-survey-disclaimer' => 'Отправляя, вы соглашаетесь огласить эти данные на $1.',
+	'articlefeedback-survey-disclaimerlink' => 'следующих условиях',
 	'articlefeedback-error' => 'Произошла ошибка. Пожалуйста, повторите попытку позже.',
 	'articlefeedback-form-switch-label' => 'Оцените эту страницу',
 	'articlefeedback-form-panel-title' => 'Оцените эту страницу',
