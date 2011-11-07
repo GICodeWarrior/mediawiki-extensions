@@ -222,7 +222,18 @@ $messages['mk'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
-	'signupapi-desc' => 'Membersihkan bahan-bahan berkenaan pendaftaran daripada Special:UserLogin serta membubuh API untuk pendaftaran',
+	'signupapi-desc' => 'Membersihkan perkara-perkara berkaitan pendaftaran daripada [[Special:UserLogin|laman log masuk]] serta menambahkan API untuk pendaftaran',
+	'signupapi-ok' => 'OK',
+	'signupapi-noname' => 'Nama pengguna tidak dinyatakan',
+	'signupapi-userexists' => 'Pengguna wujud',
+	'signupapi-enterpassword' => 'Anda mesti menaipkan kata laluan',
+	'signupapi-passwordtooshort' => 'Kata laluan terlalu pendek',
+	'signupapi-weak' => 'Lemah',
+	'signupapi-medium' => 'Sederhana',
+	'signupapi-strong' => 'Kuat',
+	'signupapi-badretype' => 'Kata-kata laluan yang anda berikan tidak sepadan',
+	'signupapi-passwordsmatch' => 'Kata-kata laluan sepadan',
+	'signupapi-invalidemailaddress' => 'Alamat e-mel tidak sah',
 );
 
 /** Dutch (Nederlands)
