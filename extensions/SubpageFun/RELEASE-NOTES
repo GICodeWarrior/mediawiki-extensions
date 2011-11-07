@@ -1,6 +1,11 @@
  'Supage Fun' Changelog:
  =======================
 
+* November 8, 2011 - Version 0.5.1:
+  - All functions/variables returning page names in any way are using 'wfEscapeWikiText()' now like other variables like 'PAGENAME'
+    for example.
+  - 'filter' parameter can be used for 'NUMBEROFSUBPAGES'.
+
 * November 7, 2011 -- Version 0.5:
   - All magic words are case-sensitive now and must be written in UPPERCASE.
   - Input of invalid page names (with forbidden characters) will output '' instead of raising a php error. This behavior is adopted

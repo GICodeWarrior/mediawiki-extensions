@@ -8,7 +8,7 @@
  * Support:       http://www.mediawiki.org/wiki/Extension_talk:Subpage_Fun
  * Source code:   http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/SubpageFun
  * 
- * @version: 0.5
+ * @version: 0.5.1
  * @license: ISC license
  * @author:  Daniel Werner < danweetz@web.de >
  *
@@ -48,7 +48,7 @@ $wgHooks['ParserGetVariableValueSwitch'][] = 'ExtSubpageFun::onParserGetVariable
 
 class ExtSubpageFun {
 
-	const VERSION = '0.5';
+	const VERSION = '0.5.1';
 
 	const MAG_SUBPAGETITLE     = 'subpagetitle';
 	const MAG_SUBPAGES         = 'subpages';
@@ -142,10 +142,11 @@ class ExtSubpageFun {
 		//	return '';
 		$out = array();
 		foreach( $pages as $page ) {
+			$text = wfEscapeWikiText( $page->getPrefixedText() );
 			if( $link ) {
-				$out[] = '[[:' . $page->getPrefixedText() . ']]';
+				$out[] = "[[:{$text}]]";
 			} else {
-				$out[] = $page->getPrefixedText();
+				$out[] = $text;
 			}
 		}
 		return implode( $sep, $out );
@@ -236,7 +237,7 @@ class ExtSubpageFun {
 		if( $t === null ) {
 			return ''; // invalid title given
 		}
-		return SubpageInfo::getSubpageTitle( $t );
+		return wfEscapeWikiText( SubpageInfo::getSubpageTitle( $t ) );
 	}
 	
 	static function subpages( &$parser ) {
@@ -325,16 +326,22 @@ class ExtSubpageFun {
 		//get all possible arguments:
 		$args = ExtSubpageFun::getFunctionArgsArray( func_get_args() );
 
-		$title = isset($args[1]) ? $args[1] : null;
-		$depth = isset( $args['depth'] ) ? self::valDepth( $args['depth'] ) : null;
+		$title  = isset($args[1])          ? $args[1]                         : null;
+		$depth  = isset( $args['depth'] )  ? self::valDepth( $args['depth'] ) : null;
+		$filter = isset( $args['filter'] ) ? $args['filter']                  : null;
 		
-		//function logic:
+		// function logic:
 		$t = self::newTitleObject( $parser, $title );
 		if( $t === null ) {
 			return ''; // invalid title given
 		}
 		
+		// get subpages:
 		$subpages = SubpageInfo::getSubpages( $t, $depth );
+		
+		// filter by filter criterion:
+		$subpages = self::filterSiteList( $subpages, $filter );
+				
 		return count( $subpages );
 	}	
 	
@@ -347,10 +354,13 @@ class ExtSubpageFun {
 		//get all parents because the toplevel is the highest existing parent:
 		$parentpages = SubpageInfo::getAncestorPages( $t );
 		
-		if( ! empty( $parentpages ) )
-			return $parentpages[0]->getPrefixedText();
-		else //no parent! The page itself is the top level:
-			return $t->getPrefixedText();
+		if( ! empty( $parentpages ) ) {
+			return wfEscapeWikiText( $parentpages[0]->getPrefixedText() );
+		}
+		else {
+			////no parent! The page itself is the top level:
+			return wfEscapeWikiText( $t->getPrefixedText() );
+		}
 	}
 	
 	
