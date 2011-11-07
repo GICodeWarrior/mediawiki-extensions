@@ -17,7 +17,7 @@ $messages = array();
  * @author Jeroen De Dauw
  */
 $messages['en'] = array(
-	'sdt-desc' => 'Additional data types for Semantic MediaWiki and extensions',
+	'sdt-desc' => 'Additional datatypes for Semantic MediaWiki and extensions',
 
 	'sdt-duration' => 'Duration',
 );
