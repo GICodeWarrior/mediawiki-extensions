@@ -183,6 +183,13 @@ $messages['lt'] = array(
 	'categorymembersonsidebar-desc' => 'Prideda kategorijos narių parankinės',
 );
 
+/** Basa Banyumasan (Basa Banyumasan)
+ * @author StefanusRA
+ */
+$messages['map-bms'] = array(
+	'categorymembersonsidebar-desc' => 'Nambahna anggota kategori nang sidebar',
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */
