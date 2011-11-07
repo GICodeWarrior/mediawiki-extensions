@@ -18,7 +18,14 @@ $messages = array();
 $messages['en'] = array(
 	'regexfun-desc' => 'Adds parser functions allowing the use of regular expressions within wiki pages',
 	'regexfun-invalid' => 'The regular expression "$1" is invalid.',
-	'regexfun-limit-exceed' => 'Maximum of $1 "Regex Fun" regular expression handlings reached.',
+	'regexfun-limit-exceed' => 'Maximum of {{PLURAL:$1|$1 "Regex Fun" regular expression handling|$1 "Regex Fun" regular expression handlings}} reached.',
+);
+
+/** Message documentation (Message documentation)
+ * @author Daniel Werner
+ */
+$messages['qqq'] = array(
+	'regexfun-limit-exceed' => '$1 is the in LocalSettings.php defined limit of total Regex Fun function calls (per parser process) dealing with regular expressions.',
 );
 
 /** German (Deutsch)
