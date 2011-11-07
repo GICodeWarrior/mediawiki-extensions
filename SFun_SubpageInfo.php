@@ -192,11 +192,11 @@ class SubpageInfo {
 	 *                name (without prefix) will be returned.
 	 */	 
 	static function getSubpageTitle( Title $page ) {
-		$parent = SubpageInfo::getParentPage( $page );		
+		$parent = SubpageInfo::getParentPage( $page );
 		//return the whole subpage name not like SUBPAGENAME only the last part after the last "/":
 		if( ! empty( $parent ) ) {
 			return substr( $page->getText(), strlen( $parent->getText() . '/' ) );
-		}		
+		}
 		return $page->getText(); //return PAGENAME
 	}
 }
