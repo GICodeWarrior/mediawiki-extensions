@@ -1887,11 +1887,12 @@ $messages['sh'] = array(
 
 /** Sinhala (සිංහල)
  * @author Calcey
+ * @author Singhalawap
  * @author බිඟුවා
  */
 $messages['si'] = array(
 	'group-patroller' => 'මුර සංචාරකයන්',
-	'group-patroller-member' => '{{GENDER:$1|මුර සංචාරකයා}}',
+	'group-patroller-member' => '{{GENDER:$1|මුර-සංචාරක}}',
 );
 
 /** Slovak (Slovenčina)
