@@ -176,7 +176,9 @@ class Premoderation {
 	
 	public static function updateDBSchema( $updater ) {
 		$updater->addExtensionUpdate( array( 'addTable', 'pm_queue',
-			dirname( __FILE__ ) . '/db_tables.sql', true ) );
+			dirname( __FILE__ ) . '/db_queue.sql', true ) );
+		$updater->addExtensionUpdate( array( 'addTable', 'pm_whitelist',
+			dirname( __FILE__ ) . '/db_whitelist.sql', true ) );
 		return true;
 	}
 }

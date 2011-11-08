@@ -20,10 +20,12 @@ class SpecialPremoderationWhiteList extends SpecialPage {
 		if( !$wgUser->isAllowed( 'premoderation-wlist' ) ) {
 			$this->displayRestrictionError();
 			return;
-		} elseif( wfReadOnly() ) {
+		}
+		if( wfReadOnly() ) {
 			$wgOut->readOnlyPage();
 			return;
-		} elseif( $wgUser->isBlocked() ) {
+		}
+		if( $wgUser->isBlocked() ) {
 			$wgOut->blockedPage();
 			return;
 		}

@@ -8,7 +8,7 @@ $wgExtensionCredits['antispam'][] = array(
 	'name' => 'Premoderation',
 	'author' => array( 'Cryptocoryne' ),
 	'descriptionmsg' => 'premoderation-desc',
-	'version' => '1.0beta',
+	'version' => '1.0',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Premoderation',
 );
 
