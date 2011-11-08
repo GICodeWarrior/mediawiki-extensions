@@ -133,6 +133,7 @@ class PdfBookHooks {
 	private static function setProperty( $name, $default ) {
 		global $wgRequest;
 		if ( $wgRequest->getText( "pdf$name" ) )   return $wgRequest->getText( "pdf$name" );
+		if ( $wgRequest->getText( "amp;pdf$name" ) )   return $wgRequest->getText( "amp;pdf$name" ); // hack to handle ampersand entities in URL
 		if ( isset( $GLOBALS["wgPdfBook$name"] ) ) return $GLOBALS["wgPdfBook$name"];
 		return $default;
 	}
