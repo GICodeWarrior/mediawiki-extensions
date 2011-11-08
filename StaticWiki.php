@@ -39,12 +39,9 @@ function wfStaticEditHook ( $a ) {
 	if ( !in_array ( $wgTitle->getNamespace() , $wgStaticWikiNamespaces ) ) return true ; # This article namespace is not imported => normal edit
 
 	if ( ! $a->mTitle->userCan( 'edit' ) ) { # Only users that can edit may import as well
-			wfDebug( "$fname: user can't edit\n" );
-			$wgOut->readOnlyPage( $this->mArticle->getContent( true ), true );
-			wfProfileOut( $fname );
-			return true;
-		}
-		
+		return true;
+	}
+
 	$url_title = $wgTitle->getPrefixedDBkey() ;
 	$title = $wgTitle->getText () ;	
 	$wgOut->setPageTitle ( 'Importing ' . $wgTitle->getPrefixedText() ) ;
