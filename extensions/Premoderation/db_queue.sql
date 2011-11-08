@@ -1,4 +1,4 @@
-CREATE TABLE /*_*/pm_queue (
+CREATE TABLE IF NOT EXISTS /*_*/pm_queue (
 	pmq_id BIGINT unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	pmq_page_last_id INT unsigned NOT NULL,
 	pmq_page_ns INT NOT NULL,
@@ -18,7 +18,3 @@ CREATE TABLE /*_*/pm_queue (
 	pmq_status VARBINARY(40) NOT NULL DEFAULT ''
 ) /*$wgDBTableOptions*/;
 CREATE INDEX /*i*/pmq_user ON /*_*/pm_queue (pmq_user);
-
-CREATE TABLE /*_*/pm_whitelist (
-	pmw_ip VARBINARY(40) NOT NULL PRIMARY KEY DEFAULT '',
-) /*$wgDBTableOptions*/;

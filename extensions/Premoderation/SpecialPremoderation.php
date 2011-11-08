@@ -22,10 +22,12 @@ class SpecialPremoderation extends SpecialPage {
 		if( !$wgUser->isAllowed( 'premoderation' ) ) {
 			$this->displayRestrictionError();
 			return;
-		} elseif( wfReadOnly() ) {
+		}
+		if( wfReadOnly() ) {
 			$wgOut->readOnlyPage();
 			return;
-		} elseif( $wgUser->isBlocked() ) {
+		}
+		if( $wgUser->isBlocked() ) {
 			$wgOut->blockedPage();
 			return;
 		}
@@ -55,12 +57,18 @@ class SpecialPremoderation extends SpecialPage {
 	}
 	
 	protected function showList() {
-		global $wgOut;
+		global $wgOut, $wgArticlePath;
 		
 		$wgOut->setPageTitle( wfMsg( 'premoderation-manager-mainpage' ) );
 		$wgOut->addWikiMsg( 'premoderation-list-intro' );
 		
 		$dbr = wfGetDB( DB_SLAVE );
+		$params = $this->mParams;
+		$conds = 'pmq_status <> "approved"';
+		if( isset( $params['offset'] ) ) {
+			$conds .= ' AND pmq_timestamp < ' . $dbr->addQuotes( $params['offset'] );
+		}
+		
 		$res = $dbr->select(
 			'pm_queue',
 			array(
@@ -68,15 +76,29 @@ class SpecialPremoderation extends SpecialPage {
 				'pmq_timestamp', 'pmq_minor', 'pmq_summary', 'pmq_len', 'pmq_status',
 				'pmq_updated', 'pmq_updated_user_text'
 			),
-			'',
+			$conds,
 			__METHOD__,
-			array( 'ORDER BY' => 'pmq_timestamp DESC', 'LIMIT' => 100 )
+			array( 'ORDER BY' => 'pmq_timestamp DESC', 'LIMIT' => 101 )
 		);
 		
 		$result = array();
-		while( $row = $dbr->fetchRow( $res ) ) {
+		for( $a = 0; $a < 101; $a++ ) {
+			$row = $dbr->fetchRow( $res );
+			if( $a == 100 ) {
+				$offset = $row['pmq_timestamp'];
+				break;
+			}
+			if( !$row ) {
+				break;
+			}
 			$status = $row['pmq_status'];
 			$result[$status][] = $row;
+		}
+		
+		if( isset( $offset ) ) {
+			$articlePath = str_replace('$1', '', $wgArticlePath);
+			$wgOut->addHTML( '<a href="' . $articlePath . 'Special:Premoderation/list/offset/'
+				. $offset . '">' . wfMsg( 'premoderation-next' ) . '</a>' );
 		}
 		
 		if( isset( $result['new'] ) ) {
@@ -119,7 +141,7 @@ class SpecialPremoderation extends SpecialPage {
 	protected function formatListTableRow( $row ) {
 		global $wgLang, $wgArticlePath;
 		
-		$articlePath = str_replace('$1', '', $wgArticlePath);		
+		$articlePath = str_replace('$1', '', $wgArticlePath);
 		return '<tr><td>' . $wgLang->timeanddate( $row['pmq_timestamp'] ) . '</td>' .
 			'<td>' . Linker::userLink( $row['pmq_user'], $row['pmq_user_text'] ) . '</td>' .
 			'<td>' . Linker::link( Title::newFromText( $row['pmq_page_title'], $row['pmq_page_ns'] ) ) .
@@ -166,7 +188,7 @@ class SpecialPremoderation extends SpecialPage {
 			Xml::closeElement( 'table' ) );
 		
 		if( $wgUser->isAllowed( 'premoderation-viewip' ) ) {
-			$wgOut->addHTML( wfMsg( 'premoderation-private-ip' ) . ' ' . $row['pmq_ip'] );
+			$wgOut->addHTML( wfMessage( 'premoderation-private-ip', $row['pmq_ip'] ) );
 		}
 		
 		$rev = Revision::newFromID( $row['pmq_page_last_id'] );
@@ -216,9 +238,6 @@ class SpecialPremoderation extends SpecialPage {
 	
 	protected function checkInternalConflicts( $db, $id, $ns, $page ) {
 		global $wgOut;
-		
-		$conds = 'pmq_page_ns = ' . $db->addQuotes( $ns ) . ' AND pmq_page_title = ' .
-			$db->addQuotes( $page ) . ' AND pmq_id != ' . $id . ' AND pmq_status != "approved"';
 		
 		$res = $db->select(
 			'pm_queue',
