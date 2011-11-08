@@ -453,6 +453,10 @@ $messages['be-tarask'] = array(
 	'prefs-contest' => 'Конкурсы',
 	'contest-prefs-showtoplink' => 'Паказваць спасылку на [[Special:MyContests|Мае конкурсы]] у мэню ўдзельніка.',
 	'contest-status-draft' => 'Чарнавік (адключаны)',
+	'contest-status-active' => 'Актыўны (уключаны)',
+	'contest-status-expired' => 'Скончыўся (уключаны, дасягнуў канчатковай даты)',
+	'contest-status-finished' => 'Скончаны (адключаны)',
+	'special-contest' => 'Прагляд конкурсу',
 );
 
 /** Breton (Brezhoneg)
