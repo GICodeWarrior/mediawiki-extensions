@@ -32,7 +32,7 @@ class HomeDirectoryManager:
 
 		# Add to this array if we add directories that don't have
 		# LDAP accounts associated with them
-		self.excludedFromModification = ['lost+found', 'SAVE', 'svn-private']
+		self.excludedFromModification = ['lost+found', 'SAVE', 'svn-private', 'autofs_check']
 
 		# Limit home directory management to the specified group
 		self.group = None
