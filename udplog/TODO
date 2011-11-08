@@ -1,0 +1,38 @@
+-------- Original Message --------
+Subject: 	udp2log status and future
+Date: 	Tue, 08 Nov 2011 10:58:19 +1100
+From: 	Tim Starling <tstarling@wikimedia.org>
+
+I've wrapped up my udp2log work for now. The idea of using
+non-blocking writes to pipes didn't work out as I had expected, so I
+made the blocking mode the default, as it was previously.
+
+The idea was to do non-blocking writes with only a 64KB buffer in
+between udp2log and the pipe, and to drop blocks if any write fails.
+It turns out that the buffer overflows very often, leading to a loss
+rate of around 10% even with low CPU load. I'm not exactly sure why it
+overflows, but any stall of the pipe process on the order of 1ms would
+cause this.
+
+To fix it, I would need to do a proper job of the async writer. It's
+not clear whether the half-async design, with blocking UDP reads and
+non-blocking pipe writes, would work correctly with larger buffers.
+It's possible that the write side would be starved of event response
+opportunities while the read side blocks.
+
+Reads are done in very small (~1400 byte) blocks, because that's how
+big the packets are. If the read side were non-blocking, there would
+need to be an epoll_wait() call in between each recv() call, doubling
+the number of syscalls. Testing indicates that this also doubles the
+amount of CPU time required for the read side, which would be a
+serious performance issue. So my idea is to split the read side and
+the write side across a thread or process boundary, using the existing
+buffer pipe to communicate between the two processes.
+
+The read side would be blocking, and would just aggregate UDP packets
+into 64KB blocks and write them to the buffer pipe. The write side
+would be a typical async event-driven process, with a function
+basically the same as the current Udp2LogConfig::ProcessBlock() except
+that the backlog buffer would be a std::deque of Block objects instead
+of a single Block object.
+
