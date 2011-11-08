@@ -589,7 +589,7 @@ $messages['be-tarask'] = array(
 	'articlefeedback-survey-message-success' => 'Дзякуй за адказы на гэтае апытаньне.',
 	'articlefeedback-survey-message-error' => 'Узьнікла памылка.
 Калі ласка, паспрабуйце потым.',
-	'articlefeedback-privacyurl' => 'http://wikimediafoundation.org/wiki/Водгук_пра_правілы_адносна_прыватнасьці',
+	'articlefeedback-privacyurl' => 'http://wikimediafoundation.org/wiki/Правілы_адносна_прыватнасьці_водгукаў',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Сёньняшнія ўзьлёты і падзеньні',
 	'articleFeedback-table-caption-dailyhighs' => 'Артыкулы з найвышэйшымі адзнакамі: $1',
 	'articleFeedback-table-caption-dailylows' => 'Артыкулы з найніжэйшымі адзнакамі: $1',
@@ -7273,6 +7273,7 @@ $messages['yo'] = array(
  * @author PhiLiP
  * @author Shizhao
  * @author Xiaomingyan
+ * @author 白布飘扬
  * @author 阿pp
  */
 $messages['zh-hans'] = array(
@@ -7292,7 +7293,8 @@ $messages['zh-hans'] = array(
 	'articlefeedback-survey-submit' => '提交',
 	'articlefeedback-survey-title' => '请回答几个问题',
 	'articlefeedback-survey-thanks' => '谢谢您回答问卷。',
-	'articlefeedback-survey-disclaimer' => '若要帮助我们改善此功能，您可以将您的反馈意见匿名分享给维基百科社区。',
+	'articlefeedback-survey-disclaimer' => '如果你同意依此$1发布你的意见，请提交。',
+	'articlefeedback-survey-disclaimerlink' => '条款',
 	'articlefeedback-error' => '发生了一个错误。请稍后重试。',
 	'articlefeedback-form-switch-label' => '给本文评分',
 	'articlefeedback-form-panel-title' => '给本文评分',
@@ -7302,11 +7304,11 @@ $messages['zh-hans'] = array(
 	'articlefeedback-form-panel-expertise' => '我非常了解与本主题相关的知识（可选）',
 	'articlefeedback-form-panel-expertise-studies' => '我有与其有关的大学学位',
 	'articlefeedback-form-panel-expertise-profession' => '这是我专业的一部分',
-	'articlefeedback-form-panel-expertise-hobby' => '这是个人隐私',
+	'articlefeedback-form-panel-expertise-hobby' => '个人对此有深厚的兴趣',
 	'articlefeedback-form-panel-expertise-other' => '此处未列出我的知识的来源',
 	'articlefeedback-form-panel-helpimprove' => '我想帮助改善维基百科，请给我发送一封电子邮件（可选）',
-	'articlefeedback-form-panel-helpimprove-note' => '我们将向您发送确认电子邮件。我们不会与任何人共享您的地址。$1',
-	'articlefeedback-form-panel-helpimprove-privacy' => '隐私方针',
+	'articlefeedback-form-panel-helpimprove-note' => '我们将向您发送确认电子邮件。基于$1，我们不会与任何人共享您的地址。',
+	'articlefeedback-form-panel-helpimprove-privacy' => '反馈隐私政策',
 	'articlefeedback-form-panel-submit' => '提交评分',
 	'articlefeedback-form-panel-pending' => '你的评分尚未提交',
 	'articlefeedback-form-panel-success' => '保存成功',
@@ -7325,7 +7327,7 @@ $messages['zh-hans'] = array(
 	'articlefeedback-field-trustworthy-tooltip-4' => '来源相当可靠',
 	'articlefeedback-field-trustworthy-tooltip-5' => '来源绝对可靠',
 	'articlefeedback-field-complete-label' => '完整性',
-	'articlefeedback-field-complete-tip' => '您觉得本条目内容是否基本上全面涵盖了该主题所涉及的领域？',
+	'articlefeedback-field-complete-tip' => '您觉得本条目是否已经涵盖了所有必要的内容？',
 	'articlefeedback-field-complete-tooltip-1' => '缺少绝大多数信息',
 	'articlefeedback-field-complete-tooltip-2' => '只含有少量信息',
 	'articlefeedback-field-complete-tooltip-3' => '包括了主要的信息，但是还缺少很多',
@@ -7359,6 +7361,7 @@ $messages['zh-hans'] = array(
 	'articlefeedback-survey-message-success' => '谢谢您回答问卷。',
 	'articlefeedback-survey-message-error' => '出现错误。
 请稍后再试。',
+	'articlefeedback-privacyurl' => 'http://wikimediafoundation.org/wiki/Feedback_privacy_statement',
 	'articleFeedback-table-caption-dailyhighsandlows' => '今日评分动态',
 	'articleFeedback-table-caption-dailyhighs' => '评分最高的条目：$1',
 	'articleFeedback-table-caption-dailylows' => '评分最低的条目：$1',
@@ -7401,6 +7404,7 @@ $3
  * @author Mark85296341
  * @author Shizhao
  * @author Waihorace
+ * @author 白布飘扬
  */
 $messages['zh-hant'] = array(
 	'articlefeedback' => '條目評分公告板',
@@ -7419,7 +7423,8 @@ $messages['zh-hant'] = array(
 	'articlefeedback-survey-submit' => '提交',
 	'articlefeedback-survey-title' => '請回答幾個問題',
 	'articlefeedback-survey-thanks' => '感謝您填寫此調查。',
-	'articlefeedback-survey-disclaimer' => '若要幫助我們改善此功能，您可以將您的反饋意見匿名分享給維基百科社區。',
+	'articlefeedback-survey-disclaimer' => '若要幫助我們改善此功能，您可以將您的反饋意見匿名分享給維基百科社區。$1',
+	'articlefeedback-survey-disclaimerlink' => '條款',
 	'articlefeedback-error' => '發生了錯誤。請稍後再試。',
 	'articlefeedback-form-switch-label' => '評價本頁',
 	'articlefeedback-form-panel-title' => '評價本頁',
@@ -7432,8 +7437,8 @@ $messages['zh-hant'] = array(
 	'articlefeedback-form-panel-expertise-hobby' => '這是一個深刻個人興趣',
 	'articlefeedback-form-panel-expertise-other' => '我的知識來源不在此列',
 	'articlefeedback-form-panel-helpimprove' => '我想幫助改善維基百科，請給我發送一封電子郵件（可選）',
-	'articlefeedback-form-panel-helpimprove-note' => '我們將向您發送確認電子郵件。我們不會與任何人分享您的地址。$1',
-	'articlefeedback-form-panel-helpimprove-privacy' => '隱私權政策',
+	'articlefeedback-form-panel-helpimprove-note' => '我們將向您發送確認電子郵件。基於$1，我們不會與第三方分享您的地址。',
+	'articlefeedback-form-panel-helpimprove-privacy' => '反饋隱私政策',
 	'articlefeedback-form-panel-submit' => '提交評分',
 	'articlefeedback-form-panel-pending' => '你的評分尚未提交',
 	'articlefeedback-form-panel-success' => '保存成功',
@@ -7486,6 +7491,7 @@ $messages['zh-hant'] = array(
 	'articlefeedback-survey-message-success' => '謝謝您回答問卷。',
 	'articlefeedback-survey-message-error' => '出現錯誤！
 請稍後再試。',
+	'articlefeedback-privacyurl' => 'http://wikimediafoundation.org/wiki/Feedback_privacy_statement',
 	'articleFeedback-table-caption-dailyhighsandlows' => '今天的新鮮事',
 	'articleFeedback-table-caption-dailyhighs' => '最高評級的頁面：$1',
 	'articleFeedback-table-caption-dailylows' => '最低評級的頁面：$1',
