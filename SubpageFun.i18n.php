@@ -27,6 +27,13 @@ $messages['de'] = array(
 	'subpagefun-desc' => 'Fügt Parser-Funktionen zum Ermitteln umfangreicher Informationen über [http://www.mediawiki.org/wiki/Help:Subpages Unterseiten] hinzu',
 );
 
+/** French (Français)
+ * @author Gomoko
+ */
+$messages['fr'] = array(
+	'subpagefun-desc' => "Ajoute des fonctions d'analyse permettant d'obtenir des informations complètes sur [http://www.mediawiki.org/wiki/Help:Subpages les sous-pages]",
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -46,6 +53,13 @@ $messages['ia'] = array(
  */
 $messages['mk'] = array(
 	'subpagefun-desc' => 'Додава парсерски функции што даваат приказ на опширни информации за [www.mediawiki.org/wiki/Help:Subpages?uselang=mk потстраници]',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'subpagefun-desc' => "Voegt parserfuncties toe die het mogelijk maken informatie over [http://www.mediawiki.org/wiki/Help:Subpages subpagina's] weer te geven",
 );
 
 /** Piedmontese (Piemontèis)
