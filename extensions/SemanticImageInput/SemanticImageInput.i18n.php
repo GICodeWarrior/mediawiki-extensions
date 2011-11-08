@@ -23,3 +23,26 @@ $messages['en'] = array(
 	'sii-imageinput-loading' => 'Loading image...'
 );
 
+/** German (Deutsch)
+ * @author Kghbln
+ */
+$messages['de'] = array(
+	'sii-desc' => 'Ermöglicht eine zusätzliche Eingabeart zu Bildern für [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms], die den Abruf von Bildern aus den Wikipedias und Wikimedia Commons erlaubt',
+	'sii-imageinput-loading' => 'Lade Bild …',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'sii-desc' => 'Adde un modo de inserer imagines que extrahe imagines ex Wikipedia a [https://www.mediawiki.org/wiki/Extension:Semantic_Forms Formularios Semantic]',
+	'sii-imageinput-loading' => 'Carga imagine...',
+);
+
+/** Dutch (Nederlands)
+ * @author SPQRobin
+ */
+$messages['nl'] = array(
+	'sii-imageinput-loading' => 'Bezig met het laden van de afbeelding...',
+);
+

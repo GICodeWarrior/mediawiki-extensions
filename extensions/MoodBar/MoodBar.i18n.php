@@ -2626,6 +2626,17 @@ $messages['rue'] = array(
 	'moodbar-user-user' => 'Реґістрованый хоснователь',
 );
 
+/** Sinhala (සිංහල)
+ * @author Singhalawap
+ */
+$messages['si'] = array(
+	'moodbar-success-title' => 'පිං !',
+	'moodbar-error-title' => 'අයියෝ !',
+	'moodbar-header-page' => 'පිටුව',
+	'moodbar-type-happy' => 'සතුටු',
+	'moodbar-type-sad' => 'දුක්මුසු',
+);
+
 /** Slovenian (Slovenščina)
  * @author Dbc334
  */

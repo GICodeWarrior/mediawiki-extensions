@@ -749,6 +749,7 @@ $messages['mn'] = array(
 $messages['ms'] = array(
 	'am-username' => 'nama pengguna',
 	'am-email' => 'e-mel',
+	'nss-save-changes' => 'Simpan perubahan',
 );
 
 /** Nahuatl (Nāhuatl)

@@ -191,6 +191,17 @@ $messages['he'] = array(
 	'webfonts-enable-preference' => 'הפעלה של הטמעת גופנים (גופני רשת)',
 );
 
+/** Hindi (हिन्दी)
+ * @author Bhawani Gautam
+ */
+$messages['hi'] = array(
+	'webfonts' => 'वेब फॉण्ट्स',
+	'webfonts-desc' => 'पृष्ठों में फॉन्ट्सका जड़ान करें',
+	'webfonts-load' => 'फ़ॉन्ट का चयन करें',
+	'webfonts-reset' => 'पुनर्स्थापित करें',
+	'webfonts-enable-preference' => 'फ़ॉन्ट एम्बेडिंग (WebFonts) को सक्षम करें',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -312,6 +323,17 @@ $messages['ms'] = array(
 	'webfonts-enable-preference' => 'Hidupkan pembenaman fon (WebFonts)',
 );
 
+/** Nepali (नेपाली)
+ * @author Bhawani Gautam
+ */
+$messages['ne'] = array(
+	'webfonts' => 'वेब फण्ट्स',
+	'webfonts-desc' => 'पृष्ठहरुमा लिपि जड़ान(fonts embed) गर्ने',
+	'webfonts-load' => 'लिपि(font)  चुन्ने',
+	'webfonts-reset' => 'पुनर्स्थापित गर्ने',
+	'webfonts-enable-preference' => 'लिपि जडान कार्य (वेब फण्ट्स) सक्रिय गर्ने',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
@@ -332,6 +354,13 @@ $messages['no'] = array(
 	'webfonts-desc' => 'Bygg inn fonter i sider',
 	'webfonts-load' => 'Velg font',
 	'webfonts-disable-preference' => 'Deaktiver innbygging av fonter (WebFonts)',
+);
+
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Odisha1
+ */
+$messages['or'] = array(
+	'webfonts-reset' => 'ପୁନଃ ସ୍ଥାପନ',
 );
 
 /** Polish (Polski)
@@ -381,6 +410,17 @@ $messages['ru'] = array(
 	'webfonts-load' => 'Выбрать шрифт',
 	'webfonts-reset' => 'Сбросить',
 	'webfonts-disable-preference' => 'Отключить встраивание шрифтов (WebFonts)',
+);
+
+/** Sanskrit (संस्कृत)
+ * @author Bhawani Gautam
+ */
+$messages['sa'] = array(
+	'webfonts' => 'वेब फॉण्ट्स',
+	'webfonts-desc' => 'पृष्ठेषु वर्णानि (fonts) स्थापयतु',
+	'webfonts-load' => 'वर्णानि चयनं करोतु',
+	'webfonts-reset' => 'पुनर्स्थापयतु',
+	'webfonts-enable-preference' => 'वर्णस्थापना (वेबफ़ॉन्ट) सक्रियं करोतु',
 );
 
 /** Slovenian (Slovenščina)
