@@ -25,7 +25,7 @@ class NarayamHooks {
 	}
 
 	public static function addConfig( &$vars ) {
-		global $wgNarayamEnabledByDefault, $wgUser;
+		global $wgNarayamEnabledByDefault, $wgNarayamRecentItemsLength, $wgUser;
 
 		if ( $wgUser->getOption( 'narayamDisable' ) ) {
 			// User disabled Narayam
@@ -33,7 +33,8 @@ class NarayamHooks {
 		}
 
 		$vars['wgNarayamEnabledByDefault'] = $wgNarayamEnabledByDefault;
-
+		$vars['wgNarayamRecentItemsLength'] = $wgNarayamRecentItemsLength;
+		
 		return true;
 	}
 

@@ -37,7 +37,8 @@ $.narayam = new ( function() {
 	var currentScheme = null;
 	// Shortcut key for turning Narayam on and off
 	var shortcutKey = getShortCutKey();
-
+	// Number of recent input methods to be shown
+	var recentItemsLength = mw.config.get( 'wgNarayamRecentItemsLength' );
 	/* Private functions */
 
 	/**
@@ -345,7 +346,7 @@ $.narayam = new ( function() {
 	 * Enable Narayam
 	 */
 	this.enable = function() {
-		if ( !enabled) {
+		if ( !enabled ) {
 			$.cookie( 'narayam-enabled', '1', { 'path': '/', 'expires': 30 } );
 			$( '#narayam-toggle' ).attr( 'checked', true );
 			$( 'li#pt-narayam').removeClass( 'narayam-inactive' );
@@ -437,12 +438,13 @@ $.narayam = new ( function() {
  			 return value != name;
 		});
 		recent.unshift( name );
-		recent = recent.slice( 0, 5 );
+		recent = recent.slice( 0, recentItemsLength );
 		recent = recent.join( "," );
 		$.cookie( 'narayam-scheme', recent, { 'path': '/', 'expires': 30 } );
-		if (name in schemes){
+		if ( name in schemes ) {
 			currentScheme = schemes[name];
-		}else{
+		}
+		else {
 			// load the rules dynamically.
 			mw.loader.using( "ext.narayam.rules." + name,  function() {
 				currentScheme = schemes[name];
@@ -534,21 +536,26 @@ $.narayam = new ( function() {
 			var scheme = recent[i];
 			if ( $.inArray( scheme, seen ) > -1 ) { continue; }
 			seen.push( scheme );
-			//we show 5 recent input methods.
-			if ( count++ > 5 ) { break; }
-			$narayamMenuItem  = that.buildMenuItem(scheme);
+			if ( count++ > recentItemsLength ) { break; }
+			$narayamMenuItem = that.buildMenuItem(scheme);
 			$narayamMenuItem.addClass('narayam-recent-menu-item');
 			$narayamMenuItems.append( $narayamMenuItem );
 		}
-		
-		for ( var scheme in schemes ) {
-			haveSchemes = true;
-			if ( $.inArray( scheme, seen ) > -1 ) { continue; }
-			seen.push( scheme );
-			$narayamMenuItem  = that.buildMenuItem(scheme);
-			$narayamMenuItems.append( $narayamMenuItem );
+		// menu items for the language of wiki.
+		var userVariant = (typeof  wgUserVariant != 'undefined' )? wgUserVariant : null;
+		var requested = [userVariant, wgContentLanguage, wgUserLanguage];
+		for ( var i = 0; i < requested.length; i++ ) {
+			var lang = requested[i];
+			var langschemes = allImes[lang];
+			if ( !langschemes ) continue;
+			for ( var scheme in langschemes ) {
+				haveSchemes = true;
+				if ( $.inArray( scheme, seen ) > -1 ) { continue; }
+				seen.push( scheme );
+				$narayamMenuItem = that.buildMenuItem(scheme);
+				$narayamMenuItems.append( $narayamMenuItem );
+			}
 		}
-
 		if ( !haveSchemes ) {
 			// No schemes available, don't show the tool
 			// So return false

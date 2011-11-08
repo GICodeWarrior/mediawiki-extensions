@@ -32,6 +32,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 // Whether the input method should be active as default or not
 $wgNarayamEnabledByDefault = true;
 
+// Number of recently used input methods to be shown
+$wgNarayamRecentItemsLength = 3;
 
 // Array mapping language codes and scheme names to module names
 // Custom schemes can be added here
