@@ -52,6 +52,7 @@ class ExportManager:
 					self.log( "Creating a project directory for %s" % (project_name) )
 					os.mkdir(self.basedir + project_name, 0755)
 					os.mkdir(self.basedir + project_name + '/autofs_check', 0755)
+					os.mkdir(self.basedir + project_name + '/SAVE', 0755)
 				if options.logfile:
 					hdm.logfile = options.logfile
 				if options.loglevel:
