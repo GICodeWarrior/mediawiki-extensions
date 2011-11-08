@@ -7104,6 +7104,7 @@ $mvMVDTypeDefaultDisp हा $mvMVDTypeAllAvailable चा सबसेट अ�
  * @author Aurora
  */
 $messages['ms'] = array(
+	'mv_save_changes' => 'Simpan perubahan',
 	'mv_remove_reason' => 'Sebab penghapusan:',
 	'mv_upload_file' => 'Muat naik fail',
 	'mv_tool_search' => 'Cari',
