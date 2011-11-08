@@ -21,10 +21,11 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Nike
  * @author SVG
  */
 $messages['qqq'] = array(
-	'globalusergroups-desc' => 'Description of GlobalUserGroups extension on Special:Version',
+	'globalusergroups-desc' => '{{desc}}',
 );
 
 /** Asturian (Asturianu)
