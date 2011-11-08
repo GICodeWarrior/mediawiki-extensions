@@ -23,12 +23,16 @@ $messages['en'] = array(
 	'sternograph-context-post' => ''
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Siebrand
+ */
 $messages['qqq'] = array(
 	'sternograph-desc' => 'Description of the Sternograph extension; displayed on the Special:Extensions page only.',
 	'sternograph-empty' => 'Error message when an empty tag is detected on the wiki-formatted page.  The tag name to display is parsed to this function as the first parameter.',
 	'sternograph-nested' => 'Error message when a sternograph tag occurs within an existing sternograph tag on the wiki-formatted page.  The tag name to display is the first parameter.',
-	'sternograph-speaker-is' => 'Error message when a speaker block does not contain the speaker delimeter on the wiki-formatted page.  The tag name to display is the first parameter; the character that is required is the second parameter.',
+	'sternograph-speaker-is' => 'Error message when a speaker block does not contain the speaker delimeter on the wiki-formatted page. Parameters:
+* $1 is the tag name to display
+* $2 is the character that is required.',
 );
 
 /** German (Deutsch)
@@ -41,6 +45,16 @@ $messages['de'] = array(
 	'sternograph-speaker-is' => 'Die Zeilen des <$1>-Blocks müssen das Zeichen „$2“ enthalten.',
 );
 
+/** French (Français)
+ * @author Gomoko
+ */
+$messages['fr'] = array(
+	'sternograph-desc' => 'Balises <nowiki><sterno></nowiki> pour transcrire des paroles (jeux, interviews, etc.)',
+	'sternograph-empty' => 'La balise <$1> ne peut pas être vide.',
+	'sternograph-nested' => 'La balise <$1> ne peut pas être imbriquée.',
+	'sternograph-speaker-is' => 'Les lignes du bloc de discours <$1> doivent avoir le caractère $2.',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -49,5 +63,25 @@ $messages['ia'] = array(
 	'sternograph-empty' => 'Le etiquetta <$1> non pote esser vacue.',
 	'sternograph-nested' => 'Le etiquetta <$1> non pote esser usate recursivemente.',
 	'sternograph-speaker-is' => 'Le delimitator de bloco de parlator pro <$1> debe haber le character $2.',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'sternograph-desc' => 'Ознаки <nowiki><sterno></nowiki> за препис (стенограми) на говор (драмски дела, интервјуа и тн.)',
+	'sternograph-empty' => 'Ознаката <$1> не може да стои празна.',
+	'sternograph-nested' => 'Ознаката <$1> не може да се вгнезди.',
+	'sternograph-speaker-is' => 'Редовите во блокот <$1> (за говорник) мора да го содржат знакот „$2“.',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'sternograph-desc' => '<nowiki><sterno></nowiki>-labels voor de transcriptie van gesproken woorden (toneelstukken, interviews, enzovoort)',
+	'sternograph-empty' => 'Het label <$1> mag niet leeg zijn.',
+	'sternograph-nested' => 'Het label <$1> mag niet genest worden.',
+	'sternograph-speaker-is' => 'Het sprekerblok <$1> moet het teken $2 bevatten.',
 );
 
