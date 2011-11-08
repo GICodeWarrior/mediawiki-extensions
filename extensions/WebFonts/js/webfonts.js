@@ -165,7 +165,8 @@
 		setup: function() {
 			var config = [];
 			var languages = $.webfonts.config.languages;
-			var requested = [wgUserLanguage, wgContentLanguage];
+			var userVariant = (typeof  wgUserVariant != 'undefined' )? wgUserVariant : null;
+			var requested = [userVariant, wgContentLanguage, wgUserLanguage];
 			if ( mw.config.get( 'wgWebFontsEnabledByDefault' ) == false ) {
 				// Webfonts are not enabled by default. Not setting up.
 				// This is applicable only for anonymous users.
