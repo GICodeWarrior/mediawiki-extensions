@@ -1,0 +1,21 @@
+master=db36.pmtpa.wmnet
+slaves="db12.pmtpa.wmnet db26.pmtpa.wmnet db38.pmtpa.wmnet db1001.eqiad.wmnet"
+newmaster=db32.pmtpa.wmnet
+
+repluser=XXXX
+replpass=XXXXX
+
+if [ -e ${master}-pos ]
+    then
+        line=$(tail -n 1 ${master}-pos)
+        masterlog=$(echo $line | cut -d " " -f 1)
+        masterpos=$(echo $line | cut -d " " -f 2)
+fi
+
+if [ -e ${newmaster}-pos ]
+    then
+        line=$(tail -n 1 ${newmaster}-pos)
+        newmasterlog=$(echo $line | cut -d " " -f 1)
+        newmasterpos=$(echo $line | cut -d " " -f 2)
+fi
+
