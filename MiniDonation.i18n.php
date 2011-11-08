@@ -614,11 +614,12 @@ $messages['vep'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Trần Nguyễn Minh Huy
  * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'donationform-desc' => 'Thêm một thẻ <code>&lt;donateform&gt;</code> để hỗ trợ đóng góp qua PayPal',
-	'donationform-submit' => 'Quyên góp dùng PayPal',
+	'donationform-submit' => 'Quyên góp qua PayPal',
 );
 
 /** Cantonese (粵語) */
