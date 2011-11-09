@@ -31,12 +31,28 @@ $messages['de'] = array(
 	'sii-imageinput-loading' => 'Lade Bild …',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'sii-desc' => 'Engade unha entrada de imaxes que empurra as imaxes da Wikipedia a [https://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms]',
+	'sii-imageinput-loading' => 'Cargando a imaxe...',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
 $messages['ia'] = array(
 	'sii-desc' => 'Adde un modo de inserer imagines que extrahe imagines ex Wikipedia a [https://www.mediawiki.org/wiki/Extension:Semantic_Forms Formularios Semantic]',
 	'sii-imageinput-loading' => 'Carga imagine...',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'sii-desc' => 'Во [https://www.mediawiki.org/wiki/Extension:Semantic_Forms?uselang=mk Семантичките обрасци] додава можност за внесување на слики што се извлекуваат од Википедија',
+	'sii-imageinput-loading' => 'Ја вчитувам сликата...',
 );
 
 /** Dutch (Nederlands)
