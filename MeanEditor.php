@@ -53,7 +53,7 @@ function toggle_visualeditor_preference(&$toggles)
 function meaneditor_customeditor($article, $user)
 {
 	$editor = new MeanEditorEditPage( $article );
-	$editor->submit();
+	$editor->edit();
 	
 	return false;
 }
