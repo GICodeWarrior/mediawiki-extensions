@@ -1217,7 +1217,7 @@ $messages['km'] = array(
 	'patrol-reverted-failed' => 'កំណែប្រែមិនអាចត្រឡប់បានទេ។',
 	'patrol-resume' => 'ចុច​ទីនេះ ដើម្បី​បន្ត​។',
 	'group-patroller' => 'អ្នកតាមដាន',
-	'group-patroller-member' => 'អ្នកតាមដាន',
+	'group-patroller-member' => '{{GENDER:$1|អ្នកល្បាត}}',
 	'grouppage-patroller' => '{{ns:project}}:អ្នកតាមដាន',
 	'right-patroller' => 'ទំព័រតាមដាន',
 );
@@ -1232,10 +1232,11 @@ $messages['kn'] = array(
 
 /** Korean (한국어)
  * @author Devunt
+ * @author Kwj2772
  */
 $messages['ko'] = array(
 	'group-patroller' => '검토자',
-	'group-patroller-member' => '검토자',
+	'group-patroller-member' => '{{GENDER:$1|검토자}}',
 );
 
 /** Colognian (Ripoarisch)
