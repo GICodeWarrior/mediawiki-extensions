@@ -280,7 +280,7 @@ class TalkHereHooks {
 		//use a wrapper to override redirection target
 		$editor = new TalkHereEditPage( $article );
 		$editor->setReturnTo( $to );
-		$editor->submit();
+		$editor->edit();
 		$code = $editor->getCode();
 
 		if ( $code == EditPage::AS_SUCCESS_NEW_ARTICLE ) {

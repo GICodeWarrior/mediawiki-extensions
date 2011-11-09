@@ -156,14 +156,11 @@ class FCKeditor_MediaWiki {
 		if( !$wgUseExternalEditor || $action == 'submit' || $internal ||
 		$section || $oldid || ( !$user->getOption( 'externaleditor' ) && !$external ) ) {
 			$editor = new FCKeditorEditPage( $article );
-			$editor->submit();
-		} elseif( $wgUseExternalEditor && ( $external || $user->getOption( 'externaleditor' ) ) ) {
-			$mode = $wgRequest->getVal( 'mode' );
-			$extedit = new ExternalEdit( $article, $mode );
-			$extedit->edit();
+			$editor->edit();
+			return false;
+		} else {
+			return true;
 		}
-
-		return false;
 	}
 
 	public function onEditPageBeforePreviewText( &$editPage, $previewOnOpen ) {
