@@ -1,5 +1,0 @@
-; npm configuration for root usage
-binroot = /usr/local/bin
-root = /usr/local/lib/nodejs
-manroot = /usr/local/share/man
-loglevel = WARN

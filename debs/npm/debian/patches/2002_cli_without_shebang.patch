@@ -1,9 +1,0 @@
-Description: Remove shebang from non-executable file
-Forwarded: not-needed
-Author: Jérémy Lal <kapouer@melix.org>
-Last-Update: 2011-01-23
---- a/cli.js
-+++ b/cli.js
-@@ -1,2 +1 @@
--#!/usr/bin/env node
- require("./bin/npm.js")

@@ -1,4 +1,0 @@
-include src/*
-include sql/*
-include scripts/*
-include *.rst

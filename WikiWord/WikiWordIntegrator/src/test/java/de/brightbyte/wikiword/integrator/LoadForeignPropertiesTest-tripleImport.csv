@@ -1,7 +1,0 @@
-concept_name,property,value,weight,comment
-FooBar,name,Foo,1,bla
-FooBar,firstName,Bar|Barf,1,bla
-FooBar,phone,12345,2,blubb
-XyzzyQuux,name,Xyzzy,3,
-XyzzyQuux,firstName,Quux,1,test
-XyzzyQuux,phone,67890,1,testing

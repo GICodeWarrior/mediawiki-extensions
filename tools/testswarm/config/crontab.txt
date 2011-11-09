@@ -1,1 +1,0 @@
-* * * * * php $HOME/testswarm/scripts/testswarm-mediawiki-svn.php > $HOME/testswarm/scripts/testswarm-mediawiki-svn.run.log 2>&1
