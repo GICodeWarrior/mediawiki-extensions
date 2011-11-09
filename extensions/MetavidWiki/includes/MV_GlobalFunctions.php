@@ -291,8 +291,8 @@ function mvMagicParserFunction_Render( &$parser ) {
 	 * enables linkback and autocomplete for search
 	 */
 function mvfAutoAllPageHeader() {
-	global $mvgScriptPath, $wgJsMimeType, $wgOut, $mvExtraHeader, $wgTitle;
-	global $mvgJSDebug, $wgEnableScriptLoader, $wgRequest;
+	global $mvgScriptPath, $wgJsMimeType, $wgOut, $mvExtraHeader;
+	global $mvgJSDebug;
 
 	$mvgScriptPath = htmlspecialchars( $mvgScriptPath );
 	$wgJsMimeType = htmlspecialchars( $wgJsMimeType ) ;
@@ -303,10 +303,6 @@ function mvfAutoAllPageHeader() {
 		//@@todo should read form svn version file info
 		$unique_req_param = MV_VERSION;
 	}
-
-	$wgOut->addScriptClass( "mv_allpages" );
-	$wgOut->addScriptClass( "mv_search" );
-
 
 	$mvCssUrl = $mvgScriptPath . '/skins/mv_custom.css';
 	$wgOut->addLink( array(
