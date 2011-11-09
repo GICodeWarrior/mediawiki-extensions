@@ -232,10 +232,9 @@ function mvCustomEditor( &$article, &$user ) {
 	   $section || $oldid || ( !$user->getOption( 'externaleditor' ) && !$external ) ) {
 		$editor = new MvEditSequence( $article );
 		$editor->edit();
+		return false;
 	} else {
-		$mode = $wgRequest->getVal( 'mode' );
-		$extedit = new ExternalEdit( $article, $mode );
-		$extedit->edit();
+		return true;
 	}*/
 
 }
