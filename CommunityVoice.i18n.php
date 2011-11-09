@@ -587,11 +587,13 @@ $messages['ka'] = array(
 );
 
 /** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
  * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
 	'communityvoice' => 'សំលេង​សហគមន៍',
 	'communityvoice-desc' => 'ឧបករណ៍​ចូលរួម​សហគមន៍​',
+	'communityvoice-ratings' => 'រង្វាយតំលៃ',
 	'communityvoice-ratings-scale-status-sending' => 'កំពុងផ្ញើ​…',
 	'communityvoice-ratings-scale-status-error' => 'កំហុសកំឡុងពេល​ផ្ញើ​!',
 	'communityvoice-ratings-scale-status-thanks' => 'សូម​អរគុណ​ចំពោះ​ការ​បោះ​ឆ្នោត​!',
