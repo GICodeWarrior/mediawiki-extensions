@@ -55,6 +55,16 @@ $messages['fr'] = array(
 	'sternograph-speaker-is' => 'Les lignes du bloc de discours <$1> doivent avoir le caractère $2.',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'sternograph-desc' => 'Etiquetas <nowiki><sterno></nowiki> para transcribir discursos (xogos, entrevistas etc.)',
+	'sternograph-empty' => 'A etiqueta <$1> non pode estar baleira.',
+	'sternograph-nested' => 'A etiqueta <$1> non pode estar aniñada.',
+	'sternograph-speaker-is' => 'As liñas do bloque de discurso <$1> deben conter o carácter "$2".',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -63,6 +73,13 @@ $messages['ia'] = array(
 	'sternograph-empty' => 'Le etiquetta <$1> non pote esser vacue.',
 	'sternograph-nested' => 'Le etiquetta <$1> non pote esser usate recursivemente.',
 	'sternograph-speaker-is' => 'Le delimitator de bloco de parlator pro <$1> debe haber le character $2.',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'sternograph-desc' => "<nowiki><sterno></nowiki> Tagen fir d'Ëmschreiwe vu geschwate Wierder (Theaterstécker, Interviewen, asw.)",
 );
 
 /** Macedonian (Македонски)
