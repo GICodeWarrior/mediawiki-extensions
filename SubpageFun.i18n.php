@@ -63,9 +63,10 @@ $messages['nl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'subpagefun-desc' => "A gionta funsion ëd parser ch'a përmëtto ëd pijé anformassion estèise su le [http://www.mediawiki.org/wiki/Help:Subpages sotpagine]",
+	'subpagefun-desc' => "A gionta dle funsion d'anàlisi ch'a përmëtto ëd pijé d'anformassion complete an sle [http://www.mediawiki.org/wiki/Help:Subpages sot-pàgine]",
 );
 
