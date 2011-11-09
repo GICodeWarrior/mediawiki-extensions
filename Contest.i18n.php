@@ -356,6 +356,8 @@ $messages['qqq'] = array(
 	'contest-mycontests-sessionfail' => 'Session failure',
 	'contest-submission-challenge' => 'Tells the user which challenge they are part of. $1 is the challenge name',
 	'contest-submission-challenge-description' => 'Output of challenge name and description. $1 is the challenge name, $2 is the challenge description',
+	'contest-welcome-active-contests' => 'Message shown above a list of contests',
+	'contest-welcome-no-contests-active' => 'Indicates that there arte no active contests',
 );
 
 /** толышә зывон (толышә зывон)

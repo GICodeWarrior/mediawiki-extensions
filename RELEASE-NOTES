@@ -7,6 +7,7 @@ Latest version of the release notes: http://svn.wikimedia.org/viewvc/mediawiki/t
 === Version 0.2 ===
 
 * Added filter options for the contestant pager on Special:Contest.
+* Added nicer handling of requests of non-existing contests on Special:ContestWelcome.
 
 === Version 0.1 ===
 2011-10-20

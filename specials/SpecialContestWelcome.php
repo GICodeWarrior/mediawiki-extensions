@@ -59,6 +59,16 @@ class SpecialContestWelcome extends SpecialContestPage {
 		}
 	}
 	
+	/**
+	 * Handle requests for non-existing contests, or requests with no contest specified.
+	 * If the contest does not exist, an error is shown, unless there is only one existing
+	 * contest, in which case the user is redirected to it, which also happens when no contest
+	 * is specified. If there are multiple active contests, a list is shown.
+	 * 
+	 * @since 0.2
+	 * 
+	 * @param string $subPage
+	 */
 	protected function showNoSuchContest( $subPage ) {
 		$out = $this->getOutput();
 		
