@@ -70,6 +70,7 @@ abstract class SpecialContestPage extends SpecialPage {
 	protected function showError( $message ) {
 		$this->getOutput()->addHTML(
 			'<p class="visualClear errorbox">' . wfMsgExt( $message, 'parseinline' ) . '</p>'
+			. '<hr style="display: block; clear: both; visibility: hidden;" />'
 		);
 	}
 
@@ -83,6 +84,7 @@ abstract class SpecialContestPage extends SpecialPage {
 	protected function showWarning( $message ) {
 		$this->getOutput()->addHTML(
 			'<p class="visualClear warningbox">' . wfMsgExt( $message, 'parseinline' ) . '</p>'
+			. '<hr style="display: block; clear: both; visibility: hidden;" />'
 		);
 	}
 

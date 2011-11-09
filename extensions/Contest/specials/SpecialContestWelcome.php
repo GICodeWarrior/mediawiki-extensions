@@ -44,23 +44,66 @@ class SpecialContestWelcome extends SpecialContestPage {
 		$contest = Contest::s()->selectRow( null, array( 'name' => $subPage ) );
 
 		if ( $contest === false ) {
-			$this->showError( 'contest-welcome-unknown' );
-			$out->addHTML( '<br /><br /><br /><br />' );
-			$out->returnToMain();
+			$this->showNoSuchContest( $subPage );
 		}
 		else if ( ( $contest->getStatus() == Contest::STATUS_FINISHED ) ||
 			( $contest->getStatus() == Contest::STATUS_EXPIRED ) ) {
 			$this->showWarning( 'contest-signup-finished' );
-			$out->addHTML( '<br /><br /><br /><br />' );
 			$out->returnToMain();
 		} else if ( $contest->getStatus() == Contest::STATUS_DRAFT ) {
 			$this->showWarning( 'contest-signup-draft' );
-			$out->addHTML( '<br /><br /><br /><br />' );
 			$out->returnToMain();
 		}
 		else {
 			$this->showEnabledPage( $contest );
 		}
+	}
+	
+	protected function showNoSuchContest( $subPage ) {
+		$out = $this->getOutput();
+		
+		$c = Contest::s()->select( array( 'name', 'status', 'end' ), array( 'status' => Contest::STATUS_ACTIVE ) );
+		$contests = array();
+		
+		// It can also be expired, but this is stored as active in the db, so matches the selection.
+		// It'd be better to get rid of this special behaviour so this kind of code is not needed.
+		foreach ( $c as /* Contest */ $contest ) {
+			if ( $contest->getStatus() == Contest::STATUS_ACTIVE ) {
+				$contests[] = $contest;
+			}
+		}
+		
+		if ( count( $contests ) == 1 ) {
+			$out->redirect( $this->getTitle( $contests[0]->getField( 'name' ) )->getLocalURL() );
+		}
+		else {
+			if ( !is_null( $subPage ) && trim( $subPage ) !== '' ) {
+				$this->showError( 'contest-welcome-unknown' );
+			}
+			
+			if ( count( $contests ) == 0 ) {
+				$out->addWikiMsg( 'contest-welcome-no-contests-active' );
+			}
+			else {
+				$items = array();
+				
+				foreach ( $contests as /* Contest */ $contest ) {
+					$items[] = '<li>' . Html::element(
+						'a',
+						array(
+							'href' => $this->getTitle( $contest->getField( 'name' ) )->getLocalURL()
+						),
+						$contest->getField( 'name' )
+					) . '</li>';
+				}
+				
+				$out->addWikiMsg( 'contest-welcome-active-contests' );
+				
+				$out->addHTML( Html::rawElement( 'ul', array(), implode( "\n", $items ) ) );
+			}
+		}
+		
+		$out->returnToMain();
 	}
 
 	protected function showEnabledPage( Contest $contest ) {

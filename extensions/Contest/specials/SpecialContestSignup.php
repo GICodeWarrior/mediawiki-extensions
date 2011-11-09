@@ -110,7 +110,6 @@ class SpecialContestSignup extends SpecialContestPage {
 
 		if ( $contest === false ) {
 			$this->showError( 'contest-signup-unknown' );
-			$out->addHTML( '<br /><br /><br /><br />' );
 			$out->returnToMain();
 			return;
 		}
@@ -120,13 +119,11 @@ class SpecialContestSignup extends SpecialContestPage {
 				break;
 			case Contest::STATUS_DRAFT:
 				$this->showWarning( 'contest-signup-draft' );
-				$out->addHTML( '<br /><br /><br /><br />' );
 				$out->returnToMain();
 				break;
 			case Contest::STATUS_FINISHED:
 			case Contest::STATUS_EXPIRED:
 				$this->showWarning( 'contest-signup-finished' );
-				$out->addHTML( '<br /><br /><br /><br />' );
 				$out->returnToMain();
 				break;
 		}

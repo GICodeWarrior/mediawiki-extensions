@@ -222,7 +222,6 @@ class SpecialMyContests extends SpecialContestPage {
 
 		if ( $contest === false ) {
 			$this->showError( 'contest-submission-unknown' );
-			$out->addHTML( '<br /><br /><br /><br />' );
 			$out->returnToMain();
 		}
 		else {
@@ -233,7 +232,6 @@ class SpecialMyContests extends SpecialContestPage {
 				case Contest::STATUS_FINISHED:
 				case Contest::STATUS_EXPIRED:
 					$this->showWarning( 'contest-submission-finished' );
-					$out->addHTML( '<br /><br /><br /><br />' );
 					$out->returnToMain();
 					break;
 			}
