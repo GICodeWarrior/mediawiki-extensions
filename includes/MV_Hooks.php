@@ -133,14 +133,15 @@ function mvLinkBegin($skin, $target, &$text, &$customAttribs, &$query, &$options
  	return true;
  }
 function mvAddToolBoxLinks(){
-	global $wgTitle,$wgUser,$wgArticle;
+	global $wgTitle,$wgUser;
 	if( $wgTitle->getNamespace() == MV_NS_STREAM){
 		//make sure the Messages are loaded
 		//add export cmml link:
 		$sTitle = SpecialPage::getTitleFor( 'MvExportStream' );
+		$mvTitle = new MV_Title( $wgTitle->getDBkey() );
 		$sk = $wgUser->getSkin();
 		$link = $sk->makeKnownLinkObj( $sTitle,wfMsg('mv_stream_resource_export'),
-				'feed_format=roe&stream_name=' . htmlspecialchars( $wgArticle->mvTitle->getStreamName() ) . '&t=' . htmlspecialchars($wgArticle->mvTitle->getTimeRequest() ),
+				'feed_format=roe&stream_name=' . htmlspecialchars( $mvTitle->getStreamName() ) . '&t=' . htmlspecialchars( $mvTitle->getTimeRequest() ),
 				'', '', 'title="' . htmlspecialchars( wfMsg( 'mv_export_cmml' ) ) . '"' );
 		echo "<li>" . $link . "</li>";
 	}
@@ -230,8 +231,8 @@ function mvCustomEditor( &$article, &$user ) {
 	if( !$wgRequest->getVal( 'UseExternalEditor' ) || $action=='submit' || $internal ||
 	   $section || $oldid || ( !$user->getOption( 'externaleditor' ) && !$external ) ) {
 		$editor = new MvEditSequence( $article );
-		$editor->submit();
-	} elseif( $wgRequest->getVal( 'UseExternalEditor' ) && ( $external || $user->getOption( 'externaleditor' ) ) ) {
+		$editor->edit();
+	} else {
 		$mode = $wgRequest->getVal( 'mode' );
 		$extedit = new ExternalEdit( $article, $mode );
 		$extedit->edit();
