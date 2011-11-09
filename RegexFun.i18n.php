@@ -53,6 +53,7 @@ $messages['fr'] = array(
 $messages['gl'] = array(
 	'regexfun-desc' => 'Engade funcións analíticas que permiten o uso de expresións regulares nas páxinas wiki',
 	'regexfun-invalid' => 'A expresión regular "$1" non é válida.',
+	'regexfun-limit-exceed' => 'Atinxiuse o número máximo {{PLURAL:$1|dunha manipulación de expresión regular "Regex Fun"|de $1 manipulacións de expresións regulares "Regex Fun"}}.',
 );
 
 /** Interlingua (Interlingua)
