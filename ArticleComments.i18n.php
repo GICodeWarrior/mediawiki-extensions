@@ -1263,6 +1263,31 @@ Pieejamie režīmi ir "plain", "normal" un "wiki".',
 	'processcomment' => 'Apstrādes lapas komentārs',
 );
 
+/** Basa Banyumasan (Basa Banyumasan)
+ * @author StefanusRA
+ */
+$messages['map-bms'] = array(
+	'article-comments-desc' => 'Ngaktifna bagiyan komentar nang halaman konten',
+	'article-comments-title-string' => 'judul',
+	'article-comments-name-string' => 'Jeneng',
+	'article-comments-name-field' => 'Jeneng (wajib):',
+	'article-comments-url-field' => 'Situs web:',
+	'article-comments-url-string' => 'URL',
+	'article-comments-comment-string' => 'Komentar',
+	'article-comments-comment-field' => 'Komentar:',
+	'article-comments-submit-button' => 'Kirim',
+	'article-comments-leave-comment-link' => 'Ngaweh komentar...',
+	'article-comments-invalid-field' => '$1 <nowiki>[$2]</nowiki> sing diwenehna ora sah.',
+	'article-comments-required-field' => '"$1" kudu diisi.',
+	'article-comments-submission-failed' => 'Pengiriman komentar gagal',
+	'article-comments-failure-reasons' => 'Nuwun sewu, kiriman komentare Rika gagal amarga {{PLURAL:$1|jalaran|jalaran}} kiye:',
+	'article-comments-no-comments' => 'Nuwun sewu, halaman "[[$1]]" ora teyeng nampani komentar sekiye.',
+	'article-comments-talk-page-starter' => '<noinclude>Komentar nang "[[$1]]"
+<comments />
+-----__NOEDITSECTION__</noinclude>',
+	'article-comments-commenter-said' => '$1 ngomong ...',
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */
