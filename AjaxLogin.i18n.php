@@ -823,6 +823,18 @@ Pasitikrinkite rašybą.',
 	'al-throttled' => 'Jums per daug kartu bandėte įvest slaptažodį. Palaukite $1 {{PLURAL:$1|sekundę|sekundes}} prieš mėgindami dar kartą.',
 );
 
+/** Basa Banyumasan (Basa Banyumasan)
+ * @author StefanusRA
+ */
+$messages['map-bms'] = array(
+	'ajaxlogin-desc' => 'Kotak dinamis yang memungkinkan pengguna untuk log masuk dan mengingatkan kata sandi
+Kotak dinamis sing ngijina panganggo nggo login lan nampa password nganggo imel',
+	'ajaxLogin1' => 'Ben Rika teyeng mlebu/login, Rika kudu nglebokna password sing anyar.
+Kiye bakal ngetokna Rika sekang halaman suntingan kiye lan Rika bisa kelangan tulisan sing lagi disunting sekiye.',
+	'ajaxLogin2' => 'Rika uwis mantep?
+Rika bisa kelangan data sing lagi diowaih angger Rika ninggalna halaman kiye siki.',
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */
