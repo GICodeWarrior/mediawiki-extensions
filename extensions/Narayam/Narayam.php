@@ -133,6 +133,7 @@ $wgResourceModules['ext.narayam.core'] = $narayamTpl + array(
 	'skinStyles' => array(
 		'monobook' => 'css/ext.narayam.core-monobook.css',
 		'vector' => 'css/ext.narayam.core-vector.css',
+		'modern' => 'css/ext.narayam.core-modern.css',
 	),
 	'messages' => array(
 		'narayam-checkbox-tooltip',
