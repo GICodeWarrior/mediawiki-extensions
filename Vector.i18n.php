@@ -990,6 +990,7 @@ $messages['km'] = array(
 	'vector-editwarning-preference' => 'សូមព្រមាន​ខ្ញុំ​ ពេលដែលខ្ញុំ​ចាកចេញ​ពី​ទំព័រ​កែប្រែដោយមិន​បានរក្សា​ទុកបំលាស់ប្ដូរ​នានា​',
 	'vector-simplesearch-search' => 'ស្វែងរក​',
 	'vector-simplesearch-containing' => 'ដែលមានពាក្យ...',
+	'vector-noexperiments-preference' => 'ដកខ្ញុំចេញពីការពិសោធន៍មុខងារថ្មីៗ',
 );
 
 /** Korean (한국어)
