@@ -856,6 +856,15 @@ $messages['no'] = array(
 	'ts-citegen-base-disabled' => 'Feil: % s-databasen er ikke tilgjengelig',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'ts-citegen-Tools' => 'Gscharr',
+	'ts-citegen-Other-languages' => 'Annere Schprooche',
+	'ts-citegen-Errors-title' => 'Mischteek',
+);
+
 /** Polish (Polski)
  * @author Herr Kriss
  * @author Holek

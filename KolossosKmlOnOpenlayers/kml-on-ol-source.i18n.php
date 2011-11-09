@@ -529,6 +529,15 @@ $messages['no'] = array(
 	'ts-kml-on-ol-map-by' => 'Kart av',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'ts-kml-on-ol-languages' => 'Schprooche',
+	'ts-kml-on-ol-help' => 'Hilf',
+	'ts-kml-on-ol-all' => 'All',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

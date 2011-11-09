@@ -1234,7 +1234,14 @@ $messages['no'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'toolbase-header-title' => 'X!s Gscharr',
+	'toolbase-replag-years' => 'Yaahre',
+	'toolbase-replag-months' => 'Munete',
+	'toolbase-replag-weeks' => 'Woche',
+	'toolbase-replag-days' => 'Daage',
+	'toolbase-replag-hours' => 'Schtunde',
 	'toolbase-main-title' => 'Wilkum!',
+	'toolbase-form-wiki' => 'Wiki',
 );
 
 /** Polish (Polski)
