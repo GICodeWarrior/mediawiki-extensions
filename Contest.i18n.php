@@ -113,8 +113,9 @@ $messages['en'] = array(
 	'contest-welcome-signup' => 'Signup now',
 	'contest-welcome-js-off' => 'The contest user interface uses JavaScript. Your browser does not support JavaScript or JavaScript is disabled.',
 	'contest-welcome-accept-challenge' => 'Challenge accepted',
-
 	'contest-welcome-select-header' => 'Select your challenge:',
+	'contest-welcome-active-contests' => 'These are the currently active contests:',
+	'contest-welcome-no-contests-active' => 'There are currently no active contests.',
 
 	// Special:ContestSignup & Special:ContestSubmission
 	'contest-signup-unknown' => 'There is no contest with the provided name.',
@@ -131,6 +132,7 @@ $messages['en'] = array(
 	'contest-signup-draft' => 'This contest has not yet started. Please be patient.',
 	'contest-signup-country' => 'Your country',
 	'contest-signup-emailwarn' => 'Warning: You are changing your accounts e-mail address, which will require your confirming the new address.',
+	
 
 	'contest-signup-require-rules' => 'You must agree to the contest rules.',
 	'contest-signup-require-country' => 'You must provide your country of residence.',

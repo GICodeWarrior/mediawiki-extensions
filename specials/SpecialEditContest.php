@@ -393,6 +393,7 @@ class SpecialEditContest extends FormSpecialPage {
 	protected function showWarning( $message ) {
 		$this->getOutput()->addHTML(
 			'<p class="visualClear warningbox">' . wfMsgExt( $message, 'parseinline' ) . '</p>'
+			. '<hr style="display: block; clear: both; visibility: hidden;" />'
 		);
 	}
 
