@@ -1850,7 +1850,7 @@ Lahko ga [{{fullurl:{{#Special:SignDocument}}|doc=$2}} preizkusite].',
 Tega ne morete storiti dvakrat.',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Sasa Stefanovic
  * @author Жељко Тодоровић
@@ -1859,7 +1859,7 @@ Tega ne morete storiti dvakrat.',
 $messages['sr-ec'] = array(
 	'createsigndoc-pagename' => 'Страница:',
 	'createsigndoc-allowedgroup' => 'Дозвољена група:',
-	'createsigndoc-email' => 'Е-пошта:',
+	'createsigndoc-email' => 'Е-адреса:',
 	'createsigndoc-address' => 'Кућна адреса:',
 	'createsigndoc-extaddress' => 'Град, држава:',
 	'createsigndoc-phone' => 'Телефонски број:',

@@ -4529,7 +4529,7 @@ $messages['sr-ec'] = array(
 	'sign-country' => 'Земља:',
 	'sign-phone' => 'Телефонски број:',
 	'sign-bday' => 'Старост:',
-	'sign-email' => 'Е-пошта:',
+	'sign-email' => 'Е-адреса:',
 	'sign-indicates-req' => '<small><i><span style="color:red">*</span> означава обавезно поље.</i></small>',
 	'sign-hide-note' => '<small><i><span style="color:red">**</span> Напомена: неприказане информације ће још увек бити видљиве модераторима.</i></small>',
 	'sign-list-anonymous' => 'Прикажи као анонимно',
