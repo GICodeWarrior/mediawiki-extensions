@@ -702,9 +702,10 @@ $messages['ja'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
+ * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
-	'security-type-namespace' => 'ប្រភេទ',
+	'security-type-namespace' => 'លំហឈ្មោះ',
 );
 
 /** Kannada (ಕನ್ನಡ)
