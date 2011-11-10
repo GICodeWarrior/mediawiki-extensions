@@ -376,6 +376,17 @@ $messages['ja'] = array(
 	'ts-kml-on-ol-map-by' => '地図から',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author វ័ណថារិទ្ធ
+ */
+$messages['km'] = array(
+	'ts-kml-on-ol-options' => 'ជម្រើស',
+	'ts-kml-on-ol-languages' => 'ភាសា',
+	'ts-kml-on-ol-help' => 'ជំនួយ',
+	'ts-kml-on-ol-all' => 'ទាំងអស់',
+	'ts-kml-on-ol-map-by' => 'ផែនទីដោយ',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
@@ -471,6 +482,7 @@ $messages['ml'] = array(
  */
 $messages['ms'] = array(
 	'ts-kml-on-ol-languages' => 'Bahasa',
+	'ts-kml-on-ol-help' => 'Bantuan',
 	'ts-kml-on-ol-all' => 'Semua',
 );
 
