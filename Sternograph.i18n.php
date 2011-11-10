@@ -102,3 +102,10 @@ $messages['nl'] = array(
 	'sternograph-speaker-is' => 'Het sprekerblok <$1> moet het teken $2 bevatten.',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'sternograph-empty' => '<$1> ట్యాగు ఖాళీగా ఉండకూడదు.',
+);
+
