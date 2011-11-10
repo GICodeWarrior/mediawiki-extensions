@@ -522,11 +522,12 @@ $messages['kl'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author គីមស៊្រុន
+ * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
 	'searchbox-search' => 'ស្វែងរក',
 	'searchbox-go' => 'ទៅ',
-	'searchbox-namespaces' => 'ប្រភេទ៖',
+	'searchbox-namespaces' => 'លំហឈ្មោះ៖',
 );
 
 /** Kannada (ಕನ್ನಡ)
