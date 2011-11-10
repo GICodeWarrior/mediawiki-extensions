@@ -57,8 +57,17 @@ $messages['mk'] = array(
 
 /** Dutch (Nederlands)
  * @author SPQRobin
+ * @author Siebrand
  */
 $messages['nl'] = array(
+	'sii-desc' => 'Voegt een invoerveld toe voor afbeeldingen zodat afbeeldingen van Wikipedia gebruikt kunnen worden in [https://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms]',
 	'sii-imageinput-loading' => 'Bezig met het laden van de afbeelding...',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'sii-imageinput-loading' => 'బొమ్మ లోడవతుతోంది...',
 );
 
