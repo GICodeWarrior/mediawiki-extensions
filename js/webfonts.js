@@ -21,9 +21,7 @@
 			}
 
 			if ( !(font in $.webfonts.config.fonts) ) {
-				if ( window.console ) {
-					console.log( "Requested unknown font", font );
-				}
+				mw.log( "Requested unknown font", font );
 				return;
 			}
 			var config = $.webfonts.config.fonts[font];
