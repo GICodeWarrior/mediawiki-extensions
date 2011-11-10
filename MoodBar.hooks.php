@@ -3,6 +3,9 @@
 class MoodBarHooks {
 	/**
 	 * Adds MoodBar JS to the output if appropriate.
+	 *
+	 * @param $output OutputPage
+	 * @param $skin Skin
 	 */
 	public static function onPageDisplay( &$output, &$skin ) {
 		if ( self::shouldShowMoodbar( $output, $skin ) ) {
@@ -14,6 +17,9 @@ class MoodBarHooks {
 
 	/**
 	 * Determines whether or not we should show the MoodBar.
+	 *
+	 * @param $output OutputPage
+	 * @param $skin Skin
 	 */
 	public static function shouldShowMoodbar( &$output, &$skin ) {
 		// Front-end appends to header elements, which have different
@@ -65,7 +71,9 @@ class MoodBarHooks {
 	}
 
 	/**
-	 * Runs MoodBar schema updates
+	 * Runs MoodBar schema updates#
+	 *
+	 * @param $updater DatabasEUpdater
 	 */
 	public static function onLoadExtensionSchemaUpdates( $updater = null ) {
 		$updater->addExtensionUpdate( array( 'addTable', 'moodbar_feedback',
@@ -74,9 +82,9 @@ class MoodBarHooks {
 		$updater->addExtensionUpdate( array( 'addField', 'moodbar_feedback',
 			'mbf_user_editcount', dirname(__FILE__).'/sql/mbf_user_editcount.sql', true )
 		);
-		
+
 		$db = $updater->getDB();
-		if ( $db->tableExists( 'moodbar_feedback' ) && 
+		if ( $db->tableExists( 'moodbar_feedback' ) &&
 				$db->indexExists( 'moodbar_feedback', 'type_timestamp', __METHOD__ ) )
 		{
 			$updater->addExtensionUpdate( array( 'addIndex', 'moodbar_feedback',
@@ -86,11 +94,11 @@ class MoodBarHooks {
 		$updater->addExtensionUpdate( array( 'dropIndex', 'moodbar_feedback',
 			'mbf_timestamp', dirname( __FILE__ ) . '/sql/AddIDToIndexes2.sql', true )
 		);
-		
+
 		$updater->addExtensionUpdate( array( 'addIndex', 'moodbar_feedback',
 			'mbf_timestamp_id', dirname( __FILE__ ) . '/sql/mbf_timestamp_id.sql', true )
 		);
-		
+
 		$updater->addExtensionUpdate( array( 'addField', 'moodbar_feedback',
 			'mbf_hidden_state', dirname(__FILE__).'/sql/mbf_hidden_state.sql', true ) );
 
