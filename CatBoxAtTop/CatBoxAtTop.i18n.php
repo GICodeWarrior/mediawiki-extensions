@@ -330,10 +330,11 @@ $messages['ja'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Thearith
+ * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
 	'catboxattop-desc' => 'បន្ថែម​ប្រអប់​ចំណាត់ថ្នាក់ក្រុម​ទៅ​ខាងលើ​ផ្នែក​ខាងស្ដាំ​នៃ​ទំព័រ',
-	'catboxattop-categories' => 'ចំណាត់ថ្នាក់ក្រុម​ផ្សេងៗ',
+	'catboxattop-categories' => 'ចំណាត់ថ្នាក់ក្រុម',
 );
 
 /** Kannada (ಕನ್ನಡ)
