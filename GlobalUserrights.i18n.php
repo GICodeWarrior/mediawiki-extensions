@@ -367,6 +367,14 @@ $messages['id'] = array(
 	'right-userrights-global' => 'Mengelola Hak Pengguna Global',
 );
 
+/** Icelandic (Íslenska)
+ * @author Snævar
+ */
+$messages['is'] = array(
+	'gur-rightslog-name' => 'Altæk réttindarskrá notenda',
+	'gur-rightslog-header' => 'Þetta er skrá yfir breytingar á altækum réttindum notenda.',
+);
+
 /** Italian (Italiano)
  * @author Pietrodn
  */
