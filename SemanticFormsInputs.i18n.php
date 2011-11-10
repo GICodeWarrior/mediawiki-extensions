@@ -329,11 +329,12 @@ $messages['ja'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
+ * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
 	'semanticformsinputs-close' => 'បិទ',
 	'semanticformsinputs-prev' => 'មុន',
-	'semanticformsinputs-next' => 'ក្រោយ',
+	'semanticformsinputs-next' => 'បន្ទាប់',
 	'semanticformsinputs-today' => 'ថ្ងៃនេះ',
 );
 
