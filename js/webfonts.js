@@ -258,21 +258,22 @@
 		buildMenu: function(config) {
 			var haveSchemes = false;
 			// Build font dropdown
-			var $fontsMenu = $( '<ul />' ).attr('id','webfonts-fontsmenu');
+			var $fontsMenu = $( '<ul>' ).attr('id','webfonts-fontsmenu');
 			$fontsMenu.delegate('input:radio', 'change', function( event ) {
 				$.webfonts.set( $(this).val() );
 			});
 			for ( var scheme in config ) {
-				var $fontLink = $( '<input type="radio" name="font" />' )
-					.attr("id",fontID(config[scheme]))
+				var $fontLink = $( '<input type="radio" />' )
+					.attr( "name", "font" ) 
+					.attr( "id", fontID( config[scheme] ) )
 					.val( config[scheme] );
 
-				var $fontLabel =  $( '<label />' )
+				var $fontLabel =  $( '<label>' )
 					.attr("for",fontID(config[scheme]))
 					.append( $fontLink )
 					.append( config[scheme] );
 
-				var $fontMenuItem = $( '<li />' )
+				var $fontMenuItem = $( '<li>' )
 					.val( config[scheme] )
 					.append( $fontLabel );
 
@@ -288,8 +289,7 @@
 				return;
 			}
 
-			var $resetLink = $( '<input />' )
-				.attr("type","radio")
+			var $resetLink = $( '<input type="radio" />' )
 				.attr("name","font")
 				.attr("value","webfont-none")
 				.attr("id","webfont-none")
@@ -297,29 +297,29 @@
 					$.webfonts.set( 'none');
 				});
 
-			var $resetLabel = $( '<label />' )
+			var $resetLabel = $( '<label>' )
 				.attr("for","webfont-none")
 				.append( $resetLink )
 				.append( mw.msg("webfonts-reset"));
 
-			var $resetLinkItem = $( '<li />' )
+			var $resetLinkItem = $( '<li>' )
 				.val( 'none' )
 				.append( $resetLabel );
 
 			$fontsMenu.append($resetLinkItem);
 
-			var $menuDiv = $( '<div />' ).attr('id','webfonts-fonts')
+			var $menuDiv = $( '<div>' ).attr('id','webfonts-fonts')
 					.addClass( 'menu' )
 					.append( $fontsMenu )
 					.append();
 
-			var $div = $( '<div />' ).attr('id','webfonts-menu')
+			var $div = $( '<div>' ).attr('id','webfonts-menu')
 				.addClass( 'webfontMenu' )
-				.append( $('<a href="#" />').append(mw.msg("webfonts-load")) )
+				.append( $('<a>').prop( 'href', '#' ).append( mw.msg( "webfonts-load" ) ) )
 				.append( $menuDiv );
 
 			//this is the fonts link
-			var $li = $( '<li />' ).attr('id','pt-webfont')
+			var $li = $( '<li>' ).attr('id','pt-webfont')
 				.append( $div );
 
 			//if rtl, add to the right of top personal links. Else, to the left
