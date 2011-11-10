@@ -58,8 +58,7 @@ class SpecialContributionStatistics extends SpecialPage {
 		if( $this->mEndDate > time() && $this->mStartDate < time() ) {
 			$this->showDailyTotals( $egContributionStatisticsViewDays );
 		}
-
-		// Show daily totals
+		// Show monthly totals
 		$this->showMonthlyTotals( );
 
 		// Show currency totals
@@ -99,16 +98,20 @@ class SpecialContributionStatistics extends SpecialPage {
 
 		// Days
 		foreach ( $days as $data ) {
+			$stats = array();
+			foreach( $data as $key => $value ) {
+				$stats[] = $value;
+			}
 			$htmlOut .= Xml::tags( 'tr', null,
-				Xml::element( 'td', array( 'align' => 'left' ), $data[0] ) .
-				Xml::element( 'td', array( 'align' => 'left' ), $wgLang->formatNum( $data[1] ) ) .
-				Xml::element( 'td', array( 'align' => 'right' ), $wgLang->formatNum( number_format( $data[2], 2 ) ) ) .
-				Xml::element( 'td', array( 'align' => 'right' ), $wgLang->formatNum( number_format( $data[3], 2 ) ) ) .
-				/*Xml::element( 'td', array( 'align' => 'right' ), $wgLang->formatNum( number_format( $data[5], 2 ) ) ) .*/
-				Xml::element( 'td', array( 'align' => 'right' ), $wgLang->formatNum( number_format( $data[4], 2 ) ) ) .
+				Xml::element( 'td', array( 'align' => 'left' ), $stats[0] ) .
+				Xml::element( 'td', array( 'align' => 'left' ), $wgLang->formatNum( $stats[1] ) ) .
+				Xml::element( 'td', array( 'align' => 'right' ), $wgLang->formatNum( number_format( $stats[2], 2 ) ) ) .
+				Xml::element( 'td', array( 'align' => 'right' ), $wgLang->formatNum( number_format( $stats[3], 2 ) ) ) .
+				/*Xml::element( 'td', array( 'align' => 'right' ), $wgLang->formatNum( number_format( $stats[5], 2 ) ) ) .*/
+				Xml::element( 'td', array( 'align' => 'right' ), $wgLang->formatNum( number_format( $stats[4], 2 ) ) ) .
 				Xml::element( 'td', array( 'align' => 'right' ), $wgLang->formatNum( number_format( $total, 2 ) ) )
 			);
-			$total -= $data[2];
+			$total -= $stats[2];
 		}
 
 		$htmlOut .= Xml::closeElement( 'table' );
@@ -342,20 +345,24 @@ class SpecialContributionStatistics extends SpecialPage {
 		// Build day/value array
 		$totals = array();
 		foreach ( $res as $row ) {
+			$stats = array();
+			foreach( $row as $key => $value ) {
+				$stats[] = $value;
+			}
 			$median = $dbr->selectField( 'public_reporting',
 				array( 'converted_amount' ),
 				array(
-					"FROM_UNIXTIME(received, '%Y-%m')" => $row[0]
+					"FROM_UNIXTIME(received, '%Y-%m')" => $stats[0]
 				),
 				__METHOD__,
 				array(
 					'ORDER BY' => 'converted_amount DESC',
-					'OFFSET' => round( $row[1] / 2 ),
+					'OFFSET' => round( $stats[1] / 2 ),
 					'LIMIT' => 1
 				)
 			);
-			$row[] = $median;
-			$totals[] = $row;
+			$stats[] = $median;
+			$totals[] = $stats;
 		}
 
 		// Return results
@@ -385,23 +392,27 @@ class SpecialContributionStatistics extends SpecialPage {
 
 		$totals = array();
 		foreach ( $res as $row ) {
+			$stats = array();
+			foreach( $row as $key => $value ) {
+				$stats[] = $value;
+			}
 			$median = $dbr->selectField( 'public_reporting',
 				array( 'converted_amount' ),
 				array_merge(
 					$this->dateConds( $dbr ),
 					array(
-						'original_currency' => $row[0]
+						'original_currency' => $stats[0]
 					)
 				),
 				__METHOD__,
 				array(
 					'ORDER BY' => 'converted_amount DESC',
-					'OFFSET' => round( $row[1] / 2 ),
+					'OFFSET' => round( $stats[1] / 2 ),
 					'LIMIT' => 1,
 				)
 			);
-			$row[] = $median;
-			$totals[$row[0]] = $row;
+			$stats[] = $median;
+			$totals[$stats[0]] = $stats;
 		}
 
 		if ( isset( $totals[null] ) ) {
