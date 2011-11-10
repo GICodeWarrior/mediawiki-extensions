@@ -8,6 +8,10 @@
 
 // WebFonts hooks
 class WebFontsHooks {
+
+	/**
+	 * BeforePageDisplay hook handler.
+	 */
 	public static function addModules( $out, $skin ) {
 		global $wgUser;
 
@@ -15,10 +19,13 @@ class WebFontsHooks {
 			$out->addModules( 'webfonts' );
 		}
 
-		return true; // Hooks must return value
+		return true;
 	}
 
-	public static function addVariables( &$vars ) {
+	/**
+	 * MakeGlobalVariablesScript hook handler.
+	 */
+	public static function addVariables( &$vars, $out ) {
 		global $wgWebFontsEnabledByDefault, $wgUser;
 
 		if ( $wgUser->isAnon() ) {
@@ -29,7 +36,10 @@ class WebFontsHooks {
 
 		return true;
 	}
-	
+
+	/**
+	 * GetPreferences hook handler.
+	 */
 	public static function addPreference( $user, &$preferences ) {
 		global $wgUser;
 		// A checkbox in preferences to enable WebFonts

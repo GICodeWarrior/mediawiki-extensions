@@ -10,7 +10,7 @@
 	$.webfonts = {
 
 		oldconfig: false,
-		config : $.webfonts.config,
+		config: $.webfonts.config,
 		/* Version number */
 		version: "0.1.2",
 		fonts : [],
@@ -147,7 +147,7 @@
 		 * keep track of added fonts.
 		 * @param fontFamilyName The fontfamily name
 		 */
-		addFont : function( fontFamilyName ) {
+		addFont: function( fontFamilyName ) {
 			// avoid duplication
 			if ( $.inArray( fontFamilyName, $.webfonts.fonts ) < 0 ){
 				// check whether the requested font is available.
@@ -165,8 +165,7 @@
 		setup: function() {
 			var config = [];
 			var languages = $.webfonts.config.languages;
-			var userVariant = (typeof  wgUserVariant != 'undefined' )? wgUserVariant : null;
-			var requested = [userVariant, wgContentLanguage, wgUserLanguage];
+			var requested = [mw.config.get( 'wgUserVariant' ), mw.config.get( 'wgContentLanguage' ), mw.config.get( 'wgUserLanguage' )];
 			if ( mw.config.get( 'wgWebFontsEnabledByDefault' ) == false ) {
 				// Webfonts are not enabled by default. Not setting up.
 				// This is applicable only for anonymous users.

@@ -27,6 +27,7 @@ $wgExtensionCredits['parserhook'][] = array(
 );
 
 $dir = dirname( __FILE__ );
+
 // Internationalization
 $wgExtensionMessagesFiles['WebFonts'] = "$dir/WebFonts.i18n.php";
 
