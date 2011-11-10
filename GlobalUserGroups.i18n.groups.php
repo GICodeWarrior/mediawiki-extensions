@@ -1,6 +1,6 @@
 <?php
 /**
- * Internationalization file for extra user groups if GlobalUserGroups extension is used
+ * Internationalization file for extra global user groups if GlobalUserGroups extension is used
  *
  * @since 1.0
  *
@@ -17,57 +17,37 @@ $messages = array();
  * @author SVG
  */
 $messages['en'] = array(
-   'group-bot-global'                => 'Global bots',
+   'group-bot-global'                => 'Global Bots',
    'group-bot-global-member'         => '{{GENDER:$1|global bot}}',
-   'grouppage-bot-global'            => '{{ns:project}}:Global bots',
+   'grouppage-bot-global'            => '{{ns:project}}:Global Bots',
 
    'group-checkuser-global'          => 'Global Check users',
    'group-checkuser-global-member'   => '{{GENDER:$1|global check user}}',
-   'grouppage-checkuser-global'      => '{{ns:project}}:Global checkusers',
-
-   'group-communitymanager'          => 'Community managers',
-   'group-communitymanager-member'   => '{{GENDER:$1|community manager}}',
-   'grouppage-communitymanager'      => '{{ns:project}}:Community managers',
-
-   'group-helper'                    => 'Helpers',
-   'group-helper-member'             => '{{GENDER:$1|helper}}',
-   'grouppage-helper'                => '{{ns:project}}:Helpers',
+   'grouppage-checkuser-global'      => '{{ns:project}}:Global Check users',
 
    'group-helper-global'             => 'Global Helpers',
    'group-helper-global-member'      => '{{GENDER:$1|global helper}}',
-   'grouppage-helper-global'         => '{{ns:project}}:Global helpers',
-
-   'group-ipblock-exempt'            => 'IP block exemptions',
-   'group-ipblock-exempt-member'     => '{{GENDER:$1|ip block exemption}}',
-   'grouppage-ipblock-exempt'        => '{{ns:project}}:IP block exemptions',
+   'grouppage-helper-global'         => '{{ns:project}}:Global Helpers',
 
    'group-ipblock-exempt-g'          => 'Global IP block exemptions',
    'group-ipblock-exempt-g-member'   => '{{GENDER:$1|global ip block exemption}}',
    'grouppage-ipblock-exempt-g'      => '{{ns:project}}:Global IP block exemptions',
 
-   'group-rollback-global'           => 'Global rollbackers',
+   'group-rollback-global'           => 'Global Rollbackers',
    'group-rollback-global-member'    => '{{GENDER:$1|global rollbacker}}',
-   'grouppage-rollback-global'       => '{{ns:project}}:Global rollbackers',
+   'grouppage-rollback-global'       => '{{ns:project}}:Global Rollbackers',
 
-   'group-steward'                   => 'Stewards',
-   'group-steward-member'            => '{{GENDER:$1|steward|stewardess}}',
-   'grouppage-steward'               => '{{ns:project}}:Stewards',
-
-   'group-steward-global'            => 'Global stewards',
+   'group-steward-global'            => 'Global Stewards',
    'group-steward-global-member'     => '{{GENDER:$1|global steward|global stewardess}}',
-   'grouppage-steward-global'        => '{{ns:project}}:Global stewards',
+   'grouppage-steward-global'        => '{{ns:project}}:Global Stewards',
 
-   'group-sysadmin'                  => 'System administrators',
-   'group-sysadmin-member'           => '{{GENDER:$1|system administrator}}',
-   'grouppage-sysadmin'              => '{{ns:project}}:System administrators',
-
-   'group-sysadmin-global'           => 'Global system administrators',
+   'group-sysadmin-global'           => 'Global System administrators',
    'group-sysadmin-global-member'    => '{{GENDER:$1|global system administrator}}',
-   'grouppage-sysadmin-global'       => '{{ns:project}}:Global system administrators',
+   'grouppage-sysadmin-global'       => '{{ns:project}}:Global System administrators',
 
-   'group-sysop-global'              => 'Global administrators',
+   'group-sysop-global'              => 'Global Administrators',
    'group-sysop-global-member'       => '{{GENDER:$1|global administrator}}',
-   'grouppage-sysop-global'          => '{{ns:project}}:Global administrators',
+   'grouppage-sysop-global'          => '{{ns:project}}:Global Administrators',
 );
 
 /** Message documentation (Message documentation)
@@ -82,21 +62,9 @@ $messages['qqq'] = array(
    'group-checkuser-global-member'   => '{{doc-group|checkuser-global|member}}',
    'grouppage-checkuser-global'      => '{{doc-group|checkuser-global|page}}',
 
-   'group-communitymanager'          => '{{doc-group|communitymanager}}',
-   'group-communitymanager-member'   => '{{doc-group|communitymanager|member}}',
-   'grouppage-communitymanager'      => '{{doc-group|communitymanager|page}}',
-
-   'group-helper'                    => '{{doc-group|helper}}',
-   'group-helper-member'             => '{{doc-group|helper|member}}',
-   'grouppage-helper'                => '{{doc-group|helper|page}}',
-
    'group-helper-global'             => '{{doc-group|helper-global}}',
    'group-helper-global-member'      => '{{doc-group|helper-global|member}}',
    'grouppage-helper-global'         => '{{doc-group|helper-global|page}}',
-
-   'group-ipblock-exempt'            => '{{doc-group|ipblock-exempt}}',
-   'group-ipblock-exempt-member'     => '{{doc-group|ipblock-exempt|member}}',
-   'grouppage-ipblock-exempt'        => '{{doc-group|ipblock-exempt|page}}',
 
    'group-ipblock-exempt-g'          => '{{doc-group|ipblock-exempt-g}}',
    'group-ipblock-exempt-g-member'   => '{{doc-group|ipblock-exempt-g|member}}',
@@ -106,17 +74,9 @@ $messages['qqq'] = array(
    'group-rollback-global-member'    => '{{doc-group|rollback-global|member}}',
    'grouppage-rollback-global'       => '{{doc-group|rollback-global|page}}',
 
-   'group-steward'                   => '{{doc-group|steward}}',
-   'group-steward-member'            => '{{doc-group|steward|member}}',
-   'grouppage-steward'               => '{{doc-group|steward|page}}',
-
    'group-steward-global'            => '{{doc-group|steward-global}}',
    'group-steward-global-member'     => '{{doc-group|steward-global|member}}',
    'grouppage-steward-global'        => '{{doc-group|steward-global|page}}',
-
-   'group-sysadmin'                  => '{{doc-group|sysadmin}}',
-   'group-sysadmin-member'           => '{{doc-group|sysadmin|member}}',
-   'grouppage-sysadmin'              => '{{doc-group|sysadmin|page}}',
 
    'group-sysadmin-global'           => '{{doc-group|sysadmin-global}}',
    'group-sysadmin-global-member'    => '{{doc-group|sysadmin-global|member}}',
@@ -135,25 +95,13 @@ $messages['de'] = array(
    'group-bot-global-member'         => '{{GENDER:$1|Globaler Bot}}',
    'grouppage-bot-global'            => '{{ns:project}}:Globale Bots',
 
-   'group-communitymanager'          => 'Community Manager',
-   'group-communitymanager-member'   => '{{GENDER:$1|Community Manager|Community Managerin}}',
-   'grouppage-communitymanager'      => '{{ns:project}}:Community Manager',
-
    'group-checkuser-global'          => 'Globale Checkuser',
    'group-checkuser-global-member'   => '{{GENDER:$1|Globaler Checkuser|Globale Checkuserin}}',
    'grouppage-checkuser-global'      => '{{ns:project}}:Globale Checkuser',
 
-   'group-helper'                    => 'Helfer',
-   'group-helper-member'             => '{{GENDER:$1|Helfer|Helferin}}',
-   'grouppage-helper'                => '{{ns:project}}:Helfer',
-
    'group-helper-global'             => 'Globale Helfer',
    'group-helper-global-member'      => '{{GENDER:$1|Globaler Helfer|Globale Helferin}}',
    'grouppage-helper-global'         => '{{ns:project}}:Globale Helfer',
-
-   'group-ipblock-exempt'            => 'IP-Sperre-Ausnahmen',
-   'group-ipblock-exempt-member'     => '{{GENDER:$1|IP-Sperre-Ausnahme}}',
-   'grouppage-ipblock-exempt'        => '{{ns:project}}:IP-Sperre-Ausnahmen',
 
    'group-ipblock-exempt-g'          => 'Globale IP-Sperre-Ausnahmen',
    'group-ipblock-exempt-g-member'   => '{{GENDER:$1|Globale IP-Sperre-Ausnahme}}',
@@ -163,17 +111,9 @@ $messages['de'] = array(
    'group-rollback-global-member'    => '{{GENDER:$1|Globaler Zurücksetzer|Globale Zurücksetzerin}}',
    'grouppage-rollback-global'       => '{{ns:project}}:Globale Zurücksetzer',
 
-   'group-steward'                   => 'Stewards',
-   'group-steward-member'            => '{{GENDER:$1|Steward|Stewardess}}',
-   'grouppage-steward'               => '{{ns:project}}:Stewards',
-
    'group-steward-global'            => 'Globale Stewards',
    'group-steward-global-member'     => '{{GENDER:$1|Globaler Steward|Globale Stewardess}}',
    'grouppage-steward-global'        => '{{ns:project}}:Globale Stewards',
-
-   'group-sysadmin'                  => 'Systemadministratoren',
-   'group-sysadmin-member'           => '{{GENDER:$1|Systemadministrator|Systemadministratorin}}',
-   'grouppage-sysadmin'              => '{{ns:project}}:Systemadministratoren',
 
    'group-sysadmin-global'           => 'Globale Systemadministratoren',
    'group-sysadmin-global-member'    => '{{GENDER:$1|Globaler Systemadministrator|Globale Systemadministratorin}}',
@@ -183,3 +123,44 @@ $messages['de'] = array(
    'group-sysop-global-member'       => '{{GENDER:$1|Globaler Administrator|Globale Administratorin}}',
    'grouppage-sysop-global'          => '{{ns:project}}:Globale Administratoren',
 );
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ * @author SPQRobin
+ * @author SVG
+ * @author Tvdm
+ */
+$messages['nl'] = array(
+   'group-bot-global'                => 'globale bots',
+   'group-bot-global-member'         => '{{GENDER:$1|globale robot}}',
+   'grouppage-bot-global'            => '{{ns:project}}:Globale bots',
+
+   'group-checkuser-global'          => 'globale controlegebruikers',
+   'group-checkuser-global-member'   => '{{GENDER:$1|globale controlegebruiker}}',
+   'grouppage-checkuser-global'      => '{{ns:project}}:Globale controlegebruikers',
+
+   'group-helper-global'             => 'globale helpers',
+   'group-helper-global-member'      => '{{GENDER:$1|globale helper}}',
+   'grouppage-helper-global'         => '{{ns:project}}:Globale helpers',
+
+   'group-ipblock-exempt-g'          => 'globale uitgezonderden van IP-adresblokkades',
+   'group-ipblock-exempt-g-member'   => '{{GENDER:$1|globale uitgezonderde van IP-adresblokkades}}',
+   'grouppage-ipblock-exempt-g'      => '{{ns:project}}:Globale uitgezonderden van IP-adresblokkades',
+
+   'group-rollback-global'           => 'globale terugdraaiers',
+   'group-rollback-global-member'    => '{{GENDER:$1|globale terugdraaier}}',
+   'grouppage-rollback-global'       => '{{ns:project}}:Globale terugdraaiers',
+
+   'group-steward-global'            => 'globale stewards',
+   'group-steward-global-member'     => '{{GENDER:$1|globale steward}}',
+   'grouppage-steward-global'        => '{{ns:project}}:Globale stewards',
+
+   'group-sysadmin-global'           => 'globale systeembeheerders',
+   'group-sysadmin-global-member'    => '{{GENDER:$1|globale systeembeheerders}}',
+   'grouppage-sysadmin-global'       => '{{ns:project}}:Globale systeembeheerders',
+
+   'group-sysop-global'              => 'globale beheerders',
+   'group-sysop-global-member'       => '{{GENDER:$1|globale beheerder}}',
+   'grouppage-sysop-global'          => '{{ns:project}}:Globale beheerders',
+);
+
