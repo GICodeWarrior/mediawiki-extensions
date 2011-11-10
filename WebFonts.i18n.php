@@ -266,7 +266,7 @@ $messages['km'] = array(
 	'webfonts-desc' => 'បង្កប់ពុម្ពអក្សរក្នុងទំព័រនេះ',
 	'webfonts-load' => 'ជ្រើសរើសពុម្ពអក្សរ',
 	'webfonts-reset' => 'កំណត់ឡើងវិញ',
-	'webfonts-disable-preference' => 'ដកពុម្ពអក្សរបង្កប់ចេញ (WebFonts)',
+	'webfonts-enable-preference' => 'ដាក់ពុម្ពអក្សរបង្កប់ចូល (WebFonts)',
 );
 
 /** Colognian (Ripoarisch)
