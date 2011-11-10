@@ -183,7 +183,7 @@ Gib einen Kommentar ein und drücke auf den Knopf zum Leeren der Seiten.',
 	'massblank-defaultreason' => 'Massenleerung der Seiten, die von „$1“ angelegt wurden',
 	'massblank-tools' => 'Diese Arbeitshilfe ermöglicht die Massenleerung von Seiten, die von einer IP-Adresse oder einem Benutzer angelegt wurden.
 Gib die IP-Adresse oder den Benutzernamen ein, um eine Liste der zu leerenden Seiten zu erhalten.',
-	'massblank-submit-user' => 'Hole die Liste',
+	'massblank-submit-user' => 'Liste holen',
 	'massblank-submit-blank' => 'Ausgewählte Seiten leeren',
 	'massblank-blankcomment' => 'Grund:',
 	'right-massblank' => 'Massenleerung von Seiten',
