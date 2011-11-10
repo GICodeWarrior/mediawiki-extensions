@@ -36,12 +36,9 @@ $wgAutoloadClasses['WebFontsHooks'] = "$dir/WebFonts.hooks.php";
 
 $wgHooks['BeforePageDisplay'][] = 'WebFontsHooks::addModules';
 $wgHooks['GetPreferences'][] = 'WebFontsHooks::addPreference';
-$wgHooks['MakeGlobalVariablesScript'][] = 'WebFontsHooks::addVariables';
+$wgHooks['UserGetDefaultOptions'][] = 'WebFontsHooks::addDefaultOptions';
 
 $wgWebFontsEnabledByDefault = true; 
-
-// By default, the preference page option to enable webfonts is set to true.
-$wgDefaultUserOptions['webfontsEnable'] = true;
 
 $wgResourceModules['webfonts'] = array(
 	'scripts' => 'js/webfonts.js',

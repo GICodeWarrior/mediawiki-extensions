@@ -22,21 +22,6 @@ class WebFontsHooks {
 	}
 
 	/**
-	 * MakeGlobalVariablesScript hook handler.
-	 */
-	public static function addVariables( &$vars, $out ) {
-		global $wgWebFontsEnabledByDefault;
-
-		if ( $out->getUser()->isAnon() ) {
-			// If user enabled webfonts from preference page, 
-			// wgWebFontsEnabledByDefault is overridden by that.
-			$vars['wgWebFontsEnabledByDefault'] = $wgWebFontsEnabledByDefault;
-		}
-
-		return true;
-	}
-
-	/**
 	 * GetPreferences hook handler.
 	 */
 	public static function addPreference( $user, &$preferences ) {
@@ -50,4 +35,14 @@ class WebFontsHooks {
 
 		return true;
 	}
+	
+	/**
+	 * UserGetDefaultOptions hook handler.
+	 */
+	public static function addDefaultOptions( &$defaultOptions ) { 
+		global $wgWebFontsEnabledByDefault;
+		// By default, the preference page option to enable webfonts is set to wgWebFontsEnabledByDefault value.
+		$defaultOptions['webfontsEnable'] = $wgWebFontsEnabledByDefault;
+		return true;
+	 }
 }
