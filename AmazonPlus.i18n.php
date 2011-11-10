@@ -974,7 +974,7 @@ $messages['km'] = array(
 	'amazonplus-new' => 'ថ្មី',
 	'amazonplus-none' => 'គ្មាន​ផលិតផល​ថតចម្លង​ណាមួយ​ត្រូវ​បាន​ដាក់​លក់​ឡើយ​។',
 	'amazonplus-cp-none' => 'គ្មាន',
-	'amazonplus-more' => 'ច្រើនជាងនេះ',
+	'amazonplus-more' => 'បន្ថែម',
 	'amazonplus-less' => 'តិចជាងនេះ',
 );
 
