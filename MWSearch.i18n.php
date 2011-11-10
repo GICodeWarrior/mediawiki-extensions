@@ -386,6 +386,13 @@ $messages['lv'] = array(
 	'mwsearch-desc' => 'MWSearch spraudnis',
 );
 
+/** Basa Banyumasan (Basa Banyumasan)
+ * @author StefanusRA
+ */
+$messages['map-bms'] = array(
+	'mwsearch-desc' => 'Plugin MWSearch',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
