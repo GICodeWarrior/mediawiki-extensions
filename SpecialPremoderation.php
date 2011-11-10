@@ -96,9 +96,8 @@ class SpecialPremoderation extends SpecialPage {
 		}
 		
 		if( isset( $offset ) ) {
-			$articlePath = str_replace('$1', '', $wgArticlePath);
-			$wgOut->addHTML( '<a href="' . $articlePath . 'Special:Premoderation/list/offset/'
-				. $offset . '">' . wfMsg( 'premoderation-next' ) . '</a>' );
+			$wgOut->addHtml( Linker::link( $this->getTitle( "list/offset/$offset" ),
+				wfMsgHtml( 'premoderation-next' ) ) );
 		}
 		
 		if( isset( $result['new'] ) ) {
@@ -139,19 +138,17 @@ class SpecialPremoderation extends SpecialPage {
 	}
 	
 	protected function formatListTableRow( $row ) {
-		global $wgLang, $wgArticlePath;
+		global $wgLang;
 		
-		$articlePath = str_replace('$1', '', $wgArticlePath);
 		return '<tr><td>' . $wgLang->timeanddate( $row['pmq_timestamp'] ) . '</td>' .
 			'<td>' . Linker::userLink( $row['pmq_user'], $row['pmq_user_text'] ) . '</td>' .
 			'<td>' . Linker::link( Title::newFromText( $row['pmq_page_title'], $row['pmq_page_ns'] ) ) .
 			'</td><td>' . ( $row['pmq_minor'] == 0 ? '' : ' ' . wfMsg( 'minoreditletter' ) ) . '</td>' .
-			'<td>' . $row['pmq_summary'] . '</td><td>' . '<a href="' . $articlePath .
-			'Special:Premoderation/status/id/' . $row['pmq_id'] . '">' .
-			wfMessage( 'premoderation-status-' . $row['pmq_status'] .
-				( $row['pmq_updated_user_text'] ? '-changed' : '-added' ),
-				array( $row['pmq_updated_user_text'] ) ) .
-			'</a></td></tr>';
+			'<td>' . $row['pmq_summary'] . '</td><td>' .
+			Linker::link( $this->getTitle( "status/id/" . $row['pmq_id'] ),
+			wfMessage( 'premoderation-status-' . $row['pmq_status'] . 
+			( $row['pmq_updated_user_text'] ? '-changed' : '-added' ),
+			array( $row['pmq_updated_user_text'] ) ) ) . '</td></tr>';
 	}
 	
 	protected function statusInterface() {
@@ -188,7 +185,7 @@ class SpecialPremoderation extends SpecialPage {
 			Xml::closeElement( 'table' ) );
 		
 		if( $wgUser->isAllowed( 'premoderation-viewip' ) ) {
-			$wgOut->addHTML( wfMessage( 'premoderation-private-ip', $row['pmq_ip'] ) );
+			$wgOut->addWikiMsg( 'premoderation-private-ip', $row['pmq_ip'] );
 		}
 		
 		$rev = Revision::newFromID( $row['pmq_page_last_id'] );
