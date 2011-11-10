@@ -49,7 +49,7 @@ $wgResourceModules['webfonts'] = array(
 	'localBasePath' => $dir,
 	'remoteExtPath' => 'WebFonts',
 	'messages' => array( 'webfonts-load', 'webfonts-reset' ),
-	'dependencies' => 'webfonts.fontlist',
+	'dependencies' => array( 'jquery.cookie', 'webfonts.fontlist'),
 );
 
 $wgResourceModules['webfonts.fontlist'] = array(
