@@ -1827,6 +1827,7 @@ $messages['kiu'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Thearith
  * @author គីមស៊្រុន
+ * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
 	'youtubeauthsub' => 'ផ្ទុកឡើងវីដេអូយូធ្យូប (YouTube)',
@@ -1840,6 +1841,7 @@ $messages['km'] = array(
 	'youtubeauthsub_category' => 'ចំណាត់ថ្នាក់ក្រុម',
 	'youtubeauthsub_submit' => 'ស្នើឡើង',
 	'youtubeauthsub_clickhere' => 'សូម​ចុចត្រង់នេះ​ ដើម្បី​ឡុកអ៊ីកចូលក្នុងយូធ្យូប (YouTube)',
+	'youtubeauthsub_tokenerror' => 'មានកំហុសពេលកំពុងបង្កើតសុំការអនុញាត, សូមព្យាយាម refreshing ។',
 	'youtubeauthsub_success' => "សូមអបអរសាទរ!
 
 វីដេអូរបស់អ្នកបានផ្ទុកឡើងហើយ។
