@@ -6,6 +6,8 @@
  */
 
 class NarayamHooks {
+
+	/// Hook: BeforePageDisplay
 	public static function addModules( $out, $skin ) {
 		global $wgUser;
 
@@ -24,9 +26,11 @@ class NarayamHooks {
 		return true;
 	}
 
+	/// Hook: ResourceLoaderGetConfigVars
 	public static function addConfig( &$vars ) {
 		global $wgNarayamEnabledByDefault, $wgNarayamRecentItemsLength, $wgUser;
 
+		// FIXME: this hook cannot depend on any state!
 		if ( $wgUser->getOption( 'narayamDisable' ) ) {
 			// User disabled Narayam
 			return true;
@@ -34,10 +38,11 @@ class NarayamHooks {
 
 		$vars['wgNarayamEnabledByDefault'] = $wgNarayamEnabledByDefault;
 		$vars['wgNarayamRecentItemsLength'] = $wgNarayamRecentItemsLength;
-		
+
 		return true;
 	}
 
+	/// Hook: MakeGlobalVariablesScript
 	public static function addVariables( &$vars ) {
 		global $wgUser, $wgNarayamSchemes;
 
@@ -64,12 +69,13 @@ class NarayamHooks {
 				$wgNarayamSchemes[$wgLanguageCode] : array();
 		$userlangSchemes = isset( $wgNarayamSchemes[$userlangCode] ) ?
 				$wgNarayamSchemes[$userlangCode] : array();
-				
+
 		$schemes = $userlangSchemes + $contlangSchemes;
 
 		return $schemes;
 	}
 
+	/// Hook: GetPreferences
 	public static function addPreference( $user, &$preferences ) {
 		// A checkbox in preferences to diable Narayam
 		$preferences['narayamDisable'] = array(
