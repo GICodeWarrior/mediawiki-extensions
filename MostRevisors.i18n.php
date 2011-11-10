@@ -542,9 +542,10 @@ $messages['ja'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
+ * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
-	'mostrevisors-namespace' => 'ប្រភេទ៖',
+	'mostrevisors-namespace' => 'លំហឈ្មោះ៖',
 );
 
 /** Kannada (ಕನ್ನಡ)
