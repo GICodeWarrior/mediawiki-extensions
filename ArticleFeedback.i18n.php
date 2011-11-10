@@ -1903,9 +1903,9 @@ Por favor inténtalo de nuevo más tarde.',
 	'articleFeedback-table-heading-page' => 'Página',
 	'articleFeedback-table-heading-average' => 'Promedio',
 	'articleFeedback-copy-above-highlow-tables' => 'Esta es una característica experimental. Por favor, proporciona tus comentarios en su [$1 página de discusión].',
-	'articlefeedback-dashboard-bottom' => "'''Nota''': Continuaremos experimentando con diferentes formas de presentar los artículos en estos paneles. Ahora, los paneles incluyen los siguientes artículos:
-* Las páginas con las calificaciones más altas y más bajas: artpiculos que han recibido al menos diez calificaciones en las últimas 24 horas. Se calculan promedios tomando en cuenta las calificaciones enviadas en las últimas 24 horas.
-* Calificaciones bajas recientes: artículos que obtuvieron el 70% o más de calificaciones bajas (2 estrellas o menos) en cualquier categoría en las últimas 24 horas. Solamente se incluyen aquellos artículos que hayan recibido al menos diez calificaciones en las últimas 24 horas.",
+	'articlefeedback-dashboard-bottom' => "'''Nota''': Esta es una característica experimental. Por ahora, los tableros incluyen la siguiente información:
+* Páginas con las calificaciones más altas y más bajas: para aquellos artículos que han recibido al menos diez calificaciones en las últimas 24 horas, se calcula el promedio de las calificaciones enviadas en dicho período.
+* Calificaciones bajas recientes: aquellos artículos que han recibido al menos diez calificaciones en las últimas 24 horas, de las cuales al menos el 70% corresponden a calificaciones bajas (dos estrellas o menos) en cualquiera de las categorías.",
 	'articlefeedback-disable-preference' => "No mostrar el ''widget'' de comentarios de artículos en las páginas",
 	'articlefeedback-emailcapture-response-body' => '¡Hola!
 
