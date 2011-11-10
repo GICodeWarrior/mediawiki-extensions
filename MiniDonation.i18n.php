@@ -524,7 +524,7 @@ $messages['sl'] = array(
  */
 $messages['sr-ec'] = array(
 	'donationform-desc' => 'Додаје таг <code>&lt;donateform&gt;</code> као подршку прилозима преко PayPal-а',
-	'donationform-submit' => 'Приложите преко Пејпала',
+	'donationform-submit' => 'Приложи преко Пејпала',
 );
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)
