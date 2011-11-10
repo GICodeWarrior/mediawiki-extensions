@@ -1,6 +1,6 @@
-(function($){
+( function( $ ) { 
 
-	function fontID(font) {
+	function fontID( font ) {
 		if ( typeof font !== 'string' ) {
 			return font;
 		}
@@ -20,31 +20,31 @@
 				return;
 			}
 
-			if ( !(font in $.webfonts.config.fonts) ) {
+			if ( !( font in $.webfonts.config.fonts ) ) {
 				mw.log( "Requested unknown font", font );
 				return;
 			}
 			var config = $.webfonts.config.fonts[font];
 
 			//load the style sheet for the font
-			$.webfonts.addFont(font);
+			$.webfonts.addFont( font );
 			
 			//save the current font and its size. Used for reset.
 			if ( !$.webfonts.oldconfig ) {
-				var $body = $("body");
+				var $body = $( 'body' );
 				$.webfonts.oldconfig = {
-					"font-family": $body.css('font-family'),
-					"font-size":   $body.css('font-size')
+					"font-family": $body.css( 'font-family' ),
+					"font-size":   $body.css( 'font-size' )
 				};
 			}
 
 			//Set the font, fallback fonts.Need to change the fonts of Input Select and Textarea explicitly.
-			$("body, input, select, textarea").css('font-family', "'"+ font +"', Helvetica, Arial, sans-serif");
+			$( 'body, input, select, textarea' ).css( 'font-family', "'"+ font +"', Helvetica, Arial, sans-serif" );
 
 			if ( 'normalization' in config ) {
-				$(document).ready(function() {
-					$.webfonts.normalize(config.normalization);
-				});
+				$( document ).ready( function() {
+					$.webfonts.normalize( config.normalization );
+				} );
 			}
 			//set the font option in cookie
 			$.cookie( 'webfonts-font', font, { 'path': '/', 'expires': 30 } );
@@ -57,16 +57,16 @@
 		 * Reset the font with old configuration
 		 */
 		reset: function() {
-			$("body").css({
+			$( 'body' ).css( {
 				'font-family': $.webfonts.oldconfig["font-family"],
 				//reset the font size from old configuration
-				'font-size': $.webfonts.oldconfig["font-size"]
+				'font-size': $.webfonts.oldconfig[ "font-size" ]
 			});
 			//we need to reset the fonts of Input and Select explicitly.
-			$("input, select").css('font-family', $.webfonts.oldconfig["font-family"]);
+			$( 'input, select' ).css( 'font-family', $.webfonts.oldconfig["font-family"] );
 
 			// Reset the fonts applied for tags with lang attribute.
-			$(".webfonts-lang-attr").css( 'font-family', 'none' ).removeClass( 'webfonts-lang-attr' );
+			$( '.webfonts-lang-attr' ).css( 'font-family', 'none' ).removeClass( 'webfonts-lang-attr' );
 
 			//remove the cookie
 			$.cookie( 'webfonts-font', 'none', { 'path': '/', 'expires': 30 } );
@@ -76,25 +76,25 @@
 		 * Does a find replace of string on the page.
 		 * @param normalization_rules hashmap of replacement rules.
 		 */
-		normalize: function(normalization_rules) {
-			$.each(normalization_rules, function(search, replace) {
-				var search_pattern = new RegExp(search,"g");
-				return $("*").each(function() {
+		normalize: function( normalizationRules ) {
+			$.each( normalizationRules, function( search, replace ) {
+				var searchPattern = new RegExp( search,"g" );
+				return $( '*' ).each(function() {
 					var node = this.firstChild,
-						 val, new_val;
+						 val, newVal;
 					if ( node ) {
 						do {
 							if ( node.nodeType === 3 ) {
 								val = node.nodeValue;
-								new_val = val.replace(search_pattern, replace);
-								if ( new_val !== val ) {
-									node.nodeValue = new_val;
+								newVal = val.replace( searchPattern, replace );
+								if ( newVal !== val ) {
+									node.nodeValue = newVal;
 								}
 							}
 						} while ( node = node.nextSibling );
 					}
-				});
-			});
+				} );
+			} );
 		},
 
 		/*
@@ -102,7 +102,7 @@
 		 * so that it gets loaded.
 		 * @param fontfamily The fontfamily name
 		 */
-		loadcss: function(fontfamily) {
+		loadcss: function( fontfamily ) {
 			var fontconfig = $.webfonts.config.fonts[fontfamily];
 			var base = mw.config.get( "wgExtensionAssetsPath" ) + "/WebFonts/fonts/";
 			var styleString =
@@ -133,7 +133,7 @@
 			styleString += "\tfont-weight: normal;\n}\n</style>\n";
 
 			//inject the css to the head of the page.
-			$(styleString).appendTo("head");
+			$( styleString ).appendTo( 'head' );
 
 		},
 		
@@ -163,24 +163,24 @@
 			var languages = $.webfonts.config.languages;
 			var requested = [mw.config.get( 'wgUserVariant' ), mw.config.get( 'wgContentLanguage' ), mw.config.get( 'wgUserLanguage' )];
 
-			for (var i = 0; i < requested.length; i++) {
-				if (requested[i] in languages) {
+			for ( var i = 0; i < requested.length; i++ ) {
+				if ( requested[i] in languages ) {
 					var fonts = languages[requested[i]];
-					for (var j = 0; j < fonts.length; j++) {
+					for ( var j = 0; j < fonts.length; j++) {
 						if ( $.inArray(fonts[j], config) === -1 ) {
-							config.push(fonts[j]);
+							config.push( fonts[j] );
 						}
 					}
 				}
 			}
 
 			// Build font dropdown
-			$.webfonts.buildMenu(config);
+			$.webfonts.buildMenu( config );
 			// See if there is a font in cookie if not first font is default font.
 			var cookieFont = $.cookie( 'webfonts-font' );
 			var selectedFont = null;
 			// check whether this font is for the current userlang/contentlang
-			if ( $.inArray(cookieFont, config) !== -1){
+			if ( $.inArray( cookieFont, config ) !== -1){
 				selectedFont = cookieFont;
 			}
 			else{
@@ -196,10 +196,10 @@
 			
 			$.webfonts.loadFontsForFontFamilyStyle();
 			$.webfonts.loadFontsForLangAttr();
-			if ( $(".webfonts-lang-attr").length && !$( '#webfonts-fontsmenu' ).length ){
+			if ( $('.webfonts-lang-attr').length && !$( '#webfonts-fontsmenu' ).length ) {
 				// We need to show the reset option even if there is no font to show 
 				// for the language, if there is lang attr based font embedding.
-				 $.webfonts.buildMenu(config);
+				 $.webfonts.buildMenu( config );
 			}
 		},
 		
@@ -210,7 +210,7 @@
 		loadFontsForLangAttr: function() {
 			var languages = $.webfonts.config.languages;
 			//if there are tags with lang attribute, 
-			$('body').find('*[lang]').each(function(index) {
+			$( 'body' ).find( '*[lang]' ).each( function( index ) {
 				//check the availability of font.
 				//add a font-family style if it does not have any
 				if( languages[this.lang] && ( !this.style.fontFamily || this.style.fontFamily == "none" ) ) {
@@ -229,10 +229,10 @@
 		loadFontsForFontFamilyStyle: function() {
 			var languages = $.webfonts.config.languages;
 			//if there are tags with font-family style definition, get a list of fonts to be loaded
-			$('body').find('*[style]').each(function(index) {
+			$( 'body' ).find( '*[style]' ).each(function( index ) {
 				if( this.style.fontFamily ) {
-					var fontFamilyItems = this.style.fontFamily.split(",");
-					$.each( fontFamilyItems, function(index, fontFamily) {
+					var fontFamilyItems = this.style.fontFamily.split( "," );
+					$.each( fontFamilyItems, function( index, fontFamily ) {
 						//remove the ' characters if any.
 						fontFamily = fontFamily.replace(/'/g, '');
 						$.webfonts.addFont( fontFamily );
@@ -250,9 +250,9 @@
 			var haveSchemes = false;
 			// Build font dropdown
 			var $fontsMenu = $( '<ul>' ).attr('id','webfonts-fontsmenu');
-			$fontsMenu.delegate('input:radio', 'change', function( event ) {
+			$fontsMenu.delegate( 'input:radio', 'change', function( event ) {
 				$.webfonts.set( $(this).val() );
-			});
+			} );
 			for ( var scheme in config ) {
 				var $fontLink = $( '<input type="radio" />' )
 					.attr( "name", "font" ) 
@@ -260,7 +260,7 @@
 					.val( config[scheme] );
 
 				var $fontLabel =  $( '<label>' )
-					.attr("for",fontID(config[scheme]))
+					.attr( "for",fontID(config[scheme] ) )
 					.append( $fontLink )
 					.append( config[scheme] );
 
@@ -270,7 +270,7 @@
 
 				haveSchemes = true;
 
-				$fontsMenu.append($fontMenuItem);
+				$fontsMenu.append( $fontMenuItem );
 
 			}
 
@@ -281,49 +281,49 @@
 			}
 
 			var $resetLink = $( '<input type="radio" />' )
-				.attr("name","font")
-				.attr("value","webfont-none")
-				.attr("id","webfont-none")
+				.attr( "name","font" )
+				.attr( "value","webfont-none" )
+				.attr( "id","webfont-none" )
 				.click( function( event ) {
-					$.webfonts.set( 'none');
+					$.webfonts.set( 'none' );
 				});
 
 			var $resetLabel = $( '<label>' )
-				.attr("for","webfont-none")
+				.attr( "for","webfont-none" )
 				.append( $resetLink )
-				.append( mw.msg("webfonts-reset"));
+				.append( mw.msg("webfonts-reset") );
 
 			var $resetLinkItem = $( '<li>' )
 				.val( 'none' )
 				.append( $resetLabel );
 
-			$fontsMenu.append($resetLinkItem);
+			$fontsMenu.append( $resetLinkItem );
 
 			var $menuDiv = $( '<div>' ).attr('id','webfonts-fonts')
 					.addClass( 'menu' )
 					.append( $fontsMenu )
 					.append();
 
-			var $div = $( '<div>' ).attr('id','webfonts-menu')
+			var $div = $( '<div>' ).attr( 'id','webfonts-menu' )
 				.addClass( 'webfontMenu' )
-				.append( $('<a>').prop( 'href', '#' ).append( mw.msg( "webfonts-load" ) ) )
+				.append( $( '<a>' ).prop( 'href', '#' ).append( mw.msg( "webfonts-load" ) ) )
 				.append( $menuDiv );
 
 			//this is the fonts link
-			var $li = $( '<li>' ).attr('id','pt-webfont')
+			var $li = $( '<li>' ).attr( 'id','pt-webfont' )
 				.append( $div );
 
 			//if rtl, add to the right of top personal links. Else, to the left
-			var fn = $('body').hasClass( 'rtl' ) ? "append" : "prepend";
-			$('#p-personal ul:first')[fn]( $li );
+			var fn = $( 'body' ).hasClass( 'rtl' ) ? "append" : "prepend";
+			$( '#p-personal ul:first' )[fn]( $li );
 			//workaround for IE bug - activex components like input fields coming on top of everything.
 			//TODO: is there a better solution other than hiding it on hover?
 			if ( $.browser.msie ) { 
-				$("#webfonts-menu").hover(function(){
-					$("#searchform").css({ visibility: "hidden" });
-				},function(){
-					$("#searchform").css({ visibility: "visible" });
-				});
+				$( '#webfonts-menu' ).hover( function( ) {
+					$( '#searchform' ).css({ visibility: "hidden" } );
+				}, function( ) { 
+					$( '#searchform' ).css( { visibility: "visible" } );
+				} );
 			}
 		}
 	};
@@ -332,4 +332,4 @@
 		$.webfonts.setup();
 	} );
 
-})(jQuery);
+} ) ( jQuery );

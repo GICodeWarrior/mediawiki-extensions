@@ -3,7 +3,7 @@
  * First font is the default font for the language
  */
 
-(function ($) {
+( function ( $ ) {
 	$.webfonts = {};
 
 	$.webfonts.config = {
@@ -37,7 +37,6 @@
 				eot: "Mlym/Meera.eot",
 				ttf: "Mlym/Meera.ttf",
 				woff: "Mlym/Meera.woff",
-				scale: 1.5,
 				normalization: {
 					"ൾ": "ള്‍",
 					"ൻ": "ന്‍",
@@ -317,4 +316,4 @@
 			cdo: [ "Charis SIL" ]
 		}
 	};
-})(jQuery);
+} ) ( jQuery );

@@ -1,28 +1,28 @@
-li#pt-webfont{
+li#pt-webfont {
 	/* @embed */
 	background: url(images/font-icon.png) no-repeat scroll left top transparent;
 	padding-left: 15px !important;
 }
 
-div#webfonts-menu{
+div#webfonts-menu {
 	font-size: 100%;
 	z-index: 99999;
 }
 
-div#webfonts-fonts{
+div#webfonts-fonts {
 	font-size: 100%;
 	z-index: 99999;
 }
 
 
-div#webfonts-menu .menu ul{
-	padding-left:5px!important;
+div#webfonts-menu .menu ul {
+	padding-left: 5px!important;
 }
 
 
-div#webfonts-fonts li{
+div#webfonts-fonts li {
 	margin: 0;
-	padding:5px;
+	padding: 5px;
 	font-size: 100%;
 	float: none;
 }
@@ -68,7 +68,8 @@ x:-moz-any-link {
 	margin-left: 23px;
 }
 /* Enable forcing showing of the menu for accessibility */
-div.webfontMenu:hover div.menu, div.webfontMenu div.menuForceShow {
+div.webfontMenu:hover div.menu,
+div.webfontMenu div.menuForceShow {
 	display: block;
 }
 div.webfontMenu ul {
@@ -121,6 +122,6 @@ div.webfontMenu li.selected a:visited {
 }
 div.webfontMenu a {
 	display: block;
-	padding-left:5px;
-	padding-right:5px;
+	padding-left: 5px;
+	padding-right: 5px;
 }
