@@ -41,16 +41,16 @@ $wgHooks['UserGetDefaultOptions'][] = 'WebFontsHooks::addDefaultOptions';
 $wgWebFontsEnabledByDefault = true; 
 
 $wgResourceModules['webfonts'] = array(
-	'scripts' => 'js/webfonts.js',
-	'styles' => 'css/webfonts.css',
+	'scripts' => 'resources/ext.webfonts.js',
+	'styles' => 'resources/ext.webfonts.css',
 	'localBasePath' => $dir,
 	'remoteExtPath' => 'WebFonts',
 	'messages' => array( 'webfonts-load', 'webfonts-reset' ),
-	'dependencies' => array( 'jquery.cookie', 'webfonts.fontlist'),
+	'dependencies' => array( 'jquery.cookie', 'ext.webfonts.fontlist'),
 );
 
-$wgResourceModules['webfonts.fontlist'] = array(
-	'scripts' => 'js/webfonts.fontlist.js',
+$wgResourceModules['ext.webfonts.fontlist'] = array(
+	'scripts' => 'resources/ext.webfonts.fontlist.js',
 	'localBasePath' => $dir,
 	'remoteExtPath' => 'WebFonts',
 );
