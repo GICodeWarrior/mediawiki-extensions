@@ -27,6 +27,8 @@ class SIISettings {
 	 */
 	protected static function getDefaultSettings() {
 		return array(
+			'defaultImage' => 'File:Mail-envelope.png',
+			'defaultWidth' => 200
 		);
 	}
 

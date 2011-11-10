@@ -57,7 +57,7 @@ $wgAutoloadClasses['InstantImageInput'] 		= dirname( __FILE__ ) . '/includes/Ins
 
 $wgExtensionFunctions[] = function() {
 	global $sfgFormPrinter;
-	$sfgFormPrinter->registerInputType( 'WikiImageInput' );
+	$sfgFormPrinter->registerInputType( 'InstantImageInput' );
 };
 
 // Resource loader modules

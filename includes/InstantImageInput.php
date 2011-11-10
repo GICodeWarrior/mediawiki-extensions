@@ -19,17 +19,15 @@ class InstantImageInput extends SFFormInput {
 	}
 
 	public static function getDefaultPropTypes() {
-		return array(
-		);
+		return array();
 	}
 
 	public static function getOtherPropTypesHandled() {
-		return array( '_wpg' );
+		return array( '_txt', '_wpg' );
 	}
 
 	public static function getDefaultPropTypeLists() {
-		return array(
-		);
+		return array();
 	}
 	
 	public static function getOtherPropTypeListsHandled() {
@@ -82,6 +80,10 @@ class InstantImageInput extends SFFormInput {
 	public static function getHTML( $cur_value, $input_name, $is_mandatory, $is_disabled, $other_args ) {
 		global $wgOut;
 		$html = '';
+		
+		if ( !array_key_exists( 'page', $other_args ) ) {
+			$other_args['type'] = 'page';
+		}
 		
 		$showDefault = !array_key_exists( 'showdefault', $other_args ) || $other_args['showdefault'] === 'yes';
 		
