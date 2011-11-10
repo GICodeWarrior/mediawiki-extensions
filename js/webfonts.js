@@ -63,12 +63,10 @@
 				'font-size': $.webfonts.oldconfig["font-size"]
 			});
 			//we need to reset the fonts of Input and Select explicitly.
-			$("input").css('font-family', $.webfonts.oldconfig["font-family"]);
-			$("select").css('font-family', $.webfonts.oldconfig["font-family"]);
+			$("input, select").css('font-family', $.webfonts.oldconfig["font-family"]);
 
 			// Reset the fonts applied for tags with lang attribute.
-			$(".webfonts-lang-attr").css( 'font-family', 'none' );
-			$(".webfonts-lang-attr").removeClass( 'webfonts-lang-attr' );
+			$(".webfonts-lang-attr").css( 'font-family', 'none' ).removeClass( 'webfonts-lang-attr' );
 
 			//remove the cookie
 			$.cookie( 'webfonts-font', 'none', { 'path': '/', 'expires': 30 } );
@@ -186,7 +184,7 @@
 			var cookieFont = $.cookie( 'webfonts-font' );
 			var selectedFont = null;
 			// check whether this font is for the current userlang/contentlang
-			if ( $.inArray(cookieFont, config) >=0 ){
+			if ( $.inArray(cookieFont, config) !== -1){
 				selectedFont = cookieFont;
 			}
 			else{
@@ -197,7 +195,7 @@
 			if ( selectedFont && selectedFont !== 'none' ) {
 				$.webfonts.set( selectedFont );
 				//mark it as checked
-				$( '#'+fontID( selectedFont ) ).attr( 'checked', 'checked' );
+				$( '#'+fontID( selectedFont ) ).prop( 'checked', true );
 			}
 			
 			$.webfonts.loadFontsForFontFamilyStyle();
@@ -222,8 +220,7 @@
 				if( languages[this.lang] && ( !this.style.fontFamily || this.style.fontFamily == "none" ) ) {
 					fontFamily = languages[this.lang][0];
 					$.webfonts.addFont( fontFamily );
-					$(this).css('font-family', fontFamily);
-					$(this).addClass('webfonts-lang-attr');
+					$(this).css('font-family', fontFamily).addClass('webfonts-lang-attr');
 				}
 			});
 			
