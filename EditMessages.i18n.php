@@ -1046,6 +1046,28 @@ $messages['lv'] = array(
 	'editmsg-search' => 'Meklēt',
 );
 
+/** Basa Banyumasan (Basa Banyumasan)
+ * @author StefanusRA
+ */
+$messages['map-bms'] = array(
+	'editmessages-desc' => '[[Special:EditMessages|Penyunting berbasis-Web]] sekang file Messages*.php sing akeh',
+	'editmessages' => 'Sunting pesen',
+	'editmsg-target' => 'Sasaran pesan:',
+	'editmsg-search' => 'Goleti',
+	'editmsg-show-list' => 'Tidhokna nilai nggo jeneng pesen "$1"',
+	'editmsg-get-patch' => 'Gawe tambalan',
+	'editmsg-new-search' => 'Penggoletan anyar',
+	'editmsg-warning-parse1' => 'Jeneng pesen regex ora cocok: $1',
+	'editmsg-warning-parse2' => '* Karakter kutipan dikarepna seuwise panah: $1',
+	'editmsg-warning-parse3' => '* Nilai akhir string ora ditemokna: $1',
+	'editmsg-warning-file' => '* Kesalahan maca file sing muncul kanggo {{PLURAL:$2|basa|basa}} kiye: $1',
+	'editmsg-warning-mismatch' => '* Teks asline ora nduwe nilai sing dikarepna kanggo {{PLURAL:$2|basa|basa}} kiye: $1',
+	'editmsg-apply-patch' => 'Pasang tambalan',
+	'editmsg-no-patch' => 'Ora teyeng nglakonkna perintah "tambal"',
+	'editmsg-patch-failed' => 'Tambalan gagal dengan status keluar $1',
+	'editmsg-patch-success' => 'Tambalan sukses.',
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */
