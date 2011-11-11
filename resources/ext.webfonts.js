@@ -293,7 +293,7 @@
 			var $resetLabel = $( '<label>' )
 				.attr( 'for', 'webfont-none' )
 				.append( $resetLink )
-				.append( mw.msg( 'webfonts-reset' ) );
+				.append( mw.message( 'webfonts-reset' ).escaped() );
 
 			var $resetLinkItem = $( '<li>' )
 				.val( 'none' )
@@ -310,7 +310,7 @@
 			var $div = $( '<div>' )
 				.attr( 'id', 'webfonts-menu' )
 				.addClass( 'webfontMenu' )
-				.append( $( '<a>' ).prop( 'href', '#' ).append( mw.msg( 'webfonts-load' ) ) )
+				.append( $( '<a>' ).prop( 'href', '#' ).text( mw.message( 'webfonts-load' ).escaped() ) )
 				.append( $menuDiv );
 
 			// This is the fonts link
