@@ -4,9 +4,8 @@
  */
 
 ( function ( $ ) {
-	mw.webfonts = {};
 
-	mw.webfonts.config = {
+	config = {
 		fonts: {
 			RufScript: {
 				eot: "Latn/Rufscript.eot",
@@ -316,4 +315,5 @@
 			cdo: [ "Charis SIL" ]
 		}
 	};
+	$.extend( mw.webfonts.config, config);
 } ) ( jQuery );

@@ -15,7 +15,7 @@ class WebFontsHooks {
 	public static function addModules( $out, $skin ) {
 
 		if ( $out->getUser()->getOption( 'webfontsEnable' ) ) {
-			$out->addModules( 'webfonts' );
+			$out->addModules( 'ext.webfonts.init' );
 		}
 
 		return true;

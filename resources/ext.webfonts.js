@@ -10,7 +10,7 @@
 	mw.webfonts = {
 
 		oldconfig: false,
-		config: mw.webfonts.config,
+		config: { fonts: {}, languages: {} },
 		version: '0.1.2',
 		fonts : [],
 		set: function( font ) {
@@ -334,9 +334,5 @@
 			}
 		}
 	};
-
-	$( document ).ready( function() {
-		mw.webfonts.setup();
-	} );
 
 } ) ( jQuery );
