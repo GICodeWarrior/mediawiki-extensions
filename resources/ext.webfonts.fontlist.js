@@ -4,9 +4,9 @@
  */
 
 ( function ( $ ) {
-	$.webfonts = {};
+	mw.webfonts = {};
 
-	$.webfonts.config = {
+	mw.webfonts.config = {
 		fonts: {
 			RufScript: {
 				eot: "Latn/Rufscript.eot",
