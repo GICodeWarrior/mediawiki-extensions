@@ -49,6 +49,7 @@ $messages['be-tarask'] = array(
  */
 $messages['br'] = array(
 	'apiexplorer' => 'Ergerzher API',
+	'apiexplorer-loading' => "O kargañ an arc'hwelioù...",
 );
 
 /** German (Deutsch)
