@@ -435,10 +435,10 @@ $messages['lb'] = array(
  * @author Brest
  */
 $messages['mk'] = array(
-	'pageby-desc' => 'Прикажува уредувачи на самата вики страница со користење на ознаката <code><nowiki><pageby></nowiki></code>',
+	'pageby-desc' => 'Прикажува уредници на самата вики-страница со користење на ознаката <code><nowiki><pageby></nowiki></code>',
 	'pageby-first' => 'Страницата е создадена од $1, $2',
 	'pageby-last' => 'Последната <a href="$3">измена</a> ја извршил $1, $2',
-	'pageby-contributors' => 'Уредувачи:',
+	'pageby-contributors' => 'Учесници:',
 	'pageby-anon' => '<i>анонимни</i>',
 );
 
