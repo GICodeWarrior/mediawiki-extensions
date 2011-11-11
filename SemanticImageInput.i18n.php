@@ -23,6 +23,13 @@ $messages['en'] = array(
 	'sii-imageinput-loading' => 'Loading image...'
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'sii-imageinput-loading' => 'O kargañ ar skeudenn...',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
