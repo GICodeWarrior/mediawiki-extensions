@@ -970,12 +970,12 @@ $messages['sl'] = array(
 	'communityvoice-ratings-error-no-title' => 'Atribut naslova manjka v oznaki glasova.',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'communityvoice-ratings-scale-status-sending' => 'Слање...',
+	'communityvoice-ratings-scale-status-sending' => 'Шаљем…',
 	'communityvoice-ratings-scale-status-error' => 'Грешка при слању!',
 	'communityvoice-ratings-scale-status-thanks' => 'Хвала на гласању!',
 );
