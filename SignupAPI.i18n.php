@@ -74,10 +74,14 @@ $messages['be-tarask'] = array(
 $messages['br'] = array(
 	'signupapi-ok' => 'Mat eo',
 	'signupapi-noname' => "N'eus bet diferet anv implijer ebet.",
+	'signupapi-enterpassword' => 'Rankout a rit lakaat ur ger-tremen',
+	'signupapi-passwordtooshort' => 'Ger-tremen re verr',
 	'signupapi-weak' => 'Gwan',
 	'signupapi-medium' => 'Etre',
 	'signupapi-strong' => 'Kreñv',
+	'signupapi-badretype' => 'Ne glot ket ar gerioù-tremen an eil gant egile',
 	'signupapi-passwordsmatch' => 'Klotañ a ra ar gerioù-tremen',
+	'signupapi-invalidemailaddress' => "Direizh eo ar chomlec'h postel",
 );
 
 /** German (Deutsch)
