@@ -500,3 +500,21 @@ $messages['te'] = array(
 	'admanager_added' => 'మీ మార్పుల భద్రమయ్యాయి',
 );
 
+/** Ukrainian (Українська)
+ * @author Sodmy
+ */
+$messages['uk'] = array(
+	'admanager' => 'Менеджер оголошень',
+	'admanagerzones' => 'Менеджер оголошень по зонам',
+	'admanager_labelPage' => 'Назви сторінок',
+	'admanager_labelCategory' => 'Імена категорій',
+	'admanager_submit' => 'Відправити',
+	'admanager_noads' => 'Не показувати рекламу',
+	'admanager_Page' => 'Сторінки',
+	'admanager_Category' => 'Категорії',
+	'admanager_added' => 'Ваші зміни збережено',
+	'admanager_noadsset' => '$1 відключив показ реклами',
+	'admanager_addedzone' => 'Додана зона',
+	'admanager_zonenum' => 'Зона #: $1',
+);
+
