@@ -123,6 +123,8 @@ $messages['be-tarask'] = array(
  */
 $messages['br'] = array(
 	'notificator-e-mail-address' => "chomlec'h postel",
+	'notificator-notify' => 'Kemenn',
+	'notificator-notify-address-or-name' => 'Kemenn $1',
 	'notificator-return-to' => 'Distreiñ da',
 	'notificator-change-tag' => 'kemmañ',
 	'notificator-new-tag' => 'nevez',
