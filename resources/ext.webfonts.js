@@ -105,7 +105,7 @@
 			var base = mw.config.get( 'wgExtensionAssetsPath' ) + '/WebFonts/fonts/';
 			var fontFormats = [];
 			var styleString =
-				"@font-face {\n"
+				"<style type='text/css'>\n@font-face {\n"
 				+ "\tfont-family: '"+fontFamily+"';\n";
 
 			if ( 'eot' in fontconfig ) {
@@ -134,10 +134,10 @@
 			}
 			
 			styleString += fontFormats.join() + ";\n"
-			styleString += "\tfont-weight: normal;\n}\n";
+			styleString += "\tfont-weight: normal;\n}\n</style>\n";
 
-			//inject the css to the head of the page.
-			mw.util.addCSS( styleString );
+ 			//inject the css to the head of the page.
+			$( styleString ).appendTo( 'head' );
 		},
 		
 		/**
