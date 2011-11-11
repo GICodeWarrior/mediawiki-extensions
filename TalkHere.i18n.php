@@ -716,8 +716,8 @@ $messages['mk'] = array(
 	'talkhere-notalk' => "''(сè уште нема коментари)''",
 	'talkhere-addcomment' => 'додај коментар',
 	'talkhere-beforeinput' => 'Подолу можете да додадете коментар',
-	'talkhere-loading' => 'го вчитувам уредувачот...',
-	'talkhere-collapse' => 'скриј уредувач',
+	'talkhere-loading' => 'го вчитувам уредникот...',
+	'talkhere-collapse' => 'скриј уредник',
 );
 
 /** Malayalam (മലയാളം)
