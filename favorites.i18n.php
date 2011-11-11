@@ -649,7 +649,7 @@ $messages['mk'] = array(
 	'favoritelistedit-raw-explain' => 'Насловите во бендисаните се прикажани подолу, и можат да се уредуваат со додавање или бришење на ставки од списокот;
 по еден наслов во секој ред.
 Кога ќе завршите, стиснете на „{{int:Favoritelistedit-raw-submit}}“.
-Можете и да го [[Special:Favoritelist/edit|употребите обичниот уредувач]].',
+Можете и да го [[Special:Favoritelist/edit|употребите обичниот уредник]].',
 	'favoritelistedit-raw-titles' => 'Наслови:',
 	'favoritelistedit-raw-submit' => 'Поднови бендисани',
 	'favoritelistedit-raw-done' => 'Бендисаните се подновени.',
