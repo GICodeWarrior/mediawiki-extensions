@@ -145,6 +145,7 @@ $messages['cs'] = array(
 );
 
 /** Welsh (Cymraeg)
+ * @author Lloffiwr
  * @author Pwyll
  */
 $messages['cy'] = array(
@@ -152,7 +153,7 @@ $messages['cy'] = array(
 	'bm-booktools-section' => 'Offer ar gyfer llyfr',
 	'bm-randomchapter-link' => 'Pennod ar hap',
 	'bm-printversion' => 'Fersiwn print',
-	'bm-printversion-desc' => "Yn cynhyrchu [[SpecialLPrintVersion|fersiwn print]] o'r llyfr",
+	'bm-printversion-desc' => "Yn cynhyrchu [[Special:PrintVersion|fersiwn i'w brintio]] o'r llyfr",
 	'bm-printversion-no-book' => "Nodwch enw'r llyfr i gael ei fersiwn print os gwelwch yn dda.",
 	'bm-printversion-inexistent-book' => "Ni ddaethpwyd o hyd i'r llyfr. Nodwch enw llyfr sy'n bodoli eisoes i gael fersiwn print ohono, os gwelwch yn dda.",
 );
