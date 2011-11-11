@@ -1036,13 +1036,13 @@ $messages['mk'] = array(
 	'countedits' => 'Броење на уредувања',
 	'countedits-desc' => '[[Special:CountEdits|Специјална страница]] која брои кориснички уредувања и дава список на 10-те учесници со највеќе придонеси',
 	'countedits-warning' => "'''Предупредување:''' Не судете ја книгата по корицата.
-Не судете ги уредувачите по нивниот број на уредувања.",
+Не судете ги уредниците по бројот на нивните на уредувања.",
 	'countedits-username' => 'Корисник:',
 	'countedits-ok' => 'ОК',
 	'countedits-nosuchuser' => 'Не постои корисник по име $1.',
 	'countedits-resultheader' => 'Резултати за $1',
 	'countedits-resulttext' => '$1 има направено $2 {{PLURAL:$2|уредување|уредувања}}',
-	'countedits-mostactive' => 'Најактивни уредувачи',
+	'countedits-mostactive' => 'Најактивни уредници',
 	'countedits-nocontribs' => 'Нема придонеси за ова вики.',
 );
 
