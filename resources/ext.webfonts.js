@@ -64,7 +64,7 @@
 			$( 'input, select' ).css( 'font-family', mw.webfonts.oldconfig.fontFamily );
 
 			// Reset the fonts applied for tags with lang attribute.
-			$( '.webfonts-lang-attr' ).css( 'font-family', 'none' ).removeClass( 'webfonts-lang-attr' );
+			$( '.webfonts-lang-attr' ).css( 'font-family', '' ).removeClass( 'webfonts-lang-attr' );
 
 			// Remove the cookie
 			$.cookie( 'webfonts-font', 'none', { 'path': '/', 'expires': 30 } );
