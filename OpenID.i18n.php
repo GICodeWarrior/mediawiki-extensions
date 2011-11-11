@@ -821,7 +821,7 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'openid-desc' => "Kevreañ ouzh ar wiki gant [http://openid.net/ OpenID] ha kevreañ ouzh lec'hiennoù OpenID all gant ur gont implijer wiki.",
-	'openidlogin' => 'Kevreañ gant OpenID',
+	'openidlogin' => 'Kevreañ / Krouiñ ur gont gant OpenID',
 	'openidserver' => 'Servijer OpenID',
 	'openidxrds' => 'Restr Yadis',
 	'openidconvert' => 'Amdroer OpenID',
@@ -851,7 +851,7 @@ Kit e darempred, mar plij, gant unan eus [[Special:ListUsers/sysop|merourien ]] 
 	'openidemail' => "Chomlec'h postel",
 	'openidlanguage' => 'Yezh',
 	'openidtimezone' => 'Takad eur :',
-	'openidchooselegend' => 'Dibab an anv implijer',
+	'openidchooselegend' => 'Dibab an anv implijer hag anv ar gont',
 	'openidchooseinstructions' => "An holl implijerien o deus ezhomm ul lesanv ;
 gellout a rit dibab unan eus ar c'hinnigoù a-is.",
 	'openidchoosenick' => 'Ho lesanv ($1)',
