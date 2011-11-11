@@ -1560,6 +1560,16 @@ $wgGoogleMapsMessages['el'] = array(
 	'gm-mars' => 'Άρης',
 );
 
+/** Canadian English (Canadian English)
+ * @author Techman224
+ */
+$wgGoogleMapsMessages['en-ca'] = array(
+	'gm-color-path' => 'change colour',
+	'gm-color-fill' => 'change fill colour',
+	'gm-fill-color' => 'Fill colour',
+	'gm-line-color' => 'Line colour',
+);
+
 /** British English (British English)
  * @author Lcawte
  */
