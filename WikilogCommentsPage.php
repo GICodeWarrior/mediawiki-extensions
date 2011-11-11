@@ -29,12 +29,6 @@
 if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
-# NOTE (Mw1.16- COMPAT): GAID_FOR_UPDATE removed and replaced by
-# Title::GAID_FOR_UPDATE in Mw1.17. Remove this define and replace its
-# occurrence WikilogCommentsPage::setCommentApproval() in Wl1.3.
-if ( !defined( 'GAID_FOR_UPDATE' ) )
-	define( 'GAID_FOR_UPDATE', Title::GAID_FOR_UPDATE );
-
 /**
  * Wikilog comments namespace handler class.
  *
@@ -407,7 +401,7 @@ class WikilogCommentsPage
 				array( 'content', 'parsemag' ),
 				$comment->mUserText
 			);
-			$id = $title->getArticleID( GAID_FOR_UPDATE );
+			$id = $title->getArticleID( Title::GAID_FOR_UPDATE );
 			if ( $this->doDeleteArticle( $reason, false, $id ) ) {
 				$comment->deleteComment();
 				$log->addEntry( 'c-reject', $title, '' );
