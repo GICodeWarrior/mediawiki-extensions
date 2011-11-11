@@ -103,8 +103,9 @@
 		loadCSS: function( fontFamily ) {
 			var fontconfig = $.webfonts.config.fonts[fontFamily];
 			var base = mw.config.get( 'wgExtensionAssetsPath' ) + '/WebFonts/fonts/';
+			var fontFormats = [];
 			var styleString =
-				"<style type='text/css'>\n@font-face {\n"
+				"@font-face {\n"
 				+ "\tfont-family: '"+fontFamily+"';\n";
 
 			if ( 'eot' in fontconfig ) {
@@ -121,22 +122,22 @@
 			}
 			
 			if ( 'woff' in fontconfig ) {
-				styleString += "\t\turl('"+base+fontconfig.woff+"') format('woff'),";
+				fontFormats.push( "\t\turl('"+base+fontconfig.woff+"') format('woff')" );
 			}
 
 			if ( 'svg' in fontconfig ) {
-				styleString += "\t\turl('"+base+fontconfig.svg+"#"+fontFamily+"') format('svg'),";
+				fontFormats.push( "\t\turl('"+base+fontconfig.svg+"#"+fontFamily+"') format('svg')" );
 			}
 
 			if ( 'ttf' in fontconfig ) {
-				styleString += "\t\turl('"+base+fontconfig.ttf+"') format('truetype');\n";
+				fontFormats.push( "\t\turl('"+base+fontconfig.ttf+"') format('truetype')" );
 			}
-
-			styleString += "\tfont-weight: normal;\n}\n</style>\n";
+			
+			styleString += fontFormats.join() + ";\n"
+			styleString += "\tfont-weight: normal;\n}\n";
 
 			//inject the css to the head of the page.
-			$( styleString ).appendTo( 'head' );
-
+			mw.util.addCSS( styleString );
 		},
 		
 		/**
