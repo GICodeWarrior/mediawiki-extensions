@@ -206,8 +206,8 @@ $messages['br'] = array(
 	'onlinestatus-toggles-desc' => 'Ho statud :',
 	'onlinestatus-toggles-explain' => "Talvezout a ra deoc'h da ziskouez d'an implijerien all hag-eñ emaoc'h enlinenn pe get en ur sellet ouzh ho pajenn implijer.",
 	'onlinestatus-toggles-show' => 'Diskouez ma statud war ma fajenn implijer',
-	'onlinestatus-toggle-offline' => 'Ezlinenn',
-	'onlinestatus-toggle-online' => 'Enlinenn',
+	'onlinestatus-toggle-offline' => 'Ezvezant',
+	'onlinestatus-toggle-online' => 'Kevreet',
 	'onlinestatus-pref-onlineonlogin' => 'Kemmañ ma statud da enlinenn pa gevrean',
 	'onlinestatus-pref-offlineonlogout' => 'Kemmañ ma statud da ezlinenn pa zigevrean',
 );
