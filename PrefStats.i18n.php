@@ -1392,6 +1392,35 @@ $messages['io'] = array(
 	'prefstats-factor-fourweeks' => 'quar semani',
 );
 
+/** Icelandic (Íslenska)
+ * @author Snævar
+ */
+$messages['is'] = array(
+	'prefstats' => 'Tölfræði stillinga',
+	'prefstats-desc' => 'Tölfræði um hversu margir hafa ákveðnar stillingar virkar',
+	'prefstats-title' => 'Tölfræði stillinga',
+	'prefstats-list-intro' => 'Eins og er, er fylgst með eftirfarandi stillingum
+Ýttu á eitt þeirra til að skoða tölfræði þess.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|notandi hefur|notendur hafa}} virkjað þennan möguleika frá upphafi mælinga
+** $2 {{PLURAL:$2|notandi hefur|notendur hafa}} möguleikann enn virkan
+** $3 {{PLURAL:$3|notandi hefur|notendur hafa}} óvirkjað möguleikan síðan',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|notandi hefur|notendur hafa}} virkjað þennan möguleika frá upphafi mælinga
+** $2 {{PLURAL:$2|notandi hefur|notendur hafa}} möguleikann enn virkan
+** $3 {{PLURAL:$3|notandi hefur|notendur hafa}} óvirkjað möguleikan síðan
+* Í heildina, {{PLURAL:$4|hefur $4 notandi|hafa $4 notendur}} þennan möguleika virkan',
+	'prefstats-xaxis' => 'Tímalengd (klukkutímar)',
+	'prefstats-factors' => 'Skoða eftir: $1',
+	'prefstats-factor-hour' => 'klukkutíma',
+	'prefstats-factor-sixhours' => 'sex klukkutímum',
+	'prefstats-factor-day' => 'degi',
+	'prefstats-factor-week' => 'viku',
+	'prefstats-factor-twoweeks' => 'tveimur vikum',
+	'prefstats-factor-fourweeks' => 'fjórum vikum',
+	'prefstats-factor-default' => 'aftur á sjálfgefinn mælikvarða',
+	'prefstats-legend-out' => 'Óvirkjuðu',
+	'prefstats-legend-in' => 'Virkjuðu',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  * @author Gianfranco
