@@ -31,10 +31,11 @@ $messages['be-tarask'] = array(
 );
 
 /** Welsh (Cymraeg)
+ * @author Lloffiwr
  * @author Pwyll
  */
 $messages['cy'] = array(
-	'automaticboardwelcome-desc' => 'Yn postio [[MediaWiki:User-board-message|neges groesawu]] ar dudalennau defnyddwyr newydd wedi iddynt greu cyfrif.',
+	'automaticboardwelcome-desc' => 'Yn postio [[MediaWiki:User-board-welcome-message|neges groesawu]] ar dudalennau defnyddwyr newydd wedi iddynt greu cyfrif.',
 );
 
 /** German (Deutsch)
