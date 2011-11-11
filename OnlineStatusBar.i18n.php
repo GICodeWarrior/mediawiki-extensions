@@ -58,6 +58,18 @@ $messages['qqq'] = array(
 	'onlinestatusbar-status-hidden' => 'Status for users who mark themselves as hidden (used on preferences only)',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'onlinestatusbar-line' => '$1 zo bremañ $2 $3',
+	'onlinestatusbar-status-online' => 'Kevreet',
+	'onlinestatusbar-status-busy' => 'Soulgarget',
+	'onlinestatusbar-status-away' => 'Er-maez',
+	'onlinestatusbar-status-offline' => 'Ezvezant',
+	'onlinestatusbar-status-hidden' => 'Kuzhet',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
