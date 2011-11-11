@@ -97,7 +97,7 @@ class WikilogItemPage
 					$this->mItem->mName,
 					$this->mItem->mParentTitle->getPrefixedText()
 			);
-			$wgOut->setPageTitle( $this->mItem->mName );
+			$wgOut->setPageTitle( Sanitizer::escapeHtmlAllowEntities( $this->mItem->mName ) );
 			$wgOut->setHTMLTitle( wfMsg( 'pagetitle', $fullPageTitle ) );
 
 			# Item page footer.

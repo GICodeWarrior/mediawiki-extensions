@@ -160,7 +160,8 @@ class WikilogCommentsPage
 		}
 
 		# Add a backlink to the original article.
-		$link = $this->mSkin->link( $this->mItem->mTitle, $this->mItem->mName );
+		$link = $this->mSkin->link( $this->mItem->mTitle,
+			Sanitizer::escapeHtmlAllowEntities( $this->mItem->mName ) );
 		$wgOut->setSubtitle( wfMsg( 'wikilog-backlink', $link ) );
 
 		# Retrieve comments (or replies) from database and display them.
