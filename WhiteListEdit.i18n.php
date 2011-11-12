@@ -596,7 +596,7 @@ Ar bajenn-mañ ne dalvez nemet evit an implijerien zo bevennet o gwirioù.",
 	'group-restricted' => 'Implijerien bevennet',
 	'group-restricted-member' => '{{GENDER:$1|implijer|implijerez}} bevennet',
 	'group-manager' => 'Merourien',
-	'group-manager-member' => 'Merour',
+	'group-manager-member' => '{{GENDER:$1|merour|merourez}}',
 );
 
 /** Bosnian (Bosanski)
