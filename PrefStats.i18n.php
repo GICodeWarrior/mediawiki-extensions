@@ -1401,6 +1401,8 @@ $messages['is'] = array(
 	'prefstats-title' => 'Tölfræði stillinga',
 	'prefstats-list-intro' => 'Eins og er, er fylgst með eftirfarandi stillingum
 Ýttu á eitt þeirra til að skoða tölfræði þess.',
+	'prefstats-noprefs' => 'Eins og er ekki fylgst með neinum stillingum.
+Stilltu $wgPrefStatsTrackPrefs til þess að fylgjast með stillingum.',
 	'prefstats-counters' => '* $1 {{PLURAL:$1|notandi hefur|notendur hafa}} virkjað þennan möguleika frá upphafi mælinga
 ** $2 {{PLURAL:$2|notandi hefur|notendur hafa}} möguleikann enn virkan
 ** $3 {{PLURAL:$3|notandi hefur|notendur hafa}} óvirkjað möguleikan síðan',
