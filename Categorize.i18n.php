@@ -240,8 +240,12 @@ $messages['sv'] = array(
 
 /** Ukrainian (Українська)
  * @author Microcell
+ * @author Sodmy
  */
 $messages['uk'] = array(
+	'categorize-desc' => 'Додає поле вводу для редагування та завантаження сторінки, яка дозволяє користувачам призначати категорії',
 	'categorize-title' => 'Кваліфікація знань',
+	'categorize-footer' => "Якщо ви хочете додати мітку, будь ласка, зв'яжіться з [[Special:ListUsers/sysop|адміністратором]].",
+	'categorize-advice' => 'Клацніть на ярликах, якщо ви хочете приписати цій сторінці:',
 );
 
