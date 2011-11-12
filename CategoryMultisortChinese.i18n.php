@@ -669,6 +669,25 @@ $messages['tl'] = array(
 	'categorymultisort-sortkey-name-radical-traditional' => 'Radikal: Nakaugalian',
 );
 
+/** Ukrainian (Українська)
+ * @author Sodmy
+ */
+$messages['uk'] = array(
+	'categorymultisortchinese-desc' => 'Дозволяє продивлятись категорії з різними ключами сортування, специфічними для китайських скриптів',
+	'categorymultisort-sortkey-name-mandarin-pinyin' => 'Північне наріччя китайської мови (Мандаринська мова): Піньїнь',
+	'categorymultisort-sortkey-name-mandarin-bopomofo' => 'Північне наріччя китайської мови (Мандаринська мова): Чжуїнь',
+	'categorymultisort-sortkey-name-mandarin-wadegiles' => 'Північне наріччя китайської мови (Мандаринська мова): Система Вейда-Джайлза',
+	'categorymultisort-sortkey-name-mandarin-mps2' => 'Північне наріччя китайської мови (Мандаринська мова): MPS II',
+	'categorymultisort-sortkey-name-mandarin-tongyong' => 'Північне наріччя китайської мови (Мандаринська мова): Тун’юн-Піньїнь',
+	'categorymultisort-sortkey-name-cantonese-jyutping' => 'Південне наріччя китайської мови (Кантонська мова): Ютпхін',
+	'categorymultisort-sortkey-name-stroke' => 'Риска',
+	'categorymultisort-sortkey-name-stroke-simplified' => 'Риска: спрощене письмо',
+	'categorymultisort-sortkey-name-stroke-traditional' => 'Риска: традиційне письмо',
+	'categorymultisort-sortkey-name-radical' => 'Ієрогліфічний ключ',
+	'categorymultisort-sortkey-name-radical-simplified' => 'Ієрогліфічний ключ: спрощене письмо',
+	'categorymultisort-sortkey-name-radical-traditional' => 'Ієрогліфічний ключ: традиційне письмо',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Chenxiaoqino
  * @author PhiLiP
