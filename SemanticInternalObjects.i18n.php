@@ -64,6 +64,7 @@ $messages['be-tarask'] = array(
  */
 $messages['br'] = array(
 	'semanticinternalobjects-desc' => 'Kefluniadur traezoù diabarzh e Semanctic MediaWiki',
+	'semanticinternalobjects-internalproperty' => 'Perzh diabarzh',
 );
 
 /** Bosnian (Bosanski)
