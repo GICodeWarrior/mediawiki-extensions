@@ -180,3 +180,10 @@ $messages['sv'] = array(
 	'automaticboardwelcome-desc' => 'Skickar automatiskt [[MediaWiki:User-board-welcome-message|ett välkomstmeddelande]] på nya användares användaranslagstavlor efter konto har skapats',
 );
 
+/** Ukrainian (Українська)
+ * @author Sodmy
+ */
+$messages['uk'] = array(
+	'automaticboardwelcome-desc' => 'Автоматично посилає [[MediaWiki:User-board-welcome-message|привітальне повідомлення]] на дошках нових користувачів після створення облікових записів',
+);
+
