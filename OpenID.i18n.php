@@ -837,7 +837,12 @@ Kit e darempred, mar plij, gant unan eus [[Special:ListUsers/sysop|merourien ]] 
 	'openidfailure' => "C'hwitet eo ar gwiriadur",
 	'openidfailuretext' => 'C\'hwitet eo bet gwiriekadenn ar chomlec\'h OpenID. Kemennadenn fazi : "$1"',
 	'openidsuccess' => 'Gwiriet pep tra ervat',
-	'openidsuccesstext' => "Gwiriet eo bet chomlec'h an OpenID ervat.",
+	'openidsuccesstext' => "'''Gwiriet eo bet an troaù ervat, kevreet oc'h evel $1'''.
+
+$2 eo hoc'h OpenID.
+
+Gallout a rit merañ an OpenID-mañ ha re all diret dre an ivinell [[Special:Preferences#prefsection-openid|OpenID]] en ho Penndibaboù.<br />
+Gallout a rit ouzhpennañ ur ger-tremen kont diret en ho [[Special:Preferences#prefsection-personal|profil implijer]].",
 	'openidusernameprefix' => 'Implijer OpenID',
 	'openidserverlogininstructions' => "Goulenn a ra $3 e lakfec'h ho ker-tremen evit ho pajenn $1 implijer $2 (URL OpenID)",
 	'openidtrustinstructions' => "Gwiriañ ha c'hoant hoc'h eus da rannañ titouroù gant $1.",
@@ -868,9 +873,10 @@ gellout a rit dibab unan eus ar c'hinnigoù a-is.",
 	'openidconvertsuccesstext' => "Amdroet hoc'h eus ho OpenID davet $1.",
 	'openidconvertyourstext' => "Hoc'h OpenID eo hemañ dija.",
 	'openidconvertothertext' => 'OpenID un implijer all eo hemañ.',
-	'openidalreadyloggedin' => "'''Kevreet oc'h dija, $1!'''
+	'openidalreadyloggedin' => "Kevreet oc'h c'hoazh.",
+	'openidalreadyloggedintext' => "'''Kevreet oc'h c'hoazh, $1!'''
 
-Ma fell deoc'h implijout OpenID da gevreañ diwezhatoc'h, e c'hallit [[Special:OpenIDConvert|amdreiñ ho kont evit implijout OpenID]].",
+Gallout a rit merañ (gwelet, diverkañ, ouzhpennañ) OpenIDoù all en ivinell [[Special:Preferences#prefsection-openid|OpenID]] ho penndibaboù.",
 	'openidnousername' => "N'eus bet diferet anv implijer ebet.",
 	'openidbadusername' => 'Un anv implijer fall zo bet lakaet.',
 	'openidautosubmit' => "Er bajenn-mañ ez eus ur furmskrid hag a c'hallfe bezañ kaset emgefre m'hoc'h eus gweredekaet JavaScript.
@@ -908,6 +914,8 @@ Ne c'hallfec'h ket kevreañ hep OpenID.",
 	'openid-provider-label-yahoo' => 'Kevreañ dre ho kont Yahoo',
 	'openid-provider-label-aol' => "Ebarzhit hoc'h anv AOL",
 	'openid-provider-label-other-username' => "Ebarzhit hoc'h anv implijer $1",
+	'openid-dashboard-number-openid-users' => 'Niver a implijerien gant OpenID',
+	'openid-dashboard-number-openids-in-database' => 'Niver a OpenIDoù (hollad)',
 );
 
 /** Bosnian (Bosanski)
