@@ -897,6 +897,7 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author Microcell
+ * @author Sodmy
  */
 $messages['uk'] = array(
 	'apisb-desc' => 'Дозволяє налагоджувати виклики [http://www.mediawiki.org/wiki/API MediaWiki API] з браузера',
@@ -904,9 +905,25 @@ $messages['uk'] = array(
 	'apisb-no-js' => "'''Помилка''': ця функція вимагає JavaScript.",
 	'apisb-intro' => "Ця сторінка служить для експериментування з '''MediaWiki API'''.
 Звертайтеся до [http://www.mediawiki.org/wiki/API документації] для докладнішої інформації про використання API.",
+	'apisb-api-disabled' => 'API вимкнуто на цьому сайті.',
 	'apisb-parameters' => 'Параметри',
 	'apisb-result' => 'Результат',
 	'apisb-request-url' => 'URL-адреса запиту:',
+	'apisb-request-post' => 'POST данні:',
+	'apisb-select-action' => 'Виберіть дію',
+	'apisb-select-query' => 'Що запитати?',
+	'apisb-select-value' => 'Оберіть значення',
+	'apisb-loading' => 'Завантаження...',
+	'apisb-load-error' => 'Помилка завантаження API опису',
+	'apisb-request-error' => 'Помилка виконання запиту API',
+	'apisb-namespaces-error' => 'Помилка завантаження простору імен',
+	'apisb-ns-main' => '(Основний)',
+	'apisb-submit' => 'Зробити запит',
+	'apisb-query-prop' => 'Властивості',
+	'apisb-query-list' => 'Списки',
+	'apisb-query-meta' => 'Мета-інформація',
+	'apisb-generic-parameters' => 'Загальні параметри',
+	'apisb-generator-parameters' => 'Генератор',
 );
 
 /** Vietnamese (Tiếng Việt)
