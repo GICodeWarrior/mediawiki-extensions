@@ -128,6 +128,13 @@ $messages['pt'] = array(
 	'categorysortheaders-desc' => 'Permite especificar cabeçalhos de ordenação personalizados, com vários caracteres, nas páginas de categoria. <!--<nowiki>[[category:Foo|^Header^Invisible part of sortkey]]</nowiki>-->',
 );
 
+/** Ukrainian (Українська)
+ * @author Sodmy
+ */
+$messages['uk'] = array(
+	'categorysortheaders-desc' => "Дозволяє вказати власні мульти-символи 'перший символ' сортування заголовків до списку сторінок під категорії, використовуючи такий синтаксис <nowiki>[[category:Foo|^заголовок^невидима частина ключа сортування]]</nowiki>",
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author PhiLiP
  */
