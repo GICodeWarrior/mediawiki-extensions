@@ -302,6 +302,13 @@ $messages['tl'] = array(
 	'categorymembersonsidebar-desc' => 'Nagdaragdag ng mga kasapi sa kategorya sa ibabaw ng panggilid na halang',
 );
 
+/** Ukrainian (Українська)
+ * @author Sodmy
+ */
+$messages['uk'] = array(
+	'categorymembersonsidebar-desc' => 'Додає членів категорії на бічну панель',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Hydra
  */
