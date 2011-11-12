@@ -1065,6 +1065,7 @@ $messages['ksh'] = array(
 $messages['lb'] = array(
 	'wikisync' => 'Wiki-Synchronisatioun',
 	'wikisync_direction' => "Sicht w.e.g. d'Richtung vun der Synchronisatioun eraus",
+	'wikisync_clear_log' => 'Logbuch eidelmaachen',
 	'wikisync_remote_login_button' => 'Umellen',
 	'wikisync_sync_files' => 'Fichiere synchroniséieren',
 	'wikisync_synchronization_button' => 'Synchroniséieren',
