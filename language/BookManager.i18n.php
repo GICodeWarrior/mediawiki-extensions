@@ -578,6 +578,19 @@ $messages['tl'] = array(
 	'bm-printversion-inexistent-book' => 'Hindi natagpuan ang aklat.  Pakipasok ang pangalan ng umiiral na aklat upang makuha ang bersyong maililimbag nito.',
 );
 
+/** Ukrainian (Українська)
+ * @author Sodmy
+ */
+$messages['uk'] = array(
+	'bookmanager-desc' => 'Інструменти для книг',
+	'bm-booktools-section' => 'Інструменти книги',
+	'bm-randomchapter-link' => 'Випадкова глава',
+	'bm-printversion' => 'Версія для друку',
+	'bm-printversion-desc' => 'Генерує [[Special:PrintVersion|друковану версію]] книги',
+	'bm-printversion-no-book' => "Будь ласка, введіть ім'я книги, щоб отримати її друковану версію.",
+	'bm-printversion-inexistent-book' => "Книгу не знайдено. Будь ласка, введіть ім'я наявної книги, щоб отримати її друковану версію.",
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Hydra
  */
