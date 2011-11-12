@@ -1417,6 +1417,10 @@ $messages['rue'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'refhelper-refcreate_autocomment' => 'Samodejno ustvarjanje strani.',
+	'refhelper-refcreate_success' => 'Stran [[$1]] ni obstajala in sem jo uspešno ustvaril.',
+	'refhelper-refcreate_failure' => 'Stran [[$1]] že obstaja!',
+	'refhelper-label_workspace' => 'Delovni prostor (območje za kopiranje in lepljenje):',
 	'refhelper-label_authorforename' => 'Avtorjevo $1 ime:',
 	'refhelper-label_authorsurname' => 'Priimek:',
 	'refhelper-title' => 'Naslov:',
