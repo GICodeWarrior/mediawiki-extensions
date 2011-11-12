@@ -541,6 +541,16 @@ $messages['tr'] = array(
 	'checkpoint-notice' => '([[{{ns:project}}:Kontrol noktası|kontrol noktası kayıt]])',
 );
 
+/** Ukrainian (Українська)
+ * @author Sodmy
+ */
+$messages['uk'] = array(
+	'checkpoint' => 'Зберегти та продовжити редагування',
+	'checkpoint-desc' => 'Дозволяє зберегти зміни та продовжити редагування',
+	'checkpoint-tooltip' => 'Збережіть вашу роботу та продовжіть редагувати сторінку',
+	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|збереження контрольної точки]])',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Trần Nguyễn Minh Huy
