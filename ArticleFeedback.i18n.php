@@ -777,6 +777,8 @@ $messages['br'] = array(
 	'articlefeedback-survey-submit' => 'Kas',
 	'articlefeedback-survey-title' => "Trugarez da respont d'un nebeut goulennoù",
 	'articlefeedback-survey-thanks' => 'Trugarez da vezañ leuniet ar goulennaoueg.',
+	'articlefeedback-survey-disclaimer' => "Ma kasit an dra-se ec'h asantit bezañ treuzwelus hervez $1.",
+	'articlefeedback-survey-disclaimerlink' => 'termenoù',
 	'articlefeedback-error' => "C'hoarvezet ez eus ur fazi. Esaeit en-dro diwezhtaoc'h, mar plij.",
 	'articlefeedback-form-switch-label' => "Reiñ un notenn d'ar bajenn-mañ",
 	'articlefeedback-form-panel-title' => "Reiñ un notenn d'ar bajenn-mañ",
@@ -789,8 +791,8 @@ $messages['br'] = array(
 	'articlefeedback-form-panel-expertise-hobby' => 'Dik on gant an danvez-se ent personel',
 	'articlefeedback-form-panel-expertise-other' => "Orin ma anaouedegezh n'eo ket renablet aze",
 	'articlefeedback-form-panel-helpimprove' => 'Me a garfe skoazellañ da wellaat Wikipedia, kasit din ur postel (diret)',
-	'articlefeedback-form-panel-helpimprove-note' => "Kaset e vo deoc'h ur chomlec'h kadarnaat. Ne vo ket kaset ho chomlec'h postel da zen ebet. $1",
-	'articlefeedback-form-panel-helpimprove-privacy' => 'Reolennoù prevezded',
+	'articlefeedback-form-panel-helpimprove-note' => "Kaset e vo deoc'h ur postel kadarnaat. Ne vo ket kaset ho chomlec'h postel da zen ebet all hervez hor $1",
+	'articlefeedback-form-panel-helpimprove-privacy' => 'Disklêriadur prevezded evit ar respont',
 	'articlefeedback-form-panel-submit' => 'Kas ar priziadennoù',
 	'articlefeedback-form-panel-pending' => "N'eo ket bet kaset ho priziadenn evit c'hoazh",
 	'articlefeedback-form-panel-success' => 'Enrollet ervat',
@@ -817,6 +819,11 @@ $messages['br'] = array(
 	'articlefeedback-field-complete-tooltip-5' => 'Klok eo an teul',
 	'articlefeedback-field-objective-label' => 'Diuntu',
 	'articlefeedback-field-objective-tip' => "Ha soñjal a ra deoc'h e vez kavet displeget er bajenn-mañ, en un doare reizh a-walc'h, holl tuioù ar sujed ?",
+	'articlefeedback-field-objective-tooltip-1' => 'Tuek betek re',
+	'articlefeedback-field-objective-tooltip-2' => "Tuek a-walc'h",
+	'articlefeedback-field-objective-tooltip-3' => 'Un tammig tuek',
+	'articlefeedback-field-objective-tooltip-4' => "Didu a-walc'h evit doare",
+	'articlefeedback-field-objective-tooltip-5' => 'Didu-krenn',
 	'articlefeedback-field-wellwritten-label' => 'Skrivet brav',
 	'articlefeedback-field-wellwritten-tip' => "Ha soñjal a ra deoc'h eo skrivet brav ha frammet mat ar bajenn-mañ ?",
 	'articlefeedback-field-wellwritten-tooltip-1' => 'Digomprenus',
@@ -838,6 +845,7 @@ $messages['br'] = array(
 	'articlefeedback-survey-message-success' => 'Trugarez da vezañ leuniet ar goulennaoueg.',
 	'articlefeedback-survey-message-error' => "Ur fazi zo bet.
 Klaskit en-dro diwezhatoc'h.",
+	'articlefeedback-privacyurl' => 'http://wikimediafoundation.org/wiki/Feedback_privacy_statement',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Berzh ha droukverzh an devezh',
 	'articleFeedback-table-caption-dailyhighs' => 'Pajennoù gwellañ priziet : $1',
 	'articleFeedback-table-caption-dailylows' => 'Pajennoù priziet an nebeutañ : $1',
@@ -3232,6 +3240,7 @@ Prošu spytaj pozdźišo hišće raz.',
  * @author Dani
  * @author Hunyadym
  * @author Misibacsi
+ * @author Samat
  * @author Tgr
  */
 $messages['hu'] = array(
@@ -3248,10 +3257,11 @@ $messages['hu'] = array(
 	'articlefeedback-survey-question-useful' => 'Hasznosnak és világosnak érzed az értékeléseket?',
 	'articlefeedback-survey-question-useful-iffalse' => 'Miért?',
 	'articlefeedback-survey-question-comments' => 'Van még további észrevételed?',
-	'articlefeedback-survey-submit' => 'Értékelés küldése',
+	'articlefeedback-survey-submit' => 'Értékelés elküldése',
 	'articlefeedback-survey-title' => 'Kérjük, válaszolj néhány kérdésre',
 	'articlefeedback-survey-thanks' => 'Köszönjük a kérdőív kitöltését!',
 	'articlefeedback-survey-disclaimer' => 'A szolgáltatás fejlesztésének érdekében a visszajelzésedet névtelenül megosztjuk a Wikipédia szerkesztőivel.',
+	'articlefeedback-survey-disclaimerlink' => 'feltételek',
 	'articlefeedback-error' => 'Hiba történt. Kérlek, próbálkozz később.',
 	'articlefeedback-form-switch-label' => 'Oldal értékelése',
 	'articlefeedback-form-panel-title' => 'Oldal értékelése',
@@ -3307,7 +3317,7 @@ $messages['hu'] = array(
 	'articlefeedback-pitch-reject' => 'Talán később',
 	'articlefeedback-pitch-or' => 'vagy',
 	'articlefeedback-pitch-thanks' => 'Köszönjük! Az értékelést elmentettük.',
-	'articlefeedback-pitch-survey-message' => 'Kérlek szánj egy kis időt egy rövid felmérés kitöltésére.',
+	'articlefeedback-pitch-survey-message' => 'Kérlek, szánj egy kis időt egy rövid felmérés kitöltésére.',
 	'articlefeedback-pitch-survey-accept' => 'Felmérés megkezdése',
 	'articlefeedback-pitch-join-message' => 'Szerettél volna regisztrálni?',
 	'articlefeedback-pitch-join-body' => 'Ha regisztrálsz, könnyen nyomon tudod követni a szerkesztéseidet, jobban be tudsz kapcsolódni a megbeszélésekbe, és a közösség tagjává válhatsz.',
@@ -4157,6 +4167,7 @@ $messages['lb'] = array(
 	'articlefeedback-survey-message-success' => "Merci datt Dir d'Ëmfro ausgefëllt hutt.",
 	'articlefeedback-survey-message-error' => 'Et ass e Feeler geschitt.
 Probéiert w.e.g. méi spéit nach emol.',
+	'articlefeedback-privacyurl' => 'http://wikimediafoundation.org/wiki/Feedback_privacy_statement',
 	'articleFeedback-table-caption-dailyhighsandlows' => "D'Héichten an d'Déifte vun haut",
 	'articleFeedback-table-caption-dailyhighs' => 'Säite mat den héchste Bewäertungen: $1',
 	'articleFeedback-table-caption-dailylows' => 'Säite mat den niddregste Bewäertungen: $1',
@@ -6984,6 +6995,7 @@ Lütfen daha sonra tekrar deneyin.',
  * @author Arturyatsko
  * @author Dim Grits
  * @author Microcell
+ * @author Sodmy
  * @author Тест
  */
 $messages['uk'] = array(
@@ -7004,6 +7016,7 @@ $messages['uk'] = array(
 	'articlefeedback-survey-title' => 'Будь ласка, дайте відповідь на кілька запитань',
 	'articlefeedback-survey-thanks' => 'Дякуємо за участь в опитуванні.',
 	'articlefeedback-survey-disclaimer' => 'Щоб покращити цю функцію, ваш відгук може бути анонімно наданий спільноті Вікіпедії.',
+	'articlefeedback-survey-disclaimerlink' => 'умовах',
 	'articlefeedback-error' => 'Сталася помилка. Будь ласка, спробуйте пізніше.',
 	'articlefeedback-form-switch-label' => 'Оцінить цю сторінку',
 	'articlefeedback-form-panel-title' => 'Оцініть цю сторінку',
@@ -7070,6 +7083,7 @@ $messages['uk'] = array(
 	'articlefeedback-pitch-edit-accept' => 'Редагувати цю сторінку',
 	'articlefeedback-survey-message-success' => 'Дякуємо за участь в опитуванні.',
 	'articlefeedback-survey-message-error' => 'Сталася помилка. Будь ласка, повторіть спробу пізніше.',
+	'articlefeedback-privacyurl' => 'http://wikimediafoundation.org/wiki/Feedback_privacy_statement',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Лідери та аутсайдери цього дня.',
 	'articleFeedback-table-caption-dailyhighs' => 'Сторінки з найвищими оцінками: $1',
 	'articleFeedback-table-caption-dailylows' => 'Сторінки з найнижчими оцінками: $1',
