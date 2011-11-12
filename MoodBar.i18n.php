@@ -586,12 +586,14 @@ $messages['br'] = array(
 	'moodbar-feedback-newer' => "Nevesoc'h",
 	'moodbar-feedback-older' => "Koshoc'h",
 	'moodbar-feedback-ajaxerror' => "Ur fazi zo bet en ur glask disoc'hoù all.",
+	'moodbar-hide-header' => 'Kuzhat an elfenn-mañ evit na vefe ket gwelet',
 	'moodbar-type-happy' => 'Laouen',
 	'moodbar-type-sad' => 'Trist',
 	'moodbar-type-confused' => 'Trubuilhet',
 	'moodbar-user-anonymized' => 'Dianavezet',
 	'moodbar-user-ip' => "Chomlec'h IP",
 	'moodbar-user-user' => 'Implijer enrollet',
+	'moodbar-log-hide' => 'en deus kuzhet "[[$1]]"',
 );
 
 /** Danish (Dansk)
