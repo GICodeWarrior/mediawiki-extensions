@@ -191,6 +191,7 @@ $messages['be-tarask'] = array(
  */
 $messages['br'] = array(
 	'prefs-advancedfavoritelist' => 'Dibarzhioù araokaet',
+	'favoritelistfor' => "(evit '''$1''')",
 	'favoritenologin' => 'Digevreet',
 	'favoritelistall2' => 'pep tra',
 	'favoritelistedit-normal-submit' => 'Tennañ an titloù',
