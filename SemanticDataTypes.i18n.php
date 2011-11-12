@@ -30,6 +30,13 @@ $messages['ast'] = array(
 	'sdt-duration' => 'Duración',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'sdt-duration' => 'Pad',
+);
+
 /** Catalan (Català)
  * @author Toniher
  */
