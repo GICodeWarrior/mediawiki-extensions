@@ -267,6 +267,13 @@ $messages['tr'] = array(
 	'arrayext-desc' => 'İsimlendirilmiş dizileri sakla ve hsapla',
 );
 
+/** Ukrainian (Українська)
+ * @author Sodmy
+ */
+$messages['uk'] = array(
+	'arrayext-desc' => 'Зберігання та обчислення іменованих масивів',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */
