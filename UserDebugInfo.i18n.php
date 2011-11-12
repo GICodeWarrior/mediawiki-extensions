@@ -51,9 +51,11 @@ $messages['be-tarask'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
+	'userdebuginfo-remoteaddr' => "Chomlec'h pell HTTP",
 	'userdebuginfo-key' => "Alc'hwez",
 	'userdebuginfo-value' => 'Talvoudenn',
 	'userdebuginfo-language' => 'Yezh',
