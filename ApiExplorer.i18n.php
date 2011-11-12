@@ -162,3 +162,13 @@ $messages['ru'] = array(
 	'apiexplorer-loading' => 'Загрузка функций...',
 );
 
+/** Ukrainian (Українська)
+ * @author Sodmy
+ */
+$messages['uk'] = array(
+	'apiexplorer' => 'API Explorer',
+	'apiexplorer-desc' => 'Сторінка для інтерактивно вивчення документації MediaWiki API',
+	'apiexplorer-intro' => 'На цій сторінці відображаються документації для поточної Wiki API. Будь ласка, натисніть функцію нижче, щоб побачити більше інформації про те, які параметри можуть бути використані при кожному виклику. Також дивіться [http://www.mediawiki.org/wiki/API:Main_page Загальна документація прикладного програмного інтерфейсу «MediaWiki API»].',
+	'apiexplorer-loading' => 'Завантаження функцій...',
+);
+
