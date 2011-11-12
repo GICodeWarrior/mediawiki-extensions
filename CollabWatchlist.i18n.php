@@ -231,6 +231,7 @@ $messages['br'] = array(
 	'collabwatchlistnew-name' => 'Anv ar roll',
 	'collabwatchlistnew-submit' => 'Krouiñ',
 	'collabwatchlistedit-normal-submit' => 'Enrollañ',
+	'collabwatchlistshowhidelistusers' => '$1 implijer eus ar roll',
 );
 
 /** German (Deutsch)
@@ -1077,6 +1078,46 @@ $messages['te'] = array(
 	'collabwatchlistdelete-submit' => 'తొలగించు',
 	'collabwatchlistnew-name' => 'జాబితా పేరు',
 	'collabwatchlistedit-normal-submit' => 'భద్రపరచు',
+);
+
+/** Ukrainian (Українська)
+ * @author Sodmy
+ */
+$messages['uk'] = array(
+	'collabwatchlist' => 'Спільний список спостереження',
+	'collabwatchlist-desc' => 'Забезпечити спільні списки спостереження на основі категорій',
+	'specialcollabwatchlist' => 'Спеціальні сторінки спільного списку спостереження',
+	'collabwatchlist-details' => '{{PLURAL:$1|$1 category/page|$1 категорії/сторінки}} на цьому спільному списку спостереження.',
+	'collabwatchlisttagselect' => 'Мітка',
+	'collabwatchlisttagcomment' => 'Коментар',
+	'collabwatchlistsettagbutton' => 'Набір тегів',
+	'collabwatchlisttools-view' => 'Показати',
+	'collabwatchlisttools-edit' => 'Змінити категорію',
+	'collabwatchlisttools-rawCategories' => 'Сире редагування категорій',
+	'collabwatchlisttools-rawTags' => 'Сире редагування міток',
+	'collabwatchlisttools-rawUsers' => 'Сире редагування користувачів',
+	'collabwatchlisttools-delete' => 'Вилучити',
+	'collabwatchlistsall' => 'Усі списки',
+	'collabwatchlistfiltertags' => 'Приховати Мітки',
+	'collabwatchlistedit-users-raw-submit' => 'Зберегти',
+	'collabwatchlistedit-raw-title' => 'Сире редагування категорій',
+	'collabwatchlistedit-tags-raw-title' => 'Сире редагування міток',
+	'collabwatchlistedit-users-raw-title' => 'Сире редагування користувачів',
+	'collabwatchlistedit-raw-legend' => 'Сире редагування спільного списку спостереження категорій',
+	'collabwatchlistedit-users-raw-legend' => 'Сире редагування спільного списку спостереження користувачів',
+	'collabwatchlistedit-tags-raw-legend' => 'Сире редагування спільного списку спостереження міток',
+	'collabwatchlistedit-raw-titles' => 'Категорії:',
+	'collabwatchlistedit-tags-raw-titles' => 'Мітки:',
+	'collabwatchlistedit-users-raw-titles' => 'Користувачі:',
+	'collabwatchlistedit-tags-raw-submit' => 'Зберегти',
+	'collabwatchlistpatrol' => 'Патрульні редагування',
+	'collabwatchlisttools-newList' => 'Новий спільний список спостереження',
+	'collabwatchlistdelete-legend' => 'Видалити спільний список спостереження',
+	'collabwatchlistdelete-submit' => 'Вилучити',
+	'collabwatchlistnew-name' => "Ім'я списку",
+	'collabwatchlistnew-submit' => 'Створити',
+	'collabwatchlistedit-normal-submit' => 'Зберегти',
+	'collabwatchlistshowhidelistusers' => '$1 список користувачів',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
