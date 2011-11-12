@@ -63,6 +63,7 @@ $messages['qqq'] = array(
  */
 $messages['br'] = array(
 	'onlinestatusbar-line' => '$1 zo bremañ $2 $3',
+	'prefs-onlinestatus' => 'Statud enlinenn',
 	'onlinestatusbar-status-online' => 'Kevreet',
 	'onlinestatusbar-status-busy' => 'Soulgarget',
 	'onlinestatusbar-status-away' => 'Er-maez',
