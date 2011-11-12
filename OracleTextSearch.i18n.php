@@ -13,6 +13,13 @@ $messages['en'] = array(
 	'oracletextsearch-desc' => 'Search content/metadata of uploaded files using Oracle Text indexing',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'oracletextsearch-desc' => '{{desc}}',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -76,6 +83,14 @@ $messages['he'] = array(
 $messages['ia'] = array(
 	'oracletextsearch' => 'OracleTextSearch',
 	'oracletextsearch-desc' => 'Cercar contento/metadatos de files incargate usante le indexation Oracle Text',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'oracletextsearch' => 'Oracle-Täx-Söhkte',
+	'oracletextsearch-desc' => 'Donn noh Enhallde un Mettadaate en huhjelaade Datteije söhke mem <i lang="en>Oracle</i> singem Syßteem för ene <i lang="en>Index</i> övver Täxte ze maache.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
