@@ -23,6 +23,13 @@ $messages['en'] = array(
 	'sii-imageinput-loading' => 'Loading image...'
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'sii-desc' => '{{desc}}',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -52,6 +59,13 @@ $messages['gl'] = array(
 $messages['ia'] = array(
 	'sii-desc' => 'Adde un modo de inserer imagines que extrahe imagines ex Wikipedia a [https://www.mediawiki.org/wiki/Extension:Semantic_Forms Formularios Semantic]',
 	'sii-imageinput-loading' => 'Carga imagine...',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'sii-desc' => 'Brängg en Müjjeleschkeit en et Wiki, öm e Beld enzjävve, un dat vun de  Wikkipeedija udder MedijaWiki Commons en e [https://www.mediawiki.org/wiki/Extension:Semantic_Forms semantesch Fommulaa] ze holle.',
 );
 
 /** Macedonian (Македонски)
