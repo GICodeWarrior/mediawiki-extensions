@@ -6627,6 +6627,9 @@ Uporabljene naj bodo samo v člankih v imenskem prostoru Wikilog.',
 	'wikilog-comment-invalid-name' => 'Navedeno ime je neveljavno.',
 	'wikilog-no-such-article' => 'Zahtevan članek wikilog ne obstaja.',
 	'wikilog-reading-draft' => 'Ta članek wikilog je osnutek; ni še bil objavljen.',
+	'wikilog-posting-anonymously' => 'Trenutno niste prijavljeni;
+vaš komentar bo objavljen brezimno, identificiran z vašim naslovom internetne povezave.
+Zgoraj raje navedite svoj vzdevek, da identificirate svojo pripombo; če pa želite, da je pravilno pripisana, se morate $1.',
 	'wikilog-anonymous-moderated' => 'Ko oddate svojo pripombo, ne bo takoj vidna na tej strani.
 Pripomba bo prikazana šele takrat, ko jo pregleda moderator.',
 	'wikilog-post-comment' => 'Objavi novo pripombo',
