@@ -96,6 +96,8 @@ $messages['be-tarask'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'admanager_invalidtargetpage' => 'N\'eus bet kavet pajenn ebet dezhi an titl "$1".',
+	'admanager_invalidtargetcategory' => 'N\'eus bet kavet rummañ ebet dezhañ an titl "$1".',
 	'admanager_labelPage' => 'Titloù ar bajenn',
 	'admanager_labelCategory' => 'Anvioù ar rummad :',
 	'admanager_submit' => 'Kas',
@@ -506,6 +508,13 @@ $messages['te'] = array(
 $messages['uk'] = array(
 	'admanager' => 'Менеджер оголошень',
 	'admanagerzones' => 'Менеджер оголошень по зонам',
+	'admanager-desc' => 'Забезпечує [[Special:AdManager|службову сторінку]], яка дозволяє адміністраторам встановлювати зони для сторінок або категорій',
+	'admanager_docu' => 'Щоб додати або видалити зону оголошення у сторінці або усієї категорії, додайте або видаліть її назву нижче.',
+	'admanagerzones_docu' => 'Введіть номер кожної зони оголошень в окремому рядку.',
+	'admanager_invalidtargetpage' => 'Не знайдено сторінки з назвою "$1".',
+	'admanager_invalidtargetcategory' => 'Не знайдено категорії з назвою "$1".',
+	'admanager_notable' => 'Помилка! Не знайдено необхідної таблиці бази даних! Спочатку запустіть update.php.',
+	'admanager_noAdManagerZones' => 'Помилка! Ви повинні додати деякі зони оголошень. Введіть їх у [[Special:AdManagerZones|Менеджер зон оголошень]].',
 	'admanager_labelPage' => 'Назви сторінок',
 	'admanager_labelCategory' => 'Імена категорій',
 	'admanager_submit' => 'Відправити',
@@ -516,5 +525,10 @@ $messages['uk'] = array(
 	'admanager_noadsset' => '$1 відключив показ реклами',
 	'admanager_addedzone' => 'Додана зона',
 	'admanager_zonenum' => 'Зона #: $1',
+	'admanager_zonenotnumber' => 'Помилка! $1 не є числом.',
+	'admanager_return' => 'Повернутися до [[Special:AdManager|Менеджер оголошень]]',
+	'admanager_gotoads' => '[[Special:AdManager|Редагувати розміщення оголошень]]',
+	'admanager_gotozones' => '[[Special:AdManagerZones|Редагувати зони оголошень]]',
+	'right-admanager' => '[[Special:AdManager|Керування конфігурацією реклами]]',
 );
 
