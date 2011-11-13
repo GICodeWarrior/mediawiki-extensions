@@ -140,7 +140,7 @@ HTML;
 		
 		// Type
 		$type = $feedbackItem->getProperty('type');
-		$typeMsg = wfMessage( "moodbar-type-$type" )->escaped();
+		$typeMsg = wfMessage( "moodbar-type-$type" )->params( $feedbackItem->getProperty('user') )->escaped();
 		
 		// Timestamp
 		$now = wfTimestamp( TS_UNIX );
