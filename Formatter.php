@@ -27,7 +27,7 @@ abstract class MoodBarFormatter {
 				break;
 			case 'type':
 				$internal = self::getInternalRepresentation( $data, $field );
-				$outData = wfMessage("moodbar-type-$internal")->parse();
+				$outData = wfMessage("moodbar-type-$internal")->params( $data->getProperty('user') )->parse();
 				break;
 			case 'usertype':
 				$internal = self::getInternalRepresentation( $data, $field );

@@ -104,9 +104,9 @@ For more information, please visit the $1.',
 	'moodbar-invalid-item' => 'The system was unable to find the correct feedback item.',
 	'moodbar-feedback-action-error' => 'An error occurred when trying to perform this action.',
 	// Mood types
-	'moodbar-type-happy' => 'Happy',
-	'moodbar-type-sad' => 'Sad',
-	'moodbar-type-confused' => 'Confused',
+	'moodbar-type-happy' => '{{GENDER:$1|Happy}}',
+	'moodbar-type-sad' => '{{GENDER:$1|Sad}}',
+	'moodbar-type-confused' => '{{GENDER:$1|Confused}}',
 	// User types
 	'moodbar-user-anonymized' => 'Anonymized',
 	'moodbar-user-ip' => 'IP address',
@@ -196,9 +196,9 @@ See [[Thread:Support/About MediaWiki:Moodbar-privacy/en (2)/reply (4)|discussion
 	'moodbar-header-user' => '{{Identical|User}}',
 	'moodbar-header-comment' => '{{Identical|Comment}}',
 	'moodbar-header-namespace' => '{{Identical|Namespace}}',
-	'moodbar-type-happy' => 'No gender support ([[bugzilla:30071|bug 30071]])',
-	'moodbar-type-sad' => 'No gender support ([[bugzilla:30071|bug 30071]])',
-	'moodbar-type-confused' => 'No gender support ([[bugzilla:30071|bug 30071]])',
+	'moodbar-type-happy' => '$1 is the username that can be used for GENDER',
+	'moodbar-type-sad' => '$1 is the username that can be used for GENDER',
+	'moodbar-type-confused' => '$1 is the username that can be used for GENDER',
 	'moodbar-user-ip' => '{{Identical|IP Address}}',
 );
 
