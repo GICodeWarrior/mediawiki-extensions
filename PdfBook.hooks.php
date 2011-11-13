@@ -100,9 +100,7 @@ class PdfBookHooks {
 			else {
 				# Write the HTML to a tmp file
 				$file = "$wgUploadDirectory/" . uniqid( 'pdf-book' );
-				$fh = fopen( $file, 'w+' );
-				fwrite( $fh, $html );
-				fclose( $fh );
+				file_put_contents( $file, $html );
 
 				$footer = $format == 'single' ? "..." : ".1.";
 				$toc    = $format == 'single' ? "" : " --toclevels $levels";
