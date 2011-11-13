@@ -14,12 +14,12 @@ class PdfBookHooks {
 			$title = $article->getTitle();
 			$opt = ParserOptions::newFromUser( $wgUser );
 
-			# Log the export
+			// Log the export
 			$msg = wfMsg( 'pdfbook-log', $wgUser->getUserPage()->getPrefixedText() );
 			$log = new LogPage( 'pdf', false );
 			$log->addEntry( 'book', $article->getTitle(), $msg );
 
-			# Initialise PDF variables
+			// Initialise PDF variables
 			$format  = $wgRequest->getText( 'format' );
 			$notitle = $wgRequest->getText( 'notitle' );
 			$layout  = $format == 'single' ? '--webpage' : '--firstpage toc';
@@ -38,7 +38,7 @@ class PdfBookHooks {
 			$width   = $width ? "--browserwidth $width" : '';
 			if( !is_array( $exclude ) ) $exclude = split( '\\s*,\\s*', $exclude );
  
-			# Select articles from members if a category or links in content if not
+			// Select articles from members if a category or links in content if not
 			if( $format == 'single' ) $articles = array( $title );
 			else {
 				$articles = array();
@@ -63,7 +63,7 @@ class PdfBookHooks {
 				}
 			}
 
-			# Format the article(s) as a single HTML document with absolute URL's
+			// Format the article(s) as a single HTML document with absolute URL's
 			$book = $title->getText();
 			$html = '';
 			$wgArticlePath = $wgServer.$wgArticlePath;
@@ -90,7 +90,7 @@ class PdfBookHooks {
 				}
 			}
 
-			# $wgPdfBookTab = false; If format=html in query-string, return html content directly
+			// $wgPdfBookTab = false; If format=html in query-string, return html content directly
 			if( $format == 'html' ) {
 				$wgOut->disable();
 				header( "Content-Type: text/html" );
@@ -98,14 +98,15 @@ class PdfBookHooks {
 				print $html;
 			}
 			else {
-				# Write the HTML to a tmp file
+				// Write the HTML to a tmp file
+				if( !is_dir( $wgUploadDirectory ) ) mkdir( $wgUploadDirectory );
 				$file = "$wgUploadDirectory/" . uniqid( 'pdf-book' );
 				file_put_contents( $file, $html );
 
 				$footer = $format == 'single' ? "..." : ".1.";
 				$toc    = $format == 'single' ? "" : " --toclevels $levels";
 
-				# Send the file to the client via htmldoc converter
+				// Send the file to the client via htmldoc converter
 				$wgOut->disable();
 				header( "Content-Type: application/pdf" );
 				header( "Content-Disposition: attachment; filename=\"$book.pdf\"" );
@@ -130,8 +131,8 @@ class PdfBookHooks {
 	 */
 	private static function setProperty( $name, $default ) {
 		global $wgRequest;
-		if ( $wgRequest->getText( "pdf$name" ) )   return $wgRequest->getText( "pdf$name" );
-		if ( $wgRequest->getText( "amp;pdf$name" ) )   return $wgRequest->getText( "amp;pdf$name" ); // hack to handle ampersand entities in URL
+		if ( $wgRequest->getText( "pdf$name" ) ) return $wgRequest->getText( "pdf$name" );
+		if ( $wgRequest->getText( "amp;pdf$name" ) ) return $wgRequest->getText( "amp;pdf$name" ); // hack to handle ampersand entities in URL
 		if ( isset( $GLOBALS["wgPdfBook$name"] ) ) return $GLOBALS["wgPdfBook$name"];
 		return $default;
 	}
