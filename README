@@ -1,7 +1,7 @@
 == About ==
 
-''SemanticUpdateOnPurge'' is a MediaWiki extension by Daniel Werner which updates Semantic MediaWikis properties
-of an article whenever the article is purged.
+'SemanticUpdateOnPurge' is a 'Semantic MediaWiki' [0] extension by Daniel Werner. It updates Semantic MediaWikis
+properties of an article whenever the article is purged.
 SMW standard behavior is to update properties only on page save (as of SMW 1.6)
 
 
@@ -16,13 +16,15 @@ directory. Then add the following code to your [[Manual:LocalSettings.php|LocalS
 
 == Compatibility ==
 
-Version 0.2.1 to 0.4 are tested on SMW 1.6.1 and 1.6.2 (propably working with 1.6 too) There have been some issues
+Versions 0.2.1 to 0.4 are tested on SMW 1.6.1 and 1.6.2 (propably working with 1.6 too) There have been some issues
 with some versions of the SMW 1.5.x branch, where in early versions the extension seemed to work, then it didn't.
 
 
 == Contributing ==
 
-If you have bug reports or requests, please add them to the ''SemanticUpdateOnPurge'' Talk page [0].
+If you have bug reports or requests, please add them to the 'SemanticUpdateOnPurge' Talk page [1].
 You can also send them to Daniel Werner < danweetz@web.de >
 
-[0] http://www.mediawiki.org/w/index.php?title=Extension_talk:SemanticUpdateOnPurge
+
+[0] 'Semantic MediaWiki' is a MediaWiki extension. More information at: http://semantic-mediawiki.org
+[1] http://www.mediawiki.org/w/index.php?title=Extension_talk:SemanticUpdateOnPurge
