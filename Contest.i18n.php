@@ -240,7 +240,7 @@ $messages['en'] = array(
 	'contest-submission-submission' => 'Link to your submission',
 	'contest-submission-invalid-url' => 'This URL does not match one of the allowed formats.',
 	'contest-submission-new-submission' => 'You still need to enter the URL to your submission. This needs to be done before the deadline.',
-	'contest-submission-current-submission' => 'This is the URL to your submission, which you can modify untill the deadline.',
+	'contest-submission-current-submission' => 'This is the URL to your submission, which you can modify until the deadline.',
 	'contest-submission-challenge' => 'You are currently participating in the $1 challenge.',
 	'contest-submission-challenge-description' => "'''Current challenge: $1''' -- $2",
 
@@ -309,7 +309,7 @@ $messages['qqq'] = array(
 	'contest-contest-reminder-send' => 'Send button text',
 	'contest-contest-reminder-cancel' => 'Cancel button text',
 	'contest-contest-reminder-sending' => 'Send button text after clicking it',
-	'contest-contest-reminder-success' => 'Success message, $1 is the amount of contesnats. No PLURAL for now, just assume there are multiple untill MWs JS supports plural.',
+	'contest-contest-reminder-success' => 'Success message, $1 is the amount of contesnats. No PLURAL for now, just assume there are multiple until MWs JS supports plural.',
 	'contest-contest-reminder-close' => 'Close button text',
 	'contest-contest-reminder-retry' => 'Retry button text',
 	'contest-contest-reminder-failed' => 'Failiure message, displayed in an alert box',
