@@ -686,6 +686,7 @@ $messages['or'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'mwe-loading' => 'Am laade…',
 	'mwe-ok' => 'OK',
 );
 
