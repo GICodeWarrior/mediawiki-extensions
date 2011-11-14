@@ -1192,10 +1192,13 @@ Bu sayfa ile ilgili bir yorumunuz mu var? Buraya ekleyin ya da <span class="plai
 
 /** Ukrainian (Українська)
  * @author Prima klasy4na
+ * @author Sodmy
  * @author Тест
  */
 $messages['uk'] = array(
 	'commentbox-desc' => 'Додає поле коментаря до певних сторінок',
+	'commentbox-intro' => '== Додавання коментаря... ==
+У вас є коментар до цієї сторінки? Додайте його тут або <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} безпосередньо редагуйте сторінку]</span>.',
 	'commentbox-savebutton' => 'Зберегти коментар',
 	'commentbox-name' => 'Назва:',
 	'commentbox-name-explanation' => "<small>(Порада: Якщо ви [[Special:UserLogin|увійдете в систему]], вам не потрібно буде заповнювати своє ім'я вручну)</small>",
