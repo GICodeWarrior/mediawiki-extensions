@@ -465,6 +465,13 @@ $messages['oc'] = array(
 	'logentry-invalidtoken' => 'Presa incorrècta',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'logentry-append' => 'Dezu duh',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */
