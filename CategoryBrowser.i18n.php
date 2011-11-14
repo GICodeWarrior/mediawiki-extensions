@@ -1585,7 +1585,14 @@ $messages['or'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'cb_has_subcategories' => '$1 {{PLURAL:$1|Unnerabdeeling|Unnerabdeelinge}}',
+	'cb_has_pages' => '$1 {{PLURAL:$1|Blatt|Bledder}}',
+	'cb_has_files' => '$1 {{PLURAL:$1|Feil|Feils}}',
 	'cb_next_items_link' => 'Neegschte',
+	'cb_cat_pages' => 'Bledder',
+	'cb_cat_files' => 'Feils',
+	'cb_all_op' => 'All',
+	'cb_or_op' => 'odder',
 );
 
 /** Pälzisch (Pälzisch)
