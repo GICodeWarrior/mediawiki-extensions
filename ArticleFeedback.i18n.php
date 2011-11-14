@@ -3246,8 +3246,8 @@ Prošu spytaj pozdźišo hišće raz.',
 $messages['hu'] = array(
 	'articlefeedback' => 'Cikk értékelése',
 	'articlefeedback-desc' => 'Cikk értékelése (kísérleti változat)',
-	'articlefeedback-survey-question-origin' => 'Milyen oldalon voltál, amikor elkezdted ezt a felmérést?',
-	'articlefeedback-survey-question-whyrated' => 'Kérjük, mondd el nekünk, miért értékelted ezt az oldalt (jelöld meg ay összes megfelelőt):',
+	'articlefeedback-survey-question-origin' => 'Milyen szócikknél voltál, amikor elkezdted ezt a felmérést?',
+	'articlefeedback-survey-question-whyrated' => 'Kérjük, mondd el nekünk, miért értékelted ezt a szócikket (jelöld meg az összes megfelelőt):',
 	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'Befolyásolni akartam, milyen értékelés jelenik meg',
 	'articlefeedback-survey-answer-whyrated-development' => 'Remélem, hogy az értékelésem pozitívan befolyásolja az oldal fejlődését',
 	'articlefeedback-survey-answer-whyrated-contribute-wiki' => 'Részt akartam venni a {{SITENAME}} készítésében',
@@ -3263,8 +3263,8 @@ $messages['hu'] = array(
 	'articlefeedback-survey-disclaimer' => 'A szolgáltatás fejlesztésének érdekében a visszajelzésedet névtelenül megosztjuk a Wikipédia szerkesztőivel.',
 	'articlefeedback-survey-disclaimerlink' => 'feltételek',
 	'articlefeedback-error' => 'Hiba történt. Kérlek, próbálkozz később.',
-	'articlefeedback-form-switch-label' => 'Oldal értékelése',
-	'articlefeedback-form-panel-title' => 'Oldal értékelése',
+	'articlefeedback-form-switch-label' => 'Szócikk értékelése',
+	'articlefeedback-form-panel-title' => 'Szócikk értékelése',
 	'articlefeedback-form-panel-explanation' => 'Mi ez?',
 	'articlefeedback-form-panel-explanation-link' => 'Project:Cikkértékelés',
 	'articlefeedback-form-panel-clear' => 'Értékelés eltávolítása',
@@ -3281,7 +3281,7 @@ $messages['hu'] = array(
 	'articlefeedback-form-panel-success' => 'Sikeresen elmentve',
 	'articlefeedback-form-panel-expiry-title' => 'Az értékelésed elavult',
 	'articlefeedback-form-panel-expiry-message' => 'Kérlek, olvasd át újra az oldalt, és küldd be az új értékelésedet',
-	'articlefeedback-report-switch-label' => 'Oldal értékelésének megtekintése',
+	'articlefeedback-report-switch-label' => 'Szócikk értékelésének megtekintése',
 	'articlefeedback-report-panel-title' => 'Oldal értékelése',
 	'articlefeedback-report-panel-description' => 'Jelenlegi átlagos értékelés.',
 	'articlefeedback-report-empty' => 'Nincs értékelés',
@@ -3308,7 +3308,7 @@ $messages['hu'] = array(
 	'articlefeedback-field-objective-tooltip-4' => 'Nincs nyilvánvaló elfogultság',
 	'articlefeedback-field-objective-tooltip-5' => 'Teljesen elfogulatlan',
 	'articlefeedback-field-wellwritten-label' => 'Jól megírt',
-	'articlefeedback-field-wellwritten-tip' => 'Áttekinthető és jól érthető-e az oldal?',
+	'articlefeedback-field-wellwritten-tip' => 'Áttekinthető és jól érthető-e a szócikk?',
 	'articlefeedback-field-wellwritten-tooltip-1' => 'Érthetetlen',
 	'articlefeedback-field-wellwritten-tooltip-2' => 'Nehezen érthető',
 	'articlefeedback-field-wellwritten-tooltip-3' => 'Valamennyire érthető',
@@ -3328,16 +3328,16 @@ $messages['hu'] = array(
 	'articlefeedback-survey-message-success' => 'Köszönjük a kérdőív kitöltését!',
 	'articlefeedback-survey-message-error' => 'Hiba történt. Kérlek, próbáld meg később.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'A napi legjobbak és legrosszabbak',
-	'articleFeedback-table-caption-dailyhighs' => 'Legtöbbre értékelt oldalak: $1',
-	'articleFeedback-table-caption-dailylows' => 'Legkevesebbre értékelt oldalak: $1',
+	'articleFeedback-table-caption-dailyhighs' => 'Legtöbbre értékelt szócikkek: $1',
+	'articleFeedback-table-caption-dailylows' => 'Legkevesebbre értékelt szócikkek: $1',
 	'articleFeedback-table-caption-weeklymostchanged' => 'A héten legtöbbet változott',
 	'articleFeedback-table-caption-recentlows' => 'Közelmúltbeli mélypontok',
-	'articleFeedback-table-heading-page' => 'Oldal',
+	'articleFeedback-table-heading-page' => 'Szócikk',
 	'articleFeedback-table-heading-average' => 'Átlag',
 	'articleFeedback-copy-above-highlow-tables' => 'Ey egy kísérleti funkció, a [$1 vitalapján] tudoad véleményezni.',
 	'articlefeedback-dashboard-bottom' => "'''Megjegyzés''': Folyamatosan kísérletezni fogunk a cikkek listázásának különböző módjaival. Jelenleg a listák a következő cikkeket tartalmazzák:
-* a legmagasabbra ill. legalacsonyabbra értékelt oldalakat. Az átlagba csak az elmúlt 24 órában leadott értékelések számítanak bele, és legalább tíz ilyennek kell lennie.
-* Közelmúltbeli mélypontok: olyan szócikkek, amelyek valamelyik kérdésre legalább 70%-ban kaptak 1 vagy 2 csillagot az elmúlt 24 órában. Csak a legalább 10 értékelést kapott szócikkek szerepelnek.",
+* a legmagasabbra illetve legalacsonyabbra értékelt szócikkek. Az átlagba csak az elmúlt 24 órában leadott értékelések számítanak bele, és legalább tíz ilyennek kell lennie;
+* közelmúltbeli mélypontok: olyan szócikkek, amelyek valamelyik kérdésre legalább 70%-ban kaptak 1 vagy 2 csillagot az elmúlt 24 órában. Csak a legalább 10 értékelést kapott szócikkek szerepelnek.",
 	'articlefeedback-disable-preference' => 'Ne mutassa többet a cikkértékelő dobozt',
 	'articlefeedback-emailcapture-response-body' => 'Szia!
 
@@ -5278,6 +5278,15 @@ $messages['or'] = array(
  */
 $messages['os'] = array(
 	'articleFeedback-table-heading-average' => 'Рæстæмбис',
+);
+
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'articlefeedback-survey-question-useful-iffalse' => 'Werum?',
+	'articlefeedback-pitch-or' => 'odder',
+	'articleFeedback-table-heading-page' => 'Blatt',
 );
 
 /** Polish (Polski)
