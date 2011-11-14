@@ -305,24 +305,35 @@ $messages['bn'] = array(
 $messages['br'] = array(
 	'narayam-desc' => 'Aotren a ra ouzhpennañ hentennoù bizskrivañ personelaet evit ar maeziennoù bizskrivañ',
 	'narayam-toggle-ime' => 'Gweredekaat ($1)',
+	'narayam-menu' => 'Hentenn enmont',
+	'narayam-menu-tooltip' => 'Kontroller an embanner hentenn enmont evit an narayam (IME)',
 	'narayam-help' => 'Skoazell',
 	'narayam-help-page' => 'Help:Bizskrivañ',
 	'narayam-checkbox-tooltip' => 'Evit eilpennañ an hentenn enmont war enaou pe get',
 	'narayam-disable-preference' => 'Diweredekaat an embanner hentenn enmont evit an narayam',
+	'narayam-more-imes' => 'Hentennoù enmont all',
+	'narayam-am' => 'Treuzlizherennadur amhareg',
+	'narayam-as' => 'Treuzlizherennadur asameg',
+	'narayam-as-avro' => 'Avro asameg',
+	'narayam-as-bornona' => 'Bornora asameg',
+	'narayam-as-inscript' => 'InSript asameg',
 	'narayam-eo' => 'Esperanteg',
 	'narayam-hi-inscript' => 'InScript hindi',
 	'narayam-kn' => 'Treuzlizherennadur kannada',
 	'narayam-kn-inscript' => 'InScript kannada',
 	'narayam-ml' => 'Treuzlizherennadur Malayalam',
 	'narayam-ml-inscript' => 'InScript malayalam',
+	'narayam-ne' => 'Treuzlizherennadur nepaleg',
+	'narayam-ne-inscript' => 'Inscript nepaleg',
 	'narayam-or' => 'Treuzlizherennadur oriya',
 	'narayam-or-inscript' => 'InScript oriya',
 	'narayam-sa' => 'Treuzlizherennadur sanskriteg',
 	'narayam-sa-inscript' => 'InScript sanskriteg',
 	'narayam-si-singlish' => 'Singlisheg Sri Lanka',
 	'narayam-si-wijesekara' => 'Wijesekara Sri Lanka',
-	'narayam-ta99' => 'Tamil99',
-	'narayam-ta' => 'Treuzlizherennadur tamoul',
+	'narayam-ta-99' => 'Tamil99',
+	'narayam-ta' => 'Treuzlizherennadur tamileg',
+	'narayam-ta-bamini' => 'Banini tamileg',
 	'narayam-te-inscript' => 'InScript telougou',
 	'narayam-bn-avro' => 'Avro bengaleg',
 	'narayam-bn-inscript' => 'InScript bengaleg',
@@ -1228,6 +1239,13 @@ $messages['or'] = array(
 	'narayam-help-page' => 'Help:ଟାଇପ କରିବା',
 	'narayam-or' => 'Odia Transliteration',
 	'narayam-or-inscript' => 'Odia InScript',
+);
+
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'narayam-help' => 'Hilf',
 );
 
 /** Polish (Polski)
