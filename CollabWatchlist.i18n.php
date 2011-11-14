@@ -939,6 +939,16 @@ $messages['or'] = array(
 	'collabwatchlistedit-raw-titles' => 'ଶ୍ରେଣୀସମୂହ:',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'collabwatchlisttools-delete' => 'Lesche',
+	'collabwatchlistedit-raw-titles' => 'Abdeelinge:',
+	'collabwatchlistedit-users-raw-titles' => 'Yuuser:',
+	'collabwatchlistdelete-submit' => 'Lesche',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  * @author Woytecr
@@ -1103,21 +1113,40 @@ $messages['uk'] = array(
 	'collabwatchlistedit-raw-title' => 'Сире редагування категорій',
 	'collabwatchlistedit-tags-raw-title' => 'Сире редагування міток',
 	'collabwatchlistedit-users-raw-title' => 'Сире редагування користувачів',
+	'collabwatchlistedit-users-last-owner' => 'Там повинен бути принаймні один власник',
 	'collabwatchlistedit-raw-legend' => 'Сире редагування спільного списку спостереження категорій',
 	'collabwatchlistedit-users-raw-legend' => 'Сире редагування спільного списку спостереження користувачів',
 	'collabwatchlistedit-tags-raw-legend' => 'Сире редагування спільного списку спостереження міток',
 	'collabwatchlistedit-raw-titles' => 'Категорії:',
 	'collabwatchlistedit-tags-raw-titles' => 'Мітки:',
 	'collabwatchlistedit-users-raw-titles' => 'Користувачі:',
+	'collabwatchlistedit-normal-title' => 'Змінити категорію',
+	'collabwatchlistedit-normal-legend' => 'Вилучення категорії зі спільного списку спостереження',
+	'collabwatchlistedit-normal-explain' => 'Категорії у вашому спільному списку спостереження наведені нижче.',
 	'collabwatchlistedit-tags-raw-submit' => 'Зберегти',
+	'collabwatchlistedit-tags-raw-done' => 'Спільний список спостереження було оновлено.',
+	'collabwatchlistedit-users-raw-done' => 'Спільний список спостереження було оновлено.',
+	'collabwatchlistedit-tags-raw-added' => '{{PLURAL:$1|1 tag was|$1 мітки були}} додані:',
+	'collabwatchlistedit-users-raw-added' => '{{PLURAL:$1|1 user was|$1 користувачів було}} додано:',
+	'collabwatchlistedit-tags-raw-removed' => '{{PLURAL:$1|1 tag was|$1 мітки були}} вилучені:',
+	'collabwatchlistedit-users-raw-removed' => '{{PLURAL:$1|1 user was|$1 користувачі були}} вилучені:',
+	'collabwatchlistinverttags' => 'Інвертування фільтру міток',
 	'collabwatchlistpatrol' => 'Патрульні редагування',
 	'collabwatchlisttools-newList' => 'Новий спільний список спостереження',
 	'collabwatchlistdelete-legend' => 'Видалити спільний список спостереження',
 	'collabwatchlistdelete-submit' => 'Вилучити',
+	'collabwatchlistdelete-title' => 'Видалити спільний список спостереження',
+	'collabwatchlistedit-set-tags-noitems' => 'Цей спільний список спостереження не має жодного набору ознак',
+	'collabwatchlistnew-legend' => 'Створення нового спільного списку спостереження',
+	'collabwatchlistnew-explain' => "Ім'я списку має бути унікальним.",
 	'collabwatchlistnew-name' => "Ім'я списку",
 	'collabwatchlistnew-submit' => 'Створити',
+	'collabwatchlistedit-raw-done' => 'Спільний список спостереження було оновлено',
+	'collabwatchlistedit-raw-added' => '{{PLURAL:$1|1 page or category was|$1 сторінки або категорії було}} додано:',
+	'collabwatchlistedit-raw-removed' => '{{PLURAL:$1|1 page or category was|$1 сторінки або категорії було}} вилучено',
 	'collabwatchlistedit-normal-submit' => 'Зберегти',
 	'collabwatchlistshowhidelistusers' => '$1 список користувачів',
+	'tog-collabwatchlisthidelistusers' => 'Приховування редагувань від користувачів спільного списку спостереження',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
