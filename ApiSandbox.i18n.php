@@ -662,6 +662,13 @@ $messages['or'] = array(
 	'apisb-ns-main' => '(ମୂଳ)',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'apisb-ns-main' => '(Bledder)',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  * @author Woytecr
