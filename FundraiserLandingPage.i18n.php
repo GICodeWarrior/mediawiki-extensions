@@ -48,6 +48,13 @@ $messages['hsb'] = array(
 	'fundraiserlandingpage-desc' => 'Přepodawa URL-parametry na podatu předłohu jako wariable předłohi',
 );
 
+/** Hungarian (Magyar)
+ * @author Dj
+ */
+$messages['hu'] = array(
+	'fundraiserlandingpage-desc' => 'Veszi az URL paramétereket, és átadja megadott sablonoknak, mint sablon változók',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
