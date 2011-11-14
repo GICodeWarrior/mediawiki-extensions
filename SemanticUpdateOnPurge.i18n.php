@@ -47,6 +47,13 @@ $messages['ia'] = array(
 	'suop-desc' => 'Actualisa le attributos semantic de un pagina wiki quando le pagina es purgate',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'suop-desc' => "Aktualiséiert déi semantesch Attributer vun enger Wiki-Säit wann d'Säite komplett eidel gemaach gëtt (purging the page)",
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
