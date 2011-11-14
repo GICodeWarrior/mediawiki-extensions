@@ -992,6 +992,15 @@ $messages['oc'] = array(
 	'ea-selectcss' => "Seleccionar un fuèlh d'estil CSS",
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'ea-from' => 'Vun:',
+	'ea-to' => 'Fer:',
+	'ea-data' => 'Daade',
+);
+
 /** Polish (Polski)
  * @author Maikking
  * @author Sp5uhe
