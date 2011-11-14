@@ -703,7 +703,7 @@ $messages['oc'] = array(
  */
 $messages['pdc'] = array(
 	'layouts_title' => 'Neies Blatt schtaerte',
-	'layouts_continue' => 'Weiter',
+	'layouts_continue' => 'Weider',
 );
 
 /** Polish (Polski)
