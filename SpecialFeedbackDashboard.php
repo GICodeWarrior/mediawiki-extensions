@@ -218,12 +218,14 @@ HTML;
 				
 		$userPageUrl = htmlspecialchars($user->getUserPage()->getLocalURL());
 		
+		$userLink = Linker::userLink( $user->getId(), $username );
+		
 		return <<<HTML
 			<div class="fbd-item-userName">
-				<a href="$userPageUrl" class="fbd-item-userLink">$username</a>
-				<sup class="fbd-item-userLinks">
+				$userLink
+				<span class="fbd-item-userLinks">
 					$links
-				</sup>
+				</span>
 			</div>
 HTML;
 	}
