@@ -602,6 +602,13 @@ $messages['oc'] = array(
 	'categorywatch-autocat' => 'Seguida automaticament per $1',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'categorywatch-catmovein' => '$1 iss vun $3 nooch $2 gezoge warre',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Leinad
