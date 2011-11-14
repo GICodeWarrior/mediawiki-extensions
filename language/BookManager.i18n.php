@@ -440,6 +440,14 @@ $messages['no'] = array(
 	'bm-printversion-inexistent-book' => 'Bok ikke funnet. Skriv inn navnet på en eksisterende bok for å få dens utskriftsversjon.',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'bookmanager-desc' => 'Gscharr fer Bicher',
+	'bm-booktools-section' => 'Gscharr fer Bicher',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  * @author Woytecr
