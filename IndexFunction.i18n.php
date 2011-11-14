@@ -1412,6 +1412,11 @@ $messages['tr'] = array(
 	'index-no-results' => 'Aramada sonuç bulunamadı',
 );
 
+/** Uyghur (Latin script) (Uyghurche‎) */
+$messages['ug-latn'] = array(
+	'index-search' => 'Izdash:',
+);
+
 /** Ukrainian (Українська)
  * @author Prima klasy4na
  * @author Тест
