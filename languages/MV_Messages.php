@@ -1597,6 +1597,7 @@ $messages['br'] = array(
 	'mv_flash_low_quality' => 'Froud internet – Flash video',
 	'mv_archive_org_mp4' => 'Archive.org MP4 en deus tafet ar froud H.264',
 	'mv_archive_org_link' => 'Liamm davet an orinoù MPEG-2 e Archive.org',
+	'ao_file_MPEG2' => 'Archive.org - MPEG-2 orin',
 	'mv_error_stream_missing' => '<span class="error">Fazi: n\'eus tamm restr video ebet hag a zo liammet gant ar froud-mañ.</span><br />
 Mar plij kelaouit [[{{MediaWiki:Grouppage-sysop}}|merour al lec\'hienn]] eus an afer-mañ.',
 	'mv_stream_added' => "Ouzhpennet hoc'h eus ar froudad $1",
