@@ -1292,6 +1292,7 @@ $messages['pdc'] = array(
 	'amazonplus-new' => 'nei',
 	'amazonplus-cp-none' => 'Ken',
 	'amazonplus-more' => 'meh',
+	'amazonplus-less' => 'wennicher',
 );
 
 /** Pälzisch (Pälzisch)
