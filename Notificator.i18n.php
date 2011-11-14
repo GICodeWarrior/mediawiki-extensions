@@ -360,6 +360,13 @@ $messages['nl'] = array(
 	'notificator-notified-already' => '$1 is reeds op de hoogte gebracht over deze pagina of paginawijziging.',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'notificator-new-tag' => 'Nei',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  * @author Woytecr
