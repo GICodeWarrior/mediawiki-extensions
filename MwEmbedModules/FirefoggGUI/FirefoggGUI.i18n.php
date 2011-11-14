@@ -607,7 +607,7 @@ $messages['br'] = array(
 	'fogg-help-sticky' => "Sikour (klikañ evit derc'hel)",
 	'fogg-cg-preset' => 'Raktermenet : <strong>$1</strong>',
 	'fogg-cg-quality' => 'Kalite diazez ha kontrol ar spister',
-	'fogg-cg-meta' => "Roadennoù-meta evit ar c'hlip",
+	'fogg-cg-meta' => "Metaroadennoù evit ar c'hlip",
 	'fogg-cg-range' => 'Doug an enkodadur',
 	'fogg-cg-advVideo' => 'Kontrolloù araokaet an enkodadur video',
 	'fogg-cg-advAudio' => 'Kontrolloù araokaet an enkodadur klevet',
@@ -619,7 +619,7 @@ $messages['br'] = array(
 	'fogg-highquality-webm-desc' => "Video WebM uhelperzh VP8 1080px a ledander d'ar muiañ",
 	'fogg-videoQuality-title' => 'Kalite ar video',
 	'fogg-videoQuality-help' => "Implijet evit termeniñ <i>kalite ar gweled</i> evit ar video enkodet (nann-implijet ma termenit ar c'has binarel en c'hontroloù araokaat amañ a-is).",
-	'fogg-starttime-title' => 'Eilenn kregiñ',
+	'fogg-starttime-title' => 'Eilenn gregiñ',
 	'fogg-starttime-help' => 'Enkodiñ hepken adalek ur badelezh e eilennoù',
 	'fogg-endtime-title' => 'Eilenn echuiñ',
 	'fogg-endtime-help' => 'Enkodiñ hepken davet ur badelezh e eilennoù',
@@ -630,12 +630,12 @@ $messages['br'] = array(
 	'fogg-audioCodec-title' => 'codec son',
 	'fogg-audioCodec-help' => 'Implijet evit termeniñ kodek ar c\'hlip klevet. Vorbis a zo embreget nemetken evit poent. Gouzout hiroc\'h war <a target="_new" href="http://br.wikipedia.org/wiki/Vorbis">c\'hodek Vorbis</a>',
 	'fogg-width-title' => 'Ledander ar video',
-	'fogg-width-help' => "Admentañ d'al ledander spisaet.",
+	'fogg-width-help' => "Adventañ d'al ledander spisaet.",
 	'fogg-height-title' => 'Uhelder ar video',
-	'fogg-height-help' => "Admentañ d'an uhelder spisaet.",
+	'fogg-height-help' => "Adventañ d'an uhelder spisaet.",
 	'fogg-videoBitrate-title' => 'Kas vinarel ar video',
 	'fogg-videoBitrate-help' => 'Kas vinarel ar video a dermen kas an enkodadur evit ar video e kb/s',
-	'fogg-twopass-title' => 'Enkoderezh gant daou tremen',
+	'fogg-twopass-title' => 'Enkoderezh e div wezh',
 	'fogg-twopass-help' => "An enkoderezh gant daou tremen a aotre ur c'halite kazi digemm oc'h ober daou hentad eus ar restr video",
 	'fogg-framerate-title' => 'Talm skeudennoù',
 	'fogg-framerate-help' => 'Niver a skeudenn dre eilenn eus ar video. Evit gouzout hiroc\'h : <a target="_new" href="http://en.wikipedia.org/wiki/Frame_rate">frekañs skeudennoù</a>.',
@@ -3804,6 +3804,7 @@ $messages['or'] = array(
 $messages['pdc'] = array(
 	'fogg-title-title' => 'Titel',
 	'fogg-copyright-title' => 'Copyright',
+	'fogg-please-install' => '$1. Mehner $2',
 );
 
 /** Polish (Polski)

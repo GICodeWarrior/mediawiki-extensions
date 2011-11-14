@@ -227,6 +227,7 @@ $messages['bn'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -240,24 +241,24 @@ $messages['br'] = array(
 	'mwe-clipedit-sc_attributes' => "Kemmañ munudoù ar c'hlip",
 	'mwe-clipedit-sc_inoutpoints' => 'Termeniñ ar poentoù e-barzh - er-maez',
 	'mwe-clipedit-sc_overlays' => 'Gwiskadoù',
-	'mwe-clipedit-sc_audio' => 'Kontrol klevet',
+	'mwe-clipedit-sc_audio' => 'Kontroll klevet',
 	'mwe-clipedit-sc_duration' => 'Pad',
 	'mwe-clipedit-template_properties' => 'Perzhioù ar patrom',
 	'mwe-clipedit-custom_title' => 'Titl personelaet',
 	'mwe-clipedit-edit_properties' => 'Aozañ ar perzhioù',
 	'mwe-clipedit-other_properties' => 'Perzhioù all',
 	'mwe-clipedit-resource_page' => 'Pajenn al loaz :',
-	'mwe-clipedit-set_in_out_points' => 'Termeniñ ar poentoù e-barzh - er-maez',
+	'mwe-clipedit-set_in_out_points' => 'Termeniñ poentoù enmont - ezvont',
 	'mwe-clipedit-start_time' => 'Eurvezh kregiñ',
 	'mwe-clipedit-end_time' => 'Eurvezh echuiñ',
-	'mwe-clipedit-preview_inout' => 'Rakweladenn ar poentoù e-barzh - er-maez',
+	'mwe-clipedit-preview_inout' => 'Rakwelet ar poentoù enmont - ezvont',
 	'mwe-clipedit-edit-tools' => 'Binvioù aozañ',
 	'mwe-clipedit-inline-description' => "Alc'hwez",
 	'mwe-clipedit-edit-video-tools' => 'Ostilh kemmañ videoioù :',
 	'mwe-clipedit-duration' => 'Pad :',
 	'mwe-clipedit-layout' => "Lec'hiadur",
-	'mwe-clipedit-layout_right' => "Lec'hiadur a zehou eus ar skeudenn",
-	'mwe-clipedit-layout_left' => "Lec'hiadur a gleiz eus ar skeudenn",
+	'mwe-clipedit-layout_right' => "Lec'hiañ a-zehou eus ar skeudenn",
+	'mwe-clipedit-layout_left' => "Lec'hiañ a-gleiz eus ar skeudenn",
 );
 
 /** Bosnian (Bosanski)
