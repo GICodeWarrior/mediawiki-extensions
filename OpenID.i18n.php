@@ -1405,7 +1405,7 @@ Twój OpenID jo $2.
 Toś ten a dalšne OpenID daju se na [[Special:Preferences#prefsection-openid|OpenID-rejtarku]] twójich nastajenjow zastojaś.<br />
 Faktulatiwne gronidło dajo se w twójom [[Special:Preferences#prefsection-personal|wužywarskem profilu]] pśidaś.",
 	'openidusernameprefix' => 'Wužywaŕ OpenID',
-	'openidserverlogininstructions' => 'Zapódaj swójo gronidło dołojce, aby se ako wužywaŕ $2 pla $3 pśizjawił (wužywarski bok $1).',
+	'openidserverlogininstructions' => '$3 se pomina, až zapódajoš swójo gronidło za swójo wužywarske konto $2 na boku $1 (to jo jo twój OpenID-URL)',
 	'openidtrustinstructions' => 'Kontrolěruj, lěc coš daty z $1 źěliś.',
 	'openidallowtrust' => '$1 dowóliś, toś tomu wužywarskemu kontoju dowěriś.',
 	'openidnopolicy' => 'Sedło njejo pódało zasady priwatnosći.',
@@ -1434,9 +1434,7 @@ móžoš jadno ze slědujucych opcijow wubraś.',
 	'openidconvertsuccesstext' => 'Sy wuspěšnje konwertěrował twój OpenID do $1.',
 	'openidconvertyourstext' => 'To jo južo twój OpenID.',
 	'openidconvertothertext' => 'Toś ten OpenID słuša někomu drugemu.',
-	'openidalreadyloggedin' => "'''Sy južo pśizjawjony, $1!'''
-
-Jolic pśichodnje coš OpenID wužywaś, aby se pśizjawił, móžoš [[Special:OpenIDConvert|swójo konto za wužiwanje OpenID konwertěrowaś]].",
+	'openidalreadyloggedin' => 'Sy južo pśizjawjony.',
 	'openidnousername' => 'Žedno wužywarske mě pódane.',
 	'openidbadusername' => 'Wopacne wužywarske mě pódane.',
 	'openidautosubmit' => 'Toś ten bok wopśimujo formular, kótaryž se awtmatiski wótpósćeła, jolic JavaScript jo zmóžnjony. Jolic nic, klikni na tłocašk "Continue" (Dalej).',
@@ -1445,9 +1443,6 @@ Jolic pśichodnje coš OpenID wužywaś, aby se pśizjawił, móžoš [[Special:
 	'openidlogininstructions' => '{{SITENAME}} pódpěra standard [http://openid.net/ OpenID] za jadnotliwe pśizjawjenja mjazy websedłami.
 OpenID śi zmóžnja se pla rozdźělnych websedłow pśizjawiś, bźez togo až musyš rozdźělne gronidła wužywaś.
 (Glědaj [http://en.wikipedia.org/wiki/OpenID nastawk OpenID we Wikipediji] za dalšne informacije.)
-
-Jolic maš južo konto na {{GRAMMAR:lokatiw|{{SITENAME}}}}, móžoš se ze swójim wužywarskim mjenim a gronidłom ako pśecej [[Special:UserLogin|pśizjawiś]].
-Aby wužywał OpenID w pśichoźe, móžoš [[Special:OpenIDConvert|swójo konto do OpenID konwertěrowaś]], za tym až sy se normalnje pśizjawił.
 
 Jo wjele [http://openid.net/get/ póbitowarjow OpenID] a snaź maš južo konto z OpenID pla drugeje słužby.',
 	'openidupdateuserinfo' => 'Móje wósobinske informacije aktualizěrowaś:',
