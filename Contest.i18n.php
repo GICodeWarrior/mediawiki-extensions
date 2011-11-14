@@ -249,14 +249,19 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Dbc334
+ * @author EugeneZelenko
  * @author Jeroen De Dauw
  * @author Siebrand
  */
 $messages['qqq'] = array(
-	'contest-special-name' => 'Table column header',
-	'contest-special-status' => 'Table column header',
+	'contest-special-name' => 'Table column header.
+{{Identical|Name}}',
+	'contest-special-status' => 'Table column header.
+{{Identical|Status}}',
 	'contest-special-submissioncount' => 'Table column header',
-	'contest-special-edit' => 'Table column header',
+	'contest-special-edit' => 'Table column header.
+{{Identical|Edit}}',
 	'contest-special-delete' => 'Table column header',
 	'editcontest-text' => 'Short text displayed at the top of the page notifying the user they are editing a contest',
 	'contest-edit-name' => 'form field label',
@@ -309,7 +314,7 @@ $messages['qqq'] = array(
 	'contest-contest-reminder-send' => 'Send button text',
 	'contest-contest-reminder-cancel' => 'Cancel button text',
 	'contest-contest-reminder-sending' => 'Send button text after clicking it',
-	'contest-contest-reminder-success' => 'Success message, $1 is the amount of contesnats. No PLURAL for now, just assume there are multiple until MWs JS supports plural.',
+	'contest-contest-reminder-success' => 'Success message, $1 is the amount of contestants. No PLURAL for now, just assume there are multiple until MWs JS supports plural.',
 	'contest-contest-reminder-close' => 'Close button text',
 	'contest-contest-reminder-retry' => 'Retry button text',
 	'contest-contest-reminder-failed' => 'Failiure message, displayed in an alert box',
@@ -476,6 +481,16 @@ $messages['be-tarask'] = array(
 	'contest-special-namedoc' => 'Назва конкурсу — ідэныфікатар, які выкарыстоўваецца ў URL-адрасах (гэта значаць «назва» у {{#Special:Contest}}/назва).',
 	'contest-special-newname' => 'Назва конкурсу',
 	'contest-special-add' => 'Дадаць конкурс',
+	'contest-special-existing' => 'Існуючыя конкурсы',
+	'contest-special-name' => 'Назва',
+	'contest-special-status' => 'Статус',
+	'contest-special-submissioncount' => 'Колькасьць запытаў',
+	'contest-special-edit' => 'Рэдагаваць',
+	'contest-special-delete' => 'Выдаліць',
+	'contest-special-confirm-delete' => 'Вы ўпэўнены, што жадаеце выдаліць гэты конкурс?',
+	'contest-special-delete-failed' => 'Не магчыма выдаліць гэты конкурс.',
+	'editcontest-text' => 'Вы рэдагуеце конкурс.',
+	'editcontest-legend' => 'Конкурс',
 );
 
 /** Breton (Brezhoneg)
@@ -2728,6 +2743,24 @@ $messages['nl'] = array(
 	'contest-submission-challenge' => 'U neemt momenteel deel aan de uitdaging $1.',
 	'contest-submission-challenge-description' => "'''Huidige uitdaging: $1''' -- $2",
 	'contest-submission-domains' => 'Inzendingen zijn beperkt tot deze sites: $1',
+);
+
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'contest-special-edit' => 'Ennere',
+	'contest-special-delete' => 'Lesche',
+	'contest-contest-name' => 'Naame',
+	'contest-contest-days-ago' => '$1, vor $2 {{PLURAL:$2|Daag|Daag}}',
+	'contest-contest-days-left' => '$1, in $2 {{PLURAL:$2|Daag}}',
+	'contest-contest-yes' => 'Ya',
+	'contest-contest-no' => 'Nee',
+	'contest-contest-none' => 'Ken',
+	'contest-contest-some' => 'Some',
+	'contest-contest-filter-wmf' => 'WMF',
+	'contest-contestant-no' => 'Nee',
+	'contest-contestant-yes' => 'Ya',
 );
 
 /** Polish (Polski)
