@@ -844,7 +844,7 @@ $messages['fi'] = array(
 	'usagestatisticscalselect' => 'Valitse',
 	'usagestatistics-editindividual' => 'Yksittäisen käyttäjän $1 muokkaustilastot',
 	'usagestatistics-editpages' => 'Yksittäisen käyttäjän $1 sivutilastot',
-	'right-viewsystemstats' => 'Näytä [[Special:UserStats|wikin käyttötilastoja]]',
+	'right-viewsystemstats' => 'Tarkastella [[Special:UserStats|wikin käyttötilastoja]]',
 );
 
 /** French (Français)
