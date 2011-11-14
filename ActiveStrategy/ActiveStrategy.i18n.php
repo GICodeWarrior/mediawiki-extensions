@@ -435,6 +435,13 @@ $messages['oc'] = array(
 	'active-strategy-intro' => 'Nombre de modificacions de las paginas del grop de trabalh al cors {{PLURAL:$1|del darrièr jorn|dels $1 darrièrs jorns}}.',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'nedits' => '$1 {{PLURAL:$1|Ennering|Enneringe}}',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */
