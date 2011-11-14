@@ -792,6 +792,13 @@ $messages['nl'] = array(
 	'wikitweet-cannotparse' => 'Het is niet mogelijk het volgende te verwerken:',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'wikitweet-delete' => 'lesche',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  * @author Woytecr
