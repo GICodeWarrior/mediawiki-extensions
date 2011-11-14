@@ -633,7 +633,7 @@ $messages['dsb'] = array(
 	'inlinecategorizer-confirm-save' => 'Składowaś',
 	'inlinecategorizer-confirm-title' => 'Akciju wobkšuśiś',
 	'inlinecategorizer-error-title' => 'Zmólka',
-	'inlinecategorizer-remove-category-error' => 'Njejo móžno było toś tu kategoriju wótpóraś.
+	'inlinecategorizer-remove-category-error' => 'Njejo móžno było kategoriju "$1" wótpóraś.
 To se zwětšego stawa, gaž kategorija jo se pśidała bokoju w pśedłoze.',
 	'inlinecategorizer-remove-category-summary' => 'Kategoriju "$1" wótpóraś',
 );
@@ -1894,6 +1894,7 @@ $messages['pdc'] = array(
 	'inlinecategorizer-add-category' => 'Abdeeling dezu duh',
 	'inlinecategorizer-add-category-submit' => 'Dezu duh',
 	'inlinecategorizer-add-category-summary' => 'Abdeeling „$1“ dezu duh',
+	'inlinecategorizer-confirm-ok' => 'OK',
 );
 
 /** Polish (Polski)
