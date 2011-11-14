@@ -146,6 +146,7 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'framedvideo_position' => 'dehou',
 	'framedvideo_errors' => "Meur a fazi zo c'hoarvezet !",
 	'framedvideo_error' => 'Ur fazi zo bet !',
 	'framedvideo_error_unknown_type' => 'Dianav eo ID ar servij  video ("$1") : adwelit an arventenn "seurt".',
