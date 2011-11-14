@@ -16229,6 +16229,7 @@ $messages['or'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'configure-setting-wgArticleRobotPolicies-key' => 'Blattnaame',
 	'configure-setting-wgExtraLanguageNames-value' => 'Naame',
 	'configure-setting-wgDebugLogGroups-value' => 'Feil',
 	'configure-setting-wgXhtmlNamespaces-key' => 'Blatznaame',
