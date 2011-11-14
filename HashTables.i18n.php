@@ -54,6 +54,13 @@ $messages['ia'] = array(
 	'hashtables-desc' => 'Functiones del analysator syntactic que permitte laborar con tabellas de hash in un "page scoped context"',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'hashtables-desc' => 'Parserfonctiounen déi et erlabe fir mat assoziativen Datefelder (hash tables) am Kontext vu Wikisäiten ze schaffen',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
