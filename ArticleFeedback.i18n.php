@@ -3962,6 +3962,7 @@ $messages['ksh'] = array(
 	'articlefeedback-survey-submit' => 'Faßhallde',
 	'articlefeedback-survey-title' => 'Bes esu joot, un jivv e paa Antowwote',
 	'articlefeedback-survey-thanks' => 'Mer donn und bedanke för et Ußfölle!',
+	'articlefeedback-survey-disclaimerlink' => 'Bedengonge',
 	'articlefeedback-error' => 'Ene Fähler es dozwesche jukumme.
 Versöhg et shpääder norr_ens.',
 	'articlefeedback-form-switch-label' => 'Heh di Sigg enschäze',
@@ -3978,7 +3979,7 @@ Versöhg et shpääder norr_ens.',
 	'articlefeedback-form-panel-helpimprove-note' => 'Mr schecke Der en <i lang="en">e-mail</i> zum Beschtäteje.
 Mer jävve Ding Adräß för de <i lang="en">e-mail</i> aan Keine wigger.
 $1',
-	'articlefeedback-form-panel-helpimprove-privacy' => 'Rääjelle för der Daateschotz un de Jeheimhaldung',
+	'articlefeedback-form-panel-helpimprove-privacy' => 'Rääjelle för der Daateschotz un de Jeheimhaldung för Röckmäldonge',
 	'articlefeedback-form-panel-submit' => 'Lohß jonn!',
 	'articlefeedback-form-panel-pending' => 'Din Enschäzonge sin noch nicht huhjelaade',
 	'articlefeedback-form-panel-success' => 'Afjeshpeishert.',
