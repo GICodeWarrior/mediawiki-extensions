@@ -720,6 +720,7 @@ $messages['oc'] = array(
  */
 $messages['pdc'] = array(
 	'mostrevisors-submit' => 'Geh los',
+	'mostrevisors-users' => '- $1 {{PLURAL:$1|Schreiwer|Schreiwer}}',
 );
 
 /** Polish (Polski)
