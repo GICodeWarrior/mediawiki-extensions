@@ -193,7 +193,7 @@ class MBFeedbackItem {
 		} elseif ( $key == 'type' ) {
 			return in_array( $value, self::$validTypes );
 		} elseif ( $key == 'comment' ) {
-			$comment_len = mb_strlen( $value );
+			$comment_len = mb_strlen( $value ); 
 			return $comment_len > 0 && $comment_len <= 140;
 		}
 
