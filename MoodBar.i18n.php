@@ -272,9 +272,9 @@ See also:
 	'moodbar-feedback-newer' => 'Text of the link that the user can click to go back to more recent results. Only visible if JavaScript is not enabled.',
 	'moodbar-feedback-older' => 'Text of the link that the user can click to see less recent results. Only visible if JavaScript is not enabled.',
 	'moodbar-hidden-footer' => '* $1 is a link to restore the item displaying {{msg-mw|moodbar-feedback-restore}}',
-	'moodbar-type-happy' => 'No gender support ([[bugzilla:30071|bug 30071]])',
-	'moodbar-type-sad' => 'No gender support ([[bugzilla:30071|bug 30071]])',
-	'moodbar-type-confused' => 'No gender support ([[bugzilla:30071|bug 30071]])',
+	'moodbar-type-happy' => '$1 is the username that can be used for GENDER',
+	'moodbar-type-sad' => '$1 is the username that can be used for GENDER',
+	'moodbar-type-confused' => '$1 is the username that can be used for GENDER',
 	'moodbar-user-ip' => '{{Identical|IP Address}}',
 );
 
@@ -558,6 +558,7 @@ $messages['br'] = array(
 	'moodbar-form-title' => 'Peogwir...',
 	'moodbar-form-note' => "140 arouezenn d'ar muiañ",
 	'moodbar-form-note-dynamic' => '$1 a chom',
+	'moodbar-form-policy-text' => 'En ur gas, $1',
 	'moodbar-form-policy-label' => 'hor politikerezh',
 	'moodbar-loading-title' => 'O rannañ...',
 	'moodbar-success-title' => 'Trugarez !',
@@ -594,6 +595,7 @@ $messages['br'] = array(
 	'moodbar-user-ip' => "Chomlec'h IP",
 	'moodbar-user-user' => 'Implijer enrollet',
 	'moodbar-log-hide' => 'en deus kuzhet "[[$1]]"',
+	'moodbar-log-restore' => 'zo bet assavet gweleduster [[$1]] gantañ',
 );
 
 /** Danish (Dansk)
@@ -1130,9 +1132,9 @@ Pour plus d'information, consultez la $1.",
 	'moodbar-restore-header' => 'Restaurer la visibilité de cet élément',
 	'moodbar-invalid-item' => 'Le système a été incapable de trouver le commentaire correct.',
 	'moodbar-feedback-action-error' => "Une erreur s'est produite lorsque vous avez essayé d'effectuer cette action.",
-	'moodbar-type-happy' => 'Heureux',
-	'moodbar-type-sad' => 'Triste',
-	'moodbar-type-confused' => 'Confus',
+	'moodbar-type-happy' => '{{GENDER:$1|Heureux|Heureuse}}',
+	'moodbar-type-sad' => '{{GENDER:$1|Triste}}',
+	'moodbar-type-confused' => '{{GENDER:$1|Confus|Confuse}}',
 	'moodbar-user-anonymized' => 'Anonymisé',
 	'moodbar-user-ip' => 'Adresse IP',
 	'moodbar-user-user' => 'Utilisateur enregistré',
@@ -2012,9 +2014,9 @@ Ga naar de $1 voor mee informatie.',
 	'moodbar-restore-header' => 'De zichtbaarheid van dit item herstellen',
 	'moodbar-invalid-item' => 'Het systeem kon het juiste terugkoppelingsitem niet vinden.',
 	'moodbar-feedback-action-error' => 'Er is een fout opgetreden tijdens het uitvoeren van deze handeling.',
-	'moodbar-type-happy' => 'Blij',
-	'moodbar-type-sad' => 'Triest',
-	'moodbar-type-confused' => 'Verward',
+	'moodbar-type-happy' => '{{GENDER:$1|Blij}}',
+	'moodbar-type-sad' => '{{GENDER:$1|Triest}}',
+	'moodbar-type-confused' => '{{GENDER:$1|Verward}}',
 	'moodbar-user-anonymized' => 'Geanonimiseerd',
 	'moodbar-user-ip' => 'IP-adres',
 	'moodbar-user-user' => 'Geregistreerde gebruiker',
@@ -2062,6 +2064,19 @@ $messages['no'] = array(
  */
 $messages['or'] = array(
 	'moodbar-header-timestamp' => 'ସମୟଚିହ୍ନ',
+);
+
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'moodbar-form-title' => 'Weil…',
+	'moodbar-header-page' => 'Blatt',
+	'moodbar-header-user' => 'Yuuser',
+	'moodbar-header-namespace' => 'Blatznaame',
+	'moodbar-feedback-filters-username' => 'Yuuser-Naame',
+	'moodbar-feedback-more' => 'Mehner',
+	'moodbar-feedback-newer' => 'Neiere',
 );
 
 /** Polish (Polski)
