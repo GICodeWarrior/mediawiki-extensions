@@ -847,6 +847,13 @@ $messages['no'] = array(
 	'livetranslate-importtms-param-miscmatch' => 'Avvik mellom antall plasseringer og typer',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'livetranslate-button-translate' => 'Iwwersetze',
+);
+
 /** Polish (Polski)
  * @author Byulent
  * @author Sp5uhe
