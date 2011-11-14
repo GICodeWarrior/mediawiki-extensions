@@ -5424,12 +5424,17 @@ $messages['os'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'viewapc-display-deletion_time' => 'Gelescht',
 	'viewapc-display-mem_size' => 'Grees',
 	'viewapc-ls-submit' => 'Geh los!',
 	'viewapc-ls-header-name' => 'Naame',
 	'viewapc-ls-header-size' => 'Grees',
+	'viewapc-ls-header-deleted' => 'gelescht',
+	'viewapc-ls-scope-deleted' => 'Gelescht',
+	'viewapc-ls-scope-both' => 'Beede',
 	'viewapc-ls-sort-size' => 'Grees',
 	'viewapc-ls-sort-name' => 'Naame',
+	'viewapc-ls-sort-deleted' => 'Gelescht',
 	'viewapc-ls-limit-none' => 'All',
 );
 
