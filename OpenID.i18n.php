@@ -1398,7 +1398,12 @@ Pšosym staj se z [[Special:ListUsers/sysop|administratorom]] do zwiska.',
 	'openidfailure' => 'Pséglědanje jo se njeraźiło',
 	'openidfailuretext' => 'Pśeglědanje URL OpenID je so njeraźiło. Zmólkowa powěźeńka: "$1"',
 	'openidsuccess' => 'Pśeglědanje wuspěšne',
-	'openidsuccesstext' => 'Pśeglědanje URL OpenID jo wuspěšnje było.',
+	'openidsuccesstext' => "'''Pśeglědanje a pśizjawjenje ako wužywaŕ $1 stej byłej wuspěšnej.'''
+
+Twój OpenID jo $2.
+
+Toś ten a dalšne OpenID daju se na [[Special:Preferences#prefsection-openid|OpenID-rejtarku]] twójich nastajenjow zastojaś.<br />
+Faktulatiwne gronidło dajo se w twójom [[Special:Preferences#prefsection-personal|wužywarskem profilu]] pśidaś.",
 	'openidusernameprefix' => 'Wužywaŕ OpenID',
 	'openidserverlogininstructions' => 'Zapódaj swójo gronidło dołojce, aby se ako wužywaŕ $2 pla $3 pśizjawił (wužywarski bok $1).',
 	'openidtrustinstructions' => 'Kontrolěruj, lěc coš daty z $1 źěliś.',
@@ -4493,6 +4498,7 @@ $messages['pdc'] = array(
 	'openidlanguage' => 'Schprooch',
 	'openidchooseusername' => 'Yuuser-Naame:',
 	'openidchoosepassword' => 'Paesswatt:',
+	'openid-urls-delete' => 'Lesche',
 );
 
 /** Plautdietsch (Plautdietsch)
