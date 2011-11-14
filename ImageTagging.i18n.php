@@ -1690,6 +1690,7 @@ $messages['os'] = array(
 $messages['pdc'] = array(
 	'imagetagging-article' => 'Blatt:',
 	'imagetagging-imghistory' => 'Gschicht',
+	'imagetagging-images' => 'Pikder',
 );
 
 /** Polish (Polski)
