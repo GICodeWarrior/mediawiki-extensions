@@ -5279,6 +5279,7 @@ $messages['os'] = array(
 $messages['pdc'] = array(
 	'deletequeue-delnom-otherreason' => 'Annerer Grund',
 	'deletequeue-review-reason' => 'Aamaerickinge:',
+	'deletequeue-review-newreason' => 'Neier Grund:',
 	'deletequeue-vote-reason' => 'Aamaerickinge:',
 	'deletequeue-list-search' => 'Guck uff',
 	'deletequeue-list-header-page' => 'Blatt',
