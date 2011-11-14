@@ -761,6 +761,14 @@ $messages['nl-informal'] = array(
 	'favoritelistanontext' => 'Om je favorieten te bekijken of te bewerken moet je je $1.',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'favoritelistfor' => "(fer '''$1''')",
+	'favoritelistall2' => 'all',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  * @author Woytecr
