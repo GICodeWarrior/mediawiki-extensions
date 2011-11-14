@@ -609,6 +609,7 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Imre
+ * @author Vivaelcelta
  */
 $messages['es'] = array(
 	'todo' => 'Lista de quehaceres',
@@ -636,6 +637,7 @@ $4',
 	'todo-list-change' => 'Cambiar',
 	'todo-list-cancel' => 'Cancelar',
 	'todo-new-item' => 'Nuevo item',
+	'todo-not-updated' => 'No se pudo actualizar el registro de base de datos',
 	'todo-issue-summary' => 'Resumen de asuntos:',
 	'todo-form-details' => 'Detalles:',
 	'todo-form-email' => 'Para recibir notificación por correo electrónico cuando el item está cerrado, escriba su dirección aquí:',
