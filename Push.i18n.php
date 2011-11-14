@@ -21,6 +21,10 @@ $messages['en'] = array(
 	'right-bulkpush' => 'Authorization to use bulk push functionality (ie Special:Push).',
 	'right-pushadmin' => 'Authorization to modify push targets and push settings.',
 
+	'action-push' => 'push pages',
+	'action-bulkpush' => 'bulk push pages',
+	'action-pushadmin' => 'configure push',
+
 	'group-pusher' => 'Pushers',
 	'group-pusher-member' => '{{GENDER:$1|pusher}}',
 	'grouppage-pusher' => 'Project:Pushers',
