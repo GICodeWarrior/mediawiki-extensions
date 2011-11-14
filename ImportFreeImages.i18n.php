@@ -1075,6 +1075,7 @@ $messages['pdc'] = array(
 	'importfreeimages_owner' => 'Schreiwer',
 	'importfreeimages_next' => 'Neegschte $1',
 	'importfreeimages_size_small' => 'Glee',
+	'importfreeimages_size_large' => 'Gross',
 );
 
 /** Polish (Polski)
