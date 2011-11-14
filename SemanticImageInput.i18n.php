@@ -27,7 +27,9 @@ $messages['en'] = array(
  * @author Purodha
  */
 $messages['qqq'] = array(
-	'sii-desc' => '{{desc}}',
+	'sii-desc' => '{{desc}}
+
+The extension looks at Wikipedia articles and figures out which images are used there. These images are then pulled to the local wiki using MediaWikis native instant commons functionality. They are copied to the local server.',
 );
 
 /** Breton (Brezhoneg)
@@ -43,6 +45,14 @@ $messages['br'] = array(
 $messages['de'] = array(
 	'sii-desc' => 'Ermöglicht eine zusätzliche Eingabeart zu Bildern für [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms], die den Abruf von Bildern aus den Wikipedias und Wikimedia Commons erlaubt',
 	'sii-imageinput-loading' => 'Lade Bild …',
+);
+
+/** French (Français)
+ * @author Gomoko
+ */
+$messages['fr'] = array(
+	'sii-desc' => "Ajoute une entrée d'image qui tire ses images de Wikipédia depuis [https://www.mediawiki.org/wiki/Extension:Semantic_Forms les formulaires sémantiques]",
+	'sii-imageinput-loading' => "Chargement de l'image...",
 );
 
 /** Galician (Galego)
@@ -65,7 +75,7 @@ $messages['ia'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'sii-desc' => 'Brängg en Müjjeleschkeit en et Wiki, öm e Beld enzjävve, un dat vun de  Wikkipeedija udder MedijaWiki Commons en e [https://www.mediawiki.org/wiki/Extension:Semantic_Forms semantesch Fommulaa] ze holle.',
+	'sii-desc' => 'Brängg en Müjjeleschkeit en et Wiki, öm Belder vun de Wikkipeedija udder MedijaWiki Commons en e [https://www.mediawiki.org/wiki/Extension:Semantic_Forms semantesch Fommulaa] ze holle un derbei op der eije ẞööver ze kopeere..',
 );
 
 /** Macedonian (Македонски)
