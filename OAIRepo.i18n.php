@@ -86,6 +86,7 @@ $messages['bg'] = array(
  */
 $messages['br'] = array(
 	'oai-desc' => 'Porchas a ra un etrefas gant ar sanailh [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
+	'oairepository' => "Kavlec'h OAI",
 );
 
 /** Bosnian (Bosanski)
