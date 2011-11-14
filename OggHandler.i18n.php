@@ -992,6 +992,7 @@ Bonvolu <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downl
  * @author AVRS
  * @author Aleator
  * @author Crazymadlover
+ * @author Fitoschido
  * @author Muro de Aguas
  * @author Remember the dot
  * @author Sanbec
@@ -1025,7 +1026,7 @@ Por favor <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_dow
 	'ogg-use-player' => 'Usar reproductor:',
 	'ogg-more' => 'Opciones...',
 	'ogg-dismiss' => 'Cerrar',
-	'ogg-download' => 'Bajar archivo',
+	'ogg-download' => 'Descargar archivo',
 	'ogg-desc-link' => 'Sobre este archivo',
 	'ogg-oggThumb-version' => 'OggHandler requiere una versión oggThumb $1 o posterior.',
 	'ogg-oggThumb-failed' => 'oggThumb no pudo crear la imagen miniatura.',
