@@ -591,40 +591,41 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Danke7
+ * @author Fitoschido
  * @author Translationista
  * @author VegaDark
  */
 $messages['es'] = array(
-	'article-comments-desc' => 'Habilita secciones de comentario en las páginas de contenido',
+	'article-comments-desc' => 'Habilita secciones de comentarios en las páginas de contenido',
 	'article-comments-title-string' => 'título',
 	'article-comments-name-string' => 'Nombre',
 	'article-comments-name-field' => 'Nombre (requerido):',
-	'article-comments-url-field' => 'Sitio Web:',
+	'article-comments-url-field' => 'Sitio web:',
 	'article-comments-url-string' => 'URL',
 	'article-comments-comment-string' => 'Comentario',
 	'article-comments-comment-field' => 'Comentario:',
 	'article-comments-submit-button' => 'Enviar',
 	'article-comments-leave-comment-link' => 'Deja un comentario...',
-	'article-comments-invalid-field' => 'El <nowiki>[$2]</nowiki> de $1 proporcionado es inválido.',
-	'article-comments-required-field' => 'El campo $1 es obligatorio.',
+	'article-comments-invalid-field' => 'El $1 proporcionado <nowiki>[$2]</nowiki> no es válido.',
+	'article-comments-required-field' => 'El campo «$1» es obligatorio.',
 	'article-comments-submission-failed' => 'El envío del comentario ha fallado',
-	'article-comments-failure-reasons' => 'Lo sentimos. Tu comentario no pudo enviarse por {{PLURAL:$1|la siguiente razón|las siguientes razones}}:',
-	'article-comments-no-comments' => 'Lo sentimos. La página de "[[$1]]" no acepta comentarios en este momento.',
-	'article-comments-talk-page-starter' => '<noinclude>comentarios sobre [[$1]]
+	'article-comments-failure-reasons' => 'Lo sentimos, tu comentario no pudo enviarse por {{PLURAL:$1|la siguiente razón|las siguientes razones}}:',
+	'article-comments-no-comments' => 'Lo sentimos, la página «[[$1]]» no acepta comentarios en este momento.',
+	'article-comments-talk-page-starter' => '<noinclude>Comentarios en «[[$1]]»
 <comments />
 ----- __NOEDITSECTION__</noinclude>',
 	'article-comments-commenter-said' => '$1 dijo...',
 	'article-comments-summary' => 'Comentario proporcionado por $1 - a través de la extensión ArticleComments',
 	'article-comments-submission-succeeded' => 'Envío del comentario realizado con éxito',
-	'article-comments-submission-success' => 'Has enviado exitosamente un comentario sobre "[[$1]]"',
+	'article-comments-submission-success' => 'Has enviado exitosamente un comentario sobre «[[$1]]»',
 	'article-comments-submission-view-all' => 'Puedes ver [[$1|todos los comentarios sobre esa página]]',
-	'article-comments-user-is-blocked' => 'Tu cuenta de usuario está bloqueada para editar  "[[$1]]".',
-	'article-comments-comment-bad-mode' => 'Se ha dado un modo inválido par comentarios.
-Los disponibles son "plain", "normal" y "wiki".',
+	'article-comments-user-is-blocked' => 'Tu cuenta de usuario está bloqueada para editar «[[$1]]».',
+	'article-comments-comment-bad-mode' => 'Se proporcionó un modo no válido para comentar.
+Los disponibles son «plain», «normal» y «wiki».',
 	'article-comments-comment-missing-name-parameter' => 'Falta el nombre',
 	'article-comments-comment-missing-date-parameter' => 'Falta la fecha del comentario',
-	'article-comments-no-spam' => 'Al menos uno de los campos enviados se ha marcado como no deseado.',
-	'processcomment' => 'Procesar el comentario sobre el artículo',
+	'article-comments-no-spam' => 'Al menos uno de los campos enviados se ha marcado como spam.',
+	'processcomment' => 'Procesar el comentario sobre la página',
 );
 
 /** Basque (Euskara)
@@ -1552,6 +1553,13 @@ $messages['or'] = array(
 	'article-comments-comment-string' => 'ମତାମତ',
 	'article-comments-comment-field' => 'ମତାମତ:',
 	'article-comments-submit-button' => 'ଦାଖଲକରିବା',
+);
+
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'article-comments-name-string' => 'Naame',
 );
 
 /** Polish (Polski)
