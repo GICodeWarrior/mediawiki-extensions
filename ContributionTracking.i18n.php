@@ -946,7 +946,7 @@ $messages['or'] = array(
  */
 $messages['pdc'] = array(
 	'contrib-tracking-error' => 'Mischteek',
-	'contrib-tracking-button' => 'Weiter',
+	'contrib-tracking-button' => 'Weider',
 );
 
 /** Polish (Polski)
