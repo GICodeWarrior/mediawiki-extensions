@@ -143,6 +143,14 @@ $messages['he'] = array(
 	'fileattach-editcomment' => 'הקובץ [[File:$1|$1]] צורף',
 );
 
+/** Hungarian (Magyar)
+ * @author Dj
+ */
+$messages['hu'] = array(
+	'fileattach-attachments' => 'Csatolt fájlok',
+	'fileattach-attachfile' => 'Fájl csatolása',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
