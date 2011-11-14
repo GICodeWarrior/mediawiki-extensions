@@ -36,6 +36,13 @@ $messages['de'] = array(
 	'newuserslist-desc' => 'Ergänzt das <tt>&lt;newusers&gt;</tt>-Tag mit dem die Liste neue Benutzer mitsamt ihrer Avatare angezeigt werden kann',
 );
 
+/** Spanish (Español)
+ * @author Fitoschido
+ */
+$messages['es'] = array(
+	'newuserslist-desc' => 'Añade la etiqueta del analizador <tt>&lt;newusers&gt;</tt> para obtener la lista de usuarios nuevos y sus avatares',
+);
+
 /** French (Français)
  * @author Gomoko
  * @author Urhixidur
