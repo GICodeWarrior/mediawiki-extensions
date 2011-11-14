@@ -1555,6 +1555,7 @@ $messages['pdc'] = array(
 	'importusers-uploadfile' => 'Feil ufflaade',
 	'importusers-log-summary-all' => 'All: $1',
 	'importusers-password' => 'Paesswatt',
+	'importusers-email' => 'E-Poschd',
 );
 
 /** Plautdietsch (Plautdietsch)
