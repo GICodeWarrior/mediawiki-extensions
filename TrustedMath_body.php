@@ -17,8 +17,8 @@ class TrustedMath {
 	 * @param Title $title Title of the article
 	 */
 	public static function newFromTitle( $title ) {
-		$text = Article::newFromId( $title->getArticleId() )->getRawText();
-		return new self( $text );
+		$article = new Article( $title, 0 );
+		return new self( $article->getRawText() );
 	}
 
 	protected $text = null;
