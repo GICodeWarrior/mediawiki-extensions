@@ -262,7 +262,8 @@ $messages['qqq'] = array(
 	'contest-special-submissioncount' => 'Table column header',
 	'contest-special-edit' => 'Table column header.
 {{Identical|Edit}}',
-	'contest-special-delete' => 'Table column header',
+	'contest-special-delete' => 'Table column header.
+{{Identical|Delete}}',
 	'editcontest-text' => 'Short text displayed at the top of the page notifying the user they are editing a contest',
 	'contest-edit-name' => 'form field label',
 	'contest-edit-status' => 'form field label',
@@ -488,7 +489,7 @@ $messages['be-tarask'] = array(
 	'contest-special-edit' => 'Рэдагаваць',
 	'contest-special-delete' => 'Выдаліць',
 	'contest-special-confirm-delete' => 'Вы ўпэўнены, што жадаеце выдаліць гэты конкурс?',
-	'contest-special-delete-failed' => 'Не магчыма выдаліць гэты конкурс.',
+	'contest-special-delete-failed' => 'Немагчыма выдаліць гэты конкурс.',
 	'editcontest-text' => 'Вы рэдагуеце конкурс.',
 	'editcontest-legend' => 'Конкурс',
 );
@@ -974,6 +975,8 @@ $messages['fr'] = array(
 	'contest-welcome-js-off' => "L'interface utilisateur du concours utilise JavaScript pour une interface améliorée. Votre navigateur, soit ne supporte pas JavaScript, soit a JavaScript désactivé.",
 	'contest-welcome-accept-challenge' => 'Défi accepté',
 	'contest-welcome-select-header' => 'Choisir votre défi:',
+	'contest-welcome-active-contests' => 'Voici les concours actuellement actifs:',
+	'contest-welcome-no-contests-active' => "Il n'y a actuellement aucun concours actif.",
 	'contest-signup-unknown' => "Il n'y a pas de concours avec le nom indiqué.",
 	'contest-signup-submit' => "S'inscrire",
 	'contest-signup-header' => 'Merci de remplir le formulaire pour terminer votre inscription pour $1.',
