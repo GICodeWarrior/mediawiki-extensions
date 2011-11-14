@@ -585,6 +585,28 @@ $messages['hsb'] = array(
 	'ea-allusers' => 'Wšitcy wužiwarjo',
 );
 
+/** Hungarian (Magyar)
+ * @author Dj
+ */
+$messages['hu'] = array(
+	'e-mailpage' => 'Email lap',
+	'ea-heading' => '"[[$1]]" oldal elküldése',
+	'ea-denied' => 'Engedély megtagadva',
+	'ea-compose' => 'Tartalom összeállítása',
+	'ea-show' => 'Címzettek megtekintése',
+	'ea-from' => 'Feladó:',
+	'ea-to' => 'Címzett:',
+	'ea-to-info' => 'Az email címeket egy vagy több pontosvesszővel, vesszővel, csillaggal vagy új sor karakterrel lehet elválasztani',
+	'ea-cc' => 'Másolatot kap:',
+	'ea-send' => 'Küldés',
+	'ea-subject' => 'Tárgy:',
+	'ea-message' => 'Üzenet:',
+	'ea-style' => 'Stílus:',
+	'ea-selectcss' => 'Választhatsz egy stíluslapot',
+	'ea-data' => 'Adat',
+	'ea-allusers' => 'Összes felhasználó',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
