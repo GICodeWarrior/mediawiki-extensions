@@ -251,6 +251,13 @@ $messages['nl'] = array(
 	'fptc-no-suggestion' => 'Geen suggesties gevonden',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'fptc-search-button' => 'Guck uff',
+);
+
 /** Polish (Polski)
  * @author Woytecr
  */
