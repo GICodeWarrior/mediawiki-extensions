@@ -20,7 +20,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 if ( !defined( 'SF_VERSION' ) ) {
-	die( 'This is a Semantic Forms extension. You need to install Semantic Forms first.' );
+	die( '<b>Error:</b> <a href="https://www.mediawiki.org/wiki/Extension:Semantic_Forms_Inputs">Semantic Forms Inputs</a> is a Semantic Forms extension. You need to install <a href="https://www.mediawiki.org/wiki/Extension:Semantic_Forms">Semantic Forms</a> first.' );
 }
 
 define( 'SFI_VERSION', '0.4.2 alpha' );
