@@ -854,6 +854,7 @@ $messages['or'] = array(
  */
 $messages['pdc'] = array(
 	'am-username' => 'Yuuser-Naame',
+	'am-email' => 'E-Poschd',
 );
 
 /** Polish (Polski)
