@@ -615,6 +615,13 @@ $messages['pa'] = array(
 	'right-lastlogin' => 'ਪਿਛਲੀ ਵਾਰ ਲਾਗਇਨ ਹੋਏ ਯੂਜ਼ਰ ਨੂੰ ਵੇਖੋ',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'lastuserlogin_userid' => 'Yuuser-Naame',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */
