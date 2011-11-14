@@ -443,6 +443,13 @@ $messages['nl'] = array(
 	'right-admanager' => '[[Special:AdManager|Advertentie-instellingen beheren]]',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'admanager_labelPage' => 'Naame vun Bledder',
+);
+
 /** Portuguese (Português)
  * @author SandroHc
  */
