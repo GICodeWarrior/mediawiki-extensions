@@ -131,7 +131,7 @@ HTML;
 		global $wgOnlineStatusBar_WriteTime, $wgOnlineStatusBar_LogoutTime;
 
 		if ($delayed) {
-			return wfTimestamp( TS_UNIX ) + $wgOnlineStatusBar_WriteTime;
+			return wfTimestamp( TS_UNIX ) - $wgOnlineStatusBar_WriteTime;
 		}
 		
 		return wfTimestamp( TS_UNIX ) - $wgOnlineStatusBar_LogoutTime;

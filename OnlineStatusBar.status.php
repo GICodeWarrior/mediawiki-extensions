@@ -38,7 +38,7 @@ class OnlineStatusBar_StatusCheck {
 			if ( $user->isLoggedIn() ) {
 				$status = $user->getOption( 'OnlineStatusBar_status', $wgOnlineStatusBarDefaultOnline );
 				if ( $delayed_check ) {
-					if ( $result < $w_time ) {
+					if ( $result < wfTimestamp( TS_MW, $w_time ) ) {
 						$status = 'write';
 					}
 				}
@@ -131,6 +131,14 @@ class OnlineStatusBar_StatusCheck {
 			return 0;
 		}
 		$dbw = wfGetDB( DB_MASTER );
+		$t_time = OnlineStatusBar::getTimeoutDate();
+		$result = $dbw->selectField( 'online_status', 'timestamp', array( "timestamp < " . $dbw->addQuotes( $dbw->timestamp( $t_time ) ) ),
+			__METHOD__, array( 'LIMIT 1' ) );
+		if ( $result === false ) {
+			// no need for delete
+			return 0;
+		}
+
 		// calculate time and convert it back to mediawiki format
 		$time = OnlineStatusBar::getTimeoutDate();
 		$dbw->delete( 'online_status', array( "timestamp < " . $dbw->addQuotes( $dbw->timestamp( $time ) ) ), __METHOD__ );
