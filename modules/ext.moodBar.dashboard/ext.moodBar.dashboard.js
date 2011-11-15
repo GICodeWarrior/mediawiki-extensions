@@ -304,8 +304,7 @@ jQuery( function( $ ) {
 				'action' : 'feedbackdashboard',
 				'token' : mw.user.tokens.get('editToken'),
 				'item' : item_id,
-				'format' : 'json',
-				'reason' : reason
+				'format' : 'json'
 			}, params ),
 			function(response) {
 				if ( response && response.feedbackdashboard ) {
