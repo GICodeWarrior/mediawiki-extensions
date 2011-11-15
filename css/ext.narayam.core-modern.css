@@ -4,22 +4,31 @@
 	 */
 	overflow: visible!important;
 }
+
 div#narayam-menu ul,
 x:-moz-any-link {
 	min-width: 15em;
 	height: auto;
 }
+
 div#narayam-menu li {
 	background-color: #FFFFFF;
-	font-weight:normal;
-	white-space:nowrap;
+	font-weight: normal;
+	white-space: nowrap;
+	text-transform: none;
+	font-variant: normal;
 }
-div#narayam-menu{
+
+div#narayam-menu ul {
+	background-color: #FFFFFF;
 	border: solid 1px silver;
+	height: auto;
 }
+
 div#narayam-menu li a:hover{
-	color:#0645AD;
+	color: #0645AD;
 }
+
 div#narayam-menu li:hover {
 	background-color: #FFFFFF;
 }
