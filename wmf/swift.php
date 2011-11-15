@@ -18,18 +18,16 @@ require_once( '/usr/local/apache/common-local/lib/php-cloudfiles/cloudfiles.php'
  * to CommonSettings.php which includes this file and calls this function.
  * 
  * @param $file File
- * @param $type string "current" or "old"
+ * @param $archiveName string|false
  * @return true
  */
-function wmfPurgeBackendThumbCache( File $file, $type ) {
+function wmfPurgeBackendThumbCache( File $file, $archiveName ) {
 	global $site, $lang; // CommonSettings.php
 
-	if ( $type === 'current' ) {
-		$thumbRel = $file->getRel();
-	} elseif ( $type === 'archive' ) {
-		$thumbRel = $file->getArchiveThumbRel();
+	if ( $archiveName !== false ) {
+		$thumbRel = $file->getArchiveThumbRel( $archiveName ); // old version
 	} else {
-		return true; // sanity
+		$thumbRel = $file->getRel(); // current version
 	}
 
 	$container = wmfGetSwiftThumbContainer( $site, $lang );
