@@ -126,6 +126,10 @@ class OnlineStatusBar_StatusCheck {
 	 * @return int
 	 */
 	public static function deleteOld() {
+		global $wgOnlineStatusBarAutoDelete;
+		if ( !$wgOnlineStatusBarAutoDelete ) {
+			return 0;
+		}
 		$dbw = wfGetDB( DB_MASTER );
 		// calculate time and convert it back to mediawiki format
 		$time = OnlineStatusBar::getTimeoutDate();

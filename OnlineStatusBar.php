@@ -84,6 +84,8 @@ $wgOnlineStatusBarIcon = array(
 
 // default for anonymous and uknown users
 $wgOnlineStatusBarTrackIpUsers = false;
+// it's better to cron this for performance reasons
+$wgOnlineStatusBarAutoDelete = true;
 // delay between db updates
 $wgOnlineStatusBar_WriteTime = 300;
 // default for online
