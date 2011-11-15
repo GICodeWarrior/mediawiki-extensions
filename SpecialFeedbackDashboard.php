@@ -195,7 +195,7 @@ HTML;
 			</div>
 			<div class="fbd-item-time">$timeMsg</div>
 $userInfo
-			<div class="fbd-item-message">$comment</div>
+			<div class="fbd-item-message" dir="auto">$comment</div>
 $toolLinks
 			<div style="clear:both"></div>
 		</li>
