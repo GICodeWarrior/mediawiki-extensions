@@ -38,24 +38,24 @@ class InteractiveBlockMessageHooks {
 		}
 		
 		if ( $parser->getTitle()->getNamespace() != NS_USER && $parser->getTitle()->getNamespace() != NS_USER_TALK ) {
-			$ret = "unknown";
+			$ret = 'unknown';
                         return true;
                 }
 
 		$user = User::newFromName( $parser->getTitle()->getBaseText() ); 
 		if ($user instanceof User) {
 			if ($user->isBlocked()) {
-				$ret = "true";
+				$ret = 'true';
 				return true;
 			} else {
-				$ret = "false";
+				$ret = 'false';
 				return true;
 			}
 		} else {
-			$ret = "unknown";
+			$ret = 'unknown';
 			return true;
 		}
-	 	$ret = "unknown";	
+	 	$ret = 'unknown';
 		return true;
 	}
 }
