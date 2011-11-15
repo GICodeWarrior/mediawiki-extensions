@@ -69,6 +69,7 @@ $wgResourceModules['ext.OnlineStatusBar.nostalgia'] = array (
 );
 
 $wgAutoloadClasses['OnlineStatusBar'] = "$dir/OnlineStatusBar.body.php";
+$wgAutoloadClasses['OnlineStatusBar_StatusCheck'] = "$dir/OnlineStatusBar.status.php";
 $wgAutoloadClasses['OnlineStatusBarHooks'] = "$dir/OnlineStatusBarHooks.php";
 
 // Configuration
@@ -83,6 +84,8 @@ $wgOnlineStatusBarIcon = array(
 
 // default for anonymous and uknown users
 $wgOnlineStatusBarTrackIpUsers = false;
+// delay between db updates
+$wgOnlineStatusBar_WriteTime = 300;
 // default for online
 $wgOnlineStatusBarDefaultOnline = "online";
 // default for offline

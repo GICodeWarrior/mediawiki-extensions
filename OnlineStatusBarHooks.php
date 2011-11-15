@@ -29,18 +29,19 @@ class OnlineStatusBarHooks {
 	 */
 	public static function logout( &$user, &$inject_html, $old_name ) {
 		OnlineStatusBar::purge( $old_name );
-		OnlineStatusBar::deleteStatus( $old_name );
+		OnlineStatusBar_StatusCheck::deleteStatus( $old_name );
 		return true;
 	}
 
 	/**
-	 * Called everytime on login 
+	 * Called everytime on login
 	 * @return bool
 	 */
 	public static function updateStatus() {
 		global $wgUser;
+		OnlineStatusBar_StatusCheck::deleteOld();
 		OnlineStatusBar::purge( $wgUser );
-		OnlineStatusBar::updateStatus();
+		OnlineStatusBar_StatusCheck::updateStatus();
 		return true;
 	}
 
@@ -54,7 +55,7 @@ class OnlineStatusBarHooks {
 	public static function renderBar( &$article, &$outputDone, &$pcache ) {
 		$context = $article->getContext();
 
-		OnlineStatusBar::updateStatus();
+		OnlineStatusBar_StatusCheck::updateStatus();
 		$result = OnlineStatusBar::getUserInfoFromTitle( $article->getTitle() );
 		if ( $result === false && User::isIP ( $article->getTitle()->getBaseText() ) ) {
 			$result = OnlineStatusBar::getAnonFromTitle( $article->getTitle() ); 
