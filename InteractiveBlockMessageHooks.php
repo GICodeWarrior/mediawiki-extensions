@@ -12,7 +12,7 @@ class InteractiveBlockMessageHooks {
 	 * @return bool
 	 */
 	public static function magicWordVar( array &$magicWords, $ln ) {
-		$magicWords['userblocked'] = array( 0, 'userblocked' );
+		$magicWords['USERBLOCKED'] = array( 1, 'USERBLOCKED' );
 		return true;
 	}
 
@@ -21,11 +21,13 @@ class InteractiveBlockMessageHooks {
 	 * @return bool
 	 */
 	public static function magicWordSet( &$vars ) {
-		$vars[] = 'userblocked';
+		$vars[] = 'USERBLOCKED';
 		return true;
 	}
 
 	/**
+	 * Function check if user is blocked, return true
+	 * user blocked status is passed to $ret
 	 * @param $parser Parser
 	 * @param $varCache ??
 	 * @param $index ??
@@ -33,7 +35,7 @@ class InteractiveBlockMessageHooks {
 	 * @return bool
 	 */
 	public static function parserGetVariable( &$parser, &$varCache, &$index, &$ret ) {
-		if ( $index != 'userblocked' ) {
+		if ( $index != 'USERBLOCKED' ) {
 			return true;
 		}
 		
