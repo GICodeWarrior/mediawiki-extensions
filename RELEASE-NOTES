@@ -4,6 +4,11 @@ Extension page on mediawiki.org: http://www.mediawiki.org/wiki/Extension:Live_Tr
 Latest version of the release notes: http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/LiveTranslate/RELEASE-NOTES?view=co
 
 
+=== Version 1.2.3 ===
+(trunk)
+
+* Added action-managetms message.
+
 === Version 1.2.2 ===
 2011-09-15
 
