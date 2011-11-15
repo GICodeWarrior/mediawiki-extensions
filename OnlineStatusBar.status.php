@@ -27,10 +27,9 @@ class OnlineStatusBar_StatusCheck {
 		$t_time = OnlineStatusBar::getTimeoutDate();
 		$dbr = wfGetDB( DB_SLAVE );
 		$w_time = OnlineStatusBar::getTimeoutDate( true );
-		$result = $dbr->selectField( 'online_status', 'username', array( 'username' => $user->getName(),
+		$result = $dbr->selectField( 'online_status', 'timestamp', array( 'username' => $user->getName(),
 			"timestamp > " . $dbr->addQuotes( $dbr->timestamp( $t_time ) ) ),
 			__METHOD__, array( 'LIMIT 1', 'ORDER BY timestamp DESC' ) );
-
 
 		if ( $result === false ) {
 			$status = $wgOnlineStatusBarDefaultOffline;
@@ -39,7 +38,7 @@ class OnlineStatusBar_StatusCheck {
 			if ( $user->isLoggedIn() ) {
 				$status = $user->getOption( 'OnlineStatusBar_status', $wgOnlineStatusBarDefaultOnline );
 				if ( $delayed_check ) {
-					if ( $result[0]->timestamp > w_time ) {
+					if ( $result < $w_time ) {
 						$status = 'write';
 					}
 				}
