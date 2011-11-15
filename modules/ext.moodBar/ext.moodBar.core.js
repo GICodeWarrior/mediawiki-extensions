@@ -111,7 +111,6 @@
 									.localize()
 									.click( function( e ) {
 										var $el = $( this );
-										//mb.ui.overlay.find( '.mw-moodBar-formSubmit').removeAttr('disabled');
 										mb.ui.overlay.find( '.mw-moodBar-formInput' ).focus();
 										$mwMoodBarTypes.addClass( 'mw-moodBar-types-select' );
 										mb.feedbackItem.type = $el.attr( 'rel' );

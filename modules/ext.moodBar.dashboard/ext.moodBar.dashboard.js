@@ -249,16 +249,17 @@ jQuery( function( $ ) {
 	}
 	
 	/**
-	 * Do this before administrative action
+	 * Do this before administrative action to provide reason
 	 */
 	function beforeAction(params, $item){
-		var inlineForm = $('<span class="fbd-item-reason">\
-					Reason\
+		var inlineForm = '<span class="fbd-item-reason">\
+					$1\
 					<input class="fbd-action-reason" name="fb-action-reason" />\
 					<button class="fbd-action-confirm">Confirm</button>\
 					<button class="fbd-action-cancel">Cancel</button>\
-				  </span>');
-		
+				  </span>'
+				.replace( /\$1/g, mw.msg( 'moodbar-action-reason' ));
+				   
 		var storedParams = params;
 		var $storedItem = $item;
 		
@@ -268,9 +269,16 @@ jQuery( function( $ ) {
 		$item.find('.fbd-item-message')
 			.append(inlineForm)
 			.end();
-			
+		
 		$('.fbd-action-confirm').click( function() {
-			doAction(storedParams, $storedItem);
+			storedParams.reason = $item.find('.fbd-action-reason').val();
+			
+			if( storedParams.reason ) {
+				doAction(storedParams, $storedItem);	
+			} else {
+				alert( mw.msg( 'moodbar-action-reason-required' ) );
+			}
+			
 		});
 		$('.fbd-action-cancel').click( function() {
 			reloadItem( $storedItem, true );
@@ -287,9 +295,6 @@ jQuery( function( $ ) {
 		var errorHandler = function(error_str) {
 			showItemError( $item, error_str );
 		};
-		
-		//var reason = prompt("Reason for this action?");
-		var reason = $item.find('.fbd-action-reason').val();
 		
 		var $spinner = $('<span class="mw-ajax-loader">&nbsp;</span>');
 		$item.find('.fbd-item-hide').empty().append( $spinner );
@@ -324,7 +329,6 @@ jQuery( function( $ ) {
 	function restoreItem(e) {
 		var $item = $(this).closest('.fbd-item');
 		
-		//doAction( { 'mbaction' : 'restore' }, $item );
 		beforeAction( { 'mbaction' : 'restore' }, $item );
 		e.preventDefault();
 	}
@@ -334,11 +338,7 @@ jQuery( function( $ ) {
 	 */
 	function hideItem(e) {
 		var $item = $(this).closest('.fbd-item');
-	
-		//var $spinner = $('<span class="mw-ajax-loader">&nbsp;</span>');
-		//$item.find('.fbd-item-hide').empty().append( $spinner );
-		
-		//doAction( { 'mbaction' : 'hide' }, $item );
+
 		beforeAction( { 'mbaction' : 'hide' }, $item );
 		e.preventDefault();
 	}

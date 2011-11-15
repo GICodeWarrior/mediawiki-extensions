@@ -149,6 +149,8 @@ $wgResourceModules['ext.moodBar.dashboard'] = $mbResourceTemplate + array(
 		'moodbar-feedback-noresults',
 		'moodbar-feedback-ajaxerror',
 		'moodbar-feedback-action-error',
+		'moodbar-action-reason',
+		'moodbar-action-reason-required'
 	),
 );
 
