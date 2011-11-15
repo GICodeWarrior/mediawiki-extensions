@@ -183,7 +183,7 @@
 			var cookieFont = $.cookie( 'webfonts-font' );
 			var selectedFont = null;
 			// check whether this font is for the current userlang/contentlang
-			if ( $.inArray( cookieFont, config ) !== -1 ) {
+			if ( $.inArray( cookieFont, config ) !== -1 || cookieFont === 'none' ) {
 				selectedFont = cookieFont;
 			}
 			else{
@@ -191,7 +191,7 @@
 				// for current language.
 				selectedFont = config[0];
 			}
-			if ( selectedFont && selectedFont !== 'none' ) {
+			if ( selectedFont ) {
 				mw.webfonts.set( selectedFont );
 				// Mark it as checked
 				$( '#'+fontID( selectedFont ) ).prop( 'checked', true );
