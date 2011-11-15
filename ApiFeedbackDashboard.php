@@ -57,7 +57,10 @@ class ApiFeedbackDashboard extends ApiBase {
 				ApiBase::PARAM_TYPE => 'integer',
 			),
 			
-			'reason' => null,
+			'reason' => array(
+				ApiBase::PARAM_REQUIRED => true,
+				ApiBase::PARAM_TYPE => 'string'
+			),
 			'token' => array(
 				ApiBase::PARAM_REQUIRED => true,
 			),
