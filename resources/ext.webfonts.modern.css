@@ -1,0 +1,29 @@
+#p-personal {
+	/* #p-personal has overflow:hidden. That makes a dropdown menu appearing hidden.
+	 * overriding it this way may not be the best way.
+	 */
+	overflow: visible!important;
+}
+
+div#webfonts-menu li {
+	background-color: #FFFFFF;
+	font-weight: normal;
+	white-space: nowrap;
+	text-transform: none;
+	font-variant: normal;
+}
+
+div#webfonts-menu  ul {
+	border: solid 1px silver;
+	background-color: #FFFFFF;
+	height: auto;
+}
+
+div#webfonts-menu li a:hover{
+	color: #0645AD;
+}
+
+div#webfonts-menu li:hover {
+	background-color: #FFFFFF;
+}
+

@@ -51,6 +51,9 @@ $wgResourceModules['ext.webfonts.init'] = array(
 $wgResourceModules['ext.webfonts.core'] = array(
 	'scripts' => array( 'resources/ext.webfonts.js', 'resources/ext.webfonts.fontlist.js' ),
 	'styles' => 'resources/ext.webfonts.css',
+	'skinStyles' => array(
+		'modern' => 'resources/ext.webfonts.modern.css',
+	),
 	'localBasePath' => $dir,
 	'remoteExtPath' => 'WebFonts',
 	'messages' => array( 'webfonts-load', 'webfonts-reset' ),
