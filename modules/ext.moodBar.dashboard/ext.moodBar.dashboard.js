@@ -1,7 +1,7 @@
 /**
  * AJAX code for Special:MoodBarFeedback
  */
-jQuery( function( $ ) {
+jQuery( function( $ ) {	
 	/**
 	 * Saved form state
 	 */
@@ -258,12 +258,15 @@ jQuery( function( $ ) {
 			showItemError( $item, error_str );
 		};
 		
+		var reason = prompt("Reason for this action?");
+		
 		$.post( mw.util.wikiScript('api'),
 			$.extend( {
 				'action' : 'feedbackdashboard',
 				'token' : mw.user.tokens.get('editToken'),
 				'item' : item_id,
-				'format' : 'json'
+				'format' : 'json',
+				'reason' : reason
 			}, params ),
 			function(response) {
 				if ( response && response.feedbackdashboard ) {
@@ -342,4 +345,5 @@ jQuery( function( $ ) {
 			loadComments( 'filter' );
 		}
 	}
+
 } );
