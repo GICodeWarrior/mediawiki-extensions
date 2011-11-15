@@ -93,7 +93,7 @@ $egFundraiserStatisticsFundraisers = array(
 	array(
 		'id' => '2011',
 		'title' => '2011 Fundraiser',
-		'start' => 'Nov 13 2011',
+		'start' => 'Nov 16 2011',
 		'end' => 'Jan 15 2012',
 	),
 );
