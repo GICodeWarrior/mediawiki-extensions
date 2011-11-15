@@ -505,12 +505,12 @@ $.narayam = new ( function() {
 		var $input = $( '<input type="radio" name="narayam-input-method" class="narayam-scheme" />' );
 		$input.attr( 'id', 'narayam-' + scheme ).val( scheme );
 
-		var $narayamMenuItemLabel = $( '<label />' )
+		var $narayamMenuItemLabel = $( '<label>' )
 				.attr( 'for' ,'narayam-' + scheme )
 				.append( $input )
 				.append( mw.message( "narayam-"+ scheme ).escaped() );
 
-		var $narayamMenuItem = $( '<li/>' )
+		var $narayamMenuItem = $( '<li>' )
 			.append( $input )
 			.append( $narayamMenuItemLabel );
 		return $narayamMenuItem;
@@ -523,7 +523,7 @@ $.narayam = new ( function() {
 	this.buildMenuItems = function(){
 		var haveSchemes = false;
 		// Build schemes option list
-		var $narayamMenuItems = $( '<ul/>' );
+		var $narayamMenuItems = $( '<ul>' );
 		var count = 1;
 		var seen = [];
 		
@@ -572,15 +572,15 @@ $.narayam = new ( function() {
 			.attr( 'title', mw.msg( 'narayam-checkbox-tooltip' ) )
 			.click( that.toggle );
 
-		var $label = $( '<label for="narayam-toggle" />' );
+		var $label = $( '<label>' ).attr( 'for', 'narayam-toggle' );
 		$label
 			.text( mw.msg( 'narayam-toggle-ime', shortcutText() ) )
 			.prepend( $checkbox )
-			.attr( 'title', mw.msg( 'narayam-checkbox-tooltip' ) );
+			.prop( 'title', mw.msg( 'narayam-checkbox-tooltip' ) );
 
-			$narayamMenuItems.append( $( '<li class="narayam-more-imes-link" />')
+			$narayamMenuItems.append( $( '<li>' ).addClass( 'narayam-more-imes-link' )
 			.append(
-				$( '<a/>' )
+				$( '<a>' )
 					.text( mw.msg( 'narayam-more-imes' ) )
 					.click( function() {
 						$('.narayam-scheme-dynamic-item').toggle('fast');
@@ -619,23 +619,18 @@ $.narayam = new ( function() {
 
 		var helppage = mw.config.get( 'wgNarayamHelpPage' );
 		if ( helppage ) {
-			$narayamMenuItems.append( $( '<li class="narayam-help-link" />')
-				.append(
-					$( '<a/>' )
-						.text( mw.msg( 'narayam-help' ) )
-						.attr(
-							'href',
-							mw.util.wikiGetlink( helppage )
-						)
-					)
-				);
+			var $link = $( '<a>' )
+				.text( mw.msg( 'narayam-help' ) )
+				.prop( 'href', mw.util.wikiGetlink( helppage ) );
+			var $li =  $( '<li>' ).addClass( 'narayam-help-link' );
+			$narayamMenuItems.append( $li.append( $link ) );
 		}
 
-		$narayamMenuItems.prepend( $( '<li/>' ).append( $label ) );
-		var $menuItemsDiv = $( '<div id="narayam-menu-items" class="menu-items" />' );
-		$menuItemsDiv
+		$narayamMenuItems.prepend( $( '<li>' ).append( $label ) );
+		return $( '<div>' )
+			.attr( 'id', 'narayam-menu-items' )
+			.addClass( 'menu-items' )
 			.append( $narayamMenuItems );
-		return $menuItemsDiv;
 	}
 	
 	
@@ -644,17 +639,16 @@ $.narayam = new ( function() {
 	 */
 	this.buildMenu = function() {
 		var $menuItemsDiv = that.buildMenuItems();
-		var $menu = $( '<div id="narayam-menu" class="narayam-menu" />');
-		$menu
-			.append(
-				$( '<a href="#" />' )
-					.text( mw.msg( 'narayam-menu' ) )
-					.attr( 'title', mw.msg( 'narayam-menu-tooltip' ) )
-			)
-			.append( $menuItemsDiv );
-
-		var $li = $( '<li id="pt-narayam" />' );
-		$li.append( $menu );
+		var $menu = $( '<div>' )
+			.attr( 'id', 'narayam-menu' )
+			.addClass( 'narayam-menu' );
+		var $link = $( '<a>' )
+			.prop( 'href', '#' )
+			.text( mw.msg( 'narayam-menu' ) )
+			.attr( 'title', mw.msg( 'narayam-menu-tooltip' ) );
+		
+		$menu.append( $link ).append( $menuItemsDiv );
+		var $li = $( '<li>' ).attr( 'id', 'pt-narayam' ).append( $menu );
 
 		// If rtl, add to the right of top personal links. Else, to the left
 		var fn = $( 'body' ).hasClass( 'rtl' ) ? "append" : "prepend";
