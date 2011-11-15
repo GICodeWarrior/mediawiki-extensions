@@ -542,8 +542,7 @@ $.narayam = new ( function() {
 			$narayamMenuItems.append( $narayamMenuItem );
 		}
 		// menu items for the language of wiki.
-		var userVariant = (typeof  wgUserVariant != 'undefined' )? wgUserVariant : null;
-		var requested = [userVariant, wgContentLanguage, wgUserLanguage];
+		var requested = [mw.config.get( 'wgUserVariant' ), mw.config.get( 'wgContentLanguage' ), mw.config.get( 'wgUserLanguage' )];
 		for ( var i = 0; i < requested.length; i++ ) {
 			var lang = requested[i];
 			var langschemes = allImes[lang];
