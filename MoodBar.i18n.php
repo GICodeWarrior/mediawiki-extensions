@@ -32,7 +32,7 @@ $messages['en'] = array(
 	'tooltip-moodbar-what' => 'Learn more about this feature',
 	'moodbar-what-target' => 'http://www.mediawiki.org/wiki/MoodBar',
 	'moodbar-what-label' => 'What is this?',
-	'moodbar-what-collapsed' => '▶', // Ignore, do not translate. &#x25BC;
+	'moodbar-what-collapsed' => '▶', // Optional, only change e.g. for RTL languages. &#x25BC;
 	'moodbar-what-expanded' => '▼', // Ignore, do not translate. &#x25B6;
 	'moodbar-what-content' => 'This feature is designed to help the community understand the experience of people editing the site.
 For more information, please visit the $1.',

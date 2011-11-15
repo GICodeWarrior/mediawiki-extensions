@@ -15,5 +15,6 @@
 	/* @embed */
 	background: url(images/icon-speechbubble-blue.png);
 	background-repeat: no-repeat;
+	background-position: left;
 	padding-left: 18px;
 }
