@@ -39,7 +39,6 @@ class OnlineStatusBarHooks {
 	 */
 	public static function updateStatus() {
 		global $wgUser;
-		OnlineStatusBar_StatusCheck::deleteOld();
 		OnlineStatusBar::purge( $wgUser );
 		OnlineStatusBar_StatusCheck::updateStatus();
 		return true;

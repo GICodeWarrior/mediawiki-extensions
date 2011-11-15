@@ -116,6 +116,7 @@ class OnlineStatusBar_StatusCheck {
 				array( 'username' => $wgUser->getName() ),
 				__METHOD__
 			);
+			self::deleteOld();
 		}
 
 		return true;
