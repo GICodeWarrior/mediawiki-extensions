@@ -59,8 +59,12 @@ div#configtoggle a, div#configtoggle a:visited {
 	border: outset 1px #FFAAAA;
 }
 .fundraiserstats-bar-2010 {
-	background-color: #FF0000;
-	border: outset 1px #FF0000;
+	background-color: #a0e8ff;
+	border: outset 1px #a0e8ff;
+}
+.fundraiserstats-bar-2011 {
+	background-color: #ffd617;
+	border: outset 1px #ffd617;
 }
 .fundraiserstats-bar-space {
 	width: 3px;
