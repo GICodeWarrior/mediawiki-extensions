@@ -24,12 +24,18 @@ class OnlineStatusBar_StatusCheck {
 		global $wgOnlineStatusBarDefaultOffline, $wgOnlineStatusBarDefaultOnline;
 
 		// instead of delete every time just select the records which are not that old
-		$t_time = OnlineStatusBar::getTimeoutDate();
 		$dbr = wfGetDB( DB_SLAVE );
-		$w_time = OnlineStatusBar::getTimeoutDate( true );
-		$result = $dbr->selectField( 'online_status', 'timestamp', array( 'username' => $user->getName(),
-			"timestamp > " . $dbr->addQuotes( $dbr->timestamp( $t_time ) ) ),
-			__METHOD__, array( 'LIMIT 1', 'ORDER BY timestamp DESC' ) );
+		if ( !$delayed_check ) {
+			$t_time = OnlineStatusBar::getTimeoutDate();
+			$result = $dbr->selectField( 'online_status', 'timestamp', array( 'username' => $user->getName(),
+				"timestamp > " . $dbr->addQuotes( $dbr->timestamp( $t_time ) ) ),
+				__METHOD__, array( 'LIMIT 1', 'ORDER BY timestamp DESC' ) );
+		}
+		else {
+			$result = $dbr->selectField( 'online_status', 'timestamp', array( 'username' => $user->getName() ),
+				__METHOD__, array( 'LIMIT 1', 'ORDER BY timestamp DESC' ) );
+			$w_time = OnlineStatusBar::getTimeoutDate( true );
+		}
 
 		if ( $result === false ) {
 			$status = $wgOnlineStatusBarDefaultOffline;
@@ -70,7 +76,7 @@ class OnlineStatusBar_StatusCheck {
 			'username' => $wgUser->getName(),
 			'timestamp' => $dbw->timestamp(),
 		);
-		$dbw->insert( 'online_status', $row, __METHOD__, 'DELAYED' );
+		$dbw->insert( 'online_status', $row, __METHOD__ );
 		return false;
 	}
 
