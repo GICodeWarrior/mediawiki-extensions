@@ -1005,6 +1005,23 @@ $messages['lt'] = array(
 	'countedits-nocontribs' => 'Šioje wiki nebuvo naudotojų.',
 );
 
+/** Basa Banyumasan (Basa Banyumasan)
+ * @author StefanusRA
+ */
+$messages['map-bms'] = array(
+	'countedits' => 'Jumlah suntingan',
+	'countedits-desc' => '[[Special:CountEdits|Kaca astamiwa]] sing ngitung jumlah suntingan panganggo lan nampilna daftar sepuluh kontributor paling akeh',
+	'countedits-warning' => "'''Pènget:''' Aja mbiji sawijining buku sekang samaké.
+Aja mbiji para kontributor sekang akehe suntingané.",
+	'countedits-username' => 'Jeneng panganggo:',
+	'countedits-ok' => 'OK',
+	'countedits-nosuchuser' => 'Ora ana panganggo sing jenenge $1.',
+	'countedits-resultheader' => 'Hasil nggo $1',
+	'countedits-resulttext' => '$1 wis gawé $2 {{PLURAL:$2|suntingan|suntingan}}',
+	'countedits-mostactive' => 'Kontributor paling aktif',
+	'countedits-nocontribs' => 'Durung ana kontribusi kanggo wiki kiye.',
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */
@@ -1506,7 +1523,7 @@ $messages['sr-el'] = array(
  */
 $messages['stq'] = array(
 	'countedits' => 'Biedraachställer',
-	'countedits-warning' => 'Woarschauenge: Du beuurdeelst n Bouk nit bloot ätter sin Uumesleek, beuurdeel deeruum n Autor uk nit bloot ätter sin Biedraachtäller.',
+	'countedits-warning' => 'Woarskauenge: Du beuurdeelst n Bouk nit bloot ätter sin Uumesleek, beuurdeel deeruum n Autor uk nit bloot ätter sin Biedraachtäller.',
 	'countedits-username' => 'Benutsernoome:',
 	'countedits-ok' => 'OK',
 	'countedits-nosuchuser' => 'Dät rakt naan Benutser mäd dän Noome $1.',
