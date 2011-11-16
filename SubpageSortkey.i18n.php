@@ -38,6 +38,13 @@ $messages['gl'] = array(
 	'subpagesortkey-desc' => 'Cambia a clave de ordenación por defecto dunha páxina para basearse no nome da súa subpáxina no canto do seu nome completo',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'subpagesortkey-desc' => 'Zmóžnja standardny sortěrowanski kluč strony na zakładźe mjena jeje podstrony město jeje dospołneho mjena změnić',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
