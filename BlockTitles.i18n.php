@@ -776,7 +776,7 @@ $messages['sr-el'] = array(
 $messages['stq'] = array(
 	'block_title_error_page_title' => 'Speer Siedennoome',
 	'blocktitles-desc' => 'Rakt ne eenfache Muugelkhaid, dät Moakjen fon Sieden mäd bestimde Tittele tou ferhinnerjen.',
-	'block_title_error' => 'Äntscheeldigenge, man ne Siede mäd dissen Tittel duur nit spiekerd wäide.',
+	'block_title_error' => 'Äntskeeldigenge, man ne Siede mäd dissen Tittel duur nit spiekerd wäide.',
 );
 
 /** Sundanese (Basa Sunda)
