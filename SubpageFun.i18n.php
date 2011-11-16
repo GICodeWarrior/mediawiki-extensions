@@ -41,6 +41,13 @@ $messages['gl'] = array(
 	'subpagefun-desc' => 'Engade funcións analíticas que permiten obter información máis ampla acerca das [http://www.mediawiki.org/wiki/Help:Subpages subpáxinas]',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'subpagefun-desc' => 'Přidawa parserowe funkcije, kotrež dowoleja wobšěrne informacije wo [http://www.mediawiki.org/wiki/Help:Subpages podstronach] dóstać',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
