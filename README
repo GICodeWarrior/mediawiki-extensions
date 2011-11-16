@@ -3,8 +3,6 @@
 The ''HashTables'' extension Enhances the parser with hash table functions and a function
 to store all parameters given to a template.
 
-Notes on installing ''HashTables'' are found in the file 'INSTALL'.
-
 * Website: http://www.mediawiki.org/wiki/Extension:HashTables
 * Author:  Daniel Werner < danweetz@web.de >
 * License: ISC license

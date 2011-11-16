@@ -285,7 +285,7 @@ class ExtHashTables {
 	 */
 	function hashinclude( &$parser, $frame, $args) {	
 		// get hash table ID from first parameter:
-		$hashId = trim( $frame->expand($args[0] ) );
+		$hashId = trim( $frame->expand( $args[0] ) );
 		unset( $args[0] );
 		
 		if( !$this->hashExists($hashId) )
