@@ -488,7 +488,7 @@ $messages['sr-el'] = array(
  * @author Pyt
  */
 $messages['stq'] = array(
-	'skinperpage-desc' => 'Föiget dät <code>&lt;skin&gt;</code>-Tag bietou, uum pro Siede unnerscheedelke Skins tou nutsjen',
+	'skinperpage-desc' => 'Föiget dät <code>&lt;skin&gt;</code>-Tag bietou, uum pro Siede unnerskeedelke Skins tou nutsjen',
 );
 
 /** Sundanese (Basa Sunda)
