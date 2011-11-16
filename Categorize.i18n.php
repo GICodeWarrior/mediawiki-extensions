@@ -228,6 +228,16 @@ $messages['pt'] = array(
 	'categorize-advice' => 'Clique as categorias que pretende atribuir a esta página:',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Pedroca cerebral
+ */
+$messages['pt-br'] = array(
+	'categorize-desc' => 'Adiciona uma caixa de entrada para editar e fazer upload da página, permitindo que usuários atribuam categorias à página',
+	'categorize-title' => 'Qualificação de conhecimento',
+	'categorize-footer' => 'Se quiser adicionar uma categoria, contate um [[Special:ListUsers/sysop|administrador]].',
+	'categorize-advice' => 'Clique sobre as categorias que deseja atribuir a esta página:',
+);
+
 /** Swedish (Svenska)
  * @author Ainali
  * @author WikiPhoenix
