@@ -1865,7 +1865,7 @@ Preskočeno.',
 	'right-import_users' => 'Množično uvažanje uporabnikov',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
@@ -1873,7 +1873,7 @@ Preskočeno.',
 $messages['sr-ec'] = array(
 	'importusers' => 'Увези кориснике',
 	'importusers-uploadfile' => 'Пошаљи датотеку',
-	'importusers-form-caption' => 'Унеси CSV-фајл (UTF-8)',
+	'importusers-form-caption' => 'Унесите датотеку CSV (UTF-8):',
 	'importusers-form-file' => 'Кориснички формат фајла (CSV):',
 	'importusers-form-replace-present' => 'Пиши преко података постојећих корисника',
 	'importusers-form-button' => 'Увоз',
@@ -1883,9 +1883,9 @@ $messages['sr-ec'] = array(
 	'importusers-user-invalid-format' => 'Кориснички подаци у линији #$1 су неисправно форматирани или је линија празна. Прескочено.',
 	'importusers-log' => 'Историја увоза корисника',
 	'importusers-log-summary' => 'Сажетак',
-	'importusers-log-summary-all' => 'Све',
-	'importusers-log-summary-added' => 'Додато',
-	'importusers-log-summary-updated' => 'Ажурирано',
+	'importusers-log-summary-all' => 'Све: $1',
+	'importusers-log-summary-added' => 'Додато: $1',
+	'importusers-log-summary-updated' => 'Ажурирано: $1',
 	'importusers-login-name' => 'Корисничко име',
 	'importusers-password' => 'лозинка',
 	'importusers-email' => 'е-пошта',
