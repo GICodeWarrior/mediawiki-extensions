@@ -762,8 +762,8 @@ $messages['sr-el'] = array(
 $messages['stq'] = array(
 	'categorywatch-desc' => 'Ärwiedert ju Beooboachtengslieste, sodät me Waiwiesengen kricht, wan Sieden in beooboachtede Kategorien iendrain of deeruut wächhoald wäide.',
 	'categorywatch-emailsubject' => 'Beoarbaidenge beträffend beooboachtede Kategorie "$1"',
-	'categorywatch-catmovein' => '$1 in Kategorie $2 fon $3 ferschäuwen häd',
-	'categorywatch-catmoveout' => '$1 fon Kategorie $2 in $3 ferschäuwen häd',
+	'categorywatch-catmovein' => '$1 in Kategorie $2 fon $3 ferskäuwen häd',
+	'categorywatch-catmoveout' => '$1 fon Kategorie $2 in $3 ferskäuwen häd',
 	'categorywatch-catadd' => '$1 tou Kategorie $2 bietouföiged häd',
 	'categorywatch-catsub' => '$1 uut Kategorie $2 wächhoald häd',
 );
