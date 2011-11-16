@@ -32,6 +32,14 @@ $messages['qqq'] = array(
 The extension looks at Wikipedia articles and figures out which images are used there. These images are then pulled to the local wiki using MediaWikis native instant commons functionality. They are copied to the local server.',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'sii-desc' => "Amiesta una entrada d'imaxes que baxa imaxes de la Wikipedia a [https://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms]",
+	'sii-imageinput-loading' => 'Cargando la imaxe...',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -76,6 +84,7 @@ $messages['ia'] = array(
  */
 $messages['ksh'] = array(
 	'sii-desc' => 'Brängg en Müjjeleschkeit en et Wiki, öm Belder vun de Wikkipeedija udder MedijaWiki Commons en e [https://www.mediawiki.org/wiki/Extension:Semantic_Forms semantesch Fommulaa] ze holle un derbei op der eije ẞööver ze kopeere..',
+	'sii-imageinput-loading' => 'Ben e Beld aam Laade&nbsp;&hellip;',
 );
 
 /** Macedonian (Македонски)
@@ -84,6 +93,14 @@ $messages['ksh'] = array(
 $messages['mk'] = array(
 	'sii-desc' => 'Во [https://www.mediawiki.org/wiki/Extension:Semantic_Forms?uselang=mk Семантичките обрасци] додава можност за внесување на слики што се извлекуваат од Википедија',
 	'sii-imageinput-loading' => 'Ја вчитувам сликата...',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'sii-desc' => 'Menambahkan input imej yang menarik imej dari Wikipedia ke [https://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms]',
+	'sii-imageinput-loading' => 'Imej sedang dimuatkan...',
 );
 
 /** Dutch (Nederlands)
