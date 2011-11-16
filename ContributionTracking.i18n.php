@@ -260,8 +260,8 @@ $messages['de'] = array(
 	'contrib-tracking-error' => 'Fehler',
 	'contrib-tracking-error-text' => 'Ungültige Übertragung des Formulars',
 	'contrib-tracking-submitting' => 'Übertragung an den Zahlungsdienstleister …',
-	'contrib-tracking-continue' => 'Sofern du nicht automatisch weitergeleitet wirst, klicke bitte auf „{{int:contrib-tracking-button}}“, um deine Spende über PayPal abzuschließen.',
-	'contrib-tracking-redirect' => 'Du wirst automatisch zu PayPal weitergeleitet, um deine Spende abzuschließen zu können.',
+	'contrib-tracking-continue' => 'Sofern du nicht automatisch weitergeleitet wirst, klicke bitte auf „{{int:contrib-tracking-button}}“, um deine Spende abzuschließen.',
+	'contrib-tracking-redirect' => 'Du wirst automatisch weitergeleitet, um deine Spende abzuschließen zu können.',
 	'contrib-tracking-button' => 'Weiter',
 	'contrib-tracking-item-name-onetime' => 'Einmalige Spende',
 	'contrib-tracking-item-name-recurring' => 'Monatlich wiederholende Spende',
@@ -272,8 +272,8 @@ $messages['de'] = array(
  * @author Kghbln
  */
 $messages['de-formal'] = array(
-	'contrib-tracking-continue' => 'Sofern Sie nicht automatisch weitergeleitet werden, klicken Sie bitte auf „{{int:contrib-tracking-button}}“, um Ihre Spende über PayPal abzuschließen.',
-	'contrib-tracking-redirect' => 'Sie werden automatisch zu PayPal weitergeleitet, um Ihre Spende abzuschließen zu können.',
+	'contrib-tracking-continue' => 'Sofern Sie nicht automatisch weitergeleitet werden, klicken Sie bitte auf „{{int:contrib-tracking-button}}“, um Ihre Spende abzuschließen.',
+	'contrib-tracking-redirect' => 'Sie werden automatisch weitergeleitet, um Ihre Spende abzuschließen zu können.',
 );
 
 /** Zazaki (Zazaki)
@@ -472,8 +472,8 @@ $messages['gl'] = array(
 	'contrib-tracking-error' => 'Erro',
 	'contrib-tracking-error-text' => 'Envío do formulario inválido',
 	'contrib-tracking-submitting' => 'Enviando ao procesador de pagamentos...',
-	'contrib-tracking-continue' => 'Se non es redirixido automaticamente, fai clic no botón para completar a túa doazón por PayPal.',
-	'contrib-tracking-redirect' => 'Serás redirixido automaticamente ao PayPal para completar a túa doazón.',
+	'contrib-tracking-continue' => 'Se non es redirixido automaticamente, fai clic no botón para completar a túa doazón.',
+	'contrib-tracking-redirect' => 'Serás redirixido automaticamente para completar a túa doazón.',
 	'contrib-tracking-button' => 'Continuar',
 	'contrib-tracking-item-name-onetime' => 'Doazón única',
 	'contrib-tracking-item-name-recurring' => 'Doazón mensual recorrente',
@@ -555,8 +555,8 @@ $messages['hsb'] = array(
 	'contrib-tracking-error' => 'Zmylk',
 	'contrib-tracking-error-text' => 'Njepłaćiwe formularne přenjesenje',
 	'contrib-tracking-submitting' => 'Přenjesenje k płaćenskemu sposrědkowarjej',
-	'contrib-tracking-continue' => 'Jeli njeposrědkuješ so awtomatisce dale, klikń na tłóčatko, zo by swój dar přez PayPal přewjedł.',
-	'contrib-tracking-redirect' => 'Sposrědkuješ so awtomatisce dale do PayPal, zo by darjenje wotzamknył.',
+	'contrib-tracking-continue' => 'Jeli njeposrědkuješ so awtomatisce dale, klikń na tłóčatko, zo by swój dar přewjedł.',
+	'contrib-tracking-redirect' => 'Sposrědkuješ so awtomatisce dale, zo by swój dar wotzamknył.',
 	'contrib-tracking-button' => 'Dale',
 	'contrib-tracking-item-name-onetime' => 'Jónkrócny dar',
 	'contrib-tracking-item-name-recurring' => 'Wospjetowacy so měsačny dar',
@@ -644,15 +644,16 @@ $messages['it'] = array(
  * @author Fryed-peach
  * @author Mizusumashi
  * @author Ohgi
+ * @author Whym
  * @author 青子守歌
  */
 $messages['ja'] = array(
 	'contributiontracking-desc' => 'ウィキメディア資金調達者向け寄付追跡',
 	'contributiontracking' => '寄付追跡',
 	'contrib-tracking-error' => 'エラー',
-	'contrib-tracking-error-text' => '無効なフォームの提出',
-	'contrib-tracking-submitting' => '納付処理係に提出中...',
-	'contrib-tracking-continue' => '自動的に転送されない場合は、ボタンを押して PayPal での寄付を終えてください。',
+	'contrib-tracking-error-text' => 'フォーム送信が無効',
+	'contrib-tracking-submitting' => '決済処理者に提出中...',
+	'contrib-tracking-continue' => '自動的に転送されない場合、ボタンを押して PayPal での寄付を完了させてください。',
 	'contrib-tracking-redirect' => '寄付を完了するため、PayPalに自動的に転送されます。',
 	'contrib-tracking-button' => '続行',
 	'contrib-tracking-item-name-onetime' => '1回だけ寄付',
@@ -804,8 +805,8 @@ $messages['mk'] = array(
 	'contrib-tracking-error' => 'Грешка',
 	'contrib-tracking-error-text' => 'Неважечко поднесување на образецот',
 	'contrib-tracking-submitting' => 'Поднесувам на обработувачот на плаќања...',
-	'contrib-tracking-continue' => 'Ако се случи да не бидете пренасочени автоматски, кликнете на копчето за да ја довршите донацијата на PayPal.',
-	'contrib-tracking-redirect' => 'Системот автоматски ќе ве префрли на PayPal за да ја довршите донацијата.',
+	'contrib-tracking-continue' => 'Ако се случи да не бидете пренасочени автоматски, кликнете на копчето за да го довршите дарувањето.',
+	'contrib-tracking-redirect' => 'Системот автоматски ќе ве префрли за да го довршите дарувањето.',
 	'contrib-tracking-button' => 'Продолжи',
 	'contrib-tracking-item-name-onetime' => 'Еднократен прилог',
 	'contrib-tracking-item-name-recurring' => 'Месечен прилог',
@@ -837,8 +838,8 @@ $messages['ms'] = array(
 	'contrib-tracking-error' => 'Ralat',
 	'contrib-tracking-error-text' => 'Borang yang diserahkan tidak sah',
 	'contrib-tracking-submitting' => 'Borang sedang diserahkan kepada pemproses pembayaran...',
-	'contrib-tracking-continue' => 'Sekiranya anda tidak dialihkan secara automatik, klik di sini untuk menyempurnakan derma anda di PayPal.',
-	'contrib-tracking-redirect' => 'Anda akan dilencongkan ke PayPal secara automatik untuk melengkapkan dermaan anda.',
+	'contrib-tracking-continue' => 'Sekiranya anda tidak dilencongkan secara automatik, klik butang ini untuk melengkapkan dermaan anda.',
+	'contrib-tracking-redirect' => 'Anda akan dilencongkan secara automatik untuk melengkapkan dermaan anda.',
 	'contrib-tracking-button' => 'Teruskan',
 	'contrib-tracking-item-name-onetime' => 'Dermaan sekali',
 	'contrib-tracking-item-name-recurring' => 'Dermaan berulang bulanan',
@@ -1037,9 +1038,9 @@ $messages['ro'] = array(
 	'contrib-tracking-error' => 'Eroare',
 	'contrib-tracking-error-text' => 'Trimiterea formularului este invalidă',
 	'contrib-tracking-submitting' => 'Trimitere la procesorul de plată...',
-	'contrib-tracking-continue' => 'Dacă nu sunteți redirecționat automat, apăsați butonul pentru a finaliza donația pe PayPal.',
-	'contrib-tracking-redirect' => 'Veți fi redirecționat automat către PayPal pentru a finaliza donația.',
-	'contrib-tracking-button' => 'Continuați',
+	'contrib-tracking-continue' => 'Dacă nu sunteți redirecționat automat, apăsați butonul pentru a finaliza donația.',
+	'contrib-tracking-redirect' => 'Veți fi redirecționat automat pentru a finaliza donația.',
+	'contrib-tracking-button' => 'Continuă',
 	'contrib-tracking-item-name-onetime' => 'Donație unică',
 	'contrib-tracking-item-name-recurring' => 'Donație lunară recurentă',
 );
@@ -1137,8 +1138,8 @@ $messages['sl'] = array(
 	'contrib-tracking-error' => 'Napaka',
 	'contrib-tracking-error-text' => 'Neveljavni oddan obrazec',
 	'contrib-tracking-submitting' => 'Pošiljanje predelovalcu plačil ...',
-	'contrib-tracking-continue' => 'Če niste samodejno preusmerjeni, kliknite gumb, da dokončate svoj prispevek pri PayPal.',
-	'contrib-tracking-redirect' => 'Samodejno boste preusmerjeni na PayPal za dokončanje vašega prispevka.',
+	'contrib-tracking-continue' => 'Če niste samodejno preusmerjeni, kliknite gumb, da dokončate svoj prispevek.',
+	'contrib-tracking-redirect' => 'Samodejno boste preusmerjeni za dokončanje vašega prispevka.',
 	'contrib-tracking-button' => 'Nadaljuj',
 	'contrib-tracking-item-name-onetime' => 'Enkratni prispevek',
 	'contrib-tracking-item-name-recurring' => 'Ponavljajoči se mesečni prispevki',
@@ -1201,7 +1202,7 @@ $messages['ta'] = array(
  */
 $messages['te'] = array(
 	'contrib-tracking-error' => 'పొరపాటు',
-	'contrib-tracking-continue' => 'స్వయంచాలకంగా మిమ్మల్ని దారి మళ్ళించకపోతే, పేపాల్ లో మీ విరాళాన్ని పూర్తిచెయ్యడానికి మీరే బొత్తాన్ని నొక్కండి.',
+	'contrib-tracking-continue' => 'స్వయంచాలకంగా మిమ్మల్ని దారి మళ్ళించకపోతే, మీ విరాళాన్ని పూర్తిచెయ్యడానికి మీరే బొత్తాన్ని నొక్కండి.',
 	'contrib-tracking-button' => 'కొనసాగించు',
 );
 
@@ -1328,8 +1329,8 @@ $messages['vi'] = array(
 	'contrib-tracking-error' => 'Lỗi',
 	'contrib-tracking-error-text' => 'Đăng mẫu sau quy cách',
 	'contrib-tracking-submitting' => 'Đang đăng bộ xử lý tính tiền...',
-	'contrib-tracking-continue' => 'Nếu không được tự động đổi hướng, nhấn vào nút để hoàn thành quyên góp của bạn tại PayPal.',
-	'contrib-tracking-redirect' => 'Bạn sẽ được tự động chuyển hướng đến PayPal để hoàn thành đóng góp của bạn.',
+	'contrib-tracking-continue' => 'Nếu không được tự động đổi hướng, nhấn vào nút để hoàn thành quyên góp của bạn.',
+	'contrib-tracking-redirect' => 'Bạn sẽ được tự động chuyển hướng để hoàn thành đóng góp của bạn.',
 	'contrib-tracking-button' => 'Tiếp tục',
 	'contrib-tracking-item-name-onetime' => 'Quyên góp một lần',
 	'contrib-tracking-item-name-recurring' => 'Quyên góp định kỳ hàng tháng',
