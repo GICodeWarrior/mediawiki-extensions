@@ -1613,7 +1613,7 @@ Trenutni limit je $3.',
 $messages['stq'] = array(
 	'duplicator' => 'Ne Siede duplizierje',
 	'duplicator-toolbox' => 'Duplizierje disse Siede',
-	'duplicator-header' => 'Mäd disse Spezialsiede konnen Sieden komplett duplizierd wäide. Deerbie wäd ju ganse Versionsgeschichte uurnuumen. Dit kon biespilswiese nutselk weese, uum ne Siede in Unnersieden aptoudeelen.',
+	'duplicator-header' => 'Mäd disse Spezialsiede konnen Sieden komplett duplizierd wäide. Deerbie wäd ju ganse Versionsgeskichte uurnuumen. Dit kon biespilswiese nutselk weese, uum ne Siede in Unnersieden aptoudeelen.',
 	'duplicator-options' => 'Optione',
 	'duplicator-source' => 'Wälle:',
 	'duplicator-dest' => 'Siel:',
