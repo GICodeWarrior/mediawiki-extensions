@@ -768,9 +768,9 @@ $messages['sr-el'] = array(
  * @author Pyt
  */
 $messages['stq'] = array(
-	'simpleantispam' => 'Dien Beoarbaidenge häd dän Spamschuts uutlöösd.',
-	'simpleantispam-label' => "Spamschuts-Wröige. Hier '''niks''' iendreege!",
-	'simpleantispam-desc' => 'Föiget do Formulare n eenfachen Bot-Spamschuts bietou',
+	'simpleantispam' => 'Dien Beoarbaidenge häd dän Spamskuts uutlöösd.',
+	'simpleantispam-label' => "Spamskuts-Wröige. Hier '''niks''' iendreege!",
+	'simpleantispam-desc' => 'Föiget do Formulare n eenfachen Bot-Spamskuts bietou',
 );
 
 /** Swedish (Svenska)
