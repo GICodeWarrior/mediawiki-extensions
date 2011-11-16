@@ -559,7 +559,7 @@ $messages['sr-el'] = array(
  * @author Pyt
  */
 $messages['stq'] = array(
-	'mwsearch-desc' => 'Bäätergruundprozess foar ju Lucene-Säikmaschine',
+	'mwsearch-desc' => 'Bäätergruundprozess foar ju Lucene-Säikmaskine',
 );
 
 /** Sundanese (Basa Sunda)
