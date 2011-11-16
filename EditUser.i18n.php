@@ -1300,7 +1300,7 @@ $messages['sq'] = array(
 	'right-edituser-exempt' => 'Të tjerët nuk mund të ndryshojnë parapëlqimet e këtij përdoruesi',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Sasa Stefanovic
  * @author Обрадовић Горан
@@ -1311,7 +1311,7 @@ $messages['sr-ec'] = array(
 	'edituser-username' => 'Корисничко име:',
 	'edituser-dosearch' => 'Претрага',
 	'edituser-nouser' => 'Корисник „$1“ не постоји.',
-	'edituser-exempt' => 'Жељени корисник не може да буде измењен',
+	'edituser-exempt' => 'Не могу да уредим корисника „$1“.',
 	'right-edituser' => 'Измени подешавања других корисника',
 	'right-edituser-exempt' => 'Други не могу да мењају подешавања овог корисника',
 );
