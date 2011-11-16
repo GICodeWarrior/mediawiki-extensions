@@ -680,7 +680,7 @@ Novi korisnički nalog, $2, je napravljen na $3 u $4.',
  * @author Pyt
  */
 $messages['stq'] = array(
-	'newusernotifsubj' => 'Bescheedtällen foar $1 uur ju Iengjuchtenge fon n näi Benutserkonto',
+	'newusernotifsubj' => 'Beskeedtällen foar $1 uur ju Iengjuchtenge fon n näi Benutserkonto',
 	'newusernotifbody' => 'Hallo $1,
 
 N näi Benutserkonto, $2, wuude ap n $4 ap $3 anlaid.',
