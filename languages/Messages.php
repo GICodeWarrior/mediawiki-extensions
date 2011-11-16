@@ -115,6 +115,15 @@ $messages['pt'] = array(
 	'wom-desc' => 'Modelo de Objectos "Easy Page" para os utilizadores da wiki',
 );
 
+/** Swedish (Svenska)
+ * @author Warrakkk
+ */
+$messages['sv'] = array(
+	'objecteditor' => 'Objektredigerare',
+	'wom_editor' => 'Objektmodell',
+	'wom-desc' => 'Enkel sidoobjektmodell för wikianvändare',
+);
+
 /** Turkish (Türkçe)
  * @author Emperyan
  */
