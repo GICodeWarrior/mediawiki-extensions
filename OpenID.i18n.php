@@ -5591,7 +5591,7 @@ $messages['stq'] = array(
 	'openiderrortext' => 'Aan Failer is unner ju Wröige fon ju OpenID-URL aptreeden.',
 	'openidconfigerror' => 'OpenID-Konfigurationsfailer',
 	'openidconfigerrortext' => 'Ju OpenID-Spiekerkonfiguration foar dit Wiki ist failerhaft.
-Täl n [[Special:ListUsers/sysop|Administrator]] Bescheed.',
+Täl n [[Special:ListUsers/sysop|Administrator]] Beskeed.',
 	'openidpermission' => 'OpenID-Begjuchtigengsfailer',
 	'openidpermissiontext' => 'Ju anroate OpenID begjuchtiget nit tou Anmäldenge an dissen Server.',
 	'openidcancel' => 'Wröige oubreeken',
@@ -5604,7 +5604,7 @@ Täl n [[Special:ListUsers/sysop|Administrator]] Bescheed.',
 	'openidserverlogininstructions' => 'Reek dien Paaswoud unner ien, uum die as Benutser $2 an $3 antoumäldjen (Benutsersiede $1).',
 	'openidtrustinstructions' => 'Wröich, of du Doaten mäd $1 deele moatest.',
 	'openidallowtrust' => 'Ferlööwje $1, dissen Benutserkonto tou tjouen.',
-	'openidnopolicy' => 'Ju Siede häd neen Doatenschuts-Gjuchtlienje anroat.',
+	'openidnopolicy' => 'Ju Siede häd neen Doatenskuts-Gjuchtlienje anroat.',
 	'openidpolicy' => 'Wröich ju <a target="_new" href="$1">Doatenschuts-Gjuchtlienje</a> foar moor Informatione.',
 	'openidoptional' => 'Optionoal',
 	'openidrequired' => 'Plicht',
@@ -5637,7 +5637,7 @@ Fals nit, klik ap „Continue“ (Fääre).',
 	'openidclientonlytext' => 'Du koast neen Benutserkonten uut dissen Wiki as OpenID foar uur Sieden ferweende.',
 	'openidloginlabel' => 'OpenID-URL',
 	'openidlogininstructions' => '{{SITENAME}} unnerstutset dän [http://openid.net/ OpenID]-Standoard foar ne eenhaidelke Anmäldenge foar moorere Websites.
-OpenID mäldet die bie fuul unnerscheedelke Websieden an, sunner dät du foar älke Siede n uur Paaswoud ferweende moast.
+OpenID mäldet die bie fuul unnerskeedelke Websieden an, sunner dät du foar älke Siede n uur Paaswoud ferweende moast.
 (Moor Informatione bjut die [http://de.wikipedia.org/wiki/OpenID Wikipedia-Artikkel tou OpenID].)
 
 Fals du al n Benutserkonto bie {{SITENAME}} hääst, koast du die gans normoal mäd Benutsernoome un Paaswoud [[Special:UserLogin|anmäldje]].
