@@ -400,6 +400,13 @@ $messages['pt'] = array(
 	'webfonts-disable-preference' => 'Desactivar a incorporação de tipos (TiposDeLetraIncorporados)',
 );
 
+/** Romanian (Română)
+ * @author Minisarm
+ */
+$messages['ro'] = array(
+	'webfonts-enable-preference' => 'Activează încorporarea fonturilor (WebFonts)',
+);
+
 /** Russian (Русский)
  * @author Lockal
  * @author Александр Сигачёв
