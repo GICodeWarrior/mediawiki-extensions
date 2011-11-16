@@ -723,12 +723,13 @@ $messages['pt'] = array(
  * @author Eduardo.mps
  * @author Helder.wiki
  * @author Heldergeovane
+ * @author Pedroca cerebral
  */
 $messages['pt-br'] = array(
 	'whatismyip' => 'Qual é o meu IP',
-	'whatismyip-desc' => 'Mostra o [[Special:WhatIsMyIP|endereço de IP]] do usuário atual',
-	'whatismyip-out' => 'O seu endereço de IP:',
-	'right-whatismyip' => 'Visualizar o [[Special:WhatIsMyIP|meu endereço de IP]]',
+	'whatismyip-desc' => 'Mostra o [[Special:WhatIsMyIP|endereço IP]] do usuário atual',
+	'whatismyip-out' => 'O seu endereço IP:',
+	'right-whatismyip' => 'Visualizar o [[Special:WhatIsMyIP|meu endereço IP]]',
 );
 
 /** Romanian (Română)
