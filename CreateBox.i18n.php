@@ -558,6 +558,19 @@ $messages['lb'] = array(
 Dir kënnt dës Säit net uleeën, awer Dir kënnt [{{fullurl:{{FULLPAGENAME}}|action=edit}} s'änneren], [{{fullurl:{{FULLPAGENAME}}}} liest] oder wielt fir eng aner Säit unzeleeë mat Hëllef vun der Këscht ënnendrënner.",
 );
 
+/** Basa Banyumasan (Basa Banyumasan)
+ * @author StefanusRA
+ */
+$messages['map-bms'] = array(
+	'createbox-desc' => '"Inputbox" khusus kanggo nggawe kaca',
+	'createbox-create' => 'Gawe',
+	'createbox-exists' => "Pangapura, \"'''{{FULLPAGENAME}}'''\" uwis ana.
+
+Rika ora teyeng gawe kaca kiye, ningen Rika teyeng [{{fullurl:{{FULLPAGENAME}}|action=edit}} nyunting], [{{fullurl:{{FULLPAGENAME}}}} maca], utawa nggawe kaca sejene nganggo kotak nang ngisor kiye.
+
+<createbox>break=no</createbox>",
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */
