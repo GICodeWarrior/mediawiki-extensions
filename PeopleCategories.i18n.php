@@ -28,6 +28,13 @@ $messages['aln'] = array(
 	'peoplecategories-desc' => 'Ndryshimet shfaqet emrat faqe nga "Emri Lastname" për "Lastname, Emri" në faqet e specifikuara kategori',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'peoplecategories-desc' => 'Camuda\'l mou d\'amosar los nomes de les páxines de "Nome Apellíu" a "Apellíu, Nome" nes páxines de categoría conseñaes',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
