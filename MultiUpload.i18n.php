@@ -1611,15 +1611,15 @@ $messages['sr-el'] = array(
 $messages['stq'] = array(
 	'multipleupload' => 'Moorere Doatäie hoochleede',
 	'multiupload-desc' => 'Ferlööwet dät [[Special:MultipleUpload|Hoochleeden fon moorere Doatäie]] in een Aktion',
-	'multipleupload-ignoreallwarnings' => "Ignorier '''aal Woarschauengen''' un spiekerje do Doatäie",
+	'multipleupload-ignoreallwarnings' => "Ignorier '''aal Woarskauengen''' un spiekerje do Doatäie",
 	'multipleupload-saveallfiles' => 'Aal Doatäie spiekerje',
-	'multipleupload-addresswarnings' => 'Älke Woarschauenge anwiese foar dät fonnäien Hoochleeden fon Doatäie.',
+	'multipleupload-addresswarnings' => 'Älke Woarskauenge anwiese foar dät fonnäien Hoochleeden fon Doatäie.',
 	'multipleupload-page' => '{{ns:project}}:Läskgjuchtlienjen',
 	'multipleupload-text' => "Tou glieke Tied Hoochleeden fon moorere Doatäie.
 
 Wääl 'Browse' un wääl älke Doatäi uut, ju du hoochleede moatest. Du koast tou glieke Tied twiske 1 un $1 Doatäie hoochleede.
 
-Du koast woalwiese uk n '''Siel-Doatäinoome''' foarreeke un ne '''Beschrieuwenge''' foar dien Doatäie.
+Du koast woalwiese uk n '''Siel-Doatäinoome''' foarreeke un ne '''Beskrieuwenge''' foar dien Doatäie.
 
 Uunoainde Doatäie wäide fluks läsked, sjuch do [[{{MediaWiki:Multipleupload-page}}|Läskgjuchtlienjen]].",
 	'multiupload-fileuploaded' => 'Doatäi hoochleeden.',
