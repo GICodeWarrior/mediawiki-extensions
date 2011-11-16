@@ -32,6 +32,15 @@ $messages['aln'] = array(
 	'ukgeocoding_couldNotGeocode' => 'Një ose më shumë postalcodes nuk mund të geocoded dhe janë lënë jashtë nga harta.',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'ukgeocoding_name' => 'Xeocodificación del Reinu Xuníu pa los mapes',
+	'ukgeocoding_desc' => "Espande Mapes con una función d'analís display_uk_point cola cadarma de Google Maps",
+	'ukgeocoding_couldNotGeocode' => 'Un o más códigos postales nun se pudieron xeocodificar y saltáronse nel mapa.',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
