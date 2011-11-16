@@ -756,7 +756,7 @@ Et mout: $1.',
 	'securepasswords-uppercase' => 'ap minste ne Grootbouksteeuwe änthoolde',
 	'securepasswords-digit' => 'ap minste een Ziffer änthoolde',
 	'securepasswords-special' => 'ap minste een Sunnerteeken änthoolde (Sunnerteekene sunt: $1)',
-	'securepasswords-username' => 'sik fon din Benutsernoome unnerscheede',
+	'securepasswords-username' => 'sik fon din Benutsernoome unnerskeede',
 	'securepasswords-word' => 'wät uurs weese as n Woud',
 );
 
