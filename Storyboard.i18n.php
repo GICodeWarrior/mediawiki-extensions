@@ -250,6 +250,7 @@ $messages['ar'] = array(
  */
 $messages['arc'] = array(
 	'storyboard-hide' => 'ܛܫܝ',
+	'storyboard-language' => 'ܠܫܢܐ',
 	'storyboard-hideimage' => 'ܛܫܝ ܨܘܪܬܐ',
 );
 
