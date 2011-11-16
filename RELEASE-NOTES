@@ -1,5 +1,9 @@
  Changelog:
  ==========
+ * (trunk) version 1.3.4
+    - arrayprint will handle <includeonly>/<noinclude> correct in case its used in a template.
+	- moved into mediawiki.org SVN
+ 
  * January 24, 2011 version 1.3.2
     - New public class methods for creating and removing arrays. Good for use by other extensions.
     - VERSION constant added to ArrayExtension class 

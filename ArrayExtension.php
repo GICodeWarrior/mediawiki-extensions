@@ -3,9 +3,9 @@
 /**
  * Initialization file for the ArrayExtension extension.
  *
- * Documentation:	 		http://www.mediawiki.org/wiki/Extension:ArrayExtension
- * Support					http://www.mediawiki.org/wiki/Extension_talk:ArrayExtension
- * Source code:             http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/ArrayExtension
+ * Documentation: http://www.mediawiki.org/wiki/Extension:ArrayExtension
+ * Support:       http://www.mediawiki.org/wiki/Extension_talk:ArrayExtension
+ * Source code:   http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/ArrayExtension
  *
  * @file ArrayExtension.php
  * @ingroup ArrayExtension
@@ -42,44 +42,58 @@ if ( ! defined( 'MEDIAWIKI' ) ) {
     die( 'This file is a MediaWiki extension, it is not a valid entry point' );
 }
 
-$wgHooks['ParserFirstCallInit'][] = 'efArrayExtensionParserFirstCallInit';
-
 $wgExtensionCredits['parserhook'][] = array(
-	'path' => __FILE__,
-	'name' => 'ArrayExtension',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:ArrayExtension',
-	'author' => array ( 'Li Ding', 'Jie Bao', 'Daniel Werner' ),
+	'path'           => __FILE__,
+	'name'           => 'ArrayExtension',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:ArrayExtension',
+	'author'         => array ( 'Li Ding', 'Jie Bao', 'Daniel Werner' ),
 	'descriptionmsg' => 'arrayext-desc',
-	'version' => ArrayExtension::VERSION
+	'version'        => ArrayExtension::VERSION
 );
+
+$wgHooks['ParserFirstCallInit'][] = 'efArrayExtensionParserFirstCallInit';
 
 $dir = dirname( __FILE__ );
 
-$wgExtensionMessagesFiles['ArrayExtension'] = $dir . '/ArrayExtension.i18n.php';
+$wgExtensionMessagesFiles['ArrayExtension'     ] = $dir . '/ArrayExtension.i18n.php';
 $wgExtensionMessagesFiles['ArrayExtensionMagic'] = $dir . '/ArrayExtension.i18n.magic.php';
+
+unset( $dir );
 
 /**
  *  named arrays - an array has a list of values, and could be set to a SET
  */
 class ArrayExtension {
 
+	/**
+	 * Version of the ArrayExtension extension.
+	 * 
+	 * @since 1.3.2
+	 */
 	const VERSION = '1.3.4 alpha';
 
+	/**
+	 * Store for arrays.
+	 * 
+	 * @var array
+	 * @private
+	 */
     var $mArrayExtension = array();
 
-	function ArrayExtension() {
+	function __construct() {
 		global $wgHooks;
 		$wgHooks['ParserClearState'][] = &$this;
 	}
 
 	function onParserClearState( &$parser ) {
-		$this->mArrayExtension = array();	// remove all arrays to avoid conflicts with job queue or Special:Import or SMW semantic updates
+		// remove all arrays to avoid conflicts with job queue or Special:Import or SMW semantic updates
+		$this->mArrayExtension = array();
 		return true;
 	}
 
-	////////////////////////////////////////////////////////// /
+	///////////////////////////////////////////////////////////
 	// PART 1. constructor
-	////////////////////////////////////////////////////////// /
+	///////////////////////////////////////////////////////////
 
 	/**
 	* Define an array by a list of 'values' deliminated by 'delimiter',
@@ -90,7 +104,17 @@ class ArrayExtension {
 	* http://us2.php.net/manual/en/book.pcre.php
 	* see also: http://us2.php.net/manual/en/function.preg-split.php
 	*/
-    function arraydefine( &$parser, $arrayid, $value = '', $delimiter = '/\s*,\s*/', $options = '', $delimiter2 = ', ', $search = '@@@@', $subject = '@@@@', $frame = null ) {
+    function arraydefine(
+			&$parser,
+			$arrayid,
+			$value = '',
+			$delimiter = '/\s*,\s*/',
+			$options = '',
+			$delimiter2 = ', ',
+			$search = '@@@@',
+			$subject = '@@@@',
+			$frame = null
+	) {
         if ( !isset( $arrayid ) ) {
         	return '';
         }
@@ -148,9 +172,9 @@ class ArrayExtension {
     }
 
 
-	////////////////////////////////////////////////////////// /
+	///////////////////////////////////////////////////////////
 	// PART 2. print
-	////////////////////////////////////////////////////////// /
+	///////////////////////////////////////////////////////////
 
 
 	/**
@@ -169,29 +193,59 @@ class ArrayExtension {
 	*    {{#arrayprint:b|<br/>|@@@|[[name::@@@]]}}   -- make SMW links
 	*/
     function arrayprint( &$parser, $arrayid , $delimiter = ', ', $search = '@@@@', $subject = '@@@@', $frame = null ) {
-        $ret = $this->validate_array_by_arrayid( $arrayid );
-        if ( $ret !== true ) {
-           return $ret;
-        }
+		$ret = $this->validate_array_by_arrayid( $arrayid );
+		if ( $ret !== true ) {
+			return $ret;
+		}
 
-        $values = $this->mArrayExtension[$arrayid];
-        $rendered_values = array();
-        foreach ( $values as $v ) {
-                $temp_result_value  = str_replace( $search, $v, $subject );
-                if ( isset( $frame ) ) {
-                        $temp_result_value = $parser->preprocessToDom( $temp_result_value, $frame->isTemplate() ? Parser::PTD_FOR_INCLUSION : 0 );
-                        $temp_result_value = trim( $frame->expand( $temp_result_value ) );
-                }
-                $rendered_values[] = $temp_result_value ;
-        }
-        return array( implode( $delimiter, $rendered_values ) , 'noparse' => false, 'isHTML' => false );
-    }
+		$values = $this->mArrayExtension[$arrayid];
+		$rendered_values = array();
+		foreach ( $values as $v ) {
+			$temp_result_value  = str_replace( $search, $v, $subject );
+			// frame is only available in newer MW versions
+			if ( isset( $frame ) ) {
+				/*
+				 * in case frame is given (new MW versions) the $subjectd still is un-expanded (this allows to use
+				 * some parser functions like {{FULLPAGENAME:@@@@}} directly without getting parsed before @@@@ is replaced.
+				 * Expand it so we replace templates like {{!}} which we need for the final parse.
+				 */
+				$temp_result_value = $parser->preprocessToDom( $temp_result_value, $frame->isTemplate() ? Parser::PTD_FOR_INCLUSION : 0 );
+				$temp_result_value = trim( $frame->expand( $temp_result_value ) );
+			}
+			$rendered_values[] = $temp_result_value ;
+		}
+		
+		$output = implode( $delimiter, $rendered_values );		
+		$noparse = false;
+		
+		if ( isset( $frame ) ) {
+			/*
+			 * don't leave the final parse to Parser::braceSubstitution() since there are some special cases where it
+			 * would produce unexpected output (it uses a new child frame and ignores whether the frame is a template!)
+			 */
+			$noparse = true;			
 
-    function arrayprintObj(  &$parser, $frame, $args ) {
+			$output = $parser->preprocessToDom( $output, $frame->isTemplate() ? Parser::PTD_FOR_INCLUSION : 0 );
+			$output = trim( $frame->expand( $output ) );
+		}
+		
+		return array(
+			$output,
+			'noparse' => $noparse,
+			'isHTML' => false
+		);
+	}
+	
+    function arrayprintObj( &$parser, $frame, $args ) {
         // Set variables
-        $arrayid = isset( $args[0] ) ? trim( $frame->expand( $args[0] ) ) : '';
+        $arrayid   = isset( $args[0] ) ? trim( $frame->expand( $args[0] ) ) : '';
         $delimiter = isset( $args[1] ) ? trim( $frame->expand( $args[1] ) ) : ', ';
-        $search = isset( $args[2] ) ? trim( $frame->expand( $args[2], PPFrame::NO_ARGS | PPFrame::NO_TEMPLATES ) ) : '@@@@';
+		/*
+		 * PPFrame::NO_ARGS and PPFrame::NO_TEMPLATES for expansion make a lot of sense here since the patterns getting replaced
+		 * in $subject before $subject is being parsed. So any template or argument influence in the patterns wouldn't make any
+		 * sense in any sane scenario.
+		 */
+        $search  = isset( $args[2] ) ? trim( $frame->expand( $args[2], PPFrame::NO_ARGS | PPFrame::NO_TEMPLATES ) ) : '@@@@';
         $subject = isset( $args[3] ) ? trim( $frame->expand( $args[3], PPFrame::NO_ARGS | PPFrame::NO_TEMPLATES ) ) : '@@@@';
 
         return $this->arrayprint( $parser, $arrayid, $delimiter, $search, $subject, $frame );
@@ -261,7 +315,7 @@ class ArrayExtension {
         if ( !$ret )
             return $no;
 
-        if ( !$this->isValidRegEx( $needle ) )
+        if ( ! $this->isValidRegEx( $needle ) )
 			$needle = '/^\s*' . preg_quote( $needle, '/' ) . '\s*$/';
 
 		// search for a match inside the array:
@@ -337,9 +391,9 @@ class ArrayExtension {
 
 
 
-	////////////////////////////////////////////////////////// /
+	///////////////////////////////////////////////////////////
 	// PART 3. alter an array
-	////////////////////////////////////////////////////////// /
+	///////////////////////////////////////////////////////////
 
 	/**
 	* reset some or all defined arrayes
@@ -425,9 +479,9 @@ class ArrayExtension {
     }
 
 
-	////////////////////////////////////////////////////////// /
+	///////////////////////////////////////////////////////////
 	// PART 4. create an array
-	////////////////////////////////////////////////////////// /
+	///////////////////////////////////////////////////////////
 
 	/**
 	* merge two arrays, keep duplicated values
@@ -702,39 +756,51 @@ class ArrayExtension {
 		else
 			return null;
     }
-
+	
+	/**
+	 * Returns whether a certain array is defined within the page scope.
+	 * 
+	 * @param string $arrayId
+	 * @return boolean
+	 */
 	function arrayExists( $arrayId = '' ) {
-		if ( array_key_exists( trim( $arrayId ), $this->mArrayExtension ) )
-
-
-
-			return true;
-		else
-			return false;
+		return array_key_exists( trim( $arrayId ), $this->mArrayExtension );
 	}
 
-	// add a new array or overwrite existing one. Values delivered as real array.
-	function createArray( $arrayId = '', $arr = array() ) {
+	/**
+	 * Adds a new array or overwrites an existing one.
+	 * 
+	 * @param string $arrayId
+	 * @param array $arr the new array, should contain string values.
+	 */
+	public function createArray( $arrayId = '', $arr = array() ) {
 		$arr = $this->reorganizeArrayKeys( $arr );
 		$this->mArrayExtension[ trim( $arrayId ) ] = $arr;
 	}
 
 
-	// remove an existing array. If array doesn't exist this will return false, otherwise true.
-	function removeArray( $arrayId = '' ) {
+	/**
+	 * Removes an existing array. If array doesn't exist this will return false, otherwise true.
+	 * 
+	 * @param string $arrayId
+	 * @return boolean whether the array existed and has been removed
+	 */
+	public function removeArray( $arrayId = '' ) {
 		$arrayId = trim( $arrayId );
 		if ( $this->arrayExists( $arrayId ) ) {
 			unset( $this->mArrayExtension[ $arrayId ] );
 			return true;
-		} else {
-			return false;
 		}
-
-
+		return false;
 	}
 
-	// Rebuild the array and reorganize all keys. This means all gaps between array items will be closed.
-	function reorganizeArrayKeys( $arr = array() ) {
+	/**
+	 * Rebuild the array and reorganize all keys. This means all gaps between array items will be closed.
+	 * 
+	 * @param array $arr array to be reorganized
+	 * @return array
+	 */
+	public function reorganizeArrayKeys( $arr = array() ) {
 		$newArray = array();
 		foreach ( $arr as $val ) {
 			$newArray[] = trim( $val );
@@ -742,16 +808,22 @@ class ArrayExtension {
 		return $newArray;
 	}
 
-	// Decide for the given $pattern if its a valid regular expression or not
-	function isValidRegEx( $pattern ) {
-		return preg_match( '/^([\\/\\|%]).*\\1[imsSuUx]*$/', $pattern );
+	/**
+	 * Decides for the given $pattern whether its a valid regular expression acceptable for
+	 * ArrayExtension parser functions or not.
+	 * 
+	 * @param string $pattern regular expression including delimiters and optional flags
+	 * @return boolean
+	 */
+	function isValidRegEx( $pattern ) {		
+		return (bool)preg_match( '/^([\\/\\|%]).*\\1[imsSuUx]*$/', $pattern );
 	}
 }
 
-function efArrayExtensionParserFirstCallInit( $parser ) {
+function efArrayExtensionParserFirstCallInit( &$parser ) {
     global $wgArrayExtension;
 
-    $wgArrayExtension = new ArrayExtension;
+    $wgArrayExtension = new ArrayExtension();
     $parser->setFunctionHook( 'arraydefine', array( &$wgArrayExtension, 'arraydefine' ) );
 
     if ( defined( get_class( $parser ) . '::SFH_OBJECT_ARGS' ) ) {

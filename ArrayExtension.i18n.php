@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Internationalization file for the ArrayExtension extension.
+ * Internationalization file for the 'ArrayExtension' extension.
  *
  * @since 1.3.4
  *
@@ -81,7 +81,7 @@ $messages['cy'] = array(
  * @author Kghbln
  */
 $messages['de'] = array(
-	'arrayext-desc' => 'Ermöglicht das Speichern und Nutzen definierter Datenreihen',
+	'arrayext-desc' => 'Ermöglicht das Speichern und Nutzen definierter Datenreihen (Arrays)',
 );
 
 /** French (Français)

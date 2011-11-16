@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Internationalization file for magic words in the ArrayExtension extension.
+ * Internationalization file for magic words in the 'ArrayExtension' extension.
  *
  * @file ArrayExtension.i18n.magic.php
  * @ingroup ArrayExtension
