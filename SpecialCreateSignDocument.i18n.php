@@ -1867,12 +1867,12 @@ $messages['sr-ec'] = array(
 	'createsigndoc-minage' => 'Најмања старост:',
 	'createsigndoc-introtext' => 'Увод:',
 	'createsigndoc-hidden' => 'Сакривено',
-	'createsigndoc-optional' => 'Опционо',
+	'createsigndoc-optional' => 'Необавезно',
 	'createsigndoc-create' => 'Направи',
 	'createsigndoc-error-generic' => 'Грешка: $1',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  * @author Rancher
  */
@@ -1887,7 +1887,7 @@ $messages['sr-el'] = array(
 	'createsigndoc-minage' => 'Najmanja starost:',
 	'createsigndoc-introtext' => 'Uvod:',
 	'createsigndoc-hidden' => 'Sakriveno',
-	'createsigndoc-optional' => 'Opciono',
+	'createsigndoc-optional' => 'Neobavezno',
 	'createsigndoc-create' => 'Napravi',
 	'createsigndoc-error-generic' => 'Greška: $1',
 );

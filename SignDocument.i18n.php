@@ -600,9 +600,9 @@ $messages['sr-el'] = array(
  * @author Pyt
  */
 $messages['stq'] = array(
-	'signaturelogpage' => 'Unnerschrifts-Logbouk',
-	'signaturelogpagetext' => 'Dit is dät [[Special:SignDocument|Unnerschrifts-Logbouk foar Dokumente]].',
-	'signaturelogentry' => 'häd dät Dokument $1 unnerschrieuwen',
+	'signaturelogpage' => 'Unnerskrifts-Logbouk',
+	'signaturelogpagetext' => 'Dit is dät [[Special:SignDocument|Unnerskrifts-Logbouk foar Dokumente]].',
+	'signaturelogentry' => 'häd dät Dokument $1 unnerskrieuwen',
 );
 
 /** Swedish (Svenska)
