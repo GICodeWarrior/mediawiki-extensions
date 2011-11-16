@@ -115,6 +115,14 @@ $messages['nl'] = array(
 	'sdt-duration' => 'Duur',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Event
+ */
+$messages['no'] = array(
+	'sdt-desc' => 'Tilleggsdatatyper for Semantic MediaWiki med utvidelser',
+	'sdt-duration' => 'Varighet',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
