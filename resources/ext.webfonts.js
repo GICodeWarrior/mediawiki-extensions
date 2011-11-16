@@ -246,10 +246,10 @@
 		},
 		
 		/**
-		 * Prepare the menu for the webfonts.
+		 * Prepare the div containing menu items.
 		 * @param config The webfont configuration.
 		 */
-		buildMenu: function(config) {
+		buildMenuItems: function ( config ){
 			var haveSchemes = false;
 			// Build font dropdown
 			var $fontsMenu = $( '<ul>' ).attr( 'id', 'webfonts-fontsmenu' );
@@ -280,7 +280,7 @@
 			if ( !haveSchemes &&  !$( '.webfonts-lang-attr' ).length ) {
 				// No schemes available, and no tags with lang attr
 				// with fonts loaded. Don't show the menu.
-				return;
+				return null;
 			}
 
 			var $resetLink = $( '<input type="radio" />' )
@@ -307,12 +307,22 @@
 				.addClass( 'menu' )
 				.append( $fontsMenu )
 				.append();
-
+			return $menuDiv;
+		},
+		/**
+		 * Prepare the menu for the webfonts.
+		 * @param config The webfont configuration.
+		 */
+		buildMenu: function(config) {
+			var $menuItemsDiv = mw.webfonts.buildMenuItems( config );
+			if( $menuItemsDiv == null ) {
+				return;
+			}
 			var $div = $( '<div>' )
 				.attr( 'id', 'webfonts-menu' )
 				.addClass( 'webfontMenu' )
 				.append( $( '<a>' ).prop( 'href', '#' ).text( mw.message( 'webfonts-load' ).escaped() ) )
-				.append( $menuDiv );
+				.append( $menuItemsDiv );
 
 			// This is the fonts link
 			var $li = $( '<li>' )
