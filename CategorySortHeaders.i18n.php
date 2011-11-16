@@ -63,6 +63,13 @@ $messages['he'] = array(
 	'categorysortheaders-desc' => 'אפשרות להגדיר מיון מותאם אישית בקטגוריות לפי first-character, באמצעות התחביר <nowiki>[[קטגוריה:פלונית|^כותרת^החלק הבלתי־נראה של מפתח המיון]]</nowiki>',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'categorysortheaders-desc' => 'Dowola swójske sortěrowanske hłowy z wjacorymi znamješkami podać, zo bychu so strony z pomocu syntaksy <nowiki>[[category:Foo|^Header^Invisible part of sortkey]]</nowiki> do kategorijow sortěrowali',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
