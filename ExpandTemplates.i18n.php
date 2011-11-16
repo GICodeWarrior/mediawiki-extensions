@@ -1419,7 +1419,11 @@ $messages['ms'] = array(
  * @author Giangian15
  */
 $messages['mt'] = array(
+	'expandtemplates' => 'Espandi l-mudelli',
+	'expand_templates_output' => 'Riżultat',
 	'expand_templates_ok' => 'OK',
+	'expand_templates_remove_comments' => 'Neħħi l-kummenti',
+	'expand_templates_generate_xml' => 'Uri siġra sintattika XML',
 );
 
 /** Erzya (Эрзянь)
@@ -1963,7 +1967,7 @@ Do ovoga dolazi tako što se zove odgovarajuće stanje parsera iz samog MedijaVi
  */
 $messages['stq'] = array(
 	'expandtemplates' => 'Foarloagen expandierje',
-	'expandtemplates-desc' => '[[Special:ExpandTemplates|Expandiert Foarloagen, Parser-Funktione un Variablen]] toun fulboodigen Wikitext un wiest ju renderde Foarschau',
+	'expandtemplates-desc' => '[[Special:ExpandTemplates|Expandiert Foarloagen, Parser-Funktione un Variablen]] toun fulboodigen Wikitext un wiest ju renderde Foarbekiek',
 	'expand_templates_intro' => "In disse Spezialsiede kon Text ienroat wäide un aal Foarloagen in hier wäide rekursiv expandierd. Uk Parserfunktione as <nowiki>{{</nowiki>#if:...}} un Variabelen as <nowiki>{{</nowiki>CURRENTDAY}} wäide benutsed - faktisk alles wät twiske dubbelde swoangene Klammere '''{{}}''' stoant. Dit geböärt truch dän Aproup fon apstuunse Parser-Phasen in MediaWiki.",
 	'expand_templates_title' => 'Kontexttittel, foar {{FULLPAGENAME}} etc.:',
 	'expand_templates_input' => 'Iengoawefäild:',
@@ -1972,7 +1976,7 @@ $messages['stq'] = array(
 	'expand_templates_ok' => 'Uutfiere',
 	'expand_templates_remove_comments' => 'Kommentoare wächhoalje',
 	'expand_templates_generate_xml' => 'Wies XML Parser-Boom',
-	'expand_templates_preview' => 'Foarschau',
+	'expand_templates_preview' => 'Foarskau',
 );
 
 /** Sundanese (Basa Sunda)
