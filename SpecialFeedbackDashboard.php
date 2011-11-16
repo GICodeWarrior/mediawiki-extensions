@@ -264,11 +264,12 @@ HTML;
 			$feedback_hidden_detail = self::getFeedbackHiddenDetail($id);
 			$timestamp = wfTimestamp( TS_DB, $feedback_hidden_detail->log_timestamp );
 
-			$footer = wfMessage('moodbar-hidden-footer')->rawParams( array( htmlspecialchars( $feedback_hidden_detail->log_user_text ), 
-				                                                 $wgLang->userDate($timestamp, $wgUser), 
-				                                                 $wgLang->userTime($timestamp, $wgUser),  
-				                                                 htmlspecialchars( $feedback_hidden_detail->log_comment ), 
-				                                                 $link ) )->escaped();
+			$footer = wfMessage('moodbar-hidden-footer')->
+			                   rawParams( htmlspecialchars( $feedback_hidden_detail->log_user_text ), 
+				                      $wgLang->userDate($timestamp, $wgUser), 
+				                      $wgLang->userTime($timestamp, $wgUser),  
+				                      htmlspecialchars( $feedback_hidden_detail->log_comment ), 
+				                      $link )->escaped();
 			return Xml::tags( 'div', array( 'class' => 'error' ), $footer );
 		} elseif ( $mode === 'hidden' ) {
 			$linkText = wfMessage('moodbar-feedback-show')->escaped();
@@ -507,11 +508,14 @@ HTML;
 	protected static function getFeedbackHiddenDetail( $mbf_id ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		
-		$res = $dbr->select( array( 'logging' ), array(
-				'log_user_text', 'log_timestamp', 'log_comment' ),
-			array( "log_namespace = " . NS_SPECIAL . " AND log_title = 'FeedbackDashboard/" . intval( $mbf_id ) . "' AND log_action = 'hide' AND log_type = 'moodbar'" ),
-			__METHOD__,
-			array( 'LIMIT' => 1, 'ORDER BY' => "log_timestamp DESC" )
+		$res = $dbr->select( array( 'logging' ), 
+			             array( 'log_user_text', 'log_timestamp', 'log_comment' ),
+			             array( 'log_namespace' => NS_SPECIAL,  
+			             	    'log_title' => 'FeedbackDashboard/' . intval( $mbf_id ),  
+			             	    'log_action' => 'hide', 
+			             	    'log_type' => 'moodbar' ),
+			             __METHOD__,
+			             array( 'LIMIT' => 1, 'ORDER BY' => "log_timestamp DESC" )
 		);
 		
 		$rows = iterator_to_array( $res, /*$use_keys=*/false );	
