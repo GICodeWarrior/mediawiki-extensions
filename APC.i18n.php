@@ -6700,7 +6700,7 @@ APC wäd schienboar nit uutfierd.',
 	'viewapc-info-runtime' => 'Looptiedinformatione',
 	'viewapc-info-memory' => 'Diagramme tou dän Stoatus fon dän Host-Reekener',
 	'viewapc-memory-usage-detailed' => 'Spiekernutsenge<br />
-(unnerscheedelke Faawen stounde foar Fragmente)',
+(unnerskeedelke Faawen stounde foar Fragmente)',
 	'viewapc-memory-usage' => 'Spiekerferbruuk',
 	'viewapc-cache-efficiency' => 'Träffere un Ferfaild',
 	'viewapc-memory-free' => 'Fräi: $1 ($2)',
