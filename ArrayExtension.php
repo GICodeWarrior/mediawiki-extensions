@@ -70,7 +70,7 @@ class ArrayExtension {
 	 * 
 	 * @since 1.3.2
 	 */
-	const VERSION = '1.3.4 alpha';
+	const VERSION = '1.4 alpha';
 
 	/**
 	 * Store for arrays.
