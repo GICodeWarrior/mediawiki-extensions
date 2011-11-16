@@ -1019,7 +1019,7 @@ Wächhoald: $6\\
 Mäd früntelke Gröitnis,
 
 $2',
-	'userrightsnotif-desc' => 'Soant E-Mail-Bescheed uur Gjuchte-Annerengen an dän Benutser',
+	'userrightsnotif-desc' => 'Soant E-Mail-Beskeed uur Gjuchte-Annerengen an dän Benutser',
 );
 
 /** Sundanese (Basa Sunda)
