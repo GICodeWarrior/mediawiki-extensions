@@ -142,6 +142,13 @@ $messages['hi'] = array(
 	'customusersignup-desc' => 'खाता निर्माण प्रक्रिया के दौरान अनुकूलन संदेश के लिए अनुमति देता है',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'customusersignup-desc' => 'Zmóžnja přiměrjomne zdźělenki při załoženju wužiwarskeho konta',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
