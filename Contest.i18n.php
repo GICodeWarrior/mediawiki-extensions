@@ -492,6 +492,13 @@ $messages['be-tarask'] = array(
 	'contest-special-delete-failed' => 'Немагчыма выдаліць гэты конкурс.',
 	'editcontest-text' => 'Вы рэдагуеце конкурс.',
 	'editcontest-legend' => 'Конкурс',
+	'contest-edit-name' => 'Назва конкурсу',
+	'contest-edit-status' => 'Статус конкурсу',
+	'contest-edit-intro' => 'Уводная старонка',
+	'contest-edit-opportunities' => 'Старонка магчымасьцяў',
+	'contest-edit-rulespage' => 'Старонка правілаў',
+	'contest-edit-help' => 'Старонка дапамогі',
+	'contest-edit-end' => 'Сканчэньне конкурсу',
 );
 
 /** Breton (Brezhoneg)
