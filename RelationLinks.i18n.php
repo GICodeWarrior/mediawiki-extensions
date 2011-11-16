@@ -22,6 +22,13 @@ $messages['qqq'] = array(
 	'relationlinks-desc' => 'Description for Special:Version',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'relationlinks-desc' => 'Amiesta enllaces de rellación a la testera, que se pue usar pa la navegación y pa les referencies',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -41,6 +48,13 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'relationlinks-desc' => 'Engade unha ligazón ligada á cabeceira que se pode empregar para a navegación e para as referencias',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'relationlinks-desc' => 'Přidawa wotkazy z pomocu "link ref" do hłowy dokumenta, kotrež hodźa so za nawigaciju a optimowanje pytawow wužiwać',
 );
 
 /** Interlingua (Interlingua)
