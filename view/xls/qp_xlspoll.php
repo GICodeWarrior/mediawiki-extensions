@@ -145,7 +145,7 @@ class qp_XlsPoll extends qp_XlsWriter {
 						if ( isset( $line['keys'] ) ) {
 							# current node is associative array
 							$this->writeRowLn( 0, $line['keys'], 'odd' );
-							$ws->writeRowLn( 0, $line['vals'] );
+							$this->writeRowLn( 0, $line['vals'] );
 						} else {
 							$this->writeLn( 0, $line['vals'] );
 						}

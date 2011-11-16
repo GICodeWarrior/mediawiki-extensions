@@ -4,9 +4,10 @@ class qp_XlsTextQuestion extends qp_XlsTabularQuestion {
 
 	function __construct( $xls_fname = null ) {
 		parent::__construct( $xls_fname );
+		# answered categories will be displayed with already added format 'answer'
 		$this->addFormats( array(
-			'cat_part' => array( 'fgcolor' => 36, 'border' => 1 ),
-			'prop_part' => array( 'fgcolor' => 34, 'border' => 1 ),
+			'cat_noanswer' => array( 'fgcolor' => 21, 'border' => 1 ),
+			'prop_part' => array( 'fgcolor' => 27, 'border' => 1 ),
 		) );
 	}
 
@@ -46,7 +47,7 @@ class qp_XlsTextQuestion extends qp_XlsTabularQuestion {
 									if ( !array_key_exists( $rowNum, $voicesTable ) ) {
 										$voicesTable[$rowNum] = array();
 									}
-									$voicesTable[$rowNum++][$rowCol] = array( $option, 'format' => 'cat_part' );
+									$voicesTable[$rowNum++][$rowCol] = array( $option, 'format' => 'answer' );
 								}
 								$rowCol++;
 								if ( ( $rowNum - $saveRowNum ) > $rowHeight ) {
@@ -54,15 +55,15 @@ class qp_XlsTextQuestion extends qp_XlsTabularQuestion {
 								}
 								$rowNum = $saveRowNum;
 							} else {
-								$voicesTable[$rowNum][$rowCol++] = array( array_pop( $selected_options ), 'format' => 'cat_part' );
+								$voicesTable[$rowNum][$rowCol++] = array( array_pop( $selected_options ), 'format' => 'answer' );
 							}
 						} else {
 							# checkbox or radiobutton
-							$voicesTable[$rowNum][$rowCol++] = array( qp_Setup::RESULTS_CHECK_SIGN, 'format' => 'cat_part' );
+							$voicesTable[$rowNum][$rowCol++] = array( qp_Setup::RESULTS_CHECK_SIGN, 'format' => 'answer' );
 						}
 					} else {
 						# non-selected category (it has no selected option)
-						$voicesTable[$rowNum][$rowCol++] = array( '', 'format' => 'cat_part' );
+						$voicesTable[$rowNum][$rowCol++] = array( '', 'format' => 'cat_noanswer' );
 					}
 					$catId++;
 				} else {

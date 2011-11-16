@@ -109,8 +109,10 @@ class qp_Interpret {
 		if ( !is_array( $result ) ) {
 			return $interpResult->setError( wfMsg( 'qp_error_interpretation_no_return' ) );
 		}
-		if ( isset( $result['options'] ) && $result['options'] === 'noerrorstorage' ) {
-			$interpResult->storeErroneous = false;
+		if ( isset( $result['options'] ) &&
+				is_array( $result['options'] ) &&
+				array_key_exists( 'store_erroneous', $result['options'] ) ) {
+			$interpResult->storeErroneous = (boolean) $result['options']['store_erroneous'];
 		}
 		if ( isset( $result['error'] ) && is_array( $result['error'] ) ) {
 			# initialize $interpResult->qpcErrors[] member array

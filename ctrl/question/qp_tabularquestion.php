@@ -282,7 +282,10 @@ class qp_TabularQuestion extends qp_StubQuestion {
 			$proposalId++;
 			$pview->text = array_pop( $matches );
 			# set proposal name (if any)
-			if ( ( $prop_name = qp_QuestionData::splitRawProposal( $pview->text ) ) !== '' ) {
+			$prop_name = qp_QuestionData::splitRawProposal( $pview->text );
+			if ( $prop_name === false ) {
+				$pview->prependErrorMessage( wfMsg( 'qp_error_too_long_proposal_name' ), 'error' );
+			} elseif ( $prop_name !== '' ) {
 				$this->mProposalNames[$proposalId] = $prop_name;
 			}
 			$this->mProposalText[$proposalId] = trim( $pview->text );
@@ -305,7 +308,7 @@ class qp_TabularQuestion extends qp_StubQuestion {
 					break;
 				}
 				# Determine if the input had to be checked.
-				if ( $this->poll->mBeingCorrected && $this->mRequest->getVal( $name ) == $value ) {
+				if ( $this->poll->mBeingCorrected && qp_Setup::$request->getVal( $name ) == $value ) {
 					$inp[ 'checked' ] = 'checked';
 				}
 				if ( $this->answerExists( $inputType, $proposalId, $catId ) !== false ) {

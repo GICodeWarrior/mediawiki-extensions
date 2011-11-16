@@ -45,8 +45,6 @@ abstract class qp_AbstractQuestion {
 	 * @param  $questionId      the identifier of the question used to generate input names
 	 */
 	function __construct( qp_AbstractPoll $poll, qp_AbstractView $view, $questionId ) {
-		global $wgRequest;
-		$this->mRequest = &$wgRequest;
 		# the question collection is not sparce by default
 		$this->mQuestionId = $this->usedId = $questionId;
 		$view->setController( $this );

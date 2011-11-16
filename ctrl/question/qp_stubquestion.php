@@ -85,25 +85,6 @@ class qp_StubQuestion extends qp_AbstractQuestion {
 		return false;
 	}
 
-	# store the proper (checked) Question
-	# creates new qp_QuestionData in the given poll store
-	# and places it into the poll store Questions[] collection
-	# @param   the object of type qp_PollStore
-	function store( qp_PollStore &$pollStore ) {
-		if ( $pollStore->pid !== null ) {
-			$pollStore->Questions[ $this->mQuestionId ] = qp_PollStore::newQuestionData( array(
-				'from' => 'postdata',
-				'type' => $this->mType,
-				'common_question' => $this->mCommonQuestion,
-				'categories' => $this->mCategories,
-				'category_spans' => $this->mCategorySpans,
-				'proposal_text' => $this->mProposalText,
-				'proposal_names' => $this->mProposalNames,
-				'proposal_category_id' => $this->mProposalCategoryId,
-				'proposal_category_text' => $this->mProposalCategoryText ) );
-		}
-	}
-
 	function isUniqueProposalCategoryId( $proposalId, $catId ) {
 		foreach ( $this->mProposalCategoryId as $proposalCategoryId ) {
 			if ( in_array( $catId, $proposalCategoryId ) ) {

@@ -5,68 +5,95 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 /**
- * Poll's single question data object RAM storage
+ * Poll's single question data object RAM storage.
+ * Also, converts question properties from / to "packed" DB state.
+ * Currently, category spans and proposal names are packed, not having
+ * their own separate DB fields.
  * ( instances usually have short name qdata )
  *
  * *** Please do not instantiate directly. ***
- * *** use qp_PollStore::newQuestionData() instead ***
+ * *** use qp_QuestionData::factory() instead ***
  *
  */
 class qp_QuestionData {
 
-	# associated view instance (singleton)
+	## associated view instance (singleton)
 	static protected $view;
 
-	// DB index (with current scheme is non-unique)
+	## DB index (with current scheme is non-unique)
 	var $question_id = null;
-	// common properties
+	## common properties
 	var $type;
 	var $CommonQuestion;
 	var $Categories;
 	var $CategorySpans;
 	var $ProposalText;
+	# since v0.8.0a, proposals may be addressed by their names
+	# in the interpretation scripts
 	var $ProposalNames = array();
 	var $ProposalCategoryId;
 	var $ProposalCategoryText;
 	var $alreadyVoted = false; // whether the selected user already voted this question ?
-	// statistics storage
+	## statistics storage
+	# 3d array with number of choices for each [proposal][category]
 	var $Votes = null;
+	# 3d array with floating point percent values for each [proposal][category],
+	# calculated from $this->Votes
 	var $Percents = null;
 
 	/**
 	 * Constructor
-	 * @param $argv  associative array, where value of key 'from' defines creation method:
-	 *               'postdata' creates qdata from question instance parsed in tag hook handler;
-	 *               'qid' creates new empty instance to be filled with data loaded from DB;
-	 *               another entries of $argv define property names and their values
+	 * @param $argv  mixed
+	 *   array  creates new empty instance to be filled with data loaded from DB at later stage;
+	 *     keys of $argv define question data property names;
+	 *   qp_StubQuestion  creates qdata from question instance already parsed in tag hook handler;
 	 */
 	function __construct( $argv ) {
 		self::$view = new stdClass;
-		if ( array_key_exists( 'from', $argv ) ) {
-			switch ( $argv[ 'from' ] ) {
-				case 'postdata' :
-						$this->type = $argv[ 'type' ];
-						$this->CommonQuestion = $argv[ 'common_question' ];
-						$this->Categories = $argv[ 'categories' ];
-						$this->CategorySpans = $argv[ 'category_spans' ];
-						$this->ProposalText = $argv[ 'proposal_text' ];
-						$this->ProposalNames = $argv[ 'proposal_names' ];
-						$this->ProposalCategoryId = $argv[ 'proposal_category_id' ];
-						$this->ProposalCategoryText = $argv[ 'proposal_category_text' ];
-					return;
-				case 'qid' :
-						$this->question_id = $argv[ 'qid' ];
-						$this->type = $argv[ 'type' ];
-						$this->CommonQuestion = $argv[ 'common_question' ];
-						$this->Categories = array();
-						$this->CategorySpans = array();
-						$this->ProposalText = array();
-						$this->ProposalCategoryId = array();
-						$this->ProposalCategoryText = array();
-					return;
-			}
+		if ( is_array( $argv ) ) {
+			# create the very new question data
+			$this->question_id = $argv['qid'];
+			$this->type = $argv['type'];
+			$this->CommonQuestion = $argv['common_question'];
+			$this->Categories = array();
+			$this->CategorySpans = array();
+			$this->ProposalText = array();
+			$this->ProposalNames = array();
+			$this->ProposalCategoryId = array();
+			$this->ProposalCategoryText = array();
+			return;
+		} elseif ( $argv instanceof qp_StubQuestion ) {
+			# create question data from the already existing question
+			$this->question_id = $argv->mQuestionId;
+			$this->type = $argv->mType;
+			$this->CommonQuestion = $argv->mCommonQuestion;
+			$this->Categories = $argv->mCategories;
+			$this->CategorySpans = $argv->mCategorySpans;
+			$this->ProposalText = $argv->mProposalText;
+			$this->ProposalNames = $argv->mProposalNames;
+			$this->setQuestionAnswer( $argv );
+			return;
 		}
-		throw new MWException( "Parameter \$argv['from'] is missing or has unsupported value in " . __METHOD__ );
+		throw new MWException( "argv is neither an array nor instance of qp_QuestionData in " . __METHOD__ );
+	}
+
+	/**
+	 * qp_*QuestionData instantiator (factory).
+	 * Please use it instead of qp_*QuestionData constructors when
+	 * creating qdata instances.
+	 */
+	static function factory( $argv ) {
+		$type = is_array( $argv ) ? $argv['type'] : $argv->mType;
+		switch ( $type ) {
+		case 'textQuestion' :
+			return new qp_TextQuestionData( $argv );
+		case 'singleChoice' :
+		case 'multipleChoice' :
+		case 'mixedChoice' :
+			return new qp_QuestionData( $argv );
+		default :
+			throw new MWException( 'Unknown type of question ' . qp_Setup::specialchars( $type ) . ' in ' . __METHOD__ );
+		}
 	}
 
 	/**
@@ -79,6 +106,28 @@ class qp_QuestionData {
 			self::$view->setController( $this );
 		}
 		return self::$view;
+	}
+
+	/**
+	 * Check whether the previousely stored poll header is
+	 * compatible with the one defined on the page.
+	 *
+	 * Used to reject previous vote in case the header is incompatble.
+	 */
+	function isCompatible( &$question ) {
+		if ( $question->mType != $this->type ) {
+			return false;
+		}
+		if ( count( $question->mCategorySpans ) != count( $this->CategorySpans ) ) {
+			return false;
+		}
+		foreach ( $question->mCategorySpans as $spanidx => &$span ) {
+			if ( !isset( $this->CategorySpans[$spanidx] ) ||
+					$span['count'] != $this->CategorySpans[$spanidx]['count'] ) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	/**
@@ -124,34 +173,15 @@ class qp_QuestionData {
 	}
 
 	/**
-	 * Check whether the previousely stored poll header is
-	 * compatible with the one defined on the page.
-	 *
-	 * Used to reject previous vote in case the header is incompatble.
-	 */
-	function isCompatible( &$question ) {
-		if ( $question->mType != $this->type ) {
-			return false;
-		}
-		if ( count( $question->mCategorySpans ) != count( $this->CategorySpans ) ) {
-			return false;
-		}
-		foreach ( $question->mCategorySpans as $spanidx => &$span ) {
-			if ( !isset( $this->CategorySpans[$spanidx] ) ||
-					$span['count'] != $this->CategorySpans[$spanidx]['count'] ) {
-				return false;
-			}
-		}
-		return true;
-	}
-
-	/**
 	 * Split raw proposal text from source page text or from DB
 	 * into name part / text part
 	 *
 	 * @param  $proposal_text  string  raw proposal text
 	 * @modifies $proposal_text  string proposal text to display
-	 * @return  string  proposal name or '' when there is no name
+	 * @return  mixed
+	 *   string  proposal name 
+	 *   string  '' when there is no name
+	 *   boolean false, when the name is too long thus cannot be stored in DB
 	 */
 	static function splitRawProposal( &$proposal_text ) {
 		$matches = array();
@@ -159,13 +189,16 @@ class qp_QuestionData {
 		preg_match( '`^:\|(.+?)\|\s*(.+?)$`u', $proposal_text, $matches );
 		if ( count( $matches ) > 2 ) {
 			if ( ( $prop_name = trim( $matches[1] ) ) !== '' ) {
+				if ( strlen( $prop_name ) >= qp_Setup::$field_max_len['proposal_text'] ) {
+					return false;
+				}
 				# proposal name must be non-empty
 				$proposal_text = trim( $matches[2] );
 			}
 		}
 		return $prop_name;
 	}
-	
+
 	/**
 	 * Return proposal name prefix to be stored in DB (if any)
 	 */
@@ -173,12 +206,82 @@ class qp_QuestionData {
 		return ( $name !== '' ) ? ":|{$name}|" : '';
 	}
 
+	public function setQuestionAnswer( qp_StubQuestion $question ) {
+		$this->ProposalCategoryId = $question->mProposalCategoryId;
+		$this->ProposalCategoryText = $question->mProposalCategoryText;
+	}
+
+	/**
+	 * Set count of votes (user choices) for the selected proposal / category
+	 * @param  $propkey  integer  proposal id
+	 * @param  $catkey  integer  category id
+	 */
+	function setVote( $propkey, $catkey, $count ) {
+		if ( !is_array( $this->Votes ) ) {
+			$this->Votes = array();
+		}
+		if ( !array_key_exists( $propkey, $this->Votes ) ) {
+			$this->Votes[ $propkey ] = array_fill( 0, count( $this->Categories ), 0 );
+		}
+		$this->Votes[ $propkey ][ $catkey ] = $count;
+	}
+
+	/**
+	 * Calculates Percents[] properties for specified question from
+	 * it's Votes[] properties.
+	 * @param  $store
+	 *   instance of qp_PollStore associated with $this qdata
+	 */
+	function calculateQuestionStatistics( qp_PollStore $store ) {
+		if ( !isset( $this->Votes ) ) {
+			return;
+		}
+		# $this has votes
+		$this->restoreSpans();
+		$spansUsed = count( $this->CategorySpans ) > 0 ;
+		foreach ( $this->ProposalText as $propkey => $proposal_text ) {
+			if ( isset( $this->Votes[ $propkey ] ) ) {
+				$votes_row = &$this->Votes[ $propkey ];
+				if ( $this->type == "singleChoice" ) {
+					if ( $spansUsed ) {
+						$row_totals = array_fill( 0, count( $this->CategorySpans ), 0 );
+					} else {
+						$votes_total = 0;
+					}
+					foreach ( $this->Categories as $catkey => $cat ) {
+						if ( isset( $votes_row[ $catkey ] ) ) {
+							if ( $spansUsed ) {
+								$row_totals[ intval( $cat[ "spanId" ] ) ] += $votes_row[ $catkey ];
+							} else {
+								$votes_total += $votes_row[ $catkey ];
+							}
+						}
+					}
+				} else {
+					$votes_total = $store->totalUsersAnsweredQuestion( $this );
+				}
+				foreach ( $this->Categories as $catkey => $cat ) {
+					$num_of_votes = '';
+					if ( isset( $votes_row[ $catkey ] ) ) {
+						$num_of_votes = $votes_row[ $catkey ];
+						if ( $spansUsed ) {
+							if ( isset( $this->Categories[ $catkey ][ "spanId" ] ) ) {
+								$votes_total = $row_totals[ intval( $this->Categories[ $catkey ][ "spanId" ] ) ];
+							}
+						}
+					}
+					$this->Percents[ $propkey ][ $catkey ] = ( $votes_total > 0 ) ? (float) $num_of_votes / (float) $votes_total : 0.0;
+				}
+			}
+		}
+	}
+
 } /* end of qp_QuestionData class */
 
 /**
  *
  * *** Please do not instantiate directly. ***
- * *** use qp_PollStore::newQuestionData() instead ***
+ * *** use qp_QuestionData::factory() instead ***
  *
  */
 class qp_TextQuestionData extends qp_QuestionData {

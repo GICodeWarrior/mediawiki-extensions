@@ -128,7 +128,7 @@ function qp_getStructuredInterpretation( $poll_address ) {
 	}
 	$username = qp_Setup::getCurrUserName();
 	$pollStore->loadQuestions();
-	$pollStore->setLastUser( $username, false );
+	$pollStore->setLastUser( $username );
 	if ( $pollStore->interpResult->structured === '' ) {
 		return null;
 	}
@@ -141,10 +141,11 @@ function qp_getStructuredInterpretation( $poll_address ) {
  */
 class qp_Setup {
 
+	# internal unique error codes
 	const ERROR_MISSED_TITLE = 1;
 	const ERROR_INVALID_ADDRESS = 2;
 
-	# unicode character used to display selected checkboxes and radiobuttons in
+	# unicode entity used to display selected checkboxes and radiobuttons in
 	# result views at Special:Pollresults page
 	const RESULTS_CHECK_SIGN = '&#9734;';
 
@@ -168,9 +169,13 @@ class qp_Setup {
 	static $ExtDir; // filesys path with windows path fix
 	static $ScriptPath; // apache virtual path
 	static $messagesLoaded = false; // check whether the extension's localized messages are loaded
-	static $article; // Article instance we got from hook parameter
-	static $title; // Title instance we got from hook parameter
-	static $user; // User instance we got from hook parameter
+
+	# current context
+	static $output; // OutputPage instance recieved from hook
+	static $article; // Article instance recieved from hook
+	static $title; // Title instance recieved from hook
+	static $user; // User instance recieved from hook
+	static $request; // WebRequest instance recieved from hook
 
 	/**
 	 * The map of question 'type' attribute value to the question's ctrl / view / subtype.
@@ -274,12 +279,21 @@ class qp_Setup {
 	);
 	/* end of default configuration settings */
 
+	# unicode character used to display selected checkboxes and radiobuttons in
+	# result views at Special:Pollresults page
+	static $resultsCheckCode = '+';
+
+	
 	static function entities( $s ) {
 		return htmlentities( $s, ENT_QUOTES, 'UTF-8' );
 	}
 
 	static function specialchars( $s ) {
 		return htmlentities( $s, ENT_QUOTES, 'UTF-8' );
+	}
+
+	static function entity_decode( $s ) {
+		return html_entity_decode( $s, ENT_QUOTES, 'UTF-8' );
 	}
 
 	/**
@@ -316,6 +330,8 @@ class qp_Setup {
 		$top_dir = array_pop( $dirs );
 		self::$ScriptPath = $wgScriptPath . '/extensions' . ( ( $top_dir == 'extensions' ) ? '' : '/' . $top_dir );
 
+		self::$resultsCheckCode = self::entity_decode( self::RESULTS_CHECK_SIGN );
+
 		# language files
 		# extension messages
 		$wgExtensionMessagesFiles['QPoll'] = self::$ExtDir . '/i18n/qp.i18n.php';
@@ -326,7 +342,7 @@ class qp_Setup {
 
 		# extension setup, hooks handling and content transformation
 		self::autoLoad( array(
-			'qp_user.php' => 'qp_Setup',
+			'qp_user.php' => __CLASS__,
 			'includes/qp_functionshook.php' => 'qp_FunctionsHook',
 			'includes/qp_renderer.php' => 'qp_Renderer',
 			'includes/qp_xlswriter.php' => 'qp_XlsWriter',
@@ -381,6 +397,12 @@ class qp_Setup {
 			## models/storage
 			# poll
 			'model/qp_pollstore.php' => 'qp_PollStore',
+			## memory cache / database storage for poll / question / category / proposal
+			## descriptions
+			'model/cache/qp_pollcache.php' => 'qp_PollCache',
+			'model/cache/qp_questioncache.php' => 'qp_QuestionCache',
+			'model/cache/qp_categorycache.php' => 'qp_CategoryCache',
+			'model/cache/qp_proposalcache.php' => 'qp_ProposalCache',
 			# question storage; qp_TextQuestionData is very small, thus kept in the same file;
 			'model/qp_questiondata.php' => array( 'qp_QuestionData', 'qp_TextQuestionData' ),
 			# collection of the questions
@@ -553,6 +575,7 @@ class qp_Setup {
 		global $qp_enable_showresults; // deprecated since v0.6.5
 		global $qp_AnonForwardedFor; // deprecated since v0.6.5
 		global $wgUser;
+		self::$output = $output;
 		self::$article = $article;
 		self::$title = $title;
 		# in MW v1.15 / v1.16 user object was stub;
@@ -566,6 +589,7 @@ class qp_Setup {
 			$user = $wgUser;
 		}
 		self::$user = $user;
+		self::$request = $request;
 		if ( isset( $qp_AnonForwardedFor ) ) {
 			self::$anon_forwarded_for = $qp_AnonForwardedFor;
 		}
@@ -619,8 +643,8 @@ class qp_Setup {
 		}
 		global $wgQPollFunctionsHook;
 		# setup tag hook
-		$parser->setHook( self::$pollTag, array( 'qp_Setup', 'showPoll' ) );
-		$parser->setHook( self::$interpTag, array( 'qp_Setup', 'showScript' ) );
+		$parser->setHook( self::$pollTag, array( __CLASS__, 'showPoll' ) );
+		$parser->setHook( self::$interpTag, array( __CLASS__, 'showScript' ) );
 		$wgQPollFunctionsHook = new qp_FunctionsHook();
 		# setup function hook
 		$parser->setFunctionHook( 'qpuserchoice', array( &$wgQPollFunctionsHook, 'qpuserchoice' ), SFH_OBJECT_ARGS );

@@ -91,7 +91,7 @@ class qp_FunctionsHook {
 		if ( preg_match( qp_Setup::PREG_POSITIVE_INT4_MATCH, $this->question_id ) ) {
 			$this->question_id = intval( $this->question_id );
 			$this->pollStore->loadQuestions();
-			$this->pollStore->setLastUser( qp_Setup::getCurrUserName(), false );
+			$this->pollStore->setLastUser( qp_Setup::getCurrUserName() );
 			$this->pollStore->loadUserVote();
 			$this->error_message = 'missing_question_id';
 			if ( array_key_exists( $this->question_id, $this->pollStore->Questions ) ) {

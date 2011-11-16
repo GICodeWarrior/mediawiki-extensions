@@ -78,7 +78,7 @@ class qp_PollStats extends qp_AbstractPoll {
 			$this->mState = "error";
 			return self::fatalErrorQuote( 'qp_error_no_stats', $this->pollAddr );
 		}
-		$this->pollStore->setLastUser( $this->username, false );
+		$this->pollStore->setLastUser( $this->username );
 		# do not check the result, because we may show results even if the user hasn't voted
 		$this->pollStore->loadUserAlreadyVoted();
 		return true;

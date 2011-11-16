@@ -97,7 +97,7 @@ class qp_Poll extends qp_AbstractPoll {
 		# order_id is used to sort out polls on the Special:PollResults statistics page
 		$this->mOrderId = self::$sOrderId;
 		# Determine if this poll is being corrected or not, according to the pollId
-		$this->mBeingCorrected = ( $this->mRequest->getVal( 'pollId' ) == $this->mPollId );
+		$this->mBeingCorrected = ( qp_Setup::$request->wasPosted() && qp_Setup::$request->getVal( 'pollId' ) == $this->mPollId );
 	}
 
 	/**
@@ -157,13 +157,13 @@ class qp_Poll extends qp_AbstractPoll {
 			$newPollStore['from'] = 'poll_post';
 			$this->pollStore = new qp_PollStore( $newPollStore );
 			$this->pollStore->loadQuestions();
-			$this->pollStore->setLastUser( $this->username, false );
+			$this->pollStore->setLastUser( $this->username );
 			$this->pollStore->loadUserAlreadyVoted();
 		} else {
 			$newPollStore['from'] = 'poll_get';
 			$this->pollStore = new qp_PollStore( $newPollStore );
 			$this->pollStore->loadQuestions();
-			$this->pollStore->setLastUser( $this->username, false );
+			$this->pollStore->setLastUser( $this->username );
 			# to show previous choice of current user, if that's available
 			# do not check the result, because user can vote even if haven't voted before
 			$this->pollStore->loadUserVote();
@@ -204,8 +204,11 @@ class qp_Poll extends qp_AbstractPoll {
 		$this->questions->randomize( $this->randomQuestionCount );
 		$this->pollStore->randomQuestions = $this->questions->getUsedQuestions();
 		# store random questions for current user into DB
-		$this->pollStore->setLastUser( $this->username );
-		$this->pollStore->setRandomQuestions();
+		if ( qp_Setup::$title->getArticleID() !== 0 ) {
+			$this->pollStore->setPid();
+			$this->pollStore->createLastUser( $this->username );
+			$this->pollStore->setRandomQuestions();
+		}
 	}
 
 	/**
@@ -215,7 +218,6 @@ class qp_Poll extends qp_AbstractPoll {
 	 * @return   boolean true - stop further processing, false - continue processing
 	 */
 	function parseInput( $input ) {
-		global $wgTitle;
 		# parse the input; generates $this->questions collection
 		$this->parseQuestionsHeaders( $input );
 		$this->setUsedQuestions();
@@ -228,7 +230,7 @@ class qp_Poll extends qp_AbstractPoll {
 		}
 		if ( $this->pollStore->stateComplete() ) {
 			# store user vote to the DB (when the poll is fine)
-			$this->pollStore->setLastUser( $this->username );
+			$this->pollStore->createLastUser( $this->username );
 			$this->pollStore->setUserVote();
 		}
 		if ( $this->pollStore->interpResult->isError() ) {
@@ -240,7 +242,7 @@ class qp_Poll extends qp_AbstractPoll {
 				$this->mResponse->setcookie( 'QPoll', 'clearCache', time() + 20 );
 			}
 			$this->mResponse->header( 'HTTP/1.0 302 Found' );
-			$this->mResponse->header( 'Location: ' . $wgTitle->getFullURL() . $this->getPollTitleFragment() );
+			$this->mResponse->header( 'Location: ' . qp_Setup::$title->getFullURL() . $this->getPollTitleFragment() );
 			return true;
 		}
 		return false;
@@ -269,7 +271,7 @@ class qp_Poll extends qp_AbstractPoll {
 			if ( !$depPollStore->loadQuestions() ) {
 				return self::fatalErrorNoQuote( 'qp_error_vote_dependance_poll', $depLink );
 			}
-			$depPollStore->setLastUser( $this->username, false );
+			$depPollStore->setLastUser( $this->username );
 			if ( $depPollStore->loadUserAlreadyVoted() ) {
 				# user already voted in current the poll in chain
 				if ( $depPollStore->dependsOn === '' ) {
@@ -471,7 +473,7 @@ class qp_Poll extends qp_AbstractPoll {
 		if ( $this->mBeingCorrected ) {
 			if ( $question->getState() == '' ) {
 				# question is OK, store it into pollStore
-				$question->store( $this->pollStore );
+				$this->pollStore->setQuestionAnswer( $question );
 			} else {
 				# http post: not every proposals were answered: do not update DB
 				$this->pollStore->stateIncomplete();

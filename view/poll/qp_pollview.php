@@ -91,7 +91,6 @@ class qp_PollView extends qp_AbstractPollView {
 	 * @return  rendered "final" html
 	 */
 	function renderPoll() {
-		global $wgOut, $wgRequest;
 		$pollStore = $this->ctrl->pollStore;
 		# Generates the output.
 		$qpoll_div = array( '__tag' => 'div', 'class' => 'qpoll' );
@@ -140,7 +139,8 @@ class qp_PollView extends qp_AbstractPollView {
 			$submitBtn[ 'disabled' ] = 'disabled';
 		}
 		# disable submit button in preview mode & printable version
-		if ( $wgRequest->getVal( 'action' ) == 'parse' || $wgOut->isPrintable() ) {
+		if ( qp_Setup::$request->getVal( 'action' ) == 'parse' ||
+				qp_Setup::$output->isPrintable() ) {
 			$submitBtn[ 'disabled' ] = 'disabled';
 		}
 		$submitBtn[ 'value' ] = wfMsgHtml( $submitMsg );

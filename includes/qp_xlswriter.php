@@ -64,7 +64,9 @@ class qp_XlsWriter {
 	static $wb;
 	# an instance of XLS worksheet (only one currently is used)
 	static $ws;
-	# list of formats added to workbook
+	# list of format definitions added to workbook
+	static $fdef;
+	# list of format instances added to workbook
 	static $format;
 	# current row number in a worksheet (pointer)
 	static $rownum = 0;
@@ -92,8 +94,13 @@ class qp_XlsWriter {
 	 */
 	function addFormats( $formats ) {
 		foreach ( $formats as $fkey => $fdef ) {
+			self::$fdef[$fkey] = $fdef;
 			self::$format[$fkey] = self::$wb->addformat( $fdef );
 		}
+	}
+
+	function getFormatDefinition( $fkey ) {
+		return self::$fdef[$fkey];
 	}
 
 	function getFormat( $fkey ) {

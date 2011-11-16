@@ -164,7 +164,7 @@ class qp_TabularQuestionProposalView extends qp_StubQuestionProposalView {
 			# end of new span
 			if ( $this->ctrl->poll->mBeingCorrected &&
 					!$spanState->wasChecked &&
-					$this->ctrl->mRequest->getVal( $name ) != $value ) {
+					qp_Setup::$request->getVal( $name ) != $value ) {
 				# the span (a part of proposal) was submitted but unanswered
 				$this->prependErrorMessage( wfMsg( 'qp_error_unanswered_span' ), 'NA' );
 				# highlight current span to indicate an error

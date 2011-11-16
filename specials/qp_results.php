@@ -209,7 +209,7 @@ class PollResults extends qp_SpecialPage {
 		}
 		$userTitle = Title::makeTitleSafe( NS_USER, $userName );
 		$user_link = $this->qpLink( $userTitle, $userName );
-		$pollStore->setLastUser( $userName, false );
+		$pollStore->setLastUser( $userName );
 		if ( !$pollStore->loadUserVote() ) {
 			return '';
 		}
@@ -244,7 +244,7 @@ class PollResults extends qp_SpecialPage {
 				$poll_link = $this->qpLink( $poll_title, $poll_title->getPrefixedText() . wfMsg( 'word-separator' ) . wfMsg( 'qp_parentheses', $pollStore->mPollId ) );
 				$output .= wfMsg( 'qp_browse_to_poll', $poll_link ) . "<br />\n";
 				$interpTitle = $pollStore->getInterpTitle();
-				if ( $interpTitle !== null ) {
+				if ( $interpTitle instanceof Title ) {
 					$interp_link = $this->qpLink( $interpTitle, $interpTitle->getPrefixedText() );
 					$output .= wfMsg( 'qp_browse_to_interpretation', $interp_link ) . "<br />\n";
 				}
@@ -293,7 +293,7 @@ class PollResults extends qp_SpecialPage {
 				# statistics export uses additional formats
 				$percent_num_format = '[Blue]0.0%;[Red]-0.0%;[Black]0%';
 				$qp_xls->addFormats( array(
-					'percent' => array( 'fgcolor' => 0x1A, 'border' => 1 )
+					'percent' => $qp_xls->getFormatDefinition( 'answer' )
 				) );
 				$qp_xls->getFormat( 'percent' )->setAlign( 'left' );
 				$qp_xls->getFormat( 'percent' )->setNumFormat( $percent_num_format );
@@ -354,17 +354,17 @@ class qp_UsersList extends qp_QueryPage {
 
 	function getIntervalResults( $offset, $limit ) {
 		$result = array();
-		$db = & wfGetDB( DB_SLAVE );
-		$qp_users = $db->tableName( 'qp_users' );
-		$qp_users_polls = $db->tableName( 'qp_users_polls' );
-		$res = $db->select( "$qp_users_polls qup, $qp_users qu",
+		$db = wfGetDB( DB_SLAVE );
+		$res = $db->select( array( 'qup' => 'qp_users_polls', 'qu' => 'qp_users' ),
 			array( 'qu.uid as uid', 'name as username', 'count(pid) as pidcount' ),
-			'qu.uid=qup.uid',
+			/* WHERE */ 'qu.uid=qup.uid',
 			__METHOD__,
-			array( 'GROUP BY' => 'qup.uid',
-						'ORDER BY' => $this->order_by,
-						'OFFSET' => intval( $offset ),
-						'LIMIT' => intval( $limit ) )
+			array(
+				'GROUP BY' => 'qup.uid',
+				'ORDER BY' => $this->order_by,
+				'OFFSET' => $offset,
+				'LIMIT' => $limit
+			)
 		);
 		while ( $row = $db->fetchObject( $res ) ) {
 			$result[] = $row;
@@ -418,12 +418,13 @@ class qp_UserPollsList extends qp_QueryPage {
 		# fake pollStore to get username by uid: avoid to use this trick as much as possible
 		$pollStore = new qp_PollStore();
 		$userName = $pollStore->getUserName( $this->uid );
-		$db = & wfGetDB( DB_SLAVE );
+		$db = wfGetDB( DB_SLAVE );
 		$res = $db->select(
-			array( 'qp_users_polls' ),
+			'qp_users_polls',
 			array( 'count(pid) as pidcount' ),
-			'uid=' . $db->addQuotes( $this->uid ),
-			__METHOD__ );
+			/* WHERE */ array( 'uid' => $this->uid ),
+			__METHOD__
+		);
 		if ( $row = $db->fetchObject( $res ) ) {
 			$pidcount = $row->pidcount;
 		} else {
@@ -438,18 +439,18 @@ class qp_UserPollsList extends qp_QueryPage {
 
 	function getIntervalResults( $offset, $limit ) {
 		$result = Array();
-		$db = & wfGetDB( DB_SLAVE );
+		$db = wfGetDB( DB_SLAVE );
 		$page = $db->tableName( 'page' );
 		$qp_poll_desc = $db->tableName( 'qp_poll_desc' );
 		$qp_users_polls = $db->tableName( 'qp_users_polls' );
-		$query = "SELECT pid, page_namespace AS ns, page_title AS title, poll_id ";
-		$query .= "FROM ($qp_poll_desc, $page) ";
-		$query .= " WHERE page_id=article_id AND pid " . ( $this->inverse ? "NOT " : "" ) . "IN ";
-		$query .= "(SELECT pid ";
-		$query .= "FROM $qp_users_polls ";
-		$query .= "WHERE uid=" . $db->addQuotes( $this->uid ) . ") ";
-		$query .= "ORDER BY page_namespace, page_title, poll_id ";
-		$query .= "LIMIT " . intval( $offset ) . ", " . intval( $limit );
+		$query = "SELECT pid, page_namespace AS ns, page_title AS title, poll_id " .
+			"FROM ({$qp_poll_desc}, {$page}) " .
+			" WHERE page_id=article_id AND pid " . ( $this->inverse ? "NOT " : "" ) . "IN " .
+			"(SELECT pid " .
+				"FROM {$qp_users_polls} " .
+				"WHERE uid=" . $db->addQuotes( $this->uid ) . ") " .
+				"ORDER BY page_namespace, page_title, poll_id " .
+				"LIMIT " . intval( $offset ) . ", " . intval( $limit );
 		$res = $db->query( $query, __METHOD__ );
 		while ( $row = $db->fetchObject( $res ) ) {
 			$result[] = $row;
@@ -485,15 +486,17 @@ class qp_PollsList extends qp_QueryPage {
 
 	function getIntervalResults( $offset, $limit ) {
 		$result = array();
-		$db = & wfGetDB( DB_SLAVE );
+		$db = wfGetDB( DB_SLAVE );
 		$res = $db->select(
 			array( 'page', 'qp_poll_desc' ),
 			array( 'page_namespace as ns', 'page_title as title', 'pid', 'poll_id', 'order_id' ),
-			'page_id=article_id',
+			/* WHERE */ 'page_id=article_id',
 			__METHOD__,
-			array( 'ORDER BY' => 'page_namespace, page_title, order_id',
-						'OFFSET' => intval( $offset ),
-						'LIMIT' => intval( $limit ) )
+			array(
+				'ORDER BY' => 'page_namespace, page_title, order_id',
+				'OFFSET' => $offset,
+				'LIMIT' => $limit
+			)
 		);
 		while ( $row = $db->fetchObject( $res ) ) {
 			$result[] = $row;
@@ -539,12 +542,13 @@ class qp_PollUsersList extends qp_QueryPage {
 	function getPageHeader() {
 		global $wgLang, $wgContLang;
 		$link = "";
-		$db = & wfGetDB( DB_SLAVE );
+		$db = wfGetDB( DB_SLAVE );
 		$res = $db->select(
 			array( 'page', 'qp_poll_desc' ),
 			array( 'page_namespace as ns', 'page_title as title', 'poll_id' ),
-			'page_id=article_id and pid=' . $db->addQuotes( $this->pid ),
-			__METHOD__ );
+			/* WHERE */ 'page_id=article_id and pid=' . $db->addQuotes( $this->pid ),
+			__METHOD__
+		);
 		if ( $row = $db->fetchObject( $res ) ) {
 			$poll_title = Title::makeTitle( intval( $row->ns ), $row->title, qp_AbstractPoll::s_getPollTitleFragment( $row->poll_id, '' ) );
 			$pagename = qp_Setup::specialchars( $wgContLang->convert( $poll_title->getPrefixedText() ) );
@@ -562,15 +566,15 @@ class qp_PollUsersList extends qp_QueryPage {
 
 	function getIntervalResults( $offset, $limit ) {
 		$result = Array();
-		$db = & wfGetDB( DB_SLAVE );
+		$db = wfGetDB( DB_SLAVE );
 		$qp_users = $db->tableName( 'qp_users' );
 		$qp_users_polls = $db->tableName( 'qp_users_polls' );
-		$query = "SELECT uid, name as username ";
-		$query .= "FROM $qp_users ";
-		$query .= "WHERE uid " . ( $this->inverse ? "NOT " : "" ) . "IN ";
-		$query .= "(SELECT uid FROM $qp_users_polls WHERE pid=" . $db->addQuotes( $this->pid ) . ") ";
-		$query .= "ORDER BY uid ";
-		$query .= "LIMIT " . intval( $offset ) . ", " . intval( $limit );
+		$query = "SELECT uid, name as username " .
+			"FROM {$qp_users} " .
+			"WHERE uid " . ( $this->inverse ? "NOT " : "" ) . "IN " .
+			"(SELECT uid FROM {$qp_users_polls} WHERE pid=" . $db->addQuotes( $this->pid ) . ") " .
+				"ORDER BY uid " .
+				"LIMIT " . intval( $offset ) . ", " . intval( $limit );
 		$res = $db->query( $query, __METHOD__ );
 		while ( $row = $db->fetchObject( $res ) ) {
 			$result[] = $row;
@@ -618,13 +622,12 @@ class qp_UserCellList extends qp_QueryPage {
 		$this->question_id = $question_id;
 		$this->proposal_id = $proposal_id;
 		$this->cat_id = $cid;
-		$db = & wfGetDB( DB_SLAVE );
-		$qp_poll_desc = $db->tableName( 'qp_poll_desc' );
-		$page = $db->tableName( 'page' );
-		$query = "SELECT pid, page_namespace as ns, page_title as title, poll_id ";
-		$query .= "FROM ($qp_poll_desc, $page) ";
-		$query .= "WHERE page_id=article_id AND pid=" . $db->addQuotes( $pid ) . "";
-		$res = $db->query( $query, __METHOD__ );
+		$db = wfGetDB( DB_SLAVE );
+		$res = $db->select( array( 'qp_poll_desc', 'page' ),
+			array( 'pid', 'page_namespace as ns', 'page_title as title', 'poll_id' ),
+			/* WHERE */ 'page_id=article_id AND pid=' . $db->addQuotes( $pid ),
+			__METHOD__
+		);
 		if ( $row = $db->fetchObject( $res ) ) {
 			$this->pid = intval( $row->pid );
 			$this->ns = intval( $row->ns );
@@ -636,7 +639,6 @@ class qp_UserCellList extends qp_QueryPage {
 	function getPageHeader() {
 		global $wgLang, $wgContLang;
 		$link = "";
-		$db = & wfGetDB( DB_SLAVE );
 		if ( $this->pid !== null ) {
 			$pollStore = new qp_PollStore( array( 'from' => 'pid', 'pid' => $this->pid ) );
 			if ( $pollStore->pid !== null ) {
@@ -683,15 +685,17 @@ class qp_UserCellList extends qp_QueryPage {
 
 	function getIntervalResults( $offset, $limit ) {
 		$result = Array();
-		$db = & wfGetDB( DB_SLAVE );
-		$qp_users = $db->tableName( 'qp_users' );
-		$qp_question_answers = $db->tableName( 'qp_question_answers' );
-		$query = "SELECT qqa.uid as uid, name as username, text_answer ";
-		$query .= "FROM $qp_question_answers qqa ";
-		$query .= "INNER JOIN $qp_users qu ON qqa.uid = qu.uid ";
-		$query .= "WHERE pid=" . $db->addQuotes( $this->pid ) . " AND question_id=" . $db->addQuotes( $this->question_id ) . " AND proposal_id=" . $db->addQuotes( $this->proposal_id ) . " AND cat_id=" . $db->addQuotes( $this->cat_id ) . " ";
-		$query .= "LIMIT " . intval( $offset ) . ", " . intval( $limit );
-		$res = $db->query( $query, __METHOD__ );
+		$db = wfGetDB( DB_SLAVE );
+		$res = $db->select(
+			array( 'qqa' => 'qp_question_answers', 'qu' => 'qp_users' ),
+			array( 'qqa.uid as uid', 'name as username', 'text_answer' ),
+			/* WHERE */ array( 'pid' => $this->pid, 'question_id' => $this->question_id, 'proposal_id' => $this->proposal_id, 'cat_id' => $this->cat_id ),
+			__METHOD__,
+			array( 'OFFSET' => $offset, 'LIMIT' => $limit ),
+			/* JOIN */ array(
+				'qu' => array( 'INNER JOIN', 'qqa.uid = qu.uid' )
+			)
+		);
 		while ( $row = $db->fetchObject( $res ) ) {
 			$result[] = $row;
 		}

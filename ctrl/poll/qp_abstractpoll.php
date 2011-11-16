@@ -100,9 +100,8 @@ class qp_AbstractPoll {
 	 * @public
 	 */
 	function __construct( $argv, qp_AbstractPollView $view ) {
-		global $wgRequest, $wgLanguageCode;
-		$this->mRequest = &$wgRequest;
-		$this->mResponse = $wgRequest->response();
+		global $wgLanguageCode;
+		$this->mResponse = qp_Setup::$request->response();
 		# Determine which messages will be used, according to the language.
 		qp_Setup::onLoadAllMessages();
 		$view->setController( $this );
@@ -220,7 +219,6 @@ class qp_AbstractPoll {
 	//          array[2] - prefixed (complete) poll address
 	//          false - invalid source poll address was given
 	static function getPrefixedPollAddress( $addr ) {
-		global $wgTitle;
 		if ( is_array( $addr ) ) {
 			if ( count( $addr ) > 1 ) {
 				list( $titlePart, $pollIdPart ) = $addr;
@@ -241,7 +239,7 @@ class qp_AbstractPoll {
 		}
 		if ( $titlePart == '' ) {
 			# poll is located at the current page
-			$titlePart = $wgTitle->getPrefixedText();
+			$titlePart = qp_Setup::$title->getPrefixedText();
 		}
 		return array( $titlePart, $pollIdPart, $titlePart . '#' . $pollIdPart );
 	}

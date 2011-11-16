@@ -43,7 +43,10 @@ class qp_MixedQuestion extends qp_TabularQuestion {
 			}
 			$proposalId++;
 			# set proposal name (if any)
-			if ( ( $prop_name = qp_QuestionData::splitRawProposal( $pview->text ) ) !== '' ) {
+			$prop_name = qp_QuestionData::splitRawProposal( $pview->text );
+			if ( $prop_name === false ) {
+				$pview->prependErrorMessage( wfMsg( 'qp_error_too_long_proposal_name' ), 'error' );
+			} elseif ( $prop_name !== '' ) {
 				$this->mProposalNames[$proposalId] = $prop_name;
 			}
 			$this->mProposalText[$proposalId] = trim( $pview->text );
@@ -74,9 +77,9 @@ class qp_MixedQuestion extends qp_TabularQuestion {
 				# Determine if the input has to be checked.
 				$input_checked = false;
 				$text_answer = '';
-				if ( $this->poll->mBeingCorrected && $this->mRequest->getVal( $name ) !== null ) {
+				if ( $this->poll->mBeingCorrected && qp_Setup::$request->getVal( $name ) !== null ) {
 					if ( $inputType == 'text' ) {
-						$text_answer = trim( $this->mRequest->getText( $name ) );
+						$text_answer = trim( qp_Setup::$request->getText( $name ) );
 						if ( strlen( $text_answer ) > qp_Setup::$field_max_len['text_answer'] ) {
 							$text_answer = $wgContLang->truncate( $text_answer, qp_Setup::$field_max_len['text_answer'] , '' );
 						}

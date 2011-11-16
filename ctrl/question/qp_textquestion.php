@@ -296,11 +296,11 @@ class qp_TextQuestion extends qp_StubQuestion {
 		$text_answer = '';
 		# try to load from POST data
 		if ( $this->poll->mBeingCorrected &&
-				( $ta = $this->mRequest->getArray( $name ) ) !== null ) {
+				( $ta = qp_Setup::$request->getArray( $name ) ) !== null ) {
 			if ( $opt->type === 'text' ) {
 				if ( count( $ta ) === 1 ) {
 					# fallback to WebRequest::getText(), because it offers useful preprocessing
-					$ta = trim( $this->mRequest->getText( $name ) );
+					$ta = trim( qp_Setup::$request->getText( $name ) );
 				} else {
 					# pack select multiple values
 					$ta = implode( qp_Setup::SELECT_MULTIPLE_VALUES_SEPARATOR, array_map( 'trim', $ta ) );
@@ -466,7 +466,12 @@ class qp_TextQuestion extends qp_StubQuestion {
 			$opt->reset();
 			$this->propview = new qp_TextQuestionProposalView( $proposalId, $this );
 			# set proposal name (if any)
-			$prop_name = qp_QuestionData::splitRawProposal( $raw );
+			if ( ( $prop_name = qp_QuestionData::splitRawProposal( $raw ) ) === false ) {
+				# we do not need to generate error for too long proposal name,
+				# because the length limit will be enforced on the whole serialized
+				# proposal string (with proposal_name + cat_parts + prop_parts)
+				$prop_name = '';
+			}
 			$this->dbtokens = $brace_stack = array();
 			$dbtokens_idx = -1;
 			$catId = 0;
