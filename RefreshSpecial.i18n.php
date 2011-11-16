@@ -1326,7 +1326,7 @@ $messages['stq'] = array(
 	'refreshspecial-desc' => 'Ferlööwet dät [[Special:RefreshSpecial|manuelle Apfriskjen fon Spezioalsieden]]',
 	'refreshspecial-title' => 'Spezioalsieden aktualisierje',
 	'refreshspecial-help' => 'Disse Spezioalsiede stoalt ne Reewe toun manuellen Aktualisierjen fon do Spezioalsieden kloor.
-Sogau du aal Spezioalsieden toun Aktualisierjen uutwääld hääst, druk ju Aktualisierje-Schaltfläche, uum ju Aktualisierenge tou starjen.
+Sogau du aal Spezioalsieden toun Aktualisierjen uutwääld hääst, druk ju Aktualisierje-Skaltfläche, uum ju Aktualisierenge tou starjen.
 Oachtenge: Dät Aktualisierjen kon ap groote Wikis laanger duurje.',
 	'refreshspecial-button' => 'uutwäälde apfriskje',
 	'refreshspecial-fail' => 'Hoak toumindest een Spezioalsiede toun Apfriskjen an.',
@@ -1335,7 +1335,7 @@ Oachtenge: Dät Aktualisierjen kon ap groote Wikis laanger duurje.',
 	'refreshspecial-choice' => 'aktualisier Spezioalsieden',
 	'refreshspecial-js-disabled' => '(<i>Du koast nit aal Sieden uutwääle, wan du Javascript deaktivierd hääst</i>)',
 	'refreshspecial-select-all-pages' => 'aal Sieden uutwääle',
-	'refreshspecial-link-back' => 'Tourääch tou juu Spezioalsiede',
+	'refreshspecial-link-back' => 'Tourääch tou ju Spezioalsiede',
 );
 
 /** Swedish (Svenska)
