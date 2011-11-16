@@ -84,3 +84,12 @@ $messages['nl'] = array(
 	'regexfun-limit-exceed' => 'Het maximale aantal af te handelen reguliere expressies is bereikt ($1).',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Event
+ */
+$messages['no'] = array(
+	'regexfun-desc' => 'Legg til parserfunksjoner som tillater bruk av regulæruttrykk på wikisider',
+	'regexfun-invalid' => 'Regulæruttrykket "$1" er ugyldig.',
+	'regexfun-limit-exceed' => 'Det maksimalt antallet på {{PLURAL:$1|$1 "Regex Fun"-regulæruttrykk|$1 "Regex Fun"-regulæruttrykk}} er nådd.',
+);
+
