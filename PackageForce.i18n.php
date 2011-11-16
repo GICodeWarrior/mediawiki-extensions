@@ -68,6 +68,7 @@ $messages['af'] = array(
  */
 $messages['arc'] = array(
 	'pf-admin-link-approve' => 'ܩܒܘܠ ܕܦܐ',
+	'pf-header-documentation' => 'ܐܫܛܪܘܬܐ',
 	'pf-header-edit' => 'ܫܚܠܦ ܐܣܘܪܐ',
 	'pf-header-type' => 'ܐܕܫܐ ܕܕܦܐ',
 	'pf-header-page_title' => 'ܟܘܢܝܐ',
