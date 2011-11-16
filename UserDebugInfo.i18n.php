@@ -35,6 +35,13 @@ $messages['ar'] = array(
 	'userdebuginfo-language' => 'اللغة',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'userdebuginfo-language' => 'ܠܫܢܐ',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Renessaince
