@@ -86,6 +86,15 @@ $messages['he'] = array(
 	'credits-tab-title' => 'קרדיטים לדף זה',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'credits-desc' => 'Přidawa wotkaz k lisćinje awtorow',
+	'credits-tab' => 'Awtorojo',
+	'credits-tab-title' => 'Awtorojo tuteje strony',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
