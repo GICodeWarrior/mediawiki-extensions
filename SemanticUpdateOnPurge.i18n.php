@@ -40,6 +40,13 @@ $messages['gl'] = array(
 	'suop-desc' => 'Actualiza os atributos semánticos dunha páxina wiki ao purgar a páxina',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'suop-desc' => 'Aktualizuje semantiske atributy wikistrony, hdyž so pufrowak strony wuprózdnja',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -66,5 +73,12 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'suop-desc' => 'Werkt semantische eigenschappen van een wikipagina bij als de pagina uit de cache wordt verwijderd',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Event
+ */
+$messages['no'] = array(
+	'suop-desc' => 'Oppdater semantiske attributter for en wikiside når siden blir ryddet',
 );
 
