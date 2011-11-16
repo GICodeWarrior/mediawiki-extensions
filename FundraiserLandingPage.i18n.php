@@ -62,6 +62,13 @@ $messages['ia'] = array(
 	'fundraiserlandingpage-desc' => 'Prende parametros de URL e los passa al patrono specificate como variabiles de patrono',
 );
 
+/** Japanese (日本語)
+ * @author Whym
+ */
+$messages['ja'] = array(
+	'fundraiserlandingpage-desc' => 'URLパラメータを取り、それを指定されたテンプレートにテンプレート変数として渡す',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
