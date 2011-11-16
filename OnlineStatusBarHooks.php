@@ -124,8 +124,7 @@ class OnlineStatusBarHooks {
 	 * @return bool
 	 */
 	public static function magicWordVar( array &$magicWords, $ln ) {
-		$magicWords['isonline'] = array( 0, 'isonline' );
-		return true;
+		$magicWords['ISONLINE'] = array( 1, 'ISONLINE' );
 	}
 
 	/**
@@ -154,7 +153,7 @@ class OnlineStatusBarHooks {
 	 * @return bool
 	 */
 	public static function magicWordSet( &$vars ) {
-		$vars[] = 'isonline';
+		$vars[] = 'ISONLINE';
 		return true;
 	}
 
@@ -166,7 +165,7 @@ class OnlineStatusBarHooks {
 	 * @return bool
 	 */
 	public static function parserGetVariable( &$parser, &$varCache, &$index, &$ret ) {
-		if ( $index != 'isonline' ) {
+		if ( $index != 'ISONLINE' ) {
 			return true;
 		}
 
