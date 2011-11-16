@@ -635,7 +635,7 @@ $messages['sr-ec'] = array(
  */
 $messages['stq'] = array(
 	'seealso' => 'Sjuch uk',
-	'seealso-desc' => 'Lokalisierde Sjuch-uk-Uurschrifte middels <code><nowiki><seealso></nowiki></code>',
+	'seealso-desc' => 'Lokalisierde Sjuch-uk-Uurskrifte middels <code><nowiki><seealso></nowiki></code>',
 );
 
 /** Sundanese (Basa Sunda)
