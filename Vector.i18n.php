@@ -900,12 +900,20 @@ $messages['io'] = array(
 
 /** Icelandic (Íslenska)
  * @author Krun
+ * @author Snævar
  * @author Ævar Arnfjörð Bjarmason
  */
 $messages['is'] = array(
+	'vector' => 'Viðmóts lagfæringar á Vector-sniði',
+	'vector-desc' => 'Endurbætir notanda viðmót Vector sniðsins.',
+	'vector-collapsiblenav-preference' => 'Fella saman hluti í hliðarstiku Vector sniðsins',
 	'vector-collapsiblenav-more' => 'Fleiri tungumál',
+	'vector-editwarning-warning' => 'Ef farið er frá þessari síðu gætu þær breytingar sem þú hefur gert tapast.
+Ef þú ert skráður inn, þá getur þú óvirkjað þessi skilaboð í „Breytingarflipanum" undir stillingum.',
+	'vector-editwarning-preference' => 'Vara mig við þegar ég fer frá breytingarsíðu með óvistaðar breytingar',
 	'vector-simplesearch-search' => 'Leita',
 	'vector-simplesearch-containing' => 'sem innihalda ...',
+	'vector-noexperiments-preference' => 'Útiloka mig frá tilraunum framvegis.',
 );
 
 /** Italian (Italiano)
