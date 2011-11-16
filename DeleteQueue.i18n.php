@@ -6563,7 +6563,7 @@ $messages['stq'] = array(
 	'deletequeue-reviewdeletediscuss-text' => "Ap disse Siede koast du ju Läskdiskussion fon „'''$1'''“ wröigje.
 
 Dät rakt  ne [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Lieste] mäd Stimmen foar un juun ju Läskenge; ju eegentelke Diskussion is unner [[$2]] tou fienden.
-Oachtje deerap, dät ne Äntscheedenge mäd dän Konsens fon ju Diskussion fereenboar is.",
+Oachtje deerap, dät ne Äntskeedenge mäd dän Konsens fon ju Diskussion fereenboar is.",
 	'deletequeue-deletediscuss-discussionpage' => 'Dit is ju Diskussionssiede foar ju Läskenge fon [[$1]].
 Apstuuns {{PLURAL:$2|unnerstutset aan Benutser|unnerstutsje $2 Benutsere}} ju Läskenge, wülst $3 {{PLURAL:$3|Benutser|Benutsere}} hier ouliene.
 Du koast ju Läskenge [{{fullurl:$1|action=delvote}} unnerstutsje of ouliene] of [{{fullurl:$1|action=delviewvotes}} aal Stimme bekiekje].',
@@ -6574,7 +6574,7 @@ Du koast ju Läskenge [{{fullurl:$1|action=delvote}} unnerstutsje of ouliene] of
 	'deletequeue-role-vote-object' => 'Juun de Läskenge',
 	'deletequeue-vote-title' => 'Läskenge fon „$1“ unnerstutsje of ouliene',
 	'deletequeue-vote-text' => "Ap disse Siede koast du ju Läskenge fon „'''$1'''“ unnerstutsje of ouliene.
-Disse Aktion uurschrift aal Stimmen, do du foartied tou ju Läskenge fon disse Siede ouroat hääst.
+Disse Aktion uurskrift aal Stimmen, do du foartied tou ju Läskenge fon disse Siede ouroat hääst.
 Du koast do al ouroate Stimmen [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} bekiekje].
 Die Läskandraachsgruund waas ''$2''.",
 	'deletequeue-vote-legend' => 'Läskenge unnerstutsje/ouliene',
@@ -6586,7 +6586,7 @@ Die Läskandraachsgruund waas ''$2''.",
 	'deletequeue-vote-success-endorse' => 'Du hääst mäd Ärfoulch ju Läskenge fon disse Siede unnerstutsed.',
 	'deletequeue-vote-success-object' => 'Du hääst mäd Ärfoulch ju Läskenge fon disse Siede ouliend.',
 	'deletequeue-vote-requeued' => 'Du hääst mäd Ärfoulch ju Läskenge fon disse Siede ouliend.
-Truch dien Wierspruch wuud ju Siede in ju Läsk-Täiweslange $1 ferschäuwen.',
+Truch dien Wierspruch wuud ju Siede in ju Läsk-Täiweslange $1 ferskäuwen.',
 	'deletequeue-showvotes' => 'Unnerstutsengen un Oulienengen fon ju Läskenge fon „$1“',
 	'deletequeue-showvotes-text' => "Unnerstoundend sunt do Unnerstutsengen un Oulienengen fon ju Läskenge fon „'''$1'''“ .
 Du koast dien oaine Unnerstutsenge of Oulienenge fon ju Läskenge [{{fullurl:{{FULLPAGENAME}}|action=delvote}} hier] iendreege.",
