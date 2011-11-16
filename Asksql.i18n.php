@@ -1220,7 +1220,7 @@ Dit kon oafte dän Server oarich beläästigje, bruuk dät deeruum spoarsoam.",
 	'sqlislogged' => 'Beoachtje dät aal Oufroagen apteekend sunt.',
 	'sqlquery' => 'Fang ju Oufroage oun',
 	'querybtn' => 'Reek ju Oufroage ien',
-	'selectonly' => 'Bloot schrieuwschutsede Oufroagen sunt ferlööwed.',
+	'selectonly' => 'Bloot skrieuwskutsede Oufroagen sunt ferlööwed.',
 	'querysuccessful' => 'Oufroage glukked',
 	'right-asksql' => 'Uutfierenge fon SQL-Oufroagen',
 );
