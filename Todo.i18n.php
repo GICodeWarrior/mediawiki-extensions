@@ -1966,7 +1966,7 @@ $messages['stq'] = array(
 	'todo-tab' => 'Apgoawen',
 	'todo-new-queue' => 'Näi',
 	'todo-mail-subject' => 'Iendraach foar $1s Apgoawenlieste ousleeten',
-	'todo-mail-body' => 'Du hääst uum Bescheed bidded, wan n Apdraach, dän du an $1 uurroat hääst, ousleeten wuude.
+	'todo-mail-body' => 'Du hääst uum Beskeed bidded, wan n Apdraach, dän du an $1 uurroat hääst, ousleeten wuude.
 
 Iendraach: $2
 Uurroat: $3
@@ -1981,14 +1981,14 @@ $4',
 	'todo-no-item' => 'Neen Apgoawen',
 	'todo-invalid-owner' => 'Uungultigen Besitter foar dissen Iendraach',
 	'todo-add-queue' => 'Täiweslange bietouföigje ...',
-	'todo-move-queue' => 'Ätter Täiweslange ferschuuwe ...',
+	'todo-move-queue' => 'Ätter Täiweslange ferskuuwe ...',
 	'todo-list-for' => 'Apgoawenlieste foar $1',
 	'todo-list-change' => 'Annerje',
 	'todo-list-cancel' => 'Oubreeke',
 	'todo-new-item' => 'Näien Iendraach',
 	'todo-issue-summary' => 'Touhoopefoatenge fon dän Apdraach:',
 	'todo-form-details' => 'Details:',
-	'todo-form-email' => 'Reek dien E-Mail-Adresse ien, uum Bescheed tou kriegen, wan dän Iendraach sleeten wuude:',
+	'todo-form-email' => 'Reek dien E-Mail-Adresse ien, uum Beskeed tou kriegen, wan dän Iendraach sleeten wuude:',
 	'todo-form-submit' => 'Anfroage uurreeke',
 );
 
