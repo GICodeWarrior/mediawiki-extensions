@@ -112,6 +112,7 @@ On private wikis, apply the patch linkd from the Push documentation or update Me
  * @author Nike
  * @author Purodha
  * @author Raymond
+ * @author Siebrand
  * @author Umherirrender
  */
 $messages['qqq'] = array(
@@ -119,6 +120,9 @@ $messages['qqq'] = array(
 	'right-push' => '{{doc-right|push}}',
 	'right-bulkpush' => '{{doc-right|bulkpush}}',
 	'right-pushadmin' => '{{doc-right|pushadmin}}',
+	'action-push' => '{{doc-action|push}}',
+	'action-bulkpush' => '{{doc-action|bulkpush}}',
+	'action-pushadmin' => '{{doc-action|pushadmin}}',
 	'group-pusher' => '{{doc-group|pusher}}',
 	'group-pusher-member' => '{{doc-group|pusher|member}}',
 	'grouppage-pusher' => '{{doc-group|pusher|page}}',
@@ -319,6 +323,9 @@ $messages['de'] = array(
 	'right-push' => 'Seiten in andere Wikis transferieren',
 	'right-bulkpush' => 'Seiten gesammelt in andere Wikis transferieren',
 	'right-pushadmin' => 'Transfereinstellungen und -ziele ändern',
+	'action-push' => 'Seiten transferieren',
+	'action-bulkpush' => 'Seiten gesammelt transferieren',
+	'action-pushadmin' => 'Transfereinstellungen konfigurieren',
 	'group-pusher' => 'Transferierer',
 	'group-pusher-member' => '{{GENDER:$1|Transferierer|Transferiererin}}',
 	'grouppage-pusher' => 'Project:Transferierer',
@@ -363,7 +370,7 @@ $messages['de'] = array(
 	'push-tab-no-embedded-files' => '(Auf dieser Seite gibt es keine eingebetteten Dateien.)',
 	'push-tab-files-override' => 'Diese Dateien sind bereits vorhanden: $1',
 	'push-tab-template-override' => 'Diese Vorlagen sind bereits vorhanden: $1',
-	'push-tab-err-uploaddisabled' => 'Das Hochladen von Dateien ist nicht möglich. Die Parameter $wgEnableUploads und $wgAllowCopyUploads müssen in der Datei LocalSettings.php des Zielwikis auf „true“ gesetzt werden.',
+	'push-tab-err-uploaddisabled' => 'Das Hochladen von Dateien ist nicht möglich. Die Parameter <code>$wgEnableUploads</code> und <code>$wgAllowCopyUploads</code> müssen in der Datei LocalSettings.php des Zielwikis auf „true“ gesetzt werden.',
 	'special-push' => 'Seiten transferieren',
 	'push-special-description' => 'Diese Spezialseite ermöglicht es den Inhalt einer oder mehrerer Seiten zu einem oder mehreren anderen Wikis zu transferieren.
 
@@ -385,9 +392,9 @@ Um Seiten zu transferieren, sind deren Titel im Eingabefeld unten anzugeben (ein
 	'push-special-pushing-file' => '$1: Transferiere Datei $2 …',
 	'push-special-return' => 'Weitere Seiten transferieren',
 	'push-api-err-nocurl' => 'cURL ist nicht installiert.
-Der Parameter $egPushDirectFileUploads muss daher für alle öffentlichen Wikis auf false gesetzt werden. Alternativ cURL für alle nichtöffentlichen Wikis installieren.',
+Der Parameter <code>$egPushDirectFileUploads</code> muss daher für alle öffentlichen Wikis auf false gesetzt werden. Alternativ cURL für alle nichtöffentlichen Wikis installieren.',
 	'push-api-err-nofilesupport' => 'Die lokale MediaWiki-Installation unterstützt nicht das Hochladen von Dateien.
-Auf öffentlichen Wikis muss der Parameter $egPushDirectFileUploads auf false gesetzt werden.
+Auf öffentlichen Wikis muss der Parameter <code>$egPushDirectFileUploads</code> auf false gesetzt werden.
 Auf nichtöffentlichen Wikis muss der über die Dokumentationsseite zu dieser Softwareerweiterung erhältliche Patch angewendet oder die MediaWiki-Installation selbst aktualisiert werden.',
 );
 
@@ -407,6 +414,9 @@ $messages['fr'] = array(
 	'right-push' => "Autorisation d'utiliser les fonctionnalités de ''Push''.",
 	'right-bulkpush' => "Autorisation d'utiliser les fonctionnalités de ''Push'' en vrac (c'est-à-dire ''Special:Push'').",
 	'right-pushadmin' => "Autorisation de modifier les cibles et les paramètres de ''Push''.",
+	'action-push' => 'pousser les pages',
+	'action-bulkpush' => 'pousser les pages en masse',
+	'action-pushadmin' => 'configurer la publication',
 	'group-pusher' => 'Pousseurs',
 	'group-pusher-member' => '{{GENDER:$1|pousseur}}',
 	'grouppage-pusher' => 'Project:Pousseurs',
@@ -544,6 +554,9 @@ $messages['gl'] = array(
 	'right-push' => 'Autorización para usar a funcionalidade de empuxe.',
 	'right-bulkpush' => 'Autorización para usar a funcionalidade de empuxe en masa (é dicir, Special:Push).',
 	'right-pushadmin' => 'Autorización para modificar os destinos e a configuración de empuxe.',
+	'action-push' => 'empurrar páxinas',
+	'action-bulkpush' => 'empurrar páxinas en masa',
+	'action-pushadmin' => 'configurar os empuxes',
 	'group-pusher' => 'Impulsores',
 	'group-pusher-member' => '{{GENDER:$1|impulsor|impulsora}}',
 	'grouppage-pusher' => 'Project:Impulsores',
@@ -847,6 +860,9 @@ $messages['ia'] = array(
 	'right-push' => 'Autorisation a usar le functionalitate de transferimento.',
 	'right-bulkpush' => 'Autorisation a usar le functionalitate de transferimento in massa (i.e. Special:Push).',
 	'right-pushadmin' => 'Autorisation a modificar destinationes e configurationes de transferimento.',
+	'action-push' => 'transferer paginas',
+	'action-bulkpush' => 'transferer paginas in massa',
+	'action-pushadmin' => 'configurar transferimento',
 	'group-pusher' => 'Transferitores',
 	'group-pusher-member' => '{{GENDER:$1||transferitor|transferitrice}}',
 	'grouppage-pusher' => 'Project:Transferitores',
@@ -1056,6 +1072,9 @@ $messages['mk'] = array(
 	'right-push' => 'Потврда на сметка за да работи функцијата за пренесување.',
 	'right-bulkpush' => 'Потврда на сметка за да работи функцијата за групно пренесување (т.е. Special:Push).',
 	'right-pushadmin' => 'Потврда на сметка за измена на одредниците и поставките за пренесување.',
+	'action-push' => 'пренеси страници',
+	'action-bulkpush' => 'пренеси страници на големо',
+	'action-pushadmin' => 'поставки за преносот',
 	'group-pusher' => 'Префрлачи',
 	'group-pusher-member' => '{{GENDER:$1|префрлач}}',
 	'grouppage-pusher' => 'Project:Префрлачи',
@@ -1106,7 +1125,7 @@ $messages['mk'] = array(
 
 За да пренесете, внесете ги насловите во полето подолу, по едно во секој ред, па стиснете на „Пренеси сè“. Ова може да потрае.',
 	'push-special-pushing-desc' => 'Пренесувам $2 {{PLURAL:$2|страница|страници}} во $1...',
-	'push-special-button-text' => 'Пренеси',
+	'push-special-button-text' => 'Пренеси страници',
 	'push-special-target-is' => 'Целно вики: $1',
 	'push-special-select-targets' => 'Целни викија:',
 	'push-special-item-pushing' => '$1: Преместување',
@@ -1138,6 +1157,9 @@ $messages['nl'] = array(
 	'right-push' => "Mag inhoud naar andere wiki's versturen.",
 	'right-bulkpush' => "Mag en masse inhoud naar andere wiki's versturen.",
 	'right-pushadmin' => "Mag doelwiki's en instellingen voor het versturen van inhoud aanpassen.",
+	'action-push' => "pagina's te verzenden",
+	'action-bulkpush' => "massaal pagina's te verzenden",
+	'action-pushadmin' => 'verzenden in te stellen',
 	'group-pusher' => 'Pushers',
 	'group-pusher-member' => '{{GENDER:$1|pusher}}',
 	'grouppage-pusher' => 'Project:Pushers',
