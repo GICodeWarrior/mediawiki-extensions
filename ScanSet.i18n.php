@@ -1035,12 +1035,13 @@ $messages['nn'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Event
  * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
 	'scanset-desc' => 'Vis bilder av skannede sider fra Andreas Grosz’ CD-/DVD-sett',
-	'scanset_no_name' => 'Error: Du må angi navnet på et ScanSet, f.eks. &lt;scanset name="EB1911" /&gt;.',
+	'scanset_no_name' => 'Feil: Du må angi navnet på et ScanSet, f.eks. &lt;scanset name="EB1911" /&gt;.',
 	'scanset_invalid_name' => 'Feil: Ugyldig eller manglende ScanSet.',
 	'scanset_unrecognised_index_format' => 'Feil: Ukjent indeksformat',
 	'scanset_opendir_error' => 'Feil: Kan ikke åpne mappen $1',
