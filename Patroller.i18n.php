@@ -2038,7 +2038,7 @@ $messages['stq'] = array(
 * Test fon n Näiling
 * Sjuch Diskussionssiede',
 	'patrol-another' => 'Wies ne wiedere Beoarbaidenge, sofier ferföichboar.',
-	'patrol-stopped' => 'Jie hääbe äntscheeden, neen wiedere Beoarbaidenge tou kontrollierjen. $1',
+	'patrol-stopped' => 'Jie hääbe äntskeeden, neen wiedere Beoarbaidenge tou kontrollierjen. $1',
 	'patrol-resume' => 'Klik hier toun Foutsätten.',
 	'group-patroller' => 'Kontrolleure',
 	'group-patroller-member' => 'Kontrolleur',
