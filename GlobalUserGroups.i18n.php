@@ -77,6 +77,20 @@ $messages['ia'] = array(
 	'globalusergroups-desc' => 'Permitte le uso de gruppos definite de usatores local como gruppos global',
 );
 
+/** Japanese (日本語)
+ * @author Whym
+ */
+$messages['ja'] = array(
+	'globalusergroups-desc' => 'ローカル利用者グループをグローバルグループとして使用できるようにする',
+);
+
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'globalusergroups-desc' => '로컬 그룹으로 정의된 권한을 글로벌 권한 그룹처럼 사용할 수 있도록 함',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
