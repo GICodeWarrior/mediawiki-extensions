@@ -65,6 +65,13 @@ $messages['he'] = array(
 	'newuserslist-desc' => 'הוספת תג מפענח <tt>&lt;newusers&gt;</tt> כדי לאחזר רשימת של משתמשים ושל תמונותיהם',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'newuserslist-desc' => 'Přidawa tafličku <tt>&lt;newusers&gt;</tt>, z kotrejež pomocu da so lisćina nowych wužiwarjow a jich awatary zwobraznić',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -83,7 +90,7 @@ $messages['ja'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'newuserslist-desc' => 'Deiht ene <code lang="en">&lt;newusers&gt;</code> Befähl en et Wiki, ön en Leß met neue Metmaacher un dänne ier Avataa-Belldscher ze krijje.',
+	'newuserslist-desc' => 'Deiht ene <code lang="en">&lt;newusers&gt;</code> Befähl en et Wiki, öm en Leß met neue Metmaacher un dänne ier Avataa-Belldscher ze krijje.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
