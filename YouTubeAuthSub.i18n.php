@@ -3333,7 +3333,7 @@ Ieuwen täiwe.',
 	'youtubeauthsub_viewpage' => 'Alternativ koast du [[$1|dien Video bekiekje]].',
 	'youtubeauthsub_jserror_nokeywords' => 'Reek een of moor Koaiwoude ien.',
 	'youtubeauthsub_jserror_notitle' => 'Reek n Tittel foar dät Video an.',
-	'youtubeauthsub_jserror_nodesc' => 'Reek ne Beschrieuwenge foar dät Video ien.',
+	'youtubeauthsub_jserror_nodesc' => 'Reek ne Beskrieuwenge foar dät Video ien.',
 );
 
 /** Sundanese (Basa Sunda)
