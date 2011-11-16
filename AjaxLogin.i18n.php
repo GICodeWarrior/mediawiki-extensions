@@ -623,6 +623,7 @@ Skontroluj swój prawopis.',
 /** Hungarian (Magyar)
  * @author Blogadmin
  * @author Dani
+ * @author Dj
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
@@ -635,6 +636,8 @@ Az oldal elhagyásával a szerkesztéseid elvesznek.',
 	'al-nosuchuser' => 'Nincs „$1” nevű szerkesztő.
 A szerkesztői nevek kis/nagybetű érzékenyek.
 Ellenőrizd hogy helyesen írtad-e.',
+	'al-createblocked' => 'Az IP címed blokkolva van, így nem tudsz felhasználói fiókot létrehozni.',
+	'al-throttled' => 'Túl sok jelszóval próbálkoztál mostanában. Kérlek várj $1 másodpercet a következő próbálkozás előtt.',
 );
 
 /** Interlingua (Interlingua)
@@ -827,12 +830,17 @@ Pasitikrinkite rašybą.',
  * @author StefanusRA
  */
 $messages['map-bms'] = array(
-	'ajaxlogin-desc' => 'Kotak dinamis yang memungkinkan pengguna untuk log masuk dan mengingatkan kata sandi
-Kotak dinamis sing ngijina panganggo nggo login lan nampa password nganggo imel',
+	'ajaxlogin-desc' => 'Kotak dinamis sing ngijina panganggo nggo login lan nampa password nganggo imel',
 	'ajaxLogin1' => 'Ben Rika teyeng mlebu/login, Rika kudu nglebokna password sing anyar.
 Kiye bakal ngetokna Rika sekang halaman suntingan kiye lan Rika bisa kelangan tulisan sing lagi disunting sekiye.',
 	'ajaxLogin2' => 'Rika uwis mantep?
-Rika bisa kelangan data sing lagi diowaih angger Rika ninggalna halaman kiye siki.',
+Rika bisa kelangan data sing lagi diowaih angger Rika ninggalna halaman kiye sekiye.',
+	'ajaxlogin-create' => 'Gawe akun',
+	'al-nosuchuser' => 'Ora ana pangganggo sing jenenge "$1".
+Jeneng pangganggo kuwe sensitif maring kapitalisasi.
+Priksa maning ejaane Rika.',
+	'al-createblocked' => 'Alamat IP-ne Rika diblokir ora olih gawe akun.',
+	'al-throttled' => 'Rika uwis kakehan njajal nglebokna password. Monggo ngenteni $1 {{PLURAL:$1|detik|detik}} sedurunge njajal maning.',
 );
 
 /** Malagasy (Malagasy)
