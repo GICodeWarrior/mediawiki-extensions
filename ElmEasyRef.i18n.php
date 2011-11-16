@@ -98,6 +98,15 @@ $messages['he'] = array(
 	'elm-easyref-close' => 'סגירה',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'elm-easyref-desc' => 'Wuskakowanske polo přidać, zo by so wobsah referency zwobraznił',
+	'elm-easyref-ref' => 'Referenca $1',
+	'elm-easyref-close' => 'Začinić',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
