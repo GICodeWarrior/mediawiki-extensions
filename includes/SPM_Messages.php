@@ -243,6 +243,7 @@ $messages['nl'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Event
  * @author Nghtwlkr
  */
 $messages['no'] = array(
@@ -251,7 +252,7 @@ $messages['no'] = array(
 	'spm-name' => 'Semantic Project Management',
 	'semanticprojectmanagement-desc' => 'Project Management Formats for Semantic MediaWiki «inline»-spørringer',
 	'semanticprojectmanagement' => 'Semantic Project Management-innstillinger',
-	'right-SPMsetup' => 'Rediger grunnleggende semantic project management innstillinger',
+	'right-SPMsetup' => 'Rediger grunnleggende Semantic Project Management-innstillinger',
 );
 
 /** Polish (Polski)
