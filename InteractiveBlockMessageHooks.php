@@ -41,8 +41,8 @@ class InteractiveBlockMessageHooks {
 		
 		if ( $parser->getTitle()->getNamespace() != NS_USER && $parser->getTitle()->getNamespace() != NS_USER_TALK ) {
 			$ret = 'unknown';
-                        return true;
-                }
+			return true;
+		}
 
 		$user = User::newFromName( $parser->getTitle()->getBaseText() ); 
 		if ($user instanceof User) {
