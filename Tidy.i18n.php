@@ -431,7 +431,7 @@ $messages['sr-ec'] = array(
  * @author Pyt
  */
 $messages['stq'] = array(
-	'tidy-desc' => 'Föiget ap normoale Sieden n Rieder „gultich“ un n Rieder „uungultich“ ien (ouhongich fon $wgUseTidy), uum ju globoale HTML-Tidy-Ienstaalenge foar ne eenpelde Betrachtenge uurschrieuwe tou konnen.',
+	'tidy-desc' => 'Föiget ap normoale Sieden n Rieder „gultich“ un n Rieder „uungultich“ ien (ouhongich fon $wgUseTidy), uum ju globoale HTML-Tidy-Ienstaalenge foar ne eenpelde Betrachtenge uurskrieuwe tou konnen.',
 	'tidy' => 'Oardenje',
 	'untidy' => 'Nit oardenje',
 );
