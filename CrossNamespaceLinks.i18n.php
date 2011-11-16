@@ -1019,7 +1019,7 @@ $messages['sr-el'] = array(
  */
 $messages['stq'] = array(
 	'crossnamespacelinks' => 'Sieden mäd Links ätter uur Noomensruume',
-	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Lieste fon do  Ferbiendengen ap Sieden fon uur Noomensruume]], do der in {{SITENAME}} nit foarhounden weese schuulen',
+	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Lieste fon do  Ferbiendengen ap Sieden fon uur Noomensruume]], do der in {{SITENAME}} nit foarhounden weese skuulen',
 	'crossnamespacelinks-summary' => 'Disse Lieste wiest Sieden, do der Ferbiendengen ap Sieden fon uur Noomensruume änthoolde. Uutgenuumen sunt deerbie do Noomensruume {{ns:special}}, {{ns:talk}}, {{ns:project}} un {{ns:template}}.',
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|Ferbiendenge wiest|Ferbiendengen wiese}} in dän $3-Noomensruum',
 );
