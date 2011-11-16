@@ -73,6 +73,13 @@ $messages['gsw'] = array(
 	'automaticboardwelcome-desc' => 'Duet automatisch [[MediaWiki:User-board-welcome-message|e Begriessigsnoocht]] uff d Benutzerdiskusionssyte yystelle, wänn s Chonto aaglait worde isch',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'automaticboardwelcome-desc' => 'Sćele awtomatisce [[MediaWiki:User-board-welcome-message|powitansku powěsć]] na wužiwarske deski nowych wužiwarjow po załoženju konta',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -106,6 +113,13 @@ $messages['lb'] = array(
  */
 $messages['lt'] = array(
 	'automaticboardwelcome-desc' => 'Automatiškai pranešimų [[MediaWiki:User-valdybos-Sveiki atvykę-message|a Sveikinimas]] dėl naujų vartotojų vartotojo lentos po sąskaitos kūrimo',
+);
+
+/** Basa Banyumasan (Basa Banyumasan)
+ * @author StefanusRA
+ */
+$messages['map-bms'] = array(
+	'automaticboardwelcome-desc' => 'Otomatis nggawe [[MediaWiki:User-board-welcome-message|pesen sugeng teka]] maring kaca dhopokane panganggo anyar seuwise nggawe akun',
 );
 
 /** Macedonian (Македонски)
