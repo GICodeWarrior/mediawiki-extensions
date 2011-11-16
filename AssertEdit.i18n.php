@@ -519,6 +519,15 @@ $messages['lt'] = array(
 	'assert_edit_message' => 'Nurodytas tvirtinimas ($1) atšauktas.',
 );
 
+/** Basa Banyumasan (Basa Banyumasan)
+ * @author StefanusRA
+ */
+$messages['map-bms'] = array(
+	'assert_edit_title' => 'Pandhedhesan gagal',
+	'assertedit-desc' => 'Nambahna pandhedhesan suntingan kanggo digunakna nang bot',
+	'assert_edit_message' => 'Pandhedhesan sing dikarepna ($1) gagal.',
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */
