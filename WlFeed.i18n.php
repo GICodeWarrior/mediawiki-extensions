@@ -51,6 +51,13 @@ $messages['arz'] = array(
 	'wlfeed-desc' => 'رتب توليد تلقيم ممددة',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'wlfeed-desc' => 'Clases de xeneración de canales ameyoraes',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
