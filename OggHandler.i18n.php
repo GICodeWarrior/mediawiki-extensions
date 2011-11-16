@@ -2987,6 +2987,8 @@ Te rog <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downlo
 	'ogg-dismiss' => 'Închide',
 	'ogg-download' => 'Descărcare fișier',
 	'ogg-desc-link' => 'Despre acest fișier',
+	'ogg-oggThumb-version' => 'OggHandler necesită oggThumb, versiunea $1 sau mai recentă.',
+	'ogg-oggThumb-failed' => 'oggThumb nu a reușit să creeze miniatura.',
 );
 
 /** Tarandíne (Tarandíne)
@@ -3406,12 +3408,12 @@ $messages['stq'] = array(
 	'ogg-stop' => 'Stop',
 	'ogg-play-video' => 'Video ouspielje',
 	'ogg-play-sound' => 'Audio ouspielje',
-	'ogg-no-player' => 'Dien System schient uur neen Ouspielsoftware tou ferföigjen. Installier <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ne Ouspielsoftware</a>.',
-	'ogg-no-xiphqt' => 'Dien System schient nit uur ju XiphQT-Komponente foar QuickTime tou ferföigjen. QuickTime kon sunner disse Komponente neen Ogg-Doatäie ouspielje. 
+	'ogg-no-player' => 'Dien System skient uur neen Ouspielsoftware tou ferföigjen. Installier <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ne Ouspielsoftware</a>.',
+	'ogg-no-xiphqt' => 'Dien System skient nit uur ju XiphQT-Komponente foar QuickTime tou ferföigjen. QuickTime kon sunner disse Komponente neen Ogg-Doatäie ouspielje. 
 Dou <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">leede XiphQT</a> of wääl ne uur Ouspielsoftware.',
 	'ogg-player-videoElement' => 'Anweesende Browser-Unnerstutsenge',
 	'ogg-player-oggPlugin' => 'Browser-Plugin',
-	'ogg-player-thumbnail' => 'Wies Foarschaubielde',
+	'ogg-player-thumbnail' => 'Wies Foarbekiekbielde',
 	'ogg-player-soundthumb' => 'Naan Player',
 	'ogg-player-selected' => '(uutwääld)',
 	'ogg-use-player' => 'Ouspielsoftware:',
