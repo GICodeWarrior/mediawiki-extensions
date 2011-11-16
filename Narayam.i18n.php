@@ -1406,9 +1406,11 @@ $messages['pt-br'] = array(
 
 /** Romanian (Română)
  * @author Firilacroco
+ * @author Minisarm
  */
 $messages['ro'] = array(
 	'narayam-help-page' => 'Help:Tastare',
+	'narayam-disable-preference' => 'Dezactivează metoda de introducere (IME) Narayam',
 	'narayam-eo' => 'Esperanto',
 	'narayam-hi-inscript' => 'InScript hindi',
 	'narayam-kn' => 'Transliterație kannada',
@@ -1423,7 +1425,7 @@ $messages['ro'] = array(
 	'narayam-sa-inscript' => 'InScript sanscrită',
 	'narayam-si-singlish' => 'Sinhala Singaleză',
 	'narayam-si-wijesekara' => 'Sinhala Wijesekara',
-	'narayam-ta99' => 'Tamil99',
+	'narayam-ta-99' => 'Tamil99',
 	'narayam-ta' => 'Transliterație tamilă',
 	'narayam-te-inscript' => 'InScript telugu',
 	'narayam-bn-avro' => 'Avro bengaleză',
@@ -1674,13 +1676,13 @@ $messages['sl'] = array(
  */
 $messages['sr-ec'] = array(
 	'narayam-desc' => 'Омогућава додавање прилагођених улазних метода за уређивачки оквир',
-	'narayam-toggle-ime' => 'промени улазну методу ($1)',
+	'narayam-toggle-ime' => 'Омогући ($1)',
 	'narayam-help-page' => 'Help:Куцање',
 	'narayam-checkbox-tooltip' => 'Укључивање или искључивање улазне методе',
 	'narayam-ml' => 'Малајалам пресловљавање',
 	'narayam-ml-inscript' => 'Малајалам индијска скрипта',
 	'narayam-sa' => 'Санскрит пресловљавање',
-	'narayam-ta99' => 'Тамил99',
+	'narayam-ta-99' => 'Тамил99',
 	'narayam-ta' => 'Тамилско пресловљавање',
 	'narayam-bn-avro' => 'Бенгалски авро',
 	'narayam-bn-inscript' => 'Бенгалска индијска скрипта',
