@@ -250,6 +250,8 @@ HTML;
 	 * @return string HTML
 	 */
 	protected static function getHiddenFooter( $feedbackItem, $mode ) {
+		global $wgLang, $wgUser;
+		
 		$id = $feedbackItem->getProperty('id');
 		$permalinkTitle = SpecialPage::getTitleFor( 'FeedbackDashboard', $id );
 		if ( $mode === 'shown' ) {
@@ -260,8 +262,11 @@ HTML;
 			$link = Xml::tags( 'span', array( 'class' => 'fbd-item-restore' ), "($link)" );
 			
 			$feedback_hidden_detail = self::getFeedbackHiddenDetail($id);
+			$timestamp = wfTimestamp( TS_DB, $feedback_hidden_detail->log_timestamp );
+
 			$footer = wfMessage('moodbar-hidden-footer')->rawParams( array( htmlspecialchars( $feedback_hidden_detail->log_user_text ), 
-				                                                 wfTimestamp( TS_DB, $feedback_hidden_detail->log_timestamp ),  
+				                                                 $wgLang->userDate($timestamp, $wgUser), 
+				                                                 $wgLang->userTime($timestamp, $wgUser),  
 				                                                 htmlspecialchars( $feedback_hidden_detail->log_comment ), 
 				                                                 $link ) )->escaped();
 			return Xml::tags( 'div', array( 'class' => 'error' ), $footer );
