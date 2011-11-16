@@ -63,11 +63,13 @@ $messages['en'] = array(
  * @author Kghbln
  * @author Purodha
  * @author Raymond
+ * @author Siebrand
  * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'livetranslate-desc' => '{{desc}}',
 	'right-managetms' => '{{doc-right|managetms}}',
+	'action-managetms' => '{{doc-action|managetms}}',
 	'group-tmxadmin' => '{{doc-group|tmxadmin}}
 TMX = Translation Memory eXchange',
 	'group-tmxadmin-member' => '{{doc-group|tmxadmin|member}}
@@ -255,6 +257,7 @@ $messages['bs'] = array(
 $messages['de'] = array(
 	'livetranslate-desc' => 'Ermöglicht die unmittelbare Übersetzung des Seiteninhalts mit „Google Übersetzer“',
 	'right-managetms' => 'Liste der Übersetzungsspeicher [[Special:SpecialLiveTranslate|anpassen]]',
+	'action-managetms' => 'Übersetzungsspeicher verwalten',
 	'group-tmxadmin' => 'TMX-Administratoren',
 	'group-tmxadmin-member' => '{{GENDER:$1|TMX-Administrator|TMX-Administratorin}}',
 	'grouppage-tmxadmin' => 'Project:TMX-Administratoren',
@@ -357,6 +360,7 @@ $messages['eu'] = array(
 
 /** French (Français)
  * @author Crochet.david
+ * @author Gomoko
  * @author Hashar
  * @author IAlex
  * @author Sherbrooke
@@ -364,6 +368,7 @@ $messages['eu'] = array(
 $messages['fr'] = array(
 	'livetranslate-desc' => 'Permet la traduction immédiate du contenu de la page en utilisant le service de traduction de Google',
 	'right-managetms' => '[[Special:SpecialLiveTranslate|Modifier]] la liste des mémoires de traduction',
+	'action-managetms' => "gérer l'historique des traductions",
 	'group-tmxadmin' => 'Admins TMX',
 	'group-tmxadmin-member' => '{{GENDER:$1|administrateur TMX|administratrice TMX}}',
 	'grouppage-tmxadmin' => 'Project:Admins_TMX',
@@ -427,6 +432,7 @@ $messages['frp'] = array(
 $messages['gl'] = array(
 	'livetranslate-desc' => 'Activa a tradución en vivo do contido dunha páxina mediante o servizo de tradución do Google',
 	'right-managetms' => '[[Special:SpecialLiveTranslate|Modificar]] a lista de memorias de tradución',
+	'action-managetms' => 'xestionar as memorias de tradución',
 	'group-tmxadmin' => 'Administradores TMX',
 	'group-tmxadmin-member' => '{{GENDER:$1|administrador|administradora}} TMX',
 	'grouppage-tmxadmin' => 'Project:Administradores TMX',
@@ -532,6 +538,10 @@ $messages['he'] = array(
  */
 $messages['hsb'] = array(
 	'livetranslate-desc' => 'Zmóžnja hnydomne přełožowanje wobsaha strony z pomocu słužby "Google Translate"',
+	'right-managetms' => 'Lisćinu přełožkowych składow [[Special:SpecialLiveTranslate|změnić]]',
+	'group-tmxadmin' => 'TMX-administratorojo',
+	'group-tmxadmin-member' => '{{GENDER:$1|TMX-administrator|TMX-administratorka}}',
+	'grouppage-tmxadmin' => 'Project: TMX-administratorojo',
 	'livetranslate-translate-to' => 'Přełož tutu stronu do',
 	'livetranslate-button-translate' => 'Přełožić',
 	'livetranslate-button-translating' => 'Přełožuje so...',
@@ -722,6 +732,7 @@ $messages['lb'] = array(
 $messages['mk'] = array(
 	'livetranslate-desc' => 'Овозможува преведување на содржината на една страница во живо, користејќи Google Translate',
 	'right-managetms' => '[[Special:SpecialLiveTranslate|Менување]] на списокот на преводни памтила',
+	'action-managetms' => 'раководство со преводни памтила',
 	'group-tmxadmin' => 'Администратори на TMX',
 	'group-tmxadmin-member' => '{{GENDER:$1|Администратор на TMX}}',
 	'grouppage-tmxadmin' => 'Project:Админи_на_TMX',
@@ -757,6 +768,7 @@ $messages['mk'] = array(
 $messages['ms'] = array(
 	'livetranslate-desc' => 'Membolehkan penterjemahan kandungan laman secara langsung dengan menggunakan khidmat Google Translate',
 	'right-managetms' => '[[Special:SpecialLiveTranslate|Ubah suai]] senarai ingatan terjemahan',
+	'action-managetms' => 'menguruskan ingatan terjemahan',
 	'group-tmxadmin' => 'Pentadbir TMX',
 	'group-tmxadmin-member' => '{{GENDER:$1|Pentadbir TMX}}',
 	'grouppage-tmxadmin' => 'Project:TMX_admins',
@@ -794,6 +806,7 @@ $messages['ms'] = array(
 $messages['nl'] = array(
 	'livetranslate-desc' => 'Maakt het mogelijk paginainhoud live te vertalen met behulp van de dienst Google Translate',
 	'right-managetms' => 'De lijst met vertaalgeheugens [[Special:SpecialLiveTranslate|wijzigen]]',
+	'action-managetms' => 'vertaalgeheugens te beheren',
 	'group-tmxadmin' => 'TMX-beheerders',
 	'group-tmxadmin-member' => '{{GENDER:$1|TMX-beheerder}}',
 	'grouppage-tmxadmin' => 'Project:TMX-beheerders',
