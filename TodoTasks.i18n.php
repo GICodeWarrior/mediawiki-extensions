@@ -1472,7 +1472,7 @@ Wäl häd die ne näie Apgoawe bie %s tou-oardend.
 
 Toun Bekiekjen fon dien komplette Apgoawenlieste sjuch %s.
 
-Dien früntelk %s-Bescheed-täl-System',
+Dien früntelk %s-Beskeed-täl-System',
 );
 
 /** Swedish (Svenska)
