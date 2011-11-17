@@ -1183,7 +1183,7 @@ $messages['frp'] = array(
 	'moodbar-what-content' => 'Ceta fonccionalitât est conçua por édiér la comunôtât a comprendre l’èxpèrience a les gens que chanjont lo seto.
 Por més d’enformacions, volyéd visitar la $1.',
 	'moodbar-what-link' => 'pâge que dècrit la fonccion',
-	'moodbar-privacy' => 'En sometent, vos accèptâd una transparence en acôrd avouéc cetes $1.',
+	'moodbar-privacy' => 'En sometent, vos accèptâd una transparence en acôrd avouéc celes $1.',
 	'moodbar-privacy-link' => 'condicions',
 	'moodbar-disable-link' => 'Su pas entèrèssiê. Volyéd dèsactivar cela fonccionalitât.',
 	'moodbar-form-title' => 'Perce que ...',
@@ -1233,9 +1233,10 @@ Por més d’enformacions, volyéd visitar la $1.',
 	'moodbar-comment-hidden' => '(Avis cachiê per mesera administrativa)',
 	'moodbar-feedback-show' => 'fâre vêre los avis cachiês',
 	'moodbar-feedback-hide' => 'cachiér los avis',
-	'moodbar-hidden-footer' => 'Avis cachiê, $1',
+	'moodbar-hidden-footer' => 'Avis cachiê per $1 lo $2 a $3, rêson : $4 $5',
 	'moodbar-feedback-restore' => 'refâre los avis cachiês',
 	'moodbar-action-item' => 'Chousa de l’avis :',
+	'moodbar-action-reason' => 'Rêson :',
 	'moodbar-type-happy' => 'Herox',
 	'moodbar-type-sad' => 'Tristo',
 	'moodbar-type-confused' => 'Confondu',
@@ -1322,6 +1323,7 @@ Para obter máis información, bótelle unha ollada á $1 .',
 	'moodbar-feedback-show' => 'mostrar o comentario agochado',
 	'moodbar-feedback-hide' => 'agochar o comentario',
 	'moodbar-hidden-footer' => 'Comentario agochado por $1 o $2 ás $3; motivo: $4 $5',
+	'moodbar-hidden-footer-without-log' => 'Comentario agochado $1',
 	'moodbar-feedback-restore' => 'restaurar o comentario agochado',
 	'moodbar-action-item' => 'Elemento de valoración:',
 	'moodbar-action-reason' => 'Motivo:',
@@ -1495,6 +1497,28 @@ $messages['hsb'] = array(
 	'moodbar-feedback-filters-username' => 'Wužiwarske mjeno',
 );
 
+/** Hungarian (Magyar)
+ * @author Dj
+ */
+$messages['hu'] = array(
+	'moodbar-type-happy-title' => 'Boldog',
+	'moodbar-type-sad-title' => 'Szomorú',
+	'moodbar-type-confused-title' => 'Zavarodott',
+	'moodbar-what-label' => 'Mi az?',
+	'moodbar-success-title' => 'Köszönjük!',
+	'moodbar-error-title' => 'Hupsz!',
+	'moodbar-header-timestamp' => 'Időbélyeg',
+	'moodbar-header-type' => 'Típus',
+	'moodbar-header-page' => 'Lap',
+	'moodbar-header-usertype' => 'Felhasználó típusa',
+	'moodbar-header-comment' => 'Hozzászólások',
+	'moodbar-header-namespace' => 'Névtér',
+	'moodbar-feedback-filters-type' => 'Hangulat:',
+	'moodbar-feedback-filters-type-happy' => 'Boldog',
+	'moodbar-feedback-filters-type-sad' => 'Szomorú',
+	'moodbar-feedback-filters-username' => 'Felhasználónév',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -1569,9 +1593,11 @@ Pro ulterior information, per favor visita le $1.',
 	'moodbar-comment-hidden' => '(Commentario celate per action administrative)',
 	'moodbar-feedback-show' => 'monstrar commentario celate',
 	'moodbar-feedback-hide' => 'celar commentario',
-	'moodbar-hidden-footer' => 'Commentario celate $1',
+	'moodbar-hidden-footer' => 'Commentario celate scribite per $1 le $2 a $3, motivo: $4 $5',
 	'moodbar-feedback-restore' => 'restaurar commentario celate',
 	'moodbar-action-item' => 'Elemento de retroaction:',
+	'moodbar-action-reason' => 'Motivo:',
+	'moodbar-action-reason-required' => 'Per favor specifica un motivo.',
 	'moodbar-hide-header' => 'Render iste elemento invisibile',
 	'moodbar-restore-header' => 'Restaurar le visibilitate de iste elemento',
 	'moodbar-invalid-item' => 'Le systema non poteva trovar le elemento de retroaction correcte.',
@@ -2785,6 +2811,13 @@ Za več informacij obiščite $1.',
 	'moodbar-log-header' => 'To je dnevnik dejanj, izvedenih na predmetih povratnih informacij, navedenih na [[Special:FeedbackDashboard|pregledni plošči povratnih informacij]].',
 	'moodbar-log-hide' => 'je skril(-a) [[$1]]',
 	'moodbar-log-restore' => 'je obnovil(-a) vidljivost [[$1]]',
+);
+
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
+ */
+$messages['sr-ec'] = array(
+	'moodbar-what-collapsed' => '▶',
 );
 
 /** Swedish (Svenska)
