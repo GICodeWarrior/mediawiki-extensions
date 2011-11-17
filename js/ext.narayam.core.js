@@ -348,9 +348,10 @@ $.narayam = new ( function() {
 	this.enable = function() {
 		if ( !enabled ) {
 			$.cookie( 'narayam-enabled', '1', { 'path': '/', 'expires': 30 } );
-			$( '#narayam-toggle' ).attr( 'checked', true );
-			$( 'li#pt-narayam').removeClass( 'narayam-inactive' );
-			$( 'li#pt-narayam').addClass( 'narayam-active' );
+			$( '#narayam-toggle' ).prop( 'checked', true );
+			$( 'li#pt-narayam')
+				.removeClass( 'narayam-inactive' )
+				.addClass( 'narayam-active' );
 			enabled = true;
 		}
 	};
@@ -361,9 +362,10 @@ $.narayam = new ( function() {
 	this.disable = function() {
 		if ( enabled ) {
 			$.cookie( 'narayam-enabled', '0', { 'path': '/', 'expires': 30 } );
-			$( '#narayam-toggle' ).attr( 'checked', false );
-			$( 'li#pt-narayam').removeClass( 'narayam-active' );
-			$( 'li#pt-narayam').addClass( 'narayam-inactive' );
+			$( '#narayam-toggle' ).prop( 'checked', false );
+			$( 'li#pt-narayam')
+				.removeClass( 'narayam-active' )
+				.addClass( 'narayam-inactive' );
 			enabled = false;
 		}
 	};
@@ -474,12 +476,12 @@ $.narayam = new ( function() {
 		}
 		if ( lastScheme) {
 			that.setScheme( lastScheme );
-			$( '#narayam-' + lastScheme ).attr( 'checked', 'checked' );
+			$( '#narayam-' + lastScheme ).prop( 'checked', true );
 		} else {
 			//if no saved input scheme, select the first.
 			var $firstScheme = $( 'input.narayam-scheme:first' );
 			that.setScheme( $firstScheme.val() );
-			$firstScheme.attr( 'checked', 'checked' );
+			$firstScheme.prop( 'checked', true );
 
 		}
 		var enabledCookie = $.cookie( 'narayam-enabled' );
@@ -611,9 +613,9 @@ $.narayam = new ( function() {
 			that.setScheme(  $(this).val() );
 			// rebuild the menu items with recent items.
 			$( '#narayam-menu-items' ).html( $.narayam.buildMenuItems() );
-			$( '#narayam-' +  $(this).val() ).attr( 'checked', 'checked' );
+			$( '#narayam-' +  $(this).val() ).prop( 'checked', true );
 			if ( enabled ) {
-				$( '#narayam-toggle' ).attr( 'checked', true );
+				$( '#narayam-toggle' ).prop( 'checked', true );
 			}
 		} );
 
