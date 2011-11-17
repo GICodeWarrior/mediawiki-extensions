@@ -275,7 +275,8 @@ $messages['qqq'] = array(
 	'contest-edit-reminder' => 'Form field label',
 	'contest-edit-end' => 'Form field label',
 	'contest-edit-exists-already' => 'Warning message to show when the contest already exists',
-	'contest-edit-submit' => 'Submit button text',
+	'contest-edit-submit' => 'Submit button text.
+{{Identical|Submit}}',
 	'contest-edit-delete' => 'Delete challange button text',
 	'contest-edit-add-first' => 'Add a challenge button text',
 	'contest-edit-add-another' => 'Add another challenge button text',
@@ -498,7 +499,12 @@ $messages['be-tarask'] = array(
 	'contest-edit-opportunities' => 'Старонка магчымасьцяў',
 	'contest-edit-rulespage' => 'Старонка правілаў',
 	'contest-edit-help' => 'Старонка дапамогі',
+	'contest-edit-reminder' => 'Старонка электроннага ліста з напамінам',
 	'contest-edit-end' => 'Сканчэньне конкурсу',
+	'contest-edit-exists-already' => 'Вы рэдагуеце існуючы конкурс.',
+	'contest-edit-submit' => 'Даслаць',
+	'contest-edit-challenges' => 'Мэты конкурсу',
+	'contest-edit-delete' => 'Выдаліць мэту',
 );
 
 /** Breton (Brezhoneg)
@@ -905,6 +911,18 @@ $messages['fa'] = array(
 	'contest-status-draft' => 'پیش نویس (غیر فعال)',
 );
 
+/** Finnish (Suomi)
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'contest-contest-go' => 'Siirry',
+	'contest-contest-yes' => 'Kyllä',
+	'contest-contest-no' => 'Ei',
+	'contest-contest-reminder-cancel' => 'Peruuta',
+	'contest-contest-reminder-close' => 'Sulje',
+	'contest-contestant-id' => 'Tunniste',
+);
+
 /** French (Français)
  * @author Gomoko
  * @author Reedy
@@ -1176,6 +1194,18 @@ $messages['frp'] = array(
 	'contest-contest-contestants' => 'Participents u concors',
 	'contest-contest-reminder-mail' => 'Mèssâjo de rapèl',
 	'contest-contest-send-reminder' => 'Mandar lo rapèl',
+	'contest-contest-go' => 'Validar',
+	'contest-contest-showonly' => 'Filtrar los candidats per',
+	'contest-contest-yes' => 'Ouè',
+	'contest-contest-no' => 'Nan',
+	'contest-contest-none' => 'Nion',
+	'contest-contest-some' => 'Doux-três',
+	'contest-contest-filter-challenge' => 'Dèfi',
+	'contest-contest-filter-volunteer' => 'Bènèvolo',
+	'contest-contest-filter-wmf' => 'WMF',
+	'contest-contest-filter-comments' => 'Comentèros',
+	'contest-contest-filter-rating_count' => 'Votos',
+	'contest-contest-filter-submission' => 'Rèponsa',
 	'contest-contest-reminder-title' => 'Mèssâjo de rapèl',
 	'contest-contest-reminder-send' => 'Mandar lo rapèl',
 	'contest-contest-reminder-cancel' => 'Anular',
