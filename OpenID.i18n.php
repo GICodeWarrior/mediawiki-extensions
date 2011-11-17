@@ -2133,7 +2133,7 @@ Pode engadir un contrasinal opcional no seu [[Special:Preferences#prefsection-pe
 	'openidnopolicy' => 'O sitio non especificou unha política de privacidade.',
 	'openidpolicy' => 'Comprobe a <a target="_new" href="$1">política de privacidade</a> para máis información.',
 	'openidoptional' => 'Opcional',
-	'openidrequired' => 'Necesario',
+	'openidrequired' => 'Obrigatorio',
 	'openidnickname' => 'Alcume',
 	'openidfullname' => 'Nome completo',
 	'openidemail' => 'Enderezo de correo electrónico',
