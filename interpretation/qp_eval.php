@@ -224,9 +224,10 @@ class qp_Eval {
 
 	/**
 	 * Calls php interpreter to lint interpretation script code
-	 * @param  $code   string with php code
-	 * @return bool    true, when code has no syntax errors;
-	 *         string  error message from php lint
+	 * @param  $code string with php code
+	 * @return mixed
+	 *   boolean  true, when code has no syntax errors;
+	 *   string  error message from php lint;
 	 */
 	static function lint( $code ) {
 		$pipes = array();
@@ -312,9 +313,13 @@ class qp_Eval {
 	/**
 	 * Checks the submitted eval code for errors
 	 * In case of success returns transformed code, which is safer for eval
-	 * @param $sourceCode  submitted code which has to be eval'ed (no php tags)
-	 * @param $destinationCode  transformed code (in case of success) (no php tags)
-	 * @return boolean true in case of success, string with error message on failure
+	 * @param $sourceCode  string
+	 *   submitted code which has to be eval'ed (no php tags)
+	 * @param $destinationCode  string
+	 *   transformed code (in case of success) (no php tags)
+	 * @return mixed
+	 *   boolean  true in case of success;
+	 *   string  error message on failure;
 	 */
 	static function checkAndTransformCode( $sourceCode, &$destinationCode ) {
 
@@ -382,18 +387,22 @@ class qp_Eval {
 
 	/**
 	 * Interpretates the answer with selected script
-	 * @param $interpretScript  string source code of interpretation script
-	 * @param $injectVars       array of PHP data to inject into interpretation script;
-	 *                          key of element will become variable name
-	 *                          in the interpretation script;
-	 *                          value of element will become variable value
-	 *                          in the interpretation script;
-	 * @param $interpResult     instance of qp_InterpResult class
+	 * @param $interpretScript
+	 *   string  source code of interpretation script
+	 * @param $injectVars
+	 *   array of PHP data to inject into interpretation script;
+	 *     key of element will become variable name in the interpretation script;
+	 *     value of element will become variable value in the interpretation script;
+	 * @param $interpResult  qp_InterpResult
 	 * @modifies $interpResult
-	 * @return                  array script result to check, or
-	 *                          qp_InterpResult $interpResult (in case of error)
+	 * @return  mixed
+	 *   array script result to check
+	 *   qp_InterpResult  $interpResult (in case of error)
 	 */
-	static function interpretAnswer( $interpretScript, $injectVars, qp_InterpResult $interpResult ) {
+	static function interpretAnswer(
+			$interpretScript,
+			array $injectVars,
+			qp_InterpResult $interpResult ) {
 		# template page evaluation
 		if ( ( $check = self::selfCheck() ) !== true ) {
 			# self-check error

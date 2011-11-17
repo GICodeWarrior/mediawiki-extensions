@@ -86,38 +86,39 @@ class qp_PollStore {
 	 * @param $argv['from'] indicates type of construction, other elements of $argv
 	 *          vary according to the value of 'from'
 	 */
-	function __construct( $argv = null ) {
+	function __construct( array $argv ) {
 		$this->interpResult = new qp_InterpResult();
 		# set poll store of poll descriptions cache and all it's ancestors
 		qp_PollCache::setStore( $this );
-		if ( is_array( $argv ) && array_key_exists( "from", $argv ) ) {
+		$from = 'null';
+		if ( array_key_exists( 'from', $argv ) ) {
+			$from = $argv['from'];
 			$this->Questions = array();
 			$this->mCompletedPostData = 'NA';
 			$this->pid = null;
 			$is_post = false;
-			switch ( $argv[ 'from' ] ) {
-				case 'poll_post' :
-					$is_post = true;
-				case 'poll_get' :
-					$this->createFromTagData( $argv, $is_post );
-					break;
-				case 'pid' :
-					if ( array_key_exists( 'pid', $argv ) ) {
-						$pid = intval( $argv[ 'pid' ] );
-						$this->createFromPid( $pid );
-					}
-					break;
-				default :
-					throw new MWException( 'Unknown value of "from" parameter: ' . $argv[ 'from' ] . ' in ' . __METHOD__ );
+			switch ( $from ) {
+			case 'poll_post' :
+				$is_post = true;
+			case 'poll_get' :
+				$this->createFromTagData( $argv, $is_post );
+				return;
+			case 'pid' :
+				if ( array_key_exists( 'pid', $argv ) ) {
+					$pid = intval( $argv[ 'pid' ] );
+					$this->createFromPid( $pid );
+				}
+				return;
 			}
 		}
+		throw new MWException( 'Unknown value of "from" parameter: ' . $from . ' in ' . __METHOD__ );
 	}
 
 	/**
 	 * Creates new poll from data available in qpoll tag attributes.
 	 * Usually that is HTTP GET / POST operation.
 	 */
-	function createFromTagData( &$argv, $is_post ) {
+	function createFromTagData( array &$argv, $is_post ) {
 		global $wgParser;
 		if ( array_key_exists( 'title', $argv ) ) {
 			$title = $argv[ 'title' ];
@@ -824,7 +825,7 @@ class qp_PollStore {
 	 * Get username by uid
 	 * @param  $uid  integer  qpoll user id
 	 */
-	function getUserName( $uid ) {
+	static function getUserName( $uid ) {
 		$db = wfGetDB( DB_MASTER );
 		if ( $uid !== null ) {
 			$res = $db->select(
@@ -908,13 +909,14 @@ class qp_PollStore {
 	 * @param  $question  qp_StubQuestion
 	 *   instance of question which has current user vote
 	 */
-	public function setQuestionAnswer( qp_StubQuestion $question ) {
+	public function setQuestion( qp_StubQuestion $question ) {
 		if ( $this->questionExists( $question->mQuestionId ) ) {
 			# question data already exists, poll structure was stored during previous
 			# submission.
 			# question, category and proposal descriptions are already loaded into
 			# $this->Questions[$question->mQuestionId] by $this->loadQuestions()
-			$this->Questions[$question->mQuestionId]->setQuestionAnswer( $question );
+			# but might have pending update, if the source of the poll was modified
+			$this->Questions[$question->mQuestionId]->applyQuestion( $question );
 		} else {
 			# create new question data from scratch (first submission)
 			$this->Questions[$question->mQuestionId] = qp_QuestionData::factory( $question );

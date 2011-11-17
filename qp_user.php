@@ -299,7 +299,7 @@ class qp_Setup {
 	/**
 	 * Autoload classes from the map provided
 	 */
-	static function autoLoad( $map ) {
+	static function autoLoad( array $map ) {
 		global $wgAutoloadClasses;
 		foreach ( $map as $path => &$classes ) {
 			if ( is_array( $classes ) ) {
@@ -517,7 +517,7 @@ class qp_Setup {
 	 * @return   array  key is attribute regexp
 	 *                  value is the value of attribute or null
 	 */
-	static function getXmlLikeAttributes( $attr_str, $attr_list ) {
+	static function getXmlLikeAttributes( $attr_str, array $attr_list ) {
 		$attr_vals = array();
 		$match = array();
 		foreach ( $attr_list as $attr_name ) {
@@ -551,8 +551,9 @@ class qp_Setup {
 	}
 
 	static function onLanguageGetMagic( &$magicWords, $langCode ) {
-		foreach ( self::ParserFunctionsWords( $langCode ) as $word => $trans )
-			$magicWords [$word ] = $trans;
+		foreach ( self::ParserFunctionsWords( $langCode ) as $word => $trans ) {
+			$magicWords[$word] = $trans;
+		}
 		return true;
 	}
 

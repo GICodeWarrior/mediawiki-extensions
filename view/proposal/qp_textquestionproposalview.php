@@ -126,7 +126,7 @@ class qp_TextQuestionProposalView extends qp_StubQuestionProposalView {
 	 * @return  boolean true when at least one category was found in the list
 	 *          false otherwise
 	 */
-	function applyInterpErrors( $prop_desc ) {
+	function applyInterpErrors( array $prop_desc ) {
 		$foundCats = false;
 		$cat_id = -1;
 		foreach ( $this->viewtokens as &$token ) {

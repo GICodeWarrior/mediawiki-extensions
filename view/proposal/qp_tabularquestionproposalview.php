@@ -185,7 +185,7 @@ class qp_TabularQuestionProposalView extends qp_StubQuestionProposalView {
 	 * @return  boolean true when at least one category was found in the list
 	 *          false otherwise
 	 */
-	function applyInterpErrors( $prop_desc ) {
+	function applyInterpErrors( array $prop_desc ) {
 		$foundCats = false;
 		# scan the category views row to highlight erroneous categories
 		foreach ( $this->row as $cat_id => &$cat_tag ) {

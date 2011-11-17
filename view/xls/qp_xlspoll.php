@@ -68,7 +68,7 @@ class qp_XlsPoll extends qp_XlsWriter {
 	function voicesToXls( qp_PollStore $pollStore ) {
 		$pollStore->loadQuestions();
 		$first_question = true;
-		foreach ( $pollStore->Questions as $qkey => &$qdata ) {
+		foreach ( $pollStore->Questions as $qkey => $qdata ) {
 			$xlsq = ( $qdata->type === 'textQuestion' ) ? $this->text_writer : $this->tabular_writer;
 			$xlsq->setQuestionData( $qdata );
 			if ( $first_question ) {
@@ -115,7 +115,7 @@ class qp_XlsPoll extends qp_XlsWriter {
 		$pollStore->loadTotals();
 		$pollStore->calculateStatistics();
 		$first_question = true;
-		foreach ( $pollStore->Questions as $qkey => &$qdata ) {
+		foreach ( $pollStore->Questions as $qkey => $qdata ) {
 			$xlsq = ( $qdata->type === 'textQuestion' ) ? $this->text_writer : $this->tabular_writer;
 			$xlsq->setQuestionData( $qdata );
 			if ( $first_question ) {

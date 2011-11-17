@@ -68,7 +68,7 @@ class qp_Interpret {
 	 *                     or false, when the poll questions were not randomized
 	 * @return instance of qp_InterpResult class (interpretation result)
 	 */
-	static function getResult( $interpArticle, $injectVars ) {
+	static function getResult( Article $interpArticle, array $injectVars ) {
 		global $wgParser, $wgContLang;
 		$matches = array();
 		# extract <qpinterpret> tags from the article content

@@ -61,7 +61,7 @@ class qp_StubQuestionView extends qp_AbstractView {
 	 * @param $parser
 	 * @param $frame
 	 */
-	function __construct( &$parser, &$frame ) {
+	function __construct( Parser $parser, PPFrame $frame ) {
 		parent::__construct( $parser, $frame );
 	}
 
@@ -104,7 +104,7 @@ class qp_StubQuestionView extends qp_AbstractView {
 	 * @param $className       CSS class name of row
 	 * @param $attribute_maps  translation of source attributes into html attributes (see qp_Renderer class)
 	 */
-	function addHeaderRow( $row, $className, $attribute_maps = null ) {
+	function addHeaderRow( $row, $className, array $attribute_maps = array() ) {
 		$this->hviews[] = (object) array(
 			'row' => $row,
 			'className' => $className,
@@ -126,11 +126,11 @@ class qp_StubQuestionView extends qp_AbstractView {
 		$questionTable = array();
 		# add header views to $questionTable
 		foreach ( $this->hviews as $header ) {
-			$rowattrs = '';
-			$attribute_maps = null;
+			$rowattrs = array();
+			$attribute_maps = array();
 			if ( is_object( $header ) ) {
 				$row = &$header->row;
-				$rowattrs = array( 'class' => $header->className );
+				$rowattrs['class'] = $header->className;
 				$attribute_maps = &$header->attribute_maps;
 			} else {
 				$row = &$header;

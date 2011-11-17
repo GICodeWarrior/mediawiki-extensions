@@ -11,7 +11,7 @@ class qp_XlsTextQuestion extends qp_XlsTabularQuestion {
 		) );
 	}
 
-	function writeQuestionVoice( $pvoices ) {
+	function writeQuestionVoice( array $pvoices ) {
 		$qdata = $this->qdata;
 		foreach ( $qdata->ProposalText as $propkey => &$serialized_tokens ) {
 			# Create 2D-table of proposal / category answers for each uid in uvoices array

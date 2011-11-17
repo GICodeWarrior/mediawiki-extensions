@@ -54,7 +54,7 @@ class qp_Poll extends qp_AbstractPoll {
 	# maximal count of attepts of answer submission ( < 1 for infinite )
 	var $maxAttempts = 0;
 
-	function __construct( $argv, qp_PollView $view ) {
+	function __construct( array $argv, qp_PollView $view ) {
 		parent::__construct( $argv, $view );
 		# dependance attr
 		if ( array_key_exists( 'dependance', $argv ) ) {
@@ -374,8 +374,9 @@ class qp_Poll extends qp_AbstractPoll {
 	/**
 	 * Parse question main header (common question and XML attributes)
 	 * initializes common question and question type/subtype
-	 * @param  $input  the question's header in QPoll syntax
-	 * @return an instance of question that matches the header attributes
+	 * @param  $header  string
+	 *   the question's header in QPoll syntax
+	 * @return  instance of question that matches the header attributes
 	 */
 	function parseMainHeader( $header ) {
 		# split common question and question attributes from the header
@@ -473,7 +474,7 @@ class qp_Poll extends qp_AbstractPoll {
 		if ( $this->mBeingCorrected ) {
 			if ( $question->getState() == '' ) {
 				# question is OK, store it into pollStore
-				$this->pollStore->setQuestionAnswer( $question );
+				$this->pollStore->setQuestion( $question );
 			} else {
 				# http post: not every proposals were answered: do not update DB
 				$this->pollStore->stateIncomplete();

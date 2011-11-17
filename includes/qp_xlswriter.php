@@ -92,7 +92,7 @@ class qp_XlsWriter {
 	 * for cell formatting; we store these instances in self::$format array
 	 * and then address these by passing array keys (strings with format "name").
 	 */
-	function addFormats( $formats ) {
+	function addFormats( array $formats ) {
 		foreach ( $formats as $fkey => $fdef ) {
 			self::$fdef[$fkey] = $fdef;
 			self::$format[$fkey] = self::$wb->addformat( $fdef );
@@ -176,7 +176,7 @@ class qp_XlsWriter {
 	/**
 	 * Write 2d-table of data into selected column of the current row.
 	 */
-	function writeFormattedTable( $colnum, &$table, $fkey = 'null' ) {
+	function writeFormattedTable( $colnum, array &$table, $fkey = 'null' ) {
 		$ws = self::$ws;
 		foreach ( $table as $rnum => &$row ) {
 			foreach ( $row as $cnum => &$cell ) {

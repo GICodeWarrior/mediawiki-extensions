@@ -53,7 +53,7 @@ class qp_InterpResultView {
 	/**
 	 * Add interpretation results to tagarray of poll view
 	 */
-	function showInterpResults( &$tagarray, qp_InterpResult $ctrl, $showDescriptions = false ) {
+	function showInterpResults( array &$tagarray, qp_InterpResult $ctrl, $showDescriptions = false ) {
 		if ( $ctrl->hasVisibleProperties() ) {
 			return;
 		}
@@ -92,7 +92,7 @@ class qp_InterpResultView {
 			foreach ( $strucTable as &$line ) {
 				if ( isset( $line['keys'] ) ) {
 					# current node is associative array
-					qp_Renderer::addRow( $rows, $line['keys'], '', 'th' );
+					qp_Renderer::addRow( $rows, $line['keys'], array(), 'th' );
 					qp_Renderer::addRow( $rows, $line['vals'] );
 				} else {
 					# current node is scalar value

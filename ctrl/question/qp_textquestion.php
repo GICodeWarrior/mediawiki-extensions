@@ -252,11 +252,10 @@ class qp_TextQuestion extends qp_StubQuestion {
 	/**
 	 * Applies previousely parsed attributes from main header into question's view
 	 * (all attributes but type)
-	 *
-	 * @param   $attr_str - source text with question attributes
-	 * @return  string : type of the question, empty when not defined
+	 * @param  $paramkeys array
+	 *   key is attribute name regexp match, value is the value of attribute
 	 */ 
-	function applyAttributes( $paramkeys ) {
+	function applyAttributes( array $paramkeys ) {
 		parent::applyAttributes( $paramkeys );
 		if ( $this->mSubType === 'requireAllCategories' ) {
 			# radio button prevents from filling all categories, disable it

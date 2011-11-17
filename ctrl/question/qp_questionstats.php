@@ -25,7 +25,7 @@ class qp_QuestionStats extends qp_AbstractQuestion {
 	# load some question fields from qp_QuestionData given
 	# (usually qp_QuestionData is a property of qp_PollStore instance)
 	# @param  $qdata - an instance of qp_QuestionData
-	function loadAnswer( qp_QuestionData &$qdata ) {
+	function loadAnswer( qp_QuestionData $qdata ) {
 		$this->alreadyVoted = $qdata->alreadyVoted;
 		$this->mCommonQuestion = $qdata->CommonQuestion;
 		$this->mProposalText = $qdata->ProposalText;
@@ -41,7 +41,7 @@ class qp_QuestionStats extends qp_AbstractQuestion {
 
 	# populates an instance of qp_Question with data from qp_QuestionData
 	# input: the object of type qp_Question
-	function getQuestionAnswer( qp_PollStore &$pollStore ) {
+	function getQuestionAnswer( qp_PollStore $pollStore ) {
 		if ( $pollStore->pid !== null ) {
 			if ( $pollStore->questionExists( $this->mQuestionId ) ) {
 				$qdata = $pollStore->Questions[ $this->mQuestionId ];

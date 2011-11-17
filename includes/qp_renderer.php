@@ -52,11 +52,13 @@ class qp_Renderer {
 
 	/**
 	 * Renders nested tag array into string
-	 * @param   $tag  multidimensional array of xml/html tags
+	 * @param   $tag  mixed
+	 *   array  (multidimensional) of xml/html tags;
+	 *   string single text node;
 	 * @return  string  representation of xml/html
 	 *
 	 * the stucture of $tag is like this:
-	 * array( "__tag"=>"td", "class"=>"myclass", 0=>"text before li", 1=>array( "__tag"=>"li", 0=>"text inside li" ), 2=>"text after li" )
+	 * array( '__tag'=>'td', 'class'=>'myclass', 0=>'text before li', 1=>array( '__tag'=>'li', 0=>'text inside li' ), 2=>'text after li' )
 	 *
 	 * both tagged and tagless lists are supported
 	 */
@@ -127,7 +129,7 @@ class qp_Renderer {
 	/**
 	 * add one or more CSS class name to tag class attribute
 	 */
-	static function addClass( &$tag, $className ) {
+	static function addClass( array &$tag, $className ) {
 		if ( !isset( $tag['class'] ) ) {
 			$tag['class'] = $className;
 			return;
@@ -152,8 +154,11 @@ class qp_Renderer {
 	 *         each element of resulting tagarray
 	 * @return array  tagarray
 	 */
-	static function tagList( $row, $destinationAttr = 0, $rowattrs = array( '__tag' => 'td' ) ) {
-		if ( count( $row ) <= 0 ) {
+	static function tagList(
+			array $row,
+			$destinationAttr = 0,
+			array $rowattrs = array( '__tag' => 'td' ) ) {
+		if ( count( $row ) < 1 ) {
 			return '';
 		}
 		$result = array();
@@ -174,7 +179,11 @@ class qp_Renderer {
 	 * destination cell xml attributes ("name"=>0, "count"=>colspan" )
 	 * @return array of destination cells
 	 */
-	static function newRow( $row, $rowattrs = "", $celltag = "td", $attribute_maps = null ) {
+	static function newRow(
+			array $row,
+			array $rowattrs = array(),
+			$celltag = "td",
+			array $attribute_maps = array() ) {
 		$result = "";
 		if ( count( $row ) > 0 ) {
 			foreach ( $row as &$cell ) {
@@ -183,21 +192,18 @@ class qp_Renderer {
 				}
 				$cell['__tag'] = $celltag;
 				$cell['__end'] = "\n";
-				if ( is_array( $attribute_maps ) ) {
-					# converts ("count"=>3) to ("colspan"=>3) in table headers - don't use frequently
-					foreach ( $attribute_maps as $key => $val ) {
-						if ( array_key_exists( $key, $cell ) ) {
-							$cell[ $val ] = $cell[ $key ];
-							unset( $cell[ $key ] );
-						}
+				# converts ("count"=>3) to ("colspan"=>3) in table headers
+				# please don't use frequently, because it's inefficient
+				foreach ( $attribute_maps as $key => $val ) {
+					if ( array_key_exists( $key, $cell ) ) {
+						$cell[ $val ] = $cell[ $key ];
+						unset( $cell[ $key ] );
 					}
 				}
 			}
 			$result = array( '__tag' => 'tr', 0 => $row, '__end' => "\n" );
-			if ( is_array( $rowattrs ) ) {
+			if ( count( $rowattrs ) > 0 ) {
 				$result = array_merge( $rowattrs, $result );
-			} elseif ( $rowattrs !== "" )  {
-				$result[0][] = __METHOD__ . ':invalid rowattrs supplied';
 			}
 		}
 		return $result;
@@ -207,7 +213,12 @@ class qp_Renderer {
 	 * Add row to the table
 	 * todo: document
 	 */
-	static function addRow( &$table, $row, $rowattrs = "", $celltag = "td", $attribute_maps = null ) {
+	static function addRow(
+			array &$table,
+			array $row,
+			array $rowattrs = array(),
+			$celltag = "td",
+			array $attribute_maps = array() ) {
 		$table[] = self::newRow( $row, $rowattrs, $celltag, $attribute_maps );
 	}
 
@@ -215,7 +226,12 @@ class qp_Renderer {
 	 * Add column to the table
 	 * todo: document
 	 */
-	static function addColumn( &$table, $column, $rowattrs = "", $celltag = "td", $attribute_maps = null ) {
+	static function addColumn(
+			array &$table,
+			array $column,
+			array $rowattrs = array(),
+			$celltag = "td",
+			array $attribute_maps = array() ) {
 		if ( count( $column ) > 0 ) {
 			$row = 0;
 			foreach ( $column as &$cell ) {
@@ -224,19 +240,15 @@ class qp_Renderer {
 				}
 				$cell[ '__tag' ] = $celltag;
 				$cell[ '__end' ] = "\n";
-				if ( is_array( $attribute_maps ) ) {
-					# converts ("count"=>3) to ("rowspan"=>3) in table headers - don't use frequently
-					foreach ( $attribute_maps as $key => $val ) {
-						if ( array_key_exists( $key, $cell ) ) {
-							$cell[ $val ] = $cell[ $key ];
-							unset( $cell[ $key ] );
-						}
+				# converts ("count"=>3) to ("rowspan"=>3) in table headers - don't use frequently
+				foreach ( $attribute_maps as $key => $val ) {
+					if ( array_key_exists( $key, $cell ) ) {
+						$cell[ $val ] = $cell[ $key ];
+						unset( $cell[ $key ] );
 					}
 				}
-				if ( is_array( $rowattrs ) ) {
+				if ( count( $rowattrs ) > 0 ) {
 					$cell = array_merge( $rowattrs, $cell );
-				} elseif ( $rowattrs !== "" ) {
-					$cell[ 0 ] = __METHOD__ . ':invalid rowattrs supplied';
 				}
 				if ( !array_key_exists( $row, $table ) ) {
 					$table[ $row ] = array( '__tag' => 'tr', '__end' => "\n" );
@@ -252,7 +264,11 @@ class qp_Renderer {
 		}
 	}
 
-	static function displayRow( $row, $rowattrs = "", $celltag = "td", $attribute_maps = null ) {
+	static function displayRow(
+			array $row,
+			array $rowattrs = array(),
+			$celltag = "td",
+			array $attribute_maps = array() ) {
 		# temporary var $tagsrow used to avoid warning in E_STRICT mode
 		$tagsrow = self::newRow( $row, $rowattrs, $celltag, $attribute_maps );
 		return self::renderTagArray( $tagsrow );
@@ -262,8 +278,8 @@ class qp_Renderer {
 	 * use newRow() or addColumn() to add resulting row/column to the table
 	 * if you want to use the resulting row with renderTagArray(), don't forget to apply attrs=array('__tag'=>'td')
 	 */
-	static function applyAttrsToRow( &$row, $attrs ) {
-		if ( is_array( $attrs ) && count( $attrs > 0 ) ) {
+	static function applyAttrsToRow( array &$row, array $attrs ) {
+		if ( count( $attrs > 0 ) ) {
 			foreach ( $row as &$cell ) {
 				if ( !is_array( $cell ) ) {
 					$cell = array_merge( $attrs, array( $cell ) );

@@ -42,7 +42,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class qp_PollStats extends qp_AbstractPoll {
 
-	function __construct( $argv, qp_PollStatsView $view ) {
+	function __construct( array $argv, qp_PollStatsView $view ) {
 		parent::__construct( $argv, $view );
 		$this->pollAddr = trim( $argv['address'] );
 	}
@@ -99,7 +99,7 @@ class qp_PollStats extends qp_AbstractPoll {
 		array_unshift( $unparsedAttributes, null );
 		unset( $unparsedAttributes[0] );
 		# first pass: parse the headers
-		foreach ( $this->pollStore->Questions as &$qdata ) {
+		foreach ( $this->pollStore->Questions as $qdata ) {
 			$question = new qp_QuestionStats(
 				$this,
 				qp_QuestionStatsView::newFromBaseView( $this->view ),
@@ -148,7 +148,7 @@ class qp_PollStats extends qp_AbstractPoll {
 
 	# populate the question with data and build it's HTML representation
 	# returns HTML representation of the question
-	function parseStats( qp_QuestionStats &$question ) {
+	function parseStats( qp_QuestionStats $question ) {
 		# parse the question body
 		if ( $question->getQuestionAnswer( $this->pollStore ) ) {
 			$question->statsParseBody();

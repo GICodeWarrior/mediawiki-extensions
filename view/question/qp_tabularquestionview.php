@@ -68,7 +68,7 @@ class qp_TabularQuestionView extends qp_StubQuestionView {
 	 * @param $frame
 	 * @param  $showResults     poll's showResults (may be overriden in the question)
 	 */
-	function __construct( &$parser, &$frame, $showResults ) {
+	function __construct( Parser $parser, PPFrame $frame, $showResults ) {
 		parent::__construct( $parser, $frame );
 		$this->pollShowResults = $showResults;
 	}
@@ -143,7 +143,7 @@ class qp_TabularQuestionView extends qp_StubQuestionView {
 	 * Builds tagarray of categories
 	 * @param     $categories  "raw" categories
 	 */
-	function buildCategoriesRow( $categories ) {
+	function buildCategoriesRow( array $categories ) {
 		$row = array();
 		if ( $this->proposalsFirst ) {
 			// add empty <th> at the begin of row to "compensate" proposal text
@@ -163,7 +163,7 @@ class qp_TabularQuestionView extends qp_StubQuestionView {
 	 * Builds tagarray of category spans
 	 * @param   $categorySpans  "raw" spans
 	 */
-	function buildSpansRow( $categorySpans ) {
+	function buildSpansRow( array $categorySpans ) {
 		$row = array();
 		if ( $this->proposalsFirst ) {
 			// add empty <th> at the begin of row to "compensate" proposal text
@@ -238,7 +238,7 @@ class qp_TabularQuestionView extends qp_StubQuestionView {
 			}
 			if ( isset( $this->pviews[$prop_id] ) ) {
 				# the whole proposal line has errors
-				$propview = &$this->pviews[$prop_id];
+				$propview = $this->pviews[$prop_id];
 				if ( !is_array( $prop_desc ) ) {
 					if ( !is_string( $prop_desc ) ) {
 						$prop_desc = wfMsg( 'qp_interpetation_wrong_answer' );
@@ -267,11 +267,11 @@ class qp_TabularQuestionView extends qp_StubQuestionView {
 		$questionTable = array();
 		# add header views to $questionTable
 		foreach ( $this->hviews as $header ) {
-			$rowattrs = '';
-			$attribute_maps = null;
+			$rowattrs = array();
+			$attribute_maps = array();
 			if ( is_object( $header ) ) {
 				$row = &$header->row;
-				$rowattrs = array( 'class' => $header->className );
+				$rowattrs['class'] = $header->className;
 				$attribute_maps = &$header->attribute_maps;
 			} else {
 				$row = &$header;

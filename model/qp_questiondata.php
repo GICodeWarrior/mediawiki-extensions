@@ -64,14 +64,7 @@ class qp_QuestionData {
 			return;
 		} elseif ( $argv instanceof qp_StubQuestion ) {
 			# create question data from the already existing question
-			$this->question_id = $argv->mQuestionId;
-			$this->type = $argv->mType;
-			$this->CommonQuestion = $argv->mCommonQuestion;
-			$this->Categories = $argv->mCategories;
-			$this->CategorySpans = $argv->mCategorySpans;
-			$this->ProposalText = $argv->mProposalText;
-			$this->ProposalNames = $argv->mProposalNames;
-			$this->setQuestionAnswer( $argv );
+			$this->applyQuestion( $argv );
 			return;
 		}
 		throw new MWException( "argv is neither an array nor instance of qp_QuestionData in " . __METHOD__ );
@@ -114,7 +107,7 @@ class qp_QuestionData {
 	 *
 	 * Used to reject previous vote in case the header is incompatble.
 	 */
-	function isCompatible( &$question ) {
+	function isCompatible( qp_StubQuestion $question ) {
 		if ( $question->mType != $this->type ) {
 			return false;
 		}
@@ -206,7 +199,14 @@ class qp_QuestionData {
 		return ( $name !== '' ) ? ":|{$name}|" : '';
 	}
 
-	public function setQuestionAnswer( qp_StubQuestion $question ) {
+	public function applyQuestion( qp_StubQuestion $question ) {
+		$this->question_id = $question->mQuestionId;
+		$this->type = $question->mType;
+		$this->CommonQuestion = $question->mCommonQuestion;
+		$this->Categories = $question->mCategories;
+		$this->CategorySpans = $question->mCategorySpans;
+		$this->ProposalText = $question->mProposalText;
+		$this->ProposalNames = $question->mProposalNames;
 		$this->ProposalCategoryId = $question->mProposalCategoryId;
 		$this->ProposalCategoryText = $question->mProposalCategoryText;
 	}

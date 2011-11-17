@@ -100,7 +100,10 @@ class qp_TextQuestionDataResults extends qp_QuestionDataResults {
 					throw new MWException( 'DB token has invalid type (' . gettype( $token ) . ') in ' . __METHOD__ );
 				}
 			}
-			$output .= qp_Renderer::displayRow( array( $row ), array( 'class' => 'qdatatext' ) );
+			$output .= qp_Renderer::displayRow(
+				array( $row ),
+				array( 'class' => 'qdatatext' )
+			);
 		}
 		$output .= "</table>\n" . "</div>\n";
 		return $output;

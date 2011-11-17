@@ -203,7 +203,7 @@ class PollResults extends qp_SpecialPage {
 			return '';
 		}
 		$pollStore->loadQuestions();
-		$userName = $pollStore->getUserName( $uid );
+		$userName = qp_PollStore::getUserName( $uid );
 		if ( $userName === false ) {
 			return '';
 		}
@@ -221,7 +221,7 @@ class PollResults extends qp_SpecialPage {
 		$headerTags = $this->getAnswerHeader( $pollStore );
 		$output .= qp_Renderer::renderTagArray( $headerTags );
 		unset( $headerTags );
-		foreach ( $pollStore->Questions as &$qdata ) {
+		foreach ( $pollStore->Questions as $qdata ) {
 			if ( $pollStore->isUsedQuestion( $qdata->question_id ) ) {
 				$output .= "<br />\n<b>" . $qdata->question_id . ".</b> " . qp_Setup::entities( $qdata->CommonQuestion ) . "<br />\n";
 				$qview = $qdata->getView();
@@ -251,7 +251,7 @@ class PollResults extends qp_SpecialPage {
 				$output .= $this->qpLink( $this->getTitle(), wfMsg( 'qp_export_to_xls' ), array( "style" => "font-weight:bold;" ), array( 'action' => 'stats_xls', 'id' => $pid ) ) . "<br />\n";
 				$output .= $this->qpLink( $this->getTitle(), wfMsg( 'qp_voices_to_xls' ), array( "style" => "font-weight:bold;" ), array( 'action' => 'voices_xls', 'id' => $pid ) ) . "<br />\n";
 				$output .= $this->qpLink( $this->getTitle(), wfMsg( 'qp_interpretation_results_to_xls' ), array( "style" => "font-weight:bold;" ), array( 'action' => 'interpretation_xls', 'id' => $pid ) ) . "<br />\n";
-				foreach ( $pollStore->Questions as &$qdata ) {
+				foreach ( $pollStore->Questions as $qdata ) {
 					$qview = $qdata->getView();
 					$output .= $qview->displayQuestionStats( $this, $pid );
 				}
@@ -415,9 +415,7 @@ class qp_UserPollsList extends qp_QueryPage {
 
 	function getPageHeader() {
 		global $wgLang, $wgContLang;
-		# fake pollStore to get username by uid: avoid to use this trick as much as possible
-		$pollStore = new qp_PollStore();
-		$userName = $pollStore->getUserName( $this->uid );
+		$userName = qp_PollStore::getUserName( $this->uid );
 		$db = wfGetDB( DB_SLAVE );
 		$res = $db->select(
 			'qp_users_polls',
@@ -654,24 +652,24 @@ class qp_UserCellList extends qp_QueryPage {
 				# 'parentheses' are unavailable in MW 1.14.x
 				$head[] = wfMsg( 'qp_parentheses',  $goto_link ) . '<br />';
 				$ques_found = false;
-				foreach ( $pollStore->Questions as &$ques ) {
-					if ( $ques->question_id == $this->question_id ) {
+				foreach ( $pollStore->Questions as $qdata ) {
+					if ( $qdata->question_id == $this->question_id ) {
 						$ques_found = true;
 						break;
 					}
 				}
 				if ( $ques_found ) {
-					$qpa = wfMsg( 'qp_header_line_qucl', $this->question_id, qp_Setup::entities( $ques->CommonQuestion ) );
-					if ( array_key_exists( $this->cat_id, $ques->Categories ) ) {
-						$categ = &$ques->Categories[ $this->cat_id ];
-						$proptext = $ques->ProposalText[ $this->proposal_id ];
+					$qpa = wfMsg( 'qp_header_line_qucl', $this->question_id, qp_Setup::entities( $qdata->CommonQuestion ) );
+					if ( array_key_exists( $this->cat_id, $qdata->Categories ) ) {
+						$categ = &$qdata->Categories[ $this->cat_id ];
+						$proptext = $qdata->ProposalText[ $this->proposal_id ];
 						$cat_name = $categ['name'];
 						if ( array_key_exists( 'spanId', $categ ) ) {
-							$cat_name =  wfMsg( 'qp_full_category_name', $cat_name, $ques->CategorySpans[ $categ['spanId'] ]['name'] );
+							$cat_name =  wfMsg( 'qp_full_category_name', $cat_name, $qdata->CategorySpans[ $categ['spanId'] ]['name'] );
 						}
 						$qpa = wfMsg( 'qp_header_line_qucl',
 							$this->question_id,
-							qp_Setup::entities( $ques->CommonQuestion ),
+							qp_Setup::entities( $qdata->CommonQuestion ),
 							qp_Setup::entities( $proptext ),
 							qp_Setup::entities( $cat_name ) ) . '<br />';
 						$head[] = array( '__tag' => 'div', 'class' => 'head', 'style' => 'padding-left:2em;', 0 => $qpa );

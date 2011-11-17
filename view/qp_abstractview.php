@@ -60,9 +60,9 @@ class qp_AbstractView {
 	 * @param  $parser   instance of parser for current tag hook
 	 * @param  $ppframe  instance of ppframe for current tag hook
 	 */
-	function __construct( &$parser, &$frame ) {
-		$this->parser = &$parser;
-		$this->ppframe = &$frame;
+	function __construct( Parser $parser, PPFrame $frame ) {
+		$this->parser = $parser;
+		$this->ppframe = $frame;
 		$this->linker = new Linker();
 	}
 
@@ -84,7 +84,12 @@ class qp_AbstractView {
 		$this->ctrl = $ctrl;
 	}
 
-	function link( $target, $text = null, $customAttribs = array(), $query = array(), $options = array() ) {
+	function link(
+			$target,
+			$text = null,
+			array $customAttribs = array(),
+			array $query = array(),
+			array $options = array() ) {
 		return $this->linker->link( $target, $text, $customAttribs, $query, $options );
 	}
 

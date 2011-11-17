@@ -50,9 +50,9 @@ class qp_FunctionsHook {
 
 	var $error_message = 'no_such_poll';
 
-	function qpuserchoice( &$parser, $frame, $args ) {
+	function qpuserchoice( Parser &$parser, PPFrame $frame, array $args ) {
 		qp_Setup::onLoadAllMessages();
-		$this->frame = &$frame;
+		$this->frame = $frame;
 		$this->args = &$args;
 		if ( isset( $args[ 0 ] ) ) {
 			# args[0] is a poll address
@@ -101,7 +101,7 @@ class qp_FunctionsHook {
 		return false;
 	}
 
-	function qpuserchoiceValidResult( $qdata ) {
+	function qpuserchoiceValidResult( qp_QuestionData $qdata ) {
 		$result = '';
 		if ( array_key_exists( $this->proposal_id, $qdata->ProposalCategoryId ) ) {
 			foreach ( $qdata->ProposalCategoryId[ $this->proposal_id ] as $id_key => $cat_id ) {

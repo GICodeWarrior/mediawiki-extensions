@@ -31,7 +31,7 @@ class qp_XlsTabularQuestion extends qp_XlsWriter {
 		$this->writeRowLn( 0, $row );
 	}
 
-	function writeQuestionVoice( $pvoices ) {
+	function writeQuestionVoice( array $pvoices ) {
 		$qdata = $this->qdata;
 		# create square table of proposal / category answers for each uid in uvoices array
 		$voicesTable = array();

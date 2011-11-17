@@ -99,7 +99,7 @@ class qp_AbstractPoll {
 	 *
 	 * @public
 	 */
-	function __construct( $argv, qp_AbstractPollView $view ) {
+	function __construct( array $argv, qp_AbstractPollView $view ) {
 		global $wgLanguageCode;
 		$this->mResponse = qp_Setup::$request->response();
 		# Determine which messages will be used, according to the language.
@@ -250,7 +250,7 @@ class qp_AbstractPoll {
 	 * @modifies $paramkeys  array  key is attribute regexp, value is the value of attribute
 	 * @return   string  the value of question's type attribute
 	 */
-	function getQuestionAttributes( $attr_str, &$paramkeys ) {
+	function getQuestionAttributes( $attr_str, array &$paramkeys ) {
 		$paramkeys = qp_Setup::getXmlLikeAttributes( $attr_str, $this->questionAttributeKeys );
 		# apply default questions attributes from poll definition, if there is any
 		foreach ( $this->defaultQuestionAttributes as $attr => $val ) {

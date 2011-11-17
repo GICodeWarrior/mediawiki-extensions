@@ -284,7 +284,7 @@ class qp_PollCache {
 		$this->updateFromPollStore();
 		if ( count( $this->replace ) < 1 ) {
 			# this cannot happen here; however it can happen in ancestor classes
-			throw new Exception( "zero rows replace in " . __METHOD__ );
+			throw new MWException( "zero rows replace in " . __METHOD__ );
 		}
 		$replaceRows = ( $curr_cache_rows = $wgMemc->get( $this->getMemcKey() ) ) === false ||
 			serialize( $curr_cache_rows ) !== serialize( $this->memc_rows );

@@ -85,7 +85,7 @@ abstract class qp_AbstractQuestion {
 	 * @param   $attr_str - source text with question attributes
 	 * @return  string : type of the question, empty when not defined
 	 */
-	function applyAttributes( $paramkeys ) {
+	function applyAttributes( array $paramkeys ) {
 		$this->view->setLayout( $paramkeys[ 'layout' ], $paramkeys[ 'textwidth' ] );
 		$this->view->setShowResults( $paramkeys[ 'showresults' ] );
 		$this->view->setPropWidth( $paramkeys[ 'propwidth' ] );

@@ -79,7 +79,7 @@ class qp_TextQuestionViewRow {
 	/**
 	 * Add proposal error tagarray
 	 */
-	function addError( $elem ) {
+	function addError( stdClass $elem ) {
 		$this->cell[] = array(
 			'__tag' => 'span',
 			'class' => 'proposalerror',
@@ -90,7 +90,7 @@ class qp_TextQuestionViewRow {
 	/**
 	 * Add category as input type text / checkbox / radio / textarea tagarray
 	 */
-	function addInput( $elem, $className ) {
+	function addInput( stdClass $elem, $className ) {
 		$tagName = ( $elem->type === 'text' && $elem->attributes['height'] !== 0 ) ? 'textarea' : 'input';
 		$lines_count = 1;
 		# get category value
@@ -153,7 +153,7 @@ class qp_TextQuestionViewRow {
 	/**
 	 * Add category as select / option list tagarray
 	 */
-	function addSelect( $elem, $className ) {
+	function addSelect( stdClass $elem, $className ) {
 		if ( $elem->options[0] !== '' ) {
 			# default element in select/option set always must be an empty option
 			array_unshift( $elem->options, '' );
@@ -209,7 +209,7 @@ class qp_TextQuestionViewRow {
 	/**
 	 * Add tagarray representation of proposal part
 	 */
-	function addProposalPart( $elem ) {
+	function addProposalPart( /* string */ $elem ) {
 		$this->cell[] = array(
 			'__tag' => 'span',
 			'class' => 'prop_part',
@@ -268,7 +268,7 @@ class qp_TextQuestionView extends qp_StubQuestionView {
 	 * @param $frame
 	 * @param  $showResults     poll's showResults (may be overriden in the question)
 	 */
-	function __construct( &$parser, &$frame, $showResults ) {
+	function __construct( Parser $parser, PPFrame $frame, $showResults ) {
 		parent::__construct( $parser, $frame );
 		$this->vr = new qp_TextQuestionViewRow( $this );
 		/* todo: implement showResults */
@@ -319,7 +319,7 @@ class qp_TextQuestionView extends qp_StubQuestionView {
 			}
 			if ( isset( $this->pviews[$prop_id] ) ) {
 				# the whole proposal line has errors
-				$propview = &$this->pviews[$prop_id];
+				$propview = $this->pviews[$prop_id];
 				if ( !is_array( $prop_desc ) ) {
 					if ( !is_string( $prop_desc ) ) {
 						$prop_desc = wfMsg( 'qp_interpetation_wrong_answer' );
@@ -350,7 +350,7 @@ class qp_TextQuestionView extends qp_StubQuestionView {
 	 * @param   $viewtokens  array of viewtokens
 	 * @return  tagarray
 	 */
-	function renderParsedProposal( $pkey, &$viewtokens ) {
+	function renderParsedProposal( $pkey, array &$viewtokens ) {
 		$vr = $this->vr;
 		# proposal prefix for category tag id generation
 		$vr->reset( "tx{$this->ctrl->poll->mOrderId}q{$this->ctrl->mQuestionId}p{$pkey}" );
@@ -411,18 +411,18 @@ class qp_TextQuestionView extends qp_StubQuestionView {
 		$questionTable = array();
 		# add header views to $questionTable
 		foreach ( $this->hviews as $header ) {
-			$rowattrs = '';
-			$attribute_maps = null;
+			$rowattrs = array();
+			$attribute_maps = array();
 			if ( is_object( $header ) ) {
 				$row = &$header->row;
-				$rowattrs = array( 'class' => $header->className );
+				$rowattrs['class'] = $header->className;
 				$attribute_maps = &$header->attribute_maps;
 			} else {
 				$row = &$header;
 			}
 			qp_Renderer::addRow( $questionTable, $row, $rowattrs, 'th', $attribute_maps );
 		}
-		foreach ( $this->pviews as $pkey => &$propview ) {
+		foreach ( $this->pviews as $pkey => $propview ) {
 			$prop = $this->renderParsedProposal( $pkey, $propview->viewtokens );
 			$rowattrs = array( 'class' => $propview->rowClass );
 			if ( $this->transposed ) {

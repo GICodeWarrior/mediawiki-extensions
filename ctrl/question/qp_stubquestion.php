@@ -33,7 +33,7 @@ class qp_StubQuestion extends qp_AbstractQuestion {
 	# load some question fields from qp_QuestionData given
 	# (usually qp_QuestionData is an array property of qp_PollStore instance)
 	# @param   $qdata - an instance of qp_QuestionData
-	function loadAnswer( qp_QuestionData &$qdata ) {
+	function loadAnswer( qp_QuestionData $qdata ) {
 		$this->alreadyVoted = $qdata->alreadyVoted;
 		$this->mPrevProposalCategoryId = $qdata->ProposalCategoryId;
 		$this->mPrevProposalCategoryText = $qdata->ProposalCategoryText;
@@ -47,7 +47,7 @@ class qp_StubQuestion extends qp_AbstractQuestion {
 
 	# populates an instance of qp_Question with data from qp_QuestionData
 	# @param   the object of type qp_Question
-	function getQuestionAnswer( qp_PollStore &$pollStore ) {
+	function getQuestionAnswer( qp_PollStore $pollStore ) {
 		if ( $pollStore->pid !== null ) {
 			if ( $pollStore->questionExists( $this->mQuestionId ) ) {
 				$qdata = $pollStore->Questions[ $this->mQuestionId ];
@@ -95,12 +95,13 @@ class qp_StubQuestion extends qp_AbstractQuestion {
 	}
 
 	/**
-	 * @return  associative array of script-generated interpretation error
-	 *          messages for current question proposals (and optionally categories)
-	 *          false, when there are no script-generated error messages
+	 * @return  mixed
+	 *   array  (associative) of script-generated interpretation error messages
+	 *     for current question proposals (and optionally categories);
+	 *   boolean  false, when there are no script-generated error messages;
 	 */
 	function getInterpErrors() {
-		$interpResult = &$this->poll->pollStore->interpResult;
+		$interpResult = $this->poll->pollStore->interpResult;
 		if ( !is_array( $interpResult->qpcErrors ) ||
 				!isset( $interpResult->qpcErrors[$this->mQuestionId] ) ) {
 			return false;

@@ -139,13 +139,16 @@ class qp_InterpResult {
 
 	/**
 	 * Build a projection of associative array tree to 2nd dimensional array
-	 * @modifies  $strucTable  array  destination 2nd dimensional array
-	 *            (see description in $this->getStructuredAnswerTable);
-	 * @param     $structured  array  current node of associative array tree
-	 * @param     $level_header  string  current "folder-like" prefix of
-	 *            structured answer nested key (levels are separated with " / ")
+	 * @modifies  $strucTable  array
+	 *   destination 2nd dimensional array;
+	 *   see description in $this->getStructuredAnswerTable();
+	 * @param  $structured  mixed
+	 *   array / scalar current node of associative array tree
+	 * @param  $level_header  string
+	 *   current "folder-like" prefix of structured answer nested key
+	 * (levels are separated with " / ")
 	 */
-	function buildStructuredTable( &$strucTable, &$structured, $level_header = '' ) {
+	function buildStructuredTable( array &$strucTable, &$structured, $level_header = '' ) {
 		$keys = array();
 		$vals = array();
 		if ( is_array( $structured ) ) {

@@ -123,7 +123,7 @@ class qp_SchemaUpdater {
 	 * @param  $tableset  array list of DB tables in set
 	 * @return  array with names of non-existing tables in specified list
 	 */
-	private static function tablesExists( $tableset ) {
+	private static function tablesExists( array $tableset ) {
 		$db = & wfGetDB( DB_MASTER );
 		$tablesNotFound = array();
 		foreach ( $tableset as &$table ) {

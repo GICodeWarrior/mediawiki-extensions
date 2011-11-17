@@ -65,7 +65,7 @@ class qp_QuestionCollection {
 	 * placed in $except. ($except must therefore be an array)
 	 * function returns false if $except holds all values between $min and $max.
 	 */
-	function rand_except( $min, $max, $except ) {
+	function rand_except( $min, $max, array $except ) {
 		# first sort array values
 		sort( $except, SORT_NUMERIC );
 		# calculate average gap between except-values
@@ -112,7 +112,7 @@ class qp_QuestionCollection {
 
 	function setUsedQuestions( $randomQuestions ) {
 		if ( !is_array( $randomQuestions ) ) {
-			foreach ( $this->questions as $qidx => &$question ) {
+			foreach ( $this->questions as $qidx => $question ) {
 				$question->usedId = $question->mQuestionId;
 			}
 			return;
@@ -121,7 +121,7 @@ class qp_QuestionCollection {
 		$this->usedQuestions = array();
 		# questions keys start from 1
 		$usedId = 1;
-		foreach ( $this->questions as $qidx => &$question ) {
+		foreach ( $this->questions as $qidx => $question ) {
 			if ( in_array( $qidx, $randomQuestions, true ) ) {
 				# usedQuestions keys start from 0
 				$this->usedQuestions[] = $qidx;
@@ -149,7 +149,7 @@ class qp_QuestionCollection {
 
 	function usedCount() {
 		$used = 0;
-		foreach ( $this->questions as &$question ) {
+		foreach ( $this->questions as $question ) {
 			if ( $question->usedId !== false ) {
 				$used++;
 			}

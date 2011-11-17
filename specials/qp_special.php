@@ -51,7 +51,12 @@ class qp_SpecialPage extends SpecialPage {
 		parent::__construct( $name, $restriction, $listed, $function, $file, $includable );
 	}
 
-	function qpLink( $target, $text = null, $customAttribs = array(), $query = array(), $options = array() ) {
+	function qpLink(
+			$target,
+			$text = null,
+			array $customAttribs = array(),
+			array $query = array(),
+			array $options = array() ) {
 		return self::$linker->link( $target, $text, $customAttribs, $query, $options );
 	}
 

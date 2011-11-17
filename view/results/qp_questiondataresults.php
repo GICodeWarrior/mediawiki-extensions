@@ -22,7 +22,7 @@ class qp_QuestionDataResults {
 		$this->ctrl = $ctrl;
 	}
 
-	protected function categoryentities( $cat ) {
+	protected function categoryentities( array $cat ) {
 		$cat['name'] = qp_Setup::entities( $cat['name'] );
 		return $cat;
 	}
@@ -33,8 +33,18 @@ class qp_QuestionDataResults {
 	function displayUserQuestionVote() {
 		$ctrl = $this->ctrl;
 		$output = "<div class=\"qpoll\">\n" . "<table class=\"qdata\">\n";
-		$output .= qp_Renderer::displayRow( array_map( array( $this, 'categoryentities' ), $ctrl->CategorySpans ), array( 'class' => 'spans' ), 'th', array( 'count' => 'colspan', 'name' => 0 ) );
-		$output .= qp_Renderer::displayRow( array_map( array( $this, 'categoryentities' ), $ctrl->Categories ), '', 'th', array( 'name' => 0 ) );
+		$output .= qp_Renderer::displayRow(
+			array_map( array( $this, 'categoryentities' ), $ctrl->CategorySpans ),
+			array( 'class' => 'spans' ),
+			'th',
+			array( 'count' => 'colspan', 'name' => 0 )
+		);
+		$output .= qp_Renderer::displayRow(
+			array_map( array( $this, 'categoryentities' ), $ctrl->Categories ),
+			array(),
+			'th',
+			array( 'name' => 0 )
+		);
 		# multiple choice polls doesn't use real spans, instead, every column is like "span"
 		$spansUsed = count( $ctrl->CategorySpans ) > 0 || $ctrl->type == "multipleChoice";
 		foreach ( $ctrl->ProposalText as $propkey => &$proposal_text ) {
@@ -80,8 +90,18 @@ class qp_QuestionDataResults {
 		$current_title = $page->getTitle();
 		$output = "<br />\n<b>" . $ctrl->question_id . ".</b> " . qp_Setup::entities( $ctrl->CommonQuestion ) . "<br />\n";
 		$output .= "<div class=\"qpoll\">\n" . "<table class=\"qdata\">\n";
-		$output .= qp_Renderer::displayRow( array_map( array( $this, 'categoryentities' ), $ctrl->CategorySpans ), array( 'class' => 'spans' ), 'th', array( 'count' => 'colspan', 'name' => 0 ) );
-		$output .= qp_Renderer::displayRow( array_map( array( $this, 'categoryentities' ), $ctrl->Categories ), '', 'th', array( 'name' => 0 ) );
+		$output .= qp_Renderer::displayRow(
+			array_map( array( $this, 'categoryentities' ), $ctrl->CategorySpans ),
+			array( 'class' => 'spans' ),
+			'th',
+			array( 'count' => 'colspan', 'name' => 0 )
+		);
+		$output .= qp_Renderer::displayRow(
+			array_map( array( $this, 'categoryentities' ), $ctrl->Categories ),
+			array(),
+			'th',
+			array( 'name' => 0 )
+		);
 		# multiple choice polls doesn't use real spans, instead, every column is like "span"
 		$spansUsed = count( $ctrl->CategorySpans ) > 0 || $ctrl->type == "multipleChoice";
 		foreach ( $ctrl->ProposalText as $propkey => &$proposal_text ) {
