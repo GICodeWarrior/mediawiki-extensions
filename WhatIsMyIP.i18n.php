@@ -317,7 +317,7 @@ $messages['fi'] = array(
 	'whatismyip' => 'Mikä IP-osoitteeni on',
 	'whatismyip-desc' => 'Näyttää käyttäjän nykyisen [[Special:WhatIsMyIP|IP-osoitteen]].',
 	'whatismyip-out' => 'IP-osoitteesi:',
-	'right-whatismyip' => 'Katsoa oman [[Special:WhatIsMyIP|IP-osoitteensa]]',
+	'right-whatismyip' => 'Tarkastella [[Special:WhatIsMyIP|omaa IP-osoitetta]]',
 );
 
 /** French (Français)
