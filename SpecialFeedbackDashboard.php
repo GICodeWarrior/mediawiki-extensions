@@ -263,12 +263,19 @@ HTML;
 			
 			$feedback_hidden_detail = self::getFeedbackHiddenDetail($id);
 
-			$footer = wfMessage('moodbar-hidden-footer')->
-			                   rawParams( htmlspecialchars( $feedback_hidden_detail->log_user_text ), 
-				                      $wgLang->date($feedback_hidden_detail->log_timestamp), 
-				                      $wgLang->time($feedback_hidden_detail->log_timestamp),  
-				                      htmlspecialchars( $feedback_hidden_detail->log_comment ), 
-				                      $link )->escaped();
+			if($feedback_hidden_detail === false) {
+				$footer = wfMessage('moodbar-hidden-footer-without-log')->
+			                    rawParams( $link )->escaped();	
+			}
+			else {
+				$footer = wfMessage('moodbar-hidden-footer')->
+			                    rawParams( htmlspecialchars( $feedback_hidden_detail->log_user_text ), 
+				                       $wgLang->date($feedback_hidden_detail->log_timestamp), 
+				                       $wgLang->time($feedback_hidden_detail->log_timestamp),  
+				                       htmlspecialchars( $feedback_hidden_detail->log_comment ), 
+				                       $link )->escaped();	
+			}
+						
 			return Xml::tags( 'div', array( 'class' => 'error' ), $footer );
 		} elseif ( $mode === 'hidden' ) {
 			$linkText = wfMessage('moodbar-feedback-show')->escaped();
@@ -502,12 +509,12 @@ HTML;
 	/**
 	 * Get admin's username/timestamp/reason for hiding a feedback
 	 * @param $mbf_id primary key for moodbar_feedback
-	 * @return stdObject
+	 * @return ResultWrapper|bool
 	 */
 	protected static function getFeedbackHiddenDetail( $mbf_id ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		
-		$res = $dbr->select( array( 'logging' ), 
+		return $dbr->selectRow( array( 'logging' ), 
 			             array( 'log_user_text', 'log_timestamp', 'log_comment' ),
 			             array( 'log_namespace' => NS_SPECIAL,  
 			             	    'log_title' => 'FeedbackDashboard/' . intval( $mbf_id ),  
@@ -516,10 +523,6 @@ HTML;
 			             __METHOD__,
 			             array( 'LIMIT' => 1, 'ORDER BY' => "log_timestamp DESC" )
 		);
-		
-		$rows = iterator_to_array( $res, /*$use_keys=*/false );	
-		
-		return current($rows);
 	}
 	
 }
