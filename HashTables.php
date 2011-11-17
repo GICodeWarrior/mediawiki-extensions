@@ -65,11 +65,6 @@ class ExtHashTables {
 	 * @private
 	 */
     var $mHashTables = array();
-
-	function __construct() {
-		global $wgHooks;
-		$wgHooks['ParserClearState'][] = &$this;
-	}
 	
 	/**
 	 * Sets up parser functions
