@@ -3457,6 +3457,7 @@ $messages['hsb'] = array(
 /** Hungarian (Magyar)
  * @author BáthoryPéter
  * @author Dani
+ * @author Dj
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
@@ -3483,7 +3484,6 @@ $messages['hu'] = array(
 	'mwe-imported_from' => 'A(z) $1 innen lett importálva: [$2 $3]. Lásd az eredeti [$4 leíró lapot] további információkért.',
 	'mwe-import-description' => '$1, importálva innen: $2',
 	'mwe-select_file' => 'Fájl kijelölése',
-	'mwe-select_ownwork' => 'Teljesen általam készített munkát töltök fel, és a következő alatt licencelem:',
 	'mwe-license_cc-by-sa' => 'Creative Commons Nevezd meg – Így add tovább (3.0)',
 	'mwe-upload' => 'Fájl feltöltése',
 	'mwe-destfilename' => 'Cél fájlnév:',
@@ -3491,9 +3491,6 @@ $messages['hu'] = array(
 	'mwe-date-of-work' => 'A munka elkészülésének ideje',
 	'mwe-error_not_loggedin' => 'Nem vagy bejelentkezve, vagy nem tölthetsz fel fájlokat.',
 	'mwe-error-not-loggedin-file' => 'Úgy tűnik, nem vagy bejelentkezve, vagy szoftverhiba történt. $1 és próbáld újra.',
-	'mwe-link-login' => 'bejelentkezés',
-	'mwe-watch-this-file' => 'Fájl figyelése',
-	'mwe-ignore-any-warnings' => 'Figyelmeztetések figyelmen kívül hagyása',
 	'mwe-upload-in-progress' => 'Feltöltés folyamatban (ne zárd be ezt az ablakot)',
 	'mwe-uploaded-status' => 'Feltöltve',
 	'mwe-transcoded-status' => 'Átkódolva',
@@ -3523,6 +3520,7 @@ $messages['hu'] = array(
 	'mwe-results_from' => 'Találatok a következő helyről: $1',
 	'mwe-missing_desc_see_source' => 'Ez a médiatartalom nem rendelkezik leírással. Ellenőrizd a [$1 forrást], és segíts a leírás elkészítésében.',
 	'mwe-am-config_error' => 'Média hozzáadása varázsló konfigurációs hiba: $1',
+	'mwe-your-recent-uploads' => 'Feltöltéseid',
 	'mwe-your-recent-uploads-to' => 'A legutóbbi feltöltéseid ide: $1',
 	'mwe-no_recent_uploads' => 'Nincsenek friss feltöltések',
 	'mwe-upload-a-file' => 'Új fájl feltöltése',

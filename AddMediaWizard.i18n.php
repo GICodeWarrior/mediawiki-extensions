@@ -290,10 +290,12 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
+ * @author Dj
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'addmediawizard-desc' => 'Média hozzáadása varázsló, a Kaltura és a Wikimédia Alapítvány közös fejlesztése',
+	'addmediawizard-loading' => 'Média hozzáadása varázsló betöltése',
 );
 
 /** Interlingua (Interlingua)

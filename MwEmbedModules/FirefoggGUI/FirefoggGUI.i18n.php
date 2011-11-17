@@ -2325,9 +2325,11 @@ $messages['hsb'] = array(
 /** Hungarian (Magyar)
  * @author BáthoryPéter
  * @author Dani
+ * @author Dj
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'fogg-wont-upload-to-server' => 'Megjegyzés: a videofájl helyben lesz kódolva, és nem lesz feltöltve szerverre.',
 	'fogg-save_local_file' => 'Ogg mentése',
 	'fogg-help-sticky' => 'Segítség (kattints a rögzítéshez)',
 	'fogg-cg-preset' => 'Beállítás: <strong>$1</strong>',
@@ -2404,6 +2406,7 @@ További információkat <a href="http://en.wikipedia.org/wiki/I-frame">itt</a> 
 	'fogg-installed' => 'Firefogg telepítve.',
 	'fogg-not-installed' => 'A Firefogg nincs telepítve, vagy nincs engedélyezve.',
 	'fogg-for_improved_uploads' => 'Fejlettebb feltöltésekhez:',
+	'fogg-please-install' => '$1. Továbbá $2',
 	'fogg-please-install-install-linktext' => 'Firefogg telepítése',
 	'fogg-please-install-about-linktext' => 'a Firefoggról',
 	'fogg-use_latest_firefox' => 'Először telepítsd a <a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=firefogg">Firefox 3.5</a>-ös, vagy újabb verzióját, <i>majd látogass el ide újra a <b>Firefogg</b>-kiterjesztés telepítéséhez.</i>',
@@ -4667,10 +4670,10 @@ $messages['sr-ec'] = array(
 	'fogg-save_local_file' => 'Сними Ogg',
 	'fogg-help-sticky' => 'Помоћ (кликнути да остане отворено)',
 	'fogg-preset-custom' => 'Лична подешавања',
-	'fogg-videoQuality-title' => 'Видео квалитет',
+	'fogg-videoQuality-title' => 'Квалитет слике',
 	'fogg-starttime-title' => 'Почетна секунда',
 	'fogg-endtime-title' => 'Завршна секунда',
-	'fogg-audioQuality-title' => 'Аудио квалитет',
+	'fogg-audioQuality-title' => 'Квалитет звука',
 	'fogg-videoCodec-title' => 'Видео кодек',
 	'fogg-audioCodec-title' => 'Звучни кодек',
 	'fogg-width-title' => 'Ширина снимка',
