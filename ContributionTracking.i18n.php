@@ -298,8 +298,8 @@ $messages['dsb'] = array(
 	'contrib-tracking-error' => 'Zmólka',
 	'contrib-tracking-error-text' => 'Njepłaśiwe słanje formulara',
 	'contrib-tracking-submitting' => 'Płaśenje wótpósćeła se k wobźěłowanjeju...',
-	'contrib-tracking-continue' => 'Joli njepósrědnjaš se awtomatiski dalej, klikni na tłocašk, aby dokóńcył swój dar pśez PayPal.',
-	'contrib-tracking-redirect' => 'Buźošo so awtomatiski k PayPaloju dalej pósrědnjaś, aby wy swójo pósćiwanje skóńcył.',
+	'contrib-tracking-continue' => 'Joli njepósrědnjaš se awtomatiski dalej, klikni na tłocašk, aby dokóńcył swój dar.',
+	'contrib-tracking-redirect' => 'Buźoš se awtomatiski dalej pósrědnjaś, aby swójo dar dokóńcył.',
 	'contrib-tracking-button' => 'Dalej',
 	'contrib-tracking-item-name-onetime' => 'Jadnorazny dar',
 	'contrib-tracking-item-name-recurring' => 'Wóspjetujucy se mjasecny dar',
@@ -422,6 +422,7 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author DavidL
  * @author Korrigan
  * @author Peter17
  * @author PieRRoMaN
@@ -433,8 +434,8 @@ $messages['fr'] = array(
 	'contrib-tracking-error' => 'Erreur',
 	'contrib-tracking-error-text' => 'Soumission du formulaire invalide',
 	'contrib-tracking-submitting' => 'Envoi au système de traitement des paiements...',
-	'contrib-tracking-continue' => 'Si vous n’êtes pas redirigé automatiquement, cliquez ce bouton pour compléter votre don avec Paypal.',
-	'contrib-tracking-redirect' => 'Vous allez être redirigé automatiquement vers PayPal pour terminer votre don.',
+	'contrib-tracking-continue' => 'Si vous n’êtes pas redirigé automatiquement, cliquez ce bouton pour compléter votre don.',
+	'contrib-tracking-redirect' => 'Vous allez être redirigé automatiquement pour terminer votre don.',
 	'contrib-tracking-button' => 'Continuer',
 	'contrib-tracking-item-name-onetime' => 'Don unique',
 	'contrib-tracking-item-name-recurring' => 'Don mensuel récurrent',
@@ -449,8 +450,8 @@ $messages['frp'] = array(
 	'contrib-tracking-error' => 'Èrror',
 	'contrib-tracking-error-text' => 'Somission du formulèro envalida',
 	'contrib-tracking-submitting' => 'Èxpèdicion u sistèmo de trètament des payements...',
-	'contrib-tracking-continue' => 'Se vos éte pas redirigiê ôtomaticament, clicâd cél boton por complètar voutron don avouéc PayPal.',
-	'contrib-tracking-redirect' => 'Vos voléd étre redirigiê ôtomaticament vers PayPal por chavonar voutron don.',
+	'contrib-tracking-continue' => 'Se vos éte pas redirigiê ôtomaticament, clicâd lo boton por chavonar voutron don.',
+	'contrib-tracking-redirect' => 'Vos voléd étre redirigiê ôtomaticament por chavonar voutron don.',
 	'contrib-tracking-button' => 'Continuar',
 	'contrib-tracking-item-name-onetime' => 'Don solèt',
 	'contrib-tracking-item-name-recurring' => 'Don per mês rècurrent',
@@ -564,6 +565,7 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Dj
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
@@ -572,8 +574,10 @@ $messages['hu'] = array(
 	'contrib-tracking-error' => 'Hiba',
 	'contrib-tracking-error-text' => 'Az elküldött űrlap érvénytelen',
 	'contrib-tracking-submitting' => 'Küldés a fizetés-feldolgozóhoz…',
-	'contrib-tracking-continue' => 'Ha az oldal nem irányít át automatikusan, kattints a gombra hogy befejezd az adományozást a PayPalen.',
+	'contrib-tracking-continue' => 'Ha az oldal nem irányít át automatikusan, kattints a gombra hogy befejezd az adományozást.',
 	'contrib-tracking-button' => 'Folytatás',
+	'contrib-tracking-item-name-onetime' => 'Egyszeri adományozás',
+	'contrib-tracking-item-name-recurring' => 'Havonta ismétlődő adományozás',
 );
 
 /** Interlingua (Interlingua)
@@ -585,8 +589,8 @@ $messages['ia'] = array(
 	'contrib-tracking-error' => 'Error',
 	'contrib-tracking-error-text' => 'Submission de formulario invalide',
 	'contrib-tracking-submitting' => 'In submission al processator de pagamentos...',
-	'contrib-tracking-continue' => 'Si tu non es automaticamente redirigite, clicca super le button pro completar tu donation con PayPal.',
-	'contrib-tracking-redirect' => 'Tu essera redirigite automaticamente verso PayPal pro completar tu donation.',
+	'contrib-tracking-continue' => 'Si tu non es automaticamente redirigite, clicca sur le button pro completar tu donation.',
+	'contrib-tracking-redirect' => 'Tu essera redirigite automaticamente pro completar tu donation.',
 	'contrib-tracking-button' => 'Continuar',
 	'contrib-tracking-item-name-onetime' => 'Donation unic',
 	'contrib-tracking-item-name-recurring' => 'Donation periodic mensual',
@@ -634,7 +638,7 @@ $messages['it'] = array(
 	'contrib-tracking-error-text' => "Errore nell'invio del modulo",
 	'contrib-tracking-submitting' => 'Invio al gestore del pagamento...',
 	'contrib-tracking-continue' => 'Se il collegamento non avviene automaticamente, fare clic sul pulsante per completare la donazione con PayPal.',
-	'contrib-tracking-redirect' => 'Verrai reindirizzato automaticamente su PayPal per completare la donazione.',
+	'contrib-tracking-redirect' => 'Verrai reindirizzato automaticamente per completare la tua donazione.',
 	'contrib-tracking-button' => 'Continua',
 	'contrib-tracking-item-name-onetime' => 'Donazione singola',
 	'contrib-tracking-item-name-recurring' => 'Donazione ricorrente mensile',
@@ -653,7 +657,7 @@ $messages['ja'] = array(
 	'contrib-tracking-error' => 'エラー',
 	'contrib-tracking-error-text' => 'フォーム送信が無効',
 	'contrib-tracking-submitting' => '決済処理者に提出中...',
-	'contrib-tracking-continue' => '自動的に転送されない場合、ボタンを押して PayPal での寄付を完了させてください。',
+	'contrib-tracking-continue' => '自動的に転送されない場合、ボタンを押して寄付を完了させてください。',
 	'contrib-tracking-redirect' => '寄付を完了するため、PayPalに自動的に転送されます。',
 	'contrib-tracking-button' => '続行',
 	'contrib-tracking-item-name-onetime' => '1回だけ寄付',
@@ -881,8 +885,8 @@ $messages['nl'] = array(
 	'contrib-tracking-error' => 'Fout',
 	'contrib-tracking-error-text' => 'Ongeldige formulierinvoer',
 	'contrib-tracking-submitting' => 'Bezig met het uitvoeren van de betaling...',
-	'contrib-tracking-continue' => 'Als u niet automatisch wordt doorgestuurd, klik dan op de knop om uw donatie via PayPal te voltooien.',
-	'contrib-tracking-redirect' => 'U wordt automatisch doorgeleid naar PayPal om de transactie te voltooien.',
+	'contrib-tracking-continue' => 'Als u niet automatisch wordt doorgestuurd, klik dan op de knop om uw donatie te voltooien.',
+	'contrib-tracking-redirect' => 'U wordt automatisch doorgeleid om uw donatie te voltooien.',
 	'contrib-tracking-button' => 'Doorgaan',
 	'contrib-tracking-item-name-onetime' => 'Eenmalige donatie',
 	'contrib-tracking-item-name-recurring' => 'Terugkerende maandelijkse donatie',
@@ -1286,8 +1290,8 @@ $messages['uk'] = array(
 	'contrib-tracking-error' => 'Помилка',
 	'contrib-tracking-error-text' => 'Неправильне підпорядкування форми',
 	'contrib-tracking-submitting' => 'Відправка оброблювачеві платежів...',
-	'contrib-tracking-continue' => 'Якщо ви не були автоматично перенаправлені, натисніть на кнопку, щоб завершити вашу пожертву на сайті PayPal.',
-	'contrib-tracking-redirect' => 'Ви будете автоматично перенаправлені на PayPal для завершення вашого пожертвування.',
+	'contrib-tracking-continue' => 'Якщо ви не були автоматично перенаправлені, натисніть на кнопку, щоб завершити вашу пожертву.',
+	'contrib-tracking-redirect' => 'Ви будете автоматично перенаправлені для завершення вашого пожертвування.',
 	'contrib-tracking-button' => 'Продовжити',
 	'contrib-tracking-item-name-onetime' => 'Одноразове пожертвування',
 	'contrib-tracking-item-name-recurring' => 'Періодичне щомісячне пожертвування',
