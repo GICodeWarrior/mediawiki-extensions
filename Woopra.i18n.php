@@ -151,9 +151,10 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Sanbec
+ * @author Vivaelcelta
  */
 $messages['es'] = array(
-	'woopra-desc' => 'Permite trabajar al [http://www.woopra.com/ software de seguimiento en vivo Woopra] con tu instalación MediaWiki',
+	'woopra-desc' => 'Permite al [http://www.woopra.com/ software de seguimiento en vivo Woopra] trabajar con su instalación MediaWiki.',
 );
 
 /** Basque (Euskara)
