@@ -2517,7 +2517,8 @@ $messages['frp'] = array(
 	'articlefeedback-survey-submit' => 'Sometre',
 	'articlefeedback-survey-title' => 'Volyéd rèpondre a quârques quèstions',
 	'articlefeedback-survey-thanks' => 'Grant-marci d’avêr rempli lo quèstionèro.',
-	'articlefeedback-survey-disclaimer' => 'Por édiér a mèlyorar cela fonccionalitât, vos pouede partagiér anonimament voutron avis avouéc la comunôtât Vouiquipèdia.',
+	'articlefeedback-survey-disclaimer' => 'En sometent, vos accèptâd una transparence en acôrd avouéc celes $1.',
+	'articlefeedback-survey-disclaimerlink' => 'condicions',
 	'articlefeedback-error' => 'Una èrror est arrevâ. Volyéd tornar èprovar ples târd.',
 	'articlefeedback-form-switch-label' => 'Èstimar cela pâge',
 	'articlefeedback-form-panel-title' => 'Èstimar cela pâge',
@@ -2530,9 +2531,9 @@ $messages['frp'] = array(
 	'articlefeedback-form-panel-expertise-hobby' => 'O est una passion provonda a mè',
 	'articlefeedback-form-panel-expertise-other' => 'La sôrsa de ma cognessence est pas listâ ique',
 	'articlefeedback-form-panel-helpimprove' => 'J’amerê édiér a mèlyorar Vouiquipèdia, mandâd-mè un mèssâjo (u chouèx)',
-	'articlefeedback-form-panel-helpimprove-note' => 'Nos vos manderens un mèssâjo de confirmacion. Nos partagierens pas voutra adrèce avouéc pèrsona. $1',
+	'articlefeedback-form-panel-helpimprove-note' => 'Nos vos manderens un mèssâjo de confirmacion. Nos partagierens pas voutra adrèce èlèctronica avouéc des parties de defôr, d’aprés $1.',
 	'articlefeedback-form-panel-helpimprove-email-placeholder' => 'mèssâjo@ègzemplo.org',
-	'articlefeedback-form-panel-helpimprove-privacy' => 'Politica de confidencialitât',
+	'articlefeedback-form-panel-helpimprove-privacy' => 'Dècllaracion de confidencialitât des avis',
 	'articlefeedback-form-panel-submit' => 'Mandar les èstimacions',
 	'articlefeedback-form-panel-pending' => 'Voutres èstimacions ont p’oncor étâ somêses',
 	'articlefeedback-form-panel-success' => 'Encartâ avouéc reusséta',
@@ -2585,6 +2586,7 @@ $messages['frp'] = array(
 	'articlefeedback-survey-message-success' => 'Grant-marci d’avêr rempli lo quèstionèro.',
 	'articlefeedback-survey-message-error' => 'Una èrror est arrevâ.
 Volyéd tornar èprovar ples târd.',
+	'articlefeedback-privacyurl' => 'http://wikimediafoundation.org/wiki/Feedback_privacy_statement',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Los hôts et bâs d’houé',
 	'articleFeedback-table-caption-dailyhighs' => 'Pâges avouéc quotes les ples hôtes : $1',
 	'articleFeedback-table-caption-dailylows' => 'Pâges avouéc quotes les ples bâsses : $1',
@@ -3239,6 +3241,7 @@ Prošu spytaj pozdźišo hišće raz.',
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Dj
  * @author Hunyadym
  * @author Misibacsi
  * @author Samat
@@ -3261,7 +3264,7 @@ $messages['hu'] = array(
 	'articlefeedback-survey-submit' => 'Értékelés elküldése',
 	'articlefeedback-survey-title' => 'Kérjük, válaszolj néhány kérdésre',
 	'articlefeedback-survey-thanks' => 'Köszönjük a kérdőív kitöltését!',
-	'articlefeedback-survey-disclaimer' => 'A szolgáltatás fejlesztésének érdekében a visszajelzésedet névtelenül megosztjuk a Wikipédia szerkesztőivel.',
+	'articlefeedback-survey-disclaimer' => 'A beküldéssel egyet értesz az alábbiakkel: $1.',
 	'articlefeedback-survey-disclaimerlink' => 'feltételek',
 	'articlefeedback-error' => 'Hiba történt. Kérlek, próbálkozz később.',
 	'articlefeedback-form-switch-label' => 'Szócikk értékelése',
@@ -3275,8 +3278,8 @@ $messages['hu'] = array(
 	'articlefeedback-form-panel-expertise-hobby' => 'Szenvedélyem a téma',
 	'articlefeedback-form-panel-expertise-other' => 'Más okból vagyok jártas benne',
 	'articlefeedback-form-panel-helpimprove' => 'Szeretnék segíteni a Wikipédia fejlesztésében, küldjetek nekem egy e-mailt (nem kötelező)',
-	'articlefeedback-form-panel-helpimprove-note' => 'Küldeni fogunk neked egy visszaigazoló e-mailt. Nem osztjuk meg senkivel sem a címedet. $1',
-	'articlefeedback-form-panel-helpimprove-privacy' => 'Adatvédelmi irányelvek',
+	'articlefeedback-form-panel-helpimprove-note' => 'Küldeni fogunk neked egy visszaigazoló e-mailt. Nem osztjuk meg külső személyekkel az e-mail címedet az $1 szerint.',
+	'articlefeedback-form-panel-helpimprove-privacy' => 'visszajelzési adatvédelmi irányelvek',
 	'articlefeedback-form-panel-submit' => 'Értékelés elküldése',
 	'articlefeedback-form-panel-pending' => 'Az értékelésed még nem lett elküldve',
 	'articlefeedback-form-panel-success' => 'Sikeresen elmentve',
