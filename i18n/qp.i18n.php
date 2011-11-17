@@ -1105,6 +1105,7 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author DavidL
  * @author Gomoko
  * @author Hashar
  * @author IAlex
@@ -1189,6 +1190,7 @@ Pour enregistrer un sondage, soumettez-le en ne répondant à aucune question de
 	'qp_error_too_long_category_option_value' => "La valeur de l'option catégorie est trop longue pour être stockée dans la base de données.",
 	'qp_error_too_long_category_options_values' => 'Les valeurs des options catégorie sont trop longues pour être stockées dans la base de données.',
 	'qp_error_too_long_proposal_text' => 'Le texte de la proposition est trop long pour être enregistré dans la base de données',
+	'qp_error_too_long_proposal_name' => 'Le nom de la proposition est trop long pour être stocké dans la base de données.',
 	'qp_error_too_few_categories' => 'Au moins deux catégories doivent être définies',
 	'qp_error_too_few_spans' => 'Toute classe de catégorie nécessite au moins deux réponses possibles définies',
 	'qp_error_no_answer' => 'Proposition sans réponse',
@@ -1338,6 +1340,7 @@ Para gardar unha enquisa, envíea sen responder a ningunha pregunta.',
 	'qp_error_too_long_category_option_value' => 'O valor da opción da categoría é longo de máis para almacenalo na base de datos.',
 	'qp_error_too_long_category_options_values' => 'Os valores das opcións da categoría son longos de máis para almacenalos na base de datos.',
 	'qp_error_too_long_proposal_text' => 'O texto da proposta é longo de máis para almacenalo na base de datos.',
+	'qp_error_too_long_proposal_name' => 'O nome da proposta é longo de máis para almacenalo na base de datos.',
 	'qp_error_too_few_categories' => 'Débense definir, polo menos, dúas categorías.',
 	'qp_error_too_few_spans' => 'Cada clase de categoría necesita definidas, polo menos, dúas respostas posibles.',
 	'qp_error_no_answer' => 'Proposta sen resposta.',
@@ -1734,6 +1737,7 @@ Pro salveguardar un sondage, submitte lo sin responder a alcun question de propo
 	'qp_error_too_long_category_option_value' => 'Le valor del option de categoria es troppo longe pro esser immagazinate in le base de datos.',
 	'qp_error_too_long_category_options_values' => 'Le valores del optiones de categoria es troppo longe pro esser immagazinate in le base de datos.',
 	'qp_error_too_long_proposal_text' => 'Le texto del proposition es troppo longe pro poter esser immagazinate in le base de datos',
+	'qp_error_too_long_proposal_name' => 'Le nomine del proposition es troppo longe pro poter esser immagazinate in le base de datos.',
 	'qp_error_too_few_categories' => 'Al minus duo categorias debe esser definite',
 	'qp_error_too_few_spans' => 'Cata classe de categoria require le definition de al minus duo responsas possibile',
 	'qp_error_no_answer' => 'Proposition sin responsa',
@@ -2122,6 +2126,7 @@ $messages['mk'] = array(
 	'qp_error_too_long_category_option_value' => 'Можноста за категоријата е предолга за да може да се зачува во базата.',
 	'qp_error_too_long_category_options_values' => 'Можностите за категоријата се предолги за да можат да се зачуваат во базата.',
 	'qp_error_too_long_proposal_text' => 'Текстот на предлогот е предолг за да може да се складира во базата',
+	'qp_error_too_long_proposal_name' => 'Името на предлогот е предолго за да се зачува во базата.',
 	'qp_error_too_few_categories' => 'Мора да определите барем две категории',
 	'qp_error_too_few_spans' => 'Секоја класа на категории бара да определите барем два можни одговора',
 	'qp_error_no_answer' => 'Неодговорен предлог',
