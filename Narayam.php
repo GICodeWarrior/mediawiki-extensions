@@ -27,6 +27,15 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	exit( 1 );
 }
 
+$wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
+	'name' => 'Narayam',
+	'version' => 0.1,
+	'author' => array( 'Junaid P V (http://junaidpv.in)', 'Roan Kattouw' ),
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Narayam',
+	'descriptionmsg' => 'narayam-desc'
+);
+
 /* Configuration */
 
 // Whether the input method should be active as default or not
@@ -95,16 +104,6 @@ $wgNarayamSchemes = array(
 /* Setup */
 
 $dir = dirname( __FILE__ );
-
-// Register extension credits
-$wgExtensionCredits['other'][] = array(
-	'path' => __FILE__,
-	'name' => 'Narayam',
-	'version' => 0.1,
-	'author' => array( 'Junaid P V (http://junaidpv.in)', 'Roan Kattouw' ),
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Narayam',
-	'descriptionmsg' => 'narayam-desc'
-);
 
 // Localization
 $wgExtensionMessagesFiles['Narayam'] = $dir . '/Narayam.i18n.php';
