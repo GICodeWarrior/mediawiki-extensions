@@ -1947,6 +1947,7 @@ Pli novan versio $2 estas havebla ĉe http://pecl.php.net/package/APC/$2',
  * @author Omnipaedista
  * @author Sanbec
  * @author Translationista
+ * @author Vivaelcelta
  */
 $messages['es'] = array(
 	'apc' => 'Información APC',
@@ -2045,7 +2046,7 @@ APC no parece estar ejecutándose.',
 	'viewapc-delete-ok' => 'Entrada cache <nowiki>$1</nowiki> está borrada.',
 	'viewapc-delete-failed' => 'Fracasó en borrar la entrada cache cache <nowiki>$1</nowiki>.',
 	'viewapc-version-info' => 'Información de versión',
-	'viewapc-version-changelog' => 'Log de cambios',
+	'viewapc-version-changelog' => 'Registro de cambios',
 	'viewapc-version-failed' => 'No se ha podido recuperar la información de la versión.',
 	'viewapc-version-ok' => 'Usted está corriendo la última versión de APC ($1)',
 	'viewapc-version-old' => 'Usted está corriendo una versión más antigua de APC ($1).
