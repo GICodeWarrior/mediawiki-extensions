@@ -1527,8 +1527,8 @@ $messages['ku-latn'] = array(
  */
 $messages['lb'] = array(
 	'storyboard-name' => 'Storyboard',
-	'storyboard-desc' => 'Stellt eng [[Special:Story|Entréessäit fir Donateuren]] zur Verfügung, eng Säit wou Anekdoten [[Special:StorySubmission|presentéiert]] kënne ginn, an e [[Special:StoryReview|Moderatiouns-Interface fir Anekdoten]]',
-	'right-storyreview' => 'Anekdoten nokucken, änneren, publizéieren a verstoppen',
+	'storyboard-desc' => 'Stellt eng [[Special:Story|Entréessäit fir Donateuren]] zur Verfügung, eng Säit wou Temoignage [[Special:StorySubmission|presentéiert]] kënne ginn, an e [[Special:StoryReview|Moderatiouns-Interface fir Temoignagen]]',
+	'right-storyreview' => 'Temoignagen nokucken, änneren, publizéieren a verstoppen',
 	'storyboard-anerroroccured' => 'Et ass e Feeler geschitt: $1',
 	'storyboard-unpublished' => 'Net verëffentlecht',
 	'storyboard-published' => 'Verëffentlecht',
@@ -1561,7 +1561,7 @@ Et ka sinn datt se ewechgeholl gouf.",
 	'storyboard-yourname' => 'Ären Numm (obligatoresch)',
 	'storyboard-location' => 'Plaz wou Dir sidd',
 	'storyboard-occupation' => 'Äre Beruff',
-	'storyboard-story' => 'Är Anekdot',
+	'storyboard-story' => 'Ären Temoignage',
 	'storyboard-photo' => 'Hutt dir eng Photo vun Iech?
 Firwat se net hei weisen?',
 	'storyboard-email' => 'Är E-Mailadress (obligatoresch)',
@@ -1570,7 +1570,7 @@ Firwat se net hei weisen?',
 	'storyboard-charsleft' => '($1{{PLURAL:$1|Buschtaf|Buschtawen}} iwwreg)',
 	'storyboard-cannotbelonger' => 'Är Anekdot huet <b>$1</b> {{PLURAL:$1|Zeechen|Zeechen}} ze vill!',
 	'storyboard-charsneeded' => '($1{{PLURAL:$1|Buschtaf|Buschtawen}} si gefrot )',
-	'storyboard-needtoagree' => "Dir musst d'accord sinn datt Är Anekdot verëffentlecht gëtt fir se ze schécken.",
+	'storyboard-needtoagree' => "Dir musst d'accord sinn datt Ären Temoignage verëffentlecht gëtt fir se ze schécken.",
 	'storyboard-submissioncomplete' => 'Areechen ofgeschloss',
 	'storyboard-submissionincomplete' => "D'Eraschécken huet net fonctionnéiert",
 	'storyboard-alreadyexists' => '"$1" gëtt et schonn.',
@@ -1584,9 +1584,9 @@ Firwat se net hei weisen?',
 Mir kucken se demnächst no.
 Dir kënnt [$1 publizéiert Anekdote liesen].',
 	'storyboard-emailtitle' => 'Anekdot ass elo ofgespäichert',
-	'storyboard-emailbody' => 'Är Anekdot mam Titel "$1" gouf iwwerdro.
-Mir kucken se geschwënn no.
-Dir kënnt [$2 déi publizéiert Anekdote liesen].',
+	'storyboard-emailbody' => 'Ären Temoignage mam Titel "$1" gouf iwwerdro.
+Mir kucken e geschwënn no.
+Dir kënnt [$2 déi publizéiert Temoignage liesen].',
 	'storyreview' => 'Anekdot nokucken',
 	'storyboard-deleteimage' => 'Bild läschen',
 	'storyboard-done' => 'Fäerdeg',
