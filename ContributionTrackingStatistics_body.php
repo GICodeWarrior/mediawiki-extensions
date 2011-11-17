@@ -251,13 +251,9 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 		);
 
 		foreach ( $res as $row ) {
-			$result[] = array(
-					$row[0],
-					$row[1],
-					$row[2],
-					$row[3],
-					$row[4]
-			);
+			foreach( $row as $key => $value ) {
+				$result[] = $value;
+			}
 		}
 		return $result;
 	}
