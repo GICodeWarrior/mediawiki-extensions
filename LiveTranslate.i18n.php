@@ -574,6 +574,7 @@ $messages['hsb'] = array(
 $messages['ia'] = array(
 	'livetranslate-desc' => 'Permitte le traduction in directo de contento de paginas usante le servicio Google Translate',
 	'right-managetms' => '[[Special:SpecialLiveTranslate|Modificar]] le lista de memorias de traduction',
+	'action-managetms' => 'gerer memorias de traduction',
 	'group-tmxadmin' => 'Administratores TMX',
 	'group-tmxadmin-member' => '{{GENDER:$1|administrator|administratrice}} TMX',
 	'grouppage-tmxadmin' => 'Project:Administratores_TMX',
