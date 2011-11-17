@@ -2523,6 +2523,7 @@ $messages['hsb'] = array(
 /** Hungarian (Magyar)
  * @author Bdamokos
  * @author Dani
+ * @author Dj
  * @author Enbéká
  * @author Glanthor Reviol
  * @author Misibacsi
@@ -2594,6 +2595,7 @@ $messages['hu'] = array(
 	'fundraiserstats-tab-averages' => 'Átlagosan (USD)',
 	'fundraiserstats-tab-maximums' => 'Maximum (USD)',
 	'fundraiserstats-tab-ytd' => 'Ebben az évben a mai napig (USD)',
+	'fundraiserstats-time-zone' => 'Időzóna:',
 );
 
 /** Interlingua (Interlingua)
