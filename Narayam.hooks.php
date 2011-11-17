@@ -9,10 +9,7 @@ class NarayamHooks {
 
 	/// Hook: BeforePageDisplay
 	public static function addModules( $out, $skin ) {
-		global $wgUser;
-
-		if ( $wgUser->getOption( 'narayamDisable' ) ) {
-			// User disabled Narayam
+		if ( $out->getUser()->getOption( 'narayamDisable' ) ) {
 			return true;
 		}
 
@@ -28,17 +25,9 @@ class NarayamHooks {
 
 	/// Hook: ResourceLoaderGetConfigVars
 	public static function addConfig( &$vars ) {
-		global $wgNarayamEnabledByDefault, $wgNarayamRecentItemsLength, $wgUser;
-
-		// FIXME: this hook cannot depend on any state!
-		if ( $wgUser->getOption( 'narayamDisable' ) ) {
-			// User disabled Narayam
-			return true;
-		}
-
+		global $wgNarayamRecentItemsLength, $wgNarayamEnabledByDefault;
 		$vars['wgNarayamEnabledByDefault'] = $wgNarayamEnabledByDefault;
 		$vars['wgNarayamRecentItemsLength'] = $wgNarayamRecentItemsLength;
-
 		return true;
 	}
 
@@ -47,7 +36,6 @@ class NarayamHooks {
 		global $wgUser, $wgNarayamSchemes;
 
 		if ( $wgUser->getOption( 'narayamDisable' ) ) {
-			// User disabled Narayam
 			return true;
 		}
 
@@ -86,4 +74,5 @@ class NarayamHooks {
 
 		return true;
 	}
+
 }
