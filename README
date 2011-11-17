@@ -1,6 +1,6 @@
 == About ==
 
-The ''HashTables'' extension Enhances the parser with hash table functions and a function
+The 'HashTables' extension Enhances the parser with hash table functions and a function
 to store all parameters given to a template.
 
 * Website: http://www.mediawiki.org/wiki/Extension:HashTables
@@ -20,7 +20,7 @@ MediaWiki 'extensions' directory. Then add the following code to your
  
 == Contributing ==
 
-If you have bug reports or feature requests, please add them to the ''HashTables''
+If you have bug reports or feature requests, please add them to the 'HashTables'
 Talk page [0]. You can also send them to Daniel Werner < danweetz@web.de >
 
 [0] http://www.mediawiki.org/w/index.php?title=Extension_talk:HashTables

@@ -4,7 +4,7 @@
  * Defines a subset of parser functions to handle hash tables. Inspired by the ArrayExtension
  * (http://www.mediawiki.org/wiki/Extension:ArrayExtension).
  *
- * @version: 0.7
+ * @version: 0.8 alpha
  * @author:  Daniel Werner < danweetz@web.de >
  * @license: ISC license
  * 
@@ -24,9 +24,7 @@
  *
  */
  
-if( !defined( 'MEDIAWIKI' ) ) {
-    die( 'This file is a MediaWiki extension, it is not a valid entry point' );
-}
+if ( ! defined( 'MEDIAWIKI' ) ) { die(); }
 
 $wgExtensionCredits['parserhook'][] = array(
 	'path'           => __FILE__,
@@ -37,14 +35,14 @@ $wgExtensionCredits['parserhook'][] = array(
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:HashTables',
 );
 
-$wgHooks['ParserFirstCallInit'][] = 'efHashTablesParserFirstCallInit';
- 
-$dir = dirname( __FILE__ );
+// language files:
+$wgExtensionMessagesFiles['HashTables'     ] = ExtHashTables::getDir() . '/HashTables.i18n.php';
+$wgExtensionMessagesFiles['HashTablesMagic'] = ExtHashTables::getDir() . '/HashTables.i18n.magic.php';
 
-$wgExtensionMessagesFiles['HashTables'     ] = $dir . '/HashTables.i18n.php';
-$wgExtensionMessagesFiles['HashTablesMagic'] = $dir . '/HashTables.i18n.magic.php';
+// hooks registration:
+$wgHooks['ParserFirstCallInit'][] = 'ExtHashTables::init';
+$wgHooks['ParserClearState'   ][] = 'ExtHashTables::onParserClearState';
 
-unset( $dir );
 
 /**
  * Extension class with all the hash table functionality
@@ -58,7 +56,7 @@ class ExtHashTables {
 	 * 
 	 * @var string
 	 */
-	const VERSION = '0.7';
+	const VERSION = '0.8 alpha';
 
 	/**
 	 * @since 0.1
@@ -73,11 +71,72 @@ class ExtHashTables {
 		$wgHooks['ParserClearState'][] = &$this;
 	}
 	
-	function onParserClearState( &$parser ) {
-		// remove all hash tables to avoid conflicts with job queue or Special:Import
-		$this->mHashTables = array();
-		return true;		
-	}	
+	/**
+	 * Sets up parser functions
+	 * 
+	 * @since 0.8
+	 */
+	public static function init( Parser &$parser ) {
+		
+		/*
+		 * store for variables per parser object. This will solve several bugs related to
+		 * 'ParserClearState' hook clearing all variables early in combination with certain
+		 * other extensions. (since v2.0)
+		 */
+		$parser->mExtHashTables = new self();
+		
+		// SFH_OBJECT_ARGS available since MW 1.12
+		self::initFunction( $parser, 'hashdefine' );
+		self::initFunction( $parser, 'hashvalue' );
+		self::initFunction( $parser, 'hashsize' );
+		self::initFunction( $parser, 'hashkeyexists', SFH_OBJECT_ARGS );
+		self::initFunction( $parser, 'hashprint', SFH_OBJECT_ARGS );
+		self::initFunction( $parser, 'parameterstohash', SFH_OBJECT_ARGS );
+		self::initFunction( $parser, 'hashtotemplate', SFH_OBJECT_ARGS );
+		self::initFunction( $parser, 'hashinclude', SFH_OBJECT_ARGS );
+		self::initFunction( $parser, 'hashexclude', SFH_OBJECT_ARGS );
+		self::initFunction( $parser, 'hashreset', SFH_OBJECT_ARGS );	
+		self::initFunction( $parser, 'hashmerge', SFH_OBJECT_ARGS );
+		self::initFunction( $parser, 'hashmix', SFH_OBJECT_ARGS );
+		self::initFunction( $parser, 'hashdiff',  SFH_OBJECT_ARGS );
+		self::initFunction( $parser, 'hashintersect', SFH_OBJECT_ARGS );
+
+		// if array extension is available, rgister array-hash interactions:
+		if( class_exists( 'ArrayExtension' ) ) {
+			self::initFunction( $parser, 'hashtoarray' );
+			self::initFunction( $parser, 'arraytohash' );
+		}
+		
+		return true;
+	}
+	private static function initFunction( Parser &$parser, $name, $flags = 0 ) {		
+		// all parser functions with prefix:
+		$prefix = ( $flags & SFH_OBJECT_ARGS ) ? 'pfObj_' : 'pf_';		
+		$functionCallback = array( __CLASS__, $prefix . $name );
+				
+		$parser->setFunctionHook( $name, $functionCallback, $flags );		
+	}
+	
+	/**
+	 * Returns the extensions base installation directory.
+	 *
+	 * @since 0.8
+	 * 
+	 * @return boolean
+	 */
+	public static function getDir() {
+		static $dir = null;
+		
+		if( $dir === null ) {
+			$dir = dirname( __FILE__ );
+		}
+		return $dir;
+	}
+	
+	
+	####################
+	# Parser Functions #
+	####################	
 	
 	/**
 	 * Define an hash by a list of 'values' deliminated by 'itemsDelimiter'.
@@ -85,31 +144,35 @@ class ExtHashTables {
 	 * Both delimiters can be perl regular expression patterns.
 	 * Syntax: {{#hashdefine:hashId |values |itemsDelimiter |innerDelimiter}}
 	 */
-    function hashdefine( &$parser, $hashId, $value='', $itemsDelimiter = '/\s*,\s*/', $innerDelimiter = '/\s*;\s*/' ) {
-		if( !isset($hashId) ) {
+    static function pf_hashdefine( Parser &$parser, $hashId, $value = '', $itemsDelimiter = '/\s*,\s*/', $innerDelimiter = '/\s*;\s*/' ) {
+		if( ! isset( $hashId ) ) {
 			return '';
-		}        
-		$this->mHashTables[ $hashId ] = array();
+		}
+		$store = self::get( $parser );
+				
+		$store->setHash( $hashId );
 		
         if( $value !== '' ) {
-		
 			// Build delimiters:
-            if ( ! $this->isValidRegEx($itemsDelimiter,'/') )
+            if ( ! self::isValidRegEx($itemsDelimiter,'/') ) {
                 $itemsDelimiter = '/\s*' . preg_quote( $itemsDelimiter, '/' ) . '\s*/';
+			}
 			
-            if ( ! $this->isValidRegEx($innerDelimiter,'/') )
+            if ( ! self::isValidRegEx($innerDelimiter,'/') ) {
                 $innerDelimiter = '/\s*' . preg_quote( $innerDelimiter, '/' ) . '\s*/';
+			}
 			
 			$items = preg_split( $itemsDelimiter, $value ); // All hash Items
 			
-			foreach ( $items as $itemName => $itemVal )
-			{
-				$hashPair = preg_split( $innerDelimiter, $itemVal, 2 );
+			foreach ( $items as $item ) {
+				$hashPair = preg_split( $innerDelimiter, $item, 2 );
 				
-				if( count($hashPair) < 2 )
-					$this->mHashTables[ $hashId ][ $itemVal ] = ''; // only hash-Name given, could be even '', no value
-				else
-					$this->mHashTables[ $hashId ][ $hashPair[0] ] = $hashPair[1];
+				if( count($hashPair) < 2 ) {
+					// only hash-Name given, could be even '', no value
+					$store->setHashValue( $hashId, $item, '' );
+				} else {
+					$store->setHashValue( $hashId, $hashPair[0], $hashPair[1] );
+				}
 			}
         }
                 
@@ -119,11 +182,12 @@ class ExtHashTables {
 	/**
 	 * Returns the value of the hash table item identified by a given item name.
 	 */
-    function hashvalue( &$parser, $hashId, $key, $default = '' ) {
-        if( !isset($hashId) || !isset($key) )
+    static function pf_hashvalue( Parser &$parser, $hashId, $key, $default = '' ) {
+        if( ! isset( $hashId ) || ! isset( $key ) ) {
            return '';
+		}
 	
-        $value = $this->getHashValue( $hashId, $key, '' );
+        $value = self::get( $parser )->getHashValue( $hashId, $key, '' );
 		
 		if( $value === '' ) {
 			$value = $default;
@@ -135,26 +199,30 @@ class ExtHashTables {
 	/**
 	 * Returns the size of a hash table. Returns '' if the table doesn't exist.
 	 */
-    function hashsize( &$parser, $hashId) {
-		if( ! isset($hashId) || ! $this->hashExists($hashId) ) {
+    static function pf_hashsize( Parser &$parser, $hashId) {		
+		$store = self::get( $parser );
+		
+		/*
+		 * in old ArrayExtension tradition, return '' if hash doesn't exist.
+		 * Though it might be a bit confusing in the beginning, we won't need any '#hashexists' function
+		 */
+		if( ! isset( $hashId ) || ! $store->hashExists( $hashId ) ) {
 			return '';
-        }		
-        return count( $this->mHashTables[ $hashId ] );
+        }
+		$hash = $store->getHash( $hashId );
+        return count( $hash );
     }
 	
 	/**
 	 * Returns "1" or the third parameter (if set) if the hash item key 'key' exists inside the hash
 	 * table 'hashId'. Otherwise the output will be a void string or the fourth (if set).
 	 */		
-    function hashkeyexists( Parser &$parser, PPFrame $frame, $args ) {		
+    static function pfObj_hashkeyexists( Parser &$parser, PPFrame $frame, $args ) {		
         $hashId = trim( $frame->expand( $args[0] ) );
         $key = isset( $args[1] ) ? trim( $frame->expand( $args[1] ) ) : '';
-		
-		// get hash or null:
-		$hash = $this->getHash( $hashId );
-		
+				
 		// only expand the one argument needed:
-		if( $hash !== null && array_key_exists( $key, $hash ) ) {
+		if( self::get( $parser )->getHashValue( $hashId, $key ) !== null ) {
 			return isset( $args[2] ) ? trim( $frame->expand( $args[2] ) ) : '1'; // true '1'
 		}
 		else {
@@ -167,19 +235,21 @@ class ExtHashTables {
 	 * Syntax:
 	 *   {{#hashprint:hashID |seperator |keyPattern |valuePattern |subject |printOrderArrayId}}
 	 */
-    function hashprint( Parser &$parser, PPFrame $frame, $args ) {
+    static function pfObj_hashprint( Parser &$parser, PPFrame $frame, $args ) {
 		if( ! isset( $args[0] ) ) {
 			return '';
 		}
+		
         $hashId = trim( $frame->expand( $args[0] ) );
-		$values = $this->getHash( $hashId );
+		$values = self::get( $parser )->getHash( $hashId );
 		
 		if( $values === null ) {
 			return '';
 		}
 		
-		// parameter validation:		
-        $seperator =         isset( $args[1] ) ? trim( $frame->expand( $args[1] ) ) : ', ';
+		// parameter validation:
+		
+        $seperator = isset( $args[1] ) ? trim( $frame->expand( $args[1] ) ) : ', ';
 		/*
 		 * PPFrame::NO_ARGS and PPFrame::NO_TEMPLATES for expansion make a lot of sense here since the patterns getting replaced
 		 * in $subject before $subject is being parsed. So any template or argument influence in the patterns wouldn't make any
@@ -228,7 +298,7 @@ class ExtHashTables {
 			 */
 			$rawResult = $parser->preprocessToDom( $rawResult, $frame->isTemplate() ? Parser::PTD_FOR_INCLUSION : 0 );
 			$rawResult = trim( $frame->expand( $rawResult ) );
-						   
+			
 			$renderedResults[] = $rawResult ;
         }
         return array( implode( $seperator, $renderedResults) , 'noparse' => false, 'isHTML' => false );
@@ -238,12 +308,14 @@ class ExtHashTables {
 	 * Define an hash filled with all given parameters of the current template.
 	 * In case there are no parameters, the hash will be void.
 	 */
-    function parameterstohash( &$parser, PPFrame $frame, $args) {
+    static function pfObj_parameterstohash( &$parser, PPFrame $frame, $args) {
 		if( ! isset( $args[0] ) ) {
 			return '';
 		}
+		$store = self::get( $parser );
+		
 		$hashId = trim( $frame->expand( $args[0] ) );
-		$this->mHashTables[ $hashId ] = array();  // create empty hash table
+		$store->setHash( $hashId );  // create empty hash table
 
 		// in case the page is not used as template i.e. when displayed on its own
 		if( ! $frame->isTemplate() ) {
@@ -253,7 +325,8 @@ class ExtHashTables {
 		$templateArgs = $frame->getArguments();
 
 		foreach ( $templateArgs as $argName => $argVal ) {
-			$this->mHashTables[ $hashId ][ trim( $argName ) ] = trim( $argVal );
+			// one hash value for each parameter
+			$store->setHashValue( $hashId, $argName, $argVal );
 		}
 		return '';		
     }
@@ -262,16 +335,19 @@ class ExtHashTables {
 	 * Resets the hashes given in parameter 1 to n. If there are no parameters given,
 	 * the function will reset all hashes.
 	 */
-	function hashreset( &$parser, $frame, $args) {		
+	static function pfObj_hashreset( &$parser, $frame, $args) {
+		$store = self::get( $parser );
+		
 		// reset all hash tables if no specific tables are given:
-		if( !isset( $args[0] ) || ( $args[0] === '' && count( $args ) == 1 ) ) {
-			$this->mHashTables = array();
+		if( ! isset( $args[0] ) || ( $args[0] === '' && count( $args ) == 1 ) ) {
+			$store->mHashTables = array();
 		}
 		else {
-			foreach ( $args as $arg )
-			{
-				$argVal = trim( $frame->expand($arg) );
-				$this->removeHash( $argVal );
+			// reset specific hash tables:
+			foreach( $args as $arg ) {
+				$hashId = trim( $frame->expand($arg) );
+				$store->unsetHash( $hashId );
+				
 			}
 		}
 		return '';
@@ -283,23 +359,26 @@ class ExtHashTables {
 	 * Syntax:
 	 *   {{#hashinclude:hashID |key1=val1 |key2=val2 |... |key n=val n}}
 	 */
-	function hashinclude( &$parser, $frame, $args) {	
+	static function pfObj_hashinclude( &$parser, $frame, $args) {	
 		// get hash table ID from first parameter:
 		$hashId = trim( $frame->expand( $args[0] ) );
 		unset( $args[0] );
 		
-		if( !$this->hashExists($hashId) )
-			$this->mHashTables[ $hashId ] = array();		
+		$store = self::get( $parser );
+		
+		if( ! $store->hashExists($hashId) ) {
+			$store->setHash( $hashId );
+		}
 		
 		// all following parameters contain hash table keys and values '|key=value'
-		foreach ( $args as $arg )
-		{
+		foreach ( $args as $arg ) {
 			$argString = $frame->expand($arg);
 			$argItem = explode( '=', $argString, 2 );
-			$argName = trim( $argItem[0] );
-			$argVal = ( count( $argItem ) > 1 ) ? trim( $argItem[1] ) : '';
+			$argName = $argItem[0];
+			$argVal = ( count( $argItem ) > 1 ) ? $argItem[1] : '';
 			
-			$this->mHashTables[ $hashId ][ $argName ] = $argVal;
+			// set the value (this will trim the values as well)
+			$store->setHashValue( $hashId, $argName, $argVal );
 		}
 		return '';
 	}
@@ -309,19 +388,21 @@ class ExtHashTables {
 	 * Syntax:
 	 *   {{#hashexclude:hashID |key1 |key2 |... |key n}}
 	 */
-	function hashexclude( &$parser, $frame, $args) {
+	static function pfObj_hashexclude( &$parser, $frame, $args) {
 		// get hash table ID from first parameter:
 		$hashId = trim( $frame->expand($args[0]) );
 		unset( $args[0] );
 		
-		if( !$this->hashExists($hashId) )
-			return'';	
+		$store = self::get( $parser );
+		
+		if( ! $store->hashExists( $hashId ) ) {
+			return'';
+		}
 		
 		// all following parameters contain hash table keys and values '|key=value'
-		foreach ( $args as $arg )
-		{
-			$argName = trim( $frame->expand($arg) );
-			unset( $this->mHashTables[ $hashId ][ $argName ] );
+		foreach ( $args as $arg ) {
+			$argName = trim( $frame->expand($arg) );			
+			$store->unsetHashValue( $hashId, $argName );
 		}
 		return '';
 	}
@@ -331,8 +412,8 @@ class ExtHashTables {
 	 * Syntax:
 	 *   {{#hashmerge:hashID |hash1 |hash2 |... |hash n}}
 	 */
-	function hashmerge( &$parser, $frame, $args) {				
-		$this->multiHashOperation( $frame, $args, __FUNCTION__, true );
+	static function pfObj_hashmerge( &$parser, $frame, $args) {				
+		self::get( $parser )->multiHashOperation( $frame, $args, __FUNCTION__, true );
 		return '';
 	}	
 	private function multi_hashmerge( $hash1, $hash2 = array() ) {
@@ -345,8 +426,8 @@ class ExtHashTables {
 	 * Syntax:
 	 *   {{#hashmix:hashID |hash1 |hash2 |... |hash n}}
 	 */
-	function hashmix( &$parser, $frame, $args) {
-		$this->multiHashOperation( $frame, $args, __FUNCTION__, false );
+	static function pfObj_hashmix( &$parser, $frame, $args) {
+		self::get( $parser )->multiHashOperation( $frame, $args, __FUNCTION__, false );
 		return '';
 	}	
 	private function multi_hashmix( $hash1, $hash2 ) {
@@ -364,8 +445,8 @@ class ExtHashTables {
 	 * Syntax:
 	 *   {{#hashdiff:hashID |hash1 |hash2 |... |hash n}}
 	 */
-	function hashdiff( &$parser, $frame, $args) {
-		$this->multiHashOperation( $frame, $args, __FUNCTION__, false );
+	static function pfObj_hashdiff( &$parser, $frame, $args) {
+		self::get( $parser )->multiHashOperation( $frame, $args, __FUNCTION__, false );
 		return '';
 	}
 	private function multi_hashdiff( $hash1, $hash2 ) {
@@ -379,8 +460,8 @@ class ExtHashTables {
 	 * Syntax:
 	 *   {{#hashintersect:hashID |hash1 |hash2 |... |hash n}}
 	 */
-	function hashintersect( &$parser, $frame, $args) {
-		$this->multiHashOperation( $frame, $args, __FUNCTION__, false );
+	static function pfObj_hashintersect( &$parser, $frame, $args) {		
+		self::get( $parser )->multiHashOperation( $frame, $args, __FUNCTION__, false );
 		return '';
 	}
 	private function multi_hashintersect( $hash1, $hash2 ) {
@@ -393,10 +474,10 @@ class ExtHashTables {
 	 * Syntax:
 	 *   {{#hashtoarray:valArrayID |hashID |keyArrayID}}
 	 */
-	function hashtoarray( &$parser, $valArrayId, $hashId, $keyArrayId = null) {
-		
-		if( !isset($hashId) || !isset($valArrayId) )
+	static function pf_hashtoarray( Parser &$parser, $valArrayId, $hashId, $keyArrayId = null) {		
+		if( ! isset( $hashId ) || ! isset( $valArrayId ) ) {
 			return '';
+		}
 		
 		global $wgArrayExtension;
 		
@@ -404,22 +485,22 @@ class ExtHashTables {
 		$valArray = array();
 		$keyArray = array();
 		
-		if( $this->hashExists($hashId) )
-		{
-			$hash = $this->mHashTables[ $hashId ];
-			
+		$hash = self::get( $parser )->getHash( $hashId );
+		
+		if( $hash !== null ) {
 			foreach( $hash as $hashKey => $hashVal ) {
 				$valArray[] = $hashVal;
-				if( $keyArrayId !== null )
+				if( $keyArrayId !== null ) {
+					// for additional array with keys
 					$keyArray[] = $hashKey;
+				}
 			}
 		}
 		
-		
-		
-		$wgArrayExtension->mArrayExtension[ $valArrayId ] = $valArray;
+		$wgArrayExtension->mArrayExtension[ trim( $valArrayId ) ] = $valArray;
 		if( $keyArrayId !== null ) {
-			$wgArrayExtension->mArrayExtension[ $keyArrayId ] = $keyArray;
+			// additional array for hash keys:
+			$wgArrayExtension->mArrayExtension[ trim( $keyArrayId ) ] = $keyArray;
 		}
 		return '';
 	}
@@ -432,15 +513,15 @@ class ExtHashTables {
 	 * The 'keysArrayID' is optional. If set the items in this array will end up as keys in
 	 * the new hash table.
 	 */
-	function arraytohash( &$parser, $hashId, $valArrId, $keyArrId = null) {
-
-		if( !isset($hashId) )
+	static function pf_arraytohash( Parser &$parser, $hashId, $valArrId, $keyArrId = null) {
+		if( ! isset( $hashId) ) {
 			return '';
+		}
 		
 		global $wgArrayExtension;
 		
 		// if array doesn't exist
-		if( !array_key_exists( $valArrId, $wgArrayExtension->mArrayExtension ) )
+		if( ! array_key_exists( $valArrId, $wgArrayExtension->mArrayExtension ) )
 			$arrExtValArray = array();
 		else
 			$arrExtValArray = $wgArrayExtension->mArrayExtension[ $valArrId ];
@@ -448,7 +529,7 @@ class ExtHashTables {
 		$newHash = array();
 				
 		// if no key array is given OR the key array doesn't exist
-		if( !isset($keyArrId) || !array_key_exists( $keyArrId, $wgArrayExtension->mArrayExtension ) )
+		if( ! isset($keyArrId) || ! array_key_exists( $keyArrId, $wgArrayExtension->mArrayExtension ) )
 		{
 			// Copy the whole array. Result will be a hash with numeric keys
 			$newHash = $arrExtValArray;
@@ -459,11 +540,12 @@ class ExtHashTables {
 			$valArray = $arrExtValArray;
 			
 			for( $i=0; $i < count($keyArray); $i++ ) {
-				$currVal = array_key_exists( $i, $valArray ) ? $valArray[$i] : '';
-				$newHash[ $keyArray[$i] ] = $currVal;
+				$currVal = array_key_exists( $i, $valArray ) ? trim( $valArray[ $i ] ) : '';
+				$newHash[ $keyArray[ $i ] ] = $currVal;
 			}
 		}
-		$this->mHashTables[ $hashId ] = $newHash;	
+		
+		self::get( $parser )->mHashTables[ $hashId ] = $newHash;		
 		return '';
 	}
 	
@@ -475,18 +557,22 @@ class ExtHashTables {
 	 * Syntax:
 	 *   {{#hashtotemplate:template |hash |pipe-replacer}}
 	 */
-    function hashtotemplate( &$parser, $frame, $args ) {
-		if( ! isset($args[0]) || ! isset($args[1]) )
+    static function pfObj_hashtotemplate( Parser &$parser, $frame, $args ) {
+		if( ! isset( $args[0] ) || ! isset( $args[1] ) ) {
 			return '';
+		}
+		
+		$store = self::get( $parser );
 		
         $template = trim( $frame->expand($args[0] ) );
         $hashId   = trim( $frame->expand($args[1] ) );
 		$pipeReplacer = isset($args[2]) ? trim( $frame->expand( $args[2] ) ) : '&#124;';
 		
-		if( !$this->hashExists( $hashId ) )
+		if( ! $store->hashExists( $hashId ) ) {
 			return '';
+		}
 		
-        $params = $this->mHashTables[ $hashId ];
+        $params = $store->getHash( $hashId );
 		$templateCall = '{{' . $template;
 		
 		foreach ($params as $paramKey => $paramValue){
@@ -504,90 +590,10 @@ class ExtHashTables {
 		return array( $result , 'noparse' => true, 'isHTML' => false );
 	}
 	
-	/* ============================ */	
-	/* ============================ */
-	/* ===                      === */
-	/* ===   HELPER FUNCTIONS   === */
-	/* ===                      === */
-	/* ============================ */	
-	/* ============================ */
 	
-	/**
-	 * Returns a value within a hash. If key or hash doesn't exist, this will return null
-	 * or another predefined default.
-	 * 
-	 * @since 0.7
-	 * 
-	 * @param string $hashId
-	 * @param string $key
-	 * @param mixed  $default value to return in cas the value doesn't exist. null by default.
-	 * @return string
-	 */
-    public function getHashValue( $hashId = '', $key = '', $default = null ) {
-		$hashId = trim( $hashId );
-		if( $this->hashExists( $hashId ) && array_key_exists( $key, $this->mHashTables[ $hashId ] ) )
-			return $this->mHashTables[ $hashId ][ $key ];
-		else
-			return $default;
-    }
-
-	/**
-	 * Returns an hash identified by $hashId. If it doesn't exist this will return null.
-	 * 
-	 * @since 0.6
-	 * 
-	 * @param string $hashId
-	 * @return array|null
-	 */
-    public function getHash( $hashId = '' ) {
-		if( $this->hashExists( $hashId ) )
-			return $this->mHashTables[ $hashId ];
-		else
-			return null;
-    }
-	
-	/**
-	 * Returns whether a hash exists within the page scope.
-	 * 
-	 * @since 0.6
-	 * 
-	 * @param string $hashId 
-	 * @return boolean
-	 */
-	public function hashExists( $hashId = '' ) {
-		return array_key_exists( trim( $hashId ), $this->mHashTables );
-	}
-	
-	/**
-	 * This will add a new hash or overwrite an existing one. Values should be delliverd as array
-	 * values in form of a string.
-	 * 
-	 * @since 0.6
-	 * 
-	 * @param string $hashId
-	 * @param array  $hashTable
-	 */
-	public function createHash( $hashId = '', $hashTable = array() ) {
-		$this->mHashTables[ trim( $hashId ) ] = $hashTable;
-	}
-	
-	/**
-	 * Removes an existing hash. If the hash doesn't exist this will return false, otherwise true.
-	 * 
-	 * @since 0.6
-	 * 
-	 * @param string $hashId
-	 * @return boolean
-	 */
-	public function removeHash( $hashId = '' ) {
-		$hashId = trim( $hashId );
-		if( $this->hashExists( $hashId ) ) {
-			unset( $this->mHashTables[ $hashId ] );
-			return true;
-		} else {
-			return false;
-		}
-	}
+	##################
+	# Private Helper #
+	##################
 	
 	/**
 	 * Base function for operations with multiple hashes given thru n parameters
@@ -608,7 +614,7 @@ class ExtHashTables {
 		$lastHash = null;
 		$operationRan = false;
 		$finalHashId = trim( $frame->expand( $args[0] ) );
-		$operationFunc = 'multi_' . $operationFunc;
+		$operationFunc = 'multi_' . preg_replace( '/^pfObj_/', '', $operationFunc );
 		
 		// For all hashes given in parameters 2 to n (ignore 1 because this is the new hash)
 		for( $i = 1; $i < count( $args ); $i++ )
@@ -617,7 +623,7 @@ class ExtHashTables {
 				continue;
 			}
 			$argHashId = trim( $frame->expand( $args[ $i ] ) );
-		
+			
 			if( $this->hashExists( $argHashId ) ) {
 				$argHash = $this->mHashTables[ $argHashId ];
 				if( $lastHash === null ) {
@@ -629,17 +635,167 @@ class ExtHashTables {
 					$lastHash = $this->{ $operationFunc }( $lastHash, $argHash ); // perform action between last and current hash
 					$operationRan = true;
 				}
-			}			
+			}
 		}
+		
 		// in case no hash was given at all:
 		if( $lastHash === null ) {
 			$lastHash = array();
 		}
+		
 		// if the operation didn't run because there was only one or no array:
 		if( $operationRan == false && $runFuncOnSingleHash ) {
 			$lastHash = $this->{ $operationFunc }( $lastHash );
 		}
+		
 		$this->mHashTables[ $finalHashId ] = $lastHash;
+	}
+	
+	
+	##############
+	# Used Hooks #
+	##############
+	
+	/**
+	 * This will clean up the hash table store after parsing has finished. It will prevent strange things to happen
+	 * for example during import of several pages or job queue is running for multiple pages. In these cases hashes
+	 * would become some kind of superglobals, being passed from one page to the other.
+	 */
+	static function onParserClearState( Parser &$parser ) {
+		/**
+		 * MessageCaches Parser clone will mess things up if we don't reset the entire object.
+		 * Only resetting the array would unset it in the original object as well! This instead
+		 * will break the entire reference to the object
+		 */
+		$parser->mExtHashTables = new self();
+		return true;
+	}
+	
+	
+	####################################
+	# Public functions for interaction #
+	####################################
+	#
+	# public non-parser functions, accessible for
+	# other extensions doing interactive stuff
+	# with 'HashTables' extension.
+	#
+	
+	/**
+	 * Convenience function to return the 'HashTables' extensions hash table store connected
+	 * to a certain Parser object. Each parser has its own store which will be reset after
+	 * a parsing process [Parser::parse()] has finished.
+	 * 
+	 * @since 0.8
+	 * 
+	 * @param Parser &$parser
+	 * 
+	 * @return ExtHashTables by reference so we still have the right object after 'ParserClearState'
+	 */
+	public static function &get( Parser &$parser ) {
+		return $parser->mExtHashTables;
+	}
+	
+	/**
+	 * Returns an hash identified by $hashId. If it doesn't exist this will return null.
+	 * 
+	 * @since 0.6
+	 * 
+	 * @param string $hashId
+	 * 
+	 * @return array|null
+	 */
+    public function getHash( $hashId ) {
+		if( $this->hashExists( $hashId ) ) {
+			return $this->mHashTables[ $hashId ];
+		} else {
+			return null;
+		}
+    }
+	
+	/**
+	 * This will add a new hash or overwrite an existing one. Values should be delliverd as array
+	 * values in form of a string. All values will be converted to strings, trim() will iterate
+	 * over them.
+	 * 
+	 * @since 0.8
+	 * 
+	 * @param string $hashId
+	 * @param array  $hashTable
+	 */
+	public function setHash( $hashId, $hashTable = array() ) {
+		$hashTable = array_map( 'trim', $hashTable ); // make it all string and trim
+		$this->mHashTables[ trim( $hashId ) ] = $hashTable;
+	}
+	
+	/**
+	 * Returns a value within a hash. If key or hash doesn't exist, this will return null
+	 * or another predefined default.
+	 * 
+	 * @since 0.7
+	 * 
+	 * @param string $hashId
+	 * @param string $key
+	 * @param mixed  $default value to return in cas the value doesn't exist. null by default.
+	 * 
+	 * @return string
+	 */
+    public function getHashValue( $hashId, $key, $default = null ) {
+		$hashId = trim( $hashId );
+		if( $this->hashExists( $hashId ) && array_key_exists( $key, $this->mHashTables[ $hashId ] ) ) {
+			return $this->mHashTables[ $hashId ][ $key ];
+		} else {
+			return $default;
+		}
+    }
+	
+	/**
+	 * Rest a specific hash tables entry.
+	 * 
+	 * @since 0.8
+	 * 
+	 * @param type $hashId
+	 * @param type $key 
+	 */
+	public function unsetHashValue( $hashId, $key ) {
+		unset( $this->mHashTables[ $hashId ][ $key ] );
+	}
+	
+	/**
+	 * Set a value of a hash table to a specific value. If the hash table doesn't exist already,
+	 * it will be created.
+	 * 
+	 * @since 0.8
+	 * 
+	 * @param string $hashId
+	 * @param array  $hashTable
+	 */
+    public function setHashValue( $hashId, $key, $value ) {
+		$this->mHashTables[ trim( $hashId ) ][ trim( $key ) ] = trim( $value );
+    }
+		
+	/**
+	 * Returns whether a hash exists within the page scope.
+	 * 
+	 * @since 0.6
+	 * 
+	 * @param string $hashId
+	 * 
+	 * @return boolean
+	 */
+	public function hashExists( $hashId ) {
+		return array_key_exists( trim( $hashId ), $this->mHashTables );
+	}
+	
+	/**
+	 * Allows to unset a certain variable
+	 * 
+	 * @since 0.8
+	 * 
+	 * @param type $varName
+	 */
+	public function unsetHash( $hashId ) {
+		unset( $this->mHashTables[ $hashId ] );
 	}
 	
 	/**
@@ -649,38 +805,8 @@ class ExtHashTables {
 	 * @param string $pattern regular expression including delimiters and optional flags
 	 * @return boolean
 	 */
-	function isValidRegEx( $pattern ) {
+	static function isValidRegEx( $pattern ) {
 		return preg_match( '/^([\\/\\|%]).*\\1[imsSuUx]*$/', $pattern );
 	}
-}
-
-
-
-function efHashTablesParserFirstCallInit( Parser &$parser ) {
-    global $wgHashTables, $wgArrayExtension;
- 
-    $wgHashTables = new ExtHashTables();
-	 
-    $parser->setFunctionHook( 'hashdefine',       array( &$wgHashTables, 'hashdefine'       ) );
-	$parser->setFunctionHook( 'hashvalue',        array( &$wgHashTables, 'hashvalue'        ) );
-	$parser->setFunctionHook( 'hashsize',         array( &$wgHashTables, 'hashsize'         ) );
-	$parser->setFunctionHook( 'hashkeyexists',    array( &$wgHashTables, 'hashkeyexists'    ), SFH_OBJECT_ARGS );
-	$parser->setFunctionHook( 'hashprint',        array( &$wgHashTables, 'hashprint'        ), SFH_OBJECT_ARGS );
-	$parser->setFunctionHook( 'parameterstohash', array( &$wgHashTables, 'parameterstohash' ), SFH_OBJECT_ARGS );
-	$parser->setFunctionHook( 'hashtotemplate',   array( &$wgHashTables, 'hashtotemplate'   ), SFH_OBJECT_ARGS );
-	$parser->setFunctionHook( 'hashinclude',      array( &$wgHashTables, 'hashinclude'      ), SFH_OBJECT_ARGS );
-	$parser->setFunctionHook( 'hashexclude',      array( &$wgHashTables, 'hashexclude'      ), SFH_OBJECT_ARGS );
-	$parser->setFunctionHook( 'hashreset',        array( &$wgHashTables, 'hashreset'        ), SFH_OBJECT_ARGS );	
-	$parser->setFunctionHook( 'hashmerge',        array( &$wgHashTables, 'hashmerge'        ), SFH_OBJECT_ARGS );
-	$parser->setFunctionHook( 'hashmix',          array( &$wgHashTables, 'hashmix'          ), SFH_OBJECT_ARGS );
-	$parser->setFunctionHook( 'hashdiff',         array( &$wgHashTables, 'hashdiff'         ), SFH_OBJECT_ARGS );
-	$parser->setFunctionHook( 'hashintersect',    array( &$wgHashTables, 'hashintersect'    ), SFH_OBJECT_ARGS );
 	
-	// if array extension is available, rgister array-hash interactions:
-	if( isset( $wgArrayExtension ) ) {		
-		$parser->setFunctionHook( 'hashtoarray', array( &$wgHashTables, 'hashtoarray' ) );
-		$parser->setFunctionHook( 'arraytohash', array( &$wgHashTables, 'arraytohash' ) );
-	}
-	
-	return true;
 }
