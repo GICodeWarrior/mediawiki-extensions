@@ -43,6 +43,7 @@ class InteractiveBlockMessageHooks {
 			$ret = 'unknown';
 			return true;
 		}
+		$parser->disableCache();
 
 		$user = User::newFromName( $parser->getTitle()->getBaseText() ); 
 		if ($user instanceof User) {
