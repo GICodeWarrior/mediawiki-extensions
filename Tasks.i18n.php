@@ -1062,6 +1062,7 @@ $messages['eo'] = array(
  * @author Crazymadlover
  * @author Imre
  * @author Mor
+ * @author Vivaelcelta
  */
 $messages['es'] = array(
 	'tasks' => 'Tareas',
@@ -1112,7 +1113,7 @@ $messages['es'] = array(
 	'tasks_you_have_no_assignments' => 'No tiene asignamientos abiertos',
 	'tasks_search_form_title' => 'Buscar',
 	'tasks_search_tasks' => 'Tareas',
-	'tasks_search_status' => 'Estatus',
+	'tasks_search_status' => 'Estado',
 	'tasks_search_no_tasks_chosen_note' => '(Sin selección aquí se buscará todo tipo de tareas.)',
 	'tasks_search_results' => 'Resultados de la búsqueda',
 	'tasks_previous' => 'Anterior',
