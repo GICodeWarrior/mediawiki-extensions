@@ -3389,8 +3389,10 @@ $messages['sr-ec'] = array(
 $2',
 	'whitelistrequestconf' => 'Захтев за новим страницама је послат $1',
 	'whitelistnever' => 'никад',
+	'group-restricted' => 'Ограничени корисници',
+	'group-restricted-member' => '{{GENDER:$1|ограничен корисник|ограничена корисница|ограничен корисник}}',
 	'group-manager' => 'Управљачи',
-	'group-manager-member' => 'Управљач',
+	'group-manager-member' => '{{GENDER:$1|руководилац|руководитељка|руководилац}}',
 );
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
