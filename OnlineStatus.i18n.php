@@ -405,6 +405,7 @@ $messages['eo'] = array(
  * @author Cojoilustrado
  * @author Crazymadlover
  * @author Imre
+ * @author Vivaelcelta
  */
 $messages['es'] = array(
 	'onlinestatus-desc' => 'Crea una preferencia para mostrar si el usuario está conectado al wiki',
@@ -413,7 +414,7 @@ $messages['es'] = array(
 	'onlinestatus-js-error' => 'Imposible cambiar status, valor "$1" es inválido',
 	'onlinestatus-subtitle-offline' => 'Este usuario se encuentra desconectado',
 	'onlinestatus-subtitle-online' => 'Este usuario se encuentra conectado',
-	'onlinestatus-tab' => 'Estatus',
+	'onlinestatus-tab' => 'Estado',
 	'onlinestatus-toggles-desc' => 'Tu estatus:',
 	'onlinestatus-toggles-explain' => 'Esto te permite mostrar a otros usuarios si estás conectado en tu página de usuario.',
 	'onlinestatus-toggles-show' => 'Muestra mi status en mi página de usuario',
