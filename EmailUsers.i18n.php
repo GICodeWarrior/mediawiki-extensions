@@ -298,13 +298,14 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author Ohgi
  * @author Whym
  */
 $messages['ja'] = array(
 	'emailusers-desc' => '利用者が複数の受信者に電子メールを送ることを許可する',
 	'right-sendbatchemail' => '同時に複数の利用者へ電子メールを送る',
-	'emailusers' => '利用者への電子メール送信',
+	'emailusers' => '複数利用者への電子メール送信',
 	'emailusers-target-reverse' => '選択した利用者以外のすべての利用者に送信する',
 	'emailusers-norecipient' => '電子メールを送信できる相手がいません。',
 	'emailusers-norecipientselected' => '受信者が選択されていません。',
