@@ -64,6 +64,13 @@ $messages['he'] = array(
 	'editsectionclearerlink-desc' => 'לשפר את השמישות של קישורי עריכת פסקה בזמן ריחוף הסמן מעל פסקה או קישור',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'editsectionclearerlink-desc' => 'Wužiwajomnosć wotkazow za wobdźěłowanje wotrězkow přez akcije polěpšić, kotrež při přechadźenju z kursorom myše k dispoziciji steja',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
