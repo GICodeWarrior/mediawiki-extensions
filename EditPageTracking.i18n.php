@@ -122,6 +122,13 @@ $messages['he'] = array(
 	'editpagetracking-desc' => 'שמירת הפעם הראשונה שעל משתמש רואה את דך העריכה',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'editpagetracking-desc' => 'Protokoluje prěni raz, hdyž wužiwar wobdźěłansku stronu wopytuje',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
