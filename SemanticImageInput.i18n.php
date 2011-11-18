@@ -71,6 +71,14 @@ $messages['gl'] = array(
 	'sii-imageinput-loading' => 'Cargando a imaxe...',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'sii-desc' => 'Zmóžnja zapodaće wobrazow, kotrež wobrazy z Wikipedije do [https://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms] ćaha',
+	'sii-imageinput-loading' => 'Wobraz so začituje...',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
