@@ -681,6 +681,14 @@ $messages['id'] = array(
 	'collabwatchlistedit-tags-raw-submit' => 'Simpan',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'collabwatchlisttools-delete' => '削除',
+	'collabwatchlistdelete-submit' => '削除',
+);
+
 /** Kurdish (Latin) (Kurdî (Latin))
  * @author Welathêja
  */
