@@ -38,6 +38,15 @@ $messages['arz'] = array(
 	'htmlets-desc' => 'يسمح لك باستخدام صيغ HTML من الملفات باستخدام وسم <code>&lt;htmlet&gt;</code>',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'htmlets-desc' => 'Te permite inxertar fragmentos de HTML dende ficheros usando la etiqueta <code>&lt;htmlet&gt;</code>',
+	'htmlets-filenotfound' => 'Nun se pue atopar el ficheru HTML $1',
+	'htmlets-loadfailed' => 'Nun se pudo cargar el ficheru HTML $1',
+);
+
 /** Bashkir (Башҡортса)
  * @author Roustammr
  */
