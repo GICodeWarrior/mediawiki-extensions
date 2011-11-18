@@ -340,7 +340,7 @@ class ExtHashTables {
 		else {
 			// reset specific hash tables:
 			foreach( $args as $arg ) {
-				$hashId = trim( $frame->expand($arg) );
+				$hashId = trim( $frame->expand( $arg ) );
 				$store->unsetHash( $hashId );
 				
 			}
@@ -783,14 +783,21 @@ class ExtHashTables {
 	}
 	
 	/**
-	 * Allows to unset a certain variable
+	 * Allows to unset a certain hash. Returns whether the hash existed or not.
 	 * 
 	 * @since 0.8
 	 * 
-	 * @param type $varName
+	 * @param string $varName
+	 * 
+	 * @return boolean
 	 */
 	public function unsetHash( $hashId ) {
-		unset( $this->mHashTables[ $hashId ] );
+		$hashId = trim( $hashId );
+		if( $this->hashExists( $hashId ) ) {
+			unset( $this->mHashTables[ $hashId ] );
+			return true;
+		}
+		return false;
 	}
 	
 	/**
@@ -801,7 +808,13 @@ class ExtHashTables {
 	 * @return boolean
 	 */
 	static function isValidRegEx( $pattern ) {
-		return preg_match( '/^([\\/\\|%]).*\\1[imsSuUx]*$/', $pattern );
+		if( ! preg_match( '/^([\\/\\|%]).*\\1[imsSuUx]*$/', $pattern ) ) {
+			return false;
+		}
+		wfSuppressWarnings(); // instead of using the evil @ operator!
+		$isValid = false !== preg_match( $pattern, ' ' ); // preg_match returns false on error
+		wfRestoreWarnings();
+		return $isValid;
 	}
 	
 }
