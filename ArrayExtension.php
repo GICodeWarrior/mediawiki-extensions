@@ -212,7 +212,7 @@ class ArrayExtension {
 				$temp_result_value = $parser->preprocessToDom( $temp_result_value, $frame->isTemplate() ? Parser::PTD_FOR_INCLUSION : 0 );
 				$temp_result_value = trim( $frame->expand( $temp_result_value ) );
 			}
-			$rendered_values[] = $temp_result_value ;
+			$rendered_values[] = $temp_result_value;
 		}
 		
 		$output = implode( $delimiter, $rendered_values );		
@@ -266,7 +266,7 @@ class ArrayExtension {
             return $this->get_array_value( $ary_option, "default" );
         }
 
-        $ret = $this->validate_array_index( $index, $this->mArrayExtension[$arrayid] );
+        $ret = $this->validate_array_index( $arrayid, $index );
         if ( $ret !== true ) {
             return $this->get_array_value( $ary_option, "default" );
         }
@@ -306,31 +306,49 @@ class ArrayExtension {
 	*   See: http://www.php.net/manual/en/function.array-search.php
 	*   note it is extended to support regular expression match and index
 	*/
-    function arraysearch( &$parser, $arrayid, $needle = '/^\s*$/', $index = 0, $yes = null, $no = '-1' ) {
-        $ret = $this->validate_array_by_arrayid( $arrayid );
-        if ( $ret !== true )
-            return $no;
-
-        $ret = $this->validate_array_index( $index, $this->mArrayExtension[$arrayid] );
-        if ( !$ret )
-            return $no;
-
-        if ( ! $this->isValidRegEx( $needle ) )
-			$needle = '/^\s*' . preg_quote( $needle, '/' ) . '\s*$/';
-
-		// search for a match inside the array:
-        for ( $i = $index; $i < count( $this->mArrayExtension[$arrayid] ); $i++ ) {
-			$value = $this->mArrayExtension[$arrayid][$i];
-
-			if ( preg_match( $needle, $value ) ) {
-				if ( isset( $yes ) )
-					return $yes;
-				else
-					return $i;
+    //function arraysearch( &$parser, $arrayid, $needle = '/^\s*$/', $index = 0, $yes = null, $no = '-1' ) {
+	function arraysearch( Parser &$parser, PPFrame $frame, $args ) {
+		
+		$arrayId = trim( $frame->expand( $args[0] ) );
+		$startIndex = isset( $args[2] ) ? trim( $frame->expand( $args[2] ) ) : 0;
+		
+        if( $this->validate_array_by_arrayid( $arrayId )
+			&& $this->validate_array_index( $arrayId, $startIndex )				
+		) {
+			// validate/build search regex:
+			if( isset( $args[1] ) ) {
+				
+				$needle = trim( $frame->expand( $args[1] ) );
+				
+				if ( ! $this->isValidRegEx( $needle ) ) {
+					$needle = '/^\s*' . preg_quote( trim( $needle ), '/' ) . '\s*$/';
+				}				
 			}
-        }
+			else {
+				$needle = '/^\s*$/';
+			}
 
-		// no match:
+			// search for a match inside the array:
+			$total = count( $this->mArrayExtension[ $arrayId ] );
+			for ( $i = $startIndex; $i < $total; $i++ ) {
+				$value = $this->mArrayExtension[ $arrayId ][ $i ];
+
+				if ( preg_match( $needle, $value ) ) {
+					// found!
+					if ( isset( $args[3] ) ) {
+						// Expand only when needed!						
+						return trim( $frame->expand( $args[3] ) );
+					}
+					else {
+						// return index of first found item
+						return $i;
+					}
+				}
+			}
+		}
+
+		// no match! (Expand only when needed!)
+		$no = isset( $args[4] ) ? trim( $frame->expand( $args[4] ) ) : '-1';
         return $no;
     }
 
@@ -492,7 +510,7 @@ class ArrayExtension {
 	*  this merge differs from array_merge of php because it merges values.
 	*/
     function arraymerge( &$parser, $arrayid_new, $arrayid1, $arrayid2 = '' ) {
-        if ( !isset( $arrayid_new ) )
+        if ( !isset( $arrayid_new ) || !isset( $arrayid1 ) )
            return '';
 
         $ret = $this->validate_array_by_arrayid( $arrayid1 );
@@ -527,7 +545,7 @@ class ArrayExtension {
 	*    see: http://www.php.net/manual/en/function.array-slice.php
 	*/
     function arrayslice( &$parser, $arrayid_new , $arrayid , $offset, $length = '' ) {
-        if ( !isset( $arrayid_new ) )
+        if ( ! isset( $arrayid_new ) || ! isset( $arrayid ) || ! isset( $offset ) )
            return '';
 
         $ret = $this->validate_array_by_arrayid( $arrayid );
@@ -562,10 +580,10 @@ class ArrayExtension {
 
 	*    similar to arraymerge, this union works on values.
 	*/
-    function arrayunion( &$parser, $arrayid_new , $arrayid1 , $arrayid2 ) {
-        if ( !isset( $arrayid_new ) )
+    function arrayunion( &$parser, $arrayid_new , $arrayid1 = null , $arrayid2 = null ) {
+        if ( ! isset( $arrayid_new ) || ! isset( $arrayid1 ) || ! isset( $arrayid2 ) ) {
            return '';
-
+		}
 
         $ret = $this->validate_array_by_arrayid( $arrayid1 );
         if ( $ret !== true ) {
@@ -592,9 +610,10 @@ class ArrayExtension {
 	*    {{#arrayintersect:arrayid_new|arrayid1|arrayid2}}
 	*   See: http://www.php.net/manual/en/function.array-intersect.php
 	*/
-    function arrayintersect( &$parser, $arrayid_new , $arrayid1 , $arrayid2 ) {
-        if ( !isset( $arrayid_new ) )
+    function arrayintersect( &$parser, $arrayid_new , $arrayid1 = null , $arrayid2 = null ) {
+        if ( ! isset( $arrayid_new ) || ! isset( $arrayid1 ) || ! isset( $arrayid2 ) ) {
            return '';
+		}
 
         $ret = $this->validate_array_by_arrayid( $arrayid1 );
         if ( $ret !== true ) {
@@ -623,9 +642,10 @@ class ArrayExtension {
 	*    set operation,    {white} = {red, white}  -  {red}
 	*    see: http://www.php.net/manual/en/function.array-diff.php
 	*/
-    function arraydiff( &$parser, $arrayid_new , $arrayid1 , $arrayid2 ) {
-        if ( !isset( $arrayid_new ) )
+    function arraydiff( &$parser, $arrayid_new , $arrayid1 = null , $arrayid2 = null ) {
+        if ( ! isset( $arrayid_new ) || ! isset( $arrayid1 ) || ! isset( $arrayid2 ) ) {
            return '';
+		}
 
         $ret = $this->validate_array_by_arrayid( $arrayid1 );
         if ( $ret !== true ) {
@@ -657,17 +677,20 @@ class ArrayExtension {
 	}
 
     // private functions for validating the index of an array
-    function validate_array_index( $index, $array ) {
-        if ( !isset( $index ) )
+    function validate_array_index( $arrayId, $index ) {
+		
+        if ( ! is_numeric( $index ) )
+                return false;
+		
+		if( ! array_key_exists( $arrayId, $this->mArrayExtension ) )
+			return false;
+		
+		$array = $this->mArrayExtension[ $arrayId ];
+		
+        if ( ! isset( $array ) )
                 return false;
 
-        if ( !is_numeric( $index ) )
-                return false;
-
-        if ( !isset( $array ) || !is_array( $array ) )
-                return false;
-
-        if ( !array_key_exists( $index, $array ) ) /*($index<0 || $index>=count($array))*/
+        if ( ! array_key_exists( $index, $array ) )
                 return false;
 
         return true;
@@ -815,8 +838,14 @@ class ArrayExtension {
 	 * @param string $pattern regular expression including delimiters and optional flags
 	 * @return boolean
 	 */
-	function isValidRegEx( $pattern ) {		
-		return (bool)preg_match( '/^([\\/\\|%]).*\\1[imsSuUx]*$/', $pattern );
+	function isValidRegEx( $pattern ) {	
+		if( ! preg_match( '/^([\\/\\|%]).*\\1[imsSuUx]*$/', $pattern ) ) {
+			return false;
+		}
+		wfSuppressWarnings(); // instead of using the evil @ operator!
+		$isValid = false !== preg_match( $pattern, ' ' ); // preg_match returns false on error
+		wfRestoreWarnings();
+		return $isValid;
 	}
 }
 
@@ -834,7 +863,7 @@ function efArrayExtensionParserFirstCallInit( &$parser ) {
 
     $parser->setFunctionHook( 'arraysize',        array( &$wgArrayExtension, 'arraysize' ) );
     $parser->setFunctionHook( 'arrayindex',       array( &$wgArrayExtension, 'arrayindex' ) );
-    $parser->setFunctionHook( 'arraysearch',      array( &$wgArrayExtension, 'arraysearch' ) );
+    $parser->setFunctionHook( 'arraysearch',      array( &$wgArrayExtension, 'arraysearch' ), SFH_OBJECT_ARGS );
 
     $parser->setFunctionHook( 'arraysort',        array( &$wgArrayExtension, 'arraysort' ) );
     $parser->setFunctionHook( 'arrayunique',      array( &$wgArrayExtension, 'arrayunique' ) );
