@@ -76,7 +76,7 @@ class ContributionTracking extends UnlistedSpecialPage {
 
 		$repost = ContributionTrackingProcessor::getRepostFields( $params );
 
-		$wgOut->addWikiText( "{{2009/Donate-banner/$language}}" );
+		#$wgOut->addWikiText( "{{2009/Donate-banner/$language}}" );
 		$wgOut->addHTML( $this->msgWiki( 'contrib-tracking-submitting' ) );
 
 		// Output the repost form
