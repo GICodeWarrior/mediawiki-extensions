@@ -960,3 +960,17 @@ $messages['vi'] = array(
 	'wikitweet-viaroom' => 'qua phòng',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'wikitweet-private' => 'פריוואַט',
+	'wikitweet-answer' => 'ענטפֿער צו',
+	'wikitweet-anonymous' => 'אַנאנים',
+	'wikitweet-from' => 'פֿון',
+	'wikitweet-in' => 'אין',
+	'wikitweet-directlink' => 'דירעקטער לינק:',
+	'wikitweet-mailsent' => 'ע־פאסט געשיקט',
+	'wikitweet-viaroom' => 'דורך צימער',
+);
+
