@@ -18,6 +18,13 @@ $messages['en'] = array(
 	'hashtables-desc' => 'Parser functions allowing to work with hash tables in a page scoped context',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'hashtables-desc' => 'Funciones analítiques que permiten trabayar con tables hash nun contestu de páxina',
+);
+
 /** German (Deutsch)
  * @author Daniel Werner
  * @author Kghbln
