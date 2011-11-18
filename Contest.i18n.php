@@ -499,12 +499,17 @@ $messages['be-tarask'] = array(
 	'contest-edit-opportunities' => 'Старонка магчымасьцяў',
 	'contest-edit-rulespage' => 'Старонка правілаў',
 	'contest-edit-help' => 'Старонка дапамогі',
+	'contest-edit-signup' => 'Старонка рэгістрацыі адрасу электроннай пошты',
 	'contest-edit-reminder' => 'Старонка электроннага ліста з напамінам',
 	'contest-edit-end' => 'Сканчэньне конкурсу',
 	'contest-edit-exists-already' => 'Вы рэдагуеце існуючы конкурс.',
 	'contest-edit-submit' => 'Даслаць',
 	'contest-edit-challenges' => 'Мэты конкурсу',
 	'contest-edit-delete' => 'Выдаліць мэту',
+	'contest-edit-add-first' => 'Дадаць мэту',
+	'contest-edit-add-another' => 'Дадаць іншую мэту',
+	'contest-edit-confirm-delete' => 'Вы ўпэўнены, што жадаеце выдаліць гэтую мэту?',
+	'contest-edit-challenge-title' => 'Назва мэты',
 );
 
 /** Breton (Brezhoneg)
@@ -915,12 +920,23 @@ $messages['fa'] = array(
  * @author Crt
  */
 $messages['fi'] = array(
+	'contest-special-name' => 'Nimi',
+	'contest-special-status' => 'Tila',
+	'contest-special-edit' => 'Muokkaa',
+	'contest-special-delete' => 'Poista',
+	'contest-edit-submit' => 'Lähetä',
+	'contest-contest-name' => 'Nimi',
+	'contest-contest-status' => 'Tila',
 	'contest-contest-go' => 'Siirry',
 	'contest-contest-yes' => 'Kyllä',
 	'contest-contest-no' => 'Ei',
 	'contest-contest-reminder-cancel' => 'Peruuta',
 	'contest-contest-reminder-close' => 'Sulje',
 	'contest-contestant-id' => 'Tunniste',
+	'contest-contestant-no' => 'Ei',
+	'contest-contestant-yes' => 'Kyllä',
+	'contest-contestant-rating' => '$1 ($2 {{PLURAL:$2|ääni|ääntä}})',
+	'contest-contestant-submit' => 'Tallenna muutokset',
 );
 
 /** French (Français)
@@ -1946,6 +1962,13 @@ $messages['ia'] = array(
 	'contest-submission-domains' => 'Le submissiones es limitate a iste sitos: $1',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'contest-special-delete' => '削除',
+);
+
 /** Georgian (ქართული)
  * @author BRUTE
  */
@@ -2953,6 +2976,7 @@ $messages['pl'] = array(
 
 /** Russian (Русский)
  * @author DCamer
+ * @author Ole Yves
  */
 $messages['ru'] = array(
 	'contest-desc' => 'Позволяет пользователям участвовать в конкурсах. Жури может обсуждать и голосовать за материалы',
@@ -3007,6 +3031,8 @@ $messages['ru'] = array(
 	'contest-edit-opportunities' => 'Страница возможностей',
 	'contest-edit-rulespage' => 'Страница правил',
 	'contest-edit-help' => 'Страница справки',
+	'contest-edit-signup' => 'Страница регистрации e-mail',
+	'contest-edit-reminder' => 'Страница напоминания электронной почте',
 	'contest-edit-end' => 'Окончание конкурса',
 	'contest-edit-exists-already' => 'Вы редактируете существующий конкурс.',
 	'contest-edit-submit' => 'Отправить',
@@ -3024,6 +3050,8 @@ $messages['ru'] = array(
 	'contest-welcome-js-off' => 'Пользовательский интерфейс конкурса использует JavaScript. Ваш браузер не поддерживает JavaScript или отключена поддержка JavaScript.',
 	'contest-welcome-accept-challenge' => 'Задача принята',
 	'contest-welcome-select-header' => 'Выберите вашу задачу:',
+	'contest-welcome-active-contests' => 'В настоящее время активны эти конкурсы:',
+	'contest-welcome-no-contests-active' => 'В настоящее время неактивны эти конкурсы:',
 	'contest-signup-unknown' => 'Конкурса с таким названием нет.',
 	'contest-signup-submit' => 'Регистрация',
 	'contest-signup-header' => 'Пожалуйста заполните форму чтобы завершить регистрацию в $1 .',
@@ -3052,6 +3080,7 @@ $messages['ru'] = array(
 	'contest-contest-days-ago' => '$1, $2 {{PLURAL:$2|день|дня|дней}} назад',
 	'contest-contest-days-left' => '$1, за $2 {{PLURAL:$2|день|дня|дней}}',
 	'contest-contest-contestants' => 'Конкурсанты',
+	'contest-contest-reminder-mail' => 'Напоминание электронной почты',
 	'contest-contest-send-reminder' => 'Отправить напоминание',
 	'contest-contest-go' => 'Перейти',
 	'contest-contest-showonly' => 'Отбор конкурсантов',
