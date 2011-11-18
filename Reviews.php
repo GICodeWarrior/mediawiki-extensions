@@ -28,7 +28,7 @@ if ( version_compare( $wgVersion, '1.18c', '<' ) ) { // Needs to be 1.18c becaus
 	die( '<b>Error:</b> Reviews requires MediaWiki 1.18 or above.' );
 }
 
-define( 'REVIEWS_VERSION', '0.2 alpha' );
+define( 'REVIEWS_VERSION', '0.1 alpha' );
 
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
@@ -95,3 +95,6 @@ $moduleTemplate = array(
 unset( $moduleTemplate );
 
 $egReviewsSettings = array();
+
+# The default value for the user preference to display a top link to the my reviews special page.
+$wgDefaultUserOptions['reviews_showtoplink'] = false;

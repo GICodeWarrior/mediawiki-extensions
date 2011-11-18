@@ -451,19 +451,13 @@ abstract class ReviewDBObject {
 		return new static( $data, $loadDefaults );
 	}
 
-	//
-	//
-	// All below methods ought to be static, but can't be since this would require LSB introduced in PHP 5.3.
-	//
-	//
-
 	/**
 	 * Get the database type used for read operations.
 	 *
 	 * @since 0.2
 	 * @return integer DB_ enum
 	 */
-	public function getReadDb() {
+	public static function getReadDb() {
 		return self::$readDb;
 	}
 
@@ -474,7 +468,7 @@ abstract class ReviewDBObject {
 	 *
 	 * @since 0.2
 	 */
-	public function setReadDb( $db ) {
+	public static function setReadDb( $db ) {
 		self::$readDb = $db;
 	}
 
@@ -487,8 +481,8 @@ abstract class ReviewDBObject {
 	 *
 	 * @return boolean
 	 */
-	public function canHasField( $name ) {
-		return array_key_exists( $name, $this->getFieldTypes() );
+	public static function canHasField( $name ) {
+		return array_key_exists( $name, static::getFieldTypes() );
 	}
 
 	/**
@@ -501,11 +495,11 @@ abstract class ReviewDBObject {
 	 *
 	 * @return array
 	 */
-	public function getPrefixedFields( $fields ) {
+	public static function getPrefixedFields( $fields ) {
 		$fields = (array)$fields;
 
 		foreach ( $fields as &$field ) {
-			$field = $this->getFieldPrefix() . $field;
+			$field = static::getFieldPrefix() . $field;
 		}
 
 		return $fields;
@@ -520,8 +514,8 @@ abstract class ReviewDBObject {
 	 *
 	 * @return string
 	 */
-	public function getPrefixedField( $field ) {
-		return $this->getFieldPrefix() . $field;
+	public static function getPrefixedField( $field ) {
+		return static::getFieldPrefix() . $field;
 	}
 
 	/**
@@ -535,11 +529,11 @@ abstract class ReviewDBObject {
 	 *
 	 * @return array
 	 */
-	public function getPrefixedValues( array $values ) {
+	public static function getPrefixedValues( array $values ) {
 		$prefixedValues = array();
 
 		foreach ( $values as $field => $value ) {
-			$prefixedValues[$this->getFieldPrefix() . $field] = $value;
+			$prefixedValues[static::getFieldPrefix() . $field] = $value;
 		}
 
 		return $prefixedValues;
@@ -556,10 +550,10 @@ abstract class ReviewDBObject {
 	 *
 	 * @return array
 	 */
-	protected function getFieldsFromDBResult( $result ) {
+	protected static function getFieldsFromDBResult( $result ) {
 		$result = (array)$result;
 		$data = array();
-		$idFieldLength = strlen( $this->getFieldPrefix() );
+		$idFieldLength = strlen( static::getFieldPrefix() );
 
 		foreach ( $result as $name => $value ) {
 			$data[substr( $name, $idFieldLength )] = $value;
@@ -577,8 +571,8 @@ abstract class ReviewDBObject {
 	 *
 	 * @return ReviewDBObject
 	 */
-	public function newFromDBResult( $result ) {
-		return $this->newFromArray( $this->getFieldsFromDBResult( $result ) );
+	public static function newFromDBResult( $result ) {
+		return static::newFromArray( static::getFieldsFromDBResult( $result ) );
 	}
 
 	/**
@@ -590,10 +584,10 @@ abstract class ReviewDBObject {
 	 *
 	 * @return boolean Success indicator
 	 */
-	public function delete( array $conditions ) {
+	public static function delete( array $conditions ) {
 		return wfGetDB( DB_MASTER )->delete(
-			$this->getDBTable(),
-			$this->getPrefixedValues( $conditions )
+			static::getDBTable(),
+			static::getPrefixedValues( $conditions )
 		);
 	}
 
@@ -607,12 +601,12 @@ abstract class ReviewDBObject {
 	 *
 	 * @return boolean Success indicator
 	 */
-	public function addToField( $field, $amount ) {
+	public static function addToField( $field, $amount ) {
 		if ( $amount == 0 ) {
 			return true;
 		}
 
-		if ( !$this->hasIdField() ) {
+		if ( !static::hasIdField() ) {
 			return false;
 		}
 
@@ -621,17 +615,17 @@ abstract class ReviewDBObject {
 
 		$dbw = wfGetDB( DB_MASTER );
 
-		$fullField = $this->getPrefixedField( $field );
+		$fullField = static::getPrefixedField( $field );
 
 		$success = $dbw->update(
-			$this->getDBTable(),
+			static::getDBTable(),
 			array( "$fullField=$fullField" . ( $isNegative ? '-' : '+' ) . $absoluteAmount ),
-			array( $this->getPrefixedField( 'id' ) => $this->getId() ),
+			array( static::getPrefixedField( 'id' ) => static::getId() ),
 			__METHOD__
 		);
 
-		if ( $success && $this->hasField( $field ) ) {
-			$this->setField( $field, $this->getField( $field ) + $amount );
+		if ( $success && static::hasField( $field ) ) {
+			static::setField( $field, static::getField( $field ) + $amount );
 		}
 
 		return $success;
@@ -649,21 +643,21 @@ abstract class ReviewDBObject {
 	 *
 	 * @return array of self
 	 */
-	public function select( $fields = null, array $conditions = array(), array $options = array() ) {
+	public static function select( $fields = null, array $conditions = array(), array $options = array() ) {
 		if ( is_null( $fields ) ) {
-			$fields = array_keys( $this->getFieldTypes() );
+			$fields = array_keys( static::getFieldTypes() );
 		}
 
-		$result = $this->rawSelect(
-			$this->getPrefixedFields( $fields ),
-			$this->getPrefixedValues( $conditions ),
+		$result = static::rawSelect(
+			static::getPrefixedFields( $fields ),
+			static::getPrefixedValues( $conditions ),
 			$options
 		);
 
 		$objects = array();
 
 		foreach ( $result as $record ) {
-			$objects[] = $this->newFromDBResult( $record );
+			$objects[] = static::newFromDBResult( $record );
 		}
 
 		return $objects;
@@ -681,10 +675,10 @@ abstract class ReviewDBObject {
 	 *
 	 * @return self|false
 	 */
-	public function selectRow( $fields = null, array $conditions = array(), array $options = array() ) {
+	public static function selectRow( $fields = null, array $conditions = array(), array $options = array() ) {
 		$options['LIMIT'] = 1;
 
-		$objects = $this->select( $fields, $conditions, $options );
+		$objects = static::select( $fields, $conditions, $options );
 
 		return count( $objects ) > 0 ? $objects[0] : false;
 	}
@@ -699,8 +693,8 @@ abstract class ReviewDBObject {
 	 *
 	 * @return boolean
 	 */
-	public function has( array $conditions = array() ) {
-		return $this->selectRow( array( 'id' ), $conditions ) !== false;
+	public static function has( array $conditions = array() ) {
+		return static::selectRow( array( 'id' ), $conditions ) !== false;
 	}
 
 	/**
@@ -714,10 +708,10 @@ abstract class ReviewDBObject {
 	 *
 	 * @return integer
 	 */
-	public function count( array $conditions = array(), array $options = array() ) {
-		$res = $this->rawSelect(
+	public static function count( array $conditions = array(), array $options = array() ) {
+		$res = static::rawSelect(
 			array( 'COUNT(*) AS rowcount' ),
-			$this->getPrefixedValues( $conditions ),
+			static::getPrefixedValues( $conditions ),
 			$options
 		)->fetchObject();
 
@@ -736,11 +730,11 @@ abstract class ReviewDBObject {
 	 *
 	 * @return ResultWrapper
 	 */
-	public function rawSelect( $fields = null, array $conditions = array(), array $options = array() ) {
-		$dbr = wfGetDB( $this->getReadDb() );
+	public static function rawSelect( $fields = null, array $conditions = array(), array $options = array() ) {
+		$dbr = wfGetDB( static::getReadDb() );
 
 		return $dbr->select(
-			$this->getDBTable(),
+			static::getDBTable(),
 			$fields,
 			count( $conditions ) == 0 ? '' : $conditions,
 			__METHOD__,
@@ -760,13 +754,13 @@ abstract class ReviewDBObject {
 	 *
 	 * @return boolean Success indicator
 	 */
-	public function update( array $values, array $conditions = array() ) {
+	public static function update( array $values, array $conditions = array() ) {
 		$dbw = wfGetDB( DB_MASTER );
 
 		return $dbw->update(
-			$this->getDBTable(),
-			$this->getPrefixedValues( $values ),
-			$this->getPrefixedValues( $conditions ),
+			static::getDBTable(),
+			static::getPrefixedValues( $values ),
+			static::getPrefixedValues( $conditions ),
 			__METHOD__
 		);
 	}
@@ -778,8 +772,8 @@ abstract class ReviewDBObject {
 	 *
 	 * @return array
 	 */
-	public function getFieldNames() {
-		return array_keys( $this->getFieldTypes() );
+	public static function getFieldNames() {
+		return array_keys( static::getFieldTypes() );
 	}
 
 	/**
@@ -791,7 +785,7 @@ abstract class ReviewDBObject {
 	 *
 	 * @return array
 	 */
-	public function getFieldDescriptions() {
+	public static function getFieldDescriptions() {
 		return array();
 	}
 
@@ -805,7 +799,7 @@ abstract class ReviewDBObject {
 	 *
 	 * @return array
 	 */
-	public function getAPIParams( $requireParams = false, $setDefaults = false ) {
+	public static function getAPIParams( $requireParams = false, $setDefaults = false ) {
 		$typeMap = array(
 			'id' => 'integer',
 			'int' => 'integer',
@@ -816,9 +810,9 @@ abstract class ReviewDBObject {
 		);
 
 		$params = array();
-		$defaults = $this->getDefaults();
+		$defaults = static::getDefaults();
 
-		foreach ( $this->getFieldTypes() as $field => $type ) {
+		foreach ( static::getFieldTypes() as $field => $type ) {
 			if ( $field == 'id' ) {
 				continue;
 			}
