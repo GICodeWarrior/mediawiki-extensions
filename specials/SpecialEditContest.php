@@ -61,7 +61,7 @@ class SpecialEditContest extends FormSpecialPage {
 		$this->outputHeader();
 
 		// This will throw exceptions if there's a problem
-		$this->userCanExecute( $this->getUser() );
+		$this->checkExecutePermissions( $this->getUser() );
 
 		if ( $this->getRequest()->wasPosted() && $this->getUser()->matchEditToken( $this->getRequest()->getVal( 'wpEditToken' ) ) ) {
 			$this->showForm();

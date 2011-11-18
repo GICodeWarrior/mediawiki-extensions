@@ -28,6 +28,10 @@ $messages['en'] = array(
 	'right-contestant' => 'Participate in contests',
 	'right-contestjudge' => 'Judge contest submissions',
 
+	'action-contestadmin' => 'manage contests',
+	'action-contestant' => 'participate in contests',
+	'action-contestjudge' => 'judge contest submissions',
+
 	// Groups
 	'group-contestadmin' => 'Contest admins',
 	'group-contestadmin-member' => '{{GENDER:$1|contest administrator}}',
