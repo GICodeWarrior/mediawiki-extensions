@@ -1,5 +1,4 @@
 <?php
-#coding: utf-8
 
 /**
  * Internationalization file of the 'Parser Fun' extension.
@@ -26,3 +25,4 @@ $messages['en'] = array(
 $messages['de'] = array(
 	'parserfun-desc' => "Macht eine Parser-Funktion <code>#parse</code> zum Parsen von Wikitext verfügbar und führt das <code>THIS:</code> Präfix für von Wiki-Seiten Information beziehende Variablen ein"
 );
+
