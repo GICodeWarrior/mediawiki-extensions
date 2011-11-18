@@ -46,7 +46,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'ArrayExtension',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:ArrayExtension',
-	'author'         => array ( 'Li Ding', 'Jie Bao', 'Daniel Werner' ),
+	'author'         => array ( 'Li Ding', 'Jie Bao', '[http://www.mediawiki.org/wiki/User:Danwe Daniel Werner]' ),
 	'descriptionmsg' => 'arrayext-desc',
 	'version'        => ArrayExtension::VERSION
 );
@@ -265,13 +265,12 @@ class ArrayExtension {
         if ( $ret !== true ) {
             return $this->get_array_value( $ary_option, "default" );
         }
-
-        $ret = $this->validate_array_index( $arrayid, $index );
-        if ( $ret !== true ) {
+        
+        if ( ! $this->validate_array_index( $arrayid, $index, false ) ) {
             return $this->get_array_value( $ary_option, "default" );
         }
 
-        return $this->mArrayExtension[$arrayid][$index];
+        return $this->mArrayExtension[ $arrayid ][ $index ];
     }
 
 	/**
@@ -310,11 +309,13 @@ class ArrayExtension {
 	function arraysearch( Parser &$parser, PPFrame $frame, $args ) {
 		
 		$arrayId = trim( $frame->expand( $args[0] ) );
-		$startIndex = isset( $args[2] ) ? trim( $frame->expand( $args[2] ) ) : 0;
+		$index = isset( $args[2] ) ? trim( $frame->expand( $args[2] ) ) : 0;
 		
         if( $this->validate_array_by_arrayid( $arrayId )
-			&& $this->validate_array_index( $arrayId, $startIndex )				
+			&& $this->validate_array_index( $arrayId, $index, true )				
 		) {
+			$array = $this->mArrayExtension[ $arrayId ];		
+			
 			// validate/build search regex:
 			if( isset( $args[1] ) ) {
 				
@@ -329,9 +330,9 @@ class ArrayExtension {
 			}
 
 			// search for a match inside the array:
-			$total = count( $this->mArrayExtension[ $arrayId ] );
-			for ( $i = $startIndex; $i < $total; $i++ ) {
-				$value = $this->mArrayExtension[ $arrayId ][ $i ];
+			$total = count( $array );
+			for ( $i = $index; $i < $total; $i++ ) {
+				$value = $array[ $i ];
 
 				if ( preg_match( $needle, $value ) ) {
 					// found!
@@ -677,7 +678,7 @@ class ArrayExtension {
 	}
 
     // private functions for validating the index of an array
-    function validate_array_index( $arrayId, $index ) {
+    function validate_array_index( $arrayId, &$index, $negativeBelowZeroReset = false ) {
 		
         if ( ! is_numeric( $index ) )
                 return false;
@@ -686,6 +687,14 @@ class ArrayExtension {
 			return false;
 		
 		$array = $this->mArrayExtension[ $arrayId ];
+		
+		// calculate start index for negative start indexes:
+		if ( $index < 0 ) {
+			$index = count( $array ) + $index;
+			if ( $index < 0 && $negativeBelowZeroReset ) {
+				$index = 0;
+			}
+		}
 		
         if ( ! isset( $array ) )
                 return false;

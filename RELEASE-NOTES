@@ -4,6 +4,8 @@
     - arrayprint will handle <includeonly>/<noinclude> correct in case its used in a template.
 	- Internationalization in several languages added.
 	- moved into mediawiki.org svn repository.
+    - '#arraysearch' will only update expand 'yes' or 'no' if given, but never both.
+    - negative indexes for '#arraysearch' and '#arrayindex' possible.
 	@ToDo before release:
 	- As in Variables 2.0, one store per Parser should be used.
 	- ''#arraysearch'' should not expand both, 'yes' and 'no', just the one actual case.
