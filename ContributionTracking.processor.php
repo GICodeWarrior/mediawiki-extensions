@@ -413,7 +413,7 @@ class ContributionTrackingProcessor {
 		if ( !( preg_match( '/^\d+(\.(\d+)?)?$/', $amount ) ) && $input['amount_given'] ) {
 			$amount = $input['amount_given'];
 		}
-		$repost['fields'][$amount_field_name] = $amount
+		$repost['fields'][$amount_field_name] = $amount;
 
 		// Tracking
 		$repost['fields']['custom'] = $input['contribution_tracking_id'];
