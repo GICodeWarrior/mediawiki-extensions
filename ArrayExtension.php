@@ -61,6 +61,14 @@ $wgExtensionMessagesFiles['ArrayExtensionMagic'] = $dir . '/ArrayExtension.i18n.
 unset( $dir );
 
 /**
+ * Full compatbility to versions before 1.4
+ * 
+ * @var boolean
+ */
+$wgArrayExtensionCompatbilityMode = true;
+
+
+/**
  *  named arrays - an array has a list of values, and could be set to a SET
  */
 class ArrayExtension {
@@ -347,9 +355,13 @@ class ArrayExtension {
 				}
 			}
 		}
-
+		
+		global $wgArrayExtensionCompatbilityMode;
+		
 		// no match! (Expand only when needed!)
-		$no = isset( $args[4] ) ? trim( $frame->expand( $args[4] ) ) : '-1';
+		$no = isset( $args[4] )
+		      ? trim( $frame->expand( $args[4] ) )
+		      : $wgArrayExtensionCompatbilityMode ? '-1' : ''; // COMPATBILITY-MODE
         return $no;
     }
 
@@ -420,19 +432,31 @@ class ArrayExtension {
 	*    {{#arrayreset:}}
 	*    {{#arrayreset:arrayid1,arrayid2,...arrayidn}}
 	*/
-	function arrayreset( &$parser, $arrayids ) {
-        if ( !$this->is_non_empty( $arrayids ) ) {
-            // reset all
-            $this->mArrayExtension = array();
-        } else {
-            $arykeys = explode( ',', $arrayids );
-            foreach ( $arykeys as $arrayid ) {
-				$this->removeArray( $arrayids );
-            }
-        }
-        return '';
+	function arrayreset( &$parser, PPFrame $frame, $args) {
+		global $wgArrayExtensionCompatbilityMode;
+				
+		if( $wgArrayExtensionCompatbilityMode && count( $args ) == 1 ) {
+			/*
+			 * COMPATBILITY-MODE: before arrays were separated by ';' which is an bad idea since
+			 * the ',' is an allowed character in array names!
+			 */
+			$args = preg_split( '/\s*,\s*/', $args[0] );
+		}
+		
+		// reset all hash tables if no specific tables are given:
+		if( ! isset( $args[0] ) || ( $args[0] === '' && count( $args ) == 1 ) ) {
+			$this->mArrayExtension = array();
+		}
+		else {
+			// reset specific hash tables:
+			foreach( $args as $arg ) {
+				$arrayId = trim( $frame->expand( $arg ) );
+				$this->unsetArray( $arrayId );				
+			}
+		}
+		return '';
     }
-
+	
 
 	/**
 	* convert an array to set
@@ -812,14 +836,14 @@ class ArrayExtension {
 
 
 	/**
-	 * Removes an existing array. If array doesn't exist this will return false, otherwise true.
+	 * Removes an existing array. If array didn't exist this will return false, otherwise true.
 	 * 
 	 * @param string $arrayId
 	 * @return boolean whether the array existed and has been removed
 	 */
-	public function removeArray( $arrayId = '' ) {
+	public function unsetArray( $arrayId ) {
 		$arrayId = trim( $arrayId );
-		if ( $this->arrayExists( $arrayId ) ) {
+		if( $this->arrayExists( $arrayId ) ) {
 			unset( $this->mArrayExtension[ $arrayId ] );
 			return true;
 		}
@@ -876,7 +900,7 @@ function efArrayExtensionParserFirstCallInit( &$parser ) {
 
     $parser->setFunctionHook( 'arraysort',        array( &$wgArrayExtension, 'arraysort' ) );
     $parser->setFunctionHook( 'arrayunique',      array( &$wgArrayExtension, 'arrayunique' ) );
-    $parser->setFunctionHook( 'arrayreset',       array( &$wgArrayExtension, 'arrayreset' ) );
+    $parser->setFunctionHook( 'arrayreset',       array( &$wgArrayExtension, 'arrayreset' ), SFH_OBJECT_ARGS );
 
     $parser->setFunctionHook( 'arraymerge',       array( &$wgArrayExtension, 'arraymerge' ) );
     $parser->setFunctionHook( 'arrayslice',       array( &$wgArrayExtension, 'arrayslice' ) );
