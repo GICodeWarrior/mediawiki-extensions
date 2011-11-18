@@ -22,7 +22,12 @@ class SpecialFundraiserStatistics extends SpecialPage {
 			if ( $wgRequest->wasPosted() ) {
 				$showYear[$fundraiser['id']] = $wgRequest->getCheck( 'toogle'.$fundraiser['id'] );
 			} else {
-				$showYear[$fundraiser['id']] = true;
+				// By default, show only the fundraising years after 2008
+				if ( intval( $fundraiser['id'] ) > 2008 ) {
+					$showYear[$fundraiser['id']] = true;
+				} else {
+					$showYear[$fundraiser['id']] = false;
+				}
 			}
 		}
 
@@ -205,8 +210,9 @@ class SpecialFundraiserStatistics extends SpecialPage {
 		}
 		$wgOut->addHTML( Xml::openElement( 'div', array( 'id' => 'configholder' ) ) );
 		$wgOut->addHTML( $years );
-		$wgOut->addHTML( wfMsg( 'fundraiserstats-time-zone' ).'<br/>' );
-		$wgOut->addHTML( '&#160;'.Xml::listDropDown( 'timezone', $this->dropDownList( range ( -12, 14, 1 ) ), '', $this->timezone, '', 1 ).' '.wfMsg( 'fundraiserstats-utc' ) );
+		// TODO: Fix timezone feature to work with caching correctly.
+		// $wgOut->addHTML( wfMsg( 'fundraiserstats-time-zone' ).'<br/>' );
+		// $wgOut->addHTML( '&#160;'.Xml::listDropDown( 'timezone', $this->dropDownList( range ( -12, 14, 1 ) ), '', $this->timezone, '', 1 ).' '.wfMsg( 'fundraiserstats-utc' ) );
 		$wgOut->addHTML( Xml::closeElement( 'div' ) );
 
 		$wgOut->addHTML( Xml::closeElement( 'form' ) );
