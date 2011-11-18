@@ -701,11 +701,11 @@ class ExtHashTables {
 	 * @return array|null
 	 */
     public function getHash( $hashId ) {
+		$hashId = trim( $hashId );
 		if( $this->hashExists( $hashId ) ) {
 			return $this->mHashTables[ $hashId ];
-		} else {
-			return null;
 		}
+		return null;		
     }
 	
 	/**
@@ -718,26 +718,28 @@ class ExtHashTables {
 	 * @param string $hashId
 	 * @param array  $hashTable
 	 */
-	public function setHash( $hashId, $hashTable = array() ) {
+	public function setHash( $hashId, array $hashTable = array() ) {
 		$hashTable = array_map( 'trim', $hashTable ); // make it all string and trim
 		$this->mHashTables[ trim( $hashId ) ] = $hashTable;
 	}
 	
 	/**
-	 * Returns a value within a hash. If key or hash doesn't exist, this will return null
+	 * Returns a value within a hash. If key or hash do not exist, this will return null
 	 * or another predefined default.
 	 * 
 	 * @since 0.7
 	 * 
 	 * @param string $hashId
 	 * @param string $key
-	 * @param mixed  $default value to return in cas the value doesn't exist. null by default.
+	 * @param mixed  $default value to return in case the value doesn't exist. null by default.
 	 * 
 	 * @return string
 	 */
     public function getHashValue( $hashId, $key, $default = null ) {
 		$hashId = trim( $hashId );
-		if( $this->hashExists( $hashId ) && array_key_exists( $key, $this->mHashTables[ $hashId ] ) ) {
+		if( $this->hashExists( $hashId )
+			&& array_key_exists( $key, $this->mHashTables[ $hashId ] )
+		) {
 			return $this->mHashTables[ $hashId ][ $key ];
 		} else {
 			return $default;
@@ -753,7 +755,7 @@ class ExtHashTables {
 	 * @param type $key 
 	 */
 	public function unsetHashValue( $hashId, $key ) {
-		unset( $this->mHashTables[ $hashId ][ $key ] );
+		unset( $this->mHashTables[ trim( $hashId ) ][ trim( $key ) ] );
 	}
 	
 	/**
