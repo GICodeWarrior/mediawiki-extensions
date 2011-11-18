@@ -61,6 +61,15 @@ $messages['gl'] = array(
 	'wom-desc' => 'Modelo de obxectos de páxina sinxelo para os usuarios do wiki',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'objecteditor' => 'Objektowy editor',
+	'wom_editor' => 'Objektowy model',
+	'wom-desc' => 'Lochki objektowy model strony za wikiwužiwarja',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
