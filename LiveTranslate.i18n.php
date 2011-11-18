@@ -539,6 +539,7 @@ $messages['he'] = array(
 $messages['hsb'] = array(
 	'livetranslate-desc' => 'Zmóžnja hnydomne přełožowanje wobsaha strony z pomocu słužby "Google Translate"',
 	'right-managetms' => 'Lisćinu přełožkowych składow [[Special:SpecialLiveTranslate|změnić]]',
+	'action-managetms' => 'Přełožkowe składy zrjadować',
 	'group-tmxadmin' => 'TMX-administratorojo',
 	'group-tmxadmin-member' => '{{GENDER:$1|TMX-administrator|TMX-administratorka}}',
 	'grouppage-tmxadmin' => 'Project: TMX-administratorojo',
