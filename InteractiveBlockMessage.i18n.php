@@ -14,7 +14,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	// Description 
-	'interactiveblockmessage-desc' => 'Creates new magic word <nowiki>{{USERBLOCKED}}</nowiki> which if on userspace indicates if user is blocked or not.',
+	'interactiveblockmessage-desc' => 'Creates new magic word <nowiki>{{USERBLOCKED}}</nowiki> which if on userspace indicates if user is blocked or not',
 );
 
 /** Message documentation (Message documentation)
@@ -23,3 +23,4 @@ $messages['en'] = array(
 $messages['qqq'] = array(
 	'interactiveblockmessage-desc' => '{{desc}}',
 );
+
