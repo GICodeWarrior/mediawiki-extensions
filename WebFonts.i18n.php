@@ -202,6 +202,17 @@ $messages['hi'] = array(
 	'webfonts-enable-preference' => 'फ़ॉन्ट एम्बेडिंग (WebFonts) को सक्षम करें',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'webfonts' => 'WebFonts',
+	'webfonts-desc' => 'Pisma do stronow zasadźić',
+	'webfonts-load' => 'Pismo wubrać',
+	'webfonts-reset' => 'Wróćo stajić',
+	'webfonts-enable-preference' => 'Zasadźenje pismow zmóžnić (WebFonts)',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
