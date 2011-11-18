@@ -850,6 +850,7 @@ Stelle sicher, dass die Abstimmung festgelegt und gespeichert ist und dass # als
 	'qp_error_address_in_decl_mode' => 'Kann keine Adresse der Abstimmung im Festlegungs-Modus ermitteln',
 	'qp_error_question_not_implemented' => 'Fragen diesen Typs sind nicht implementiert: $1',
 	'qp_error_invalid_question_type' => 'Ungültiger Fragetyp: $1',
+	'qp_error_invalid_question_name' => 'Ungültiger Name: $1',
 	'qp_error_type_in_stats_mode' => 'Der Fragetyp kann im statistischen Anzeigemodus nicht definiert werden: $1',
 	'qp_error_no_poll_id' => 'Für das Abstimmungs-Tag wurde keine Abstimmungskennung definiert.',
 	'qp_error_invalid_poll_id' => 'Ungültige Abstimmungskennung ($1).
