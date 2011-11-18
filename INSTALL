@@ -1,0 +1,42 @@
+These is the install file for the Reviews extension.
+	
+Extension page on mediawiki.org: https://www.mediawiki.org/wiki/Extension:Reviews
+Latest version of the install file: http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/Reviews/INSTALL?view=co
+
+
+== Requirements ==
+
+Reviews requires:
+
+* MediaWiki 1.18 or above
+* PHP 5.3 or above
+* MySQL
+
+== Download ==
+
+You can get the code directly from SVN. Tags can be obtained via
+
+ svn checkout <nowiki>http://svn.wikimedia.org/svnroot/mediawiki/tags/extensions/Reviews/REL_version</nowiki>
+
+Where 'version' is the version number of the tag, such as 0_1 (see the [http://svn.wikimedia.org/svnroot/mediawiki/tags/extensions/Reviews/ available tags]).
+The latest code can be obtained from trunk:
+
+ svn checkout <nowiki>http://svn.wikimedia.org/svnroot/mediawiki/trunk/extensions/Reviews/</nowiki>
+
+== Installation ==
+
+Once you have downloaded the code, place the ''Reviews'' directory within your MediaWiki
+'extensions' directory. Then add the following code to your [[Manual:LocalSettings.php|LocalSettings.php]] file:
+
+# Reviews
+require_once( "$IP/extensions/Reviews/Reviews.php" );
+
+== Configuration ==
+
+Configuration of Reviews is done by assigning to $egReviewsSettings in your
+[[Manual:LocalSettings.php|LocalSettings.php]] file, AFTER the inclusion of the
+extension. The options are listed below and their default is set in the Reviews settings file:
+http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/Reviews/Reviews.settings.php?view=markup
+You should NOT modify the settings file, but can have a look at it to get an idea of
+how to use the settings, in case the below descriptions do not suffice.
+
