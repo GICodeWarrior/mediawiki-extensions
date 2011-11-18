@@ -2344,7 +2344,7 @@ $messages['yi'] = array(
 	'patrol-reverted-ok' => 'די באַאַרבעטעונג איז געווארן צוריקגעשטעלט',
 	'patrol-reverted-failed' => 'די באַאַרבעטונג האט נישט געקענט ווערן צוריקגעשטעלט.',
 	'group-patroller' => 'פאטראלירער',
-	'group-patroller-member' => 'פאטראלירער',
+	'group-patroller-member' => '{{GENDER:$1|פאטראלירער|פאטראלירערין}}',
 	'grouppage-patroller' => '{{ns:project}}:פאטראלירער',
 	'right-patroller' => 'פאטראלירן בלעטער',
 );
