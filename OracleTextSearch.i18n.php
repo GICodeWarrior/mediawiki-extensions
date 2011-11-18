@@ -77,6 +77,14 @@ $messages['he'] = array(
 	'oracletextsearch-desc' => 'חיפוש בתוכן ובמטא־נתונים של קבצים שהועלו באמצעות מפתוח טקסט של אורקל',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'oracletextsearch' => 'OracleTextSearch',
+	'oracletextsearch-desc' => 'Wobsah/Metadaty nahratych datajow z pomocu indikowanja "Oracle Text" přepytać',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
