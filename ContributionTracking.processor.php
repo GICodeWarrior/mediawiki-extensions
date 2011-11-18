@@ -408,10 +408,12 @@ class ContributionTrackingProcessor {
 		}
 
 		// Normalized amount
-		$repost['fields'][$amount_field_name] = $input['amount'];
-		if ( $input['amount_given'] ) {
-			$repost['fields'][$amount_field_name] = $input['amount_given'];
+		$amount = $input['amount'];
+		// If amount is not a number, use amount_given
+		if ( !( preg_match( '/^\d+(\.(\d+)?)?$/', $amount ) ) && $input['amount_given'] ) {
+			$amount = $input['amount_given'];
 		}
+		$repost['fields'][$amount_field_name] = $amount
 
 		// Tracking
 		$repost['fields']['custom'] = $input['contribution_tracking_id'];
