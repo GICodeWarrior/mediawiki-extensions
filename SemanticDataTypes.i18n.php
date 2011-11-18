@@ -83,6 +83,14 @@ $messages['gl'] = array(
 	'sdt-duration' => 'Duración',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'sdt-desc' => 'Přidatne datowe typy za Semantic Mediawiki a rozšěrjenja',
+	'sdt-duration' => 'Traće',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
