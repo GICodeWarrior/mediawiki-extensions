@@ -40,6 +40,14 @@ $messages['ar'] = array(
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'عدد الأحداث الأخيرة التي أطلقها عنوان الأيبي، طبقا لProject Honey Pot',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'honeypot-desc' => 'Ufre integración col [http://projecthoneypot.org/ proyeutu Honey Pot] pa sitios MediaWiki',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => "Númberu de socesos recientes que disparó la direición IP, d'alcuerdu col proyeutu Honey Pot",
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
