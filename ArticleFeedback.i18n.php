@@ -6023,6 +6023,7 @@ Pe piacere pruève arrete.",
  * @author DCamer
  * @author Dim Grits
  * @author MaxSem
+ * @author Ole Yves
  * @author Александр Сигачёв
  * @author Сrower
  */
@@ -6112,6 +6113,7 @@ $messages['ru'] = array(
 	'articlefeedback-survey-message-success' => 'Спасибо за участие в опросе.',
 	'articlefeedback-survey-message-error' => 'Произошла ошибка. 
 Пожалуйста, повторите попытку позже.',
+	'articlefeedback-privacyurl' => 'http://wikimediafoundation.org/wiki/Feedback_privacy_statement',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Сегодняшние взлёты и падения',
 	'articleFeedback-table-caption-dailyhighs' => 'Статьи с наивысшими оценками: $1',
 	'articleFeedback-table-caption-dailylows' => 'Статьи с самыми низкими оценками: $1',
