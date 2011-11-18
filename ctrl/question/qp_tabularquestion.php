@@ -13,12 +13,18 @@ class qp_TabularQuestion extends qp_StubQuestion {
 	/**
 	 * Constructor
 	 * @public
-	 * @param  $poll            an instance of question's parent controller
-	 * @param  $view            an instance of question view "linked" to this question
-	 * @param  $questionId      the identifier of the question used to generate input names
+	 * @param  $poll  object
+	 *   an instance of question's parent controller
+	 * @param  $view  object
+	 *   an instance of question view "linked" to this question
+	 * @param  $questionId  integer
+	 *   identifier of the question used to generate input names
+	 * @param  $name  mixed
+	 *   null  when question has no name / invalid name
+	 *   string  valid question name
 	 */
-	function __construct( qp_AbstractPoll $poll, qp_StubQuestionView $view, $questionId ) {
-		parent::__construct( $poll, $view, $questionId );
+	function __construct( qp_AbstractPoll $poll, qp_StubQuestionView $view, $questionId, $name ) {
+		parent::__construct( $poll, $view, $questionId, $name );
 		$this->mProposalPattern = '`^[^\|\!].*`u';
 		$this->mCategoryPattern 	= '`^\|(\n|[^\|].*\n)`u';
 	}

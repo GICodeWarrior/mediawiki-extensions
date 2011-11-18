@@ -117,21 +117,17 @@ class qp_Interpret {
 		if ( isset( $result['error'] ) && is_array( $result['error'] ) ) {
 			# initialize $interpResult->qpcErrors[] member array
 			foreach ( $result['error'] as $qidx => $question ) {
-				if ( is_int( $qidx ) && is_array( $question ) ) {
+				if ( is_array( $question ) ) {
 					foreach ( $question as $pidx => $prop_error ) {
 						# integer indicates proposal id; string - proposal name
-						if ( is_int( $pidx ) || is_string( $pidx ) ) {
-							if ( is_array( $prop_error ) ) {
-								# separate error messages list for proposal categories
-								foreach ( $prop_error as $cidx => $cat_error ) {
-									if ( is_int( $cidx ) ) {
-										$interpResult->setQPCerror( $cat_error, $qidx, $pidx, $cidx );
-									}
-								}
-							} else {
-								# error message for the whole proposal line
-								$interpResult->setQPCerror( $prop_error, $qidx, $pidx );
+						if ( is_array( $prop_error ) ) {
+							# separate error messages list for proposal categories
+							foreach ( $prop_error as $cidx => $cat_error ) {
+								$interpResult->setQPCerror( $cat_error, $qidx, $pidx, $cidx );
 							}
+						} else {
+							# error message for the whole proposal line
+							$interpResult->setQPCerror( $prop_error, $qidx, $pidx );
 						}
 					}
 				}

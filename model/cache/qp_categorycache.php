@@ -26,9 +26,9 @@ class qp_CategoryCache extends qp_QuestionCache {
 	protected function buildReplaceRows() {
 		global $wgContLang;
 		$pid = self::$store->pid;
-		foreach ( self::$store->Questions as $qkey => $ques ) {
-			$ques->packSpans();
-			foreach ( $ques->Categories as $catkey => &$Cat ) {
+		foreach ( self::$store->Questions as $qkey => $qdata ) {
+			$qdata->packSpans();
+			foreach ( $qdata->Categories as $catkey => &$Cat ) {
 				$cat_name = $Cat['name'];
 				$this->replace[] = array( 'pid' => $pid, 'question_id' => $qkey, 'cat_id' => $catkey, 'cat_name' => $cat_name );
 				# instead of calling $this->updateFromPollStore(),
@@ -40,7 +40,7 @@ class qp_CategoryCache extends qp_QuestionCache {
 					$cat_name
 				);
 			}
-			$ques->restoreSpans();
+			$qdata->restoreSpans();
 		}
 	}
 

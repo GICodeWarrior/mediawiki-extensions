@@ -356,11 +356,12 @@ class qp_PollStore {
 					if ( isset( $typeFromVer0_5[$row->type] ) ) {
 						$row->type = $typeFromVer0_5[$row->type];
 					}
-					# create qp_QuestionData object from DB fields
+					# create qp_QuestionData object from question description DB row
 					$this->Questions[$question_id] = qp_QuestionData::factory( array(
 						'qid' => $question_id,
 						'type' => $row->type,
-						'common_question' => $row->common_question )
+						'common_question' => $row->common_question,
+						'name' => $row->name )
 					);
 				}
 				$this->getCategories();
@@ -964,7 +965,11 @@ class qp_PollStore {
 					$questions[$propkey] = $proposals;
 				}
 			}
-			$poll_answer[$qdata->question_id] = $questions;
+			if ( $qdata->name !== null ) {
+				$poll_answer[$qdata->name] = $questions;
+			} else {
+				$poll_answer[$qdata->question_id] = $questions;
+			}
 		}
 
 		# interpret the poll answer to get interpretation answer
@@ -978,8 +983,8 @@ class qp_PollStore {
 	 */
 	private function setAnswers( $db ) {
 		$insert = array();
-		foreach ( $this->Questions as $qkey => $ques ) {
-			foreach ( $ques->ProposalCategoryId as $propkey => &$prop_answers ) {
+		foreach ( $this->Questions as $qkey => $qdata ) {
+			foreach ( $qdata->ProposalCategoryId as $propkey => &$prop_answers ) {
 				foreach ( $prop_answers as $idkey => $catkey ) {
 					$insert[] = array(
 						'uid' => $this->last_uid,
@@ -987,7 +992,7 @@ class qp_PollStore {
 						'question_id' => $qkey,
 						'proposal_id' => $propkey,
 						'cat_id' => $catkey,
-						'text_answer' => $ques->ProposalCategoryText[$propkey][$idkey]
+						'text_answer' => $qdata->ProposalCategoryText[$propkey][$idkey]
 					);
 				}
 			}

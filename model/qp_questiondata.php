@@ -25,6 +25,7 @@ class qp_QuestionData {
 	## common properties
 	var $type;
 	var $CommonQuestion;
+	var $name = null;
 	var $Categories;
 	var $CategorySpans;
 	var $ProposalText;
@@ -55,6 +56,7 @@ class qp_QuestionData {
 			$this->question_id = $argv['qid'];
 			$this->type = $argv['type'];
 			$this->CommonQuestion = $argv['common_question'];
+			$this->name = $argv['name'];
 			$this->Categories = array();
 			$this->CategorySpans = array();
 			$this->ProposalText = array();
@@ -203,6 +205,7 @@ class qp_QuestionData {
 		$this->question_id = $question->mQuestionId;
 		$this->type = $question->mType;
 		$this->CommonQuestion = $question->mCommonQuestion;
+		$this->name = $question->mName;
 		$this->Categories = $question->mCategories;
 		$this->CategorySpans = $question->mCategorySpans;
 		$this->ProposalText = $question->mProposalText;

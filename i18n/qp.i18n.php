@@ -103,6 +103,7 @@ Make sure that the poll declared and saved, also be sure to use address delimite
 	'qp_error_address_in_decl_mode' => 'Cannot get an address of the poll in declaration mode.',
 	'qp_error_question_not_implemented' => 'Questions of such type are not implemented: $1.',
 	'qp_error_invalid_question_type' => 'Invalid question type: $1.',
+	'qp_error_invalid_question_name' => 'Invalid question name: $1.',
 	'qp_error_type_in_stats_mode' => 'Question type cannot be defined in statistical display mode: $1.',
 	'qp_error_no_poll_id'	=> 'Poll tag has no id attribute defined.',
 	'qp_error_invalid_poll_id' => 'Invalid poll id (id=$1).
@@ -227,6 +228,7 @@ $messages['qqq'] = array(
 	'qp_error_address_in_decl_mode' => 'Poll "address" attribute is meaningless in poll declaration / voting mode.',
 	'qp_error_question_not_implemented' => 'Invalid value of qustion xml-like "type" attribute was specified. There is no such type of question. Please read the manual for list of valid question types.',
 	'qp_error_invalid_question_type' => '{{Identical|Invalid value of qustion xml-like "type" attribute was specified. There is no such type of question. Please read the manual for list of valid question types.}}',
+	'qp_error_invalid_question_name' => '{{Identical|Invalid value of qustion xml-like "name" attribute was specified. Numeric names are not allowed due to possible index clash with integer question ids. Empty names are not allowed as impossible to reference. Too long names are not allowed, otherwise they will be improperly truncated when stored into DB field.}}',
 	'qp_error_type_in_stats_mode' => 'Question\'s "type" xml-like attribute is meaningless in statistical display mode.',
 	'qp_error_no_poll_id' => 'Every poll definition in declaration / voting mode must have "id" attribute.',
 	'qp_error_too_long_dependance_value' => 'Parameters:
@@ -2755,6 +2757,7 @@ $messages['ru'] = array(
 	'qp_error_address_in_decl_mode' => 'Недопустимо задавать адрес опроса (address) в режиме определения',
 	'qp_error_question_not_implemented' => 'Вопросы данного типа не реализованы в коде расширения: $1',
 	'qp_error_invalid_question_type' => 'Недопустимый тип вопроса: $1',
+	'qp_error_invalid_question_name' => 'Недопустимое имя вопроса: $1',
 	'qp_error_type_in_stats_mode' => 'Недопустимо определять тип вопроса в статистическом режиме: $1',
 	'qp_error_no_poll_id' => 'Тэг опроса не имеет атрибута id.',
 	'qp_error_invalid_poll_id' => 'Недопустимый идентификатор опроса (id=$1). Идентификатор опроса может содержать только буквы, цифры и символ пробела',

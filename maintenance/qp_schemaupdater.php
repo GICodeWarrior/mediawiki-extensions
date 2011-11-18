@@ -105,6 +105,9 @@ class qp_SchemaUpdater {
 		),
 		'qpoll_structured_interpretation.src' => array(
 			'qp_users_polls' => array( 'structured_interpretation' )
+		),
+		'qpoll_question_name.src' => array(
+			'qp_question_desc' => array( 'name' )
 		)
 	);
 

@@ -12,6 +12,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class qp_StubQuestion extends qp_AbstractQuestion {
 
+	# optional question literal name, used to address questions in interpretation scripts
+	var $mName = null;
+
 	# current user voting taken from POST data (if available)
 	var $mProposalCategoryId = Array(); // user true/false answers to the question's proposal
 	var $mProposalCategoryText = Array(); // user text answers to the question's proposal
@@ -22,12 +25,23 @@ class qp_StubQuestion extends qp_AbstractQuestion {
 	/**
 	 * Constructor
 	 * @public
-	 * @param  $poll            an instance of question's parent controller
-	 * @param  $view            an instance of question view "linked" to this question
-	 * @param  $questionId      the identifier of the question used to generate input names
+	 * @param  $poll  object
+	 *   an instance of question's parent controller
+	 * @param  $view  object
+	 *   an instance of question view "linked" to this question
+	 * @param  $questionId  integer
+	 *   identifier of the question used to generate input names
+	 * @param  $name  mixed
+	 *   null  when question has no name / invalid name
+	 *   string  valid question name
 	 */
-	function __construct( qp_AbstractPoll $poll, qp_StubQuestionView $view, $questionId ) {
+	function __construct( qp_AbstractPoll $poll, qp_StubQuestionView $view, $questionId, $name ) {
 		parent::__construct( $poll, $view, $questionId );
+		$this->mName = $name;
+	}
+
+	function getQuestionKey() {
+		return $this->mName === null ? $this->mQuestionId : $this->mName;
 	}
 
 	# load some question fields from qp_QuestionData given
@@ -102,11 +116,14 @@ class qp_StubQuestion extends qp_AbstractQuestion {
 	 */
 	function getInterpErrors() {
 		$interpResult = $this->poll->pollStore->interpResult;
-		if ( !is_array( $interpResult->qpcErrors ) ||
-				!isset( $interpResult->qpcErrors[$this->mQuestionId] ) ) {
+		if ( !is_array( $interpResult->qpcErrors ) ) {
 			return false;
 		}
-		return $interpResult->qpcErrors[$this->mQuestionId];
+		$key = $this->getQuestionKey();
+		if ( isset( $interpResult->qpcErrors[$key] ) ) {
+			return $interpResult->qpcErrors[$key];
+		}
+		return false;
 	}
 
 	/**

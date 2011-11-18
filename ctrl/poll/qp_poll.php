@@ -389,6 +389,18 @@ class qp_Poll extends qp_AbstractPoll {
 			if ( !array_key_exists( $type, qp_Setup::$questionTypes ) ) {
 				$error_msg = wfMsg( 'qp_error_invalid_question_type', qp_Setup::entities( $type ) );
 			}
+			# assume that question name does not exists (by default)
+			$name = null;
+			if ( $paramkeys['name'] !== null &&
+						( $name = trim( $paramkeys['name'] ) ) === '' ||
+						is_numeric( $name ) ||
+						strlen( $name ) > qp_Setup::$field_max_len['question_name'] ) {
+				# empty name is not allowed;
+				# numeric name is not allowed;
+				# name longer than maximal DB field length is not allowed;
+				$error_msg = wfMsg( 'qp_error_invalid_question_name', qp_Setup::entities( $name ) );
+				$name = null;
+			}
 		} else {
 			$error_msg = wfMsg( 'qp_error_in_question_header', qp_Setup::entities( $header ) );
 		}
@@ -397,7 +409,8 @@ class qp_Poll extends qp_AbstractPoll {
 			$question = new qp_StubQuestion(
 				$this,
 				qp_StubQuestionView::newFromBaseView( $this->view ),
-				++$this->mQuestionId
+				++$this->mQuestionId,
+				$name
 			);
 			$question->setState( 'error', $error_msg );
 			return $question;
@@ -407,7 +420,8 @@ class qp_Poll extends qp_AbstractPoll {
 		$question = new $qt['ctrl'](
 			$this,
 			call_user_func( array( $qt['view'], 'newFromBaseView' ), $this->view ),
-			++$this->mQuestionId
+			++$this->mQuestionId,
+			$name
 		);
 		# set the question type and subtype corresponding to the header 'type' attribute
 		$question->mType = $qt['mType'];

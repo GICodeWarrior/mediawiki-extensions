@@ -74,13 +74,19 @@ class qp_InterpResult {
 	}
 
 	/**
-	 * set question / proposal error message (for quizes)
+	 * Set question / proposal error message (for quizes).
 	 *
-	 * @param $msg   string error message for [question][proposal] pair;
-	 *               non-string for default message
-	 * @param $qidx  int index of poll's question
-	 * @param $pidx  int index of question's proposal
-	 * @param $cidx  int index of proposal's category (optional)
+	 * @param $msg  mixed
+	 *   string error message for [question][proposal][category];
+	 *   non-string will cause displaying default message for that qp / qpc;
+	 * @param $qidx  mixed
+	 *   string  question name
+	 *   int index of poll's question
+	 * @param $pidx  mixed
+	 *   string proposal name
+	 *   int index of question's proposal
+	 * @param $cidx  integer
+	 *   index of proposal's category (optional)
 	 */
 	function setQPCerror( $msg, $qidx, $pidx, $cidx = null ) {
 		if ( !is_array( $this->qpcErrors ) ) {

@@ -40,9 +40,12 @@ abstract class qp_AbstractQuestion {
 	/**
 	 * Constructor
 	 * @public
-	 * @param  $poll            an instance of question's parent controller
-	 * @param  $view            an instance of question view "linked" to this question
-	 * @param  $questionId      the identifier of the question used to generate input names
+	 * @param  $poll  object
+	 *   an instance of question's parent controller
+	 * @param  $view  object
+	 *   an instance of question view "linked" to this question
+	 * @param  $questionId  integer
+	 *   identifier of the question used to generate input names
 	 */
 	function __construct( qp_AbstractPoll $poll, qp_AbstractView $view, $questionId ) {
 		# the question collection is not sparce by default

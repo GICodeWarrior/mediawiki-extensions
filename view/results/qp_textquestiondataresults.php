@@ -15,9 +15,10 @@ class qp_TextQuestionDataResults extends qp_QuestionDataResults {
 	/**
 	 * @return  string  html representation of user vote for Special:Pollresults output
 	 */
-	function displayUserQuestionVote() {
+	function displayUserVote() {
 		$ctrl = $this->ctrl;
-		$output = "<div class=\"qpoll\">\n" . "<table class=\"qdata\">\n";
+		$output = $this->displayHeader();
+		$output .= "<div class=\"qpoll\">\n" . "<table class=\"qdata\">\n";
 		foreach ( $ctrl->ProposalText as $propkey => &$serialized_tokens ) {
 			if ( !is_array( $dbtokens = unserialize( $serialized_tokens ) ) ) {
 				throw new MWException( 'dbtokens is not an array in ' . __METHOD__ );
@@ -112,7 +113,7 @@ class qp_TextQuestionDataResults extends qp_QuestionDataResults {
 	/**
 	 * @return  string  html representation of question statistics for Special:Pollresults output
 	 */
-	function displayQuestionStats( qp_SpecialPage $page, $pid ) {
+	function displayStats( qp_SpecialPage $page, $pid ) {
 		return 'todo: implement';
 	}
 

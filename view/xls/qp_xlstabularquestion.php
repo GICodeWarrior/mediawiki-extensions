@@ -12,8 +12,12 @@ class qp_XlsTabularQuestion extends qp_XlsWriter {
 	}
 
 	function writeHeader() {
-		$this->write( 0, $this->qdata->question_id, 'heading' );
-		$this->writeLn( 1, $this->qdata->CommonQuestion, 'heading' );
+		$col = 0;
+		$this->write( $col++, $this->qdata->question_id, 'heading' );
+		if ( $this->qdata->name !== null ) {
+			$this->write( $col, $this->qdata->name, 'heading' );
+		}
+		$this->writeLn( ++$col, $this->qdata->CommonQuestion, 'heading' );
 		if ( count( $this->qdata->CategorySpans ) > 0 ) {
 			$row = array();
 			foreach ( $this->qdata->CategorySpans as &$span ) {

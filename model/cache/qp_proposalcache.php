@@ -26,10 +26,10 @@ class qp_ProposalCache extends qp_QuestionCache {
 	protected function buildReplaceRows() {
 		global $wgContLang;
 		$pid = self::$store->pid;
-		foreach ( self::$store->Questions as $qkey => $ques ) {
-			foreach ( $ques->ProposalText as $propkey => $ptext ) {
-				if ( isset( $ques->ProposalNames[$propkey] ) ) {
-					$ptext = qp_QuestionData::getProposalNamePrefix( $ques->ProposalNames[$propkey] ) . $ptext;
+		foreach ( self::$store->Questions as $qkey => $qdata ) {
+			foreach ( $qdata->ProposalText as $propkey => $ptext ) {
+				if ( isset( $qdata->ProposalNames[$propkey] ) ) {
+					$ptext = qp_QuestionData::getProposalNamePrefix( $qdata->ProposalNames[$propkey] ) . $ptext;
 				}
 				$ptext = $wgContLang->truncate( $ptext, qp_Setup::$field_max_len['proposal_text'] , '' );
 				$this->replace[] = array( 'pid' => $pid, 'question_id' => $qkey, 'proposal_id' => $propkey, 'proposal_text' => $ptext );

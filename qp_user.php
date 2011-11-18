@@ -255,6 +255,8 @@ class qp_Setup {
 		# limited due to performance improvements (to fit into DB row),
 		# and also to properly truncate UFT8 tails:
 		'common_question' => 768,
+		# limited to maximal length of DB field
+		'question_name' => 255,
 		# 'proposal_text' is not longer than DB field size (65535),
 		# otherwise unserialization of question type="text" proposal parts and
 		# category fields will be invalid:

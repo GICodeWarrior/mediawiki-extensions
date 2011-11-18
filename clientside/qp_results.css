@@ -1,4 +1,6 @@
 .qpoll .head {font-weight:bold; color:Gray;}
+.qpoll .question_id {font-weight:bold;}
+.qpoll .question_name {font-weight:bold; color:blue;}
 .qpoll table.qdata {border-collapse: collapse;}
 .qpoll table.qdata th {border: 1px Gray solid; background-color:LightGrey; padding: 3px;}
 .qpoll table.qdata tr.spans { color:Navy; }

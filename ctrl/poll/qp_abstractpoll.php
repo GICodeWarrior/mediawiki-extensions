@@ -78,7 +78,7 @@ class qp_AbstractPoll {
 	 * possible xml-like attributes the question may have
 	 */
 	var $questionAttributeKeys = array(
-		't[yi]p[eo]', 'layout', 'textwidth', 'propwidth', 'showresults'
+		't[yi]p[eo]', 'name', 'layout', 'textwidth', 'propwidth', 'showresults'
 	);
 
 	/**

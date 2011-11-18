@@ -98,7 +98,7 @@ class PollResults extends qp_SpecialPage {
 			self::$PollsLink = $this->qpLink( $this->getTitle(), wfMsg( 'qp_polls_list' ), array( "style" => "font-weight:bold;" ) );
 		}
 		$wgOut->addHTML( '<div class="qpoll">' );
-		$output = "";
+		$output = '';
 		$this->setHeaders();
 		$cmd = $wgRequest->getVal( 'action' );
 		if ( $cmd === null ) {
@@ -115,9 +115,9 @@ class PollResults extends qp_SpecialPage {
 				case 'stats':
 					if ( $pid !== null ) {
 						$pid = intval( $pid );
-						$output = self::getPollsLink();
-						$output .= self::getUsersLink();
-						$output .= $this->showStats( $pid );
+						$output = self::getPollsLink() .
+							self::getUsersLink() .
+							$this->showStats( $pid );
 					}
 					break;
 				case 'stats_xls':
@@ -132,9 +132,9 @@ class PollResults extends qp_SpecialPage {
 					if ( $pid !== null && $uid !== null ) {
 						$pid = intval( $pid );
 						$uid = intval( $uid );
-						$output = self::getPollsLink();
-						$output .= self::getUsersLink();
-						$output .= $this->showUserVote( $pid, $uid );
+						$output = self::getPollsLink() .
+							self::getUsersLink() .
+							$this->showUserVote( $pid, $uid );
 					}
 					break;
 				case 'qpcusers':
@@ -183,12 +183,12 @@ class PollResults extends qp_SpecialPage {
 		);
 		$interpTitle = $pollStore->getInterpTitle();
 		if ( !( $interpTitle instanceof Title ) ) {
-			$tags[] = wfMsg( 'qp_poll_has_no_interpretation' );
+			$tags[] = array( '__tag' => 'div', wfMsg( 'qp_poll_has_no_interpretation' ) );
 			return $tags;
 		}
 		# 'parentheses' key is unavailable in MediaWiki 1.15.x
 		$interp_link = $this->qpLink( $interpTitle, $interpTitle->getPrefixedText() );
-		$tags[] = wfMsg( 'qp_browse_to_interpretation', $interp_link );
+		$tags[] = array( '__tag' => 'div', wfMsg( 'qp_browse_to_interpretation', $interp_link ) );
 		$interpResultView = new qp_InterpResultView( true );
 		$interpResultView->showInterpResults( $tags, $pollStore->interpResult, true );
 		return $tags;
@@ -216,23 +216,22 @@ class PollResults extends qp_SpecialPage {
 		$poll_title = $pollStore->getTitle();
 		# 'parentheses' key is unavailable in MediaWiki 1.15.x
 		$poll_link = $this->qpLink( $poll_title, $poll_title->getPrefixedText() . wfMsg( 'word-separator' ) . wfMsg( 'qp_parentheses', $pollStore->mPollId ) );
-		$output = wfMsg( 'qp_browse_to_user', $user_link ) . "<br />\n";
-		$output .= wfMsg( 'qp_browse_to_poll', $poll_link ) . "<br />\n";
 		$headerTags = $this->getAnswerHeader( $pollStore );
-		$output .= qp_Renderer::renderTagArray( $headerTags );
+		$output = wfMsg( 'qp_browse_to_user', $user_link ) . "<br />\n" .
+			wfMsg( 'qp_browse_to_poll', $poll_link ) . "<br />\n" .
+			qp_Renderer::renderTagArray( $headerTags );
 		unset( $headerTags );
 		foreach ( $pollStore->Questions as $qdata ) {
 			if ( $pollStore->isUsedQuestion( $qdata->question_id ) ) {
-				$output .= "<br />\n<b>" . $qdata->question_id . ".</b> " . qp_Setup::entities( $qdata->CommonQuestion ) . "<br />\n";
 				$qview = $qdata->getView();
-				$output .= $qview->displayUserQuestionVote();
+				$output .= $qview->displayUserVote();
 			}
 		}
 		return $output;
 	}
 
 	private function showStats( $pid ) {
-		$output = "";
+		$output = '';
 		if ( $pid !== null ) {
 			$pollStore = new qp_PollStore( array( 'from' => 'pid', 'pid' => $pid ) );
 			if ( $pollStore->pid !== null ) {
@@ -248,12 +247,28 @@ class PollResults extends qp_SpecialPage {
 					$interp_link = $this->qpLink( $interpTitle, $interpTitle->getPrefixedText() );
 					$output .= wfMsg( 'qp_browse_to_interpretation', $interp_link ) . "<br />\n";
 				}
-				$output .= $this->qpLink( $this->getTitle(), wfMsg( 'qp_export_to_xls' ), array( "style" => "font-weight:bold;" ), array( 'action' => 'stats_xls', 'id' => $pid ) ) . "<br />\n";
-				$output .= $this->qpLink( $this->getTitle(), wfMsg( 'qp_voices_to_xls' ), array( "style" => "font-weight:bold;" ), array( 'action' => 'voices_xls', 'id' => $pid ) ) . "<br />\n";
-				$output .= $this->qpLink( $this->getTitle(), wfMsg( 'qp_interpretation_results_to_xls' ), array( "style" => "font-weight:bold;" ), array( 'action' => 'interpretation_xls', 'id' => $pid ) ) . "<br />\n";
+				$output .=
+					$this->qpLink(
+						$this->getTitle(),
+						wfMsg( 'qp_export_to_xls' ),
+						array( "style" => "font-weight:bold;" ),
+						array( 'action' => 'stats_xls', 'id' => $pid )
+					) . "<br />\n" .
+					$this->qpLink(
+						$this->getTitle(),
+						wfMsg( 'qp_voices_to_xls' ),
+						array( "style" => "font-weight:bold;" ),
+						array( 'action' => 'voices_xls', 'id' => $pid )
+					) . "<br />\n" .
+					$this->qpLink(
+						$this->getTitle(),
+						wfMsg( 'qp_interpretation_results_to_xls' ),
+						array( "style" => "font-weight:bold;" ),
+						array( 'action' => 'interpretation_xls', 'id' => $pid )
+					) . "<br />\n";
 				foreach ( $pollStore->Questions as $qdata ) {
 					$qview = $qdata->getView();
-					$output .= $qview->displayQuestionStats( $this, $pid );
+					$output .= $qview->displayStats( $this, $pid );
 				}
 			}
 		}

@@ -17,7 +17,7 @@ class qp_QuestionCache extends qp_PollCache {
 	# DB index for replace
 	protected $replaceIndex = 'question';
 	# DB table fields to select / replace
-	protected $fields = array( 'question_id', 'type', 'common_question' );
+	protected $fields = array( 'question_id', 'type', 'common_question', 'name' );
 
 	protected function numRowsToAssocRows() {
 		# build DBMS-like object rows from array rows
@@ -77,17 +77,24 @@ class qp_QuestionCache extends qp_PollCache {
 	protected function buildReplaceRows() {
 		global $wgContLang;
 		$pid = self::$store->pid;
-		foreach ( self::$store->Questions as $qkey => $ques ) {
-			$common_question = $wgContLang->truncate( $ques->CommonQuestion, qp_Setup::$field_max_len['common_question'] , '' );
-			$this->replace[] = array( 'pid' => $pid, 'question_id' => $qkey, 'type' => $ques->type, 'common_question' => $common_question );
-			$ques->question_id = $qkey;
+		foreach ( self::$store->Questions as $qkey => $qdata ) {
+			$common_question = $wgContLang->truncate( $qdata->CommonQuestion, qp_Setup::$field_max_len['common_question'] , '' );
+			$this->replace[] = array(
+				'pid' => $pid,
+				'question_id' => $qkey,
+				'type' => $qdata->type,
+				'common_question' => $common_question,
+				'name' => $qdata->name
+			);
+			$qdata->question_id = $qkey;
 			# instead of calling $this->updateFromPollStore(),
 			# we build $this->memc_rows[] right here,
 			# to avoid double loop against self::$store->Questions
 			$this->memc_rows[] = array(
 				$qkey,
-				$ques->type,
-				$common_question
+				$qdata->type,
+				$common_question,
+				$qdata->name
 			);
 		}
 	}

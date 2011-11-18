@@ -26,6 +26,7 @@ CREATE TABLE `qp_question_desc` (
   `question_id` int unsigned NOT NULL,
   `type` tinytext NOT NULL,
   `common_question` text NOT NULL,
+  `name` tinytext default NULL,
   PRIMARY KEY question (pid,question_id),
   INDEX poll (pid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -61,7 +62,7 @@ CREATE TABLE `qp_question_answers` (
   `text_answer` text,
   PRIMARY KEY answer (uid,pid,question_id,proposal_id,cat_id),
   INDEX user_vote (uid,pid),
-  INDEX poll_question (pid,question_id)
+  INDEX poll_question (pid,question_id),
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `qp_users_polls`;
