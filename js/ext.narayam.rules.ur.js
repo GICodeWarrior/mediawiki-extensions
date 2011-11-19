@@ -88,11 +88,10 @@ var rules = [
 ['\\)', '', ')']
 ];
 
-jQuery.narayam.addScheme( 'ur-imran', {
-	'namemsg': 'narayam-ur-imran',
+jQuery.narayam.addScheme( 'ur', {
+	'namemsg': 'narayam-ur',
 	'extended_keyboard': false, 
 	'lookbackLength': 0,
 	'keyBufferLength': 0,
 	'rules': rules,
-	'rules_x': rules_x
 } );
