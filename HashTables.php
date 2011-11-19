@@ -469,8 +469,8 @@ class ExtHashTables {
 	 * Syntax:
 	 *   {{#hashtoarray:valArrayID |hashID |keyArrayID}}
 	 */
-	static function pf_hashtoarray( Parser &$parser, $valArrayId, $hashId, $keyArrayId = null) {		
-		if( ! isset( $hashId ) || ! isset( $valArrayId ) ) {
+	static function pf_hashtoarray( Parser &$parser, $valArrayId, $hashId = null, $keyArrayId = null) {		
+		if( ! isset( $hashId ) ) {
 			return '';
 		}
 		
@@ -492,10 +492,10 @@ class ExtHashTables {
 			}
 		}
 		
-		$wgArrayExtension->mArrayExtension[ trim( $valArrayId ) ] = $valArray;
+		$wgArrayExtension->mArrayExtension[ $valArrayId ] = $valArray;
 		if( $keyArrayId !== null ) {
 			// additional array for hash keys:
-			$wgArrayExtension->mArrayExtension[ trim( $keyArrayId ) ] = $keyArray;
+			$wgArrayExtension->mArrayExtension[ $keyArrayId ] = $keyArray;
 		}
 		return '';
 	}
@@ -508,8 +508,9 @@ class ExtHashTables {
 	 * The 'keysArrayID' is optional. If set the items in this array will end up as keys in
 	 * the new hash table.
 	 */
-	static function pf_arraytohash( Parser &$parser, $hashId, $valArrId, $keyArrId = null) {
-		if( ! isset( $hashId) ) {
+	static function pf_arraytohash( Parser &$parser, $hashId, $valArrId = null, $keyArrId = null) {
+		if( $valArrId === null ) {
+			self::get( $parser )->setHash( $hashId );
 			return '';
 		}
 		
@@ -524,7 +525,7 @@ class ExtHashTables {
 		$newHash = array();
 				
 		// if no key array is given OR the key array doesn't exist
-		if( ! isset($keyArrId) || ! array_key_exists( $keyArrId, $wgArrayExtension->mArrayExtension ) )
+		if( $keyArrId === null || ! array_key_exists( $keyArrId, $wgArrayExtension->mArrayExtension ) )
 		{
 			// Copy the whole array. Result will be a hash with numeric keys
 			$newHash = $arrExtValArray;
@@ -534,13 +535,14 @@ class ExtHashTables {
 			$keyArray = $wgArrayExtension->mArrayExtension[ $keyArrId ];
 			$valArray = $arrExtValArray;
 			
-			for( $i=0; $i < count($keyArray); $i++ ) {
+			for( $i=0; $i < count( $keyArray ); $i++ ) {
 				$currVal = array_key_exists( $i, $valArray ) ? trim( $valArray[ $i ] ) : '';
-				$newHash[ $keyArray[ $i ] ] = $currVal;
+				$currKey = trim( $keyArray[ $i ] );
+				$newHash[ $currKey ] = $currVal;
 			}
 		}
-		
-		self::get( $parser )->mHashTables[ $hashId ] = $newHash;		
+			
+		self::get( $parser )->setHash( $hashId, $newHash );
 		return '';
 	}
 	
@@ -619,8 +621,9 @@ class ExtHashTables {
 			}
 			$argHashId = trim( $frame->expand( $args[ $i ] ) );
 			
+			// ignore all tables which do not exist
 			if( $this->hashExists( $argHashId ) ) {
-				$argHash = $this->mHashTables[ $argHashId ];
+				$argHash = $this->getHash( $argHashId );				
 				if( $lastHash === null ) {
 					// first valid hash table, process together with second...
 					$lastHash = $argHash;
@@ -642,8 +645,8 @@ class ExtHashTables {
 		if( $operationRan == false && $runFuncOnSingleHash ) {
 			$lastHash = $this->{ $operationFunc }( $lastHash );
 		}
-		
-		$this->mHashTables[ $finalHashId ] = $lastHash;
+				
+		$this->setHash( $finalHashId, $lastHash );
 	}
 	
 	
@@ -718,8 +721,15 @@ class ExtHashTables {
 	 * @param string $hashId
 	 * @param array  $hashTable
 	 */
-	public function setHash( $hashId, array $hashTable = array() ) {
+	public function createHash( $hashId, array $hashTable = array() ) {
 		$hashTable = array_map( 'trim', $hashTable ); // make it all string and trim
+		$this->mHashTables[ trim( $hashId ) ] = $hashTable;
+	}
+	
+	/**
+	 * Same as public setHash() but without sanitizing the input array first (faster).
+	 */
+	protected function setHash( $hashId, array $hashTable = array() ) {
 		$this->mHashTables[ trim( $hashId ) ] = $hashTable;
 	}
 	
