@@ -1719,6 +1719,7 @@ Verifica que le sondage ha essite declarate e salveguardate, e que le character 
 	'qp_error_address_in_decl_mode' => 'Non pote obtener un adresse del sondage in modo declarative',
 	'qp_error_question_not_implemented' => 'Le questiones de iste typo non es implementate: $1',
 	'qp_error_invalid_question_type' => 'Typo de question invalide: $1',
+	'qp_error_invalid_question_name' => 'Nomine de question invalide: $1.',
 	'qp_error_type_in_stats_mode' => 'Le typo de question non pote esser definite in modo de presentation statistic: $1',
 	'qp_error_no_poll_id' => 'Le etiquetta del sondage non ha un attributo "id" definite.',
 	'qp_error_invalid_poll_id' => 'ID de sondage invalide (id=$1).
@@ -2108,6 +2109,7 @@ $messages['mk'] = array(
 	'qp_error_address_in_decl_mode' => 'Не може да се дава адреса на анкетата во утврдувачки режим',
 	'qp_error_question_not_implemented' => 'Прашањата од таков тип не се имплементираат: $1',
 	'qp_error_invalid_question_type' => 'Неважечки тип на прашање: $1',
+	'qp_error_invalid_question_name' => 'Неважечко име на прашањето: $1.',
 	'qp_error_type_in_stats_mode' => 'Не може да се определува тип на прашање во статистички режим: $1',
 	'qp_error_no_poll_id' => 'Ознаката на анкетата нема определено атрибут за назнака („id“).',
 	'qp_error_invalid_poll_id' => 'Неважечка назнака на анкетата (id=$1).
