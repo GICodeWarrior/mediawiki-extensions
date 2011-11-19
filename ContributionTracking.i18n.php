@@ -371,8 +371,8 @@ $messages['et'] = array(
 	'contributiontracking-desc' => 'Jälgib Wikimedia korjanduse laekumisi.',
 	'contrib-tracking-error' => 'Viga',
 	'contrib-tracking-submitting' => 'Maksevahendaja juurde suunamine...',
-	'contrib-tracking-continue' => 'Kui sind ei suunata automaatselt, klõpsa nuppu, et annetus PayPalis lõpule viia.',
-	'contrib-tracking-redirect' => 'Annetuse lõpule viimiseks suunatakse sind automaatselt PayPali.',
+	'contrib-tracking-continue' => 'Kui sind ei suunata automaatselt, klõpsa nuppu, et annetus lõpule viia.',
+	'contrib-tracking-redirect' => 'Sind suunatakse automaatselt, et annetus lõpule viia.',
 	'contrib-tracking-button' => 'Jätka',
 );
 
