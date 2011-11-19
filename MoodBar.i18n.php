@@ -278,7 +278,11 @@ See also:
 {{Identical|More}}',
 	'moodbar-feedback-newer' => 'Text of the link that the user can click to go back to more recent results. Only visible if JavaScript is not enabled.',
 	'moodbar-feedback-older' => 'Text of the link that the user can click to see less recent results. Only visible if JavaScript is not enabled.',
-	'moodbar-hidden-footer' => '* $1 is the username, $2 is the date, $3 is the time, $4 is the reason for hiding the feedback,$5 is a link to restore the item displaying {{msg-mw|moodbar-feedback-restore}}',
+	'moodbar-hidden-footer' => '* $1 is the username of the user that gave the feedback
+* $2 is a date
+* $3 is a time
+* $4 is the reason for hiding the feedback
+* $5 is a link to restore the item displaying {{msg-mw|moodbar-feedback-restore}}',
 	'moodbar-hidden-footer-without-log' => '* $1 is a link to restore the item displaying {{msg-mw|moodbar-feedback-restore}}',
 	'moodbar-type-happy' => '$1 is the username that can be used for GENDER',
 	'moodbar-type-sad' => '$1 is the username that can be used for GENDER',
@@ -1005,6 +1009,7 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Olli
  */
 $messages['fi'] = array(
@@ -1041,7 +1046,7 @@ $messages['fi'] = array(
 	'moodbar-admin-title' => 'MoodBar-palaute',
 	'moodbar-admin-intro' => 'Tällä sivulla voit katsella MoodBarin kautta lähetettyä palautetta.',
 	'moodbar-admin-empty' => 'Ei tuloksia',
-	'moodbar-header-id' => 'Palautteen tunnus',
+	'moodbar-header-id' => 'Palautteen tunniste',
 	'moodbar-header-timestamp' => 'Aikaleima',
 	'moodbar-header-type' => 'Tyyppi',
 	'moodbar-header-page' => 'Sivu',
@@ -1972,6 +1977,7 @@ Untuk maklumat lanjut, sila layari $1.',
 	'moodbar-feedback-show' => 'tunjukkan maklum balas tersorok',
 	'moodbar-feedback-hide' => 'sorokkan maklum balas',
 	'moodbar-hidden-footer' => 'Maklum Balas Tersorok oleh $1 pada $2, sebab: $3 $4',
+	'moodbar-hidden-footer-without-log' => 'Maklum Balas Tersorok $1',
 	'moodbar-feedback-restore' => 'pulihkan maklum balas tersorok',
 	'moodbar-action-item' => 'Butiran maklum balas:',
 	'moodbar-action-reason' => 'Sebab:',
