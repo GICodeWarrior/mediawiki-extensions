@@ -4175,7 +4175,7 @@ Por favor, faga que se poida escribir nel mediante PHP para usar esta extensión
 	'configure-js-image-error' => 'Ocorreu un erro ao obter o enderezo URL. Por favor, comprobe que o ficheiro existe.',
 	'configure-js-biglist-shown' => 'Os detalles das características poden ser agochados',
 	'configure-js-biglist-hidden' => 'Detalles das características agochados',
-	'configure-js-biglist-show' => '[amosar os detalles]',
+	'configure-js-biglist-show' => '[mostrar os detalles]',
 	'configure-js-biglist-hide' => '[agochar os detalles]',
 	'configure-js-summary-none' => 'Sen características',
 	'configure-js-search-legend' => 'Características da procura',
