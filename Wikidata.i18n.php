@@ -5021,7 +5021,7 @@ Por favor, vexa [[{{MediaWiki:Ow editing policy url}}|a nosa política de edici�
 	'ow_transaction_from_transaction' => 'Desde a transacción:',
 	'ow_transaction_count' => 'Conta:',
 	'ow_transaction_user' => 'Nome de usuario:',
-	'ow_transaction_show_rollback' => 'Amosar os controis de reversión:',
+	'ow_transaction_show_rollback' => 'Mostrar os controis de reversión:',
 	'ow_transaction_rollback_button' => 'Reverter',
 	'ow_transaction_rollback_header' => 'Reversión',
 	'ow_transaction_no_action' => 'Non facer nada',
@@ -5042,7 +5042,7 @@ Por favor, vexa [[{{MediaWiki:Ow editing policy url}}|a nosa política de edici�
 <li>&action=get&concept=<concept_id>  ler un mapa</li>
 <li>&action=list_sets  devolver unha lista cos prefixos de contexto posibles e a que se refiren.</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> para unha definición dun concepto, devolver todo o demais</li>
-<li>&action=help  Amosar a axuda útil.</li>
+<li>&action=help  Mostrar a axuda útil.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>O mapa de conceptos permítelle identificar cal é a definición nun conxunto de datos que é idéntico ás definicións noutros conxuntos.</p>',
 	'ow_conceptmapping_no_action_specified' => 'A acción "$1" non está soportada.',
@@ -5149,7 +5149,7 @@ Hai un erro coa constancia da base de datos e os datos wiki non poden atopar dat
 Pode que se perderan.
 Por favor, póñase en contacto cun operador ou administrador do servidor.',
 	'ow_history_transaction' => 'Transacción:',
-	'ow_history_show_life_span' => 'Amosar o tempo de vida do rexistro:',
+	'ow_history_show_life_span' => 'Mostrar o tempo de vida do rexistro:',
 	'ow_class_attr_type_dm' => 'Significado definido',
 	'ow_class_attr_type_xlate' => 'Texto traducible',
 	'ow_class_attr_type_plain' => 'Texto pleno',
