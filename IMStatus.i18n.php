@@ -615,7 +615,7 @@ $messages['frp'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'imstatus-desc' => 'Engade etiquetas para amosar varios status IM en liña (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo)',
+	'imstatus-desc' => 'Engade etiquetas para mostrar varios estados de mensaxería instantánea (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo)',
 	'imstatus_syntax' => 'Sintaxe',
 	'imstatus_default' => 'Por defecto',
 	'imstatus_example' => 'Exemplo',
