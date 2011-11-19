@@ -227,6 +227,24 @@ $messages['mk'] = array(
 	'onlinestatusbar-status-hidden' => 'Скриен',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'onlinestatusbar-desc' => 'Palang status yang menunjukkan sama pengguna berada dalam talian atau tidak, berasaskan keutamaan pada laman penggunanya',
+	'onlinestatusbar-line' => '$1 kini $2 $3',
+	'onlinestatusbar-used' => 'Adakah anda ingin orang lain tahu sama ada anda berada dalam talian atau tidak?',
+	'onlinestatusbar-status' => 'Yang manakah status asali yang ingin anda gunakan:',
+	'onlinestatusbar-purge' => 'Singkirkan isi laman pengguna setiap kali ketika log masuk/keluar',
+	'prefs-onlinestatus' => 'Status dalam talian',
+	'onlinestatusbar-hide' => 'Adakah anda ingin menyorokkan palang status demi menggunakan kata sakti sahaja? (Untuk pengguna lebih berpengalaman)',
+	'onlinestatusbar-status-online' => 'Dalam talian',
+	'onlinestatusbar-status-busy' => 'Sibuk',
+	'onlinestatusbar-status-away' => 'Tiada',
+	'onlinestatusbar-status-offline' => 'Luar talian',
+	'onlinestatusbar-status-hidden' => 'Tersorok',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
