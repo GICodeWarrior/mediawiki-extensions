@@ -92,6 +92,16 @@ $messages['mk'] = array(
 	'sternograph-speaker-is' => 'Редовите во блокот <$1> (за говорник) мора да го содржат знакот „$2“.',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'sternograph-desc' => 'Tag <nowiki><sterno></nowiki> untuk transkrip perbualan (drama, wawancara, dsb)',
+	'sternograph-empty' => 'Tag <$1> tidak boleh dibiarkan kosong.',
+	'sternograph-nested' => 'Tag <$1> tidak boleh disarangkan.',
+	'sternograph-speaker-is' => 'Baris blok penutur <$1> mesti mempunyai aksara $2.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
