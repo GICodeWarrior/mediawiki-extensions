@@ -51,7 +51,7 @@ $messages['en'] = array(
 	'narayam-bn-avro' => 'Bengali Avro',
 	'narayam-bn-inscript' => 'Bengali InScript',
 	'narayam-bn-nkb' => 'Bengali NKB',
-	'narayam-ur-imran' => 'Urdu Imran',
+	'narayam-ur' => 'Urdu standard',
 );
 
 /** Message documentation (Message documentation)

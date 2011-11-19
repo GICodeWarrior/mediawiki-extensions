@@ -106,7 +106,7 @@ $wgNarayamSchemes = array(
 		'te-inscript' => 'ext.narayam.rules.te-inscript',
 	),
 	'ur' => array(
-		'ur-imran' => 'ext.narayam.rules.ur-imran',
+		'ur' => 'ext.narayam.rules.ur',
 	),
 );
 
@@ -178,6 +178,7 @@ $wgResourceModules['ext.narayam.core'] = $narayamTpl + array(
 		'narayam-bn-avro',
 		'narayam-bn-inscript',
 		'narayam-bn-nkb',
+		'narayam-ur',
 	),
 	'dependencies' => array(
 		'mediawiki.util',
@@ -295,5 +296,9 @@ $wgResourceModules['ext.narayam.rules.ta-bamini'] = $narayamTpl + array(
 );
 $wgResourceModules['ext.narayam.rules.te-inscript'] = $narayamTpl + array(
 	'scripts' => 'js/ext.narayam.rules.te-inscript.js',
+	'dependencies' => 'ext.narayam.core',
+);
+$wgResourceModules['ext.narayam.rules.ur'] = $narayamTpl + array(
+	'scripts' => 'js/ext.narayam.rules.ur.js',
 	'dependencies' => 'ext.narayam.core',
 );
