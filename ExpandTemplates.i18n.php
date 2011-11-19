@@ -749,7 +749,7 @@ $messages['ga'] = array(
  */
 $messages['gl'] = array(
 	'expandtemplates' => 'Expandir os modelos',
-	'expandtemplates-desc' => '[[Special:ExpandTemplates|Amplía modelos, analiza funcións e variables]] para amosar texto wiki expandido e unha vista previa da páxina renderizada',
+	'expandtemplates-desc' => '[[Special:ExpandTemplates|Amplía modelos, analiza funcións e variables]] para mostrar texto wiki expandido e unha vista previa da páxina renderizada',
 	'expand_templates_intro' => 'Esta páxina especial toma texto e amplía todos os modelos dentro del recursivamente.
 Tamén expande as funcións de análise como <nowiki>{{</nowiki>#if:…}} e variables como
 <nowiki>{{</nowiki>CURRENTDAY}} (de feito, case calquera cousa entre chaves duplas).
@@ -761,7 +761,7 @@ Faino chamando a etapa de análise correspondente do propio MediaWiki.',
 	'expand_templates_ok' => 'Aceptar',
 	'expand_templates_remove_comments' => 'Eliminar os comentarios',
 	'expand_templates_remove_nowiki' => 'Suprimir as etiquetas <nowiki> no resultado',
-	'expand_templates_generate_xml' => 'Amosar as árbores de análise XML',
+	'expand_templates_generate_xml' => 'Mostrar as árbores de análise XML',
 	'expand_templates_preview' => 'Vista previa',
 );
 
