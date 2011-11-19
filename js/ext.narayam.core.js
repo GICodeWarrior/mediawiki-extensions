@@ -32,7 +32,7 @@ $.narayam = new ( function() {
 	var availableSchemes = mw.config.get( 'wgNarayamAvailableSchemes' ) || {};
 	// All input methods. This will be used for selecting input methods from languages
 	// other than uselang- optionally
-	var allImes =  mw.config.get( 'wgNarayamAllSchemes' ) || {};
+	var allImes = mw.config.get( 'wgNarayamAllSchemes' ) || {};
 	// Currently selected scheme
 	var currentScheme = null;
 	// Shortcut key for turning Narayam on and off
@@ -51,14 +51,14 @@ $.narayam = new ( function() {
 	function transliterate( str, keyBuffer, useExtended ) {
 		var rules = currentScheme.extended_keyboard && useExtended ?
 			currentScheme.rules_x : currentScheme.rules;
-		for ( var i = 0;  i < rules.length; i++ ) {
+		for ( var i = 0; i < rules.length; i++ ) {
 			var regex = new RegExp( rules[i][0] + '$' );
-			if ( regex.test( str )	// Input string match
+			if ( regex.test( str ) // Input string match
 				&&
 				(
 					rules[i][1].length == 0 // Keybuffer match not required
 					||
-					(	// Keybuffer match specified, so it should be met
+					( // Keybuffer match specified, so it should be met
 						rules[i][1].length > 0
 						&& rules[i][1].length <= keyBuffer.length
 						&& new RegExp( rules[i][1] + '$' ).test( keyBuffer )
@@ -83,8 +83,7 @@ $.narayam = new ( function() {
 	function lastNChars( str, pos, n ) {
 		if ( n === 0 ) {
 			return '';
-		}
-		if ( pos <= n ) {
+		} else if ( pos <= n ) {
 			return str.substr( 0, pos );
 		} else {
 			return str.substr( pos - n, n );
@@ -133,13 +132,13 @@ $.narayam = new ( function() {
 			key: 'm'
 		}
 		// Browser sniffing to determine the available shortcutKey
-		// Refer:  mediawiki.util.js and en.wikipedia.org/wiki/Access_key
+		// Refer: mediawiki.util.js and en.wikipedia.org/wiki/Access_key
 		var profile = $.client.profile();
 		// Safari/Konqueror on any platform, but not Safari on Windows
 		// or any browser on Mac except chrome and opera
 		if ( !( profile.platform == 'win' && profile.name == 'safari' ) &&
 			 ( profile.name == 'safari'|| profile.platform == 'mac' || profile.name == 'konqueror' ) 
-			 && !(profile.name == 'opera' || profile.name == 'chrome' ) ) {
+			 && !( profile.name == 'opera' || profile.name == 'chrome' ) ) {
 			defaultShortcut.key = 'g';
 		}
 		// For Opera in OSX, shortcut is control+command+m.
@@ -177,8 +176,6 @@ $.narayam = new ( function() {
 	 * current state of Narayam
 	 */
 	function changeVisual( $element ) {
-		// It is simple in working
-		// If Narayam is active add narayam class otherwise remove narayam class
 		if ( enabled ) {
 			$element.addClass( 'narayam-input' );
 		} else {
@@ -280,13 +277,12 @@ $.narayam = new ( function() {
 		replacement = replacement.substring( divergingPos );
 
 		$this.textSelection( 'encapsulateSelection', {
-				'peri': replacement,
-				'replace': true,
-				'selectPeri': false,
-				'selectionStart': startPos - input.length + 1,
-				'selectionEnd': endPos
-
-			} );
+			peri: replacement,
+			replace: true,
+			selectPeri: false,
+			selectionStart: startPos - input.length + 1,
+			selectionEnd: endPos
+		} );
 
 		e.stopPropagation();
 		return false;
@@ -297,7 +293,7 @@ $.narayam = new ( function() {
 	 * @param e Event object
 	 */
 	function onfocus( e ) {
-		if (!$( this ).data( 'narayamKeyBuffer' )) {
+		if ( !$( this ).data( 'narayamKeyBuffer' ) ) {
 			// First-time focus on the input field
 			// So, initialise a key buffer for it
 			$( this ).data( 'narayamKeyBuffer', '' );
@@ -322,7 +318,7 @@ $.narayam = new ( function() {
 	 *               or an array of DOM elements, or a single DOM element, or a selector
 	 */
 	this.addInputs = function( inputs ) {
-		if (typeof( inputs ) == "string" ) {
+		if ( typeof( inputs ) === "string" ) {
 			// If a string is passed, it is CSS selector
 			// We can use jQuery's .live() instead of .bind()
 			// So Narayam can work on elements added later to DOM too
@@ -337,8 +333,8 @@ $.narayam = new ( function() {
 			$newInputs
 				.bind( 'keydown.narayam', onkeydown )
 				.bind( 'keypress.narayam', onkeypress )
-				.bind( 'focus', onfocus)
-				.bind( 'blur', onblur);
+				.bind( 'focus', onfocus )
+				.bind( 'blur', onblur );
 		}
 	};
 
@@ -347,9 +343,9 @@ $.narayam = new ( function() {
 	 */
 	this.enable = function() {
 		if ( !enabled ) {
-			$.cookie( 'narayam-enabled', '1', { 'path': '/', 'expires': 30 } );
+			$.cookie( 'narayam-enabled', '1', { path: '/', expires: 30 } );
 			$( '#narayam-toggle' ).prop( 'checked', true );
-			$( 'li#pt-narayam')
+			$( 'li#pt-narayam' )
 				.removeClass( 'narayam-inactive' )
 				.addClass( 'narayam-active' );
 			enabled = true;
@@ -361,9 +357,9 @@ $.narayam = new ( function() {
 	 */
 	this.disable = function() {
 		if ( enabled ) {
-			$.cookie( 'narayam-enabled', '0', { 'path': '/', 'expires': 30 } );
+			$.cookie( 'narayam-enabled', '0', { path: '/', expires: 30 } );
 			$( '#narayam-toggle' ).prop( 'checked', false );
-			$( 'li#pt-narayam')
+			$( 'li#pt-narayam' )
 				.removeClass( 'narayam-active' )
 				.addClass( 'narayam-inactive' );
 			enabled = false;
@@ -424,7 +420,6 @@ $.narayam = new ( function() {
 	this.addScheme = function( name, data ) {
 		schemes[name] = data;
 		return true;
-
 	};
 
 	/**
@@ -436,21 +431,20 @@ $.narayam = new ( function() {
 		if ( typeof recent === "string" ) {
 			recent = recent.split( "," );
 		};
-		recent = $.grep(recent, function(value) {
+		recent = $.grep( recent, function( value ) {
  			 return value != name;
-		});
+		} );
 		recent.unshift( name );
 		recent = recent.slice( 0, recentItemsLength );
 		recent = recent.join( "," );
-		$.cookie( 'narayam-scheme', recent, { 'path': '/', 'expires': 30 } );
+		$.cookie( 'narayam-scheme', recent, { path: '/', expires: 30 } );
 		if ( name in schemes ) {
 			currentScheme = schemes[name];
-		}
-		else {
+		} else {
 			// load the rules dynamically.
-			mw.loader.using( "ext.narayam.rules." + name,  function() {
+			mw.loader.using( "ext.narayam.rules." + name, function() {
 				currentScheme = schemes[name];
-			});
+			} );
 		}
 		return true;
 	};
@@ -461,20 +455,14 @@ $.narayam = new ( function() {
 	 * from a cookie or wgNarayamEnableByDefault
 	 */
 	this.setup = function() {
-		// Build the menu
-		if ( !that.buildMenu() ) {
-			// /buildMenu() returned false
-			// No need to proceed
-			return;
-		}
-
+		that.buildMenu();
 		// Restore state from cookies
 		var recentSchemes = $.cookie( 'narayam-scheme' );
 		var lastScheme = null;
 		if ( typeof recent === "string" ) {
 			lastScheme = recent.split( "," )[0];
 		}
-		if ( lastScheme) {
+		if ( lastScheme ) {
 			that.setScheme( lastScheme );
 			$( '#narayam-' + lastScheme ).prop( 'checked', true );
 		} else {
@@ -487,30 +475,26 @@ $.narayam = new ( function() {
 		var enabledCookie = $.cookie( 'narayam-enabled' );
 		if ( enabledCookie == '1' || ( mw.config.get( 'wgNarayamEnabledByDefault' ) && enabledCookie !== '0' ) ) {
 			that.enable();
-		}
-		else {
+		} else {
 			$( 'li#pt-narayam' ).addClass( 'narayam-inactive' );
 		}
 		// Renew the narayam-enabled cookie. narayam-scheme is renewed by setScheme()
 		if ( enabledCookie ) {
-			$.cookie( 'narayam-enabled', enabledCookie, {
-				'path': '/',
-				'expires': 30
-			} );
+			$.cookie( 'narayam-enabled', enabledCookie, { path: '/', expires: 30 } );
 		}
 
 	};
 	/**
 	 * Construct the menu item, for the given scheme name.
 	 */
-	this.buildMenuItem  =function(scheme) {
+	this.buildMenuItem = function( scheme ) {
 		var $input = $( '<input type="radio" name="narayam-input-method" class="narayam-scheme" />' );
 		$input.attr( 'id', 'narayam-' + scheme ).val( scheme );
 
 		var $narayamMenuItemLabel = $( '<label>' )
-				.attr( 'for' ,'narayam-' + scheme )
-				.append( $input )
-				.append( mw.message( "narayam-"+ scheme ).escaped() );
+			.attr( 'for' ,'narayam-' + scheme )
+			.append( $input )
+			.append( mw.message( "narayam-"+ scheme ).escaped() );
 
 		var $narayamMenuItem = $( '<li>' )
 			.append( $input )
@@ -539,8 +523,8 @@ $.narayam = new ( function() {
 			if ( $.inArray( scheme, seen ) > -1 ) { continue; }
 			seen.push( scheme );
 			if ( count++ > recentItemsLength ) { break; }
-			$narayamMenuItem = that.buildMenuItem(scheme);
-			$narayamMenuItem.addClass('narayam-recent-menu-item');
+			$narayamMenuItem = that.buildMenuItem( scheme );
+			$narayamMenuItem.addClass( 'narayam-recent-menu-item' );
 			$narayamMenuItems.append( $narayamMenuItem );
 		}
 		// menu items for the language of wiki.
@@ -551,21 +535,21 @@ $.narayam = new ( function() {
 			if ( !langschemes ) continue;
 			for ( var scheme in langschemes ) {
 				haveSchemes = true;
-				if ( $.inArray( scheme, seen ) > -1 ) { continue; }
+				if ( $.inArray( scheme, seen ) !== -1 ) { continue; }
 				seen.push( scheme );
-				$narayamMenuItem = that.buildMenuItem(scheme);
+				$narayamMenuItem = that.buildMenuItem( scheme );
 				$narayamMenuItems.append( $narayamMenuItem );
 			}
 		}
+		
 		if ( !haveSchemes ) {
 			// No schemes available, don't show the tool
-			// So return false
 			return false;
 		}
 
 		// Event listener for scheme selection.
 		$( '.narayam-scheme', $( '#narayam-menu-items > ul')[0] ).live( 'click', function() {
-			that.setScheme( $(this).val() );
+			that.setScheme( $( this ).val() );
 		} );
 
 		// Build enable/disable checkbox and label
@@ -579,20 +563,21 @@ $.narayam = new ( function() {
 			.text( mw.msg( 'narayam-toggle-ime', shortcutText() ) )
 			.prepend( $checkbox )
 			.prop( 'title', mw.msg( 'narayam-checkbox-tooltip' ) );
+			
+		var $moreLink = $( '<a>' )
+			.text( mw.msg( 'narayam-more-imes' ) )
+			.click( function() {
+				$('.narayam-scheme-dynamic-item').toggle( 'fast' );
+				if ( $('li.narayam-more-imes-link').hasClass( 'open' ) ) {
+					$('li.narayam-more-imes-link').removeClass( 'open' );
+				} else {
+					$('li.narayam-more-imes-link').addClass( 'open' );
+				}
+			} );
 
-			$narayamMenuItems.append( $( '<li>' ).addClass( 'narayam-more-imes-link' )
-			.append(
-				$( '<a>' )
-					.text( mw.msg( 'narayam-more-imes' ) )
-					.click( function() {
-						$('.narayam-scheme-dynamic-item').toggle('fast');
-						if( $('li.narayam-more-imes-link').hasClass( 'open' )){
-							$('li.narayam-more-imes-link').removeClass('open');
-						}else{
-							$('li.narayam-more-imes-link').addClass('open');
-						}
-					})
-				)
+		$narayamMenuItems.append( $( '<li>' )
+			.addClass( 'narayam-more-imes-link' )
+			.append( $moreLink )
 		);
 
 		for ( var lang in allImes ) {
@@ -601,7 +586,7 @@ $.narayam = new ( function() {
 				// Donot repeat the input methods in more input methods section.
 				// If already shown on recent items.
 				if ( $.inArray( langscheme, seen ) > -1 ) { continue; }
-				$narayamMenuItem  = that.buildMenuItem(langscheme);
+				$narayamMenuItem = that.buildMenuItem( langscheme );
 				$narayamMenuItem.addClass( 'narayam-scheme-dynamic-item' );
 				$narayamMenuItems.append( $narayamMenuItem );
 
@@ -610,10 +595,10 @@ $.narayam = new ( function() {
 
 		// Event listener for scheme selection - dynamic loading of rules.
 		$( '.narayam-scheme', $('.narayam-scheme-dynamic-item') ).live( 'click', function() {
-			that.setScheme(  $(this).val() );
+			that.setScheme( $( this ).val() );
 			// rebuild the menu items with recent items.
 			$( '#narayam-menu-items' ).html( $.narayam.buildMenuItems() );
-			$( '#narayam-' +  $(this).val() ).prop( 'checked', true );
+			$( '#narayam-' + $( this ).val() ).prop( 'checked', true );
 			if ( enabled ) {
 				$( '#narayam-toggle' ).prop( 'checked', true );
 			}
@@ -624,7 +609,7 @@ $.narayam = new ( function() {
 			var $link = $( '<a>' )
 				.text( mw.msg( 'narayam-help' ) )
 				.prop( 'href', mw.util.wikiGetlink( helppage ) );
-			var $li =  $( '<li>' ).addClass( 'narayam-help-link' );
+			var $li = $( '<li>' ).addClass( 'narayam-help-link' );
 			$narayamMenuItems.append( $li.append( $link ) );
 		}
 
