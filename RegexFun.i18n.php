@@ -74,6 +74,15 @@ $messages['mk'] = array(
 	'regexfun-limit-exceed' => 'Достигнат е максимумот од $1 регуларни изрази сработени со „Regex Fun“.',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'regexfun-desc' => 'Menambahkan fungsi-fungsi penghurai yang membolehkan penggunaan ungkapan nalar dalam laman wiki',
+	'regexfun-invalid' => 'Ungkapan nalar "$1" tidak sah.',
+	'regexfun-limit-exceed' => 'Had maksimum $1 kendalian ungkapan nalar "Regex Fun" tercapai.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author Tjcool007
