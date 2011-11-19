@@ -1,7 +1,7 @@
  Changelog:
  ==========
 
- * (trunk) Version 0.8
+ * (trunk) Version 1.0
    This release has lots of internal changes in it. All functions representing a parser funcdtions now
    use a 'pf_' or 'pfObj_' prefix, are declared static and there are new/changed public functions for
    interaction with 'HashTables' extension.
@@ -9,7 +9,7 @@
    - Inclusion of special pages in the middle of the page won't reset all defined hash tables anymore.
    - arrayprint will handle <includeonly>/<noinclude> correct in case it's used in a template.
 
- 
+
  * November 4, 2011 -- Version 0.7
    - buggy behavior in 'hashkeyexists' which led to expanding both arguments 'yes' and 'no' in
      case custom arguments were given is solved. Now only the one actual case is being expanded.
@@ -21,7 +21,7 @@
    - some gernal cleanup done.
    - put into wikimedia.org svn (http://svn.wikimedia.org/svnroot/mediawiki/trunk/extensions/HashTables/)
    - distributed under ISC license.
-
+	
 
  * August 3, 2011 -- Version 0.6.3
    - minor bug in 'parameterstohash' function solved.

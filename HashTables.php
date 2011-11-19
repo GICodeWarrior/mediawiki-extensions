@@ -4,7 +4,7 @@
  * Defines a subset of parser functions to handle hash tables. Inspired by the ArrayExtension
  * (http://www.mediawiki.org/wiki/Extension:ArrayExtension).
  *
- * @version: 0.8 alpha
+ * @version: 1.0 alpha
  * @author:  Daniel Werner < danweetz@web.de >
  * @license: ISC license
  * 
@@ -56,7 +56,7 @@ class ExtHashTables {
 	 * 
 	 * @var string
 	 */
-	const VERSION = '0.8 alpha';
+	const VERSION = '1.0 alpha';
 
 	/**
 	 * @since 0.1
@@ -69,7 +69,7 @@ class ExtHashTables {
 	/**
 	 * Sets up parser functions
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 */
 	public static function init( Parser &$parser ) {
 		
@@ -115,7 +115,7 @@ class ExtHashTables {
 	/**
 	 * Returns the extensions base installation directory.
 	 *
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @return boolean
 	 */
@@ -695,7 +695,7 @@ class ExtHashTables {
 	 * to a certain Parser object. Each parser has its own store which will be reset after
 	 * a parsing process [Parser::parse()] has finished.
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @param Parser &$parser
 	 * 
@@ -727,7 +727,7 @@ class ExtHashTables {
 	 * values in form of a string. All values will be converted to strings, trim() will iterate
 	 * over them.
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @param string $hashId
 	 * @param array  $hashTable
@@ -770,7 +770,7 @@ class ExtHashTables {
 	/**
 	 * Rest a specific hash tables entry.
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @param type $hashId
 	 * @param type $key 
@@ -783,7 +783,7 @@ class ExtHashTables {
 	 * Set a value of a hash table to a specific value. If the hash table doesn't exist already,
 	 * it will be created.
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @param string $hashId
 	 * @param array  $hashTable
@@ -808,7 +808,7 @@ class ExtHashTables {
 	/**
 	 * Allows to unset a certain hash. Returns whether the hash existed or not.
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @param string $varName
 	 * 
