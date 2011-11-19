@@ -102,5 +102,14 @@ final class ReviewsHooks {
 
 		return true;
 	}
+	
+	public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
+		if ( $out->isArticle() && $skin->getRequest()->getText( 'action' ) !== 'edit' ) {
+			$control = new ReviewControl();
+			$control->addToContext( $skin );
+		}
+		
+		return true;
+	}
 
 }

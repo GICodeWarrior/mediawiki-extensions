@@ -30,6 +30,7 @@ class ReviewsSettings {
 		return array(
 			'reviewDeletionEnabled' => true,
 			'enableTopLink' => true,
+			'categoryRatings' => array()
 		);
 	}
 

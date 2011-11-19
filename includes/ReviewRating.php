@@ -60,5 +60,18 @@ class ReviewRating extends ReviewsDBObject {
 		return array(
 		);
 	}
+	
+	public static function getTypesForContext( ContextSource $context ) {
+		$ratingsPerCat = ReviewsSettings::get( 'categoryRatings' );
+		$ratings = array();
+		
+		foreach ( $context->getOutput()->getCategories() as $cat ) {
+			if ( array_key_exists( $cat, $ratingsPerCat ) ) {
+				$ratings = array_merge( $ratings, $ratingsPerCat[$cat] );
+			}
+		}
+		
+		return $ratings;
+	}
 
 }

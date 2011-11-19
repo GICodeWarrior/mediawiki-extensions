@@ -55,6 +55,7 @@ $wgAutoloadClasses['ApiReviewQuery'] 			= dirname( __FILE__ ) . '/api/ApiReviewQ
 $wgAutoloadClasses['ApiSubmitReview'] 			= dirname( __FILE__ ) . '/api/ApiSubmitReview.php';
 
 $wgAutoloadClasses['Review'] 					= dirname( __FILE__ ) . '/includes/Review.php';
+$wgAutoloadClasses['ReviewControl'] 			= dirname( __FILE__ ) . '/includes/ReviewControl.php';
 $wgAutoloadClasses['ReviewPager'] 				= dirname( __FILE__ ) . '/includes/ReviewPager.php';
 $wgAutoloadClasses['ReviewRating'] 				= dirname( __FILE__ ) . '/includes/ReviewRating.php';
 $wgAutoloadClasses['ReviewsDBObject'] 			= dirname( __FILE__ ) . '/includes/ReviewsDBObject.php';
@@ -79,6 +80,7 @@ $wgHooks['LoadExtensionSchemaUpdates'][] 		= 'ReviewsHooks::onSchemaUpdate';
 $wgHooks['UnitTestsList'][] 					= 'ReviewsHooks::registerUnitTests';
 $wgHooks['PersonalUrls'][] 						= 'ReviewsHooks::onPersonalUrls';
 $wgHooks['GetPreferences'][] 					= 'ReviewsHooks::onGetPreferences';
+$wgHooks['BeforePageDisplay'][] 				= 'ReviewsHooks::onBeforePageDisplay';
 
 // Rights
 $wgAvailableRights[] = 'reviewsadmin';
@@ -105,6 +107,23 @@ $wgGroupPermissions['reviewer']['reviewer'] = true;
 $moduleTemplate = array(
 	'localBasePath' => dirname( __FILE__ ) . '/resources',
 	'remoteExtPath' => 'Reviews/resources'
+);
+
+$wgResourceModules['jquery.reviewControl'] = $moduleTemplate + array(
+	'scripts' => array(
+		'jquery.reviewControl.js'
+	),
+	'styles' => array(
+		'jquery.reviewControl.css'
+	),
+	'messages' => array(
+	)
+);
+
+$wgResourceModules['reviews.review.control'] = $moduleTemplate + array(
+	'scripts' => array(
+		'reviews.review.control.js'
+	),
 );
 
 unset( $moduleTemplate );
