@@ -400,8 +400,8 @@ $messages['fy'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'showprocesslist' => 'Amosar a lista do proceso',
-	'showprocesslist-desc' => 'Amosa o texto de saída [[Special:ShowProcesslist|AMOSAR A LISTA COMPLETA DE PROCESOS]]',
+	'showprocesslist' => 'Mostrar a lista de procesos',
+	'showprocesslist-desc' => 'Presenta o texto de saída de [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
 	'showprocesslist-id' => 'Id',
 	'showprocesslist-user' => 'Usuario',
 	'showprocesslist-host' => 'Servidor',
