@@ -166,7 +166,7 @@ $messages['fy'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'emailaddressimage-desc' => 'Engade <code>&lt;email&gt;</code> para amosar un enderezo de correo electrónico como unha imaxe',
+	'emailaddressimage-desc' => 'Engade <code>&lt;email&gt;</code> para mostrar un enderezo de correo electrónico como unha imaxe',
 );
 
 /** Swiss German (Alemannisch)
