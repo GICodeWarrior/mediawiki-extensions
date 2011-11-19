@@ -152,7 +152,7 @@ $messages['frp'] = array(
  */
 $messages['gl'] = array(
 	'random-users-avatars-title' => 'Coñeza a comunidade',
-	'random-users-avatars-desc' => 'Engade a etiqueta <code>&lt;randomuserswithavatars&gt;</code> para amosar os avatares dos usuarios elixidos ao chou',
+	'random-users-avatars-desc' => 'Engade a etiqueta <code>&lt;randomuserswithavatars&gt;</code> para mostrar os avatares dos usuarios elixidos ao chou',
 );
 
 /** Swiss German (Alemannisch)
