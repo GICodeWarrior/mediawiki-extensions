@@ -529,6 +529,9 @@ $.narayam = new ( function() {
 		}
 		// menu items for the language of wiki.
 		var requested = [mw.config.get( 'wgUserVariant' ), mw.config.get( 'wgContentLanguage' ), mw.config.get( 'wgUserLanguage' )];
+		$( 'textarea[lang]' ).each( function( index ) {
+			requested.push( this.lang );
+		});
 		for ( var i = 0; i < requested.length; i++ ) {
 			var lang = requested[i];
 			var langschemes = allImes[lang];

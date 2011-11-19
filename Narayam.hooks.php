@@ -50,15 +50,18 @@ class NarayamHooks {
 	 * @return array( scheme name => module name )
 	 */
 	protected static function getSchemes() {
-		global $wgLanguageCode, $wgLang, $wgNarayamSchemes, $wgRequest;
+		global $wgLanguageCode, $wgLang, $wgNarayamSchemes, $wgTitle;
 
 		$userlangCode = $wgLang->getCode();
 		$contlangSchemes = isset( $wgNarayamSchemes[$wgLanguageCode] ) ?
 				$wgNarayamSchemes[$wgLanguageCode] : array();
 		$userlangSchemes = isset( $wgNarayamSchemes[$userlangCode] ) ?
 				$wgNarayamSchemes[$userlangCode] : array();
+		$pagelang = $wgTitle->getPageLanguage()->getCode();
+		$pagelangSchemes = isset( $wgNarayamSchemes[$pagelang] ) ?
+				$wgNarayamSchemes[$pagelang] : array();
 
-		$schemes = $userlangSchemes + $contlangSchemes;
+		$schemes = $userlangSchemes + $contlangSchemes + $pagelangSchemes;
 
 		return $schemes;
 	}
