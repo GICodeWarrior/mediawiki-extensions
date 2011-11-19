@@ -296,7 +296,18 @@ class ExtHashTables {
 			
 			$renderedResults[] = $rawResult ;
         }
-        return array( implode( $seperator, $renderedResults) , 'noparse' => false, 'isHTML' => false );
+		
+        $output = implode( $seperator, $renderedResults);
+		unset( $renderedResults );
+		
+		/*
+		 * don't leave the final parse to Parser::braceSubstitution() since there are some special cases where it
+		 * would produce unexpected output (it uses a new child frame and ignores whether the frame is a template!)
+		 */
+		$output = $parser->preprocessToDom( $output, $frame->isTemplate() ? Parser::PTD_FOR_INCLUSION : 0 );
+		$output = trim( $frame->expand( $output ) );
+		
+        return $output;
     }
 	
 	/**
