@@ -226,7 +226,7 @@ $messages['frp'] = array(
  */
 $messages['gl'] = array(
 	'templatelink' => 'Ligazón do modelo',
-	'templatelink_desc' => 'Esta extensión pode amosar un modelo como unha páxina nova',
+	'templatelink_desc' => 'Esta extensión pode mostrar un modelo como unha páxina nova',
 	'templatelink_empty' => 'Vostede ten que proporcionar un parámetro.',
 	'templatelink_newtitle' => '$1 (transcluído)',
 );
