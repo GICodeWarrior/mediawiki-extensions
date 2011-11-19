@@ -143,6 +143,17 @@ $messages['he'] = array(
 	'fileattach-editcomment' => 'הקובץ [[File:$1|$1]] צורף',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'fileattach-desc' => 'Zmóžnja nahraće datajow do aktualneje strony',
+	'fileattach-attachments' => 'Datajowe přiwěški',
+	'fileattach-attachfile' => 'Dataju připowěsnyć',
+	'fileattach-uploadheading' => 'Dataju k $1 připowěsnyć',
+	'fileattach-editcomment' => 'Dataja [[File:$1|$1]] připowěsnjena',
+);
+
 /** Hungarian (Magyar)
  * @author Dj
  */
