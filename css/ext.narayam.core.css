@@ -11,9 +11,8 @@
 	margin: 0;
 }
 
-
-li#pt-narayam{
-   	padding-left: 15px !important;
+li#pt-narayam {
+	padding-left: 15px !important;
 }
 
 /* Variants and Actions */
@@ -38,7 +37,7 @@ div#narayam-menu div.menu-items {
 	z-index: 99999;
 }
 
-div#narayam-menu-items li{
+div#narayam-menu-items li {
 	margin: 0;
 	padding: 5px;
 	font-size: 100%;
@@ -67,7 +66,8 @@ x:-moz-any-link {
 	margin-left: 23px;
 }
 /* Enable forcing showing of the menu for accessibility */
-div#narayam-menu:hover div.menu-items, div#narayam-menu div.menuForceShow {
+div#narayam-menu:hover div.menu-items,
+div#narayam-menu div.menuForceShow {
 	display: block;
 }
 div#narayam-menu ul {
@@ -120,8 +120,8 @@ div#narayam-menu li.selected a:visited {
 }
 div#narayam-menu a {
 	display: block;
-	padding-left:5px;
-	padding-right:5px;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 div#narayam-menu-items li.narayam-help-link a {
@@ -140,15 +140,15 @@ li.narayam-inactive {
 	background: url('../images/narayam-inactive.png') no-repeat scroll left top transparent;
 }
 
-li.narayam-more-imes-link{
+li.narayam-more-imes-link {
 	/* @embed */
 	background: url('../images/closed-ltr.png') no-repeat scroll left center transparent;
 }
 
-li.narayam-more-imes-link.open{
+li.narayam-more-imes-link.open {
 	/* @embed */
 	background: url('../images/open.png') no-repeat scroll left center transparent;
 }
-li.narayam-more-imes-link a{
-	padding-left:10px;
+li.narayam-more-imes-link a {
+	padding-left: 10px;
 }

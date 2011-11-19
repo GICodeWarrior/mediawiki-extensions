@@ -2,7 +2,7 @@
 	/* #p-personal has overflow:hidden. That makes a dropdown menu appearing hidden.
 	 * overriding it this way may not be the best way.
 	 */
-	overflow: visible!important;
+	overflow: visible !important;
 }
 
 div#narayam-menu ul,
@@ -25,7 +25,7 @@ div#narayam-menu ul {
 	height: auto;
 }
 
-div#narayam-menu li a:hover{
+div#narayam-menu li a:hover {
 	color: #0645AD;
 }
 
