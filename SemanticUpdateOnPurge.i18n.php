@@ -68,6 +68,13 @@ $messages['mk'] = array(
 	'suop-desc' => 'Ги подновува семантичките атрибути на една вики-страница при нејзино пречистување (на кешот)',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'suop-desc' => 'Mengemaskinikan atribut-atribut semantik pada laman wiki sewaktu menyingkirkan laman',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
