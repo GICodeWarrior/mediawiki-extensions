@@ -49,6 +49,18 @@ $wgExtensionMessagesFiles['ReviewsAlias']		= dirname( __FILE__ ) . '/Reviews.ali
 $wgAutoloadClasses['ReviewsHooks'] 				= dirname( __FILE__ ) . '/Reviews.hooks.php';
 $wgAutoloadClasses['ReviewsSettings'] 			= dirname( __FILE__ ) . '/Reviews.settings.php';
 
+$wgAutoloadClasses['ApiDeleteReviews'] 			= dirname( __FILE__ ) . '/api/ApiDeleteReviews.php';
+$wgAutoloadClasses['ApiQueryReviews'] 			= dirname( __FILE__ ) . '/api/ApiQueryReviews.php';
+$wgAutoloadClasses['ApiReviewQuery'] 			= dirname( __FILE__ ) . '/api/ApiReviewQuery.php';
+$wgAutoloadClasses['ApiSubmitReview'] 			= dirname( __FILE__ ) . '/api/ApiSubmitReview.php';
+
+$wgAutoloadClasses['Review'] 					= dirname( __FILE__ ) . '/includes/Review.php';
+$wgAutoloadClasses['ReviewPager'] 				= dirname( __FILE__ ) . '/includes/ReviewPager.php';
+$wgAutoloadClasses['ReviewRating'] 				= dirname( __FILE__ ) . '/includes/ReviewRating.php';
+$wgAutoloadClasses['ReviewsDBObject'] 			= dirname( __FILE__ ) . '/includes/ReviewsDBObject.php';
+
+$wgAutoloadClasses['SpecialMyReviews'] 			= dirname( __FILE__ ) . '/specials/SpecialMyReviews.php';
+$wgAutoloadClasses['SpecialReviews'] 			= dirname( __FILE__ ) . '/specials/SpecialReviews.php';
 
 // Special pages
 $wgSpecialPages['Reviews'] 						= 'SpecialReviews';
@@ -58,6 +70,9 @@ $wgSpecialPageGroups['Reviews'] 				= 'reviews';
 $wgSpecialPageGroups['MyReviews'] 				= 'reviews';
 
 // API
+$wgAPIModules['deletereviews'] 					= 'ApiDeleteReviews';
+$wgAPIModules['submitreview'] 					= 'ApiSubmitReview';
+$wgAPIListModules['reviews'] 					= 'ApiQueryReviews';
 
 // Hooks
 $wgHooks['LoadExtensionSchemaUpdates'][] 		= 'ReviewsHooks::onSchemaUpdate';

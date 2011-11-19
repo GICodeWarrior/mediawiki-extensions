@@ -2,16 +2,21 @@
 
 /**
  * Abstract base class for representing objects that are stored in some DB table.
+ * These methods must be implemented in deriving classes:
+ * * getDBTable
+ * * getFieldPrefix
+ * * getFieldTypes
+ * * getDefaults
  *
  * @since 0.1
  *
- * @file ReviewDBObject.php
+ * @file ReviewsDBObject.php
  * @ingroup Review
  *
  * @licence GNU GPL v3 or later
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-abstract class ReviewDBObject {
+abstract class ReviewsDBObject {
 
 	/**
 	 * The fields of the object.
@@ -30,6 +35,66 @@ abstract class ReviewDBObject {
 	 */
 	protected static $readDb = DB_SLAVE;
 
+	/**
+	 * Returns the name of the database table objects of this type are stored in.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @throws MWException
+	 * @return string
+	 */
+	public static function getDBTable() {
+		throw new MWException( 'Class did not implement getDBTable' );
+	}
+
+	/**
+	 * Gets the db field prefix. 
+	 * 
+	 * @since 0.1
+	 * 
+	 * @throws MWException
+	 * @return string
+	 */
+	protected static function getFieldPrefix() {
+		throw new MWException( 'Class did not implement getFieldPrefix' );
+	}
+	
+	/**
+	 * Returns an array with the fields and their types this object contains.
+	 * This corresponds directly to the fields in the database, without prefix.
+	 *
+	 * field name => type
+	 *
+	 * Allowed types:
+	 * * id
+	 * * str
+	 * * int
+	 * * float
+	 * * bool
+	 * * array
+	 *
+	 * @since 0.1
+	 *
+	 * @throws MWException
+	 * @return array
+	 */
+	protected static function getFieldTypes() {
+		throw new MWException( 'Class did not implement getFieldTypes' );
+	}
+
+	/**
+	 * Returns a list of default field values.
+	 * field name => field value
+	 *
+	 * @since 0.1
+	 *
+	 * @throws MWException
+	 * @return array
+	 */
+	public static function getDefaults() {
+		throw new MWException( 'Class did not implement getDefaults' );
+	}
+	
 	/**
 	 * Constructor.
 	 *
@@ -82,24 +147,6 @@ abstract class ReviewDBObject {
 
 		return false;
 	}
-
-	/**
-	 * Returns the name of the database table objects of this type are stored in.
-	 *
-	 * @since 0.1
-	 *
-	 * @return string
-	 */
-	public abstract function getDBTable();
-
-	/**
-	 * Gets the db field prefix.
-	 *
-	 * @since 0.1
-	 *
-	 * @return string
-	 */
-	protected abstract function getFieldPrefix();
 
 	/**
 	 * Gets the value of a field.
@@ -406,36 +453,6 @@ abstract class ReviewDBObject {
 			throw new MWException( 'Attempted to set unknown field ' . $name );
 		}
 	}
-
-	/**
-	 * Returns an array with the fields and their types this object contains.
-	 * This corresponds directly to the fields in the database, without prefix.
-	 *
-	 * field name => type
-	 *
-	 * Allowed types:
-	 * * id
-	 * * str
-	 * * int
-	 * * float
-	 * * bool
-	 * * array
-	 *
-	 * @since 0.1
-	 *
-	 * @return array
-	 */
-	protected abstract function getFieldTypes();
-
-	/**
-	 * Returns a list of default field values.
-	 * field name => field value
-	 *
-	 * @since 0.1
-	 *
-	 * @return array
-	 */
-	public abstract function getDefaults();
 
 	/**
 	 * Get a new instance of the class from an array.

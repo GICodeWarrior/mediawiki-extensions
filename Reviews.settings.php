@@ -28,6 +28,7 @@ class ReviewsSettings {
 	 */
 	protected static function getDefaultSettings() {
 		return array(
+			'reviewDeletionEnabled' => true,
 			'enableTopLink' => true,
 		);
 	}
