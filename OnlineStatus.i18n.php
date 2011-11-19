@@ -502,7 +502,7 @@ $messages['frp'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'onlinestatus-desc' => 'Engade unha preferencia para amosar se o usuario está actualmente conectado ou non no wiki',
+	'onlinestatus-desc' => 'Engade unha preferencia para mostrar se o usuario está actualmente conectado ou non no wiki',
 	'onlinestatus-js-anon' => 'Erro: debe acceder ao sistema para usar esta característica',
 	'onlinestatus-js-changed' => 'O seu status foi cambiado a "$1"',
 	'onlinestatus-js-error' => 'É imposible cambiar o status; o valor "$1" é inválido',
@@ -511,7 +511,7 @@ $messages['gl'] = array(
 	'onlinestatus-tab' => 'Estado',
 	'onlinestatus-toggles-desc' => 'O seu estado:',
 	'onlinestatus-toggles-explain' => 'Isto permítelle ensinar aos demais usuarios se está actualmente conectado ou non vendo a súa páxina de usuario.',
-	'onlinestatus-toggles-show' => 'Amosar o meu estado na miña páxina de usuario',
+	'onlinestatus-toggles-show' => 'Mostrar o meu estado na miña páxina de usuario',
 	'onlinestatus-toggle-offline' => 'Desconectado',
 	'onlinestatus-toggle-online' => 'Conectado',
 	'onlinestatus-pref-onlineonlogin' => 'Cambiar o meu status a "conectado" cando acceda ao sistema',
