@@ -34,6 +34,7 @@ $messages['en'] = array(
 	'narayam-kn-inscript' => 'Kannada InScript',
 	'narayam-ml' => 'Malayalam Transliteration',
 	'narayam-ml-inscript' => 'Malayalam InScript',
+	'narayam-mr' => 'Marathi Transliteration',
 	'narayam-ne' => 'Nepali Transliteration',
 	'narayam-ne-inscript' => 'Nepali InScript',
 	'narayam-or' => 'Oriya Transliteration',
