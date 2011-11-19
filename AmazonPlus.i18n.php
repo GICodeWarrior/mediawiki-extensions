@@ -672,7 +672,7 @@ $messages['frp'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'amazonplus-desc' => 'Unha extensión altamente personalizable para amosar información do Amazon',
+	'amazonplus-desc' => 'Unha extensión altamente personalizable para mostrar información do Amazon',
 	'amazonplus-nores' => 'Erro: non se atopou ningún resultado!',
 	'amazonplus-noidres' => 'Erro: non se puido atopar o ID dun produto!',
 	'amazonplus-fgcerr' => 'Erro: non se puideron obter os datos do Amazon!',
