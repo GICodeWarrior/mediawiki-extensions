@@ -105,6 +105,9 @@ $wgNarayamSchemes = array(
 	'te' => array(
 		'te-inscript' => 'ext.narayam.rules.te-inscript',
 	),
+	'ur' => array(
+		'ur-imran' => 'ext.narayam.rules.ur-imran',
+	),
 );
 
 /* Setup */
