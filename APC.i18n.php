@@ -2669,7 +2669,7 @@ Parece que APC non funciona.',
 	'viewapc-delete-failed' => 'Houbo un fallo ao eliminar a entrada <nowiki>$1</nowiki> da memoria caché.',
 	'viewapc-version-info' => 'Información da versión',
 	'viewapc-version-changelog' => 'Rexistro de cambios',
-	'viewapc-version-failed' => 'Non se lle pode amosar a información da versión.',
+	'viewapc-version-failed' => 'Non se lle pode mostrar a información da versión.',
 	'viewapc-version-ok' => 'Está executando a última versión de APC ($1)',
 	'viewapc-version-old' => 'Está executando unha versión vella de APC ($1)
 A nova versión $2 está dispoñible en http://pecl.php.net/package/APC/$2',
