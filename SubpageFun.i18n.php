@@ -20,6 +20,13 @@ $messages['en'] = array(
 	'subpagefun-desc' => 'Adds parser functions allowing to gain extensive information about [http://www.mediawiki.org/wiki/Help:Subpages subpages]',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'subpagefun-desc' => 'Amiesta funciones analítiques que permiten sacar información abondo tocante a les [http://www.mediawiki.org/wiki/Help:Subpages sub-páxines]',
+);
+
 /** German (Deutsch)
  * @author Daniel Werner
  */
