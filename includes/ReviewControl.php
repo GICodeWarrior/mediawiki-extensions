@@ -15,10 +15,9 @@ class ReviewControl {
 		$out = $context->getOutput();
 		$out->addModules( 'reviews.review.control' );
 		
-		$ratings = ReviewRating::getTypesForContext( $this->context );
-		
 		$attribs = array(
 			'class' => 'review-control',
+			'data-rating-types' => FormatJson::encode( ReviewRating::getTypesForContext( $this->context ) )
 		);
 		
 		if ( !is_null( $this->review ) ) {

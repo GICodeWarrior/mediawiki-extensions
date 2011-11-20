@@ -61,6 +61,7 @@ class Review extends ReviewsDBObject {
 			'page_id' => 'int',
 			'user_id' => 'int',
 		
+			'title' => 'str',
 			'text' => 'str',
 			'post_time' => 'str', // TS_MW
 			'edit_time' => 'str', // TS_MW

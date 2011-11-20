@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS /*_*/reviews (
   review_id                    INT unsigned        NOT NULL auto_increment PRIMARY KEY,
   review_page_id               INT unsigned        NOT NULL, -- Foreign key on page.page_id
   review_user_id               INT unsigned        NOT NULL, -- Foreign key on user.user_id
+  review_title                 VARCHAR(255)        NOT NULL, -- Review title
   review_text                  TEXT                NOT NULL, -- Review text
   review_post_time             varbinary(14)       NOT NULL, -- Time when the review was posted
   review_edit_time             varbinary(14)       NOT NULL, -- Time when the review was editted

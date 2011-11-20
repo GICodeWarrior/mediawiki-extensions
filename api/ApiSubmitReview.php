@@ -46,10 +46,6 @@ class ApiSubmitReview extends ApiBase {
 		return true;
 	}
 	
-	public function getTokenSalt() {
-		return serialize( array( 'submitreview', $this->getUser()->getName() ) );
-	}
-	
 	public function mustBePosted() {
 		return true;
 	}
@@ -71,7 +67,7 @@ class ApiSubmitReview extends ApiBase {
 		return array(
 			'id' => 'The ID of the review being submitted.',
 			'name' => 'The name of the review being submitted.',
-			'token' => 'Submission token.',
+			'token' => 'Edit token. You can get one of these through prop=info.',
 		);
 	}
 	
