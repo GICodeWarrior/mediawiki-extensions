@@ -27,6 +27,13 @@ $messages['de'] = array(
 	'parserfun-desc' => 'Ergänzt die Parserfunktion <code>#parse</code> zum Parsen von Wikitext, sowie das <code>THIS:</code>-Präfix für Variablen, die von Wikiseiten Informationen abrufen',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'parserfun-desc' => 'Engade unha función analítica <code>#parse</code> para analizar texto wiki e introduce o prefixo <code>THIS:</code> para as páxinas de información relacionadas coas variables máxicas',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -46,5 +53,12 @@ $messages['mk'] = array(
  */
 $messages['ms'] = array(
 	'parserfun-desc' => 'Menambahkan fungsi penghurai <code>#parse</code> untuk menghuraikan teks wiki serta memperkenalkan awalan <code>THIS:</code> untuk pembolehubah sakti berkenaan maklumat laman',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'parserfun-desc' => 'Voegt een parserfunctie <code>#parse</code> toe voor het parsen van wikitekst, en introduceert het voorvoegsel <code>THIS:</code> voor aan magische variabelen gerelateerde paginagegevens',
 );
 
