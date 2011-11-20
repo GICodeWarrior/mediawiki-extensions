@@ -28,6 +28,7 @@ $messages['en'] = array(
 	'narayam-as-avro' => 'Assamese Avro',
 	'narayam-as-bornona' => 'Assamese Bornona',
 	'narayam-as-inscript' => 'Assamese InScript',
+	'narayam-brx-inscript' => 'Bodo InScript',
 	'narayam-eo' => 'Esperanto',
 	'narayam-hi' => 'Hindi Transliteration',
 	'narayam-hi-inscript' => 'Hindi InScript',
