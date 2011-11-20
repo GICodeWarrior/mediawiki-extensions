@@ -45,6 +45,19 @@ $messages['ar'] = array(
 	'bm-printversion' => 'نسخة الطباعة',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'bookmanager-desc' => 'Ferramientes pa llibros',
+	'bm-booktools-section' => 'Ferramientes del llibru',
+	'bm-randomchapter-link' => 'Capítulu al debalu',
+	'bm-printversion' => 'Versión pa imprentar',
+	'bm-printversion-desc' => "Xenera una [[Special:PrintVersion|versión pa imprentar]] d'un llibru",
+	'bm-printversion-no-book' => "Escribi'l nome d'un llibru pa tener la versión pa imprentar.",
+	'bm-printversion-inexistent-book' => "Nun s'alcontró'l llibru. Escribi'l nome d'un llibru esistente pa tener la versión pa imprentar.",
+);
+
 /** Azerbaijani (Azərbaycanca)
  * @author Vago
  */
