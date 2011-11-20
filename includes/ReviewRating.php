@@ -45,7 +45,9 @@ class ReviewRating extends ReviewsDBObject {
 	protected static function getFieldTypes() {
 		return array(
 			'id' => 'id',
-
+			'review_id' => 'int',
+		
+			'type' => 'int',
 		);
 	}
 
@@ -61,6 +63,15 @@ class ReviewRating extends ReviewsDBObject {
 		);
 	}
 	
+	/**
+	 * Gets a list of the types of ratings that should show up for the context.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param ContextSource $context
+	 * 
+	 * @return array
+	 */
 	public static function getTypesForContext( ContextSource $context ) {
 		$ratingsPerCat = ReviewsSettings::get( 'categoryRatings' );
 		$ratings = array();

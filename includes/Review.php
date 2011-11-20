@@ -58,8 +58,14 @@ class Review extends ReviewsDBObject {
 	protected static function getFieldTypes() {
 		return array(
 			'id' => 'id',
-			'time' => 'str', // TS_MW
-
+			'page_id' => 'int',
+			'user_id' => 'int',
+		
+			'text' => 'str',
+			'post_time' => 'str', // TS_MW
+			'edit_time' => 'str', // TS_MW
+			'state' => 'int',
+			'rating' => 'int',
 		);
 	}
 
@@ -75,8 +81,24 @@ class Review extends ReviewsDBObject {
 		);
 	}
 	
+	/**
+	 * Remove the review and all it's linked data, such as ratings,
+	 * from the database.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return boolean Success indicator
+	 */
 	public function removeAllFromDB() {
-	
+		$id = $this->getId();
+		
+		$success = $this->removeFromDB();
+		
+		if ( $success ) {
+			$success = ReviewRating::delete( array( 'review_id' => $id ) ) && $success;
+		}
+		
+		return $success;
 	}
 
 }
