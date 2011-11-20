@@ -554,9 +554,44 @@ $messages['arz'] = array(
 
 /** Asturian (Asturianu)
  * @author Esbardu
+ * @author Xuacu
  */
 $messages['ast'] = array(
+	'openid-desc' => "Permite a los usuarios l'accesu a la wiki con una [http://openid.net/ OpenID]. Si esto ta activao na wiki, tamién puen utilizar la URL de la so cuenta d'usuariu d'esta wiki como OpenID p'aniciar sesión n'otros sitios web qu'utilicen OpenID",
+	'openidlogin' => 'Aniciar sesión / crear cuenta con OpenID',
+	'openidserver' => 'Sirvidor OpenID',
+	'openidxrds' => 'Ficheru Yadis',
+	'openidconvert' => 'Convertidor OpenID',
+	'openiderror' => 'Error de verificación',
+	'openiderrortext' => 'Hebo un error mentanto se comprobaba la URL de la OpenID.',
+	'openidconfigerror' => "Error de configuración d'OpenID",
+	'openidconfigerrortext' => "La configuración del almacenamientu OpenID d'esta wiki ye inválida.
+Consulta con un [[Special:ListUsers/sysop|alministrador]].",
+	'openidpermission' => 'Error de permisos OpenID',
+	'openidpermissiontext' => "La OpenID qu'indicasti nun tien permisu d'accesu nesti sirvidor.",
+	'openidcancel' => "S'encaboxó la comprobación",
+	'openidcanceltext' => "S'encaboxó la comprobación de la URL d'OpenID",
+	'openidfailure' => 'Falló la comprobación',
+	'openidfailuretext' => "Falló la comprobación de la URL d'OpenID. Mensaxe d'error: «$1»",
+	'openidsuccess' => 'Comprobación correuta',
+	'openidoptional' => 'Opcional',
+	'openidrequired' => 'Requeríu',
+	'openidnickname' => 'Alcuñu',
+	'openidfullname' => 'Nome completu',
+	'openidemail' => 'Direición de corréu electrónicu',
 	'openidlanguage' => 'Llingua',
+	'openidtimezone' => 'Estaya horaria',
+	'openidchooselegend' => "Eleición del nome d'usuariu y cuenta",
+	'openidchooseinstructions' => "Tolos usuarios necesiten un alcuñu;
+pues escoyer unu ente les opciones d'abaxo.",
+	'openidchoosenick' => 'El to alcuñu ($1)',
+	'openidchoosefull' => 'El to nome completu ($1)',
+	'openidchooseurl' => 'Un nome sacáu de la to OpenID ($1)',
+	'openidchooseauto' => 'Un nome xeneráu automáticamente ($1)',
+	'openidchoosemanual' => 'Un nome escoyíu por ti:',
+	'openidchooseexisting' => 'Una cuenta esistente nesta wiki',
+	'openidchooseusername' => "Nome d'usuariu:",
+	'openidchoosepassword' => 'Contraseña:',
 );
 
 /** Azerbaijani (Azərbaycanca)
