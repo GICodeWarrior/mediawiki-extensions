@@ -1315,13 +1315,14 @@ $messages['gl'] = array(
 	'qp_func_invalid_proposal_id' => 'proposal id=$3 (non un número) non válido para a enquisa $1, pregunta $2.',
 	'qp_error_no_such_poll' => 'Non existe tal enquisa ($1).
 Asegúrese de que a enquisa está declarada e gardada, non esqueza usar o carácter delimitador de enderezo #.',
-	'qp_error_in_question_header' => 'Cabeceira de pregunta inválida: $1.',
+	'qp_error_in_question_header' => 'Cabeceira de pregunta non válida: $1.',
 	'qp_error_id_in_stats_mode' => 'Non se pode declarar un ID da enquisa no modo de estatística.',
 	'qp_error_dependance_in_stats_mode' => 'Non se pode declarar a cadea de dependencia da enquisa no modo de estatística.',
 	'qp_error_no_stats' => 'Non hai datos estatísticos dispoñibles porque aínda ninguén votou nesta enquisa (address=$1).',
 	'qp_error_address_in_decl_mode' => 'Non se pode obter un enderezo da enquisa no modo de declaración.',
 	'qp_error_question_not_implemented' => 'As preguntas deste tipo non están implementadas: $1.',
 	'qp_error_invalid_question_type' => 'Tipo de pregunta non válido: $1.',
+	'qp_error_invalid_question_name' => 'Nome de pregunta non válido: $1.',
 	'qp_error_type_in_stats_mode' => 'O tipo de pregunta non se pode definir no modo de vista estatística: $1.',
 	'qp_error_no_poll_id' => 'A etiqueta da enquisa non ten ningún atributo id definido.',
 	'qp_error_invalid_poll_id' => 'O id da enquisa non é válido (id=$1).
@@ -2167,6 +2168,7 @@ $messages['ms'] = array(
  * @author McDutchie
  * @author Purodha
  * @author SPQRobin
+ * @author Saruman
  * @author Siebrand
  */
 $messages['nl'] = array(
@@ -2224,6 +2226,7 @@ Zorg dat de peiling is ingesteld en opgeslagen, en dat het adresscheidingsteken 
 	'qp_error_address_in_decl_mode' => 'Het is niet mogelijk een adres van de peiling op te vragen in de declaratiemodus',
 	'qp_error_question_not_implemented' => 'Vragen van dit type zijn niet beschikbaar: $1',
 	'qp_error_invalid_question_type' => 'Ongeldig vraagtype: $1',
+	'qp_error_invalid_question_name' => 'Ongeldige vraagnaam: $1.',
 	'qp_error_type_in_stats_mode' => 'Het vraagtype kan niet gedefinieerd wordne in de statistische weergavemodus: $1',
 	'qp_error_no_poll_id' => 'De eigenschap "id" is niet gedefinieerd voor de peiling.',
 	'qp_error_invalid_poll_id' => 'Ongeldig peiling-ID ($1)
@@ -2245,6 +2248,7 @@ Sla een peiling op door deze op te slaan zonder dat enig voorstel is beantwoord.
 	'qp_error_too_long_category_option_value' => 'De categorie-optiewaarde is te lang om opgeslagen te kunnen worden in de database.',
 	'qp_error_too_long_category_options_values' => 'De categorie-optiewaarden zijn te lang om opgeslagen te kunnen worden in de database.',
 	'qp_error_too_long_proposal_text' => 'Het tekstvoorstel is te lang om opgeslagen te kunnen worden in de database.',
+	'qp_error_too_long_proposal_name' => 'De voorstelnaam is te lang om te worden opgeslagen in de database.',
 	'qp_error_too_few_categories' => 'Er moeten tenminste twee categorieën gedefinieerd worden.',
 	'qp_error_too_few_spans' => 'Voor iedere categorieklasse dienen tenminste twee mogelijk antwoorden gedefinieerd te zijn',
 	'qp_error_no_answer' => 'Onbeantwoord voorstel',
