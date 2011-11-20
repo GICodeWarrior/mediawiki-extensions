@@ -1133,11 +1133,12 @@ $messages['mn'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Kaajawa
  * @author Kaustubh
  */
 $messages['mr'] = array(
 	'editmessages-desc' => 'Messages*.php संचिकेतील संदेश संपादण्यासाठी [[Special:EditMessages|आंतरजालावर आधारीत संपादन सुविधा]]',
-	'editmessages' => 'संदेश संपादा',
+	'editmessages' => 'संदेश संपादित करा',
 	'editmsg-target' => 'लक्ष्य संदेश:',
 	'editmsg-search' => 'शोधा',
 	'editmsg-show-list' => '"$1" या नावाने असणारे संदेश दाखवित आहे',
