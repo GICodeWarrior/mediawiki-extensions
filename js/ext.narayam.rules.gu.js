@@ -160,7 +160,7 @@ var rules = [
 ['(\u200C)*_', '', '\u200c']
 ];
 
-/*
+
 jQuery.narayam.addScheme( 'gu', {
 	'namemsg': 'narayam-gu',
 	'extended_keyboard': false,
@@ -168,4 +168,4 @@ jQuery.narayam.addScheme( 'gu', {
 	'keyBufferLength': 2,
 	'rules': rules
 } );
-*/
+
