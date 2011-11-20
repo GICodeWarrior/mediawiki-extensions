@@ -31,6 +31,13 @@ $messages['de'] = array(
 	'interactiveblockmessage-desc' => 'Ergänzt das „magische Wort“ <nowiki>{{USERBLOCKED}}</nowiki>, das anzeigt, ob ein Benutzer gesperrt ist oder nicht',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'interactiveblockmessage-desc' => 'Crea a nova palabra máxica <nowiki>{{USERBLOCKED}}</nowiki> que, no espazo de nomes de usuario, indica se o usuario está bloqueado ou non',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -45,6 +52,13 @@ $messages['ia'] = array(
 	'interactiveblockmessage-desc' => 'Crea un nove parola magic <nowiki>{{USERBLOCKED}}</nowiki> le qual, si in spatio de usator, indica si le usator es blocate o non',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'interactiveblockmessage-desc' => 'Setzt dat magescht Wuert <nowiki>{{USERBLOCKED}}</nowiki> derbäi, dat weist wann et am Benotzerraum steet weist ob e Benotzer gespaart ass oder net',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -57,5 +71,12 @@ $messages['mk'] = array(
  */
 $messages['ms'] = array(
 	'interactiveblockmessage-desc' => 'Mewujudkan kata sakti baru <nowiki>{{USERBLOCKED}}</nowiki> untuk menunjukkan sama ada seseorang pengguna disekat atau tidak di sesebuah ruang pengguna',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'interactiveblockmessage-desc' => 'Voegt het magische woord <nowiki>{{USERBLOCKED}}</nowiki> toe dat binnen de gebruikersruimte aangeeft of de gebruiker geblokkeerd is of niet',
 );
 
