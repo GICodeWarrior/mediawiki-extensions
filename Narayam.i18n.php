@@ -55,6 +55,7 @@ $messages['en'] = array(
 	'narayam-bn-inscript' => 'Bengali InScript',
 	'narayam-bn-nkb' => 'Bengali NKB',
 	'narayam-ur' => 'Urdu standard',
+	'narayam-de' => 'German',
 	'narayam-gu' => 'Gujarati transliteration',
 );
 
@@ -461,6 +462,7 @@ $messages['de'] = array(
 	'narayam-bn-avro' => 'Bengalisch (Avro)',
 	'narayam-bn-inscript' => 'Bengalisch (InScript)',
 	'narayam-bn-nkb' => 'Bengalisch (NKB)',
+	'narayam-de' => 'Deutsch',
 );
 
 /** Greek (Ελληνικά)

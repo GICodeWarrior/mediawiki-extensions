@@ -61,6 +61,9 @@ $wgNarayamSchemes = array(
 		'bn-inscript' => 'ext.narayam.rules.bn-inscript',
 		'bn-nkb' => 'ext.narayam.rules.bn-nkb',
 	),
+	'de' => array(
+		'de' => 'ext.narayam.rules.de',
+	),
 	'brx' => array(
 		'brx-inscript' => 'ext.narayam.rules.brx-inscript',
 	),
@@ -163,6 +166,7 @@ $wgResourceModules['ext.narayam.core'] = $narayamTpl + array(
 		'narayam-as-avro',
 		'narayam-as-bornona',
 		'narayam-as-inscript',
+		'narayam-de',
 		'narayam-brx-inscript',
 		'narayam-eo',
 		'narayam-hi',
@@ -228,6 +232,10 @@ $wgResourceModules['ext.narayam.rules.bn-inscript'] = $narayamTpl + array(
 );
 $wgResourceModules['ext.narayam.rules.bn-nkb'] = $narayamTpl + array(
 	'scripts' => 'js/ext.narayam.rules.bn-nkb.js',
+	'dependencies' => 'ext.narayam.core',
+);
+$wgResourceModules['ext.narayam.rules.de'] = $narayamTpl + array(
+	'scripts' => 'js/ext.narayam.rules.de.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.brx-inscript'] = $narayamTpl + array(
