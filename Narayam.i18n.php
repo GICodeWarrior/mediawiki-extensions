@@ -53,6 +53,7 @@ $messages['en'] = array(
 	'narayam-bn-inscript' => 'Bengali InScript',
 	'narayam-bn-nkb' => 'Bengali NKB',
 	'narayam-ur' => 'Urdu standard',
+	'narayam-gu' => 'Gujarai transliteration',
 );
 
 /** Message documentation (Message documentation)
