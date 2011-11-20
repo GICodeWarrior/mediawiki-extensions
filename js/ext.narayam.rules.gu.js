@@ -1,5 +1,5 @@
 /**
- * Trasliteration regular expression rules table for Sanskrit
+ * Trasliteration regular expression rules table for Gujarathi
  * @author Jaldeep R Vasavada ([[user:JaldeepVasavada]])
  * @date 2011-11-19
  * License: GPLv3, CC-BY-SA 3.0
