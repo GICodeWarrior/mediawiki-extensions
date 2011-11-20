@@ -115,7 +115,11 @@
 				ttf: "Gujr/SamyakGujarati.ttf",
 				woff: "Gujr/SamyakGujarati.woff"
 			},
-			
+			"Lohit Gujarati": {
+				eot: "Gujr/Lohit-Gujarati.eot",
+				ttf: "Gujr/Lohit-Gujarati.ttf",
+				woff: "Gujr/Lohit-Gujarati.woff"
+			},
 			"Lohit Hindi": {
 				eot: "Deva/LohitHindi.eot",
 				ttf: "Deva/LohitHindi.ttf",
@@ -296,7 +300,7 @@
 			bn:  [ "Lohit Bengali" ],
 			as:  [ "Lohit Bengali" ],
 			bpy: [ "Lohit Bengali" ],
-			gu:  [ "Samyak Gujarati" ],
+			gu:  [ "Lohit Gujarati", "Samyak Gujarati" ],
 			hi:  [ "Samyak Devanagari", "Lohit Hindi" ],
 			mr:  [ "Samyak Devanagari", "Lohit Hindi" ],
 			ks:  [ "Samyak Devanagari", "Lohit Hindi" ],
