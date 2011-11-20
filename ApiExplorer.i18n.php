@@ -34,6 +34,16 @@ $messages['ar'] = array(
 	'apiexplorer-loading' => 'جاري تحميل المهام.',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'apiexplorer' => 'Esplorador de la API',
+	'apiexplorer-desc' => 'Páxina pa esplorar de mou interactivu la documentación de la API de MediaWiki',
+	'apiexplorer-intro' => "Esta páxina amuesa la documentación pa la API actual de la wiki. Calca nuna de les funciones d'abaxo pa ver más información sobro los parámetros que se puen usar co​n cada llamada. Echa-y tamién una güeyada [http://www.mediawiki.org/wiki/API:Main_page a la documentación xeneral de la API de MediaWiki].",
+	'apiexplorer-loading' => 'Cargando les funciones...',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
