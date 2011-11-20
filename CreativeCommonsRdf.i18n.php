@@ -108,6 +108,13 @@ $messages['ja'] = array(
 	'creativecommonsrdf-desc' => 'クリエイティブ・コモンズ RDF -メタデータ',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'creativecommonsrdf-desc' => '크리에이티브 커먼즈 RDF-메타데이터',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
