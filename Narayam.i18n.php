@@ -59,6 +59,7 @@ $messages['en'] = array(
 	'narayam-ur' => 'Urdu standard',
 	'narayam-de' => 'German',
 	'narayam-gu' => 'Gujarati transliteration',
+	'narayam-gu-inscript' => 'Gujarati InScript',
 );
 
 /** Message documentation (Message documentation)
