@@ -2557,7 +2557,7 @@ Download <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_down
 	'ogg-download' => 'Bestand downloaden',
 	'ogg-desc-link' => 'Over dit bestand',
 	'ogg-oggThumb-version' => 'OggHandler vereist oggThumb versie $1 of hoger.',
-	'ogg-oggThumb-failed' => 'oggThumb kon geen miniatuur aanmaken.',
+	'ogg-oggThumb-failed' => 'oggThumb kon geen miniatuurafbeelding aanmaken.',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
