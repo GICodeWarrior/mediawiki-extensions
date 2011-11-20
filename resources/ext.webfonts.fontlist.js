@@ -120,10 +120,10 @@
 				ttf: "Gujr/Lohit-Gujarati.ttf",
 				woff: "Gujr/Lohit-Gujarati.woff"
 			},
-			"Lohit Hindi": {
-				eot: "Deva/LohitHindi.eot",
-				ttf: "Deva/LohitHindi.ttf",
-				woff: "Deva/LohitHindi.woff"
+			"Lohit Devanagari": {
+				eot: "Deva/Lohit-Devanagari.eot",
+				ttf: "Deva/Lohit-Devanagari.ttf",
+				woff: "Deva/Lohit-Devanagari.woff"
 			},
 
 			"Samyak Devanagari": {
@@ -301,10 +301,10 @@
 			as:  [ "Lohit Bengali" ],
 			bpy: [ "Lohit Bengali" ],
 			gu:  [ "Lohit Gujarati", "Samyak Gujarati" ],
-			hi:  [ "Lohit Hindi", "Samyak Devanagari" ],
-			mr:  [ "Lohit Hindi", "Samyak Devanagari" ],
-			ks:  [ "Samyak Devanagari", "Lohit Hindi" ],
-			sa:  [ "Lohit Hindi", "Samyak Devanagari" ],
+			hi:  [ "Lohit Devanagari", "Samyak Devanagari" ],
+			mr:  [ "Lohit Devanagari", "Samyak Devanagari" ],
+			ks:  [ "Samyak Devanagari", "Lohit Devanagari" ],
+			sa:  [ "Lohit Devanagari", "Samyak Devanagari" ],
 			he:  [ "Miriam CLM", "Taamey Frank CLM" ],
 			hbo: [ "Taamey Frank CLM" ],
 			kn:  [ "Kedage", "Lohit Kannada" ],
