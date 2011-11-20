@@ -641,7 +641,26 @@ Pues $1 y volver a tentalo',
 	'mwe-cc_sa_title' => 'Compartir igual',
 	'mwe-cc_pd_title' => 'Dominiu públicu',
 	'mwe-unknown_license' => 'Llicencia desconocida',
+	'mwe-no-import-by-url' => 'Esti usuariu o wiki <b>nun pue</b> importar activos dende URLs remotes.
+<p>¿Necesites acceder al sistema?</p>
+<p>¿Tienes configuráu el permisu "upload_by_url"?
+¿Tien el wiki activao $1?</p>',
 	'mwe-results_from' => 'Resultaos de $1',
+	'mwe-missing_desc_see_source' => 'A esti oxetu falta-y la descripción.
+Por favor, comprueba la [fonte $1] y ayuda a describilu.',
+	'mwe-am-config_error' => "Error de configuración del asistente p'amestar multimedia: $1",
+	'mwe-your-recent-uploads' => 'Les tos xubíes',
+	'mwe-your-recent-uploads-to' => 'Les tos xubíes más nueves a $1',
+	'mwe-no_recent_uploads' => 'Nun hai xubíes nueves',
+	'mwe-ftype-svg' => 'Ficheru vectorial SVG',
+	'mwe-ftype-jpg' => "Ficheru d'imaxe JPEG",
+	'mwe-ftype-png' => "Ficheru d'imaxe PNG",
+	'mwe-ftype-oga' => 'Ficheru de soníu Ogg',
+	'mwe-ftype-ogg' => 'Ficheru de videu Ogg',
+	'mwe-ftype-unk' => 'Formatu de ficheru desconocíu',
+	'mwe-am-commons' => 'Wikimedia Commons, un archivu de conteníu multimedia educativu con llicencia llibre (imaxes, y clips de soníu y videu)',
+	'mwe-am-kaltura-title' => 'Guetar en Kaltura (toles fontes)',
+	'mwe-am-kaltura' => 'Gueta agregada en Kaltura pa multimedia de llicencia llibre al traviés de múltiples motores de gueta',
 	'mwe-am-this_wiki-title' => 'Esta wiki',
 	'mwe-am-this_wiki-desc' => 'La wiki llocal',
 	'mwe-am-archive_org-desc' => "The Internet Archive, una biblioteca dixital d'artefautos culturales",
@@ -5107,6 +5126,7 @@ $messages['ne'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author Saruman
  * @author Siebrand
  */
 $messages['nl'] = array(
@@ -5120,7 +5140,7 @@ $messages['nl'] = array(
 	'mwe-return-to-form' => 'Terug naar het formulier',
 	'mwe-file-exists-duplicate' => 'Dit bestand is hetzelfde als het volgende bestand:',
 	'mwe-fileexists' => 'Er bestaat al een bestand met deze naam. Controleer <b><tt>$1</tt></b> als u niet zeker weet of u het huidige bestand wilt overschrijven.',
-	'mwe-fileexists-thumb' => 'Bestaande afbeelding',
+	'mwe-fileexists-thumb' => 'Bestaand bestand',
 	'mwe-ignorewarning' => 'Deze waarschuwing negeren en het bestand toch opslaan',
 	'mwe-file-thumbnail-no' => 'De bestandsnaam begint met <b><tt>$1</tt></b>',
 	'mwe-go-to-resource' => 'Naar de bronpagina teruggaan',
@@ -5133,7 +5153,6 @@ $messages['nl'] = array(
 	'mwe-imported_from' => '$1 is geïmporteerd van [$2 $3]. Meer informatie is te vinden op de [$4 originele beschrijvingspagina].',
 	'mwe-import-description' => '$1, geïmporteerd van $2',
 	'mwe-select_file' => 'Bestand selecteren',
-	'mwe-select_ownwork' => 'Ik upload mijn eigen werk onder de volgende licentie:',
 	'mwe-license_cc-by-sa' => 'Creative Commons Gelijk delen (3.0)',
 	'mwe-upload' => 'Bestand uploaden',
 	'mwe-destfilename' => 'Nieuwe naam:',
@@ -5141,16 +5160,6 @@ $messages['nl'] = array(
 	'mwe-date-of-work' => 'Datum voor het werk',
 	'mwe-error_not_loggedin' => 'U bent niet aangemeld of hebt geen uploadrechten.',
 	'mwe-error-not-loggedin-file' => 'U bent niet aangemeld of er is een fout opgetreden in de software. U kunt $1 en het opnieuw proberen',
-	'mwe-link-login' => 'aanmelden',
-	'mwe-watch-this-file' => 'Dit bestand volgen',
-	'mwe-ignore-any-warnings' => 'Waarschuwingen negeren',
-	'mwe-i-would-like-to' => 'Ik wil graag',
-	'mwe-upload-own-file' => 'Upload mijn eigen werk naar $1',
-	'mwe-upload-not-my-file' => 'Media die niet mijn eigen werk zijn uploaden naar $1',
-	'mwe-upload-once-done' => 'Alstublieft $1. Als uw upload is afgerond, $2',
-	'mwe-upload-in-new-win-link' => 'uploaden in het nieuwe venster of tabblad',
-	'mwe-upload-refresh' => 'ververs uw uploadlijst',
-	'mwe-ie-inline-upload' => 'Inline uploaden is uitgeschakeld voor Internet Explorer. U kunt $1 en daarna $2',
 	'mwe-upload-in-progress' => 'De upload wordt uitgevoerd. Sluit dit venster niet',
 	'mwe-uploaded-status' => 'De upload is afgerond',
 	'mwe-transcoded-status' => 'Geconverteerd',
