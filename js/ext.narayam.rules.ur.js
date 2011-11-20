@@ -93,5 +93,5 @@ jQuery.narayam.addScheme( 'ur', {
 	'extended_keyboard': false, 
 	'lookbackLength': 0,
 	'keyBufferLength': 0,
-	'rules': rules,
+	'rules': rules
 } );
