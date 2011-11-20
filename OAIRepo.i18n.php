@@ -359,10 +359,12 @@ $messages['mr'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Aviator
  */
 $messages['ms'] = array(
 	'oai-desc' => 'Membekalkan antara muka gudang [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
+	'oairepository' => 'Kepustakaan OAI',
 );
 
 /** Low German (Plattdüütsch)
