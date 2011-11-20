@@ -18,6 +18,13 @@ $messages['en'] = array(
 	'suop-desc' => 'Updates semantic attributes of a wiki page when purging the page',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'suop-desc' => "Anueva los atributos semánticos d'una páxina wiki al purgar la páxina",
+);
+
 /** German (Deutsch)
  * @author Daniel Werner
  * @author Kghbln
