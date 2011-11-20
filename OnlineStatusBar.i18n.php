@@ -171,8 +171,13 @@ $messages['he'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
+	'onlinestatusbar-desc' => 'Statusowa lajsta, kotraž na zakładźe nastajenjow pokazuje, hač wužiwar je na swojej wužiwarskej stronje online',
 	'onlinestatusbar-line' => '$1 je nětko $3 $2',
+	'onlinestatusbar-used' => 'Chceće druhich widźeć dać, zo wy sće online?',
+	'onlinestatusbar-status' => 'Što je standardny status, kotryž chceće wužiwać:',
+	'onlinestatusbar-purge' => 'Pufrowak wužiwarskeje strony kóždy raz wuprózdnić, hdyž so přizjewjeće abo wotzjewjeće',
 	'prefs-onlinestatus' => 'Onlinestatus',
+	'onlinestatusbar-hide' => 'Chceće statusowu lajstu schować, zo byšće jenož magiske słowo wužiwał? (Za pokročenych wužiwarjow)',
 	'onlinestatusbar-status-online' => 'Online',
 	'onlinestatusbar-status-busy' => 'Ma dźěło',
 	'onlinestatusbar-status-away' => 'Preč',
