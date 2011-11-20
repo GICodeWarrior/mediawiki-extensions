@@ -16,7 +16,7 @@
 
 		this.setup = function() {
 			var data = $this.attr( 'data-review' );
-			this.review = new reviews.Review( data === undefined ? false : JSON.parse( data ) );
+			this.review = new reviews.Review( data === undefined ? false : $.parseJSON( data ) );
 			
 		};
 		

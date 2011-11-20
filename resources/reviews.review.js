@@ -9,6 +9,24 @@
 (function( $, mw, reviews ) {
 	
 	reviews.Review = function( data ) {
+		var _this = this;
+		
+		this.save = function() {
+			requestArgs = {
+				'action': 'submitreview',
+				'format': 'json',
+				'token': $( this ).attr( 'survey-data-token' ),
+			};
+			
+			$.post(
+				wgScriptPath + '/api.php',
+				requestArgs,
+				function( data ) {
+					callback();
+					// TODO
+				}	
+			);
+		};
 		
 	};
 	

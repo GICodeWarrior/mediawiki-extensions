@@ -109,12 +109,6 @@ $moduleTemplate = array(
 	'remoteExtPath' => 'Reviews/resources'
 );
 
-$wgResourceModules['reviews.JSON'] = $moduleTemplate + array(
-	'scripts' => array(
-		'JSON.js',
-	),
-);
-
 $wgResourceModules['ext.reviews'] = $moduleTemplate + array(
 	'scripts' => array(
 		'reviews.js',
@@ -133,7 +127,7 @@ $wgResourceModules['jquery.reviewControl'] = $moduleTemplate + array(
 	'messages' => array(
 	),
 	'dependencies' => array(
-		'reviews.JSON', 'ext.reviews'
+		'jquery.json', 'ext.reviews'
 	),
 );
 
