@@ -629,11 +629,12 @@ $messages['sv'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Veeven
  * @author వైజాసత్య
  */
 $messages['te'] = array(
 	'commentpages-desc' => 'ప్రధాన నేంస్పేసులోని పేజీలకు చర్చా పేజీలు',
-	'nstab-comments' => 'వ్యాఖ్యానము',
+	'nstab-comments' => 'వ్యాఖ్యానం',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
