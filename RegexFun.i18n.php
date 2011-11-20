@@ -56,6 +56,15 @@ $messages['gl'] = array(
 	'regexfun-limit-exceed' => 'Atinxiuse o número máximo {{PLURAL:$1|dunha manipulación de expresión regular "Regex Fun"|de $1 manipulacións de expresións regulares "Regex Fun"}}.',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'regexfun-desc' => 'Přidawa parserowe funkcije, kotrež wužiwanje regularnych wurazow na wikistronach dowoleja',
+	'regexfun-invalid' => 'Regularny wuraz "$1" je njepłaćiwy.',
+	'regexfun-limit-exceed' => 'Maksimalna licba {{PLURAL:$1|$1 přez "Regex Fun" wobdźěłaneho regularneho wuraza|$1 přez "Regex Fun" wobdźěłaneju regularneju wurazow|$1 přez "Regex Fun" wobdźěłanych regularnych wurazow|$1 přez "Regex Fun" wobdźěłanych regularnych wurazow}} je docpěta.',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
