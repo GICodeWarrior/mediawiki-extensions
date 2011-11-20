@@ -53,6 +53,14 @@ $messages['arz'] = array(
 	'templateinfo-header' => 'تعريف XML للقالب ده هو:',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'templateinfo-desc' => 'Da encontu pa que les plantíes definan la so estructura de datos per aciu de marques XML',
+	'templateinfo-header' => 'La definición XML pa esta plantía ye:',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
