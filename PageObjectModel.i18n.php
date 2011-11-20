@@ -19,6 +19,13 @@ $messages['qqq'] = array(
 	'pageobjectmodel-desc' => '{{desc}}',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'pageobjectmodel-desc' => "Amiesta un conxuntu de clases pa l'astraición de la sintaxis MediaWiki que permita la estraición y manexu fácil de les páxines dende otros programes",
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Wizardist
  */
