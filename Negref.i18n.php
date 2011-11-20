@@ -31,6 +31,13 @@ $messages['ar'] = array(
 	'negref-desc' => 'يوفر وسما للتفاوض على موقع أي وسوم <nowiki><ref/></nowiki> داخل النص المدخل لإصلاح بعض حالات استخدام القوالب',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'negref-desc' => "Ufre una etiqueta pa negociar la llocalización de cualesquier etiqueta <nowiki><ref/></nowiki> dientro d'un testu d'entrada pa iguar dellos casos nel usu de plantíes",
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
