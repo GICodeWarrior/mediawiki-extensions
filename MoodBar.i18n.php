@@ -1698,7 +1698,8 @@ Fir méi Informatiounen, gitt w.e.g. op d'$1.",
 	'moodbar-user-hidden' => '(Benotzer verstoppt)',
 	'moodbar-feedback-show' => 'verstoppte Feedback weisen',
 	'moodbar-feedback-hide' => 'Feedback verstoppen',
-	'moodbar-hidden-footer' => 'Verstoppte Feedback $1',
+	'moodbar-hidden-footer' => 'Vum $1 den $2 ëm $3 verstoppte Feedback, Grond: $4 $5',
+	'moodbar-action-reason' => 'Grond:',
 	'moodbar-type-happy' => 'Glécklech',
 	'moodbar-type-sad' => 'Traureg',
 	'moodbar-type-confused' => 'Duercherneen',
@@ -1894,6 +1895,8 @@ $messages['ml'] = array(
 	'moodbar-feedback-older' => 'പഴയവ',
 	'moodbar-feedback-ajaxerror' => 'കൂടുതൽ ഫലങ്ങൾ ശേഖരിക്കുന്നതിനിടെ പിഴവുണ്ടയി.',
 	'moodbar-user-hidden' => '(ഉപയോക്താവ് മറയ്ക്കപ്പെട്ടിരിക്കുന്നു)',
+	'moodbar-action-reason' => 'കാരണം:',
+	'moodbar-action-reason-required' => 'ദയവായി ഒരു കാരണം നൽകുക.',
 	'moodbar-type-happy' => 'സന്തോഷം',
 	'moodbar-type-sad' => 'ദുഃഖം',
 	'moodbar-type-confused' => 'ആശയക്കുഴപ്പം',
@@ -2000,6 +2003,7 @@ Untuk maklumat lanjut, sila layari $1.',
 
 /** Dutch (Nederlands)
  * @author SPQRobin
+ * @author Saruman
  * @author Siebrand
  */
 $messages['nl'] = array(
@@ -2074,6 +2078,7 @@ Ga naar de $1 voor mee informatie.',
 	'moodbar-feedback-show' => 'verborgen terugkoppeling weergeven',
 	'moodbar-feedback-hide' => 'terugkoppeling verbergen',
 	'moodbar-hidden-footer' => 'Verborgen terugkoppeling door $1 op $2. Reden: $3 $4',
+	'moodbar-hidden-footer-without-log' => 'Verborgen terugkoppeling $1',
 	'moodbar-feedback-restore' => 'verborgen terugkoppeling terugplaatsen',
 	'moodbar-action-item' => 'Terugkoppelingsitem:',
 	'moodbar-action-reason' => 'Reden:',
