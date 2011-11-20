@@ -96,6 +96,7 @@ $wgNarayamSchemes = array(
 	),
 	'pa' => array(
 		'pa-inscript' => 'ext.narayam.rules.pa-inscript',
+		'pa-phonetic' => 'ext.narayam.rules.pa-phonetic',
 	),
 	'sa' => array(
 		'sa' => 'ext.narayam.rules.sa',
@@ -182,6 +183,7 @@ $wgResourceModules['ext.narayam.core'] = $narayamTpl + array(
 		'narayam-or',
 		'narayam-or-inscript',
 		'narayam-pa-inscript',
+		'narayam-pa-phonetic',
 		'narayam-sa',
 		'narayam-sa-inscript',
 		'narayam-si-singlish',
@@ -296,6 +298,10 @@ $wgResourceModules['ext.narayam.rules.or-inscript'] = $narayamTpl + array(
 );
 $wgResourceModules['ext.narayam.rules.pa-inscript'] = $narayamTpl + array(
 	'scripts' => 'js/ext.narayam.rules.pa-inscript.js',
+	'dependencies' => 'ext.narayam.core',
+);
+$wgResourceModules['ext.narayam.rules.pa-phonetic'] = $narayamTpl + array(
+	'scripts' => 'js/ext.narayam.rules.pa-phonetic.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.sa'] = $narayamTpl + array(
