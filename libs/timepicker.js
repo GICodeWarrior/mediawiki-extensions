@@ -16,9 +16,9 @@
  *		format: (String) a format string (unused) (do we even need it?)
  *
  */
-function SFI_TP_init( inputIDshow, params ) { // minTime, maxTime, interval, format
+function SFI_TP_init( inputID, params ) { // minTime, maxTime, interval, format
 
-	var inputID = inputIDshow.replace( "_tp_show", "" );
+	var inputIDshow = inputID + "_tp_show";
 
 	// sanitize inputs
 	var re = /^\d+:\d\d$/;

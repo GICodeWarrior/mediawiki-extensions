@@ -16,11 +16,15 @@
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'This file is a MediaWiki extension, it is not a valid entry point.' );
+	die( 'This file is part of a MediaWiki extension, it is not a valid entry point.' );
 }
 
 if ( !defined( 'SF_VERSION' ) ) {
 	die( '<b>Error:</b> <a href="https://www.mediawiki.org/wiki/Extension:Semantic_Forms_Inputs">Semantic Forms Inputs</a> is a Semantic Forms extension. You need to install <a href="https://www.mediawiki.org/wiki/Extension:Semantic_Forms">Semantic Forms</a> first.' );
+}
+
+if ( version_compare( '2.3', SF_VERSION ) != -1 ) {
+	die( '<b>Error:</b> This version of <a href="https://www.mediawiki.org/wiki/Extension:Semantic_Forms_Inputs">Semantic Forms Inputs</a> is only compatible with Semantic Forms 2.4 or above. You need to upgrade <a href="https://www.mediawiki.org/wiki/Extension:Semantic_Forms">Semantic Forms</a> first.' );
 }
 
 define( 'SFI_VERSION', '0.4.2 alpha' );
@@ -41,11 +45,17 @@ $wgExtensionCredits[defined( 'SEMANTIC_EXTENSION_TYPE' ) ? 'semantic' : 'other']
 $dir = dirname( __FILE__ );
 
 // load user settings
-require_once( $dir . '/SFI_Settings.php' );
+require_once( $dir . '/includes/SFI_Settings.php' );
 
 $wgExtensionMessagesFiles['SemanticFormsInputs'] = $dir . '/SemanticFormsInputs.i18n.php';
-$wgExtensionFunctions[] = 'wfSFISetup';
-$wgAutoloadClasses['SFIInputs'] = $dir . '/SFI_Inputs.php';
+$wgHooks['ParserFirstCallInit'][] = 'wfSFISetup';
+
+$wgAutoloadClasses['SFIUtils'] = $dir . '/includes/SFI_Utils.php';
+$wgAutoloadClasses['SFIDatePicker'] = $dir . '/includes/SFI_DatePicker.php';
+$wgAutoloadClasses['SFITimePicker'] = $dir . '/includes/SFI_TimePicker.php';
+$wgAutoloadClasses['SFIDateTimePicker'] = $dir . '/includes/SFI_DateTimePicker.php';
+$wgAutoloadClasses['SFIMenuSelect'] = $dir . '/includes/SFI_MenuSelect.php';
+$wgAutoloadClasses['SFIRegExp'] = $dir . '/includes/SFI_RegExp.php';
 
 /**
  * Class to encapsulate all settings
@@ -77,16 +87,16 @@ class SFISettings {
 function wfSFISetup() {
 	global $sfgFormPrinter, $wgVersion;
 
-	$sfgFormPrinter->setInputTypeHook( 'regexp', array( 'SFIInputs', 'regexpHTML' ), array() );
-	$sfgFormPrinter->setInputTypeHook( 'datepicker', array( 'SFIInputs', 'jqDatePickerHTML' ), array() );
-	$sfgFormPrinter->setInputTypeHook( 'simpledatepicker', array( 'SFIInputs', 'jqDatePickerHTML' ), array() );
-	$sfgFormPrinter->setInputTypeHook( 'timepicker', array( 'SFIInputs', 'timepickerHTML' ), array() );
-	$sfgFormPrinter->setInputTypeHook( 'datetimepicker', array( 'SFIInputs', 'datetimepickerHTML' ), array() );
-//	$sfgFormPrinter->setInputTypeHook( 'wysiwyg', array( 'SFIInputs', 'wysiwygHTML' ), array() );
-	$sfgFormPrinter->setInputTypeHook( 'menuselect', array( 'SFIInputs', 'menuselectHTML' ), array() );
-
+	$sfgFormPrinter->registerInputType( 'SFIDatePicker' );
+	$sfgFormPrinter->registerInputType( 'SFITimePicker' );
+	$sfgFormPrinter->registerInputType( 'SFIDateTimePicker' );
+	$sfgFormPrinter->registerInputType( 'SFIMenuSelect' );
+	$sfgFormPrinter->registerInputType( 'SFIRegExp' );
+	
 	// This function has been deprecated in 1.16, but needed for earlier versions.
 	if ( version_compare( $wgVersion, '1.16', '<' ) ) {
 		wfLoadExtensionMessages( 'SemanticFormsInputs' );
 	}
+	
+	return true;
 }
