@@ -13,7 +13,7 @@ class ReviewControl {
 		$this->context = &$context;
 		
 		$out = $context->getOutput();
-		$out->addModules( 'foo' );
+		$out->addModules( 'reviews.review.control' );
 		
 		$ratings = ReviewRating::getTypesForContext( $this->context );
 		

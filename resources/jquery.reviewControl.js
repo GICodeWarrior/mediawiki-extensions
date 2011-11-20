@@ -6,13 +6,17 @@
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
  */
 
-(function( $, mw ) {
+(function( $, mw, reviews ) {
 
 	$.fn.reviewControl = function() {
 		var _this = this;
 		var $this = $( this );
+		
+		this.review = null;
 
 		this.setup = function() {
+			var data = $this.attr( 'data-review' );
+			this.review = new reviews.Review( data === undefined ? false : JSON.parse( data ) );
 			
 		};
 		
@@ -21,4 +25,4 @@
 		return this;
 	};
 
-})( window.jQuery, window.mediaWiki );
+})( window.jQuery, window.mediaWiki, window.reviews );

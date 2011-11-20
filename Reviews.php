@@ -109,20 +109,40 @@ $moduleTemplate = array(
 	'remoteExtPath' => 'Reviews/resources'
 );
 
+$wgResourceModules['reviews.JSON'] = $moduleTemplate + array(
+	'scripts' => array(
+		'JSON.js',
+	),
+);
+
+$wgResourceModules['ext.reviews'] = $moduleTemplate + array(
+	'scripts' => array(
+		'reviews.js',
+		'reviews.review.js',
+		'reviews.rating.js',
+	),
+);
+
 $wgResourceModules['jquery.reviewControl'] = $moduleTemplate + array(
 	'scripts' => array(
-		'jquery.reviewControl.js'
+		'jquery.reviewControl.js',
 	),
 	'styles' => array(
-		'jquery.reviewControl.css'
+		'jquery.reviewControl.css',
 	),
 	'messages' => array(
-	)
+	),
+	'dependencies' => array(
+		'reviews.JSON', 'ext.reviews'
+	),
 );
 
 $wgResourceModules['reviews.review.control'] = $moduleTemplate + array(
 	'scripts' => array(
-		'reviews.review.control.js'
+		'reviews.review.control.js',
+	),
+	'dependencies' => array(
+		'jquery.reviewControl',
 	),
 );
 

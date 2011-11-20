@@ -6,10 +6,14 @@
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
  */
 
-(function( $, mw ) { $( document ).ready( function() {
-
-	var _this = this;
-
-	$( '.review-control' ).reviewControl();
-
-} ); })( window.jQuery, window.mediaWiki );
+(function( $, mw, reviews ) {
+	
+	reviews.Rating = function( data ) {
+		console.log( data );
+	};
+	
+	reviews.Rating.prototype = {
+		
+	};
+	
+})( window.jQuery, window.mediaWiki, window.reviews );
