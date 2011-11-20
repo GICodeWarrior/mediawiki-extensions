@@ -35,6 +35,15 @@ $messages['af'] = array(
 	'pdfbook-desc' => "Maak 'n boek van bladsye in 'n kategorie en eksporteer as 'n PDF-boek",
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'pdfbook-action' => 'Esportar a PDF...',
+	'pdfbook-log' => '$1 esportáu como llibru en PDF',
+	'pdfbook-desc' => "Compón un llibru a partir de páxines d'una categoría y lu esporta como llibru PDF",
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Wizardist
