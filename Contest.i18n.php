@@ -1286,6 +1286,9 @@ $messages['gl'] = array(
 	'right-contestadmin' => 'Xestionar concursos',
 	'right-contestant' => 'Participar en concursos',
 	'right-contestjudge' => 'Xulgar as respostas aos concursos',
+	'action-contestadmin' => 'xestionar concursos',
+	'action-contestant' => 'participar en concursos',
+	'action-contestjudge' => 'xulgar as respostas aos concursos',
 	'group-contestadmin' => 'Administradores do concurso',
 	'group-contestadmin-member' => '{{GENDER:$1|administrador|administradora}} do concurso',
 	'grouppage-contestadmin' => '{{ns:project}}:Administradores do concurso',
@@ -1781,6 +1784,45 @@ $messages['hsb'] = array(
 	'contest-contestant-yes' => 'Haj',
 	'contest-contestant-commentcount' => 'Komentary',
 	'contest-contestant-comments' => 'Komentary',
+);
+
+/** Hungarian (Magyar)
+ * @author Dj
+ */
+$messages['hu'] = array(
+	'contest-desc' => 'Lehetővé teszi a szerkesztők számára, hogy részt vegyenek versenyekben. A bírák vitázhatnak és szavazhatnak a beadványokról.',
+	'contest-toplink' => 'Versenyeim',
+	'right-contestadmin' => 'versenyek kezelése',
+	'right-contestant' => 'részvétel a versenyekben',
+	'right-contestjudge' => 'verseny beadványok elbírálása',
+	'action-contestadmin' => 'versenyek kezelése',
+	'action-contestant' => 'részvétel a versenyekben',
+	'action-contestjudge' => 'verseny beadványok elbírálása',
+	'group-contestadmin' => 'Verseny adminisztrátorok',
+	'group-contestadmin-member' => '{{GENDER:$1|verseny adminisztrátor}}',
+	'group-contestant' => 'Versenyző',
+	'group-contestant-member' => '{{GENDER:$1|Versenyző}}',
+	'grouppage-contestant' => '{{ns:project}}:Versenyzők',
+	'group-contestjudge' => 'Versenybírók',
+	'group-contestjudge-member' => '{{GENDER:$1|versenybíró}}',
+	'prefs-contest' => 'Versenyek',
+	'contest-prefs-showtoplink' => 'A szerkesztői menüben hivatkozás megjelenítése a [[Special:MyContests|versenyeimre]].',
+	'contest-status-draft' => 'Vázlat (letiltva)',
+	'contest-status-active' => 'Aktív (engedélyezett)',
+	'contest-status-expired' => 'Lejárt (engedélyezett, végdátum elmúlt)',
+	'contest-status-finished' => 'Befejezett (letiltva)',
+	'special-contest' => 'Verseny megtekintése',
+	'special-contests' => 'Versenyek kezelése',
+	'special-contestsignup' => 'Jelentkezés a versenyre',
+	'special-contestwelcome' => 'Verseny megtekintése',
+	'special-editcontest' => 'Verseny szerkesztése',
+	'special-mycontests' => 'Versenyeim',
+	'specialpages-group-contest' => 'Versenyek',
+	'contest-nav-contests' => 'Verseny lista',
+	'contest-nav-editcontest' => 'Verseny szerkesztése',
+	'contest-nav-contest' => 'Összefoglalás és résztvevők',
+	'contest-nav-contestwelcome' => 'Érkezési oldal',
+	'contest-nav-contestsignup' => 'Bejelentkezési oldal',
 );
 
 /** Interlingua (Interlingua)
@@ -2399,7 +2441,13 @@ $messages['ml'] = array(
 	'contest-contest-reminder-mail' => 'ഓർമ്മപ്പെടുത്തൽ ഇമെയിൽ',
 	'contest-contest-reminder-page' => '[[$1|ഈ താളിൽ നിന്നും]] വരുന്ന ഓർമ്മപ്പെടുത്തൽ ഇമെയിലിന്റെ ഉള്ളടക്കം.',
 	'contest-contest-send-reminder' => 'ഓർമ്മപ്പെടുത്തൽ അയയ്ക്കുക',
+	'contest-contest-go' => 'പോകൂ',
+	'contest-contest-yes' => 'അതെ',
+	'contest-contest-no' => 'അല്ല',
+	'contest-contest-none' => 'ഒന്നുമില്ല',
 	'contest-contest-filter-volunteer' => 'സന്നദ്ധസേവക(ൻ)',
+	'contest-contest-filter-wmf' => 'ഡബ്ല്യു.എം.എഫ്.',
+	'contest-contest-filter-rating_count' => 'വോട്ടുകൾ',
 	'contest-contest-reminder-preview' => 'ഓർമ്മപ്പെടുത്തൽ ഇമെയിൽ എങ്ങനെയുണ്ടെന്ന് കാണുക:',
 	'contest-contest-reminder-title' => 'ഓർമ്മപ്പെടുത്തൽ ഇമെയിൽ',
 	'contest-contest-reminder-send' => 'ഓർമ്മപ്പെടുത്തൽ അയയ്ക്കുക',
@@ -2444,6 +2492,8 @@ $messages['ml'] = array(
 	'contest-mycontests-signup-success' => 'താങ്കൾ വിജയകരമായി "$1" മത്സരത്തിനായി പേരുചേർത്തു.',
 	'contest-submission-submit' => 'സമർപ്പിക്കുക',
 	'contest-submission-unknown' => 'നൽകിയിരിക്കുന്ന പേരിൽ മത്സരമൊന്നുമില്ല.',
+	'contest-submission-submission' => 'താങ്കൾ സമർപ്പിച്ചതിലോട്ടുള്ള കണ്ണി',
+	'contest-submission-invalid-url' => 'അനുവദിച്ചിട്ടുള്ള തരങ്ങളുമായി ഈ യൂ.ആർ.എൽ. ചേരുന്നില്ല.',
 );
 
 /** Malay (Bahasa Melayu)
@@ -2939,14 +2989,14 @@ $messages['pl'] = array(
 	'contest-contest-reminder-mail' => 'Przypomnienie e‐mailem',
 	'contest-contest-send-reminder' => 'Wyślij przypomnienie',
 	'contest-contest-go' => 'Pokaż',
-	'contest-contest-showonly' => 'Filtruj uczestników po:',
+	'contest-contest-showonly' => 'Filtruj uczestników względem',
 	'contest-contest-yes' => 'Tak',
 	'contest-contest-no' => 'Nie',
 	'contest-contest-none' => 'Brak',
 	'contest-contest-filter-challenge' => 'Wyzwanie',
 	'contest-contest-filter-volunteer' => 'Wolontariusz',
 	'contest-contest-filter-comments' => 'Komentarze',
-	'contest-contest-filter-rating_count' => 'Głosów',
+	'contest-contest-filter-rating_count' => 'Głosy',
 	'contest-contest-reminder-preview' => 'Podgląd e‐maila z przypomnieniem',
 	'contest-contest-reminder-title' => 'Przypomnienie e‐mailem',
 	'contest-contest-reminder-send' => 'Wyślij przypomnienie',
@@ -2994,6 +3044,16 @@ $messages['pl'] = array(
 	'contest-submission-finished' => 'Konkurs się zakończył. Dziękujemy, że wziąłeś w nim udział!',
 	'contest-submission-challenge-description' => "'''Aktualne wyzwanie: $1''' -- $2",
 	'contest-submission-domains' => 'Zgłoszenia zostały ograniczone do następujących witryn: $1',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'contest-special-name' => 'Nome',
+	'contest-special-status' => 'State',
+	'contest-special-edit' => 'Cange',
+	'contest-special-delete' => 'Scangille',
 );
 
 /** Russian (Русский)
