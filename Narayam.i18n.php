@@ -66,6 +66,7 @@ $messages['en'] = array(
  * @author McDutchie
  * @author Purodha
  * @author Raymond
+ * @author SPQRobin
  * @author Shijualex
  * @author Waldir
  * @author Yekrats
@@ -92,6 +93,7 @@ This allows for Narayam to add custom input methods for input fields. Esperanto 
 	'narayam-ne-inscript' => '[[w:InScript|InScript]] keyboard layout for the [[w:Nepali language|Nepali language]].',
 	'narayam-or' => 'Transliteration scheme for the Oriya language.',
 	'narayam-or-inscript' => '[[w:InScript|InScript]] keyboard layout for the Oriya language.',
+	'narayam-pa-inscript' => 'A Narayam InScript implementation of the Punjabi language in Gurmukhi script',
 	'narayam-sa' => 'Transliteration scheme for the Sanskrit language.',
 	'narayam-sa-inscript' => '[[w:InScript|InScript]] keyboard layout for the Sanskrit language.',
 	'narayam-si-singlish' => 'Singlish keyboard layout for the Sinhala language.',
@@ -465,6 +467,7 @@ $messages['de'] = array(
 	'narayam-bn-avro' => 'Bengalisch (Avro)',
 	'narayam-bn-inscript' => 'Bengalisch (InScript)',
 	'narayam-bn-nkb' => 'Bengalisch (NKB)',
+	'narayam-ur' => 'Urdu (Standard)',
 	'narayam-de' => 'Deutsch',
 );
 
@@ -702,10 +705,12 @@ $messages['gl'] = array(
 	'narayam-kn-inscript' => 'InScript para kannada',
 	'narayam-ml' => 'Transliteración para malayalam',
 	'narayam-ml-inscript' => 'InScript para malayalam',
+	'narayam-mr' => 'Transliteración para maratí',
 	'narayam-ne' => 'Transliteración para nepalí',
 	'narayam-ne-inscript' => 'InScript para nepalí',
 	'narayam-or' => 'Transliteración para oriya',
 	'narayam-or-inscript' => 'InScript para oriya',
+	'narayam-pa-inscript' => 'InScript para Gurmukhi Punjabi',
 	'narayam-sa' => 'Transliteración para sánscrito',
 	'narayam-sa-inscript' => 'InScript para sánscrito',
 	'narayam-si-singlish' => 'Singlish para cingalés',
@@ -717,6 +722,7 @@ $messages['gl'] = array(
 	'narayam-bn-avro' => 'Avro para bengalí',
 	'narayam-bn-inscript' => 'InScript para bengalí',
 	'narayam-bn-nkb' => 'NKB para bengalí',
+	'narayam-ur' => 'Urdú estándar',
 );
 
 /** Swiss German (Alemannisch)
@@ -862,10 +868,12 @@ $messages['ia'] = array(
 	'narayam-kn-inscript' => 'Kannada (InScript)',
 	'narayam-ml' => 'Translitteration in malayalam',
 	'narayam-ml-inscript' => 'Malayalam (InScript)',
+	'narayam-mr' => 'Translitteration in marathi',
 	'narayam-ne' => 'Translitteration nepalese',
 	'narayam-ne-inscript' => 'InScript nepalese',
 	'narayam-or' => 'Translitteration in oriya',
 	'narayam-or-inscript' => 'Oriya (InScript)',
+	'narayam-pa-inscript' => 'Punjabi - Gurmukhi (InScript)',
 	'narayam-sa' => 'Translitteration in sanscrito',
 	'narayam-sa-inscript' => 'Sanscrito (InScript)',
 	'narayam-si-singlish' => 'Cingalese (Singlish)',
@@ -877,6 +885,7 @@ $messages['ia'] = array(
 	'narayam-bn-avro' => 'Bengalese (Avro)',
 	'narayam-bn-inscript' => 'Bengalese (InScript)',
 	'narayam-bn-nkb' => 'Bengalese (NKB)',
+	'narayam-ur' => 'Urdu (Standard)',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -1102,6 +1111,7 @@ $messages['mk'] = array(
 	'narayam-bn-avro' => 'Бенгалски - Avro',
 	'narayam-bn-inscript' => 'Бенгалски - InScript',
 	'narayam-bn-nkb' => 'Бенгалски - NKB',
+	'narayam-ur' => 'Урду - стандард',
 );
 
 /** Malayalam (മലയാളം)
@@ -1131,10 +1141,12 @@ $messages['ml'] = array(
 	'narayam-kn-inscript' => 'കന്നട ഇൻസ്ക്രിപ്റ്റ്',
 	'narayam-ml' => 'മലയാളം ലിപ്യന്തരണം',
 	'narayam-ml-inscript' => 'മലയാളം ഇൻസ്ക്രിപ്റ്റ്',
+	'narayam-mr' => 'മറാത്തി ലിപ്യന്തരണം',
 	'narayam-ne' => 'നേപ്പാളി ലിപ്യന്തരണം',
 	'narayam-ne-inscript' => 'നേപ്പാളി ഇൻസ്ക്രിപ്റ്റ്',
 	'narayam-or' => 'ഒറിയ ലിപ്യന്തരണം',
 	'narayam-or-inscript' => 'ഒറിയ ഇൻസ്ക്രിപ്റ്റ്',
+	'narayam-pa-inscript' => 'ഗുരുമുഖി പഞ്ചാബി ഇൻസ്ക്രിപ്റ്റ്',
 	'narayam-sa' => 'സംസ്കൃതം ലിപ്യന്തരണം',
 	'narayam-sa-inscript' => 'സംസ്കൃതം ഇൻസ്ക്രിപ്റ്റ്',
 	'narayam-si-singlish' => 'സിംഹള സിൻഗ്ലീഷ്',
@@ -1146,6 +1158,14 @@ $messages['ml'] = array(
 	'narayam-bn-avro' => 'ബംഗാളി അവ്രൊ',
 	'narayam-bn-inscript' => 'ബംഗാളി ഇൻസ്ക്രിപ്റ്റ്',
 	'narayam-bn-nkb' => 'ബംഗാളി നാഷണൽ കീബോർഡ്',
+	'narayam-ur' => 'ഉർദ്ദു സ്റ്റാൻഡേർഡ്',
+);
+
+/** Marathi (मराठी)
+ * @author Pathak.ab
+ */
+$messages['mr'] = array(
+	'narayam-more-imes' => 'इतर भाशा',
 );
 
 /** Malay (Bahasa Melayu)
@@ -1177,6 +1197,7 @@ $messages['ms'] = array(
 	'narayam-ne-inscript' => 'InScript Nepal',
 	'narayam-or' => 'Alih Huruf Oriya',
 	'narayam-or-inscript' => 'InScript Oriya',
+	'narayam-pa-inscript' => 'InScript Punjabi Gurmukhi',
 	'narayam-sa' => 'Alih Huruf Sanskrit',
 	'narayam-sa-inscript' => 'InScript Sanskrit',
 	'narayam-si-singlish' => 'Singlish Sinhala',
@@ -1188,6 +1209,7 @@ $messages['ms'] = array(
 	'narayam-bn-avro' => 'Arvo Benggala',
 	'narayam-bn-inscript' => 'InScript Benggala',
 	'narayam-bn-nkb' => 'NKB Benggala',
+	'narayam-ur' => 'Piawai Urdu',
 );
 
 /** Dutch (Nederlands)
@@ -1216,10 +1238,12 @@ $messages['nl'] = array(
 	'narayam-kn-inscript' => 'Kannada InScript',
 	'narayam-ml' => 'Transliteratie in Malayalam',
 	'narayam-ml-inscript' => 'Malayalam InScript',
+	'narayam-mr' => 'Transliteratie in Marathi',
 	'narayam-ne' => 'Transliteratie in Nepalees',
 	'narayam-ne-inscript' => 'Nepalees InScript',
 	'narayam-or' => 'Transliteratie in Oriya',
 	'narayam-or-inscript' => 'Oriya InScript',
+	'narayam-pa-inscript' => 'Punjabi Gurmukhi (InScript)',
 	'narayam-sa' => 'Transliteratie in Sanskriet',
 	'narayam-sa-inscript' => 'Sanskrit InScript',
 	'narayam-si-singlish' => 'Singalees Singlish',
@@ -1231,6 +1255,7 @@ $messages['nl'] = array(
 	'narayam-bn-avro' => 'Bengaals Avro',
 	'narayam-bn-inscript' => 'Bengaals InScript',
 	'narayam-bn-nkb' => 'Bengaals NKB',
+	'narayam-ur' => 'Standaard Urdu',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -1688,6 +1713,7 @@ $messages['sl'] = array(
 	'narayam-bn-avro' => 'Avro za bengalščino',
 	'narayam-bn-inscript' => 'InScript za bengalščino',
 	'narayam-bn-nkb' => 'Bengalski NKB',
+	'narayam-ur' => 'Standard urdu',
 );
 
 /** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
@@ -1826,6 +1852,13 @@ $messages['uk'] = array(
 	'narayam-bn-nkb' => 'Бенгальська НКБ',
 );
 
+/** Urdu (اردو)
+ * @author Istabani
+ */
+$messages['ur'] = array(
+	'narayam-toggle-ime' => '‏‏‏‏‏‏فعال کریں ($1)',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */
@@ -1850,21 +1883,24 @@ $messages['vi'] = array(
 	'narayam-kn-inscript' => 'InScript Kannada',
 	'narayam-ml' => 'Chuyển tự tiếng Malayalam',
 	'narayam-ml-inscript' => 'InScript Malayalam',
+	'narayam-mr' => 'Chuyển tự tiếng Marathi',
 	'narayam-ne' => 'Chuyển tự tiếng Nepal',
 	'narayam-ne-inscript' => 'InScript Nepal',
 	'narayam-or' => 'Chuyển tự tiếng Oriya',
 	'narayam-or-inscript' => 'InScript Oriya',
+	'narayam-pa-inscript' => 'InScript Punjab chữ Gurmukhi',
 	'narayam-sa' => 'Chuyển tự tiếng Phạn',
 	'narayam-sa-inscript' => 'InScript Phạn',
 	'narayam-si-singlish' => 'Singlish Sinhala',
 	'narayam-si-wijesekara' => 'Wijesekara Sinhala',
-	'narayam-ta99' => 'Tamil99',
+	'narayam-ta-99' => 'Tamil99',
 	'narayam-ta' => 'Chuyển tự tiếng Tamil',
 	'narayam-ta-bamini' => 'Bamini Tamil',
 	'narayam-te-inscript' => 'InScript Telugu',
 	'narayam-bn-avro' => 'Avro Bengal',
 	'narayam-bn-inscript' => 'InScript Bengal',
 	'narayam-bn-nkb' => 'NKB Bengal',
+	'narayam-ur' => 'Tiếng Urdu chuẩn',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
