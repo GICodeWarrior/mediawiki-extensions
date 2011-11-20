@@ -20,14 +20,26 @@ class LocalisationUpdate {
 	 * @return true
 	 */
 	public static function onRecache( LocalisationCache $lc, $langcode, array &$cache ) {
-		$cache['messages'] = array_merge(
-			$cache['messages'],
-			self::readFile( $langcode )
-		);
+		// Handle fallback sequence and load all fallback messages from the cache
+		$codeSequence = array_merge( array( $langcode ), $cache['fallbackSequence'] );
+		// Iterate over the fallback sequence in reverse, otherwise the fallback
+		// language will override the requested language
+		foreach ( array_reverse( $codeSequence ) as $code ) {
+			if ( $code == 'en' ) {
+				// Skip English, otherwise we end up trying to read
+				// the nonexistent cache file for en a couple hundred times
+				continue;
+			}
+			
+			$cache['messages'] = array_merge(
+				$cache['messages'],
+				self::readFile( $code )
+			);
 
-		$cache['deps'][] = new FileDependency(
-			self::filename( $langcode )
-		);
+			$cache['deps'][] = new FileDependency(
+				self::filename( $code )
+			);
+		}
 
 		return true;
 	}
