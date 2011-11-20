@@ -140,10 +140,21 @@ abstract class CommunityVoiceRatings {
 		$args,
 		$parser
 	) {
-		global $wgUser, $wgLang;
+
+		if ( !class_exists( 'CsHtml' ) ) {
+			// Better than a fatal.
+			throw new MWException( "CommunityVoice extension requires the extension 'ClientSide' to run" );
+		}
+		global $wgUser, $wgLang, $wgOut;
 		global $egCommunityVoiceResourcesPath;
 		// Disable caching
 		$parser->disableCache();
+
+		// Since we're adding rating stuff to a page
+		// add relavent scripts.
+		// (Not proper way, but works because caching is disabled)
+		CommunityVoice::addScripts( $wgOut );
+
 		// Validate and sanitize incoming arguments
 		$errors = array();
 		$error = false;
@@ -208,7 +219,10 @@ abstract class CommunityVoiceRatings {
 			/* Ajax Interaction */
 
 			// Adds scale script
-			$htmlOut .= CsHtml::script(
+			// Note: $wgOut->addInlineScript isn't really
+			// the proper way of doing this, and only
+			// works because caching is disabled, and is evil...
+			$wgOut->addScript( CsHtml::script(
 				CsJs::callFunction(
 					'communityVoice.ratings.scales.add',
 					CsJs::buildInstance(
@@ -239,7 +253,7 @@ abstract class CommunityVoiceRatings {
 						)
 					)
 				)
-			);
+			));
 
 			/* HTML Form Interaction */
 
