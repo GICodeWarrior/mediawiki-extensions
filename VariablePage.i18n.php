@@ -42,6 +42,14 @@ $messages['ar'] = array(
 	'variablepage-desc' => 'تحويل لين إلى صفحة متغيرة',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'variablepage-navlink_text' => 'Donativos',
+	'variablepage-desc' => 'Redireición llixera de páxina variable',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  */
