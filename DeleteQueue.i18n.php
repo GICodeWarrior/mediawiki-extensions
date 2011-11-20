@@ -2577,16 +2577,16 @@ Debe seleccionar un motivo para a eliminación da lista da caixa despregable de 
 	'deletequeue-prod-text' => "Pode usar este formulario para propor \"'''\$1'''\" para a súa eliminación.
 
 Se despois de cinco días ninguén dá contestación nesta páxina, será borrada tras unha revisión final feita por un administrador.",
-	'deletequeue-delnom-reason' => 'Razón para a nominación:',
+	'deletequeue-delnom-reason' => 'Motivo para o nomeamento:',
 	'deletequeue-delnom-otherreason' => 'Outro motivo',
 	'deletequeue-delnom-extra' => 'Información adicional:',
-	'deletequeue-delnom-submit' => 'Enviar a nominación',
-	'deletequeue-log-nominate' => 'nominou "[[$1]]" para a súa eliminación da cola "$2".',
+	'deletequeue-delnom-submit' => 'Enviar o nomeamento',
+	'deletequeue-log-nominate' => 'nomeou "[[$1]]" para a súa eliminación da cola "$2".',
 	'deletequeue-log-rmspeedy' => 'declinou a eliminación rápida de "[[$1]]".',
 	'deletequeue-log-requeue' => 'transferiu "[[$1]]" a unha cola de borrados diferente: de "$2" a "$3".',
 	'deletequeue-log-dequeue' => 'eliminou "[[$1]]" da cola de borrados "$2".',
-	'right-speedy-nominate' => 'Nominar páxinas para a súa eliminación rápida',
-	'right-speedy-review' => 'Revisar as nominacións das eliminacións rápidas',
+	'right-speedy-nominate' => 'Nomear páxinas para a súa eliminación rápida',
+	'right-speedy-review' => 'Revisar os nomeamentos das eliminacións rápidas',
 	'right-prod-nominate' => 'Propor o borrado dunha páxina',
 	'right-prod-review' => 'Revisar as propostas de borrado non respostadas',
 	'right-deletediscuss-nominate' => 'Comezar discusións de borrado',
@@ -2595,7 +2595,7 @@ Se despois de cinco días ninguén dá contestación nesta páxina, será borrad
 	'deletequeue-queue-speedy' => 'Eliminación rápida',
 	'deletequeue-queue-prod' => 'Borrado proposto',
 	'deletequeue-queue-deletediscuss' => 'Discusión do borrado',
-	'deletequeue-page-speedy' => "Esta páxina foi nominada para a súa eliminación rápida.
+	'deletequeue-page-speedy' => "Esta páxina foi nomeada para a súa eliminación rápida.
 O motivo dado para este borrado é ''$1''.",
 	'deletequeue-page-prod' => "Propoñeuse que esta páxina fose borrada.
 A razón dada foi ''$1''.
@@ -2614,16 +2614,16 @@ Unha conversa está en curso en \"[[\$5]]\", a cal concluirá o ''\$2''.",
 	'deletequeue-review-newreason' => 'Novo motivo:',
 	'deletequeue-review-newextra' => 'Información adicional:',
 	'deletequeue-review-submit' => 'Gardar a revisión',
-	'deletequeue-review-original' => 'Motivo para a nominación',
+	'deletequeue-review-original' => 'Motivo para o nomeamento',
 	'deletequeue-actiondisabled-involved' => 'A seguinte acción está deshabilitada porque formou parte neste caso de borrado no papel de $1:',
-	'deletequeue-actiondisabled-notexpired' => 'A seguinte acción está deshabilitada porque a nominación para o seu borrado aínda non caducou:',
+	'deletequeue-actiondisabled-notexpired' => 'A seguinte acción está deshabilitada porque o nomeamento para o seu borrado aínda non caducou:',
 	'deletequeue-review-badaction' => 'Especificou unha acción inválida',
 	'deletequeue-review-actiondenied' => 'Especificou unha acción que foi deshabilitada para esta páxina',
 	'deletequeue-review-objections' => "'''Aviso:''' a eliminación desta páxina ten [{{fullurl:{{FULLPAGENAME}}|action=delvoteview&votetype=object}} obxeccións].
 Por favor, asegúrese que considerou estas obxeccións antes de borrar a páxina.",
 	'deletequeue-reviewspeedy-tab' => 'Revisar a eliminación rápida',
-	'deletequeue-reviewspeedy-title' => 'Revisar a nominación da eliminación rápida de "$1"',
-	'deletequeue-reviewspeedy-text' => "Pode usar este formulario para revisar a nominación de \"'''\$1'''\" para a súa eliminación.
+	'deletequeue-reviewspeedy-title' => 'Revisar o nomeamento da eliminación rápida de "$1"',
+	'deletequeue-reviewspeedy-text' => "Pode usar este formulario para revisar o nomeamento de \"'''\$1'''\" para a súa eliminación.
 Por favor, asegúrese que esta páxina pode ser borrada rapidamente de acordo coa política.",
 	'deletequeue-reviewprod-tab' => 'Revisar a proposta de eliminación',
 	'deletequeue-reviewprod-title' => 'Revisar a proposta de eliminación de "$1"',
@@ -2641,7 +2641,7 @@ Actualmente hai $2 {{PLURAL:$2|usuario|usuarios}} que {{PLURAL:$2|apoia|apoian}}
 Pode [{{fullurl:$1|action=delvote}} apoiar ou obxectar] ou [{{fullurl:$1|action=delviewvotes}} ver todos os apoios e obxeccións].',
 	'deletequeue-discusscreate-summary' => 'Creando a conversa para a eliminación de "[[$1]]".',
 	'deletequeue-discusscreate-text' => 'Propoñeuse esta eliminación pola seguinte razón: $2',
-	'deletequeue-role-nominator' => 'nominador orixinal da eliminación',
+	'deletequeue-role-nominator' => 'nomeador orixinal da eliminación',
 	'deletequeue-role-vote-endorse' => 'partícipe da eliminación',
 	'deletequeue-role-vote-object' => 'obxector da eliminación',
 	'deletequeue-vote-tab' => 'Votar na eliminación',
@@ -2649,7 +2649,7 @@ Pode [{{fullurl:$1|action=delvote}} apoiar ou obxectar] ou [{{fullurl:$1|action=
 	'deletequeue-vote-text' => "Pode usar este formulario para apoiar ou obxectar na páxina de eliminación de \"'''\$1'''\".
 Esta acción ignorará calquera apoio/obxección anterior que teña dado na eliminación desta páxina.
 Pode [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} ver] os apoios e obxeccións existentes.
-O motivo dado na nominación para a eliminación foi ''\$2''.",
+O motivo dado no nomeamento para a eliminación foi ''\$2''.",
 	'deletequeue-vote-legend' => 'Apoiar a/Obxectar na eliminación',
 	'deletequeue-vote-action' => 'Recomentación:',
 	'deletequeue-vote-endorse' => 'Apoiar a eliminación.',
