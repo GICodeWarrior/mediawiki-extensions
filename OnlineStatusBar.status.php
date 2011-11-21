@@ -16,25 +16,65 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 class OnlineStatusBar_StatusCheck {
 
+	private static function getCacheKey( $user, $type ) {
+		// get a key for cache
+		return wfMemcKey( 'onlinestatusbarcache_' . $type . "_" . $user );
+	}
+
+	/**
+	 * Create a cache
+	 * return true
+	 */
+	public static function setCache( $user, $values, $type ) {
+		global $wgOnlineStatusBarWriteTime, $wgMemc;
+		// get a key
+		$cache_key = self::getCacheKey( $user, $type );
+		$wgMemc->set( $cache_key, $values, $wgOnlineStatusBarWriteTime );
+		return true;
+	}
+
+	public static function getCache( $user, $type ) {
+		global $wgMemc;
+		// get a key
+		$cache_key = self::getCacheKey( $user, $type );
+		// get a value
+		return $wgMemc->get( $cache_key );
+	}
+	
+
 	/**
 	 * @param $user User
 	 * @return String
 	 */
 	public static function getStatus( $user, $delayed_check = false ) {
-		global $wgOnlineStatusBarDefaultOffline, $wgOnlineStatusBarDefaultOnline;
+		global $wgOnlineStatusBarDefaultOffline, $wgMemc, $wgOnlineStatusBarDefaultOnline;
 
 		// instead of delete every time just select the records which are not that old
-		$dbr = wfGetDB( DB_SLAVE );
 		if ( !$delayed_check ) {
 			$t_time = OnlineStatusBar::getTimeoutDate();
-			$result = $dbr->selectField( 'online_status', 'timestamp', array( 'username' => $user->getName(),
-				"timestamp > " . $dbr->addQuotes( $dbr->timestamp( $t_time ) ) ),
-				__METHOD__, array( 'LIMIT 1', 'ORDER BY timestamp DESC' ) );
+			// first try to use cache
+			$result = self::getCache( $user->getName(), "delayed" );
+			
+			if ( $result == '' ) {
+				$dbr = wfGetDB( DB_SLAVE );
+				$result = $dbr->selectField( 'online_status', 'timestamp', array( 'username' => $user->getName(),
+					"timestamp > " . $dbr->addQuotes( $dbr->timestamp( $t_time ) ) ),
+					__METHOD__, array( 'LIMIT 1', 'ORDER BY timestamp DESC' ) );
+				// cache it
+				self::setCache( $user->getName(), $result, "delayed" );
+			}
 		}
 		else {
-			$result = $dbr->selectField( 'online_status', 'timestamp', array( 'username' => $user->getName() ),
-				__METHOD__, array( 'LIMIT 1', 'ORDER BY timestamp DESC' ) );
-			$w_time = OnlineStatusBar::getTimeoutDate( true );
+			$result = self::getCache( $user->getName(), "normal" );
+
+			if ( $result == '' ) {
+				$dbr = wfGetDB( DB_SLAVE );
+				$result = $dbr->selectField( 'online_status', 'timestamp', array( 'username' => $user->getName() ),
+					__METHOD__, array( 'LIMIT 1', 'ORDER BY timestamp DESC' ) );
+					$w_time = OnlineStatusBar::getTimeoutDate( true );
+				// cache it
+				self::setCache( $user->getName(), $result, "normal" );
+			}
 		}
 
 		if ( $result === false ) {
