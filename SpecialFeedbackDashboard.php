@@ -133,10 +133,23 @@ HTML;
 	public static function formatListItem( $row, $params = array() ) {
 		global $wgLang;
 		
-		$feedbackItem = MBFeedbackItem::load( $row );
-		
 		$classes = array('fbd-item');
 		$toolLinks = array();
+		
+		//in case there is an error constructing the feedbackitem object, 
+		//we don't want to throw an error for the entire page.
+		try { 
+			$feedbackItem = MBFeedbackItem::load( $row );
+		}
+		catch (Exception $e) {
+			$error_message = wfMessage('moodbar-feedback-load-record-error')->escaped();
+			return <<<HTML
+			<li class="$classes">
+				<div class="fbd-item-message" dir="auto">$error_message</div>
+				<div style="clear:both"></div>
+			</li>
+HTML;
+		}
 		
 		// Type
 		$type = $feedbackItem->getProperty('type');

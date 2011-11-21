@@ -127,20 +127,21 @@ class MBFeedbackItem {
 			$properties['user'] = User::newFromName( $row->mbf_user_ip );
 		}
 
-		$this->setProperties( $properties );
+		$this->setProperties( $properties , true );
 	}
 
 	/**
 	 * Set a group of properties. Throws an exception on invalid property.
 	 * @param $values An associative array of properties to set.
+	 * @param $initialise_from_row bool if record is loaded from DB row
 	 */
-	public function setProperties( $values ) {
+	public function setProperties( $values , $initialise_from_row = false) {
 		foreach( $values as $key => $value ) {
 			if ( ! $this->isValidKey($key) ) {
 				throw new MWException( "Attempt to set invalid property $key" );
 			}
 
-			if ( ! $this->validatePropertyValue($key, $value) ) {
+			if ( ! $this->validatePropertyValue($key, $value, $initialise_from_row) ) {
 				throw new MWException( "Attempt to set invalid value for $key" );
 			}
 
@@ -183,9 +184,10 @@ class MBFeedbackItem {
 	 * Check if a property value is valid for that property
 	 * @param $key The key of the property to check.
 	 * @param $value The value to check
+	 * @param $initialise_from_row bool if record is loaded from DB row
 	 * @return Boolean
 	 */
-	public function validatePropertyValue( $key, $value ) {
+	public function validatePropertyValue( $key, $value , $initialise_from_row = false ) {
 		if ( $key == 'user' ) {
 			return $value instanceof User;
 		} elseif ( $key == 'page' ) {
@@ -194,7 +196,13 @@ class MBFeedbackItem {
 			return in_array( $value, self::$validTypes );
 		} elseif ( $key == 'comment' ) {
 			$comment_len = mb_strlen( $value );
-			return $comment_len <= 140;
+			//existing empty comment from database should be considered as valid
+			if($initialise_from_row) {
+				return $comment_len <= 140;
+			}
+			else {
+				return $comment_len > 0 && $comment_len <= 140;	
+			}
 		}
 
 		return true;

@@ -78,12 +78,20 @@ class ExportMoodBar extends Maintenance {
 	}
 
 	protected function outputRow( $fh, $row ) {
-		$item = MBFeedbackItem::load( $row );
-		$user = User::newFromRow( $row );
-		$outData = array();
-
-		foreach( $this->fields as $field ) {
-			$outData[] = MoodBarFormatter::getInternalRepresentation( $item, $field );
+		//if there is an exception when setting this single record
+		//record it so it won't stop the outputting of other records
+		try {
+			$item = MBFeedbackItem::load( $row );
+			
+			$user = User::newFromRow( $row );
+			$outData = array();
+	
+			foreach( $this->fields as $field ) {
+				$outData[] = MoodBarFormatter::getInternalRepresentation( $item, $field );
+			}
+		}
+		catch (Exception $e) {
+			$outData[] = wfMessage('moodbar-feedback-load-record-error')->escaped();
 		}
 
 		fputcsv( $fh, $outData );
