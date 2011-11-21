@@ -35,6 +35,7 @@ class InteractiveBlockMessageHooks {
 	 * @return bool
 	 */
 	public static function parserGetVariable( &$parser, &$varCache, &$index, &$ret ) {
+		global $wgInteractiveBlockMessageCacheTimeout;
 		if ( $index != 'USERBLOCKED' ) {
 			return true;
 		}
@@ -43,11 +44,16 @@ class InteractiveBlockMessageHooks {
 			$ret = 'unknown';
 			return true;
 		}
-		$parser->disableCache();
-
-		$user = User::newFromName( $parser->getTitle()->getBaseText() ); 
+	
+		$user = User::newFromName( $parser->getTitle()->getBaseText() );
 		if ($user instanceof User) {
 			if ($user->isBlocked()) {
+				// if user is blocked it's pretty much possible they will be unblocked one day :)
+				// so we enable cache for shorter time only so that we can recheck later
+				// if they weren't already unblocked - if there is a better way to do that, fix me
+				if ( $user->getBlock()->mExpiry != 'infinityinfinity' ) { // this definitely needs fix :P
+					$parser->getOutput()->updateCacheExpiry($wgInteractiveBlockMessageCacheTimeout);
+				}
 				$ret = 'true';
 				return true;
 			} else {

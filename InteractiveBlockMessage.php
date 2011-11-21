@@ -25,6 +25,9 @@ $wgExtensionCredits[version_compare( $wgVersion, '1.17', '>=' ) ? 'userpage tool
 
 $dir = dirname( __FILE__ );
 
+//this value tells the parser for how long the page where magic word is used should be cached
+$wgInteractiveBlockMessageCacheTimeout = 3600; // 1 hour as default
+
 $wgAutoloadClasses['InteractiveBlockMessage'] = "$dir/InteractiveBlockMessage.php";
 $wgAutoloadClasses['InteractiveBlockMessageHooks'] = "$dir/InteractiveBlockMessageHooks.php";
 
