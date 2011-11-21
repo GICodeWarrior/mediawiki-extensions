@@ -5688,6 +5688,7 @@ A equipa da {{SITENAME}}',
  * @author 555
  * @author Giro720
  * @author MetalBrasil
+ * @author Pedroca cerebral
  * @author Raylton P. Sousa
  */
 $messages['pt-br'] = array(
@@ -5707,7 +5708,8 @@ $messages['pt-br'] = array(
 	'articlefeedback-survey-submit' => 'Enviar',
 	'articlefeedback-survey-title' => 'Por favor, responda a algumas perguntas',
 	'articlefeedback-survey-thanks' => 'Obrigado por preencher o questionário.',
-	'articlefeedback-survey-disclaimer' => 'Para ajudar a melhorar esse recurso, o feedback pode ser compartilhado anonimamente com a comunidade Wikipédia.',
+	'articlefeedback-survey-disclaimer' => 'Se enviar os seus comentários, aceita publicá-los sob estes $1',
+	'articlefeedback-survey-disclaimerlink' => 'termos',
 	'articlefeedback-error' => 'Ocorreu um erro. Por favor, tente novamente mais tarde.',
 	'articlefeedback-form-switch-label' => 'Avaliar esta página',
 	'articlefeedback-form-panel-title' => 'Avaliar esta página',
@@ -5720,8 +5722,8 @@ $messages['pt-br'] = array(
 	'articlefeedback-form-panel-expertise-hobby' => 'É uma das minhas paixões pessoais',
 	'articlefeedback-form-panel-expertise-other' => 'A fonte dos meus conhecimentos, não está listada aqui',
 	'articlefeedback-form-panel-helpimprove' => 'Eu gostaria de ajudar a melhorar a Wikipédia; enviem-me um e-mail (opcional)',
-	'articlefeedback-form-panel-helpimprove-note' => 'Nós enviaremos a você um e-mail de confirmação. O seu endereço de e-mail não será partilhado com ninguém. $1',
-	'articlefeedback-form-panel-helpimprove-privacy' => 'Política de privacidade',
+	'articlefeedback-form-panel-helpimprove-note' => 'Nós enviaremos a você um e-mail de confirmação. Nós não iremos fornecer seu endereço de e-mail com terceiros fora da nossa nossa $1.',
+	'articlefeedback-form-panel-helpimprove-privacy' => 'declaração de confidencialidade dos comentários',
 	'articlefeedback-form-panel-submit' => 'Enviar avaliações',
 	'articlefeedback-form-panel-pending' => 'As suas avaliações não foram enviadas',
 	'articlefeedback-form-panel-success' => 'Gravado com sucesso',
@@ -5774,6 +5776,7 @@ $messages['pt-br'] = array(
 	'articlefeedback-survey-message-success' => 'Obrigado por preencher o questionário.',
 	'articlefeedback-survey-message-error' => 'Ocorreu um erro. 
 Tente novamente mais tarde, por favor.',
+	'articlefeedback-privacyurl' => 'http://wikimediafoundation.org/wiki/Feedback_privacy_statement',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Os melhores e piores de hoje',
 	'articleFeedback-table-caption-dailyhighs' => 'Artigos com as avaliações mais elevadas: $1',
 	'articleFeedback-table-caption-dailylows' => 'Artigos com as avaliações mais baixas: $1',
