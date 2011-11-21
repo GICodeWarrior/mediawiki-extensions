@@ -52,7 +52,7 @@ class InteractiveBlockMessageHooks {
 				// so we enable cache for shorter time only so that we can recheck later
 				// if they weren't already unblocked - if there is a better way to do that, fix me
 				$expiry = $user->getBlock()->mExpiry;
-				if ( $expiry != 'infinityinfinity' ) { // this definitely needs fix :P
+				if ( is_numeric ($expiry) ) { 
 					$expiry = wfTimestamp( TS_UNIX, $expiry ) - wfTimestamp( TS_UNIX );
 					if ( $expiry > 0 ) {
 					// just to make sure
