@@ -42,8 +42,8 @@ class ParserFunParse extends ParserHook {
 	 * No LSB in pre-5.3 PHP, to be refactored later
 	 */	
 	public static function staticInit( Parser &$parser ) {
-		global $egParserFunDisabledFunctions;
-		if( ! in_array( 'parse', $egParserFunDisabledFunctions ) ) {
+		global $egParserFunEnabledFunctions;
+		if( in_array( 'parse', $egParserFunEnabledFunctions ) ) {
 			// only register function if not disabled by configuration
 			$instance = new self;
 			$instance->init( $parser );

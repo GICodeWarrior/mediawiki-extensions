@@ -5,18 +5,18 @@ The 'Parser Fun' extension Enhances MediaWiki with the following features:
 (1) A new parser function to do several parser tasks manually on wikitext.
     The following can be achieved by the '#parse' parser function:
     - Parsing wikitext
-    - Un-stripping '<nowiki>' and general stripped text
+    - Unstripping '<nowiki>' and general stripped text
 	
 (2) Prefix 'THIS:' (available in some other languages) which can be put in front
     of site information related magic words like '{{THIS:PAGENAME}}'. This
     allows to get the information from the page the phrase actually is literally
     defined on instead of the page which is being parsed and where the phrase was
     expanded into. '{{THIS}}' simply is synonym for '{{THIS:FULLPAGENAME}}'.
-    IF 'THIS:' is used with an un-supported variable it will be interpreted as
+    If 'THIS:' is used with an unsupported variable it will be interpreted as
     template call. Currently the following functions are supported:
     'FULLPAGENAME', 'PAGENAME', 'BASEPAGENAME', 'SUBPAGENAME', 'SUBJECTPAGENAME',
 	'TALKPAGENAME', 'NAMESPACE', 'SUBJECTSPACE', 'ARTICLESPACE', 'TALKSPACE'
-    as well as their URL-encoded equivalents (ending with '...EE').
+    as well as their URL-encoded equivalents ending with 'EE'.
     It is possible for other extensions to support the 'THIS:' prefix, currently:
     - All 'Subpage Fun' extension variables:
       http://www.mediawiki.org/wiki/Extension:Subpage_Fun

@@ -55,8 +55,6 @@ $wgHooks['ParserFirstCallInit'   ][] = 'ExtParserFun::init';
 
 
 // for magic word 'THISPAGENAME':
-$wgHooks['MagicWordwgVariableIDs'][] = 'ExtParserFun::onMagicWordwgVariableIDs';
-
 $wgHooks['MagicWordwgVariableIDs'      ][] = 'ExtParserFun::onMagicWordwgVariableIDs';
 $wgHooks['ParserGetVariableValueSwitch'][] = 'ExtParserFun::onParserGetVariableValueSwitch';
 
@@ -83,11 +81,11 @@ class ExtParserFun {
 	 */
 	const VERSION = '0.1rc';
 	
-	const MAG_THIS  = 'this';
+	const MAG_THIS = 'this';
 	
 	public static function init( Parser &$parser ) {
-		global $egParserFunDisabledFunctions;		
-		if( ! in_array( self::MAG_THIS, $egParserFunDisabledFunctions ) ) {
+		global $egParserFunEnabledFunctions;		
+		if( in_array( self::MAG_THIS, $egParserFunEnabledFunctions ) ) {
 			// only register function if not disabled by configuration
 			$parser->setFunctionHook( self::MAG_THIS, array( __CLASS__, 'pfObj_this' ), SFH_NO_HASH | SFH_OBJECT_ARGS );
 		}
@@ -253,8 +251,8 @@ class ExtParserFun {
 	}
 	
 	static function onMagicWordwgVariableIDs( &$variableIds ) {
-		global $egParserFunDisabledFunctions;		
-		if( ! in_array( self::MAG_THIS, $egParserFunDisabledFunctions ) ) {
+		global $egParserFunEnabledFunctions;		
+		if( in_array( self::MAG_THIS, $egParserFunEnabledFunctions ) ) {
 			// only register variable if not disabled by configuration
 			$variableIds[] = self::MAG_THIS;
 		}

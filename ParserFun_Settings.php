@@ -17,15 +17,16 @@
  */
 
 /**
- * Allows to define which functionalities provided by 'Parser Fun' should be disabled for the wiki.
+ * Allows to define which functionalities provided by 'Parser Fun' should be enabled within the wiki.
+ * By default all functionality is enabled.
  * 
  * @example
- * # disable 'THIS' prefix functionality:
- * $egParserFunDisabledFunctions = array( 'this' );
- * # disable '#parse' parser function:
- * $egParserFunDisabledFunctions = array( 'parse' );
+ * # Only enable 'THIS' prefix functionality:
+ * $egParserFunEnabledFunctions = array( 'this' );
+ * # Only enable '#parse' parser function:
+ * $egParserFunEnabledFunctions = array( 'parse' );
  * 
- * @since 1.0.1
+ * @since 0.1
  * @var array
  */
-$egParserFunDisabledFunctions = array();
+$egParserFunEnabledFunctions = array( 'this', 'parse' );
