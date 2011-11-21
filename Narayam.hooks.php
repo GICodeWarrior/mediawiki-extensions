@@ -28,6 +28,7 @@ class NarayamHooks {
 		global $wgNarayamRecentItemsLength, $wgNarayamEnabledByDefault;
 		$vars['wgNarayamEnabledByDefault'] = $wgNarayamEnabledByDefault;
 		$vars['wgNarayamRecentItemsLength'] = $wgNarayamRecentItemsLength;
+		$vars['wgNarayamHelpPage'] = wfMsgForContent( 'narayam-help-page' );
 		return true;
 	}
 
@@ -41,7 +42,6 @@ class NarayamHooks {
 
 		$vars['wgNarayamAvailableSchemes'] = self::getSchemes(); // Note: scheme names must be keys, not values
 		$vars['wgNarayamAllSchemes'] = $wgNarayamSchemes;
-		$vars['wgNarayamHelpPage'] = wfMsgForContent( 'narayam-help-page' );
 		return true;
 	}
 
@@ -50,28 +50,25 @@ class NarayamHooks {
 	 * @return array( scheme name => module name )
 	 */
 	protected static function getSchemes() {
-		global $wgLanguageCode, $wgLang, $wgNarayamSchemes, $wgTitle;
+		global $wgLanguageCode, $wgLang, $wgNarayamSchemes, $wgRequest;
 
 		$userlangCode = $wgLang->getCode();
 		$contlangSchemes = isset( $wgNarayamSchemes[$wgLanguageCode] ) ?
-				$wgNarayamSchemes[$wgLanguageCode] : array();
+			$wgNarayamSchemes[$wgLanguageCode] : array();
 		$userlangSchemes = isset( $wgNarayamSchemes[$userlangCode] ) ?
-				$wgNarayamSchemes[$userlangCode] : array();
-		$pagelang = $wgTitle->getPageLanguage()->getCode();
-		$pagelangSchemes = isset( $wgNarayamSchemes[$pagelang] ) ?
-				$wgNarayamSchemes[$pagelang] : array();
+			$wgNarayamSchemes[$userlangCode] : array();
 
-		$schemes = $userlangSchemes + $contlangSchemes + $pagelangSchemes;
+		$schemes = $userlangSchemes + $contlangSchemes;
 
 		return $schemes;
 	}
 
 	/// Hook: GetPreferences
 	public static function addPreference( $user, &$preferences ) {
-		// A checkbox in preferences to diable Narayam
+		// A checkbox in preferences to disable Narayam
 		$preferences['narayamDisable'] = array(
 			'type' => 'toggle',
-			'label-message' => 'narayam-disable-preference', // a system message
+			'label-message' => 'narayam-disable-preference',
 			'section' => 'editing/advancedediting', // under 'Advanced options' section of 'Editing' tab
 		);
 
