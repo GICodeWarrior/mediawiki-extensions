@@ -156,6 +156,13 @@ $messages['ja'] = array(
 	'qrcode-desc' => 'ウィキのページに、QRコードを生成し追加する',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'qrcode-desc' => '위키 문서에 QR 코드를 생성하고 추가함',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
