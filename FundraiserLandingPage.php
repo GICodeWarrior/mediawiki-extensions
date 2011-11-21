@@ -40,7 +40,8 @@ $wgSpecialPages[ 'FundraiserLandingPage' ] = 'FundraiserLandingPage';
 $wgFundraiserLPDefaults = array(
 	'template' => 'Lp-wrapper',
 	'appeal' => 'Appeal-default',
-	'form' => 'Form-default'
+	'form' => 'Form-default',
+	'country' => 'XX' // per Charles Barr
 );
 
 // Adding configurrable variable for caching time

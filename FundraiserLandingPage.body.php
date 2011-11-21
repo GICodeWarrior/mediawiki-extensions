@@ -29,14 +29,29 @@ class FundraiserLandingPage extends UnlistedSpecialPage
 		$template = $this->make_safe( $request->getText( 'template', $wgFundraiserLPDefaults[ 'template' ] ) );
 		$appeal = $this->make_safe( $request->getText( 'appeal', $wgFundraiserLPDefaults[ 'appeal' ] ) );
 		$form = $this->make_safe( $request->getText( 'form', $wgFundraiserLPDefaults[ 'form' ] ) );
+		$country = $request->getVal( 'country' );
+		// If no country was passed do a GeoIP lookup
+		if ( !$country ) {
+			if ( function_exists( 'geoip_country_code_by_name' ) ) {
+				$ip = wfGetIP();
+				if ( IP::isValid( $ip ) ) {
+					$country = geoip_country_code_by_name( $ip );
+				}
+			}
+		}
+		// If country still isn't set, set it to the default
+		if ( !$country ) {
+			$country = $wgFundraiserLPDefaults[ 'country' ];
+		}
+		$country = $this->make_safe( $country );
 
 		# begin generating the template call
-		$output .= "{{ $template\n| appeal = $appeal\n| form = $form\n";
+		$output .= "{{ $template\n| appeal = $appeal\n| form = $form\n| country = $country\n";
 
 		# add any parameters passed in the querystring
 		foreach ( $request->getValues() as $k_unsafe => $v_unsafe ) {
 			# skip the required variables
-			if ( $k_unsafe == "template" || $k_unsafe == "appeal" || $k_unsafe == "form" ) {
+			if ( $k_unsafe == "template" || $k_unsafe == "appeal" || $k_unsafe == "form" || $k_unsafe == "country" ) {
 				continue;
 			}
 			# get the variables name and value
