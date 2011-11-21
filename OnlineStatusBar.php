@@ -38,8 +38,20 @@ $wgResourceModules['ext.OnlineStatusBar.vector'] = array (
 	'remoteExtPath' => 'OnlineStatusBar',
 );
 
+$wgResourceModules['ext.OnlineStatusBar.modern'] = array (
+	'styles' => 'OnlineStatusBarModern.css',
+	'localBasePath' => dirname ( __FILE__ ),
+	'remoteExtPath' => 'OnlineStatusBar',
+);
+
 $wgResourceModules['ext.OnlineStatusBar.chick'] = array (
 	'styles' => 'OnlineStatusBarChick.css',
+	'localBasePath' => dirname ( __FILE__ ),
+	'remoteExtPath' => 'OnlineStatusBar',
+);
+
+$wgResourceModules['ext.OnlineStatusBar.standard'] = array (
+	'styles' => 'OnlineStatusBarClassic.css',
 	'localBasePath' => dirname ( __FILE__ ),
 	'remoteExtPath' => 'OnlineStatusBar',
 );

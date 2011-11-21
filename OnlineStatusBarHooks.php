@@ -138,6 +138,8 @@ class OnlineStatusBarHooks {
 			case 'monobook':
 			case 'vector':
 			case 'simple':
+			case 'modern':
+			case 'standard':
 			case 'nostalgia':
 			case 'chick':
 			case 'cologneblue':
