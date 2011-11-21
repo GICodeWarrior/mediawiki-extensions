@@ -56,6 +56,9 @@ class OnlineStatusBarHooks {
 	public static function renderBar( &$article, &$outputDone, &$pcache ) {
 		$context = $article->getContext();
 		
+		// Update status of each user who wants to be tracked
+		OnlineStatusBar_StatusCheck::updateStatus();
+
 		// Performace fix
 		$title = $article->getTitle();
 		if ( $title->getNamespace() != NS_USER && $title->getNamespace() != NS_USER_TALK ) {
