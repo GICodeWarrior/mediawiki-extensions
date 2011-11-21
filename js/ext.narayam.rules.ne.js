@@ -1,5 +1,5 @@
 /**
- * Trasliteration regular expression rules table for Nepali
+ * Transliteration regular expression rules table for Nepali
  * @author Junaid P V ([[user:Junaidpv]]) and Bhawani Gautam ([[user:Bhawani Gautam]])
  * @date 2011-07-22
  * License: GPLv3, CC-BY-SA 3.0

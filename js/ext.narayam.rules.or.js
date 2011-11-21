@@ -1,5 +1,5 @@
 /**
- * Trasliteration regular expression rules table for Oriya
+ * Transliteration regular expression rules table for Oriya
  * @author Junaid P V ([[user:Junaidpv]])
  * @date 2010-11-13
  * @credit With help from Subhashish Panigrahi

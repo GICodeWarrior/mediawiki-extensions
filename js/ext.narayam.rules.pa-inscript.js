@@ -1,5 +1,5 @@
 /**
- * Trasliteration regular expression rules table for Punjabi
+ * Transliteration regular expression rules table for Punjabi
  * @date 2011-11-19
  * Based on http://fedoraproject.org/wiki/I18N/Indic/PunjabiKeyboardLayouts
  */

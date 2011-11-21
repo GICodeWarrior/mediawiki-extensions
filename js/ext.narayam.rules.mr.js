@@ -1,5 +1,5 @@
 /**
- * Trasliteration regular expression rules table for Marathi
+ * Transliteration regular expression rules table for Marathi
  * @author Pathak A B ([[user:Pathak.ab]])
  * @date 2011-11-19
  * @credits With help from Amir E Aharani

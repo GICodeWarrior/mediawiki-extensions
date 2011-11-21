@@ -1,5 +1,5 @@
 /**
- * Trasliteration regular expression rules table for Amharic script
+ * Transliteration regular expression rules table for Amharic script
  * @author Junaid P V ([[user:Junaidpv]])
  * @date 2011-10-08
  * @credits Referring http://www.lexilogos.com/keyboard/amharic.htm and helps from Sisay

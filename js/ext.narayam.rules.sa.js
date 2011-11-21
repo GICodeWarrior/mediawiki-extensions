@@ -1,5 +1,5 @@
 /**
- * Trasliteration regular expression rules table for Sanskrit
+ * Transliteration regular expression rules table for Sanskrit
  * @author Junaid P V ([[user:Junaidpv]])
  * @date 2010-10-12
  * @credits With help from Naveen Shankar

@@ -1,5 +1,5 @@
 /**
- * Trasliteration regular expression rules table for Tamil
+ * Transliteration regular expression rules table for Tamil
  * @author Junaid P V ([[user:Junaidpv]])
  * @date 2010-11-21
  * License: GPLv3, CC-BY-SA 3.0

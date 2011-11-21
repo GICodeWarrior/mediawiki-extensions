@@ -1,5 +1,5 @@
 /**
- * Trasliteration regular expression rules table for Assamese script
+ * Transliteration regular expression rules table for Assamese script
  * @author Junaid P V ([[user:Junaidpv]])
  * @date 2010-12-01, updated 2011-11-10
  * @credits W Chaipau and Prabhakar Sarma Neog and Assameses Wikimedia community
