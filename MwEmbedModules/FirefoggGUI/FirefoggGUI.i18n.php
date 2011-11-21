@@ -2409,7 +2409,8 @@ További információkat <a href="http://en.wikipedia.org/wiki/I-frame">itt</a> 
 	'fogg-please-install' => '$1. Továbbá $2',
 	'fogg-please-install-install-linktext' => 'Firefogg telepítése',
 	'fogg-please-install-about-linktext' => 'a Firefoggról',
-	'fogg-use_latest_firefox' => 'Először telepítsd a <a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=firefogg">Firefox 3.5</a>-ös, vagy újabb verzióját, <i>majd látogass el ide újra a <b>Firefogg</b>-kiterjesztés telepítéséhez.</i>',
+	'fogg-use_latest_firefox' => 'Először telepítsd a $1 programot. 
+<i>Ezután látogass el ide újra a <b>Firefogg</b>-kiterjesztés telepítéséhez.</i>',
 	'fogg-latest-firefox' => 'a legújabb Firefox',
 	'fogg-passthrough_mode' => 'Az általad kiválasztott fájl már Ogg formátumban van, vagy nem videófájl',
 	'fogg-encoding-done' => 'A kódolás kész',
