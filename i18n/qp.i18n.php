@@ -1172,6 +1172,7 @@ Assurez-vous que le sondage soit déclaré et sauvegardé. Vérifiez également 
 	'qp_error_address_in_decl_mode' => 'Impossible d’obtenir une adresse du sondage en mode déclaratif',
 	'qp_error_question_not_implemented' => 'Les questions de ce type ne sont pas implémentées : $1',
 	'qp_error_invalid_question_type' => 'Type de question invalide : $1',
+	'qp_error_invalid_question_name' => 'Nom de question invalide:  $1.',
 	'qp_error_type_in_stats_mode' => 'Le type de question ne peut pas être défini en mode d’affichage statistique : $1',
 	'qp_error_no_poll_id' => 'La balise du sondage n’a pas d’identifiant défini.',
 	'qp_error_invalid_poll_id' => 'Identifiant de sondage invalide (id=$1).
