@@ -108,6 +108,16 @@ $messages['gl'] = array(
 	'apiexplorer-loading' => 'Cargando as funcións...',
 );
 
+/** Hungarian (Magyar)
+ * @author Dj
+ */
+$messages['hu'] = array(
+	'apiexplorer' => 'API Explorer',
+	'apiexplorer-desc' => 'A MediaWiki API dokumentációja interaktív felfedezésére szolgáló oldal',
+	'apiexplorer-intro' => 'Ez az oldal a az aktuális wiki API-jának a dokumentációját mutatja. Kattints az alábbi funkciókra, ha kíváncsi vagy az egyes hívások paramétereire. Lásd továbbá a [http://www.mediawiki.org/wiki/API:Main_page az általános MediaWiki API dokumentációt].',
+	'apiexplorer-loading' => 'Funkciók betöltése...',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
