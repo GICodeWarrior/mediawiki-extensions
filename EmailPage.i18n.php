@@ -1068,6 +1068,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Hamilton Abreu
+ * @author Pedroca cerebral
  */
 $messages['pt'] = array(
 	'e-mailpage' => 'Enviar páginas por correio electrónico',
@@ -1075,7 +1076,7 @@ $messages['pt'] = array(
 	'ea-heading' => 'A enviar a página "[[$1]]"',
 	'ea-group-info' => 'Adicionalmente, pode enviar a página para os membros de um grupo',
 	'ea-pagesend' => 'Página "$1" enviada da $2',
-	'ea-nopage' => 'Não foi especificada nenhuma página para envio; use o link de envio disponível na barra lateral or nas operações da página, por favor.',
+	'ea-nopage' => 'Não foi especificada nenhuma página para envio; use o link de envio disponível na barra lateral ou nas operações da página, por favor.',
 	'ea-norecipients' => 'Não foi encontrado nenhum endereço de correio electrónico válido!',
 	'ea-listrecipients' => 'A listar {{PLURAL:$1|o destinatário|$1 destinatários}}',
 	'ea-error' => "'''Erro no envio de [[$1]]:''' ''$2''",
@@ -1100,11 +1101,35 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Giro720
+ * @author Pedroca cerebral
  */
 $messages['pt-br'] = array(
 	'e-mailpage' => 'Enviar páginas por e-mail',
 	'ea-desc' => 'Enviar uma página na sua composição final em HTML, para um endereço de e-mail ou para uma lista de endereços usando o [http://phpmailer.sourceforge.net phpmailer]',
 	'ea-heading' => 'A enviar a página "[[$1]]"',
+	'ea-group-info' => 'Além disso você pode enviar a página para os membros de um grupo',
+	'ea-pagesend' => 'Página "$1" enviada da $2',
+	'ea-nopage' => 'Não foi especificada nenhuma página para envio; por favor, use o link de envio disponível na barra lateral ou nas operações da página.',
+	'ea-norecipients' => 'Não foi encontrado nenhum endereço de e-mail válido!',
+	'ea-listrecipients' => 'Listando {{PLURAL:$1|o destinatário|$1 destinatários}}',
+	'ea-error' => "'''Erro no envio de [[$1]]:''' ''$2''",
+	'ea-denied' => 'Permissão negada',
+	'ea-sent' => "A página [[$1]] foi enviada para '''$2''' {{PLURAL:$2|destinatário|destinatários}} por [[User:$3|$3]].",
+	'ea-compose' => 'Compor a mensagem',
+	'ea-show' => 'Ver a lista de destinatários',
+	'ea-from' => 'De:',
+	'ea-to' => 'Para:',
+	'ea-to-info' => 'Os endereços podem ser separados com uma ou várias vírgulas, pontos e vírgula, asteriscos ou novas linhas',
+	'ea-cc' => 'CC:',
+	'ea-send' => 'Enviar',
+	'ea-subject' => 'Assunto:',
+	'ea-message' => 'Mensagem',
+	'ea-message-info' => 'Inclua uma mensagem opcional em texto wiki',
+	'ea-style' => 'Estilo:',
+	'ea-selectcss' => 'Pode selecionar uma folha de estilos',
+	'ea-data' => 'Dados',
+	'ea-selectrecord' => 'Estes modelos podem ser usados para preencher os campos no conteúdo da mensagem',
+	'ea-allusers' => 'Todos os usuários',
 );
 
 /** Romanian (Română)
