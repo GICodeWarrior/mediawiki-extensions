@@ -379,6 +379,50 @@ $messages['he'] = array(
 	'apisb-generator-parameters' => 'מחולל',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'apisandbox' => 'API-hrajkanišćo',
+	'apisb-no-js' => "'''Zmylk''': tuta funkcija sej JavaScript wužaduje.",
+	'apisb-intro' => "Wužij tutu stronu, zo by z '''Mediawiki API''' eksperimentował.
+Hlej [http://www.mediawiki.org/wiki/API API-dokumentaciju] za dalše podrobnosće za wužiwanje API.",
+	'apisb-api-disabled' => 'API je so na tutym sydle znjemóžnił.',
+	'apisb-parameters' => 'Parametry',
+	'apisb-result' => 'Wuslědk',
+	'apisb-select-value' => 'Hódnotu wubrać',
+);
+
+/** Hungarian (Magyar)
+ * @author Dj
+ */
+$messages['hu'] = array(
+	'apisb-desc' => 'Lehetőséget biztosít az [http://www.mediawiki.org/wiki/API MediaWiki API] hívások nyomkövetésére a böngészőből',
+	'apisandbox' => 'API homokozó',
+	'apisb-no-js' => "'''Hiba''': ehhez a szolgáltatáshoz JavaScript szükséges.",
+	'apisb-intro' => "Használd ezt az oldalt '''MediaWiki API''' kísérletezésekre.
+Az API használatának további részletei az [http://www.mediawiki.org/wiki/API the API dokumentációnál] található.",
+	'apisb-api-disabled' => 'API le van tiltva ezen az oldalon.',
+	'apisb-parameters' => 'Paraméterek',
+	'apisb-result' => 'Eredmény',
+	'apisb-request-url' => 'Kérő URL:',
+	'apisb-request-post' => 'POST adat:',
+	'apisb-select-action' => 'Műveletek kiválasztása',
+	'apisb-select-query' => 'Mi a lekérdezés?',
+	'apisb-select-value' => 'Válassz értéket',
+	'apisb-loading' => 'Betöltés…',
+	'apisb-load-error' => 'Hiba a API leírás betöltésekor',
+	'apisb-request-error' => 'Hiba az API kérés végrehajtásakor',
+	'apisb-namespaces-error' => 'Hiba a névtér betöltése során',
+	'apisb-ns-main' => '(Fő)',
+	'apisb-submit' => 'Kérés végrehajtása',
+	'apisb-query-prop' => 'Tulajdonságok',
+	'apisb-query-list' => 'Listák',
+	'apisb-query-meta' => 'Metaadatok',
+	'apisb-generic-parameters' => 'Általános paraméterek',
+	'apisb-generator-parameters' => 'Generátor',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
