@@ -47,13 +47,13 @@ class OnlineStatusBar_StatusCheck {
 	 * @return String
 	 */
 	public static function getStatus( $user, $delayed_check = false ) {
-		global $wgOnlineStatusBarDefaultOffline, $wgMemc, $wgOnlineStatusBarDefaultOnline;
+		global $wgOnlineStatusBarDefaultOffline, $wgOnlineStatusBarDefaultOnline;
 
 		// instead of delete every time just select the records which are not that old
 		if ( !$delayed_check ) {
 			$t_time = OnlineStatusBar::getTimeoutDate();
 			// first try to use cache
-			$result = self::getCache( $user->getName(), "delayed" );
+			$result = self::getCache( $user->getName(), "n" );
 			
 			if ( $result == '' ) {
 				$dbr = wfGetDB( DB_SLAVE );
@@ -61,11 +61,11 @@ class OnlineStatusBar_StatusCheck {
 					"timestamp > " . $dbr->addQuotes( $dbr->timestamp( $t_time ) ) ),
 					__METHOD__, array( 'LIMIT 1', 'ORDER BY timestamp DESC' ) );
 				// cache it
-				self::setCache( $user->getName(), $result, "delayed" );
+				self::setCache( $user->getName(), $result, "n" );
 			}
 		}
 		else {
-			$result = self::getCache( $user->getName(), "normal" );
+			$result = self::getCache( $user->getName(), "d" );
 
 			if ( $result == '' ) {
 				$dbr = wfGetDB( DB_SLAVE );
@@ -73,7 +73,7 @@ class OnlineStatusBar_StatusCheck {
 					__METHOD__, array( 'LIMIT 1', 'ORDER BY timestamp DESC' ) );
 					$w_time = OnlineStatusBar::getTimeoutDate( true );
 				// cache it
-				self::setCache( $user->getName(), $result, "normal" );
+				self::setCache( $user->getName(), $result, "d" );
 			}
 		}
 
