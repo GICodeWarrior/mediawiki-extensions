@@ -85,6 +85,14 @@ $messages['hsb'] = array(
 	'oracletextsearch-desc' => 'Wobsah/Metadaty nahratych datajow z pomocu indikowanja "Oracle Text" přepytać',
 );
 
+/** Hungarian (Magyar)
+ * @author Dj
+ */
+$messages['hu'] = array(
+	'oracletextsearch' => 'OracleTextSearch',
+	'oracletextsearch-desc' => 'A feltöltött fájlok tartalmának/metaadatának keresése Oracle Text indexing szolgáltatásával',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
