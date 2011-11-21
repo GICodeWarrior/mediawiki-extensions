@@ -126,6 +126,13 @@ $messages['hsb'] = array(
 	'xmlrc-desc' => 'Sćele zdźělenja wo změnach jako XML, přez UDP, Jabber  abo druhe srědki',
 );
 
+/** Hungarian (Magyar)
+ * @author Dj
+ */
+$messages['hu'] = array(
+	'xmlrc-desc' => 'Értesítéseket küld a változásokról XML formában UDP, Jabber vagy más módon.',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
