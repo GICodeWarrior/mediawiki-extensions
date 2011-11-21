@@ -39,7 +39,9 @@ class OnlineStatusBarHooks {
 	 */
 	public static function updateStatus() {
 		global $wgUser;
+		// Purge user page (optional)
 		OnlineStatusBar::purge( $wgUser );
+		// Update status
 		OnlineStatusBar_StatusCheck::updateStatus();
 		return true;
 	}
@@ -53,13 +55,21 @@ class OnlineStatusBarHooks {
 	 */
 	public static function renderBar( &$article, &$outputDone, &$pcache ) {
 		$context = $article->getContext();
-
-		OnlineStatusBar_StatusCheck::updateStatus();
-		$result = OnlineStatusBar::getUserInfoFromTitle( $article->getTitle() );
-		if ( $result === false && User::isIP ( $article->getTitle()->getBaseText() ) ) {
-			$result = OnlineStatusBar::getAnonFromTitle( $article->getTitle() ); 
+		
+		// Performace fix
+		$title = $article->getTitle();
+		if ( $title->getNamespace() != NS_USER && $title->getNamespace() != NS_USER_TALK ) {
+			return true;
 		}
 
+		// Retrieve status of user parsed from title
+		$result = OnlineStatusBar::getUserInfoFromTitle( $title );
+		// In case that status can't be parsed we check if it isn't anon
+		if ( $result === false && User::isIP ( $title->getBaseText() ) ) {
+			$result = OnlineStatusBar::getAnonFromTitle( $title ); 
+		}
+
+		// In case we were unable to get a status let's quit
 		if ( $result === false ) {
 			return true;
 		}
@@ -67,7 +77,7 @@ class OnlineStatusBarHooks {
 		/** @var $user User */
 		list( $status, $user ) = $result;
 
-		// Don't display status of those who have opted out
+		// Don't display status of those who don't want to show bar but only use magic
 		if ( $user->getOption( 'OnlineStatusBar_hide' ) == true ) {
 			return true;
 		}

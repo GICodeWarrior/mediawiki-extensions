@@ -41,7 +41,7 @@ HTML;
 	/**
 	 * Returns the status and User element
 	 *
-	 * @param Title $title
+	 * @param Title $title a title of page
 	 * @return array|bool Array containing the status and User object
          */
 	public static function getAnonFromTitle( Title $title ) {
@@ -74,7 +74,7 @@ HTML;
 	/**
 	 * Returns the status and User element
 	 *
-	 * @param Title $title
+	 * @param Title $title a title of page
 	 * @return array|bool Array containing the status and User object
 	 */
 	public static function getUserInfoFromTitle( Title $title ) {
@@ -82,6 +82,7 @@ HTML;
 			return false;
 		}
 
+		// We create an user object using name of user parsed from title
 		$user = User::newFromName( $title->getBaseText() );
 		// Invalid user
 		if ( !($user instanceof User) ) {
@@ -102,6 +103,8 @@ HTML;
 	 *
 	 */
 	public static function purge( $user_type ) {
+		// First of all we need to know if we already have user object or just a name
+		// if so let's create new object
 		if (  $user_type instanceof User  ) {
 			$user = $user_type;
 		} else if ( is_string( $user_type ) ){

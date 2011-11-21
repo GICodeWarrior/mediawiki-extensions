@@ -80,6 +80,7 @@ $wgResourceModules['ext.OnlineStatusBar.nostalgia'] = array (
 	'remoteExtPath' => 'OnlineStatusBar',
 );
 
+// Load other files of extension
 $wgAutoloadClasses['OnlineStatusBar'] = "$dir/OnlineStatusBar.body.php";
 $wgAutoloadClasses['OnlineStatusBar_StatusCheck'] = "$dir/OnlineStatusBar.status.php";
 $wgAutoloadClasses['OnlineStatusBarHooks'] = "$dir/OnlineStatusBarHooks.php";
