@@ -27,6 +27,13 @@ $messages['de'] = array(
 	'parserfun-desc' => 'Ergänzt die Parserfunktion <code>#parse</code> zum Parsen von Wikitext, sowie das <code>THIS:</code>-Präfix für Variablen, die von Wikiseiten Informationen abrufen',
 );
 
+/** French (Français)
+ * @author Gomoko
+ */
+$messages['fr'] = array(
+	'parserfun-desc' => "Ajoute une fonction de l'analyseur <code>#parse</code> pour analyser le wikitext et introduit le préfixe <code>THIS:</code> pour l'information sur la page liée aux variables magiques",
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
