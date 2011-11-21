@@ -2224,7 +2224,7 @@ Di Sigg hee is nor för beschränkte Metmaacher ze bruche.",
 	'action-editwhitelist' => 'de <i lang="en">whitelist</i> för de vörhande Metmaacher ändere',
 	'action-restricttowhitelist' => 'nur Sigge en de <i lang="en">whitelist</i> aanloore un ändere',
 	'group-restricted' => 'beschrängkte Metmaachere',
-	'group-restricted-member' => 'beschrängkte {{GENDER:$1|Metmaacher|Metmaacherėn|Metmaacher|Metmaacherėn|Metmaacher}}1',
+	'group-restricted-member' => 'beschrängkte {{GENDER:$1|Metmaacher|Metmaacherėn|Metmaacher|Metmaacherėn|Metmaacher}}',
 	'group-manager' => 'Verwalldere',
 	'group-manager-member' => '{{GENDER:$1|Verwallder|Verwallderėn|Verwallder|Verwallderėn|Verwallder}}',
 );
