@@ -51,8 +51,13 @@ class InteractiveBlockMessageHooks {
 				// if user is blocked it's pretty much possible they will be unblocked one day :)
 				// so we enable cache for shorter time only so that we can recheck later
 				// if they weren't already unblocked - if there is a better way to do that, fix me
-				if ( $user->getBlock()->mExpiry != 'infinityinfinity' ) { // this definitely needs fix :P
-					$parser->getOutput()->updateCacheExpiry($wgInteractiveBlockMessageCacheTimeout);
+				$expiry = $user->getBlock()->mExpiry;
+				if ( $expiry != 'infinityinfinity' ) { // this definitely needs fix :P
+					$expiry = wfTimestamp( TS_UNIX, $expiry ) - wfTimestamp( TS_UNIX );
+					if ( $expiry > 0 ) {
+					// just to make sure
+						$parser->getOutput()->updateCacheExpiry($expiry);
+					}
 				}
 				$ret = 'true';
 				return true;
