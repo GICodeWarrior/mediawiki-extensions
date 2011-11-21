@@ -21,7 +21,7 @@ class SpecialReviews extends SpecialPage {
 	 * @since 0.1
 	 */
 	public function __construct() {
-		parent::__construct( 'Reviews', 'reviewer' );
+		parent::__construct( 'Reviews', 'review' );
 	}
 
 	/**
@@ -32,6 +32,7 @@ class SpecialReviews extends SpecialPage {
 	 * @param string $arg
 	 */
 	public function execute( $subPage ) {
+		$subPage = is_null( $subPage ) ? '' : $subPage;
 		$this->subPage = str_replace( '_', ' ', $subPage );
 
 		$this->setHeaders();
@@ -51,12 +52,23 @@ class SpecialReviews extends SpecialPage {
 				$this->displayReviewList();
 			}
 			else {
-				
 			}
 		}
 	}
 
 	protected function displayReviewList() {
+		$reviewPager = new ReviewPager( array() );
+
+		if ( $reviewPager->getNumRows() ) {
+			$this->getOutput()->addHTML(
+				$reviewPager->getNavigationBar() .
+				$reviewPager->getBody() .
+				$reviewPager->getNavigationBar()
+			);
+		}
+		else {
+			$this->getOutput()->addWikiMsg( 'reviews-pager-no-results' );
+		}
 	}
 
 }

@@ -84,7 +84,7 @@ $wgHooks['BeforePageDisplay'][] 				= 'ReviewsHooks::onBeforePageDisplay';
 
 // Rights
 $wgAvailableRights[] = 'reviewsadmin';
-$wgAvailableRights[] = 'reviewer';
+$wgAvailableRights[] = 'review';
 
 # Users that can manage the reviews.
 $wgGroupPermissions['*'            ]['reviewsadmin'] = false;
@@ -95,12 +95,12 @@ $wgGroupPermissions['sysop'        ]['reviewsadmin'] = true;
 $wgGroupPermissions['reviewsadmin' ]['reviewsadmin'] = true;
 
 # Users that can post reviews.
-$wgGroupPermissions['*'            ]['reviewer'] = false;
-$wgGroupPermissions['user'         ]['reviewer'] = true;
-//$wgGroupPermissions['autoconfirmed']['reviewer'] = true;
-//$wgGroupPermissions['bot'          ]['reviewer'] = false;
-$wgGroupPermissions['sysop'        ]['reviewer'] = true;
-$wgGroupPermissions['reviewer']['reviewer'] = true;
+$wgGroupPermissions['*'            ]['review'] = false;
+$wgGroupPermissions['user'         ]['review'] = true;
+//$wgGroupPermissions['autoconfirmed']['review'] = true;
+//$wgGroupPermissions['bot'          ]['review'] = false;
+$wgGroupPermissions['sysop'        ]['review'] = true;
+$wgGroupPermissions['reviewer']['review'] = true;
 
 
 // Resource loader modules
@@ -125,9 +125,10 @@ $wgResourceModules['jquery.reviewControl'] = $moduleTemplate + array(
 		'jquery.reviewControl.css',
 	),
 	'messages' => array(
+		'reviews-submission-submit'
 	),
 	'dependencies' => array(
-		'jquery.json', 'ext.reviews'
+		'jquery.json', 'ext.reviews', 'jquery.ui.button',
 	),
 );
 

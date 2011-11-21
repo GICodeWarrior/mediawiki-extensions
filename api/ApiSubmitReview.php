@@ -21,25 +21,29 @@ class ApiSubmitReview extends ApiBase {
 		
 		$params = $this->extractRequestParams();
 		
-		if ( !( isset( $params['id'] ) XOR isset( $params['name'] ) ) ) {
-			$this->dieUsage( wfMsgExt( 'review-err-id-xor-name' ), 'id-xor-name' );
-		}
+		unset( $params['token'] );
+		$params['edit_time'] = wfTimestampNow();
+		$params['user_id'] = $this->getUser()->getId();
 		
-		if ( isset( $params['name'] ) ) {
-			$review = Review::selectRow( null, array( 'name' => $params['name'] ) );
+		if ( array_key_exists( 'id', $params ) ) {
+			$review = Review::selectRow( array( 'id', 'user_id' ), array( 'id' => $params['id'] ) );
 			
-			if ( $review === false ) {
-				$this->dieUsage( wfMsgExt( 'review-err-review-name-unknown', 'parsemag', $params['name'] ), 'review-name-unknown' );
+			if ( $review->getField( 'user_id' ) === $this->getUser()->getId() ) {
+				$review->setFields( $params );
+				$review->writeToDB();
 			}
-		} else {
-			$review = Review::selectRow( null, array( 'id' => $params['id'] ) );
-			
-			if ( $review === false ) {
-				$this->dieUsage( wfMsgExt( 'review-err-review-id-unknown', 'parsemag', $params['id'] ), 'review-id-unknown' );
+			else {
+				$this->dieUsageMsg( array( 'badaccess-groups' ) );
 			}
 		}
-		
-		// TODO
+		else {
+			$review = new Review( $params );
+			
+			$review->setField( 'state', Review::STATUS_NEW );
+			$review->setField( 'post_time', wfTimestampNow() );
+			
+			$review->writeToDB();
+		}
 	}
 
 	public function needsToken() {
@@ -51,24 +55,49 @@ class ApiSubmitReview extends ApiBase {
 	}
 	
 	public function getAllowedParams() {
-		return array(
+		$params = array(
 			'id' => array(
 				ApiBase::PARAM_TYPE => 'integer',
 			),
-			'name' => array(
+			'title' => array(
 				ApiBase::PARAM_TYPE => 'string',
+				ApiBase::PARAM_REQUIRED => true,
+			),
+			'text' => array(
+				ApiBase::PARAM_TYPE => 'string',
+				ApiBase::PARAM_REQUIRED => true,
+			),
+			'rating' => array(
+				ApiBase::PARAM_TYPE => 'integer',
+				ApiBase::PARAM_REQUIRED => true,
+			),
+			'ratings' => array(
+				ApiBase::PARAM_TYPE => 'string',
+				ApiBase::PARAM_REQUIRED => true,
+			),
+			'page_id' => array(
+				ApiBase::PARAM_TYPE => 'integer',
+				ApiBase::PARAM_REQUIRED => true,
 			),
 			// TODO
 			'token' => null,
 		);
+		
+		return $params;
 	}
 	
 	public function getParamDescription() {
-		return array(
-			'id' => 'The ID of the review being submitted.',
-			'name' => 'The name of the review being submitted.',
+		$descs = array(
+			'id' => 'The ID of the review being submitted, ommit for new review.',
 			'token' => 'Edit token. You can get one of these through prop=info.',
+			'title' => 'The review title',
+			'text' => 'The review text',
+			'rating' => 'The main rating for the review',
+			'ratings' => 'JSON string holding the rating data',
+			'page_id' => 'The ID of the page to which the review belongs',
 		);
+		
+		return $descs;
 	}
 	
 	public function getDescription() {

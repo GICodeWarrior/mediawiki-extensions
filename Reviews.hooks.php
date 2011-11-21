@@ -23,7 +23,13 @@ final class ReviewsHooks {
 	 * @return true
 	 */
 	public static function onSchemaUpdate( /* DatabaseUpdater */ $updater = null ) {
-
+		$updater->addExtensionUpdate( array(
+			'addTable',
+			'reviews',
+			dirname( __FILE__ ) . '/sql/Reviews.sql',
+			true
+		) );
+		
 		return true;
 	}
 

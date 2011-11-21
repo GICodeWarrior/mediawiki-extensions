@@ -16,7 +16,10 @@ CREATE TABLE IF NOT EXISTS /*_*/reviews (
 ) /*$wgDBTableOptions*/;
 
 CREATE UNIQUE INDEX /*i*/review_page_user ON /*_*/reviews (review_page_id, review_user_id);
-CREATE INDEX /*i*/review_time ON /*_*/reviews (review_time);
+CREATE INDEX /*i*/review_user_id ON /*_*/reviews (review_user_id);
+CREATE INDEX /*i*/review_title ON /*_*/reviews (review_title);
+CREATE INDEX /*i*/review_post_time ON /*_*/reviews (review_post_time);
+CREATE INDEX /*i*/review_edit_time ON /*_*/reviews (review_edit_time);
 CREATE INDEX /*i*/review_state ON /*_*/reviews (review_state);
 CREATE INDEX /*i*/review_rating ON /*_*/reviews (review_rating);
 
@@ -28,3 +31,4 @@ CREATE TABLE IF NOT EXISTS /*_*/review_ratings (
 ) /*$wgDBTableOptions*/;
 
 CREATE UNIQUE INDEX /*i*/rrating_review_type ON /*_*/review_ratings (rating_review_id, rating_type);
+CREATE INDEX /*i*/review_rating_type ON /*_*/review_ratings (rating_type);

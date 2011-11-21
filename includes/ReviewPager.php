@@ -81,7 +81,11 @@ class ReviewPager extends TablePager {
 
 		if ( is_null( $headers ) ) {
 			$headers = array(
-				// TODO
+				'reviews-pager-post-time',
+				'reviews-pager-state',
+				'reviews-pager-title',
+				'reviews-pager-user',
+				'reviews-pager-page',
 			);
 
 			$headers = array_map( 'wfMsg', $headers );
@@ -117,7 +121,12 @@ class ReviewPager extends TablePager {
 		return array(
 			'tables' => array( 'reviews' ),
 			'fields' => array(
-				// TODO
+				'review_id',
+				'review_post_time',
+				'review_state',
+				'review_title',
+				'review_user_id',
+				'review_page_id',
 			),
 			'conds' => $this->conds,
 		);
@@ -132,7 +141,7 @@ class ReviewPager extends TablePager {
 	}
 
 	function getDefaultSort() {
-		return 'review_time';
+		return 'review_post_time';
 	}
 
 	function isFieldSortable( $name ) {

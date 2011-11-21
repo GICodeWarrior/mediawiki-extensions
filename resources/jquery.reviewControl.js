@@ -27,7 +27,15 @@
 			
 			$this.append( $( '<textarea />' ).attr( {
 				'name': this.fieldName( 'text' )
-			} ).text( this.review.fields.text ) );			
+			} ).text( this.review.fields.text ) );	
+			
+			this.button = $( '<button />' )
+				.button( { 'label': mw.msg( 'reviews-submission-submit' ) } )
+				.click( function() {
+					_this.save();
+				} );
+			
+			$this.append( this.button );
 		};
 		
 		this.setup = function() {
@@ -39,15 +47,16 @@
 		
 		this.readInputs = function() {
 			
-			this.review = new reviews.review(); // TODO
+			//this.review = new reviews.review(); // TODO
 		};
 		
 		this.save = function() {
 			this.readInputs();
 			
+			this.button.button( 'disable' );
 			
 			this.review.save( function() {
-				
+				this.button.button( 'enable' );
 			} );
 		};
 		

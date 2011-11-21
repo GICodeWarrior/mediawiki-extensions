@@ -25,7 +25,7 @@ $messages['en'] = array(
 
 	// Rights
 	'right-reviewsadmin' => 'Manage reviews',
-	'right-reviewer' => 'Post reviews',
+	'right-review' => 'Post reviews',
 
 	'action-reviewsadmin' => 'manage reviews',
 	'action-reviewer' => 'post reviews',
@@ -38,4 +38,7 @@ $messages['en'] = array(
 	'group-reviewer' => 'Reviewer',
 	'group-reviewer-member' => '{{GENDER:$1|Reviewer}}',
 	'grouppage-reviewer' => '{{ns:project}}:Reviewers',
+
+	// Review control
+	'reviews-submission-submit' => 'Submit',
 );
