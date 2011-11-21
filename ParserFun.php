@@ -89,7 +89,7 @@ class ExtParserFun {
 		global $egParserFunDisabledFunctions;		
 		if( ! in_array( self::MAG_THIS, $egParserFunDisabledFunctions ) ) {
 			// only register function if not disabled by configuration
-			$parser->setFunctionHook( self::MAG_THIS, array( __CLASS__, 'this_' ), SFH_NO_HASH | SFH_OBJECT_ARGS );
+			$parser->setFunctionHook( self::MAG_THIS, array( __CLASS__, 'pfObj_this' ), SFH_NO_HASH | SFH_OBJECT_ARGS );
 		}
 		return true;
 	}
@@ -113,7 +113,7 @@ class ExtParserFun {
 	/**
 	 * Magic word 'THIS:' to return certain information about the page the word actually is defined on
 	 */
-	static function this_( Parser &$parser, PPFrame $frame = null, $args = null ) {
+	static function pfObj_this( Parser &$parser, PPFrame $frame = null, $args = null ) {
 		// if MW version is too old or something is wrong:
 		if( $frame === null || $frame->title === null ) {
 			return '';
@@ -246,7 +246,7 @@ class ExtParserFun {
 		switch( $magicWordId ) {
 			/** THIS **/
 			case self::MAG_THIS:
-				$ret = self::this_( $parser, $frame, null );
+				$ret = self::pfObj_this( $parser, $frame, null );
 				break;
 		}
 		return true;

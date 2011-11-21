@@ -17,7 +17,7 @@ $magicWords = array();
  * @author Daniel Werner
  */
 $magicWords['en'] = array(
-	'parse' => array( false, 'parse' ),
+	'parse' => array( 0, 'parse' ),
 	ExtParserFun::MAG_THIS => array( 1, 'THIS' ),
 );
 
@@ -25,13 +25,13 @@ $magicWords['en'] = array(
  * @author Daniel Werner
  */
 $messages['qqq'] = array(
-	'parse' => array( 1, 'Keyword to put in front of a variable like "{{THIS:PAGENAME}}". This will output the pagename of the page where it is defined on instead of the page actually being parsed. "THIS" refers to that page.' ),
+	'parse' => array( 0, 'Do not translate this! This is the magic word for the "#parse" function' ),
+	ExtParserFun::MAG_THIS => array( 1, 'Keyword to put in front of a variable like "{{THIS:PAGENAME}}". This will output the pagename of the page where it is defined on instead of the page actually being parsed. "THIS" refers to that page.' ),
 );
 
 /** German (Deutsch)
  * @author Daniel Werner
  */
 $magicWords['de'] = array(
-	'parse' => array( false, 'parse' ),
 	ExtParserFun::MAG_THIS => array( 1, 'DIESER', 'DIESE', 'DIESES' ),
 );
