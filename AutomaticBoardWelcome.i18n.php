@@ -80,6 +80,13 @@ $messages['hsb'] = array(
 	'automaticboardwelcome-desc' => 'Sćele awtomatisce [[MediaWiki:User-board-welcome-message|powitansku powěsć]] na wužiwarske deski nowych wužiwarjow po załoženju konta',
 );
 
+/** Hungarian (Magyar)
+ * @author Dj
+ */
+$messages['hu'] = array(
+	'automaticboardwelcome-desc' => 'Automatikusan küld [[MediaWiki:User-board-welcome-message|egy üdvözlő üzenetet]] az új szerkesztők vitalapjára a fiók létrehozása után',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
