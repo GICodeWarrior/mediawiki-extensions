@@ -177,10 +177,12 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
+ * @author Dj
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'semanticinternalobjects-desc' => 'Belső objektumok beállítása a szemantikus MediaWikiben',
+	'semanticinternalobjects-internalproperty' => 'Belső tulajdonság',
 );
 
 /** Interlingua (Interlingua)
