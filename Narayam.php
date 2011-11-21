@@ -146,16 +146,16 @@ $narayamTpl = array(
 	'remoteExtPath' => 'Narayam',
 );
 $wgResourceModules['ext.narayam'] = $narayamTpl + array(
-	'scripts' => 'js/ext.narayam.js',
+	'scripts' => 'resources/ext.narayam.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.core'] = $narayamTpl + array(
-	'scripts' => 'js/ext.narayam.core.js',
-	'styles' => 'css/ext.narayam.core.css',
+	'scripts' => 'resources/ext.narayam.core.js',
+	'styles' => 'resources/ext.narayam.core.css',
 	'skinStyles' => array(
-		'monobook' => 'css/ext.narayam.core-monobook.css',
-		'vector' => 'css/ext.narayam.core-vector.css',
-		'modern' => 'css/ext.narayam.core-modern.css',
+		'monobook' => 'resources/ext.narayam.core-monobook.css',
+		'vector' => 'resources/ext.narayam.core-vector.css',
+		'modern' => 'resources/ext.narayam.core-modern.css',
 	),
 	'messages' => array(
 		'narayam-checkbox-tooltip',
@@ -209,150 +209,150 @@ $wgResourceModules['ext.narayam.core'] = $narayamTpl + array(
 	),
 );
 $wgResourceModules['ext.narayam.rules.am'] = $narayamTpl + array(
-	'scripts' => 'js/ext.narayam.rules.am.js',
+	'scripts' => 'resources/ext.narayam.rules.am.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.as'] = $narayamTpl + array(
-	'scripts' => 'js/ext.narayam.rules.as.js',
+	'scripts' => 'resources/ext.narayam.rules.as.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.as-avro'] = $narayamTpl + array(
-	'scripts' => 'js/ext.narayam.rules.as-avro.js',
+	'scripts' => 'resources/ext.narayam.rules.as-avro.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.as-bornona'] = $narayamTpl + array(
-	'scripts' => 'js/ext.narayam.rules.as-bornona.js',
+	'scripts' => 'resources/ext.narayam.rules.as-bornona.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.as-inscript'] = $narayamTpl + array(
-	'scripts' => 'js/ext.narayam.rules.as-inscript.js',
+	'scripts' => 'resources/ext.narayam.rules.as-inscript.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.bn-avro'] = $narayamTpl + array(
-	'scripts' => 'js/ext.narayam.rules.bn-avro.js',
+	'scripts' => 'resources/ext.narayam.rules.bn-avro.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.bn-inscript'] = $narayamTpl + array(
-	'scripts' => 'js/ext.narayam.rules.bn-inscript.js',
+	'scripts' => 'resources/ext.narayam.rules.bn-inscript.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.bn-nkb'] = $narayamTpl + array(
-	'scripts' => 'js/ext.narayam.rules.bn-nkb.js',
+	'scripts' => 'resources/ext.narayam.rules.bn-nkb.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.de'] = $narayamTpl + array(
-	'scripts' => 'js/ext.narayam.rules.de.js',
+	'scripts' => 'resources/ext.narayam.rules.de.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.brx-inscript'] = $narayamTpl + array(
-	'scripts' => 'js/ext.narayam.rules.brx-inscript.js',
+	'scripts' => 'resources/ext.narayam.rules.brx-inscript.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.eo'] = $narayamTpl + array(
-	'scripts' => 'js/ext.narayam.rules.eo.js',
+	'scripts' => 'resources/ext.narayam.rules.eo.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.hi'] = $narayamTpl + array(
-	'scripts' => 'js/ext.narayam.rules.hi.js',
+	'scripts' => 'resources/ext.narayam.rules.hi.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.hi-inscript'] = $narayamTpl + array(
-	'scripts' => 'js/ext.narayam.rules.hi-inscript.js',
+	'scripts' => 'resources/ext.narayam.rules.hi-inscript.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.kn'] = $narayamTpl + array(
-	'scripts' => 'js/ext.narayam.rules.kn.js',
+	'scripts' => 'resources/ext.narayam.rules.kn.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.kn-inscript'] = $narayamTpl + array(
-	'scripts' => 'js/ext.narayam.rules.kn-inscript.js',
+	'scripts' => 'resources/ext.narayam.rules.kn-inscript.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.ml'] = $narayamTpl + array(
-	'scripts' => 'js/ext.narayam.rules.ml.js',
+	'scripts' => 'resources/ext.narayam.rules.ml.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.mr'] = $narayamTpl + array(
-	'scripts' => 'js/ext.narayam.rules.mr.js',
+	'scripts' => 'resources/ext.narayam.rules.mr.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.mr-inscript'] = $narayamTpl + array(
-	'scripts' => 'js/ext.narayam.rules.mr-inscript.js',
+	'scripts' => 'resources/ext.narayam.rules.mr-inscript.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.ml-inscript'] = $narayamTpl + array(
-	'scripts' => 'js/ext.narayam.rules.ml-inscript.js',
+	'scripts' => 'resources/ext.narayam.rules.ml-inscript.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.ne'] = $narayamTpl + array(
-	'scripts' => 'js/ext.narayam.rules.ne.js',
+	'scripts' => 'resources/ext.narayam.rules.ne.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.ne-inscript'] = $narayamTpl + array(
-	'scripts' => 'js/ext.narayam.rules.ne-inscript.js',
+	'scripts' => 'resources/ext.narayam.rules.ne-inscript.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.or'] = $narayamTpl + array(
-	'scripts' => 'js/ext.narayam.rules.or.js',
+	'scripts' => 'resources/ext.narayam.rules.or.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.or-lekhani'] = $narayamTpl + array(
-	'scripts' => 'js/ext.narayam.rules.or-lekhani.js',
+	'scripts' => 'resources/ext.narayam.rules.or-lekhani.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.or-inscript'] = $narayamTpl + array(
-	'scripts' => 'js/ext.narayam.rules.or-inscript.js',
+	'scripts' => 'resources/ext.narayam.rules.or-inscript.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.pa-inscript'] = $narayamTpl + array(
-	'scripts' => 'js/ext.narayam.rules.pa-inscript.js',
+	'scripts' => 'resources/ext.narayam.rules.pa-inscript.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.pa-phonetic'] = $narayamTpl + array(
-	'scripts' => 'js/ext.narayam.rules.pa-phonetic.js',
+	'scripts' => 'resources/ext.narayam.rules.pa-phonetic.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.sa'] = $narayamTpl + array(
-	'scripts' => 'js/ext.narayam.rules.sa.js',
+	'scripts' => 'resources/ext.narayam.rules.sa.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.sa-inscript'] = $narayamTpl + array(
-	'scripts' => 'js/ext.narayam.rules.sa-inscript.js',
+	'scripts' => 'resources/ext.narayam.rules.sa-inscript.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.si-singlish'] = $narayamTpl + array(
-	'scripts' => 'js/ext.narayam.rules.si-singlish.js',
+	'scripts' => 'resources/ext.narayam.rules.si-singlish.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.si-wijesekara'] = $narayamTpl + array(
-	'scripts' => 'js/ext.narayam.rules.si-wijesekara.js',
+	'scripts' => 'resources/ext.narayam.rules.si-wijesekara.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.ta'] = $narayamTpl + array(
-	'scripts' => 'js/ext.narayam.rules.ta.js',
+	'scripts' => 'resources/ext.narayam.rules.ta.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.ta-99'] = $narayamTpl + array(
-	'scripts' => 'js/ext.narayam.rules.ta-99.js',
+	'scripts' => 'resources/ext.narayam.rules.ta-99.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.ta-bamini'] = $narayamTpl + array(
-	'scripts' => 'js/ext.narayam.rules.ta-bamini.js',
+	'scripts' => 'resources/ext.narayam.rules.ta-bamini.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.te-inscript'] = $narayamTpl + array(
-	'scripts' => 'js/ext.narayam.rules.te-inscript.js',
+	'scripts' => 'resources/ext.narayam.rules.te-inscript.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.ur'] = $narayamTpl + array(
-	'scripts' => 'js/ext.narayam.rules.ur.js',
+	'scripts' => 'resources/ext.narayam.rules.ur.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.gu'] = $narayamTpl + array(
-	'scripts' => 'js/ext.narayam.rules.gu.js',
+	'scripts' => 'resources/ext.narayam.rules.gu.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.gu-inscript'] = $narayamTpl + array(
-	'scripts' => 'js/ext.narayam.rules.gu-inscript.js',
+	'scripts' => 'resources/ext.narayam.rules.gu-inscript.js',
 	'dependencies' => 'ext.narayam.core',
 );
