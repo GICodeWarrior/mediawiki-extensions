@@ -101,5 +101,50 @@ class Review extends ReviewsDBObject {
 		
 		return $success;
 	}
+	
+	/**
+	 * Get the ratings part of this review.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return array of ReviewRating
+	 */
+	public function getRatings() {
+		return ReviewRating::select( null, array( 'review_id' => $this->getId() ) );
+	}
+	
+	/**
+	 * (non-PHPdoc)
+	 * @see ReviewsDBObject::toArray()
+	 */
+	public function toArray( $fields = null, $incNullId = false, array $types = null ) {
+		$array = parent::toArray( $fields, $incNullId );
+		
+		if ( !is_null( $context ) ) {
+			$array['ratings'] = $this->getRatingArray( $types );
+		}
+		
+		return $array;
+	}
+	
+	public function getRatingArray( array $types = null ) {
+		$ratings = array();
+		
+		foreach ( $this->getRatings() as /* ReviewRating */ $rating ) {
+			if ( is_null( $types ) || in_array( $rating->getField( 'type' ), $types ) ) {
+				$ratings[$rating->getField( 'type' )] = $rating->getField( 'value' );
+			}
+		}
+		
+		if ( !is_null( $types ) ) {
+			foreach ( $types as $type ) {
+				if ( !array_key_exists( $type, $ratings ) ) {
+					$ratings[$type] = false;
+				}
+			}
+		}
+		
+		return $ratings;
+	}
 
 }

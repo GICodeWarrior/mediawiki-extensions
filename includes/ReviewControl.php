@@ -17,12 +17,30 @@ class ReviewControl {
 		
 		$attribs = array(
 			'class' => 'review-control',
-			'data-rating-types' => FormatJson::encode( ReviewRating::getTypesForContext( $this->context ) )
 		);
 		
-		if ( !is_null( $this->review ) ) {
-			$attribs['data-review'] = FormatJson::encode( $this->review->toArray() );
+		$types = ReviewRating::getTypesForContext( $this->context );
+		
+		if ( is_null( $this->review ) ) {
+			$ratings = array();
+			
+			foreach ( $types as $type ) {
+				$ratings[$type] = false;
+			}
+			
+			$review = array(
+				'page_id' => $context->getTitle()->getArticleID(),
+				'title' => '',
+				'text' => '',
+				'rating' => 0,
+				'ratings' => $ratings
+			);
+		} 
+		else {
+			$review = $this->review->toArray( array( 'page_id', 'title', 'text', 'rating' ), null, $types );
 		}
+		
+		$attribs['data-review'] = FormatJson::encode( $review );
 		
 		$out->addHTML( Html::element( 'div', $attribs ) );
 	}

@@ -20,12 +20,23 @@ class ApiSubmitReview extends ApiBase {
 		}			
 		
 		$params = $this->extractRequestParams();
+		$ratings = FormatJson::decode( $params['ratings'] );
 		
 		unset( $params['token'] );
+		unset( $params['ratings'] );
+		
 		$params['edit_time'] = wfTimestampNow();
 		$params['user_id'] = $this->getUser()->getId();
 		
-		if ( array_key_exists( 'id', $params ) ) {
+		if ( is_null( $params['id'] ) ) {
+			$review = new Review( $params );
+			
+			$review->setField( 'state', Review::STATUS_NEW );
+			$review->setField( 'post_time', wfTimestampNow() );
+			
+			$review->writeToDB();
+		}
+		else {
 			$review = Review::selectRow( array( 'id', 'user_id' ), array( 'id' => $params['id'] ) );
 			
 			if ( $review->getField( 'user_id' ) === $this->getUser()->getId() ) {
@@ -35,14 +46,6 @@ class ApiSubmitReview extends ApiBase {
 			else {
 				$this->dieUsageMsg( array( 'badaccess-groups' ) );
 			}
-		}
-		else {
-			$review = new Review( $params );
-			
-			$review->setField( 'state', Review::STATUS_NEW );
-			$review->setField( 'post_time', wfTimestampNow() );
-			
-			$review->writeToDB();
 		}
 	}
 

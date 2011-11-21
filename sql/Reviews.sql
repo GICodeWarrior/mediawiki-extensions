@@ -27,8 +27,10 @@ CREATE INDEX /*i*/review_rating ON /*_*/reviews (review_rating);
 CREATE TABLE IF NOT EXISTS /*_*/review_ratings (
   rating_id                    INT unsigned        NOT NULL auto_increment PRIMARY KEY,
   rating_review_id             INT unsigned        NOT NULL,
-  rating_type                  TINYINT unsigned    NOT NULL
+  rating_type                  TINYINT unsigned    NOT NULL,
+  rating_value                 TINYINT unsigned    NOT NULL
 ) /*$wgDBTableOptions*/;
 
 CREATE UNIQUE INDEX /*i*/rrating_review_type ON /*_*/review_ratings (rating_review_id, rating_type);
 CREATE INDEX /*i*/review_rating_type ON /*_*/review_ratings (rating_type);
+CREATE INDEX /*i*/review_rating_value ON /*_*/review_ratings (rating_value);

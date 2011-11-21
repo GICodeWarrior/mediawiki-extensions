@@ -8,27 +8,13 @@
 
 (function( $, mw, reviews ) {
 	
-	reviews.Review = function( data, ratingTypes ) {
+	reviews.Review = function( data ) {
 		var _this = this;
 		
 		this.fields = null;
-		this.ratings = null;
 		
 		this.setup = function() {
-			if ( data === false ) {
-				this.fields = {
-					'id': false,
-					'title': '',
-					'text': ''
-				};
-				
-				for ( var i = ratingTypes.length - 1; i >= 0; i-- ) {
-					this.ratings[ratingTypes[i]] = false;
-				}
-			}
-			else {
-				debugger;
-			}
+			this.fields = data;
 		};
 		
 		this.save = function( callback ) {
@@ -36,8 +22,16 @@
 				'action': 'submitreview',
 				'format': 'json',
 				'token': mw.user.tokens.get( 'editToken' ),
-				// TODO
+				'page_id': this.fields.page_id,
+				'title': this.fields.title,
+				'text': this.fields.text,
+				'rating': 0,
+				'ratings': '{}'
 			};
+			
+			if ( this.fields.hasOwnProperty( 'id' ) ) {
+				requestArgs.id = this.fields.id;
+			}
 			
 			$.post(
 				wgScriptPath + '/api.php',
