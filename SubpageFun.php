@@ -8,7 +8,7 @@
  * Support:       http://www.mediawiki.org/wiki/Extension_talk:Subpage_Fun
  * Source code:   http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/SubpageFun
  * 
- * @version: 0.5.1
+ * @version: 0.5.2
  * @license: ISC license
  * @author:  Daniel Werner < danweetz@web.de >
  *
@@ -38,17 +38,18 @@ $wgExtensionMessagesFiles['SubpageFunMagic'] = ExtSubpageFun::getDir() . '/Subpa
 $wgAutoloadClasses['SubpageInfo'] = ExtSubpageFun::getDir() . '/SFun_SubpageInfo.php';
 
 // Register magic words:
-$wgHooks['ParserFirstCallInit'         ][] = 'ExtSubpageFun::init';
-//$wgHooks['LanguageGetMagic'            ][] = 'ExtSubpageFun::onLanguageGetMagic';
+$wgHooks['ParserFirstCallInit'][] = 'ExtSubpageFun::init';
 
 // register plain variables:
 $wgHooks['MagicWordwgVariableIDs'      ][] = 'ExtSubpageFun::onMagicWordwgVariableIDs';
 $wgHooks['ParserGetVariableValueSwitch'][] = 'ExtSubpageFun::onParserGetVariableValueSwitch';
 
+// hook up for use with 'Parser Fun' extensions 'THIS' function:
+$wgHooks['GetThisVariableValueSwitch'][] = 'ExtSubpageFun::onGetThisVariableValueSwitch';
 
 class ExtSubpageFun {
 
-	const VERSION = '0.5.1';
+	const VERSION = '0.5.2';
 
 	const MAG_SUBPAGETITLE     = 'subpagetitle';
 	const MAG_SUBPAGES         = 'subpages';
@@ -58,15 +59,15 @@ class ExtSubpageFun {
 	const MAG_NUMBEROFSUBPAGES = 'numberofsubpages';
 	const MAG_TOPLEVELPAGE     = 'toplevelpage';
 	
-	static function init( &$parser ) {
+	static function init( Parser &$parser ) {
 		// optional SFH_NO_HASH to omit the hash '#' from function names
-		$parser->setFunctionHook( self::MAG_SUBPAGETITLE,     array( __CLASS__, 'subpagetitle'),     SFH_NO_HASH );
-		$parser->setFunctionHook( self::MAG_SUBPAGES,         array( __CLASS__, 'subpages'),         SFH_NO_HASH );
-		$parser->setFunctionHook( self::MAG_PARENTPAGES,      array( __CLASS__, 'parentpages'),      SFH_NO_HASH );
-		$parser->setFunctionHook( self::MAG_SIBLINGPAGES,     array( __CLASS__, 'siblingpages'),     SFH_NO_HASH );
-		$parser->setFunctionHook( self::MAG_SUBPAGELEVEL,     array( __CLASS__, 'subpagelevel'),     SFH_NO_HASH );
-		$parser->setFunctionHook( self::MAG_NUMBEROFSUBPAGES, array( __CLASS__, 'numberofsubpages'), SFH_NO_HASH );
-		$parser->setFunctionHook( self::MAG_TOPLEVELPAGE,     array( __CLASS__, 'toplevelpage'),     SFH_NO_HASH );
+		$parser->setFunctionHook( self::MAG_SUBPAGETITLE,     array( __CLASS__, 'pf_subpagetitle' ),     SFH_NO_HASH );
+		$parser->setFunctionHook( self::MAG_SUBPAGES,         array( __CLASS__, 'pf_subpages' ),         SFH_NO_HASH );
+		$parser->setFunctionHook( self::MAG_PARENTPAGES,      array( __CLASS__, 'pf_parentpages' ),      SFH_NO_HASH );
+		$parser->setFunctionHook( self::MAG_SIBLINGPAGES,     array( __CLASS__, 'pf_siblingpages' ),     SFH_NO_HASH );
+		$parser->setFunctionHook( self::MAG_SUBPAGELEVEL,     array( __CLASS__, 'pf_subpagelevel' ),     SFH_NO_HASH );
+		$parser->setFunctionHook( self::MAG_NUMBEROFSUBPAGES, array( __CLASS__, 'pf_numberofsubpages' ), SFH_NO_HASH );
+		$parser->setFunctionHook( self::MAG_TOPLEVELPAGE,     array( __CLASS__, 'pf_toplevelpage' ),     SFH_NO_HASH );
 		
 		return true;
 	}
@@ -101,7 +102,12 @@ class ExtSubpageFun {
 		
 		foreach ($args as $arg) if( ! is_object( $arg ) )
 		{
-			if( preg_match( '/^([^\\n\\r]+?)\\s*=\\s*(.*)$/s', $arg, $match ) ) { // s - include newline. Parameter name is not supposed to have linebreaks
+			if( preg_match(
+					'/^([^\\n\\r]+?)\\s*=\\s*(.*)$/s', // s - include newline. Parameter name is not supposed to have linebreaks
+					$arg,
+					$match
+				)
+			) {
 				$argv[ trim( $match[1] ) ] = trim( $match[2] );
 			} else {
 				$numargs++;
@@ -119,7 +125,19 @@ class ExtSubpageFun {
 	 * 
 	 * @return Title|null
 	 */
-	private static function newTitleObject ( Parser &$parser, $title = null ) {	
+	private static function newTitleObject ( Parser &$parser, $title = null ) {
+		
+		if( is_array( $title ) ) {
+			/*
+			 * Instead of one Title, all arguments given to the parser function are given.
+			 * This is because it makes things more generic to deal with extension 'Parser Fun' support
+			 * especially for functions only requiring an option title.
+			 */
+			// get all possible arguments:
+			$args = ExtSubpageFun::getFunctionArgsArray( $title );
+			$title = isset( $args[1] ) ? $args[1] : null;	
+		}
+		
 		if( $title !== null && $title !== '' ) {
 			return Title::newFromText( $title );
 		}
@@ -232,15 +250,15 @@ class ExtSubpageFun {
 	
 	/*** 'Subpage Fun' parser functions: ***/
 
-	static function subpagetitle( &$parser, $title = null ) {
-		$t = self::newTitleObject( $parser, $title );
+	static function pf_subpagetitle( &$parser /* , $title = null */ ) {		
+		$t = self::newTitleObject( $parser, func_get_args() );
 		if( $t === null ) {
 			return ''; // invalid title given
 		}
 		return wfEscapeWikiText( SubpageInfo::getSubpageTitle( $t ) );
 	}
 	
-	static function subpages( &$parser ) {
+	static function pf_subpages( &$parser ) {
 		// get all possible arguments:
 		$args = ExtSubpageFun::getFunctionArgsArray( func_get_args() );
 
@@ -265,7 +283,7 @@ class ExtSubpageFun {
 		return self::createSiteList( $subpages, $linked, $sep );
 	}
 	
-	static function parentpages( &$parser ) {
+	static function pf_parentpages( &$parser ) {
 		// get all possible arguments:
 		$args = ExtSubpageFun::getFunctionArgsArray( func_get_args() );
 
@@ -290,7 +308,7 @@ class ExtSubpageFun {
 		return self::createSiteList( $parentpages, $linked, $sep );
 	}	
 	
-	static function siblingpages( &$parser ) {
+	static function pf_siblingpages( &$parser ) {
 		//get all possible arguments:
 		$args = ExtSubpageFun::getFunctionArgsArray( func_get_args() );
 
@@ -314,15 +332,15 @@ class ExtSubpageFun {
 		return self::createSiteList( $siblingpages, $linked, $sep );
 	}	
 	
-	static function subpagelevel( &$parser, $title = null) {		
-		$t = self::newTitleObject( $parser, $title );
+	static function pf_subpagelevel( &$parser /* , $title = null */ ) {		
+		$t = self::newTitleObject( $parser, func_get_args() );
 		if( $t === null ) {
 			return ''; // invalid title given
 		}
 		return SubpageInfo::getSubpageLevel( $t );
 	}	
 	
-	static function numberofsubpages( &$parser ) {		
+	static function pf_numberofsubpages( &$parser ) {		
 		//get all possible arguments:
 		$args = ExtSubpageFun::getFunctionArgsArray( func_get_args() );
 
@@ -345,8 +363,8 @@ class ExtSubpageFun {
 		return count( $subpages );
 	}	
 	
-	static function toplevelpage( &$parser, $title = null) {		
-		$t = self::newTitleObject( $parser, $title );
+	static function pf_toplevelpage( &$parser /* , $title = null */ ) {		
+		$t = self::newTitleObject( $parser, func_get_args() );
 		if( $t === null ) {
 			return ''; // invalid title given
 		}
@@ -366,37 +384,65 @@ class ExtSubpageFun {
 	
 	/**** All the SubpageFunctions for use with MW Variables on the current page ****/
 	
-	static function onParserGetVariableValueSwitch( &$parser, &$cache, &$magicWordId, &$ret ) {
+	static function onParserGetVariableValueSwitch( Parser &$parser, &$cache, &$magicWordId, &$ret, $frame = null ) {
+		return self::variableValueSwitch( $parser, $magicWordId, $ret );
+	}
+	
+	/**
+	 * Make 'Parser Fun' extensions 'THIS' function work with our variables/functions
+	 */
+	static function onGetThisVariableValueSwitch( Parser &$parser, Title $title, &$magicWordId, &$ret, PPFrame $frame, array $args ) {
+		$expArgs = array();
+		foreach( $args as $arg ) {
+			$expArgs[] = trim( $frame->expand( $arg ) );
+		}
+		$expArgs[] = '1=' . $title->getPrefixedText();
+		
+		return self::variableValueSwitch( $parser, $magicWordId, $ret, $expArgs );
+	}
+	
+	/**
+	 * Where value assigning for normal variables and 'Parser Fun' extensions 'THIS' come together
+	 */
+	private static function variableValueSwitch( Parser &$parser, $magicWordId, &$ret, $args = array() ) {
+		// function to call
+		$func = null;
+		
 		switch( $magicWordId ) {
 			/** SUBPAGETITLE **/
 			case self::MAG_SUBPAGETITLE:
-				$ret = self::subpagetitle( $parser );
+				$func = 'pf_subpagetitle';
 				break;
 			/** SUBPAGES **/
 			case self::MAG_SUBPAGES:
-				$ret = self::subpages( $parser );
+				$func = 'pf_subpages';
 				break;
 			/** PARENTPAGES **/
 			case self::MAG_PARENTPAGES:
-				$ret = self::parentpages( $parser );
+				$func = 'pf_parentpages';
 				break;
 			/** SIBLINGPAGES **/
 			case self::MAG_SIBLINGPAGES:
-				$ret = self::siblingpages( $parser );
+				$func = 'pf_siblingpages';
 				break;
 			/** SUBPAGELEVEL **/
 			case self::MAG_SUBPAGELEVEL:
-				$ret = self::subpagelevel( $parser );
+				$func = 'pf_subpagelevel';
 				break;
 			/** NUMBEROFSUBPAGES **/
 			case self::MAG_NUMBEROFSUBPAGES:
-				$ret = self::numberofsubpages( $parser );
+				$func = 'pf_numberofsubpages';
 				break;
 			/** TOPLEVELPAGE **/
 			case self::MAG_TOPLEVELPAGE:
-				$ret = self::toplevelpage( $parser );
+				$func = 'pf_toplevelpage';
 				break;
 		}
+		if( $func !== null ) {
+			$args = array_merge( array( &$parser ), $args ); // $parser as first argument!
+			$ret = call_user_func_array( array( __CLASS__, $func ), $args );
+		}
+		
 		return true;
 	}
 	

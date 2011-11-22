@@ -190,7 +190,7 @@ class SubpageInfo {
 	 * 
 	 * @return string Result The subpage title of the given page. If page isn't a subpage, the Pages
 	 *                name (without prefix) will be returned.
-	 */	 
+	 */
 	static function getSubpageTitle( Title $page ) {
 		$parent = SubpageInfo::getParentPage( $page );
 		//return the whole subpage name not like SUBPAGENAME only the last part after the last "/":
