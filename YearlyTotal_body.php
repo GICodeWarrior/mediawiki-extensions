@@ -20,6 +20,8 @@ class SpecialYearlyTotal extends IncludableSpecialPage {
 	public function execute( $sub ) {
 		global $wgRequest, $wgOut, $egFundraiserStatisticsFundraisers;
 		
+		$js = $wgRequest->getBool( 'js', false );
+		
 		$adjustment = $wgRequest->getVal( 'adjustment' );
 		// Make sure it's a number
 		if ( is_nan( $adjustment ) ) {
@@ -33,7 +35,12 @@ class SpecialYearlyTotal extends IncludableSpecialPage {
 		$total = $this->query( $adjustment );
 		
 		$content = "wgFundraisingYearlyTotal = $total;";
-		echo $content;
+		
+		if ( $js ) {
+			echo $content;
+		} else {
+			echo $total;
+		}
 	}
 
 	/* Private Functions */

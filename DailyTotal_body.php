@@ -19,6 +19,8 @@ class SpecialDailyTotal extends IncludableSpecialPage {
 
 	public function execute( $sub ) {
 		global $wgRequest, $wgOut;
+		
+		$js = $wgRequest->getBool( 'js', false );
 
 		$timezone = $wgRequest->getVal( 'timezone', '0' );
 		// Make sure it's a number and reasonable
@@ -34,7 +36,12 @@ class SpecialDailyTotal extends IncludableSpecialPage {
 		$total = $this->query( $timezone, $start );
 		
 		$content = "wgFundraisingDailyTotal = $total;";
-		echo $content;
+		
+		if ( $js ) {
+			echo $content;
+		} else {
+			echo $total;
+		}
 	}
 
 	/* Private Functions */
