@@ -30,7 +30,7 @@ class SpecialDailyTotal extends IncludableSpecialPage {
 		$wgOut->disable();
 		$this->sendHeaders();
 		
-		$start = time(); // Get the current unix timestamp
+		$start = date( 'Y-m-d' ); // Get the current date
 		$total = $this->query( $timezone, $start );
 		
 		$content = "wgFundraisingDailyTotal = $total;";
@@ -52,8 +52,8 @@ class SpecialDailyTotal extends IncludableSpecialPage {
 		$dbr = efContributionReportingConnection();
 		#$dbr = wfGetDB( DB_MASTER );
 		$conditions = array(
-			'received >= ' . $dbr->addQuotes( wfTimestamp( TS_UNIX, $start + $timeShift ) ),
-			'received <= ' . $dbr->addQuotes( wfTimestamp( TS_UNIX, $start + 24 * 60 * 60 + $timeShift ) ),
+			'received >= ' . $dbr->addQuotes( wfTimestamp( TS_UNIX, strtotime( $start ) + $timeShift ) ),
+			'received <= ' . $dbr->addQuotes( wfTimestamp( TS_UNIX, strtotime( $start ) + 24 * 60 * 60 + $timeShift ) ),
 			'converted_amount >= ' . $egFundraiserStatisticsMinimum,
 			'converted_amount <= ' . $egFundraiserStatisticsMaximum
 		);
