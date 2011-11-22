@@ -99,9 +99,15 @@ $wgNarayamSchemes = array(
 		'pa-inscript' => 'ext.narayam.rules.pa-inscript',
 		'pa-phonetic' => 'ext.narayam.rules.pa-phonetic',
 	),
+	'rif' => array(
+		'ber-tfng' => 'ext.narayam.rules.ber-tfng',
+	),
 	'sa' => array(
 		'sa' => 'ext.narayam.rules.sa',
 		'sa-inscript' => 'ext.narayam.rules.sa-inscript',
+	),
+	'shi' => array(
+		'ber-tfng' => 'ext.narayam.rules.ber-tfng',
 	),
 	'si' => array(
 		'si-singlish' => 'ext.narayam.rules.si-singlish',
@@ -173,6 +179,7 @@ $wgResourceModules['ext.narayam.core'] = $narayamTpl + array(
 		'narayam-as-bornona',
 		'narayam-as-inscript',
 		'narayam-de',
+		'narayam-ber-tfng',
 		'narayam-brx-inscript',
 		'narayam-eo',
 		'narayam-hi',
@@ -230,6 +237,10 @@ $wgResourceModules['ext.narayam.rules.as-bornona'] = $narayamTpl + array(
 );
 $wgResourceModules['ext.narayam.rules.as-inscript'] = $narayamTpl + array(
 	'scripts' => 'resources/ext.narayam.rules.as-inscript.js',
+	'dependencies' => 'ext.narayam.core',
+);
+$wgResourceModules['ext.narayam.rules.ber-tfng'] = $narayamTpl + array(
+	'scripts' => 'resources/ext.narayam.rules.ber-tfng.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.bn-avro'] = $narayamTpl + array(
