@@ -265,7 +265,7 @@ class MBFeedbackResponseItem {
 	/**
 	 * Get the Feedback Item this Response is associated to
 	 * @param $mbf_id mbfr_mbf_id in moodbar_feedback_response table
-	 * @param MBFeedbackItem Object/bool
+	 * @return bool
 	 */
 	public function setFeedbackItem($mbf_id) {
 		$dbr = wfGetDB( DB_SLAVE );
