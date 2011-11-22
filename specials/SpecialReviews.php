@@ -25,6 +25,16 @@ class SpecialReviews extends SpecialPage {
 	}
 
 	/**
+	 * @see SpecialPage::getDescription
+	 *
+	 * @since 0.1
+	 * @return String
+	 */
+	public function getDescription() {
+		return wfMsg( 'special-' . strtolower( $this->getName() ) );
+	}
+	
+	/**
 	 * Main method.
 	 *
 	 * @since 0.1

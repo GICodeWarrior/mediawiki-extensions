@@ -21,7 +21,17 @@ class SpecialMyReviews extends SpecialPage {
 	 * @since 0.1
 	 */
 	public function __construct() {
-		parent::__construct( 'MyReviews', 'reviewer' );
+		parent::__construct( 'MyReviews', 'review' );
+	}
+	
+	/**
+	 * @see SpecialPage::getDescription
+	 *
+	 * @since 0.1
+	 * @return String
+	 */
+	public function getDescription() {
+		return wfMsg( 'special-' . strtolower( $this->getName() ) );
 	}
 
 	/**

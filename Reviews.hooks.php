@@ -105,7 +105,19 @@ final class ReviewsHooks {
 				'section' => 'reviews',
 			);
 		}
-
+		
+		$preferences['reviews_showcontrol'] = array(
+			'type' => 'toggle',
+			'label-message' => 'reviews-prefs-showcontrol',
+			'section' => 'reviews',
+		);
+			
+		$preferences['reviews_showedit'] = array(
+			'type' => 'toggle',
+			'label-message' => 'reviews-prefs-showedit',
+			'section' => 'reviews',
+		);
+		
 		return true;
 	}
 	
@@ -120,17 +132,21 @@ final class ReviewsHooks {
 	 * @return true
 	 */
 	public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
-		if ( $skin->getUser()->isAllowed( 'review' )
+		/* User */ $user = $skin->getUser();
+		
+		if ( $user->isLoggedIn() && $user->isAllowed( 'review' ) && $user->getOption( 'reviews_showcontrol' )
 			&& $out->isArticle()
 			&& $skin->getRequest()->getText( 'action' ) !== 'edit' ) {
 			
 			$review = Review::selectRow( null, array(
-				'user_id' => $skin->getUser()->getId(),
+				'user_id' => $user->getId(),
 			 	'page_id' => $skin->getTitle()->getArticleID()
 			) );
-				
-			$control = new ReviewControl( $review === false ? null : $review );
-			$control->addToContext( $skin );
+			
+			if ( $review === false || $user->getOption( 'reviews_showedit' ) ) {
+				$control = new ReviewControl( $review === false ? null : $review );
+				$control->addToContext( $skin );
+			}
 		}
 		
 		return true;
