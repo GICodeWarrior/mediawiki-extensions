@@ -43,6 +43,7 @@ function updateSuggestions(suggestPrefix) {
 
 	suggestText = document.getElementById(suggestPrefix + "text");
 	suggestText.className = "suggest-loading";
+	var suggestTextVal = suggestText.value ; // we copy the value to compare it later to the current value
 
 	var suggestAttributesLevel = document.getElementById(suggestPrefix + "parameter-level");
 	var suggestDefinedMeaningId = document.getElementById(suggestPrefix + "parameter-definedMeaningId");
@@ -56,12 +57,12 @@ function updateSuggestions(suggestPrefix) {
 
 	URL = 
 		wgScript +
-		'?title=Special:Suggest&search-text=' + encodeURI(suggestText.value) + 
+		'?title=Special:Suggest&search-text=' + encodeURI(suggestTextVal) + 
 		'&prefix=' + encodeURI(suggestPrefix) + 
 		'&query=' + encodeURI(suggestQuery) + 
 		'&offset=' + encodeURI(suggestOffset) + 
 		'&dataset='+dataSet;
-		
+
 	if (suggestAttributesLevel != null)
 		URL = URL + '&attributesLevel=' + encodeURI(suggestAttributesLevel.value);
 	
