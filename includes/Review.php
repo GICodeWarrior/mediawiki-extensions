@@ -110,9 +110,15 @@ class Review extends ReviewsDBObject {
 		$success = parent::insertIntoDB();
 		
 		if ( $success && $this->ratings !== false ) {
+			$dbw = wfGetDB( DB_MASTER );
+			$dbw->begin();
+			
 			foreach ( $this->getRatings() as /* ReviewRating */ $rating ) {
+				$rating->setField( 'review_id', $this->getId() );
 				$rating->writeToDB();
 			}
+			
+			$dbw->commit();
 		}
 		
 		return $success;
@@ -133,11 +139,19 @@ class Review extends ReviewsDBObject {
 				$existing[$rating->getField( 'type' )] = $rating->getField( 'id' );
 			}
 			
+			$dbw = wfGetDB( DB_MASTER );
+			$dbw->begin();
+			
 			foreach ( $this->getRatings() as /* ReviewRating */ $rating ) {
 				if ( array_key_exists( $rating->getField( 'type' ), $existing ) ) {
 					$rating->setField( 'id', $existing[$rating->getField( 'type' )] );
 				}
+				
+				$rating->setField( 'review_id', $this->getId() );
+				$rating->writeToDB();
 			}
+			
+			$dbw->commit();
 		}
 		
 		return $success;
@@ -194,7 +208,7 @@ class Review extends ReviewsDBObject {
 		foreach ( $ratings as $type => $value ) {
 			$objects[] = new ReviewRating( array(
 				'type' => $type,
-				'id' => $value
+				'value' => $value
 			) );
 		}
 		

@@ -47,7 +47,7 @@ class ReviewRating extends ReviewsDBObject {
 			'id' => 'id',
 			'review_id' => 'int',
 		
-			'type' => 'int',
+			'type' => 'str',
 			'value' => 'int'
 		);
 	}
