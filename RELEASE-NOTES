@@ -8,6 +8,7 @@
    - Compatbility with other extensions increased by using one hash tables store per Parser instance.
    - Inclusion of special pages in the middle of the page won't reset all defined hash tables anymore.
    - arrayprint will handle <includeonly>/<noinclude> correct in case it's used in a template.
+   - '#hashvalue' will only expand its default when required.
 
 
  * November 4, 2011 -- Version 0.7

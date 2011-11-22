@@ -45,7 +45,8 @@ $wgHooks['ParserClearState'   ][] = 'ExtHashTables::onParserClearState';
 
 
 /**
- * Extension class with all the hash table functionality
+ * Extension class with all the hash table functionality, also serves as store for hash tables per
+ * Parser object and offers public accessors for interaction with HashTables extension.
  */
 class ExtHashTables {
 
@@ -71,19 +72,18 @@ class ExtHashTables {
 	 * 
 	 * @since 1.0
 	 */
-	public static function init( Parser &$parser ) {
-		
+	public static function init( Parser &$parser ) {		
 		/*
-		 * store for variables per parser object. This will solve several bugs related to
+		 * store for hash tables per Parser object. This will solve several bugs related to
 		 * 'ParserClearState' hook clearing all variables early in combination with certain
-		 * other extensions. (since v2.0)
+		 * other extensions. (since v1.0)
 		 */
 		$parser->mExtHashTables = new self();
 		
 		// SFH_OBJECT_ARGS available since MW 1.12
 		self::initFunction( $parser, 'hashdefine' );
-		self::initFunction( $parser, 'hashvalue' );
 		self::initFunction( $parser, 'hashsize' );
+		self::initFunction( $parser, 'hashvalue', SFH_OBJECT_ARGS );
 		self::initFunction( $parser, 'hashkeyexists', SFH_OBJECT_ARGS );
 		self::initFunction( $parser, 'hashprint', SFH_OBJECT_ARGS );
 		self::initFunction( $parser, 'parameterstohash', SFH_OBJECT_ARGS );
@@ -97,7 +97,7 @@ class ExtHashTables {
 		self::initFunction( $parser, 'hashintersect', SFH_OBJECT_ARGS );
 
 		// if array extension is available, rgister array-hash interactions:
-		if( class_exists( 'ArrayExtension' ) ) {
+		if( class_exists( 'ArrayExtension' ) || class_exists( 'ExtArrays' ) ) {
 			self::initFunction( $parser, 'hashtoarray' );
 			self::initFunction( $parser, 'arraytohash' );
 		}
@@ -134,7 +134,7 @@ class ExtHashTables {
 	####################	
 	
 	/**
-	 * Define an hash by a list of 'values' deliminated by 'itemsDelimiter'.
+	 * Define a hash by a list of 'values' deliminated by 'itemsDelimiter'.
 	 * Hash keys and their values are deliminated by 'innerDelimiter'.
 	 * Both delimiters can be perl regular expression patterns.
 	 * Syntax: {{#hashdefine:hashId |values |itemsDelimiter |innerDelimiter}}
@@ -177,15 +177,21 @@ class ExtHashTables {
 	/**
 	 * Returns the value of the hash table item identified by a given item name.
 	 */
-    static function pf_hashvalue( Parser &$parser, $hashId, $key, $default = '' ) {
-        if( ! isset( $hashId ) || ! isset( $key ) ) {
-           return '';
+	static function pfObj_hashvalue( Parser &$parser, PPFrame $frame, $args ) {		
+		// Get Parameters:
+		if( ! isset( $args[1] ) ) {
+			return '';
 		}
-	
+		$key = trim( $frame->expand( $args[1] ) );
+		$hashId = isset( $args[0] ) ? trim( $frame->expand( $args[0] ) ) : '';		
+		
+		// Get value from index:
         $value = self::get( $parser )->getHashValue( $hashId, $key, '' );
 		
 		if( $value === '' ) {
-			$value = $default;
+			// hash or value doesn't exist or is empty ''
+			// only expand default when needed!
+			$value = isset( $args[2] ) ? trim( $frame->expand( $args[2] ) ) : '';
 		}
 		
 		return $value;
@@ -256,16 +262,13 @@ class ExtHashTables {
 		$printOrderArrayId = isset( $args[5] ) ? trim( $frame->expand( $args[5] ) ) : null;
 		
 		if( $printOrderArrayId !== null ) {
-			global $wgArrayExtension;
+			// get print order array
+			$printOrderArray = self::getArrayExtensionArray( $parser, $printOrderArrayId );		
 			
-			if( ! isset( $wgArrayExtension ) ) {
-				return ''; // array extension not found
-			}			
-			// if array with print order doesn't exist
-			if( ! array_key_exists( $printOrderArrayId, $wgArrayExtension->mArrayExtension ) ) {
+			// if array with print order doesn't exist or is empty
+			if( empty( $printOrderArray ) ) {
 				return '';
-			}			
-			$printOrderArray = $wgArrayExtension->mArrayExtension[ $printOrderArrayId ];
+			}
 		}
 		else {
 			// No print order given, copy hash keys in print order array
@@ -415,6 +418,7 @@ class ExtHashTables {
 	
 	/**
 	 * Merge two or more hash tables like the php function 'array_merge' would merge them.
+	 * Operated on just one hash, this will just re-organize numeric keys.
 	 * Syntax:
 	 *   {{#hashmerge:hashID |hash1 |hash2 |... |hash n}}
 	 */
@@ -483,9 +487,7 @@ class ExtHashTables {
 	static function pf_hashtoarray( Parser &$parser, $valArrayId, $hashId = null, $keyArrayId = null) {		
 		if( ! isset( $hashId ) ) {
 			return '';
-		}
-		
-		global $wgArrayExtension;
+		}		
 		
 		// create void arrays in case hash doesn't exist
 		$valArray = array();
@@ -503,10 +505,12 @@ class ExtHashTables {
 			}
 		}
 		
-		$wgArrayExtension->mArrayExtension[ $valArrayId ] = $valArray;
+		// set value array:
+		self::setArrayExtensionArray( $parser, $valArrayId, $valArray );
+				
 		if( $keyArrayId !== null ) {
 			// additional array for hash keys:
-			$wgArrayExtension->mArrayExtension[ $keyArrayId ] = $keyArray;
+			self::setArrayExtensionArray( $parser, $keyArrayId, $keyArray );
 		}
 		return '';
 	}
@@ -527,24 +531,27 @@ class ExtHashTables {
 		
 		global $wgArrayExtension;
 		
-		// if array doesn't exist
-		if( ! array_key_exists( $valArrId, $wgArrayExtension->mArrayExtension ) )
-			$arrExtValArray = array();
-		else
-			$arrExtValArray = $wgArrayExtension->mArrayExtension[ $valArrId ];
-			
-		$newHash = array();
-				
+		// get array with values:
+		$valArray = self::getArrayExtensionArray( $parser, $valArrId );
+		if( $valArray === null ) {
+			$valArray = array();
+		}
+		// get array with keys for hash:
+		if( $keyArrId !== null ) {
+			$keyArray = self::getArrayExtensionArray( $parser, $keyArrId );
+		} else {
+			$keyArray = null;
+		}
+						
 		// if no key array is given OR the key array doesn't exist
-		if( $keyArrId === null || ! array_key_exists( $keyArrId, $wgArrayExtension->mArrayExtension ) )
+		if( $keyArray === null )
 		{
 			// Copy the whole array. Result will be a hash with numeric keys
-			$newHash = $arrExtValArray;
+			$newHash = $valArray;
 		}
 		else
 		{
-			$keyArray = $wgArrayExtension->mArrayExtension[ $keyArrId ];
-			$valArray = $arrExtValArray;
+			$newHash = array();
 			
 			for( $i=0; $i < count( $keyArray ); $i++ ) {
 				$currVal = array_key_exists( $i, $valArray ) ? trim( $valArray[ $i ] ) : '';
@@ -604,6 +611,60 @@ class ExtHashTables {
 	##################
 	
 	/**
+	 * Gets an array from ArrayExtension, returns null if the extension wasn't found or
+	 * the array doesn't exist.
+	 * Handles different versions of ArrayExtension.
+	 * 
+	 * @since 1.0
+	 * 
+	 * @return array|null
+	 */
+	protected static function getArrayExtensionArray( $parser, $arrayId ) {
+		// null will be retunded if no array found
+		$array = null;
+		
+		if( class_exists( 'ExtArrays' ) ) {
+			// ArrayExtension 2.0+
+			$array = ExtArrays::get( $parser )->getArray( $arrayId );			
+		}
+		elseif( isset( $wgArrayExtension ) && isset( $wgArrayExtension->mArrayExtension ) ) {
+			// ArrayExtension before 2.0		
+			if( array_key_exists( $arrayId, $wgArrayExtension->mArrayExtension ) ) {
+				// array exist				
+				$array = $wgArrayExtension->mArrayExtension[ $arrayId ];
+			}
+		}
+		
+		return $array;
+	}
+	
+	/**
+	 * Sends an array to ArrayExtension and stores it. Takes care of different ArrayExtension versions.
+	 * The array should be sanitized in case ArrayExtension before 2.0 is being used.
+	 * 
+	 * @since 1.0
+	 * 
+	 * @return boolean whether array was sent to ArrayExtension successful
+	 */
+	protected static function setArrayExtensionArray( $parser, $arrayId, $array = array() ) {
+		if( class_exists( 'ExtArrays' ) ) {
+			// ArrayExtension 2.0+
+			ExtArrays::get( $parser )->createArray( $arrayId, $array );
+			return true;
+		}
+		elseif( isset( $wgArrayExtension ) && isset( $wgArrayExtension->mArrayExtension ) ) {
+			// ArrayExtension before 2.0		
+			if( array_key_exists( $arrayId, $wgArrayExtension->mArrayExtension ) ) {
+				// array exist				
+				$array = $wgArrayExtension->mArrayExtension[ $arrayId ];
+			} else {
+				$array = array();
+			}
+		}
+		return false;
+	}
+	
+	/**
 	 * Base function for operations with multiple hashes given thru n parameters
 	 * $operationFunc expects a function name prefix (suffix 'multi_') with two parameters
 	 * $hash1 and $hash2 which will perform an action between $hash1 and hash2 which will
@@ -624,9 +685,9 @@ class ExtHashTables {
 		$finalHashId = trim( $frame->expand( $args[0] ) );
 		$operationFunc = 'multi_' . preg_replace( '/^pfObj_/', '', $operationFunc );
 		
-		// For all hashes given in parameters 2 to n (ignore 1 because this is the new hash)
-		for( $i = 1; $i < count( $args ); $i++ )
-		{
+		// For all hashes given in parameters 2 to n (ignore 1 because this is the name of the new hash)
+		for( $i = 1; $i < count( $args ); $i++ ) {
+			// just make sure we don't fall into gaps of given arguments:
 			if( ! array_key_exists( $i, $args ) )  {
 				continue;
 			}
@@ -653,7 +714,7 @@ class ExtHashTables {
 		}
 		
 		// if the operation didn't run because there was only one or no array:
-		if( $operationRan == false && $runFuncOnSingleHash ) {
+		if( ! $operationRan && $runFuncOnSingleHash ) {
 			$lastHash = $this->{ $operationFunc }( $lastHash );
 		}
 				
