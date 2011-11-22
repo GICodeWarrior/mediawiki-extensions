@@ -10,7 +10,6 @@ class SpecialDailyTotal extends IncludableSpecialPage {
 
 	protected $sharedMaxAge = 300; // Cache for 5 minutes on the server side
 	protected $maxAge = 300; // Cache for 5 minutes on the client side
-	public $timezone;
 
 	/* Functions */
 
@@ -21,18 +20,18 @@ class SpecialDailyTotal extends IncludableSpecialPage {
 	public function execute( $sub ) {
 		global $wgRequest, $wgOut;
 
-		$this->timezone = $wgRequest->getVal( 'timezone', '0' );
+		$timezone = $wgRequest->getVal( 'timezone', '0' );
 		// Make sure it's a number and reasonable
-		if ( is_nan( $this->timezone ) || abs( $this->timezone ) > 100 ) {
-			$this->timezone = 0;
+		if ( is_nan( $timezone ) || abs( $timezone ) > 100 ) {
+			$timezone = 0;
 		}
 
 		/* Setup */
 		$wgOut->disable();
 		$this->sendHeaders();
 		
-		$start = date( 'Y-m-d' ); // Get the current date
-		$total = $this->query( $start );
+		$start = time(); // Get the current unix timestamp
+		$total = $this->query( $timezone, $start );
 		
 		$content = "wgFundraisingDailyTotal = $total;";
 		echo $content;
@@ -40,21 +39,21 @@ class SpecialDailyTotal extends IncludableSpecialPage {
 
 	/* Private Functions */
 
-	private function query( $start ) {
+	private function query( $timezone, $start ) {
 		global $wgMemc, $egFundraiserStatisticsMinimum, $egFundraiserStatisticsMaximum, $egFundraiserStatisticsCacheTimeout;
 
-		$key = wfMemcKey( 'fundraiserstatistics', $this->timezone, $start );
+		$key = wfMemcKey( 'fundraiserstatistics', $timezone, $start );
 		$cache = $wgMemc->get( $key );
 		if ( $cache != false && $cache != -1 ) {
 			return $cache;
 		}
-		$timeShift = $this->timezone * 60 * 60;
+		$timeShift = $timezone * 60 * 60;
 		// Use database
-		//$dbr = efContributionReportingConnection();
-		$dbr = wfGetDB( DB_MASTER );
+		$dbr = efContributionReportingConnection();
+		#$dbr = wfGetDB( DB_MASTER );
 		$conditions = array(
-			'received >= ' . $dbr->addQuotes( wfTimestamp( TS_UNIX, strtotime( $start ) + $timeShift ) ),
-			'received <= ' . $dbr->addQuotes( wfTimestamp( TS_UNIX, strtotime( $start ) + 24 * 60 * 60 + $timeShift ) ),
+			'received >= ' . $dbr->addQuotes( wfTimestamp( TS_UNIX, $start + $timeShift ) ),
+			'received <= ' . $dbr->addQuotes( wfTimestamp( TS_UNIX, $start + 24 * 60 * 60 + $timeShift ) ),
 			'converted_amount >= ' . $egFundraiserStatisticsMinimum,
 			'converted_amount <= ' . $egFundraiserStatisticsMaximum
 		);
@@ -71,12 +70,10 @@ class SpecialDailyTotal extends IncludableSpecialPage {
 		);
 		$row = $dbr->fetchRow( $select );
 		$total = $row['sum(converted_amount)'];
+		if ( !$total ) $total = 0;
 		
-		if ( $total ) {
-			$wgMemc->set( $key, $total, $egFundraiserStatisticsCacheTimeout );
-			return $total;
-		}
-		return null;
+		$wgMemc->set( $key, $total, $egFundraiserStatisticsCacheTimeout );
+		return $total;
 	}
 	
 	private function sendHeaders() {
