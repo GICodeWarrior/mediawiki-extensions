@@ -213,7 +213,7 @@ HTML;
 		
 		$classes = Sanitizer::encodeAttribute( implode(' ', $classes) );
 		$toolLinks = implode("\n", $toolLinks );
-		if (!$responseElements) {
+		if (!isset($responseElements)) {
 			$responseElements = "";
 		}
 		
