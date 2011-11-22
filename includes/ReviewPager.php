@@ -81,16 +81,16 @@ class ReviewPager extends TablePager {
 
 		if ( is_null( $headers ) ) {
 			$headers = array(
-				'reviews-pager-post-time',
-				'reviews-pager-state',
-				'reviews-pager-title',
+				'review_title' => 'reviews-pager-title',
+				'review_page_id' => 'reviews-pager-page',
+				'review_post_time' => 'reviews-pager-post-time',
 			);
 			
 			if ( !array_key_exists( 'review_user_id', $this->conds ) ) {
-				$headers[] = 'reviews-pager-user';
+				$headers['review_user_id'] = 'reviews-pager-user';
 			}
 			
-			$headers[] = 'reviews-pager-page';
+			$headers['review_state'] = 'reviews-pager-state';
 
 			$headers = array_map( 'wfMsg', $headers );
 		}
@@ -113,8 +113,30 @@ class ReviewPager extends TablePager {
 	 */
 	public function formatValue( $name, $value ) {
 		switch ( $name ) {
-			case '':
-				
+			case 'review_post_time':
+				$value = $this->getLang()->timeanddate( $value, true );
+				break;
+			case 'review_state':
+				$value = Review::getStateMessage( $value );
+				break;
+			case 'review_page_id':
+				$title = Title::newFromID( $value );
+				$value = Html::element(
+					'a',
+					array( 'href' => $title->getLocalURL() ),
+					$title->getFullText()
+				);
+				break;
+			case 'review_user_id':
+				$title = User::newFromId( $value )->getUserPage();
+				$value = Html::element(
+					'a',
+					array( 'href' => $title->getLocalURL() ),
+					$title->getFullText()
+				);
+				break;
+			case 'review_title':
+				// TODO
 				break;
 		}
 
@@ -152,7 +174,8 @@ class ReviewPager extends TablePager {
 		return in_array(
 			$name,
 			array(
-				// TODO
+				'review_post_time',
+				'review_state',
 			)
 		);
 	}

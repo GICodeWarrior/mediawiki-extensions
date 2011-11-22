@@ -39,6 +39,11 @@ $messages['en'] = array(
 	'group-reviewer-member' => '{{GENDER:$1|Reviewer}}',
 	'grouppage-reviewer' => '{{ns:project}}:Reviewers',
 
+	// Review states
+	'reviews-state-new' => 'New',
+	'reviews-state-flagged' => 'Flagged',
+	'reviews-state-reviewed' => 'Reviewed',
+
 	// Preferences
 	'prefs-reviews' => 'Reviews',
 	'reviews-prefs-showtoplink' => 'Show a link to [[Special:MyReviews|your reviews]] at the top of every page.',

@@ -146,5 +146,24 @@ class Review extends ReviewsDBObject {
 		
 		return $ratings;
 	}
+	
+	/**
+	 * Get the message for a review state.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param Review::STATE_ $state
+	 * 
+	 * @return string
+	 */
+	public static function getStateMessage( $state ) {
+		$map = array(
+			self::STATUS_NEW => 'new',
+			self::STATUS_FLAGGED => 'flagged',
+			self::STATUS_REVIEWED => 'reviewed',
+		);
+		
+		return wfMsg( 'reviews-state-' . $map[$state] );
+	}
 
 }
