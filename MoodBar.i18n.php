@@ -290,6 +290,9 @@ See also:
 	'moodbar-type-happy' => '$1 is the username that can be used for GENDER',
 	'moodbar-type-sad' => '$1 is the username that can be used for GENDER',
 	'moodbar-type-confused' => '$1 is the username that can be used for GENDER',
+	'moodbar-feedback-load-record-error' => 'Error message for errors in loading a feedback or response to a feedback',
+	'moodbar-feedback-response-title' => 'The title for appending feedback response text to a user talk page',
+	'moodbar-feedback-view-link' => 'link to an individual feedback',
 	'moodbar-user-ip' => '{{Identical|IP Address}}',
 );
 
