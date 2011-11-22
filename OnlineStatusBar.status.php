@@ -128,6 +128,9 @@ class OnlineStatusBar_StatusCheck {
 	static function deleteStatus( $userName ) {
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->delete( 'online_status', array( 'username' => $userName ), __METHOD__ ); // delete user
+		// remove from cache
+		self::setCache( $userName, '', 'd' );
+		self::setCache( $userName, '', 'n' );
 		return true;
 	}
 
