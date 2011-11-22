@@ -359,7 +359,8 @@ jQuery(function( $ ) {
 			$link = $( this ).find('.fbd-respond-link');
 			if( $link.hasClass('responder-expanded') ) {
 		
-				$link.empty().html( mw.msg( 'moodbar-respond-collapsed' ) + ' ' + mw.msg( 'moodbar-respond-text' ) )
+				$link.find('span').text( mw.msg( 'moodbar-respond-collapsed' ) )
+					.parent()
 					.removeClass('responder-expanded');
 			
 				$( this ).find('.fbd-response-form').remove();	
@@ -439,7 +440,8 @@ jQuery(function( $ ) {
 			
 			closeAllResponders();
 			
-			$(this).empty().html( mw.msg( 'moodbar-respond-expanded' ) + ' ' + mw.msg( 'moodbar-respond-text' ) )
+			$(this).find('span').text( mw.msg( 'moodbar-respond-expanded' ) )
+				.parent()
 				.addClass( 'responder-expanded' )
 				.end();
 			

@@ -203,7 +203,7 @@ HTML;
 		//only show response elements if feedback is not hidden, and user is logged in
 		if ($feedbackItem->getProperty('hidden-state') == false
 			&& !$wgUser->isAnon() ) {
-			$respondToThis = wfMessage('moodbar-respond-collapsed').' '.wfMessage("moodbar-respond-text");
+			$respondToThis = "<span>".wfMessage('moodbar-respond-collapsed')->escaped().'</span> '.wfMessage("moodbar-respond-text")->escaped();
 			$responseElements = <<<HTML
 				<div class="fbd-item-response">
 					<a class="fbd-respond-link">$respondToThis</a>
