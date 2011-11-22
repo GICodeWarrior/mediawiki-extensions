@@ -1238,9 +1238,6 @@ class ShortTextEditor extends ScalarEditor {
 		}
 	}
  
-
-	}
-
 	public function add( IdStack $idPath ) {
 		if ( $this->isAddField )
 			return getTextBox( $this->addId( $idPath->getId() ), "", $this->onChangeHandler );
