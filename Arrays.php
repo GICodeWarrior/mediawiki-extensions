@@ -30,7 +30,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name'           => 'Arrays',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Arrays',
 	'author'         => array ( 'Li Ding', 'Jie Bao', '[http://www.mediawiki.org/wiki/User:Danwe Daniel Werner]' ),
-	'descriptionmsg' => 'arrayext-desc',
+	'descriptionmsg' => 'arrays-desc',
 	'version'        => ExtArrays::VERSION
 );
 
