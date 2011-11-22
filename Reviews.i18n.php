@@ -61,10 +61,12 @@ $messages['en'] = array(
 	// Special:MyReviews
 	'reviews-myreviews-header' => 'This page lists all reviews you posted.',
 	'reviews-myreviews-nosuchreview' => 'You do not have a review with the provided ID, it might have been deleted. All your reviews are listed below.',
+	'reviews-myreviews-editheader' => 'On this page you can edit your review. You can also view a list of [[Special:MyReviews|reviews you posted]].',
 
 	// Special:Reviews
 
 	// Review pager
+	'reviews-pager-no-results' => 'There are no reviews to list.',
 	'reviews-pager-post-time' => 'Post time',
 	'reviews-pager-state' => 'State',
 	'reviews-pager-title' => 'Title',
@@ -90,6 +92,7 @@ $messages['qqq'] = array(
 	'reviews-submission-saving' => 'Submission button text while a save action is happening and the button gets disabled',
 
 	'reviews-myreviews-header' => "Line on top of a page explaining it's function",
+	'reviews-myreviews-editheader' => '',
 
 	'reviews-pager-post-time' => 'Tabele column header',
 	'reviews-pager-state' => 'Tabele column header',

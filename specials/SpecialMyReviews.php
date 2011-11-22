@@ -54,24 +54,20 @@ class SpecialMyReviews extends SpecialPage {
 			return false;
 		}
 
-		if ( $this->getRequest()->wasPosted() ) {
-			
+		if ( $subPage === '' ) {
+			$this->getOutput()->addWikiMsg( 'reviews-myreviews-header' );
+			$this->displayReviewList();
 		}
 		else {
-			if ( $subPage === '' ) {
-				$this->getOutput()->addWikiMsg( 'reviews-myreviews-header' );
+			$review = Review::selectRow( null, array( 'id' => $subPage, 'user_id' => $this->getUser()->getId() ) );
+			
+			if ( $review == false ) {
+				$this->getOutput()->addWikiMsg( 'reviews-myreviews-nosuchreview' );
 				$this->displayReviewList();
 			}
 			else {
-				$review = Review::selectRow( null, array( 'id' => $subPage, 'user_id' => $this->getUser()->getId() ) );
-				
-				if ( $review == false ) {
-					$this->getOutput()->addWikiMsg( 'reviews-myreviews-nosuchreview' );
-					$this->displayReviewList();
-				}
-				else {
-					$this->displayEditControl( $review );
-				}
+				$this->getOutput()->addWikiMsg( 'reviews-myreviews-editheader' );
+				$this->displayEditControl( $review );
 			}
 		}
 	}
