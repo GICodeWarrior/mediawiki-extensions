@@ -56,3 +56,20 @@ $messages['en'] = array(
 	// Special:MyReviews
 	'reviews-myreviews-header' => 'This page lists all reviews you posted',
 );
+
+/** Message documentation (Message documentation)
+ * @author Jeroen De Dauw
+ */
+$messages['qqq'] = array(
+	'reviews-prefs-showtoplink' => 'Text explaining the function of a preference, next to a checkbox',
+	'reviews-prefs-showcontrol' => 'Text explaining the function of a preference, next to a checkbox',
+	'reviews-prefs-showedit' => 'Text explaining the function of a preference, next to a checkbox',
+
+	'special-myreviews' => 'Special page title',
+	'special-reviews' => 'Special page title',
+
+	'reviews-submission-submit' => 'Submission button text',
+	'reviews-submission-saving' => 'Submission button text while a save action is happening and the button gets disabled',
+
+	'reviews-myreviews-header' => "Line on top of a page explaining it's function",
+);
