@@ -122,6 +122,9 @@ $wgNarayamSchemes = array(
 		'gu' => 'ext.narayam.rules.gu',
 		'gu-inscript' => 'ext.narayam.rules.gu-inscript',
 	),
+	'ru' => array(
+		'ru-standard' => 'ext.narayam.rules.ru-standard',
+	),
 );
 
 /* Setup */
@@ -201,6 +204,7 @@ $wgResourceModules['ext.narayam.core'] = $narayamTpl + array(
 		'narayam-ur',
 		'narayam-gu',
 		'narayam-gu-inscript',
+		'narayam-ru-standard',
 	),
 	'dependencies' => array(
 		'mediawiki.util',
@@ -354,5 +358,9 @@ $wgResourceModules['ext.narayam.rules.gu'] = $narayamTpl + array(
 );
 $wgResourceModules['ext.narayam.rules.gu-inscript'] = $narayamTpl + array(
 	'scripts' => 'resources/ext.narayam.rules.gu-inscript.js',
+	'dependencies' => 'ext.narayam.core',
+);
+$wgResourceModules['ext.narayam.rules.ru-standard'] = $narayamTpl + array(
+	'scripts' => 'resources/ext.narayam.rules.ru-standard.js',
 	'dependencies' => 'ext.narayam.core',
 );

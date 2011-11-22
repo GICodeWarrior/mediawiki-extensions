@@ -60,6 +60,7 @@ $messages['en'] = array(
 	'narayam-de' => 'German',
 	'narayam-gu' => 'Gujarati transliteration',
 	'narayam-gu-inscript' => 'Gujarati InScript',
+	'narayam-ru-standard' => 'Russian Standard',
 );
 
 /** Message documentation (Message documentation)
