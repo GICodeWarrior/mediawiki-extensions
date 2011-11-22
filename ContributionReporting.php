@@ -41,12 +41,14 @@ $wgAutoloadClasses['ContributionTotal'] = $dir . 'ContributionTotal_body.php';
 $wgAutoloadClasses['SpecialContributionStatistics'] = $dir . 'ContributionStatistics_body.php';
 $wgAutoloadClasses['SpecialFundraiserStatistics'] = $dir . 'FundraiserStatistics_body.php';
 $wgAutoloadClasses['SpecialContributionTrackingStatistics'] = $dir . 'ContributionTrackingStatistics_body.php';
+$wgAutoloadClasses['SpecialDailyTotal'] = $dir . 'DailyTotal_body.php';
 
 $wgSpecialPages['ContributionHistory'] = 'ContributionHistory';
 $wgSpecialPages['ContributionTotal'] = 'ContributionTotal';
 $wgSpecialPages['ContributionStatistics'] = 'SpecialContributionStatistics';
 $wgSpecialPages['FundraiserStatistics'] = 'SpecialFundraiserStatistics';
 $wgSpecialPages['ContributionTrackingStatistics'] = 'SpecialContributionTrackingStatistics';
+$wgSpecialPages['DailyTotal'] = 'SpecialDailyTotal';
 $wgSpecialPageGroups['ContributionHistory'] = 'contribution';
 $wgSpecialPageGroups['ContributionTotal'] = 'contribution';
 $wgSpecialPageGroups['ContributionStatistics'] = 'contribution';
