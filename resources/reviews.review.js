@@ -26,7 +26,7 @@
 				'title': this.fields.title,
 				'text': this.fields.text,
 				'rating': this.fields.rating,
-				'ratings': '{}'
+				'ratings': $.toJSON( this.fields.ratings )
 			};
 			
 			if ( this.fields.hasOwnProperty( 'id' ) ) {

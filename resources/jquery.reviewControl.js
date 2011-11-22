@@ -41,6 +41,24 @@
 			
 			this.ratingInput = $( '<div />' ).attr( 'id', this.fieldName( 'ratingdiv' ) ).html( this.ratingInput );
 
+			this.ratingsInput = $( '<div />' ).html( '' );
+			
+			var ratings = this.review.fields.ratings;
+			for ( rating in ratings ) {
+				if ( ratings.hasOwnProperty( rating ) ) {
+					this.ratingsInput.append(
+						$( '<div class="review-ratings-div" />' )
+							.attr( 'id', this.fieldName( 'ratingdiv' + rating ) )
+							.attr( 'data-type', rating )
+							.html( reviews.htmlSelect(
+								{ 1: 1, 2: 2, 3: 3, 4: 4, 5: 5 }, // TODO
+								ratings[rating],
+								{ 'name': this.fieldName( 'rating' + rating ), 'id': this.fieldName( 'rating' + rating ) }
+							) )
+					);
+				}
+			}
+			
 			this.button = $( '<button />' )
 				.button( { 'label': mw.msg( 'reviews-submission-submit' ) } )
 				.click( function() {
@@ -48,13 +66,21 @@
 				} );
 			
 			$this.html( '' );
-			$this.append( this.titleInput, this.textInput, this.ratingInput, this.button );
+			$this.append( this.titleInput, this.textInput, this.ratingInput, this.ratingsInput, this.button );
 			
 			this.ratingInput.stars( {
 				inputType: 'select',
 				cancelShow: false,
 				callback: function(ui, type, value) {
 					_this.review.fields.rating = parseInt( value );
+				}
+			} );
+			
+			$( '.review-ratings-div' ).stars( {
+				inputType: 'select',
+				cancelShow: false,
+				callback: function(ui, type, value) {
+					_this.review.fields.ratings[ui.element.attr( 'data-type' )] = parseInt( value );
 				}
 			} );
 		};

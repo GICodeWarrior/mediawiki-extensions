@@ -20,7 +20,7 @@ class ApiSubmitReview extends ApiBase {
 		}			
 		
 		$params = $this->extractRequestParams();
-		$ratings = FormatJson::decode( $params['ratings'] );
+		$ratings = (array)FormatJson::decode( $params['ratings'] );
 		
 		unset( $params['token'] );
 		unset( $params['ratings'] );
@@ -33,6 +33,7 @@ class ApiSubmitReview extends ApiBase {
 			
 			$review->setField( 'state', Review::STATUS_NEW );
 			$review->setField( 'post_time', wfTimestampNow() );
+			$review->setRatingArray( $ratings );
 			
 			$this->writeReviewToDB( $review );
 		}
@@ -41,6 +42,8 @@ class ApiSubmitReview extends ApiBase {
 			
 			if ( $review->getField( 'user_id' ) === $this->getUser()->getId() ) {
 				$review->setFields( $params );
+				$review->setRatingArray( $ratings );
+				
 				$this->writeReviewToDB( $review );
 			}
 			else {

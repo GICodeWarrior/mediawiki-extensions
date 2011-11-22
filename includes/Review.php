@@ -103,14 +103,102 @@ class Review extends ReviewsDBObject {
 	}
 	
 	/**
+	 * (non-PHPdoc)
+	 * @see ReviewsDBObject::insertIntoDB()
+	 */
+	protected function insertIntoDB() {
+		$success = parent::insertIntoDB();
+		
+		if ( $success && $this->ratings !== false ) {
+			foreach ( $this->getRatings() as /* ReviewRating */ $rating ) {
+				$rating->writeToDB();
+			}
+		}
+		
+		return $success;
+	}
+	
+	/**
+	 * (non-PHPdoc)
+	 * @see ReviewsDBObject::updateInDB()
+	 */
+	protected function updateInDB() {
+		$success = parent::updateInDB();
+		
+		if ( $success && $this->ratings !== false ) {
+			$existingRatings = $this->getRatingsFromDB();
+			$existing = array();
+			
+			foreach ( $existingRatings as /* ReviewRating */ $rating ) {
+				$existing[$rating->getField( 'type' )] = $rating->getField( 'id' );
+			}
+			
+			foreach ( $this->getRatings() as /* ReviewRating */ $rating ) {
+				if ( array_key_exists( $rating->getField( 'type' ), $existing ) ) {
+					$rating->setField( 'id', $existing[$rating->getField( 'type' )] );
+				}
+			}
+		}
+		
+		return $success;
+	}
+	
+	/**
+	 * Load the ratings part of this review from the database.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return array of ReviewRating
+	 */
+	protected function getRatingsFromDB() {
+		return ReviewRating::select( null, array( 'review_id' => $this->getId() ) );
+	}
+	
+	/**
 	 * Get the ratings part of this review.
 	 * 
 	 * @since 0.1
 	 * 
 	 * @return array of ReviewRating
 	 */
-	public function getRatings() {
-		return ReviewRating::select( null, array( 'review_id' => $this->getId() ) );
+	public function getRatings( $forceLoad = false ) {
+		if ( $forceLoad || $this->ratings === false ) {
+			$this->ratings = $this->getRatingsFromDB();
+		}
+		
+		return $this->ratings;
+	}
+	
+	/**
+	 * Sets the ratings part of this review.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param array of ReviewRating $ratings
+	 */
+	public function setRatings( array /* of ReviewRating */ $ratings ) {
+		$this->ratings = $ratings;
+	}
+	
+	/**
+	 * Sets the ratings part of this review.
+	 * Ratings provided as type => value
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param array $ratings
+	 */
+	public function setRatingArray( array $ratings ) {
+		$objects = array();
+		
+		foreach ( $ratings as $type => $value ) {
+			$objects[] = new ReviewRating( array(
+				'type' => $type,
+				'id' => $value
+			) );
+		}
+		
+		$this->setRatings( $objects );
 	}
 	
 	/**
@@ -127,6 +215,16 @@ class Review extends ReviewsDBObject {
 		return $array;
 	}
 	
+	/**
+	 * Returns the ratings in associative array form.
+	 * The array keys are the rating names, the values are their values.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param array $types
+	 * 
+	 * @return array
+	 */
 	public function getRatingArray( array $types = null ) {
 		$ratings = array();
 		
