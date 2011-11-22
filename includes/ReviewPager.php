@@ -14,39 +14,30 @@
 class ReviewPager extends TablePager {
 
 	/**
-	 * Query conditions, full field names (ie inc prefix).
+	 * Query conditions, full field names (inc prefix).
 	 * @var array
 	 */
 	protected $conds;
 
 	/**
+	 * Name of a special page to which the review titles should link.
+	 * @var string|false $editPage
+	 */
+	protected $editPage;
+	
+	/**
 	 * Constructor.
 	 *
 	 * @param array $conds
+	 * @param string|false $editPage
 	 */
-	public function __construct( array $conds ) {
+	public function __construct( array $conds, $editPage = false ) {
 		$this->conds = $conds;
 		$this->mDefaultDirection = true;
+		$this->editPage = $editPage;
 
 		// when MW 1.19 becomes min, we want to pass an IContextSource $context here.
 		parent::__construct();
-	}
-
-	/**
-	 * Gets the title of a challenge given it's id.
-	 *
-	 * @since 0.1
-	 *
-	 * @param integer $challengeId
-	 * @throws MWException
-	 */
-	protected function getChallengeTitle( $challengeId ) {
-		if ( array_key_exists( $challengeId, $this->challengeTitles ) ) {
-			return $this->challengeTitles[$challengeId];
-		}
-		else {
-			throw new MWException( 'Attempt to get non-set challenge title' );
-		}
 	}
 
 	/**
@@ -136,7 +127,13 @@ class ReviewPager extends TablePager {
 				);
 				break;
 			case 'review_title':
-				// TODO
+				if ( $this->editPage !== false ) {
+					$value = Html::element(
+						'a',
+						array( 'href' => SpecialPage::getTitleFor( $this->editPage, $this->mCurrentRow->review_id )->getLocalURL() ),
+						$value
+					);
+				}
 				break;
 		}
 

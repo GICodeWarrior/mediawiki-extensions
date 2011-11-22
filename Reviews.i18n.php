@@ -60,6 +60,7 @@ $messages['en'] = array(
 
 	// Special:MyReviews
 	'reviews-myreviews-header' => 'This page lists all reviews you posted.',
+	'reviews-myreviews-nosuchreview' => 'You do not have a review with the provided ID, it might have been deleted. All your reviews are listed below.',
 
 	// Special:Reviews
 

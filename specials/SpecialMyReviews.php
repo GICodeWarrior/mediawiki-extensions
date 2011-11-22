@@ -58,19 +58,34 @@ class SpecialMyReviews extends SpecialPage {
 			
 		}
 		else {
-			$this->getOutput()->addWikiMsg( 'reviews-myreviews-header' );
-			
 			if ( $subPage === '' ) {
+				$this->getOutput()->addWikiMsg( 'reviews-myreviews-header' );
 				$this->displayReviewList();
 			}
 			else {
-				// TODO
+				$review = Review::selectRow( null, array( 'id' => $subPage, 'user_id' => $this->getUser()->getId() ) );
+				
+				if ( $review == false ) {
+					$this->getOutput()->addWikiMsg( 'reviews-myreviews-nosuchreview' );
+					$this->displayReviewList();
+				}
+				else {
+					$this->displayEditControl( $review );
+				}
 			}
 		}
 	}
 
+	/**
+	 * Display the list of reviews for this user.
+	 * 
+	 * @since 0.1
+	 */
 	protected function displayReviewList() {
-		$reviewPager = new ReviewPager( array( 'review_user_id' => $this->getUser()->getId() ) );
+		$reviewPager = new ReviewPager(
+			array( 'review_user_id' => $this->getUser()->getId() ),
+			$this->getName()
+		);
 
 		if ( $reviewPager->getNumRows() ) {
 			$this->getOutput()->addHTML(
@@ -82,6 +97,18 @@ class SpecialMyReviews extends SpecialPage {
 		else {
 			$this->getOutput()->addWikiMsg( 'reviews-pager-no-results' );
 		}
+	}
+	
+	/**
+	 * Display the review edit control for the provided review.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param Review $review
+	 */
+	protected function displayEditControl( Review $review ) {
+		$control = new ReviewControl( $review );
+		$control->addToContext( $this );
 	}
 
 }
