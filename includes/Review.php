@@ -120,7 +120,7 @@ class Review extends ReviewsDBObject {
 	public function toArray( $fields = null, $incNullId = false, array $types = null ) {
 		$array = parent::toArray( $fields, $incNullId );
 		
-		if ( !is_null( $context ) ) {
+		if ( !is_null( $types ) ) {
 			$array['ratings'] = $this->getRatingArray( $types );
 		}
 		

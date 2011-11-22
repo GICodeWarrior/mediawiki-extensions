@@ -37,7 +37,7 @@ class ReviewControl {
 			);
 		} 
 		else {
-			$review = $this->review->toArray( array( 'page_id', 'title', 'text', 'rating' ), null, $types );
+			$review = $this->review->toArray( array( 'id', 'page_id', 'title', 'text', 'rating' ), false, $types );
 		}
 		
 		$attribs['data-review'] = FormatJson::encode( $review );

@@ -109,9 +109,27 @@ final class ReviewsHooks {
 		return true;
 	}
 	
+	/**
+	 * Add the review control when needed.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param OutputPage $out
+	 * @param Skin $skin
+	 * 
+	 * @return true
+	 */
 	public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
-		if ( $out->isArticle() && $skin->getRequest()->getText( 'action' ) !== 'edit' ) {
-			$control = new ReviewControl();
+		if ( $skin->getUser()->isAllowed( 'review' )
+			&& $out->isArticle()
+			&& $skin->getRequest()->getText( 'action' ) !== 'edit' ) {
+			
+			$review = Review::selectRow( null, array(
+				'user_id' => $skin->getUser()->getId(),
+			 	'page_id' => $skin->getTitle()->getArticleID()
+			) );
+				
+			$control = new ReviewControl( $review === false ? null : $review );
 			$control->addToContext( $skin );
 		}
 		

@@ -19,7 +19,7 @@
 		this.titleInput = null;
 
 		this.fieldName = function( name ) {
-			return ( this.review.fields.id === false ? 'new-review' : this.review.fields.id ) + '-' + name;
+			return 'review-' + ( this.review.fields.id === false ? 'new' : this.review.fields.id ) + '-' + name;
 		};
 		
 		this.buildInterface = function() {
@@ -27,7 +27,7 @@
 				'type': 'text',
 				'size': 45,
 				'name': this.fieldName( 'title' )
-			} ).text( this.review.fields.title );
+			} ).val( this.review.fields.title );
 			
 			this.textInput =  $( '<textarea />' ).attr( {
 				'name': this.fieldName( 'text' )
