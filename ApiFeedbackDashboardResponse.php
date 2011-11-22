@@ -76,7 +76,6 @@ class ApiFeedbackDashboardResponse extends ApiBase {
 			'useragent' => null,
 			'system' => null,
 			'locale' => null,
-			'bucket' => null,
 			'token' => null,
 		);
 	}
@@ -99,7 +98,6 @@ class ApiFeedbackDashboardResponse extends ApiBase {
 			'response' => 'The feedback text',
 			'anonymize' => 'Whether to hide user information',
 			'editmode' => 'Whether or not the feedback context is in edit mode',
-			'bucket' => 'The testing bucket, if any',
 			'useragent' => 'The User-Agent header of the browser',
 			'system' => 'The operating system being used',
 			'locale' => 'The locale in use',

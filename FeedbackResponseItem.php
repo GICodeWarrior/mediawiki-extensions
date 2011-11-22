@@ -23,8 +23,7 @@ class MBFeedbackResponseItem {
 	                'system', // Operating System
 	                'useragent' , // User-Agent header
 	                'locale', // The locale of the user's browser
-	                'editmode', // Whether or not the user was editing
-	                'bucket' // Bucket, for A/B testing		
+	                'editmode' // Whether or not the user was editing	
 		);
 	/**
 	 * Default constructor.
@@ -42,7 +41,7 @@ class MBFeedbackResponseItem {
 	 * Factory function to create a new MBFeedbackResponseItem
 	 * @param $info Associative array of values
 	 * Valid keys: feedbackitem, user, response-text, timestamp,
-	 *             useragent, system, locale, bucket
+	 *             useragent, system, locale
 	 * @return MBFeedbackItem object.
 	 */
 	public static function create( $info ) {
@@ -94,7 +93,6 @@ class MBFeedbackResponseItem {
 			'useragent' => 'mbfr_user_agent',
 			'system' => 'mbfr_system_type',
 			'locale' => 'mbfr_locale',
-			'bucket' => 'mbfr_bucket',
 			'editmode' => 'mbfr_editing',
 			'commenter-editcount', 
 	                'user-editcount'
@@ -231,7 +229,6 @@ class MBFeedbackResponseItem {
 			'mbfr_system_type' => $this->getProperty('system'),
 			'mbfr_user_agent' => $this->getProperty('useragent'),
 			'mbfr_locale' => $this->getProperty('locale'),
-			'mbfr_bucket' => $this->getProperty('bucket'),
 			'mbfr_editing' => $this->getProperty('editmode')
 		);
 

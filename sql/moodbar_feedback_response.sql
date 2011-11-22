@@ -19,8 +19,7 @@ CREATE TABLE /*_*/moodbar_feedback_response (
 	mbfr_system_type varchar(64) binary NULL, -- Operating System
 	mbfr_user_agent varchar(255) binary NULL, -- User-Agent header
 	mbfr_locale varchar(32) binary NULL, -- The locale of the user's browser
-	mbfr_editing tinyint unsigned NOT NULL, -- Whether or not the user was editing
-	mbfr_bucket varchar(128) binary NULL -- Bucket, for A/B testing
+	mbfr_editing tinyint unsigned NOT NULL -- Whether or not the user was editing
 ) /*$wgDBTableOptions*/;
 
 CREATE INDEX /*i*/mbfr_mbf_id ON /*_*/moodbar_feedback_response (mbfr_mbf_id);
