@@ -235,7 +235,7 @@ class ExtParserFun {
 			
 			default:
 				// give other extensions a chance to hook up with this and return their own values:
-				wfRunHooks( 'GetThisVariableValueSwitch', array( &$parser, $title, &$mwId, &$ret, &$frame, &$args ) );
+				wfRunHooks( 'GetThisVariableValueSwitch', array( &$parser, $title, &$mwId, &$ret, $frame, $args ) );
 		}
 		return $ret;
 	}
