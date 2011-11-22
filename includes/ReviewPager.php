@@ -84,9 +84,13 @@ class ReviewPager extends TablePager {
 				'reviews-pager-post-time',
 				'reviews-pager-state',
 				'reviews-pager-title',
-				'reviews-pager-user',
-				'reviews-pager-page',
 			);
+			
+			if ( !array_key_exists( 'review_user_id', $this->conds ) ) {
+				$headers[] = 'reviews-pager-user';
+			}
+			
+			$headers[] = 'reviews-pager-page';
 
 			$headers = array_map( 'wfMsg', $headers );
 		}

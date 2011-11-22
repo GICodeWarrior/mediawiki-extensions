@@ -42,6 +42,7 @@ class SpecialMyReviews extends SpecialPage {
 	 * @param string $arg
 	 */
 	public function execute( $subPage ) {
+		$subPage = is_null( $subPage ) ? '' : $subPage;
 		$this->subPage = str_replace( '_', ' ', $subPage );
 
 		$this->setHeaders();
@@ -57,16 +58,30 @@ class SpecialMyReviews extends SpecialPage {
 			
 		}
 		else {
+			$this->getOutput()->addWikiMsg( 'reviews-myreviews-header' );
+			
 			if ( $subPage === '' ) {
 				$this->displayReviewList();
 			}
 			else {
-				
+				// TODO
 			}
 		}
 	}
 
 	protected function displayReviewList() {
+		$reviewPager = new ReviewPager( array( 'review_user_id' => $this->getUser()->getId() ) );
+
+		if ( $reviewPager->getNumRows() ) {
+			$this->getOutput()->addHTML(
+				$reviewPager->getNavigationBar() .
+				$reviewPager->getBody() .
+				$reviewPager->getNavigationBar()
+			);
+		}
+		else {
+			$this->getOutput()->addWikiMsg( 'reviews-pager-no-results' );
+		}
 	}
 
 }

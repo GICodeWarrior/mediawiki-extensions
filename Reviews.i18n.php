@@ -54,13 +54,25 @@ $messages['en'] = array(
 	'reviews-submission-saving' => 'Saving',
 
 	// Special:MyReviews
-	'reviews-myreviews-header' => 'This page lists all reviews you posted',
+	'reviews-myreviews-header' => 'This page lists all reviews you posted.',
+
+	// Special:Reviews
+
+	// Review pager
+	'reviews-pager-post-time' => 'Post time',
+	'reviews-pager-state' => 'State',
+	'reviews-pager-title' => 'Title',
+	'reviews-pager-user' => 'User',
+	'reviews-pager-page' => 'For page',
 );
 
 /** Message documentation (Message documentation)
  * @author Jeroen De Dauw
  */
 $messages['qqq'] = array(
+	'reviews-toplink' => 'Text of top link linking to Special:MyReviews',
+
+	'prefs-reviews' => 'Preferences tab label',
 	'reviews-prefs-showtoplink' => 'Text explaining the function of a preference, next to a checkbox',
 	'reviews-prefs-showcontrol' => 'Text explaining the function of a preference, next to a checkbox',
 	'reviews-prefs-showedit' => 'Text explaining the function of a preference, next to a checkbox',
@@ -72,4 +84,10 @@ $messages['qqq'] = array(
 	'reviews-submission-saving' => 'Submission button text while a save action is happening and the button gets disabled',
 
 	'reviews-myreviews-header' => "Line on top of a page explaining it's function",
+
+	'reviews-pager-post-time' => 'Tabele column header',
+	'reviews-pager-state' => 'Tabele column header',
+	'reviews-pager-title' => 'Tabele column header',
+	'reviews-pager-user' => 'Tabele column header',
+	'reviews-pager-page' => 'Tabele column header',
 );

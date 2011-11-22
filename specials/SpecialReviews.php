@@ -62,6 +62,7 @@ class SpecialReviews extends SpecialPage {
 				$this->displayReviewList();
 			}
 			else {
+				// TODO
 			}
 		}
 	}
