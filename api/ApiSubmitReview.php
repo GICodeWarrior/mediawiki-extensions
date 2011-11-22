@@ -34,19 +34,27 @@ class ApiSubmitReview extends ApiBase {
 			$review->setField( 'state', Review::STATUS_NEW );
 			$review->setField( 'post_time', wfTimestampNow() );
 			
-			$review->writeToDB();
+			$this->writeReviewToDB( $review );
 		}
 		else {
 			$review = Review::selectRow( array( 'id', 'user_id' ), array( 'id' => $params['id'] ) );
 			
 			if ( $review->getField( 'user_id' ) === $this->getUser()->getId() ) {
 				$review->setFields( $params );
-				$review->writeToDB();
+				$this->writeReviewToDB( $review );
 			}
 			else {
 				$this->dieUsageMsg( array( 'badaccess-groups' ) );
 			}
 		}
+	}
+	
+	protected function writeReviewToDB( Review $review ) {
+		$this->getResult()->addValue(
+			null,
+			'success',
+			$review->writeToDB()
+		);
 	}
 
 	public function needsToken() {

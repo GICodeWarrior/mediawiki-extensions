@@ -37,7 +37,7 @@
 				wgScriptPath + '/api.php',
 				requestArgs,
 				function( data ) {
-					callback();
+					callback( data.hasOwnProperty( 'success' ) && data.success );
 				}	
 			);			
 		};

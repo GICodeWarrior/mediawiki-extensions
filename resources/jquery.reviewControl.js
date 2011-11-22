@@ -57,9 +57,18 @@
 			this.readInputs();
 			
 			this.button.button( 'disable' );
+			this.button.button( 'option', 'label', mw.msg( 'reviews-submission-saving' ) );
 			
-			this.review.save( function() {
-				this.button.button( 'enable' );
+			this.review.save( function( success ) {
+				if ( success ) {
+					// TODO
+				}
+				else {
+					alert( 'Review could not be saved' ); // TODO
+				}
+				
+				_this.button.button( 'enable' );
+				_this.button.button( 'option', 'label', mw.msg( 'reviews-submission-submit' ) );
 			} );
 		};
 		
