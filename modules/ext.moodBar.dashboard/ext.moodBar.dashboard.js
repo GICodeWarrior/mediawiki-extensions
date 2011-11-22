@@ -1,7 +1,7 @@
 /**
  * AJAX code for Special:MoodBarFeedback
  */
-jQuery( function( $ ) {	
+jQuery(function( $ ) {	
 	/**
 	 * Saved form state
 	 */
@@ -115,13 +115,13 @@ jQuery( function( $ ) {
 			'mbclimit': limit + 2 // we drop the first and last result
 		};
 		if ( mode == 'more' ) {
-			reqData['mbccontinue'] = $( '#fbd-list').find( 'li:last' ).data( 'mbccontinue' );
+			reqData.mbccontinue = $( '#fbd-list').find( 'li:last' ).data( 'mbccontinue' );
 		}
 		if ( formState.types.length ) {
-			reqData['mbctype'] = formState.types.join( '|' );
+			reqData.mbctype = formState.types.join( '|' );
 		}
 		if ( formState.username.length ) {
-			reqData['mbcuser'] = formState.username;
+			reqData.mbcuser = formState.username;
 		}
 		
 		$.ajax( {
@@ -144,7 +144,7 @@ jQuery( function( $ ) {
 					$ul = $( '#fbd-list' ),
 					moreResults = false,
 					i;
-				if ( len == 0 ) {
+				if ( len === 0 ) {
 					if ( mode == 'more' ) {
 						showMessage( mw.msg( 'moodbar-feedback-nomore' ) );
 					} else {
@@ -249,16 +249,19 @@ jQuery( function( $ ) {
 	}
 	
 	/**
-	 * Do this before administrative action to provide reason
+	 * Do this before administrative action to confirm action and provide reason
+	 * @param params to store action paramaters 
+	 * @param $item jQuery item containing the .fbd-item
 	 */
-	function beforeAction(params, $item){
-		var inlineForm = '<span class="fbd-item-reason">\
-					$1\
-					<input class="fbd-action-reason" name="fb-action-reason" />\
-					<button class="fbd-action-confirm">Confirm</button>\
-					<button class="fbd-action-cancel">Cancel</button>\
-				  </span>'
-				.replace( /\$1/g, mw.msg( 'moodbar-action-reason' ));
+	function confirmAction(params, $item){
+				
+		var inlineForm = $('<span>').attr('class', 'fbd-item-reason')
+				.append( $('<span>').html(mw.msg( 'moodbar-action-reason' )) )
+				.append( $('<input />').attr({'class':'fbd-action-reason', 'name':'fbd-action-reason'}) )
+				.append( $('<button>').attr('class', 'fbd-action-confirm').html( mw.msg('moodbar-feedback-action-confirm')) )
+				.append( $('<button>').attr('class', 'fbd-action-cancel').html( mw.msg('moodbar-feedback-action-cancel')) )
+				.append( $('<span>').attr('class', 'fbd-item-reason-msg') )
+			.append( $('<div>').attr('class', 'fbd-item-reason-msg') );
 				   
 		var storedParams = params;
 		var $storedItem = $item;
@@ -267,16 +270,17 @@ jQuery( function( $ ) {
 			.empty();
 			
 		$item.find('.fbd-item-message')
-			.append(inlineForm)
-			.end();
+			.append(inlineForm);
 		
 		$('.fbd-action-confirm').click( function() {
-			storedParams.reason = $item.find('.fbd-action-reason').val();
+			storedParams.reason = $storedItem.find('.fbd-action-reason').val();
 			
 			if( storedParams.reason ) {
 				doAction(storedParams, $storedItem);	
 			} else {
-				alert( mw.msg( 'moodbar-action-reason-required' ) );
+					inlineMessage($storedItem.find('.fbd-item-reason'), mw.msg( 'moodbar-action-reason-required' ), function() {
+					reloadItem( $storedItem, true );
+				});	
 			}
 			
 		});
@@ -288,6 +292,8 @@ jQuery( function( $ ) {
 	
 	/**
 	 * Execute an action on an item
+	 * @param params contains action parameters
+	 * @param $item jQuery item containing the .fbd-item
 	 */
 	function doAction( params, $item ) {
 		var item_id = $item.data('mbccontinue').split('|')[1];
@@ -328,7 +334,7 @@ jQuery( function( $ ) {
 	function restoreItem(e) {
 		var $item = $(this).closest('.fbd-item');
 		
-		beforeAction( { 'mbaction' : 'restore' }, $item );
+		confirmAction( { 'mbaction' : 'restore' }, $item );
 		e.preventDefault();
 	}
 	
@@ -337,10 +343,190 @@ jQuery( function( $ ) {
 	 */
 	function hideItem(e) {
 		var $item = $(this).closest('.fbd-item');
-
-		beforeAction( { 'mbaction' : 'hide' }, $item );
+		closeAllResponders(); //if any are open
+		confirmAction( { 'mbaction' : 'hide' }, $item );
 		e.preventDefault();
 	}
+	
+	/**
+	 * Method to close all responders.
+	 * Remove all .fbd-response-form from the dashboard
+	 */
+	function closeAllResponders() {
+		
+		$( '.fbd-item').each(function(index, value){
+			
+			$link = $( this ).find('.fbd-respond-link');
+			if( $link.hasClass('responder-expanded') ) {
+		
+				$link.empty().html( mw.msg( 'moodbar-respond-collapsed' ) + ' ' + mw.msg( 'moodbar-respond-text' ) )
+					.removeClass('responder-expanded');
+			
+				$( this ).find('.fbd-response-form').remove();	
+			}	
+		});
+	}
+	
+	/**
+	 * Show the Response form for the item
+	 * Build the response form elements once
+	 * 
+	 */
+	function showResponseForm(e){
+		
+		if( $(this).hasClass('responder-expanded') ) {
+		
+			closeAllResponders(); 
+				
+		} else {		
+		
+			//init terms of use link
+			var termsofuse = mw.html.element ('a', {
+					'href': mw.msg( 'moodbar-response-terms-of-use-link' ),
+					'title': mw.msg( 'moodbar-response-terms-of-use' ),
+					'target': '_new'
+				}, mw.msg( 'moodbar-response-terms-of-use' ) );
+	
+			//creative commons link
+			var creativecommons = mw.html.element('a', {
+					'href':  mw.msg ( 'moodbar-response-cc-link' ),
+					'title': mw.msg ( 'moodbar-response-cc' ),
+					'target': '_new'
+				}, mw.msg ( 'moodbar-response-cc' ) );
+			
+			//gfdl
+			var gfdl = mw.html.element('a', {
+					'href': mw.msg( 'moodbar-response-gfdl-link' ),
+					'title': mw.msg( 'moodbar-response-gfdl' ),
+					'target': '_new'
+				}, mw.msg( 'moodbar-response-gfdl' ) );
+			
+			//ULA	      
+			var ula = mw.msg( 'moodbar-response-ula' )
+				.replace ( /\$1/, mw.msg( 'moodbar-response-btn') )
+				.replace ( /\$2/, termsofuse)
+				.replace ( /\$3/, creativecommons)
+				.replace ( /\$4/, gfdl);
+				
+			//build form
+			var inlineForm = $('<div>').attr( 'class', 'fbd-response-form' )
+				.append(
+					$('<b>').html( mw.msg( 'moodbar-response-add' ) )
+				).append(
+					$('<small>').attr( 'class', 'fbd-text-gray' ).html( ' (' + mw.msg( 'moodbar-response-nosig' ) + ') ' )
+				).append(
+					$('<div>').attr( 'class', 'fbd-response-formNote' )
+						.append($('<small>')
+						.append(
+							$('<span>').attr( 'class', 'fbd-response-charCount' )
+						).append(
+							$('<span>').html( mw.msg( 'moodbar-form-note-dynamic' ).replace( /\$1/g, "" ) )
+						)
+					)
+				).append(
+					$('<textarea>').attr( { 'class':'fbd-response-text', 'name':'fbd-response-text' } )
+				).append(
+					$('<div>').attr('class', 'ula').html( ula )
+				).append(
+					$('<button>').attr( 'class', 'fbd-response-submit' ).html( mw.msg( 'moodbar-response-btn' ) + ' ' + mw.msg( 'moodbar-respond-collapsed' ) )
+						.attr({'disabled':'true'})
+				).append(
+					$('<div>').attr( 'style', 'clear:both' )
+				);
+					
+			//get the feedbackItem
+			var $item = $(this).closest('.fbd-item');
+			
+			closeAllResponders();
+			
+			$(this).empty().html( mw.msg( 'moodbar-respond-expanded' ) + ' ' + mw.msg( 'moodbar-respond-text' ) )
+				.addClass( 'responder-expanded' )
+				.end();
+			
+			$item.append(inlineForm)
+				.find('.fbd-response-text')
+				.NobleCount('.fbd-response-charCount', {max_chars:5000})
+				.end()
+				.find('.fbd-response-text')
+				.keyup( function(event) {							
+					validateResponse($item);
+				})
+				.end()
+				.find('.fbd-response-submit')
+				.click (function () {
+					var fbResponse = $item.find('.fbd-response-text').val();
+					if( fbResponse ){
+						var	clientData = $.client.profile(),
+							item_id = $item.data('mbccontinue').split('|')[1],
+							resData = {
+								'action':'feedbackdashboardresponse',
+								'useragent': clientData.name + '/' + clientData.versionNumber,
+								'system': clientData.platform,
+								'token': mw.config.get('mbEditToken'),
+								'response': fbResponse,
+								'feedback': item_id,
+								'format':'json'
+							};
+						$item.find('.fbd-item-response').remove(); //remove feedback response link for duration of request
+						var $spinner = $('<span class="mw-ajax-loader">&nbsp;</span>');
+						$responseForm = $item.find('.fbd-response-form').empty().append( $spinner );
+		
+						//send response
+						$.ajax( {
+							'type': 'POST',
+							'url': mw.util.wikiScript( 'api' ),
+							'data': resData,
+							'success': function (data) {
+									inlineMessage($responseForm, mw.msg( 'feedbackresponse-success' ), function() {
+									closeAllResponders();
+									reloadItem( $item, true );
+								});	
+							},
+							'error': function( jqXHR, textStatus, errorThrown ) {
+								//ajax error
+									inlineMessage($responseForm, mw.msg( 'moodbar-feedback-ajaxerror' ), function() {
+									closeAllResponders();
+									reloadItem( $item, true );
+								});	
+								
+							},
+							'dataType': 'json'
+						} );
+						
+					}
+				})
+				.end();
+		}		
+		e.preventDefault();
+		
+	}
+	
+	/**
+	 * Toggle submit button from enabled to disabled
+	 * Depends on value of .fbd-response-text
+	 * @param $item jQuery item containing the .fbd-item
+	 */
+	function validateResponse($item) {
+		if( $item.find('.fbd-response-text').val() !== "" ) {
+			$item.find( '.fbd-response-submit').removeAttr('disabled');
+		} else {
+			$item.find( '.fbd-response-submit').attr({'disabled':'true'});		
+		}
+	}
+	
+	/**
+	 * Send Message to item in regards with response
+	 * @param $el Element to display message inside of and fadeout
+	 * @param msg text to display
+	 * @callback to execute after fadeOut
+	 */
+	function inlineMessage( $el, msg, callback) {
+		$el.empty()
+			.html( msg )
+			.delay(2000)
+			.fadeOut('slow', callback);		
+	}
+	
 	
 	// On-load stuff
 	
@@ -349,6 +535,8 @@ jQuery( function( $ ) {
 	$('.fbd-item-hide a').live( 'click', hideItem );
 	
 	$('.fbd-item-restore').live( 'click', restoreItem );
+	
+	$('.fbd-respond-link').live ('click', showResponseForm );
 	
 	$( '#fbd-filters' ).children( 'form' ).submit( function( e ) {
 		e.preventDefault();

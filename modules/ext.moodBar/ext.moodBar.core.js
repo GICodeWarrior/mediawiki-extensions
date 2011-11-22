@@ -114,11 +114,15 @@
 										mb.ui.overlay.find( '.mw-moodBar-formInput' ).focus();
 										$mwMoodBarTypes.addClass( 'mw-moodBar-types-select' );
 										mb.feedbackItem.type = $el.attr( 'rel' );
-										$el.addClass( 'mw-moodBar-selected' );
+										$el.addClass( 'mw-moodBar-selected' )
+										   .addClass( 'mw-moodBar-' + mb.feedbackItem.type + '-selected' );
 										$el.parent()
 											.find( '.mw-moodBar-selected' )
 												.not( $el )
-												.removeClass( 'mw-moodBar-selected' );
+												.removeClass( 'mw-moodBar-selected' )
+												.removeClass( 'mw-moodBar-happy-selected' )
+												.removeClass( 'mw-moodBar-sad-selected' )
+												.removeClass( 'mw-moodBar-confused-selected' ); 												
 										mb.validate();
 									} )
 									.get( 0 )
@@ -214,7 +218,7 @@
 							var message, counterElement;
 							message = mw.msg( 'moodbar-form-note-dynamic' );							
 							counterElement = mw.html.element( 'span', {
-									'id': 'mw-moodBar-charCount',
+									'id': 'mw-moodBar-charCount'
 								} );
 							return mw.html.escape( message )
 								.replace( /\$1/, counterElement );

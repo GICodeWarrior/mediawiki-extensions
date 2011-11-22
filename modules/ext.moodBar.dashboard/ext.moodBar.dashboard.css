@@ -3,6 +3,7 @@
 #fbd-filters {
 	position: absolute;
 	width: 14em;
+	left:0px;  /* needed for ie6 & ie7 */
 }
 
 #fbd-filters form {
@@ -46,12 +47,14 @@
 	margin: 0;
 	padding: 0;
 	list-style: none;
+	list-style-type:none;
 }
 
 #fbd-filters-types li {
 	margin: 0 0 0 0.75em;
 	padding: 0;
 	list-style: none;
+	list-style-image:none; /* ie 7 fix */
 }
 
 #fbd-filters-types label {
@@ -83,9 +86,10 @@
 
 #fbd-list {
 	margin: 0px 20px 0px 15em;
-	padding: 0;
+	padding: 0px;
 	min-height: 20em;
 	list-style: none;
+	list-style-image:none; /* ie 7 fix */
 }
 
 .client-nojs #fbd-list-more {
@@ -173,7 +177,10 @@
 .fbd-item {
 	border-bottom: solid 1px silver;
 	position: relative;
-	margin-bottom:1em;
+	margin-top:0.5em;
+	margin-bottom:0.5em;
+	
+	padding:0;
 }
 
 .fbd-item-emoticon {
@@ -210,8 +217,8 @@
 	padding: 0;
 }
 
-.fbd-item-userLinks {
-	font-size: 1em;
+.fbd-item-userLinks{
+	font-size: 1em;	
 }
 
 .fbd-item-time {
@@ -222,23 +229,50 @@
 .fbd-item-message {
 	font-size: 1.4em;
 	margin-top: 0.25em;
+	margin-left:81px;
+	min-height:40px;
 }
 
 .fbd-item-permalink,
 .fbd-item-show,
 .fbd-item-hide,
-.fbd-item-reason{
+.fbd-item-reason {
 	float: right;
 	font-size: 0.8em;
 	margin-left: 0.2em;
 	margin-right: 0.2em;
 }
-
+.fbd-respond-link {
+	font-size:1.1em;
+	cursor:pointer;
+	letter-spacing: -0.01em;
+}
+.fbd-respond-link:hover {
+	text-decoration:none;
+}
 .fbd-item-restore {
 	font-size: 0.8em;
 	color: silver;
 }
-
 .fbd-hidden {
 	color: silver;
+}
+.fbd-response-form {
+	margin:0em 0px 1em 81px;
+}
+.fbd-response-form b {
+	font-size:1em;
+}
+.fbd-response-form small{
+	font-size:0.8em;
+	color:#262626;
+}
+.fbd-response-formNote {
+	float:right;
+}
+.fbd-response-submit {
+	float:right;
+}
+.center {
+	text-align:center;
 }

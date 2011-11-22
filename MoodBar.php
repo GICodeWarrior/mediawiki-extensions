@@ -138,7 +138,7 @@ $wgResourceModules['ext.moodBar.core'] = $mbResourceTemplate + array(
 		'mediawiki.util',
 		'ext.moodBar.init', // just in case
 		'jquery.localize',
-	    'jquery.NobleCount',
+		'jquery.NobleCount',
 		'jquery.moodBar',
 	),
 	'position' => 'bottom',
@@ -146,14 +146,34 @@ $wgResourceModules['ext.moodBar.core'] = $mbResourceTemplate + array(
 
 $wgResourceModules['ext.moodBar.dashboard'] = $mbResourceTemplate + array(
 	'scripts' => 'ext.moodBar.dashboard/ext.moodBar.dashboard.js',
-	'dependencies' => array( 'mediawiki.util' ),
+	'dependencies' => array(
+		'mediawiki.util',
+		'jquery.NobleCount'
+	),
 	'messages' => array(
 		'moodbar-feedback-nomore',
 		'moodbar-feedback-noresults',
 		'moodbar-feedback-ajaxerror',
 		'moodbar-feedback-action-error',
 		'moodbar-action-reason',
-		'moodbar-action-reason-required'
+		'moodbar-action-reason-required',
+		'moodbar-feedback-action-confirm',
+		'moodbar-feedback-action-cancel',
+		'moodbar-respond-text',
+		'moodbar-respond-collapsed',
+		'moodbar-respond-expanded',
+		'moodbar-response-add',
+		'moodbar-response-nosig',
+		'moodbar-response-btn',
+		'moodbar-form-note-dynamic',
+		'moodbar-response-ula',
+		'moodbar-response-terms-of-use',
+		'moodbar-response-terms-of-use-link',
+		'moodbar-response-cc',
+		'moodbar-response-cc-link',
+		'moodbar-response-gfdl',
+		'moodbar-response-gfdl-link',
+		'feedbackresponse-success',
 	),
 );
 

@@ -131,7 +131,7 @@ HTML;
 	 * @return string HTML
 	 */
 	public static function formatListItem( $row, $params = array() ) {
-		global $wgLang;
+		global $wgLang, $wgUser;
 		
 		$classes = array('fbd-item');
 		$toolLinks = array();
@@ -194,12 +194,28 @@ HTML;
 					$toolLinks[] = self::getHiddenFooter($feedbackItem, 'hidden');
 				}
 			}
+			
 		} elseif ( in_array('admin', $params) ) {
 			$toolLinks[] = self::getHideLink( $feedbackItem );
+			
+		}
+		
+		//only show response elements if feedback is not hidden, and user is logged in
+		if ($feedbackItem->getProperty('hidden-state') == false
+			&& !$wgUser->isAnon() ) {
+			$respondToThis = wfMessage('moodbar-respond-collapsed').' '.wfMessage("moodbar-respond-text");
+			$responseElements = <<<HTML
+				<div class="fbd-item-response">
+					<a class="fbd-respond-link">$respondToThis</a>
+				</div>
+HTML;
 		}
 		
 		$classes = Sanitizer::encodeAttribute( implode(' ', $classes) );
 		$toolLinks = implode("\n", $toolLinks );
+		if (!$responseElements) {
+			$responseElements = "";
+		}
 		
 		return <<<HTML
 		<li class="$classes" data-mbccontinue="$continueData">
@@ -207,9 +223,10 @@ HTML;
 				<span class="fbd-item-emoticon-label">$typeMsg</span>
 			</div>
 			<div class="fbd-item-time">$timeMsg</div>
-$userInfo
+			$userInfo
 			<div class="fbd-item-message" dir="auto">$comment</div>
-$toolLinks
+			$toolLinks
+			$responseElements
 			<div style="clear:both"></div>
 		</li>
 HTML;

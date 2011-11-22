@@ -34,6 +34,12 @@ $messages['en'] = array(
 	'moodbar-what-label' => 'What is this?',
 	'moodbar-what-collapsed' => '▶', // Optional, only change e.g. for RTL languages. &#x25B6;
 	'moodbar-what-expanded' => '▼', // Ignore, do not translate. &#x25BC;
+        'moodbar-respond-collapsed' => '▶', // Optional, only change e.g. for RTL languages. &#x25B6;
+	'moodbar-respond-expanded' => '▼', // Ignore, do not translate. &#x25BC;
+        'moodbar-respond-text' => 'Respond to this',
+        'moodbar-response-add' => 'Add a response',
+        'moodbar-response-nosig' => 'signature not required',
+        'moodbar-response-btn' => 'Send Response',
 	'moodbar-what-content' => 'This feature is designed to help the community understand the experience of people editing the site.
 For more information, please visit the $1.',
 	'moodbar-what-link' => 'feature page',
@@ -97,6 +103,8 @@ For more information, please visit the $1.',
 	'moodbar-comment-hidden' => '(Feedback hidden by administrative action)',
 	'moodbar-feedback-show' => 'show hidden feedback',
 	'moodbar-feedback-hide' => 'hide feedback',
+        'moodbar-feedback-action-confirm' => 'Confirm',
+        'moodbar-feedback-action-cancel' => 'Cancel',
 	'moodbar-hidden-footer' => 'Hidden feedback by $1 on $2 $3, reason: $4 $5',
 	'moodbar-hidden-footer-without-log' => 'Hidden feedback $1',
 	'moodbar-feedback-restore' => 'restore hidden feedback',
@@ -122,90 +130,16 @@ For more information, please visit the $1.',
 	'moodbar-log-header' => 'This is the log of actions taken on feedback items listed on the [[Special:FeedbackDashboard|feedback dashboard]].',
 	'moodbar-log-hide' => 'hid [[$1]]',
 	'moodbar-log-restore' => 'restored the visibility for [[$1]]',
-);
- 
-/** Message documentation (Message documentation)
- * @author Krinkle
- * @author SPQRobin
- * @author EugeneZelenko
- * @author Lloffiwr
- * @author Purodha
- * @author Raymond
- */
-
-$messages['qqq'] = array(
-	'moodbar-desc' => 'This is a feature in development. See [[mw:MoodBar 0.1/Design]] for background information.',
-	'moodbar-trigger-editing' => "Link text of the MoodBar overlay trigger. \$1 is the SITENAME. The implied sentence is ''\"Using [Sitename] made me happy/sad/...\"''. See [[mw:MoodBar 0.1/Design]] for background development information.",
-	'moodbar-trigger-feedback' => 'Link text of the MoodBar overlay trigger. $1 is the SITENAME.',
-	'moodbar-intro-editing' => 'Intro title of the MoodBar overlay trigger. $1 is the SITENAME.',
-	'moodbar-intro-feedback' => 'Intro title of the MoodBar overlay trigger. $1 is the SITENAME.',
-	'moodbar-close' => 'Link text of the close-button. Make sure to include parentheses.
-
-See also:
-* {{msg|parentheses}}',
-	'tooltip-moodbar-what' => 'Tooltip displayed when hovering the What-link.
-
-See also:
-* {{msg|moodbar-what-label}}',
-	'moodbar-what-target' => 'Complete URL (including http://) or article name where more info can be found.',
-	'moodbar-what-label' => 'Link text for the page where more info abut MoodBar can be found.',
-	'moodbar-form-policy-text' => 'Text displayed below the input area.
-
-See also:
-* {{msg|moodbar-form-policy-label}}',
-	'moodbar-form-policy-label' => 'Label text for the link to the privacy policy,.
-
-See also:
-* {{msg|moodbar-form-policy-text}}',
-	'moodbar-loading-title' => 'Title of the screen when the widget is loading.',
-	'moodbar-success-title' => 'Title of the screen after the feedback was successfully submitted.',
-	'moodbar-error-title' => 'Title of the screen when after an error occurred and submission aborted.',
-	'moodbar-loading-subtitle' => 'Subtitle of Loading-screen. $1 is the SITENAME',
-	'moodbar-success-subtitle' => 'Subtitle of screen when feedback was successfullyully submitted. $1 is the SITENAME',
-	'moodbar-error-subtitle' => 'Subtitle of screen when an error occurred. $1 is the SITENAME',
-	'moodbar-feedback-more' => 'Text of the link that the user can click to see more results. Only visible if JavaScript is enabled.',
-	'moodbar-feedback-newer' => 'Text of the link that the user can click to go back to more recent results. Only visible if JavaScript is not enabled.',
-	'moodbar-feedback-older' => 'Text of the link that the user can click to see less recent results. Only visible if JavaScript is not enabled.',
-	'moodbar-desc' => '{{desc}}
-This is a feature in development. See [[mw:MoodBar 0.1/Design]] for background information.',
-	'moodbar-trigger-feedback' => 'Link text of the MoodBar overlay trigger. $1 is the SITENAME.',
-	'moodbar-trigger-editing' => "Link text of the MoodBar overlay trigger. \$1 is the SITENAME. The implied sentence is ''\"Using [Sitename] made me happy/sad/...\"''. See [[mw:MoodBar 0.1/Design]] for background development information.",
-	'moodbar-close' => 'Link text of the close-button. Make sure to include parentheses.
-
-See also:
-* {{msg|parentheses}}
-{{Identical|Close}}',
-	'moodbar-intro-feedback' => 'Intro title of the MoodBar overlay trigger. $1 is the SITENAME.',
-	'moodbar-intro-editing' => '[[File:MoodBar-Step-1.png|right|200px]]
-Intro title of the MoodBar overlay trigger. $1 is the SITENAME.',
-	'moodbar-type-happy-title' => 'No gender support ([[bugzilla:30071|bug 30071]])',
-	'moodbar-type-sad-title' => 'No gender support ([[bugzilla:30071|bug 30071]])',
-	'moodbar-type-confused-title' => 'No gender support ([[bugzilla:30071|bug 30071]])',
-	'tooltip-moodbar-what' => 'Tooltip displayed when hovering the What-link.
-
-See also:
-* {{msg|moodbar-what-label}}',
-	'moodbar-what-label' => 'Link text for the page where more info abut MoodBar can be found.
-{{Identical|What is this}}',
-	'moodbar-what-content' => '$1 is the message {{msg-mw|moodbar-what-link}} which links to the page [[mw:MoodBar|MoodBar]] on MediaWiki.org.',
-	'moodbar-what-link' => 'This is the link embedded as parameter $1 in {{msg-mw|moodbar-what-content}}.',
-	'moodbar-privacy' => 'Parameters:
-*$1 - a link having the anchor text {{msg-mw|moodbar-privacy-link}}
-
-The link is to the privacy policy of the wiki.
-
-See [[Thread:Support/About MediaWiki:Moodbar-privacy/en (2)/reply (4)|discussion]].',
-	'moodbar-privacy-link' => 'This is the anchor text being used in the link replacing $1 in the message {{msg-mw|moodbar-privacy}}',
-	'moodbar-header-timestamp' => '{{Identical|Timestamp}}',
-	'moodbar-header-type' => '{{Identical|Type}}',
-	'moodbar-header-page' => '{{Identical|Page}}',
-	'moodbar-header-user' => '{{Identical|User}}',
-	'moodbar-header-comment' => '{{Identical|Comment}}',
-	'moodbar-header-namespace' => '{{Identical|Namespace}}',
-	'moodbar-type-happy' => '$1 is the username that can be used for GENDER',
-	'moodbar-type-sad' => '$1 is the username that can be used for GENDER',
-	'moodbar-type-confused' => '$1 is the username that can be used for GENDER',
-	'moodbar-user-ip' => '{{Identical|IP Address}}',
+        //Feedback Response
+        'moodbar-response-ula' => 'By clicking the "$1" button, you aggree to the $2, and you irrevocably agree to release your contribution under the under the $3 License and the $4.
+You agree that a hyperlink or URL is sufficient attribution under the Creative Commons license.',
+        'moodbar-response-terms-of-use' => 'Terms Of Use',
+        'moodbar-response-terms-of-use-link' => '#',
+        'moodbar-response-cc' => 'Creative Commons',
+        'moodbar-response-cc-link' => 'http://creativecommons.org/licenses/by-sa/3.0/us/legalcode',
+        'moodbar-response-gfdl' => 'GFDL',
+        'moodbar-response-gfdl-link' => 'http://www.gnu.org/copyleft/fdl.html',
+        'feedbackresponse-success' => 'Thank you.  Your response was added to the User\'s Talk page.',
 );
 
 /** Message documentation (Message documentation)
@@ -294,6 +228,29 @@ See also:
 	'moodbar-feedback-response-title' => 'The title for appending feedback response text to a user talk page',
 	'moodbar-feedback-view-link' => 'link to an individual feedback',
 	'moodbar-user-ip' => '{{Identical|IP Address}}',
+//Feedback Response
+        'moodbar-response-ula' => "Text of the user license agreement.
+                                    * $1 {{mw-msg|moodbar-response-btn}}
+                                    * $2 {{mw-msg|moodbar-response-terms-of-use}}
+                                    * $3 {{mw-msg|moodbar-response-cc}}
+                                    * $4 {{mw-msg|moodbar-response-gfdl}}",
+        'moodbar-response-terms-of-use'=> "Terms of Use Text",
+        'moodbar-response-terms-of-use-link' => "Terms of Use Link",
+        'moodbar-response-cc' => 'Creative Commons Text',
+        'moodbar-response-cc-link' => 'Hyperlink to Creative Commons License',
+        'moodbar-response-gfdl' => 'GFDL Text',
+        'moodbar-response-gfdl-link' => 'GFDL Hyperlink',
+        'feedbackresponse-success' => 'Text for successful feedback response',
+        'moodbar-action-reason' => 'Text for Admin action reason', 
+        'moodbar-action-reason-required' => 'Text explaining admin action reason is required',
+        'moodbar-feedback-action-confirm' => 'Text for admin action confirm button',
+        'moodbar-feedback-action-cancel' => 'Text for admin action cancel button',
+        'moodbar-respond-text' => 'Text for Response toggle',
+        'moodbar-respond-collapsed' => 'Special character for response form collapsed',
+        'moodbar-respond-expanded' => 'Special character for response form expanded',
+        'moodbar-response-add' => 'Text for Response heading',
+        'moodbar-response-nosig' => 'Text explaining signature is not required',
+        'moodbar-response-btn' => 'Text for Response button',      
 );
 
 /** Afrikaans (Afrikaans)
