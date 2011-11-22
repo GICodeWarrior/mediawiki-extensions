@@ -3,7 +3,7 @@
  * @author Junaid P V ([[user:Junaidpv]])
  * @date 2010-10-12
  * @credits With help from Naveen Shankar
- * License: GPLv3, CC-BY-SA 3.0
+ * License: GPLv3
  */
 
  // Normal rules

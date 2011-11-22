@@ -3,7 +3,7 @@
  * @author Junaid P V ([[user:Junaidpv]]) with extensive advise from Thachan Makan ([[user:Thachan.makan]])
  * @date 2010-05-19 (update: 2010-12-11)
  * @credits Malayalam Wikimedia Community, especialy Thachan Makan ([[user:Thachan.makan]])
- * License: GPLv3, CC-BY-SA 3.0
+ * License: GPLv3
  */
 
 // Normal rules

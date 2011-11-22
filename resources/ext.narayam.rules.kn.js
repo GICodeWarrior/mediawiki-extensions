@@ -3,7 +3,7 @@
  * @author M G Harish [[user:M G Harish]]
  * Modified by User:HPNadig (User:HPN on en)
  * @date 2010-12-25
- * License: GPLv3, CC-BY-SA 3.0
+ * License: GPLv3
  */
  var rules = [
 ['ಕ್h','c','ಚ್'],

@@ -5,7 +5,7 @@
  * @date 2010-12-18 (Based on naaraayam transliteration tool I first wrote on 2010-05-19)
  * @version 3.0
  * Last update: 2010-11-28
- * License: GPLv3, CC-BY-SA 3.0
+ * License: GPLv3
  */
 
 /**

@@ -3,7 +3,7 @@
  * @author Junaid P V ([[user:Junaidpv]])
  * @date 2010-11-13
  * @credit With help from Subhashish Panigrahi
- * License: GPLv3, CC-BY-SA 3.0
+ * License: GPLv3
  */
 // Normal rules
 var rules = [

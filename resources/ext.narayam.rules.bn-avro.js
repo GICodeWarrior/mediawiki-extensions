@@ -2,7 +2,7 @@
  * Avro layout regular expression rules table for Bengali script
  * @author Junaid P V ([[user:Junaidpv]])
  * @date 2010-12-05
- * License: GPLv3, CC-BY-SA 3.0
+ * License: GPLv3
  */
 
 var rules = [

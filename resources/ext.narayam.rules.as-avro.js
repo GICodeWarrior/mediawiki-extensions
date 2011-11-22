@@ -3,7 +3,7 @@
  * @author Junaid P V ([[user:Junaidpv]])
  * @date 2010-12-05
  * @credits Derived from Bengali Avro layout by changing the characters for Assamese
- * License: GPLv3, CC-BY-SA 3.0
+ * License: GPLv3
  */
 
 var rules = [

@@ -3,7 +3,7 @@
  * According to CDAC's "Enhanced InScript Keyboard Layout 5.2"
  * @author Junaid P V ([[user:Junaidpv]])
  * @date 2011-02-27
- * License: GPLv3, CC-BY-SA 3.0
+ * License: GPLv3
  */
  // Normal
  var rules = [

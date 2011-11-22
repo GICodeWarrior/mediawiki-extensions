@@ -4,7 +4,7 @@
  * @date 2010-12-13
  * @credits From the standard developed by Bangladesh Computer Council,
  * Ministry of Science and Information & Communication Technology, Govt. of Bangladesh
- * License: GPLv3, CC-BY-SA 3.0
+ * License: GPLv3
  */
 
 // Normal rules

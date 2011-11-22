@@ -3,7 +3,7 @@
  * @author Junaid P V ([[user:Junaidpv]])
  * @date 2011-10-13
  * @credits http://help.keymandesktop.com/keyboards/keyboard_ekwbamuni.php
- * License: GPLv3, CC-BY-SA 3.0
+ * License: GPLv3
  */
 
 var rules = [
