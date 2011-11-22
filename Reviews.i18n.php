@@ -80,6 +80,10 @@ $messages['en'] = array(
 $messages['qqq'] = array(
 	'reviews-toplink' => 'Text of top link linking to Special:MyReviews',
 
+	'reviews-state-new' => 'A state a review can be in',
+	'reviews-state-flagged' => 'A state a review can be in',
+	'reviews-state-reviewed' => 'A state a review can be in',
+
 	'prefs-reviews' => 'Preferences tab label',
 	'reviews-prefs-showtoplink' => 'Text explaining the function of a preference, next to a checkbox',
 	'reviews-prefs-showcontrol' => 'Text explaining the function of a preference, next to a checkbox',
@@ -92,8 +96,10 @@ $messages['qqq'] = array(
 	'reviews-submission-saving' => 'Submission button text while a save action is happening and the button gets disabled',
 
 	'reviews-myreviews-header' => "Line on top of a page explaining it's function",
-	'reviews-myreviews-editheader' => '',
+	'reviews-myreviews-nosuchreview' => "Line on top of a page explaining it's function",
+	'reviews-myreviews-editheader' => "Line on top of a page explaining it's function",
 
+	'reviews-pager-no-results' => 'Informs the user that there are no results',
 	'reviews-pager-post-time' => 'Tabele column header',
 	'reviews-pager-state' => 'Tabele column header',
 	'reviews-pager-title' => 'Tabele column header',
