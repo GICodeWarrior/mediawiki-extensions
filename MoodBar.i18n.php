@@ -75,6 +75,8 @@ For more information, please visit the $1.',
 	'moodbar-header-own-talk' => 'Own talk page',
 	// Special:MoodBarFeedback
 	'moodbar-feedback-title' => 'Feedback dashboard',
+	'moodbar-feedback-response-title' => 'Feedback dashboard response',
+	'moodbar-feedback-view-link' => '(View the feedback)',
 	'moodbar-feedback-filters' => 'Filters',
 	'moodbar-feedback-filters-type' => 'Mood:',
 	'moodbar-feedback-filters-type-happy' => 'Happy',

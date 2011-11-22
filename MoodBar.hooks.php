@@ -101,6 +101,9 @@ class MoodBarHooks {
 
 		$updater->addExtensionUpdate( array( 'addField', 'moodbar_feedback',
 			'mbf_hidden_state', dirname(__FILE__).'/sql/mbf_hidden_state.sql', true ) );
+		
+		$updater->addExtensionUpdate( array( 'addTable', 'moodbar_feedback_response',
+			dirname(__FILE__).'/sql/moodbar_feedback_response.sql', true ) );
 
 		return true;
 	}

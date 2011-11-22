@@ -15,6 +15,7 @@ $wgExtensionCredits['other'][] = array(
 
 // Object model
 $wgAutoloadClasses['MBFeedbackItem'] = dirname(__FILE__).'/FeedbackItem.php';
+$wgAutoloadClasses['MBFeedbackResponseItem'] = dirname(__FILE__).'/FeedbackResponseItem.php';
 $wgAutoloadClasses['MoodBarFormatter'] = dirname(__FILE__).'/Formatter.php';
 
 // API
@@ -24,6 +25,8 @@ $wgAutoloadClasses['ApiQueryMoodBarComments'] = dirname( __FILE__ ). '/ApiQueryM
 $wgAPIListModules['moodbarcomments'] = 'ApiQueryMoodBarComments';
 $wgAutoloadClasses['ApiFeedbackDashboard'] = dirname(__FILE__).'/ApiFeedbackDashboard.php';
 $wgAPIModules['feedbackdashboard'] = 'ApiFeedbackDashboard';
+$wgAutoloadClasses['ApiFeedbackDashboardResponse'] = dirname(__FILE__).'/ApiFeedbackDashboardResponse.php';
+$wgAPIModules['feedbackdashboardresponse'] = 'ApiFeedbackDashboardResponse';
 
 // Hooks
 $wgAutoloadClasses['MoodBarHooks'] = dirname(__FILE__).'/MoodBar.hooks.php';
