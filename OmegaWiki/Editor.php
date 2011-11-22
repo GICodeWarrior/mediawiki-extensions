@@ -1228,7 +1228,17 @@ class ShortTextEditor extends ScalarEditor {
 	}
 
 	public function getEditHTML( IdStack $idPath, $value ) {
-		return getTextBox( $this->updateId( $idPath->getId() ), $value, $this->onChangeHandler );
+		global $wgUser;
+		$dc = wdGetDataSetContext();
+		if ( ($dc == "uw") and (! $wgUser->isAllowed( 'deletewikidata-uw' ) ) ) {
+			// disable
+			return getTextBox( $this->updateId( $idPath->getId() ), $value, $this->onChangeHandler, true );
+		} else {
+			return getTextBox( $this->updateId( $idPath->getId() ), $value, $this->onChangeHandler );
+		}
+	}
+ 
+
 	}
 
 	public function add( IdStack $idPath ) {

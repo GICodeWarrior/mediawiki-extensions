@@ -2,13 +2,18 @@
 
 require_once( 'languages.php' );
 
-function getTextBox( $name, $value = "", $onChangeHandler = "" ) {
+function getTextBox( $name, $value = "", $onChangeHandler = "", $disabled = false ) {
 	if ( $onChangeHandler != "" )
 		$onChangeAttribute = ' onchange="' . $onChangeHandler . '"';
 	else
 		$onChangeAttribute = '';
 
-	return '<input type="text" id="' . $name . '" name="' . $name . '" value="' . htmlspecialchars( $value ) . '"' . $onChangeAttribute . ' style="width: 100%; padding: 0px; margin: 0px;"/>';
+	$disableText = $disabled ? 'disabled="disabled" ' : '' ;
+	$inputHTML = '<input ' . $disableText . 'type="text" id="' . $name . '" name="' . $name .
+		'" value="' . htmlspecialchars( $value ) . '"' . $onChangeAttribute .
+		' style="width: 100%; padding: 0px; margin: 0px;"/>' ;
+
+	return $inputHTML ;
 }
  
 function getTextArea( $name, $text = "", $rows = 5, $columns = 80, $disabled = false ) {
