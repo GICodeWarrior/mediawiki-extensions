@@ -19,19 +19,27 @@
 		this.titleInput = null;
 
 		this.fieldName = function( name ) {
-			return 'review-' + ( this.review.fields.id === false ? 'new' : this.review.fields.id ) + '-' + name;
+			return 'review-' + ( typeof this.review.fields.id === 'undefined' ? 'new' : this.review.fields.id ) + '-' + name;
 		};
 		
 		this.buildInterface = function() {
-			this.titleInput =  $( '<input />' ).attr( {
+			this.titleInput = $( '<input />' ).attr( {
 				'type': 'text',
 				'size': 45,
 				'name': this.fieldName( 'title' )
 			} ).val( this.review.fields.title );
 			
-			this.textInput =  $( '<textarea />' ).attr( {
+			this.textInput = $( '<textarea />' ).attr( {
 				'name': this.fieldName( 'text' )
 			} ).text( this.review.fields.text );
+			
+			this.ratingInput = reviews.htmlSelect(
+				{ 1: 1, 2: 2, 3: 3, 4: 4, 5: 5 }, // TODO
+				this.review.fields.rating,
+				{ 'name': this.fieldName( 'rating' ), 'id': this.fieldName( 'rating' ) }
+			);
+			
+			this.ratingInput = $( '<div />' ).attr( 'id', this.fieldName( 'ratingdiv' ) ).html( this.ratingInput );
 
 			this.button = $( '<button />' )
 				.button( { 'label': mw.msg( 'reviews-submission-submit' ) } )
@@ -40,7 +48,15 @@
 				} );
 			
 			$this.html( '' );
-			$this.append( this.titleInput, this.textInput, this.button );
+			$this.append( this.titleInput, this.textInput, this.ratingInput, this.button );
+			
+			this.ratingInput.stars( {
+				inputType: 'select',
+				cancelShow: false,
+				callback: function(ui, type, value) {
+					_this.review.fields.rating = parseInt( value );
+				}
+			} );
 		};
 		
 		this.setup = function() {

@@ -129,7 +129,7 @@ $wgResourceModules['jquery.reviewControl'] = $moduleTemplate + array(
 		'reviews-submission-saving',
 	),
 	'dependencies' => array(
-		'jquery.json', 'ext.reviews', 'jquery.ui.button',
+		'jquery.json', 'ext.reviews', 'jquery.ui.button', 'jquery.ui.stars',
 	),
 );
 
@@ -139,6 +139,18 @@ $wgResourceModules['reviews.review.control'] = $moduleTemplate + array(
 	),
 	'dependencies' => array(
 		'jquery.reviewControl',
+	),
+);
+
+$wgResourceModules['jquery.ui.stars'] = $moduleTemplate + array(
+	'scripts' => array(
+		'jquery.ui.stars/jquery.ui.stars.js',
+	),
+	'styles' => array(
+		'jquery.ui.stars/jquery.ui.stars.css',
+	),
+	'dependencies' => array(
+		'jquery.ui.widget',
 	),
 );
 

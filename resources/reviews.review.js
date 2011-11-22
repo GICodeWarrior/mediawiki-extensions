@@ -25,7 +25,7 @@
 				'page_id': this.fields.page_id,
 				'title': this.fields.title,
 				'text': this.fields.text,
-				'rating': 0,
+				'rating': this.fields.rating,
 				'ratings': '{}'
 			};
 			
