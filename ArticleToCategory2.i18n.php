@@ -438,7 +438,7 @@ $messages['ksh'] = array(
 	'right-ArticleToCategory2AddCat' => 'En Saachjropp en en Saachjrop donn',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author Welathêja
  */
 $messages['ku-latn'] = array(
@@ -679,7 +679,7 @@ $messages['rue'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Створити',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  */
 $messages['sr-ec'] = array(
