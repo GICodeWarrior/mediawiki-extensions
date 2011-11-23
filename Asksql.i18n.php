@@ -1120,7 +1120,7 @@ si prega di usàrila cu giudizziu.",
 	'right-asksql' => 'Fà query SQL',
 );
 
-/** Tachelhit (Tašlḥiyt)
+/** Tachelhit (Tašlḥiyt/ⵜⴰⵛⵍⵃⵉⵜ)
  * @author Dalinanir
  * @author Zanatos
  */
@@ -1173,7 +1173,7 @@ Ta funkcija lahko pogosto precej obremeni strežnik, zato jo uporabljajte varčn
 	'right-asksql' => 'Pošiljanje poizvedb SQL',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Charmed94
  * @author Sasa Stefanovic
  */
@@ -1191,7 +1191,7 @@ $messages['sr-ec'] = array(
 	'right-asksql' => 'Направи SQL упите',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -1268,7 +1268,7 @@ $messages['te'] = array(
 	'sqlquery' => 'క్యూరీ ని raayandi',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -1284,7 +1284,7 @@ $messages['tg-cyrl'] = array(
 	'querysuccessful' => 'Дархост бо муваффақият',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
