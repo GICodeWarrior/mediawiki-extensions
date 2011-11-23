@@ -366,7 +366,7 @@ $messages['sl'] = array(
 	'tab0-desc' => 'Doda »ničto« oznako, ki se povezuje na urejevalno stran prvega razdelka strani',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
@@ -374,7 +374,7 @@ $messages['sr-ec'] = array(
 	'tab0-desc' => 'Додаје језичак „0“, повезујући ка форми за измену првог одељка странице',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  * @author Жељко Тодоровић
  */
