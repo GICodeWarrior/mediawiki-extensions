@@ -175,7 +175,7 @@ $messages['bg'] = array(
 	'abcdownload' => 'Изтегляне:',
 );
 
-/** Bahasa Banjar (Bahasa Banjar)
+/** Banjar (Bahasa Banjar)
  * @author Ezagren
  * @author J Subhi
  */
@@ -566,7 +566,7 @@ $messages['ka'] = array(
 	'abcdownload' => 'ჩამოტვირთვა:',
 );
 
-/** کھوار (کھوار)
+/** Khowar (کھوار)
  * @author Rachitrali
  */
 $messages['khw'] = array(
@@ -621,7 +621,7 @@ $messages['ksh'] = array(
 	'abcdownload' => 'Eronger lahde:',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author Erdal Ronahi
  */
 $messages['ku-latn'] = array(
@@ -1017,14 +1017,14 @@ $messages['sc'] = array(
 	'abcdownload' => 'Scàrriga:',
 );
 
-/** Serbo-Croatian (Srpskohrvatski / Српскохрватски)
+/** Serbo-Croatian (Srpskohrvatski)
  * @author OC Ripper
  */
 $messages['sh'] = array(
 	'abc-desc' => 'Dodaje <code>&lt;abc&gt;</code> oznaku za formatiranje ABC muzike',
 );
 
-/** Tachelhit (Tašlḥiyt)
+/** Tachelhit (Tašlḥiyt/ⵜⴰⵛⵍⵃⵉⵜ)
  * @author Dalinanir
  */
 $messages['shi'] = array(
@@ -1088,7 +1088,7 @@ $messages['sr-ec'] = array(
 	'abcvorbis' => 'Ogg Vorbis',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  * @author Rancher
  */
@@ -1164,7 +1164,7 @@ $messages['tr'] = array(
 	'abcdownload' => 'İndir:',
 );
 
-/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+/** Tatar (Cyrillic script) (Татарча)
  * @author Ильнар
  * @author Рашат Якупов
  */
@@ -1174,7 +1174,7 @@ $messages['tt-cyrl'] = array(
 	'abcabc' => 'ABC',
 );
 
-/** ئۇيغۇرچە (ئۇيغۇرچە)
+/** Uyghur (Arabic script) (ئۇيغۇرچە)
  * @author Sahran
  */
 $messages['ug-arab'] = array(
