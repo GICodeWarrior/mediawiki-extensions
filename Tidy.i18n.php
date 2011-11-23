@@ -418,7 +418,7 @@ $messages['sk'] = array(
 	'untidy' => 'Zrušiť upratanie',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  */
 $messages['sr-ec'] = array(
@@ -446,7 +446,7 @@ $messages['sv'] = array(
 	'untidy' => 'Avsystematisera',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -454,7 +454,7 @@ $messages['tg-cyrl'] = array(
 	'untidy' => 'Номуратаб',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
