@@ -440,14 +440,14 @@ $messages['sq'] = array(
 	'tooltip-desc' => 'Vendosë kodet <code>&lt;tooltip&gt;</code> dhe <code>{{#tooltip:}}</code>',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'tooltip-desc' => 'Додаје <code>&lt;tooltip&gt;</code> и <code>{{#tooltip:}}</code> тагове',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
