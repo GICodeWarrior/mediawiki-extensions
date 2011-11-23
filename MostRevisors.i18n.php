@@ -878,7 +878,7 @@ $messages['sr-ec'] = array(
 	'mostrevisors-submit' => 'Иди',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'mostrevisors-namespace' => 'Imenski prostor:',
 	'mostrevisors-submit' => 'Idi',
