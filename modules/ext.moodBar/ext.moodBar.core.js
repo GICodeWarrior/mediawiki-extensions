@@ -122,7 +122,7 @@
 												.removeClass( 'mw-moodBar-selected' )
 												.removeClass( 'mw-moodBar-happy-selected' )
 												.removeClass( 'mw-moodBar-sad-selected' )
-												.removeClass( 'mw-moodBar-confused-selected' ); 												
+												.removeClass( 'mw-moodBar-confused-selected' );
 										mb.validate();
 									} )
 									.get( 0 )
@@ -155,7 +155,7 @@
 										$el.slideDown( 'fast' );
 										$trigger.html( mw.msg( 'moodbar-what-expanded' ) );
 									}
-								} )
+								} );
 					} )
 					.end()
 				.find( '.mw-moodBar-overlayWhatContent' )
@@ -177,7 +177,7 @@
 								new mw.html.Raw( out )
 							);
 							
-							disableMsg = mw.msg( 'moodbar-disable-link' )
+							disableMsg = mw.msg( 'moodbar-disable-link' );
 							disableLink = mw.html.element( 'a', {
 								'href' : '#',
 								'class' : 'mw-moodBar-disable'
@@ -281,7 +281,7 @@
 				newWidth = titleWidth;
 			}
 			
- 			mb.ui.overlay.width(newWidth);
+			mb.ui.overlay.width(newWidth);
 			mb.ui.overlay.hide();
 			
 			// Bind triger

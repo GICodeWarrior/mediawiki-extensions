@@ -77,7 +77,7 @@ jQuery(function( $ ) {
 			.end()
 			.append( $( '<span>' ).text( text ) );
 	}
-	
+
 	/**
 	 * Load a set of 20 comments into the list. In 'filter' mode, the list is
 	 * blanked before the new comments are loaded. In 'more' mode, the comments are
@@ -139,7 +139,7 @@ jQuery(function( $ ) {
 					return;
 				}
 				
-				var 	comments = data.query.moodbarcomments,
+				var comments = data.query.moodbarcomments,
 					len = comments.length,
 					$ul = $( '#fbd-list' ),
 					moreResults = false,
