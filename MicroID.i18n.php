@@ -400,7 +400,7 @@ $messages['sk'] = array(
 	'tog-microid' => 'Zverejniť <a href="http://microid.org/">MicroID</a> na potvrdenie účtu pre externé služby',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -408,7 +408,7 @@ $messages['sr-ec'] = array(
 	'tog-microid' => 'Објавите <a href="http://microid.org/">MicroID</a> да бисте потврдили налог за спољашње услуге',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
