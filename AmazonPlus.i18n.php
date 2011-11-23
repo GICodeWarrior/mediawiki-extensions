@@ -1036,7 +1036,7 @@ $messages['ksh'] = array(
 	'amazonplus-less' => 'winnijer',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author George Animal
  */
 $messages['ku-latn'] = array(
@@ -1589,7 +1589,7 @@ $messages['sr-ec'] = array(
 	'amazonplus-less' => 'мање',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
