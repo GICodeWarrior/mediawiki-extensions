@@ -308,7 +308,7 @@ $messages['tl'] = array(
 	'researchtools-page-prefs' => 'Estadistika ng Nais',
 );
 
-/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+/** Tatar (Cyrillic script) (Татарча)
  * @author Ильнар
  */
 $messages['tt-cyrl'] = array(
