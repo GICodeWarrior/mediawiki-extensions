@@ -34,12 +34,12 @@ $messages['en'] = array(
 	'moodbar-what-label' => 'What is this?',
 	'moodbar-what-collapsed' => '▶', // Optional, only change e.g. for RTL languages. &#x25B6;
 	'moodbar-what-expanded' => '▼', // Ignore, do not translate. &#x25BC;
-        'moodbar-respond-collapsed' => '▶', // Optional, only change e.g. for RTL languages. &#x25B6;
+	'moodbar-respond-collapsed' => '▶', // Optional, only change e.g. for RTL languages. &#x25B6;
 	'moodbar-respond-expanded' => '▼', // Ignore, do not translate. &#x25BC;
-        'moodbar-respond-text' => 'Respond to this',
-        'moodbar-response-add' => 'Add a response',
-        'moodbar-response-nosig' => 'signature not required',
-        'moodbar-response-btn' => 'Send Response',
+	'moodbar-respond-text' => 'Respond to this',
+	'moodbar-response-add' => 'Add a response',
+	'moodbar-response-nosig' => 'signature not required',
+	'moodbar-response-btn' => 'Send Response',
 	'moodbar-what-content' => 'This feature is designed to help the community understand the experience of people editing the site.
 For more information, please visit the $1.',
 	'moodbar-what-link' => 'feature page',
@@ -103,14 +103,14 @@ For more information, please visit the $1.',
 	'moodbar-comment-hidden' => '(Feedback hidden by administrative action)',
 	'moodbar-feedback-show' => 'show hidden feedback',
 	'moodbar-feedback-hide' => 'hide feedback',
-        'moodbar-feedback-action-confirm' => 'Confirm',
-        'moodbar-feedback-action-cancel' => 'Cancel',
+	'moodbar-feedback-action-confirm' => 'Confirm',
+	'moodbar-feedback-action-cancel' => 'Cancel',
 	'moodbar-hidden-footer' => 'Hidden feedback by $1 on $2 $3, reason: $4 $5',
 	'moodbar-hidden-footer-without-log' => 'Hidden feedback $1',
 	'moodbar-feedback-restore' => 'restore hidden feedback',
 	'moodbar-action-item' => 'Feedback item:',
-        'moodbar-action-reason' => 'Reason:',
-        'moodbar-action-reason-required' => 'Please provide a reason.',
+	'moodbar-action-reason' => 'Reason:',
+	'moodbar-action-reason-required' => 'Please provide a reason.',
 	'moodbar-hide-header' => 'Hide this item from view',
 	'moodbar-hide-intro' => '',
 	'moodbar-restore-header' => "Restore this item's visibility",
@@ -131,15 +131,15 @@ For more information, please visit the $1.',
 	'moodbar-log-hide' => 'hid [[$1]]',
 	'moodbar-log-restore' => 'restored the visibility for [[$1]]',
         //Feedback Response
-        'moodbar-response-ula' => 'By clicking the "$1" button, you aggree to the $2, and you irrevocably agree to release your contribution under the under the $3 License and the $4.
+	'moodbar-response-ula' => 'By clicking the "$1" button, you aggree to the $2, and you irrevocably agree to release your contribution under the under the $3 License and the $4.
 You agree that a hyperlink or URL is sufficient attribution under the Creative Commons license.',
-        'moodbar-response-terms-of-use' => 'Terms Of Use',
-        'moodbar-response-terms-of-use-link' => '#',
-        'moodbar-response-cc' => 'Creative Commons',
-        'moodbar-response-cc-link' => 'http://creativecommons.org/licenses/by-sa/3.0/us/legalcode',
-        'moodbar-response-gfdl' => 'GFDL',
-        'moodbar-response-gfdl-link' => 'http://www.gnu.org/copyleft/fdl.html',
-        'feedbackresponse-success' => 'Thank you.  Your response was added to the User\'s Talk page.',
+	'moodbar-response-terms-of-use' => 'Terms Of Use',
+	'moodbar-response-terms-of-use-link' => '#',
+	'moodbar-response-cc' => 'Creative Commons',
+	'moodbar-response-cc-link' => 'http://creativecommons.org/licenses/by-sa/3.0/us/legalcode',
+	'moodbar-response-gfdl' => 'GFDL',
+	'moodbar-response-gfdl-link' => 'http://www.gnu.org/copyleft/fdl.html',
+	'feedbackresponse-success' => 'Thank you.  Your response was added to the User\'s Talk page.',
 );
 
 /** Message documentation (Message documentation)
@@ -229,28 +229,28 @@ See also:
 	'moodbar-feedback-view-link' => 'link to an individual feedback',
 	'moodbar-user-ip' => '{{Identical|IP Address}}',
 //Feedback Response
-        'moodbar-response-ula' => "Text of the user license agreement.
+	'moodbar-response-ula' => "Text of the user license agreement.
                                     * $1 {{mw-msg|moodbar-response-btn}}
                                     * $2 {{mw-msg|moodbar-response-terms-of-use}}
                                     * $3 {{mw-msg|moodbar-response-cc}}
                                     * $4 {{mw-msg|moodbar-response-gfdl}}",
-        'moodbar-response-terms-of-use'=> "Terms of Use Text",
-        'moodbar-response-terms-of-use-link' => "Terms of Use Link",
-        'moodbar-response-cc' => 'Creative Commons Text',
-        'moodbar-response-cc-link' => 'Hyperlink to Creative Commons License',
-        'moodbar-response-gfdl' => 'GFDL Text',
-        'moodbar-response-gfdl-link' => 'GFDL Hyperlink',
-        'feedbackresponse-success' => 'Text for successful feedback response',
-        'moodbar-action-reason' => 'Text for Admin action reason', 
-        'moodbar-action-reason-required' => 'Text explaining admin action reason is required',
-        'moodbar-feedback-action-confirm' => 'Text for admin action confirm button',
-        'moodbar-feedback-action-cancel' => 'Text for admin action cancel button',
-        'moodbar-respond-text' => 'Text for Response toggle',
-        'moodbar-respond-collapsed' => 'Special character for response form collapsed',
-        'moodbar-respond-expanded' => 'Special character for response form expanded',
-        'moodbar-response-add' => 'Text for Response heading',
-        'moodbar-response-nosig' => 'Text explaining signature is not required',
-        'moodbar-response-btn' => 'Text for Response button',      
+	'moodbar-response-terms-of-use'=> "Terms of Use Text",
+	'moodbar-response-terms-of-use-link' => "Terms of Use Link",
+	'moodbar-response-cc' => 'Creative Commons Text',
+	'moodbar-response-cc-link' => 'Hyperlink to Creative Commons License',
+	'moodbar-response-gfdl' => 'GFDL Text',
+	'moodbar-response-gfdl-link' => 'GFDL Hyperlink',
+	'feedbackresponse-success' => 'Text for successful feedback response',
+	'moodbar-action-reason' => 'Text for Admin action reason', 
+	'moodbar-action-reason-required' => 'Text explaining admin action reason is required',
+	'moodbar-feedback-action-confirm' => 'Text for admin action confirm button',
+	'moodbar-feedback-action-cancel' => 'Text for admin action cancel button',
+	'moodbar-respond-text' => 'Text for Response toggle',
+	'moodbar-respond-collapsed' => 'Special character for response form collapsed',
+	'moodbar-respond-expanded' => 'Special character for response form expanded',
+	'moodbar-response-add' => 'Text for Response heading',
+	'moodbar-response-nosig' => 'Text explaining signature is not required',
+	'moodbar-response-btn' => 'Text for Response button',      
 );
 
 /** Afrikaans (Afrikaans)
