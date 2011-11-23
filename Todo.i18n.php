@@ -1917,7 +1917,7 @@ $4',
 	'right-todosubmit' => 'Obmedziť právo používateľa na zoznam čo treba spraviť',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -1937,7 +1937,7 @@ $messages['sr-ec'] = array(
 	'todo-form-submit' => 'Пошањи упит',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  * @author Rancher
  */
@@ -2057,7 +2057,7 @@ $messages['tet'] = array(
 	'todo-list-cancel' => 'Para',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -2069,7 +2069,7 @@ $messages['tg-cyrl'] = array(
 	'todo-issue-summary' => 'Хулосаи амал:',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
