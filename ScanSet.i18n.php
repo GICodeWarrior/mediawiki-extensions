@@ -1332,7 +1332,7 @@ $messages['sr-ec'] = array(
 	'scanset_prev' => '&lt; Претходно',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -1413,7 +1413,7 @@ $messages['tet'] = array(
 	'scanset_next' => 'Oinmai &gt;',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -1431,7 +1431,7 @@ $messages['tg-cyrl'] = array(
 	'scanset_prev' => '&lt; Қаблӣ',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
