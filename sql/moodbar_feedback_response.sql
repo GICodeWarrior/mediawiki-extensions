@@ -5,7 +5,7 @@ CREATE TABLE /*_*/moodbar_feedback_response (
 	
 	-- User who provided the response
 	mbfr_user_id int unsigned NOT NULL, -- User ID, or zero
-	mbfr_user_ip varchar(255) binary NULL, -- If anonymous, user's IP address
+	mbfr_user_ip varbinary(40) NULL, -- If anonymous, user's IP address
 	
 	mbfr_commenter_editcount int unsigned NOT NULL, -- number of edit for the user who writes the feedback
 	mbfr_user_editcount int unsigned NOT NULL, -- number of edit for the responder

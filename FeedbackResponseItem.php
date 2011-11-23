@@ -123,16 +123,17 @@ class MBFeedbackResponseItem {
 	/**
 	 * Set a group of properties. Throws an exception on invalid property.
 	 * @param $values An associative array of properties to set.
+	 * @throws MWFeedbackResponseItemPropertyException
 	 */
 	public function setProperties( $values ) {
 
 		foreach( $values as $key => $value ) {
 			if ( ! $this->isValidKey($key) ) {
-				throw new MWException( "Attempt to set invalid property $key" );
+				throw new MWFeedbackResponseItemPropertyException( "Attempt to set invalid property $key" );
 			}
 
 			if ( ! $this->validatePropertyValue($key, $value) ) {
-				throw new MWException( "Attempt to set invalid value for $key" );
+				throw new MWFeedbackResponseItemPropertyException( "Attempt to set invalid value for $key" );
 			}
 
 			$this->data[$key] = $value;
@@ -152,10 +153,11 @@ class MBFeedbackResponseItem {
 	 * Get a property.
 	 * @param $key The property to get
 	 * @return The property value.
+	 * @throws MWFeedbackResponseItemPropertyException
 	 */
 	public function getProperty( $key ) {
 		if ( ! $this->isValidKey($key) ) {
-			throw new MWException( "Attempt to get invalid property $key" );
+			throw new MWFeedbackResponseItemPropertyException( "Attempt to get invalid property $key" );
 		}
 
 		return $this->data[$key];
@@ -280,3 +282,5 @@ class MBFeedbackResponseItem {
 	}
 
 }
+
+class MWFeedbackResponseItemPropertyException extends MWException {};
