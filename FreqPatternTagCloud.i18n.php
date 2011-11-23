@@ -33,8 +33,6 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation) */
 $messages['qqq'] = array(
-	'freqpatterntagcloud' => 'This message is the page title of the frequent-pattern-tag-cloud-specialpage and must not be translated.',
-	'freqpatterntagcloudmaintenance' => 'This message is the page title of the frequent-pattern-tag-cloud-maintenace-specialpage and must not be translated.',
 	'fptc-categoryname' => 'This message is the name of the category-attribut which is used in SemantikMediaWiki (e.g. category:example)',
 	'fptc-context-menu-browse' => 'This message is used as a title in context menu of the tag cloud tags',
 	'fptc-context-menu-similar-tags' => 'This message is used as a title in context menu of the tag cloud tags',
@@ -86,8 +84,6 @@ $messages['br'] = array(
  * @author Tobias Beck, University of Heidelberg
  */
 $messages['de'] = array(
-	'freqpatterntagcloud' => 'Frequent Pattern Tag Cloud',
-	'freqpatterntagcloudmaintenance' => 'Administration von Frequent Pattern Tag Cloud',
 	'freqpatterntagcloud-desc' => 'Ergänzt eine [[Special:FreqPatternTagCloud|Spezialseite]] zum Erstellen einer Stichwortwolke auf Basis von Attributen sowie zur Suche ähnlicher Attributwerte',
 	'fptc-categoryname' => 'Kategorie',
 	'fptc-context-menu-browse' => 'Durchsuche Seiten mit diesem Wert',
@@ -153,8 +149,6 @@ $messages['frp'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'freqpatterntagcloud' => 'Frequent Pattern Tag Cloud',
-	'freqpatterntagcloudmaintenance' => 'Frequent Pattern Tag Cloud Maintenance',
 	'freqpatterntagcloud-desc' => '[[Special:FreqPatternTagCloud|Páxina especial]] para construír unha nube de etiquetas baseada en propiedades e para procurar valores de propiedades similares',
 	'fptc-categoryname' => 'Categoría',
 	'fptc-context-menu-browse' => 'Navegar polas páxinas con este valor',
@@ -210,8 +204,6 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'freqpatterntagcloud' => 'Облак со ознаки на зачестено поведение',
-	'freqpatterntagcloudmaintenance' => 'Одржување на облакот со ознаки на зачестено поведение',
 	'freqpatterntagcloud-desc' => '[[Special:FreqPatternTagCloud|Специјална страница]] за составување на облак од ознаки според својства и за пребарување на слични својствени вредности',
 	'fptc-categoryname' => 'Категорија',
 	'fptc-context-menu-browse' => 'Прелистување на страници со оваа вредност',
