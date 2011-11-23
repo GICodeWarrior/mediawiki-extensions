@@ -1081,7 +1081,7 @@ $messages['sr-ec'] = array(
 	'nss-welcome-mail-subject' => 'Отварање налога',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  * @author Жељко Тодоровић
  */
