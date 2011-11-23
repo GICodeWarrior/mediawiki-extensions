@@ -89,6 +89,13 @@ $messages['hsb'] = array(
 	'resumableupload-desc' => 'Zmóžnja z nahraćom pokročować',
 );
 
+/** Hungarian (Magyar)
+ * @author Dj
+ */
+$messages['hu'] = array(
+	'resumableupload-desc' => 'Folytatható feltöltés támogatás',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
