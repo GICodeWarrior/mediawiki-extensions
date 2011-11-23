@@ -336,7 +336,7 @@ $messages['bg'] = array(
 	'prefstats-factor-default' => 'връщане към подразбиращия се мащаб',
 );
 
-/** Bahasa Banjar (Bahasa Banjar)
+/** Banjar (Bahasa Banjar)
  * @author J Subhi
  */
 $messages['bjn'] = array(
@@ -1655,7 +1655,7 @@ Donn op ein dovun drop klecke, öm dä ier Shtatistik ze belooere.',
 	'prefstats-legend-in' => 'Aanjemelldt',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author Erdal Ronahi
  */
 $messages['ku-latn'] = array(
@@ -2727,7 +2727,7 @@ $messages['sr-ec'] = array(
 	'prefstats-factor-default' => 'врати се на подразумевану скалу',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -2849,7 +2849,7 @@ $messages['te'] = array(
 	'prefstats-factor-fourweeks' => 'నాలుగు వారాలు',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -2859,7 +2859,7 @@ $messages['tg-cyrl'] = array(
 	'prefstats-factor-week' => 'ҳафта',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
@@ -2988,7 +2988,7 @@ Tercihleri izlemek için $wgPrefStatsTrackPrefs\'i yapılandırın.',
 	'prefstats-legend-in' => 'Katılan',
 );
 
-/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+/** Tatar (Cyrillic script) (Татарча)
  * @author Rinatus
  * @author Ильнар
  */
