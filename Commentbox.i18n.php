@@ -651,7 +651,7 @@ Häß De en Aamerkung zoh heh dä Sigg? Donn se heh enjävve, udder <span class=
 	'commentbox-error-empty-comment' => 'Aanmerkunge met nix dren nit zohjelohße!',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author George Animal
  */
 $messages['ku-latn'] = array(
@@ -1054,7 +1054,7 @@ Imate pripombo na to stran? Dodajte jo tukaj <span class="plainlinks">[{{fullurl
 	'commentbox-error-empty-comment' => 'Prazne pripombe niso dovoljene!',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -1072,7 +1072,7 @@ $messages['sr-ec'] = array(
 	'commentbox-error-empty-comment' => 'Празни коментари нису могући!',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'commentbox-desc' => 'Dodaje kutijice za komentare na izvesne strane',
 	'commentbox-intro' => '== Dodavanje komentara... ==
