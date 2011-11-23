@@ -856,7 +856,7 @@ Uistite sa, že {{PLURAL:$3|požadovaný obrázok existuje|všetky požadované 
 	'smoothgallery-javascript-disabled' => 'Správne zobrazenie tejto galérie vyžaduje JavaScript.',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
@@ -878,7 +878,7 @@ $messages['sr-ec'] = array(
 	'smoothgallery-javascript-disabled' => 'Јаваскрипт је потребан за правилан приказ галерије.',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
