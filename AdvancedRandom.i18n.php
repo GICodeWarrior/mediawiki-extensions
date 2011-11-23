@@ -642,7 +642,7 @@ $messages['sk'] = array(
 Je možné ho použiť na získanie náhodného odporúčaného článku v tvare [[{{#special:advancedrandom}}/{{ns:template}}:Odporúčané/{{ns:talk}}]] alebo na získanie náhodného GFDL súboru v tvare [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]]',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
@@ -652,7 +652,7 @@ $messages['sr-ec'] = array(
 Може да се користи као [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] да би се добила страница која укључује наведени шаблон, или слично [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]], итд.',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -695,7 +695,7 @@ $messages['te'] = array(
 యాధృచ్చిన విశేష వ్యాసపు చర్చాపేజీని చూడడానికి [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]], యాధృచ్చిక GFDL ఫైల్ చూడడానికి [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] అని వాడవచ్చు',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -703,7 +703,7 @@ $messages['tg-cyrl'] = array(
 	'advancedrandom-desc' => 'Гирифтани саҳифаи тасодуфӣ аз пайвандҳои баҳси киҳо ё саҳифаи мавзӯъ, ки ба саҳифа дода шудаанд, метавонанд монанди [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] барои дастрас кардани мақолаи барҷастаи тасодуфии барҷаста ё монанди [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] барои дастрас кардани парвандаи тасодуфии GFDL истифода шаванд',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
@@ -736,7 +736,7 @@ $messages['tr'] = array(
 	'advancedrandom-desc' => 'Tartışma ya da konu sayfası verilen bir sayfaya bağlantı veren birinden bir rasgele sayfa al, rasgele bir kaliteli madde almak için [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] gibi ya da rasgele bir GÖBL resmi almak için [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] gibi kullanılabilir',
 );
 
-/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+/** Tatar (Cyrillic script) (Татарча)
  * @author Ильнар
  */
 $messages['tt-cyrl'] = array(
