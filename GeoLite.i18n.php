@@ -402,7 +402,7 @@ $messages['sr-ec'] = array(
 	'geolite' => 'GeoLite',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Liangent
  */
 $messages['sr-el'] = array(
