@@ -563,13 +563,13 @@ $messages['kk-arab'] = array(
 	'languageselector-setlang' => 'انىقتاۋ',
 );
 
-/** Kazakh (Cyrillic) (Қазақша (Cyrillic)) */
+/** Kazakh (Cyrillic script) (‪Қазақша (кирил)‬) */
 $messages['kk-cyrl'] = array(
 	'languageselector' => 'Тіл',
 	'languageselector-setlang' => 'анықтау',
 );
 
-/** Kazakh (Latin) (Қазақша (Latin)) */
+/** Kazakh (Latin script) (‪Qazaqşa (latın)‬) */
 $messages['kk-latn'] = array(
 	'languageselector' => 'Til',
 	'languageselector-setlang' => 'anıqtaw',
@@ -618,7 +618,7 @@ $messages['ksh'] = array(
 	'languageselector-setlang' => 'Setze',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author George Animal
  */
 $messages['ku-latn'] = array(
@@ -924,7 +924,7 @@ $messages['sah'] = array(
 	'languageselector-setlang' => 'туруор',
 );
 
-/** Tachelhit (Tašlḥiyt)
+/** Tachelhit (Tašlḥiyt/ⵜⴰⵛⵍⵃⵉⵜ)
  * @author Zanatos
  */
 $messages['shi'] = array(
@@ -969,7 +969,7 @@ $messages['sli'] = array(
 	'languageselector-setlang' => 'setza',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
@@ -979,7 +979,7 @@ $messages['sr-ec'] = array(
 	'languageselector-setlang' => 'постави',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -1041,7 +1041,7 @@ $messages['tet'] = array(
 	'languageselector-setlang' => 'hili',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -1049,7 +1049,7 @@ $messages['tg-cyrl'] = array(
 	'languageselector-desc' => 'Забон интихобкунанда дар ҳар саҳифа, барои ташрифоварандагон низ',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
@@ -1090,7 +1090,7 @@ $messages['tr'] = array(
 	'languageselector-setlang' => 'ayar',
 );
 
-/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+/** Tatar (Cyrillic script) (Татарча)
  * @author Ильнар
  */
 $messages['tt-cyrl'] = array(
@@ -1098,7 +1098,7 @@ $messages['tt-cyrl'] = array(
 	'languageselector-setlang' => 'урнаштыру',
 );
 
-/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
+/** Uyghur (Latin script) (Uyghurche‎)
  * @author Jose77
  */
 $messages['ug-latn'] = array(
