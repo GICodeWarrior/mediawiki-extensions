@@ -384,14 +384,14 @@ $messages['sl'] = array(
 	'stringfunctions-desc' => 'Izboljša urejevalnik z funkcijami za nize',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'stringfunctions-desc' => 'Обогаћује парсер функцијама за стрингове',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
