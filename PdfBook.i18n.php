@@ -280,7 +280,7 @@ $messages['ksh'] = array(
 	'pdfbook-desc' => 'Ställd e Booch zesamme us dä Sigge en ene Saachjropp un expoteed et als en Aat Booch en en PDF-Dattei.',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author George Animal
  */
 $messages['ku-latn'] = array(
