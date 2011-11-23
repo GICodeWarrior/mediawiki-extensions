@@ -1095,7 +1095,7 @@ $2',
 	'userrightsnotif-desc' => 'హక్కుల మార్పుల గురించి వాడుకర్లకు ఈ-మెయిలు గమనింపులు పంపిస్తుంది',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -1122,7 +1122,7 @@ $2
 $2',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
