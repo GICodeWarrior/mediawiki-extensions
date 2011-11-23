@@ -22,84 +22,65 @@ class SpecialDailyTotal extends IncludableSpecialPage {
 		
 		$js = $wgRequest->getBool( 'js', false );
 
-		$timezone = $wgRequest->getText( 'timezone', '0:00' );
+		$timezone = $wgRequest->getText( 'timezone', '0' );
 
 		/* Setup */
 		$wgOut->disable();
 		$this->sendHeaders();
 		
 		$zoneList = array (
-			'-12:00' => 'Kwajalein',
-			'-11:00' => 'Pacific/Midway',
-			'-10:00' => 'Pacific/Honolulu',
-			'-9:00' => 'America/Anchorage',
-			'-09:00' => 'America/Anchorage',
-			'-8:00' => 'America/Los_Angeles',
-			'-08:00' => 'America/Los_Angeles',
-			'-7:00' => 'America/Denver',
-			'-07:00' => 'America/Denver',
-			'-6:00' => 'America/Tegucigalpa',
-			'-06:00' => 'America/Tegucigalpa',
-			'-5:00' => 'America/New_York',
-			'-05:00' => 'America/New_York',
-			'-4:30' => 'America/Caracas',
-			'-04:30' => 'America/Caracas',
-			'-4:00' => 'America/Halifax',
-			'-04:00' => 'America/Halifax',
-			'-3:30' => 'America/St_Johns',
-			'-03:30' => 'America/St_Johns',
-			'-3:00' => 'America/Sao_Paulo',
-			'-03:00' => 'America/Sao_Paulo',
-			'-2:00' => 'Atlantic/South_Georgia',
-			'-02:00' => 'Atlantic/South_Georgia',
-			'-1:00' => 'Atlantic/Azores',
-			'-01:00' => 'Atlantic/Azores',
-			'0:00' => 'UTC',
-			'00:00' => 'UTC',
-			'1:00' => 'Europe/Belgrade',
-			'01:00' => 'Europe/Belgrade',
-			'2:00' => 'Europe/Minsk',
-			'02:00' => 'Europe/Minsk',
-			'3:00' => 'Asia/Kuwait',
-			'03:00' => 'Asia/Kuwait',
-			'3:30' => 'Asia/Tehran',
-			'03:30' => 'Asia/Tehran',
-			'4:00' => 'Asia/Muscat',
-			'04:00' => 'Asia/Muscat',
-			'5:00' => 'Asia/Yekaterinburg',
-			'05:00' => 'Asia/Yekaterinburg',
-			'5:30' => 'Asia/Kolkata',
-			'05:30' => 'Asia/Kolkata',
-			'5:45' => 'Asia/Katmandu',
-			'05:45' => 'Asia/Katmandu',
-			'6:00' => 'Asia/Dhaka',
-			'06:00' => 'Asia/Dhaka',
-			'6:30' => 'Asia/Rangoon',
-			'06:30' => 'Asia/Rangoon',
-			'7:00' => 'Asia/Krasnoyarsk',
-			'07:00' => 'Asia/Krasnoyarsk',
-			'8:00' => 'Asia/Brunei',
-			'08:00' => 'Asia/Brunei',
-			'9:00' => 'Asia/Seoul',
-			'09:00' => 'Asia/Seoul',
-			'9:30' => 'Australia/Darwin',
-			'09:30' => 'Australia/Darwin',
-			'10:00' => 'Australia/Canberra',
-			'11:00' => 'Asia/Magadan',
-			'12:00' => 'Pacific/Fiji',
-			'13:00' => 'Pacific/Tongatapu',
+			'-12' => array( 'name' => 'Kwajalein', 'offset' => '-12:00' ),
+			'-11' => array( 'name' => 'Pacific/Midway', 'offset' => '-11:00' ),
+			'-10' => array( 'name' => 'Pacific/Honolulu', 'offset' => '-10:00' ),
+			'-9' => array( 'name' => 'America/Anchorage', 'offset' => '-09:00' ),
+			'-8' => array( 'name' => 'America/Los_Angeles', 'offset' => '-08:00' ),
+			'-7' => array( 'name' => 'America/Denver', 'offset' => '-07:00' ),
+			'-6' => array( 'name' => 'America/Tegucigalpa', 'offset' => '-06:00' ),
+			'-5' => array( 'name' => 'America/New_York', 'offset' => '-05:00' ),
+			'-4.5' => array( 'name' => 'America/Caracas', 'offset' => '-04:30' ),
+			'-4' => array( 'name' => 'America/Halifax', 'offset' => '-04:00' ),
+			'-3.5' => array( 'name' => 'America/St_Johns', 'offset' => '-03:30' ),
+			'-3' => array( 'name' => 'America/Sao_Paulo', 'offset' => '-03:00' ),
+			'-2' => array( 'name' => 'Atlantic/South_Georgia', 'offset' => '-02:00' ),
+			'-1' => array( 'name' => 'Atlantic/Azores', 'offset' => '-01:00' ),
+			'0' => array( 'name' => 'UTC', 'offset' => '+00:00' ),
+			'1' => array( 'name' => 'Europe/Belgrade', 'offset' => '+01:00' ),
+			'2' => array( 'name' => 'Europe/Minsk', 'offset' => '+02:00' ),
+			'3' => array( 'name' => 'Asia/Kuwait', 'offset' => '+03:00' ),
+			'3.5' => array( 'name' => 'Asia/Tehran', 'offset' => '+03:30' ),
+			'4' => array( 'name' => 'Asia/Muscat', 'offset' => '+04:00' ),
+			'5' => array( 'name' => 'Asia/Yekaterinburg', 'offset' => '+05:00' ),
+			'5.5' => array( 'name' => 'Asia/Kolkata', 'offset' => '+05:30' ),
+			'5.75' => array( 'name' => 'Asia/Katmandu', 'offset' => '+05:45' ),
+			'6' => array( 'name' => 'Asia/Dhaka', 'offset' => '+06:00' ),
+			'6.5' => array( 'name' => 'Asia/Rangoon', 'offset' => '+06:30' ),
+			'7' => array( 'name' => 'Asia/Krasnoyarsk', 'offset' => '+07:00' ),
+			'8' => array( 'name' => 'Asia/Brunei', 'offset' => '+08:00' ),
+			'9' => array( 'name' => 'Asia/Seoul', 'offset' => '+09:00' ),
+			'9.5' => array( 'name' => 'Australia/Darwin', 'offset' => '+09:30' ),
+			'10' => array( 'name' => 'Australia/Canberra', 'offset' => '+10:00' ),
+			'11' => array( 'name' => 'Asia/Magadan', 'offset' => '+11:00' ),
+			'12' => array( 'name' => 'Pacific/Fiji', 'offset' => '+12:00' ),
+			'13' => array( 'name' => 'Pacific/Tongatapu', 'offset' => '+13:00' ),
 		);
 		
-		// Translate offset to timezone name for PHP
+		// Translate timezone param to timezone name for PHP
 		if ( array_key_exists( $timezone, $zoneList ) ) {
-			$timeZoneName = $zoneList[$timezone];
+			$timeZoneName = $zoneList[$timezone]['name'];
 		} else {
 			$timeZoneName = 'UTC';
 		}
 		
+		// Translate timezone param to timezone offset for MySQL
+		if ( array_key_exists( $timezone, $zoneList ) ) {
+			$timeZoneOffset = $zoneList[$timezone]['offset'];
+		} else {
+			$timeZoneOffset = '+00:00';
+		}
+		
 		$setTimeZone = date_default_timezone_set( $timeZoneName );
 		$start = date( 'Y-m-d' ); // Get the current date in the requested timezone
-		$total = $this->query( $timezone, $start );
+		$total = $this->query( $timeZoneOffset, $start );
 		
 		$content = "wgFundraisingDailyTotal = $total;";
 		
@@ -112,10 +93,10 @@ class SpecialDailyTotal extends IncludableSpecialPage {
 
 	/* Private Functions */
 
-	private function query( $timezone, $start ) {
+	private function query( $timeZoneOffset, $start ) {
 		global $wgMemc, $egFundraiserStatisticsMinimum, $egFundraiserStatisticsMaximum, $egFundraiserStatisticsCacheTimeout;
 
-		$key = wfMemcKey( 'fundraiserstatistics', $timezone, $start );
+		$key = wfMemcKey( 'fundraiserstatistics', $timeZoneOffset, $start );
 		$cache = $wgMemc->get( $key );
 		if ( $cache != false && $cache != -1 ) {
 			return $cache;
@@ -127,7 +108,7 @@ class SpecialDailyTotal extends IncludableSpecialPage {
 		$conditions = array(
 			'converted_amount >= ' . $egFundraiserStatisticsMinimum,
 			'converted_amount <= ' . $egFundraiserStatisticsMaximum,
-			"DATE_FORMAT(CONVERT_TZ(FROM_UNIXTIME(received),'+00:00','$timezone'),'%Y-%m-%d') = '$start'"
+			"DATE_FORMAT(CONVERT_TZ(FROM_UNIXTIME(received),'+00:00','$timeZoneOffset'),'%Y-%m-%d') = '$start'"
 		);
 		
 		$select = $dbr->select( 'public_reporting',
