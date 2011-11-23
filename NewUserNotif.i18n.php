@@ -433,7 +433,7 @@ Ene neue Metmaacher mem Name "$2"
 es aam $5 öm $6 Uhr en de $3 neu aanjemeldt woode.',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author George Animal
  */
 $messages['ku-latn'] = array(
@@ -654,7 +654,7 @@ $messages['sk'] = array(
 $3 na $4 bol vytvorený nový používateľský účet $2.',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
@@ -666,7 +666,7 @@ $messages['sr-ec'] = array(
 Нови кориснички налог, $2, је направљен на $3 у $4.',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -731,7 +731,7 @@ $messages['tet'] = array(
 uza-na'in foun ida, $2, naregistrar tiha iha $3 iha loron $4.",
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -742,7 +742,7 @@ $messages['tg-cyrl'] = array(
 Ҳисоби корбарии ҷадид, $2, дар $3 дар $4 эҷод шуд.',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
