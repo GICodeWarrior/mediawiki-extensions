@@ -120,21 +120,21 @@ $messages['qqq'] = array(
 	'contrib-hist-name' => '{{Identical|Name}}',
 	'contrib-hist-date' => '{{Identical|Date}}',
 	'contrib-hist-amount' => '{{Identical|Amount}}',
-	'contributionstatistics' => 'Title on the contribution report for <nowiki>[[Special:ContributionStatistics]]</nowiki>.
+	'contributionstatistics' => 'Title on the contribution report for <nowiki>[[Special:ContributionStatistics]]</nowiki>. 
 You may see an example in context at http://wikimediafoundation.org/wiki/Special:ContributionStatistics',
 	'contribstats-desc' => '{{desc}}',
 	'contribstats-currency-range-totals' => '* $1 is a start date
 * $2 is an end date',
-	'contribstats-contribution-breakdown' => 'Title on the contribution report for <nowiki>[[</nowiki>Special:ContributionStatistics<nowiki>]]</nowiki>.
+	'contribstats-contribution-breakdown' => 'Title on the contribution report for <nowiki>[[</nowiki>Special:ContributionStatistics<nowiki>]]</nowiki>. 
 You may see an example in context at http://wikimediafoundation.org/wiki/Special:ContributionStatistics',
-	'contribstats-day' => '"Day" on the contribution report for <nowiki>[[</nowiki>Special:ContributionStatistics<nowiki>]]</nowiki>.
+	'contribstats-day' => '"Day" on the contribution report for <nowiki>[[</nowiki>Special:ContributionStatistics<nowiki>]]</nowiki>. 
 You may see an example in context at http://wikimediafoundation.org/wiki/Special:ContributionStatistics
 {{Identical|Day}}',
-	'contribstats-month' => '"Month" on the contribution report for <nowiki>[[</nowiki>Special:ContributionStatistics<nowiki>]]</nowiki>.
+	'contribstats-month' => '"Month" on the contribution report for <nowiki>[[</nowiki>Special:ContributionStatistics<nowiki>]]</nowiki>. 
 You may see an example in context at http://wikimediafoundation.org/wiki/Special:ContributionStatistics
 {{Identical|Month}}',
 	'contribstats-currency' => '{{Identical|Currency}}',
-	'contribstats-contributions' => 'The number of contributions (donations) on a report for <nowiki>[[</nowiki>Special:ContributionStatistics<nowiki>]]</nowiki>.
+	'contribstats-contributions' => 'The number of contributions (donations) on a report for <nowiki>[[</nowiki>Special:ContributionStatistics<nowiki>]]</nowiki>. 
 You may see an example in context at http://wikimediafoundation.org/wiki/Special:ContributionStatistics',
 	'contribstats-day-totals' => 'The day for which the contribution statistics are being displayed.',
 	'contribstats-conversion' => 'Click conversion rate, see [[:wikipedia:Conversion rate|Wikipedia article]].',
@@ -5125,7 +5125,7 @@ $messages['sr-ec'] = array(
 	'fundraiserstats-utc' => '(према UTC-у)',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -5359,7 +5359,7 @@ $messages['tet'] = array(
 	'fundraiserstats-date' => 'Tempu',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -5399,7 +5399,7 @@ $messages['tg-cyrl'] = array(
 	'fundraiserstats-tab-maximums' => 'Ҳаддиаксар (USD)',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
@@ -5720,7 +5720,7 @@ $messages['tr'] = array(
 	'fundraiserstats-tab-ytd' => 'Bugüne kadarki (USD)',
 );
 
-/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+/** Tatar (Cyrillic script) (Татарча)
  * @author Ильнар
  */
 $messages['tt-cyrl'] = array(
