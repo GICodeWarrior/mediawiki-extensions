@@ -842,7 +842,7 @@ $messages['sr-ec'] = array(
 	'plotters-no-data' => 'Нема наведених података.',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'plotters' => 'Ploteri',
 	'plotters-title' => 'Ploteri',
