@@ -338,7 +338,7 @@ class SIOHandler {
 		// Mimic a call to #set_internal for each date.
 		foreach ( $all_date_strings as $date_string ) {
 			$first_params = array(
-				$parser,
+				&$parser,
 				$objToPagePropName,
 				"$property=$date_string"
 			);
