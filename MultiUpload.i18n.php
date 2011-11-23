@@ -56,7 +56,7 @@ $messages['krl'] = array(
 	'multipleupload' => 'Panna fajlit',
 );
 
-/** Goan Konkani (Latin) (कोंकणी/Konknni  (Latin))
+/** Goan Konkani (Latin script) (Konknni)
  * @author Deepak D'Souza
  */
 $messages['gom-latn'] = array(
@@ -994,7 +994,7 @@ Schlääschte Dateie wäde fottjeworfe, noh de [[{{MediaWiki:Multipleupload-page
 	'multiupload-blank' => 'Kein Dattei ußjesoht',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author Bangin
  */
 $messages['ku-latn'] = array(
@@ -1590,7 +1590,7 @@ $messages['sr-ec'] = array(
 	'multiupload-blank' => 'Није изабрана ниједна датотека',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -1705,7 +1705,7 @@ $messages['te'] = array(
 	'multiupload-blank' => 'ఏ దస్త్రాన్నీ ఎంచుకోలేదు',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -1723,7 +1723,7 @@ $messages['tg-cyrl'] = array(
 	'multiupload-toolbox' => 'Боргузории парвандаҳои чандгона',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
