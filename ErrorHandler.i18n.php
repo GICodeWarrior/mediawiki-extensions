@@ -1314,7 +1314,7 @@ $messages['sk'] = array(
 	'errorhandler-trace-line-internal' => '[vnútorná funkcia]: $1',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -1340,7 +1340,7 @@ $messages['sr-ec'] = array(
 	'errorhandler-trace-line-internal' => '[интерна функција]: $1',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
