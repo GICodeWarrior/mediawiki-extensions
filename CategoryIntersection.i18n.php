@@ -751,7 +751,7 @@ $messages['sah'] = array(
 	'categoryintersection-results' => 'Көрдөөһүн $1 түмүгү биэрдэ.',
 );
 
-/** Tachelhit (Tašlḥiyt)
+/** Tachelhit (Tašlḥiyt/ⵜⴰⵛⵍⵃⵉⵜ)
  * @author Dalinanir
  * @author Zanatos
  */
@@ -776,7 +776,7 @@ $messages['sk'] = array(
 	'categoryintersection-results' => 'Hľadanie vrátilo $1 {{PLURAL:$1|výsledok|výsledky|výsledkov}}.',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Charmed94
  * @author Rancher
  * @author Михајло Анђелковић
@@ -790,7 +790,7 @@ $messages['sr-ec'] = array(
 	'categoryintersection-results' => 'Претрага је вратила $1 {{PLURAL:$1|резултат|резултата}}.',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -846,7 +846,7 @@ $messages['te'] = array(
 	'categoryintersection-results' => 'ఈ అన్వేషణ $1 {{PLURAL:$1|ఫలితాన్ని|ఫలితాలను}} ఇచ్చింది.',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -854,7 +854,7 @@ $messages['tg-cyrl'] = array(
 	'categoryintersection-results' => 'Ҷустуҷӯ бо $1 {{PLURAL:$1|натиҷа|натоиҷ}} баргашт.',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
