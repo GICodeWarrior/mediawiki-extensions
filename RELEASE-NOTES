@@ -2,6 +2,9 @@
  ==========
  
  * (trunk) -- Version 1.0.2 alpha
+   - Limit won't exceed early when 'e' flag with many backrefs in replacement is used extensivelly.
+   - It's possible to use the 'Regex Fun' regex system with advanced flags within other extensions.
+   - Performance increased for executing huge numbers of the same regex on different strings.
    - Internal representative functions for parser functions now have a 'pf_' prefix.
 
  * November 6, 2011 -- Version 1.0.1

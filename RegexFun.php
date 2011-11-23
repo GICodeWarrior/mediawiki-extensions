@@ -57,7 +57,7 @@ class ExtRegexFun {
 	 * 
 	 * @var string
 	 */
-	const VERSION = '1.0.2 alpha';
+	const VERSION = '1.0.2';
 	
 	/**
 	 * Sets up parser functions
@@ -238,6 +238,7 @@ class ExtRegexFun {
 			return false;
 		}
 		if( $resetLastRegex ) {
+			// store infos for this regex for '#regex_var'
 			self::initLastRegex( $parser, $pattern, $subject );
 		}
 		return true;
@@ -249,25 +250,26 @@ class ExtRegexFun {
 	 * @param $parser Parser instance of running Parse
 	 * @param $subject String input string to evaluate
 	 * @param $pattern String regular expression pattern - must use /, | or % delimiter
-	 * @param $replace String regular expression replacement
+	 * @param $replacement String regular expression replacement
 	 * 
 	 * @return String Result of replacing pattern with replacement in string, or matching text if replacement was omitted
 	 */
-    public static function pf_regex( Parser &$parser, $subject = '', $pattern = '', $replace = null, $limit = -1 ) {
+    public static function pf_regex( Parser &$parser, $subject = '', $pattern = '', $replacement = null, $limit = -1 ) {
 		// check whether limit exceeded:
 		if( self::limitExceeded( $parser ) ) {
 			return self::msgLimitExceeded();
 		}
 		self::increaseRegexCount( $parser );
 		
-		// validate, initialise and check for wrong input:
-		$continue = self::validateRegexCall( $parser, $subject, $pattern, $specialFlags, true );
-		if( ! $continue ) {
-			return self::msgInvalidRegex( $pattern );
-		}
-		
-		if( $replace === null ) {
+		if( $replacement === null ) {
 			// search mode:
+			
+			// validate, initialise and check for wrong input:
+			$continue = self::validateRegexCall( $parser, $subject, $pattern, $specialFlags, true );
+			if( ! $continue ) {
+				return self::msgInvalidRegex( $pattern );
+			}
+			
 			$lastMatches = self::getLastMatches( $parser );
             $output = ( preg_match( $pattern, $subject, $lastMatches ) ? $lastMatches[0] : '' );
 			self::setLastMatches( $parser, $lastMatches );
@@ -275,48 +277,131 @@ class ExtRegexFun {
 			// replace mode:			
 			$limit = (int)$limit;
 			
-			// set last matches to 'false' and get them on demand instead since preg_replace won't communicate them
-			self::setLastMatches( $parser , false );
-						
-			// FLAG 'e' (parse replace after match) handling:
-			if( ! empty( $specialFlags[ self::FLAG_REPLACEMENT_PARSE ] ) ) {				
-				// if 'e' flag is set, each replacement has to be parsed after matches are inserted but before replacing!
-				self::$tmpRegexCB = array(
-					'replacement' => $replace,
-					'parser' => &$parser,
-				);
-				$output = preg_replace_callback( $pattern, array( __CLASS__, 'regex_eFlag_callback' ), $subject, $limit, $count );
-			}
-			else {
-				$output = preg_replace( $pattern, $replace, $subject, $limit, $count );
+			// set last matches to 'false' and get them on demand instead since preg_replace won't communicate them			
+			self::setLastMatches( $parser, false );
+			
+			// do the regex plus all handling of special flags and validation
+			$output = self::doPregReplace( $pattern, $replacement, $subject, $limit, $parser );
+			
+			if( $output === false ) {
+				// invalid regex, don't store any infor for '#regex_var'
+				self::setLastMatches( $parser , null );
+				return self::msgInvalidRegex( $pattern );
 			}
 			
-			// FLAG 'r' (no replacement - no output) handling:
-			if( ! empty( $specialFlags[ self::FLAG_NO_REPLACE_NO_OUT ] ) ) {				
-				/*
-				 *  only output replacement result if there actually was a match and therewith a replacement happened
-				 * (otherwise the input string would be returned)
-				 */
-				if( $count < 1 ) {
-					return '';
-				}
-			}
+			// set these infos after pattern validation/correction
+			self::setLastPattern( $parser, $pattern );
+			self::setLastSubject( $parser, $subject );
         }
+		
 		return $output;
     }
 	
-	private static function regex_eFlag_callback( $matches ) {
+	/**
+	 * 'preg_replace' like function but can handle special modifiers 'e' and 'r'.
+	 * 
+	 * @param string &$pattern
+	 * @param string $replacement
+	 * @param string $subject
+	 * @param int    $limit
+	 * @param Parser &$parser if 'e' flag should be allowed, a parser objecdt for parsing is required.
+	 * @param array  $allowedSpecialFlags all special flags that should be handled, by default 'e' and 'r'.
+	 */
+	public static function doPregReplace(
+			&$pattern,
+			$replacement,
+			$subject,
+			$limit = -1,
+			&$parser = null,
+			array $allowedSpecialFlags = array(
+				self::FLAG_REPLACEMENT_PARSE,
+				self::FLAG_NO_REPLACE_NO_OUT,
+			)			
+	) {
+		static $lastPattern = null;
+		static $lastFlags = null;
+		static $specialFlags = null;
+		
+		/*
+		 * cache validated pattern and use it as long as nothing has changed, this makes things
+		 * faster in case we do a lot of stuff with the same regex.
+		 */
+		if( $lastPattern === null || $lastPattern !== $pattern
+			|| $lastFlags !== implode( ',', $allowedSpecialFlags )
+		) {
+			// if allowed special flags change, we have to validate again^^
+			$lastFlags = implode( ',', $allowedSpecialFlags );
+			
+			// validate regex and get special flags 'e' and 'r' if given:
+			if( ! self::validateRegex( $pattern, $specialFlags ) ) {
+				// invalid regex!
+				return false;
+			}
+			
+			// filter unwanted special flags:
+			$allowedSpecialFlags = array_flip( $allowedSpecialFlags );
+			$specialFlags = array_intersect_key( $specialFlags, $allowedSpecialFlags );
+			
+			$lastPattern = $pattern;			
+		}
+		
+		
+		// FLAG 'e' (parse replace after match) handling:
+		if( ! empty( $specialFlags[ self::FLAG_REPLACEMENT_PARSE ] ) ) {
+			
+			// 'e' requires a Parser for parsing!
+			if( ! ( $parser instanceof Parser ) ) {
+				// no valid Parser object, without, we can't parse anything!
+				throw new MWException( "Regex Fun 'e' flag discovered but no Parser object given!" );
+			}
+			
+			// if 'e' flag is set, each replacement has to be parsed after matches are inserted but before replacing!
+			self::$tmpRegexCB = array(
+				'replacement' => $replacement,
+				'parser'      => &$parser,
+				'internal'    => isset( $parser->mExtRegexFun['lastMatches'] ) && $parser->mExtRegexFun['lastMatches'] === false
+			);
+			
+			$output = preg_replace_callback( $pattern, array( __CLASS__, 'doPregReplace_eFlag_callback' ), $subject, $limit, $count );
+		}
+		else {
+			// no 'e' flag, we can perform the standard function
+			$output = preg_replace( $pattern, $replacement, $subject, $limit, $count );
+		}
+		
+
+		// FLAG 'r' (no replacement - no output) handling:
+		if( ! empty( $specialFlags[ self::FLAG_NO_REPLACE_NO_OUT ] ) ) {				
+			/*
+			 *  only output replacement result if there actually was a match and therewith a replacement happened
+			 * (otherwise the input string would be returned)
+			 */
+			if( $count < 1 ) {
+				return '';
+			}
+		}
+		
+		return $output;
+	}
+	
+	private static function doPregReplace_eFlag_callback( $matches ) {
 		
 		/** Don't cache this since it could contain dynamic content like #var which should be parsed */
 		
-		$replace = self::$tmpRegexCB['replacement'];
-		$parser  = self::$tmpRegexCB['parser'];
+		$replace  = self::$tmpRegexCB['replacement'];
+		$parser   = self::$tmpRegexCB['parser'];
+		$internal = self::$tmpRegexCB['internal']; // whether doPregReplace() is called as part of a parser function
 		
-		// last matches in #regex replace mode were set to false before, set them now:
-		self::setLastMatches( $parser, $matches );
-		
-		// use #regex_var for transforming replacement string with matches:
-		$replace = self::pf_regex_var( $parser, $replace );
+		/*
+		 * only do this if set to false before, internally, so we won't destroy things if
+		 * doPregReplace() was called from outside 'Regex Fun'
+		 */
+		if( $internal ) {
+			// last matches in #regex replace mode were set to false before, set them now:
+			self::setLastMatches( $parser, $matches );
+		}
+		// replace backrefs with their actual values:
+		$replace = self::regexVarReplace( $replace, $matches );
 		
 		// parse the replacement after matches are inserted
 		// use a new frame, no need for SFH_OBJECT_ARGS style parser functions
@@ -410,33 +495,42 @@ class ExtRegexFun {
 			}
 			self::increaseRegexCount( $parser );
 			
-			/*
-			 * replace all back-references with their number increased by 1!
-			 * this way we can also handle $0 in the right way!
-			 */
-			$index = preg_replace_callback(
-					'%(?<!\\\)(?:\$(?:(\d+)|\{(\d+)\})|\\\(\d+))%',
-					array( __CLASS__, 'regexVarIncreaseBackref' ),
-					$index
-			);			
-			/*
-			 * build a helper regex matching all the last matches to use preg_replace
-			 * which will handle all the replace-escaping handling correct
-			 */
-			$regEx = '';
-			foreach( $lastMatches as $match ) {
-				$regEx .= '(' . preg_quote( $match, '/' ) . ')';
-			}
-			$regEx = "/^{$regEx}$/";
-			$output = preg_replace( $regEx, $index, implode( '', $lastMatches ) );
-
-			return $output;
+			// do the actual transformation:
+			return self::regexVarReplace( $index, $lastMatches );
 		}
 	}
+	
 	/**
-	 * only used by 'preg_replace_callback' in 'regex_var'
+	 * Replaces all backref variables within a replacement string with the backrefs actual
+	 * values just like preg_replace would do it.
 	 */
-	private static function regexVarIncreaseBackref( $matches ) {	
+	private static function regexVarReplace( $replacement, $matches ) {
+		/*
+		 * replace all back-references with their number increased by 1!
+		 * this way we can also handle $0 in the right way!
+		 */
+		$replacement = preg_replace_callback(
+				'%(?<!\\\)(?:\$(?:(\d+)|\{(\d+)\})|\\\(\d+))%',
+				array( __CLASS__, 'regexVarReplace_increaseBackrefs_callback' ),
+				$replacement
+		);			
+		/*
+		 * build a helper regex matching all the last matches to use preg_replace
+		 * which will handle all the replace-escaping handling correct
+		 */
+		$regEx = '';
+		foreach( $matches as $match ) {
+			$regEx .= '(' . preg_quote( $match, '/' ) . ')';
+		}
+		$regEx = "/^{$regEx}$/";
+		
+		return preg_replace( $regEx, $replacement, implode( '', $matches ) );
+	}
+	
+	/**
+	 * only used by 'preg_replace_callback' in 'regexVarReplace'
+	 */
+	private static function regexVarReplace_increaseBackrefs_callback( $matches ) {	
 		// find index:
 		$index = false;
 		$full = $matches[0];
@@ -565,7 +659,11 @@ class ExtRegexFun {
 			
 			// last matches are set to false in case last regex was in replace mode! Get them on demand:
 			if( $parser->mExtRegexFun['lastMatches'] === false ) {				
-				preg_match( self::getLastPattern( $parser ), self::getLastSubject( $parser ), $parser->mExtRegexFun['lastMatches'] );
+				preg_match(
+						self::getLastPattern( $parser ),
+						self::getLastSubject( $parser ),
+						$parser->mExtRegexFun['lastMatches']
+				);
 			}			
 			return $parser->mExtRegexFun['lastMatches'];
 		}
