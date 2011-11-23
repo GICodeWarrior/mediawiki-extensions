@@ -858,7 +858,7 @@ $messages['scn'] = array(
 	'backforth-prev' => 'Pricidenti ($1)',
 );
 
-/** Serbo-Croatian (Srpskohrvatski / Српскохрватски)
+/** Serbo-Croatian (Srpskohrvatski)
  * @author OC Ripper
  */
 $messages['sh'] = array(
@@ -891,7 +891,7 @@ $messages['sl'] = array(
 	'backforth-prev' => 'Prejšnja ($1)',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
@@ -901,7 +901,7 @@ $messages['sr-ec'] = array(
 	'backforth-prev' => 'Претходно ($1)',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -973,7 +973,7 @@ $messages['tet'] = array(
 	'backforth-prev' => 'Molok ($1)',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -982,7 +982,7 @@ $messages['tg-cyrl'] = array(
 	'backforth-prev' => 'Қаблӣ ($1)',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
