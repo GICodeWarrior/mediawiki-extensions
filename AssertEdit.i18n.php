@@ -460,13 +460,13 @@ $messages['kk-arab'] = array(
 	'assert_edit_message' => 'ەنگٸزٸلگەن ماقۇلداۋ ($1) سٵتسٸز.',
 );
 
-/** Kazakh (Cyrillic) (Қазақша (Cyrillic)) */
+/** Kazakh (Cyrillic script) (‪Қазақша (кирил)‬) */
 $messages['kk-cyrl'] = array(
 	'assert_edit_title' => 'Мақұлдау сәтсіз',
 	'assert_edit_message' => 'Енгізілген мақұлдау ($1) сәтсіз.',
 );
 
-/** Kazakh (Latin) (Қазақша (Latin)) */
+/** Kazakh (Latin script) (‪Qazaqşa (latın)‬) */
 $messages['kk-latn'] = array(
 	'assert_edit_title' => 'Maquldaw sätsiz',
 	'assert_edit_message' => 'Engizilgen maquldaw ($1) sätsiz.',
@@ -743,7 +743,7 @@ $messages['scn'] = array(
 	'assert_edit_message' => "L'affirmazzioni nnicata ($1) non ariniscìu.",
 );
 
-/** Serbo-Croatian (Srpskohrvatski / Српскохрватски)
+/** Serbo-Croatian (Srpskohrvatski)
  * @author OC Ripper
  */
 $messages['sh'] = array(
@@ -752,7 +752,7 @@ $messages['sh'] = array(
 	'assert_edit_message' => 'Specificirano potvrđivanje ($1) nije uspjelo.',
 );
 
-/** Tachelhit (Tašlḥiyt)
+/** Tachelhit (Tašlḥiyt/ⵜⴰⵛⵍⵃⵉⵜ)
  * @author Dalinanir
  */
 $messages['shi'] = array(
@@ -808,7 +808,7 @@ $messages['sr-ec'] = array(
 	'assert_edit_message' => 'Наведена тврдња ($1) није успела.',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -844,7 +844,7 @@ $messages['te'] = array(
 	'assert_edit_message' => 'ఉటంకింపు ($1) విఫలమైంది.',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -853,7 +853,7 @@ $messages['tg-cyrl'] = array(
 	'assert_edit_message' => 'Таъйиди мавриди назар ($1) номувофиқ буд.',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
