@@ -245,7 +245,7 @@ $messages['bg'] = array(
 	'vector-noexperiments-preference' => 'Не желая да участвам в бъдещи експерименти',
 );
 
-/** Bahasa Banjar (Bahasa Banjar)
+/** Banjar (Bahasa Banjar)
  * @author Ezagren
  */
 $messages['bjn'] = array(
@@ -358,7 +358,7 @@ $messages['ckb'] = array(
 	'vector-simplesearch-containing' => 'بە لەبەرگرتنەوەی ...',
 );
 
-/** Crimean Turkish (Latin) (Qırımtatarca (Latin))
+/** Crimean Turkish (Latin script) (‪Qırımtatarca (Latin)‬)
  * @author Don Alessandro
  */
 $messages['crh-latn'] = array(
@@ -366,7 +366,7 @@ $messages['crh-latn'] = array(
 	'vector-simplesearch-containing' => 'içinde bu olğan...',
 );
 
-/** Crimean Turkish (Cyrillic) (Qırımtatarca (Cyrillic))
+/** Crimean Turkish (Cyrillic script) (‪Къырымтатарджа (Кирилл)‬)
  * @author Don Alessandro
  */
 $messages['crh-cyrl'] = array(
@@ -970,6 +970,14 @@ $messages['ka'] = array(
 	'vector-simplesearch-containing' => 'შეიცავს...',
 );
 
+/** Kazakh (Қазақша)
+ * @author Kaztrans
+ */
+$messages['kk'] = array(
+	'vector-editwarning-warning' => 'Басқа бетке өтсеңіз сіздің жазған соңғы өңдемелеріңіз жойылуы мүмкін. 
+Егер сiз жүйеде тiркелсеңiз, онда сiз баптауларыңыздағы «Өңдеу» бөлігіне кіріп, бұл ескертуді өшіре аласыз.',
+);
+
 /** Kazakh (Cyrillic script) (‪Қазақша (кирил)‬)
  * @author GaiJin
  * @author Kaztrans
@@ -1050,7 +1058,7 @@ Do kanns heh di Warnung affschallde, wann de aanjemelldt un enjelogg bes, dann k
 	'vector-noexperiments-preference' => 'Donn mesch nit met neue Saache zom Ußprobeere behällijje',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author Erdal Ronahi
  */
 $messages['ku-latn'] = array(
@@ -1651,7 +1659,7 @@ $messages['sr-ec'] = array(
 	'vector-simplesearch-containing' => 'садржи...',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Liangent
  */
 $messages['sr-el'] = array(
@@ -1786,7 +1794,7 @@ Eğer giriş yaptıysanız, bu uyarıyı, tercihlerinizin "Sayfa yazma alanı" b
 	'vector-simplesearch-containing' => 'içeren...',
 );
 
-/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+/** Tatar (Cyrillic script) (Татарча)
  * @author Ильнар
  */
 $messages['tt-cyrl'] = array(
