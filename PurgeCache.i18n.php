@@ -625,7 +625,7 @@ $messages['sr-ec'] = array(
 	'purgecache-button' => 'Очисти',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
