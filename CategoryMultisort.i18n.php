@@ -426,7 +426,7 @@ $messages['ksh'] = array(
 	'prefs-category' => 'Saachjropp',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author George Animal
  */
 $messages['ku-latn'] = array(
@@ -722,7 +722,7 @@ $messages['sr-ec'] = array(
 	'prefs-category' => 'Категорија',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'categorymultisort-defaultsortkey-name' => 'Podrazumevano',
 	'categorymultisort-sortkey' => 'Ključ sortiranja:',
