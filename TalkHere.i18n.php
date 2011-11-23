@@ -624,7 +624,7 @@ $messages['kk-arab'] = array(
 	'talkhere-collapse' => 'ٶڭدەۋٸشتٸ جاسىر',
 );
 
-/** Kazakh (Cyrillic) (Қазақша (Cyrillic))
+/** Kazakh (Cyrillic script) (‪Қазақша (кирил)‬)
  * @author Alefzet
  */
 $messages['kk-cyrl'] = array(
@@ -639,7 +639,7 @@ $messages['kk-cyrl'] = array(
 	'talkhere-collapse' => 'өңдеуішті жасыр',
 );
 
-/** Kazakh (Latin) (Қазақша (Latin))
+/** Kazakh (Latin script) (‪Qazaqşa (latın)‬)
  * @author Alefzet
  */
 $messages['kk-latn'] = array(
@@ -977,7 +977,7 @@ Prevádzkovatelia tejto stránky nepreberajú zodpovednosť za obsah takýchto k
 	'talkhere-collapse' => 'skryť editor',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -994,7 +994,7 @@ $messages['sr-ec'] = array(
 	'talkhere-collapse' => 'сакриј уређивач',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -1057,7 +1057,7 @@ $messages['te'] = array(
 	'talkhere-beforeinput' => 'క్రింద మీ వ్యాఖ్యని చేర్చవచ్చు',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -1072,7 +1072,7 @@ $messages['tg-cyrl'] = array(
 	'talkhere-collapse' => 'пинҳон кардани вироишгар',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
@@ -1115,7 +1115,7 @@ $messages['tr'] = array(
 	'talkhere-collapse' => 'editörü gizle',
 );
 
-/** ئۇيغۇرچە (ئۇيغۇرچە)
+/** Uyghur (Arabic script) (ئۇيغۇرچە)
  * @author Sahran
  */
 $messages['ug-arab'] = array(
@@ -1127,7 +1127,7 @@ $messages['ug-arab'] = array(
 	'talkhere-collapse' => 'تەھرىرلىگۈچ يوشۇر',
 );
 
-/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
+/** Uyghur (Latin script) (Uyghurche‎)
  * @author Jose77
  */
 $messages['ug-latn'] = array(
