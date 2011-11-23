@@ -1187,7 +1187,7 @@ Nemm ene neuere Brauser, wann De kanns.',
 	'cb_edit_paste_right_hint' => 'Dat Rääschezeijshe aan de näächste Pussizjuhn endraare, wann müjjelesch',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author George Animal
  */
 $messages['ku-latn'] = array(
@@ -1878,7 +1878,7 @@ $messages['scn'] = array(
 	'cb_and_op' => 'e',
 );
 
-/** Tachelhit (Tašlḥiyt)
+/** Tachelhit (Tašlḥiyt/ⵜⴰⵛⵍⵃⵉⵜ)
  * @author Dalinanir
  */
 $messages['shi'] = array(
@@ -2122,7 +2122,7 @@ $messages['tr'] = array(
 	'cb_all_op' => 'Hepsi',
 );
 
-/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+/** Tatar (Cyrillic script) (Татарча)
  * @author Ильнар
  */
 $messages['tt-cyrl'] = array(
