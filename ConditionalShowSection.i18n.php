@@ -198,7 +198,7 @@ $messages['ja'] = array(
 	'conditionalshowsection-desc' => 'ある部分のウィキテキストの表示・非表示を条件によって切り替えられる cshow タグを追加する',
 );
 
-/** Kabardian (Cyrillic) (Адыгэбзэ (Cyrillic))
+/** Адыгэбзэ (Адыгэбзэ)
  * @author Тамэ Балъкъэрхэ
  */
 $messages['kbd-cyrl'] = array(
@@ -332,14 +332,14 @@ $messages['sl'] = array(
 	'conditionalshowsection-desc' => 'Dodajanje etikete cshow za pogojno prikazovanje/skrivanje razdelka wikibesedila',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'conditionalshowsection-desc' => 'Додаје cshow таг за условно приказивање и скривање одељака вики-текста.',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Liangent
  */
 $messages['sr-el'] = array(
