@@ -641,7 +641,7 @@ $messages['ksh'] = array(
 	'showprocesslist-info' => 'Enfommazjohn',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author George Animal
  */
 $messages['ku-latn'] = array(
@@ -1005,7 +1005,7 @@ $messages['sl'] = array(
 	'showprocesslist-info' => 'Informacije',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -1020,7 +1020,7 @@ $messages['sr-ec'] = array(
 	'showprocesslist-state' => 'Стање',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -1086,7 +1086,7 @@ $messages['tet'] = array(
 	'showprocesslist-id' => 'ID',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -1094,7 +1094,7 @@ $messages['tg-cyrl'] = array(
 	'showprocesslist-time' => 'Вақт',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
