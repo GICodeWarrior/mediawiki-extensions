@@ -213,7 +213,7 @@ Tennit "$1" eus ar <nowiki>{{#index:}}</nowiki> {{PLURAL:$3|bajenn|pajenn}} a-us
 	'index-search-explain' => 'Ober a ra ar bajenn-mañ gant ur rakger klask.
 
 Merkit an nebeud arouezennoù kentañ ha pouezit war ar bouton klask evit kavout titloù ar pajennoù a grog gant an neudennad klask-se',
-	'index-details-explain' => 'Monedoù meneger eo ar monedoù gant biroù.
+	'index-details-explain' => 'Monedoù meneger eo ar monedoù gant biroù. 
 Klikit war ar bir evit gwelet an holl bajennoù menegeret dindan an titl-se.',
 );
 
@@ -439,13 +439,13 @@ $messages['eu'] = array(
 $messages['fi'] = array(
 	'indexfunc-desc' => 'Jäsenninfunktio automaattisten ohjauksien ja täsmennyssivujen luomiseen.',
 	'indexfunc-badtitle' => 'Epäkelpo otsikko: ”$1”',
-	'indexfunc-editwarning' => 'Varoitus:
+	'indexfunc-editwarning' => 'Varoitus: 
 Tämä otsikko on indeksiotsikko {{PLURAL:$2|seuraavalle sivulle|seuraaville sivuille}}:
 $1
 Tarkista ettei sivua, jota olet luomassa ole jo olemassa toisella otsikolla.
 Jos luot tämän sivun, poista otsikko <nowiki>{{#index:}}</nowiki>-tagista {{PLURAL:$2|yllä olevalla sivulla|yllä olevilla sivuilla}}.',
 	'indexfunc-index-exists' => 'Sivu ”$1” on jo olemassa',
-	'indexfunc-movewarn' => 'Virhe:
+	'indexfunc-movewarn' => 'Virhe: 
 ”$1” on indeksiotsikko {{PLURAL:$3|seuraavalle sivulle|seuraaville sivuille}}:
 $2
 Poista ”$1” <nowiki>{{#index:}}</nowiki>-tagista {{PLURAL:$3|yllä olevilla sivuilla|yllä olevalla sivulla}}.',
@@ -461,7 +461,7 @@ Poista ”$1” <nowiki>{{#index:}}</nowiki>-tagista {{PLURAL:$3|yllä olevilla 
 	'index-search-explain' => 'Tämä sivu käyttää etuliitehakua.
 
 Kirjoita pari ensimmäistä kirjainta ja napsauta lähetä-nappia hakeaksesi sivujen otsikoista ja indeksimerkinnöistä, jotka alkavat hakusanalla.',
-	'index-details-explain' => 'Nuolin varustetut merkinnät ovat indeksimerkintöjä.
+	'index-details-explain' => 'Nuolin varustetut merkinnät ovat indeksimerkintöjä. 
 Napsauta nuolta näyttääksesi kaikki sivut, jotka on indeksoitu otsikon alle.',
 );
 
@@ -538,7 +538,7 @@ Por favor, elimine "$1" de <nowiki>{{#index:}}</nowiki> {{PLURAL:$3|na páxina d
 	'index-expand-detail' => 'Mostrar as páxinas indexadas baixo este título',
 	'index-hide-detail' => 'Agochar a lista de páxinas',
 	'index-no-results' => 'A procura non devolveu resultados',
-	'index-search-explain' => 'Esta páxina usa unha procura por prefixos.
+	'index-search-explain' => 'Esta páxina usa unha procura por prefixos.  
 
 Insira os primeiros caracteres e prema o botón "Enviar" para buscar títulos de páxinas e entradas de índice que comezan coa secuencia de procura',
 	'index-details-explain' => 'As entradas con frechas son entradas de índice.
@@ -576,7 +576,7 @@ Bitte nimm „$1“ us em <nowiki>{{#index:}}</nowiki> uf dr obe ufgfierte  {{PL
 	'index-expand-detail' => 'Syte aazeige, wu unter däm Titel ufglischtet sin',
 	'index-hide-detail' => 'D Sytelischt verstecke',
 	'index-no-results' => 'D Suechi het kei Ergebnis brocht',
-	'index-search-explain' => 'Die Syte verwändet e Präfixsuechi.
+	'index-search-explain' => 'Die Syte verwändet e Präfixsuechi.  
 
 Tipp di erschte paar Buehcstabe yy un druck dr „Abschicke“-Chnopf go Sytetitel un Verzeichnisyytreg suech, wu mit däre Zeichechette aafange',
 	'index-details-explain' => 'Yytreg mit Bege sin Verzeichnisyytreg.
@@ -720,12 +720,12 @@ $messages['id'] = array(
 	'indexfunc-badtitle' => 'Judul tidak sah: "$1"',
 	'indexfunc-editwarning' => 'Peringatan:
 Judul ini adalah judul indeks {{PLURAL:$2|halaman|halaman}} berikut :
-$1
-Pastikan halaman yang akan Anda  buat tidak ada pada judul yang berbeda.
+$1  
+Pastikan halaman yang akan Anda  buat tidak ada pada judul yang berbeda.  
 Jika Anda membuat halaman ini, hapus halaman ini dari <nowiki>{{#index:}}</nowiki> di atas {{PLURAL:$2|halaman|halaman}}.',
 	'indexfunc-index-exists' => 'Halaman "$1" sudah ada',
 	'indexfunc-movewarn' => 'Peringatan:
-"$1" adalah judul indeks {{PLURAL:$3|halaman|halaman}} berikut :
+"$1" adalah judul indeks {{PLURAL:$3|halaman|halaman}} berikut :  
 $2
 Hapus "$1" dari <nowiki>{{#index:}}</nowiki> di atas {{PLURAL:$3|halaman|halaman}}.',
 	'index' => 'Indeks',
@@ -816,7 +816,7 @@ $2
 	'index-details-explain' => '矢印の付いた項目は索引項目で、矢印をクリックするとその名前で索引に載っているすべてのページを表示します。',
 );
 
-/** Kazakh (Cyrillic) (Қазақша (Cyrillic))
+/** Kazakh (Cyrillic script) (‪Қазақша (кирил)‬)
  * @author GaiJin
  */
 $messages['kk-cyrl'] = array(
@@ -1063,7 +1063,7 @@ $messages['pl'] = array(
 	'indexfunc-editwarning' => 'Uwaga.
 Ten tytuł jest tytułem indeksu {{PLURAL:$2|strony|następujących stron:}}
 $1
-Upewnij się, że strona, którą chcesz utworzyć nie istnieje pod inną nazwą.
+Upewnij się, że strona, którą chcesz utworzyć nie istnieje pod inną nazwą. 
 Jeśli utworzysz tę stronę, usuń tytułu z <nowiki>{{#index:}}</nowiki> dla {{PLURAL:$2|powyższej strony|powyższych stron}}.',
 	'indexfunc-index-exists' => 'Strona „$1” już istnieje',
 	'indexfunc-movewarn' => 'Uwaga.
@@ -1282,7 +1282,7 @@ $messages['so'] = array(
 	'index-search' => 'Raadi:',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
@@ -1296,7 +1296,7 @@ $messages['sr-ec'] = array(
 	'index-no-results' => 'Претрага није дала никакве резултате',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'indexfunc-badtitle' => 'Neispravan naslov: "$1"',
 	'index-search' => 'Pretraga:',
