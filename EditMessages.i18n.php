@@ -893,7 +893,7 @@ $messages['jv'] = array(
 	'editmsg-new-search' => 'Panggolèkan anyar',
 );
 
-/** Kazakh (Cyrillic) (Қазақша (Cyrillic))
+/** Kazakh (Cyrillic script) (‪Қазақша (кирил)‬)
  * @author GaiJin
  */
 $messages['kk-cyrl'] = array(
@@ -1544,7 +1544,7 @@ $messages['sq'] = array(
 	'editmsg-show-list' => 'Duke treguar vlerat për mesazhin me emër "$1"',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
@@ -1557,7 +1557,7 @@ $messages['sr-ec'] = array(
 	'editmsg-patch-success' => 'Успешно печовано.',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -1640,7 +1640,7 @@ $messages['tet'] = array(
 	'editmsg-search' => 'Buka',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -1656,7 +1656,7 @@ $messages['tg-cyrl'] = array(
 	'editmsg-patch-success' => 'Бо муваффақият васила карда шуд.',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
