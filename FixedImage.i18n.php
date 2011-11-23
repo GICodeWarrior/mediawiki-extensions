@@ -497,14 +497,14 @@ $messages['sq'] = array(
 	'fixedimage-desc' => 'Vendos shenjë <code>&lt;fundraising&gt;</code> në figurë',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Millosh
  */
 $messages['sr-ec'] = array(
 	'fixedimage-desc' => 'Додаје ознаку <code>&lt;fundraising&gt;</code> као слику.',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
