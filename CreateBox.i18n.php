@@ -846,7 +846,7 @@ Túto stránku nemôžete vytvoriť, ale môžete ju [{{fullurl:{{FULLPAGENAME}}
 <createbox>break=no</createbox>",
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬) */
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬) */
 $messages['sr-ec'] = array(
 	'createbox-create' => 'Направи',
 );
@@ -912,14 +912,14 @@ $messages['tet'] = array(
 	'createbox-create' => 'Kria',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
 	'createbox-create' => 'Эҷод',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
