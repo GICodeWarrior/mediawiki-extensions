@@ -135,7 +135,7 @@ $messages['bg'] = array(
 Проверете изписването.',
 );
 
-/** Bahasa Banjar (Bahasa Banjar)
+/** Banjar (Bahasa Banjar)
  * @author Ezagren
  * @author J Subhi
  */
@@ -1189,7 +1189,7 @@ Preverite črkovanje.',
 	'al-throttled' => 'Nedavno ste prevečkrat poskusili vnesti geslo. Prosimo, počakajte $1 {{PLURAL:$1|sekundo|sekundi|sekunde|sekund}} preden poskusite znova.',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -1205,7 +1205,7 @@ $messages['sr-ec'] = array(
 Проверите да ли сте добро укуцали.',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Liangent
  * @author Michaello
  * @author Жељко Тодоровић
@@ -1341,14 +1341,14 @@ Kullanıcı adları büyük-küçük harf duyarlıdır.
 Yazımınızı kontrol edin.',
 );
 
-/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+/** Tatar (Cyrillic script) (Татарча)
  * @author Рашат Якупов
  */
 $messages['tt-cyrl'] = array(
 	'ajaxlogin-create' => 'Хисап язмасын төзергә',
 );
 
-/** ئۇيغۇرچە (ئۇيغۇرچە)
+/** Uyghur (Arabic script) (ئۇيغۇرچە)
  * @author Sahran
  */
 $messages['ug-arab'] = array(
