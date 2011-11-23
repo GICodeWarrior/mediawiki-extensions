@@ -495,7 +495,7 @@ $messages['sq'] = array(
 	'dontswitchmeover-pref' => 'Mos lejo pamjen time të ndryshojë kur ndryshon pamja kryesore',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  */
 $messages['sr-ec'] = array(
@@ -533,7 +533,7 @@ $messages['tr'] = array(
 	'dontswitchmeover-pref' => 'Varsayılan motif değiştiğinde benim motifimin de değişmesine izin verme',
 );
 
-/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+/** Tatar (Cyrillic script) (Татарча)
  * @author Ильнар
  */
 $messages['tt-cyrl'] = array(
