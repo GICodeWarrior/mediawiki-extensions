@@ -3568,7 +3568,7 @@ Ohne <i lang="en">OpenID</i> künnts De nit mieh enlogge.',
 	'openid-provider-label-other-username' => 'Donn Dinge Metmaachername vun $1 aanjevve',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin)) */
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬) */
 $messages['ku-latn'] = array(
 	'openidlanguage' => 'Ziman',
 	'openidtimezone' => 'Navçeya demê',
@@ -5559,7 +5559,7 @@ $messages['sr-ec'] = array(
 	'openid-urls-delete' => 'Обриши',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Ex13
  * @author Michaello
  * @author Rancher
@@ -5893,7 +5893,7 @@ $messages['tet'] = array(
 	'openidchooseusername' => "Naran uza-na'in:",
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -5913,7 +5913,7 @@ $messages['tg-cyrl'] = array(
 	'openidchoosepassword' => 'Калимаи убур:',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
@@ -6135,14 +6135,14 @@ OpenID olmadan giriş yapamazsınız.",
 	'openid-provider-label-other-username' => '$1 kullanıcı adınızı girin',
 );
 
-/** ئۇيغۇرچە (ئۇيغۇرچە)
+/** Uyghur (Arabic script) (ئۇيغۇرچە)
  * @author Alfredie
  */
 $messages['ug-arab'] = array(
 	'openidlanguage' => 'تىل',
 );
 
-/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
+/** Uyghur (Latin script) (Uyghurche‎)
  * @author Jose77
  */
 $messages['ug-latn'] = array(
