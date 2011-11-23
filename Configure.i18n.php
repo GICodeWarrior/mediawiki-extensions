@@ -1396,7 +1396,7 @@ $messages['bg'] = array(
 	'configure-farmer-extensions-list' => '[[Special:Extensions|Списък с разширенията, достъпни за това уики]].',
 );
 
-/** Bahasa Banjar (Bahasa Banjar)
+/** Banjar (Bahasa Banjar)
  * @author Alamnirvana
  * @author Ezagren
  * @author J Subhi
@@ -6217,7 +6217,7 @@ $messages['kaa'] = array(
 	'configure-section-users' => 'Paydalanıwshılar',
 );
 
-/** Kazakh (Cyrillic) (Қазақша (Cyrillic))
+/** Kazakh (Cyrillic script) (‪Қазақша (кирил)‬)
  * @author GaiJin
  */
 $messages['kk-cyrl'] = array(
@@ -6643,7 +6643,7 @@ et Appachtemang. Do kresß en Vör-Aansich jezeich, wann De uß dämm Feld jeih�
 	'configure-farmer-extensions-list' => 'De [[Special:Extensions|Projramm-Zohsäz för dat Wiki hee opleßte]]',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author George Animal
  */
 $messages['ku-latn'] = array(
@@ -10546,7 +10546,7 @@ $messages['sr-ec'] = array(
 	'configure-boolop-description-not' => 'Ни један од услова не сме бити истинит',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  * @author Rancher
  * @author Жељко Тодоровић
@@ -11598,7 +11598,7 @@ Lütfen bu eklentiyi kullanmak için PHP ile dizini yazılabilir hale getirin.',
 	'configure-farmer-extensions-list' => '[[Special:Extensions|Bu viki için kullanılabilir olan eklentileri listele]].',
 );
 
-/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+/** Tatar (Cyrillic script) (Татарча)
  * @author Ильнар
  */
 $messages['tt-cyrl'] = array(
@@ -11617,7 +11617,7 @@ $messages['udm'] = array(
 	'configure-ext-settings' => 'Настройкаос',
 );
 
-/** ئۇيغۇرچە (ئۇيغۇرچە)
+/** Uyghur (Arabic script) (ئۇيغۇرچە)
  * @author Alfredie
  * @author Sahran
  */
@@ -11689,7 +11689,7 @@ $messages['ug-arab'] = array(
 	'configure-section-externalauth' => 'سىرتقى دەلىللەش',
 );
 
-/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
+/** Uyghur (Latin script) (Uyghurche‎)
  * @author Jose77
  */
 $messages['ug-latn'] = array(
