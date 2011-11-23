@@ -310,6 +310,7 @@
 			       "KhmerOSfreehand", "KhmerOSfasthand" ],
 			kn:  [ "Kedage", "Lohit Kannada" ],
 			ks:  [ "Samyak Devanagari", "Lohit Devanagari" ],
+			mai: [ "Lohit Devanagari" ],
 			ml:  [ "AnjaliOldLipi", "Meera", "Rachana", "RaghuMalayalam" ],
 			mr:  [ "Lohit Devanagari", "Samyak Devanagari" ],
 			my:  [ "Masterpiece Uni Sans", "Padauk-Regular", "Myanmar3", "Yunghkio" ],
