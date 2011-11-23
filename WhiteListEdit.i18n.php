@@ -3678,7 +3678,7 @@ $messages['tet'] = array(
 	'whitelistnever' => 'nunka',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -3711,7 +3711,7 @@ $2',
 	'whitelistnummatches' => ' - $1 мутобиқат мекунад',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
@@ -3876,7 +3876,7 @@ $messages['tr'] = array(
 	'group-manager-member' => 'Yönetici',
 );
 
-/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+/** Tatar (Cyrillic script) (Татарча)
  * @author Ильнар
  */
 $messages['tt-cyrl'] = array(
