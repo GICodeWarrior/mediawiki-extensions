@@ -72,6 +72,13 @@ $messages['hsb'] = array(
 	'newuserslist-desc' => 'Přidawa tafličku <tt>&lt;newusers&gt;</tt>, z kotrejež pomocu da so lisćina nowych wužiwarjow a jich awatary zwobraznić',
 );
 
+/** Hungarian (Magyar)
+ * @author Dj
+ */
+$messages['hu'] = array(
+	'newuserslist-desc' => '<tt>&lt;newusers&gt;</tt> címkét ad a felhasználókhoz, hogy ki lehessen nyerni az új felhasználókat és az avatarukat.',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
