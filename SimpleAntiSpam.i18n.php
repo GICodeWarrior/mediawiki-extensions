@@ -188,19 +188,22 @@ $messages['cy'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'simpleantispam' => 'Deine Bearbeitung hat den Spamschutz ausgelöst.',
-	'simpleantispam-label' => "Spamschutz-Prüfung. Hier '''nichts''' eintragen!",
-	'simpleantispam-desc' => 'Ergänzt Formulare um einen einfachen Bot-Spamschutz',
+	'simpleantispam' => 'Deine Bearbeitung hat die Spamschutzprüfung ausgelöst.',
+	'simpleantispam-label' => "Spamschutzprüfung.
+Hier '''nichts''' eintragen!",
+	'simpleantispam-desc' => 'Ergänzt Formulare um einen einfachen Schutz vor Spambots',
 );
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
+ * @author Kghbln
  * @author MichaelFrey
  */
 $messages['de-formal'] = array(
-	'simpleantispam' => 'Ihre Bearbeitung hat den Spamschutz ausgelöst.',
+	'simpleantispam' => 'Ihre Bearbeitung hat die Spamschutzprüfung ausgelöst.',
 );
 
 /** Zazaki (Zazaki)
@@ -746,7 +749,7 @@ $messages['sq'] = array(
 	'simpleantispam-desc' => 'Shton një kontroll spam/bot të thjeshtë tek format',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Millosh
  */
 $messages['sr-ec'] = array(
@@ -755,7 +758,7 @@ $messages['sr-ec'] = array(
 	'simpleantispam-desc' => 'Додаје једноставну спам/бот проверу у форме.',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
