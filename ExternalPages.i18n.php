@@ -619,7 +619,7 @@ $messages['sl'] = array(
 	'externalpages-no-page' => 'Določena ni nobena stran',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Charmed94
  */
 $messages['sr-ec'] = array(
@@ -629,7 +629,7 @@ $messages['sr-ec'] = array(
 	'externalpages-no-page' => 'Страница није одређена.',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'externalpages' => 'Spoljašnje stranice',
 	'externalpages-desc' => 'Preuzima i prikazuje stranice iz daljinskih WMF sajtova',
