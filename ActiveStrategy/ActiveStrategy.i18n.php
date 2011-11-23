@@ -561,7 +561,7 @@ $messages['sl'] = array(
 	'nedits' => '$1 {{PLURAL:$1|urejanje|urejanji|urejanja|urejanj}}',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  */
 $messages['sr-ec'] = array(
