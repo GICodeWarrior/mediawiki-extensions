@@ -2213,7 +2213,7 @@ Záznam posledných zoznamov sledovaných stránok sa nachádza na [[Special:Pov
 	'action-povwatch_user' => 'pridať túto stránku na zoznam sledovaných stránok iného používateľa',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
@@ -2225,7 +2225,7 @@ $messages['sr-ec'] = array(
 	'povwatch_added' => 'додато',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -2344,7 +2344,7 @@ $messages['tet'] = array(
 	'povwatch_title' => 'Títulu:',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -2352,7 +2352,7 @@ $messages['tg-cyrl'] = array(
 	'povwatch_title' => 'Унвон:',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
