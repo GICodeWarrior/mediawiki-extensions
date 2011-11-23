@@ -2056,7 +2056,7 @@ $messages['sr-ec'] = array(
 	'tag-logpagetext' => 'Ово је историја свих додавања и брисања тагова са слика',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  * @author Rancher
  */
@@ -2316,7 +2316,7 @@ $messages['tr'] = array(
 	'tag-logpagename' => 'Etiketleme kaydı',
 );
 
-/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
+/** Uyghur (Latin script) (Uyghurche‎)
  * @author Jose77
  */
 $messages['ug-latn'] = array(
