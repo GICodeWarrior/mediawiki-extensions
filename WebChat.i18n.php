@@ -401,7 +401,7 @@ $messages['ja'] = array(
 	'right-webchat' => '[[Special:WebChat|ウェブチャット]]を使用できる',
 );
 
-/** کھوار (کھوار)
+/** Khowar (کھوار)
  * @author Rachitrali
  */
 $messages['khw'] = array(
@@ -696,7 +696,7 @@ Brezimnim uporabnikom se vzdevek ustvari samodejno, vendar ga je mogoče spremen
 	'right-webchat' => 'Dovoljena uporaba [[Special:WebChat|spletnega klepeta]]',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  */
 $messages['sr-ec'] = array(
