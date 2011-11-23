@@ -627,7 +627,7 @@ $messages['sr-ec'] = array(
 	'pageby-anon' => '<i>анонимно</i>',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'pageby-contributors' => 'Doprinosi:',
 	'pageby-anon' => '<i>anonimno</i>',
@@ -666,7 +666,7 @@ $messages['te'] = array(
 	'pageby-anon' => '<i>అనామకులు</i>',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -674,7 +674,7 @@ $messages['tg-cyrl'] = array(
 	'pageby-contributors' => 'Ҳиссагузорон:',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
@@ -705,7 +705,7 @@ $messages['tr'] = array(
 	'pageby-anon' => '<i>anonim</i>',
 );
 
-/** ئۇيغۇرچە (ئۇيغۇرچە)
+/** Uyghur (Arabic script) (ئۇيغۇرچە)
  * @author Sahran
  */
 $messages['ug-arab'] = array(
