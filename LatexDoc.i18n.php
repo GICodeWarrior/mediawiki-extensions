@@ -933,7 +933,7 @@ $3',
 	'latexdoc-desc' => 'Latex Doc.',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -950,7 +950,7 @@ $3',
 	'latexdoc_get_pdf' => 'Преузми PDF',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'latexdoc_cant_create_dir' => 'Nije mogao da se napravi privremeni direktorijum $1',
 	'latexdoc_cant_write' => 'Nije moglo da se piše u fajl $1',
@@ -994,7 +994,7 @@ $messages['te'] = array(
 	'latexdoc_get_pdf' => 'PDFని పొందండి',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -1013,7 +1013,7 @@ $3',
 	'latexdoc-desc' => 'Вироиши ҳамдастии парвандаҳои LaTeX',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
