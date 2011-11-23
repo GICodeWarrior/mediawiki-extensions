@@ -60,7 +60,7 @@ $messages['qqq'] = array(
 	'youtubeauthsub_submit' => '{{Identical|Submit}}',
 );
 
-/** Adyghe (Cyrillic) ()
+/** адыгэбзэ (адыгэбзэ)
  * @author Celekan
  */
 $messages['ady-cyrl'] = array(
@@ -417,7 +417,7 @@ $messages['bg'] = array(
 	'youtubeauthsub_jserror_nodesc' => 'Необходимо е да се въведе описание на видеото.',
 );
 
-/** Bahasa Banjar (Bahasa Banjar)
+/** Banjar (Bahasa Banjar)
  * @author Ezagren
  */
 $messages['bjn'] = array(
@@ -2006,7 +2006,7 @@ Bes jet jedoldesch.',
 	'youtubeauthsub_jserror_nodesc' => 'Don dä Viddejo winneßtens med enem Satz udder zwei beschrieve, söns weet dat nix, hee.',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author George Animal
  */
 $messages['ku-latn'] = array(
@@ -3038,7 +3038,7 @@ Hà aviri pacenzia.',
 	'youtubeauthsub_jserror_nodesc' => 'Nzirisci na spiecazzioni pô vìdiu.',
 );
 
-/** Serbo-Croatian (Srpskohrvatski / Српскохрватски)
+/** Serbo-Croatian (Srpskohrvatski)
  * @author OC Ripper
  */
 $messages['sh'] = array(
@@ -3218,7 +3218,7 @@ Ju lutemi keni durim.',
 	'youtubeauthsub_jserror_nodesc' => 'Ju lutemi vendosni përshkrim për video copën tuaj.',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Sasa Stefanovic
  * @author Јованвб
@@ -3260,7 +3260,7 @@ $messages['sr-ec'] = array(
 	'youtubeauthsub_jserror_nodesc' => 'Унесите опис видео снимка.',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -3560,7 +3560,7 @@ $messages['tet'] = array(
 	'youtubeauthsub_clickhere' => "Klike iha ne'e ba log in iha YouTube",
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -3598,7 +3598,7 @@ YouTube метавонад каме вақтеро барои пешкаш ка�
 	'youtubeauthsub_jserror_nodesc' => 'Лутфан як тавсиф барои навор ворид кунед.',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
@@ -3755,7 +3755,7 @@ Lütfen sabırlı olun.',
 	'youtubeauthsub_jserror_nodesc' => 'Lütfen video için bir tanım girin.',
 );
 
-/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+/** Tatar (Cyrillic script) (Татарча)
  * @author KhayR
  */
 $messages['tt-cyrl'] = array(
@@ -3763,7 +3763,7 @@ $messages['tt-cyrl'] = array(
 	'youtubeauthsub-desc' => 'YouTube кулланучыларына [[Special:YouTubeAuthSub|видео кертергә]] мөмкинлек бирә',
 );
 
-/** ئۇيغۇرچە (ئۇيغۇرچە)
+/** Uyghur (Arabic script) (ئۇيغۇرچە)
  * @author Sahran
  */
 $messages['ug-arab'] = array(
