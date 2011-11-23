@@ -1021,7 +1021,7 @@ $messages['tet'] = array(
 	'randomincategory-submit' => 'Bá',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -1033,7 +1033,7 @@ $messages['tg-cyrl'] = array(
 	'randomincategory-submit' => 'Бирав',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
@@ -1079,14 +1079,14 @@ $messages['tr'] = array(
 	'randomincategory-submit' => 'Git',
 );
 
-/** ئۇيغۇرچە (ئۇيغۇرچە)
+/** Uyghur (Arabic script) (ئۇيغۇرچە)
  * @author Alfredie
  */
 $messages['ug-arab'] = array(
 	'randomincategory-submit' => 'كۆچۈش',
 );
 
-/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
+/** Uyghur (Latin script) (Uyghurche‎)
  * @author Jose77
  */
 $messages['ug-latn'] = array(
