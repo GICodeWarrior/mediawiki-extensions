@@ -252,7 +252,7 @@ $messages['ksh'] = array(
 	'nll-lastseparator' => '&#32;un&#32;',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author George Animal
  */
 $messages['ku-latn'] = array(
