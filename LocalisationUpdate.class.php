@@ -450,21 +450,30 @@ class LocalisationUpdate {
 			return 0;
 		}
 
-		$new_messages = self::readFile( $langcode );
+		$new_messages = array();
 
-		foreach ( $changedStrings as $key => $value ) {
-			// If this message wasn't changed in English.
-			if ( !isset( $forbiddenKeys[$key] ) ) {
+		//foreach ( $changedStrings as $key => $value ) {
+		// HACK for r103763 CR: store all messages, even unchanged ones
+		// TODO this file is a mess and needs to be rewritten
+		foreach ( array_merge( array_keys( $base_messages, $compare_messages ) as $key ) {
+			// Only update the translation if this message wasn't changed in English
+			if ( !isset( $forbiddenKeys[$key] ) && isset( $base_messages[$key] ) ) {
 				$new_messages[$key] = $base_messages[$key];
 
-				// Output extra logmessages when needed.
-				if ( $verbose ) {
-					$oldmsg = isset( $compare_messages[$key] ) ? "'{$compare_messages[$key]}'" : 'not set';
-					self::myLog( "Updated message {$key} from $oldmsg to '{$base_messages[$key]}'", $verbose );
-				}
+				if ( !isset( $compare_messages[$key] ) || $compare_messages[$key] !== $base_messages[$key] ) {
+					// Output extra logmessages when needed.
+					if ( $verbose ) {
+						$oldmsg = isset( $compare_messages[$key] ) ? "'{$compare_messages[$key]}'" : 'not set';
+						self::myLog( "Updated message {$key} from $oldmsg to '{$base_messages[$key]}'", $verbose );
+					}
 
-				// Update the counter.
-				$updates++;
+					// Update the counter.
+					$updates++;
+				}
+			} else if ( isset( $forbiddenKeys[$key] ) && isset( $compare_messages[$key] ) ) {
+				// The message was changed in English, but a previous translation still exists in the cache.
+				// Use that previous translation rather than falling back to the .i18n.php file
+				$new_messages[$key] = $compare_messages[$key];
 			}
 		}
 		self::writeFile( $langcode, $new_messages );
