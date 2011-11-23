@@ -26,7 +26,7 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'semanticinternalobjects-desc' => '{{desc}}',
-	'semanticinternalobjects-internalproperty' => 'A semantic property stored internally in the page'
+	'semanticinternalobjects-internalproperty' => 'A semantic property stored internally in the page',
 );
 
 /** Gheg Albanian (Gegë)
