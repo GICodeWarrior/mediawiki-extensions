@@ -388,7 +388,7 @@ $messages['sl'] = array(
 	'mootools12core-desc' => 'Doda [http://mootools.net mootools-1.2-core-yc.js], strnjeno ogrodje JavaScript, na vsako stran',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -396,7 +396,7 @@ $messages['sr-ec'] = array(
 	'mootools12core-desc' => 'На сваку страницу додаје [http://mootools.net mootools-1.2-core-yc.js], јаваскриптов радни оквир',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(

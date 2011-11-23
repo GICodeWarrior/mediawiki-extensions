@@ -698,6 +698,19 @@ $messages['oc'] = array(
 	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** Punjabi (ਪੰਜਾਬੀ)
+ * @author Aalam
+ */
+$messages['pa'] = array(
+	'layouts_title' => 'ਇੱਕ ਸਫ਼ਾ ਬਣਾਉ',
+	'layouts_chooselayout' => '$1 ਲਈ ਲੇਆਉਟ ਚੁਣੋ:',
+	'layouts_nolayout' => 'ਕੋਈ ਲੇਆਉਟ ਨਹੀਂ',
+	'layouts_continue' => 'ਜਾਰੀ ਰੱਖੋ',
+	'layouts_choosecategory' => '$1 ਲਈ ਕੈਟਾਗਰੀ ਚੁਣੋ:',
+	'layouts_unknown' => 'ਅਣਜਾਣ',
+	'layouts_tagline' => "ਇਹ ਪੇਜ਼ ਨੂੰ '''$1''' ਲੇਆਉਟ ਨਾਲ ਤਿਆਰ ਕੀਤਾ ਗਿਆ ਹੈ।",
+);
+
 /** Deitsch (Deitsch)
  * @author Xqt
  */
@@ -878,7 +891,7 @@ $messages['sr-ec'] = array(
 	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(

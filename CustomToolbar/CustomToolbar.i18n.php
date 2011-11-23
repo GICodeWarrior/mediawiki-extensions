@@ -201,6 +201,7 @@ $messages['am'] = array(
  * @author OsamaK
  * @author Ouda
  * @author Zack wadghiri
+ * @author زكريا
  */
 $messages['ar'] = array(
 	'ct-desc' => 'يضيف شريط أدوات ممدد',
@@ -2834,7 +2835,7 @@ $messages['sr-ec'] = array(
 	'ct_user_sample' => 'Корисничко име',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  * @author Жељко Тодоровић
  */
@@ -3073,7 +3074,7 @@ $messages['tet'] = array(
 	'ct_user_sample' => "Naran uza-na'in",
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -3083,7 +3084,7 @@ $messages['tg-cyrl'] = array(
 	'ct_attachment_tip' => 'Иловаи як замима',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
@@ -3218,7 +3219,7 @@ $messages['tr'] = array(
 	'ct_user_sample' => 'Kullanıcı adı',
 );
 
-/** ئۇيغۇرچە (ئۇيغۇرچە)
+/** Uyghur (Arabic script) (ئۇيغۇرچە)
  * @author Alfredie
  */
 $messages['ug-arab'] = array(
@@ -3226,7 +3227,7 @@ $messages['ug-arab'] = array(
 	'ct_user_sample' => 'ئىشلەتكۇچى ئىسمى',
 );
 
-/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
+/** Uyghur (Latin script) (Uyghurche‎)
  * @author Jose77
  */
 $messages['ug-latn'] = array(

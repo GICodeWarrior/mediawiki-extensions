@@ -50,6 +50,13 @@ $messages['arz'] = array(
 	'formatsearch-desc' => 'تنضيف صفحة نتايج التدوير',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'formatsearch-desc' => 'Llimpia la páxina de los resultaos de la gueta',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
@@ -403,14 +410,14 @@ $messages['sq'] = array(
 	'formatsearch-desc' => 'Pastron faqen e rezultateve të kërkimit',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'formatsearch-desc' => 'Чисти страну са резултатима претраге',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(

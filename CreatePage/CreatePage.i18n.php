@@ -1038,7 +1038,7 @@ $messages['sl'] = array(
 	'createpage-badtitle' => '»$1« ni mogoče uporabiti kot naslov strani',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
@@ -1056,7 +1056,7 @@ $messages['sr-ec'] = array(
 	'createpage-badtitle' => '"$1" не може бити употребљен као наслов стране',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  * @author Жељко Тодоровић
  */
@@ -1194,7 +1194,7 @@ Mevcut sayfada değişiklik yapmak ister misiniz?',
 	'createpage-badtitle' => '"$1" bir sayfa başlığı olarak kullanılamaz',
 );
 
-/** ئۇيغۇرچە (ئۇيغۇرچە)
+/** Uyghur (Arabic script) (ئۇيغۇرچە)
  * @author Sahran
  */
 $messages['ug-arab'] = array(

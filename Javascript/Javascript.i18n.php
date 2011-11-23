@@ -375,7 +375,7 @@ $messages['sq'] = array(
 	'javascript-desc' => 'Vendosë uniwiki.js në çdo faqe që përmban kodin JavaScript të ndarë mes prapashtesave në Uniwiki',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -383,7 +383,7 @@ $messages['sr-ec'] = array(
 	'javascript-desc' => 'Додаје uniwiki.js на сваку страницу која садржи јаваскрипту и користи се између више Унивики проширења',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(

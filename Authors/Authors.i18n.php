@@ -105,7 +105,7 @@ $messages['bg'] = array(
 	'authors_anonymous' => 'Анонимни',
 );
 
-/** Bahasa Banjar (Bahasa Banjar)
+/** Banjar (Bahasa Banjar)
  * @author J Subhi
  */
 $messages['bjn'] = array(
@@ -610,7 +610,7 @@ $messages['sl'] = array(
 	'authors_anonymous' => 'Brezimnež',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
@@ -620,7 +620,7 @@ $messages['sr-ec'] = array(
 	'authors_anonymous' => 'Анонимно',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(

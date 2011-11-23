@@ -358,14 +358,14 @@ $messages['sl'] = array(
 	'csshooks-desc' => 'Doda CSS izhodu HTML strani za boljše oblikovanje',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'csshooks-desc' => 'Додаје CSS на HTML излаз страна зарад бољег стилизовања',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(

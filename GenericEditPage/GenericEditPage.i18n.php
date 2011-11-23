@@ -1516,7 +1516,7 @@ $messages['sr-ec'] = array(
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  * @author Жељко Тодоровић
  */
