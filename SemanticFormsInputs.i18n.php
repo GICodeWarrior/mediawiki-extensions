@@ -65,6 +65,25 @@ $messages['qqq'] = array(
 	'semanticformsinputs-firstdayofweek' => '0 - sunday, 1 - monday...',
 );
 
+/** Message documentation (Message documentation)
+ * @author EugeneZelenko
+ * @author F.trott
+ * @author The Evil IP address
+ */
+$messages['qqq'] = array(
+	'semanticformsinputs-desc' => '{{desc}}',
+	'semanticformsinputs-close' => '{{Identical|Close}}',
+	'semanticformsinputs-prev' => '{{Identical|Previous}}',
+	'semanticformsinputs-next' => '{{Identical|Next}}',
+	'semanticformsinputs-dateformatlong' => "{{doc-important|This is a machine-readable date format string!| <br>It is used by a function to format a date. It will not be read by a human user. Do not translate each letter literally! Instead insert the date format for your language using the english-based letters. See http://docs.jquery.com/UI/Datepicker/formatDate }}
+
+{{doc-important|This is an ''optional'' message. Do not translate it, if it would remain unchanged in your language. }}",
+	'semanticformsinputs-dateformatshort' => "{{doc-important|This is a machine-readable date format string!| <br>It is used by a function to format a date. It will not be read by a human user. Do not translate each letter literally! Instead insert the date format for your language using the english-based letters. See http://docs.jquery.com/UI/Datepicker/formatDate }}
+
+{{doc-important|This is an ''optional'' message. Do not translate it, if it would remain unchanged in your language. }}",
+	'semanticformsinputs-firstdayofweek' => '0 - sunday, 1 - monday...',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -451,7 +470,7 @@ $messages['ksh'] = array(
 	'semanticformsinputs-today' => 'Hück',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author George Animal
  */
 $messages['ku-latn'] = array(
@@ -528,6 +547,8 @@ $messages['ms'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author SPQRobin
+ * @author Saruman
  * @author Siebrand
  */
 $messages['nl'] = array(
@@ -537,6 +558,12 @@ $messages['nl'] = array(
 	'semanticformsinputs-prev' => 'Vorige',
 	'semanticformsinputs-next' => 'Volgende',
 	'semanticformsinputs-today' => 'Vandaag',
+	'semanticformsinputs-datepicker-weekstart' => 'De eerste dag van de week (0 - zondag, 1 - maandag, ...).',
+	'semanticformsinputs-datepicker-firstdate' => 'De eerste datum die kan gekozen worden (in het formaat jjjj/mm/dd).',
+	'semanticformsinputs-datepicker-lastdate' => 'De laatste datum die kan gekozen worden (in het formaat jjjj/mm/dd).',
+	'semanticformsinputs-timepicker-mintime' => 'De vroegste tijd om weer te geven. Opmaak: uu:mm',
+	'semanticformsinputs-timepicker-interval' => 'Interval tussen minuten. Getal tussen 1 en 60.',
+	'semanticformsinputs-menuselect-structure' => 'De menustructuur als een ongeordende lijst.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
