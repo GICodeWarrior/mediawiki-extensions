@@ -383,7 +383,7 @@ $messages['sr-ec'] = array(
 	'randomimage-desc' => 'Приказује случајног бирача датотека користећи <code>&lt;randomimage /&gt;</code>',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -418,14 +418,14 @@ $messages['te'] = array(
 	'randomimage-desc' => 'యాదృచ్ఛిక మాధ్యమాంశము తెచ్చే పరికరాన్ని <code>&lt;randomimage /&gt;</code>తో అందిస్తుంది.',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
 	'randomimage-desc' => 'Бо истифодаи <code>&lt;randomimage /&gt;</code> чинандаи расонаи тасодуфиро пешкаш мекунад',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
