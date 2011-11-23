@@ -562,7 +562,7 @@ $messages['sq'] = array(
 	'poem-desc' => 'Vendosë kodin <code>&lt;poem&gt;</code> për formatim të poezive',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Millosh
  * @author Nikola Smolenski
  */
@@ -570,7 +570,7 @@ $messages['sr-ec'] = array(
 	'poem-desc' => 'Додаје <code>&lt;poem&gt;</code> ознаку за форматирање песама.',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -598,14 +598,14 @@ $messages['te'] = array(
 	'poem-desc' => 'పద్యాల ఫార్మాటింగుకై <code>&lt;poem&gt;</code> అనే టాగుని చేరుస్తుంది',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
 	'poem-desc' => 'Барчасби <code>&lt;poem&gt;</code>-ро барои қолаббандиҳои шеърҳо илова мекунад',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
