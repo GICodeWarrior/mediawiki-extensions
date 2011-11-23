@@ -1456,7 +1456,7 @@ $messages['so'] = array(
 	'formsave' => 'Kaydi',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Sasa Stefanovic
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
@@ -1474,7 +1474,7 @@ $messages['sr-ec'] = array(
 	'formsaveerror' => 'Грешка приликом снимања форме',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  * @author Жељко Тодоровић
  */
@@ -1600,7 +1600,7 @@ $messages['te'] = array(
 	'formsaveerrortext' => "'$1' పేజీని భద్రపరచడంలో ఏదో తెలియని పొరపాటు జరిగింది.",
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -1617,7 +1617,7 @@ $messages['tg-cyrl'] = array(
 	'formsaveerrortext' => "Дар ҳоли захираи саҳифаи '$1' хатои ношиносе буд.",
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
@@ -1691,7 +1691,7 @@ $messages['tr'] = array(
 	'formsaveerror' => 'Formu kaydetmede hata',
 );
 
-/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+/** Tatar (Cyrillic script) (Татарча)
  * @author Timming
  */
 $messages['tt-cyrl'] = array(
