@@ -5,13 +5,12 @@
  * @file
  * @ingroup Extensions
  */
- 
+
 $messages = array();
- 
+
 /** English
  * @author Andrew Garrett
  */
-
 $messages['en'] = array(
 	'moodbar-desc' => 'Allows specified users to provide feedback on their editing experience',
 	// Portlet link
