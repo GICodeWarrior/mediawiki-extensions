@@ -454,14 +454,14 @@ $messages['sl'] = array(
 	'uploadblacklist-desc' => 'Doda funkcionalnost črne liste nalaganj',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'uploadblacklist-desc' => 'Додаје функционалност црне листе за слање фајлова',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'uploadblacklist-desc' => 'Dodaje funkcionalnost crne liste za slanje fajlova',
 );
@@ -494,7 +494,7 @@ $messages['tr'] = array(
 	'uploadblacklist-desc' => 'Bir yükleme karalistesi işlevselliği ekler',
 );
 
-/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+/** Tatar (Cyrillic script) (Татарча)
  * @author Ильнар
  */
 $messages['tt-cyrl'] = array(
