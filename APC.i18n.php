@@ -4107,7 +4107,7 @@ En neuer Version ($2) steiht ald parat op http://pecl.php.net/package/APC/$2',
 	'viewapc-usercache-cleared' => "'''''Aanwendungs-<i lang=\"en\">cache</i> leddisch jemaat.'''''",
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author George Animal
  */
 $messages['ku-latn'] = array(
@@ -6567,7 +6567,7 @@ $messages['sr-ec'] = array(
 	'viewapc-usercache-cleared' => "'''''Остава програма је очишћена.'''''",
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  * @author Rancher
  */
@@ -7048,14 +7048,14 @@ $messages['tet'] = array(
 	'viewapc-ls-limit-none' => 'Hotu',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
 	'viewapc-display-value' => 'Қимат',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
@@ -7301,14 +7301,14 @@ Yeni versiyon $2 http://pecl.php.net/package/APC/$2 adresinde mevcut",
 	'viewapc-usercache-cleared' => "'''''Uygulama önbelleği temizlendi.'''''",
 );
 
-/** ئۇيغۇرچە (ئۇيغۇرچە)
+/** Uyghur (Arabic script) (ئۇيغۇرچە)
  * @author Alfredie
  */
 $messages['ug-arab'] = array(
 	'viewapc-ls-submit' => 'كۆچۈش!',
 );
 
-/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
+/** Uyghur (Latin script) (Uyghurche‎)
  * @author Jose77
  */
 $messages['ug-latn'] = array(
