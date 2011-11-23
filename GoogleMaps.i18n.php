@@ -701,7 +701,7 @@ $wgGoogleMapsMessages['bg'] = array(
 	'gm-mars' => 'Марс',
 );
 
-/** Bahasa Banjar (Bahasa Banjar)
+/** Banjar (Bahasa Banjar)
  * @author Ezagren
  */
 $wgGoogleMapsMessages['bjn'] = array(
@@ -3214,7 +3214,7 @@ $wgGoogleMapsMessages['kaa'] = array(
 	'gm-height' => "Uzunlıg'ı",
 );
 
-/** Kazakh (Cyrillic) (Қазақша (Cyrillic))
+/** Kazakh (Cyrillic script) (‪Қазақша (кирил)‬)
  * @author GaiJin
  */
 $wgGoogleMapsMessages['kk-cyrl'] = array(
@@ -3222,7 +3222,7 @@ $wgGoogleMapsMessages['kk-cyrl'] = array(
 	'gm-search' => 'Іздеу',
 );
 
-/** Kazakh (Latin) (Қазақша (Latin))
+/** Kazakh (Latin script) (‪Qazaqşa (latın)‬)
  * @author GaiJin
  */
 $wgGoogleMapsMessages['kk-latn'] = array(
@@ -3427,7 +3427,7 @@ Uppder donn op en Shtadt, e Land, en Address, udder e Jeschäff z höppe:',
 	'gm-mars' => 'Mars',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author Bangin
  * @author George Animal
  */
@@ -5233,7 +5233,7 @@ $wgGoogleMapsMessages['scn'] = array(
 	'gm-mars' => 'Marti',
 );
 
-/** Tachelhit (Tašlḥiyt)
+/** Tachelhit (Tašlḥiyt/ⵜⴰⵛⵍⵃⵉⵜ)
  * @author Dalinanir
  */
 $wgGoogleMapsMessages['shi'] = array(
@@ -5546,7 +5546,7 @@ $wgGoogleMapsMessages['sr-ec'] = array(
 	'gm-mars' => 'Марс',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  * @author Rancher
  */
@@ -5997,7 +5997,7 @@ $wgGoogleMapsMessages['tet'] = array(
 	'gm-moon' => 'Fulan',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $wgGoogleMapsMessages['tg-cyrl'] = array(
@@ -6043,7 +6043,7 @@ $wgGoogleMapsMessages['tg-cyrl'] = array(
 	'gm-mars' => 'Марс',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $wgGoogleMapsMessages['tg-latn'] = array(
@@ -6326,7 +6326,7 @@ $wgGoogleMapsMessages['tr'] = array(
 	'gm-mars' => 'Mars',
 );
 
-/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+/** Tatar (Cyrillic script) (Татарча)
  * @author Ерней
  * @author Ильнар
  */
