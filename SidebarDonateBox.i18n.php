@@ -136,6 +136,14 @@ $messages['hsb'] = array(
 	'DONATE' => 'Darić',
 );
 
+/** Hungarian (Magyar)
+ * @author Dj
+ */
+$messages['hu'] = array(
+	'sidebardonatebox-desc' => 'Adományozó dobozt hoz létre az oldalsávban',
+	'DONATE' => 'Adományozás',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
