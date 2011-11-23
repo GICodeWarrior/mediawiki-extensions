@@ -526,7 +526,7 @@ $messages['sl'] = array(
 	'transliterator-error-prefix' => '[[MediaWiki:$2]] mora biti dolg vsaj $1 {{PLURAL:$1|znak|znaka|znake|znakov}}.',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  */
 $messages['sr-ec'] = array(
