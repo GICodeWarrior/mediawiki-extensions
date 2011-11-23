@@ -428,7 +428,7 @@ $messages['ksh'] = array(
 	'userimages-noimages' => 'Dä „$1“ hät kei Belder huhjelade.',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author Bangin
  */
 $messages['ku-latn'] = array(
@@ -690,7 +690,7 @@ $messages['sq'] = array(
 	'userimages-noimages' => '$1 nuk ka figura të ngarkuara.',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -700,7 +700,7 @@ $messages['sr-ec'] = array(
 	'userimages-noimages' => '$1 нема послатих слика.',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -756,7 +756,7 @@ $messages['te'] = array(
 	'userimages-noname' => 'వాడుకరిపేరు తప్పు లేదా అసలు ఇవ్వనేలేదు.',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -764,7 +764,7 @@ $messages['tg-cyrl'] = array(
 	'userimages-noimages' => '$1 дорои боргузориҳои аксе нест.',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
@@ -807,7 +807,7 @@ $messages['tr'] = array(
 	'userimages-noimages' => '$1 resmi yüklenemedi.',
 );
 
-/** ئۇيغۇرچە (ئۇيغۇرچە)
+/** Uyghur (Arabic script) (ئۇيغۇرچە)
  * @author Sahran
  */
 $messages['ug-arab'] = array(
