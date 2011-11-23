@@ -23,6 +23,7 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author Raymond
  */
 $messages['qqq'] = array(
 	'arrays-desc' => '{{desc}}',
