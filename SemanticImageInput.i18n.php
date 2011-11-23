@@ -127,3 +127,10 @@ $messages['te'] = array(
 	'sii-imageinput-loading' => 'బొమ్మ లోడవతుతోంది...',
 );
 
+/** Turkish (Türkçe)
+ * @author Emperyan
+ */
+$messages['tr'] = array(
+	'sii-imageinput-loading' => 'Resim yükleniyor...',
+);
+
