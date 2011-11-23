@@ -829,7 +829,7 @@ $messages['sr-ec'] = array(
 	'pf-header-approve' => 'Одобри',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'pf-admin-menu-default' => 'Podrazumevano',
 	'pf-admin-menu-unsortedtemplates' => 'Šabloni još uvek nisu sortirani',
