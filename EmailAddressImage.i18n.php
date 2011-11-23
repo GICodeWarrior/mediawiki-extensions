@@ -459,14 +459,14 @@ $messages['sq'] = array(
 	'emailaddressimage-desc' => 'Vendosë kodin <code>&lt;email&gt;</code> që të paraqesë adresën e postës elektronike si figurë',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'emailaddressimage-desc' => 'Додаје <code>&lt;email&gt;</code> таг, за приказивање имејл адреса као слика',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -501,14 +501,14 @@ $messages['tet'] = array(
 	'emailaddressimage-desc' => 'Tau tan <code>&lt;email&gt;</code> ba hatudu diresaun korreiu eletróniku duké imajen',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
 	'emailaddressimage-desc' => 'Барои намои нишонаи почтаи электронӣ чун акс <code>&lt;email&gt;</code>-ро илова мекунад',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
