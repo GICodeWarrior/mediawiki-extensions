@@ -1,7 +1,6 @@
 <?php
 
 class I18nTags {
-
 	public static function formatNumber( $data, $params, $parser ) {
 		$lang = self::languageObject( $params );
 		return $lang->formatNum($data);
