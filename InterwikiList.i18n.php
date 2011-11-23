@@ -731,7 +731,7 @@ $messages['sl'] = array(
 	'interwikilist-prefix' => 'Predpora interwiki:',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -744,7 +744,7 @@ $messages['sr-ec'] = array(
 	'interwikilist-prefix' => 'Међувики префикс:',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -829,7 +829,7 @@ $messages['tr'] = array(
 	'interwikilist-prefix' => 'Vikilerarası öneki:',
 );
 
-/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+/** Tatar (Cyrillic script) (Татарча)
  * @author Ильнар
  */
 $messages['tt-cyrl'] = array(
