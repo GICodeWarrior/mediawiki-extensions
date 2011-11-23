@@ -2626,7 +2626,7 @@ $1',
 	'webstore_no_handler' => 'Pre transformáciu tohto typu MIME neexistuje obsluha',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -2675,7 +2675,7 @@ $1',
 	'webstore_no_handler' => 'Није дефинисано трансформисање овог MIME типа',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -2915,7 +2915,7 @@ $1',
 $1',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -2931,7 +2931,7 @@ $messages['tg-cyrl'] = array(
 	'webstore_php_error' => 'Хатоҳои PHP рух доданд:',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
