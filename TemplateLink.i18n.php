@@ -545,7 +545,7 @@ $messages['sl'] = array(
 	'templatelink_newtitle' => '$1 (vključeno)',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  */
 $messages['sr-ec'] = array(
@@ -595,7 +595,7 @@ $messages['te'] = array(
 	'templatelink_desc' => 'ఈ పొడగింత మూసని ఒక కొత్త పేజీగా చూపించగలదు',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -603,7 +603,7 @@ $messages['tg-cyrl'] = array(
 	'templatelink_empty' => 'Шумо бояд параметре пешниҳод кунед.',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
@@ -631,7 +631,7 @@ $messages['tr'] = array(
 	'templatelink_newtitle' => '$1 (görüntüleme)',
 );
 
-/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+/** Tatar (Cyrillic script) (Татарча)
  * @author Yildiz
  * @author Рашат Якупов
  */
