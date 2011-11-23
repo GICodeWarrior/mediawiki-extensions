@@ -386,14 +386,14 @@ $messages['sv'] = array(
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Specialsida]] som hämtar en slumpmässig rotsida',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
 	'randomrootpage' => 'Саҳифаи решавии тасодуфӣ',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
