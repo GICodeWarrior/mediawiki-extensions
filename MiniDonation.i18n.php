@@ -313,12 +313,12 @@ $messages['kk-arab'] = array(
 	'donationform-submit' => 'جٵردەمدٸ PayPal جٷيەسٸمەن جٸبەرۋ',
 );
 
-/** Kazakh (Cyrillic) (Қазақша (Cyrillic)) */
+/** Kazakh (Cyrillic script) (‪Қазақша (кирил)‬) */
 $messages['kk-cyrl'] = array(
 	'donationform-submit' => 'Жәрдемді PayPal жүйесімен жіберу',
 );
 
-/** Kazakh (Latin) (Қазақша (Latin)) */
+/** Kazakh (Latin script) (‪Qazaqşa (latın)‬) */
 $messages['kk-latn'] = array(
 	'donationform-submit' => 'Järdemdi PayPal jüýesimen jiberw',
 );
@@ -527,7 +527,7 @@ $messages['sr-ec'] = array(
 	'donationform-submit' => 'Приложи преко Пејпала',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -559,14 +559,14 @@ $messages['te'] = array(
 	'donationform-submit' => 'పేపాల్ ద్వారా విరాళమివ్వండి',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
 	'donationform-submit' => 'Ҳадя тавассути PayPal',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
