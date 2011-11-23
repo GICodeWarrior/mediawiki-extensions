@@ -807,7 +807,7 @@ $messages['sr-ec'] = array(
 	'minipreview-no_category_gallery' => 'Нема категорија или галерија!',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
