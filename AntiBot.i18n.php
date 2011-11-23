@@ -322,7 +322,7 @@ $messages['jv'] = array(
 	'antibot-desc' => 'Krangka kerja prasaja kanggo mriksa spambot lan lat pamicu',
 );
 
-/** Kabardian (Cyrillic) (Адыгэбзэ (Cyrillic))
+/** Адыгэбзэ (Адыгэбзэ)
  * @author Amire80
  */
 $messages['kbd-cyrl'] = array(
@@ -560,7 +560,7 @@ $messages['sl'] = array(
 	'antibot-desc' => 'Preprosto ogrodje za preverjanje smetečih robotov in povzročanja obremenitev',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -568,7 +568,7 @@ $messages['sr-ec'] = array(
 	'antibot-desc' => 'Једноставан оквир за провере о непожељним роботима и реаговање на одређене квоте активности',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
