@@ -1465,7 +1465,7 @@ $messages['ru'] = array(
 	'masseditregex-tooltip-execute' => 'Применить эти изменения для каждой страницы',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
@@ -1493,7 +1493,7 @@ $messages['sr-ec'] = array(
 	'masseditregex-tooltip-execute' => 'Примени ове промене на сваку страну',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Rancher
  */
 $messages['sr-el'] = array(
