@@ -478,7 +478,7 @@ $messages['ksh'] = array(
 	'newschannel_submit_button' => 'Kanaal opmaache',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author George Animal
  */
 $messages['ku-latn'] = array(
@@ -716,7 +716,7 @@ $messages['sr-ec'] = array(
 	'newschannel_exclude_category' => 'Изузми категорију:',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
