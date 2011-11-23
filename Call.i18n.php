@@ -135,7 +135,7 @@ $messages['bg'] = array(
 	'call-save-failed' => 'Следният текст НЕ БЕШЕ съхранен на страницата <big>[[$1]]</big>, тъй като тя вече съществува.',
 );
 
-/** Bahasa Banjar (Bahasa Banjar)
+/** Banjar (Bahasa Banjar)
  * @author Alamnirvana
  * @author Ezagren
  * @author J Subhi
@@ -1220,7 +1220,7 @@ V prípade problémov môžete skúsiť <b>{{#special:call}}/DebuG</b>",
 	'call-save-failed' => "Nasledovný text NEBOL uložený na stránku ''$1'', pretože taká stránka už existuje.",
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Charmed94
  * @author Rancher
  */
@@ -1233,7 +1233,7 @@ $messages['sr-ec'] = array(
 	'call-save-failed' => 'Следећи текст није сачуван на страници <big>[[$1]]</big> јер та страница већ постоји.',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'call' => 'Poziv',
 	'call-desc' => 'Napravite hipervezu ka šablonu (ili na običnu viki stranicu) s parametrima u prolazu.
@@ -1303,14 +1303,14 @@ $messages['te'] = array(
 	'call-save-failed' => '<big>[[$1]]</big> అనే పేజీ ఈసరికే ఉన్నందువల్ల ఈ క్రింది పాఠ్యాన్ని అందులో భద్రపరచలేకపోయాం.',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
 	'call-save-success' => 'Матни зерин ба саҳифа <big>[[$1]]</big> захира шуд.',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
