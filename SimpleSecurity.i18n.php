@@ -1100,7 +1100,7 @@ $messages['so'] = array(
 	'security-type-category' => 'qeybta',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -1110,7 +1110,7 @@ $messages['sr-ec'] = array(
 	'security-type-namespace' => 'именски простор',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'security-info-toggle' => 'sigurnosna ograničenja',
 	'security-manygroups' => 'grupe $1 i $2',
