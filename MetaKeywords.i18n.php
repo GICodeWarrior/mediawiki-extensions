@@ -408,7 +408,7 @@ $messages['sr-ec'] = array(
  # Сви случаји $1 ће бити замењени с насловом текуће странице.',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
