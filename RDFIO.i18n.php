@@ -387,7 +387,7 @@ $messages['tl'] = array(
 	'specialarc2admin' => 'Pahinang pangtagapangasiwa ng Tindahan ng ARC2 RDF',
 );
 
-/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+/** Tatar (Cyrillic script) (Татарча)
  * @author Ильнар
  */
 $messages['tt-cyrl'] = array(
