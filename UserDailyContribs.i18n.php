@@ -87,7 +87,7 @@ $messages['be-tarask'] = array(
 	'userdailycontribs-desc' => 'Штодзённы ўнёсак удзельнікаў для пашырэньня сачэньня за націскамі мышшу',
 );
 
-/** Bahasa Banjar (Bahasa Banjar)
+/** Banjar (Bahasa Banjar)
  * @author Ezagren
  */
 $messages['bjn'] = array(
