@@ -2618,7 +2618,7 @@ $messages['tt-cyrl'] = array(
 Гадәттә калып аша өстәлгән бүлекләрдә шушындый хаталар чыга.',
 );
 
-/** ئۇيغۇرچە (ئۇيغۇرچە)
+/** Uyghur (Arabic script) (ئۇيغۇرچە)
  * @author Sahran
  */
 $messages['ug-arab'] = array(
