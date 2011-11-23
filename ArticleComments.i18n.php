@@ -1145,7 +1145,7 @@ Müjjelesh sin bloß „<code lang="en">plain</code>“, „<code lang="en">norm
 	'processcomment' => 'Ben di Aanmerkung aam verärbeide',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author George Animal
  */
 $messages['ku-latn'] = array(
@@ -1829,7 +1829,7 @@ $messages['scn'] = array(
 	'article-comments-comment-missing-name-parameter' => 'Nomu persu',
 );
 
-/** Tachelhit (Tašlḥiyt)
+/** Tachelhit (Tašlḥiyt/ⵜⴰⵛⵍⵃⵉⵜ)
  * @author Dalinanir
  */
 $messages['shi'] = array(
