@@ -260,7 +260,7 @@ $messages['sl'] = array(
 	'xmlrc-desc' => 'Pošilja obvestila o spremembah kot XML, preko UDP, Jabberja ali drugih sredstev',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  */
 $messages['sr-ec'] = array(
