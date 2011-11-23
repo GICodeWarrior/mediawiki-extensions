@@ -1465,7 +1465,7 @@ Lejend fun de Enschäzunge: '''(1)''' = {{int:readerfeedback-level-0}}, '''(2)''
 	'right-feedback' => 'Enschäzunge afjevve un Note för Sigge verdeile',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author George Animal
  */
 $messages['ku-latn'] = array(
@@ -2287,7 +2287,7 @@ $messages['sr-ec'] = array(
 	'ratinghistory-none' => 'Још увек нема довољно мишљења читалаца да би се формирали графикони.',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -2521,7 +2521,7 @@ Derecelendirmeler aşağıdaki gibidir:
 	'right-feedback' => 'Bir sayfayı derecelendirmek için dönüt formunu kullanın',
 );
 
-/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+/** Tatar (Cyrillic script) (Татарча)
  * @author Ильнар
  */
 $messages['tt-cyrl'] = array(

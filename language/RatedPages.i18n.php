@@ -767,7 +767,7 @@ $messages['sl'] = array(
 	'ratedpages-count' => '$1 {{PLURAL:$1|pregled|pregleda|pregledi|pregledov}}',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Millosh
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
@@ -777,7 +777,7 @@ $messages['sr-ec'] = array(
 	'ratedpages-none' => 'Нема страница у овом списку',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(

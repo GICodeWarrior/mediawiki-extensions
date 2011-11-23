@@ -1640,7 +1640,7 @@ $messages['ksh'] = array(
 	'readerfeedback-tt-review' => 'Ennschäzung afjävve',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author George Animal
  */
 $messages['ku-latn'] = array(
@@ -2419,7 +2419,7 @@ $messages['sah'] = array(
 	'readerfeedback-tt-review' => 'Тургутууну ыыт',
 );
 
-/** Serbo-Croatian (Srpskohrvatski / Српскохрватски)
+/** Serbo-Croatian (Srpskohrvatski)
  * @author OC Ripper
  */
 $messages['sh'] = array(
@@ -2531,7 +2531,7 @@ $messages['sr-ec'] = array(
 	'tooltip-ca-ratinghist' => 'Оцене стране од стране читалаца.',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
