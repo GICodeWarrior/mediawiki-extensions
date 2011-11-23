@@ -366,7 +366,7 @@ $messages['sr-ec'] = array(
 	'psinotocnum-desc' => 'Нова магична реч „<nowiki>__NOTOCNUM__</nowiki>“',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
