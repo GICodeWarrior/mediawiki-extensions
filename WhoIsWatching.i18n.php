@@ -766,7 +766,7 @@ $messages['sk'] = array(
 	'specialwhoiswatchingaddbtn' => 'Pridať zvolených používateľov',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
@@ -780,7 +780,7 @@ $messages['sr-ec'] = array(
 	'specialwhoiswatchingaddbtn' => 'Додај означене кориснике',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -845,14 +845,14 @@ $messages['te'] = array(
 	'specialwhoiswatchingaddbtn' => 'ఎంచుకున్న వాడుకరులను చేర్చు',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
 	'specialwhoiswatchingaddbtn' => 'Илова кардани Корбарони интихобшуда',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
