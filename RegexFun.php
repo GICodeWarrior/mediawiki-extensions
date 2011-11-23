@@ -8,7 +8,7 @@
  * Support:       http://www.mediawiki.org/wiki/Extension_talk:Regex_Fun
  * Source code:   http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/RegexFun
  * 
- * @version: 1.0.1
+ * @version: 1.0.2 alpha
  * @license: ISC license
  * @author:  Daniel Werner < danweetz@web.de >
  *
@@ -57,7 +57,7 @@ class ExtRegexFun {
 	 * 
 	 * @var string
 	 */
-	const VERSION = '1.0.1';
+	const VERSION = '1.0.2 alpha';
 	
 	/**
 	 * Sets up parser functions
@@ -72,7 +72,7 @@ class ExtRegexFun {
 	}	
 	private static function initFunction( Parser &$parser, $name, $functionCallback = null ) {
 		if( $functionCallback === null ) {
-			$functionCallback = array( __CLASS__, $name );
+			$functionCallback = array( __CLASS__, "pf_{$name}" );
 		}
 		
 		global $egRegexFunDisabledFunctions;
@@ -253,7 +253,7 @@ class ExtRegexFun {
 	 * 
 	 * @return String Result of replacing pattern with replacement in string, or matching text if replacement was omitted
 	 */
-    public static function regex( Parser &$parser, $subject = '', $pattern = '', $replace = null, $limit = -1 ) {
+    public static function pf_regex( Parser &$parser, $subject = '', $pattern = '', $replace = null, $limit = -1 ) {
 		// check whether limit exceeded:
 		if( self::limitExceeded( $parser ) ) {
 			return self::msgLimitExceeded();
@@ -316,7 +316,7 @@ class ExtRegexFun {
 		self::setLastMatches( $parser, $matches );
 		
 		// use #regex_var for transforming replacement string with matches:
-		$replace = self::regex_var( $parser, $replace );
+		$replace = self::pf_regex_var( $parser, $replace );
 		
 		// parse the replacement after matches are inserted
 		// use a new frame, no need for SFH_OBJECT_ARGS style parser functions
@@ -339,7 +339,7 @@ class ExtRegexFun {
 	 * 
 	* @return String result of all matching text parts separated by a string
 	*/
-	public static function regexall( &$parser , $subject = '' , $pattern = '' , $separator = ', ' , $offset = 0 , $length = '' ) {
+	public static function pf_regexall( &$parser , $subject = '' , $pattern = '' , $separator = ', ' , $offset = 0 , $length = '' ) {
 		// check whether limit exceeded:
 		if( self::limitExceeded( $parser ) ) {
 			return self::msgLimitExceeded();
@@ -384,7 +384,7 @@ class ExtRegexFun {
 	 * @param $index Integer index of the last match which should be returnd or a string containing $n as indexes to be replaced
 	 * @param $defaultVal Integer default value which will be returned when the result with the given index doesn't exist or is a void string
 	 */
-	public static function regex_var( &$parser, $index = 0, $defaultVal = '' ) {
+	public static function pf_regex_var( &$parser, $index = 0, $defaultVal = '' ) {
 		// get matches from last #regex
 		$lastMatches = self::getLastMatches( $parser );
 		
@@ -456,7 +456,7 @@ class ExtRegexFun {
 	 * 
 	 * @return String Returns the quoted string
 	 */
-	public static function regexquote( &$parser, $str = null, $delimiter = '/' ) {		
+	public static function pf_regexquote( &$parser, $str = null, $delimiter = '/' ) {		
 		if( $str === null ) {
 			return '';
 		}		
