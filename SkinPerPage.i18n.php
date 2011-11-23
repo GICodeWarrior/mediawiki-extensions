@@ -477,7 +477,7 @@ $messages['sr-ec'] = array(
 	'skinperpage-desc' => 'Додаје ознаку <code>&lt;skin&gt;</code> за коришћење различитих тема на страницама',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
