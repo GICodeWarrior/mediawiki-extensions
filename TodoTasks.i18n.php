@@ -1408,7 +1408,7 @@ Svoj kompletný Zoznam úloh si môžete pozrieť na %s.
 Váš priateľský upozorňovací systém %s',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -1427,7 +1427,7 @@ $messages['sr-ec'] = array(
 	'tasklistprojdisp' => 'Прикажи',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -1533,7 +1533,7 @@ $messages['te'] = array(
 మీ స్నేహపూర్వక %s గమనింపు వ్యవస్థ',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -1549,7 +1549,7 @@ $messages['tg-cyrl'] = array(
 	'tasklistprojdisp' => 'Намоиш',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
