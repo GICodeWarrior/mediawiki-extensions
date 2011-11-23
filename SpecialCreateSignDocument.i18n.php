@@ -1193,7 +1193,7 @@ Mer kann jetz dat [{{fullurl:{{#Special:SignDocument}}|doc=$2}} Ungerschriive oc
 	'createsigndoc-error-alreadycreated' => 'De Ongerschreffte-Mapp för de Sigg „$1“ es ald aanjelaat.',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author George Animal
  */
 $messages['ku-latn'] = array(
@@ -1968,7 +1968,7 @@ $messages['tet'] = array(
 	'createsigndoc-create' => 'Kria',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -1985,7 +1985,7 @@ $messages['tg-cyrl'] = array(
 	'createsigndoc-error-pagenoexist' => 'Хато: Саҳифаи [[$1]] вуҷуд надорад.',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
@@ -2072,7 +2072,7 @@ $messages['tr'] = array(
 	'createsigndoc-error-pagenoexist' => 'Hata: [[$1]] sayfası bulunamadı.',
 );
 
-/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
+/** Uyghur (Latin script) (Uyghurche‎)
  * @author Jose77
  */
 $messages['ug-latn'] = array(
