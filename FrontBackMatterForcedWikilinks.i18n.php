@@ -26,6 +26,16 @@ $messages['qqq'] = array(
 	'frontbackforced-forced' => 'Page name postfix (supposed not to be long)',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'frontbackforced-desc' => "Amiesta les seiciones d'aniciu y fin a les páxines y arma los wikienllaces forzaos",
+	'frontbackforced-front' => "_(seición_d'aniciu)",
+	'frontbackforced-back' => '_(seición_final)',
+	'frontbackforced-forced' => '_(wikienllaces_forzaos)',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Wizardist
  */
