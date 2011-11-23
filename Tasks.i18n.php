@@ -114,6 +114,7 @@ Don't change '|' character.",
 	'tasks_table_header_page' => '{{Identical|Page}}',
 	'tasks_search_form_title' => '{{Identical|Search}}',
 	'tasks_search_status' => '{{Identical|Status}}',
+	'tasks_search_results' => '{{Identical|Search results}}',
 	'tasks_previous' => '{{Identical|Previous}}',
 	'tasks_next' => '{{Identical|Next}}',
 	'tasks_status_open' => 'This is an adjective.
@@ -2220,7 +2221,7 @@ $messages['jv'] = array(
 	'tasks_logentry' => 'Kanggo "[[$1]]"',
 );
 
-/** Kazakh (Cyrillic) (Қазақша (Cyrillic))
+/** Kazakh (Cyrillic script) (‪Қазақша (кирил)‬)
  * @author GaiJin
  */
 $messages['kk-cyrl'] = array(
@@ -3450,7 +3451,7 @@ $messages['rue'] = array(
 	'tasks_status_closed' => 'Заперто',
 );
 
-/** Serbo-Croatian (Srpskohrvatski / Српскохрватски)
+/** Serbo-Croatian (Srpskohrvatski)
  * @author OC Ripper
  */
 $messages['sh'] = array(
@@ -3620,7 +3621,7 @@ $messages['sr-ec'] = array(
 	'tasks_logentry' => 'За "[[$1]]"',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  * @author Rancher
  */
@@ -4064,7 +4065,7 @@ $messages['tr'] = array(
 	'tasks_logentry' => '"[[$1]]" için',
 );
 
-/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
+/** Uyghur (Latin script) (Uyghurche‎)
  * @author Jose77
  */
 $messages['ug-latn'] = array(
