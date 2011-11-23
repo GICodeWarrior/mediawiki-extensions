@@ -1007,7 +1007,7 @@ $messages['sr-ec'] = array(
 	'right-inspectcache' => 'Преглед и брисање уноса кеша',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -1082,7 +1082,7 @@ $messages['tet'] = array(
 	'inspectcache-delete' => 'Halakon',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -1090,7 +1090,7 @@ $messages['tg-cyrl'] = array(
 	'inspectcache-list' => 'Феҳрист',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
