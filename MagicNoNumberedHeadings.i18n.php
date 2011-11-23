@@ -335,14 +335,14 @@ $messages['sk'] = array(
 	'magicnonumberedheadings-desc' => 'Pridáva magické slovo „<nowiki>__NONUMBEREDHEADINGS__</nowiki>“',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'magicnonumberedheadings-desc' => 'Додаје магичну реч "<nowiki>__NONUMBEREDHEADINGS__</nowiki>"',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Liangent
  */
 $messages['sr-el'] = array(
