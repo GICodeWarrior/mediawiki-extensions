@@ -491,7 +491,7 @@ $messages['ksh'] = array(
 	'right-lastlogin' => 'Nohloore, wann ene Metmaacher sesch et läz enjelogg hät',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author George Animal
  */
 $messages['ku-latn'] = array(
@@ -705,7 +705,7 @@ $messages['ru'] = array(
 	'right-lastlogin' => 'просмотр времени последнего входа участника',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -719,7 +719,7 @@ $messages['sr-ec'] = array(
 	'right-lastlogin' => 'Приказивање последњег пута када се неки корисник улоговао',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'lastuserlogin' => 'Poslednje logovanje korisnika',
 	'lastuserlogin-desc' => 'Prikazuje kada se korisnik zadnji put ulogovao',
