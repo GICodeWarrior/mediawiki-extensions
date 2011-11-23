@@ -846,7 +846,7 @@ $messages['kk-arab'] = array(
 	'countedits-nocontribs' => 'بۇل ۋيكيدە ەش ٷلەس بولعان جوق.',
 );
 
-/** Kazakh (Cyrillic) (Қазақша (Cyrillic))
+/** Kazakh (Cyrillic script) (‪Қазақша (кирил)‬)
  * @author AlefZet
  */
 $messages['kk-cyrl'] = array(
@@ -861,7 +861,7 @@ $messages['kk-cyrl'] = array(
 	'countedits-nocontribs' => 'Бұл уикиде еш үлес болған жоқ.',
 );
 
-/** Kazakh (Latin) (Қазақша (Latin))
+/** Kazakh (Latin script) (‪Qazaqşa (latın)‬)
  * @author AlefZet
  */
 $messages['kk-latn'] = array(
@@ -936,7 +936,7 @@ Donn ene Metmaache nit doh de Aanzahl fun singe Änderunge aam Wiki enstufe!",
 	'countedits-nocontribs' => 'En däm Wiki hee sin kein Beidrääsch vun Metmaachere.',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author Bangin
  * @author Erdal Ronahi
  * @author George Animal
@@ -1481,7 +1481,7 @@ Ne sodite sodelavcev po njihovem številu urejanj.",
 	'countedits-nocontribs' => 'Na tem wikiju ni bilo nobenih prispevkov.',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Sasa Stefanovic
  * @author Жељко Тодоровић
@@ -1500,7 +1500,7 @@ $messages['sr-ec'] = array(
 	'countedits-nocontribs' => 'Не постоје прилози на овој вики.',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Liangent
  * @author Michaello
  * @author Sasa Stefanovic
@@ -1620,7 +1620,7 @@ $messages['tet'] = array(
 	'countedits-nocontribs' => "Ema lá'os kintribui iha wiki ne'e.",
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -1631,7 +1631,7 @@ $messages['tg-cyrl'] = array(
 	'countedits-resultheader' => 'Натоиҷ барои $1',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
@@ -1692,7 +1692,7 @@ Kullanıcıları değişiklik sayılarına göre değerlendirmeyin.",
 	'countedits-nocontribs' => 'Bu vikiye herhangi bir katkıda bulunulmadı.',
 );
 
-/** ئۇيغۇرچە (ئۇيغۇرچە)
+/** Uyghur (Arabic script) (ئۇيغۇرچە)
  * @author Alfredie
  */
 $messages['ug-arab'] = array(
@@ -1700,7 +1700,7 @@ $messages['ug-arab'] = array(
 	'countedits-ok' => 'ماقۇل',
 );
 
-/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
+/** Uyghur (Latin script) (Uyghurche‎)
  * @author Jose77
  */
 $messages['ug-latn'] = array(
