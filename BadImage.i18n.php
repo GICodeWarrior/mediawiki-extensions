@@ -993,7 +993,7 @@ $messages['gl'] = array(
  * @author Jocke Pirat
  */
 $messages['got'] = array(
-	'badimages-reason' => 'Faírina:',
+	'badimages-reason' => '𐍆𐌰𐌹𐍂𐌹𐌽𐌰:',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -1546,7 +1546,7 @@ $messages['ku'] = array(
 	'badimages-remove-btn' => 'Jêbibe',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author Bangin
  */
 $messages['ku-latn'] = array(
@@ -2382,7 +2382,7 @@ $messages['scn'] = array(
 	'badimages-log-remove' => 'rimovìu [[$1]] dâ lista dê file discutibbili',
 );
 
-/** Tachelhit (Tašlḥiyt)
+/** Tachelhit (Tašlḥiyt/ⵜⴰⵛⵍⵃⵉⵜ)
  * @author Dalinanir
  */
 $messages['shi'] = array(
@@ -2463,7 +2463,7 @@ $messages['sl'] = array(
 	'right-badimages' => 'Posodabljanje seznama škodljivih slik',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
@@ -2492,7 +2492,7 @@ $messages['sr-ec'] = array(
 	'right-badimages' => 'Ажурирање списка лоших слика',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -2687,7 +2687,7 @@ $messages['tet'] = array(
 	'badimages-remove-btn' => 'Hasai',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -2713,7 +2713,7 @@ $messages['tg-cyrl'] = array(
 	'badimages-page' => '{{ns:help}}:Феҳристи акси номусоид',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
