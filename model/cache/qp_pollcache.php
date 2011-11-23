@@ -272,7 +272,7 @@ class qp_PollCache {
 	}
 
 	/**
-	 *
+	 * Store row(s) both to DB and to memory cache.
 	 */
 	protected function storePolymorph() {
 		global $wgMemc;

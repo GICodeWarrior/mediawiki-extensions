@@ -15,6 +15,14 @@ class qp_StubQuestion extends qp_AbstractQuestion {
 	# optional question literal name, used to address questions in interpretation scripts
 	var $mName = null;
 
+	# some questions have subtype; currently is not stored in DB;
+	# should always be properly initialized in parent controller via $poll->parseMainHeader()
+	var $mSubType = '';
+
+	# array of question proposals names (optional, used in interpretation scripts)
+	# packed to string together with mProposalText then stored into DB field 'proposal_text'
+	var $mProposalNames = array();
+
 	# current user voting taken from POST data (if available)
 	var $mProposalCategoryId = Array(); // user true/false answers to the question's proposal
 	var $mProposalCategoryText = Array(); // user text answers to the question's proposal
@@ -40,8 +48,58 @@ class qp_StubQuestion extends qp_AbstractQuestion {
 		$this->mName = $name;
 	}
 
+	/**
+	 * Get question key (reference)
+	 * @return mixed
+	 *   string question name if available, otherwise
+	 *   integer question id
+	 */
 	function getQuestionKey() {
 		return $this->mName === null ? $this->mQuestionId : $this->mName;
+	}
+
+	/**
+	 * Get proposal id by proposal name, if any.
+	 * @param $proposalName string
+	 *   proposal name
+	 * @return mixed
+	 *   integer question id for specified name
+	 *   false there is no such name
+	 */
+	function getProposalIdByName( $proposalName ) {
+		return array_search( $proposalName, $this->mProposalNames, true );
+	}
+
+	/**
+	 * Checks, whether current proposal has not enough of user-answered categories,
+	 * according to current qp_Setup::$propAttrs.
+	 * @param  $proposalId  integer
+	 *   id of existing question's proposal
+	 * @param  $catreq  mixed
+	 *   value of catreq attribute
+	 *   string   'all'
+	 *   integer count of required categories
+	 * @param  $prop_cats_count
+	 *   integer  total amount of categories in current proposal
+	 * @return  boolean
+	 *   true  not enough of categories are filled
+	 *   false otherwise
+	 */
+	function hasMissingCategories( $proposal_id, $catreq, $prop_cats_count ) {
+		# How many categories has to be answered,
+		# all defined in row or the amount specified by 'catreq' attribute?
+		# total amount of categories in current proposal
+		$prop_cats_count = count( $this->mCategories );
+		$countRequired = ($catreq === 'all') ? $prop_cats_count : $catreq;
+		if ( $countRequired > $prop_cats_count ) {
+			# do not require to fill more categories
+			# than is available in current proposal row
+			$countRequired = $prop_cats_count;
+		}
+		$answered_cat_count = array_key_exists( $proposal_id, $this->mProposalCategoryId ) ?
+			count( $this->mProposalCategoryId[$proposal_id] ) :
+			0;
+		return $answered_cat_count < $countRequired;
 	}
 
 	# load some question fields from qp_QuestionData given
@@ -106,6 +164,19 @@ class qp_StubQuestion extends qp_AbstractQuestion {
 			}
 		}
 		return true;
+	}
+
+	/**
+	 * Applies previousely parsed attributes from main header into question's view
+	 * (all attributes but type)
+	 * @param  $paramkeys array
+	 *   key is attribute name regexp match, value is the value of attribute
+	 */
+	function applyAttributes( array $paramkeys ) {
+		parent::applyAttributes( $paramkeys );
+		if ( $paramkeys['catreq'] !== null ) {
+			$this->mCatReq = qp_PropAttrs::getSaneCatReq( $paramkeys['catreq'] );
+		} 
 	}
 
 	/**

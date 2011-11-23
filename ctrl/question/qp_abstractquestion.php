@@ -15,19 +15,19 @@ abstract class qp_AbstractQuestion {
 	# when the collection of the questions is not sparce (was not randomized)
 	var $mQuestionId;
 
-	var $mState = ''; // current state of question parsing (no error)
+	# current state of question parsing (no error)
+	var $mState = '';
 	# default type of the question; stored in DB;
 	# should always be properly initialized in parent controller via $poll->parseMainHeader()
 	var $mType = 'unknown';
-	# some questions has a subtype; currently is not stored in DB;
-	# should always be properly initialized in parent controller via $poll->parseMainHeader()
-	var $mSubType = '';
 	var $mCategories = array();
 	var $mCategorySpans = array();
-	var $mCommonQuestion = ''; // common question of this question
-	var $mProposalNames = array(); // an array of question proposals names (optional, used in interpretation scripts)
-	var $mProposalText = array(); // an array of question proposals
-	var $alreadyVoted = false; // whether the selected user has already voted this question ?
+	# common question of this question
+	var $mCommonQuestion = '';
+	# an array of question proposals
+	var $mProposalText = array();
+	# whether the selected user has already voted this question?
+	var $alreadyVoted = false;
 
 	# statistics
 	var $Percents = null;
@@ -92,10 +92,6 @@ abstract class qp_AbstractQuestion {
 		$this->view->setLayout( $paramkeys[ 'layout' ], $paramkeys[ 'textwidth' ] );
 		$this->view->setShowResults( $paramkeys[ 'showresults' ] );
 		$this->view->setPropWidth( $paramkeys[ 'propwidth' ] );
-	}
-
-	function getProposalIdByName( $proposalName ) {
-		return array_search( $proposalName, $this->mProposalNames, true );
 	}
 
 	function getPercents( $proposalId, $catId ) {

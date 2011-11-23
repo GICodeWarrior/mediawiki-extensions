@@ -279,22 +279,25 @@ class qp_TabularQuestion extends qp_StubQuestion {
 		$proposalId = -1;
 		# set static view state for the future qp_TabularQuestionProposalView instances
 		qp_TabularQuestionProposalView::applyViewState( $this->view );
+		$prop_attrs = qp_Setup::$propAttrs;
 		foreach ( $this->raws as $raw ) {
-			if ( !preg_match( $this->mProposalPattern, $raw, $matches ) ) {
+			# get proposal attributes
+			$prop_attrs->getFromSource( $raw );
+			if ( !preg_match( $this->mProposalPattern, $prop_attrs->cpdef, $matches ) ) {
 				continue;
 			}
 			# new proposal view
 			$pview = new qp_TabularQuestionProposalView( $proposalId + 1, $this );
 			$proposalId++;
-			$pview->text = array_pop( $matches );
-			# set proposal name (if any)
-			$prop_name = qp_QuestionData::splitRawProposal( $pview->text );
-			if ( $prop_name === false ) {
+			$prop_attrs->dbText = $pview->text = array_pop( $matches );
+			if ( $prop_attrs->error === qp_Setup::ERROR_TOO_LONG_PROPNAME ) {
 				$pview->prependErrorMessage( wfMsg( 'qp_error_too_long_proposal_name' ), 'error' );
-			} elseif ( $prop_name !== '' ) {
-				$this->mProposalNames[$proposalId] = $prop_name;
+			} elseif ( $prop_attrs->error === qp_Setup::ERROR_NUMERIC_PROPNAME ) {
+				$pview->prependErrorMessage( wfMsg( 'qp_error_invalid_proposal_name' ), 'error' );
+			} elseif ( $prop_attrs->name !== '' ) {
+				$this->mProposalNames[$proposalId] = $prop_attrs->name;
 			}
-			$this->mProposalText[$proposalId] = trim( $pview->text );
+			$this->mProposalText[$proposalId] = strval( $prop_attrs );
 			foreach ( $this->mCategories as $catId => $catDesc ) {
 				# start new input field tag (category)
 				$pview->addNewCategory( $catId );
@@ -303,12 +306,12 @@ class qp_TabularQuestion extends qp_StubQuestion {
 				# Determine the input's name and value.
 				switch( $this->mType ) {
 				case 'multipleChoice':
-					$name = 'q' . $this->mQuestionId . 'p' . $proposalId . 's' . $catId;
-					$value = 's' . $catId;
+					$name = "q{$this->mQuestionId}p{$proposalId}s{$catId}";
+					$value = "s{$catId}";
 					break;
 				case 'singleChoice':
-					$name = 'q' . $this->mQuestionId . 'p' . $proposalId;
-					$value = 's' . $catId;
+					$name = "q{$this->mQuestionId}p{$proposalId}";
+					$value = "s{$catId}";
 					# category spans have sense only with single choice proposals
 					$pview->renderSpan( $name, $value, $catDesc );
 					break;

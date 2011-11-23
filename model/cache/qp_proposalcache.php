@@ -28,9 +28,8 @@ class qp_ProposalCache extends qp_QuestionCache {
 		$pid = self::$store->pid;
 		foreach ( self::$store->Questions as $qkey => $qdata ) {
 			foreach ( $qdata->ProposalText as $propkey => $ptext ) {
-				if ( isset( $qdata->ProposalNames[$propkey] ) ) {
-					$ptext = qp_QuestionData::getProposalNamePrefix( $qdata->ProposalNames[$propkey] ) . $ptext;
-				}
+				# note that $ptext already have proposal attributes packed and
+				# already been checked for maximal length
 				$ptext = $wgContLang->truncate( $ptext, qp_Setup::$field_max_len['proposal_text'] , '' );
 				$this->replace[] = array( 'pid' => $pid, 'question_id' => $qkey, 'proposal_id' => $propkey, 'proposal_text' => $ptext );
 				# instead of calling $this->updateFromPollStore(),

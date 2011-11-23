@@ -343,23 +343,24 @@ class qp_TextQuestionView extends qp_StubQuestionView {
 	}
 
 	/**
-	 * Generates tagarray representation from the list of viewtokens.
-	 * @param   $pkey  proposal index (starting from 0):
-	 *                 it is required for JS code, because text questions
-	 *                 now may optionally have "tabular transposed" layout.
-	 * @param   $viewtokens  array of viewtokens
+	 * Generates tagarray representation from the proposal view.
+	 * @param   $pkey  integer
+	 *   proposal index (starting from 0):
+	 *     it is required for JS code, because text questions
+	 *     now may optionally have "tabular transposed" layout.
+	 * @param   $propview  qp_TextQuestionProposalView
 	 * @return  tagarray
 	 */
-	function renderParsedProposal( $pkey, array &$viewtokens ) {
+	function renderParsedProposal( $pkey, qp_TextQuestionProposalView $propview ) {
 		$vr = $this->vr;
 		# proposal prefix for category tag id generation
 		$vr->reset( "tx{$this->ctrl->poll->mOrderId}q{$this->ctrl->mQuestionId}p{$pkey}" );
-		foreach ( $viewtokens as $elem ) {
+		foreach ( $propview->viewtokens as $elem ) {
 			$vr->cell = array();
 			if ( is_object( $elem ) ) {
 				if ( isset( $elem->options ) ) {
 					$className = 'cat_part';
-					if ( $this->ctrl->mSubType === 'requireAllCategories' && $elem->unanswered ) {
+					if ( $propview->catreq === 'all' && $elem->unanswered ) {
 						$className .= ' cat_noanswer';
 					}
 					if ( isset( $elem->interpError ) ) {
@@ -423,7 +424,7 @@ class qp_TextQuestionView extends qp_StubQuestionView {
 			qp_Renderer::addRow( $questionTable, $row, $rowattrs, 'th', $attribute_maps );
 		}
 		foreach ( $this->pviews as $pkey => $propview ) {
-			$prop = $this->renderParsedProposal( $pkey, $propview->viewtokens );
+			$prop = $this->renderParsedProposal( $pkey, $propview );
 			$rowattrs = array( 'class' => $propview->rowClass );
 			if ( $this->transposed ) {
 				qp_Renderer::addColumn( $questionTable, $prop, $rowattrs );

@@ -31,7 +31,7 @@ class qp_QuestionData {
 	var $ProposalText;
 	# since v0.8.0a, proposals may be addressed by their names
 	# in the interpretation scripts
-	var $ProposalNames = array();
+	var $ProposalNames;
 	var $ProposalCategoryId;
 	var $ProposalCategoryText;
 	var $alreadyVoted = false; // whether the selected user already voted this question ?
@@ -165,40 +165,6 @@ class qp_QuestionData {
 				}
 			}
 		}
-	}
-
-	/**
-	 * Split raw proposal text from source page text or from DB
-	 * into name part / text part
-	 *
-	 * @param  $proposal_text  string  raw proposal text
-	 * @modifies $proposal_text  string proposal text to display
-	 * @return  mixed
-	 *   string  proposal name 
-	 *   string  '' when there is no name
-	 *   boolean false, when the name is too long thus cannot be stored in DB
-	 */
-	static function splitRawProposal( &$proposal_text ) {
-		$matches = array();
-		$prop_name = '';
-		preg_match( '`^:\|(.+?)\|\s*(.+?)$`u', $proposal_text, $matches );
-		if ( count( $matches ) > 2 ) {
-			if ( ( $prop_name = trim( $matches[1] ) ) !== '' ) {
-				if ( strlen( $prop_name ) >= qp_Setup::$field_max_len['proposal_text'] ) {
-					return false;
-				}
-				# proposal name must be non-empty
-				$proposal_text = trim( $matches[2] );
-			}
-		}
-		return $prop_name;
-	}
-
-	/**
-	 * Return proposal name prefix to be stored in DB (if any)
-	 */
-	static function getProposalNamePrefix( $name ) {
-		return ( $name !== '' ) ? ":|{$name}|" : '';
 	}
 
 	public function applyQuestion( qp_StubQuestion $question ) {

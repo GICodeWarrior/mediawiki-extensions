@@ -399,17 +399,17 @@ class qp_PollStore {
 		$db = wfGetDB( DB_MASTER );
 		$rows = qp_PollCache::load( $db, 'qp_ProposalCache' );
 		# load proposal text from DB
+		$prop_attrs = qp_Setup::$propAttrs;
 		foreach ( $rows as $row ) {
 			$question_id = $row->question_id;
 			$proposal_id = $row->proposal_id;
 			if ( $this->questionExists( $question_id ) ) {
 				$qdata = $this->Questions[ $question_id ];
-				$prop_text = $row->proposal_text;
-				$prop_name = qp_QuestionData::splitRawProposal( $prop_text );
-				if ( $prop_name !== false && $prop_name !== '' ) {
-					$qdata->ProposalNames[$proposal_id] = $prop_name;
+				$prop_attrs->getFromDB( $row->proposal_text );
+				$qdata->ProposalText[$proposal_id] = $prop_attrs->dbText;
+				if ( $prop_attrs->name !== '' ) {
+					$qdata->ProposalNames[$proposal_id] = $prop_attrs->name;
 				}
-				$qdata->ProposalText[$proposal_id] = $prop_text;
 			}
 		}
 	}
@@ -958,6 +958,10 @@ class qp_PollStore {
 								( $id_key = array_search( $catkey, $qdata->ProposalCategoryId[ $propkey ] ) ) !== false ) {
 						$proposals[$catkey] = $qdata->ProposalCategoryText[ $propkey ][ $id_key ];
 					}
+				}
+				if ( count( $proposals ) === 0 ) {
+					# 'catreq' = 0, pass one single empty cat to the interpretation script
+					$proposals[0] = '';
 				}
 				if ( isset( $qdata->ProposalNames[$propkey] ) ) {
 					$questions[$qdata->ProposalNames[$propkey]] = $proposals;

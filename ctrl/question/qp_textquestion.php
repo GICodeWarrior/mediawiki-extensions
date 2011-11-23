@@ -194,6 +194,8 @@ class qp_TextQuestionOptions {
  */
 class qp_TextQuestion extends qp_StubQuestion {
 
+	# required count of single proposal categories that should be filled by user
+	var $mCatReq = 'all';
 	# regexp for separation of proposal line tokens
 	var $propCatPattern;
 
@@ -257,13 +259,18 @@ class qp_TextQuestion extends qp_StubQuestion {
 	 */ 
 	function applyAttributes( array $paramkeys ) {
 		parent::applyAttributes( $paramkeys );
-		if ( $this->mSubType === 'requireAllCategories' ) {
+		# commented out, because now the 'catreq' attribute is set per proposal row, thus
+		# it is unpractical to disable radiobuttons for all proposals of the question.
+		# todo: disable radiobuttons per proposal, when current catreq=0 ?
+		/*
+		if ( $this->mCatReq === 'all' ) {
 			# radio button prevents from filling all categories, disable it
 			if ( ( $radio_brace = array_search( 'radio', $this->input_braces_types, true ) ) !== false ) {
 				unset( $this->input_braces_types[$radio_brace] );
 				unset( $this->matching_braces[$radio_brace] );
 			}
 		}
+		*/
 		$braces_list = array_map( 'preg_quote',
 			array_merge(
 				( array_values( $this->matching_braces ) ),
@@ -461,21 +468,27 @@ class qp_TextQuestion extends qp_StubQuestion {
 		$opt = new qp_TextQuestionOptions();
 		# set static view state for the future qp_TextQuestionProposalView instances
 		qp_TextQuestionProposalView::applyViewState( $this->view );
+		$prop_attrs = qp_Setup::$propAttrs;
 		foreach ( $this->raws as $raw ) {
 			$opt->reset();
 			$this->propview = new qp_TextQuestionProposalView( $proposalId, $this );
-			# set proposal name (if any)
-			if ( ( $prop_name = qp_QuestionData::splitRawProposal( $raw ) ) === false ) {
-				# we do not need to generate error for too long proposal name,
-				# because the length limit will be enforced on the whole serialized
-				# proposal string (with proposal_name + cat_parts + prop_parts)
-				$prop_name = '';
+			# get proposal name and optional attributes (if any)
+			$prop_attrs->getFromSource( $raw );
+			if ( $prop_attrs->error === qp_Setup::ERROR_TOO_LONG_PROPNAME ) {
+				$this->propview->prependErrorToken( wfMsg( 'qp_error_too_long_proposal_name' ), 'error' );
+			} elseif ( $prop_attrs->error === qp_Setup::ERROR_NUMERIC_PROPNAME ) {
+				$this->propview->prependErrorToken( wfMsg( 'qp_error_invalid_proposal_name' ), 'error' );
 			}
 			$this->dbtokens = $brace_stack = array();
 			$dbtokens_idx = -1;
 			$catId = 0;
 			$last_brace = '';
-			$this->rawtokens = preg_split( $this->propCatPattern, $raw, -1, PREG_SPLIT_DELIM_CAPTURE );
+			$this->rawtokens = preg_split(
+				$this->propCatPattern,
+				$prop_attrs->cpdef,
+				-1,
+				PREG_SPLIT_DELIM_CAPTURE
+			);
 			$matching_closed_brace = '';
 			$this->findMatchingBraces();
 			$this->backtrackMismatchingBraces();
@@ -540,40 +553,30 @@ class qp_TextQuestion extends qp_StubQuestion {
 			}
 			# check if there is at least one category defined
 			if ( $catId === 0 ) {
-				# todo: this is the explanary line, it is not real proposal
+				# todo: this is the explanatory line, it is not real proposal
 				$this->propview->prependErrorToken( wfMsg( 'qp_error_too_few_categories' ), 'error' );
 			}
-			$proposal_text = serialize( $this->dbtokens );
+			$prop_attrs->dbText = serialize( $this->dbtokens );
 			# build the whole raw DB proposal_text value to check it's maximal length
-			if ( strlen( qp_QuestionData::getProposalNamePrefix( $prop_name ) . $proposal_text ) > qp_Setup::$field_max_len['proposal_text'] ) {
+			if ( strlen( $prop_attrs ) > qp_Setup::$field_max_len['proposal_text'] ) {
 				# too long proposal field to store into the DB
 				# this is very important check for text questions because
 				# category definitions are stored within the proposal text
 				$this->propview->prependErrorToken( wfMsg( 'qp_error_too_long_proposal_text' ), 'error' );
 			}
-			$this->mProposalText[$proposalId] = $proposal_text;
-			if ( $prop_name !== '' ) {
-				$this->mProposalNames[$proposalId] = $prop_name;
+			$this->mProposalText[$proposalId] = strval( $prop_attrs );
+			if ( $prop_attrs->name !== '' ) {
+				$this->mProposalNames[$proposalId] = $prop_attrs->name;
 			}
-			if ( $this->poll->mBeingCorrected ) {
-				# check for unanswered categories
-				try {
-					if ( !array_key_exists( $proposalId, $this->mProposalCategoryId ) ) {
-						# the whole line is unanswered
-						throw new Exception( 'qp_error' );
-					}
-					# how many categories has to be answered,
-					# all defined in row or at least one?
-					$countRequired = ($this->mSubType === 'requireAllCategories') ? $catId : 1;
-					if ( count( $this->mProposalCategoryId[$proposalId] ) < $countRequired ) {
-						throw new Exception( 'qp_error' );
-					}
-				} catch ( Exception $e ) {
-					if ( $e->getMessage() == 'qp_error' ) {
-						$prev_state = $this->getState();
-						$this->propview->prependErrorToken( wfMsg( 'qp_error_no_answer' ), 'NA' );
-					}
-				}
+			if ( ( $catreq = $prop_attrs->catreq ) === null ) {
+				$catreq = $this->mCatReq;
+			}
+			$this->propview->catreq = $catreq;
+			## Check for unanswered categories.
+			if ( $this->poll->mBeingCorrected &&
+					$this->hasMissingCategories( $proposalId, $catreq, $catId ) ) {
+				$prev_state = $this->getState();
+				$this->propview->prependErrorToken( wfMsg( 'qp_error_no_answer' ), 'NA' );
 			}
 			$this->view->addProposal( $proposalId, $this->propview );
 			$proposalId++;

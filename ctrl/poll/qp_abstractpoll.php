@@ -78,7 +78,7 @@ class qp_AbstractPoll {
 	 * possible xml-like attributes the question may have
 	 */
 	var $questionAttributeKeys = array(
-		't[yi]p[eo]', 'name', 'layout', 'textwidth', 'propwidth', 'showresults'
+		't[yi]p[eo]', 'name', 'catreq', 'layout', 'textwidth', 'propwidth', 'showresults'
 	);
 
 	/**
@@ -89,9 +89,10 @@ class qp_AbstractPoll {
 	 * that can be partially merged from poll to question (similar to CSS)
 	 */
 	var $defaultQuestionAttributes = array(
-		'propwidth' => null,
+		'catreq' => null,
 		'layout' => null,
-		'textwidth' => null
+		'textwidth' => null,
+		'propwidth' => null
 	);
 
 	/**
@@ -181,7 +182,7 @@ class qp_AbstractPoll {
 		# quote the params (if any)
 		$args = array_map( array( 'qp_Setup', 'specialchars' ), $args );
 		array_unshift( $args, $key );
-		return call_user_func_array( array( self, 'fatalErrorNoQuote' ), $args );
+		return call_user_func_array( array( __CLASS__, 'fatalErrorNoQuote' ), $args );
 	}
 
 	static function s_getPollTitleFragment( $pollid, $dash = '#' ) {

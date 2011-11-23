@@ -10,6 +10,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class qp_MixedQuestion extends qp_TabularQuestion {
 
+	# required count of single proposal categories that should be filled by user
+	var $mCatReq = 1;
+
 	/**
 	 * Creates question view which should be renreded and
 	 * also may be altered during the poll generation
@@ -24,55 +27,59 @@ class qp_MixedQuestion extends qp_TabularQuestion {
 		$proposalId = -1;
 		# set static view state for the future qp_TabularQuestionProposalView instances
 		qp_TabularQuestionProposalView::applyViewState( $this->view );
+		$prop_attrs = qp_Setup::$propAttrs;
 		foreach ( $this->raws as $raw ) {
+			# get proposal attributes
+			$prop_attrs->getFromSource( $raw );
 			# new proposal view
 			$pview = new qp_TabularQuestionProposalView( $proposalId + 1, $this );
-			if ( preg_match( $this->mProposalPattern, $raw, $matches ) ) {
-				$pview->text = array_pop( $matches ); // current proposal text
+			# get the list of categories ($matches)
+			if ( preg_match( $this->mProposalPattern, $prop_attrs->cpdef, $matches ) ) {
+				$prop_attrs->dbText = array_pop( $matches ); // current proposal text
 				array_shift( $matches ); // remove "at whole" match
 				$last_matches = $matches;
 			} else {
 				if ( $proposalId >= 0 ) {
 					# shortened syntax: use the pattern from the last row where it's been defined
-					$pview->text = $raw;
+					$prop_attrs->dbText = $prop_attrs->cpdef;
 					$matches = $last_matches;
 				}
 			}
-			if ( $pview->text === null ) {
+			if ( $prop_attrs->dbText === null ) {
 				continue;
 			}
+			$pview->text = $prop_attrs->dbText;
 			$proposalId++;
 			# set proposal name (if any)
-			$prop_name = qp_QuestionData::splitRawProposal( $pview->text );
-			if ( $prop_name === false ) {
+			if ( $prop_attrs->error === qp_Setup::ERROR_TOO_LONG_PROPNAME ) {
 				$pview->prependErrorMessage( wfMsg( 'qp_error_too_long_proposal_name' ), 'error' );
-			} elseif ( $prop_name !== '' ) {
-				$this->mProposalNames[$proposalId] = $prop_name;
+			} elseif ( $prop_attrs->error === qp_Setup::ERROR_NUMERIC_PROPNAME ) {
+				$pview->prependErrorMessage( wfMsg( 'qp_error_invalid_proposal_name' ), 'error' );
+			} elseif ( $prop_attrs->name !== '' ) {
+				$this->mProposalNames[$proposalId] = $prop_attrs->name;
 			}
-			$this->mProposalText[$proposalId] = trim( $pview->text );
+			$this->mProposalText[$proposalId] = strval( $prop_attrs );
 			# Determine a type ID, according to the questionType and the number of signes.
 			foreach ( $this->mCategories as $catId => $catDesc ) {
-				$typeId  = $matches[ $catId ];
+				$typeId  = $matches[$catId];
 				# start new input field tag (category)
 				$pview->addNewCategory( $catId );
 				$inp = array( '__tag' => 'input' );
 				# Determine the input's name and value.
+				$name = "q{$this->mQuestionId}p{$proposalId}s{$catId}";
 				switch ( $typeId ) {
-					case '<>':
-						$name = 'q' . $this->mQuestionId . 'p' . $proposalId . 's' . $catId;
-						$value = '';
-						$inputType = 'text';
-						break;
-					case '[]':
-						$name = 'q' . $this->mQuestionId . 'p' . $proposalId . 's' . $catId;
-						$value = 's' . $catId;
-						$inputType = 'checkbox';
-						break;
-					case '()':
-						$name = 'q' . $this->mQuestionId . 'p' . $proposalId . 's' . $catId;
-						$value = 's' . $catId;
-						$inputType = 'radio';
-						break;
+				case '<>':
+					$value = '';
+					$inputType = 'text';
+					break;
+				case '[]':
+					$value = "s{$catId}";
+					$inputType = 'checkbox';
+					break;
+				case '()':
+					$value = "s{$catId}";
+					$inputType = 'radio';
+					break;
 				}
 				# Determine if the input has to be checked.
 				$input_checked = false;
@@ -133,12 +140,16 @@ class qp_MixedQuestion extends qp_TabularQuestion {
 					$pview->setErrorMessage( wfMsg( 'qp_error_proposal_text_empty' ), 'error' );
 					throw new Exception( 'qp_error' );
 				}
-				# If the proposal was submitted but unanswered
-				if ( $this->poll->mBeingCorrected && !array_key_exists( $proposalId, $this->mProposalCategoryId ) ) {
-					$prev_state = $this->getState();
+				## Check for unanswered categories.
+				if ( ( $catreq = $prop_attrs->catreq ) === null ) {
+					$catreq = $this->mCatReq;
+				}
+				if ( $this->poll->mBeingCorrected &&
+						$this->hasMissingCategories( $proposalId, $catreq, count( $this->mCategories ) ) ) {
+					# the proposal was submitted but has not enough answered categories
 					$pview->prependErrorMessage( wfMsg( 'qp_error_no_answer' ), 'NA' );
 					# if there was no previous errors, hightlight the whole row
-					if ( $prev_state == '' ) {
+					if ( $this->getState() == '' ) {
 						throw new Exception( 'qp_error' );
 					}
 				}

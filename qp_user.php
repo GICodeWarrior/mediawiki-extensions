@@ -142,8 +142,11 @@ function qp_getStructuredInterpretation( $poll_address ) {
 class qp_Setup {
 
 	# internal unique error codes
+	const NO_ERROR = 0;
 	const ERROR_MISSED_TITLE = 1;
 	const ERROR_INVALID_ADDRESS = 2;
+	const ERROR_TOO_LONG_PROPNAME = 3;
+	const ERROR_NUMERIC_PROPNAME = 4;
 
 	# unicode entity used to display selected checkboxes and radiobuttons in
 	# result views at Special:Pollresults page
@@ -154,7 +157,7 @@ class qp_Setup {
 	# matches string which contains integer number in range 1..9999
 	const PREG_POSITIVE_INT4_MATCH = '/^[1-9]\d{0,3}$/';
 
-	## separators of lines / values for question type 'text' / 'text!'
+	## separators of lines / values for question type="text"
 	#    these should not be the same and should not appear in valid text;
 	# characters that are used to separate values of select multiple
 	const SELECT_MULTIPLE_VALUES_SEPARATOR = "\r";
@@ -176,6 +179,9 @@ class qp_Setup {
 	static $title; // Title instance recieved from hook
 	static $user; // User instance recieved from hook
 	static $request; // WebRequest instance recieved from hook
+
+	# single instance for extracting attributes from proposal lines
+	static $propAttrs = null;
 
 	/**
 	 * The map of question 'type' attribute value to the question's ctrl / view / subtype.
@@ -203,12 +209,6 @@ class qp_Setup {
 			'mType' => 'mixedChoice'
 		),
 		'text' => array(
-			'ctrl' => 'qp_TextQuestion',
-			'view' => 'qp_TextQuestionView',
-			'mType' => 'textQuestion',
-			'mSubType' => 'requireAllCategories'
-		),
-		'text!' => array(
 			'ctrl' => 'qp_TextQuestion',
 			'view' => 'qp_TextQuestionView',
 			'mType' => 'textQuestion'
@@ -364,6 +364,8 @@ class qp_Setup {
 			'ctrl/question/qp_mixedquestion.php' => 'qp_MixedQuestion',
 			'ctrl/question/qp_textquestion.php' => array( 'qp_TextQuestionOptions', 'qp_TextQuestion' ),
 			'ctrl/question/qp_questionstats.php' => 'qp_QuestionStats',
+			# proposal attributes
+			'ctrl/qp_propattrs.php' => 'qp_PropAttrs',
 			# interpretation results
 			'ctrl/qp_interpresult.php' => 'qp_InterpResult',
 
@@ -464,6 +466,7 @@ class qp_Setup {
 		$wgGroupPermissions['bureaucrat']['editinterpretation'] = true;
 
 		$wgDebugLogGroups['qpoll'] = 'qpoll_debug_log.txt';
+
 	}
 
 	static function mediaWikiVersionCompare( $version, $operator = '<' ) {
@@ -615,6 +618,7 @@ class qp_Setup {
 		} elseif ( $request->getVal( 'pollId' ) !== null ) {
 			self::clearCache();
 		}
+		self::$propAttrs = new qp_PropAttrs();
 		return true;
 	}
 

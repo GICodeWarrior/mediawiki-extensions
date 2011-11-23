@@ -48,6 +48,10 @@ class qp_SpecialPage extends SpecialPage {
 		if ( self::$linker == null ) {
 			self::$linker = new Linker();
 		}
+		if ( qp_Setup::$propAttrs === null ) {
+			qp_Setup::$propAttrs = new qp_PropAttrs();
+		}
+
 		parent::__construct( $name, $restriction, $listed, $function, $file, $includable );
 	}
 

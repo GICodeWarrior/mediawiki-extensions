@@ -10,6 +10,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class qp_TextQuestionProposalView extends qp_StubQuestionProposalView {
 
+	# count of required categories to be non-empty in current proposal
+	var $catreq = 'all';
 	# list of viewtokens
 	#   elements of string type contain proposal parts;
 	#   elements of stdClass :

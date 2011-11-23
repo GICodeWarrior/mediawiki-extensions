@@ -143,7 +143,7 @@
 
 		/**
 		 * Makes this input to switch radiobuttons in the same row
-		 * Used for questions type="mixed"
+		 * Used for question type="mixed"
 		 */
 		clickMixedRow : function() {
 			// example of input id: 'mx1q3p2c4'
@@ -151,7 +151,7 @@
 		},
 
 		/**
-		 * Used for questions type="text", type="text!"
+		 * Used for question type="text"
 		 */
 		clickTextRow : function() {
 			// example of input id: 'tx1q3p2c4'
@@ -196,7 +196,7 @@
 							}
 							break;
 						case 'mx' :
-							// unset the row of checkboxes in case of "mixed" question type
+							// unset the row of checkboxes in case of question type="mixed"
 							addEvent( input[j], "click", self.clickMixedRow );
 							break;
 						case 'tx' :
