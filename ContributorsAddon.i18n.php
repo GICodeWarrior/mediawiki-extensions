@@ -439,7 +439,7 @@ $messages['sq'] = array(
 	'contributorsaddon-desc' => 'Vendosë dritare JavaScript në lidhjet "Kontribuuesit kryesorë"',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -447,7 +447,7 @@ $messages['sr-ec'] = array(
 	'contributorsaddon-desc' => 'Додаје искачуће прозоре на везе „Главни доприносиоци“',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
