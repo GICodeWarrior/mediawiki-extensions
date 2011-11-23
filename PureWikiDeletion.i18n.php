@@ -871,7 +871,7 @@ $messages['ru'] = array(
 	'right-purewikideletion' => '[[Special:PopulateBlankedPagesTable|заполнение]] таблицы очищенных страниц',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -879,7 +879,7 @@ $messages['sr-ec'] = array(
 	'purewikideletion-blanknologin' => 'Нисте пријављени',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'purewikideletion-blanknologin' => 'Niste ulogovani',
 );
