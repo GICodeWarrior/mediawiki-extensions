@@ -686,7 +686,7 @@ $messages['ksh'] = array(
 	'livetranslate-importtms-param-miscmatch' => 'De Aanzahl Speicherplätz un Zoote paß nit zosamme.',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author George Animal
  */
 $messages['ku-latn'] = array(
