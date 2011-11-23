@@ -928,7 +928,7 @@ $messages['sr-ec'] = array(
 	'framedvideo_error_height_too_big' => 'Задата вредност за параметар "height" је превелика.',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'framedvideo_errors' => 'Došlo je do nekoliko grešaka!',
 	'framedvideo_error' => 'Došlo je do greške!',
