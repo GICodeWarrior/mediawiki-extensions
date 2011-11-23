@@ -61,6 +61,13 @@ $messages['ia'] = array(
 	'hashtables-desc' => 'Functiones del analysator syntactic que permitte laborar con tabellas de hash in un "page scoped context"',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'hashtables-desc' => 'ページをスコープとするコンテキストでハッシュテーブルを利用可能にするパーサー関数',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
