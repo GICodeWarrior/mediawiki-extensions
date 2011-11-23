@@ -2405,7 +2405,7 @@ $messages['rue'] = array(
 	'storyboard-working' => 'Робить ся...',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -2457,7 +2457,7 @@ $messages['sr-ec'] = array(
 	'storyboard-deletestory' => 'Обриши',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'storyboard-anerroroccured' => 'Došlo je do greške: $1',
 	'storyboard-unpublished' => 'Povučeno iz objave',
