@@ -469,7 +469,10 @@ $messages['ig'] = array(
  * @author Lam-ang
  */
 $messages['ilo'] = array(
+	'searchbox-desc' => 'Mabalin ti agikabil dagiti porma ti pinagbirok',
 	'searchbox-search' => 'Biroken',
+	'searchbox-go' => 'Inkan',
+	'searchbox-namespaces' => 'Namespaces:',
 );
 
 /** Italian (Italiano)
@@ -505,7 +508,7 @@ $messages['ka'] = array(
 	'searchbox-namespaces' => 'სახელთა სივრცეები:',
 );
 
-/** Kazakh (Cyrillic) (Қазақша (Cyrillic))
+/** Kazakh (Cyrillic script) (‪Қазақша (кирил)‬)
  * @author GaiJin
  */
 $messages['kk-cyrl'] = array(
@@ -549,7 +552,7 @@ $messages['ksh'] = array(
 	'searchbox-namespaces' => 'Appachtemengs:',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author George Animal
  */
 $messages['ku-latn'] = array(
@@ -866,7 +869,7 @@ $messages['sr-ec'] = array(
 	'searchbox-namespaces' => 'Именски простори:',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -970,14 +973,14 @@ $messages['tr'] = array(
 	'searchbox-namespaces' => 'İsim alanları:',
 );
 
-/** ئۇيغۇرچە (ئۇيغۇرچە)
+/** Uyghur (Arabic script) (ئۇيغۇرچە)
  * @author Alfredie
  */
 $messages['ug-arab'] = array(
 	'searchbox-go' => 'كۆچۈش',
 );
 
-/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
+/** Uyghur (Latin script) (Uyghurche‎)
  * @author Jose77
  */
 $messages['ug-latn'] = array(
