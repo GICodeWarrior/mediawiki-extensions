@@ -472,7 +472,7 @@ $messages['sk'] = array(
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|Uloženie kontrolného bodu]])',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Charmed94
  * @author Жељко Тодоровић
  */
@@ -483,7 +483,7 @@ $messages['sr-ec'] = array(
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|прелаз чувања]])',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Жељко Тодоровић
  */
 $messages['sr-el'] = array(
