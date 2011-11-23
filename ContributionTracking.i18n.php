@@ -524,7 +524,7 @@ $messages['he'] = array(
 	'contrib-tracking-error-text' => 'שליחת פורום בלתי תקינה',
 	'contrib-tracking-submitting' => 'נשלח למעבד התרומות...',
 	'contrib-tracking-continue' => 'אם ההפניה אינה מתבצעת אוטומטית, לחצו על הכפתור כדי להשלים את תרומתכם באתר PayPal.',
-	'contrib-tracking-redirect' => 'כעת תתבצע העברה אוטומטית ל־PayPal כדי להשלים את תרומתך.',
+	'contrib-tracking-redirect' => 'כעת תתבצע הפניה אוטומטית ל־PayPal כדי להשלים את תרומתכם.',
 	'contrib-tracking-button' => 'המשך',
 	'contrib-tracking-item-name-onetime' => 'תרומה חד־פעמית',
 	'contrib-tracking-item-name-recurring' => 'תרומה חודשית חוזרת',
@@ -1063,6 +1063,7 @@ $messages['roa-tara'] = array(
 
 /** Russian (Русский)
  * @author DCamer
+ * @author Eleferen
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -1071,8 +1072,8 @@ $messages['ru'] = array(
 	'contrib-tracking-error' => 'Ошибка',
 	'contrib-tracking-error-text' => 'Неправильное подчинение формы',
 	'contrib-tracking-submitting' => 'Отправка обработчику платежей…',
-	'contrib-tracking-continue' => 'Если вы не были автоматически перенаправлены, нажмите на кнопку, чтобы завершить ваше пожертвование на сайте PayPal.',
-	'contrib-tracking-redirect' => 'Вы будете автоматически перенаправлены на PayPal для завершения вашего пожертвования.',
+	'contrib-tracking-continue' => 'Если Вы не были автоматически перенаправлены, нажмите на кнопку, чтобы завершить Ваше пожертвование.',
+	'contrib-tracking-redirect' => 'Вы будете автоматически перенаправлены для завершения Вашего пожертвования.',
 	'contrib-tracking-button' => 'Продолжить',
 	'contrib-tracking-item-name-onetime' => 'Единовременный взнос',
 	'contrib-tracking-item-name-recurring' => 'Ежемесячный взнос',
@@ -1163,7 +1164,7 @@ $messages['sr-ec'] = array(
 	'contrib-tracking-item-name-recurring' => 'Месечни прилог',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -1210,7 +1211,7 @@ $messages['te'] = array(
 	'contrib-tracking-button' => 'కొనసాగించు',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -1218,7 +1219,7 @@ $messages['tg-cyrl'] = array(
 	'contrib-tracking-button' => 'Идома',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
