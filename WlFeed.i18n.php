@@ -320,14 +320,14 @@ $messages['sl'] = array(
 	'wlfeed-desc' => 'Izboljšani razredi ustvarjanja virov',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'wlfeed-desc' => 'Класе за побољшане фидове',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'wlfeed-desc' => 'Klase za poboljšane fidove',
 );

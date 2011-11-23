@@ -4363,7 +4363,7 @@ Se moß eets vun enem Moderator aanjenumme wääde.',
 	'wikilog-doc-import-comment' => 'Empoteet Handbooch för {{int:Wikilog-wikilog}}',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author George Animal
  */
 $messages['ku-latn'] = array(
@@ -6755,7 +6755,7 @@ $messages['sr-ec'] = array(
 	'wikilog-history-lc' => 'историја',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Rancher
  */
 $messages['sr-el'] = array(
