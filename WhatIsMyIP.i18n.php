@@ -819,7 +819,7 @@ $messages['sq'] = array(
 	'right-whatismyip' => 'Shiko [[Special:WhatIsMyIP|own IP address]]',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  */
 $messages['sr-ec'] = array(
