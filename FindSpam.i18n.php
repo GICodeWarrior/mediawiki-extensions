@@ -604,7 +604,7 @@ $messages['ksh'] = array(
 	'right-findspam' => 'Noh fresch erinjekumme <i lang="en">SPAM</i> söke',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author George Animal
  */
 $messages['ku-latn'] = array(
@@ -962,7 +962,7 @@ $messages['sk'] = array(
 	'right-findspam' => 'Hľadať iba nedávno pridaný spam',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
@@ -976,7 +976,7 @@ $messages['sr-ec'] = array(
 	'right-findspam' => 'Потражи скоро додати спам',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -1059,7 +1059,7 @@ $messages['tet'] = array(
 	'findspam-ok' => 'OK',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -1069,7 +1069,7 @@ $messages['tg-cyrl'] = array(
 	'findspam-notextfound' => 'Ҳеҷ ҳиссагузорие ёфт нашуд',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
@@ -1117,14 +1117,14 @@ $messages['tr'] = array(
 	'right-findspam' => 'Son eklenen spamler için ara',
 );
 
-/** ئۇيغۇرچە (ئۇيغۇرچە)
+/** Uyghur (Arabic script) (ئۇيغۇرچە)
  * @author Alfredie
  */
 $messages['ug-arab'] = array(
 	'findspam-ok' => 'ماقۇل',
 );
 
-/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
+/** Uyghur (Latin script) (Uyghurche‎)
  * @author Jose77
  */
 $messages['ug-latn'] = array(
