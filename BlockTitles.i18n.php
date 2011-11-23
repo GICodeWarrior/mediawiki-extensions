@@ -750,7 +750,7 @@ $messages['sl'] = array(
 	'block_title_error' => 'Žal naslova te strani ni dovoljeno shraniti.',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Sasa Stefanovic
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
@@ -761,7 +761,7 @@ $messages['sr-ec'] = array(
 	'block_title_error' => 'Жао нам је, наслов ове странице није могуће снимити.',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -817,7 +817,7 @@ $messages['te'] = array(
 	'block_title_error' => 'క్షమించండి, ఈ పేజీ శీర్షికని భద్రపరచడానికి అనుమతించము.',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Farrukh
  * @author Ibrahim
  */
@@ -827,7 +827,7 @@ $messages['tg-cyrl'] = array(
 	'block_title_error' => 'Бубахшед, захира намудани саҳифае, ки чунин сарлавҳа дорад манъ аст.',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
