@@ -688,7 +688,7 @@ $messages['sr-ec'] = array(
 	'massblank-blankcomment' => 'Разлог:',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'massblank-submit-user' => 'Idi',
 	'massblank-blankcomment' => 'Razlog:',
