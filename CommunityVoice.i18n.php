@@ -980,7 +980,7 @@ $messages['sr-ec'] = array(
 	'communityvoice-ratings-scale-status-thanks' => 'Хвала на гласању!',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -1065,7 +1065,7 @@ $messages['tr'] = array(
 	'communityvoice-ratings-error-no-title' => 'Derecelendirme etiketinde başlık niteliği eksik.',
 );
 
-/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+/** Tatar (Cyrillic script) (Татарча)
  * @author Ильнар
  */
 $messages['tt-cyrl'] = array(
