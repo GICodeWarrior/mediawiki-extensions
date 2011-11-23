@@ -85,7 +85,7 @@ $messages['bg'] = array(
 	'ajaxquerypages-desc' => 'Добавя AJAX към QueryPages като напр. [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
-/** Bahasa Banjar (Bahasa Banjar)
+/** Banjar (Bahasa Banjar)
  * @author J Subhi
  */
 $messages['bjn'] = array(
@@ -341,7 +341,7 @@ $messages['jv'] = array(
 	'ajaxquerypages-desc' => 'Nambahaké sawetara AJAX ing QueryPages kayata [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
-/** Kabardian (Cyrillic) (Адыгэбзэ (Cyrillic))
+/** Адыгэбзэ (Адыгэбзэ)
  * @author Amire80
  */
 $messages['kbd-cyrl'] = array(
@@ -602,14 +602,14 @@ $messages['sl'] = array(
 	'ajaxquerypages-desc' => 'Doda nekaj Ajaxa stranem s poizvedbami, kot je [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'ajaxquerypages-desc' => 'AJAX додаци за стране претрага попут [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -651,14 +651,14 @@ $messages['tet'] = array(
 	'ajaxquerypages-desc' => 'Tau funsaun AJAX iha pájina espesiál, por ezemplu [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
 	'ajaxquerypages-desc' => 'Илова кардани чанде аз АҶАКС ба СаҳифаҳоиПурсиш монанди [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
