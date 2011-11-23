@@ -3985,7 +3985,7 @@ $messages['ja'] = array(
 	'deletequeue-case-needs-review' => 'この事例には[[$1|審査]]が必要です。',
 );
 
-/** Kazakh (Cyrillic) (Қазақша (Cyrillic))
+/** Kazakh (Cyrillic script) (‪Қазақша (кирил)‬)
  * @author GaiJin
  */
 $messages['kk-cyrl'] = array(
@@ -4247,7 +4247,7 @@ Do kanns Ding [{{fullurl:{{FULLPAGENAME}}|action=delvote}} eije Zoshtemmung odde
 	'deletequeue-case-needs-review' => 'Hee dä Fall moß [[$1|nohjeloort wääde]].',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author George Animal
  */
 $messages['ku-latn'] = array(
@@ -6166,7 +6166,7 @@ $messages['scn'] = array(
 	'deletequeue-case-reason' => 'Mutivu:',
 );
 
-/** Serbo-Croatian (Srpskohrvatski / Српскохрватски)
+/** Serbo-Croatian (Srpskohrvatski)
  * @author OC Ripper
  */
 $messages['sh'] = array(
@@ -6455,7 +6455,7 @@ $messages['sr-ec'] = array(
 	'deletequeue-case-expiry' => 'Истек:',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -6853,7 +6853,7 @@ $messages['tet'] = array(
 	'deletequeue-case-page' => 'Pájina:',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -6863,7 +6863,7 @@ $messages['tg-cyrl'] = array(
 	'deletequeue-list-header-discusspage' => 'Саҳифаи баҳс',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
@@ -7151,7 +7151,7 @@ $messages['tr'] = array(
 	'deletequeue-case-needs-review' => 'Bu durum [[$1|inceleme]] gerektirmektedir.',
 );
 
-/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
+/** Uyghur (Latin script) (Uyghurche‎)
  * @author Jose77
  */
 $messages['ug-latn'] = array(
