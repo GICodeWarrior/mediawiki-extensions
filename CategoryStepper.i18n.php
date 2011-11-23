@@ -672,7 +672,7 @@ $messages['so'] = array(
 	'categorystepper-start' => '(Qeybta bilaawgeeda)',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
@@ -682,7 +682,7 @@ $messages['sr-ec'] = array(
 	'categorystepper-start' => '(Почетак категорије)',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -738,7 +738,7 @@ $messages['te'] = array(
 	'categorystepper-start' => '(వర్గపు మొదలు)',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -746,7 +746,7 @@ $messages['tg-cyrl'] = array(
 	'categorystepper-start' => '(Оғози гурӯҳ)',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
