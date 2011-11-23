@@ -417,14 +417,14 @@ $messages['sl'] = array(
 	'htmlets-loadfailed' => 'Nalaganje datoteke HTML $1 je spodletelo',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'htmlets-desc' => 'Омогућава убацивање HTML делова из фајлова, коришћењем <code>&lt;htmlet&gt;</code> тага',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'htmlets-desc' => 'Omogućava ubacivanje HTML delova iz fajlova, korišćenjem <code>&lt;htmlet&gt;</code> taga',
 );
