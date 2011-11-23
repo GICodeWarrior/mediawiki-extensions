@@ -763,7 +763,7 @@ $messages['ksh'] = array(
 	'ea-allusers' => 'Alle Metmaacher',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author George Animal
  */
 $messages['ku-latn'] = array(
