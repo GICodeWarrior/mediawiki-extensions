@@ -691,7 +691,7 @@ $messages['sli'] = array(
 	'email-desc' => 'Erlaubt Benutzern persönliche Kopf- und Fusszeilen ei der E-Mail Funktion zu verwenden',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -703,7 +703,7 @@ $messages['sr-ec'] = array(
 $2',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -749,7 +749,7 @@ $messages['te'] = array(
 $2',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -758,7 +758,7 @@ $messages['tg-cyrl'] = array(
 $2',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
