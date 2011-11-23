@@ -674,7 +674,7 @@ $messages['te'] = array(
 	'cspammer-log-page' => 'వ్యాఖ్యల స్పామర్ల చిట్టా',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -682,7 +682,7 @@ $messages['tg-cyrl'] = array(
 	'cspammer-log-page' => 'Гузориши Ҳаразнигорро тавзеҳ диҳед',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
