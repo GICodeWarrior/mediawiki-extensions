@@ -689,7 +689,7 @@ $messages['ja'] = array(
 	'collabwatchlistdelete-submit' => '削除',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author Welathêja
  */
 $messages['ku-latn'] = array(
