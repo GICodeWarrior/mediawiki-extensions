@@ -1715,7 +1715,7 @@ $messages['sl'] = array(
 	'mwe-clipedit-duration' => 'Trajanje:',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Charmed94
  * @author Rancher
  */
@@ -1750,7 +1750,7 @@ $messages['sr-ec'] = array(
 	'mwe-clipedit-layout_left' => 'Изглед с леве стране слике',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'mwe-clipedit-crop' => 'Iseci sliku',
 	'mwe-clipedit-apply_crop' => 'Primeni isecanje slike',

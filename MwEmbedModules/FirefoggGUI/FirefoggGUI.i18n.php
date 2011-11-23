@@ -2991,7 +2991,7 @@ $messages['ksh'] = array(
 Bes esu joot, un donn der <b><i lang="en">Firebug</i></b> för heh di Sigg ußschallde.',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author George Animal
  * @author Welathêja
  */
@@ -4702,7 +4702,7 @@ $messages['sr-ec'] = array(
 	'fogg-select_file' => 'Избор датотеке',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Rancher
  * @author Жељко Тодоровић
  */

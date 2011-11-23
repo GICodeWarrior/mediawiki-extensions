@@ -340,7 +340,7 @@ $messages['ja'] = array(
 	'addmediawizard-loading' => 'メディア追加ウィザードを読み込み中',
 );
 
-/** Kabardian (Cyrillic) (Адыгэбзэ (Cyrillic))
+/** Адыгэбзэ (Адыгэбзэ)
  * @author Amire80
  * @author Beco1977
  */
@@ -581,14 +581,14 @@ $messages['sq'] = array(
 	'addmediawizard-loading' => 'Duke ngarkuar shtesën e media magjistarit',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Charmed94
  */
 $messages['sr-ec'] = array(
 	'addmediawizard-desc' => 'Додај медија водич, развијен у партнерству с Калтуром и Викимедија Задужбином',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'addmediawizard-desc' => 'Dodaj medija vodič, razvijen u partnerstvu s Kalturom i Vikimedija Zadužbinom',
 );
@@ -649,7 +649,7 @@ $messages['tr'] = array(
 	'addmediawizard-loading' => 'Ortam ekleme sihirbazı yükleniyor',
 );
 
-/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+/** Tatar (Cyrillic script) (Татарча)
  * @author Ильнар
  */
 $messages['tt-cyrl'] = array(
