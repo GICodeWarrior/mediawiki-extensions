@@ -722,7 +722,7 @@ $messages['sk'] = array(
 	'uos-title' => 'Rozdelenie hodnôt používateľskej voľby $1',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -732,7 +732,7 @@ $messages['sr-ec'] = array(
 	'uos-other' => '*Друго',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -792,7 +792,7 @@ $messages['tr'] = array(
 	'uos-title' => 'Kullanıcı seçeneği $1 için değer dağılımı',
 );
 
-/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+/** Tatar (Cyrillic script) (Татарча)
  * @author Ерней
  */
 $messages['tt-cyrl'] = array(
