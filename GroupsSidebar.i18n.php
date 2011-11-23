@@ -278,7 +278,7 @@ $messages['sl'] = array(
 	'groupssidebar-desc' => 'Ta razširitev omogoča administratorjem strani v stransko vrstico vključevati elemente za posebne skupine uporabnikov',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -286,7 +286,7 @@ $messages['sr-ec'] = array(
 	'groupssidebar-desc' => 'Ово проширење омогућава администраторима да унесу елементе у бочну палету за одређене корисничке групе',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'groupssidebar-desc' => 'Ova ekstenzija omogućava administratorima sajta da uključe sajdbar elemente za određene korisničke grupe',
 );
