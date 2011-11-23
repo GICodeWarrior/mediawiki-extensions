@@ -1120,14 +1120,14 @@ $messages['jv'] = array(
 	'importusers-realname' => 'jeneng asli',
 );
 
-/** Kazakh (Cyrillic) (Қазақша (Cyrillic))
+/** Kazakh (Cyrillic script) (‪Қазақша (кирил)‬)
  * @author GaiJin
  */
 $messages['kk-cyrl'] = array(
 	'importusers-log-summary' => 'Түйіндемесі',
 );
 
-/** Kazakh (Latin) (Қазақша (Latin))
+/** Kazakh (Latin script) (‪Qazaqşa (latın)‬)
  * @author GaiJin
  */
 $messages['kk-latn'] = array(
@@ -1217,7 +1217,7 @@ $messages['ksh'] = array(
 	'right-import_users' => 'Date övver Metmaachere em  Knubbel empotteere',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author George Animal
  */
 $messages['ku-latn'] = array(
@@ -1799,7 +1799,7 @@ $messages['rue'] = array(
 	'importusers-realname' => 'скуточне мено',
 );
 
-/** Tachelhit (Tašlḥiyt)
+/** Tachelhit (Tašlḥiyt/ⵜⴰⵛⵍⵃⵉⵜ)
  * @author Zanatos
  */
 $messages['shi'] = array(
@@ -1892,7 +1892,7 @@ $messages['sr-ec'] = array(
 	'importusers-realname' => 'право име',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  * @author Жељко Тодоровић
  */
@@ -2033,7 +2033,7 @@ $messages['tet'] = array(
 	'importusers-email' => 'korreiu eletróniku',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -2049,7 +2049,7 @@ $messages['tg-cyrl'] = array(
 	'importusers-realname' => 'номи аслӣ',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
@@ -2145,14 +2145,14 @@ Atlandı.',
 	'right-import_users' => 'Kullanıcıları küme olarak içe aktarır',
 );
 
-/** ئۇيغۇرچە (ئۇيغۇرچە)
+/** Uyghur (Arabic script) (ئۇيغۇرچە)
  * @author Alfredie
  */
 $messages['ug-arab'] = array(
 	'importusers-email' => 'ئېلخەت',
 );
 
-/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
+/** Uyghur (Latin script) (Uyghurche‎)
  * @author Jose77
  */
 $messages['ug-latn'] = array(
