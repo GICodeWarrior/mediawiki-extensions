@@ -1737,7 +1737,7 @@ $messages['sr-ec'] = array(
 	'wah-uploadfail' => 'Слање фајла неуспело',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
