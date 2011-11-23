@@ -1908,7 +1908,7 @@ $messages['kk-arab'] = array(
 	'ogg-desc-link' => 'بۇل فايل تۋرالى',
 );
 
-/** Kazakh (Cyrillic) (Қазақша (Cyrillic))
+/** Kazakh (Cyrillic script) (‪Қазақша (кирил)‬)
  * @author AVRS
  */
 $messages['kk-cyrl'] = array(
@@ -1939,7 +1939,7 @@ $messages['kk-cyrl'] = array(
 	'ogg-desc-link' => 'Бұл файл туралы',
 );
 
-/** Kazakh (Latin) (Қазақша (Latin))
+/** Kazakh (Latin script) (‪Qazaqşa (latın)‬)
  * @author AVRS
  */
 $messages['kk-latn'] = array(
@@ -3357,7 +3357,7 @@ $messages['sr-ec'] = array(
 	'ogg-desc-link' => 'Подаци о овој датотеци',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author AVRS
  * @author Michaello
  * @author Rancher
@@ -3537,7 +3537,7 @@ $messages['te'] = array(
 	'ogg-desc-link' => 'ఈ ఫైలు గురించి',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author AVRS
  * @author Ibrahim
  */
@@ -3570,7 +3570,7 @@ $messages['tg-cyrl'] = array(
 	'ogg-desc-link' => 'Дар бораи ин парванда',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author AVRS
  * @author Liangent
  */
@@ -3760,7 +3760,7 @@ $messages['ts'] = array(
 	'ogg-dismiss' => 'Pfala',
 );
 
-/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+/** Tatar (Cyrillic script) (Татарча)
  * @author Ильнар
  */
 $messages['tt-cyrl'] = array(
