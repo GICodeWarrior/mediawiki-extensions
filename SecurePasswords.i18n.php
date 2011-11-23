@@ -715,7 +715,7 @@ $messages['sk'] = array(
 	'securepasswords-word' => 'nesmie to byť slovo zo slovníka',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -732,7 +732,7 @@ $messages['sr-ec'] = array(
 	'securepasswords-word' => 'не може да буде реч',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'securepasswords-valid' => 'Vaša lozinka je neispravna ili prekratka.
 Ona mora: $1.',
