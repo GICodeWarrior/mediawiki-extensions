@@ -551,7 +551,7 @@ $messages['sl'] = array(
 	'bm-printversion-inexistent-book' => 'Knjige ni mogoče najti. Vnesite ime obstoječe knjige, da dobite različico za tiskanje le te.',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  */
 $messages['sr-ec'] = array(
