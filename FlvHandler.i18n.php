@@ -369,7 +369,7 @@ $messages['sk'] = array(
 	'flv-long-desc' => 'Flash video, $1 × $2 pixlov, veľkosť súboru: $3',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -378,7 +378,7 @@ $messages['sr-ec'] = array(
 	'flv-long-desc' => 'Флеш видео запис, $1 × $2 тачкица, величина датотеке: $3',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'flv-long-desc' => 'Fleš video, $1 × $2 piksela, veličina fajla: $3',
 );
