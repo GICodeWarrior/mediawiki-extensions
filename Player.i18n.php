@@ -875,7 +875,7 @@ $messages['ksh'] = array(
 	'player-goto-file' => 'Datei',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author George Animal
  */
 $messages['ku-latn'] = array(
@@ -1377,7 +1377,7 @@ $messages['sr-ec'] = array(
 	'player-goto-file' => 'датотека',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  * @author Жељко Тодоровић
  */
@@ -1464,7 +1464,7 @@ $messages['tet'] = array(
 	'player-goto-page' => 'Pájina',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -1475,7 +1475,7 @@ $messages['tg-cyrl'] = array(
 	'player-goto-file' => 'парванда',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
@@ -1533,7 +1533,7 @@ $messages['tr'] = array(
 	'player-goto-file' => 'Dosya',
 );
 
-/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
+/** Uyghur (Latin script) (Uyghurche‎)
  * @author Jose77
  */
 $messages['ug-latn'] = array(
