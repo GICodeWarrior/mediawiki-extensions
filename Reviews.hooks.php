@@ -134,7 +134,7 @@ final class ReviewsHooks {
 	public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
 		/* User */ $user = $skin->getUser();
 		
-		if ( $user->isLoggedIn() && $user->isAllowed( 'review' ) && $user->getOption( 'reviews_showcontrol' )
+		if ( $user->isLoggedIn() && $user->isAllowed( 'postreview' ) && $user->getOption( 'reviews_showcontrol' )
 			&& $out->isArticle()
 			&& $skin->getRequest()->getText( 'action' ) !== 'edit' ) {
 			

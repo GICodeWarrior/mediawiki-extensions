@@ -21,7 +21,7 @@ class SpecialReviews extends SpecialPage {
 	 * @since 0.1
 	 */
 	public function __construct() {
-		parent::__construct( 'Reviews', 'review' );
+		parent::__construct( 'Reviews', 'postreview' );
 	}
 
 	/**

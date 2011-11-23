@@ -84,7 +84,7 @@ $wgHooks['BeforePageDisplay'][] 				= 'ReviewsHooks::onBeforePageDisplay';
 
 // Rights
 $wgAvailableRights[] = 'reviewsadmin';
-$wgAvailableRights[] = 'review';
+$wgAvailableRights[] = 'postreview';
 
 # Users that can manage the reviews.
 $wgGroupPermissions['*'            ]['reviewsadmin'] = false;
@@ -95,12 +95,12 @@ $wgGroupPermissions['sysop'        ]['reviewsadmin'] = true;
 $wgGroupPermissions['reviewsadmin' ]['reviewsadmin'] = true;
 
 # Users that can post reviews.
-$wgGroupPermissions['*'            ]['review'] = false;
-$wgGroupPermissions['user'         ]['review'] = true;
-//$wgGroupPermissions['autoconfirmed']['review'] = true;
-//$wgGroupPermissions['bot'          ]['review'] = false;
-$wgGroupPermissions['sysop'        ]['review'] = true;
-$wgGroupPermissions['reviewer']['review'] = true;
+$wgGroupPermissions['*'            ]['postreview'] = false;
+$wgGroupPermissions['user'         ]['postreview'] = true;
+//$wgGroupPermissions['autoconfirmed']['postreview'] = true;
+//$wgGroupPermissions['bot'          ]['postreview'] = false;
+$wgGroupPermissions['sysop'        ]['postreview'] = true;
+$wgGroupPermissions['reviewer']['postreview'] = true;
 
 
 // Resource loader modules

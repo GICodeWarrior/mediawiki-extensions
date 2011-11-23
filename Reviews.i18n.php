@@ -28,7 +28,7 @@ $messages['en'] = array(
 	'right-review' => 'Post reviews',
 
 	'action-reviewsadmin' => 'manage reviews',
-	'action-reviewer' => 'post reviews',
+	'action-postreview' => 'post reviews',
 
 	// Groups
 	'group-reviewsadmin' => 'Review admins',
@@ -79,6 +79,9 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'reviews-toplink' => 'Text of top link linking to Special:MyReviews',
+
+	'action-postreview' => '{{doc-action|postreview}}',
+	'action-reviewsadmin' => '{{doc-action|reviewsadmin}}',
 
 	'reviews-state-new' => 'A state a review can be in',
 	'reviews-state-flagged' => 'A state a review can be in',

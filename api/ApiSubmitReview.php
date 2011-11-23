@@ -15,7 +15,7 @@
 class ApiSubmitReview extends ApiBase {
 	
 	public function execute() {
-		if ( !$this->getUser()->isAllowed( 'review' ) || $this->getUser()->isBlocked() ) {
+		if ( !$this->getUser()->isAllowed( 'postreview' ) || $this->getUser()->isBlocked() ) {
 			$this->dieUsageMsg( array( 'badaccess-groups' ) );
 		}			
 		
