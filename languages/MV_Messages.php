@@ -5992,7 +5992,7 @@ $messages['jv'] = array(
 	'mv_protect_source_material' => 'Bahan sumber asli direksa saka panyuntingan',
 );
 
-/** Kazakh (Cyrillic) (Қазақша (Cyrillic))
+/** Kazakh (Cyrillic script) (‪Қазақша (кирил)‬)
  * @author GaiJin
  */
 $messages['kk-cyrl'] = array(
@@ -6405,7 +6405,7 @@ Jangk op di Aansech als Dahteshtrohm: $2',
 	'right-mv_edit_stream' => 'Dahteshtrohm-Datteije beärbeide',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author Bangin
  * @author George Animal
  */
@@ -8602,7 +8602,7 @@ $mvMVDTypeDefaultDisp a dovrìa esse un sotansema ëd $mvMVDTypeAllAvailable',
 	'mvvideofeed' => "Esportassion dl'alimentassion ëd filmà MetaVid",
 	'mvexportask' => "Esportassion d'un fil ëd filmà semàntich",
 	'video_feed_cat' => 'Alimentassion dël filmà për la categorìa:',
-	'mv_cat_search_note' => "Nòta: Le categorìe a elenco mach le categorìe ëd prim livel.
+	'mv_cat_search_note' => "Nòta: Le categorìe a elenco mach le categorìe ëd prim livel. 
 Për tùit ij metadat ant l'ansema dle categorìe, ch'a serca $1",
 	'mv-category-media-count' => '$1 {{PLURAL:$1|segment|segment}} ëd mojen ant la categorìa',
 	'mv_mvd_linkback' => 'Part dël fluss $1 <br />
@@ -9972,7 +9972,7 @@ $messages['sr-ec'] = array(
 	'mv_new_anno_en' => 'Нова ознака или забелешка',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  * @author Жељко Тодоровић
  */
@@ -10523,7 +10523,7 @@ $messages['tg'] = array(
 	'mv_stream_name' => 'номи ҷараён',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -10585,7 +10585,7 @@ $messages['tg-cyrl'] = array(
 	'mv_new_ht_en' => 'Рӯнавишти ҷадид',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
