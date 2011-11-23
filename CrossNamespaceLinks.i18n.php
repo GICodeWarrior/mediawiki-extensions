@@ -585,14 +585,14 @@ $messages['kk-arab'] = array(
 	'crossnamespacelinkstext' => '«$1» بەتٸ: «$3» ەسٸم اياسىنا $2 سٸلتەمە',
 );
 
-/** Kazakh (Cyrillic) (Қазақша (Cyrillic)) */
+/** Kazakh (Cyrillic script) (‪Қазақша (кирил)‬) */
 $messages['kk-cyrl'] = array(
 	'crossnamespacelinks' => 'Басқа есім аясына сілтейтін беттер',
 	'crossnamespacelinks-summary' => 'Бұл бетте негізгі есім аясындағы беттегі басқа есім аялырындағы ({{ns:special}}, {{ns:talk}}, {{ns:project}} және {{ns:template}} есім аяларынан тыс) беттерге сілтеме тізімі беріледі. Осындай сілтемелерді қолдануға ұсынылмайды.',
 	'crossnamespacelinkstext' => '«$1» беті: «$3» есім аясына $2 сілтеме',
 );
 
-/** Kazakh (Latin) (Қазақша (Latin)) */
+/** Kazakh (Latin script) (‪Qazaqşa (latın)‬) */
 $messages['kk-latn'] = array(
 	'crossnamespacelinks' => 'Basqa esim ayasına silteýtin better',
 	'crossnamespacelinks-summary' => 'Bul bette negizgi esim ayasındağı bettegi basqa esim ayalırındağı ({{ns:special}}, {{ns:talk}}, {{ns:project}} jäne {{ns:template}} esim ayalarınan tıs) betterge silteme tizimi beriledi. Osındaý siltemelerdi qoldanwğa usınılmaýdı.',
@@ -647,7 +647,7 @@ $messages['ksh'] = array(
 	'crossnamespacelinkstext' => '$1 hät {{PLURAL:$2|eine Lengk|$2&nbsp;Lengks|keine Lengk}} en et Apachtemang „$3“',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin)) */
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬) */
 $messages['ku-latn'] = array(
 	'crossnamespacelinks' => 'Linkên ji boşahiya navekê bo boşahiya navekê din',
 );
@@ -993,7 +993,7 @@ $messages['sq'] = array(
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|lidhje|lidhje}} tek hapësira $3',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Millosh
  */
 $messages['sr-ec'] = array(
@@ -1003,7 +1003,7 @@ $messages['sr-ec'] = array(
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|веза|везе|веза}} ка $3 именском простору',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -1073,7 +1073,7 @@ $messages['te'] = array(
 	'crossnamespacelinkstext' => '$1: $3కు {{PLURAL:$2|ఒక లింకు|$2 లింకులు}}',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -1083,7 +1083,7 @@ $messages['tg-cyrl'] = array(
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|пайванд|пайвандҳо}} ба $3',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
@@ -1136,7 +1136,7 @@ $messages['tr'] = array(
 	'crossnamespacelinkstext' => '$1: $3 için $2 {{PLURAL:$2|bağlantı|bağlantı}}',
 );
 
-/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+/** Tatar (Cyrillic script) (Татарча)
  * @author Ильнар
  */
 $messages['tt-cyrl'] = array(
