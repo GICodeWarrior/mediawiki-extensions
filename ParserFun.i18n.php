@@ -19,6 +19,13 @@ $messages['en'] = array(
 	'parserfun-desc' => "Adds a parser function <code>#parse</code> for parsing wikitext and introduces <code>THIS:</code> prefix for page information related magic variables",
 );
 
+/** Message documentation (Message documentation)
+ * @author Fryed-peach
+ */
+$messages['qqq'] = array(
+	'parserfun-desc' => '{{desc}}',
+);
+
 /** German (Deutsch)
  * @author Daniel Werner
  * @author Kghbln
@@ -46,6 +53,13 @@ $messages['gl'] = array(
  */
 $messages['ia'] = array(
 	'parserfun-desc' => 'Adde al analysator syntactic un function <code>#parse</code> pro interpretar wikitexto e introduce le prefixo <code>THIS:</code> pro variabiles magic connexe a information de paginas',
+);
+
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'parserfun-desc' => 'ウィキテキストの構文解析を行うパーサー関数 <code>#parse</code> を追加し、ページ情報に関連するマジック変数のための接頭辞 <code>THIS:</code> を導入する',
 );
 
 /** Macedonian (Македонски)
