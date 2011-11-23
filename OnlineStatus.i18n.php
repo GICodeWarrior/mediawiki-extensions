@@ -1153,7 +1153,7 @@ $messages['sr-ec'] = array(
 	'onlinestatus-pref-offlineonlogout' => 'Промени ми статус на „ван мреже“ када се одјавим',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
