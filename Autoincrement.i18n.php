@@ -247,7 +247,7 @@ $messages['ja'] = array(
 	'autoincrement-desc' => '自動インクリメント変数 <nowiki>{{AUTOINCREMENT}}</nowiki> を追加する変数フック',
 );
 
-/** Kabardian (Cyrillic) (Адыгэбзэ (Cyrillic))
+/** Адыгэбзэ (Адыгэбзэ)
  * @author Amire80
  */
 $messages['kbd-cyrl'] = array(
@@ -387,7 +387,7 @@ $messages['sl'] = array(
 	'autoincrement-desc' => 'Spremenljiva priponka, ki doda samodejno naraščajočo spremenljivko <nowiki>{{AUTOINCREMENT}}</nowiki>',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -395,7 +395,7 @@ $messages['sr-ec'] = array(
 	'autoincrement-desc' => 'Закачка која додаје самоувећавајућу променљиву <nowiki>{{AUTOINCREMENT}}</nowiki>',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Liangent
  */
 $messages['sr-el'] = array(
