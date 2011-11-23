@@ -982,7 +982,7 @@ $messages['kk-arab'] = array(
 	'bookinfo-provider' => 'دەرەك جەتىستىرۋشىسى: $1',
 );
 
-/** Kazakh (Cyrillic) (Қазақша (Cyrillic))
+/** Kazakh (Cyrillic script) (‪Қазақша (кирил)‬)
  * @author AlefZet
  */
 $messages['kk-cyrl'] = array(
@@ -999,7 +999,7 @@ $messages['kk-cyrl'] = array(
 	'bookinfo-provider' => 'Дерек жетістірушісі: $1',
 );
 
-/** Kazakh (Latin) (Қазақша (Latin)) */
+/** Kazakh (Latin script) (‪Qazaqşa (latın)‬) */
 $messages['kk-latn'] = array(
 	'bookinfo-header' => 'Kitap mälimeti',
 	'bookinfo-result-title' => 'Atawı:',
@@ -1705,7 +1705,7 @@ $messages['sl'] = array(
 	'bookinfo-provider' => 'Podatke nudi: $1',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Sasa Stefanovic
  */
@@ -1720,7 +1720,7 @@ $messages['sr-ec'] = array(
 	'bookinfo-provider' => 'Подаци из: $1',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -1845,7 +1845,7 @@ $messages['tet'] = array(
 	'bookinfo-result-year' => 'Tinan:',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -1863,7 +1863,7 @@ $messages['tg-cyrl'] = array(
 	'bookinfo-provider' => 'Муҳаёкунандаи иттилоот: $1',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
@@ -1939,7 +1939,7 @@ $messages['tr'] = array(
 	'bookinfo-provider' => 'Veri sağlayıcısı: $1',
 );
 
-/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+/** Tatar (Cyrillic script) (Татарча)
  * @author Ильнар
  */
 $messages['tt-cyrl'] = array(
