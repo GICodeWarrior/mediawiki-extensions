@@ -125,7 +125,6 @@ class ExtArrays {
 	 */
 	public static function getDir() {
 		static $dir = null;
-		
 		if( $dir === null ) {
 			$dir = dirname( __FILE__ );
 		}
@@ -287,6 +286,7 @@ class ExtArrays {
 		}
 
 		$rendered_values = array();
+				
 		foreach( $array as $val ) {
 			// replace place holder with current value:
 			$rawResult = str_replace( $search, $val, $subject );
@@ -503,8 +503,9 @@ class ExtArrays {
 		}
 						
 		$newArr = array();		
-				
-        if( ! self::isValidRegEx( $needle ) ) {
+		
+		$regexFunSupport = self::hasRegexFunSupport();
+        if( ! self::isValidRegEx( $needle, $regexFunSupport ) ) {
 			$needle = '/^\s*(' . preg_quote( $needle, '/' ) . ')\s*$/';
 		}
 
@@ -515,8 +516,24 @@ class ExtArrays {
 			$value = $array[ $i ];
 
 			if( preg_match( $needle, $value ) ) {
+				// Found something!				
 				if( $transform !== '' ) {
-					$value = preg_replace( $needle, $transform, $value );
+					// Transform the found string. Can we use 'Regex Fun' ?
+					if( $regexFunSupport ) {
+						// do the transformation with Regex Fun to support 'e' flag:
+						$value = ExtRegexFun::doPregReplace(
+								$needle,
+								$transform,
+								$value,
+								-1,
+								$parser,
+								array( ExtRegexFun::FLAG_REPLACEMENT_PARSE )
+						);
+					}
+					else {
+						// regular preg_replace:
+						$value = preg_replace( $needle, $transform, $value );
+					}
 				}
 				$newArr[] = trim( $value );
 				
@@ -598,6 +615,7 @@ class ExtArrays {
 		
 		// reset all hash tables if no specific tables are given:
 		if( ! isset( $args[0] ) || ( $args[0] === '' && count( $args ) == 1 ) ) {
+			// reset ALL arrays!
 			$store->mArrays = array();
 		}
 		else {
@@ -672,7 +690,8 @@ class ExtArrays {
 					break;
 
                 case 'reverse':
-					$store->mArrays[ $arrayId ] = array_reverse( $store->mArrays[ $arrayId ] );
+					$reverse = array_reverse( $store->getArray( $arrayId ) );
+					$store->setArray( $arrayId, $reverse );
 					break;
             } ;
     }
@@ -1123,10 +1142,17 @@ class ExtArrays {
 	 * Arrays parser functions or not.
 	 * 
 	 * @param string $pattern regular expression including delimiters and optional flags
+	 * @param bool   $forRegexFun whether the regular expression is inteded to be used with 'Regex Fun'
+	 *               if supported by the wikis infrastructure. In case 'Regex Fun' is not available,
+	 *               the default validation will be used.
 	 * 
 	 * @return boolean
 	 */
-	static function isValidRegEx( $pattern ) {	
+	static function isValidRegEx( $pattern, $forRegexFun = false ) {
+		if( $forRegexFun && self::hasRegexFunSupport() ) {
+			return ExtRegexFun::validateRegex( $pattern );
+		}
+		
 		if( ! preg_match( '/^([\\/\\|%]).*\\1[imsSuUx]*$/', $pattern ) ) {
 			return false;
 		}
@@ -1134,5 +1160,20 @@ class ExtArrays {
 		$isValid = false !== preg_match( $pattern, ' ' ); // preg_match returns false on error
 		wfRestoreWarnings();
 		return $isValid;
+	}
+	
+	/**
+	 * Whether 'Regex Fun' extension is available in this wiki to take over preg_replace handling
+	 * for '#arraysearcharray' function.
+	 */
+	static function hasRegexFunSupport() {
+		static $support = null;
+		if( $support === null ) {
+			$support = (
+					defined( 'ExtRegexFun::VERSION' )
+					&& version_compare( ExtRegexFun::VERSION, '1.0.1', '>=' )
+			);
+		}
+		return $support;
 	}
 }
