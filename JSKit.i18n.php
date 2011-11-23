@@ -341,14 +341,14 @@ $messages['sq'] = array(
 	'jskit-desc' => 'Integron mjetet js-kit në një faqe wiki',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'jskit-desc' => 'Интегрише js-kit алате у Вики-чланак',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
