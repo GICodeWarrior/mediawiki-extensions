@@ -421,7 +421,7 @@ $messages['ksh'] = array(
 	'categoryonupload-none' => '-',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author George Animal
  */
 $messages['ku-latn'] = array(
@@ -702,7 +702,7 @@ $messages['sr-ec'] = array(
 	'categoryonupload-none' => '-',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
