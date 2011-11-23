@@ -102,7 +102,7 @@ $messages['de'] = array(
 	'signupapi-invalidemailaddress' => 'Die E-Mail-Adresse ist ungültig.',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Kghbln
  */
 $messages['de-formal'] = array(
