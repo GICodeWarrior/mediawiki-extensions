@@ -54,7 +54,6 @@ $messages['be-tarask'] = array(
 	'webfonts-desc' => 'Дазваляе ўбудоўваць шрыфты на старонкі',
 	'webfonts-load' => 'Выбраць шрыфт',
 	'webfonts-reset' => 'Скінуць',
-	'webfonts-disable-preference' => 'Забараніць убудаваньне шрыфтоў (WebFonts)',
 );
 
 /** Bengali (বাংলা)
@@ -65,7 +64,6 @@ $messages['bn'] = array(
 	'webfonts-desc' => 'পাতায় ফন্ট সন্নিবেশ',
 	'webfonts-load' => 'ফন্ট নির্বাচন',
 	'webfonts-reset' => 'পুনরায় আরম্ভ',
-	'webfonts-disable-preference' => 'ফন্ট সন্নিবেশ (ওয়েবফন্টস) নিস্ক্রিয়',
 );
 
 /** Breton (Brezhoneg)
@@ -77,7 +75,6 @@ $messages['br'] = array(
 	'webfonts-desc' => "Ensoc'hañ a ra ar fontoù er pajennoù",
 	'webfonts-load' => 'Diuzañ ar font',
 	'webfonts-reset' => 'Adderaouekaat',
-	'webfonts-disable-preference' => "Diweredekaat an ensoc'hañ fontoù (Fontoù Kenrouedad)",
 );
 
 /** Bosnian (Bosanski)
@@ -87,7 +84,6 @@ $messages['bs'] = array(
 	'webfonts' => 'WebFonts',
 	'webfonts-desc' => 'Ugradnja fontova na stranice',
 	'webfonts-load' => 'Odaberi font',
-	'webfonts-disable-preference' => 'Onemogući ugradnju fontova (WebFonts)',
 );
 
 /** Danish (Dansk)
@@ -120,7 +116,6 @@ $messages['es'] = array(
 	'webfonts-desc' => 'Incrustar tipografías en las páginas',
 	'webfonts-load' => 'Seleccionar tipografía',
 	'webfonts-reset' => 'Restablecer',
-	'webfonts-disable-preference' => 'Desactivar la incrustación de tipografías (WebFonts)',
 );
 
 /** Persian (فارسی)
@@ -132,7 +127,6 @@ $messages['fa'] = array(
 	'webfonts-desc' => 'جاسازی قلم‌ها در صفحه‌ها',
 	'webfonts-load' => 'انتخاب قلم',
 	'webfonts-reset' => 'بازنشانی',
-	'webfonts-disable-preference' => 'غیرفعال‌کردن جاسازی قلم (وب‌قلم)',
 );
 
 /** French (Français)
@@ -232,7 +226,6 @@ $messages['id'] = array(
 	'webfonts-desc' => 'Menyertakan fon (huruf) dalam halaman',
 	'webfonts-load' => 'Pilih fon',
 	'webfonts-reset' => 'Setel ulang',
-	'webfonts-disable-preference' => 'Nonaktifkan penyertaan fon (WebFonts)',
 );
 
 /** Iloko (Ilokano)
@@ -253,7 +246,6 @@ $messages['it'] = array(
 	'webfonts' => 'WebFonts',
 	'webfonts-desc' => 'Incorpora caratteri nelle pagine',
 	'webfonts-load' => 'Seleziona il tipo di carattere',
-	'webfonts-disable-preference' => "Disattiva l'incorporazione dei caratteri (WebFont)",
 );
 
 /** Japanese (日本語)
@@ -265,7 +257,6 @@ $messages['ja'] = array(
 	'webfonts-desc' => 'ページにフォントを埋め込みます。',
 	'webfonts-load' => 'フォントを選択',
 	'webfonts-reset' => 'リセット',
-	'webfonts-disable-preference' => 'フォントの埋め込み ( WebFonts ) を無効化',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -364,7 +355,6 @@ $messages['no'] = array(
 	'webfonts' => 'WebFonts',
 	'webfonts-desc' => 'Bygg inn fonter i sider',
 	'webfonts-load' => 'Velg font',
-	'webfonts-disable-preference' => 'Deaktiver innbygging av fonter (WebFonts)',
 );
 
 /** Oriya (ଓଡ଼ିଆ)
@@ -408,7 +398,6 @@ $messages['pt'] = array(
 	'webfonts-desc' => 'Tipos de letra incorporados nas páginas',
 	'webfonts-load' => 'Seleccione o tipo',
 	'webfonts-reset' => 'Reiniciar',
-	'webfonts-disable-preference' => 'Desactivar a incorporação de tipos (TiposDeLetraIncorporados)',
 );
 
 /** Romanian (Română)
@@ -427,10 +416,9 @@ $messages['ru'] = array(
 	'webfonts-desc' => 'Позволяет встраивать шрифты на страницы',
 	'webfonts-load' => 'Выбрать шрифт',
 	'webfonts-reset' => 'Сбросить',
-	'webfonts-disable-preference' => 'Отключить встраивание шрифтов (WebFonts)',
 );
 
-/** Sanskrit (संस्कृत)
+/** Sanskrit (संस्कृतम्)
  * @author Bhawani Gautam
  */
 $messages['sa'] = array(
@@ -452,14 +440,13 @@ $messages['sl'] = array(
 	'webfonts-enable-preference' => 'Omogoči vdelavo pisav (SpletnePisave)',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  */
 $messages['sr-ec'] = array(
 	'webfonts' => 'Веб фонтови',
 	'webfonts-desc' => 'Угради фонтове на страницама',
 	'webfonts-load' => 'Изабери фонт',
-	'webfonts-disable-preference' => 'Онемогући уграђивање фонта',
 );
 
 /** Swedish (Svenska)
@@ -470,7 +457,6 @@ $messages['sv'] = array(
 	'webfonts-desc' => 'Bäddar in typsnitt i sidor',
 	'webfonts-load' => 'Välj typsnitt',
 	'webfonts-reset' => 'Återställ',
-	'webfonts-disable-preference' => 'Inaktivera typsnittsinbäddning (WebFonts)',
 );
 
 /** Tamil (தமிழ்)
@@ -491,7 +477,6 @@ $messages['tl'] = array(
 	'webfonts' => 'WebFonts',
 	'webfonts-desc' => 'Magbaon ng mga estilo ng titik sa mga pahina',
 	'webfonts-load' => 'Pumili ng estilo ng titik',
-	'webfonts-disable-preference' => 'Huwag paganahin ang pagbabaon ng estilo ng titik (WebFonts)',
 );
 
 /** Turkish (Türkçe)
@@ -517,6 +502,5 @@ $messages['vi'] = array(
 	'webfonts-desc' => 'Nhúng phông chữ vào các trang',
 	'webfonts-load' => 'Chọn phông chữ',
 	'webfonts-reset' => 'Mặc định lại',
-	'webfonts-disable-preference' => 'Tắt các phông chữ được nhúng vào (Phông chữ Web)',
 );
 

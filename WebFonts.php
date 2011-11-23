@@ -60,5 +60,3 @@ $wgResourceModules['ext.webfonts.core'] = array(
 	'dependencies' =>  'jquery.cookie' ,
 	'position' => 'top',
 );
-
-
