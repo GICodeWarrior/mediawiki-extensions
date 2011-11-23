@@ -635,7 +635,7 @@ $messages['sl'] = array(
 	'icon-desc' => 'Omogoča vam uporabo slik kot ikone in povezave ikon',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -644,7 +644,7 @@ $messages['sr-ec'] = array(
 	'icon-desc' => 'Омогућује коришћење слика као икона и њихових спољашњих веза',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -691,7 +691,7 @@ $messages['te'] = array(
 	'icon-desc' => 'బొమ్మలను ప్రతీకాలుగానూ మరియు ప్రతీకపు లింకులుగాను వాడుకునే వీలుకల్పిస్తుంది',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -699,7 +699,7 @@ $messages['tg-cyrl'] = array(
 	'icon-badwidth' => 'Васеъии номуносиб',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
