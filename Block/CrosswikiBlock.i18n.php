@@ -1046,8 +1046,8 @@ Volver a:
  * @author Jocke Pirat
  */
 $messages['got'] = array(
-	'crosswikiblock-reason' => 'Faírina:',
-	'crosswikiunblock-reason' => 'Faírina:',
+	'crosswikiblock-reason' => '𐍆𐌰𐌹𐍂𐌹𐌽𐌰:',
+	'crosswikiunblock-reason' => '𐍆𐌰𐌹𐍂𐌹𐌽𐌰:',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -2579,7 +2579,7 @@ $messages['sl'] = array(
 	'crosswikiunblock-reason' => 'Razlog:',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
@@ -2596,7 +2596,7 @@ $messages['sr-ec'] = array(
 	'crosswikiblock-noblock' => 'Овај корисник није блокиран.',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -2783,7 +2783,7 @@ $messages['tet'] = array(
 	'crosswikiunblock-reason' => 'Motivu:',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -2815,7 +2815,7 @@ $messages['tg-cyrl'] = array(
 * [[$4]]",
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
