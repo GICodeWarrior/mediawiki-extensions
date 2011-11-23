@@ -2827,7 +2827,7 @@ $messages['sr-ec'] = array(
 	'qp_results_line_qucl' => '$1: $2 $3',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'qp_desc' => 'Omogućava pokretanje anketa',
 	'qp_result_NA' => 'Nije odgovoreno',
@@ -3022,7 +3022,7 @@ $messages['tr'] = array(
 	'qp_error_no_answer' => 'Cevaplanmamış teklif',
 );
 
-/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+/** Tatar (Cyrillic script) (Татарча)
  * @author Ильнар
  */
 $messages['tt-cyrl'] = array(
