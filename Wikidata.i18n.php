@@ -8078,7 +8078,7 @@ $messages['ku'] = array(
 	'ow_Source' => 'Çavkanî',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author Bangin
  * @author George Animal
  */
@@ -11976,7 +11976,7 @@ $messages['sco'] = array(
 	'ow_suggest_next' => 'Neist',
 );
 
-/** Serbo-Croatian (Srpskohrvatski / Српскохрватски)
+/** Serbo-Croatian (Srpskohrvatski)
  * @author OC Ripper
  */
 $messages['sh'] = array(
@@ -12690,7 +12690,7 @@ $messages['sr-ec'] = array(
 	'prefs-omegawiki' => 'Омегавики',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  * @author Rancher
  * @author Жељко Тодоровић
@@ -13597,7 +13597,7 @@ $messages['tet'] = array(
 	'copy' => 'Wikidata: Kopia',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -13676,7 +13676,7 @@ $messages['tg-cyrl'] = array(
 Шояд шумо бевосита ба ин саҳифа омадед? Маъмулан шумо ниёз дар инҷо буданро надоред.',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
@@ -14234,7 +14234,7 @@ $messages['tr'] = array(
 	'ow_shown_datasets' => 'Gösterilen veri dizileri',
 );
 
-/** ئۇيغۇرچە (ئۇيغۇرچە)
+/** Uyghur (Arabic script) (ئۇيغۇرچە)
  * @author Alfredie
  */
 $messages['ug-arab'] = array(
@@ -14243,7 +14243,7 @@ $messages['ug-arab'] = array(
 	'ow_Language' => 'تىل',
 );
 
-/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
+/** Uyghur (Latin script) (Uyghurche‎)
  * @author Jose77
  */
 $messages['ug-latn'] = array(
