@@ -760,7 +760,7 @@ $messages['jv'] = array(
 	'edituser-dosearch' => 'Golèk',
 );
 
-/** Kazakh (Cyrillic) (Қазақша (Cyrillic))
+/** Kazakh (Cyrillic script) (‪Қазақша (кирил)‬)
  * @author GaiJin
  */
 $messages['kk-cyrl'] = array(
@@ -836,7 +836,7 @@ $messages['ksh'] = array(
 	'right-edituser-exempt' => 'Kann de Enstellunge nit fun andere ändere lohße',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author Bangin
  * @author George Animal
  */
@@ -1316,7 +1316,7 @@ $messages['sr-ec'] = array(
 	'right-edituser-exempt' => 'Други не могу да мењају подешавања овог корисника',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -1405,7 +1405,7 @@ $messages['tet'] = array(
 	'edituser-nouser' => 'Uza-na\'in "$1" la iha.',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -1416,7 +1416,7 @@ $messages['tg-cyrl'] = array(
 	'edituser-exempt' => 'Корбари мушаххасшударо наметавон вироиш кард',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
@@ -1487,7 +1487,7 @@ $messages['tr'] = array(
 	'right-edituser-exempt' => 'Başkaları bu kullanıcının tercihlerini düzenleyemez',
 );
 
-/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+/** Tatar (Cyrillic script) (Татарча)
  * @author Ильнар
  * @author Рашат Якупов
  */
