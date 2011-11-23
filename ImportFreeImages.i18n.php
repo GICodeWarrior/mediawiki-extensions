@@ -1297,7 +1297,7 @@ $messages['sl'] = array(
 	'importfreeimages_size_original' => 'Izvirno',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Verlor
  * @author Михајло Анђелковић
@@ -1315,7 +1315,7 @@ $messages['sr-ec'] = array(
 	'importfreeimages_size_original' => 'Оригинална величина',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'importfreeimages' => 'Uvezi slobodne slike',
 	'importfreeimages_owner' => 'Autor',
@@ -1422,7 +1422,7 @@ $messages['tet'] = array(
 	'importfreeimages_next' => 'Oinmai $1',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -1432,7 +1432,7 @@ $messages['tg-cyrl'] = array(
 	'importfreeimages_next' => 'Баъдӣ $1',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
