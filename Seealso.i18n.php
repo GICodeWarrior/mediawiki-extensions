@@ -384,7 +384,7 @@ $messages['ka'] = array(
 	'seealso' => 'იხილეთ აგრეთვე',
 );
 
-/** Kazakh (Cyrillic) (Қазақша (Cyrillic))
+/** Kazakh (Cyrillic script) (‪Қазақша (кирил)‬)
  * @author AlefZet
  */
 $messages['kk-cyrl'] = array(
@@ -622,7 +622,7 @@ $messages['sl'] = array(
 	'seealso-desc' => 'Lokalizirani naslovi »See also« z uporabo etikete <code><nowiki><seealso></nowiki></code>',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  */
 $messages['sr-ec'] = array(
@@ -663,14 +663,14 @@ $messages['te'] = array(
 	'seealso-desc' => "<code><nowiki><seealso></nowiki></code> అనే టాగుని వాడడం ద్వారా స్థానికీకరించిన 'ఇవి కూడా చూడండి' శీర్షికలు",
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
 	'seealso' => 'Нигаред низ',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
