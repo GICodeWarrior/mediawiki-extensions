@@ -277,7 +277,7 @@ $messages['sk'] = array(
 	'svgzoom-desc' => 'Pridáva možnosti posúvania a približovania do prehliadača SVG súborov MediaWiki',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -285,7 +285,7 @@ $messages['sr-ec'] = array(
 	'svgzoom-desc' => 'Додаје могућност панорамирања и увећавања SVG датотека',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'svgzoom-desc' => 'Dodaje MedijaVikiju mogućnost skrolovanja po i uvećavanja SVG slika',
 );
