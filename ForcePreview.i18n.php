@@ -572,14 +572,14 @@ $messages['te'] = array(
 	'forcepreview' => 'పేజీని భద్రపరచండి (ముందుగా సరిచూడండి)',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
 	'forcepreview' => 'Захираи саҳифа (пешнамоишро аввал истифода баред)',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
