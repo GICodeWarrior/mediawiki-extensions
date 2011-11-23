@@ -2149,7 +2149,7 @@ $messages['sr-ec'] = array(
 	'right-changeauthor' => 'Промени аутора ревизије',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -2313,7 +2313,7 @@ $messages['tet'] = array(
 	'changeauthor-pagenameform-go' => 'Bá',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -2342,7 +2342,7 @@ $messages['tg-cyrl'] = array(
 	'changeauthor-logpagename' => 'Гузориши тағйири муаллиф',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
@@ -2439,14 +2439,14 @@ Eğer bu hata görünmeye devam ederse, muhtemelen veritabanı bozulmuştur.',
 	'right-changeauthor' => 'Bir revizyonun yazarını değiştir',
 );
 
-/** ئۇيغۇرچە (ئۇيغۇرچە)
+/** Uyghur (Arabic script) (ئۇيغۇرچە)
  * @author Alfredie
  */
 $messages['ug-arab'] = array(
 	'changeauthor-pagenameform-go' => 'كۆچۈش',
 );
 
-/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
+/** Uyghur (Latin script) (Uyghurche‎)
  * @author Jose77
  */
 $messages['ug-latn'] = array(
