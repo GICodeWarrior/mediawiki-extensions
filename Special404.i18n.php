@@ -238,17 +238,17 @@ Snano chceš sej slědowacu stronu wobhladać:
 /** Hungarian (Magyar)
  * @author BáthoryPéter
  * @author Dani
+ * @author Dj
  */
 $messages['hu'] = array(
+	'special404-desc' => 'Alternatív megjelenítést biztosít a 404 Nem található hibának',
 	'error404' => '404 Nem található',
 	'special404-body' => 'A kért URL nem található. 
 
 Biztos ezt akartad beírni: {{fullurl:$1}}?
 
-Esetleg próbál kresni:
-* [[{{MediaWiki:Mainpage}}|A kezdőlapon
-
-]]',
+Esetleg próbálj keresni:
+* [[{{MediaWiki:Mainpage}}|A kezdőlapon]]',
 );
 
 /** Interlingua (Interlingua)
@@ -496,7 +496,7 @@ Marahil ay nais mong tumingin doon sa:
 * [[{{MediaWiki:Mainpage}}|Ang pangunahing pahina]]',
 );
 
-/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+/** Tatar (Cyrillic script) (Татарча)
  * @author Ильнар
  */
 $messages['tt-cyrl'] = array(
