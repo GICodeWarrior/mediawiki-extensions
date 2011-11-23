@@ -343,7 +343,7 @@ $messages['fr'] = array(
 	'wikitweet-delete' => 'supprimer',
 	'wikitweet-inform' => "via l'Informateur",
 	'wikitweet-private' => 'privé',
-	'wikitweet-answer' => 'Citer',
+	'wikitweet-answer' => 'Répondre à',
 	'wikitweet-anonymous' => 'anonyme',
 	'wikitweet-tweets-tagged' => 'Tweets taggés',
 	'wikitweet-back-timeline' => 'Retour au flux',
@@ -369,7 +369,7 @@ $messages['fr'] = array(
 	'wikitweet-mailsent' => 'mail envoyé',
 	'wikitweet-viaroom' => 'via room',
 	'wikitweet-alertsolved' => 'Une de vos alertes a été résolue dans la salle',
-	'wikitweet-cannotparse' => 'Ne peux pas être parsé'
+	'wikitweet-cannotparse' => 'Ne peux pas être parsé',
 );
 
 /** Franco-Provençal (Arpetan)
