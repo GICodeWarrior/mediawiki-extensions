@@ -803,7 +803,7 @@ $messages['sk'] = array(
 	'filelist-image-desc' => 'popis',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
@@ -816,7 +816,7 @@ $messages['sr-ec'] = array(
 	'filelist-image-desc' => 'опис',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -889,7 +889,7 @@ $messages['te'] = array(
 	'filelist-image-desc' => 'వివరణ',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -899,7 +899,7 @@ $messages['tg-cyrl'] = array(
 	'filelist-image-desc' => 'тавсиф',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
@@ -939,7 +939,7 @@ $messages['tr'] = array(
 	'filelist-image-desc' => 'açkl',
 );
 
-/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+/** Tatar (Cyrillic script) (Татарча)
  * @author Rinatus
  * @author Ильнар
  */
