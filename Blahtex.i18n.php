@@ -3350,7 +3350,7 @@ Ste namesto tega morda nameravali uporabiti »$2«?',
 	'math_UnrecognisedCommand' => 'Neprepoznani ukaz »$1«',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
@@ -3409,7 +3409,7 @@ $messages['sr-ec'] = array(
 Покушајте да употребите команду "$3{...}".',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -3685,7 +3685,7 @@ $messages['te'] = array(
 	'math_UnrecognisedCommand' => '"$1" అనేది గుర్తుతెలియని ఆదేశం',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -3756,7 +3756,7 @@ $messages['tg-cyrl'] = array(
 Ба истифодаи фармони "$3{...}" кӯшиш кунед.',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
