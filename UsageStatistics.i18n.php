@@ -1458,7 +1458,7 @@ $messages['ksh'] = array(
 	'right-viewsystemstats' => 'Dem [[Special:UserStats|Wiki sing Jebruchs_Shtatistike]] aanloore',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author George Animal
  */
 $messages['ku-latn'] = array(
@@ -2172,7 +2172,7 @@ $messages['sk'] = array(
 	'right-viewsystemstats' => 'Zobraziť [[Special:UserStats|štatistiku použitia wiki]]',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
@@ -2205,7 +2205,7 @@ $messages['sr-ec'] = array(
 	'usagestatistics-editpages' => 'Статистике страница индивидуалних корисника $1',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  * @author Rancher
  * @author Жељко Тодоровић
@@ -2341,7 +2341,7 @@ $messages['te'] = array(
 	'right-viewsystemstats' => '[[Special:UserStats|వికీ వాడుక గణాంకాల]]ని చూడగలగటం',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -2365,7 +2365,7 @@ $messages['tg-cyrl'] = array(
 	'usagestatisticscalselect' => 'Интихоб кардан',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
