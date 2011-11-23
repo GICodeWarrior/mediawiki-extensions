@@ -156,7 +156,7 @@ $messages['bg'] = array(
 	'metadata_help' => 'Метаданни:',
 );
 
-/** Bahasa Banjar (Bahasa Banjar)
+/** Banjar (Bahasa Banjar)
  * @author Ezagren
  */
 $messages['bjn'] = array(
@@ -232,14 +232,14 @@ $messages['cps'] = array(
 	'metadata_help' => 'Metadata',
 );
 
-/** Crimean Turkish (Latin) (Qırımtatarca (Latin))
+/** Crimean Turkish (Latin script) (‪Qırımtatarca (Latin)‬)
  * @author Don Alessandro
  */
 $messages['crh-latn'] = array(
 	'metadata_help' => 'Meta malümatı:',
 );
 
-/** Crimean Turkish (Cyrillic) (Qırımtatarca (Cyrillic))
+/** Crimean Turkish (Cyrillic script) (‪Къырымтатарджа (Кирилл)‬)
  * @author Don Alessandro
  */
 $messages['crh-cyrl'] = array(
@@ -491,7 +491,7 @@ $messages['hi'] = array(
 	'metadata_help' => 'मेटाडाटा:',
 );
 
-/** Fiji Hindi (Latin) (Fiji Hindi (Latin))
+/** Fiji Hindi (Latin script) (Fiji Hindi)
  * @author Thakurji
  */
 $messages['hif-latn'] = array(
@@ -638,12 +638,12 @@ $messages['kk-arab'] = array(
 	'metadata_help' => 'قوسىمشا دەرەكتەر:',
 );
 
-/** Kazakh (Cyrillic) (Қазақша (Cyrillic)) */
+/** Kazakh (Cyrillic script) (‪Қазақша (кирил)‬) */
 $messages['kk-cyrl'] = array(
 	'metadata_help' => 'Қосымша деректер:',
 );
 
-/** Kazakh (Latin) (Қазақша (Latin)) */
+/** Kazakh (Latin script) (‪Qazaqşa (latın)‬) */
 $messages['kk-latn'] = array(
 	'metadata_help' => 'Qosımşa derekter:',
 );
@@ -684,7 +684,7 @@ $messages['ksh'] = array(
 	'metadata_help' => 'Metta-Daate:',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author Bangin
  * @author Gomada
  */
@@ -1030,7 +1030,7 @@ $messages['rue'] = array(
 	'metadata_help' => 'Метадата:',
 );
 
-/** Sanskrit (संस्कृत)
+/** Sanskrit (संस्कृतम्)
  * @author Hemant wikikosh1
  */
 $messages['sa'] = array(
@@ -1091,14 +1091,14 @@ $messages['sgs'] = array(
 	'metadata_help' => 'Metadoumenīs:',
 );
 
-/** Serbo-Croatian (Srpskohrvatski / Српскохрватски)
+/** Serbo-Croatian (Srpskohrvatski)
  * @author OC Ripper
  */
 $messages['sh'] = array(
 	'metadata_help' => 'Metapodaci:',
 );
 
-/** Tachelhit (Tašlḥiyt)
+/** Tachelhit (Tašlḥiyt/ⵜⴰⵛⵍⵃⵉⵜ)
  * @author Dalinanir
  */
 $messages['shi'] = array(
@@ -1139,7 +1139,7 @@ $messages['sq'] = array(
 	'metadata_help' => 'Metadata:',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -1147,7 +1147,7 @@ $messages['sr-ec'] = array(
 	'metadata_help' => 'Метаподаци:',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'metadataedit-desc' => 'Ubacuje kategorije, jezičke veze i odobrene šablone u odvojenu kutijicu za vreme izmene strana',
 	'metadata_help' => 'Metapodaci:',
@@ -1221,14 +1221,14 @@ $messages['te'] = array(
 	'metadata_help' => 'మెటాడేటా:',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
 	'metadata_help' => 'Метадода:',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
@@ -1260,14 +1260,14 @@ $messages['tr'] = array(
 	'metadata_help' => 'Metadata:',
 );
 
-/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+/** Tatar (Cyrillic script) (Татарча)
  * @author Himiq Dzyu
  */
 $messages['tt-cyrl'] = array(
 	'metadata_help' => 'Мета-мәгълүматлар:',
 );
 
-/** ئۇيغۇرچە (ئۇيغۇرچە)
+/** Uyghur (Arabic script) (ئۇيغۇرچە)
  * @author Sahran
  */
 $messages['ug-arab'] = array(
