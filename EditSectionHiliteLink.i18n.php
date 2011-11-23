@@ -348,14 +348,14 @@ $messages['sl'] = array(
 	'editsectionhilitelink-desc' => 'Označi ustrezen razdelek strani, ko premaknete miško na povezavo za urejanje',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'editsectionhilitelink-desc' => 'Истиче одговарајући одељак стране када се мишем пређе преко везе за његову измену',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
