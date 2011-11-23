@@ -515,7 +515,7 @@ $messages['ksh'] = array(
 	'apisb-query-list' => 'Leste',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author George Animal
  */
 $messages['ku-latn'] = array(
