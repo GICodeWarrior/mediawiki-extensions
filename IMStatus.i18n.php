@@ -1474,7 +1474,7 @@ Identifikátor, ktorý musíte zadať, sú písmená a číslice medzi „$2” 
 	'imstatus_yahoo_style' => 'štýl tlačidla od $1 (najväčší) do $2 (najmenší). $3 a $4 slúžia pre hlasovú poštu.',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -1494,7 +1494,7 @@ $messages['sr-ec'] = array(
 	'imstatus_xfire_size' => 'величина дугмета, од $1 (највеће) до $2 (најмање).',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -1640,7 +1640,7 @@ $messages['tr'] = array(
 	'imstatus_xfire_size' => 'düğme boyutu, $1 (en büyük) ile $2 (en küçük) arasında.',
 );
 
-/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+/** Tatar (Cyrillic script) (Татарча)
  * @author Ерней
  */
 $messages['tt-cyrl'] = array(
