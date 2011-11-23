@@ -815,7 +815,7 @@ $messages['ksh'] = array(
 	'chemFunctions_ChemFormInputError' => "'''Chemform:''' Fähler em enjejovve Tex!",
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author Bangin
  * @author Welathêja
  */
@@ -1257,7 +1257,7 @@ $messages['sl'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: Napaka pri vnosu!',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -1272,7 +1272,7 @@ $messages['sr-ec'] = array(
 	'chemFunctions_ChemFormInputError' => 'ХемФормула: грешка!',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -1378,7 +1378,7 @@ $messages['te'] = array(
 	'chemFunctions_Name' => 'IUPAC పేరు',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -1391,7 +1391,7 @@ $messages['tg-cyrl'] = array(
 	'chemFunctions_Formula' => 'Қоида',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
