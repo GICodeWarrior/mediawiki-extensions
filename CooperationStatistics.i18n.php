@@ -834,7 +834,7 @@ Pozri aj [[Special:MostRevisors|'''stránky s najväčším počtom kontrolórov
 	'cooperationstatistics-legendmore' => 'alebo viac redaktorov.',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
@@ -848,7 +848,7 @@ $messages['sr-ec'] = array(
 	'cooperationstatistics-nbmoreusers' => '{{PLURAL:$2|има}} $1 или више уредника',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'cooperationstatistics-tablearticle' => 'Broj strana',
 	'cooperationstatistics-tablevalue' => 'Broj urednika',
