@@ -25,7 +25,7 @@ $messages['en'] = array(
 
 	// Rights
 	'right-reviewsadmin' => 'Manage reviews',
-	'right-review' => 'Post reviews',
+	'right-postreview' => 'Post reviews',
 
 	'action-reviewsadmin' => 'manage reviews',
 	'action-postreview' => 'post reviews',
