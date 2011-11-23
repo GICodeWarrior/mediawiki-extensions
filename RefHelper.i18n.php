@@ -897,7 +897,7 @@ $messages['ja'] = array(
 [[Special:RefHelper|参考文献を手動で追加]]するか、または[[Special:RefSearch|追加する引用を検索]]できます。',
 );
 
-/** Kazakh (Cyrillic) (Қазақша (Cyrillic))
+/** Kazakh (Cyrillic script) (‪Қазақша (кирил)‬)
  * @author GaiJin
  */
 $messages['kk-cyrl'] = array(
@@ -967,7 +967,7 @@ $messages['ksh'] = array(
 Do kanns [[Special:RefHelper|sellver ene Verwieß schrieve]] udder [[Special:RefSearch|noh dämm Zitaat för et Zohfööje söhke lohße]].',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author George Animal
  */
 $messages['ku-latn'] = array(
@@ -1457,7 +1457,7 @@ $messages['sr-ec'] = array(
 	'refhelper-toolbox_link_create' => 'Направи навод',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'refhelper-label_authorsurname' => 'Prezime:',
 	'refhelper-title' => 'Naslov:',
