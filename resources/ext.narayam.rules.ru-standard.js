@@ -1,5 +1,5 @@
 /**
- * Trasliteration rules table for standard Russian keyboard
+ * Transliteration rules table for standard Russian keyboard
  * @author Amir (Алексей) Aharoni ([[User:Amire80]])
  * @date 2011-11-21
  * License: GPLv3, CC-BY-SA 3.0
@@ -81,7 +81,7 @@ var rules = [
 ['!', '', '!'],                     // 1
 ['@', '', '"'],                     // 2
 ['#', '', '№'],                     // 3
-['\\$', '', ';'],                     // 4
+['\\$', '', ';'],                   // 4
 // '%' is the same                  // 5
 ['^', '', ':'],                     // 6
 ['&', '', '?'],                     // 7
