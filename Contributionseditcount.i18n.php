@@ -637,7 +637,7 @@ $messages['sl'] = array(
 	'contributionseditcount-desc' => 'Prikaže števec urejanj na [[Special:Contributions|strani uporabnikovih prispevkov]]',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -645,7 +645,7 @@ $messages['sr-ec'] = array(
 	'contributionseditcount-desc' => 'Приказује бројач измена на [[Special:Contributions|страни корисничких доприноса]]',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -695,14 +695,14 @@ $messages['te'] = array(
 	'contributionseditcount-desc' => '[[Special:Contributions|వాడుకరి చేర్పుల పేజీ]]లో మార్పుల సంఖ్యని చూపిస్తుంది',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
 	'contributionseditcount' => 'Ин корбар $1 вироишҳо дорад.',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
