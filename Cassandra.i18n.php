@@ -60,7 +60,7 @@ $messages['be-tarask'] = array(
 	'cassandra-desc' => 'Захаваньне тэксту вэрсіі ў базе зьвестак [http://cassandra.apache.org/ Apache Cassandra]',
 );
 
-/** Bahasa Banjar (Bahasa Banjar)
+/** Banjar (Bahasa Banjar)
  * @author Ezagren
  * @author J Subhi
  */
@@ -369,7 +369,7 @@ $messages['ru'] = array(
 	'cassandra-desc' => 'Хранение текста версии страницы в базе данных [http://cassandra.apache.org/ Apache Cassandra]',
 );
 
-/** Tachelhit (Tašlḥiyt)
+/** Tachelhit (Tašlḥiyt/ⵜⴰⵛⵍⵃⵉⵜ)
  * @author Dalinanir
  */
 $messages['shi'] = array(
@@ -383,14 +383,14 @@ $messages['sl'] = array(
 	'cassandra-desc' => 'Shrani redakcije besedil v zbirko podatkov [http://cassandra.apache.org/ Apache Cassandra]',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Charmed94
  */
 $messages['sr-ec'] = array(
 	'cassandra-desc' => 'Смешта ревизију текста у [http://cassandra.apache.org Апаш Касандра] базу података',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'cassandra-desc' => 'Smešta reviziju teksta u [http://cassandra.apache.org Apaš Kasandra] bazu podataka',
 );
