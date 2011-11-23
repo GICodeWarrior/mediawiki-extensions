@@ -629,7 +629,7 @@ $messages['sr-ec'] = array(
 	'right-viewpiwik' => 'Преглед [[Special:Piwik|Piwik статистика]]',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Liangent
  * @author Michaello
  */
