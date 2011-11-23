@@ -533,7 +533,7 @@ $messages['sk'] = array(
 	'stalkerlog-log-text' => 'Toto je záznam prihlásení a odhlásení používateľov.',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -542,7 +542,7 @@ $messages['sr-ec'] = array(
 	'stalkerlog-log-type' => 'Историја логовања корисника',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
