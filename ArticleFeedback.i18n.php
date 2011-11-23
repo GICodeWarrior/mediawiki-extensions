@@ -1070,7 +1070,8 @@ $messages['ca'] = array(
 	'articlefeedback-pitch-survey-accept' => "Comença l'enquesta",
 	'articlefeedback-pitch-join-message' => 'Vols crear un compte?',
 	'articlefeedback-pitch-join-accept' => 'Crea un compte',
-	'articlefeedback-pitch-edit-accept' => 'Comença a editar',
+	'articlefeedback-pitch-edit-message' => 'Sabíeu que podeu modificar aquesta pàgina?',
+	'articlefeedback-pitch-edit-accept' => 'Modifica aquesta pàgina',
 	'articleFeedback-table-heading-page' => 'Pàgina',
 	'articleFeedback-table-heading-average' => 'Mitjana',
 );
@@ -3331,6 +3332,7 @@ $messages['hu'] = array(
 	'articlefeedback-pitch-edit-accept' => 'Oldal szerkesztése',
 	'articlefeedback-survey-message-success' => 'Köszönjük a kérdőív kitöltését!',
 	'articlefeedback-survey-message-error' => 'Hiba történt. Kérlek, próbáld meg később.',
+	'articlefeedback-privacyurl' => 'http://wikimediafoundation.org/wiki/Feedback_privacy_statement',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'A napi legjobbak és legrosszabbak',
 	'articleFeedback-table-caption-dailyhighs' => 'Legtöbbre értékelt szócikkek: $1',
 	'articleFeedback-table-caption-dailylows' => 'Legkevesebbre értékelt szócikkek: $1',
@@ -3732,11 +3734,13 @@ $messages['ja'] = array(
 	'articlefeedback-survey-submit' => '送信',
 	'articlefeedback-survey-title' => '質問に少しお答えください',
 	'articlefeedback-survey-thanks' => '調査に記入していただき、ありがとうございます。',
-	'articlefeedback-survey-disclaimer' => 'この機能を改善する助けとするために、お寄せいただいたご意見は匿名でウィキペディアコミュニティに共有される場合があります。',
+	'articlefeedback-survey-disclaimer' => '送信することにより、あなたはこれらの$1のもとでの透明性に同意することになります。',
+	'articlefeedback-survey-disclaimerlink' => '規約',
 	'articlefeedback-error' => 'エラーが発生しました。後でもう一度試してください。',
 	'articlefeedback-form-switch-label' => 'このページを評価',
 	'articlefeedback-form-panel-title' => 'このページを評価',
 	'articlefeedback-form-panel-explanation' => 'これは何？',
+	'articlefeedback-form-panel-explanation-link' => 'Project:記事評価',
 	'articlefeedback-form-panel-clear' => 'この評価を除去する',
 	'articlefeedback-form-panel-expertise' => 'この話題について、高度な知識を持っている（自由選択）',
 	'articlefeedback-form-panel-expertise-studies' => '関連する大学の学位を持っている',
@@ -3744,7 +3748,8 @@ $messages['ja'] = array(
 	'articlefeedback-form-panel-expertise-hobby' => '個人的に深い情熱を注いでいる',
 	'articlefeedback-form-panel-expertise-other' => '自分の知識源はこの中にない',
 	'articlefeedback-form-panel-helpimprove' => 'ウィキペディアを改善するための電子メールを受信する（自由選択）',
-	'articlefeedback-form-panel-helpimprove-privacy' => 'プライバシー・ポリシー',
+	'articlefeedback-form-panel-helpimprove-note' => 'あなたに確認メールを送ります。私たちの$1にしたがい、電子メールアドレスは外部と共有しません。',
+	'articlefeedback-form-panel-helpimprove-privacy' => 'フィードバックのプライバシーについての表明',
 	'articlefeedback-form-panel-submit' => '評価を送信',
 	'articlefeedback-form-panel-pending' => 'あなたの評価がまだ送信されていません',
 	'articlefeedback-form-panel-success' => '保存に成功',
@@ -3800,8 +3805,11 @@ $messages['ja'] = array(
 	'articleFeedback-table-caption-dailyhighsandlows' => '今日の最高値と最低値',
 	'articleFeedback-table-caption-dailyhighs' => '最も高い評価があるページ：$1',
 	'articleFeedback-table-caption-dailylows' => '最も低い評価があるページ：$1',
+	'articleFeedback-table-caption-weeklymostchanged' => '今週もっとも変わったもの',
+	'articleFeedback-table-caption-recentlows' => '最近低いもの',
 	'articleFeedback-table-heading-page' => 'ページ',
 	'articleFeedback-table-heading-average' => '平均',
+	'articleFeedback-copy-above-highlow-tables' => 'これは実験的な機能です。[$1 議論ページ]でフィードバックをお寄せください。',
 );
 
 /** Georgian (ქართული)
@@ -4074,7 +4082,7 @@ Ene schööne Jrohß!
 De Jemeinschaff vun {{GRAMMAR:Nominativ|{{SITENAME}}}}',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author George Animal
  */
 $messages['ku-latn'] = array(
@@ -7693,6 +7701,254 @@ $messages['zh-hant'] = array(
 * 最高或最低分的頁面：在過去24小時內至少得到10次評分的條目。平均值計算以過去24小時內提交的所有評分為準。
 * 近期低分：過去24小時內，在任何類別得到過70%或低分（2星或更低）的條目。只會展示在過去24小時內至少得到10次評分的條目。",
 	'articlefeedback-disable-preference' => '不在頁面顯示條目反饋部件',
+	'articlefeedback-emailcapture-response-body' => '您好！
+
+謝謝您表示願意幫助我們改善{{SITENAME}}。
+
+請花一點時間，點擊下面的鏈接來確認您的電子郵件：
+
+$1
+
+您還可以訪問：
+
+$2
+
+然後輸入下列確認碼：
+
+$3
+
+我們會在短期內聯繫您，並向您介紹幫助我們改善{{SITENAME}}的方式。
+
+如果這項請求並非由您發起，請忽略這封電子郵件，我們不會再向您發送任何郵件。
+
+祝好，致謝，
+{{SITENAME}}團隊',
+);
+
+/** Chinese (Hong Kong) (‪中文(香港)‬)
+ * @author 白布飘扬
+ */
+$messages['zh-hk'] = array(
+	'articlefeedback' => '條目評分公告板',
+	'articlefeedback-desc' => '條目評分',
+	'articlefeedback-survey-question-origin' => '當你開始這項統計調查的時候正在訪問哪個頁面？',
+	'articlefeedback-survey-question-whyrated' => '請告訴我們你今天為此頁打分的原因（選擇所有合適的選項）：',
+	'articlefeedback-survey-answer-whyrated-contribute-rating' => '我想對頁面的總體評價作貢獻',
+	'articlefeedback-survey-answer-whyrated-development' => '我希望我的評價能給此頁帶來正面的影響',
+	'articlefeedback-survey-answer-whyrated-contribute-wiki' => '我想對{{SITENAME}}做出貢獻',
+	'articlefeedback-survey-answer-whyrated-sharing-opinion' => '我喜歡分享我的觀點',
+	'articlefeedback-survey-answer-whyrated-didntrate' => '我今天沒有進行評價，但我希望對本功能作出反饋。',
+	'articlefeedback-survey-answer-whyrated-other' => '其他',
+	'articlefeedback-survey-question-useful' => '你認為提供的評分有用並清晰嗎？',
+	'articlefeedback-survey-question-useful-iffalse' => '為什麼？',
+	'articlefeedback-survey-question-comments' => '你還有什麼想說的嗎？',
+	'articlefeedback-survey-submit' => '提交',
+	'articlefeedback-survey-title' => '請回答幾個問題',
+	'articlefeedback-survey-thanks' => '謝謝您回答問卷。',
+	'articlefeedback-survey-disclaimer' => '如果你同意依此$1發布你的意見，請提交。',
+	'articlefeedback-survey-disclaimerlink' => '條款',
+	'articlefeedback-error' => '發生了錯誤。請稍後再試。',
+	'articlefeedback-form-switch-label' => '給本文評分',
+	'articlefeedback-form-panel-title' => '給本文評分',
+	'articlefeedback-form-panel-explanation' => '這是什麼？',
+	'articlefeedback-form-panel-explanation-link' => 'Project:条目评分工具',
+	'articlefeedback-form-panel-clear' => '移除該評分',
+	'articlefeedback-form-panel-expertise' => '我非常了解與本主題相關的知識（可選）',
+	'articlefeedback-form-panel-expertise-studies' => '我有與其有關的大學學位',
+	'articlefeedback-form-panel-expertise-profession' => '這是我專業的一部分',
+	'articlefeedback-form-panel-expertise-hobby' => '本人對此有深厚的興趣',
+	'articlefeedback-form-panel-expertise-other' => '我的知識來源不在此列',
+	'articlefeedback-form-panel-helpimprove' => '我想幫助改善維基百科，請給我發送一封電子郵件（可選）',
+	'articlefeedback-form-panel-helpimprove-note' => '我們將向您發送確認電子郵件。我們不會與任何人分享您的地址。$1',
+	'articlefeedback-form-panel-helpimprove-privacy' => '反饋隱私政策',
+	'articlefeedback-form-panel-submit' => '提交評分',
+	'articlefeedback-form-panel-pending' => '你的評分尚未提交',
+	'articlefeedback-form-panel-success' => '保存成功',
+	'articlefeedback-form-panel-expiry-title' => '你的評分已過期',
+	'articlefeedback-form-panel-expiry-message' => '請重新評估本頁並重新評分。',
+	'articlefeedback-report-switch-label' => '查看本頁評分',
+	'articlefeedback-report-panel-title' => '本頁評分',
+	'articlefeedback-report-panel-description' => '目前平均評分。',
+	'articlefeedback-report-empty' => '無評分',
+	'articlefeedback-report-ratings' => '$1人評級',
+	'articlefeedback-field-trustworthy-label' => '可信度',
+	'articlefeedback-field-trustworthy-tip' => '你覺得本條目有足夠的參考文獻，並且這些文獻的來源可靠嗎？',
+	'articlefeedback-field-trustworthy-tooltip-1' => '缺乏可靠來源',
+	'articlefeedback-field-trustworthy-tooltip-2' => '很少可靠來源',
+	'articlefeedback-field-trustworthy-tooltip-3' => '有很多可靠來源',
+	'articlefeedback-field-trustworthy-tooltip-4' => '來源相當可靠',
+	'articlefeedback-field-trustworthy-tooltip-5' => '來源絕對可靠',
+	'articlefeedback-field-complete-label' => '完整性',
+	'articlefeedback-field-complete-tip' => '您覺得本條目是否已經涵蓋了所有必要的內容？',
+	'articlefeedback-field-complete-tooltip-1' => '缺少絕大多數信息',
+	'articlefeedback-field-complete-tooltip-2' => '只含有少量信息',
+	'articlefeedback-field-complete-tooltip-3' => '包含關鍵信息，但還有所不足',
+	'articlefeedback-field-complete-tooltip-4' => '包含大部分關鍵的信息',
+	'articlefeedback-field-complete-tooltip-5' => '全面完整',
+	'articlefeedback-field-objective-label' => '客觀性',
+	'articlefeedback-field-objective-tip' => '你是否覺得本條目公正合理地描述了各方觀點？',
+	'articlefeedback-field-objective-tooltip-1' => '存在嚴重的偏見',
+	'articlefeedback-field-objective-tooltip-2' => '有一定偏見',
+	'articlefeedback-field-objective-tooltip-3' => '稍有偏見',
+	'articlefeedback-field-objective-tooltip-4' => '沒有明顯的偏見',
+	'articlefeedback-field-objective-tooltip-5' => '完全不帶偏見',
+	'articlefeedback-field-wellwritten-label' => '可讀性',
+	'articlefeedback-field-wellwritten-tip' => '你覺得本條目內容的組織和撰寫是否精心完美？',
+	'articlefeedback-field-wellwritten-tooltip-1' => '不知所云',
+	'articlefeedback-field-wellwritten-tooltip-2' => '難以理解',
+	'articlefeedback-field-wellwritten-tooltip-3' => '比較清晰',
+	'articlefeedback-field-wellwritten-tooltip-4' => '相當清晰',
+	'articlefeedback-field-wellwritten-tooltip-5' => '非常清晰',
+	'articlefeedback-pitch-reject' => '以後再說',
+	'articlefeedback-pitch-or' => '或者',
+	'articlefeedback-pitch-thanks' => '謝謝！您的評分已保存。',
+	'articlefeedback-pitch-survey-message' => '請花些時間完成簡短的調查。',
+	'articlefeedback-pitch-survey-accept' => '開始調查',
+	'articlefeedback-pitch-join-message' => '你要創建帳戶嗎？',
+	'articlefeedback-pitch-join-body' => '帳戶將幫助您跟蹤您所做的編輯，參與討論，並成為社區的一部分。',
+	'articlefeedback-pitch-join-accept' => '創建帳戶',
+	'articlefeedback-pitch-join-login' => '登入',
+	'articlefeedback-pitch-edit-message' => '您知道您可以編輯此頁嗎？',
+	'articlefeedback-pitch-edit-accept' => '編輯此頁',
+	'articlefeedback-survey-message-success' => '謝謝您回答問卷。',
+	'articlefeedback-survey-message-error' => '出現錯誤！
+請稍後再試。',
+	'articlefeedback-privacyurl' => 'http://wikimediafoundation.org/wiki/Feedback_privacy_statement',
+	'articleFeedback-table-caption-dailyhighsandlows' => '今日評分動態',
+	'articleFeedback-table-caption-dailyhighs' => '評分最高的條目：$1',
+	'articleFeedback-table-caption-dailylows' => '評分最低的條目：$1',
+	'articleFeedback-table-caption-weeklymostchanged' => '本週最多更改',
+	'articleFeedback-table-caption-recentlows' => '近期低點',
+	'articleFeedback-table-heading-page' => '頁面',
+	'articleFeedback-table-heading-average' => '平均',
+	'articleFeedback-copy-above-highlow-tables' => '這是一個試驗性功能。請在[$1 討論頁]提供反饋意見。',
+	'articlefeedback-dashboard-bottom' => "'''注意'''：我們仍將嘗試用各種不同的方式在面板上組織條目。目前，此面板包括下列條目：
+* 最高或最低分的頁面：在過去24小時內至少得到10次評分的條目。平均值計算以過去24小時內提交的所有評分為準。
+* 近期低分：過去24小時內，在任何類別得到過70%或低分（2星或更低）的條目。只會展示在過去24小時內至少得到10次評分的條目。",
+	'articlefeedback-disable-preference' => '不在頁面上顯示條目評分工具',
+	'articlefeedback-emailcapture-response-body' => '謝謝您表示願意幫助我們改善{{SITENAME}}。
+
+請花一點時間，點擊下面的鏈接來確認您的電子郵件：
+
+$1
+
+您還可以訪問：
+
+$2
+
+然後輸入下列確認碼：
+
+$3
+
+我們會在短期內聯繫您，並向您介紹幫助我們改善{{SITENAME}}的方式。
+
+如果這項請求並非由您發起，請忽略這封電子郵件，我們不會再向您發送任何郵件。
+
+祝好，致謝，
+{{SITENAME}}團隊',
+);
+
+/** Chinese (Taiwan) (‪中文(台灣)‬)
+ * @author 白布飘扬
+ */
+$messages['zh-tw'] = array(
+	'articlefeedback' => '條目評分公告板',
+	'articlefeedback-desc' => '條目評分',
+	'articlefeedback-survey-question-origin' => '當你開始這項統計調查的時候正在訪問哪個頁面？',
+	'articlefeedback-survey-question-whyrated' => '請告訴我們你今天為此頁打分的原因（選擇所有合適的選項）：',
+	'articlefeedback-survey-answer-whyrated-contribute-rating' => '我想對頁面的總體評價作貢獻',
+	'articlefeedback-survey-answer-whyrated-development' => '我希望我的評價能給此頁帶來正面的影響',
+	'articlefeedback-survey-answer-whyrated-contribute-wiki' => '我想對{{SITENAME}}做出貢獻',
+	'articlefeedback-survey-answer-whyrated-sharing-opinion' => '我喜歡分享我的觀點',
+	'articlefeedback-survey-answer-whyrated-didntrate' => '我今天沒有進行評價，但我希望對本功能作出反饋。',
+	'articlefeedback-survey-answer-whyrated-other' => '其他',
+	'articlefeedback-survey-question-useful' => '你認為提供的評分有用並清晰嗎？',
+	'articlefeedback-survey-question-useful-iffalse' => '為什麼？',
+	'articlefeedback-survey-question-comments' => '你還有什麼想說的嗎？',
+	'articlefeedback-survey-submit' => '提交',
+	'articlefeedback-survey-title' => '請回答幾個問題',
+	'articlefeedback-survey-thanks' => '謝謝您回答問卷。',
+	'articlefeedback-survey-disclaimer' => '如果你同意依此$1發布你的意見，請提交。',
+	'articlefeedback-survey-disclaimerlink' => '條款',
+	'articlefeedback-error' => '發生了錯誤。請稍後再試。',
+	'articlefeedback-form-switch-label' => '給本文評分',
+	'articlefeedback-form-panel-title' => '給本文評分',
+	'articlefeedback-form-panel-explanation' => '這是什麼？',
+	'articlefeedback-form-panel-explanation-link' => 'Project:条目评分工具',
+	'articlefeedback-form-panel-clear' => '移除該評分',
+	'articlefeedback-form-panel-expertise' => '我非常了解與本主題相關的知識（可選）',
+	'articlefeedback-form-panel-expertise-studies' => '我有與其有關學院/大學學位',
+	'articlefeedback-form-panel-expertise-profession' => '這是我專業的一部分',
+	'articlefeedback-form-panel-expertise-hobby' => '個人對此有深厚的興趣',
+	'articlefeedback-form-panel-expertise-other' => '此處未列出我的知識的來源',
+	'articlefeedback-form-panel-helpimprove' => '我想幫助改善維基百科，請給我發送一封電子郵件（可選）',
+	'articlefeedback-form-panel-helpimprove-note' => '我們將向您發送確認電子郵件。基於$1，我們不會與任何人分享您的地址。',
+	'articlefeedback-form-panel-helpimprove-privacy' => '反饋隱私政策',
+	'articlefeedback-form-panel-submit' => '提交評分',
+	'articlefeedback-form-panel-pending' => '你的評分尚未提交',
+	'articlefeedback-form-panel-success' => '保存成功',
+	'articlefeedback-form-panel-expiry-title' => '你的評分已過期',
+	'articlefeedback-form-panel-expiry-message' => '請重新評估本頁並重新評分。',
+	'articlefeedback-report-switch-label' => '查看本頁評分',
+	'articlefeedback-report-panel-title' => '本頁評分',
+	'articlefeedback-report-panel-description' => '目前平均評分',
+	'articlefeedback-report-empty' => '無評分',
+	'articlefeedback-report-ratings' => '$1人評分',
+	'articlefeedback-field-trustworthy-label' => '可信度',
+	'articlefeedback-field-trustworthy-tip' => '你覺得本條目有足夠的參考文獻，並且這些文獻的來源可靠嗎？',
+	'articlefeedback-field-trustworthy-tooltip-1' => '缺乏可靠來源',
+	'articlefeedback-field-trustworthy-tooltip-2' => '很少可靠来源',
+	'articlefeedback-field-trustworthy-tooltip-3' => '有很多可靠來源',
+	'articlefeedback-field-trustworthy-tooltip-4' => '來源相當可靠',
+	'articlefeedback-field-trustworthy-tooltip-5' => '來源絕對可靠',
+	'articlefeedback-field-complete-label' => '完整性',
+	'articlefeedback-field-complete-tip' => '您覺得本條目是否已經涵蓋了所有必要的內容？',
+	'articlefeedback-field-complete-tooltip-1' => '缺少絕大多數信息',
+	'articlefeedback-field-complete-tooltip-2' => '只含有少量信息',
+	'articlefeedback-field-complete-tooltip-3' => '包含關鍵信息，但仍有所不足',
+	'articlefeedback-field-complete-tooltip-4' => '包含了大部分關鍵信息',
+	'articlefeedback-field-complete-tooltip-5' => '全面完整',
+	'articlefeedback-field-objective-label' => '客觀性',
+	'articlefeedback-field-objective-tip' => '你覺得本條目是否已經公正合理地描述了各方觀點？',
+	'articlefeedback-field-objective-tooltip-1' => '存在嚴重的偏見',
+	'articlefeedback-field-objective-tooltip-2' => '有一定偏見',
+	'articlefeedback-field-objective-tooltip-3' => '稍有偏見',
+	'articlefeedback-field-objective-tooltip-4' => '沒有明顯的偏見',
+	'articlefeedback-field-objective-tooltip-5' => '完全不帶偏見',
+	'articlefeedback-field-wellwritten-label' => '可讀性',
+	'articlefeedback-field-wellwritten-tip' => '你覺得本條目內容的組織和撰寫是否精心完美？',
+	'articlefeedback-field-wellwritten-tooltip-1' => '不知所云',
+	'articlefeedback-field-wellwritten-tooltip-2' => '難以理解',
+	'articlefeedback-field-wellwritten-tooltip-3' => '比較清晰',
+	'articlefeedback-field-wellwritten-tooltip-4' => '相當清晰',
+	'articlefeedback-field-wellwritten-tooltip-5' => '非常清晰',
+	'articlefeedback-pitch-reject' => '以後再說',
+	'articlefeedback-pitch-or' => '或者',
+	'articlefeedback-pitch-thanks' => '謝謝！您的評分已保存。',
+	'articlefeedback-pitch-survey-message' => '請花點時間來完成簡短的調查。',
+	'articlefeedback-pitch-survey-accept' => '開始調查',
+	'articlefeedback-pitch-join-message' => '你想要創建帳戶嗎？',
+	'articlefeedback-pitch-join-body' => '帳戶將幫助您跟蹤您所做的編輯，參與討論，並成為社區的一部分。',
+	'articlefeedback-pitch-join-accept' => '創建帳戶',
+	'articlefeedback-pitch-join-login' => '登入',
+	'articlefeedback-pitch-edit-message' => '您知道您可以編輯此頁嗎？',
+	'articlefeedback-pitch-edit-accept' => '編輯本頁',
+	'articlefeedback-survey-message-success' => '謝謝您回答問卷。',
+	'articlefeedback-survey-message-error' => '出現錯誤！
+請稍後再試。',
+	'articlefeedback-privacyurl' => 'http://wikimediafoundation.org/wiki/Feedback_privacy_statement',
+	'articleFeedback-table-caption-dailyhighsandlows' => '今日評分動態',
+	'articleFeedback-table-caption-dailyhighs' => '評分最高的條目：$1',
+	'articleFeedback-table-caption-dailylows' => '評分最低的條目：$1',
+	'articleFeedback-table-caption-weeklymostchanged' => '本週最多更改',
+	'articleFeedback-table-caption-recentlows' => '近期低分',
+	'articleFeedback-table-heading-page' => '頁面',
+	'articleFeedback-table-heading-average' => '平均',
+	'articleFeedback-copy-above-highlow-tables' => '這是一項試驗性功能。請在[$1 討論頁]提供反饋意見。',
+	'articlefeedback-dashboard-bottom' => "'''注意'''：我們仍將嘗試用各種不同的方式在面板上組織條目。目前，此面板包括下列條目：
+* 最高或最低分的頁面：在過去24小時內至少得到10次評分的條目。平均值計算以過去24小時內提交的所有評分為準。
+* 近期低分：過去24小時內，在任何類別得到過70%或低分（2星或更低）的條目。只會展示在過去24小時內至少得到10次評分的條目。",
+	'articlefeedback-disable-preference' => '不在頁面上顯示條目評分工具',
 	'articlefeedback-emailcapture-response-body' => '您好！
 
 謝謝您表示願意幫助我們改善{{SITENAME}}。
