@@ -75,6 +75,7 @@ $messages['qqq'] = array(
 	'recordadmin-buttonsearch' => '{{Identical|Search}}',
 	'recordadmin-buttoncreate' => '{{Identical|Create}}',
 	'recordadmin-buttonreset' => '{{Identical|Reset}}',
+	'recordadmin-searchresult' => '{{Identical|Search results}}',
 	'recordadmin-buttonsave' => '{{Identical|Save}}',
 	'recordadmin-editlink' => '{{Identical|Edit}}',
 	'recordadmin-actions' => '',
@@ -1340,7 +1341,7 @@ $messages['ja'] = array(
 	'recordadmin-properties' => 'プロパティー',
 );
 
-/** Kazakh (Cyrillic) (Қазақша (Cyrillic))
+/** Kazakh (Cyrillic script) (‪Қазақша (кирил)‬)
  * @author GaiJin
  */
 $messages['kk-cyrl'] = array(
@@ -2081,7 +2082,7 @@ $messages['rue'] = array(
 	'recordadmin-actions' => 'Дїї',
 );
 
-/** Serbo-Croatian (Srpskohrvatski / Српскохрватски)
+/** Serbo-Croatian (Srpskohrvatski)
  * @author OC Ripper
  */
 $messages['sh'] = array(
@@ -2186,7 +2187,7 @@ $messages['sr-ec'] = array(
 	'recordadmin-export-pdf' => 'PDF',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  * @author Rancher
  */
