@@ -578,14 +578,14 @@ $messages['sk'] = array(
 	'right-protectsection' => 'Zamykať sekcie stránky',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'protectsection_forbidden' => 'Забрањено',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'protectsection_forbidden' => 'Zabranjeno',
 );
@@ -623,14 +623,14 @@ $messages['te'] = array(
 	'right-protectsection' => 'పుటల లోని విభాగాలను సంరక్షించడం',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
 	'protectsection_forbidden' => 'Мамнӯъ',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
