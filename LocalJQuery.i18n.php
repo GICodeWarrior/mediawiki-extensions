@@ -68,6 +68,13 @@ $messages['hsb'] = array(
 	'localjquery-desc' => 'jQuery z [[MediaWiki:JQuery.js]] z pomocu ResourceLoader začitać',
 );
 
+/** Hungarian (Magyar)
+ * @author Dj
+ */
+$messages['hu'] = array(
+	'localjquery-desc' => 'Betölti a jQuery-t a [[MediaWiki:JQuery.js]]-ből (ResourceLoader segítségével)',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
