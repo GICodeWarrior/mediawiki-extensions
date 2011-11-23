@@ -325,8 +325,10 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Dj
  */
 $messages['hu'] = array(
+	'categorymultisortchinese-desc' => 'Lehetőséget biztosít kínai írásjelek esetén a különböző rendezési módszerek szerint rendezett kategóriák megjelenítésére',
 	'categorymultisort-sortkey-name-mandarin-pinyin' => 'Mandarin: Pinyin',
 	'categorymultisort-sortkey-name-mandarin-bopomofo' => 'Mandarin: Bopomofo',
 	'categorymultisort-sortkey-name-mandarin-wadegiles' => 'Mandarin: Wade–Giles',
