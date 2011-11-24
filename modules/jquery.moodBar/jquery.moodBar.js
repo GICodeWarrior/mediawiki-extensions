@@ -19,25 +19,25 @@
 		 */
 		'submit': function( fbProps ) {
 			var	clientData = $.client.profile(),
-				fbProps = $.extend( {
+				fb = $.extend( {
 					'page': mw.config.get( 'wgPageName' ),
 					'editmode': mw.config.get( 'wgAction' ) == 'edit' ? 1 : 0
 				}, fbProps ),
 				apiRequest = {
 					'action': 'moodbar',
-					'page': fbProps.page,
-					'comment': fbProps.comment,
-					'anonymize': fbProps.anonymize,
+					'page': fb.page,
+					'comment': fb.comment,
+					'anonymize': fb.anonymize,
 					'useragent': clientData.name + '/' + clientData.versionNumber,
 					'system': clientData.platform,
-					'bucket': fbProps.bucket,
-					'type': fbProps.type,
+					'bucket': fb.bucket,
+					'type': fb.type,
 					'token': mw.config.get('mbEditToken'),
 					'format': 'json'
 				};
 				
 				// API treats any value as true.
-				if ( fbProps.editmode ) {
+				if ( fb.editmode ) {
 					apiRequest.editmode = true;
 				}
 
@@ -45,7 +45,7 @@
 				type: 'post',
 				url: mw.util.wikiScript( 'api' ),
 				data: apiRequest,
-				success: fbProps.callback,
+				success: fb.callback,
 				dataType: 'json'
 			} );
 		}
