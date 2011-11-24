@@ -61,7 +61,7 @@ class SpecialMyReviews extends SpecialPage {
 		else {
 			$review = Review::selectRow( null, array( 'id' => $subPage, 'user_id' => $this->getUser()->getId() ) );
 			
-			if ( $review == false ) {
+			if ( $review === false ) {
 				$this->getOutput()->addWikiMsg( 'reviews-myreviews-nosuchreview' );
 				$this->displayReviewList();
 			}

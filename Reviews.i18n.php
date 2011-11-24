@@ -68,6 +68,9 @@ $messages['en'] = array(
 	'reviews-myreviews-editheader' => 'On this page you can edit your review. You can also view a list of [[Special:MyReviews|reviews you posted]].',
 
 	// Special:Reviews
+	'reviews-reviews-header' => 'This page lists all reviews posted on this wiki',
+	'reviews-reviews-nosuchreview' => 'You do not have a review with the provided ID, it might have been deleted. All reviews are listed below.',
+	'reviews-reviews-editheader' => 'On this page you can manage this review. You can also view a list of [[Special:Reviews|all reviews]].',
 
 	// Review pager
 	'reviews-pager-no-results' => 'There are no reviews to list.',
@@ -77,6 +80,7 @@ $messages['en'] = array(
 	'reviews-pager-user' => 'User',
 	'reviews-pager-page' => 'For page',
 	'reviews-pager-rating' => 'Rating',
+	'reviews-pager-deleted' => 'The page was deleted',
 );
 
 /** Message documentation (Message documentation)

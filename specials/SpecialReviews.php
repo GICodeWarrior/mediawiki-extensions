@@ -21,7 +21,7 @@ class SpecialReviews extends SpecialPage {
 	 * @since 0.1
 	 */
 	public function __construct() {
-		parent::__construct( 'Reviews', 'postreview' );
+		parent::__construct( 'Reviews', 'reviewsadmin' );
 	}
 
 	/**
@@ -54,19 +54,29 @@ class SpecialReviews extends SpecialPage {
 			return false;
 		}
 
-		if ( $this->getRequest()->wasPosted() ) {
-			
+		if ( $subPage === '' ) {
+			$this->getOutput()->addWikiMsg( 'reviews-reviews-header' );
+			$this->displayReviewList();
 		}
 		else {
-			if ( $subPage === '' ) {
+			$review = Review::selectRow( null, array( 'id' => $subPage ) );
+			
+			if ( $review === false ) {
+				$this->getOutput()->addWikiMsg( 'reviews-reviews-nosuchreview' );
 				$this->displayReviewList();
 			}
 			else {
-				// TODO
+				$this->getOutput()->addWikiMsg( 'reviews-reviews-editheader' );
+				$this->displayEditControl( $review );
 			}
 		}
 	}
 
+	/**
+	 * Display the list of reviews.
+	 * 
+	 * @since 0.1
+	 */
 	protected function displayReviewList() {
 		$reviewPager = new ReviewPager( array() );
 

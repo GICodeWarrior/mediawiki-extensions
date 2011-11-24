@@ -113,19 +113,12 @@ class ReviewPager extends TablePager {
 				break;
 			case 'review_page_id':
 				$title = Title::newFromID( $value );
-				$value = Html::element(
-					'a',
-					array( 'href' => $title->getLocalURL() ),
-					$title->getFullText()
-				);
+				$value = is_null( $title ) ? wfMsg( 'reviews-pager-deleted' ) : Linker::link( $title );
 				break;
 			case 'review_user_id':
-				$title = User::newFromId( $value )->getUserPage();
-				$value = Html::element(
-					'a',
-					array( 'href' => $title->getLocalURL() ),
-					$title->getFullText()
-				);
+				$user = User::newFromId( $value );
+				$value = Linker::userLink( $user->getId(), $user->getName() ) .
+							Linker::userToolLinks( $user->getId(), $user->getName() );
 				break;
 			case 'review_title':
 				if ( $this->editPage !== false ) {
