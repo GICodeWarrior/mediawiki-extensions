@@ -541,6 +541,17 @@ Iberprief d Schrybwyys.',
 	'al-throttled' => 'Du hesch z vilmol versuecht dyy Passwort aazgee. Bitte warte $1 {{PLURAL:$1|Sekund|Sekunde}} bis zum negschte Versuech.',
 );
 
+/** Gujarati (ગુજરાતી)
+ * @author Ankit
+ */
+$messages['gu'] = array(
+	'ajaxlogin-create' => 'ખાતું ખોલો',
+	'al-nosuchuser' => '"$1" નામવાળો કોઇ વપરાશકર્તા નથી.
+વપરાશકર્તા નામો જોડણી સંવેદનશીલ હોય ચે.
+તમારી જોડણી ચકાસો.',
+	'al-createblocked' => 'ખાતા બનાવવા માટે તમારું IP સરનામું બ્લોક થયેલ છે.',
+);
+
 /** Hebrew (עברית)
  * @author Amire80
  * @author Rotemliss
