@@ -256,10 +256,10 @@ jQuery(function( $ ) {
 	function confirmAction(params, $item){
 				
 		var inlineForm = $('<span>').attr('class', 'fbd-item-reason')
-				.append( $('<span>').html(mw.msg( 'moodbar-action-reason' )) )
+				.append( $('<span>').text(mw.msg( 'moodbar-action-reason' )) )
 				.append( $('<input />').attr({'class':'fbd-action-reason', 'name':'fbd-action-reason'}) )
-				.append( $('<button>').attr('class', 'fbd-action-confirm').html( mw.msg('moodbar-feedback-action-confirm')) )
-				.append( $('<button>').attr('class', 'fbd-action-cancel').html( mw.msg('moodbar-feedback-action-cancel')) )
+				.append( $('<button>').attr('class', 'fbd-action-confirm').text( mw.msg('moodbar-feedback-action-confirm')) )
+				.append( $('<button>').attr('class', 'fbd-action-cancel').text( mw.msg('moodbar-feedback-action-cancel')) )
 				.append( $('<span>').attr('class', 'fbd-item-reason-msg') )
 			.append( $('<div>').attr('class', 'fbd-item-reason-msg') );
 				   
@@ -412,16 +412,16 @@ jQuery(function( $ ) {
 			//build form
 			var inlineForm = $('<div>').attr( 'class', 'fbd-response-form' )
 				.append(
-					$('<b>').html( mw.msg( 'moodbar-response-add' ) )
+					$('<b>').text( mw.msg( 'moodbar-response-add' ) )
 				).append(
-					$('<small>').attr( 'class', 'fbd-text-gray' ).html( ' (' + mw.msg( 'moodbar-response-nosig' ) + ') ' )
+					$('<small>').attr( 'class', 'fbd-text-gray' ).text( ' (' + mw.msg( 'moodbar-response-nosig' ) + ') ' )
 				).append(
 					$('<div>').attr( 'class', 'fbd-response-formNote' )
 						.append($('<small>')
 						.append(
 							$('<span>').attr( 'class', 'fbd-response-charCount' )
 						).append(
-							$('<span>').html( mw.msg( 'moodbar-form-note-dynamic' ).replace( /\$1/g, "" ) )
+							$('<span>').text( mw.msg( 'moodbar-form-note-dynamic' ).replace( /\$1/g, "" ) )
 						)
 					)
 				).append(
@@ -429,7 +429,7 @@ jQuery(function( $ ) {
 				).append(
 					$('<div>').attr('class', 'ula').html( ula )
 				).append(
-					$('<button>').attr( 'class', 'fbd-response-submit' ).html( mw.msg( 'moodbar-response-btn' ) + ' ' + mw.msg( 'moodbar-respond-collapsed' ) )
+					$('<button>').attr( 'class', 'fbd-response-submit' ).text( mw.msg( 'moodbar-response-btn' ) + ' ' + mw.msg( 'moodbar-respond-collapsed' ) )
 						.attr({'disabled':'true'})
 				).append(
 					$('<div>').attr( 'style', 'clear:both' )
@@ -524,7 +524,7 @@ jQuery(function( $ ) {
 	 */
 	function inlineMessage( $el, msg, callback) {
 		$el.empty()
-			.html( msg )
+			.text( msg )
 			.delay(2000)
 			.fadeOut('slow', callback);		
 	}
