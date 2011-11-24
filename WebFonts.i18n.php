@@ -174,6 +174,14 @@ $messages['gsw'] = array(
 	'webfonts-enable-preference' => 'D Yybettig vo Schriftarte aktiviere',
 );
 
+/** Gujarati (ગુજરાતી)
+ * @author Ankit
+ */
+$messages['gu'] = array(
+	'webfonts-load' => 'ફોન્ટ પસંદ કરો',
+	'webfonts-reset' => 'ફરી ગોઠવો',
+);
+
 /** Hebrew (עברית)
  * @author Amire80
  */
