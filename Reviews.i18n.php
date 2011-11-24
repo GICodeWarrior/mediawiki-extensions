@@ -57,6 +57,10 @@ $messages['en'] = array(
 	// Review control
 	'reviews-submission-submit' => 'Submit',
 	'reviews-submission-saving' => 'Saving',
+	'reviews-submission-title' => 'A title for your review:',
+	'reviews-submission-text' => 'The review text:',
+	'reviews-submission-rating' => 'Overall rating:',
+	'reviews-submission-ratings' => 'Specific ratings:',
 
 	// Special:MyReviews
 	'reviews-myreviews-header' => 'This page lists all reviews you posted.',

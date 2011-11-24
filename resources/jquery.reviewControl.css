@@ -5,3 +5,25 @@
  * @licence GNU GPL v3 or later
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
  */
+
+.review-control {
+	/* border: 1px solid gray; */
+}
+
+.review-textinput {
+	width: 80%;	
+}
+
+/* .review-ratings-div */
+#review-1-ratingdiv > * {
+    float: left;
+    line-height: 1.4em;
+}
+
+.review-rating-label {
+	padding-right: 0.5em;
+}
+
+.review-ratings-table-div {
+	clear: both;
+}
