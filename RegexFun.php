@@ -289,7 +289,7 @@ class ExtRegexFun {
 				return self::msgInvalidRegex( $pattern );
 			}
 			
-			// set these infos after pattern validation/correction
+			// set these infos only if valid, pattern still contains special flags though
 			self::setLastPattern( $parser, $pattern );
 			self::setLastSubject( $parser, $subject );
         }
@@ -308,7 +308,7 @@ class ExtRegexFun {
 	 * @param array  $allowedSpecialFlags all special flags that should be handled, by default 'e' and 'r'.
 	 */
 	public static function doPregReplace(
-			&$pattern,
+			$pattern, // not by value in here!
 			$replacement,
 			$subject,
 			$limit = -1,
@@ -319,30 +319,36 @@ class ExtRegexFun {
 			)			
 	) {
 		static $lastPattern = null;
-		static $lastFlags = null;
+		static $activePattern = null;
 		static $specialFlags = null;
 		
 		/*
 		 * cache validated pattern and use it as long as nothing has changed, this makes things
 		 * faster in case we do a lot of stuff with the same regex.
 		 */
-		if( $lastPattern === null || $lastPattern !== $pattern
-			|| $lastFlags !== implode( ',', $allowedSpecialFlags )
-		) {
+		if( $lastPattern === null || $lastPattern !== $pattern ) {
+			// remember pattern without validation
+			$lastPattern = $pattern;
+			
 			// if allowed special flags change, we have to validate again^^
 			$lastFlags = implode( ',', $allowedSpecialFlags );
 			
 			// validate regex and get special flags 'e' and 'r' if given:
 			if( ! self::validateRegex( $pattern, $specialFlags ) ) {
 				// invalid regex!
+				$lastPattern = null;
 				return false;
 			}
+			// set validated pattern as active one
+			$activePattern = $pattern;
 			
 			// filter unwanted special flags:
-			$allowedSpecialFlags = array_flip( $allowedSpecialFlags );
+			$allowedSpecialFlags = array_flip( $allowedSpecialFlags );			
 			$specialFlags = array_intersect_key( $specialFlags, $allowedSpecialFlags );
-			
-			$lastPattern = $pattern;			
+		}
+		else {
+			// set last validated pattern without flags 'e' and 'r'
+			$pattern = $activePattern;
 		}
 		
 		
@@ -658,9 +664,12 @@ class ExtRegexFun {
 		if( isset( $parser->mExtRegexFun['lastMatches'] ) ) {
 			
 			// last matches are set to false in case last regex was in replace mode! Get them on demand:
-			if( $parser->mExtRegexFun['lastMatches'] === false ) {				
+			if( $parser->mExtRegexFun['lastMatches'] === false ) {
+				// first, validate pattern to remove special flags!
+				$pattern = self::getLastPattern( $parser );
+				self::validateRegex( $pattern );
 				preg_match(
-						self::getLastPattern( $parser ),
+						$pattern,
 						self::getLastSubject( $parser ),
 						$parser->mExtRegexFun['lastMatches']
 				);
