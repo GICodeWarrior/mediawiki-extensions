@@ -38,7 +38,8 @@ $messages['en'] = array(
  * @author Umherirrender
  */
 $messages['qqq'] = array(
-	'framedvideo_position' => 'Consider using "left" for right to left languages. Should left untranslated for other languages.',
+	'framedvideo_position' => '{{optional}}
+Consider using "left" for right to left languages. Should left untranslated for other languages.',
 	'framedvideo_error_unknown_type' => '{{doc-important|Do not translate "type".}}',
 	'framedvideo_error_no_id_given' => '{{doc-important|Do not translate "id".}}',
 	'framedvideo_error_height_required' => '{{doc-important|Do not translate "height".}}',
