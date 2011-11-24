@@ -34,7 +34,7 @@ HTML;
 	public static function GetImageHtml( $mode ) {
 		global $wgExtensionAssetsPath, $wgOnlineStatusBarIcon;
 		$icon = "$wgExtensionAssetsPath/OnlineStatusBar/{$wgOnlineStatusBarIcon[$mode]}";
-		return Html::element( 'img', array( 'src' => $icon ) );
+		return Html::element( 'img', array( 'src' => $icon, 'alt' => $mode ) );
 	}
 
 
