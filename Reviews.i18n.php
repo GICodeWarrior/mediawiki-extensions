@@ -26,9 +26,13 @@ $messages['en'] = array(
 	// Rights
 	'right-reviewsadmin' => 'Manage reviews',
 	'right-postreview' => 'Post reviews',
+	'right-flagreview' => 'Flag reviews',
+	'right-reviewreview' => 'Review reviews',
 
 	'action-reviewsadmin' => 'manage reviews',
 	'action-postreview' => 'post reviews',
+	'action-flagreview' => 'flag reviews',
+	'action-reviewreview' => 'review reviews',
 
 	// Groups
 	'group-reviewsadmin' => 'Review admins',
@@ -81,6 +85,8 @@ $messages['en'] = array(
 	'reviews-pager-page' => 'For page',
 	'reviews-pager-rating' => 'Rating',
 	'reviews-pager-deleted' => 'The page was deleted',
+	'reviews-pager-flag' => 'Flag',
+	'reviews-pager-unflag' => 'Unflag',
 );
 
 /** Message documentation (Message documentation)
@@ -89,8 +95,15 @@ $messages['en'] = array(
 $messages['qqq'] = array(
 	'reviews-toplink' => 'Text of top link linking to Special:MyReviews',
 
+	'right-reviewsadmin' => '{{doc-right|reviewsadmin}}',
+	'right-postreview' => '{{doc-right|postreview}}',
+	'right-flagreview' => '{{doc-right|flagreview}}',
+	'right-reviewreview' => '{{doc-right|reviewreview}}',
+
 	'action-postreview' => '{{doc-action|postreview}}',
 	'action-reviewsadmin' => '{{doc-action|reviewsadmin}}',
+	'action-flagreview' => '{{doc-action|flagreview}}',
+	'action-reviewreview' => '{{doc-action|reviewreview}}',
 
 	'reviews-state-new' => 'A state a review can be in',
 	'reviews-state-flagged' => 'A state a review can be in',
@@ -126,5 +139,7 @@ $messages['qqq'] = array(
 	'reviews-pager-user' => 'Tabele column header',
 	'reviews-pager-page' => 'Tabele column header',
 	'reviews-pager-rating' => 'Tabele column header',
-	'reviews-pager-deleted' => 'Informs the user a page was deleted'
+	'reviews-pager-deleted' => 'Informs the user a page was deleted',
+	'reviews-pager-flag' => 'Link text to flag a review',
+	'reviews-pager-unflag' => 'Link text to unflag a review',
 );

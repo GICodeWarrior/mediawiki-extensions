@@ -63,6 +63,18 @@ class ReviewPager extends TablePager {
 	public function getLang() {
 		return version_compare( $GLOBALS['wgVersion'], '1.18', '>' ) ? parent::getLang() : $GLOBALS['wgLang'];
 	}
+	
+	/**
+	 * Get the User being used for this instance.
+	 * IndexPager extends ContextSource as of 1.19.
+	 *
+	 * @since 0.1
+	 *
+	 * @return User
+	 */
+	public function getUser() {
+		return version_compare( $GLOBALS['wgUser'], '1.18', '>' ) ? parent::getLang() : $GLOBALS['wgUser'];
+	}
 
 	/**
 	 * @return array
@@ -110,6 +122,10 @@ class ReviewPager extends TablePager {
 				break;
 			case 'review_state':
 				$value = Review::getStateMessage( $value );
+				if ( $this->getUser()->isAllowed( 'reviewsadmin' ) ) {
+					$action = $this->mCurrentRow->review_state == Review::STATUS_FLAGGED ? 'unflag' : 'flag';
+					$value .= ' (' . wfMsgHtml( 'reviews-pager-' . $action ) . ')';
+				}
 				break;
 			case 'review_page_id':
 				$title = Title::newFromID( $value );

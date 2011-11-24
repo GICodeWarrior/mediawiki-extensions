@@ -50,6 +50,7 @@ $wgAutoloadClasses['ReviewsHooks'] 				= dirname( __FILE__ ) . '/Reviews.hooks.p
 $wgAutoloadClasses['ReviewsSettings'] 			= dirname( __FILE__ ) . '/Reviews.settings.php';
 
 $wgAutoloadClasses['ApiDeleteReviews'] 			= dirname( __FILE__ ) . '/api/ApiDeleteReviews.php';
+$wgAutoloadClasses['ApiFlagReviews'] 			= dirname( __FILE__ ) . '/api/ApiFlagReviews.php';
 $wgAutoloadClasses['ApiQueryReviews'] 			= dirname( __FILE__ ) . '/api/ApiQueryReviews.php';
 $wgAutoloadClasses['ApiReviewQuery'] 			= dirname( __FILE__ ) . '/api/ApiReviewQuery.php';
 $wgAutoloadClasses['ApiSubmitReview'] 			= dirname( __FILE__ ) . '/api/ApiSubmitReview.php';
@@ -73,6 +74,7 @@ $wgSpecialPageGroups['MyReviews'] 				= 'reviews';
 
 // API
 $wgAPIModules['deletereviews'] 					= 'ApiDeleteReviews';
+$wgAPIModules['flagreviews'] 					= 'ApiFlagReviews';
 $wgAPIModules['submitreview'] 					= 'ApiSubmitReview';
 $wgAPIListModules['reviews'] 					= 'ApiQueryReviews';
 
@@ -87,6 +89,8 @@ $wgHooks['ParserFirstCallInit'][] 				= 'ReviewsHooks::onParserFirstCallInit';
 // Rights
 $wgAvailableRights[] = 'reviewsadmin';
 $wgAvailableRights[] = 'postreview';
+$wgAvailableRights[] = 'flagreview';
+$wgAvailableRights[] = 'reviewreview';
 
 # Users that can manage the reviews.
 $wgGroupPermissions['*'            ]['reviewsadmin'] = false;
@@ -103,6 +107,25 @@ $wgGroupPermissions['user'         ]['postreview'] = true;
 //$wgGroupPermissions['bot'          ]['postreview'] = false;
 $wgGroupPermissions['sysop'        ]['postreview'] = true;
 $wgGroupPermissions['reviewer']['postreview'] = true;
+$wgGroupPermissions['reviewsadmin' ]['postreview'] = true;
+
+# Users that can flag reviews.
+$wgGroupPermissions['*'            ]['flagreview'] = false;
+$wgGroupPermissions['user'         ]['flagreview'] = true;
+//$wgGroupPermissions['autoconfirmed']['flagreview'] = true;
+//$wgGroupPermissions['bot'          ]['flagreview'] = false;
+$wgGroupPermissions['sysop'        ]['flagreview'] = true;
+$wgGroupPermissions['reviewer']['flagreview'] = true;
+$wgGroupPermissions['reviewsadmin' ]['flagreview'] = true;
+
+# Users that can review reviews.
+$wgGroupPermissions['*'            ]['reviewreview'] = false;
+$wgGroupPermissions['user'         ]['reviewreview'] = true;
+//$wgGroupPermissions['autoconfirmed']['reviewreview'] = true;
+//$wgGroupPermissions['bot'          ]['reviewreview'] = false;
+$wgGroupPermissions['sysop'        ]['reviewreview'] = true;
+$wgGroupPermissions['reviewer']['reviewreview'] = false;
+$wgGroupPermissions['reviewsadmin' ]['reviewreview'] = true;
 
 
 // Resource loader modules
