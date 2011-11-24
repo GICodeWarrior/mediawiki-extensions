@@ -378,6 +378,7 @@ Visible on this [http://www.omegawiki.org/Special:NeedsTranslation OmegaWiki pag
 	'ow_nstab_edit_copy' => "Tab title when copying across datasets. The word 'edit' is a verb here.",
 	'right-addlanguage' => '{{doc-right|addlanguage}}',
 	'ow_shown_datasets' => 'A "dataset" is an independant collection of data, such as an ontology, a thesaurus, or a specific dictionary.',
+	'prefs-omegawiki' => '{{optional}}',
 );
 
 /** Karelian (Karjala)
@@ -4042,6 +4043,7 @@ $messages['et'] = array(
  * @author Pi
  * @author Theklan
  * @author Unai Fdz. de Betoño
+ * @author Xabier Armendaritz
  */
 $messages['eu'] = array(
 	'languages' => 'WIkidata: Hizkuntza administraria',
@@ -4094,7 +4096,7 @@ Mesedez ikus [[{{MediaWiki:Ow editing policy url}}|gure aldatzeko arauak]].',
 	'ow_dm_not_found' => 'ez da datubasean aurkitu edo gaizki formateaturik dago',
 	'ow_mapping_successful' => '[OK] marka duten esparru guztiak mapeatu dira<br />',
 	'ow_mapping_unsuccessful' => 'Gutxienez definitutako bi esanahi izan behar dituzu nik horiek lotu aurretik.',
-	'ow_will_insert' => 'Honakoa sartuko dut:',
+	'ow_will_insert' => 'Testu hau sartuko duzu:',
 	'ow_contents_of_mapping' => 'Mapeatze edukiak',
 	'ow_available_contexts' => 'Dauden kontestuak',
 	'ow_add_concept_link' => 'Gehitu lotura beste kontzeptu batzuei',
