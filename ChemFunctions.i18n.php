@@ -49,6 +49,7 @@ $messages['qqq'] = array(
 	'chemicalsource-desc' => '{{desc}}',
 	'chemicalsources-desc' => '{{desc}}',
 	'chemFunctions_ListPage' => '{{Identical|Chemical sources}}',
+	'chemFunctions_SearchExplanation' => '{{optional}}',
 );
 
 /** Afrikaans (Afrikaans)
