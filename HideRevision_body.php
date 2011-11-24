@@ -381,7 +381,7 @@ class HideRevisionForm extends SpecialPage {
 				'hidden_user_text'  => $rev->getRawUserText(),
 				'hidden_timestamp'  => $dbw->timestamp( $rev->getTimestamp() ),
 				'hidden_minor_edit' => $rev->isMinor() ? 1 : 0,
-				'hidden_deleted'    => $rev->mDeleted, // FIXME: private field access
+				'hidden_deleted'    => $rev->getVisibility(),
 
 				'hidden_by_user'      => $wgUser->getId(),
 				'hidden_on_timestamp' => $dbw->timestamp(),
