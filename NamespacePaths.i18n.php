@@ -85,6 +85,13 @@ $messages['nl'] = array(
 	'namespacepaths-desc' => 'Maakt het mogelijk aangepaste artikelpaden toe te wijzen aan naamruimten in de wiki. Bijvoorbeeld: pagina\'s als "Help:A" kunnen het pad "/help/Pagina" krijgen in plaats van "/wiki/Help:Pagina".',
 );
 
+/** Polish (Polski)
+ * @author Woytecr
+ */
+$messages['pl'] = array(
+	'namespacepaths-desc' => 'Pozwala traktować ścieżki w tytułach artykułów jako przestrzenie nazw, np. /Pomoc/Strona zamiast /wiki/Pomoc:Strona',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  * @author Dragonòt
