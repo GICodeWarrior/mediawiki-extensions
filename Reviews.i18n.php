@@ -106,10 +106,18 @@ $messages['qqq'] = array(
 
 	'reviews-submission-submit' => 'Submission button text',
 	'reviews-submission-saving' => 'Submission button text while a save action is happening and the button gets disabled',
+	'reviews-submission-title' => 'Form input field label',
+	'reviews-submission-text' => 'Form input field label',
+	'reviews-submission-rating' => 'Form input field label',
+	'reviews-submission-ratings' => 'Form input field label',
 
 	'reviews-myreviews-header' => "Line on top of a page explaining it's function",
 	'reviews-myreviews-nosuchreview' => "Line on top of a page explaining it's function",
 	'reviews-myreviews-editheader' => "Line on top of a page explaining it's function",
+
+	'reviews-reviews-header' => "Line on top of a page explaining it's function",
+	'reviews-reviews-nosuchreview' => "Line on top of a page explaining it's function",
+	'reviews-reviews-editheader' => "Line on top of a page explaining it's function",
 
 	'reviews-pager-no-results' => 'Informs the user that there are no results',
 	'reviews-pager-post-time' => 'Tabele column header',
@@ -117,4 +125,6 @@ $messages['qqq'] = array(
 	'reviews-pager-title' => 'Tabele column header',
 	'reviews-pager-user' => 'Tabele column header',
 	'reviews-pager-page' => 'Tabele column header',
+	'reviews-pager-rating' => 'Tabele column header',
+	'reviews-pager-deleted' => 'Informs the user a page was deleted'
 );
