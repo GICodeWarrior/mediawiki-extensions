@@ -26,9 +26,14 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Purodha
  * @author The Evil IP address
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'rightfunctions-desc' => '{{desc}}',
+	'rightfunctions-rest1' => '{{optional}}',
+	'rightfunctions-rest2' => '{{optional}}',
+	'rightfunctions-rest3' => '{{optional}}',
+	'rightfunctions-sep' => '{{optional}}',
 );
 
 /** Arabic (العربية)
