@@ -27,12 +27,13 @@ $messages['af'] = array(
  * @author ;Hiba;1
  * @author AwamerT
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'activestrategy' => 'إستراتيجية نشطة',
 	'active-strategy-desc' => 'يوضح عدد التعديلات على صفحات التخطيط الاستراتيجي',
 	'active-strategy-intro' => 'عدد التعديلات لصفحات قوة المهام في آخر {{PLURAL:$1|$1 يوم|$1 يوم}}.',
-	'nedits' => '$1 {{PLURAL:$1|تعديل|تعديلات}}',
+	'nedits' => '{{PLURAL:$1|لا تعديلات|تعديل واحد|تعديلان|$1 تعديلات|$1 تعديلًا|$1 تعديل}}',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
