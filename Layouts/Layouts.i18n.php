@@ -26,12 +26,14 @@ $messages['en'] = array(
  * @author Fryed-peach
  * @author Purodha
  * @author Siebrand
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'layouts-desc' => '{{desc}}',
 	'layouts_title' => '{{Identical|Createpage}}',
 	'layouts_continue' => '{{Identical|Continue}}',
 	'layouts_unknown' => '{{Identical|Unknown}}',
+	'layouts-layoutcategorypage' => '{{optional}}',
 );
 
 /** Afrikaans (Afrikaans)
