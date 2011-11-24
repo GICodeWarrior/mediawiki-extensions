@@ -86,6 +86,7 @@ $messages['qqq'] = array(
 	'changeauthor-success' => 'Displayed after a successful change.',
 	'changeauthor-logentry' => 'The log message for author changes. $1 is the page title, $2 includes {{msg-mw|changeauthor-rev}} in the site language, $3 the old author and $4 the new one',
 	'changeauthor-logpagename' => 'Displayed on top of Special:Log/changeauth and in the list of available logs.',
+	'changeauthor-rev' => '{{optional}}',
 	'right-changeauthor' => '{{doc-right|changeauthor}}',
 );
 
