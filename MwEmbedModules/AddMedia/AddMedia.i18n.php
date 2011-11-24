@@ -138,6 +138,7 @@ You can try again later',
  * @author Raymond
  * @author Siebrand
  * @author Tbleher
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'mwe-filesource' => '{{Identical|Source}}',
@@ -172,6 +173,9 @@ $messages['qqq'] = array(
 	'mwe-preview_insert_resource' => 'Parameters:
 * $1 is the title of the resource to be previewed.',
 	'mwe-am-commons-title' => '{{optional}}',
+	'mwe-am-archive_org-title' => '{{optional}}',
+	'mwe-am-flickr-title' => '{{optional}}',
+	'mwe-am-metavid-title' => '{{optional}}',
 	'mwe-upload-multi' => '{{Identical|Upload file}}',
 );
 
