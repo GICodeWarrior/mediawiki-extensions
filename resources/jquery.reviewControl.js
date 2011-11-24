@@ -24,14 +24,17 @@
 		
 		this.buildRatingsControl = function() {
 			var ratings = this.review.fields.ratings;
-			var $tr = $( '<tr />' ).html( '' );
+			var $tr = $( '<tr>' ).html( '' );
 			
 			for ( rating in ratings ) {
 				if ( ratings.hasOwnProperty( rating ) ) {
-					$tr.append( $( '<td />' ).append(
-						$( '<div class="review-ratings-div" />' )
-							.attr( 'id', this.fieldName( 'ratingdiv' + rating ) )
-							.attr( 'data-type', rating )
+					$tr.append( $( '<td>' ).append(
+						$( '<div>' )
+							.attr( {
+								'id': this.fieldName( 'ratingdiv' + rating ),
+								'data-type': rating,
+								'class': 'review-ratings-div'
+							} )
 							.html( reviews.htmlSelect(
 								{ 1: 1, 2: 2, 3: 3, 4: 4, 5: 5 }, // TODO
 								ratings[rating],
@@ -40,7 +43,7 @@
 									'id': this.fieldName( 'rating' + rating ),
 									'class': 'review-specificratinginput'
 								}
-							) ).prepend(  $( '<label />' ).attr( {
+							) ).prepend(  $( '<label>' ).attr( {
 								'for': this.fieldName( 'ratingdiv' + rating ),
 								'class': 'review-ratings-label'
 							} ).text( rating ) )
@@ -49,18 +52,18 @@
 				}
 			}
 			
-			this.ratingsInput = $( '<div />' ).attr( { 'class': 'review-ratings-table-div' } ).html( $( '<table />' ).html( $tr ) );
+			this.ratingsInput = $( '<div>' ).attr( { 'class': 'review-ratings-table-div' } ).html( $( '<table>' ).html( $tr ) );
 		};
 		
 		this.buildInterface = function() {
-			this.titleInput = $( '<input />' ).attr( {
+			this.titleInput = $( '<input>' ).attr( {
 				'type': 'text',
 				'size': 45,
 				'name': this.fieldName( 'title' ),
 				'class': 'review-titleinput'
 			} ).val( this.review.fields.title );
 			
-			this.textInput = $( '<textarea />' ).attr( {
+			this.textInput = $( '<textarea>' ).attr( {
 				'name': this.fieldName( 'text' ),
 				'class': 'review-textinput'
 			} ).text( this.review.fields.text );
@@ -75,14 +78,15 @@
 				}
 			);
 			
-			this.ratingInput = $( '<div />' ).attr( {
+			this.ratingInput = $( '<div>' ).attr( {
 				'id': this.fieldName( 'ratingdiv' ),
 				'class': 'review-ratingdiv'
 			} ).html( this.ratingInput );
 			
 			this.buildRatingsControl();
 			
-			this.button = $( '<button class="review-save" />' )
+			this.button = $( '<button>' )
+				.attr( { 'class': 'review-save' } )
 				.button( { 'label': mw.msg( 'reviews-submission-submit' ) } )
 				.click( function() {
 					_this.save();
@@ -91,17 +95,17 @@
 			$this.html( '' );
 			
 			$this.append(
-				$( '<label />' ).attr( { 'for': this.fieldName( 'title' ) } ).text( mw.msg( 'reviews-submission-title' ) + ' ' ),
+				$( '<label>' ).attr( { 'for': this.fieldName( 'title' ) } ).text( mw.msg( 'reviews-submission-title' ) + ' ' ),
 				this.titleInput
-			).append( '<br />' );
+			).append( '<br>' );
 			
 			$this.append(
-				$( '<label />' ).attr( { 'for': this.fieldName( 'text' ) } ).text( mw.msg( 'reviews-submission-text' ) ).append( '<br />' ),
+				$( '<label>' ).attr( { 'for': this.fieldName( 'text' ) } ).text( mw.msg( 'reviews-submission-text' ) ).append( '<br />' ),
 				this.textInput
-			).append( '<br />' );
+			).append( '<br>' );
 			
 			$this.append(
-				this.ratingInput.prepend( $( '<label />' ).attr( {
+				this.ratingInput.prepend( $( '<label>' ).attr( {
 					'for': this.fieldName( 'rating' ),
 					'class': 'review-rating-label'
 				} ).text( mw.msg( 'reviews-submission-rating' ) ) )
