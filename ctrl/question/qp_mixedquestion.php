@@ -10,9 +10,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class qp_MixedQuestion extends qp_TabularQuestion {
 
-	# required count of single proposal categories that should be filled by user
-	var $mCatReq = 1;
-
 	/**
 	 * Creates question view which should be renreded and
 	 * also may be altered during the poll generation

@@ -186,7 +186,6 @@ class PollResults extends qp_SpecialPage {
 			$tags[] = array( '__tag' => 'div', wfMsg( 'qp_poll_has_no_interpretation' ) );
 			return $tags;
 		}
-		# 'parentheses' key is unavailable in MediaWiki 1.15.x
 		$interp_link = $this->qpLink( $interpTitle, $interpTitle->getPrefixedText() );
 		$tags[] = array( '__tag' => 'div', wfMsg( 'qp_browse_to_interpretation', $interp_link ) );
 		$interpResultView = new qp_InterpResultView( true );
@@ -213,14 +212,17 @@ class PollResults extends qp_SpecialPage {
 		if ( !$pollStore->loadUserVote() ) {
 			return '';
 		}
-		$poll_title = $pollStore->getTitle();
-		# 'parentheses' key is unavailable in MediaWiki 1.15.x
-		$poll_link = $this->qpLink( $poll_title, $poll_title->getPrefixedText() . wfMsg( 'word-separator' ) . wfMsg( 'qp_parentheses', $pollStore->mPollId ) );
-		$headerTags = $this->getAnswerHeader( $pollStore );
-		$output = wfMsg( 'qp_browse_to_user', $user_link ) . "<br />\n" .
-			wfMsg( 'qp_browse_to_poll', $poll_link ) . "<br />\n" .
-			qp_Renderer::renderTagArray( $headerTags );
-		unset( $headerTags );
+		$head = array();
+		$head[] = $this->showPollActionsList(
+				$pollStore->pid,
+				$pollStore->mPollId,
+				$pollStore->getTitle()
+		);
+		$head[] = wfMsg( 'qp_browse_to_user', $user_link );
+		$head[] = $this->getAnswerHeader( $pollStore );
+		qp_Renderer::applyAttrsToRow( $head, array( '__tag' => 'li', '__end' => "\n" ) );
+		$head = array( '__tag' => 'ul', 'class' => 'head', '__end' => "\n", $head );
+		$output = qp_Renderer::renderTagArray( $head );
 		foreach ( $pollStore->Questions as $qdata ) {
 			if ( $pollStore->isUsedQuestion( $qdata->question_id ) ) {
 				$qview = $qdata->getView();
@@ -238,10 +240,14 @@ class PollResults extends qp_SpecialPage {
 				$pollStore->loadQuestions();
 				$pollStore->loadTotals();
 				$pollStore->calculateStatistics();
-				$poll_title = $pollStore->getTitle();
-				# 'parentheses' is unavailable in 1.14.x
-				$poll_link = $this->qpLink( $poll_title, $poll_title->getPrefixedText() . wfMsg( 'word-separator' ) . wfMsg( 'qp_parentheses', $pollStore->mPollId ) );
-				$output .= wfMsg( 'qp_browse_to_poll', $poll_link ) . "<br />\n";
+				$head = array( '__tag' => 'div', 'class' => 'head', '__end' => "\n",
+					$this->showPollActionsList(
+						$pollStore->pid,
+						$pollStore->mPollId,
+						$pollStore->getTitle()
+					)
+				);
+				$output .= qp_Renderer::renderTagArray( $head );
 				$interpTitle = $pollStore->getInterpTitle();
 				if ( $interpTitle instanceof Title ) {
 					$interp_link = $this->qpLink( $interpTitle, $interpTitle->getPrefixedText() );
@@ -408,7 +414,11 @@ class qp_UsersList extends qp_QueryPage {
 	}
 
 	function getPageHeader() {
-		return PollResults::getPollsLink() . '<div class="head">' . wfMsg( 'qp_users_list' ) . '<div>' . $this->different_order_by_link . '</div></div>';
+		return PollResults::getPollsLink() .
+			'<ul class="head">' .
+			wfMsg( 'qp_users_list' ) .
+			'<li>' . $this->different_order_by_link .
+			'</li></ul>';
 	}
 
 } /* end of qp_UsersList class */
@@ -446,7 +456,14 @@ class qp_UserPollsList extends qp_QueryPage {
 		if ( $userName !== false ) {
 			$userTitle = Title::makeTitleSafe( NS_USER, $userName );
 			$user_link = $this->qpLink( $userTitle, $userName );
-			return PollResults::getPollsLink() . PollResults::getUsersLink() . '<div class="head">' . $user_link . ': ' . ( $this->inverse ? wfMsgExt( 'qp_user_missing_polls_link', 'parsemag', $userName ) : wfMsgExt( 'qp_user_polls_link', array( 'parsemag' ), $pidcount, $userName ) ) . ' ' . '</div>';
+			return PollResults::getPollsLink() .
+				PollResults::getUsersLink() .
+				'<ul class="head">' .
+				"<li>{$user_link}: " .
+				( $this->inverse ?
+					wfMsgExt( 'qp_user_missing_polls_link', 'parsemag', $userName ) :
+					wfMsgExt( 'qp_user_polls_link', array( 'parsemag' ), $pidcount, $userName ) )
+				. "</li></ul>\n";
 		}
 	}
 
@@ -519,19 +536,18 @@ class qp_PollsList extends qp_QueryPage {
 
 	function formatResult( $result ) {
 		global $wgLang, $wgContLang;
-		$poll_title = Title::makeTitle( $result->ns, $result->title, qp_AbstractPoll::s_getPollTitleFragment( $result->poll_id, '' ) );
-		$pagename = qp_Setup::specialchars( $wgContLang->convert( $poll_title->getPrefixedText() ) );
-		$pollname = qp_Setup::specialchars( $result->poll_id );
-		$goto_link = $this->qpLink( $poll_title, wfMsg( 'qp_source_link' ) );
-		$voices_link = $this->qpLink( $this->getTitle(), wfMsg( 'qp_stats_link' ), array(), array( "id" => intval( $result->pid ), "action" => "stats" ) );
-		$users_link = $this->qpLink( $this->getTitle(), wfMsg( 'qp_users_link' ), array(), array( "id" => intval( $result->pid ), "action" => "pulist" ) );
-		$not_participated_link = $this->qpLink( $this->getTitle(), wfMsg( 'qp_not_participated_link' ), array(), array( "id" => intval( $result->pid ), "action" => "npulist" ) );
-		$link = wfMsg( 'qp_results_line_qpl', $pagename, $pollname, $goto_link, $voices_link, $users_link, $not_participated_link );
-		return $link;
+		return $this->showPollActionsList(
+			intval( $result->pid ),
+			$result->poll_id,
+			Title::makeTitle( $result->ns, $result->title, qp_AbstractPoll::s_getPollTitleFragment( $result->poll_id, '' ) )
+		);
 	}
 
 	function getPageHeader() {
-		return PollResults::getUsersLink() . '<div class="head">' . wfMsg( 'qp_polls_list' ) . '</div>';
+		return PollResults::getUsersLink() .
+			'<ul class="head"><li>' .
+			wfMsg( 'qp_polls_list' ) .
+			'</li></ul>';
 	}
 
 } /* end of qp_PollsList class */
@@ -566,13 +582,18 @@ class qp_PollUsersList extends qp_QueryPage {
 			$poll_title = Title::makeTitle( intval( $row->ns ), $row->title, qp_AbstractPoll::s_getPollTitleFragment( $row->poll_id, '' ) );
 			$pagename = qp_Setup::specialchars( $wgContLang->convert( $poll_title->getPrefixedText() ) );
 			$pollname = qp_Setup::specialchars( $row->poll_id );
-			$goto_link = $this->qpLink( $poll_title, wfMsg( 'qp_source_link' ) );
-			$spec = wfMsg( 'qp_header_line_qpul', wfMsg( $this->inverse ? 'qp_not_participated_link' : 'qp_users_link' ), $pagename, $pollname );
-			$head[] = PollResults::getPollsLink();
-			$head[] = PollResults::getUsersLink();
-			$head[] = array( '__tag' => 'div', 'class' => 'head', 0 => $spec );
-			$head[] = ' (' . $goto_link . ')';
-			$link = qp_Renderer::renderTagArray( $head );
+			$head = array();
+			$head[] = $this->showPollActionsList(
+					$this->pid,
+					$row->poll_id,
+					$poll_title
+			);
+			$head[] = wfMsg( 'qp_header_line_qpul', wfMsg( $this->inverse ? 'qp_not_participated_link' : 'qp_users_link' ), $pagename, $pollname );
+			qp_Renderer::applyAttrsToRow( $head, array( '__tag' => 'li', '__end' => "\n" ) );
+			$head = array( '__tag' => 'ul', 'class' => 'head', $head );
+			$link = PollResults::getPollsLink() .
+				PollResults::getUsersLink().
+				qp_Renderer::renderTagArray( $head );
 		}
 		return $link;
 	}
@@ -659,13 +680,13 @@ class qp_UserCellList extends qp_QueryPage {
 				$poll_title = Title::makeTitle( intval( $this->ns ), $this->title, qp_AbstractPoll::s_getPollTitleFragment( $this->poll_id, '' ) );
 				$pagename = qp_Setup::specialchars( $wgContLang->convert( $poll_title->getPrefixedText() ) );
 				$pollname = qp_Setup::specialchars( $this->poll_id );
-				$goto_link = $this->qpLink( $poll_title, wfMsg( 'qp_source_link' ) );
-				$spec = wfMsg( 'qp_header_line_qpul', wfMsg( 'qp_users_link' ), $pagename, $pollname );
-				$head[] = PollResults::getPollsLink();
-				$head[] = PollResults::getUsersLink();
-				$head[] = array( '__tag' => 'div', 'class' => 'head', 0 => $spec );
-				# 'parentheses' are unavailable in MW 1.14.x
-				$head[] = wfMsg( 'qp_parentheses',  $goto_link ) . '<br />';
+				$head = array();
+				$head[] = $this->showPollActionsList(
+					$pollStore->pid,
+					$pollStore->mPollId,
+					$poll_title
+				);
+				$head[] = wfMsg( 'qp_header_line_qpul', wfMsg( 'qp_users_link' ), $pagename, $pollname );
 				$ques_found = false;
 				foreach ( $pollStore->Questions as $qdata ) {
 					if ( $qdata->question_id == $this->question_id ) {
@@ -682,13 +703,16 @@ class qp_UserCellList extends qp_QueryPage {
 						if ( array_key_exists( 'spanId', $categ ) ) {
 							$cat_name =  wfMsg( 'qp_full_category_name', $cat_name, $qdata->CategorySpans[ $categ['spanId'] ]['name'] );
 						}
-						$qpa = wfMsg( 'qp_header_line_qucl',
+						$head[] = wfMsg( 'qp_header_line_qucl',
 							$this->question_id,
 							qp_Setup::entities( $qdata->CommonQuestion ),
 							qp_Setup::entities( $proptext ),
-							qp_Setup::entities( $cat_name ) ) . '<br />';
-						$head[] = array( '__tag' => 'div', 'class' => 'head', 'style' => 'padding-left:2em;', 0 => $qpa );
-						$link = qp_Renderer::renderTagArray( $head );
+							qp_Setup::entities( $cat_name ) );
+						qp_Renderer::applyAttrsToRow( $head, array( '__tag' => 'li', '__end' => "\n" ) );
+						$head = array( '__tag' => 'ul', 'class' => 'head', $head );
+						$link = PollResults::getPollsLink() .
+							PollResults::getUsersLink() .
+							qp_Renderer::renderTagArray( $head );
 					}
 				}
 			}

@@ -10,6 +10,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class qp_TabularQuestion extends qp_StubQuestion {
 
+	# required count of single proposal categories that should be filled by user
+	var $mCatReq = 1;
+
 	/**
 	 * Constructor
 	 * @public
@@ -363,12 +366,23 @@ class qp_TabularQuestion extends qp_StubQuestion {
 				$pview->setErrorMessage( wfMsg( 'qp_error_proposal_text_empty' ), 'error' );
 				$pview->addCellsClass( 'error' );
 			}
+			## Check for unanswered categories.
+			if ( ( $catreq = $prop_attrs->catreq ) === null ) {
+				$catreq = $this->mCatReq;
+			}
+			if ( $inputType === 'radio' && $catreq > 1 ) {
+				# radio buttons row always require not more than one category,
+				# otherwise the poll will be impossible to submit sucessfully.
+				$catreq = 1;
+			}
 			# If the proposal was submitted but unanswered
-			if ( $this->poll->mBeingCorrected && !array_key_exists( $proposalId, $this->mProposalCategoryId ) ) {
+			if ( $this->poll->mBeingCorrected &&
+					$this->hasMissingCategories( $proposalId, $catreq, count( $this->mCategories ) ) ) {
 				# if there was no previous errors, hightlight the whole row
 				if ( $this->getState() == '' ) {
 					$pview->addCellsClass( 'error' );
 				}
+				# the proposal was submitted but has not enough answered categories
 				$pview->prependErrorMessage( wfMsg( 'qp_error_no_answer' ), 'NA' );
 			}
 			if ( $pview->text !== null ) {

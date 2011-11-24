@@ -64,6 +64,28 @@ class qp_SpecialPage extends SpecialPage {
 		return self::$linker->link( $target, $text, $customAttribs, $query, $options );
 	}
 
+	/**
+	 * Displays current poll actions links.
+	 */
+	function showPollActionsList( $pid, $poll_id, Title $poll_title ) {
+		global $wgContLang;
+		return wfMsg(
+			'qp_results_line_qpl',
+			# pagename
+			qp_Setup::specialchars( $wgContLang->convert( $poll_title->getPrefixedText() ) ),
+			# polltitle
+			qp_Setup::specialchars( $poll_id ),
+			# goto link
+			$this->qpLink( $poll_title, wfMsg( 'qp_source_link' ) ),
+			# voices link
+			$this->qpLink( $this->getTitle(), wfMsg( 'qp_stats_link' ), array(), array( "id" => intval( $pid ), "action" => "stats" ) ),
+			# users link
+			$this->qpLink( $this->getTitle(), wfMsg( 'qp_users_link' ), array(), array( "id" => intval( $pid ), "action" => "pulist" ) ),
+			# not participated link
+			$this->qpLink( $this->getTitle(), wfMsg( 'qp_not_participated_link' ), array(), array( "id" => intval( $pid ), "action" => "npulist" ) )
+		);
+	}
+
 } /* end of qp_SpecialPage class */
 
 /**
