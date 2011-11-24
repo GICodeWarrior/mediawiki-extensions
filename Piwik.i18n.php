@@ -24,9 +24,11 @@ $messages['en'] = array(
  * @author EugeneZelenko
  * @author Purodha
  * @author The Evil IP address
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'piwik-desc' => '{{desc}}',
+	'piwik' => '{{optional}}',
 	'piwik-countries' => '{{Identical|Country}}',
 	'right-viewpiwik' => '{{doc-right|viewpiwik}}',
 );
