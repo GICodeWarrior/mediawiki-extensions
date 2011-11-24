@@ -385,8 +385,10 @@ $messages['sr-el'] = array(
 
 /** Swedish (Svenska)
  * @author Ainali
+ * @author WikiPhoenix
  */
 $messages['sv'] = array(
+	'flvhandler_desc' => 'Låter Flash Video-filer (.flv) att läggas till som vanliga filer (t.ex. <nowiki>[[</nowiki>{{ns:file}}:Film.flv<nowiki>]]</nowiki>)',
 	'flv-long-desc' => 'Flash Video, $1 × $2 pixlar, filstorlek: $3',
 );
 
