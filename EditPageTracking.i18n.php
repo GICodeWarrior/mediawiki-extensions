@@ -248,6 +248,13 @@ $messages['sl'] = array(
 	'editpagetracking-desc' => 'Zabeleži, ko vsak uporabnik prvič obišče urejevalno stran',
 );
 
+/** Swedish (Svenska)
+ * @author WikiPhoenix
+ */
+$messages['sv'] = array(
+	'editpagetracking-desc' => 'Registrerar den första gången varje användare visar redigeringssidan',
+);
+
 /** Ukrainian (Українська)
  * @author Dim Grits
  */
