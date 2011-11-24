@@ -69,21 +69,39 @@ class ReviewRating extends ReviewsDBObject {
 	 * 
 	 * @since 0.1
 	 * 
-	 * @param ContextSource $context
+	 * @param integer $pageId
 	 * 
 	 * @return array
 	 */
-	public static function getTypesForContext( ContextSource $context ) {
+	public static function getTypesForPageID( $pageId ) {
 		$ratingsPerCat = ReviewsSettings::get( 'categoryRatings' );
 		$ratings = array();
 		
-		foreach ( $context->getOutput()->getCategories() as $cat ) {
-			if ( array_key_exists( $cat, $ratingsPerCat ) ) {
-				$ratings = array_merge( $ratings, $ratingsPerCat[$cat] );
+		$api = new ApiMain( new FauxRequest( array(
+			'action' => 'query',
+			'format' => 'json',
+			'prop' => 'categories',
+			'titles' => Title::newFromID( $pageId )->getFullText(),
+		), true ), true );
+		
+		$api->execute();
+		$result = $api->getResultData();
+
+		if ( !array_key_exists( 'query', $result ) || !array_key_exists( 'pages', $result['query'] ) ) {
+			return array();
+		}
+		
+		foreach ( $result['query']['pages'] as $page ) {
+			foreach ( $page['categories'] as $cat ) {
+				$cat = explode( ':', $cat['title'], 2 );
+				$cat = $cat[1];
+				if ( array_key_exists( $cat, $ratingsPerCat ) ) {
+					$ratings = array_merge( $ratings, $ratingsPerCat[$cat] );
+				}
 			}
 		}
 		
 		return $ratings;
 	}
-
+	
 }

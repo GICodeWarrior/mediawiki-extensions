@@ -104,7 +104,8 @@ class SpecialMyReviews extends SpecialPage {
 	 */
 	protected function displayEditControl( Review $review ) {
 		$control = new ReviewControl( $review );
-		$control->addToContext( $this );
+		$skin = $this->getSkin();
+		$control->addToContext( $skin );
 	}
 
 }

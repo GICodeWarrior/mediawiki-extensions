@@ -9,8 +9,8 @@ class ReviewControl {
 		$this->review = $review;
 	}
 	
-	public function addToContext( ContextSource &$context ) {
-		$this->context = &$context;
+	public function addToContext( ContextSource &$context = null ) {
+		$this->context = $context;
 		
 		$out = $context->getOutput();
 		$out->addModules( 'reviews.review.control' );
@@ -19,7 +19,8 @@ class ReviewControl {
 			'class' => 'review-control',
 		);
 		
-		$types = ReviewRating::getTypesForContext( $this->context );
+		$pageId = is_null( $this->review ) ? $context->getTitle()->getArticleID() : $this->review->getField( 'page_id' );
+		$types = ReviewRating::getTypesForPageID( $pageId );
 		
 		if ( is_null( $this->review ) ) {
 			$ratings = array();
@@ -29,7 +30,7 @@ class ReviewControl {
 			}
 			
 			$review = array(
-				'page_id' => $context->getTitle()->getArticleID(),
+				'page_id' => $pageId,
 				'title' => '',
 				'text' => '',
 				'rating' => 0,
