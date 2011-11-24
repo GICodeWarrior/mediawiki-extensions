@@ -1,7 +1,7 @@
 /**
  * Transliteration rules table for standard Sakha keyboard
  * @author Amir (Алексей) Aharoni ([[User:Amire80]])
- * @date 2011-11-21
+ * @date 2011-11-24
  * License: GPLv3, CC-BY-SA 3.0
  */
 
@@ -84,7 +84,7 @@ var rules = [
 ['4', '', 'ҥ'],                     // 4
 ['\\$', '', 'Ҥ'],                   // 4
 ['5', '', 'ҕ'],                     // 5
-['#', '', 'Ҕ'],                     // 5
+['%', '', 'Ҕ'],                     // 5
 ['6', '', 'ө'],                     // 6
 ['\\^', '', 'Ө'],                   // 6
 ['7', '', 'һ'],                     // 7
@@ -92,7 +92,7 @@ var rules = [
 ['8', '', 'ү'],                     // 8
 ['\\*', '', 'Ү'],                   // 8
 ['9', '', ';'],                     // 9
-['0', '', ':'],                     // 0
+['0', '', ':']                      // 0
 ];
 
 jQuery.narayam.addScheme( 'sah-standard', {
