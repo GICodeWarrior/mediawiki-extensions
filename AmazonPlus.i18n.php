@@ -44,6 +44,7 @@ $messages['en'] = array(
  * @author Meno25
  * @author Purodha
  * @author Skizzerz
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'amazonplus-desc' => '{{desc}}',
@@ -58,8 +59,10 @@ $messages['qqq'] = array(
 	'amazonplus-french' => 'Name of the French language, or an empty string if translating to French.',
 	'amazonplus-japanese' => 'Name of the Japanese language, or an empty string if translating to Japanese.',
 	'amazonplus-new' => '{{Identical|New}}',
-	'amazonplus-status' => ';$1:A combination of status messages seperated with [[MediaWiki:Amazonplus-status-sep/en|amazonplus-status-sep]]',
-	'amazonplus-currency' => ';$1:Formatted price without symbol (e.g. 16.41)
+	'amazonplus-status' => '{{optional}}
+;$1:A combination of status messages seperated with [[MediaWiki:Amazonplus-status-sep/en|amazonplus-status-sep]]',
+	'amazonplus-currency' => '{{optional}}
+;$1:Formatted price without symbol (e.g. 16.41)
 ;$2:Currency code (e.g. USD)
 ;$3:Currency symbol (e.g. $)
 ;$4:Status message',
