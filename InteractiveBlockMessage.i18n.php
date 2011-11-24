@@ -87,3 +87,10 @@ $messages['nl'] = array(
 	'interactiveblockmessage-desc' => 'Voegt het magische woord <nowiki>{{USERBLOCKED}}</nowiki> toe dat binnen de gebruikersruimte aangeeft of de gebruiker geblokkeerd is of niet',
 );
 
+/** Polish (Polski)
+ * @author Woytecr
+ */
+$messages['pl'] = array(
+	'interactiveblockmessage-desc' => 'Dodaje obsługę magicznego słowa <nowiki>{{USERBLOCKED}}</nowiki> wskazującego na stronie użytkownika czy jest on zablokowany',
+);
+
