@@ -21,11 +21,14 @@ $messages['en'] = array(
  * @author Purodha
  * @author Siebrand
  * @author The Evil IP address
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'metakeywords-desc' => '{{desc}}',
-	'metakeywords' => "Optional message. '''(all)''' and '''(main)''' should not be translated. Leave all the wiki markup, including the spaces, as is. You can translate the text, including 'Leave this line exactly as it is'. The lines of this messages have one (1) leading space.",
-	'metadescription' => "Optional message. '''(all)''' and '''(main)''' should not be translated. Leave all the wiki markup, including the spaces, as is. You can translate the text, including 'Leave this line exactly as it is'. The lines of this messages have one (1) leading space.
+	'metakeywords' => "{{optional}}
+Optional message. '''(all)''' and '''(main)''' should not be translated. Leave all the wiki markup, including the spaces, as is. You can translate the text, including 'Leave this line exactly as it is'. The lines of this messages have one (1) leading space.",
+	'metadescription' => "{{optional}}
+Optional message. '''(all)''' and '''(main)''' should not be translated. Leave all the wiki markup, including the spaces, as is. You can translate the text, including 'Leave this line exactly as it is'. The lines of this messages have one (1) leading space.
 * $1 will not be replaced in this message.",
 );
 
