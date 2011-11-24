@@ -18,11 +18,13 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Fryed-peach
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'geolite-desc' => "'''GeoIP''' is a registered trademarks of MaxMind, Inc. http://www.maxmind.com/<br />Do not translate it.
 
 {{desc}}",
+	'geolite' => '{{optional}}',
 );
 
 /** Afrikaans (Afrikaans)
