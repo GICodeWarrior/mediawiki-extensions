@@ -278,13 +278,16 @@ Parameters:
 * $2 is the article's parent wikilog name (optional)
 * $3 is a URL formatted link to the article
 * $4 is the article title (optional)",
-	'wikilog-entry-footer' => 'Has the same parameters of {{msg-mw|wikilog-summary-footer}}.',
-	'wikilog-simple-signature' => 'Parameters:
+	'wikilog-entry-footer' => '{{optional}}
+Has the same parameters of {{msg-mw|wikilog-summary-footer}}.',
+	'wikilog-simple-signature' => '{{optional}}
+Parameters:
 * $1 is a link to the commenting user page
 * $2 is a link to the commenting user talk page, with {{msg-mw|talkpagelinktext}} as link text',
 	'wikilog-edit-hint' => 'Parameters:
 * $1 is an article title.',
-	'wikilog-comment-footer' => 'Parameters:
+	'wikilog-comment-footer' => '{{optional}}
+Parameters:
 * $1 is the name of the author of the comment (optional)
 * $2 is the name of the author or the comment formatted with {{msg-mw|wikilog-simple-signature|notext=1}}
 * $3 is the comment date
@@ -312,7 +315,8 @@ Parameters:
 	'wikilog-comment-autosumm' => 'Parameters:
 * $1 is a user name
 * $2 is a summary',
-	'wikilog-feed-title' => 'Parameters:
+	'wikilog-feed-title' => '{{optional}}
+Parameters:
 * $1 is a title
 * $2 is the content language of the wiki',
 	'wikilog-feed-ns-title' => 'Parameters:
@@ -736,7 +740,7 @@ $messages['ar'] = array(
 	'wikilog-show-published' => 'منشور',
 	'wikilog-show-drafts' => 'مسودات',
 	'wikilog-submit' => 'أرسل',
-	'wikilog-preview' => 'معاينة',
+	'wikilog-preview' => 'عاين',
 	'wikilog-edit-lc' => 'عدل',
 	'wikilog-reply-lc' => 'رد',
 	'wikilog-delete-lc' => 'احذف',
