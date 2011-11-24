@@ -27,10 +27,59 @@ $messages['en'] = array(
  * @author Fryed-peach
  * @author Nike
  * @author Raymond
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'mwe-loading' => '{{Identical|Loading}}',
-	'mwe-size-gigabytes' => 'Size (of a file, typically) in gibibytes (1 gibibyte = 1024×1024×1024 bytes).',
+	'mwe-size-gigabytes' => '{{optional}}
+Size (of a file, typically) in gibibytes (1 gibibyte = 1024×1024×1024 bytes).
+
+See also:
+* {{msg-mw|mwe-size-gigabytes}}
+* {{msg-mw|mwe-size-megabytes}}
+* {{msg-mw|mwe-size-kilobytes}}
+* {{msg-mw|mwe-size-bytes}}
+
+* {{msg-mw|size-gigabytes}}
+* {{msg-mw|size-megabytes}}
+* {{msg-mw|size-kilobytes}}
+* {{msg-mw|size-bytes}}',
+	'mwe-size-megabytes' => '{{optional}}
+
+See also:
+* {{msg-mw|mwe-size-gigabytes}}
+* {{msg-mw|mwe-size-megabytes}}
+* {{msg-mw|mwe-size-kilobytes}}
+* {{msg-mw|mwe-size-bytes}}
+
+* {{msg-mw|size-gigabytes}}
+* {{msg-mw|size-megabytes}}
+* {{msg-mw|size-kilobytes}}
+* {{msg-mw|size-bytes}}',
+	'mwe-size-kilobytes' => '{{optional}}
+
+See also:
+* {{msg-mw|mwe-size-gigabytes}}
+* {{msg-mw|mwe-size-megabytes}}
+* {{msg-mw|mwe-size-kilobytes}}
+* {{msg-mw|mwe-size-bytes}}
+
+* {{msg-mw|size-gigabytes}}
+* {{msg-mw|size-megabytes}}
+* {{msg-mw|size-kilobytes}}
+* {{msg-mw|size-bytes}}',
+	'mwe-size-bytes' => '{{optional}}
+
+See also:
+* {{msg-mw|mwe-size-gigabytes}}
+* {{msg-mw|mwe-size-megabytes}}
+* {{msg-mw|mwe-size-kilobytes}}
+* {{msg-mw|mwe-size-bytes}}
+
+* {{msg-mw|size-gigabytes}}
+* {{msg-mw|size-megabytes}}
+* {{msg-mw|size-kilobytes}}
+* {{msg-mw|size-bytes}}',
 	'mwe-error_load_lib' => 'Parameters:
 * $1 Corresponds to the JavaScript file that was not retrievable or does not define its class name.
 * $2 Is the class name that was associated with the JavaScript file that was not found or could not be retrieved.',
@@ -81,6 +130,7 @@ $messages['ar'] = array(
 	'mwe-size-megabytes' => '$1 ميجا بايت',
 	'mwe-size-kilobytes' => '$1 كيلوبايت',
 	'mwe-size-bytes' => '$1 بايت',
+	'mwe-ok' => 'موافق',
 	'mwe-cancel' => 'ألغِ',
 );
 
