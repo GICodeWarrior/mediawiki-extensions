@@ -338,6 +338,13 @@ $messages['ia'] = array(
 	'right-admanager' => '[[Special:AdManager|Gerer configuration de publicitate]]',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'admanager_Category' => 'カテゴリー',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
