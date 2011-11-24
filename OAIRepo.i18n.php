@@ -16,9 +16,11 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Meno25
  * @author The Evil IP address
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'oai-desc' => '{{desc}}',
+	'oairepository' => '{{optional}}',
 );
 
 /** Aragonese (Aragonés)
