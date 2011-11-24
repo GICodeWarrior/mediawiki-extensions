@@ -6371,6 +6371,13 @@ $messages['scn'] = array(
 	'articlefeedback-survey-title' => "Arrispunni a 'na pocu di dumanni",
 );
 
+/** Serbo-Croatian (Srpskohrvatski)
+ * @author OC Ripper
+ */
+$messages['sh'] = array(
+	'articleFeedback-copy-above-highlow-tables' => 'Ovo je probna mogućnost. Molimo vas da pošaljete povratnu informaciju na [$1 stranicu za razgovor].',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
