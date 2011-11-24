@@ -69,6 +69,7 @@ $messages['qqq'] = array(
  * @author EugeneZelenko
  * @author F.trott
  * @author The Evil IP address
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'semanticformsinputs-desc' => '{{desc}}',
@@ -81,7 +82,8 @@ $messages['qqq'] = array(
 	'semanticformsinputs-dateformatshort' => "{{doc-important|This is a machine-readable date format string!| <br>It is used by a function to format a date. It will not be read by a human user. Do not translate each letter literally! Instead insert the date format for your language using the english-based letters. See http://docs.jquery.com/UI/Datepicker/formatDate }}
 
 {{doc-important|This is an ''optional'' message. Do not translate it, if it would remain unchanged in your language. }}",
-	'semanticformsinputs-firstdayofweek' => '0 - sunday, 1 - monday...',
+	'semanticformsinputs-firstdayofweek' => '{{optional}}
+0 - sunday, 1 - monday...',
 );
 
 /** Afrikaans (Afrikaans)
@@ -558,9 +560,9 @@ $messages['nl'] = array(
 	'semanticformsinputs-prev' => 'Vorige',
 	'semanticformsinputs-next' => 'Volgende',
 	'semanticformsinputs-today' => 'Vandaag',
-	'semanticformsinputs-datepicker-weekstart' => 'De eerste dag van de week (0 - zondag, 1 - maandag, ...).',
-	'semanticformsinputs-datepicker-firstdate' => 'De eerste datum die kan gekozen worden (in het formaat jjjj/mm/dd).',
-	'semanticformsinputs-datepicker-lastdate' => 'De laatste datum die kan gekozen worden (in het formaat jjjj/mm/dd).',
+	'semanticformsinputs-datepicker-weekstart' => 'De eerste dag van de week (0: zondag, 1: maandag, ...).',
+	'semanticformsinputs-datepicker-firstdate' => 'De eerste datum die gekozen kan worden (in de opmaak jjjj/mm/dd).',
+	'semanticformsinputs-datepicker-lastdate' => 'De laatste datum die gekozen kan worden (in de opmaak jjjj/mm/dd).',
 	'semanticformsinputs-timepicker-mintime' => 'De vroegste tijd om weer te geven. Opmaak: uu:mm',
 	'semanticformsinputs-timepicker-interval' => 'Interval tussen minuten. Getal tussen 1 en 60.',
 	'semanticformsinputs-menuselect-structure' => 'De menustructuur als een ongeordende lijst.',
